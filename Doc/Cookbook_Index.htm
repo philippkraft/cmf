@@ -1,0 +1,136 @@
+<html>
+<head>
+	<title>A cmf cookbook for study areas</title>
+	<link href="doxygen.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+	<h1>
+		Setting up a study area for cmf</h1>
+	<h3>
+		What is a study area?</h3>
+	<table>
+		<tr>
+			<td>
+				<p>
+					A study area consists of one or more subbasins (called Catchment). A catchment consists
+					of a reach and the contributing upslope area. The upslope area is divided into cells
+					of any shape with defined connections to calculate subsurface flow. The cells are
+					the central concept of cmf.
+				</p>
+				<p>
+					In general you have the choice between layered cells, where you can assign different
+					soil properties in different layers or the vertical homogenous cell, with constant
+					soil properties throughout the profile. While layered cells provide a more realistic
+					description of soil properties and hydrological processes, since they can provide
+					a finer vertical discretization of the soil, they demand much more calculation power.
+				</p>
+			</td>
+			<td>
+				<img alt="Picture of the study area concept" src="studyarea.png" /></td>
+		</tr>
+	</table>
+	<h2>
+		Prerequisites for creating a study area</h2>
+	<ul>
+		<li>Using <a href= "time.htm">time</a> in cmf</li>
+		<li>Setting up a hill slope (read this first) (<a href="CreateSingleCell.htm#layered_hillslope">layered
+			cell </a>/ (<a href="CreateSingleCell.htm#vh_hillslope">vertical homogoneos cell</a>)</li>
+		<li>Setting up a <a href="Vegetation.htm">meteorology-ETpot system</a></li>
+		<li>Building a cell network <a href="CellsFromRaster.htm">from a squared cell DEM</a></li>
+	</ul>
+	<h2>
+		Creating the study area</h2>
+	<p>
+		Once a connected set of UpslopeCells exist a StudyArea consisting of catchments
+		can be created. If you leave the delineating of catchments and reaches to cmf, the
+		process becomes quite simple.
+	</p>
+	<h3>
+		Removing sinks</h3>
+	<p>
+		But as for any automated catchment delineation process, artificial pits and sinks
+		may produce some sinks without drainage out of the study area. If one have not created
+		a pitless DEM beforehand in a GIS, e.g. since the DEM is irregular or the process
+		is just to complicated in GIS a corrector can be set up to perfor this task. The
+		example below assumes <code>upslopecells</code> is a variable holding a UpslopeCellVector,
+		therefore CMFLib is already imported</p>
+		<div class="fragment">
+			<pre class="fragment">
+# Create the corrector
+corrector=cmf.UpslopeCorrector(upslopecells)
+# Fill the sinks, minimal difference between cells is 1 mm
+corrector.FillSinks(0.001)
+</pre>
+		</div>
+	<h3>
+		Creating the study area</h3>
+	<p>
+		Although anybody may feel free to put a study area together manually or with own
+		code created catchments, in most cases it is very appropriate to use the automatic
+		delineation. A new catchment with reach is created at a river node or the (unforked)
+		river gets longer than the given maximum length for a reach</p>
+	<p>
+		The following parameters can steer the delineation process:</p>
+	<ul>
+		<li>CatchmentAreaThreshold: The threshold catchment area [m<sup>2</sup>] above a reach
+			is created</li>
+		<li>pourPoint <i>(optional)</i>: A cell where the delineation should start, e.g. a
+			gauge (if <code>None</code> or not given all cells will become part of a catchment)</li>
+		<li>MaximumReachLength <i>(optional)</i>: If a reach is getting longer (without forking)
+			than this threshold, a new catchment an reach is created at the position. If it
+			is not given, only forking results in the creation of new catchments</li>
+	</ul>
+	<div class="fragment">
+		<pre class="fragment">
+catchmentthreshold=6000                                  # m2, a very small value, but fits the example data
+studyarea=cmf.StudyArea(upslopecells,catchmentthreshold) # Delineating done!
+print studyarea.Catchments.size()                        # prints number of Catchments
+for catchment in studyarea.Catchments : 
+    print catchment.Area()                               # prints the area in m2 for each catchment
+</pre>
+	</div>
+	<h2>
+		Performing runs</h2>
+	<h3>
+		Creating a solver</h3>
+	<p>
+		To run cmf, one needs to create a StudyAreaSolver. A StudyAreasolver consists of
+		a numerical solver for the river system and one or more SubsurfaceSolver, each of
+		them owning a numerical solver for the subsurface systems. A StudyAreaSolver is
+		created from a StudyArea while you can denote the target size of the subsurface
+		systems. A subsurface system consists of one or more catchments, never a catchment
+		is split up. Using more catchments per system will allow inter catchment subsurface
+		flow but generally slow down the calculation. If the target catchment area is set
+		to 0 (default) every catchment will be solved seperatly, if the target size is a
+		huge number (greater then the study area) all catchments will share a solver. Target
+		area between the smallest catchment and the whole tudy area will lump catchments
+		in no sophisticated manner together.
+	</p>
+	<div class="fragment">
+		<pre class="fragment">
+solver=cmf.StudyAreaSolver(studyarea,1e100) # One sub surface solver for the whole area
+</pre>
+	</div>
+	<h3>
+		Running the solver</h3>
+	<p>
+		The solver can be run until a specified model run. At the end of the model run,
+		ponded water from the subsurface systems is given to the reach system as a continious
+		flux. To perform a run over the whole time of interest, a loop has to be written,
+		like:
+	</p>
+	<div class="fragment">
+		<pre class="fragment">
+start=cmf.Time(1,1,2001) # Start at Jan,1st 2001, 00:00
+end=cmf.Time(1,1,2002) # Stop at Jan,1st 2002, 00:00
+solver.ModelTime(start) # Tell the solver, when to start
+# Loop until stop time
+while solver.ModelTime() < end : 
+    # Run for an hour, timestep for river system is two minutes
+    solver.Run(solver.ModelTime()+cmf.h,cmf.min*2)  
+    # Print outflow of study area (root reach 0) in m3/day
+    studyarea.RootReaches[0].Q_out(solver.ModelTime()).q
+</pre>
+	</div>
+</body>
+</html>
