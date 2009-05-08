@@ -1,0 +1,9 @@
+#Thu May 07 15:49:20 CEST 2009
+eclipse.preferences.version=1
+encoding//src/cmf_topo/geos_shape_drawer.py=UTF-8
+encoding//src/cmf_topo/geos_shpreader.py=UTF-8
+encoding//src/cmf_topo/maps.py=UTF-8
+encoding//src/cmfshapefilereader.py=UTF-8
+encoding//src/soil.py=UTF-8
+encoding//src/triangulate_cells.py=UTF-8
+encoding//src/visualCMF.py=UTF-8

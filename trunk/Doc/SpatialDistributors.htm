@@ -1,0 +1,114 @@
+<html>
+<head>
+	<title>Distributing parameter classes in space</title>
+	<link href="doxygen.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+	<h1>
+		Distributing parameter classes in space
+	</h1>
+	<table><tr><td>
+	<p>
+		When a study area is set up, a lot of data is given as maps. To assign upslope cells
+		at a given position with georeferenced input dataset the use of spatial distributors,
+		called maps in cmf might be useful, in some cases (like the usage of upslope cell
+		factories) needed.
+	</p>
+	<p>
+		On the C++ side, the implementation of the distributors is class independent (using
+		templates), but on the Python side, the distributed class has to be predefined (in
+		the C++ wrapper). For the following classes distributors are defined (so far):
+	</p>
+	<ul>
+		<li>Numbers (int,float,double)</li>
+		<li>SoilType</li>
+		<li>SoilProfile</li>
+		<li>Pointer to IVegetation (the generalisation of all vegetation types)</li>
+		<li>Pointer to Meteorology</li>
+	</ul>
+	<p>
+		There is an abstract base class IMap &lt class &gt from which all classes derive.
+		It is an interface, that provides a Get(x,y) function, that returns the value or
+		object at the given location (x,y) in planar coordinates, and a Has(x,y) function
+		the returns true, if an object exists at this location <b>The coordination system
+			has to be the same as used for the UpslopeCells, since no conversion between coordinate
+			systems is provided</b>
+	</p>
+	<p>
+		In Python the name resolves to IMap_* where * is one of the following: Int, Float,
+		Double, SoilType, SoilProfile, Vegetation, Meteorology. The same convention applies
+		to the following derived classes.
+	</p>
+	</td>
+	<td><img src="spatialdistribution.png" alt="Sketch of spatial distribution" /></td>
+	</tr></table>
+	<h2>
+		SingleValueMap_*</h2>
+	<p>
+		A SingleValueMap_* is the simplest possible implementation of the IMap interface.
+		the Get(x,y) function returns always the same value/object no matter what location
+		is given</p>
+	<div class="fragment">
+		<pre class="fragment">
+import CMFLib as cmf
+number=1
+map=SingleValueMap_Int(number)
+print map.Get(0,0) # Returns 1
+</pre>
+	</div>
+	<h2>
+		ContinuousRasterMap_*</h2>
+	<p>
+		Distributes a scalar value (int, float or double) with a raster dataset. The simplest
+		way to create a continuous raster map is to load a raster in the ESRI ASCII format.</p>
+		<div class="fragment">
+			<pre class="fragment">
+import CMFLib as cmf
+conversionfactor=0.01 # A factor applied to the raster for unit conversion, optional
+map=ContinuousRasterMap_float('dem10.dem',conversionfactor) # A floating point ASCII-Raster
+print map.Get(0,0) # Returns the value at loacation 0,0 (might be -9999 if Has(0,0)==false)
+</pre>
+		</div>
+		<h2>
+			DiscreteRasterMap_*</h2>
+		<p>
+			Distributes a discrete value or object as a given in an integer raster dataset according
+			to a lookup table. To use this, one have to provide the dstribution raster and add
+			id object pairs to the map prior to use.</p>
+	<div class="fragment">
+		<pre class="fragment">
+import CMFLib as cmf
+map=DiscreteRasterMap_SoilType('soilmap.asc') # soilmap.asc holds the ASCII raster of the soilmap
+map.Add(1,cmf.SoilType(15,0.4,0.3,0.2,0.1,4.2)) # A soil type is registered with raster value 1
+map.Add(2,cmf.SoilType(5,0.6,0.2,0.5,0.3,8.2))  # Another soil type is registered with raster value 2
+print map.Get(0,0).Phi # prints the porosity of the soil at position (0,0)
+</pre>
+	</div>
+	<h2>
+		NearestNeighborMap_*</h2>
+	<p>
+		Registers objects with locations and returns the nearest neighbor to the queried
+		location</p>
+	<div class="fragment">
+		<pre class="fragment">
+import CMFLib as cmf
+map=cmf.NearestNeighborMap_float()
+map.Add(0,1,0.1) # Adds 0.1 at position (0,1)
+map.Add(1,3,7.8) # Adds 7.8 at position (1,3)
+print map.Get(0,0) # prints 0.1 (0,1) is nearer to (0,0) then (1,3)
+</pre>
+	</div>
+	<h2>
+		Polygonmap_*</h2>
+	<p>
+		Should return objects or values that are registered with a polygon, if the queried
+		point is in the polygon. This is not tested yet, nor exists a really simple example.
+		Happy Hacking!
+	</p>
+	<ul>
+		<li><a href="Cookbook_Index.htm">Index</a></li>
+		<li><a href="Vegetation.htm">Building vegetation objects</a></li>
+		<li><a href="CreateSingleCell.htm">Create a single cell or a hill slope</a></li>
+	</ul>
+</body>
+</html>
