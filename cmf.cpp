@@ -21,6 +21,7 @@
 #include "Upslope/vegetation/ShuttleworthWallace.h"
 #include "Reach/reach.h"
 #include "Reach/ManningConnection.h"
+#include "Upslope/algorithm.h"
 	/// Main function of the program. Only for debugging and testing, the real CMF<sub>lib</sub> will be compiled as a DLL and the 
 	/// main function will be replaced by Python code
 #include <ctime>
@@ -131,7 +132,7 @@ int main(int argc, char* argv[])
 		//integ.MaxOrder=2;
 		//integ.UseEulerAtTmin=1;
 		cout.precision(3);
-		connection_set cons=p.get_connections();
+		connection_set cons=get_connections(p);
 		real in_flux=0;
 		//real V_start=c1.Layer(0).State()+c1.Layer(1).State()+c2.Layer(0).State()+c2.Layer(1).State();
 		//c1_sw.State(10);
@@ -145,10 +146,10 @@ int main(int argc, char* argv[])
 			  FluxConnection& con=**it;  
 				cout << " " << con.type << "=" << con.q(con.Target(1),t);
 			}
-// 			for (int i = 0; i < c0.StorageCount() ; ++i)
-// 			{
-// 				cout << " " << c0.GetStorage(i).Name << ": " << c0.GetStorage(i).State();
-// 			}
+			for (int i = 0; i < c0.StorageCount() ; ++i)
+			{
+				cout << " " << c0.GetStorage(i).Name << ": " << c0.GetStorage(i).State();
+			}
 			//cout << " h_sw=" << c1_sw.h() << " q_in=" << c1_sw.FluxTo(c1.Layer(0),t) ;
 			/*cout << " W0=" << c1.Layer(0).Wetness() << " q0_out=" << c1.Layer(0).FluxTo(c1.Layer(1),t) ;
 			cout << " q0_lat=" << c1.Layer(0).FluxTo(p.Cell(-2).Layer(0),t)  ;

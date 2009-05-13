@@ -112,7 +112,7 @@ class CellBoxes :
             self.solver.AddStatesFromOwner(u)
             if (hasattr(u.SurfaceWater(),'h')):
                 self.boxes.append(OpenWaterBox(self.frame,u.SurfaceWater(),min(length,width),zScale))
-            for l in u:
+            for l in u.layers:
                 self.boxes.append(LayerBox(self.frame,u,l,width,length,pylab.cm.jet_r,zScale))
         if lbl :
             self.label=lbl
@@ -142,7 +142,7 @@ class CellBoxes :
             b.set_alpha(alpha)
 class connection_arrows:
     def __init__(self,project,zScale=1.,qscale=0.1,length=0.75,color=(0.6,0.6,1.0)):
-        self.cons=list(project.get_connections())
+        self.cons=cmf.get_connections(list(project))
         self.frame=v.frame()
         makearrow=lambda con:connection_arrow(con[0],con[1],self.frame,zScale,qscale,length,color)
         self.arrows=[]

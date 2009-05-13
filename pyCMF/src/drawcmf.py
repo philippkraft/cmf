@@ -32,7 +32,7 @@ def drawpolygons(polygons,style='k',alpha=1.,hold=1):
         a=array(p[0])
         plot(a[:,0],a[:,1],style,alpha=alpha)
     if was_interactive: show()
-def fillcells(upcvec,evalfunction="c.SaturatedDepth()",valuearray=None,cmap=cm.jet,alpha=1.,hold=1,vmin=None,vmax=None,time=None,whitezero=False,ec='k',lw=1,return_polygons=False):
+def fillcells(upcvec,evalfunction="c.SaturatedDepth()",valuearray=None,cmap=pylab.cm.jet,alpha=1.,hold=1,vmin=None,vmax=None,time=None,whitezero=False,ec='k',lw=1,return_polygons=False):
     print "plot cells"
     if valuearray!=None:
         v=valuearray
