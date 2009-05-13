@@ -170,12 +170,3 @@ cmf::upslope::VanGenuchtenMualem* cmf::upslope::VanGenuchtenMualem::copy() const
 	return new VanGenuchtenMualem(*this);
 }
 
-void cmf::upslope::Profile::AddProfileLayer( const cmf::upslope::RCurve & _r_curve,double _lowerboundary )
-{
-	double ub=depth.size() ? depth.back() : 0.0;
-	if (_lowerboundary-ub<=0) throw std::runtime_error("Layer has no thickness");
-	r_curves.push_back(_r_curve);
-	depth.push_back(_lowerboundary);
-}
-
-cmf::upslope::Profile::Profile( const Profile& forcopy ) : depth(forcopy.depth),r_curves(forcopy.r_curves) {}

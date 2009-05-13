@@ -4,7 +4,7 @@
 
 
 cmf::river::Reach::Reach(cmf::upslope::Cell& Cell, real Length,cmf::river::ReachType* rt,cmf::river::OpenWaterStorage* waterstorage,real depth/*=0.25*/,real width/*=1.0*/ ) 
-: /*cell(&Cell),*/length(Length),channel_shape(rt->copy()),water(waterstorage),downstream(0)
+: cell(&Cell),length(Length),channel_shape(rt->copy()),water(waterstorage),downstream(0)
 {
 	// Connect the surface water of the cell with the reach
 	new cmf::river::Manning(*water,Cell.SurfaceWater(),*rt,sqrt(Cell.Area()/Pi));
@@ -82,6 +82,17 @@ void cmf::river::Reach::set_outlet( cmf::water::FluxNode& outlet )
 {
 	set_downstream(0);
 	new cmf::river::Manning(get_water(),outlet,*channel_shape,length);
+}
+
+real cmf::river::Reach::set_depth( real newdepth )
+{
+	if (newdepth<=0.0) throw std::runtime_error("The depth of a reach needs to be greater then 0");
+	water->Location.z=cell->z-newdepth;
+}
+
+real cmf::river::Reach::get_depth() const
+{
+	return cell->z-water->Location.z;
 }
 double cmf::river::make_river_gap( Reach * reach )
 {

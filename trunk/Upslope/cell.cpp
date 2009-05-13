@@ -17,13 +17,8 @@ cmf::upslope::Cell::~Cell()
 
 cmf::upslope::Cell::Cell( double _x,double _y,double _z,double area,cmf::project& _project/*=0*/ ) 
 : x(_x),y(_y),z(_z),m_Area(area),m_project(_project),
-m_Evaporation(new cmf::water::FluxNode(_project)),m_Transpiration(new cmf::water::FluxNode(_project)),
 m_SurfaceWater(new cmf::water::FluxNode(_project)),m_Canopy_pos(-1),m_Snow_pos(-1),m_SurfaceWater_pos(-1)
 {
-	m_Evaporation->Name="Evaporation";
-	m_Evaporation->Location=cmf::geometry::point(x,y,z+GetVegetation().Height+1);
-	m_Transpiration->Name="Transpiration";
-	m_Transpiration->Location=cmf::geometry::point(x,y,z+GetVegetation().Height+1);
 	m_SurfaceWater->Name="SurfaceWater";
 	m_SurfaceWater->Location=Center();
 	_project.m_cells.push_back(this);
@@ -231,4 +226,14 @@ cmf::upslope::Topology& cmf::upslope::Cell::get_topology()
 		m_topo.reset(new_topo);
 	}
 	return *m_topo;
+}
+
+cmf::water::FluxNode& cmf::upslope::Cell::Evaporation()
+{
+	return project().get_boundary_condition("Evaporation");
+}
+
+cmf::water::FluxNode& cmf::upslope::Cell::Transpiration()
+{
+	return project().get_boundary_condition("Transpiration");
 }

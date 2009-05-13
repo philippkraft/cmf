@@ -21,7 +21,7 @@ namespace cmf{namespace water {class FluxConnection;}}
 %factory(cmf::water::FluxNode& cmf::water::FluxConnection::Target,cmf::atmosphere::RainfallNode,cmf::river::OpenWaterStorage,cmf::upslope::SoilWaterStorage,cmf::water::WaterStorage,cmf::water::FluxNode);
 %include "water/FluxConnection.h"
 %extend cmf::water::FluxConnection { %pythoncode {
-    def __str__(self):
+    def __repr__(self):
         return self.ToString()
     def __getitem__(self,index):
         return self.Target(index)
@@ -32,7 +32,7 @@ namespace cmf{namespace water {class FluxConnection;}}
         return cmp==self[0] or cmp==self[1]
 }}
 %extend cmf::water::FluxNode { %pythoncode {
-    def __str__(self):
+    def __repr__(self):
         return self.Name
     def fluxes(self,t):
         for con in self.Connections():
@@ -49,7 +49,7 @@ namespace cmf{namespace water {class FluxConnection;}}
 
 %extend cmf::water::WaterStorage
 {
-	std::string __str__()
+	std::string __repr__()
 	{
 		return $self->ToString();
 	}

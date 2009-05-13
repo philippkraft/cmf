@@ -22,7 +22,9 @@ namespace cmf {
 			bool add_upstream(Reach * r);
 			bool remove_upstream(Reach* r);
 			cmf::river::OpenWaterStorage * water;
+			cmf::water::FluxNode* outlet;
 			Reach * downstream;
+			cmf::upslope::Cell* cell;
 			/// Creates a new reach object, by adding an OpenWaterStorage to the cell. Connects the surfacewater of the reach automatically with the river
 			Reach(cmf::upslope::Cell& Cell,real Length,cmf::river::ReachType* rt,cmf::river::OpenWaterStorage* waterstorage,real depth,real width);
 		public:
@@ -32,14 +34,18 @@ namespace cmf {
 			/// Returns the cell this reach is related to
 			/// Gets the water storage of the cell
 			cmf::river::OpenWaterStorage& get_water() {return *water;}
+			cmf::upslope::Cell& get_cell() {return *cell;}
 			/// Holds the length of the reach
 			real length;
+			real get_depth() const;
+			real set_depth(real newdepth);
 			/// Returns the reaches this one is connected to. The vector is sorted by height
 			Reach& get_upstream(int index)
 			{
 				return *upstream.at(index<0 ? upstream.size()+index : index);
 			}
 			int upstream_count() const {return int(upstream.size());}
+			cmf::water::FluxNode* get_outlet() const {return outlet;}
 			Reach* get_downstream() const { return downstream;}
 			Reach* get_root() 
 			{
@@ -56,19 +62,23 @@ namespace cmf {
 		/// An iterator over every upstream reach from a start reach. Implements both the Python and the C++ iterator interface
 		class ReachIterator {
 		private:
-			std::queue<Reach*> reach_queue;
+			typedef std::pair<Reach*,double> queue_value;
+			std::queue<queue_value> reach_queue;
+			queue_value current;
 		public:
 			/// Returns the next reach in the upstream queue. 
 			Reach* next()
 			{
 				if (reach_queue.empty()) throw std::out_of_range("No reaches in queue");
-				for (int i = 0; i < reach_queue.front()->upstream_count() ; ++i)
+				for (int i = 0; i < reach_queue.front().first->upstream_count() ; ++i)
 				{
-					reach_queue.push(&reach_queue.front()->get_upstream(i));
+					double nextpos=reach_queue.front().second+reach_queue.front().first->length;
+					queue_value next_item=queue_value(&reach_queue.front().first->get_upstream(i),nextpos);
+					reach_queue.push(next_item);
 				}
-				Reach* result=reach_queue.front();
+				current=reach_queue.front();
 				reach_queue.pop();
-				return result;
+				return current.first;
 			}
 			/// Returns true, if reaches are left to iterate over
 			bool valid() const
@@ -78,13 +88,14 @@ namespace cmf {
 			/// Creates a ReachIterator from a first reach.
 			ReachIterator(Reach* first) 
 			{
-				reach_queue.push(first);
+				reach_queue.push(queue_value(first,0.0));
+				current=reach_queue.front();
 			}
 			
 #ifndef SWIG
 			Reach* operator->() const
 			{
-				return reach_queue.front();
+				return current.first;
 			}
 			void operator++()
 			{
@@ -94,7 +105,11 @@ namespace cmf {
 			/// Returns the current reach
 			Reach* reach() const
 			{
-				return reach_queue.front();
+				return current.first;
+			}
+			double position() const
+			{
+				return current.second;
 			}
 		};
 		/// Ensures that rivers have a monotone downward flow direction. 

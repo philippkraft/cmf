@@ -169,7 +169,7 @@ namespace cmf {
 				: n(_n),alpha(_alpha),Phi(_phi),Ksat(_Ksat) {}
 
 		};
-		/// Wrapper of a retention curve. If shared is true, copies of RCurve hold a reference to the first RCurve, otherwise the retnetion curves are copied
+		/// Wrapper of a retention curve. If shared is true, copies of RCurve hold a reference to the first RCurve, otherwise the retention curves are copied
 		class RCurve
 		{
 		private:
@@ -205,44 +205,8 @@ namespace cmf {
 			}
 			bool shared;
 		};
-	  /// A vertical profile of retention curves
-		class Profile
-		{
-		private:
-			typedef std::vector<RCurve> r_curve_vector;
-			r_curve_vector r_curves;
-			std::vector<double> depth;
-		public:
-			/// Adds a retention curve to the profile
-			/// @param _r_curve The retention curve
-			/// @param _lowerboundary The lower boundary of the layer
-			void AddProfileLayer(const cmf::upslope::RCurve & _r_curve,double _lowerboundary);
-			int size() const
-			{
-				return int(r_curves.size());
-			}
-			double lowerboundary(int index) const
-			{
-				return depth.at(index<0 ? size()+index : index);
-			}
-			double upperboundary(int index) const
-			{
-				if (index) return lowerboundary((index<0 ? size()+index : index)-1);
-				else return 0.0;
-			}
-			double thickness(int index) const
-			{
-				return lowerboundary(index<0 ? size()+index : index)-upperboundary(index<0 ? size()+index : index);
-			}
-			const cmf::upslope::RCurve& r_curve(int index) const
-			{
-				return r_curves.at(index<0 ? size()+index : index);
-			}
-
-			Profile() {}
-			Profile(const Profile& forcopy);
-		};
 	}
 }
 
 #endif // RetentionCurve_h__
+

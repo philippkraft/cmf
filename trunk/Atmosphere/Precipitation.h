@@ -18,7 +18,6 @@ namespace cmf {
 			}
 			virtual PrecipitationData* copy() const=0;
 			virtual cmf::water::WaterQuality conc(cmf::math::Time t,double x,double y,double z)=0;
-			virtual bool RecalcFluxes(cmf::math::Time t) {return true;}
 		};
 		class RainfallNode : public cmf::water::FluxNode
 		{

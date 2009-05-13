@@ -74,25 +74,24 @@ namespace cmf {
 			//@}
 			/// @name Flux nodes of the cell
 			//@{
-			typedef std::auto_ptr<cmf::water::FluxNode> NodePointer;
 			typedef std::tr1::shared_ptr<cmf::water::WaterStorage> storage_pointer;
 			typedef std::tr1::shared_ptr<cmf::river::Reach> reach_pointer;
 			typedef std::vector<reach_pointer> reach_vector;
 			typedef std::vector<storage_pointer> storage_vector;
+			typedef std::tr1::shared_ptr<cmf::water::FluxNode> node_pointer;
 			storage_vector m_storages;
 			reach_vector m_reaches;
-			NodePointer m_Evaporation;
-			NodePointer m_Transpiration;
+			cmf::atmosphere::RainfallNode* m_rainfall;
 			int m_Canopy_pos;
 			int m_Snow_pos;
 			int m_SurfaceWater_pos;
-			NodePointer m_SurfaceWater;
+			node_pointer m_SurfaceWater;
 			const cmf::project & m_project;
 		public:
 			/// Returns the end point of all evaporation of this cell
-			cmf::water::FluxNode& Evaporation()						{ return *m_Evaporation;}
-			/// Returns the end point of all transpiration of this cell
-			cmf::water::FluxNode& Transpiration()						{ return *m_Transpiration;}
+ 			cmf::water::FluxNode& Evaporation();
+ 			/// Returns the end point of all transpiration of this cell
+ 			cmf::water::FluxNode& Transpiration();
 			/// returns the surface water of this cell
 			cmf::water::FluxNode& SurfaceWater()	{ 
 				if (m_SurfaceWater.get())
@@ -183,9 +182,6 @@ namespace cmf {
 			//@}
 			void AddStateVariables(cmf::math::StateVariableVector& vector);
 		};
-		
-
-
 		
 		typedef std::vector<cmf::upslope::Cell*> cell_vector;
 		typedef std::set<cmf::upslope::Cell*> cell_set;

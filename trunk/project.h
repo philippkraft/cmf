@@ -8,25 +8,32 @@
 #include "Geometry/geometry.h"
 #include "Upslope/cell.h"
 #include "Upslope/Soil/RetentionCurve.h"
-#include "Geometry/maps.h"
-#include "Geometry/Raster.h"
+
 namespace cmf {
-	cmf::upslope::Cell* find_cell(cmf::upslope::cell_vector cells,cmf::geometry::point p,double max_dist=1e20);
-	cmf::upslope::cell_vector boundary_cells(const cmf::upslope::cell_vector& cells);
-	/// Connects all adjacent cells with a flux connection, implementing the CellConnector protocol
-	void connect_cells_with_flux(cell_vector cells, const cmf::upslope::CellConnector& connect,int start_at_layer=0);
+	class bc_iterator;
 
 	/// The study area, holding all cells and outlets
-	class project	: public cmf::math::StateVariableOwner
+	class project	: protected cmf::math::StateVariableOwner
 	{
 	private:
+		friend class bc_iterator;
 		typedef std::tr1::shared_ptr<cmf::atmosphere::Meteorology> meteo_pointer;
-		meteo_pointer m_meteo;
 		typedef std::tr1::shared_ptr<cmf::atmosphere::RainfallNode> prec_pointer;
+		typedef std::tr1::shared_ptr<cmf::water::FluxNode> node_pointer;
+		typedef std::map<std::string,node_pointer> boundary_map;
 		prec_pointer m_precipitation;
+		meteo_pointer m_meteo;
 		upslope::cell_vector m_cells;
-		water::node_vector m_boundaries;
+		boundary_map m_boundaries;
 		friend class cmf::upslope::Cell;
+	protected:
+		virtual void AddStateVariables(cmf::math::StateVariableVector& vector)
+		{
+			for(cmf::upslope::cell_vector::iterator it = m_cells.begin(); it != m_cells.end(); ++it)
+			{
+				(**it).AddStateVariables(vector);   
+			}
+		}
 	public:
 		/// If set to true, creation and deletion of objects is logged
 		bool debug;
@@ -90,48 +97,67 @@ namespace cmf {
 			return NewCell(p.x,p.y,p.z,Area);
 		}
 		/// Adds a boundary condition to the project
-		void AddOutlet(std::string Name,cmf::geometry::point Location=cmf::geometry::point());
+		void add_boundary_condition(std::string name,cmf::geometry::point Location=cmf::geometry::point());
+#ifndef SWIG
+		void add_boundary_condition(cmf::water::FluxNode* new_boundary_condition);
+#endif
 		/// Gets a boundary condition
-		cmf::water::FluxNode& GetOutlet(int index);
-		int OutletCount() const
+		cmf::water::FluxNode& get_boundary_condition(std::string name) const;
+		int count_boundary_condition() const
 		{
 			return int(m_boundaries.size());
 		}
-		/// Sets new vegetation data to the cells
-		void SetVegetation(cmf::maps::IMap<cmf::upslope::vegetation::Vegetation> & vegmap);
-// 		/// Creates a cell mesh from a squared dem
-// 		void AddCellsFromDEM(cmf::geometry::Raster<double> dem);
-// 		/// Creates a cell mesh from a squared dem, loaded from an ASCII file in ESRI format
-// 		void AddCellsFromDEM(std::string ASCFileName)
-// 		{
-// 			cmf::geometry::Raster<double> dem(ASCFileName);
-// 			AddCellsFromDEM(dem);
-// 		}
-// 		/// Creates a cell mesh from polygons (depreciated)
-// 		void AddCellsFromPolygons(const cmf::geometry::Polygons & polygons,const cmf::geometry::Points & centers,double slither_tolerance=0.1);
-// 		/// Adds a flexible saturated zone to all cells using the soil depth map
-// 		void AddFlexibleSaturatedZone(cmf::maps::IMap<cmf::upslope::RCurve> & r_curve_map,cmf::maps::IMap<double> & soildepth_map);
-// 		/// Adds a flexible saturated zone to all cells using a constant soil depth
-// 		void AddFlexibleSaturatedZone(cmf::maps::IMap<cmf::upslope::RCurve> & r_curve_map,double soildepth=1.0);
-// 		/// Adds layers from soil profile map and an additional soil depth map
-// 		void AddLayers(cmf::maps::IMap<cmf::upslope::Profile> & r_curve_map,cmf::maps::IMap<double> & soildepth_map);
-// 		/// Adds layers from soil profile map (soil depth derived from the profile depth)
-// 		void AddLayers(cmf::maps::IMap<cmf::upslope::Profile> & r_curve_map);
-// 		/// Returns all connections in this project
-// 		cmf::water::connection_set get_connections() const;
+		operator cmf::upslope::cell_vector&() 
+		{
+			return m_cells;
+		}
+		operator const cmf::upslope::cell_vector&() const
+		{
+			return m_cells;
+		}
 		/// Deletes all layers in all cells
 		void ClearLayers();
-#ifndef SWIG
-		virtual void AddStateVariables(cmf::math::StateVariableVector& vector)
-		{
-			for(cmf::upslope::cell_vector::iterator it = m_cells.begin(); it != m_cells.end(); ++it)
-			{
-				(**it).AddStateVariables(vector);   
-			}
-		}
 
-#endif
 	};
+	/// A class to iterate through the neighbors of a cell (const). Not needed from the Python side, use the generator cell.neighbors instead.
+	class bc_iterator
+	{
+	private:
+		typedef project::boundary_map::iterator map_iterator;
+		map_iterator current,end;
+
+	public:
+#ifndef SWIG
+		/// Returns the current cell (dereference)
+		cmf::water::FluxNode& operator*() {
+			return *current->second;}
+		cmf::water::FluxNode* operator->() {
+			return current->second.get();}
+		bc_iterator& operator++(){
+			this->next();
+			return *this;
+		}
+#endif
+		bool operator==(const bc_iterator& cmp) const {return current==cmp.current;}
+		bool operator!=(const bc_iterator& cmp) const {return current!=cmp.current;}
+		bc_iterator(cmf::project& p) : current(p.m_boundaries.begin()),end(p.m_boundaries.end()) {}
+		
+
+		cmf::water::FluxNode& node() {
+			return *current->second;}
+		bool valid() const
+		{
+			return current!=end;
+		}
+		/// Points the iterator to the next neighbor
+		cmf::water::FluxNode& next(){
+			if (current==end) throw std::out_of_range("No neighbors left");
+			cmf::water::FluxNode& res=*current->second;
+			++current;
+			return res;
+		}
+	};
+
 	
 }
 #endif // project_h__

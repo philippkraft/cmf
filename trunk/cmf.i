@@ -37,13 +37,18 @@
 
 
 // Start my Module
-%module cmf
+%module cmf_core
 
 %include "geometry/geometry.i"
+
+%echo "%include geometry/geometry.i";
+
 %include "math/math.i"
-%include "geometry/maps.i"
+
+%echo "%include math/math.i";
 
 %include "water/water.i"
+%echo "%include water/water.i";
 
 %{
 	#include "Atmosphere/Meteorology.h"
@@ -56,6 +61,7 @@
 	#include "upslope/Vegetation/StructVegetation.h"
 	#include "upslope/cell.h"
 	#include "upslope/topology.h"
+	#include "upslope/algorithm.h"
 	#include "upslope/connections/subsurfacefluxes.h"
 	#include "upslope/connections/surfacefluxes.h"
 	#include "upslope/connections/atmosphericfluxes.h"
@@ -75,19 +81,17 @@
 
 %include "Atmosphere/Meteorology.h"
 %include "Atmosphere/Precipitation.h"
-
+%echo "Atmosphere OK!";
 
 // Get Upslope Classes
 %implicitconv cmf::upslope::RCurve;
 %include "upslope/soil/RetentionCurve.h"
-%extend cmf::upslope::Profile
-{%pythoncode{
-    def __getitem__(self,index):
-        return (self.r_curve(index),self.upperboundary(index),self.lowerboundary(index))
-    def __iter__(self):
-        for i in range(self.size()):
-            yield self[i]
-}}
+%extent cmf::upslope::BrooksCoreyRetentionCurve
+{
+    %pythoncode {
+    def __repr__(self):
+        return "Brooks-Corey (Ksat=%g,porosity=%g,b=%g,wetness @ h=%g @ %g)" % (self.K(1,0),self.Porosity(0),self.b(),self.wetness_X,self.Psi_X)
+}
 
 %immutable cmf::upslope::SoilWaterStorage::cell;
 %include "upslope/SoilWaterStorage.h"
@@ -142,8 +146,6 @@
 }
 %extend cmf::upslope::Cell
 {
-	std::string __repr__() {return $self->ToString();}
-	cmf::upslope::SoilWaterStorage& __getitem__(int i) {return $self->Layer(i);}
 %pythoncode
     {
     @property
@@ -181,6 +183,8 @@
         return hash((self.x,self.y,self.z,self.area,self.Id))
     def __eq__(self,cmp):
         return hash(self)==hash(cmp)
+    def __repr__(self):
+        return "cell #%i(%g,%g,%g)" % (self.Id,self.x,self.y,self.z)
     }
 }
 %include "upslope/topology.h"
@@ -191,6 +195,9 @@
 }
 
 %template(cell_vector) std::vector<cmf::upslope::Cell*>;
+%include "upslope/algorithm.h"
+%echo "Cell OK!";
+
 
 %include "upslope/connections/subsurfacefluxes.h"
 %include "upslope/connections/surfacefluxes.h"
@@ -204,37 +211,49 @@
         connection=type(left_node,right_node,*args)
         connection.thisown=0
 }
-
-//%clearnodefaultctor;
-// Get maps
-ComplexMAP(cmf::upslope::vegetation::Vegetation,Vegetation)
-ASMAPFunction(cmf::upslope::vegetation::Vegetation,Vegetation)
-ComplexMAP(cmf::upslope::RCurve,RetentionCurve)
-ASMAPFunction(cmf::upslope::RCurve,RetentionCurve)
-ComplexMAP(cmf::upslope::Profile,Profile)
-ASMAPFunction(cmf::upslope::Profile,Profile)
-
+%echo "upslope::connections OK!";
 
 // Get river model classes
 %include "Reach/ReachType.h"
 %include "Reach/VolumeHeightRelation.h"
 %newobject cmf::water::OpenWaterStorage::FromNode;
 %include "Reach/ManningConnection.h"
+
+%attribute2(cmf::river::Reach,cmf::upslope::Cell,cell,get_cell);
+%attribute(cmf::river::Reach,cmf::river::Reach*,downstream,get_downstream);
+%attribute(cmf::river::Reach,cmf::river::Reach*,root,get_root);
+%attribute2(cmf::river::Reach,cmf::river::OpenWaterStorage,water,get_water);
+%attribute(cmf::river::Reach,cmf::water::FluxNode*,outlet,get_outlet);
+%attribute(cmf::river::Reach,int,upstream_count,upstream_count);
+%attribute(cmf::river::Reach,real,depth,get_depth,set_depth);
+
+%attribute(cmf::river::ReachIterator,cmf::river::Reach*,reach,reach);
+%attribute(cmf::river::ReachIterator,double,position,position);
+
 %include "Reach/reach.h"
 %extend cmf::river::Reach {
 %pythoncode {
-   @property
-   def upstream(self):
-       """Returns a generator to iterate over each reach upstream from self, inlcuding self"""
-       return [self.get_upstream(i) for i in range(self.upstream_count)]
+    @property
+    def upstream(self):
+        """Returns a list containing all reaches flowing into self"""
+        return [self.get_upstream(i) for i in range(self.upstream_count)]
+    def __hash__(self):
+        return hash(self.water.node_id)
+    def __repr__(self):
+        return "A reach (node #%i) at %s" % (self.water,node_id,self.cell)
+       
 }}
 %extend cmf::river::ReachIterator {
 %pythoncode {
     def __iter__(self):
         while self.valid():
-            yield self.next()
+            self.next()
+            yield (self.reach,self.position)
 }}
+%echo "cmf::river OK!";
+
 // Project
+%rename(connect_cells_with_flux) cmf::connect_cells_with_flux;
 %include "project.h"
 %extend cmf::project {
 %pythoncode {
@@ -242,6 +261,11 @@ ASMAPFunction(cmf::upslope::Profile,Profile)
     def cells(self):
         for i in range(self.CellCount()):
             yield self.Cell(i)
+    @property 
+    def boundary_conditions(self):
+        it=bc_iterator(self)
+        while it.valid():
+            yield it.next()
     def __iter__(self):
         return self.cells
     def __len__(self):
@@ -259,6 +283,7 @@ ASMAPFunction(cmf::upslope::Profile,Profile)
         return res
 }}
 
+%echo "cmf::project OK!";
 
 
 %pythoncode {

@@ -6,7 +6,7 @@
 #include "../math/timeseries.h"
 #include "../water/Solute.h"
 #include "../water/WaterStorage.h"
-#include "../Geometry/maps.h"
+//#include "../Geometry/maps.h"
 #include <string>
 namespace cmf {
 	/// Contains classes to describe interactions with the atmosphere
@@ -382,55 +382,55 @@ namespace cmf {
 			//@}
 
 		};
-		class nnMapMeteorology : public cmf::atmosphere::Meteorology
-		{
-			cmf::math::timeseries temp_lapse;
-			cmf::maps::NearestNeighborMap<SingleMeteorology*> map;
-		public:
-			double precalc_temp_lapse(cmf::math::Time begin, cmf::math::Time step,cmf::math::Time end)
-			{
-				using namespace cmf::math;
-				int n = int(map.size());
-				int steps=0;
-				double avg_lapse=0;
-				for (Time t=begin;t<=end;t+=step)
-				{
-					real SShT=0,SShh=0,sum_T=0,sum_h=0;
-					
-					for (int i = 0; i < n ; ++i)
-					{
-						real 
-							h=map.Value(i)->Elevation,
-							T=map.Value(i)->GetData(t,h).T;
-						SShT+=h*T;
-						SShh+=h*h;
-						sum_h+=h;
-						sum_T+=T;
-					}
-					SShT=1/(n-1)*(SShT-sum_h*sum_T);
-					SShh=1/(n-1)*(SShh-sum_h*sum_T);
-					temp_lapse.Add(SShT/SShh);
-					++steps;
-					avg_lapse+=SShT/SShh;
-				}
-				return avg_lapse/steps;
-			}
-			virtual cmf::atmosphere::Weather GetData(cmf::math::Time t,double x, double y, double z) 
-			{
-				cmf::geometry::point p(x,y,z);
-				SingleMeteorology& met=*map(p);
-				if (!temp_lapse.isempty())
-					met.temp_height_slope=temp_lapse[t];
-				return met(t,p);			  
-			}
-			virtual cmf::atmosphere::nnMapMeteorology* copy() const
-			{
-				nnMapMeteorology* res=new nnMapMeteorology;
-				res->temp_lapse=temp_lapse;
-				return res;
-			}
-
-		};
+// 		class nnMapMeteorology : public cmf::atmosphere::Meteorology
+// 		{
+// 			cmf::math::timeseries temp_lapse;
+// 			cmf::maps::NearestNeighborMap<SingleMeteorology*> map;
+// 		public:
+// 			double precalc_temp_lapse(cmf::math::Time begin, cmf::math::Time step,cmf::math::Time end)
+// 			{
+// 				using namespace cmf::math;
+// 				int n = int(map.size());
+// 				int steps=0;
+// 				double avg_lapse=0;
+// 				for (Time t=begin;t<=end;t+=step)
+// 				{
+// 					real SShT=0,SShh=0,sum_T=0,sum_h=0;
+// 					
+// 					for (int i = 0; i < n ; ++i)
+// 					{
+// 						real 
+// 							h=map.Value(i)->Elevation,
+// 							T=map.Value(i)->GetData(t,h).T;
+// 						SShT+=h*T;
+// 						SShh+=h*h;
+// 						sum_h+=h;
+// 						sum_T+=T;
+// 					}
+// 					SShT=1/(n-1)*(SShT-sum_h*sum_T);
+// 					SShh=1/(n-1)*(SShh-sum_h*sum_T);
+// 					temp_lapse.Add(SShT/SShh);
+// 					++steps;
+// 					avg_lapse+=SShT/SShh;
+// 				}
+// 				return avg_lapse/steps;
+// 			}
+// 			virtual cmf::atmosphere::Weather GetData(cmf::math::Time t,double x, double y, double z) 
+// 			{
+// 				cmf::geometry::point p(x,y,z);
+// 				SingleMeteorology& met=*map(p);
+// 				if (!temp_lapse.isempty())
+// 					met.temp_height_slope=temp_lapse[t];
+// 				return met(t,p);			  
+// 			}
+// 			virtual cmf::atmosphere::nnMapMeteorology* copy() const
+// 			{
+// 				nnMapMeteorology* res=new nnMapMeteorology;
+// 				res->temp_lapse=temp_lapse;
+// 				return res;
+// 			}
+// 
+// 		};
 	}	
 }
 
