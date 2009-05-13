@@ -459,7 +459,7 @@ class Raster:
         """ Returns a list of the neighbors to the given position
         x,y are intepreted as real coordinates, if they are floating point numbers,
             otherwise they are interpreted as column and row of the raster
-        Result: A tuple for each adjacent neighbor of type (column,row,value,distance)
+        Result: A tuple for each adjacent neighbor of type (column,row,value,distance,x,y)
         """
         if type(x) is float or type(y) is float:
             col,row=colrow(x,y)
@@ -471,7 +471,8 @@ class Raster:
             for x in x_pos:
                 v=self[col+x,row+y]
                 if (x or y) and v!=self.nodata:
-                    res.append((col+x,row+y,v,sqrt((x*self.cellsize[0])**2+(y*self.cellsize[1]**2))))
+                    distance=sqrt((x*self.cellsize[0])**2+(y*self.cellsize[1])**2)
+                    res.append((col+x,row+y,v,distance,x,y))
         return res
     def xy(self,col,row):
         return (col*self.cellsize[0]+self.corner[0],(self.shape[1]-row)*self.cellsize[1]+self.corner[1])
