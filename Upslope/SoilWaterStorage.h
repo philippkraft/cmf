@@ -100,7 +100,7 @@ namespace cmf {
 			/// Returns the current upper boundary of this layer (function of state)
 			virtual double UpperBoundary() const;
 			static FlexibleSizeSaturatedZone* Create(cmf::upslope::Cell& cell,real lowerboundary,const RCurve& r_curve);
-			virtual real SaturatedDepth() const { return UpperBoundary();}
+			virtual double SaturatedDepth() const { return UpperBoundary();}
 			virtual void SetPotential(real waterhead);
 		};
 		/// A soil water storage above a FlexibleSizeSaturatedLayer, can only be created by FlexibleSaturatedLayer
@@ -111,8 +111,8 @@ namespace cmf {
 			friend class FlexibleSizeSaturatedZone;
 			FlexibleSizeLayer(cmf::upslope::Cell & cell,real upperboundary,real lowerboundary,const RCurve & r_curve,cmf::upslope::FlexibleSizeSaturatedZone* LayerBelow);
 		public:
-			virtual real LowerBoundary() const { return belowLayer ? belowLayer->UpperBoundary() : UpperBoundary()+0.001;}
-			virtual real SaturatedDepth() const { return LowerBoundary();}
+			virtual double LowerBoundary() const { return belowLayer ? belowLayer->UpperBoundary() : UpperBoundary()+0.001;}
+			virtual double SaturatedDepth() const { return LowerBoundary();}
 
 		};
 		cmf::upslope::SoilWaterStorage* AsSoilWater(cmf::water::FluxNode* node);

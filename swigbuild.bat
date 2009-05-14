@@ -1,6 +1,7 @@
 @echo off
 :swig
 if %1==buildonly goto build
+if %1==copy goto copy
 swig -Wextra -w512 -macroerrors -python -castmode -O -c++ -v -outdir ..\dllpy25 -o cmf_wrap.cxx cmf.i
 echo #pragma warning(push) >> cmf_swig.cxx
 echo #pragma warning (disable : 4244) >> cmf_swig.cxx
