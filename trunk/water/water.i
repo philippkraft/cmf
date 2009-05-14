@@ -19,6 +19,10 @@ namespace cmf{namespace water {class FluxConnection;}}
 %template(connection_set) std::set<cmf::water::FluxConnection*>;
 %template(node_vector) std::vector<cmf::water::FluxNode*>;
 %factory(cmf::water::FluxNode& cmf::water::FluxConnection::Target,cmf::atmosphere::RainfallNode,cmf::river::OpenWaterStorage,cmf::upslope::SoilWaterStorage,cmf::water::WaterStorage,cmf::water::FluxNode);
+
+%pythonappend cmf::water::FluxConnection::FluxConnection{
+    self.thisown=0
+}
 %include "water/FluxConnection.h"
 %extend cmf::water::FluxConnection { %pythoncode {
     def __repr__(self):

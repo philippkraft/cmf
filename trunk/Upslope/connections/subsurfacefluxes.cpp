@@ -179,6 +179,8 @@ real cmf::upslope::connections::Darcy::calc_q( cmf::math::Time t )
 	real
 		flow_thick1=minimum(sw1->Thickness(),sw1->LowerBoundary()-sw1->SaturatedDepth()),
 		flow_thick2=sw2 ? minimum(sw2->Thickness(),sw2->LowerBoundary()-sw2->SaturatedDepth()) : flow_thick1;
+	if (flow_thick1<0 || flow_thick2<0)
+		return 0.0;
 	real
 		// Gravitational gradient
 		Psi_t1=sw1->cell.z - sw1->SaturatedDepth(),
@@ -187,7 +189,7 @@ real cmf::upslope::connections::Darcy::calc_q( cmf::math::Time t )
 		// Transmissivity
 		T1=sw1->Soil().Transmissivity(sw1->LowerBoundary()-flow_thick1,sw1->LowerBoundary(),sw1->Wetness()),
 		T2=sw2 ? sw2->Soil().Transmissivity(sw2->LowerBoundary()-flow_thick2,sw2->LowerBoundary(),sw2->Wetness()) : T1,
-		T = gradient>0 ? T1 : T2;
+		T = geo_mean(T1,T2);
 	return T*gradient*flow_width;
 }
 

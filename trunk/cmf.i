@@ -91,6 +91,14 @@
     %pythoncode {
     def __repr__(self):
         return "Brooks-Corey (Ksat=%g,porosity=%g,b=%g,wetness @ h=%g @ %g)" % (self.K(1,0),self.Porosity(0),self.b(),self.wetness_X,self.Psi_X)
+    }
+}
+%extent cmf::upslope::VanGenuchtenMualem
+{
+    %pythoncode {
+    def __repr__(self):
+        return "VanGenuchten-Mualem (Ksat=%g,porosity=%g,alpha=%g, n=%g)" % (self.K(1,0),self.Porosity(0),self.alpha,self.n)
+    }
 }
 
 %immutable cmf::upslope::SoilWaterStorage::cell;
@@ -98,6 +106,8 @@
 %extend cmf::upslope::SoilWaterStorage {
   %pythoncode {
     boundary=property(lambda self:(self.LowerBoundary(),self.UpperBoundary()),None,"Returns the upper and lower boundary of the layer")
+    def __repr__(self):
+        return self.Name
   }
 }
 %include "upslope/Vegetation/StructVegetation.h"
@@ -240,7 +250,7 @@
     def __hash__(self):
         return hash(self.water.node_id)
     def __repr__(self):
-        return "A reach (node #%i) at %s" % (self.water,node_id,self.cell)
+        return "A reach (node #%i) at %s" % (self.water.node_id,self.cell)
        
 }}
 %extend cmf::river::ReachIterator {

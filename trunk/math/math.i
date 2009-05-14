@@ -4,6 +4,7 @@
 #include "math/timeseries.h"
 #include "math/numVector.h"
 #include "math/StateVariable.h"
+#include "math/Jacobian.h"
 #include "math/Integrators/Integrator.h"
 #include "math/Integrators/BDF2.h"
 #include "math/Integrators/ExplicitEuler_fixed.h"
@@ -42,6 +43,7 @@ namespace std {
 %include "math/Integrators/RKFIntegrator.h"
 %include "math/Integrators/Gears_Fixpoint.h"
 %include "math/Integrators/cvodeIntegrator.h"
+%include "math/Jacobian.h"
 %extend cmf::math::StateVariable
 {
   %pythoncode {

@@ -20,11 +20,12 @@ void cmf::upslope::SoilWaterStorage::SetPotential( real waterhead )
 {
 	real m_pot=waterhead - GravitationalPotential();
 	if (m_pot>=0)
-		State(Capacity());
+		State(Soil().VoidVolume(UpperBoundary(),LowerBoundary(),cell.Area()));
 	else
 	{
 		real w=Soil().Wetness(m_pot);
-		State(Soil().VoidVolume(UpperBoundary(),LowerBoundary(),cell.Area())*Soil().Wetness(m_pot));
+		real vv=Soil().VoidVolume(UpperBoundary(),LowerBoundary(),cell.Area());
+		State(vv*w);
 	}
 }
 
@@ -138,6 +139,7 @@ cmf::upslope::FlexibleSizeSaturatedZone* cmf::upslope::FlexibleSizeSaturatedZone
 	cell.AddLayer(upperLayer);
 	cell.AddLayer(lowerlayer);
 	new cmf::upslope::connections::UnsatSatPercolation(*upperLayer,*lowerlayer);
+	lowerlayer->SetPotential(cell.z-lowerboundary+0.01);
 	return lowerlayer;
 }
 
@@ -157,7 +159,6 @@ void cmf::upslope::FlexibleSizeSaturatedZone::SetPotential( real waterhead )
 cmf::upslope::FlexibleSizeLayer::FlexibleSizeLayer(cmf::upslope::Cell & cell,real upperboundary,real lowerboundary,const RCurve & r_curve,cmf::upslope::FlexibleSizeSaturatedZone* LayerBelow ) 
 : SoilWaterStorage(cell,upperboundary,lowerboundary,r_curve,cell.LayerCount()-1),belowLayer(LayerBelow)
 {	
-	SetPotential(cell.Center().z - 0.5*(upperboundary+lowerboundary));
 }
 
 cmf::upslope::SoilWaterStorage* cmf::upslope::AsSoilWater(cmf::water::FluxNode* node)

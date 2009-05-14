@@ -154,6 +154,7 @@ int cmf::math::CVodeIntegrator::Integrate( cmf::math::Time MaxTime,cmf::math::Ti
 	int res=CVode(cvode_mem,MaxTime.AsDays(),m_y,&t,CV_NORMAL);
 	// Throw if integration fails
 	if (res<0) 
+		m_States.SetStates(y_data);
 		throw std::runtime_error("CVode could not integrate due to failure (see message above)");
 	// Get statistics about CVode call
 	long iterations;
