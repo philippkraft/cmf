@@ -940,10 +940,8 @@ class Time(object):
         return _cmf_core.Time_Milliseconds(ms)
 
     Milliseconds = staticmethod(Milliseconds)
-    def __str__(self):
-        """__str__(self) -> string"""
-        return _cmf_core.Time___str__(self)
-
+    def __repr__(self):
+        return self.ToString()
     def AsPython(self):
         d=self.AsDate()
         return datetime.datetime(d.year,d.month,d.day,d.hour,d.minute,d.second,d.ms*1000)
@@ -972,7 +970,6 @@ Time.__eq__ = new_instancemethod(_cmf_core.Time___eq__,None,Time)
 Time.__ne__ = new_instancemethod(_cmf_core.Time___ne__,None,Time)
 Time.NextDay = new_instancemethod(_cmf_core.Time_NextDay,None,Time)
 Time.NextFullHour = new_instancemethod(_cmf_core.Time_NextFullHour,None,Time)
-Time.__str__ = new_instancemethod(_cmf_core.Time___str__,None,Time)
 Time_swigregister = _cmf_core.Time_swigregister
 Time_swigregister(Time)
 Debug = cvar.Debug
@@ -1099,10 +1096,8 @@ class Date(object):
         """
         return _cmf_core.Date_ToString(self)
 
-    def __str__(self):
-        """__str__(self) -> string"""
-        return _cmf_core.Date___str__(self)
-
+    def __repr__(self):
+        return self.ToString()
     def AsPython(self):
         return datetime.datetime(self.year,self.month,self.day,self.hour,self.minute,self.second,self.ms*1000)
 
@@ -1110,7 +1105,6 @@ class Date(object):
 Date.ToTime = new_instancemethod(_cmf_core.Date_ToTime,None,Date)
 Date.DOY = new_instancemethod(_cmf_core.Date_DOY,None,Date)
 Date.ToString = new_instancemethod(_cmf_core.Date_ToString,None,Date)
-Date.__str__ = new_instancemethod(_cmf_core.Date___str__,None,Date)
 Date_swigregister = _cmf_core.Date_swigregister
 Date_swigregister(Date)
 

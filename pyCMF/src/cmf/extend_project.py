@@ -38,14 +38,17 @@ def add_layers_to_cells(cells,profile_map,soil_depth_map=None):
                          __call__(x,y,z)__ returning a number representing the soil depth in m
                          If omitted, the depth of the profile is used
     """
-    
+    count=0
     for c in cells:
         profile=profile_map(c.x,c.y,c.z)
         maxdepth=soil_depth_map(c.x,c.y,c.z) if soil_depth_map else profile[-1].lower_boundary
-        for l in profile: 
-            if l.upper_boundary<maxdepth:
-                lb=maxdepth if l.islast else min(maxdepth, l.lower_boundary)
-                c.AddLayer(lb ,l.retentioncurve)
+        if not maxdepth is None:
+            for l in profile: 
+                if l.upper_boundary<maxdepth:
+                    count+=1
+                    lb=maxdepth if l.islast else min(maxdepth, l.lower_boundary)
+                    c.AddLayer(lb ,l.retentioncurve)
+    return count
 def add_flex_layer_pair_to_cells(cells,r_curve_map,soil_depth_map):
     """ Adds a unsaturated / saturated zone layer pait from a soil map containing retention curves to a sequence of cells
         cells          : A sequence or iterator of cells (can be a cmf.project)

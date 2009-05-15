@@ -272,7 +272,7 @@ def cells_from_polygons(project,features,shape_callable=lambda feat:feat.shape,i
                 if intersect:
                     cells[i].topology.AddNeighbor(cells[j],intersect)
                     cells[j].topology.AddNeighbor(cells[i],intersect)
-    print i
+    print len(features)
     return cell_dict  
 
 def cells_from_dem(project,dem):
@@ -289,15 +289,14 @@ def cells_from_dem(project,dem):
     cells_dict={}
     # Create the cells
     for x,y,z,area,c,r in dem.cells:
-        c=project.NewCell(x,y,z,area,c,r)
-        geometry[c]=Polygon(((x-dem.cellsize[0]*0.5,y-dem.cellsize[1]*0.5),
+        cell=project.NewCell(x,y,z,area)
+        geometry[cell]=Polygon(((x-dem.cellsize[0]*0.5,y-dem.cellsize[1]*0.5),
                             (x-dem.cellsize[0]*0.5,y+dem.cellsize[1]*0.5),
                             (x+dem.cellsize[0]*0.5,y+dem.cellsize[1]*0.5),
                             (x+dem.cellsize[0]*0.5,y-dem.cellsize[1]*0.5),
                             (x-dem.cellsize[0]*0.5,y-dem.cellsize[1]*0.5)))
-        cells_dict[c,r]=c
-        
-    for c,r in dem:
+        cells_dict[c,r]=cell
+    for c,r in cells_dict:
         act_cell=cells_dict[c,r]
         for nc,nr,nv,nd,dirx,diry in dem.neighbors(c, r):
             n_cell=cells_dict[nc,nr]
