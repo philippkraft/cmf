@@ -280,26 +280,6 @@ namespace cmf {
 #ifndef SWIG
 		std::ostream& operator<<(std::ostream& os,const cmf::math::Date& date);
 		std::ostream& operator<<(std::ostream& os,const cmf::math::Time& time);
-#else
-%extend cmf::math::Time {
-	std::string __str__() {
-		return $self->ToString();
-	}
-	%pythoncode 
-	{
-    def AsPython(self):
-        d=self.AsDate()
-        return datetime.datetime(d.year,d.month,d.day,d.hour,d.minute,d.second,d.ms*1000)
-	}
-}
-%extend cmf::math::Date {
-	std::string __str__() {return $self->ToString();}
-	%pythoncode 
-	{
-    def AsPython(self):
-        return datetime.datetime(self.year,self.month,self.day,self.hour,self.minute,self.second,self.ms*1000)
-	}
-}
 #endif
 
 #endif // Time_h__

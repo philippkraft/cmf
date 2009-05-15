@@ -38,7 +38,7 @@ namespace cmf {
 			/// Holds the length of the reach
 			real length;
 			real get_depth() const;
-			real set_depth(real newdepth);
+			void set_depth(real newdepth);
 			/// Returns the reaches this one is connected to. The vector is sorted by height
 			Reach& get_upstream(int index)
 			{
