@@ -4666,10 +4666,6 @@ SWIG_AsVal_long_SS_long (PyObject *obj, long long *val)
   return res;
 }
 
-SWIGINTERN std::string cmf_math_Time___str__(cmf::math::Time *self){
-		return self->ToString();
-	}
-SWIGINTERN std::string cmf_math_Date___str__(cmf::math::Date *self){return self->ToString();}
 SWIGINTERN double cmf_math_timeseries___size__(cmf::math::timeseries *self){
 			return self->size();
 		}
@@ -15112,50 +15108,6 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Time___str__(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  cmf::math::Time *arg1 = (cmf::math::Time *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject *swig_obj[1] ;
-  std::string result;
-  
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__math__Time, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Time___str__" "', argument " "1"" of type '" "cmf::math::Time *""'"); 
-  }
-  arg1 = reinterpret_cast< cmf::math::Time * >(argp1);
-  {
-    try {
-      result = cmf_math_Time___str__(arg1);
-    } 
-    /*@SWIG:C:\\Programme\\swig\\Lib\\typemaps\\exception.swg,61,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
-    catch (std::invalid_argument& e) {
-      SWIG_exception_fail(SWIG_ValueError, e.what() );
-    } catch (std::domain_error& e) {
-      SWIG_exception_fail(SWIG_ValueError, e.what() );
-    } catch (std::overflow_error& e) {
-      SWIG_exception_fail(SWIG_OverflowError, e.what() );
-    } catch (std::out_of_range& e) {
-      SWIG_exception_fail(SWIG_IndexError, e.what() );
-    } catch (std::length_error& e) {
-      SWIG_exception_fail(SWIG_IndexError, e.what() );
-    } catch (std::runtime_error& e) {
-      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
-    } catch (std::exception& e) {
-      SWIG_exception_fail(SWIG_SystemError, e.what() );
-    }
-    /*@SWIG@*/
-  }
-  resultobj = SWIG_From_std_string(static_cast< std::string >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
 SWIGINTERN PyObject *_wrap_delete_Time(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   cmf::math::Time *arg1 = (cmf::math::Time *) 0 ;
@@ -16665,50 +16617,6 @@ SWIGINTERN PyObject *_wrap_Date_ToString(PyObject *SWIGUNUSEDPARM(self), PyObjec
   {
     try {
       result = (arg1)->ToString();
-    } 
-    /*@SWIG:C:\\Programme\\swig\\Lib\\typemaps\\exception.swg,61,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
-    catch (std::invalid_argument& e) {
-      SWIG_exception_fail(SWIG_ValueError, e.what() );
-    } catch (std::domain_error& e) {
-      SWIG_exception_fail(SWIG_ValueError, e.what() );
-    } catch (std::overflow_error& e) {
-      SWIG_exception_fail(SWIG_OverflowError, e.what() );
-    } catch (std::out_of_range& e) {
-      SWIG_exception_fail(SWIG_IndexError, e.what() );
-    } catch (std::length_error& e) {
-      SWIG_exception_fail(SWIG_IndexError, e.what() );
-    } catch (std::runtime_error& e) {
-      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
-    } catch (std::exception& e) {
-      SWIG_exception_fail(SWIG_SystemError, e.what() );
-    }
-    /*@SWIG@*/
-  }
-  resultobj = SWIG_From_std_string(static_cast< std::string >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_Date___str__(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  cmf::math::Date *arg1 = (cmf::math::Date *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject *swig_obj[1] ;
-  std::string result;
-  
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__math__Date, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Date___str__" "', argument " "1"" of type '" "cmf::math::Date *""'"); 
-  }
-  arg1 = reinterpret_cast< cmf::math::Date * >(argp1);
-  {
-    try {
-      result = cmf_math_Date___str__(arg1);
     } 
     /*@SWIG:C:\\Programme\\swig\\Lib\\typemaps\\exception.swg,61,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
     catch (std::invalid_argument& e) {
@@ -87465,7 +87373,6 @@ static PyMethodDef SwigMethods[] = {
 		"Milliseconds(long long ms = 1) -> Time\n"
 		"Time_Milliseconds() -> Time\n"
 		""},
-	 { (char *)"Time___str__", (PyCFunction)_wrap_Time___str__, METH_O, (char *)"Time___str__(Time self) -> string"},
 	 { (char *)"delete_Time", (PyCFunction)_wrap_delete_Time, METH_O, (char *)"delete_Time(Time self)"},
 	 { (char *)"Time_swigregister", Time_swigregister, METH_VARARGS, NULL},
 	 { (char *)"Time_swiginit", Time_swiginit, METH_VARARGS, NULL},
@@ -87523,7 +87430,6 @@ static PyMethodDef SwigMethods[] = {
 		"\n"
 		"Returns a string representing the date. \n"
 		""},
-	 { (char *)"Date___str__", (PyCFunction)_wrap_Date___str__, METH_O, (char *)"Date___str__(Date self) -> string"},
 	 { (char *)"delete_Date", (PyCFunction)_wrap_delete_Date, METH_O, (char *)"delete_Date(Date self)"},
 	 { (char *)"Date_swigregister", Date_swigregister, METH_VARARGS, NULL},
 	 { (char *)"Date_swiginit", Date_swiginit, METH_VARARGS, NULL},
