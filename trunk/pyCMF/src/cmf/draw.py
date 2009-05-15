@@ -1,5 +1,6 @@
 from shapely.geometry import Polygon,MultiPolygon,Point,LineString,MultiLineString,MultiPoint,GeometryCollection
 import pylab
+import numpy
 from cmf.cell_factory import geometry as geoms
 import cmf.cell_factory
 
@@ -76,12 +77,21 @@ def draw_cell_arrows(cells,width_function,color='k',hold=1,**kwargs):
     was_interactive=pylab.isinteractive()
     if was_interactive: pylab.ioff()
     if hold==0: pylab.clf()
+    values=[]
+    vmin=xmin=1e300
+    vmax=xmax=-1e300
+    
     for c in cells:
         for n,w in c.neighbors:
-            x,y,dx,dy=c.x,c.y,n.x-c.x,n.y,c.y
-            v=weight_function(c,n)
-            if v>0.001:
-                pylab.arrow(x,y,dx/2,dy/2,c=color,width=v,hold=1,**kwargs)
+            x,y,dx,dy=c.x,c.y,n.x-c.x,n.y-c.y
+            v=width_function(c,n)
+            vmin=min(vmin,v)
+            vmax=max(vmax,v)
+            values.append((x,y,dx,dy,v))
+    print "Value range %g - %g" % (vmin,vmax)
+    for x,y,dx,dy,v in values:
+        if v>1e-4*(vmax-vmin):
+            pylab.arrow(x,y,dx/2,dy/2,fc=color,width=v,hold=1,ec='none',**kwargs)
     if was_interactive:
         pylab.draw() 
         pylab.ion()
@@ -104,6 +114,10 @@ def connector_matrix(cells,size=(500,500)):
                 jac[i*size[0]/l,j*size[1]/l]+=1
     return jac   
         
+def contour_raster(raster,**kwargs):
+    Z=raster.as_array()
+    Z=numpy.flipud(Z)
+    pylab.contour(Z,extent=(raster.llcorner[0],raster.llcorner[0]+raster.extent[0],raster.llcorner[1],raster.llcorner[1]+raster.extent[1]),**kwargs)
 
                
         
