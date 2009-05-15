@@ -7,23 +7,27 @@ real cmf::river::Manning::calc_q( cmf::math::Time t )
 		// Distance between source and target
 		d=distance,
 		// Gradient of the reach
-		slope=(m_left->Potential()-m_right->Potential())/d;
-	
+		slope=(m_left->Potential()-m_right->Potential())/d,
+		abs_slope=abs(slope)-1e-5;
+
+	if (abs_slope<=0) return 0.0;
 	// Get the source of the flow
-	OpenWaterStorage* source=slope>0 ? w1 : w2 && slope!=0 ? w2 : 0;
+	OpenWaterStorage* source=slope>0 ? w1 : w2;
 	if (source==0) return 0; // Never generate flow from a flux node
 		// Wetted crossectional area use mean volume of the water storages if both sides are water storages
 	real
 		// Flow height between elements is the mean of the flow height, but exceeds never the flow height of the source
 		h=minimum(source->h(),w2 ? mean(w1->h(),w2->h()) : w1->h());
-	if (h<=0) return 0;
+	if (h<=1e-6) return 0;
 	real
 		// Depth of the reach
 		A=flux_geometry->Area(h),
 		// Wetted perimeter of the reach
-		P=maximum(flux_geometry->Perimeter(h),0.001),
+		P=flux_geometry->Perimeter(h);
+	if (A<=0 || P<=0) return 0.0;
 		// Absolute flux in m3/s
-		qManning=A*pow((A/P),0.6666667)*sqrt(abs(slope)/flux_geometry->nManning);
+
+	real qManning=A*pow((A/P),0.6666667)*sqrt(abs_slope/flux_geometry->nManning);
 	return qManning * sign(slope) * (24*60*60);
 }
 

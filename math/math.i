@@ -63,6 +63,27 @@ namespace std {
 %implicitconv cmf::math::Time;
 %implicitconv cmf::math::Date;
 
+%extend cmf::math::Time {
+    %pythoncode 
+    {
+    def __repr__(self):
+        return self.ToString()
+    def AsPython(self):
+        d=self.AsDate()
+        return datetime.datetime(d.year,d.month,d.day,d.hour,d.minute,d.second,d.ms*1000)
+    }
+}
+
+%extend cmf::math::Date {
+    %pythoncode 
+    {
+    def __repr__(self):
+        return self.ToString()
+    def AsPython(self):
+        return datetime.datetime(self.year,self.month,self.day,self.hour,self.minute,self.second,self.ms*1000)
+    }
+}
+
 %pythoncode {
 def AsCMFtime(date):
     """Converts a python datetime to cmf.Time"""

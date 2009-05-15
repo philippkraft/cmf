@@ -84,7 +84,7 @@ void cmf::river::Reach::set_outlet( cmf::water::FluxNode& outlet )
 	new cmf::river::Manning(get_water(),outlet,*channel_shape,length);
 }
 
-real cmf::river::Reach::set_depth( real newdepth )
+void cmf::river::Reach::set_depth( real newdepth )
 {
 	if (newdepth<=0.0) throw std::runtime_error("The depth of a reach needs to be greater then 0");
 	water->Location.z=cell->z-newdepth;
