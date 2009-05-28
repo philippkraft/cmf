@@ -142,14 +142,26 @@ cmf::upslope::FlexibleSizeSaturatedZone* cmf::upslope::FlexibleSizeSaturatedZone
 	lowerlayer->SetPotential(cell.z-lowerboundary+0.01);
 	return lowerlayer;
 }
-
+static const real unsat_min_thick=0.1;
 void cmf::upslope::FlexibleSizeSaturatedZone::SetPotential( real waterhead )
 {
 	if (waterhead>cell.z-LowerBoundary())
 	{
-		real filling=maximum(cell.z-waterhead,upperLayer->UpperBoundary()+0.01);
-		real vol=Soil().VoidVolume(filling,LowerBoundary(),cell.Area());
-		State(vol);
+		real ub= (upperLayer ? upperLayer->UpperBoundary() : 0.0)+unsat_min_thick;
+		real max_thick=LowerBoundary()-ub;
+		real g_pot=cell.z-ub;
+		real m_pot=waterhead-g_pot;
+		real maxvol=Soil().VoidVolume(ub,LowerBoundary(),cell.Area());
+		if (m_pot<0)
+		{
+			real vol=maxvol*(1+m_pot/max_thick);
+			State(vol);
+		}
+		else
+		{
+			real w=Soil().Wetness(m_pot);
+			State(maxvol*w);
+		}
 	}
 	else
 		State(0);

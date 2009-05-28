@@ -79,7 +79,6 @@ cmf::atmosphere::Weather cmf::atmosphere::SingleMeteorology::GetData( cmf::math:
 		throw std::runtime_error("Minimal dataset is to have values for Tmax, however Tmin should be provided too");
 	double height_correction=temp_height_slope*(height-Elevation);
 	
-	A.Prec=Prec.isempty() ? 0.0 : Prec[t];
 	A.Tmax=Tmax[t]+height_correction;
 	A.Tmin=Tmin.isempty() ? A.Tmax-2 : Tmin[t]+height_correction;
 	if (T.isempty())
@@ -122,11 +121,8 @@ cmf::atmosphere::Weather cmf::atmosphere::SingleMeteorology::GetData( cmf::math:
 
 void cmf::atmosphere::SingleMeteorology::SetSunshineFraction(cmf::math::timeseries sunshine_duration ) 
 {
-	Sunshine.clear();
-	Sunshine.begin=sunshine_duration.begin;
-	Sunshine.step=sunshine_duration.step;
-	Sunshine.interpolationpower=sunshine_duration.interpolationpower;
-	cmf::math::Time t=sunshine_duration.begin;
+	Sunshine=cmf::math::timeseries(sunshine_duration.begin(),sunshine_duration.step(),sunshine_duration.interpolationpower());
+	cmf::math::Time t=sunshine_duration.begin();
 	for (int i = 0; i < sunshine_duration.size() ; i++)
 	{
 		double
@@ -136,7 +132,7 @@ void cmf::atmosphere::SingleMeteorology::SetSunshineFraction(cmf::math::timeseri
 			sunset_angle=acos(-tan(phi)*tan(decl)),	// Sunset hour angle [rad]
 			N=24/PI*sunset_angle;
 		Sunshine.Add(sunshine_duration[i]/N),
-		t+=sunshine_duration.step;
+		t+=sunshine_duration.step();
 	}
 
 }
@@ -159,7 +155,6 @@ void cmf::atmosphere::SingleMeteorology::Save( const std::string& filename )
 	Tmax.Save(file);
 	Tdew.Save(file);
 	T.Save(file);
-	Prec.Save(file);
 	rHmean.Save(file);
 	rHmax.Save(file);
 	rHmin.Save(file);
@@ -188,7 +183,6 @@ cmf::atmosphere::SingleMeteorology::SingleMeteorology( const std::string& filena
 	Tmax=cmf::math::timeseries(file);
 	Tdew=cmf::math::timeseries(file);
 	T=cmf::math::timeseries(file);
-	Prec=cmf::math::timeseries(file);
 	rHmean=cmf::math::timeseries(file);
 	rHmax=cmf::math::timeseries(file);
 	rHmin=cmf::math::timeseries(file);
@@ -200,42 +194,22 @@ cmf::atmosphere::SingleMeteorology::SingleMeteorology( const std::string& filena
 cmf::atmosphere::SingleMeteorology::SingleMeteorology( double latitude/*=51*/,double longitude/*=8*/,double timezone/*=1*/,double elevation/*=0*/, cmf::math::Time startTime/*=cmf::math::Time(1,1,2001)*/,cmf::math::Time timestep/*=cmf::math::day*/,std::string name/*=""*/ ) 
 : Latitude(latitude),Longitude(longitude),Timezone(timezone),Elevation(elevation),daily(timestep>=cmf::math::day),
 	Tmax(startTime,timestep,1),Tmin(startTime,timestep,1), T(startTime,timestep,1),
-	Prec(startTime,timestep,0),Windspeed(startTime,timestep,1),
+	Windspeed(startTime,timestep,1),
 	rHmean(startTime,timestep,1),rHmax(startTime,timestep,1),rHmin(startTime,timestep,1),
 	Tdew(startTime,timestep,1),Sunshine(startTime,timestep,1),Tground(startTime,timestep,1),
-	Rs(startTime,timestep,1),Deposition(),temp_height_slope(0)
+	Rs(startTime,timestep,1),temp_height_slope(0)
 {
 	Name=name;
-	for (cmf::water::SoluteTimeseries::iterator it=Deposition.begin();it!=Deposition.end();++it)
-	{
-		it->begin=startTime;
-		it->step=timestep;
-	}
 }
 
 cmf::atmosphere::SingleMeteorology::SingleMeteorology( const cmf::atmosphere::SingleMeteorology& other )
 :	Latitude(other.Latitude),Longitude(other.Longitude),Timezone(other.Timezone),Elevation(other.Elevation),daily(other.daily),
 	Tmax(other.Tmax),Tmin(other.Tmin),T(other.T),
-	Prec(other.Prec),Windspeed(other.Windspeed),
+	Windspeed(other.Windspeed),
 	rHmean(other.rHmean),rHmax(other.rHmax),rHmin(other.rHmin),
 	Tdew(other.Tdew),Sunshine(other.Sunshine),Rs(other.Rs),Tground(other.Tground),
-	Deposition(other.Deposition),temp_height_slope(other.temp_height_slope)
+	temp_height_slope(other.temp_height_slope)
 {
 	Name=other.Name;
-}
-cmf::water::WaterFlux cmf::atmosphere::SingleMeteorology::GetDeposition( cmf::math::Time t )
-{
-	cmf::water::WaterFlux depo;
-	size_t i=0;
-	for(cmf::water::SoluteTimeseries::iterator it = Deposition.begin(); it != Deposition.end(); ++it)
-	{
-		if (it->isempty()) 
-			depo.c[i]=0;
-		else
-			depo.c[i]=(*it)[t];
-		++i;
-	}
-	depo.q=Prec[t];
-	return depo;
 }
 
