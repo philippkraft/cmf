@@ -201,13 +201,12 @@ namespace cmf {
 				return conc_ts.size();
 			}
 			SoluteTimeseries() : conc_ts(cmf::water::Solutes::all().size()) {cmf::water::Solutes::all().SetInUse();}
-			SoluteTimeseries(cmf::math::Time begin,cmf::math::Time step) : conc_ts(cmf::water::Solutes::all().size()) 
+			SoluteTimeseries(cmf::math::Time begin,cmf::math::Time step) : conc_ts() 
 			{
 				cmf::water::Solutes::all().SetInUse();
-				for (iterator it=conc_ts.begin();it!=conc_ts.end();++it)
+				for (Solutes::const_iterator it = Solutes::all().begin();it!=Solutes::all().end();++it)
 				{
-					it->begin=begin;
-					it->step=step;
+					conc_ts.push_back(cmf::math::timeseries(begin,step));
 				}
 
 			}

@@ -71,7 +71,7 @@ namespace cmf {
 			}
 			/// Conversion constructor, taking a timeseries
 			SinglePrecipitationTimeseries(const cmf::math::timeseries& data) 
-				: Data(data),RainFallConcentration(data.begin,data.step)			{			}
+				: Data(data),RainFallConcentration(data.begin(),data.step())			{			}
 			SinglePrecipitationTimeseries(const cmf::math::timeseries& data,const cmf::water::SoluteTimeseries& concentration)
 				: Data(data),RainFallConcentration(concentration) {}
 

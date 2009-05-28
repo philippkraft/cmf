@@ -23,7 +23,6 @@ namespace cmf {
 				Tmax,				///< Maximum daily Temperature \f$T_{max} \left[^\circ C\right]\f$
 				Tmin,				///< daily minimum Temperature	\f$T_{min} \left[^\circ C\right]\f$
 				Tground,    ///< actual Temperature of the ground
-				Prec,				///< Precipitation \f$P \left[\frac{mm}{day}\right] \f$
 				Windspeed,	///< Windspeed \f$u \left[\frac{m}{s}\right] \f$
 				e_a,				///< Actual vapor pressure \f$e_a\ [kPa]\f$
 				e_s,				///< Saturated vapor pressure in \f$e_s [kPa]\f$
@@ -53,7 +52,7 @@ namespace cmf {
 			/// Calculates the mean pressure for a specific height
 			Weather()
 				:	T(15),Tmax(17),Tmin(10),Tground(16),
-				Prec(0.0),e_s(vapour_pressure(15)),e_a(0.8*vapour_pressure(15)),
+				e_s(vapour_pressure(15)),e_a(0.8*vapour_pressure(15)),
 				Windspeed(2.),sunshine(0.5),Rs(15) {}
 			std::string ToString() const
 			{
@@ -330,8 +329,6 @@ namespace cmf {
 			/// @name Timeseries of meteorological data
 			//@{
 			cmf::math::timeseries
-				/// Timeseries of daily precipitation in \f$ P \left[\frac{mm}{day}\right] \f$	<b>Requiered</b>
-				Prec,
 				/// Timeseries of Temperature \f$ T\left[^\circ C\right] \f$ <b>Optional, can be calculated from </b> \f$ T=\frac{T_{max} + T_{min}} 2 \f$
 				T,
 				/// Timeseries of daily maximum Temperature \f$ T_{max} \left[^\circ C\right] \f$ 
@@ -361,16 +358,6 @@ namespace cmf {
 				Rs;
 
 
-			/// Map of time series of rainfall concentrations. 
-			///
-			/// Usage: 
-			/// @code
-			/// meteo.Deposition[Solute].Add(3.0);
-			/// double d=meteo.Deposition[Solute][Time];
-			/// @endcode
-			cmf::water::SoluteTimeseries Deposition;
-			/// Returns the rainfall with its current concentration. The concentration is derived from Deposition
-			cmf::water::WaterFlux GetDeposition(cmf::math::Time t);
 			//@}
 			/// @name I/O
 			//@{
