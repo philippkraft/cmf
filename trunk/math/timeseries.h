@@ -3,6 +3,7 @@
 #include <vector>
 #include <iostream>
 #include "Time.h"
+#include <tr1/memory>
 namespace cmf {
 	namespace math {
 		///	A timeseries is a list of values, equally distributed over time. To create one,
@@ -47,61 +48,76 @@ namespace cmf {
 		class timeseries
 		{
 		private:
-			std::vector<double> m_Values;
+#ifndef SWIG
+			struct timeseries_data {
+				std::vector<double> values;
+				Time begin;
+				Time step;
+				int interpolationpower;
+				timeseries_data(Time _begin,Time _step,int _interpolationpower) 
+					: begin(_begin),step(_step),interpolationpower(_interpolationpower)
+				{
+				}
+			};
+#endif
+			typedef std::tr1::shared_ptr<timeseries_data> data_pointer;
+			data_pointer m_data;
+			static data_pointer make_data(Time _begin=day*0,Time _step=day,int _interpolationpower=1);
 			double position(cmf::math::Time t) const;
 			double interpolate(cmf::math::Time t,double n) const;
 			/// Order of the interpolation
 		protected:
 		public:
 			/// First date of measurement
-			cmf::math::Time begin;
+			cmf::math::Time begin() const {return m_data->begin;}
 			/// Time between the measurements
-			cmf::math::Time step;
+			cmf::math::Time step() const {return m_data->step;}
 			/// Last date of measurements
-			cmf::math::Time end()	const		{return begin+step*int(m_Values.size());}
+			cmf::math::Time end()	const		{return begin()+step()*int(m_data->values.size());}
 			/// Method for the interpolation (0 - Nearest neighbor, 1- linear, 2 - cubic spline (not implemented yet)
-			double interpolationpower;
+			double interpolationpower() const {return m_data->interpolationpower;}
 			/// Appends a measurement
 			void Add(double Value)
 			{
-				m_Values.push_back(Value);
+				m_data->values.push_back(Value);
 			}
 			/// returns true if no values are added to the timeseries
-			bool isempty() const {return m_Values.size()==0;}
+			bool isempty() const {return m_data->values.size()==0;}
 			void clear()
 			{
-				m_Values.clear();
+				m_data->values.clear();
 			}
 
-			int size() const {return int(m_Values.size());}
+			int size() const {return int(m_data->values.size());}
 			/// Constructor of a time series
 			/// @param _begin First date of measurement
 			/// @param _step Time between measurements
 			/// @param _interpolationmethod Method for the interpolation (0 - Nearest neighbor, 1- linear, 2 - cubic spline (not implemented yet)
-			timeseries(cmf::math::Time _begin,cmf::math::Time _step,int _interpolationmethod=0) 
-				: begin(_begin),step(_step),interpolationpower(_interpolationmethod) {}
-			timeseries(cmf::math::Time _begin,cmf::math::Time _step,int size,int _interpolationmethod) 
-				: begin(_begin),step(_step),interpolationpower(_interpolationmethod),m_Values(size,0) {}
-			timeseries() : begin(),step(),interpolationpower(0) {}
-			timeseries( const cmf::math::timeseries& ts ) : begin(ts.begin),step(ts.step),interpolationpower(ts.interpolationpower),m_Values(ts.m_Values)
-			{	}
-			timeseries(double scalar) : begin(cmf::math::Time()),step(day),interpolationpower(0),m_Values()
+			timeseries(cmf::math::Time _begin,cmf::math::Time _step,int _interpolationmethod=1) 
+				: m_data(make_data(_begin,_step,_interpolationmethod))
 			{
-				m_Values.push_back(scalar);
+			}
+			timeseries() : m_data(make_data()) 
+			{			}
+			timeseries( const cmf::math::timeseries& ts ) : m_data(ts.m_data)
+			{	}
+			timeseries(double scalar) : m_data(make_data())
+			{
+				m_data->values.push_back(scalar);
 			}
 
 
 #ifndef SWIG
 			/// Returns an interpolated value at time t
-			double operator[](cmf::math::Time t) const {return interpolate(t,interpolationpower);}
+			double operator[](cmf::math::Time t) const {return interpolate(t,interpolationpower());}
 			/// Returns a reference to the value at position i
 			double& operator[](int i)			{
-				int ndx=i<0 ? int(m_Values.size())+i : i;
-				return m_Values.at(ndx);
+				int ndx=i<0 ? int(m_data->values.size())+i : i;
+				return m_data->values.at(ndx);
 			}
 			double operator[](int i) const			{
-				int ndx=i<0 ? int(m_Values.size())+i : i;
-				return m_Values.at(ndx);
+				int ndx=i<0 ? int(m_data->values.size())+i : i;
+				return m_data->values.at(ndx);
 			}
 #endif
 			/// @name Operators
