@@ -9,28 +9,33 @@
 #include "../Reach/ReachType.h"
 #include "../Reach/Reach.h"
 #include "Topology.h"
+#include "../Atmosphere/Precipitation.h"
 cmf::upslope::Cell::~Cell()
 {
-	RemoveLayers();
+	remove_layers();
 }
 
 
 cmf::upslope::Cell::Cell( double _x,double _y,double _z,double area,cmf::project& _project/*=0*/ ) 
 : x(_x),y(_y),z(_z),m_Area(area),m_project(_project),
-m_SurfaceWater(new cmf::water::FluxNode(_project)),m_Canopy_pos(-1),m_Snow_pos(-1),m_SurfaceWater_pos(-1)
+m_SurfaceWater(new cmf::water::FluxNode(_project)),
+m_Canopy(0),m_Snow(0),m_SurfaceWaterStorage(0)
 {
-	m_SurfaceWater->Name="SurfaceWater";
-	m_SurfaceWater->Location=Center();
+	m_SurfaceWater->Name="Surfacewater";
+	m_SurfaceWater->Location=get_position();
+	m_rainfall=new cmf::atmosphere::RainCloud(*this);
+	m_Evaporation=new cmf::water::FluxNode(_project,cmf::geometry::point(x,y,z+20));
+	m_Transpiration=new cmf::water::FluxNode(_project,cmf::geometry::point(x,y,z+20));
 	_project.m_cells.push_back(this);
-	new connections::Rainfall(SurfaceWater(),*this);
+	new connections::Rainfall(get_surfacewater(),*this);
 }
 
-real cmf::upslope::Cell::SaturatedDepth()	
+real cmf::upslope::Cell::get_saturated_depth()	
 {
 	if (m_SatDepth!=-10000)
 	{
-		//m_SatDepth=Layer(0).SaturatedDepth();
-		m_SatDepth=Layer(-1).LowerBoundary();
+		//m_SatDepth=get_layer(0).get_saturated_depth();
+		m_SatDepth=get_layer(-1).LowerBoundary();
 		for(layer_vector::reverse_iterator it = m_Layers.rbegin(); it != m_Layers.rend(); ++it)
 		{
 			SoilWaterStorage& l=**it;
@@ -52,41 +57,41 @@ real cmf::upslope::Cell::SaturatedDepth()
 
 void cmf::upslope::Cell::AddStateVariables( cmf::math::StateVariableVector& vector )
 {
-	for (int i = 0; i < StorageCount() ; ++i)
-		GetStorage(i).AddStateVariables(vector);
-	for (int i = 0; i < LayerCount() ; ++i)
-		Layer(i).AddStateVariables(vector);
+	for (int i = 0; i < storage_count() ; ++i)
+		get_storage(i).AddStateVariables(vector);
+	for (int i = 0; i < layer_count() ; ++i)
+		get_layer(i).AddStateVariables(vector);
 }
 
-void cmf::upslope::Cell::AddLayer( cmf::upslope::SoilWaterStorage* layer )
+void cmf::upslope::Cell::add_layer( cmf::upslope::SoilWaterStorage* layer )
 {
 	if (m_Layers.size()==0)	
-		new connections::CompleteInfiltration(*layer,SurfaceWater());
+		new connections::CompleteInfiltration(*layer,get_surfacewater());
 	m_Layers.push_back(layer);
 }
 
-void cmf::upslope::Cell::AddLayer(real lowerboundary,const cmf::upslope::RCurve& r_curve,real saturateddepth/*=-10*/ )
+void cmf::upslope::Cell::add_layer(real lowerboundary,const cmf::upslope::RCurve& r_curve,real saturateddepth/*=-10*/ )
 {
 	SoilWaterStorage::Create(*this,lowerboundary,r_curve,saturateddepth);
 }
-void cmf::upslope::Cell::AddVariableLayerPair(real lowerboundary,const cmf::upslope::RCurve& r_curve )
+void cmf::upslope::Cell::add_variable_layer_pair(real lowerboundary,const cmf::upslope::RCurve& r_curve )
 {
 	FlexibleSizeSaturatedZone::Create(*this,lowerboundary,r_curve);
 }
-cmf::upslope::vegetation::Vegetation cmf::upslope::Cell::GetVegetation() const
+cmf::upslope::vegetation::Vegetation cmf::upslope::Cell::get_vegetation() const
 {
-	vegetation::Vegetation res=Vegetation;
-	real snw_cvr=SnowCover();
+	vegetation::Vegetation res=m_vegetation;
+	real snw_cvr=snow_coverage();
 	res.albedo=snw_cvr * 0.9 + (1-snw_cvr)*res.albedo;
 	return res;
 }
 
-cmf::atmosphere::Weather cmf::upslope::Cell::Weather( cmf::math::Time t ) const
+cmf::atmosphere::Weather cmf::upslope::Cell::get_weather( cmf::math::Time t ) const
 {
-	return project().Meteorology()(t,x,y,z);
+	return get_meteorology()(t);
 }
 
-void cmf::upslope::Cell::RemoveLayers()
+void cmf::upslope::Cell::remove_layers()
 {
 	std::vector<SoilWaterStorage*> layers(m_Layers);
 	m_Layers.clear();
@@ -94,15 +99,15 @@ void cmf::upslope::Cell::RemoveLayers()
 		delete *it;
 }
 
-void cmf::upslope::Cell::RemoveLastLayer()
+void cmf::upslope::Cell::remove_last_layer()
 {
-	cmf::upslope::SoilWaterStorage* lastlayer=&Layer(-1);
+	cmf::upslope::SoilWaterStorage* lastlayer=&get_layer(-1);
 	m_Layers.pop_back();
 	FlexibleSizeSaturatedZone *pLayer = dynamic_cast<FlexibleSizeSaturatedZone *>(lastlayer);
 	if(pLayer)
 	{
 		delete pLayer;
-		lastlayer=&Layer(-1);
+		lastlayer=&get_layer(-1);
 		m_Layers.pop_back();
 	}
 	delete lastlayer;
@@ -113,37 +118,27 @@ const cmf::project& cmf::upslope::Cell::project() const
 return m_project;
 }
 
-real cmf::upslope::Cell::Rain( cmf::math::Time t ) const
+real cmf::upslope::Cell::rain( cmf::math::Time t ) const
 {
-	return project().Rainfall(t,x,y,z);
+	return get_rainfall()(t);
 }
 
-cmf::water::WaterStorage& cmf::upslope::Cell::AddStorage( std::string Name,char storage_role/*='N'*/, bool isopenwater/*=false*/ )
+cmf::water::WaterStorage& cmf::upslope::Cell::add_storage( std::string Name,char storage_role/*='N'*/, bool isopenwater/*=false*/ )
 {
+	if (storage_role=='C' && m_Canopy) return *m_Canopy;
+	if (storage_role=='S' && m_Snow)   return *m_Snow;
 	cmf::water::WaterStorage* ws=0;
-	if (storage_role=='W')
+	ws=isopenwater ? new cmf::river::OpenWaterStorage(project(),get_area())	: new cmf::water::WaterStorage(project());
+	ws->Location=get_position();
+	ws->Name=Name;
+	if (storage_role=='C')
 	{
-		if (m_SurfaceWater_pos>=0) return *m_storages[m_SurfaceWater_pos];
-		ws=cmf::river::OpenWaterStorage::FromNode(*m_SurfaceWater,Area());
-		m_SurfaceWater.reset();
-		m_SurfaceWater_pos=int(m_storages.size());
+		m_Canopy=ws;
+		ws->Location.z+=get_vegetation().Height;
 	}
-	else
+	else if (storage_role=='S')
 	{
-		ws=isopenwater ? new cmf::river::OpenWaterStorage(project(),Area())	: new cmf::water::WaterStorage(project());
-		ws->Location=Center();
-		ws->Name=Name;
-		if (storage_role=='C')
-		{
-			if (m_Canopy_pos>=0) return *m_storages[m_Canopy_pos];
-			m_Canopy_pos=int(m_storages.size());
-			ws->Location.z+=GetVegetation().Height;
-		}
-		else if (storage_role=='S')
-		{
-			if (m_Snow_pos>=0) return *m_storages[m_Snow_pos];
-			m_Snow_pos=int(m_storages.size());
-		}
+		m_Snow=ws;
 	}
 	storage_pointer sp(ws);
 	m_storages.push_back(sp);
@@ -155,37 +150,37 @@ cmf::water::WaterStorage& cmf::upslope::Cell::AddStorage( std::string Name,char 
 	
 }
 
-cmf::water::WaterStorage& cmf::upslope::Cell::GetStorage( int index )
+cmf::water::WaterStorage& cmf::upslope::Cell::get_storage( int index )
 {
 	return *m_storages.at(index<0 ? m_storages.size()+index : index);
 }
 
-const cmf::water::WaterStorage& cmf::upslope::Cell::GetStorage( int index ) const
+const cmf::water::WaterStorage& cmf::upslope::Cell::get_storage( int index ) const
 {
 	return *m_storages.at(index<0 ? m_storages.size()+index : index);
 
 }
 
-void cmf::upslope::Cell::SetSaturatedDepth( real depth )
+void cmf::upslope::Cell::set_saturated_depth( real depth )
 {
-	for (int i = 0; i < LayerCount() ; ++i)
+	for (int i = 0; i < layer_count() ; ++i)
 	{
-		Layer(i).SetPotential(z-depth);
+		get_layer(i).SetPotential(z-depth);
 	}
 }
 
 
-cmf::water::WaterStorage* cmf::upslope::Cell::GetSnow() const
+cmf::water::WaterStorage* cmf::upslope::Cell::get_snow() const
 {
-	return m_Snow_pos<0 ? 0 : m_storages.at(m_Snow_pos).get();
+	return m_Snow;
 }
 
-cmf::water::WaterStorage* cmf::upslope::Cell::GetCanopy() const
+cmf::water::WaterStorage* cmf::upslope::Cell::get_canopy() const
 {
-	return m_Canopy_pos<0 ? 0 : m_storages.at(m_Canopy_pos).get();
+	return m_Canopy;
 }
 
-cmf::river::Reach& cmf::upslope::Cell::AddReach(double length,char reach_type, double depth/*=0.5*/,double width/*=-1.*/, std::string Name/*="Reach"*/ )
+cmf::river::Reach& cmf::upslope::Cell::add_reach(double length,char reach_type, double depth/*=0.5*/,double width/*=-1.*/, std::string Name/*="Reach"*/ )
 {
 	using namespace cmf::river;
 	// Create the cross section geometry
@@ -206,11 +201,20 @@ cmf::river::Reach& cmf::upslope::Cell::AddReach(double length,char reach_type, d
 	return *r_shared;
 }
 
-void cmf::upslope::Cell::RemoveStorage( cmf::water::WaterStorage& storage )
+void cmf::upslope::Cell::remove_storage( cmf::water::WaterStorage& storage )
 {
-	for (int i = 0; i < this->StorageCount(); ++i)
+	if (&storage==m_Canopy) m_Canopy=0;
+	if (&storage==m_Snow) m_Snow=0;
+	if (&storage==m_SurfaceWaterStorage) {
+		m_SurfaceWater.reset(new cmf::water::FluxNode(project()));
+		m_SurfaceWater->Name=storage.Name;
+		m_SurfaceWater->Location=storage.Location;
+		cmf::water::replace_node(*m_SurfaceWaterStorage,*m_SurfaceWater);
+		m_SurfaceWaterStorage=0;
+	}
+	for (int i = 0; i < this->storage_count(); ++i)
 	{
-		if (storage==this->GetStorage(i))
+		if (storage==this->get_storage(i))
 		{
 			m_storages.erase(m_storages.begin()+i);
 			return;
@@ -228,12 +232,23 @@ cmf::upslope::Topology& cmf::upslope::Cell::get_topology()
 	return *m_topo;
 }
 
-cmf::water::FluxNode& cmf::upslope::Cell::Evaporation()
+cmf::water::FluxNode& cmf::upslope::Cell::get_evaporation()
 {
-	return project().get_boundary_condition("Evaporation");
+	return *m_Evaporation;
 }
 
-cmf::water::FluxNode& cmf::upslope::Cell::Transpiration()
+cmf::water::FluxNode& cmf::upslope::Cell::get_transpiration()
 {
-	return project().get_boundary_condition("Transpiration");
+	return *m_Transpiration;
+}
+
+void cmf::upslope::Cell::surfacewater_as_storage()
+{
+	if (m_SurfaceWaterStorage==0) 
+	{
+		m_SurfaceWaterStorage=cmf::river::OpenWaterStorage::FromNode(*m_SurfaceWater,get_area());
+		storage_pointer ws(m_SurfaceWaterStorage);
+		m_storages.push_back(ws);
+		m_SurfaceWater.reset();
+	}
 }

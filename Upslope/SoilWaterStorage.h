@@ -35,7 +35,7 @@ namespace cmf {
 			virtual real theta() const {return m_wet.theta;}
 			virtual void theta(real Value)
 			{
-				State(Value*cell.Area()*Thickness());
+				State(Value*cell.get_area()*Thickness());
 			}
 			/// Returns the actual conductivity	\f$\frac{m}{day}\f$
 			double K() const {return m_wet.K;}
@@ -64,7 +64,7 @@ namespace cmf {
 			/// Calculates the shared crosssectional area of this and another soil water storage.
 			///
 			/// If both layers belong to the same cell, the area of the cell is returned, if they belong to different cells the area of the vertical shared boundary is returned
-			/// @returns   Area in m2
+			/// @returns   get_area in m2
 			/// @param target The other soil water storage
 			/// @param HorizontalLayers If true, the layers are assumed to be parallel to the gravitational potential, otherwise they are assumed to be parallel to the ground topography
 			real GetFlowCrosssection(const cmf::upslope::SoilWaterStorage& target,bool HorizontalLayers=false) const;
@@ -102,6 +102,7 @@ namespace cmf {
 			static FlexibleSizeSaturatedZone* Create(cmf::upslope::Cell& cell,real lowerboundary,const RCurve& r_curve);
 			virtual double SaturatedDepth() const { return UpperBoundary();}
 			virtual void SetPotential(real waterhead);
+			virtual real MaximumThickness() const;
 		};
 		/// A soil water storage above a FlexibleSizeSaturatedLayer, can only be created by FlexibleSaturatedLayer
 		class FlexibleSizeLayer : public SoilWaterStorage

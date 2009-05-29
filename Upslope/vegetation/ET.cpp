@@ -65,13 +65,13 @@ namespace cmf {
 				real
 					rootfraction=veg.RootFraction(sw.UpperBoundary(),sw.LowerBoundary()),
 					sw_pF=cmf::upslope::waterhead_to_pF(sw.MatrixPotential());
-				return piecewise_linear(sw_pF,3.35,4.2,Tpot*sw.cell.Area()*0.001*rootfraction,0);
+				return piecewise_linear(sw_pF,3.35,4.2,Tpot*sw.cell.get_area()*0.001*rootfraction,0);
 			}
 
 			real constantETpot::calc_q( cmf::math::Time t ) const
 			{
-				cmf::upslope::vegetation::Vegetation veg=sw.cell.GetVegetation(); 
-				return Tact(ETpot_value,sw,veg);
+				cmf::upslope::vegetation::Vegetation veg=sw->cell.get_vegetation(); 
+				return Tact(ETpot_value,*sw,veg);
 			}
 
 			real PenmanMonteithET::r_s( const cmf::upslope::vegetation::Vegetation & veg ) const
@@ -99,10 +99,10 @@ namespace cmf {
 			real PenmanMonteithET::calc_q( cmf::math::Time t )
 			{
 				cmf::upslope::Cell & cell=sw->cell;
-				if (!cell.HasInterceptedWater())
+				if (!cell.has_wet_leaves())
 				{
-					cmf::atmosphere::Weather A=cell.Weather(t);
-					cmf::upslope::vegetation::Vegetation veg=cell.GetVegetation();
+					cmf::atmosphere::Weather A=cell.get_weather(t);
+					cmf::upslope::vegetation::Vegetation veg=cell.get_vegetation();
 					real 
 						Rn = A.Rn(veg.albedo,daily), // Net radiation flux 
 						G = daily ? 0									// If calculation takes place on daily basis, the soil heat flux is 0 (FAO 1998,Eq. 42)
@@ -117,47 +117,47 @@ namespace cmf {
 			real ShuttleworthWallaceET::calc_q( cmf::math::Time t )
 			{
 				cmf::upslope::Cell & cell=m_soilwaterstorage->cell;
-				cmf::atmosphere::Weather w=cell.Weather(t);
-				cmf::upslope::vegetation::Vegetation veg=cell.GetVegetation();
-				bool IsEvaporation=m_right == &m_cell.Evaporation();
+				cmf::atmosphere::Weather w=cell.get_weather(t);
+				cmf::upslope::vegetation::Vegetation veg=cell.get_vegetation();
+				bool IsEvaporation=m_right == &m_cell.get_evaporation();
 				using namespace cmf::upslope::vegetation;
 				if (IsEvaporation)
 				{
 					// If source is soil and target is evaporation calc soil evaporation
-					if (m_soilwaterstorage && !m_cell.HasSurfaceWater()) 
+					if (m_soilwaterstorage && !m_cell.has_surface_water()) 
 					{
-						ShuttleworthWallace _ET_mm(w,m_soilwaterstorage->MatrixPotential(),veg,!cell.HasInterceptedWater());
-						return _ET_mm.E * 1e-3 * cell.Area() * (1-m_cell.SnowCover());
+						ShuttleworthWallace _ET_mm(w,m_soilwaterstorage->MatrixPotential(),veg,!cell.has_wet_leaves());
+						return _ET_mm.E * 1e-3 * cell.get_area() * (1-m_cell.snow_coverage());
 					}
 					// If source is canopy (which stores water)
-					else if (m_waterstorage && m_waterstorage==m_cell.GetCanopy() && !m_waterstorage->Empty())
+					else if (m_waterstorage && m_waterstorage==m_cell.get_canopy() && !m_waterstorage->Empty())
 					{			
-						ShuttleworthWallace _ET_mm(w,m_cell.LayerCount() ? m_cell.Layer(0).MatrixPotential(): -2,veg,true);
-						return _ET_mm.T * 1e-3*cell.Area();
+						ShuttleworthWallace _ET_mm(w,m_cell.layer_count() ? m_cell.get_layer(0).MatrixPotential(): -2,veg,true);
+						return _ET_mm.T * 1e-3*cell.get_area();
 					}
 					else if (m_waterstorage && !m_waterstorage->Empty())
 					{
 						ShuttleworthWallace _ET_mm(w,0,veg,false);
 					}
 				}
-				else if (m_soilwaterstorage && !m_cell.HasInterceptedWater()) // Transpiration=Root uptake from soil (not presented if canopy is wet)
+				else if (m_soilwaterstorage && !m_cell.has_wet_leaves()) // Transpiration=Root uptake from soil (not presented if canopy is wet)
 				{
 					ShuttleworthWallace _ET_mm(w,m_soilwaterstorage->MatrixPotential(),veg,false);
-					return _ET_mm.T * 1e-3*cell.Area();
+					return _ET_mm.T * 1e-3*cell.get_area();
 				}
-				if (cell.HasInterceptedWater() && (cell.HasSurfaceWater() || cell.SnowCover()>=1))
+				if (cell.has_wet_leaves() && (cell.has_surface_water() || cell.snow_coverage()>=1))
 					return 0;
 				else
 				{
-					cmf::upslope::vegetation::ShuttleworthWallace _ET_mm(w,m_soilwaterstorage->Potential(),veg,!cell.HasInterceptedWater());
+					cmf::upslope::vegetation::ShuttleworthWallace _ET_mm(w,m_soilwaterstorage->Potential(),veg,!cell.has_wet_leaves());
 					real _ET_m3=0;
 					// If the canopy is not empty, no water is taken from the soil by transpiration
-					real root_frac=cell.Vegetation.RootFraction(m_soilwaterstorage->UpperBoundary(),m_soilwaterstorage->LowerBoundary());
-					if (!cell.HasInterceptedWater())
-						_ET_m3 += _ET_mm.T * 1e-3 * cell.Area() * root_frac;			
+					real root_frac=cell.get_vegetation().RootFraction(m_soilwaterstorage->UpperBoundary(),m_soilwaterstorage->LowerBoundary());
+					if (!cell.has_wet_leaves())
+						_ET_m3 += _ET_mm.T * 1e-3 * cell.get_area() * root_frac;			
 					// use soil evaporation only if the soil water storage is the first layer and there is no snow and no surface water
-					if (m_soilwaterstorage->UpperBoundary()==0 && (!cell.HasSurfaceWater()))
-						_ET_m3 += _ET_mm.E * 1e-3 * cell.Area() * (1-cell.SnowCover());
+					if (m_soilwaterstorage->UpperBoundary()==0 && (!cell.has_surface_water()))
+						_ET_m3 += _ET_mm.E * 1e-3 * cell.get_area() * (1-cell.snow_coverage());
 					return _ET_m3;
 				}
 			}
@@ -165,16 +165,16 @@ namespace cmf {
 			real CanopyStorageEvaporation::calc_q( cmf::math::Time t )
 			{
 				if (m_left->Empty()) return 0;
-				cmf::atmosphere::Weather w=m_cell.Weather(t);
-				cmf::upslope::vegetation::Vegetation veg=m_cell.GetVegetation();
-				real PM=PenmanMonteith(w,veg,m_cell.Center().z)*0.001*m_cell.Area();
+				cmf::atmosphere::Weather w=m_cell.get_weather(t);
+				cmf::upslope::vegetation::Vegetation veg=m_cell.get_vegetation();
+				real PM=PenmanMonteith(w,veg,m_cell.z)*0.001*m_cell.get_area();
 				return minimum(c_stor->State()*2/cmf::math::h.AsDays(),PM);
 			}
 
 			real HargreaveET::calc_q( cmf::math::Time t )
 			{
 				double pi=cmf::geometry::PI;
-				cmf::atmosphere::Weather A=sw->cell.Weather(t);
+				cmf::atmosphere::Weather A=sw->cell.get_weather(t);
 				double 
 					// Latitude in radians
 					phi = pi * 51 / 180.0,
@@ -193,7 +193,7 @@ namespace cmf {
 					KT = 0.00185*(TD*TD) - 0.0433 * TD + 0.4023,
 					//gives reference crop et in m / d
 					etrc = 0.0135 * KT * s0 * sqrt(TD) * ( A.T + 17.8 );
-				return etrc*sw->cell.GetVegetation().LAI/12;
+				return etrc*sw->cell.get_vegetation().LAI/12;
 
 			}
 		}

@@ -46,9 +46,9 @@ int main(int argc, char* argv[])
 		p.debug=1;
 		Cell& cell=*p.NewCell(0,0,0,100);
 		BrooksCoreyRetentionCurve bc;
-		cell.AddVariableLayerPair(1.,bc);
-		cell.SetSaturatedDepth(0.0);
-		cout << "w_u=" << cell.Layer(0).State() << " w_s=" << cell.Layer(1).State();
+		cell.add_variable_layer_pair(1.,bc);
+		cell.set_saturated_depth(0.0);
+		cout << "w_u=" << cell.get_layer(0).State() << " w_s=" << cell.get_layer(1).State();
 		cin.get();
 		
 

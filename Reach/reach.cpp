@@ -7,7 +7,7 @@ cmf::river::Reach::Reach(cmf::upslope::Cell& Cell, real Length,cmf::river::Reach
 : cell(&Cell),length(Length),channel_shape(rt->copy()),water(waterstorage),downstream(0)
 {
 	// Connect the surface water of the cell with the reach
-	new cmf::river::Manning(*water,Cell.SurfaceWater(),*rt,sqrt(Cell.Area()/Pi));
+	new cmf::river::Manning(*water,Cell.get_surfacewater(),*rt,sqrt(Cell.get_area()/Pi));
 
 }
 
