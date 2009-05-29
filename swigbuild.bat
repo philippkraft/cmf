@@ -1,6 +1,6 @@
 @echo off
 :swig
-if %1x==buildonlyx goto build
+if %1x==buildx goto build
 if %1x==copyx goto copy
 swig -Wextra -w512 -macroerrors -python -castmode -O -c++ -v cmf.i
 echo #pragma warning(push) >> cmf_swig.cxx
@@ -11,7 +11,7 @@ echo #endif /* !_CONSOLE */ >> cmf_swig.cxx
 echo #pragma warning(pop) >> cmf_swig.cxx
 del cmf_wrap.cxx
 ren cmf_swig.cxx cmf_wrap.cxx
-if %1x==swigonlyx goto fine
+if %1x==swigx goto fine
 :build
 devenv ..\cmf.sln /build dllpy25
 :copy

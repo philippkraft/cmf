@@ -21,9 +21,9 @@ cmf::upslope::Cell * cmf::upslope::Topology::MainOutlet( bool forceRecalc/*=fals
 
 double cmf::upslope::Topology::ContributingArea( bool forceRecalc/*=false*/ )
 {
-	if (m_CatchmentSize<cell->Area() || forceRecalc)
+	if (m_CatchmentSize<cell->get_area() || forceRecalc)
 	{
-		m_CatchmentSize=cell->Area();
+		m_CatchmentSize=cell->get_area();
 		for (NeighborIterator it=*this;it.valid();++it)
 			if (*this==it->MainOutlet())
 				m_CatchmentSize+=it->ContributingArea();

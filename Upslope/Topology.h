@@ -10,7 +10,7 @@ namespace cmf {
 	namespace upslope {
 		class NeighborIterator;
 		/// represents the connectivity of cells to each other
-		class Topology
+		class Topology : public cmf::geometry::Locatable
 		{
 		private:
 			friend class NeighborIterator;
@@ -42,7 +42,7 @@ namespace cmf {
 			/// References cell.z
 			double & z;
 			/// Returns the center of the cell
-			cmf::geometry::point Center() const {return cmf::geometry::point(x,y,z);}
+			cmf::geometry::point get_position() const {return cmf::geometry::point(x,y,z);}
 			double flowwidth(Cell & target)
 			{
 				return flowwidth(target.get_topology());

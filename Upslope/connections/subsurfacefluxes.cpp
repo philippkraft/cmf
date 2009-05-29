@@ -8,15 +8,15 @@
 const cmf::upslope::CellConnector cmf::upslope::connections::Richards::cell_connector=CellConnector(cmf::upslope::connections::Richards::connect_cells);
 void cmf::upslope::connections::Richards::connect_cells( cmf::upslope::Cell & cell1,cmf::upslope::Cell & cell2,int start_at_layer/*=0*/ )
 {
-	for (int i = start_at_layer; i < (start_at_layer>=0 ? cell1.LayerCount() : 0) ; ++i)
+	for (int i = start_at_layer; i < (start_at_layer>=0 ? cell1.layer_count() : 0) ; ++i)
 	{
-		for (int j = start_at_layer; j < (start_at_layer>=0 ? cell2.LayerCount() : 0) ; ++j)
+		for (int j = start_at_layer; j < (start_at_layer>=0 ? cell2.layer_count() : 0) ; ++j)
 		{
-			real ca=cell1.Layer(i).GetFlowCrosssection(cell2.Layer(j));
+			real ca=cell1.get_layer(i).GetFlowCrosssection(cell2.get_layer(j));
 			if (ca>0)
 			{
-				real d=cell1.Layer(i).Location.distance3DTo(cell2.Layer(i).Location);
-				new Richards(cell1.Layer(i),cell2.Layer(j),ca,d);
+				real d=cell1.get_layer(i).Location.distance3DTo(cell2.get_layer(i).Location);
+				new Richards(cell1.get_layer(i),cell2.get_layer(j),ca,d);
 			}
 		}
 	}
@@ -24,12 +24,12 @@ void cmf::upslope::connections::Richards::connect_cells( cmf::upslope::Cell & ce
 
 void cmf::upslope::connections::Richards::use_for_cell( cmf::upslope::Cell & cell,bool no_override/*=true*/ )
 {
-	for (int i = 0; i < cell.LayerCount()-1 ; ++i)
+	for (int i = 0; i < cell.layer_count()-1 ; ++i)
 	{
-		cmf::upslope::SoilWaterStorage & l_upper=cell.Layer(i), & l_lower=cell.Layer(i+1);
+		cmf::upslope::SoilWaterStorage & l_upper=cell.get_layer(i), & l_lower=cell.get_layer(i+1);
 		real distance=abs((l_upper.UpperBoundary()-l_lower.UpperBoundary())*0.5+(l_upper.LowerBoundary()-l_lower.LowerBoundary())*0.5);
 		if (!(no_override && l_upper.Connection(l_lower)))
-			new Richards(l_upper,l_lower,cell.Area(),distance);
+			new Richards(l_upper,l_lower,cell.get_area(),distance);
 	}
 }
 
@@ -59,32 +59,15 @@ real cmf::upslope::connections::UnsatSatPercolation::calc_q( cmf::math::Time t )
 	Cell & cell=m_sat->cell;
 	// Store saturated depth
 	real satdepth=m_unsat->LowerBoundary();
-	real w_sat=m_sat->State()/m_sat->Soil().VoidVolume(m_unsat->UpperBoundary()+0.01,m_sat->LowerBoundary(),cell.Area());
-	real f_upwelling=1-2*boltzmann(w_sat,1,0.01);
- 	if (f_upwelling<0)
- 	{
-		real sat_wb=m_sat->Waterbalance(t,this);
-		return f_upwelling*(sat_wb>0 ? sat_wb : 0);
- 	}
-	else
-	{
-		real gradient=(m_unsat->Potential()-m_sat->Potential())/m_unsat->Thickness();
-		// gravitational flux
-		real Ku=geo_mean(m_unsat->K(),m_sat->K()) * cell.Area() * gradient;
-		//real Ku=m_unsat->K() * cell.Area(); //* piecewise_linear(m_unsat->Potential()-m_sat->Potential(),0,0.01);
-		// water table change rate in m/day
-		real sat_wb=m_sat->Waterbalance(t,this)+Ku; //*f_upwelling;
-		real waterrise=(sat_wb)/(cell.Area()*m_sat->Soil().Porosity(satdepth));
-		// Exchanged volume
-		// 		real Exw = waterrise>0 
-		// 			? waterrise/m_unsat->Thickness()*m_unsat->State()
-		// 			: waterrise/m_sat->Thickness()*m_sat->State();
-		 		real Exw = waterrise>0 
-		 			? sat_wb*m_unsat->Wetness()
-		 			: sat_wb*m_sat->Wetness();
-		real flux=f_upwelling*(Ku+Exw);
-		return flux;
-	}
+	real sat_thick=m_sat->Thickness();
+	real max_sat_thick=m_sat->MaximumThickness();
+	real gradient=(m_unsat->Potential()-m_sat->Potential())/(m_unsat->Thickness()*0.5);
+	// gravitational flux
+	real Ku=geo_mean(m_unsat->K(),m_sat->K()) * cell.get_area() * gradient;
+	real sat_wb=m_sat->Waterbalance(t,this)+Ku; //*f_upwelling;
+	real f_Exw=1-pow(sat_thick/max_sat_thick,100);
+	real Exw = f_Exw * sat_wb;
+	return Ku + Exw;
 }
 
 // SWAT Percolation
@@ -99,8 +82,8 @@ real cmf::upslope::connections::SWATPercolation::calc_q( cmf::math::Time t )
 	real
 		Vol_d=sw1->Capacity()-fc, // drainable pore volume in m3
 		Ksat=sw1->Soil().K(1,0.5*(sw1->UpperBoundary()+sw1->LowerBoundary())),
-		// Percolation travel time in days = drainable volume[m3]/(Area[m2] * Conductivity[m/day])
-		tt_perc=maximum(sw1->Capacity()-fc,0)/(sw1->cell.Area() * Ksat),
+		// Percolation travel time in days = drainable volume[m3]/(get_area[m2] * Conductivity[m/day])
+		tt_perc=maximum(sw1->Capacity()-fc,0)/(sw1->cell.get_area() * Ksat),
 		w_perc=sw_excess*(1-exp(-1/tt_perc));
 	return w_perc*minimum(0,0.9-sw2->Wetness());
 
@@ -109,9 +92,9 @@ real cmf::upslope::connections::SWATPercolation::calc_q( cmf::math::Time t )
 
 void cmf::upslope::connections::SWATPercolation::use_for_cell( cmf::upslope::Cell & cell,bool no_override )
 {
-	for (int i = 0; i < cell.LayerCount()-1 ; ++i)
+	for (int i = 0; i < cell.layer_count()-1 ; ++i)
 	{
-		cmf::upslope::SoilWaterStorage & l_upper=cell.Layer(i), & l_lower=cell.Layer(i+1);
+		cmf::upslope::SoilWaterStorage & l_upper=cell.get_layer(i), & l_lower=cell.get_layer(i+1);
 		real distance=abs((l_upper.UpperBoundary()-l_lower.UpperBoundary())*0.5+(l_upper.LowerBoundary()-l_lower.LowerBoundary())*0.5);
 		if (!(no_override && l_upper.Connection(l_lower)))
 			new SWATPercolation(l_upper,l_lower);
@@ -123,8 +106,8 @@ const cmf::upslope::CellConnector cmf::upslope::connections::UnsaturatedDarcy::c
 real cmf::upslope::connections::UnsaturatedDarcy::calc_q( cmf::math::Time t )
 {
 	real
-		Psi1=sw1->cell.Center().z-sw1->UpperBoundary(),
-		Psi2=sw2->cell.Center().z-sw2->UpperBoundary(),
+		Psi1=sw1->cell.z-sw1->UpperBoundary(),
+		Psi2=sw2->cell.z-sw2->UpperBoundary(),
 		gradient=(Psi1-Psi2)/distance,
 		K=gradient>0 ? sw1->K() : sw2->K();
 	SoilWaterStorage& target=gradient>0 ? *sw2 : *sw1;
@@ -143,15 +126,15 @@ real cmf::upslope::connections::UnsaturatedDarcy::calc_q( cmf::math::Time t )
 
 void cmf::upslope::connections::UnsaturatedDarcy::connect_cells(cmf::upslope::Cell & cell1,cmf::upslope::Cell & cell2,int start_at_layer/*=0*/ )
 {
-	for (int i = start_at_layer; i < (start_at_layer>=0 ? cell1.LayerCount() : 0) ; ++i)
+	for (int i = start_at_layer; i < (start_at_layer>=0 ? cell1.layer_count() : 0) ; ++i)
 	{
-		for (int j = start_at_layer; j < (start_at_layer>=0 ? cell2.LayerCount() : 0) ; ++j)
+		for (int j = start_at_layer; j < (start_at_layer>=0 ? cell2.layer_count() : 0) ; ++j)
 		{
-			real ca=cell1.Layer(i).GetFlowCrosssection(cell2.Layer(j));
+			real ca=cell1.get_layer(i).GetFlowCrosssection(cell2.get_layer(j));
 			if (ca>0)
 			{
-				real d=cell1.Layer(i).Location.distance3DTo(cell2.Layer(i).Location);
-				new UnsaturatedDarcy(cell1.Layer(i),cell2.Layer(j),ca,d);
+				real d=cell1.get_layer(i).Location.distance3DTo(cell2.get_layer(i).Location);
+				new UnsaturatedDarcy(cell1.get_layer(i),cell2.get_layer(j),ca,d);
 			}
 		}
 	}
@@ -159,12 +142,12 @@ void cmf::upslope::connections::UnsaturatedDarcy::connect_cells(cmf::upslope::Ce
 
 void cmf::upslope::connections::UnsaturatedDarcy::use_for_cell( cmf::upslope::Cell & cell,bool no_override/*=true*/ )
 {
-	for (int i = 0; i < cell.LayerCount()-1 ; ++i)
+	for (int i = 0; i < cell.layer_count()-1 ; ++i)
 	{
-		cmf::upslope::SoilWaterStorage & l_upper=cell.Layer(i), & l_lower=cell.Layer(i+1);
+		cmf::upslope::SoilWaterStorage & l_upper=cell.get_layer(i), & l_lower=cell.get_layer(i+1);
 		real distance=abs((l_upper.UpperBoundary()-l_lower.UpperBoundary())*0.5+(l_upper.LowerBoundary()-l_lower.LowerBoundary())*0.5);
 		if (!(no_override && l_upper.Connection(l_lower)))
-			new UnsaturatedDarcy(l_upper,l_lower,cell.Area(),distance);
+			new UnsaturatedDarcy(l_upper,l_lower,cell.get_area(),distance);
 	}
 
 }
@@ -198,12 +181,12 @@ void cmf::upslope::connections::Darcy::connect_cells( cmf::upslope::Cell & cell1
 	real w=cell1.get_topology().flowwidth(cell2);
 	if (w>0)
 	{
-		for (int i = start_at_layer; i < (start_at_layer>=0 ? cell1.LayerCount() : 0) ; ++i)	{
-			for (int j = start_at_layer; j < (start_at_layer>=0 ? cell2.LayerCount() : 0) ; ++j)	{
-				real ca=cell1.Layer(i).GetFlowCrosssection(cell2.Layer(j));
+		for (int i = start_at_layer; i < (start_at_layer>=0 ? cell1.layer_count() : 0) ; ++i)	{
+			for (int j = start_at_layer; j < (start_at_layer>=0 ? cell2.layer_count() : 0) ; ++j)	{
+				real ca=cell1.get_layer(i).GetFlowCrosssection(cell2.get_layer(j));
 				if (ca>0)	{
-					real d=cell1.Layer(i).Location.distance3DTo(cell2.Layer(i).Location);
-					new Darcy(cell1.Layer(i),cell2.Layer(j),w,d);
+					real d=cell1.get_layer(i).Location.distance3DTo(cell2.get_layer(i).Location);
+					new Darcy(cell1.get_layer(i),cell2.get_layer(j),w,d);
 				}	}	}
 	}
 }
@@ -215,8 +198,8 @@ real cmf::upslope::connections::TopographicGradientDarcy::calc_q( cmf::math::Tim
 {
 	// Darcy flux
 	real
-		flow_thick1=minimum(sw1->Thickness(),sw1->LowerBoundary()-sw1->cell.SaturatedDepth()),
-		flow_thick2=sw2 ? minimum(sw2->Thickness(),sw2->LowerBoundary()-sw2->cell.SaturatedDepth()) : flow_thick1;
+		flow_thick1=minimum(sw1->Thickness(),sw1->LowerBoundary()-sw1->cell.get_saturated_depth()),
+		flow_thick2=sw2 ? minimum(sw2->Thickness(),sw2->LowerBoundary()-sw2->cell.get_saturated_depth()) : flow_thick1;
 	if (flow_thick1<=0 || flow_thick2<=0) return 0;
 	real
 		flow_thick=mean(flow_thick1,flow_thick2),
@@ -237,12 +220,12 @@ void cmf::upslope::connections::TopographicGradientDarcy::connect_cells( cmf::up
 	real w=cell1.get_topology().flowwidth(cell2);
 	if (w>0)
 	{
-		for (int i = start_at_layer; i < (start_at_layer>=0 ? cell1.LayerCount() : 0) ; ++i)	{
-			for (int j = start_at_layer; j < (start_at_layer>=0 ? cell2.LayerCount() : 0) ; ++j)	{
-				real ca=cell1.Layer(i).GetFlowCrosssection(cell2.Layer(j));
+		for (int i = start_at_layer; i < (start_at_layer>=0 ? cell1.layer_count() : 0) ; ++i)	{
+			for (int j = start_at_layer; j < (start_at_layer>=0 ? cell2.layer_count() : 0) ; ++j)	{
+				real ca=cell1.get_layer(i).GetFlowCrosssection(cell2.get_layer(j));
 				if (ca>0)	{
-					real d=cell1.Layer(i).Location.distance3DTo(cell2.Layer(i).Location);
-				new TopographicGradientDarcy(cell1.Layer(i),cell2.Layer(j),w,d);
+					real d=cell1.get_layer(i).Location.distance3DTo(cell2.get_layer(i).Location);
+				new TopographicGradientDarcy(cell1.get_layer(i),cell2.get_layer(j),w,d);
 			}	}	}
 	}
 

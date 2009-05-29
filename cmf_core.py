@@ -370,8 +370,14 @@ class Locatable(object):
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
     def __init__(self, *args, **kwargs): raise AttributeError("No constructor defined")
     __repr__ = _swig_repr
-    position = _swig_property(_cmf_core.Locatable_position_get)
+    def get_position(self):
+        """get_position(self) -> point"""
+        return _cmf_core.Locatable_get_position(self)
+
+    position=property(get_position,None,"The position ofthe locatabe object")
+
     __swig_destroy__ = _cmf_core.delete_Locatable
+Locatable.get_position = new_instancemethod(_cmf_core.Locatable_get_position,None,Locatable)
 Locatable_swigregister = _cmf_core.Locatable_swigregister
 Locatable_swigregister(Locatable)
 
@@ -4373,6 +4379,14 @@ class Cell(StateVariableOwner,Locatable):
         """has_surface_water(self) -> bool"""
         return _cmf_core.Cell_has_surface_water(self)
 
+    def get_vegetation(self):
+        """get_vegetation(self) -> Vegetation"""
+        return _cmf_core.Cell_get_vegetation(self)
+
+    def set_vegetation(self, *args):
+        """set_vegetation(self, Vegetation val)"""
+        return _cmf_core.Cell_set_vegetation(self, *args)
+
     Id = _swig_property(_cmf_core.Cell_Id_get, _cmf_core.Cell_Id_set)
     def project(self):
         """project(self) -> project"""
@@ -4434,7 +4448,6 @@ class Cell(StateVariableOwner,Locatable):
     transpiration = _swig_property(_cmf_core.Cell_transpiration_get)
     meteorology = _swig_property(_cmf_core.Cell_meteorology_get, _cmf_core.Cell_meteorology_set)
     rain_cloud = _swig_property(_cmf_core.Cell_rain_cloud_get)
-    Vegetation = _swig_property(_cmf_core.Cell_Vegetation_get, _cmf_core.Cell_Vegetation_set)
     @property
     def neighbors(self):
         c_iter=NeighborIterator(self)
@@ -4452,6 +4465,7 @@ class Cell(StateVariableOwner,Locatable):
     soildepth=property(lambda self:0 if self.layer_count()==0 else self[-1].boundary[-1],None,"the soildepth in m (lower boundary of lowest layer)")
     reach=property(lambda self:self.get_reach(0),None,"The first reach of the cell, other reaches are accessible via reaches[n]")
     reaches=property(lambda self:[self.get_reach(i) for i in range(self.ReachCount())],None,"The reaches of this cell")
+    Vegetation=property(get_vegetation,set_vegetation,"The vegetational parameters of the cell")
     def connect_soil_with_node(self,node,type,flowwidth,distance,upper_boundary=0,lower_boundary=None):
         """Connects all layers between the boundaries with a node using a flux connection
         node: Target node (FluxNode)
@@ -4491,6 +4505,8 @@ Cell.get_snow = new_instancemethod(_cmf_core.Cell_get_snow,None,Cell)
 Cell.snow_coverage = new_instancemethod(_cmf_core.Cell_snow_coverage,None,Cell)
 Cell.has_wet_leaves = new_instancemethod(_cmf_core.Cell_has_wet_leaves,None,Cell)
 Cell.has_surface_water = new_instancemethod(_cmf_core.Cell_has_surface_water,None,Cell)
+Cell.get_vegetation = new_instancemethod(_cmf_core.Cell_get_vegetation,None,Cell)
+Cell.set_vegetation = new_instancemethod(_cmf_core.Cell_set_vegetation,None,Cell)
 Cell.project = new_instancemethod(_cmf_core.Cell_project,None,Cell)
 Cell.get_weather = new_instancemethod(_cmf_core.Cell_get_weather,None,Cell)
 Cell.rain = new_instancemethod(_cmf_core.Cell_rain,None,Cell)

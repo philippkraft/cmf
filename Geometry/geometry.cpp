@@ -47,6 +47,7 @@ namespace cmf {
 		{
 			return maximum(fabs(x-p.x),fabs(y-p.y));
 		}
+
 	}
 }
 

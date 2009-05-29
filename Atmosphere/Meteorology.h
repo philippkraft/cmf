@@ -64,124 +64,29 @@ namespace cmf {
 					<< " Wind=" << Windspeed << " m/s";
 				return sstr.str();
 			}
+
+			static double snow_threshold;
+
 		};
 
 		class Meteorology
 		{
 		public:
-#ifndef SWIG
-			cmf::atmosphere::Weather operator() (cmf::math::Time t,double x, double y, double z) 
+
+			cmf::atmosphere::Weather operator() (cmf::math::Time t) 
 			{
-				return GetData(t,x,y,z);
+				return get_weather(t);
 			}
-			cmf::atmosphere::Weather operator() (cmf::math::Time t,cmf::geometry::point p) 
-			{
-				return GetData(t,p.x,p.y,p.z);
-			}
-#endif
-			virtual cmf::atmosphere::Weather GetData(cmf::math::Time t,double x, double y, double z)=0;
+			virtual cmf::atmosphere::Weather get_weather(cmf::math::Time t) const=0;
 
 			/// Temperature below precipitation is considered as snow
-			real SnowThresholdTemperature;
-			Meteorology() : SnowThresholdTemperature(0.5),Name("") {}
 			virtual Meteorology* copy() const=0;
-			std::string 
-				Name; ///< Name of the Station
-			virtual ~Meteorology()
-			{
-				std::cout << "Meteo '" << Name << "' deleted" << std::endl;
-			}
 		};
-// 		class meteoPointer
-// 		{
-// 		private:
-// 			cmf::atmosphere::Meteorology * meteo;
-// 			int* references;
-// 			void releaseRef()
-// 			{
-// 				if (meteo)
-// 				{
-// 					--(*references);
-// 					if (*references==0)
-// 					{
-// 						delete meteo;
-// 						delete references;
-// 						std::cout << "Meteorology deleted" << std::endl;
-// 					}
-// 				}
-// 				meteo=0;
-// 				references=0;
-// 			}
-// 		public:
-// 			int ref_count() const {return *references;}
-// 			cmf::atmosphere::Meteorology * operator->() const {
-// 				return meteo;
-// 			}
-// 			cmf::atmosphere::Meteorology & operator*() const {
-// 				return *meteo;
-// 			}
-// 			meteoPointer& operator=(const meteoPointer& other)
-// 			{
-// 				if (meteo!=other.meteo)
-// 				{
-// 					releaseRef();
-// 					meteo=other.meteo;
-// 					references=other.references;
-// 					if (meteo)	++(*references);
-// 				}
-// 				return *this;
-// 			}
-// 			meteoPointer& operator=(Meteorology * other)
-// 			{
-// 				releaseRef();
-// 				meteo=other;
-// 				if (meteo)
-// 				{
-// 					references=new int;
-// 					*references=1;
-// 				}
-// 				return *this;
-// 			}
-// 			bool operator==(const meteoPointer& other)
-// 			{
-// 				return meteo==other.meteo;
-// 			}
-// 			bool operator!=(const meteoPointer& other)
-// 			{
-// 				return meteo!=other.meteo;
-// 			}
-// 			bool operator<(const meteoPointer& other)
-// 			{
-// 				return meteo<other.meteo;
-// 			}
-// 			meteoPointer(const meteoPointer& other)
-// 				: meteo(other.meteo),references(other.references)
-// 			{
-// 				if (meteo)	++(*references);
-// 			}
-// 			meteoPointer(cmf::atmosphere::Meteorology* meteorology)
-// 			{
-// 				meteo=meteorology;
-// 				references=new int;
-// 				*references=meteo ? 1 :0;
-// 			}
-// 			meteoPointer()
-// 			{
-// 				meteo=new Meteorology;
-// 				references=new int;
-// 				*references=1;
-// 			}
-// 			~meteoPointer()
-// 			{
-// 				releaseRef();
-// 			}
-// 
-// 		};
 		class ConstantMeteorology : public Meteorology
 		{
 		public:
 			Weather weather;
-			virtual cmf::atmosphere::Weather GetData(cmf::math::Time t,double x, double y, double z)
+			virtual cmf::atmosphere::Weather get_weather(cmf::math::Time t) const
 			{
 				return weather;
 			}
@@ -195,9 +100,9 @@ namespace cmf {
 			}
 		};
 
-
+		class MeteoStationList;
 		/// In order to calculate ETpot with cmf a big amount of meteorological data is needed,
-		/// more data than usually available. The SingleMeteorology class can estimate missing data
+		/// more data than usually available. The MeteoStation class can estimate missing data
 		/// from a minimal set. As more data, as one provides, the better the calculation of
 		/// ETpot becomes. The minimal data needed is Tmin and Tmax (daily) and precipitation.
 		/// To calculate the global radiation (although measured global radiation could be inserted),
@@ -212,7 +117,7 @@ namespace cmf {
 		/// 
 		/// In the following, we will assume a meteorological station with given Tmin, Tmax,
 		/// precipitation and daily mean relative humidity. To use other meteorological data,
-		/// please consult the description of the SingleMeteorology class in the API documentation
+		/// please consult the description of the MeteoStation class in the API documentation
 		/// <h3>
 		/// Creating a meteorological station</h3>
 		/// <div class="fragment">
@@ -224,7 +129,7 @@ namespace cmf {
 		/// start=cmf.Time(1,1,2001) # Creates all timeseries with this start time, one can change them later
 		/// step=cmf.day             # s. start
 		/// name="Giessen"           # A name for the station (optional)
-		/// meteo=cmf.SingleMeteorology(latitude,longitude,timezone,start,step,name)</pre>
+		/// meteo=cmf.MeteoStation(latitude,longitude,timezone,start,step,name)</pre>
 		/// </div>
 		/// 
 		/// The daily flag is automatically set to true, since the step width is &ge cmf.day
@@ -245,16 +150,19 @@ namespace cmf {
 		/// Using a meteorological station</h3>
 		/// <div class="fragment">
 		/// <pre class="fragment">
-		/// weather=meteo.GetData(cmf.Time(3,2,2009,14)) # Weather at Feb. 3rd, 2009, 2pm
+		/// weather=meteo.get_data(cmf.Time(3,2,2009,14)) # Weather at Feb. 3rd, 2009, 2pm
 		/// print 'Global Radiation: ',weather.Rs	       # Daily mean Rs, since daily=true
 		/// print 'Temperature:',weather.T               # Daily mean T, since nothing else in known
 		/// </pre>
 		/// </div>
 
-		class SingleMeteorology : public Meteorology
+		class MeteoStation: public cmf::geometry::Locatable
 		{
 		private:
-			
+			friend class MeteoStationList;
+			MeteoStation(double latitude=51,double longitude=8,double timezone=1,double elevation=0,
+				cmf::math::Time startTime=cmf::math::Time(1,1,2001),cmf::math::Time timestep=cmf::math::day,std::string name="");
+
 		public:
 			///@name Location and behaviour properties
 			//@{
@@ -262,8 +170,13 @@ namespace cmf {
 				Latitude,			///< Latitude in dec. deg.
 				Longitude,			///< Longitude in dec. deg.
 				Timezone,	///< Time zone, 1 Germany, 0 UK, -8 Pacific U.S.
-				Elevation;   ///< elevation of the station in m a.s.l.
-
+				x,y,z;   ///< elevation of the station in m a.s.l.
+			std::string 
+				Name; ///< Name of the Station
+			virtual cmf::geometry::point get_position() const
+			{
+				return cmf::geometry::point(x,y,z);
+			}
 			bool daily;
 			//@}
 			/// Constructor of the Atmosphere object
@@ -274,18 +187,11 @@ namespace cmf {
 			/// @param startTime Date of the beginning of the climatic data (may be changed for each time series later)
 			/// @param timestep Frequency of climatic data (may be changed for each time series later)
 			/// @param name Name of the station
-			SingleMeteorology(double latitude=51,double longitude=8,double timezone=1,double elevation=0,
-				cmf::math::Time startTime=cmf::math::Time(1,1,2001),cmf::math::Time timestep=cmf::math::day,std::string name="");
-			SingleMeteorology(const cmf::atmosphere::SingleMeteorology& other);
-			cmf::atmosphere::SingleMeteorology* copy() const {return new SingleMeteorology(*this);}
+			MeteoStation(const cmf::atmosphere::MeteoStation& other);
 			///@name Data access methods
 			//@{
 			/// Returns the current Atmosphere state. Uses default values for missing timeseries
-			cmf::atmosphere::Weather GetData(cmf::math::Time t,double height) const;
-			cmf::atmosphere::Weather GetData(cmf::math::Time t,double x, double y, double z)
-			{
-				return GetData(t,z);
-			}
+			cmf::atmosphere::Weather get_data(cmf::math::Time t,double height) const;
 
 			
 			/// Returns the global radiation at a given time step \f$ R_s \frac{MJ}{m^2day}\f$, see http://www.fao.org/docrep/X0490E/x0490e07.htm#radiation
@@ -307,7 +213,7 @@ namespace cmf {
 			/// R_s &=& \left(0.25+\left(0.5+2\ 10^{-5}z\right)\frac{n}{N}\right)R_a \mbox{Global radiation in }\frac{MJ}{m^2 day} \\ 
 			/// && z=\mbox{Height a.s.l. in }m \\
 			/// \f}
-			double GetRs(cmf::math::Time t,double height,double sunshine_fraction) const;
+			double get_global_radiation(cmf::math::Time t,double height,double sunshine_fraction) const;
 			
 			/// Calculates a timeseries of the sunshine fraction (to put into Sunshine) from a timeseries of absolute sunshine duration, using the potential sunshine duration in hours,
 			/// see http://www.fao.org/docrep/X0490E/x0490e07.htm#radiation
@@ -320,11 +226,6 @@ namespace cmf {
 			/// \f}
 			void SetSunshineFraction(cmf::math::timeseries sunshine_duration); 
 
-			//@}
-			/// @name Additional properties
-			//@{
-			/// Slope of temperature/height regression. Typical values are \f$ -0.0004 .. -0.001 \frac{^\circ C}{m} \f$, default is \f$ 0\frac{^\circ C}{m} \f$ (no temperature adjusting)
-			double temp_height_slope;
 			//@}
 			/// @name Timeseries of meteorological data
 			//@{
@@ -354,90 +255,155 @@ namespace cmf {
 				/// If you have the total duration of sunshine, use CalcSunshineFraction. If you have cloud coverage instead of total sunshine duration you may assume
 				/// that the fractional sunshine duration equals 1-cloudfraction
 				Sunshine,
-				/// Global Radiation in \f$ \frac{MJ}{m^2 day} \f$ <b> Optional, if not available GetRs is used</b>
-				Rs;
+				/// Global Radiation in \f$ \frac{MJ}{m^2 day} \f$ <b> Optional, if not available get_global_radiation is used</b>
+				Rs,
+				/// Temperature lapse, the slope of the temperature / height regression Typical values are \f$ -0.0004 .. -0.001 \frac{^\circ C}{m} \f$, default is \f$ 0\frac{^\circ C}{m} \f$ (no temperature adjusting)
+				T_lapse;
 
 
 			//@}
 			/// @name I/O
 			//@{
-			/// Save the SingleMeteorology data to an ASCII File with fixed format(	 uses cmf::math::timeseries::Save )
+			/// Save the MeteoStation data to an ASCII File with fixed format(	 uses cmf::math::timeseries::Save )
 			void Save(const std::string& filename);
 			/// Creates a Meterology from a File in fixed format (uses cmf::math::timeseries::timeseries(std::istream&) )
-			explicit SingleMeteorology(const std::string& filename);
+			explicit MeteoStation(const std::string& filename);
 
 			//@}
 
 		};
-// 		class nnMapMeteorology : public cmf::atmosphere::Meteorology
+
+		typedef std::tr1::shared_ptr<MeteoStation> meteo_station_pointer;
+
+		/// A reference to a meteorological station. Returns the weather at a given time for its place
+		class MeteoStationReference : public Meteorology,public cmf::geometry::Locatable
+		{
+		private:
+			meteo_station_pointer	m_station;
+			const cmf::geometry::Locatable* m_location;
+		public:
+			/// Returns the station referenced
+			meteo_station_pointer get_station() const {return m_station;}
+			/// Returns the position of the reference
+			cmf::geometry::point get_position() const {return m_location->get_position();}
+			/// Returns the weather at the time t
+			cmf::atmosphere::Weather get_weather(cmf::math::Time t) const
+			{
+				return m_station->get_data(t,get_position().z);
+			}
+			/// Creates a reference for a MeteoStation at a location
+			MeteoStationReference(meteo_station_pointer station,const cmf::geometry::Locatable& location)
+				: m_station(station),m_location(&location) {}
+			MeteoStationReference(const MeteoStationReference& copy)
+				: m_station(copy.m_station),m_location(copy.m_location) {}
+			MeteoStationReference* copy() const
+			{
+				return new MeteoStationReference(*this);
+			}
+
+		};
+
+		/// A list of meteorological stations
+		class MeteoStationList
+		{
+		private:
+			typedef std::vector<meteo_station_pointer> vector;
+			vector m_stations;
+			typedef std::map<std::string,int> name_map;
+			name_map m_name_map;
+		public:
+			/// Returns the number of stations
+			int size() const {return int(m_stations.size());}
+			/// Gets the station at index
+			meteo_station_pointer operator[](int index) const
+			{
+				return m_stations.at(index<0 ? size()+index : index);
+			}
+			/// gets a station by name
+			meteo_station_pointer operator[](const std::string& Name) const
+			{
+				name_map::const_iterator pos=m_name_map.find(Name);
+				if (pos != m_name_map.end())
+					return m_stations.at(pos->second);
+				else
+					return meteo_station_pointer();
+			}
+	
+		
+			/// Calculates the temperature lapse from all stations in the list and sets the T_lapse attribute of each station.
+			///
+			/// Returns the average lapse over the whole period.
+			double calculate_Temp_lapse(cmf::math::Time begin, cmf::math::Time step,cmf::math::Time end);
+			
+			/// Creates a meteorological station and adds it to the list.
+			meteo_station_pointer add_station(std::string name,double latitude=51,double longitude=8,double timezone=1,double elevation=0,
+				cmf::math::Time startTime=cmf::math::Time(1,1,2001),cmf::math::Time timestep=cmf::math::day)
+			{
+				MeteoStation* new_station=new MeteoStation(latitude,longitude,timezone,elevation,startTime,timestep,name);
+				meteo_station_pointer result(new_station);
+				m_stations.push_back(result);
+				m_name_map[name]=size()-1;
+				return result;
+			}
+			/// Creates a meteorological station at a certain position and adds it to the list
+			meteo_station_pointer add_station(std::string name,cmf::geometry::point position,double latitude=51,double longitude=8,double timezone=1,
+				cmf::math::Time startTime=cmf::math::Time(1,1,2001),cmf::math::Time timestep=cmf::math::day);
+
+			/// Removes a station and returns the number of remaining references to the removed station. If the station is deleted, 0 is returned
+			int remove_station(int index)
+			{
+				
+				meteo_station_pointer& ms=(*this)[index];
+				int res=ms.use_count()-1;
+				name_map::iterator name_it=m_name_map.find(ms->Name);
+				if (name_it!=m_name_map.end()) m_name_map.erase(name_it);
+				m_stations.erase(m_stations.begin()+ (index<0 ? size()+index : index));
+				return res;
+			}
+
+			MeteoStationList() {}
+			MeteoStationList(const MeteoStationList& copy)
+				: m_stations(copy.m_stations),m_name_map(copy.m_name_map)
+			{
+
+			}
+
+
+			/// Creates a MeteoStationReference from the nearest station to position at position
+			///
+			/// The distance is calculated as $d=\sqrt{(x_{station} - x_{locatable})^2 + (y_{station} - y_{locatable})^2} + \lambda_z\|z_{station} - z_{locatbale}\|$
+			///
+			/// @returns A Meteorology using the data of the nearest station to position 
+			/// @param position The position (any locatable, like e.g. Cell possible) to look for the station. The reference should be owned by the locatable
+			/// @param z_weight The weight of the height difference $\lambda_z$
+			MeteoStationReference reference_to_nearest(const cmf::geometry::Locatable& position,double z_weight=0) const;
+		};
+
+// 		class IDW_Meteorology : 
 // 		{
-// 			cmf::math::timeseries temp_lapse;
-// 			cmf::maps::NearestNeighborMap<SingleMeteorology*> map;
+// 		private:
+// 			int m_station_count;
+// 			
+// 			typedef std::map<meteo_station_pointer,double> weight_map;
+// 			weight_map weights;
+// 			const cmf::geometry::Locatable* m_location;
+// 			double distanceTo(meteo_station_pointer target) const
+// 			{
+// 				cmf::geometry::point p=m_location->get_position();
+// 				return p.distanceTo(target.get_position())+z_weight*abs(p.z-target.z);
+// 			}
+// 			
 // 		public:
-// 			double precalc_temp_lapse(cmf::math::Time begin, cmf::math::Time step,cmf::math::Time end)
+// 			real power;
+// 			real z_weight;
+// 			int station_count() const {return station_count;}
+// 			IDW_Meteorology(const cmf::geometry::Locatable& position,MeteoStationList stations)
 // 			{
-// 				using namespace cmf::math;
-// 				int n = int(map.size());
-// 				int steps=0;
-// 				double avg_lapse=0;
-// 				for (Time t=begin;t<=end;t+=step)
-// 				{
-// 					real SShT=0,SShh=0,sum_T=0,sum_h=0;
-// 					
-// 					for (int i = 0; i < n ; ++i)
-// 					{
-// 						real 
-// 							h=map.Value(i)->Elevation,
-// 							T=map.Value(i)->GetData(t,h).T;
-// 						SShT+=h*T;
-// 						SShh+=h*h;
-// 						sum_h+=h;
-// 						sum_T+=T;
-// 					}
-// 					SShT=1/(n-1)*(SShT-sum_h*sum_T);
-// 					SShh=1/(n-1)*(SShh-sum_h*sum_T);
-// 					temp_lapse.Add(SShT/SShh);
-// 					++steps;
-// 					avg_lapse+=SShT/SShh;
-// 				}
-// 				return avg_lapse/steps;
+// 			
 // 			}
-// 			virtual cmf::atmosphere::Weather GetData(cmf::math::Time t,double x, double y, double z) 
-// 			{
-// 				cmf::geometry::point p(x,y,z);
-// 				SingleMeteorology& met=*map(p);
-// 				if (!temp_lapse.isempty())
-// 					met.temp_height_slope=temp_lapse[t];
-// 				return met(t,p);			  
-// 			}
-// 			virtual cmf::atmosphere::nnMapMeteorology* copy() const
-// 			{
-// 				nnMapMeteorology* res=new nnMapMeteorology;
-// 				res->temp_lapse=temp_lapse;
-// 				return res;
-// 			}
-// 
-// 		};
+//		};
+
 	}	
 }
 
-#ifdef SWIG
-%extend cmf::atmosphere::SingleMeteorology {
-	%pythoncode
-{
-    def TimeseriesDictionary(self):
-        return {"Tmin":self.Tmin,
-                "Tmax":self.Tmax,
-                "Tdew":self.Tdew,
-                "T":self.T,
-                "Prec":self.Prec,
-                "rHmean":self.rHmean,
-                "rHmax":self.rHmax,
-                "rHmin":self.rHmin,
-                "Sunshine":self.Sunshine,
-                "Windspeed":self.Windspeed,
-								"Rs" : self.Rs}
-}
-}
-#endif
 #endif // Atmosphere_h__
