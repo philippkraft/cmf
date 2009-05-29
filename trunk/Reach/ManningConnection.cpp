@@ -36,9 +36,9 @@ void cmf::river::Manning::connect_cells( cmf::upslope::Cell& c1,cmf::upslope::Ce
 	real w=c1.get_topology().flowwidth(c2);
 	if (w<=0) return;
 	RectangularReach r_type(w);
-	cmf::river::OpenWaterStorage& sw1= *dynamic_cast<cmf::river::OpenWaterStorage*>(&c1.AddStorage("SurfaceWater",'W'));
-	cmf::river::OpenWaterStorage& sw2= *dynamic_cast<cmf::river::OpenWaterStorage*>(&c2.AddStorage("SurfaceWater",'W'));
-	new Manning(sw1,sw2,r_type,c1.Center().distanceTo(c2.Center()));
+	cmf::river::OpenWaterStorage& sw1= *dynamic_cast<cmf::river::OpenWaterStorage*>(&c1.add_storage("SurfaceWater",'W'));
+	cmf::river::OpenWaterStorage& sw2= *dynamic_cast<cmf::river::OpenWaterStorage*>(&c2.add_storage("SurfaceWater",'W'));
+	new Manning(sw1,sw2,r_type,c1.get_position().distanceTo(c2.get_position()));
 }
 
 const cmf::upslope::CellConnector cmf::river::Manning::cell_connector=cmf::upslope::CellConnector(&connect_cells);

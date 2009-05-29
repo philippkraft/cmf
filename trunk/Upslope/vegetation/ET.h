@@ -9,13 +9,13 @@ namespace cmf {
 	namespace upslope {
 		namespace ET {
 
-			/// Returns the potential Evaporation after Penman-Monteith using some simplifications for a given Radiation balance, 
+			/// Returns the potential get_evaporation after Penman-Monteith using some simplifications for a given Radiation balance, 
 			/// aerodynamic and surface resistances, and a vapor pressure deficit
 			///
-			/// \f[ Evaporation = \frac{\Delta R_n}{\lambda \Delta + \gamma + \gamma \frac{r_s}{r_a}} 
+			/// \f[ get_evaporation = \frac{\Delta R_n}{\lambda \Delta + \gamma + \gamma \frac{r_s}{r_a}} 
 			/// + \frac{c_p\rho_a}{\Delta + \gamma + \gamma \frac{r_s}{r_a}} \frac{e_s - e_a}{r_a} \f]
 			/// where
-			///  - \f$ Evaporation \f$ is the evapotranspiration in \f$\frac{kg}{m^2 day}\approx \frac{mm}{day}\f$
+			///  - \f$ get_evaporation \f$ is the evapotranspiration in \f$\frac{kg}{m^2 day}\approx \frac{mm}{day}\f$
 			///  - \f$ \Delta \left[\frac{kPa}{k}\right]= 4098\ 0.618	 \exp\left(\frac{17.27 T}{T+237.3}\right (T+237.3)^{-2} \f$ is the slope of vapor pressure
 			///  - \f$ R_n \left[\frac{MJ}{m^2 day}\right]\f$ is the radiation balance
 			///  - \f$ r_s \left[\frac s m\right] \f$ is the surface resistance
@@ -34,18 +34,25 @@ namespace cmf {
 			
 			class constantETpot : public cmf::water::FluxConnection {
 			protected:
-				cmf::upslope::SoilWaterStorage& sw;
+				cmf::upslope::SoilWaterStorage* sw;
 				
 				virtual real calc_q(cmf::math::Time t) const;
+				void NewNodes()
+				{
+					sw=dynamic_cast<cmf::upslope::SoilWaterStorage*>( m_left);
+				}
 			public:
 				real ETpot_value;
 				real GetETpot(cmf::math::Time t) const {return ETpot_value;}
 				constantETpot(cmf::upslope::SoilWaterStorage& source,cmf::water::FluxNode& ET_target,double constantETpot_value) 
-					: FluxConnection(source,ET_target,"Constant Evaporation"),sw(source),ETpot_value(constantETpot_value)	{	}
+					: FluxConnection(source,ET_target,"Constant get_evaporation"),ETpot_value(constantETpot_value)	
+				{
+					NewNodes();
+				}
 			};
 			/// Calculates the potential evapotranspiration according to FAO(1998)
 			/// \f{eqnarray*}
-			/// \lambda Evaporation &=& \frac{\Delta\left(R_n - G\right)+\rho_a c_p \frac{e_s - e_a}{r_a}}{\Delta + \gamma\left(1+\frac{r_s}{r_a}\right)} \mbox{ FAO 1998, Eq. 3} \\
+			/// \lambda get_evaporation &=& \frac{\Delta\left(R_n - G\right)+\rho_a c_p \frac{e_s - e_a}{r_a}}{\Delta + \gamma\left(1+\frac{r_s}{r_a}\right)} \mbox{ FAO 1998, Eq. 3} \\
 			/// \mbox{With:} \\
 			/// \Delta &=& 4098 \frac{0.6108 e^{17.27 T}}{(T+237.3)^2} \frac{kPa}{^\circ C} \mbox{	(FAO 1998, Eq. 13): Slope of vapor pressure }	\\
 			/// T &=& \mbox{Actual Temperature in } ^\circ C  \\
@@ -84,14 +91,14 @@ namespace cmf {
 			public:
 				bool daily;
 				PenmanMonteithET(cmf::upslope::SoilWaterStorage& source,cmf::water::FluxNode& ET_target) 
-					: FluxConnection(source,ET_target,"Penman Monteith Evaporation"),sw(&source) {
+					: FluxConnection(source,ET_target,"Penman Monteith get_evaporation"),sw(&source) {
 						NewNodes();
 				}
 				static void use_for_cell(cmf::upslope::Cell & cell)
 				{
-					for (int i = 0; i < cell.LayerCount() ; ++i)
+					for (int i = 0; i < cell.layer_count() ; ++i)
 					{
-						new PenmanMonteithET(cell.Layer(i),cell.Transpiration());
+						new PenmanMonteithET(cell.get_layer(i),cell.get_transpiration());
 					}
 				}
 			};
@@ -108,21 +115,21 @@ namespace cmf {
 					m_waterstorage= m_soilwaterstorage ? 0 : cmf::water::AsWaterStorage(m_left);
 				}
 			public:
-				ShuttleworthWallaceET(cmf::water::WaterStorage& source,cmf::water::FluxNode& ET_target,cmf::upslope::Cell& cell,std::string Type="Shuttleworth Wallace Evaporation") 
+				ShuttleworthWallaceET(cmf::water::WaterStorage& source,cmf::water::FluxNode& ET_target,cmf::upslope::Cell& cell,std::string Type="Shuttleworth Wallace get_evaporation") 
 					: cmf::water::FluxConnection(source,ET_target,Type),m_cell(cell) {
 						NewNodes();
 				}
 				static void use_for_cell(cmf::upslope::Cell& cell)
 				{
-					for (int i = 0; i < cell.StorageCount() ; ++i)
+					for (int i = 0; i < cell.storage_count() ; ++i)
 					{
-						new ShuttleworthWallaceET(cell.GetStorage(i),cell.Evaporation(),cell);
+						new ShuttleworthWallaceET(cell.get_storage(i),cell.get_evaporation(),cell);
 					}
 						
-					for (int i = 0; i < cell.LayerCount() ; ++i)
+					for (int i = 0; i < cell.layer_count() ; ++i)
 					{
-						if (!i) new ShuttleworthWallaceET(cell.Layer(i),cell.Evaporation(),cell,"Soil evaporation (SW)");
-						new ShuttleworthWallaceET(cell.Layer(i),cell.Transpiration(),cell,"Root water uptake (SW)");
+						if (!i) new ShuttleworthWallaceET(cell.get_layer(i),cell.get_evaporation(),cell,"Soil evaporation (SW)");
+						new ShuttleworthWallaceET(cell.get_layer(i),cell.get_transpiration(),cell,"Root water uptake (SW)");
 					}
 				}
 
@@ -137,14 +144,14 @@ namespace cmf {
 				}
 			public:
 				HargreaveET(cmf::upslope::SoilWaterStorage& source,cmf::water::FluxNode& ET_target) 
-					: FluxConnection(source,ET_target,"Hargreave Evaporation"),sw(&source) {
+					: FluxConnection(source,ET_target,"Hargreave get_evaporation"),sw(&source) {
 						NewNodes();
 				}
 				static void use_for_cell(cmf::upslope::Cell & cell)
 				{
-					for (int i = 0; i < cell.LayerCount() ; ++i)
+					for (int i = 0; i < cell.layer_count() ; ++i)
 					{
-						new HargreaveET(cell.Layer(i),cell.Evaporation());
+						new HargreaveET(cell.get_layer(i),cell.get_evaporation());
 					}
 				}
 
@@ -161,7 +168,7 @@ namespace cmf {
 				}
 			public:
 				CanopyStorageEvaporation(cmf::water::WaterStorage& CanopyStorage,cmf::water::FluxNode& ET_target,cmf::upslope::Cell & cell)
-					: cmf::water::FluxConnection(CanopyStorage,ET_target,"Penman Monteith (canopy) Evaporation"),m_cell(cell) {
+					: cmf::water::FluxConnection(CanopyStorage,ET_target,"Penman Monteith (canopy) get_evaporation"),m_cell(cell) {
 						NewNodes();
 				}
 			};

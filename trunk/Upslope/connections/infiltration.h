@@ -33,7 +33,7 @@ namespace cmf {
 				}
 				static void use_for_cell(cmf::upslope::Cell& c)
 				{
-					new MatrixInfiltration(c.Layer(0),c.SurfaceWater());
+					new MatrixInfiltration(c.get_layer(0),c.get_surfacewater());
 				}
 			};
 			class CompleteInfiltration : public cmf::water::FluxConnection {

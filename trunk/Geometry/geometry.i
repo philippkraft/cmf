@@ -5,6 +5,11 @@
 
 // Geometry.h
 %include "geometry/geometry.h"
+%extend cmf::geometry::Locatable{
+    %pythoncode{
+    position=property(get_position,None,"The position ofthe locatabe object")
+    }
+}
 %extend cmf::geometry::point {
     inline int __len__() const { return 3; }
 

@@ -6,13 +6,15 @@
 #include <stdlib.h>
 #include <string>
 #include <vector>
-
+#include <tr1/memory>
 namespace cmf {
 	/// Contains geometric features like point (=location) and raster datasets
 	namespace geometry	{
 
 		const double PI=3.141592654;
 		class point;
+
+
 		typedef std::vector<cmf::geometry::point> Points;
 		
 		/// 2D-Point Class.
@@ -61,10 +63,32 @@ namespace cmf {
 				point operator-(const point &p) const;
 				point operator*(double left) const { return point(x*left,y*left);}
 				point operator/(double left) const { return point(x/left,y/left);}
+				point operator*(const point&p) const { return point(x*p.x,y*p.y);}
+				point operator/(const point&p) const { return point(x/p.x,y/p.y);}
 				point operator+=(const point &p);
 				point operator-=(const point &p);
 				bool operator ==(const point &p) const;
 				bool operator !=(const point &p) const {return !(*this == p);}
+		};
+		class Locatable
+		{
+		public:
+			virtual cmf::geometry::point get_position() const=0;
+			operator cmf::geometry::point() const {return get_position();}
+		};
+
+		class Location : public Locatable
+		{
+		private:
+			typedef std::tr1::shared_ptr<const point> place_pointer;
+			place_pointer place;
+		public:
+			cmf::geometry::point get_position() const {return *place;}
+			Location(cmf::geometry::point position) 
+				: place(new point(position))
+			{			}
+			Location(double x, double y, double z) 
+				: place(new point(x,y,z)) {}
 		};
 
 		/// Holds the corner coordinates of a bounding box

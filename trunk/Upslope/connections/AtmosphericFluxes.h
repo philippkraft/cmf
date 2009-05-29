@@ -15,16 +15,16 @@ namespace cmf {
 				cmf::upslope::Cell & m_cell;
 				virtual real calc_q(cmf::math::Time t)
 				{
-					bool snow=m_cell.HasSnowStorage() && m_cell.Weather(t).T<m_cell.project().Meteorology().SnowThresholdTemperature;
+					bool snow=(m_cell.get_snow()!=0) && m_cell.get_weather(t).T<cmf::atmosphere::Weather::snow_threshold;
 					if (snow)
 						return 0.0;
 					else
 					{
-						cmf::upslope::vegetation::Vegetation veg=m_cell.GetVegetation();
+						cmf::upslope::vegetation::Vegetation veg=m_cell.get_vegetation();
 						real f=0; // Fraction of rainfall to use
 						if (Throughfall) f+=1-veg.CanopyClosure;
 						if (InterceptedRainfall) f+=veg.CanopyClosure;
-						return f*m_cell.Rain(t)*m_cell.Area()*0.001; // Convert mm/day to m3/day
+						return f*m_cell.rain(t)*m_cell.get_area()*0.001; // Convert mm/day to m3/day
 					}
 				}
 				void NewNodes() {}
@@ -32,8 +32,8 @@ namespace cmf {
 				bool Throughfall;
 				bool InterceptedRainfall;
 				Rainfall(cmf::water::FluxNode& target,cmf::upslope::Cell & cell,bool getthroughfall=true,bool getintercepted=true) 
-					: cmf::water::FluxConnection(cell.project().Rainfall(),target,
-					getthroughfall && getintercepted ? "Rainfall" : getthroughfall ? "Throughfall" : getintercepted ? "Intercepted rain" : "No Rain"),
+					: cmf::water::FluxConnection(cell.get_rainfall(),target,
+					getthroughfall && getintercepted ? "Rainfall" : getthroughfall ? "Throughfall" : getintercepted ? "Intercepted rain" : "No rain"),
 					m_cell(cell),Throughfall(getthroughfall),InterceptedRainfall(getintercepted) {
 						NewNodes();
 				}
@@ -44,9 +44,9 @@ namespace cmf {
 				cmf::upslope::Cell & m_cell;
 				virtual real calc_q(cmf::math::Time t)
 				{
-					bool snow=m_cell.HasSnowStorage() && m_cell.Weather(t).T<m_cell.project().Meteorology().SnowThresholdTemperature;
+					bool snow=(m_cell.get_snow()!=0) && m_cell.get_weather(t).T<cmf::atmosphere::Weather::snow_threshold;
 					if (snow)
-						return m_cell.Rain(t)*m_cell.Area()*0.001; // Convert mm/day to m3/day
+						return m_cell.rain(t)*m_cell.get_area()*0.001; // Convert mm/day to m3/day
 					else
 						return 0.0;
 				}
@@ -54,7 +54,7 @@ namespace cmf {
 
 			public:
 				Snowfall(cmf::water::FluxNode& target,cmf::upslope::Cell & cell) 
-					: cmf::water::FluxConnection(cell.project().Rainfall(),target,"Snowfall"),m_cell(cell) {
+					: cmf::water::FluxConnection(cell.get_rainfall(),target,"Snowfall"),m_cell(cell) {
 						NewNodes();
 				}
 

@@ -27,16 +27,15 @@ namespace cmf {
 				static CanopyOverflow* use_for_cell(cmf::upslope::Cell & cell)
 				{
 					// If the canopy of this cell is not a storage, create a canopy storage
-					cmf::water::WaterStorage& canopy=cell.AddStorage("Canopy",'C');	
-					cmf::atmosphere::RainfallNode& precipitation=cell.project().Rainfall();
-					if (precipitation.Connection(cell.SurfaceWater()))
+					cmf::water::WaterStorage& canopy=cell.add_storage("Canopy",'C');	
+					if (cell.get_rainfall().Connection(cell.get_surfacewater()))
 					{
-						precipitation.RemoveConnection(cell.SurfaceWater());
+						cell.get_rainfall().RemoveConnection(cell.get_surfacewater());
 					}
 					new Rainfall(canopy,cell,false,true);
-					new Rainfall(cell.SurfaceWater(),cell,true,false);
-					new ET::CanopyStorageEvaporation(canopy,cell.Evaporation(),cell);
-					return new CanopyOverflow(canopy,cell.SurfaceWater(),cell);
+					new Rainfall(cell.get_surfacewater(),cell,true,false);
+					new ET::CanopyStorageEvaporation(canopy,cell.get_evaporation(),cell);
+					return new CanopyOverflow(canopy,cell.get_surfacewater(),cell);
 				}
 			};
 			class SimpleTindexSnowMelt : public cmf::water::FluxConnection {
@@ -50,12 +49,12 @@ namespace cmf {
 						return 0.0;
 					else 
 					{
-						real T=m_cell.Weather(t).T;
-						real ThresholdTemp=m_cell.project().Meteorology().SnowThresholdTemperature;
+						real T=m_cell.get_weather(t).T;
+						real ThresholdTemp=cmf::atmosphere::Weather::snow_threshold;
 						if (T>ThresholdTemp)
 						{
-							real f=piecewise_linear(m_Snow->State()/m_cell.Area(),0,0.001);
-							return f*SnowMeltRate*(T-ThresholdTemp)*m_cell.Area()*0.001;
+							real f=piecewise_linear(m_Snow->State()/m_cell.get_area(),0,0.001);
+							return f*SnowMeltRate*(T-ThresholdTemp)*m_cell.get_area()*0.001;
 						}
 						else
 							return 0.0;
@@ -75,9 +74,9 @@ namespace cmf {
 				}
 				static void use_for_cell(cmf::upslope::Cell& cell)
 				{
-					cmf::water::WaterStorage& snow=cell.AddStorage("Snow",'S');
+					cmf::water::WaterStorage& snow=cell.add_storage("Snow",'S');
 					new cmf::upslope::connections::Snowfall(snow,cell);
-					SimpleTindexSnowMelt * res=new SimpleTindexSnowMelt(snow,cell.SurfaceWater(),cell);
+					SimpleTindexSnowMelt * res=new SimpleTindexSnowMelt(snow,cell.get_surfacewater(),cell);
 				}
 			};
 			/// Calculates the flux of melted water from the snow pack pores to the free surface water
@@ -133,11 +132,11 @@ namespace cmf {
 				}
 				static HBVSnowMelt* use_for_cell(cmf::upslope::Cell & cell)
 				{
-					cmf::water::WaterStorage& snow=cell.AddStorage("Snow",'S');
-					cmf::water::WaterStorage& snowwater=cell.AddStorage("Snow water");
+					cmf::water::WaterStorage& snow=cell.add_storage("Snow",'S');
+					cmf::water::WaterStorage& snowwater=cell.add_storage("Snow water");
 					new cmf::upslope::connections::Snowfall(snow,cell);
 					HBVSnowMelt * res=new HBVSnowMelt(snow,snowwater,cell);
-					new SnowWaterOverflow(snowwater,cell.SurfaceWater(),snow,cell);
+					new SnowWaterOverflow(snowwater,cell.get_surfacewater(),snow,cell);
 					return res;
 				}
 			};

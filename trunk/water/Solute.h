@@ -172,6 +172,10 @@ namespace cmf {
 			{
 				return conc_ts[solute.Id];
 			}
+			const cmf::math::timeseries& operator[](const cmf::water::Solute& solute) const
+			{
+				return conc_ts[solute.Id];
+			}
 			// Fakes the std::map interface
 			typedef timeseriesVector::iterator iterator;
 			// Fakes the std::map interface
@@ -186,12 +190,13 @@ namespace cmf {
 			const_iterator end()   const {return const_iterator(conc_ts.end());  } 
 
 #endif
-			WaterQuality conc(cmf::math::Time t)
+			WaterQuality conc(cmf::math::Time t) const
 			{
 				WaterQuality res;
 				for(Solutes::const_iterator it = Solutes::all().begin(); it != Solutes::all().end(); ++it)
 				{
-				    res[*it]=(*this)[*it][t];
+					//cmf::math::timeseries& ts=(*this)[*it];
+					res[*it]=(*this)[*it][t];
 				}
 				return res;
 			}

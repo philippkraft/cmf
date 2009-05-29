@@ -29,7 +29,7 @@ double cmf::atmosphere::Weather::Rn( double albedo,bool daily/*=false*/ ) const
 	return Rns-Rnl;
 }
 
-double cmf::atmosphere::SingleMeteorology::GetRs(cmf::math::Time t,double height,double sunshine_fraction ) const
+double cmf::atmosphere::MeteoStation::get_global_radiation(cmf::math::Time t,double height,double sunshine_fraction ) const
 {
 	return global_radiation(t,height,sunshine_fraction,Longitude,Latitude,Timezone,daily);
 }
@@ -72,12 +72,15 @@ double cmf::atmosphere::global_radiation( cmf::math::Time t,double height,double
 	return (a_s+b_s*sunshine_fraction)*Ra;
 
 }
-cmf::atmosphere::Weather cmf::atmosphere::SingleMeteorology::GetData( cmf::math::Time t,double height ) const
+
+double cmf::atmosphere::Weather::snow_threshold=0.5;
+
+cmf::atmosphere::Weather cmf::atmosphere::MeteoStation::get_data( cmf::math::Time t,double height ) const
 {
 	Weather A;
 	if (Tmax.isempty())
 		throw std::runtime_error("Minimal dataset is to have values for Tmax, however Tmin should be provided too");
-	double height_correction=temp_height_slope*(height-Elevation);
+	double height_correction=T_lapse[t]*(height-z);
 	
 	A.Tmax=Tmax[t]+height_correction;
 	A.Tmin=Tmin.isempty() ? A.Tmax-2 : Tmin[t]+height_correction;
@@ -111,7 +114,7 @@ cmf::atmosphere::Weather cmf::atmosphere::SingleMeteorology::GetData( cmf::math:
 		A.e_a=vapour_pressure(A.Tmin);
 	A.sunshine=Sunshine.isempty() ? 0.5 : Sunshine[t];
 	if (Rs.isempty())
-		A.Rs=GetRs(t,height,A.sunshine);
+		A.Rs=get_global_radiation(t,height,A.sunshine);
 	else
 		A.Rs=Rs[t];
 	return A;
@@ -119,7 +122,64 @@ cmf::atmosphere::Weather cmf::atmosphere::SingleMeteorology::GetData( cmf::math:
 
 
 
-void cmf::atmosphere::SingleMeteorology::SetSunshineFraction(cmf::math::timeseries sunshine_duration ) 
+cmf::atmosphere::Weather operator+(const cmf::atmosphere::Weather& left,const cmf::atmosphere::Weather& right)
+{
+	cmf::atmosphere::Weather res;
+	res.T=left.T+right.T;
+	res.Tmax=left.Tmax+right.Tmax;
+	res.Tmin=left.Tmin+right.Tmin;
+	res.Tground=left.Tground+right.Tground;
+	res.e_a=left.e_a+right.e_a;
+	res.e_s=left.e_s+right.e_s;
+	res.Rs=left.Rs+right.Rs;
+	res.sunshine=left.sunshine+right.sunshine;
+	res.Windspeed=left.Windspeed+right.Windspeed;
+	return res;
+}
+cmf::atmosphere::Weather operator*(const cmf::atmosphere::Weather& left,double right)
+{
+	cmf::atmosphere::Weather res;
+	res.T=left.T*right;
+	res.Tmax=left.Tmax*right;
+	res.Tmin=left.Tmin*right;
+	res.Tground=left.Tground*right;
+	res.e_a=left.e_a*right;
+	res.e_s=left.e_s*right;
+	res.Rs=left.Rs*right;
+	res.sunshine=left.sunshine*right;
+	res.Windspeed=left.Windspeed*right;
+	return res;
+
+}
+
+void cmf::atmosphere::MeteoStation::Save( const std::string& filename )
+{
+	std::ofstream file;
+	try	
+	{
+		file.open(filename.c_str());
+	}
+	catch (...)
+	{ 
+		throw std::runtime_error("Could not open " + filename);
+	}
+	file << Name << std::endl;
+	file << Latitude << " " << Longitude << " " << Timezone << " " << z << std::endl;
+	file << daily << std::endl;
+	Tmin.Save(file);
+	Tmax.Save(file);
+	Tdew.Save(file);
+	T.Save(file);
+	rHmean.Save(file);
+	rHmax.Save(file);
+	rHmin.Save(file);
+	Sunshine.Save(file);
+	Windspeed.Save(file);
+	Rs.Save(file);
+	file.close();
+}
+
+void cmf::atmosphere::MeteoStation::SetSunshineFraction(cmf::math::timeseries sunshine_duration ) 
 {
 	Sunshine=cmf::math::timeseries(sunshine_duration.begin(),sunshine_duration.step(),sunshine_duration.interpolationpower());
 	cmf::math::Time t=sunshine_duration.begin();
@@ -136,35 +196,7 @@ void cmf::atmosphere::SingleMeteorology::SetSunshineFraction(cmf::math::timeseri
 	}
 
 }
-
-void cmf::atmosphere::SingleMeteorology::Save( const std::string& filename )
-{
-	std::ofstream file;
-	try	
-	{
-		file.open(filename.c_str());
-	}
-	catch (...)
-	{ 
-		throw std::runtime_error("Could not open " + filename);
-	}
-	file << Name << std::endl;
-	file << Latitude << " " << Longitude << " " << Timezone << " " << Elevation << std::endl;
-	file << daily << std::endl;
-	Tmin.Save(file);
-	Tmax.Save(file);
-	Tdew.Save(file);
-	T.Save(file);
-	rHmean.Save(file);
-	rHmax.Save(file);
-	rHmin.Save(file);
-	Sunshine.Save(file);
-	Windspeed.Save(file);
-	Rs.Save(file);
-	file.close();
-}
-
-cmf::atmosphere::SingleMeteorology::SingleMeteorology( const std::string& filename )
+cmf::atmosphere::MeteoStation::MeteoStation( const std::string& filename )
 {
 	std::ifstream file;
 	try
@@ -178,7 +210,7 @@ cmf::atmosphere::SingleMeteorology::SingleMeteorology( const std::string& filena
 	char name[255];
 	file.getline(name,255);
 	Name=name;
-	file >> Latitude >> Longitude >> Timezone >> Elevation >> daily;
+	file >> Latitude >> Longitude >> Timezone >> z >> daily;
 	Tmin=cmf::math::timeseries(file);
 	Tmax=cmf::math::timeseries(file);
 	Tdew=cmf::math::timeseries(file);
@@ -191,25 +223,92 @@ cmf::atmosphere::SingleMeteorology::SingleMeteorology( const std::string& filena
 	file.close();
 }
 
-cmf::atmosphere::SingleMeteorology::SingleMeteorology( double latitude/*=51*/,double longitude/*=8*/,double timezone/*=1*/,double elevation/*=0*/, cmf::math::Time startTime/*=cmf::math::Time(1,1,2001)*/,cmf::math::Time timestep/*=cmf::math::day*/,std::string name/*=""*/ ) 
-: Latitude(latitude),Longitude(longitude),Timezone(timezone),Elevation(elevation),daily(timestep>=cmf::math::day),
+cmf::atmosphere::MeteoStation::MeteoStation( double latitude/*=51*/,double longitude/*=8*/,double timezone/*=1*/,double elevation/*=0*/, cmf::math::Time startTime/*=cmf::math::Time(1,1,2001)*/,cmf::math::Time timestep/*=cmf::math::day*/,std::string name/*=""*/ ) 
+: Latitude(latitude),Longitude(longitude),Timezone(timezone),z(elevation),daily(timestep>=cmf::math::day),
 	Tmax(startTime,timestep,1),Tmin(startTime,timestep,1), T(startTime,timestep,1),
 	Windspeed(startTime,timestep,1),
 	rHmean(startTime,timestep,1),rHmax(startTime,timestep,1),rHmin(startTime,timestep,1),
 	Tdew(startTime,timestep,1),Sunshine(startTime,timestep,1),Tground(startTime,timestep,1),
-	Rs(startTime,timestep,1),temp_height_slope(0)
+	Rs(startTime,timestep,1),T_lapse(startTime,timestep,1)
 {
 	Name=name;
 }
 
-cmf::atmosphere::SingleMeteorology::SingleMeteorology( const cmf::atmosphere::SingleMeteorology& other )
-:	Latitude(other.Latitude),Longitude(other.Longitude),Timezone(other.Timezone),Elevation(other.Elevation),daily(other.daily),
+cmf::atmosphere::MeteoStation::MeteoStation( const cmf::atmosphere::MeteoStation& other )
+:	Latitude(other.Latitude),Longitude(other.Longitude),Timezone(other.Timezone),z(other.z),daily(other.daily),
 	Tmax(other.Tmax),Tmin(other.Tmin),T(other.T),
 	Windspeed(other.Windspeed),
 	rHmean(other.rHmean),rHmax(other.rHmax),rHmin(other.rHmin),
 	Tdew(other.Tdew),Sunshine(other.Sunshine),Rs(other.Rs),Tground(other.Tground),
-	temp_height_slope(other.temp_height_slope)
+	T_lapse(other.T_lapse)
 {
 	Name=other.Name;
 }
 
+
+double cmf::atmosphere::MeteoStationList::calculate_Temp_lapse( cmf::math::Time begin, cmf::math::Time step,cmf::math::Time end )
+{
+	using namespace cmf::math;
+	int n = size();
+	int steps=0;
+	timeseries temp_lapse(begin,step);
+	double avg_lapse=0;
+	for (Time t=begin;t<=end;t+=step)
+	{
+		real SShT=0,SShh=0,sum_T=0,sum_h=0;
+		for(vector::iterator it = m_stations.begin(); it != m_stations.end(); ++it)
+		{
+			MeteoStation& station=**it;
+			real
+				h = station.z,
+				T = station.T[t];
+			SShT+=h*T;
+			SShh+=h*h;
+			sum_h+=h;
+			sum_T+=T;
+		}
+		SShT=1/(n-1)*(SShT-sum_h*sum_T);
+		SShh=1/(n-1)*(SShh-sum_h*sum_T);
+		temp_lapse.Add(SShT/SShh);
+		++steps;
+		for(vector::iterator it = m_stations.begin(); it != m_stations.end(); ++it)
+		{
+			MeteoStation& station=**it;
+			station.T_lapse=temp_lapse;
+		}
+		avg_lapse+=SShT/SShh;
+	}
+	return avg_lapse/steps;
+}
+
+cmf::atmosphere::MeteoStationReference cmf::atmosphere::MeteoStationList::reference_to_nearest( const cmf::geometry::Locatable& position,double z_weight/*=0*/ ) const
+{
+	if (!size()) throw std::out_of_range("No stations in list");
+	meteo_station_pointer nearest;
+	double min_dist=1e300;
+	cmf::geometry::point p=position.get_position();
+	for(vector::const_iterator it = m_stations.begin(); it != m_stations.end(); ++it)
+	{
+		const meteo_station_pointer& station=*it;
+		double dist=p.distanceTo(station->get_position())+z_weight*abs(p.z-station->z);
+		if (dist<min_dist)
+		{
+			min_dist=dist;
+			nearest=station;
+		}
+	}
+	if (nearest)
+		return MeteoStationReference(nearest,position);
+	else
+		throw std::runtime_error("No station found");
+}
+
+cmf::atmosphere::meteo_station_pointer cmf::atmosphere::MeteoStationList::add_station( std::string name,cmf::geometry::point location,double latitude/*=51*/,double longitude/*=8*/,double timezone/*=1*/, cmf::math::Time startTime/*=cmf::math::Time(1,1,2001)*/,cmf::math::Time timestep/*=cmf::math::day*/ )
+{
+	MeteoStation* new_station=new MeteoStation(latitude,longitude,timezone,location.z,startTime,timestep,name);
+	new_station->x=location.x;new_station->y=location.y;
+	meteo_station_pointer result(new_station);
+	m_stations.push_back(result);
+	m_name_map[name]=size()-1;
+	return result;
+}

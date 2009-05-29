@@ -1,7 +1,6 @@
 #ifndef cell_h__
 #define cell_h__
 #include "../Atmosphere/Meteorology.h"
-#include "../Atmosphere/Precipitation.h"
 #include "../Geometry/geometry.h"
 #include "../water/FluxConnection.h"
 #include "vegetation/StructVegetation.h"
@@ -17,6 +16,10 @@ namespace cmf {
 	namespace river {
 		class OpenWaterStorage;	
 		class Reach;
+	}
+	namespace atmosphere {
+		class RainCloud;
+
 	}
 	namespace upslope {
 		class SoilWaterStorage;
@@ -43,7 +46,7 @@ namespace cmf {
 		};
 		/// This class is the basic landscape object. It is the owner of water storages, and the upper and lower boundary conditions 
 		/// of the system (rainfall, atmospheric vapor, deep groundwater)
-		class Cell : public cmf::math::StateVariableOwner {
+		class Cell : public cmf::math::StateVariableOwner, public cmf::geometry::Locatable {
 			friend class project;
 			/// @name Location
 			//@{
@@ -55,20 +58,20 @@ namespace cmf {
 #endif
 			double x,y,z;
 			/// Returns the location of the cell
-			cmf::geometry::point Center() const { return cmf::geometry::point(x,y,z); }
+			cmf::geometry::point get_position() const { return cmf::geometry::point(x,y,z); }
 		private:
 			double m_Area;
 			real m_SatDepth;
 		public:
 			/// Returns the area of the cell
-			double Area() const { return m_Area; }
+			double get_area() const { return m_Area; }
 			/// @name Saturation
 			//@{
 			/// Marks the saturated depth as unvalid
 			void InvalidateSatDepth() {m_SatDepth=-1e20;}
 			/// 
-			real SaturatedDepth() ;
-			void SetSaturatedDepth(real depth);
+			real get_saturated_depth() ;
+			void set_saturated_depth(real depth);
 			//@}
 		private:
 			//@}
@@ -79,64 +82,83 @@ namespace cmf {
 			typedef std::vector<reach_pointer> reach_vector;
 			typedef std::vector<storage_pointer> storage_vector;
 			typedef std::tr1::shared_ptr<cmf::water::FluxNode> node_pointer;
+			typedef std::auto_ptr<cmf::atmosphere::Meteorology> meteo_pointer;
 			storage_vector m_storages;
 			reach_vector m_reaches;
-			cmf::atmosphere::RainfallNode* m_rainfall;
-			int m_Canopy_pos;
-			int m_Snow_pos;
-			int m_SurfaceWater_pos;
+			cmf::water::WaterStorage
+				* m_Canopy,
+				* m_Snow,
+				* m_SurfaceWaterStorage;
 			node_pointer m_SurfaceWater;
+			std::auto_ptr<cmf::atmosphere::RainCloud> m_rainfall;
+			std::auto_ptr<cmf::water::FluxNode> m_Evaporation, m_Transpiration;
+
 			const cmf::project & m_project;
+			meteo_pointer m_meteo;
+			
+			cmf::upslope::vegetation::Vegetation m_vegetation;
 		public:
+			cmf::atmosphere::Meteorology& get_meteorology() const 
+			{
+				return *m_meteo;
+			}
+			void set_meteorology(const cmf::atmosphere::Meteorology& new_meteo)
+			{
+				m_meteo=new_meteo.copy();
+			}
+			cmf::atmosphere::RainCloud& get_rainfall() const {return *m_rainfall;}
 			/// Returns the end point of all evaporation of this cell
- 			cmf::water::FluxNode& Evaporation();
+ 			cmf::water::FluxNode& get_evaporation();
  			/// Returns the end point of all transpiration of this cell
- 			cmf::water::FluxNode& Transpiration();
+ 			cmf::water::FluxNode& get_transpiration();
 			/// returns the surface water of this cell
-			cmf::water::FluxNode& SurfaceWater()	{ 
-				if (m_SurfaceWater.get())
+			cmf::water::FluxNode& get_surfacewater()	{ 
+				if (m_SurfaceWaterStorage)
+					return *m_SurfaceWaterStorage;
+				else if (m_SurfaceWater.get())
 					return *m_SurfaceWater;
 				else
-					return *m_storages.at(m_SurfaceWater_pos);
+					throw std::runtime_error("Neither the surface water flux node, nor the storage exists. Please inform author");
 			}
-			cmf::water::WaterStorage& AddStorage(std::string Name,char storage_role='N',  bool isopenwater=false);
-			void RemoveStorage(cmf::water::WaterStorage& storage);
-			cmf::river::Reach& AddReach(double length,char shape='T', double depth=0.25,double width=1., std::string Name="Reach");
-			int StorageCount() const
+			void surfacewater_as_storage();
+			cmf::water::WaterStorage& add_storage(std::string Name,char storage_role='N',  bool isopenwater=false);
+			void remove_storage(cmf::water::WaterStorage& storage);
+			cmf::river::Reach& add_reach(double length,char shape='T', double depth=0.25,double width=1., std::string Name="Reach");
+			int storage_count() const
 			{
 				return int(m_storages.size());
 			}
-			cmf::water::WaterStorage& GetStorage(int index);
-			const cmf::water::WaterStorage& GetStorage(int index) const;
-			cmf::river::Reach& GetReach(int index=0)
+			cmf::water::WaterStorage& get_storage(int index);
+			const cmf::water::WaterStorage& get_storage(int index) const;
+			cmf::river::Reach& get_reach(int index=0)
 			{
 				return *m_reaches.at(index<0 ? m_storages.size()+index : index);
 			}
 			size_t ReachCount() const {return m_reaches.size();}
-			cmf::water::WaterStorage* GetCanopy() const;
-			cmf::water::WaterStorage* GetSnow() const;
-			bool HasSnowStorage() const {return m_Snow_pos>=0;}
-			real SnowCover() const
+			cmf::water::WaterStorage* get_canopy() const;
+			cmf::water::WaterStorage* get_snow() const;
+			real snow_coverage() const
 			{
-				if (m_Snow_pos>=0)
-					return piecewise_linear(GetStorage(m_Snow_pos).State()/Area(),0,0.01);
+				if (m_Snow)
+					return piecewise_linear(m_Snow->State()/get_area(),0,0.01);
 				else
 					return 0.0;
 			}
-			bool HasInterceptedWater() const
+			bool has_wet_leaves() const
 			{
-				return (m_Canopy_pos>=0) && (GetStorage(m_Canopy_pos).State()>1e-6*Area());
+				return (m_Canopy) && (m_Canopy->State()>1e-6*get_area());
 			}
-			bool HasSurfaceWater() const
+			bool has_surface_water() const
 			{
-				return (m_SurfaceWater_pos>=0) && (GetStorage(m_SurfaceWater_pos).State()>1e-6*Area());
+				return (m_SurfaceWaterStorage) && (m_SurfaceWaterStorage->State()>1e-6*get_area());
 			}
-			cmf::upslope::vegetation::Vegetation Vegetation;
-			cmf::upslope::vegetation::Vegetation GetVegetation() const;
+			cmf::upslope::vegetation::Vegetation get_vegetation() const;
+			void set_vegetation(cmf::upslope::vegetation::Vegetation val) { m_vegetation = val; }
+
 			int Id;
 			const cmf::project& project() const;
-			cmf::atmosphere::Weather Weather(cmf::math::Time t) const;
-			real Rain(cmf::math::Time t) const;
+			cmf::atmosphere::Weather get_weather(cmf::math::Time t) const;
+			real rain(cmf::math::Time t) const;
 
 		public:
 			//@}
@@ -146,28 +168,28 @@ namespace cmf {
 			typedef std::vector<SoilWaterStorage*> layer_vector;
 			layer_vector m_Layers;
 		public:
-			int LayerCount() const
+			int layer_count() const
 			{
 				return int(m_Layers.size());
 			}
-			cmf::upslope::SoilWaterStorage& Layer(int ndx)
+			cmf::upslope::SoilWaterStorage& get_layer(int ndx)
 			{
-				if (ndx<0) ndx=LayerCount()+ndx;
+				if (ndx<0) ndx=layer_count()+ndx;
 				return *m_Layers.at(ndx);
 			}
-			const cmf::upslope::SoilWaterStorage& Layer(int ndx) const
+			const cmf::upslope::SoilWaterStorage& get_layer(int ndx) const
 			{
-				if (ndx<0) ndx=LayerCount()+ndx;
+				if (ndx<0) ndx=layer_count()+ndx;
 				return *m_Layers.at(ndx);
 			}
 #ifndef SWIG
 			/// Registers a layer at the cell. This function is used by the ctor's of the layers and should never be used in other code.
-			void AddLayer(cmf::upslope::SoilWaterStorage* layer);
+			void add_layer(cmf::upslope::SoilWaterStorage* layer);
 #endif
-			void AddLayer(real lowerboundary,const cmf::upslope::RCurve& r_curve,real saturateddepth=-10);
-			void AddVariableLayerPair(real lowerboundary,const cmf::upslope::RCurve& r_curve);
-			void RemoveLastLayer();
-			void RemoveLayers();
+			void add_layer(real lowerboundary,const cmf::upslope::RCurve& r_curve,real saturateddepth=-10);
+			void add_variable_layer_pair(real lowerboundary,const cmf::upslope::RCurve& r_curve);
+			void remove_last_layer();
+			void remove_layers();
 			virtual ~Cell();
 			//@}
 
@@ -176,7 +198,7 @@ namespace cmf {
 			std::string ToString()
 			{
 				std::stringstream sstr;
-				sstr << "(" << Center().x << "," << Center().y << "," << Center().z << ")";
+				sstr << "(" << x << "," << y << "," << z << ")";
 				return sstr.str();
 			}
 			//@}
