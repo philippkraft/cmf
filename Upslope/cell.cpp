@@ -10,6 +10,9 @@
 #include "../Reach/Reach.h"
 #include "Topology.h"
 #include "../Atmosphere/Precipitation.h"
+#include "../Atmosphere/Meteorology.h"
+
+int cmf::upslope::Cell::cell_count=0;
 cmf::upslope::Cell::~Cell()
 {
 	remove_layers();
@@ -18,18 +21,27 @@ cmf::upslope::Cell::~Cell()
 
 cmf::upslope::Cell::Cell( double _x,double _y,double _z,double area,cmf::project& _project/*=0*/ ) 
 : x(_x),y(_y),z(_z),m_Area(area),m_project(_project),
-m_SurfaceWater(new cmf::water::FluxNode(_project)),
-m_Canopy(0),m_Snow(0),m_SurfaceWaterStorage(0)
+m_SurfaceWater(new cmf::water::FluxNode(_project)),	Id(cell_count++),
+m_Canopy(0),m_Snow(0),m_SurfaceWaterStorage(0),m_meteo(new cmf::atmosphere::ConstantMeteorology)
 {
 	m_SurfaceWater->Name="Surfacewater";
 	m_SurfaceWater->Location=get_position();
-	m_rainfall=new cmf::atmosphere::RainCloud(*this);
-	m_Evaporation=new cmf::water::FluxNode(_project,cmf::geometry::point(x,y,z+20));
-	m_Transpiration=new cmf::water::FluxNode(_project,cmf::geometry::point(x,y,z+20));
+	m_Evaporation.reset(new cmf::water::FluxNode(_project,cmf::geometry::point(x,y,z+20)));
+	m_Evaporation->Name="Evaporation";
+	m_Transpiration.reset(new cmf::water::FluxNode(_project,cmf::geometry::point(x,y,z+20)));
+	m_Transpiration->Name="Transpiration";
+	m_rainfall.reset(new cmf::atmosphere::RainCloud(*this));
+	m_rainfall->Name="Rainy cloud";
 	_project.m_cells.push_back(this);
 	new connections::Rainfall(get_surfacewater(),*this);
 }
 
+cmf::upslope::Cell::Cell( const Cell& cpy ) 
+: m_project(cpy.project()),
+	x(cpy.x),y(cpy.y),z(cpy.z),m_Area(cpy.get_area())
+{
+
+}
 real cmf::upslope::Cell::get_saturated_depth()	
 {
 	if (m_SatDepth!=-10000)

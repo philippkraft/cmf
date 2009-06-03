@@ -78,13 +78,13 @@ double cmf::atmosphere::Weather::snow_threshold=0.5;
 cmf::atmosphere::Weather cmf::atmosphere::MeteoStation::get_data( cmf::math::Time t,double height ) const
 {
 	Weather A;
-	if (Tmax.isempty())
+	if (Tmax.is_empty())
 		throw std::runtime_error("Minimal dataset is to have values for Tmax, however Tmin should be provided too");
-	double height_correction=T_lapse[t]*(height-z);
+	double height_correction= T_lapse.is_empty() ? 0.0 : T_lapse[t]*(height-z);
 	
 	A.Tmax=Tmax[t]+height_correction;
-	A.Tmin=Tmin.isempty() ? A.Tmax-2 : Tmin[t]+height_correction;
-	if (T.isempty())
+	A.Tmin=Tmin.is_empty() ? A.Tmax-2 : Tmin[t]+height_correction;
+	if (T.is_empty())
 	{
 		A.T=0.5*(A.Tmax+A.Tmin);
 		A.e_s=0.5*(vapour_pressure(A.Tmax)+vapour_pressure(A.Tmin));
@@ -94,26 +94,26 @@ cmf::atmosphere::Weather cmf::atmosphere::MeteoStation::get_data( cmf::math::Tim
 		A.T=T[t]+height_correction;
 		A.e_s=vapour_pressure(A.T);
 	}
-	if (Tground.isempty()) A.Tground=A.T;
+	if (Tground.is_empty()) A.Tground=A.T;
 	else A.Tground=Tground[t];
 
-	A.Windspeed=Windspeed.isempty() ? 
+	A.Windspeed=Windspeed.is_empty() ? 
 		2. 	// If windspeed is missing, use 2m/s as default
 		: max(Windspeed[t],0.5); 	// Windspeed shoud not be smaller than 0.5m/s
 
-	if (!Tdew.isempty()) // If dew point is available, use dew point
+	if (!Tdew.is_empty()) // If dew point is available, use dew point
 		A.e_a=vapour_pressure(Tdew[t]);
-	else if (!rHmax.isempty()) // If dew point is not available but rHmax use rHmax (if possible in combination with rHmin)
-		if (!rHmin.isempty())
+	else if (!rHmax.is_empty()) // If dew point is not available but rHmax use rHmax (if possible in combination with rHmin)
+		if (!rHmin.is_empty())
 			A.e_a=0.5*(vapour_pressure(A.Tmin)*rHmax[t]/100.+vapour_pressure(A.Tmax)*rHmin[t]/100.);
 		else
 			A.e_a=vapour_pressure(A.Tmin)*rHmax[t]/100.;
-	else if (!rHmean.isempty()) // If only rHmean is available, use this
+	else if (!rHmean.is_empty()) // If only rHmean is available, use this
 		A.e_a=rHmean[t]/100.*A.e_s;
 	else // no humidity data available, assume Tmin=Tdew
 		A.e_a=vapour_pressure(A.Tmin);
-	A.sunshine=Sunshine.isempty() ? 0.5 : Sunshine[t];
-	if (Rs.isempty())
+	A.sunshine=Sunshine.is_empty() ? 0.5 : Sunshine[t];
+	if (Rs.is_empty())
 		A.Rs=get_global_radiation(t,height,A.sunshine);
 	else
 		A.Rs=Rs[t];
@@ -191,7 +191,7 @@ void cmf::atmosphere::MeteoStation::SetSunshineFraction(cmf::math::timeseries su
 			decl=0.409*sin(2*PI/365*DOY-1.39), // Declination [rad]
 			sunset_angle=acos(-tan(phi)*tan(decl)),	// Sunset hour angle [rad]
 			N=24/PI*sunset_angle;
-		Sunshine.Add(sunshine_duration[i]/N),
+		Sunshine.add(sunshine_duration[i]/N),
 		t+=sunshine_duration.step();
 	}
 
@@ -269,7 +269,7 @@ double cmf::atmosphere::MeteoStationList::calculate_Temp_lapse( cmf::math::Time 
 		}
 		SShT=1/(n-1)*(SShT-sum_h*sum_T);
 		SShh=1/(n-1)*(SShh-sum_h*sum_T);
-		temp_lapse.Add(SShT/SShh);
+		temp_lapse.add(SShT/SShh);
 		++steps;
 		for(vector::iterator it = m_stations.begin(); it != m_stations.end(); ++it)
 		{

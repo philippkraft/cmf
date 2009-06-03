@@ -57,7 +57,6 @@ namespace cmf {
 			bool operator<(const cmf::river::Reach& cmp) const;
 			bool operator==(const cmf::river::Reach& cmp) const;
 			bool operator!=(const cmf::river::Reach& cmp) const;
-			operator cmf::river::OpenWaterStorage&();
 		};
 		/// An iterator over every upstream reach from a start reach. Implements both the Python and the C++ iterator interface
 		class ReachIterator {

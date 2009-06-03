@@ -28,10 +28,10 @@ namespace cmf {
 		///interpolation=1                                     
 		///# Create timeseries
 		///timeseries=cmf.timeseries(start,step,interpolation) 
-		///# Add data
-		///timeseries.Add(0.1) # Value at 2001/5/1 2:30pm is 0.1
-		///timeseries.Add(0.2) # Value at 2001/5/1 2:50pm is 0.2
-		///timeseries.Add(0.1) # Value at 2001/5/1 3:10pm is 0.1	</pre>
+		///# add data
+		///timeseries.add(0.1) # Value at 2001/5/1 2:30pm is 0.1
+		///timeseries.add(0.2) # Value at 2001/5/1 2:50pm is 0.2
+		///timeseries.add(0.1) # Value at 2001/5/1 3:10pm is 0.1	</pre>
 		///	</div>
 		///	<p>
 		///		With this technic it is simple to read files or databases to fill timeseries.</p>
@@ -77,12 +77,12 @@ namespace cmf {
 			/// Method for the interpolation (0 - Nearest neighbor, 1- linear, 2 - cubic spline (not implemented yet)
 			double interpolationpower() const {return m_data->interpolationpower;}
 			/// Appends a measurement
-			void Add(double Value)
+			void add(double Value)
 			{
 				m_data->values.push_back(Value);
 			}
 			/// returns true if no values are added to the timeseries
-			bool isempty() const {return m_data->values.size()==0;}
+			bool is_empty() const {return m_data->values.size()==0;}
 			void clear()
 			{
 				m_data->values.clear();
@@ -95,12 +95,14 @@ namespace cmf {
 			/// @param _interpolationmethod Method for the interpolation (0 - Nearest neighbor, 1- linear, 2 - cubic spline (not implemented yet)
 			timeseries(cmf::math::Time _begin,cmf::math::Time _step,int _interpolationmethod=1) 
 				: m_data(make_data(_begin,_step,_interpolationmethod))
-			{
-			}
+			{ }
 			timeseries() : m_data(make_data()) 
-			{			}
-			timeseries( const cmf::math::timeseries& ts ) : m_data(ts.m_data)
 			{	}
+			timeseries( const cmf::math::timeseries& ts ) 
+				//: m_data(ts.m_data)
+			{
+				m_data=ts.m_data;
+			}
 			timeseries(double scalar) : m_data(make_data())
 			{
 				m_data->values.push_back(scalar);
@@ -130,8 +132,8 @@ namespace cmf {
 			/// - timeseries = double x timeseries
 			/// - timeseries = timeseries x double
 			//@{
-			timeseries& operator+=(const timeseries&);      ///< Add timeseries to this
-			timeseries& operator+=(double);                ///< Add scalar to this
+			timeseries& operator+=(const timeseries&);      ///< add timeseries to this
+			timeseries& operator+=(double);                ///< add scalar to this
 			timeseries& operator-=(const timeseries&);      ///< Subtract timeseries from this
 			timeseries& operator-=(double);                ///< Subtract scalar from this
 			timeseries& operator*=(const timeseries&);      ///< Multiply each element of timeseries with each element of this

@@ -30,7 +30,7 @@ namespace cmf {
 					cmf::water::WaterStorage& canopy=cell.add_storage("Canopy",'C');	
 					if (cell.get_rainfall().Connection(cell.get_surfacewater()))
 					{
-						cell.get_rainfall().RemoveConnection(cell.get_surfacewater());
+						cell.get_rainfall().remove_connection(cell.get_surfacewater());
 					}
 					new Rainfall(canopy,cell,false,true);
 					new Rainfall(cell.get_surfacewater(),cell,true,false);
@@ -45,7 +45,7 @@ namespace cmf {
 				cmf::upslope::Cell & m_cell;
 				virtual real calc_q(cmf::math::Time t)
 				{
-					if (m_Snow->Empty())
+					if (m_Snow->is_empty())
 						return 0.0;
 					else 
 					{

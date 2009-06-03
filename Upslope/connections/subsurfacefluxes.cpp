@@ -45,9 +45,9 @@ real cmf::upslope::connections::Richards::calc_q( cmf::math::Time t )
  	if (abs(K*gradient)>sw1->Ksat()) K=sw1->Ksat();
  	if (sw2 && abs(K*gradient)>sw2->Ksat()) K=sw2->Ksat();
 	real r_flow=K*gradient*flow_area;
-	if (m_left->Empty())
+	if (m_left->is_empty())
 		r_flow=minimum(0,r_flow);
-	if (m_right->Empty())
+	if (m_right->is_empty())
 		r_flow=maximum(0,r_flow);
 	return r_flow; 
 }
@@ -64,9 +64,9 @@ real cmf::upslope::connections::UnsatSatPercolation::calc_q( cmf::math::Time t )
 	real gradient=(m_unsat->Potential()-m_sat->Potential())/(m_unsat->Thickness()*0.5);
 	// gravitational flux
 	real Ku=geo_mean(m_unsat->K(),m_sat->K()) * cell.get_area() * gradient;
-	real sat_wb=m_sat->Waterbalance(t,this)+Ku; //*f_upwelling;
+	real sat_wb=m_sat->water_balance(t,this)+Ku; //*f_upwelling;
 	real f_Exw=1-pow(sat_thick/max_sat_thick,100);
-	real Exw = f_Exw * sat_wb;
+	real Exw = f_Exw * sat_wb*m_unsat->Wetness();
 	return Ku + Exw;
 }
 
@@ -114,7 +114,7 @@ real cmf::upslope::connections::UnsaturatedDarcy::calc_q( cmf::math::Time t )
 	real f_upwelling=1-2*boltzmann(target.Wetness(),1,0.01);
 	if (f_upwelling<0)
 	{
-		real sat_wb=target.Waterbalance(t,this);
+		real sat_wb=target.water_balance(t,this);
 		return f_upwelling*sat_wb;
 	}
 	else

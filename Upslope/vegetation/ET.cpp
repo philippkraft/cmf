@@ -68,7 +68,7 @@ namespace cmf {
 				return piecewise_linear(sw_pF,3.35,4.2,Tpot*sw.cell.get_area()*0.001*rootfraction,0);
 			}
 
-			real constantETpot::calc_q( cmf::math::Time t ) const
+			real constantETpot::calc_q( cmf::math::Time t ) 
 			{
 				cmf::upslope::vegetation::Vegetation veg=sw->cell.get_vegetation(); 
 				return Tact(ETpot_value,*sw,veg);
@@ -130,12 +130,12 @@ namespace cmf {
 						return _ET_mm.E * 1e-3 * cell.get_area() * (1-m_cell.snow_coverage());
 					}
 					// If source is canopy (which stores water)
-					else if (m_waterstorage && m_waterstorage==m_cell.get_canopy() && !m_waterstorage->Empty())
+					else if (m_waterstorage && m_waterstorage==m_cell.get_canopy() && !m_waterstorage->is_empty())
 					{			
 						ShuttleworthWallace _ET_mm(w,m_cell.layer_count() ? m_cell.get_layer(0).MatrixPotential(): -2,veg,true);
 						return _ET_mm.T * 1e-3*cell.get_area();
 					}
-					else if (m_waterstorage && !m_waterstorage->Empty())
+					else if (m_waterstorage && !m_waterstorage->is_empty())
 					{
 						ShuttleworthWallace _ET_mm(w,0,veg,false);
 					}
@@ -164,7 +164,7 @@ namespace cmf {
 
 			real CanopyStorageEvaporation::calc_q( cmf::math::Time t )
 			{
-				if (m_left->Empty()) return 0;
+				if (m_left->is_empty()) return 0;
 				cmf::atmosphere::Weather w=m_cell.get_weather(t);
 				cmf::upslope::vegetation::Vegetation veg=m_cell.get_vegetation();
 				real PM=PenmanMonteith(w,veg,m_cell.z)*0.001*m_cell.get_area();

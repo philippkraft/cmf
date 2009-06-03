@@ -2728,75 +2728,80 @@ SWIG_Python_MustGetPtr(PyObject *obj, swig_type_info *ty, int argnum, int flags)
 #define SWIGTYPE_p_cmf__upslope__connections__UnsatSatPercolation swig_types[72]
 #define SWIGTYPE_p_cmf__upslope__connections__UnsaturatedDarcy swig_types[73]
 #define SWIGTYPE_p_cmf__upslope__vegetation__Vegetation swig_types[74]
-#define SWIGTYPE_p_cmf__water__FluxConnection swig_types[75]
-#define SWIGTYPE_p_cmf__water__FluxNode swig_types[76]
-#define SWIGTYPE_p_cmf__water__Solute swig_types[77]
-#define SWIGTYPE_p_cmf__water__SoluteStorage swig_types[78]
-#define SWIGTYPE_p_cmf__water__SoluteTimeseries swig_types[79]
-#define SWIGTYPE_p_cmf__water__Solutes swig_types[80]
-#define SWIGTYPE_p_cmf__water__WaterFlux swig_types[81]
-#define SWIGTYPE_p_cmf__water__WaterQuality swig_types[82]
-#define SWIGTYPE_p_cmf__water__WaterStorage swig_types[83]
-#define SWIGTYPE_p_const_reference swig_types[84]
-#define SWIGTYPE_p_difference_type swig_types[85]
-#define SWIGTYPE_p_double swig_types[86]
-#define SWIGTYPE_p_f_double__double swig_types[87]
-#define SWIGTYPE_p_key_type swig_types[88]
-#define SWIGTYPE_p_p_PyObject swig_types[89]
-#define SWIGTYPE_p_p_cmf__river__Manning swig_types[90]
-#define SWIGTYPE_p_p_cmf__river__TechnicalFlux swig_types[91]
-#define SWIGTYPE_p_p_cmf__upslope__ET__CanopyStorageEvaporation swig_types[92]
-#define SWIGTYPE_p_p_cmf__upslope__ET__HargreaveET swig_types[93]
-#define SWIGTYPE_p_p_cmf__upslope__ET__PenmanMonteithET swig_types[94]
-#define SWIGTYPE_p_p_cmf__upslope__ET__ShuttleworthWallaceET swig_types[95]
-#define SWIGTYPE_p_p_cmf__upslope__ET__constantETpot swig_types[96]
-#define SWIGTYPE_p_p_cmf__upslope__connections__CanopyOverflow swig_types[97]
-#define SWIGTYPE_p_p_cmf__upslope__connections__CompleteInfiltration swig_types[98]
-#define SWIGTYPE_p_p_cmf__upslope__connections__Darcy swig_types[99]
-#define SWIGTYPE_p_p_cmf__upslope__connections__HBVSnowMelt swig_types[100]
-#define SWIGTYPE_p_p_cmf__upslope__connections__MatrixInfiltration swig_types[101]
-#define SWIGTYPE_p_p_cmf__upslope__connections__Rainfall swig_types[102]
-#define SWIGTYPE_p_p_cmf__upslope__connections__Richards swig_types[103]
-#define SWIGTYPE_p_p_cmf__upslope__connections__Richards_lateral swig_types[104]
-#define SWIGTYPE_p_p_cmf__upslope__connections__SWATPercolation swig_types[105]
-#define SWIGTYPE_p_p_cmf__upslope__connections__SimpleTindexSnowMelt swig_types[106]
-#define SWIGTYPE_p_p_cmf__upslope__connections__SnowWaterOverflow swig_types[107]
-#define SWIGTYPE_p_p_cmf__upslope__connections__Snowfall swig_types[108]
-#define SWIGTYPE_p_p_cmf__upslope__connections__TopographicGradientDarcy swig_types[109]
-#define SWIGTYPE_p_p_cmf__upslope__connections__UnsatSatPercolation swig_types[110]
-#define SWIGTYPE_p_p_cmf__upslope__connections__UnsaturatedDarcy swig_types[111]
-#define SWIGTYPE_p_reference swig_types[112]
-#define SWIGTYPE_p_size_type swig_types[113]
-#define SWIGTYPE_p_std__invalid_argument swig_types[114]
-#define SWIGTYPE_p_std__istream swig_types[115]
-#define SWIGTYPE_p_std__lessT_cmf__water__FluxConnection_p_t swig_types[116]
-#define SWIGTYPE_p_std__ostream swig_types[117]
-#define SWIGTYPE_p_std__setT_cmf__upslope__Cell_p_std__lessT_cmf__upslope__Cell_p_t_std__allocatorT_cmf__upslope__Cell_p_t_t swig_types[118]
-#define SWIGTYPE_p_std__setT_cmf__water__FluxConnection_p_std__lessT_cmf__water__FluxConnection_p_t_std__allocatorT_cmf__water__FluxConnection_p_t_t swig_types[119]
-#define SWIGTYPE_p_std__setT_cmf__water__FluxConnection_p_std__lessT_cmf__water__FluxConnection_p_t_std__allocatorT_cmf__water__FluxConnection_p_t_t__key_type swig_types[120]
-#define SWIGTYPE_p_std__setT_cmf__water__FluxConnection_p_std__lessT_cmf__water__FluxConnection_p_t_std__allocatorT_cmf__water__FluxConnection_p_t_t__value_type swig_types[121]
-#define SWIGTYPE_p_std__tr1__shared_ptrT_cmf__atmosphere__MeteoStation_t swig_types[122]
-#define SWIGTYPE_p_std__vectorT_cmf__geometry__point_std__allocatorT_cmf__geometry__point_t_t swig_types[123]
-#define SWIGTYPE_p_std__vectorT_cmf__geometry__point_std__allocatorT_cmf__geometry__point_t_t__allocator_type swig_types[124]
-#define SWIGTYPE_p_std__vectorT_cmf__geometry__point_std__allocatorT_cmf__geometry__point_t_t__value_type swig_types[125]
-#define SWIGTYPE_p_std__vectorT_cmf__math__StateVariable_p_std__allocatorT_cmf__math__StateVariable_p_t_t swig_types[126]
-#define SWIGTYPE_p_std__vectorT_cmf__math__StateVariable_p_std__allocatorT_cmf__math__StateVariable_p_t_t__allocator_type swig_types[127]
-#define SWIGTYPE_p_std__vectorT_cmf__upslope__Cell_p_std__allocatorT_cmf__upslope__Cell_p_t_t swig_types[128]
-#define SWIGTYPE_p_std__vectorT_cmf__upslope__Cell_p_std__allocatorT_cmf__upslope__Cell_p_t_t__allocator_type swig_types[129]
-#define SWIGTYPE_p_std__vectorT_cmf__water__FluxConnection_p_std__allocatorT_cmf__water__FluxConnection_p_t_t swig_types[130]
-#define SWIGTYPE_p_std__vectorT_cmf__water__FluxConnection_p_std__allocatorT_cmf__water__FluxConnection_p_t_t__allocator_type swig_types[131]
-#define SWIGTYPE_p_std__vectorT_cmf__water__FluxNode_p_std__allocatorT_cmf__water__FluxNode_p_t_t swig_types[132]
-#define SWIGTYPE_p_std__vectorT_cmf__water__FluxNode_p_std__allocatorT_cmf__water__FluxNode_p_t_t__allocator_type swig_types[133]
-#define SWIGTYPE_p_swig__SwigPyIterator swig_types[134]
-#define SWIGTYPE_p_value_type swig_types[135]
-#define SWIGTYPE_std__setT_cmf__water__FluxConnection_p_std__lessT_cmf__water__FluxConnection_p_t_std__allocatorT_cmf__water__FluxConnection_p_t_t__key_type swig_types[136]
-#define SWIGTYPE_std__setT_cmf__water__FluxConnection_p_std__lessT_cmf__water__FluxConnection_p_t_std__allocatorT_cmf__water__FluxConnection_p_t_t__value_type swig_types[137]
-#define SWIGTYPE_std__vectorT_cmf__math__StateVariable_p_std__allocatorT_cmf__math__StateVariable_p_t_t__value_type swig_types[138]
-#define SWIGTYPE_std__vectorT_cmf__upslope__Cell_p_std__allocatorT_cmf__upslope__Cell_p_t_t__value_type swig_types[139]
-#define SWIGTYPE_std__vectorT_cmf__water__FluxConnection_p_std__allocatorT_cmf__water__FluxConnection_p_t_t__value_type swig_types[140]
-#define SWIGTYPE_std__vectorT_cmf__water__FluxNode_p_std__allocatorT_cmf__water__FluxNode_p_t_t__value_type swig_types[141]
-static swig_type_info *swig_types[143];
-static swig_module_info swig_module = {swig_types, 142, 0, 0, 0, 0};
+#define SWIGTYPE_p_cmf__water__DricheletBoundary swig_types[75]
+#define SWIGTYPE_p_cmf__water__FluxConnection swig_types[76]
+#define SWIGTYPE_p_cmf__water__FluxNode swig_types[77]
+#define SWIGTYPE_p_cmf__water__NeumannBoundary swig_types[78]
+#define SWIGTYPE_p_cmf__water__NeumannFlux swig_types[79]
+#define SWIGTYPE_p_cmf__water__Solute swig_types[80]
+#define SWIGTYPE_p_cmf__water__SoluteStorage swig_types[81]
+#define SWIGTYPE_p_cmf__water__SoluteTimeseries swig_types[82]
+#define SWIGTYPE_p_cmf__water__Solutes swig_types[83]
+#define SWIGTYPE_p_cmf__water__WaterFlux swig_types[84]
+#define SWIGTYPE_p_cmf__water__WaterQuality swig_types[85]
+#define SWIGTYPE_p_cmf__water__WaterStorage swig_types[86]
+#define SWIGTYPE_p_cmf__water__linear_scale swig_types[87]
+#define SWIGTYPE_p_const_reference swig_types[88]
+#define SWIGTYPE_p_difference_type swig_types[89]
+#define SWIGTYPE_p_double swig_types[90]
+#define SWIGTYPE_p_f_double__double swig_types[91]
+#define SWIGTYPE_p_key_type swig_types[92]
+#define SWIGTYPE_p_p_PyObject swig_types[93]
+#define SWIGTYPE_p_p_cmf__river__Manning swig_types[94]
+#define SWIGTYPE_p_p_cmf__river__TechnicalFlux swig_types[95]
+#define SWIGTYPE_p_p_cmf__upslope__ET__CanopyStorageEvaporation swig_types[96]
+#define SWIGTYPE_p_p_cmf__upslope__ET__HargreaveET swig_types[97]
+#define SWIGTYPE_p_p_cmf__upslope__ET__PenmanMonteithET swig_types[98]
+#define SWIGTYPE_p_p_cmf__upslope__ET__ShuttleworthWallaceET swig_types[99]
+#define SWIGTYPE_p_p_cmf__upslope__ET__constantETpot swig_types[100]
+#define SWIGTYPE_p_p_cmf__upslope__connections__CanopyOverflow swig_types[101]
+#define SWIGTYPE_p_p_cmf__upslope__connections__CompleteInfiltration swig_types[102]
+#define SWIGTYPE_p_p_cmf__upslope__connections__Darcy swig_types[103]
+#define SWIGTYPE_p_p_cmf__upslope__connections__HBVSnowMelt swig_types[104]
+#define SWIGTYPE_p_p_cmf__upslope__connections__MatrixInfiltration swig_types[105]
+#define SWIGTYPE_p_p_cmf__upslope__connections__Rainfall swig_types[106]
+#define SWIGTYPE_p_p_cmf__upslope__connections__Richards swig_types[107]
+#define SWIGTYPE_p_p_cmf__upslope__connections__Richards_lateral swig_types[108]
+#define SWIGTYPE_p_p_cmf__upslope__connections__SWATPercolation swig_types[109]
+#define SWIGTYPE_p_p_cmf__upslope__connections__SimpleTindexSnowMelt swig_types[110]
+#define SWIGTYPE_p_p_cmf__upslope__connections__SnowWaterOverflow swig_types[111]
+#define SWIGTYPE_p_p_cmf__upslope__connections__Snowfall swig_types[112]
+#define SWIGTYPE_p_p_cmf__upslope__connections__TopographicGradientDarcy swig_types[113]
+#define SWIGTYPE_p_p_cmf__upslope__connections__UnsatSatPercolation swig_types[114]
+#define SWIGTYPE_p_p_cmf__upslope__connections__UnsaturatedDarcy swig_types[115]
+#define SWIGTYPE_p_p_cmf__water__NeumannFlux swig_types[116]
+#define SWIGTYPE_p_reference swig_types[117]
+#define SWIGTYPE_p_size_type swig_types[118]
+#define SWIGTYPE_p_std__invalid_argument swig_types[119]
+#define SWIGTYPE_p_std__istream swig_types[120]
+#define SWIGTYPE_p_std__lessT_cmf__water__FluxConnection_p_t swig_types[121]
+#define SWIGTYPE_p_std__ostream swig_types[122]
+#define SWIGTYPE_p_std__setT_cmf__upslope__Cell_p_std__lessT_cmf__upslope__Cell_p_t_std__allocatorT_cmf__upslope__Cell_p_t_t swig_types[123]
+#define SWIGTYPE_p_std__setT_cmf__water__FluxConnection_p_std__lessT_cmf__water__FluxConnection_p_t_std__allocatorT_cmf__water__FluxConnection_p_t_t swig_types[124]
+#define SWIGTYPE_p_std__setT_cmf__water__FluxConnection_p_std__lessT_cmf__water__FluxConnection_p_t_std__allocatorT_cmf__water__FluxConnection_p_t_t__key_type swig_types[125]
+#define SWIGTYPE_p_std__setT_cmf__water__FluxConnection_p_std__lessT_cmf__water__FluxConnection_p_t_std__allocatorT_cmf__water__FluxConnection_p_t_t__value_type swig_types[126]
+#define SWIGTYPE_p_std__tr1__shared_ptrT_cmf__atmosphere__MeteoStation_t swig_types[127]
+#define SWIGTYPE_p_std__vectorT_cmf__geometry__point_std__allocatorT_cmf__geometry__point_t_t swig_types[128]
+#define SWIGTYPE_p_std__vectorT_cmf__geometry__point_std__allocatorT_cmf__geometry__point_t_t__allocator_type swig_types[129]
+#define SWIGTYPE_p_std__vectorT_cmf__geometry__point_std__allocatorT_cmf__geometry__point_t_t__value_type swig_types[130]
+#define SWIGTYPE_p_std__vectorT_cmf__math__StateVariable_p_std__allocatorT_cmf__math__StateVariable_p_t_t swig_types[131]
+#define SWIGTYPE_p_std__vectorT_cmf__math__StateVariable_p_std__allocatorT_cmf__math__StateVariable_p_t_t__allocator_type swig_types[132]
+#define SWIGTYPE_p_std__vectorT_cmf__upslope__Cell_p_std__allocatorT_cmf__upslope__Cell_p_t_t swig_types[133]
+#define SWIGTYPE_p_std__vectorT_cmf__upslope__Cell_p_std__allocatorT_cmf__upslope__Cell_p_t_t__allocator_type swig_types[134]
+#define SWIGTYPE_p_std__vectorT_cmf__water__FluxConnection_p_std__allocatorT_cmf__water__FluxConnection_p_t_t swig_types[135]
+#define SWIGTYPE_p_std__vectorT_cmf__water__FluxConnection_p_std__allocatorT_cmf__water__FluxConnection_p_t_t__allocator_type swig_types[136]
+#define SWIGTYPE_p_std__vectorT_cmf__water__FluxNode_p_std__allocatorT_cmf__water__FluxNode_p_t_t swig_types[137]
+#define SWIGTYPE_p_std__vectorT_cmf__water__FluxNode_p_std__allocatorT_cmf__water__FluxNode_p_t_t__allocator_type swig_types[138]
+#define SWIGTYPE_p_swig__SwigPyIterator swig_types[139]
+#define SWIGTYPE_p_value_type swig_types[140]
+#define SWIGTYPE_std__setT_cmf__water__FluxConnection_p_std__lessT_cmf__water__FluxConnection_p_t_std__allocatorT_cmf__water__FluxConnection_p_t_t__key_type swig_types[141]
+#define SWIGTYPE_std__setT_cmf__water__FluxConnection_p_std__lessT_cmf__water__FluxConnection_p_t_std__allocatorT_cmf__water__FluxConnection_p_t_t__value_type swig_types[142]
+#define SWIGTYPE_std__vectorT_cmf__math__StateVariable_p_std__allocatorT_cmf__math__StateVariable_p_t_t__value_type swig_types[143]
+#define SWIGTYPE_std__vectorT_cmf__upslope__Cell_p_std__allocatorT_cmf__upslope__Cell_p_t_t__value_type swig_types[144]
+#define SWIGTYPE_std__vectorT_cmf__water__FluxConnection_p_std__allocatorT_cmf__water__FluxConnection_p_t_t__value_type swig_types[145]
+#define SWIGTYPE_std__vectorT_cmf__water__FluxNode_p_std__allocatorT_cmf__water__FluxNode_p_t_t__value_type swig_types[146]
+static swig_type_info *swig_types[148];
+static swig_module_info swig_module = {swig_types, 147, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -3296,7 +3301,7 @@ static int convert_seq_to_point(PyObject* input,cmf::geometry::point& p)
 	for (int i=0;i<len;++i)
 	{
 		PyObject *o = PySequence_GetItem(input,i);
-		if (!PyFloat_Check(o)) 
+		if (!PyNumber_Check(o)) 
 		{
 			Py_XDECREF(o);
 			return 0;
@@ -4842,6 +4847,7 @@ SWIG_AsPtr_std_string (PyObject * obj, std::string **val)
 	#include "water/SoluteStorage.h"
 	#include "water/WaterStorage.h"
 	#include "water/FluxConnection.h"
+    #include "water/boundary_condition.h"
 
 SWIGINTERN cmf::water::Solute &cmf_water_Solutes___getitem__(cmf::water::Solutes *self,int i){
 		return (*self)[i];
@@ -5284,6 +5290,9 @@ SWIGINTERN void std_vector_Sl_cmf_upslope_Cell_Sm__Sg__append(std::vector< cmf::
   
 
 #define cmf_river_ReachIterator_position_get(self_) self_->position()
+  
+
+#define cmf_project_cells_get(self_) &self_->get_cells()
   
 #ifdef __cplusplus
 extern "C" {
@@ -17631,7 +17640,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_timeseries_Add(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_timeseries_add(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   cmf::math::timeseries *arg1 = (cmf::math::timeseries *) 0 ;
   double arg2 ;
@@ -17641,20 +17650,20 @@ SWIGINTERN PyObject *_wrap_timeseries_Add(PyObject *SWIGUNUSEDPARM(self), PyObje
   int ecode2 = 0 ;
   PyObject *swig_obj[2] ;
   
-  if (!SWIG_Python_UnpackTuple(args,"timeseries_Add",2,2,swig_obj)) SWIG_fail;
+  if (!SWIG_Python_UnpackTuple(args,"timeseries_add",2,2,swig_obj)) SWIG_fail;
   res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__math__timeseries, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "timeseries_Add" "', argument " "1"" of type '" "cmf::math::timeseries *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "timeseries_add" "', argument " "1"" of type '" "cmf::math::timeseries *""'"); 
   }
   arg1 = reinterpret_cast< cmf::math::timeseries * >(argp1);
   ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
   if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "timeseries_Add" "', argument " "2"" of type '" "double""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "timeseries_add" "', argument " "2"" of type '" "double""'");
   } 
   arg2 = static_cast< double >(val2);
   {
     try {
-      (arg1)->Add(arg2);
+      (arg1)->add(arg2);
     } 
     /*@SWIG:C:\\Programme\\swig\\Lib\\typemaps\\exception.swg,61,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
     catch (std::invalid_argument& e) {
@@ -17681,7 +17690,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_timeseries_isempty(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_timeseries_is_empty(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   cmf::math::timeseries *arg1 = (cmf::math::timeseries *) 0 ;
   void *argp1 = 0 ;
@@ -17693,12 +17702,12 @@ SWIGINTERN PyObject *_wrap_timeseries_isempty(PyObject *SWIGUNUSEDPARM(self), Py
   swig_obj[0] = args;
   res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__math__timeseries, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "timeseries_isempty" "', argument " "1"" of type '" "cmf::math::timeseries const *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "timeseries_is_empty" "', argument " "1"" of type '" "cmf::math::timeseries const *""'"); 
   }
   arg1 = reinterpret_cast< cmf::math::timeseries * >(argp1);
   {
     try {
-      result = (bool)((cmf::math::timeseries const *)arg1)->isempty();
+      result = (bool)((cmf::math::timeseries const *)arg1)->is_empty();
     } 
     /*@SWIG:C:\\Programme\\swig\\Lib\\typemaps\\exception.swg,61,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
     catch (std::invalid_argument& e) {
@@ -46887,7 +46896,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_FluxNode_IsStorage(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_FluxNode_is_storage(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   cmf::water::FluxNode *arg1 = (cmf::water::FluxNode *) 0 ;
   void *argp1 = 0 ;
@@ -46899,12 +46908,12 @@ SWIGINTERN PyObject *_wrap_FluxNode_IsStorage(PyObject *SWIGUNUSEDPARM(self), Py
   swig_obj[0] = args;
   res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__water__FluxNode, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "FluxNode_IsStorage" "', argument " "1"" of type '" "cmf::water::FluxNode const *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "FluxNode_is_storage" "', argument " "1"" of type '" "cmf::water::FluxNode const *""'"); 
   }
   arg1 = reinterpret_cast< cmf::water::FluxNode * >(argp1);
   {
     try {
-      result = (bool)((cmf::water::FluxNode const *)arg1)->IsStorage();
+      result = (bool)((cmf::water::FluxNode const *)arg1)->is_storage();
     } 
     /*@SWIG:C:\\Programme\\swig\\Lib\\typemaps\\exception.swg,61,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
     catch (std::invalid_argument& e) {
@@ -47247,7 +47256,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_FluxNode_RemoveConnection(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_FluxNode_remove_connection(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   cmf::water::FluxNode *arg1 = (cmf::water::FluxNode *) 0 ;
   cmf::water::FluxNode *arg2 = 0 ;
@@ -47257,23 +47266,23 @@ SWIGINTERN PyObject *_wrap_FluxNode_RemoveConnection(PyObject *SWIGUNUSEDPARM(se
   int res2 = 0 ;
   PyObject *swig_obj[2] ;
   
-  if (!SWIG_Python_UnpackTuple(args,"FluxNode_RemoveConnection",2,2,swig_obj)) SWIG_fail;
+  if (!SWIG_Python_UnpackTuple(args,"FluxNode_remove_connection",2,2,swig_obj)) SWIG_fail;
   res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__water__FluxNode, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "FluxNode_RemoveConnection" "', argument " "1"" of type '" "cmf::water::FluxNode *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "FluxNode_remove_connection" "', argument " "1"" of type '" "cmf::water::FluxNode *""'"); 
   }
   arg1 = reinterpret_cast< cmf::water::FluxNode * >(argp1);
   res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_cmf__water__FluxNode,  0  | 0);
   if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "FluxNode_RemoveConnection" "', argument " "2"" of type '" "cmf::water::FluxNode const &""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "FluxNode_remove_connection" "', argument " "2"" of type '" "cmf::water::FluxNode const &""'"); 
   }
   if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "FluxNode_RemoveConnection" "', argument " "2"" of type '" "cmf::water::FluxNode const &""'"); 
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "FluxNode_remove_connection" "', argument " "2"" of type '" "cmf::water::FluxNode const &""'"); 
   }
   arg2 = reinterpret_cast< cmf::water::FluxNode * >(argp2);
   {
     try {
-      (arg1)->RemoveConnection((cmf::water::FluxNode const &)*arg2);
+      (arg1)->remove_connection((cmf::water::FluxNode const &)*arg2);
     } 
     /*@SWIG:C:\\Programme\\swig\\Lib\\typemaps\\exception.swg,61,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
     catch (std::invalid_argument& e) {
@@ -47300,7 +47309,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_FluxNode_FluxTo(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_FluxNode_flux_to(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   cmf::water::FluxNode *arg1 = (cmf::water::FluxNode *) 0 ;
   cmf::water::FluxNode *arg2 = 0 ;
@@ -47314,27 +47323,27 @@ SWIGINTERN PyObject *_wrap_FluxNode_FluxTo(PyObject *SWIGUNUSEDPARM(self), PyObj
   PyObject *swig_obj[3] ;
   real result;
   
-  if (!SWIG_Python_UnpackTuple(args,"FluxNode_FluxTo",3,3,swig_obj)) SWIG_fail;
+  if (!SWIG_Python_UnpackTuple(args,"FluxNode_flux_to",3,3,swig_obj)) SWIG_fail;
   res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__water__FluxNode, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "FluxNode_FluxTo" "', argument " "1"" of type '" "cmf::water::FluxNode *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "FluxNode_flux_to" "', argument " "1"" of type '" "cmf::water::FluxNode *""'"); 
   }
   arg1 = reinterpret_cast< cmf::water::FluxNode * >(argp1);
   res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_cmf__water__FluxNode,  0  | 0);
   if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "FluxNode_FluxTo" "', argument " "2"" of type '" "cmf::water::FluxNode const &""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "FluxNode_flux_to" "', argument " "2"" of type '" "cmf::water::FluxNode const &""'"); 
   }
   if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "FluxNode_FluxTo" "', argument " "2"" of type '" "cmf::water::FluxNode const &""'"); 
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "FluxNode_flux_to" "', argument " "2"" of type '" "cmf::water::FluxNode const &""'"); 
   }
   arg2 = reinterpret_cast< cmf::water::FluxNode * >(argp2);
   {
     res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_cmf__math__Time,  0  | 0);
     if (!SWIG_IsOK(res3)) {
-      SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "FluxNode_FluxTo" "', argument " "3"" of type '" "cmf::math::Time""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "FluxNode_flux_to" "', argument " "3"" of type '" "cmf::math::Time""'"); 
     }  
     if (!argp3) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "FluxNode_FluxTo" "', argument " "3"" of type '" "cmf::math::Time""'");
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "FluxNode_flux_to" "', argument " "3"" of type '" "cmf::math::Time""'");
     } else {
       cmf::math::Time * temp = reinterpret_cast< cmf::math::Time * >(argp3);
       arg3 = *temp;
@@ -47343,7 +47352,7 @@ SWIGINTERN PyObject *_wrap_FluxNode_FluxTo(PyObject *SWIGUNUSEDPARM(self), PyObj
   }
   {
     try {
-      result = (real)(arg1)->FluxTo((cmf::water::FluxNode const &)*arg2,arg3);
+      result = (real)(arg1)->flux_to((cmf::water::FluxNode const &)*arg2,arg3);
     } 
     /*@SWIG:C:\\Programme\\swig\\Lib\\typemaps\\exception.swg,61,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
     catch (std::invalid_argument& e) {
@@ -47370,7 +47379,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_FluxNode_Waterbalance__SWIG_0(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_FluxNode_water_balance__SWIG_0(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   cmf::water::FluxNode *arg1 = (cmf::water::FluxNode *) 0 ;
   cmf::math::Time arg2 ;
@@ -47386,16 +47395,16 @@ SWIGINTERN PyObject *_wrap_FluxNode_Waterbalance__SWIG_0(PyObject *SWIGUNUSEDPAR
   if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
   res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__water__FluxNode, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "FluxNode_Waterbalance" "', argument " "1"" of type '" "cmf::water::FluxNode *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "FluxNode_water_balance" "', argument " "1"" of type '" "cmf::water::FluxNode *""'"); 
   }
   arg1 = reinterpret_cast< cmf::water::FluxNode * >(argp1);
   {
     res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_cmf__math__Time,  0  | 0);
     if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "FluxNode_Waterbalance" "', argument " "2"" of type '" "cmf::math::Time""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "FluxNode_water_balance" "', argument " "2"" of type '" "cmf::math::Time""'"); 
     }  
     if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "FluxNode_Waterbalance" "', argument " "2"" of type '" "cmf::math::Time""'");
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "FluxNode_water_balance" "', argument " "2"" of type '" "cmf::math::Time""'");
     } else {
       cmf::math::Time * temp = reinterpret_cast< cmf::math::Time * >(argp2);
       arg2 = *temp;
@@ -47404,12 +47413,12 @@ SWIGINTERN PyObject *_wrap_FluxNode_Waterbalance__SWIG_0(PyObject *SWIGUNUSEDPAR
   }
   res3 = SWIG_ConvertPtr(swig_obj[2], &argp3,SWIGTYPE_p_cmf__water__FluxConnection, 0 |  0 );
   if (!SWIG_IsOK(res3)) {
-    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "FluxNode_Waterbalance" "', argument " "3"" of type '" "cmf::water::FluxConnection const *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "FluxNode_water_balance" "', argument " "3"" of type '" "cmf::water::FluxConnection const *""'"); 
   }
   arg3 = reinterpret_cast< cmf::water::FluxConnection * >(argp3);
   {
     try {
-      result = (real)(arg1)->Waterbalance(arg2,(cmf::water::FluxConnection const *)arg3);
+      result = (real)(arg1)->water_balance(arg2,(cmf::water::FluxConnection const *)arg3);
     } 
     /*@SWIG:C:\\Programme\\swig\\Lib\\typemaps\\exception.swg,61,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
     catch (std::invalid_argument& e) {
@@ -47436,7 +47445,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_FluxNode_Waterbalance__SWIG_1(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_FluxNode_water_balance__SWIG_1(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   cmf::water::FluxNode *arg1 = (cmf::water::FluxNode *) 0 ;
   cmf::math::Time arg2 ;
@@ -47449,16 +47458,16 @@ SWIGINTERN PyObject *_wrap_FluxNode_Waterbalance__SWIG_1(PyObject *SWIGUNUSEDPAR
   if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
   res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__water__FluxNode, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "FluxNode_Waterbalance" "', argument " "1"" of type '" "cmf::water::FluxNode *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "FluxNode_water_balance" "', argument " "1"" of type '" "cmf::water::FluxNode *""'"); 
   }
   arg1 = reinterpret_cast< cmf::water::FluxNode * >(argp1);
   {
     res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_cmf__math__Time,  0  | 0);
     if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "FluxNode_Waterbalance" "', argument " "2"" of type '" "cmf::math::Time""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "FluxNode_water_balance" "', argument " "2"" of type '" "cmf::math::Time""'"); 
     }  
     if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "FluxNode_Waterbalance" "', argument " "2"" of type '" "cmf::math::Time""'");
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "FluxNode_water_balance" "', argument " "2"" of type '" "cmf::math::Time""'");
     } else {
       cmf::math::Time * temp = reinterpret_cast< cmf::math::Time * >(argp2);
       arg2 = *temp;
@@ -47467,7 +47476,7 @@ SWIGINTERN PyObject *_wrap_FluxNode_Waterbalance__SWIG_1(PyObject *SWIGUNUSEDPAR
   }
   {
     try {
-      result = (real)(arg1)->Waterbalance(arg2);
+      result = (real)(arg1)->water_balance(arg2);
     } 
     /*@SWIG:C:\\Programme\\swig\\Lib\\typemaps\\exception.swg,61,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
     catch (std::invalid_argument& e) {
@@ -47494,11 +47503,11 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_FluxNode_Waterbalance(PyObject *self, PyObject *args) {
+SWIGINTERN PyObject *_wrap_FluxNode_water_balance(PyObject *self, PyObject *args) {
   int argc;
   PyObject *argv[4];
   
-  if (!(argc = SWIG_Python_UnpackTuple(args,"FluxNode_Waterbalance",0,3,argv))) SWIG_fail;
+  if (!(argc = SWIG_Python_UnpackTuple(args,"FluxNode_water_balance",0,3,argv))) SWIG_fail;
   --argc;
   {
     unsigned long _index = 0;
@@ -47573,17 +47582,17 @@ SWIGINTERN PyObject *_wrap_FluxNode_Waterbalance(PyObject *self, PyObject *args)
   dispatch:
     switch(_index) {
     case 1:
-      return _wrap_FluxNode_Waterbalance__SWIG_1(self, argc, argv);
+      return _wrap_FluxNode_water_balance__SWIG_1(self, argc, argv);
     case 2:
-      return _wrap_FluxNode_Waterbalance__SWIG_0(self, argc, argv);
+      return _wrap_FluxNode_water_balance__SWIG_0(self, argc, argv);
     }
   }
   
 fail:
-  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number of arguments for overloaded function 'FluxNode_Waterbalance'.\n"
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number of arguments for overloaded function 'FluxNode_water_balance'.\n"
     "  Possible C/C++ prototypes are:\n"
-    "    Waterbalance(cmf::water::FluxNode *,cmf::math::Time,cmf::water::FluxConnection const *)\n"
-    "    Waterbalance(cmf::water::FluxNode *,cmf::math::Time)\n");
+    "    water_balance(cmf::water::FluxNode *,cmf::math::Time,cmf::water::FluxConnection const *)\n"
+    "    water_balance(cmf::water::FluxNode *,cmf::math::Time)\n");
   return NULL;
 }
 
@@ -47743,7 +47752,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_FluxNode_Empty(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_FluxNode_is_empty(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   cmf::water::FluxNode *arg1 = (cmf::water::FluxNode *) 0 ;
   void *argp1 = 0 ;
@@ -47755,12 +47764,12 @@ SWIGINTERN PyObject *_wrap_FluxNode_Empty(PyObject *SWIGUNUSEDPARM(self), PyObje
   swig_obj[0] = args;
   res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__water__FluxNode, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "FluxNode_Empty" "', argument " "1"" of type '" "cmf::water::FluxNode *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "FluxNode_is_empty" "', argument " "1"" of type '" "cmf::water::FluxNode *""'"); 
   }
   arg1 = reinterpret_cast< cmf::water::FluxNode * >(argp1);
   {
     try {
-      result = (bool)(arg1)->Empty();
+      result = (bool)(arg1)->is_empty();
     } 
     /*@SWIG:C:\\Programme\\swig\\Lib\\typemaps\\exception.swg,61,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
     catch (std::invalid_argument& e) {
@@ -48984,6 +48993,1500 @@ SWIGINTERN PyObject *FluxConnection_swigregister(PyObject *SWIGUNUSEDPARM(self),
   if (!SWIG_Python_UnpackTuple(args,(char*)"swigregister", 1, 1,&obj)) return NULL;
   SWIG_TypeNewClientData(SWIGTYPE_p_cmf__water__FluxConnection, SWIG_NewClientData(obj));
   return SWIG_Py_Void();
+}
+
+SWIGINTERN PyObject *_wrap_linear_scale_displacement_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  cmf::water::linear_scale *arg1 = (cmf::water::linear_scale *) 0 ;
+  real arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  double val2 ;
+  int ecode2 = 0 ;
+  PyObject *swig_obj[2] ;
+  
+  if (!SWIG_Python_UnpackTuple(args,"linear_scale_displacement_set",2,2,swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__water__linear_scale, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "linear_scale_displacement_set" "', argument " "1"" of type '" "cmf::water::linear_scale *""'"); 
+  }
+  arg1 = reinterpret_cast< cmf::water::linear_scale * >(argp1);
+  ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "linear_scale_displacement_set" "', argument " "2"" of type '" "real""'");
+  } 
+  arg2 = static_cast< real >(val2);
+  if (arg1) (arg1)->displacement = arg2;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_linear_scale_displacement_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  cmf::water::linear_scale *arg1 = (cmf::water::linear_scale *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  real result;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__water__linear_scale, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "linear_scale_displacement_get" "', argument " "1"" of type '" "cmf::water::linear_scale *""'"); 
+  }
+  arg1 = reinterpret_cast< cmf::water::linear_scale * >(argp1);
+  result = (real) ((arg1)->displacement);
+  resultobj = SWIG_From_double(static_cast< double >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_linear_scale_slope_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  cmf::water::linear_scale *arg1 = (cmf::water::linear_scale *) 0 ;
+  real arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  double val2 ;
+  int ecode2 = 0 ;
+  PyObject *swig_obj[2] ;
+  
+  if (!SWIG_Python_UnpackTuple(args,"linear_scale_slope_set",2,2,swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__water__linear_scale, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "linear_scale_slope_set" "', argument " "1"" of type '" "cmf::water::linear_scale *""'"); 
+  }
+  arg1 = reinterpret_cast< cmf::water::linear_scale * >(argp1);
+  ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "linear_scale_slope_set" "', argument " "2"" of type '" "real""'");
+  } 
+  arg2 = static_cast< real >(val2);
+  if (arg1) (arg1)->slope = arg2;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_linear_scale_slope_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  cmf::water::linear_scale *arg1 = (cmf::water::linear_scale *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  real result;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__water__linear_scale, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "linear_scale_slope_get" "', argument " "1"" of type '" "cmf::water::linear_scale *""'"); 
+  }
+  arg1 = reinterpret_cast< cmf::water::linear_scale * >(argp1);
+  result = (real) ((arg1)->slope);
+  resultobj = SWIG_From_double(static_cast< double >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_linear_scale___call__(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  cmf::water::linear_scale *arg1 = (cmf::water::linear_scale *) 0 ;
+  real arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  double val2 ;
+  int ecode2 = 0 ;
+  PyObject *swig_obj[2] ;
+  real result;
+  
+  if (!SWIG_Python_UnpackTuple(args,"linear_scale___call__",2,2,swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__water__linear_scale, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "linear_scale___call__" "', argument " "1"" of type '" "cmf::water::linear_scale const *""'"); 
+  }
+  arg1 = reinterpret_cast< cmf::water::linear_scale * >(argp1);
+  ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "linear_scale___call__" "', argument " "2"" of type '" "real""'");
+  } 
+  arg2 = static_cast< real >(val2);
+  {
+    try {
+      result = (real)((cmf::water::linear_scale const *)arg1)->operator ()(arg2);
+    } 
+    /*@SWIG:C:\\Programme\\swig\\Lib\\typemaps\\exception.swg,61,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
+    catch (std::invalid_argument& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::domain_error& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::overflow_error& e) {
+      SWIG_exception_fail(SWIG_OverflowError, e.what() );
+    } catch (std::out_of_range& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::length_error& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::runtime_error& e) {
+      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
+    } catch (std::exception& e) {
+      SWIG_exception_fail(SWIG_SystemError, e.what() );
+    }
+    /*@SWIG@*/
+  }
+  resultobj = SWIG_From_double(static_cast< double >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_linear_scale__SWIG_0(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  real arg1 ;
+  real arg2 ;
+  double val1 ;
+  int ecode1 = 0 ;
+  double val2 ;
+  int ecode2 = 0 ;
+  cmf::water::linear_scale *result = 0 ;
+  
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  ecode1 = SWIG_AsVal_double(swig_obj[0], &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "new_linear_scale" "', argument " "1"" of type '" "real""'");
+  } 
+  arg1 = static_cast< real >(val1);
+  ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "new_linear_scale" "', argument " "2"" of type '" "real""'");
+  } 
+  arg2 = static_cast< real >(val2);
+  {
+    try {
+      result = (cmf::water::linear_scale *)new cmf::water::linear_scale(arg1,arg2);
+    } 
+    /*@SWIG:C:\\Programme\\swig\\Lib\\typemaps\\exception.swg,61,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
+    catch (std::invalid_argument& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::domain_error& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::overflow_error& e) {
+      SWIG_exception_fail(SWIG_OverflowError, e.what() );
+    } catch (std::out_of_range& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::length_error& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::runtime_error& e) {
+      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
+    } catch (std::exception& e) {
+      SWIG_exception_fail(SWIG_SystemError, e.what() );
+    }
+    /*@SWIG@*/
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_cmf__water__linear_scale, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_linear_scale__SWIG_1(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  real arg1 ;
+  double val1 ;
+  int ecode1 = 0 ;
+  cmf::water::linear_scale *result = 0 ;
+  
+  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
+  ecode1 = SWIG_AsVal_double(swig_obj[0], &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "new_linear_scale" "', argument " "1"" of type '" "real""'");
+  } 
+  arg1 = static_cast< real >(val1);
+  {
+    try {
+      result = (cmf::water::linear_scale *)new cmf::water::linear_scale(arg1);
+    } 
+    /*@SWIG:C:\\Programme\\swig\\Lib\\typemaps\\exception.swg,61,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
+    catch (std::invalid_argument& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::domain_error& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::overflow_error& e) {
+      SWIG_exception_fail(SWIG_OverflowError, e.what() );
+    } catch (std::out_of_range& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::length_error& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::runtime_error& e) {
+      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
+    } catch (std::exception& e) {
+      SWIG_exception_fail(SWIG_SystemError, e.what() );
+    }
+    /*@SWIG@*/
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_cmf__water__linear_scale, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_linear_scale__SWIG_2(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **SWIGUNUSEDPARM(swig_obj)) {
+  PyObject *resultobj = 0;
+  cmf::water::linear_scale *result = 0 ;
+  
+  if ((nobjs < 0) || (nobjs > 0)) SWIG_fail;
+  {
+    try {
+      result = (cmf::water::linear_scale *)new cmf::water::linear_scale();
+    } 
+    /*@SWIG:C:\\Programme\\swig\\Lib\\typemaps\\exception.swg,61,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
+    catch (std::invalid_argument& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::domain_error& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::overflow_error& e) {
+      SWIG_exception_fail(SWIG_OverflowError, e.what() );
+    } catch (std::out_of_range& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::length_error& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::runtime_error& e) {
+      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
+    } catch (std::exception& e) {
+      SWIG_exception_fail(SWIG_SystemError, e.what() );
+    }
+    /*@SWIG@*/
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_cmf__water__linear_scale, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_linear_scale(PyObject *self, PyObject *args) {
+  int argc;
+  PyObject *argv[3];
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args,"new_linear_scale",0,2,argv))) SWIG_fail;
+  --argc;
+  {
+    unsigned long _index = 0;
+    SWIG_TypeRank _rank = 0; 
+    if (argc == 0) {
+      SWIG_TypeRank _ranki = 0;
+      SWIG_TypeRank _rankm = 0;
+      if (!_index || (_ranki < _rank)) {
+        _rank = _ranki; _index = 1;
+        if (_rank == _rankm) goto dispatch;
+      }
+    }
+    if (argc == 1) {
+      SWIG_TypeRank _ranki = 0;
+      SWIG_TypeRank _rankm = 0;
+      SWIG_TypeRank _pi = 1;
+      int _v = 0;
+      {
+        {
+          int res = SWIG_AsVal_double(argv[0], NULL);
+          _v = SWIG_CheckState(res);
+        }
+      }
+      if (!_v) goto check_2;
+      _ranki += _v*_pi;
+      _rankm += _pi;
+      _pi *= SWIG_MAXCASTRANK;
+      if (!_index || (_ranki < _rank)) {
+        _rank = _ranki; _index = 2;
+        if (_rank == _rankm) goto dispatch;
+      }
+    }
+  check_2:
+    
+    if (argc == 2) {
+      SWIG_TypeRank _ranki = 0;
+      SWIG_TypeRank _rankm = 0;
+      SWIG_TypeRank _pi = 1;
+      int _v = 0;
+      {
+        {
+          int res = SWIG_AsVal_double(argv[0], NULL);
+          _v = SWIG_CheckState(res);
+        }
+      }
+      if (!_v) goto check_3;
+      _ranki += _v*_pi;
+      _rankm += _pi;
+      _pi *= SWIG_MAXCASTRANK;
+      {
+        {
+          int res = SWIG_AsVal_double(argv[1], NULL);
+          _v = SWIG_CheckState(res);
+        }
+      }
+      if (!_v) goto check_3;
+      _ranki += _v*_pi;
+      _rankm += _pi;
+      _pi *= SWIG_MAXCASTRANK;
+      if (!_index || (_ranki < _rank)) {
+        _rank = _ranki; _index = 3;
+        if (_rank == _rankm) goto dispatch;
+      }
+    }
+  check_3:
+    
+  dispatch:
+    switch(_index) {
+    case 1:
+      return _wrap_new_linear_scale__SWIG_2(self, argc, argv);
+    case 2:
+      return _wrap_new_linear_scale__SWIG_1(self, argc, argv);
+    case 3:
+      return _wrap_new_linear_scale__SWIG_0(self, argc, argv);
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number of arguments for overloaded function 'new_linear_scale'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    cmf::water::linear_scale(real,real)\n"
+    "    cmf::water::linear_scale(real)\n"
+    "    cmf::water::linear_scale()\n");
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_linear_scale(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  cmf::water::linear_scale *arg1 = (cmf::water::linear_scale *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__water__linear_scale, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_linear_scale" "', argument " "1"" of type '" "cmf::water::linear_scale *""'"); 
+  }
+  arg1 = reinterpret_cast< cmf::water::linear_scale * >(argp1);
+  {
+    try {
+      delete arg1;
+    } 
+    /*@SWIG:C:\\Programme\\swig\\Lib\\typemaps\\exception.swg,61,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
+    catch (std::invalid_argument& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::domain_error& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::overflow_error& e) {
+      SWIG_exception_fail(SWIG_OverflowError, e.what() );
+    } catch (std::out_of_range& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::length_error& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::runtime_error& e) {
+      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
+    } catch (std::exception& e) {
+      SWIG_exception_fail(SWIG_SystemError, e.what() );
+    }
+    /*@SWIG@*/
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *linear_scale_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *obj;
+  if (!SWIG_Python_UnpackTuple(args,(char*)"swigregister", 1, 1,&obj)) return NULL;
+  SWIG_TypeNewClientData(SWIGTYPE_p_cmf__water__linear_scale, SWIG_NewClientData(obj));
+  return SWIG_Py_Void();
+}
+
+SWIGINTERN PyObject *linear_scale_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  return SWIG_Python_InitShadowInstance(args);
+}
+
+SWIGINTERN PyObject *_wrap_DricheletBoundary_is_source_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  cmf::water::DricheletBoundary *arg1 = (cmf::water::DricheletBoundary *) 0 ;
+  bool arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  bool val2 ;
+  int ecode2 = 0 ;
+  PyObject *swig_obj[2] ;
+  
+  if (!SWIG_Python_UnpackTuple(args,"DricheletBoundary_is_source_set",2,2,swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__water__DricheletBoundary, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DricheletBoundary_is_source_set" "', argument " "1"" of type '" "cmf::water::DricheletBoundary *""'"); 
+  }
+  arg1 = reinterpret_cast< cmf::water::DricheletBoundary * >(argp1);
+  ecode2 = SWIG_AsVal_bool(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "DricheletBoundary_is_source_set" "', argument " "2"" of type '" "bool""'");
+  } 
+  arg2 = static_cast< bool >(val2);
+  if (arg1) (arg1)->is_source = arg2;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_DricheletBoundary_is_source_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  cmf::water::DricheletBoundary *arg1 = (cmf::water::DricheletBoundary *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  bool result;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__water__DricheletBoundary, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DricheletBoundary_is_source_get" "', argument " "1"" of type '" "cmf::water::DricheletBoundary *""'"); 
+  }
+  arg1 = reinterpret_cast< cmf::water::DricheletBoundary * >(argp1);
+  result = (bool) ((arg1)->is_source);
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_DricheletBoundary_is_empty(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  cmf::water::DricheletBoundary *arg1 = (cmf::water::DricheletBoundary *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  bool result;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__water__DricheletBoundary, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DricheletBoundary_is_empty" "', argument " "1"" of type '" "cmf::water::DricheletBoundary const *""'"); 
+  }
+  arg1 = reinterpret_cast< cmf::water::DricheletBoundary * >(argp1);
+  {
+    try {
+      result = (bool)((cmf::water::DricheletBoundary const *)arg1)->is_empty();
+    } 
+    /*@SWIG:C:\\Programme\\swig\\Lib\\typemaps\\exception.swg,61,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
+    catch (std::invalid_argument& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::domain_error& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::overflow_error& e) {
+      SWIG_exception_fail(SWIG_OverflowError, e.what() );
+    } catch (std::out_of_range& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::length_error& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::runtime_error& e) {
+      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
+    } catch (std::exception& e) {
+      SWIG_exception_fail(SWIG_SystemError, e.what() );
+    }
+    /*@SWIG@*/
+  }
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_DricheletBoundary_RecalcFluxes(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  cmf::water::DricheletBoundary *arg1 = (cmf::water::DricheletBoundary *) 0 ;
+  cmf::math::Time arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 ;
+  int res2 = 0 ;
+  PyObject *swig_obj[2] ;
+  bool result;
+  
+  if (!SWIG_Python_UnpackTuple(args,"DricheletBoundary_RecalcFluxes",2,2,swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__water__DricheletBoundary, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DricheletBoundary_RecalcFluxes" "', argument " "1"" of type '" "cmf::water::DricheletBoundary const *""'"); 
+  }
+  arg1 = reinterpret_cast< cmf::water::DricheletBoundary * >(argp1);
+  {
+    res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_cmf__math__Time,  0  | 0);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "DricheletBoundary_RecalcFluxes" "', argument " "2"" of type '" "cmf::math::Time""'"); 
+    }  
+    if (!argp2) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "DricheletBoundary_RecalcFluxes" "', argument " "2"" of type '" "cmf::math::Time""'");
+    } else {
+      cmf::math::Time * temp = reinterpret_cast< cmf::math::Time * >(argp2);
+      arg2 = *temp;
+      if (SWIG_IsNewObj(res2)) delete temp;
+    }
+  }
+  {
+    try {
+      result = (bool)((cmf::water::DricheletBoundary const *)arg1)->RecalcFluxes(arg2);
+    } 
+    /*@SWIG:C:\\Programme\\swig\\Lib\\typemaps\\exception.swg,61,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
+    catch (std::invalid_argument& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::domain_error& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::overflow_error& e) {
+      SWIG_exception_fail(SWIG_OverflowError, e.what() );
+    } catch (std::out_of_range& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::length_error& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::runtime_error& e) {
+      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
+    } catch (std::exception& e) {
+      SWIG_exception_fail(SWIG_SystemError, e.what() );
+    }
+    /*@SWIG@*/
+  }
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_DricheletBoundary(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  cmf::water::DricheletBoundary *arg1 = (cmf::water::DricheletBoundary *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__water__DricheletBoundary, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_DricheletBoundary" "', argument " "1"" of type '" "cmf::water::DricheletBoundary *""'"); 
+  }
+  arg1 = reinterpret_cast< cmf::water::DricheletBoundary * >(argp1);
+  {
+    try {
+      delete arg1;
+    } 
+    /*@SWIG:C:\\Programme\\swig\\Lib\\typemaps\\exception.swg,61,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
+    catch (std::invalid_argument& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::domain_error& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::overflow_error& e) {
+      SWIG_exception_fail(SWIG_OverflowError, e.what() );
+    } catch (std::out_of_range& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::length_error& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::runtime_error& e) {
+      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
+    } catch (std::exception& e) {
+      SWIG_exception_fail(SWIG_SystemError, e.what() );
+    }
+    /*@SWIG@*/
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *DricheletBoundary_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *obj;
+  if (!SWIG_Python_UnpackTuple(args,(char*)"swigregister", 1, 1,&obj)) return NULL;
+  SWIG_TypeNewClientData(SWIGTYPE_p_cmf__water__DricheletBoundary, SWIG_NewClientData(obj));
+  return SWIG_Py_Void();
+}
+
+SWIGINTERN PyObject *_wrap_NeumannBoundary_flux_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  cmf::water::NeumannBoundary *arg1 = (cmf::water::NeumannBoundary *) 0 ;
+  cmf::math::timeseries *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject *swig_obj[2] ;
+  
+  if (!SWIG_Python_UnpackTuple(args,"NeumannBoundary_flux_set",2,2,swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__water__NeumannBoundary, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "NeumannBoundary_flux_set" "', argument " "1"" of type '" "cmf::water::NeumannBoundary *""'"); 
+  }
+  arg1 = reinterpret_cast< cmf::water::NeumannBoundary * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_cmf__math__timeseries,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "NeumannBoundary_flux_set" "', argument " "2"" of type '" "cmf::math::timeseries const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "NeumannBoundary_flux_set" "', argument " "2"" of type '" "cmf::math::timeseries const &""'"); 
+  }
+  arg2 = reinterpret_cast< cmf::math::timeseries * >(argp2);
+  if (arg1) (arg1)->flux = *arg2;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_NeumannBoundary_flux_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  cmf::water::NeumannBoundary *arg1 = (cmf::water::NeumannBoundary *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  cmf::math::timeseries *result = 0 ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__water__NeumannBoundary, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "NeumannBoundary_flux_get" "', argument " "1"" of type '" "cmf::water::NeumannBoundary *""'"); 
+  }
+  arg1 = reinterpret_cast< cmf::water::NeumannBoundary * >(argp1);
+  {
+    cmf::math::timeseries const &_result_ref =  ((arg1)->flux);
+    result = (cmf::math::timeseries *) &_result_ref;
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_cmf__math__timeseries, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_NeumannBoundary_flux_scale_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  cmf::water::NeumannBoundary *arg1 = (cmf::water::NeumannBoundary *) 0 ;
+  cmf::water::linear_scale *arg2 = (cmf::water::linear_scale *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject *swig_obj[2] ;
+  
+  if (!SWIG_Python_UnpackTuple(args,"NeumannBoundary_flux_scale_set",2,2,swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__water__NeumannBoundary, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "NeumannBoundary_flux_scale_set" "', argument " "1"" of type '" "cmf::water::NeumannBoundary *""'"); 
+  }
+  arg1 = reinterpret_cast< cmf::water::NeumannBoundary * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_cmf__water__linear_scale, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "NeumannBoundary_flux_scale_set" "', argument " "2"" of type '" "cmf::water::linear_scale *""'"); 
+  }
+  arg2 = reinterpret_cast< cmf::water::linear_scale * >(argp2);
+  if (arg1) (arg1)->flux_scale = *arg2;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_NeumannBoundary_flux_scale_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  cmf::water::NeumannBoundary *arg1 = (cmf::water::NeumannBoundary *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  cmf::water::linear_scale *result = 0 ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__water__NeumannBoundary, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "NeumannBoundary_flux_scale_get" "', argument " "1"" of type '" "cmf::water::NeumannBoundary *""'"); 
+  }
+  arg1 = reinterpret_cast< cmf::water::NeumannBoundary * >(argp1);
+  result = (cmf::water::linear_scale *)& ((arg1)->flux_scale);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_cmf__water__linear_scale, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_NeumannBoundary_concentration_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  cmf::water::NeumannBoundary *arg1 = (cmf::water::NeumannBoundary *) 0 ;
+  cmf::water::SoluteTimeseries *arg2 = (cmf::water::SoluteTimeseries *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject *swig_obj[2] ;
+  
+  if (!SWIG_Python_UnpackTuple(args,"NeumannBoundary_concentration_set",2,2,swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__water__NeumannBoundary, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "NeumannBoundary_concentration_set" "', argument " "1"" of type '" "cmf::water::NeumannBoundary *""'"); 
+  }
+  arg1 = reinterpret_cast< cmf::water::NeumannBoundary * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_cmf__water__SoluteTimeseries, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "NeumannBoundary_concentration_set" "', argument " "2"" of type '" "cmf::water::SoluteTimeseries *""'"); 
+  }
+  arg2 = reinterpret_cast< cmf::water::SoluteTimeseries * >(argp2);
+  if (arg1) (arg1)->concentration = *arg2;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_NeumannBoundary_concentration_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  cmf::water::NeumannBoundary *arg1 = (cmf::water::NeumannBoundary *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  cmf::water::SoluteTimeseries *result = 0 ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__water__NeumannBoundary, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "NeumannBoundary_concentration_get" "', argument " "1"" of type '" "cmf::water::NeumannBoundary *""'"); 
+  }
+  arg1 = reinterpret_cast< cmf::water::NeumannBoundary * >(argp1);
+  result = (cmf::water::SoluteTimeseries *)& ((arg1)->concentration);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_cmf__water__SoluteTimeseries, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_NeumannBoundary___call__(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  cmf::water::NeumannBoundary *arg1 = (cmf::water::NeumannBoundary *) 0 ;
+  cmf::math::Time arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 ;
+  int res2 = 0 ;
+  PyObject *swig_obj[2] ;
+  real result;
+  
+  if (!SWIG_Python_UnpackTuple(args,"NeumannBoundary___call__",2,2,swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__water__NeumannBoundary, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "NeumannBoundary___call__" "', argument " "1"" of type '" "cmf::water::NeumannBoundary const *""'"); 
+  }
+  arg1 = reinterpret_cast< cmf::water::NeumannBoundary * >(argp1);
+  {
+    res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_cmf__math__Time,  0  | 0);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "NeumannBoundary___call__" "', argument " "2"" of type '" "cmf::math::Time""'"); 
+    }  
+    if (!argp2) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "NeumannBoundary___call__" "', argument " "2"" of type '" "cmf::math::Time""'");
+    } else {
+      cmf::math::Time * temp = reinterpret_cast< cmf::math::Time * >(argp2);
+      arg2 = *temp;
+      if (SWIG_IsNewObj(res2)) delete temp;
+    }
+  }
+  {
+    try {
+      result = (real)((cmf::water::NeumannBoundary const *)arg1)->operator ()(arg2);
+    } 
+    /*@SWIG:C:\\Programme\\swig\\Lib\\typemaps\\exception.swg,61,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
+    catch (std::invalid_argument& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::domain_error& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::overflow_error& e) {
+      SWIG_exception_fail(SWIG_OverflowError, e.what() );
+    } catch (std::out_of_range& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::length_error& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::runtime_error& e) {
+      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
+    } catch (std::exception& e) {
+      SWIG_exception_fail(SWIG_SystemError, e.what() );
+    }
+    /*@SWIG@*/
+  }
+  resultobj = SWIG_From_double(static_cast< double >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_NeumannBoundary_is_empty(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  cmf::water::NeumannBoundary *arg1 = (cmf::water::NeumannBoundary *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  bool result;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__water__NeumannBoundary, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "NeumannBoundary_is_empty" "', argument " "1"" of type '" "cmf::water::NeumannBoundary const *""'"); 
+  }
+  arg1 = reinterpret_cast< cmf::water::NeumannBoundary * >(argp1);
+  {
+    try {
+      result = (bool)((cmf::water::NeumannBoundary const *)arg1)->is_empty();
+    } 
+    /*@SWIG:C:\\Programme\\swig\\Lib\\typemaps\\exception.swg,61,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
+    catch (std::invalid_argument& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::domain_error& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::overflow_error& e) {
+      SWIG_exception_fail(SWIG_OverflowError, e.what() );
+    } catch (std::out_of_range& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::length_error& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::runtime_error& e) {
+      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
+    } catch (std::exception& e) {
+      SWIG_exception_fail(SWIG_SystemError, e.what() );
+    }
+    /*@SWIG@*/
+  }
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_NeumannBoundary__SWIG_0(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  cmf::project *arg1 = 0 ;
+  cmf::math::timeseries arg2 ;
+  cmf::water::SoluteTimeseries arg3 ;
+  cmf::geometry::point arg4 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 ;
+  int res2 = 0 ;
+  void *argp3 ;
+  int res3 = 0 ;
+  cmf::water::NeumannBoundary *result = 0 ;
+  
+  if ((nobjs < 4) || (nobjs > 4)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_cmf__project,  0  | 0);
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_NeumannBoundary" "', argument " "1"" of type '" "cmf::project const &""'"); 
+  }
+  if (!argp1) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_NeumannBoundary" "', argument " "1"" of type '" "cmf::project const &""'"); 
+  }
+  arg1 = reinterpret_cast< cmf::project * >(argp1);
+  {
+    res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_cmf__math__timeseries,  0  | 0);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_NeumannBoundary" "', argument " "2"" of type '" "cmf::math::timeseries""'"); 
+    }  
+    if (!argp2) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_NeumannBoundary" "', argument " "2"" of type '" "cmf::math::timeseries""'");
+    } else {
+      cmf::math::timeseries * temp = reinterpret_cast< cmf::math::timeseries * >(argp2);
+      arg2 = *temp;
+      if (SWIG_IsNewObj(res2)) delete temp;
+    }
+  }
+  {
+    res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_cmf__water__SoluteTimeseries,  0  | 0);
+    if (!SWIG_IsOK(res3)) {
+      SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "new_NeumannBoundary" "', argument " "3"" of type '" "cmf::water::SoluteTimeseries""'"); 
+    }  
+    if (!argp3) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_NeumannBoundary" "', argument " "3"" of type '" "cmf::water::SoluteTimeseries""'");
+    } else {
+      cmf::water::SoluteTimeseries * temp = reinterpret_cast< cmf::water::SoluteTimeseries * >(argp3);
+      arg3 = *temp;
+      if (SWIG_IsNewObj(res3)) delete temp;
+    }
+  }
+  {
+    cmf::geometry::point p;
+    if (((!convert_xyz_to_point(swig_obj[3],p)) || !convert_seq_to_point(swig_obj[3],p)))
+    {
+      PyErr_SetString(PyExc_ValueError,"The object to convert needs to be either a sequence of length 2 or 3 or an object exposing an x and y attribute of type float(z is used if present)");
+    }
+    arg4=p;
+  }
+  {
+    try {
+      result = (cmf::water::NeumannBoundary *)new cmf::water::NeumannBoundary((cmf::project const &)*arg1,arg2,arg3,arg4);
+    } 
+    /*@SWIG:C:\\Programme\\swig\\Lib\\typemaps\\exception.swg,61,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
+    catch (std::invalid_argument& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::domain_error& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::overflow_error& e) {
+      SWIG_exception_fail(SWIG_OverflowError, e.what() );
+    } catch (std::out_of_range& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::length_error& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::runtime_error& e) {
+      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
+    } catch (std::exception& e) {
+      SWIG_exception_fail(SWIG_SystemError, e.what() );
+    }
+    /*@SWIG@*/
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_cmf__water__NeumannBoundary, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_NeumannBoundary__SWIG_1(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  cmf::project *arg1 = 0 ;
+  cmf::math::timeseries arg2 ;
+  cmf::water::SoluteTimeseries arg3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 ;
+  int res2 = 0 ;
+  void *argp3 ;
+  int res3 = 0 ;
+  cmf::water::NeumannBoundary *result = 0 ;
+  
+  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_cmf__project,  0  | 0);
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_NeumannBoundary" "', argument " "1"" of type '" "cmf::project const &""'"); 
+  }
+  if (!argp1) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_NeumannBoundary" "', argument " "1"" of type '" "cmf::project const &""'"); 
+  }
+  arg1 = reinterpret_cast< cmf::project * >(argp1);
+  {
+    res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_cmf__math__timeseries,  0  | 0);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_NeumannBoundary" "', argument " "2"" of type '" "cmf::math::timeseries""'"); 
+    }  
+    if (!argp2) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_NeumannBoundary" "', argument " "2"" of type '" "cmf::math::timeseries""'");
+    } else {
+      cmf::math::timeseries * temp = reinterpret_cast< cmf::math::timeseries * >(argp2);
+      arg2 = *temp;
+      if (SWIG_IsNewObj(res2)) delete temp;
+    }
+  }
+  {
+    res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_cmf__water__SoluteTimeseries,  0  | 0);
+    if (!SWIG_IsOK(res3)) {
+      SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "new_NeumannBoundary" "', argument " "3"" of type '" "cmf::water::SoluteTimeseries""'"); 
+    }  
+    if (!argp3) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_NeumannBoundary" "', argument " "3"" of type '" "cmf::water::SoluteTimeseries""'");
+    } else {
+      cmf::water::SoluteTimeseries * temp = reinterpret_cast< cmf::water::SoluteTimeseries * >(argp3);
+      arg3 = *temp;
+      if (SWIG_IsNewObj(res3)) delete temp;
+    }
+  }
+  {
+    try {
+      result = (cmf::water::NeumannBoundary *)new cmf::water::NeumannBoundary((cmf::project const &)*arg1,arg2,arg3);
+    } 
+    /*@SWIG:C:\\Programme\\swig\\Lib\\typemaps\\exception.swg,61,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
+    catch (std::invalid_argument& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::domain_error& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::overflow_error& e) {
+      SWIG_exception_fail(SWIG_OverflowError, e.what() );
+    } catch (std::out_of_range& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::length_error& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::runtime_error& e) {
+      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
+    } catch (std::exception& e) {
+      SWIG_exception_fail(SWIG_SystemError, e.what() );
+    }
+    /*@SWIG@*/
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_cmf__water__NeumannBoundary, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_NeumannBoundary__SWIG_2(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  cmf::project *arg1 = 0 ;
+  cmf::math::timeseries arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 ;
+  int res2 = 0 ;
+  cmf::water::NeumannBoundary *result = 0 ;
+  
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_cmf__project,  0  | 0);
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_NeumannBoundary" "', argument " "1"" of type '" "cmf::project const &""'"); 
+  }
+  if (!argp1) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_NeumannBoundary" "', argument " "1"" of type '" "cmf::project const &""'"); 
+  }
+  arg1 = reinterpret_cast< cmf::project * >(argp1);
+  {
+    res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_cmf__math__timeseries,  0  | 0);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_NeumannBoundary" "', argument " "2"" of type '" "cmf::math::timeseries""'"); 
+    }  
+    if (!argp2) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_NeumannBoundary" "', argument " "2"" of type '" "cmf::math::timeseries""'");
+    } else {
+      cmf::math::timeseries * temp = reinterpret_cast< cmf::math::timeseries * >(argp2);
+      arg2 = *temp;
+      if (SWIG_IsNewObj(res2)) delete temp;
+    }
+  }
+  {
+    try {
+      result = (cmf::water::NeumannBoundary *)new cmf::water::NeumannBoundary((cmf::project const &)*arg1,arg2);
+    } 
+    /*@SWIG:C:\\Programme\\swig\\Lib\\typemaps\\exception.swg,61,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
+    catch (std::invalid_argument& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::domain_error& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::overflow_error& e) {
+      SWIG_exception_fail(SWIG_OverflowError, e.what() );
+    } catch (std::out_of_range& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::length_error& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::runtime_error& e) {
+      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
+    } catch (std::exception& e) {
+      SWIG_exception_fail(SWIG_SystemError, e.what() );
+    }
+    /*@SWIG@*/
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_cmf__water__NeumannBoundary, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_NeumannBoundary__SWIG_3(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  cmf::project *arg1 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  cmf::water::NeumannBoundary *result = 0 ;
+  
+  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_cmf__project,  0  | 0);
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_NeumannBoundary" "', argument " "1"" of type '" "cmf::project const &""'"); 
+  }
+  if (!argp1) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_NeumannBoundary" "', argument " "1"" of type '" "cmf::project const &""'"); 
+  }
+  arg1 = reinterpret_cast< cmf::project * >(argp1);
+  {
+    try {
+      result = (cmf::water::NeumannBoundary *)new cmf::water::NeumannBoundary((cmf::project const &)*arg1);
+    } 
+    /*@SWIG:C:\\Programme\\swig\\Lib\\typemaps\\exception.swg,61,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
+    catch (std::invalid_argument& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::domain_error& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::overflow_error& e) {
+      SWIG_exception_fail(SWIG_OverflowError, e.what() );
+    } catch (std::out_of_range& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::length_error& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::runtime_error& e) {
+      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
+    } catch (std::exception& e) {
+      SWIG_exception_fail(SWIG_SystemError, e.what() );
+    }
+    /*@SWIG@*/
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_cmf__water__NeumannBoundary, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_NeumannBoundary(PyObject *self, PyObject *args) {
+  int argc;
+  PyObject *argv[5];
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args,"new_NeumannBoundary",0,4,argv))) SWIG_fail;
+  --argc;
+  {
+    unsigned long _index = 0;
+    SWIG_TypeRank _rank = 0; 
+    if (argc == 1) {
+      SWIG_TypeRank _ranki = 0;
+      SWIG_TypeRank _rankm = 0;
+      SWIG_TypeRank _pi = 1;
+      int _v = 0;
+      {
+        int res = SWIG_ConvertPtr(argv[0], 0, SWIGTYPE_p_cmf__project, 0);
+        _v = SWIG_CheckState(res);
+      }
+      if (!_v) goto check_1;
+      _ranki += _v*_pi;
+      _rankm += _pi;
+      _pi *= SWIG_MAXCASTRANK;
+      if (!_index || (_ranki < _rank)) {
+        _rank = _ranki; _index = 1;
+        if (_rank == _rankm) goto dispatch;
+      }
+    }
+  check_1:
+    
+    if (argc == 2) {
+      SWIG_TypeRank _ranki = 0;
+      SWIG_TypeRank _rankm = 0;
+      SWIG_TypeRank _pi = 1;
+      int _v = 0;
+      {
+        int res = SWIG_ConvertPtr(argv[0], 0, SWIGTYPE_p_cmf__project, 0);
+        _v = SWIG_CheckState(res);
+      }
+      if (!_v) goto check_2;
+      _ranki += _v*_pi;
+      _rankm += _pi;
+      _pi *= SWIG_MAXCASTRANK;
+      {
+        int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_cmf__math__timeseries, 0);
+        _v = SWIG_CheckState(res);
+      }
+      if (!_v) goto check_2;
+      _ranki += _v*_pi;
+      _rankm += _pi;
+      _pi *= SWIG_MAXCASTRANK;
+      if (!_index || (_ranki < _rank)) {
+        _rank = _ranki; _index = 2;
+        if (_rank == _rankm) goto dispatch;
+      }
+    }
+  check_2:
+    
+    if (argc == 3) {
+      SWIG_TypeRank _ranki = 0;
+      SWIG_TypeRank _rankm = 0;
+      SWIG_TypeRank _pi = 1;
+      int _v = 0;
+      {
+        int res = SWIG_ConvertPtr(argv[0], 0, SWIGTYPE_p_cmf__project, 0);
+        _v = SWIG_CheckState(res);
+      }
+      if (!_v) goto check_3;
+      _ranki += _v*_pi;
+      _rankm += _pi;
+      _pi *= SWIG_MAXCASTRANK;
+      {
+        int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_cmf__math__timeseries, 0);
+        _v = SWIG_CheckState(res);
+      }
+      if (!_v) goto check_3;
+      _ranki += _v*_pi;
+      _rankm += _pi;
+      _pi *= SWIG_MAXCASTRANK;
+      {
+        int res = SWIG_ConvertPtr(argv[2], 0, SWIGTYPE_p_cmf__water__SoluteTimeseries, 0);
+        _v = SWIG_CheckState(res);
+      }
+      if (!_v) goto check_3;
+      _ranki += _v*_pi;
+      _rankm += _pi;
+      _pi *= SWIG_MAXCASTRANK;
+      if (!_index || (_ranki < _rank)) {
+        _rank = _ranki; _index = 3;
+        if (_rank == _rankm) goto dispatch;
+      }
+    }
+  check_3:
+    
+    if (argc == 4) {
+      SWIG_TypeRank _ranki = 0;
+      SWIG_TypeRank _rankm = 0;
+      SWIG_TypeRank _pi = 1;
+      int _v = 0;
+      {
+        int res = SWIG_ConvertPtr(argv[0], 0, SWIGTYPE_p_cmf__project, 0);
+        _v = SWIG_CheckState(res);
+      }
+      if (!_v) goto check_4;
+      _ranki += _v*_pi;
+      _rankm += _pi;
+      _pi *= SWIG_MAXCASTRANK;
+      {
+        int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_cmf__math__timeseries, 0);
+        _v = SWIG_CheckState(res);
+      }
+      if (!_v) goto check_4;
+      _ranki += _v*_pi;
+      _rankm += _pi;
+      _pi *= SWIG_MAXCASTRANK;
+      {
+        int res = SWIG_ConvertPtr(argv[2], 0, SWIGTYPE_p_cmf__water__SoluteTimeseries, 0);
+        _v = SWIG_CheckState(res);
+      }
+      if (!_v) goto check_4;
+      _ranki += _v*_pi;
+      _rankm += _pi;
+      _pi *= SWIG_MAXCASTRANK;
+      {
+        {
+          cmf::geometry::point p;
+          _v=convert_seq_to_point(argv[3],p) || convert_xyz_to_point(argv[3],p);
+        }
+      }
+      if (!_v) goto check_4;
+      _ranki += _v*_pi;
+      _rankm += _pi;
+      _pi *= SWIG_MAXCASTRANK;
+      if (!_index || (_ranki < _rank)) {
+        _rank = _ranki; _index = 4;
+        if (_rank == _rankm) goto dispatch;
+      }
+    }
+  check_4:
+    
+  dispatch:
+    switch(_index) {
+    case 1:
+      return _wrap_new_NeumannBoundary__SWIG_3(self, argc, argv);
+    case 2:
+      return _wrap_new_NeumannBoundary__SWIG_2(self, argc, argv);
+    case 3:
+      return _wrap_new_NeumannBoundary__SWIG_1(self, argc, argv);
+    case 4:
+      return _wrap_new_NeumannBoundary__SWIG_0(self, argc, argv);
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number of arguments for overloaded function 'new_NeumannBoundary'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    cmf::water::NeumannBoundary(cmf::project const &,cmf::math::timeseries,cmf::water::SoluteTimeseries,cmf::geometry::point)\n"
+    "    cmf::water::NeumannBoundary(cmf::project const &,cmf::math::timeseries,cmf::water::SoluteTimeseries)\n"
+    "    cmf::water::NeumannBoundary(cmf::project const &,cmf::math::timeseries)\n"
+    "    cmf::water::NeumannBoundary(cmf::project const &)\n");
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_NeumannBoundary(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  cmf::water::NeumannBoundary *arg1 = (cmf::water::NeumannBoundary *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__water__NeumannBoundary, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_NeumannBoundary" "', argument " "1"" of type '" "cmf::water::NeumannBoundary *""'"); 
+  }
+  arg1 = reinterpret_cast< cmf::water::NeumannBoundary * >(argp1);
+  {
+    try {
+      delete arg1;
+    } 
+    /*@SWIG:C:\\Programme\\swig\\Lib\\typemaps\\exception.swg,61,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
+    catch (std::invalid_argument& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::domain_error& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::overflow_error& e) {
+      SWIG_exception_fail(SWIG_OverflowError, e.what() );
+    } catch (std::out_of_range& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::length_error& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::runtime_error& e) {
+      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
+    } catch (std::exception& e) {
+      SWIG_exception_fail(SWIG_SystemError, e.what() );
+    }
+    /*@SWIG@*/
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *NeumannBoundary_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *obj;
+  if (!SWIG_Python_UnpackTuple(args,(char*)"swigregister", 1, 1,&obj)) return NULL;
+  SWIG_TypeNewClientData(SWIGTYPE_p_cmf__water__NeumannBoundary, SWIG_NewClientData(obj));
+  return SWIG_Py_Void();
+}
+
+SWIGINTERN PyObject *NeumannBoundary_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  return SWIG_Python_InitShadowInstance(args);
+}
+
+SWIGINTERN PyObject *_wrap_new_NeumannFlux(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  cmf::water::NeumannBoundary *arg1 = 0 ;
+  cmf::water::FluxNode *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject *swig_obj[2] ;
+  cmf::water::NeumannFlux *result = 0 ;
+  
+  if (!SWIG_Python_UnpackTuple(args,"new_NeumannFlux",2,2,swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_cmf__water__NeumannBoundary,  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_NeumannFlux" "', argument " "1"" of type '" "cmf::water::NeumannBoundary &""'"); 
+  }
+  if (!argp1) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_NeumannFlux" "', argument " "1"" of type '" "cmf::water::NeumannBoundary &""'"); 
+  }
+  arg1 = reinterpret_cast< cmf::water::NeumannBoundary * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_cmf__water__FluxNode,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_NeumannFlux" "', argument " "2"" of type '" "cmf::water::FluxNode &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_NeumannFlux" "', argument " "2"" of type '" "cmf::water::FluxNode &""'"); 
+  }
+  arg2 = reinterpret_cast< cmf::water::FluxNode * >(argp2);
+  {
+    try {
+      result = (cmf::water::NeumannFlux *)new cmf::water::NeumannFlux(*arg1,*arg2);
+    } 
+    /*@SWIG:C:\\Programme\\swig\\Lib\\typemaps\\exception.swg,61,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
+    catch (std::invalid_argument& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::domain_error& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::overflow_error& e) {
+      SWIG_exception_fail(SWIG_OverflowError, e.what() );
+    } catch (std::out_of_range& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::length_error& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::runtime_error& e) {
+      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
+    } catch (std::exception& e) {
+      SWIG_exception_fail(SWIG_SystemError, e.what() );
+    }
+    /*@SWIG@*/
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_cmf__water__NeumannFlux, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_NeumannFlux(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  cmf::water::NeumannFlux *arg1 = (cmf::water::NeumannFlux *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__water__NeumannFlux, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_NeumannFlux" "', argument " "1"" of type '" "cmf::water::NeumannFlux *""'"); 
+  }
+  arg1 = reinterpret_cast< cmf::water::NeumannFlux * >(argp1);
+  {
+    try {
+      delete arg1;
+    } 
+    /*@SWIG:C:\\Programme\\swig\\Lib\\typemaps\\exception.swg,61,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
+    catch (std::invalid_argument& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::domain_error& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::overflow_error& e) {
+      SWIG_exception_fail(SWIG_OverflowError, e.what() );
+    } catch (std::out_of_range& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::length_error& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::runtime_error& e) {
+      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
+    } catch (std::exception& e) {
+      SWIG_exception_fail(SWIG_SystemError, e.what() );
+    }
+    /*@SWIG@*/
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *NeumannFlux_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *obj;
+  if (!SWIG_Python_UnpackTuple(args,(char*)"swigregister", 1, 1,&obj)) return NULL;
+  SWIG_TypeNewClientData(SWIGTYPE_p_cmf__water__NeumannFlux, SWIG_NewClientData(obj));
+  return SWIG_Py_Void();
+}
+
+SWIGINTERN PyObject *NeumannFlux_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  return SWIG_Python_InitShadowInstance(args);
 }
 
 SWIGINTERN PyObject *_wrap_new_WaterStorage__SWIG_0(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
@@ -53438,7 +54941,7 @@ fail:
 SWIGINTERN PyObject *_wrap_MeteoStation_T_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   cmf::atmosphere::MeteoStation *arg1 = (cmf::atmosphere::MeteoStation *) 0 ;
-  cmf::math::timeseries *arg2 = (cmf::math::timeseries *) 0 ;
+  cmf::math::timeseries *arg2 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   std::tr1::shared_ptr< cmf::atmosphere::MeteoStation > tempshared1 ;
@@ -53463,9 +54966,12 @@ SWIGINTERN PyObject *_wrap_MeteoStation_T_set(PyObject *SWIGUNUSEDPARM(self), Py
       arg1 = const_cast< cmf::atmosphere::MeteoStation * >((smartarg1 ? smartarg1->get() : 0));
     }
   }
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_cmf__math__timeseries, 0 |  0 );
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_cmf__math__timeseries,  0  | 0);
   if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "MeteoStation_T_set" "', argument " "2"" of type '" "cmf::math::timeseries *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "MeteoStation_T_set" "', argument " "2"" of type '" "cmf::math::timeseries const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "MeteoStation_T_set" "', argument " "2"" of type '" "cmf::math::timeseries const &""'"); 
   }
   arg2 = reinterpret_cast< cmf::math::timeseries * >(argp2);
   if (arg1) (arg1)->T = *arg2;
@@ -53503,7 +55009,10 @@ SWIGINTERN PyObject *_wrap_MeteoStation_T_get(PyObject *SWIGUNUSEDPARM(self), Py
       arg1 = const_cast< cmf::atmosphere::MeteoStation * >((smartarg1 ? smartarg1->get() : 0));
     }
   }
-  result = (cmf::math::timeseries *)& ((arg1)->T);
+  {
+    cmf::math::timeseries const &_result_ref =  ((arg1)->T);
+    result = (cmf::math::timeseries *) &_result_ref;
+  }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_cmf__math__timeseries, 0 |  0 );
   return resultobj;
 fail:
@@ -53514,7 +55023,7 @@ fail:
 SWIGINTERN PyObject *_wrap_MeteoStation_Tmax_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   cmf::atmosphere::MeteoStation *arg1 = (cmf::atmosphere::MeteoStation *) 0 ;
-  cmf::math::timeseries *arg2 = (cmf::math::timeseries *) 0 ;
+  cmf::math::timeseries *arg2 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   std::tr1::shared_ptr< cmf::atmosphere::MeteoStation > tempshared1 ;
@@ -53539,9 +55048,12 @@ SWIGINTERN PyObject *_wrap_MeteoStation_Tmax_set(PyObject *SWIGUNUSEDPARM(self),
       arg1 = const_cast< cmf::atmosphere::MeteoStation * >((smartarg1 ? smartarg1->get() : 0));
     }
   }
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_cmf__math__timeseries, 0 |  0 );
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_cmf__math__timeseries,  0  | 0);
   if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "MeteoStation_Tmax_set" "', argument " "2"" of type '" "cmf::math::timeseries *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "MeteoStation_Tmax_set" "', argument " "2"" of type '" "cmf::math::timeseries const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "MeteoStation_Tmax_set" "', argument " "2"" of type '" "cmf::math::timeseries const &""'"); 
   }
   arg2 = reinterpret_cast< cmf::math::timeseries * >(argp2);
   if (arg1) (arg1)->Tmax = *arg2;
@@ -53579,7 +55091,10 @@ SWIGINTERN PyObject *_wrap_MeteoStation_Tmax_get(PyObject *SWIGUNUSEDPARM(self),
       arg1 = const_cast< cmf::atmosphere::MeteoStation * >((smartarg1 ? smartarg1->get() : 0));
     }
   }
-  result = (cmf::math::timeseries *)& ((arg1)->Tmax);
+  {
+    cmf::math::timeseries const &_result_ref =  ((arg1)->Tmax);
+    result = (cmf::math::timeseries *) &_result_ref;
+  }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_cmf__math__timeseries, 0 |  0 );
   return resultobj;
 fail:
@@ -53590,7 +55105,7 @@ fail:
 SWIGINTERN PyObject *_wrap_MeteoStation_Tmin_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   cmf::atmosphere::MeteoStation *arg1 = (cmf::atmosphere::MeteoStation *) 0 ;
-  cmf::math::timeseries *arg2 = (cmf::math::timeseries *) 0 ;
+  cmf::math::timeseries *arg2 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   std::tr1::shared_ptr< cmf::atmosphere::MeteoStation > tempshared1 ;
@@ -53615,9 +55130,12 @@ SWIGINTERN PyObject *_wrap_MeteoStation_Tmin_set(PyObject *SWIGUNUSEDPARM(self),
       arg1 = const_cast< cmf::atmosphere::MeteoStation * >((smartarg1 ? smartarg1->get() : 0));
     }
   }
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_cmf__math__timeseries, 0 |  0 );
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_cmf__math__timeseries,  0  | 0);
   if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "MeteoStation_Tmin_set" "', argument " "2"" of type '" "cmf::math::timeseries *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "MeteoStation_Tmin_set" "', argument " "2"" of type '" "cmf::math::timeseries const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "MeteoStation_Tmin_set" "', argument " "2"" of type '" "cmf::math::timeseries const &""'"); 
   }
   arg2 = reinterpret_cast< cmf::math::timeseries * >(argp2);
   if (arg1) (arg1)->Tmin = *arg2;
@@ -53655,7 +55173,10 @@ SWIGINTERN PyObject *_wrap_MeteoStation_Tmin_get(PyObject *SWIGUNUSEDPARM(self),
       arg1 = const_cast< cmf::atmosphere::MeteoStation * >((smartarg1 ? smartarg1->get() : 0));
     }
   }
-  result = (cmf::math::timeseries *)& ((arg1)->Tmin);
+  {
+    cmf::math::timeseries const &_result_ref =  ((arg1)->Tmin);
+    result = (cmf::math::timeseries *) &_result_ref;
+  }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_cmf__math__timeseries, 0 |  0 );
   return resultobj;
 fail:
@@ -53666,7 +55187,7 @@ fail:
 SWIGINTERN PyObject *_wrap_MeteoStation_Tground_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   cmf::atmosphere::MeteoStation *arg1 = (cmf::atmosphere::MeteoStation *) 0 ;
-  cmf::math::timeseries *arg2 = (cmf::math::timeseries *) 0 ;
+  cmf::math::timeseries *arg2 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   std::tr1::shared_ptr< cmf::atmosphere::MeteoStation > tempshared1 ;
@@ -53691,9 +55212,12 @@ SWIGINTERN PyObject *_wrap_MeteoStation_Tground_set(PyObject *SWIGUNUSEDPARM(sel
       arg1 = const_cast< cmf::atmosphere::MeteoStation * >((smartarg1 ? smartarg1->get() : 0));
     }
   }
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_cmf__math__timeseries, 0 |  0 );
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_cmf__math__timeseries,  0  | 0);
   if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "MeteoStation_Tground_set" "', argument " "2"" of type '" "cmf::math::timeseries *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "MeteoStation_Tground_set" "', argument " "2"" of type '" "cmf::math::timeseries const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "MeteoStation_Tground_set" "', argument " "2"" of type '" "cmf::math::timeseries const &""'"); 
   }
   arg2 = reinterpret_cast< cmf::math::timeseries * >(argp2);
   if (arg1) (arg1)->Tground = *arg2;
@@ -53731,7 +55255,10 @@ SWIGINTERN PyObject *_wrap_MeteoStation_Tground_get(PyObject *SWIGUNUSEDPARM(sel
       arg1 = const_cast< cmf::atmosphere::MeteoStation * >((smartarg1 ? smartarg1->get() : 0));
     }
   }
-  result = (cmf::math::timeseries *)& ((arg1)->Tground);
+  {
+    cmf::math::timeseries const &_result_ref =  ((arg1)->Tground);
+    result = (cmf::math::timeseries *) &_result_ref;
+  }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_cmf__math__timeseries, 0 |  0 );
   return resultobj;
 fail:
@@ -53742,7 +55269,7 @@ fail:
 SWIGINTERN PyObject *_wrap_MeteoStation_Windspeed_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   cmf::atmosphere::MeteoStation *arg1 = (cmf::atmosphere::MeteoStation *) 0 ;
-  cmf::math::timeseries *arg2 = (cmf::math::timeseries *) 0 ;
+  cmf::math::timeseries *arg2 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   std::tr1::shared_ptr< cmf::atmosphere::MeteoStation > tempshared1 ;
@@ -53767,9 +55294,12 @@ SWIGINTERN PyObject *_wrap_MeteoStation_Windspeed_set(PyObject *SWIGUNUSEDPARM(s
       arg1 = const_cast< cmf::atmosphere::MeteoStation * >((smartarg1 ? smartarg1->get() : 0));
     }
   }
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_cmf__math__timeseries, 0 |  0 );
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_cmf__math__timeseries,  0  | 0);
   if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "MeteoStation_Windspeed_set" "', argument " "2"" of type '" "cmf::math::timeseries *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "MeteoStation_Windspeed_set" "', argument " "2"" of type '" "cmf::math::timeseries const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "MeteoStation_Windspeed_set" "', argument " "2"" of type '" "cmf::math::timeseries const &""'"); 
   }
   arg2 = reinterpret_cast< cmf::math::timeseries * >(argp2);
   if (arg1) (arg1)->Windspeed = *arg2;
@@ -53807,7 +55337,10 @@ SWIGINTERN PyObject *_wrap_MeteoStation_Windspeed_get(PyObject *SWIGUNUSEDPARM(s
       arg1 = const_cast< cmf::atmosphere::MeteoStation * >((smartarg1 ? smartarg1->get() : 0));
     }
   }
-  result = (cmf::math::timeseries *)& ((arg1)->Windspeed);
+  {
+    cmf::math::timeseries const &_result_ref =  ((arg1)->Windspeed);
+    result = (cmf::math::timeseries *) &_result_ref;
+  }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_cmf__math__timeseries, 0 |  0 );
   return resultobj;
 fail:
@@ -53818,7 +55351,7 @@ fail:
 SWIGINTERN PyObject *_wrap_MeteoStation_rHmean_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   cmf::atmosphere::MeteoStation *arg1 = (cmf::atmosphere::MeteoStation *) 0 ;
-  cmf::math::timeseries *arg2 = (cmf::math::timeseries *) 0 ;
+  cmf::math::timeseries *arg2 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   std::tr1::shared_ptr< cmf::atmosphere::MeteoStation > tempshared1 ;
@@ -53843,9 +55376,12 @@ SWIGINTERN PyObject *_wrap_MeteoStation_rHmean_set(PyObject *SWIGUNUSEDPARM(self
       arg1 = const_cast< cmf::atmosphere::MeteoStation * >((smartarg1 ? smartarg1->get() : 0));
     }
   }
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_cmf__math__timeseries, 0 |  0 );
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_cmf__math__timeseries,  0  | 0);
   if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "MeteoStation_rHmean_set" "', argument " "2"" of type '" "cmf::math::timeseries *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "MeteoStation_rHmean_set" "', argument " "2"" of type '" "cmf::math::timeseries const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "MeteoStation_rHmean_set" "', argument " "2"" of type '" "cmf::math::timeseries const &""'"); 
   }
   arg2 = reinterpret_cast< cmf::math::timeseries * >(argp2);
   if (arg1) (arg1)->rHmean = *arg2;
@@ -53883,7 +55419,10 @@ SWIGINTERN PyObject *_wrap_MeteoStation_rHmean_get(PyObject *SWIGUNUSEDPARM(self
       arg1 = const_cast< cmf::atmosphere::MeteoStation * >((smartarg1 ? smartarg1->get() : 0));
     }
   }
-  result = (cmf::math::timeseries *)& ((arg1)->rHmean);
+  {
+    cmf::math::timeseries const &_result_ref =  ((arg1)->rHmean);
+    result = (cmf::math::timeseries *) &_result_ref;
+  }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_cmf__math__timeseries, 0 |  0 );
   return resultobj;
 fail:
@@ -53894,7 +55433,7 @@ fail:
 SWIGINTERN PyObject *_wrap_MeteoStation_rHmin_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   cmf::atmosphere::MeteoStation *arg1 = (cmf::atmosphere::MeteoStation *) 0 ;
-  cmf::math::timeseries *arg2 = (cmf::math::timeseries *) 0 ;
+  cmf::math::timeseries *arg2 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   std::tr1::shared_ptr< cmf::atmosphere::MeteoStation > tempshared1 ;
@@ -53919,9 +55458,12 @@ SWIGINTERN PyObject *_wrap_MeteoStation_rHmin_set(PyObject *SWIGUNUSEDPARM(self)
       arg1 = const_cast< cmf::atmosphere::MeteoStation * >((smartarg1 ? smartarg1->get() : 0));
     }
   }
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_cmf__math__timeseries, 0 |  0 );
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_cmf__math__timeseries,  0  | 0);
   if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "MeteoStation_rHmin_set" "', argument " "2"" of type '" "cmf::math::timeseries *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "MeteoStation_rHmin_set" "', argument " "2"" of type '" "cmf::math::timeseries const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "MeteoStation_rHmin_set" "', argument " "2"" of type '" "cmf::math::timeseries const &""'"); 
   }
   arg2 = reinterpret_cast< cmf::math::timeseries * >(argp2);
   if (arg1) (arg1)->rHmin = *arg2;
@@ -53959,7 +55501,10 @@ SWIGINTERN PyObject *_wrap_MeteoStation_rHmin_get(PyObject *SWIGUNUSEDPARM(self)
       arg1 = const_cast< cmf::atmosphere::MeteoStation * >((smartarg1 ? smartarg1->get() : 0));
     }
   }
-  result = (cmf::math::timeseries *)& ((arg1)->rHmin);
+  {
+    cmf::math::timeseries const &_result_ref =  ((arg1)->rHmin);
+    result = (cmf::math::timeseries *) &_result_ref;
+  }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_cmf__math__timeseries, 0 |  0 );
   return resultobj;
 fail:
@@ -53970,7 +55515,7 @@ fail:
 SWIGINTERN PyObject *_wrap_MeteoStation_rHmax_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   cmf::atmosphere::MeteoStation *arg1 = (cmf::atmosphere::MeteoStation *) 0 ;
-  cmf::math::timeseries *arg2 = (cmf::math::timeseries *) 0 ;
+  cmf::math::timeseries *arg2 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   std::tr1::shared_ptr< cmf::atmosphere::MeteoStation > tempshared1 ;
@@ -53995,9 +55540,12 @@ SWIGINTERN PyObject *_wrap_MeteoStation_rHmax_set(PyObject *SWIGUNUSEDPARM(self)
       arg1 = const_cast< cmf::atmosphere::MeteoStation * >((smartarg1 ? smartarg1->get() : 0));
     }
   }
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_cmf__math__timeseries, 0 |  0 );
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_cmf__math__timeseries,  0  | 0);
   if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "MeteoStation_rHmax_set" "', argument " "2"" of type '" "cmf::math::timeseries *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "MeteoStation_rHmax_set" "', argument " "2"" of type '" "cmf::math::timeseries const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "MeteoStation_rHmax_set" "', argument " "2"" of type '" "cmf::math::timeseries const &""'"); 
   }
   arg2 = reinterpret_cast< cmf::math::timeseries * >(argp2);
   if (arg1) (arg1)->rHmax = *arg2;
@@ -54035,7 +55583,10 @@ SWIGINTERN PyObject *_wrap_MeteoStation_rHmax_get(PyObject *SWIGUNUSEDPARM(self)
       arg1 = const_cast< cmf::atmosphere::MeteoStation * >((smartarg1 ? smartarg1->get() : 0));
     }
   }
-  result = (cmf::math::timeseries *)& ((arg1)->rHmax);
+  {
+    cmf::math::timeseries const &_result_ref =  ((arg1)->rHmax);
+    result = (cmf::math::timeseries *) &_result_ref;
+  }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_cmf__math__timeseries, 0 |  0 );
   return resultobj;
 fail:
@@ -54046,7 +55597,7 @@ fail:
 SWIGINTERN PyObject *_wrap_MeteoStation_Tdew_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   cmf::atmosphere::MeteoStation *arg1 = (cmf::atmosphere::MeteoStation *) 0 ;
-  cmf::math::timeseries *arg2 = (cmf::math::timeseries *) 0 ;
+  cmf::math::timeseries *arg2 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   std::tr1::shared_ptr< cmf::atmosphere::MeteoStation > tempshared1 ;
@@ -54071,9 +55622,12 @@ SWIGINTERN PyObject *_wrap_MeteoStation_Tdew_set(PyObject *SWIGUNUSEDPARM(self),
       arg1 = const_cast< cmf::atmosphere::MeteoStation * >((smartarg1 ? smartarg1->get() : 0));
     }
   }
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_cmf__math__timeseries, 0 |  0 );
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_cmf__math__timeseries,  0  | 0);
   if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "MeteoStation_Tdew_set" "', argument " "2"" of type '" "cmf::math::timeseries *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "MeteoStation_Tdew_set" "', argument " "2"" of type '" "cmf::math::timeseries const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "MeteoStation_Tdew_set" "', argument " "2"" of type '" "cmf::math::timeseries const &""'"); 
   }
   arg2 = reinterpret_cast< cmf::math::timeseries * >(argp2);
   if (arg1) (arg1)->Tdew = *arg2;
@@ -54111,7 +55665,10 @@ SWIGINTERN PyObject *_wrap_MeteoStation_Tdew_get(PyObject *SWIGUNUSEDPARM(self),
       arg1 = const_cast< cmf::atmosphere::MeteoStation * >((smartarg1 ? smartarg1->get() : 0));
     }
   }
-  result = (cmf::math::timeseries *)& ((arg1)->Tdew);
+  {
+    cmf::math::timeseries const &_result_ref =  ((arg1)->Tdew);
+    result = (cmf::math::timeseries *) &_result_ref;
+  }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_cmf__math__timeseries, 0 |  0 );
   return resultobj;
 fail:
@@ -54122,7 +55679,7 @@ fail:
 SWIGINTERN PyObject *_wrap_MeteoStation_Sunshine_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   cmf::atmosphere::MeteoStation *arg1 = (cmf::atmosphere::MeteoStation *) 0 ;
-  cmf::math::timeseries *arg2 = (cmf::math::timeseries *) 0 ;
+  cmf::math::timeseries *arg2 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   std::tr1::shared_ptr< cmf::atmosphere::MeteoStation > tempshared1 ;
@@ -54147,9 +55704,12 @@ SWIGINTERN PyObject *_wrap_MeteoStation_Sunshine_set(PyObject *SWIGUNUSEDPARM(se
       arg1 = const_cast< cmf::atmosphere::MeteoStation * >((smartarg1 ? smartarg1->get() : 0));
     }
   }
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_cmf__math__timeseries, 0 |  0 );
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_cmf__math__timeseries,  0  | 0);
   if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "MeteoStation_Sunshine_set" "', argument " "2"" of type '" "cmf::math::timeseries *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "MeteoStation_Sunshine_set" "', argument " "2"" of type '" "cmf::math::timeseries const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "MeteoStation_Sunshine_set" "', argument " "2"" of type '" "cmf::math::timeseries const &""'"); 
   }
   arg2 = reinterpret_cast< cmf::math::timeseries * >(argp2);
   if (arg1) (arg1)->Sunshine = *arg2;
@@ -54187,7 +55747,10 @@ SWIGINTERN PyObject *_wrap_MeteoStation_Sunshine_get(PyObject *SWIGUNUSEDPARM(se
       arg1 = const_cast< cmf::atmosphere::MeteoStation * >((smartarg1 ? smartarg1->get() : 0));
     }
   }
-  result = (cmf::math::timeseries *)& ((arg1)->Sunshine);
+  {
+    cmf::math::timeseries const &_result_ref =  ((arg1)->Sunshine);
+    result = (cmf::math::timeseries *) &_result_ref;
+  }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_cmf__math__timeseries, 0 |  0 );
   return resultobj;
 fail:
@@ -54198,7 +55761,7 @@ fail:
 SWIGINTERN PyObject *_wrap_MeteoStation_Rs_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   cmf::atmosphere::MeteoStation *arg1 = (cmf::atmosphere::MeteoStation *) 0 ;
-  cmf::math::timeseries *arg2 = (cmf::math::timeseries *) 0 ;
+  cmf::math::timeseries *arg2 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   std::tr1::shared_ptr< cmf::atmosphere::MeteoStation > tempshared1 ;
@@ -54223,9 +55786,12 @@ SWIGINTERN PyObject *_wrap_MeteoStation_Rs_set(PyObject *SWIGUNUSEDPARM(self), P
       arg1 = const_cast< cmf::atmosphere::MeteoStation * >((smartarg1 ? smartarg1->get() : 0));
     }
   }
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_cmf__math__timeseries, 0 |  0 );
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_cmf__math__timeseries,  0  | 0);
   if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "MeteoStation_Rs_set" "', argument " "2"" of type '" "cmf::math::timeseries *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "MeteoStation_Rs_set" "', argument " "2"" of type '" "cmf::math::timeseries const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "MeteoStation_Rs_set" "', argument " "2"" of type '" "cmf::math::timeseries const &""'"); 
   }
   arg2 = reinterpret_cast< cmf::math::timeseries * >(argp2);
   if (arg1) (arg1)->Rs = *arg2;
@@ -54263,7 +55829,10 @@ SWIGINTERN PyObject *_wrap_MeteoStation_Rs_get(PyObject *SWIGUNUSEDPARM(self), P
       arg1 = const_cast< cmf::atmosphere::MeteoStation * >((smartarg1 ? smartarg1->get() : 0));
     }
   }
-  result = (cmf::math::timeseries *)& ((arg1)->Rs);
+  {
+    cmf::math::timeseries const &_result_ref =  ((arg1)->Rs);
+    result = (cmf::math::timeseries *) &_result_ref;
+  }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_cmf__math__timeseries, 0 |  0 );
   return resultobj;
 fail:
@@ -54274,7 +55843,7 @@ fail:
 SWIGINTERN PyObject *_wrap_MeteoStation_T_lapse_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   cmf::atmosphere::MeteoStation *arg1 = (cmf::atmosphere::MeteoStation *) 0 ;
-  cmf::math::timeseries *arg2 = (cmf::math::timeseries *) 0 ;
+  cmf::math::timeseries *arg2 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   std::tr1::shared_ptr< cmf::atmosphere::MeteoStation > tempshared1 ;
@@ -54299,9 +55868,12 @@ SWIGINTERN PyObject *_wrap_MeteoStation_T_lapse_set(PyObject *SWIGUNUSEDPARM(sel
       arg1 = const_cast< cmf::atmosphere::MeteoStation * >((smartarg1 ? smartarg1->get() : 0));
     }
   }
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_cmf__math__timeseries, 0 |  0 );
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_cmf__math__timeseries,  0  | 0);
   if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "MeteoStation_T_lapse_set" "', argument " "2"" of type '" "cmf::math::timeseries *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "MeteoStation_T_lapse_set" "', argument " "2"" of type '" "cmf::math::timeseries const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "MeteoStation_T_lapse_set" "', argument " "2"" of type '" "cmf::math::timeseries const &""'"); 
   }
   arg2 = reinterpret_cast< cmf::math::timeseries * >(argp2);
   if (arg1) (arg1)->T_lapse = *arg2;
@@ -54339,7 +55911,10 @@ SWIGINTERN PyObject *_wrap_MeteoStation_T_lapse_get(PyObject *SWIGUNUSEDPARM(sel
       arg1 = const_cast< cmf::atmosphere::MeteoStation * >((smartarg1 ? smartarg1->get() : 0));
     }
   }
-  result = (cmf::math::timeseries *)& ((arg1)->T_lapse);
+  {
+    cmf::math::timeseries const &_result_ref =  ((arg1)->T_lapse);
+    result = (cmf::math::timeseries *) &_result_ref;
+  }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_cmf__math__timeseries, 0 |  0 );
   return resultobj;
 fail:
@@ -57656,6 +59231,103 @@ SWIGINTERN PyObject *MeteoStationList_swiginit(PyObject *SWIGUNUSEDPARM(self), P
   return SWIG_Python_InitShadowInstance(args);
 }
 
+SWIGINTERN PyObject *_wrap_RainCloud_get_cell(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  cmf::atmosphere::RainCloud *arg1 = (cmf::atmosphere::RainCloud *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  cmf::upslope::Cell *result = 0 ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__atmosphere__RainCloud, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RainCloud_get_cell" "', argument " "1"" of type '" "cmf::atmosphere::RainCloud const *""'"); 
+  }
+  arg1 = reinterpret_cast< cmf::atmosphere::RainCloud * >(argp1);
+  {
+    try {
+      {
+        cmf::upslope::Cell const &_result_ref = ((cmf::atmosphere::RainCloud const *)arg1)->get_cell();
+        result = (cmf::upslope::Cell *) &_result_ref;
+      }
+    } 
+    /*@SWIG:C:\\Programme\\swig\\Lib\\typemaps\\exception.swg,61,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
+    catch (std::invalid_argument& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::domain_error& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::overflow_error& e) {
+      SWIG_exception_fail(SWIG_OverflowError, e.what() );
+    } catch (std::out_of_range& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::length_error& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::runtime_error& e) {
+      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
+    } catch (std::exception& e) {
+      SWIG_exception_fail(SWIG_SystemError, e.what() );
+    }
+    /*@SWIG@*/
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_cmf__upslope__Cell, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_RainCloud(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  cmf::atmosphere::RainCloud *arg1 = (cmf::atmosphere::RainCloud *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__atmosphere__RainCloud, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_RainCloud" "', argument " "1"" of type '" "cmf::atmosphere::RainCloud *""'"); 
+  }
+  arg1 = reinterpret_cast< cmf::atmosphere::RainCloud * >(argp1);
+  {
+    try {
+      delete arg1;
+    } 
+    /*@SWIG:C:\\Programme\\swig\\Lib\\typemaps\\exception.swg,61,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
+    catch (std::invalid_argument& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::domain_error& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::overflow_error& e) {
+      SWIG_exception_fail(SWIG_OverflowError, e.what() );
+    } catch (std::out_of_range& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::length_error& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::runtime_error& e) {
+      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
+    } catch (std::exception& e) {
+      SWIG_exception_fail(SWIG_SystemError, e.what() );
+    }
+    /*@SWIG@*/
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *RainCloud_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *obj;
+  if (!SWIG_Python_UnpackTuple(args,(char*)"swigregister", 1, 1,&obj)) return NULL;
+  SWIG_TypeNewClientData(SWIGTYPE_p_cmf__atmosphere__RainCloud, SWIG_NewClientData(obj));
+  return SWIG_Py_Void();
+}
+
 SWIGINTERN PyObject *_wrap_Vegetation_LAI_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   cmf::upslope::vegetation::Vegetation *arg1 = (cmf::upslope::vegetation::Vegetation *) 0 ;
@@ -60019,7 +61691,35 @@ SWIGINTERN PyObject *_wrap_Cell_get_surfacewater(PyObject *SWIGUNUSEDPARM(self),
     }
     /*@SWIG@*/
   }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_cmf__water__FluxNode, 0 |  0 );
+  {
+    int dcast = 0;
+    /*@SWIG:C:\\Programme\\swig\\Lib\\typemaps\\swigmacros.swg,200,%formacro@*//*@SWIG:C:\\Programme\\swig\\Lib\\typemaps\\swigmacros.swg,192,%_formacro_1@*//*@SWIG:C:\\Programme\\swig\\Lib\\typemaps\\factory.swg,72,%_factory_dispatch@*/ 
+    if (!dcast) {
+      cmf::river::OpenWaterStorage *dobj = dynamic_cast<cmf::river::OpenWaterStorage *>(result);
+      if (dobj) {
+        dcast = 1;
+        resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(dobj),SWIGTYPE_p_cmf__river__OpenWaterStorage, 0 |  0 );
+      }   
+    }/*@SWIG@*/
+    
+    /*@SWIG:C:\\Programme\\swig\\Lib\\typemaps\\swigmacros.swg,192,%_formacro_1@*//*@SWIG:C:\\Programme\\swig\\Lib\\typemaps\\factory.swg,72,%_factory_dispatch@*/ 
+    if (!dcast) {
+      cmf::water::FluxNode *dobj = dynamic_cast<cmf::water::FluxNode *>(result);
+      if (dobj) {
+        dcast = 1;
+        resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(dobj),SWIGTYPE_p_cmf__water__FluxNode, 0 |  0 );
+      }   
+    }/*@SWIG@*/
+    
+    
+    
+    /*@SWIG@*/
+    
+    /*@SWIG@*//*@SWIG@*/
+    if (!dcast) {
+      resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result),SWIGTYPE_p_cmf__water__FluxNode, 0 |  0 );
+    }
+  }
   return resultobj;
 fail:
   return NULL;
@@ -80067,6 +81767,71 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_new_constantETpot(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  cmf::upslope::SoilWaterStorage *arg1 = 0 ;
+  cmf::water::FluxNode *arg2 = 0 ;
+  double arg3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  double val3 ;
+  int ecode3 = 0 ;
+  PyObject *swig_obj[3] ;
+  cmf::upslope::ET::constantETpot *result = 0 ;
+  
+  if (!SWIG_Python_UnpackTuple(args,"new_constantETpot",3,3,swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_cmf__upslope__SoilWaterStorage,  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_constantETpot" "', argument " "1"" of type '" "cmf::upslope::SoilWaterStorage &""'"); 
+  }
+  if (!argp1) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_constantETpot" "', argument " "1"" of type '" "cmf::upslope::SoilWaterStorage &""'"); 
+  }
+  arg1 = reinterpret_cast< cmf::upslope::SoilWaterStorage * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_cmf__water__FluxNode,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_constantETpot" "', argument " "2"" of type '" "cmf::water::FluxNode &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_constantETpot" "', argument " "2"" of type '" "cmf::water::FluxNode &""'"); 
+  }
+  arg2 = reinterpret_cast< cmf::water::FluxNode * >(argp2);
+  ecode3 = SWIG_AsVal_double(swig_obj[2], &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "new_constantETpot" "', argument " "3"" of type '" "double""'");
+  } 
+  arg3 = static_cast< double >(val3);
+  {
+    try {
+      result = (cmf::upslope::ET::constantETpot *)new cmf::upslope::ET::constantETpot(*arg1,*arg2,arg3);
+    } 
+    /*@SWIG:C:\\Programme\\swig\\Lib\\typemaps\\exception.swg,61,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
+    catch (std::invalid_argument& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::domain_error& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::overflow_error& e) {
+      SWIG_exception_fail(SWIG_OverflowError, e.what() );
+    } catch (std::out_of_range& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::length_error& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::runtime_error& e) {
+      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
+    } catch (std::exception& e) {
+      SWIG_exception_fail(SWIG_SystemError, e.what() );
+    }
+    /*@SWIG@*/
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_cmf__upslope__ET__constantETpot, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_delete_constantETpot(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   cmf::upslope::ET::constantETpot *arg1 = (cmf::upslope::ET::constantETpot *) 0 ;
@@ -80115,6 +81880,10 @@ SWIGINTERN PyObject *constantETpot_swigregister(PyObject *SWIGUNUSEDPARM(self), 
   if (!SWIG_Python_UnpackTuple(args,(char*)"swigregister", 1, 1,&obj)) return NULL;
   SWIG_TypeNewClientData(SWIGTYPE_p_cmf__upslope__ET__constantETpot, SWIG_NewClientData(obj));
   return SWIG_Py_Void();
+}
+
+SWIGINTERN PyObject *constantETpot_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  return SWIG_Python_InitShadowInstance(args);
 }
 
 SWIGINTERN PyObject *_wrap_PenmanMonteithET_daily_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
@@ -86669,6 +88438,208 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_project_meteo_stations_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  cmf::project *arg1 = (cmf::project *) 0 ;
+  cmf::atmosphere::MeteoStationList *arg2 = (cmf::atmosphere::MeteoStationList *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject *swig_obj[2] ;
+  
+  if (!SWIG_Python_UnpackTuple(args,"project_meteo_stations_set",2,2,swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__project, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "project_meteo_stations_set" "', argument " "1"" of type '" "cmf::project *""'"); 
+  }
+  arg1 = reinterpret_cast< cmf::project * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_cmf__atmosphere__MeteoStationList, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "project_meteo_stations_set" "', argument " "2"" of type '" "cmf::atmosphere::MeteoStationList *""'"); 
+  }
+  arg2 = reinterpret_cast< cmf::atmosphere::MeteoStationList * >(argp2);
+  if (arg1) (arg1)->meteo_stations = *arg2;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_project_meteo_stations_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  cmf::project *arg1 = (cmf::project *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  cmf::atmosphere::MeteoStationList *result = 0 ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__project, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "project_meteo_stations_get" "', argument " "1"" of type '" "cmf::project *""'"); 
+  }
+  arg1 = reinterpret_cast< cmf::project * >(argp1);
+  result = (cmf::atmosphere::MeteoStationList *)& ((arg1)->meteo_stations);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_cmf__atmosphere__MeteoStationList, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_project_outlets_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  cmf::project *arg1 = (cmf::project *) 0 ;
+  cmf::water::node_vector *arg2 = (cmf::water::node_vector *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject *swig_obj[2] ;
+  
+  if (!SWIG_Python_UnpackTuple(args,"project_outlets_set",2,2,swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__project, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "project_outlets_set" "', argument " "1"" of type '" "cmf::project *""'"); 
+  }
+  arg1 = reinterpret_cast< cmf::project * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_std__vectorT_cmf__water__FluxNode_p_std__allocatorT_cmf__water__FluxNode_p_t_t, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "project_outlets_set" "', argument " "2"" of type '" "cmf::water::node_vector *""'"); 
+  }
+  arg2 = reinterpret_cast< cmf::water::node_vector * >(argp2);
+  if (arg1) (arg1)->outlets = *arg2;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_project_outlets_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  cmf::project *arg1 = (cmf::project *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  cmf::water::node_vector *result = 0 ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__project, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "project_outlets_get" "', argument " "1"" of type '" "cmf::project *""'"); 
+  }
+  arg1 = reinterpret_cast< cmf::project * >(argp1);
+  result = (cmf::water::node_vector *)& ((arg1)->outlets);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_std__vectorT_cmf__water__FluxNode_p_std__allocatorT_cmf__water__FluxNode_p_t_t, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_project_get_cell(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  cmf::project *arg1 = (cmf::project *) 0 ;
+  int arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int val2 ;
+  int ecode2 = 0 ;
+  PyObject *swig_obj[2] ;
+  cmf::upslope::Cell *result = 0 ;
+  
+  if (!SWIG_Python_UnpackTuple(args,"project_get_cell",2,2,swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__project, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "project_get_cell" "', argument " "1"" of type '" "cmf::project *""'"); 
+  }
+  arg1 = reinterpret_cast< cmf::project * >(argp1);
+  ecode2 = SWIG_AsVal_int(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "project_get_cell" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
+  {
+    try {
+      {
+        cmf::upslope::Cell &_result_ref = (arg1)->get_cell(arg2);
+        result = (cmf::upslope::Cell *) &_result_ref;
+      }
+    } 
+    /*@SWIG:C:\\Programme\\swig\\Lib\\typemaps\\exception.swg,61,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
+    catch (std::invalid_argument& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::domain_error& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::overflow_error& e) {
+      SWIG_exception_fail(SWIG_OverflowError, e.what() );
+    } catch (std::out_of_range& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::length_error& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::runtime_error& e) {
+      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
+    } catch (std::exception& e) {
+      SWIG_exception_fail(SWIG_SystemError, e.what() );
+    }
+    /*@SWIG@*/
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_cmf__upslope__Cell, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_project_size(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  cmf::project *arg1 = (cmf::project *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  int result;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__project, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "project_size" "', argument " "1"" of type '" "cmf::project const *""'"); 
+  }
+  arg1 = reinterpret_cast< cmf::project * >(argp1);
+  {
+    try {
+      result = (int)((cmf::project const *)arg1)->size();
+    } 
+    /*@SWIG:C:\\Programme\\swig\\Lib\\typemaps\\exception.swg,61,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
+    catch (std::invalid_argument& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::domain_error& e) {
+      SWIG_exception_fail(SWIG_ValueError, e.what() );
+    } catch (std::overflow_error& e) {
+      SWIG_exception_fail(SWIG_OverflowError, e.what() );
+    } catch (std::out_of_range& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::length_error& e) {
+      SWIG_exception_fail(SWIG_IndexError, e.what() );
+    } catch (std::runtime_error& e) {
+      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
+    } catch (std::exception& e) {
+      SWIG_exception_fail(SWIG_SystemError, e.what() );
+    }
+    /*@SWIG@*/
+  }
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_project_debug_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   cmf::project *arg1 = (cmf::project *) 0 ;
@@ -86794,390 +88765,6 @@ SWIGINTERN PyObject *_wrap_delete_project(PyObject *SWIGUNUSEDPARM(self), PyObje
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_project_CellCount(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  cmf::project *arg1 = (cmf::project *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject *swig_obj[1] ;
-  int result;
-  
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__project, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "project_CellCount" "', argument " "1"" of type '" "cmf::project const *""'"); 
-  }
-  arg1 = reinterpret_cast< cmf::project * >(argp1);
-  {
-    try {
-      result = (int)((cmf::project const *)arg1)->CellCount();
-    } 
-    /*@SWIG:C:\\Programme\\swig\\Lib\\typemaps\\exception.swg,61,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
-    catch (std::invalid_argument& e) {
-      SWIG_exception_fail(SWIG_ValueError, e.what() );
-    } catch (std::domain_error& e) {
-      SWIG_exception_fail(SWIG_ValueError, e.what() );
-    } catch (std::overflow_error& e) {
-      SWIG_exception_fail(SWIG_OverflowError, e.what() );
-    } catch (std::out_of_range& e) {
-      SWIG_exception_fail(SWIG_IndexError, e.what() );
-    } catch (std::length_error& e) {
-      SWIG_exception_fail(SWIG_IndexError, e.what() );
-    } catch (std::runtime_error& e) {
-      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
-    } catch (std::exception& e) {
-      SWIG_exception_fail(SWIG_SystemError, e.what() );
-    }
-    /*@SWIG@*/
-  }
-  resultobj = SWIG_From_int(static_cast< int >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_project_Cell__SWIG_0(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  cmf::project *arg1 = (cmf::project *) 0 ;
-  int arg2 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  int val2 ;
-  int ecode2 = 0 ;
-  cmf::upslope::Cell *result = 0 ;
-  
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__project, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "project_Cell" "', argument " "1"" of type '" "cmf::project const *""'"); 
-  }
-  arg1 = reinterpret_cast< cmf::project * >(argp1);
-  ecode2 = SWIG_AsVal_int(swig_obj[1], &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "project_Cell" "', argument " "2"" of type '" "int""'");
-  } 
-  arg2 = static_cast< int >(val2);
-  {
-    try {
-      {
-        cmf::upslope::Cell &_result_ref = ((cmf::project const *)arg1)->Cell(arg2);
-        result = (cmf::upslope::Cell *) &_result_ref;
-      }
-    } 
-    /*@SWIG:C:\\Programme\\swig\\Lib\\typemaps\\exception.swg,61,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
-    catch (std::invalid_argument& e) {
-      SWIG_exception_fail(SWIG_ValueError, e.what() );
-    } catch (std::domain_error& e) {
-      SWIG_exception_fail(SWIG_ValueError, e.what() );
-    } catch (std::overflow_error& e) {
-      SWIG_exception_fail(SWIG_OverflowError, e.what() );
-    } catch (std::out_of_range& e) {
-      SWIG_exception_fail(SWIG_IndexError, e.what() );
-    } catch (std::length_error& e) {
-      SWIG_exception_fail(SWIG_IndexError, e.what() );
-    } catch (std::runtime_error& e) {
-      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
-    } catch (std::exception& e) {
-      SWIG_exception_fail(SWIG_SystemError, e.what() );
-    }
-    /*@SWIG@*/
-  }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_cmf__upslope__Cell, 0 |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_project_Area(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  cmf::project *arg1 = (cmf::project *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject *swig_obj[1] ;
-  double result;
-  
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__project, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "project_Area" "', argument " "1"" of type '" "cmf::project const *""'"); 
-  }
-  arg1 = reinterpret_cast< cmf::project * >(argp1);
-  {
-    try {
-      result = (double)((cmf::project const *)arg1)->Area();
-    } 
-    /*@SWIG:C:\\Programme\\swig\\Lib\\typemaps\\exception.swg,61,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
-    catch (std::invalid_argument& e) {
-      SWIG_exception_fail(SWIG_ValueError, e.what() );
-    } catch (std::domain_error& e) {
-      SWIG_exception_fail(SWIG_ValueError, e.what() );
-    } catch (std::overflow_error& e) {
-      SWIG_exception_fail(SWIG_OverflowError, e.what() );
-    } catch (std::out_of_range& e) {
-      SWIG_exception_fail(SWIG_IndexError, e.what() );
-    } catch (std::length_error& e) {
-      SWIG_exception_fail(SWIG_IndexError, e.what() );
-    } catch (std::runtime_error& e) {
-      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
-    } catch (std::exception& e) {
-      SWIG_exception_fail(SWIG_SystemError, e.what() );
-    }
-    /*@SWIG@*/
-  }
-  resultobj = SWIG_From_double(static_cast< double >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_project_Cell__SWIG_1(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  cmf::project *arg1 = (cmf::project *) 0 ;
-  cmf::geometry::point arg2 ;
-  double arg3 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  double val3 ;
-  int ecode3 = 0 ;
-  cmf::upslope::Cell *result = 0 ;
-  
-  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__project, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "project_Cell" "', argument " "1"" of type '" "cmf::project *""'"); 
-  }
-  arg1 = reinterpret_cast< cmf::project * >(argp1);
-  {
-    cmf::geometry::point p;
-    if (((!convert_xyz_to_point(swig_obj[1],p)) || !convert_seq_to_point(swig_obj[1],p)))
-    {
-      PyErr_SetString(PyExc_ValueError,"The object to convert needs to be either a sequence of length 2 or 3 or an object exposing an x and y attribute of type float(z is used if present)");
-    }
-    arg2=p;
-  }
-  ecode3 = SWIG_AsVal_double(swig_obj[2], &val3);
-  if (!SWIG_IsOK(ecode3)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "project_Cell" "', argument " "3"" of type '" "double""'");
-  } 
-  arg3 = static_cast< double >(val3);
-  {
-    try {
-      result = (cmf::upslope::Cell *)(arg1)->Cell(arg2,arg3);
-    } 
-    /*@SWIG:C:\\Programme\\swig\\Lib\\typemaps\\exception.swg,61,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
-    catch (std::invalid_argument& e) {
-      SWIG_exception_fail(SWIG_ValueError, e.what() );
-    } catch (std::domain_error& e) {
-      SWIG_exception_fail(SWIG_ValueError, e.what() );
-    } catch (std::overflow_error& e) {
-      SWIG_exception_fail(SWIG_OverflowError, e.what() );
-    } catch (std::out_of_range& e) {
-      SWIG_exception_fail(SWIG_IndexError, e.what() );
-    } catch (std::length_error& e) {
-      SWIG_exception_fail(SWIG_IndexError, e.what() );
-    } catch (std::runtime_error& e) {
-      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
-    } catch (std::exception& e) {
-      SWIG_exception_fail(SWIG_SystemError, e.what() );
-    }
-    /*@SWIG@*/
-  }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_cmf__upslope__Cell, 0 |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_project_Cell__SWIG_2(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  cmf::project *arg1 = (cmf::project *) 0 ;
-  cmf::geometry::point arg2 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  cmf::upslope::Cell *result = 0 ;
-  
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__project, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "project_Cell" "', argument " "1"" of type '" "cmf::project *""'"); 
-  }
-  arg1 = reinterpret_cast< cmf::project * >(argp1);
-  {
-    cmf::geometry::point p;
-    if (((!convert_xyz_to_point(swig_obj[1],p)) || !convert_seq_to_point(swig_obj[1],p)))
-    {
-      PyErr_SetString(PyExc_ValueError,"The object to convert needs to be either a sequence of length 2 or 3 or an object exposing an x and y attribute of type float(z is used if present)");
-    }
-    arg2=p;
-  }
-  {
-    try {
-      result = (cmf::upslope::Cell *)(arg1)->Cell(arg2);
-    } 
-    /*@SWIG:C:\\Programme\\swig\\Lib\\typemaps\\exception.swg,61,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
-    catch (std::invalid_argument& e) {
-      SWIG_exception_fail(SWIG_ValueError, e.what() );
-    } catch (std::domain_error& e) {
-      SWIG_exception_fail(SWIG_ValueError, e.what() );
-    } catch (std::overflow_error& e) {
-      SWIG_exception_fail(SWIG_OverflowError, e.what() );
-    } catch (std::out_of_range& e) {
-      SWIG_exception_fail(SWIG_IndexError, e.what() );
-    } catch (std::length_error& e) {
-      SWIG_exception_fail(SWIG_IndexError, e.what() );
-    } catch (std::runtime_error& e) {
-      SWIG_exception_fail(SWIG_RuntimeError, e.what() );
-    } catch (std::exception& e) {
-      SWIG_exception_fail(SWIG_SystemError, e.what() );
-    }
-    /*@SWIG@*/
-  }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_cmf__upslope__Cell, 0 |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_project_Cell(PyObject *self, PyObject *args) {
-  int argc;
-  PyObject *argv[4];
-  
-  if (!(argc = SWIG_Python_UnpackTuple(args,"project_Cell",0,3,argv))) SWIG_fail;
-  --argc;
-  {
-    unsigned long _index = 0;
-    SWIG_TypeRank _rank = 0; 
-    if (argc == 2) {
-      SWIG_TypeRank _ranki = 0;
-      SWIG_TypeRank _rankm = 0;
-      SWIG_TypeRank _pi = 1;
-      int _v = 0;
-      {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_cmf__project, 0);
-        _v = SWIG_CheckState(res);
-      }
-      if (!_v) goto check_1;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      {
-        {
-          int res = SWIG_AsVal_int(argv[1], NULL);
-          _v = SWIG_CheckState(res);
-        }
-      }
-      if (!_v) goto check_1;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      if (!_index || (_ranki < _rank)) {
-        _rank = _ranki; _index = 1;
-        if (_rank == _rankm) goto dispatch;
-      }
-    }
-  check_1:
-    
-    if (argc == 2) {
-      SWIG_TypeRank _ranki = 0;
-      SWIG_TypeRank _rankm = 0;
-      SWIG_TypeRank _pi = 1;
-      int _v = 0;
-      {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_cmf__project, 0);
-        _v = SWIG_CheckState(res);
-      }
-      if (!_v) goto check_2;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      {
-        {
-          cmf::geometry::point p;
-          _v=convert_seq_to_point(argv[1],p) || convert_xyz_to_point(argv[1],p);
-        }
-      }
-      if (!_v) goto check_2;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      if (!_index || (_ranki < _rank)) {
-        _rank = _ranki; _index = 2;
-        if (_rank == _rankm) goto dispatch;
-      }
-    }
-  check_2:
-    
-    if (argc == 3) {
-      SWIG_TypeRank _ranki = 0;
-      SWIG_TypeRank _rankm = 0;
-      SWIG_TypeRank _pi = 1;
-      int _v = 0;
-      {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_cmf__project, 0);
-        _v = SWIG_CheckState(res);
-      }
-      if (!_v) goto check_3;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      {
-        {
-          cmf::geometry::point p;
-          _v=convert_seq_to_point(argv[1],p) || convert_xyz_to_point(argv[1],p);
-        }
-      }
-      if (!_v) goto check_3;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      {
-        {
-          int res = SWIG_AsVal_double(argv[2], NULL);
-          _v = SWIG_CheckState(res);
-        }
-      }
-      if (!_v) goto check_3;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      if (!_index || (_ranki < _rank)) {
-        _rank = _ranki; _index = 3;
-        if (_rank == _rankm) goto dispatch;
-      }
-    }
-  check_3:
-    
-  dispatch:
-    switch(_index) {
-    case 1:
-      return _wrap_project_Cell__SWIG_0(self, argc, argv);
-    case 2:
-      return _wrap_project_Cell__SWIG_2(self, argc, argv);
-    case 3:
-      return _wrap_project_Cell__SWIG_1(self, argc, argv);
-    }
-  }
-  
-fail:
-  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number of arguments for overloaded function 'project_Cell'.\n"
-    "  Possible C/C++ prototypes are:\n"
-    "    Cell(cmf::project const *,int)\n"
-    "    Cell(cmf::project *,cmf::geometry::point,double)\n"
-    "    Cell(cmf::project *,cmf::geometry::point)\n");
   return NULL;
 }
 
@@ -87444,23 +89031,24 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_project_clear_layers(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_project_cells_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   cmf::project *arg1 = (cmf::project *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   PyObject *swig_obj[1] ;
+  cmf::upslope::cell_vector *result = 0 ;
   
   if (!args) SWIG_fail;
   swig_obj[0] = args;
   res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__project, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "project_clear_layers" "', argument " "1"" of type '" "cmf::project *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "project_cells_get" "', argument " "1"" of type '" "cmf::project *""'"); 
   }
   arg1 = reinterpret_cast< cmf::project * >(argp1);
   {
     try {
-      (arg1)->clear_layers();
+      result = (cmf::upslope::cell_vector *)cmf_project_cells_get(arg1);
     } 
     /*@SWIG:C:\\Programme\\swig\\Lib\\typemaps\\exception.swg,61,SWIG_CATCH_STDEXCEPT@*/  /* catching std::exception  */
     catch (std::invalid_argument& e) {
@@ -87480,7 +89068,7 @@ SWIGINTERN PyObject *_wrap_project_clear_layers(PyObject *SWIGUNUSEDPARM(self), 
     }
     /*@SWIG@*/
   }
-  resultobj = SWIG_Py_Void();
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_std__vectorT_cmf__upslope__Cell_p_std__allocatorT_cmf__upslope__Cell_p_t_t, 0 |  0 );
   return resultobj;
 fail:
   return NULL;
@@ -87928,22 +89516,8 @@ static PyMethodDef SwigMethods[] = {
 		"Last date of measurements. \n"
 		""},
 	 { (char *)"timeseries_interpolationpower", (PyCFunction)_wrap_timeseries_interpolationpower, METH_O, (char *)"timeseries_interpolationpower(timeseries self) -> double"},
-	 { (char *)"timeseries_Add", _wrap_timeseries_Add, METH_VARARGS, (char *)"\n"
-		"timeseries_Add(timeseries self, double Value)\n"
-		"\n"
-		"void Add(double\n"
-		"Value)\n"
-		"\n"
-		"Appends a measurement. \n"
-		""},
-	 { (char *)"timeseries_isempty", (PyCFunction)_wrap_timeseries_isempty, METH_O, (char *)"\n"
-		"timeseries_isempty(timeseries self) -> bool\n"
-		"\n"
-		"bool isempty()\n"
-		"const\n"
-		"\n"
-		"returns true if no values are added to the timeseries \n"
-		""},
+	 { (char *)"timeseries_add", _wrap_timeseries_add, METH_VARARGS, (char *)"timeseries_add(timeseries self, double Value)"},
+	 { (char *)"timeseries_is_empty", (PyCFunction)_wrap_timeseries_is_empty, METH_O, (char *)"timeseries_is_empty(timeseries self) -> bool"},
 	 { (char *)"timeseries_clear", (PyCFunction)_wrap_timeseries_clear, METH_O, (char *)"\n"
 		"timeseries_clear(timeseries self)\n"
 		"\n"
@@ -89055,7 +90629,7 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"node_vector_swiginit", node_vector_swiginit, METH_VARARGS, NULL},
 	 { (char *)"FluxNode_project", (PyCFunction)_wrap_FluxNode_project, METH_O, (char *)"FluxNode_project(FluxNode self) -> project"},
 	 { (char *)"FluxNode_node_id_get", (PyCFunction)_wrap_FluxNode_node_id_get, METH_O, (char *)"FluxNode_node_id_get(FluxNode self) -> int"},
-	 { (char *)"FluxNode_IsStorage", (PyCFunction)_wrap_FluxNode_IsStorage, METH_O, (char *)"FluxNode_IsStorage(FluxNode self) -> bool"},
+	 { (char *)"FluxNode_is_storage", (PyCFunction)_wrap_FluxNode_is_storage, METH_O, (char *)"FluxNode_is_storage(FluxNode self) -> bool"},
 	 { (char *)"FluxNode_Name_set", _wrap_FluxNode_Name_set, METH_VARARGS, (char *)"FluxNode_Name_set(FluxNode self, string Name)"},
 	 { (char *)"FluxNode_Name_get", (PyCFunction)_wrap_FluxNode_Name_get, METH_O, (char *)"FluxNode_Name_get(FluxNode self) -> string"},
 	 { (char *)"FluxNode_Connections", (PyCFunction)_wrap_FluxNode_Connections, METH_O, (char *)"FluxNode_Connections(FluxNode self) -> connection_vector"},
@@ -89079,33 +90653,11 @@ static PyMethodDef SwigMethods[] = {
 		"state changes require an update of the fluxes. \n"
 		""},
 	 { (char *)"FluxNode_Connection", _wrap_FluxNode_Connection, METH_VARARGS, (char *)"FluxNode_Connection(FluxNode self, FluxNode target) -> FluxConnection"},
-	 { (char *)"FluxNode_RemoveConnection", _wrap_FluxNode_RemoveConnection, METH_VARARGS, (char *)"FluxNode_RemoveConnection(FluxNode self, FluxNode To)"},
-	 { (char *)"FluxNode_FluxTo", _wrap_FluxNode_FluxTo, METH_VARARGS, (char *)"\n"
-		"FluxNode_FluxTo(FluxNode self, FluxNode target, Time t) -> real\n"
-		"\n"
-		"real\n"
-		"FluxTo(const FluxNode &target, cmf::math::Time t)\n"
-		"\n"
-		"Returns the actual flux between this and target (positive sign means\n"
-		"\"from target into this\"). \n"
-		""},
-	 { (char *)"FluxNode_Waterbalance", _wrap_FluxNode_Waterbalance, METH_VARARGS, (char *)"\n"
-		"Waterbalance(Time t, FluxConnection Without = None) -> real\n"
-		"FluxNode_Waterbalance(FluxNode self, Time t) -> real\n"
-		"\n"
-		"real\n"
-		"Waterbalance(cmf::math::Time t, const FluxConnection *except=0)\n"
-		"\n"
-		"Returns the sum of all fluxes (positive and negative) at time t.\n"
-		"Single fluxes can be excluded from the calculation.\n"
-		"\n"
-		"Parameters:\n"
-		"-----------\n"
-		"\n"
-		"t:  Time of the query\n"
-		"\n"
-		"except:  A FluxConnection that is excluded from the Waterbalance (e.g.\n"
-		"to prevent closed circuits) \n"
+	 { (char *)"FluxNode_remove_connection", _wrap_FluxNode_remove_connection, METH_VARARGS, (char *)"FluxNode_remove_connection(FluxNode self, FluxNode To)"},
+	 { (char *)"FluxNode_flux_to", _wrap_FluxNode_flux_to, METH_VARARGS, (char *)"FluxNode_flux_to(FluxNode self, FluxNode target, Time t) -> real"},
+	 { (char *)"FluxNode_water_balance", _wrap_FluxNode_water_balance, METH_VARARGS, (char *)"\n"
+		"water_balance(Time t, FluxConnection Without = None) -> real\n"
+		"FluxNode_water_balance(FluxNode self, Time t) -> real\n"
 		""},
 	 { (char *)"FluxNode_conc", _wrap_FluxNode_conc, METH_VARARGS, (char *)"\n"
 		"FluxNode_conc(FluxNode self, Time t) -> WaterQuality\n"
@@ -89127,12 +90679,7 @@ static PyMethodDef SwigMethods[] = {
 		"Returns the water potential of the node in m waterhead The base class\n"
 		"water storage always returns the height of the location. \n"
 		""},
-	 { (char *)"FluxNode_Empty", (PyCFunction)_wrap_FluxNode_Empty, METH_O, (char *)"\n"
-		"FluxNode_Empty(FluxNode self) -> bool\n"
-		"\n"
-		"virtual bool\n"
-		"Empty() \n"
-		""},
+	 { (char *)"FluxNode_is_empty", (PyCFunction)_wrap_FluxNode_is_empty, METH_O, (char *)"FluxNode_is_empty(FluxNode self) -> bool"},
 	 { (char *)"new_FluxNode", _wrap_new_FluxNode, METH_VARARGS, (char *)"\n"
 		"FluxNode(project _project, point location = cmf::geometry::point())\n"
 		"new_FluxNode(project _project) -> FluxNode\n"
@@ -89186,6 +90733,56 @@ static PyMethodDef SwigMethods[] = {
 		"virtual ~FluxConnection() \n"
 		""},
 	 { (char *)"FluxConnection_swigregister", FluxConnection_swigregister, METH_VARARGS, NULL},
+	 { (char *)"linear_scale_displacement_set", _wrap_linear_scale_displacement_set, METH_VARARGS, (char *)"linear_scale_displacement_set(linear_scale self, real displacement)"},
+	 { (char *)"linear_scale_displacement_get", (PyCFunction)_wrap_linear_scale_displacement_get, METH_O, (char *)"linear_scale_displacement_get(linear_scale self) -> real"},
+	 { (char *)"linear_scale_slope_set", _wrap_linear_scale_slope_set, METH_VARARGS, (char *)"linear_scale_slope_set(linear_scale self, real slope)"},
+	 { (char *)"linear_scale_slope_get", (PyCFunction)_wrap_linear_scale_slope_get, METH_O, (char *)"linear_scale_slope_get(linear_scale self) -> real"},
+	 { (char *)"linear_scale___call__", _wrap_linear_scale___call__, METH_VARARGS, (char *)"linear_scale___call__(linear_scale self, real value) -> real"},
+	 { (char *)"new_linear_scale", _wrap_new_linear_scale, METH_VARARGS, (char *)"\n"
+		"linear_scale(real _slope = 1, real _displacement = 0)\n"
+		"linear_scale(real _slope = 1)\n"
+		"new_linear_scale() -> linear_scale\n"
+		""},
+	 { (char *)"delete_linear_scale", (PyCFunction)_wrap_delete_linear_scale, METH_O, (char *)"delete_linear_scale(linear_scale self)"},
+	 { (char *)"linear_scale_swigregister", linear_scale_swigregister, METH_VARARGS, NULL},
+	 { (char *)"linear_scale_swiginit", linear_scale_swiginit, METH_VARARGS, NULL},
+	 { (char *)"DricheletBoundary_is_source_set", _wrap_DricheletBoundary_is_source_set, METH_VARARGS, (char *)"DricheletBoundary_is_source_set(DricheletBoundary self, bool is_source)"},
+	 { (char *)"DricheletBoundary_is_source_get", (PyCFunction)_wrap_DricheletBoundary_is_source_get, METH_O, (char *)"DricheletBoundary_is_source_get(DricheletBoundary self) -> bool"},
+	 { (char *)"DricheletBoundary_is_empty", (PyCFunction)_wrap_DricheletBoundary_is_empty, METH_O, (char *)"DricheletBoundary_is_empty(DricheletBoundary self) -> bool"},
+	 { (char *)"DricheletBoundary_RecalcFluxes", _wrap_DricheletBoundary_RecalcFluxes, METH_VARARGS, (char *)"\n"
+		"DricheletBoundary_RecalcFluxes(DricheletBoundary self, Time t) -> bool\n"
+		"\n"
+		"virtual\n"
+		"bool RecalcFluxes(cmf::math::Time t)\n"
+		"\n"
+		"Pure FluxNodes do not influence fluxes, therefore no recalculation of\n"
+		"fluxes is required by fluxnode. WaterStorage overrides this, since\n"
+		"state changes require an update of the fluxes. \n"
+		""},
+	 { (char *)"delete_DricheletBoundary", (PyCFunction)_wrap_delete_DricheletBoundary, METH_O, (char *)"delete_DricheletBoundary(DricheletBoundary self)"},
+	 { (char *)"DricheletBoundary_swigregister", DricheletBoundary_swigregister, METH_VARARGS, NULL},
+	 { (char *)"NeumannBoundary_flux_set", _wrap_NeumannBoundary_flux_set, METH_VARARGS, (char *)"NeumannBoundary_flux_set(NeumannBoundary self, timeseries flux)"},
+	 { (char *)"NeumannBoundary_flux_get", (PyCFunction)_wrap_NeumannBoundary_flux_get, METH_O, (char *)"NeumannBoundary_flux_get(NeumannBoundary self) -> timeseries"},
+	 { (char *)"NeumannBoundary_flux_scale_set", _wrap_NeumannBoundary_flux_scale_set, METH_VARARGS, (char *)"NeumannBoundary_flux_scale_set(NeumannBoundary self, linear_scale flux_scale)"},
+	 { (char *)"NeumannBoundary_flux_scale_get", (PyCFunction)_wrap_NeumannBoundary_flux_scale_get, METH_O, (char *)"NeumannBoundary_flux_scale_get(NeumannBoundary self) -> linear_scale"},
+	 { (char *)"NeumannBoundary_concentration_set", _wrap_NeumannBoundary_concentration_set, METH_VARARGS, (char *)"NeumannBoundary_concentration_set(NeumannBoundary self, SoluteTimeseries concentration)"},
+	 { (char *)"NeumannBoundary_concentration_get", (PyCFunction)_wrap_NeumannBoundary_concentration_get, METH_O, (char *)"NeumannBoundary_concentration_get(NeumannBoundary self) -> SoluteTimeseries"},
+	 { (char *)"NeumannBoundary___call__", _wrap_NeumannBoundary___call__, METH_VARARGS, (char *)"NeumannBoundary___call__(NeumannBoundary self, Time t) -> real"},
+	 { (char *)"NeumannBoundary_is_empty", (PyCFunction)_wrap_NeumannBoundary_is_empty, METH_O, (char *)"NeumannBoundary_is_empty(NeumannBoundary self) -> bool"},
+	 { (char *)"new_NeumannBoundary", _wrap_new_NeumannBoundary, METH_VARARGS, (char *)"\n"
+		"NeumannBoundary(project _project, timeseries _flux = 0.0, SoluteTimeseries _concentration = cmf::water::SoluteTimeseries(), \n"
+		"    point loc = cmf::geometry::point())\n"
+		"NeumannBoundary(project _project, timeseries _flux = 0.0, SoluteTimeseries _concentration = cmf::water::SoluteTimeseries())\n"
+		"NeumannBoundary(project _project, timeseries _flux = 0.0)\n"
+		"new_NeumannBoundary(project _project) -> NeumannBoundary\n"
+		""},
+	 { (char *)"delete_NeumannBoundary", (PyCFunction)_wrap_delete_NeumannBoundary, METH_O, (char *)"delete_NeumannBoundary(NeumannBoundary self)"},
+	 { (char *)"NeumannBoundary_swigregister", NeumannBoundary_swigregister, METH_VARARGS, NULL},
+	 { (char *)"NeumannBoundary_swiginit", NeumannBoundary_swiginit, METH_VARARGS, NULL},
+	 { (char *)"new_NeumannFlux", _wrap_new_NeumannFlux, METH_VARARGS, (char *)"new_NeumannFlux(NeumannBoundary left, FluxNode right) -> NeumannFlux"},
+	 { (char *)"delete_NeumannFlux", (PyCFunction)_wrap_delete_NeumannFlux, METH_O, (char *)"delete_NeumannFlux(NeumannFlux self)"},
+	 { (char *)"NeumannFlux_swigregister", NeumannFlux_swigregister, METH_VARARGS, NULL},
+	 { (char *)"NeumannFlux_swiginit", NeumannFlux_swiginit, METH_VARARGS, NULL},
 	 { (char *)"new_WaterStorage", _wrap_new_WaterStorage, METH_VARARGS, (char *)"\n"
 		"WaterStorage(project _project, double InitialState = 0)\n"
 		"WaterStorage(project _project)\n"
@@ -89431,6 +91028,9 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"delete_MeteoStationList", (PyCFunction)_wrap_delete_MeteoStationList, METH_O, (char *)"delete_MeteoStationList(MeteoStationList self)"},
 	 { (char *)"MeteoStationList_swigregister", MeteoStationList_swigregister, METH_VARARGS, NULL},
 	 { (char *)"MeteoStationList_swiginit", MeteoStationList_swiginit, METH_VARARGS, NULL},
+	 { (char *)"RainCloud_get_cell", (PyCFunction)_wrap_RainCloud_get_cell, METH_O, (char *)"RainCloud_get_cell(RainCloud self) -> Cell"},
+	 { (char *)"delete_RainCloud", (PyCFunction)_wrap_delete_RainCloud, METH_O, (char *)"delete_RainCloud(RainCloud self)"},
+	 { (char *)"RainCloud_swigregister", RainCloud_swigregister, METH_VARARGS, NULL},
 	 { (char *)"Vegetation_LAI_set", _wrap_Vegetation_LAI_set, METH_VARARGS, (char *)"Vegetation_LAI_set(Vegetation self, double LAI)"},
 	 { (char *)"Vegetation_LAI_get", (PyCFunction)_wrap_Vegetation_LAI_get, METH_O, (char *)"Vegetation_LAI_get(Vegetation self) -> double"},
 	 { (char *)"Vegetation_Height_set", _wrap_Vegetation_Height_set, METH_VARARGS, (char *)"Vegetation_Height_set(Vegetation self, double Height)"},
@@ -90163,8 +91763,15 @@ static PyMethodDef SwigMethods[] = {
 		"\n"
 		"real GetETpot(cmf::math::Time t) const =0 \n"
 		""},
+	 { (char *)"new_constantETpot", _wrap_new_constantETpot, METH_VARARGS, (char *)"\n"
+		"new_constantETpot(SoilWaterStorage source, FluxNode ET_target, double constantETpot_value) -> constantETpot\n"
+		"\n"
+		"constantETpot(cmf::upslope::SoilWaterStorage &source,\n"
+		"cmf::water::FluxNode &ET_target, double constantETpot_value) \n"
+		""},
 	 { (char *)"delete_constantETpot", (PyCFunction)_wrap_delete_constantETpot, METH_O, (char *)"delete_constantETpot(constantETpot self)"},
 	 { (char *)"constantETpot_swigregister", constantETpot_swigregister, METH_VARARGS, NULL},
+	 { (char *)"constantETpot_swiginit", constantETpot_swiginit, METH_VARARGS, NULL},
 	 { (char *)"PenmanMonteithET_daily_set", _wrap_PenmanMonteithET_daily_set, METH_VARARGS, (char *)"PenmanMonteithET_daily_set(PenmanMonteithET self, bool daily)"},
 	 { (char *)"PenmanMonteithET_daily_get", (PyCFunction)_wrap_PenmanMonteithET_daily_get, METH_O, (char *)"PenmanMonteithET_daily_get(PenmanMonteithET self) -> bool"},
 	 { (char *)"new_PenmanMonteithET", _wrap_new_PenmanMonteithET, METH_VARARGS, (char *)"\n"
@@ -90447,22 +92054,21 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"ReachIterator_swigregister", ReachIterator_swigregister, METH_VARARGS, NULL},
 	 { (char *)"ReachIterator_swiginit", ReachIterator_swiginit, METH_VARARGS, NULL},
 	 { (char *)"make_river_gap", (PyCFunction)_wrap_make_river_gap, METH_O, (char *)"make_river_gap(Reach root_reach) -> double"},
+	 { (char *)"project_meteo_stations_set", _wrap_project_meteo_stations_set, METH_VARARGS, (char *)"project_meteo_stations_set(project self, MeteoStationList meteo_stations)"},
+	 { (char *)"project_meteo_stations_get", (PyCFunction)_wrap_project_meteo_stations_get, METH_O, (char *)"project_meteo_stations_get(project self) -> MeteoStationList"},
+	 { (char *)"project_outlets_set", _wrap_project_outlets_set, METH_VARARGS, (char *)"project_outlets_set(project self, node_vector outlets)"},
+	 { (char *)"project_outlets_get", (PyCFunction)_wrap_project_outlets_get, METH_O, (char *)"project_outlets_get(project self) -> node_vector"},
+	 { (char *)"project_get_cell", _wrap_project_get_cell, METH_VARARGS, (char *)"project_get_cell(project self, int index) -> Cell"},
+	 { (char *)"project_size", (PyCFunction)_wrap_project_size, METH_O, (char *)"project_size(project self) -> int"},
 	 { (char *)"project_debug_set", _wrap_project_debug_set, METH_VARARGS, (char *)"project_debug_set(project self, bool debug)"},
 	 { (char *)"project_debug_get", (PyCFunction)_wrap_project_debug_get, METH_O, (char *)"project_debug_get(project self) -> bool"},
 	 { (char *)"new_project", (PyCFunction)_wrap_new_project, METH_NOARGS, (char *)"new_project() -> project"},
 	 { (char *)"delete_project", (PyCFunction)_wrap_delete_project, METH_O, (char *)"delete_project(project self)"},
-	 { (char *)"project_CellCount", (PyCFunction)_wrap_project_CellCount, METH_O, (char *)"project_CellCount(project self) -> int"},
-	 { (char *)"project_Area", (PyCFunction)_wrap_project_Area, METH_O, (char *)"project_Area(project self) -> double"},
-	 { (char *)"project_Cell", _wrap_project_Cell, METH_VARARGS, (char *)"\n"
-		"Cell(int ndx) -> Cell\n"
-		"Cell(point p, double max_dist = 1e20) -> Cell\n"
-		"project_Cell(project self, point p) -> Cell\n"
-		""},
 	 { (char *)"project_NewCell", _wrap_project_NewCell, METH_VARARGS, (char *)"\n"
 		"NewCell(double x, double y, double z, double Area) -> Cell\n"
 		"project_NewCell(project self, point p, double Area) -> Cell\n"
 		""},
-	 { (char *)"project_clear_layers", (PyCFunction)_wrap_project_clear_layers, METH_O, (char *)"project_clear_layers(project self)"},
+	 { (char *)"project_cells_get", (PyCFunction)_wrap_project_cells_get, METH_O, (char *)"project_cells_get(project self) -> cell_vector"},
 	 { (char *)"project_swigregister", project_swigregister, METH_VARARGS, NULL},
 	 { (char *)"project_swiginit", project_swiginit, METH_VARARGS, NULL},
 	 { NULL, NULL, 0, NULL }
@@ -90534,6 +92140,9 @@ static void *_p_cmf__river__ManningTo_p_cmf__water__FluxConnection(void *x, int 
 static void *_p_cmf__upslope__ET__PenmanMonteithETTo_p_cmf__water__FluxConnection(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((cmf::water::FluxConnection *)  ((cmf::upslope::ET::PenmanMonteithET *) x));
 }
+static void *_p_cmf__water__NeumannFluxTo_p_cmf__water__FluxConnection(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((cmf::water::FluxConnection *)  ((cmf::water::NeumannFlux *) x));
+}
 static void *_p_cmf__upslope__ET__CanopyStorageEvaporationTo_p_cmf__water__FluxConnection(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((cmf::water::FluxConnection *)  ((cmf::upslope::ET::CanopyStorageEvaporation *) x));
 }
@@ -90600,6 +92209,9 @@ static void *_p_p_cmf__river__ManningTo_p_p_cmf__water__FluxConnection(void *x, 
 static void *_p_p_cmf__upslope__ET__PenmanMonteithETTo_p_p_cmf__water__FluxConnection(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((cmf::water::FluxConnection **)  ((cmf::upslope::ET::PenmanMonteithET **) x));
 }
+static void *_p_p_cmf__water__NeumannFluxTo_p_p_cmf__water__FluxConnection(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((cmf::water::FluxConnection **)  ((cmf::water::NeumannFlux **) x));
+}
 static void *_p_p_cmf__upslope__ET__CanopyStorageEvaporationTo_p_p_cmf__water__FluxConnection(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((cmf::water::FluxConnection **)  ((cmf::upslope::ET::CanopyStorageEvaporation **) x));
 }
@@ -90608,6 +92220,15 @@ static void *_p_cmf__upslope__BrooksCoreyRetentionCurveTo_p_cmf__upslope__Retent
 }
 static void *_p_cmf__upslope__VanGenuchtenMualemTo_p_cmf__upslope__RetentionCurve(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((cmf::upslope::RetentionCurve *)  ((cmf::upslope::VanGenuchtenMualem *) x));
+}
+static void *_p_cmf__atmosphere__RainCloudTo_p_cmf__water__NeumannBoundary(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((cmf::water::NeumannBoundary *)  ((cmf::atmosphere::RainCloud *) x));
+}
+static void *_p_cmf__water__DricheletBoundaryTo_p_cmf__water__FluxNode(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((cmf::water::FluxNode *)  ((cmf::water::DricheletBoundary *) x));
+}
+static void *_p_cmf__water__NeumannBoundaryTo_p_cmf__water__FluxNode(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((cmf::water::FluxNode *)  ((cmf::water::NeumannBoundary *) x));
 }
 static void *_p_cmf__water__WaterStorageTo_p_cmf__water__FluxNode(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((cmf::water::FluxNode *)  ((cmf::water::WaterStorage *) x));
@@ -90620,6 +92241,9 @@ static void *_p_cmf__upslope__FlexibleSizeLayerTo_p_cmf__water__FluxNode(void *x
 }
 static void *_p_cmf__river__OpenWaterStorageTo_p_cmf__water__FluxNode(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((cmf::water::FluxNode *) (cmf::water::WaterStorage *) ((cmf::river::OpenWaterStorage *) x));
+}
+static void *_p_cmf__atmosphere__RainCloudTo_p_cmf__water__FluxNode(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((cmf::water::FluxNode *) (cmf::water::NeumannBoundary *) ((cmf::atmosphere::RainCloud *) x));
 }
 static void *_p_cmf__upslope__FlexibleSizeSaturatedZoneTo_p_cmf__water__FluxNode(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((cmf::water::FluxNode *) (cmf::water::WaterStorage *)(cmf::upslope::SoilWaterStorage *) ((cmf::upslope::FlexibleSizeSaturatedZone *) x));
@@ -90825,8 +92449,11 @@ static swig_type_info _swigt__p_cmf__upslope__connections__TopographicGradientDa
 static swig_type_info _swigt__p_cmf__upslope__connections__UnsatSatPercolation = {"_p_cmf__upslope__connections__UnsatSatPercolation", "cmf::upslope::connections::UnsatSatPercolation *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_cmf__upslope__connections__UnsaturatedDarcy = {"_p_cmf__upslope__connections__UnsaturatedDarcy", "cmf::upslope::connections::UnsaturatedDarcy *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_cmf__upslope__vegetation__Vegetation = {"_p_cmf__upslope__vegetation__Vegetation", "cmf::upslope::vegetation::Vegetation *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_cmf__water__DricheletBoundary = {"_p_cmf__water__DricheletBoundary", "cmf::water::DricheletBoundary *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_cmf__water__FluxConnection = {"_p_cmf__water__FluxConnection", "cmf::water::FluxConnection *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_cmf__water__FluxNode = {"_p_cmf__water__FluxNode", "cmf::water::FluxNode *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_cmf__water__NeumannBoundary = {"_p_cmf__water__NeumannBoundary", "cmf::water::NeumannBoundary *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_cmf__water__NeumannFlux = {"_p_cmf__water__NeumannFlux", "cmf::water::NeumannFlux *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_cmf__water__Solute = {"_p_cmf__water__Solute", "cmf::water::Solute *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_cmf__water__SoluteStorage = {"_p_cmf__water__SoluteStorage", "cmf::water::SoluteStorage *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_cmf__water__SoluteTimeseries = {"_p_cmf__water__SoluteTimeseries", "cmf::water::SoluteTimeseries *", 0, 0, (void*)0, 0};
@@ -90834,6 +92461,7 @@ static swig_type_info _swigt__p_cmf__water__Solutes = {"_p_cmf__water__Solutes",
 static swig_type_info _swigt__p_cmf__water__WaterFlux = {"_p_cmf__water__WaterFlux", "cmf::water::WaterFlux *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_cmf__water__WaterQuality = {"_p_cmf__water__WaterQuality", "cmf::water::WaterQuality *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_cmf__water__WaterStorage = {"_p_cmf__water__WaterStorage", "cmf::water::WaterStorage *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_cmf__water__linear_scale = {"_p_cmf__water__linear_scale", "cmf::water::linear_scale *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_const_reference = {"_p_const_reference", "const_reference *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_difference_type = {"_p_difference_type", "difference_type *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_double = {"_p_double", "real *|double *", 0, 0, (void*)0, 0};
@@ -90870,6 +92498,7 @@ static swig_type_info _swigt__p_p_cmf__upslope__connections__MatrixInfiltration 
 static swig_type_info _swigt__p_p_cmf__upslope__ET__HargreaveET = {"_p_p_cmf__upslope__ET__HargreaveET", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_p_cmf__river__Manning = {"_p_p_cmf__river__Manning", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_p_cmf__upslope__ET__PenmanMonteithET = {"_p_p_cmf__upslope__ET__PenmanMonteithET", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_p_cmf__water__NeumannFlux = {"_p_p_cmf__water__NeumannFlux", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_p_cmf__upslope__ET__CanopyStorageEvaporation = {"_p_p_cmf__upslope__ET__CanopyStorageEvaporation", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_std__setT_cmf__water__FluxConnection_p_std__lessT_cmf__water__FluxConnection_p_t_std__allocatorT_cmf__water__FluxConnection_p_t_t__value_type = {"_p_std__setT_cmf__water__FluxConnection_p_std__lessT_cmf__water__FluxConnection_p_t_std__allocatorT_cmf__water__FluxConnection_p_t_t__value_type", "cmf::water::FluxConnection **|std::set< cmf::water::FluxConnection * >::value_type *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__tr1__shared_ptrT_cmf__atmosphere__MeteoStation_t = {"_p_std__tr1__shared_ptrT_cmf__atmosphere__MeteoStation_t", "std::tr1::shared_ptr< cmf::atmosphere::MeteoStation > *", 0, 0, (void*)0, 0};
@@ -90969,8 +92598,11 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_cmf__upslope__connections__UnsatSatPercolation,
   &_swigt__p_cmf__upslope__connections__UnsaturatedDarcy,
   &_swigt__p_cmf__upslope__vegetation__Vegetation,
+  &_swigt__p_cmf__water__DricheletBoundary,
   &_swigt__p_cmf__water__FluxConnection,
   &_swigt__p_cmf__water__FluxNode,
+  &_swigt__p_cmf__water__NeumannBoundary,
+  &_swigt__p_cmf__water__NeumannFlux,
   &_swigt__p_cmf__water__Solute,
   &_swigt__p_cmf__water__SoluteStorage,
   &_swigt__p_cmf__water__SoluteTimeseries,
@@ -90978,6 +92610,7 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_cmf__water__WaterFlux,
   &_swigt__p_cmf__water__WaterQuality,
   &_swigt__p_cmf__water__WaterStorage,
+  &_swigt__p_cmf__water__linear_scale,
   &_swigt__p_const_reference,
   &_swigt__p_difference_type,
   &_swigt__p_double,
@@ -91006,6 +92639,7 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_p_cmf__upslope__connections__TopographicGradientDarcy,
   &_swigt__p_p_cmf__upslope__connections__UnsatSatPercolation,
   &_swigt__p_p_cmf__upslope__connections__UnsaturatedDarcy,
+  &_swigt__p_p_cmf__water__NeumannFlux,
   &_swigt__p_reference,
   &_swigt__p_size_type,
   &_swigt__p_std__invalid_argument,
@@ -91113,8 +92747,11 @@ static swig_cast_info _swigc__p_cmf__upslope__connections__TopographicGradientDa
 static swig_cast_info _swigc__p_cmf__upslope__connections__UnsatSatPercolation[] = {  {&_swigt__p_cmf__upslope__connections__UnsatSatPercolation, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_cmf__upslope__connections__UnsaturatedDarcy[] = {  {&_swigt__p_cmf__upslope__connections__UnsaturatedDarcy, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_cmf__upslope__vegetation__Vegetation[] = {  {&_swigt__p_cmf__upslope__vegetation__Vegetation, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_cmf__water__FluxConnection[] = {  {&_swigt__p_cmf__upslope__connections__Snowfall, _p_cmf__upslope__connections__SnowfallTo_p_cmf__water__FluxConnection, 0, 0},  {&_swigt__p_cmf__upslope__connections__SnowWaterOverflow, _p_cmf__upslope__connections__SnowWaterOverflowTo_p_cmf__water__FluxConnection, 0, 0},  {&_swigt__p_cmf__upslope__connections__CanopyOverflow, _p_cmf__upslope__connections__CanopyOverflowTo_p_cmf__water__FluxConnection, 0, 0},  {&_swigt__p_cmf__upslope__connections__TopographicGradientDarcy, _p_cmf__upslope__connections__TopographicGradientDarcyTo_p_cmf__water__FluxConnection, 0, 0},  {&_swigt__p_cmf__upslope__connections__Rainfall, _p_cmf__upslope__connections__RainfallTo_p_cmf__water__FluxConnection, 0, 0},  {&_swigt__p_cmf__water__FluxConnection, 0, 0, 0},  {&_swigt__std__vectorT_cmf__water__FluxConnection_p_std__allocatorT_cmf__water__FluxConnection_p_t_t__value_type, 0, 0, 0},  {&_swigt__p_cmf__upslope__connections__UnsaturatedDarcy, _p_cmf__upslope__connections__UnsaturatedDarcyTo_p_cmf__water__FluxConnection, 0, 0},  {&_swigt__p_cmf__upslope__connections__HBVSnowMelt, _p_cmf__upslope__connections__HBVSnowMeltTo_p_cmf__water__FluxConnection, 0, 0},  {&_swigt__p_cmf__upslope__connections__SimpleTindexSnowMelt, _p_cmf__upslope__connections__SimpleTindexSnowMeltTo_p_cmf__water__FluxConnection, 0, 0},  {&_swigt__p_cmf__upslope__connections__SWATPercolation, _p_cmf__upslope__connections__SWATPercolationTo_p_cmf__water__FluxConnection, 0, 0},  {&_swigt__p_cmf__upslope__connections__UnsatSatPercolation, _p_cmf__upslope__connections__UnsatSatPercolationTo_p_cmf__water__FluxConnection, 0, 0},  {&_swigt__p_cmf__upslope__connections__Richards_lateral, _p_cmf__upslope__connections__Richards_lateralTo_p_cmf__water__FluxConnection, 0, 0},  {&_swigt__p_cmf__upslope__connections__Richards, _p_cmf__upslope__connections__RichardsTo_p_cmf__water__FluxConnection, 0, 0},  {&_swigt__std__setT_cmf__water__FluxConnection_p_std__lessT_cmf__water__FluxConnection_p_t_std__allocatorT_cmf__water__FluxConnection_p_t_t__key_type, 0, 0, 0},  {&_swigt__std__setT_cmf__water__FluxConnection_p_std__lessT_cmf__water__FluxConnection_p_t_std__allocatorT_cmf__water__FluxConnection_p_t_t__value_type, 0, 0, 0},  {&_swigt__p_cmf__upslope__ET__ShuttleworthWallaceET, _p_cmf__upslope__ET__ShuttleworthWallaceETTo_p_cmf__water__FluxConnection, 0, 0},  {&_swigt__p_cmf__upslope__connections__Darcy, _p_cmf__upslope__connections__DarcyTo_p_cmf__water__FluxConnection, 0, 0},  {&_swigt__p_cmf__river__TechnicalFlux, _p_cmf__river__TechnicalFluxTo_p_cmf__water__FluxConnection, 0, 0},  {&_swigt__p_cmf__upslope__ET__constantETpot, _p_cmf__upslope__ET__constantETpotTo_p_cmf__water__FluxConnection, 0, 0},  {&_swigt__p_cmf__upslope__connections__MatrixInfiltration, _p_cmf__upslope__connections__MatrixInfiltrationTo_p_cmf__water__FluxConnection, 0, 0},  {&_swigt__p_cmf__upslope__connections__CompleteInfiltration, _p_cmf__upslope__connections__CompleteInfiltrationTo_p_cmf__water__FluxConnection, 0, 0},  {&_swigt__p_cmf__upslope__ET__HargreaveET, _p_cmf__upslope__ET__HargreaveETTo_p_cmf__water__FluxConnection, 0, 0},  {&_swigt__p_cmf__river__Manning, _p_cmf__river__ManningTo_p_cmf__water__FluxConnection, 0, 0},  {&_swigt__p_cmf__upslope__ET__PenmanMonteithET, _p_cmf__upslope__ET__PenmanMonteithETTo_p_cmf__water__FluxConnection, 0, 0},  {&_swigt__p_cmf__upslope__ET__CanopyStorageEvaporation, _p_cmf__upslope__ET__CanopyStorageEvaporationTo_p_cmf__water__FluxConnection, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_cmf__water__FluxNode[] = {  {&_swigt__std__vectorT_cmf__water__FluxNode_p_std__allocatorT_cmf__water__FluxNode_p_t_t__value_type, 0, 0, 0},  {&_swigt__p_cmf__water__FluxNode, 0, 0, 0},  {&_swigt__p_cmf__water__WaterStorage, _p_cmf__water__WaterStorageTo_p_cmf__water__FluxNode, 0, 0},  {&_swigt__p_cmf__upslope__SoilWaterStorage, _p_cmf__upslope__SoilWaterStorageTo_p_cmf__water__FluxNode, 0, 0},  {&_swigt__p_cmf__upslope__FlexibleSizeLayer, _p_cmf__upslope__FlexibleSizeLayerTo_p_cmf__water__FluxNode, 0, 0},  {&_swigt__p_cmf__river__OpenWaterStorage, _p_cmf__river__OpenWaterStorageTo_p_cmf__water__FluxNode, 0, 0},  {&_swigt__p_cmf__upslope__FlexibleSizeSaturatedZone, _p_cmf__upslope__FlexibleSizeSaturatedZoneTo_p_cmf__water__FluxNode, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_cmf__water__DricheletBoundary[] = {  {&_swigt__p_cmf__water__DricheletBoundary, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_cmf__water__FluxConnection[] = {  {&_swigt__p_cmf__upslope__connections__Snowfall, _p_cmf__upslope__connections__SnowfallTo_p_cmf__water__FluxConnection, 0, 0},  {&_swigt__p_cmf__upslope__connections__SnowWaterOverflow, _p_cmf__upslope__connections__SnowWaterOverflowTo_p_cmf__water__FluxConnection, 0, 0},  {&_swigt__p_cmf__upslope__connections__CanopyOverflow, _p_cmf__upslope__connections__CanopyOverflowTo_p_cmf__water__FluxConnection, 0, 0},  {&_swigt__p_cmf__upslope__connections__TopographicGradientDarcy, _p_cmf__upslope__connections__TopographicGradientDarcyTo_p_cmf__water__FluxConnection, 0, 0},  {&_swigt__p_cmf__upslope__connections__Rainfall, _p_cmf__upslope__connections__RainfallTo_p_cmf__water__FluxConnection, 0, 0},  {&_swigt__p_cmf__water__FluxConnection, 0, 0, 0},  {&_swigt__std__vectorT_cmf__water__FluxConnection_p_std__allocatorT_cmf__water__FluxConnection_p_t_t__value_type, 0, 0, 0},  {&_swigt__p_cmf__upslope__connections__UnsaturatedDarcy, _p_cmf__upslope__connections__UnsaturatedDarcyTo_p_cmf__water__FluxConnection, 0, 0},  {&_swigt__p_cmf__upslope__connections__HBVSnowMelt, _p_cmf__upslope__connections__HBVSnowMeltTo_p_cmf__water__FluxConnection, 0, 0},  {&_swigt__p_cmf__upslope__connections__SimpleTindexSnowMelt, _p_cmf__upslope__connections__SimpleTindexSnowMeltTo_p_cmf__water__FluxConnection, 0, 0},  {&_swigt__p_cmf__upslope__connections__SWATPercolation, _p_cmf__upslope__connections__SWATPercolationTo_p_cmf__water__FluxConnection, 0, 0},  {&_swigt__p_cmf__upslope__connections__UnsatSatPercolation, _p_cmf__upslope__connections__UnsatSatPercolationTo_p_cmf__water__FluxConnection, 0, 0},  {&_swigt__p_cmf__upslope__connections__Richards_lateral, _p_cmf__upslope__connections__Richards_lateralTo_p_cmf__water__FluxConnection, 0, 0},  {&_swigt__p_cmf__upslope__connections__Richards, _p_cmf__upslope__connections__RichardsTo_p_cmf__water__FluxConnection, 0, 0},  {&_swigt__std__setT_cmf__water__FluxConnection_p_std__lessT_cmf__water__FluxConnection_p_t_std__allocatorT_cmf__water__FluxConnection_p_t_t__key_type, 0, 0, 0},  {&_swigt__std__setT_cmf__water__FluxConnection_p_std__lessT_cmf__water__FluxConnection_p_t_std__allocatorT_cmf__water__FluxConnection_p_t_t__value_type, 0, 0, 0},  {&_swigt__p_cmf__upslope__ET__ShuttleworthWallaceET, _p_cmf__upslope__ET__ShuttleworthWallaceETTo_p_cmf__water__FluxConnection, 0, 0},  {&_swigt__p_cmf__upslope__connections__Darcy, _p_cmf__upslope__connections__DarcyTo_p_cmf__water__FluxConnection, 0, 0},  {&_swigt__p_cmf__river__TechnicalFlux, _p_cmf__river__TechnicalFluxTo_p_cmf__water__FluxConnection, 0, 0},  {&_swigt__p_cmf__upslope__ET__constantETpot, _p_cmf__upslope__ET__constantETpotTo_p_cmf__water__FluxConnection, 0, 0},  {&_swigt__p_cmf__upslope__connections__MatrixInfiltration, _p_cmf__upslope__connections__MatrixInfiltrationTo_p_cmf__water__FluxConnection, 0, 0},  {&_swigt__p_cmf__upslope__connections__CompleteInfiltration, _p_cmf__upslope__connections__CompleteInfiltrationTo_p_cmf__water__FluxConnection, 0, 0},  {&_swigt__p_cmf__upslope__ET__HargreaveET, _p_cmf__upslope__ET__HargreaveETTo_p_cmf__water__FluxConnection, 0, 0},  {&_swigt__p_cmf__river__Manning, _p_cmf__river__ManningTo_p_cmf__water__FluxConnection, 0, 0},  {&_swigt__p_cmf__upslope__ET__PenmanMonteithET, _p_cmf__upslope__ET__PenmanMonteithETTo_p_cmf__water__FluxConnection, 0, 0},  {&_swigt__p_cmf__water__NeumannFlux, _p_cmf__water__NeumannFluxTo_p_cmf__water__FluxConnection, 0, 0},  {&_swigt__p_cmf__upslope__ET__CanopyStorageEvaporation, _p_cmf__upslope__ET__CanopyStorageEvaporationTo_p_cmf__water__FluxConnection, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_cmf__water__FluxNode[] = {  {&_swigt__std__vectorT_cmf__water__FluxNode_p_std__allocatorT_cmf__water__FluxNode_p_t_t__value_type, 0, 0, 0},  {&_swigt__p_cmf__water__FluxNode, 0, 0, 0},  {&_swigt__p_cmf__water__DricheletBoundary, _p_cmf__water__DricheletBoundaryTo_p_cmf__water__FluxNode, 0, 0},  {&_swigt__p_cmf__water__NeumannBoundary, _p_cmf__water__NeumannBoundaryTo_p_cmf__water__FluxNode, 0, 0},  {&_swigt__p_cmf__water__WaterStorage, _p_cmf__water__WaterStorageTo_p_cmf__water__FluxNode, 0, 0},  {&_swigt__p_cmf__upslope__SoilWaterStorage, _p_cmf__upslope__SoilWaterStorageTo_p_cmf__water__FluxNode, 0, 0},  {&_swigt__p_cmf__upslope__FlexibleSizeLayer, _p_cmf__upslope__FlexibleSizeLayerTo_p_cmf__water__FluxNode, 0, 0},  {&_swigt__p_cmf__river__OpenWaterStorage, _p_cmf__river__OpenWaterStorageTo_p_cmf__water__FluxNode, 0, 0},  {&_swigt__p_cmf__atmosphere__RainCloud, _p_cmf__atmosphere__RainCloudTo_p_cmf__water__FluxNode, 0, 0},  {&_swigt__p_cmf__upslope__FlexibleSizeSaturatedZone, _p_cmf__upslope__FlexibleSizeSaturatedZoneTo_p_cmf__water__FluxNode, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_cmf__water__NeumannBoundary[] = {  {&_swigt__p_cmf__water__NeumannBoundary, 0, 0, 0},  {&_swigt__p_cmf__atmosphere__RainCloud, _p_cmf__atmosphere__RainCloudTo_p_cmf__water__NeumannBoundary, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_cmf__water__NeumannFlux[] = {  {&_swigt__p_cmf__water__NeumannFlux, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_cmf__water__Solute[] = {  {&_swigt__p_cmf__water__Solute, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_cmf__water__SoluteStorage[] = {  {&_swigt__p_cmf__water__SoluteStorage, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_cmf__water__SoluteTimeseries[] = {  {&_swigt__p_cmf__water__SoluteTimeseries, 0, 0, 0},{0, 0, 0, 0}};
@@ -91122,6 +92759,7 @@ static swig_cast_info _swigc__p_cmf__water__Solutes[] = {  {&_swigt__p_cmf__wate
 static swig_cast_info _swigc__p_cmf__water__WaterFlux[] = {  {&_swigt__p_cmf__water__WaterFlux, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_cmf__water__WaterQuality[] = {  {&_swigt__p_cmf__water__WaterQuality, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_cmf__water__WaterStorage[] = {  {&_swigt__p_cmf__water__WaterStorage, 0, 0, 0},  {&_swigt__p_cmf__upslope__SoilWaterStorage, _p_cmf__upslope__SoilWaterStorageTo_p_cmf__water__WaterStorage, 0, 0},  {&_swigt__p_cmf__upslope__FlexibleSizeLayer, _p_cmf__upslope__FlexibleSizeLayerTo_p_cmf__water__WaterStorage, 0, 0},  {&_swigt__p_cmf__river__OpenWaterStorage, _p_cmf__river__OpenWaterStorageTo_p_cmf__water__WaterStorage, 0, 0},  {&_swigt__p_cmf__upslope__FlexibleSizeSaturatedZone, _p_cmf__upslope__FlexibleSizeSaturatedZoneTo_p_cmf__water__WaterStorage, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_cmf__water__linear_scale[] = {  {&_swigt__p_cmf__water__linear_scale, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_const_reference[] = {  {&_swigt__p_const_reference, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_difference_type[] = {  {&_swigt__p_difference_type, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_double[] = {  {&_swigt__p_double, 0, 0, 0},{0, 0, 0, 0}};
@@ -91157,9 +92795,10 @@ static swig_cast_info _swigc__p_p_cmf__upslope__connections__MatrixInfiltration[
 static swig_cast_info _swigc__p_p_cmf__upslope__ET__HargreaveET[] = {{&_swigt__p_p_cmf__upslope__ET__HargreaveET, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_p_cmf__river__Manning[] = {{&_swigt__p_p_cmf__river__Manning, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_p_cmf__upslope__ET__PenmanMonteithET[] = {{&_swigt__p_p_cmf__upslope__ET__PenmanMonteithET, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_p_cmf__water__NeumannFlux[] = {{&_swigt__p_p_cmf__water__NeumannFlux, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_p_cmf__upslope__ET__CanopyStorageEvaporation[] = {{&_swigt__p_p_cmf__upslope__ET__CanopyStorageEvaporation, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_std__setT_cmf__water__FluxConnection_p_std__lessT_cmf__water__FluxConnection_p_t_std__allocatorT_cmf__water__FluxConnection_p_t_t__key_type[] = {  {&_swigt__p_p_cmf__upslope__connections__Snowfall, 0, 0, 0},  {&_swigt__p_p_cmf__upslope__connections__SnowWaterOverflow, 0, 0, 0},  {&_swigt__p_p_cmf__upslope__connections__CanopyOverflow, 0, 0, 0},  {&_swigt__p_p_cmf__upslope__connections__Rainfall, 0, 0, 0},  {&_swigt__p_p_cmf__upslope__connections__UnsaturatedDarcy, 0, 0, 0},  {&_swigt__p_p_cmf__upslope__connections__HBVSnowMelt, 0, 0, 0},  {&_swigt__p_p_cmf__upslope__connections__UnsatSatPercolation, 0, 0, 0},  {&_swigt__p_p_cmf__upslope__connections__SWATPercolation, 0, 0, 0},  {&_swigt__p_std__setT_cmf__water__FluxConnection_p_std__lessT_cmf__water__FluxConnection_p_t_std__allocatorT_cmf__water__FluxConnection_p_t_t__value_type, 0, 0, 0},  {&_swigt__p_std__setT_cmf__water__FluxConnection_p_std__lessT_cmf__water__FluxConnection_p_t_std__allocatorT_cmf__water__FluxConnection_p_t_t__key_type, 0, 0, 0},  {&_swigt__p_p_cmf__upslope__connections__Richards_lateral, 0, 0, 0},  {&_swigt__p_p_cmf__upslope__connections__CompleteInfiltration, 0, 0, 0},  {&_swigt__p_p_cmf__upslope__connections__SimpleTindexSnowMelt, 0, 0, 0},  {&_swigt__p_p_cmf__upslope__connections__Richards, 0, 0, 0},  {&_swigt__p_p_cmf__upslope__ET__ShuttleworthWallaceET, 0, 0, 0},  {&_swigt__p_p_cmf__upslope__connections__Darcy, 0, 0, 0},  {&_swigt__p_p_cmf__river__TechnicalFlux, 0, 0, 0},  {&_swigt__p_p_cmf__upslope__connections__TopographicGradientDarcy, 0, 0, 0},  {&_swigt__p_p_cmf__upslope__ET__constantETpot, 0, 0, 0},  {&_swigt__p_p_cmf__upslope__connections__MatrixInfiltration, 0, 0, 0},  {&_swigt__p_p_cmf__upslope__ET__HargreaveET, 0, 0, 0},  {&_swigt__p_p_cmf__river__Manning, 0, 0, 0},  {&_swigt__p_p_cmf__upslope__ET__PenmanMonteithET, 0, 0, 0},  {&_swigt__p_p_cmf__upslope__ET__CanopyStorageEvaporation, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_std__setT_cmf__water__FluxConnection_p_std__lessT_cmf__water__FluxConnection_p_t_std__allocatorT_cmf__water__FluxConnection_p_t_t__value_type[] = {  {&_swigt__p_p_cmf__upslope__connections__Snowfall, 0, 0, 0},  {&_swigt__p_p_cmf__upslope__connections__SnowWaterOverflow, 0, 0, 0},  {&_swigt__p_p_cmf__upslope__connections__CanopyOverflow, 0, 0, 0},  {&_swigt__p_p_cmf__upslope__connections__Rainfall, 0, 0, 0},  {&_swigt__p_p_cmf__upslope__connections__UnsaturatedDarcy, 0, 0, 0},  {&_swigt__p_p_cmf__upslope__connections__HBVSnowMelt, 0, 0, 0},  {&_swigt__p_p_cmf__upslope__connections__UnsatSatPercolation, 0, 0, 0},  {&_swigt__p_p_cmf__upslope__connections__SWATPercolation, 0, 0, 0},  {&_swigt__p_std__setT_cmf__water__FluxConnection_p_std__lessT_cmf__water__FluxConnection_p_t_std__allocatorT_cmf__water__FluxConnection_p_t_t__key_type, 0, 0, 0},  {&_swigt__p_std__setT_cmf__water__FluxConnection_p_std__lessT_cmf__water__FluxConnection_p_t_std__allocatorT_cmf__water__FluxConnection_p_t_t__value_type, 0, 0, 0},  {&_swigt__p_p_cmf__upslope__connections__Richards_lateral, 0, 0, 0},  {&_swigt__p_p_cmf__upslope__connections__CompleteInfiltration, 0, 0, 0},  {&_swigt__p_p_cmf__upslope__connections__SimpleTindexSnowMelt, 0, 0, 0},  {&_swigt__p_p_cmf__upslope__connections__Richards, 0, 0, 0},  {&_swigt__p_p_cmf__upslope__ET__ShuttleworthWallaceET, 0, 0, 0},  {&_swigt__p_p_cmf__upslope__connections__Darcy, 0, 0, 0},  {&_swigt__p_p_cmf__river__TechnicalFlux, 0, 0, 0},  {&_swigt__p_p_cmf__upslope__connections__TopographicGradientDarcy, 0, 0, 0},  {&_swigt__p_p_cmf__upslope__ET__constantETpot, 0, 0, 0},  {&_swigt__p_p_cmf__upslope__connections__MatrixInfiltration, 0, 0, 0},  {&_swigt__p_p_cmf__upslope__ET__HargreaveET, 0, 0, 0},  {&_swigt__p_p_cmf__river__Manning, 0, 0, 0},  {&_swigt__p_p_cmf__upslope__ET__PenmanMonteithET, 0, 0, 0},  {&_swigt__p_p_cmf__upslope__ET__CanopyStorageEvaporation, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_std__setT_cmf__water__FluxConnection_p_std__lessT_cmf__water__FluxConnection_p_t_std__allocatorT_cmf__water__FluxConnection_p_t_t__key_type[] = {  {&_swigt__p_p_cmf__upslope__connections__Snowfall, 0, 0, 0},  {&_swigt__p_p_cmf__upslope__connections__SnowWaterOverflow, 0, 0, 0},  {&_swigt__p_p_cmf__upslope__connections__CanopyOverflow, 0, 0, 0},  {&_swigt__p_p_cmf__upslope__connections__Rainfall, 0, 0, 0},  {&_swigt__p_p_cmf__upslope__connections__UnsaturatedDarcy, 0, 0, 0},  {&_swigt__p_p_cmf__upslope__connections__HBVSnowMelt, 0, 0, 0},  {&_swigt__p_p_cmf__upslope__connections__UnsatSatPercolation, 0, 0, 0},  {&_swigt__p_p_cmf__upslope__connections__SWATPercolation, 0, 0, 0},  {&_swigt__p_std__setT_cmf__water__FluxConnection_p_std__lessT_cmf__water__FluxConnection_p_t_std__allocatorT_cmf__water__FluxConnection_p_t_t__value_type, 0, 0, 0},  {&_swigt__p_std__setT_cmf__water__FluxConnection_p_std__lessT_cmf__water__FluxConnection_p_t_std__allocatorT_cmf__water__FluxConnection_p_t_t__key_type, 0, 0, 0},  {&_swigt__p_p_cmf__upslope__connections__Richards_lateral, 0, 0, 0},  {&_swigt__p_p_cmf__upslope__connections__CompleteInfiltration, 0, 0, 0},  {&_swigt__p_p_cmf__upslope__connections__SimpleTindexSnowMelt, 0, 0, 0},  {&_swigt__p_p_cmf__upslope__connections__Richards, 0, 0, 0},  {&_swigt__p_p_cmf__upslope__ET__ShuttleworthWallaceET, 0, 0, 0},  {&_swigt__p_p_cmf__upslope__connections__Darcy, 0, 0, 0},  {&_swigt__p_p_cmf__river__TechnicalFlux, 0, 0, 0},  {&_swigt__p_p_cmf__upslope__connections__TopographicGradientDarcy, 0, 0, 0},  {&_swigt__p_p_cmf__upslope__ET__constantETpot, 0, 0, 0},  {&_swigt__p_p_cmf__upslope__connections__MatrixInfiltration, 0, 0, 0},  {&_swigt__p_p_cmf__upslope__ET__HargreaveET, 0, 0, 0},  {&_swigt__p_p_cmf__river__Manning, 0, 0, 0},  {&_swigt__p_p_cmf__upslope__ET__PenmanMonteithET, 0, 0, 0},  {&_swigt__p_p_cmf__water__NeumannFlux, 0, 0, 0},  {&_swigt__p_p_cmf__upslope__ET__CanopyStorageEvaporation, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_std__setT_cmf__water__FluxConnection_p_std__lessT_cmf__water__FluxConnection_p_t_std__allocatorT_cmf__water__FluxConnection_p_t_t__value_type[] = {  {&_swigt__p_p_cmf__upslope__connections__Snowfall, 0, 0, 0},  {&_swigt__p_p_cmf__upslope__connections__SnowWaterOverflow, 0, 0, 0},  {&_swigt__p_p_cmf__upslope__connections__CanopyOverflow, 0, 0, 0},  {&_swigt__p_p_cmf__upslope__connections__Rainfall, 0, 0, 0},  {&_swigt__p_p_cmf__upslope__connections__UnsaturatedDarcy, 0, 0, 0},  {&_swigt__p_p_cmf__upslope__connections__HBVSnowMelt, 0, 0, 0},  {&_swigt__p_p_cmf__upslope__connections__UnsatSatPercolation, 0, 0, 0},  {&_swigt__p_p_cmf__upslope__connections__SWATPercolation, 0, 0, 0},  {&_swigt__p_std__setT_cmf__water__FluxConnection_p_std__lessT_cmf__water__FluxConnection_p_t_std__allocatorT_cmf__water__FluxConnection_p_t_t__key_type, 0, 0, 0},  {&_swigt__p_std__setT_cmf__water__FluxConnection_p_std__lessT_cmf__water__FluxConnection_p_t_std__allocatorT_cmf__water__FluxConnection_p_t_t__value_type, 0, 0, 0},  {&_swigt__p_p_cmf__upslope__connections__Richards_lateral, 0, 0, 0},  {&_swigt__p_p_cmf__upslope__connections__CompleteInfiltration, 0, 0, 0},  {&_swigt__p_p_cmf__upslope__connections__SimpleTindexSnowMelt, 0, 0, 0},  {&_swigt__p_p_cmf__upslope__connections__Richards, 0, 0, 0},  {&_swigt__p_p_cmf__upslope__ET__ShuttleworthWallaceET, 0, 0, 0},  {&_swigt__p_p_cmf__upslope__connections__Darcy, 0, 0, 0},  {&_swigt__p_p_cmf__river__TechnicalFlux, 0, 0, 0},  {&_swigt__p_p_cmf__upslope__connections__TopographicGradientDarcy, 0, 0, 0},  {&_swigt__p_p_cmf__upslope__ET__constantETpot, 0, 0, 0},  {&_swigt__p_p_cmf__upslope__connections__MatrixInfiltration, 0, 0, 0},  {&_swigt__p_p_cmf__upslope__ET__HargreaveET, 0, 0, 0},  {&_swigt__p_p_cmf__river__Manning, 0, 0, 0},  {&_swigt__p_p_cmf__upslope__ET__PenmanMonteithET, 0, 0, 0},  {&_swigt__p_p_cmf__water__NeumannFlux, 0, 0, 0},  {&_swigt__p_p_cmf__upslope__ET__CanopyStorageEvaporation, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__tr1__shared_ptrT_cmf__atmosphere__MeteoStation_t[] = {  {&_swigt__p_std__tr1__shared_ptrT_cmf__atmosphere__MeteoStation_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__vectorT_cmf__geometry__point_std__allocatorT_cmf__geometry__point_t_t[] = {  {&_swigt__p_std__vectorT_cmf__geometry__point_std__allocatorT_cmf__geometry__point_t_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__vectorT_cmf__geometry__point_std__allocatorT_cmf__geometry__point_t_t__allocator_type[] = {  {&_swigt__p_std__vectorT_cmf__geometry__point_std__allocatorT_cmf__geometry__point_t_t__allocator_type, 0, 0, 0},{0, 0, 0, 0}};
@@ -91174,12 +92813,12 @@ static swig_cast_info _swigc__p_std__vectorT_cmf__water__FluxNode_p_std__allocat
 static swig_cast_info _swigc__p_std__vectorT_cmf__water__FluxNode_p_std__allocatorT_cmf__water__FluxNode_p_t_t__allocator_type[] = {  {&_swigt__p_std__vectorT_cmf__water__FluxNode_p_std__allocatorT_cmf__water__FluxNode_p_t_t__allocator_type, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_swig__SwigPyIterator[] = {  {&_swigt__p_swig__SwigPyIterator, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_value_type[] = {  {&_swigt__p_value_type, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__std__setT_cmf__water__FluxConnection_p_std__lessT_cmf__water__FluxConnection_p_t_std__allocatorT_cmf__water__FluxConnection_p_t_t__key_type[] = {  {&_swigt__p_cmf__upslope__connections__Snowfall, 0, 0, 0},  {&_swigt__p_cmf__upslope__connections__SnowWaterOverflow, 0, 0, 0},  {&_swigt__p_cmf__upslope__connections__CanopyOverflow, 0, 0, 0},  {&_swigt__p_cmf__upslope__connections__TopographicGradientDarcy, 0, 0, 0},  {&_swigt__p_cmf__water__FluxConnection, 0, 0, 0},  {&_swigt__p_cmf__upslope__connections__Rainfall, 0, 0, 0},  {&_swigt__std__vectorT_cmf__water__FluxConnection_p_std__allocatorT_cmf__water__FluxConnection_p_t_t__value_type, 0, 0, 0},  {&_swigt__p_cmf__upslope__connections__UnsaturatedDarcy, 0, 0, 0},  {&_swigt__p_cmf__upslope__connections__HBVSnowMelt, 0, 0, 0},  {&_swigt__p_cmf__upslope__connections__SimpleTindexSnowMelt, 0, 0, 0},  {&_swigt__p_cmf__upslope__connections__SWATPercolation, 0, 0, 0},  {&_swigt__p_cmf__upslope__connections__UnsatSatPercolation, 0, 0, 0},  {&_swigt__p_cmf__upslope__connections__Richards_lateral, 0, 0, 0},  {&_swigt__p_cmf__upslope__connections__Richards, 0, 0, 0},  {&_swigt__std__setT_cmf__water__FluxConnection_p_std__lessT_cmf__water__FluxConnection_p_t_std__allocatorT_cmf__water__FluxConnection_p_t_t__key_type, 0, 0, 0},  {&_swigt__p_cmf__upslope__ET__ShuttleworthWallaceET, 0, 0, 0},  {&_swigt__std__setT_cmf__water__FluxConnection_p_std__lessT_cmf__water__FluxConnection_p_t_std__allocatorT_cmf__water__FluxConnection_p_t_t__value_type, 0, 0, 0},  {&_swigt__p_cmf__upslope__connections__Darcy, 0, 0, 0},  {&_swigt__p_cmf__river__TechnicalFlux, 0, 0, 0},  {&_swigt__p_cmf__upslope__ET__constantETpot, 0, 0, 0},  {&_swigt__p_cmf__upslope__connections__MatrixInfiltration, 0, 0, 0},  {&_swigt__p_cmf__upslope__connections__CompleteInfiltration, 0, 0, 0},  {&_swigt__p_cmf__upslope__ET__HargreaveET, 0, 0, 0},  {&_swigt__p_cmf__river__Manning, 0, 0, 0},  {&_swigt__p_cmf__upslope__ET__PenmanMonteithET, 0, 0, 0},  {&_swigt__p_cmf__upslope__ET__CanopyStorageEvaporation, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__std__setT_cmf__water__FluxConnection_p_std__lessT_cmf__water__FluxConnection_p_t_std__allocatorT_cmf__water__FluxConnection_p_t_t__value_type[] = {  {&_swigt__p_cmf__upslope__connections__Snowfall, 0, 0, 0},  {&_swigt__p_cmf__upslope__connections__SnowWaterOverflow, 0, 0, 0},  {&_swigt__p_cmf__upslope__connections__CanopyOverflow, 0, 0, 0},  {&_swigt__p_cmf__upslope__connections__TopographicGradientDarcy, 0, 0, 0},  {&_swigt__p_cmf__water__FluxConnection, 0, 0, 0},  {&_swigt__p_cmf__upslope__connections__Rainfall, 0, 0, 0},  {&_swigt__std__vectorT_cmf__water__FluxConnection_p_std__allocatorT_cmf__water__FluxConnection_p_t_t__value_type, 0, 0, 0},  {&_swigt__p_cmf__upslope__connections__UnsaturatedDarcy, 0, 0, 0},  {&_swigt__p_cmf__upslope__connections__HBVSnowMelt, 0, 0, 0},  {&_swigt__p_cmf__upslope__connections__SimpleTindexSnowMelt, 0, 0, 0},  {&_swigt__p_cmf__upslope__connections__SWATPercolation, 0, 0, 0},  {&_swigt__p_cmf__upslope__connections__UnsatSatPercolation, 0, 0, 0},  {&_swigt__p_cmf__upslope__connections__Richards_lateral, 0, 0, 0},  {&_swigt__p_cmf__upslope__connections__Richards, 0, 0, 0},  {&_swigt__std__setT_cmf__water__FluxConnection_p_std__lessT_cmf__water__FluxConnection_p_t_std__allocatorT_cmf__water__FluxConnection_p_t_t__value_type, 0, 0, 0},  {&_swigt__p_cmf__upslope__ET__ShuttleworthWallaceET, 0, 0, 0},  {&_swigt__std__setT_cmf__water__FluxConnection_p_std__lessT_cmf__water__FluxConnection_p_t_std__allocatorT_cmf__water__FluxConnection_p_t_t__key_type, 0, 0, 0},  {&_swigt__p_cmf__upslope__connections__Darcy, 0, 0, 0},  {&_swigt__p_cmf__river__TechnicalFlux, 0, 0, 0},  {&_swigt__p_cmf__upslope__ET__constantETpot, 0, 0, 0},  {&_swigt__p_cmf__upslope__connections__MatrixInfiltration, 0, 0, 0},  {&_swigt__p_cmf__upslope__connections__CompleteInfiltration, 0, 0, 0},  {&_swigt__p_cmf__upslope__ET__HargreaveET, 0, 0, 0},  {&_swigt__p_cmf__river__Manning, 0, 0, 0},  {&_swigt__p_cmf__upslope__ET__PenmanMonteithET, 0, 0, 0},  {&_swigt__p_cmf__upslope__ET__CanopyStorageEvaporation, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__std__setT_cmf__water__FluxConnection_p_std__lessT_cmf__water__FluxConnection_p_t_std__allocatorT_cmf__water__FluxConnection_p_t_t__key_type[] = {  {&_swigt__p_cmf__upslope__connections__Snowfall, 0, 0, 0},  {&_swigt__p_cmf__upslope__connections__SnowWaterOverflow, 0, 0, 0},  {&_swigt__p_cmf__upslope__connections__CanopyOverflow, 0, 0, 0},  {&_swigt__p_cmf__upslope__connections__TopographicGradientDarcy, 0, 0, 0},  {&_swigt__p_cmf__water__FluxConnection, 0, 0, 0},  {&_swigt__p_cmf__upslope__connections__Rainfall, 0, 0, 0},  {&_swigt__std__vectorT_cmf__water__FluxConnection_p_std__allocatorT_cmf__water__FluxConnection_p_t_t__value_type, 0, 0, 0},  {&_swigt__p_cmf__upslope__connections__UnsaturatedDarcy, 0, 0, 0},  {&_swigt__p_cmf__upslope__connections__HBVSnowMelt, 0, 0, 0},  {&_swigt__p_cmf__upslope__connections__SimpleTindexSnowMelt, 0, 0, 0},  {&_swigt__p_cmf__upslope__connections__SWATPercolation, 0, 0, 0},  {&_swigt__p_cmf__upslope__connections__UnsatSatPercolation, 0, 0, 0},  {&_swigt__p_cmf__upslope__connections__Richards_lateral, 0, 0, 0},  {&_swigt__p_cmf__upslope__connections__Richards, 0, 0, 0},  {&_swigt__std__setT_cmf__water__FluxConnection_p_std__lessT_cmf__water__FluxConnection_p_t_std__allocatorT_cmf__water__FluxConnection_p_t_t__key_type, 0, 0, 0},  {&_swigt__p_cmf__upslope__ET__ShuttleworthWallaceET, 0, 0, 0},  {&_swigt__std__setT_cmf__water__FluxConnection_p_std__lessT_cmf__water__FluxConnection_p_t_std__allocatorT_cmf__water__FluxConnection_p_t_t__value_type, 0, 0, 0},  {&_swigt__p_cmf__upslope__connections__Darcy, 0, 0, 0},  {&_swigt__p_cmf__river__TechnicalFlux, 0, 0, 0},  {&_swigt__p_cmf__upslope__ET__constantETpot, 0, 0, 0},  {&_swigt__p_cmf__upslope__connections__MatrixInfiltration, 0, 0, 0},  {&_swigt__p_cmf__upslope__connections__CompleteInfiltration, 0, 0, 0},  {&_swigt__p_cmf__upslope__ET__HargreaveET, 0, 0, 0},  {&_swigt__p_cmf__river__Manning, 0, 0, 0},  {&_swigt__p_cmf__upslope__ET__PenmanMonteithET, 0, 0, 0},  {&_swigt__p_cmf__water__NeumannFlux, 0, 0, 0},  {&_swigt__p_cmf__upslope__ET__CanopyStorageEvaporation, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__std__setT_cmf__water__FluxConnection_p_std__lessT_cmf__water__FluxConnection_p_t_std__allocatorT_cmf__water__FluxConnection_p_t_t__value_type[] = {  {&_swigt__p_cmf__upslope__connections__Snowfall, 0, 0, 0},  {&_swigt__p_cmf__upslope__connections__SnowWaterOverflow, 0, 0, 0},  {&_swigt__p_cmf__upslope__connections__CanopyOverflow, 0, 0, 0},  {&_swigt__p_cmf__upslope__connections__TopographicGradientDarcy, 0, 0, 0},  {&_swigt__p_cmf__water__FluxConnection, 0, 0, 0},  {&_swigt__p_cmf__upslope__connections__Rainfall, 0, 0, 0},  {&_swigt__std__vectorT_cmf__water__FluxConnection_p_std__allocatorT_cmf__water__FluxConnection_p_t_t__value_type, 0, 0, 0},  {&_swigt__p_cmf__upslope__connections__UnsaturatedDarcy, 0, 0, 0},  {&_swigt__p_cmf__upslope__connections__HBVSnowMelt, 0, 0, 0},  {&_swigt__p_cmf__upslope__connections__SimpleTindexSnowMelt, 0, 0, 0},  {&_swigt__p_cmf__upslope__connections__SWATPercolation, 0, 0, 0},  {&_swigt__p_cmf__upslope__connections__UnsatSatPercolation, 0, 0, 0},  {&_swigt__p_cmf__upslope__connections__Richards_lateral, 0, 0, 0},  {&_swigt__p_cmf__upslope__connections__Richards, 0, 0, 0},  {&_swigt__std__setT_cmf__water__FluxConnection_p_std__lessT_cmf__water__FluxConnection_p_t_std__allocatorT_cmf__water__FluxConnection_p_t_t__value_type, 0, 0, 0},  {&_swigt__p_cmf__upslope__ET__ShuttleworthWallaceET, 0, 0, 0},  {&_swigt__std__setT_cmf__water__FluxConnection_p_std__lessT_cmf__water__FluxConnection_p_t_std__allocatorT_cmf__water__FluxConnection_p_t_t__key_type, 0, 0, 0},  {&_swigt__p_cmf__upslope__connections__Darcy, 0, 0, 0},  {&_swigt__p_cmf__river__TechnicalFlux, 0, 0, 0},  {&_swigt__p_cmf__upslope__ET__constantETpot, 0, 0, 0},  {&_swigt__p_cmf__upslope__connections__MatrixInfiltration, 0, 0, 0},  {&_swigt__p_cmf__upslope__connections__CompleteInfiltration, 0, 0, 0},  {&_swigt__p_cmf__upslope__ET__HargreaveET, 0, 0, 0},  {&_swigt__p_cmf__river__Manning, 0, 0, 0},  {&_swigt__p_cmf__upslope__ET__PenmanMonteithET, 0, 0, 0},  {&_swigt__p_cmf__water__NeumannFlux, 0, 0, 0},  {&_swigt__p_cmf__upslope__ET__CanopyStorageEvaporation, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__std__vectorT_cmf__math__StateVariable_p_std__allocatorT_cmf__math__StateVariable_p_t_t__value_type[] = {  {&_swigt__p_cmf__math__StateVariable, 0, 0, 0},  {&_swigt__std__vectorT_cmf__math__StateVariable_p_std__allocatorT_cmf__math__StateVariable_p_t_t__value_type, 0, 0, 0},  {&_swigt__p_cmf__water__SoluteStorage, _p_cmf__water__SoluteStorageTo_p_cmf__math__StateVariable, 0, 0},  {&_swigt__p_cmf__water__WaterStorage, _p_cmf__water__WaterStorageTo_p_cmf__math__StateVariable, 0, 0},  {&_swigt__p_cmf__upslope__SoilWaterStorage, _p_cmf__upslope__SoilWaterStorageTo_p_cmf__math__StateVariable, 0, 0},  {&_swigt__p_cmf__upslope__FlexibleSizeLayer, _p_cmf__upslope__FlexibleSizeLayerTo_p_cmf__math__StateVariable, 0, 0},  {&_swigt__p_cmf__river__OpenWaterStorage, _p_cmf__river__OpenWaterStorageTo_p_cmf__math__StateVariable, 0, 0},  {&_swigt__p_cmf__upslope__FlexibleSizeSaturatedZone, _p_cmf__upslope__FlexibleSizeSaturatedZoneTo_p_cmf__math__StateVariable, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__std__vectorT_cmf__upslope__Cell_p_std__allocatorT_cmf__upslope__Cell_p_t_t__value_type[] = {  {&_swigt__p_cmf__upslope__Cell, 0, 0, 0},  {&_swigt__std__vectorT_cmf__upslope__Cell_p_std__allocatorT_cmf__upslope__Cell_p_t_t__value_type, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__std__vectorT_cmf__water__FluxConnection_p_std__allocatorT_cmf__water__FluxConnection_p_t_t__value_type[] = {  {&_swigt__p_cmf__upslope__connections__Snowfall, 0, 0, 0},  {&_swigt__p_cmf__upslope__connections__SnowWaterOverflow, 0, 0, 0},  {&_swigt__p_cmf__upslope__connections__CanopyOverflow, 0, 0, 0},  {&_swigt__p_cmf__upslope__connections__TopographicGradientDarcy, 0, 0, 0},  {&_swigt__p_cmf__water__FluxConnection, 0, 0, 0},  {&_swigt__p_cmf__upslope__connections__Rainfall, 0, 0, 0},  {&_swigt__std__vectorT_cmf__water__FluxConnection_p_std__allocatorT_cmf__water__FluxConnection_p_t_t__value_type, 0, 0, 0},  {&_swigt__p_cmf__upslope__connections__UnsaturatedDarcy, 0, 0, 0},  {&_swigt__p_cmf__upslope__connections__HBVSnowMelt, 0, 0, 0},  {&_swigt__p_cmf__upslope__connections__SimpleTindexSnowMelt, 0, 0, 0},  {&_swigt__p_cmf__upslope__connections__SWATPercolation, 0, 0, 0},  {&_swigt__p_cmf__upslope__connections__UnsatSatPercolation, 0, 0, 0},  {&_swigt__p_cmf__upslope__connections__Richards_lateral, 0, 0, 0},  {&_swigt__p_cmf__upslope__connections__Richards, 0, 0, 0},  {&_swigt__p_cmf__upslope__ET__ShuttleworthWallaceET, 0, 0, 0},  {&_swigt__std__setT_cmf__water__FluxConnection_p_std__lessT_cmf__water__FluxConnection_p_t_std__allocatorT_cmf__water__FluxConnection_p_t_t__key_type, 0, 0, 0},  {&_swigt__std__setT_cmf__water__FluxConnection_p_std__lessT_cmf__water__FluxConnection_p_t_std__allocatorT_cmf__water__FluxConnection_p_t_t__value_type, 0, 0, 0},  {&_swigt__p_cmf__upslope__connections__Darcy, 0, 0, 0},  {&_swigt__p_cmf__river__TechnicalFlux, 0, 0, 0},  {&_swigt__p_cmf__upslope__ET__constantETpot, 0, 0, 0},  {&_swigt__p_cmf__upslope__connections__MatrixInfiltration, 0, 0, 0},  {&_swigt__p_cmf__upslope__connections__CompleteInfiltration, 0, 0, 0},  {&_swigt__p_cmf__upslope__ET__HargreaveET, 0, 0, 0},  {&_swigt__p_cmf__river__Manning, 0, 0, 0},  {&_swigt__p_cmf__upslope__ET__PenmanMonteithET, 0, 0, 0},  {&_swigt__p_cmf__upslope__ET__CanopyStorageEvaporation, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__std__vectorT_cmf__water__FluxNode_p_std__allocatorT_cmf__water__FluxNode_p_t_t__value_type[] = {  {&_swigt__std__vectorT_cmf__water__FluxNode_p_std__allocatorT_cmf__water__FluxNode_p_t_t__value_type, 0, 0, 0},  {&_swigt__p_cmf__water__FluxNode, 0, 0, 0},  {&_swigt__p_cmf__water__WaterStorage, 0, 0, 0},  {&_swigt__p_cmf__upslope__SoilWaterStorage, 0, 0, 0},  {&_swigt__p_cmf__upslope__FlexibleSizeLayer, 0, 0, 0},  {&_swigt__p_cmf__river__OpenWaterStorage, 0, 0, 0},  {&_swigt__p_cmf__upslope__FlexibleSizeSaturatedZone, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__std__vectorT_cmf__water__FluxConnection_p_std__allocatorT_cmf__water__FluxConnection_p_t_t__value_type[] = {  {&_swigt__p_cmf__upslope__connections__Snowfall, 0, 0, 0},  {&_swigt__p_cmf__upslope__connections__SnowWaterOverflow, 0, 0, 0},  {&_swigt__p_cmf__upslope__connections__CanopyOverflow, 0, 0, 0},  {&_swigt__p_cmf__upslope__connections__TopographicGradientDarcy, 0, 0, 0},  {&_swigt__p_cmf__water__FluxConnection, 0, 0, 0},  {&_swigt__p_cmf__upslope__connections__Rainfall, 0, 0, 0},  {&_swigt__std__vectorT_cmf__water__FluxConnection_p_std__allocatorT_cmf__water__FluxConnection_p_t_t__value_type, 0, 0, 0},  {&_swigt__p_cmf__upslope__connections__UnsaturatedDarcy, 0, 0, 0},  {&_swigt__p_cmf__upslope__connections__HBVSnowMelt, 0, 0, 0},  {&_swigt__p_cmf__upslope__connections__SimpleTindexSnowMelt, 0, 0, 0},  {&_swigt__p_cmf__upslope__connections__SWATPercolation, 0, 0, 0},  {&_swigt__p_cmf__upslope__connections__UnsatSatPercolation, 0, 0, 0},  {&_swigt__p_cmf__upslope__connections__Richards_lateral, 0, 0, 0},  {&_swigt__p_cmf__upslope__connections__Richards, 0, 0, 0},  {&_swigt__p_cmf__upslope__ET__ShuttleworthWallaceET, 0, 0, 0},  {&_swigt__std__setT_cmf__water__FluxConnection_p_std__lessT_cmf__water__FluxConnection_p_t_std__allocatorT_cmf__water__FluxConnection_p_t_t__key_type, 0, 0, 0},  {&_swigt__std__setT_cmf__water__FluxConnection_p_std__lessT_cmf__water__FluxConnection_p_t_std__allocatorT_cmf__water__FluxConnection_p_t_t__value_type, 0, 0, 0},  {&_swigt__p_cmf__upslope__connections__Darcy, 0, 0, 0},  {&_swigt__p_cmf__river__TechnicalFlux, 0, 0, 0},  {&_swigt__p_cmf__upslope__ET__constantETpot, 0, 0, 0},  {&_swigt__p_cmf__upslope__connections__MatrixInfiltration, 0, 0, 0},  {&_swigt__p_cmf__upslope__connections__CompleteInfiltration, 0, 0, 0},  {&_swigt__p_cmf__upslope__ET__HargreaveET, 0, 0, 0},  {&_swigt__p_cmf__river__Manning, 0, 0, 0},  {&_swigt__p_cmf__upslope__ET__PenmanMonteithET, 0, 0, 0},  {&_swigt__p_cmf__water__NeumannFlux, 0, 0, 0},  {&_swigt__p_cmf__upslope__ET__CanopyStorageEvaporation, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__std__vectorT_cmf__water__FluxNode_p_std__allocatorT_cmf__water__FluxNode_p_t_t__value_type[] = {  {&_swigt__std__vectorT_cmf__water__FluxNode_p_std__allocatorT_cmf__water__FluxNode_p_t_t__value_type, 0, 0, 0},  {&_swigt__p_cmf__water__FluxNode, 0, 0, 0},  {&_swigt__p_cmf__water__DricheletBoundary, 0, 0, 0},  {&_swigt__p_cmf__water__NeumannBoundary, 0, 0, 0},  {&_swigt__p_cmf__water__WaterStorage, 0, 0, 0},  {&_swigt__p_cmf__upslope__SoilWaterStorage, 0, 0, 0},  {&_swigt__p_cmf__upslope__FlexibleSizeLayer, 0, 0, 0},  {&_swigt__p_cmf__river__OpenWaterStorage, 0, 0, 0},  {&_swigt__p_cmf__atmosphere__RainCloud, 0, 0, 0},  {&_swigt__p_cmf__upslope__FlexibleSizeSaturatedZone, 0, 0, 0},{0, 0, 0, 0}};
 
 static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_allocator_type,
@@ -91257,8 +92896,11 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_cmf__upslope__connections__UnsatSatPercolation,
   _swigc__p_cmf__upslope__connections__UnsaturatedDarcy,
   _swigc__p_cmf__upslope__vegetation__Vegetation,
+  _swigc__p_cmf__water__DricheletBoundary,
   _swigc__p_cmf__water__FluxConnection,
   _swigc__p_cmf__water__FluxNode,
+  _swigc__p_cmf__water__NeumannBoundary,
+  _swigc__p_cmf__water__NeumannFlux,
   _swigc__p_cmf__water__Solute,
   _swigc__p_cmf__water__SoluteStorage,
   _swigc__p_cmf__water__SoluteTimeseries,
@@ -91266,6 +92908,7 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_cmf__water__WaterFlux,
   _swigc__p_cmf__water__WaterQuality,
   _swigc__p_cmf__water__WaterStorage,
+  _swigc__p_cmf__water__linear_scale,
   _swigc__p_const_reference,
   _swigc__p_difference_type,
   _swigc__p_double,
@@ -91294,6 +92937,7 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_p_cmf__upslope__connections__TopographicGradientDarcy,
   _swigc__p_p_cmf__upslope__connections__UnsatSatPercolation,
   _swigc__p_p_cmf__upslope__connections__UnsaturatedDarcy,
+  _swigc__p_p_cmf__water__NeumannFlux,
   _swigc__p_reference,
   _swigc__p_size_type,
   _swigc__p_std__invalid_argument,
