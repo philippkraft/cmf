@@ -36,7 +36,7 @@ namespace cmf {
 			protected:
 				cmf::upslope::SoilWaterStorage* sw;
 				
-				virtual real calc_q(cmf::math::Time t) const;
+				virtual real calc_q(cmf::math::Time t);
 				void NewNodes()
 				{
 					sw=dynamic_cast<cmf::upslope::SoilWaterStorage*>( m_left);

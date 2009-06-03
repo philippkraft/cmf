@@ -47,10 +47,12 @@ namespace cmf {
 		/// This class is the basic landscape object. It is the owner of water storages, and the upper and lower boundary conditions 
 		/// of the system (rainfall, atmospheric vapor, deep groundwater)
 		class Cell : public cmf::math::StateVariableOwner, public cmf::geometry::Locatable {
+			Cell(const Cell& cpy);
 			friend class project;
 			/// @name Location
 			//@{
 			std::auto_ptr<Topology> m_topo;
+			static int cell_count;
 		public:
 			cmf::upslope::Topology& get_topology();
 #ifndef SWIG
@@ -104,7 +106,7 @@ namespace cmf {
 			}
 			void set_meteorology(const cmf::atmosphere::Meteorology& new_meteo)
 			{
-				m_meteo=new_meteo.copy();
+				m_meteo.reset(new_meteo.copy());
 			}
 			cmf::atmosphere::RainCloud& get_rainfall() const {return *m_rainfall;}
 			/// Returns the end point of all evaporation of this cell

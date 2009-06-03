@@ -103,6 +103,7 @@ namespace cmf {
 			virtual double SaturatedDepth() const { return UpperBoundary();}
 			virtual void SetPotential(real waterhead);
 			virtual real MaximumThickness() const;
+			virtual real Potential() const;
 		};
 		/// A soil water storage above a FlexibleSizeSaturatedLayer, can only be created by FlexibleSaturatedLayer
 		class FlexibleSizeLayer : public SoilWaterStorage

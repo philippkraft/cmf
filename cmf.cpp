@@ -43,12 +43,33 @@ int main(int argc, char* argv[])
 		using namespace cmf::upslope::ET;
 		using namespace cmf::river;
 		project p;
+		timeseries ts=1.0;
+		timeseries ts2=ts;
+		//NeumannBoundary nbc(p,ts2);
 		p.debug=1;
 		Cell& cell=*p.NewCell(0,0,0,100);
 		BrooksCoreyRetentionCurve bc;
 		cell.add_variable_layer_pair(1.,bc);
-		cell.set_saturated_depth(0.0);
-		cout << "w_u=" << cell.get_layer(0).State() << " w_s=" << cell.get_layer(1).State();
+		//cell.set_saturated_depth(0.0);
+		PenmanMonteithET::use_for_cell(cell);
+		cmf::atmosphere::meteo_station_pointer meteo=p.meteo_stations.add_station(".sdf,");
+		meteo->Tmax.add(20);
+		meteo->Tmin.add(10);
+		cell.set_meteorology(MeteoStationReference(meteo,cell));
+		cell.set_saturated_depth(0.5);
+		Weather w= cell.get_weather(day*0.5);
+
+
+
+		//cell.get_rainfall().flux=10.0;
+		//cout << "Rain: " << cell.get_transpiration().water_balance(day*0) << "m3/day" << endl;
+		cout << cell.get_transpiration().flux_to(cell.get_layer(0),day*180.5);
+		CVodeIntegrator integ(p,1e-6);
+		while (integ.ModelTime()<day*180)
+		{
+			integ.IntegrateUntil(integ.ModelTime() + math::day);
+			cout << integ.ModelTime().ToString() << "w_u=" << cell.get_layer(0).Potential() << " w_s=" << cell.get_layer(1).Potential() << endl;
+		}
 		cin.get();
 		
 

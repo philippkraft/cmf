@@ -977,7 +977,10 @@ class Time(object):
 
     Milliseconds = staticmethod(Milliseconds)
     def __repr__(self):
-        return self.ToString()
+        if self>year*40:
+            return self.AsDate().ToString()
+        else:
+            return self.ToString()
     def AsPython(self):
         d=self.AsDate()
         return datetime.datetime(d.year,d.month,d.day,d.hour,d.minute,d.second,d.ms*1000)
@@ -1203,27 +1206,13 @@ class timeseries(object):
         """interpolationpower(self) -> double"""
         return _cmf_core.timeseries_interpolationpower(self)
 
-    def Add(self, *args):
-        """
-        Add(self, double Value)
+    def add(self, *args):
+        """add(self, double Value)"""
+        return _cmf_core.timeseries_add(self, *args)
 
-        void Add(double
-        Value)
-
-        Appends a measurement. 
-        """
-        return _cmf_core.timeseries_Add(self, *args)
-
-    def isempty(self):
-        """
-        isempty(self) -> bool
-
-        bool isempty()
-        const
-
-        returns true if no values are added to the timeseries 
-        """
-        return _cmf_core.timeseries_isempty(self)
+    def is_empty(self):
+        """is_empty(self) -> bool"""
+        return _cmf_core.timeseries_is_empty(self)
 
     def clear(self):
         """
@@ -1373,8 +1362,8 @@ timeseries.begin = new_instancemethod(_cmf_core.timeseries_begin,None,timeseries
 timeseries.step = new_instancemethod(_cmf_core.timeseries_step,None,timeseries)
 timeseries.end = new_instancemethod(_cmf_core.timeseries_end,None,timeseries)
 timeseries.interpolationpower = new_instancemethod(_cmf_core.timeseries_interpolationpower,None,timeseries)
-timeseries.Add = new_instancemethod(_cmf_core.timeseries_Add,None,timeseries)
-timeseries.isempty = new_instancemethod(_cmf_core.timeseries_isempty,None,timeseries)
+timeseries.add = new_instancemethod(_cmf_core.timeseries_add,None,timeseries)
+timeseries.is_empty = new_instancemethod(_cmf_core.timeseries_is_empty,None,timeseries)
 timeseries.clear = new_instancemethod(_cmf_core.timeseries_clear,None,timeseries)
 timeseries.size = new_instancemethod(_cmf_core.timeseries_size,None,timeseries)
 timeseries.__iadd__ = new_instancemethod(_cmf_core.timeseries___iadd__,None,timeseries)
@@ -2170,6 +2159,12 @@ class Integrator(object):
 
     t=property(ModelTime,ModelTime,"Gets or sets the model time of the integrator")
     dt=property(TimeStep,None,"Gets the length of the last internal time step of the integrator")
+
+    def run(self,start=day*0,end=day*1,step=min*10):
+        self.t=start
+        while self.t<end:
+            self(self.t+step)
+            yield integ.t
 
     __swig_destroy__ = _cmf_core.delete_Integrator
 Integrator.count = new_instancemethod(_cmf_core.Integrator_count,None,Integrator)
@@ -3478,9 +3473,9 @@ class FluxNode(object):
         return _cmf_core.FluxNode_project(self)
 
     node_id = _swig_property(_cmf_core.FluxNode_node_id_get)
-    def IsStorage(self):
-        """IsStorage(self) -> bool"""
-        return _cmf_core.FluxNode_IsStorage(self)
+    def is_storage(self):
+        """is_storage(self) -> bool"""
+        return _cmf_core.FluxNode_is_storage(self)
 
     Name = _swig_property(_cmf_core.FluxNode_Name_get, _cmf_core.FluxNode_Name_set)
     def Connections(self):
@@ -3509,42 +3504,20 @@ class FluxNode(object):
         """Connection(self, FluxNode target) -> FluxConnection"""
         return _cmf_core.FluxNode_Connection(self, *args)
 
-    def RemoveConnection(self, *args):
-        """RemoveConnection(self, FluxNode To)"""
-        return _cmf_core.FluxNode_RemoveConnection(self, *args)
+    def remove_connection(self, *args):
+        """remove_connection(self, FluxNode To)"""
+        return _cmf_core.FluxNode_remove_connection(self, *args)
 
-    def FluxTo(self, *args):
+    def flux_to(self, *args):
+        """flux_to(self, FluxNode target, Time t) -> real"""
+        return _cmf_core.FluxNode_flux_to(self, *args)
+
+    def water_balance(self, *args):
         """
-        FluxTo(self, FluxNode target, Time t) -> real
-
-        real
-        FluxTo(const FluxNode &target, cmf::math::Time t)
-
-        Returns the actual flux between this and target (positive sign means
-        "from target into this"). 
+        water_balance(self, Time t, FluxConnection Without = None) -> real
+        water_balance(self, Time t) -> real
         """
-        return _cmf_core.FluxNode_FluxTo(self, *args)
-
-    def Waterbalance(self, *args):
-        """
-        Waterbalance(self, Time t, FluxConnection Without = None) -> real
-        Waterbalance(self, Time t) -> real
-
-        real
-        Waterbalance(cmf::math::Time t, const FluxConnection *except=0)
-
-        Returns the sum of all fluxes (positive and negative) at time t.
-        Single fluxes can be excluded from the calculation.
-
-        Parameters:
-        -----------
-
-        t:  Time of the query
-
-        except:  A FluxConnection that is excluded from the Waterbalance (e.g.
-        to prevent closed circuits) 
-        """
-        return _cmf_core.FluxNode_Waterbalance(self, *args)
+        return _cmf_core.FluxNode_water_balance(self, *args)
 
     def conc(self, *args):
         """
@@ -3571,14 +3544,9 @@ class FluxNode(object):
         """
         return _cmf_core.FluxNode_Potential(self)
 
-    def Empty(self):
-        """
-        Empty(self) -> bool
-
-        virtual bool
-        Empty() 
-        """
-        return _cmf_core.FluxNode_Empty(self)
+    def is_empty(self):
+        """is_empty(self) -> bool"""
+        return _cmf_core.FluxNode_is_empty(self)
 
     def __init__(self, *args): 
         """
@@ -3598,28 +3566,24 @@ class FluxNode(object):
     def __repr__(self):
         return self.Name
     def fluxes(self,t):
-        for con in self.Connections():
-            yield (con.q(self,t),con.Target(self))
-    def connections(self):
-        for con in self.Connections():
-            yield con.Target(self)
+        return [(con.q(self,t),con.Target(self)) for con in self.Connections()]
 
     def AsStorage(self):
         """AsStorage(self) -> WaterStorage"""
         return _cmf_core.FluxNode_AsStorage(self)
 
 FluxNode.project = new_instancemethod(_cmf_core.FluxNode_project,None,FluxNode)
-FluxNode.IsStorage = new_instancemethod(_cmf_core.FluxNode_IsStorage,None,FluxNode)
+FluxNode.is_storage = new_instancemethod(_cmf_core.FluxNode_is_storage,None,FluxNode)
 FluxNode.Connections = new_instancemethod(_cmf_core.FluxNode_Connections,None,FluxNode)
 FluxNode.__eq__ = new_instancemethod(_cmf_core.FluxNode___eq__,None,FluxNode)
 FluxNode.RecalcFluxes = new_instancemethod(_cmf_core.FluxNode_RecalcFluxes,None,FluxNode)
 FluxNode.Connection = new_instancemethod(_cmf_core.FluxNode_Connection,None,FluxNode)
-FluxNode.RemoveConnection = new_instancemethod(_cmf_core.FluxNode_RemoveConnection,None,FluxNode)
-FluxNode.FluxTo = new_instancemethod(_cmf_core.FluxNode_FluxTo,None,FluxNode)
-FluxNode.Waterbalance = new_instancemethod(_cmf_core.FluxNode_Waterbalance,None,FluxNode)
+FluxNode.remove_connection = new_instancemethod(_cmf_core.FluxNode_remove_connection,None,FluxNode)
+FluxNode.flux_to = new_instancemethod(_cmf_core.FluxNode_flux_to,None,FluxNode)
+FluxNode.water_balance = new_instancemethod(_cmf_core.FluxNode_water_balance,None,FluxNode)
 FluxNode.conc = new_instancemethod(_cmf_core.FluxNode_conc,None,FluxNode)
 FluxNode.Potential = new_instancemethod(_cmf_core.FluxNode_Potential,None,FluxNode)
-FluxNode.Empty = new_instancemethod(_cmf_core.FluxNode_Empty,None,FluxNode)
+FluxNode.is_empty = new_instancemethod(_cmf_core.FluxNode_is_empty,None,FluxNode)
 FluxNode.copy = new_instancemethod(_cmf_core.FluxNode_copy,None,FluxNode)
 FluxNode.AsStorage = new_instancemethod(_cmf_core.FluxNode_AsStorage,None,FluxNode)
 FluxNode_swigregister = _cmf_core.FluxNode_swigregister
@@ -3708,6 +3672,98 @@ FluxConnection.conc = new_instancemethod(_cmf_core.FluxConnection_conc,None,Flux
 FluxConnection.ToString = new_instancemethod(_cmf_core.FluxConnection_ToString,None,FluxConnection)
 FluxConnection_swigregister = _cmf_core.FluxConnection_swigregister
 FluxConnection_swigregister(FluxConnection)
+
+class linear_scale(object):
+    """Proxy of C++ cmf::water::linear_scale class"""
+    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __repr__ = _swig_repr
+    displacement = _swig_property(_cmf_core.linear_scale_displacement_get, _cmf_core.linear_scale_displacement_set)
+    slope = _swig_property(_cmf_core.linear_scale_slope_get, _cmf_core.linear_scale_slope_set)
+    def __call__(self, *args):
+        """__call__(self, real value) -> real"""
+        return _cmf_core.linear_scale___call__(self, *args)
+
+    def __init__(self, _slope = 1, _displacement = 0): 
+        """
+        __init__(self, real _slope = 1, real _displacement = 0) -> linear_scale
+        __init__(self, real _slope = 1) -> linear_scale
+        __init__(self) -> linear_scale
+        """
+        _cmf_core.linear_scale_swiginit(self,_cmf_core.new_linear_scale(_slope, _displacement))
+    __swig_destroy__ = _cmf_core.delete_linear_scale
+linear_scale.__call__ = new_instancemethod(_cmf_core.linear_scale___call__,None,linear_scale)
+linear_scale_swigregister = _cmf_core.linear_scale_swigregister
+linear_scale_swigregister(linear_scale)
+
+class DricheletBoundary(FluxNode):
+    """Proxy of C++ cmf::water::DricheletBoundary class"""
+    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    def __init__(self, *args, **kwargs): raise AttributeError("No constructor defined")
+    __repr__ = _swig_repr
+    is_source = _swig_property(_cmf_core.DricheletBoundary_is_source_get, _cmf_core.DricheletBoundary_is_source_set)
+    def is_empty(self):
+        """is_empty(self) -> bool"""
+        return _cmf_core.DricheletBoundary_is_empty(self)
+
+    def RecalcFluxes(self, *args):
+        """
+        RecalcFluxes(self, Time t) -> bool
+
+        virtual
+        bool RecalcFluxes(cmf::math::Time t)
+
+        Pure FluxNodes do not influence fluxes, therefore no recalculation of
+        fluxes is required by fluxnode. WaterStorage overrides this, since
+        state changes require an update of the fluxes. 
+        """
+        return _cmf_core.DricheletBoundary_RecalcFluxes(self, *args)
+
+    __swig_destroy__ = _cmf_core.delete_DricheletBoundary
+DricheletBoundary.is_empty = new_instancemethod(_cmf_core.DricheletBoundary_is_empty,None,DricheletBoundary)
+DricheletBoundary.RecalcFluxes = new_instancemethod(_cmf_core.DricheletBoundary_RecalcFluxes,None,DricheletBoundary)
+DricheletBoundary_swigregister = _cmf_core.DricheletBoundary_swigregister
+DricheletBoundary_swigregister(DricheletBoundary)
+
+class NeumannBoundary(FluxNode):
+    """Proxy of C++ cmf::water::NeumannBoundary class"""
+    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __repr__ = _swig_repr
+    flux = _swig_property(_cmf_core.NeumannBoundary_flux_get, _cmf_core.NeumannBoundary_flux_set)
+    flux_scale = _swig_property(_cmf_core.NeumannBoundary_flux_scale_get, _cmf_core.NeumannBoundary_flux_scale_set)
+    concentration = _swig_property(_cmf_core.NeumannBoundary_concentration_get, _cmf_core.NeumannBoundary_concentration_set)
+    def __call__(self, *args):
+        """__call__(self, Time t) -> real"""
+        return _cmf_core.NeumannBoundary___call__(self, *args)
+
+    def is_empty(self):
+        """is_empty(self) -> bool"""
+        return _cmf_core.NeumannBoundary_is_empty(self)
+
+    def __init__(self, *args): 
+        """
+        __init__(self, project _project, timeseries _flux = 0.0, SoluteTimeseries _concentration = cmf::water::SoluteTimeseries(), 
+            point loc = cmf::geometry::point()) -> NeumannBoundary
+        __init__(self, project _project, timeseries _flux = 0.0, SoluteTimeseries _concentration = cmf::water::SoluteTimeseries()) -> NeumannBoundary
+        __init__(self, project _project, timeseries _flux = 0.0) -> NeumannBoundary
+        __init__(self, project _project) -> NeumannBoundary
+        """
+        _cmf_core.NeumannBoundary_swiginit(self,_cmf_core.new_NeumannBoundary(*args))
+    __swig_destroy__ = _cmf_core.delete_NeumannBoundary
+NeumannBoundary.__call__ = new_instancemethod(_cmf_core.NeumannBoundary___call__,None,NeumannBoundary)
+NeumannBoundary.is_empty = new_instancemethod(_cmf_core.NeumannBoundary_is_empty,None,NeumannBoundary)
+NeumannBoundary_swigregister = _cmf_core.NeumannBoundary_swigregister
+NeumannBoundary_swigregister(NeumannBoundary)
+
+class NeumannFlux(FluxConnection):
+    """Proxy of C++ cmf::water::NeumannFlux class"""
+    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __repr__ = _swig_repr
+    def __init__(self, *args): 
+        """__init__(self, NeumannBoundary left, FluxNode right) -> NeumannFlux"""
+        _cmf_core.NeumannFlux_swiginit(self,_cmf_core.new_NeumannFlux(*args))
+    __swig_destroy__ = _cmf_core.delete_NeumannFlux
+NeumannFlux_swigregister = _cmf_core.NeumannFlux_swigregister
+NeumannFlux_swigregister(NeumannFlux)
 
 class WaterStorage(StateVariable,StateVariableOwner,FluxNode):
     """
@@ -3876,6 +3932,11 @@ class Weather(object):
         return _cmf_core.Weather_ToString(self)
 
     snow_threshold = _swig_property(_cmf_core.Weather_snow_threshold_get, _cmf_core.Weather_snow_threshold_set)
+    def __repr__(self):
+        return "cmf.Weather()"
+    def __str__(self):
+        return "Weather: T(max/min)=%6.2f(%3.0f/%3.0f), Rs=%7.2f, rH=%3.0f%%" % (self.T,self.Tmin,self.Tmax,self.Rs,100*self.e_a/self.e_s)
+
     __swig_destroy__ = _cmf_core.delete_Weather
 Weather.Rn = new_instancemethod(_cmf_core.Weather_Rn,None,Weather)
 Weather.ToString = new_instancemethod(_cmf_core.Weather_ToString,None,Weather)
@@ -4056,6 +4117,8 @@ class MeteoStation(Locatable):
                 "Sunshine":self.Sunshine,
                 "Windspeed":self.Windspeed,
                 "Rs" : self.Rs}
+    def __repr__(self):
+        return "cmf.MeteoStation(%s,lat=%0.5g,lon=%0.5g,z=%6.1f)" % (self.Name,self.Latitude,self.Longitude)
 
     __swig_destroy__ = _cmf_core.delete_MeteoStation
 MeteoStation.get_data = new_instancemethod(_cmf_core.MeteoStation_get_data,None,MeteoStation)
@@ -4156,8 +4219,10 @@ class MeteoStationList(object):
         return _cmf_core.MeteoStationList_reference_to_nearest(self, *args)
 
     def __iter__(self):
-        for i in xrange(len(self):
+        for i in xrange(len(self)):
             yield self[i]
+    def __repr__(self):
+        return "list of %i cmf meteorological stations" % len(self)
 
     __swig_destroy__ = _cmf_core.delete_MeteoStationList
 MeteoStationList.__len__ = new_instancemethod(_cmf_core.MeteoStationList___len__,None,MeteoStationList)
@@ -4169,6 +4234,20 @@ MeteoStationList.reference_to_nearest = new_instancemethod(_cmf_core.MeteoStatio
 MeteoStationList_swigregister = _cmf_core.MeteoStationList_swigregister
 MeteoStationList_swigregister(MeteoStationList)
 
+class RainCloud(NeumannBoundary):
+    """Proxy of C++ cmf::atmosphere::RainCloud class"""
+    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    def __init__(self, *args, **kwargs): raise AttributeError("No constructor defined")
+    __repr__ = _swig_repr
+    def get_cell(self):
+        """get_cell(self) -> Cell"""
+        return _cmf_core.RainCloud_get_cell(self)
+
+    __swig_destroy__ = _cmf_core.delete_RainCloud
+RainCloud.get_cell = new_instancemethod(_cmf_core.RainCloud_get_cell,None,RainCloud)
+RainCloud_swigregister = _cmf_core.RainCloud_swigregister
+RainCloud_swigregister(RainCloud)
+
 class _cell_object_list:
     def __init__(self,c,kind):
         self.c=c
@@ -4179,7 +4258,7 @@ class _cell_object_list:
         elif self.kind=="S":
             return self.c.get_storage(index)
         else:
-             ndx=index if index>=0 else self.c.StorageCount()+self.c.LayerCount()+index
+             ndx=index if index>=0 else self.c.storage_count()+self.c.layer_count()+index
              lndx=index-self.c.storage_count()
              if lndx<0:
                  return self.c.get_storage(ndx)
@@ -4199,7 +4278,7 @@ class _cell_object_list:
                 return s
         raise IndexError("No storage %s in %s of %s" % (name,"layers" if self.kind=='L' else "non layer storages" if self.kind=='S' else "storages",self.c))
     def __len__(self):
-        return self.c.LayerCount() if self.kind=='L' else (self.c.StorageCount() if self.kind=='S' else self.c.LayerCount()+self.c.StorageCount())
+        return self.c.layer_count() if self.kind=='L' else (self.c.storage_count() if self.kind=='S' else self.c.layer_count()+self.c.storage_count())
     def __iter__(self):
         for i in range(len(self)):
             yield self[i]
@@ -4457,7 +4536,7 @@ class Cell(StateVariableOwner,Locatable):
     storages=property(lambda c:_cell_object_list(c,'A'),None,"Provides access to all storages of the cell (surface storages and layers)")
     surface_storages=property(lambda c:_cell_object_list(c,'S'),None,"Provides access to all surface storages of the cell, like canopy, snow, surface water etc")
     layers=property(lambda c:_cell_object_list(c,'L'),None,"Provides access to all soil water storages (layers) of the cell")
-    surface_water=property(get_surface_water,None,"Gives access to the surface water, which is either a distributing flux node, or the storage for all surface water")
+    surface_water=property(get_surfacewater,None,"Gives access to the surface water, which is either a distributing flux node, or the storage for all surface water")
     canopy=property(get_canopy,None,"The canopy water storage of the cell, if it exists")
     snow=property(get_snow,None,"The snow pack of the cell, if a storage for the snow exists")
     saturated_depth=property(get_saturated_depth,set_saturated_depth,"Gets or sets the saturated depth of a cell, if setting each layer of the cell will get a new water content")
@@ -5776,7 +5855,6 @@ def Tact(*args):
 class constantETpot(FluxConnection):
     """Proxy of C++ cmf::upslope::ET::constantETpot class"""
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
-    def __init__(self, *args, **kwargs): raise AttributeError("No constructor defined")
     __repr__ = _swig_repr
     ETpot_value = _swig_property(_cmf_core.constantETpot_ETpot_value_get, _cmf_core.constantETpot_ETpot_value_set)
     def GetETpot(self, *args):
@@ -5787,6 +5865,14 @@ class constantETpot(FluxConnection):
         """
         return _cmf_core.constantETpot_GetETpot(self, *args)
 
+    def __init__(self, *args): 
+        """
+        __init__(self, SoilWaterStorage source, FluxNode ET_target, double constantETpot_value) -> constantETpot
+
+        constantETpot(cmf::upslope::SoilWaterStorage &source,
+        cmf::water::FluxNode &ET_target, double constantETpot_value) 
+        """
+        _cmf_core.constantETpot_swiginit(self,_cmf_core.new_constantETpot(*args))
     __swig_destroy__ = _cmf_core.delete_constantETpot
 constantETpot.GetETpot = new_instancemethod(_cmf_core.constantETpot_GetETpot,None,constantETpot)
 constantETpot_swigregister = _cmf_core.constantETpot_swigregister
@@ -6469,31 +6555,25 @@ ReachIterator_swigregister(ReachIterator)
 def make_river_gap(*args):
   """make_river_gap(Reach root_reach) -> double"""
   return _cmf_core.make_river_gap(*args)
-class project(object):
+class project(StateVariableOwner):
     """Proxy of C++ cmf::project class"""
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
     __repr__ = _swig_repr
+    meteo_stations = _swig_property(_cmf_core.project_meteo_stations_get, _cmf_core.project_meteo_stations_set)
+    outlets = _swig_property(_cmf_core.project_outlets_get, _cmf_core.project_outlets_set)
+    def get_cell(self, *args):
+        """get_cell(self, int index) -> Cell"""
+        return _cmf_core.project_get_cell(self, *args)
+
+    def size(self):
+        """size(self) -> int"""
+        return _cmf_core.project_size(self)
+
     debug = _swig_property(_cmf_core.project_debug_get, _cmf_core.project_debug_set)
     def __init__(self): 
         """__init__(self) -> project"""
         _cmf_core.project_swiginit(self,_cmf_core.new_project())
     __swig_destroy__ = _cmf_core.delete_project
-    def CellCount(self):
-        """CellCount(self) -> int"""
-        return _cmf_core.project_CellCount(self)
-
-    def Area(self):
-        """Area(self) -> double"""
-        return _cmf_core.project_Area(self)
-
-    def Cell(self, *args):
-        """
-        Cell(self, int ndx) -> Cell
-        Cell(self, point p, double max_dist = 1e20) -> Cell
-        Cell(self, point p) -> Cell
-        """
-        return _cmf_core.project_Cell(self, *args)
-
     def NewCell(self, *args):
         """
         NewCell(self, double x, double y, double z, double Area) -> Cell
@@ -6501,40 +6581,23 @@ class project(object):
         """
         return _cmf_core.project_NewCell(self, *args)
 
-    def clear_layers(self):
-        """clear_layers(self)"""
-        return _cmf_core.project_clear_layers(self)
-
-    @property
-    def cells(self):
-        for i in range(self.CellCount()):
-            yield self.Cell(i)
-    @property 
-    def boundary_conditions(self):
-        it=bc_iterator(self)
-        while it.valid():
-            yield it.next()
-    def __iter__(self):
-        return self.cells
+    cells = _swig_property(_cmf_core.project_cells_get)
+    def __repr__(self):
+        return "cmf.project(%i cells, %i meteo stations, %i outlets)" % (len(self.cells),len(self.meteo_stations),len(self.outlets))
     def __len__(self):
-        return self.CellCount()
+        return self.size()
     def __getitem__(self,index):
         if isinstance(index,slice):
-            return [self.Cell(i) for i in range(*index.indices(len(p)))]
-        return self.Cell(index)
-    def cell_list(self,expression='True'):
-        res=[]
-        f=lambda cell:eval(expression)
-        for cell in self.cells():
-            if f(cell):
-                res.append(cell)
-        return res
+            return [self[i] for i in range(*index.indices(len(self)))]
+        else:
+            return self.get_cell(index)        
+    def __iter__(self):
+        for i in range(self.size()):
+            yield self.get_cell(i)
 
-project.CellCount = new_instancemethod(_cmf_core.project_CellCount,None,project)
-project.Area = new_instancemethod(_cmf_core.project_Area,None,project)
-project.Cell = new_instancemethod(_cmf_core.project_Cell,None,project)
+project.get_cell = new_instancemethod(_cmf_core.project_get_cell,None,project)
+project.size = new_instancemethod(_cmf_core.project_size,None,project)
 project.NewCell = new_instancemethod(_cmf_core.project_NewCell,None,project)
-project.clear_layers = new_instancemethod(_cmf_core.project_clear_layers,None,project)
 project_swigregister = _cmf_core.project_swigregister
 project_swigregister(project)
 
@@ -6551,6 +6614,8 @@ def query_layers(layers,expr='layer.theta()'):
     f=lambda layer:eval(expr)
     for l in layers:
         yield f(l)
+
+cell_vector.__repr__=lambda cv:"list of %i cells. first:%s, last: %s" % ((cv.size(),cv[0],cv[-1]) if len(cv) else (cv.size(),"None","None"))
 
 
 

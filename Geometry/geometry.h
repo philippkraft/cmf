@@ -74,7 +74,6 @@ namespace cmf {
 		{
 		public:
 			virtual cmf::geometry::point get_position() const=0;
-			operator cmf::geometry::point() const {return get_position();}
 		};
 
 		class Location : public Locatable

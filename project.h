@@ -13,16 +13,13 @@ namespace cmf {
 	class bc_iterator;
 
 	/// The study area, holding all cells and outlets
-	class project	: protected cmf::math::StateVariableOwner
+	class project	: public cmf::math::StateVariableOwner
 	{
 	private:
-		upslope::cell_vector m_cells;
 		friend class cmf::upslope::Cell;
-
-
+		upslope::cell_vector m_cells;
 
 	protected:
-		cmf::atmosphere::MeteoStationList meteo_stations;
 		virtual void AddStateVariables(cmf::math::StateVariableVector& vector)
 		{
 			for(cmf::upslope::cell_vector::iterator it = m_cells.begin(); it != m_cells.end(); ++it)
@@ -31,26 +28,19 @@ namespace cmf {
 			}
 		}
 	public:
+		cmf::atmosphere::MeteoStationList meteo_stations;
+		cmf::water::node_vector outlets;
+		const upslope::cell_vector& get_cells() const {return m_cells;}
+		upslope::Cell& get_cell(int index)
+		{
+			return *m_cells.at(index<0 ? m_cells.size()+index : index);
+		}
+		int size() const { return int(m_cells.size());}
 		/// If set to true, creation and deletion of objects is logged
 		bool debug;
 		/// Creates a new project
 		project();
 		~project();
-		/// Returns the number of cells
-		int CellCount() const
-		{
-			return int(m_cells.size());
-		}
-		/// Returns a cell 
-		cmf::upslope::Cell & Cell(int ndx) const
-		{
-			if (ndx<0) ndx=int(m_cells.size())+ndx;
-			return *m_cells.at(ndx);
-		}
-		/// Returns the area of the study area
-		double cmf::project::Area() const;
-		/// Finds a cell at a location (nearest cell center)
-		cmf::upslope::Cell* Cell(cmf::geometry::point p,double max_dist=1e20);
 		/// Creates a new cell
 		cmf::upslope::Cell* NewCell(double x,double y,double z, double Area)
 		{
@@ -61,16 +51,6 @@ namespace cmf {
 		{
 			return NewCell(p.x,p.y,p.z,Area);
 		}
-		operator cmf::upslope::cell_vector&() 
-		{
-			return m_cells;
-		}
-		operator const cmf::upslope::cell_vector&() const
-		{
-			return m_cells;
-		}
-		/// Deletes all layers in all cells
-		void clear_layers();
 
 	};
 	/// A class to iterate through the neighbors of a cell (const). Not needed from the Python side, use the generator cell.neighbors instead.

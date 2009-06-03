@@ -14,7 +14,8 @@ double cmf::math::timeseries::position( Time t ) const
 
 double cmf::math::timeseries::interpolate( cmf::math::Time t,double n ) const
 {
-	
+	if (is_empty() || !m_data)
+		throw std::out_of_range("Time series is empty");
 	double pos=position(t);
 
 	// If nearest neighbor interpolation return nearest neighbor...
@@ -153,13 +154,13 @@ cmf::math::timeseries cmf::math::timeseries::reduce_min( cmf::math::Time begin,c
 	cmf::math::timeseries res(begin,step);
 	cmf::math::Time t=begin;
   int pos=0;
-	res.Add(org[t]);
+	res.add(org[t]);
 	while (t<org.end())
 	{
 		double v=org[t];
 		for (cmf::math::Time t2=t;t2<t+step;t2+=org.step())
 			v=v<org[t2] ? v : org[t2];
-		res.Add(v);
+		res.add(v);
 		t+=step;
 	}
 	return res;
@@ -180,7 +181,7 @@ cmf::math::timeseries cmf::math::timeseries::reduce_max( cmf::math::Time begin,c
 		double v=org[t];
 		for (cmf::math::Time t2=t;t2<t+step;t2+=org.step())
 			v=v>org[t2] ? v : org[t2];
-		res.Add(v);
+		res.add(v);
 		t+=step;
 	}
 	return res;
@@ -201,7 +202,7 @@ cmf::math::timeseries cmf::math::timeseries::reduce_sum( cmf::math::Time begin,c
 		double v=0;
 		for (cmf::math::Time t2=t;t2<t+step;t2+=org.step())
 			v+=org[t2];
-		res.Add(v);
+		res.add(v);
 		t+=step;
 	}
 	return res;
@@ -225,7 +226,7 @@ cmf::math::timeseries cmf::math::timeseries::reduce_avg( cmf::math::Time begin,c
 			v+=org[t2];
 			++count;
 		}
-		res.Add(v/count);
+		res.add(v/count);
 		t+=step;
 	}
 	return res;

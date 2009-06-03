@@ -62,7 +62,7 @@ static int convert_seq_to_point(PyObject* input,cmf::geometry::point& p)
 	for (int i=0;i<len;++i)
 	{
 		PyObject *o = PySequence_GetItem(input,i);
-		if (!PyFloat_Check(o)) 
+		if (!PyNumber_Check(o)) 
 		{
 			Py_XDECREF(o);
 			return 0;
@@ -117,7 +117,7 @@ static int convert_xyz_to_point(PyObject* input,cmf::geometry::point& p)
 	}
 	$1=p;
 }
-%typemap(typecheck) cmf::geometry::point {
+%typemap(typecheck,precedence=150) cmf::geometry::point {
 	cmf::geometry::point p;
 	$1=convert_seq_to_point($input,p) || convert_xyz_to_point($input,p);
 }

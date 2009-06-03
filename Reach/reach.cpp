@@ -32,11 +32,6 @@ bool cmf::river::Reach::operator!=( const cmf::river::Reach& cmp ) const
 }
 
 
-cmf::river::Reach::operator cmf::river::OpenWaterStorage&()
-{
-	return *water;
-}
-
 bool cmf::river::Reach::add_upstream(Reach * r )
 {
 	std::vector<Reach*>::iterator it=std::lower_bound(upstream.begin(),upstream.end(),r);
@@ -67,7 +62,7 @@ void cmf::river::Reach::set_downstream( Reach* downstream_reach )
 	if (downstream) 
 	{
 		downstream->remove_upstream(this);
-		get_water().RemoveConnection(downstream->get_water());
+		get_water().remove_connection(downstream->get_water());
 	}
 	downstream=downstream_reach;
 	if (downstream_reach)
