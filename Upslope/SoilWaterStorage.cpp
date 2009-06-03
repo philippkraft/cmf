@@ -4,34 +4,34 @@
 /************************************************************************/
 /* SoilWaterStorage                                                     */
 /************************************************************************/
-// Actual volumetric water content of the soil (m3 H2O/m3 Soil)
+// Actual volumetric water content of the soil (m3 H2O/m3 get_soil)
 // Actual conductivity
-// total Potential
-real cmf::upslope::SoilWaterStorage::Potential() const
+// total get_potential
+real cmf::upslope::SoilWaterStorage::get_potential() const
 {
 	real
-		mp=MatrixPotential(),
-		gp=GravitationalPotential();
+		mp=get_matrix_potential(),
+		gp=get_gravitational_potential();
 	return mp+gp;
 }
 
 
-void cmf::upslope::SoilWaterStorage::SetPotential( real waterhead )
+void cmf::upslope::SoilWaterStorage::set_potential( real waterhead )
 {
-	real m_pot=waterhead - GravitationalPotential();
+	real m_pot=waterhead - get_gravitational_potential();
 	if (m_pot>=0)
-		State(Soil().VoidVolume(UpperBoundary(),LowerBoundary(),cell.get_area()));
+		State(get_soil().VoidVolume(get_upper_boundary(),get_lower_boundary(),cell.get_area()));
 	else
 	{
-		real w=Soil().Wetness(m_pot);
-		real vv=Soil().VoidVolume(UpperBoundary(),LowerBoundary(),cell.get_area());
+		real w=get_soil().Wetness(m_pot);
+		real vv=get_soil().VoidVolume(get_upper_boundary(),get_lower_boundary(),cell.get_area());
 		State(vv*w);
 	}
 }
 
-real cmf::upslope::SoilWaterStorage::GravitationalPotential() const
+real cmf::upslope::SoilWaterStorage::get_gravitational_potential() const
 {
-	return cell.z-UpperBoundary();
+	return cell.z-get_upper_boundary();
 }
 
 // public ctor
@@ -40,12 +40,12 @@ cmf::upslope::SoilWaterStorage::SoilWaterStorage( cmf::upslope::Cell & _cell,rea
 	m_lowerboundary(lowerboundary),Position(_cell.layer_count())
 {
 	Location=cmf::geometry::point(_cell.x,_cell.y,_cell.z - lowerboundary);
-	m_upperboundary = cell.layer_count()>0 ? cell.get_layer(-1).LowerBoundary() : 0;
+	m_upperboundary = cell.layer_count()>0 ? cell.get_layer(-1).get_lower_boundary() : 0;
 	if (m_lowerboundary-m_upperboundary<=0)
 		throw std::runtime_error("0 m thickness of layer");
-	SetPotential(cell.z - saturateddepth);
+	set_potential(cell.z - saturateddepth);
 	std::stringstream sstr;
-	sstr << "get_layer " << UpperBoundary() << "-" << LowerBoundary() << "m @(" << cell.x << "," << cell.y << "," << cell.z << ")";
+	sstr << "get_layer " << get_upper_boundary() << "-" << get_lower_boundary() << "m @(" << cell.x << "," << cell.y << "," << cell.z << ")";
 	Name=sstr.str();
 
 	cell.add_layer(this);
@@ -61,7 +61,7 @@ m_lowerboundary(lowerboundary),m_upperboundary(upperBoundary),Position(_Position
 
 }
 
-real cmf::upslope::SoilWaterStorage::GetFlowCrosssection( const cmf::upslope::SoilWaterStorage& target,bool HorizontalLayers/*=false*/ ) const
+real cmf::upslope::SoilWaterStorage::get_flow_crosssection( const cmf::upslope::SoilWaterStorage& target,bool HorizontalLayers/*=false*/ ) const
 {
 	if (&cell == &target.cell)
 	{
@@ -70,32 +70,32 @@ real cmf::upslope::SoilWaterStorage::GetFlowCrosssection( const cmf::upslope::So
 	else if (HorizontalLayers)
 	{
 		double w=cell.get_topology().flowwidth(target.cell);
-		real upper=minimum(cell.z - UpperBoundary(),target.cell.z - target.UpperBoundary());
-		real lower=maximum(cell.z - LowerBoundary(),target.cell.z - target.LowerBoundary());
+		real upper=minimum(cell.z - get_upper_boundary(),target.cell.z - target.get_upper_boundary());
+		real lower=maximum(cell.z - get_lower_boundary(),target.cell.z - target.get_lower_boundary());
 		return upper<lower ? (lower-upper)*w : 0;
 	}
 	else
 	{
 		double w=cell.get_topology().flowwidth(target.cell);
-		real upper=maximum(UpperBoundary(),target.UpperBoundary());
-		real lower=minimum(LowerBoundary(),target.LowerBoundary());
+		real upper=maximum(get_upper_boundary(),target.get_upper_boundary());
+		real lower=minimum(get_lower_boundary(),target.get_lower_boundary());
 		return upper<lower ? (lower-upper)*w : 0;
 	}
 }
 
-real cmf::upslope::SoilWaterStorage::SaturatedDepth() const
+real cmf::upslope::SoilWaterStorage::get_saturated_depth() const
 {
-	//real sd=minimum(UpperBoundary()-MatrixPotential(),LowerBoundary());
+	//real sd=minimum(get_upper_boundary()-get_matrix_potential(),get_lower_boundary());
 	return cell.get_saturated_depth();
 // 	SoilWaterStorage
 // 		* ul=Position ? &cell.get_layer(Position-1) : 0,
 // 		* ll=Position+1<cell.layer_count() ? &cell.get_layer(Position+1) : 0;
-// 	 	if (Wetness()>=0.95)
-// 	 		return ul ? ul->get_saturated_depth() : UpperBoundary();
+// 	 	if (get_wetness()>=0.95)
+// 	 		return ul ? ul->get_saturated_depth() : get_upper_boundary();
 // 	 	else
 // 		{
-// 			if ((ll==0) || (ll->Wetness()>=.95))
-// 				return minimum(UpperBoundary()-MatrixPotential(),LowerBoundary());
+// 			if ((ll==0) || (ll->get_wetness()>=.95))
+// 				return minimum(get_upper_boundary()-get_matrix_potential(),get_lower_boundary());
 // 			else
 // 				return ll->get_saturated_depth();
 // 		}
@@ -103,54 +103,54 @@ real cmf::upslope::SoilWaterStorage::SaturatedDepth() const
 
 void cmf::upslope::SoilWaterStorage::StateChangeAction()
 {
-	m_wet.C=Soil().VoidVolume(UpperBoundary(),LowerBoundary(),cell.get_area());
+	m_wet.C=get_soil().VoidVolume(get_upper_boundary(),get_lower_boundary(),cell.get_area());
 	m_wet.W=State()/m_wet.C;
-	m_wet.theta=State()/(cell.get_area()*Thickness());
-	m_wet.Psi_m = Soil().MatricPotential(Wetness());
-	m_wet.Ksat=Soil().K(1,0.5*(UpperBoundary()+LowerBoundary()));
-	m_wet.K=Soil().K(m_wet.W,0.5*(UpperBoundary()+LowerBoundary()));
+	m_wet.theta=State()/(cell.get_area()*get_thickness());
+	m_wet.Psi_m = get_soil().MatricPotential(get_wetness());
+	m_wet.Ksat=get_soil().K(1,0.5*(get_upper_boundary()+get_lower_boundary()));
+	m_wet.K=get_soil().K(m_wet.W,0.5*(get_upper_boundary()+get_lower_boundary()));
 	cell.InvalidateSatDepth();
 }
 /************************************************************************/
-/* FlexibleSizeSaturatedZone                                            */
+/* VariableLayerSaturated                                            */
 /************************************************************************/
-real cmf::upslope::FlexibleSizeSaturatedZone::UpperBoundary() const
+real cmf::upslope::VariableLayerSaturated::get_upper_boundary() const
 {
-	real filling=Soil().FillHeight(LowerBoundary(),cell.get_area(),State());
+	real filling=get_soil().FillHeight(get_lower_boundary(),cell.get_area(),State());
 	if (!upperLayer)
-		return LowerBoundary()-filling;
+		return get_lower_boundary()-filling;
 	else
-		return maximum(LowerBoundary()-filling,upperLayer->UpperBoundary()+0.01);
+		return maximum(get_lower_boundary()-filling,upperLayer->get_upper_boundary()+0.01);
 }
 
-cmf::upslope::FlexibleSizeSaturatedZone::FlexibleSizeSaturatedZone( cmf::upslope::Cell& cell,real lowerboundary,const RCurve & r_curve ) 
+cmf::upslope::VariableLayerSaturated::VariableLayerSaturated( cmf::upslope::Cell& cell,real lowerboundary,const RCurve & r_curve ) 
 : cmf::upslope::SoilWaterStorage(cell,lowerboundary-0.01,lowerboundary,r_curve,cell.layer_count()+1),upperLayer(0)
 {
 	State(0.01*cell.get_area()*r_curve.Porosity(lowerboundary));
 }
-cmf::upslope::FlexibleSizeSaturatedZone* cmf::upslope::FlexibleSizeSaturatedZone::Create(Cell& cell,real lowerboundary,const RCurve& r_curve)
+cmf::upslope::VariableLayerSaturated* cmf::upslope::VariableLayerSaturated::Create(Cell& cell,real lowerboundary,const RCurve& r_curve)
 {
-	real maximum_upperboundary=cell.layer_count() ? cell.get_layer(-1).LowerBoundary() : 0.0;
-	FlexibleSizeSaturatedZone * lowerlayer = new FlexibleSizeSaturatedZone(cell,lowerboundary,r_curve);
-	FlexibleSizeLayer* upperLayer=new FlexibleSizeLayer(cell,maximum_upperboundary,lowerboundary-0.01,r_curve,lowerlayer);
+	real maximum_upperboundary=cell.layer_count() ? cell.get_layer(-1).get_lower_boundary() : 0.0;
+	VariableLayerSaturated * lowerlayer = new VariableLayerSaturated(cell,lowerboundary,r_curve);
+	VariableLayerUnsaturated* upperLayer=new VariableLayerUnsaturated(cell,maximum_upperboundary,lowerboundary-0.01,r_curve,lowerlayer);
 	lowerlayer->upperLayer=upperLayer;
 	upperLayer->Name="Unsaturated zone";
 	lowerlayer->Name="Saturated zone";
 	cell.add_layer(upperLayer);
 	cell.add_layer(lowerlayer);
-	new cmf::upslope::connections::UnsatSatPercolation(*upperLayer,*lowerlayer);
-	lowerlayer->SetPotential(cell.z-lowerboundary+0.01);
+	new cmf::upslope::connections::VarLayerPercolationRichards(*upperLayer,*lowerlayer);
+	lowerlayer->set_potential(cell.z-lowerboundary+0.01);
 	return lowerlayer;
 }
 static const real unsat_min_thick=0.1;
-void cmf::upslope::FlexibleSizeSaturatedZone::SetPotential( real waterhead )
+void cmf::upslope::VariableLayerSaturated::set_potential( real waterhead )
 {
-	if (waterhead>cell.z-LowerBoundary())
+	if (waterhead>cell.z-get_lower_boundary())
 	{
-		real ub= (upperLayer ? upperLayer->UpperBoundary() : 0.0)+unsat_min_thick;
+		real ub= (upperLayer ? upperLayer->get_upper_boundary() : 0.0)+unsat_min_thick;
 		real g_pot=cell.z-ub;
 		real m_pot=waterhead-g_pot;
-		real maxvol=Soil().VoidVolume(ub,LowerBoundary(),cell.get_area());
+		real maxvol=get_soil().VoidVolume(ub,get_lower_boundary(),cell.get_area());
 		if (m_pot<0)
 		{
 			real vol=maxvol*(1+m_pot/MaximumThickness());
@@ -158,30 +158,28 @@ void cmf::upslope::FlexibleSizeSaturatedZone::SetPotential( real waterhead )
 		}
 		else
 		{
-			real w=Soil().Wetness(m_pot);
+			real w=get_soil().Wetness(m_pot);
 			State(maxvol*w);
 		}
 	}
 	else
 		State(0);
-	if (upperLayer) upperLayer->SetPotential(waterhead);
+	if (upperLayer) upperLayer->set_potential(waterhead);
 }
 
-real cmf::upslope::FlexibleSizeSaturatedZone::MaximumThickness() const
+real cmf::upslope::VariableLayerSaturated::MaximumThickness() const
 {
-	return LowerBoundary() - (upperLayer ? upperLayer->UpperBoundary() : 0.0) - unsat_min_thick;
+	return get_lower_boundary() - (upperLayer ? upperLayer->get_upper_boundary() : 0.0) - unsat_min_thick;
 }
 
-real cmf::upslope::FlexibleSizeSaturatedZone::Potential() const
+real cmf::upslope::VariableLayerSaturated::get_potential() const
 {
-	if (Thickness()>0)
-		return cell.z-UpperBoundary();
-	else if (upperLayer)
-		return upperLayer->Potential();
-	else
-		return cell.z-LowerBoundary();
+	real f_unsat_part=pow(1-get_thickness()/MaximumThickness(),100);
+	real pot_upper=upperLayer ? upperLayer->get_potential() : cell.z-get_lower_boundary();
+	real pot_lower=cell.z-get_upper_boundary()+get_matrix_potential();
+	return f_unsat_part*pot_upper + (1-f_unsat_part)*pot_lower;
 }
-cmf::upslope::FlexibleSizeLayer::FlexibleSizeLayer(cmf::upslope::Cell & cell,real upperboundary,real lowerboundary,const RCurve & r_curve,cmf::upslope::FlexibleSizeSaturatedZone* LayerBelow ) 
+cmf::upslope::VariableLayerUnsaturated::VariableLayerUnsaturated(cmf::upslope::Cell & cell,real upperboundary,real lowerboundary,const RCurve & r_curve,cmf::upslope::VariableLayerSaturated* LayerBelow ) 
 : SoilWaterStorage(cell,upperboundary,lowerboundary,r_curve,cell.layer_count()-1),belowLayer(LayerBelow)
 {	
 }

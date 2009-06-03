@@ -160,7 +160,6 @@ namespace cmf {
 			int Id;
 			const cmf::project& project() const;
 			cmf::atmosphere::Weather get_weather(cmf::math::Time t) const;
-			real rain(cmf::math::Time t) const;
 
 		public:
 			//@}

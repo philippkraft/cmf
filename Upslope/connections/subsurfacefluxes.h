@@ -27,24 +27,47 @@ namespace cmf {
 			/// - \f$ layer \f$ is the unsaturated zone if \f$ \frac{dz_{sat}}{dt} \f$ is positive, otherwise layer is the saturated zone
 			/// - \f$ \sum q \f$ is the water balance of the saturated zone
 			/// - \f$ \Phi \f$ is the porosity
-			class UnsatSatPercolation : public cmf::water::FluxConnection {
+			class VarLayerPercolationRichards : public cmf::water::FluxConnection {
 			protected:
-				cmf::upslope::FlexibleSizeLayer* m_unsat;
-				cmf::upslope::FlexibleSizeSaturatedZone* m_sat;
+				cmf::upslope::VariableLayerUnsaturated* m_unsat;
+				cmf::upslope::VariableLayerSaturated* m_sat;
 				virtual real calc_q(cmf::math::Time t);
 				void NewNodes()
 				{
-					m_unsat=dynamic_cast<cmf::upslope::FlexibleSizeLayer*>(m_left);
-					m_sat=dynamic_cast<cmf::upslope::FlexibleSizeSaturatedZone*>(m_right);
+					m_unsat=dynamic_cast<cmf::upslope::VariableLayerUnsaturated*>(m_left);
+					m_sat=dynamic_cast<cmf::upslope::VariableLayerSaturated*>(m_right);
 				}
 
 			public:
 				/// Creates a connection between unsaturated and saturated zone
-				UnsatSatPercolation(cmf::upslope::FlexibleSizeLayer& unsat,cmf::upslope::FlexibleSizeSaturatedZone& sat) 
-					: FluxConnection(unsat,sat,"Variable sat. zone percolation") {
+				VarLayerPercolationRichards(cmf::upslope::VariableLayerUnsaturated& unsat,cmf::upslope::VariableLayerSaturated& sat) 
+					: FluxConnection(unsat,sat,"Richards like variable layer percolation") {
 						NewNodes();
 				}
 			};
+
+			class VarLayerPercolationSimple : public cmf::water::FluxConnection {
+				cmf::upslope::VariableLayerUnsaturated* m_unsat;
+				cmf::upslope::VariableLayerSaturated* m_sat;
+				virtual real calc_q(cmf::math::Time t);
+				void NewNodes()
+				{
+					m_unsat=dynamic_cast<cmf::upslope::VariableLayerUnsaturated*>(m_left);
+					m_sat=dynamic_cast<cmf::upslope::VariableLayerSaturated*>(m_right);
+				}
+
+			public:
+				real pF_field_cap;
+				/// Creates a connection between unsaturated and saturated zone
+				VarLayerPercolationSimple(cmf::upslope::VariableLayerUnsaturated& unsat,cmf::upslope::VariableLayerSaturated& sat,real _pF_field_cap=1.8) 
+					: FluxConnection(unsat,sat,"Simple variable layer percolation") , pF_field_cap(_pF_field_cap)
+				{
+						NewNodes();
+				}
+
+
+			};
+
 
 			/// Calculates the lateral flow using the gravitational potential gradient only
 			///
@@ -169,7 +192,7 @@ namespace cmf {
 				{
 					NewNodes();
 					if (flow_area==0 && sw2)
-						flow_area=sw1->GetFlowCrosssection(*sw2);
+						flow_area=sw1->get_flow_crosssection(*sw2);
 					if (distance==0)
 						distance=sw1->Location.distance3DTo(sw2->Location);
 				}
@@ -182,10 +205,10 @@ namespace cmf {
 				Richards_lateral(cmf::upslope::SoilWaterStorage& left,cmf::water::FluxNode & right,real FlowWidth=0,real Distance=0)
 					: Richards(left,right,FlowWidth,Distance)
 				{
-					flow_area=left.Thickness()*FlowWidth;
+					flow_area=left.get_thickness()*FlowWidth;
 					if (sw2)
 					{
-						flow_area=minimum(flow_area,sw2->Thickness()*FlowWidth);
+						flow_area=minimum(flow_area,sw2->get_thickness()*FlowWidth);
 					}
 				}
 			};
@@ -211,7 +234,7 @@ namespace cmf {
 				{
 					NewNodes();
 					if (flow_area==0 && sw2)
-						flow_area=sw1->GetFlowCrosssection(*sw2);
+						flow_area=sw1->get_flow_crosssection(*sw2);
 					if (distance==0)
 						distance=sw1->Location.distance3DTo(sw2->Location);
 				}

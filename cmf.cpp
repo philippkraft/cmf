@@ -50,13 +50,15 @@ int main(int argc, char* argv[])
 		Cell& cell=*p.NewCell(0,0,0,100);
 		BrooksCoreyRetentionCurve bc;
 		cell.add_variable_layer_pair(1.,bc);
-		//cell.set_saturated_depth(0.0);
+		//new VarLayerPercolationSimple(FlexibleSizeSaturatedZone::get_from_cell(cell)->UpperLayer(),*FlexibleSizeSaturatedZone::get_from_cell(cell));
+		cell.set_saturated_depth(0.0);
 		PenmanMonteithET::use_for_cell(cell);
-		cmf::atmosphere::meteo_station_pointer meteo=p.meteo_stations.add_station(".sdf,");
+		cmf::atmosphere::meteo_station_pointer meteo=p.meteo_stations.add_station("");
 		meteo->Tmax.add(20);
 		meteo->Tmin.add(10);
 		cell.set_meteorology(MeteoStationReference(meteo,cell));
 		cell.set_saturated_depth(0.5);
+		//cell.get_layer(0).Wetness(bc.Wetness_pF(2.6));
 		Weather w= cell.get_weather(day*0.5);
 
 
@@ -65,10 +67,10 @@ int main(int argc, char* argv[])
 		//cout << "Rain: " << cell.get_transpiration().water_balance(day*0) << "m3/day" << endl;
 		cout << cell.get_transpiration().flux_to(cell.get_layer(0),day*180.5);
 		CVodeIntegrator integ(p,1e-6);
-		while (integ.ModelTime()<day*180)
+		while (integ.ModelTime()<day*1000)
 		{
 			integ.IntegrateUntil(integ.ModelTime() + math::day);
-			cout << integ.ModelTime().ToString() << "w_u=" << cell.get_layer(0).Potential() << " w_s=" << cell.get_layer(1).Potential() << endl;
+			cout << integ.ModelTime().ToString() << "P_u=" << cell.get_layer(0).get_potential() << " P_s=" << cell.get_layer(1).get_potential() << " d_s=" << cell.get_layer(1).get_thickness() << endl;
 		}
 		cin.get();
 		

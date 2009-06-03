@@ -66,9 +66,13 @@ namespace cmf {
 			cmf::geometry::point Location;
 			/// Returns the water potential of the node in m waterhead
 			/// The base class water storage always returns the height of the location
-			virtual real Potential() const
+			virtual real get_potential() const
 			{
 				return Location.z;
+			}
+			virtual void set_potential(real new_potential)
+			{
+				throw std::runtime_error("Potential of "+Name+" is read only");
 			}
 			virtual bool is_empty()
 			{
