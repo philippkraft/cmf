@@ -104,11 +104,22 @@
 
 %immutable cmf::upslope::SoilWaterStorage::cell;
 %include "upslope/SoilWaterStorage.h"
+%attribute(cmf::upslope::SoilWaterStorage,real,gravitational_potential,get_gravitational_potential);
+%attribute(cmf::upslope::SoilWaterStorage,real,matrix_potential,get_matrix_potential);
+%attribute(cmf::upslope::SoilWaterStorage,real,wetness,get_wetness,set_wetness);
+%attribute(cmf::upslope::SoilWaterStorage,real,K,get_K);
+%attribute(cmf::upslope::SoilWaterStorage,real,Ksat,get_Ksat);
+%attribute(cmf::upslope::SoilWaterStorage,real,thickness,get_thickness);
+%attribute(cmf::upslope::SoilWaterStorage,real,lower_boundary,get_lower_boundary);
+%attribute(cmf::upslope::SoilWaterStorage,real,upper_boundary,get_upper_boundary);
+
+
 %extend cmf::upslope::SoilWaterStorage {
   %pythoncode {
-    boundary=property(lambda self:(self.LowerBoundary(),self.UpperBoundary()),None,"Returns the upper and lower boundary of the layer")
+    boundary=property(lambda self:(self.upper_boundary,self.lower_boundary),None,"Returns the upper and lower boundary of the layer")
     def __repr__(self):
         return self.Name
+    pF=property(lambda self:waterhead_to_pF(self.matrix_potential),None,"The actual pF value")
   }
 }
 

@@ -51,12 +51,13 @@
 
 %factory(cmf::water::FluxNode& cmf::upslope::Cell::get_surfacewater,cmf::river::OpenWaterStorage, cmf::water::FluxNode);
 %factory(cmf::water::WaterStorage& cmf::upslope::Cell::get_storage,cmf::river::OpenWaterStorage,cmf::water::WaterStorage);
+%factory(cmf::upslope::SoilWaterStorage& cmf::upslope::Cell::get_layer,cmf::upslope::VariableLayerSaturated,cmf::upslope::VariableLayerUnsaturated,cmf::upslope::SoilWaterStorage);
 
 %attribute2(cmf::upslope::Cell,cmf::upslope::Topology,topology,get_topology);
 %attribute2(cmf::upslope::Cell,cmf::water::FluxNode,evaporation,get_evaporation);
 %attribute2(cmf::upslope::Cell,cmf::water::FluxNode,transpiration,get_transpiration);
 %attribute2(cmf::upslope::Cell,cmf::atmosphere::Meteorology,meteorology,get_meteorology,set_meteorology);
-%attribute2(cmf::upslope::Cell,cmf::atmosphere::RainCloud,rain_cloud,get_rainfall);
+%attribute2(cmf::upslope::Cell,cmf::atmosphere::RainCloud,rain,get_rainfall);
 
 
 %include "upslope/cell.h"
@@ -94,9 +95,15 @@
         """
         if lower_boundary is None:
             lower_boundary=self.soildepth
-        for l in self:
+        for l in self.layers:
             if l.boundary[0]<lower_boundary and l.boundary[1]>upper_boundary:
                 type(l,node,flowwidth,distance).thisown=0
+        
+    def install_connection(self,connection_type):
+        if hasattr(connection_type,"use_for_cell"):
+            connection_type.use_for_cell(self)
+        else:
+            raise TypeError("Only connection types implementing a static use_for_cell function can be used")
     def __hash__(self):
         return hash((self.x,self.y,self.z,self.area,self.Id))
     def __eq__(self,cmp):

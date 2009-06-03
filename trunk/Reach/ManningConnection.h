@@ -22,7 +22,7 @@ namespace cmf {
 			{return *v_to_height;}
 			real h() const {return v_to_height->h(maximum(0,State()));}
 			real wet_area() const {return v_to_height->A(maximum(0,State()));}
-			real Potential() const {return Location.z+h();} 
+			real get_potential() const {return Location.z+h();} 
 			OpenWaterStorage(const cmf::project& _project,real Area) : cmf::water::WaterStorage(_project,0), v_to_height(new cuboid(Area)) {}
 			OpenWaterStorage(const cmf::project& _project,const cmf::river::VolumeHeightRelation& base_geo) : cmf::water::WaterStorage(_project,0), v_to_height(base_geo.copy()) {}
 			static OpenWaterStorage* FromNode(cmf::water::FluxNode& node,real Area);

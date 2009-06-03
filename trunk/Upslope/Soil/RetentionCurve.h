@@ -22,6 +22,13 @@ namespace cmf {
 		public:
 			/// Returns the conductivity in m/day at a certain depth and water content
 			virtual real K(real wetness,real depth) const = 0;
+			/// Returns the effective wetness, using a residual pF value
+			/// \f[w_{eff}  = \frac{w_{act}-w\left(pF_r\right)}{1-w\left(pF_r\right)}\f]
+			virtual real Wetness_eff(real wetness,real pF_r=4.2) const
+			{
+				real w_r=Wetness_pF(pF_r);
+				return (wetness-w_r)/(1-w_r);
+			}
 			/// Returns the porosity at a certain depth
 			virtual real Porosity(real depth) const = 0;
 			/// Returns the void volume of a soil column
@@ -170,7 +177,7 @@ namespace cmf {
 
 		};
 		/// Wrapper of a retention curve. If shared is true, copies of RCurve hold a reference to the first RCurve, otherwise the retention curves are copied
-		class RCurve
+		class RCurve : public RetentionCurve
 		{
 		private:
 			typedef std::tr1::shared_ptr<RetentionCurve> p_r_curve;
@@ -202,6 +209,10 @@ namespace cmf {
 			cmf::upslope::BrooksCoreyRetentionCurve* AsBrooksCorey() const
 			{
 				return dynamic_cast<BrooksCoreyRetentionCurve*>(r_curve.get());
+			}
+			RCurve* copy() const
+			{
+				return new RCurve(*this);
 			}
 			bool shared;
 		};

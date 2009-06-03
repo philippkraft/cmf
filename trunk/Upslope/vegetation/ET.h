@@ -91,7 +91,7 @@ namespace cmf {
 			public:
 				bool daily;
 				PenmanMonteithET(cmf::upslope::SoilWaterStorage& source,cmf::water::FluxNode& ET_target) 
-					: FluxConnection(source,ET_target,"Penman Monteith get_evaporation"),sw(&source) {
+					: FluxConnection(source,ET_target,"Penman Monteith transpiration"),sw(&source) {
 						NewNodes();
 				}
 				static void use_for_cell(cmf::upslope::Cell & cell)

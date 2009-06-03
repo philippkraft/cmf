@@ -37,7 +37,7 @@ namespace cmf {
 		protected:
 			real m_Potential;
 		public:
-			real Potential() const
+			real get_potential() const
 			{
 				return m_Potential;
 			}

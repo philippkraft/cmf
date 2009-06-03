@@ -24,7 +24,7 @@ namespace cmf {
 						real f=0; // Fraction of rainfall to use
 						if (Throughfall) f+=1-veg.CanopyClosure;
 						if (InterceptedRainfall) f+=veg.CanopyClosure;
-						return f*m_cell.rain(t); // Convert mm/day to m3/day
+						return f*m_cell.get_rainfall()(t); 
 					}
 				}
 				void NewNodes() {}
@@ -46,7 +46,7 @@ namespace cmf {
 				{
 					bool snow=(m_cell.get_snow()!=0) && m_cell.get_weather(t).T<cmf::atmosphere::Weather::snow_threshold;
 					if (snow)
-						return m_cell.rain(t); // Convert mm/day to m3/day
+						return m_cell.get_rainfall()(t); // Convert mm/day to m3/day
 					else
 						return 0.0;
 				}
