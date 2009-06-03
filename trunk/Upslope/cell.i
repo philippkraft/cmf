@@ -10,7 +10,7 @@
             elif self.kind=="S":
                 return self.c.get_storage(index)
             else:
-                 ndx=index if index>=0 else self.c.StorageCount()+self.c.LayerCount()+index
+                 ndx=index if index>=0 else self.c.storage_count()+self.c.layer_count()+index
                  lndx=index-self.c.storage_count()
                  if lndx<0:
                      return self.c.get_storage(ndx)
@@ -30,7 +30,7 @@
                     return s
             raise IndexError("No storage %s in %s of %s" % (name,"layers" if self.kind=='L' else "non layer storages" if self.kind=='S' else "storages",self.c))
         def __len__(self):
-            return self.c.LayerCount() if self.kind=='L' else (self.c.StorageCount() if self.kind=='S' else self.c.LayerCount()+self.c.StorageCount())
+            return self.c.layer_count() if self.kind=='L' else (self.c.storage_count() if self.kind=='S' else self.c.layer_count()+self.c.storage_count())
         def __iter__(self):
             for i in range(len(self)):
                 yield self[i]
@@ -49,7 +49,7 @@
 %nodefaultctor cmf::upslope::NeighborIterator;
 
 
-%factory(cmf::water::FluxNode& cmf::upslope::Cell::SurfaceWater,cmf::river::OpenWaterStorage, cmf::water::FluxNode);
+%factory(cmf::water::FluxNode& cmf::upslope::Cell::get_surfacewater,cmf::river::OpenWaterStorage, cmf::water::FluxNode);
 %factory(cmf::water::WaterStorage& cmf::upslope::Cell::get_storage,cmf::river::OpenWaterStorage,cmf::water::WaterStorage);
 
 %attribute2(cmf::upslope::Cell,cmf::upslope::Topology,topology,get_topology);
@@ -74,7 +74,7 @@
     storages=property(lambda c:_cell_object_list(c,'A'),None,"Provides access to all storages of the cell (surface storages and layers)")
     surface_storages=property(lambda c:_cell_object_list(c,'S'),None,"Provides access to all surface storages of the cell, like canopy, snow, surface water etc")
     layers=property(lambda c:_cell_object_list(c,'L'),None,"Provides access to all soil water storages (layers) of the cell")
-    surface_water=property(get_surface_water,None,"Gives access to the surface water, which is either a distributing flux node, or the storage for all surface water")
+    surface_water=property(get_surfacewater,None,"Gives access to the surface water, which is either a distributing flux node, or the storage for all surface water")
     canopy=property(get_canopy,None,"The canopy water storage of the cell, if it exists")
     snow=property(get_snow,None,"The snow pack of the cell, if a storage for the snow exists")
     saturated_depth=property(get_saturated_depth,set_saturated_depth,"Gets or sets the saturated depth of a cell, if setting each layer of the cell will get a new water content")
@@ -113,6 +113,7 @@
 }
 
 %template(cell_vector) std::vector<cmf::upslope::Cell*>;
+
 %include "upslope/algorithm.h"
 %echo "Cell OK!";
 

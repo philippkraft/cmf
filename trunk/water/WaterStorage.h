@@ -29,7 +29,7 @@ namespace cmf {
 			SoluteStorageMap m_Concentrations;
 			void initializeSoluteStorages();
 		public:
-			virtual bool IsStorage() const {return true;}
+			virtual bool is_storage() const {return true;}
 			void AddStateVariables(cmf::math::StateVariableVector& vector);
 			/// creates a water storage (abstract class)
 			/// @param InitialState Initial water content in m<sup>3</sup>
@@ -65,12 +65,12 @@ namespace cmf {
 				return Name;
 			}
 			virtual real Derivate(const cmf::math::Time& time) {
-				return Waterbalance(time);
+				return water_balance(time);
 			}
 			///@name Overrides of FluxNode
 			//@{
 			virtual bool RecalcFluxes(cmf::math::Time t) {return StateIsChanged();}
-			virtual bool Empty() {return State()<=0;}
+			virtual bool is_empty() {return State()<=0;}
 			virtual WaterStorage* copy() const
 			{
 				return new WaterStorage(*this);

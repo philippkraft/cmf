@@ -6,6 +6,7 @@
 	#include "water/SoluteStorage.h"
 	#include "water/WaterStorage.h"
 	#include "water/FluxConnection.h"
+    #include "water/boundary_condition.h"
 %}
 // Include Water
 %include "water/Solute.h"
@@ -23,6 +24,7 @@ namespace cmf{namespace water {class FluxConnection;}}
 %pythonappend cmf::water::FluxConnection::FluxConnection{
     self.thisown=0
 }
+%include "water/FluxNode.h"
 %include "water/FluxConnection.h"
 %extend cmf::water::FluxConnection { %pythoncode {
     def __repr__(self):
@@ -35,18 +37,16 @@ namespace cmf{namespace water {class FluxConnection;}}
     def __contains__(self,cmp):
         return cmp==self[0] or cmp==self[1]
 }}
-%extend cmf::water::FluxNode { %pythoncode {
+%extend cmf::water::FluxNode { 
+%pythoncode {
     def __repr__(self):
         return self.Name
     def fluxes(self,t):
-        for con in self.Connections():
-            yield (con.q(self,t),con.Target(self))
-    def connections(self):
-        for con in self.Connections():
-            yield con.Target(self)
-}}
+        return [(con.q(self,t),con.Target(self)) for con in self.Connections()]
+  }
+}
 
-
+%include "water/boundary_condition.h"
 // WaterStorage
 %newobject cmf::water::WaterStorage::FromNode;
 %include "water/WaterStorage.h"

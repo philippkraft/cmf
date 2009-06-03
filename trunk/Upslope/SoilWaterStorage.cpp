@@ -171,6 +171,16 @@ real cmf::upslope::FlexibleSizeSaturatedZone::MaximumThickness() const
 {
 	return LowerBoundary() - (upperLayer ? upperLayer->UpperBoundary() : 0.0) - unsat_min_thick;
 }
+
+real cmf::upslope::FlexibleSizeSaturatedZone::Potential() const
+{
+	if (Thickness()>0)
+		return cell.z-UpperBoundary();
+	else if (upperLayer)
+		return upperLayer->Potential();
+	else
+		return cell.z-LowerBoundary();
+}
 cmf::upslope::FlexibleSizeLayer::FlexibleSizeLayer(cmf::upslope::Cell & cell,real upperboundary,real lowerboundary,const RCurve & r_curve,cmf::upslope::FlexibleSizeSaturatedZone* LayerBelow ) 
 : SoilWaterStorage(cell,upperboundary,lowerboundary,r_curve,cell.layer_count()-1),belowLayer(LayerBelow)
 {	

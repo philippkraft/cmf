@@ -14,7 +14,7 @@ namespace cmf {
 		{
 		private:
 			friend class cmf::upslope::Cell;
-			RainCloud(const cmf::upslope::Cell _cell) 
+			RainCloud(const cmf::upslope::Cell& _cell) 
 				: cmf::water::NeumannBoundary(_cell.project(),0.0,cmf::water::SoluteTimeseries(),cmf::geometry::point(_cell.x,_cell.y,_cell.z+100)), cell(_cell)
 			{	 }
 			const cmf::upslope::Cell& cell;

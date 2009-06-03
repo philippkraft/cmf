@@ -4,21 +4,34 @@
 #include "../math/timeseries.h"
 namespace cmf {
 	namespace water {
+
+		/// A linear scaling functor, with slope and displacement
 		class linear_scale
 		{
 		public:
+			/// Displacement of the scale ($b$ in scale function)
 			real displacement;
+			/// Slope of the scale ($a$ in scale function)
 			real slope;
+			/// Returns the scaled value $y_{scale}=a\ y+b$
 			real operator()(real value)	const
 			{
 				return value*slope+displacement;
 			}
+			/// Creates a linear scale (by default it is a unity scale, $a=1; b=0$)
 			linear_scale(real _slope=1,real _displacement=0)
 				: slope(_slope),displacement(_displacement)
 			{
 
 			}
 		};
+
+		/// Drichelet (constant head) boundary condition
+		///
+		/// This boundary condition can be used either as a pure sink boundary condition or as a conditional source / sink boundary condition.
+		/// The constant head of the boundary condition is interpreted and handled by the connections of the boundary condition. 
+		/// Not head aware connections, should not be used, since they are ignoring the constant head.
+
 		class DricheletBoundary : public cmf::water::FluxNode
 		{
 		protected:
@@ -29,7 +42,7 @@ namespace cmf {
 				return m_Potential;
 			}
 			bool is_source;
-			bool Empty() const
+			bool is_empty() const
 			{
 				return !is_source;
 			}
@@ -64,14 +77,18 @@ namespace cmf {
 			/// Returns the flux at a given time
 			real operator()(cmf::math::Time t) const
 			{
-				if (flux.isempty())
+				if (flux.is_empty())
 					return 0.0;
 				else
 					return scale_function(flux[t]);
 			}
-			bool Empty() const
+			bool is_empty() const
 			{
-				return flux.isempty();
+				return flux.is_empty();
+			}
+			bool RecalcFluxes(cmf::math::Time t) 
+			{
+				return true;
 			}
 			
 			/// Ctor of the Neumann boundary
@@ -80,10 +97,13 @@ namespace cmf {
 			/// @param _concentration The concentration timeseries
 			/// @param loc The location of the boundary condition
 			NeumannBoundary(const cmf::project& _project, cmf::math::timeseries _flux=0.0,cmf::water::SoluteTimeseries _concentration=cmf::water::SoluteTimeseries(),cmf::geometry::point loc=cmf::geometry::point()) 
-				: cmf::water::FluxNode(_project,loc), flux(flux),concentration(_concentration) {}
+				: cmf::water::FluxNode(_project,loc), flux(_flux),concentration(_concentration)
+			{
+
+			}
 		};
 		
-			class NeumannFlux : public cmf::water::FluxConnection
+		class NeumannFlux : public cmf::water::FluxConnection
 		{
 		protected:
 			NeumannBoundary* m_bc;
@@ -94,12 +114,17 @@ namespace cmf {
 			real calc_q(cmf::math::Time t)
 			{
 				real f=(*m_bc)(t);
-				if (f<0 && m_right->Empty())
+				if (f<0 && m_right->is_empty())
 					return 0.0;
 				else
 					return f;
 			}
 		public:
+			NeumannFlux(NeumannBoundary& left,FluxNode& right)
+				: FluxConnection(left,right,"Neumann boundary flux")
+			{
+				NewNodes();
+			}
 			
 		};
 

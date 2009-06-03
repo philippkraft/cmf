@@ -7,7 +7,7 @@ real cmf::upslope::connections::MatrixInfiltration::calc_q( cmf::math::Time t )
 {
 	real
 		f_Ponding=square(piecewise_linear(m_soilwater->Wetness(),0.95,1)),	// Ponding factor (0 complete infiltration,	1 only ponding)
-		sw_b=maximum(m_soilwater->Waterbalance(t,this),0),													// Positive soil water balance
+		sw_b=maximum(m_soilwater->water_balance(t,this),0),													// Positive soil water balance
 		Pot_surf=m_surfacewater->Potential(),																				// Potential of the surface water				
 		Pot_soil=m_soilwater->Potential(),																					// Potential of the soil water
 		gradient=(Pot_surf-Pot_soil)/(0.5*m_soilwater->Thickness()),								// Gradient surface->soil
@@ -26,7 +26,7 @@ real cmf::upslope::connections::MatrixInfiltration::calc_q( cmf::math::Time t )
 		inflow=(1-f_wb) * m_soilwater->Ksat()*m_soilwater->cell.get_area();		// get the state dependend outflow
 	}
 	//else // inflow is the sum of the inflows to surface water
-	inflow += f_wb * m_surfacewater->Waterbalance(t,this);							// get the inflow dependent outflow
+	inflow += f_wb * m_surfacewater->water_balance(t,this);							// get the inflow dependent outflow
 
 	return minimum(maxInfiltration,inflow);
 }
@@ -34,7 +34,7 @@ real cmf::upslope::connections::CompleteInfiltration::calc_q( cmf::math::Time t 
 {
 	real
 		f_Ponding=square(piecewise_linear(m_soilwater->Wetness(),0.95,1)),	// Ponding factor (0 complete infiltration,	1 only ponding)
-		sw_b=maximum(m_soilwater->Waterbalance(t,this),0),									// Positive soil water balance
+		sw_b=maximum(m_soilwater->water_balance(t,this),0),									// Positive soil water balance
 		K=m_soilwater->Ksat(),																							// Conductivity in m/day
 
 		maxInfiltration = 
@@ -50,6 +50,6 @@ real cmf::upslope::connections::CompleteInfiltration::calc_q( cmf::math::Time t 
 		inflow=(1-f_wb) * m_soilwater->Ksat()*m_soilwater->cell.get_area();		// get the state dependend outflow
 	}
 	//else // inflow is the sum of the inflows to surface water
-	inflow += f_wb * m_surfacewater->Waterbalance(t,this);							// get the inflow dependent outflow
+	inflow += f_wb * m_surfacewater->water_balance(t,this);							// get the inflow dependent outflow
 	return minimum(maxInfiltration,inflow);	
 }

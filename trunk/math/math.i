@@ -34,6 +34,12 @@ namespace std {
 	%template(svVector) vector<cmf::math::StateVariable*>; 
 }
 //%attribute(cmf::math:StateVariable,double,s,State);
+
+%implicitconv cmf::math::Time;
+%implicitconv cmf::math::Date;
+%naturalvar cmf::math::timeseries;
+%implicitconv cmf::math::timeseries;
+
 %include "math/StateVariable.h"
 %include "math/Integrators/Integrator.h"
 %include "math/Integrators/BDF2.h"
@@ -60,14 +66,14 @@ namespace std {
        dt=property(TimeStep,None,"Gets the length of the last internal time step of the integrator")
    }
 }
-%implicitconv cmf::math::Time;
-%implicitconv cmf::math::Date;
-
 %extend cmf::math::Time {
     %pythoncode 
     {
     def __repr__(self):
-        return self.ToString()
+        if self>year*40:
+            return self.AsDate().ToString()
+        else:
+            return self.ToString()
     def AsPython(self):
         d=self.AsDate()
         return datetime.datetime(d.year,d.month,d.day,d.hour,d.minute,d.second,d.ms*1000)
@@ -83,6 +89,14 @@ namespace std {
         return datetime.datetime(self.year,self.month,self.day,self.hour,self.minute,self.second,self.ms*1000)
     }
 }
+
+%extend cmf::math::Integrator { %pythoncode {
+    def run(self,start=day*0,end=day*1,step=day*1):
+        self.t=start
+        while self.t<end:
+            self(self.t+step)
+            yield self.t
+}}        
 
 %pythoncode {
 def AsCMFtime(date):

@@ -165,37 +165,7 @@
             yield (self.reach,self.position)
 }}
 %echo "cmf::river OK!";
-
-// Project
-%rename(connect_cells_with_flux) cmf::connect_cells_with_flux;
-%include "project.h"
-%extend cmf::project {
-%pythoncode {
-    @property
-    def cells(self):
-        for i in range(self.CellCount()):
-            yield self.Cell(i)
-    @property 
-    def boundary_conditions(self):
-        it=bc_iterator(self)
-        while it.valid():
-            yield it.next()
-    def __iter__(self):
-        return self.cells
-    def __len__(self):
-        return self.CellCount()
-    def __getitem__(self,index):
-        if isinstance(index,slice):
-            return [self.Cell(i) for i in range(*index.indices(len(p)))]
-        return self.Cell(index)
-    def cell_list(self,expression='True'):
-        res=[]
-        f=lambda cell:eval(expression)
-        for cell in self.cells():
-            if f(cell):
-                res.append(cell)
-        return res
-}}
+%include "project.i"
 
 %echo "cmf::project OK!";
 
@@ -214,6 +184,8 @@
         f=lambda layer:eval(expr)
         for l in layers:
             yield f(l)
+
+    cell_vector.__repr__=lambda cv:"list of %i cells. first:%s, last: %s" % ((cv.size(),cv[0],cv[-1]) if len(cv) else (cv.size(),"None","None"))
 }            
 
 

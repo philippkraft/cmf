@@ -14,7 +14,7 @@ real cmf::upslope::connections::CanopyOverflow::calc_q( cmf::math::Time t )
 
 real cmf::upslope::connections::HBVSnowMelt::calc_q( cmf::math::Time t )
 {
-	if (m_Snow->Empty())
+	if (m_Snow->is_empty())
 		return 0.0;
 	else 
 	{
@@ -25,7 +25,7 @@ real cmf::upslope::connections::HBVSnowMelt::calc_q( cmf::math::Time t )
 			real f=piecewise_linear(m_Snow->State()/m_cell.get_area(),0,0.001);
 			return f*SnowMeltRate*(T-ThresholdTemp)*m_cell.get_area()*0.001;
 		}
-		else if (m_SnowWater->Empty())
+		else if (m_SnowWater->is_empty())
 			return 0.0;
 		else
 			return RefreezeRate*SnowMeltRate*(T-ThresholdTemp)*m_cell.get_area()*0.001;
@@ -34,9 +34,9 @@ real cmf::upslope::connections::HBVSnowMelt::calc_q( cmf::math::Time t )
 
 real cmf::upslope::connections::SnowWaterOverflow::calc_q( cmf::math::Time t )
 {
-	if (m_SnowWater->Empty()) 
+	if (m_SnowWater->is_empty()) 
 		return 0.0;
-	else if (m_Snow->Empty())
+	else if (m_Snow->is_empty())
 		return SnowConductivity;
 	else
 	{
