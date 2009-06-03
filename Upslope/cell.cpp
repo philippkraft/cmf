@@ -47,17 +47,17 @@ real cmf::upslope::Cell::get_saturated_depth()
 	if (m_SatDepth!=-10000)
 	{
 		//m_SatDepth=get_layer(0).get_saturated_depth();
-		m_SatDepth=get_layer(-1).LowerBoundary();
+		m_SatDepth=get_layer(-1).get_lower_boundary();
 		for(layer_vector::reverse_iterator it = m_Layers.rbegin(); it != m_Layers.rend(); ++it)
 		{
 			SoilWaterStorage& l=**it;
-			if (l.Wetness()>=1)
+			if (l.get_wetness()>=1)
 			{
-				m_SatDepth=l.UpperBoundary();
+				m_SatDepth=l.get_upper_boundary();
 			}
 			else
 			{
-				m_SatDepth=minimum(m_SatDepth,l.UpperBoundary()-l.MatrixPotential());
+				m_SatDepth=minimum(m_SatDepth,l.get_upper_boundary()-l.get_matrix_potential());
 				//return m_SatDepth;
 			}
 		}
@@ -88,7 +88,7 @@ void cmf::upslope::Cell::add_layer(real lowerboundary,const cmf::upslope::RCurve
 }
 void cmf::upslope::Cell::add_variable_layer_pair(real lowerboundary,const cmf::upslope::RCurve& r_curve )
 {
-	FlexibleSizeSaturatedZone::Create(*this,lowerboundary,r_curve);
+	VariableLayerSaturated::Create(*this,lowerboundary,r_curve);
 }
 cmf::upslope::vegetation::Vegetation cmf::upslope::Cell::get_vegetation() const
 {
@@ -115,7 +115,7 @@ void cmf::upslope::Cell::remove_last_layer()
 {
 	cmf::upslope::SoilWaterStorage* lastlayer=&get_layer(-1);
 	m_Layers.pop_back();
-	FlexibleSizeSaturatedZone *pLayer = dynamic_cast<FlexibleSizeSaturatedZone *>(lastlayer);
+	VariableLayerSaturated *pLayer = dynamic_cast<VariableLayerSaturated *>(lastlayer);
 	if(pLayer)
 	{
 		delete pLayer;
@@ -130,10 +130,6 @@ const cmf::project& cmf::upslope::Cell::project() const
 return m_project;
 }
 
-real cmf::upslope::Cell::rain( cmf::math::Time t ) const
-{
-	return get_rainfall()(t);
-}
 
 cmf::water::WaterStorage& cmf::upslope::Cell::add_storage( std::string Name,char storage_role/*='N'*/, bool isopenwater/*=false*/ )
 {
@@ -177,7 +173,7 @@ void cmf::upslope::Cell::set_saturated_depth( real depth )
 {
 	for (int i = 0; i < layer_count() ; ++i)
 	{
-		get_layer(i).SetPotential(z-depth);
+		get_layer(i).set_potential(z-depth);
 	}
 }
 

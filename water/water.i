@@ -20,6 +20,7 @@ namespace cmf{namespace water {class FluxConnection;}}
 %template(connection_set) std::set<cmf::water::FluxConnection*>;
 %template(node_vector) std::vector<cmf::water::FluxNode*>;
 %factory(cmf::water::FluxNode& cmf::water::FluxConnection::Target,cmf::atmosphere::RainCloud,cmf::river::OpenWaterStorage,cmf::upslope::SoilWaterStorage,cmf::water::WaterStorage,cmf::water::FluxNode);
+%attribute(cmf::water::FluxNode,real,potential,get_potential,set_potential);
 
 %pythonappend cmf::water::FluxConnection::FluxConnection{
     self.thisown=0

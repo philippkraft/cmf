@@ -7,7 +7,7 @@ real cmf::river::Manning::calc_q( cmf::math::Time t )
 		// Distance between source and target
 		d=distance,
 		// Gradient of the reach
-		slope=(m_left->Potential()-m_right->Potential())/d,
+		slope=(m_left->get_potential()-m_right->get_potential())/d,
 		abs_slope=abs(slope)-1e-5;
 
 	if (abs_slope<=0) return 0.0;

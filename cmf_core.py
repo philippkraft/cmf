@@ -2160,11 +2160,11 @@ class Integrator(object):
     t=property(ModelTime,ModelTime,"Gets or sets the model time of the integrator")
     dt=property(TimeStep,None,"Gets the length of the last internal time step of the integrator")
 
-    def run(self,start=day*0,end=day*1,step=min*10):
+    def run(self,start=day*0,end=day*1,step=day*1):
         self.t=start
         while self.t<end:
             self(self.t+step)
-            yield integ.t
+            yield self.t
 
     __swig_destroy__ = _cmf_core.delete_Integrator
 Integrator.count = new_instancemethod(_cmf_core.Integrator_count,None,Integrator)
@@ -3532,18 +3532,6 @@ class FluxNode(object):
         return _cmf_core.FluxNode_conc(self, *args)
 
     Location = _swig_property(_cmf_core.FluxNode_Location_get, _cmf_core.FluxNode_Location_set)
-    def Potential(self):
-        """
-        Potential(self) -> real
-
-        virtual real
-        Potential()
-
-        Returns the water potential of the node in m waterhead The base class
-        water storage always returns the height of the location. 
-        """
-        return _cmf_core.FluxNode_Potential(self)
-
     def is_empty(self):
         """is_empty(self) -> bool"""
         return _cmf_core.FluxNode_is_empty(self)
@@ -3563,6 +3551,7 @@ class FluxNode(object):
         """
         return _cmf_core.FluxNode_copy(self)
 
+    potential = _swig_property(_cmf_core.FluxNode_potential_get, _cmf_core.FluxNode_potential_set)
     def __repr__(self):
         return self.Name
     def fluxes(self,t):
@@ -3582,7 +3571,6 @@ FluxNode.remove_connection = new_instancemethod(_cmf_core.FluxNode_remove_connec
 FluxNode.flux_to = new_instancemethod(_cmf_core.FluxNode_flux_to,None,FluxNode)
 FluxNode.water_balance = new_instancemethod(_cmf_core.FluxNode_water_balance,None,FluxNode)
 FluxNode.conc = new_instancemethod(_cmf_core.FluxNode_conc,None,FluxNode)
-FluxNode.Potential = new_instancemethod(_cmf_core.FluxNode_Potential,None,FluxNode)
 FluxNode.is_empty = new_instancemethod(_cmf_core.FluxNode_is_empty,None,FluxNode)
 FluxNode.copy = new_instancemethod(_cmf_core.FluxNode_copy,None,FluxNode)
 FluxNode.AsStorage = new_instancemethod(_cmf_core.FluxNode_AsStorage,None,FluxNode)
@@ -4475,10 +4463,6 @@ class Cell(StateVariableOwner,Locatable):
         """get_weather(self, Time t) -> Weather"""
         return _cmf_core.Cell_get_weather(self, *args)
 
-    def rain(self, *args):
-        """rain(self, Time t) -> real"""
-        return _cmf_core.Cell_rain(self, *args)
-
     def layer_count(self):
         """layer_count(self) -> int"""
         return _cmf_core.Cell_layer_count(self)
@@ -4526,7 +4510,7 @@ class Cell(StateVariableOwner,Locatable):
     evaporation = _swig_property(_cmf_core.Cell_evaporation_get)
     transpiration = _swig_property(_cmf_core.Cell_transpiration_get)
     meteorology = _swig_property(_cmf_core.Cell_meteorology_get, _cmf_core.Cell_meteorology_set)
-    rain_cloud = _swig_property(_cmf_core.Cell_rain_cloud_get)
+    rain = _swig_property(_cmf_core.Cell_rain_get)
     @property
     def neighbors(self):
         c_iter=NeighborIterator(self)
@@ -4559,6 +4543,12 @@ class Cell(StateVariableOwner,Locatable):
         for l in self:
             if l.boundary[0]<lower_boundary and l.boundary[1]>upper_boundary:
                 type(l,node,flowwidth,distance).thisown=0
+        
+    def install_connection(self,connection_type):
+        if hasattr(connection_type,"use_for_cell"):
+            connection_type.use_for_cell(self)
+        else:
+            raise ArgumentException("Only connection types implementing a static use_for_cell function can be used")
     def __hash__(self):
         return hash((self.x,self.y,self.z,self.area,self.Id))
     def __eq__(self,cmp):
@@ -4588,7 +4578,6 @@ Cell.get_vegetation = new_instancemethod(_cmf_core.Cell_get_vegetation,None,Cell
 Cell.set_vegetation = new_instancemethod(_cmf_core.Cell_set_vegetation,None,Cell)
 Cell.project = new_instancemethod(_cmf_core.Cell_project,None,Cell)
 Cell.get_weather = new_instancemethod(_cmf_core.Cell_get_weather,None,Cell)
-Cell.rain = new_instancemethod(_cmf_core.Cell_rain,None,Cell)
 Cell.layer_count = new_instancemethod(_cmf_core.Cell_layer_count,None,Cell)
 Cell.get_layer = new_instancemethod(_cmf_core.Cell_get_layer,None,Cell)
 Cell.add_layer = new_instancemethod(_cmf_core.Cell_add_layer,None,Cell)
@@ -4947,6 +4936,13 @@ class RetentionCurve(object):
         """
         return _cmf_core.RetentionCurve_K(self, *args)
 
+    def Wetness_eff(self, *args):
+        """
+        Wetness_eff(self, real wetness, real pF_r = 4.2) -> real
+        Wetness_eff(self, real wetness) -> real
+        """
+        return _cmf_core.RetentionCurve_Wetness_eff(self, *args)
+
     def Porosity(self, *args):
         """
         Porosity(self, real depth) -> real
@@ -5034,6 +5030,7 @@ class RetentionCurve(object):
 
     __swig_destroy__ = _cmf_core.delete_RetentionCurve
 RetentionCurve.K = new_instancemethod(_cmf_core.RetentionCurve_K,None,RetentionCurve)
+RetentionCurve.Wetness_eff = new_instancemethod(_cmf_core.RetentionCurve_Wetness_eff,None,RetentionCurve)
 RetentionCurve.Porosity = new_instancemethod(_cmf_core.RetentionCurve_Porosity,None,RetentionCurve)
 RetentionCurve.VoidVolume = new_instancemethod(_cmf_core.RetentionCurve_VoidVolume,None,RetentionCurve)
 RetentionCurve.FillHeight = new_instancemethod(_cmf_core.RetentionCurve_FillHeight,None,RetentionCurve)
@@ -5248,38 +5245,10 @@ VanGenuchtenMualem.copy = new_instancemethod(_cmf_core.VanGenuchtenMualem_copy,N
 VanGenuchtenMualem_swigregister = _cmf_core.VanGenuchtenMualem_swigregister
 VanGenuchtenMualem_swigregister(VanGenuchtenMualem)
 
-class RCurve(object):
+class RCurve(RetentionCurve):
     """Proxy of C++ cmf::upslope::RCurve class"""
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
     __repr__ = _swig_repr
-    def Wetness(self, *args):
-        """Wetness(self, real suction) -> real"""
-        return _cmf_core.RCurve_Wetness(self, *args)
-
-    def MatricPotential(self, *args):
-        """MatricPotential(self, real wetness) -> real"""
-        return _cmf_core.RCurve_MatricPotential(self, *args)
-
-    def K(self, *args):
-        """K(self, real wetness, real depth) -> real"""
-        return _cmf_core.RCurve_K(self, *args)
-
-    def VoidVolume(self, *args):
-        """VoidVolume(self, real upperDepth, real lowerDepth, real Area) -> real"""
-        return _cmf_core.RCurve_VoidVolume(self, *args)
-
-    def Transmissivity(self, *args):
-        """Transmissivity(self, real upperDepth, real lowerDepth, real wetness) -> real"""
-        return _cmf_core.RCurve_Transmissivity(self, *args)
-
-    def Porosity(self, *args):
-        """Porosity(self, real depth) -> real"""
-        return _cmf_core.RCurve_Porosity(self, *args)
-
-    def FillHeight(self, *args):
-        """FillHeight(self, real lowerDepth, real Area, real Volume) -> real"""
-        return _cmf_core.RCurve_FillHeight(self, *args)
-
     def __init__(self, *args): 
         """
         __init__(self, RetentionCurve forcopy, bool Shared = False) -> RCurve
@@ -5297,17 +5266,20 @@ class RCurve(object):
         """AsBrooksCorey(self) -> BrooksCoreyRetentionCurve"""
         return _cmf_core.RCurve_AsBrooksCorey(self)
 
+    def copy(self):
+        """
+        copy(self) -> RCurve
+
+        virtual
+        RetentionCurve* copy() const =0 
+        """
+        return _cmf_core.RCurve_copy(self)
+
     shared = _swig_property(_cmf_core.RCurve_shared_get, _cmf_core.RCurve_shared_set)
     __swig_destroy__ = _cmf_core.delete_RCurve
-RCurve.Wetness = new_instancemethod(_cmf_core.RCurve_Wetness,None,RCurve)
-RCurve.MatricPotential = new_instancemethod(_cmf_core.RCurve_MatricPotential,None,RCurve)
-RCurve.K = new_instancemethod(_cmf_core.RCurve_K,None,RCurve)
-RCurve.VoidVolume = new_instancemethod(_cmf_core.RCurve_VoidVolume,None,RCurve)
-RCurve.Transmissivity = new_instancemethod(_cmf_core.RCurve_Transmissivity,None,RCurve)
-RCurve.Porosity = new_instancemethod(_cmf_core.RCurve_Porosity,None,RCurve)
-RCurve.FillHeight = new_instancemethod(_cmf_core.RCurve_FillHeight,None,RCurve)
 RCurve.AsVanGenuchten = new_instancemethod(_cmf_core.RCurve_AsVanGenuchten,None,RCurve)
 RCurve.AsBrooksCorey = new_instancemethod(_cmf_core.RCurve_AsBrooksCorey,None,RCurve)
+RCurve.copy = new_instancemethod(_cmf_core.RCurve_copy,None,RCurve)
 RCurve_swigregister = _cmf_core.RCurve_swigregister
 RCurve_swigregister(RCurve)
 
@@ -5322,101 +5294,56 @@ class SoilWaterStorage(WaterStorage):
     __repr__ = _swig_repr
     Position = _swig_property(_cmf_core.SoilWaterStorage_Position_get)
     cell = _swig_property(_cmf_core.SoilWaterStorage_cell_get)
-    def UpperBoundary(self):
+    def get_upper_boundary(self):
+        """get_upper_boundary(self) -> real"""
+        return _cmf_core.SoilWaterStorage_get_upper_boundary(self)
+
+    def get_lower_boundary(self):
+        """get_lower_boundary(self) -> real"""
+        return _cmf_core.SoilWaterStorage_get_lower_boundary(self)
+
+    def get_thickness(self):
+        """get_thickness(self) -> real"""
+        return _cmf_core.SoilWaterStorage_get_thickness(self)
+
+    def get_soil(self, *args):
         """
-        UpperBoundary(self) -> double
-
-        virtual double UpperBoundary() const
-
-        Returns the upper boundary of the water storage below ground in m. 
+        get_soil(self) -> RCurve
+        get_soil(self) -> RCurve
         """
-        return _cmf_core.SoilWaterStorage_UpperBoundary(self)
+        return _cmf_core.SoilWaterStorage_get_soil(self, *args)
 
-    def LowerBoundary(self):
-        """
-        LowerBoundary(self) -> double
+    def get_theta(self):
+        """get_theta(self) -> real"""
+        return _cmf_core.SoilWaterStorage_get_theta(self)
 
-        virtual double LowerBoundary() const
+    def set_theta(self, *args):
+        """set_theta(self, real Value)"""
+        return _cmf_core.SoilWaterStorage_set_theta(self, *args)
 
-        Returns the lower boundary of the water storage below ground in m. 
-        """
-        return _cmf_core.SoilWaterStorage_LowerBoundary(self)
+    def get_K(self):
+        """get_K(self) -> real"""
+        return _cmf_core.SoilWaterStorage_get_K(self)
 
-    def Thickness(self):
-        """
-        Thickness(self) -> double
+    def get_Ksat(self):
+        """get_Ksat(self) -> real"""
+        return _cmf_core.SoilWaterStorage_get_Ksat(self)
 
-        double Thickness() const 
-        """
-        return _cmf_core.SoilWaterStorage_Thickness(self)
+    def get_wetness(self):
+        """get_wetness(self) -> real"""
+        return _cmf_core.SoilWaterStorage_get_wetness(self)
 
-    def Soil(self, *args):
-        """
-        Soil(self) -> RCurve
-        Soil(self) -> RCurve
+    def set_wetness(self, *args):
+        """set_wetness(self, real wetness)"""
+        return _cmf_core.SoilWaterStorage_set_wetness(self, *args)
 
-        virtual
-        RetentionCurve& Soil() 
-        """
-        return _cmf_core.SoilWaterStorage_Soil(self, *args)
+    def get_matrix_potential(self):
+        """get_matrix_potential(self) -> real"""
+        return _cmf_core.SoilWaterStorage_get_matrix_potential(self)
 
-    def theta(self, *args):
-        """
-        theta(self) -> real
-        theta(self, real Value)
-
-        virtual
-        void theta(real Value) 
-        """
-        return _cmf_core.SoilWaterStorage_theta(self, *args)
-
-    def K(self):
-        """
-        K(self) -> double
-
-        double K()
-        const
-
-        Returns the actual conductivity $\\frac{m}{day}$. 
-        """
-        return _cmf_core.SoilWaterStorage_K(self)
-
-    def Ksat(self):
-        """Ksat(self) -> double"""
-        return _cmf_core.SoilWaterStorage_Ksat(self)
-
-    def Wetness(self, *args):
-        """
-        Wetness(self) -> double
-        Wetness(self, double wetness)
-
-        virtual double Wetness() const
-
-        Returns the wetness of the soil $ \\frac{V_{H_2O}}{V_{pores}} $. 
-        """
-        return _cmf_core.SoilWaterStorage_Wetness(self, *args)
-
-    def MatrixPotential(self):
-        """
-        MatrixPotential(self) -> real
-
-        virtual real MatrixPotential() const
-
-        Calls RetentionCurve::Matrixpotential. 
-        """
-        return _cmf_core.SoilWaterStorage_MatrixPotential(self)
-
-    def GravitationalPotential(self):
-        """
-        GravitationalPotential(self) -> real
-
-        real
-        GravitationalPotential() const
-
-        Gravitational Potential in m, reference height is sea level \\[
-        \\Psi_G=h \\]. 
-        """
-        return _cmf_core.SoilWaterStorage_GravitationalPotential(self)
+    def get_gravitational_potential(self):
+        """get_gravitational_potential(self) -> real"""
+        return _cmf_core.SoilWaterStorage_get_gravitational_potential(self)
 
     def Capacity(self):
         """
@@ -5428,26 +5355,16 @@ class SoilWaterStorage(WaterStorage):
         """
         return _cmf_core.SoilWaterStorage_Capacity(self)
 
-    def SetPotential(self, *args):
-        """
-        SetPotential(self, real waterhead)
+    def get_saturated_depth(self):
+        """get_saturated_depth(self) -> real"""
+        return _cmf_core.SoilWaterStorage_get_saturated_depth(self)
 
-        void SetPotential(real waterhead)
-
-        Sets the potential of this soil water storage. 
+    def get_flow_crosssection(self, *args):
         """
-        return _cmf_core.SoilWaterStorage_SetPotential(self, *args)
-
-    def SaturatedDepth(self):
-        """SaturatedDepth(self) -> real"""
-        return _cmf_core.SoilWaterStorage_SaturatedDepth(self)
-
-    def GetFlowCrosssection(self, *args):
+        get_flow_crosssection(self, SoilWaterStorage target, bool HorizontalLayers = False) -> real
+        get_flow_crosssection(self, SoilWaterStorage target) -> real
         """
-        GetFlowCrosssection(self, SoilWaterStorage target, bool HorizontalLayers = False) -> real
-        GetFlowCrosssection(self, SoilWaterStorage target) -> real
-        """
-        return _cmf_core.SoilWaterStorage_GetFlowCrosssection(self, *args)
+        return _cmf_core.SoilWaterStorage_get_flow_crosssection(self, *args)
 
     def copy(self):
         """
@@ -5465,25 +5382,34 @@ class SoilWaterStorage(WaterStorage):
         return _cmf_core.SoilWaterStorage_Create(*args)
 
     Create = staticmethod(Create)
-    boundary=property(lambda self:(self.LowerBoundary(),self.UpperBoundary()),None,"Returns the upper and lower boundary of the layer")
+    gravitational_potential = _swig_property(_cmf_core.SoilWaterStorage_gravitational_potential_get)
+    matrix_potential = _swig_property(_cmf_core.SoilWaterStorage_matrix_potential_get)
+    wetness = _swig_property(_cmf_core.SoilWaterStorage_wetness_get, _cmf_core.SoilWaterStorage_wetness_set)
+    K = _swig_property(_cmf_core.SoilWaterStorage_K_get)
+    Ksat = _swig_property(_cmf_core.SoilWaterStorage_Ksat_get)
+    thickness = _swig_property(_cmf_core.SoilWaterStorage_thickness_get)
+    lower_boundary = _swig_property(_cmf_core.SoilWaterStorage_lower_boundary_get)
+    upper_boundary = _swig_property(_cmf_core.SoilWaterStorage_upper_boundary_get)
+    boundary=property(lambda self:(self.upper_boundary,self.lower_boundary),None,"Returns the upper and lower boundary of the layer")
     def __repr__(self):
         return self.Name
 
     __swig_destroy__ = _cmf_core.delete_SoilWaterStorage
-SoilWaterStorage.UpperBoundary = new_instancemethod(_cmf_core.SoilWaterStorage_UpperBoundary,None,SoilWaterStorage)
-SoilWaterStorage.LowerBoundary = new_instancemethod(_cmf_core.SoilWaterStorage_LowerBoundary,None,SoilWaterStorage)
-SoilWaterStorage.Thickness = new_instancemethod(_cmf_core.SoilWaterStorage_Thickness,None,SoilWaterStorage)
-SoilWaterStorage.Soil = new_instancemethod(_cmf_core.SoilWaterStorage_Soil,None,SoilWaterStorage)
-SoilWaterStorage.theta = new_instancemethod(_cmf_core.SoilWaterStorage_theta,None,SoilWaterStorage)
-SoilWaterStorage.K = new_instancemethod(_cmf_core.SoilWaterStorage_K,None,SoilWaterStorage)
-SoilWaterStorage.Ksat = new_instancemethod(_cmf_core.SoilWaterStorage_Ksat,None,SoilWaterStorage)
-SoilWaterStorage.Wetness = new_instancemethod(_cmf_core.SoilWaterStorage_Wetness,None,SoilWaterStorage)
-SoilWaterStorage.MatrixPotential = new_instancemethod(_cmf_core.SoilWaterStorage_MatrixPotential,None,SoilWaterStorage)
-SoilWaterStorage.GravitationalPotential = new_instancemethod(_cmf_core.SoilWaterStorage_GravitationalPotential,None,SoilWaterStorage)
+SoilWaterStorage.get_upper_boundary = new_instancemethod(_cmf_core.SoilWaterStorage_get_upper_boundary,None,SoilWaterStorage)
+SoilWaterStorage.get_lower_boundary = new_instancemethod(_cmf_core.SoilWaterStorage_get_lower_boundary,None,SoilWaterStorage)
+SoilWaterStorage.get_thickness = new_instancemethod(_cmf_core.SoilWaterStorage_get_thickness,None,SoilWaterStorage)
+SoilWaterStorage.get_soil = new_instancemethod(_cmf_core.SoilWaterStorage_get_soil,None,SoilWaterStorage)
+SoilWaterStorage.get_theta = new_instancemethod(_cmf_core.SoilWaterStorage_get_theta,None,SoilWaterStorage)
+SoilWaterStorage.set_theta = new_instancemethod(_cmf_core.SoilWaterStorage_set_theta,None,SoilWaterStorage)
+SoilWaterStorage.get_K = new_instancemethod(_cmf_core.SoilWaterStorage_get_K,None,SoilWaterStorage)
+SoilWaterStorage.get_Ksat = new_instancemethod(_cmf_core.SoilWaterStorage_get_Ksat,None,SoilWaterStorage)
+SoilWaterStorage.get_wetness = new_instancemethod(_cmf_core.SoilWaterStorage_get_wetness,None,SoilWaterStorage)
+SoilWaterStorage.set_wetness = new_instancemethod(_cmf_core.SoilWaterStorage_set_wetness,None,SoilWaterStorage)
+SoilWaterStorage.get_matrix_potential = new_instancemethod(_cmf_core.SoilWaterStorage_get_matrix_potential,None,SoilWaterStorage)
+SoilWaterStorage.get_gravitational_potential = new_instancemethod(_cmf_core.SoilWaterStorage_get_gravitational_potential,None,SoilWaterStorage)
 SoilWaterStorage.Capacity = new_instancemethod(_cmf_core.SoilWaterStorage_Capacity,None,SoilWaterStorage)
-SoilWaterStorage.SetPotential = new_instancemethod(_cmf_core.SoilWaterStorage_SetPotential,None,SoilWaterStorage)
-SoilWaterStorage.SaturatedDepth = new_instancemethod(_cmf_core.SoilWaterStorage_SaturatedDepth,None,SoilWaterStorage)
-SoilWaterStorage.GetFlowCrosssection = new_instancemethod(_cmf_core.SoilWaterStorage_GetFlowCrosssection,None,SoilWaterStorage)
+SoilWaterStorage.get_saturated_depth = new_instancemethod(_cmf_core.SoilWaterStorage_get_saturated_depth,None,SoilWaterStorage)
+SoilWaterStorage.get_flow_crosssection = new_instancemethod(_cmf_core.SoilWaterStorage_get_flow_crosssection,None,SoilWaterStorage)
 SoilWaterStorage.copy = new_instancemethod(_cmf_core.SoilWaterStorage_copy,None,SoilWaterStorage)
 SoilWaterStorage_swigregister = _cmf_core.SoilWaterStorage_swigregister
 SoilWaterStorage_swigregister(SoilWaterStorage)
@@ -5495,63 +5421,82 @@ def SoilWaterStorage_Create(*args):
     """
   return _cmf_core.SoilWaterStorage_Create(*args)
 
-class FlexibleSizeSaturatedZone(SoilWaterStorage):
-    """
-    A soil water storage with a flexible (non constant) upper boundary,
-    according to its fill state. This soil water storage is always
-    saturated.
-
-    C++ includes: SoilWaterStorage.h 
-    """
+class VariableLayerSaturated(SoilWaterStorage):
+    """Proxy of C++ cmf::upslope::VariableLayerSaturated class"""
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
     def __init__(self, *args, **kwargs): raise AttributeError("No constructor defined")
     __repr__ = _swig_repr
+    def UpperLayer(self):
+        """UpperLayer(self) -> VariableLayerUnsaturated"""
+        return _cmf_core.VariableLayerSaturated_UpperLayer(self)
+
     def Create(*args):
-        """Create(Cell cell, real lowerboundary, RCurve r_curve) -> FlexibleSizeSaturatedZone"""
-        return _cmf_core.FlexibleSizeSaturatedZone_Create(*args)
+        """Create(Cell cell, real lowerboundary, RCurve r_curve) -> VariableLayerSaturated"""
+        return _cmf_core.VariableLayerSaturated_Create(*args)
 
     Create = staticmethod(Create)
     def MaximumThickness(self):
         """MaximumThickness(self) -> real"""
-        return _cmf_core.FlexibleSizeSaturatedZone_MaximumThickness(self)
+        return _cmf_core.VariableLayerSaturated_MaximumThickness(self)
 
-    __swig_destroy__ = _cmf_core.delete_FlexibleSizeSaturatedZone
-FlexibleSizeSaturatedZone.MaximumThickness = new_instancemethod(_cmf_core.FlexibleSizeSaturatedZone_MaximumThickness,None,FlexibleSizeSaturatedZone)
-FlexibleSizeSaturatedZone_swigregister = _cmf_core.FlexibleSizeSaturatedZone_swigregister
-FlexibleSizeSaturatedZone_swigregister(FlexibleSizeSaturatedZone)
+    def get_from_cell(*args):
+        """get_from_cell(Cell cell) -> VariableLayerSaturated"""
+        return _cmf_core.VariableLayerSaturated_get_from_cell(*args)
 
-def FlexibleSizeSaturatedZone_Create(*args):
-  """FlexibleSizeSaturatedZone_Create(Cell cell, real lowerboundary, RCurve r_curve) -> FlexibleSizeSaturatedZone"""
-  return _cmf_core.FlexibleSizeSaturatedZone_Create(*args)
+    get_from_cell = staticmethod(get_from_cell)
+    __swig_destroy__ = _cmf_core.delete_VariableLayerSaturated
+VariableLayerSaturated.UpperLayer = new_instancemethod(_cmf_core.VariableLayerSaturated_UpperLayer,None,VariableLayerSaturated)
+VariableLayerSaturated.MaximumThickness = new_instancemethod(_cmf_core.VariableLayerSaturated_MaximumThickness,None,VariableLayerSaturated)
+VariableLayerSaturated_swigregister = _cmf_core.VariableLayerSaturated_swigregister
+VariableLayerSaturated_swigregister(VariableLayerSaturated)
 
-class FlexibleSizeLayer(SoilWaterStorage):
-    """
-    A soil water storage above a FlexibleSizeSaturatedLayer, can only be
-    created by FlexibleSaturatedLayer.
+def VariableLayerSaturated_Create(*args):
+  """VariableLayerSaturated_Create(Cell cell, real lowerboundary, RCurve r_curve) -> VariableLayerSaturated"""
+  return _cmf_core.VariableLayerSaturated_Create(*args)
 
-    C++ includes: SoilWaterStorage.h 
-    """
+def VariableLayerSaturated_get_from_cell(*args):
+  """VariableLayerSaturated_get_from_cell(Cell cell) -> VariableLayerSaturated"""
+  return _cmf_core.VariableLayerSaturated_get_from_cell(*args)
+
+class VariableLayerUnsaturated(SoilWaterStorage):
+    """Proxy of C++ cmf::upslope::VariableLayerUnsaturated class"""
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
     def __init__(self, *args, **kwargs): raise AttributeError("No constructor defined")
     __repr__ = _swig_repr
-    __swig_destroy__ = _cmf_core.delete_FlexibleSizeLayer
-FlexibleSizeLayer_swigregister = _cmf_core.FlexibleSizeLayer_swigregister
-FlexibleSizeLayer_swigregister(FlexibleSizeLayer)
+    __swig_destroy__ = _cmf_core.delete_VariableLayerUnsaturated
+VariableLayerUnsaturated_swigregister = _cmf_core.VariableLayerUnsaturated_swigregister
+VariableLayerUnsaturated_swigregister(VariableLayerUnsaturated)
 
 
 def AsSoilWater(*args):
   """AsSoilWater(FluxNode node) -> SoilWaterStorage"""
   return _cmf_core.AsSoilWater(*args)
-class UnsatSatPercolation(FluxConnection):
-    """Proxy of C++ cmf::upslope::connections::UnsatSatPercolation class"""
+class VarLayerPercolationRichards(FluxConnection):
+    """Proxy of C++ cmf::upslope::connections::VarLayerPercolationRichards class"""
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
     __repr__ = _swig_repr
     def __init__(self, *args): 
-        """__init__(self, FlexibleSizeLayer unsat, FlexibleSizeSaturatedZone sat) -> UnsatSatPercolation"""
-        _cmf_core.UnsatSatPercolation_swiginit(self,_cmf_core.new_UnsatSatPercolation(*args))
-    __swig_destroy__ = _cmf_core.delete_UnsatSatPercolation
-UnsatSatPercolation_swigregister = _cmf_core.UnsatSatPercolation_swigregister
-UnsatSatPercolation_swigregister(UnsatSatPercolation)
+        """__init__(self, VariableLayerUnsaturated unsat, VariableLayerSaturated sat) -> VarLayerPercolationRichards"""
+        _cmf_core.VarLayerPercolationRichards_swiginit(self,_cmf_core.new_VarLayerPercolationRichards(*args))
+    __swig_destroy__ = _cmf_core.delete_VarLayerPercolationRichards
+VarLayerPercolationRichards_swigregister = _cmf_core.VarLayerPercolationRichards_swigregister
+VarLayerPercolationRichards_swigregister(VarLayerPercolationRichards)
+
+class VarLayerPercolationSimple(FluxConnection):
+    """Proxy of C++ cmf::upslope::connections::VarLayerPercolationSimple class"""
+    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __repr__ = _swig_repr
+    pF_field_cap = _swig_property(_cmf_core.VarLayerPercolationSimple_pF_field_cap_get, _cmf_core.VarLayerPercolationSimple_pF_field_cap_set)
+    def __init__(self, *args): 
+        """
+        __init__(self, VariableLayerUnsaturated unsat, VariableLayerSaturated sat, 
+            real _pF_field_cap = 1.8) -> VarLayerPercolationSimple
+        __init__(self, VariableLayerUnsaturated unsat, VariableLayerSaturated sat) -> VarLayerPercolationSimple
+        """
+        _cmf_core.VarLayerPercolationSimple_swiginit(self,_cmf_core.new_VarLayerPercolationSimple(*args))
+    __swig_destroy__ = _cmf_core.delete_VarLayerPercolationSimple
+VarLayerPercolationSimple_swigregister = _cmf_core.VarLayerPercolationSimple_swigregister
+VarLayerPercolationSimple_swigregister(VarLayerPercolationSimple)
 
 class Darcy(FluxConnection):
     """Proxy of C++ cmf::upslope::connections::Darcy class"""
