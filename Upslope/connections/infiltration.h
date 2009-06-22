@@ -55,6 +55,28 @@ namespace cmf {
 				}
 
 			};
+			class RouteWB : public cmf::water::FluxConnection
+			{
+			protected:
+				real calc_q(cmf::math::Time t)
+				{
+					real wb=m_left->water_balance(t,this);
+					if (wb<0 && m_right->is_empty())
+						return 0.0;
+					else
+						return wb;
+				}
+				void NewNodes()
+				{
+
+				}
+			public:
+				RouteWB(cmf::water::FluxNode& left,cmf::water::FluxNode& right)
+					: FluxConnection(left,right,"Water balance routing")
+				{
+					NewNodes();
+				}
+			};
 		}
 	}
 }

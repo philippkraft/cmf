@@ -69,7 +69,7 @@ namespace cmf {
 			/// Changes the sign of the flux to positive
 			WaterFlux& Abs()
 			{
-				q=abs(q);
+				q=fabs(q);
 				return *this;
 			}
 			/// Returns the %water flux of the given solute in \f$\frac{mol}{day}\f$, depending on the unit of the concentration (see cmf::water )

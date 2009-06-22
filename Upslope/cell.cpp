@@ -1,6 +1,7 @@
 #include "cell.h"
 #include "../project.h"
 #include "SoilWaterStorage.h"
+#include "VarLayerPair.h"
 #include "connections/AtmosphericFluxes.h"
 #include "connections/surfacefluxes.h"
 #include "connections/infiltration.h"
@@ -24,15 +25,17 @@ cmf::upslope::Cell::Cell( double _x,double _y,double _z,double area,cmf::project
 m_SurfaceWater(new cmf::water::FluxNode(_project)),	Id(cell_count++),
 m_Canopy(0),m_Snow(0),m_SurfaceWaterStorage(0),m_meteo(new cmf::atmosphere::ConstantMeteorology)
 {
-	m_SurfaceWater->Name="Surfacewater";
+	std::stringstream sstr;
+	sstr << Id;
+	std::string cell_id=sstr.str();
+	m_SurfaceWater->Name="Surface water of cell #" + cell_id;
 	m_SurfaceWater->Location=get_position();
 	m_Evaporation.reset(new cmf::water::FluxNode(_project,cmf::geometry::point(x,y,z+20)));
-	m_Evaporation->Name="Evaporation";
+	m_Evaporation->Name="Evaporation of cell #" + cell_id;
 	m_Transpiration.reset(new cmf::water::FluxNode(_project,cmf::geometry::point(x,y,z+20)));
-	m_Transpiration->Name="Transpiration";
+	m_Transpiration->Name="Transpiration of cell #" + cell_id;
 	m_rainfall.reset(new cmf::atmosphere::RainCloud(*this));
-	m_rainfall->Name="Rainy cloud";
-	_project.m_cells.push_back(this);
+	m_rainfall->Name="Rain of cell #" + cell_id;
 	new connections::Rainfall(get_surfacewater(),*this);
 }
 
@@ -44,22 +47,14 @@ cmf::upslope::Cell::Cell( const Cell& cpy )
 }
 real cmf::upslope::Cell::get_saturated_depth()	
 {
-	if (m_SatDepth!=-10000)
+	if (m_SatDepth<-10000)
 	{
 		//m_SatDepth=get_layer(0).get_saturated_depth();
 		m_SatDepth=get_layer(-1).get_lower_boundary();
-		for(layer_vector::reverse_iterator it = m_Layers.rbegin(); it != m_Layers.rend(); ++it)
+		for (int i = 0; i < layer_count() ; ++i)
 		{
-			SoilWaterStorage& l=**it;
-			if (l.get_wetness()>=1)
-			{
-				m_SatDepth=l.get_upper_boundary();
-			}
-			else
-			{
-				m_SatDepth=minimum(m_SatDepth,l.get_upper_boundary()-l.get_matrix_potential());
-				//return m_SatDepth;
-			}
+			real sd=z-get_layer(i).get_potential();
+			if (sd<m_SatDepth) m_SatDepth=sd;
 		}
 	}
 	return m_SatDepth;
@@ -82,11 +77,11 @@ void cmf::upslope::Cell::add_layer( cmf::upslope::SoilWaterStorage* layer )
 	m_Layers.push_back(layer);
 }
 
-void cmf::upslope::Cell::add_layer(real lowerboundary,const cmf::upslope::RCurve& r_curve,real saturateddepth/*=-10*/ )
+void cmf::upslope::Cell::add_layer(real lowerboundary,const cmf::upslope::RetentionCurve& r_curve,real saturateddepth/*=-10*/ )
 {
 	SoilWaterStorage::Create(*this,lowerboundary,r_curve,saturateddepth);
 }
-void cmf::upslope::Cell::add_variable_layer_pair(real lowerboundary,const cmf::upslope::RCurve& r_curve )
+void cmf::upslope::Cell::add_variable_layer_pair(real lowerboundary,const cmf::upslope::RetentionCurve& r_curve )
 {
 	VariableLayerSaturated::Create(*this,lowerboundary,r_curve);
 }
@@ -259,4 +254,11 @@ void cmf::upslope::Cell::surfacewater_as_storage()
 		m_storages.push_back(ws);
 		m_SurfaceWater.reset();
 	}
+}
+
+std::string cmf::upslope::Cell::ToString()
+{
+	std::stringstream sstr;
+	sstr << "cell #" << Id << "(" << x << "," << y << "," << z << ")";
+	return sstr.str();
 }

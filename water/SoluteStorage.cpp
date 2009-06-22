@@ -21,7 +21,7 @@ real cmf::water::SoluteStorage::Derivate( const cmf::math::Time& time )
 real cmf::water::SoluteStorage::conc() const
 {
 	if (Storage.water()>0)
-		return State()/Storage.water();
+		return get_state()/Storage.water();
 	else
 		return 0.0;
 }

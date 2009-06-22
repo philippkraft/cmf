@@ -8,7 +8,7 @@ real cmf::river::Manning::calc_q( cmf::math::Time t )
 		d=distance,
 		// Gradient of the reach
 		slope=(m_left->get_potential()-m_right->get_potential())/d,
-		abs_slope=abs(slope)-1e-5;
+		abs_slope=fabs(slope)-1e-5;
 
 	if (abs_slope<=0) return 0.0;
 	// Get the source of the flow
@@ -36,9 +36,15 @@ void cmf::river::Manning::connect_cells( cmf::upslope::Cell& c1,cmf::upslope::Ce
 	real w=c1.get_topology().flowwidth(c2);
 	if (w<=0) return;
 	RectangularReach r_type(w);
-	cmf::river::OpenWaterStorage& sw1= *dynamic_cast<cmf::river::OpenWaterStorage*>(&c1.add_storage("SurfaceWater",'W'));
-	cmf::river::OpenWaterStorage& sw2= *dynamic_cast<cmf::river::OpenWaterStorage*>(&c2.add_storage("SurfaceWater",'W'));
-	new Manning(sw1,sw2,r_type,c1.get_position().distanceTo(c2.get_position()));
+	
+	cmf::river::OpenWaterStorage* sw1= AsOpenWater(&c1.get_surfacewater());
+	cmf::river::OpenWaterStorage* sw2= AsOpenWater(&c2.get_surfacewater());
+	if (sw1)
+		new Manning(*sw1,c2.get_surfacewater(),r_type,c1.get_position().distanceTo(c2.get_position()));
+	else if (sw2)
+		new Manning(*sw2,c1.get_surfacewater(),r_type,c1.get_position().distanceTo(c2.get_position()));
+	else
+		throw std::runtime_error("Surface water of " + c1.ToString() + " and " + c2.ToString() + " were not connected with Manning's equation. Missing storages.");
 }
 
 const cmf::upslope::CellConnector cmf::river::Manning::cell_connector=cmf::upslope::CellConnector(&connect_cells);

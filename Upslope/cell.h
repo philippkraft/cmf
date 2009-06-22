@@ -21,6 +21,7 @@ namespace cmf {
 		class RainCloud;
 
 	}
+    /// Contains the classes to describe the discretization of the soil continuum
 	namespace upslope {
 		class SoilWaterStorage;
 		class Topology;
@@ -142,17 +143,17 @@ namespace cmf {
 			real snow_coverage() const
 			{
 				if (m_Snow)
-					return piecewise_linear(m_Snow->State()/get_area(),0,0.01);
+					return piecewise_linear(m_Snow->get_state()/get_area(),0,0.01);
 				else
 					return 0.0;
 			}
 			bool has_wet_leaves() const
 			{
-				return (m_Canopy) && (m_Canopy->State()>1e-6*get_area());
+				return (m_Canopy) && (m_Canopy->get_state()>1e-6*get_area());
 			}
 			bool has_surface_water() const
 			{
-				return (m_SurfaceWaterStorage) && (m_SurfaceWaterStorage->State()>1e-6*get_area());
+				return (m_SurfaceWaterStorage) && (m_SurfaceWaterStorage->get_state()>1e-6*get_area());
 			}
 			cmf::upslope::vegetation::Vegetation get_vegetation() const;
 			void set_vegetation(cmf::upslope::vegetation::Vegetation val) { m_vegetation = val; }
@@ -187,8 +188,8 @@ namespace cmf {
 			/// Registers a layer at the cell. This function is used by the ctor's of the layers and should never be used in other code.
 			void add_layer(cmf::upslope::SoilWaterStorage* layer);
 #endif
-			void add_layer(real lowerboundary,const cmf::upslope::RCurve& r_curve,real saturateddepth=-10);
-			void add_variable_layer_pair(real lowerboundary,const cmf::upslope::RCurve& r_curve);
+			void add_layer(real lowerboundary,const cmf::upslope::RetentionCurve& r_curve,real saturateddepth=-10);
+			void add_variable_layer_pair(real lowerboundary,const cmf::upslope::RetentionCurve& r_curve);
 			void remove_last_layer();
 			void remove_layers();
 			virtual ~Cell();
@@ -196,12 +197,7 @@ namespace cmf {
 
 
 			Cell(double x,double y,double z,double area,cmf::project & _project);
-			std::string ToString()
-			{
-				std::stringstream sstr;
-				sstr << "(" << x << "," << y << "," << z << ")";
-				return sstr.str();
-			}
+			std::string ToString();
 			//@}
 			void AddStateVariables(cmf::math::StateVariableVector& vector);
 		};

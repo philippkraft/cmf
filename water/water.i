@@ -59,6 +59,30 @@ namespace cmf{namespace water {class FluxConnection;}}
 		return $self->ToString();
 	}
 }
+%extend cmf::water::node_list {
+%pythoncode {
+    def __getitem__(self,index):
+        return self.get(index)
+    def __getslice__(self,slice):
+        indices=slice.indices(self.size())
+        return self.get(indices[0],indices[1],indices[2])
+    def __len__(self):
+        return self.size()       
+    def __iter__(self):
+        for i in xrange(size()):
+            yield self[i]
+    def extend(self,sequence):
+        """Extends the node list with the sequence (any iterable will do) """
+        for o in sequence:
+            self.append(o)
+    @staticmethod
+    def from_sequence(sequence):
+        """Returns a new node list populated from the sequence (any iterable will do) """
+        nl=node_list()
+        nl.extend(sequence)
+        return nl
+    }
+}
 // Add some function for down casting
 DOWNCASTdefinition(cmf::water::FluxNode,cmf::water::WaterStorage,AsStorage)
 

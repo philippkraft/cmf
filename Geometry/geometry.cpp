@@ -48,6 +48,15 @@ namespace cmf {
 			return maximum(fabs(x-p.x),fabs(y-p.y));
 		}
 
+		cmf::geometry::point operator*( double d,const point &p )
+		{
+			return p*d;
+		}
+
+		cmf::geometry::point operator/( double d,const point &p )
+		{
+			return cmf::geometry::point(d,d,d) / p;
+		}
 	}
 }
 

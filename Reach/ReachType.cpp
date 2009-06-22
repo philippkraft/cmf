@@ -2,7 +2,7 @@
 #include <cmath>
 #include "../math/real.h"
 #include "VolumeHeightRelation.h"
-
+#include <stdexcept>
 #define sqr(a) ((a)*(a))
 /// \f[ d = \sqrt{\frac{A}{\Delta_{bank}} + \frac{{w_{bottom}}^2}{4 {\Delta_{bank}}^2}} - \frac{w_{bottom}}{2 \Delta_{bank}} \f]
 /// If \f$d>d_{channel}\f$
@@ -158,7 +158,7 @@ double cmf::river::PipeReach::Width( double depth ) const
 	if (depth<0 || depth>m_Radius*2)
 		return 0;
 	else
-		return 2*sqrt(abs(sqr(m_Radius)-sqr(m_Radius-depth)));
+		return 2*sqrt(fabs(sqr(m_Radius)-sqr(m_Radius-depth)));
 }
 
 double cmf::river::PipeReach::Perimeter( double depth ) const

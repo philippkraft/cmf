@@ -59,42 +59,12 @@ def drawobjects(objects,style=None,hold=1,**kwargs):
     if was_interactive:
         pylab.draw() 
         pylab.ion()
-    
-def draw_cell_arrows(cells,width_function,color='k',hold=1,**kwargs):
-    """Draws arrows indicating fluxes from one cell to another
-    
-    Since this function loops through each cell and each neighbor of 
-    a cell, the function is rather slow. Use smaller cell lists if appropriate
-    
-    cells: a "bunch" (sequence or generator) of cells
-    width_function: a function f(cell1,cell2) returning the width of the arrow in map coordinates
-    color: a pylab color
-    hold: if False, clears the screen prior to drawing
-    
-    Additional keyword arguments:
-       - see pylab.arrow
-    """
-    was_interactive=pylab.isinteractive()
-    if was_interactive: pylab.ioff()
-    if hold==0: pylab.clf()
-    values=[]
-    vmin=xmin=1e300
-    vmax=xmax=-1e300
-    
-    for c in cells:
-        for n,w in c.neighbors:
-            x,y,dx,dy=c.x,c.y,n.x-c.x,n.y-c.y
-            v=width_function(c,n)
-            vmin=min(vmin,v)
-            vmax=max(vmax,v)
-            values.append((x,y,dx,dy,v))
-    print "Value range %g - %g" % (vmin,vmax)
-    for x,y,dx,dy,v in values:
-        if v>1e-4*(vmax-vmin):
-            pylab.arrow(x,y,dx/2,dy/2,fc=color,width=v,hold=1,ec='none',**kwargs)
-    if was_interactive:
-        pylab.draw() 
-        pylab.ion()
+
+   
+
+
+def plot_timeseries(data,style='-',**kwargs):    
+        pylab.plot_date(map(lambda t:(t-cmf.Time(1,1,1)).AsDays(),cmf.timerange(data.begin(),data.end(),data.step())),list(data),style,**kwargs)
     
 def connector_matrix(cells,size=(500,500)):
     """Returns a matrixx

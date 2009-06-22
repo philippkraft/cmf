@@ -7,6 +7,7 @@
 #include <string>
 #include <vector>
 #include <tr1/memory>
+#include "../math/numVector.h"
 namespace cmf {
 	/// Contains geometric features like point (=location) and raster datasets
 	namespace geometry	{
@@ -70,10 +71,35 @@ namespace cmf {
 				bool operator ==(const point &p) const;
 				bool operator !=(const point &p) const {return !(*this == p);}
 		};
+#ifndef SWIG
+		point operator*(double d,const point &p);
+		point operator/(double d,const point &p);
+#endif
+
+
+		/// An interface for objects having a location in space
 		class Locatable
 		{
 		public:
+			/// Pure virtual function. Should return the position of the locatable
 			virtual cmf::geometry::point get_position() const=0;
+			/// Sets the location. If not implemented by the child class, an exception is thrown
+			virtual void set_position(cmf::geometry::point p)
+			{
+				throw std::invalid_argument("The position is readonly");
+			}
+			/// Returns the distance between two locatable objects
+			double get_distance_to(const Locatable& cmp)
+			{
+				return get_position().distance3DTo(cmp.get_position());
+			}
+			/// Returns a vector with length=1 pointing in the direction of another Locatable
+			cmf::geometry::point get_direction_to(const Locatable& cmp)
+			{
+				cmf::geometry::point p1=get_position(),p2=cmp.get_position();
+				double d=p1.distanceTo(p2);
+				return (p2-p1)/d;
+			}
 		};
 
 		class Location : public Locatable
@@ -90,7 +116,29 @@ namespace cmf {
 				: place(new point(x,y,z)) {}
 		};
 
-		/// Holds the corner coordinates of a bounding box
+		class point_vector
+		{
+		public:
+#ifndef SWIG
+			point operator[](int index) const
+			{
+				return cmf::geometry::point(X[index],Y[index],Z[index]);
+			}
+
+#endif
+			cmf::math::numVector X,Y,Z;
+			point_vector(int size) : X(size),Y(size),Z(size)
+			{
+
+			}
+			point get(int index) const { return cmf::geometry::point(X[index],Y[index],Z[index]);}
+			void set(int index,cmf::geometry::point p) {X[index]=p.x;Y[index]=p.y;Z[index]=p.z;}
+			int size() const
+			{
+				return X.size();
+			}
+		};
+
 	}
 }
 

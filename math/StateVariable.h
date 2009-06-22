@@ -17,7 +17,7 @@ namespace cmf {
 				{
 				public:
 					real rate;
-					virtual real Derivate(const cmf::math::Time& time) {return rate*State();}
+					virtual real Derivate(const cmf::math::Time& time) {return rate*get_state();}
 				};
 				@endcode
 		*/
@@ -35,9 +35,9 @@ namespace cmf {
 			/// Returns the derivate of the state variable at time @c time
 			virtual real Derivate(const cmf::math::Time& time)=0;
 			/// Returns the current state of the variable
-			const real& State() const {return m_State;}
+			const real& get_state() const {return m_State;}
 			/// Gives access to the state variable
-			void State(const real& newState) {
+			void set_state(real newState) {
 				//m_StateIsNew=m_State!=newState;
 				m_State=newState;
 				m_StateIsNew=true;

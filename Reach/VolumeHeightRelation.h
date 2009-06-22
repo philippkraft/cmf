@@ -36,7 +36,7 @@ namespace cmf {
 		{
 		public:
 			real Area,half_area_depth;
-			/// \f$ h(V)=h_{0.5}\frac{\log{\left(\log 2 \frac V {h_{0.5}}\right)}{\log 2} \f$
+			/// \f$ h(V)=h_{0.5}\frac{\log{\left(\log 2 \frac V {h_{0.5}}\right)}}{\log 2} \f$
 			real h(real V) const {
 				real lg2=log(2.0);
 				real V_rel=maximum(V,0.0001)/Area;

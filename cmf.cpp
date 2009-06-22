@@ -43,37 +43,35 @@ int main(int argc, char* argv[])
 		using namespace cmf::upslope::ET;
 		using namespace cmf::river;
 		project p;
-		timeseries ts=1.0;
-		timeseries ts2=ts;
-		//NeumannBoundary nbc(p,ts2);
+
+		timeseries ts(0*day,1*day,1);
+		for (int i = 0; i < 10 ; ++i) ts.add(1.0);
+		NeumannBoundary nbc(p,ts);
 		p.debug=1;
-		Cell& cell=*p.NewCell(0,0,0,100);
-		BrooksCoreyRetentionCurve bc;
-		cell.add_variable_layer_pair(1.,bc);
-		//new VarLayerPercolationSimple(FlexibleSizeSaturatedZone::get_from_cell(cell)->UpperLayer(),*FlexibleSizeSaturatedZone::get_from_cell(cell));
-		cell.set_saturated_depth(0.0);
-		PenmanMonteithET::use_for_cell(cell);
-		cmf::atmosphere::meteo_station_pointer meteo=p.meteo_stations.add_station("");
-		meteo->Tmax.add(20);
-		meteo->Tmin.add(10);
-		cell.set_meteorology(MeteoStationReference(meteo,cell));
-		cell.set_saturated_depth(0.5);
-		//cell.get_layer(0).Wetness(bc.Wetness_pF(2.6));
-		Weather w= cell.get_weather(day*0.5);
 
-
-
-		//cell.get_rainfall().flux=10.0;
-		//cout << "Rain: " << cell.get_transpiration().water_balance(day*0) << "m3/day" << endl;
-		cout << cell.get_transpiration().flux_to(cell.get_layer(0),day*180.5);
-		CVodeIntegrator integ(p,1e-6);
-		while (integ.ModelTime()<day*1000)
+ 		Cell * c1=p.NewCell(0,0,0,100);
+		VanGenuchtenMualem vgm;
+		c1->add_variable_layer_pair(1.0,vgm);
+		VariableLayerSaturated* sat= VariableLayerSaturated::get_from_cell(*c1);
+		VariableLayerUnsaturated* unsat=&sat->UpperLayer();
+		sat->set_potential(0.033);
+		cout << sat->get_potential() << sat->get_upper_boundary() << endl;
+		for (int i = 0; i < 100 ; ++i)
 		{
-			integ.IntegrateUntil(integ.ModelTime() + math::day);
-			cout << integ.ModelTime().ToString() << "P_u=" << cell.get_layer(0).get_potential() << " P_s=" << cell.get_layer(1).get_potential() << " d_s=" << cell.get_layer(1).get_thickness() << endl;
+			real sd=0.05 - i*0.05/50;
+			c1->set_saturated_depth(sd);
+			cout << " set:" << sd << " get(pot_s):" << c1->get_saturated_depth() << " boundary:" << sat->get_upper_boundary() << endl;
 		}
-		cin.get();
-		
+// 		VarLayerPercolationSimple * perc=new VarLayerPercolationSimple(*unsat,*sat);
+// 		cout << perc->q(*unsat,0*day);
+
+// 		nbc.connect_to(c1->get_layer(1));
+// 		Cell * c2=p.NewCell(0,10,0,100);
+// 		c1->get_topology().AddNeighbor(*c2,10);
+// 		c2->get_topology().AddNeighbor(*c1,10);
+// 		c1->surfacewater_as_storage();
+// 		c2->surfacewater_as_storage();
+// 		connect_cells_with_flux(p.get_cells(),Manning::cell_connector);
 
 	}
 #endif //Not def _DLL

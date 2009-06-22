@@ -298,6 +298,7 @@ double_raster.WriteToBinary = new_instancemethod(_raster.double_raster_WriteToBi
 double_raster.ToInt = new_instancemethod(_raster.double_raster_ToInt,None,double_raster)
 double_raster.ToFloat = new_instancemethod(_raster.double_raster_ToFloat,None,double_raster)
 double_raster.ToDouble = new_instancemethod(_raster.double_raster_ToDouble,None,double_raster)
+double_raster.adress = new_instancemethod(_raster.double_raster_adress,None,double_raster)
 double_raster.focal_min = new_instancemethod(_raster.double_raster_focal_min,None,double_raster)
 double_raster.focal_max = new_instancemethod(_raster.double_raster_focal_max,None,double_raster)
 double_raster.focal_mean = new_instancemethod(_raster.double_raster_focal_mean,None,double_raster)
@@ -344,6 +345,7 @@ int_raster.WriteToBinary = new_instancemethod(_raster.int_raster_WriteToBinary,N
 int_raster.ToInt = new_instancemethod(_raster.int_raster_ToInt,None,int_raster)
 int_raster.ToFloat = new_instancemethod(_raster.int_raster_ToFloat,None,int_raster)
 int_raster.ToDouble = new_instancemethod(_raster.int_raster_ToDouble,None,int_raster)
+int_raster.adress = new_instancemethod(_raster.int_raster_adress,None,int_raster)
 int_raster.focal_min = new_instancemethod(_raster.int_raster_focal_min,None,int_raster)
 int_raster.focal_max = new_instancemethod(_raster.int_raster_focal_max,None,int_raster)
 int_raster.focal_mean = new_instancemethod(_raster.int_raster_focal_mean,None,int_raster)
@@ -390,6 +392,7 @@ single_raster.WriteToBinary = new_instancemethod(_raster.single_raster_WriteToBi
 single_raster.ToInt = new_instancemethod(_raster.single_raster_ToInt,None,single_raster)
 single_raster.ToFloat = new_instancemethod(_raster.single_raster_ToFloat,None,single_raster)
 single_raster.ToDouble = new_instancemethod(_raster.single_raster_ToDouble,None,single_raster)
+single_raster.adress = new_instancemethod(_raster.single_raster_adress,None,single_raster)
 single_raster.focal_min = new_instancemethod(_raster.single_raster_focal_min,None,single_raster)
 single_raster.focal_max = new_instancemethod(_raster.single_raster_focal_max,None,single_raster)
 single_raster.focal_mean = new_instancemethod(_raster.single_raster_focal_mean,None,single_raster)
@@ -404,11 +407,11 @@ single_raster_swigregister(single_raster)
 
 try:
     import numpy
-except:
+except ImportError:
     numpy=None
 try:
     import matplotlib.pyplot as pyplot
-except:
+except ImportError:
     pyplot=None
 class Raster:
     def __init__(self,filename=None,dtype="f",shape=None,corner=(0,0),cellsize=(1,1),NoData=-9999,raster=None):
@@ -416,7 +419,7 @@ class Raster:
            filename = The filename of an raster file in the ESRI ASCII format
            dtype = shortcut for the data type, either 'f' for float, 's' for float32 or 'i' for integer (32 bit)
         The next parameters have no meaning, if a filename was given
-           shape = the dimensins of the raster, a tuple of integers (columns,rows)
+           shape = the dimensins of the raster, a tuple of integers (rows,columns)
            corner = (x,y) the position of the lower left corner in world coordinates
            cellsize = the cellsize in map units, can be a tuple with one vlaue for x direction and another for the y direction
            NoData = Value to indicate no data
@@ -426,17 +429,19 @@ class Raster:
         if (raster):
             self.raster=raster
             return
-        if (dtype=="f"):
+        if (dtype in ["f","f8"]):
             rtype=double_raster
-        elif (dtype=="s"):
+        elif (dtype in ["s","f4"]):
             rtype=single_raster
-        elif (dtype=="i"):
+        elif (dtype in ["i","i4"]):
             rtype=int_raster
+        else:
+            raise ValueError("Data type most be f,s or i")
         if (filename):
             self.raster=rtype(filename)
         else:
             try:
-                col,row=shape
+                row,col=shape
             except:
                 raise ValueError("If no filename is given the dimensions of the raster has to be specified as a tuple, e.g. (10,10)")
             try:
@@ -446,17 +451,21 @@ class Raster:
             self.raster=rtype(col,row,corner[0],corner[1],x_size,y_size,NoData,NoData)
     @property
     def llcorner(self):
+        "The lower left corner (x,y)"
         return (self.raster.Xllcorner(),self.raster.Yllcorner())
     @property
     def cellsize(self):
+        "The cell size (x,y) in map coordinates"
         return (self.raster.XCellsize(),self.raster.YCellsize())
     @property
     def shape(self):
-        return (self.raster.ColumnCount(),self.raster.RowCount())
+        "The tuple (rows,cols)"
+        return (self.raster.RowCount(),self.raster.ColumnCount())
     @property
     def extent(self):
-        return (self.cellsize[0]*self.shape[0],
-                self.cellsize[1]*self.shape[1])
+        "The extent of the raster (width,height) in map coordinates"
+        return (self.cellsize[0]*self.shape[1],
+                self.cellsize[1]*self.shape[0])
     def neighbors(self,x,y):
         """ Returns a list of the neighbors to the given position
         x,y are intepreted as real coordinates, if they are floating point numbers,
@@ -477,30 +486,34 @@ class Raster:
                     res.append((col+x,row+y,v,distance,x,y))
         return res
     def xy(self,col,row):
-        return (col*self.cellsize[0]+self.corner[0],(self.shape[1]-row)*self.cellsize[1]+self.corner[1])
+        "Gets a position in world coordinates from a position in the dataset (col,row)->(x,y)"
+        return (col*self.cellsize[0]+self.corner[0],(self.shape[0]-row)*self.cellsize[1]+self.corner[1])
     def colrow(self,x,y):
-        return (int((x-self.corner[0])/self.cellsize[0]),int(self.shape[1]-(y-self.corner[1])/self.cellsize[1]))
+        "Gets a position in the dataset from world coordinates (x,y)->(colr,row)"
+        return (int((x-self.corner[0])/self.cellsize[0]),int(self.shape[0]-(y-self.corner[1])/self.cellsize[1]))
     @property
     def nodata(self):
+        "Gets the no data value of the raster"
         return self.raster.NoData()
     @property
     def rows(self):
-        for r in range(self.shape[1]):
-            yield [self.raster.GetData(r,c) for c in range(self.shape[0])]
+        "Gets the number of rows in the data set"
+        for r in range(self.shape[0]):
+            yield [self.raster.GetData(r,c) for c in range(self.shape[1])]
     @property
     def cells(self):
         """ Returns an iterator over all cells of the raster, that returns the tuple (x,y,value,area,column,row) """
-        for r in range(self.shape[1]):
-            for c in range(self.shape[0]):
+        for r in range(self.shape[0]):
+            for c in range(self.shape[1]):
                 if self[c,r]!=self.nodata:
                     x=self.llcorner[0]+self.cellsize[0]*(c+0.5)
-                    y=self.llcorner[1]+self.cellsize[1]*(self.shape[1]-(r+0.5))
+                    y=self.llcorner[1]+self.cellsize[1]*(self.shape[0]-(r+0.5))
                     v=self[c,r]
                     area=self.cellsize[0]*self.cellsize[1]
                     yield((x,y,v,area,c,r))
     def __iter__(self):
-        for r in range(self.shape[1]):
-            for c in range(self.shape[0]):
+        for r in range(self.shape[0]):
+            for c in range(self.shape[1]):
                 yield c,r
     @property 
     def values(self):
@@ -527,7 +540,8 @@ class Raster:
     def __call__(self,x,y,z=0):
         x=float(x) if type(x) is int else x
         y=float(y) if type(y) is int else y
-        return self.raster.GetData(x,y)
+        v=self.raster.GetData(x,y)
+        return v if not v==self.nodata else None
     def histogram(self,bins=100):
         return self.raster.histogram(bins)
     @property
@@ -675,11 +689,15 @@ class Raster:
                return Raster(dtype=self.dtype,raster=self.raster/other)
             except TypeError:
                raise TypeError("Can't add a %s to this raster %s" % (typename(other),typename(self.raster)))
+    
+    @property
+    def __array_interface__(self):
+        "Returns the array interface for the raster."
+        types={'i':'|i4','f':'|f8','s':'|f4'}
+        return dict(shape=self.shape,data=(self.raster.adress(),0),typestr=types[self.dtype])
     def as_array(self):
-        if numpy:
-            types={'i':numpy.int,'f':numpy.float,'s':numpy.float32}
-            res=numpy.frombuffer(self.raster.ToBuffer(),dtype=types[self.dtype])
-            res.shape=(self.shape[1],self.shape[0])
+        if numpy:                
+            res=numpy.asarray(self)
             if self.dtype=='i':
                 mres=numpy.ma.masked_equal(res,self.nodata)
             else:
@@ -687,7 +705,7 @@ class Raster:
             return mres
         else:
             raise NotImplementedError("as_array needs an installation of numpy to work!")
-    def draw(self,cmap=None,vmin=None,vmax=None,hold=1,alpha=1):
+    def draw(self,cmap=None,vmin=None,vmax=None,hold=1,interpolation='nearest',**kwargs):
         if pyplot:
             if cmap is None:
                 cmap=pyplot.cm.jet
@@ -695,9 +713,17 @@ class Raster:
                 vmin=self.statistics.min
             if vmax is None:
                 vmax=self.statistics.max
-            pyplot.imshow(self.as_array(),cmap,interpolation='nearest',
+            pyplot.imshow(self.as_array(),cmap,interpolation=interpolation,
                           aspect='equal',vmin=vmin,vmax=vmax,hold=hold,
-                          extent=(self.llcorner[0],self.llcorner[0]+self.extent[0],self.llcorner[1],self.llcorner[1]+self.extent[1]))
+                          extent=(self.llcorner[0],self.llcorner[0]+self.extent[0],self.llcorner[1],self.llcorner[1]+self.extent[1]),
+                          **kwargs)
+        else:
+            raise NotImplementedError("draw needs an installation of matplotlib to work")
+    def __repr__(self):
+        stat=self.statistics
+        fmt="Raster<%s>: n=%i,min=%g,mean=%g,max=%g,stdev=%g,row,col=%s,cellsize=(%g,%g)"
+        return fmt % (self.dtype,stat.count,stat.min,stat.mean,stat.max,stat.stdev,
+                      self.shape,self.cellsize[0],self.cellsize[1])
 
 
 

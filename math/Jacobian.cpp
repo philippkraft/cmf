@@ -1,5 +1,8 @@
 #include "Jacobian.h"
+
+#ifdef _OPENMP
 #include <omp.h>
+#endif
 #define max(a,b) (((a)>(b)) ? (a):(b))
 
 
@@ -73,11 +76,11 @@ void cmf::math::Jacobian::Calculate( StateVariableVector& vector, const cmf::mat
 	for (int i = 0; i < n; i++) 
 	{
 		// Remember last state
-		ysafe = vector[i]->State();
+		ysafe = vector[i]->get_state();
 		// Calculate difference
 		delt = sqrt(uround*max(1.0e-5, fabs(ysafe)));
 		// Change the state for the small difference
-		vector[i]->State(ysafe + delt);
+		vector[i]->set_state(ysafe + delt);
 
 		// Observe the results of the small change of one state (rows of jacobian)
 #pragma omp parallel for 
@@ -85,7 +88,7 @@ void cmf::math::Jacobian::Calculate( StateVariableVector& vector, const cmf::mat
 			m_matrix[j][i] = (vector[j]->Derivate(timestep) - deriv[j])/delt;
 
 		//Restore previous state
-		vector[i]->State(ysafe);
+		vector[i]->set_state(ysafe);
 	}
 	delete[] deriv;
 }

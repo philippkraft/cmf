@@ -15,10 +15,37 @@ namespace cmf {
 		/// Converts a height of a water column to a pF value
 		double waterhead_to_pF(double waterhead);
 
+		/// Class for an parabolic extrapolation of a retention curve
+		class parabolic_extrapolation
+		{
+		private:
+			real a,b,c,w0,psi0;
+		public:
+			/// Calculates the parabola parameters a,b,c using the starting point of the wetness / potential curve (w0,pot0) and the slope of the curve
+			parabolic_extrapolation(real wet0,real pot0,real slope0) : w0(wet0),psi0(pot0)
+			{
+				real w0_2=w0*w0;	// wetness squared
+				a=(-slope0 - pot0 + slope0*w0)/(1 - 2*w0 + w0_2);
+				b=(slope0 + 2*w0*pot0 - slope0*w0_2)/(1 - 2*w0 + w0_2);
+				c=(pot0 - slope0*w0 - 2*w0*pot0 + slope0*w0_2)/(1 - 2*w0 + w0_2);
+			}
+			/// returns the potential for a wetness. Does not test for wetness>w0
+			real get_potential(real wetness)
+			{
+				return a*wetness*wetness + b*wetness + c;
+			}
+			/// returns the wetness for a potential. The user is responsible to ensure the potential is higher than the starting point
+			real get_wetness(real potential)
+			{
+				return 0.5*sqrt(-4*c/a+4*potential/a+(b*b)/(a*a))-b/(2*a);
+			}
+		};
+
 		/// Abstract base class for different types of retention curves
 		///
 		/// This class, and its children uses wetness instead of volumetric water content. The wetness of a soil is defined as water content per void volume
 		class RetentionCurve {
+
 		public:
 			/// Returns the conductivity in m/day at a certain depth and water content
 			virtual real K(real wetness,real depth) const = 0;
@@ -150,7 +177,7 @@ namespace cmf {
 		{
 		public:
 			real
-				alpha,n,Ksat,Phi;
+				alpha,n,Ksat,Phi,Psi_full,w_max;
 			///\f[ W(\Psi) &=& \left(1+\left(\alpha\,100\frac{cm}{m}\Psi\right)^n\right)^{-m} \f]
 			virtual real Wetness(real suction) const;
 			/// \f[\Psi(W) &=& 0.01 \frac{m}{cm} \frac{{\left(1-{W}^{\frac{1}{m}}\right) }^{\frac{1}{n}}}{\alpha\,{W}^{\frac{1}{m\,n}}}  \f]
@@ -166,55 +193,15 @@ namespace cmf {
 			virtual real FillHeight(real lowerDepth,real Area,real Volume) const;
 			VanGenuchtenMualem* copy() const;
 			VanGenuchtenMualem()
-				: n(3.5),alpha(0.08),Phi(0.5),Ksat(15) {}
+				: n(3.5),alpha(0.08),Phi(0.5),Ksat(15),Psi_full(-0.1),w_max(1.1) {}
 			/// Creates a van Genuchten-Mualem retention curve
 			/// @param _n Van Genuchten n
 			/// @param _alpha Van Genuchten \f$\alpha\f$ in \f$\frac 1{cm}\f$
 			/// @param _phi Porosity in \f$\frac{m^3 Pores}{m^3 Soil}\f$
 			/// @param _Ksat Saturated conductivity in \f$\frac m{day}\f$
 			VanGenuchtenMualem(real _n,real _alpha,real _phi,real _Ksat)
-				: n(_n),alpha(_alpha),Phi(_phi),Ksat(_Ksat) {}
+				: n(_n),alpha(_alpha),Phi(_phi),Ksat(_Ksat),Psi_full(-0.1),w_max(1.1) {}
 
-		};
-		/// Wrapper of a retention curve. If shared is true, copies of RCurve hold a reference to the first RCurve, otherwise the retention curves are copied
-		class RCurve : public RetentionCurve
-		{
-		private:
-			typedef std::tr1::shared_ptr<RetentionCurve> p_r_curve;
-			p_r_curve r_curve;
-		public:
-			virtual real Wetness(real suction) const {return r_curve->Wetness(suction);}
-			virtual real MatricPotential(real wetness) const {return r_curve->MatricPotential(wetness);}
-			virtual real K(real wetness,real depth) const {return r_curve->K(wetness,depth);}
-			virtual real VoidVolume(real upperDepth,real lowerDepth,real Area) const {return r_curve->VoidVolume(upperDepth,lowerDepth,Area);}
-			virtual real Transmissivity(real upperDepth,real lowerDepth,real wetness) const {return r_curve->Transmissivity(upperDepth,lowerDepth,wetness);}
-			virtual real Porosity(real depth) const {return r_curve->Porosity(depth);}
-			virtual real FillHeight(real lowerDepth,real Area,real Volume) const {return r_curve->FillHeight(lowerDepth,Area,Volume);}
-			RCurve(const RetentionCurve& forcopy,bool Shared=false) : r_curve(forcopy.copy()),shared(Shared) {}
-			RCurve(const RCurve& forcopy): shared(forcopy.shared),r_curve(forcopy.shared? forcopy.r_curve : p_r_curve(forcopy.r_curve->copy()))
-			{			}
-			RCurve& operator=(const RetentionCurve& forcopy) {
-				r_curve=p_r_curve(forcopy.copy());
-				return *this;
-			}
-			RCurve& operator=(const RCurve& forcopy) {
-				r_curve=forcopy.shared ? forcopy.r_curve : p_r_curve(forcopy.r_curve->copy());
-				return *this;
-			}
-			RCurve(bool Shared=false) : r_curve(new BrooksCoreyRetentionCurve),shared(Shared) {}
-			cmf::upslope::VanGenuchtenMualem* AsVanGenuchten() const
-			{
-				return dynamic_cast<VanGenuchtenMualem*>(r_curve.get());
-			}
-			cmf::upslope::BrooksCoreyRetentionCurve* AsBrooksCorey() const
-			{
-				return dynamic_cast<BrooksCoreyRetentionCurve*>(r_curve.get());
-			}
-			RCurve* copy() const
-			{
-				return new RCurve(*this);
-			}
-			bool shared;
 		};
 	}
 }

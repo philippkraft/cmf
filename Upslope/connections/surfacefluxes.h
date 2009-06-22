@@ -53,7 +53,7 @@ namespace cmf {
 						real ThresholdTemp=cmf::atmosphere::Weather::snow_threshold;
 						if (T>ThresholdTemp)
 						{
-							real f=piecewise_linear(m_Snow->State()/m_cell.get_area(),0,0.001);
+							real f=piecewise_linear(m_Snow->get_state()/m_cell.get_area(),0,0.001);
 							return f*SnowMeltRate*(T-ThresholdTemp)*m_cell.get_area()*0.001;
 						}
 						else

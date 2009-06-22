@@ -146,6 +146,13 @@ class Pedotransfer:
         t=(clay*100.0/sum,silt*100.0/sum,sand*100.0/sum)
         return self.__textNames[self.__getTextureID(t)]
 
+def rounded_linear(x,s,ymax,r):
+    K=ymax*r/s
+    y0=ymax-K*s
+    x0=y0/s
+    return ((x>x0) * (y0+(x-x0)*K*s/(K+(x-x0)))) + ((x<=x0) * x * s)    
+
+
 class layer :
     """Class to hold a layer
 
@@ -217,7 +224,7 @@ class layer :
         return self.KSat*(theta/self.porosity)**(2+3*self.b)
          
     def MatrixPotential(self,theta):
-        psi_f=-31622.776601683792
+        psi_f=-100*10**1.8
         W_f=self.Wetness(self.fieldcap)
         W=self.Wetness(theta)
         b=self.b
@@ -230,7 +237,11 @@ class layer :
             m2=b*(-psi_i)/(W_i*(1-W_i))
             m=m1-m2
             n=2*W_i-1+b*psi_i/(m*W_i)
-            return m*(W-n)*(W-1)
+            if W<=1:
+                return m*(W-n)*(W-1)
+            else:
+                slope=m*(1-n)
+                return (exp(10*(W-1))*slope-slope)/10
 
 class soil:
     def __init__(self,name) :
@@ -265,7 +276,7 @@ class soil:
 
 
     def depth(self) :
-        """Returns the dpeth of the soil in m"""
+        """Returns the depth of the soil in m"""
         depth=0.0
         for l in self.layers:
             depth+=l.thickness
