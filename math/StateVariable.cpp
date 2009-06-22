@@ -13,7 +13,7 @@ void cmf::math::StateVariableVector::CopyStates( numVector & destination ) const
 #pragma omp parallel for
 	for (int i = 0; i < (int)size() ; i++)
 	{
-		destination[i]=(*this)[i]->State();
+		destination[i]=(*this)[i]->get_state();
 	}
 }
 
@@ -22,7 +22,7 @@ void cmf::math::StateVariableVector::CopyStates( real * destination ) const
 #pragma omp parallel for
 	for (int i = 0; i < (int)size() ; ++i)
 	{
-		destination[i]=(*this)[i]->State();
+		destination[i]=(*this)[i]->get_state();
 	}
 }
 void cmf::math::StateVariableVector::CopyDerivs( Time time,numVector & destination,real factor ) const
@@ -69,7 +69,7 @@ void cmf::math::StateVariableVector::SetStates(const numVector & newStates )
 	#pragma omp parallel for
 	for (int i = 0; i < (int)size() ; i++)
 	{
-		(*this)[i]->State(newStates[i]);
+		(*this)[i]->set_state(newStates[i]);
 	}
 }
 
@@ -78,7 +78,7 @@ void cmf::math::StateVariableVector::SetStates( real * newStates )
 #pragma omp parallel for
 	for (int i = 0; i < (int)size() ; ++i)
 	{
-		(*this)[i]->State(newStates[i]);
+		(*this)[i]->set_state(newStates[i]);
 	}
 }
 
@@ -87,6 +87,6 @@ void cmf::math::StateVariableVector::AddValuesToStates(const numVector& operands
 #pragma omp parallel for
 	for (int i = 0; i < (int)size() ; i++)
 	{
-		(*this)[i]->State((*this)[i]->State() + operands[i]);		
+		(*this)[i]->set_state((*this)[i]->get_state() + operands[i]);		
 	}
 }

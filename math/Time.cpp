@@ -5,7 +5,8 @@ namespace cmf {
 	namespace math {
 		cmf::math::Time operator*(double f,Time t) {return t*f;}
 		cmf::math::Time operator*(int f,Time t) {return t*f;}
-		
+
+
 	}
 }
 
@@ -71,9 +72,11 @@ std::string cmf::math::Time::ToString( char seperator/*=':'*/ )
 	str << (*this);
 	return str.str();
 }
-#ifdef _SWIG
-	%rename ToString (__str__)
-#endif
+
+double cmf::math::Time::DOY() const
+{
+	return AsDate().DOY();
+}
 
 std::string cmf::math::Date::ToString()
 {
@@ -137,3 +140,11 @@ std::string cmf::math::Date::ToString()
 		return os;
 	}
 
+	cmf::math::Time cmf::math::minimum_t(cmf::math::Time t1,cmf::math::Time t2)
+	{
+		return t1<t2 ? t1 : t2;
+	}
+	cmf::math::Time cmf::math::maximum_t(cmf::math::Time t1,cmf::math::Time t2)
+	{
+		return t1>t2 ? t1 : t2;
+	}

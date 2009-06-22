@@ -9,6 +9,7 @@
 #include <set>
 #include <string>
 #include "FluxNode.h"
+#include <stdexcept>
 namespace cmf {
 	class project;
 	namespace water {
@@ -52,7 +53,6 @@ namespace cmf {
 					return *m_right;
 				else
 					throw std::out_of_range("Only indices 0 and 1 are valid for querying a connection target");
-
 			}
 			void ExchangeTarget(FluxNode& oldtarget,FluxNode& newTarget);
 			/// Returns the other end of a connection than the asking end	(const)
@@ -84,10 +84,13 @@ namespace cmf {
 			/// Creates a flux connection between the FLuxNode left and right
 			/// @param left FluxNode on the one side of the connection
 			/// @param right FluxNode on the other side of the connection
+			/// @param _type Type of the flux connection
 			FluxConnection(FluxNode& left,FluxNode& right,std::string _type);
 
 			virtual ~FluxConnection();
 		};
+
+		
 
 
 // 		class RouteWaterBalanceConnection : public FluxConnection

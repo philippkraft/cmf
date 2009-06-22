@@ -50,6 +50,11 @@ namespace cmf {
 			{
 				return 1;
 			}
+			DricheletBoundary(const cmf::project& _p,real potential,cmf::geometry::point Location=cmf::geometry::point())
+				: FluxNode(_p,Location),m_Potential(potential)
+			{
+
+			}
 		};
 		/// A Neumann boundary condition (constant flux boundary condition)
 		///
@@ -75,13 +80,7 @@ namespace cmf {
 				return concentration.conc(t);
 			}
 			/// Returns the flux at a given time
-			real operator()(cmf::math::Time t) const
-			{
-				if (flux.is_empty())
-					return 0.0;
-				else
-					return scale_function(flux[t]);
-			}
+			real operator()(cmf::math::Time t) const;
 			bool is_empty() const
 			{
 				return flux.is_empty();
@@ -90,17 +89,24 @@ namespace cmf {
 			{
 				return true;
 			}
+			void connect_to(cmf::water::FluxNode& target);
 			
 			/// Ctor of the Neumann boundary
 			/// @param _project The project this boundary condition belongs to
 			/// @param _flux The flux timeseries (a scalar is converted to a timeseries automatically)
 			/// @param _concentration The concentration timeseries
 			/// @param loc The location of the boundary condition
-			NeumannBoundary(const cmf::project& _project, cmf::math::timeseries _flux=0.0,cmf::water::SoluteTimeseries _concentration=cmf::water::SoluteTimeseries(),cmf::geometry::point loc=cmf::geometry::point()) 
+			NeumannBoundary(const cmf::project& _project, cmf::math::timeseries _flux,cmf::water::SoluteTimeseries _concentration=cmf::water::SoluteTimeseries(),cmf::geometry::point loc=cmf::geometry::point()) 
 				: cmf::water::FluxNode(_project,loc), flux(_flux),concentration(_concentration)
 			{
 
 			}
+			NeumannBoundary(const cmf::project& _project,cmf::geometry::point loc=cmf::geometry::point()) 
+				: cmf::water::FluxNode(_project,loc)
+			{
+
+			}
+
 		};
 		
 		class NeumannFlux : public cmf::water::FluxConnection
@@ -111,14 +117,7 @@ namespace cmf {
 			{
 				m_bc=dynamic_cast<NeumannBoundary*> (m_left);
 			}
-			real calc_q(cmf::math::Time t)
-			{
-				real f=(*m_bc)(t);
-				if (f<0 && m_right->is_empty())
-					return 0.0;
-				else
-					return f;
-			}
+			real calc_q(cmf::math::Time t);
 		public:
 			NeumannFlux(NeumannBoundary& left,FluxNode& right)
 				: FluxConnection(left,right,"Neumann boundary flux")

@@ -5,17 +5,18 @@
 /************************************************************************/
 real cmf::upslope::connections::MatrixInfiltration::calc_q( cmf::math::Time t )
 {
+	cmf::upslope::Cell& cell=m_soilwater->cell;
 	real
-		f_Ponding=square(piecewise_linear(m_soilwater->get_wetness(),0.95,1)),	// Ponding factor (0 complete infiltration,	1 only ponding)
-		sw_b=maximum(m_soilwater->water_balance(t,this),0),													// Positive soil water balance
+		//f_Ponding=square(piecewise_linear(m_soilwater->get_wetness(),0.95,1)),	// Ponding factor (0 complete infiltration,	1 only ponding)
+		//sw_b=maximum(m_soilwater->water_balance(t,this),0),													// Positive soil water balance
 		Pot_surf=m_surfacewater->get_potential(),																				// get_potential of the surface water				
 		Pot_soil=m_soilwater->get_potential(),																					// get_potential of the soil water
 		gradient=(Pot_surf-Pot_soil)/(0.5*m_soilwater->get_thickness()),								// Gradient surface->soil
 		K=geo_mean(m_soilwater->get_K(),m_soilwater->get_Ksat()),										        // Conductivity in m/day
-		
-		maxInfiltration = 
-			  (1-f_Ponding)*gradient*K*m_soilwater->cell.get_area() // Maximal current infiltration dP/dz * K * get_area in m3/day
-			-	f_Ponding*sw_b;																		// Ponded flux
+		maxInfiltration = gradient * K * cell.get_area();
+// 		maxInfiltration = 
+// 			  (1-f_Ponding)*gradient*K*cell.get_area() // Maximal current infiltration dP/dz * K * get_area in m3/day
+// 			-	f_Ponding*sw_b;																		// Ponded flux
 
 	real
 		inflow=0,
@@ -30,16 +31,18 @@ real cmf::upslope::connections::MatrixInfiltration::calc_q( cmf::math::Time t )
 
 	return minimum(maxInfiltration,inflow);
 }
+
 real cmf::upslope::connections::CompleteInfiltration::calc_q( cmf::math::Time t )
 {
 	real
-		f_Ponding=square(piecewise_linear(m_soilwater->get_wetness(),0.95,1)),	// Ponding factor (0 complete infiltration,	1 only ponding)
-		sw_b=maximum(m_soilwater->water_balance(t,this),0),									// Positive soil water balance
+		f_Ponding=square(piecewise_linear(m_soilwater->get_wetness(),0.90,1)),	// Ponding factor (0 complete infiltration,	1 only ponding)
+		excess=maximum(0,m_soilwater->get_state()-m_soilwater->get_capacity()),
+		excess_flow=excess/(math::min).AsDays(),
 		K=m_soilwater->get_Ksat(),																							// Conductivity in m/day
 
 		maxInfiltration = 
 		(1-f_Ponding)*K*m_soilwater->cell.get_area()														// Maximal current infiltration dP/dz * get_K * get_area in m3/day
-		-	f_Ponding*sw_b;																										// Ponded flux
+		-	excess_flow;																										// Ponded flux
 
 	real
 		inflow=0,

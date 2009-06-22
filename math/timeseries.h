@@ -65,6 +65,14 @@ namespace cmf {
 			static data_pointer make_data(Time _begin=day*0,Time _step=day,int _interpolationpower=1);
 			double position(cmf::math::Time t) const;
 			double interpolate(cmf::math::Time t,double n) const;
+			cmf::math::Time time_at_position(double pos) const
+			{
+				return begin()+step()*(pos<0 ? size()+pos : pos);
+			}
+			cmf::math::Time time_at_position(int pos) const
+			{
+				return begin()+step()*(pos<0 ? size()+pos : pos);
+			}
 			/// Order of the interpolation
 		protected:
 		public:
@@ -87,7 +95,10 @@ namespace cmf {
 			{
 				m_data->values.clear();
 			}
-
+			size_t adress() const
+			{
+				return size_t(&(m_data->values[0]));
+			}
 			int size() const {return int(m_data->values.size());}
 			/// Constructor of a time series
 			/// @param _begin First date of measurement
@@ -122,6 +133,24 @@ namespace cmf {
 				return m_data->values.at(ndx);
 			}
 #endif
+			double get_t(cmf::math::Time t) const {return interpolate(t,interpolationpower());}
+			double get_i(int i) const
+			{
+				return m_data->values.at(i<0 ? size()+i :i);
+			}
+			void set_t(cmf::math::Time t,double value)
+			{
+				int pos=int(position(t)+0.5);
+				set_i(pos,value);
+			}
+			void set_i(int i,double value)
+			{
+				m_data->values.at(i<0 ? size()+i :i)=value;
+			}
+			cmf::math::timeseries get_slice(cmf::math::Time _begin,cmf::math::Time _end,cmf::math::Time _step=cmf::math::Time());
+			void set_slice(cmf::math::Time _begin,cmf::math::Time _end, cmf::math::timeseries values);
+			cmf::math::timeseries get_slice(int _begin,int _end,int step=1);
+			void set_slice(int _begin,int _end,cmf::math::timeseries _values);
 			/// @name Operators
 			/// Binary operators defined as free operators:
 			///
@@ -132,20 +161,40 @@ namespace cmf {
 			/// - timeseries = double x timeseries
 			/// - timeseries = timeseries x double
 			//@{
-			timeseries& operator+=(const timeseries&);      ///< add timeseries to this
+			timeseries& operator+=(timeseries);      ///< add timeseries to this
 			timeseries& operator+=(double);                ///< add scalar to this
-			timeseries& operator-=(const timeseries&);      ///< Subtract timeseries from this
+			timeseries& operator-=(timeseries);      ///< Subtract timeseries from this
 			timeseries& operator-=(double);                ///< Subtract scalar from this
-			timeseries& operator*=(const timeseries&);      ///< Multiply each element of timeseries with each element of this
+			timeseries& operator*=(timeseries);      ///< Multiply each element of timeseries with each element of this
 			timeseries& operator*=(double);                ///< Multiply each element of timeseries with scalar
-			timeseries& operator/=(const timeseries&);      ///< Divide each element of this by each element of timeseries
+			timeseries& operator/=(timeseries);      ///< Divide each element of this by each element of timeseries
 			timeseries& operator/=(double);                ///< Divide each element of this by scalar
 			timeseries& power(double);											 ///< raises the timeseries to a power
+
+			timeseries operator+(timeseries) const;
+			timeseries operator-(timeseries other) const;
+			timeseries operator*(timeseries other) const;
+			timeseries operator/(timeseries other) const;
+
+			timeseries operator+(double other) const;
+			timeseries operator-(double other) const;
+			timeseries operator*(double other) const;
+			timeseries operator/(double other) const;
+
+			timeseries operator-() const;
+			timeseries inv() const;
+
 
 			timeseries reduce_min(cmf::math::Time begin,cmf::math::Time step) const; /// Creates a timeseries with a bigger timestep, containing the minimum
 			timeseries reduce_max(cmf::math::Time begin,cmf::math::Time step) const; /// Creates a timeseries with a bigger timestep, containing the maximum
 			timeseries reduce_sum(cmf::math::Time begin,cmf::math::Time step) const; /// Creates a timeseries with a bigger timestep, containing the sum
 			timeseries reduce_avg(cmf::math::Time begin,cmf::math::Time step) const; /// Creates a timeseries with a bigger timestep, containing the average
+
+			timeseries floating_avg(cmf::math::Time window_width) const;
+			timeseries floating_max(cmf::math::Time window_width) const;
+			timeseries floating_min(cmf::math::Time window_width) const;
+
+			double mean() const;
 
 			//@}
 			/// @name I/O
@@ -162,36 +211,9 @@ namespace cmf {
 			explicit timeseries(std::istream& file);
 			//@}
 		};
-
+		double nash_sutcliff(const cmf::math::timeseries& model,const cmf::math::timeseries& observation);
+		double R2(const cmf::math::timeseries& model,const cmf::math::timeseries& observation);
 
 	}
 }
-#ifdef SWIG
-	%extend cmf::math::timeseries
-	{
-		double __size__()
-		{
-			return $self->size();
-		}
-		double __getitem__(cmf::math::Time t)
-		{
-			return (*$self)[t];
-		}
-		double __getitem__(int i)
-		{
-			return (*$self)[i];
-		}
-		void __setitem__(int i,double value)
-		{
-			 (*$self)[i]=value;
-		}
-		%pythoncode
-    {
-        def AddList(list) :
-            """ Adds the values of a list to the timeseries"""
-            for item in list :
-                self.Add(float(item))
-    }
-	}
-#endif
 #endif // timeseries_h__

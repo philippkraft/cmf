@@ -168,7 +168,7 @@ namespace cmf {
 				cmf::atmosphere::Weather w=m_cell.get_weather(t);
 				cmf::upslope::vegetation::Vegetation veg=m_cell.get_vegetation();
 				real PM=PenmanMonteith(w,veg,m_cell.z)*0.001*m_cell.get_area();
-				return minimum(c_stor->State()*2/cmf::math::h.AsDays(),PM);
+				return minimum(c_stor->get_state()*2/cmf::math::h.AsDays(),PM);
 			}
 
 			real HargreaveET::calc_q( cmf::math::Time t )
@@ -187,7 +187,7 @@ namespace cmf {
 					//s0 = extraterrestrial solar radiation  mm/day
 					s0 = 15.392 * dr *  ( ws * sin(phi) * sin(gamma) + cos(phi) * cos(gamma) * sin(ws)),
 					//difference between mean monthly min and max temperatures - an estimate!
-					TD = abs(A.Tmax-A.Tmin),  
+					TD = fabs(A.Tmax-A.Tmin),  
 					// Continentality factor, ranging between 0.19 (coastal regions) and 0.162
 					// Calculated according to Z. Samani, see http://cagesun.nmsu.edu/~zsamani/research_material/files/Hargreaves-samani.pdf
 					KT = 0.00185*(TD*TD) - 0.0433 * TD + 0.4023,

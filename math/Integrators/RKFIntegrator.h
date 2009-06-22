@@ -35,7 +35,7 @@ namespace cmf {
 			/// @param states Statevariables of the system
 			/// @param epsilon relative error tolerance per time step (default=1e-9)
 			/// @param tStepMin minimum time step (default=10s)
-			RKFIntegrator(const StateVariableVector& states, real epsilon=1e-9,cmf::math::Time tStepMin=Time::Seconds(10));
+			RKFIntegrator(StateVariableOwner& states, real epsilon=1e-9,cmf::math::Time tStepMin=Time::Seconds(10));
 			/// Constructs a new RKFIntegrator
 			/// @param epsilon relative error tolerance per time step (default=1e-9)
 			/// @param tStepMin minimum time step (default=10s)

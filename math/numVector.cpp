@@ -1,5 +1,9 @@
 #include "numVector.h"
+
 #include <cmath>
+
+#include <iostream>
+
 #ifdef _OPENMP
 #include <omp.h>
 #endif
@@ -41,6 +45,12 @@ cmf::math::numVector::numVector( const std::valarray<real>& Vector )
 	for (int i = 0; i < m_size ; ++i)
 		m_data[i]=Vector[i];
 }
+
+cmf::math::numVector::numVector( double * data,int count )
+{
+	m_data=data;
+	m_size=count;
+}
 cmf::math::numVector::~numVector()
 {
 	delete[] m_data;
@@ -71,6 +81,17 @@ cmf::math::numVector& cmf::math::numVector::operator=( real scalar )
 	for (int i = 0; i < size(); ++i)
 		m_data[i] = scalar;
 	return (*this);
+}
+
+cmf::math::numVector& cmf::math::numVector::operator=( const std::vector<double>& vector )
+{
+	resize(vector.size());
+#pragma omp parallel for
+	for (int i = 0; i < (int)size() ; ++i)
+	{
+		m_data[i]=vector[i];
+	}
+	return *this;
 }
 cmf::math::numVector& cmf::math::numVector::operator-=( real _Right )
 {
@@ -140,6 +161,7 @@ cmf::math::numVector& cmf::math::numVector::operator/=(const numVector& _Right )
 
 void cmf::math::numVector::resize( int count )
 {
+	if (count==size()) return;
 	real* ptr_new=new real[count];
 #pragma omp parallel for
 	for (int i = 0; i < size(); ++i)
@@ -267,72 +289,76 @@ real cmf::math::numVector::norm( int normtype ) const
 	}
 }
 
+size_t cmf::math::numVector::adress() const
+{
+	return size_t(m_data);
+}
 //
 // Binary Operators
 //
-cmf::math::numVector cmf::math::operator+( const numVector& _Left,const numVector& _Right )
+cmf::math::numVector cmf::math::numVector::operator+(const numVector& _Right )
 {
-	cmf::math::numVector result(_Left.size());
+	cmf::math::numVector result(size());
 #pragma omp parallel for
-	for (int i = 0; i < _Left.size(); ++i)
-		result[i] = _Left[i] + _Right[i];
+	for (int i = 0; i < size(); ++i)
+		result[i] = (*this)[i] + _Right[i];
 	return result;
 }
-cmf::math::numVector cmf::math::operator-( const numVector& _Left,const numVector& _Right )
+cmf::math::numVector cmf::math::numVector::operator-(const numVector& _Right )
 {
-	cmf::math::numVector result(_Left.size());
+	cmf::math::numVector result((*this).size());
 #pragma omp parallel for
-	for (int i = 0; i < _Left.size(); ++i)
-		result[i] = _Left[i] - _Right[i];
+	for (int i = 0; i < (*this).size(); ++i)
+		result[i] = (*this)[i] - _Right[i];
 	return result;
 }
-cmf::math::numVector cmf::math::operator*( const numVector& _Left,const numVector& _Right )
+cmf::math::numVector cmf::math::numVector::operator*(const numVector& _Right )
 {
-	cmf::math::numVector result(_Left.size());
+	cmf::math::numVector result((*this).size());
 #pragma omp parallel for
-	for (int i = 0; i < _Left.size(); ++i)
-		result[i] = _Left[i] * _Right[i];
+	for (int i = 0; i < (*this).size(); ++i)
+		result[i] = (*this)[i] * _Right[i];
 	return result;
 }
-cmf::math::numVector cmf::math::operator/( const numVector& _Left,const numVector& _Right )
+cmf::math::numVector cmf::math::numVector::operator/(const numVector& _Right )
 {
-	cmf::math::numVector result(_Left.size());
+	cmf::math::numVector result((*this).size());
 #pragma omp parallel for
-	for (int i = 0; i < _Left.size(); ++i)
-		result[i] = _Left[i] / _Right[i];
+	for (int i = 0; i < (*this).size(); ++i)
+		result[i] = (*this)[i] / _Right[i];
 	return result;
 }
 
-cmf::math::numVector cmf::math::operator+( const numVector& _Left,real _Right )
+cmf::math::numVector cmf::math::numVector::operator+(real _Right )
 {
-	cmf::math::numVector result(_Left.size());
+	cmf::math::numVector result((*this).size());
 #pragma omp parallel for
-	for (int i = 0; i < _Left.size(); ++i)
-		result[i] = _Left[i] + _Right;
+	for (int i = 0; i < (*this).size(); ++i)
+		result[i] = (*this)[i] + _Right;
 	return result;
 }
-cmf::math::numVector cmf::math::operator-( const numVector& _Left,real _Right )
+cmf::math::numVector cmf::math::numVector::operator-(real _Right )
 {
-	cmf::math::numVector result(_Left.size());
+	cmf::math::numVector result((*this).size());
 #pragma omp parallel for
-	for (int i = 0; i < _Left.size(); ++i)
-		result[i] = _Left[i] - _Right;
+	for (int i = 0; i < (*this).size(); ++i)
+		result[i] = (*this)[i] - _Right;
 	return result;
 }
-cmf::math::numVector cmf::math::operator*( const numVector& _Left,real _Right )
+cmf::math::numVector cmf::math::numVector::operator*(real _Right )
 {
-	cmf::math::numVector result(_Left.size());
+	cmf::math::numVector result((*this).size());
 #pragma omp parallel for
-	for (int i = 0; i < _Left.size(); ++i)
-		result[i] = _Left[i] * _Right;
+	for (int i = 0; i < (*this).size(); ++i)
+		result[i] = (*this)[i] * _Right;
 	return result;
 }
-cmf::math::numVector cmf::math::operator/( const numVector& _Left,real _Right )
+cmf::math::numVector cmf::math::numVector::operator/(real _Right )
 {
-	cmf::math::numVector result(_Left.size());
+	cmf::math::numVector result((*this).size());
 #pragma omp parallel for
-	for (int i = 0; i < _Left.size(); ++i)
-		result[i] = _Left[i] / _Right;
+	for (int i = 0; i < (*this).size(); ++i)
+		result[i] = (*this)[i] / _Right;
 	return result;
 }
 
@@ -369,5 +395,29 @@ cmf::math::numVector cmf::math::operator/( real _Left,const numVector& _Right )
 	return result;
 }
 
-
-
+// static numVector* convert_array_interface_to_numvector(PyObject* obj)
+// {
+// 	if (PyObject_HasAttrString(obj,"__array_interface__"))
+// 	{
+// 		PyObject* ai=PyObject_GetAttrString(obj,"__array_interface__");
+// 		if (PyDict_Check(ai))
+// 		{
+// 			 PyObject* data=PyDict_GetItemString(obj,"data");
+// 			 PyObject* adress=PyLong_AsLongLong(PyTuple_GetItem(data,0));
+// 			 PyObject* shape=PyDict_GetItemString(obj,"shape");
+// 			 long long size=0;
+// 			 for (Py_ssize_t i = 0; i < PyTuple_Size(shape) ; ++i)
+// 			 {
+// 				 size*=PyTuple_GetItem(shape,i);
+// 			 }
+// 			 PyObject* typestr=PyDict_GetItemString(obj,"typestr");
+// 			 PyObject* version=PyDict_GetItemString(obj,"version");
+// 			 		
+// 			 
+// 
+// 		}
+// 		Py_XDECREF(ai);
+// 	}
+// 	return 0;
+// }
+	

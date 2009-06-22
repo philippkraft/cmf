@@ -4,7 +4,7 @@
 #include <omp.h>
 #endif
 using namespace std;
-cmf::math::ImplicitEuler::ImplicitEuler(const StateVariableVector& states, real epsilon/*=1e-9*/,cmf::math::Time tStepMin/*=10.0/(3600.0*24.0)*/ ) : 
+cmf::math::ImplicitEuler::ImplicitEuler(StateVariableOwner& states, real epsilon/*=1e-9*/,cmf::math::Time tStepMin/*=10.0/(3600.0*24.0)*/ ) : 
 Integrator(states,epsilon,tStepMin)
 {
 	oldStates		  = numVector(int(m_States.size()),0);

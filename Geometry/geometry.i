@@ -7,11 +7,19 @@
 %include "geometry/geometry.h"
 %extend cmf::geometry::Locatable{
     %pythoncode{
-    position=property(get_position,None,"The position ofthe locatabe object")
+    position=property(get_position,set_position,"The position ofthe locatabe object")
     }
 }
 %extend cmf::geometry::point {
     inline int __len__() const { return 3; }
+    cmf::geometry::point __rmul__(double val)
+    {
+        return val*(*$self);
+    }
+    cmf::geometry::point __rdiv__(double val)
+    {
+        return val/(*$self);
+    }
 
     %pythoncode 
     {
@@ -121,8 +129,5 @@ static int convert_xyz_to_point(PyObject* input,cmf::geometry::point& p)
 	cmf::geometry::point p;
 	$1=convert_seq_to_point($input,p) || convert_xyz_to_point($input,p);
 }
-
-
-%template(Points) std::vector<cmf::geometry::point>;
 
 

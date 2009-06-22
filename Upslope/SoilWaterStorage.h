@@ -7,7 +7,6 @@
 #include "Soil/RetentionCurve.h"
 #include "cell.h"
 #include <memory>
-#include <sstream>
 namespace cmf {
 	namespace upslope {
 		/// A representation of a Layer
@@ -18,7 +17,7 @@ namespace cmf {
 			wet m_wet;
 		protected:
 			real m_upperboundary,m_lowerboundary;
-			cmf::upslope::RCurve m_retentioncurve;
+			std::auto_ptr<cmf::upslope::RetentionCurve> m_retentioncurve;
 		protected:
 		public:
 			const int Position;
@@ -29,13 +28,13 @@ namespace cmf {
 			virtual real get_lower_boundary() const {return m_lowerboundary;}
 			real get_thickness() const {return get_lower_boundary()-get_upper_boundary();}
 			/// Returns the soil properties of the water storage
-			virtual const cmf::upslope::RCurve& get_soil() const {return m_retentioncurve;}
-			virtual cmf::upslope::RCurve& get_soil() {return m_retentioncurve;}
+			virtual cmf::upslope::RetentionCurve& get_soil() const {return *m_retentioncurve;}
+			virtual void set_soil(const cmf::upslope::RetentionCurve& r_curve) { m_retentioncurve.reset(r_curve.copy());}
 			/// Returns the actual volumetric water content of the water storage
 			virtual real get_theta() const {return m_wet.theta;}
 			virtual void set_theta(real Value)
 			{
-				State(Value*cell.get_area()*get_thickness());
+				set_state(Value*cell.get_area()*get_thickness());
 			}
 			/// Returns the actual conductivity	\f$\frac{m}{day}\f$
 			real get_K() const {return m_wet.K;}
@@ -44,15 +43,15 @@ namespace cmf {
 			virtual real get_wetness() const {return m_wet.W;}
 			virtual void set_wetness(real wetness)
 			{
-				State(wetness*Capacity());
+				set_state(wetness*get_capacity());
 			}
-			/// Calls RCurve::Matrixpotential
+			/// Calls RetentionCurve::Matrixpotential
 			virtual real get_matrix_potential() const {return m_wet.Psi_m;}
 			/// Gravitational get_potential in m, reference height is sea level. If the layer is saturated, it returns the saturated depth above sea level, otherwise it returns the upperboundary of the layer
 			/// \f[ \Psi_G=h \f]
 			real get_gravitational_potential() const;
 			/// Returns the capacity of the water storage in m3
-			virtual real Capacity()		{return m_wet.C;}
+			virtual real get_capacity()	const	{return m_wet.C;}
 			/// Sets the potential of this soil water storage
 			virtual void set_potential(real waterhead);
 			/// Returns the total potential in m
@@ -71,65 +70,20 @@ namespace cmf {
 			
 			SoilWaterStorage* copy()
 			{
-				return new SoilWaterStorage(cell,m_upperboundary,m_lowerboundary,m_retentioncurve,Position);
+				return new SoilWaterStorage(cell,m_upperboundary,m_lowerboundary,get_soil(),Position);
 			}
-			static SoilWaterStorage * Create(cmf::upslope::Cell & _cell,real lowerboundary,const RCurve& r_curve,real saturateddepth=-10)
+			static SoilWaterStorage* Create(cmf::upslope::Cell & _cell,real lowerboundary,const RetentionCurve& r_curve,real saturateddepth=-10)
 			{
 				return new SoilWaterStorage(_cell,lowerboundary,r_curve,saturateddepth);
 			}
 		protected:
-			SoilWaterStorage(cmf::upslope::Cell & _cell,real lowerboundary,const RCurve& r_curve,real saturateddepth=-10);
-			SoilWaterStorage(cmf::upslope::Cell & _cell,real upperBoundary,real lowerboundary,const RCurve& r_curve,int _Position);
+			SoilWaterStorage(cmf::upslope::Cell & _cell,real lowerboundary,const RetentionCurve& r_curve,real saturateddepth=-10);
+			SoilWaterStorage(cmf::upslope::Cell & _cell,real upperBoundary,real lowerboundary,const RetentionCurve& r_curve,int _Position);
 			/// Invalidates the saturated depth of the cell
 			virtual void StateChangeAction();
 
 		};
 
-		class VariableLayerUnsaturated;
-		/// A soil water storage with a flexible (non constant) upper boundary, according to its fill state. 
-		/// This soil water storage is always saturated
-		class VariableLayerSaturated : public SoilWaterStorage
-		{
-		private:
-			cmf::upslope::VariableLayerUnsaturated* upperLayer;
-			/// Creates	two soilwaterstorages and registers them with the owning cell. The boundary between the two layers is flexible and
-			/// changes with saturation. The lower layer is always saturated, the upper never. A UnsatSatconnection connects both layers
-			VariableLayerSaturated(cmf::upslope::Cell& cell,real lowerboundary,const RCurve& r_curve);
-
-		public:
-			/// Returns the current upper boundary of this layer (function of state)
-			virtual real get_upper_boundary() const;
-			VariableLayerUnsaturated& UpperLayer() {return *upperLayer;}
-			static VariableLayerSaturated* Create(cmf::upslope::Cell& cell,real lowerboundary,const RCurve& r_curve);
-			virtual real get_saturated_depth() const { return get_upper_boundary();}
-			virtual void set_potential(real waterhead);
-			virtual real MaximumThickness() const;
-			virtual real get_potential() const;
-			static VariableLayerSaturated* get_from_cell(cmf::upslope::Cell& cell)
-			{
-				for (int i = 0; i < cell.layer_count() ; ++i)
-				{
-					VariableLayerSaturated *p_result = dynamic_cast<VariableLayerSaturated *>(&cell.get_layer(i));
-					if(p_result)
-					{
-						 return p_result;
-					}
-				}
-				return 0;
-			}
-		};
-		/// A soil water storage above a FlexibleSizeSaturatedLayer, can only be created by FlexibleSaturatedLayer
-		class VariableLayerUnsaturated : public SoilWaterStorage
-		{
-		private:
-			cmf::upslope::SoilWaterStorage* belowLayer;
-			friend class VariableLayerSaturated;
-			VariableLayerUnsaturated(cmf::upslope::Cell & cell,real upperboundary,real lowerboundary,const RCurve & r_curve,cmf::upslope::VariableLayerSaturated* LayerBelow);
-		public:
-			virtual real get_lower_boundary() const { return belowLayer ? belowLayer->get_upper_boundary() : get_upper_boundary()+0.001;}
-			virtual real get_saturated_depth() const { return get_lower_boundary();}
-
-		};
 		cmf::upslope::SoilWaterStorage* AsSoilWater(cmf::water::FluxNode* node);
 
 

@@ -1,6 +1,7 @@
 #include "RetentionCurve.h"
 #include <cmath>
 #include "../../math/real.h"
+
 /// Converts a pressure in Pa to a length of a water column in m
 double cmf::upslope::pressure_to_waterhead(double Pressure)		{	return Pressure/rho_wg;		}
 /// Converts a height of a water column in m to a pressure in Pa
@@ -8,12 +9,12 @@ double cmf::upslope::waterhead_to_pressure(double waterhead)  { return waterhead
 /// Converts a pF value to a height of a water column in m
 double cmf::upslope::pF_to_waterhead(double pF)               { return -pow(10,pF+2)/rho_wg;}
 /// Converts a height of a water column to a pF value
-double cmf::upslope::waterhead_to_pF(double waterhead)        { return log10(abs(waterhead*rho_wg))-2;}
+double cmf::upslope::waterhead_to_pF(double waterhead)        { return log10(fabs(waterhead*rho_wg))-2;}
 
 real cmf::upslope::BrooksCoreyRetentionCurve::K( real wetness,real depth ) const
 {
 	real Ksat=m_Ksat*pow(1-m_KsatDecay,depth);
-	return Ksat*pow(wetness,2+3*b());
+	return Ksat*minimum(pow(wetness,2+3*b()),1);
 }
 
 real cmf::upslope::BrooksCoreyRetentionCurve::Porosity( real depth ) const
@@ -117,32 +118,61 @@ void cmf::upslope::BrooksCoreyRetentionCurve::Set_Saturated_pF_curve_tail_parame
 }
 
 
-real cmf::upslope::VanGenuchtenMualem::Wetness( real suction ) const
+
+real cmf::upslope::VanGenuchtenMualem::Wetness( real suction) const
 {
-	real linear_part=(suction/100)+1;
-	real Psi=-100*suction;
 	real m=1-1/n;
-	real vgm_part=suction<0 ? pow(1+pow(alpha*Psi,n),-m) : 1;
-	real f_Transition=pow(piecewise_linear(vgm_part,.98,1.0),10);
-	return (1-f_Transition)*vgm_part+f_Transition*linear_part;
+	real h=-100 * suction;
+	real h0=-100 * Psi_full;
+	real w=pow(1+pow(alpha*maximum(h,h0),n),-m);
+	if (suction>Psi_full)
+	{
+		real w0=Wetness(Psi_full);
+		// Slope dw/dh at h0 
+		real s=-m*n*pow(1 + pow(alpha*h0,n),-m)*pow(alpha*h0,n)/(h0*(1 + pow(alpha*h0,n)));
+		real w_max=(square(w0)-w0-h0*s)/(w0-h0*s-1);
+		// Add Michaelis Menten extrapolation
+		w+= (w_max-w) * (h-h0)
+							/((w_max-w)/s + (h-h0));
+	}
+	return w;
 }
+	
 
-real cmf::upslope::VanGenuchtenMualem::MatricPotential( real wetness ) const
+real cmf::upslope::VanGenuchtenMualem::MatricPotential( real w ) const
 {
-	real linear_part=100*(wetness-1.0);
-	//real f_Transition=sqrt(boltzmann(wetness,1,0.01));
-	real f_Transition=pow(piecewise_linear(wetness,.98,1.0),10);
+	real w0=Wetness(Psi_full); // Wetness at the border between non-linear and linear part = wetness(h0)
+	if (w<w0)
+	{
+		// inverse m and inverse n
+		real mi=1/(1-1/n),ni=1/n;
 
-	real mi=1/(1-1/n),ni=1/n;
-	real vgm_part=wetness<1 ? -0.01*pow(1-pow(wetness,mi),ni)/(alpha*pow(wetness,mi*ni)) : 0;
-	return (1-f_Transition)*vgm_part+f_Transition*linear_part;
+		return -0.01*pow(1-pow(w,mi),ni)/(alpha*pow(w,mi*ni));
+	}
+	else
+	{
+		real m=1-1/n;
+		// Pressure head at the border between non-linear and linear part (in cm)
+		real h0=-100 * Psi_full; 
+		// Slope dw/dh(h0)
+		real s=-m*n*pow(1 + pow(alpha*h0,n),-m)*pow(alpha*h0,n)/(h0*(1 + pow(alpha*h0,n)));
+		// Maximum wetness. Solution of eq.: 1 = w0 + (0-h0)*(w_max-w0)/((w_max-w0)/s + (0 - h0))
+		real w_max=(square(w0)-w0-h0*s)/(w0-h0*s-1);
+		// wetness difference
+		real w_diff=w_max-w0;
+		// michaelis menten k 
+		real k_m=-w_diff/s;
+		// inverse Michaelis-Menten extrapolation
+		real h_diff = (w0-w)*k_m/(w_diff+w0-w);
+		return -0.01 * (h0 + h_diff);
+	}
 }
 
 real cmf::upslope::VanGenuchtenMualem::K( real wetness,real depth ) const
 {
 	if (wetness>=1) return Ksat*exp(-(wetness-1)*10);
 	real m=1-1/n;
-	return Ksat*sqrt(wetness)*square(1-pow(1-pow(wetness,1/m),m));
+	return Ksat*minimum(sqrt(wetness)*square(1-pow(1-pow(wetness,1/m),m)),1);
 }
 
 real cmf::upslope::VanGenuchtenMualem::VoidVolume( real upperDepth,real lowerDepth,real Area ) const
@@ -162,7 +192,7 @@ real cmf::upslope::VanGenuchtenMualem::Porosity( real depth ) const
 
 real cmf::upslope::VanGenuchtenMualem::FillHeight( real lowerDepth,real Area,real Volume ) const
 {
-	return lowerDepth-Volume/(Area*Phi);
+	return Volume/(Area*Phi);
 }
 
 cmf::upslope::VanGenuchtenMualem* cmf::upslope::VanGenuchtenMualem::copy() const

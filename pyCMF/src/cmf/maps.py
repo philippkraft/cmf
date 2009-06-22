@@ -29,7 +29,34 @@ class Map(object):
         return self.default
     def __nonzero__(self):
         return not self._default is None
+class simple_quad_tree:
+    def add_object(self,object,bounds):
+        imin=int(bounds[0]/self.dx)
+        jmin=int(bounds[1]/self.dy)
+        imax=int(bounds[2]/self.dx)+1
+        jmax=int(bounds[3]/self.dy)+1
+        for i in range(imin,imax):
+            for j in range(jmin,jmax):
+                self.areas.setdefault((i,j),set()).add(object)
+    def get_objects(self,bounds):
+        imin=int(bounds[0]/self.dx)
+        jmin=int(bounds[1]/self.dy)
+        imax=int(bounds[2]/self.dx)+1
+        jmax=int(bounds[3]/self.dy)+1
+        res=set()
+        for i in range(imin,imax):
+            for j in range(jmin,jmax):
+                res.update(self.areas.get((i,j),set()))
+        return res
+
+    def __init__(self,dx=20,dy=20):
+        self.dx=dx
+        self.dy=dy
+        self.areas={}
         
+                        
+        
+       
 class nearest_neighbor_map(Map):
     """A map (spatial distribution of data) returning the nearest neighbor to the queried position
     Stores position referenced objects.
@@ -73,11 +100,13 @@ class polygon_map(Map):
     """A map of polygons. Each object is referenced with a shapely polygon. 
     Returns the object of the first polygon, within the query position lays. 
     """
-    def __init__(self):
+    def __init__(self,quad_tree_raster_size=20):
         Map.__init__(self)
         self._objects={}
+        self.q_tree=simple_quad_tree(quad_tree_raster_size,quad_tree_raster_size)
     def append(self,polygon,object):
         self._objects[polygon]=object
+        self.q_tree.add_object(polygon, polygon.bounds)
     def remove(self,polygon):
         self._objects.pop(polygon)
     def __iter__(self):
@@ -89,7 +118,8 @@ class polygon_map(Map):
             yield v
     def __call__(self,x,y,z=0):
         loc=geometry.Point(x,y,z)
-        for p in self._objects:
+        candidates=self.q_tree.get_objects((x,y,x,y))
+        for p in candidates:
             if loc.within(p):
                 return self._objects[p]        
         return self.default

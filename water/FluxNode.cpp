@@ -1,5 +1,8 @@
 #include "FluxNode.h"
 #include "FluxConnection.h"
+#ifdef _OPENMP
+#include <omp.h>
+#endif
 
 #include "../project.h"
 int cmf::water::FluxNode::nextnodeid=0;
@@ -91,4 +94,88 @@ cmf::water::WaterQuality cmf::water::FluxNode::conc( cmf::math::Time t ) const
 
 cmf::water::FluxNode::FluxNode( const cmf::project& _project,cmf::geometry::point location ) : m_project(_project), node_id(nextnodeid++),Location(location)
 {
+}
+
+cmf::geometry::point cmf::water::FluxNode::flux3d_to( const cmf::water::FluxNode& target,cmf::math::Time t )
+{
+	if (m_Connections.find(target.node_id)!=m_Connections.end())
+		return -m_Connections[target.node_id]->q(*this,t) * get_direction_to(target);
+	else
+		return cmf::geometry::point();
+}
+
+cmf::geometry::point cmf::water::FluxNode::get_3d_flux( cmf::math::Time t )
+{
+	cmf::geometry::point res;
+	for(FluxNode::ConnectionMap::iterator it = m_Connections.begin(); it != m_Connections.end(); ++it)
+	{
+		FluxNode& target=it->second->Target(*this);
+		res+=flux_to(target,t) * get_direction_to(target) ;
+	}
+	return res;
+
+
+}
+real cmf::water::node_list::global_water_balance( cmf::math::Time t )	const
+{
+	real sum=0;
+#pragma omp parallel for reduction(+ : sum)
+	for (int i = 0; i < (int)size() ; ++i)
+	{
+		sum+=m_nodes[i]->water_balance(t);					
+	}
+	return sum;
+}
+
+cmf::math::numVector cmf::water::node_list::water_balance( cmf::math::Time t ) const
+{
+	cmf::math::numVector res(size());
+#pragma omp parallel for
+	for (int i = 0; i < (int)size() ; ++i)
+	{
+		res[i]=m_nodes[i]->water_balance(t);
+	}
+	return res;
+}
+
+cmf::math::numVector cmf::water::node_list::get_fluxes_to( const cmf::water::node_list& targets ,cmf::math::Time t ) const 
+{
+	if (size() != targets.size())
+		throw std::invalid_argument("The list for the target nodes need to have the same length as this node_list");
+		cmf::math::numVector res(size());
+#pragma omp parallel for
+	for (int i = 0; i < (int)res.size() ; ++i)
+	{
+		res[i]=m_nodes[i]->flux_to(*targets.m_nodes[i],t);
+	}
+	return res;
+
+}
+
+cmf::geometry::point_vector cmf::water::node_list::get_fluxes3d_to( const cmf::water::node_list& targets ,cmf::math::Time t ) const
+{
+	if (size() != targets.size())
+		throw std::invalid_argument("The list for the target nodes need to have the same length as this node_list");
+	cmf::geometry::point_vector res(size());
+#pragma omp parallel for
+	for (int i = 0; i < (int)res.size() ; ++i)
+	{
+		res.set(i,m_nodes[i]->flux3d_to(*targets.m_nodes[i],t));
+	}
+	return res;
+
+
+}
+
+cmf::geometry::point_vector cmf::water::node_list::get_fluxes3d( cmf::math::Time t ) const
+{
+	cmf::geometry::point_vector res(size());
+#pragma omp parallel for
+	for (int i = 0; i < (int)res.size() ; ++i)
+	{
+		res.set(i,m_nodes[i]->get_3d_flux(t));
+	}
+	return res;
+
+
 }

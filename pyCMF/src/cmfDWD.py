@@ -1,6 +1,7 @@
-import CMFLib as cmf
+import cmf
 import DWD
-def GetMeteorology(dwdBestandFile,dwdSatzFile,dwdDatFile,start,end,daily=1,removeNoData=0):
+print "DWD data importer for cmf"
+def GetMeteorology(cmf_project,dwdBestandFile,dwdSatzFile,dwdDatFile,start,end,daily=1,removeNoData=0):
     """ Returns a dictionary of cmf.Meterology indexed by the id of the station
     
     dwdBestandFile Filename of the DWD file 'Bestand'
@@ -14,15 +15,15 @@ def GetMeteorology(dwdBestandFile,dwdSatzFile,dwdDatFile,start,end,daily=1,remov
     """
     #Load the stations from the DWD files
     stations=DWD.LoadDWD(dwdBestandFile,dwdSatzFile,dwdDatFile)
-    return convertstations(stations, start, end, daily, removeNoData)
-def convertstations(stations,start,end,daily=1,removeNoData=0):
+    return convertstations(cmf_project,stations, start, end, daily, removeNoData)
+def convertstations(cmf_project,stations,start,end,daily=1,removeNoData=0):
     # The dictionary, that will be returned
     meteorology={}
     
     for st in stations.values() :
         print st.number,
         # Create the meteorology
-        meteo=cmf.Meteorology(st.lat,st.lon,1,st.height,start,cmf.day,st.number)
+        meteo=cmf_project.meteo_stations.add_station(st.number,st.lat,st.lon,1,st.height,start,cmf.day)
         meteo.daily=daily
         # Get the dictionary of column positions
         columndict=st.ColumnHeaderDict()
@@ -42,13 +43,14 @@ def convertstations(stations,start,end,daily=1,removeNoData=0):
             pydate=curdate.AsPython().date()
             # If curdate is in the station dataset
             if pydate in datadict :
+                
                 # Read the record at curdate
                 r=datadict[pydate]
                 datacount+=1
                 # For each column name
                 for col in columndict:
                     # Add the value at record r and column col to the timeseries col (only if tsdict[col] exist, of course)
-                    if col in tsdict : tsdict[col].Add(r[columndict[col]])
+                    if col in tsdict : tsdict[col].add(r[columndict[col]])
             else : # curdate has no data
                 # Last loop values where retrieved and remove no data
                 if r and removeNoData :
@@ -57,7 +59,7 @@ def convertstations(stations,start,end,daily=1,removeNoData=0):
                     datacount+=1
                     for col in columndict: 
                         # Add the value at record r and column col to the timeseries col (only if tsdict[col] exist, of course)
-                        if col in tsdict : tsdict[col].Add(r[columndict[col]])
+                        if col in tsdict : tsdict[col].add(r[columndict[col]])
                 else: # Whether r was never established, or no data areas are to be removed       
                  # Remove data from all timeseries and set the begin on tomorrow
                  for ts in tsdict.values():
@@ -67,7 +69,18 @@ def convertstations(stations,start,end,daily=1,removeNoData=0):
         print " %i records imported, %i no data records estimated" % (datacount,nodatacount)
         meteorology[st.number]=meteo
     return meteorology
-
+def get_rainfall(data_filename):
+    f=file(data_filename)
+    timeseries={}
+    for line in f:
+        id=line[0:5]
+        year=int(line[5:9])
+        month=int(line[9:11])
+        day=int(line[11:13])
+        rr=int(line[14:18])
+        timeseries.setdefault(id, cmf.timeseries(cmf.Time(day,month,year),cmf.day)).add(rr*0.1)
+    return  timeseries
+        
 def ExtendMeteorology(meteos,dwdBestandFile,dwdSatzFile,dwdDatFile,removeNoData):
     """Extends 
     """

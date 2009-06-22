@@ -152,8 +152,9 @@ namespace cmf {
 			long long AsMilliseconds() const {return m_time_in_ms;}
 			Date AsDate() const;
 			std::string ToString(char seperator=':');
+			bool is_not_0() const {return m_time_in_ms!=0;}
+			double DOY() const;
 			//@}
-
 
 			/// @name Arithmetic operators
 			//@{
@@ -169,20 +170,26 @@ namespace cmf {
 			Time operator*(double x) const				{return Time((long long)(m_time_in_ms*x));}
 			/// Time = Time / double
 			Time operator/(double x) const				{return Time((long long)(m_time_in_ms/x));}
+			/// Time = Time % Time
+			Time operator%(const Time& t1) const {return Time(m_time_in_ms % t1.AsMilliseconds());}
 			/// Time *= double
-			Time operator*=(double x)							{m_time_in_ms= long long(m_time_in_ms * x); return *this;}
+			Time& operator*=(double x)							{m_time_in_ms= (long long)(m_time_in_ms * x); return *this;}
 			/// Time /= double
-			Time operator/=(double x)							{m_time_in_ms= long long(m_time_in_ms / x); return *this;}
+			Time& operator/=(double x)							{m_time_in_ms= (long long)(m_time_in_ms / x); return *this;}
 			/// Time = Time * int
 			Time operator*(int x) const           {return Time((long long)(m_time_in_ms*x));}
 			/// Time = Time / int
 			Time operator/(int x) const           {return Time((long long)(m_time_in_ms/x));}
 			/// Time *= int
-			Time operator*=(int x)						  	{m_time_in_ms*= x; return *this;}
+			Time& operator*=(int x)						  	{m_time_in_ms*= x; return *this;}
 			/// Time /= int
-			Time operator/=(int x)						  	{m_time_in_ms/= x; return *this;}
+			Time& operator/=(int x)						  	{m_time_in_ms/= x; return *this;}
+			/// Time %= Time
+			Time& operator%=(const Time& t1)			{m_time_in_ms%= t1.AsMilliseconds(); return *this; }
 			/// double = Time / Time
 			double operator/(const Time& t1) const  {return ((double)m_time_in_ms)/((double)t1.AsMilliseconds());}
+			/// Returns the number of times this is included in t1
+			long long times_in(const Time& t1) const {return t1.AsMilliseconds()/m_time_in_ms;}
 			//@}
 			/// @name Boolean Operators
 			//@{
@@ -199,11 +206,6 @@ namespace cmf {
 			/// bool = Time != Time
 			bool operator!=(const Time& t1)	const	{return m_time_in_ms!=t1.AsMilliseconds();}
 			//@}
-
-			/// Returns the beginning of the next day
-			Time NextDay() const {return Time(floor(this->AsDays())+1);}
-			/// Returns the next full hour
-			Time NextFullHour() const {return Time((floor(this->AsHours())+1)/24.0);}
 			
 			/// Creates a time representing y years
 			static Time Years(double y=1) {return Time((long long)(y*365*24*60*60*1000));}
@@ -221,6 +223,8 @@ namespace cmf {
 		Time operator*(double f,Time t);
 		Time operator*(int f,Time t);
 
+		Time minimum_t(Time t1,Time t2);
+		Time maximum_t(Time t1,Time t2);
 
 		/// An absolute time, not for calculation. Date and Time are interchangable 
 		struct Date
@@ -257,10 +261,10 @@ namespace cmf {
 				return Time(*this);
 			}
 			/// Returns the day of year
-			int DOY()
+			double DOY()
 			{
 				Time Jan1(1,1,year);
-				return int((ToTime() - Jan1).AsMilliseconds() / Time::ms_per_day);
+				return (ToTime() - Jan1).AsDays();
 			}
 
 			/// Returns a string representing the date
