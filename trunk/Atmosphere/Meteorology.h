@@ -15,7 +15,7 @@ namespace cmf {
 		double global_radiation(cmf::math::Time t,double height,double sunshine_fraction,double longitude=8,double latitude=51,int time_zone=1,bool daily=0);
 		double Pressure(double height);
 
-		/// A structure to return all parts of the incoming radiation, all values in \f$\frac{MJ}{m^2 day}\f$
+        /// @brief A structure to return all parts of the incoming radiation, all values in \f$\frac{MJ}{m^2 day}\f$
 		struct Weather
 		{
 			double
@@ -68,32 +68,38 @@ namespace cmf {
 			static double snow_threshold;
 
 		};
-
+        /// @brief An abstract class, for objects generating Weather records at a sepcific time.
 		class Meteorology
 		{
 		public:
-
+            /// Returns the Weather at time t
 			cmf::atmosphere::Weather operator() (cmf::math::Time t) 
 			{
 				return get_weather(t);
 			}
+            /// Returns the Weather at time t. Pure virtual function. Must get implemented by child functions
 			virtual cmf::atmosphere::Weather get_weather(cmf::math::Time t) const=0;
 
-			/// Temperature below precipitation is considered as snow
+			/// Returns a copy of the meteorology object. Pure virtual function, needs to be implemented
 			virtual Meteorology* copy() const=0;
 		};
+        /// @brief A primitive implementation of the Meteorology interface. Holds a Weather record and returns it for any date
 		class ConstantMeteorology : public Meteorology
 		{
 		public:
+            /// The constant, but changeable Weather record.
 			Weather weather;
+            /// Returns weather, regardless of t
 			virtual cmf::atmosphere::Weather get_weather(cmf::math::Time t) const
 			{
 				return weather;
 			}
+            /// Creates a ConstantMeteorology with a standard weather
 			ConstantMeteorology() {}
+            /// Creates a ConstantMeteorology with weather w
 			ConstantMeteorology(const cmf::atmosphere::Weather& w) : weather(w) {}
 			ConstantMeteorology(const cmf::atmosphere::ConstantMeteorology & other) : weather(other.weather) {}
-
+            /// Creates a new instannce of the ConstantMeteorology with the same weather
 			ConstantMeteorology* copy() const
 			{
 				return new ConstantMeteorology(*this);
@@ -101,6 +107,9 @@ namespace cmf {
 		};
 
 		class MeteoStationList;
+        
+        /// @brief A meteorological station holding timeseries to create Weather records
+        ///
 		/// In order to calculate ETpot with cmf a big amount of meteorological data is needed,
 		/// more data than usually available. The MeteoStation class can estimate missing data
 		/// from a minimal set. As more data, as one provides, the better the calculation of
@@ -155,8 +164,7 @@ namespace cmf {
 		/// print 'Temperature:',weather.T               # Daily mean T, since nothing else in known
 		/// </pre>
 		/// </div>
-
-		class MeteoStation: public cmf::geometry::Locatable
+	class MeteoStation: public cmf::geometry::Locatable
 		{
 		private:
 			friend class MeteoStationList;
@@ -179,14 +187,6 @@ namespace cmf {
 			}
 			bool daily;
 			//@}
-			/// Constructor of the Atmosphere object
-			/// @param latitude Latitude of the study area (for solar radiation)
-			/// @param longitude Longitude of the study area (for solar time)
-			/// @param timezone Time zone of the study area (e.g Germany +1,U.S. Pacific time -8
-			/// @param elevation Height of the meterological station above sea level [m]
-			/// @param startTime Date of the beginning of the climatic data (may be changed for each time series later)
-			/// @param timestep Frequency of climatic data (may be changed for each time series later)
-			/// @param name Name of the station
 			MeteoStation(const cmf::atmosphere::MeteoStation& other);
 			///@name Data access methods
 			//@{
@@ -275,7 +275,7 @@ namespace cmf {
 
 		typedef std::tr1::shared_ptr<MeteoStation> meteo_station_pointer;
 
-		/// A reference to a meteorological station. Returns the weather at a given time for its place
+		/// @brief A reference to a meteorological station. Returns the weather at a given time for its place using MeteoStation::T_lapse
 		class MeteoStationReference : public Meteorology,public cmf::geometry::Locatable
 		{
 		private:
@@ -303,7 +303,9 @@ namespace cmf {
 
 		};
 
-		/// A list of meteorological stations
+        /// @brief A list of meteorological stations
+        ///
+        /// Can find the nearest station for a position and calculate the temperature lapse
 		class MeteoStationList
 		{
 		private:
@@ -346,6 +348,14 @@ namespace cmf {
 				return result;
 			}
 			/// Creates a meteorological station at a certain position and adds it to the list
+			/// @param name Name of the station
+			/// @param position The location of the station in map coordinates
+			/// @param latitude Latitude of the study area (for solar radiation)
+			/// @param longitude Longitude of the study area (for solar time)
+			/// @param timezone Time zone of the study area (e.g Germany +1,U.S. Pacific time -8
+			/// @param elevation Height of the meteorological station above sea level [m]
+			/// @param startTime Date of the beginning of the climatic data (may be changed for each time series later)
+			/// @param timestep Frequency of climatic data (may be changed for each time series later)
 			meteo_station_pointer add_station(std::string name,cmf::geometry::point position,double latitude=51,double longitude=8,double timezone=1,
 				cmf::math::Time startTime=cmf::math::Time(1,1,2001),cmf::math::Time timestep=cmf::math::day);
 
@@ -353,7 +363,7 @@ namespace cmf {
 			int remove_station(int index)
 			{
 				
-				meteo_station_pointer& ms=(*this)[index];
+				const meteo_station_pointer& ms=(*this)[index];
 				int res=ms.use_count()-1;
 				name_map::iterator name_it=m_name_map.find(ms->Name);
 				if (name_it!=m_name_map.end()) m_name_map.erase(name_it);
@@ -371,13 +381,14 @@ namespace cmf {
 
 			/// Creates a MeteoStationReference from the nearest station to position at position
 			///
-			/// The distance is calculated as $d=\sqrt{(x_{station} - x_{locatable})^2 + (y_{station} - y_{locatable})^2} + \lambda_z\|z_{station} - z_{locatbale}\|$
-			///
+			/// The distance is calculated as \f$ d=\sqrt{(x_{s} - x_{l})^2 + (y_{s} - y_{l})^2} + \lambda_z\|z_{s} - z_{l}\| \f$
+			///	Where \f$s\f$ is the station and \f$l\f$ is the locatable
 			/// @returns A Meteorology using the data of the nearest station to position 
 			/// @param position The position (any locatable, like e.g. Cell possible) to look for the station. The reference should be owned by the locatable
-			/// @param z_weight The weight of the height difference $\lambda_z$
+			/// @param z_weight The weight of the height difference \f$\lambda_z\f$
 			MeteoStationReference reference_to_nearest(const cmf::geometry::Locatable& position,double z_weight=0) const;
 		};
+
 
 // 		class IDW_Meteorology : 
 // 		{

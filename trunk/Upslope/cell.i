@@ -36,7 +36,7 @@
                 yield self[i]
 }
 
-
+//SWIG_SHARED_PTR(Cell,cmf::upslope::Cell);
 
 %{
 	#include "upslope/Vegetation/StructVegetation.h"
@@ -80,7 +80,7 @@
     snow=property(get_snow,None,"The snow pack of the cell, if a storage for the snow exists")
     saturated_depth=property(get_saturated_depth,set_saturated_depth,"Gets or sets the saturated depth of a cell, if setting each layer of the cell will get a new water content")
     area=property(get_area,None,"The area of the cell in m2")
-    soildepth=property(lambda self:0 if self.layer_count()==0 else self[-1].boundary[-1],None,"the soildepth in m (lower boundary of lowest layer)")
+    soildepth=property(lambda self:0 if self.layer_count()==0 else self.layers[-1].boundary[-1],None,"the soildepth in m (lower boundary of lowest layer)")
     reach=property(lambda self:self.get_reach(0),None,"The first reach of the cell, other reaches are accessible via reaches[n]")
     reaches=property(lambda self:[self.get_reach(i) for i in range(self.ReachCount())],None,"The reaches of this cell")
     Vegetation=property(get_vegetation,set_vegetation,"The vegetational parameters of the cell")
@@ -122,5 +122,4 @@
 %template(cell_vector) std::vector<cmf::upslope::Cell*>;
 
 %include "upslope/algorithm.h"
-%echo "Cell OK!";
 

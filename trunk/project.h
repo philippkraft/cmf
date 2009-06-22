@@ -8,11 +8,12 @@
 #include "Geometry/geometry.h"
 #include "Upslope/cell.h"
 #include "Upslope/Soil/RetentionCurve.h"
-
+/// The main namespace of the model framework. Contains the other namespaces and the project class
 namespace cmf {
 	class bc_iterator;
 
-	/// The study area, holding all cells and outlets
+    /// @ brief The study area, holding all cells and outlets
+    /// @ brief The study area, holding all cells and outlets
 	class project	: public cmf::math::StateVariableOwner
 	{
 	private:
@@ -29,7 +30,7 @@ namespace cmf {
 		}
 	public:
 		cmf::atmosphere::MeteoStationList meteo_stations;
-		cmf::water::node_vector outlets;
+		cmf::water::node_list outlets;
 		const upslope::cell_vector& get_cells() const {return m_cells;}
 		upslope::Cell& get_cell(int index)
 		{
@@ -44,7 +45,9 @@ namespace cmf {
 		/// Creates a new cell
 		cmf::upslope::Cell* NewCell(double x,double y,double z, double Area)
 		{
-			return new cmf::upslope::Cell(x,y,z,Area,*this);
+			cmf::upslope::Cell* new_cell=new cmf::upslope::Cell(x,y,z,Area,*this);
+			m_cells.push_back(new_cell);
+			return new_cell;
 		}
 		/// Creates a new cell
 		cmf::upslope::Cell* NewCell(cmf::geometry::point p, double Area)

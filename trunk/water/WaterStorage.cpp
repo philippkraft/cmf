@@ -20,12 +20,12 @@ cmf::water::WaterStorage::WaterStorage(const cmf::project& _project,double Initi
 	initializeSoluteStorages();
 }
 
-cmf::water::WaterStorage::WaterStorage( const WaterStorage& forcopy ) : cmf::math::StateVariable(forcopy.State()), cmf::water::FluxNode(forcopy),m_Concentrations()
+cmf::water::WaterStorage::WaterStorage( const WaterStorage& forcopy ) : cmf::math::StateVariable(forcopy.get_state()), cmf::water::FluxNode(forcopy),m_Concentrations()
 {
 	initializeSoluteStorages();
 	for(SoluteStorageMap::iterator it = m_Concentrations.begin(); it != m_Concentrations.end(); ++it)
 	{
-		(**it).State(forcopy.Solute((**it).Solute).State());
+		(**it).set_state(forcopy.Solute((**it).Solute).get_state());
 	}
 }
 
@@ -36,8 +36,8 @@ cmf::water::SoluteStorage& cmf::water::WaterStorage::Solute( const cmf::water::S
 
 real cmf::water::WaterStorage::conc( const cmf::water::Solute& solute ) const
 {
-	if (this->State()>0)
-		return Solute(solute).State()/this->State();
+	if (this->get_state()>0)
+		return Solute(solute).get_state()/this->get_state();
 	else return 0	;
 }
 

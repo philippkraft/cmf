@@ -3,8 +3,8 @@
 #include <omp.h>
 #endif
 using namespace std;
-cmf::math::RKFIntegrator::RKFIntegrator(const StateVariableVector& states, real epsilon/*=1e-9*/,cmf::math::Time tStepMin/*=10.0/(3600.0*24.0)*/ ) : 
-Integrator(states,epsilon,tStepMin),oldStates(states.size())
+cmf::math::RKFIntegrator::RKFIntegrator(StateVariableOwner& states, real epsilon/*=1e-9*/,cmf::math::Time tStepMin/*=10.0/(3600.0*24.0)*/ ) : 
+Integrator(states,epsilon,tStepMin),oldStates(m_States.size())
 {
 	
 	for (int i = 0; i < 6 ; i++)

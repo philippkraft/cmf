@@ -1,6 +1,8 @@
 from shapely.geometry import Polygon,LineString,Point
 import cmf_core as cmf
 from raster import Raster
+import maps
+import time
 class Geometry:
     def __init__(self):
         self.__dict={}
@@ -127,7 +129,7 @@ def create_reaches_preintersect(project,features,outlets,cell_callable,
             continue # Next feature if no cell is found
         # Add a reach to the cell
         try:
-            r=cell.AddReach(length_callable(f),type_callable(f),depth_callable(f),width_callable(f))
+            r=cell.add_reach(length_callable(f),type_callable(f),depth_callable(f),width_callable(f))
             reaches[f]=r
             geometry[r]=shape_callable(f)
         except NotImplementedError:
@@ -248,6 +250,7 @@ def cells_from_polygons(project,features,shape_callable=lambda feat:feat.shape,i
     pred=get_predicate(0.0, shape_callable)
     cells=[]
     cell_dict={}
+    q_tree=maps.simple_quad_tree()
     for f in features:
         center=center_callable(f)
         assert len(center)>2
@@ -257,22 +260,27 @@ def cells_from_polygons(project,features,shape_callable=lambda feat:feat.shape,i
         cells.append(c)
         geometry[c]=shape_callable(f)
         cell_dict[f]=c
+        q_tree.add_object(f,f.shape.bounds)
     print "%i cells created" % len(cells)
     print "No. of connected cells:",
     report_at=[1,5,10,50,100,500,1000,5000,10000,50000,100000,500000]
+    start=time.clock()
+    con_count=0
+    cmp_count=0
     for i,s in enumerate(features):
         if i in report_at:
             print i,
-        for j in range(i+1,len(features)):
-            s_cmp=features[j]
-            if pred(s,s_cmp):
+        candidates=q_tree.get_objects(shape_callable(s).bounds)
+        cmp_count+=len(candidates)
+        for c in candidates:
+            if not s is c and pred(s,c):
                 shp_s=shape_callable(s)
-                shp_cmp=shape_callable(s_cmp)
+                shp_cmp=shape_callable(c)
                 intersect=shp_s.intersection(shp_cmp).length
                 if intersect:
-                    cells[i].topology.AddNeighbor(cells[j],intersect)
-                    cells[j].topology.AddNeighbor(cells[i],intersect)
-    print len(features)
+                    cell_dict[s].topology.AddNeighbor(cell_dict[c],intersect)
+                    con_count+=1
+    print len(features),' %0.2f sec. %i comparisons' % (time.clock()-start,cmp_count)
     return cell_dict  
 
 def cells_from_dem(project,dem):

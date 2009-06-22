@@ -29,7 +29,7 @@ class profile:
         return len(self.layers)
     def __getitem__(self,index):
         return self.layers[index]
-def add_layers_to_cells(cells,profile_map,soil_depth_map=None):
+def add_layers_to_cells(cells,profile_map,soil_depth_map=None,min_thickness=0.05):
     """ Adds layers from a soil map containing soil profiles to a sequence of cells
         cells          : A sequence or iterator of cells (can be a cmf.project)
         profile_map    : (Required) a callable (e.g. a Map) implementing __call__(x,y,z), 
@@ -37,6 +37,7 @@ def add_layers_to_cells(cells,profile_map,soil_depth_map=None):
         soil_depth_map : (Optional) a callable (e.g a Map or Raster) implementing 
                          __call__(x,y,z)__ returning a number representing the soil depth in m
                          If omitted, the depth of the profile is used
+        min_thickness  : (default=0.05) If the thickness of a bottom layer is below this value, it is integrated with the next layer
     """
     count=0
     for c in cells:
@@ -46,10 +47,15 @@ def add_layers_to_cells(cells,profile_map,soil_depth_map=None):
             for l in profile: 
                 if l.upper_boundary<maxdepth:
                     count+=1
-                    lb=maxdepth if l.islast else min(maxdepth, l.lower_boundary)
-                    c.AddLayer(lb ,l.retentioncurve)
+                    p_lb=l.lower_boundary
+                    if p_lb+min_thickness>maxdepth:
+                        p_lb=maxdepth
+                    lb=maxdepth if l.islast else min(maxdepth, p_lb)
+                    c.add_layer(lb ,l.retentioncurve)
+                    if p_lb>=maxdepth:
+                        break
     return count
-def add_flex_layer_pair_to_cells(cells,r_curve_map,soil_depth_map):
+def add_variable_layer_pair_to_cells(cells,r_curve_map,soil_depth_map):
     """ Adds a unsaturated / saturated zone layer pait from a soil map containing retention curves to a sequence of cells
         cells          : A sequence or iterator of cells (can be a cmf.project)
         r_curve_map    : (Required) a callable (e.g. a Map) implementing __call__(x,y,z), 
@@ -58,7 +64,7 @@ def add_flex_layer_pair_to_cells(cells,r_curve_map,soil_depth_map):
                          __call__(x,y,z)__ returning a number representing the soil depth in m
     """
     for c in cells:
-        cmf.FlexibleSizeSaturatedZone.Create(c,soil_depth_map(c.x,c.y,c.z), r_curve_map(c.x,c.y,c.z))
+        c.add_variable_layer_pair(soil_depth_map(c.x,c.y,c.z), r_curve_map(c.x,c.y,c.z))
 def change_vegetation(cells,vegetation_map):
     """Sets the vegetation parameters for each cell in a sequence of cells
         cells          : A sequence or iterator of cells (can be a cmf.project)

@@ -51,15 +51,15 @@ namespace cmf {
 			/// Sets a new concentration
 			void conc(const cmf::water::Solute& solute,real NewConcetration)
 			{
-				Solute(solute).State(NewConcetration*this->State());
+				Solute(solute).set_state(NewConcetration*this->get_state());
 			}
 			/// Returns the volume of water in this storage in m<sup>3</sup>
 			real water() const {
-				return State();
+				return get_state();
 			}
 			/// Sets the volume of water in this storage in m<sup>3</sup>
 			void water(real newwatercontent)	{
-				State(newwatercontent);
+				set_state(newwatercontent);
 			}
 			virtual std::string ToString() const	{
 				return Name;
@@ -70,7 +70,7 @@ namespace cmf {
 			///@name Overrides of FluxNode
 			//@{
 			virtual bool RecalcFluxes(cmf::math::Time t) {return StateIsChanged();}
-			virtual bool is_empty() {return State()<=0;}
+			virtual bool is_empty() {return get_state()<=0;}
 			virtual WaterStorage* copy() const
 			{
 				return new WaterStorage(*this);

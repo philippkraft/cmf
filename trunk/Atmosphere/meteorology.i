@@ -36,7 +36,6 @@ SWIG_SHARED_PTR(MeteoStation,cmf::atmosphere::MeteoStation)
                 "Tmax":self.Tmax,
                 "Tdew":self.Tdew,
                 "T":self.T,
-                "Prec":self.Prec,
                 "rHmean":self.rHmean,
                 "rHmax":self.rHmax,
                 "rHmin":self.rHmin,
@@ -44,7 +43,7 @@ SWIG_SHARED_PTR(MeteoStation,cmf::atmosphere::MeteoStation)
                 "Windspeed":self.Windspeed,
                 "Rs" : self.Rs}
     def __repr__(self):
-        return "cmf.MeteoStation(%s,lat=%0.5g,lon=%0.5g,z=%6.1f)" % (self.Name,self.Latitude,self.Longitude)
+        return "cmf.MeteoStation(%s,lat=%0.5g,lon=%0.5g,z=%6.1f)" % (self.Name,self.Latitude,self.Longitude,self.z)
     }
 }
 %include "Precipitation.h"

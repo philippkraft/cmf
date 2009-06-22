@@ -1,6 +1,7 @@
 #ifndef numVector_h__
 #define numVector_h__
 #include <valarray>
+#include <vector>
 #include "real.h"
  namespace cmf {
  	namespace math {
@@ -22,6 +23,11 @@
 			numVector();
 			/// Copy constructor
 			numVector(const numVector& Vector);
+
+			numVector(double * data,int count);
+
+			size_t adress() const;
+
 #ifndef SWIG
 			/// Convert from valarray<real>
 			numVector(const std::valarray<real>& Vector);
@@ -32,6 +38,7 @@
 #ifndef SWIG
 			/// Assigns the given vector to this. If the sizes differ, the size of this gets adjusted
 			numVector& operator=(const numVector& vector);
+			numVector& operator=(const std::vector<double>& vector);
 			/// Sets each element of this to scalar
 			numVector& operator=(real scalar);
 #endif
@@ -90,47 +97,24 @@
 			/// @param normtype An integer indicating the type of norm
 			real norm(int normtype=0) const;              
 			//@}
+			numVector operator+(const numVector& _Right);
+			numVector operator-(const numVector& _Right);
+			numVector operator*(const numVector& _Right);
+			numVector operator/(const numVector& _Right);
+
+			numVector operator+(real _Right);
+			numVector operator-(real _Right);
+			numVector operator*(real _Right);
+			numVector operator/(real _Right);
 
 	
 		};
 
-		numVector operator+(const numVector& _Left,const numVector& _Right);
-		numVector operator-(const numVector& _Left,const numVector& _Right);
-		numVector operator*(const numVector& _Left,const numVector& _Right);
-		numVector operator/(const numVector& _Left,const numVector& _Right);
-
-		numVector operator+(const numVector& _Left,real _Right);
-		numVector operator-(const numVector& _Left,real _Right);
-		numVector operator*(const numVector& _Left,real _Right);
-		numVector operator/(const numVector& _Left,real _Right);
 
 		numVector operator+(real _Left,const numVector& _Right);
 		numVector operator-(real _Left,const numVector& _Right);
 		numVector operator*(real _Left,const numVector& _Right);
 		numVector operator/(real _Left,const numVector& _Right);
-#ifdef SWIG
-		%extend numVector {
-			double __getitem__(int index) 
-			{
-				int ndx = index < 0 ? $self->size() - index : index;
-				if (ndx < 0 || ndx>=$self->size())
-				{
-					throw std::out_of_range("Index out of range");
-				}
-				return (*$self)[ndx];
-			}
-			void __setitem__(int index,double value) 
-			{
-				int ndx = index < 0 ? $self->size() - index : index;
-				if (ndx < 0 || ndx>=$self->size())
-				{
-					throw std::out_of_range("Index out of range");
-				}
-				(*$self)[ndx]=value;
-			}
-			int __len__() {return $self->size();}
-		}
-#endif
 
 	}
 }

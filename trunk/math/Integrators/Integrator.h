@@ -4,7 +4,7 @@
 #include "../numVector.h"
 #include "../StateVariable.h"
 #include "../real.h"
-
+#include <stdexcept>
 namespace cmf {
 	namespace math {
 		/// Base class for any kind of integrator
@@ -27,9 +27,9 @@ namespace cmf {
 #pragma omp parallel for shared(res)
 				for (int i = 0; i < count() ; i++)
 				{
-					real error=abs(compare[i]-state(i));
+					real error=fabs(compare[i]-state(i));
 					// Calculate absolute error tolerance as: epsilon + |(x_p+x_(n+1))/2|*epsilon
-					real errortol=Epsilon + abs(state(i))*Epsilon;
+					real errortol=Epsilon + fabs(state(i))*Epsilon;
 					if (error/errortol>res)
 #pragma omp critical
 					{
@@ -57,12 +57,12 @@ namespace cmf {
 			/// Simplifies the assessment of state variables
 			const real& state(int position) const
 			{
-				return m_States[position]->State();
+				return m_States[position]->get_state();
 			}
 			/// Simplifies the assessment of state variables
 			void state(int position,real newState)
 			{
-				m_States[position]->State(newState);
+				m_States[position]->set_state(newState);
 			}
 			
 			/// @name Assessment of state variables for integration

@@ -4,6 +4,8 @@
 // import datetime
 // }
 // Get Documentation
+
+%feature("compactdefaultargs");
 %include "docstrings.i"
 %feature("autodoc","1") ;
 
@@ -45,7 +47,7 @@
 
 %include "geometry/geometry.i"
 
-%echo "%include geometry/geometry.i";
+%echo "geometry.i OK";
 
 %include "math/math.i"
 
@@ -57,16 +59,36 @@
 %include "Atmosphere/Meteorology.i"
 %echo "Atmosphere OK!";
 
-
 %{
 	// Include Upslope
 	#include "upslope/Soil/RetentionCurve.h"
 	#include "upslope/SoilWaterStorage.h"
 %}
-%echo "Cell..";
+// Get Upslope Classes
+
+%include "upslope/soil/RetentionCurve.h"
+%extent cmf::upslope::BrooksCoreyRetentionCurve
+{
+    %pythoncode {
+    def __repr__(self):
+        return "Brooks-Corey (Ksat=%g,porosity=%g,b=%g,wetness @ h=%g @ %g)" % (self.K(1,0),self.Porosity(0),self.b(),self.wetness_X,self.Psi_X)
+    }
+}
+%extent cmf::upslope::VanGenuchtenMualem
+{
+    %pythoncode {
+    def __repr__(self):
+        return "VanGenuchten-Mualem (Ksat=%g,porosity=%g,alpha=%g, n=%g)" % (self.K(1,0),self.Porosity(0),self.alpha,self.n)
+    }
+}
+
 %include "Upslope/cell.i"
+%echo "Cell OK";
+
 %{
+	#include "upslope/VarLayerPair.h"
 	#include "upslope/connections/subsurfacefluxes.h"
+	#include "upslope/connections/VarLayerPercolation.h"
 	#include "upslope/connections/surfacefluxes.h"
 	#include "upslope/connections/atmosphericfluxes.h"
 	#include "upslope/connections/infiltration.h"
@@ -84,26 +106,10 @@
 
 
 
-// Get Upslope Classes
-%implicitconv cmf::upslope::RCurve;
-%include "upslope/soil/RetentionCurve.h"
-%extent cmf::upslope::BrooksCoreyRetentionCurve
-{
-    %pythoncode {
-    def __repr__(self):
-        return "Brooks-Corey (Ksat=%g,porosity=%g,b=%g,wetness @ h=%g @ %g)" % (self.K(1,0),self.Porosity(0),self.b(),self.wetness_X,self.Psi_X)
-    }
-}
-%extent cmf::upslope::VanGenuchtenMualem
-{
-    %pythoncode {
-    def __repr__(self):
-        return "VanGenuchten-Mualem (Ksat=%g,porosity=%g,alpha=%g, n=%g)" % (self.K(1,0),self.Porosity(0),self.alpha,self.n)
-    }
-}
-
 %immutable cmf::upslope::SoilWaterStorage::cell;
-%include "upslope/SoilWaterStorage.h"
+
+%factory(cmf::upslope::RetentionCurve& cmf::upslope::SoilWaterStorage::get_soil,cmf::upslope::BrooksCoreyRetentionCurve, cmf::upslope::VanGenuchtenMualem);
+
 %attribute(cmf::upslope::SoilWaterStorage,real,gravitational_potential,get_gravitational_potential);
 %attribute(cmf::upslope::SoilWaterStorage,real,matrix_potential,get_matrix_potential);
 %attribute(cmf::upslope::SoilWaterStorage,real,wetness,get_wetness,set_wetness);
@@ -112,6 +118,7 @@
 %attribute(cmf::upslope::SoilWaterStorage,real,thickness,get_thickness);
 %attribute(cmf::upslope::SoilWaterStorage,real,lower_boundary,get_lower_boundary);
 %attribute(cmf::upslope::SoilWaterStorage,real,upper_boundary,get_upper_boundary);
+%include "upslope/SoilWaterStorage.h"
 
 
 %extend cmf::upslope::SoilWaterStorage {
@@ -119,12 +126,16 @@
     boundary=property(lambda self:(self.upper_boundary,self.lower_boundary),None,"Returns the upper and lower boundary of the layer")
     def __repr__(self):
         return self.Name
-    pF=property(lambda self:waterhead_to_pF(self.matrix_potential),None,"The actual pF value")
+    pF=property(lambda self : waterhead_to_pF(self.matrix_potential),None,"The actual pF value")
+    soil=property(get_soil,set_soil,"The retention curve of the layer")
   }
 }
 
 
 %include "upslope/connections/subsurfacefluxes.h"
+
+%include "upslope/VarLayerPair.h"
+%include "upslope/connections/VarLayerPercolation.h"
 %include "upslope/connections/surfacefluxes.h"
 %include "upslope/connections/atmosphericfluxes.h"
 %include "upslope/connections/infiltration.h"
@@ -184,17 +195,13 @@
 %pythoncode {
     def get_layers(cells):
         for c in cells:
-            for l in c:
+            for l in c.layers:
                yield l
     def count_layers(cells):
         res=0
         for c in cells:
-            res+=c.LayerCount()
+            res+=c.layer_count()
         return res
-    def query_layers(layers,expr='layer.theta()'):
-        f=lambda layer:eval(expr)
-        for l in layers:
-            yield f(l)
 
     cell_vector.__repr__=lambda cv:"list of %i cells. first:%s, last: %s" % ((cv.size(),cv[0],cv[-1]) if len(cv) else (cv.size(),"None","None"))
 }            

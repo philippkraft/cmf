@@ -31,7 +31,7 @@ namespace cmf {
 					{
 						double fraction_to_upper=pow(1/(1-fraction_at_rootdepth),-upperBoundary/RootDepth);
 						double fraction_to_lower=pow(1/(1-fraction_at_rootdepth),-lowerBoundary/RootDepth);
-						return abs(fraction_to_lower-fraction_to_upper);
+						return fabs(fraction_to_lower-fraction_to_upper);
 					}
 				}
 				Vegetation(double _LAI=12,double _Height=0.12,double _RootDepth=0.25,double _StomatalResistance=100,

@@ -20,8 +20,8 @@ namespace cmf {
 			{v_to_height.reset(new_base_topo.copy());}
 			const cmf::river::VolumeHeightRelation& BaseTopography() const
 			{return *v_to_height;}
-			real h() const {return v_to_height->h(maximum(0,State()));}
-			real wet_area() const {return v_to_height->A(maximum(0,State()));}
+			real h() const {return v_to_height->h(maximum(0,get_state()));}
+			real wet_area() const {return v_to_height->A(maximum(0,get_state()));}
 			real get_potential() const {return Location.z+h();} 
 			OpenWaterStorage(const cmf::project& _project,real Area) : cmf::water::WaterStorage(_project,0), v_to_height(new cuboid(Area)) {}
 			OpenWaterStorage(const cmf::project& _project,const cmf::river::VolumeHeightRelation& base_geo) : cmf::water::WaterStorage(_project,0), v_to_height(base_geo.copy()) {}
@@ -70,7 +70,7 @@ namespace cmf {
 			cmf::water::WaterStorage *source;
 			virtual real calc_q(cmf::math::Time t)
 			{
-				return piecewise_linear(source->State(),MinState,MinState+FluxDecreaseTime.AsDays()*MaxFlux,0,MaxFlux);
+				return piecewise_linear(source->get_state(),MinState,MinState+FluxDecreaseTime.AsDays()*MaxFlux,0,MaxFlux);
 			}
 			void NewNodes()
 			{
