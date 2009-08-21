@@ -487,7 +487,7 @@ class Raster:
         return res
     def xy(self,col,row):
         "Gets a position in world coordinates from a position in the dataset (col,row)->(x,y)"
-        return (col*self.cellsize[0]+self.corner[0],(self.shape[0]-row)*self.cellsize[1]+self.corner[1])
+        return (col*self.cellsize[0]+self.llcorner[0],(self.shape[0]-row)*self.cellsize[1]+self.llcorner[1])
     def colrow(self,x,y):
         "Gets a position in the dataset from world coordinates (x,y)->(colr,row)"
         return (int((x-self.corner[0])/self.cellsize[0]),int(self.shape[0]-(y-self.corner[1])/self.cellsize[1]))

@@ -41,6 +41,10 @@ namespace cmf {
 			{
 				return m_Potential;
 			}
+			void set_potential(real new_potential)
+			{
+				m_Potential=new_potential;
+			}
 			bool is_source;
 			bool is_empty() const
 			{

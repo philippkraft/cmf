@@ -11,7 +11,7 @@ namespace cmf {
 		
 		point point::operator+(const point &p) const 
 		{
-			point res(x+p.x,y+p.y,z-p.z);
+			point res(x+p.x,y+p.y,z+p.z);
 			return res;
 		}
 		point point::operator-(const point &p) const 

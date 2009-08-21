@@ -152,33 +152,6 @@ cmf::atmosphere::Weather operator*(const cmf::atmosphere::Weather& left,double r
 
 }
 
-void cmf::atmosphere::MeteoStation::Save( const std::string& filename )
-{
-	std::ofstream file;
-	try	
-	{
-		file.open(filename.c_str());
-	}
-	catch (...)
-	{ 
-		throw std::runtime_error("Could not open " + filename);
-	}
-	file << Name << std::endl;
-	file << Latitude << " " << Longitude << " " << Timezone << " " << z << std::endl;
-	file << daily << std::endl;
-	Tmin.Save(file);
-	Tmax.Save(file);
-	Tdew.Save(file);
-	T.Save(file);
-	rHmean.Save(file);
-	rHmax.Save(file);
-	rHmin.Save(file);
-	Sunshine.Save(file);
-	Windspeed.Save(file);
-	Rs.Save(file);
-	file.close();
-}
-
 void cmf::atmosphere::MeteoStation::SetSunshineFraction(cmf::math::timeseries sunshine_duration ) 
 {
 	Sunshine=cmf::math::timeseries(sunshine_duration.begin(),sunshine_duration.step(),sunshine_duration.interpolationpower());
@@ -195,32 +168,6 @@ void cmf::atmosphere::MeteoStation::SetSunshineFraction(cmf::math::timeseries su
 		t+=sunshine_duration.step();
 	}
 
-}
-cmf::atmosphere::MeteoStation::MeteoStation( const std::string& filename )
-{
-	std::ifstream file;
-	try
-	{
-		file.open(filename.c_str());
-	}
-	catch (...) 
-	{
-		throw std::runtime_error("Could not create " + filename);
-	}
-	char name[255];
-	file.getline(name,255);
-	Name=name;
-	file >> Latitude >> Longitude >> Timezone >> z >> daily;
-	Tmin=cmf::math::timeseries(file);
-	Tmax=cmf::math::timeseries(file);
-	Tdew=cmf::math::timeseries(file);
-	T=cmf::math::timeseries(file);
-	rHmean=cmf::math::timeseries(file);
-	rHmax=cmf::math::timeseries(file);
-	rHmin=cmf::math::timeseries(file);
-	Sunshine=cmf::math::timeseries(file);
-	Windspeed=cmf::math::timeseries(file);
-	file.close();
 }
 
 cmf::atmosphere::MeteoStation::MeteoStation( double latitude/*=51*/,double longitude/*=8*/,double timezone/*=1*/,double elevation/*=0*/, cmf::math::Time startTime/*=cmf::math::Time(1,1,2001)*/,cmf::math::Time timestep/*=cmf::math::day*/,std::string name/*=""*/ ) 

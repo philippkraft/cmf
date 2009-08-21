@@ -19,6 +19,7 @@
 %pythoncode
 {
 import datetime
+import struct
 }
 %init %{
 PyDateTime_IMPORT;
@@ -186,6 +187,8 @@ namespace std {
 	@property
 	def __array_interface__(self):
 	    return dict(shape=(len(self),),typestr='|f8',data=(self.adress(),0),version=3)
+	def ravel(self,order='C'):
+	    return self
 	}
 }
 
@@ -253,6 +256,48 @@ namespace std {
     def __rdiv__(self,other):
         res=self.inv() 
         res*=other
+        return res
+    
+    def to_buffer(self):
+        """Returns a binary buffer filled with the data of self"""
+        return struct.pack('qqqq%id' % self.size(),self.begin().AsMilliseconds(),self.step().AsMilliseconds(),self.interpolationpower(), *self)
+    def to_file(self,f):
+        """ Saves a timeseries in a special binary format.
+        The format consists of 4 integers with 64 bit, indicating the milliseconds after the 31.12.1899 00:00 of the beginning of the timeseries, the milliseconds of the time step,
+        the interpolation power and the number of values. The following 64 bit floats, are the values of the timeseries
+        """
+        if isinstance(f,str):
+            f=file(f,'wb')
+        elif not hasattr(f,'write'):
+            raise TypeError("The file f must be either an object providing a write method, like a file, or a valid file name")
+        f.write(struct.pack('qqqq%id' % self.size(),  self.size(), self.begin().AsMilliseconds(),self.step().AsMilliseconds(),self.interpolationpower(), *self))
+        
+        
+    @classmethod
+    def from_buffer(cls,buf):
+        header_length=struct.calcsize('qqqq') 
+        header=struct.unpack('qqqq',buffer[:header_length])
+        res=cls(header[1]*ms,header[2]*ms,header[3])
+        res.extend(struct.unpack('%id' % header[0],*buffer(buf,header_length,header[0]*8)))
+    @classmethod
+    def from_file(cls,f):
+        """ Loads a timeseries saved with to_file from a file 
+        Description of the file layout:
+        byte: 
+        0   Number of (int64)
+        8   Begin of timeseries (in ms since 31.12.1899) (int64)
+        16  Step size of timeseries (in ms) (int64)
+        24  Interpolation power (int64)
+        32  First value of timeseries (float64)
+        """
+        if isinstance(f,str):
+            f=file(f,'rb')
+        elif not hasattr(f,'read'):
+            raise TypeError("The file f must either implement a 'read' method, like a file, or must be a vild file name")
+        header_length=struct.calcsize('qqqq') 
+        header=struct.unpack('qqqq',f.read(header_length))
+        res=cls(header[1]*ms,header[2]*ms,header[3])
+        res.extend(struct.unpack('%id' % header[0],f.read(-1)))
         return res
     }
 }

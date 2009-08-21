@@ -42,8 +42,8 @@ real cmf::upslope::connections::Richards::calc_q( cmf::math::Time t )
 		gradient=(Psi_t1-Psi_t2)/distance,
 		//K=gradient<0 && sw2 ? sw2->K() : sw1->K();      
 		K=sw2 ? geo_mean(sw1->get_K(),sw2->get_K()) : sw1->get_K();
- 	if (fabs(K*gradient)>sw1->get_Ksat()) K=sw1->get_Ksat();
- 	if (sw2 && fabs(K*gradient)>sw2->get_Ksat()) K=sw2->get_Ksat();
+ 	if (fabs(K*gradient)>sw1->get_Ksat()) K=sw1->get_Ksat()/gradient;
+ 	if (sw2 && fabs(K*gradient)>sw2->get_Ksat()) K=sw2->get_Ksat()/gradient;
 	real r_flow=K*gradient*flow_area;
 	if (m_left->is_empty())
 		r_flow=minimum(0,r_flow);

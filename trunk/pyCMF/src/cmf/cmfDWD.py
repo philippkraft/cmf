@@ -66,6 +66,8 @@ def convertstations(cmf_project,stations,start,end,daily=1,removeNoData=0):
                      ts.clear()
                      ts.begin=curdate+cmf.day
             curdate+=cmf.day
+        meteo.SetSunshineFraction(meteo.Sunshine)
+
         print " %i records imported, %i no data records estimated" % (datacount,nodatacount)
         meteorology[st.number]=meteo
     return meteorology
@@ -81,6 +83,3 @@ def get_rainfall(data_filename):
         timeseries.setdefault(id, cmf.timeseries(cmf.Time(day,month,year),cmf.day)).add(rr*0.1)
     return  timeseries
         
-def ExtendMeteorology(meteos,dwdBestandFile,dwdSatzFile,dwdDatFile,removeNoData):
-    """Extends 
-    """

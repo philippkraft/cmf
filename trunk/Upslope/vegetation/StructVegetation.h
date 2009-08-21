@@ -34,7 +34,7 @@ namespace cmf {
 						return fabs(fraction_to_lower-fraction_to_upper);
 					}
 				}
-				Vegetation(double _LAI=12,double _Height=0.12,double _RootDepth=0.25,double _StomatalResistance=100,
+				Vegetation(double _LAI=2.88,double _Height=0.12,double _RootDepth=0.25,double _StomatalResistance=100,
 					double _albedo=0.23,double _CanopyClosure=1,double _CanopyCapacityPerLAI=0.1,double _fraction_at_rootdepth=1.0)
 					: LAI(_LAI),Height(_Height),albedo(_albedo),
 					  CanopyCapacityPerLAI(_CanopyCapacityPerLAI),

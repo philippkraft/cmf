@@ -26,6 +26,10 @@ namespace cmf {
 				: Integrator(states,epsilon,tStepMin),
 				dxdt(states.size())
 			{}
+			ExplicitEuler_fixed(StateVariableOwner& states, real epsilon=1e-9,cmf::math::Time tStepMin=Time::Seconds(10))
+				: Integrator(states,epsilon,tStepMin),
+				dxdt(m_States.size())
+			{}
 
 			/// Constructs a new ExplicitEuler_fixed
 			/// @param epsilon (ignored) relative error tolerance per time step (default=1e-9)

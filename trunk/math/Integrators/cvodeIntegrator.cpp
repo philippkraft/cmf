@@ -39,10 +39,12 @@ void cmf::math::CVodeIntegrator::ReInit(Time initdt, real epsilon)
 	CVodeSetInitStep(cvode_mem,initdt.AsDays());
 }
 
-void cmf::math::CVodeIntegrator::Initialize(cmf::math::Time max_step/*=cmf::math::day*/)
+void cmf::math::CVodeIntegrator::Initialize()
 {
-	if (m_y!=0)	N_VDestroy_OpenMP(m_y);      // Destroys any existent vector y
-	if (cvode_mem!=0)	CVodeFree(&cvode_mem); // Destroys any existent solver
+	if (m_y!=0)	
+		N_VDestroy_OpenMP(m_y);      // Destroys any existent vector y
+	if (cvode_mem!=0)	
+		CVodeFree(&cvode_mem); // Destroys any existent solver
 	int N=int(m_States.size());              // size of problem
 	m_y=N_VNew_OpenMP(N);										 // Allocate vector y
 	realtype * y_data = NV_DATA_O(m_y);      // Pointer to data of vector y
@@ -138,7 +140,7 @@ int cmf::math::CVodeIntegrator::Integrate( cmf::math::Time MaxTime,cmf::math::Ti
 	if (!cvode_mem || !m_y )
 	{
 		m_TimeStep=MaxTime-ModelTime();
-		Initialize(m_TimeStep);
+		Initialize();
 	}
 	if (reinit_always)
 	{
