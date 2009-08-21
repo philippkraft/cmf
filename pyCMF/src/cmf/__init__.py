@@ -7,4 +7,5 @@ from raster import Raster
 from extend_project import add_layers_to_cells,add_variable_layer_pair_to_cells
 from extend_project import change_vegetation,connect_cells_with_flux
 from extend_project import profile
+from stopwatch import StopWatch
 import draw

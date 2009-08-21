@@ -3,19 +3,23 @@
 real cmf::water::SoluteStorage::Derivate( const cmf::math::Time& time )
 {
  	// Sums up the fluxes as water fluxes (mol/day)
-	//WaterFlux sum_in=Storage.sum_inflow(time);
-	//real sum_mix_flux=sum_in.matterflux(this->Solute);
-	// Add the additional rate (might be negative)
-	//real sum_reaction_flux=AdditionalFlux;
-	// sum up the reactive fluxes
-// 	if (Reactions.size())
-// 	{
-// 		WaterQuality wq=this->Storage.conc(time);
-// 		for (cmf::water::reaction::ReactionVector::iterator it=Reactions.begin();it!=Reactions.end();++it)
-// 			sum_reaction_flux+=(**it).ReactiveFlux(wq) * this->Storage.water();
-// 	}
+	cmf::water::connection_vector& connections=Storage.Connections();
+	WaterFlux inflow, outflow;
+	for (cmf::water::connection_vector::iterator it = connections.begin();it!=connections.end();++it)
+	{
+		cmf::water::FluxConnection& con=**it;
+		real q=con.q(Storage,time);
+		if (q>0)
+		{
+			inflow+=WaterFlux(q,con.conc(Storage,time));
+		}
+		else if (q<0)
+		{
+			outflow+=WaterFlux(q,con.conc(Storage,time));
+		}
+	}
 
-	return AdditionalFlux;
+	return inflow.matterflux(this->Solute) + outflow.matterflux(this->Solute) + AdditionalFlux * Storage.water();
 }
 
 real cmf::water::SoluteStorage::conc() const

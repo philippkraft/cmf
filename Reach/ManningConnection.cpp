@@ -59,3 +59,42 @@ cmf::river::OpenWaterStorage* cmf::river::AsOpenWater(cmf::water::FluxNode* node
 {
 	return dynamic_cast<cmf::river::OpenWaterStorage*>(node);
 }
+
+void cmf::river::Manning_Kinematic::connect_cells( cmf::upslope::Cell& c1,cmf::upslope::Cell& c2,int dummy )
+{
+	real w=c1.get_topology().flowwidth(c2);
+	if (w<=0) return;
+
+	cmf::river::OpenWaterStorage* sw1= AsOpenWater(&c1.get_surfacewater());
+	cmf::river::OpenWaterStorage* sw2= AsOpenWater(&c2.get_surfacewater());
+	if (sw1)
+		new Manning_Kinematic(*sw1,c2.get_surfacewater(),w,c1.get_position().distanceTo(c2.get_position()));
+	else if (sw2)
+		new Manning_Kinematic(*sw2,c1.get_surfacewater(),w,c1.get_position().distanceTo(c2.get_position()));
+	else
+		throw std::runtime_error("Surface water of " + c1.ToString() + " and " + c2.ToString() + " were not connected with Manning's equation. Missing storages.");
+
+}
+
+real cmf::river::Manning_Kinematic::calc_q( cmf::math::Time t )
+{
+	real 
+		// Distance between source and target
+		d=distance,
+		// Gradient of the reach
+		slope=(m_left->get_position().z-m_right->get_position().z)/d,
+		abs_slope=fabs(slope)-1e-5;
+
+	if (abs_slope<=0) return 0.0;
+	// Get the source of the flow
+	OpenWaterStorage* source=slope>0 ? w1 : w2;
+	if (source==0) return 0; // Never generate flow from a flux node
+	// Wetted crossectional area use mean volume of the water storages if both sides are water storages
+	real
+		// Flow height between elements is the mean of the flow height, but exceeds never the flow height of the source
+		h=minimum(source->h(),w2 ? mean(w1->h(),w2->h()) : w1->h());
+	if (h<=1e-6) return 0;
+	return h*pow(h,0.6666666667)/nManning*sqrt(abs_slope)*sign(slope);
+
+}
+const cmf::upslope::CellConnector cmf::river::Manning_Kinematic::cell_connector=cmf::upslope::CellConnector(&connect_cells);

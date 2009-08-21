@@ -110,7 +110,9 @@ cmf::geometry::point cmf::water::FluxNode::get_3d_flux( cmf::math::Time t )
 	for(FluxNode::ConnectionMap::iterator it = m_Connections.begin(); it != m_Connections.end(); ++it)
 	{
 		FluxNode& target=it->second->Target(*this);
-		res+=flux_to(target,t) * get_direction_to(target) ;
+		real f=flux_to(target,t);
+		cmf::geometry::point dir=get_direction_to(target);
+		res+= dir * f;
 	}
 	return res;
 
@@ -177,5 +179,17 @@ cmf::geometry::point_vector cmf::water::node_list::get_fluxes3d( cmf::math::Time
 	}
 	return res;
 
+
+}
+
+cmf::geometry::point_vector cmf::water::node_list::get_positions() const
+{
+	cmf::geometry::point_vector res(size());
+#pragma omp parallel for
+	for (int i = 0; i < (int)res.size() ; ++i)
+	{
+		res.set(i,m_nodes[i]->get_position());
+	}
+	return res;
 
 }

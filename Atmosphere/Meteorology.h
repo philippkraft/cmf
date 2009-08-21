@@ -262,14 +262,6 @@ namespace cmf {
 
 
 			//@}
-			/// @name I/O
-			//@{
-			/// Save the MeteoStation data to an ASCII File with fixed format(	 uses cmf::math::timeseries::Save )
-			void Save(const std::string& filename);
-			/// Creates a Meterology from a File in fixed format (uses cmf::math::timeseries::timeseries(std::istream&) )
-			explicit MeteoStation(const std::string& filename);
-
-			//@}
 
 		};
 

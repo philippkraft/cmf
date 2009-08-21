@@ -3,6 +3,7 @@
 #include "cell.h"
 #include "../math/numVector.h"
 #include "../Atmosphere/Meteorology.h"
+#include "../Geometry/geometry.h"
 namespace cmf {
 	namespace upslope {
 		typedef const cell_vector&  cells_ref;
@@ -23,6 +24,9 @@ namespace cmf {
 
 			cell_to_cell_fluxes(cmf::math::Time t,cells_ref cells,double mindepth=-1,double maxdepth=1e300);
 		};
+
+		cmf::geometry::point_vector cell_positions(cmf::upslope::cells_ref cells);
+		cmf::geometry::point_vector cell_flux_directions(cmf::upslope::cells_ref cells,cmf::math::Time);
 
 		
 	}

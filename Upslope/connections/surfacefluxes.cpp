@@ -9,7 +9,7 @@ real cmf::upslope::connections::CanopyOverflow::calc_q( cmf::math::Time t )
 	real 
 		Vmax=m_cell.get_vegetation().CanopyCapacityPerLAI * m_cell.get_vegetation().LAI * m_cell.get_area() * 1e-3,
 		Vact=m_Canopy->get_state();
-	return maximum((Vact-Vmax)/math::min.AsDays(),0);
+	return maximum((Vact-Vmax)/24,0);
 }
 
 real cmf::upslope::connections::HBVSnowMelt::calc_q( cmf::math::Time t )

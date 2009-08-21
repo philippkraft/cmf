@@ -196,20 +196,7 @@ namespace cmf {
 
 			double mean() const;
 
-			//@}
-			/// @name I/O
-			//@{
-			/// Save the Meteorology data to an ASCII File with fixed format
-			void Save(std::ostream& file);
-			/// Creates a Meterology from a File in fixed format
-			/// @code
-			/// begin <year> <month> <day> <hour> <minute> <second> <millisecond>
-			/// step <year> <month> <day> <hour> <minute> <second> <millisecond>
-			/// size <size>	 interpolationpower <interpolationpower>
-			/// values <val1> <val2> ...
-			/// @endcode
-			explicit timeseries(std::istream& file);
-			//@}
+
 		};
 		double nash_sutcliff(const cmf::math::timeseries& model,const cmf::math::timeseries& observation);
 		double R2(const cmf::math::timeseries& model,const cmf::math::timeseries& observation);

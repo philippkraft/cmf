@@ -62,10 +62,10 @@ namespace cmf {
 #endif
 				point operator+(const point &p) const; 
 				point operator-(const point &p) const;
-				point operator*(double left) const { return point(x*left,y*left);}
-				point operator/(double left) const { return point(x/left,y/left);}
-				point operator*(const point&p) const { return point(x*p.x,y*p.y);}
-				point operator/(const point&p) const { return point(x/p.x,y/p.y);}
+				point operator*(double left) const { return point(x*left,y*left,z*left);}
+				point operator/(double left) const { return point(x/left,y/left,z/left);}
+				point operator*(const point&p) const { return point(x*p.x,y*p.y,z*p.z);}
+				point operator/(const point&p) const { return point(x/p.x,y/p.y,z/p.z);}
 				point operator+=(const point &p);
 				point operator-=(const point &p);
 				bool operator ==(const point &p) const;
@@ -97,7 +97,7 @@ namespace cmf {
 			cmf::geometry::point get_direction_to(const Locatable& cmp)
 			{
 				cmf::geometry::point p1=get_position(),p2=cmp.get_position();
-				double d=p1.distanceTo(p2);
+				double d=p1.distance3DTo(p2);
 				return (p2-p1)/d;
 			}
 		};
@@ -138,6 +138,7 @@ namespace cmf {
 				return X.size();
 			}
 		};
+
 
 	}
 }

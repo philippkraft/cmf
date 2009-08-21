@@ -50,6 +50,9 @@
 		/// @param roundness The fraction of the rounded part. 1 is the full function rounded, 0 means a pure piecewise linear function
 		/// @param y_offset A y axis shift
 		static real rounded_linear(real x,real ymax=1,real slope=1,real roundness=1,real y_offset=0);
+		/// Returns the inverse function of rounded_linear.
+		/// Note: slope is not inverted, compared to rounded_linear (still y/x)
+		real rounded_linear_inverse(real y,real ymax,real slope,real roundness,real y_offset);
 		/// Returns the value at x of a hyperbola starting and point (x0,y0) with slope0, which crosses the point (x1,y1)
 		static real through_point(real x,real x0,real y0,real slope0,real x1,real y1);
 	};

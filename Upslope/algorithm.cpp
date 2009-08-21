@@ -222,6 +222,33 @@ void cmf::upslope::set_meteo_station(cmf::upslope::cells_ref cells,cmf::atmosphe
 	}
 }
 
+cmf::geometry::point_vector cmf::upslope::cell_positions( cells_ref cells )
+{
+	cmf::geometry::point_vector res(int(cells.size()));
+#pragma omp parallel for
+	for (int i = 0; i < (int)cells.size() ; ++i)
+	{
+		res.set(i,cells[i]->get_position());
+	}
+	return res;
+}
+
+cmf::geometry::point_vector cmf::upslope::cell_flux_directions( cells_ref cells,cmf::math::Time t)
+{
+	cmf::geometry::point_vector res(int(cells.size()));
+#pragma omp parallel for
+	for (int i = 0; i < (int)cells.size() ; ++i)
+	{
+		cmf::geometry::point p;
+		cmf::upslope::Cell & c=*cells[i];
+		for (int j = 0; j < c.storage_count() ; ++j)
+			p+=c.get_storage(j).get_3d_flux(t);
+		for (int j = 0; j < c.layer_count() ; ++j)
+				p+=c.get_layer(j).get_3d_flux(t);
+		res.set(i,p);
+	}
+	return res;
+}
 cmf::upslope::cell_to_cell_fluxes::cell_to_cell_fluxes(cmf::math::Time t, cmf::upslope::cells_ref cells,double mindepth/*=-1*/,double maxdepth/*=1e300 */)
 {
 	std::vector<double> x,y,dx,dy,v;

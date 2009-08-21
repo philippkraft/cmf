@@ -15,31 +15,6 @@ namespace cmf {
 		/// Converts a height of a water column to a pF value
 		double waterhead_to_pF(double waterhead);
 
-		/// Class for an parabolic extrapolation of a retention curve
-		class parabolic_extrapolation
-		{
-		private:
-			real a,b,c,w0,psi0;
-		public:
-			/// Calculates the parabola parameters a,b,c using the starting point of the wetness / potential curve (w0,pot0) and the slope of the curve
-			parabolic_extrapolation(real wet0,real pot0,real slope0) : w0(wet0),psi0(pot0)
-			{
-				real w0_2=w0*w0;	// wetness squared
-				a=(-slope0 - pot0 + slope0*w0)/(1 - 2*w0 + w0_2);
-				b=(slope0 + 2*w0*pot0 - slope0*w0_2)/(1 - 2*w0 + w0_2);
-				c=(pot0 - slope0*w0 - 2*w0*pot0 + slope0*w0_2)/(1 - 2*w0 + w0_2);
-			}
-			/// returns the potential for a wetness. Does not test for wetness>w0
-			real get_potential(real wetness)
-			{
-				return a*wetness*wetness + b*wetness + c;
-			}
-			/// returns the wetness for a potential. The user is responsible to ensure the potential is higher than the starting point
-			real get_wetness(real potential)
-			{
-				return 0.5*sqrt(-4*c/a+4*potential/a+(b*b)/(a*a))-b/(2*a);
-			}
-		};
 
 		/// Abstract base class for different types of retention curves
 		///

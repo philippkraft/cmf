@@ -69,7 +69,7 @@ namespace cmf{namespace water {class FluxConnection;}}
     def __len__(self):
         return self.size()       
     def __iter__(self):
-        for i in xrange(size()):
+        for i in xrange(self.size()):
             yield self[i]
     def extend(self,sequence):
         """Extends the node list with the sequence (any iterable will do) """

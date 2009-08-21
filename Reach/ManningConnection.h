@@ -55,12 +55,43 @@ namespace cmf {
 			
 			const ReachType& ChannelGeometry() const {return *flux_geometry;}
 			static const cmf::upslope::CellConnector cell_connector;
-			Manning(cmf::river::OpenWaterStorage& left,cmf::water::FluxNode & right,const ReachType& ChannelShape,real Distance)
-			: FluxConnection(left,right,"Manning"),distance(Distance),	flux_geometry(ChannelShape.copy()) {
-				NewNodes();
+			Manning(cmf::river::OpenWaterStorage& left,cmf::water::FluxNode & right,const ReachType& reachtype,real Distance)
+				: FluxConnection(left,right,"Manning"),distance(Distance),	flux_geometry(reachtype.copy()) {
+					NewNodes();
+			}
+			Manning(cmf::river::OpenWaterStorage& left,cmf::water::FluxNode & right,char reachtype,real width,real Distance)
+				: FluxConnection(left,right,"Manning"),distance(Distance),	flux_geometry(create_reachtype(reachtype,width)) {
+					NewNodes();
 			}
 			
 		};
+
+		class Manning_Kinematic: public cmf::water::FluxConnection
+		{
+		private:
+			static void connect_cells(cmf::upslope::Cell& c1,cmf::upslope::Cell& c2,int dummy);
+		protected:
+			cmf::river::OpenWaterStorage *w1,*w2;
+			virtual real calc_q(cmf::math::Time t);
+			void NewNodes()
+			{
+				w1=AsOpenWater(m_left);
+				w2=AsOpenWater(m_right);
+			}
+
+		public:
+			real distance;
+			real flow_width;
+			real nManning;
+
+			static const cmf::upslope::CellConnector cell_connector;
+			Manning_Kinematic(cmf::river::OpenWaterStorage& left,cmf::water::FluxNode & right, real FlowWidth,real Distance,real n_Manning=0.035)
+				: FluxConnection(left,right,"Kinematic wave surface flow"),distance(Distance),flow_width(FlowWidth),nManning(n_Manning) {
+					NewNodes();
+			}
+
+		};
+
 		/// Produces a constant but changeable flux from a source to a target, if enough water is present in the source
 		///
 		/// \f$ q=\left\{0 \mbox{ if }V_{source}\le V_{min}\\ \frac{V_{source} - V_{min}}{t_{decr} q_{0} - V_{min}}\mbox{ if } V_{source} t_{decr} q_{0}\\ q_{0} \mbox{ else}\le \right. \f$

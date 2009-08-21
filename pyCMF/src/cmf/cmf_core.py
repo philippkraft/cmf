@@ -443,6 +443,7 @@ point_vector_swigregister = _cmf_core.point_vector_swigregister
 point_vector_swigregister(point_vector)
 
 import datetime
+import struct
 
 
 def minimum(*args):
@@ -517,6 +518,10 @@ class hyperbola(object):
         return _cmf_core.hyperbola_rounded_linear(*args)
 
     rounded_linear = staticmethod(rounded_linear)
+    def rounded_linear_inverse(self, *args):
+        """rounded_linear_inverse(self, real y, real ymax, real slope, real roundness, real y_offset) -> real"""
+        return _cmf_core.hyperbola_rounded_linear_inverse(self, *args)
+
     def through_point(*args):
         """through_point(real x, real x0, real y0, real slope0, real x1, real y1) -> real"""
         return _cmf_core.hyperbola_through_point(*args)
@@ -526,6 +531,7 @@ class hyperbola(object):
         """__init__(self) -> hyperbola"""
         _cmf_core.hyperbola_swiginit(self,_cmf_core.new_hyperbola(*args))
     __swig_destroy__ = _cmf_core.delete_hyperbola
+hyperbola.rounded_linear_inverse = new_instancemethod(_cmf_core.hyperbola_rounded_linear_inverse,None,hyperbola)
 hyperbola_swigregister = _cmf_core.hyperbola_swigregister
 hyperbola_swigregister(hyperbola)
 Debug = cvar.Debug
@@ -1091,6 +1097,16 @@ class timeseries(object):
         """
         return _cmf_core.timeseries_size(self, *args)
 
+    def __init__(self, *args): 
+        """
+        __init__(self, Time _begin, Time _step, int _interpolationmethod = 1) -> timeseries
+        __init__(self) -> timeseries
+        __init__(self, timeseries ts) -> timeseries
+        __init__(self, double scalar) -> timeseries
+
+        timeseries(const cmf::math::timeseries &ts) 
+        """
+        _cmf_core.timeseries_swiginit(self,_cmf_core.new_timeseries(*args))
     def get_t(self, *args):
         """get_t(self, Time t) -> double"""
         return _cmf_core.timeseries_get_t(self, *args)
@@ -1256,28 +1272,6 @@ class timeseries(object):
         """mean(self) -> double"""
         return _cmf_core.timeseries_mean(self, *args)
 
-    def Save(self, *args):
-        """
-        Save(self, std::ostream file)
-
-        void
-        Save(std::ostream &file)
-
-        Save the Meteorology data to an ASCII File with fixed format. 
-        """
-        return _cmf_core.timeseries_Save(self, *args)
-
-    def __init__(self, *args): 
-        """
-        __init__(self, Time _begin, Time _step, int _interpolationmethod = 1) -> timeseries
-        __init__(self) -> timeseries
-        __init__(self, timeseries ts) -> timeseries
-        __init__(self, double scalar) -> timeseries
-        __init__(self, std::istream file) -> timeseries
-
-        timeseries(const cmf::math::timeseries &ts) 
-        """
-        _cmf_core.timeseries_swiginit(self,_cmf_core.new_timeseries(*args))
     def __len__(self, *args):
         """__len__(self) -> double"""
         return _cmf_core.timeseries___len__(self, *args)
@@ -1332,6 +1326,48 @@ class timeseries(object):
         res*=other
         return res
 
+    def to_buffer(self):
+        """Returns a binary buffer filled with the data of self"""
+        return struct.pack('qqqq%id' % self.size(),self.begin().AsMilliseconds(),self.step().AsMilliseconds(),self.interpolationpower(), *self)
+    def to_file(self,f):
+        """ Saves a timeseries in a special binary format.
+        The format consists of 4 integers with 64 bit, indicating the milliseconds after the 31.12.1899 00:00 of the beginning of the timeseries, the milliseconds of the time step,
+        the interpolation power and the number of values. The following 64 bit floats, are the values of the timeseries
+        """
+        if isinstance(f,str):
+            f=file(f,'wb')
+        elif not hasattr(f,'write'):
+            raise TypeError("The file f must be either an object providing a write method, like a file, or a valid file name")
+        f.write(struct.pack('qqqq%id' % self.size(),  self.size(), self.begin().AsMilliseconds(),self.step().AsMilliseconds(),self.interpolationpower(), *self))
+        
+        
+    @classmethod
+    def from_buffer(cls,buf):
+        header_length=struct.calcsize('qqqq') 
+        header=struct.unpack('qqqq',buffer[:header_length])
+        res=cls(header[1]*ms,header[2]*ms,header[3])
+        res.extend(struct.unpack('%id' % header[0],*buffer(buf,header_length,header[0]*8)))
+    @classmethod
+    def from_file(cls,f):
+        """ Loads a timeseries saved with to_file from a file 
+        Description of the file layout:
+        byte: 
+        0   Number of (int64)
+        8   Begin of timeseries (in ms since 31.12.1899) (int64)
+        16  Step size of timeseries (in ms) (int64)
+        24  Interpolation power (int64)
+        32  First value of timeseries (float64)
+        """
+        if isinstance(f,str):
+            f=file(f,'rb')
+        elif not hasattr(f,'read'):
+            raise TypeError("The file f must either implement a 'read' method, like a file, or must be a vild file name")
+        header_length=struct.calcsize('qqqq') 
+        header=struct.unpack('qqqq',f.read(header_length))
+        res=cls(header[1]*ms,header[2]*ms,header[3])
+        res.extend(struct.unpack('%id' % header[0],f.read(-1)))
+        return res
+
     __swig_destroy__ = _cmf_core.delete_timeseries
 timeseries.begin = new_instancemethod(_cmf_core.timeseries_begin,None,timeseries)
 timeseries.step = new_instancemethod(_cmf_core.timeseries_step,None,timeseries)
@@ -1367,7 +1403,6 @@ timeseries.floating_avg = new_instancemethod(_cmf_core.timeseries_floating_avg,N
 timeseries.floating_max = new_instancemethod(_cmf_core.timeseries_floating_max,None,timeseries)
 timeseries.floating_min = new_instancemethod(_cmf_core.timeseries_floating_min,None,timeseries)
 timeseries.mean = new_instancemethod(_cmf_core.timeseries_mean,None,timeseries)
-timeseries.Save = new_instancemethod(_cmf_core.timeseries_Save,None,timeseries)
 timeseries.__len__ = new_instancemethod(_cmf_core.timeseries___len__,None,timeseries)
 timeseries_swigregister = _cmf_core.timeseries_swigregister
 timeseries_swigregister(timeseries)
@@ -1616,6 +1651,8 @@ class numVector(object):
     @property
     def __array_interface__(self):
         return dict(shape=(len(self),),typestr='|f8',data=(self.adress(),0),version=3)
+    def ravel(self,order='C'):
+        return self
 
 numVector.adress = new_instancemethod(_cmf_core.numVector_adress,None,numVector)
 numVector.size = new_instancemethod(_cmf_core.numVector_size,None,numVector)
@@ -2278,6 +2315,7 @@ class ExplicitEuler_fixed(Integrator):
     def __init__(self, *args): 
         """
         __init__(self, StateVariableVector states, real epsilon = 1e-9, Time tStepMin = cmf::math::Time::Seconds(10)) -> ExplicitEuler_fixed
+        __init__(self, StateVariableOwner states, real epsilon = 1e-9, Time tStepMin = cmf::math::Time::Seconds(10)) -> ExplicitEuler_fixed
         __init__(self, real epsilon = 1e-9, Time tStepMin = cmf::math::Time::Seconds(10)) -> ExplicitEuler_fixed
         __init__(self, Integrator copy) -> ExplicitEuler_fixed
 
@@ -2416,6 +2454,7 @@ class CVodeIntegrator(Integrator):
     LinearSolver = _swig_property(_cmf_core.CVodeIntegrator_LinearSolver_get, _cmf_core.CVodeIntegrator_LinearSolver_set)
     MaxOrder = _swig_property(_cmf_core.CVodeIntegrator_MaxOrder_get, _cmf_core.CVodeIntegrator_MaxOrder_set)
     reinit_always = _swig_property(_cmf_core.CVodeIntegrator_reinit_always_get, _cmf_core.CVodeIntegrator_reinit_always_set)
+    max_step = _swig_property(_cmf_core.CVodeIntegrator_max_step_get, _cmf_core.CVodeIntegrator_max_step_set)
     def GetOrder(self, *args):
         """GetOrder(self) -> int"""
         return _cmf_core.CVodeIntegrator_GetOrder(self, *args)
@@ -2425,7 +2464,7 @@ class CVodeIntegrator(Integrator):
         return _cmf_core.CVodeIntegrator_ReInit(self, *args)
 
     def Initialize(self, *args):
-        """Initialize(self, Time max_step = day)"""
+        """Initialize(self)"""
         return _cmf_core.CVodeIntegrator_Initialize(self, *args)
 
     def __init__(self, *args): 
@@ -3587,9 +3626,19 @@ class node_list(object):
         """size(self) -> int"""
         return _cmf_core.node_list_size(self, *args)
 
+    def __init__(self, *args): 
+        """
+        __init__(self) -> node_list
+        __init__(self, node_list forcopy) -> node_list
+        """
+        _cmf_core.node_list_swiginit(self,_cmf_core.new_node_list(*args))
     def __iadd__(self, *args):
         """__iadd__(self, node_list right) -> node_list"""
         return _cmf_core.node_list___iadd__(self, *args)
+
+    def __add__(self, *args):
+        """__add__(self, node_list right) -> node_list"""
+        return _cmf_core.node_list___add__(self, *args)
 
     def get(self, *args):
         """
@@ -3622,6 +3671,10 @@ class node_list(object):
         """get_fluxes3d(self, Time t) -> point_vector"""
         return _cmf_core.node_list_get_fluxes3d(self, *args)
 
+    def get_positions(self, *args):
+        """get_positions(self) -> point_vector"""
+        return _cmf_core.node_list_get_positions(self, *args)
+
     def __getitem__(self,index):
         return self.get(index)
     def __getslice__(self,slice):
@@ -3630,7 +3683,7 @@ class node_list(object):
     def __len__(self):
         return self.size()       
     def __iter__(self):
-        for i in xrange(size()):
+        for i in xrange(self.size()):
             yield self[i]
     def extend(self,sequence):
         """Extends the node list with the sequence (any iterable will do) """
@@ -3643,12 +3696,10 @@ class node_list(object):
         nl.extend(sequence)
         return nl
 
-    def __init__(self, *args): 
-        """__init__(self) -> node_list"""
-        _cmf_core.node_list_swiginit(self,_cmf_core.new_node_list(*args))
     __swig_destroy__ = _cmf_core.delete_node_list
 node_list.size = new_instancemethod(_cmf_core.node_list_size,None,node_list)
 node_list.__iadd__ = new_instancemethod(_cmf_core.node_list___iadd__,None,node_list)
+node_list.__add__ = new_instancemethod(_cmf_core.node_list___add__,None,node_list)
 node_list.get = new_instancemethod(_cmf_core.node_list_get,None,node_list)
 node_list.append = new_instancemethod(_cmf_core.node_list_append,None,node_list)
 node_list.global_water_balance = new_instancemethod(_cmf_core.node_list_global_water_balance,None,node_list)
@@ -3656,6 +3707,7 @@ node_list.water_balance = new_instancemethod(_cmf_core.node_list_water_balance,N
 node_list.get_fluxes_to = new_instancemethod(_cmf_core.node_list_get_fluxes_to,None,node_list)
 node_list.get_fluxes3d_to = new_instancemethod(_cmf_core.node_list_get_fluxes3d_to,None,node_list)
 node_list.get_fluxes3d = new_instancemethod(_cmf_core.node_list_get_fluxes3d,None,node_list)
+node_list.get_positions = new_instancemethod(_cmf_core.node_list_get_positions,None,node_list)
 node_list_swigregister = _cmf_core.node_list_swigregister
 node_list_swigregister(node_list)
 
@@ -3762,10 +3814,6 @@ class DricheletBoundary(FluxNode):
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
     __repr__ = _swig_repr
     is_source = _swig_property(_cmf_core.DricheletBoundary_is_source_get, _cmf_core.DricheletBoundary_is_source_set)
-    def is_empty(self, *args):
-        """is_empty(self) -> bool"""
-        return _cmf_core.DricheletBoundary_is_empty(self, *args)
-
     def RecalcFluxes(self, *args):
         """
         RecalcFluxes(self, Time t) -> bool
@@ -3783,7 +3831,6 @@ class DricheletBoundary(FluxNode):
         """__init__(self, project _p, real potential, point Location = cmf::geometry::point()) -> DricheletBoundary"""
         _cmf_core.DricheletBoundary_swiginit(self,_cmf_core.new_DricheletBoundary(*args))
     __swig_destroy__ = _cmf_core.delete_DricheletBoundary
-DricheletBoundary.is_empty = new_instancemethod(_cmf_core.DricheletBoundary_is_empty,None,DricheletBoundary)
 DricheletBoundary.RecalcFluxes = new_instancemethod(_cmf_core.DricheletBoundary_RecalcFluxes,None,DricheletBoundary)
 DricheletBoundary_swigregister = _cmf_core.DricheletBoundary_swigregister
 DricheletBoundary_swigregister(DricheletBoundary)
@@ -3799,10 +3846,6 @@ class NeumannBoundary(FluxNode):
         """__call__(self, Time t) -> real"""
         return _cmf_core.NeumannBoundary___call__(self, *args)
 
-    def is_empty(self, *args):
-        """is_empty(self) -> bool"""
-        return _cmf_core.NeumannBoundary_is_empty(self, *args)
-
     def connect_to(self, *args):
         """connect_to(self, FluxNode target)"""
         return _cmf_core.NeumannBoundary_connect_to(self, *args)
@@ -3816,7 +3859,6 @@ class NeumannBoundary(FluxNode):
         _cmf_core.NeumannBoundary_swiginit(self,_cmf_core.new_NeumannBoundary(*args))
     __swig_destroy__ = _cmf_core.delete_NeumannBoundary
 NeumannBoundary.__call__ = new_instancemethod(_cmf_core.NeumannBoundary___call__,None,NeumannBoundary)
-NeumannBoundary.is_empty = new_instancemethod(_cmf_core.NeumannBoundary_is_empty,None,NeumannBoundary)
 NeumannBoundary.connect_to = new_instancemethod(_cmf_core.NeumannBoundary_connect_to,None,NeumannBoundary)
 NeumannBoundary_swigregister = _cmf_core.NeumannBoundary_swigregister
 NeumannBoundary_swigregister(NeumannBoundary)
@@ -4130,6 +4172,9 @@ class MeteoStation(Locatable):
     z = _swig_property(_cmf_core.MeteoStation_z_get, _cmf_core.MeteoStation_z_set)
     Name = _swig_property(_cmf_core.MeteoStation_Name_get, _cmf_core.MeteoStation_Name_set)
     daily = _swig_property(_cmf_core.MeteoStation_daily_get, _cmf_core.MeteoStation_daily_set)
+    def __init__(self, *args): 
+        """__init__(self, MeteoStation other) -> MeteoStation"""
+        _cmf_core.MeteoStation_swiginit(self,_cmf_core.new_MeteoStation(*args))
     def get_data(self, *args):
         """get_data(self, Time t, double height) -> Weather"""
         return _cmf_core.MeteoStation_get_data(self, *args)
@@ -4154,16 +4199,6 @@ class MeteoStation(Locatable):
     Sunshine = _swig_property(_cmf_core.MeteoStation_Sunshine_get, _cmf_core.MeteoStation_Sunshine_set)
     Rs = _swig_property(_cmf_core.MeteoStation_Rs_get, _cmf_core.MeteoStation_Rs_set)
     T_lapse = _swig_property(_cmf_core.MeteoStation_T_lapse_get, _cmf_core.MeteoStation_T_lapse_set)
-    def Save(self, *args):
-        """Save(self, string filename)"""
-        return _cmf_core.MeteoStation_Save(self, *args)
-
-    def __init__(self, *args): 
-        """
-        __init__(self, MeteoStation other) -> MeteoStation
-        __init__(self, string filename) -> MeteoStation
-        """
-        _cmf_core.MeteoStation_swiginit(self,_cmf_core.new_MeteoStation(*args))
     def TimeseriesDictionary(self):
         return {"Tmin":self.Tmin,
                 "Tmax":self.Tmax,
@@ -4182,7 +4217,6 @@ class MeteoStation(Locatable):
 MeteoStation.get_data = new_instancemethod(_cmf_core.MeteoStation_get_data,None,MeteoStation)
 MeteoStation.get_global_radiation = new_instancemethod(_cmf_core.MeteoStation_get_global_radiation,None,MeteoStation)
 MeteoStation.SetSunshineFraction = new_instancemethod(_cmf_core.MeteoStation_SetSunshineFraction,None,MeteoStation)
-MeteoStation.Save = new_instancemethod(_cmf_core.MeteoStation_Save,None,MeteoStation)
 MeteoStation_swigregister = _cmf_core.MeteoStation_swigregister
 MeteoStation_swigregister(MeteoStation)
 
@@ -4655,7 +4689,7 @@ class Vegetation(object):
 
     def __init__(self, *args): 
         """
-        __init__(self, double _LAI = 12, double _Height = 0.12, double _RootDepth = 0.25, 
+        __init__(self, double _LAI = 2.88, double _Height = 0.12, double _RootDepth = 0.25, 
             double _StomatalResistance = 100, 
             double _albedo = 0.23, double _CanopyClosure = 1, 
             double _CanopyCapacityPerLAI = 0.1, 
@@ -5256,6 +5290,14 @@ def cell_to_cell_fluxes_sum_flux(*args):
   """cell_to_cell_fluxes_sum_flux(Time t, Cell c1, Cell c2, double mindepth = -1, double maxdepth = 1e300) -> double"""
   return _cmf_core.cell_to_cell_fluxes_sum_flux(*args)
 
+
+def cell_positions(*args):
+  """cell_positions(cells_ref cells) -> point_vector"""
+  return _cmf_core.cell_positions(*args)
+
+def cell_flux_directions(*args):
+  """cell_flux_directions(cells_ref cells, Time arg1) -> point_vector"""
+  return _cmf_core.cell_flux_directions(*args)
 class SoilWaterStorage(WaterStorage):
     """
     A representation of a Layer.
@@ -6288,8 +6330,10 @@ class Manning(FluxConnection):
 
     def __init__(self, *args): 
         """
-        __init__(self, OpenWaterStorage left, FluxNode right, ReachType ChannelShape, 
+        __init__(self, OpenWaterStorage left, FluxNode right, ReachType reachtype, 
             real Distance) -> Manning
+        __init__(self, OpenWaterStorage left, FluxNode right, char reachtype, 
+            real width, real Distance) -> Manning
         """
         _cmf_core.Manning_swiginit(self,_cmf_core.new_Manning(*args))
     __swig_destroy__ = _cmf_core.delete_Manning
@@ -6297,6 +6341,24 @@ Manning.ChannelGeometry = new_instancemethod(_cmf_core.Manning_ChannelGeometry,N
 Manning_swigregister = _cmf_core.Manning_swigregister
 Manning_swigregister(Manning)
 Manning.cell_connector = _cmf_core.cvar.Manning_cell_connector
+
+class Manning_Kinematic(FluxConnection):
+    """Proxy of C++ cmf::river::Manning_Kinematic class"""
+    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __repr__ = _swig_repr
+    distance = _swig_property(_cmf_core.Manning_Kinematic_distance_get, _cmf_core.Manning_Kinematic_distance_set)
+    flow_width = _swig_property(_cmf_core.Manning_Kinematic_flow_width_get, _cmf_core.Manning_Kinematic_flow_width_set)
+    nManning = _swig_property(_cmf_core.Manning_Kinematic_nManning_get, _cmf_core.Manning_Kinematic_nManning_set)
+    def __init__(self, *args): 
+        """
+        __init__(self, OpenWaterStorage left, FluxNode right, real FlowWidth, 
+            real Distance, real n_Manning = 0.035) -> Manning_Kinematic
+        """
+        _cmf_core.Manning_Kinematic_swiginit(self,_cmf_core.new_Manning_Kinematic(*args))
+    __swig_destroy__ = _cmf_core.delete_Manning_Kinematic
+Manning_Kinematic_swigregister = _cmf_core.Manning_Kinematic_swigregister
+Manning_Kinematic_swigregister(Manning_Kinematic)
+Manning_Kinematic.cell_connector = _cmf_core.cvar.Manning_Kinematic_cell_connector
 
 class TechnicalFlux(FluxConnection):
     """Proxy of C++ cmf::river::TechnicalFlux class"""
