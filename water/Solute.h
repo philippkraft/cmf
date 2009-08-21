@@ -197,8 +197,11 @@ namespace cmf {
 				WaterQuality res;
 				for(Solutes::const_iterator it = Solutes::all().begin(); it != Solutes::all().end(); ++it)
 				{
-					//cmf::math::timeseries& ts=(*this)[*it];
-					res[*it]=(*this)[*it][t];
+					const cmf::math::timeseries& ts=(*this)[*it];
+					if (ts.is_empty())
+						res[*it]=0.0;
+					else
+						res[*it]=(*this)[*it][t];
 				}
 				return res;
 			}

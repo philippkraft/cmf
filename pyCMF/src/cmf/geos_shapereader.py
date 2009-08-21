@@ -24,9 +24,9 @@ class shapefile:
         return struct.unpack(fmt,f.read(struct.calcsize(fmt)))        
     def readHeader(self,f):
         """ reads the header of a shape file (see ESRI Shapefile Whitepaper (http://www.esri.com/library/whitepapers/pdfs/shapefile.pdf)"""
-        fmt_begin='>i5ii'
-        fmt_Version_Type_MBR_zrange_mrange='<ii4d2d2d'
+        fmt_begin='>i5i'
         begin=self.__readfmt(fmt_begin, f)
+        self.file_size=self.__readfmt('>i', f)[0]*2
         #vtmzm=self.__readfmt(fmt_Version_Type_MBR_zrange_mrange, f)
         self.version=self.__readfmt('<i', f)
         self.type=self.__readfmt('<i',f)
@@ -97,27 +97,43 @@ class shapefile:
             bbox=self.__readfmt('<4d', f)
             numparts,numpoints=self.__readfmt('<ii', f)
             partpositions=self.__readfmt('<%ii' % numparts, f)
-            coords=[]
             for i in range(numpoints):
+                x,y=self.__readfmt('<dd', f)
+                points.append((x,y,0.0))
+            zrange=self.__readfmt('<dd', f)
+            z_s=self.__readfmt('<%id' % numpoints, f)
+            m_range=self.__readfmt('<dd', f)
+            m_s=self.__readfmt('<%id' % numpoints, f)
+            coords=[]
+            for i,p in enumerate(points):
                 if i in partpositions:
                     coords.append([])
-                x,y,z,m=self.__readfmt('<dddd', f)
-                coords[-1].append((x,y,z))
+                coords[-1].append((p[0],p[1],z_s[i]))
             obj=shapely.geometry.MultiLineString(coords)
         elif type==15: # PolygonZ
             bbox=self.__readfmt('<4d', f)
             numparts,numpoints=self.__readfmt('<ii', f)
             partpositions=self.__readfmt('<%ii' % numparts, f)
-            coords=[]
+            points=[]
             for i in range(numpoints):
+                x,y=self.__readfmt('<dd', f)
+                points.append((x,y,0.0))
+            zrange=self.__readfmt('<dd', f)
+            z_s=self.__readfmt('<%id' % numpoints, f)
+            m_range=self.__readfmt('<dd', f)
+            m_s=self.__readfmt('<%id' % numpoints, f)
+            coords=[]
+            for i,p in enumerate(points):
                 if i in partpositions:
                     coords.append([])
-                x,y,z,m=self.__readfmt('<dddd', f)
-                coords[-1].append((x,y,z))
-            obj=shapely.geometry.MultiLineString(coords)
+                coords[-1].append((p[0],p[1],z_s[i]))
+            if len(coords)==1 :
+                obj=shapely.geometry.Polygon(coords[0])
+            else:
+                obj=shapely.geometry.Polygon(coords[0],coords[1:])
         else :
-            print " Shape type %i not implemented!" % type
-                
+            raise ValueError( " Shape type %i not implemented!" % type)
+               
         return number,obj 
     def __init__(self,filename):
         """ Loads a shapefile from a filename"""
@@ -127,11 +143,16 @@ class shapefile:
         shapes={}
         number,obj=self.readRecord(f)
         shapes[number]=obj
-        while 1:
+        while f.tell()<self.file_size :
             try:
                 number,obj=self.readRecord(f)
                 shapes[number]=obj
-            except :
+            except ValueError,e:
+                print e
+                break
+            except Exception,e:
+                print "file pos=%i, file size=%i" % (f.tell(),self.file_size) 
+                print e
                 break
         f.close()
         self.__data=dbf.dbfclass('attributes', filename.lower().replace('.shp','.dbf'))

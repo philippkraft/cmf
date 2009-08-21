@@ -42,7 +42,7 @@ namespace cmf {
 			{
 				return Location;
 			}
-			void set_position(cmf::geometry::point p)
+			virtual void set_position(cmf::geometry::point p)
 			{
 				Location=p;
 			}
@@ -51,10 +51,10 @@ namespace cmf {
 			const int node_id;
 			virtual bool is_storage() const {return false;}
 			std::string Name;
-			cmf::water::connection_vector Connections()
+			cmf::water::connection_vector Connections() const
 			{
 				connection_vector res;
-				for(ConnectionMap::iterator it = m_Connections.begin(); it != m_Connections.end(); ++it)
+				for(ConnectionMap::const_iterator it = m_Connections.begin(); it != m_Connections.end(); ++it)
 					res.push_back(it->second);
 				return res;
 			}
@@ -89,7 +89,7 @@ namespace cmf {
 			{
 				throw std::runtime_error("Potential of "+Name+" is read only");
 			}
-			virtual bool is_empty()
+			virtual bool is_empty() const
 			{
 				return true;
 			}
@@ -126,6 +126,10 @@ namespace cmf {
 			}
 
 #endif
+			node_list() {}
+			node_list(const node_list& forcopy)
+				: m_nodes(forcopy.m_nodes) {}
+
 			node_list& operator+=(const node_list& right)
 			{
 				for (int i = 0; i < right.size() ; ++i)
@@ -134,6 +138,13 @@ namespace cmf {
 				}
 				return *this;
 			}
+			cmf::water::node_list operator+(const cmf::water::node_list & right) const
+			{
+				cmf::water::node_list res(*this);
+				res+=right;
+				return res;
+			}
+
 			FluxNode* get(int index) const
 			{
 				return m_nodes.at(index<0 ? size()+index : index);
@@ -184,6 +195,8 @@ namespace cmf {
 			cmf::math::numVector get_fluxes_to( const cmf::water::node_list& targets ,cmf::math::Time t) const;
 			cmf::geometry::point_vector get_fluxes3d_to( const cmf::water::node_list& targets ,cmf::math::Time t) const;
 			cmf::geometry::point_vector get_fluxes3d(cmf::math::Time t) const;
+			cmf::geometry::point_vector get_positions() const;
+
 		};
 
 

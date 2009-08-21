@@ -116,35 +116,6 @@ cmf::math::timeseries& cmf::math::timeseries::power( double exponent)
 
 
 
-void cmf::math::timeseries::Save(std::ostream& file)
-{
-	cmf::math::Date b=begin();
-	file << b.year << " " << b.month << " " << b.day 
-		<< " " << b.hour << " " << b.minute << " " << b.second << " " << b.ms << " ";
-	file << step().AsDays() << " ";
-	file << this->size() << " " << interpolationpower() << std::endl;
-	for(std::vector<double>::const_iterator it = m_data->values.begin(); it != m_data->values.end(); ++it)
-		file << *it << " ";
-	file << std::endl;
-}
-cmf::math::timeseries::timeseries(std::istream& file)
-{
-	int y,mo,d,h,m,s,ms,size;
-	file >> y >> mo >> d >> h >> m >> s >> ms;
-	Time begin=cmf::math::Time(d,mo,y,h,m,s,ms);
-	double step_days;
-	file >> step_days;
-	Time step=cmf::math::Time::Days(step_days);
-	int interpolationpower;
-	file >> size >> interpolationpower;
-	m_data=make_data(begin,step,interpolationpower);
-	double value=0;
-	for (int i = 0; i < size ; i++)
-	{
-		file >> m_data->values[i];
-	}
-}
-
 cmf::math::timeseries cmf::math::timeseries::reduce_min( cmf::math::Time begin,cmf::math::Time step ) const
 {
 	const cmf::math::timeseries& org=*this;

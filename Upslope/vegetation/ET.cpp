@@ -59,7 +59,8 @@ namespace cmf {
 					aeroTerm      = gamma/nominator * aeroTermCoeff / (A.T+273)*A.Windspeed*(A.e_s-A.e_a),
 					et_pot=(radTerm+aeroTerm);
 				return et_pot<0 ? 0 : et_pot;
-			}	
+			}
+
 			real Tact(real Tpot,const cmf::upslope::SoilWaterStorage & sw,const cmf::upslope::vegetation::Vegetation & veg)
 			{
 				real

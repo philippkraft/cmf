@@ -70,7 +70,7 @@ namespace cmf {
 			///@name Overrides of FluxNode
 			//@{
 			virtual bool RecalcFluxes(cmf::math::Time t) {return StateIsChanged();}
-			virtual bool is_empty() {return get_state()<=0;}
+			virtual bool is_empty() const {return get_state()<=0;}
 			virtual WaterStorage* copy() const
 			{
 				return new WaterStorage(*this);

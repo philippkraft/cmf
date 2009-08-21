@@ -15,10 +15,10 @@ class Geometry:
         self.__dict[hash(key)]=(key,value)
     def itervalues(self):
         for v in self.__dict.itervalues():
-            return v[1]
+            yield v[1]
     def iterkeys(self):
         for v in self.__dict.itervalues():
-            return v[0]   
+            yield v[0]   
     def __iter__(self):
         return self.iterkeys()
     def keys(self):
@@ -120,49 +120,50 @@ def create_reaches_preintersect(project,features,outlets,cell_callable,
         type_callable=lambda feature:type 
     z_callable=lambda feature:cell_callable(feature).z       
     reaches={}
-    
+    cells={}
     # Cycle through all features, to create the reaches
     for f in features:
         # Get the cell of the reach
         cell=cell_callable(f)
-        if not cell:
-            continue # Next feature if no cell is found
-        # Add a reach to the cell
-        try:
-            r=cell.add_reach(length_callable(f),type_callable(f),depth_callable(f),width_callable(f))
-            reaches[f]=r
-            geometry[r]=shape_callable(f)
-        except NotImplementedError:
-            raise RuntimeError("Problem creating reach with l=%s,t=%s,d=%s,w=%s" % (length_callable(f),type_callable(f),depth_callable(f),width_callable(f)))
+        if cell:
+            cells[f]=cell
+            # Add a reach to the cell
+            try:
+                r=cell.add_reach(length_callable(f),type_callable(f),depth_callable(f),width_callable(f))
+                reaches[f]=r
+                geometry[r]=shape_callable(f)
+            except NotImplementedError:
+                raise RuntimeError("Problem creating reach with l=%s,t=%s,d=%s,w=%s" % (length_callable(f),type_callable(f),depth_callable(f),width_callable(f)))
     print len(reaches),'reaches created, proceed with connecting...'
     
     # Connect the reaches
     
     # Create the downstream dictionary
-    downstreams=get_downstream(features, z_callable, shape_callable, tolerance)
+    downstreams=get_downstream(cells.keys(), z_callable, shape_callable, tolerance)
     root_reaches=[]
     for f in features:        
-        r=reaches[f]
-        # If a downstream exists for this feature, use it
-        if f in downstreams:
-            f_down=downstreams[f]
-            try:
-                r_down=reaches[f_down]
-            except KeyError,e:
-                print "KeyError, reach does not exist yet"
-            r.set_downstream(reaches[downstreams[f]])
-        # Else look for an outlet at the reach
-        else:
-            root_reaches.append(r)
-            outlet_connection=False
-            for o in outlets:
-                p=Point(tuple(o.Location))
-                if get_predicate(tolerance, shape_callable)(f,p):
-                    r.set_outlet(o)
-                    print "A reach at %s is connected to outlet %s", (r.cell,o.Name)
-                    outlet_connection=True
-            if not outlet_connection:
-                print "found dead end reach, water flows to surface water of %s" % r.cell
+        r=reaches.get(f)
+        if r:
+            # If a downstream exists for this feature, use it
+            if f in downstreams:
+                f_down=downstreams[f]
+                try:
+                    r_down=reaches[f_down]
+                except KeyError,e:
+                    print "KeyError, reach does not exist yet"
+                r.set_downstream(reaches[downstreams[f]])
+            # Else look for an outlet at the reach
+            else:
+                root_reaches.append(r)
+                outlet_connection=False
+                for o in outlets:
+                    p=Point(tuple(o.position))
+                    if p.distance(shape_callable(f))<=tolerance:
+                        r.set_outlet(o)
+                        print "A reach at %s is connected to outlet %s", (r.cell,o.Name)
+                        outlet_connection=True
+                if not outlet_connection:
+                    print "found dead end reach, water flows to surface water of %s" % r.cell
     return root_reaches
 
 def create_reaches(project,outlets,features,
@@ -237,7 +238,7 @@ def cell_neighbors(features,shape_callable=lambda feat:feat.shape):
                     res[s_cmp].append((s,intersect))
     return res
             
-def cells_from_polygons(project,features,shape_callable=lambda feat:feat.shape,id_callable=lambda f:0,center_callable=lambda feat:tuple(feat.shape.centroid),area_callable=lambda feat:feat.shape.area):
+def cells_from_polygons(project,features,shape_callable=lambda feat:feat.shape,id_callable=lambda f:0,center_callable=lambda feat:tuple(feat.shape.centroid),area_callable=lambda feat:feat.shape.area,no_connect=False):
     """ Adds cells from shapely features to project, and connects them topological
     project: a cmf project
     features: a sequence holding or referencing the shapely features
@@ -265,22 +266,23 @@ def cells_from_polygons(project,features,shape_callable=lambda feat:feat.shape,i
     print "No. of connected cells:",
     report_at=[1,5,10,50,100,500,1000,5000,10000,50000,100000,500000]
     start=time.clock()
-    con_count=0
-    cmp_count=0
-    for i,s in enumerate(features):
-        if i in report_at:
-            print i,
-        candidates=q_tree.get_objects(shape_callable(s).bounds)
-        cmp_count+=len(candidates)
-        for c in candidates:
-            if not s is c and pred(s,c):
-                shp_s=shape_callable(s)
-                shp_cmp=shape_callable(c)
-                intersect=shp_s.intersection(shp_cmp).length
-                if intersect:
-                    cell_dict[s].topology.AddNeighbor(cell_dict[c],intersect)
-                    con_count+=1
-    print len(features),' %0.2f sec. %i comparisons' % (time.clock()-start,cmp_count)
+    if not no_connect:
+        con_count=0
+        cmp_count=0
+        for i,s in enumerate(features):
+            if i in report_at:
+                print i,
+            candidates=q_tree.get_objects(shape_callable(s).bounds)
+            cmp_count+=len(candidates)
+            for c in candidates:
+                if not s is c and pred(s,c):
+                    shp_s=shape_callable(s)
+                    shp_cmp=shape_callable(c)
+                    intersect=shp_s.intersection(shp_cmp).length
+                    if intersect:
+                        cell_dict[s].topology.AddNeighbor(cell_dict[c],intersect)
+                        con_count+=1
+        print len(features),' %0.2f sec. %i comparisons' % (time.clock()-start,cmp_count)
     return cell_dict  
 
 def cells_from_dem(project,dem):
