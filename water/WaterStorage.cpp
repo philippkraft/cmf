@@ -41,11 +41,11 @@ real cmf::water::WaterStorage::conc( const cmf::water::Solute& solute ) const
 	else return 0	;
 }
 
-cmf::water::WaterQuality cmf::water::WaterStorage::conc(cmf::math::Time t)
+cmf::water::WaterQuality cmf::water::WaterStorage::conc(cmf::math::Time t) const
 {
 	WaterQuality wq;
 	size_t i=0;
-	for(SoluteStorageMap::iterator it = m_Concentrations.begin(); it != m_Concentrations.end(); ++it)
+	for(SoluteStorageMap::const_iterator it = m_Concentrations.begin(); it != m_Concentrations.end(); ++it)
 	{
 		wq[i++]=conc((**it).Solute);
 	}
