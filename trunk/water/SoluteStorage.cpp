@@ -11,14 +11,13 @@ real cmf::water::SoluteStorage::Derivate( const cmf::math::Time& time )
 		real q=con.q(Storage,time);
 		if (q>0)
 		{
-			inflow+=WaterFlux(q,con.conc(Storage,time));
+			inflow+=WaterFlux(q,con.conc(time));
 		}
 		else if (q<0)
 		{
-			outflow+=WaterFlux(q,con.conc(Storage,time));
+			outflow+=WaterFlux(q,con.conc(time));
 		}
 	}
-
 	return inflow.matterflux(this->Solute) + outflow.matterflux(this->Solute) + AdditionalFlux * Storage.water();
 }
 

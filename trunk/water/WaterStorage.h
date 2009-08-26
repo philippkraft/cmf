@@ -47,7 +47,7 @@ namespace cmf {
 			/// Returns the concentration of the given solute
 			real conc(const cmf::water::Solute& solute) const;
 			/// Returns the current WaterQuality (concentration of all solutes)
-			WaterQuality conc(cmf::math::Time t);
+			WaterQuality conc(cmf::math::Time t) const;
 			/// Sets a new concentration
 			void conc(const cmf::water::Solute& solute,real NewConcetration)
 			{

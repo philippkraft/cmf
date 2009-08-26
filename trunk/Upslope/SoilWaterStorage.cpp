@@ -100,8 +100,8 @@ real cmf::upslope::SoilWaterStorage::get_saturated_depth() const
 void cmf::upslope::SoilWaterStorage::StateChangeAction()
 {
 	m_wet.C=get_soil().VoidVolume(get_upper_boundary(),get_lower_boundary(),cell.get_area());
-	m_wet.W=get_state()/m_wet.C;
-	m_wet.theta=get_state()/(cell.get_area()*get_thickness());
+	m_wet.W=maximum(get_state(),0)/m_wet.C;
+	m_wet.theta=maximum(get_state(),0)/(cell.get_area()*get_thickness());
 	m_wet.Psi_m = get_soil().MatricPotential(get_wetness());
 	m_wet.Ksat=get_soil().K(1,0.5*(get_upper_boundary()+get_lower_boundary()));
 	m_wet.K=get_soil().K(m_wet.W,0.5*(get_upper_boundary()+get_lower_boundary()));
