@@ -68,11 +68,11 @@ namespace cmf {
 			}
 			/// Returns the concentration of the flux. If not overridden,
 			/// it returns the concentration of the source of the flux (direction depending)
-			WaterQuality conc(const FluxNode& inquirer,cmf::math::Time t)
+			WaterQuality conc(cmf::math::Time t)
 			{
-				real _q=q(inquirer,t);
-				if (_q>0) return m_right->conc(t);
-				else return m_left->conc(t);
+				real _q=q(t);
+				if (_q>0) return m_left->conc(t);
+				else return m_right->conc(t);
 			}
 			const std::string type;
 			std::string ToString() const

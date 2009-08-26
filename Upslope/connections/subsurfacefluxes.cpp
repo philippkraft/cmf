@@ -141,21 +141,29 @@ void cmf::upslope::connections::UnsaturatedDarcy::use_for_cell( cmf::upslope::Ce
 // Darcy connection
 real cmf::upslope::connections::Darcy::calc_q( cmf::math::Time t )	
 {
-	// Darcy flux
-	real
-		flow_thick1=minimum(sw1->get_thickness(),sw1->get_lower_boundary()-sw1->get_saturated_depth()),
-		flow_thick2=sw2 ? minimum(sw2->get_thickness(),sw2->get_lower_boundary()-sw2->get_saturated_depth()) : flow_thick1;
-	if (flow_thick1<0 || flow_thick2<0)
-		return 0.0;
+	real Psi_t1=sw1->cell.z;
+	for (int i = 0; i < sw1->cell.layer_count() ; ++i)
+	{
+		cmf::upslope::SoilWaterStorage& layer=sw1->cell.get_layer(i);
+		Psi_t1-=(1-layer.get_wetness())*layer.get_thickness();
+	}
+	real Psi_t2=sw2 ? sw2->cell.z : m_right->get_potential();
+	if (sw2)
+		for (int i = 0; i < sw2->cell.layer_count() ; ++i)
+		{
+			cmf::upslope::SoilWaterStorage& layer=sw2->cell.get_layer(i);
+			Psi_t2-=(1-layer.get_wetness())*layer.get_thickness();
+		}
+
 	real
 		// Gravitational gradient
-		Psi_t1=sw1->cell.z - sw1->get_saturated_depth(),
-		Psi_t2=sw2 ? sw2->cell.z - sw2->get_saturated_depth() : m_right->get_potential(),
-		gradient=(Psi_t1-Psi_t2)/distance,
+		gradient=(Psi_t1-Psi_t2)/distance;
+
+	cmf::upslope::SoilWaterStorage* source =  (gradient < 0) && sw2 ? sw2 : sw1;
+	real
 		// Transmissivity
-		T1=sw1->get_soil().Transmissivity(sw1->get_lower_boundary()-flow_thick1,sw1->get_lower_boundary(),sw1->get_wetness()),
-		T2=sw2 ? sw2->get_soil().Transmissivity(sw2->get_lower_boundary()-flow_thick2,sw2->get_lower_boundary(),sw2->get_wetness()) : T1,
-		T = mean(T1,T2);
+		flow_thick = source->get_thickness() * minmax(source->get_wetness(),0.0,1.0),
+		T = source->get_soil().Transmissivity(source->get_lower_boundary()-flow_thick,source->get_lower_boundary(),1);
 	if (m_right->is_empty() && gradient<=0)
 		return 0.0;
 	return T*gradient*flow_width;

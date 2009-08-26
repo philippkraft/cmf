@@ -100,6 +100,7 @@
 	#include "Reach/reach.h"
 	#include "project.h"
 	// Include the combined solver
+	#include "math/Integrators/WaterSoluteIntegrator.h"
 	// Include Factories and helper IO
 %}
 
@@ -188,6 +189,10 @@
 }}
 %echo "cmf::river OK!";
 %include "project.i"
+
+%attribute(cmf::math::SoluteWaterIntegrator,cmf::math::Integrator*,solute_integrator,get_solute_integrator,set_solute_integrator);
+%attribute(cmf::math::SoluteWaterIntegrator,cmf::math::Integrator*,water_integrator,get_water_integrator,set_water_integrator);
+%include "math/Integrators/WaterSoluteIntegrator.h"
 
 %echo "cmf::project OK!";
 
