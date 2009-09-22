@@ -42,6 +42,29 @@ class Geometry:
         
 geometry=Geometry()
 
+class cell_tree(object):
+    def __addbranch(self,cell):
+        self.__data[cell]=[]
+        for n,w in cell.neighbors:
+            if n.topology.MainOutlet() == cell:
+                 self.__data[cell].append(n)
+                 self.__addbranch(n)
+    def __init__(self,start_cell):
+        self.start=start_cell
+        self.__data={}
+        self.__addbranch(start_cell)
+    def __getitem__(self,cell):
+        return self.__data[cell]
+    def __len__(self):
+        return len(self.__data)
+    def __iter__(self):
+        cells=[self.start]
+        while cells:
+            c=cells.pop(0)
+            cells.extend(self[c])
+            yield c
+                        
+
 def downstream_recursive(unhandled,pred,downstreams,this,order):
     try:
         unhandled.remove(this)
@@ -284,17 +307,20 @@ def cells_from_polygons(project,features,shape_callable=lambda feat:feat.shape,i
                         con_count+=1
         print len(features),' %0.2f sec. %i comparisons' % (time.clock()-start,cmp_count)
     return cell_dict  
-
-def cells_from_dem(project,dem):
+def cells_from_dem(project,dem,use_diagonals=True):
     """ Adds square cells from a dem to the project, and meshes them.
-    project : cmf.project, where the cells should be added to
-    dem     : a Raster representing the heights of cells
-    
+    project       : cmf.project, where the cells should be added to
+    dem           : a Raster representing the heights of cells
+    use_diagonals : If True (default) the diagonal neighbors of the cells are included
     Returns: a dictionary with the tuple (column,row) as key and the cells as values 
     
     The width of the connection between cells is based on an octagon
-    straight flowwidth = 1/2*cellsize[direction]
-    diagonal flowwidth = 1/sqrt(2)*avg(cellsize)   
+    if use_diagonals:
+        straight flowwidth = 1/2*cellsize[direction]
+        diagonal flowwidth = 1/sqrt(2)*avg(cellsize)
+    else:
+        straight flowwidth = cellsize[direction]
+        diagonal flowwidth = 0
     """
     cells_dict={}
     # Create the cells
@@ -308,13 +334,20 @@ def cells_from_dem(project,dem):
         cells_dict[c,r]=cell
     for c,r in cells_dict:
         act_cell=cells_dict[c,r]
-        for nc,nr,nv,nd,dirx,diry in dem.neighbors(c, r):
-            n_cell=cells_dict[nc,nr]
-            if (dirx and diry): # diagonal
-                flow_width=0.354*0.5*(dem.cellsize[0]+dem.cellsize[1])
-            else:
-                flow_width=0.5*(abs(dem.cellsize[0]*dirx)+abs(dem.cellsize[1]*diry))
-            act_cell.topology.AddNeighbor(n_cell,flow_width)
+        if use_diagonals:
+            for nc,nr,nv,nd,dirx,diry in dem.neighbors(c, r):
+                n_cell=cells_dict[nc,nr]
+                if (dirx and diry): # diagonal
+                    flow_width=0.354*0.5*(dem.cellsize[0]+dem.cellsize[1])
+                else:
+                    flow_width=0.5*(abs(dem.cellsize[0]*dirx)+abs(dem.cellsize[1]*diry))
+                act_cell.topology.AddNeighbor(n_cell,flow_width)
+        else:
+            for nc,nr in ((c-1,r),(c,r+1),(c+1,r),(c,r-1)):
+                n_cell=cells_dict.get((nc,nr))
+                if n_cell:
+                    flow_width=dem.cellsize[int(nc==c)]
+                    act_cell.topology.AddNeighbor(n_cell,flow_width)
     return cells_dict
         
     

@@ -2,6 +2,7 @@
 #define ET_h__
 #include "../../water/FluxConnection.h"
 #include "../../Atmosphere/Meteorology.h"
+#include "../../reach/OpenWaterStorage.h"
 #include "../SoilWaterStorage.h"
 #include "../Soil/RetentionCurve.h"
 #include "ShuttleworthWallace.h"
@@ -9,13 +10,13 @@ namespace cmf {
 	namespace upslope {
 		namespace ET {
 
-			/// Returns the potential get_evaporation after Penman-Monteith using some simplifications for a given Radiation balance, 
+			/// Returns the potential ET after Penman-Monteith using some simplifications for a given Radiation balance, 
 			/// aerodynamic and surface resistances, and a vapor pressure deficit
 			///
-			/// \f[ get_evaporation = \frac{\Delta R_n}{\lambda \Delta + \gamma + \gamma \frac{r_s}{r_a}} 
+			/// \f[ ET = \frac{\Delta R_n}{\lambda \Delta + \gamma + \gamma \frac{r_s}{r_a}} 
 			/// + \frac{c_p\rho_a}{\Delta + \gamma + \gamma \frac{r_s}{r_a}} \frac{e_s - e_a}{r_a} \f]
 			/// where
-			///  - \f$ get_evaporation \f$ is the evapotranspiration in \f$\frac{kg}{m^2 day}\approx \frac{mm}{day}\f$
+			///  - \f$ ET \f$ is the evapotranspiration in \f$\frac{kg}{m^2 day}\approx \frac{mm}{day}\f$
 			///  - \f$ \Delta \left[\frac{kPa}{k}\right]= 4098\ 0.618	 \exp\left(\frac{17.27 T}{T+237.3}\right (T+237.3)^{-2} \f$ is the slope of vapor pressure
 			///  - \f$ R_n \left[\frac{MJ}{m^2 day}\right]\f$ is the radiation balance
 			///  - \f$ r_s \left[\frac s m\right] \f$ is the surface resistance
@@ -77,9 +78,6 @@ namespace cmf {
 			/// && r_l=100 \frac s m, LAI_{Active}=0.5 LAI
 			/// \f}
 			class PenmanMonteithET : public cmf::water::FluxConnection {
-			private:
-				real r_s(const cmf::upslope::vegetation::Vegetation & veg) const;
-				real r_a(cmf::atmosphere::Weather A,const cmf::upslope::vegetation::Vegetation & veg) const;
 
 			protected:
 				cmf::upslope::SoilWaterStorage* sw;
@@ -89,11 +87,14 @@ namespace cmf {
 					sw=cmf::upslope::AsSoilWater(m_left);
 				}
 			public:
+
 				bool daily;
 				PenmanMonteithET(cmf::upslope::SoilWaterStorage& source,cmf::water::FluxNode& ET_target) 
 					: FluxConnection(source,ET_target,"Penman Monteith transpiration"),sw(&source) {
 						NewNodes();
 				}
+				static real r_s(const cmf::upslope::vegetation::Vegetation & veg) ;
+				static real r_a(cmf::atmosphere::Weather A,real  veg_height) ;
 				static void use_for_cell(cmf::upslope::Cell & cell)
 				{
 					for (int i = 0; i < cell.layer_count() ; ++i)
@@ -170,6 +171,23 @@ namespace cmf {
 				CanopyStorageEvaporation(cmf::water::WaterStorage& CanopyStorage,cmf::water::FluxNode& ET_target,cmf::upslope::Cell & cell)
 					: cmf::water::FluxConnection(CanopyStorage,ET_target,"Penman Monteith (canopy) get_evaporation"),m_cell(cell) {
 						NewNodes();
+				}
+			};
+			class PenmanEvaporation : public cmf::water::FluxConnection
+			{
+			protected:
+				cmf::river::OpenWaterStorage* m_source;
+				std::auto_ptr<cmf::atmosphere::Meteorology> m_meteo;
+				virtual real calc_q(cmf::math::Time t);
+				void NewNodes()
+				{
+					m_source=cmf::river::AsOpenWater(m_left);
+				}
+			public:
+				PenmanEvaporation(cmf::river::OpenWaterStorage& source,cmf::water::FluxNode& Evap_target,const cmf::atmosphere::Meteorology& meteo)
+					: cmf::water::FluxConnection(source,Evap_target,"Penman evaporation from open water"), m_meteo(meteo.copy())
+				{
+					NewNodes();
 				}
 			};
 		}

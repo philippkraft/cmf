@@ -31,7 +31,7 @@ real cmf::upslope::SoilWaterStorage::get_gravitational_potential() const
 }
 
 // public ctor
-cmf::upslope::SoilWaterStorage::SoilWaterStorage( cmf::upslope::Cell & _cell,real lowerboundary,const RetentionCurve& r_curve,real saturateddepth/*=-10*/ ) 
+cmf::upslope::SoilWaterStorage::SoilWaterStorage( cmf::upslope::Cell & _cell,real lowerboundary,const RetentionCurve& r_curve,real saturateddepth/*=10*/ ) 
 : cmf::water::WaterStorage(_cell.project(), 0),cell(_cell),m_retentioncurve(r_curve.copy()),
 	m_lowerboundary(lowerboundary),Position(_cell.layer_count())
 {

@@ -105,7 +105,7 @@
         else:
             raise TypeError("Only connection types implementing a static use_for_cell function can be used")
     def __hash__(self):
-        return hash((self.x,self.y,self.z,self.area,self.Id))
+        return hash((self.x,self.y,self.Id))
     def __eq__(self,cmp):
         return hash(self)==hash(cmp)
     def __repr__(self):

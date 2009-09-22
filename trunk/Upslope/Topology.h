@@ -74,8 +74,8 @@ namespace cmf {
 			size_t neighbor_count() const { return m_Neighbors.size();}
 			Cell * MainOutlet(bool forceRecalc=false);
 
-			double ContributingArea(bool forceRecalc=false);
-
+			double ContributingArea() const;
+			static void calculate_contributing_area(const cmf::upslope::cell_vector&);
 			bool operator==(const Topology& cmp)
 			{
 				return &cell==&cmp.cell;
@@ -101,6 +101,7 @@ namespace cmf {
 			}
 			NeighborIterator(cmf::upslope::Topology& topo) : current(topo.m_Neighbors.begin()),end(topo.m_Neighbors.end()) {}
 			bool operator==(const NeighborIterator& cmp) const {return current==cmp.current;}
+			bool operator==(const Cell* cmp) const {return current->first->cell == cmp;}
 			bool operator!=(const NeighborIterator& cmp) const {return current!=cmp.current;}
 #endif
 

@@ -51,6 +51,7 @@ cmf::math::numVector::numVector( double * data,int count )
 	m_data=data;
 	m_size=count;
 }
+
 cmf::math::numVector::~numVector()
 {
 	delete[] m_data;
@@ -362,6 +363,16 @@ cmf::math::numVector cmf::math::numVector::operator/(real _Right )
 	return result;
 }
 
+void cmf::math::numVector::set_data_from_adress( long long data_adress,size_t count )
+{
+	resize(count);
+	double * data=(double *)data_adress;
+#pragma omp parallel for
+	for (int i = 0; i < (int)count ; ++i)
+	{
+		m_data[i]=data[i];		
+	}
+}
 cmf::math::numVector cmf::math::operator+( real _Left,const numVector& _Right )
 {
 	cmf::math::numVector result(_Right.size());

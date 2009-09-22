@@ -6,7 +6,7 @@
 cmf::upslope::Cell* cmf::upslope::find_cell(cmf::upslope::cells_ref cells,cmf::geometry::point p,double max_dist )
 {
 	double min_dist=max_dist;
-	cmf::upslope::Cell* res;
+	cmf::upslope::Cell* res=0;
 	for(cmf::upslope::cell_vector::const_iterator it = cells.begin(); it != cells.end(); ++it)
 	{
 		double dist=p.distanceTo((*it)->get_position());
@@ -18,6 +18,7 @@ cmf::upslope::Cell* cmf::upslope::find_cell(cmf::upslope::cells_ref cells,cmf::g
 	}
 	return res;
 }
+
 cmf::upslope::cell_vector cmf::upslope::get_boundary_cells(cmf::upslope::cells_ref cells)
 {
 	using namespace cmf;
@@ -248,47 +249,6 @@ cmf::geometry::point_vector cmf::upslope::cell_flux_directions( cells_ref cells,
 		res.set(i,p);
 	}
 	return res;
-}
-cmf::upslope::cell_to_cell_fluxes::cell_to_cell_fluxes(cmf::math::Time t, cmf::upslope::cells_ref cells,double mindepth/*=-1*/,double maxdepth/*=1e300 */)
-{
-	std::vector<double> x,y,dx,dy,v;
-
-	for(cmf::upslope::cell_vector::const_iterator it = cells.begin(); it != cells.end(); ++it)
-	{
-		cmf::upslope::Cell& c=**it;
-		for (cmf::upslope::NeighborIterator it(c);it.valid();++it)
-		{
-			double _v=sum_flux(t,c,it.cell(),mindepth,maxdepth);
-			if (_v>0)
-			{
-				x.push_back(c.x);
-				y.push_back(c.y);
-				dx.push_back(it.cell().x-c.x);
-				dy.push_back(it.cell().y-c.y);
-				v.push_back(_v);
-			}
-		}
-	}
-	X=x;
-	Y=y;
-	dX=dx;
-	dY=dy;
-	V=v;
-}
-
-double cmf::upslope::cell_to_cell_fluxes::sum_flux(cmf::math::Time t, cmf::upslope::Cell& c1,cmf::upslope::Cell& c2,double mindepth/*=-1*/,double maxdepth/*=1e300*/ )
-{
-	double sum=0.0;
-	if (mindepth<0)
-		sum+=c1.get_surfacewater().flux_to(c2.get_surfacewater(),t);
-	for (int i = 0; i < c1.layer_count() ; ++i)
-	{
-		if (c1.get_layer(i).get_lower_boundary()>mindepth && c1.get_layer(i).get_upper_boundary()<maxdepth)
-			for (int j = 0; j < c2.layer_count() ; ++j)
-				if (c2.get_layer(j).get_lower_boundary()>mindepth && c2.get_layer(j).get_upper_boundary()<maxdepth)
-					sum+=c1.get_layer(i).flux_to(c2.get_layer(j),t);
-	}
-	return sum;
 }
 
 

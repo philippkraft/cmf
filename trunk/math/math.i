@@ -6,14 +6,6 @@
 #include "math/numVector.h"
 #include "math/StateVariable.h"
 #include "math/Jacobian.h"
-#include "math/Integrators/Integrator.h"
-#include "math/Integrators/BDF2.h"
-#include "math/Integrators/ExplicitEuler_fixed.h"
-#include "math/Integrators/ExplicitEuler_variable.h"
-#include "math/Integrators/FixpointImplicitEuler.h"
-#include "math/Integrators/RKFIntegrator.h"
-#include "math/Integrators/Gears_Fixpoint.h"
-#include "math/Integrators/cvodeIntegrator.h"
 %}
 // Get Math
 %pythoncode
@@ -98,6 +90,18 @@ namespace std {
 %implicitconv cmf::math::Date;
 %naturalvar cmf::math::timeseries;
 %implicitconv cmf::math::timeseries;
+%{
+#include "math/Integrators/Integrator.h"
+#include "math/Integrators/BDF2.h"
+#include "math/Integrators/ExplicitEuler_fixed.h"
+#include "math/Integrators/ExplicitEuler_variable.h"
+#include "math/Integrators/FixpointImplicitEuler.h"
+#include "math/Integrators/RKFIntegrator.h"
+#include "math/Integrators/Gears_Fixpoint.h"
+#include "math/Integrators/cvodeIntegrator.h"
+#include "math/Integrators/MultiIntegrator.h"
+%}
+
 
 
 %include "math/StateVariable.h"
@@ -109,22 +113,13 @@ namespace std {
 %include "math/Integrators/RKFIntegrator.h"
 %include "math/Integrators/Gears_Fixpoint.h"
 %include "math/Integrators/cvodeIntegrator.h"
+%include "math/Integrators/MultiIntegrator.h"
 %include "math/Jacobian.h"
 %extend cmf::math::StateVariable
 {
   %pythoncode {
     state=property(get_state,set_state,"Gets the currect state")
   }
-}
-%extend cmf::math::Integrator {
-   void __call__(cmf::math::Time t)
-   {
-     $self->IntegrateUntil(t);
-   }
-   %pythoncode {
-       t=property(ModelTime,ModelTime,"Gets or sets the model time of the integrator")
-       dt=property(TimeStep,None,"Gets the length of the last internal time step of the integrator")
-   }
 }
 
 %extend cmf::math::Time {
@@ -157,49 +152,65 @@ namespace std {
 
 
 %extend cmf::math::numVector {
-	double __getitem__(int index) 
-	{
-		int ndx = index < 0 ? $self->size() - index : index;
-		if (ndx < 0 || ndx>=$self->size())
-		{
-			throw std::out_of_range("Index out of range");
-		}
-		return (*$self)[ndx];
-	}
-	void __setitem__(int index,double value) 
-	{
-		int ndx = index < 0 ? $self->size() - index : index;
-		if (ndx < 0 || ndx>=$self->size())
-		{
-			throw std::out_of_range("Index out of range");
-		}
-		(*$self)[ndx]=value;
-	}
-	int __len__() {return $self->size();}
-	cmf::math::numVector __radd__(real other)	{  return other+(*$self);	}
-	cmf::math::numVector __rsub__(real other)	{  return other-(*$self);	}
-	cmf::math::numVector __rmul__(real other)	{  return other*(*$self);	}
-	cmf::math::numVector __rdiv__(real other)	{  return other/(*$self);	}
-	%pythoncode {
-	def __iter__(self):
-	    for i in xrange(len(self)):
-	        yield self[i]
-	@property
-	def __array_interface__(self):
-	    return dict(shape=(len(self),),typestr='|f8',data=(self.adress(),0),version=3)
-	def ravel(self,order='C'):
-	    return self
-	}
+    double __getitem__(int index) 
+    {
+        int ndx = index < 0 ? $self->size() - index : index;
+        if (ndx < 0 || ndx>=$self->size())
+        {
+            throw std::out_of_range("Index out of range");
+        }
+        return (*$self)[ndx];
+    }
+    void __setitem__(int index,double value) 
+    {
+        int ndx = index < 0 ? $self->size() - index : index;
+        if (ndx < 0 || ndx>=$self->size())
+        {
+            throw std::out_of_range("Index out of range");
+        }
+        (*$self)[ndx]=value;
+    }
+    int __len__() {return $self->size();}
+    cmf::math::numVector __radd__(real other)	{  return other+(*$self);	}
+    cmf::math::numVector __rsub__(real other)	{  return other-(*$self);	}
+    cmf::math::numVector __rmul__(real other)	{  return other*(*$self);	}
+    cmf::math::numVector __rdiv__(real other)	{  return other/(*$self);	}
+    %pythoncode {
+    def __iter__(self):
+        for i in xrange(len(self)):
+            yield self[i]
+    @property
+    def __array_interface__(self):
+        return dict(shape=(len(self),),typestr='|f8',data=(self.adress(),0),version=3)
+    def ravel(self,order='C'):
+        return self
+    }
+}
+%pythoncode {
+    def to_numvector(arraylike):
+        if len(a.__array_interface__['shape'])!=1:
+            raise RuntimeError('Only 1d arrays are convertible to cmf.numVectors')
+        res=numVector(len(arraylike))
+        res.set_data_from_adress(a.__array_interface__['data'][0],len(a))    
 }
 
 
-%extend cmf::math::Integrator { %pythoncode {
+%extend cmf::math::Integrator { 
+%pythoncode {
+    t=property(ModelTime,ModelTime,"Gets or sets the model time of the integrator")
+    dt=property(TimeStep,None,"Gets the length of the last internal time step of the integrator")
+    def __call__(self,t):
+        if t<self.t:
+            self.IntegrateUntil(self.t+t)
+        else:
+            self.IntegrateUntil(t)
     def run(self,start=day*0,end=day*1,step=day*1):
         self.t=start
         while self.t<end:
             self(self.t+step)
             yield self.t
-}}
+}
+}
 %extend cmf::math::timeseries
 {
 	double __len__()

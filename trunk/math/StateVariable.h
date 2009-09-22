@@ -54,7 +54,8 @@ namespace cmf {
 		{
 			void AddValuesToStates(const numVector& operands);
 		public:
-			/// Copies the states to a numeric vector using OpenMP
+			bool use_OpenMP;
+			/// Copies the states to a numeric vector using use_OpenMP
 			void CopyStates(numVector & destination) const;
 			void CopyStates(real * destination) const;
 			/// Copies the new states to the actual states
@@ -66,7 +67,7 @@ namespace cmf {
 				this->AddValuesToStates(aVector);
 				return *this;
 			}
-			/// Copies the derivatives at time step "time" to a numeric vector using OpenMP
+			/// Copies the derivatives at time step "time" to a numeric vector using use_OpenMP
 			/// @param time Time at which the derivatives should be calculated
 			/// @param destination Vector to be overwritten by the results
 			/// @param factor A factor that is multiplied to the derivate (e.g. unit conversion or integration length)
@@ -90,6 +91,7 @@ namespace cmf {
 				CopyDerivs(time,result);
 				return result;
 			}
+			StateVariableVector() : use_OpenMP(true) {}
 		};
 		
 		///An abstract class, that owns one or more state variables, that can add them to a vector of state variables in a certain order

@@ -11,6 +11,7 @@
 #include <string>
 #include <stdexcept>
 #include "../math/numVector.h"
+#include "../math/StateVariable.h"
 
 namespace cmf {
 	class project;
@@ -110,7 +111,7 @@ namespace cmf {
 		///
 		/// In setups with many storages and rather fast computations, the speed of data access for output generation can take a high portion of the total run time.
 		/// To accelerate data access, one can use the node_list object
-		class node_list
+		class node_list	: public cmf::math::StateVariableOwner
 		{
 		private:
 
@@ -124,6 +125,9 @@ namespace cmf {
 			{
 				return m_nodes.at(index<0 ? size()+index : index);
 			}
+			node_vector::iterator begin() {return m_nodes.begin();}
+			node_vector::iterator end() {return m_nodes.end();}
+
 
 #endif
 			node_list() {}
@@ -158,12 +162,27 @@ namespace cmf {
 				}
 				return res;
 			}
+			void AddStateVariables(cmf::math::StateVariableVector& vector)
+			{
+				for(node_vector::iterator it = m_nodes.begin(); it != m_nodes.end(); ++it)
+				{
+					cmf::math::StateVariableOwner *state_owner = dynamic_cast<cmf::math::StateVariableOwner *>(*it);
+					cmf::math::StateVariable* state=dynamic_cast<cmf::math::StateVariable*>(*it);
+					if(state_owner) 
+						state_owner->AddStateVariables(vector);
+					else if (state) 
+						vector.push_back(state);
+				}
+			}
 			/// Adds a flux node to the list
 			void append(FluxNode* node)
 			{
 				if (node==0) throw std::invalid_argument("node_list may only contain valid objects");
 				m_nodes.push_back(node);
 			}
+
+			int set_potentials(const cmf::math::numVector& potentials);
+
 			/// Returns the sum of the water balances of the nodes
 			/// \f[\sigma_{global} = \sum_{i=0}^N{\sum_{j=0}^{C_i}{q_{ij}(t)}} \f]
 			///

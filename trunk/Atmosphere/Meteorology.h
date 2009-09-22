@@ -27,8 +27,8 @@ namespace cmf {
 				e_a,				///< Actual vapor pressure \f$e_a\ [kPa]\f$
 				e_s,				///< Saturated vapor pressure in \f$e_s [kPa]\f$
 				sunshine,		///< Fractional sunshine duration (per potential sunshine duration) \f$\frac n N\ [-]\f$
-				Rs;					///< Global Radiation in \f$R_s \left[\frac{MJ}{m^2 day}\right]\f$
-			
+				Rs,					///< Global Radiation in \f$R_s \left[\frac{MJ}{m^2 day}\right]\f$
+				instument_height; ///< Height of the measuring instuments above the vegetation
 			/// Calculates the net radiation flux  \f$R_n \left[\frac{MJ}{m^2 day}\right]\f$
 			///
 			/// \f{eqnarray*}
@@ -53,7 +53,7 @@ namespace cmf {
 			Weather()
 				:	T(15),Tmax(17),Tmin(10),Tground(16),
 				e_s(vapour_pressure(15)),e_a(0.8*vapour_pressure(15)),
-				Windspeed(2.),sunshine(0.5),Rs(15) {}
+				Windspeed(2.),sunshine(0.5),Rs(15),instument_height(2) {}
 			std::string ToString() const
 			{
 				std::stringstream sstr;
@@ -82,6 +82,7 @@ namespace cmf {
 
 			/// Returns a copy of the meteorology object. Pure virtual function, needs to be implemented
 			virtual Meteorology* copy() const=0;
+			virtual real get_instrument_height() const=0;
 		};
         /// @brief A primitive implementation of the Meteorology interface. Holds a Weather record and returns it for any date
 		class ConstantMeteorology : public Meteorology
@@ -94,6 +95,7 @@ namespace cmf {
 			{
 				return weather;
 			}
+			virtual real get_instrument_height() const {return 2;}
             /// Creates a ConstantMeteorology with a standard weather
 			ConstantMeteorology() {}
             /// Creates a ConstantMeteorology with weather w
@@ -186,6 +188,7 @@ namespace cmf {
 				return cmf::geometry::point(x,y,z);
 			}
 			bool daily;
+			real InstrumentHeight;
 			//@}
 			MeteoStation(const cmf::atmosphere::MeteoStation& other);
 			///@name Data access methods
@@ -284,6 +287,10 @@ namespace cmf {
 				return m_station->get_data(t,get_position().z);
 			}
 			/// Creates a reference for a MeteoStation at a location
+			real get_instrument_height() const
+			{
+				return m_station->InstrumentHeight;
+			}
 			MeteoStationReference(meteo_station_pointer station,const cmf::geometry::Locatable& location)
 				: m_station(station),m_location(&location) {}
 			MeteoStationReference(const MeteoStationReference& copy)

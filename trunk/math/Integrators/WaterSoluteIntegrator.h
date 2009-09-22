@@ -8,8 +8,8 @@ namespace cmf {
 		class SoluteWaterIntegrator : public cmf::math::Integrator
 		{
 		protected:
-			cmf::math::Integrator* WaterIntegrator;
-			cmf::math::Integrator* SoluteIntegrator;
+			std::auto_ptr<cmf::math::Integrator> WaterIntegrator;
+			std::auto_ptr<cmf::math::Integrator> SoluteIntegrator;
 			void distribute_states()
 			{
 				for(cmf::math::StateVariableVector::iterator it = m_States.begin(); it != m_States.end(); ++it)
@@ -23,11 +23,11 @@ namespace cmf {
 		public:
 			cmf::math::Integrator* get_water_integrator() const
 			{
-				return WaterIntegrator;
+				return WaterIntegrator.get();
 			}
 			cmf::math::Integrator* get_solute_integrator() const
 			{
-				return SoluteIntegrator;
+				return SoluteIntegrator.get();
 			}
 			void set_water_integrator(cmf::math::Integrator* templ)
 			{

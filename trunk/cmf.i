@@ -86,6 +86,9 @@
 %echo "Cell OK";
 
 %{
+	#include "Reach/ReachType.h"
+	#include "Reach/VolumeHeightRelation.h"
+	#include "Reach/OpenWaterStorage.h"
 	#include "upslope/VarLayerPair.h"
 	#include "upslope/connections/subsurfacefluxes.h"
 	#include "upslope/connections/VarLayerPercolation.h"
@@ -94,8 +97,6 @@
 	#include "upslope/connections/infiltration.h"
 	#include "upslope/vegetation/ET.h"
 	// Include river model
-	#include "Reach/ReachType.h"
-	#include "Reach/VolumeHeightRelation.h"
 	#include "Reach/ManningConnection.h"
 	#include "Reach/reach.h"
 	#include "project.h"
@@ -132,6 +133,11 @@
   }
 }
 
+// Get river model classes
+%include "Reach/ReachType.h"
+%include "Reach/VolumeHeightRelation.h"
+%newobject cmf::water::OpenWaterStorage::FromNode;
+%include "Reach/OpenWaterStorage.h"
 
 %include "upslope/connections/subsurfacefluxes.h"
 
@@ -150,10 +156,6 @@
 }
 %echo "upslope::connections OK!";
 
-// Get river model classes
-%include "Reach/ReachType.h"
-%include "Reach/VolumeHeightRelation.h"
-%newobject cmf::water::OpenWaterStorage::FromNode;
 %include "Reach/ManningConnection.h"
 
 %attribute2(cmf::river::Reach,cmf::upslope::Cell,cell,get_cell);

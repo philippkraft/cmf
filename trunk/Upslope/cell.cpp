@@ -22,7 +22,7 @@ cmf::upslope::Cell::~Cell()
 
 cmf::upslope::Cell::Cell( double _x,double _y,double _z,double area,cmf::project& _project/*=0*/ ) 
 : x(_x),y(_y),z(_z),m_Area(area),m_project(_project),
-m_SurfaceWater(new cmf::water::FluxNode(_project)),	Id(cell_count++),
+m_SurfaceWater(new cmf::water::DricheletBoundary(_project,_z)),	Id(cell_count++),
 m_Canopy(0),m_Snow(0),m_SurfaceWaterStorage(0),m_meteo(new cmf::atmosphere::ConstantMeteorology)
 {
 	std::stringstream sstr;

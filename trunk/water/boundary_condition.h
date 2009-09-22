@@ -131,6 +131,75 @@ namespace cmf {
 			
 		};
 
+		class NeumannBoundary_list
+		{
+		private:
+			typedef std::vector<NeumannBoundary*> vector;
+			vector m_boundaries;
+		public:
+#ifndef SWIG
+			NeumannBoundary& operator[](int index) const
+			{ return *m_boundaries.at(index<0 ? m_boundaries.size()+index : index );	}
+#endif
+			NeumannBoundary* get(int index) const
+			{ return m_boundaries.at(index<0 ? m_boundaries.size()+index : index );	}
+			real get_flux(int index,cmf::math::Time t) const {return (*get(index))(t);}
+			void set_flux(int index,real value) {get(index)->flux=value;}
+			cmf::math::numVector get_flux(cmf::math::Time t) const;
+			void set_flux(cmf::math::numVector values);
+			void append(NeumannBoundary* nbc)
+			{
+				m_boundaries.push_back(nbc);
+			}
+			int size() const
+			{
+				return m_boundaries.size();
+			}
+			NeumannBoundary_list() {};
+			NeumannBoundary_list(const cmf::water::node_list& copy)
+			{
+				for (int i = 0; i < copy.size() ; ++i)
+				{
+					NeumannBoundary* nbc=dynamic_cast<NeumannBoundary*>(copy[i]);
+					if (nbc)
+						m_boundaries.push_back(nbc);
+				}
+			}
+			NeumannBoundary_list(const NeumannBoundary_list& copy)
+				: m_boundaries(copy.m_boundaries.begin(),copy.m_boundaries.end())
+			{			}
+			cmf::water::node_list to_node_list() const
+			{
+				cmf::water::node_list res;
+				for (int i = 0; i < size() ; ++i)
+				{
+					res.append(get(i));
+				}
+				return res;
+			}
+			
+			/// Returns the sum of the water balances of the nodes
+			/// \f[\sigma_{global} = \sum_{i=0}^N{\sum_{j=0}^{C_i}{q_{ij}(t)}} \f]
+			///
+			/// Replaces slow Python code like:
+			/// @code
+			/// sum=0
+			/// for n in nodes:
+			///     sum+=n.water_balance(t)
+			/// @endcode
+			real global_water_balance(cmf::math::Time t) const;
+			/// Returns the water balance of each vector as a vector
+			/// \f[ \sigma_i = sum_{j=0}^{C_i}{q_{ij}(t)}} \f]
+			///
+			/// Replaces slow Python code like:
+			/// @code
+			/// balances=[n.water_balance(t) for n in nodes]
+			/// @endcode
+			cmf::math::numVector water_balance(cmf::math::Time t) const;
+
+
+		};
+
 		
 	}
 	
