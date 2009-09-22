@@ -1,5 +1,6 @@
 #include "RetentionCurve.h"
 #include <cmath>
+#include <limits>
 #include "../../math/real.h"
 
 // Class for an parabolic extrapolation of a retention curve
@@ -43,7 +44,10 @@ double cmf::upslope::waterhead_to_pressure(double waterhead)  { return waterhead
 /// Converts a pF value to a height of a water column in m
 double cmf::upslope::pF_to_waterhead(double pF)               { return -pow(10,pF+2)/rho_wg;}
 /// Converts a height of a water column to a pF value
-double cmf::upslope::waterhead_to_pF(double waterhead)        { return log10(fabs(waterhead*rho_wg))-2;}
+double cmf::upslope::waterhead_to_pF(double waterhead)        {
+	if (waterhead>=0) return -std::numeric_limits<double>::infinity();
+	else return log10(waterhead*rho_wg)-2;
+}
 
 real cmf::upslope::BrooksCoreyRetentionCurve::K( real wetness,real depth ) const
 {

@@ -8,18 +8,20 @@
 #include <cvode/cvode_diag.h>
 #include <cvode/cvode_sptfqmr.h>
 #include <nvector/nvector_openmp.h>       /* serial N_Vector types, fct. and macros */
+#include <nvector/nvector_serial.h>       /* serial N_Vector types, fct. and macros */
 #include <sundials/sundials_smalldense.h> /* use generic DENSE solver in preconditioning */
 #include <sundials/sundials_types.h>      /* definition of realtype */
 #include <sundials/sundials_math.h>       /* contains the macros ABS, SQR, and EXP */
 
+#define NV_DATA(v) use_OpenMP ? NV_DATA_O(v) : NV_DATA_S(v)
 // Right hand side function f in dy/dt=f(y,t)
 int cmf::math::CVodeIntegrator::f( realtype t, N_Vector u, N_Vector udot, void *f_data )
 {
 	// Get the state variables from the user data
 	StateVariableVector& state_vars=*(StateVariableVector *)(f_data);
 	// Get the pointers to the data of the vectors u and udot
-	realtype * udata=NV_DATA_O(u);
-	realtype * dudata=NV_DATA_O(udot);
+	realtype * udata=state_vars.use_OpenMP ? NV_DATA_O(u) : NV_DATA_S(u);
+	realtype * dudata=state_vars.use_OpenMP ? NV_DATA_O(udot) : NV_DATA_S(udot);
 	// Get size of the problem
 	int nsize=int(state_vars.size());
 	// Update the states from the state vector
@@ -41,8 +43,11 @@ void cmf::math::CVodeIntegrator::ReInit(Time initdt, real epsilon)
 
 void cmf::math::CVodeIntegrator::Initialize()
 {
-	if (m_y!=0)	
-		N_VDestroy_OpenMP(m_y);      // Destroys any existent vector y
+	if (m_y!=0)
+		if (use_OpenMP)
+			N_VDestroy_OpenMP(m_y);      // Destroys any existent vector y
+		else
+			N_VDestroy_Serial(m_y);
 	if (cvode_mem!=0)	
 		CVodeFree(&cvode_mem); // Destroys any existent solver
 	int N=int(m_States.size());              // size of problem
@@ -127,7 +132,11 @@ void cmf::math::CVodeIntegrator::Initialize()
 cmf::math::CVodeIntegrator::~CVodeIntegrator()
 {																																																																					
 	// Destroy y
-	if (m_y) N_VDestroy_OpenMP(m_y);
+	if (m_y)
+		if (use_OpenMP)
+			N_VDestroy_OpenMP(m_y);
+		else
+			N_VDestroy_Serial(m_y);
 	// Destroy preconditioner
 	if (precond_mem) CVBandPrecFree(&precond_mem);
 	// Destroy solver

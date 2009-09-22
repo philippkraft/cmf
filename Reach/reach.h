@@ -58,6 +58,10 @@ namespace cmf {
 			bool operator==(const cmf::river::Reach& cmp) const;
 			bool operator!=(const cmf::river::Reach& cmp) const;
 		};
+
+
+
+
 		/// An iterator over every upstream reach from a start reach. Implements both the Python and the C++ iterator interface
 		class ReachIterator {
 		private:
@@ -111,6 +115,7 @@ namespace cmf {
 				return current.second;
 			}
 		};
+
 		/// Ensures that rivers have a monotone downward flow direction. 
 		/// Reaches with a bottom higher than any upstream reach are lowered to the minimum height of any (possibly distant) upstream reach.
 		double make_river_gap(Reach * root_reach);

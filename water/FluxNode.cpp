@@ -193,3 +193,22 @@ cmf::geometry::point_vector cmf::water::node_list::get_positions() const
 	return res;
 
 }
+
+int cmf::water::node_list::set_potentials( const cmf::math::numVector& potentials )
+{
+	if (size()!=potentials.size())
+		throw std::out_of_range("Size of potential array does not fit the size of the node_list");
+	int ok_count=size();
+	for (int i = 0; i < size() ; ++i)
+	{
+		try
+		{
+			this->get(i)->set_potential(potentials[i]);
+		}
+		catch (std::runtime_error)
+		{
+			--ok_count;
+		}
+	}
+	return ok_count;
+}

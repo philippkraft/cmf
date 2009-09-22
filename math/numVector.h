@@ -26,6 +26,8 @@
 
 			numVector(double * data,int count);
 
+			void set_data_from_adress(long long data_adress,size_t count);
+
 			size_t adress() const;
 
 #ifndef SWIG

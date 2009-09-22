@@ -96,7 +96,7 @@ cmf::atmosphere::Weather cmf::atmosphere::MeteoStation::get_data( cmf::math::Tim
 	}
 	if (Tground.is_empty()) A.Tground=A.T;
 	else A.Tground=Tground[t];
-
+	A.instument_height=InstrumentHeight;
 	A.Windspeed=Windspeed.is_empty() ? 
 		2. 	// If windspeed is missing, use 2m/s as default
 		: max(Windspeed[t],0.5); 	// Windspeed shoud not be smaller than 0.5m/s
@@ -176,7 +176,7 @@ cmf::atmosphere::MeteoStation::MeteoStation( double latitude/*=51*/,double longi
 	Windspeed(startTime,timestep,1),
 	rHmean(startTime,timestep,1),rHmax(startTime,timestep,1),rHmin(startTime,timestep,1),
 	Tdew(startTime,timestep,1),Sunshine(startTime,timestep,1),Tground(startTime,timestep,1),
-	Rs(startTime,timestep,1),T_lapse(startTime,timestep,1)
+	Rs(startTime,timestep,1),T_lapse(startTime,timestep,1), InstrumentHeight(2)
 {
 	Name=name;
 }
@@ -187,7 +187,7 @@ cmf::atmosphere::MeteoStation::MeteoStation( const cmf::atmosphere::MeteoStation
 	Windspeed(other.Windspeed),
 	rHmean(other.rHmean),rHmax(other.rHmax),rHmin(other.rHmin),
 	Tdew(other.Tdew),Sunshine(other.Sunshine),Rs(other.Rs),Tground(other.Tground),
-	T_lapse(other.T_lapse)
+	T_lapse(other.T_lapse),InstrumentHeight(other.InstrumentHeight)
 {
 	Name=other.Name;
 }

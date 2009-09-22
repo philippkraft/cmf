@@ -62,15 +62,31 @@ void cmf::math::BDF2::AddStatesFromOwner( cmf::math::StateVariableOwner& stateOw
 void cmf::math::BDF2::Gear1newState( real h )
 {
 	real state_i;
-#pragma omp parallel for private(state_i)
-	for (int i = 0; i < count() ; i++)
+	if (use_OpenMP)
 	{
-		// The formula is written so ugly to avoid internal memory allocation
-		// x_n+1 = x_(n) + h dxdt
-		state_i  =       dxdt[i]; 
-		state_i *= h; 
-		state_i +=       pastStates(0)[i];
-		state(i, state_i);
+#pragma omp parallel for private(state_i)
+		for (int i = 0; i < count() ; i++)
+		{
+			// The formula is written so ugly to avoid internal memory allocation
+			// x_n+1 = x_(n) + h dxdt
+			state_i  =       dxdt[i]; 
+			state_i *= h; 
+			state_i +=       pastStates(0)[i];
+			state(i, state_i);
+		}
+	}
+	else
+	{
+		for (int i = 0; i < count() ; i++)
+		{
+			// The formula is written so ugly to avoid internal memory allocation
+			// x_n+1 = x_(n) + h dxdt
+			state_i  =       dxdt[i]; 
+			state_i *= h; 
+			state_i +=       pastStates(0)[i];
+			state(i, state_i);
+		}
+
 	}
 }
 
@@ -85,19 +101,36 @@ void cmf::math::BDF2::Gear2newState(real h)
 		h_p1 = h * p1,
 		p1_2 = p1 * p1,
 		p_2  = p * p;
-
-#pragma omp parallel for private(state_i)
-	for (int i = 0; i < count() ; i++)
+	if (use_OpenMP)
 	{
-		// The formula is written so ugly to avoid internal memory allocation
-		// x_(n+1) = (p+1)²x_(n) - p²x_(n-1) + h (p+1) dxdt
-		state_i  =        dxdt[i]; 
-		state_i *= h_p1;
-		state_i += p1_2 * pastStates(0)[i];
-		state_i -= p_2  * pastStates(1)[i];
-		state_i /= 1.0 + 2.0*p;
-		state(i, state_i);
+	#pragma omp parallel for private(state_i)
+		for (int i = 0; i < count() ; i++)
+		{
+			// The formula is written so ugly to avoid internal memory allocation
+			// x_(n+1) = (p+1)²x_(n) - p²x_(n-1) + h (p+1) dxdt
+			state_i  =        dxdt[i]; 
+			state_i *= h_p1;
+			state_i += p1_2 * pastStates(0)[i];
+			state_i -= p_2  * pastStates(1)[i];
+			state_i /= 1.0 + 2.0*p;
+			state(i, state_i);
+		}
 	}
+	else
+	{
+		for (int i = 0; i < count() ; i++)
+		{
+			// The formula is written so ugly to avoid internal memory allocation
+			// x_(n+1) = (p+1)²x_(n) - p²x_(n-1) + h (p+1) dxdt
+			state_i  =        dxdt[i]; 
+			state_i *= h_p1;
+			state_i += p1_2 * pastStates(0)[i];
+			state_i -= p_2  * pastStates(1)[i];
+			state_i /= 1.0 + 2.0*p;
+			state(i, state_i);
+		}
+	}
+
 }
 
 

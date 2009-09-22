@@ -72,12 +72,12 @@ namespace cmf {
 			{
 				return new SoilWaterStorage(cell,m_upperboundary,m_lowerboundary,get_soil(),Position);
 			}
-			static SoilWaterStorage* Create(cmf::upslope::Cell & _cell,real lowerboundary,const RetentionCurve& r_curve,real saturateddepth=-10)
+			static SoilWaterStorage* Create(cmf::upslope::Cell & _cell,real lowerboundary,const RetentionCurve& r_curve,real saturateddepth=10)
 			{
 				return new SoilWaterStorage(_cell,lowerboundary,r_curve,saturateddepth);
 			}
 		protected:
-			SoilWaterStorage(cmf::upslope::Cell & _cell,real lowerboundary,const RetentionCurve& r_curve,real saturateddepth=-10);
+			SoilWaterStorage(cmf::upslope::Cell & _cell,real lowerboundary,const RetentionCurve& r_curve,real saturateddepth=10);
 			SoilWaterStorage(cmf::upslope::Cell & _cell,real upperBoundary,real lowerboundary,const RetentionCurve& r_curve,int _Position);
 			/// Invalidates the saturated depth of the cell
 			virtual void StateChangeAction();

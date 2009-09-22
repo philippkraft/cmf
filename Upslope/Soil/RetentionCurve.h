@@ -178,6 +178,50 @@ namespace cmf {
 				: n(_n),alpha(_alpha),Phi(_phi),Ksat(_Ksat),Psi_full(-0.1),w_max(1.1) {}
 
 		};
+		class LinearRetention : public RetentionCurve
+		{
+		public:
+			real Ksat,Phi,thickness;
+			virtual real MatricPotential(real wetness) const
+			{
+				return -thickness*(1-wetness);
+			}
+			virtual real Wetness(real suction) const
+			{
+				if (suction<-thickness) 
+					return 0.0;
+				else 
+					return 1+suction/thickness;
+			}
+			virtual real K(real wetness,real depth) const
+			{
+				return Ksat*wetness;
+			}
+			virtual real VoidVolume(real upperDepth,real lowerDepth,real Area) const
+			{
+				return (lowerDepth-upperDepth)*Area*Phi;
+			}
+			virtual real Transmissivity(real upperDepth,real lowerDepth,real wetness) const
+			{
+				return (lowerDepth-upperDepth)*K(wetness,0.5*(lowerDepth+upperDepth));
+			}
+			virtual real Porosity(real depth) const
+			{
+				return Phi;
+			}
+
+			virtual real FillHeight(real lowerDepth,real Area,real Volume) const
+			{
+				return Volume/(Area*Phi);
+			}
+			LinearRetention* copy() const
+			{
+				 return new LinearRetention(Ksat,Phi,thickness);
+			}
+			LinearRetention(real _Ksat,real _Phi, real _thickness)
+				: Ksat(_Ksat),Phi(_Phi),thickness(_thickness)
+			{			}
+		};
 	}
 }
 
