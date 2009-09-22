@@ -7,6 +7,8 @@
 namespace cmf {
 	namespace upslope {
 		typedef const cell_vector&  cells_ref;
+
+
 		cmf::upslope::Cell* find_cell(cells_ref,cmf::geometry::point p,double max_dist=1e20);
 		cmf::upslope::cell_vector get_boundary_cells(cmf::upslope::cells_ref cells);
 		cmf::water::connection_set get_connections(cells_ref cells);
@@ -16,19 +18,11 @@ namespace cmf {
 		double area(cells_ref cells);
 		void set_meteo_station(cmf::upslope::cells_ref cells,cmf::atmosphere::meteo_station_pointer meteo_station);
 		void set_precipitation(cmf::upslope::cells_ref cells,cmf::math::timeseries data_in_mm_day);
-		struct cell_to_cell_fluxes
-		{
-		public:
-			static double sum_flux(cmf::math::Time t,Cell& c1,Cell& c2,double mindepth=-1,double maxdepth=1e300);
-			cmf::math::numVector X,Y,dX,dY,V;
-
-			cell_to_cell_fluxes(cmf::math::Time t,cells_ref cells,double mindepth=-1,double maxdepth=1e300);
-		};
 
 		cmf::geometry::point_vector cell_positions(cmf::upslope::cells_ref cells);
 		cmf::geometry::point_vector cell_flux_directions(cmf::upslope::cells_ref cells,cmf::math::Time);
 
-		
+
 	}
 	
 }

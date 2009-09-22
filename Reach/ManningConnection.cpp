@@ -48,18 +48,6 @@ void cmf::river::Manning::connect_cells( cmf::upslope::Cell& c1,cmf::upslope::Ce
 }
 
 const cmf::upslope::CellConnector cmf::river::Manning::cell_connector=cmf::upslope::CellConnector(&connect_cells);
-
-cmf::river::OpenWaterStorage* cmf::river::OpenWaterStorage::FromNode( cmf::water::FluxNode& node,real Area )
-{
-	OpenWaterStorage* ows=new OpenWaterStorage(node.project(),Area);
-	cmf::water::replace_node(node,*ows);
-	return ows;
-}
-cmf::river::OpenWaterStorage* cmf::river::AsOpenWater(cmf::water::FluxNode* node)
-{
-	return dynamic_cast<cmf::river::OpenWaterStorage*>(node);
-}
-
 void cmf::river::Manning_Kinematic::connect_cells( cmf::upslope::Cell& c1,cmf::upslope::Cell& c2,int dummy )
 {
 	real w=c1.get_topology().flowwidth(c2);

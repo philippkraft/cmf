@@ -103,7 +103,8 @@ static int convert_xyz_to_point(PyObject* input,cmf::geometry::point& p)
             Py_XDECREF(x);Py_XDECREF(y);Py_XDECREF(z);
             return 0;
         }
-        if (z && PyNumber_Check(z)) p.z=PyFloat_AsDouble(z);
+        if (z && PyNumber_Check(z)) 
+            p.z=PyFloat_AsDouble(z);
         Py_DECREF(x);Py_DECREF(z);Py_XDECREF(z);
         return 1;
     }

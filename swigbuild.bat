@@ -22,11 +22,11 @@ del cmf_swig.cxx
 if %1x==swigx goto fine
 if %1x==swigcopyx goto copy_py
 :build
-devenv ..\cmf.sln /build dllpy25
+devenv ..\cmf.sln /build dllpy26
 if %ERRORLEVEL%  NEQ 0 goto fine
 
 :copy_pyd
-copy ..\dllpy25\_cmf_core.pyd pycmf\src\cmf\_cmf_core.pyd /Y
+copy ..\dllpy26\_cmf_core.pyd pycmf\src\cmf\_cmf_core.pyd /Y
 :copy_py
 copy cmf_core.py pycmf\src\cmf\cmf_core.py /Y
 echo copied the extension module to the PyDev workspace

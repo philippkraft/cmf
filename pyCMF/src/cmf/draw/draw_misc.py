@@ -34,7 +34,7 @@ def drawcells(cells,colorfunction=lambda c:c.z,cmap=pylab.cm.jet,hold=True,vmin=
         if return_polygons:
             polygons.append((cell,poly))
         hold=1
-    pylab.axis('equal')
+    pylab.axis('scaled')
     if was_interactive:
         pylab.draw() 
         pylab.ion()
@@ -64,7 +64,7 @@ def drawobjects(objects,style=None,hold=1,**kwargs):
             else:
                 pylab.plot(a[:,0],a[:,1],style,hold=hold,**kwargs)
             hold=1
-    pylab.axis('equal')
+    pylab.axis('scaled')
     if was_interactive:
         pylab.draw() 
         pylab.ion()
@@ -76,7 +76,10 @@ def cell_to_cell_fluxes(cells,t,min_d=-1,max_d=1e300,**kwargs):
 
 def plot_timeseries(data,style='-',**kwargs):    
         pylab.plot_date(map(lambda t:(t-cmf.Time(1,1,1)).AsDays(),cmf.timerange(data.begin(),data.end(),data.step())),list(data),style,**kwargs)
-
+def plot_locatables(locatables,style='kx',**kwargs):
+    get_x=lambda l:l.position.x
+    get_y=lambda l:l.position.y
+    pylab.plot(pylab.amap(get_x,locatables),pylab.amap(get_y,locatables),style,**kwargs)
 def connector_matrix(cells,size=(500,500)):
     """Returns a matrixx
     """
@@ -101,5 +104,13 @@ def contour_raster(raster,**kwargs):
     extent=(raster.llcorner[0],raster.llcorner[0]+raster.extent[0],raster.llcorner[1],raster.llcorner[1]+raster.extent[1])
     C=pylab.contour(Z,extent=extent,**kwargs)
     pylab.clabel(C)
-    pylab.axis('equal')
+    pylab.axis('scaled')
+def contourf_raster(raster,**kwargs):
+    Z=raster.as_array()
+    Z=numpy.flipud(Z)
+    extent=(raster.llcorner[0],raster.llcorner[0]+raster.extent[0],raster.llcorner[1],raster.llcorner[1]+raster.extent[1])
+    C=pylab.contourf(Z,extent=extent,**kwargs)
+    pylab.clabel(C)
+    pylab.axis('scaled')
+    
                

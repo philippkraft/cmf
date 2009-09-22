@@ -49,6 +49,8 @@ namespace cmf {
 			/// A public variable to identify the solver
 			char Tag;
 			bool UseEulerAtTmin;
+			bool use_OpenMP;
+
 			/// returns the number of state variables
 			int count() const
 			{
@@ -134,7 +136,7 @@ namespace cmf {
 			/// @param epsilon relative error tolerance per time step (default=1e-9)
 			/// @param tStepMin minimum time step (default=10s)
 			Integrator(const StateVariableVector& states, real epsilon=1e-9,cmf::math::Time tStepMin=10.0/(3600.0*24.0)) 
-				: m_States(states), Epsilon(epsilon),m_MinTimestep(tStepMin),m_TimeStep(1.0),m_Time(0.0),m_NextTimeStep(1.0),error_position(0),UseEulerAtTmin(0)			{			}
+				: m_States(states), Epsilon(epsilon),m_MinTimestep(tStepMin),m_TimeStep(1.0),m_Time(0.0),m_NextTimeStep(1.0),error_position(0),UseEulerAtTmin(0),use_OpenMP(1)			{			}
 			
 			/// Constructs a new Integrator with a new own state vector
 			/// @param epsilon relative error tolerance per time step (default=1e-9)
@@ -143,14 +145,14 @@ namespace cmf {
 				: m_States(), Epsilon(epsilon),m_MinTimestep(tStepMin),m_TimeStep(1.0),m_Time(0.0),m_NextTimeStep(1.0),UseEulerAtTmin(0)
 			{}
 			Integrator(cmf::math::StateVariableOwner& states,real epsilon=1e-9,cmf::math::Time tStepMin=cmf::math::sec * 10.0)
-				: m_States(),Epsilon(epsilon),m_MinTimestep(tStepMin),m_TimeStep(1.0),m_Time(0.0),m_NextTimeStep(1.0),error_position(0),UseEulerAtTmin(0) 
+				: m_States(),Epsilon(epsilon),m_MinTimestep(tStepMin),m_TimeStep(1.0),m_Time(0.0),m_NextTimeStep(1.0),error_position(0),UseEulerAtTmin(0) ,use_OpenMP(1)
 			{
 				states.AddStateVariables(m_States);
 			}
 			/// Copy constructor, does not copy the state variables
 			Integrator(const Integrator& forCopy)
 				: Epsilon(forCopy.Epsilon), m_MinTimestep(forCopy.m_MinTimestep),m_NextTimeStep(forCopy.m_NextTimeStep),m_Time(forCopy.m_Time),m_TimeStep(forCopy.m_TimeStep),
-				Tag(forCopy.Tag),m_States(),UseEulerAtTmin(forCopy.UseEulerAtTmin)
+				Tag(forCopy.Tag),m_States(),UseEulerAtTmin(forCopy.UseEulerAtTmin),use_OpenMP(forCopy.use_OpenMP)
 			{}
 			
 			/// Returns a new Integrator, based on this (without the state variables), e.g. same type, epsilon, model time etc.

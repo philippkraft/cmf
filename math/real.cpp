@@ -16,6 +16,10 @@ real geo_mean(real a,real b)
 {
 	return sqrt(fabs(a*b));
 }
+real harmonic_mean(real a,real b)
+{
+	return 2/(1/a + 1/b);
+}
 real sign(real x)
 {
 	return x<0 ? -1.0 : x>0? 1.0 : 0;

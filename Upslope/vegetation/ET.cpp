@@ -75,7 +75,7 @@ namespace cmf {
 				return Tact(ETpot_value,*sw,veg);
 			}
 
-			real PenmanMonteithET::r_s( const cmf::upslope::vegetation::Vegetation & veg ) const
+			real PenmanMonteithET::r_s( const cmf::upslope::vegetation::Vegetation & veg ) 
 			{
 				if (veg.StomatalResistance)
 					return veg.StomatalResistance/(0.5*veg.LAI);
@@ -83,16 +83,16 @@ namespace cmf {
 					return 0.0;
 			}
 
-			real PenmanMonteithET::r_a( cmf::atmosphere::Weather A,const cmf::upslope::vegetation::Vegetation & veg ) const
+			real PenmanMonteithET::r_a( cmf::atmosphere::Weather A,real veg_height ) 
 			{
 				real
-					h=veg.Height,
+					h=veg_height,
 					d=0.666667*h,	                         // zero plane displacement height
 					z_om=0.123*h,                          // roughness length governing momentum transfer
 					z_oh=0.1*z_om,                         // roughness length governing transfer of heat and vapour
 					k2=0.1681,                             // von Karman's constant squared (0.41^2=0.1681)
-					ra_u =   log((h+2-d)/z_om)
-								 * log((h+2-d)/z_oh)
+					ra_u =   log((h+A.instument_height-d)/z_om)
+								 * log((h+A.instument_height-d)/z_oh)
 								 / k2;																	// Aerodynamic resistence * Windspeed
 				return ra_u/maximum(A.Windspeed,0.5);   // Aerodynamic resistence
 			}
@@ -108,7 +108,7 @@ namespace cmf {
 						Rn = A.Rn(veg.albedo,daily), // Net radiation flux 
 						G = daily ? 0									// If calculation takes place on daily basis, the soil heat flux is 0 (FAO 1998,Eq. 42)
 						: Rn>0 ? 0.1*Rn : 0.5 * Rn,	           // On a shorter basis, it is proportional to Rn, different for day and night (FAO 1998,Eq. 45f)
-						PM=PenmanMonteith(Rn-G,r_a(A,veg),r_s(veg),A.T,A.e_s-A.e_a);
+						PM=PenmanMonteith(Rn-G,r_a(A,veg.Height),r_s(veg),A.T,A.e_s-A.e_a);
 					return Tact(PM,*sw,veg);
 				}
 				else
@@ -196,6 +196,14 @@ namespace cmf {
 					etrc = 0.0135 * KT * s0 * sqrt(TD) * ( A.T + 17.8 );
 				return etrc*sw->cell.get_vegetation().LAI/12;
 
+			}
+
+			real PenmanEvaporation::calc_q( cmf::math::Time t )
+			{
+				if (m_left->is_empty()) return 0;
+				cmf::atmosphere::Weather w=m_meteo->get_weather(t);
+				real PM=PenmanMonteith(w.Rn(0.1),PenmanMonteithET::r_a(w,0.1),0.0,w.T,w.e_s-w.e_a) * 0.001 * m_source->wet_area();
+				return minimum(m_source->get_state()*2/cmf::math::h.AsDays(),PM);
 			}
 		}
 	}

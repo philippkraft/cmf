@@ -16,7 +16,6 @@ namespace cmf {
 			void * cvode_mem, * precond_mem;
 			/// The right handside function f in eq. \f$\frac{dy}{dt}=f(t,y)\f$
 			static int f(realtype t, N_Vector u, N_Vector udot, void *f_data);
-			
 		public:
 			/// Type of Krylov preconditioning. Must have one of the following values:
 			/// - 'N' No Krylov preconditioner

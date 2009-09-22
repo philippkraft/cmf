@@ -22,6 +22,10 @@ namespace cmf{namespace water {class FluxConnection;}}
 %factory(cmf::water::FluxNode& cmf::water::FluxConnection::Target,cmf::atmosphere::RainCloud,cmf::river::OpenWaterStorage,cmf::upslope::SoilWaterStorage,cmf::water::WaterStorage,cmf::water::FluxNode);
 %attribute(cmf::water::FluxNode,real,potential,get_potential,set_potential);
 
+%factory(cmf::water::FluxNode* cmf::water::node_list::get,cmf::atmosphere::RainCloud,cmf::river::OpenWaterStorage,cmf::upslope::SoilWaterStorage,cmf::water::WaterStorage,cmf::water::FluxNode);
+
+
+
 %pythonappend cmf::water::FluxConnection::FluxConnection{
     self.thisown=0
 }
@@ -79,6 +83,27 @@ namespace cmf{namespace water {class FluxConnection;}}
     def from_sequence(sequence):
         """Returns a new node list populated from the sequence (any iterable will do) """
         nl=node_list()
+        nl.extend(sequence)
+        return nl
+    }
+}
+%extend cmf::water::NeumannBoundary_list {
+    %pythoncode {
+    def __getitem__(self,index):
+        return self.get(index)
+    def __len__(self):
+        return self.size()       
+    def __iter__(self):
+        for i in xrange(self.size()):
+            yield self[i]
+    def extend(self,sequence):
+        """Extends the list of Neumann boundaries with the sequence (any iterable will do) """
+        for o in sequence:
+            self.append(o)
+    @staticmethod
+    def from_sequence(sequence):
+        """Returns a new list of Neumann boundaries populated from the sequence (any iterable will do) """
+        nl=NeumannBoundary_list()
         nl.extend(sequence)
         return nl
     }
