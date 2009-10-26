@@ -19,13 +19,13 @@ namespace cmf {
 			///The 6 Vectors of k-Values. 
 			///Since they are only needed in the Integrate method, from theory they should defined as local variable. 
 			///But Allocation needs time, and we will call this often
-			numVector kValues[6];
+			num_array kValues[6];
 			real& k(size_t order,int stateIndex) 
 			{return (kValues[order])[stateIndex];}
-			numVector& k(size_t order)
+			num_array& k(size_t order)
 			{return kValues[order]; }
 			///Vector of the state variable in the beginning of the integration
-			numVector oldStates;
+			num_array oldStates;
 			//@}
 		public:
 			void cmf::math::RKFIntegrator::AddStatesFromOwner( cmf::math::StateVariableOwner& stateOwner );

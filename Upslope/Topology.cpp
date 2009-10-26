@@ -35,7 +35,10 @@ void cmf::upslope::Topology::calculate_contributing_area( const cmf::upslope::ce
 	std::sort(sorted_cells.begin(),sorted_cells.end(),cell_is_higher);
 
 	for(cmf::upslope::cell_vector::iterator it = sorted_cells.begin(); it != sorted_cells.end(); ++it)
+	{
 		(**it).get_topology().m_CatchmentSize=0.0;
+		(**it).get_topology().MainOutlet(true);
+	}
 
 	for(cmf::upslope::cell_vector::iterator it = sorted_cells.begin(); it != sorted_cells.end(); ++it)
 	{
@@ -43,5 +46,24 @@ void cmf::upslope::Topology::calculate_contributing_area( const cmf::upslope::ce
 		topo.m_CatchmentSize+=(**it).get_area();
 		if (topo.MainOutlet())
 			topo.MainOutlet()->get_topology().m_CatchmentSize+=topo.m_CatchmentSize;
+	}
+}
+
+void cmf::upslope::Topology::AddNeighbor( Topology & target,double flowwidth )
+{
+	if (&target != this)
+	{
+		m_Neighbors[&target]=flowwidth;
+		target.m_Neighbors[this]=flowwidth;
+	}
+
+}
+
+void cmf::upslope::Topology::RemoveNeighbor( Topology & target )
+{
+	if (m_Neighbors.find(&target)!=m_Neighbors.end())
+	{
+		m_Neighbors.erase(&target);
+		target.RemoveNeighbor(*this);
 	}
 }

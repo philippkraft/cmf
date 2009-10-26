@@ -54,7 +54,7 @@ namespace cmf {
 				:	T(15),Tmax(17),Tmin(10),Tground(16),
 				e_s(vapour_pressure(15)),e_a(0.8*vapour_pressure(15)),
 				Windspeed(2.),sunshine(0.5),Rs(15),instument_height(2) {}
-			std::string ToString() const
+			std::string to_string() const
 			{
 				std::stringstream sstr;
 				sstr.precision(3);
@@ -352,7 +352,6 @@ namespace cmf {
 			/// @param latitude Latitude of the study area (for solar radiation)
 			/// @param longitude Longitude of the study area (for solar time)
 			/// @param timezone Time zone of the study area (e.g Germany +1,U.S. Pacific time -8
-			/// @param elevation Height of the meteorological station above sea level [m]
 			/// @param startTime Date of the beginning of the climatic data (may be changed for each time series later)
 			/// @param timestep Frequency of climatic data (may be changed for each time series later)
 			meteo_station_pointer add_station(std::string name,cmf::geometry::point position,double latitude=51,double longitude=8,double timezone=1,

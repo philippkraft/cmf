@@ -9,37 +9,38 @@
 namespace cmf {
 	namespace water {
 		class WaterStorage;
-		class SoluteStorageMap;
-		/// A class for the storage of any tracer. The state is the amount (mol, kg etc. see cmf::water) of the tracer in the storage
+		//class SoluteStorageMap;
+		
+		/// A class for the storage of any tracer. The state is the amount (mol, kg etc. see cmf::water) 
+		/// of the tracer in the storage.
 		/// \f{eqnarray*}
-		/// \frac{dX}{dt}&=&\sum_{f=1}^{F}\left( q_f [X]_f\right) + \sum_{r=1}^R\left(f_r\left([A],...,[Z]\right)\ V\right) \left[\frac{mol}{day}\right]\\
+		/// \frac{dX}{dt}&=&\sum_{f=1}^{F}\left( q_f [X]_f\right) + X_{in} + [X]_{in}V - r^-X \left[\frac{mol}{day}\right]\\
 		/// F&=& \mbox{Number of fluxes in water storage} \\
 		/// q_f&=& \mbox{Water flux in } \frac{m^3}{day}	\\
 		/// \left[X\right]_f &=& \mbox{Concentration of solute X in flux }q_f \mbox{ in } \frac{mol}{m^3} \\
-		/// R&=& \mbox{Number of reactions defined for this solute storage} \\
-		/// f_r\left([A],...,[Z]\right)&=& \mbox{Reactive flux of }[X] \mbox{ in environment } [A],...,[Z] \left[\frac{mol}{m^3\ day}\right] \\
+		/// X_{in} &=& \mbox{Absolute source or sink term} \frac{mol}{day} \\
+		/// [X]_{in} &=& \mbox{Concentration source or sink term} \frac{mol}{m^3 day} \\
+		/// r^- &=& \mbox{Decay rate} \frac 1{day} }}
 		/// V &=& \mbox{Volume of water in water storage }\left[m^3\right]
 		/// \f}
 		class SoluteStorage : public cmf::math::StateVariable
 		{
-			SoluteStorage(WaterStorage& water,const cmf::water::Solute& solute, double InitialState=0) 
-				: cmf::math::StateVariable(InitialState),Storage(water),Solute(solute),AdditionalFlux(0) {}
+			SoluteStorage(std::tr1::weak_ptr<WaterStorage> _water,const cmf::water::solute& solute, double InitialState=0) 
+				: cmf::math::StateVariable(InitialState),m_water(_water), Solute(solute),decay(0),source(0),source_concentration(0) {}
+			std::tr1::weak_ptr<WaterStorage> m_water;
+			
 		public:
 			friend class WaterStorage;
-			/// Provides an interface to other models to update the rate. This variable can be set by the += operator
-			/// Unit is in \f$\frac{mol}{day}\f$, where mol is only a proxy for the unit of the solute
-			real AdditionalFlux;
-			SoluteStorage& operator +=(real additionalRate)
-			{
-				AdditionalFlux=additionalRate;
-				return *this;
-			}
-			/// The reactions applying to this Solute(vector of pointers to Reaction objects)
-			//reaction::ReactionVector Reactions;
+			/// Rate of decay of the solute (in 1/day)
+			real decay;
+			/// A source or sink term of the solute as a concentration in state unit/(m3H2O day)
+			real source_concentration;
+			/// A source or sink term of the solute as an absolute matter flux in state unit/day
+			real source;
 			/// The water storage to which the concentration storage belongs
-			WaterStorage const & Storage;
+			std::tr1::shared_ptr<cmf::water::WaterStorage> get_water() const {return m_water.lock();}
 			/// The solute, which is stored in this
-			const cmf::water::Solute& Solute;
+			const cmf::water::solute& Solute;
 			/// Returns the concentration of the solute
 			real conc() const;
 			virtual real Derivate(const cmf::math::Time& time);

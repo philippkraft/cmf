@@ -4,6 +4,63 @@ import numpy
 from cmf.cell_factory import geometry as geoms
 import cmf.cell_factory
 
+class cell_polygon_map(object):
+    def __call__(self,recalc_range=False):
+        if recalc_range:
+            self.maxvalue=max((self.f(c) for c in self.polygons.iterkeys()))
+            self.minvalue=min((self.f(c) for c in self.polygons.iterkeys()))
+        for cell,poly in self.polygons.iteritems():
+            v=self.f(cell)
+            c=self.cmap((v-self.minvalue)/(self.maxvalue-self.minvalue))
+            poly.set_fc(c)
+        if pylab.isinteractive():
+            pylab.draw()   
+    @property
+    def f(self): return self.__f
+    @f.setter
+    def f(self,funct):
+        self.__f=funct
+        if pylab.isinteractive():
+            self(True)
+    def __init__(self,cells,value_function, cmap=pylab.cm.jet,hold=True,vmin=None,vmax=None,**kwargs):
+        self.cells=cells
+        self.__f = value_function
+        self.cmap=cmap
+        was_interactive=pylab.isinteractive()
+        if was_interactive: pylab.ioff()
+        geos=[]
+        self.maxvalue=-1e300 if vmax is None else vmax
+        self.minvalue=1e300 if vmin is None else vmin
+        self.polygons={}
+        for cell in cells:
+            shape=geoms[cell]
+            if hasattr(shape, "geoms"):
+                shapes=shape.geoms
+            else:
+                shapes=[shape]
+            value=self.f(cell)
+            if vmax is None:
+                self.maxvalue=max(value,self.maxvalue)
+            if vmin is None:
+                self.minvalue=min(value,self.minvalue)
+            for s in shapes:
+                geos.append((cell,s,value))
+        if self.minvalue>=self.maxvalue: self.minvalue=self.maxvalue-1
+        for cell,s,v in geos:
+            if isinstance(s, Polygon):
+                s=s.exterior
+            c=cmap(float(v-self.minvalue)/float(self.maxvalue-self.minvalue))
+            a=pylab.asarray(s)
+            self.polygons[cell]=pylab.fill(a[:,0],a[:,1],fc=c,hold=hold,**kwargs)[0]
+            hold=1
+        pylab.axis('scaled')
+        if was_interactive:
+            pylab.draw() 
+            pylab.ion()
+        
+        
+        
+
 def drawcells(cells,colorfunction=lambda c:c.z,cmap=pylab.cm.jet,hold=True,vmin=None,vmax=None,return_polygons=False,**kwargs):
     was_interactive=pylab.isinteractive()
     if was_interactive: pylab.ioff()

@@ -7,9 +7,9 @@ using namespace std;
 cmf::math::ImplicitEuler::ImplicitEuler(StateVariableOwner& states, real epsilon/*=1e-9*/,cmf::math::Time tStepMin/*=10.0/(3600.0*24.0)*/ ) : 
 Integrator(states,epsilon,tStepMin)
 {
-	oldStates		  = numVector(int(m_States.size()),0);
-	compareStates	= numVector(int(m_States.size()),0);
-	dxdt          = numVector(int(m_States.size()),0);
+	oldStates		  = num_array(int(m_States.size()),0);
+	compareStates	= num_array(int(m_States.size()),0);
+	dxdt          = num_array(int(m_States.size()),0);
 }
 cmf::math::ImplicitEuler::ImplicitEuler( real epsilon/*=1e-9*/,cmf::math::Time tStepMin/*=10.0/(3600.0*24.0)*/ ) : 
 Integrator(epsilon,tStepMin)
@@ -78,7 +78,7 @@ int cmf::math::ImplicitEuler::Integrate(cmf::math::Time MaxTime,cmf::math::Time 
 			// If the time step becomes too small, throw exception
 			if (m_NextTimeStep<MinTimestep())
 			{
-				std::cerr << "No convergence! Time=" << ModelTime().AsDate().ToString() << " Iter: " << iter << " Reach:" << Tag << std::endl;
+				std::cerr << "No convergence! Time=" << ModelTime().AsDate().to_string() << " Iter: " << iter << " Reach:" << Tag << std::endl;
 				throw std::runtime_error("No convergence with a time step > minimal time step");
 			}
 			// Restore states

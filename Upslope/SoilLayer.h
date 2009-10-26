@@ -1,18 +1,22 @@
-#ifndef SoilWaterStorage_h__
-#define SoilWaterStorage_h__
+#ifndef SoilLayer_h__
+#define SoilLayer_h__
 
 #include "../water/WaterStorage.h"
-#include "../water/FluxConnection.h"
+#include "../water/flux_connection.h"
 #include "../Geometry/geometry.h"
 #include "Soil/RetentionCurve.h"
 #include "cell.h"
 #include <memory>
 namespace cmf {
 	namespace upslope {
-		/// A representation of a Layer
-		class SoilWaterStorage: public cmf::water::WaterStorage
+		class SoilLayer;
+		typedef std::tr1::shared_ptr<cmf::upslope::SoilLayer> SoilLayer_ptr;
+
+		/// A representation of a SoilLayer
+		class SoilLayer: public cmf::water::WaterStorage
 		{
 		private:
+			friend class Cell;
 			struct wet {real	W,Psi_m,theta,C,K,Ksat;	};
 			wet m_wet;
 		protected:
@@ -66,27 +70,23 @@ namespace cmf {
 			/// @returns   get_area in m2
 			/// @param target The other soil water storage
 			/// @param HorizontalLayers If true, the layers are assumed to be parallel to the gravitational potential, otherwise they are assumed to be parallel to the ground topography
-			real get_flow_crosssection(const cmf::upslope::SoilWaterStorage& target,bool HorizontalLayers=false) const;
+			real get_flow_crosssection(const cmf::upslope::SoilLayer& target,bool HorizontalLayers=false) const;
 			
-			SoilWaterStorage* copy()
+			static SoilLayer_ptr cast(cmf::water::flux_node::ptr node)
 			{
-				return new SoilWaterStorage(cell,m_upperboundary,m_lowerboundary,get_soil(),Position);
-			}
-			static SoilWaterStorage* Create(cmf::upslope::Cell & _cell,real lowerboundary,const RetentionCurve& r_curve,real saturateddepth=10)
-			{
-				return new SoilWaterStorage(_cell,lowerboundary,r_curve,saturateddepth);
+				return std::tr1::dynamic_pointer_cast<SoilLayer>(node);
 			}
 		protected:
-			SoilWaterStorage(cmf::upslope::Cell & _cell,real lowerboundary,const RetentionCurve& r_curve,real saturateddepth=10);
-			SoilWaterStorage(cmf::upslope::Cell & _cell,real upperBoundary,real lowerboundary,const RetentionCurve& r_curve,int _Position);
+			SoilLayer(cmf::upslope::Cell & _cell,real lowerboundary,
+												const RetentionCurve& r_curve,real saturateddepth=10);
+			SoilLayer(cmf::upslope::Cell & _cell,real upperBoundary,real lowerboundary,
+												const RetentionCurve& r_curve,int _Position);
 			/// Invalidates the saturated depth of the cell
 			virtual void StateChangeAction();
 
 		};
 
-		cmf::upslope::SoilWaterStorage* AsSoilWater(cmf::water::FluxNode* node);
-
 
 	}
 }
-#endif // SoilWaterStorage_h__
+#endif // SoilLayer_h__

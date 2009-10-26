@@ -1,7 +1,7 @@
 #ifndef Integrator_h__
 #define Integrator_h__
 
-#include "../numVector.h"
+#include "../num_array.h"
 #include "../StateVariable.h"
 #include "../real.h"
 #include <stdexcept>
@@ -21,7 +21,7 @@ namespace cmf {
 			//@{
 			StateVariableVector m_States;
 			int error_position;
-			real error_exceedance( const numVector& compare,int * biggest_error_position=0 )
+			real error_exceedance( const num_array& compare,int * biggest_error_position=0 )
 			{
 				real res=0;
 #pragma omp parallel for shared(res)
@@ -57,7 +57,7 @@ namespace cmf {
 				return (int)m_States.size();
 			}
 			/// Simplifies the assessment of state variables
-			const real& state(int position) const
+			real state(int position) const
 			{
 				return m_States[position]->get_state();
 			}

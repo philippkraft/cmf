@@ -1,6 +1,6 @@
 #ifndef Precipitation_h__
 #define Precipitation_h__
-#include "../water/FluxConnection.h"
+#include "../water/flux_connection.h"
 #include "../water/boundary_condition.h"
 #include "../water/Solute.h"
 #include "../project.h"

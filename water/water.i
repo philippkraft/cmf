@@ -1,113 +1,109 @@
+
+
 %{
 	// Include Water
 	#include "water/Solute.h"
-	#include "water/WaterFlux.h"
-	//#include "water/Reaction.h"
 	#include "water/SoluteStorage.h"
 	#include "water/WaterStorage.h"
-	#include "water/FluxConnection.h"
+	#include "water/flux_connection.h"
     #include "water/boundary_condition.h"
 %}
 // Include Water
 %include "water/Solute.h"
-%include "water/WaterFlux.h"
-//%include "water/Reaction.h"
+%extend cmf::water::solute { 
+    std::string __repr__() { return "[" + $self->Name + "]"; }
+}
+%extend cmf::water::solute_vector
+{
+	cmf::water::solute* __getitem__(int i)
+	{
+		return $self->get_solute(i);
+	}
+	size_t __len__() { return $self->size();}
+	%pythoncode
+	{
+    def __iter__(self):
+        for i in range(len(self)):
+            yield self[i]
+    def __repr__(self):
+        return str([s.Name for s in self])
+	}
+}
+%extend cmf::water::SoluteTimeseries
+{
+	cmf::math::timeseries& __getitem__(const cmf::water::solute& solute)
+	{
+		return (*$self)[solute];
+	}
+	void __setitem__(const cmf::water::solute& solute,cmf::math::timeseries concentration)
+	{
+		(*$self)[solute]=concentration;
+	}
+	size_t __len__() const
+	{
+		return $self->size();
+	}
+}
+
+
 %include "water/SoluteStorage.h"
 
-// FluxConnection and Node
-namespace cmf{namespace water {class FluxConnection;}}
-%template(connection_vector) std::vector<cmf::water::FluxConnection*>;
-%template(connection_set) std::set<cmf::water::FluxConnection*>;
-%template(node_vector) std::vector<cmf::water::FluxNode*>;
-%factory(cmf::water::FluxNode& cmf::water::FluxConnection::Target,cmf::atmosphere::RainCloud,cmf::river::OpenWaterStorage,cmf::upslope::SoilWaterStorage,cmf::water::WaterStorage,cmf::water::FluxNode);
-%attribute(cmf::water::FluxNode,real,potential,get_potential,set_potential);
-
-%factory(cmf::water::FluxNode* cmf::water::node_list::get,cmf::atmosphere::RainCloud,cmf::river::OpenWaterStorage,cmf::upslope::SoilWaterStorage,cmf::water::WaterStorage,cmf::water::FluxNode);
+// flux_connection and Node
+namespace cmf{namespace water {class flux_connection;}}
+%template(connection_vector) std::vector<cmf::water::flux_connection* >;
+%template(connection_set) std::set<cmf::water::flux_connection* >;
+%node_downcast_all(cmf::water::flux_node::ptr cmf::water::flux_connection::get_target)
+%node_downcast_all(cmf::water::flux_node::ptr cmf::water::node_list::get)
 
 
+%attribute(cmf::water::flux_node,real,potential,get_potential,set_potential);
+%attributeval(cmf::water::flux_node, cmf::water::connection_vector, connections, get_connections);
 
-%pythonappend cmf::water::FluxConnection::FluxConnection{
+
+%pythonappend cmf::water::flux_connection::flux_connection{
     self.thisown=0
 }
-%include "water/FluxNode.h"
-%include "water/FluxConnection.h"
-%extend cmf::water::FluxConnection { %pythoncode {
+%include "water/flux_node.h"
+%include "water/flux_connection.h"
+%extend cmf::water::flux_connection { %pythoncode {
     def __repr__(self):
-        return self.ToString()
+        return self.to_string()
     def __getitem__(self,index):
-        return self.Target(index)
+        return self.get_target(index)
     def __iter__(self):
-        yield self.Target(0)
-        yield self.Target(1)
+        yield self.get_target(0)
+        yield self.get_target(1)
     def __contains__(self,cmp):
         return cmp==self[0] or cmp==self[1]
 }}
-%extend cmf::water::FluxNode { 
+
+%extend cmf::water::flux_node { 
 %pythoncode {
-    def __repr__(self):
-        return self.Name
+    def __repr__(self): return self.to_string()
     def fluxes(self,t):
-        return [(con.q(self,t),con.Target(self)) for con in self.Connections()]
+        return [(con.q(self,t),con[self]) for con in self.connections]
+    @property
+    def connected_nodes(self):
+        return [con[self] for con in self.connections]
   }
 }
 
 %include "water/boundary_condition.h"
+%extent cmf::water::DricheletBoundary {  %pythoncode {
+    def __repr__(self): return self.to_string()
+}}
+%extent cmf::water::NeumannBoundary {   %pythoncode {
+    def __repr__(self): return self.to_string()
+}}
+
+
 // WaterStorage
-%newobject cmf::water::WaterStorage::FromNode;
+%attribute(cmf::water::WaterStorage,real,volume,get_volume,set_volume);
+
 %include "water/WaterStorage.h"
 
-%extend cmf::water::WaterStorage
-{
-	std::string __repr__()
-	{
-		return $self->ToString();
-	}
-}
-%extend cmf::water::node_list {
-%pythoncode {
-    def __getitem__(self,index):
-        return self.get(index)
-    def __getslice__(self,slice):
-        indices=slice.indices(self.size())
-        return self.get(indices[0],indices[1],indices[2])
-    def __len__(self):
-        return self.size()       
-    def __iter__(self):
-        for i in xrange(self.size()):
-            yield self[i]
-    def extend(self,sequence):
-        """Extends the node list with the sequence (any iterable will do) """
-        for o in sequence:
-            self.append(o)
-    @staticmethod
-    def from_sequence(sequence):
-        """Returns a new node list populated from the sequence (any iterable will do) """
-        nl=node_list()
-        nl.extend(sequence)
-        return nl
-    }
-}
-%extend cmf::water::NeumannBoundary_list {
-    %pythoncode {
-    def __getitem__(self,index):
-        return self.get(index)
-    def __len__(self):
-        return self.size()       
-    def __iter__(self):
-        for i in xrange(self.size()):
-            yield self[i]
-    def extend(self,sequence):
-        """Extends the list of Neumann boundaries with the sequence (any iterable will do) """
-        for o in sequence:
-            self.append(o)
-    @staticmethod
-    def from_sequence(sequence):
-        """Returns a new list of Neumann boundaries populated from the sequence (any iterable will do) """
-        nl=NeumannBoundary_list()
-        nl.extend(sequence)
-        return nl
-    }
-}
+%include "water/collections.i"
+
 // Add some function for down casting
-DOWNCASTdefinition(cmf::water::FluxNode,cmf::water::WaterStorage,AsStorage)
+// DOWNCASTdefinition(cmf::water::flux_node,cmf::water::WaterStorage,AsStorage)
 

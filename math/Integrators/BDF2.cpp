@@ -184,7 +184,7 @@ int cmf::math::BDF2::Integrate( cmf::math::Time MaxTime,cmf::math::Time timestep
 				if (UseEulerAtTmin) // If an explicit euler step is to be taken at Tmin, do it
 				{
 					h=MinTimestep();
-					std::cerr << "No convergence! Time=" << ModelTime().AsDate().ToString() << " Euler step taken for " << h.ToString() << std::endl;
+					std::cerr << "No convergence! Time=" << ModelTime().AsDate().to_string() << " Euler step taken for " << h.to_string() << std::endl;
 					dxdt*=h.AsDays(); 
 					States() += dxdt;
 					order=1;
@@ -192,7 +192,7 @@ int cmf::math::BDF2::Integrate( cmf::math::Time MaxTime,cmf::math::Time timestep
 				}
 				else
 				{
-					std::cerr << "No convergence! Time=" << ModelTime().AsDate().ToString() << " Iter: " << iter << " StateV No." << error_position << std::endl;
+					std::cerr << "No convergence! Time=" << ModelTime().AsDate().to_string() << " Iter: " << iter << " StateV No." << error_position << std::endl;
 					throw std::runtime_error("No convergence with a time step > minimal time step");
 				}
 			}

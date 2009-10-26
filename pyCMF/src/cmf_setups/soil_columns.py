@@ -235,13 +235,13 @@ class reach_system(object):
             self.reaches[c]=r
         self.solver=solver_template.Copy()
         self.solver.AddStatesFromOwner(self.storages)
-        self.surface_water = cmf.node_list.from_sequence((c.surface_water for c in self.cells))
+        self.surfacewater = cmf.node_list.from_sequence((c.surfacewater for c in self.cells))
         self.lateral_boundaries = cmf.NeumannBoundary_list.from_sequence((self.reaches[c].lateral_boundary))
     def set_lat_flux(self,cell,flux):
         self.reaches[cell].lateral_boundary.flux=cmf.timeseries(flux)
     def __call__(self,until):
         for c in self.cells:
-            self.set_lat_flux(c, c.surface_water.water_balance(self.solver.t))
+            self.set_lat_flux(c, c.surfacewater.water_balance(self.solver.t))
         self.solver(until)
         
     @property

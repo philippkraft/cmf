@@ -3,9 +3,6 @@
 #include "math/real.h"
 #include "math/Time.h"
 #include "math/timeseries.h"
-#include "math/numVector.h"
-#include "math/StateVariable.h"
-#include "math/Jacobian.h"
 %}
 // Get Math
 %pythoncode
@@ -65,71 +62,36 @@ static cmf::math::Time convert_datetime_to_cmftime(PyObject* dt)
     int res=SWIG_ConvertPtr($input,&pt,SWIGTYPE_p_cmf__math__Time,0);
     $1=SWIG_IsOK(res) || PyDateTime_Check($input) || PyDelta_Check($input) || PyDate_Check($input);
 }
+%implicitconv cmf::math::Time;
 
 %include "math/real.h"
 %include "math/Time.h"
-%include "math/timeseries.h"
-%include "math/numVector.h"
 
-%ignore svVector;
-
-// %attribute(cmf::math::Integrator,cmf::math::Time,t,ModelTime)
-// %attribute(cmf::math::Integrator,cmf::math::Time,dt,TimeStep)
-
-class cmf::math::StateVariable;
-namespace std {
-	%template(svVector) vector<cmf::math::StateVariable*>; 
-}
-//%attribute(cmf::math:StateVariable,double,s,State);
 %naturalvar cmf::math::Time;
-%implicitconv cmf::math::Time;
+
+%attribute(cmf::math::timeseries,cmf::math::Time,begin,begin);
+%attribute(cmf::math::timeseries,cmf::math::Time,step,step);
+%attribute(cmf::math::timeseries,cmf::math::Time,end,end);
+//%naturalvar cmf::math::timeseries;
+
+%implicitconv cmf::math::timeseries;
+
+%include "math/timeseries.h"
 
 
 
 
 %implicitconv cmf::math::Date;
-%naturalvar cmf::math::timeseries;
-%implicitconv cmf::math::timeseries;
-%{
-#include "math/Integrators/Integrator.h"
-#include "math/Integrators/BDF2.h"
-#include "math/Integrators/ExplicitEuler_fixed.h"
-#include "math/Integrators/ExplicitEuler_variable.h"
-#include "math/Integrators/FixpointImplicitEuler.h"
-#include "math/Integrators/RKFIntegrator.h"
-#include "math/Integrators/Gears_Fixpoint.h"
-#include "math/Integrators/cvodeIntegrator.h"
-#include "math/Integrators/MultiIntegrator.h"
-%}
 
-
-
-%include "math/StateVariable.h"
-%include "math/Integrators/Integrator.h"
-%include "math/Integrators/BDF2.h"
-%include "math/Integrators/ExplicitEuler_fixed.h"
-%include "math/Integrators/ExplicitEuler_variable.h"
-%include "math/Integrators/FixpointImplicitEuler.h"
-%include "math/Integrators/RKFIntegrator.h"
-%include "math/Integrators/Gears_Fixpoint.h"
-%include "math/Integrators/cvodeIntegrator.h"
-%include "math/Integrators/MultiIntegrator.h"
-%include "math/Jacobian.h"
-%extend cmf::math::StateVariable
-{
-  %pythoncode {
-    state=property(get_state,set_state,"Gets the currect state")
-  }
-}
 
 %extend cmf::math::Time {
     %pythoncode 
     {
     def __repr__(self):
         if self>year*40:
-            return self.AsDate().ToString()
+            return self.AsDate().to_string()
         else:
-            return self.ToString()
+            return self.to_string()
     def __nonzero__(self):
         return self.is_not_0();
     def __rmul__(self,other):
@@ -144,73 +106,14 @@ namespace std {
     %pythoncode 
     {
     def __repr__(self):
-        return self.ToString()
+        return self.to_string()
     def AsPython(self):
         return datetime.datetime(self.year,self.month,self.day,self.hour,self.minute,self.second,self.ms*1000)
     }
 }
 
 
-%extend cmf::math::numVector {
-    double __getitem__(int index) 
-    {
-        int ndx = index < 0 ? $self->size() - index : index;
-        if (ndx < 0 || ndx>=$self->size())
-        {
-            throw std::out_of_range("Index out of range");
-        }
-        return (*$self)[ndx];
-    }
-    void __setitem__(int index,double value) 
-    {
-        int ndx = index < 0 ? $self->size() - index : index;
-        if (ndx < 0 || ndx>=$self->size())
-        {
-            throw std::out_of_range("Index out of range");
-        }
-        (*$self)[ndx]=value;
-    }
-    int __len__() {return $self->size();}
-    cmf::math::numVector __radd__(real other)	{  return other+(*$self);	}
-    cmf::math::numVector __rsub__(real other)	{  return other-(*$self);	}
-    cmf::math::numVector __rmul__(real other)	{  return other*(*$self);	}
-    cmf::math::numVector __rdiv__(real other)	{  return other/(*$self);	}
-    %pythoncode {
-    def __iter__(self):
-        for i in xrange(len(self)):
-            yield self[i]
-    @property
-    def __array_interface__(self):
-        return dict(shape=(len(self),),typestr='|f8',data=(self.adress(),0),version=3)
-    def ravel(self,order='C'):
-        return self
-    }
-}
-%pythoncode {
-    def to_numvector(arraylike):
-        if len(a.__array_interface__['shape'])!=1:
-            raise RuntimeError('Only 1d arrays are convertible to cmf.numVectors')
-        res=numVector(len(arraylike))
-        res.set_data_from_adress(a.__array_interface__['data'][0],len(a))    
-}
 
-
-%extend cmf::math::Integrator { 
-%pythoncode {
-    t=property(ModelTime,ModelTime,"Gets or sets the model time of the integrator")
-    dt=property(TimeStep,None,"Gets the length of the last internal time step of the integrator")
-    def __call__(self,t):
-        if t<self.t:
-            self.IntegrateUntil(self.t+t)
-        else:
-            self.IntegrateUntil(t)
-    def run(self,start=day*0,end=day*1,step=day*1):
-        self.t=start
-        while self.t<end:
-            self(self.t+step)
-            yield self.t
-}
-}
 %extend cmf::math::timeseries
 {
 	double __len__()
@@ -268,7 +171,12 @@ namespace std {
         res=self.inv() 
         res*=other
         return res
-    
+    def iter_time(self, as_float=0):
+        """Returns an iterator to iterate over each timestep
+        as_float if True, the timesteps will returned as floating point numbers representing the days after 1.1.0001 00:00
+        """
+        for i in xrange(len(self)):
+            return self.begin + self.step * i
     def to_buffer(self):
         """Returns a binary buffer filled with the data of self"""
         return struct.pack('qqqq%id' % self.size(),self.begin().AsMilliseconds(),self.step().AsMilliseconds(),self.interpolationpower(), *self)
@@ -283,6 +191,10 @@ namespace std {
             raise TypeError("The file f must be either an object providing a write method, like a file, or a valid file name")
         f.write(struct.pack('qqqq%id' % self.size(),  self.size(), self.begin().AsMilliseconds(),self.step().AsMilliseconds(),self.interpolationpower(), *self))
         
+    @classmethod
+    def from_sequence(cls,begin,step,sequence=[],interpolation_mode=1):
+        res=cmf.timeseries(begin,step,interpolation_mode)
+        res.extend(sequence)
         
     @classmethod
     def from_buffer(cls,buf):

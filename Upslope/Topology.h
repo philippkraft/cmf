@@ -59,18 +59,8 @@ namespace cmf {
 			{
 				AddNeighbor(target.get_topology(),flowwidth);
 			}
-			void AddNeighbor(Topology & target,double flowwidth)
-			{
-				m_Neighbors[&target]=flowwidth;
-			}
-			void RemoveNeighbor(Topology & target)
-			{
-				if (m_Neighbors.find(&target)!=m_Neighbors.end())
-				{
-					m_Neighbors.erase(&target);
-					target.RemoveNeighbor(*this);
-				}
-			}
+			void AddNeighbor(Topology & target,double flowwidth);
+			void RemoveNeighbor(Topology & target);
 			size_t neighbor_count() const { return m_Neighbors.size();}
 			Cell * MainOutlet(bool forceRecalc=false);
 

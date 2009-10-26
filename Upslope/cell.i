@@ -49,15 +49,17 @@
 %nodefaultctor cmf::upslope::NeighborIterator;
 
 
-%factory(cmf::water::FluxNode& cmf::upslope::Cell::get_surfacewater,cmf::river::OpenWaterStorage, cmf::water::FluxNode);
-%factory(cmf::water::WaterStorage& cmf::upslope::Cell::get_storage,cmf::river::OpenWaterStorage,cmf::water::WaterStorage);
-%factory(cmf::upslope::SoilWaterStorage& cmf::upslope::Cell::get_layer,cmf::upslope::VariableLayerSaturated,cmf::upslope::VariableLayerUnsaturated,cmf::upslope::SoilWaterStorage);
+//%factory(cmf::water::flux_node& cmf::upslope::Cell::get_surfacewater,cmf::river::OpenWaterStorage, cmf::water::flux_node);
+//%factory(cmf::water::WaterStorage& cmf::upslope::Cell::get_storage,cmf::river::OpenWaterStorage,cmf::water::WaterStorage);
+//%factory(cmf::upslope::SoilLayer& cmf::upslope::Cell::get_layer,cmf::upslope::VariableLayerSaturated,cmf::upslope::VariableLayerUnsaturated,cmf::upslope::SoilLayer);
+
+%node_downcast(cmf::water::flux_node::ptr cmf::upslope::Cell::get_surfacewater,cmf::river::OpenWaterStorage)
 
 %attribute2(cmf::upslope::Cell,cmf::upslope::Topology,topology,get_topology);
-%attribute2(cmf::upslope::Cell,cmf::water::FluxNode,evaporation,get_evaporation);
-%attribute2(cmf::upslope::Cell,cmf::water::FluxNode,transpiration,get_transpiration);
+%attribute(cmf::upslope::Cell,cmf::water::flux_node::ptr,evaporation,get_evaporation);
+%attribute(cmf::upslope::Cell,cmf::water::flux_node::ptr,transpiration,get_transpiration);
 %attribute2(cmf::upslope::Cell,cmf::atmosphere::Meteorology,meteorology,get_meteorology,set_meteorology);
-%attribute2(cmf::upslope::Cell,cmf::atmosphere::RainCloud,rain,get_rainfall);
+%attribute(cmf::upslope::Cell,std::tr1::shared_ptr<cmf::atmosphere::RainCloud>,rain,get_rainfall);
 
 
 %include "upslope/cell.h"
@@ -72,10 +74,11 @@
         while c_iter.valid():
             yield (c_iter.cell(),c_iter.flowwidth())
             c_iter.next()
+    
     storages=property(lambda c:_cell_object_list(c,'A'),None,"Provides access to all storages of the cell (surface storages and layers)")
     surface_storages=property(lambda c:_cell_object_list(c,'S'),None,"Provides access to all surface storages of the cell, like canopy, snow, surface water etc")
     layers=property(lambda c:_cell_object_list(c,'L'),None,"Provides access to all soil water storages (layers) of the cell")
-    surface_water=property(get_surfacewater,None,"Gives access to the surface water, which is either a distributing flux node, or the storage for all surface water")
+    surfacewater=property(get_surfacewater,None,"Gives access to the surface water, which is either a distributing flux node, or the storage for all surface water")
     canopy=property(get_canopy,None,"The canopy water storage of the cell, if it exists")
     snow=property(get_snow,None,"The snow pack of the cell, if a storage for the snow exists")
     saturated_depth=property(get_saturated_depth,set_saturated_depth,"Gets or sets the saturated depth of a cell, if setting each layer of the cell will get a new water content")
@@ -84,9 +87,14 @@
     reach=property(lambda self:self.get_reach(0),None,"The first reach of the cell, other reaches are accessible via reaches[n]")
     reaches=property(lambda self:[self.get_reach(i) for i in range(self.ReachCount())],None,"The reaches of this cell")
     Vegetation=property(get_vegetation,set_vegetation,"The vegetational parameters of the cell")
+    
+    
+    contributing_area=property(lambda self:self.topology.ContributingArea(),None,"Contributing area of this cell m2")
+    main_outlet=property(lambda self:self.topology.MainOutlet(),None,"The main outlet of the surface water of this cell")
+    
     def connect_soil_with_node(self,node,type,flowwidth,distance,upper_boundary=0,lower_boundary=None):
         """Connects all layers between the boundaries with a node using a flux connection
-        node: Target node (FluxNode)
+        node: Target node (flux_node)
         type: Type of the connection (e.g. cmf.Richards_lateral)
         flowwidth: Width of the connection
         distance: distance of the connection
