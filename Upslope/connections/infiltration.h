@@ -1,9 +1,9 @@
 #ifndef infiltration_h__
 #define infiltration_h__
 
-#include "../../water/FluxConnection.h"
+#include "../../water/flux_connection.h"
 #include "../cell.h"
-#include "../SoilWaterStorage.h"
+#include "../SoilLayer.h"
 #include "../../reach/ManningConnection.h"
 namespace cmf {
 	namespace upslope {
@@ -14,21 +14,19 @@ namespace cmf {
 			/// \f[ K_I = \min\left(\frac{\rho_{wg} \Delta z-\Psi_M}{\Delta z \rho_{wg}} K\left(\theta\right),\sum q_{surface\ in}\right) \f]
 			/// else
 			/// \f[ K_I = \sum q_{surface\ in} \f]
-			class MatrixInfiltration : public cmf::water::FluxConnection {
+			class MatrixInfiltration : public cmf::water::flux_connection {
 			protected:
-				cmf::upslope::SoilWaterStorage* m_soilwater;
-				cmf::water::FluxNode* m_surfacewater;
-				cmf::river::OpenWaterStorage* m_surfacewaterstorage;
+				std::tr1::weak_ptr<cmf::upslope::SoilLayer> m_soilwater;
+				std::tr1::weak_ptr<cmf::river::OpenWaterStorage> m_surfacewaterstorage;
 				virtual real calc_q(cmf::math::Time t);
 				void NewNodes()
 				{
-					m_surfacewater=m_left;
-					m_surfacewaterstorage=cmf::river::AsOpenWater(m_left);
-					m_soilwater=cmf::upslope::AsSoilWater(m_right);
+					m_surfacewaterstorage=cmf::river::OpenWaterStorage::cast(left_node());
+					m_soilwater=cmf::upslope::SoilLayer::cast(right_node());
 				}
 			public:
-				MatrixInfiltration(cmf::upslope::SoilWaterStorage& soilwater,cmf::water::FluxNode& surfacewater) 
-					: FluxConnection(surfacewater,soilwater,"Richards eq. infiltration") {
+				MatrixInfiltration(cmf::upslope::SoilLayer_ptr soilwater,cmf::water::flux_node::ptr surfacewater) 
+					: flux_connection(surfacewater,soilwater,"Richards eq. infiltration") {
 						NewNodes();
 				}
 				static void use_for_cell(cmf::upslope::Cell& c)
@@ -36,46 +34,22 @@ namespace cmf {
 					new MatrixInfiltration(c.get_layer(0),c.get_surfacewater());
 				}
 			};
-			class CompleteInfiltration : public cmf::water::FluxConnection {
+			class CompleteInfiltration : public cmf::water::flux_connection {
 			protected:
-				cmf::upslope::SoilWaterStorage* m_soilwater;
-				cmf::water::FluxNode* m_surfacewater;
-				cmf::river::OpenWaterStorage* m_surfacewaterstorage;
+				std::tr1::weak_ptr<cmf::upslope::SoilLayer> m_soilwater;
+				std::tr1::weak_ptr<cmf::river::OpenWaterStorage> m_surfacewaterstorage;
 				virtual real calc_q(cmf::math::Time t);
 				void NewNodes()
 				{
-					m_surfacewater=m_left;
-					m_soilwater=cmf::upslope::AsSoilWater(m_right);
-					m_surfacewaterstorage=cmf::river::AsOpenWater(m_left);
+					m_soilwater=cmf::upslope::SoilLayer::cast(right_node());
+					m_surfacewaterstorage=cmf::river::OpenWaterStorage::cast(left_node());
 				}
 			public:
-				CompleteInfiltration(cmf::upslope::SoilWaterStorage& soilwater,cmf::water::FluxNode& surfacewater) 
-					: FluxConnection(surfacewater,soilwater,"Complete infiltration"){
+				CompleteInfiltration(cmf::upslope::SoilLayer_ptr soilwater,cmf::water::flux_node::ptr surfacewater) 
+					: flux_connection(surfacewater,soilwater,"Complete infiltration"){
 						NewNodes();
 				}
 
-			};
-			class RouteWB : public cmf::water::FluxConnection
-			{
-			protected:
-				real calc_q(cmf::math::Time t)
-				{
-					real wb=m_left->water_balance(t,this);
-					if (wb<0 && m_right->is_empty())
-						return 0.0;
-					else
-						return wb;
-				}
-				void NewNodes()
-				{
-
-				}
-			public:
-				RouteWB(cmf::water::FluxNode& left,cmf::water::FluxNode& right)
-					: FluxConnection(left,right,"Water balance routing")
-				{
-					NewNodes();
-				}
 			};
 		}
 	}

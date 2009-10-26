@@ -4,7 +4,7 @@
 #include <string>
 #include <vector>
 #include <cmath>
-#include "numVector.h"
+#include "num_array.h"
 #include "real.h"
 namespace cmf {
 	/// Contains classes for numerical solving of ODE's
@@ -35,7 +35,7 @@ namespace cmf {
 			/// Returns the derivate of the state variable at time @c time
 			virtual real Derivate(const cmf::math::Time& time)=0;
 			/// Returns the current state of the variable
-			const real& get_state() const {return m_State;}
+			real get_state() const {return m_State;}
 			/// Gives access to the state variable
 			void set_state(real newState) {
 				//m_StateIsNew=m_State!=newState;
@@ -52,17 +52,17 @@ namespace cmf {
 		/// A vector of state variables, can be solved by RKFIntegrator
 		class StateVariableVector : public std::vector<StateVariable*>
 		{
-			void AddValuesToStates(const numVector& operands);
+			void AddValuesToStates(const num_array& operands);
 		public:
 			bool use_OpenMP;
 			/// Copies the states to a numeric vector using use_OpenMP
-			void CopyStates(numVector & destination) const;
+			void CopyStates(num_array & destination) const;
 			void CopyStates(real * destination) const;
 			/// Copies the new states to the actual states
-			void SetStates(const numVector & newStates) ;
+			void SetStates(const num_array & newStates) ;
 			void SetStates(real * newStates);
 			/// Operator to add something to the states
-			StateVariableVector& operator+=(const numVector& aVector)
+			StateVariableVector& operator+=(const num_array& aVector)
 			{
 				this->AddValuesToStates(aVector);
 				return *this;
@@ -71,23 +71,23 @@ namespace cmf {
 			/// @param time Time at which the derivatives should be calculated
 			/// @param destination Vector to be overwritten by the results
 			/// @param factor A factor that is multiplied to the derivate (e.g. unit conversion or integration length)
-			void CopyDerivs(Time time,numVector & destination, real factor=1) const;
+			void CopyDerivs(Time time,num_array & destination, real factor=1) const;
 			/// Copies the derivatives at time step "time" to an preallocated c array
 			/// @param time Time at which the derivatives should be calculated
 			/// @param destination Allocated c array
 			/// @param factor A factor that is multiplied to the derivate (e.g. unit conversion or integration length)
 			void CopyDerivs(Time time,real * destination,real factor=1) const;
 			/// Returns the states in a numeric vector using :CopyStates, but is slower because of additional memory allocation
-			numVector GetStates() const 
+			num_array GetStates() const 
 			{
-				numVector result(this->size());
+				num_array result(this->size());
 				CopyStates(result);
 				return result;
 			}
 			/// Returns the derivatives at time step "time" in a numeric vector using :CopyDerivs, but is slower because of additional memory allocation
-			numVector GetDerivs(Time time) const 
+			num_array GetDerivs(Time time) const 
 			{
-				numVector result(this->size());
+				num_array result(this->size());
 				CopyDerivs(time,result);
 				return result;
 			}

@@ -1,61 +1,51 @@
 #include "WaterStorage.h"
+#include "../project.h"
 
-void cmf::water::WaterStorage::initializeSoluteStorages()
+using namespace cmf::water;
+
+struct null_deleter {	void operator()(void const *) const {}};
+
+void WaterStorage::initializeSoluteStorages(const solute_vector& solutes)
 {
-	cmf::water::Solutes::all().SetInUse();
-	for (Solutes::iterator it=cmf::water::Solutes::all().begin();it!=cmf::water::Solutes::all().end();++it)
+	for (solute_vector::const_iterator it=solutes.begin();it!=solutes.end();++it)
 	{
-		m_Concentrations.push_back(new SoluteStorage(*this,*it));
+		std::tr1::shared_ptr<SoluteStorage> s(new SoluteStorage(this_,*it));
+		m_Concentrations.push_back(s);
 	}
 }
 
-void cmf::water::WaterStorage::AddStateVariables( cmf::math::StateVariableVector& vector )
+void WaterStorage::AddStateVariables( cmf::math::StateVariableVector& vector )
 {
 	vector.push_back(this);
-	vector.insert(vector.end(),m_Concentrations.begin(),m_Concentrations.end());
-}
-
-cmf::water::WaterStorage::WaterStorage(const cmf::project& _project,double InitialState/*=0*/ ) : cmf::math::StateVariable(InitialState),cmf::water::FluxNode(_project) ,m_Concentrations()
-{
-	initializeSoluteStorages();
-}
-
-cmf::water::WaterStorage::WaterStorage( const WaterStorage& forcopy ) : cmf::math::StateVariable(forcopy.get_state()), cmf::water::FluxNode(forcopy),m_Concentrations()
-{
-	initializeSoluteStorages();
-	for(SoluteStorageMap::iterator it = m_Concentrations.begin(); it != m_Concentrations.end(); ++it)
+	for(SoluteStorageMap::const_iterator it = m_Concentrations.begin(); it != m_Concentrations.end(); ++it)
 	{
-		(**it).set_state(forcopy.Solute((**it).Solute).get_state());
+	    vector.push_back(it->get());
 	}
 }
 
-cmf::water::SoluteStorage& cmf::water::WaterStorage::Solute( const cmf::water::Solute& solute )
+WaterStorage::WaterStorage(const cmf::project& _project,double InitialState/*=0*/ ) 
+: cmf::math::StateVariable(InitialState),flux_node(_project) ,m_Concentrations(), this_(this,null_deleter())
+{
+	initializeSoluteStorages(_project.solutes);
+}
+
+
+SoluteStorage& WaterStorage::Solute( const solute& solute )
 {
 	return *m_Concentrations[solute.Id];
 }
 
-real cmf::water::WaterStorage::conc( const cmf::water::Solute& solute ) const
+
+real WaterStorage::conc(const solute& solute) const
 {
-	if (this->get_state()>0)
-		return Solute(solute).get_state()/this->get_state();
-	else return 0	;
+	return Solute(solute).conc();
 }
 
-cmf::water::WaterQuality cmf::water::WaterStorage::conc(cmf::math::Time t) const
+std::tr1::shared_ptr<WaterStorage> WaterStorage::from_node( flux_node::ptr node )
 {
-	WaterQuality wq;
-	size_t i=0;
-	for(SoluteStorageMap::const_iterator it = m_Concentrations.begin(); it != m_Concentrations.end(); ++it)
-	{
-		wq[i++]=conc((**it).Solute);
-	}
-	return wq;
-}
-cmf::water::WaterStorage* cmf::water::AsWaterStorage(cmf::math::StateVariable * state)
-{
-	return dynamic_cast<cmf::water::WaterStorage*>(state);	
-}
-cmf::water::WaterStorage* cmf::water::AsWaterStorage(cmf::water::FluxNode* node)
-{
-	return dynamic_cast<cmf::water::WaterStorage*>(node);
+	WaterStorage* ws=new WaterStorage(node->project());
+	storage_pointer result(ws);
+
+	replace_node(node,result);
+	return result;
 }

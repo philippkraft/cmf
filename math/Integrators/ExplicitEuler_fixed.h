@@ -8,7 +8,7 @@ namespace cmf {
 		class ExplicitEuler_fixed : public Integrator
 		{
 		private:
-			numVector 
+			num_array 
 				dxdt;
 		public:
 			void AddStatesFromOwner(cmf::math::StateVariableOwner& stateOwner)

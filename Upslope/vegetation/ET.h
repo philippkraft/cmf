@@ -1,9 +1,9 @@
 #ifndef ET_h__
 #define ET_h__
-#include "../../water/FluxConnection.h"
+#include "../../water/flux_connection.h"
 #include "../../Atmosphere/Meteorology.h"
 #include "../../reach/OpenWaterStorage.h"
-#include "../SoilWaterStorage.h"
+#include "../SoilLayer.h"
 #include "../Soil/RetentionCurve.h"
 #include "ShuttleworthWallace.h"
 namespace cmf {
@@ -31,22 +31,22 @@ namespace cmf {
 			/// @param vap_press_deficit Deficit of vapor pressure \f$ kPa \f$
 			real PenmanMonteith(real Rn,real ra,real rs,real T,real vap_press_deficit);
 			real PenmanMonteith(cmf::atmosphere::Weather A,const cmf::upslope::vegetation::Vegetation & veg,double h);
-			real Tact(real Tpot,const cmf::upslope::SoilWaterStorage & sw,const cmf::upslope::vegetation::Vegetation & veg);
+			real Tact(real Tpot,const cmf::upslope::SoilLayer & sw,const cmf::upslope::vegetation::Vegetation & veg);
 			
-			class constantETpot : public cmf::water::FluxConnection {
+			class constantETpot : public cmf::water::flux_connection {
 			protected:
-				cmf::upslope::SoilWaterStorage* sw;
+				std::tr1::weak_ptr<cmf::upslope::SoilLayer> sw;
 				
 				virtual real calc_q(cmf::math::Time t);
 				void NewNodes()
 				{
-					sw=dynamic_cast<cmf::upslope::SoilWaterStorage*>( m_left);
+					sw=std::tr1::dynamic_pointer_cast<cmf::upslope::SoilLayer>( left_node());
 				}
 			public:
 				real ETpot_value;
 				real GetETpot(cmf::math::Time t) const {return ETpot_value;}
-				constantETpot(cmf::upslope::SoilWaterStorage& source,cmf::water::FluxNode& ET_target,double constantETpot_value) 
-					: FluxConnection(source,ET_target,"Constant get_evaporation"),ETpot_value(constantETpot_value)	
+				constantETpot(cmf::upslope::SoilLayer_ptr source,cmf::water::flux_node::ptr ET_target,double constantETpot_value) 
+					: flux_connection(source,ET_target,"Constant get_evaporation"),ETpot_value(constantETpot_value)	
 				{
 					NewNodes();
 				}
@@ -77,118 +77,93 @@ namespace cmf {
 			/// r_s &=& \frac{r_l}{LAI_{Active}} \mbox{ (FAO 1998, Eq. 5/Box 5): bulk surface resistance} \frac s m \\
 			/// && r_l=100 \frac s m, LAI_{Active}=0.5 LAI
 			/// \f}
-			class PenmanMonteithET : public cmf::water::FluxConnection {
+			class PenmanMonteithET : public cmf::water::flux_connection {
 
 			protected:
-				cmf::upslope::SoilWaterStorage* sw;
+				std::tr1::weak_ptr<cmf::upslope::SoilLayer> sw;
 				real calc_q(cmf::math::Time t);
 				void NewNodes()
 				{
-					sw=cmf::upslope::AsSoilWater(m_left);
+					sw=cmf::upslope::SoilLayer::cast(left_node());
 				}
 			public:
 
 				bool daily;
-				PenmanMonteithET(cmf::upslope::SoilWaterStorage& source,cmf::water::FluxNode& ET_target) 
-					: FluxConnection(source,ET_target,"Penman Monteith transpiration"),sw(&source) {
+				PenmanMonteithET(cmf::upslope::SoilLayer_ptr source,cmf::water::flux_node::ptr ET_target) 
+					: flux_connection(source,ET_target,"Penman Monteith transpiration"),sw(source) {
 						NewNodes();
 				}
 				static real r_s(const cmf::upslope::vegetation::Vegetation & veg) ;
 				static real r_a(cmf::atmosphere::Weather A,real  veg_height) ;
-				static void use_for_cell(cmf::upslope::Cell & cell)
-				{
-					for (int i = 0; i < cell.layer_count() ; ++i)
-					{
-						new PenmanMonteithET(cell.get_layer(i),cell.get_transpiration());
-					}
-				}
+				static void use_for_cell(cmf::upslope::Cell & cell);
 			};
 			/// Calculates the actual transpiration and the soil evaporation from a soil layer
-			class ShuttleworthWallaceET : public cmf::water::FluxConnection {
+			class ShuttleworthWallaceET : public cmf::water::flux_connection {
 			protected:
-				cmf::upslope::SoilWaterStorage* m_soilwaterstorage;
-				cmf::water::WaterStorage* m_waterstorage;
+				std::tr1::weak_ptr<cmf::upslope::SoilLayer> m_SoilLayer;
+				std::tr1::weak_ptr<cmf::water::WaterStorage> m_waterstorage;
 				cmf::upslope::Cell& m_cell;
 				virtual real calc_q(cmf::math::Time t);
 				void NewNodes()
 				{
-					m_soilwaterstorage=cmf::upslope::AsSoilWater(m_left);
-					m_waterstorage= m_soilwaterstorage ? 0 : cmf::water::AsWaterStorage(m_left);
+					m_SoilLayer=cmf::upslope::SoilLayer::cast(left_node());
+					if (!m_SoilLayer.expired())
+						m_waterstorage= cmf::water::WaterStorage::cast(left_node());
+					else
+						m_waterstorage.reset();
 				}
 			public:
-				ShuttleworthWallaceET(cmf::water::WaterStorage& source,cmf::water::FluxNode& ET_target,cmf::upslope::Cell& cell,std::string Type="Shuttleworth Wallace get_evaporation") 
-					: cmf::water::FluxConnection(source,ET_target,Type),m_cell(cell) {
+				ShuttleworthWallaceET(cmf::water::storage_pointer source,cmf::water::flux_node::ptr ET_target,cmf::upslope::Cell& cell,std::string Type="Shuttleworth Wallace get_evaporation") 
+					: cmf::water::flux_connection(source,ET_target,Type),m_cell(cell) {
 						NewNodes();
 				}
-				static void use_for_cell(cmf::upslope::Cell& cell)
-				{
-					for (int i = 0; i < cell.storage_count() ; ++i)
-					{
-						new ShuttleworthWallaceET(cell.get_storage(i),cell.get_evaporation(),cell);
-					}
-						
-					for (int i = 0; i < cell.layer_count() ; ++i)
-					{
-						if (!i) new ShuttleworthWallaceET(cell.get_layer(i),cell.get_evaporation(),cell,"Soil evaporation (SW)");
-						new ShuttleworthWallaceET(cell.get_layer(i),cell.get_transpiration(),cell,"Root water uptake (SW)");
-					}
-				}
+				static void use_for_cell(cmf::upslope::Cell& cell);
 
 			};
-			class HargreaveET : public cmf::water::FluxConnection {
+			class HargreaveET : public cmf::water::flux_connection {
 			protected:
-				cmf::upslope::SoilWaterStorage* sw;
+				std::tr1::weak_ptr<cmf::upslope::SoilLayer> sw;
 				real calc_q(cmf::math::Time t);
 				void NewNodes()
 				{
-					sw=cmf::upslope::AsSoilWater(m_left);
+					sw=cmf::upslope::SoilLayer::cast(left_node());
 				}
 			public:
-				HargreaveET(cmf::upslope::SoilWaterStorage& source,cmf::water::FluxNode& ET_target) 
-					: FluxConnection(source,ET_target,"Hargreave get_evaporation"),sw(&source) {
+				HargreaveET(cmf::upslope::SoilLayer_ptr source,cmf::water::flux_node::ptr ET_target) 
+					: flux_connection(source,ET_target,"Hargreave get_evaporation"),sw(source) {
 						NewNodes();
 				}
-				static void use_for_cell(cmf::upslope::Cell & cell)
-				{
-					for (int i = 0; i < cell.layer_count() ; ++i)
-					{
-						new HargreaveET(cell.get_layer(i),cell.get_evaporation());
-					}
-				}
+				static void use_for_cell(cmf::upslope::Cell & cell);
 
 			};
 			/// Calculates the evaporation from a canopy storage
-			class CanopyStorageEvaporation : public cmf::water::FluxConnection {
+			class CanopyStorageEvaporation : public cmf::water::flux_connection {
 			protected:
 				const cmf::upslope::Cell & m_cell;
-				cmf::water::WaterStorage* c_stor;
+				std::tr1::weak_ptr<cmf::water::WaterStorage> c_stor;
 				virtual real calc_q(cmf::math::Time t);
 				void NewNodes()
 				{
-					c_stor=cmf::water::AsWaterStorage(m_left);
+					c_stor=cmf::water::WaterStorage::cast(left_node());
 				}
 			public:
-				CanopyStorageEvaporation(cmf::water::WaterStorage& CanopyStorage,cmf::water::FluxNode& ET_target,cmf::upslope::Cell & cell)
-					: cmf::water::FluxConnection(CanopyStorage,ET_target,"Penman Monteith (canopy) get_evaporation"),m_cell(cell) {
+				CanopyStorageEvaporation(cmf::water::storage_pointer CanopyStorage,cmf::water::flux_node::ptr ET_target,cmf::upslope::Cell & cell)
+					: cmf::water::flux_connection(CanopyStorage,ET_target,"Penman Monteith (canopy) get_evaporation"),m_cell(cell) {
 						NewNodes();
 				}
 			};
-			class PenmanEvaporation : public cmf::water::FluxConnection
+			class PenmanEvaporation : public cmf::water::flux_connection
 			{
 			protected:
-				cmf::river::OpenWaterStorage* m_source;
+				std::tr1::weak_ptr<cmf::river::OpenWaterStorage> m_source;
 				std::auto_ptr<cmf::atmosphere::Meteorology> m_meteo;
 				virtual real calc_q(cmf::math::Time t);
 				void NewNodes()
 				{
-					m_source=cmf::river::AsOpenWater(m_left);
+					m_source=cmf::river::OpenWaterStorage::cast(left_node());
 				}
 			public:
-				PenmanEvaporation(cmf::river::OpenWaterStorage& source,cmf::water::FluxNode& Evap_target,const cmf::atmosphere::Meteorology& meteo)
-					: cmf::water::FluxConnection(source,Evap_target,"Penman evaporation from open water"), m_meteo(meteo.copy())
-				{
-					NewNodes();
-				}
+				PenmanEvaporation(cmf::river::open_water_storage_ptr source,cmf::water::flux_node::ptr Evap_target,const cmf::atmosphere::Meteorology& meteo);
 			};
 		}
 	}

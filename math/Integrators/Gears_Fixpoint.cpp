@@ -181,7 +181,7 @@ int cmf::math::Gears_Fixpoint::Integrate( cmf::math::Time MaxTime,cmf::math::Tim
 	if (h!=this->TimeStep())
 	{
 		// Debugging message
-		std::cout << Tag << " - New step size: " << h.ToString() << ", reduce stage: " << time_reduce_stage << std::endl;
+		std::cout << Tag << " - New step size: " << h.to_string() << ", reduce stage: " << time_reduce_stage << std::endl;
 		// Set current order to 1 (impl. Euler, no history)
 		order=1;
 		// Set number of steps with unchanged time step to zero
@@ -259,7 +259,7 @@ int cmf::math::Gears_Fixpoint::Integrate( cmf::math::Time MaxTime,cmf::math::Tim
 
 
 // Test for convergence
-bool cmf::math::Gears_Fixpoint::approx_equal_to_states( const cmf::math::numVector& compare )
+bool cmf::math::Gears_Fixpoint::approx_equal_to_states( const cmf::math::num_array& compare )
 {
 	bool res=1;
 #pragma omp parallel
@@ -274,7 +274,7 @@ bool cmf::math::Gears_Fixpoint::approx_equal_to_states( const cmf::math::numVect
 }
 
 // Calculate the maximum relative error exceedance of the current iteration
-real cmf::math::Gears_Fixpoint::max_rel_error_exceedance(const cmf::math::numVector& compare)
+real cmf::math::Gears_Fixpoint::max_rel_error_exceedance(const cmf::math::num_array& compare)
 {
   real res=0;
 	for (int i = 0; i < count() ; i++)

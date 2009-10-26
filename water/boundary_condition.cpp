@@ -1,8 +1,7 @@
 #include "boundary_condition.h"
-
-void cmf::water::NeumannBoundary::connect_to( cmf::water::FluxNode& target )
+void cmf::water::NeumannBoundary::connect_to( cmf::water::flux_node::ptr target )
 {
-	new NeumannFlux(*this,target);
+	new NeumannFlux(weak_this.lock(), target);
 }
 
 real cmf::water::NeumannBoundary::operator()( cmf::math::Time t ) const
@@ -12,61 +11,36 @@ real cmf::water::NeumannBoundary::operator()( cmf::math::Time t ) const
 	else
 		return scale_function(flux[t]);
 }
+
+cmf::water::NeumannBoundary::NeumannBoundary( const cmf::project& _project, cmf::math::timeseries _flux,cmf::water::SoluteTimeseries _concentration/*=cmf::water::SoluteTimeseries()*/,cmf::geometry::point loc/*=cmf::geometry::point()*/ ) 
+: cmf::water::flux_node(_project,loc), flux(_flux),concentration(_concentration)
+{
+
+}
+
+cmf::water::NeumannBoundary::NeumannBoundary( const cmf::project& _project,cmf::geometry::point loc/*=cmf::geometry::point()*/ ) 
+: cmf::water::flux_node(_project,loc)
+{
+
+}
+
+cmf::water::NeumannBoundary::NeumannBoundary( cmf::water::flux_node::ptr target ) 
+: cmf::water::flux_node(target->project(),target->Location)
+{
+	connect_to(target);
+	Name = "Boundary of " + target->Name;
+}
 real cmf::water::NeumannFlux::calc_q( cmf::math::Time t )
 {
-	real f=(*m_bc)(t);
-	if (f<0 && m_right->is_empty())
+	real f=(*m_bc.lock())(t);
+	if (f<0 && right_node()->is_empty())
 		return 0.0;
 	else
 		return f;
 }
 
-/************************************************************************/
-/* Neumann-Boundary list                                                */
-/************************************************************************/
 
-cmf::math::numVector cmf::water::NeumannBoundary_list::get_flux( cmf::math::Time t ) const
+cmf::water::DricheletBoundary::DricheletBoundary( const cmf::project& _p,real potential,cmf::geometry::point Location/*=cmf::geometry::point()*/ ) : flux_node(_p,Location),m_Potential(potential)
 {
-	cmf::math::numVector res(m_boundaries.size());
-	for (int i = 0; i < int(m_boundaries.size()) ; ++i)
-	{
-		res[i]=m_boundaries[i]->flux[t];
-	}
-	return res;
-}
 
-void cmf::water::NeumannBoundary_list::set_flux( cmf::math::numVector values )
-{
-	if (values.size()!=m_boundaries.size())
-		throw std::runtime_error("The input array with fluxes need to have the same size as this list");
-	else
-	{
-		for (int i = 0; i < values.size() ; ++i)
-		{
-			set_flux(i,values[i]);
-		}
-	}
 }
-
-real cmf::water::NeumannBoundary_list::global_water_balance( cmf::math::Time t )	const
-{
-	real sum=0;
-#pragma omp parallel for reduction(+ : sum)
-	for (int i = 0; i < (int)size() ; ++i)
-	{
-		sum+=m_boundaries[i]->water_balance(t);					
-	}
-	return sum;
-}
-
-cmf::math::numVector cmf::water::NeumannBoundary_list::water_balance( cmf::math::Time t ) const
-{
-	cmf::math::numVector res(size());
-#pragma omp parallel for
-	for (int i = 0; i < (int)size() ; ++i)
-	{
-		res[i]=m_boundaries[i]->water_balance(t);
-	}
-	return res;
-}
-

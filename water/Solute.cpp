@@ -1,40 +1,35 @@
 #include "Solute.h"
 #include <iostream>
-cmf::water::Solutes cmf::water::Solutes::m_All=cmf::water::Solutes();
 
-const cmf::water::Solute& cmf::water::Solutes::add( const std::string& name,const std::string& unit/*=""*/,double uptake/*=1*/ )
+
+
+cmf::water::solute& cmf::water::solute::operator=( const solute& copy )
 {
-	if (InUse) throw std::runtime_error("Solute list already in use by model, cannot create more solutes");
-
-	Solute s(m_Solutes.size(),name,unit,uptake);
-	m_Solutes.push_back(s);
-	return m_Solutes.back();
+	throw std::runtime_error("Never assign a solute");
 }
 
-void cmf::water::Solutes::SetInUse()
+
+cmf::water::solute_vector::solute_vector( std::string str )
 {
-	if (!InUse)
+	using namespace std;
+	string buf;
+	int i=0;
+	stringstream ss(str); // Insert the string into a stream
+	while (ss >> buf)
 	{
-		std::cout << "Solutes in use, not possible to add or remove solutes" << std::endl;
+		m_Solutes.push_back(solute(i++,buf));
 	}
-	InUse=true;
-}
-cmf::water::Solute& cmf::water::Solute::operator=( const Solute& copy )
-{
-	Name=copy.Name;
-	Uptake=copy.Uptake;
-	Unit=copy.Unit;
-	m_Id=copy.Id;
-	return *this;
 }
 
-const cmf::water::Solute& cmf::water::Solute::create( const std::string& name,const std::string& unit/*=""*/,double uptake/*=1*/ )
+const cmf::water::solute& cmf::water::solute_vector::operator[]( int position ) const
 {
-	return Solutes::all().add(name,unit,uptake);
-}
-void cmf::water::WaterQuality::clear()
-{
-	for(Concentrations::iterator it = conc.begin(); it != conc.end(); ++it)
-		*it=0;
+	return m_Solutes.at(position<0 ? position + size() : position);
 }
 
+real cmf::water::SoluteTimeseries::conc( cmf::math::Time t,const cmf::water::solute& solute ) const
+{
+	if (conc_ts.size()<=solute.Id || conc_ts[solute.Id].is_empty())
+		return 0.0;
+	else
+		return conc_ts[solute.Id][t];
+}

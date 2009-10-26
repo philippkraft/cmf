@@ -7,7 +7,7 @@
 #include <string>
 #include <vector>
 #include <tr1/memory>
-#include "../math/numVector.h"
+#include "../math/num_array.h"
 namespace cmf {
 	/// Contains geometric features like point (=location) and raster datasets
 	namespace geometry	{
@@ -98,7 +98,10 @@ namespace cmf {
 			{
 				cmf::geometry::point p1=get_position(),p2=cmp.get_position();
 				double d=p1.distance3DTo(p2);
-				return (p2-p1)/d;
+				if (d<=0) 
+					return cmf::geometry::point();
+				else
+					return (p2-p1)/d;
 			}
 		};
 
@@ -126,7 +129,7 @@ namespace cmf {
 			}
 
 #endif
-			cmf::math::numVector X,Y,Z;
+			cmf::math::num_array X,Y,Z;
 			point_vector(int size) : X(size),Y(size),Z(size)
 			{
 

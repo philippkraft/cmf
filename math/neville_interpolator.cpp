@@ -1,24 +1,24 @@
 #include "neville_interpolator.h"
 cmf::math::NevilleInterpolator::NevilleInterpolator( int NumberOfPoints=2,int VectorSize=1) : m_nValues(NumberOfPoints)
 {
-	m_temp=new numVector[m_nValues];
+	m_temp=new num_array[m_nValues];
 	for (int i = 0; i < m_nValues ; i++)
 	{
 		m_temp[i].resize(VectorSize);
 	}
 }
 
-cmf::math::numVector cmf::math::NevilleInterpolator::Interpolate( const numVector* y[],const Time x[],Time t,int n )
+cmf::math::num_array cmf::math::NevilleInterpolator::Interpolate( const num_array* y[],const Time x[],Time t,int n )
 {
 	// Create new vector
-	numVector _result((*y[0]).size());
+	num_array _result((*y[0]).size());
 	// Copy values in the new vector
 	Interpolate(y,x,t,n,_result);
 	// Return the new vector
 	return _result;
 }
 
-void cmf::math::NevilleInterpolator::Interpolate( const numVector* y[],const Time x[],Time t,int n,numVector& _result )
+void cmf::math::NevilleInterpolator::Interpolate( const num_array* y[],const Time x[],Time t,int n,num_array& _result )
 {
 	// Look if the position t equals one of the known values
 	for (int i = 0; i < n ; i++)
@@ -36,7 +36,7 @@ void cmf::math::NevilleInterpolator::Interpolate( const numVector* y[],const Tim
 	{
 		delete[] m_temp;
 		m_nValues=n;
-		m_temp=new numVector[m_nValues];
+		m_temp=new num_array[m_nValues];
 	}
 
 	// Copy the y values to the temporary vectors

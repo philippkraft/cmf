@@ -12,7 +12,7 @@ namespace cmf {
 		class ExplicitEuler_variable : public Integrator
 		{
 		private:
-			numVector 
+			num_array 
 				dxdt,
 				compare,
 				oldStates;

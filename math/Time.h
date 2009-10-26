@@ -151,7 +151,7 @@ namespace cmf {
 			/// Time in milliseconds
 			long long AsMilliseconds() const {return m_time_in_ms;}
 			Date AsDate() const;
-			std::string ToString(char seperator=':');
+			std::string to_string(char seperator=':');
 			bool is_not_0() const {return m_time_in_ms!=0;}
 			double DOY() const;
 			//@}
@@ -268,7 +268,7 @@ namespace cmf {
 			}
 
 			/// Returns a string representing the date
-			std::string ToString();
+			std::string to_string();
 		};
 		const Time ms=Time::Milliseconds();   ///< 1 milli second
 		const Time sec=Time::Seconds();       ///< 1 second

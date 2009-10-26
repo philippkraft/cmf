@@ -1,7 +1,7 @@
 #ifndef algorithm_h__
 #define algorithm_h__
 #include "cell.h"
-#include "../math/numVector.h"
+#include "../math/num_array.h"
 #include "../Atmosphere/Meteorology.h"
 #include "../Geometry/geometry.h"
 namespace cmf {

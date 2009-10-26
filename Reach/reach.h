@@ -1,8 +1,7 @@
 #ifndef reach_h__
 #define reach_h__
-#include "../water/FluxConnection.h"
+#include "../water/flux_connection.h"
 #include "../water/WaterStorage.h"
-#include "VolumeHeightRelation.h"
 #include "ReachType.h"
 #include "../math/real.h"
 #include "../Upslope/cell.h"
@@ -10,115 +9,157 @@
 #include <queue>
 
 namespace cmf {
+	class project;
+
 	namespace river {
-		class ReachIterator;
-		/// A combination of a open water storage with channel base geometry and a cell
-		class Reach
+		class Reach;
+		typedef std::tr1::shared_ptr<Reach> Reach_ptr;
+		/// A reach is a specialization of an open water storage.
+		///
+		/// The OpenWaterStorage attributes and methods are extended by topological features, for the creation 
+		/// of a network of reaches.
+		class Reach : public OpenWaterStorage
 		{
 		private:
-			friend class cmf::upslope::Cell;
-			std::auto_ptr<cmf::river::ReachType> channel_shape;
-			std::vector<Reach*> upstream;
-			bool add_upstream(Reach * r);
-			bool remove_upstream(Reach* r);
-			cmf::river::OpenWaterStorage * water;
-			cmf::water::FluxNode* outlet;
-			Reach * downstream;
-			cmf::upslope::Cell* cell;
-			/// Creates a new reach object, by adding an OpenWaterStorage to the cell. Connects the surfacewater of the reach automatically with the river
-			Reach(cmf::upslope::Cell& Cell,real Length,cmf::river::ReachType* rt,cmf::river::OpenWaterStorage* waterstorage,real depth,real width);
-		public:
-			void set_downstream(Reach* downstream_reach);
-			void set_outlet(cmf::water::FluxNode& outlet);
-			void set_dead_end() {set_downstream(0);}
-			/// Returns the cell this reach is related to
-			/// Gets the water storage of the cell
-			cmf::river::OpenWaterStorage& get_water() {return *water;}
-			cmf::upslope::Cell& get_cell() {return *cell;}
-			/// Holds the length of the reach
-			real length;
-			real get_depth() const;
-			void set_depth(real newdepth);
-			/// Returns the reaches this one is connected to. The vector is sorted by height
-			Reach& get_upstream(int index)
-			{
-				return *upstream.at(index<0 ? upstream.size()+index : index);
-			}
-			int upstream_count() const {return int(upstream.size());}
-			cmf::water::FluxNode* get_outlet() const {return outlet;}
-			Reach* get_downstream() const { return downstream;}
-			Reach* get_root() 
-			{
-				if (downstream)
-					return downstream->get_root();
-				else
-					return this;
-			}
-			bool operator<(const cmf::river::Reach& cmp) const;
-			bool operator==(const cmf::river::Reach& cmp) const;
-			bool operator!=(const cmf::river::Reach& cmp) const;
-		};
+			friend class project;
 
+			/// Creates a reach
+			Reach(const cmf::project& _project,const IChannel& shape, bool diffusive=false)
+				: OpenWaterStorage(_project,shape), m_diffusive(diffusive)
+			{
+
+			}
+
+			// Typedefs using weak pointers
+			typedef std::tr1::weak_ptr<Reach> weak_reach_ptr;
+			typedef std::vector<weak_reach_ptr> reach_vector;
+
+			weak_reach_ptr weak_this;
+			// The upstream reaches
+			reach_vector m_upstream;
+
+			// The downstream reach
+			weak_reach_ptr m_downstream;
+			Channel m_shape;
+
+			// A private type to store the attributes of the relationship to cells
+			struct cell_relation {
+				bool soil_cut; // If true, the soil is cutted by the reach with a depth of cell.z - this->Location.z
+				real distance; // Avg. distance from cell to reach
+				real width;    // Width of the relation
+				cell_relation(bool _soil_cut=false,real _dist=-10.0, real _width=0.0) : soil_cut(_soil_cut),distance(_dist),width(_width) {}
+				operator bool() const {return this->distance>0;}
+			};
+			
+			// typedef for relation map
+			typedef std::map<cmf::upslope::Cell*, cell_relation> cell_map;
+			
+			// The cell/reach relation map
+			cell_map m_cells;
+			// adds an upstream reach (only called by set_downstream)
+			bool add_upstream(Reach_ptr r);
+			// Removes an upstream reach (only called by set_downstream and the destructor)
+			bool remove_upstream(const Reach* r);
+			// Returns the type of relation to a soil
+			cell_relation intersects(cmf::upslope::Cell* cell) const
+			{
+				cell_map::const_iterator it=m_cells.find(cell);
+				return it!=m_cells.end() ? it->second : cell_relation();
+			}
+			bool m_diffusive;
+
+		public:
+			/// Returns the channel shape
+			const IChannel& get_height_function() const;
+			/// Sets the channel shape
+			void set_height_function(const IChannel& val) {m_shape=val;}
+			/// Returns the length of the reach
+			real get_length() const
+			{
+				return get_height_function().length;
+			}
+
+			/// Connects the reach to an outlet, e.g. a boundary condition
+			void set_outlet(cmf::water::flux_node::ptr outlet);
+			void set_dead_end();
+			/// Connects the reach to another one downstream
+			void set_downstream(Reach_ptr new_downstream);
+			/// Returns the reach downstream of this (or null if there is no reach downstream)
+			Reach_ptr get_downstream() const;
+			/// Returns the number of reaches upstream of this
+			int upstream_count() const {return int(m_upstream.size());}
+			/// Returns a reach upstream of this
+			Reach_ptr get_upstream(int index) const;
+			/// Returns the cells connected with this
+			cmf::upslope::cell_vector get_cells() const;
+			/// Connects the surfacewater of a cell with this reach
+			/// @param cell The cell with the surface water to be connected with this reach
+			/// @param soil_cut True, if this reach might have inflow through the bank
+			/// @param distance The average distance from cell to this reach
+			/// @param width The flow width from cell to this reach
+			void add_cell(cmf::upslope::Cell* cell, bool soil_cut, real distance,real width);
+			/// True if bank flow is possible
+			bool cuts_soil_of(cmf::upslope::Cell* cell) const
+			{
+				return intersects(cell).soil_cut;
+			}
+			/// The average distance from cell to this reach
+			real get_distance_to(cmf::upslope::Cell* cell) const {
+				return intersects(cell).distance;
+			}
+			/// The bank length in the cell
+			real get_bank_length_with(cmf::upslope::Cell* cell) const {
+				return intersects(cell).width;
+			}
+			bool get_diffusive() const {return m_diffusive;}
+			/// Sets all Manning kind connections to either diffusive or kinematic
+			void set_diffusive(bool use_diffusive_wave);
+			/// Returns the reach most downstream from this reach			
+			Reach_ptr get_root();
+			
+			virtual ~Reach();
+			
+		};
 
 
 
 		/// An iterator over every upstream reach from a start reach. Implements both the Python and the C++ iterator interface
+		/// Usage C++:
+		/// @code
+		/// Reach_ptr r;
+		/// for (ReachIterator it(r);it.valid();++it) { ... }
+		/// @endcode
+		/// Usage Python:
+		/// @code
+		/// for reach in ReachIterator(r):
+		///     pass
+		/// @endcode
 		class ReachIterator {
 		private:
-			typedef std::pair<Reach*,double> queue_value;
+			typedef std::pair<Reach_ptr,double> queue_value;
 			std::queue<queue_value> reach_queue;
 			queue_value current;
 		public:
 			/// Returns the next reach in the upstream queue. 
-			Reach* next()
-			{
-				if (reach_queue.empty()) throw std::out_of_range("No reaches in queue");
-				for (int i = 0; i < reach_queue.front().first->upstream_count() ; ++i)
-				{
-					double nextpos=reach_queue.front().second+reach_queue.front().first->length;
-					queue_value next_item=queue_value(&reach_queue.front().first->get_upstream(i),nextpos);
-					reach_queue.push(next_item);
-				}
-				current=reach_queue.front();
-				reach_queue.pop();
-				return current.first;
-			}
+			Reach_ptr next();
 			/// Returns true, if reaches are left to iterate over
-			bool valid() const
-			{
-				return !reach_queue.empty();
-			}
+			bool valid() const;
 			/// Creates a ReachIterator from a first reach.
-			ReachIterator(Reach* first) 
-			{
-				reach_queue.push(queue_value(first,0.0));
-				current=reach_queue.front();
-			}
+			ReachIterator(Reach_ptr first);
 			
 #ifndef SWIG
-			Reach* operator->() const
-			{
-				return current.first;
-			}
-			void operator++()
-			{
-				next();
-			}
+			Reach_ptr operator->() const;
+			void operator++();
 #endif
 			/// Returns the current reach
-			Reach* reach() const
-			{
-				return current.first;
-			}
-			double position() const
-			{
-				return current.second;
-			}
+			Reach_ptr reach() const;
+			/// Returns the distance to the root reach
+			double position() const;
 		};
 
 		/// Ensures that rivers have a monotone downward flow direction. 
 		/// Reaches with a bottom higher than any upstream reach are lowered to the minimum height of any (possibly distant) upstream reach.
-		double make_river_gap(Reach * root_reach);
+		double make_river_gap(Reach_ptr root_reach);
 
 	}
 }

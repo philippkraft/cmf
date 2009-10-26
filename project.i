@@ -1,4 +1,8 @@
 // Project
+%{
+	#include "project.h"
+%}
+
 %rename(connect_cells_with_flux) cmf::connect_cells_with_flux;
 %attribute2(cmf::project,cmf::upslope::cell_vector,cells,get_cells);
 

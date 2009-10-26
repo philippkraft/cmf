@@ -176,7 +176,6 @@ void cmf::upslope::BrooksCoreyRetentionCurve::Set_Saturated_pF_curve_tail_parame
 
 real cmf::upslope::VanGenuchtenMualem::Wetness( real suction) const
 {
-	real m=1-1/n;
 	real h=-100 * suction;
 	real w0=0.99;
 	real p0=MatricPotential(w0);
@@ -197,7 +196,7 @@ real cmf::upslope::VanGenuchtenMualem::MatricPotential( real w ) const
 	if (w<=w0)
 	{
 		// inverse m and inverse n
-		real mi=1/(1-1/n),ni=1/n;
+		real mi=1/m,ni=1/n;
 		return -0.01*pow(1-pow(w,mi),ni)/(alpha*pow(w,mi*ni));
 	}
 	else
@@ -212,7 +211,6 @@ real cmf::upslope::VanGenuchtenMualem::MatricPotential( real w ) const
 real cmf::upslope::VanGenuchtenMualem::K( real wetness,real depth ) const
 {
 	if (wetness>=1) return Ksat*exp(-(wetness-1)*10);
-	real m=1-1/n;
 	return Ksat*minimum(sqrt(wetness)*square(1-pow(1-pow(wetness,1/m),m)),1);
 }
 
@@ -239,5 +237,88 @@ real cmf::upslope::VanGenuchtenMualem::FillHeight( real lowerDepth,real Area,rea
 cmf::upslope::VanGenuchtenMualem* cmf::upslope::VanGenuchtenMualem::copy() const
 {
 	return new VanGenuchtenMualem(*this);
+}
+
+cmf::upslope::VanGenuchtenMualem::VanGenuchtenMualem( real _Ksat, real _phi,real _alpha, real _n, real _m/*=-1*/ ) 
+: n(_n),alpha(_alpha),Phi(_phi),Ksat(_Ksat), m(_m)
+{
+	if (m<0) 
+		m=1-1/n;
+
+}
+
+cmf::upslope::VanGenuchtenMualem::VanGenuchtenMualem()
+: n(1.211),alpha(0.2178),Phi(0.5),Ksat(15)
+{
+
+}
+
+
+
+
+
+/************************************************************************/
+/* Linear Retention curve                                                                     */
+/************************************************************************/
+
+real cmf::upslope::LinearRetention::K( real wetness,real depth ) const
+{
+	wetness=minmax(wetness,0,1);
+	real _Ksat=Ksat*pow(1-Ksat_decay,depth);
+	return _Ksat*pow((wetness - residual_wetness) / (1 - residual_wetness),beta);
+}
+
+real cmf::upslope::LinearRetention::Porosity( real depth ) const
+{
+	return porosity*pow(1-porosity_decay,depth);
+}
+
+
+real cmf::upslope::LinearRetention::VoidVolume( real upperDepth,real lowerDepth,real Area ) const
+{
+	if (porosity_decay==0)
+		return (lowerDepth-upperDepth)*Area*Porosity(upperDepth);
+	else
+	{
+		real C=-log(1-porosity_decay); // integration constant
+		return (Porosity(upperDepth) - Porosity(lowerDepth)) * Area/C;
+	}
+}
+
+real cmf::upslope::LinearRetention::FillHeight( real lowerDepth,real Area,real Volume ) const
+{
+	if (porosity_decay==0) 
+		return Volume/(Porosity(lowerDepth)*Area);
+	else
+	{
+		real V_to_lower=VoidVolume(0,lowerDepth,Area);	 // Volume from surface to lower depth
+		real V_to_upper=V_to_lower - Volume;						 // Volume from surface to unknown upper depth
+		real C=log(1-porosity_decay);									 // integration constant
+		// The function here is the VoidVolume function solved for depth
+		real d_upper=(log(C*V_to_upper+porosity)-log(porosity))/C;	// upper depth
+		return lowerDepth-d_upper; // return fill height
+
+	}
+}
+
+real cmf::upslope::LinearRetention::Transmissivity( real upperDepth,real lowerDepth,real wetness) const
+{
+	if (upperDepth>=lowerDepth) return 0.0;
+	if (Ksat_decay==0)
+		return (lowerDepth-upperDepth)*K(wetness,lowerDepth);
+	else
+	{
+		real C=-log(1-Ksat_decay);	// integration constant
+		return (K(wetness,upperDepth) - K(wetness,lowerDepth))/C;
+	}
+}
+
+real cmf::upslope::LinearRetention::Wetness( real suction ) const
+{
+	return 1 + suction * (1 - residual_wetness)/thickness;
+}
+real cmf::upslope::LinearRetention::MatricPotential( real wetness ) const
+{
+	return -thickness * (1-(wetness - residual_wetness)/(1 - residual_wetness));
 }
 
