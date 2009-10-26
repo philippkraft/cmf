@@ -17,11 +17,11 @@ namespace cmf {
 			///@name Internal data storages
 			//@{
 			/// Array to store the new states
-			numVector compareStates;
+			num_array compareStates;
 			///Vector of the state variable in the beginning of the integration
-			numVector oldStates;
+			num_array oldStates;
 			///Vector of derivatives
-			numVector dxdt;
+			num_array dxdt;
 			//@}
 
 

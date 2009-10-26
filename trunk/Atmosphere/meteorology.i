@@ -46,4 +46,10 @@ SWIG_SHARED_PTR(MeteoStation,cmf::atmosphere::MeteoStation)
         return "cmf.MeteoStation(%s,lat=%0.5g,lon=%0.5g,z=%6.1f)" % (self.Name,self.Latitude,self.Longitude,self.z)
     }
 }
+%extent cmf::water::RainCloud {
+	std::string __repr__()	{
+		return $self->to_string();
+	}
+}
+
 %include "Precipitation.h"

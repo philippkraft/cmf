@@ -66,7 +66,7 @@ cmf::math::Date cmf::math::Time::AsDate() const
 
 }
 
-std::string cmf::math::Time::ToString( char seperator/*=':'*/ )
+std::string cmf::math::Time::to_string( char seperator/*=':'*/ )
 {
 	std::stringstream str;
 	str << (*this);
@@ -78,7 +78,7 @@ double cmf::math::Time::DOY() const
 	return AsDate().DOY();
 }
 
-std::string cmf::math::Date::ToString()
+std::string cmf::math::Date::to_string()
 {
 	std::stringstream str;
 	str << (*this);

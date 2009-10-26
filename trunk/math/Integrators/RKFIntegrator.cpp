@@ -8,7 +8,7 @@ Integrator(states,epsilon,tStepMin),oldStates(m_States.size())
 {
 	
 	for (int i = 0; i < 6 ; i++)
-		kValues[i]= numVector(count(),0);
+		kValues[i]= num_array(count(),0);
 }
 cmf::math::RKFIntegrator::RKFIntegrator( real epsilon/*=1e-9*/,cmf::math::Time tStepMin/*=10.0/(3600.0*24.0)*/ ) : 
 Integrator(epsilon,tStepMin)

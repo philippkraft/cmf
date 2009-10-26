@@ -132,7 +132,7 @@ class shapefile:
             else:
                 obj=shapely.geometry.Polygon(coords[0],coords[1:])
         else :
-            raise ValueError( " Shape type %i not implemented!" % type)
+            raise ValueError( "Shape file object #%i: shape type %i not implemented!" % (number,type))
                
         return number,obj 
     def __init__(self,filename):
@@ -149,6 +149,7 @@ class shapefile:
                 shapes[number]=obj
             except ValueError,e:
                 print e
+                print "Last imported object number:",number
                 break
             except Exception,e:
                 print "file pos=%i, file size=%i" % (f.tell(),self.file_size) 

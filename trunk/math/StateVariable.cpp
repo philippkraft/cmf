@@ -1,12 +1,12 @@
 #include "StateVariable.h"
-#include "numVector.h"
+#include "num_array.h"
 #include <cmath>
 #ifdef _OPENMP
 #include <omp.h>
 #endif
 
 
-void cmf::math::StateVariableVector::CopyStates( numVector & destination ) const
+void cmf::math::StateVariableVector::CopyStates( num_array & destination ) const
 {
 	if (destination.size()!=(int)size())
 		destination.resize(size());
@@ -47,7 +47,7 @@ void cmf::math::StateVariableVector::CopyStates( real * destination ) const
 
 	}
 }
-void cmf::math::StateVariableVector::CopyDerivs( Time time,numVector & destination,real factor ) const
+void cmf::math::StateVariableVector::CopyDerivs( Time time,num_array & destination,real factor ) const
 {
 	if (destination.size()!=(int)size())
 		destination.resize(size());
@@ -125,7 +125,7 @@ void cmf::math::StateVariableVector::CopyDerivs( Time time,real * destination,re
 	}
 
 }
-void cmf::math::StateVariableVector::SetStates(const numVector & newStates )
+void cmf::math::StateVariableVector::SetStates(const num_array & newStates )
 {
 	if (use_OpenMP)
 	{
@@ -164,7 +164,7 @@ void cmf::math::StateVariableVector::SetStates( real * newStates )
 	}
 }
 
-void cmf::math::StateVariableVector::AddValuesToStates(const numVector& operands)
+void cmf::math::StateVariableVector::AddValuesToStates(const num_array& operands)
 {
 	if (use_OpenMP)
 	{

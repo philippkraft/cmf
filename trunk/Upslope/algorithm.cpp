@@ -1,6 +1,6 @@
 #include "algorithm.h"
 #include "Topology.h"
-#include "SoilWaterStorage.h"
+#include "SoilLayer.h"
 #include "../Atmosphere/Precipitation.h"
 
 cmf::upslope::Cell* cmf::upslope::find_cell(cmf::upslope::cells_ref cells,cmf::geometry::point p,double max_dist )
@@ -77,25 +77,19 @@ cmf::upslope::cell_vector cmf::upslope::get_boundary_cells(cmf::upslope::cells_r
 void cmf::upslope::connect_cells_with_flux(cmf::upslope::cells_ref cells, const cmf::upslope::CellConnector& connect,int start_at_layer)
 {
 	cmf::upslope::cell_set cs(cells.begin(),cells.end());
+	int i=0;
 	while (cs.size())
 	{
 		cmf::upslope::Cell& cell=**cs.begin();
 		cs.erase(&cell);
 		for (cmf::upslope::NeighborIterator it(cell);it.valid();++it)
 			if (cs.find(&it.cell())!=cs.end())
-				try
-				{
-					connect(cell,it.cell(),start_at_layer);
-				}
-				catch (std::runtime_error& e)
-				{
-					std::cerr << e.what() << std::endl;	
-				}
+				connect(cell,it.cell(),start_at_layer);
 	}
 }
-void insert_connections_in_set(std::set<cmf::water::FluxConnection*>& cset,cmf::water::FluxNode* node)
+void insert_connections_in_set(cmf::water::connection_set& cset,cmf::water::flux_node::ptr node)
 {
-	cmf::water::connection_vector cons=node->Connections();
+	cmf::water::connection_vector cons=node->get_connections();
 	for(cmf::water::connection_vector::const_iterator it = cons.begin(); it != cons.end(); ++it)
 	{
 		cset.insert(*it);
@@ -104,20 +98,20 @@ void insert_connections_in_set(std::set<cmf::water::FluxConnection*>& cset,cmf::
 cmf::water::connection_set cmf::upslope::get_connections(cmf::upslope::cells_ref cells)
 {
 	using namespace cmf::water;
-	std::set<FluxConnection*> cset;
+	cmf::water::connection_set cset;
 	//insert_connections_in_set(cset,&Rainfall());
 	for(cmf::upslope::cell_vector::const_iterator it = cells.begin(); it != cells.end(); ++it)
 	{
 		cmf::upslope::Cell& c=**it;
 		//insert_connections_in_set(cset,&c.Evaporation());
-		insert_connections_in_set(cset,&c.get_surfacewater());
+		insert_connections_in_set(cset,c.get_surfacewater());
 		for (int i = 0; i < c.storage_count(); ++i)
 		{
-			insert_connections_in_set(cset,&c.get_storage(i));
+			insert_connections_in_set(cset,c.get_storage(i));
 		}
 		for (int i = 0; i < c.layer_count() ; ++i)
 		{
-			insert_connections_in_set(cset,&c.get_layer(i));
+			insert_connections_in_set(cset,c.get_layer(i));
 		}		 
 	}
 	return cset;
@@ -210,7 +204,7 @@ void cmf::upslope::set_precipitation( cmf::upslope::cells_ref cells,cmf::math::t
 	for(cmf::upslope::cell_vector::const_iterator it = cells.begin(); it != cells.end(); ++it)
 	{
 		cmf::upslope::Cell& c=**it;
-		c.get_rainfall().flux=data_in_mm_day;
+		c.get_rainfall()->flux=data_in_mm_day;
 	}
 	
 }
@@ -243,9 +237,9 @@ cmf::geometry::point_vector cmf::upslope::cell_flux_directions( cells_ref cells,
 		cmf::geometry::point p;
 		cmf::upslope::Cell & c=*cells[i];
 		for (int j = 0; j < c.storage_count() ; ++j)
-			p+=c.get_storage(j).get_3d_flux(t);
+			p+=c.get_storage(j)->get_3d_flux(t);
 		for (int j = 0; j < c.layer_count() ; ++j)
-				p+=c.get_layer(j).get_3d_flux(t);
+				p+=c.get_layer(j)->get_3d_flux(t);
 		res.set(i,p);
 	}
 	return res;

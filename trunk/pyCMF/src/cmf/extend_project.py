@@ -85,13 +85,5 @@ def connect_cells_with_flux(cells,connection,start_at_layer=0):
         cmf.connect_cells_with_flux(list(cells),connection.cell_connector,start_at_layer)
     else:
         raise TypeError("flux_connection does not implement the cell_connector protocol")        
-def sum_flux(source_storages,target_storages,t):
-    """ Returns the sum of fluxes from a sequence (or generator) of sources to a sequence of target storages
-    A positive return value indicates flux from source to target
-    """
-    sum=0.0
-    for source in source_storages:
-        for f,target in source.fluxes(t):
-            if target in target_storages:
-                sum-=f
-    return sum 
+
+        

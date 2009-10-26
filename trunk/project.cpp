@@ -1,5 +1,5 @@
 #include "project.h"
-#include "upslope/SoilWaterStorage.h"
+#include "upslope/SoilLayer.h"
 #include "Upslope/Topology.h"
 #include "Upslope/algorithm.h"
 #include <set>
@@ -7,7 +7,7 @@
 #include <omp.h>
 #endif
 #include <algorithm>
-cmf::project::project() :	debug(false)
+cmf::project::project(std::string solutenames) :	debug(false), solutes(solutenames)
 {
 }
 
@@ -18,4 +18,12 @@ cmf::project::~project()
 	m_cells.clear();
 }
 
+cmf::river::Reach_ptr cmf::project::NewReach( cmf::river::Channel shape, bool diffusive/*=false*/ )
+{
+	using namespace cmf::river;
+	Reach_ptr R (new Reach(*this,shape,diffusive));
+	R->weak_this = R;
+	reaches.push_back(R);
+	return reaches.back();
+}
 

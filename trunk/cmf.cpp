@@ -19,7 +19,7 @@
 #include "math/Integrators/MultiIntegrator.h"
 #include "Upslope/Soil/RetentionCurve.h"
 #include "Atmosphere/Precipitation.h"
-#include "water/FluxConnection.h"
+#include "water/flux_connection.h"
 #include "Upslope/connections/subsurfacefluxes.h"
 #include "Upslope/connections/surfacefluxes.h"
 #include "Upslope/connections/infiltration.h"
@@ -51,59 +51,64 @@ int main(int argc, char* argv[])
 		using namespace cmf::upslope::ET;
 		using namespace cmf::river;
 		
-		const Solute& X=Solutes::all().add("X");
-		project p;
-
+		
+		project p="X Y";
+		solute X=p.solutes[0];
+		solute Y=p.solutes[1];
 		timeseries ts(0*day,20*day,0);
 		for (int i = 0; i < 100 ; ++i) ts.add(10 *((i+1) % 2));
-		NeumannBoundary nbc(p,ts);
 		p.debug=1;
-		VanGenuchtenMualem vgm(2.0,0.04,0.5,1);
+		Reach_ptr r=p.NewReach(Channel('R',10));
+		NeumannBoundary::ptr nbc=NeumannBoundary::create(p,ts);
+		VanGenuchtenMualem vgm(1.0,0.5,0.04,2);
 		Cell* last_c=0;
-		for (int i = 0; i <10; ++i)
+		for (int i = 0; i <2; ++i)
 		{
 			Cell* c=p.NewCell(i,0,i*0.1,1);
-			c->add_variable_layer_pair(1,vgm);
-			
-			VariableLayerSaturated* sat= dynamic_cast<VariableLayerSaturated*>(&c->get_layer(1));
-			sat->set_state(0.147);
-			sat->UpperLayer().set_state(0.253);
-			new PIHMpercolation(sat->UpperLayer(),*sat,1);
-
+			for (int i = 1; i < 11 ; ++i)
+			{
+				c->add_layer(i*0.1,vgm);
+			}
+			Richards::use_for_cell(*c);
+			c->set_saturated_depth(0.5);
 			//c->get_layer(0).set_wetness(0.5);
 			if (last_c)
 			{
 				c->get_topology().AddNeighbor(*last_c,1);
 				last_c->get_topology().AddNeighbor(*c,1);
 			}
+			PenmanMonteithET::use_for_cell(*c);
 			last_c=c;
 		}
-		connect_cells_with_flux(p.get_cells(),PIHMlateral::cell_connector);
+		p.get_cell(-1).get_layer(-1)->conc(X,100);
+		p.get_cell(-1).get_rainfall()->flux[0]=10.0;
+		//p.get_cell(-1).get_rainfall().concentration[Y]=10.0;
+		connect_cells_with_flux(p.get_cells(),Richards_lateral::cell_connector);
 		//nbc.connect_to(p.get_cell(-1).get_layer(0));
- 		ImplicitEuler water_integ(1e-6);// water_integ.LinearSolver=0;
+ 		CVodeIntegrator water_integ(1e-6);// water_integ.LinearSolver=0;
+		water_integ.preconditioner='R';
 		ImplicitEuler solute_integ(1e-6);
 		SoluteWaterIntegrator integ(water_integ,solute_integ,p);
-		p.get_cell(-1).get_layer(0).conc(X,1e2);
 		//integ.MaxOrder=1;
 		clock_t t=clock();
 		real overflow=0.0,perc=0.0;
 		int i=0;
 		//cout << integ.ModelTime() << " dt:" << integ.TimeStep() << " perc=" << perc << " overflow=" << overflow << " s_pot=" << sat->get_potential() << " u_pot=" << unsat->get_potential() <<  endl;
 		cout.precision(3);
-		while (integ.ModelTime() < day*2)
+		while (integ.ModelTime() < day*20)
 		{
-			integ.IntegrateUntil(integ.ModelTime()+math::min*30);
+			integ.IntegrateUntil(integ.ModelTime()+math::day);
 			cout << integ.ModelTime();
 			for (int i = 0; i < p.size() ; ++i)
 			{
 				if (i)
-					cout << " q" << i << i-1 << "=" << p.get_cell(i).get_layer(1).flux_to(p.get_cell(i-1).get_layer(1),integ.ModelTime());
-				cout << " q0" << i << "=" << p.get_cell(i).get_layer(0).flux_to(p.get_cell(i).get_layer(1),integ.ModelTime());
-				cout << "(" << p.get_cell(i).get_layer(0).get_state() << "," << p.get_cell(i).get_layer(1).get_state() << ")";
-				//cout << "("<< p.get_cell(i).get_layer(1).get_thickness() << "," << p.get_cell(i).get_layer(1).conc(X) << ")";
+					cout << " q" << i << i-1 << "=" << p.get_cell(i).get_layer(-1)->flux_to(*p.get_cell(i-1).get_layer(-1),integ.ModelTime());
+				//cout << "(" << p.get_cell(i).get_layer(0).get_state() << "," << p.get_cell(i).get_layer(-1).get_state() << ")";
+				cout << "(X" << p.get_cell(i).get_layer(-1)->conc(X)<< ",Y"  << p.get_cell(i).get_layer(-1)->conc(Y) << ")";
 			}
 			cout << endl;
 		}
+		p.get_cell(0).remove_last_layer();
 
 	}
 #endif //Not def _DLL

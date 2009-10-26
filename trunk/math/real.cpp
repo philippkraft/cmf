@@ -69,10 +69,13 @@ real hyperbola::rounded_linear_inverse(real y,real ymax,real slope,real roundnes
 		y0=ymax-K*slope-y_offset,
 		x0=y0/slope;
 	if (y*sign(slope)<=y0*sign(slope))
-		return (y-y_offset)/slope;
+		return -(y_offset-y)/slope;
 	else
-	  return (y*K)/(ymax+y_offset-y);
-
+	  return 
+			-((y_offset+y0-y-slope*x0)*K -x0*y_offset-x0*y0+x0*y )
+			/
+			(slope*K+y_offset+y0-y);
+		
 }
 real hyperbola::through_point( real x,real x0,real y0,real slope0,real x1,real y1 )
 {

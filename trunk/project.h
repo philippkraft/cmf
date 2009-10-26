@@ -7,7 +7,9 @@
 #include "Atmosphere/Precipitation.h"
 #include "Geometry/geometry.h"
 #include "Upslope/cell.h"
+#include "Reach/reach.h"
 #include "Upslope/Soil/RetentionCurve.h"
+#include "water/collections.h"
 /// The main namespace of the model framework. Contains the other namespaces and the project class
 namespace cmf {
 	class bc_iterator;
@@ -29,6 +31,7 @@ namespace cmf {
 			}
 		}
 	public:
+		const cmf::water::solute_vector solutes;
 		cmf::atmosphere::MeteoStationList meteo_stations;
 		cmf::water::node_list outlets;
 		const upslope::cell_vector& get_cells() const {return m_cells;}
@@ -40,7 +43,7 @@ namespace cmf {
 		/// If set to true, creation and deletion of objects is logged
 		bool debug;
 		/// Creates a new project
-		project();
+		project(std::string solute_names="");
 		~project();
 		/// Creates a new cell
 		cmf::upslope::Cell* NewCell(double x,double y,double z, double Area)
@@ -55,45 +58,10 @@ namespace cmf {
 			return NewCell(p.x,p.y,p.z,Area);
 		}
 
+		std::vector<cmf::river::Reach_ptr> reaches;
+		cmf::river::Reach_ptr NewReach(cmf::river::Channel shape, bool diffusive=false);
+
 	};
-	/// A class to iterate through the neighbors of a cell (const). Not needed from the Python side, use the generator cell.neighbors instead.
-// 	class bc_iterator
-// 	{
-// 	private:
-// 		typedef project::boundary_map::iterator map_iterator;
-// 		map_iterator current,end;
-// 
-// 	public:
-// #ifndef SWIG
-// 		/// Returns the current cell (dereference)
-// 		cmf::water::FluxNode& operator*() {
-// 			return *current->second;}
-// 		cmf::water::FluxNode* operator->() {
-// 			return current->second.get();}
-// 		bc_iterator& operator++(){
-// 			this->next();
-// 			return *this;
-// 		}
-// #endif
-// 		bool operator==(const bc_iterator& cmp) const {return current==cmp.current;}
-// 		bool operator!=(const bc_iterator& cmp) const {return current!=cmp.current;}
-// 		bc_iterator(cmf::project& p) : current(p.m_boundaries.begin()),end(p.m_boundaries.end()) {}
-// 		
-// 
-// 		cmf::water::FluxNode& node() {
-// 			return *current->second;}
-// 		bool valid() const
-// 		{
-// 			return current!=end;
-// 		}
-// 		/// Points the iterator to the next neighbor
-// 		cmf::water::FluxNode& next(){
-// 			if (current==end) throw std::out_of_range("No neighbors left");
-// 			cmf::water::FluxNode& res=*current->second;
-// 			++current;
-// 			return res;
-// 		}
-// 	};
 
 	
 }

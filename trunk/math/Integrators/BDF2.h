@@ -24,12 +24,12 @@ namespace cmf {
 			///@name Internal data storages
 			//@{
 			/// Array to store the states for test of convergence
-			numVector compareStates;
+			num_array compareStates;
 			/// Array to store the derivatives
-			numVector dxdt;
+			num_array dxdt;
 
 			///History of the last states
-			numVector pastStatesArray[2];
+			num_array pastStatesArray[2];
 			///Number of steps taken
 			int stepNo;
 			/// Current order of Gear formula
@@ -37,7 +37,7 @@ namespace cmf {
 			/// Gets one of the last states
 			/// @returns   the n<sup>th</sup> state in history
 			/// @param toBack Number of steps back (ranging from 1..4, no runtime check)
-			numVector& pastStates(int toBack=1)
+			num_array& pastStates(int toBack=1)
 			{
 				int pos = (stepNo-toBack) % 2;
 				return pastStatesArray[pos];

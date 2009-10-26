@@ -7,9 +7,9 @@
 #include "Solute.h"
 #include <map>
 #include <vector>
-#include "WaterFlux.h"
 #include "SoluteStorage.h"
-#include "FluxConnection.h"
+#include "flux_node.h"
+#include <tr1/memory>
 
 namespace cmf {
 	namespace water {
@@ -22,63 +22,73 @@ namespace cmf {
 		/// q_f&=& \mbox{Water flux in } \frac{m^3}{day}	\\
 		/// \f}
 		/// The vector fluxes is used used by concentration to get the amount of water mixing.
-		class WaterStorage : public cmf::math::StateVariable,public cmf::math::StateVariableOwner,public cmf::water::FluxNode
+		class WaterStorage : public cmf::math::StateVariable,public cmf::math::StateVariableOwner,public cmf::water::flux_node
 		{
 		private:
-			typedef std::vector<cmf::water::SoluteStorage*> SoluteStorageMap;
+			std::tr1::shared_ptr<WaterStorage> this_;
+			typedef std::vector<std::tr1::shared_ptr<cmf::water::SoluteStorage> > SoluteStorageMap;
 			SoluteStorageMap m_Concentrations;
-			void initializeSoluteStorages();
+			void initializeSoluteStorages(const cmf::water::solute_vector& solutes);
 		public:
+
 			virtual bool is_storage() const {return true;}
 			void AddStateVariables(cmf::math::StateVariableVector& vector);
-			/// creates a water storage (abstract class)
+			/// creates a water storage (abstract class)									o
+			/// @param _project The project the waterstorage belongs to
 			/// @param InitialState Initial water content in m<sup>3</sup>
 			WaterStorage(const cmf::project& _project, double InitialState=0);
-			WaterStorage(const WaterStorage& forcopy);
-			static WaterStorage* FromNode(cmf::water::FluxNode& node)
-			{
-				WaterStorage* result=new WaterStorage(node.project());
-				replace_node(node,*result);
-				return result;
-			}
+			
+			static std::tr1::shared_ptr<WaterStorage> from_node(cmf::water::flux_node::ptr node);
 			/// Returns the water quality of the water storage.
-			SoluteStorage& Solute(const cmf::water::Solute& solute);
-			const SoluteStorage& Solute(const cmf::water::Solute& solute) const {return *m_Concentrations[solute.Id];}
+			SoluteStorage& Solute(const cmf::water::solute& solute);
+			const SoluteStorage& Solute(const cmf::water::solute& solute) const {return *m_Concentrations[solute.Id];}
 			/// Returns the concentration of the given solute
-			real conc(const cmf::water::Solute& solute) const;
+			real conc(const cmf::water::solute& solute) const;
 			/// Returns the current WaterQuality (concentration of all solutes)
-			WaterQuality conc(cmf::math::Time t) const;
+			real conc(cmf::math::Time t,const cmf::water::solute& solute) const
+			{
+				return conc(solute);
+			}
 			/// Sets a new concentration
-			void conc(const cmf::water::Solute& solute,real NewConcetration)
+			void conc(const cmf::water::solute& solute,real NewConcetration)
 			{
 				Solute(solute).set_state(NewConcetration*this->get_state());
 			}
 			/// Returns the volume of water in this storage in m<sup>3</sup>
-			real water() const {
+			real get_volume() const {
 				return get_state();
 			}
 			/// Sets the volume of water in this storage in m<sup>3</sup>
-			void water(real newwatercontent)	{
+			void set_volume(real newwatercontent)	{
 				set_state(newwatercontent);
-			}
-			virtual std::string ToString() const	{
-				return Name;
 			}
 			virtual real Derivate(const cmf::math::Time& time) {
 				return water_balance(time);
 			}
-			///@name Overrides of FluxNode
+			real get_state() const
+			{
+				return cmf::math::StateVariable::get_state();
+			}
+			void set_state(real newState)
+			{
+				cmf::math::StateVariable::set_state(newState);
+			}
+			///@name Overrides of flux_node
 			//@{
 			virtual bool RecalcFluxes(cmf::math::Time t) {return StateIsChanged();}
 			virtual bool is_empty() const {return get_state()<=0;}
-			virtual WaterStorage* copy() const
-			{
-				return new WaterStorage(*this);
-			}
 			//@}
+			static std::tr1::shared_ptr<cmf::water::WaterStorage> cast(std::tr1::shared_ptr<cmf::water::flux_node> node)
+			{		
+				return std::tr1::dynamic_pointer_cast<cmf::water::WaterStorage>(node);
+			}
+			static std::tr1::shared_ptr<cmf::water::WaterStorage> create(const cmf::project& _project, real initial_state=0.0)
+			{
+				return std::tr1::shared_ptr<cmf::water::WaterStorage>(new WaterStorage(_project,initial_state));
+			}
+
 		};
-		cmf::water::WaterStorage* AsWaterStorage(cmf::math::StateVariable * state);
-		cmf::water::WaterStorage* AsWaterStorage(cmf::water::FluxNode* node);
+		typedef std::tr1::shared_ptr<cmf::water::WaterStorage> storage_pointer;
 
 	}
 }

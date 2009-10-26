@@ -152,7 +152,7 @@ namespace cmf {
 		{
 		public:
 			real
-				alpha,n,Ksat,Phi,Psi_full,w_max;
+				alpha,n,Ksat,Phi,Psi_full,m;
 			///\f[ W(\Psi) &=& \left(1+\left(\alpha\,100\frac{cm}{m}\Psi\right)^n\right)^{-m} \f]
 			virtual real Wetness(real suction) const;
 			/// \f[\Psi(W) &=& 0.01 \frac{m}{cm} \frac{{\left(1-{W}^{\frac{1}{m}}\right) }^{\frac{1}{n}}}{\alpha\,{W}^{\frac{1}{m\,n}}}  \f]
@@ -167,61 +167,79 @@ namespace cmf {
 			virtual real Porosity(real depth) const;
 			virtual real FillHeight(real lowerDepth,real Area,real Volume) const;
 			VanGenuchtenMualem* copy() const;
-			VanGenuchtenMualem()
-				: n(3.5),alpha(0.08),Phi(0.5),Ksat(15),Psi_full(-0.1),w_max(1.1) {}
+			VanGenuchtenMualem();
 			/// Creates a van Genuchten-Mualem retention curve
-			/// @param _n Van Genuchten n
-			/// @param _alpha Van Genuchten \f$\alpha\f$ in \f$\frac 1{cm}\f$
-			/// @param _phi Porosity in \f$\frac{m^3 Pores}{m^3 Soil}\f$
 			/// @param _Ksat Saturated conductivity in \f$\frac m{day}\f$
-			VanGenuchtenMualem(real _n,real _alpha,real _phi,real _Ksat)
-				: n(_n),alpha(_alpha),Phi(_phi),Ksat(_Ksat),Psi_full(-0.1),w_max(1.1) {}
+			/// @param _phi Porosity in \f$\frac{m^3 Pores}{m^3 Soil}\f$
+			/// @param _alpha Van Genuchten \f$\alpha\f$ in \f$\frac 1{cm}\f$
+			/// @param _n Van Genuchten n
+			/// @param _m m parameter, if negative m is calculated as \f$ 1-\frac 1 n\f$
+			VanGenuchtenMualem(real _Ksat, real _phi,real _alpha, real _n, real _m=-1);
 
 		};
+
+		/// The linear retention curve provides a simple linear relationship between storage and head
+		/// 
+		/// Head function (head in m, calculated from upper side control volume)
+		/// \f[ h(\theta) = -\Delta z \left( 1 - \frac{\theta - \theta_r}{\Phi - \theta_r} \right) \f]
+		/// Conductivity function
+		/// \f[ K(\theta) = K_{sat}  \left(\frac{\theta - \theta_r}{\theta_s - \theta_r}\right)^\beta	\f]
 		class LinearRetention : public RetentionCurve
 		{
 		public:
-			real Ksat,Phi,thickness;
-			virtual real MatricPotential(real wetness) const
-			{
-				return -thickness*(1-wetness);
-			}
-			virtual real Wetness(real suction) const
-			{
-				if (suction<-thickness) 
-					return 0.0;
-				else 
-					return 1+suction/thickness;
-			}
-			virtual real K(real wetness,real depth) const
-			{
-				return Ksat*wetness;
-			}
-			virtual real VoidVolume(real upperDepth,real lowerDepth,real Area) const
-			{
-				return (lowerDepth-upperDepth)*Area*Phi;
-			}
-			virtual real Transmissivity(real upperDepth,real lowerDepth,real wetness) const
-			{
-				return (lowerDepth-upperDepth)*K(wetness,0.5*(lowerDepth+upperDepth));
-			}
-			virtual real Porosity(real depth) const
-			{
-				return Phi;
-			}
+			real 
+				Ksat, ///< Saturated Conductivity \f$\frac m{day} \f$
+				porosity,  ///< Pore space \f$\Phi \left[ \frac{m^3}{m^3 \mbox{soil}}\right]\f$
+				thickness, ///< Thickness of the layer in m
+				residual_wetness; ///< Residual wetness \f$ \frac{\theta_r}{\Phi}, where K(\theta_r) = 0 \f$
+			real
+				porosity_decay, ///< Depth dependent decay of porosity in fraction/m. 0.1 means a decay of 10% per meter depth
+				Ksat_decay,			///< Depth dependent decay of Ksat in fraction/m. 0.1 means a decay of 10% per meter depth
+				beta;						///< Potential for potential decay of conductivity with water stress
+			/// Returns the potential below upper side of the control volume in m
+			virtual real MatricPotential(real wetness) const;
+			/// Returns the wetness (water content per pore volume) at a given head
+			virtual real Wetness(real suction) const;
+			
+			virtual real K(real wetness,real depth) const;
+			virtual real VoidVolume(real upperDepth,real lowerDepth,real Area) const;
+			virtual real Transmissivity(real upperDepth,real lowerDepth,real wetness) const;
+			virtual real Porosity(real depth) const;
 
-			virtual real FillHeight(real lowerDepth,real Area,real Volume) const
-			{
-				return Volume/(Area*Phi);
-			}
+			virtual real FillHeight(real lowerDepth,real Area,real Volume) const;
+
 			LinearRetention* copy() const
 			{
-				 return new LinearRetention(Ksat,Phi,thickness);
+				 return new LinearRetention(*this);
 			}
-			LinearRetention(real _Ksat,real _Phi, real _thickness)
-				: Ksat(_Ksat),Phi(_Phi),thickness(_thickness)
+			LinearRetention(real _Ksat,real _Phi, real _thickness, real _beta=1.0, real Ss=1e-4,real _residual_wetness=0.0,real _ksat_decay=0.0, real _porosity_decay=0.0)
+				: Ksat(_Ksat),porosity(_Phi),thickness(_thickness),residual_wetness(_residual_wetness) , Ksat_decay(_ksat_decay), porosity_decay(_porosity_decay),beta(_beta)
 			{			}
 		};
+
+/*
+		class DurnerBiModalRetention : public RetentionCurve
+		{
+		public:
+			real Phi;
+			int r,p,q;
+			cmf::math::num_array alpha, n, w;
+				
+
+			real K(real wetness,real depth) const
+			{
+				cmf::math::num_array m = 1 - 1/n;
+				real term1=()
+					(1-w2)*pow(1+pow(alpha1*h,n1),m1) + w2 * pow(1+pow(alpha2*h,n2),m2);
+				real term2=0;
+				real term3=0;
+				return Ksat * pow(term1,p) * pow(term2/term3,r);
+			}
+
+
+
+		};
+*/
 	}
 }
 

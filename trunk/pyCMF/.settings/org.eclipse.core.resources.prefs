@@ -1,5 +1,6 @@
-#Fri May 15 09:40:02 CEST 2009
+#Fri Oct 09 14:52:53 CEST 2009
 eclipse.preferences.version=1
+encoding//src/cmf/geos_shapereader.py=utf-8
 encoding//src/cmf/maps.py=UTF-8
 encoding//src/cmfshapefilereader.py=UTF-8
 encoding//src/soil.py=UTF-8

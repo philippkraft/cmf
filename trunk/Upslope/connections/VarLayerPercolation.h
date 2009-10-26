@@ -1,7 +1,7 @@
 #ifndef VarLayerPercolation_h__
 #define VarLayerPercolation_h__
 
-#include "../../water/FluxConnection.h"
+#include "../../water/flux_connection.h"
 #include "../VarLayerPair.h"
 namespace cmf {
 	namespace upslope {
@@ -24,40 +24,44 @@ namespace cmf {
 			/// - \f$ layer \f$ is the unsaturated zone if \f$ \frac{dz_{sat}}{dt} \f$ is positive, otherwise layer is the saturated zone
 			/// - \f$ \sum q \f$ is the water balance of the saturated zone
 			/// - \f$ \Phi \f$ is the porosity
-			class VarLayerPercolationRichards : public cmf::water::FluxConnection {
+			class VarLayerPercolationRichards : public cmf::water::flux_connection {
 			protected:
-				cmf::upslope::VariableLayerUnsaturated* m_unsat;
-				cmf::upslope::VariableLayerSaturated* m_sat;
+				std::tr1::weak_ptr<cmf::upslope::VariableLayerUnsaturated> m_unsat;
+				std::tr1::weak_ptr<cmf::upslope::VariableLayerSaturated> m_sat;
 				virtual real calc_q(cmf::math::Time t);
 				void NewNodes()
 				{
-					m_unsat=dynamic_cast<cmf::upslope::VariableLayerUnsaturated*>(m_left);
-					m_sat=dynamic_cast<cmf::upslope::VariableLayerSaturated*>(m_right);
+					
+					m_unsat=std::tr1::dynamic_pointer_cast<cmf::upslope::VariableLayerUnsaturated>(left_node());
+					m_sat=std::tr1::dynamic_pointer_cast<cmf::upslope::VariableLayerSaturated>(right_node());
 				}
 
 			public:
 				bool Only_Exw;
 				/// Creates a connection between unsaturated and saturated zone
-				VarLayerPercolationRichards(cmf::upslope::VariableLayerUnsaturated& unsat,cmf::upslope::VariableLayerSaturated& sat,bool only_Exw=false) 
-					: FluxConnection(unsat,sat,"Richards like variable layer percolation"),Only_Exw(only_Exw) {
+				VarLayerPercolationRichards(std::tr1::shared_ptr<cmf::upslope::VariableLayerUnsaturated> unsat,
+																		std::tr1::shared_ptr<cmf::upslope::VariableLayerSaturated> sat,bool only_Exw=false) 
+					: flux_connection(unsat,sat,"Richards like variable layer percolation"),Only_Exw(only_Exw) {
 						NewNodes();
 				}
 			};
 
-			class VarLayerPercolationSimple : public cmf::water::FluxConnection {
-				cmf::upslope::VariableLayerUnsaturated* m_unsat;
-				cmf::upslope::VariableLayerSaturated* m_sat;
+			class VarLayerPercolationSimple : public cmf::water::flux_connection {
+				std::tr1::weak_ptr<cmf::upslope::VariableLayerUnsaturated> m_unsat;
+				std::tr1::weak_ptr<cmf::upslope::VariableLayerSaturated> m_sat;
 				virtual real calc_q(cmf::math::Time t);
 				void NewNodes()
 				{
-					m_unsat=dynamic_cast<cmf::upslope::VariableLayerUnsaturated*>(m_left);
-					m_sat=dynamic_cast<cmf::upslope::VariableLayerSaturated*>(m_right);
+
+					m_unsat=std::tr1::dynamic_pointer_cast<cmf::upslope::VariableLayerUnsaturated>(left_node());
+					m_sat=std::tr1::dynamic_pointer_cast<cmf::upslope::VariableLayerSaturated>(right_node());
 				}
 			public:
 				real pF_field_cap;
 				/// Creates a connection between unsaturated and saturated zone
-				VarLayerPercolationSimple(cmf::upslope::VariableLayerUnsaturated& unsat,cmf::upslope::VariableLayerSaturated& sat,real _pF_field_cap=1.8) 
-					: FluxConnection(unsat,sat,"Simple variable layer percolation") , pF_field_cap(_pF_field_cap)
+				VarLayerPercolationSimple(std::tr1::shared_ptr<cmf::upslope::VariableLayerUnsaturated> unsat,
+																	std::tr1::shared_ptr<cmf::upslope::VariableLayerSaturated> sat,real _pF_field_cap=1.8) 
+					: flux_connection(unsat,sat,"Simple variable layer percolation") , pF_field_cap(_pF_field_cap)
 				{NewNodes();	}
 			};
 			/// Calculates the percolation and capillar rise between an unsaturated and a saturated zone, using the approach used in the PIHM( Qu & Duffy 2007)
@@ -68,20 +72,22 @@ namespace cmf {
 			/// - \f$z_s\f$ is the soil depth in m
 			/// - \f$h_g\f$ is the thickness of the saturated zone
 			/// - \f$h_u\f$ is the equivalent thickness of the unsaturated zone, calculated as \f$h_u = (z_s - h_g)\frac{\theta}{\phi}\f$
-			class PIHMpercolation : public cmf::water::FluxConnection {
-				cmf::upslope::VariableLayerUnsaturated* m_unsat;
-				cmf::upslope::VariableLayerSaturated* m_sat;
+			class PIHMpercolation : public cmf::water::flux_connection {
+				std::tr1::weak_ptr<cmf::upslope::VariableLayerUnsaturated> m_unsat;
+				std::tr1::weak_ptr<cmf::upslope::VariableLayerSaturated> m_sat;
 				virtual real calc_q(cmf::math::Time t);
 				void NewNodes()
 				{
-					m_unsat=dynamic_cast<cmf::upslope::VariableLayerUnsaturated*>(m_left);
-					m_sat=dynamic_cast<cmf::upslope::VariableLayerSaturated*>(m_right);
+
+					m_unsat=std::tr1::dynamic_pointer_cast<cmf::upslope::VariableLayerUnsaturated>(left_node());
+					m_sat=std::tr1::dynamic_pointer_cast<cmf::upslope::VariableLayerSaturated>(right_node());
 				}
 			public:
 				real alpha;
 				/// Creates a connection between unsaturated and saturated zone
-				PIHMpercolation(cmf::upslope::VariableLayerUnsaturated& unsat,cmf::upslope::VariableLayerSaturated& sat,real _alpha=1) 
-					: FluxConnection(unsat,sat,"Percolation as in PIHM (Qu & Duffy 2007)") , alpha(_alpha)
+				PIHMpercolation(std::tr1::shared_ptr<cmf::upslope::VariableLayerUnsaturated> unsat,
+												std::tr1::shared_ptr<cmf::upslope::VariableLayerSaturated> sat,real _alpha=1) 
+					: flux_connection(unsat,sat,"Percolation as in PIHM (Qu & Duffy 2007)") , alpha(_alpha)
 				{NewNodes();	}
 
 			};
@@ -92,21 +98,21 @@ namespace cmf {
 			/// - \f$K_{eff}\f$ is the harmonic mean of the saturated conductivities
 			/// - \f$\Delta\Psi\f$ is the difference between the saturated water heads
 			/// - \f$z_{sat,i}\f$ is the thickness of the saturated layer in cell i
-			class PIHMlateral : public cmf::water::FluxConnection {
-				cmf::upslope::SoilWaterStorage * m_soil_left, * m_soil_right;
+			class PIHMlateral : public cmf::water::flux_connection {
+				std::tr1::weak_ptr<cmf::upslope::SoilLayer>  m_soil_left, m_soil_right;
 				virtual real calc_q(cmf::math::Time t);
 				void NewNodes()
 				{
-					m_soil_left=dynamic_cast<cmf::upslope::VariableLayerSaturated*>(m_left);
-					m_soil_right=AsSoilWater(m_right);
+					m_soil_left=cmf::upslope::SoilLayer::cast(left_node());
+					m_soil_right=cmf::upslope::SoilLayer::cast(right_node());
 				}
 			private:
 				static void connect_cells(cmf::upslope::Cell & cell1,cmf::upslope::Cell & cell2,int start_at_layer=0);
 			public:
 				static const CellConnector cell_connector;
 				real flow_width,distance;
-				PIHMlateral(cmf::upslope::VariableLayerSaturated& left, cmf::water::FluxNode& right, real _width,real _distance)
-					: cmf::water::FluxConnection(left,right,"Lateral flow as in PIHM (Qu & Duffy 2007)"), flow_width(_width), distance(_distance)
+				PIHMlateral(std::tr1::shared_ptr<cmf::upslope::VariableLayerSaturated> left, cmf::water::flux_node::ptr right, real _width,real _distance)
+					: cmf::water::flux_connection(left,right,"Lateral flow as in PIHM (Qu & Duffy 2007)"), flow_width(_width), distance(_distance)
 				{NewNodes();	}
 			};
 		}

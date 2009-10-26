@@ -14,7 +14,7 @@ class shape_map(object):
                 if self.lw_function and hasattr(s, 'set_lw'):
                     s.set_lw(self.lw_function(f))
         if pylab.isinteractive():
-            draw()
+            pylab.draw()
                       
     def __init__(self,features,**kwargs):
         self.features=features
@@ -27,15 +27,15 @@ class shape_map(object):
             if isinstance(feature.shape, MultiPolygon):
                 self.shapes.append([])
                 for g in feature.shape.geoms:
-                    x,y=numpy.asarray(feature.shape.exterior).swapaxes(0,1)
+                    x,y=numpy.asarray(feature.shape.exterior)[:,:2].swapaxes(0,1)
                     self.shapes[-1].append(pylab.fill(x,y,**kwargs)[0])
             if isinstance(feature.shape, Polygon):
-                x,y=numpy.asarray(feature.shape.exterior).swapaxes(0,1)
+                x,y=numpy.asarray(feature.shape.exterior)[:,:2].swapaxes(0,1)
                 self.shapes.append(pylab.fill(x,y,**kwargs))
             elif isinstance(feature.shape, MultiLineString):
                 self.shapes.append([])
                 for g in feature.shape.geoms:
-                    x,y=numpy.asarray(feature.shape).swapaxes(0,1)
+                    x,y=numpy.asarray(feature.shape)[:,:2].swapaxes(0,1)
                     self.shapes[-1].append(pylab.plot(x,y,**kwargs)[0])
             elif isinstance(feature.shape, LineString):
                 x,y=numpy.asarray(feature.shape.exterior).swapaxes(0,1)
