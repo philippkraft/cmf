@@ -21,15 +21,10 @@ namespace cmf {
 	private:
 		friend class cmf::upslope::Cell;
 		upslope::cell_vector m_cells;
+		std::vector<cmf::river::Reach_ptr> m_reaches;
 
 	protected:
-		virtual void AddStateVariables(cmf::math::StateVariableVector& vector)
-		{
-			for(cmf::upslope::cell_vector::iterator it = m_cells.begin(); it != m_cells.end(); ++it)
-			{
-				(**it).AddStateVariables(vector);   
-			}
-		}
+		virtual void AddStateVariables(cmf::math::StateVariableVector& vector);
 	public:
 		const cmf::water::solute_vector solutes;
 		cmf::atmosphere::MeteoStationList meteo_stations;
@@ -58,10 +53,15 @@ namespace cmf {
 			return NewCell(p.x,p.y,p.z,Area);
 		}
 
-		std::vector<cmf::river::Reach_ptr> reaches;
+		cmf::river::Reach_ptr get_reach(int index);
+		int reach_count() const {return int(m_reaches.size());}
+
+		cmf::water::node_list get_storages();
+
 		cmf::river::Reach_ptr NewReach(cmf::river::Channel shape, bool diffusive=false);
 
 	};
+
 
 	
 }

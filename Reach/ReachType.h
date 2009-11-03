@@ -13,6 +13,7 @@ namespace cmf {
 			virtual double h(double V) const=0;
 			/// Returns the area of the surface for a given volume
 			virtual double A(double V) const=0;
+			virtual double V(double h) const=0;
 			virtual IVolumeHeightFunction* copy() const=0;
 			double operator ()(double V)
 			{
@@ -30,6 +31,7 @@ namespace cmf {
 			double h(double V) const {return V/Area;}
 			/// \f$ A(V) = A_{base} \f$
 			double A(double V) const {return Area;}
+			double V(double h) const {return h*Area;}
 		};
 	  /// A wrapper class for volume / height functional relations
 		class volume_height_function : public IVolumeHeightFunction
@@ -37,19 +39,25 @@ namespace cmf {
 		private:
 			std::auto_ptr<IVolumeHeightFunction> vhf;
 		public:
+			/// Copy constructable
 			volume_height_function(const volume_height_function& for_copy)
 				: vhf(for_copy.vhf->copy()) {}
+			/// Wrapper for any IVolumeHeightFunction
 			volume_height_function(const IVolumeHeightFunction& for_copy)
 				: vhf(for_copy.copy()) {}
+#ifndef SWIG
+			// assignable
 			volume_height_function& operator=(const IVolumeHeightFunction& for_copy) {
 				vhf.reset(for_copy.copy());
 				return *this;
 			}
+#endif
 			volume_height_function* copy()	const {
 				return new volume_height_function(*this);
 			}
 			double h(double V) const {return vhf->h(V);}
 			double A(double V) const {return vhf->A(V);}
+			double V(double h) const {return vhf->V(h);}
 		};
 
 		///@brief Structure for the description of structural parameters of a reach
@@ -80,7 +88,7 @@ namespace cmf {
 
 			virtual double h(double V) const {return get_depth(V/length);}
 			virtual double A(double V) const {return get_channel_width(h(V))*length;}
-
+			virtual double V(double h) const {return get_flux_crossection(h)*length;}
 			virtual IChannel* copy() const=0;
 
 			/// Calculates the flow rate from a given water volume in the reach
@@ -266,8 +274,10 @@ namespace cmf {
 			Channel(const IVolumeHeightFunction& for_casting);
 			/// Copy constructable
 			Channel(const Channel& for_copy);
+#ifndef SWIG
 			/// Assignable
 			Channel& operator=(const IChannel& for_assignment);
+#endif
 			
 			/// Creates a reachtype using a short cut character.
 			/// Acceptes one of the following characters:

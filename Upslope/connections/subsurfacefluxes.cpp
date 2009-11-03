@@ -22,7 +22,7 @@ void cmf::upslope::connections::Richards_lateral::connect_cells( cmf::upslope::C
 }
 real cmf::upslope::connections::Richards_lateral::calc_q( cmf::math::Time t )
 {
-	cmf::upslope::SoilLayer_ptr 
+	cmf::upslope::SoilLayer::ptr 
 		l1=sw1.lock(),
 		l2=sw2.lock();
 	// Richards flux
@@ -47,7 +47,7 @@ void cmf::upslope::connections::Richards::use_for_cell( cmf::upslope::Cell & cel
 {
 	for (int i = 0; i < cell.layer_count()-1 ; ++i)
 	{
-		cmf::upslope::SoilLayer_ptr l_upper=cell.get_layer(i), l_lower=cell.get_layer(i+1);
+		cmf::upslope::SoilLayer::ptr l_upper=cell.get_layer(i), l_lower=cell.get_layer(i+1);
 		if (!(no_override && l_upper->get_connection(*l_lower)))
 			new Richards(l_upper,l_lower);
 	}
@@ -56,12 +56,14 @@ void cmf::upslope::connections::Richards::use_for_cell( cmf::upslope::Cell & cel
 real cmf::upslope::connections::Richards::calc_q( cmf::math::Time t ) 
 {
 	// Richards flux
-	cmf::upslope::SoilLayer_ptr 
+	cmf::upslope::SoilLayer::ptr 
 		l1=sw1.lock(),
 		l2=sw2.lock();
 	
 	real
-		distance=fabs((l1->get_upper_boundary()-l2->get_upper_boundary())*0.5+(l1->get_lower_boundary()-l2->get_lower_boundary())*0.5),
+		distance = l2 ? 
+										fabs((l1->get_upper_boundary()-l2->get_upper_boundary())*0.5+(l1->get_lower_boundary()-l2->get_lower_boundary())*0.5)
+									: l1->get_distance_to(*right_node()),
 		Psi_t1=l1->get_potential(),
 		Psi_t2=right_node()->get_potential(),
 		gradient=(Psi_t1-Psi_t2)/distance,
@@ -81,7 +83,7 @@ real cmf::upslope::connections::Richards::calc_q( cmf::math::Time t )
 // SWAT Percolation
 real cmf::upslope::connections::SWATPercolation::calc_q( cmf::math::Time t )
 {
-	cmf::upslope::SoilLayer_ptr 
+	cmf::upslope::SoilLayer::ptr 
 		l1=sw1.lock(),
 		l2=sw2.lock();
 
@@ -106,7 +108,7 @@ void cmf::upslope::connections::SWATPercolation::use_for_cell( cmf::upslope::Cel
 {
 	for (int i = 0; i < cell.layer_count()-1 ; ++i)
 	{
-		cmf::upslope::SoilLayer_ptr l_upper=cell.get_layer(i),  l_lower=cell.get_layer(i+1);
+		cmf::upslope::SoilLayer::ptr l_upper=cell.get_layer(i),  l_lower=cell.get_layer(i+1);
 		if (!(no_override && l_upper->get_connection(*l_lower)))
 			new SWATPercolation(l_upper,l_lower);
 	}
@@ -116,7 +118,7 @@ void cmf::upslope::connections::SWATPercolation::use_for_cell( cmf::upslope::Cel
 const cmf::upslope::CellConnector cmf::upslope::connections::UnsaturatedDarcy::cell_connector=CellConnector(cmf::upslope::connections::UnsaturatedDarcy::connect_cells);
 real cmf::upslope::connections::UnsaturatedDarcy::calc_q( cmf::math::Time t )
 {
-	cmf::upslope::SoilLayer_ptr 
+	cmf::upslope::SoilLayer::ptr 
 		l1=sw1.lock(),
 		l2=sw2.lock();
 
@@ -125,7 +127,7 @@ real cmf::upslope::connections::UnsaturatedDarcy::calc_q( cmf::math::Time t )
 		Psi2=l2->cell.z-l2->get_upper_boundary(),
 		gradient=(Psi1-Psi2)/distance,
 		K=gradient>0 ? l1->get_K() : l2->get_K();
-	SoilLayer_ptr target=gradient>0 ? l2 : l1;
+	SoilLayer::ptr target=gradient>0 ? l2 : l1;
 	real f_upwelling=1-2*boltzmann(target->get_wetness(),1,0.01);
 	if (f_upwelling<0)
 	{
@@ -159,7 +161,7 @@ void cmf::upslope::connections::UnsaturatedDarcy::use_for_cell( cmf::upslope::Ce
 {
 	for (int i = 0; i < cell.layer_count()-1 ; ++i)
 	{
-		cmf::upslope::SoilLayer_ptr 
+		cmf::upslope::SoilLayer::ptr 
 			l_upper=cell.get_layer(i), 
 			l_lower=cell.get_layer(i+1);
 		real distance=fabs((l_upper->get_upper_boundary()-l_lower->get_upper_boundary())*0.5+(l_upper->get_lower_boundary()-l_lower->get_lower_boundary())*0.5);
@@ -173,37 +175,43 @@ void cmf::upslope::connections::UnsaturatedDarcy::use_for_cell( cmf::upslope::Ce
 /* Lateral fluxes                                                       */
 /************************************************************************/
 // Darcy connection
+real get_flow_thick(cmf::upslope::SoilLayer::ptr l)
+{
+	real 
+		thick=l->get_thickness(),
+		w_eff= l->get_soil().Wetness_eff(l->get_wetness(),2.5),
+		mp = l->get_matrix_potential();
+		
+	return minmax(thick + mp /* w_eff*/ ,0.0,thick);
+}
 real cmf::upslope::connections::Darcy::calc_q( cmf::math::Time t )	
 {
-	cmf::upslope::SoilLayer_ptr 
+	cmf::upslope::SoilLayer::ptr 
 		l1=sw1.lock(),
 		l2=sw2.lock();
-	real Psi_t1=l1->cell.z;
-	for (int i = 0; i < l1->cell.layer_count() ; ++i)
-	{
-		cmf::upslope::SoilLayer_ptr layer=l1->cell.get_layer(i);
-		Psi_t1-= (1-layer->get_wetness()) * layer->get_thickness();
-	}
-	real Psi_t2=l2 ? l2->cell.z : right_node()->get_potential();
-	if (l2)
-		for (int i = 0; i < l2->cell.layer_count() ; ++i)
-		{
-			cmf::upslope::SoilLayer_ptr layer=l2->cell.get_layer(i);
-			Psi_t2-=(1-layer->get_wetness())*layer->get_thickness();
-		}
-
+	// Calculate the gradient
 	real
-		// Gravitational gradient
+		Psi_t1 = l1->cell.z - l1->cell.get_saturated_depth(),
+		Psi_t2 = l2->cell.z - l2->cell.get_saturated_depth(),
 		gradient=(Psi_t1-Psi_t2)/distance;
 
-	cmf::upslope::SoilLayer_ptr source =  (gradient < 0) && l2 ? l2 : l1;
-	real
-		// Transmissivity
-		flow_thick = source->get_thickness() * minmax(source->get_wetness(),0.0,1.0),
-		T = source->get_soil().Transmissivity(source->get_lower_boundary()-flow_thick,source->get_lower_boundary(),1);
 	if (right_node()->is_empty() && gradient<=0)
 		return 0.0;
+
+	//cmf::upslope::SoilLayer::ptr source =  (gradient < 0) && l2 ? l2 : l1;
+	real
+		// Transmissivity
+		flow_thick1 = get_flow_thick(l1), 
+		flow_thick2 = l2 ? get_flow_thick(l2) : flow_thick1;
+	if ((flow_thick1 + flow_thick2)<=0) return 0.0;
+	real
+		T1 = l1->get_soil().Transmissivity(l1->get_lower_boundary()-flow_thick1,l1->get_lower_boundary(),1),
+		T2 = l2 ? l2->get_soil().Transmissivity(l2->get_lower_boundary()-flow_thick2, l2->get_lower_boundary(),1) : T1,
+		T = mean(T1,T2);
+
+	
 	return T*gradient*flow_width;
+
 }
 
 void cmf::upslope::connections::Darcy::connect_cells( cmf::upslope::Cell & cell1,cmf::upslope::Cell & cell2,int start_at_layer/*=0*/ )
@@ -227,14 +235,14 @@ const cmf::upslope::CellConnector cmf::upslope::connections::TopographicGradient
 real cmf::upslope::connections::TopographicGradientDarcy::calc_q( cmf::math::Time t )
 {
 	// Darcy flux
-	cmf::upslope::SoilLayer_ptr 
+	cmf::upslope::SoilLayer::ptr 
 		l1=sw1.lock(),
 		l2=sw2.lock();
 
 	real
-		flow_thick1=minimum(l1->get_thickness(),l1->get_lower_boundary()-l1->cell.get_saturated_depth()),
-		flow_thick2=l2 ? minimum(l2->get_thickness(),l2->get_lower_boundary()-l2->cell.get_saturated_depth()) : flow_thick1;
-	if (flow_thick1<=0 || flow_thick2<=0) return 0;
+		flow_thick1=get_flow_thick(l1), // minimum(l1->get_thickness(),l1->get_lower_boundary()-l1->cell.get_saturated_depth()),
+		flow_thick2=l2 ? get_flow_thick(l2) : flow_thick1; // minimum(l2->get_thickness(),l2->get_lower_boundary()-l2->cell.get_saturated_depth()) : flow_thick1;
+	if (flow_thick1+flow_thick2<=0) return 0;
 	real
 		flow_thick=mean(flow_thick1,flow_thick2),
 		// Topographic gradient
@@ -273,7 +281,7 @@ void cmf::upslope::connections::TopographicGradientDarcy::connect_cells( cmf::up
 
 real cmf::upslope::connections::OHDISflow::calc_q( cmf::math::Time t )
 {
-	cmf::upslope::SoilLayer_ptr 
+	cmf::upslope::SoilLayer::ptr 
 		l1=sw1.lock(),
 		l2=sw2.lock();
 	// The resulting flux
@@ -332,3 +340,17 @@ void cmf::upslope::connections::OHDISflow::connect_cells( cmf::upslope::Cell & c
 
 }
 
+
+void cmf::upslope::connections::SubSurfaceFlux::NewNodes()
+{
+	cmf::upslope::SoilLayer::ptr l1,l2;
+	
+	l1=cmf::upslope::SoilLayer::cast(left_node());
+	l2=cmf::upslope::SoilLayer::cast(right_node());
+
+	if (!l1) 
+		throw std::runtime_error("Can't create " + this->type + ", left node {" + left_node()->Name + "} is not a soil layer!" );
+	sw1 = l1;
+	sw2 = l2;
+
+}

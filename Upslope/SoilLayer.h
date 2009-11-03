@@ -9,12 +9,15 @@
 #include <memory>
 namespace cmf {
 	namespace upslope {
-		class SoilLayer;
-		typedef std::tr1::shared_ptr<cmf::upslope::SoilLayer> SoilLayer_ptr;
-
 		/// A representation of a SoilLayer
 		class SoilLayer: public cmf::water::WaterStorage
 		{
+		public:
+			typedef std::tr1::shared_ptr<cmf::upslope::SoilLayer> ptr;
+#ifndef SWIG
+			operator ptr() {return std::tr1::static_pointer_cast<SoilLayer>(shared_from_this());}
+#endif
+
 		private:
 			friend class Cell;
 			struct wet {real	W,Psi_m,theta,C,K,Ksat;	};
@@ -72,7 +75,7 @@ namespace cmf {
 			/// @param HorizontalLayers If true, the layers are assumed to be parallel to the gravitational potential, otherwise they are assumed to be parallel to the ground topography
 			real get_flow_crosssection(const cmf::upslope::SoilLayer& target,bool HorizontalLayers=false) const;
 			
-			static SoilLayer_ptr cast(cmf::water::flux_node::ptr node)
+			static SoilLayer::ptr cast(cmf::water::flux_node::ptr node)
 			{
 				return std::tr1::dynamic_pointer_cast<SoilLayer>(node);
 			}

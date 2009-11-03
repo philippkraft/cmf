@@ -46,7 +46,7 @@ double cmf::upslope::pF_to_waterhead(double pF)               { return -pow(10,p
 /// Converts a height of a water column to a pF value
 double cmf::upslope::waterhead_to_pF(double waterhead)        {
 	if (waterhead>=0) return -std::numeric_limits<double>::infinity();
-	else return log10(waterhead*rho_wg)-2;
+	else return log10(-waterhead*rho_wg)-2;
 }
 
 real cmf::upslope::BrooksCoreyRetentionCurve::K( real wetness,real depth ) const

@@ -9,7 +9,7 @@ void WaterStorage::initializeSoluteStorages(const solute_vector& solutes)
 {
 	for (solute_vector::const_iterator it=solutes.begin();it!=solutes.end();++it)
 	{
-		std::tr1::shared_ptr<SoluteStorage> s(new SoluteStorage(this_,*it));
+		std::tr1::shared_ptr<SoluteStorage> s(new SoluteStorage(this,*it));
 		m_Concentrations.push_back(s);
 	}
 }
@@ -24,7 +24,7 @@ void WaterStorage::AddStateVariables( cmf::math::StateVariableVector& vector )
 }
 
 WaterStorage::WaterStorage(const cmf::project& _project,double InitialState/*=0*/ ) 
-: cmf::math::StateVariable(InitialState),flux_node(_project) ,m_Concentrations(), this_(this,null_deleter())
+: cmf::math::StateVariable(InitialState),flux_node(_project) ,m_Concentrations() //, this_no_delete(this,null_deleter())
 {
 	initializeSoluteStorages(_project.solutes);
 }
@@ -44,7 +44,7 @@ real WaterStorage::conc(const solute& solute) const
 std::tr1::shared_ptr<WaterStorage> WaterStorage::from_node( flux_node::ptr node )
 {
 	WaterStorage* ws=new WaterStorage(node->project());
-	storage_pointer result(ws);
+	WaterStorage::ptr result(ws);
 
 	replace_node(node,result);
 	return result;

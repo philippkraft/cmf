@@ -49,11 +49,11 @@ real cmf::upslope::Cell::get_saturated_depth()
 	if (m_SatDepth<-10000)
 	{
 		//m_SatDepth=get_layer(0).get_saturated_depth();
-		m_SatDepth=get_layer(-1)->get_lower_boundary();
-		for (int i = 0; i < layer_count() ; ++i)
+		m_SatDepth = z - get_layer(-1)->get_potential();
+		for (int i = layer_count() -2 ; i >=0 ; --i)
 		{
-			real sd=z-get_layer(i)->get_potential();
-			if (sd<m_SatDepth) m_SatDepth=sd;
+			real sd = z - get_layer(i)->get_potential();
+			if (sd < m_SatDepth) m_SatDepth=sd;
 		}
 	}
 	return m_SatDepth;
@@ -74,7 +74,7 @@ void cmf::upslope::Cell::add_layer(real lowerboundary,const cmf::upslope::Retent
 {
 	if (project().debug)
 		std::cout << "Adds a layer to " << this->to_string() << " Name: ";
-	SoilLayer_ptr layer(new SoilLayer(*this,lowerboundary,r_curve,saturateddepth));
+	SoilLayer::ptr layer(new SoilLayer(*this,lowerboundary,r_curve,saturateddepth));
 	if (project().debug)
 		std::cout << layer->Name << std::endl;
 	if (m_Layers.size() == 0)
@@ -120,12 +120,12 @@ return m_project;
 }
 
 
-cmf::water::storage_pointer cmf::upslope::Cell::add_storage( std::string Name,char storage_role/*='N'*/, bool isopenwater/*=false*/ )
+cmf::water::WaterStorage::ptr cmf::upslope::Cell::add_storage( std::string Name,char storage_role/*='N'*/, bool isopenwater/*=false*/ )
 {
 	using namespace cmf::water;
 	if (storage_role=='C' && m_Canopy) return m_Canopy;
 	if (storage_role=='S' && m_Snow)   return m_Snow;
-	storage_pointer ws= isopenwater ? 
+	WaterStorage::ptr ws= isopenwater ? 
 		cmf::river::OpenWaterStorage::create(project(),get_area())	
 	: WaterStorage::create(project());
 	ws->Location=get_position();
@@ -148,7 +148,7 @@ cmf::water::storage_pointer cmf::upslope::Cell::add_storage( std::string Name,ch
 	
 }
 
-cmf::water::storage_pointer cmf::upslope::Cell::get_storage( int index ) const
+cmf::water::WaterStorage::ptr cmf::upslope::Cell::get_storage( int index ) const
 {
 	return m_storages.at(index<0 ? m_storages.size()+index : index);
 }
@@ -163,12 +163,12 @@ void cmf::upslope::Cell::set_saturated_depth( real depth )
 }
 
 
-cmf::water::storage_pointer cmf::upslope::Cell::get_snow() const
+cmf::water::WaterStorage::ptr cmf::upslope::Cell::get_snow() const
 {
 	return m_Snow;
 }
 
-cmf::water::storage_pointer cmf::upslope::Cell::get_canopy() const
+cmf::water::WaterStorage::ptr cmf::upslope::Cell::get_canopy() const
 {
 	return m_Canopy;
 }

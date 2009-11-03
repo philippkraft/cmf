@@ -3,7 +3,7 @@
 #include "../Upslope/Topology.h"
 real cmf::river::Manning::calc_q( cmf::math::Time t )
 {
-	open_water_storage_ptr ows1=w1.lock(),ows2=w2.lock();
+	OpenWaterStorage::ptr ows1=w1.lock(),ows2=w2.lock();
 	real 
 		// Distance between source and target
 		d=flux_geometry.length,
@@ -16,12 +16,12 @@ real cmf::river::Manning::calc_q( cmf::math::Time t )
 	// No slope, no flux
 	if (abs_slope<=0) return 0.0;
 	// Get the source of the flow
-	open_water_storage_ptr source=slope > 0 ? ows1 : ows2;
+	OpenWaterStorage::ptr source=slope > 0 ? ows1 : ows2;
 	if (source==0) return 0; // Never generate flow from a flux node
 	// Wetted crossectional area, use mean volume of the water storages if both sides are water storages
 	real
 		// Flow height between elements is the mean of the flow height, but exceeds never the flow height of the source
-		h=minimum(source->h(),ows2 ? mean(ows1->h(),ows2->h()) : ows1->h());
+		h=minimum(source->get_depth(),ows2 ? mean(ows1->get_depth(),ows2->get_depth()) : ows1->get_depth());
 	if (h<=1e-6) return 0;
 	real
 		// Depth of the reach
@@ -42,8 +42,8 @@ void cmf::river::Manning::connect_cells( cmf::upslope::Cell& c1,cmf::upslope::Ce
 	if (w<=0) return;
 	RectangularReach r_type(d,w);
 	
-	cmf::river::open_water_storage_ptr sows1= OpenWaterStorage::cast(c1.get_surfacewater());
-	cmf::river::open_water_storage_ptr sows2= OpenWaterStorage::cast(c2.get_surfacewater());
+	cmf::river::OpenWaterStorage::ptr sows1= OpenWaterStorage::cast(c1.get_surfacewater());
+	cmf::river::OpenWaterStorage::ptr sows2= OpenWaterStorage::cast(c2.get_surfacewater());
 	if (sows1)
 		new Manning(sows1,c2.get_surfacewater(),r_type,diffusive);
 	else if (sows2)

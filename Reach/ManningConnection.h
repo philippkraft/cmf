@@ -20,7 +20,7 @@ namespace cmf {
 				w1=cmf::river::OpenWaterStorage::cast(left_node());
 				w2=cmf::river::OpenWaterStorage::cast(right_node());
 			}
-			Manning(cmf::river::open_water_storage_ptr left,cmf::water::flux_node::ptr right,
+			Manning(cmf::river::OpenWaterStorage::ptr left,cmf::water::flux_node::ptr right,
 							cmf::river::Channel reachtype,bool diffusive_wave)
 				: flux_connection(left,right,diffusive_wave ? "Manning (diff. wave)" : "Manning (kin. wave)"),	flux_geometry(reachtype), is_diffusive_wave(diffusive_wave) {
 					NewNodes();
@@ -38,24 +38,24 @@ namespace cmf {
 		{
 		private:
 			static void connect_cells(cmf::upslope::Cell& c1,cmf::upslope::Cell& c2,int dummy)
-			{		cmf::river::Manning::connect_cells(c1,c2,false);		}
+			{		cmf::river::Manning::connect_cells(c1,c2,true);		}
 
 		public:
 			static const cmf::upslope::CellConnector cell_connector;
-			Manning_Diffusive(cmf::river::open_water_storage_ptr left,cmf::water::flux_node::ptr right,cmf::river::Channel reachtype)
-				: Manning(left,right,reachtype,false)
+			Manning_Diffusive(cmf::river::OpenWaterStorage::ptr left,cmf::water::flux_node::ptr right,cmf::river::Channel reachtype)
+				: Manning(left,right,reachtype,true)
 			{			}
 		};
 		class Manning_Kinematic: public Manning
 		{
 		private:
 			static void connect_cells(cmf::upslope::Cell& c1,cmf::upslope::Cell& c2,int dummy)
-			{		cmf::river::Manning::connect_cells(c1,c2,true);		}
+			{		cmf::river::Manning::connect_cells(c1,c2,false);		}
 
 		public:
 			static const cmf::upslope::CellConnector cell_connector;
-			Manning_Kinematic(cmf::river::open_water_storage_ptr left,cmf::water::flux_node::ptr right,cmf::river::Channel reachtype)
-				: Manning(left,right,reachtype,true)
+			Manning_Kinematic(cmf::river::OpenWaterStorage::ptr left,cmf::water::flux_node::ptr right,cmf::river::Channel reachtype)
+				: Manning(left,right,reachtype,false)
 			{			}
 		};
 	}

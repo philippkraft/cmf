@@ -101,7 +101,7 @@ namespace cmf{namespace water {class flux_connection;}}
 %attribute(cmf::water::WaterStorage,real,volume,get_volume,set_volume);
 
 %include "water/WaterStorage.h"
-
+%template(storage_vector) std::vector<cmf::water::WaterStorage::ptr>;
 %include "water/collections.i"
 
 // Add some function for down casting

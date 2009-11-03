@@ -3,7 +3,7 @@
 if %1x==buildx goto build
 if %1x==copyx goto copy_pyd
 echo create SWIG wrapper as cmf_swig.cxx
-swig -Wextra -w512 -macroerrors -python -castmode -O -c++ -o cmf_swig.cxx cmf.i 
+swig -Wextra -w512 -python -castmode -O -c++ -o cmf_swig.cxx cmf.i 
 
 if %ERRORLEVEL%  NEQ 0 goto fine
 

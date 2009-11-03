@@ -115,6 +115,7 @@ real cmf::water::flux_node::conc( cmf::math::Time t, const cmf::water::solute& s
 cmf::water::flux_node::flux_node( const cmf::project& _project,cmf::geometry::point location ) 
 : m_project(_project), node_id(nextnodeid++),Location(location)
 {
+	if (m_project.debug) std::cout << "new node #" << node_id << std::endl;
 }
 
 

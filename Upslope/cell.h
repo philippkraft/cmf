@@ -81,10 +81,10 @@ namespace cmf {
 			//@}
 			/// @name Flux nodes of the cell
 			//@{
-			typedef std::vector<cmf::water::storage_pointer> storage_vector;
+			typedef std::vector<cmf::water::WaterStorage::ptr> storage_vector;
 			typedef std::auto_ptr<cmf::atmosphere::Meteorology> meteo_pointer;
 			storage_vector m_storages;
-			cmf::water::storage_pointer
+			cmf::water::WaterStorage::ptr
 				m_Canopy,
 				m_Snow,
 				m_SurfaceWaterStorage;
@@ -113,15 +113,15 @@ namespace cmf {
 			/// returns the surface water of this cell
 			cmf::water::flux_node::ptr get_surfacewater();
 			void surfacewater_as_storage();
-			cmf::water::storage_pointer add_storage(std::string Name,char storage_role='N',  bool isopenwater=false);
+			cmf::water::WaterStorage::ptr add_storage(std::string Name,char storage_role='N',  bool isopenwater=false);
 			void remove_storage(cmf::water::WaterStorage& storage);
 			int storage_count() const
 			{
 				return int(m_storages.size());
 			}
-			cmf::water::storage_pointer get_storage(int index) const;
-			cmf::water::storage_pointer get_canopy() const;
-			cmf::water::storage_pointer get_snow() const;
+			cmf::water::WaterStorage::ptr get_storage(int index) const;
+			cmf::water::WaterStorage::ptr get_canopy() const;
+			cmf::water::WaterStorage::ptr get_snow() const;
 			real snow_coverage() const
 			{
 				if (m_Snow)

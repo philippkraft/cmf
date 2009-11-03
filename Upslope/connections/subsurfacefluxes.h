@@ -17,13 +17,9 @@ namespace cmf {
 					flow_width, distance;
 
 				virtual real calc_q(cmf::math::Time t)=0;
-				virtual void NewNodes()
-				{
-					sw1=cmf::upslope::SoilLayer::cast(left_node());
-					sw2=cmf::upslope::SoilLayer::cast(right_node());
-				}
+				virtual void NewNodes();
 
-				SubSurfaceFlux(cmf::upslope::SoilLayer_ptr left,cmf::water::flux_node::ptr right, std::string Name,real FlowWidth,real Distance=0)
+				SubSurfaceFlux(cmf::upslope::SoilLayer::ptr left,cmf::water::flux_node::ptr right, std::string Name,real FlowWidth,real Distance=0)
 					: cmf::water::flux_connection(left,right,Name), flow_width(FlowWidth), distance(Distance)
 				{
 					NewNodes();
@@ -44,14 +40,11 @@ namespace cmf {
 			/// - \f$ w \f$ is the width of the connection of the cells
 			class Darcy : public SubSurfaceFlux {
 			protected:
-				std::tr1::weak_ptr<cmf::upslope::SoilLayer> sw1,sw2;
-				real 
-					flow_width, distance;
 				virtual real calc_q(cmf::math::Time t) ;
 				static void connect_cells(cmf::upslope::Cell & cell1,cmf::upslope::Cell & cell2,int start_at_layer=0);
 			public:
 				static const CellConnector cell_connector;
-				Darcy(cmf::upslope::SoilLayer_ptr left,cmf::water::flux_node::ptr right,real FlowWidth,real Distance=0)
+				Darcy(cmf::upslope::SoilLayer::ptr left,cmf::water::flux_node::ptr right,real FlowWidth,real Distance=0)
 					: SubSurfaceFlux(left,right,"Darcy flow",FlowWidth,Distance) 
 				{}
 
@@ -70,7 +63,7 @@ namespace cmf {
 				static void connect_cells(cmf::upslope::Cell & cell1,cmf::upslope::Cell & cell2,int start_at_layer=0);
 			public:
 				static const cmf::upslope::CellConnector cell_connector;
-				TopographicGradientDarcy(cmf::upslope::SoilLayer_ptr left,cmf::water::flux_node::ptr right,real FlowWidth,real Distance=0)
+				TopographicGradientDarcy(cmf::upslope::SoilLayer::ptr left,cmf::water::flux_node::ptr right,real FlowWidth,real Distance=0)
 					: SubSurfaceFlux(left,right,"Topographic gradient",FlowWidth,Distance)
 				{ }
 
@@ -97,7 +90,7 @@ namespace cmf {
 
 				static void connect_cells(cmf::upslope::Cell & cell1,cmf::upslope::Cell & cell2,int start_at_layer=0);
 			public:
-				OHDISflow(cmf::upslope::SoilLayer_ptr left,cmf::water::flux_node::ptr right,real FlowWidth, real Distance=0)
+				OHDISflow(cmf::upslope::SoilLayer::ptr left,cmf::water::flux_node::ptr right,real FlowWidth, real Distance=0)
 					: SubSurfaceFlux(left,right,"OHDIS like connection",FlowWidth,Distance)
 				{			}
 
@@ -117,7 +110,7 @@ namespace cmf {
 
 			public:
 				static void use_for_cell(cmf::upslope::Cell & cell,bool no_override=true);
-				SWATPercolation(cmf::upslope::SoilLayer_ptr upperLayer,cmf::upslope::SoilLayer_ptr lowerLayer)
+				SWATPercolation(cmf::upslope::SoilLayer::ptr upperLayer,cmf::upslope::SoilLayer::ptr lowerLayer)
 					: flux_connection(upperLayer,lowerLayer,"SWAT percolation") {
 						NewNodes();
 				}
@@ -147,7 +140,7 @@ namespace cmf {
 
 				virtual real calc_q(cmf::math::Time t) ;
 			public:
-				Richards(cmf::upslope::SoilLayer_ptr left,cmf::water::flux_node::ptr right)
+				Richards(cmf::upslope::SoilLayer::ptr left,cmf::water::flux_node::ptr right)
 					: flux_connection(left,right,"Richards eq.")
 				{
 					NewNodes();
@@ -164,7 +157,7 @@ namespace cmf {
 				virtual real calc_q(cmf::math::Time t) ;
 
 			public:
-				Richards_lateral(cmf::upslope::SoilLayer_ptr left,cmf::water::flux_node::ptr right,real FlowWidth=0,real Distance=0)
+				Richards_lateral(cmf::upslope::SoilLayer::ptr left,cmf::water::flux_node::ptr right,real FlowWidth=0,real Distance=0)
 					: SubSurfaceFlux(left,right,"Richards eq.",FlowWidth,Distance)
 				{
 					flow_thickness=left->get_thickness();
@@ -189,7 +182,7 @@ namespace cmf {
 
 				static void connect_cells(cmf::upslope::Cell & cell1,cmf::upslope::Cell & cell2,int start_at_layer=0);
 			public:
-				UnsaturatedDarcy(cmf::upslope::SoilLayer_ptr left,cmf::upslope::SoilLayer_ptr right,real FlowWidth,real Distance=0)
+				UnsaturatedDarcy(cmf::upslope::SoilLayer::ptr left,cmf::upslope::SoilLayer::ptr right,real FlowWidth,real Distance=0)
 					: SubSurfaceFlux(left,right,"Unsaturated Darcy",FlowWidth,Distance) 
 				{				}
 
