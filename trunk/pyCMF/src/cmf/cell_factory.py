@@ -285,9 +285,8 @@ def cells_from_polygons(project,features,shape_callable=lambda feat:feat.shape,i
         geometry[c]=shape_callable(f)
         cell_dict[f]=c
         q_tree.add_object(f,f.shape.bounds)
-    print "%i cells created" % len(cells)
     print "No. of connected cells:",
-    report_at=[1,5,10,50,100,500,1000,5000,10000,50000,100000,500000]
+    report_at=[100,500,1000,5000,10000,50000,100000,500000]
     start=time.clock()
     if not no_connect:
         con_count=0

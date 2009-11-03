@@ -25,9 +25,11 @@ namespace cmf {
 		/// \f}
 		class SoluteStorage : public cmf::math::StateVariable
 		{
-			SoluteStorage(std::tr1::weak_ptr<WaterStorage> _water,const cmf::water::solute& solute, double InitialState=0) 
-				: cmf::math::StateVariable(InitialState),m_water(_water), Solute(solute),decay(0),source(0),source_concentration(0) {}
-			std::tr1::weak_ptr<WaterStorage> m_water;
+			SoluteStorage(WaterStorage* _water,const cmf::water::solute& solute, double InitialState=0) 
+				: cmf::math::StateVariable(InitialState),m_water(_water), Solute(solute),decay(0),source(0),source_concentration(0) 
+			{}
+			
+			WaterStorage* m_water;
 			
 		public:
 			friend class WaterStorage;
@@ -37,12 +39,11 @@ namespace cmf {
 			real source_concentration;
 			/// A source or sink term of the solute as an absolute matter flux in state unit/day
 			real source;
-			/// The water storage to which the concentration storage belongs
-			std::tr1::shared_ptr<cmf::water::WaterStorage> get_water() const {return m_water.lock();}
 			/// The solute, which is stored in this
 			const cmf::water::solute& Solute;
 			/// Returns the concentration of the solute
 			real conc() const;
+
 			virtual real Derivate(const cmf::math::Time& time);
 		};
 	}

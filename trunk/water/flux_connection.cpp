@@ -1,8 +1,8 @@
 #include "flux_connection.h"
 #include "../project.h"
-/************************************************************************/
-/* flux_connection                                                       */
-/************************************************************************/
+  /*************************************************************************/
+ /* flux_connection                                                       */
+/*************************************************************************/
 
 int cmf::water::flux_connection::nextconnectionid=0;
 cmf::water::flux_connection::~flux_connection()
@@ -12,7 +12,10 @@ cmf::water::flux_connection::~flux_connection()
 cmf::water::flux_connection::flux_connection( cmf::water::flux_node::ptr left,cmf::water::flux_node::ptr right,std::string _type ) 
 : m_left(left),m_right(right),RecalcAlways(false),type(_type),connection_id(nextconnectionid++)
 {
-	if (left_node()->project().debug)
+	if ((!left) || (!right)) 
+		throw std::runtime_error("Can't create " + this->type + " if a node is null");
+	const project& p=left->project();
+	if (p.debug)
 		std::cout << "Create " << to_string() << std::endl;
 	left->RegisterConnection(this);
 	right->RegisterConnection(this);

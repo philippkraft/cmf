@@ -1,7 +1,8 @@
 #include "boundary_condition.h"
+#include "../math/real.h"
 void cmf::water::NeumannBoundary::connect_to( cmf::water::flux_node::ptr target )
 {
-	new NeumannFlux(weak_this.lock(), target);
+	new NeumannFlux(*this, target);
 }
 
 real cmf::water::NeumannBoundary::operator()( cmf::math::Time t ) const
@@ -12,24 +13,31 @@ real cmf::water::NeumannBoundary::operator()( cmf::math::Time t ) const
 		return scale_function(flux[t]);
 }
 
-cmf::water::NeumannBoundary::NeumannBoundary( const cmf::project& _project, cmf::math::timeseries _flux,cmf::water::SoluteTimeseries _concentration/*=cmf::water::SoluteTimeseries()*/,cmf::geometry::point loc/*=cmf::geometry::point()*/ ) 
+cmf::water::NeumannBoundary::NeumannBoundary(const cmf::project& _project, 
+																						 cmf::math::timeseries _flux,
+																						 cmf::water::SoluteTimeseries _concentration/*=cmf::water::SoluteTimeseries()*/,
+																						 cmf::geometry::point loc/*=cmf::geometry::point()*/
+																						) 
 : cmf::water::flux_node(_project,loc), flux(_flux),concentration(_concentration)
 {
 
 }
 
-cmf::water::NeumannBoundary::NeumannBoundary( const cmf::project& _project,cmf::geometry::point loc/*=cmf::geometry::point()*/ ) 
+cmf::water::NeumannBoundary::NeumannBoundary(const cmf::project& _project,
+																						 cmf::geometry::point loc) 
 : cmf::water::flux_node(_project,loc)
 {
 
 }
 
-cmf::water::NeumannBoundary::NeumannBoundary( cmf::water::flux_node::ptr target ) 
-: cmf::water::flux_node(target->project(),target->Location)
+cmf::water::NeumannBoundary::ptr cmf::water::NeumannBoundary::create( cmf::water::flux_node::ptr target )
 {
-	connect_to(target);
-	Name = "Boundary of " + target->Name;
+	cmf::water::NeumannBoundary::ptr res = cmf::water::NeumannBoundary::ptr(new NeumannBoundary(target->project(),target->Location));
+	res->Name = "Boundary at " + target->Name;
+	res->connect_to(target);
+	return res;
 }
+
 real cmf::water::NeumannFlux::calc_q( cmf::math::Time t )
 {
 	real f=(*m_bc.lock())(t);
@@ -40,7 +48,8 @@ real cmf::water::NeumannFlux::calc_q( cmf::math::Time t )
 }
 
 
-cmf::water::DricheletBoundary::DricheletBoundary( const cmf::project& _p,real potential,cmf::geometry::point Location/*=cmf::geometry::point()*/ ) : flux_node(_p,Location),m_Potential(potential)
-{
-
+cmf::water::DricheletBoundary::DricheletBoundary(const cmf::project& _p,real potential,
+																								 cmf::geometry::point Location/*=cmf::geometry::point()*/ ) 
+: flux_node(_p,Location),m_Potential(potential)
+{	
 }

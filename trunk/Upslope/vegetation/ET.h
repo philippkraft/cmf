@@ -45,7 +45,7 @@ namespace cmf {
 			public:
 				real ETpot_value;
 				real GetETpot(cmf::math::Time t) const {return ETpot_value;}
-				constantETpot(cmf::upslope::SoilLayer_ptr source,cmf::water::flux_node::ptr ET_target,double constantETpot_value) 
+				constantETpot(cmf::upslope::SoilLayer::ptr source,cmf::water::flux_node::ptr ET_target,double constantETpot_value) 
 					: flux_connection(source,ET_target,"Constant get_evaporation"),ETpot_value(constantETpot_value)	
 				{
 					NewNodes();
@@ -89,7 +89,7 @@ namespace cmf {
 			public:
 
 				bool daily;
-				PenmanMonteithET(cmf::upslope::SoilLayer_ptr source,cmf::water::flux_node::ptr ET_target) 
+				PenmanMonteithET(cmf::upslope::SoilLayer::ptr source,cmf::water::flux_node::ptr ET_target) 
 					: flux_connection(source,ET_target,"Penman Monteith transpiration"),sw(source) {
 						NewNodes();
 				}
@@ -113,7 +113,7 @@ namespace cmf {
 						m_waterstorage.reset();
 				}
 			public:
-				ShuttleworthWallaceET(cmf::water::storage_pointer source,cmf::water::flux_node::ptr ET_target,cmf::upslope::Cell& cell,std::string Type="Shuttleworth Wallace get_evaporation") 
+				ShuttleworthWallaceET(cmf::water::WaterStorage::ptr source,cmf::water::flux_node::ptr ET_target,cmf::upslope::Cell& cell,std::string Type="Shuttleworth Wallace get_evaporation") 
 					: cmf::water::flux_connection(source,ET_target,Type),m_cell(cell) {
 						NewNodes();
 				}
@@ -129,7 +129,7 @@ namespace cmf {
 					sw=cmf::upslope::SoilLayer::cast(left_node());
 				}
 			public:
-				HargreaveET(cmf::upslope::SoilLayer_ptr source,cmf::water::flux_node::ptr ET_target) 
+				HargreaveET(cmf::upslope::SoilLayer::ptr source,cmf::water::flux_node::ptr ET_target) 
 					: flux_connection(source,ET_target,"Hargreave get_evaporation"),sw(source) {
 						NewNodes();
 				}
@@ -147,7 +147,7 @@ namespace cmf {
 					c_stor=cmf::water::WaterStorage::cast(left_node());
 				}
 			public:
-				CanopyStorageEvaporation(cmf::water::storage_pointer CanopyStorage,cmf::water::flux_node::ptr ET_target,cmf::upslope::Cell & cell)
+				CanopyStorageEvaporation(cmf::water::WaterStorage::ptr CanopyStorage,cmf::water::flux_node::ptr ET_target,cmf::upslope::Cell & cell)
 					: cmf::water::flux_connection(CanopyStorage,ET_target,"Penman Monteith (canopy) get_evaporation"),m_cell(cell) {
 						NewNodes();
 				}
@@ -163,7 +163,7 @@ namespace cmf {
 					m_source=cmf::river::OpenWaterStorage::cast(left_node());
 				}
 			public:
-				PenmanEvaporation(cmf::river::open_water_storage_ptr source,cmf::water::flux_node::ptr Evap_target,const cmf::atmosphere::Meteorology& meteo);
+				PenmanEvaporation(cmf::river::OpenWaterStorage::ptr source,cmf::water::flux_node::ptr Evap_target,const cmf::atmosphere::Meteorology& meteo);
 			};
 		}
 	}

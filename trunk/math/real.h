@@ -14,7 +14,7 @@
 #else
 	const bool Debug=0;
 #endif
-	const std::string CompileDate=__DATE__;
+	const std::string VERSION = std::string("cmf compiled ") + std::string(__DATE__) + " - " + std::string(__TIME__);
 
 	// Some helper functions
 	/// Returns the minimum of two values
@@ -29,6 +29,7 @@
 	real sign(real x);
 	real square(real x);
 	//real sqr(real x);
+
 
 	const real Pi=3.141592654;
 

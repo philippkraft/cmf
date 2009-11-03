@@ -244,14 +244,6 @@ void cmf::math::timeseries::set_slice( int _begin,int _end,cmf::math::timeseries
 		set_i(i,_values.get_t(time_at_position(i)));
 	}
 }
-double cmf::math::timeseries::mean() const
-{
-	double sum=0;
-#pragma omp parallel for reduction(+ : sum)
-	for (int i = 0; i < size() ; ++i)
-		sum += m_data->values[i];
-	return sum/size();
-}
 
 cmf::math::timeseries cmf::math::timeseries::operator+( timeseries other ) const 
 { 
@@ -377,7 +369,48 @@ cmf::math::timeseries cmf::math::timeseries::floating_min( cmf::math::Time windo
 	return res;
 }
 
+void cmf::math::timeseries::add( double Value )
+{
+	m_data->values.push_back(Value);
+}
 
+void cmf::math::timeseries::clear()
+{
+	m_data->values.clear();
+}
+
+
+double cmf::math::timeseries::mean() const
+{
+	double sum=0;
+#pragma omp parallel for reduction(+ : sum)
+	for (int i = 0; i < size() ; ++i)
+		sum += m_data->values[i];
+	return sum/size();
+}
+
+double cmf::math::timeseries::min() const
+{
+	double _min=get_i(0);
+	for (int i = 0; i < size() ; ++i)
+	{
+		if (_min>m_data->values[i])
+			_min=m_data->values[i];
+	}
+	return _min;
+}
+
+double cmf::math::timeseries::max() const
+{
+	double _max=get_i(0);
+	for (int i = 0; i < size() ; ++i)
+	{
+		if (_max<m_data->values[i])
+			_max=m_data->values[i];
+	}
+	return _max;
+
+}
 
 double cmf::math::nash_sutcliff(const cmf::math::timeseries& model,const cmf::math::timeseries& observation)
 {

@@ -6,12 +6,10 @@
 
 // Get river model classes
 %include "Reach/ReachType.h"
-%newobject cmf::water::OpenWaterStorage::FromNode;
+
+%attribute(cmf::river::OpenWaterStorage, real,depth,get_depth,set_depth);
+
 %include "Reach/OpenWaterStorage.h"
-        
-    
-
-
 
 %attributeval(cmf::river::Reach,cmf::upslope::cell_vector,cells,get_cells);
 %attribute(cmf::river::Reach,cmf::river::Reach,downstream,get_downstream);
@@ -39,3 +37,6 @@
             self.next()
             yield (self.reach,self.position)
 }}
+
+EXTENT__REPR__(cmf::river::OpenWaterStorage)
+EXTENT__REPR__(cmf::river::Reach)

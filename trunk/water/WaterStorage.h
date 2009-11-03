@@ -24,13 +24,17 @@ namespace cmf {
 		/// The vector fluxes is used used by concentration to get the amount of water mixing.
 		class WaterStorage : public cmf::math::StateVariable,public cmf::math::StateVariableOwner,public cmf::water::flux_node
 		{
+		public:
+			typedef std::tr1::shared_ptr<cmf::water::WaterStorage> ptr;
+#ifndef SWIG
+			operator ptr() {return std::tr1::static_pointer_cast<WaterStorage>(shared_from_this());}
+#endif
 		private:
-			std::tr1::shared_ptr<WaterStorage> this_;
+			std::tr1::shared_ptr<WaterStorage> this_no_delete;
 			typedef std::vector<std::tr1::shared_ptr<cmf::water::SoluteStorage> > SoluteStorageMap;
 			SoluteStorageMap m_Concentrations;
 			void initializeSoluteStorages(const cmf::water::solute_vector& solutes);
 		public:
-
 			virtual bool is_storage() const {return true;}
 			void AddStateVariables(cmf::math::StateVariableVector& vector);
 			/// creates a water storage (abstract class)									o
@@ -88,7 +92,7 @@ namespace cmf {
 			}
 
 		};
-		typedef std::tr1::shared_ptr<cmf::water::WaterStorage> storage_pointer;
+		typedef std::vector<WaterStorage::ptr> storage_vector;
 
 	}
 }

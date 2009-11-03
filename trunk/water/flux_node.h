@@ -28,9 +28,12 @@ namespace cmf {
 		/// bridges to other model domains (e.g. Ponded water to river system).
 		/// The base class can be used where a simple routing, potentially with mixing,
 		/// is needed.
-		class flux_node : public cmf::geometry::Locatable {
+		class flux_node : public cmf::geometry::Locatable, public std::tr1::enable_shared_from_this<flux_node> {
 		public:
-			typedef std::tr1::shared_ptr<flux_node> ptr;
+			typedef std::tr1::shared_ptr<cmf::water::flux_node> ptr;
+#ifndef SWIG
+			operator ptr()		{	return shared_from_this();	}
+#endif
 		private:
 			void RegisterConnection(flux_connection* newConnection);
 			void DeregisterConnection(flux_connection* target);
@@ -40,8 +43,8 @@ namespace cmf {
 			const cmf::project& m_project;
 		protected:
 			cmf::math::Time m_LastQuery;
-		public:
 
+		public:
 			cmf::geometry::point get_position() const
 			{
 				return Location;

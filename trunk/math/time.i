@@ -63,15 +63,16 @@ static cmf::math::Time convert_datetime_to_cmftime(PyObject* dt)
     $1=SWIG_IsOK(res) || PyDateTime_Check($input) || PyDelta_Check($input) || PyDate_Check($input);
 }
 %implicitconv cmf::math::Time;
+%implicitconv cmf::math::Date;
 
 %include "math/real.h"
 %include "math/Time.h"
 
-%naturalvar cmf::math::Time;
+//%naturalvar cmf::math::Time;
 
-%attribute(cmf::math::timeseries,cmf::math::Time,begin,begin);
-%attribute(cmf::math::timeseries,cmf::math::Time,step,step);
-%attribute(cmf::math::timeseries,cmf::math::Time,end,end);
+%attributeval(cmf::math::timeseries,cmf::math::Time,begin,begin);
+%attributeval(cmf::math::timeseries,cmf::math::Time,step,step);
+%attributeval(cmf::math::timeseries,cmf::math::Time,end,end);
 //%naturalvar cmf::math::timeseries;
 
 %implicitconv cmf::math::timeseries;
@@ -81,7 +82,6 @@ static cmf::math::Time convert_datetime_to_cmftime(PyObject* dt)
 
 
 
-%implicitconv cmf::math::Date;
 
 
 %extend cmf::math::Time {
@@ -122,6 +122,8 @@ static cmf::math::Time convert_datetime_to_cmftime(PyObject* dt)
 	}
 	%pythoncode
     {
+    def __repr__(self):
+       return "cmf.timeseries(%s:%s:%s,count=%i)" % (self.begin,self.end,self.step,self.size())
     def extend(self,list) :
         """ Adds the values of a sequence to the timeseries"""
         for item in list :
@@ -176,7 +178,10 @@ static cmf::math::Time convert_datetime_to_cmftime(PyObject* dt)
         as_float if True, the timesteps will returned as floating point numbers representing the days after 1.1.0001 00:00
         """
         for i in xrange(len(self)):
-            return self.begin + self.step * i
+            if as_float:
+                yield ((self.begin + self.step * i) - cmf.Time(1,1,1)).AsDays()
+            else:
+                yield self.begin + self.step * i
     def to_buffer(self):
         """Returns a binary buffer filled with the data of self"""
         return struct.pack('qqqq%id' % self.size(),self.begin().AsMilliseconds(),self.step().AsMilliseconds(),self.interpolationpower(), *self)

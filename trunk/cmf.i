@@ -73,12 +73,16 @@ SWIG_SHARED_PTR(flux_node,cmf::water::flux_node);
             SWIG_SHARED_PTR_DERIVED(VariableLayerSaturated,cmf::upslope::SoilLayer,cmf::upslope::VariableLayerSaturated);
             SWIG_SHARED_PTR_DERIVED(VariableLayerUnsaturated,cmf::upslope::SoilLayer,cmf::upslope::VariableLayerUnsaturated);
 
+#define %ptr(Type) SWIG_SHARED_PTR_QNAMESPACE::shared_ptr<Type>
+#define %dynptrcast(Type,input) SWIG_SHARED_PTR_QNAMESPACE::dynamic_pointer_cast<Type>(input) 
+
+
 // Workaround for SWIG bug 2408232: SWIG_SHARED_PTR doesn't work with deep/multiple inheritance
 %define SWIG_SHARED_MULTICAST(CLASS,BASE)
-%types(SWIG_SHARED_PTR_QNAMESPACE::shared_ptr< CLASS > = 
-        SWIG_SHARED_PTR_QNAMESPACE::shared_ptr< BASE >) {
+%types(%ptr(CLASS) = 
+        %ptr(BASE)) {
   *newmemory = SWIG_CAST_NEW_MEMORY;
-  return (void *) new SWIG_SHARED_PTR_QNAMESPACE::shared_ptr< BASE >(*(SWIG_SHARED_PTR_QNAMESPACE::shared_ptr< CLASS > *)$from);
+  return (void *) new %ptr(BASE)(*(%ptr(CLASS) *)$from);
 }
 %enddef
 
@@ -103,8 +107,6 @@ SWIG_SHARED_MULTICAST(cmf::river::OpenWaterStorage, cmf::water::flux_node)
 SWIG_SHARED_MULTICAST(cmf::atmosphere::RainCloud, cmf::water::flux_node)
 
 
-#define %ptr(Type) SWIG_SHARED_PTR_QNAMESPACE::shared_ptr<Type>
-#define %dynptrcast(Type,input) SWIG_SHARED_PTR_QNAMESPACE::dynamic_pointer_cast<Type>(input) 
 
 %define %_node_down_cast(Type)
     if (dcast==0 && $1) /*check for Type*/  { 
@@ -155,34 +157,17 @@ EXTENT__REPR__(cmf::atmosphere::RainCloud)
 
 %echo "Atmosphere OK!";
 
-%{
-	// Include Upslope
-	#include "upslope/Soil/RetentionCurve.h"
-	#include "upslope/SoilLayer.h"
-%}
-// Get Upslope Classes
-
-%include "upslope/soil/RetentionCurve.h"
-%extend cmf::upslope::BrooksCoreyRetentionCurve
-{
-    %pythoncode {
-    def __repr__(self):
-        return "Brooks-Corey (Ksat=%g,porosity=%g,b=%g,wetness @ h=%g @ %g)" % (self.K(1,0),self.Porosity(0),self.b(),self.wetness_X,self.Psi_X)
-    }
-}
-%extend cmf::upslope::VanGenuchtenMualem
-{
-    %pythoncode {
-    def __repr__(self):
-        return "VanGenuchten-Mualem (Ksat=%g,porosity=%g,alpha=%g, n=%g)" % (self.K(1,0),self.Porosity(0),self.alpha,self.n)
-    }
-}
 
 %include "Upslope/cell.i"
 %echo "Cell OK";
 
+%include "Upslope/Layer.i"
+%echo "Layer ok"
+
+%include "Reach/Reach.i"
+%echo "Reach ok"
+
 %{
-	#include "upslope/VarLayerPair.h"
 	#include "upslope/connections/subsurfacefluxes.h"
 	#include "upslope/connections/VarLayerPercolation.h"
 	#include "upslope/connections/surfacefluxes.h"
@@ -193,49 +178,13 @@ EXTENT__REPR__(cmf::atmosphere::RainCloud)
 	#include "Reach/ManningConnection.h"
 	// Include the combined solver
 	#include "math/Integrators/WaterSoluteIntegrator.h"
-	// Include Factories and helper IO
 %}
 
-
-
-
-%immutable cmf::upslope::SoilLayer::cell;
-
-%factory(cmf::upslope::RetentionCurve& cmf::upslope::SoilLayer::get_soil,cmf::upslope::BrooksCoreyRetentionCurve, cmf::upslope::VanGenuchtenMualem);
-
-%attribute(cmf::upslope::SoilLayer,real,gravitational_potential,get_gravitational_potential);
-%attribute(cmf::upslope::SoilLayer,real,matrix_potential,get_matrix_potential);
-%attribute(cmf::upslope::SoilLayer,real,wetness,get_wetness,set_wetness);
-%attribute(cmf::upslope::SoilLayer,real,K,get_K);
-%attribute(cmf::upslope::SoilLayer,real,Ksat,get_Ksat);
-%attribute(cmf::upslope::SoilLayer,real,thickness,get_thickness);
-%attribute(cmf::upslope::SoilLayer,real,lower_boundary,get_lower_boundary);
-%attribute(cmf::upslope::SoilLayer,real,upper_boundary,get_upper_boundary);
-
-%include "upslope/SoilLayer.h"
-
-
-%extend cmf::upslope::SoilLayer {
-  %pythoncode {
-    boundary=property(lambda self:(self.upper_boundary,self.lower_boundary),None,"Returns the upper and lower boundary of the layer")
-    pF=property(lambda self : waterhead_to_pF(self.matrix_potential),None,"The actual pF value")
-    soil=property(get_soil,set_soil,"The retention curve of the layer")
-  }
-}
-EXTENT__REPR__(cmf::upslope::VariableLayerSaturated)
-EXTENT__REPR__(cmf::upslope::VariableLayerUnsaturated)
-EXTENT__REPR__(cmf::upslope::SoilLayer)
-
-%include "Reach/Reach.i"
-
-EXTENT__REPR__(cmf::river::OpenWaterStorage)
-EXTENT__REPR__(cmf::river::Reach)
 
 
 %include "upslope/connections/subsurfacefluxes.h"
 %include "Reach/ManningConnection.h"
 
-%include "upslope/VarLayerPair.h"
 %include "upslope/connections/VarLayerPercolation.h"
 %include "upslope/connections/surfacefluxes.h"
 %include "upslope/connections/atmosphericfluxes.h"
@@ -249,7 +198,6 @@ EXTENT__REPR__(cmf::river::Reach)
         connection.thisown=0
 }
 %echo "upslope::connections OK!";
-%echo "cmf::river OK!";
 
 %include "project.i"
 
@@ -270,11 +218,8 @@ EXTENT__REPR__(cmf::river::Reach)
         for c in cells:
             res+=c.layer_count()
         return res
-
+    def __doc__(self):
+        return "cmf -> Catchment Model Framework, extending Python with hydrological elements " + VERSION
     cell_vector.__repr__=lambda cv:"list of %i cells. first:%s, last: %s" % ((cv.size(),cv[0],cv[-1]) if len(cv) else (cv.size(),"None","None"))
 }            
-
-
-
-
 
