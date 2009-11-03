@@ -46,7 +46,6 @@ class connected_hillslopes(object):
         if (intersect.length>0):
             cell1.topology.AddNeighbor(cell2,intersect.length)
             cell2.topology.AddNeighbor(cell1,intersect.length)
-            print "connected %s with %s width: %0.1fm" % (cell1,cell2,intersect.length)  
 
             return True
         else:
@@ -85,7 +84,6 @@ class connected_hillslopes(object):
                 
         for id,feats in hillslope_features.iteritems():
             # Create and mesh the cells for each hillslope
-            print "Processing hillslope #%i with %i cells, %f ha" % (id,len(feats),1e-4 * sum((get_area(f) for f in feats))) 
             cmf.cells_from_polygons(p, feats, 
                                     shape_callable=get_shape, 
                                     id_callable=get_id, 

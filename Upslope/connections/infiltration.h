@@ -25,7 +25,7 @@ namespace cmf {
 					m_soilwater=cmf::upslope::SoilLayer::cast(right_node());
 				}
 			public:
-				MatrixInfiltration(cmf::upslope::SoilLayer_ptr soilwater,cmf::water::flux_node::ptr surfacewater) 
+				MatrixInfiltration(cmf::upslope::SoilLayer::ptr soilwater,cmf::water::flux_node::ptr surfacewater) 
 					: flux_connection(surfacewater,soilwater,"Richards eq. infiltration") {
 						NewNodes();
 				}
@@ -45,7 +45,7 @@ namespace cmf {
 					m_surfacewaterstorage=cmf::river::OpenWaterStorage::cast(left_node());
 				}
 			public:
-				CompleteInfiltration(cmf::upslope::SoilLayer_ptr soilwater,cmf::water::flux_node::ptr surfacewater) 
+				CompleteInfiltration(cmf::upslope::SoilLayer::ptr soilwater,cmf::water::flux_node::ptr surfacewater) 
 					: flux_connection(surfacewater,soilwater,"Complete infiltration"){
 						NewNodes();
 				}

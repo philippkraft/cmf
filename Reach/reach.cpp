@@ -26,9 +26,11 @@ void cmf::river::Reach::set_downstream(Reach_ptr new_downstream)
 	if (new_downstream)
 	{
 		// add this to the list of upstream reaches of the downstream
-		new_downstream->add_upstream(Reach_ptr(this));	
-		
-		MeanChannel channel_between(get_height_function(),new_downstream->get_height_function());
+		new_downstream->add_upstream(weak_this.lock());	
+		Channel 
+			this_ch=this->get_height_function(), 
+			down_ch=new_downstream->get_height_function();
+		MeanChannel channel_between(this_ch,down_ch);
 		// Connect this with Manning eq. to the down stream
 		if (m_diffusive)
 			new cmf::river::Manning_Diffusive(weak_this.lock(),new_downstream,channel_between);		

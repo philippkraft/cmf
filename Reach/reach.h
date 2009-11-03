@@ -20,6 +20,11 @@ namespace cmf {
 		/// of a network of reaches.
 		class Reach : public OpenWaterStorage
 		{
+		public:
+#ifndef SWIG
+			typedef std::tr1::shared_ptr<Reach> ptr;
+			operator ptr() {return std::tr1::static_pointer_cast<Reach>(shared_from_this());}
+#endif
 		private:
 			friend class project;
 

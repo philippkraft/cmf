@@ -85,16 +85,10 @@ namespace cmf {
 			/// Method for the interpolation (0 - Nearest neighbor, 1- linear, 2 - cubic spline (not implemented yet)
 			double interpolationpower() const {return m_data->interpolationpower;}
 			/// Appends a measurement
-			void add(double Value)
-			{
-				m_data->values.push_back(Value);
-			}
+			void add(double Value);
 			/// returns true if no values are added to the timeseries
 			bool is_empty() const {return m_data->values.size()==0;}
-			void clear()
-			{
-				m_data->values.clear();
-			}
+			void clear();
 			size_t adress() const
 			{
 				return size_t(&(m_data->values[0]));
@@ -195,6 +189,8 @@ namespace cmf {
 			timeseries floating_min(cmf::math::Time window_width) const;
 
 			double mean() const;
+			double min() const;
+			double max() const;
 
 
 		};

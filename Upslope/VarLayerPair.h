@@ -9,6 +9,11 @@ namespace cmf {
 		/// This soil water storage is always saturated
 		class VariableLayerSaturated : public SoilLayer
 		{
+		public:
+			typedef std::tr1::shared_ptr<cmf::upslope::VariableLayerSaturated> ptr;
+#ifndef SWIG
+			operator ptr() {return std::tr1::static_pointer_cast<VariableLayerSaturated>(shared_from_this());}
+#endif
 		private:
 			friend class Cell;
 			std::tr1::weak_ptr<cmf::upslope::VariableLayerUnsaturated> m_upperLayer;
@@ -41,6 +46,11 @@ namespace cmf {
 		/// A soil water storage above a FlexibleSizeSaturatedLayer, can only be created by FlexibleSaturatedLayer
 		class VariableLayerUnsaturated : public SoilLayer
 		{
+		public:
+			typedef std::tr1::shared_ptr<cmf::upslope::VariableLayerUnsaturated> ptr;
+#ifndef SWIG
+			operator ptr() {return std::tr1::static_pointer_cast<VariableLayerUnsaturated>(shared_from_this());}
+#endif
 		private:
 			
 			std::tr1::weak_ptr<cmf::upslope::VariableLayerSaturated> belowLayer;

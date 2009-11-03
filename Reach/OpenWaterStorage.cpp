@@ -1,13 +1,13 @@
 #include "OpenWaterStorage.h"
 
-cmf::river::open_water_storage_ptr cmf::river::OpenWaterStorage::from_node( cmf::water::flux_node::ptr node,real Area )
+cmf::river::OpenWaterStorage::ptr cmf::river::OpenWaterStorage::from_node( cmf::water::flux_node::ptr node,real Area )
 {
 	cmf::river::OpenWaterStorage::ptr ows=cmf::river::OpenWaterStorage::create(node->project(),Area);
 	cmf::water::replace_node(node,ows);
 	return ows;
 }
 
-cmf::river::open_water_storage_ptr cmf::river::OpenWaterStorage::cast( cmf::water::flux_node::ptr node )
+cmf::river::OpenWaterStorage::ptr cmf::river::OpenWaterStorage::cast( cmf::water::flux_node::ptr node )
 {
 	return std::tr1::dynamic_pointer_cast<OpenWaterStorage>(node);
 }

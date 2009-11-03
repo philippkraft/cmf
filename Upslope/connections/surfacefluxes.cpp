@@ -14,7 +14,7 @@ real cmf::upslope::connections::CanopyOverflow::calc_q( cmf::math::Time t )
 
 real cmf::upslope::connections::HBVSnowMelt::calc_q( cmf::math::Time t )
 {
-	cmf::water::storage_pointer 
+	cmf::water::WaterStorage::ptr 
 		snow=m_Snow.lock(),
 		snowwater=m_SnowWater.lock();
 	if (snow->is_empty())
@@ -37,7 +37,7 @@ real cmf::upslope::connections::HBVSnowMelt::calc_q( cmf::math::Time t )
 
 real cmf::upslope::connections::SnowWaterOverflow::calc_q( cmf::math::Time t )
 {
-	cmf::water::storage_pointer 
+	cmf::water::WaterStorage::ptr 
 		Snow=m_Snow.lock(),
 		SnowWater=m_SnowWater.lock();
 	if (SnowWater->is_empty()) 
@@ -54,7 +54,7 @@ real cmf::upslope::connections::SnowWaterOverflow::calc_q( cmf::math::Time t )
 
 real cmf::upslope::connections::SimpleTindexSnowMelt::calc_q( cmf::math::Time t )
 {
-	cmf::water::storage_pointer Snow=m_Snow.lock();
+	cmf::water::WaterStorage::ptr Snow=m_Snow.lock();
 	if (Snow->is_empty())
 		return 0.0;
 	else 

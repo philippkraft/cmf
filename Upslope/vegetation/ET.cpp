@@ -72,7 +72,7 @@ namespace cmf {
 
 			real constantETpot::calc_q( cmf::math::Time t ) 
 			{
-				cmf::upslope::SoilLayer_ptr layer=sw.lock();
+				cmf::upslope::SoilLayer::ptr layer=sw.lock();
 				cmf::upslope::vegetation::Vegetation veg=layer->cell.get_vegetation(); 
 				return Tact(ETpot_value,*layer,veg);
 			}
@@ -101,7 +101,7 @@ namespace cmf {
 
 			real PenmanMonteithET::calc_q( cmf::math::Time t )
 			{
-				cmf::upslope::SoilLayer_ptr layer=sw.lock();
+				cmf::upslope::SoilLayer::ptr layer=sw.lock();
 				cmf::upslope::Cell & cell=layer->cell;
 				if (!cell.has_wet_leaves())
 				{
@@ -127,8 +127,8 @@ namespace cmf {
 			}
 			real ShuttleworthWallaceET::calc_q( cmf::math::Time t )
 			{
-				cmf::upslope::SoilLayer_ptr layer=m_SoilLayer.lock();
-				cmf::water::storage_pointer canopy=m_waterstorage.lock();
+				cmf::upslope::SoilLayer::ptr layer=m_SoilLayer.lock();
+				cmf::water::WaterStorage::ptr canopy=m_waterstorage.lock();
 				cmf::upslope::Cell & cell=layer->cell;
 				cmf::atmosphere::Weather w=cell.get_weather(t);
 				cmf::upslope::vegetation::Vegetation veg=cell.get_vegetation();
@@ -191,7 +191,7 @@ namespace cmf {
 
 			real CanopyStorageEvaporation::calc_q( cmf::math::Time t )
 			{
-				cmf::water::storage_pointer canopy=c_stor.lock();
+				cmf::water::WaterStorage::ptr canopy=c_stor.lock();
 				if (left_node()->is_empty()) return 0;
 				cmf::atmosphere::Weather w=m_cell.get_weather(t);
 				cmf::upslope::vegetation::Vegetation veg=m_cell.get_vegetation();
@@ -201,7 +201,7 @@ namespace cmf {
 
 			real HargreaveET::calc_q( cmf::math::Time t )
 			{
-				cmf::upslope::SoilLayer_ptr layer=sw.lock();
+				cmf::upslope::SoilLayer::ptr layer=sw.lock();
 				double pi=cmf::geometry::PI;
 				cmf::atmosphere::Weather A=layer->cell.get_weather(t);
 				cmf::upslope::vegetation::Vegetation veg=layer->cell.get_vegetation();
@@ -239,14 +239,14 @@ namespace cmf {
 			}
 			real PenmanEvaporation::calc_q( cmf::math::Time t )
 			{
-				cmf::river::open_water_storage_ptr source=m_source.lock();
+				cmf::river::OpenWaterStorage::ptr source=m_source.lock();
 				if (left_node()->is_empty()) return 0;
 				cmf::atmosphere::Weather w=m_meteo->get_weather(t);
 				real PM=PenmanMonteith(w.Rn(0.1),PenmanMonteithET::r_a(w,0.1),0.0,w.T,w.e_s-w.e_a) * 0.001 * source->wet_area();
 				return minimum(source->get_state()*2/cmf::math::h.AsDays(),PM);
 			}
 
-			PenmanEvaporation::PenmanEvaporation( cmf::river::open_water_storage_ptr source,cmf::water::flux_node::ptr Evap_target,const cmf::atmosphere::Meteorology& meteo ) : cmf::water::flux_connection(source,Evap_target,"Penman evaporation from open water"), m_meteo(meteo.copy())
+			PenmanEvaporation::PenmanEvaporation( cmf::river::OpenWaterStorage::ptr source,cmf::water::flux_node::ptr Evap_target,const cmf::atmosphere::Meteorology& meteo ) : cmf::water::flux_connection(source,Evap_target,"Penman evaporation from open water"), m_meteo(meteo.copy())
 			{
 				NewNodes();
 			}

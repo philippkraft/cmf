@@ -20,14 +20,14 @@ namespace cmf {
 					m_Canopy=cmf::water::WaterStorage::cast(left_node());
 				}
 			public:
-				CanopyOverflow(cmf::water::storage_pointer Canopy,cmf::water::flux_node::ptr target,cmf::upslope::Cell & cell)
+				CanopyOverflow(cmf::water::WaterStorage::ptr Canopy,cmf::water::flux_node::ptr target,cmf::upslope::Cell & cell)
 					: cmf::water::flux_connection(Canopy,target,"Canopy overflow"),m_cell(cell) {
 						NewNodes();
 				}
 				static CanopyOverflow* use_for_cell(cmf::upslope::Cell & cell)
 				{
 					// If the canopy of this cell is not a storage, create a canopy storage
-					cmf::water::storage_pointer canopy=cell.add_storage("Canopy",'C');	
+					cmf::water::WaterStorage::ptr canopy=cell.add_storage("Canopy",'C');	
 					if (cell.get_rainfall()->get_connection(*cell.get_surfacewater()))
 					{
 						cell.get_rainfall()->remove_connection(cell.get_surfacewater());
@@ -51,14 +51,14 @@ namespace cmf {
 				}
 			public:
 				real SnowMeltRate;
-				SimpleTindexSnowMelt(cmf::water::storage_pointer snow,cmf::water::flux_node::ptr surface_water,cmf::upslope::Cell& cell)
+				SimpleTindexSnowMelt(cmf::water::WaterStorage::ptr snow,cmf::water::flux_node::ptr surface_water,cmf::upslope::Cell& cell)
 					: flux_connection(snow,surface_water,"Simple T-Index snow melt"),m_cell(cell),SnowMeltRate(7.0)
 				{
 					NewNodes();
 				}
 				static void use_for_cell(cmf::upslope::Cell& cell)
 				{
-					cmf::water::storage_pointer snow=cell.add_storage("Snow",'S');
+					cmf::water::WaterStorage::ptr snow=cell.add_storage("Snow",'S');
 					new cmf::upslope::connections::Snowfall(snow,cell);
 					
 					new SimpleTindexSnowMelt(snow,cell.get_surfacewater(),cell);
@@ -84,7 +84,7 @@ namespace cmf {
 				real RelCapacity;
 				/// Water conductivity of snow \f$K_{Sn}\f$, default=1cm/day
 				real SnowConductivity;
-				SnowWaterOverflow(cmf::water::storage_pointer snow_water,cmf::water::flux_node::ptr surface_water,cmf::water::storage_pointer snow,cmf::upslope::Cell& cell,real relative_capacity=0.1,real snowConductivity=864.)
+				SnowWaterOverflow(cmf::water::WaterStorage::ptr snow_water,cmf::water::flux_node::ptr surface_water,cmf::water::WaterStorage::ptr snow,cmf::upslope::Cell& cell,real relative_capacity=0.1,real snowConductivity=864.)
 					: cmf::water::flux_connection(snow_water,surface_water,"Snow water overflow"),
 					m_Snow(snow),	m_cell(cell),
 					RelCapacity(relative_capacity),SnowConductivity(snowConductivity) {
@@ -110,14 +110,14 @@ namespace cmf {
 				real SnowMeltRate;
 				/// Refreeze rate of snow as fraction of melting rate, default=0.05
 				real RefreezeRate;
-				HBVSnowMelt(cmf::water::storage_pointer snow,cmf::water::storage_pointer snow_water,cmf::upslope::Cell & cell,real snowmeltrate=7,real refreezeRate=0.05)
+				HBVSnowMelt(cmf::water::WaterStorage::ptr snow,cmf::water::WaterStorage::ptr snow_water,cmf::upslope::Cell & cell,real snowmeltrate=7,real refreezeRate=0.05)
 					: cmf::water::flux_connection(snow,snow_water,"HBV snow melt"),m_cell(cell),SnowMeltRate(snowmeltrate),RefreezeRate(refreezeRate) {
 						NewNodes();
 				}
 				static void use_for_cell(cmf::upslope::Cell & cell)
 				{
-					cmf::water::storage_pointer snow=cell.add_storage("Snow",'S');
-					cmf::water::storage_pointer snowwater=cell.add_storage("Snow water");
+					cmf::water::WaterStorage::ptr snow=cell.add_storage("Snow",'S');
+					cmf::water::WaterStorage::ptr snowwater=cell.add_storage("Snow water");
 					new cmf::upslope::connections::Snowfall(snow,cell);
 					new HBVSnowMelt(snow,snowwater,cell);
 					new SnowWaterOverflow(snowwater,cell.get_surfacewater(),snow,cell);

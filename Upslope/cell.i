@@ -49,11 +49,10 @@
 %nodefaultctor cmf::upslope::NeighborIterator;
 
 
-//%factory(cmf::water::flux_node& cmf::upslope::Cell::get_surfacewater,cmf::river::OpenWaterStorage, cmf::water::flux_node);
-//%factory(cmf::water::WaterStorage& cmf::upslope::Cell::get_storage,cmf::river::OpenWaterStorage,cmf::water::WaterStorage);
-//%factory(cmf::upslope::SoilLayer& cmf::upslope::Cell::get_layer,cmf::upslope::VariableLayerSaturated,cmf::upslope::VariableLayerUnsaturated,cmf::upslope::SoilLayer);
+%node_downcast(cmf::water::flux_node::ptr cmf::upslope::Cell::get_surfacewater,cmf::river::OpenWaterStorage, cmf::water::DricheletBoundary)
+%node_downcast(cmf::water::WaterStorage::ptr cmf::upslope::Cell::get_storage,cmf::river::OpenWaterStorage, cmf::water::WaterStorage)
+%node_downcast(cmf::upslope::SoilLayer::ptr cmf::upslope::Cell::get_layer,cmf::upslope::VariableLayerSaturated,cmf::upslope::VariableLayerUnsaturated,cmf::upslope::SoilLayer)
 
-%node_downcast(cmf::water::flux_node::ptr cmf::upslope::Cell::get_surfacewater,cmf::river::OpenWaterStorage)
 
 %attribute2(cmf::upslope::Cell,cmf::upslope::Topology,topology,get_topology);
 %attribute(cmf::upslope::Cell,cmf::water::flux_node::ptr,evaporation,get_evaporation);

@@ -37,7 +37,10 @@ namespace cmf {
 		protected:
 			real m_Potential;
 		public:
-			typedef std::tr1::shared_ptr<DricheletBoundary> ptr;
+			typedef std::tr1::shared_ptr<cmf::water::DricheletBoundary> ptr;
+#ifndef SWIG
+			operator ptr() {return std::tr1::static_pointer_cast<DricheletBoundary>(shared_from_this());}
+#endif
 			real get_potential() const
 			{
 				return m_Potential;
@@ -64,31 +67,18 @@ namespace cmf {
 		/// To scale the timeseries to the specific conditions of this boundary condition the linear_scale flux_scale can be used.
 		class NeumannBoundary : public cmf::water::flux_node
 		{
-		private:
-
-			std::tr1::weak_ptr<NeumannBoundary> weak_this;
-			std::tr1::shared_ptr<NeumannBoundary> get_this() {return std::tr1::shared_ptr<NeumannBoundary>(weak_this);}
-
+		public:
+			typedef std::tr1::shared_ptr<cmf::water::NeumannBoundary> ptr;
+#ifndef SWIG
+			operator ptr() {return std::tr1::static_pointer_cast<NeumannBoundary>(shared_from_this());}
+		#endif
 		protected:
-			/// Ctor of the Neumann boundary
-			/// @param _project The project this boundary condition belongs to
-			/// @param _flux The flux timeseries (a scalar is converted to a timeseries automatically)
-			/// @param _concentration The concentration timeseries
-			/// @param loc The location of the boundary condition
-			NeumannBoundary(const cmf::project& _project, 
-				cmf::math::timeseries _flux,
-				cmf::water::SoluteTimeseries _concentration=cmf::water::SoluteTimeseries(),
-				cmf::geometry::point loc=cmf::geometry::point());
-			NeumannBoundary(const cmf::project& _project,cmf::geometry::point loc=cmf::geometry::point());
-			/// Creates a Neumann Boundary condition connected with target
-			NeumannBoundary(cmf::water::flux_node::ptr target);
 
 			virtual real scale_function(real value)	const
 			{
 				return flux_scale(value);
 			}
 		public:
-			typedef  std::tr1::shared_ptr<NeumannBoundary> ptr;
 			/// The timeseries of the boundary flux
 			cmf::math::timeseries flux;
 			/// The scaling of the flux timeseries
@@ -111,29 +101,19 @@ namespace cmf {
 				return true;
 			}
 			void connect_to(cmf::water::flux_node::ptr target);
-
-			static NeumannBoundary::ptr create(const cmf::project& _project, 
+			/// Ctor of the Neumann boundary
+			/// @param _project The project this boundary condition belongs to
+			/// @param _flux The flux timeseries (a scalar is converted to a timeseries automatically)
+			/// @param _concentration The concentration timeseries
+			/// @param loc The location of the boundary condition
+			NeumannBoundary(const cmf::project& _project, 
 				cmf::math::timeseries _flux,
 				cmf::water::SoluteTimeseries _concentration=cmf::water::SoluteTimeseries(),
-				cmf::geometry::point loc=cmf::geometry::point())
-			{
-				NeumannBoundary::ptr res(new NeumannBoundary(_project,_flux,_concentration,loc));
-				res->weak_this=res;
-				return res;
-			}
-			static NeumannBoundary::ptr create(const cmf::project& _project,cmf::geometry::point loc=cmf::geometry::point(),real flux=0.0)
-			{
-				NeumannBoundary::ptr res(new NeumannBoundary(_project,flux,cmf::water::SoluteTimeseries(),loc));
-				res->weak_this=res;
-				return res;
-			}
+				cmf::geometry::point loc=cmf::geometry::point());
+			NeumannBoundary(const cmf::project& _project,cmf::geometry::point loc=cmf::geometry::point());
+
 			/// Creates a Neumann Boundary condition connected with target
-			static NeumannBoundary::ptr create(cmf::water::flux_node::ptr target)
-			{
-				NeumannBoundary::ptr res(new NeumannBoundary(target));
-				res->weak_this=res;
-				return res;
-			}
+			static NeumannBoundary::ptr create(cmf::water::flux_node::ptr target);
 		};
 		/// This flux_connection is created, when connecting a Neumann boundary condition with a state variable using Neumann::connect_to
 		class NeumannFlux : public cmf::water::flux_connection
@@ -142,7 +122,7 @@ namespace cmf {
 			std::tr1::weak_ptr<NeumannBoundary> m_bc;
 			void NewNodes()
 			{
-				m_bc=std::tr1::dynamic_pointer_cast<NeumannBoundary> (left_node());
+				m_bc=std::tr1::static_pointer_cast<NeumannBoundary> (left_node());
 			}
 			real calc_q(cmf::math::Time t);
 		public:

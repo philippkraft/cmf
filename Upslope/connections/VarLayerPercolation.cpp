@@ -106,8 +106,8 @@ void cmf::upslope::connections::PIHMlateral::connect_cells( cmf::upslope::Cell &
 const cmf::upslope::CellConnector cmf::upslope::connections::PIHMlateral::cell_connector = cmf::upslope::CellConnector(cmf::upslope::connections::PIHMlateral::connect_cells);
 real cmf::upslope::connections::PIHMlateral::calc_q( cmf::math::Time t )
 {
-	cmf::upslope::SoilLayer_ptr left=m_soil_left.lock();
-	cmf::upslope::SoilLayer_ptr right= m_soil_right.lock();
+	cmf::upslope::SoilLayer::ptr left=m_soil_left.lock();
+	cmf::upslope::SoilLayer::ptr right= m_soil_right.lock();
 
 	real
 		Psi1= left->cell.z-left->get_upper_boundary(),
