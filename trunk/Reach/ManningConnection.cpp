@@ -12,7 +12,7 @@ real cmf::river::Manning::calc_q( cmf::math::Time t )
 		/*diffusive slope*/	        (left_node()->get_potential()-right_node()->get_potential())/d
 		/*kinematic slope*/	      : (left_node()->Location.z - right_node()->Location.z)/d,
 		
-		abs_slope=fabs(slope) - 1e-6;
+		abs_slope=fabs(slope);
 	// No slope, no flux
 	if (abs_slope<=0) return 0.0;
 	// Get the source of the flow
@@ -30,7 +30,7 @@ real cmf::river::Manning::calc_q( cmf::math::Time t )
 		P=flux_geometry.get_wetted_perimeter(h);
 	if (A<=0 || P<=0) return 0.0;
 	// Absolute flux in m3/s
-	real qManning = A * pow((A/P),0.6666667)*sqrt(abs_slope/flux_geometry.get_nManning());
+	real qManning = A * pow((A/P),0.6666667)*sqrt(abs_slope)/flux_geometry.get_nManning();
 	// Return flux with correct sign in m3/day
 	return qManning * sign(slope) * (24*60*60);
 }
