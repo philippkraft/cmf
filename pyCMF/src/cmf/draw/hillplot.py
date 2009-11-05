@@ -43,7 +43,7 @@ class hill_plot(object):
             
             for l in c.layers:
                 x,z=self.__get_layer_shape(l, c, c_left, c_right)
-                self.polys[l.node_id],=pylab.fill(x,z,fc=pylab.cm.RdYlBu(evalfunction(l)),ec='0.5',zorder=0)
+                self.polys[l.node_id],=pylab.fill(x,z,fc=pylab.cm.RdYlBu(evalfunction(l)),ec='none',zorder=0)
                 self.__cells_of_layer[l.node_id]=(c,c_left,c_right)
         layer_pos=self.layers.get_positions()
         surf_pos=self.surfacewater.get_positions()
