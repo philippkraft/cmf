@@ -22,16 +22,15 @@ def find_layer(cell,z):
                 return l
     return None
 
-def make_rice_paddies(project,count=3,cells_per_paddy=10,dam_height=1.0):
-    h = (count+3) * dam_height
+def make_rice_paddies(project,count=3,cells_per_paddy=10,dam_height=1.0,terrace_height=1.0,r_curve=cmf.BrooksCoreyRetentionCurve()):
+    h = (count+2) * terrace_height 
     x = 0
     c=None
     pool_of_cell={}
     pools=[]
     for i in range(count):
-        c,x=add_cell(project,x,h,c)
-        h-=dam_height
-        if i>0: h-=dam_height
+        c,x=add_cell(project,x,h + dam_height,c)
+        if i>0: h-=terrace_height
         pool=cmf.OpenWaterStorage.create(project,cells_per_paddy * 10)
         pool.Name = "Paddy #%s" % i
         pool.Location = cmf.point(x + cells_per_paddy*0.5,0,h)
@@ -40,19 +39,18 @@ def make_rice_paddies(project,count=3,cells_per_paddy=10,dam_height=1.0):
         for j in range(cells_per_paddy):
             c,x=add_cell(project,x,h,c)
             pool_of_cell[c]=pool
-        h+=dam_height
-        c,x=add_cell(project,x,h,c)
+        c,x=add_cell(project,x,h + dam_height,c)
     
-    c,x=add_cell(project, x, 2 * dam_height, c)
-    bc=cmf.BrooksCoreyRetentionCurve(0.5,0.5,6,0.35)    
+    c,x=add_cell(project, x, 2 * terrace_height, c)
     for c in project:
         for d in arange(0.0,c.z,0.1):
-            c.add_layer(d+0.1,bc)
+            c.add_layer(d+0.1,r_curve)
             c.layers[-1].Location.z =c.z - (d+0.05)
         c.install_connection(cmf.Richards)
         c.install_connection(cmf.PenmanMonteithET)
-        cmf.connect(cmf.Richards,c.layers[0],c.surfacewater)
-        c.saturated_depth=c.z - dam_height*1.9
+        if c in pool_of_cell:
+            cmf.connect(cmf.Richards,c.layers[0],c.surfacewater)
+        c.saturated_depth=c.z - terrace_height*1.9
     for i,c in enumerate(project[:-1]):
         for l in c.layers:
             for n,w in c.neighbors:
@@ -74,7 +72,7 @@ def draw_fig(storages,t=cmf.Time(),qscale=100,alpha=1.0):
     for s in storages:
         if isinstance(s, cmf.SoilLayer):
             r[s.Location.x, s.Location.z] = s.wetness
-    r.draw(hold=0,cmap=cm.RdYlBu,alpha=alpha,vmax=1.0,zorder=1)
+    r.draw(hold=0,cmap=cm.RdYlBu,alpha=alpha,vmax=1.0,zorder=1,interpolation='bilinear')
     axis('tight')
     pos=storages.get_positions()
     f=storages.get_fluxes3d(t)
@@ -83,20 +81,28 @@ def draw_fig(storages,t=cmf.Time(),qscale=100,alpha=1.0):
     
     draw()
     ion()
-def equalize_surfacewater(cells):
-    mean_d=sum(c.surfacewater.depth for c in cells)/len(cells)
-    for c in cells:
-        c.surfacewater.depth = mean_d
 if __name__=='__main__':
     p=cmf.project()
-    pools,dbc,pool_cell_dict=make_rice_paddies(p,3,5,1)
+    pool_length=20
+    dam_height=0.5
+    terrace_height=0.5
+    pool_count=3
+    pools,dbc,pool_cell_dict=make_rice_paddies(p,pool_count,
+                                               pool_length,dam_height,
+                                               terrace_height)
     storages=cmf.node_list.from_sequence(pools)
     storages.extend(cmf.get_layers(p))
-    integ=cmf.CVodeIntegrator(p,1e-6)
+    for c in pool_cell_dict:
+        c.layers[0].soil.SetKsat(0.1,0.0)
+    integ=cmf.CVodeIntegrator(storages,1e-6)
     integ.preconditioner='R'
-    pools[1].depth=0.9
-    b = lambda : bar(left=[.5,7.5,14.5],bottom=[5,4,3],width=5,height=[pool.depth for pool in pools],alpha=0.6)
-    scale=100
+    pools[0].depth = dam_height
+    b = lambda : bar(left  =[(pool_length+2) * i +.5 for i in range(pool_count) ],
+                     bottom=[(pool_count-i+2)*terrace_height for i in range(pool_count)],
+                     width=pool_length,
+                     height=[pool.depth for pool in pools],
+                     zorder=0,fc=(0.6,0.6,1.0),ec=(0.3,0.3,1.0))
+    scale=500
     def run(for_t=cmf.min*15):
         for c,P in pool_cell_dict.iteritems():
             c.surfacewater.potential = P.potential
@@ -104,10 +110,15 @@ if __name__=='__main__':
         integ(integ.t+for_t)
         for c,P in pool_cell_dict.iteritems():
             P.volume += c.surfacewater.water_balance(integ.t) * for_t.AsDays()
-        draw_fig(storages,integ.t,scale)
+        draw_fig(storages,integ.t,scale,0.85)
         b()
-        return integ.t, [c for c in p if c.surfacewater.is_source]
-    run(cmf.min)
-    RRR=b()
-    show()
+        title(integ.t)
+        return integ.t, [p.depth for p in pools]
+    for i in range(24*14):
+        run()
+        savefig('rice_film/rice%05i.png' % i)
+        if pools[0].depth<0.05:
+            pools[0].depth=dam_height
+    
+    
  
