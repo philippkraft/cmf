@@ -36,6 +36,8 @@ namespace cmf {
 		{
 		protected:
 			real m_Potential;
+			typedef std::map<solute,real> conc_map;
+			conc_map m_concentration;
 		public:
 			typedef std::tr1::shared_ptr<cmf::water::DricheletBoundary> ptr;
 #ifndef SWIG
@@ -49,6 +51,8 @@ namespace cmf {
 			{
 				m_Potential=new_potential;
 			}
+			virtual void set_conc(const cmf::water::solute& solute, double value);
+			virtual real conc(cmf::math::Time t, const cmf::water::solute& solute) const;
 			bool is_source;
 			bool is_empty() const
 			{

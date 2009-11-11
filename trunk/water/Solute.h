@@ -31,27 +31,27 @@ namespace cmf
 #ifndef SWIG
 			solute& operator=(const solute& copy);
 #endif
-			bool operator==(const solute& cmp)
+			bool operator==(const solute& cmp) const
 			{
 				return this->Id == cmp.Id;
 			}
-			bool operator<(const solute& cmp)
+			bool operator<(const solute& cmp)	const
 			{
 				return Id<cmp.Id;
 			}
-			bool operator>(const solute& cmp)
+			bool operator>(const solute& cmp)	const
 			{
 				return Id>cmp.Id;
 			}							
-			bool operator<=(const solute& cmp)
+			bool operator<=(const solute& cmp) const
 			{
 				return Id<cmp.Id;
 			}
-			bool operator>=(const solute& cmp)
+			bool operator>=(const solute& cmp) const
 			{
 				return Id>=cmp.Id;
 			}						
-			bool operator!=(const solute& cmp)
+			bool operator!=(const solute& cmp) const
 			{
 				return Id!=cmp.Id;
 			}
