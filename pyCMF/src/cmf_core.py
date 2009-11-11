@@ -3248,6 +3248,10 @@ class DricheletBoundary(flux_node):
     """Proxy of C++ cmf::water::DricheletBoundary class"""
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
     __repr__ = _swig_repr
+    def set_conc(self, *args):
+        """set_conc(self, solute solute, double value)"""
+        return _cmf_core.DricheletBoundary_set_conc(self, *args)
+
     is_source = _swig_property(_cmf_core.DricheletBoundary_is_source_get, _cmf_core.DricheletBoundary_is_source_set)
     def RecalcFluxes(self, *args):
         """RecalcFluxes(self, Time t) -> bool"""
@@ -3265,6 +3269,7 @@ class DricheletBoundary(flux_node):
         return self.to_string()
 
     __swig_destroy__ = _cmf_core.delete_DricheletBoundary
+DricheletBoundary.set_conc = new_instancemethod(_cmf_core.DricheletBoundary_set_conc,None,DricheletBoundary)
 DricheletBoundary.RecalcFluxes = new_instancemethod(_cmf_core.DricheletBoundary_RecalcFluxes,None,DricheletBoundary)
 DricheletBoundary_swigregister = _cmf_core.DricheletBoundary_swigregister
 DricheletBoundary_swigregister(DricheletBoundary)

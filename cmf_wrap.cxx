@@ -26025,7 +26025,7 @@ SWIGINTERN PyObject *_wrap_solute___eq__(PyObject *SWIGUNUSEDPARM(self), PyObjec
   if (!SWIG_Python_UnpackTuple(args,"solute___eq__",2,2,swig_obj)) SWIG_fail;
   res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__water__solute, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "solute___eq__" "', argument " "1"" of type '" "cmf::water::solute *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "solute___eq__" "', argument " "1"" of type '" "cmf::water::solute const *""'"); 
   }
   arg1 = reinterpret_cast< cmf::water::solute * >(argp1);
   res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_cmf__water__solute,  0  | 0);
@@ -26038,7 +26038,7 @@ SWIGINTERN PyObject *_wrap_solute___eq__(PyObject *SWIGUNUSEDPARM(self), PyObjec
   arg2 = reinterpret_cast< cmf::water::solute * >(argp2);
   {
     try {
-      result = (bool)(arg1)->operator ==((cmf::water::solute const &)*arg2);
+      result = (bool)((cmf::water::solute const *)arg1)->operator ==((cmf::water::solute const &)*arg2);
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -26065,7 +26065,7 @@ SWIGINTERN PyObject *_wrap_solute___lt__(PyObject *SWIGUNUSEDPARM(self), PyObjec
   if (!SWIG_Python_UnpackTuple(args,"solute___lt__",2,2,swig_obj)) SWIG_fail;
   res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__water__solute, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "solute___lt__" "', argument " "1"" of type '" "cmf::water::solute *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "solute___lt__" "', argument " "1"" of type '" "cmf::water::solute const *""'"); 
   }
   arg1 = reinterpret_cast< cmf::water::solute * >(argp1);
   res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_cmf__water__solute,  0  | 0);
@@ -26078,7 +26078,7 @@ SWIGINTERN PyObject *_wrap_solute___lt__(PyObject *SWIGUNUSEDPARM(self), PyObjec
   arg2 = reinterpret_cast< cmf::water::solute * >(argp2);
   {
     try {
-      result = (bool)(arg1)->operator <((cmf::water::solute const &)*arg2);
+      result = (bool)((cmf::water::solute const *)arg1)->operator <((cmf::water::solute const &)*arg2);
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -26105,7 +26105,7 @@ SWIGINTERN PyObject *_wrap_solute___gt__(PyObject *SWIGUNUSEDPARM(self), PyObjec
   if (!SWIG_Python_UnpackTuple(args,"solute___gt__",2,2,swig_obj)) SWIG_fail;
   res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__water__solute, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "solute___gt__" "', argument " "1"" of type '" "cmf::water::solute *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "solute___gt__" "', argument " "1"" of type '" "cmf::water::solute const *""'"); 
   }
   arg1 = reinterpret_cast< cmf::water::solute * >(argp1);
   res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_cmf__water__solute,  0  | 0);
@@ -26118,7 +26118,7 @@ SWIGINTERN PyObject *_wrap_solute___gt__(PyObject *SWIGUNUSEDPARM(self), PyObjec
   arg2 = reinterpret_cast< cmf::water::solute * >(argp2);
   {
     try {
-      result = (bool)(arg1)->operator >((cmf::water::solute const &)*arg2);
+      result = (bool)((cmf::water::solute const *)arg1)->operator >((cmf::water::solute const &)*arg2);
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -26145,7 +26145,7 @@ SWIGINTERN PyObject *_wrap_solute___le__(PyObject *SWIGUNUSEDPARM(self), PyObjec
   if (!SWIG_Python_UnpackTuple(args,"solute___le__",2,2,swig_obj)) SWIG_fail;
   res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__water__solute, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "solute___le__" "', argument " "1"" of type '" "cmf::water::solute *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "solute___le__" "', argument " "1"" of type '" "cmf::water::solute const *""'"); 
   }
   arg1 = reinterpret_cast< cmf::water::solute * >(argp1);
   res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_cmf__water__solute,  0  | 0);
@@ -26158,7 +26158,7 @@ SWIGINTERN PyObject *_wrap_solute___le__(PyObject *SWIGUNUSEDPARM(self), PyObjec
   arg2 = reinterpret_cast< cmf::water::solute * >(argp2);
   {
     try {
-      result = (bool)(arg1)->operator <=((cmf::water::solute const &)*arg2);
+      result = (bool)((cmf::water::solute const *)arg1)->operator <=((cmf::water::solute const &)*arg2);
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -26185,7 +26185,7 @@ SWIGINTERN PyObject *_wrap_solute___ge__(PyObject *SWIGUNUSEDPARM(self), PyObjec
   if (!SWIG_Python_UnpackTuple(args,"solute___ge__",2,2,swig_obj)) SWIG_fail;
   res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__water__solute, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "solute___ge__" "', argument " "1"" of type '" "cmf::water::solute *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "solute___ge__" "', argument " "1"" of type '" "cmf::water::solute const *""'"); 
   }
   arg1 = reinterpret_cast< cmf::water::solute * >(argp1);
   res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_cmf__water__solute,  0  | 0);
@@ -26198,7 +26198,7 @@ SWIGINTERN PyObject *_wrap_solute___ge__(PyObject *SWIGUNUSEDPARM(self), PyObjec
   arg2 = reinterpret_cast< cmf::water::solute * >(argp2);
   {
     try {
-      result = (bool)(arg1)->operator >=((cmf::water::solute const &)*arg2);
+      result = (bool)((cmf::water::solute const *)arg1)->operator >=((cmf::water::solute const &)*arg2);
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -26225,7 +26225,7 @@ SWIGINTERN PyObject *_wrap_solute___ne__(PyObject *SWIGUNUSEDPARM(self), PyObjec
   if (!SWIG_Python_UnpackTuple(args,"solute___ne__",2,2,swig_obj)) SWIG_fail;
   res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__water__solute, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "solute___ne__" "', argument " "1"" of type '" "cmf::water::solute *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "solute___ne__" "', argument " "1"" of type '" "cmf::water::solute const *""'"); 
   }
   arg1 = reinterpret_cast< cmf::water::solute * >(argp1);
   res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_cmf__water__solute,  0  | 0);
@@ -26238,7 +26238,7 @@ SWIGINTERN PyObject *_wrap_solute___ne__(PyObject *SWIGUNUSEDPARM(self), PyObjec
   arg2 = reinterpret_cast< cmf::water::solute * >(argp2);
   {
     try {
-      result = (bool)(arg1)->operator !=((cmf::water::solute const &)*arg2);
+      result = (bool)((cmf::water::solute const *)arg1)->operator !=((cmf::water::solute const &)*arg2);
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -33181,6 +33181,65 @@ SWIGINTERN PyObject *linear_scale_swigregister(PyObject *SWIGUNUSEDPARM(self), P
 SWIGINTERN PyObject *linear_scale_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   return SWIG_Python_InitShadowInstance(args);
 }
+
+SWIGINTERN PyObject *_wrap_DricheletBoundary_set_conc(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  cmf::water::DricheletBoundary *arg1 = (cmf::water::DricheletBoundary *) 0 ;
+  cmf::water::solute *arg2 = 0 ;
+  double arg3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  std::tr1::shared_ptr< cmf::water::DricheletBoundary > tempshared1 ;
+  std::tr1::shared_ptr< cmf::water::DricheletBoundary > *smartarg1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  double val3 ;
+  int ecode3 = 0 ;
+  PyObject *swig_obj[3] ;
+  
+  if (!SWIG_Python_UnpackTuple(args,"DricheletBoundary_set_conc",3,3,swig_obj)) SWIG_fail;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_std__tr1__shared_ptrT_cmf__water__DricheletBoundary_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DricheletBoundary_set_conc" "', argument " "1"" of type '" "cmf::water::DricheletBoundary *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< std::tr1::shared_ptr<  cmf::water::DricheletBoundary > * >(argp1);
+      delete reinterpret_cast< std::tr1::shared_ptr<  cmf::water::DricheletBoundary > * >(argp1);
+      arg1 = const_cast< cmf::water::DricheletBoundary * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< std::tr1::shared_ptr<  cmf::water::DricheletBoundary > * >(argp1);
+      arg1 = const_cast< cmf::water::DricheletBoundary * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_cmf__water__solute,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "DricheletBoundary_set_conc" "', argument " "2"" of type '" "cmf::water::solute const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "DricheletBoundary_set_conc" "', argument " "2"" of type '" "cmf::water::solute const &""'"); 
+  }
+  arg2 = reinterpret_cast< cmf::water::solute * >(argp2);
+  ecode3 = SWIG_AsVal_double(swig_obj[2], &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "DricheletBoundary_set_conc" "', argument " "3"" of type '" "double""'");
+  } 
+  arg3 = static_cast< double >(val3);
+  {
+    try {
+      (arg1)->set_conc((cmf::water::solute const &)*arg2,arg3);
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
 
 SWIGINTERN PyObject *_wrap_DricheletBoundary_is_source_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
@@ -64028,6 +64087,7 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"delete_linear_scale", (PyCFunction)_wrap_delete_linear_scale, METH_O, (char *)"delete_linear_scale(linear_scale self)"},
 	 { (char *)"linear_scale_swigregister", linear_scale_swigregister, METH_VARARGS, NULL},
 	 { (char *)"linear_scale_swiginit", linear_scale_swiginit, METH_VARARGS, NULL},
+	 { (char *)"DricheletBoundary_set_conc", _wrap_DricheletBoundary_set_conc, METH_VARARGS, (char *)"DricheletBoundary_set_conc(DricheletBoundary self, solute solute, double value)"},
 	 { (char *)"DricheletBoundary_is_source_set", _wrap_DricheletBoundary_is_source_set, METH_VARARGS, (char *)"DricheletBoundary_is_source_set(DricheletBoundary self, bool is_source)"},
 	 { (char *)"DricheletBoundary_is_source_get", (PyCFunction)_wrap_DricheletBoundary_is_source_get, METH_O, (char *)"DricheletBoundary_is_source_get(DricheletBoundary self) -> bool"},
 	 { (char *)"DricheletBoundary_RecalcFluxes", _wrap_DricheletBoundary_RecalcFluxes, METH_VARARGS, (char *)"DricheletBoundary_RecalcFluxes(DricheletBoundary self, Time t) -> bool"},
