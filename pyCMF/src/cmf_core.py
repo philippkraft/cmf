@@ -5230,6 +5230,7 @@ class SoilLayer(WaterStorage):
     thickness = _swig_property(_cmf_core.SoilLayer_thickness_get)
     lower_boundary = _swig_property(_cmf_core.SoilLayer_lower_boundary_get)
     upper_boundary = _swig_property(_cmf_core.SoilLayer_upper_boundary_get)
+    porosity = _swig_property(_cmf_core.SoilLayer_porosity_get)
     boundary=property(lambda self:(self.upper_boundary,self.lower_boundary),None,"Returns the upper and lower boundary of the layer")
     pF=property(lambda self : waterhead_to_pF(self.matrix_potential),None,"The actual pF value")
     soil=property(get_soil,set_soil,"The retention curve of the layer")
