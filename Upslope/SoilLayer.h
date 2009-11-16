@@ -36,7 +36,10 @@ namespace cmf {
 			real get_thickness() const {return get_lower_boundary()-get_upper_boundary();}
 			/// Returns the soil properties of the water storage
 			virtual cmf::upslope::RetentionCurve& get_soil() const {return *m_retentioncurve;}
-			virtual void set_soil(const cmf::upslope::RetentionCurve& r_curve) { m_retentioncurve.reset(r_curve.copy());}
+			virtual void set_soil(const cmf::upslope::RetentionCurve& r_curve) { 
+				m_retentioncurve.reset(r_curve.copy());
+				StateChangeAction();
+			}
 			/// Returns the actual volumetric water content of the water storage
 			virtual real get_theta() const {return m_wet.theta;}
 			virtual void set_theta(real Value)
@@ -57,6 +60,8 @@ namespace cmf {
 			/// Gravitational get_potential in m, reference height is sea level. If the layer is saturated, it returns the saturated depth above sea level, otherwise it returns the upperboundary of the layer
 			/// \f[ \Psi_G=h \f]
 			real get_gravitational_potential() const;
+			/// Returns the mean porosity in the layer
+			real get_porosity() const			{return get_capacity()/(cell.get_area() * get_thickness());}
 			/// Returns the capacity of the water storage in m3
 			virtual real get_capacity()	const	{return m_wet.C;}
 			/// Sets the potential of this soil water storage

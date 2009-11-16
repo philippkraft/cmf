@@ -34,7 +34,7 @@
 %attribute(cmf::upslope::SoilLayer,real,thickness,get_thickness);
 %attribute(cmf::upslope::SoilLayer,real,lower_boundary,get_lower_boundary);
 %attribute(cmf::upslope::SoilLayer,real,upper_boundary,get_upper_boundary);
-
+%attribute(cmf::upslope::SoilLayer,real,porosity,get_porosity);
 %include "upslope/SoilLayer.h"
 
 

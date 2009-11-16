@@ -5343,6 +5343,9 @@ SWIGINTERN void std_vector_Sl_cmf_upslope_Cell_Sm__Sg__append(std::vector< cmf::
 
 #define cmf_upslope_SoilLayer_upper_boundary_get(self_) self_->get_upper_boundary()
   
+
+#define cmf_upslope_SoilLayer_porosity_get(self_) self_->get_porosity()
+  
 SWIGINTERN std::tr1::shared_ptr< cmf::water::WaterStorage > cmf_upslope_SoilLayer_SWIGSharedPtrUpcast(std::tr1::shared_ptr< cmf::upslope::SoilLayer > swigSharedPtrUpcast){
     return swigSharedPtrUpcast;
   }
@@ -52769,6 +52772,48 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_SoilLayer_porosity_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  cmf::upslope::SoilLayer *arg1 = (cmf::upslope::SoilLayer *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  std::tr1::shared_ptr< cmf::upslope::SoilLayer > tempshared1 ;
+  std::tr1::shared_ptr< cmf::upslope::SoilLayer > *smartarg1 = 0 ;
+  PyObject *swig_obj[1] ;
+  real result;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_std__tr1__shared_ptrT_cmf__upslope__SoilLayer_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SoilLayer_porosity_get" "', argument " "1"" of type '" "cmf::upslope::SoilLayer *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< std::tr1::shared_ptr<  cmf::upslope::SoilLayer > * >(argp1);
+      delete reinterpret_cast< std::tr1::shared_ptr<  cmf::upslope::SoilLayer > * >(argp1);
+      arg1 = const_cast< cmf::upslope::SoilLayer * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< std::tr1::shared_ptr<  cmf::upslope::SoilLayer > * >(argp1);
+      arg1 = const_cast< cmf::upslope::SoilLayer * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  {
+    try {
+      result = (real)cmf_upslope_SoilLayer_porosity_get(arg1);
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+    
+  }
+  resultobj = SWIG_From_double(static_cast< double >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_delete_SoilLayer(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   cmf::upslope::SoilLayer *arg1 = (cmf::upslope::SoilLayer *) 0 ;
@@ -64898,6 +64943,7 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"SoilLayer_thickness_get", (PyCFunction)_wrap_SoilLayer_thickness_get, METH_O, (char *)"SoilLayer_thickness_get(SoilLayer self) -> real"},
 	 { (char *)"SoilLayer_lower_boundary_get", (PyCFunction)_wrap_SoilLayer_lower_boundary_get, METH_O, (char *)"SoilLayer_lower_boundary_get(SoilLayer self) -> real"},
 	 { (char *)"SoilLayer_upper_boundary_get", (PyCFunction)_wrap_SoilLayer_upper_boundary_get, METH_O, (char *)"SoilLayer_upper_boundary_get(SoilLayer self) -> real"},
+	 { (char *)"SoilLayer_porosity_get", (PyCFunction)_wrap_SoilLayer_porosity_get, METH_O, (char *)"SoilLayer_porosity_get(SoilLayer self) -> real"},
 	 { (char *)"delete_SoilLayer", (PyCFunction)_wrap_delete_SoilLayer, METH_O, (char *)"delete_SoilLayer(SoilLayer self)"},
 	 { (char *)"SoilLayer_swigregister", SoilLayer_swigregister, METH_VARARGS, NULL},
 	 { (char *)"VariableLayerSaturated_UpperLayer", (PyCFunction)_wrap_VariableLayerSaturated_UpperLayer, METH_O, (char *)"VariableLayerSaturated_UpperLayer(VariableLayerSaturated self) -> __dummy_18__"},
