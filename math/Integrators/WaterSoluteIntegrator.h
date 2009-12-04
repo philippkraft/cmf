@@ -31,14 +31,14 @@ namespace cmf {
 			}
 			void set_water_integrator(cmf::math::Integrator* templ)
 			{
-				WaterIntegrator=templ->Copy();
-				SoluteIntegrator=SoluteIntegrator->Copy();
+				WaterIntegrator.reset(templ->Copy());
+				SoluteIntegrator.reset(SoluteIntegrator->Copy());
 				distribute_states();
 			}
 			void set_solute_integrator(cmf::math::Integrator* templ)
 			{
-				SoluteIntegrator=templ->Copy();
-				WaterIntegrator=WaterIntegrator->Copy();
+				SoluteIntegrator.reset(templ->Copy());
+				WaterIntegrator.reset(WaterIntegrator->Copy());
 				distribute_states();
 			}
 			void AddStatesFromOwner(cmf::math::StateVariableOwner& stateOwner)

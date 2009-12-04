@@ -227,7 +227,8 @@ cmf::river::Channel::Channel( char typecode, double length, double width/*=1.*/,
 	case 'S':	
 		newChannel= new cmf::river::SWATReachType(length,width,depth);
 		break;
-	case 'P': m_channel = new cmf::river::PipeReach(length,width);
+	case 'P': 
+		newChannel = new cmf::river::PipeReach(length,width);
 		break;
 	default:
 		throw std::runtime_error("Not supported reach type shortcut");
@@ -256,13 +257,13 @@ cmf::river::Channel::Channel( const IVolumeHeightFunction& for_casting ) : IChan
 		throw std::runtime_error("Failed interpreting a non channel h(V) function as a channel");
 	else
 	{
-		m_channel=cast->copy();
+		m_channel.reset(cast->copy());
 		length = cast->length;
 	}
 }
 cmf::river::Channel& cmf::river::Channel::operator=( const IChannel& for_assignment )
 {
-	m_channel = for_assignment.copy();
+	m_channel.reset(for_assignment.copy());
 	return *this;
 }
 

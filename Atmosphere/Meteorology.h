@@ -29,25 +29,26 @@ namespace cmf {
 				sunshine,		///< Fractional sunshine duration (per potential sunshine duration) \f$\frac n N\ [-]\f$
 				Rs,					///< Global Radiation in \f$R_s \left[\frac{MJ}{m^2 day}\right]\f$
 				instument_height; ///< Height of the measuring instuments above the vegetation
-			/// Calculates the net radiation flux  \f$R_n \left[\frac{MJ}{m^2 day}\right]\f$
-			///
-			/// \f{eqnarray*}
-			/// R_{n} &=& R_{ns} - R_{nl} \\
-			/// \mbox{ Net short wave radiation: }R_{ns} &=& (1-\alpha)	R_s \\
-			/// \mbox{ Net long wave radiation: }R_{nl} &=& R_{black}\ \beta_{v}\ \beta_{c}	\\
-			/// \mbox{Black body radiation: } 
-			/// R_{black} &=& \left\{\begin{array}{cl} 
-			///                    \sigma T^4 & \mbox{for less than daily time steps} \\
-			///                    \sigma \frac {T_{max}^4 + T_{min}^4} 2  & \mbox{for daily time steps}
-			///                    \end{array} \right. \\
-			/// T &=& \mbox{Temperature }[K] \\
-			/// \sigma &=& 4.903\ 10^{-9} \frac{MJ}{K^4 m^2 day} \mbox{ Stefan-Boltzmann constant } \\
-			/// \mbox{Long wave reflectance:     } \\
-			/// \mbox{by water vapor: }\beta_{v} &=& 0.34 - 0.14 \sqrt{e_a} \\
-			/// \mbox{ by clouds: }\beta_{c} &=& 0.1 + 0.9 \frac n N  
-			/// \f}
-			/// @param albedo the albedo \f$\alpha\f$ of the surface
-			/// @param daily If true, the net radiation for daily averages will be calculated
+			/** Calculates the net radiation flux  \f$R_n \left[\frac{MJ}{m^2 day}\right]\f$
+			
+			\f{eqnarray*}
+			R_{n} &=& R_{ns} - R_{nl} \\
+			\mbox{ Net short wave radiation: }R_{ns} &=& (1-\alpha)	R_s \\
+			\mbox{ Net long wave radiation: }R_{nl} &=& R_{black}\ \beta_{v}\ \beta_{c}	\\
+			\mbox{Black body radiation: } 
+			R_{black} &=& \left\{\begin{array}{cl} 
+			                    \sigma T^4 & \mbox{for less than daily time steps} \\
+			                    \sigma \frac {T_{max}^4 + T_{min}^4} 2  & \mbox{for daily time steps}
+			                    \end{array} \right. \\
+			 T &=& \mbox{Temperature }[K] \\
+			 \sigma &=& 4.903\ 10^{-9} \frac{MJ}{K^4 m^2 day} \mbox{ Stefan-Boltzmann constant } \\
+			 \mbox{Long wave reflectance:     } \\
+			 \mbox{by water vapor: }\beta_{v} &=& 0.34 - 0.14 \sqrt{e_a} \\
+			 \mbox{ by clouds: }\beta_{c} &=& 0.1 + 0.9 \frac n N  
+			 \f}
+			 @param albedo the albedo \f$\alpha\f$ of the surface
+			 @param daily If true, the net radiation for daily averages will be calculated
+		 **/
 			double Rn(double albedo,bool daily=false) const;
 			/// Calculates the mean pressure for a specific height
 			Weather()
@@ -197,36 +198,37 @@ namespace cmf {
 			cmf::atmosphere::Weather get_data(cmf::math::Time t,double height) const;
 
 			
-			/// Returns the global radiation at a given time step \f$ R_s \frac{MJ}{m^2day}\f$, see http://www.fao.org/docrep/X0490E/x0490e07.htm#radiation
-			/// \f{eqnarray*}
-			/// \phi &=& \frac{(\mbox{geogr. Latitude})^\circ \pi}{180^\circ} \mbox{ Latitude in }rad \\
-			/// \delta &=& 0.409 \sin\left(\frac{2\pi}{365}DOY - 1.39\right) \mbox{ Declination, DOY is day of year}\\
-			/// \omega_s &=& \arccos(-\tan\phi\tan\delta) \mbox{ Sunset angle} \\
-			/// G_{sc} &=& 0.0802 \frac{MJ}{m^2min} \mbox{Solar constant} \\
-			/// d_r &=& 1+0.033 \cos\left(\frac{2\pi}{365}DOY\right) \mbox{Inverse relative distance Earth-Sun} \\
-			/// b &=& \frac{2\pi(DOY-81)}{364}\\
-			/// S_c &=& 0.1645\sin(2b)-0.1255\cos(b)-0.025\sin(b) \mbox{ Seasonal correction for solar time} \\
-			/// \omega &=& \frac {\pi} {12}	\left(t_h+\frac{(\mbox{geogr. Longitude})^\circ}{15}-\mbox{Timezone}+S_c-12\right) \mbox{ solar time in }rad \\
-			/// \mbox{If daily}  \\
-			/// R_a &=& \frac{24\ 60}{\pi}G_{sc}\ d_r \left(\omega_s \sin\phi \sin\delta + \cos\phi \cos\delta \sin\omega_s\right) \mbox{Extraterrestrial radiation } \frac{MJ}{m^2 day} \\
-			/// \mbox{If hourly} \\
-			/// R_a &=& \frac{12\ 24\ 60}{\pi}G_{sc}\ d_r \left(\left(\omega^+ -\omega^-\right) \sin\phi \sin\delta + \cos\phi \cos\delta \left(\sin\omega^+ - \sin\omega^-\right)\right) \\
-			/// && \omega^+,\omega^- = \omega \pm\frac{\pi}{24} \\
-			/// \frac n N &=& \mbox{Fractional sunshine duration}		 \\
-			/// R_s &=& \left(0.25+\left(0.5+2\ 10^{-5}z\right)\frac{n}{N}\right)R_a \mbox{Global radiation in }\frac{MJ}{m^2 day} \\ 
-			/// && z=\mbox{Height a.s.l. in }m \\
-			/// \f}
+			/** Returns the global radiation at a given time step \f$ R_s \frac{MJ}{m^2day}\f$, see http://www.fao.org/docrep/X0490E/x0490e07.htm#radiation
+			 \f{eqnarray*}
+			 \phi &=& \frac{(\mbox{geogr. Latitude})^\circ \pi}{180^\circ} \mbox{ Latitude in }rad \\
+			 \delta &=& 0.409 \sin\left(\frac{2\pi}{365}DOY - 1.39\right) \mbox{ Declination, DOY is day of year}\\
+			 \omega_s &=& \arccos(-\tan\phi\tan\delta) \mbox{ Sunset angle} \\
+			 G_{sc} &=& 0.0802 \frac{MJ}{m^2min} \mbox{Solar constant} \\
+			 d_r &=& 1+0.033 \cos\left(\frac{2\pi}{365}DOY\right) \mbox{Inverse relative distance Earth-Sun} \\
+			 b &=& \frac{2\pi(DOY-81)}{364}\\
+			 S_c &=& 0.1645\sin(2b)-0.1255\cos(b)-0.025\sin(b) \mbox{ Seasonal correction for solar time} \\
+			 \omega &=& \frac {\pi} {12}	\left(t_h+\frac{(\mbox{geogr. Longitude})^\circ}{15}-\mbox{Timezone}+S_c-12\right) \mbox{ solar time in }rad \\
+			 \mbox{If daily}  \\
+			 R_a &=& \frac{24\ 60}{\pi}G_{sc}\ d_r \left(\omega_s \sin\phi \sin\delta + \cos\phi \cos\delta \sin\omega_s\right) \mbox{Extraterrestrial radiation } \frac{MJ}{m^2 day} \\
+			 \mbox{If hourly} \\
+			 R_a &=& \frac{12\ 24\ 60}{\pi}G_{sc}\ d_r \left(\left(\omega^+ -\omega^-\right) \sin\phi \sin\delta + \cos\phi \cos\delta \left(\sin\omega^+ - \sin\omega^-\right)\right) \\
+			 && \omega^+,\omega^- = \omega \pm\frac{\pi}{24} \\
+			 \frac n N &=& \mbox{Fractional sunshine duration}		 \\
+			 R_s &=& \left(0.25+\left(0.5+2\ 10^{-5}z\right)\frac{n}{N}\right)R_a \mbox{Global radiation in }\frac{MJ}{m^2 day} \\ 
+			 && z=\mbox{Height a.s.l. in }m \\
+			 \f}
 			double get_global_radiation(cmf::math::Time t,double height,double sunshine_fraction) const;
 			
-			/// Calculates a timeseries of the sunshine fraction (to put into Sunshine) from a timeseries of absolute sunshine duration, using the potential sunshine duration in hours,
-			/// see http://www.fao.org/docrep/X0490E/x0490e07.htm#radiation
-			/// \f{eqnarray*}
-			/// \phi &=& \frac{(\mbox{geogr. Latitude})^\circ \pi}{180^\circ} \mbox{ Latitude in }rad \\
-			/// \delta &=& 0.409 \sin\left(\frac{2\pi}{365}DOY - 1.39\right) \mbox{ Declination, DOY is day of year}\\
-			/// \omega_s &=& \arccos(-\tan\phi\tan\delta) \mbox{ Sunset angle} \\
-			/// N &=& \frac{24}{\pi}\omega_s \mbox{ potential duration of sunshine in }h \\
-			/// \frac n N && n\mbox{Absolute sunshine duration}
-			/// \f}
+			 Calculates a timeseries of the sunshine fraction (to put into Sunshine) from a timeseries of absolute sunshine duration, using the potential sunshine duration in hours,
+			 see http://www.fao.org/docrep/X0490E/x0490e07.htm#radiation
+			 \f{eqnarray*}
+			 \phi &=& \frac{(\mbox{geogr. Latitude})^\circ \pi}{180^\circ} \mbox{ Latitude in }rad \\
+			 \delta &=& 0.409 \sin\left(\frac{2\pi}{365}DOY - 1.39\right) \mbox{ Declination, DOY is day of year}\\
+			 \omega_s &=& \arccos(-\tan\phi\tan\delta) \mbox{ Sunset angle} \\
+			 N &=& \frac{24}{\pi}\omega_s \mbox{ potential duration of sunshine in }h \\
+			 \frac n N && n\mbox{Absolute sunshine duration}
+			 \f} 
+			**/
 			void SetSunshineFraction(cmf::math::timeseries sunshine_duration); 
 
 			//@}

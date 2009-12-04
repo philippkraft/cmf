@@ -44,7 +44,7 @@ namespace cmf {
 			cmf::math::Time max_step;
 			/// Returns the last order of the solver used, may be smaller than MaxOrder due to the number of steps already taken or to fullfill stability limit
 			int GetOrder();
-			void cmf::math::CVodeIntegrator::ReInit(Time initdt, real epsilon=0);
+			void ReInit(Time initdt, real epsilon=0);
 			/// Initializes the solver. Do not add or remove statevariables after initialization
 			void Initialize();
 			virtual int Integrate(cmf::math::Time MaxTime,cmf::math::Time TimeStep);

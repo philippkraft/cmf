@@ -53,7 +53,13 @@ namespace cmf {
 			{
 				return ptr(new OpenWaterStorage(_project,base_geo));
 			}
-			
+			real conc(cmf::math::Time t,const cmf::water::solute& solute)	const
+			{
+				if (is_empty())
+					return cmf::water::flux_node::conc(t,solute);
+				else
+					return cmf::water::WaterStorage::conc(t,solute);
+			}
 			/// Creates an open water storage from a flux node with a prismatic volume
 			static ptr from_node(cmf::water::flux_node::ptr node,real Area);
 			

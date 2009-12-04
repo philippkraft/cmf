@@ -58,7 +58,7 @@ namespace cmf{namespace water {class flux_connection;}}
 
 %attribute(cmf::water::flux_node,real,potential,get_potential,set_potential);
 %attributeval(cmf::water::flux_node, cmf::water::connection_vector, connections, get_connections);
-
+%attribute(cmf::water::flux_connection, real, tracer_filter, get_tracer_filter, set_tracer_filter);
 
 %pythonappend cmf::water::flux_connection::flux_connection{
     self.thisown=0

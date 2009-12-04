@@ -120,7 +120,7 @@ cmf::math::num_array cmf::water::node_list::conc( cmf::math::Time t, const cmf::
 	return res;
 }
 
-int cmf::water::node_list::set_solute_source( const cmf::water::solute& solute, cmf::math::num_array source_fluxes, bool flux_is_conc)
+int cmf::water::node_list::set_solute_source( const cmf::water::solute& solute, cmf::math::num_array source_fluxes)
 {
 	if (size()!=source_fluxes.size())
 		throw std::out_of_range("Size of solute source array does not fit the size of the node_list");
@@ -131,8 +131,7 @@ int cmf::water::node_list::set_solute_source( const cmf::water::solute& solute, 
 		cmf::water::WaterStorage* storage=dynamic_cast<cmf::water::WaterStorage*>(m_nodes[i].get());
 		if (storage)
 		{
-			storage->Solute(solute).source = (!flux_is_conc) ? source_fluxes[i] : 0.0;
-			storage->Solute(solute).source_concentration = (flux_is_conc) ? source_fluxes[i] : 0.0;
+			storage->Solute(solute).source = source_fluxes[i];
 		}
 		else
 			--ok_count;

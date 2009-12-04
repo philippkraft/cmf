@@ -4,6 +4,8 @@
 #include <map>
 #include <vector>
 #include "../math/timeseries.h"
+#include "../math/num_array.h"
+
 #include <string>
 #include <sstream>
 #include <stdexcept>
@@ -89,10 +91,7 @@ namespace cmf
 				return &m_Solutes.at(position<0 ? position + size() : position);
 			}
 		};
-	}
-}
-namespace cmf {
-	namespace water {
+
 		/// A map of concentration time series for solutes
 		class SoluteTimeseries
 		{
