@@ -82,7 +82,7 @@ namespace cmf {
 			virtual double get_depth(double area) const=0;
 			
 			/// @brief Calculates the wetted area from a given depth using the IChannel %geometry. In most cases use get_flux_crossection=V/l, where V is the stored volume and l is the reach length
-			/// @returns   Wetted area of a river cross section [m<sup>2</sup>]
+			/// @returns Wetted area of a river cross section [m<sup>2</sup>]
 			/// @param depth get_depth of the reach [m]
 			virtual double get_flux_crossection(double depth) const=0;
 
@@ -93,12 +93,12 @@ namespace cmf {
 
 			/// Calculates the flow rate from a given water volume in the reach
 			/// \f{eqnarray*}
-			/// q_{Manning}&=& A R^{\frac 23} \sqrt{\frac {\Delta_z} n} \\
-			/// A &=& \frac V l \mbox{ get_flux_crossection of the wetted crossection, Volume per length}\\
-			/// R&=&\frac A P(d) \\
-			/// P(d)&=& \mbox{ get_wetted_perimeter of the wetted crossection, a function of reach depth} \\
-			/// d(V)&=& \mbox{ get_depth of the reach} \\
-			/// \Delta_z&=& \frac{z_{max} - z_{min}}{l} \mbox{ Slope of the reach} \\
+			/// q_{Manning}&=& A R^{\frac 2 3} \sqrt{\frac {\Delta_z} n} \\
+			/// A &=& \frac V l \mbox{, (Crosssectional area of the wetted crossection, Volume per length)} \\
+			/// R &=& \frac A {P(d)} \\
+			/// P(d) &=& \mbox{ the perimeter of the wetted crosssection, a function of reach depth} \\
+			/// d(V) &=& \mbox{ the depth of the reach a function of the volume} \\
+			/// \Delta_z &=& \frac{z_{max} - z_{min}}{l} \mbox{ Slope of the reach}
 			/// \f}
 			/// @returns  Flow rate [m<sup>3</sup>/s]
 			/// @param A The area of the cross section [m<sup>2</sup>]
@@ -170,6 +170,7 @@ namespace cmf {
 			///BottomWidth = 3m, ChannelDepth = 0.5m, BankSlope = 2, nManning = 0.0035, FloodPlainSlope = 200
 			SWATReachType(double l);
 			///Creates a new reach structure from a give width and depth
+			/// @param l length of the channel [m]
 			/// @param BankWidth get_channel_width of the reach from bank to bank [m]
 			/// @param Depth Depth of the reach [m]
 			SWATReachType(double l,double BankWidth,double Depth);

@@ -144,6 +144,14 @@ void cmf::river::Reach::set_dead_end()
 	set_downstream(Reach_ptr());
 	set_outlet(cmf::water::flux_node::ptr());
 }
+
+cmf::river::Reach::ptr cmf::river::Reach::create( const cmf::project& project,cmf::river::Channel shape, bool diffusive/*=false*/ )
+{
+	Reach* pR =	 new Reach(project,shape,diffusive);
+	ptr R (pR);
+	R->weak_this = R;
+	return R;
+}
 /************************************************************************/
 /* Reach Iterator                                                       */
 /************************************************************************/

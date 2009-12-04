@@ -100,7 +100,7 @@ namespace cmf {
 			/// Returns an array holding the concentration of all the flux nodes for the given solute
 			cmf::math::num_array conc(cmf::math::Time t, const cmf::water::solute& solute) const;
 			/// Sets the source flux of a solute storage associated  with a node (node has to be a water storage)
-			int set_solute_source(const cmf::water::solute& solute, cmf::math::num_array source_fluxes, bool flux_is_conc=false);
+			int set_solute_source(const cmf::water::solute& solute, cmf::math::num_array source_fluxes);
 
 			/// A fast method to perform flux queries as a batch. The node lists left and right should have the same length.
 			///

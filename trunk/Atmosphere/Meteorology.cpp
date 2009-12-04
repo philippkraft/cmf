@@ -29,10 +29,6 @@ double cmf::atmosphere::Weather::Rn( double albedo,bool daily/*=false*/ ) const
 	return Rns-Rnl;
 }
 
-double cmf::atmosphere::MeteoStation::get_global_radiation(cmf::math::Time t,double height,double sunshine_fraction ) const
-{
-	return global_radiation(t,height,sunshine_fraction,Longitude,Latitude,Timezone,daily);
-}
 
 
 double cmf::atmosphere::vapour_pressure( double T )	
@@ -114,7 +110,7 @@ cmf::atmosphere::Weather cmf::atmosphere::MeteoStation::get_data( cmf::math::Tim
 		A.e_a=vapour_pressure(A.Tmin);
 	A.sunshine=Sunshine.is_empty() ? 0.5 : Sunshine[t];
 	if (Rs.is_empty())
-		A.Rs=get_global_radiation(t,height,A.sunshine);
+		A.Rs=global_radiation(t,height,A.sunshine,Longitude,Latitude,Timezone,daily);
 	else
 		A.Rs=Rs[t];
 	return A;

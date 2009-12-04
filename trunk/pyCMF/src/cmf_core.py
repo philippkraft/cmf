@@ -1072,6 +1072,10 @@ class timeseries(object):
         """adress(self) -> size_t"""
         return _cmf_core.timeseries_adress(self, *args)
 
+    def copy(self, *args):
+        """copy(self) -> timeseries"""
+        return _cmf_core.timeseries_copy(self, *args)
+
     def size(self, *args):
         """
         size(self) -> int
@@ -1148,17 +1152,6 @@ class timeseries(object):
         __idiv__(self, double arg0) -> timeseries
         """
         return _cmf_core.timeseries___idiv__(self, *args)
-
-    def power(self, *args):
-        """
-        power(self, double arg0) -> timeseries
-
-        timeseries&
-        power(double)
-
-        raises the timeseries to a power 
-        """
-        return _cmf_core.timeseries_power(self, *args)
 
     def __add__(self, *args):
         """
@@ -1264,6 +1257,29 @@ class timeseries(object):
         """max(self) -> double"""
         return _cmf_core.timeseries_max(self, *args)
 
+    def log(self, *args):
+        """log(self) -> timeseries"""
+        return _cmf_core.timeseries_log(self, *args)
+
+    def log10(self, *args):
+        """log10(self) -> timeseries"""
+        return _cmf_core.timeseries_log10(self, *args)
+
+    def power(self, *args):
+        """
+        power(self, double exponent) -> timeseries
+
+        timeseries&
+        power(double)
+
+        raises the timeseries to a power 
+        """
+        return _cmf_core.timeseries_power(self, *args)
+
+    def exp(self, *args):
+        """exp(self) -> timeseries"""
+        return _cmf_core.timeseries_exp(self, *args)
+
     begin = _swig_property(_cmf_core.timeseries_begin_get)
     step = _swig_property(_cmf_core.timeseries_step_get)
     end = _swig_property(_cmf_core.timeseries_end_get)
@@ -1333,7 +1349,7 @@ class timeseries(object):
                 yield self.begin + self.step * i
     def to_buffer(self):
         """Returns a binary buffer filled with the data of self"""
-        return struct.pack('qqqq%id' % self.size(),self.begin().AsMilliseconds(),self.step().AsMilliseconds(),self.interpolationpower(), *self)
+        return struct.pack('qqqq%id' % self.size(),self.begin.AsMilliseconds(),self.step.AsMilliseconds(),self.interpolationpower(), *self)
     def to_file(self,f):
         """ Saves a timeseries in a special binary format.
         The format consists of 4 integers with 64 bit, indicating the milliseconds after the 31.12.1899 00:00 of the beginning of the timeseries, the milliseconds of the time step,
@@ -1343,7 +1359,7 @@ class timeseries(object):
             f=file(f,'wb')
         elif not hasattr(f,'write'):
             raise TypeError("The file f must be either an object providing a write method, like a file, or a valid file name")
-        f.write(struct.pack('qqqq%id' % self.size(),  self.size(), self.begin().AsMilliseconds(),self.step().AsMilliseconds(),self.interpolationpower(), *self))
+        f.write(struct.pack('qqqq%id' % self.size(),  self.size(), self.begin.AsMilliseconds(),self.step.AsMilliseconds(),self.interpolationpower(), *self))
         
     @classmethod
     def from_sequence(cls,begin,step,sequence=[],interpolation_mode=1):
@@ -1362,7 +1378,7 @@ class timeseries(object):
         Description of the file layout:
         byte: 
         0   Number of (int64)
-        8   Begin of timeseries (in ms since 31.12.1899) (int64)
+        8   Begin of timeseries (in ms since 31.12.1899 00:00) (int64)
         16  Step size of timeseries (in ms) (int64)
         24  Interpolation power (int64)
         32  First value of timeseries (float64)
@@ -1383,6 +1399,7 @@ timeseries.add = new_instancemethod(_cmf_core.timeseries_add,None,timeseries)
 timeseries.is_empty = new_instancemethod(_cmf_core.timeseries_is_empty,None,timeseries)
 timeseries.clear = new_instancemethod(_cmf_core.timeseries_clear,None,timeseries)
 timeseries.adress = new_instancemethod(_cmf_core.timeseries_adress,None,timeseries)
+timeseries.copy = new_instancemethod(_cmf_core.timeseries_copy,None,timeseries)
 timeseries.size = new_instancemethod(_cmf_core.timeseries_size,None,timeseries)
 timeseries.get_t = new_instancemethod(_cmf_core.timeseries_get_t,None,timeseries)
 timeseries.get_i = new_instancemethod(_cmf_core.timeseries_get_i,None,timeseries)
@@ -1394,7 +1411,6 @@ timeseries.__iadd__ = new_instancemethod(_cmf_core.timeseries___iadd__,None,time
 timeseries.__isub__ = new_instancemethod(_cmf_core.timeseries___isub__,None,timeseries)
 timeseries.__imul__ = new_instancemethod(_cmf_core.timeseries___imul__,None,timeseries)
 timeseries.__idiv__ = new_instancemethod(_cmf_core.timeseries___idiv__,None,timeseries)
-timeseries.power = new_instancemethod(_cmf_core.timeseries_power,None,timeseries)
 timeseries.__add__ = new_instancemethod(_cmf_core.timeseries___add__,None,timeseries)
 timeseries.__sub__ = new_instancemethod(_cmf_core.timeseries___sub__,None,timeseries)
 timeseries.__mul__ = new_instancemethod(_cmf_core.timeseries___mul__,None,timeseries)
@@ -1411,6 +1427,10 @@ timeseries.floating_min = new_instancemethod(_cmf_core.timeseries_floating_min,N
 timeseries.mean = new_instancemethod(_cmf_core.timeseries_mean,None,timeseries)
 timeseries.min = new_instancemethod(_cmf_core.timeseries_min,None,timeseries)
 timeseries.max = new_instancemethod(_cmf_core.timeseries_max,None,timeseries)
+timeseries.log = new_instancemethod(_cmf_core.timeseries_log,None,timeseries)
+timeseries.log10 = new_instancemethod(_cmf_core.timeseries_log10,None,timeseries)
+timeseries.power = new_instancemethod(_cmf_core.timeseries_power,None,timeseries)
+timeseries.exp = new_instancemethod(_cmf_core.timeseries_exp,None,timeseries)
 timeseries.__len__ = new_instancemethod(_cmf_core.timeseries___len__,None,timeseries)
 timeseries_swigregister = _cmf_core.timeseries_swigregister
 timeseries_swigregister(timeseries)
@@ -2281,6 +2301,23 @@ class ExplicitEuler_fixed(Integrator):
 ExplicitEuler_fixed_swigregister = _cmf_core.ExplicitEuler_fixed_swigregister
 ExplicitEuler_fixed_swigregister(ExplicitEuler_fixed)
 
+class PredictCorrectSimple(Integrator):
+    """Proxy of C++ cmf::math::PredictCorrectSimple class"""
+    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __repr__ = _swig_repr
+    alpha = _swig_property(_cmf_core.PredictCorrectSimple_alpha_get, _cmf_core.PredictCorrectSimple_alpha_set)
+    def __init__(self, *args): 
+        """
+        __init__(self, StateVariableVector states, real Alpha) -> PredictCorrectSimple
+        __init__(self, StateVariableOwner states, real Alpha) -> PredictCorrectSimple
+        __init__(self, real Alpha = 0.5) -> PredictCorrectSimple
+        __init__(self, Integrator copy) -> PredictCorrectSimple
+        """
+        _cmf_core.PredictCorrectSimple_swiginit(self,_cmf_core.new_PredictCorrectSimple(*args))
+    __swig_destroy__ = _cmf_core.delete_PredictCorrectSimple
+PredictCorrectSimple_swigregister = _cmf_core.PredictCorrectSimple_swigregister
+PredictCorrectSimple_swigregister(PredictCorrectSimple)
+
 class ExplicitEuler_variable(Integrator):
     """
     An explicit Euler integrator with variable step size.
@@ -2696,7 +2733,6 @@ class SoluteStorage(StateVariable):
     def __init__(self, *args, **kwargs): raise AttributeError("No constructor defined")
     __repr__ = _swig_repr
     decay = _swig_property(_cmf_core.SoluteStorage_decay_get, _cmf_core.SoluteStorage_decay_set)
-    source_concentration = _swig_property(_cmf_core.SoluteStorage_source_concentration_get, _cmf_core.SoluteStorage_source_concentration_set)
     source = _swig_property(_cmf_core.SoluteStorage_source_get, _cmf_core.SoluteStorage_source_set)
     Solute = _swig_property(_cmf_core.SoluteStorage_Solute_get)
     def conc(self, *args):
@@ -3137,6 +3173,14 @@ flux_node_swigregister(flux_node)
 def count_node_references(*args):
   """count_node_references(ptr node) -> int"""
   return _cmf_core.count_node_references(*args)
+
+def get_higher_node(*args):
+  """get_higher_node(ptr node1, ptr node2) -> ptr"""
+  return _cmf_core.get_higher_node(*args)
+
+def get_lower_node(*args):
+  """get_lower_node(ptr node1, ptr node2) -> ptr"""
+  return _cmf_core.get_lower_node(*args)
 class flux_connection(object):
     """Proxy of C++ cmf::water::flux_connection class"""
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
@@ -3188,6 +3232,7 @@ class flux_connection(object):
         return _cmf_core.flux_connection_short_string(self, *args)
 
     __swig_destroy__ = _cmf_core.delete_flux_connection
+    tracer_filter = _swig_property(_cmf_core.flux_connection_tracer_filter_get, _cmf_core.flux_connection_tracer_filter_set)
     def __repr__(self):
         return self.to_string()
     def __getitem__(self,index):
@@ -3707,7 +3752,7 @@ class node_list(StateVariableOwner):
         return _cmf_core.node_list_conc(self, *args)
 
     def set_solute_source(self, *args):
-        """set_solute_source(self, solute solute, num_array source_fluxes, bool flux_is_conc = False) -> int"""
+        """set_solute_source(self, solute solute, num_array source_fluxes) -> int"""
         return _cmf_core.node_list_set_solute_source(self, *args)
 
     def get_fluxes_to(self, *args):
@@ -4042,10 +4087,6 @@ class MeteoStation(Locatable):
         """get_data(self, Time t, double height) -> Weather"""
         return _cmf_core.MeteoStation_get_data(self, *args)
 
-    def get_global_radiation(self, *args):
-        """get_global_radiation(self, Time t, double height, double sunshine_fraction) -> double"""
-        return _cmf_core.MeteoStation_get_global_radiation(self, *args)
-
     def SetSunshineFraction(self, *args):
         """SetSunshineFraction(self, timeseries sunshine_duration)"""
         return _cmf_core.MeteoStation_SetSunshineFraction(self, *args)
@@ -4078,7 +4119,6 @@ class MeteoStation(Locatable):
 
     __swig_destroy__ = _cmf_core.delete_MeteoStation
 MeteoStation.get_data = new_instancemethod(_cmf_core.MeteoStation_get_data,None,MeteoStation)
-MeteoStation.get_global_radiation = new_instancemethod(_cmf_core.MeteoStation_get_global_radiation,None,MeteoStation)
 MeteoStation.SetSunshineFraction = new_instancemethod(_cmf_core.MeteoStation_SetSunshineFraction,None,MeteoStation)
 MeteoStation_swigregister = _cmf_core.MeteoStation_swigregister
 MeteoStation_swigregister(MeteoStation)
@@ -5726,6 +5766,11 @@ class Reach(OpenWaterStorage):
         return _cmf_core.Reach_set_diffusive(self, *args)
 
     __swig_destroy__ = _cmf_core.delete_Reach
+    def create(*args):
+        """create(project project, Channel shape, bool diffusive = False) -> ptr"""
+        return _cmf_core.Reach_create(*args)
+
+    create = staticmethod(create)
     def SWIGSharedPtrUpcast(*args):
         """SWIGSharedPtrUpcast(__dummy_12__ swigSharedPtrUpcast) -> __dummy_10__"""
         return _cmf_core.Reach_SWIGSharedPtrUpcast(*args)
@@ -5753,6 +5798,10 @@ Reach.get_diffusive = new_instancemethod(_cmf_core.Reach_get_diffusive,None,Reac
 Reach.set_diffusive = new_instancemethod(_cmf_core.Reach_set_diffusive,None,Reach)
 Reach_swigregister = _cmf_core.Reach_swigregister
 Reach_swigregister(Reach)
+
+def Reach_create(*args):
+  """Reach_create(project project, Channel shape, bool diffusive = False) -> ptr"""
+  return _cmf_core.Reach_create(*args)
 
 def Reach_SWIGSharedPtrUpcast(*args):
   """Reach_SWIGSharedPtrUpcast(__dummy_12__ swigSharedPtrUpcast) -> __dummy_10__"""
@@ -5785,16 +5834,16 @@ ReachIterator_swigregister(ReachIterator)
 def make_river_gap(*args):
   """make_river_gap(Reach_ptr root_reach) -> double"""
   return _cmf_core.make_river_gap(*args)
-class SubSurfaceFlux(flux_connection):
-    """Proxy of C++ cmf::upslope::connections::SubSurfaceFlux class"""
+class lateral_sub_surface_flux(flux_connection):
+    """Proxy of C++ cmf::upslope::connections::lateral_sub_surface_flux class"""
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
     def __init__(self, *args, **kwargs): raise AttributeError("No constructor defined - class is abstract")
     __repr__ = _swig_repr
-    __swig_destroy__ = _cmf_core.delete_SubSurfaceFlux
-SubSurfaceFlux_swigregister = _cmf_core.SubSurfaceFlux_swigregister
-SubSurfaceFlux_swigregister(SubSurfaceFlux)
+    __swig_destroy__ = _cmf_core.delete_lateral_sub_surface_flux
+lateral_sub_surface_flux_swigregister = _cmf_core.lateral_sub_surface_flux_swigregister
+lateral_sub_surface_flux_swigregister(lateral_sub_surface_flux)
 
-class Darcy(SubSurfaceFlux):
+class Darcy(lateral_sub_surface_flux):
     """Proxy of C++ cmf::upslope::connections::Darcy class"""
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
     __repr__ = _swig_repr
@@ -5806,7 +5855,7 @@ Darcy_swigregister = _cmf_core.Darcy_swigregister
 Darcy_swigregister(Darcy)
 Darcy.cell_connector = _cmf_core.cvar.Darcy_cell_connector
 
-class TopographicGradientDarcy(SubSurfaceFlux):
+class TopographicGradientDarcy(lateral_sub_surface_flux):
     """Proxy of C++ cmf::upslope::connections::TopographicGradientDarcy class"""
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
     __repr__ = _swig_repr
@@ -5818,7 +5867,7 @@ TopographicGradientDarcy_swigregister = _cmf_core.TopographicGradientDarcy_swigr
 TopographicGradientDarcy_swigregister(TopographicGradientDarcy)
 TopographicGradientDarcy.cell_connector = _cmf_core.cvar.TopographicGradientDarcy_cell_connector
 
-class OHDISflow(SubSurfaceFlux):
+class OHDISflow(lateral_sub_surface_flux):
     """Proxy of C++ cmf::upslope::connections::OHDISflow class"""
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
     __repr__ = _swig_repr
@@ -5830,47 +5879,7 @@ OHDISflow_swigregister = _cmf_core.OHDISflow_swigregister
 OHDISflow_swigregister(OHDISflow)
 OHDISflow.cell_connector = _cmf_core.cvar.OHDISflow_cell_connector
 
-class SWATPercolation(flux_connection):
-    """Proxy of C++ cmf::upslope::connections::SWATPercolation class"""
-    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
-    __repr__ = _swig_repr
-    def use_for_cell(*args):
-        """use_for_cell(Cell cell, bool no_override = True)"""
-        return _cmf_core.SWATPercolation_use_for_cell(*args)
-
-    use_for_cell = staticmethod(use_for_cell)
-    def __init__(self, *args): 
-        """__init__(self, ptr upperLayer, ptr lowerLayer) -> SWATPercolation"""
-        _cmf_core.SWATPercolation_swiginit(self,_cmf_core.new_SWATPercolation(*args))
-    __swig_destroy__ = _cmf_core.delete_SWATPercolation
-SWATPercolation_swigregister = _cmf_core.SWATPercolation_swigregister
-SWATPercolation_swigregister(SWATPercolation)
-
-def SWATPercolation_use_for_cell(*args):
-  """SWATPercolation_use_for_cell(Cell cell, bool no_override = True)"""
-  return _cmf_core.SWATPercolation_use_for_cell(*args)
-
-class Richards(flux_connection):
-    """Proxy of C++ cmf::upslope::connections::Richards class"""
-    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
-    __repr__ = _swig_repr
-    def __init__(self, *args): 
-        """__init__(self, ptr left, ptr right) -> Richards"""
-        _cmf_core.Richards_swiginit(self,_cmf_core.new_Richards(*args))
-    def use_for_cell(*args):
-        """use_for_cell(Cell cell, bool no_override = True)"""
-        return _cmf_core.Richards_use_for_cell(*args)
-
-    use_for_cell = staticmethod(use_for_cell)
-    __swig_destroy__ = _cmf_core.delete_Richards
-Richards_swigregister = _cmf_core.Richards_swigregister
-Richards_swigregister(Richards)
-
-def Richards_use_for_cell(*args):
-  """Richards_use_for_cell(Cell cell, bool no_override = True)"""
-  return _cmf_core.Richards_use_for_cell(*args)
-
-class Richards_lateral(SubSurfaceFlux):
+class Richards_lateral(lateral_sub_surface_flux):
     """Proxy of C++ cmf::upslope::connections::Richards_lateral class"""
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
     __repr__ = _swig_repr
@@ -5881,27 +5890,6 @@ class Richards_lateral(SubSurfaceFlux):
 Richards_lateral_swigregister = _cmf_core.Richards_lateral_swigregister
 Richards_lateral_swigregister(Richards_lateral)
 Richards_lateral.cell_connector = _cmf_core.cvar.Richards_lateral_cell_connector
-
-class UnsaturatedDarcy(SubSurfaceFlux):
-    """Proxy of C++ cmf::upslope::connections::UnsaturatedDarcy class"""
-    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
-    __repr__ = _swig_repr
-    def __init__(self, *args): 
-        """__init__(self, ptr left, ptr right, real FlowWidth, real Distance = 0) -> UnsaturatedDarcy"""
-        _cmf_core.UnsaturatedDarcy_swiginit(self,_cmf_core.new_UnsaturatedDarcy(*args))
-    def use_for_cell(*args):
-        """use_for_cell(Cell cell, bool no_override = True)"""
-        return _cmf_core.UnsaturatedDarcy_use_for_cell(*args)
-
-    use_for_cell = staticmethod(use_for_cell)
-    __swig_destroy__ = _cmf_core.delete_UnsaturatedDarcy
-UnsaturatedDarcy_swigregister = _cmf_core.UnsaturatedDarcy_swigregister
-UnsaturatedDarcy_swigregister(UnsaturatedDarcy)
-
-def UnsaturatedDarcy_use_for_cell(*args):
-  """UnsaturatedDarcy_use_for_cell(Cell cell, bool no_override = True)"""
-  return _cmf_core.UnsaturatedDarcy_use_for_cell(*args)
-UnsaturatedDarcy.cell_connector = _cmf_core.cvar.UnsaturatedDarcy_cell_connector
 
 class Manning(flux_connection):
     """Proxy of C++ cmf::river::Manning class"""
@@ -6034,47 +6022,6 @@ def SimpleTindexSnowMelt_use_for_cell(*args):
   """SimpleTindexSnowMelt_use_for_cell(Cell cell)"""
   return _cmf_core.SimpleTindexSnowMelt_use_for_cell(*args)
 
-class SnowWaterOverflow(flux_connection):
-    """Proxy of C++ cmf::upslope::connections::SnowWaterOverflow class"""
-    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
-    __repr__ = _swig_repr
-    RelCapacity = _swig_property(_cmf_core.SnowWaterOverflow_RelCapacity_get, _cmf_core.SnowWaterOverflow_RelCapacity_set)
-    SnowConductivity = _swig_property(_cmf_core.SnowWaterOverflow_SnowConductivity_get, _cmf_core.SnowWaterOverflow_SnowConductivity_set)
-    def __init__(self, *args): 
-        """
-        __init__(self, ptr snow_water, ptr surface_water, ptr snow, Cell cell, 
-            real relative_capacity = 0.1, real snowConductivity = 864.) -> SnowWaterOverflow
-        """
-        _cmf_core.SnowWaterOverflow_swiginit(self,_cmf_core.new_SnowWaterOverflow(*args))
-    __swig_destroy__ = _cmf_core.delete_SnowWaterOverflow
-SnowWaterOverflow_swigregister = _cmf_core.SnowWaterOverflow_swigregister
-SnowWaterOverflow_swigregister(SnowWaterOverflow)
-
-class HBVSnowMelt(flux_connection):
-    """Proxy of C++ cmf::upslope::connections::HBVSnowMelt class"""
-    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
-    __repr__ = _swig_repr
-    SnowMeltRate = _swig_property(_cmf_core.HBVSnowMelt_SnowMeltRate_get, _cmf_core.HBVSnowMelt_SnowMeltRate_set)
-    RefreezeRate = _swig_property(_cmf_core.HBVSnowMelt_RefreezeRate_get, _cmf_core.HBVSnowMelt_RefreezeRate_set)
-    def __init__(self, *args): 
-        """
-        __init__(self, ptr snow, ptr snow_water, Cell cell, real snowmeltrate = 7, 
-            real refreezeRate = 0.05) -> HBVSnowMelt
-        """
-        _cmf_core.HBVSnowMelt_swiginit(self,_cmf_core.new_HBVSnowMelt(*args))
-    def use_for_cell(*args):
-        """use_for_cell(Cell cell)"""
-        return _cmf_core.HBVSnowMelt_use_for_cell(*args)
-
-    use_for_cell = staticmethod(use_for_cell)
-    __swig_destroy__ = _cmf_core.delete_HBVSnowMelt
-HBVSnowMelt_swigregister = _cmf_core.HBVSnowMelt_swigregister
-HBVSnowMelt_swigregister(HBVSnowMelt)
-
-def HBVSnowMelt_use_for_cell(*args):
-  """HBVSnowMelt_use_for_cell(Cell cell)"""
-  return _cmf_core.HBVSnowMelt_use_for_cell(*args)
-
 class Rainfall(flux_connection):
     """Proxy of C++ cmf::upslope::connections::Rainfall class"""
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
@@ -6133,6 +6080,121 @@ class CompleteInfiltration(flux_connection):
 CompleteInfiltration_swigregister = _cmf_core.CompleteInfiltration_swigregister
 CompleteInfiltration_swigregister(CompleteInfiltration)
 
+class SWATPercolation(flux_connection):
+    """Proxy of C++ cmf::upslope::connections::SWATPercolation class"""
+    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __repr__ = _swig_repr
+    def use_for_cell(*args):
+        """use_for_cell(Cell cell, bool no_override = True)"""
+        return _cmf_core.SWATPercolation_use_for_cell(*args)
+
+    use_for_cell = staticmethod(use_for_cell)
+    def __init__(self, *args): 
+        """__init__(self, ptr upperLayer, ptr lowerLayer) -> SWATPercolation"""
+        _cmf_core.SWATPercolation_swiginit(self,_cmf_core.new_SWATPercolation(*args))
+    __swig_destroy__ = _cmf_core.delete_SWATPercolation
+SWATPercolation_swigregister = _cmf_core.SWATPercolation_swigregister
+SWATPercolation_swigregister(SWATPercolation)
+
+def SWATPercolation_use_for_cell(*args):
+  """SWATPercolation_use_for_cell(Cell cell, bool no_override = True)"""
+  return _cmf_core.SWATPercolation_use_for_cell(*args)
+
+class Richards(flux_connection):
+    """Proxy of C++ cmf::upslope::connections::Richards class"""
+    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __repr__ = _swig_repr
+    def __init__(self, *args): 
+        """__init__(self, ptr left, ptr right) -> Richards"""
+        _cmf_core.Richards_swiginit(self,_cmf_core.new_Richards(*args))
+    def use_for_cell(*args):
+        """use_for_cell(Cell cell, bool no_override = True)"""
+        return _cmf_core.Richards_use_for_cell(*args)
+
+    use_for_cell = staticmethod(use_for_cell)
+    __swig_destroy__ = _cmf_core.delete_Richards
+Richards_swigregister = _cmf_core.Richards_swigregister
+Richards_swigregister(Richards)
+
+def Richards_use_for_cell(*args):
+  """Richards_use_for_cell(Cell cell, bool no_override = True)"""
+  return _cmf_core.Richards_use_for_cell(*args)
+
+class HBVparameters(RetentionCurve):
+    """Proxy of C++ cmf::upslope::connections::HBVparameters class"""
+    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __repr__ = _swig_repr
+    cfmax = _swig_property(_cmf_core.HBVparameters_cfmax_get, _cmf_core.HBVparameters_cfmax_set)
+    sfcf = _swig_property(_cmf_core.HBVparameters_sfcf_get, _cmf_core.HBVparameters_sfcf_set)
+    cfr = _swig_property(_cmf_core.HBVparameters_cfr_get, _cmf_core.HBVparameters_cfr_set)
+    cwh = _swig_property(_cmf_core.HBVparameters_cwh_get, _cmf_core.HBVparameters_cwh_set)
+    k0 = _swig_property(_cmf_core.HBVparameters_k0_get, _cmf_core.HBVparameters_k0_set)
+    k1 = _swig_property(_cmf_core.HBVparameters_k1_get, _cmf_core.HBVparameters_k1_set)
+    k2 = _swig_property(_cmf_core.HBVparameters_k2_get, _cmf_core.HBVparameters_k2_set)
+    perc = _swig_property(_cmf_core.HBVparameters_perc_get, _cmf_core.HBVparameters_perc_set)
+    fc = _swig_property(_cmf_core.HBVparameters_fc_get, _cmf_core.HBVparameters_fc_set)
+    uplim = _swig_property(_cmf_core.HBVparameters_uplim_get, _cmf_core.HBVparameters_uplim_set)
+    lowlim = _swig_property(_cmf_core.HBVparameters_lowlim_get, _cmf_core.HBVparameters_lowlim_set)
+    beta = _swig_property(_cmf_core.HBVparameters_beta_get, _cmf_core.HBVparameters_beta_set)
+    def __init__(self, *args): 
+        """
+        __init__(self, double _k0 = 1, double _k1 = 0.25, double _k2 = 0.005, 
+            double _perc = 0.05, double _fc = 0.3, double _beta = 4.0, 
+            double _uplim = .35, double _lowlim = 1.0, 
+            double _cfmax = 2, double _sfcf = 0.6, 
+            double _cwh = 0.1, double _cfr = 0.05) -> HBVparameters
+        """
+        _cmf_core.HBVparameters_swiginit(self,_cmf_core.new_HBVparameters(*args))
+    def copy(self, *args):
+        """
+        copy(self) -> HBVparameters
+
+        virtual
+        RetentionCurve* copy() const =0 
+        """
+        return _cmf_core.HBVparameters_copy(self, *args)
+
+    def cast(*args):
+        """cast(RetentionCurve for_cast) -> HBVparameters"""
+        return _cmf_core.HBVparameters_cast(*args)
+
+    cast = staticmethod(cast)
+    __swig_destroy__ = _cmf_core.delete_HBVparameters
+HBVparameters.copy = new_instancemethod(_cmf_core.HBVparameters_copy,None,HBVparameters)
+HBVparameters_swigregister = _cmf_core.HBVparameters_swigregister
+HBVparameters_swigregister(HBVparameters)
+
+def HBVparameters_cast(*args):
+  """HBVparameters_cast(RetentionCurve for_cast) -> HBVparameters"""
+  return _cmf_core.HBVparameters_cast(*args)
+
+class HBVpercolation(flux_connection):
+    """Proxy of C++ cmf::upslope::connections::HBVpercolation class"""
+    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __repr__ = _swig_repr
+    def __init__(self, *args): 
+        """__init__(self, ptr left, ptr right) -> HBVpercolation"""
+        _cmf_core.HBVpercolation_swiginit(self,_cmf_core.new_HBVpercolation(*args))
+    __swig_destroy__ = _cmf_core.delete_HBVpercolation
+HBVpercolation_swigregister = _cmf_core.HBVpercolation_swigregister
+HBVpercolation_swigregister(HBVpercolation)
+
+class HBVlateral(lateral_sub_surface_flux):
+    """Proxy of C++ cmf::upslope::connections::HBVlateral class"""
+    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __repr__ = _swig_repr
+    def __init__(self, *args): 
+        """__init__(self, ptr left, ptr right, real width, real dist) -> HBVlateral"""
+        _cmf_core.HBVlateral_swiginit(self,_cmf_core.new_HBVlateral(*args))
+    __swig_destroy__ = _cmf_core.delete_HBVlateral
+HBVlateral_swigregister = _cmf_core.HBVlateral_swigregister
+HBVlateral_swigregister(HBVlateral)
+HBVlateral.cell_connector = _cmf_core.cvar.HBVlateral_cell_connector
+
+
+def HBVinstall(*args):
+  """HBVinstall(HBVparameters parameters, Cell cell)"""
+  return _cmf_core.HBVinstall(*args)
 
 def Tact(*args):
   """Tact(real Tpot, SoilLayer sw, Vegetation veg) -> real"""

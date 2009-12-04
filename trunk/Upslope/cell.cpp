@@ -125,9 +125,11 @@ cmf::water::WaterStorage::ptr cmf::upslope::Cell::add_storage( std::string Name,
 	using namespace cmf::water;
 	if (storage_role=='C' && m_Canopy) return m_Canopy;
 	if (storage_role=='S' && m_Snow)   return m_Snow;
-	WaterStorage::ptr ws= isopenwater ? 
-		cmf::river::OpenWaterStorage::create(project(),get_area())	
-	: WaterStorage::create(project());
+	WaterStorage::ptr ws;
+	if (isopenwater)
+		ws = cmf::river::OpenWaterStorage::create(project(),get_area());
+	else
+		ws = WaterStorage::create(project());
 	ws->Location=get_position();
 	ws->Name=Name;
 	if (storage_role=='C')

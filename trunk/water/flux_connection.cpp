@@ -10,7 +10,7 @@ cmf::water::flux_connection::~flux_connection()
 }
 
 cmf::water::flux_connection::flux_connection( cmf::water::flux_node::ptr left,cmf::water::flux_node::ptr right,std::string _type ) 
-: m_left(left),m_right(right),RecalcAlways(false),type(_type),connection_id(nextconnectionid++)
+: m_left(left),m_right(right),RecalcAlways(false),type(_type),connection_id(nextconnectionid++),m_tracer_filter(1.0)
 {
 	if ((!left) || (!right)) 
 		throw std::runtime_error("Can't create " + this->type + " if a node is null");
@@ -74,7 +74,8 @@ real cmf::water::flux_connection::conc( cmf::math::Time t, const cmf::water::sol
 {
 	real _q=q(t);
 	if (_q>0) return left_node()->conc(t,solute);
-	else return right_node()->conc(t,solute);
+	else if (_q<0) return right_node()->conc(t,solute);
+	else return 0.0;
 }
 
 std::string cmf::water::flux_connection::short_string() const

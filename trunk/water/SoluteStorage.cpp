@@ -13,14 +13,14 @@ real cmf::water::SoluteStorage::Derivate( const cmf::math::Time& time )
 		real q=con.q(*m_water,time);
 		if (q>0)
 		{
-			inflow+= q * con.conc(time,Solute);
+			inflow += q * con.conc(time,Solute) * con.get_tracer_filter();
 		}
 		else if (q<0)
 		{
-			outflow+=q * con.conc(time,Solute);
+			outflow += q * con.conc(time,Solute) * con.get_tracer_filter();
 		}
 	}
-	real source_term = source + source_concentration * m_water->get_state();
+	real source_term = source;
 	real decay_term = this->get_state() * decay;
 	return inflow + outflow + source_term - decay_term;
 }

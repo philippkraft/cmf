@@ -83,7 +83,7 @@ namespace cmf {
 			/// Returns the sum of all fluxes (positive and negative) at time t. Single fluxes can be excluded from the calculation
 			/// @param t Time of the query
 			/// @param Without A flux_connection that is excluded from the water_balance (e.g. to prevent closed circuits)
-			real water_balance(cmf::math::Time t,const flux_connection* Without=0);
+			real water_balance(cmf::math::Time t,const flux_connection* Without=0) const;
 			/// Returns the water quality of the flux_node, if it is not overridden this is the mix of the incoming fluxes
 			virtual real conc(cmf::math::Time t, const cmf::water::solute& solute) const;
 			cmf::geometry::point Location;
@@ -109,6 +109,8 @@ namespace cmf {
 
 		int count_node_references(flux_node::ptr node);
 
+		flux_node::ptr get_higher_node(flux_node::ptr node1,flux_node::ptr node2);
+		flux_node::ptr get_lower_node(flux_node::ptr node1,flux_node::ptr node2);
 
 
 	}

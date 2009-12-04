@@ -184,7 +184,7 @@ static cmf::math::Time convert_datetime_to_cmftime(PyObject* dt)
                 yield self.begin + self.step * i
     def to_buffer(self):
         """Returns a binary buffer filled with the data of self"""
-        return struct.pack('qqqq%id' % self.size(),self.begin().AsMilliseconds(),self.step().AsMilliseconds(),self.interpolationpower(), *self)
+        return struct.pack('qqqq%id' % self.size(),self.begin.AsMilliseconds(),self.step.AsMilliseconds(),self.interpolationpower(), *self)
     def to_file(self,f):
         """ Saves a timeseries in a special binary format.
         The format consists of 4 integers with 64 bit, indicating the milliseconds after the 31.12.1899 00:00 of the beginning of the timeseries, the milliseconds of the time step,
@@ -194,7 +194,7 @@ static cmf::math::Time convert_datetime_to_cmftime(PyObject* dt)
             f=file(f,'wb')
         elif not hasattr(f,'write'):
             raise TypeError("The file f must be either an object providing a write method, like a file, or a valid file name")
-        f.write(struct.pack('qqqq%id' % self.size(),  self.size(), self.begin().AsMilliseconds(),self.step().AsMilliseconds(),self.interpolationpower(), *self))
+        f.write(struct.pack('qqqq%id' % self.size(),  self.size(), self.begin.AsMilliseconds(),self.step.AsMilliseconds(),self.interpolationpower(), *self))
         
     @classmethod
     def from_sequence(cls,begin,step,sequence=[],interpolation_mode=1):
@@ -213,7 +213,7 @@ static cmf::math::Time convert_datetime_to_cmftime(PyObject* dt)
         Description of the file layout:
         byte: 
         0   Number of (int64)
-        8   Begin of timeseries (in ms since 31.12.1899) (int64)
+        8   Begin of timeseries (in ms since 31.12.1899 00:00) (int64)
         16  Step size of timeseries (in ms) (int64)
         24  Interpolation power (int64)
         32  First value of timeseries (float64)
