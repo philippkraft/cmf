@@ -1,7 +1,16 @@
 #include "timeseries.h"
 #include <cmath>
 #include "real.h"
+#include <limits>
 #include <stdexcept>
+inline bool isfinite(real v)
+{
+	typedef  std::numeric_limits<real> limit;
+	return 
+		v != limit::infinity() &&
+		v != -limit::infinity() &&
+		v == v;
+}
 double cmf::math::timeseries::position( Time t ) const
 {
 	double pos=(t-begin())/step();
@@ -80,40 +89,30 @@ cmf::math::timeseries& cmf::math::timeseries::operator+=(timeseries _Right )
 {
 #pragma omp parallel for
 	for (int i = 0; i < size(); ++i)
-		m_data->values[i] += _Right[i];
+		m_data->values[i] += _Right[time_at_position(i)];
 	return (*this);
 }
 cmf::math::timeseries& cmf::math::timeseries::operator-=(timeseries _Right )
 {
 #pragma omp parallel for
 	for (int i = 0; i < size(); ++i)
-		m_data->values[i] -= _Right[i];
+		m_data->values[i] -= _Right[time_at_position(i)];
 	return (*this);
 }
 cmf::math::timeseries& cmf::math::timeseries::operator*=(timeseries _Right )
 {
 #pragma omp parallel for
 	for (int i = 0; i < size(); ++i)
-		m_data->values[i] *= _Right[i];
+		m_data->values[i] *= _Right[time_at_position(i)];
 	return (*this);
 }
 cmf::math::timeseries& cmf::math::timeseries::operator/=(timeseries _Right )
 {
 #pragma omp parallel for
 	for (int i = 0; i < size(); ++i)
-		m_data->values[i] /= _Right[i];
+		m_data->values[i] /= _Right[time_at_position(i)];
 	return (*this);
 }
-cmf::math::timeseries& cmf::math::timeseries::power( double exponent)
-{
-#pragma omp parallel for
-	for (int i = 0; i < (int)size() ; i++)
-	{
-		m_data->values[i]=pow(m_data->values[i],exponent);
-	}
-	return *this;
-}
-
 
 
 cmf::math::timeseries cmf::math::timeseries::reduce_min( cmf::math::Time begin,cmf::math::Time step ) const
@@ -247,65 +246,54 @@ void cmf::math::timeseries::set_slice( int _begin,int _end,cmf::math::timeseries
 
 cmf::math::timeseries cmf::math::timeseries::operator+( timeseries other ) const 
 { 
-	timeseries res(minimum_t(begin(),other.begin()),minimum_t(step(),other.step()));      
-	for (Time t=res.begin();t<=maximum_t(end(),other.end());t+=res.step())						
-		res.add(get_t(t) + other.get_t(t));																						
+	timeseries res = this->copy();      
+	res += other;
 	return res; 
 }
 cmf::math::timeseries cmf::math::timeseries::operator-( timeseries other ) const 
 { 
-	timeseries res(minimum_t(begin(),other.begin()),minimum_t(step(),other.step()));      
-	for (Time t=res.begin();t<=maximum_t(end(),other.end());t+=res.step())						
-		res.add(get_t(t) - other.get_t(t));																						
+	timeseries res = this->copy();      
+	res -= other;
 	return res; 
 }
 cmf::math::timeseries cmf::math::timeseries::operator*( timeseries other ) const 
 { 
-	timeseries res(minimum_t(begin(),other.begin()),minimum_t(step(),other.step()));      
-	for (Time t=res.begin();t<=maximum_t(end(),other.end());t+=res.step())						
-		res.add(get_t(t) * other.get_t(t));																						
+	timeseries res = this->copy();      
+	res *= other;
 	return res; 
 }
 cmf::math::timeseries cmf::math::timeseries::operator/( timeseries other ) const 
 { 
-	timeseries res(minimum_t(begin(),other.begin()),minimum_t(step(),other.step()));      
-	for (Time t=res.begin();t<=maximum_t(end(),other.end());t+=res.step())						
-		res.add(get_t(t) / other.get_t(t));																						
+	timeseries res = this->copy();      
+	res /= other;
 	return res; 
 }
 
 cmf::math::timeseries cmf::math::timeseries::operator+( double other ) const {  
-	timeseries res(begin(),step());																								
-	for (Time t=res.begin();t<=end();t+=res.step())						
-		res.add(get_t(t) + other);	
+	timeseries res = this->copy();      
+	res += other;
 	return res; 
 }																																										
 cmf::math::timeseries cmf::math::timeseries::operator-( double other ) const {  
-	timeseries res(begin(),step());																								
-	for (Time t=res.begin();t<=end();t+=res.step())						
-		res.add(get_t(t) - other);	
+	timeseries res = this->copy();      
+	res -= other;
 	return res; 
 }																																										
 cmf::math::timeseries cmf::math::timeseries::operator*( double other ) const {  
-	timeseries res(begin(),step());																								
-	for (Time t=res.begin();t<=end();t+=res.step())						
-		res.add(get_t(t) * other);	
+	timeseries res = this->copy();      
+	res *= other;
 	return res; 
 }																																										
 cmf::math::timeseries cmf::math::timeseries::operator/( double other ) const {  
-	timeseries res(begin(),step());																								
-	for (Time t=res.begin();t<=end();t+=res.step())						
-		res.add(get_t(t) / other);	
+	timeseries res = this->copy();      
+	res /= other;
 	return res; 
 }																																										
 
 cmf::math::timeseries cmf::math::timeseries::operator -() const {
-	timeseries res(begin(),step());																									
-	for (int i = 0; i < size() ; ++i)
-	{
-		res.add(-get_i(i));
-	}
-	return res;
+	timeseries res = this->copy();      
+	res *= -1;
+	return res; 
 }
 
 cmf::math::timeseries cmf::math::timeseries::inv() const
@@ -383,10 +371,17 @@ void cmf::math::timeseries::clear()
 double cmf::math::timeseries::mean() const
 {
 	double sum=0;
-#pragma omp parallel for reduction(+ : sum)
+	int count=size();
+	double v=0;
 	for (int i = 0; i < size() ; ++i)
-		sum += m_data->values[i];
-	return sum/size();
+	{
+		v = m_data->values[i];
+		if (isfinite(v))
+			sum += v;
+		else
+			--count;
+	}
+	return sum/count;
 }
 
 double cmf::math::timeseries::min() const
@@ -394,7 +389,7 @@ double cmf::math::timeseries::min() const
 	double _min=get_i(0);
 	for (int i = 0; i < size() ; ++i)
 	{
-		if (_min>m_data->values[i])
+		if (_min>m_data->values[i] && isfinite(m_data->values[i]))
 			_min=m_data->values[i];
 	}
 	return _min;
@@ -405,24 +400,67 @@ double cmf::math::timeseries::max() const
 	double _max=get_i(0);
 	for (int i = 0; i < size() ; ++i)
 	{
-		if (_max<m_data->values[i])
+		if (_max<m_data->values[i] && isfinite(m_data->values[i]))
 			_max=m_data->values[i];
 	}
 	return _max;
 
 }
 
+cmf::math::timeseries cmf::math::timeseries::copy() const
+{
+	timeseries res;
+	timeseries_data* new_data = new timeseries_data(*m_data);
+	res.m_data.reset(new_data);
+	return res;
+}
+
+cmf::math::timeseries cmf::math::timeseries::log() const
+{
+	timeseries res(begin(),step());
+	for (int i = 0; i < (int)size() ; ++i)
+		res.add(std::log(get_i(i)));
+	return res;
+}
+cmf::math::timeseries cmf::math::timeseries::log10() const
+{
+	timeseries res(begin(),step());
+	for (int i = 0; i < (int)size() ; ++i)
+		res.add(std::log10(get_i(i)));
+	return res;
+}
+cmf::math::timeseries cmf::math::timeseries::exp() const
+{
+	timeseries res(begin(),step());
+	for (int i = 0; i < (int)size() ; ++i)
+		res.add(std::exp(get_i(i)));
+	return res;
+}
+cmf::math::timeseries cmf::math::timeseries::power(double exponent) const
+{
+	timeseries res(begin(),step());
+	for (int i = 0; i < (int)size() ; ++i)
+		res.add(pow(get_i(i),exponent));
+	return res;
+}
+
 double cmf::math::nash_sutcliff(const cmf::math::timeseries& model,const cmf::math::timeseries& observation)
 {
-	double mean_2=observation.mean();
+	double mean_obs=observation.mean();
 	double sq_sum_diff=0,sq_sum_ind=0;
 	cmf::math::Time begin=maximum_t(model.begin(),observation.begin());
-	cmf::math::Time end=minimum_t(model.begin(),observation.begin());
-	cmf::math::Time step=maximum_t(model.begin(),observation.begin());
+	cmf::math::Time end=minimum_t(model.end(),observation.end());
+	cmf::math::Time step=maximum_t(model.step(),observation.step());
+	double model_t, obs_t;
 	for (cmf::math::Time t=begin;t<=end;t+=step)
 	{
-		sq_sum_diff+=square(model[t]-observation[t]);
-		sq_sum_ind+=square(observation[t]-mean_2);
+		model_t = model[t];
+		obs_t  = observation[t];
+		if (isfinite(model_t) && isfinite(obs_t))
+		{
+			sq_sum_diff+=square(model_t-obs_t);
+			sq_sum_ind+=square(obs_t-mean_obs);
+		}
 	}
 	return 1-sq_sum_diff/sq_sum_ind;
 }
@@ -443,3 +481,4 @@ double cmf::math::R2( const cmf::math::timeseries& model,const cmf::math::timese
 
 
 }
+

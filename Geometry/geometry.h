@@ -6,6 +6,7 @@
 #include <stdlib.h>
 #include <string>
 #include <vector>
+#include <stdexcept>
 #include <tr1/memory>
 #include "../math/num_array.h"
 namespace cmf {
@@ -86,7 +87,7 @@ namespace cmf {
 			/// Sets the location. If not implemented by the child class, an exception is thrown
 			virtual void set_position(cmf::geometry::point p)
 			{
-				throw std::invalid_argument("The position is readonly");
+				throw std::runtime_error("The position is readonly");
 			}
 			/// Returns the distance between two locatable objects
 			double get_distance_to(const Locatable& cmp)

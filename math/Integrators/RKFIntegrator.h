@@ -28,7 +28,7 @@ namespace cmf {
 			num_array oldStates;
 			//@}
 		public:
-			void cmf::math::RKFIntegrator::AddStatesFromOwner( cmf::math::StateVariableOwner& stateOwner );
+			void AddStatesFromOwner( cmf::math::StateVariableOwner& stateOwner );
 
 			/// Constructs a new RKFIntegrator from a pointer to a vector of state variables
 			/// @note The RKF Integrator becomes the owner of states

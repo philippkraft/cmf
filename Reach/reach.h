@@ -26,7 +26,6 @@ namespace cmf {
 			operator ptr() {return std::tr1::static_pointer_cast<Reach>(shared_from_this());}
 #endif
 		private:
-			friend class project;
 
 			/// Creates a reach
 			Reach(const cmf::project& _project,const IChannel& shape, bool diffusive=false)
@@ -123,6 +122,7 @@ namespace cmf {
 			Reach_ptr get_root();
 			
 			virtual ~Reach();
+			static ptr create(const cmf::project& project,cmf::river::Channel shape, bool diffusive=false);
 			
 		};
 

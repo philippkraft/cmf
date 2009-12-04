@@ -20,10 +20,7 @@ cmf::project::~project()
 
 cmf::river::Reach_ptr cmf::project::NewReach( cmf::river::Channel shape, bool diffusive/*=false*/ )
 {
-	using namespace cmf::river;
-	Reach* pR =	 new Reach(*this,shape,diffusive);
-	Reach_ptr R (pR);
-	R->weak_this = R;
+	cmf::river::Reach::ptr R = cmf::river::Reach::create(*this,shape,diffusive);
 	m_reaches.push_back(R);
 	return m_reaches.back();
 }

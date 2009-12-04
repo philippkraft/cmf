@@ -2,6 +2,7 @@
 #define RetentionCurve_h__
 #include "../../math/real.h"
 #include <vector>
+#include <stdexcept>
 #include <tr1/memory>
 namespace cmf {
 	namespace upslope {
@@ -34,17 +35,27 @@ namespace cmf {
 			/// Returns the porosity at a certain depth
 			virtual real Porosity(real depth) const = 0;
 			/// Returns the void volume of a soil column
-			virtual real VoidVolume(real upperDepth,real lowerDepth,real Area) const = 0;
+			virtual real VoidVolume(real upperDepth,real lowerDepth,real Area) const {
+				throw std::runtime_error("This retention curve type can't calculate the VoidVolume, choose another type");
+			};
 			/// Returns the thickness of a soil column with a certain pore volume
-			virtual real FillHeight(real lowerDepth,real Area,real Volume) const =0;
+			virtual real FillHeight(real lowerDepth,real Area,real Volume) const {
+				throw std::runtime_error("This retention curve type can't calculate the FillHeight, choose another type");
+			};
 			/// Returns the transmissivity of a part of a soil column
-			virtual real Transmissivity(real upperDepth,real lowerDepth,real wetness) const = 0;
+			virtual real Transmissivity(real upperDepth,real lowerDepth,real wetness) const {
+				throw std::runtime_error("This retention curve type can't calculate the Transmissivity, choose another type");
+			};;
 			/// returns the wetness (volumetric water content per pore space) at a given suction pressure
-			virtual real Wetness(real suction) const = 0;
+			virtual real Wetness(real suction) const {
+				throw std::runtime_error("This retention curve type can't calculate the Wetness from a suction pressure, choose another type");
+			};
 			/// returns the volumetric water content at a given pF value
 			real Wetness_pF(real pF) const {return Wetness(pF_to_waterhead(pF));}
 			/// returns the wetness of the soil at given water content
-			virtual real MatricPotential(real wetness) const = 0;
+			virtual real MatricPotential(real wetness) const {
+				throw std::runtime_error("This retention curve type can't calculate the matrix potential for a wetness, choose another type");
+			};;
 			virtual RetentionCurve* copy() const=0;
 		};
 		/// Provides the use of the Brooks-Corey retention curve

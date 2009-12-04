@@ -85,7 +85,7 @@ def drawobjects(objects,style=None,hold=1,**kwargs):
 
    
 def plot_timeseries(data,style='-',**kwargs):    
-        pylab.plot_date(map(lambda t:(t-cmf.Time(1,1,1)).AsDays(),cmf.timerange(data.begin,data.end,data.step)),list(data),style,**kwargs)
+    return pylab.plot_date(map(lambda t:(t-cmf.Time(1,1,1)).AsDays(),cmf.timerange(data.begin,data.end,data.step)),list(data),style,**kwargs)[0]
 def plot_locatables(locatables,style='kx',**kwargs):
     get_x=lambda l:l.position.x
     get_y=lambda l:l.position.y

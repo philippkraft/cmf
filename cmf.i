@@ -43,6 +43,31 @@
 }
 %enddef
 
+//SWIG_SHARED_PTR(state_var,cmf::math::StateVariable);
+
+SWIG_SHARED_PTR(flux_node,cmf::water::flux_node);
+    SWIG_SHARED_PTR_DERIVED(DricheletBoundary,cmf::water::flux_node,cmf::water::DricheletBoundary);
+    SWIG_SHARED_PTR_DERIVED(NeumannBoundary, cmf::water::flux_node, cmf::water::NeumannBoundary);
+        SWIG_SHARED_PTR_DERIVED(RainCloud, cmf::water::NeumannBoundary, cmf::atmosphere::RainCloud);
+    SWIG_SHARED_PTR_DERIVED(WaterStorage,cmf::water::flux_node,cmf::water::WaterStorage);
+        SWIG_SHARED_PTR_DERIVED(OpenWaterStorage,cmf::water::WaterStorage,cmf::river::OpenWaterStorage);
+            SWIG_SHARED_PTR_DERIVED(Reach,cmf::river::OpenWaterStorage,cmf::river::Reach);
+        SWIG_SHARED_PTR_DERIVED(SoilLayer,cmf::water::WaterStorage,cmf::upslope::SoilLayer);
+            SWIG_SHARED_PTR_DERIVED(VariableLayerSaturated,cmf::upslope::SoilLayer,cmf::upslope::VariableLayerSaturated);
+            SWIG_SHARED_PTR_DERIVED(VariableLayerUnsaturated,cmf::upslope::SoilLayer,cmf::upslope::VariableLayerUnsaturated);
+
+#define %ptr(Type) SWIG_SHARED_PTR_QNAMESPACE::shared_ptr<Type>
+#define %dynptrcast(Type,input) SWIG_SHARED_PTR_QNAMESPACE::dynamic_pointer_cast<Type>(input) 
+
+// Workaround for SWIG bug 2408232: SWIG_SHARED_PTR doesn't work with deep/multiple inheritance
+%define SWIG_SHARED_MULTICAST(CLASS,BASE)
+%types(%ptr(CLASS) = 
+        %ptr(BASE)) {
+  *newmemory = SWIG_CAST_NEW_MEMORY;
+  return (void *) new %ptr(BASE)(*(%ptr(CLASS) *)$from);
+}
+%enddef
+
 
 // Start my Module
 %module cmf_core
@@ -60,31 +85,8 @@
 %include "math/ODEsystem.i"
 %echo "ODEsystem.i OK";
 
-//SWIG_SHARED_PTR(state_var,cmf::math::StateVariable);
-
-SWIG_SHARED_PTR(flux_node,cmf::water::flux_node);
-    SWIG_SHARED_PTR_DERIVED(DricheletBoundary,cmf::water::flux_node,cmf::water::DricheletBoundary);
-    SWIG_SHARED_PTR_DERIVED(NeumannBoundary, cmf::water::flux_node, cmf::water::NeumannBoundary);
-        SWIG_SHARED_PTR_DERIVED(RainCloud, cmf::water::NeumannBoundary, cmf::atmosphere::RainCloud);
-    SWIG_SHARED_PTR_DERIVED(WaterStorage,cmf::water::flux_node,cmf::water::WaterStorage);
-        SWIG_SHARED_PTR_DERIVED(OpenWaterStorage,cmf::water::WaterStorage,cmf::river::OpenWaterStorage);
-            SWIG_SHARED_PTR_DERIVED(Reach,cmf::river::OpenWaterStorage,cmf::river::Reach);
-        SWIG_SHARED_PTR_DERIVED(SoilLayer,cmf::water::WaterStorage,cmf::upslope::SoilLayer);
-            SWIG_SHARED_PTR_DERIVED(VariableLayerSaturated,cmf::upslope::SoilLayer,cmf::upslope::VariableLayerSaturated);
-            SWIG_SHARED_PTR_DERIVED(VariableLayerUnsaturated,cmf::upslope::SoilLayer,cmf::upslope::VariableLayerUnsaturated);
-
-#define %ptr(Type) SWIG_SHARED_PTR_QNAMESPACE::shared_ptr<Type>
-#define %dynptrcast(Type,input) SWIG_SHARED_PTR_QNAMESPACE::dynamic_pointer_cast<Type>(input) 
 
 
-// Workaround for SWIG bug 2408232: SWIG_SHARED_PTR doesn't work with deep/multiple inheritance
-%define SWIG_SHARED_MULTICAST(CLASS,BASE)
-%types(%ptr(CLASS) = 
-        %ptr(BASE)) {
-  *newmemory = SWIG_CAST_NEW_MEMORY;
-  return (void *) new %ptr(BASE)(*(%ptr(CLASS) *)$from);
-}
-%enddef
 
 SWIG_SHARED_MULTICAST(cmf::upslope::VariableLayerUnsaturated, cmf::water::WaterStorage)
 SWIG_SHARED_MULTICAST(cmf::upslope::VariableLayerUnsaturated, cmf::water::flux_node)
@@ -99,10 +101,10 @@ SWIG_SHARED_MULTICAST(cmf::river::OpenWaterStorage, cmf::water::flux_node)
 
 // SWIG_SHARED_MULTICAST(cmf::upslope::VariableLayerUnsaturated, cmf::math::StateVariable)
 // SWIG_SHARED_MULTICAST(cmf::upslope::VariableLayerSaturated, cmf::math::StateVariable)
-// SWIG_SHARED_MULTICAST(cmf::upslope::SoilLayer, cmf::math::StateVariable)
-// SWIG_SHARED_MULTICAST(cmf::river::OpenWaterStorage, cmf::math::StateVariable)
-// SWIG_SHARED_MULTICAST(cmf::river::Reach, cmf::math::StateVariable)
-// SWIG_SHARED_MULTICAST(cmf::water::WaterStorage, cmf::math::StateVariable)
+//SWIG_SHARED_MULTICAST(cmf::upslope::SoilLayer, cmf::math::StateVariable)
+//SWIG_SHARED_MULTICAST(cmf::river::OpenWaterStorage, cmf::math::StateVariable)
+//SWIG_SHARED_MULTICAST(cmf::river::Reach, cmf::math::StateVariable)
+//SWIG_SHARED_MULTICAST(cmf::water::WaterStorage, cmf::math::StateVariable)
 
 SWIG_SHARED_MULTICAST(cmf::atmosphere::RainCloud, cmf::water::flux_node)
 
@@ -173,7 +175,9 @@ EXTENT__REPR__(cmf::atmosphere::RainCloud)
 	#include "upslope/connections/surfacefluxes.h"
 	#include "upslope/connections/atmosphericfluxes.h"
 	#include "upslope/connections/infiltration.h"
+	#include "upslope/connections/Percolation.h"
 	#include "upslope/vegetation/ET.h"
+    #include "upslope/connections/HBVflow.h"
 	// Include river model
 	#include "Reach/ManningConnection.h"
 	// Include the combined solver
@@ -189,6 +193,8 @@ EXTENT__REPR__(cmf::atmosphere::RainCloud)
 %include "upslope/connections/surfacefluxes.h"
 %include "upslope/connections/atmosphericfluxes.h"
 %include "upslope/connections/infiltration.h"
+%include "upslope/connections/Percolation.h"
+%include "upslope/connections/HBVflow.h"
 %include "upslope/vegetation/ET.h"
 
 %pythoncode

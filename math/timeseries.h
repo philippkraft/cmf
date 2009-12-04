@@ -56,8 +56,10 @@ namespace cmf {
 				int interpolationpower;
 				timeseries_data(Time _begin,Time _step,int _interpolationpower) 
 					: begin(_begin),step(_step),interpolationpower(_interpolationpower)
-				{
-				}
+				{				}
+				timeseries_data(const timeseries_data& for_copy)
+					: begin(for_copy.begin), step(for_copy.step), interpolationpower(for_copy.interpolationpower), values(for_copy.values)
+				{				}
 			};
 #endif
 			typedef std::tr1::shared_ptr<timeseries_data> data_pointer;
@@ -93,6 +95,7 @@ namespace cmf {
 			{
 				return size_t(&(m_data->values[0]));
 			}
+			timeseries copy() const;
 			int size() const {return int(m_data->values.size());}
 			/// Constructor of a time series
 			/// @param _begin First date of measurement
@@ -163,7 +166,6 @@ namespace cmf {
 			timeseries& operator*=(double);                ///< Multiply each element of timeseries with scalar
 			timeseries& operator/=(timeseries);      ///< Divide each element of this by each element of timeseries
 			timeseries& operator/=(double);                ///< Divide each element of this by scalar
-			timeseries& power(double);											 ///< raises the timeseries to a power
 
 			timeseries operator+(timeseries) const;
 			timeseries operator-(timeseries other) const;
@@ -191,6 +193,13 @@ namespace cmf {
 			double mean() const;
 			double min() const;
 			double max() const;
+
+			timeseries log() const;
+			timeseries log10() const;
+			timeseries power(double exponent) const;
+			timeseries exp() const;
+
+
 
 
 		};

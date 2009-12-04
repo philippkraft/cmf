@@ -28,6 +28,7 @@ namespace cmf {
 			std::tr1::weak_ptr<flux_connection> weak_this;
 			weak_flux_node_ptr m_left;
 			weak_flux_node_ptr m_right;
+			real m_tracer_filter;
 		protected:
 			virtual void NewNodes()=0;
 			bool RecalcAlways;
@@ -73,9 +74,14 @@ namespace cmf {
 			/// Returns the concentration of the flux. If not overridden,
 			/// it returns the concentration of the source of the flux (direction depending)
 			real conc(cmf::math::Time t, const cmf::water::solute& solute);
-			
+			/// A string describing the type of the connection
 			const std::string type;
-			
+			/// A value ranging from 0 to 1 
+			real get_tracer_filter() { return m_tracer_filter;}
+			void set_tracer_filter(real value) { 
+				if (value<0 || value>1) throw std::runtime_error("Tracer filter must be between 0 and 1");
+				m_tracer_filter = value;
+			}
 			std::string to_string() const;
 			std::string short_string() const;
 			/// Creates a flux connection between the flux_node left and right

@@ -58,13 +58,13 @@ real cmf::water::flux_node::flux_to( const flux_node& target,cmf::math::Time t )
 
 
 
-real cmf::water::flux_node::water_balance( cmf::math::Time t,const flux_connection* except/*=0*/ )
+real cmf::water::flux_node::water_balance( cmf::math::Time t,const flux_connection* Without/*=0*/ ) const
 {
 	real waterbalance=0;
-	for(flux_node::ConnectionMap::iterator it = m_Connections.begin(); it != m_Connections.end(); ++it)
+	for(flux_node::ConnectionMap::const_iterator it = m_Connections.begin(); it != m_Connections.end(); ++it)
 	{
 		flux_connection* conn=it->second.get();
-		if (conn!=except)
+		if (conn!=Without)
 			waterbalance+=conn->q(*this,t);
 	}
 	return waterbalance;
@@ -108,7 +108,7 @@ real cmf::water::flux_node::conc( cmf::math::Time t, const cmf::water::solute& s
 			influx_sum_solute += q * it->second->conc(t,solute);
 		}
 	}
-	return influx_sum_water >= 0 ? influx_sum_solute/influx_sum_water : 0.0;
+	return influx_sum_water > 0 ? influx_sum_solute/influx_sum_water : 0.0;
 }
 
 
@@ -155,4 +155,14 @@ cmf::water::connection_vector cmf::water::flux_node::get_connections() const
 int cmf::water::count_node_references( flux_node::ptr node )
 {
 	return int(node.use_count());
+}
+
+cmf::water::flux_node::ptr cmf::water::get_higher_node( cmf::water::flux_node::ptr node1,cmf::water::flux_node::ptr node2 )
+{
+	return node1->get_position().z >= node2->get_position().z ? node1 : node2;
+}
+
+cmf::water::flux_node::ptr cmf::water::get_lower_node( cmf::water::flux_node::ptr node1,cmf::water::flux_node::ptr node2 )
+{
+	return node1->get_position().z >= node2->get_position().z ? node2 : node1;
 }
