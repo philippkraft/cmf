@@ -1,0 +1,81 @@
+<html>
+<head>
+	<title>Creating a cell network from a raster dataset</title>
+	<link href="doxygen.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+	<h1>
+		Creating a squared cell network from a raster dataset</h1>
+	<table>
+		<tr>
+			<td>
+				<p>
+					Before reading this part one should already know:</p>
+				<ul>
+					<li><a href="Vegetation.htm">How to create vegetation objects</a></li>
+					<li><a href="SpatialDistributors.htm">How to distribute objects and values in space</a></li>
+				</ul>
+				<p>
+					Meshed networks of cells are generally hard to set up. But if you can limit your
+					needs to use regualar squared cells, the process of building the network might become
+					quite simple using factories. Until now there are two factories to build UpslopeCells
+					from a raster dataset, one for layered cells and one for vertical homogenous cells.
+					Most of the work is the same for both kinds of factories. First the VerticalHomogeneousCellFactory
+					is explained, and then only the differing features of the layered one are shown.
+				</p>
+			</td>
+			<td>
+				<img src="dem2cells.png" />
+			</td>
+		</tr>
+	</table>
+	<h2>
+		Using a VerticalHomogeneousCellFactory</h2>
+	<p>
+		The following objects are needed to create the mesh:</p>
+	<ul>
+		<li>
+		A raster representing a DEM. The simplest way to create such an raster is to load
+		an ESRI ASCII raster file
+		<li>A <a href="SpatialDistributors.htm">map</a> of <a href="Vegetation.htm">vegetation</a>
+			objects.</li>
+		<li>A <a href="SpatialDistributors.htm">map</a> of SoilTypes</li>
+		<li>A <a href="SpatialDistributors.htm">map</a> of soil depth (float)[m]</li>
+	</ul>
+	In the test case, there is the DEM dem10.dem and the ESRI ASCII raster of soil depth
+	soildepth.asc in cm. The vegetation and the soil type are uniform throughout the
+	StudyArea.
+	<div class="fragment">
+		<pre class="fragment">import CMFLib as cmf
+factory=cmf.VerticalHomogeneousCellFactory()
+vegetation=cmf.constantFluxVegetation(8,3) # For simplicity a constant flux
+soil=cmf.SoilType(15,0.4,0.3,0.2,0.1,4.2)  # Any soil type
+vegetationMap=cmf.SingleValueMap_Vegetation(vegetation) # The simplest spatial distribution.
+soilMap=cmf.SingleValueMap_Soil(soil)                   # The simplest spatial distribution.
+soilDepthMap=cmf.ContinuousRasterMap_Float('soildepth.asc')
+UpslopeCellMesh=factor.RasterCellsToUpslopeVector(dem,vegetationMap,soilMap,soildepthMap)
+</pre>
+	</div>
+	<h2>
+		LayeredCellFactory</h2>
+	<p>
+		A layered cell factory works exactly the same way as the vertical homogeneous. The
+		only difference is the need for a <a href="SpatialDistributors.htm">map</a> of SoilProfiles.
+		The same code as a above is for the layered cell:</p>
+	<div class="fragment">
+		<pre class="fragment">
+import CMFLib as cmf
+factory=cmf.VerticalHomogeneousCellFactory()
+vegetation=cmf.constantFluxVegetation(8,3) # For simplicity a constant flux
+profile=cmf.SoilProfile()
+profile.AddLayer(25,0.6,0.3,0.4,0.1,4.2,0.1) # Ksat,porosity,lambda,fieldcap.,wilt point,PLE, lower boundary of layer
+profile.AddLayer(15,0.5,0.3,0.35,0.15,4.2,0.3) # Ksat,porosity,lambda,fieldcap.,wilt point,PLE, lower boundary of layer
+profile.AddLayer(10,0.4,0.3,0.2,0.15,4.2,0.6) # Ksat,porosity,lambda,fieldcap.,wilt point,PLE, lower boundary of layer
+vegetationMap=cmf.SingleValueMap_Vegetation(vegetation) # The simplest spatial distribution.
+soilMap=cmf.SingleValueMap_SoilProfile(profile)                   # The simplest spatial distribution.
+soilDepthMap=cmf.ContinuousRasterMap_Float('soildepth.asc')
+UpslopeCellMesh=factor.RasterCellsToUpslopeVector(dem,vegetationMap,soilMap,soildepthMap)
+</pre>
+	</div>
+</body>
+</html>
