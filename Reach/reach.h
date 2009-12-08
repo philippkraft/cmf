@@ -14,6 +14,7 @@ namespace cmf {
 	namespace river {
 		class Reach;
 		typedef std::tr1::shared_ptr<Reach> Reach_ptr;
+		/// @ingroup storages
 		/// A reach is a specialization of an open water storage.
 		///
 		/// The OpenWaterStorage attributes and methods are extended by topological features, for the creation 

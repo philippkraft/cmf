@@ -9,6 +9,8 @@
 namespace cmf {
 	/// Contains classes for numerical solving of ODE's
   namespace math {
+		/// Abstract class state variable
+		///
 		/*! Abstract class state variable
 				
 				Simple exponential system class header implementing a state variable:
@@ -49,7 +51,7 @@ namespace cmf {
 			StateVariable(real InitialState=0) : m_State(InitialState),m_StateIsNew(true) {}
 		};
 
-		/// A vector of state variables, can be solved by RKFIntegrator
+		/// @internal A vector of state variables, can be solved by an Integrator
 		class StateVariableVector : public std::vector<StateVariable*>
 		{
 			void AddValuesToStates(const num_array& operands);
@@ -94,7 +96,7 @@ namespace cmf {
 			StateVariableVector() : use_OpenMP(true) {}
 		};
 		
-		///An abstract class, that owns one or more state variables, that can add them to a vector of state variables in a certain order
+		/// An abstract class, that owns one or more state variables, that can add them to a vector of state variables in a certain order
 		class StateVariableOwner
 		{
 		public:

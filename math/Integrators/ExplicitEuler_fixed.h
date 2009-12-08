@@ -66,7 +66,7 @@ namespace cmf {
 		};
 
 		/// A simple predictor - corrector solver
-		/// \f[ y^{n+1} = y^n + \alpha f(y^n + f(y^n)dt)dt + (1-\alpha)f(y^n)dt\f]
+		/// \f$ y^{n+1} = y^n + \alpha f(y^n + f(y^n)dt)dt + (1-\alpha)f(y^n)dt \f$
 		class PredictCorrectSimple : public Integrator
 		{
 		private:

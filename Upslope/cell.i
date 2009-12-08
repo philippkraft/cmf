@@ -51,7 +51,6 @@
 
 %node_downcast(cmf::water::flux_node::ptr cmf::upslope::Cell::get_surfacewater,cmf::river::OpenWaterStorage, cmf::water::DricheletBoundary)
 %node_downcast(cmf::water::WaterStorage::ptr cmf::upslope::Cell::get_storage,cmf::river::OpenWaterStorage, cmf::water::WaterStorage)
-%node_downcast(cmf::upslope::SoilLayer::ptr cmf::upslope::Cell::get_layer,cmf::upslope::VariableLayerSaturated,cmf::upslope::VariableLayerUnsaturated,cmf::upslope::SoilLayer)
 
 
 %attribute2(cmf::upslope::Cell,cmf::upslope::Topology,topology,get_topology);

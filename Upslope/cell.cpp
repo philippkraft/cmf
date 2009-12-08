@@ -1,7 +1,7 @@
+
 #include "cell.h"
 #include "../project.h"
 #include "SoilLayer.h"
-#include "VarLayerPair.h"
 #include "connections/AtmosphericFluxes.h"
 #include "connections/surfacefluxes.h"
 #include "connections/infiltration.h"
@@ -83,12 +83,6 @@ void cmf::upslope::Cell::add_layer(real lowerboundary,const cmf::upslope::Retent
 	}
 	m_Layers.push_back(layer);
 }
-void cmf::upslope::Cell::add_variable_layer_pair(real lowerboundary,const cmf::upslope::RetentionCurve& r_curve )
-{
-	std::tr1::shared_ptr<VariableLayerSaturated> sat= VariableLayerSaturated::Create(*this,lowerboundary,r_curve);
-	m_Layers.push_back(sat->UpperLayer());
-	m_Layers.push_back(sat);
-}
 cmf::upslope::vegetation::Vegetation cmf::upslope::Cell::get_vegetation() const
 {
 	vegetation::Vegetation res=m_vegetation;
@@ -110,8 +104,6 @@ void cmf::upslope::Cell::remove_layers()
 void cmf::upslope::Cell::remove_last_layer()
 {
 	m_Layers.pop_back();
-	if (dynamic_cast<VariableLayerUnsaturated*>(m_Layers.back().get()))
-		m_Layers.pop_back();
 }
 
 const cmf::project& cmf::upslope::Cell::project() const

@@ -13,6 +13,8 @@ namespace cmf {
 		
 		/// A class for the storage of any tracer. The state is the amount (mol, kg etc. see cmf::water) 
 		/// of the tracer in the storage.
+		///
+		/// The derivative function is given by:
 		/// \f{eqnarray*}
 		/// \frac{dX}{dt}&=&\sum_{f=1}^{F}\left( q_f [X]_f\right) + X_{in} - r^-X \left[\frac{mol}{day}\right]\\
 		/// F&=& \mbox{Number of fluxes in water storage} \\

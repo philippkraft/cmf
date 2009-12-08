@@ -14,6 +14,13 @@
 namespace cmf {
 	class project;
 	namespace water {
+		/// @defgroup connections Flux connections
+		///
+		/// The connections between the nodes (boundary conditions, storages) of the water network
+		/// The connections in cmf hold the processes for the calculation of fluxes between water storages and model boundaries
+		/// @todo Elaborate on this
+
+		/// @ingroup connections
 		/// Represents a connection between flux_nodes, where water fluxes occur. 
 		class flux_connection 
 		{
@@ -97,7 +104,8 @@ namespace cmf {
 
 		
 
-
+		/// @ingroup connections
+		/// Routes the sum of all other fluxes to a target
 		class waterbalance_connection : public flux_connection
 		{
 		protected:

@@ -8,7 +8,10 @@
 #include "ShuttleworthWallace.h"
 namespace cmf {
 	namespace upslope {
+		/// Contains different flux_connection classes for the description of evaporation and transpiration
 		namespace ET {
+			/// @defgroup ET Evapotranspiration
+			/// @ingroup connections
 
 			/// Returns the potential ET after Penman-Monteith using some simplifications for a given Radiation balance, 
 			/// aerodynamic and surface resistances, and a vapor pressure deficit
@@ -32,7 +35,8 @@ namespace cmf {
 			real PenmanMonteith(real Rn,real ra,real rs,real T,real vap_press_deficit);
 			real PenmanMonteith(cmf::atmosphere::Weather A,const cmf::upslope::vegetation::Vegetation & veg,double h);
 			real Tact(real Tpot,const cmf::upslope::SoilLayer & sw,const cmf::upslope::vegetation::Vegetation & veg);
-			
+			/// @ingroup ET
+			/// A constant evapotranspiration
 			class constantETpot : public cmf::water::flux_connection {
 			protected:
 				std::tr1::weak_ptr<cmf::upslope::SoilLayer> sw;
@@ -51,7 +55,10 @@ namespace cmf {
 					NewNodes();
 				}
 			};
+			/// @ingroup ET
 			/// Calculates the potential evapotranspiration according to FAO(1998)
+			///
+			/// Gouverning equations:
 			/// \f{eqnarray*}
 			/// \lambda get_evaporation &=& \frac{\Delta\left(R_n - G\right)+\rho_a c_p \frac{e_s - e_a}{r_a}}{\Delta + \gamma\left(1+\frac{r_s}{r_a}\right)} \mbox{ FAO 1998, Eq. 3} \\
 			/// \mbox{With:} \\
@@ -97,6 +104,8 @@ namespace cmf {
 				static real r_a(cmf::atmosphere::Weather A,real  veg_height) ;
 				static void use_for_cell(cmf::upslope::Cell & cell);
 			};
+
+			/// @ingroup ET
 			/// Calculates the actual transpiration and the soil evaporation from a soil layer
 			class ShuttleworthWallaceET : public cmf::water::flux_connection {
 			protected:
@@ -120,6 +129,10 @@ namespace cmf {
 				static void use_for_cell(cmf::upslope::Cell& cell);
 
 			};
+			/// @ingroup ET
+			/// Calculates the Evapotranspiration using Hargreave's equation
+			///
+			/// @todo document Hargreave
 			class HargreaveET : public cmf::water::flux_connection {
 			protected:
 				std::tr1::weak_ptr<cmf::upslope::SoilLayer> sw;
@@ -136,6 +149,7 @@ namespace cmf {
 				static void use_for_cell(cmf::upslope::Cell & cell);
 
 			};
+			/// @ingroup ET
 			/// Calculates the evaporation from a canopy storage
 			class CanopyStorageEvaporation : public cmf::water::flux_connection {
 			protected:
@@ -152,6 +166,8 @@ namespace cmf {
 						NewNodes();
 				}
 			};
+			/// @ingroup ET
+			/// Calculates evaporation from an open water body
 			class PenmanEvaporation : public cmf::water::flux_connection
 			{
 			protected:

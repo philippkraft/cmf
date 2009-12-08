@@ -8,6 +8,10 @@
 namespace cmf {
 	namespace upslope {
 		namespace connections {
+			/// @defgroup infiltration Infiltration
+			/// @ingroup connections			
+
+			/// @ingroup infiltration			
 			/// Connects the surfacewater and the most upper layer
 			///
 			/// If UpslopeCell::InfiltrationExcess and Cell is not saturated 
@@ -34,6 +38,8 @@ namespace cmf {
 					new MatrixInfiltration(c.get_layer(0),c.get_surfacewater());
 				}
 			};
+			/// @ingroup infiltration
+			/// Connection for infiltration with saturated conductivity
 			class CompleteInfiltration : public cmf::water::flux_connection {
 			protected:
 				std::tr1::weak_ptr<cmf::upslope::SoilLayer> m_soilwater;

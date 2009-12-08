@@ -8,7 +8,12 @@
 
 namespace cmf {
 	namespace upslope {
+		/// Contains different kinds of connections between the water storages of a cell
 		namespace connections {
+			/// @defgroup latflux lateral subsurface fluxes
+			/// @ingroup connections
+
+			/// @ingroup latflux
 			/// An abstract base class for lateral subsurface fluxes
 			class lateral_sub_surface_flux : public cmf::water::flux_connection {
 			protected:
@@ -29,7 +34,7 @@ namespace cmf {
 
 			};
 
-
+			/// @ingroup latflux
 			/// Calculates the lateral flow using the gravitational potential gradient only
 			///
 			/// \f[ q_{lat} = \frac{\Delta \Psi_G}{\|C_1-C_2\|} \frac 12 (T(C_1)+T(C_2)) w \f]
@@ -49,6 +54,7 @@ namespace cmf {
 				{}
 
 			};
+			/// @ingroup latflux
 			///	Calculates the lateral flow using the topographic gradient
 			///
 			/// \f[ q_{lat} = \frac{z_1 - z_2}{\|C_1-C_2\|} \frac 12 (T(C_1)+T(C_2)) w \f]
@@ -70,13 +76,9 @@ namespace cmf {
 
 			};
 			
+			/// @ingroup latflux
 			/// A connection similar to OHDIS-KWMSS (OHymos-based DIStributed model - with Kinematic Wave Method for Surface and Subsurface runoff) 
 			///
-			/// \f{eqnarray*} 
-			/// q_{u} &=& w d_m k(\theta) \frac{\delta z}{\delta x} \\ 
-			///	q_{s} &=& w (h-d)k_{sat} \frac{\delta z}{\delta x} + q_{u} \\
-			/// q_{o} &=& w (\frac{sqrt{\left|\frac{\delta z}{\delta x}\right|}{n} (h-d_a)^(2/3) + q_s
-			/// \f}
 			class OHDISflow : public lateral_sub_surface_flux
 			{
 			protected:
@@ -91,7 +93,8 @@ namespace cmf {
 				static const CellConnector cell_connector;
 
 			};
-
+			/// @ingroup latflux
+			/// Calculates the flux using Richard's equation for adjecent layers
 			class Richards_lateral: public lateral_sub_surface_flux
 			{
 			protected:

@@ -43,8 +43,11 @@
 }
 %enddef
 
-//SWIG_SHARED_PTR(state_var,cmf::math::StateVariable);
 
+SWIG_SHARED_PTR(state_var,cmf::math::StateVariable);
+   SWIG_SHARED_PTR_DERIVED(SoluteStorage,cmf::math::StateVariable,cmf::water::SoluteStorage);
+//SWIG_SHARED_PTR(Locatable,cmf::geometry::Locatable)   
+    SWIG_SHARED_PTR_DERIVED(flux_node,cmf::geometry::Locatable,cmf::water::flux_node);
 SWIG_SHARED_PTR(flux_node,cmf::water::flux_node);
     SWIG_SHARED_PTR_DERIVED(DricheletBoundary,cmf::water::flux_node,cmf::water::DricheletBoundary);
     SWIG_SHARED_PTR_DERIVED(NeumannBoundary, cmf::water::flux_node, cmf::water::NeumannBoundary);
@@ -53,8 +56,6 @@ SWIG_SHARED_PTR(flux_node,cmf::water::flux_node);
         SWIG_SHARED_PTR_DERIVED(OpenWaterStorage,cmf::water::WaterStorage,cmf::river::OpenWaterStorage);
             SWIG_SHARED_PTR_DERIVED(Reach,cmf::river::OpenWaterStorage,cmf::river::Reach);
         SWIG_SHARED_PTR_DERIVED(SoilLayer,cmf::water::WaterStorage,cmf::upslope::SoilLayer);
-            SWIG_SHARED_PTR_DERIVED(VariableLayerSaturated,cmf::upslope::SoilLayer,cmf::upslope::VariableLayerSaturated);
-            SWIG_SHARED_PTR_DERIVED(VariableLayerUnsaturated,cmf::upslope::SoilLayer,cmf::upslope::VariableLayerUnsaturated);
 
 #define %ptr(Type) SWIG_SHARED_PTR_QNAMESPACE::shared_ptr<Type>
 #define %dynptrcast(Type,input) SWIG_SHARED_PTR_QNAMESPACE::dynamic_pointer_cast<Type>(input) 
@@ -68,6 +69,11 @@ SWIG_SHARED_PTR(flux_node,cmf::water::flux_node);
 }
 %enddef
 
+%types (%ptr(cmf::water::flux_node) = cmf::geometry::Locatable)
+{
+  %ptr(cmf::water::flux_node)* from_with_type = (%ptr(cmf::water::flux_node)*)($from);
+  return (from_with_type->get());  
+}
 
 // Start my Module
 %module cmf_core
@@ -88,10 +94,6 @@ SWIG_SHARED_PTR(flux_node,cmf::water::flux_node);
 
 
 
-SWIG_SHARED_MULTICAST(cmf::upslope::VariableLayerUnsaturated, cmf::water::WaterStorage)
-SWIG_SHARED_MULTICAST(cmf::upslope::VariableLayerUnsaturated, cmf::water::flux_node)
-SWIG_SHARED_MULTICAST(cmf::upslope::VariableLayerSaturated, cmf::water::WaterStorage)
-SWIG_SHARED_MULTICAST(cmf::upslope::VariableLayerSaturated, cmf::water::flux_node)
 SWIG_SHARED_MULTICAST(cmf::upslope::SoilLayer, cmf::water::flux_node)
 
 
@@ -99,12 +101,10 @@ SWIG_SHARED_MULTICAST(cmf::river::Reach, cmf::water::WaterStorage)
 SWIG_SHARED_MULTICAST(cmf::river::Reach, cmf::water::flux_node)
 SWIG_SHARED_MULTICAST(cmf::river::OpenWaterStorage, cmf::water::flux_node)
 
-// SWIG_SHARED_MULTICAST(cmf::upslope::VariableLayerUnsaturated, cmf::math::StateVariable)
-// SWIG_SHARED_MULTICAST(cmf::upslope::VariableLayerSaturated, cmf::math::StateVariable)
-//SWIG_SHARED_MULTICAST(cmf::upslope::SoilLayer, cmf::math::StateVariable)
-//SWIG_SHARED_MULTICAST(cmf::river::OpenWaterStorage, cmf::math::StateVariable)
-//SWIG_SHARED_MULTICAST(cmf::river::Reach, cmf::math::StateVariable)
-//SWIG_SHARED_MULTICAST(cmf::water::WaterStorage, cmf::math::StateVariable)
+SWIG_SHARED_MULTICAST(cmf::upslope::SoilLayer, cmf::math::StateVariable)
+SWIG_SHARED_MULTICAST(cmf::river::OpenWaterStorage, cmf::math::StateVariable)
+SWIG_SHARED_MULTICAST(cmf::river::Reach, cmf::math::StateVariable)
+SWIG_SHARED_MULTICAST(cmf::water::WaterStorage, cmf::math::StateVariable)
 
 SWIG_SHARED_MULTICAST(cmf::atmosphere::RainCloud, cmf::water::flux_node)
 
@@ -131,8 +131,7 @@ SWIG_SHARED_MULTICAST(cmf::atmosphere::RainCloud, cmf::water::flux_node)
 //Downcast to all children of cmf::water::flux_node
 %node_downcast(Method,
    cmf::atmosphere::RainCloud,cmf::water::DricheletBoundary,cmf::water::NeumannBoundary,
-   cmf::upslope::VariableLayerSaturated,cmf::upslope::VariableLayerUnsaturated, cmf::upslope::SoilLayer,
-   cmf::river::Reach,cmf::river::OpenWaterStorage,cmf::water::WaterStorage
+   cmf::upslope::SoilLayer,  cmf::river::Reach,cmf::river::OpenWaterStorage,cmf::water::WaterStorage
 )
 %enddef
 
@@ -171,7 +170,6 @@ EXTENT__REPR__(cmf::atmosphere::RainCloud)
 
 %{
 	#include "upslope/connections/subsurfacefluxes.h"
-	#include "upslope/connections/VarLayerPercolation.h"
 	#include "upslope/connections/surfacefluxes.h"
 	#include "upslope/connections/atmosphericfluxes.h"
 	#include "upslope/connections/infiltration.h"
@@ -189,7 +187,6 @@ EXTENT__REPR__(cmf::atmosphere::RainCloud)
 %include "upslope/connections/subsurfacefluxes.h"
 %include "Reach/ManningConnection.h"
 
-%include "upslope/connections/VarLayerPercolation.h"
 %include "upslope/connections/surfacefluxes.h"
 %include "upslope/connections/atmosphericfluxes.h"
 %include "upslope/connections/infiltration.h"

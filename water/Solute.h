@@ -13,7 +13,9 @@
 namespace cmf
 
 {
-	/// Contains generic classes for %matter transport. You can use any unit for %matter amounts you like, like mol, g, kg, or none at all as long as you stay consistent. 
+	/// Contains generic classes for %solute and %water transport. 
+	///
+	/// You can use any unit for %solute amounts you like, like mol, g, kg, or none at all as long as you stay consistent. 
 	/// But for the concentrations, the nominator of the unit must be \f$m^3\f$, e.g. \f$\frac{mol}{m^3},\frac{g}{m^3},\frac{1}{m^3}\f$. For simplicity, in the following the unit of concentrations
 	/// are called \f$\frac{mol}{m^3}\f$.
 	namespace water

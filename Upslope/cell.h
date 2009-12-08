@@ -158,7 +158,6 @@ namespace cmf {
 			}
 			cmf::upslope::layer_ptr get_layer(int ndx) const;
 			void add_layer(real lowerboundary,const cmf::upslope::RetentionCurve& r_curve,real saturateddepth=10);
-			void add_variable_layer_pair(real lowerboundary,const cmf::upslope::RetentionCurve& r_curve);
 			void remove_last_layer();
 			void remove_layers();
 			virtual ~Cell();

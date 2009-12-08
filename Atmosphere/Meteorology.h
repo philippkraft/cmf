@@ -15,7 +15,7 @@ namespace cmf {
 		double global_radiation(cmf::math::Time t,double height,double sunshine_fraction,double longitude=8,double latitude=51,int time_zone=1,bool daily=0);
 		double Pressure(double height);
 
-        /// @brief A structure to return all parts of the incoming radiation, all values in \f$\frac{MJ}{m^2 day}\f$
+    /// A structure holding meteorological information, excluding precipitation
 		struct Weather
 		{
 			double
@@ -111,8 +111,8 @@ namespace cmf {
 
 		class MeteoStationList;
         
-        /// @brief A meteorological station holding timeseries to create Weather records
-        ///
+    /// @brief A meteorological station holding timeseries to create Weather records
+    ///
 		/// In order to calculate ETpot with cmf a big amount of meteorological data is needed,
 		/// more data than usually available. The MeteoStation class can estimate missing data
 		/// from a minimal set. As more data, as one provides, the better the calculation of
