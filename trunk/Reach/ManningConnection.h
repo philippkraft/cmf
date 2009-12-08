@@ -8,6 +8,11 @@
 #include "../Upslope/cell.h"
 namespace cmf {
 	namespace river {
+
+		/// @defgroup manning Surface water connections
+		/// @ingroup connections
+
+		/// @ingroup manning
 		/// Calculates the flux between two open water bodies, using Manning's equation
 		class Manning : public cmf::water::flux_connection
 		{
@@ -33,7 +38,8 @@ namespace cmf {
 
 			
 		};
-
+		/// @ingroup manning
+		/// Connecting surface water bodies using a diffusive wave. Not stable deep water with small gradient
 		class Manning_Diffusive: public Manning
 		{
 		private:
@@ -46,6 +52,8 @@ namespace cmf {
 				: Manning(left,right,reachtype,true)
 			{			}
 		};
+		/// @ingroup manning
+		/// Connecting surface water bodies using a kinematic wave. Note the fixed gradient
 		class Manning_Kinematic: public Manning
 		{
 		private:

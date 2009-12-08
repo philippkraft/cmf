@@ -9,6 +9,8 @@ namespace cmf {
 	namespace upslope {
 
 		namespace connections {
+			/// @ingroup connections
+			/// A connection routing rainfall to surface water and to an eventually existing canopy storage
 			class Rainfall : public cmf::water::flux_connection
 			{
 			protected:
@@ -38,6 +40,8 @@ namespace cmf {
 						NewNodes();
 				}
 			};
+			/// @ingroup connections
+			/// A connection routing snowfall (precipitation below freezing Temp) to the snow pack
 			class Snowfall : public cmf::water::flux_connection
 			{
 			protected:

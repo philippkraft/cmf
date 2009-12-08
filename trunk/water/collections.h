@@ -74,11 +74,13 @@ namespace cmf {
 			void append(flux_node::ptr node);
 
 			/// Sets the potentials of the node_lists
+			///
 			/// If node do not have changeabe potentials, they are skipped
 			/// @returns The number of nodes with changed potential
 			int set_potentials(const cmf::math::num_array& potentials);
 			cmf::math::num_array get_potentials();
 			/// Returns the sum of the water balances of the nodes
+			///
 			/// \f[\sigma_{global} = \sum_{i=0}^N{\sum_{j=0}^{C_i}{q_{ij}(t)}} \f]
 			///
 			/// Replaces slow Python code like:
@@ -89,7 +91,8 @@ namespace cmf {
 			/// @endcode
 			real global_water_balance(cmf::math::Time t) const;
 			/// Returns the water balance of each vector as a vector
-			/// \f[ \sigma_i = sum_{j=0}^{C_i}{q_{ij}(t)}} \f]
+			///
+			/// \f[ \sigma_i = \sum_{j=0}^{C_i}{q_{ij}(t)} \f]
 			///
 			/// Replaces slow Python code like:
 			/// @code
@@ -179,7 +182,7 @@ namespace cmf {
 			/// @endcode
 			real global_water_balance(cmf::math::Time t) const;
 			/// Returns the water balance of each vector as a vector
-			/// \f[ \sigma_i = sum_{j=0}^{C_i}{q_{ij}(t)}} \f]
+			/// \f[ \sigma_i = \sum_{j=0}^{C_i}{q_{ij}(t)} \f]
 			///
 			/// Replaces slow Python code like:
 			/// @code

@@ -9,6 +9,7 @@
 #include <memory>
 namespace cmf {
 	namespace upslope {
+		/// @ingroup storages
 		/// A representation of a SoilLayer
 		class SoilLayer: public cmf::water::WaterStorage
 		{
@@ -93,7 +94,6 @@ namespace cmf {
 			virtual void StateChangeAction();
 
 		};
-
 
 	}
 }

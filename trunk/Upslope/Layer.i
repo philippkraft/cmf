@@ -2,7 +2,6 @@
 	// Include Upslope
 	#include "upslope/Soil/RetentionCurve.h"
 	#include "upslope/SoilLayer.h"
-	#include "upslope/VarLayerPair.h"
 %}
 // Get Upslope Classes
 
@@ -46,9 +45,5 @@
   }
 }
 
-%include "upslope/VarLayerPair.h"
-
-EXTENT__REPR__(cmf::upslope::VariableLayerSaturated)
-EXTENT__REPR__(cmf::upslope::VariableLayerUnsaturated)
 EXTENT__REPR__(cmf::upslope::SoilLayer)
 

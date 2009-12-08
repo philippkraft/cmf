@@ -14,8 +14,7 @@
 namespace cmf {
 	class bc_iterator;
 
-    /// @ brief The study area, holding all cells and outlets
-    /// @ brief The study area, holding all cells and outlets
+  /// @brief The study area, holding all cells and outlets and streams
 	class project	: public cmf::math::StateVariableOwner
 	{
 	private:
@@ -57,7 +56,7 @@ namespace cmf {
 		int reach_count() const {return int(m_reaches.size());}
 
 		cmf::water::node_list get_storages();
-
+		/// Creates a new reach
 		cmf::river::Reach_ptr NewReach(cmf::river::Channel shape, bool diffusive=false);
 
 	};

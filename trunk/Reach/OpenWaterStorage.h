@@ -6,9 +6,10 @@
 #include "../math/real.h"
 #include "../Upslope/cell.h"
 namespace cmf {
+	///	Contains storages and connection for the simulation of surface water bodies, like rivers, channels, lakes and dams
 	namespace river {
 		class OpenWaterStorage;
-		
+		/// @ingroup storages
 		/// An open water body. The potential is calculated from the stored water using a water table function
 		class OpenWaterStorage : public cmf::water::WaterStorage
 		{
