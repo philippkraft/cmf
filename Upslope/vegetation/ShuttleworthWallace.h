@@ -85,8 +85,8 @@ namespace cmf {
 				///
 				/// @param vegParameters Vegetation parameters
 				/// @param u Windspeed in m/s
-				/// @param Rs Global radiation in MJ/(m2 day)
-				/// @param T Temperature in °C
+				/// @param Rs Global radiation in \f$\frac{MJ}{m2 day}\f$
+				/// @param T Temperature \f$T\ ^\circ C\f$
 				/// @param vpd Vapor pressure deficit
 				/// @param soil_matric_potential Matrix potential of soil (in m)
 				/// @param meas_height_above_canopy Height of the wind measurement above the canopy

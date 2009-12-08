@@ -9,6 +9,7 @@
 
 namespace cmf { 
 	namespace atmosphere {
+		/// @ingroup nodes
 		/// RainCloud is a specialization of NeumannBoundary . The only difference is a reference to the owning cell and the unit conversion of the flux timeseries from mm/day to m3/day
 		class RainCloud : public cmf::water::NeumannBoundary
 		{

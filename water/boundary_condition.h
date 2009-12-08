@@ -26,6 +26,7 @@ namespace cmf {
 
 			}
 		};
+		/// @ingroup nodes
 		/// Drichelet (constant head) boundary condition
 		///
 		/// This boundary condition can be used either as a pure sink boundary condition or as a conditional source / sink boundary condition.
@@ -65,6 +66,7 @@ namespace cmf {
 			DricheletBoundary(const cmf::project& _p,real potential,cmf::geometry::point Location=cmf::geometry::point());
 			
 		};
+		/// @ingroup nodes
 		/// A Neumann boundary condition (constant flux boundary condition)
 		///
 		/// The flux is a timeseries, but can be used as a scalar.
@@ -119,6 +121,8 @@ namespace cmf {
 			/// Creates a Neumann Boundary condition connected with target
 			static NeumannBoundary::ptr create(cmf::water::flux_node::ptr target);
 		};
+
+		/// @ingroup connections
 		/// This flux_connection is created, when connecting a Neumann boundary condition with a state variable using Neumann::connect_to
 		class NeumannFlux : public cmf::water::flux_connection
 		{
@@ -137,7 +141,7 @@ namespace cmf {
 			}
 			
 		};
-		
+		/// @ingroup connections
 		/// Produces a constant but changeable flux from a source to a target, if enough water is present in the source
 		///
 		/// \f$ q=\left\{0 \mbox{ if }V_{source}\le V_{min}\\ \frac{V_{source} - V_{min}}{t_{decr} q_{0} - V_{min}}\mbox{ if } V_{source} t_{decr} q_{0}\\ q_{0} \mbox{ else}\le \right. \f$
@@ -171,6 +175,7 @@ namespace cmf {
 			TechnicalFlux(std::tr1::shared_ptr<cmf::water::WaterStorage> & source,std::tr1::shared_ptr<cmf::water::flux_node> target,real maximum_flux,real minimal_state=0,cmf::math::Time flux_decrease_time=cmf::math::h)
 				: flux_connection(source,target,"Technical flux"),MaxFlux(maximum_flux),MinState(minimal_state),FluxDecreaseTime(flux_decrease_time) {}
 		};
+
 
 
 

@@ -23,7 +23,12 @@ namespace cmf {
 		typedef std::vector<cmf::water::flux_connection* > connection_vector;
 		typedef std::set<cmf::water::flux_connection* > connection_set;
 
+		/// @defgroup nodes	Water nodes
+		/// @todo Elaborate on Water nodes
+		
 		/// Base class for everything that can be connected by fluxes. 
+		/// @ingroup nodes
+		///
 		/// Flux nodes can be WaterStorages, flux end points, sinks, sources and 
 		/// bridges to other model domains (e.g. Ponded water to river system).
 		/// The base class can be used where a simple routing, potentially with mixing,

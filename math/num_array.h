@@ -23,7 +23,8 @@
 			num_array();
 			/// Copy constructor
 			num_array(const num_array& Vector);
-
+		
+			/// Creates a new vector using data. Not for external use
 			num_array(double * data,int count);
 
 			void set_data_from_adress(size_t data_adress,size_t count);

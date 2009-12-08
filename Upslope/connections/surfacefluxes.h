@@ -9,6 +9,10 @@
 namespace cmf {
 	namespace upslope {
 		namespace connections {
+			/// @defgroup surfacefluxes Connections for local aboveground fluxes
+			/// @ingroup connections
+
+			/// @ingroup surfacefluxes
 			/// Calculates the overflow of a canopy storage
 			class CanopyOverflow : public cmf::water::flux_connection {
 			protected:
@@ -38,6 +42,8 @@ namespace cmf {
 					return new CanopyOverflow(canopy,cell.get_surfacewater(),cell);
 				}
 			};
+			/// @ingroup surfacefluxes
+			/// Calculates snow melt using a simple degree day method
 			class SimpleTindexSnowMelt : public cmf::water::flux_connection {
 			protected:
 				std::tr1::weak_ptr<cmf::water::WaterStorage> m_Snow;

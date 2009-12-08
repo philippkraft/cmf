@@ -59,6 +59,7 @@ namespace cmf {
 			virtual RetentionCurve* copy() const=0;
 		};
 		/// Provides the use of the Brooks-Corey retention curve
+		///
 		/// \f{eqnarray*}
 		/// W(\theta) &=& \frac{\theta - \theta_r}{\theta_s - \theta_r} \\
 		/// K(W) &=& K_{sat} W^{2+3b} \\
@@ -146,6 +147,8 @@ namespace cmf {
 		};
 		
 		/// Provides the use of the Van Genuchten - Mualem retention curve (Van Genuchten 1980)
+		///
+		/// Head - moisture realtionship:
 		/// \f{eqnarray*}
 		/// W(\theta) &=& \frac{\theta - \theta_r}{\theta_s - \theta_r} \\
 		/// K(W) &=& K_{sat} \sqrt{W} \left(\left(1-w^{1/m}\right)^m\right)^2 \\
@@ -164,11 +167,11 @@ namespace cmf {
 		public:
 			real
 				alpha,n,Ksat,Phi,Psi_full,m;
-			///\f[ W(\Psi) &=& \left(1+\left(\alpha\,100\frac{cm}{m}\Psi\right)^n\right)^{-m} \f]
+			///\f[ W(\Psi) = \left(1+\left(\alpha\,100\frac{cm}{m}\Psi\right)^n\right)^{-m} \f]
 			virtual real Wetness(real suction) const;
-			/// \f[\Psi(W) &=& 0.01 \frac{m}{cm} \frac{{\left(1-{W}^{\frac{1}{m}}\right) }^{\frac{1}{n}}}{\alpha\,{W}^{\frac{1}{m\,n}}}  \f]
+			/// \f[\Psi(W) = 0.01 \frac{m}{cm} \frac{{\left(1-{W}^{\frac{1}{m}}\right) }^{\frac{1}{n}}}{\alpha\,{W}^{\frac{1}{m\,n}}}  \f]
 			virtual real MatricPotential(real wetness) const;
-			/// \f[K(W) &=& K_{sat} \sqrt{W} \left(\left(1-w^{1/m}\right)^m\right)^2 \f]
+			/// \f[K(W) = K_{sat} \sqrt{W} \left(\left(1-w^{1/m}\right)^m\right)^2 \f]
 			virtual real K(real wetness,real depth) const;
 			/// \f[V_{void}=A\,\left(d_{lower}-d_{upper}\right)\f]
 			virtual real VoidVolume(real upperDepth,real lowerDepth,real Area) const;
@@ -228,29 +231,6 @@ namespace cmf {
 			{			}
 		};
 
-/*
-		class DurnerBiModalRetention : public RetentionCurve
-		{
-		public:
-			real Phi;
-			int r,p,q;
-			cmf::math::num_array alpha, n, w;
-				
-
-			real K(real wetness,real depth) const
-			{
-				cmf::math::num_array m = 1 - 1/n;
-				real term1=()
-					(1-w2)*pow(1+pow(alpha1*h,n1),m1) + w2 * pow(1+pow(alpha2*h,n2),m2);
-				real term2=0;
-				real term3=0;
-				return Ksat * pow(term1,p) * pow(term2/term3,r);
-			}
-
-
-
-		};
-*/
 	}
 }
 

@@ -13,15 +13,19 @@
 
 namespace cmf {
 	namespace water {
+		/// @defgroup storages Storages of water
+		/// @ingroup nodes
 
+		/// @ingroup storages
 		/// A state variable for the storage of water
-		/// A class for the storage of any tracer. The state is the amount (mol, kg etc. see cmf::water) of the tracer in the storage
+		///
+		/// A class for the storage of water. The state is the volume of water stored in \f$m^3\f$
+		/// The derivative function is given by:
 		/// \f{eqnarray*}
 		/// \frac{dV}{dt}&=&\sum_{f=1}^{F} q_f  \\
 		/// F&=& \mbox{Number of fluxes in water storage} \\
 		/// q_f&=& \mbox{Water flux in } \frac{m^3}{day}	\\
 		/// \f}
-		/// The vector fluxes is used used by concentration to get the amount of water mixing.
 		class WaterStorage : public cmf::math::StateVariable,public cmf::math::StateVariableOwner,public cmf::water::flux_node
 		{
 		public:
@@ -59,11 +63,11 @@ namespace cmf {
 				Solute(solute).set_state(NewConcetration*this->get_state());
 			}
 			/// Returns the volume of water in this storage in m<sup>3</sup>
-			real get_volume() const {
+			virtual real get_volume() const {
 				return get_state();
 			}
 			/// Sets the volume of water in this storage in m<sup>3</sup>
-			void set_volume(real newwatercontent)	{
+			virtual void set_volume(real newwatercontent)	{
 				set_state(newwatercontent);
 			}
 			virtual real Derivate(const cmf::math::Time& time) {
