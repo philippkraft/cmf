@@ -52,8 +52,8 @@ namespace cmf {
 			{
 				m_Potential=new_potential;
 			}
-			virtual void set_conc(const cmf::water::solute& solute, double value);
-			virtual real conc(cmf::math::Time t, const cmf::water::solute& solute) const;
+			virtual void set_conc(const cmf::water::solute& _Solute, double value);
+			virtual real conc(cmf::math::Time t, const cmf::water::solute& _Solute) const;
 			bool is_source;
 			bool is_empty() const
 			{
@@ -92,9 +92,9 @@ namespace cmf {
 			/// The concentration timeseries of the flux
 			cmf::water::SoluteTimeseries concentration;
 			/// Returns the solute concentrations of the flux at a given time
-			real conc(cmf::math::Time t, const cmf::water::solute& solute) const
+			real conc(cmf::math::Time t, const cmf::water::solute& _Solute) const
 			{
-				return concentration.conc(t,solute);
+				return concentration.conc(t,_Solute);
 			}
 			/// Returns the flux at a given time
 			real operator()(cmf::math::Time t) const;

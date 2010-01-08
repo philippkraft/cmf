@@ -85,7 +85,7 @@ namespace cmf {
 			/// Last date of measurements
 			cmf::math::Time end()	const		{return begin()+step()*int(m_data->values.size());}
 			/// Method for the interpolation (0 - Nearest neighbor, 1- linear, 2 - cubic spline (not implemented yet)
-			double interpolationpower() const {return m_data->interpolationpower;}
+			int interpolationpower() const {return m_data->interpolationpower;}
 			/// Appends a measurement
 			void add(double Value);
 			/// returns true if no values are added to the timeseries

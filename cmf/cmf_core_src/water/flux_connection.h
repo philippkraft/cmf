@@ -80,7 +80,7 @@ namespace cmf {
 			
 			/// Returns the concentration of the flux. If not overridden,
 			/// it returns the concentration of the source of the flux (direction depending)
-			real conc(cmf::math::Time t, const cmf::water::solute& solute);
+			real conc(cmf::math::Time t, const cmf::water::solute& _Solute);
 			/// A string describing the type of the connection
 			const std::string type;
 			/// A value ranging from 0 to 1 

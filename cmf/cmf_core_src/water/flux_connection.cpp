@@ -70,11 +70,11 @@ cmf::water::flux_node::ptr cmf::water::flux_connection::get_target(const flux_no
 			return flux_node::ptr();
 }
 
-real cmf::water::flux_connection::conc( cmf::math::Time t, const cmf::water::solute& solute )
+real cmf::water::flux_connection::conc( cmf::math::Time t, const cmf::water::solute& _Solute )
 {
 	real _q=q(t);
-	if (_q>0) return left_node()->conc(t,solute);
-	else if (_q<0) return right_node()->conc(t,solute);
+	if (_q>0) return left_node()->conc(t,_Solute);
+	else if (_q<0) return right_node()->conc(t,_Solute);
 	else return 0.0;
 }
 

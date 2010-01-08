@@ -30,15 +30,15 @@ WaterStorage::WaterStorage(const cmf::project& _project,double InitialState/*=0*
 }
 
 
-SoluteStorage& WaterStorage::Solute( const solute& solute )
+SoluteStorage& WaterStorage::Solute( const solute& _Solute )
 {
-	return *m_Concentrations[solute.Id];
+	return *m_Concentrations[_Solute.Id];
 }
 
 
-real WaterStorage::conc(const solute& solute) const
+real WaterStorage::conc(const solute& _Solute) const
 {
-	return Solute(solute).conc();
+	return Solute(_Solute).conc();
 }
 
 std::tr1::shared_ptr<WaterStorage> WaterStorage::from_node( flux_node::ptr node )

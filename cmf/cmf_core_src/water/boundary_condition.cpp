@@ -54,12 +54,12 @@ cmf::water::DricheletBoundary::DricheletBoundary(const cmf::project& _p,real pot
 {	
 }
 
-real cmf::water::DricheletBoundary::conc( cmf::math::Time t, const cmf::water::solute& solute ) const
+real cmf::water::DricheletBoundary::conc( cmf::math::Time t, const cmf::water::solute& _Solute ) const
 {
-	real node_conc=	cmf::water::flux_node::conc(t,solute);
+	real node_conc=	cmf::water::flux_node::conc(t,_Solute);
 	if (node_conc<=0.0 && (!is_empty()))
 	{
-		conc_map::const_iterator it=m_concentration.find(solute);
+		conc_map::const_iterator it=m_concentration.find(_Solute);
 		if (it!=m_concentration.end())
 			return it->second;
 		else
@@ -69,7 +69,7 @@ real cmf::water::DricheletBoundary::conc( cmf::math::Time t, const cmf::water::s
 		return node_conc;
 }
 
-void cmf::water::DricheletBoundary::set_conc( const cmf::water::solute& solute, double value )
+void cmf::water::DricheletBoundary::set_conc( const cmf::water::solute& _Solute, double value )
 {
-	m_concentration[solute]=value;
+	m_concentration[_Solute]=value;
 }
