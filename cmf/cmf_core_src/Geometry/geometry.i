@@ -1,4 +1,6 @@
-﻿%{
+
+%echo "Entering geometry.i"
+%{
 // Include geometry
 #include "geometry/geometry.h"
 %}

@@ -1,3 +1,4 @@
+/* Created with swigbuild.bat at 08.01.2010 15:09:36,78 */ 
 #pragma warning(push) 
 #pragma warning (disable : 4244) 
 #ifndef _CONSOLE 
@@ -11850,7 +11851,7 @@ SWIGINTERN PyObject *_wrap_timeseries_interpolationpower(PyObject *SWIGUNUSEDPAR
   void *argp1 = 0 ;
   int res1 = 0 ;
   PyObject *swig_obj[1] ;
-  double result;
+  int result;
   
   if (!args) SWIG_fail;
   swig_obj[0] = args;
@@ -11861,13 +11862,13 @@ SWIGINTERN PyObject *_wrap_timeseries_interpolationpower(PyObject *SWIGUNUSEDPAR
   arg1 = reinterpret_cast< cmf::math::timeseries * >(argp1);
   {
     try {
-      result = (double)((cmf::math::timeseries const *)arg1)->interpolationpower();
+      result = (int)((cmf::math::timeseries const *)arg1)->interpolationpower();
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
     
   }
-  resultobj = SWIG_From_double(static_cast< double >(result));
+  resultobj = SWIG_From_int(static_cast< int >(result));
   return resultobj;
 fail:
   return NULL;
@@ -31864,7 +31865,7 @@ SWIGINTERN PyObject *_wrap_flux_connection_get_target__SWIG_0(PyObject *SWIGUNUS
   }
   {
     int dcast = 0;
-    /*@SWIG:C:\\Programme\\swig\\Lib\\typemaps\\swigmacros.swg,200,%formacro@*//*@SWIG:C:\\Programme\\swig\\Lib\\typemaps\\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf.i,113,%_node_down_cast@*/
+    /*@SWIG:C:\\Program Files\\pythonxy\\swig\\Lib\\typemaps\\swigmacros.swg,200,%formacro@*//*@SWIG:C:\\Program Files\\pythonxy\\swig\\Lib\\typemaps\\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf.i,113,%_node_down_cast@*/
     if (dcast==0 && result) /*check for cmf::atmosphere::RainCloud*/  {
       std::tr1::shared_ptr<cmf::atmosphere::RainCloud> output = std::tr1::dynamic_pointer_cast<cmf::atmosphere::RainCloud>(result);
       if (output) /*flux_node is cmf::atmosphere::RainCloud */ {
@@ -31874,7 +31875,7 @@ SWIGINTERN PyObject *_wrap_flux_connection_get_target__SWIG_0(PyObject *SWIGUNUS
     }
     /*@SWIG@*/
     
-    /*@SWIG:C:\\Programme\\swig\\Lib\\typemaps\\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf.i,113,%_node_down_cast@*/
+    /*@SWIG:C:\\Program Files\\pythonxy\\swig\\Lib\\typemaps\\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf.i,113,%_node_down_cast@*/
     if (dcast==0 && result) /*check for cmf::water::DricheletBoundary*/  {
       std::tr1::shared_ptr<cmf::water::DricheletBoundary> output = std::tr1::dynamic_pointer_cast<cmf::water::DricheletBoundary>(result);
       if (output) /*flux_node is cmf::water::DricheletBoundary */ {
@@ -31884,7 +31885,7 @@ SWIGINTERN PyObject *_wrap_flux_connection_get_target__SWIG_0(PyObject *SWIGUNUS
     }
     /*@SWIG@*/
     
-    /*@SWIG:C:\\Programme\\swig\\Lib\\typemaps\\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf.i,113,%_node_down_cast@*/
+    /*@SWIG:C:\\Program Files\\pythonxy\\swig\\Lib\\typemaps\\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf.i,113,%_node_down_cast@*/
     if (dcast==0 && result) /*check for cmf::water::NeumannBoundary*/  {
       std::tr1::shared_ptr<cmf::water::NeumannBoundary> output = std::tr1::dynamic_pointer_cast<cmf::water::NeumannBoundary>(result);
       if (output) /*flux_node is cmf::water::NeumannBoundary */ {
@@ -31894,7 +31895,7 @@ SWIGINTERN PyObject *_wrap_flux_connection_get_target__SWIG_0(PyObject *SWIGUNUS
     }
     /*@SWIG@*/
     
-    /*@SWIG:C:\\Programme\\swig\\Lib\\typemaps\\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf.i,113,%_node_down_cast@*/
+    /*@SWIG:C:\\Program Files\\pythonxy\\swig\\Lib\\typemaps\\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf.i,113,%_node_down_cast@*/
     if (dcast==0 && result) /*check for cmf::upslope::SoilLayer*/  {
       std::tr1::shared_ptr<cmf::upslope::SoilLayer> output = std::tr1::dynamic_pointer_cast<cmf::upslope::SoilLayer>(result);
       if (output) /*flux_node is cmf::upslope::SoilLayer */ {
@@ -31904,7 +31905,7 @@ SWIGINTERN PyObject *_wrap_flux_connection_get_target__SWIG_0(PyObject *SWIGUNUS
     }
     /*@SWIG@*/
     
-    /*@SWIG:C:\\Programme\\swig\\Lib\\typemaps\\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf.i,113,%_node_down_cast@*/
+    /*@SWIG:C:\\Program Files\\pythonxy\\swig\\Lib\\typemaps\\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf.i,113,%_node_down_cast@*/
     if (dcast==0 && result) /*check for cmf::river::Reach*/  {
       std::tr1::shared_ptr<cmf::river::Reach> output = std::tr1::dynamic_pointer_cast<cmf::river::Reach>(result);
       if (output) /*flux_node is cmf::river::Reach */ {
@@ -31914,7 +31915,7 @@ SWIGINTERN PyObject *_wrap_flux_connection_get_target__SWIG_0(PyObject *SWIGUNUS
     }
     /*@SWIG@*/
     
-    /*@SWIG:C:\\Programme\\swig\\Lib\\typemaps\\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf.i,113,%_node_down_cast@*/
+    /*@SWIG:C:\\Program Files\\pythonxy\\swig\\Lib\\typemaps\\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf.i,113,%_node_down_cast@*/
     if (dcast==0 && result) /*check for cmf::river::OpenWaterStorage*/  {
       std::tr1::shared_ptr<cmf::river::OpenWaterStorage> output = std::tr1::dynamic_pointer_cast<cmf::river::OpenWaterStorage>(result);
       if (output) /*flux_node is cmf::river::OpenWaterStorage */ {
@@ -31924,7 +31925,7 @@ SWIGINTERN PyObject *_wrap_flux_connection_get_target__SWIG_0(PyObject *SWIGUNUS
     }
     /*@SWIG@*/
     
-    /*@SWIG:C:\\Programme\\swig\\Lib\\typemaps\\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf.i,113,%_node_down_cast@*/
+    /*@SWIG:C:\\Program Files\\pythonxy\\swig\\Lib\\typemaps\\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf.i,113,%_node_down_cast@*/
     if (dcast==0 && result) /*check for cmf::water::WaterStorage*/  {
       std::tr1::shared_ptr<cmf::water::WaterStorage> output = std::tr1::dynamic_pointer_cast<cmf::water::WaterStorage>(result);
       if (output) /*flux_node is cmf::water::WaterStorage */ {
@@ -31988,7 +31989,7 @@ SWIGINTERN PyObject *_wrap_flux_connection_get_target__SWIG_1(PyObject *SWIGUNUS
   }
   {
     int dcast = 0;
-    /*@SWIG:C:\\Programme\\swig\\Lib\\typemaps\\swigmacros.swg,200,%formacro@*//*@SWIG:C:\\Programme\\swig\\Lib\\typemaps\\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf.i,113,%_node_down_cast@*/
+    /*@SWIG:C:\\Program Files\\pythonxy\\swig\\Lib\\typemaps\\swigmacros.swg,200,%formacro@*//*@SWIG:C:\\Program Files\\pythonxy\\swig\\Lib\\typemaps\\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf.i,113,%_node_down_cast@*/
     if (dcast==0 && result) /*check for cmf::atmosphere::RainCloud*/  {
       std::tr1::shared_ptr<cmf::atmosphere::RainCloud> output = std::tr1::dynamic_pointer_cast<cmf::atmosphere::RainCloud>(result);
       if (output) /*flux_node is cmf::atmosphere::RainCloud */ {
@@ -31998,7 +31999,7 @@ SWIGINTERN PyObject *_wrap_flux_connection_get_target__SWIG_1(PyObject *SWIGUNUS
     }
     /*@SWIG@*/
     
-    /*@SWIG:C:\\Programme\\swig\\Lib\\typemaps\\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf.i,113,%_node_down_cast@*/
+    /*@SWIG:C:\\Program Files\\pythonxy\\swig\\Lib\\typemaps\\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf.i,113,%_node_down_cast@*/
     if (dcast==0 && result) /*check for cmf::water::DricheletBoundary*/  {
       std::tr1::shared_ptr<cmf::water::DricheletBoundary> output = std::tr1::dynamic_pointer_cast<cmf::water::DricheletBoundary>(result);
       if (output) /*flux_node is cmf::water::DricheletBoundary */ {
@@ -32008,7 +32009,7 @@ SWIGINTERN PyObject *_wrap_flux_connection_get_target__SWIG_1(PyObject *SWIGUNUS
     }
     /*@SWIG@*/
     
-    /*@SWIG:C:\\Programme\\swig\\Lib\\typemaps\\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf.i,113,%_node_down_cast@*/
+    /*@SWIG:C:\\Program Files\\pythonxy\\swig\\Lib\\typemaps\\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf.i,113,%_node_down_cast@*/
     if (dcast==0 && result) /*check for cmf::water::NeumannBoundary*/  {
       std::tr1::shared_ptr<cmf::water::NeumannBoundary> output = std::tr1::dynamic_pointer_cast<cmf::water::NeumannBoundary>(result);
       if (output) /*flux_node is cmf::water::NeumannBoundary */ {
@@ -32018,7 +32019,7 @@ SWIGINTERN PyObject *_wrap_flux_connection_get_target__SWIG_1(PyObject *SWIGUNUS
     }
     /*@SWIG@*/
     
-    /*@SWIG:C:\\Programme\\swig\\Lib\\typemaps\\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf.i,113,%_node_down_cast@*/
+    /*@SWIG:C:\\Program Files\\pythonxy\\swig\\Lib\\typemaps\\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf.i,113,%_node_down_cast@*/
     if (dcast==0 && result) /*check for cmf::upslope::SoilLayer*/  {
       std::tr1::shared_ptr<cmf::upslope::SoilLayer> output = std::tr1::dynamic_pointer_cast<cmf::upslope::SoilLayer>(result);
       if (output) /*flux_node is cmf::upslope::SoilLayer */ {
@@ -32028,7 +32029,7 @@ SWIGINTERN PyObject *_wrap_flux_connection_get_target__SWIG_1(PyObject *SWIGUNUS
     }
     /*@SWIG@*/
     
-    /*@SWIG:C:\\Programme\\swig\\Lib\\typemaps\\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf.i,113,%_node_down_cast@*/
+    /*@SWIG:C:\\Program Files\\pythonxy\\swig\\Lib\\typemaps\\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf.i,113,%_node_down_cast@*/
     if (dcast==0 && result) /*check for cmf::river::Reach*/  {
       std::tr1::shared_ptr<cmf::river::Reach> output = std::tr1::dynamic_pointer_cast<cmf::river::Reach>(result);
       if (output) /*flux_node is cmf::river::Reach */ {
@@ -32038,7 +32039,7 @@ SWIGINTERN PyObject *_wrap_flux_connection_get_target__SWIG_1(PyObject *SWIGUNUS
     }
     /*@SWIG@*/
     
-    /*@SWIG:C:\\Programme\\swig\\Lib\\typemaps\\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf.i,113,%_node_down_cast@*/
+    /*@SWIG:C:\\Program Files\\pythonxy\\swig\\Lib\\typemaps\\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf.i,113,%_node_down_cast@*/
     if (dcast==0 && result) /*check for cmf::river::OpenWaterStorage*/  {
       std::tr1::shared_ptr<cmf::river::OpenWaterStorage> output = std::tr1::dynamic_pointer_cast<cmf::river::OpenWaterStorage>(result);
       if (output) /*flux_node is cmf::river::OpenWaterStorage */ {
@@ -32048,7 +32049,7 @@ SWIGINTERN PyObject *_wrap_flux_connection_get_target__SWIG_1(PyObject *SWIGUNUS
     }
     /*@SWIG@*/
     
-    /*@SWIG:C:\\Programme\\swig\\Lib\\typemaps\\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf.i,113,%_node_down_cast@*/
+    /*@SWIG:C:\\Program Files\\pythonxy\\swig\\Lib\\typemaps\\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf.i,113,%_node_down_cast@*/
     if (dcast==0 && result) /*check for cmf::water::WaterStorage*/  {
       std::tr1::shared_ptr<cmf::water::WaterStorage> output = std::tr1::dynamic_pointer_cast<cmf::water::WaterStorage>(result);
       if (output) /*flux_node is cmf::water::WaterStorage */ {
@@ -37663,7 +37664,7 @@ SWIGINTERN PyObject *_wrap_node_list_get__SWIG_0(PyObject *SWIGUNUSEDPARM(self),
   }
   {
     int dcast = 0;
-    /*@SWIG:C:\\Programme\\swig\\Lib\\typemaps\\swigmacros.swg,200,%formacro@*//*@SWIG:C:\\Programme\\swig\\Lib\\typemaps\\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf.i,113,%_node_down_cast@*/
+    /*@SWIG:C:\\Program Files\\pythonxy\\swig\\Lib\\typemaps\\swigmacros.swg,200,%formacro@*//*@SWIG:C:\\Program Files\\pythonxy\\swig\\Lib\\typemaps\\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf.i,113,%_node_down_cast@*/
     if (dcast==0 && result) /*check for cmf::atmosphere::RainCloud*/  {
       std::tr1::shared_ptr<cmf::atmosphere::RainCloud> output = std::tr1::dynamic_pointer_cast<cmf::atmosphere::RainCloud>(result);
       if (output) /*flux_node is cmf::atmosphere::RainCloud */ {
@@ -37673,7 +37674,7 @@ SWIGINTERN PyObject *_wrap_node_list_get__SWIG_0(PyObject *SWIGUNUSEDPARM(self),
     }
     /*@SWIG@*/
     
-    /*@SWIG:C:\\Programme\\swig\\Lib\\typemaps\\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf.i,113,%_node_down_cast@*/
+    /*@SWIG:C:\\Program Files\\pythonxy\\swig\\Lib\\typemaps\\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf.i,113,%_node_down_cast@*/
     if (dcast==0 && result) /*check for cmf::water::DricheletBoundary*/  {
       std::tr1::shared_ptr<cmf::water::DricheletBoundary> output = std::tr1::dynamic_pointer_cast<cmf::water::DricheletBoundary>(result);
       if (output) /*flux_node is cmf::water::DricheletBoundary */ {
@@ -37683,7 +37684,7 @@ SWIGINTERN PyObject *_wrap_node_list_get__SWIG_0(PyObject *SWIGUNUSEDPARM(self),
     }
     /*@SWIG@*/
     
-    /*@SWIG:C:\\Programme\\swig\\Lib\\typemaps\\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf.i,113,%_node_down_cast@*/
+    /*@SWIG:C:\\Program Files\\pythonxy\\swig\\Lib\\typemaps\\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf.i,113,%_node_down_cast@*/
     if (dcast==0 && result) /*check for cmf::water::NeumannBoundary*/  {
       std::tr1::shared_ptr<cmf::water::NeumannBoundary> output = std::tr1::dynamic_pointer_cast<cmf::water::NeumannBoundary>(result);
       if (output) /*flux_node is cmf::water::NeumannBoundary */ {
@@ -37693,7 +37694,7 @@ SWIGINTERN PyObject *_wrap_node_list_get__SWIG_0(PyObject *SWIGUNUSEDPARM(self),
     }
     /*@SWIG@*/
     
-    /*@SWIG:C:\\Programme\\swig\\Lib\\typemaps\\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf.i,113,%_node_down_cast@*/
+    /*@SWIG:C:\\Program Files\\pythonxy\\swig\\Lib\\typemaps\\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf.i,113,%_node_down_cast@*/
     if (dcast==0 && result) /*check for cmf::upslope::SoilLayer*/  {
       std::tr1::shared_ptr<cmf::upslope::SoilLayer> output = std::tr1::dynamic_pointer_cast<cmf::upslope::SoilLayer>(result);
       if (output) /*flux_node is cmf::upslope::SoilLayer */ {
@@ -37703,7 +37704,7 @@ SWIGINTERN PyObject *_wrap_node_list_get__SWIG_0(PyObject *SWIGUNUSEDPARM(self),
     }
     /*@SWIG@*/
     
-    /*@SWIG:C:\\Programme\\swig\\Lib\\typemaps\\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf.i,113,%_node_down_cast@*/
+    /*@SWIG:C:\\Program Files\\pythonxy\\swig\\Lib\\typemaps\\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf.i,113,%_node_down_cast@*/
     if (dcast==0 && result) /*check for cmf::river::Reach*/  {
       std::tr1::shared_ptr<cmf::river::Reach> output = std::tr1::dynamic_pointer_cast<cmf::river::Reach>(result);
       if (output) /*flux_node is cmf::river::Reach */ {
@@ -37713,7 +37714,7 @@ SWIGINTERN PyObject *_wrap_node_list_get__SWIG_0(PyObject *SWIGUNUSEDPARM(self),
     }
     /*@SWIG@*/
     
-    /*@SWIG:C:\\Programme\\swig\\Lib\\typemaps\\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf.i,113,%_node_down_cast@*/
+    /*@SWIG:C:\\Program Files\\pythonxy\\swig\\Lib\\typemaps\\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf.i,113,%_node_down_cast@*/
     if (dcast==0 && result) /*check for cmf::river::OpenWaterStorage*/  {
       std::tr1::shared_ptr<cmf::river::OpenWaterStorage> output = std::tr1::dynamic_pointer_cast<cmf::river::OpenWaterStorage>(result);
       if (output) /*flux_node is cmf::river::OpenWaterStorage */ {
@@ -37723,7 +37724,7 @@ SWIGINTERN PyObject *_wrap_node_list_get__SWIG_0(PyObject *SWIGUNUSEDPARM(self),
     }
     /*@SWIG@*/
     
-    /*@SWIG:C:\\Programme\\swig\\Lib\\typemaps\\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf.i,113,%_node_down_cast@*/
+    /*@SWIG:C:\\Program Files\\pythonxy\\swig\\Lib\\typemaps\\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf.i,113,%_node_down_cast@*/
     if (dcast==0 && result) /*check for cmf::water::WaterStorage*/  {
       std::tr1::shared_ptr<cmf::water::WaterStorage> output = std::tr1::dynamic_pointer_cast<cmf::water::WaterStorage>(result);
       if (output) /*flux_node is cmf::water::WaterStorage */ {
@@ -38928,7 +38929,7 @@ SWIGINTERN PyObject *_wrap_global_radiation(PyObject *SWIGUNUSEDPARM(self), PyOb
   double arg3 ;
   double arg4 = (double) 8 ;
   double arg5 = (double) 51 ;
-  int arg6 = (int) 1 ;
+  double arg6 = (double) 1 ;
   bool arg7 = (bool) 0 ;
   double val2 ;
   int ecode2 = 0 ;
@@ -38938,7 +38939,7 @@ SWIGINTERN PyObject *_wrap_global_radiation(PyObject *SWIGUNUSEDPARM(self), PyOb
   int ecode4 = 0 ;
   double val5 ;
   int ecode5 = 0 ;
-  int val6 ;
+  double val6 ;
   int ecode6 = 0 ;
   bool val7 ;
   int ecode7 = 0 ;
@@ -38974,11 +38975,11 @@ SWIGINTERN PyObject *_wrap_global_radiation(PyObject *SWIGUNUSEDPARM(self), PyOb
     arg5 = static_cast< double >(val5);
   }
   if (swig_obj[5]) {
-    ecode6 = SWIG_AsVal_int(swig_obj[5], &val6);
+    ecode6 = SWIG_AsVal_double(swig_obj[5], &val6);
     if (!SWIG_IsOK(ecode6)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode6), "in method '" "global_radiation" "', argument " "6"" of type '" "int""'");
+      SWIG_exception_fail(SWIG_ArgError(ecode6), "in method '" "global_radiation" "', argument " "6"" of type '" "double""'");
     } 
-    arg6 = static_cast< int >(val6);
+    arg6 = static_cast< double >(val6);
   }
   if (swig_obj[6]) {
     ecode7 = SWIG_AsVal_bool(swig_obj[6], &val7);
@@ -44308,7 +44309,7 @@ SWIGINTERN PyObject *_wrap_Cell_get_surfacewater(PyObject *SWIGUNUSEDPARM(self),
   }
   {
     int dcast = 0;
-    /*@SWIG:C:\\Programme\\swig\\Lib\\typemaps\\swigmacros.swg,200,%formacro@*//*@SWIG:C:\\Programme\\swig\\Lib\\typemaps\\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf.i,113,%_node_down_cast@*/
+    /*@SWIG:C:\\Program Files\\pythonxy\\swig\\Lib\\typemaps\\swigmacros.swg,200,%formacro@*//*@SWIG:C:\\Program Files\\pythonxy\\swig\\Lib\\typemaps\\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf.i,113,%_node_down_cast@*/
     if (dcast==0 && result) /*check for cmf::river::OpenWaterStorage*/  {
       std::tr1::shared_ptr<cmf::river::OpenWaterStorage> output = std::tr1::dynamic_pointer_cast<cmf::river::OpenWaterStorage>(result);
       if (output) /*flux_node is cmf::river::OpenWaterStorage */ {
@@ -44318,7 +44319,7 @@ SWIGINTERN PyObject *_wrap_Cell_get_surfacewater(PyObject *SWIGUNUSEDPARM(self),
     }
     /*@SWIG@*/
     
-    /*@SWIG:C:\\Programme\\swig\\Lib\\typemaps\\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf.i,113,%_node_down_cast@*/
+    /*@SWIG:C:\\Program Files\\pythonxy\\swig\\Lib\\typemaps\\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf.i,113,%_node_down_cast@*/
     if (dcast==0 && result) /*check for cmf::water::DricheletBoundary*/  {
       std::tr1::shared_ptr<cmf::water::DricheletBoundary> output = std::tr1::dynamic_pointer_cast<cmf::water::DricheletBoundary>(result);
       if (output) /*flux_node is cmf::water::DricheletBoundary */ {
@@ -44543,7 +44544,7 @@ SWIGINTERN PyObject *_wrap_Cell_get_storage(PyObject *SWIGUNUSEDPARM(self), PyOb
   }
   {
     int dcast = 0;
-    /*@SWIG:C:\\Programme\\swig\\Lib\\typemaps\\swigmacros.swg,200,%formacro@*//*@SWIG:C:\\Programme\\swig\\Lib\\typemaps\\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf.i,113,%_node_down_cast@*/
+    /*@SWIG:C:\\Program Files\\pythonxy\\swig\\Lib\\typemaps\\swigmacros.swg,200,%formacro@*//*@SWIG:C:\\Program Files\\pythonxy\\swig\\Lib\\typemaps\\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf.i,113,%_node_down_cast@*/
     if (dcast==0 && result) /*check for cmf::river::OpenWaterStorage*/  {
       std::tr1::shared_ptr<cmf::river::OpenWaterStorage> output = std::tr1::dynamic_pointer_cast<cmf::river::OpenWaterStorage>(result);
       if (output) /*flux_node is cmf::river::OpenWaterStorage */ {
@@ -44553,7 +44554,7 @@ SWIGINTERN PyObject *_wrap_Cell_get_storage(PyObject *SWIGUNUSEDPARM(self), PyOb
     }
     /*@SWIG@*/
     
-    /*@SWIG:C:\\Programme\\swig\\Lib\\typemaps\\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf.i,113,%_node_down_cast@*/
+    /*@SWIG:C:\\Program Files\\pythonxy\\swig\\Lib\\typemaps\\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf.i,113,%_node_down_cast@*/
     if (dcast==0 && result) /*check for cmf::water::WaterStorage*/  {
       std::tr1::shared_ptr<cmf::water::WaterStorage> output = std::tr1::dynamic_pointer_cast<cmf::water::WaterStorage>(result);
       if (output) /*flux_node is cmf::water::WaterStorage */ {
@@ -51517,7 +51518,7 @@ SWIGINTERN PyObject *_wrap_SoilLayer_get_soil(PyObject *SWIGUNUSEDPARM(self), Py
   }
   {
     int dcast = 0;
-    /*@SWIG:C:\\Programme\\swig\\Lib\\typemaps\\swigmacros.swg,200,%formacro@*//*@SWIG:C:\\Programme\\swig\\Lib\\typemaps\\swigmacros.swg,192,%_formacro_1@*//*@SWIG:C:\\Programme\\swig\\Lib\\typemaps\\factory.swg,72,%_factory_dispatch@*/ 
+    /*@SWIG:C:\\Program Files\\pythonxy\\swig\\Lib\\typemaps\\swigmacros.swg,200,%formacro@*//*@SWIG:C:\\Program Files\\pythonxy\\swig\\Lib\\typemaps\\swigmacros.swg,192,%_formacro_1@*//*@SWIG:C:\\Program Files\\pythonxy\\swig\\Lib\\typemaps\\factory.swg,72,%_factory_dispatch@*/ 
     if (!dcast) {
       cmf::upslope::BrooksCoreyRetentionCurve *dobj = dynamic_cast<cmf::upslope::BrooksCoreyRetentionCurve *>(result);
       if (dobj) {
@@ -51526,7 +51527,7 @@ SWIGINTERN PyObject *_wrap_SoilLayer_get_soil(PyObject *SWIGUNUSEDPARM(self), Py
       }   
     }/*@SWIG@*/
     
-    /*@SWIG:C:\\Programme\\swig\\Lib\\typemaps\\swigmacros.swg,192,%_formacro_1@*//*@SWIG:C:\\Programme\\swig\\Lib\\typemaps\\factory.swg,72,%_factory_dispatch@*/ 
+    /*@SWIG:C:\\Program Files\\pythonxy\\swig\\Lib\\typemaps\\swigmacros.swg,192,%_formacro_1@*//*@SWIG:C:\\Program Files\\pythonxy\\swig\\Lib\\typemaps\\factory.swg,72,%_factory_dispatch@*/ 
     if (!dcast) {
       cmf::upslope::VanGenuchtenMualem *dobj = dynamic_cast<cmf::upslope::VanGenuchtenMualem *>(result);
       if (dobj) {
@@ -62408,7 +62409,7 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"Date_swigregister", Date_swigregister, METH_VARARGS, NULL},
 	 { (char *)"Date_swiginit", Date_swiginit, METH_VARARGS, NULL},
 	 { (char *)"timeseries_interpolationpower", (PyCFunction)_wrap_timeseries_interpolationpower, METH_O, (char *)"\n"
-		"timeseries_interpolationpower(timeseries self) -> double\n"
+		"timeseries_interpolationpower(timeseries self) -> int\n"
 		"\n"
 		"double interpolationpower() const\n"
 		"\n"
@@ -63334,7 +63335,7 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"solute_vector_swigregister", solute_vector_swigregister, METH_VARARGS, NULL},
 	 { (char *)"solute_vector_swiginit", solute_vector_swiginit, METH_VARARGS, NULL},
 	 { (char *)"SoluteTimeseries_conc", _wrap_SoluteTimeseries_conc, METH_VARARGS, (char *)"\n"
-		"SoluteTimeseries_conc(SoluteTimeseries self, Time t, solute solute) -> real\n"
+		"SoluteTimeseries_conc(SoluteTimeseries self, Time t, solute _Solute) -> real\n"
 		"\n"
 		"real\n"
 		"conc(cmf::math::Time t, const cmf::water::solute &solute) const \n"
@@ -63587,7 +63588,7 @@ static PyMethodDef SwigMethods[] = {
 		"(e.g. to prevent closed circuits) \n"
 		""},
 	 { (char *)"flux_node_conc", _wrap_flux_node_conc, METH_VARARGS, (char *)"\n"
-		"flux_node_conc(flux_node self, Time t, solute solute) -> real\n"
+		"flux_node_conc(flux_node self, Time t, solute Solute) -> real\n"
 		"\n"
 		"virtual real\n"
 		"conc(cmf::math::Time t, const cmf::water::solute &solute) const\n"
@@ -63685,7 +63686,7 @@ static PyMethodDef SwigMethods[] = {
 		"of the inquirer, positive are inflows to the inquirer. \n"
 		""},
 	 { (char *)"flux_connection_conc", _wrap_flux_connection_conc, METH_VARARGS, (char *)"\n"
-		"flux_connection_conc(flux_connection self, Time t, solute solute) -> real\n"
+		"flux_connection_conc(flux_connection self, Time t, solute _Solute) -> real\n"
 		"\n"
 		"real\n"
 		"conc(cmf::math::Time t, const cmf::water::solute &solute)\n"
@@ -63745,7 +63746,7 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"linear_scale_swigregister", linear_scale_swigregister, METH_VARARGS, NULL},
 	 { (char *)"linear_scale_swiginit", linear_scale_swiginit, METH_VARARGS, NULL},
 	 { (char *)"DricheletBoundary_set_conc", _wrap_DricheletBoundary_set_conc, METH_VARARGS, (char *)"\n"
-		"DricheletBoundary_set_conc(DricheletBoundary self, solute solute, double value)\n"
+		"DricheletBoundary_set_conc(DricheletBoundary self, solute _Solute, double value)\n"
 		"\n"
 		"virtual void set_conc(const cmf::water::solute &solute, double value)\n"
 		"\n"
@@ -63856,16 +63857,16 @@ static PyMethodDef SwigMethods[] = {
 		""},
 	 { (char *)"WaterStorage_from_node", (PyCFunction)_wrap_WaterStorage_from_node, METH_O, (char *)"WaterStorage_from_node(ptr node) -> __dummy_14__"},
 	 { (char *)"WaterStorage_Solute", _wrap_WaterStorage_Solute, METH_VARARGS, (char *)"\n"
-		"Solute(solute solute) -> SoluteStorage\n"
-		"WaterStorage_Solute(WaterStorage self, solute solute) -> SoluteStorage\n"
+		"Solute(solute _Solute) -> SoluteStorage\n"
+		"WaterStorage_Solute(WaterStorage self, solute _Solute) -> SoluteStorage\n"
 		"\n"
 		"const\n"
 		"SoluteStorage& Solute(const cmf::water::solute &solute) const \n"
 		""},
 	 { (char *)"WaterStorage_conc", _wrap_WaterStorage_conc, METH_VARARGS, (char *)"\n"
-		"conc(solute solute) -> real\n"
-		"conc(Time t, solute solute) -> real\n"
-		"WaterStorage_conc(WaterStorage self, solute solute, real NewConcetration)\n"
+		"conc(solute _Solute) -> real\n"
+		"conc(Time t, solute _Solute) -> real\n"
+		"WaterStorage_conc(WaterStorage self, solute _Solute, real NewConcetration)\n"
 		"\n"
 		"void\n"
 		"conc(const cmf::water::solute &solute, real NewConcetration)\n"
@@ -64021,7 +64022,7 @@ static PyMethodDef SwigMethods[] = {
 		"Replaces slow Python code like: \n"
 		""},
 	 { (char *)"node_list_conc", _wrap_node_list_conc, METH_VARARGS, (char *)"\n"
-		"node_list_conc(node_list self, Time t, solute solute) -> num_array\n"
+		"node_list_conc(node_list self, Time t, solute _Solute) -> num_array\n"
 		"\n"
 		"cmf::math::num_array conc(cmf::math::Time t, const cmf::water::solute\n"
 		"&solute) const\n"
@@ -64030,7 +64031,7 @@ static PyMethodDef SwigMethods[] = {
 		"the given solute. \n"
 		""},
 	 { (char *)"node_list_set_solute_source", _wrap_node_list_set_solute_source, METH_VARARGS, (char *)"\n"
-		"node_list_set_solute_source(node_list self, solute solute, num_array source_fluxes) -> int\n"
+		"node_list_set_solute_source(node_list self, solute _Solute, num_array source_fluxes) -> int\n"
 		"\n"
 		"int\n"
 		"set_solute_source(const cmf::water::solute &solute,\n"
@@ -64161,7 +64162,7 @@ static PyMethodDef SwigMethods[] = {
 		""},
 	 { (char *)"global_radiation", _wrap_global_radiation, METH_VARARGS, (char *)"\n"
 		"global_radiation(Time t, double height, double sunshine_fraction, double longitude = 8, \n"
-		"    double latitude = 51, int time_zone = 1, \n"
+		"    double latitude = 51, double time_zone = 1, \n"
 		"    bool daily = 0) -> double\n"
 		"\n"
 		"double\n"

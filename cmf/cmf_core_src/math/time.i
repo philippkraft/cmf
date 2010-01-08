@@ -1,4 +1,4 @@
-﻿%{
+%{
 #include "datetime.h"
 #include "math/real.h"
 #include "math/Time.h"

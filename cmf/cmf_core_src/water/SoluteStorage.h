@@ -26,8 +26,8 @@ namespace cmf {
 		/// \f}
 		class SoluteStorage : public cmf::math::StateVariable
 		{
-			SoluteStorage(WaterStorage* _water,const cmf::water::solute& solute, double InitialState=0) 
-				: cmf::math::StateVariable(InitialState),m_water(_water), Solute(solute),decay(0),source(0)
+			SoluteStorage(WaterStorage* _water,const cmf::water::solute& _Solute, double InitialState=0) 
+				: cmf::math::StateVariable(InitialState),m_water(_water), Solute(_Solute),decay(0),source(0)
 			{}
 			
 			WaterStorage* m_water;

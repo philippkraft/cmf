@@ -77,7 +77,7 @@ SWIG_SHARED_PTR(flux_node,cmf::water::flux_node);
 
 // Start my Module
 %module cmf_core
-
+%echo "Start include.."
 %include "geometry/geometry.i"
 
 %echo "geometry.i OK";

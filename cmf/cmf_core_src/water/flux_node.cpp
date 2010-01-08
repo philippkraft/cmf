@@ -96,7 +96,7 @@ bool cmf::water::flux_node::remove_connection( flux_node::ptr To )
 	return false;
 }
 
-real cmf::water::flux_node::conc( cmf::math::Time t, const cmf::water::solute& solute ) const
+real cmf::water::flux_node::conc( cmf::math::Time t, const cmf::water::solute& _Solute ) const
 {
 	real influx_sum_water=0,influx_sum_solute=0;
 	for(flux_node::ConnectionMap::const_iterator it = m_Connections.begin(); it != m_Connections.end(); ++it)
@@ -105,7 +105,7 @@ real cmf::water::flux_node::conc( cmf::math::Time t, const cmf::water::solute& s
 		if (q>0)
 		{
 			influx_sum_water  += q;
-			influx_sum_solute += q * it->second->conc(t,solute);
+			influx_sum_solute += q * it->second->conc(t,_Solute);
 		}
 	}
 	return influx_sum_water > 0 ? influx_sum_solute/influx_sum_water : 0.0;

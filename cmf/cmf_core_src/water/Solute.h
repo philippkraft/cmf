@@ -103,18 +103,18 @@ namespace cmf
 		public:
 #ifndef SWIG
 			/// Returns a reference to the time series of the solute
-			cmf::math::timeseries& operator[](const cmf::water::solute& solute)
+			cmf::math::timeseries& operator[](const cmf::water::solute& _Solute)
 			{
-				if (conc_ts.size()<=solute.Id)
-					conc_ts.resize(solute.Id+1);
-				return conc_ts[solute.Id];
+				if (conc_ts.size()<=_Solute.Id)
+					conc_ts.resize(_Solute.Id+1);
+				return conc_ts[_Solute.Id];
 			}
-			cmf::math::timeseries operator[](const cmf::water::solute& solute) const
+			cmf::math::timeseries operator[](const cmf::water::solute& _Solute) const
 			{
-				if (conc_ts.size()<=solute.Id)
+				if (conc_ts.size()<=_Solute.Id)
 					return cmf::math::timeseries();
 				else
-					return conc_ts[solute.Id];
+					return conc_ts[_Solute.Id];
 			}
 			// Fakes the std::map interface
 			typedef timeseriesVector::iterator iterator;
@@ -129,7 +129,7 @@ namespace cmf
 			// Fakes the std::map interface
 			const_iterator end()   const {return const_iterator(conc_ts.end());  } 
 #endif
-			real conc(cmf::math::Time t,const cmf::water::solute& solute) const;
+			real conc(cmf::math::Time t,const cmf::water::solute& _Solute) const;
 			/// Returns the number of solutes in the solution
 			size_t size() const
 			{

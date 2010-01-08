@@ -10,6 +10,7 @@ if %ERRORLEVEL%  NEQ 0 goto fine
 echo delete cmf_wrap.cxx
 if EXIST cmf_wrap.cxx del cmf_wrap.cxx
 echo push annotated cmf_swig.cxx into cmf_wrap.cxx
+echo /* Created with swigbuild.bat at %date% %time% */ >> cmf_wrap.cxx
 echo #pragma warning(push) >> cmf_wrap.cxx
 echo #pragma warning (disable : 4244) >> cmf_wrap.cxx
 echo #ifndef _CONSOLE >> cmf_wrap.cxx
