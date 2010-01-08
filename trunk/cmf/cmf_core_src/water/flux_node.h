@@ -90,7 +90,7 @@ namespace cmf {
 			/// @param Without A flux_connection that is excluded from the water_balance (e.g. to prevent closed circuits)
 			real water_balance(cmf::math::Time t,const flux_connection* Without=0) const;
 			/// Returns the water quality of the flux_node, if it is not overridden this is the mix of the incoming fluxes
-			virtual real conc(cmf::math::Time t, const cmf::water::solute& solute) const;
+			virtual real conc(cmf::math::Time t, const cmf::water::solute& Solute) const;
 			cmf::geometry::point Location;
 			/// Returns the water potential of the node in m waterhead
 			/// The base class water storage always returns the height of the location

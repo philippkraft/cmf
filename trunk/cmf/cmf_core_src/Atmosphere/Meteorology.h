@@ -12,7 +12,7 @@ namespace cmf {
 	/// Contains classes to describe interactions with the atmosphere
 	namespace atmosphere {
 		double vapour_pressure(double T);
-		double global_radiation(cmf::math::Time t,double height,double sunshine_fraction,double longitude=8,double latitude=51,int time_zone=1,bool daily=0);
+		double global_radiation(cmf::math::Time t,double height,double sunshine_fraction,double longitude=8,double latitude=51,double time_zone=1,bool daily=0);
 		double Pressure(double height);
 
     /// A structure holding meteorological information, excluding precipitation

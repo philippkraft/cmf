@@ -35,7 +35,7 @@ double cmf::math::timeseries::interpolate( cmf::math::Time t,double n ) const
 	}
 	//If the position is very near to a saved point, return the saved point
 	if (pos-int(pos)<0.0001)
-		return m_data->values[pos];
+		return m_data->values[size_t(pos)];
 	else
 	{
 		int ipos=int(pos);

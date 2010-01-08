@@ -48,19 +48,19 @@ namespace cmf {
 			
 			static std::tr1::shared_ptr<WaterStorage> from_node(cmf::water::flux_node::ptr node);
 			/// Returns the water quality of the water storage.
-			SoluteStorage& Solute(const cmf::water::solute& solute);
-			const SoluteStorage& Solute(const cmf::water::solute& solute) const {return *m_Concentrations[solute.Id];}
+			SoluteStorage& Solute(const cmf::water::solute& _Solute);
+			const SoluteStorage& Solute(const cmf::water::solute& _Solute) const {return *m_Concentrations[_Solute.Id];}
 			/// Returns the concentration of the given solute
-			real conc(const cmf::water::solute& solute) const;
+			real conc(const cmf::water::solute& _Solute) const;
 			/// Returns the current WaterQuality (concentration of all solutes)
-			real conc(cmf::math::Time t,const cmf::water::solute& solute) const
+			real conc(cmf::math::Time t,const cmf::water::solute& _Solute) const
 			{
-				return conc(solute);
+				return conc(_Solute);
 			}
 			/// Sets a new concentration
-			void conc(const cmf::water::solute& solute,real NewConcetration)
+			void conc(const cmf::water::solute& _Solute,real NewConcetration)
 			{
-				Solute(solute).set_state(NewConcetration*this->get_state());
+				Solute(_Solute).set_state(NewConcetration*this->get_state());
 			}
 			/// Returns the volume of water in this storage in m<sup>3</sup>
 			virtual real get_volume() const {

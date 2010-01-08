@@ -36,7 +36,7 @@ double cmf::atmosphere::vapour_pressure( double T )
 	return 0.6108*exp(17.27*T/(T+237.3));
 }
 
-double cmf::atmosphere::global_radiation( cmf::math::Time t,double height,double sunshine_fraction,double longitude,double latitude,int time_zone , bool daily)
+double cmf::atmosphere::global_radiation( cmf::math::Time t,double height,double sunshine_fraction,double longitude,double latitude,double time_zone , bool daily)
 {
 	double
 		DOY=t.AsDate().DOY()+t.AsDays()-int(t.AsDays()),

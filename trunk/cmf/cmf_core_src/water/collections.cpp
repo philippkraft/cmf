@@ -109,18 +109,18 @@ cmf::math::num_array cmf::water::node_list::get_potentials()
 	return res;
 }
 
-cmf::math::num_array cmf::water::node_list::conc( cmf::math::Time t, const cmf::water::solute& solute ) const
+cmf::math::num_array cmf::water::node_list::conc( cmf::math::Time t, const cmf::water::solute& _Solute ) const
 {
 	cmf::math::num_array res(size());
 #pragma omp parallel for
 	for (int i = 0; i < (int)size() ; ++i)
 	{
-		res[i]=m_nodes[i]->conc(t,solute);
+		res[i]=m_nodes[i]->conc(t,_Solute);
 	}
 	return res;
 }
 
-int cmf::water::node_list::set_solute_source( const cmf::water::solute& solute, cmf::math::num_array source_fluxes)
+int cmf::water::node_list::set_solute_source( const cmf::water::solute& _Solute, cmf::math::num_array source_fluxes)
 {
 	if (size()!=source_fluxes.size())
 		throw std::out_of_range("Size of solute source array does not fit the size of the node_list");
@@ -131,7 +131,7 @@ int cmf::water::node_list::set_solute_source( const cmf::water::solute& solute, 
 		cmf::water::WaterStorage* storage=dynamic_cast<cmf::water::WaterStorage*>(m_nodes[i].get());
 		if (storage)
 		{
-			storage->Solute(solute).source = source_fluxes[i];
+			storage->Solute(_Solute).source = source_fluxes[i];
 		}
 		else
 			--ok_count;
