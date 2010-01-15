@@ -14,7 +14,7 @@
 namespace cmf {
 	class bc_iterator;
 
-  /// @brief The study area, holding all cells and outlets and streams
+  /// @brief The study area, holding all cells, outlets and streams
 	class project	: public cmf::math::StateVariableOwner
 	{
 	private:
@@ -51,6 +51,10 @@ namespace cmf {
 		{
 			return NewCell(p.x,p.y,p.z,Area);
 		}
+		/// Creates a new Drichelet boundary condition and adds it to the list of outlets
+		/// The potential of the Drichelet boundary equals p.z
+		cmf::water::DricheletBoundary::ptr NewOutlet(std::string name,cmf::geometry::point p);
+
 
 		cmf::river::Reach_ptr get_reach(int index);
 		int reach_count() const {return int(m_reaches.size());}
