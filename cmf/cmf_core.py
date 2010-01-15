@@ -8160,6 +8160,10 @@ class project(StateVariableOwner):
         """
         return _cmf_core.project_NewCell(self, *args)
 
+    def NewOutlet(self, *args):
+        """NewOutlet(self, string name, point p) -> ptr"""
+        return _cmf_core.project_NewOutlet(self, *args)
+
     def get_reach(self, *args):
         """
         get_reach(self, int index) -> Reach_ptr
@@ -8214,6 +8218,7 @@ class project(StateVariableOwner):
 project.get_cell = new_instancemethod(_cmf_core.project_get_cell,None,project)
 project.size = new_instancemethod(_cmf_core.project_size,None,project)
 project.NewCell = new_instancemethod(_cmf_core.project_NewCell,None,project)
+project.NewOutlet = new_instancemethod(_cmf_core.project_NewOutlet,None,project)
 project.get_reach = new_instancemethod(_cmf_core.project_get_reach,None,project)
 project.reach_count = new_instancemethod(_cmf_core.project_reach_count,None,project)
 project.get_storages = new_instancemethod(_cmf_core.project_get_storages,None,project)

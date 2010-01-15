@@ -87,3 +87,11 @@ cmf::water::node_list cmf::project::get_storages()
 
 
 }
+
+cmf::water::DricheletBoundary::ptr cmf::project::NewOutlet( std::string name,cmf::geometry::point p )
+{
+	cmf::water::DricheletBoundary::ptr res(new cmf::water::DricheletBoundary(*this,p.z,p));
+	res->Name = name;
+	outlets.append(res);
+	return res;
+}
