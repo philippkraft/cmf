@@ -1,4 +1,4 @@
-/* Created with swigbuild.bat at 08.01.2010 15:09:36,78 */ 
+/* Created with swigbuild.bat at 15.01.2010 12:52:00,63 */ 
 #pragma warning(push) 
 #pragma warning (disable : 4244) 
 #ifndef _CONSOLE 
@@ -61402,6 +61402,57 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_project_NewOutlet(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  cmf::project *arg1 = (cmf::project *) 0 ;
+  std::string arg2 ;
+  cmf::geometry::point arg3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[3] ;
+  cmf::water::DricheletBoundary::ptr result;
+  
+  if (!SWIG_Python_UnpackTuple(args,"project_NewOutlet",3,3,swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__project, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "project_NewOutlet" "', argument " "1"" of type '" "cmf::project *""'"); 
+  }
+  arg1 = reinterpret_cast< cmf::project * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    int res = SWIG_AsPtr_std_string(swig_obj[1], &ptr);
+    if (!SWIG_IsOK(res) || !ptr) {
+      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "project_NewOutlet" "', argument " "2"" of type '" "std::string""'"); 
+    }
+    arg2 = *ptr;
+    if (SWIG_IsNewObj(res)) delete ptr;
+  }
+  {
+    cmf::geometry::point p;
+    if (((!convert_xyz_to_point(swig_obj[2],p)) || !convert_seq_to_point(swig_obj[2],p)))
+    {
+      PyErr_SetString(PyExc_ValueError,"The object to convert needs to be either a sequence of length 2 or 3 or an object exposing an x and y attribute of type float(z is used if present)");
+    }
+    arg3=p;
+  }
+  {
+    try {
+      result = (arg1)->NewOutlet(arg2,arg3);
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+    
+  }
+  {
+    std::tr1::shared_ptr<  cmf::water::DricheletBoundary > *smartresult = result ? new std::tr1::shared_ptr<  cmf::water::DricheletBoundary >(result) : 0;
+    resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(smartresult), SWIGTYPE_p_std__tr1__shared_ptrT_cmf__water__DricheletBoundary_t, SWIG_POINTER_OWN);
+  }
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_project_get_reach(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   cmf::project *arg1 = (cmf::project *) 0 ;
@@ -66070,6 +66121,7 @@ static PyMethodDef SwigMethods[] = {
 		"\n"
 		"Creates a new cell. \n"
 		""},
+	 { (char *)"project_NewOutlet", _wrap_project_NewOutlet, METH_VARARGS, (char *)"project_NewOutlet(project self, string name, point p) -> ptr"},
 	 { (char *)"project_get_reach", _wrap_project_get_reach, METH_VARARGS, (char *)"\n"
 		"project_get_reach(project self, int index) -> Reach_ptr\n"
 		"\n"
