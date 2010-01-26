@@ -163,6 +163,42 @@ void cmf::upslope::connections::TopographicGradientDarcy::connect_cells( cmf::up
 
 }
 
+real cmf::upslope::connections::DarcyKinematic::calc_q( cmf::math::Time t )
+{
+	// Darcy flux
+	cmf::upslope::SoilLayer::ptr
+		l1=sw1.lock(),
+		l2=sw2.lock(),
+		source = (l2 && l1->cell.z < l2->cell.z) ? l2 : l1;
+	real
+		K = source->get_K(),
+		// Topographic gradient
+		Psi_t1=l1->cell.z,
+		Psi_t2=l2 ? l2->cell.z : right_node()->get_potential(),
+		gradient=(Psi_t1-Psi_t2)/distance;
+	if (right_node()->is_empty() && gradient<0)
+		return 0.0;
+	else
+		return K*source->get_thickness()*flow_width*gradient;
+
+}
+
+void cmf::upslope::connections::DarcyKinematic::connect_cells( cmf::upslope::Cell & cell1,cmf::upslope::Cell & cell2,int start_at_layer/*=0*/ )
+{
+	real w=cell1.get_topology().flowwidth(cell2);
+	if (w>0)
+	{
+		for (int i = start_at_layer; i < (start_at_layer>=0 ? cell1.layer_count() : 0) ; ++i)	{
+			for (int j = start_at_layer; j < (start_at_layer>=0 ? cell2.layer_count() : 0) ; ++j)	{
+				real ca=cell1.get_layer(i)->get_flow_crosssection(*cell2.get_layer(j));
+				if (ca>0)	{
+					real d=cell1.get_layer(i)->get_distance_to(*cell2.get_layer(j));
+				new DarcyKinematic(cell1.get_layer(i),cell2.get_layer(j),w,d);
+			}	}	}
+	}
+
+}
+const cmf::upslope::CellConnector cmf::upslope::connections::DarcyKinematic::cell_connector(cmf::upslope::connections::DarcyKinematic::connect_cells);
 
 
 
