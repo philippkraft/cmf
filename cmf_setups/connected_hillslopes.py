@@ -34,6 +34,10 @@ class hillslope(object):
         self.__integrator=None
     def __contains__(self,cell):
         return cell in (c.Id for c in self.cells)
+    def __iter__(self):
+        return iter(self.cells)
+    def __getitem__(self,index):
+        return self.cells[index]
     @property
     def downstream(self):
         return self.__downstream
@@ -48,7 +52,7 @@ class hillslope(object):
         return self.__integrator
     @integrator.setter
     def integrator(self,template):
-        self.__integrator=template.copy()
+        self.__integrator=template.Copy()
         for c in self.cells:
             self.__integrator.AddStatesFromOwner(c)
             
@@ -135,7 +139,7 @@ class connected_hillslopes(object):
                 lower_hillslope=self.get_hillslope(get_cell(node_f))
                 upper_hillslope.downstream=get_cell(node_f), lower_hillslope
         self.project=p
-        self.hillslopes.sort(key=lambda h: len(h.upstream))
+        self.hillslopes.sort(key=lambda h: (len(h.upstream),-h[-1].z))
     def create_integrators(self,template=None):
         if template is None:
             w_integ=cmf.CVodeIntegrator(1e-6)
@@ -153,7 +157,10 @@ class connected_hillslopes(object):
     def t(self,value):
         for h in self.hillslopes:
             h.integrator.t=value
-    
+    def __getitem__(self,index):
+        return self.hillslopes[index]
+    def __iter__(self):
+        return iter(self.hillslopes)    
     def __call__(self,until):
         now=self.t
         start=clock()
@@ -164,4 +171,9 @@ class connected_hillslopes(object):
             self.t=now
             raise e
         return cmf.sec * (clock()-start)
-    
+    def run(self,start,end,dt):
+        self.t = start
+        while self.t<end:
+            for h in self.hillslopes:
+                h.integrator(self.t + dt)
+            yield self.t

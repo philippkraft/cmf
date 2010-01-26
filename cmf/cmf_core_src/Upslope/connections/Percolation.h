@@ -29,7 +29,7 @@ namespace cmf {
 	namespace upslope {
 		namespace connections {
 			/// @defgroup perc Percolation
-  		/// @ingroup connections
+			/// @ingroup connections
 			
 			/// @ingroup perc
 			/// A tipping bucket percolation approach similar to the approach in SWAT
@@ -82,6 +82,35 @@ namespace cmf {
 				virtual real calc_q(cmf::math::Time t) ;
 			public:
 				Richards(cmf::upslope::SoilLayer::ptr left,cmf::water::flux_node::ptr right)
+					: flux_connection(left,right,"Richards eq.")
+				{
+					NewNodes();
+				}
+				static void use_for_cell(cmf::upslope::Cell & cell,bool no_override=true);
+			};
+
+			/// @ingroup perc
+			/// Calculates flow according to a simplified Richards equation
+			///
+			/// \f{eqnarray*}
+			/// q_{Richards} &=& (K(\theta) - K(\theta_r)) A \\
+			/// \f}
+			/// where
+			/// - \f$ d [m]\f$ is the distance between the two soil layers
+			/// - \f$ K(\theta)\left[\frac m{day}\right]\f$ is the geometric mean conductivity (see SoilType::Kunsat)
+			/// - \f$ A [m^2]\f$ is the crosssectional area of the flux
+			class SimplRichards : public cmf::water::flux_connection {
+			protected:
+				std::tr1::weak_ptr<cmf::upslope::SoilLayer> sw1,sw2;
+				void NewNodes()
+				{
+					sw1=cmf::upslope::SoilLayer::cast(left_node());
+					sw2=cmf::upslope::SoilLayer::cast(right_node());
+				}
+
+				virtual real calc_q(cmf::math::Time t) ;
+			public:
+				SimplRichards(cmf::upslope::SoilLayer::ptr left,cmf::water::flux_node::ptr right)
 					: flux_connection(left,right,"Richards eq.")
 				{
 					NewNodes();
