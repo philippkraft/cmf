@@ -22,11 +22,11 @@
 
 
 # Change these pathes to your sundials 2.4+ installation
-sundials_lib_path = r"D:\Code\sundials-2.4.0\inst_msvc\lib"
-sundials_include_path = r"D:\Code\sundials-2.4.0\inst_msvc\include"
+sundials_lib_path = r"..\sundials-2.4.0\inst_msvc\lib"
+sundials_include_path = r"..\sundials-2.4.0\inst_msvc\include"
 
 # Change this path to your boost installation (not needed for gcc)
-boost_path = r"D:\Code\boost_1_41_0"
+boost_path = r"..\boost_1_41_0"
 
 # Change these variables to match your compiler. (gcc or 
 # For Visual Studio 2008 no action is needed
@@ -83,7 +83,9 @@ if __name__=='__main__':
           license='GPL',
           ext_modules=ext,
           py_modules=py, 
-          requires=['shapely (>=1.0)'],
-          data_files=[('help',['cmf.chm'])])
+          requires=['shapely (>=1.0)'],author=author,
+          url=url,author_email=author_email)
     
+    setup(name='cmf_setups',version='0.1',license='GPL',
+          py_modules=['cmf_setups.'+f[:-3] for f in os.listdir('cmf_setups') if f.endswith('.py')])
     print "build ok"

@@ -112,6 +112,25 @@ namespace cmf {
 
 			};
 			/// @ingroup latflux
+			/// A simple kinemtic wave model for subsurface flux
+			///
+			/// \f[ q = \frac{\Delta z_{surface}}{d} K(\theta)_{source} A_{cross} \f]
+			class DarcyKinematic : public lateral_sub_surface_flux
+			{
+			protected:
+				virtual real calc_q(cmf::math::Time t) ;
+
+				static void connect_cells(cmf::upslope::Cell & cell1,cmf::upslope::Cell & cell2,int start_at_layer=0);
+			public:
+				DarcyKinematic(cmf::upslope::SoilLayer::ptr left,cmf::water::flux_node::ptr right,real FlowWidth, real Distance=0)
+					: lateral_sub_surface_flux(left,right,"OHDIS like connection",FlowWidth,Distance)
+				{			}
+
+				static const CellConnector cell_connector;
+
+			};
+
+			/// @ingroup latflux
 			/// Calculates the flux using Richard's equation for adjecent layers
 			class Richards_lateral: public lateral_sub_surface_flux
 			{

@@ -4,24 +4,6 @@
 # Do not make changes to this file unless you know what you are doing--modify
 # the SWIG interface file instead.
 
-
-# Copyright 2010 by Philipp Kraft
-# This file is part of cmf.
-#
-#   cmf is free software: you can redistribute it and/or modify
-#   it under the terms of the GNU General Public License as published by
-#   the Free Software Foundation, either version 2 of the License, or
-#   (at your option) any later version.
-#
-#   cmf is distributed in the hope that it will be useful,
-#   but WITHOUT ANY WARRANTY; without even the implied warranty of
-#   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#   GNU General Public License for more details.
-#
-#   You should have received a copy of the GNU General Public License
-#   along with cmf.  If not, see <http://www.gnu.org/licenses/>.
-#   
-
 from sys import version_info
 if version_info >= (3,0,0):
     new_instancemethod = lambda func, inst, cls: _cmf_core.SWIG_PyInstanceMethod_New(func)
@@ -7517,6 +7499,18 @@ OHDISflow_swigregister = _cmf_core.OHDISflow_swigregister
 OHDISflow_swigregister(OHDISflow)
 OHDISflow.cell_connector = _cmf_core.cvar.OHDISflow_cell_connector
 
+class DarcyKinematic(lateral_sub_surface_flux):
+    """Proxy of C++ cmf::upslope::connections::DarcyKinematic class"""
+    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __repr__ = _swig_repr
+    def __init__(self, *args): 
+        """__init__(self, ptr left, ptr right, real FlowWidth, real Distance = 0) -> DarcyKinematic"""
+        _cmf_core.DarcyKinematic_swiginit(self,_cmf_core.new_DarcyKinematic(*args))
+    __swig_destroy__ = _cmf_core.delete_DarcyKinematic
+DarcyKinematic_swigregister = _cmf_core.DarcyKinematic_swigregister
+DarcyKinematic_swigregister(DarcyKinematic)
+DarcyKinematic.cell_connector = _cmf_core.cvar.DarcyKinematic_cell_connector
+
 class Richards_lateral(lateral_sub_surface_flux):
     """Proxy of C++ cmf::upslope::connections::Richards_lateral class"""
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
@@ -7801,6 +7795,26 @@ Richards_swigregister(Richards)
 def Richards_use_for_cell(*args):
   """Richards_use_for_cell(Cell cell, bool no_override = True)"""
   return _cmf_core.Richards_use_for_cell(*args)
+
+class SimplRichards(flux_connection):
+    """Proxy of C++ cmf::upslope::connections::SimplRichards class"""
+    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __repr__ = _swig_repr
+    def __init__(self, *args): 
+        """__init__(self, ptr left, ptr right) -> SimplRichards"""
+        _cmf_core.SimplRichards_swiginit(self,_cmf_core.new_SimplRichards(*args))
+    def use_for_cell(*args):
+        """use_for_cell(Cell cell, bool no_override = True)"""
+        return _cmf_core.SimplRichards_use_for_cell(*args)
+
+    use_for_cell = staticmethod(use_for_cell)
+    __swig_destroy__ = _cmf_core.delete_SimplRichards
+SimplRichards_swigregister = _cmf_core.SimplRichards_swigregister
+SimplRichards_swigregister(SimplRichards)
+
+def SimplRichards_use_for_cell(*args):
+  """SimplRichards_use_for_cell(Cell cell, bool no_override = True)"""
+  return _cmf_core.SimplRichards_use_for_cell(*args)
 
 class HBVparameters(RetentionCurve):
     """
