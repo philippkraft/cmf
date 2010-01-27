@@ -4,24 +4,6 @@
 # Do not make changes to this file unless you know what you are doing--modify
 # the SWIG interface file instead.
 
-
-# Copyright 2010 by Philipp Kraft
-# This file is part of cmf.
-#
-#   cmf is free software: you can redistribute it and/or modify
-#   it under the terms of the GNU General Public License as published by
-#   the Free Software Foundation, either version 2 of the License, or
-#   (at your option) any later version.
-#
-#   cmf is distributed in the hope that it will be useful,
-#   but WITHOUT ANY WARRANTY; without even the implied warranty of
-#   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#   GNU General Public License for more details.
-#
-#   You should have received a copy of the GNU General Public License
-#   along with cmf.  If not, see <http://www.gnu.org/licenses/>.
-#   
-
 from sys import version_info
 if version_info >= (3,0,0):
     new_instancemethod = lambda func, inst, cls: _cmf_core.SWIG_PyInstanceMethod_New(func)
@@ -1554,7 +1536,6 @@ class timeseries(object):
         
     @classmethod
     def from_sequence(cls,begin,step,sequence=[],interpolation_mode=1):
-        res=cmf.timeseries(begin,step,interpolation_mode)
         res=cls(begin,step,interpolation_mode)
         res.extend(sequence)
         
@@ -3742,14 +3723,14 @@ waterbalance_connection_swigregister(waterbalance_connection)
 
 class linear_scale(object):
     """
-    A linear scaling functor, with slope and displacement.
+    A linear scaling functor, with CNcells and displacement.
 
     C++ includes: boundary_condition.h 
     """
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
     __repr__ = _swig_repr
     displacement = _swig_property(_cmf_core.linear_scale_displacement_get, _cmf_core.linear_scale_displacement_set)
-    slope = _swig_property(_cmf_core.linear_scale_slope_get, _cmf_core.linear_scale_slope_set)
+    CNcells = _swig_property(_cmf_core.linear_scale_slope_get, _cmf_core.linear_scale_slope_set)
     def __call__(self, *args):
         """__call__(self, real value) -> real"""
         return _cmf_core.linear_scale___call__(self, *args)
@@ -6797,10 +6778,10 @@ class IChannel(IVolumeHeightFunction):
 
     def qManning(self, *args):
         """
-        qManning(self, double A, double slope) -> double
+        qManning(self, double A, double CNcells) -> double
 
         double
-        qManning(double A, double slope) const
+        qManning(double A, double CNcells) const
 
         Calculates the flow rate from a given water volume in the reach (see
         Formula in C++ documentation) .
@@ -6812,7 +6793,7 @@ class IChannel(IVolumeHeightFunction):
 
         A:  The area of the cross section [m2]
 
-        slope:  The slope of the reach [m/m] 
+        CNcells:  The CNcells of the reach [m/m] 
         """
         return _cmf_core.IChannel_qManning(self, *args)
 
@@ -6836,7 +6817,7 @@ class SWATReachType(IChannel):
     Uses the SWAT IChannel geometry (see SWAT Theoretical Documentation,
     Version 2005 (ch. 7:1.1), Neitsch et al. 2005), in this class
     referenced as SWATtheoDoc. Differences to the SWAT geometry: The flood
-    plain is not plain, but has a small slope=0.5%, but has an infinite
+    plain is not plain, but has a small CNcells=0.5%, but has an infinite
     width
 
     C++ includes: ReachType.h 
@@ -7501,18 +7482,6 @@ TopographicGradientDarcy_swigregister = _cmf_core.TopographicGradientDarcy_swigr
 TopographicGradientDarcy_swigregister(TopographicGradientDarcy)
 TopographicGradientDarcy.cell_connector = _cmf_core.cvar.TopographicGradientDarcy_cell_connector
 
-class SoilKinematic(lateral_sub_surface_flux):
-    """Proxy of C++ cmf::upslope::connections::SoilKinematic class"""
-    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
-    __repr__ = _swig_repr
-    def __init__(self, *args): 
-        """__init__(self, ptr left, ptr right, real FlowWidth, real Distance = 0) -> SoilKinematic"""
-        _cmf_core.SoilKinematic_swiginit(self,_cmf_core.new_SoilKinematic(*args))
-    __swig_destroy__ = _cmf_core.delete_SoilKinematic
-SoilKinematic_swigregister = _cmf_core.SoilKinematic_swigregister
-SoilKinematic_swigregister(SoilKinematic)
-SoilKinematic.cell_connector = _cmf_core.cvar.SoilKinematic_cell_connector
-
 class OHDISflow(lateral_sub_surface_flux):
     """
     A connection similar to OHDIS-KWMSS (OHymos-based DIStributed model -
@@ -7537,17 +7506,17 @@ OHDISflow_swigregister = _cmf_core.OHDISflow_swigregister
 OHDISflow_swigregister(OHDISflow)
 OHDISflow.cell_connector = _cmf_core.cvar.OHDISflow_cell_connector
 
-
-
-
-
-
-
-
-
-
-
-
+class DarcyKinematic(lateral_sub_surface_flux):
+    """Proxy of C++ cmf::upslope::connections::DarcyKinematic class"""
+    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __repr__ = _swig_repr
+    def __init__(self, *args): 
+        """__init__(self, ptr left, ptr right, real FlowWidth, real Distance = 0) -> DarcyKinematic"""
+        _cmf_core.DarcyKinematic_swiginit(self,_cmf_core.new_DarcyKinematic(*args))
+    __swig_destroy__ = _cmf_core.delete_DarcyKinematic
+DarcyKinematic_swigregister = _cmf_core.DarcyKinematic_swigregister
+DarcyKinematic_swigregister(DarcyKinematic)
+DarcyKinematic.cell_connector = _cmf_core.cvar.DarcyKinematic_cell_connector
 
 class Richards_lateral(lateral_sub_surface_flux):
     """Proxy of C++ cmf::upslope::connections::Richards_lateral class"""
@@ -7834,27 +7803,25 @@ def Richards_use_for_cell(*args):
   """Richards_use_for_cell(Cell cell, bool no_override = True)"""
   return _cmf_core.Richards_use_for_cell(*args)
 
-
-
-class SimplifiedRichards(flux_connection):
-    """Proxy of C++ cmf::upslope::connections::SimplifiedRichards class"""
+class SimplRichards(flux_connection):
+    """Proxy of C++ cmf::upslope::connections::SimplRichards class"""
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
     __repr__ = _swig_repr
     def __init__(self, *args): 
-        """__init__(self, ptr left, ptr right) -> SimplifiedRichards"""
-        _cmf_core.SimplifiedRichards_swiginit(self,_cmf_core.new_SimplifiedRichards(*args))
+        """__init__(self, ptr left, ptr right) -> SimplRichards"""
+        _cmf_core.SimplRichards_swiginit(self,_cmf_core.new_SimplRichards(*args))
     def use_for_cell(*args):
         """use_for_cell(Cell cell, bool no_override = True)"""
-        return _cmf_core.SimplifiedRichards_use_for_cell(*args)
+        return _cmf_core.SimplRichards_use_for_cell(*args)
 
     use_for_cell = staticmethod(use_for_cell)
-    __swig_destroy__ = _cmf_core.delete_SimplifiedRichards
-SimplifiedRichards_swigregister = _cmf_core.SimplifiedRichards_swigregister
-SimplifiedRichards_swigregister(SimplifiedRichards)
+    __swig_destroy__ = _cmf_core.delete_SimplRichards
+SimplRichards_swigregister = _cmf_core.SimplRichards_swigregister
+SimplRichards_swigregister(SimplRichards)
 
-def SimplifiedRichards_use_for_cell(*args):
-  """SimplifiedRichards_use_for_cell(Cell cell, bool no_override = True)"""
-  return _cmf_core.SimplifiedRichards_use_for_cell(*args)
+def SimplRichards_use_for_cell(*args):
+  """SimplRichards_use_for_cell(Cell cell, bool no_override = True)"""
+  return _cmf_core.SimplRichards_use_for_cell(*args)
 
 class HBVparameters(RetentionCurve):
     """
