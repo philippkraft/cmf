@@ -279,14 +279,14 @@ def cell_neighbors(features,shape_callable=lambda feat:feat.shape):
                     res[s_cmp].append((s,intersect))
     return res
             
-def cells_from_polygons(project,features,shape_callable=lambda feat:feat.shape,id_callable=lambda f:0,center_callable=lambda feat:tuple(feat.shape.centroid),area_callable=lambda feat:feat.shape.area,no_connect=False):
+def cells_from_polygons(project,features,shape_callable=lambda feat:feat.shape,id_callable=lambda f:0,center_callable=lambda feat:tuple(feat.shape.centroid),area_callable=lambda feat:feat.shape.area,no_connect=False,report=1):
     """ Adds cells from shapely features to project, and connects them topological
     project: a cmf project
     features: a sequence holding or referencing the shapely features
     shape_callable: a callable (e.g. a lambda function) returning the shapely geometry from a feature in features. Default: lambda feature:feature.shape (suitable for shapefiles)
     center_callable: a callable returning the center of the cell from a feature as a three-tuple. Default: lambda feature:tuple(feature.shape.centroid)
     area_callable: a callable returning the area of the cell from a feature: Default: lambda feature:feature.shape.area
-    
+    report: if True, report about connecting success
     Returns: dictionary with the features as keys and the cells as values
     """
     pred=get_predicate(0.0, shape_callable)

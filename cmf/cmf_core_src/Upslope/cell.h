@@ -40,6 +40,7 @@ namespace cmf {
 
 	}
     /// Contains the classes to describe the discretization of the soil continuum
+	/// @todo: Get Id in constructor for better naming of bounday conditions
 	namespace upslope {
 		class SoilLayer;
 		class Topology;

@@ -40,6 +40,9 @@ class cell_polygon_map(object):
         self.__f=funct
         if pylab.isinteractive():
             self(True)
+    @property
+    def color_values(self):
+        return numpy.array([self.f(c) for c in self.cells])
     def __init__(self,cells,value_function, cmap=pylab.cm.jet,hold=True,vmin=None,vmax=None,**kwargs):
         self.cells=cells
         self.__f = value_function
@@ -71,7 +74,7 @@ class cell_polygon_map(object):
             a=pylab.asarray(s)
             self.polygons[cell]=pylab.fill(a[:,0],a[:,1],fc=c,hold=hold,**kwargs)[0]
             hold=1
-        pylab.axis('scaled')
+        pylab.axis('equal')
         if was_interactive:
             pylab.draw() 
             pylab.ion()
@@ -135,10 +138,51 @@ def quiverXY(P,F,**kwargs):
     Y=numpy.array(P.Y)
     fX=numpy.array(F.X)
     fY=numpy.array(F.Y)
-    pylab.quiver(X,Y,fX,fY,**kwargs)
+    return pylab.quiver(X,Y,fX,fY,**kwargs)
+    
+class cell_quiver(object):
+    def __call__(self,t=None):
+        a = numpy.array
+        if t: self.t = t
+        f = cmf.cell_flux_directions(self.cells,self.t)
+        self.quiver.set_UVC(a(f.X),a(f.Y),self.color_array)
+        if pylab.isinteractive(): pylab.draw()
+    def __init__(self,cells,t,**kwargs):
+        self.cells = cells
+        p = cmf.cell_positions(cells)
+        f = cmf.cell_flux_directions(cells,t)
+        self.color_array = None
+        self.t = t   
+        a = numpy.array
+        self.quiver = pylab.quiver(a(p.X),a(p.Y),a(f.X),a(f.Y),**kwargs)
+    def __get_scale(self):
+        return self.quiver.scale
+    def __set_scale(self,value):
+        self.quiver.scale = value
+        self()
+    scale = property(__get_scale,__set_scale)
+import os
+try:
+    import Image
+    def plot_image(filename,**kwargs):
+        fname,imgext = os.path.splitext(filename)
+        worldext = imgext[:2] + imgext[-1] + 'w'
+        worldname = fname + worldext
+        kwargs.pop('extent',None)
+        kwargs.pop('origin',None)
+        if os.path.exists(filename) and os.path.exists(worldname):
+            image=Image.open(filename)
+            world=numpy.fromfile(worldname,sep='\n')
+            left,top = world[-2:]
+            bottom = top + world[3] * image.size[1]
+            right = left + world[0] * image.size[0]
+            pylab.imshow(image,extent=(left,right,bottom,top),origin='bottom',**kwargs)
+        else:
+            print "File",filename,"or worldfile",worldname,"not found"
+except:
+    pass
     
     
-        
 def contour_raster(raster,**kwargs):
     Z=raster.as_array()
     Z=numpy.flipud(Z)
