@@ -248,7 +248,7 @@ class layer :
         b=self.b
         W_i=0.9+0.005*b
         if (W<W_i):
-           return psi_f*(W/W_f)**(-b)
+            return psi_f*(W/W_f)**(-b)
         else:
             psi_i=psi_f*((W_i/W_f)**(-b))
             m1=-psi_i/((1-W_i)**2)
@@ -299,3 +299,7 @@ class soil:
         for l in self.layers:
             depth+=l.thickness
         return depth
+
+def BrooksCoreyParams(clay,silt,sand,bulkdensity=1440.0,Corg=1.5):
+    l=layer(0.1,clay,silt,sand,bulkdensity,Corg)
+    return l.KSat, l.porosity,l.b,l.fieldcap, -0.65

@@ -1,3 +1,21 @@
+
+
+// Copyright 2010 by Philipp Kraft
+// This file is part of cmf.
+//
+//   cmf is free software: you can redistribute it and/or modify
+//   it under the terms of the GNU General Public License as published by
+//   the Free Software Foundation, either version 2 of the License, or
+//   (at your option) any later version.
+//
+//   cmf is distributed in the hope that it will be useful,
+//   but WITHOUT ANY WARRANTY; without even the implied warranty of
+//   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//   GNU General Public License for more details.
+//
+//   You should have received a copy of the GNU General Public License
+//   along with cmf.  If not, see <http://www.gnu.org/licenses/>.
+//   
 %{
 #include "datetime.h"
 #include "math/real.h"
@@ -99,6 +117,13 @@ static cmf::math::Time convert_datetime_to_cmftime(PyObject* dt)
     def AsPython(self):
         d=self.AsDate()
         return datetime.datetime(d.year,d.month,d.day,d.hour,d.minute,d.second,d.ms*1000)
+    year   = property(lambda self: self.AsDate().year)
+    month  = property(lambda self: self.AsDate().month)
+    day    = property(lambda self: self.AsDate().day)
+    hour   = property(lambda self: self.AsDate().hour)
+    minute = property(lambda self: self.AsDate().minute)
+    second = property(lambda self: self.AsDate().second)
+    ms     = property(lambda self: self.AsDate().ms)
     }
 }
 
@@ -198,7 +223,7 @@ static cmf::math::Time convert_datetime_to_cmftime(PyObject* dt)
         
     @classmethod
     def from_sequence(cls,begin,step,sequence=[],interpolation_mode=1):
-        res=cmf.timeseries(begin,step,interpolation_mode)
+        res=cls(begin,step,interpolation_mode)
         res.extend(sequence)
         
     @classmethod

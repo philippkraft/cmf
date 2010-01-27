@@ -94,6 +94,22 @@ namespace cmf {
 
 			};
 			
+			class SoilKinematic : public lateral_sub_surface_flux
+			{
+			protected:
+				virtual real calc_q(cmf::math::Time t) ;
+				static void connect_cells(cmf::upslope::Cell & cell1,cmf::upslope::Cell & cell2,int start_at_layer=0);
+			public:
+				static const cmf::upslope::CellConnector cell_connector;
+				SoilKinematic(cmf::upslope::SoilLayer::ptr left,cmf::water::flux_node::ptr right,real FlowWidth,real Distance=0)
+					: lateral_sub_surface_flux(left,right,"Topographic gradient",FlowWidth,Distance)
+				{ }
+
+
+
+			};
+
+
 			/// @ingroup latflux
 			/// A connection similar to OHDIS-KWMSS (OHymos-based DIStributed model - with Kinematic Wave Method for Surface and Subsurface runoff) 
 			///
