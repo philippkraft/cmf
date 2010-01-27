@@ -36,7 +36,6 @@ msvc = 1
 
 # No user action required beyond this point
 import os
-
 from distutils.core import setup,Extension
 
 def make_cmf_core():

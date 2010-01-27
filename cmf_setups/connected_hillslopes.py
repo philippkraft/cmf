@@ -38,12 +38,14 @@ class hillslope(object):
         return iter(self.cells)
     def __getitem__(self,index):
         return self.cells[index]
+    def __len__(self):
+        return len(self.cells)
     @property
     def downstream(self):
         return self.__downstream
     @downstream.setter
     def downstream(self,value):
-        assert isinstance(value[0], cmf.Cell)
+        assert isinstance(value[0], cmf.CNCell)
         assert isinstance(value[1], hillslope)
         self.__downstream=value
         value[1].upstream.add(self)
@@ -113,7 +115,7 @@ class connected_hillslopes(object):
                                     area_callable=get_area)
         
         cmf.Topology.calculate_contributing_area(p.cells)
-        # Create a (Id,Cell) dictionary for look up
+        # Create a (Id,CNCell) dictionary for look up
         cells=dict(((c.Id,c) for c in p))
         get_cell=lambda f: cells.get(get_id(f))
         # Create a (HillslopeID,hillslope) dictionary to group the cells to hillslopes

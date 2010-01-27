@@ -124,39 +124,3 @@ void cmf::upslope::connections::SWATPercolation::use_for_cell( cmf::upslope::Cel
 
 }
 
-
-real cmf::upslope::connections::SimplifiedRichards::calc_q( cmf::math::Time t )
-{
-	// Richards flux
-	cmf::upslope::SoilLayer::ptr 
-		l1=sw1.lock(),
-		l2=sw2.lock();
-
-	real K=0;
-	if (l2)
-		K = geo_mean(l1->get_K(),l2->get_K());
-	else if (right_node()->is_empty() || right_node()->get_potential() < l1->get_gravitational_potential())
-		K = l1->get_K();
-	else
-		K = geo_mean(l1->get_K(),l1->get_Ksat());
-	// upflow is a function of wetness
-	real upflow = boltzmann(l2->get_wetness(),1,0.05)  * K;
-	real r_flow=(K-upflow) * l1->cell.get_area();
-	if (left_node()->is_empty())
-		r_flow=minimum(0,r_flow);
-	if (right_node()->is_empty())
-		r_flow=maximum(0,r_flow);
-	return r_flow; 
-
-}
-
-void cmf::upslope::connections::SimplifiedRichards::use_for_cell( cmf::upslope::Cell & cell,bool no_override/*=true*/ )
-{
-	for (int i = 0; i < cell.layer_count()-1 ; ++i)
-	{
-		cmf::upslope::SoilLayer::ptr l_upper=cell.get_layer(i),  l_lower=cell.get_layer(i+1);
-		if (!(no_override && l_upper->get_connection(*l_lower)))
-			new SimplifiedRichards(l_upper,l_lower);
-	}
-
-}
