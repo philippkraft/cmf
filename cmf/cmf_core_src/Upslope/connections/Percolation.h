@@ -29,7 +29,7 @@ namespace cmf {
 	namespace upslope {
 		namespace connections {
 			/// @defgroup perc Percolation
-			/// @ingroup connections
+  			/// @ingroup connections
 			
 			/// @ingroup perc
 			/// A tipping bucket percolation approach similar to the approach in SWAT
