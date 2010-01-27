@@ -115,6 +115,7 @@ class shapefile:
             bbox=self.__readfmt('<4d', f)
             numparts,numpoints=self.__readfmt('<ii', f)
             partpositions=self.__readfmt('<%ii' % numparts, f)
+            points=[]
             for i in range(numpoints):
                 x,y=self.__readfmt('<dd', f)
                 points.append((x,y,0.0))
