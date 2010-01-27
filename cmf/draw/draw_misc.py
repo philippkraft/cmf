@@ -127,18 +127,6 @@ def connector_matrix(allstates,size=(500,500)):
                 jac[i*size[0]/l,j*size[1]/l]+=1
     return jac   
 
-def quiverXY(P,F,**kwargs):
-    """ Calls the pylab.quiver command as
-    quiver(P.X,P.Y,F.X,F.Y,scale=scale)
-    P a cmf.point_vector, holding the position of objects
-    F a cmf.point_vector, holding the flux directions of objects
-    keyword arguments see pylab.quiver
-    """
-    X=numpy.array(P.X)
-    Y=numpy.array(P.Y)
-    fX=numpy.array(F.X)
-    fY=numpy.array(F.Y)
-    return pylab.quiver(X,Y,fX,fY,**kwargs)
     
 class cell_quiver(object):
     def __call__(self,t=None):
@@ -176,7 +164,7 @@ try:
             left,top = world[-2:]
             bottom = top + world[3] * image.size[1]
             right = left + world[0] * image.size[0]
-            pylab.imshow(image,extent=(left,right,bottom,top),origin='bottom',**kwargs)
+            return pylab.imshow(image,extent=(left,right,bottom,top),origin='bottom',**kwargs)
         else:
             print "File",filename,"or worldfile",worldname,"not found"
 except:
