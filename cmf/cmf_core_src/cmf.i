@@ -64,8 +64,6 @@
 
 SWIG_SHARED_PTR(state_var,cmf::math::StateVariable);
    SWIG_SHARED_PTR_DERIVED(SoluteStorage,cmf::math::StateVariable,cmf::water::SoluteStorage);
-//SWIG_SHARED_PTR(Locatable,cmf::geometry::Locatable)   
-    SWIG_SHARED_PTR_DERIVED(flux_node,cmf::geometry::Locatable,cmf::water::flux_node);
 SWIG_SHARED_PTR(flux_node,cmf::water::flux_node);
     SWIG_SHARED_PTR_DERIVED(DricheletBoundary,cmf::water::flux_node,cmf::water::DricheletBoundary);
     SWIG_SHARED_PTR_DERIVED(NeumannBoundary, cmf::water::flux_node, cmf::water::NeumannBoundary);
@@ -87,8 +85,10 @@ SWIG_SHARED_PTR(flux_node,cmf::water::flux_node);
 }
 %enddef
 
+
 %types (%ptr(cmf::water::flux_node) = cmf::geometry::Locatable)
 {
+  *newmemory = SWIG_POINTER_DISOWN;
   %ptr(cmf::water::flux_node)* from_with_type = (%ptr(cmf::water::flux_node)*)($from);
   return (from_with_type->get());  
 }
@@ -153,7 +153,7 @@ SWIG_SHARED_MULTICAST(cmf::atmosphere::RainCloud, cmf::water::flux_node)
 )
 %enddef
 
-
+// Returns the result of a to_string method of a type as __repr__
 %define EXTENT__REPR__(TYPE) 
 %extend TYPE { %pythoncode {
     def __repr__(self): 

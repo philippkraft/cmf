@@ -124,6 +124,8 @@ namespace cmf {
 			}
 		};
 
+
+
 		class Location : public Locatable
 		{
 		private:

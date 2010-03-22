@@ -266,7 +266,7 @@ cmf::upslope::VanGenuchtenMualem::VanGenuchtenMualem( real _Ksat, real _phi,real
 }
 
 cmf::upslope::VanGenuchtenMualem::VanGenuchtenMualem()
-: n(1.211),alpha(0.2178),Phi(0.5),Ksat(15)
+: n(1.211),alpha(0.2178),Phi(0.5),Ksat(15),m(1-1/1.211)
 {
 
 }

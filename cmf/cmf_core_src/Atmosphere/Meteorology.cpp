@@ -245,12 +245,12 @@ double cmf::atmosphere::MeteoStationList::calculate_Temp_lapse( cmf::math::Time 
 cmf::atmosphere::MeteoStationReference cmf::atmosphere::MeteoStationList::reference_to_nearest( const cmf::geometry::Locatable& position,double z_weight/*=0*/ ) const
 {
 	if (!size()) throw std::out_of_range("No stations in list");
-	meteo_station_pointer nearest;
+	MeteoStation::ptr nearest;
 	double min_dist=1e300;
 	cmf::geometry::point p=position.get_position();
 	for(vector::const_iterator it = m_stations.begin(); it != m_stations.end(); ++it)
 	{
-		const meteo_station_pointer& station=*it;
+		const MeteoStation::ptr& station=*it;
 		double dist=p.distanceTo(station->get_position())+z_weight*abs(p.z-station->z);
 		if (dist<min_dist)
 		{
@@ -264,11 +264,11 @@ cmf::atmosphere::MeteoStationReference cmf::atmosphere::MeteoStationList::refere
 		throw std::runtime_error("No station found");
 }
 
-cmf::atmosphere::meteo_station_pointer cmf::atmosphere::MeteoStationList::add_station( std::string name,cmf::geometry::point location,double latitude/*=51*/,double longitude/*=8*/,double timezone/*=1*/, cmf::math::Time startTime/*=cmf::math::Time(1,1,2001)*/,cmf::math::Time timestep/*=cmf::math::day*/ )
+cmf::atmosphere::MeteoStation::ptr cmf::atmosphere::MeteoStationList::add_station( std::string name,cmf::geometry::point location,double latitude/*=51*/,double longitude/*=8*/,double timezone/*=1*/, cmf::math::Time startTime/*=cmf::math::Time(1,1,2001)*/,cmf::math::Time timestep/*=cmf::math::day*/ )
 {
 	MeteoStation* new_station=new MeteoStation(latitude,longitude,timezone,location.z,startTime,timestep,name);
 	new_station->x=location.x;new_station->y=location.y;
-	meteo_station_pointer result(new_station);
+	MeteoStation::ptr result(new_station);
 	m_stations.push_back(result);
 	m_name_map[name]=size()-1;
 	return result;

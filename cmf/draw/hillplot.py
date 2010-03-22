@@ -15,7 +15,8 @@
 #
 #   You should have received a copy of the GNU General Public License
 #   along with cmf.  If not, see <http://www.gnu.org/licenses/>.
-#   
+#
+   
 import numpy
 from matplotlib import pyplot
 import cmf
