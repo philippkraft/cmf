@@ -33,6 +33,7 @@ namespace cmf {
 	class bc_iterator;
 
   /// @brief The study area, holding all cells, outlets and streams
+	/// \todo Where the fuck do you describe those stinkin tracers? They should be here!
 	class project	: public cmf::math::StateVariableOwner
 	{
 	private:
