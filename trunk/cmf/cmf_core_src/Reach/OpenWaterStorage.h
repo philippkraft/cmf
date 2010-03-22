@@ -26,7 +26,6 @@
 namespace cmf {
 	///	Contains storages and connection for the simulation of surface water bodies, like rivers, channels, lakes and dams
 	namespace river {
-		class OpenWaterStorage;
 		/// @ingroup storages
 		/// An open water body. The potential is calculated from the stored water using a water table function
 		class OpenWaterStorage : public cmf::water::WaterStorage
@@ -43,6 +42,9 @@ namespace cmf {
 			OpenWaterStorage(const cmf::project& _project,real Area);
 			/// Creates an open water storage with any type of a volume
 			OpenWaterStorage(const cmf::project& _project, const cmf::river::IVolumeHeightFunction& base_geo);
+
+			virtual real head_to_volume(real head) const;
+			virtual real volume_to_head(real volume) const;
 
 		public:
 			/// The functional relation between volume, depth and exposed area

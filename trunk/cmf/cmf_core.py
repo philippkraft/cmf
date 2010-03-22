@@ -3499,11 +3499,6 @@ class flux_node(Locatable):
         location=cmf::geometry::point()) 
         """
         _cmf_core.flux_node_swiginit(self,_cmf_core.new_flux_node(*args))
-    def SWIGSharedPtrUpcast(*args):
-        """SWIGSharedPtrUpcast(__dummy_4__ swigSharedPtrUpcast) -> std::tr1::shared_ptr<(cmf::geometry::Locatable)>"""
-        return _cmf_core.flux_node_SWIGSharedPtrUpcast(*args)
-
-    SWIGSharedPtrUpcast = staticmethod(SWIGSharedPtrUpcast)
     potential = _swig_property(_cmf_core.flux_node_potential_get, _cmf_core.flux_node_potential_set)
     connections = _swig_property(_cmf_core.flux_node_connections_get)
     def __repr__(self): return self.to_string()
@@ -3528,10 +3523,6 @@ flux_node.conc = new_instancemethod(_cmf_core.flux_node_conc,None,flux_node)
 flux_node.is_empty = new_instancemethod(_cmf_core.flux_node_is_empty,None,flux_node)
 flux_node_swigregister = _cmf_core.flux_node_swigregister
 flux_node_swigregister(flux_node)
-
-def flux_node_SWIGSharedPtrUpcast(*args):
-  """flux_node_SWIGSharedPtrUpcast(__dummy_4__ swigSharedPtrUpcast) -> std::tr1::shared_ptr<(cmf::geometry::Locatable)>"""
-  return _cmf_core.flux_node_SWIGSharedPtrUpcast(*args)
 
 
 def count_node_references(*args):
@@ -3723,14 +3714,14 @@ waterbalance_connection_swigregister(waterbalance_connection)
 
 class linear_scale(object):
     """
-    A linear scaling functor, with CNcells and displacement.
+    A linear scaling functor, with slope and displacement.
 
     C++ includes: boundary_condition.h 
     """
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
     __repr__ = _swig_repr
     displacement = _swig_property(_cmf_core.linear_scale_displacement_get, _cmf_core.linear_scale_displacement_set)
-    CNcells = _swig_property(_cmf_core.linear_scale_slope_get, _cmf_core.linear_scale_slope_set)
+    slope = _swig_property(_cmf_core.linear_scale_slope_get, _cmf_core.linear_scale_slope_set)
     def __call__(self, *args):
         """__call__(self, real value) -> real"""
         return _cmf_core.linear_scale___call__(self, *args)
@@ -3795,7 +3786,7 @@ class DricheletBoundary(flux_node):
         """
         _cmf_core.DricheletBoundary_swiginit(self,_cmf_core.new_DricheletBoundary(*args))
     def SWIGSharedPtrUpcast(*args):
-        """SWIGSharedPtrUpcast(__dummy_8__ swigSharedPtrUpcast) -> __dummy_4__"""
+        """SWIGSharedPtrUpcast(__dummy_6__ swigSharedPtrUpcast) -> __dummy_4__"""
         return _cmf_core.DricheletBoundary_SWIGSharedPtrUpcast(*args)
 
     SWIGSharedPtrUpcast = staticmethod(SWIGSharedPtrUpcast)
@@ -3809,7 +3800,7 @@ DricheletBoundary_swigregister = _cmf_core.DricheletBoundary_swigregister
 DricheletBoundary_swigregister(DricheletBoundary)
 
 def DricheletBoundary_SWIGSharedPtrUpcast(*args):
-  """DricheletBoundary_SWIGSharedPtrUpcast(__dummy_8__ swigSharedPtrUpcast) -> __dummy_4__"""
+  """DricheletBoundary_SWIGSharedPtrUpcast(__dummy_6__ swigSharedPtrUpcast) -> __dummy_4__"""
   return _cmf_core.DricheletBoundary_SWIGSharedPtrUpcast(*args)
 
 class NeumannBoundary(flux_node):
@@ -3856,7 +3847,7 @@ class NeumannBoundary(flux_node):
 
     create = staticmethod(create)
     def SWIGSharedPtrUpcast(*args):
-        """SWIGSharedPtrUpcast(__dummy_10__ swigSharedPtrUpcast) -> __dummy_4__"""
+        """SWIGSharedPtrUpcast(__dummy_8__ swigSharedPtrUpcast) -> __dummy_4__"""
         return _cmf_core.NeumannBoundary_SWIGSharedPtrUpcast(*args)
 
     SWIGSharedPtrUpcast = staticmethod(SWIGSharedPtrUpcast)
@@ -3874,7 +3865,7 @@ def NeumannBoundary_create(*args):
   return _cmf_core.NeumannBoundary_create(*args)
 
 def NeumannBoundary_SWIGSharedPtrUpcast(*args):
-  """NeumannBoundary_SWIGSharedPtrUpcast(__dummy_10__ swigSharedPtrUpcast) -> __dummy_4__"""
+  """NeumannBoundary_SWIGSharedPtrUpcast(__dummy_8__ swigSharedPtrUpcast) -> __dummy_4__"""
   return _cmf_core.NeumannBoundary_SWIGSharedPtrUpcast(*args)
 
 class NeumannFlux(flux_connection):
@@ -3888,7 +3879,7 @@ class NeumannFlux(flux_connection):
     __repr__ = _swig_repr
     def __init__(self, *args): 
         """
-        __init__(self, __dummy_10__ left, ptr right) -> NeumannFlux
+        __init__(self, __dummy_8__ left, ptr right) -> NeumannFlux
 
         NeumannFlux(std::tr1::shared_ptr< NeumannBoundary > left,
         cmf::water::flux_node::ptr right) 
@@ -3914,7 +3905,7 @@ class TechnicalFlux(flux_connection):
     FluxDecreaseTime = _swig_property(_cmf_core.TechnicalFlux_FluxDecreaseTime_get, _cmf_core.TechnicalFlux_FluxDecreaseTime_set)
     def __init__(self, *args): 
         """
-        __init__(self, __dummy_14__ source, __dummy_4__ target, real maximum_flux, 
+        __init__(self, __dummy_12__ source, __dummy_4__ target, real maximum_flux, 
             real minimal_state = 0, Time flux_decrease_time = h) -> TechnicalFlux
 
         TechnicalFlux(std::tr1::shared_ptr< cmf::water::WaterStorage >
@@ -3972,7 +3963,7 @@ class WaterStorage(StateVariable,StateVariableOwner,flux_node):
         """
         _cmf_core.WaterStorage_swiginit(self,_cmf_core.new_WaterStorage(*args))
     def from_node(*args):
-        """from_node(ptr node) -> __dummy_14__"""
+        """from_node(ptr node) -> __dummy_12__"""
         return _cmf_core.WaterStorage_from_node(*args)
 
     from_node = staticmethod(from_node)
@@ -4000,17 +3991,17 @@ class WaterStorage(StateVariable,StateVariableOwner,flux_node):
         return _cmf_core.WaterStorage_conc(self, *args)
 
     def cast(*args):
-        """cast(__dummy_4__ node) -> __dummy_14__"""
+        """cast(__dummy_4__ node) -> __dummy_12__"""
         return _cmf_core.WaterStorage_cast(*args)
 
     cast = staticmethod(cast)
     def create(*args):
-        """create(project _project, real initial_state = 0.0) -> __dummy_14__"""
+        """create(project _project, real initial_state = 0.0) -> __dummy_12__"""
         return _cmf_core.WaterStorage_create(*args)
 
     create = staticmethod(create)
     def SWIGSharedPtrUpcast(*args):
-        """SWIGSharedPtrUpcast(__dummy_14__ swigSharedPtrUpcast) -> __dummy_4__"""
+        """SWIGSharedPtrUpcast(__dummy_12__ swigSharedPtrUpcast) -> __dummy_4__"""
         return _cmf_core.WaterStorage_SWIGSharedPtrUpcast(*args)
 
     SWIGSharedPtrUpcast = staticmethod(SWIGSharedPtrUpcast)
@@ -4025,19 +4016,19 @@ WaterStorage_swigregister = _cmf_core.WaterStorage_swigregister
 WaterStorage_swigregister(WaterStorage)
 
 def WaterStorage_from_node(*args):
-  """WaterStorage_from_node(ptr node) -> __dummy_14__"""
+  """WaterStorage_from_node(ptr node) -> __dummy_12__"""
   return _cmf_core.WaterStorage_from_node(*args)
 
 def WaterStorage_cast(*args):
-  """WaterStorage_cast(__dummy_4__ node) -> __dummy_14__"""
+  """WaterStorage_cast(__dummy_4__ node) -> __dummy_12__"""
   return _cmf_core.WaterStorage_cast(*args)
 
 def WaterStorage_create(*args):
-  """WaterStorage_create(project _project, real initial_state = 0.0) -> __dummy_14__"""
+  """WaterStorage_create(project _project, real initial_state = 0.0) -> __dummy_12__"""
   return _cmf_core.WaterStorage_create(*args)
 
 def WaterStorage_SWIGSharedPtrUpcast(*args):
-  """WaterStorage_SWIGSharedPtrUpcast(__dummy_14__ swigSharedPtrUpcast) -> __dummy_4__"""
+  """WaterStorage_SWIGSharedPtrUpcast(__dummy_12__ swigSharedPtrUpcast) -> __dummy_4__"""
   return _cmf_core.WaterStorage_SWIGSharedPtrUpcast(*args)
 
 class storage_vector(object):
@@ -5136,7 +5127,7 @@ class RainCloud(NeumannBoundary):
         return _cmf_core.RainCloud_get_cell(self, *args)
 
     def SWIGSharedPtrUpcast(*args):
-        """SWIGSharedPtrUpcast(__dummy_12__ swigSharedPtrUpcast) -> __dummy_10__"""
+        """SWIGSharedPtrUpcast(__dummy_10__ swigSharedPtrUpcast) -> __dummy_8__"""
         return _cmf_core.RainCloud_SWIGSharedPtrUpcast(*args)
 
     SWIGSharedPtrUpcast = staticmethod(SWIGSharedPtrUpcast)
@@ -5149,7 +5140,7 @@ RainCloud_swigregister = _cmf_core.RainCloud_swigregister
 RainCloud_swigregister(RainCloud)
 
 def RainCloud_SWIGSharedPtrUpcast(*args):
-  """RainCloud_SWIGSharedPtrUpcast(__dummy_12__ swigSharedPtrUpcast) -> __dummy_10__"""
+  """RainCloud_SWIGSharedPtrUpcast(__dummy_10__ swigSharedPtrUpcast) -> __dummy_8__"""
   return _cmf_core.RainCloud_SWIGSharedPtrUpcast(*args)
 
 class _cell_object_list:
@@ -6505,7 +6496,7 @@ class SoilLayer(WaterStorage):
 
     cast = staticmethod(cast)
     def SWIGSharedPtrUpcast(*args):
-        """SWIGSharedPtrUpcast(__dummy_20__ swigSharedPtrUpcast) -> __dummy_14__"""
+        """SWIGSharedPtrUpcast(__dummy_18__ swigSharedPtrUpcast) -> __dummy_12__"""
         return _cmf_core.SoilLayer_SWIGSharedPtrUpcast(*args)
 
     SWIGSharedPtrUpcast = staticmethod(SWIGSharedPtrUpcast)
@@ -6541,7 +6532,7 @@ def SoilLayer_cast(*args):
   return _cmf_core.SoilLayer_cast(*args)
 
 def SoilLayer_SWIGSharedPtrUpcast(*args):
-  """SoilLayer_SWIGSharedPtrUpcast(__dummy_20__ swigSharedPtrUpcast) -> __dummy_14__"""
+  """SoilLayer_SWIGSharedPtrUpcast(__dummy_18__ swigSharedPtrUpcast) -> __dummy_12__"""
   return _cmf_core.SoilLayer_SWIGSharedPtrUpcast(*args)
 
 class IVolumeHeightFunction(object):
@@ -6778,10 +6769,10 @@ class IChannel(IVolumeHeightFunction):
 
     def qManning(self, *args):
         """
-        qManning(self, double A, double CNcells) -> double
+        qManning(self, double A, double slope) -> double
 
         double
-        qManning(double A, double CNcells) const
+        qManning(double A, double slope) const
 
         Calculates the flow rate from a given water volume in the reach (see
         Formula in C++ documentation) .
@@ -6793,7 +6784,7 @@ class IChannel(IVolumeHeightFunction):
 
         A:  The area of the cross section [m2]
 
-        CNcells:  The CNcells of the reach [m/m] 
+        slope:  The slope of the reach [m/m] 
         """
         return _cmf_core.IChannel_qManning(self, *args)
 
@@ -6817,7 +6808,7 @@ class SWATReachType(IChannel):
     Uses the SWAT IChannel geometry (see SWAT Theoretical Documentation,
     Version 2005 (ch. 7:1.1), Neitsch et al. 2005), in this class
     referenced as SWATtheoDoc. Differences to the SWAT geometry: The flood
-    plain is not plain, but has a small CNcells=0.5%, but has an infinite
+    plain is not plain, but has a small slope=0.5%, but has an infinite
     width
 
     C++ includes: ReachType.h 
@@ -7103,7 +7094,7 @@ class OpenWaterStorage(WaterStorage):
 
     cast = staticmethod(cast)
     def SWIGSharedPtrUpcast(*args):
-        """SWIGSharedPtrUpcast(__dummy_16__ swigSharedPtrUpcast) -> __dummy_14__"""
+        """SWIGSharedPtrUpcast(__dummy_14__ swigSharedPtrUpcast) -> __dummy_12__"""
         return _cmf_core.OpenWaterStorage_SWIGSharedPtrUpcast(*args)
 
     SWIGSharedPtrUpcast = staticmethod(SWIGSharedPtrUpcast)
@@ -7134,7 +7125,7 @@ def OpenWaterStorage_cast(*args):
   return _cmf_core.OpenWaterStorage_cast(*args)
 
 def OpenWaterStorage_SWIGSharedPtrUpcast(*args):
-  """OpenWaterStorage_SWIGSharedPtrUpcast(__dummy_16__ swigSharedPtrUpcast) -> __dummy_14__"""
+  """OpenWaterStorage_SWIGSharedPtrUpcast(__dummy_14__ swigSharedPtrUpcast) -> __dummy_12__"""
   return _cmf_core.OpenWaterStorage_SWIGSharedPtrUpcast(*args)
 
 class Reach(OpenWaterStorage):
@@ -7304,7 +7295,7 @@ class Reach(OpenWaterStorage):
 
     create = staticmethod(create)
     def SWIGSharedPtrUpcast(*args):
-        """SWIGSharedPtrUpcast(__dummy_18__ swigSharedPtrUpcast) -> __dummy_16__"""
+        """SWIGSharedPtrUpcast(__dummy_16__ swigSharedPtrUpcast) -> __dummy_14__"""
         return _cmf_core.Reach_SWIGSharedPtrUpcast(*args)
 
     SWIGSharedPtrUpcast = staticmethod(SWIGSharedPtrUpcast)
@@ -7336,7 +7327,7 @@ def Reach_create(*args):
   return _cmf_core.Reach_create(*args)
 
 def Reach_SWIGSharedPtrUpcast(*args):
-  """Reach_SWIGSharedPtrUpcast(__dummy_18__ swigSharedPtrUpcast) -> __dummy_16__"""
+  """Reach_SWIGSharedPtrUpcast(__dummy_16__ swigSharedPtrUpcast) -> __dummy_14__"""
   return _cmf_core.Reach_SWIGSharedPtrUpcast(*args)
 
 class ReachIterator(object):

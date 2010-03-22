@@ -193,6 +193,7 @@ namespace cmf {
 				cmf::math::Time startTime=cmf::math::Time(1,1,2001),cmf::math::Time timestep=cmf::math::day,std::string name="");
 
 		public:
+			typedef std::tr1::shared_ptr<MeteoStation> ptr;
 			///@name Location and behaviour properties
 			//@{
 			double 
@@ -288,17 +289,18 @@ namespace cmf {
 
 		};
 
-		typedef std::tr1::shared_ptr<MeteoStation> meteo_station_pointer;
 
 		/// @brief A reference to a meteorological station. Returns the weather at a given time for its place using MeteoStation::T_lapse
-		class MeteoStationReference : public Meteorology,public cmf::geometry::Locatable
+		class MeteoStationReference 
+		: public Meteorology, public cmf::geometry::Locatable
 		{
 		private:
-			meteo_station_pointer	m_station;
+			MeteoStation::ptr m_station;
 			const cmf::geometry::Locatable* m_location;
+			bool m_kill_location;
 		public:
 			/// Returns the station referenced
-			meteo_station_pointer get_station() const {return m_station;}
+			MeteoStation::ptr get_station() const {return m_station;}
 			/// Returns the position of the reference
 			cmf::geometry::point get_position() const {return m_location->get_position();}
 			/// Returns the weather at the time t
@@ -311,13 +313,20 @@ namespace cmf {
 			{
 				return m_station->InstrumentHeight;
 			}
-			MeteoStationReference(meteo_station_pointer station,const cmf::geometry::Locatable& location)
-				: m_station(station),m_location(&location) {}
+			MeteoStationReference(MeteoStation::ptr station,const cmf::geometry::Locatable& location)
+				: m_station(station),m_location(&location), m_kill_location(false) {}
+			MeteoStationReference(MeteoStation::ptr station,cmf::geometry::point location)
+				: m_station(station),m_location(new cmf::geometry::Location(location)), m_kill_location(true) {}
 			MeteoStationReference(const MeteoStationReference& copy)
 				: m_station(copy.m_station),m_location(copy.m_location) {}
 			MeteoStationReference* copy() const
 			{
 				return new MeteoStationReference(*this);
+			}
+			virtual ~MeteoStationReference()
+			{
+				if (m_kill_location)  
+					delete m_location;
 			}
 
 		};
@@ -328,7 +337,7 @@ namespace cmf {
 		class MeteoStationList
 		{
 		private:
-			typedef std::vector<meteo_station_pointer> vector;
+			typedef std::vector<MeteoStation::ptr> vector;
 			vector m_stations;
 			typedef std::map<std::string,int> name_map;
 			name_map m_name_map;
@@ -336,18 +345,18 @@ namespace cmf {
 			/// Returns the number of stations
 			int size() const {return int(m_stations.size());}
 			/// Gets the station at index
-			meteo_station_pointer operator[](int index) const
+			MeteoStation::ptr operator[](int index) const
 			{
 				return m_stations.at(index<0 ? size()+index : index);
 			}
 			/// gets a station by name
-			meteo_station_pointer operator[](const std::string& Name) const
+			MeteoStation::ptr operator[](const std::string& Name) const
 			{
 				name_map::const_iterator pos=m_name_map.find(Name);
 				if (pos != m_name_map.end())
 					return m_stations.at(pos->second);
 				else
-					return meteo_station_pointer();
+					return MeteoStation::ptr();
 			}
 	
 		
@@ -357,11 +366,11 @@ namespace cmf {
 			double calculate_Temp_lapse(cmf::math::Time begin, cmf::math::Time step,cmf::math::Time end);
 			
 			/// Creates a meteorological station and adds it to the list.
-			meteo_station_pointer add_station(std::string name,double latitude=51,double longitude=8,double timezone=1,double elevation=0,
+			MeteoStation::ptr add_station(std::string name,double latitude=51,double longitude=8,double timezone=1,double elevation=0,
 				cmf::math::Time startTime=cmf::math::Time(1,1,2001),cmf::math::Time timestep=cmf::math::day)
 			{
 				MeteoStation* new_station=new MeteoStation(latitude,longitude,timezone,elevation,startTime,timestep,name);
-				meteo_station_pointer result(new_station);
+				MeteoStation::ptr result(new_station);
 				m_stations.push_back(result);
 				m_name_map[name]=size()-1;
 				return result;
@@ -374,14 +383,14 @@ namespace cmf {
 			/// @param timezone Time zone of the study area (e.g Germany +1,U.S. Pacific time -8
 			/// @param startTime Date of the beginning of the climatic data (may be changed for each time series later)
 			/// @param timestep Frequency of climatic data (may be changed for each time series later)
-			meteo_station_pointer add_station(std::string name,cmf::geometry::point position,double latitude=51,double longitude=8,double timezone=1,
+			MeteoStation::ptr add_station(std::string name,cmf::geometry::point position,double latitude=51,double longitude=8,double timezone=1,
 				cmf::math::Time startTime=cmf::math::Time(1,1,2001),cmf::math::Time timestep=cmf::math::day);
 
 			/// Removes a station and returns the number of remaining references to the removed station. If the station is deleted, 0 is returned
 			int remove_station(int index)
 			{
 				
-				const meteo_station_pointer& ms=(*this)[index];
+				const MeteoStation::ptr& ms=(*this)[index];
 				int res=ms.use_count()-1;
 				name_map::iterator name_it=m_name_map.find(ms->Name);
 				if (name_it!=m_name_map.end()) m_name_map.erase(name_it);
@@ -413,10 +422,10 @@ namespace cmf {
 // 		private:
 // 			int m_station_count;
 // 			
-// 			typedef std::map<meteo_station_pointer,double> weight_map;
+// 			typedef std::map<MeteoStation::ptr,double> weight_map;
 // 			weight_map weights;
 // 			const cmf::geometry::Locatable* m_location;
-// 			double distanceTo(meteo_station_pointer target) const
+// 			double distanceTo(MeteoStation::ptr target) const
 // 			{
 // 				cmf::geometry::point p=m_location->get_position();
 // 				return p.distanceTo(target.get_position())+z_weight*abs(p.z-target.z);

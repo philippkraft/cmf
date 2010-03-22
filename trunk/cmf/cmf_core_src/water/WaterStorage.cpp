@@ -42,7 +42,7 @@ void WaterStorage::AddStateVariables( cmf::math::StateVariableVector& vector )
 }
 
 WaterStorage::WaterStorage(const cmf::project& _project,double InitialState/*=0*/ ) 
-: cmf::math::StateVariable(InitialState),flux_node(_project) ,m_Concentrations() //, this_no_delete(this,null_deleter())
+: cmf::math::StateVariable(InitialState),flux_node(_project) ,m_Concentrations(), m_state_variable_content('V')
 {
 	initializeSoluteStorages(_project.solutes);
 }
@@ -66,4 +66,11 @@ std::tr1::shared_ptr<WaterStorage> WaterStorage::from_node( flux_node::ptr node 
 
 	replace_node(node,result);
 	return result;
+}
+
+void WaterStorage::set_state_variable_content(char content) {
+	if (content == 'V' || content == 'h')
+		m_state_variable_content=content;
+	else
+		throw std::runtime_error("Only 'V' (volume) and 'h' (head) are allowed values to describe the integrated variable in " + this->Name);
 }

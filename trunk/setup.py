@@ -35,14 +35,22 @@ msvc = 1
 
 # No user action required beyond this point
 import os
+import sys
 from distutils.core import setup,Extension
-
+if "swig" in sys.argv:
+    os.chdir("cmf/cmf_core_src")
+    os.execvp("swig.exe",["-Wextra","-w512","-python","-castmode","-O","-c++","-o cmf_swig.cxx","-outdir ..","cmf.i"])
+    exit()
 def make_cmf_core():
     library_dirs=[sundials_lib_path]
     include_dirs=[sundials_include_path]
     include_dirs += [boost_path,boost_path+r"\boost\tr1"]
-    if msvc: compile_args = ["/openmp","/EHsc"]
-    if gcc: compile_args = ["-std=gnu++98","-fopenmp","-w"]
+    if msvc: 
+        compile_args = ["/openmp","/EHsc",r'/Fd"build\vc90.pdb"']
+        link_args=["/DEBUG",r'/PDB:"build\_cmf_core.pdb"']
+    if gcc: 
+        compile_args = ["-std=gnu++98","-fopenmp","-w"]
+        link_args=[]
     libraries=["sundials_cvode","sundials_nvecserial"]
     cmf_files=[]
     for root,dirs,files in os.walk('.'):
@@ -55,6 +63,7 @@ def make_cmf_core():
                             libraries = libraries,
                             include_dirs=include_dirs,
                             extra_compile_args=compile_args,
+                            extra_link_args=link_args,
                         )
     return cmf_core
 def make_raster():
@@ -73,7 +82,13 @@ if __name__=='__main__':
     url = "www.uni-giessen.de/ilr/frede/cmf"
     py=[]
     for root,dirs,files in os.walk('cmf'):
-        py.extend(os.path.join(root,f[:-3]).replace('\\','.') for f in files if f.endswith('.py'))
+        for d in dirs:
+            if d.endswith('_src'):
+                dirs.remove(d)
+        py_found=[os.path.join(root,f[:-3]).replace('\\','.') for f in files if f.endswith('.py')]
+        if py_found:
+            print 'In %s %i modules found' % (root,len(py_found))
+        py.extend(py_found)
     
     
     setup(name='cmf',
