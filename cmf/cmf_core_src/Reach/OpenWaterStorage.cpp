@@ -36,9 +36,17 @@ cmf::river::OpenWaterStorage::OpenWaterStorage( const cmf::project& _project,rea
 
 }
 
-cmf::river::OpenWaterStorage::OpenWaterStorage( const cmf::project& _project, 
-																							 const cmf::river::IVolumeHeightFunction& base_geo )
+cmf::river::OpenWaterStorage::OpenWaterStorage( const cmf::project& _project, const cmf::river::IVolumeHeightFunction& base_geo )
 : cmf::water::WaterStorage(_project,0), height_function(base_geo)
 {
 
+}
+
+virtual real cmf::river::OpenWaterStorage::head_to_volume(real head) const
+{
+	return height_function.V(head - this->Location.z);
+}
+virtual real cmf::river::OpenWaterStorage::volume_to_head(real volume) const
+{
+	return height_function.h(volume) + this->Location.z);
 }

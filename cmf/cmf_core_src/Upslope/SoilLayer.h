@@ -45,6 +45,9 @@ namespace cmf {
 			real m_upperboundary,m_lowerboundary;
 			std::auto_ptr<cmf::upslope::RetentionCurve> m_retentioncurve;
 		protected:
+			virtual real head_to_volume(real head) const;
+			virtual real volume_to_head(real volume) const;
+
 		public:
 			const int Position;
 			cmf::upslope::Cell & cell;

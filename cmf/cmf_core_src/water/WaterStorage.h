@@ -52,14 +52,29 @@ namespace cmf {
 			operator ptr() {return std::tr1::static_pointer_cast<WaterStorage>(shared_from_this());}
 #endif
 		private:
+			// Character indicating if Volume ('V') or head ('h') is the state variable
+			char m_state_variable_content;
 			std::tr1::shared_ptr<WaterStorage> this_no_delete;
 			typedef std::vector<std::tr1::shared_ptr<cmf::water::SoluteStorage> > SoluteStorageMap;
 			SoluteStorageMap m_Concentrations;
 			void initializeSoluteStorages(const cmf::water::solute_vector& solutes);
+
+
+		protected:
+			virtual real head_to_volume(real head) const {
+				throw std::runtime_error("Head to volume function not implemented in " + this->Name);
+				return 0.0;
+			}
+			virtual real volume_to_head(real volume) const {
+				throw std::runtime_error("Head to volume function not implemented in " + this->Name);
+				return 0.0;
+			}
 		public:
+			inline char get_state_variable_content() const {return m_state_variable_content;}
+			void set_state_variable_content(char content);
 			virtual bool is_storage() const {return true;}
 			void AddStateVariables(cmf::math::StateVariableVector& vector);
-			/// creates a water storage (abstract class)									o
+			/// creates a water storage (abstract class)
 			/// @param _project The project the waterstorage belongs to
 			/// @param InitialState Initial water content in m<sup>3</sup>
 			WaterStorage(const cmf::project& _project, double InitialState=0);
@@ -82,14 +97,30 @@ namespace cmf {
 			}
 			/// Returns the volume of water in this storage in m<sup>3</sup>
 			virtual real get_volume() const {
-				return get_state();
+				if (get_state_variable_content()=='h')
+					return head_to_volume(get_state());
+				else
+					return get_state();
+
 			}
 			/// Sets the volume of water in this storage in m<sup>3</sup>
 			virtual void set_volume(real newwatercontent)	{
-				set_state(newwatercontent);
+				if (get_state_variable_content()=='h')
+					set_state(volume_to_head(newwatercontent));
+				else
+					set_state(newwatercontent);
 			}
 			virtual real Derivate(const cmf::math::Time& time) {
-				return water_balance(time);
+				// Gets the net fluxes of this water storage in m3/day
+				real dVdt = water_balance(time);
+				// If head is the integrated variable
+				if (get_state_variable_content()=='h')
+					// The head one minute later (dV/(24*60)) is calculated and substracted from the current head
+					// The derivate is returned as head change rate in m/day
+					return (volume_to_head(get_volume() + dV/(24*60)) - get_state())*(24*60);
+				else
+					// The net flux of this water storage is the derivate of the Volume
+					return dV;
 			}
 			real get_state() const
 			{

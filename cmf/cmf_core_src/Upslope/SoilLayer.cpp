@@ -111,5 +111,19 @@ void cmf::upslope::SoilLayer::StateChangeAction()
 	cell.InvalidateSatDepth();
 }
 
+virtual real cmf::upslope::SoilLayer::head_to_volume(real head) const
+{
+	real 
+		mp = head - this->get_gravitational_potential(),
+		w  = get_soil().Wetness(mp);
+	return w * this->get_capacity();
+}
+virtual real cmf::upslope::SoilLayer::volume_to_head(real volume) const
+{
+	real
+		w = volume / this->get_capacity(),
+		mp = this->get_soil().MatricPotential(w);
+	return mp + this->get_gravitational_potential();
+}
 
 
