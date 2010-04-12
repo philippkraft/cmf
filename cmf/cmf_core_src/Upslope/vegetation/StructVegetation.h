@@ -34,6 +34,7 @@ namespace cmf {
 					StomatalResistance, ///< optimal stomatal resistence of the plant tissue for vapor, in s/m
 					CanopyClosure, ///< Fraction of bare soil to the surface, influences the routing of rainfall
 					LeafWidth;     ///< Average width of leaves in m (only for Shuttleworth-Wallace ET)
+				
 				virtual double RootFraction(double upperBoundary,double lowerBoundary) const
 				{
 					if (fraction_at_rootdepth>=1)
@@ -57,7 +58,7 @@ namespace cmf {
 					: LAI(_LAI),Height(_Height),albedo(_albedo),
 					  CanopyCapacityPerLAI(_CanopyCapacityPerLAI),
 						RootDepth(_RootDepth),StomatalResistance(_StomatalResistance),
-						CanopyClosure(_CanopyClosure)	, LeafWidth(0.05),fraction_at_rootdepth(_fraction_at_rootdepth)
+						CanopyClosure(_CanopyClosure), LeafWidth(0.05),fraction_at_rootdepth(_fraction_at_rootdepth)
 				{
 				}
 			};			

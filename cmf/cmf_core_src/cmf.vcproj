@@ -300,6 +300,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\Upslope\layer_list.h"
+				>
+			</File>
+			<File
 				RelativePath=".\reach\ManningConnection.h"
 				>
 			</File>
@@ -476,6 +480,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\Upslope\layer_list.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\reach\ManningConnection.cpp"
 				>
 			</File>
@@ -569,6 +577,10 @@
 			</File>
 		</Filter>
 		<File
+			RelativePath=".\math\array.i"
+			>
+		</File>
+		<File
 			RelativePath=".\upslope\cell.i"
 			>
 		</File>
@@ -610,6 +622,10 @@
 		</File>
 		<File
 			RelativePath=".\reach\Reach.i"
+			>
+		</File>
+		<File
+			RelativePath=".\math\test_array.i"
 			>
 		</File>
 		<File

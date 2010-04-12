@@ -18,7 +18,7 @@
 #   
 from shapely.geometry import Polygon,LineString,Point
 import cmf_core as cmf
-from raster import Raster
+#from raster import Raster
 import maps
 import time
 class Geometry:

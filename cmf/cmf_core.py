@@ -3334,7 +3334,7 @@ connection_set.insert = new_instancemethod(_cmf_core.connection_set_insert,None,
 connection_set_swigregister = _cmf_core.connection_set_swigregister
 connection_set_swigregister(connection_set)
 
-class flux_node(Locatable):
+class flux_node(object):
     """
     Base class for everything that can be connected by fluxes. Flux nodes
     can be WaterStorages, flux end points, sinks, sources and bridges to
@@ -3946,6 +3946,14 @@ class WaterStorage(StateVariable,StateVariableOwner,flux_node):
     """
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
     __repr__ = _swig_repr
+    def get_state_variable_content(self, *args):
+        """get_state_variable_content(self) -> char"""
+        return _cmf_core.WaterStorage_get_state_variable_content(self, *args)
+
+    def set_state_variable_content(self, *args):
+        """set_state_variable_content(self, char content)"""
+        return _cmf_core.WaterStorage_set_state_variable_content(self, *args)
+
     def __init__(self, *args): 
         """
         __init__(self, project _project, double InitialState = 0) -> WaterStorage
@@ -4010,6 +4018,8 @@ class WaterStorage(StateVariable,StateVariableOwner,flux_node):
         return self.to_string()
 
     __swig_destroy__ = _cmf_core.delete_WaterStorage
+WaterStorage.get_state_variable_content = new_instancemethod(_cmf_core.WaterStorage_get_state_variable_content,None,WaterStorage)
+WaterStorage.set_state_variable_content = new_instancemethod(_cmf_core.WaterStorage_set_state_variable_content,None,WaterStorage)
 WaterStorage.Solute = new_instancemethod(_cmf_core.WaterStorage_Solute,None,WaterStorage)
 WaterStorage.conc = new_instancemethod(_cmf_core.WaterStorage_conc,None,WaterStorage)
 WaterStorage_swigregister = _cmf_core.WaterStorage_swigregister
@@ -4597,6 +4607,14 @@ def vapour_pressure(*args):
     """
   return _cmf_core.vapour_pressure(*args)
 
+def vpd_from_rH(*args):
+  """vpd_from_rH(double T, double rH) -> double"""
+  return _cmf_core.vpd_from_rH(*args)
+
+def rH_from_vpd(*args):
+  """rH_from_vpd(double T, double vpd) -> double"""
+  return _cmf_core.rH_from_vpd(*args)
+
 def global_radiation(*args):
   """
     global_radiation(Time t, double height, double sunshine_fraction, double longitude = 8, 
@@ -4661,6 +4679,8 @@ class Weather(object):
     def __init__(self, *args): 
         """
         __init__(self) -> Weather
+        __init__(self, double _T, double _Tmax, double _Tmin, double _rH, 
+            double _wind = 2, double _sunshine = 0.5, double _Rs = 15) -> Weather
 
         Weather()
 
@@ -4927,7 +4947,7 @@ class MeteoStationReference(Meteorology,Locatable):
     __repr__ = _swig_repr
     def get_station(self, *args):
         """
-        get_station(self)
+        get_station(self) -> ptr
 
         meteo_station_pointer get_station() const
 
@@ -4937,7 +4957,8 @@ class MeteoStationReference(Meteorology,Locatable):
 
     def __init__(self, *args): 
         """
-        __init__(self,  station, Locatable location) -> MeteoStationReference
+        __init__(self, ptr station, Locatable location) -> MeteoStationReference
+        __init__(self, ptr station, point location) -> MeteoStationReference
         __init__(self, MeteoStationReference copy) -> MeteoStationReference
 
         MeteoStationReference(const MeteoStationReference &copy) 
@@ -4984,8 +5005,8 @@ class MeteoStationList(object):
 
     def __getitem__(self, *args):
         """
-        __getitem__(self, int index)
-        __getitem__(self, string Name)
+        __getitem__(self, int index) -> ptr
+        __getitem__(self, string Name) -> ptr
         """
         return _cmf_core.MeteoStationList___getitem__(self, *args)
 
@@ -5009,10 +5030,10 @@ class MeteoStationList(object):
         add_station(self, string name, double latitude = 51, double longitude = 8, 
             double timezone = 1, double elevation = 0, 
             Time startTime = cmf::math::Time(1,1,2001), 
-            Time timestep = day)
+            Time timestep = day) -> ptr
         add_station(self, string name, point position, double latitude = 51, 
             double longitude = 8, double timezone = 1, Time startTime = cmf::math::Time(1,1,2001), 
-            Time timestep = day)
+            Time timestep = day) -> ptr
 
         meteo_station_pointer add_station(std::string name,
         cmf::geometry::point position, double latitude=51, double longitude=8,
@@ -5161,10 +5182,10 @@ class _cell_object_list:
                  return self.c.get_layer(lndx)
     def __getitem__(self,index):
         if (type(index)==slice):
-             return list(map(self.get,range(*index.indices(len(self)))))
+             return [self.__get(i) for i in range(*index.indices(len(self)))]
         try:
              gen=iter(index)
-             return list(map(self.__get,gen))
+             return [self.__get(it) for it in gen]
         except TypeError:
              return self.__get(index)
     def find_by_name(self,name):
@@ -5302,6 +5323,14 @@ class Cell(StateVariableOwner,Locatable):
         set_saturated_depth(real depth) 
         """
         return _cmf_core.Cell_set_saturated_depth(self, *args)
+
+    def set_weather(self, *args):
+        """set_weather(self, Weather weather)"""
+        return _cmf_core.Cell_set_weather(self, *args)
+
+    def set_rainfall(self, *args):
+        """set_rainfall(self, double rainfall)"""
+        return _cmf_core.Cell_set_rainfall(self, *args)
 
     def get_surfacewater(self, *args):
         """
@@ -5445,7 +5474,7 @@ class Cell(StateVariableOwner,Locatable):
 
     def get_layer(self, *args):
         """
-        get_layer(self, int ndx) -> layer_ptr
+        get_layer(self, int ndx) -> ptr
 
         cmf::upslope::layer_ptr get_layer(int ndx) const 
         """
@@ -5502,6 +5531,7 @@ class Cell(StateVariableOwner,Locatable):
     transpiration = _swig_property(_cmf_core.Cell_transpiration_get)
     meteorology = _swig_property(_cmf_core.Cell_meteorology_get, _cmf_core.Cell_meteorology_set)
     rain = _swig_property(_cmf_core.Cell_rain_get)
+    layers = _swig_property(_cmf_core.Cell_layers_get)
     @property
     def neighbors(self):
         c_iter=NeighborIterator(self)
@@ -5511,7 +5541,6 @@ class Cell(StateVariableOwner,Locatable):
 
     storages=property(lambda c:_cell_object_list(c,'A'),None,"Provides access to all storages of the cell (surface storages and layers)")
     surface_storages=property(lambda c:_cell_object_list(c,'S'),None,"Provides access to all surface storages of the cell, like canopy, snow, surface water etc")
-    layers=property(lambda c:_cell_object_list(c,'L'),None,"Provides access to all soil water storages (layers) of the cell")
     surfacewater=property(get_surfacewater,None,"Gives access to the surface water, which is either a distributing flux node, or the storage for all surface water")
     canopy=property(get_canopy,None,"The canopy water storage of the cell, if it exists")
     snow=property(get_snow,None,"The snow pack of the cell, if a storage for the snow exists")
@@ -5557,6 +5586,8 @@ Cell.get_area = new_instancemethod(_cmf_core.Cell_get_area,None,Cell)
 Cell.InvalidateSatDepth = new_instancemethod(_cmf_core.Cell_InvalidateSatDepth,None,Cell)
 Cell.get_saturated_depth = new_instancemethod(_cmf_core.Cell_get_saturated_depth,None,Cell)
 Cell.set_saturated_depth = new_instancemethod(_cmf_core.Cell_set_saturated_depth,None,Cell)
+Cell.set_weather = new_instancemethod(_cmf_core.Cell_set_weather,None,Cell)
+Cell.set_rainfall = new_instancemethod(_cmf_core.Cell_set_rainfall,None,Cell)
 Cell.get_surfacewater = new_instancemethod(_cmf_core.Cell_get_surfacewater,None,Cell)
 Cell.surfacewater_as_storage = new_instancemethod(_cmf_core.Cell_surfacewater_as_storage,None,Cell)
 Cell.add_storage = new_instancemethod(_cmf_core.Cell_add_storage,None,Cell)
@@ -5963,7 +5994,7 @@ def area(*args):
   return _cmf_core.area(*args)
 
 def set_meteo_station(*args):
-  """set_meteo_station(cells_ref cells,  meteo_station)"""
+  """set_meteo_station(cells_ref cells, ptr meteo_station)"""
   return _cmf_core.set_meteo_station(*args)
 
 def set_precipitation(*args):
@@ -6423,26 +6454,6 @@ class SoilLayer(WaterStorage):
         """
         return _cmf_core.SoilLayer_set_soil(self, *args)
 
-    def get_theta(self, *args):
-        """
-        get_theta(self) -> real
-
-        virtual
-        real get_theta() const
-
-        Returns the actual volumetric water content of the water storage. 
-        """
-        return _cmf_core.SoilLayer_get_theta(self, *args)
-
-    def set_theta(self, *args):
-        """
-        set_theta(self, real Value)
-
-        virtual
-        void set_theta(real Value) 
-        """
-        return _cmf_core.SoilLayer_set_theta(self, *args)
-
     def get_capacity(self, *args):
         """
         get_capacity(self) -> real
@@ -6503,12 +6514,15 @@ class SoilLayer(WaterStorage):
     gravitational_potential = _swig_property(_cmf_core.SoilLayer_gravitational_potential_get)
     matrix_potential = _swig_property(_cmf_core.SoilLayer_matrix_potential_get)
     wetness = _swig_property(_cmf_core.SoilLayer_wetness_get, _cmf_core.SoilLayer_wetness_set)
+    theta = _swig_property(_cmf_core.SoilLayer_theta_get, _cmf_core.SoilLayer_theta_set)
     K = _swig_property(_cmf_core.SoilLayer_K_get)
     Ksat = _swig_property(_cmf_core.SoilLayer_Ksat_get)
     thickness = _swig_property(_cmf_core.SoilLayer_thickness_get)
     lower_boundary = _swig_property(_cmf_core.SoilLayer_lower_boundary_get)
     upper_boundary = _swig_property(_cmf_core.SoilLayer_upper_boundary_get)
     porosity = _swig_property(_cmf_core.SoilLayer_porosity_get)
+    upper = _swig_property(_cmf_core.SoilLayer_upper_get)
+    lower = _swig_property(_cmf_core.SoilLayer_lower_get)
     boundary=property(lambda self:(self.upper_boundary,self.lower_boundary),None,"Returns the upper and lower boundary of the layer")
     pF=property(lambda self : waterhead_to_pF(self.matrix_potential),None,"The actual pF value")
     soil=property(get_soil,set_soil,"The retention curve of the layer")
@@ -6519,8 +6533,6 @@ class SoilLayer(WaterStorage):
     __swig_destroy__ = _cmf_core.delete_SoilLayer
 SoilLayer.get_soil = new_instancemethod(_cmf_core.SoilLayer_get_soil,None,SoilLayer)
 SoilLayer.set_soil = new_instancemethod(_cmf_core.SoilLayer_set_soil,None,SoilLayer)
-SoilLayer.get_theta = new_instancemethod(_cmf_core.SoilLayer_get_theta,None,SoilLayer)
-SoilLayer.set_theta = new_instancemethod(_cmf_core.SoilLayer_set_theta,None,SoilLayer)
 SoilLayer.get_capacity = new_instancemethod(_cmf_core.SoilLayer_get_capacity,None,SoilLayer)
 SoilLayer.get_saturated_depth = new_instancemethod(_cmf_core.SoilLayer_get_saturated_depth,None,SoilLayer)
 SoilLayer.get_flow_crosssection = new_instancemethod(_cmf_core.SoilLayer_get_flow_crosssection,None,SoilLayer)
@@ -6534,6 +6546,103 @@ def SoilLayer_cast(*args):
 def SoilLayer_SWIGSharedPtrUpcast(*args):
   """SoilLayer_SWIGSharedPtrUpcast(__dummy_18__ swigSharedPtrUpcast) -> __dummy_12__"""
   return _cmf_core.SoilLayer_SWIGSharedPtrUpcast(*args)
+
+class layer_list(object):
+    """Proxy of C++ cmf::upslope::layer_list class"""
+    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __repr__ = _swig_repr
+    def __init__(self, *args): 
+        """
+        __init__(self, layer_list for_copy) -> layer_list
+        __init__(self) -> layer_list
+        __init__(self, node_list for_copy) -> layer_list
+        """
+        _cmf_core.layer_list_swiginit(self,_cmf_core.new_layer_list(*args))
+    def pop(self, *args):
+        """pop(self) -> ptr"""
+        return _cmf_core.layer_list_pop(self, *args)
+
+    def append(self, *args):
+        """
+        append(self, ptr l) -> layer_list
+        append(self, layer_list ll) -> layer_list
+        append(self, node_list nl) -> layer_list
+        """
+        return _cmf_core.layer_list_append(self, *args)
+
+    def get_slice(self, *args):
+        """get_slice(self, size_t first = 0, size_t last = 1000000, size_t step = 1) -> layer_list"""
+        return _cmf_core.layer_list_get_slice(self, *args)
+
+    def clear(self, *args):
+        """clear(self)"""
+        return _cmf_core.layer_list_clear(self, *args)
+
+    def size(self, *args):
+        """size(self) -> size_t"""
+        return _cmf_core.layer_list_size(self, *args)
+
+    def set_potential(self, *args):
+        """set_potential(self, num_array Value, size_t offset = 0)"""
+        return _cmf_core.layer_list_set_potential(self, *args)
+
+    def set_volume(self, *args):
+        """set_volume(self, num_array Value, size_t offset = 0)"""
+        return _cmf_core.layer_list_set_volume(self, *args)
+
+    def set_wetness(self, *args):
+        """set_wetness(self, num_array Value, size_t offset = 0)"""
+        return _cmf_core.layer_list_set_wetness(self, *args)
+
+    gravitational_potential = _swig_property(_cmf_core.layer_list_gravitational_potential_get)
+    matrix_potential = _swig_property(_cmf_core.layer_list_matrix_potential_get)
+    wetness = _swig_property(_cmf_core.layer_list_wetness_get)
+    volume = _swig_property(_cmf_core.layer_list_volume_get)
+    potential = _swig_property(_cmf_core.layer_list_potential_get)
+    K = _swig_property(_cmf_core.layer_list_K_get)
+    Ksat = _swig_property(_cmf_core.layer_list_Ksat_get)
+    thickness = _swig_property(_cmf_core.layer_list_thickness_get)
+    lower_boundary = _swig_property(_cmf_core.layer_list_lower_boundary_get)
+    upper_boundary = _swig_property(_cmf_core.layer_list_upper_boundary_get)
+    porosity = _swig_property(_cmf_core.layer_list_porosity_get)
+    def __get(self, *args):
+        """__get(self, int index) -> ptr"""
+        return _cmf_core.layer_list___get(self, *args)
+
+    __repr__=lambda self: repr(list(self))
+    __str__ =lambda self: str(list(self))
+    __len__=lambda self: self.size()
+    def __iadd__(self,other):
+        self.append(other)
+        return self
+    def __add__(self,other):
+        res = layer_list(self)
+        res.append(other)
+        return res
+    def __iter__(self):
+        for i in range(len(self)):
+            yield self[i]
+    def __getitem__(self,index):
+        if (type(index)==slice):
+            return self.get_slice(*index.indices(len(self)))
+        try:
+            gen=iter(index)
+            return [self.__get(it) for it in gen]
+        except TypeError:
+             return self.__get(index)      
+
+    __swig_destroy__ = _cmf_core.delete_layer_list
+layer_list.pop = new_instancemethod(_cmf_core.layer_list_pop,None,layer_list)
+layer_list.append = new_instancemethod(_cmf_core.layer_list_append,None,layer_list)
+layer_list.get_slice = new_instancemethod(_cmf_core.layer_list_get_slice,None,layer_list)
+layer_list.clear = new_instancemethod(_cmf_core.layer_list_clear,None,layer_list)
+layer_list.size = new_instancemethod(_cmf_core.layer_list_size,None,layer_list)
+layer_list.set_potential = new_instancemethod(_cmf_core.layer_list_set_potential,None,layer_list)
+layer_list.set_volume = new_instancemethod(_cmf_core.layer_list_set_volume,None,layer_list)
+layer_list.set_wetness = new_instancemethod(_cmf_core.layer_list_set_wetness,None,layer_list)
+layer_list.__get = new_instancemethod(_cmf_core.layer_list___get,None,layer_list)
+layer_list_swigregister = _cmf_core.layer_list_swigregister
+layer_list_swigregister(layer_list)
 
 class IVolumeHeightFunction(object):
     """

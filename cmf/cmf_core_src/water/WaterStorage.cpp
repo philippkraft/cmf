@@ -69,8 +69,53 @@ std::tr1::shared_ptr<WaterStorage> WaterStorage::from_node( flux_node::ptr node 
 }
 
 void WaterStorage::set_state_variable_content(char content) {
-	if (content == 'V' || content == 'h')
-		m_state_variable_content=content;
-	else
+	if (content == 'V' || content == 'h') {
+		if (m_state_variable_content != content) {
+			real newstate=get_state();
+			try
+			{
+				newstate =  (content=='h') ? volume_to_head(newstate) : head_to_volume(newstate);
+				set_state(newstate);
+				m_state_variable_content=content;
+			}
+			catch (std::runtime_error) {
+				throw std::runtime_error(this->Name + std::string(" can only integrated over ") + m_state_variable_content + std::string(". Please do not change the variable."));
+			}
+		}
+	}
+	else {
 		throw std::runtime_error("Only 'V' (volume) and 'h' (head) are allowed values to describe the integrated variable in " + this->Name);
+	}
+}
+
+real cmf::water::WaterStorage::head_to_volume( real head ) const
+{
+	throw std::runtime_error("Head to volume function not implemented in " + this->Name);
+	return 0.0;
+}
+
+real cmf::water::WaterStorage::volume_to_head( real volume ) const
+{
+	throw std::runtime_error("Head to volume function not implemented in " + this->Name);
+	return 0.0;
+}
+
+real cmf::water::WaterStorage::Derivate( const cmf::math::Time& time )
+{
+	// Gets the net fluxes of this water storage in m3/day
+	real dVdt = water_balance(time);
+	// If head is the integrated variable
+	if (get_state_variable_content()=='h')
+	{
+		// dh/dt = (h(V) - h(V+dV/dt * dt)/dt
+		// dh/dV(V) is calculated numerically using a discrete timestep of one minute
+		real dt = 1./(24.*60.);  // 1 min in days
+		real h0 = get_state(); // current head
+		real V1 = get_volume() + dVdt * dt; // Projected volume at t+dt
+		real h1 = volume_to_head(V1); // Projected head at t+dt
+		return (h1 - h0) / dt; // dh/dt in m/day
+	}
+	else // Integrate over volume
+		// The net flux of this water storage is the derivate of the Volume
+		return dVdt;
 }

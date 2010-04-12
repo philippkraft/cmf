@@ -46,12 +46,15 @@
 %attribute(cmf::upslope::SoilLayer,real,gravitational_potential,get_gravitational_potential);
 %attribute(cmf::upslope::SoilLayer,real,matrix_potential,get_matrix_potential);
 %attribute(cmf::upslope::SoilLayer,real,wetness,get_wetness,set_wetness);
+%attribute(cmf::upslope::SoilLayer,real,theta,get_theta,set_theta);
 %attribute(cmf::upslope::SoilLayer,real,K,get_K);
 %attribute(cmf::upslope::SoilLayer,real,Ksat,get_Ksat);
 %attribute(cmf::upslope::SoilLayer,real,thickness,get_thickness);
 %attribute(cmf::upslope::SoilLayer,real,lower_boundary,get_lower_boundary);
 %attribute(cmf::upslope::SoilLayer,real,upper_boundary,get_upper_boundary);
 %attribute(cmf::upslope::SoilLayer,real,porosity,get_porosity);
+%attribute(cmf::upslope::SoilLayer,cmf::upslope::SoilLayer, upper, get_upper);
+%attribute(cmf::upslope::SoilLayer,cmf::upslope::SoilLayer, lower, get_lower);
 %include "upslope/SoilLayer.h"
 
 
@@ -65,3 +68,43 @@
 
 EXTENT__REPR__(cmf::upslope::SoilLayer)
 
+
+%attributeval(cmf::upslope::layer_list,cmf::math::num_array,gravitational_potential,get_gravitational_potential);
+%attributeval(cmf::upslope::layer_list,cmf::math::num_array,matrix_potential,get_matrix_potential);
+%attributeval(cmf::upslope::layer_list,cmf::math::num_array,wetness,get_wetness);
+%attributeval(cmf::upslope::layer_list,cmf::math::num_array,volume,get_volume);
+%attributeval(cmf::upslope::layer_list,cmf::math::num_array,potential,get_potential);
+%attributeval(cmf::upslope::layer_list,cmf::math::num_array,K,get_K);
+%attributeval(cmf::upslope::layer_list,cmf::math::num_array,Ksat,get_Ksat);
+%attributeval(cmf::upslope::layer_list,cmf::math::num_array,thickness,get_thickness);
+%attributeval(cmf::upslope::layer_list,cmf::math::num_array,lower_boundary,get_lower_boundary);
+%attributeval(cmf::upslope::layer_list,cmf::math::num_array,upper_boundary,get_upper_boundary);
+%attributeval(cmf::upslope::layer_list,cmf::math::num_array,porosity,get_porosity);
+
+%include "upslope/layer_list.h"
+
+%extend cmf::upslope::layer_list {
+    cmf::upslope::SoilLayer::ptr __get(int index) { return (*$self)[index];}
+%pythoncode {
+    __repr__=lambda self: repr(list(self))
+    __str__ =lambda self: str(list(self))
+    __len__=lambda self: self.size()
+    def __iadd__(self,other):
+        self.append(other)
+        return self
+    def __add__(self,other):
+        res = layer_list(self)
+        res.append(other)
+        return res
+    def __iter__(self):
+        for i in range(len(self)):
+            yield self[i]
+    def __getitem__(self,index):
+        if (type(index)==slice):
+            return self.get_slice(*index.indices(len(self)))
+        try:
+            gen=iter(index)
+            return [self.__get(it) for it in gen]
+        except TypeError:
+             return self.__get(index)      
+}}

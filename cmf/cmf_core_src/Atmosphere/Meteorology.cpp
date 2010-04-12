@@ -25,6 +25,7 @@
 #define clip(v,mn,mx) (max(min(v,mx),mn))
 
 static const double PI=3.141592654;
+using namespace cmf::atmosphere;
 double cmf::atmosphere::Pressure( double height )	
 {
 	return 101.3*pow((293-0.0065*height)/293,5.26);
@@ -87,6 +88,16 @@ double cmf::atmosphere::global_radiation( cmf::math::Time t,double height,double
 
 }
 
+double cmf::atmosphere::vpd_from_rH( double T,double rH )
+{
+	return (1-rH*0.01) * vapour_pressure(T);
+}
+
+double cmf::atmosphere::rH_from_vpd( double T, double vpd )
+{
+	double e_s = vapour_pressure(T), e_a = e_s - vpd;
+	return e_a/e_s;
+}
 double cmf::atmosphere::Weather::snow_threshold=0.5;
 
 cmf::atmosphere::Weather cmf::atmosphere::MeteoStation::get_data( cmf::math::Time t,double height ) const

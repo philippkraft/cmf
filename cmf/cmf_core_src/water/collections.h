@@ -29,6 +29,8 @@ namespace cmf {
 		///
 		/// In setups with many storages and rather fast computations, the speed of data access for output generation can take a high portion of the total run time.
 		/// To accelerate data access, one can use the node_list object
+		///
+		/// @todo Add a get_volume / set_volume function pair, to complement get_potential / set_potential
 		class node_list	: public cmf::math::StateVariableOwner
 		{
 		private:
@@ -46,6 +48,10 @@ namespace cmf {
 			}
 			node_vector::iterator begin() {return m_nodes.begin();}
 			node_vector::iterator end() {return m_nodes.end();}
+			node_vector::const_iterator begin() const {return m_nodes.begin();}
+			node_vector::const_iterator end() const {return m_nodes.end();}
+			typedef node_vector::iterator iterator;
+			typedef node_vector::const_iterator const_iterator;
 
 #endif
 			/// Creates an empty node_lust			

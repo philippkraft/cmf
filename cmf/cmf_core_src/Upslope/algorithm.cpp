@@ -226,7 +226,7 @@ void cmf::upslope::set_precipitation( cmf::upslope::cells_ref cells,cmf::math::t
 	}
 	
 }
-void cmf::upslope::set_meteo_station(cmf::upslope::cells_ref cells,cmf::atmosphere::meteo_station_pointer meteo_station)
+void cmf::upslope::set_meteo_station(cmf::upslope::cells_ref cells,cmf::atmosphere::MeteoStation::ptr meteo_station)
 {
 	for(cmf::upslope::cell_vector::const_iterator it = cells.begin(); it != cells.end(); ++it)
 	{

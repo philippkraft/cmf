@@ -91,7 +91,7 @@ void cmf::upslope::connections::HBVlateral::connect_cells( cmf::upslope::Cell & 
 			for (int j = start_at_layer; j < (start_at_layer>=0 ? cell2.layer_count() : 0) ; ++j)	{
 				real ca=cell1.get_layer(i)->get_flow_crosssection(*cell2.get_layer(j));
 				if (ca>0)	{
-					real d=cell1.get_layer(i)->get_distance_to(*cell2.get_layer(j));
+					real d=cell1.get_layer(i)->Location.distanceTo(cell2.get_layer(j)->Location);
 					cmf::upslope::SoilLayer::ptr l_up = cmf::upslope::SoilLayer::cast(cmf::water::get_higher_node(cell1.get_layer(i),cell2.get_layer(j)));
 					cmf::upslope::SoilLayer::ptr l_low = cmf::upslope::SoilLayer::cast(cmf::water::get_lower_node(cell1.get_layer(i),cell2.get_layer(j)));
 					new HBVlateral(l_up,l_low,w,d);

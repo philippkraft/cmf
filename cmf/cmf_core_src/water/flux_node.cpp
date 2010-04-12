@@ -24,6 +24,18 @@
 static int nextnodeid=0;
 // Registers a connection at this node (only called by ctor of flux_connection)
 
+
+cmf::geometry::point get_direction_to(const cmf::water::flux_node & node, const cmf::water::flux_node& cmp )
+{
+	cmf::geometry::point p1=node.Location,p2=cmp.Location;
+	double d=p1.distance3DTo(p2);
+	if (d<=0) 
+		return cmf::geometry::point();
+	else
+		return (p2-p1)/d;
+}
+
+
 void cmf::water::flux_node::RegisterConnection(flux_connection* newConnection )
 {
 	// Get the other end of the connection
@@ -140,7 +152,7 @@ cmf::water::flux_node::flux_node( const cmf::project& _project,cmf::geometry::po
 cmf::geometry::point cmf::water::flux_node::flux3d_to( const cmf::water::flux_node& target,cmf::math::Time t )
 {
 	if (m_Connections.find(target.node_id)!=m_Connections.end())
-		return -m_Connections[target.node_id]->q(*this,t) * get_direction_to(target);
+		return -m_Connections[target.node_id]->q(*this,t) * get_direction_to(*this,target);
 	else
 		return cmf::geometry::point();
 }
@@ -153,7 +165,7 @@ cmf::geometry::point cmf::water::flux_node::get_3d_flux( cmf::math::Time t )
 	{
 		flux_node::ptr target=it->second->get_target(*this);
 		real f=flux_to(*target,t);
-		cmf::geometry::point dir=get_direction_to(*target);
+		cmf::geometry::point dir=get_direction_to(*this,*target);
 		res+= dir * f;
 	}
 	return res;
@@ -177,10 +189,10 @@ int cmf::water::count_node_references( flux_node::ptr node )
 
 cmf::water::flux_node::ptr cmf::water::get_higher_node( cmf::water::flux_node::ptr node1,cmf::water::flux_node::ptr node2 )
 {
-	return node1->get_position().z >= node2->get_position().z ? node1 : node2;
+	return node1->Location.z >= node2->Location.z ? node1 : node2;
 }
 
 cmf::water::flux_node::ptr cmf::water::get_lower_node( cmf::water::flux_node::ptr node1,cmf::water::flux_node::ptr node2 )
 {
-	return node1->get_position().z >= node2->get_position().z ? node2 : node1;
+	return node1->Location.z >= node2->Location.z ? node2 : node1;
 }

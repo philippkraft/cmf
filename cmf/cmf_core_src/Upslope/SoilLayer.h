@@ -23,10 +23,10 @@
 #include "../water/flux_connection.h"
 #include "../Geometry/geometry.h"
 #include "Soil/RetentionCurve.h"
-#include "cell.h"
 #include <memory>
 namespace cmf {
 	namespace upslope {
+		class Cell;
 		/// @ingroup storages
 		/// A representation of a SoilLayer
 		class SoilLayer: public cmf::water::WaterStorage
@@ -41,11 +41,19 @@ namespace cmf {
 			friend class Cell;
 			struct wet {real	W,Psi_m,theta,C,K,Ksat;	};
 			wet m_wet;
+			typedef std::tr1::weak_ptr<cmf::upslope::SoilLayer> weak_ptr;
+			weak_ptr m_upper;
+			weak_ptr m_lower;
 		protected:
+
 			real m_upperboundary,m_lowerboundary;
+
+			/// The retention curve of the soil layer
 			std::auto_ptr<cmf::upslope::RetentionCurve> m_retentioncurve;
-		protected:
+
+			/// Converts a head to the volume of stored water
 			virtual real head_to_volume(real head) const;
+			/// Converts a volume of stored water to the head
 			virtual real volume_to_head(real volume) const;
 
 		public:
@@ -55,6 +63,10 @@ namespace cmf {
 			virtual real get_upper_boundary() const {return m_upperboundary;}
 			/// Returns the lower boundary of the water storage below ground in m
 			virtual real get_lower_boundary() const {return m_lowerboundary;}
+
+			ptr get_upper() const {return m_upper.lock();}
+			ptr get_lower() const {return m_lower.lock();}
+
 			real get_thickness() const {return get_lower_boundary()-get_upper_boundary();}
 			/// Returns the soil properties of the water storage
 			virtual cmf::upslope::RetentionCurve& get_soil() const {return *m_retentioncurve;}
@@ -64,26 +76,20 @@ namespace cmf {
 			}
 			/// Returns the actual volumetric water content of the water storage
 			virtual real get_theta() const {return m_wet.theta;}
-			virtual void set_theta(real Value)
-			{
-				set_state(Value*cell.get_area()*get_thickness());
-			}
+			virtual void set_theta(real Value);
 			/// Returns the actual conductivity	\f$\frac{m}{day}\f$
 			real get_K() const {return m_wet.K;}
 			real get_Ksat() const {return m_wet.Ksat;}
 			/// Returns the wetness of the soil \f$ \frac{V_{H_2O}}{V_{pores}} \f$
 			virtual real get_wetness() const {return m_wet.W;}
-			virtual void set_wetness(real wetness)
-			{
-				set_state(wetness*get_capacity());
-			}
+			virtual void set_wetness(real wetness);
 			/// Calls RetentionCurve::Matrixpotential
 			virtual real get_matrix_potential() const {return m_wet.Psi_m;}
 			/// Gravitational get_potential in m, reference height is sea level. If the layer is saturated, it returns the saturated depth above sea level, otherwise it returns the upperboundary of the layer
 			/// \f[ \Psi_G=h \f]
 			real get_gravitational_potential() const;
 			/// Returns the mean porosity in the layer
-			real get_porosity() const			{return get_capacity()/(cell.get_area() * get_thickness());}
+			real get_porosity() const;
 			/// Returns the capacity of the water storage in m3
 			virtual real get_capacity()	const	{return m_wet.C;}
 			/// Sets the potential of this soil water storage
