@@ -1,4 +1,4 @@
-/* Created with swigbuild.bat at 08.02.2010 15:00:03.81 */ 
+/* Created with swigbuild.bat at 29.03.2010 11:58:59.67 */ 
 #pragma warning(push) 
 #pragma warning (disable : 4244) 
 #ifndef _CONSOLE 
@@ -2770,94 +2770,96 @@ SWIG_Python_MustGetPtr(PyObject *obj, swig_type_info *ty, int argnum, int flags)
 #define SWIGTYPE_p_cmf__upslope__connections__Snowfall swig_types[76]
 #define SWIGTYPE_p_cmf__upslope__connections__TopographicGradientDarcy swig_types[77]
 #define SWIGTYPE_p_cmf__upslope__connections__lateral_sub_surface_flux swig_types[78]
-#define SWIGTYPE_p_cmf__upslope__vegetation__Vegetation swig_types[79]
-#define SWIGTYPE_p_cmf__water__DricheletBoundary swig_types[80]
-#define SWIGTYPE_p_cmf__water__NeumannBoundary swig_types[81]
-#define SWIGTYPE_p_cmf__water__NeumannBoundary_list swig_types[82]
-#define SWIGTYPE_p_cmf__water__NeumannFlux swig_types[83]
-#define SWIGTYPE_p_cmf__water__SoluteStorage swig_types[84]
-#define SWIGTYPE_p_cmf__water__SoluteTimeseries swig_types[85]
-#define SWIGTYPE_p_cmf__water__TechnicalFlux swig_types[86]
-#define SWIGTYPE_p_cmf__water__WaterStorage swig_types[87]
-#define SWIGTYPE_p_cmf__water__flux_connection swig_types[88]
-#define SWIGTYPE_p_cmf__water__flux_node swig_types[89]
-#define SWIGTYPE_p_cmf__water__linear_scale swig_types[90]
-#define SWIGTYPE_p_cmf__water__node_list swig_types[91]
-#define SWIGTYPE_p_cmf__water__solute swig_types[92]
-#define SWIGTYPE_p_cmf__water__solute_vector swig_types[93]
-#define SWIGTYPE_p_cmf__water__waterbalance_connection swig_types[94]
-#define SWIGTYPE_p_const_reference swig_types[95]
-#define SWIGTYPE_p_difference_type swig_types[96]
-#define SWIGTYPE_p_double swig_types[97]
-#define SWIGTYPE_p_f_double__double swig_types[98]
-#define SWIGTYPE_p_key_type swig_types[99]
-#define SWIGTYPE_p_p_PyObject swig_types[100]
-#define SWIGTYPE_p_p_cmf__river__Manning swig_types[101]
-#define SWIGTYPE_p_p_cmf__river__Manning_Diffusive swig_types[102]
-#define SWIGTYPE_p_p_cmf__river__Manning_Kinematic swig_types[103]
-#define SWIGTYPE_p_p_cmf__upslope__ET__CanopyStorageEvaporation swig_types[104]
-#define SWIGTYPE_p_p_cmf__upslope__ET__HargreaveET swig_types[105]
-#define SWIGTYPE_p_p_cmf__upslope__ET__PenmanEvaporation swig_types[106]
-#define SWIGTYPE_p_p_cmf__upslope__ET__PenmanMonteithET swig_types[107]
-#define SWIGTYPE_p_p_cmf__upslope__ET__ShuttleworthWallaceET swig_types[108]
-#define SWIGTYPE_p_p_cmf__upslope__ET__constantETpot swig_types[109]
-#define SWIGTYPE_p_p_cmf__upslope__connections__CanopyOverflow swig_types[110]
-#define SWIGTYPE_p_p_cmf__upslope__connections__CompleteInfiltration swig_types[111]
-#define SWIGTYPE_p_p_cmf__upslope__connections__Darcy swig_types[112]
-#define SWIGTYPE_p_p_cmf__upslope__connections__DarcyKinematic swig_types[113]
-#define SWIGTYPE_p_p_cmf__upslope__connections__HBVlateral swig_types[114]
-#define SWIGTYPE_p_p_cmf__upslope__connections__HBVpercolation swig_types[115]
-#define SWIGTYPE_p_p_cmf__upslope__connections__MatrixInfiltration swig_types[116]
-#define SWIGTYPE_p_p_cmf__upslope__connections__OHDISflow swig_types[117]
-#define SWIGTYPE_p_p_cmf__upslope__connections__Rainfall swig_types[118]
-#define SWIGTYPE_p_p_cmf__upslope__connections__Richards swig_types[119]
-#define SWIGTYPE_p_p_cmf__upslope__connections__Richards_lateral swig_types[120]
-#define SWIGTYPE_p_p_cmf__upslope__connections__SWATPercolation swig_types[121]
-#define SWIGTYPE_p_p_cmf__upslope__connections__SimplRichards swig_types[122]
-#define SWIGTYPE_p_p_cmf__upslope__connections__SimpleTindexSnowMelt swig_types[123]
-#define SWIGTYPE_p_p_cmf__upslope__connections__Snowfall swig_types[124]
-#define SWIGTYPE_p_p_cmf__upslope__connections__TopographicGradientDarcy swig_types[125]
-#define SWIGTYPE_p_p_cmf__upslope__connections__lateral_sub_surface_flux swig_types[126]
-#define SWIGTYPE_p_p_cmf__water__NeumannFlux swig_types[127]
-#define SWIGTYPE_p_p_cmf__water__TechnicalFlux swig_types[128]
-#define SWIGTYPE_p_p_cmf__water__waterbalance_connection swig_types[129]
-#define SWIGTYPE_p_ptr swig_types[130]
-#define SWIGTYPE_p_reference swig_types[131]
-#define SWIGTYPE_p_size_type swig_types[132]
-#define SWIGTYPE_p_std__invalid_argument swig_types[133]
-#define SWIGTYPE_p_std__lessT_cmf__water__flux_connection_p_t swig_types[134]
-#define SWIGTYPE_p_std__setT_cmf__upslope__Cell_p_std__lessT_cmf__upslope__Cell_p_t_std__allocatorT_cmf__upslope__Cell_p_t_t swig_types[135]
-#define SWIGTYPE_p_std__setT_cmf__water__flux_connection_p_std__lessT_cmf__water__flux_connection_p_t_std__allocatorT_cmf__water__flux_connection_p_t_t swig_types[136]
-#define SWIGTYPE_p_std__setT_cmf__water__flux_connection_p_std__lessT_cmf__water__flux_connection_p_t_std__allocatorT_cmf__water__flux_connection_p_t_t__key_type swig_types[137]
-#define SWIGTYPE_p_std__setT_cmf__water__flux_connection_p_std__lessT_cmf__water__flux_connection_p_t_std__allocatorT_cmf__water__flux_connection_p_t_t__value_type swig_types[138]
-#define SWIGTYPE_p_std__tr1__shared_ptrT_cmf__atmosphere__MeteoStation_t swig_types[139]
-#define SWIGTYPE_p_std__tr1__shared_ptrT_cmf__atmosphere__RainCloud_t swig_types[140]
-#define SWIGTYPE_p_std__tr1__shared_ptrT_cmf__math__StateVariable_t swig_types[141]
-#define SWIGTYPE_p_std__tr1__shared_ptrT_cmf__river__OpenWaterStorage_t swig_types[142]
-#define SWIGTYPE_p_std__tr1__shared_ptrT_cmf__river__Reach_t swig_types[143]
-#define SWIGTYPE_p_std__tr1__shared_ptrT_cmf__upslope__SoilLayer_t swig_types[144]
-#define SWIGTYPE_p_std__tr1__shared_ptrT_cmf__water__DricheletBoundary_t swig_types[145]
-#define SWIGTYPE_p_std__tr1__shared_ptrT_cmf__water__NeumannBoundary_t swig_types[146]
-#define SWIGTYPE_p_std__tr1__shared_ptrT_cmf__water__SoluteStorage_t swig_types[147]
-#define SWIGTYPE_p_std__tr1__shared_ptrT_cmf__water__WaterStorage_t swig_types[148]
-#define SWIGTYPE_p_std__tr1__shared_ptrT_cmf__water__flux_node_t swig_types[149]
-#define SWIGTYPE_p_std__vectorT_cmf__geometry__point_std__allocatorT_cmf__geometry__point_t_t swig_types[150]
-#define SWIGTYPE_p_std__vectorT_cmf__math__StateVariable_p_std__allocatorT_cmf__math__StateVariable_p_t_t swig_types[151]
-#define SWIGTYPE_p_std__vectorT_cmf__math__StateVariable_p_std__allocatorT_cmf__math__StateVariable_p_t_t__allocator_type swig_types[152]
-#define SWIGTYPE_p_std__vectorT_cmf__upslope__Cell_p_std__allocatorT_cmf__upslope__Cell_p_t_t swig_types[153]
-#define SWIGTYPE_p_std__vectorT_cmf__upslope__Cell_p_std__allocatorT_cmf__upslope__Cell_p_t_t__allocator_type swig_types[154]
-#define SWIGTYPE_p_std__vectorT_cmf__water__flux_connection_p_std__allocatorT_cmf__water__flux_connection_p_t_t swig_types[155]
-#define SWIGTYPE_p_std__vectorT_cmf__water__flux_connection_p_std__allocatorT_cmf__water__flux_connection_p_t_t__allocator_type swig_types[156]
-#define SWIGTYPE_p_std__vectorT_std__tr1__shared_ptrT_cmf__water__WaterStorage_t_std__allocatorT_std__tr1__shared_ptrT_cmf__water__WaterStorage_t_t_t swig_types[157]
-#define SWIGTYPE_p_std__vectorT_std__tr1__shared_ptrT_cmf__water__WaterStorage_t_std__allocatorT_std__tr1__shared_ptrT_cmf__water__WaterStorage_t_t_t__allocator_type swig_types[158]
-#define SWIGTYPE_p_swig__SwigPyIterator swig_types[159]
-#define SWIGTYPE_p_value_type swig_types[160]
-#define SWIGTYPE_std__setT_cmf__water__flux_connection_p_std__lessT_cmf__water__flux_connection_p_t_std__allocatorT_cmf__water__flux_connection_p_t_t__key_type swig_types[161]
-#define SWIGTYPE_std__setT_cmf__water__flux_connection_p_std__lessT_cmf__water__flux_connection_p_t_std__allocatorT_cmf__water__flux_connection_p_t_t__value_type swig_types[162]
-#define SWIGTYPE_std__vectorT_cmf__upslope__Cell_p_std__allocatorT_cmf__upslope__Cell_p_t_t__value_type swig_types[163]
-#define SWIGTYPE_std__vectorT_cmf__water__flux_connection_p_std__allocatorT_cmf__water__flux_connection_p_t_t__value_type swig_types[164]
-static swig_type_info *swig_types[166];
-static swig_module_info swig_module = {swig_types, 165, 0, 0, 0, 0};
+#define SWIGTYPE_p_cmf__upslope__layer_list swig_types[79]
+#define SWIGTYPE_p_cmf__upslope__vegetation__Vegetation swig_types[80]
+#define SWIGTYPE_p_cmf__water__DricheletBoundary swig_types[81]
+#define SWIGTYPE_p_cmf__water__NeumannBoundary swig_types[82]
+#define SWIGTYPE_p_cmf__water__NeumannBoundary_list swig_types[83]
+#define SWIGTYPE_p_cmf__water__NeumannFlux swig_types[84]
+#define SWIGTYPE_p_cmf__water__SoluteStorage swig_types[85]
+#define SWIGTYPE_p_cmf__water__SoluteTimeseries swig_types[86]
+#define SWIGTYPE_p_cmf__water__TechnicalFlux swig_types[87]
+#define SWIGTYPE_p_cmf__water__WaterStorage swig_types[88]
+#define SWIGTYPE_p_cmf__water__flux_connection swig_types[89]
+#define SWIGTYPE_p_cmf__water__flux_node swig_types[90]
+#define SWIGTYPE_p_cmf__water__linear_scale swig_types[91]
+#define SWIGTYPE_p_cmf__water__node_list swig_types[92]
+#define SWIGTYPE_p_cmf__water__solute swig_types[93]
+#define SWIGTYPE_p_cmf__water__solute_vector swig_types[94]
+#define SWIGTYPE_p_cmf__water__waterbalance_connection swig_types[95]
+#define SWIGTYPE_p_const_reference swig_types[96]
+#define SWIGTYPE_p_difference_type swig_types[97]
+#define SWIGTYPE_p_double swig_types[98]
+#define SWIGTYPE_p_f_double__double swig_types[99]
+#define SWIGTYPE_p_key_type swig_types[100]
+#define SWIGTYPE_p_p_PyObject swig_types[101]
+#define SWIGTYPE_p_p_cmf__river__Manning swig_types[102]
+#define SWIGTYPE_p_p_cmf__river__Manning_Diffusive swig_types[103]
+#define SWIGTYPE_p_p_cmf__river__Manning_Kinematic swig_types[104]
+#define SWIGTYPE_p_p_cmf__upslope__ET__CanopyStorageEvaporation swig_types[105]
+#define SWIGTYPE_p_p_cmf__upslope__ET__HargreaveET swig_types[106]
+#define SWIGTYPE_p_p_cmf__upslope__ET__PenmanEvaporation swig_types[107]
+#define SWIGTYPE_p_p_cmf__upslope__ET__PenmanMonteithET swig_types[108]
+#define SWIGTYPE_p_p_cmf__upslope__ET__ShuttleworthWallaceET swig_types[109]
+#define SWIGTYPE_p_p_cmf__upslope__ET__constantETpot swig_types[110]
+#define SWIGTYPE_p_p_cmf__upslope__connections__CanopyOverflow swig_types[111]
+#define SWIGTYPE_p_p_cmf__upslope__connections__CompleteInfiltration swig_types[112]
+#define SWIGTYPE_p_p_cmf__upslope__connections__Darcy swig_types[113]
+#define SWIGTYPE_p_p_cmf__upslope__connections__DarcyKinematic swig_types[114]
+#define SWIGTYPE_p_p_cmf__upslope__connections__HBVlateral swig_types[115]
+#define SWIGTYPE_p_p_cmf__upslope__connections__HBVpercolation swig_types[116]
+#define SWIGTYPE_p_p_cmf__upslope__connections__MatrixInfiltration swig_types[117]
+#define SWIGTYPE_p_p_cmf__upslope__connections__OHDISflow swig_types[118]
+#define SWIGTYPE_p_p_cmf__upslope__connections__Rainfall swig_types[119]
+#define SWIGTYPE_p_p_cmf__upslope__connections__Richards swig_types[120]
+#define SWIGTYPE_p_p_cmf__upslope__connections__Richards_lateral swig_types[121]
+#define SWIGTYPE_p_p_cmf__upslope__connections__SWATPercolation swig_types[122]
+#define SWIGTYPE_p_p_cmf__upslope__connections__SimplRichards swig_types[123]
+#define SWIGTYPE_p_p_cmf__upslope__connections__SimpleTindexSnowMelt swig_types[124]
+#define SWIGTYPE_p_p_cmf__upslope__connections__Snowfall swig_types[125]
+#define SWIGTYPE_p_p_cmf__upslope__connections__TopographicGradientDarcy swig_types[126]
+#define SWIGTYPE_p_p_cmf__upslope__connections__lateral_sub_surface_flux swig_types[127]
+#define SWIGTYPE_p_p_cmf__water__NeumannFlux swig_types[128]
+#define SWIGTYPE_p_p_cmf__water__TechnicalFlux swig_types[129]
+#define SWIGTYPE_p_p_cmf__water__waterbalance_connection swig_types[130]
+#define SWIGTYPE_p_ptr swig_types[131]
+#define SWIGTYPE_p_reference swig_types[132]
+#define SWIGTYPE_p_size_type swig_types[133]
+#define SWIGTYPE_p_std__invalid_argument swig_types[134]
+#define SWIGTYPE_p_std__lessT_cmf__water__flux_connection_p_t swig_types[135]
+#define SWIGTYPE_p_std__setT_cmf__upslope__Cell_p_std__lessT_cmf__upslope__Cell_p_t_std__allocatorT_cmf__upslope__Cell_p_t_t swig_types[136]
+#define SWIGTYPE_p_std__setT_cmf__water__flux_connection_p_std__lessT_cmf__water__flux_connection_p_t_std__allocatorT_cmf__water__flux_connection_p_t_t swig_types[137]
+#define SWIGTYPE_p_std__setT_cmf__water__flux_connection_p_std__lessT_cmf__water__flux_connection_p_t_std__allocatorT_cmf__water__flux_connection_p_t_t__key_type swig_types[138]
+#define SWIGTYPE_p_std__setT_cmf__water__flux_connection_p_std__lessT_cmf__water__flux_connection_p_t_std__allocatorT_cmf__water__flux_connection_p_t_t__value_type swig_types[139]
+#define SWIGTYPE_p_std__tr1__shared_ptrT_SoilLayer_t swig_types[140]
+#define SWIGTYPE_p_std__tr1__shared_ptrT_cmf__atmosphere__MeteoStation_t swig_types[141]
+#define SWIGTYPE_p_std__tr1__shared_ptrT_cmf__atmosphere__RainCloud_t swig_types[142]
+#define SWIGTYPE_p_std__tr1__shared_ptrT_cmf__math__StateVariable_t swig_types[143]
+#define SWIGTYPE_p_std__tr1__shared_ptrT_cmf__river__OpenWaterStorage_t swig_types[144]
+#define SWIGTYPE_p_std__tr1__shared_ptrT_cmf__river__Reach_t swig_types[145]
+#define SWIGTYPE_p_std__tr1__shared_ptrT_cmf__upslope__SoilLayer_t swig_types[146]
+#define SWIGTYPE_p_std__tr1__shared_ptrT_cmf__water__DricheletBoundary_t swig_types[147]
+#define SWIGTYPE_p_std__tr1__shared_ptrT_cmf__water__NeumannBoundary_t swig_types[148]
+#define SWIGTYPE_p_std__tr1__shared_ptrT_cmf__water__SoluteStorage_t swig_types[149]
+#define SWIGTYPE_p_std__tr1__shared_ptrT_cmf__water__WaterStorage_t swig_types[150]
+#define SWIGTYPE_p_std__tr1__shared_ptrT_cmf__water__flux_node_t swig_types[151]
+#define SWIGTYPE_p_std__vectorT_cmf__geometry__point_std__allocatorT_cmf__geometry__point_t_t swig_types[152]
+#define SWIGTYPE_p_std__vectorT_cmf__math__StateVariable_p_std__allocatorT_cmf__math__StateVariable_p_t_t swig_types[153]
+#define SWIGTYPE_p_std__vectorT_cmf__math__StateVariable_p_std__allocatorT_cmf__math__StateVariable_p_t_t__allocator_type swig_types[154]
+#define SWIGTYPE_p_std__vectorT_cmf__upslope__Cell_p_std__allocatorT_cmf__upslope__Cell_p_t_t swig_types[155]
+#define SWIGTYPE_p_std__vectorT_cmf__upslope__Cell_p_std__allocatorT_cmf__upslope__Cell_p_t_t__allocator_type swig_types[156]
+#define SWIGTYPE_p_std__vectorT_cmf__water__flux_connection_p_std__allocatorT_cmf__water__flux_connection_p_t_t swig_types[157]
+#define SWIGTYPE_p_std__vectorT_cmf__water__flux_connection_p_std__allocatorT_cmf__water__flux_connection_p_t_t__allocator_type swig_types[158]
+#define SWIGTYPE_p_std__vectorT_std__tr1__shared_ptrT_cmf__water__WaterStorage_t_std__allocatorT_std__tr1__shared_ptrT_cmf__water__WaterStorage_t_t_t swig_types[159]
+#define SWIGTYPE_p_std__vectorT_std__tr1__shared_ptrT_cmf__water__WaterStorage_t_std__allocatorT_std__tr1__shared_ptrT_cmf__water__WaterStorage_t_t_t__allocator_type swig_types[160]
+#define SWIGTYPE_p_swig__SwigPyIterator swig_types[161]
+#define SWIGTYPE_p_value_type swig_types[162]
+#define SWIGTYPE_std__setT_cmf__water__flux_connection_p_std__lessT_cmf__water__flux_connection_p_t_std__allocatorT_cmf__water__flux_connection_p_t_t__key_type swig_types[163]
+#define SWIGTYPE_std__setT_cmf__water__flux_connection_p_std__lessT_cmf__water__flux_connection_p_t_std__allocatorT_cmf__water__flux_connection_p_t_t__value_type swig_types[164]
+#define SWIGTYPE_std__vectorT_cmf__upslope__Cell_p_std__allocatorT_cmf__upslope__Cell_p_t_t__value_type swig_types[165]
+#define SWIGTYPE_std__vectorT_cmf__water__flux_connection_p_std__allocatorT_cmf__water__flux_connection_p_t_t__value_type swig_types[166]
+static swig_type_info *swig_types[168];
+static swig_module_info swig_module = {swig_types, 167, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -5219,6 +5221,9 @@ SWIGINTERN std::tr1::shared_ptr< cmf::water::NeumannBoundary > cmf_atmosphere_Ra
 
 #define cmf_upslope_Cell_rain_get(self_) self_->get_rainfall()
   
+
+#define cmf_upslope_Cell_layers_get(self_) &self_->get_layers()
+  
 SWIGINTERN bool cmf_upslope_NeighborIterator___eq__(cmf::upslope::NeighborIterator *self,cmf::upslope::NeighborIterator const &cmp){return (*self)==cmp;}
 SWIGINTERN bool cmf_upslope_NeighborIterator___neq__(cmf::upslope::NeighborIterator *self,cmf::upslope::NeighborIterator const &cmp){return (*self)!=cmp;}
 
@@ -5322,6 +5327,10 @@ SWIGINTERN void std_vector_Sl_cmf_upslope_Cell_Sm__Sg__append(std::vector< cmf::
 #define cmf_upslope_SoilLayer_wetness_set(self_, val_) self_->set_wetness(val_)
   
 
+#define cmf_upslope_SoilLayer_theta_get(self_) self_->get_theta()
+#define cmf_upslope_SoilLayer_theta_set(self_, val_) self_->set_theta(val_)
+  
+
 #define cmf_upslope_SoilLayer_K_get(self_) self_->get_K()
   
 
@@ -5339,9 +5348,49 @@ SWIGINTERN void std_vector_Sl_cmf_upslope_Cell_Sm__Sg__append(std::vector< cmf::
 
 #define cmf_upslope_SoilLayer_porosity_get(self_) self_->get_porosity()
   
+
+#define cmf_upslope_SoilLayer_upper_get(self_) self_->get_upper()
+  
+
+#define cmf_upslope_SoilLayer_lower_get(self_) self_->get_lower()
+  
 SWIGINTERN std::tr1::shared_ptr< cmf::water::WaterStorage > cmf_upslope_SoilLayer_SWIGSharedPtrUpcast(std::tr1::shared_ptr< cmf::upslope::SoilLayer > swigSharedPtrUpcast){
     return swigSharedPtrUpcast;
   }
+
+#define cmf_upslope_layer_list_gravitational_potential_get(self_) new cmf::math::num_array(self_->get_gravitational_potential())
+  
+
+#define cmf_upslope_layer_list_matrix_potential_get(self_) new cmf::math::num_array(self_->get_matrix_potential())
+  
+
+#define cmf_upslope_layer_list_wetness_get(self_) new cmf::math::num_array(self_->get_wetness())
+  
+
+#define cmf_upslope_layer_list_volume_get(self_) new cmf::math::num_array(self_->get_volume())
+  
+
+#define cmf_upslope_layer_list_potential_get(self_) new cmf::math::num_array(self_->get_potential())
+  
+
+#define cmf_upslope_layer_list_K_get(self_) new cmf::math::num_array(self_->get_K())
+  
+
+#define cmf_upslope_layer_list_Ksat_get(self_) new cmf::math::num_array(self_->get_Ksat())
+  
+
+#define cmf_upslope_layer_list_thickness_get(self_) new cmf::math::num_array(self_->get_thickness())
+  
+
+#define cmf_upslope_layer_list_lower_boundary_get(self_) new cmf::math::num_array(self_->get_lower_boundary())
+  
+
+#define cmf_upslope_layer_list_upper_boundary_get(self_) new cmf::math::num_array(self_->get_upper_boundary())
+  
+
+#define cmf_upslope_layer_list_porosity_get(self_) new cmf::math::num_array(self_->get_porosity())
+  
+SWIGINTERN cmf::upslope::SoilLayer::ptr cmf_upslope_layer_list___get(cmf::upslope::layer_list *self,int index){ return (*self)[index];}
 
 	#include "Reach/ReachType.h"
 	#include "Reach/OpenWaterStorage.h"
@@ -6320,6 +6369,8 @@ SWIGINTERN PyObject *_wrap_point_Center(PyObject *SWIGUNUSEDPARM(self), PyObject
   {
     try {
       result = ((cmf::geometry::point const *)arg1)->Center();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -6340,6 +6391,8 @@ SWIGINTERN PyObject *_wrap_new_point__SWIG_0(PyObject *SWIGUNUSEDPARM(self), int
   {
     try {
       result = (cmf::geometry::point *)new cmf::geometry::point();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -6371,6 +6424,8 @@ SWIGINTERN PyObject *_wrap_new_point__SWIG_1(PyObject *SWIGUNUSEDPARM(self), int
   {
     try {
       result = (cmf::geometry::point *)new cmf::geometry::point((cmf::geometry::point const &)*arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -6417,6 +6472,8 @@ SWIGINTERN PyObject *_wrap_new_point__SWIG_2(PyObject *SWIGUNUSEDPARM(self), int
   {
     try {
       result = (cmf::geometry::point *)new cmf::geometry::point(arg1,arg2,arg3);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -6564,6 +6621,8 @@ SWIGINTERN PyObject *_wrap_point_distanceTo(PyObject *SWIGUNUSEDPARM(self), PyOb
   {
     try {
       result = (double)((cmf::geometry::point const *)arg1)->distanceTo(arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -6609,6 +6668,8 @@ SWIGINTERN PyObject *_wrap_point_distance3DTo(PyObject *SWIGUNUSEDPARM(self), Py
   {
     try {
       result = (double)((cmf::geometry::point const *)arg1)->distance3DTo(arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -6662,6 +6723,8 @@ SWIGINTERN PyObject *_wrap_point_distance(PyObject *SWIGUNUSEDPARM(self), PyObje
   {
     try {
       result = (double)cmf::geometry::point::distance(arg1,arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -6707,6 +6770,8 @@ SWIGINTERN PyObject *_wrap_point_distance_max(PyObject *SWIGUNUSEDPARM(self), Py
   {
     try {
       result = (double)((cmf::geometry::point const *)arg1)->distance_max(arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -6752,6 +6817,8 @@ SWIGINTERN PyObject *_wrap_point_azimuth(PyObject *SWIGUNUSEDPARM(self), PyObjec
   {
     try {
       result = (double)((cmf::geometry::point const *)arg1)->azimuth(arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -6797,6 +6864,8 @@ SWIGINTERN PyObject *_wrap_point_angleToXAxis(PyObject *SWIGUNUSEDPARM(self), Py
   {
     try {
       result = (double)((cmf::geometry::point const *)arg1)->angleToXAxis(arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -6837,6 +6906,8 @@ SWIGINTERN PyObject *_wrap_point___add__(PyObject *SWIGUNUSEDPARM(self), PyObjec
   {
     try {
       result = ((cmf::geometry::point const *)arg1)->operator +((cmf::geometry::point const &)*arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -6877,6 +6948,8 @@ SWIGINTERN PyObject *_wrap_point___sub__(PyObject *SWIGUNUSEDPARM(self), PyObjec
   {
     try {
       result = ((cmf::geometry::point const *)arg1)->operator -((cmf::geometry::point const &)*arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -6913,6 +6986,8 @@ SWIGINTERN PyObject *_wrap_point___mul____SWIG_0(PyObject *SWIGUNUSEDPARM(self),
   {
     try {
       result = ((cmf::geometry::point const *)arg1)->operator *(arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -6949,6 +7024,8 @@ SWIGINTERN PyObject *_wrap_point___div____SWIG_0(PyObject *SWIGUNUSEDPARM(self),
   {
     try {
       result = ((cmf::geometry::point const *)arg1)->operator /(arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -6988,6 +7065,8 @@ SWIGINTERN PyObject *_wrap_point___mul____SWIG_1(PyObject *SWIGUNUSEDPARM(self),
   {
     try {
       result = ((cmf::geometry::point const *)arg1)->operator *((cmf::geometry::point const &)*arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -7111,6 +7190,8 @@ SWIGINTERN PyObject *_wrap_point___div____SWIG_1(PyObject *SWIGUNUSEDPARM(self),
   {
     try {
       result = ((cmf::geometry::point const *)arg1)->operator /((cmf::geometry::point const &)*arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -7235,6 +7316,8 @@ SWIGINTERN PyObject *_wrap_point___iadd__(PyObject *SWIGUNUSEDPARM(self), PyObje
   {
     try {
       result = (arg1)->operator +=((cmf::geometry::point const &)*arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -7275,6 +7358,8 @@ SWIGINTERN PyObject *_wrap_point___isub__(PyObject *SWIGUNUSEDPARM(self), PyObje
   {
     try {
       result = (arg1)->operator -=((cmf::geometry::point const &)*arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -7315,6 +7400,8 @@ SWIGINTERN PyObject *_wrap_point___eq__(PyObject *SWIGUNUSEDPARM(self), PyObject
   {
     try {
       result = (bool)((cmf::geometry::point const *)arg1)->operator ==((cmf::geometry::point const &)*arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -7355,6 +7442,8 @@ SWIGINTERN PyObject *_wrap_point___ne__(PyObject *SWIGUNUSEDPARM(self), PyObject
   {
     try {
       result = (bool)((cmf::geometry::point const *)arg1)->operator !=((cmf::geometry::point const &)*arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -7385,6 +7474,8 @@ SWIGINTERN PyObject *_wrap_point___len__(PyObject *SWIGUNUSEDPARM(self), PyObjec
   {
     try {
       result = (int)cmf_geometry_point___len__((cmf::geometry::point const *)arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -7422,6 +7513,8 @@ SWIGINTERN PyObject *_wrap_point___rmul__(PyObject *SWIGUNUSEDPARM(self), PyObje
   {
     try {
       result = cmf_geometry_point___rmul__(arg1,arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -7459,6 +7552,8 @@ SWIGINTERN PyObject *_wrap_point___rdiv__(PyObject *SWIGUNUSEDPARM(self), PyObje
   {
     try {
       result = cmf_geometry_point___rdiv__(arg1,arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -7488,6 +7583,8 @@ SWIGINTERN PyObject *_wrap_delete_point(PyObject *SWIGUNUSEDPARM(self), PyObject
   {
     try {
       delete arg1;
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -7529,6 +7626,8 @@ SWIGINTERN PyObject *_wrap_Locatable_get_position(PyObject *SWIGUNUSEDPARM(self)
   {
     try {
       result = ((cmf::geometry::Locatable const *)arg1)->get_position();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -7573,6 +7672,8 @@ SWIGINTERN PyObject *_wrap_Locatable_set_position(PyObject *SWIGUNUSEDPARM(self)
   {
     try {
       (arg1)->set_position(arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -7613,6 +7714,8 @@ SWIGINTERN PyObject *_wrap_Locatable_get_distance_to(PyObject *SWIGUNUSEDPARM(se
   {
     try {
       result = (double)(arg1)->get_distance_to((cmf::geometry::Locatable const &)*arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -7653,6 +7756,8 @@ SWIGINTERN PyObject *_wrap_Locatable_get_direction_to(PyObject *SWIGUNUSEDPARM(s
   {
     try {
       result = (arg1)->get_direction_to((cmf::geometry::Locatable const &)*arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -7682,6 +7787,8 @@ SWIGINTERN PyObject *_wrap_delete_Locatable(PyObject *SWIGUNUSEDPARM(self), PyOb
   {
     try {
       delete arg1;
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -7725,6 +7832,8 @@ SWIGINTERN PyObject *_wrap_new_Location__SWIG_0(PyObject *SWIGUNUSEDPARM(self), 
   {
     try {
       result = (cmf::geometry::Location *)new cmf::geometry::Location(arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -7769,6 +7878,8 @@ SWIGINTERN PyObject *_wrap_new_Location__SWIG_1(PyObject *SWIGUNUSEDPARM(self), 
   {
     try {
       result = (cmf::geometry::Location *)new cmf::geometry::Location(arg1,arg2,arg3);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -7887,6 +7998,8 @@ SWIGINTERN PyObject *_wrap_delete_Location(PyObject *SWIGUNUSEDPARM(self), PyObj
   {
     try {
       delete arg1;
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -8084,6 +8197,8 @@ SWIGINTERN PyObject *_wrap_new_point_vector(PyObject *SWIGUNUSEDPARM(self), PyOb
   {
     try {
       result = (cmf::geometry::point_vector *)new cmf::geometry::point_vector(arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -8121,6 +8236,8 @@ SWIGINTERN PyObject *_wrap_point_vector_get(PyObject *SWIGUNUSEDPARM(self), PyOb
   {
     try {
       result = ((cmf::geometry::point_vector const *)arg1)->get(arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -8173,6 +8290,8 @@ SWIGINTERN PyObject *_wrap_point_vector_set(PyObject *SWIGUNUSEDPARM(self), PyOb
   {
     try {
       (arg1)->set(arg2,arg3);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -8203,6 +8322,8 @@ SWIGINTERN PyObject *_wrap_point_vector_size(PyObject *SWIGUNUSEDPARM(self), PyO
   {
     try {
       result = (int)((cmf::geometry::point_vector const *)arg1)->size();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -8232,6 +8353,8 @@ SWIGINTERN PyObject *_wrap_delete_point_vector(PyObject *SWIGUNUSEDPARM(self), P
   {
     try {
       delete arg1;
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -8308,6 +8431,8 @@ SWIGINTERN PyObject *_wrap_minimum(PyObject *SWIGUNUSEDPARM(self), PyObject *arg
   {
     try {
       result = (real)minimum(arg1,arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -8345,6 +8470,8 @@ SWIGINTERN PyObject *_wrap_maximum(PyObject *SWIGUNUSEDPARM(self), PyObject *arg
   {
     try {
       result = (real)maximum(arg1,arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -8390,6 +8517,8 @@ SWIGINTERN PyObject *_wrap_minmax(PyObject *SWIGUNUSEDPARM(self), PyObject *args
   {
     try {
       result = (real)minmax(arg1,arg2,arg3);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -8427,6 +8556,8 @@ SWIGINTERN PyObject *_wrap_mean(PyObject *SWIGUNUSEDPARM(self), PyObject *args) 
   {
     try {
       result = (real)mean(arg1,arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -8464,6 +8595,8 @@ SWIGINTERN PyObject *_wrap_geo_mean(PyObject *SWIGUNUSEDPARM(self), PyObject *ar
   {
     try {
       result = (real)geo_mean(arg1,arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -8501,6 +8634,8 @@ SWIGINTERN PyObject *_wrap_harmonic_mean(PyObject *SWIGUNUSEDPARM(self), PyObjec
   {
     try {
       result = (real)harmonic_mean(arg1,arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -8566,6 +8701,8 @@ SWIGINTERN PyObject *_wrap_piecewise_linear(PyObject *SWIGUNUSEDPARM(self), PyOb
   {
     try {
       result = (real)piecewise_linear(arg1,arg2,arg3,arg4,arg5);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -8611,6 +8748,8 @@ SWIGINTERN PyObject *_wrap_boltzmann(PyObject *SWIGUNUSEDPARM(self), PyObject *a
   {
     try {
       result = (real)boltzmann(arg1,arg2,arg3);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -8641,6 +8780,8 @@ SWIGINTERN PyObject *_wrap_sign(PyObject *SWIGUNUSEDPARM(self), PyObject *args) 
   {
     try {
       result = (real)sign(arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -8671,6 +8812,8 @@ SWIGINTERN PyObject *_wrap_square(PyObject *SWIGUNUSEDPARM(self), PyObject *args
   {
     try {
       result = (real)square(arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -8713,6 +8856,8 @@ SWIGINTERN PyObject *_wrap_new_Time__SWIG_0(PyObject *SWIGUNUSEDPARM(self), int 
   {
     try {
       result = (cmf::math::Time *)new cmf::math::Time(arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -8799,6 +8944,8 @@ SWIGINTERN PyObject *_wrap_new_Time__SWIG_1(PyObject *SWIGUNUSEDPARM(self), int 
   {
     try {
       result = (cmf::math::Time *)new cmf::math::Time(arg1,arg2,arg3,arg4,arg5,arg6,arg7);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -8835,6 +8982,8 @@ SWIGINTERN PyObject *_wrap_new_Time__SWIG_2(PyObject *SWIGUNUSEDPARM(self), int 
   {
     try {
       result = (cmf::math::Time *)new cmf::math::Time(arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -8866,6 +9015,8 @@ SWIGINTERN PyObject *_wrap_new_Time__SWIG_3(PyObject *SWIGUNUSEDPARM(self), int 
   {
     try {
       result = (cmf::math::Time *)new cmf::math::Time((cmf::math::Time const &)*arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -8888,6 +9039,8 @@ SWIGINTERN PyObject *_wrap_new_Time__SWIG_4(PyObject *SWIGUNUSEDPARM(self), int 
   {
     try {
       result = (cmf::math::Time *)new cmf::math::Time();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -9116,6 +9269,8 @@ SWIGINTERN PyObject *_wrap_Time_AsDays(PyObject *SWIGUNUSEDPARM(self), PyObject 
   {
     try {
       result = (double)((cmf::math::Time const *)arg1)->AsDays();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -9146,6 +9301,8 @@ SWIGINTERN PyObject *_wrap_Time_AsHours(PyObject *SWIGUNUSEDPARM(self), PyObject
   {
     try {
       result = (double)((cmf::math::Time const *)arg1)->AsHours();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -9176,6 +9333,8 @@ SWIGINTERN PyObject *_wrap_Time_AsMinutes(PyObject *SWIGUNUSEDPARM(self), PyObje
   {
     try {
       result = (double)((cmf::math::Time const *)arg1)->AsMinutes();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -9206,6 +9365,8 @@ SWIGINTERN PyObject *_wrap_Time_AsSeconds(PyObject *SWIGUNUSEDPARM(self), PyObje
   {
     try {
       result = (double)((cmf::math::Time const *)arg1)->AsSeconds();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -9236,6 +9397,8 @@ SWIGINTERN PyObject *_wrap_Time_AsMilliseconds(PyObject *SWIGUNUSEDPARM(self), P
   {
     try {
       result = (long long)((cmf::math::Time const *)arg1)->AsMilliseconds();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -9266,6 +9429,8 @@ SWIGINTERN PyObject *_wrap_Time_AsDate(PyObject *SWIGUNUSEDPARM(self), PyObject 
   {
     try {
       result = ((cmf::math::Time const *)arg1)->AsDate();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -9305,6 +9470,8 @@ SWIGINTERN PyObject *_wrap_Time_to_string(PyObject *SWIGUNUSEDPARM(self), PyObje
   {
     try {
       result = (arg1)->to_string(arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -9335,6 +9502,8 @@ SWIGINTERN PyObject *_wrap_Time_is_not_0(PyObject *SWIGUNUSEDPARM(self), PyObjec
   {
     try {
       result = (bool)((cmf::math::Time const *)arg1)->is_not_0();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -9365,6 +9534,8 @@ SWIGINTERN PyObject *_wrap_Time_DOY(PyObject *SWIGUNUSEDPARM(self), PyObject *ar
   {
     try {
       result = (double)((cmf::math::Time const *)arg1)->DOY();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -9405,6 +9576,8 @@ SWIGINTERN PyObject *_wrap_Time___add__(PyObject *SWIGUNUSEDPARM(self), PyObject
   {
     try {
       result = ((cmf::math::Time const *)arg1)->operator +((cmf::math::Time const &)*arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -9447,6 +9620,8 @@ SWIGINTERN PyObject *_wrap_Time___sub__(PyObject *SWIGUNUSEDPARM(self), PyObject
   {
     try {
       result = ((cmf::math::Time const *)arg1)->operator -((cmf::math::Time const &)*arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -9489,6 +9664,8 @@ SWIGINTERN PyObject *_wrap_Time___iadd__(PyObject *SWIGUNUSEDPARM(self), PyObjec
   {
     try {
       result = (arg1)->operator +=((cmf::math::Time const &)*arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -9531,6 +9708,8 @@ SWIGINTERN PyObject *_wrap_Time___isub__(PyObject *SWIGUNUSEDPARM(self), PyObjec
   {
     try {
       result = (arg1)->operator -=((cmf::math::Time const &)*arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -9569,6 +9748,8 @@ SWIGINTERN PyObject *_wrap_Time___mul____SWIG_0(PyObject *SWIGUNUSEDPARM(self), 
   {
     try {
       result = ((cmf::math::Time const *)arg1)->operator *(arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -9605,6 +9786,8 @@ SWIGINTERN PyObject *_wrap_Time___div____SWIG_0(PyObject *SWIGUNUSEDPARM(self), 
   {
     try {
       result = ((cmf::math::Time const *)arg1)->operator /(arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -9645,6 +9828,8 @@ SWIGINTERN PyObject *_wrap_Time___mod__(PyObject *SWIGUNUSEDPARM(self), PyObject
   {
     try {
       result = ((cmf::math::Time const *)arg1)->operator %((cmf::math::Time const &)*arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -9683,6 +9868,8 @@ SWIGINTERN PyObject *_wrap_Time___imul____SWIG_0(PyObject *SWIGUNUSEDPARM(self),
   {
     try {
       result = (cmf::math::Time *) &(arg1)->operator *=(arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -9719,6 +9906,8 @@ SWIGINTERN PyObject *_wrap_Time___idiv____SWIG_0(PyObject *SWIGUNUSEDPARM(self),
   {
     try {
       result = (cmf::math::Time *) &(arg1)->operator /=(arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -9755,6 +9944,8 @@ SWIGINTERN PyObject *_wrap_Time___mul____SWIG_1(PyObject *SWIGUNUSEDPARM(self), 
   {
     try {
       result = ((cmf::math::Time const *)arg1)->operator *(arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -9877,6 +10068,8 @@ SWIGINTERN PyObject *_wrap_Time___div____SWIG_1(PyObject *SWIGUNUSEDPARM(self), 
   {
     try {
       result = ((cmf::math::Time const *)arg1)->operator /(arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -9913,6 +10106,8 @@ SWIGINTERN PyObject *_wrap_Time___imul____SWIG_1(PyObject *SWIGUNUSEDPARM(self),
   {
     try {
       result = (cmf::math::Time *) &(arg1)->operator *=(arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -10038,6 +10233,8 @@ SWIGINTERN PyObject *_wrap_Time___idiv____SWIG_1(PyObject *SWIGUNUSEDPARM(self),
   {
     try {
       result = (cmf::math::Time *) &(arg1)->operator /=(arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -10167,6 +10364,8 @@ SWIGINTERN PyObject *_wrap_Time___imod__(PyObject *SWIGUNUSEDPARM(self), PyObjec
   {
     try {
       result = (cmf::math::Time *) &(arg1)->operator %=((cmf::math::Time const &)*arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -10208,6 +10407,8 @@ SWIGINTERN PyObject *_wrap_Time___div____SWIG_2(PyObject *SWIGUNUSEDPARM(self), 
   {
     try {
       result = (double)((cmf::math::Time const *)arg1)->operator /((cmf::math::Time const &)*arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -10367,6 +10568,8 @@ SWIGINTERN PyObject *_wrap_Time_times_in(PyObject *SWIGUNUSEDPARM(self), PyObjec
   {
     try {
       result = (long long)((cmf::math::Time const *)arg1)->times_in((cmf::math::Time const &)*arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -10409,6 +10612,8 @@ SWIGINTERN PyObject *_wrap_Time___lt__(PyObject *SWIGUNUSEDPARM(self), PyObject 
   {
     try {
       result = (bool)((cmf::math::Time const *)arg1)->operator <((cmf::math::Time const &)*arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -10451,6 +10656,8 @@ SWIGINTERN PyObject *_wrap_Time___gt__(PyObject *SWIGUNUSEDPARM(self), PyObject 
   {
     try {
       result = (bool)((cmf::math::Time const *)arg1)->operator >((cmf::math::Time const &)*arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -10493,6 +10700,8 @@ SWIGINTERN PyObject *_wrap_Time___le__(PyObject *SWIGUNUSEDPARM(self), PyObject 
   {
     try {
       result = (bool)((cmf::math::Time const *)arg1)->operator <=((cmf::math::Time const &)*arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -10535,6 +10744,8 @@ SWIGINTERN PyObject *_wrap_Time___ge__(PyObject *SWIGUNUSEDPARM(self), PyObject 
   {
     try {
       result = (bool)((cmf::math::Time const *)arg1)->operator >=((cmf::math::Time const &)*arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -10577,6 +10788,8 @@ SWIGINTERN PyObject *_wrap_Time___eq__(PyObject *SWIGUNUSEDPARM(self), PyObject 
   {
     try {
       result = (bool)((cmf::math::Time const *)arg1)->operator ==((cmf::math::Time const &)*arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -10619,6 +10832,8 @@ SWIGINTERN PyObject *_wrap_Time___ne__(PyObject *SWIGUNUSEDPARM(self), PyObject 
   {
     try {
       result = (bool)((cmf::math::Time const *)arg1)->operator !=((cmf::math::Time const &)*arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -10652,6 +10867,8 @@ SWIGINTERN PyObject *_wrap_Time_Years(PyObject *SWIGUNUSEDPARM(self), PyObject *
   {
     try {
       result = cmf::math::Time::Years(arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -10683,6 +10900,8 @@ SWIGINTERN PyObject *_wrap_Time_Days(PyObject *SWIGUNUSEDPARM(self), PyObject *a
   {
     try {
       result = cmf::math::Time::Days(arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -10714,6 +10933,8 @@ SWIGINTERN PyObject *_wrap_Time_Hours(PyObject *SWIGUNUSEDPARM(self), PyObject *
   {
     try {
       result = cmf::math::Time::Hours(arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -10745,6 +10966,8 @@ SWIGINTERN PyObject *_wrap_Time_Minutes(PyObject *SWIGUNUSEDPARM(self), PyObject
   {
     try {
       result = cmf::math::Time::Minutes(arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -10776,6 +10999,8 @@ SWIGINTERN PyObject *_wrap_Time_Seconds(PyObject *SWIGUNUSEDPARM(self), PyObject
   {
     try {
       result = cmf::math::Time::Seconds(arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -10807,6 +11032,8 @@ SWIGINTERN PyObject *_wrap_Time_Milliseconds(PyObject *SWIGUNUSEDPARM(self), PyO
   {
     try {
       result = cmf::math::Time::Milliseconds(arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -10836,6 +11063,8 @@ SWIGINTERN PyObject *_wrap_delete_Time(PyObject *SWIGUNUSEDPARM(self), PyObject 
   {
     try {
       delete arg1;
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -10879,6 +11108,8 @@ SWIGINTERN PyObject *_wrap___mul____SWIG_0(PyObject *SWIGUNUSEDPARM(self), int n
   {
     try {
       result = cmf::math::operator *(arg1,arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -10911,6 +11142,8 @@ SWIGINTERN PyObject *_wrap___mul____SWIG_1(PyObject *SWIGUNUSEDPARM(self), int n
   {
     try {
       result = cmf::math::operator *(arg1,arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -10940,6 +11173,8 @@ SWIGINTERN PyObject *_wrap_minimum_t(PyObject *SWIGUNUSEDPARM(self), PyObject *a
   {
     try {
       result = cmf::math::minimum_t(arg1,arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -10969,6 +11204,8 @@ SWIGINTERN PyObject *_wrap_maximum_t(PyObject *SWIGUNUSEDPARM(self), PyObject *a
   {
     try {
       result = cmf::math::maximum_t(arg1,arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -11419,6 +11656,8 @@ SWIGINTERN PyObject *_wrap_new_Date__SWIG_0(PyObject *SWIGUNUSEDPARM(self), int 
   {
     try {
       result = (cmf::math::Date *)new cmf::math::Date(arg1,arg2,arg3,arg4,arg5,arg6,arg7);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -11450,6 +11689,8 @@ SWIGINTERN PyObject *_wrap_new_Date__SWIG_1(PyObject *SWIGUNUSEDPARM(self), int 
   {
     try {
       result = (cmf::math::Date *)new cmf::math::Date((cmf::math::Time const &)*arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -11621,6 +11862,8 @@ SWIGINTERN PyObject *_wrap_Date_ToTime(PyObject *SWIGUNUSEDPARM(self), PyObject 
   {
     try {
       result = (arg1)->ToTime();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -11651,6 +11894,8 @@ SWIGINTERN PyObject *_wrap_Date_DOY(PyObject *SWIGUNUSEDPARM(self), PyObject *ar
   {
     try {
       result = (double)(arg1)->DOY();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -11681,6 +11926,8 @@ SWIGINTERN PyObject *_wrap_Date_to_string(PyObject *SWIGUNUSEDPARM(self), PyObje
   {
     try {
       result = (arg1)->to_string();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -11710,6 +11957,8 @@ SWIGINTERN PyObject *_wrap_delete_Date(PyObject *SWIGUNUSEDPARM(self), PyObject 
   {
     try {
       delete arg1;
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -11863,6 +12112,8 @@ SWIGINTERN PyObject *_wrap_timeseries_interpolationpower(PyObject *SWIGUNUSEDPAR
   {
     try {
       result = (int)((cmf::math::timeseries const *)arg1)->interpolationpower();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -11899,6 +12150,8 @@ SWIGINTERN PyObject *_wrap_timeseries_add(PyObject *SWIGUNUSEDPARM(self), PyObje
   {
     try {
       (arg1)->add(arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -11929,6 +12182,8 @@ SWIGINTERN PyObject *_wrap_timeseries_is_empty(PyObject *SWIGUNUSEDPARM(self), P
   {
     try {
       result = (bool)((cmf::math::timeseries const *)arg1)->is_empty();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -11958,6 +12213,8 @@ SWIGINTERN PyObject *_wrap_timeseries_clear(PyObject *SWIGUNUSEDPARM(self), PyOb
   {
     try {
       (arg1)->clear();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -11988,6 +12245,8 @@ SWIGINTERN PyObject *_wrap_timeseries_adress(PyObject *SWIGUNUSEDPARM(self), PyO
   {
     try {
       result = ((cmf::math::timeseries const *)arg1)->adress();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -12018,6 +12277,8 @@ SWIGINTERN PyObject *_wrap_timeseries_copy(PyObject *SWIGUNUSEDPARM(self), PyObj
   {
     try {
       result = ((cmf::math::timeseries const *)arg1)->copy();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -12048,6 +12309,8 @@ SWIGINTERN PyObject *_wrap_timeseries_size(PyObject *SWIGUNUSEDPARM(self), PyObj
   {
     try {
       result = (int)((cmf::math::timeseries const *)arg1)->size();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -12086,6 +12349,8 @@ SWIGINTERN PyObject *_wrap_new_timeseries__SWIG_0(PyObject *SWIGUNUSEDPARM(self)
   {
     try {
       result = (cmf::math::timeseries *)new cmf::math::timeseries(arg1,arg2,arg3);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -12106,6 +12371,8 @@ SWIGINTERN PyObject *_wrap_new_timeseries__SWIG_1(PyObject *SWIGUNUSEDPARM(self)
   {
     try {
       result = (cmf::math::timeseries *)new cmf::math::timeseries();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -12137,6 +12404,8 @@ SWIGINTERN PyObject *_wrap_new_timeseries__SWIG_2(PyObject *SWIGUNUSEDPARM(self)
   {
     try {
       result = (cmf::math::timeseries *)new cmf::math::timeseries((cmf::math::timeseries const &)*arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -12167,6 +12436,8 @@ SWIGINTERN PyObject *_wrap_new_timeseries__SWIG_3(PyObject *SWIGUNUSEDPARM(self)
   {
     try {
       result = (cmf::math::timeseries *)new cmf::math::timeseries(arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -12329,6 +12600,8 @@ SWIGINTERN PyObject *_wrap_timeseries_get_t(PyObject *SWIGUNUSEDPARM(self), PyOb
   {
     try {
       result = (double)((cmf::math::timeseries const *)arg1)->get_t(arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -12366,6 +12639,8 @@ SWIGINTERN PyObject *_wrap_timeseries_get_i(PyObject *SWIGUNUSEDPARM(self), PyOb
   {
     try {
       result = (double)((cmf::math::timeseries const *)arg1)->get_i(arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -12406,6 +12681,8 @@ SWIGINTERN PyObject *_wrap_timeseries_set_t(PyObject *SWIGUNUSEDPARM(self), PyOb
   {
     try {
       (arg1)->set_t(arg2,arg3);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -12450,6 +12727,8 @@ SWIGINTERN PyObject *_wrap_timeseries_set_i(PyObject *SWIGUNUSEDPARM(self), PyOb
   {
     try {
       (arg1)->set_i(arg2,arg3);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -12492,6 +12771,8 @@ SWIGINTERN PyObject *_wrap_timeseries_get_slice__SWIG_0(PyObject *SWIGUNUSEDPARM
   {
     try {
       result = (arg1)->get_slice(arg2,arg3,arg4);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -12543,6 +12824,8 @@ SWIGINTERN PyObject *_wrap_timeseries_set_slice__SWIG_0(PyObject *SWIGUNUSEDPARM
   {
     try {
       (arg1)->set_slice(arg2,arg3,arg4);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -12597,6 +12880,8 @@ SWIGINTERN PyObject *_wrap_timeseries_get_slice__SWIG_1(PyObject *SWIGUNUSEDPARM
   {
     try {
       result = (arg1)->get_slice(arg2,arg3,arg4);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -12792,6 +13077,8 @@ SWIGINTERN PyObject *_wrap_timeseries_set_slice__SWIG_1(PyObject *SWIGUNUSEDPARM
   {
     try {
       (arg1)->set_slice(arg2,arg3,arg4);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -12963,6 +13250,8 @@ SWIGINTERN PyObject *_wrap_timeseries___iadd____SWIG_0(PyObject *SWIGUNUSEDPARM(
   {
     try {
       result = (cmf::math::timeseries *) &(arg1)->operator +=(arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -12999,6 +13288,8 @@ SWIGINTERN PyObject *_wrap_timeseries___iadd____SWIG_1(PyObject *SWIGUNUSEDPARM(
   {
     try {
       result = (cmf::math::timeseries *) &(arg1)->operator +=(arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -13130,6 +13421,8 @@ SWIGINTERN PyObject *_wrap_timeseries___isub____SWIG_0(PyObject *SWIGUNUSEDPARM(
   {
     try {
       result = (cmf::math::timeseries *) &(arg1)->operator -=(arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -13166,6 +13459,8 @@ SWIGINTERN PyObject *_wrap_timeseries___isub____SWIG_1(PyObject *SWIGUNUSEDPARM(
   {
     try {
       result = (cmf::math::timeseries *) &(arg1)->operator -=(arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -13297,6 +13592,8 @@ SWIGINTERN PyObject *_wrap_timeseries___imul____SWIG_0(PyObject *SWIGUNUSEDPARM(
   {
     try {
       result = (cmf::math::timeseries *) &(arg1)->operator *=(arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -13333,6 +13630,8 @@ SWIGINTERN PyObject *_wrap_timeseries___imul____SWIG_1(PyObject *SWIGUNUSEDPARM(
   {
     try {
       result = (cmf::math::timeseries *) &(arg1)->operator *=(arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -13464,6 +13763,8 @@ SWIGINTERN PyObject *_wrap_timeseries___idiv____SWIG_0(PyObject *SWIGUNUSEDPARM(
   {
     try {
       result = (cmf::math::timeseries *) &(arg1)->operator /=(arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -13500,6 +13801,8 @@ SWIGINTERN PyObject *_wrap_timeseries___idiv____SWIG_1(PyObject *SWIGUNUSEDPARM(
   {
     try {
       result = (cmf::math::timeseries *) &(arg1)->operator /=(arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -13631,6 +13934,8 @@ SWIGINTERN PyObject *_wrap_timeseries___add____SWIG_0(PyObject *SWIGUNUSEDPARM(s
   {
     try {
       result = ((cmf::math::timeseries const *)arg1)->operator +(arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -13675,6 +13980,8 @@ SWIGINTERN PyObject *_wrap_timeseries___sub____SWIG_0(PyObject *SWIGUNUSEDPARM(s
   {
     try {
       result = ((cmf::math::timeseries const *)arg1)->operator -(arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -13719,6 +14026,8 @@ SWIGINTERN PyObject *_wrap_timeseries___mul____SWIG_0(PyObject *SWIGUNUSEDPARM(s
   {
     try {
       result = ((cmf::math::timeseries const *)arg1)->operator *(arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -13763,6 +14072,8 @@ SWIGINTERN PyObject *_wrap_timeseries___div____SWIG_0(PyObject *SWIGUNUSEDPARM(s
   {
     try {
       result = ((cmf::math::timeseries const *)arg1)->operator /(arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -13799,6 +14110,8 @@ SWIGINTERN PyObject *_wrap_timeseries___add____SWIG_1(PyObject *SWIGUNUSEDPARM(s
   {
     try {
       result = ((cmf::math::timeseries const *)arg1)->operator +(arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -13919,6 +14232,8 @@ SWIGINTERN PyObject *_wrap_timeseries___sub____SWIG_1(PyObject *SWIGUNUSEDPARM(s
   {
     try {
       result = ((cmf::math::timeseries const *)arg1)->operator -(arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -14039,6 +14354,8 @@ SWIGINTERN PyObject *_wrap_timeseries___mul____SWIG_1(PyObject *SWIGUNUSEDPARM(s
   {
     try {
       result = ((cmf::math::timeseries const *)arg1)->operator *(arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -14159,6 +14476,8 @@ SWIGINTERN PyObject *_wrap_timeseries___div____SWIG_1(PyObject *SWIGUNUSEDPARM(s
   {
     try {
       result = ((cmf::math::timeseries const *)arg1)->operator /(arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -14273,6 +14592,8 @@ SWIGINTERN PyObject *_wrap_timeseries___neg__(PyObject *SWIGUNUSEDPARM(self), Py
   {
     try {
       result = ((cmf::math::timeseries const *)arg1)->operator -();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -14303,6 +14624,8 @@ SWIGINTERN PyObject *_wrap_timeseries_inv(PyObject *SWIGUNUSEDPARM(self), PyObje
   {
     try {
       result = ((cmf::math::timeseries const *)arg1)->inv();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -14340,6 +14663,8 @@ SWIGINTERN PyObject *_wrap_timeseries_reduce_min(PyObject *SWIGUNUSEDPARM(self),
   {
     try {
       result = ((cmf::math::timeseries const *)arg1)->reduce_min(arg2,arg3);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -14377,6 +14702,8 @@ SWIGINTERN PyObject *_wrap_timeseries_reduce_max(PyObject *SWIGUNUSEDPARM(self),
   {
     try {
       result = ((cmf::math::timeseries const *)arg1)->reduce_max(arg2,arg3);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -14414,6 +14741,8 @@ SWIGINTERN PyObject *_wrap_timeseries_reduce_sum(PyObject *SWIGUNUSEDPARM(self),
   {
     try {
       result = ((cmf::math::timeseries const *)arg1)->reduce_sum(arg2,arg3);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -14451,6 +14780,8 @@ SWIGINTERN PyObject *_wrap_timeseries_reduce_avg(PyObject *SWIGUNUSEDPARM(self),
   {
     try {
       result = ((cmf::math::timeseries const *)arg1)->reduce_avg(arg2,arg3);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -14484,6 +14815,8 @@ SWIGINTERN PyObject *_wrap_timeseries_floating_avg(PyObject *SWIGUNUSEDPARM(self
   {
     try {
       result = ((cmf::math::timeseries const *)arg1)->floating_avg(arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -14517,6 +14850,8 @@ SWIGINTERN PyObject *_wrap_timeseries_floating_max(PyObject *SWIGUNUSEDPARM(self
   {
     try {
       result = ((cmf::math::timeseries const *)arg1)->floating_max(arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -14550,6 +14885,8 @@ SWIGINTERN PyObject *_wrap_timeseries_floating_min(PyObject *SWIGUNUSEDPARM(self
   {
     try {
       result = ((cmf::math::timeseries const *)arg1)->floating_min(arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -14580,6 +14917,8 @@ SWIGINTERN PyObject *_wrap_timeseries_mean(PyObject *SWIGUNUSEDPARM(self), PyObj
   {
     try {
       result = (double)((cmf::math::timeseries const *)arg1)->mean();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -14610,6 +14949,8 @@ SWIGINTERN PyObject *_wrap_timeseries_min(PyObject *SWIGUNUSEDPARM(self), PyObje
   {
     try {
       result = (double)((cmf::math::timeseries const *)arg1)->min();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -14640,6 +14981,8 @@ SWIGINTERN PyObject *_wrap_timeseries_max(PyObject *SWIGUNUSEDPARM(self), PyObje
   {
     try {
       result = (double)((cmf::math::timeseries const *)arg1)->max();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -14670,6 +15013,8 @@ SWIGINTERN PyObject *_wrap_timeseries_log(PyObject *SWIGUNUSEDPARM(self), PyObje
   {
     try {
       result = ((cmf::math::timeseries const *)arg1)->log();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -14700,6 +15045,8 @@ SWIGINTERN PyObject *_wrap_timeseries_log10(PyObject *SWIGUNUSEDPARM(self), PyOb
   {
     try {
       result = ((cmf::math::timeseries const *)arg1)->log10();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -14737,6 +15084,8 @@ SWIGINTERN PyObject *_wrap_timeseries_power(PyObject *SWIGUNUSEDPARM(self), PyOb
   {
     try {
       result = ((cmf::math::timeseries const *)arg1)->power(arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -14767,6 +15116,8 @@ SWIGINTERN PyObject *_wrap_timeseries_exp(PyObject *SWIGUNUSEDPARM(self), PyObje
   {
     try {
       result = ((cmf::math::timeseries const *)arg1)->exp();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -14797,6 +15148,8 @@ SWIGINTERN PyObject *_wrap_timeseries_begin_get(PyObject *SWIGUNUSEDPARM(self), 
   {
     try {
       result = (cmf::math::Time *)cmf_math_timeseries_begin_get(arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -14827,6 +15180,8 @@ SWIGINTERN PyObject *_wrap_timeseries_step_get(PyObject *SWIGUNUSEDPARM(self), P
   {
     try {
       result = (cmf::math::Time *)cmf_math_timeseries_step_get(arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -14857,6 +15212,8 @@ SWIGINTERN PyObject *_wrap_timeseries_end_get(PyObject *SWIGUNUSEDPARM(self), Py
   {
     try {
       result = (cmf::math::Time *)cmf_math_timeseries_end_get(arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -14887,6 +15244,8 @@ SWIGINTERN PyObject *_wrap_timeseries___len__(PyObject *SWIGUNUSEDPARM(self), Py
   {
     try {
       result = (double)cmf_math_timeseries___len__(arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -14916,6 +15275,8 @@ SWIGINTERN PyObject *_wrap_delete_timeseries(PyObject *SWIGUNUSEDPARM(self), PyO
   {
     try {
       delete arg1;
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -14970,6 +15331,8 @@ SWIGINTERN PyObject *_wrap_nash_sutcliff(PyObject *SWIGUNUSEDPARM(self), PyObjec
   {
     try {
       result = (double)cmf::math::nash_sutcliff((cmf::math::timeseries const &)*arg1,(cmf::math::timeseries const &)*arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -15017,6 +15380,8 @@ SWIGINTERN PyObject *_wrap_R2(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   {
     try {
       result = (double)cmf::math::R2((cmf::math::timeseries const &)*arg1,(cmf::math::timeseries const &)*arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -15059,6 +15424,8 @@ SWIGINTERN PyObject *_wrap_new_num_array__SWIG_0(PyObject *SWIGUNUSEDPARM(self),
   {
     try {
       result = (cmf::math::num_array *)new cmf::math::num_array(arg1,arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -15097,6 +15464,8 @@ SWIGINTERN PyObject *_wrap_new_num_array__SWIG_1(PyObject *SWIGUNUSEDPARM(self),
   {
     try {
       result = (cmf::math::num_array *)new cmf::math::num_array(arg1,arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -15117,6 +15486,8 @@ SWIGINTERN PyObject *_wrap_new_num_array__SWIG_2(PyObject *SWIGUNUSEDPARM(self),
   {
     try {
       result = (cmf::math::num_array *)new cmf::math::num_array();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -15148,6 +15519,8 @@ SWIGINTERN PyObject *_wrap_new_num_array__SWIG_3(PyObject *SWIGUNUSEDPARM(self),
   {
     try {
       result = (cmf::math::num_array *)new cmf::math::num_array((cmf::math::num_array const &)*arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -15184,6 +15557,8 @@ SWIGINTERN PyObject *_wrap_new_num_array__SWIG_4(PyObject *SWIGUNUSEDPARM(self),
   {
     try {
       result = (cmf::math::num_array *)new cmf::math::num_array(arg1,arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -15391,6 +15766,8 @@ SWIGINTERN PyObject *_wrap_num_array___set_data_from_adress(PyObject *SWIGUNUSED
   {
     try {
       (arg1)->set_data_from_adress(arg2,arg3);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -15421,6 +15798,8 @@ SWIGINTERN PyObject *_wrap_num_array_adress(PyObject *SWIGUNUSEDPARM(self), PyOb
   {
     try {
       result = ((cmf::math::num_array const *)arg1)->adress();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -15450,6 +15829,8 @@ SWIGINTERN PyObject *_wrap_delete_num_array(PyObject *SWIGUNUSEDPARM(self), PyOb
   {
     try {
       delete arg1;
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -15480,6 +15861,8 @@ SWIGINTERN PyObject *_wrap_num_array_size(PyObject *SWIGUNUSEDPARM(self), PyObje
   {
     try {
       result = (int)((cmf::math::num_array const *)arg1)->size();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -15515,6 +15898,8 @@ SWIGINTERN PyObject *_wrap_num_array_resize__SWIG_0(PyObject *SWIGUNUSEDPARM(sel
   {
     try {
       (arg1)->resize(arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -15550,6 +15935,8 @@ SWIGINTERN PyObject *_wrap_num_array_resize__SWIG_1(PyObject *SWIGUNUSEDPARM(sel
   {
     try {
       (arg1)->resize(arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -15669,6 +16056,8 @@ SWIGINTERN PyObject *_wrap_num_array___neg__(PyObject *SWIGUNUSEDPARM(self), PyO
   {
     try {
       result = ((cmf::math::num_array const *)arg1)->operator -();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -15708,6 +16097,8 @@ SWIGINTERN PyObject *_wrap_num_array_power__SWIG_0(PyObject *SWIGUNUSEDPARM(self
   {
     try {
       result = ((cmf::math::num_array const *)arg1)->power((cmf::math::num_array const &)*arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -15744,6 +16135,8 @@ SWIGINTERN PyObject *_wrap_num_array_power__SWIG_1(PyObject *SWIGUNUSEDPARM(self
   {
     try {
       result = ((cmf::math::num_array const *)arg1)->power(arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -15870,6 +16263,8 @@ SWIGINTERN PyObject *_wrap_num_array___iadd____SWIG_0(PyObject *SWIGUNUSEDPARM(s
   {
     try {
       result = (cmf::math::num_array *) &(arg1)->operator +=((cmf::math::num_array const &)*arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -15906,6 +16301,8 @@ SWIGINTERN PyObject *_wrap_num_array___iadd____SWIG_1(PyObject *SWIGUNUSEDPARM(s
   {
     try {
       result = (cmf::math::num_array *) &(arg1)->operator +=(arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -16032,6 +16429,8 @@ SWIGINTERN PyObject *_wrap_num_array___isub____SWIG_0(PyObject *SWIGUNUSEDPARM(s
   {
     try {
       result = (cmf::math::num_array *) &(arg1)->operator -=((cmf::math::num_array const &)*arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -16068,6 +16467,8 @@ SWIGINTERN PyObject *_wrap_num_array___isub____SWIG_1(PyObject *SWIGUNUSEDPARM(s
   {
     try {
       result = (cmf::math::num_array *) &(arg1)->operator -=(arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -16194,6 +16595,8 @@ SWIGINTERN PyObject *_wrap_num_array___imul____SWIG_0(PyObject *SWIGUNUSEDPARM(s
   {
     try {
       result = (cmf::math::num_array *) &(arg1)->operator *=((cmf::math::num_array const &)*arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -16230,6 +16633,8 @@ SWIGINTERN PyObject *_wrap_num_array___imul____SWIG_1(PyObject *SWIGUNUSEDPARM(s
   {
     try {
       result = (cmf::math::num_array *) &(arg1)->operator *=(arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -16356,6 +16761,8 @@ SWIGINTERN PyObject *_wrap_num_array___idiv____SWIG_0(PyObject *SWIGUNUSEDPARM(s
   {
     try {
       result = (cmf::math::num_array *) &(arg1)->operator /=((cmf::math::num_array const &)*arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -16392,6 +16799,8 @@ SWIGINTERN PyObject *_wrap_num_array___idiv____SWIG_1(PyObject *SWIGUNUSEDPARM(s
   {
     try {
       result = (cmf::math::num_array *) &(arg1)->operator /=(arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -16515,6 +16924,8 @@ SWIGINTERN PyObject *_wrap_num_array_apply(PyObject *SWIGUNUSEDPARM(self), PyObj
   {
     try {
       result = ((cmf::math::num_array const *)arg1)->apply(arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -16555,6 +16966,8 @@ SWIGINTERN PyObject *_wrap_num_array_dot(PyObject *SWIGUNUSEDPARM(self), PyObjec
   {
     try {
       result = (real)((cmf::math::num_array const *)arg1)->dot((cmf::math::num_array const &)*arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -16585,6 +16998,8 @@ SWIGINTERN PyObject *_wrap_num_array_sum(PyObject *SWIGUNUSEDPARM(self), PyObjec
   {
     try {
       result = (real)((cmf::math::num_array const *)arg1)->sum();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -16615,6 +17030,8 @@ SWIGINTERN PyObject *_wrap_num_array_max(PyObject *SWIGUNUSEDPARM(self), PyObjec
   {
     try {
       result = (real)((cmf::math::num_array const *)arg1)->max();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -16645,6 +17062,8 @@ SWIGINTERN PyObject *_wrap_num_array_min(PyObject *SWIGUNUSEDPARM(self), PyObjec
   {
     try {
       result = (real)((cmf::math::num_array const *)arg1)->min();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -16675,6 +17094,8 @@ SWIGINTERN PyObject *_wrap_num_array_mean(PyObject *SWIGUNUSEDPARM(self), PyObje
   {
     try {
       result = (real)((cmf::math::num_array const *)arg1)->mean();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -16714,6 +17135,8 @@ SWIGINTERN PyObject *_wrap_num_array_norm(PyObject *SWIGUNUSEDPARM(self), PyObje
   {
     try {
       result = (real)((cmf::math::num_array const *)arg1)->norm(arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -16753,6 +17176,8 @@ SWIGINTERN PyObject *_wrap_num_array___add____SWIG_0(PyObject *SWIGUNUSEDPARM(se
   {
     try {
       result = (arg1)->operator +((cmf::math::num_array const &)*arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -16792,6 +17217,8 @@ SWIGINTERN PyObject *_wrap_num_array___sub____SWIG_0(PyObject *SWIGUNUSEDPARM(se
   {
     try {
       result = (arg1)->operator -((cmf::math::num_array const &)*arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -16831,6 +17258,8 @@ SWIGINTERN PyObject *_wrap_num_array___mul____SWIG_0(PyObject *SWIGUNUSEDPARM(se
   {
     try {
       result = (arg1)->operator *((cmf::math::num_array const &)*arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -16870,6 +17299,8 @@ SWIGINTERN PyObject *_wrap_num_array___div____SWIG_0(PyObject *SWIGUNUSEDPARM(se
   {
     try {
       result = (arg1)->operator /((cmf::math::num_array const &)*arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -16906,6 +17337,8 @@ SWIGINTERN PyObject *_wrap_num_array___add____SWIG_1(PyObject *SWIGUNUSEDPARM(se
   {
     try {
       result = (arg1)->operator +(arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -17026,6 +17459,8 @@ SWIGINTERN PyObject *_wrap_num_array___sub____SWIG_1(PyObject *SWIGUNUSEDPARM(se
   {
     try {
       result = (arg1)->operator -(arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -17146,6 +17581,8 @@ SWIGINTERN PyObject *_wrap_num_array___mul____SWIG_1(PyObject *SWIGUNUSEDPARM(se
   {
     try {
       result = (arg1)->operator *(arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -17266,6 +17703,8 @@ SWIGINTERN PyObject *_wrap_num_array___div____SWIG_1(PyObject *SWIGUNUSEDPARM(se
   {
     try {
       result = (arg1)->operator /(arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -17387,6 +17826,8 @@ SWIGINTERN PyObject *_wrap_num_array___getitem__(PyObject *SWIGUNUSEDPARM(self),
   {
     try {
       result = (double)cmf_math_num_array___getitem__(arg1,arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -17431,6 +17872,8 @@ SWIGINTERN PyObject *_wrap_num_array___setitem__(PyObject *SWIGUNUSEDPARM(self),
   {
     try {
       cmf_math_num_array___setitem__(arg1,arg2,arg3);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -17461,6 +17904,8 @@ SWIGINTERN PyObject *_wrap_num_array___len__(PyObject *SWIGUNUSEDPARM(self), PyO
   {
     try {
       result = (int)cmf_math_num_array___len__(arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -17498,6 +17943,8 @@ SWIGINTERN PyObject *_wrap_num_array___radd__(PyObject *SWIGUNUSEDPARM(self), Py
   {
     try {
       result = cmf_math_num_array___radd__(arg1,arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -17535,6 +17982,8 @@ SWIGINTERN PyObject *_wrap_num_array___rsub__(PyObject *SWIGUNUSEDPARM(self), Py
   {
     try {
       result = cmf_math_num_array___rsub__(arg1,arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -17572,6 +18021,8 @@ SWIGINTERN PyObject *_wrap_num_array___rmul__(PyObject *SWIGUNUSEDPARM(self), Py
   {
     try {
       result = cmf_math_num_array___rmul__(arg1,arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -17609,6 +18060,8 @@ SWIGINTERN PyObject *_wrap_num_array___rdiv__(PyObject *SWIGUNUSEDPARM(self), Py
   {
     try {
       result = cmf_math_num_array___rdiv__(arg1,arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -17660,6 +18113,8 @@ SWIGINTERN PyObject *_wrap___add__(PyObject *SWIGUNUSEDPARM(self), PyObject *arg
   {
     try {
       result = cmf::math::operator +(arg1,(cmf::math::num_array const &)*arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -17700,6 +18155,8 @@ SWIGINTERN PyObject *_wrap___sub__(PyObject *SWIGUNUSEDPARM(self), PyObject *arg
   {
     try {
       result = cmf::math::operator -(arg1,(cmf::math::num_array const &)*arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -17739,6 +18196,8 @@ SWIGINTERN PyObject *_wrap___mul____SWIG_2(PyObject *SWIGUNUSEDPARM(self), int n
   {
     try {
       result = cmf::math::operator *(arg1,(cmf::math::num_array const &)*arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -17901,6 +18360,8 @@ SWIGINTERN PyObject *_wrap___div__(PyObject *SWIGUNUSEDPARM(self), PyObject *arg
   {
     try {
       result = cmf::math::operator /(arg1,(cmf::math::num_array const &)*arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -17933,6 +18394,8 @@ SWIGINTERN PyObject *_wrap_svVector_iterator(PyObject *SWIGUNUSEDPARM(self), PyO
   {
     try {
       result = (swig::SwigPyIterator *)std_vector_Sl_cmf_math_StateVariable_Sm__Sg__iterator(arg1,arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -17963,6 +18426,8 @@ SWIGINTERN PyObject *_wrap_svVector___nonzero__(PyObject *SWIGUNUSEDPARM(self), 
   {
     try {
       result = (bool)std_vector_Sl_cmf_math_StateVariable_Sm__Sg____nonzero__((std::vector< cmf::math::StateVariable * > const *)arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -17993,6 +18458,8 @@ SWIGINTERN PyObject *_wrap_svVector___bool__(PyObject *SWIGUNUSEDPARM(self), PyO
   {
     try {
       result = (bool)std_vector_Sl_cmf_math_StateVariable_Sm__Sg____bool__((std::vector< cmf::math::StateVariable * > const *)arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -18023,6 +18490,8 @@ SWIGINTERN PyObject *_wrap_svVector___len__(PyObject *SWIGUNUSEDPARM(self), PyOb
   {
     try {
       result = std_vector_Sl_cmf_math_StateVariable_Sm__Sg____len__((std::vector< cmf::math::StateVariable * > const *)arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -18059,6 +18528,8 @@ SWIGINTERN PyObject *_wrap_svVector_pop(PyObject *SWIGUNUSEDPARM(self), PyObject
         SWIG_exception_fail(SWIG_IndexError, (&_e)->what());
       }
       
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -18113,6 +18584,8 @@ SWIGINTERN PyObject *_wrap_svVector___getslice__(PyObject *SWIGUNUSEDPARM(self),
         SWIG_exception_fail(SWIG_IndexError, (&_e)->what());
       }
       
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -18179,6 +18652,8 @@ SWIGINTERN PyObject *_wrap_svVector___setslice__(PyObject *SWIGUNUSEDPARM(self),
         SWIG_exception_fail(SWIG_ValueError, (&_e)->what());
       }
       
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -18231,6 +18706,8 @@ SWIGINTERN PyObject *_wrap_svVector___delslice__(PyObject *SWIGUNUSEDPARM(self),
         SWIG_exception_fail(SWIG_IndexError, (&_e)->what());
       }
       
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -18272,6 +18749,8 @@ SWIGINTERN PyObject *_wrap_svVector___delitem____SWIG_0(PyObject *SWIGUNUSEDPARM
         SWIG_exception_fail(SWIG_IndexError, (&_e)->what());
       }
       
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -18310,6 +18789,8 @@ SWIGINTERN PyObject *_wrap_svVector___getitem____SWIG_0(PyObject *SWIGUNUSEDPARM
         SWIG_exception_fail(SWIG_IndexError, (&_e)->what());
       }
       
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -18363,6 +18844,8 @@ SWIGINTERN PyObject *_wrap_svVector___setitem____SWIG_0(PyObject *SWIGUNUSEDPARM
         SWIG_exception_fail(SWIG_ValueError, (&_e)->what());
       }
       
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -18402,6 +18885,8 @@ SWIGINTERN PyObject *_wrap_svVector___delitem____SWIG_1(PyObject *SWIGUNUSEDPARM
         SWIG_exception_fail(SWIG_IndexError, (&_e)->what());
       }
       
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -18530,6 +19015,8 @@ SWIGINTERN PyObject *_wrap_svVector___getitem____SWIG_1(PyObject *SWIGUNUSEDPARM
         SWIG_exception_fail(SWIG_IndexError, (&_e)->what());
       }
       
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -18680,6 +19167,8 @@ SWIGINTERN PyObject *_wrap_svVector___setitem____SWIG_1(PyObject *SWIGUNUSEDPARM
         SWIG_exception_fail(SWIG_IndexError, (&_e)->what());
       }
       
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -18830,6 +19319,8 @@ SWIGINTERN PyObject *_wrap_svVector_append(PyObject *SWIGUNUSEDPARM(self), PyObj
   {
     try {
       std_vector_Sl_cmf_math_StateVariable_Sm__Sg__append(arg1,arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -18850,6 +19341,8 @@ SWIGINTERN PyObject *_wrap_new_svVector__SWIG_0(PyObject *SWIGUNUSEDPARM(self), 
   {
     try {
       result = (std::vector< cmf::math::StateVariable * > *)new std::vector< cmf::math::StateVariable * >();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -18883,6 +19376,8 @@ SWIGINTERN PyObject *_wrap_new_svVector__SWIG_1(PyObject *SWIGUNUSEDPARM(self), 
   {
     try {
       result = (std::vector< cmf::math::StateVariable * > *)new std::vector< cmf::math::StateVariable * >((std::vector< cmf::math::StateVariable * > const &)*arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -18915,6 +19410,8 @@ SWIGINTERN PyObject *_wrap_svVector_empty(PyObject *SWIGUNUSEDPARM(self), PyObje
   {
     try {
       result = (bool)((std::vector< cmf::math::StateVariable * > const *)arg1)->empty();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -18945,6 +19442,8 @@ SWIGINTERN PyObject *_wrap_svVector_size(PyObject *SWIGUNUSEDPARM(self), PyObjec
   {
     try {
       result = ((std::vector< cmf::math::StateVariable * > const *)arg1)->size();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -18974,6 +19473,8 @@ SWIGINTERN PyObject *_wrap_svVector_clear(PyObject *SWIGUNUSEDPARM(self), PyObje
   {
     try {
       (arg1)->clear();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -19013,6 +19514,8 @@ SWIGINTERN PyObject *_wrap_svVector_swap(PyObject *SWIGUNUSEDPARM(self), PyObjec
   {
     try {
       (arg1)->swap(*arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -19043,6 +19546,8 @@ SWIGINTERN PyObject *_wrap_svVector_get_allocator(PyObject *SWIGUNUSEDPARM(self)
   {
     try {
       result = ((std::vector< cmf::math::StateVariable * > const *)arg1)->get_allocator();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -19073,6 +19578,8 @@ SWIGINTERN PyObject *_wrap_svVector_begin(PyObject *SWIGUNUSEDPARM(self), PyObje
   {
     try {
       result = ((std::vector< cmf::math::StateVariable * > const *)arg1)->begin();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -19104,6 +19611,8 @@ SWIGINTERN PyObject *_wrap_svVector_end(PyObject *SWIGUNUSEDPARM(self), PyObject
   {
     try {
       result = ((std::vector< cmf::math::StateVariable * > const *)arg1)->end();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -19135,6 +19644,8 @@ SWIGINTERN PyObject *_wrap_svVector_rbegin(PyObject *SWIGUNUSEDPARM(self), PyObj
   {
     try {
       result = ((std::vector< cmf::math::StateVariable * > const *)arg1)->rbegin();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -19166,6 +19677,8 @@ SWIGINTERN PyObject *_wrap_svVector_rend(PyObject *SWIGUNUSEDPARM(self), PyObjec
   {
     try {
       result = ((std::vector< cmf::math::StateVariable * > const *)arg1)->rend();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -19195,6 +19708,8 @@ SWIGINTERN PyObject *_wrap_new_svVector__SWIG_2(PyObject *SWIGUNUSEDPARM(self), 
   {
     try {
       result = (std::vector< cmf::math::StateVariable * > *)new std::vector< cmf::math::StateVariable * >(arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -19224,6 +19739,8 @@ SWIGINTERN PyObject *_wrap_svVector_pop_back(PyObject *SWIGUNUSEDPARM(self), PyO
   {
     try {
       (arg1)->pop_back();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -19259,6 +19776,8 @@ SWIGINTERN PyObject *_wrap_svVector_resize__SWIG_0(PyObject *SWIGUNUSEDPARM(self
   {
     try {
       (arg1)->resize(arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -19301,6 +19820,8 @@ SWIGINTERN PyObject *_wrap_svVector_erase__SWIG_0(PyObject *SWIGUNUSEDPARM(self)
   {
     try {
       result = (arg1)->erase(arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -19358,6 +19879,8 @@ SWIGINTERN PyObject *_wrap_svVector_erase__SWIG_1(PyObject *SWIGUNUSEDPARM(self)
   {
     try {
       result = (arg1)->erase(arg2,arg3);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -19501,6 +20024,8 @@ SWIGINTERN PyObject *_wrap_new_svVector__SWIG_3(PyObject *SWIGUNUSEDPARM(self), 
   {
     try {
       result = (std::vector< cmf::math::StateVariable * > *)new std::vector< cmf::math::StateVariable * >(arg1,arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -19662,6 +20187,8 @@ SWIGINTERN PyObject *_wrap_svVector_push_back(PyObject *SWIGUNUSEDPARM(self), Py
   {
     try {
       (arg1)->push_back(arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -19692,6 +20219,8 @@ SWIGINTERN PyObject *_wrap_svVector_front(PyObject *SWIGUNUSEDPARM(self), PyObje
   {
     try {
       result = (std::vector< cmf::math::StateVariable * >::value_type)((std::vector< cmf::math::StateVariable * > const *)arg1)->front();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -19725,6 +20254,8 @@ SWIGINTERN PyObject *_wrap_svVector_back(PyObject *SWIGUNUSEDPARM(self), PyObjec
   {
     try {
       result = (std::vector< cmf::math::StateVariable * >::value_type)((std::vector< cmf::math::StateVariable * > const *)arg1)->back();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -19784,6 +20315,8 @@ SWIGINTERN PyObject *_wrap_svVector_assign(PyObject *SWIGUNUSEDPARM(self), PyObj
   {
     try {
       (arg1)->assign(arg2,arg3);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -19839,6 +20372,8 @@ SWIGINTERN PyObject *_wrap_svVector_resize__SWIG_1(PyObject *SWIGUNUSEDPARM(self
   {
     try {
       (arg1)->resize(arg2,arg3);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -19996,6 +20531,8 @@ SWIGINTERN PyObject *_wrap_svVector_insert__SWIG_0(PyObject *SWIGUNUSEDPARM(self
   {
     try {
       result = (arg1)->insert(arg2,arg3);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -20066,6 +20603,8 @@ SWIGINTERN PyObject *_wrap_svVector_insert__SWIG_1(PyObject *SWIGUNUSEDPARM(self
   {
     try {
       (arg1)->insert(arg2,arg3,arg4);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -20213,6 +20752,8 @@ SWIGINTERN PyObject *_wrap_svVector_reserve(PyObject *SWIGUNUSEDPARM(self), PyOb
   {
     try {
       (arg1)->reserve(arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -20243,6 +20784,8 @@ SWIGINTERN PyObject *_wrap_svVector_capacity(PyObject *SWIGUNUSEDPARM(self), PyO
   {
     try {
       result = ((std::vector< cmf::math::StateVariable * > const *)arg1)->capacity();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -20272,6 +20815,8 @@ SWIGINTERN PyObject *_wrap_delete_svVector(PyObject *SWIGUNUSEDPARM(self), PyObj
   {
     try {
       delete arg1;
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -20335,6 +20880,8 @@ SWIGINTERN PyObject *_wrap_StateVariable_Derivate(PyObject *SWIGUNUSEDPARM(self)
   {
     try {
       result = (real)(arg1)->Derivate((cmf::math::Time const &)*arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -20379,6 +20926,8 @@ SWIGINTERN PyObject *_wrap_StateVariable_StateIsChanged(PyObject *SWIGUNUSEDPARM
   {
     try {
       result = (bool)(arg1)->StateIsChanged();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -20427,6 +20976,8 @@ SWIGINTERN PyObject *_wrap_StateVariable_state_set(PyObject *SWIGUNUSEDPARM(self
   {
     try {
       cmf_math_StateVariable_state_set(arg1,arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -20469,6 +21020,8 @@ SWIGINTERN PyObject *_wrap_StateVariable_state_get(PyObject *SWIGUNUSEDPARM(self
   {
     try {
       result = (real)cmf_math_StateVariable_state_get(arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -20510,6 +21063,8 @@ SWIGINTERN PyObject *_wrap_delete_StateVariable(PyObject *SWIGUNUSEDPARM(self), 
   {
     try {
       (void)arg1; delete smartarg1;
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -20607,6 +21162,8 @@ SWIGINTERN PyObject *_wrap_StateVariableVector_CopyStates__SWIG_0(PyObject *SWIG
   {
     try {
       ((cmf::math::StateVariableVector const *)arg1)->CopyStates(*arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -20642,6 +21199,8 @@ SWIGINTERN PyObject *_wrap_StateVariableVector_CopyStates__SWIG_1(PyObject *SWIG
   {
     try {
       ((cmf::math::StateVariableVector const *)arg1)->CopyStates(arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -20767,6 +21326,8 @@ SWIGINTERN PyObject *_wrap_StateVariableVector_SetStates__SWIG_0(PyObject *SWIGU
   {
     try {
       (arg1)->SetStates((cmf::math::num_array const &)*arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -20802,6 +21363,8 @@ SWIGINTERN PyObject *_wrap_StateVariableVector_SetStates__SWIG_1(PyObject *SWIGU
   {
     try {
       (arg1)->SetStates(arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -20928,6 +21491,8 @@ SWIGINTERN PyObject *_wrap_StateVariableVector___iadd__(PyObject *SWIGUNUSEDPARM
   {
     try {
       result = (cmf::math::StateVariableVector *) &(arg1)->operator +=((cmf::math::num_array const &)*arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -20980,6 +21545,8 @@ SWIGINTERN PyObject *_wrap_StateVariableVector_CopyDerivs__SWIG_0(PyObject *SWIG
   {
     try {
       ((cmf::math::StateVariableVector const *)arg1)->CopyDerivs(arg2,*arg3,arg4);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -21029,6 +21596,8 @@ SWIGINTERN PyObject *_wrap_StateVariableVector_CopyDerivs__SWIG_1(PyObject *SWIG
   {
     try {
       ((cmf::math::StateVariableVector const *)arg1)->CopyDerivs(arg2,arg3,arg4);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -21192,6 +21761,8 @@ SWIGINTERN PyObject *_wrap_StateVariableVector_GetStates(PyObject *SWIGUNUSEDPAR
   {
     try {
       result = ((cmf::math::StateVariableVector const *)arg1)->GetStates();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -21225,6 +21796,8 @@ SWIGINTERN PyObject *_wrap_StateVariableVector_GetDerivs(PyObject *SWIGUNUSEDPAR
   {
     try {
       result = ((cmf::math::StateVariableVector const *)arg1)->GetDerivs(arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -21245,6 +21818,8 @@ SWIGINTERN PyObject *_wrap_new_StateVariableVector(PyObject *SWIGUNUSEDPARM(self
   {
     try {
       result = (cmf::math::StateVariableVector *)new cmf::math::StateVariableVector();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -21274,6 +21849,8 @@ SWIGINTERN PyObject *_wrap_delete_StateVariableVector(PyObject *SWIGUNUSEDPARM(s
   {
     try {
       delete arg1;
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -21324,6 +21901,8 @@ SWIGINTERN PyObject *_wrap_StateVariableOwner_AddStateVariables(PyObject *SWIGUN
   {
     try {
       (arg1)->AddStateVariables(*arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -21353,6 +21932,8 @@ SWIGINTERN PyObject *_wrap_delete_StateVariableOwner(PyObject *SWIGUNUSEDPARM(se
   {
     try {
       delete arg1;
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -21546,6 +22127,8 @@ SWIGINTERN PyObject *_wrap_Integrator_count(PyObject *SWIGUNUSEDPARM(self), PyOb
   {
     try {
       result = (int)((cmf::math::Integrator const *)arg1)->count();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -21582,6 +22165,8 @@ SWIGINTERN PyObject *_wrap_Integrator_state__SWIG_0(PyObject *SWIGUNUSEDPARM(sel
   {
     try {
       result = (real)((cmf::math::Integrator const *)arg1)->state(arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -21625,6 +22210,8 @@ SWIGINTERN PyObject *_wrap_Integrator_state__SWIG_1(PyObject *SWIGUNUSEDPARM(sel
   {
     try {
       (arg1)->state(arg2,arg3);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -21763,6 +22350,8 @@ SWIGINTERN PyObject *_wrap_Integrator_AddStatesFromOwner(PyObject *SWIGUNUSEDPAR
   {
     try {
       (arg1)->AddStatesFromOwner(*arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -21812,6 +22401,8 @@ SWIGINTERN PyObject *_wrap_Integrator_AddState(PyObject *SWIGUNUSEDPARM(self), P
   {
     try {
       (arg1)->AddState(*arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -21840,6 +22431,8 @@ SWIGINTERN PyObject *_wrap_Integrator_ModelTime__SWIG_0(PyObject *SWIGUNUSEDPARM
   {
     try {
       result = ((cmf::math::Integrator const *)arg1)->ModelTime();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -21871,6 +22464,8 @@ SWIGINTERN PyObject *_wrap_Integrator_ModelTime__SWIG_1(PyObject *SWIGUNUSEDPARM
   {
     try {
       (arg1)->ModelTime(arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -21981,6 +22576,8 @@ SWIGINTERN PyObject *_wrap_Integrator_TimeStep(PyObject *SWIGUNUSEDPARM(self), P
   {
     try {
       result = ((cmf::math::Integrator const *)arg1)->TimeStep();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -22009,6 +22606,8 @@ SWIGINTERN PyObject *_wrap_Integrator_NextTimeStep__SWIG_0(PyObject *SWIGUNUSEDP
   {
     try {
       result = ((cmf::math::Integrator const *)arg1)->NextTimeStep();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -22040,6 +22639,8 @@ SWIGINTERN PyObject *_wrap_Integrator_NextTimeStep__SWIG_1(PyObject *SWIGUNUSEDP
   {
     try {
       (arg1)->NextTimeStep(arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -22150,6 +22751,8 @@ SWIGINTERN PyObject *_wrap_Integrator_MinTimestep(PyObject *SWIGUNUSEDPARM(self)
   {
     try {
       result = ((cmf::math::Integrator const *)arg1)->MinTimestep();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -22180,6 +22783,8 @@ SWIGINTERN PyObject *_wrap_Integrator_Iterations(PyObject *SWIGUNUSEDPARM(self),
   {
     try {
       result = (int)((cmf::math::Integrator const *)arg1)->Iterations();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -22209,6 +22814,8 @@ SWIGINTERN PyObject *_wrap_Integrator_ResetIterations(PyObject *SWIGUNUSEDPARM(s
   {
     try {
       (arg1)->ResetIterations();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -22238,6 +22845,8 @@ SWIGINTERN PyObject *_wrap_Integrator_Reset(PyObject *SWIGUNUSEDPARM(self), PyOb
   {
     try {
       (arg1)->Reset();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -22268,6 +22877,8 @@ SWIGINTERN PyObject *_wrap_Integrator_Copy(PyObject *SWIGUNUSEDPARM(self), PyObj
   {
     try {
       result = (cmf::math::Integrator *)((cmf::math::Integrator const *)arg1)->Copy();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -22304,6 +22915,8 @@ SWIGINTERN PyObject *_wrap_Integrator_Integrate__SWIG_0(PyObject *SWIGUNUSEDPARM
   {
     try {
       result = (int)(arg1)->Integrate(arg2,arg3);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -22336,6 +22949,8 @@ SWIGINTERN PyObject *_wrap_Integrator_Integrate__SWIG_1(PyObject *SWIGUNUSEDPARM
   {
     try {
       result = (int)(arg1)->Integrate(arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -22469,6 +23084,8 @@ SWIGINTERN PyObject *_wrap_Integrator_IntegrateUntil__SWIG_0(PyObject *SWIGUNUSE
   {
     try {
       (arg1)->IntegrateUntil(arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -22504,6 +23121,8 @@ SWIGINTERN PyObject *_wrap_Integrator_IntegrateUntil__SWIG_1(PyObject *SWIGUNUSE
   {
     try {
       (arg1)->IntegrateUntil(arg2,arg3);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -22635,6 +23254,8 @@ SWIGINTERN PyObject *_wrap_delete_Integrator(PyObject *SWIGUNUSEDPARM(self), PyO
   {
     try {
       delete arg1;
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -22672,6 +23293,8 @@ SWIGINTERN PyObject *_wrap_BDF2_get_error_position(PyObject *SWIGUNUSEDPARM(self
   {
     try {
       result = (int)((cmf::math::BDF2 const *)arg1)->get_error_position();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -22719,6 +23342,8 @@ SWIGINTERN PyObject *_wrap_new_BDF2__SWIG_0(PyObject *SWIGUNUSEDPARM(self), int 
   {
     try {
       result = (cmf::math::BDF2 *)new cmf::math::BDF2((cmf::math::StateVariableVector const &)*arg1,arg2,arg3);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -22755,6 +23380,8 @@ SWIGINTERN PyObject *_wrap_new_BDF2__SWIG_1(PyObject *SWIGUNUSEDPARM(self), int 
   {
     try {
       result = (cmf::math::BDF2 *)new cmf::math::BDF2(arg1,arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -22802,6 +23429,8 @@ SWIGINTERN PyObject *_wrap_new_BDF2__SWIG_2(PyObject *SWIGUNUSEDPARM(self), int 
   {
     try {
       result = (cmf::math::BDF2 *)new cmf::math::BDF2(*arg1,arg2,arg3);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -22833,6 +23462,8 @@ SWIGINTERN PyObject *_wrap_new_BDF2__SWIG_3(PyObject *SWIGUNUSEDPARM(self), int 
   {
     try {
       result = (cmf::math::BDF2 *)new cmf::math::BDF2((cmf::math::Integrator const &)*arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -23043,6 +23674,8 @@ SWIGINTERN PyObject *_wrap_delete_BDF2(PyObject *SWIGUNUSEDPARM(self), PyObject 
   {
     try {
       delete arg1;
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -23101,6 +23734,8 @@ SWIGINTERN PyObject *_wrap_new_ExplicitEuler_fixed__SWIG_0(PyObject *SWIGUNUSEDP
   {
     try {
       result = (cmf::math::ExplicitEuler_fixed *)new cmf::math::ExplicitEuler_fixed((cmf::math::StateVariableVector const &)*arg1,arg2,arg3);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -23148,6 +23783,8 @@ SWIGINTERN PyObject *_wrap_new_ExplicitEuler_fixed__SWIG_1(PyObject *SWIGUNUSEDP
   {
     try {
       result = (cmf::math::ExplicitEuler_fixed *)new cmf::math::ExplicitEuler_fixed(*arg1,arg2,arg3);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -23184,6 +23821,8 @@ SWIGINTERN PyObject *_wrap_new_ExplicitEuler_fixed__SWIG_2(PyObject *SWIGUNUSEDP
   {
     try {
       result = (cmf::math::ExplicitEuler_fixed *)new cmf::math::ExplicitEuler_fixed(arg1,arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -23215,6 +23854,8 @@ SWIGINTERN PyObject *_wrap_new_ExplicitEuler_fixed__SWIG_3(PyObject *SWIGUNUSEDP
   {
     try {
       result = (cmf::math::ExplicitEuler_fixed *)new cmf::math::ExplicitEuler_fixed((cmf::math::Integrator const &)*arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -23425,6 +24066,8 @@ SWIGINTERN PyObject *_wrap_delete_ExplicitEuler_fixed(PyObject *SWIGUNUSEDPARM(s
   {
     try {
       delete arg1;
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -23527,6 +24170,8 @@ SWIGINTERN PyObject *_wrap_new_PredictCorrectSimple__SWIG_0(PyObject *SWIGUNUSED
   {
     try {
       result = (cmf::math::PredictCorrectSimple *)new cmf::math::PredictCorrectSimple((cmf::math::StateVariableVector const &)*arg1,arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -23566,6 +24211,8 @@ SWIGINTERN PyObject *_wrap_new_PredictCorrectSimple__SWIG_1(PyObject *SWIGUNUSED
   {
     try {
       result = (cmf::math::PredictCorrectSimple *)new cmf::math::PredictCorrectSimple(*arg1,arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -23596,6 +24243,8 @@ SWIGINTERN PyObject *_wrap_new_PredictCorrectSimple__SWIG_2(PyObject *SWIGUNUSED
   {
     try {
       result = (cmf::math::PredictCorrectSimple *)new cmf::math::PredictCorrectSimple(arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -23627,6 +24276,8 @@ SWIGINTERN PyObject *_wrap_new_PredictCorrectSimple__SWIG_3(PyObject *SWIGUNUSED
   {
     try {
       result = (cmf::math::PredictCorrectSimple *)new cmf::math::PredictCorrectSimple((cmf::math::Integrator const &)*arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -23794,6 +24445,8 @@ SWIGINTERN PyObject *_wrap_delete_PredictCorrectSimple(PyObject *SWIGUNUSEDPARM(
   {
     try {
       delete arg1;
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -23852,6 +24505,8 @@ SWIGINTERN PyObject *_wrap_new_ImplicitEuler__SWIG_0(PyObject *SWIGUNUSEDPARM(se
   {
     try {
       result = (cmf::math::ImplicitEuler *)new cmf::math::ImplicitEuler(*arg1,arg2,arg3);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -23888,6 +24543,8 @@ SWIGINTERN PyObject *_wrap_new_ImplicitEuler__SWIG_1(PyObject *SWIGUNUSEDPARM(se
   {
     try {
       result = (cmf::math::ImplicitEuler *)new cmf::math::ImplicitEuler(arg1,arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -23919,6 +24576,8 @@ SWIGINTERN PyObject *_wrap_new_ImplicitEuler__SWIG_2(PyObject *SWIGUNUSEDPARM(se
   {
     try {
       result = (cmf::math::ImplicitEuler *)new cmf::math::ImplicitEuler((cmf::math::Integrator const &)*arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -24081,6 +24740,8 @@ SWIGINTERN PyObject *_wrap_delete_ImplicitEuler(PyObject *SWIGUNUSEDPARM(self), 
   {
     try {
       delete arg1;
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -24139,6 +24800,8 @@ SWIGINTERN PyObject *_wrap_new_RKFIntegrator__SWIG_0(PyObject *SWIGUNUSEDPARM(se
   {
     try {
       result = (cmf::math::RKFIntegrator *)new cmf::math::RKFIntegrator(*arg1,arg2,arg3);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -24175,6 +24838,8 @@ SWIGINTERN PyObject *_wrap_new_RKFIntegrator__SWIG_1(PyObject *SWIGUNUSEDPARM(se
   {
     try {
       result = (cmf::math::RKFIntegrator *)new cmf::math::RKFIntegrator(arg1,arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -24206,6 +24871,8 @@ SWIGINTERN PyObject *_wrap_new_RKFIntegrator__SWIG_2(PyObject *SWIGUNUSEDPARM(se
   {
     try {
       result = (cmf::math::RKFIntegrator *)new cmf::math::RKFIntegrator((cmf::math::Integrator const &)*arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -24368,6 +25035,8 @@ SWIGINTERN PyObject *_wrap_delete_RKFIntegrator(PyObject *SWIGUNUSEDPARM(self), 
   {
     try {
       delete arg1;
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -24877,6 +25546,8 @@ SWIGINTERN PyObject *_wrap_CVodeIntegrator_GetOrder(PyObject *SWIGUNUSEDPARM(sel
   {
     try {
       result = (int)(arg1)->GetOrder();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -24919,6 +25590,8 @@ SWIGINTERN PyObject *_wrap_CVodeIntegrator_ReInit(PyObject *SWIGUNUSEDPARM(self)
   {
     try {
       (arg1)->ReInit(arg2,arg3);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -24948,6 +25621,8 @@ SWIGINTERN PyObject *_wrap_CVodeIntegrator_Initialize(PyObject *SWIGUNUSEDPARM(s
   {
     try {
       (arg1)->Initialize();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -24984,6 +25659,8 @@ SWIGINTERN PyObject *_wrap_new_CVodeIntegrator__SWIG_0(PyObject *SWIGUNUSEDPARM(
   {
     try {
       result = (cmf::math::CVodeIntegrator *)new cmf::math::CVodeIntegrator(arg1,arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -25031,6 +25708,8 @@ SWIGINTERN PyObject *_wrap_new_CVodeIntegrator__SWIG_1(PyObject *SWIGUNUSEDPARM(
   {
     try {
       result = (cmf::math::CVodeIntegrator *)new cmf::math::CVodeIntegrator(*arg1,arg2,arg3);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -25062,6 +25741,8 @@ SWIGINTERN PyObject *_wrap_new_CVodeIntegrator__SWIG_2(PyObject *SWIGUNUSEDPARM(
   {
     try {
       result = (cmf::math::CVodeIntegrator *)new cmf::math::CVodeIntegrator((cmf::math::CVodeIntegrator const &)*arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -25225,6 +25906,8 @@ SWIGINTERN PyObject *_wrap_CVodeIntegrator_Copy(PyObject *SWIGUNUSEDPARM(self), 
   {
     try {
       result = (cmf::math::CVodeIntegrator *)((cmf::math::CVodeIntegrator const *)arg1)->Copy();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -25254,6 +25937,8 @@ SWIGINTERN PyObject *_wrap_delete_CVodeIntegrator(PyObject *SWIGUNUSEDPARM(self)
   {
     try {
       delete arg1;
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -25295,6 +25980,8 @@ SWIGINTERN PyObject *_wrap_MultiIntegrator_Copy(PyObject *SWIGUNUSEDPARM(self), 
   {
     try {
       result = (cmf::math::MultiIntegrator *)((cmf::math::MultiIntegrator const *)arg1)->Copy();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -25342,6 +26029,8 @@ SWIGINTERN PyObject *_wrap_MultiIntegrator_add_states_to_integrator(PyObject *SW
   {
     try {
       (arg1)->add_states_to_integrator(*arg2,arg3);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -25382,6 +26071,8 @@ SWIGINTERN PyObject *_wrap_new_MultiIntegrator(PyObject *SWIGUNUSEDPARM(self), P
   {
     try {
       result = (cmf::math::MultiIntegrator *)new cmf::math::MultiIntegrator((cmf::math::Integrator const &)*arg1,arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -25411,6 +26102,8 @@ SWIGINTERN PyObject *_wrap_delete_MultiIntegrator(PyObject *SWIGUNUSEDPARM(self)
   {
     try {
       delete arg1;
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -25455,6 +26148,8 @@ SWIGINTERN PyObject *_wrap_new_solute(PyObject *SWIGUNUSEDPARM(self), PyObject *
   {
     try {
       result = (cmf::water::solute *)new cmf::water::solute((cmf::water::solute const &)*arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -25495,6 +26190,8 @@ SWIGINTERN PyObject *_wrap_solute___eq__(PyObject *SWIGUNUSEDPARM(self), PyObjec
   {
     try {
       result = (bool)((cmf::water::solute const *)arg1)->operator ==((cmf::water::solute const &)*arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -25535,6 +26232,8 @@ SWIGINTERN PyObject *_wrap_solute___lt__(PyObject *SWIGUNUSEDPARM(self), PyObjec
   {
     try {
       result = (bool)((cmf::water::solute const *)arg1)->operator <((cmf::water::solute const &)*arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -25575,6 +26274,8 @@ SWIGINTERN PyObject *_wrap_solute___gt__(PyObject *SWIGUNUSEDPARM(self), PyObjec
   {
     try {
       result = (bool)((cmf::water::solute const *)arg1)->operator >((cmf::water::solute const &)*arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -25615,6 +26316,8 @@ SWIGINTERN PyObject *_wrap_solute___le__(PyObject *SWIGUNUSEDPARM(self), PyObjec
   {
     try {
       result = (bool)((cmf::water::solute const *)arg1)->operator <=((cmf::water::solute const &)*arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -25655,6 +26358,8 @@ SWIGINTERN PyObject *_wrap_solute___ge__(PyObject *SWIGUNUSEDPARM(self), PyObjec
   {
     try {
       result = (bool)((cmf::water::solute const *)arg1)->operator >=((cmf::water::solute const &)*arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -25695,6 +26400,8 @@ SWIGINTERN PyObject *_wrap_solute___ne__(PyObject *SWIGUNUSEDPARM(self), PyObjec
   {
     try {
       result = (bool)((cmf::water::solute const *)arg1)->operator !=((cmf::water::solute const &)*arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -25918,6 +26625,8 @@ SWIGINTERN PyObject *_wrap_solute___repr__(PyObject *SWIGUNUSEDPARM(self), PyObj
   {
     try {
       result = cmf_water_solute___repr__(arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -25947,6 +26656,8 @@ SWIGINTERN PyObject *_wrap_delete_solute(PyObject *SWIGUNUSEDPARM(self), PyObjec
   {
     try {
       delete arg1;
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -25988,6 +26699,8 @@ SWIGINTERN PyObject *_wrap_solute_vector_size(PyObject *SWIGUNUSEDPARM(self), Py
   {
     try {
       result = ((cmf::water::solute_vector const *)arg1)->size();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -26020,6 +26733,8 @@ SWIGINTERN PyObject *_wrap_new_solute_vector(PyObject *SWIGUNUSEDPARM(self), PyO
   {
     try {
       result = (cmf::water::solute_vector *)new cmf::water::solute_vector(arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -26057,6 +26772,8 @@ SWIGINTERN PyObject *_wrap_solute_vector_get_solute(PyObject *SWIGUNUSEDPARM(sel
   {
     try {
       result = (cmf::water::solute *)(arg1)->get_solute(arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -26094,6 +26811,8 @@ SWIGINTERN PyObject *_wrap_solute_vector___getitem__(PyObject *SWIGUNUSEDPARM(se
   {
     try {
       result = (cmf::water::solute *)cmf_water_solute_vector___getitem__(arg1,arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -26124,6 +26843,8 @@ SWIGINTERN PyObject *_wrap_solute_vector___len__(PyObject *SWIGUNUSEDPARM(self),
   {
     try {
       result = cmf_water_solute_vector___len__(arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -26153,6 +26874,8 @@ SWIGINTERN PyObject *_wrap_delete_solute_vector(PyObject *SWIGUNUSEDPARM(self), 
   {
     try {
       delete arg1;
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -26208,6 +26931,8 @@ SWIGINTERN PyObject *_wrap_SoluteTimeseries_conc(PyObject *SWIGUNUSEDPARM(self),
   {
     try {
       result = (real)((cmf::water::SoluteTimeseries const *)arg1)->conc(arg2,(cmf::water::solute const &)*arg3);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -26238,6 +26963,8 @@ SWIGINTERN PyObject *_wrap_SoluteTimeseries_size(PyObject *SWIGUNUSEDPARM(self),
   {
     try {
       result = ((cmf::water::SoluteTimeseries const *)arg1)->size();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -26258,6 +26985,8 @@ SWIGINTERN PyObject *_wrap_new_SoluteTimeseries__SWIG_0(PyObject *SWIGUNUSEDPARM
   {
     try {
       result = (cmf::water::SoluteTimeseries *)new cmf::water::SoluteTimeseries();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -26297,6 +27026,8 @@ SWIGINTERN PyObject *_wrap_new_SoluteTimeseries__SWIG_1(PyObject *SWIGUNUSEDPARM
   {
     try {
       result = (cmf::water::SoluteTimeseries *)new cmf::water::SoluteTimeseries((cmf::water::solute_vector const &)*arg1,arg2,arg3);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -26328,6 +27059,8 @@ SWIGINTERN PyObject *_wrap_new_SoluteTimeseries__SWIG_2(PyObject *SWIGUNUSEDPARM
   {
     try {
       result = (cmf::water::SoluteTimeseries *)new cmf::water::SoluteTimeseries((cmf::water::SoluteTimeseries const &)*arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -26468,6 +27201,8 @@ SWIGINTERN PyObject *_wrap_SoluteTimeseries___getitem__(PyObject *SWIGUNUSEDPARM
   {
     try {
       result = (cmf::math::timeseries *) &cmf_water_SoluteTimeseries___getitem__(arg1,(cmf::water::solute const &)*arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -26523,6 +27258,8 @@ SWIGINTERN PyObject *_wrap_SoluteTimeseries___setitem__(PyObject *SWIGUNUSEDPARM
   {
     try {
       cmf_water_SoluteTimeseries___setitem__(arg1,(cmf::water::solute const &)*arg2,arg3);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -26553,6 +27290,8 @@ SWIGINTERN PyObject *_wrap_SoluteTimeseries___len__(PyObject *SWIGUNUSEDPARM(sel
   {
     try {
       result = cmf_water_SoluteTimeseries___len__((cmf::water::SoluteTimeseries const *)arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -26582,6 +27321,8 @@ SWIGINTERN PyObject *_wrap_delete_SoluteTimeseries(PyObject *SWIGUNUSEDPARM(self
   {
     try {
       delete arg1;
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -26822,6 +27563,8 @@ SWIGINTERN PyObject *_wrap_SoluteStorage_conc(PyObject *SWIGUNUSEDPARM(self), Py
   {
     try {
       result = (real)((cmf::water::SoluteStorage const *)arg1)->conc();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -26856,6 +27599,8 @@ SWIGINTERN PyObject *_wrap_SoluteStorage_SWIGSharedPtrUpcast(PyObject *SWIGUNUSE
   {
     try {
       result = cmf_water_SoluteStorage_SWIGSharedPtrUpcast(arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -26900,6 +27645,8 @@ SWIGINTERN PyObject *_wrap_delete_SoluteStorage(PyObject *SWIGUNUSEDPARM(self), 
   {
     try {
       (void)arg1; delete smartarg1;
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -26939,6 +27686,8 @@ SWIGINTERN PyObject *_wrap_connection_vector_iterator(PyObject *SWIGUNUSEDPARM(s
   {
     try {
       result = (swig::SwigPyIterator *)std_vector_Sl_cmf_water_flux_connection_Sm__Sg__iterator(arg1,arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -26969,6 +27718,8 @@ SWIGINTERN PyObject *_wrap_connection_vector___nonzero__(PyObject *SWIGUNUSEDPAR
   {
     try {
       result = (bool)std_vector_Sl_cmf_water_flux_connection_Sm__Sg____nonzero__((std::vector< cmf::water::flux_connection * > const *)arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -26999,6 +27750,8 @@ SWIGINTERN PyObject *_wrap_connection_vector___bool__(PyObject *SWIGUNUSEDPARM(s
   {
     try {
       result = (bool)std_vector_Sl_cmf_water_flux_connection_Sm__Sg____bool__((std::vector< cmf::water::flux_connection * > const *)arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -27029,6 +27782,8 @@ SWIGINTERN PyObject *_wrap_connection_vector___len__(PyObject *SWIGUNUSEDPARM(se
   {
     try {
       result = std_vector_Sl_cmf_water_flux_connection_Sm__Sg____len__((std::vector< cmf::water::flux_connection * > const *)arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -27065,6 +27820,8 @@ SWIGINTERN PyObject *_wrap_connection_vector_pop(PyObject *SWIGUNUSEDPARM(self),
         SWIG_exception_fail(SWIG_IndexError, (&_e)->what());
       }
       
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -27116,6 +27873,8 @@ SWIGINTERN PyObject *_wrap_connection_vector___getslice__(PyObject *SWIGUNUSEDPA
         SWIG_exception_fail(SWIG_IndexError, (&_e)->what());
       }
       
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -27182,6 +27941,8 @@ SWIGINTERN PyObject *_wrap_connection_vector___setslice__(PyObject *SWIGUNUSEDPA
         SWIG_exception_fail(SWIG_ValueError, (&_e)->what());
       }
       
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -27234,6 +27995,8 @@ SWIGINTERN PyObject *_wrap_connection_vector___delslice__(PyObject *SWIGUNUSEDPA
         SWIG_exception_fail(SWIG_IndexError, (&_e)->what());
       }
       
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -27275,6 +28038,8 @@ SWIGINTERN PyObject *_wrap_connection_vector___delitem____SWIG_0(PyObject *SWIGU
         SWIG_exception_fail(SWIG_IndexError, (&_e)->what());
       }
       
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -27313,6 +28078,8 @@ SWIGINTERN PyObject *_wrap_connection_vector___getitem____SWIG_0(PyObject *SWIGU
         SWIG_exception_fail(SWIG_IndexError, (&_e)->what());
       }
       
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -27366,6 +28133,8 @@ SWIGINTERN PyObject *_wrap_connection_vector___setitem____SWIG_0(PyObject *SWIGU
         SWIG_exception_fail(SWIG_ValueError, (&_e)->what());
       }
       
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -27405,6 +28174,8 @@ SWIGINTERN PyObject *_wrap_connection_vector___delitem____SWIG_1(PyObject *SWIGU
         SWIG_exception_fail(SWIG_IndexError, (&_e)->what());
       }
       
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -27533,6 +28304,8 @@ SWIGINTERN PyObject *_wrap_connection_vector___getitem____SWIG_1(PyObject *SWIGU
         SWIG_exception_fail(SWIG_IndexError, (&_e)->what());
       }
       
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -27668,6 +28441,8 @@ SWIGINTERN PyObject *_wrap_connection_vector___setitem____SWIG_1(PyObject *SWIGU
         SWIG_exception_fail(SWIG_IndexError, (&_e)->what());
       }
       
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -27807,6 +28582,8 @@ SWIGINTERN PyObject *_wrap_connection_vector_append(PyObject *SWIGUNUSEDPARM(sel
   {
     try {
       std_vector_Sl_cmf_water_flux_connection_Sm__Sg__append(arg1,arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -27827,6 +28604,8 @@ SWIGINTERN PyObject *_wrap_new_connection_vector__SWIG_0(PyObject *SWIGUNUSEDPAR
   {
     try {
       result = (std::vector< cmf::water::flux_connection * > *)new std::vector< cmf::water::flux_connection * >();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -27860,6 +28639,8 @@ SWIGINTERN PyObject *_wrap_new_connection_vector__SWIG_1(PyObject *SWIGUNUSEDPAR
   {
     try {
       result = (std::vector< cmf::water::flux_connection * > *)new std::vector< cmf::water::flux_connection * >((std::vector< cmf::water::flux_connection * > const &)*arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -27892,6 +28673,8 @@ SWIGINTERN PyObject *_wrap_connection_vector_empty(PyObject *SWIGUNUSEDPARM(self
   {
     try {
       result = (bool)((std::vector< cmf::water::flux_connection * > const *)arg1)->empty();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -27922,6 +28705,8 @@ SWIGINTERN PyObject *_wrap_connection_vector_size(PyObject *SWIGUNUSEDPARM(self)
   {
     try {
       result = ((std::vector< cmf::water::flux_connection * > const *)arg1)->size();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -27951,6 +28736,8 @@ SWIGINTERN PyObject *_wrap_connection_vector_clear(PyObject *SWIGUNUSEDPARM(self
   {
     try {
       (arg1)->clear();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -27990,6 +28777,8 @@ SWIGINTERN PyObject *_wrap_connection_vector_swap(PyObject *SWIGUNUSEDPARM(self)
   {
     try {
       (arg1)->swap(*arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -28020,6 +28809,8 @@ SWIGINTERN PyObject *_wrap_connection_vector_get_allocator(PyObject *SWIGUNUSEDP
   {
     try {
       result = ((std::vector< cmf::water::flux_connection * > const *)arg1)->get_allocator();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -28050,6 +28841,8 @@ SWIGINTERN PyObject *_wrap_connection_vector_begin(PyObject *SWIGUNUSEDPARM(self
   {
     try {
       result = ((std::vector< cmf::water::flux_connection * > const *)arg1)->begin();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -28081,6 +28874,8 @@ SWIGINTERN PyObject *_wrap_connection_vector_end(PyObject *SWIGUNUSEDPARM(self),
   {
     try {
       result = ((std::vector< cmf::water::flux_connection * > const *)arg1)->end();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -28112,6 +28907,8 @@ SWIGINTERN PyObject *_wrap_connection_vector_rbegin(PyObject *SWIGUNUSEDPARM(sel
   {
     try {
       result = ((std::vector< cmf::water::flux_connection * > const *)arg1)->rbegin();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -28143,6 +28940,8 @@ SWIGINTERN PyObject *_wrap_connection_vector_rend(PyObject *SWIGUNUSEDPARM(self)
   {
     try {
       result = ((std::vector< cmf::water::flux_connection * > const *)arg1)->rend();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -28172,6 +28971,8 @@ SWIGINTERN PyObject *_wrap_new_connection_vector__SWIG_2(PyObject *SWIGUNUSEDPAR
   {
     try {
       result = (std::vector< cmf::water::flux_connection * > *)new std::vector< cmf::water::flux_connection * >(arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -28201,6 +29002,8 @@ SWIGINTERN PyObject *_wrap_connection_vector_pop_back(PyObject *SWIGUNUSEDPARM(s
   {
     try {
       (arg1)->pop_back();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -28236,6 +29039,8 @@ SWIGINTERN PyObject *_wrap_connection_vector_resize__SWIG_0(PyObject *SWIGUNUSED
   {
     try {
       (arg1)->resize(arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -28278,6 +29083,8 @@ SWIGINTERN PyObject *_wrap_connection_vector_erase__SWIG_0(PyObject *SWIGUNUSEDP
   {
     try {
       result = (arg1)->erase(arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -28335,6 +29142,8 @@ SWIGINTERN PyObject *_wrap_connection_vector_erase__SWIG_1(PyObject *SWIGUNUSEDP
   {
     try {
       result = (arg1)->erase(arg2,arg3);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -28466,6 +29275,8 @@ SWIGINTERN PyObject *_wrap_new_connection_vector__SWIG_3(PyObject *SWIGUNUSEDPAR
   {
     try {
       result = (std::vector< cmf::water::flux_connection * > *)new std::vector< cmf::water::flux_connection * >(arg1,arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -28616,6 +29427,8 @@ SWIGINTERN PyObject *_wrap_connection_vector_push_back(PyObject *SWIGUNUSEDPARM(
   {
     try {
       (arg1)->push_back(arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -28646,6 +29459,8 @@ SWIGINTERN PyObject *_wrap_connection_vector_front(PyObject *SWIGUNUSEDPARM(self
   {
     try {
       result = (std::vector< cmf::water::flux_connection * >::value_type)((std::vector< cmf::water::flux_connection * > const *)arg1)->front();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -28676,6 +29491,8 @@ SWIGINTERN PyObject *_wrap_connection_vector_back(PyObject *SWIGUNUSEDPARM(self)
   {
     try {
       result = (std::vector< cmf::water::flux_connection * >::value_type)((std::vector< cmf::water::flux_connection * > const *)arg1)->back();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -28720,6 +29537,8 @@ SWIGINTERN PyObject *_wrap_connection_vector_assign(PyObject *SWIGUNUSEDPARM(sel
   {
     try {
       (arg1)->assign(arg2,arg3);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -28763,6 +29582,8 @@ SWIGINTERN PyObject *_wrap_connection_vector_resize__SWIG_1(PyObject *SWIGUNUSED
   {
     try {
       (arg1)->resize(arg2,arg3);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -28909,6 +29730,8 @@ SWIGINTERN PyObject *_wrap_connection_vector_insert__SWIG_0(PyObject *SWIGUNUSED
   {
     try {
       result = (arg1)->insert(arg2,arg3);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -28967,6 +29790,8 @@ SWIGINTERN PyObject *_wrap_connection_vector_insert__SWIG_1(PyObject *SWIGUNUSED
   {
     try {
       (arg1)->insert(arg2,arg3,arg4);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -29116,6 +29941,8 @@ SWIGINTERN PyObject *_wrap_connection_vector_reserve(PyObject *SWIGUNUSEDPARM(se
   {
     try {
       (arg1)->reserve(arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -29146,6 +29973,8 @@ SWIGINTERN PyObject *_wrap_connection_vector_capacity(PyObject *SWIGUNUSEDPARM(s
   {
     try {
       result = ((std::vector< cmf::water::flux_connection * > const *)arg1)->capacity();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -29175,6 +30004,8 @@ SWIGINTERN PyObject *_wrap_delete_connection_vector(PyObject *SWIGUNUSEDPARM(sel
   {
     try {
       delete arg1;
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -29217,6 +30048,8 @@ SWIGINTERN PyObject *_wrap_new_connection_set__SWIG_0(PyObject *SWIGUNUSEDPARM(s
   {
     try {
       result = (std::set< cmf::water::flux_connection * > *)new std::set< cmf::water::flux_connection * >((std::less< cmf::water::flux_connection * > const &)*arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -29249,6 +30082,8 @@ SWIGINTERN PyObject *_wrap_connection_set_iterator(PyObject *SWIGUNUSEDPARM(self
   {
     try {
       result = (swig::SwigPyIterator *)std_set_Sl_cmf_water_flux_connection_Sm__Sg__iterator(arg1,arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -29279,6 +30114,8 @@ SWIGINTERN PyObject *_wrap_connection_set___nonzero__(PyObject *SWIGUNUSEDPARM(s
   {
     try {
       result = (bool)std_set_Sl_cmf_water_flux_connection_Sm__Sg____nonzero__((std::set< cmf::water::flux_connection * > const *)arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -29309,6 +30146,8 @@ SWIGINTERN PyObject *_wrap_connection_set___bool__(PyObject *SWIGUNUSEDPARM(self
   {
     try {
       result = (bool)std_set_Sl_cmf_water_flux_connection_Sm__Sg____bool__((std::set< cmf::water::flux_connection * > const *)arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -29339,6 +30178,8 @@ SWIGINTERN PyObject *_wrap_connection_set___len__(PyObject *SWIGUNUSEDPARM(self)
   {
     try {
       result = std_set_Sl_cmf_water_flux_connection_Sm__Sg____len__((std::set< cmf::water::flux_connection * > const *)arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -29375,6 +30216,8 @@ SWIGINTERN PyObject *_wrap_connection_set_append(PyObject *SWIGUNUSEDPARM(self),
   {
     try {
       std_set_Sl_cmf_water_flux_connection_Sm__Sg__append(arg1,arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -29412,6 +30255,8 @@ SWIGINTERN PyObject *_wrap_connection_set___contains__(PyObject *SWIGUNUSEDPARM(
   {
     try {
       result = (bool)std_set_Sl_cmf_water_flux_connection_Sm__Sg____contains__(arg1,arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -29455,6 +30300,8 @@ SWIGINTERN PyObject *_wrap_connection_set___getitem__(PyObject *SWIGUNUSEDPARM(s
         SWIG_exception_fail(SWIG_IndexError, (&_e)->what());
       }
       
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -29475,6 +30322,8 @@ SWIGINTERN PyObject *_wrap_new_connection_set__SWIG_1(PyObject *SWIGUNUSEDPARM(s
   {
     try {
       result = (std::set< cmf::water::flux_connection * > *)new std::set< cmf::water::flux_connection * >();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -29508,6 +30357,8 @@ SWIGINTERN PyObject *_wrap_new_connection_set__SWIG_2(PyObject *SWIGUNUSEDPARM(s
   {
     try {
       result = (std::set< cmf::water::flux_connection * > *)new std::set< cmf::water::flux_connection * >((std::set< cmf::water::flux_connection * > const &)*arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -29618,6 +30469,8 @@ SWIGINTERN PyObject *_wrap_connection_set_empty(PyObject *SWIGUNUSEDPARM(self), 
   {
     try {
       result = (bool)((std::set< cmf::water::flux_connection * > const *)arg1)->empty();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -29648,6 +30501,8 @@ SWIGINTERN PyObject *_wrap_connection_set_size(PyObject *SWIGUNUSEDPARM(self), P
   {
     try {
       result = ((std::set< cmf::water::flux_connection * > const *)arg1)->size();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -29677,6 +30532,8 @@ SWIGINTERN PyObject *_wrap_connection_set_clear(PyObject *SWIGUNUSEDPARM(self), 
   {
     try {
       (arg1)->clear();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -29716,6 +30573,8 @@ SWIGINTERN PyObject *_wrap_connection_set_swap(PyObject *SWIGUNUSEDPARM(self), P
   {
     try {
       (arg1)->swap(*arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -29754,6 +30613,8 @@ SWIGINTERN PyObject *_wrap_connection_set_erase__SWIG_0(PyObject *SWIGUNUSEDPARM
   {
     try {
       result = (arg1)->erase((std::set< cmf::water::flux_connection * >::key_type const &)*arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -29793,6 +30654,8 @@ SWIGINTERN PyObject *_wrap_connection_set_count(PyObject *SWIGUNUSEDPARM(self), 
   {
     try {
       result = ((std::set< cmf::water::flux_connection * > const *)arg1)->count((std::set< cmf::water::flux_connection * >::key_type const &)*arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -29823,6 +30686,8 @@ SWIGINTERN PyObject *_wrap_connection_set_begin(PyObject *SWIGUNUSEDPARM(self), 
   {
     try {
       result = (arg1)->begin();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -29854,6 +30719,8 @@ SWIGINTERN PyObject *_wrap_connection_set_end(PyObject *SWIGUNUSEDPARM(self), Py
   {
     try {
       result = (arg1)->end();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -29885,6 +30752,8 @@ SWIGINTERN PyObject *_wrap_connection_set_rbegin(PyObject *SWIGUNUSEDPARM(self),
   {
     try {
       result = (arg1)->rbegin();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -29916,6 +30785,8 @@ SWIGINTERN PyObject *_wrap_connection_set_rend(PyObject *SWIGUNUSEDPARM(self), P
   {
     try {
       result = (arg1)->rend();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -29958,6 +30829,8 @@ SWIGINTERN PyObject *_wrap_connection_set_erase__SWIG_1(PyObject *SWIGUNUSEDPARM
   {
     try {
       (arg1)->erase(arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -30013,6 +30886,8 @@ SWIGINTERN PyObject *_wrap_connection_set_erase__SWIG_2(PyObject *SWIGUNUSEDPARM
   {
     try {
       (arg1)->erase(arg2,arg3);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -30178,6 +31053,8 @@ SWIGINTERN PyObject *_wrap_connection_set_find(PyObject *SWIGUNUSEDPARM(self), P
   {
     try {
       result = (arg1)->find((std::set< cmf::water::flux_connection * >::key_type const &)*arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -30218,6 +31095,8 @@ SWIGINTERN PyObject *_wrap_connection_set_lower_bound(PyObject *SWIGUNUSEDPARM(s
   {
     try {
       result = (arg1)->lower_bound((std::set< cmf::water::flux_connection * >::key_type const &)*arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -30258,6 +31137,8 @@ SWIGINTERN PyObject *_wrap_connection_set_upper_bound(PyObject *SWIGUNUSEDPARM(s
   {
     try {
       result = (arg1)->upper_bound((std::set< cmf::water::flux_connection * >::key_type const &)*arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -30298,6 +31179,8 @@ SWIGINTERN PyObject *_wrap_connection_set_equal_range(PyObject *SWIGUNUSEDPARM(s
   {
     try {
       result = (arg1)->equal_range((std::set< cmf::water::flux_connection * >::key_type const &)*arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -30341,6 +31224,8 @@ SWIGINTERN PyObject *_wrap_connection_set_insert(PyObject *SWIGUNUSEDPARM(self),
   {
     try {
       result = (arg1)->insert((std::set< cmf::water::flux_connection * >::value_type const &)*arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -30373,6 +31258,8 @@ SWIGINTERN PyObject *_wrap_delete_connection_set(PyObject *SWIGUNUSEDPARM(self),
   {
     try {
       delete arg1;
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -30426,6 +31313,8 @@ SWIGINTERN PyObject *_wrap_flux_node_project(PyObject *SWIGUNUSEDPARM(self), PyO
   {
     try {
       result = (cmf::project *) &((cmf::water::flux_node const *)arg1)->project();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -30503,6 +31392,8 @@ SWIGINTERN PyObject *_wrap_flux_node_is_storage(PyObject *SWIGUNUSEDPARM(self), 
   {
     try {
       result = (bool)((cmf::water::flux_node const *)arg1)->is_storage();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -30628,6 +31519,8 @@ SWIGINTERN PyObject *_wrap_flux_node_to_string(PyObject *SWIGUNUSEDPARM(self), P
   {
     try {
       result = ((cmf::water::flux_node const *)arg1)->to_string();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -30669,6 +31562,8 @@ SWIGINTERN PyObject *_wrap_delete_flux_node(PyObject *SWIGUNUSEDPARM(self), PyOb
   {
     try {
       (void)arg1; delete smartarg1;
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -30731,6 +31626,8 @@ SWIGINTERN PyObject *_wrap_flux_node___eq__(PyObject *SWIGUNUSEDPARM(self), PyOb
   {
     try {
       result = (bool)((cmf::water::flux_node const *)arg1)->operator ==((cmf::water::flux_node const &)*arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -30776,6 +31673,8 @@ SWIGINTERN PyObject *_wrap_flux_node_RecalcFluxes(PyObject *SWIGUNUSEDPARM(self)
   {
     try {
       result = (bool)(arg1)->RecalcFluxes(arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -30838,6 +31737,8 @@ SWIGINTERN PyObject *_wrap_flux_node_get_connection(PyObject *SWIGUNUSEDPARM(sel
   {
     try {
       result = (cmf::water::flux_connection *)(arg1)->get_connection((cmf::water::flux_node const &)*arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -30891,6 +31792,8 @@ SWIGINTERN PyObject *_wrap_flux_node_remove_connection(PyObject *SWIGUNUSEDPARM(
   {
     try {
       result = (bool)(arg1)->remove_connection(arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -30957,6 +31860,8 @@ SWIGINTERN PyObject *_wrap_flux_node_flux_to(PyObject *SWIGUNUSEDPARM(self), PyO
   {
     try {
       result = (real)(arg1)->flux_to((cmf::water::flux_node const &)*arg2,arg3);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -31023,6 +31928,8 @@ SWIGINTERN PyObject *_wrap_flux_node_flux3d_to(PyObject *SWIGUNUSEDPARM(self), P
   {
     try {
       result = (arg1)->flux3d_to((cmf::water::flux_node const &)*arg2,arg3);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -31068,6 +31975,8 @@ SWIGINTERN PyObject *_wrap_flux_node_get_3d_flux(PyObject *SWIGUNUSEDPARM(self),
   {
     try {
       result = (arg1)->get_3d_flux(arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -31123,6 +32032,8 @@ SWIGINTERN PyObject *_wrap_flux_node_water_balance(PyObject *SWIGUNUSEDPARM(self
   {
     try {
       result = (real)((cmf::water::flux_node const *)arg1)->water_balance(arg2,(cmf::water::flux_connection const *)arg3);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -31179,6 +32090,8 @@ SWIGINTERN PyObject *_wrap_flux_node_conc(PyObject *SWIGUNUSEDPARM(self), PyObje
   {
     try {
       result = (real)((cmf::water::flux_node const *)arg1)->conc(arg2,(cmf::water::solute const &)*arg3);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -31297,6 +32210,8 @@ SWIGINTERN PyObject *_wrap_flux_node_is_empty(PyObject *SWIGUNUSEDPARM(self), Py
   {
     try {
       result = (bool)((cmf::water::flux_node const *)arg1)->is_empty();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -31340,6 +32255,8 @@ SWIGINTERN PyObject *_wrap_new_flux_node(PyObject *SWIGUNUSEDPARM(self), PyObjec
   {
     try {
       result = (cmf::water::flux_node *)new cmf::water::flux_node((cmf::project const &)*arg1,arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -31391,6 +32308,8 @@ SWIGINTERN PyObject *_wrap_flux_node_potential_set(PyObject *SWIGUNUSEDPARM(self
   {
     try {
       cmf_water_flux_node_potential_set(arg1,arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -31433,6 +32352,8 @@ SWIGINTERN PyObject *_wrap_flux_node_potential_get(PyObject *SWIGUNUSEDPARM(self
   {
     try {
       result = (real)cmf_water_flux_node_potential_get(arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -31475,6 +32396,8 @@ SWIGINTERN PyObject *_wrap_flux_node_connections_get(PyObject *SWIGUNUSEDPARM(se
   {
     try {
       result = (cmf::water::connection_vector *)cmf_water_flux_node_connections_get(arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -31520,6 +32443,8 @@ SWIGINTERN PyObject *_wrap_count_node_references(PyObject *SWIGUNUSEDPARM(self),
   {
     try {
       result = (int)cmf::water::count_node_references(arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -31565,6 +32490,8 @@ SWIGINTERN PyObject *_wrap_get_higher_node(PyObject *SWIGUNUSEDPARM(self), PyObj
   {
     try {
       result = cmf::water::get_higher_node(arg1,arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -31613,6 +32540,8 @@ SWIGINTERN PyObject *_wrap_get_lower_node(PyObject *SWIGUNUSEDPARM(self), PyObje
   {
     try {
       result = cmf::water::get_lower_node(arg1,arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -31646,6 +32575,8 @@ SWIGINTERN PyObject *_wrap_flux_connection_left_node(PyObject *SWIGUNUSEDPARM(se
   {
     try {
       result = ((cmf::water::flux_connection const *)arg1)->left_node();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -31679,6 +32610,8 @@ SWIGINTERN PyObject *_wrap_flux_connection_right_node(PyObject *SWIGUNUSEDPARM(s
   {
     try {
       result = ((cmf::water::flux_connection const *)arg1)->right_node();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -31712,6 +32645,8 @@ SWIGINTERN PyObject *_wrap_flux_connection_kill_me(PyObject *SWIGUNUSEDPARM(self
   {
     try {
       result = (bool)(arg1)->kill_me();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -31775,6 +32710,8 @@ SWIGINTERN PyObject *_wrap_flux_connection___eq__(PyObject *SWIGUNUSEDPARM(self)
   {
     try {
       result = (bool)(arg1)->operator ==((cmf::water::flux_connection const &)*arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -31824,6 +32761,8 @@ SWIGINTERN PyObject *_wrap_flux_connection_get_target__SWIG_0(PyObject *SWIGUNUS
   {
     try {
       result = (arg1)->get_target((cmf::water::flux_node const &)*arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -31831,7 +32770,7 @@ SWIGINTERN PyObject *_wrap_flux_connection_get_target__SWIG_0(PyObject *SWIGUNUS
   }
   {
     int dcast = 0;
-    /*@SWIG:C:\\Program Files\\pythonxy\\swig\\Lib\\typemaps\\swigmacros.swg,200,%formacro@*//*@SWIG:C:\\Program Files\\pythonxy\\swig\\Lib\\typemaps\\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf.i,131,%_node_down_cast@*/
+    /*@SWIG:C:\\Program Files\\pythonxy\\swig\\Lib\\typemaps\\swigmacros.swg,200,%formacro@*//*@SWIG:C:\\Program Files\\pythonxy\\swig\\Lib\\typemaps\\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf.i,133,%_node_down_cast@*/
     if (dcast==0 && result) /*check for cmf::atmosphere::RainCloud*/  {
       std::tr1::shared_ptr<cmf::atmosphere::RainCloud> output = std::tr1::dynamic_pointer_cast<cmf::atmosphere::RainCloud>(result);
       if (output) /*flux_node is cmf::atmosphere::RainCloud */ {
@@ -31841,7 +32780,7 @@ SWIGINTERN PyObject *_wrap_flux_connection_get_target__SWIG_0(PyObject *SWIGUNUS
     }
     /*@SWIG@*/
     
-    /*@SWIG:C:\\Program Files\\pythonxy\\swig\\Lib\\typemaps\\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf.i,131,%_node_down_cast@*/
+    /*@SWIG:C:\\Program Files\\pythonxy\\swig\\Lib\\typemaps\\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf.i,133,%_node_down_cast@*/
     if (dcast==0 && result) /*check for cmf::water::DricheletBoundary*/  {
       std::tr1::shared_ptr<cmf::water::DricheletBoundary> output = std::tr1::dynamic_pointer_cast<cmf::water::DricheletBoundary>(result);
       if (output) /*flux_node is cmf::water::DricheletBoundary */ {
@@ -31851,7 +32790,7 @@ SWIGINTERN PyObject *_wrap_flux_connection_get_target__SWIG_0(PyObject *SWIGUNUS
     }
     /*@SWIG@*/
     
-    /*@SWIG:C:\\Program Files\\pythonxy\\swig\\Lib\\typemaps\\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf.i,131,%_node_down_cast@*/
+    /*@SWIG:C:\\Program Files\\pythonxy\\swig\\Lib\\typemaps\\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf.i,133,%_node_down_cast@*/
     if (dcast==0 && result) /*check for cmf::water::NeumannBoundary*/  {
       std::tr1::shared_ptr<cmf::water::NeumannBoundary> output = std::tr1::dynamic_pointer_cast<cmf::water::NeumannBoundary>(result);
       if (output) /*flux_node is cmf::water::NeumannBoundary */ {
@@ -31861,7 +32800,7 @@ SWIGINTERN PyObject *_wrap_flux_connection_get_target__SWIG_0(PyObject *SWIGUNUS
     }
     /*@SWIG@*/
     
-    /*@SWIG:C:\\Program Files\\pythonxy\\swig\\Lib\\typemaps\\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf.i,131,%_node_down_cast@*/
+    /*@SWIG:C:\\Program Files\\pythonxy\\swig\\Lib\\typemaps\\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf.i,133,%_node_down_cast@*/
     if (dcast==0 && result) /*check for cmf::upslope::SoilLayer*/  {
       std::tr1::shared_ptr<cmf::upslope::SoilLayer> output = std::tr1::dynamic_pointer_cast<cmf::upslope::SoilLayer>(result);
       if (output) /*flux_node is cmf::upslope::SoilLayer */ {
@@ -31871,7 +32810,7 @@ SWIGINTERN PyObject *_wrap_flux_connection_get_target__SWIG_0(PyObject *SWIGUNUS
     }
     /*@SWIG@*/
     
-    /*@SWIG:C:\\Program Files\\pythonxy\\swig\\Lib\\typemaps\\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf.i,131,%_node_down_cast@*/
+    /*@SWIG:C:\\Program Files\\pythonxy\\swig\\Lib\\typemaps\\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf.i,133,%_node_down_cast@*/
     if (dcast==0 && result) /*check for cmf::river::Reach*/  {
       std::tr1::shared_ptr<cmf::river::Reach> output = std::tr1::dynamic_pointer_cast<cmf::river::Reach>(result);
       if (output) /*flux_node is cmf::river::Reach */ {
@@ -31881,7 +32820,7 @@ SWIGINTERN PyObject *_wrap_flux_connection_get_target__SWIG_0(PyObject *SWIGUNUS
     }
     /*@SWIG@*/
     
-    /*@SWIG:C:\\Program Files\\pythonxy\\swig\\Lib\\typemaps\\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf.i,131,%_node_down_cast@*/
+    /*@SWIG:C:\\Program Files\\pythonxy\\swig\\Lib\\typemaps\\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf.i,133,%_node_down_cast@*/
     if (dcast==0 && result) /*check for cmf::river::OpenWaterStorage*/  {
       std::tr1::shared_ptr<cmf::river::OpenWaterStorage> output = std::tr1::dynamic_pointer_cast<cmf::river::OpenWaterStorage>(result);
       if (output) /*flux_node is cmf::river::OpenWaterStorage */ {
@@ -31891,7 +32830,7 @@ SWIGINTERN PyObject *_wrap_flux_connection_get_target__SWIG_0(PyObject *SWIGUNUS
     }
     /*@SWIG@*/
     
-    /*@SWIG:C:\\Program Files\\pythonxy\\swig\\Lib\\typemaps\\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf.i,131,%_node_down_cast@*/
+    /*@SWIG:C:\\Program Files\\pythonxy\\swig\\Lib\\typemaps\\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf.i,133,%_node_down_cast@*/
     if (dcast==0 && result) /*check for cmf::water::WaterStorage*/  {
       std::tr1::shared_ptr<cmf::water::WaterStorage> output = std::tr1::dynamic_pointer_cast<cmf::water::WaterStorage>(result);
       if (output) /*flux_node is cmf::water::WaterStorage */ {
@@ -31948,6 +32887,8 @@ SWIGINTERN PyObject *_wrap_flux_connection_get_target__SWIG_1(PyObject *SWIGUNUS
   {
     try {
       result = ((cmf::water::flux_connection const *)arg1)->get_target(arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -31955,7 +32896,7 @@ SWIGINTERN PyObject *_wrap_flux_connection_get_target__SWIG_1(PyObject *SWIGUNUS
   }
   {
     int dcast = 0;
-    /*@SWIG:C:\\Program Files\\pythonxy\\swig\\Lib\\typemaps\\swigmacros.swg,200,%formacro@*//*@SWIG:C:\\Program Files\\pythonxy\\swig\\Lib\\typemaps\\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf.i,131,%_node_down_cast@*/
+    /*@SWIG:C:\\Program Files\\pythonxy\\swig\\Lib\\typemaps\\swigmacros.swg,200,%formacro@*//*@SWIG:C:\\Program Files\\pythonxy\\swig\\Lib\\typemaps\\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf.i,133,%_node_down_cast@*/
     if (dcast==0 && result) /*check for cmf::atmosphere::RainCloud*/  {
       std::tr1::shared_ptr<cmf::atmosphere::RainCloud> output = std::tr1::dynamic_pointer_cast<cmf::atmosphere::RainCloud>(result);
       if (output) /*flux_node is cmf::atmosphere::RainCloud */ {
@@ -31965,7 +32906,7 @@ SWIGINTERN PyObject *_wrap_flux_connection_get_target__SWIG_1(PyObject *SWIGUNUS
     }
     /*@SWIG@*/
     
-    /*@SWIG:C:\\Program Files\\pythonxy\\swig\\Lib\\typemaps\\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf.i,131,%_node_down_cast@*/
+    /*@SWIG:C:\\Program Files\\pythonxy\\swig\\Lib\\typemaps\\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf.i,133,%_node_down_cast@*/
     if (dcast==0 && result) /*check for cmf::water::DricheletBoundary*/  {
       std::tr1::shared_ptr<cmf::water::DricheletBoundary> output = std::tr1::dynamic_pointer_cast<cmf::water::DricheletBoundary>(result);
       if (output) /*flux_node is cmf::water::DricheletBoundary */ {
@@ -31975,7 +32916,7 @@ SWIGINTERN PyObject *_wrap_flux_connection_get_target__SWIG_1(PyObject *SWIGUNUS
     }
     /*@SWIG@*/
     
-    /*@SWIG:C:\\Program Files\\pythonxy\\swig\\Lib\\typemaps\\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf.i,131,%_node_down_cast@*/
+    /*@SWIG:C:\\Program Files\\pythonxy\\swig\\Lib\\typemaps\\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf.i,133,%_node_down_cast@*/
     if (dcast==0 && result) /*check for cmf::water::NeumannBoundary*/  {
       std::tr1::shared_ptr<cmf::water::NeumannBoundary> output = std::tr1::dynamic_pointer_cast<cmf::water::NeumannBoundary>(result);
       if (output) /*flux_node is cmf::water::NeumannBoundary */ {
@@ -31985,7 +32926,7 @@ SWIGINTERN PyObject *_wrap_flux_connection_get_target__SWIG_1(PyObject *SWIGUNUS
     }
     /*@SWIG@*/
     
-    /*@SWIG:C:\\Program Files\\pythonxy\\swig\\Lib\\typemaps\\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf.i,131,%_node_down_cast@*/
+    /*@SWIG:C:\\Program Files\\pythonxy\\swig\\Lib\\typemaps\\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf.i,133,%_node_down_cast@*/
     if (dcast==0 && result) /*check for cmf::upslope::SoilLayer*/  {
       std::tr1::shared_ptr<cmf::upslope::SoilLayer> output = std::tr1::dynamic_pointer_cast<cmf::upslope::SoilLayer>(result);
       if (output) /*flux_node is cmf::upslope::SoilLayer */ {
@@ -31995,7 +32936,7 @@ SWIGINTERN PyObject *_wrap_flux_connection_get_target__SWIG_1(PyObject *SWIGUNUS
     }
     /*@SWIG@*/
     
-    /*@SWIG:C:\\Program Files\\pythonxy\\swig\\Lib\\typemaps\\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf.i,131,%_node_down_cast@*/
+    /*@SWIG:C:\\Program Files\\pythonxy\\swig\\Lib\\typemaps\\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf.i,133,%_node_down_cast@*/
     if (dcast==0 && result) /*check for cmf::river::Reach*/  {
       std::tr1::shared_ptr<cmf::river::Reach> output = std::tr1::dynamic_pointer_cast<cmf::river::Reach>(result);
       if (output) /*flux_node is cmf::river::Reach */ {
@@ -32005,7 +32946,7 @@ SWIGINTERN PyObject *_wrap_flux_connection_get_target__SWIG_1(PyObject *SWIGUNUS
     }
     /*@SWIG@*/
     
-    /*@SWIG:C:\\Program Files\\pythonxy\\swig\\Lib\\typemaps\\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf.i,131,%_node_down_cast@*/
+    /*@SWIG:C:\\Program Files\\pythonxy\\swig\\Lib\\typemaps\\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf.i,133,%_node_down_cast@*/
     if (dcast==0 && result) /*check for cmf::river::OpenWaterStorage*/  {
       std::tr1::shared_ptr<cmf::river::OpenWaterStorage> output = std::tr1::dynamic_pointer_cast<cmf::river::OpenWaterStorage>(result);
       if (output) /*flux_node is cmf::river::OpenWaterStorage */ {
@@ -32015,7 +32956,7 @@ SWIGINTERN PyObject *_wrap_flux_connection_get_target__SWIG_1(PyObject *SWIGUNUS
     }
     /*@SWIG@*/
     
-    /*@SWIG:C:\\Program Files\\pythonxy\\swig\\Lib\\typemaps\\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf.i,131,%_node_down_cast@*/
+    /*@SWIG:C:\\Program Files\\pythonxy\\swig\\Lib\\typemaps\\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf.i,133,%_node_down_cast@*/
     if (dcast==0 && result) /*check for cmf::water::WaterStorage*/  {
       std::tr1::shared_ptr<cmf::water::WaterStorage> output = std::tr1::dynamic_pointer_cast<cmf::water::WaterStorage>(result);
       if (output) /*flux_node is cmf::water::WaterStorage */ {
@@ -32175,6 +33116,8 @@ SWIGINTERN PyObject *_wrap_flux_connection_exchange_target(PyObject *SWIGUNUSEDP
   {
     try {
       (arg1)->exchange_target(arg2,arg3);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -32229,6 +33172,8 @@ SWIGINTERN PyObject *_wrap_flux_connection_q(PyObject *SWIGUNUSEDPARM(self), PyO
   {
     try {
       result = (real)(arg1)->q((cmf::water::flux_node const &)*arg2,arg3);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -32273,6 +33218,8 @@ SWIGINTERN PyObject *_wrap_flux_connection_conc(PyObject *SWIGUNUSEDPARM(self), 
   {
     try {
       result = (real)(arg1)->conc(arg2,(cmf::water::solute const &)*arg3);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -32326,6 +33273,8 @@ SWIGINTERN PyObject *_wrap_flux_connection_to_string(PyObject *SWIGUNUSEDPARM(se
   {
     try {
       result = ((cmf::water::flux_connection const *)arg1)->to_string();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -32356,6 +33305,8 @@ SWIGINTERN PyObject *_wrap_flux_connection_short_string(PyObject *SWIGUNUSEDPARM
   {
     try {
       result = ((cmf::water::flux_connection const *)arg1)->short_string();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -32385,6 +33336,8 @@ SWIGINTERN PyObject *_wrap_delete_flux_connection(PyObject *SWIGUNUSEDPARM(self)
   {
     try {
       delete arg1;
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -32421,6 +33374,8 @@ SWIGINTERN PyObject *_wrap_flux_connection_tracer_filter_set(PyObject *SWIGUNUSE
   {
     try {
       cmf_water_flux_connection_tracer_filter_set(arg1,arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -32451,6 +33406,8 @@ SWIGINTERN PyObject *_wrap_flux_connection_tracer_filter_get(PyObject *SWIGUNUSE
   {
     try {
       result = (real)cmf_water_flux_connection_tracer_filter_get(arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -32502,6 +33459,8 @@ SWIGINTERN PyObject *_wrap_replace_node(PyObject *SWIGUNUSEDPARM(self), PyObject
   {
     try {
       cmf::water::replace_node(arg1,arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -32547,6 +33506,8 @@ SWIGINTERN PyObject *_wrap_new_waterbalance_connection(PyObject *SWIGUNUSEDPARM(
   {
     try {
       result = (cmf::water::waterbalance_connection *)new cmf::water::waterbalance_connection(arg1,arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -32576,6 +33537,8 @@ SWIGINTERN PyObject *_wrap_delete_waterbalance_connection(PyObject *SWIGUNUSEDPA
   {
     try {
       delete arg1;
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -32728,6 +33691,8 @@ SWIGINTERN PyObject *_wrap_linear_scale___call__(PyObject *SWIGUNUSEDPARM(self),
   {
     try {
       result = (real)((cmf::water::linear_scale const *)arg1)->operator ()(arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -32769,6 +33734,8 @@ SWIGINTERN PyObject *_wrap_new_linear_scale(PyObject *SWIGUNUSEDPARM(self), PyOb
   {
     try {
       result = (cmf::water::linear_scale *)new cmf::water::linear_scale(arg1,arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -32798,6 +33765,8 @@ SWIGINTERN PyObject *_wrap_delete_linear_scale(PyObject *SWIGUNUSEDPARM(self), P
   {
     try {
       delete arg1;
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -32868,6 +33837,8 @@ SWIGINTERN PyObject *_wrap_DricheletBoundary_set_conc(PyObject *SWIGUNUSEDPARM(s
   {
     try {
       (arg1)->set_conc((cmf::water::solute const &)*arg2,arg3);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -32989,6 +33960,8 @@ SWIGINTERN PyObject *_wrap_DricheletBoundary_RecalcFluxes(PyObject *SWIGUNUSEDPA
   {
     try {
       result = (bool)((cmf::water::DricheletBoundary const *)arg1)->RecalcFluxes(arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -33040,6 +34013,8 @@ SWIGINTERN PyObject *_wrap_new_DricheletBoundary(PyObject *SWIGUNUSEDPARM(self),
   {
     try {
       result = (cmf::water::DricheletBoundary *)new cmf::water::DricheletBoundary((cmf::project const &)*arg1,arg2,arg3);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -33077,6 +34052,8 @@ SWIGINTERN PyObject *_wrap_DricheletBoundary_SWIGSharedPtrUpcast(PyObject *SWIGU
   {
     try {
       result = cmf_water_DricheletBoundary_SWIGSharedPtrUpcast(arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -33121,6 +34098,8 @@ SWIGINTERN PyObject *_wrap_delete_DricheletBoundary(PyObject *SWIGUNUSEDPARM(sel
   {
     try {
       (void)arg1; delete smartarg1;
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -33405,6 +34384,8 @@ SWIGINTERN PyObject *_wrap_NeumannBoundary___call__(PyObject *SWIGUNUSEDPARM(sel
   {
     try {
       result = (real)((cmf::water::NeumannBoundary const *)arg1)->operator ()(arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -33457,6 +34438,8 @@ SWIGINTERN PyObject *_wrap_NeumannBoundary_connect_to(PyObject *SWIGUNUSEDPARM(s
   {
     try {
       (arg1)->connect_to(arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -33533,6 +34516,8 @@ SWIGINTERN PyObject *_wrap_new_NeumannBoundary__SWIG_0(PyObject *SWIGUNUSEDPARM(
   {
     try {
       result = (cmf::water::NeumannBoundary *)new cmf::water::NeumannBoundary((cmf::project const &)*arg1,arg2,arg3,arg4);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -33578,6 +34563,8 @@ SWIGINTERN PyObject *_wrap_new_NeumannBoundary__SWIG_1(PyObject *SWIGUNUSEDPARM(
   {
     try {
       result = (cmf::water::NeumannBoundary *)new cmf::water::NeumannBoundary((cmf::project const &)*arg1,arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -33724,6 +34711,8 @@ SWIGINTERN PyObject *_wrap_NeumannBoundary_create(PyObject *SWIGUNUSEDPARM(self)
   {
     try {
       result = cmf::water::NeumannBoundary::create(arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -33761,6 +34750,8 @@ SWIGINTERN PyObject *_wrap_NeumannBoundary_SWIGSharedPtrUpcast(PyObject *SWIGUNU
   {
     try {
       result = cmf_water_NeumannBoundary_SWIGSharedPtrUpcast(arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -33805,6 +34796,8 @@ SWIGINTERN PyObject *_wrap_delete_NeumannBoundary(PyObject *SWIGUNUSEDPARM(self)
   {
     try {
       (void)arg1; delete smartarg1;
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -33861,6 +34854,8 @@ SWIGINTERN PyObject *_wrap_new_NeumannFlux(PyObject *SWIGUNUSEDPARM(self), PyObj
   {
     try {
       result = (cmf::water::NeumannFlux *)new cmf::water::NeumannFlux(arg1,arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -33890,6 +34885,8 @@ SWIGINTERN PyObject *_wrap_delete_NeumannFlux(PyObject *SWIGUNUSEDPARM(self), Py
   {
     try {
       delete arg1;
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -34132,6 +35129,8 @@ SWIGINTERN PyObject *_wrap_new_TechnicalFlux(PyObject *SWIGUNUSEDPARM(self), PyO
   {
     try {
       result = (cmf::water::TechnicalFlux *)new cmf::water::TechnicalFlux(*arg1,arg2,arg3,arg4,arg5);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -34161,6 +35160,8 @@ SWIGINTERN PyObject *_wrap_delete_TechnicalFlux(PyObject *SWIGUNUSEDPARM(self), 
   {
     try {
       delete arg1;
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -34183,6 +35184,100 @@ SWIGINTERN PyObject *TechnicalFlux_swigregister(PyObject *SWIGUNUSEDPARM(self), 
 SWIGINTERN PyObject *TechnicalFlux_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   return SWIG_Python_InitShadowInstance(args);
 }
+
+SWIGINTERN PyObject *_wrap_WaterStorage_get_state_variable_content(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  cmf::water::WaterStorage *arg1 = (cmf::water::WaterStorage *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  std::tr1::shared_ptr< cmf::water::WaterStorage const > tempshared1 ;
+  std::tr1::shared_ptr< cmf::water::WaterStorage const > *smartarg1 = 0 ;
+  PyObject *swig_obj[1] ;
+  char result;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_std__tr1__shared_ptrT_cmf__water__WaterStorage_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "WaterStorage_get_state_variable_content" "', argument " "1"" of type '" "cmf::water::WaterStorage const *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< std::tr1::shared_ptr< const cmf::water::WaterStorage > * >(argp1);
+      delete reinterpret_cast< std::tr1::shared_ptr< const cmf::water::WaterStorage > * >(argp1);
+      arg1 = const_cast< cmf::water::WaterStorage * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< std::tr1::shared_ptr< const cmf::water::WaterStorage > * >(argp1);
+      arg1 = const_cast< cmf::water::WaterStorage * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  {
+    try {
+      result = (char)((cmf::water::WaterStorage const *)arg1)->get_state_variable_content();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+    
+  }
+  resultobj = SWIG_From_char(static_cast< char >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_WaterStorage_set_state_variable_content(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  cmf::water::WaterStorage *arg1 = (cmf::water::WaterStorage *) 0 ;
+  char arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  std::tr1::shared_ptr< cmf::water::WaterStorage > tempshared1 ;
+  std::tr1::shared_ptr< cmf::water::WaterStorage > *smartarg1 = 0 ;
+  char val2 ;
+  int ecode2 = 0 ;
+  PyObject *swig_obj[2] ;
+  
+  if (!SWIG_Python_UnpackTuple(args,"WaterStorage_set_state_variable_content",2,2,swig_obj)) SWIG_fail;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_std__tr1__shared_ptrT_cmf__water__WaterStorage_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "WaterStorage_set_state_variable_content" "', argument " "1"" of type '" "cmf::water::WaterStorage *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< std::tr1::shared_ptr<  cmf::water::WaterStorage > * >(argp1);
+      delete reinterpret_cast< std::tr1::shared_ptr<  cmf::water::WaterStorage > * >(argp1);
+      arg1 = const_cast< cmf::water::WaterStorage * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< std::tr1::shared_ptr<  cmf::water::WaterStorage > * >(argp1);
+      arg1 = const_cast< cmf::water::WaterStorage * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  ecode2 = SWIG_AsVal_char(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "WaterStorage_set_state_variable_content" "', argument " "2"" of type '" "char""'");
+  } 
+  arg2 = static_cast< char >(val2);
+  {
+    try {
+      (arg1)->set_state_variable_content(arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
 
 SWIGINTERN PyObject *_wrap_new_WaterStorage(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
@@ -34214,6 +35309,8 @@ SWIGINTERN PyObject *_wrap_new_WaterStorage(PyObject *SWIGUNUSEDPARM(self), PyOb
   {
     try {
       result = (cmf::water::WaterStorage *)new cmf::water::WaterStorage((cmf::project const &)*arg1,arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -34251,6 +35348,8 @@ SWIGINTERN PyObject *_wrap_WaterStorage_from_node(PyObject *SWIGUNUSEDPARM(self)
   {
     try {
       result = cmf::water::WaterStorage::from_node(arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -34305,6 +35404,8 @@ SWIGINTERN PyObject *_wrap_WaterStorage_Solute__SWIG_0(PyObject *SWIGUNUSEDPARM(
   {
     try {
       result = (cmf::water::SoluteStorage *) &(arg1)->Solute((cmf::water::solute const &)*arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -34359,6 +35460,8 @@ SWIGINTERN PyObject *_wrap_WaterStorage_Solute__SWIG_1(PyObject *SWIGUNUSEDPARM(
   {
     try {
       result = (cmf::water::SoluteStorage *) &((cmf::water::WaterStorage const *)arg1)->Solute((cmf::water::solute const &)*arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -34496,6 +35599,8 @@ SWIGINTERN PyObject *_wrap_WaterStorage_conc__SWIG_0(PyObject *SWIGUNUSEDPARM(se
   {
     try {
       result = (real)((cmf::water::WaterStorage const *)arg1)->conc((cmf::water::solute const &)*arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -34551,6 +35656,8 @@ SWIGINTERN PyObject *_wrap_WaterStorage_conc__SWIG_1(PyObject *SWIGUNUSEDPARM(se
   {
     try {
       result = (real)((cmf::water::WaterStorage const *)arg1)->conc(arg2,(cmf::water::solute const &)*arg3);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -34609,6 +35716,8 @@ SWIGINTERN PyObject *_wrap_WaterStorage_conc__SWIG_2(PyObject *SWIGUNUSEDPARM(se
   {
     try {
       (arg1)->conc((cmf::water::solute const &)*arg2,arg3);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -34778,6 +35887,8 @@ SWIGINTERN PyObject *_wrap_WaterStorage_cast(PyObject *SWIGUNUSEDPARM(self), PyO
   {
     try {
       result = cmf::water::WaterStorage::cast(arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -34823,6 +35934,8 @@ SWIGINTERN PyObject *_wrap_WaterStorage_create(PyObject *SWIGUNUSEDPARM(self), P
   {
     try {
       result = cmf::water::WaterStorage::create((cmf::project const &)*arg1,arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -34860,6 +35973,8 @@ SWIGINTERN PyObject *_wrap_WaterStorage_SWIGSharedPtrUpcast(PyObject *SWIGUNUSED
   {
     try {
       result = cmf_water_WaterStorage_SWIGSharedPtrUpcast(arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -34911,6 +36026,8 @@ SWIGINTERN PyObject *_wrap_WaterStorage_volume_set(PyObject *SWIGUNUSEDPARM(self
   {
     try {
       cmf_water_WaterStorage_volume_set(arg1,arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -34953,6 +36070,8 @@ SWIGINTERN PyObject *_wrap_WaterStorage_volume_get(PyObject *SWIGUNUSEDPARM(self
   {
     try {
       result = (real)cmf_water_WaterStorage_volume_get(arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -34994,6 +36113,8 @@ SWIGINTERN PyObject *_wrap_delete_WaterStorage(PyObject *SWIGUNUSEDPARM(self), P
   {
     try {
       (void)arg1; delete smartarg1;
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -35037,6 +36158,8 @@ SWIGINTERN PyObject *_wrap_storage_vector_iterator(PyObject *SWIGUNUSEDPARM(self
   {
     try {
       result = (swig::SwigPyIterator *)std_vector_Sl_cmf_water_WaterStorage_ptr_Sg__iterator(arg1,arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -35067,6 +36190,8 @@ SWIGINTERN PyObject *_wrap_storage_vector___nonzero__(PyObject *SWIGUNUSEDPARM(s
   {
     try {
       result = (bool)std_vector_Sl_cmf_water_WaterStorage_ptr_Sg____nonzero__((std::vector< std::tr1::shared_ptr< cmf::water::WaterStorage > > const *)arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -35097,6 +36222,8 @@ SWIGINTERN PyObject *_wrap_storage_vector___bool__(PyObject *SWIGUNUSEDPARM(self
   {
     try {
       result = (bool)std_vector_Sl_cmf_water_WaterStorage_ptr_Sg____bool__((std::vector< std::tr1::shared_ptr< cmf::water::WaterStorage > > const *)arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -35127,6 +36254,8 @@ SWIGINTERN PyObject *_wrap_storage_vector___len__(PyObject *SWIGUNUSEDPARM(self)
   {
     try {
       result = std_vector_Sl_cmf_water_WaterStorage_ptr_Sg____len__((std::vector< std::tr1::shared_ptr< cmf::water::WaterStorage > > const *)arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -35163,6 +36292,8 @@ SWIGINTERN PyObject *_wrap_storage_vector_pop(PyObject *SWIGUNUSEDPARM(self), Py
         SWIG_exception_fail(SWIG_IndexError, (&_e)->what());
       }
       
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -35217,6 +36348,8 @@ SWIGINTERN PyObject *_wrap_storage_vector___getslice__(PyObject *SWIGUNUSEDPARM(
         SWIG_exception_fail(SWIG_IndexError, (&_e)->what());
       }
       
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -35283,6 +36416,8 @@ SWIGINTERN PyObject *_wrap_storage_vector___setslice__(PyObject *SWIGUNUSEDPARM(
         SWIG_exception_fail(SWIG_ValueError, (&_e)->what());
       }
       
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -35335,6 +36470,8 @@ SWIGINTERN PyObject *_wrap_storage_vector___delslice__(PyObject *SWIGUNUSEDPARM(
         SWIG_exception_fail(SWIG_IndexError, (&_e)->what());
       }
       
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -35376,6 +36513,8 @@ SWIGINTERN PyObject *_wrap_storage_vector___delitem____SWIG_0(PyObject *SWIGUNUS
         SWIG_exception_fail(SWIG_IndexError, (&_e)->what());
       }
       
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -35414,6 +36553,8 @@ SWIGINTERN PyObject *_wrap_storage_vector___getitem____SWIG_0(PyObject *SWIGUNUS
         SWIG_exception_fail(SWIG_IndexError, (&_e)->what());
       }
       
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -35467,6 +36608,8 @@ SWIGINTERN PyObject *_wrap_storage_vector___setitem____SWIG_0(PyObject *SWIGUNUS
         SWIG_exception_fail(SWIG_ValueError, (&_e)->what());
       }
       
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -35506,6 +36649,8 @@ SWIGINTERN PyObject *_wrap_storage_vector___delitem____SWIG_1(PyObject *SWIGUNUS
         SWIG_exception_fail(SWIG_IndexError, (&_e)->what());
       }
       
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -35634,6 +36779,8 @@ SWIGINTERN PyObject *_wrap_storage_vector___getitem____SWIG_1(PyObject *SWIGUNUS
         SWIG_exception_fail(SWIG_IndexError, (&_e)->what());
       }
       
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -35782,6 +36929,8 @@ SWIGINTERN PyObject *_wrap_storage_vector___setitem____SWIG_1(PyObject *SWIGUNUS
         SWIG_exception_fail(SWIG_IndexError, (&_e)->what());
       }
       
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -35930,6 +37079,8 @@ SWIGINTERN PyObject *_wrap_storage_vector_append(PyObject *SWIGUNUSEDPARM(self),
   {
     try {
       std_vector_Sl_cmf_water_WaterStorage_ptr_Sg__append(arg1,(std::tr1::shared_ptr< cmf::water::WaterStorage > const &)*arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -35950,6 +37101,8 @@ SWIGINTERN PyObject *_wrap_new_storage_vector__SWIG_0(PyObject *SWIGUNUSEDPARM(s
   {
     try {
       result = (std::vector< cmf::water::WaterStorage::ptr > *)new std::vector< cmf::water::WaterStorage::ptr >();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -35983,6 +37136,8 @@ SWIGINTERN PyObject *_wrap_new_storage_vector__SWIG_1(PyObject *SWIGUNUSEDPARM(s
   {
     try {
       result = (std::vector< cmf::water::WaterStorage::ptr > *)new std::vector< cmf::water::WaterStorage::ptr >((std::vector< cmf::water::WaterStorage::ptr > const &)*arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -36015,6 +37170,8 @@ SWIGINTERN PyObject *_wrap_storage_vector_empty(PyObject *SWIGUNUSEDPARM(self), 
   {
     try {
       result = (bool)((std::vector< cmf::water::WaterStorage::ptr > const *)arg1)->empty();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -36045,6 +37202,8 @@ SWIGINTERN PyObject *_wrap_storage_vector_size(PyObject *SWIGUNUSEDPARM(self), P
   {
     try {
       result = ((std::vector< cmf::water::WaterStorage::ptr > const *)arg1)->size();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -36074,6 +37233,8 @@ SWIGINTERN PyObject *_wrap_storage_vector_clear(PyObject *SWIGUNUSEDPARM(self), 
   {
     try {
       (arg1)->clear();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -36113,6 +37274,8 @@ SWIGINTERN PyObject *_wrap_storage_vector_swap(PyObject *SWIGUNUSEDPARM(self), P
   {
     try {
       (arg1)->swap(*arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -36143,6 +37306,8 @@ SWIGINTERN PyObject *_wrap_storage_vector_get_allocator(PyObject *SWIGUNUSEDPARM
   {
     try {
       result = ((std::vector< cmf::water::WaterStorage::ptr > const *)arg1)->get_allocator();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -36173,6 +37338,8 @@ SWIGINTERN PyObject *_wrap_storage_vector_begin(PyObject *SWIGUNUSEDPARM(self), 
   {
     try {
       result = ((std::vector< cmf::water::WaterStorage::ptr > const *)arg1)->begin();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -36204,6 +37371,8 @@ SWIGINTERN PyObject *_wrap_storage_vector_end(PyObject *SWIGUNUSEDPARM(self), Py
   {
     try {
       result = ((std::vector< cmf::water::WaterStorage::ptr > const *)arg1)->end();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -36235,6 +37404,8 @@ SWIGINTERN PyObject *_wrap_storage_vector_rbegin(PyObject *SWIGUNUSEDPARM(self),
   {
     try {
       result = ((std::vector< cmf::water::WaterStorage::ptr > const *)arg1)->rbegin();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -36266,6 +37437,8 @@ SWIGINTERN PyObject *_wrap_storage_vector_rend(PyObject *SWIGUNUSEDPARM(self), P
   {
     try {
       result = ((std::vector< cmf::water::WaterStorage::ptr > const *)arg1)->rend();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -36295,6 +37468,8 @@ SWIGINTERN PyObject *_wrap_new_storage_vector__SWIG_2(PyObject *SWIGUNUSEDPARM(s
   {
     try {
       result = (std::vector< cmf::water::WaterStorage::ptr > *)new std::vector< cmf::water::WaterStorage::ptr >(arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -36324,6 +37499,8 @@ SWIGINTERN PyObject *_wrap_storage_vector_pop_back(PyObject *SWIGUNUSEDPARM(self
   {
     try {
       (arg1)->pop_back();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -36359,6 +37536,8 @@ SWIGINTERN PyObject *_wrap_storage_vector_resize__SWIG_0(PyObject *SWIGUNUSEDPAR
   {
     try {
       (arg1)->resize(arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -36401,6 +37580,8 @@ SWIGINTERN PyObject *_wrap_storage_vector_erase__SWIG_0(PyObject *SWIGUNUSEDPARM
   {
     try {
       result = (arg1)->erase(arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -36458,6 +37639,8 @@ SWIGINTERN PyObject *_wrap_storage_vector_erase__SWIG_1(PyObject *SWIGUNUSEDPARM
   {
     try {
       result = (arg1)->erase(arg2,arg3);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -36599,6 +37782,8 @@ SWIGINTERN PyObject *_wrap_new_storage_vector__SWIG_3(PyObject *SWIGUNUSEDPARM(s
   {
     try {
       result = (std::vector< cmf::water::WaterStorage::ptr > *)new std::vector< cmf::water::WaterStorage::ptr >(arg1,(std::vector< std::tr1::shared_ptr< cmf::water::WaterStorage > >::value_type const &)*arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -36758,6 +37943,8 @@ SWIGINTERN PyObject *_wrap_storage_vector_push_back(PyObject *SWIGUNUSEDPARM(sel
   {
     try {
       (arg1)->push_back((std::vector< std::tr1::shared_ptr< cmf::water::WaterStorage > >::value_type const &)*arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -36788,6 +37975,8 @@ SWIGINTERN PyObject *_wrap_storage_vector_front(PyObject *SWIGUNUSEDPARM(self), 
   {
     try {
       result = (std::vector< std::tr1::shared_ptr< cmf::water::WaterStorage > >::value_type *) &((std::vector< cmf::water::WaterStorage::ptr > const *)arg1)->front();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -36821,6 +38010,8 @@ SWIGINTERN PyObject *_wrap_storage_vector_back(PyObject *SWIGUNUSEDPARM(self), P
   {
     try {
       result = (std::vector< std::tr1::shared_ptr< cmf::water::WaterStorage > >::value_type *) &((std::vector< cmf::water::WaterStorage::ptr > const *)arg1)->back();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -36878,6 +38069,8 @@ SWIGINTERN PyObject *_wrap_storage_vector_assign(PyObject *SWIGUNUSEDPARM(self),
   {
     try {
       (arg1)->assign(arg2,(std::vector< std::tr1::shared_ptr< cmf::water::WaterStorage > >::value_type const &)*arg3);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -36931,6 +38124,8 @@ SWIGINTERN PyObject *_wrap_storage_vector_resize__SWIG_1(PyObject *SWIGUNUSEDPAR
   {
     try {
       (arg1)->resize(arg2,(std::vector< std::tr1::shared_ptr< cmf::water::WaterStorage > >::value_type const &)*arg3);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -37086,6 +38281,8 @@ SWIGINTERN PyObject *_wrap_storage_vector_insert__SWIG_0(PyObject *SWIGUNUSEDPAR
   {
     try {
       result = (arg1)->insert(arg2,(std::vector< std::tr1::shared_ptr< cmf::water::WaterStorage > >::value_type const &)*arg3);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -37154,6 +38351,8 @@ SWIGINTERN PyObject *_wrap_storage_vector_insert__SWIG_1(PyObject *SWIGUNUSEDPAR
   {
     try {
       (arg1)->insert(arg2,arg3,(std::vector< std::tr1::shared_ptr< cmf::water::WaterStorage > >::value_type const &)*arg4);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -37301,6 +38500,8 @@ SWIGINTERN PyObject *_wrap_storage_vector_reserve(PyObject *SWIGUNUSEDPARM(self)
   {
     try {
       (arg1)->reserve(arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -37331,6 +38532,8 @@ SWIGINTERN PyObject *_wrap_storage_vector_capacity(PyObject *SWIGUNUSEDPARM(self
   {
     try {
       result = ((std::vector< cmf::water::WaterStorage::ptr > const *)arg1)->capacity();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -37360,6 +38563,8 @@ SWIGINTERN PyObject *_wrap_delete_storage_vector(PyObject *SWIGUNUSEDPARM(self),
   {
     try {
       delete arg1;
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -37401,6 +38606,8 @@ SWIGINTERN PyObject *_wrap_node_list_size(PyObject *SWIGUNUSEDPARM(self), PyObje
   {
     try {
       result = (int)((cmf::water::node_list const *)arg1)->size();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -37421,6 +38628,8 @@ SWIGINTERN PyObject *_wrap_new_node_list__SWIG_0(PyObject *SWIGUNUSEDPARM(self),
   {
     try {
       result = (cmf::water::node_list *)new cmf::water::node_list();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -37452,6 +38661,8 @@ SWIGINTERN PyObject *_wrap_new_node_list__SWIG_1(PyObject *SWIGUNUSEDPARM(self),
   {
     try {
       result = (cmf::water::node_list *)new cmf::water::node_list((cmf::water::node_list const &)*arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -37547,6 +38758,8 @@ SWIGINTERN PyObject *_wrap_node_list___iadd__(PyObject *SWIGUNUSEDPARM(self), Py
   {
     try {
       result = (cmf::water::node_list *) &(arg1)->operator +=((cmf::water::node_list const &)*arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -37587,6 +38800,8 @@ SWIGINTERN PyObject *_wrap_node_list___add__(PyObject *SWIGUNUSEDPARM(self), PyO
   {
     try {
       result = ((cmf::water::node_list const *)arg1)->operator +((cmf::water::node_list const &)*arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -37623,6 +38838,8 @@ SWIGINTERN PyObject *_wrap_node_list_get__SWIG_0(PyObject *SWIGUNUSEDPARM(self),
   {
     try {
       result = ((cmf::water::node_list const *)arg1)->get(arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -37630,7 +38847,7 @@ SWIGINTERN PyObject *_wrap_node_list_get__SWIG_0(PyObject *SWIGUNUSEDPARM(self),
   }
   {
     int dcast = 0;
-    /*@SWIG:C:\\Program Files\\pythonxy\\swig\\Lib\\typemaps\\swigmacros.swg,200,%formacro@*//*@SWIG:C:\\Program Files\\pythonxy\\swig\\Lib\\typemaps\\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf.i,131,%_node_down_cast@*/
+    /*@SWIG:C:\\Program Files\\pythonxy\\swig\\Lib\\typemaps\\swigmacros.swg,200,%formacro@*//*@SWIG:C:\\Program Files\\pythonxy\\swig\\Lib\\typemaps\\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf.i,133,%_node_down_cast@*/
     if (dcast==0 && result) /*check for cmf::atmosphere::RainCloud*/  {
       std::tr1::shared_ptr<cmf::atmosphere::RainCloud> output = std::tr1::dynamic_pointer_cast<cmf::atmosphere::RainCloud>(result);
       if (output) /*flux_node is cmf::atmosphere::RainCloud */ {
@@ -37640,7 +38857,7 @@ SWIGINTERN PyObject *_wrap_node_list_get__SWIG_0(PyObject *SWIGUNUSEDPARM(self),
     }
     /*@SWIG@*/
     
-    /*@SWIG:C:\\Program Files\\pythonxy\\swig\\Lib\\typemaps\\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf.i,131,%_node_down_cast@*/
+    /*@SWIG:C:\\Program Files\\pythonxy\\swig\\Lib\\typemaps\\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf.i,133,%_node_down_cast@*/
     if (dcast==0 && result) /*check for cmf::water::DricheletBoundary*/  {
       std::tr1::shared_ptr<cmf::water::DricheletBoundary> output = std::tr1::dynamic_pointer_cast<cmf::water::DricheletBoundary>(result);
       if (output) /*flux_node is cmf::water::DricheletBoundary */ {
@@ -37650,7 +38867,7 @@ SWIGINTERN PyObject *_wrap_node_list_get__SWIG_0(PyObject *SWIGUNUSEDPARM(self),
     }
     /*@SWIG@*/
     
-    /*@SWIG:C:\\Program Files\\pythonxy\\swig\\Lib\\typemaps\\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf.i,131,%_node_down_cast@*/
+    /*@SWIG:C:\\Program Files\\pythonxy\\swig\\Lib\\typemaps\\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf.i,133,%_node_down_cast@*/
     if (dcast==0 && result) /*check for cmf::water::NeumannBoundary*/  {
       std::tr1::shared_ptr<cmf::water::NeumannBoundary> output = std::tr1::dynamic_pointer_cast<cmf::water::NeumannBoundary>(result);
       if (output) /*flux_node is cmf::water::NeumannBoundary */ {
@@ -37660,7 +38877,7 @@ SWIGINTERN PyObject *_wrap_node_list_get__SWIG_0(PyObject *SWIGUNUSEDPARM(self),
     }
     /*@SWIG@*/
     
-    /*@SWIG:C:\\Program Files\\pythonxy\\swig\\Lib\\typemaps\\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf.i,131,%_node_down_cast@*/
+    /*@SWIG:C:\\Program Files\\pythonxy\\swig\\Lib\\typemaps\\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf.i,133,%_node_down_cast@*/
     if (dcast==0 && result) /*check for cmf::upslope::SoilLayer*/  {
       std::tr1::shared_ptr<cmf::upslope::SoilLayer> output = std::tr1::dynamic_pointer_cast<cmf::upslope::SoilLayer>(result);
       if (output) /*flux_node is cmf::upslope::SoilLayer */ {
@@ -37670,7 +38887,7 @@ SWIGINTERN PyObject *_wrap_node_list_get__SWIG_0(PyObject *SWIGUNUSEDPARM(self),
     }
     /*@SWIG@*/
     
-    /*@SWIG:C:\\Program Files\\pythonxy\\swig\\Lib\\typemaps\\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf.i,131,%_node_down_cast@*/
+    /*@SWIG:C:\\Program Files\\pythonxy\\swig\\Lib\\typemaps\\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf.i,133,%_node_down_cast@*/
     if (dcast==0 && result) /*check for cmf::river::Reach*/  {
       std::tr1::shared_ptr<cmf::river::Reach> output = std::tr1::dynamic_pointer_cast<cmf::river::Reach>(result);
       if (output) /*flux_node is cmf::river::Reach */ {
@@ -37680,7 +38897,7 @@ SWIGINTERN PyObject *_wrap_node_list_get__SWIG_0(PyObject *SWIGUNUSEDPARM(self),
     }
     /*@SWIG@*/
     
-    /*@SWIG:C:\\Program Files\\pythonxy\\swig\\Lib\\typemaps\\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf.i,131,%_node_down_cast@*/
+    /*@SWIG:C:\\Program Files\\pythonxy\\swig\\Lib\\typemaps\\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf.i,133,%_node_down_cast@*/
     if (dcast==0 && result) /*check for cmf::river::OpenWaterStorage*/  {
       std::tr1::shared_ptr<cmf::river::OpenWaterStorage> output = std::tr1::dynamic_pointer_cast<cmf::river::OpenWaterStorage>(result);
       if (output) /*flux_node is cmf::river::OpenWaterStorage */ {
@@ -37690,7 +38907,7 @@ SWIGINTERN PyObject *_wrap_node_list_get__SWIG_0(PyObject *SWIGUNUSEDPARM(self),
     }
     /*@SWIG@*/
     
-    /*@SWIG:C:\\Program Files\\pythonxy\\swig\\Lib\\typemaps\\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf.i,131,%_node_down_cast@*/
+    /*@SWIG:C:\\Program Files\\pythonxy\\swig\\Lib\\typemaps\\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf.i,133,%_node_down_cast@*/
     if (dcast==0 && result) /*check for cmf::water::WaterStorage*/  {
       std::tr1::shared_ptr<cmf::water::WaterStorage> output = std::tr1::dynamic_pointer_cast<cmf::water::WaterStorage>(result);
       if (output) /*flux_node is cmf::water::WaterStorage */ {
@@ -37765,6 +38982,8 @@ SWIGINTERN PyObject *_wrap_node_list_get__SWIG_1(PyObject *SWIGUNUSEDPARM(self),
   {
     try {
       result = ((cmf::water::node_list const *)arg1)->get(arg2,arg3,arg4);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -37916,6 +39135,8 @@ SWIGINTERN PyObject *_wrap_node_list_append(PyObject *SWIGUNUSEDPARM(self), PyOb
   {
     try {
       (arg1)->append(arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -37949,6 +39170,8 @@ SWIGINTERN PyObject *_wrap_node_list_global_water_balance(PyObject *SWIGUNUSEDPA
   {
     try {
       result = (real)((cmf::water::node_list const *)arg1)->global_water_balance(arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -37982,6 +39205,8 @@ SWIGINTERN PyObject *_wrap_node_list_water_balance(PyObject *SWIGUNUSEDPARM(self
   {
     try {
       result = ((cmf::water::node_list const *)arg1)->water_balance(arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -38026,6 +39251,8 @@ SWIGINTERN PyObject *_wrap_node_list_conc(PyObject *SWIGUNUSEDPARM(self), PyObje
   {
     try {
       result = ((cmf::water::node_list const *)arg1)->conc(arg2,(cmf::water::solute const &)*arg3);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -38082,6 +39309,8 @@ SWIGINTERN PyObject *_wrap_node_list_set_solute_source(PyObject *SWIGUNUSEDPARM(
   {
     try {
       result = (int)(arg1)->set_solute_source((cmf::water::solute const &)*arg2,arg3);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -38126,6 +39355,8 @@ SWIGINTERN PyObject *_wrap_node_list_get_fluxes_to(PyObject *SWIGUNUSEDPARM(self
   {
     try {
       result = ((cmf::water::node_list const *)arg1)->get_fluxes_to((cmf::water::node_list const &)*arg2,arg3);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -38170,6 +39401,8 @@ SWIGINTERN PyObject *_wrap_node_list_get_fluxes3d_to(PyObject *SWIGUNUSEDPARM(se
   {
     try {
       result = ((cmf::water::node_list const *)arg1)->get_fluxes3d_to((cmf::water::node_list const &)*arg2,arg3);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -38203,6 +39436,8 @@ SWIGINTERN PyObject *_wrap_node_list_get_fluxes3d(PyObject *SWIGUNUSEDPARM(self)
   {
     try {
       result = ((cmf::water::node_list const *)arg1)->get_fluxes3d(arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -38233,6 +39468,8 @@ SWIGINTERN PyObject *_wrap_node_list_get_positions(PyObject *SWIGUNUSEDPARM(self
   {
     try {
       result = ((cmf::water::node_list const *)arg1)->get_positions();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -38269,6 +39506,8 @@ SWIGINTERN PyObject *_wrap_node_list_potentials_set(PyObject *SWIGUNUSEDPARM(sel
   {
     try {
       cmf_water_node_list_potentials_set(arg1,arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -38299,6 +39538,8 @@ SWIGINTERN PyObject *_wrap_node_list_potentials_get(PyObject *SWIGUNUSEDPARM(sel
   {
     try {
       result = (cmf::math::num_array *)cmf_water_node_list_potentials_get(arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -38328,6 +39569,8 @@ SWIGINTERN PyObject *_wrap_delete_node_list(PyObject *SWIGUNUSEDPARM(self), PyOb
   {
     try {
       delete arg1;
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -38376,6 +39619,8 @@ SWIGINTERN PyObject *_wrap_NeumannBoundary_list_get(PyObject *SWIGUNUSEDPARM(sel
   {
     try {
       result = ((cmf::water::NeumannBoundary_list const *)arg1)->get(arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -38414,6 +39659,8 @@ SWIGINTERN PyObject *_wrap_NeumannBoundary_list_get_fluxes(PyObject *SWIGUNUSEDP
   {
     try {
       result = ((cmf::water::NeumannBoundary_list const *)arg1)->get_fluxes(arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -38454,6 +39701,8 @@ SWIGINTERN PyObject *_wrap_NeumannBoundary_list_append(PyObject *SWIGUNUSEDPARM(
   {
     try {
       (arg1)->append(arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -38484,6 +39733,8 @@ SWIGINTERN PyObject *_wrap_NeumannBoundary_list_size(PyObject *SWIGUNUSEDPARM(se
   {
     try {
       result = ((cmf::water::NeumannBoundary_list const *)arg1)->size();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -38504,6 +39755,8 @@ SWIGINTERN PyObject *_wrap_new_NeumannBoundary_list__SWIG_0(PyObject *SWIGUNUSED
   {
     try {
       result = (cmf::water::NeumannBoundary_list *)new cmf::water::NeumannBoundary_list();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -38535,6 +39788,8 @@ SWIGINTERN PyObject *_wrap_new_NeumannBoundary_list__SWIG_1(PyObject *SWIGUNUSED
   {
     try {
       result = (cmf::water::NeumannBoundary_list *)new cmf::water::NeumannBoundary_list((cmf::water::node_list const &)*arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -38566,6 +39821,8 @@ SWIGINTERN PyObject *_wrap_new_NeumannBoundary_list__SWIG_2(PyObject *SWIGUNUSED
   {
     try {
       result = (cmf::water::NeumannBoundary_list *)new cmf::water::NeumannBoundary_list((cmf::water::NeumannBoundary_list const &)*arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -38674,6 +39931,8 @@ SWIGINTERN PyObject *_wrap_NeumannBoundary_list_to_node_list(PyObject *SWIGUNUSE
   {
     try {
       result = ((cmf::water::NeumannBoundary_list const *)arg1)->to_node_list();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -38707,6 +39966,8 @@ SWIGINTERN PyObject *_wrap_NeumannBoundary_list_global_water_balance(PyObject *S
   {
     try {
       result = (real)((cmf::water::NeumannBoundary_list const *)arg1)->global_water_balance(arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -38740,6 +40001,8 @@ SWIGINTERN PyObject *_wrap_NeumannBoundary_list_water_balance(PyObject *SWIGUNUS
   {
     try {
       result = ((cmf::water::NeumannBoundary_list const *)arg1)->water_balance(arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -38776,6 +40039,8 @@ SWIGINTERN PyObject *_wrap_NeumannBoundary_list_fluxes_set(PyObject *SWIGUNUSEDP
   {
     try {
       cmf_water_NeumannBoundary_list_fluxes_set(arg1,arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -38806,6 +40071,8 @@ SWIGINTERN PyObject *_wrap_NeumannBoundary_list_fluxes_get(PyObject *SWIGUNUSEDP
   {
     try {
       result = (cmf::math::num_array *)cmf_water_NeumannBoundary_list_fluxes_get(arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -38835,6 +40102,8 @@ SWIGINTERN PyObject *_wrap_delete_NeumannBoundary_list(PyObject *SWIGUNUSEDPARM(
   {
     try {
       delete arg1;
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -38876,6 +40145,86 @@ SWIGINTERN PyObject *_wrap_vapour_pressure(PyObject *SWIGUNUSEDPARM(self), PyObj
   {
     try {
       result = (double)cmf::atmosphere::vapour_pressure(arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+    
+  }
+  resultobj = SWIG_From_double(static_cast< double >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_vpd_from_rH(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  double arg1 ;
+  double arg2 ;
+  double val1 ;
+  int ecode1 = 0 ;
+  double val2 ;
+  int ecode2 = 0 ;
+  PyObject *swig_obj[2] ;
+  double result;
+  
+  if (!SWIG_Python_UnpackTuple(args,"vpd_from_rH",2,2,swig_obj)) SWIG_fail;
+  ecode1 = SWIG_AsVal_double(swig_obj[0], &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "vpd_from_rH" "', argument " "1"" of type '" "double""'");
+  } 
+  arg1 = static_cast< double >(val1);
+  ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "vpd_from_rH" "', argument " "2"" of type '" "double""'");
+  } 
+  arg2 = static_cast< double >(val2);
+  {
+    try {
+      result = (double)cmf::atmosphere::vpd_from_rH(arg1,arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+    
+  }
+  resultobj = SWIG_From_double(static_cast< double >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_rH_from_vpd(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  double arg1 ;
+  double arg2 ;
+  double val1 ;
+  int ecode1 = 0 ;
+  double val2 ;
+  int ecode2 = 0 ;
+  PyObject *swig_obj[2] ;
+  double result;
+  
+  if (!SWIG_Python_UnpackTuple(args,"rH_from_vpd",2,2,swig_obj)) SWIG_fail;
+  ecode1 = SWIG_AsVal_double(swig_obj[0], &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "rH_from_vpd" "', argument " "1"" of type '" "double""'");
+  } 
+  arg1 = static_cast< double >(val1);
+  ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "rH_from_vpd" "', argument " "2"" of type '" "double""'");
+  } 
+  arg2 = static_cast< double >(val2);
+  {
+    try {
+      result = (double)cmf::atmosphere::rH_from_vpd(arg1,arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -38957,6 +40306,8 @@ SWIGINTERN PyObject *_wrap_global_radiation(PyObject *SWIGUNUSEDPARM(self), PyOb
   {
     try {
       result = (double)cmf::atmosphere::global_radiation(arg1,arg2,arg3,arg4,arg5,arg6,arg7);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -38987,6 +40338,8 @@ SWIGINTERN PyObject *_wrap_Pressure(PyObject *SWIGUNUSEDPARM(self), PyObject *ar
   {
     try {
       result = (double)cmf::atmosphere::Pressure(arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -39554,6 +40907,8 @@ SWIGINTERN PyObject *_wrap_Weather_Rn(PyObject *SWIGUNUSEDPARM(self), PyObject *
   {
     try {
       result = (double)((cmf::atmosphere::Weather const *)arg1)->Rn(arg2,arg3);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -39566,14 +40921,16 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_new_Weather(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_new_Weather__SWIG_0(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **SWIGUNUSEDPARM(swig_obj)) {
   PyObject *resultobj = 0;
   cmf::atmosphere::Weather *result = 0 ;
   
-  if (!SWIG_Python_UnpackTuple(args,"new_Weather",0,0,0)) SWIG_fail;
+  if ((nobjs < 0) || (nobjs > 0)) SWIG_fail;
   {
     try {
       result = (cmf::atmosphere::Weather *)new cmf::atmosphere::Weather();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -39582,6 +40939,213 @@ SWIGINTERN PyObject *_wrap_new_Weather(PyObject *SWIGUNUSEDPARM(self), PyObject 
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_cmf__atmosphere__Weather, SWIG_POINTER_NEW |  0 );
   return resultobj;
 fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_Weather__SWIG_1(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  double arg1 ;
+  double arg2 ;
+  double arg3 ;
+  double arg4 ;
+  double arg5 = (double) 2 ;
+  double arg6 = (double) 0.5 ;
+  double arg7 = (double) 15 ;
+  double val1 ;
+  int ecode1 = 0 ;
+  double val2 ;
+  int ecode2 = 0 ;
+  double val3 ;
+  int ecode3 = 0 ;
+  double val4 ;
+  int ecode4 = 0 ;
+  double val5 ;
+  int ecode5 = 0 ;
+  double val6 ;
+  int ecode6 = 0 ;
+  double val7 ;
+  int ecode7 = 0 ;
+  cmf::atmosphere::Weather *result = 0 ;
+  
+  if ((nobjs < 4) || (nobjs > 7)) SWIG_fail;
+  ecode1 = SWIG_AsVal_double(swig_obj[0], &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "new_Weather" "', argument " "1"" of type '" "double""'");
+  } 
+  arg1 = static_cast< double >(val1);
+  ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "new_Weather" "', argument " "2"" of type '" "double""'");
+  } 
+  arg2 = static_cast< double >(val2);
+  ecode3 = SWIG_AsVal_double(swig_obj[2], &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "new_Weather" "', argument " "3"" of type '" "double""'");
+  } 
+  arg3 = static_cast< double >(val3);
+  ecode4 = SWIG_AsVal_double(swig_obj[3], &val4);
+  if (!SWIG_IsOK(ecode4)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "new_Weather" "', argument " "4"" of type '" "double""'");
+  } 
+  arg4 = static_cast< double >(val4);
+  if (swig_obj[4]) {
+    ecode5 = SWIG_AsVal_double(swig_obj[4], &val5);
+    if (!SWIG_IsOK(ecode5)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "new_Weather" "', argument " "5"" of type '" "double""'");
+    } 
+    arg5 = static_cast< double >(val5);
+  }
+  if (swig_obj[5]) {
+    ecode6 = SWIG_AsVal_double(swig_obj[5], &val6);
+    if (!SWIG_IsOK(ecode6)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode6), "in method '" "new_Weather" "', argument " "6"" of type '" "double""'");
+    } 
+    arg6 = static_cast< double >(val6);
+  }
+  if (swig_obj[6]) {
+    ecode7 = SWIG_AsVal_double(swig_obj[6], &val7);
+    if (!SWIG_IsOK(ecode7)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode7), "in method '" "new_Weather" "', argument " "7"" of type '" "double""'");
+    } 
+    arg7 = static_cast< double >(val7);
+  }
+  {
+    try {
+      result = (cmf::atmosphere::Weather *)new cmf::atmosphere::Weather(arg1,arg2,arg3,arg4,arg5,arg6,arg7);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_cmf__atmosphere__Weather, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_Weather(PyObject *self, PyObject *args) {
+  int argc;
+  PyObject *argv[8];
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args,"new_Weather",0,7,argv))) SWIG_fail;
+  --argc;
+  {
+    unsigned long _index = 0;
+    SWIG_TypeRank _rank = 0; 
+    if (argc == 0) {
+      SWIG_TypeRank _ranki = 0;
+      SWIG_TypeRank _rankm = 0;
+      if (!_index || (_ranki < _rank)) {
+        _rank = _ranki; _index = 1;
+        if (_rank == _rankm) goto dispatch;
+      }
+    }
+    if ((argc >= 4) && (argc <= 7)) {
+      SWIG_TypeRank _ranki = 0;
+      SWIG_TypeRank _rankm = 0;
+      SWIG_TypeRank _pi = 1;
+      int _v = 0;
+      {
+        {
+          int res = SWIG_AsVal_double(argv[0], NULL);
+          _v = SWIG_CheckState(res);
+        }
+      }
+      if (!_v) goto check_2;
+      _ranki += _v*_pi;
+      _rankm += _pi;
+      _pi *= SWIG_MAXCASTRANK;
+      {
+        {
+          int res = SWIG_AsVal_double(argv[1], NULL);
+          _v = SWIG_CheckState(res);
+        }
+      }
+      if (!_v) goto check_2;
+      _ranki += _v*_pi;
+      _rankm += _pi;
+      _pi *= SWIG_MAXCASTRANK;
+      {
+        {
+          int res = SWIG_AsVal_double(argv[2], NULL);
+          _v = SWIG_CheckState(res);
+        }
+      }
+      if (!_v) goto check_2;
+      _ranki += _v*_pi;
+      _rankm += _pi;
+      _pi *= SWIG_MAXCASTRANK;
+      {
+        {
+          int res = SWIG_AsVal_double(argv[3], NULL);
+          _v = SWIG_CheckState(res);
+        }
+      }
+      if (!_v) goto check_2;
+      _ranki += _v*_pi;
+      _rankm += _pi;
+      _pi *= SWIG_MAXCASTRANK;
+      if (argc > 4) {
+        {
+          {
+            int res = SWIG_AsVal_double(argv[4], NULL);
+            _v = SWIG_CheckState(res);
+          }
+        }
+        if (!_v) goto check_2;
+        _ranki += _v*_pi;
+        _rankm += _pi;
+        _pi *= SWIG_MAXCASTRANK;
+        if (argc > 5) {
+          {
+            {
+              int res = SWIG_AsVal_double(argv[5], NULL);
+              _v = SWIG_CheckState(res);
+            }
+          }
+          if (!_v) goto check_2;
+          _ranki += _v*_pi;
+          _rankm += _pi;
+          _pi *= SWIG_MAXCASTRANK;
+          if (argc > 6) {
+            {
+              {
+                int res = SWIG_AsVal_double(argv[6], NULL);
+                _v = SWIG_CheckState(res);
+              }
+            }
+            if (!_v) goto check_2;
+            _ranki += _v*_pi;
+            _rankm += _pi;
+            _pi *= SWIG_MAXCASTRANK;
+          }
+        }
+      }
+      if (!_index || (_ranki < _rank)) {
+        _rank = _ranki; _index = 2;
+        if (_rank == _rankm) goto dispatch;
+      }
+    }
+  check_2:
+    
+  dispatch:
+    switch(_index) {
+    case 1:
+      return _wrap_new_Weather__SWIG_0(self, argc, argv);
+    case 2:
+      return _wrap_new_Weather__SWIG_1(self, argc, argv);
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number of arguments for overloaded function 'new_Weather'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    cmf::atmosphere::Weather()\n"
+    "    cmf::atmosphere::Weather(double,double,double,double,double,double,double)\n");
   return NULL;
 }
 
@@ -39604,6 +41168,8 @@ SWIGINTERN PyObject *_wrap_Weather_to_string(PyObject *SWIGUNUSEDPARM(self), PyO
   {
     try {
       result = ((cmf::atmosphere::Weather const *)arg1)->to_string();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -39671,6 +41237,8 @@ SWIGINTERN PyObject *_wrap_delete_Weather(PyObject *SWIGUNUSEDPARM(self), PyObje
   {
     try {
       delete arg1;
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -39715,6 +41283,8 @@ SWIGINTERN PyObject *_wrap_Meteorology___call__(PyObject *SWIGUNUSEDPARM(self), 
   {
     try {
       result = (arg1)->operator ()(arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -39748,6 +41318,8 @@ SWIGINTERN PyObject *_wrap_Meteorology_get_weather(PyObject *SWIGUNUSEDPARM(self
   {
     try {
       result = ((cmf::atmosphere::Meteorology const *)arg1)->get_weather(arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -39778,6 +41350,8 @@ SWIGINTERN PyObject *_wrap_Meteorology_copy(PyObject *SWIGUNUSEDPARM(self), PyOb
   {
     try {
       result = (cmf::atmosphere::Meteorology *)((cmf::atmosphere::Meteorology const *)arg1)->copy();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -39808,6 +41382,8 @@ SWIGINTERN PyObject *_wrap_Meteorology_get_instrument_height(PyObject *SWIGUNUSE
   {
     try {
       result = (real)((cmf::atmosphere::Meteorology const *)arg1)->get_instrument_height();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -39837,6 +41413,8 @@ SWIGINTERN PyObject *_wrap_delete_Meteorology(PyObject *SWIGUNUSEDPARM(self), Py
   {
     try {
       delete arg1;
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -39916,6 +41494,8 @@ SWIGINTERN PyObject *_wrap_new_ConstantMeteorology__SWIG_0(PyObject *SWIGUNUSEDP
   {
     try {
       result = (cmf::atmosphere::ConstantMeteorology *)new cmf::atmosphere::ConstantMeteorology();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -39947,6 +41527,8 @@ SWIGINTERN PyObject *_wrap_new_ConstantMeteorology__SWIG_1(PyObject *SWIGUNUSEDP
   {
     try {
       result = (cmf::atmosphere::ConstantMeteorology *)new cmf::atmosphere::ConstantMeteorology((cmf::atmosphere::Weather const &)*arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -39978,6 +41560,8 @@ SWIGINTERN PyObject *_wrap_new_ConstantMeteorology__SWIG_2(PyObject *SWIGUNUSEDP
   {
     try {
       result = (cmf::atmosphere::ConstantMeteorology *)new cmf::atmosphere::ConstantMeteorology((cmf::atmosphere::ConstantMeteorology const &)*arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -40086,6 +41670,8 @@ SWIGINTERN PyObject *_wrap_ConstantMeteorology_copy(PyObject *SWIGUNUSEDPARM(sel
   {
     try {
       result = (cmf::atmosphere::ConstantMeteorology *)((cmf::atmosphere::ConstantMeteorology const *)arg1)->copy();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -40115,6 +41701,8 @@ SWIGINTERN PyObject *_wrap_delete_ConstantMeteorology(PyObject *SWIGUNUSEDPARM(s
   {
     try {
       delete arg1;
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -40860,6 +42448,8 @@ SWIGINTERN PyObject *_wrap_new_MeteoStation(PyObject *SWIGUNUSEDPARM(self), PyOb
   {
     try {
       result = (cmf::atmosphere::MeteoStation *)new cmf::atmosphere::MeteoStation((cmf::atmosphere::MeteoStation const &)*arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -40916,6 +42506,8 @@ SWIGINTERN PyObject *_wrap_MeteoStation_get_data(PyObject *SWIGUNUSEDPARM(self),
   {
     try {
       result = ((cmf::atmosphere::MeteoStation const *)arg1)->get_data(arg2,arg3);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -40972,6 +42564,8 @@ SWIGINTERN PyObject *_wrap_MeteoStation_SetSunshineFraction(PyObject *SWIGUNUSED
   {
     try {
       (arg1)->SetSunshineFraction(arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -41925,6 +43519,8 @@ SWIGINTERN PyObject *_wrap_delete_MeteoStation(PyObject *SWIGUNUSEDPARM(self), P
   {
     try {
       (void)arg1; delete smartarg1;
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -41954,7 +43550,7 @@ SWIGINTERN PyObject *_wrap_MeteoStationReference_get_station(PyObject *SWIGUNUSE
   void *argp1 = 0 ;
   int res1 = 0 ;
   PyObject *swig_obj[1] ;
-  cmf::atmosphere::meteo_station_pointer result;
+  cmf::atmosphere::MeteoStation::ptr result;
   
   if (!args) SWIG_fail;
   swig_obj[0] = args;
@@ -41966,6 +43562,8 @@ SWIGINTERN PyObject *_wrap_MeteoStationReference_get_station(PyObject *SWIGUNUSE
   {
     try {
       result = ((cmf::atmosphere::MeteoStationReference const *)arg1)->get_station();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -41983,7 +43581,7 @@ fail:
 
 SWIGINTERN PyObject *_wrap_new_MeteoStationReference__SWIG_0(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
-  cmf::atmosphere::meteo_station_pointer arg1 ;
+  cmf::atmosphere::MeteoStation::ptr arg1 ;
   cmf::geometry::Locatable *arg2 = 0 ;
   void *argp1 ;
   int res1 = 0 ;
@@ -41996,10 +43594,10 @@ SWIGINTERN PyObject *_wrap_new_MeteoStationReference__SWIG_0(PyObject *SWIGUNUSE
     int newmem = 0;
     res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_std__tr1__shared_ptrT_cmf__atmosphere__MeteoStation_t,  0 , &newmem);
     if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_MeteoStationReference" "', argument " "1"" of type '" "cmf::atmosphere::meteo_station_pointer""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_MeteoStationReference" "', argument " "1"" of type '" "cmf::atmosphere::MeteoStation::ptr""'"); 
     }
-    if (argp1) arg1 = *(reinterpret_cast< cmf::atmosphere::meteo_station_pointer * >(argp1));
-    if (newmem & SWIG_CAST_NEW_MEMORY) delete reinterpret_cast< cmf::atmosphere::meteo_station_pointer * >(argp1);
+    if (argp1) arg1 = *(reinterpret_cast< cmf::atmosphere::MeteoStation::ptr * >(argp1));
+    if (newmem & SWIG_CAST_NEW_MEMORY) delete reinterpret_cast< cmf::atmosphere::MeteoStation::ptr * >(argp1);
   }
   res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_cmf__geometry__Locatable,  0  | 0);
   if (!SWIG_IsOK(res2)) {
@@ -42012,6 +43610,8 @@ SWIGINTERN PyObject *_wrap_new_MeteoStationReference__SWIG_0(PyObject *SWIGUNUSE
   {
     try {
       result = (cmf::atmosphere::MeteoStationReference *)new cmf::atmosphere::MeteoStationReference(arg1,(cmf::geometry::Locatable const &)*arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -42025,6 +43625,49 @@ fail:
 
 
 SWIGINTERN PyObject *_wrap_new_MeteoStationReference__SWIG_1(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  cmf::atmosphere::MeteoStation::ptr arg1 ;
+  cmf::geometry::point arg2 ;
+  void *argp1 ;
+  int res1 = 0 ;
+  cmf::atmosphere::MeteoStationReference *result = 0 ;
+  
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_std__tr1__shared_ptrT_cmf__atmosphere__MeteoStation_t,  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_MeteoStationReference" "', argument " "1"" of type '" "cmf::atmosphere::MeteoStation::ptr""'"); 
+    }
+    if (argp1) arg1 = *(reinterpret_cast< cmf::atmosphere::MeteoStation::ptr * >(argp1));
+    if (newmem & SWIG_CAST_NEW_MEMORY) delete reinterpret_cast< cmf::atmosphere::MeteoStation::ptr * >(argp1);
+  }
+  {
+    cmf::geometry::point p;
+    if (((!convert_xyz_to_point(swig_obj[1],p)) || !convert_seq_to_point(swig_obj[1],p)))
+    {
+      PyErr_SetString(PyExc_ValueError,"The object to convert needs to be either a sequence of length 2 or 3 or an object exposing an x and y attribute of type float(z is used if present)");
+    }
+    arg2=p;
+  }
+  {
+    try {
+      result = (cmf::atmosphere::MeteoStationReference *)new cmf::atmosphere::MeteoStationReference(arg1,arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_cmf__atmosphere__MeteoStationReference, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_MeteoStationReference__SWIG_2(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   cmf::atmosphere::MeteoStationReference *arg1 = 0 ;
   void *argp1 = 0 ;
@@ -42043,6 +43686,8 @@ SWIGINTERN PyObject *_wrap_new_MeteoStationReference__SWIG_1(PyObject *SWIGUNUSE
   {
     try {
       result = (cmf::atmosphere::MeteoStationReference *)new cmf::atmosphere::MeteoStationReference((cmf::atmosphere::MeteoStationReference const &)*arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -42112,19 +43757,52 @@ SWIGINTERN PyObject *_wrap_new_MeteoStationReference(PyObject *self, PyObject *a
     }
   check_2:
     
+    if (argc == 2) {
+      SWIG_TypeRank _ranki = 0;
+      SWIG_TypeRank _rankm = 0;
+      SWIG_TypeRank _pi = 1;
+      int _v = 0;
+      {
+        int res = SWIG_ConvertPtr(argv[0], 0, SWIGTYPE_p_std__tr1__shared_ptrT_cmf__atmosphere__MeteoStation_t, 0);
+        _v = SWIG_CheckState(res);
+      }
+      if (!_v) goto check_3;
+      _ranki += _v*_pi;
+      _rankm += _pi;
+      _pi *= SWIG_MAXCASTRANK;
+      {
+        {
+          cmf::geometry::point p;
+          _v=convert_seq_to_point(argv[1],p) || convert_xyz_to_point(argv[1],p);
+        }
+      }
+      if (!_v) goto check_3;
+      _ranki += _v*_pi;
+      _rankm += _pi;
+      _pi *= SWIG_MAXCASTRANK;
+      if (!_index || (_ranki < _rank)) {
+        _rank = _ranki; _index = 3;
+        if (_rank == _rankm) goto dispatch;
+      }
+    }
+  check_3:
+    
   dispatch:
     switch(_index) {
     case 1:
-      return _wrap_new_MeteoStationReference__SWIG_1(self, argc, argv);
+      return _wrap_new_MeteoStationReference__SWIG_2(self, argc, argv);
     case 2:
       return _wrap_new_MeteoStationReference__SWIG_0(self, argc, argv);
+    case 3:
+      return _wrap_new_MeteoStationReference__SWIG_1(self, argc, argv);
     }
   }
   
 fail:
   SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number of arguments for overloaded function 'new_MeteoStationReference'.\n"
     "  Possible C/C++ prototypes are:\n"
-    "    cmf::atmosphere::MeteoStationReference(cmf::atmosphere::meteo_station_pointer,cmf::geometry::Locatable const &)\n"
+    "    cmf::atmosphere::MeteoStationReference(cmf::atmosphere::MeteoStation::ptr,cmf::geometry::Locatable const &)\n"
+    "    cmf::atmosphere::MeteoStationReference(cmf::atmosphere::MeteoStation::ptr,cmf::geometry::point)\n"
     "    cmf::atmosphere::MeteoStationReference(cmf::atmosphere::MeteoStationReference const &)\n");
   return NULL;
 }
@@ -42148,6 +43826,8 @@ SWIGINTERN PyObject *_wrap_MeteoStationReference_copy(PyObject *SWIGUNUSEDPARM(s
   {
     try {
       result = (cmf::atmosphere::MeteoStationReference *)((cmf::atmosphere::MeteoStationReference const *)arg1)->copy();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -42177,6 +43857,8 @@ SWIGINTERN PyObject *_wrap_delete_MeteoStationReference(PyObject *SWIGUNUSEDPARM
   {
     try {
       delete arg1;
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -42218,6 +43900,8 @@ SWIGINTERN PyObject *_wrap_MeteoStationList___len__(PyObject *SWIGUNUSEDPARM(sel
   {
     try {
       result = (int)((cmf::atmosphere::MeteoStationList const *)arg1)->size();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -42238,7 +43922,7 @@ SWIGINTERN PyObject *_wrap_MeteoStationList___getitem____SWIG_0(PyObject *SWIGUN
   int res1 = 0 ;
   int val2 ;
   int ecode2 = 0 ;
-  cmf::atmosphere::meteo_station_pointer result;
+  cmf::atmosphere::MeteoStation::ptr result;
   
   if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
   res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__atmosphere__MeteoStationList, 0 |  0 );
@@ -42254,6 +43938,8 @@ SWIGINTERN PyObject *_wrap_MeteoStationList___getitem____SWIG_0(PyObject *SWIGUN
   {
     try {
       result = ((cmf::atmosphere::MeteoStationList const *)arg1)->operator [](arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -42276,7 +43962,7 @@ SWIGINTERN PyObject *_wrap_MeteoStationList___getitem____SWIG_1(PyObject *SWIGUN
   void *argp1 = 0 ;
   int res1 = 0 ;
   int res2 = SWIG_OLDOBJ ;
-  cmf::atmosphere::meteo_station_pointer result;
+  cmf::atmosphere::MeteoStation::ptr result;
   
   if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
   res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__atmosphere__MeteoStationList, 0 |  0 );
@@ -42298,6 +43984,8 @@ SWIGINTERN PyObject *_wrap_MeteoStationList___getitem____SWIG_1(PyObject *SWIGUN
   {
     try {
       result = ((cmf::atmosphere::MeteoStationList const *)arg1)->operator []((std::string const &)*arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -42431,6 +44119,8 @@ SWIGINTERN PyObject *_wrap_MeteoStationList_calculate_Temp_lapse(PyObject *SWIGU
   {
     try {
       result = (double)(arg1)->calculate_Temp_lapse(arg2,arg3,arg4);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -42463,7 +44153,7 @@ SWIGINTERN PyObject *_wrap_MeteoStationList_add_station__SWIG_0(PyObject *SWIGUN
   int ecode5 = 0 ;
   double val6 ;
   int ecode6 = 0 ;
-  cmf::atmosphere::meteo_station_pointer result;
+  cmf::atmosphere::MeteoStation::ptr result;
   
   if ((nobjs < 2) || (nobjs > 8)) SWIG_fail;
   res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__atmosphere__MeteoStationList, 0 |  0 );
@@ -42521,6 +44211,8 @@ SWIGINTERN PyObject *_wrap_MeteoStationList_add_station__SWIG_0(PyObject *SWIGUN
   {
     try {
       result = (arg1)->add_station(arg2,arg3,arg4,arg5,arg6,arg7,arg8);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -42554,7 +44246,7 @@ SWIGINTERN PyObject *_wrap_MeteoStationList_add_station__SWIG_1(PyObject *SWIGUN
   int ecode5 = 0 ;
   double val6 ;
   int ecode6 = 0 ;
-  cmf::atmosphere::meteo_station_pointer result;
+  cmf::atmosphere::MeteoStation::ptr result;
   
   if ((nobjs < 3) || (nobjs > 8)) SWIG_fail;
   res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__atmosphere__MeteoStationList, 0 |  0 );
@@ -42613,6 +44305,8 @@ SWIGINTERN PyObject *_wrap_MeteoStationList_add_station__SWIG_1(PyObject *SWIGUN
   {
     try {
       result = (arg1)->add_station(arg2,arg3,arg4,arg5,arg6,arg7,arg8);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -42884,6 +44578,8 @@ SWIGINTERN PyObject *_wrap_MeteoStationList_remove_station(PyObject *SWIGUNUSEDP
   {
     try {
       result = (int)(arg1)->remove_station(arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -42904,6 +44600,8 @@ SWIGINTERN PyObject *_wrap_new_MeteoStationList__SWIG_0(PyObject *SWIGUNUSEDPARM
   {
     try {
       result = (cmf::atmosphere::MeteoStationList *)new cmf::atmosphere::MeteoStationList();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -42935,6 +44633,8 @@ SWIGINTERN PyObject *_wrap_new_MeteoStationList__SWIG_1(PyObject *SWIGUNUSEDPARM
   {
     try {
       result = (cmf::atmosphere::MeteoStationList *)new cmf::atmosphere::MeteoStationList((cmf::atmosphere::MeteoStationList const &)*arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -43040,6 +44740,8 @@ SWIGINTERN PyObject *_wrap_MeteoStationList_reference_to_nearest(PyObject *SWIGU
   {
     try {
       result = ((cmf::atmosphere::MeteoStationList const *)arg1)->reference_to_nearest((cmf::geometry::Locatable const &)*arg2,arg3);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -43069,6 +44771,8 @@ SWIGINTERN PyObject *_wrap_delete_MeteoStationList(PyObject *SWIGUNUSEDPARM(self
   {
     try {
       delete arg1;
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -43122,6 +44826,8 @@ SWIGINTERN PyObject *_wrap_RainCloud_get_cell(PyObject *SWIGUNUSEDPARM(self), Py
   {
     try {
       result = (cmf::upslope::Cell *) &((cmf::atmosphere::RainCloud const *)arg1)->get_cell();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -43156,6 +44862,8 @@ SWIGINTERN PyObject *_wrap_RainCloud_SWIGSharedPtrUpcast(PyObject *SWIGUNUSEDPAR
   {
     try {
       result = cmf_atmosphere_RainCloud_SWIGSharedPtrUpcast(arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -43200,6 +44908,8 @@ SWIGINTERN PyObject *_wrap_delete_RainCloud(PyObject *SWIGUNUSEDPARM(self), PyOb
   {
     try {
       (void)arg1; delete smartarg1;
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -43720,6 +45430,8 @@ SWIGINTERN PyObject *_wrap_Vegetation_RootFraction(PyObject *SWIGUNUSEDPARM(self
   {
     try {
       result = (double)((cmf::upslope::vegetation::Vegetation const *)arg1)->RootFraction(arg2,arg3);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -43821,6 +45533,8 @@ SWIGINTERN PyObject *_wrap_new_Vegetation(PyObject *SWIGUNUSEDPARM(self), PyObje
   {
     try {
       result = (cmf::upslope::vegetation::Vegetation *)new cmf::upslope::vegetation::Vegetation(arg1,arg2,arg3,arg4,arg5,arg6,arg7,arg8);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -43850,6 +45564,8 @@ SWIGINTERN PyObject *_wrap_delete_Vegetation(PyObject *SWIGUNUSEDPARM(self), PyO
   {
     try {
       delete arg1;
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -43921,6 +45637,8 @@ SWIGINTERN PyObject *_wrap_CellConnector_connect(PyObject *SWIGUNUSEDPARM(self),
   {
     try {
       ((cmf::upslope::CellConnector const *)arg1)->connect(*arg2,*arg3,arg4);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -43950,6 +45668,8 @@ SWIGINTERN PyObject *_wrap_delete_CellConnector(PyObject *SWIGUNUSEDPARM(self), 
   {
     try {
       delete arg1;
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -44143,6 +45863,8 @@ SWIGINTERN PyObject *_wrap_Cell_get_area(PyObject *SWIGUNUSEDPARM(self), PyObjec
   {
     try {
       result = (double)((cmf::upslope::Cell const *)arg1)->get_area();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -44172,6 +45894,8 @@ SWIGINTERN PyObject *_wrap_Cell_InvalidateSatDepth(PyObject *SWIGUNUSEDPARM(self
   {
     try {
       (arg1)->InvalidateSatDepth();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -44202,6 +45926,8 @@ SWIGINTERN PyObject *_wrap_Cell_get_saturated_depth(PyObject *SWIGUNUSEDPARM(sel
   {
     try {
       result = (real)(arg1)->get_saturated_depth();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -44238,6 +45964,87 @@ SWIGINTERN PyObject *_wrap_Cell_set_saturated_depth(PyObject *SWIGUNUSEDPARM(sel
   {
     try {
       (arg1)->set_saturated_depth(arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Cell_set_weather(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  cmf::upslope::Cell *arg1 = (cmf::upslope::Cell *) 0 ;
+  cmf::atmosphere::Weather *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject *swig_obj[2] ;
+  
+  if (!SWIG_Python_UnpackTuple(args,"Cell_set_weather",2,2,swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__upslope__Cell, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Cell_set_weather" "', argument " "1"" of type '" "cmf::upslope::Cell *""'"); 
+  }
+  arg1 = reinterpret_cast< cmf::upslope::Cell * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_cmf__atmosphere__Weather,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Cell_set_weather" "', argument " "2"" of type '" "cmf::atmosphere::Weather const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Cell_set_weather" "', argument " "2"" of type '" "cmf::atmosphere::Weather const &""'"); 
+  }
+  arg2 = reinterpret_cast< cmf::atmosphere::Weather * >(argp2);
+  {
+    try {
+      (arg1)->set_weather((cmf::atmosphere::Weather const &)*arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Cell_set_rainfall(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  cmf::upslope::Cell *arg1 = (cmf::upslope::Cell *) 0 ;
+  double arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  double val2 ;
+  int ecode2 = 0 ;
+  PyObject *swig_obj[2] ;
+  
+  if (!SWIG_Python_UnpackTuple(args,"Cell_set_rainfall",2,2,swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__upslope__Cell, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Cell_set_rainfall" "', argument " "1"" of type '" "cmf::upslope::Cell *""'"); 
+  }
+  arg1 = reinterpret_cast< cmf::upslope::Cell * >(argp1);
+  ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Cell_set_rainfall" "', argument " "2"" of type '" "double""'");
+  } 
+  arg2 = static_cast< double >(val2);
+  {
+    try {
+      (arg1)->set_rainfall(arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -44268,6 +46075,8 @@ SWIGINTERN PyObject *_wrap_Cell_get_surfacewater(PyObject *SWIGUNUSEDPARM(self),
   {
     try {
       result = (arg1)->get_surfacewater();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -44275,7 +46084,7 @@ SWIGINTERN PyObject *_wrap_Cell_get_surfacewater(PyObject *SWIGUNUSEDPARM(self),
   }
   {
     int dcast = 0;
-    /*@SWIG:C:\\Program Files\\pythonxy\\swig\\Lib\\typemaps\\swigmacros.swg,200,%formacro@*//*@SWIG:C:\\Program Files\\pythonxy\\swig\\Lib\\typemaps\\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf.i,131,%_node_down_cast@*/
+    /*@SWIG:C:\\Program Files\\pythonxy\\swig\\Lib\\typemaps\\swigmacros.swg,200,%formacro@*//*@SWIG:C:\\Program Files\\pythonxy\\swig\\Lib\\typemaps\\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf.i,133,%_node_down_cast@*/
     if (dcast==0 && result) /*check for cmf::river::OpenWaterStorage*/  {
       std::tr1::shared_ptr<cmf::river::OpenWaterStorage> output = std::tr1::dynamic_pointer_cast<cmf::river::OpenWaterStorage>(result);
       if (output) /*flux_node is cmf::river::OpenWaterStorage */ {
@@ -44285,7 +46094,7 @@ SWIGINTERN PyObject *_wrap_Cell_get_surfacewater(PyObject *SWIGUNUSEDPARM(self),
     }
     /*@SWIG@*/
     
-    /*@SWIG:C:\\Program Files\\pythonxy\\swig\\Lib\\typemaps\\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf.i,131,%_node_down_cast@*/
+    /*@SWIG:C:\\Program Files\\pythonxy\\swig\\Lib\\typemaps\\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf.i,133,%_node_down_cast@*/
     if (dcast==0 && result) /*check for cmf::water::DricheletBoundary*/  {
       std::tr1::shared_ptr<cmf::water::DricheletBoundary> output = std::tr1::dynamic_pointer_cast<cmf::water::DricheletBoundary>(result);
       if (output) /*flux_node is cmf::water::DricheletBoundary */ {
@@ -44325,6 +46134,8 @@ SWIGINTERN PyObject *_wrap_Cell_surfacewater_as_storage(PyObject *SWIGUNUSEDPARM
   {
     try {
       (arg1)->surfacewater_as_storage();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -44384,6 +46195,8 @@ SWIGINTERN PyObject *_wrap_Cell_add_storage(PyObject *SWIGUNUSEDPARM(self), PyOb
   {
     try {
       result = (arg1)->add_storage(arg2,arg3,arg4);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -44436,6 +46249,8 @@ SWIGINTERN PyObject *_wrap_Cell_remove_storage(PyObject *SWIGUNUSEDPARM(self), P
   {
     try {
       (arg1)->remove_storage(*arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -44466,6 +46281,8 @@ SWIGINTERN PyObject *_wrap_Cell_storage_count(PyObject *SWIGUNUSEDPARM(self), Py
   {
     try {
       result = (int)((cmf::upslope::Cell const *)arg1)->storage_count();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -44503,6 +46320,8 @@ SWIGINTERN PyObject *_wrap_Cell_get_storage(PyObject *SWIGUNUSEDPARM(self), PyOb
   {
     try {
       result = ((cmf::upslope::Cell const *)arg1)->get_storage(arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -44510,7 +46329,7 @@ SWIGINTERN PyObject *_wrap_Cell_get_storage(PyObject *SWIGUNUSEDPARM(self), PyOb
   }
   {
     int dcast = 0;
-    /*@SWIG:C:\\Program Files\\pythonxy\\swig\\Lib\\typemaps\\swigmacros.swg,200,%formacro@*//*@SWIG:C:\\Program Files\\pythonxy\\swig\\Lib\\typemaps\\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf.i,131,%_node_down_cast@*/
+    /*@SWIG:C:\\Program Files\\pythonxy\\swig\\Lib\\typemaps\\swigmacros.swg,200,%formacro@*//*@SWIG:C:\\Program Files\\pythonxy\\swig\\Lib\\typemaps\\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf.i,133,%_node_down_cast@*/
     if (dcast==0 && result) /*check for cmf::river::OpenWaterStorage*/  {
       std::tr1::shared_ptr<cmf::river::OpenWaterStorage> output = std::tr1::dynamic_pointer_cast<cmf::river::OpenWaterStorage>(result);
       if (output) /*flux_node is cmf::river::OpenWaterStorage */ {
@@ -44520,7 +46339,7 @@ SWIGINTERN PyObject *_wrap_Cell_get_storage(PyObject *SWIGUNUSEDPARM(self), PyOb
     }
     /*@SWIG@*/
     
-    /*@SWIG:C:\\Program Files\\pythonxy\\swig\\Lib\\typemaps\\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf.i,131,%_node_down_cast@*/
+    /*@SWIG:C:\\Program Files\\pythonxy\\swig\\Lib\\typemaps\\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf.i,133,%_node_down_cast@*/
     if (dcast==0 && result) /*check for cmf::water::WaterStorage*/  {
       std::tr1::shared_ptr<cmf::water::WaterStorage> output = std::tr1::dynamic_pointer_cast<cmf::water::WaterStorage>(result);
       if (output) /*flux_node is cmf::water::WaterStorage */ {
@@ -44561,6 +46380,8 @@ SWIGINTERN PyObject *_wrap_Cell_get_canopy(PyObject *SWIGUNUSEDPARM(self), PyObj
   {
     try {
       result = ((cmf::upslope::Cell const *)arg1)->get_canopy();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -44594,6 +46415,8 @@ SWIGINTERN PyObject *_wrap_Cell_get_snow(PyObject *SWIGUNUSEDPARM(self), PyObjec
   {
     try {
       result = ((cmf::upslope::Cell const *)arg1)->get_snow();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -44627,6 +46450,8 @@ SWIGINTERN PyObject *_wrap_Cell_snow_coverage(PyObject *SWIGUNUSEDPARM(self), Py
   {
     try {
       result = (real)((cmf::upslope::Cell const *)arg1)->snow_coverage();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -44657,6 +46482,8 @@ SWIGINTERN PyObject *_wrap_Cell_has_wet_leaves(PyObject *SWIGUNUSEDPARM(self), P
   {
     try {
       result = (bool)((cmf::upslope::Cell const *)arg1)->has_wet_leaves();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -44687,6 +46514,8 @@ SWIGINTERN PyObject *_wrap_Cell_has_surface_water(PyObject *SWIGUNUSEDPARM(self)
   {
     try {
       result = (bool)((cmf::upslope::Cell const *)arg1)->has_surface_water();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -44717,6 +46546,8 @@ SWIGINTERN PyObject *_wrap_Cell_get_vegetation(PyObject *SWIGUNUSEDPARM(self), P
   {
     try {
       result = ((cmf::upslope::Cell const *)arg1)->get_vegetation();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -44761,6 +46592,8 @@ SWIGINTERN PyObject *_wrap_Cell_set_vegetation(PyObject *SWIGUNUSEDPARM(self), P
   {
     try {
       (arg1)->set_vegetation(arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -44843,6 +46676,8 @@ SWIGINTERN PyObject *_wrap_Cell_project(PyObject *SWIGUNUSEDPARM(self), PyObject
   {
     try {
       result = (cmf::project *) &((cmf::upslope::Cell const *)arg1)->project();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -44876,6 +46711,8 @@ SWIGINTERN PyObject *_wrap_Cell_get_weather(PyObject *SWIGUNUSEDPARM(self), PyOb
   {
     try {
       result = ((cmf::upslope::Cell const *)arg1)->get_weather(arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -44906,6 +46743,8 @@ SWIGINTERN PyObject *_wrap_Cell_layer_count(PyObject *SWIGUNUSEDPARM(self), PyOb
   {
     try {
       result = (int)((cmf::upslope::Cell const *)arg1)->layer_count();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -44927,7 +46766,7 @@ SWIGINTERN PyObject *_wrap_Cell_get_layer(PyObject *SWIGUNUSEDPARM(self), PyObje
   int val2 ;
   int ecode2 = 0 ;
   PyObject *swig_obj[2] ;
-  cmf::upslope::layer_ptr result;
+  cmf::upslope::SoilLayer::ptr result;
   
   if (!SWIG_Python_UnpackTuple(args,"Cell_get_layer",2,2,swig_obj)) SWIG_fail;
   res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__upslope__Cell, 0 |  0 );
@@ -44943,6 +46782,8 @@ SWIGINTERN PyObject *_wrap_Cell_get_layer(PyObject *SWIGUNUSEDPARM(self), PyObje
   {
     try {
       result = ((cmf::upslope::Cell const *)arg1)->get_layer(arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -45003,6 +46844,8 @@ SWIGINTERN PyObject *_wrap_Cell_add_layer(PyObject *SWIGUNUSEDPARM(self), PyObje
   {
     try {
       (arg1)->add_layer(arg2,(cmf::upslope::RetentionCurve const &)*arg3,arg4);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -45032,6 +46875,8 @@ SWIGINTERN PyObject *_wrap_Cell_remove_last_layer(PyObject *SWIGUNUSEDPARM(self)
   {
     try {
       (arg1)->remove_last_layer();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -45061,6 +46906,8 @@ SWIGINTERN PyObject *_wrap_Cell_remove_layers(PyObject *SWIGUNUSEDPARM(self), Py
   {
     try {
       (arg1)->remove_layers();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -45090,6 +46937,8 @@ SWIGINTERN PyObject *_wrap_delete_Cell(PyObject *SWIGUNUSEDPARM(self), PyObject 
   {
     try {
       delete arg1;
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -45154,6 +47003,8 @@ SWIGINTERN PyObject *_wrap_new_Cell(PyObject *SWIGUNUSEDPARM(self), PyObject *ar
   {
     try {
       result = (cmf::upslope::Cell *)new cmf::upslope::Cell(arg1,arg2,arg3,arg4,*arg5);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -45184,6 +47035,8 @@ SWIGINTERN PyObject *_wrap_Cell_to_string(PyObject *SWIGUNUSEDPARM(self), PyObje
   {
     try {
       result = (arg1)->to_string();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -45214,6 +47067,8 @@ SWIGINTERN PyObject *_wrap_Cell_topology_get(PyObject *SWIGUNUSEDPARM(self), PyO
   {
     try {
       result = (cmf::upslope::Topology *)cmf_upslope_Cell_topology_get(arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -45244,6 +47099,8 @@ SWIGINTERN PyObject *_wrap_Cell_evaporation_get(PyObject *SWIGUNUSEDPARM(self), 
   {
     try {
       result = (cmf::water::flux_node::ptr *) &cmf_upslope_Cell_evaporation_get(arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -45277,6 +47134,8 @@ SWIGINTERN PyObject *_wrap_Cell_transpiration_get(PyObject *SWIGUNUSEDPARM(self)
   {
     try {
       result = (cmf::water::flux_node::ptr *) &cmf_upslope_Cell_transpiration_get(arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -45316,6 +47175,8 @@ SWIGINTERN PyObject *_wrap_Cell_meteorology_set(PyObject *SWIGUNUSEDPARM(self), 
   {
     try {
       cmf_upslope_Cell_meteorology_set(arg1,arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -45346,6 +47207,8 @@ SWIGINTERN PyObject *_wrap_Cell_meteorology_get(PyObject *SWIGUNUSEDPARM(self), 
   {
     try {
       result = (cmf::atmosphere::Meteorology *)cmf_upslope_Cell_meteorology_get(arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -45376,6 +47239,8 @@ SWIGINTERN PyObject *_wrap_Cell_rain_get(PyObject *SWIGUNUSEDPARM(self), PyObjec
   {
     try {
       result = (std::tr1::shared_ptr< cmf::atmosphere::RainCloud > *) &cmf_upslope_Cell_rain_get(arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -45385,6 +47250,38 @@ SWIGINTERN PyObject *_wrap_Cell_rain_get(PyObject *SWIGUNUSEDPARM(self), PyObjec
     std::tr1::shared_ptr<  cmf::atmosphere::RainCloud > *smartresult = *result ? new std::tr1::shared_ptr<  cmf::atmosphere::RainCloud >(*result) : 0;
     resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(smartresult), SWIGTYPE_p_std__tr1__shared_ptrT_cmf__atmosphere__RainCloud_t, SWIG_POINTER_OWN);
   }
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Cell_layers_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  cmf::upslope::Cell *arg1 = (cmf::upslope::Cell *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  cmf::upslope::layer_list *result = 0 ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__upslope__Cell, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Cell_layers_get" "', argument " "1"" of type '" "cmf::upslope::Cell *""'"); 
+  }
+  arg1 = reinterpret_cast< cmf::upslope::Cell * >(argp1);
+  {
+    try {
+      result = (cmf::upslope::layer_list *)cmf_upslope_Cell_layers_get(arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_cmf__upslope__layer_list, 0 |  0 );
   return resultobj;
 fail:
   return NULL;
@@ -45617,6 +47514,8 @@ SWIGINTERN PyObject *_wrap_Topology_flowwidth__SWIG_0(PyObject *SWIGUNUSEDPARM(s
   {
     try {
       result = (double)(arg1)->flowwidth(*arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -45656,6 +47555,8 @@ SWIGINTERN PyObject *_wrap_Topology_flowwidth__SWIG_1(PyObject *SWIGUNUSEDPARM(s
   {
     try {
       result = (double)(arg1)->flowwidth(*arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -45789,6 +47690,8 @@ SWIGINTERN PyObject *_wrap_Topology_AddNeighbor__SWIG_0(PyObject *SWIGUNUSEDPARM
   {
     try {
       (arg1)->AddNeighbor(*arg2,arg3);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -45835,6 +47738,8 @@ SWIGINTERN PyObject *_wrap_Topology_AddNeighbor__SWIG_1(PyObject *SWIGUNUSEDPARM
   {
     try {
       (arg1)->AddNeighbor(*arg2,arg3);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -45981,6 +47886,8 @@ SWIGINTERN PyObject *_wrap_Topology_RemoveNeighbor(PyObject *SWIGUNUSEDPARM(self
   {
     try {
       (arg1)->RemoveNeighbor(*arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -46011,6 +47918,8 @@ SWIGINTERN PyObject *_wrap_Topology_neighbor_count(PyObject *SWIGUNUSEDPARM(self
   {
     try {
       result = ((cmf::upslope::Topology const *)arg1)->neighbor_count();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -46050,6 +47959,8 @@ SWIGINTERN PyObject *_wrap_Topology_MainOutlet(PyObject *SWIGUNUSEDPARM(self), P
   {
     try {
       result = (cmf::upslope::Cell *)(arg1)->MainOutlet(arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -46080,6 +47991,8 @@ SWIGINTERN PyObject *_wrap_Topology_ContributingArea(PyObject *SWIGUNUSEDPARM(se
   {
     try {
       result = (double)((cmf::upslope::Topology const *)arg1)->ContributingArea();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -46112,6 +48025,8 @@ SWIGINTERN PyObject *_wrap_Topology_calculate_contributing_area(PyObject *SWIGUN
   {
     try {
       cmf::upslope::Topology::calculate_contributing_area((std::vector< cmf::upslope::Cell *,std::allocator< cmf::upslope::Cell * > > const &)*arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -46152,6 +48067,8 @@ SWIGINTERN PyObject *_wrap_Topology___eq__(PyObject *SWIGUNUSEDPARM(self), PyObj
   {
     try {
       result = (bool)(arg1)->operator ==((cmf::upslope::Topology const &)*arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -46181,6 +48098,8 @@ SWIGINTERN PyObject *_wrap_delete_Topology(PyObject *SWIGUNUSEDPARM(self), PyObj
   {
     try {
       delete arg1;
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -46218,6 +48137,8 @@ SWIGINTERN PyObject *_wrap_new_NeighborIterator(PyObject *SWIGUNUSEDPARM(self), 
   {
     try {
       result = (cmf::upslope::NeighborIterator *)new cmf::upslope::NeighborIterator(arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -46248,6 +48169,8 @@ SWIGINTERN PyObject *_wrap_NeighborIterator_cell(PyObject *SWIGUNUSEDPARM(self),
   {
     try {
       result = (cmf::upslope::Cell *) &(arg1)->cell();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -46278,6 +48201,8 @@ SWIGINTERN PyObject *_wrap_NeighborIterator_flowwidth(PyObject *SWIGUNUSEDPARM(s
   {
     try {
       result = (double)(arg1)->flowwidth();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -46308,6 +48233,8 @@ SWIGINTERN PyObject *_wrap_NeighborIterator_valid(PyObject *SWIGUNUSEDPARM(self)
   {
     try {
       result = (bool)((cmf::upslope::NeighborIterator const *)arg1)->valid();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -46338,6 +48265,8 @@ SWIGINTERN PyObject *_wrap_NeighborIterator_next(PyObject *SWIGUNUSEDPARM(self),
   {
     try {
       result = (cmf::upslope::NeighborIterator *) &(arg1)->next();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -46378,6 +48307,8 @@ SWIGINTERN PyObject *_wrap_NeighborIterator___eq__(PyObject *SWIGUNUSEDPARM(self
   {
     try {
       result = (bool)cmf_upslope_NeighborIterator___eq__(arg1,(cmf::upslope::NeighborIterator const &)*arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -46418,6 +48349,8 @@ SWIGINTERN PyObject *_wrap_NeighborIterator___neq__(PyObject *SWIGUNUSEDPARM(sel
   {
     try {
       result = (bool)cmf_upslope_NeighborIterator___neq__(arg1,(cmf::upslope::NeighborIterator const &)*arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -46447,6 +48380,8 @@ SWIGINTERN PyObject *_wrap_delete_NeighborIterator(PyObject *SWIGUNUSEDPARM(self
   {
     try {
       delete arg1;
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -46490,6 +48425,8 @@ SWIGINTERN PyObject *_wrap_cell_vector_iterator(PyObject *SWIGUNUSEDPARM(self), 
   {
     try {
       result = (swig::SwigPyIterator *)std_vector_Sl_cmf_upslope_Cell_Sm__Sg__iterator(arg1,arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -46520,6 +48457,8 @@ SWIGINTERN PyObject *_wrap_cell_vector___nonzero__(PyObject *SWIGUNUSEDPARM(self
   {
     try {
       result = (bool)std_vector_Sl_cmf_upslope_Cell_Sm__Sg____nonzero__((std::vector< cmf::upslope::Cell * > const *)arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -46550,6 +48489,8 @@ SWIGINTERN PyObject *_wrap_cell_vector___bool__(PyObject *SWIGUNUSEDPARM(self), 
   {
     try {
       result = (bool)std_vector_Sl_cmf_upslope_Cell_Sm__Sg____bool__((std::vector< cmf::upslope::Cell * > const *)arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -46580,6 +48521,8 @@ SWIGINTERN PyObject *_wrap_cell_vector___len__(PyObject *SWIGUNUSEDPARM(self), P
   {
     try {
       result = std_vector_Sl_cmf_upslope_Cell_Sm__Sg____len__((std::vector< cmf::upslope::Cell * > const *)arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -46616,6 +48559,8 @@ SWIGINTERN PyObject *_wrap_cell_vector_pop(PyObject *SWIGUNUSEDPARM(self), PyObj
         SWIG_exception_fail(SWIG_IndexError, (&_e)->what());
       }
       
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -46667,6 +48612,8 @@ SWIGINTERN PyObject *_wrap_cell_vector___getslice__(PyObject *SWIGUNUSEDPARM(sel
         SWIG_exception_fail(SWIG_IndexError, (&_e)->what());
       }
       
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -46733,6 +48680,8 @@ SWIGINTERN PyObject *_wrap_cell_vector___setslice__(PyObject *SWIGUNUSEDPARM(sel
         SWIG_exception_fail(SWIG_ValueError, (&_e)->what());
       }
       
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -46785,6 +48734,8 @@ SWIGINTERN PyObject *_wrap_cell_vector___delslice__(PyObject *SWIGUNUSEDPARM(sel
         SWIG_exception_fail(SWIG_IndexError, (&_e)->what());
       }
       
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -46826,6 +48777,8 @@ SWIGINTERN PyObject *_wrap_cell_vector___delitem____SWIG_0(PyObject *SWIGUNUSEDP
         SWIG_exception_fail(SWIG_IndexError, (&_e)->what());
       }
       
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -46864,6 +48817,8 @@ SWIGINTERN PyObject *_wrap_cell_vector___getitem____SWIG_0(PyObject *SWIGUNUSEDP
         SWIG_exception_fail(SWIG_IndexError, (&_e)->what());
       }
       
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -46917,6 +48872,8 @@ SWIGINTERN PyObject *_wrap_cell_vector___setitem____SWIG_0(PyObject *SWIGUNUSEDP
         SWIG_exception_fail(SWIG_ValueError, (&_e)->what());
       }
       
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -46956,6 +48913,8 @@ SWIGINTERN PyObject *_wrap_cell_vector___delitem____SWIG_1(PyObject *SWIGUNUSEDP
         SWIG_exception_fail(SWIG_IndexError, (&_e)->what());
       }
       
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -47084,6 +49043,8 @@ SWIGINTERN PyObject *_wrap_cell_vector___getitem____SWIG_1(PyObject *SWIGUNUSEDP
         SWIG_exception_fail(SWIG_IndexError, (&_e)->what());
       }
       
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -47219,6 +49180,8 @@ SWIGINTERN PyObject *_wrap_cell_vector___setitem____SWIG_1(PyObject *SWIGUNUSEDP
         SWIG_exception_fail(SWIG_IndexError, (&_e)->what());
       }
       
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -47358,6 +49321,8 @@ SWIGINTERN PyObject *_wrap_cell_vector_append(PyObject *SWIGUNUSEDPARM(self), Py
   {
     try {
       std_vector_Sl_cmf_upslope_Cell_Sm__Sg__append(arg1,arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -47378,6 +49343,8 @@ SWIGINTERN PyObject *_wrap_new_cell_vector__SWIG_0(PyObject *SWIGUNUSEDPARM(self
   {
     try {
       result = (std::vector< cmf::upslope::Cell * > *)new std::vector< cmf::upslope::Cell * >();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -47411,6 +49378,8 @@ SWIGINTERN PyObject *_wrap_new_cell_vector__SWIG_1(PyObject *SWIGUNUSEDPARM(self
   {
     try {
       result = (std::vector< cmf::upslope::Cell * > *)new std::vector< cmf::upslope::Cell * >((std::vector< cmf::upslope::Cell * > const &)*arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -47443,6 +49412,8 @@ SWIGINTERN PyObject *_wrap_cell_vector_empty(PyObject *SWIGUNUSEDPARM(self), PyO
   {
     try {
       result = (bool)((std::vector< cmf::upslope::Cell * > const *)arg1)->empty();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -47473,6 +49444,8 @@ SWIGINTERN PyObject *_wrap_cell_vector_size(PyObject *SWIGUNUSEDPARM(self), PyOb
   {
     try {
       result = ((std::vector< cmf::upslope::Cell * > const *)arg1)->size();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -47502,6 +49475,8 @@ SWIGINTERN PyObject *_wrap_cell_vector_clear(PyObject *SWIGUNUSEDPARM(self), PyO
   {
     try {
       (arg1)->clear();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -47541,6 +49516,8 @@ SWIGINTERN PyObject *_wrap_cell_vector_swap(PyObject *SWIGUNUSEDPARM(self), PyOb
   {
     try {
       (arg1)->swap(*arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -47571,6 +49548,8 @@ SWIGINTERN PyObject *_wrap_cell_vector_get_allocator(PyObject *SWIGUNUSEDPARM(se
   {
     try {
       result = ((std::vector< cmf::upslope::Cell * > const *)arg1)->get_allocator();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -47601,6 +49580,8 @@ SWIGINTERN PyObject *_wrap_cell_vector_begin(PyObject *SWIGUNUSEDPARM(self), PyO
   {
     try {
       result = ((std::vector< cmf::upslope::Cell * > const *)arg1)->begin();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -47632,6 +49613,8 @@ SWIGINTERN PyObject *_wrap_cell_vector_end(PyObject *SWIGUNUSEDPARM(self), PyObj
   {
     try {
       result = ((std::vector< cmf::upslope::Cell * > const *)arg1)->end();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -47663,6 +49646,8 @@ SWIGINTERN PyObject *_wrap_cell_vector_rbegin(PyObject *SWIGUNUSEDPARM(self), Py
   {
     try {
       result = ((std::vector< cmf::upslope::Cell * > const *)arg1)->rbegin();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -47694,6 +49679,8 @@ SWIGINTERN PyObject *_wrap_cell_vector_rend(PyObject *SWIGUNUSEDPARM(self), PyOb
   {
     try {
       result = ((std::vector< cmf::upslope::Cell * > const *)arg1)->rend();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -47723,6 +49710,8 @@ SWIGINTERN PyObject *_wrap_new_cell_vector__SWIG_2(PyObject *SWIGUNUSEDPARM(self
   {
     try {
       result = (std::vector< cmf::upslope::Cell * > *)new std::vector< cmf::upslope::Cell * >(arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -47752,6 +49741,8 @@ SWIGINTERN PyObject *_wrap_cell_vector_pop_back(PyObject *SWIGUNUSEDPARM(self), 
   {
     try {
       (arg1)->pop_back();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -47787,6 +49778,8 @@ SWIGINTERN PyObject *_wrap_cell_vector_resize__SWIG_0(PyObject *SWIGUNUSEDPARM(s
   {
     try {
       (arg1)->resize(arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -47829,6 +49822,8 @@ SWIGINTERN PyObject *_wrap_cell_vector_erase__SWIG_0(PyObject *SWIGUNUSEDPARM(se
   {
     try {
       result = (arg1)->erase(arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -47886,6 +49881,8 @@ SWIGINTERN PyObject *_wrap_cell_vector_erase__SWIG_1(PyObject *SWIGUNUSEDPARM(se
   {
     try {
       result = (arg1)->erase(arg2,arg3);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -48017,6 +50014,8 @@ SWIGINTERN PyObject *_wrap_new_cell_vector__SWIG_3(PyObject *SWIGUNUSEDPARM(self
   {
     try {
       result = (std::vector< cmf::upslope::Cell * > *)new std::vector< cmf::upslope::Cell * >(arg1,arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -48167,6 +50166,8 @@ SWIGINTERN PyObject *_wrap_cell_vector_push_back(PyObject *SWIGUNUSEDPARM(self),
   {
     try {
       (arg1)->push_back(arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -48197,6 +50198,8 @@ SWIGINTERN PyObject *_wrap_cell_vector_front(PyObject *SWIGUNUSEDPARM(self), PyO
   {
     try {
       result = (std::vector< cmf::upslope::Cell * >::value_type)((std::vector< cmf::upslope::Cell * > const *)arg1)->front();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -48227,6 +50230,8 @@ SWIGINTERN PyObject *_wrap_cell_vector_back(PyObject *SWIGUNUSEDPARM(self), PyOb
   {
     try {
       result = (std::vector< cmf::upslope::Cell * >::value_type)((std::vector< cmf::upslope::Cell * > const *)arg1)->back();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -48271,6 +50276,8 @@ SWIGINTERN PyObject *_wrap_cell_vector_assign(PyObject *SWIGUNUSEDPARM(self), Py
   {
     try {
       (arg1)->assign(arg2,arg3);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -48314,6 +50321,8 @@ SWIGINTERN PyObject *_wrap_cell_vector_resize__SWIG_1(PyObject *SWIGUNUSEDPARM(s
   {
     try {
       (arg1)->resize(arg2,arg3);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -48460,6 +50469,8 @@ SWIGINTERN PyObject *_wrap_cell_vector_insert__SWIG_0(PyObject *SWIGUNUSEDPARM(s
   {
     try {
       result = (arg1)->insert(arg2,arg3);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -48518,6 +50529,8 @@ SWIGINTERN PyObject *_wrap_cell_vector_insert__SWIG_1(PyObject *SWIGUNUSEDPARM(s
   {
     try {
       (arg1)->insert(arg2,arg3,arg4);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -48667,6 +50680,8 @@ SWIGINTERN PyObject *_wrap_cell_vector_reserve(PyObject *SWIGUNUSEDPARM(self), P
   {
     try {
       (arg1)->reserve(arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -48697,6 +50712,8 @@ SWIGINTERN PyObject *_wrap_cell_vector_capacity(PyObject *SWIGUNUSEDPARM(self), 
   {
     try {
       result = ((std::vector< cmf::upslope::Cell * > const *)arg1)->capacity();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -48726,6 +50743,8 @@ SWIGINTERN PyObject *_wrap_delete_cell_vector(PyObject *SWIGUNUSEDPARM(self), Py
   {
     try {
       delete arg1;
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -48790,6 +50809,8 @@ SWIGINTERN PyObject *_wrap_find_cell(PyObject *SWIGUNUSEDPARM(self), PyObject *a
   {
     try {
       result = (cmf::upslope::Cell *)cmf::upslope::find_cell((std::vector< cmf::upslope::Cell *,std::allocator< cmf::upslope::Cell * > > const &)*arg1,arg2,arg3);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -48827,6 +50848,8 @@ SWIGINTERN PyObject *_wrap_get_boundary_cells(PyObject *SWIGUNUSEDPARM(self), Py
   {
     try {
       result = cmf::upslope::get_boundary_cells((std::vector< cmf::upslope::Cell *,std::allocator< cmf::upslope::Cell * > > const &)*arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -48864,6 +50887,8 @@ SWIGINTERN PyObject *_wrap_get_connections(PyObject *SWIGUNUSEDPARM(self), PyObj
   {
     try {
       result = cmf::upslope::get_connections((std::vector< cmf::upslope::Cell *,std::allocator< cmf::upslope::Cell * > > const &)*arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -48920,6 +50945,8 @@ SWIGINTERN PyObject *_wrap_connect_cells_with_flux(PyObject *SWIGUNUSEDPARM(self
   {
     try {
       cmf::upslope::connect_cells_with_flux((std::vector< cmf::upslope::Cell *,std::allocator< cmf::upslope::Cell * > > const &)*arg1,(cmf::upslope::CellConnector const &)*arg2,arg3);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -48966,6 +50993,8 @@ SWIGINTERN PyObject *_wrap_fill_sinks(PyObject *SWIGUNUSEDPARM(self), PyObject *
   {
     try {
       result = (int)cmf::upslope::fill_sinks((std::vector< cmf::upslope::Cell *,std::allocator< cmf::upslope::Cell * > > const &)*arg1,arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -49003,6 +51032,8 @@ SWIGINTERN PyObject *_wrap_area(PyObject *SWIGUNUSEDPARM(self), PyObject *args) 
   {
     try {
       result = (double)cmf::upslope::area((std::vector< cmf::upslope::Cell *,std::allocator< cmf::upslope::Cell * > > const &)*arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -49020,7 +51051,7 @@ fail:
 SWIGINTERN PyObject *_wrap_set_meteo_station(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   cmf::upslope::cell_vector *arg1 = 0 ;
-  cmf::atmosphere::meteo_station_pointer arg2 ;
+  cmf::atmosphere::MeteoStation::ptr arg2 ;
   int res1 = SWIG_OLDOBJ ;
   void *argp2 ;
   int res2 = 0 ;
@@ -49042,14 +51073,16 @@ SWIGINTERN PyObject *_wrap_set_meteo_station(PyObject *SWIGUNUSEDPARM(self), PyO
     int newmem = 0;
     res2 = SWIG_ConvertPtrAndOwn(swig_obj[1], &argp2, SWIGTYPE_p_std__tr1__shared_ptrT_cmf__atmosphere__MeteoStation_t,  0 , &newmem);
     if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "set_meteo_station" "', argument " "2"" of type '" "cmf::atmosphere::meteo_station_pointer""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "set_meteo_station" "', argument " "2"" of type '" "cmf::atmosphere::MeteoStation::ptr""'"); 
     }
-    if (argp2) arg2 = *(reinterpret_cast< cmf::atmosphere::meteo_station_pointer * >(argp2));
-    if (newmem & SWIG_CAST_NEW_MEMORY) delete reinterpret_cast< cmf::atmosphere::meteo_station_pointer * >(argp2);
+    if (argp2) arg2 = *(reinterpret_cast< cmf::atmosphere::MeteoStation::ptr * >(argp2));
+    if (newmem & SWIG_CAST_NEW_MEMORY) delete reinterpret_cast< cmf::atmosphere::MeteoStation::ptr * >(argp2);
   }
   {
     try {
       cmf::upslope::set_meteo_station((std::vector< cmf::upslope::Cell *,std::allocator< cmf::upslope::Cell * > > const &)*arg1,arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -49101,6 +51134,8 @@ SWIGINTERN PyObject *_wrap_set_precipitation(PyObject *SWIGUNUSEDPARM(self), PyO
   {
     try {
       cmf::upslope::set_precipitation((std::vector< cmf::upslope::Cell *,std::allocator< cmf::upslope::Cell * > > const &)*arg1,arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -49138,6 +51173,8 @@ SWIGINTERN PyObject *_wrap_cell_positions(PyObject *SWIGUNUSEDPARM(self), PyObje
   {
     try {
       result = cmf::upslope::cell_positions((std::vector< cmf::upslope::Cell *,std::allocator< cmf::upslope::Cell * > > const &)*arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -49178,6 +51215,8 @@ SWIGINTERN PyObject *_wrap_cell_flux_directions(PyObject *SWIGUNUSEDPARM(self), 
   {
     try {
       result = cmf::upslope::cell_flux_directions((std::vector< cmf::upslope::Cell *,std::allocator< cmf::upslope::Cell * > > const &)*arg1,arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -49224,6 +51263,8 @@ SWIGINTERN PyObject *_wrap_pressure_to_waterhead(PyObject *SWIGUNUSEDPARM(self),
   {
     try {
       result = (double)cmf::upslope::pressure_to_waterhead(arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -49254,6 +51295,8 @@ SWIGINTERN PyObject *_wrap_waterhead_to_pressure(PyObject *SWIGUNUSEDPARM(self),
   {
     try {
       result = (double)cmf::upslope::waterhead_to_pressure(arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -49284,6 +51327,8 @@ SWIGINTERN PyObject *_wrap_pF_to_waterhead(PyObject *SWIGUNUSEDPARM(self), PyObj
   {
     try {
       result = (double)cmf::upslope::pF_to_waterhead(arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -49314,6 +51359,8 @@ SWIGINTERN PyObject *_wrap_waterhead_to_pF(PyObject *SWIGUNUSEDPARM(self), PyObj
   {
     try {
       result = (double)cmf::upslope::waterhead_to_pF(arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -49359,6 +51406,8 @@ SWIGINTERN PyObject *_wrap_RetentionCurve_K(PyObject *SWIGUNUSEDPARM(self), PyOb
   {
     try {
       result = (real)((cmf::upslope::RetentionCurve const *)arg1)->K(arg2,arg3);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -49406,6 +51455,8 @@ SWIGINTERN PyObject *_wrap_RetentionCurve_Wetness_eff(PyObject *SWIGUNUSEDPARM(s
   {
     try {
       result = (real)((cmf::upslope::RetentionCurve const *)arg1)->Wetness_eff(arg2,arg3);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -49443,6 +51494,8 @@ SWIGINTERN PyObject *_wrap_RetentionCurve_Porosity(PyObject *SWIGUNUSEDPARM(self
   {
     try {
       result = (real)((cmf::upslope::RetentionCurve const *)arg1)->Porosity(arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -49496,6 +51549,8 @@ SWIGINTERN PyObject *_wrap_RetentionCurve_VoidVolume(PyObject *SWIGUNUSEDPARM(se
   {
     try {
       result = (real)((cmf::upslope::RetentionCurve const *)arg1)->VoidVolume(arg2,arg3,arg4);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -49549,6 +51604,8 @@ SWIGINTERN PyObject *_wrap_RetentionCurve_FillHeight(PyObject *SWIGUNUSEDPARM(se
   {
     try {
       result = (real)((cmf::upslope::RetentionCurve const *)arg1)->FillHeight(arg2,arg3,arg4);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -49602,6 +51659,8 @@ SWIGINTERN PyObject *_wrap_RetentionCurve_Transmissivity(PyObject *SWIGUNUSEDPAR
   {
     try {
       result = (real)((cmf::upslope::RetentionCurve const *)arg1)->Transmissivity(arg2,arg3,arg4);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -49639,6 +51698,8 @@ SWIGINTERN PyObject *_wrap_RetentionCurve_Wetness(PyObject *SWIGUNUSEDPARM(self)
   {
     try {
       result = (real)((cmf::upslope::RetentionCurve const *)arg1)->Wetness(arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -49676,6 +51737,8 @@ SWIGINTERN PyObject *_wrap_RetentionCurve_Wetness_pF(PyObject *SWIGUNUSEDPARM(se
   {
     try {
       result = (real)((cmf::upslope::RetentionCurve const *)arg1)->Wetness_pF(arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -49713,6 +51776,8 @@ SWIGINTERN PyObject *_wrap_RetentionCurve_MatricPotential(PyObject *SWIGUNUSEDPA
   {
     try {
       result = (real)((cmf::upslope::RetentionCurve const *)arg1)->MatricPotential(arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -49743,6 +51808,8 @@ SWIGINTERN PyObject *_wrap_RetentionCurve_copy(PyObject *SWIGUNUSEDPARM(self), P
   {
     try {
       result = (cmf::upslope::RetentionCurve *)((cmf::upslope::RetentionCurve const *)arg1)->copy();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -49772,6 +51839,8 @@ SWIGINTERN PyObject *_wrap_delete_RetentionCurve(PyObject *SWIGUNUSEDPARM(self),
   {
     try {
       delete arg1;
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -49823,6 +51892,8 @@ SWIGINTERN PyObject *_wrap_BrooksCoreyRetentionCurve_SetKsat(PyObject *SWIGUNUSE
   {
     try {
       (arg1)->SetKsat(arg2,arg3);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -49869,6 +51940,8 @@ SWIGINTERN PyObject *_wrap_BrooksCoreyRetentionCurve_SetPorosity(PyObject *SWIGU
   {
     try {
       (arg1)->SetPorosity(arg2,arg3);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -50003,6 +52076,8 @@ SWIGINTERN PyObject *_wrap_BrooksCoreyRetentionCurve_b(PyObject *SWIGUNUSEDPARM(
   {
     try {
       result = (real)((cmf::upslope::BrooksCoreyRetentionCurve const *)arg1)->b();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -50039,6 +52114,8 @@ SWIGINTERN PyObject *_wrap_BrooksCoreyRetentionCurve_Set_b(PyObject *SWIGUNUSEDP
   {
     try {
       (arg1)->Set_b(arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -50130,6 +52207,8 @@ SWIGINTERN PyObject *_wrap_new_BrooksCoreyRetentionCurve(PyObject *SWIGUNUSEDPAR
   {
     try {
       result = (cmf::upslope::BrooksCoreyRetentionCurve *)new cmf::upslope::BrooksCoreyRetentionCurve(arg1,arg2,arg3,arg4,arg5,arg6,arg7);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -50203,6 +52282,8 @@ SWIGINTERN PyObject *_wrap_BrooksCoreyRetentionCurve_CreateFrom2Points(PyObject 
   {
     try {
       result = cmf::upslope::BrooksCoreyRetentionCurve::CreateFrom2Points(arg1,arg2,arg3,arg4,arg5,arg6);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -50233,6 +52314,8 @@ SWIGINTERN PyObject *_wrap_BrooksCoreyRetentionCurve_copy(PyObject *SWIGUNUSEDPA
   {
     try {
       result = (cmf::upslope::BrooksCoreyRetentionCurve *)((cmf::upslope::BrooksCoreyRetentionCurve const *)arg1)->copy();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -50262,6 +52345,8 @@ SWIGINTERN PyObject *_wrap_delete_BrooksCoreyRetentionCurve(PyObject *SWIGUNUSED
   {
     try {
       delete arg1;
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -50615,6 +52700,8 @@ SWIGINTERN PyObject *_wrap_VanGenuchtenMualem_copy(PyObject *SWIGUNUSEDPARM(self
   {
     try {
       result = (cmf::upslope::VanGenuchtenMualem *)((cmf::upslope::VanGenuchtenMualem const *)arg1)->copy();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -50635,6 +52722,8 @@ SWIGINTERN PyObject *_wrap_new_VanGenuchtenMualem__SWIG_0(PyObject *SWIGUNUSEDPA
   {
     try {
       result = (cmf::upslope::VanGenuchtenMualem *)new cmf::upslope::VanGenuchtenMualem();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -50697,6 +52786,8 @@ SWIGINTERN PyObject *_wrap_new_VanGenuchtenMualem__SWIG_1(PyObject *SWIGUNUSEDPA
   {
     try {
       result = (cmf::upslope::VanGenuchtenMualem *)new cmf::upslope::VanGenuchtenMualem(arg1,arg2,arg3,arg4,arg5);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -50825,6 +52916,8 @@ SWIGINTERN PyObject *_wrap_delete_VanGenuchtenMualem(PyObject *SWIGUNUSEDPARM(se
   {
     try {
       delete arg1;
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -51230,6 +53323,8 @@ SWIGINTERN PyObject *_wrap_LinearRetention_copy(PyObject *SWIGUNUSEDPARM(self), 
   {
     try {
       result = (cmf::upslope::LinearRetention *)((cmf::upslope::LinearRetention const *)arg1)->copy();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -51325,6 +53420,8 @@ SWIGINTERN PyObject *_wrap_new_LinearRetention(PyObject *SWIGUNUSEDPARM(self), P
   {
     try {
       result = (cmf::upslope::LinearRetention *)new cmf::upslope::LinearRetention(arg1,arg2,arg3,arg4,arg5,arg6,arg7,arg8);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -51354,6 +53451,8 @@ SWIGINTERN PyObject *_wrap_delete_LinearRetention(PyObject *SWIGUNUSEDPARM(self)
   {
     try {
       delete arg1;
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -51477,6 +53576,8 @@ SWIGINTERN PyObject *_wrap_SoilLayer_get_soil(PyObject *SWIGUNUSEDPARM(self), Py
   {
     try {
       result = (cmf::upslope::RetentionCurve *) &((cmf::upslope::SoilLayer const *)arg1)->get_soil();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -51556,96 +53657,8 @@ SWIGINTERN PyObject *_wrap_SoilLayer_set_soil(PyObject *SWIGUNUSEDPARM(self), Py
   {
     try {
       (arg1)->set_soil((cmf::upslope::RetentionCurve const &)*arg2);
-    } catch (const std::exception& e) {
-      SWIG_exception(SWIG_RuntimeError, e.what());
-    }
-    
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_SoilLayer_get_theta(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  cmf::upslope::SoilLayer *arg1 = (cmf::upslope::SoilLayer *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  std::tr1::shared_ptr< cmf::upslope::SoilLayer const > tempshared1 ;
-  std::tr1::shared_ptr< cmf::upslope::SoilLayer const > *smartarg1 = 0 ;
-  PyObject *swig_obj[1] ;
-  real result;
-  
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  {
-    int newmem = 0;
-    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_std__tr1__shared_ptrT_cmf__upslope__SoilLayer_t, 0 |  0 , &newmem);
-    if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SoilLayer_get_theta" "', argument " "1"" of type '" "cmf::upslope::SoilLayer const *""'"); 
-    }
-    if (newmem & SWIG_CAST_NEW_MEMORY) {
-      tempshared1 = *reinterpret_cast< std::tr1::shared_ptr< const cmf::upslope::SoilLayer > * >(argp1);
-      delete reinterpret_cast< std::tr1::shared_ptr< const cmf::upslope::SoilLayer > * >(argp1);
-      arg1 = const_cast< cmf::upslope::SoilLayer * >(tempshared1.get());
-    } else {
-      smartarg1 = reinterpret_cast< std::tr1::shared_ptr< const cmf::upslope::SoilLayer > * >(argp1);
-      arg1 = const_cast< cmf::upslope::SoilLayer * >((smartarg1 ? smartarg1->get() : 0));
-    }
-  }
-  {
-    try {
-      result = (real)((cmf::upslope::SoilLayer const *)arg1)->get_theta();
-    } catch (const std::exception& e) {
-      SWIG_exception(SWIG_RuntimeError, e.what());
-    }
-    
-  }
-  resultobj = SWIG_From_double(static_cast< double >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_SoilLayer_set_theta(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  cmf::upslope::SoilLayer *arg1 = (cmf::upslope::SoilLayer *) 0 ;
-  real arg2 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  std::tr1::shared_ptr< cmf::upslope::SoilLayer > tempshared1 ;
-  std::tr1::shared_ptr< cmf::upslope::SoilLayer > *smartarg1 = 0 ;
-  double val2 ;
-  int ecode2 = 0 ;
-  PyObject *swig_obj[2] ;
-  
-  if (!SWIG_Python_UnpackTuple(args,"SoilLayer_set_theta",2,2,swig_obj)) SWIG_fail;
-  {
-    int newmem = 0;
-    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_std__tr1__shared_ptrT_cmf__upslope__SoilLayer_t, 0 |  0 , &newmem);
-    if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SoilLayer_set_theta" "', argument " "1"" of type '" "cmf::upslope::SoilLayer *""'"); 
-    }
-    if (newmem & SWIG_CAST_NEW_MEMORY) {
-      tempshared1 = *reinterpret_cast< std::tr1::shared_ptr<  cmf::upslope::SoilLayer > * >(argp1);
-      delete reinterpret_cast< std::tr1::shared_ptr<  cmf::upslope::SoilLayer > * >(argp1);
-      arg1 = const_cast< cmf::upslope::SoilLayer * >(tempshared1.get());
-    } else {
-      smartarg1 = reinterpret_cast< std::tr1::shared_ptr<  cmf::upslope::SoilLayer > * >(argp1);
-      arg1 = const_cast< cmf::upslope::SoilLayer * >((smartarg1 ? smartarg1->get() : 0));
-    }
-  }
-  ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "SoilLayer_set_theta" "', argument " "2"" of type '" "real""'");
-  } 
-  arg2 = static_cast< real >(val2);
-  {
-    try {
-      (arg1)->set_theta(arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -51688,6 +53701,8 @@ SWIGINTERN PyObject *_wrap_SoilLayer_get_capacity(PyObject *SWIGUNUSEDPARM(self)
   {
     try {
       result = (real)((cmf::upslope::SoilLayer const *)arg1)->get_capacity();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -51730,6 +53745,8 @@ SWIGINTERN PyObject *_wrap_SoilLayer_get_saturated_depth(PyObject *SWIGUNUSEDPAR
   {
     try {
       result = (real)((cmf::upslope::SoilLayer const *)arg1)->get_saturated_depth();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -51802,6 +53819,8 @@ SWIGINTERN PyObject *_wrap_SoilLayer_get_flow_crosssection(PyObject *SWIGUNUSEDP
   {
     try {
       result = (real)((cmf::upslope::SoilLayer const *)arg1)->get_flow_crosssection((cmf::upslope::SoilLayer const &)*arg2,arg3);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -51836,6 +53855,8 @@ SWIGINTERN PyObject *_wrap_SoilLayer_cast(PyObject *SWIGUNUSEDPARM(self), PyObje
   {
     try {
       result = cmf::upslope::SoilLayer::cast(arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -51873,6 +53894,8 @@ SWIGINTERN PyObject *_wrap_SoilLayer_SWIGSharedPtrUpcast(PyObject *SWIGUNUSEDPAR
   {
     try {
       result = cmf_upslope_SoilLayer_SWIGSharedPtrUpcast(arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -51918,6 +53941,8 @@ SWIGINTERN PyObject *_wrap_SoilLayer_gravitational_potential_get(PyObject *SWIGU
   {
     try {
       result = (real)cmf_upslope_SoilLayer_gravitational_potential_get(arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -51960,6 +53985,8 @@ SWIGINTERN PyObject *_wrap_SoilLayer_matrix_potential_get(PyObject *SWIGUNUSEDPA
   {
     try {
       result = (real)cmf_upslope_SoilLayer_matrix_potential_get(arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -52008,6 +54035,8 @@ SWIGINTERN PyObject *_wrap_SoilLayer_wetness_set(PyObject *SWIGUNUSEDPARM(self),
   {
     try {
       cmf_upslope_SoilLayer_wetness_set(arg1,arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -52050,6 +54079,102 @@ SWIGINTERN PyObject *_wrap_SoilLayer_wetness_get(PyObject *SWIGUNUSEDPARM(self),
   {
     try {
       result = (real)cmf_upslope_SoilLayer_wetness_get(arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+    
+  }
+  resultobj = SWIG_From_double(static_cast< double >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_SoilLayer_theta_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  cmf::upslope::SoilLayer *arg1 = (cmf::upslope::SoilLayer *) 0 ;
+  real arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  std::tr1::shared_ptr< cmf::upslope::SoilLayer > tempshared1 ;
+  std::tr1::shared_ptr< cmf::upslope::SoilLayer > *smartarg1 = 0 ;
+  double val2 ;
+  int ecode2 = 0 ;
+  PyObject *swig_obj[2] ;
+  
+  if (!SWIG_Python_UnpackTuple(args,"SoilLayer_theta_set",2,2,swig_obj)) SWIG_fail;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_std__tr1__shared_ptrT_cmf__upslope__SoilLayer_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SoilLayer_theta_set" "', argument " "1"" of type '" "cmf::upslope::SoilLayer *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< std::tr1::shared_ptr<  cmf::upslope::SoilLayer > * >(argp1);
+      delete reinterpret_cast< std::tr1::shared_ptr<  cmf::upslope::SoilLayer > * >(argp1);
+      arg1 = const_cast< cmf::upslope::SoilLayer * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< std::tr1::shared_ptr<  cmf::upslope::SoilLayer > * >(argp1);
+      arg1 = const_cast< cmf::upslope::SoilLayer * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "SoilLayer_theta_set" "', argument " "2"" of type '" "real""'");
+  } 
+  arg2 = static_cast< real >(val2);
+  {
+    try {
+      cmf_upslope_SoilLayer_theta_set(arg1,arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_SoilLayer_theta_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  cmf::upslope::SoilLayer *arg1 = (cmf::upslope::SoilLayer *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  std::tr1::shared_ptr< cmf::upslope::SoilLayer > tempshared1 ;
+  std::tr1::shared_ptr< cmf::upslope::SoilLayer > *smartarg1 = 0 ;
+  PyObject *swig_obj[1] ;
+  real result;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_std__tr1__shared_ptrT_cmf__upslope__SoilLayer_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SoilLayer_theta_get" "', argument " "1"" of type '" "cmf::upslope::SoilLayer *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< std::tr1::shared_ptr<  cmf::upslope::SoilLayer > * >(argp1);
+      delete reinterpret_cast< std::tr1::shared_ptr<  cmf::upslope::SoilLayer > * >(argp1);
+      arg1 = const_cast< cmf::upslope::SoilLayer * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< std::tr1::shared_ptr<  cmf::upslope::SoilLayer > * >(argp1);
+      arg1 = const_cast< cmf::upslope::SoilLayer * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  {
+    try {
+      result = (real)cmf_upslope_SoilLayer_theta_get(arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -52092,6 +54217,8 @@ SWIGINTERN PyObject *_wrap_SoilLayer_K_get(PyObject *SWIGUNUSEDPARM(self), PyObj
   {
     try {
       result = (real)cmf_upslope_SoilLayer_K_get(arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -52134,6 +54261,8 @@ SWIGINTERN PyObject *_wrap_SoilLayer_Ksat_get(PyObject *SWIGUNUSEDPARM(self), Py
   {
     try {
       result = (real)cmf_upslope_SoilLayer_Ksat_get(arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -52176,6 +54305,8 @@ SWIGINTERN PyObject *_wrap_SoilLayer_thickness_get(PyObject *SWIGUNUSEDPARM(self
   {
     try {
       result = (real)cmf_upslope_SoilLayer_thickness_get(arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -52218,6 +54349,8 @@ SWIGINTERN PyObject *_wrap_SoilLayer_lower_boundary_get(PyObject *SWIGUNUSEDPARM
   {
     try {
       result = (real)cmf_upslope_SoilLayer_lower_boundary_get(arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -52260,6 +54393,8 @@ SWIGINTERN PyObject *_wrap_SoilLayer_upper_boundary_get(PyObject *SWIGUNUSEDPARM
   {
     try {
       result = (real)cmf_upslope_SoilLayer_upper_boundary_get(arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -52302,12 +54437,108 @@ SWIGINTERN PyObject *_wrap_SoilLayer_porosity_get(PyObject *SWIGUNUSEDPARM(self)
   {
     try {
       result = (real)cmf_upslope_SoilLayer_porosity_get(arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
     
   }
   resultobj = SWIG_From_double(static_cast< double >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_SoilLayer_upper_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  cmf::upslope::SoilLayer *arg1 = (cmf::upslope::SoilLayer *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  std::tr1::shared_ptr< cmf::upslope::SoilLayer > tempshared1 ;
+  std::tr1::shared_ptr< cmf::upslope::SoilLayer > *smartarg1 = 0 ;
+  PyObject *swig_obj[1] ;
+  cmf::upslope::SoilLayer *result = 0 ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_std__tr1__shared_ptrT_cmf__upslope__SoilLayer_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SoilLayer_upper_get" "', argument " "1"" of type '" "cmf::upslope::SoilLayer *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< std::tr1::shared_ptr<  cmf::upslope::SoilLayer > * >(argp1);
+      delete reinterpret_cast< std::tr1::shared_ptr<  cmf::upslope::SoilLayer > * >(argp1);
+      arg1 = const_cast< cmf::upslope::SoilLayer * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< std::tr1::shared_ptr<  cmf::upslope::SoilLayer > * >(argp1);
+      arg1 = const_cast< cmf::upslope::SoilLayer * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  {
+    try {
+      result = (cmf::upslope::SoilLayer *) &cmf_upslope_SoilLayer_upper_get(arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+    
+  }
+  {
+    std::tr1::shared_ptr< const cmf::upslope::SoilLayer > *smartresult = new std::tr1::shared_ptr< const cmf::upslope::SoilLayer >(result SWIG_NO_NULL_DELETER_0);
+    resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(smartresult), SWIGTYPE_p_std__tr1__shared_ptrT_cmf__upslope__SoilLayer_t, SWIG_POINTER_OWN);
+  }
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_SoilLayer_lower_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  cmf::upslope::SoilLayer *arg1 = (cmf::upslope::SoilLayer *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  std::tr1::shared_ptr< cmf::upslope::SoilLayer > tempshared1 ;
+  std::tr1::shared_ptr< cmf::upslope::SoilLayer > *smartarg1 = 0 ;
+  PyObject *swig_obj[1] ;
+  cmf::upslope::SoilLayer *result = 0 ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_std__tr1__shared_ptrT_cmf__upslope__SoilLayer_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SoilLayer_lower_get" "', argument " "1"" of type '" "cmf::upslope::SoilLayer *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< std::tr1::shared_ptr<  cmf::upslope::SoilLayer > * >(argp1);
+      delete reinterpret_cast< std::tr1::shared_ptr<  cmf::upslope::SoilLayer > * >(argp1);
+      arg1 = const_cast< cmf::upslope::SoilLayer * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< std::tr1::shared_ptr<  cmf::upslope::SoilLayer > * >(argp1);
+      arg1 = const_cast< cmf::upslope::SoilLayer * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  {
+    try {
+      result = (cmf::upslope::SoilLayer *) &cmf_upslope_SoilLayer_lower_get(arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+    
+  }
+  {
+    std::tr1::shared_ptr< const cmf::upslope::SoilLayer > *smartresult = new std::tr1::shared_ptr< const cmf::upslope::SoilLayer >(result SWIG_NO_NULL_DELETER_0);
+    resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(smartresult), SWIGTYPE_p_std__tr1__shared_ptrT_cmf__upslope__SoilLayer_t, SWIG_POINTER_OWN);
+  }
   return resultobj;
 fail:
   return NULL;
@@ -52343,6 +54574,8 @@ SWIGINTERN PyObject *_wrap_delete_SoilLayer(PyObject *SWIGUNUSEDPARM(self), PyOb
   {
     try {
       (void)arg1; delete smartarg1;
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -52360,6 +54593,1161 @@ SWIGINTERN PyObject *SoilLayer_swigregister(PyObject *SWIGUNUSEDPARM(self), PyOb
   if (!SWIG_Python_UnpackTuple(args,(char*)"swigregister", 1, 1,&obj)) return NULL;
   SWIG_TypeNewClientData(SWIGTYPE_p_std__tr1__shared_ptrT_cmf__upslope__SoilLayer_t, SWIG_NewClientData(obj));
   return SWIG_Py_Void();
+}
+
+SWIGINTERN PyObject *_wrap_new_layer_list__SWIG_0(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  cmf::upslope::layer_list *arg1 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  cmf::upslope::layer_list *result = 0 ;
+  
+  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_cmf__upslope__layer_list,  0  | 0);
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_layer_list" "', argument " "1"" of type '" "cmf::upslope::layer_list const &""'"); 
+  }
+  if (!argp1) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_layer_list" "', argument " "1"" of type '" "cmf::upslope::layer_list const &""'"); 
+  }
+  arg1 = reinterpret_cast< cmf::upslope::layer_list * >(argp1);
+  {
+    try {
+      result = (cmf::upslope::layer_list *)new cmf::upslope::layer_list((cmf::upslope::layer_list const &)*arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_cmf__upslope__layer_list, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_layer_list__SWIG_1(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **SWIGUNUSEDPARM(swig_obj)) {
+  PyObject *resultobj = 0;
+  cmf::upslope::layer_list *result = 0 ;
+  
+  if ((nobjs < 0) || (nobjs > 0)) SWIG_fail;
+  {
+    try {
+      result = (cmf::upslope::layer_list *)new cmf::upslope::layer_list();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_cmf__upslope__layer_list, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_layer_list__SWIG_2(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  cmf::water::node_list *arg1 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  cmf::upslope::layer_list *result = 0 ;
+  
+  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_cmf__water__node_list,  0  | 0);
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_layer_list" "', argument " "1"" of type '" "cmf::water::node_list const &""'"); 
+  }
+  if (!argp1) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_layer_list" "', argument " "1"" of type '" "cmf::water::node_list const &""'"); 
+  }
+  arg1 = reinterpret_cast< cmf::water::node_list * >(argp1);
+  {
+    try {
+      result = (cmf::upslope::layer_list *)new cmf::upslope::layer_list((cmf::water::node_list const &)*arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_cmf__upslope__layer_list, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_layer_list(PyObject *self, PyObject *args) {
+  int argc;
+  PyObject *argv[2];
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args,"new_layer_list",0,1,argv))) SWIG_fail;
+  --argc;
+  {
+    unsigned long _index = 0;
+    SWIG_TypeRank _rank = 0; 
+    if (argc == 0) {
+      SWIG_TypeRank _ranki = 0;
+      SWIG_TypeRank _rankm = 0;
+      if (!_index || (_ranki < _rank)) {
+        _rank = _ranki; _index = 1;
+        if (_rank == _rankm) goto dispatch;
+      }
+    }
+    if (argc == 1) {
+      SWIG_TypeRank _ranki = 0;
+      SWIG_TypeRank _rankm = 0;
+      SWIG_TypeRank _pi = 1;
+      int _v = 0;
+      {
+        int res = SWIG_ConvertPtr(argv[0], 0, SWIGTYPE_p_cmf__upslope__layer_list, 0);
+        _v = SWIG_CheckState(res);
+      }
+      if (!_v) goto check_2;
+      _ranki += _v*_pi;
+      _rankm += _pi;
+      _pi *= SWIG_MAXCASTRANK;
+      if (!_index || (_ranki < _rank)) {
+        _rank = _ranki; _index = 2;
+        if (_rank == _rankm) goto dispatch;
+      }
+    }
+  check_2:
+    
+    if (argc == 1) {
+      SWIG_TypeRank _ranki = 0;
+      SWIG_TypeRank _rankm = 0;
+      SWIG_TypeRank _pi = 1;
+      int _v = 0;
+      {
+        int res = SWIG_ConvertPtr(argv[0], 0, SWIGTYPE_p_cmf__water__node_list, 0);
+        _v = SWIG_CheckState(res);
+      }
+      if (!_v) goto check_3;
+      _ranki += _v*_pi;
+      _rankm += _pi;
+      _pi *= SWIG_MAXCASTRANK;
+      if (!_index || (_ranki < _rank)) {
+        _rank = _ranki; _index = 3;
+        if (_rank == _rankm) goto dispatch;
+      }
+    }
+  check_3:
+    
+  dispatch:
+    switch(_index) {
+    case 1:
+      return _wrap_new_layer_list__SWIG_1(self, argc, argv);
+    case 2:
+      return _wrap_new_layer_list__SWIG_0(self, argc, argv);
+    case 3:
+      return _wrap_new_layer_list__SWIG_2(self, argc, argv);
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number of arguments for overloaded function 'new_layer_list'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    cmf::upslope::layer_list(cmf::upslope::layer_list const &)\n"
+    "    cmf::upslope::layer_list()\n"
+    "    cmf::upslope::layer_list(cmf::water::node_list const &)\n");
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_layer_list_pop(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  cmf::upslope::layer_list *arg1 = (cmf::upslope::layer_list *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  cmf::upslope::SoilLayer::ptr result;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__upslope__layer_list, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "layer_list_pop" "', argument " "1"" of type '" "cmf::upslope::layer_list *""'"); 
+  }
+  arg1 = reinterpret_cast< cmf::upslope::layer_list * >(argp1);
+  {
+    try {
+      result = (arg1)->pop();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+    
+  }
+  {
+    std::tr1::shared_ptr<  cmf::upslope::SoilLayer > *smartresult = result ? new std::tr1::shared_ptr<  cmf::upslope::SoilLayer >(result) : 0;
+    resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(smartresult), SWIGTYPE_p_std__tr1__shared_ptrT_cmf__upslope__SoilLayer_t, SWIG_POINTER_OWN);
+  }
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_layer_list_append__SWIG_0(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  cmf::upslope::layer_list *arg1 = (cmf::upslope::layer_list *) 0 ;
+  cmf::upslope::SoilLayer::ptr arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 ;
+  int res2 = 0 ;
+  cmf::upslope::layer_list *result = 0 ;
+  
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__upslope__layer_list, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "layer_list_append" "', argument " "1"" of type '" "cmf::upslope::layer_list *""'"); 
+  }
+  arg1 = reinterpret_cast< cmf::upslope::layer_list * >(argp1);
+  {
+    int newmem = 0;
+    res2 = SWIG_ConvertPtrAndOwn(swig_obj[1], &argp2, SWIGTYPE_p_std__tr1__shared_ptrT_cmf__upslope__SoilLayer_t,  0 , &newmem);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "layer_list_append" "', argument " "2"" of type '" "cmf::upslope::SoilLayer::ptr""'"); 
+    }
+    if (argp2) arg2 = *(reinterpret_cast< cmf::upslope::SoilLayer::ptr * >(argp2));
+    if (newmem & SWIG_CAST_NEW_MEMORY) delete reinterpret_cast< cmf::upslope::SoilLayer::ptr * >(argp2);
+  }
+  {
+    try {
+      result = (cmf::upslope::layer_list *) &(arg1)->append(arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_cmf__upslope__layer_list, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_layer_list_append__SWIG_1(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  cmf::upslope::layer_list *arg1 = (cmf::upslope::layer_list *) 0 ;
+  cmf::upslope::layer_list *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  cmf::upslope::layer_list *result = 0 ;
+  
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__upslope__layer_list, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "layer_list_append" "', argument " "1"" of type '" "cmf::upslope::layer_list *""'"); 
+  }
+  arg1 = reinterpret_cast< cmf::upslope::layer_list * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_cmf__upslope__layer_list,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "layer_list_append" "', argument " "2"" of type '" "cmf::upslope::layer_list const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "layer_list_append" "', argument " "2"" of type '" "cmf::upslope::layer_list const &""'"); 
+  }
+  arg2 = reinterpret_cast< cmf::upslope::layer_list * >(argp2);
+  {
+    try {
+      result = (cmf::upslope::layer_list *) &(arg1)->append((cmf::upslope::layer_list const &)*arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_cmf__upslope__layer_list, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_layer_list_append__SWIG_2(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  cmf::upslope::layer_list *arg1 = (cmf::upslope::layer_list *) 0 ;
+  cmf::water::node_list *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  cmf::upslope::layer_list *result = 0 ;
+  
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__upslope__layer_list, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "layer_list_append" "', argument " "1"" of type '" "cmf::upslope::layer_list *""'"); 
+  }
+  arg1 = reinterpret_cast< cmf::upslope::layer_list * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_cmf__water__node_list,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "layer_list_append" "', argument " "2"" of type '" "cmf::water::node_list const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "layer_list_append" "', argument " "2"" of type '" "cmf::water::node_list const &""'"); 
+  }
+  arg2 = reinterpret_cast< cmf::water::node_list * >(argp2);
+  {
+    try {
+      result = (cmf::upslope::layer_list *) &(arg1)->append((cmf::water::node_list const &)*arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_cmf__upslope__layer_list, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_layer_list_append(PyObject *self, PyObject *args) {
+  int argc;
+  PyObject *argv[3];
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args,"layer_list_append",0,2,argv))) SWIG_fail;
+  --argc;
+  {
+    unsigned long _index = 0;
+    SWIG_TypeRank _rank = 0; 
+    if (argc == 2) {
+      SWIG_TypeRank _ranki = 0;
+      SWIG_TypeRank _rankm = 0;
+      SWIG_TypeRank _pi = 1;
+      int _v = 0;
+      {
+        void *vptr = 0;
+        int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_cmf__upslope__layer_list, 0);
+        _v = SWIG_CheckState(res);
+      }
+      if (!_v) goto check_1;
+      _ranki += _v*_pi;
+      _rankm += _pi;
+      _pi *= SWIG_MAXCASTRANK;
+      {
+        int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_std__tr1__shared_ptrT_cmf__upslope__SoilLayer_t, 0);
+        _v = SWIG_CheckState(res);
+      }
+      if (!_v) goto check_1;
+      _ranki += _v*_pi;
+      _rankm += _pi;
+      _pi *= SWIG_MAXCASTRANK;
+      if (!_index || (_ranki < _rank)) {
+        _rank = _ranki; _index = 1;
+        if (_rank == _rankm) goto dispatch;
+      }
+    }
+  check_1:
+    
+    if (argc == 2) {
+      SWIG_TypeRank _ranki = 0;
+      SWIG_TypeRank _rankm = 0;
+      SWIG_TypeRank _pi = 1;
+      int _v = 0;
+      {
+        void *vptr = 0;
+        int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_cmf__upslope__layer_list, 0);
+        _v = SWIG_CheckState(res);
+      }
+      if (!_v) goto check_2;
+      _ranki += _v*_pi;
+      _rankm += _pi;
+      _pi *= SWIG_MAXCASTRANK;
+      {
+        int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_cmf__upslope__layer_list, 0);
+        _v = SWIG_CheckState(res);
+      }
+      if (!_v) goto check_2;
+      _ranki += _v*_pi;
+      _rankm += _pi;
+      _pi *= SWIG_MAXCASTRANK;
+      if (!_index || (_ranki < _rank)) {
+        _rank = _ranki; _index = 2;
+        if (_rank == _rankm) goto dispatch;
+      }
+    }
+  check_2:
+    
+    if (argc == 2) {
+      SWIG_TypeRank _ranki = 0;
+      SWIG_TypeRank _rankm = 0;
+      SWIG_TypeRank _pi = 1;
+      int _v = 0;
+      {
+        void *vptr = 0;
+        int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_cmf__upslope__layer_list, 0);
+        _v = SWIG_CheckState(res);
+      }
+      if (!_v) goto check_3;
+      _ranki += _v*_pi;
+      _rankm += _pi;
+      _pi *= SWIG_MAXCASTRANK;
+      {
+        int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_cmf__water__node_list, 0);
+        _v = SWIG_CheckState(res);
+      }
+      if (!_v) goto check_3;
+      _ranki += _v*_pi;
+      _rankm += _pi;
+      _pi *= SWIG_MAXCASTRANK;
+      if (!_index || (_ranki < _rank)) {
+        _rank = _ranki; _index = 3;
+        if (_rank == _rankm) goto dispatch;
+      }
+    }
+  check_3:
+    
+  dispatch:
+    switch(_index) {
+    case 1:
+      return _wrap_layer_list_append__SWIG_0(self, argc, argv);
+    case 2:
+      return _wrap_layer_list_append__SWIG_1(self, argc, argv);
+    case 3:
+      return _wrap_layer_list_append__SWIG_2(self, argc, argv);
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number of arguments for overloaded function 'layer_list_append'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    append(cmf::upslope::layer_list *,cmf::upslope::SoilLayer::ptr)\n"
+    "    append(cmf::upslope::layer_list *,cmf::upslope::layer_list const &)\n"
+    "    append(cmf::upslope::layer_list *,cmf::water::node_list const &)\n");
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_layer_list_get_slice(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  cmf::upslope::layer_list *arg1 = (cmf::upslope::layer_list *) 0 ;
+  size_t arg2 = (size_t) 0 ;
+  size_t arg3 = (size_t) 1000000 ;
+  size_t arg4 = (size_t) 1 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  size_t val2 ;
+  int ecode2 = 0 ;
+  size_t val3 ;
+  int ecode3 = 0 ;
+  size_t val4 ;
+  int ecode4 = 0 ;
+  PyObject *swig_obj[4] ;
+  cmf::upslope::layer_list result;
+  
+  if (!SWIG_Python_UnpackTuple(args,"layer_list_get_slice",1,4,swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__upslope__layer_list, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "layer_list_get_slice" "', argument " "1"" of type '" "cmf::upslope::layer_list *""'"); 
+  }
+  arg1 = reinterpret_cast< cmf::upslope::layer_list * >(argp1);
+  if (swig_obj[1]) {
+    ecode2 = SWIG_AsVal_size_t(swig_obj[1], &val2);
+    if (!SWIG_IsOK(ecode2)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "layer_list_get_slice" "', argument " "2"" of type '" "size_t""'");
+    } 
+    arg2 = static_cast< size_t >(val2);
+  }
+  if (swig_obj[2]) {
+    ecode3 = SWIG_AsVal_size_t(swig_obj[2], &val3);
+    if (!SWIG_IsOK(ecode3)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "layer_list_get_slice" "', argument " "3"" of type '" "size_t""'");
+    } 
+    arg3 = static_cast< size_t >(val3);
+  }
+  if (swig_obj[3]) {
+    ecode4 = SWIG_AsVal_size_t(swig_obj[3], &val4);
+    if (!SWIG_IsOK(ecode4)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "layer_list_get_slice" "', argument " "4"" of type '" "size_t""'");
+    } 
+    arg4 = static_cast< size_t >(val4);
+  }
+  {
+    try {
+      result = (arg1)->get_slice(arg2,arg3,arg4);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+    
+  }
+  resultobj = SWIG_NewPointerObj((new cmf::upslope::layer_list(static_cast< const cmf::upslope::layer_list& >(result))), SWIGTYPE_p_cmf__upslope__layer_list, SWIG_POINTER_OWN |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_layer_list_clear(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  cmf::upslope::layer_list *arg1 = (cmf::upslope::layer_list *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__upslope__layer_list, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "layer_list_clear" "', argument " "1"" of type '" "cmf::upslope::layer_list *""'"); 
+  }
+  arg1 = reinterpret_cast< cmf::upslope::layer_list * >(argp1);
+  {
+    try {
+      (arg1)->clear();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_layer_list_size(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  cmf::upslope::layer_list *arg1 = (cmf::upslope::layer_list *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  size_t result;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__upslope__layer_list, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "layer_list_size" "', argument " "1"" of type '" "cmf::upslope::layer_list const *""'"); 
+  }
+  arg1 = reinterpret_cast< cmf::upslope::layer_list * >(argp1);
+  {
+    try {
+      result = ((cmf::upslope::layer_list const *)arg1)->size();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+    
+  }
+  resultobj = SWIG_From_size_t(static_cast< size_t >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_layer_list_set_potential(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  cmf::upslope::layer_list *arg1 = (cmf::upslope::layer_list *) 0 ;
+  cmf::math::num_array *arg2 = 0 ;
+  size_t arg3 = (size_t) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  size_t val3 ;
+  int ecode3 = 0 ;
+  PyObject *swig_obj[3] ;
+  
+  if (!SWIG_Python_UnpackTuple(args,"layer_list_set_potential",2,3,swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__upslope__layer_list, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "layer_list_set_potential" "', argument " "1"" of type '" "cmf::upslope::layer_list *""'"); 
+  }
+  arg1 = reinterpret_cast< cmf::upslope::layer_list * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_cmf__math__num_array,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "layer_list_set_potential" "', argument " "2"" of type '" "cmf::math::num_array const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "layer_list_set_potential" "', argument " "2"" of type '" "cmf::math::num_array const &""'"); 
+  }
+  arg2 = reinterpret_cast< cmf::math::num_array * >(argp2);
+  if (swig_obj[2]) {
+    ecode3 = SWIG_AsVal_size_t(swig_obj[2], &val3);
+    if (!SWIG_IsOK(ecode3)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "layer_list_set_potential" "', argument " "3"" of type '" "size_t""'");
+    } 
+    arg3 = static_cast< size_t >(val3);
+  }
+  {
+    try {
+      (arg1)->set_potential((cmf::math::num_array const &)*arg2,arg3);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_layer_list_set_volume(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  cmf::upslope::layer_list *arg1 = (cmf::upslope::layer_list *) 0 ;
+  cmf::math::num_array *arg2 = 0 ;
+  size_t arg3 = (size_t) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  size_t val3 ;
+  int ecode3 = 0 ;
+  PyObject *swig_obj[3] ;
+  
+  if (!SWIG_Python_UnpackTuple(args,"layer_list_set_volume",2,3,swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__upslope__layer_list, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "layer_list_set_volume" "', argument " "1"" of type '" "cmf::upslope::layer_list *""'"); 
+  }
+  arg1 = reinterpret_cast< cmf::upslope::layer_list * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_cmf__math__num_array,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "layer_list_set_volume" "', argument " "2"" of type '" "cmf::math::num_array const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "layer_list_set_volume" "', argument " "2"" of type '" "cmf::math::num_array const &""'"); 
+  }
+  arg2 = reinterpret_cast< cmf::math::num_array * >(argp2);
+  if (swig_obj[2]) {
+    ecode3 = SWIG_AsVal_size_t(swig_obj[2], &val3);
+    if (!SWIG_IsOK(ecode3)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "layer_list_set_volume" "', argument " "3"" of type '" "size_t""'");
+    } 
+    arg3 = static_cast< size_t >(val3);
+  }
+  {
+    try {
+      (arg1)->set_volume((cmf::math::num_array const &)*arg2,arg3);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_layer_list_set_wetness(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  cmf::upslope::layer_list *arg1 = (cmf::upslope::layer_list *) 0 ;
+  cmf::math::num_array *arg2 = 0 ;
+  size_t arg3 = (size_t) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  size_t val3 ;
+  int ecode3 = 0 ;
+  PyObject *swig_obj[3] ;
+  
+  if (!SWIG_Python_UnpackTuple(args,"layer_list_set_wetness",2,3,swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__upslope__layer_list, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "layer_list_set_wetness" "', argument " "1"" of type '" "cmf::upslope::layer_list *""'"); 
+  }
+  arg1 = reinterpret_cast< cmf::upslope::layer_list * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_cmf__math__num_array,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "layer_list_set_wetness" "', argument " "2"" of type '" "cmf::math::num_array const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "layer_list_set_wetness" "', argument " "2"" of type '" "cmf::math::num_array const &""'"); 
+  }
+  arg2 = reinterpret_cast< cmf::math::num_array * >(argp2);
+  if (swig_obj[2]) {
+    ecode3 = SWIG_AsVal_size_t(swig_obj[2], &val3);
+    if (!SWIG_IsOK(ecode3)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "layer_list_set_wetness" "', argument " "3"" of type '" "size_t""'");
+    } 
+    arg3 = static_cast< size_t >(val3);
+  }
+  {
+    try {
+      (arg1)->set_wetness((cmf::math::num_array const &)*arg2,arg3);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_layer_list_gravitational_potential_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  cmf::upslope::layer_list *arg1 = (cmf::upslope::layer_list *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  cmf::math::num_array *result = 0 ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__upslope__layer_list, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "layer_list_gravitational_potential_get" "', argument " "1"" of type '" "cmf::upslope::layer_list *""'"); 
+  }
+  arg1 = reinterpret_cast< cmf::upslope::layer_list * >(argp1);
+  {
+    try {
+      result = (cmf::math::num_array *)cmf_upslope_layer_list_gravitational_potential_get(arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_cmf__math__num_array, SWIG_POINTER_OWN |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_layer_list_matrix_potential_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  cmf::upslope::layer_list *arg1 = (cmf::upslope::layer_list *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  cmf::math::num_array *result = 0 ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__upslope__layer_list, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "layer_list_matrix_potential_get" "', argument " "1"" of type '" "cmf::upslope::layer_list *""'"); 
+  }
+  arg1 = reinterpret_cast< cmf::upslope::layer_list * >(argp1);
+  {
+    try {
+      result = (cmf::math::num_array *)cmf_upslope_layer_list_matrix_potential_get(arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_cmf__math__num_array, SWIG_POINTER_OWN |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_layer_list_wetness_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  cmf::upslope::layer_list *arg1 = (cmf::upslope::layer_list *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  cmf::math::num_array *result = 0 ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__upslope__layer_list, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "layer_list_wetness_get" "', argument " "1"" of type '" "cmf::upslope::layer_list *""'"); 
+  }
+  arg1 = reinterpret_cast< cmf::upslope::layer_list * >(argp1);
+  {
+    try {
+      result = (cmf::math::num_array *)cmf_upslope_layer_list_wetness_get(arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_cmf__math__num_array, SWIG_POINTER_OWN |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_layer_list_volume_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  cmf::upslope::layer_list *arg1 = (cmf::upslope::layer_list *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  cmf::math::num_array *result = 0 ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__upslope__layer_list, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "layer_list_volume_get" "', argument " "1"" of type '" "cmf::upslope::layer_list *""'"); 
+  }
+  arg1 = reinterpret_cast< cmf::upslope::layer_list * >(argp1);
+  {
+    try {
+      result = (cmf::math::num_array *)cmf_upslope_layer_list_volume_get(arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_cmf__math__num_array, SWIG_POINTER_OWN |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_layer_list_potential_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  cmf::upslope::layer_list *arg1 = (cmf::upslope::layer_list *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  cmf::math::num_array *result = 0 ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__upslope__layer_list, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "layer_list_potential_get" "', argument " "1"" of type '" "cmf::upslope::layer_list *""'"); 
+  }
+  arg1 = reinterpret_cast< cmf::upslope::layer_list * >(argp1);
+  {
+    try {
+      result = (cmf::math::num_array *)cmf_upslope_layer_list_potential_get(arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_cmf__math__num_array, SWIG_POINTER_OWN |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_layer_list_K_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  cmf::upslope::layer_list *arg1 = (cmf::upslope::layer_list *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  cmf::math::num_array *result = 0 ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__upslope__layer_list, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "layer_list_K_get" "', argument " "1"" of type '" "cmf::upslope::layer_list *""'"); 
+  }
+  arg1 = reinterpret_cast< cmf::upslope::layer_list * >(argp1);
+  {
+    try {
+      result = (cmf::math::num_array *)cmf_upslope_layer_list_K_get(arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_cmf__math__num_array, SWIG_POINTER_OWN |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_layer_list_Ksat_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  cmf::upslope::layer_list *arg1 = (cmf::upslope::layer_list *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  cmf::math::num_array *result = 0 ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__upslope__layer_list, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "layer_list_Ksat_get" "', argument " "1"" of type '" "cmf::upslope::layer_list *""'"); 
+  }
+  arg1 = reinterpret_cast< cmf::upslope::layer_list * >(argp1);
+  {
+    try {
+      result = (cmf::math::num_array *)cmf_upslope_layer_list_Ksat_get(arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_cmf__math__num_array, SWIG_POINTER_OWN |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_layer_list_thickness_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  cmf::upslope::layer_list *arg1 = (cmf::upslope::layer_list *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  cmf::math::num_array *result = 0 ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__upslope__layer_list, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "layer_list_thickness_get" "', argument " "1"" of type '" "cmf::upslope::layer_list *""'"); 
+  }
+  arg1 = reinterpret_cast< cmf::upslope::layer_list * >(argp1);
+  {
+    try {
+      result = (cmf::math::num_array *)cmf_upslope_layer_list_thickness_get(arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_cmf__math__num_array, SWIG_POINTER_OWN |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_layer_list_lower_boundary_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  cmf::upslope::layer_list *arg1 = (cmf::upslope::layer_list *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  cmf::math::num_array *result = 0 ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__upslope__layer_list, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "layer_list_lower_boundary_get" "', argument " "1"" of type '" "cmf::upslope::layer_list *""'"); 
+  }
+  arg1 = reinterpret_cast< cmf::upslope::layer_list * >(argp1);
+  {
+    try {
+      result = (cmf::math::num_array *)cmf_upslope_layer_list_lower_boundary_get(arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_cmf__math__num_array, SWIG_POINTER_OWN |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_layer_list_upper_boundary_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  cmf::upslope::layer_list *arg1 = (cmf::upslope::layer_list *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  cmf::math::num_array *result = 0 ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__upslope__layer_list, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "layer_list_upper_boundary_get" "', argument " "1"" of type '" "cmf::upslope::layer_list *""'"); 
+  }
+  arg1 = reinterpret_cast< cmf::upslope::layer_list * >(argp1);
+  {
+    try {
+      result = (cmf::math::num_array *)cmf_upslope_layer_list_upper_boundary_get(arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_cmf__math__num_array, SWIG_POINTER_OWN |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_layer_list_porosity_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  cmf::upslope::layer_list *arg1 = (cmf::upslope::layer_list *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  cmf::math::num_array *result = 0 ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__upslope__layer_list, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "layer_list_porosity_get" "', argument " "1"" of type '" "cmf::upslope::layer_list *""'"); 
+  }
+  arg1 = reinterpret_cast< cmf::upslope::layer_list * >(argp1);
+  {
+    try {
+      result = (cmf::math::num_array *)cmf_upslope_layer_list_porosity_get(arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_cmf__math__num_array, SWIG_POINTER_OWN |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_layer_list___get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  cmf::upslope::layer_list *arg1 = (cmf::upslope::layer_list *) 0 ;
+  int arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int val2 ;
+  int ecode2 = 0 ;
+  PyObject *swig_obj[2] ;
+  cmf::upslope::SoilLayer::ptr result;
+  
+  if (!SWIG_Python_UnpackTuple(args,"layer_list___get",2,2,swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__upslope__layer_list, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "layer_list___get" "', argument " "1"" of type '" "cmf::upslope::layer_list *""'"); 
+  }
+  arg1 = reinterpret_cast< cmf::upslope::layer_list * >(argp1);
+  ecode2 = SWIG_AsVal_int(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "layer_list___get" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
+  {
+    try {
+      result = cmf_upslope_layer_list___get(arg1,arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+    
+  }
+  {
+    std::tr1::shared_ptr<  cmf::upslope::SoilLayer > *smartresult = result ? new std::tr1::shared_ptr<  cmf::upslope::SoilLayer >(result) : 0;
+    resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(smartresult), SWIGTYPE_p_std__tr1__shared_ptrT_cmf__upslope__SoilLayer_t, SWIG_POINTER_OWN);
+  }
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_layer_list(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  cmf::upslope::layer_list *arg1 = (cmf::upslope::layer_list *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__upslope__layer_list, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_layer_list" "', argument " "1"" of type '" "cmf::upslope::layer_list *""'"); 
+  }
+  arg1 = reinterpret_cast< cmf::upslope::layer_list * >(argp1);
+  {
+    try {
+      delete arg1;
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *layer_list_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *obj;
+  if (!SWIG_Python_UnpackTuple(args,(char*)"swigregister", 1, 1,&obj)) return NULL;
+  SWIG_TypeNewClientData(SWIGTYPE_p_cmf__upslope__layer_list, SWIG_NewClientData(obj));
+  return SWIG_Py_Void();
+}
+
+SWIGINTERN PyObject *layer_list_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  return SWIG_Python_InitShadowInstance(args);
 }
 
 SWIGINTERN PyObject *_wrap_IVolumeHeightFunction_h(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
@@ -52387,6 +55775,8 @@ SWIGINTERN PyObject *_wrap_IVolumeHeightFunction_h(PyObject *SWIGUNUSEDPARM(self
   {
     try {
       result = (double)((cmf::river::IVolumeHeightFunction const *)arg1)->h(arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -52424,6 +55814,8 @@ SWIGINTERN PyObject *_wrap_IVolumeHeightFunction_A(PyObject *SWIGUNUSEDPARM(self
   {
     try {
       result = (double)((cmf::river::IVolumeHeightFunction const *)arg1)->A(arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -52461,6 +55853,8 @@ SWIGINTERN PyObject *_wrap_IVolumeHeightFunction_V(PyObject *SWIGUNUSEDPARM(self
   {
     try {
       result = (double)((cmf::river::IVolumeHeightFunction const *)arg1)->V(arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -52491,6 +55885,8 @@ SWIGINTERN PyObject *_wrap_IVolumeHeightFunction_copy(PyObject *SWIGUNUSEDPARM(s
   {
     try {
       result = (cmf::river::IVolumeHeightFunction *)((cmf::river::IVolumeHeightFunction const *)arg1)->copy();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -52528,6 +55924,8 @@ SWIGINTERN PyObject *_wrap_IVolumeHeightFunction___call__(PyObject *SWIGUNUSEDPA
   {
     try {
       result = (double)(arg1)->operator ()(arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -52557,6 +55955,8 @@ SWIGINTERN PyObject *_wrap_delete_IVolumeHeightFunction(PyObject *SWIGUNUSEDPARM
   {
     try {
       delete arg1;
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -52646,6 +56046,8 @@ SWIGINTERN PyObject *_wrap_new_Prism(PyObject *SWIGUNUSEDPARM(self), PyObject *a
   {
     try {
       result = (cmf::river::Prism *)new cmf::river::Prism(arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -52676,6 +56078,8 @@ SWIGINTERN PyObject *_wrap_Prism_copy(PyObject *SWIGUNUSEDPARM(self), PyObject *
   {
     try {
       result = (cmf::river::Prism *)((cmf::river::Prism const *)arg1)->copy();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -52705,6 +56109,8 @@ SWIGINTERN PyObject *_wrap_delete_Prism(PyObject *SWIGUNUSEDPARM(self), PyObject
   {
     try {
       delete arg1;
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -52747,6 +56153,8 @@ SWIGINTERN PyObject *_wrap_new_volume_height_function__SWIG_0(PyObject *SWIGUNUS
   {
     try {
       result = (cmf::river::volume_height_function *)new cmf::river::volume_height_function((cmf::river::volume_height_function const &)*arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -52778,6 +56186,8 @@ SWIGINTERN PyObject *_wrap_new_volume_height_function__SWIG_1(PyObject *SWIGUNUS
   {
     try {
       result = (cmf::river::volume_height_function *)new cmf::river::volume_height_function((cmf::river::IVolumeHeightFunction const &)*arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -52875,6 +56285,8 @@ SWIGINTERN PyObject *_wrap_volume_height_function_copy(PyObject *SWIGUNUSEDPARM(
   {
     try {
       result = (cmf::river::volume_height_function *)((cmf::river::volume_height_function const *)arg1)->copy();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -52904,6 +56316,8 @@ SWIGINTERN PyObject *_wrap_delete_volume_height_function(PyObject *SWIGUNUSEDPAR
   {
     try {
       delete arg1;
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -52945,6 +56359,8 @@ SWIGINTERN PyObject *_wrap_IChannel_get_nManning(PyObject *SWIGUNUSEDPARM(self),
   {
     try {
       result = (double)((cmf::river::IChannel const *)arg1)->get_nManning();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -52981,6 +56397,8 @@ SWIGINTERN PyObject *_wrap_IChannel_set_nManning(PyObject *SWIGUNUSEDPARM(self),
   {
     try {
       (arg1)->set_nManning(arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -53063,6 +56481,8 @@ SWIGINTERN PyObject *_wrap_IChannel_typecode(PyObject *SWIGUNUSEDPARM(self), PyO
   {
     try {
       result = (char)((cmf::river::IChannel const *)arg1)->typecode();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -53100,6 +56520,8 @@ SWIGINTERN PyObject *_wrap_IChannel_get_channel_width(PyObject *SWIGUNUSEDPARM(s
   {
     try {
       result = (double)((cmf::river::IChannel const *)arg1)->get_channel_width(arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -53137,6 +56559,8 @@ SWIGINTERN PyObject *_wrap_IChannel_get_wetted_perimeter(PyObject *SWIGUNUSEDPAR
   {
     try {
       result = (double)((cmf::river::IChannel const *)arg1)->get_wetted_perimeter(arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -53174,6 +56598,8 @@ SWIGINTERN PyObject *_wrap_IChannel_get_depth(PyObject *SWIGUNUSEDPARM(self), Py
   {
     try {
       result = (double)((cmf::river::IChannel const *)arg1)->get_depth(arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -53211,6 +56637,8 @@ SWIGINTERN PyObject *_wrap_IChannel_get_flux_crossection(PyObject *SWIGUNUSEDPAR
   {
     try {
       result = (double)((cmf::river::IChannel const *)arg1)->get_flux_crossection(arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -53241,6 +56669,8 @@ SWIGINTERN PyObject *_wrap_IChannel_copy(PyObject *SWIGUNUSEDPARM(self), PyObjec
   {
     try {
       result = (cmf::river::IChannel *)((cmf::river::IChannel const *)arg1)->copy();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -53286,6 +56716,8 @@ SWIGINTERN PyObject *_wrap_IChannel_qManning(PyObject *SWIGUNUSEDPARM(self), PyO
   {
     try {
       result = (double)((cmf::river::IChannel const *)arg1)->qManning(arg2,arg3);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -53315,6 +56747,8 @@ SWIGINTERN PyObject *_wrap_delete_IChannel(PyObject *SWIGUNUSEDPARM(self), PyObj
   {
     try {
       delete arg1;
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -53558,6 +56992,8 @@ SWIGINTERN PyObject *_wrap_new_SWATReachType__SWIG_0(PyObject *SWIGUNUSEDPARM(se
   {
     try {
       result = (cmf::river::SWATReachType *)new cmf::river::SWATReachType(arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -53602,6 +57038,8 @@ SWIGINTERN PyObject *_wrap_new_SWATReachType__SWIG_1(PyObject *SWIGUNUSEDPARM(se
   {
     try {
       result = (cmf::river::SWATReachType *)new cmf::river::SWATReachType(arg1,arg2,arg3);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -53723,6 +57161,8 @@ SWIGINTERN PyObject *_wrap_SWATReachType_copy(PyObject *SWIGUNUSEDPARM(self), Py
   {
     try {
       result = (cmf::river::SWATReachType *)((cmf::river::SWATReachType const *)arg1)->copy();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -53752,6 +57192,8 @@ SWIGINTERN PyObject *_wrap_delete_SWATReachType(PyObject *SWIGUNUSEDPARM(self), 
   {
     try {
       delete arg1;
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -53854,6 +57296,8 @@ SWIGINTERN PyObject *_wrap_new_TriangularReach(PyObject *SWIGUNUSEDPARM(self), P
   {
     try {
       result = (cmf::river::TriangularReach *)new cmf::river::TriangularReach(arg1,arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -53884,6 +57328,8 @@ SWIGINTERN PyObject *_wrap_TriangularReach_copy(PyObject *SWIGUNUSEDPARM(self), 
   {
     try {
       result = (cmf::river::TriangularReach *)((cmf::river::TriangularReach const *)arg1)->copy();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -53913,6 +57359,8 @@ SWIGINTERN PyObject *_wrap_delete_TriangularReach(PyObject *SWIGUNUSEDPARM(self)
   {
     try {
       delete arg1;
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -53961,6 +57409,8 @@ SWIGINTERN PyObject *_wrap_new_RectangularReach(PyObject *SWIGUNUSEDPARM(self), 
   {
     try {
       result = (cmf::river::RectangularReach *)new cmf::river::RectangularReach(arg1,arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -53991,6 +57441,8 @@ SWIGINTERN PyObject *_wrap_RectangularReach_copy(PyObject *SWIGUNUSEDPARM(self),
   {
     try {
       result = (cmf::river::RectangularReach *)((cmf::river::RectangularReach const *)arg1)->copy();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -54020,6 +57472,8 @@ SWIGINTERN PyObject *_wrap_delete_RectangularReach(PyObject *SWIGUNUSEDPARM(self
   {
     try {
       delete arg1;
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -54120,6 +57574,8 @@ SWIGINTERN PyObject *_wrap_new_PipeReach(PyObject *SWIGUNUSEDPARM(self), PyObjec
   {
     try {
       result = (cmf::river::PipeReach *)new cmf::river::PipeReach(arg1,arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -54150,6 +57606,8 @@ SWIGINTERN PyObject *_wrap_PipeReach_copy(PyObject *SWIGUNUSEDPARM(self), PyObje
   {
     try {
       result = (cmf::river::PipeReach *)((cmf::river::PipeReach const *)arg1)->copy();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -54179,6 +57637,8 @@ SWIGINTERN PyObject *_wrap_delete_PipeReach(PyObject *SWIGUNUSEDPARM(self), PyOb
   {
     try {
       delete arg1;
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -54220,6 +57680,8 @@ SWIGINTERN PyObject *_wrap_new_Channel__SWIG_0(PyObject *SWIGUNUSEDPARM(self), i
   {
     try {
       result = (cmf::river::Channel *)new cmf::river::Channel(arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -54251,6 +57713,8 @@ SWIGINTERN PyObject *_wrap_new_Channel__SWIG_1(PyObject *SWIGUNUSEDPARM(self), i
   {
     try {
       result = (cmf::river::Channel *)new cmf::river::Channel((cmf::river::IChannel const &)*arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -54282,6 +57746,8 @@ SWIGINTERN PyObject *_wrap_new_Channel__SWIG_2(PyObject *SWIGUNUSEDPARM(self), i
   {
     try {
       result = (cmf::river::Channel *)new cmf::river::Channel((cmf::river::IVolumeHeightFunction const &)*arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -54313,6 +57779,8 @@ SWIGINTERN PyObject *_wrap_new_Channel__SWIG_3(PyObject *SWIGUNUSEDPARM(self), i
   {
     try {
       result = (cmf::river::Channel *)new cmf::river::Channel((cmf::river::Channel const &)*arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -54369,6 +57837,8 @@ SWIGINTERN PyObject *_wrap_new_Channel__SWIG_4(PyObject *SWIGUNUSEDPARM(self), i
   {
     try {
       result = (cmf::river::Channel *)new cmf::river::Channel(arg1,arg2,arg3,arg4);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -54575,6 +58045,8 @@ SWIGINTERN PyObject *_wrap_Channel_copy(PyObject *SWIGUNUSEDPARM(self), PyObject
   {
     try {
       result = (cmf::river::Channel *)((cmf::river::Channel const *)arg1)->copy();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -54604,6 +58076,8 @@ SWIGINTERN PyObject *_wrap_delete_Channel(PyObject *SWIGUNUSEDPARM(self), PyObje
   {
     try {
       delete arg1;
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -54657,6 +58131,8 @@ SWIGINTERN PyObject *_wrap_new_MeanChannel__SWIG_0(PyObject *SWIGUNUSEDPARM(self
   {
     try {
       result = (cmf::river::MeanChannel *)new cmf::river::MeanChannel((cmf::river::IChannel const &)*arg1,(cmf::river::IChannel const &)*arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -54688,6 +58164,8 @@ SWIGINTERN PyObject *_wrap_new_MeanChannel__SWIG_1(PyObject *SWIGUNUSEDPARM(self
   {
     try {
       result = (cmf::river::MeanChannel *)new cmf::river::MeanChannel((cmf::river::MeanChannel const &)*arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -54793,6 +58271,8 @@ SWIGINTERN PyObject *_wrap_MeanChannel_copy(PyObject *SWIGUNUSEDPARM(self), PyOb
   {
     try {
       result = (cmf::river::MeanChannel *)((cmf::river::MeanChannel const *)arg1)->copy();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -54822,6 +58302,8 @@ SWIGINTERN PyObject *_wrap_delete_MeanChannel(PyObject *SWIGUNUSEDPARM(self), Py
   {
     try {
       delete arg1;
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -54875,6 +58357,8 @@ SWIGINTERN PyObject *_wrap_OpenWaterStorage_get_height_function(PyObject *SWIGUN
   {
     try {
       result = (cmf::river::IVolumeHeightFunction *) &((cmf::river::OpenWaterStorage const *)arg1)->get_height_function();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -54926,6 +58410,8 @@ SWIGINTERN PyObject *_wrap_OpenWaterStorage_set_height_function(PyObject *SWIGUN
   {
     try {
       (arg1)->set_height_function((cmf::river::IVolumeHeightFunction const &)*arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -54968,6 +58454,8 @@ SWIGINTERN PyObject *_wrap_OpenWaterStorage_wet_area(PyObject *SWIGUNUSEDPARM(se
   {
     try {
       result = (real)((cmf::river::OpenWaterStorage const *)arg1)->wet_area();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -55007,6 +58495,8 @@ SWIGINTERN PyObject *_wrap_OpenWaterStorage_create__SWIG_0(PyObject *SWIGUNUSEDP
   {
     try {
       result = cmf::river::OpenWaterStorage::create((cmf::project const &)*arg1,arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -55052,6 +58542,8 @@ SWIGINTERN PyObject *_wrap_OpenWaterStorage_create__SWIG_1(PyObject *SWIGUNUSEDP
   {
     try {
       result = cmf::river::OpenWaterStorage::create((cmf::project const &)*arg1,(cmf::river::IVolumeHeightFunction const &)*arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -55181,6 +58673,8 @@ SWIGINTERN PyObject *_wrap_OpenWaterStorage_from_node(PyObject *SWIGUNUSEDPARM(s
   {
     try {
       result = cmf::river::OpenWaterStorage::from_node(arg1,arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -55218,6 +58712,8 @@ SWIGINTERN PyObject *_wrap_OpenWaterStorage_cast(PyObject *SWIGUNUSEDPARM(self),
   {
     try {
       result = cmf::river::OpenWaterStorage::cast(arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -55255,6 +58751,8 @@ SWIGINTERN PyObject *_wrap_OpenWaterStorage_SWIGSharedPtrUpcast(PyObject *SWIGUN
   {
     try {
       result = cmf_river_OpenWaterStorage_SWIGSharedPtrUpcast(arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -55306,6 +58804,8 @@ SWIGINTERN PyObject *_wrap_OpenWaterStorage_depth_set(PyObject *SWIGUNUSEDPARM(s
   {
     try {
       cmf_river_OpenWaterStorage_depth_set(arg1,arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -55348,6 +58848,8 @@ SWIGINTERN PyObject *_wrap_OpenWaterStorage_depth_get(PyObject *SWIGUNUSEDPARM(s
   {
     try {
       result = (real)cmf_river_OpenWaterStorage_depth_get(arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -55389,6 +58891,8 @@ SWIGINTERN PyObject *_wrap_delete_OpenWaterStorage(PyObject *SWIGUNUSEDPARM(self
   {
     try {
       (void)arg1; delete smartarg1;
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -55438,6 +58942,8 @@ SWIGINTERN PyObject *_wrap_Reach_get_height_function(PyObject *SWIGUNUSEDPARM(se
   {
     try {
       result = (cmf::river::IChannel *) &((cmf::river::Reach const *)arg1)->get_height_function();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -55489,6 +58995,8 @@ SWIGINTERN PyObject *_wrap_Reach_set_height_function(PyObject *SWIGUNUSEDPARM(se
   {
     try {
       (arg1)->set_height_function((cmf::river::IChannel const &)*arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -55531,6 +59039,8 @@ SWIGINTERN PyObject *_wrap_Reach_get_length(PyObject *SWIGUNUSEDPARM(self), PyOb
   {
     try {
       result = (real)((cmf::river::Reach const *)arg1)->get_length();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -55583,6 +59093,8 @@ SWIGINTERN PyObject *_wrap_Reach_set_outlet(PyObject *SWIGUNUSEDPARM(self), PyOb
   {
     try {
       (arg1)->set_outlet(arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -55624,6 +59136,8 @@ SWIGINTERN PyObject *_wrap_Reach_set_dead_end(PyObject *SWIGUNUSEDPARM(self), Py
   {
     try {
       (arg1)->set_dead_end();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -55676,6 +59190,8 @@ SWIGINTERN PyObject *_wrap_Reach_set_downstream(PyObject *SWIGUNUSEDPARM(self), 
   {
     try {
       (arg1)->set_downstream(arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -55725,6 +59241,8 @@ SWIGINTERN PyObject *_wrap_Reach_get_upstream(PyObject *SWIGUNUSEDPARM(self), Py
   {
     try {
       result = ((cmf::river::Reach const *)arg1)->get_upstream(arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -55800,6 +59318,8 @@ SWIGINTERN PyObject *_wrap_Reach_add_cell(PyObject *SWIGUNUSEDPARM(self), PyObje
   {
     try {
       (arg1)->add_cell(arg2,arg3,arg4,arg5);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -55849,6 +59369,8 @@ SWIGINTERN PyObject *_wrap_Reach_cuts_soil_of(PyObject *SWIGUNUSEDPARM(self), Py
   {
     try {
       result = (bool)((cmf::river::Reach const *)arg1)->cuts_soil_of(arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -55898,6 +59420,8 @@ SWIGINTERN PyObject *_wrap_Reach_get_distance_to(PyObject *SWIGUNUSEDPARM(self),
   {
     try {
       result = (real)((cmf::river::Reach const *)arg1)->get_distance_to(arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -55947,6 +59471,8 @@ SWIGINTERN PyObject *_wrap_Reach_get_bank_length_with(PyObject *SWIGUNUSEDPARM(s
   {
     try {
       result = (real)((cmf::river::Reach const *)arg1)->get_bank_length_with(arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -55989,6 +59515,8 @@ SWIGINTERN PyObject *_wrap_Reach_get_diffusive(PyObject *SWIGUNUSEDPARM(self), P
   {
     try {
       result = (bool)((cmf::river::Reach const *)arg1)->get_diffusive();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -56037,6 +59565,8 @@ SWIGINTERN PyObject *_wrap_Reach_set_diffusive(PyObject *SWIGUNUSEDPARM(self), P
   {
     try {
       (arg1)->set_diffusive(arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -56078,6 +59608,8 @@ SWIGINTERN PyObject *_wrap_delete_Reach(PyObject *SWIGUNUSEDPARM(self), PyObject
   {
     try {
       (void)arg1; delete smartarg1;
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -56136,6 +59668,8 @@ SWIGINTERN PyObject *_wrap_Reach_create(PyObject *SWIGUNUSEDPARM(self), PyObject
   {
     try {
       result = cmf::river::Reach::create((cmf::project const &)*arg1,arg2,arg3);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -56173,6 +59707,8 @@ SWIGINTERN PyObject *_wrap_Reach_SWIGSharedPtrUpcast(PyObject *SWIGUNUSEDPARM(se
   {
     try {
       result = cmf_river_Reach_SWIGSharedPtrUpcast(arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -56218,6 +59754,8 @@ SWIGINTERN PyObject *_wrap_Reach_cells_get(PyObject *SWIGUNUSEDPARM(self), PyObj
   {
     try {
       result = (cmf::upslope::cell_vector *)cmf_river_Reach_cells_get(arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -56260,6 +59798,8 @@ SWIGINTERN PyObject *_wrap_Reach_downstream_get(PyObject *SWIGUNUSEDPARM(self), 
   {
     try {
       result = (cmf::river::Reach *) &cmf_river_Reach_downstream_get(arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -56305,6 +59845,8 @@ SWIGINTERN PyObject *_wrap_Reach_root_get(PyObject *SWIGUNUSEDPARM(self), PyObje
   {
     try {
       result = (cmf::river::Reach *) &cmf_river_Reach_root_get(arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -56350,6 +59892,8 @@ SWIGINTERN PyObject *_wrap_Reach_upstream_count_get(PyObject *SWIGUNUSEDPARM(sel
   {
     try {
       result = (int)cmf_river_Reach_upstream_count_get(arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -56387,6 +59931,8 @@ SWIGINTERN PyObject *_wrap_ReachIterator_next(PyObject *SWIGUNUSEDPARM(self), Py
   {
     try {
       result = (arg1)->next();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -56420,6 +59966,8 @@ SWIGINTERN PyObject *_wrap_ReachIterator_valid(PyObject *SWIGUNUSEDPARM(self), P
   {
     try {
       result = (bool)((cmf::river::ReachIterator const *)arg1)->valid();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -56454,6 +60002,8 @@ SWIGINTERN PyObject *_wrap_new_ReachIterator(PyObject *SWIGUNUSEDPARM(self), PyO
   {
     try {
       result = (cmf::river::ReachIterator *)new cmf::river::ReachIterator(arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -56484,6 +60034,8 @@ SWIGINTERN PyObject *_wrap_ReachIterator_reach_get(PyObject *SWIGUNUSEDPARM(self
   {
     try {
       result = (cmf::river::Reach *) &cmf_river_ReachIterator_reach_get(arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -56517,6 +60069,8 @@ SWIGINTERN PyObject *_wrap_ReachIterator_position_get(PyObject *SWIGUNUSEDPARM(s
   {
     try {
       result = (double)cmf_river_ReachIterator_position_get(arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -56546,6 +60100,8 @@ SWIGINTERN PyObject *_wrap_delete_ReachIterator(PyObject *SWIGUNUSEDPARM(self), 
   {
     try {
       delete arg1;
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -56591,6 +60147,8 @@ SWIGINTERN PyObject *_wrap_make_river_gap(PyObject *SWIGUNUSEDPARM(self), PyObje
   {
     try {
       result = (double)cmf::river::make_river_gap(arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -56620,6 +60178,8 @@ SWIGINTERN PyObject *_wrap_delete_lateral_sub_surface_flux(PyObject *SWIGUNUSEDP
   {
     try {
       delete arg1;
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -56704,6 +60264,8 @@ SWIGINTERN PyObject *_wrap_new_Darcy(PyObject *SWIGUNUSEDPARM(self), PyObject *a
   {
     try {
       result = (cmf::upslope::connections::Darcy *)new cmf::upslope::connections::Darcy(arg1,arg2,arg3,arg4);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -56733,6 +60295,8 @@ SWIGINTERN PyObject *_wrap_delete_Darcy(PyObject *SWIGUNUSEDPARM(self), PyObject
   {
     try {
       delete arg1;
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -56821,6 +60385,8 @@ SWIGINTERN PyObject *_wrap_new_TopographicGradientDarcy(PyObject *SWIGUNUSEDPARM
   {
     try {
       result = (cmf::upslope::connections::TopographicGradientDarcy *)new cmf::upslope::connections::TopographicGradientDarcy(arg1,arg2,arg3,arg4);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -56850,6 +60416,8 @@ SWIGINTERN PyObject *_wrap_delete_TopographicGradientDarcy(PyObject *SWIGUNUSEDP
   {
     try {
       delete arg1;
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -56924,6 +60492,8 @@ SWIGINTERN PyObject *_wrap_new_OHDISflow(PyObject *SWIGUNUSEDPARM(self), PyObjec
   {
     try {
       result = (cmf::upslope::connections::OHDISflow *)new cmf::upslope::connections::OHDISflow(arg1,arg2,arg3,arg4);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -56967,6 +60537,8 @@ SWIGINTERN PyObject *_wrap_delete_OHDISflow(PyObject *SWIGUNUSEDPARM(self), PyOb
   {
     try {
       delete arg1;
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -57041,6 +60613,8 @@ SWIGINTERN PyObject *_wrap_new_DarcyKinematic(PyObject *SWIGUNUSEDPARM(self), Py
   {
     try {
       result = (cmf::upslope::connections::DarcyKinematic *)new cmf::upslope::connections::DarcyKinematic(arg1,arg2,arg3,arg4);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -57084,6 +60658,8 @@ SWIGINTERN PyObject *_wrap_delete_DarcyKinematic(PyObject *SWIGUNUSEDPARM(self),
   {
     try {
       delete arg1;
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -57160,6 +60736,8 @@ SWIGINTERN PyObject *_wrap_new_Richards_lateral(PyObject *SWIGUNUSEDPARM(self), 
   {
     try {
       result = (cmf::upslope::connections::Richards_lateral *)new cmf::upslope::connections::Richards_lateral(arg1,arg2,arg3,arg4);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -57203,6 +60781,8 @@ SWIGINTERN PyObject *_wrap_delete_Richards_lateral(PyObject *SWIGUNUSEDPARM(self
   {
     try {
       delete arg1;
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -57347,6 +60927,8 @@ SWIGINTERN PyObject *_wrap_delete_Manning(PyObject *SWIGUNUSEDPARM(self), PyObje
   {
     try {
       delete arg1;
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -57429,6 +61011,8 @@ SWIGINTERN PyObject *_wrap_new_Manning_Diffusive(PyObject *SWIGUNUSEDPARM(self),
   {
     try {
       result = (cmf::river::Manning_Diffusive *)new cmf::river::Manning_Diffusive(arg1,arg2,arg3);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -57458,6 +61042,8 @@ SWIGINTERN PyObject *_wrap_delete_Manning_Diffusive(PyObject *SWIGUNUSEDPARM(sel
   {
     try {
       delete arg1;
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -57544,6 +61130,8 @@ SWIGINTERN PyObject *_wrap_new_Manning_Kinematic(PyObject *SWIGUNUSEDPARM(self),
   {
     try {
       result = (cmf::river::Manning_Kinematic *)new cmf::river::Manning_Kinematic(arg1,arg2,arg3);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -57573,6 +61161,8 @@ SWIGINTERN PyObject *_wrap_delete_Manning_Kinematic(PyObject *SWIGUNUSEDPARM(sel
   {
     try {
       delete arg1;
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -57640,6 +61230,8 @@ SWIGINTERN PyObject *_wrap_new_CanopyOverflow(PyObject *SWIGUNUSEDPARM(self), Py
   {
     try {
       result = (cmf::upslope::connections::CanopyOverflow *)new cmf::upslope::connections::CanopyOverflow(arg1,arg2,*arg3);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -57673,6 +61265,8 @@ SWIGINTERN PyObject *_wrap_CanopyOverflow_use_for_cell(PyObject *SWIGUNUSEDPARM(
   {
     try {
       result = (cmf::upslope::connections::CanopyOverflow *)cmf::upslope::connections::CanopyOverflow::use_for_cell(*arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -57702,6 +61296,8 @@ SWIGINTERN PyObject *_wrap_delete_CanopyOverflow(PyObject *SWIGUNUSEDPARM(self),
   {
     try {
       delete arg1;
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -57821,6 +61417,8 @@ SWIGINTERN PyObject *_wrap_new_SimpleTindexSnowMelt(PyObject *SWIGUNUSEDPARM(sel
   {
     try {
       result = (cmf::upslope::connections::SimpleTindexSnowMelt *)new cmf::upslope::connections::SimpleTindexSnowMelt(arg1,arg2,*arg3);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -57853,6 +61451,8 @@ SWIGINTERN PyObject *_wrap_SimpleTindexSnowMelt_use_for_cell(PyObject *SWIGUNUSE
   {
     try {
       cmf::upslope::connections::SimpleTindexSnowMelt::use_for_cell(*arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -57882,6 +61482,8 @@ SWIGINTERN PyObject *_wrap_delete_SimpleTindexSnowMelt(PyObject *SWIGUNUSEDPARM(
   {
     try {
       delete arg1;
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -58061,6 +61663,8 @@ SWIGINTERN PyObject *_wrap_new_Rainfall(PyObject *SWIGUNUSEDPARM(self), PyObject
   {
     try {
       result = (cmf::upslope::connections::Rainfall *)new cmf::upslope::connections::Rainfall(arg1,*arg2,arg3,arg4);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -58090,6 +61694,8 @@ SWIGINTERN PyObject *_wrap_delete_Rainfall(PyObject *SWIGUNUSEDPARM(self), PyObj
   {
     try {
       delete arg1;
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -58145,6 +61751,8 @@ SWIGINTERN PyObject *_wrap_new_Snowfall(PyObject *SWIGUNUSEDPARM(self), PyObject
   {
     try {
       result = (cmf::upslope::connections::Snowfall *)new cmf::upslope::connections::Snowfall(arg1,*arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -58174,6 +61782,8 @@ SWIGINTERN PyObject *_wrap_delete_Snowfall(PyObject *SWIGUNUSEDPARM(self), PyObj
   {
     try {
       delete arg1;
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -58230,6 +61840,8 @@ SWIGINTERN PyObject *_wrap_new_MatrixInfiltration(PyObject *SWIGUNUSEDPARM(self)
   {
     try {
       result = (cmf::upslope::connections::MatrixInfiltration *)new cmf::upslope::connections::MatrixInfiltration(arg1,arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -58262,6 +61874,8 @@ SWIGINTERN PyObject *_wrap_MatrixInfiltration_use_for_cell(PyObject *SWIGUNUSEDP
   {
     try {
       cmf::upslope::connections::MatrixInfiltration::use_for_cell(*arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -58291,6 +61905,8 @@ SWIGINTERN PyObject *_wrap_delete_MatrixInfiltration(PyObject *SWIGUNUSEDPARM(se
   {
     try {
       delete arg1;
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -58347,6 +61963,8 @@ SWIGINTERN PyObject *_wrap_new_CompleteInfiltration(PyObject *SWIGUNUSEDPARM(sel
   {
     try {
       result = (cmf::upslope::connections::CompleteInfiltration *)new cmf::upslope::connections::CompleteInfiltration(arg1,arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -58376,6 +61994,8 @@ SWIGINTERN PyObject *_wrap_delete_CompleteInfiltration(PyObject *SWIGUNUSEDPARM(
   {
     try {
       delete arg1;
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -58428,6 +62048,8 @@ SWIGINTERN PyObject *_wrap_SWATPercolation_use_for_cell(PyObject *SWIGUNUSEDPARM
   {
     try {
       cmf::upslope::connections::SWATPercolation::use_for_cell(*arg1,arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -58473,6 +62095,8 @@ SWIGINTERN PyObject *_wrap_new_SWATPercolation(PyObject *SWIGUNUSEDPARM(self), P
   {
     try {
       result = (cmf::upslope::connections::SWATPercolation *)new cmf::upslope::connections::SWATPercolation(arg1,arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -58502,6 +62126,8 @@ SWIGINTERN PyObject *_wrap_delete_SWATPercolation(PyObject *SWIGUNUSEDPARM(self)
   {
     try {
       delete arg1;
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -58558,6 +62184,8 @@ SWIGINTERN PyObject *_wrap_new_Richards(PyObject *SWIGUNUSEDPARM(self), PyObject
   {
     try {
       result = (cmf::upslope::connections::Richards *)new cmf::upslope::connections::Richards(arg1,arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -58599,6 +62227,8 @@ SWIGINTERN PyObject *_wrap_Richards_use_for_cell(PyObject *SWIGUNUSEDPARM(self),
   {
     try {
       cmf::upslope::connections::Richards::use_for_cell(*arg1,arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -58628,6 +62258,8 @@ SWIGINTERN PyObject *_wrap_delete_Richards(PyObject *SWIGUNUSEDPARM(self), PyObj
   {
     try {
       delete arg1;
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -58684,6 +62316,8 @@ SWIGINTERN PyObject *_wrap_new_SimplRichards(PyObject *SWIGUNUSEDPARM(self), PyO
   {
     try {
       result = (cmf::upslope::connections::SimplRichards *)new cmf::upslope::connections::SimplRichards(arg1,arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -58725,6 +62359,8 @@ SWIGINTERN PyObject *_wrap_SimplRichards_use_for_cell(PyObject *SWIGUNUSEDPARM(s
   {
     try {
       cmf::upslope::connections::SimplRichards::use_for_cell(*arg1,arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -58754,6 +62390,8 @@ SWIGINTERN PyObject *_wrap_delete_SimplRichards(PyObject *SWIGUNUSEDPARM(self), 
   {
     try {
       delete arg1;
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -59530,6 +63168,8 @@ SWIGINTERN PyObject *_wrap_new_HBVparameters(PyObject *SWIGUNUSEDPARM(self), PyO
   {
     try {
       result = (cmf::upslope::connections::HBVparameters *)new cmf::upslope::connections::HBVparameters(arg1,arg2,arg3,arg4,arg5,arg6,arg7,arg8,arg9,arg10,arg11,arg12);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -59560,6 +63200,8 @@ SWIGINTERN PyObject *_wrap_HBVparameters_copy(PyObject *SWIGUNUSEDPARM(self), Py
   {
     try {
       result = (cmf::upslope::connections::HBVparameters *)((cmf::upslope::connections::HBVparameters const *)arg1)->copy();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -59593,6 +63235,8 @@ SWIGINTERN PyObject *_wrap_HBVparameters_cast(PyObject *SWIGUNUSEDPARM(self), Py
   {
     try {
       result = (cmf::upslope::connections::HBVparameters *)cmf::upslope::connections::HBVparameters::cast(*arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -59622,6 +63266,8 @@ SWIGINTERN PyObject *_wrap_delete_HBVparameters(PyObject *SWIGUNUSEDPARM(self), 
   {
     try {
       delete arg1;
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -59678,6 +63324,8 @@ SWIGINTERN PyObject *_wrap_new_HBVpercolation(PyObject *SWIGUNUSEDPARM(self), Py
   {
     try {
       result = (cmf::upslope::connections::HBVpercolation *)new cmf::upslope::connections::HBVpercolation(arg1,arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -59707,6 +63355,8 @@ SWIGINTERN PyObject *_wrap_delete_HBVpercolation(PyObject *SWIGUNUSEDPARM(self),
   {
     try {
       delete arg1;
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -59793,6 +63443,8 @@ SWIGINTERN PyObject *_wrap_new_HBVlateral(PyObject *SWIGUNUSEDPARM(self), PyObje
   {
     try {
       result = (cmf::upslope::connections::HBVlateral *)new cmf::upslope::connections::HBVlateral(arg1,arg2,arg3,arg4);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -59822,6 +63474,8 @@ SWIGINTERN PyObject *_wrap_delete_HBVlateral(PyObject *SWIGUNUSEDPARM(self), PyO
   {
     try {
       delete arg1;
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -59880,6 +63534,8 @@ SWIGINTERN PyObject *_wrap_HBVinstall(PyObject *SWIGUNUSEDPARM(self), PyObject *
   {
     try {
       cmf::upslope::connections::HBVinstall(arg1,*arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -59940,6 +63596,8 @@ SWIGINTERN PyObject *_wrap_PenmanMonteith__SWIG_0(PyObject *SWIGUNUSEDPARM(self)
   {
     try {
       result = (real)cmf::upslope::ET::PenmanMonteith(arg1,arg2,arg3,arg4,arg5);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -59995,6 +63653,8 @@ SWIGINTERN PyObject *_wrap_PenmanMonteith__SWIG_1(PyObject *SWIGUNUSEDPARM(self)
   {
     try {
       result = (real)cmf::upslope::ET::PenmanMonteith(arg1,(cmf::upslope::vegetation::Vegetation const &)*arg2,arg3);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -60183,6 +63843,8 @@ SWIGINTERN PyObject *_wrap_Tact(PyObject *SWIGUNUSEDPARM(self), PyObject *args) 
   {
     try {
       result = (real)cmf::upslope::ET::Tact(arg1,(cmf::upslope::SoilLayer const &)*arg2,(cmf::upslope::vegetation::Vegetation const &)*arg3);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -60268,6 +63930,8 @@ SWIGINTERN PyObject *_wrap_constantETpot_GetETpot(PyObject *SWIGUNUSEDPARM(self)
   {
     try {
       result = (real)((cmf::upslope::ET::constantETpot const *)arg1)->GetETpot(arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -60321,6 +63985,8 @@ SWIGINTERN PyObject *_wrap_new_constantETpot(PyObject *SWIGUNUSEDPARM(self), PyO
   {
     try {
       result = (cmf::upslope::ET::constantETpot *)new cmf::upslope::ET::constantETpot(arg1,arg2,arg3);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -60350,6 +64016,8 @@ SWIGINTERN PyObject *_wrap_delete_constantETpot(PyObject *SWIGUNUSEDPARM(self), 
   {
     try {
       delete arg1;
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -60458,6 +64126,8 @@ SWIGINTERN PyObject *_wrap_new_PenmanMonteithET(PyObject *SWIGUNUSEDPARM(self), 
   {
     try {
       result = (cmf::upslope::ET::PenmanMonteithET *)new cmf::upslope::ET::PenmanMonteithET(arg1,arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -60491,6 +64161,8 @@ SWIGINTERN PyObject *_wrap_PenmanMonteithET_r_s(PyObject *SWIGUNUSEDPARM(self), 
   {
     try {
       result = (real)cmf::upslope::ET::PenmanMonteithET::r_s((cmf::upslope::vegetation::Vegetation const &)*arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -60536,6 +64208,8 @@ SWIGINTERN PyObject *_wrap_PenmanMonteithET_r_a(PyObject *SWIGUNUSEDPARM(self), 
   {
     try {
       result = (real)cmf::upslope::ET::PenmanMonteithET::r_a(arg1,arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -60568,6 +64242,8 @@ SWIGINTERN PyObject *_wrap_PenmanMonteithET_use_for_cell(PyObject *SWIGUNUSEDPAR
   {
     try {
       cmf::upslope::ET::PenmanMonteithET::use_for_cell(*arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -60597,6 +64273,8 @@ SWIGINTERN PyObject *_wrap_delete_PenmanMonteithET(PyObject *SWIGUNUSEDPARM(self
   {
     try {
       delete arg1;
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -60676,6 +64354,8 @@ SWIGINTERN PyObject *_wrap_new_ShuttleworthWallaceET(PyObject *SWIGUNUSEDPARM(se
   {
     try {
       result = (cmf::upslope::ET::ShuttleworthWallaceET *)new cmf::upslope::ET::ShuttleworthWallaceET(arg1,arg2,*arg3,arg4);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -60708,6 +64388,8 @@ SWIGINTERN PyObject *_wrap_ShuttleworthWallaceET_use_for_cell(PyObject *SWIGUNUS
   {
     try {
       cmf::upslope::ET::ShuttleworthWallaceET::use_for_cell(*arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -60737,6 +64419,8 @@ SWIGINTERN PyObject *_wrap_delete_ShuttleworthWallaceET(PyObject *SWIGUNUSEDPARM
   {
     try {
       delete arg1;
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -60793,6 +64477,8 @@ SWIGINTERN PyObject *_wrap_new_HargreaveET(PyObject *SWIGUNUSEDPARM(self), PyObj
   {
     try {
       result = (cmf::upslope::ET::HargreaveET *)new cmf::upslope::ET::HargreaveET(arg1,arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -60825,6 +64511,8 @@ SWIGINTERN PyObject *_wrap_HargreaveET_use_for_cell(PyObject *SWIGUNUSEDPARM(sel
   {
     try {
       cmf::upslope::ET::HargreaveET::use_for_cell(*arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -60854,6 +64542,8 @@ SWIGINTERN PyObject *_wrap_delete_HargreaveET(PyObject *SWIGUNUSEDPARM(self), Py
   {
     try {
       delete arg1;
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -60921,6 +64611,8 @@ SWIGINTERN PyObject *_wrap_new_CanopyStorageEvaporation(PyObject *SWIGUNUSEDPARM
   {
     try {
       result = (cmf::upslope::ET::CanopyStorageEvaporation *)new cmf::upslope::ET::CanopyStorageEvaporation(arg1,arg2,*arg3);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -60950,6 +64642,8 @@ SWIGINTERN PyObject *_wrap_delete_CanopyStorageEvaporation(PyObject *SWIGUNUSEDP
   {
     try {
       delete arg1;
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -61017,6 +64711,8 @@ SWIGINTERN PyObject *_wrap_new_PenmanEvaporation(PyObject *SWIGUNUSEDPARM(self),
   {
     try {
       result = (cmf::upslope::ET::PenmanEvaporation *)new cmf::upslope::ET::PenmanEvaporation(arg1,arg2,(cmf::atmosphere::Meteorology const &)*arg3);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -61046,6 +64742,8 @@ SWIGINTERN PyObject *_wrap_delete_PenmanEvaporation(PyObject *SWIGUNUSEDPARM(sel
   {
     try {
       delete arg1;
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -61221,6 +64919,8 @@ SWIGINTERN PyObject *_wrap_project_get_cell(PyObject *SWIGUNUSEDPARM(self), PyOb
   {
     try {
       result = (cmf::upslope::Cell *) &(arg1)->get_cell(arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -61251,6 +64951,8 @@ SWIGINTERN PyObject *_wrap_project_size(PyObject *SWIGUNUSEDPARM(self), PyObject
   {
     try {
       result = (int)((cmf::project const *)arg1)->size();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -61336,6 +65038,8 @@ SWIGINTERN PyObject *_wrap_new_project(PyObject *SWIGUNUSEDPARM(self), PyObject 
   {
     try {
       result = (cmf::project *)new cmf::project(arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -61365,6 +65069,8 @@ SWIGINTERN PyObject *_wrap_delete_project(PyObject *SWIGUNUSEDPARM(self), PyObje
   {
     try {
       delete arg1;
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -61425,6 +65131,8 @@ SWIGINTERN PyObject *_wrap_project_NewCell__SWIG_0(PyObject *SWIGUNUSEDPARM(self
   {
     try {
       result = (cmf::upslope::Cell *)(arg1)->NewCell(arg2,arg3,arg4,arg5);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -61470,6 +65178,8 @@ SWIGINTERN PyObject *_wrap_project_NewCell__SWIG_1(PyObject *SWIGUNUSEDPARM(self
   {
     try {
       result = (cmf::upslope::Cell *)(arg1)->NewCell(arg2,arg3);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -61647,6 +65357,8 @@ SWIGINTERN PyObject *_wrap_project_NewOutlet(PyObject *SWIGUNUSEDPARM(self), PyO
   {
     try {
       result = (arg1)->NewOutlet(arg2,arg3);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -61687,6 +65399,8 @@ SWIGINTERN PyObject *_wrap_project_get_reach(PyObject *SWIGUNUSEDPARM(self), PyO
   {
     try {
       result = (arg1)->get_reach(arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -61720,6 +65434,8 @@ SWIGINTERN PyObject *_wrap_project_reach_count(PyObject *SWIGUNUSEDPARM(self), P
   {
     try {
       result = (int)((cmf::project const *)arg1)->reach_count();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -61750,6 +65466,8 @@ SWIGINTERN PyObject *_wrap_project_get_storages(PyObject *SWIGUNUSEDPARM(self), 
   {
     try {
       result = (arg1)->get_storages();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -61805,6 +65523,8 @@ SWIGINTERN PyObject *_wrap_project_NewReach(PyObject *SWIGUNUSEDPARM(self), PyOb
   {
     try {
       result = (arg1)->NewReach(arg2,arg3);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -61838,6 +65558,8 @@ SWIGINTERN PyObject *_wrap_project_cells_get(PyObject *SWIGUNUSEDPARM(self), PyO
   {
     try {
       result = (cmf::upslope::cell_vector *)cmf_project_cells_get(arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -61879,6 +65601,8 @@ SWIGINTERN PyObject *_wrap_SoluteWaterIntegrator_Copy(PyObject *SWIGUNUSEDPARM(s
   {
     try {
       result = (cmf::math::SoluteWaterIntegrator *)((cmf::math::SoluteWaterIntegrator const *)arg1)->Copy();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -61921,6 +65645,8 @@ SWIGINTERN PyObject *_wrap_new_SoluteWaterIntegrator__SWIG_0(PyObject *SWIGUNUSE
   {
     try {
       result = (cmf::math::SoluteWaterIntegrator *)new cmf::math::SoluteWaterIntegrator((cmf::math::Integrator const &)*arg1,(cmf::math::Integrator const &)*arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -61974,6 +65700,8 @@ SWIGINTERN PyObject *_wrap_new_SoluteWaterIntegrator__SWIG_1(PyObject *SWIGUNUSE
   {
     try {
       result = (cmf::math::SoluteWaterIntegrator *)new cmf::math::SoluteWaterIntegrator((cmf::math::Integrator const &)*arg1,(cmf::math::Integrator const &)*arg2,*arg3);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -62102,6 +65830,8 @@ SWIGINTERN PyObject *_wrap_SoluteWaterIntegrator_solute_integrator_set(PyObject 
   {
     try {
       cmf_math_SoluteWaterIntegrator_solute_integrator_set(arg1,arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -62132,6 +65862,8 @@ SWIGINTERN PyObject *_wrap_SoluteWaterIntegrator_solute_integrator_get(PyObject 
   {
     try {
       result = (cmf::math::Integrator *)cmf_math_SoluteWaterIntegrator_solute_integrator_get(arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -62168,6 +65900,8 @@ SWIGINTERN PyObject *_wrap_SoluteWaterIntegrator_water_integrator_set(PyObject *
   {
     try {
       cmf_math_SoluteWaterIntegrator_water_integrator_set(arg1,arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -62198,6 +65932,8 @@ SWIGINTERN PyObject *_wrap_SoluteWaterIntegrator_water_integrator_get(PyObject *
   {
     try {
       result = (cmf::math::Integrator *)cmf_math_SoluteWaterIntegrator_water_integrator_get(arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -62227,6 +65963,8 @@ SWIGINTERN PyObject *_wrap_delete_SoluteWaterIntegrator(PyObject *SWIGUNUSEDPARM
   {
     try {
       delete arg1;
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
       SWIG_exception(SWIG_RuntimeError, e.what());
     }
@@ -64100,6 +67838,8 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"delete_TechnicalFlux", (PyCFunction)_wrap_delete_TechnicalFlux, METH_O, (char *)"delete_TechnicalFlux(TechnicalFlux self)"},
 	 { (char *)"TechnicalFlux_swigregister", TechnicalFlux_swigregister, METH_VARARGS, NULL},
 	 { (char *)"TechnicalFlux_swiginit", TechnicalFlux_swiginit, METH_VARARGS, NULL},
+	 { (char *)"WaterStorage_get_state_variable_content", (PyCFunction)_wrap_WaterStorage_get_state_variable_content, METH_O, (char *)"WaterStorage_get_state_variable_content(WaterStorage self) -> char"},
+	 { (char *)"WaterStorage_set_state_variable_content", _wrap_WaterStorage_set_state_variable_content, METH_VARARGS, (char *)"WaterStorage_set_state_variable_content(WaterStorage self, char content)"},
 	 { (char *)"new_WaterStorage", _wrap_new_WaterStorage, METH_VARARGS, (char *)"\n"
 		"new_WaterStorage(project _project, double InitialState = 0) -> WaterStorage\n"
 		"\n"
@@ -64419,6 +68159,8 @@ static PyMethodDef SwigMethods[] = {
 		"double\n"
 		"cmf::atmosphere::vapour_pressure(double T) \n"
 		""},
+	 { (char *)"vpd_from_rH", _wrap_vpd_from_rH, METH_VARARGS, (char *)"vpd_from_rH(double T, double rH) -> double"},
+	 { (char *)"rH_from_vpd", _wrap_rH_from_vpd, METH_VARARGS, (char *)"rH_from_vpd(double T, double vpd) -> double"},
 	 { (char *)"global_radiation", _wrap_global_radiation, METH_VARARGS, (char *)"\n"
 		"global_radiation(Time t, double height, double sunshine_fraction, double longitude = 8, \n"
 		"    double latitude = 51, double time_zone = 1, \n"
@@ -64473,8 +68215,10 @@ static PyMethodDef SwigMethods[] = {
 		"daily:  If true, the net radiation for daily averages will be\n"
 		"calculated \n"
 		""},
-	 { (char *)"new_Weather", (PyCFunction)_wrap_new_Weather, METH_NOARGS, (char *)"\n"
-		"new_Weather() -> Weather\n"
+	 { (char *)"new_Weather", _wrap_new_Weather, METH_VARARGS, (char *)"\n"
+		"Weather()\n"
+		"new_Weather(double _T, double _Tmax, double _Tmin, double _rH, \n"
+		"    double _wind = 2, double _sunshine = 0.5, double _Rs = 15) -> Weather\n"
 		"\n"
 		"Weather()\n"
 		"\n"
@@ -64617,14 +68361,15 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"MeteoStation_swigregister", MeteoStation_swigregister, METH_VARARGS, NULL},
 	 { (char *)"MeteoStation_swiginit", MeteoStation_swiginit, METH_VARARGS, NULL},
 	 { (char *)"MeteoStationReference_get_station", (PyCFunction)_wrap_MeteoStationReference_get_station, METH_O, (char *)"\n"
-		"MeteoStationReference_get_station(MeteoStationReference self)\n"
+		"MeteoStationReference_get_station(MeteoStationReference self) -> ptr\n"
 		"\n"
 		"meteo_station_pointer get_station() const\n"
 		"\n"
 		"Returns the station referenced. \n"
 		""},
 	 { (char *)"new_MeteoStationReference", _wrap_new_MeteoStationReference, METH_VARARGS, (char *)"\n"
-		"MeteoStationReference( station, Locatable location)\n"
+		"MeteoStationReference(ptr station, Locatable location)\n"
+		"MeteoStationReference(ptr station, point location)\n"
 		"new_MeteoStationReference(MeteoStationReference copy) -> MeteoStationReference\n"
 		"\n"
 		"MeteoStationReference(const MeteoStationReference &copy) \n"
@@ -64649,8 +68394,8 @@ static PyMethodDef SwigMethods[] = {
 		"Returns the number of stations. \n"
 		""},
 	 { (char *)"MeteoStationList___getitem__", _wrap_MeteoStationList___getitem__, METH_VARARGS, (char *)"\n"
-		"__getitem__(int index)\n"
-		"MeteoStationList___getitem__(MeteoStationList self, string Name)\n"
+		"__getitem__(int index) -> ptr\n"
+		"MeteoStationList___getitem__(MeteoStationList self, string Name) -> ptr\n"
 		""},
 	 { (char *)"MeteoStationList_calculate_Temp_lapse", _wrap_MeteoStationList_calculate_Temp_lapse, METH_VARARGS, (char *)"\n"
 		"MeteoStationList_calculate_Temp_lapse(MeteoStationList self, Time begin, Time step, Time end) -> double\n"
@@ -64668,11 +68413,11 @@ static PyMethodDef SwigMethods[] = {
 		"add_station(string name, double latitude = 51, double longitude = 8, \n"
 		"    double timezone = 1, double elevation = 0, \n"
 		"    Time startTime = cmf::math::Time(1,1,2001), \n"
-		"    Time timestep = day)\n"
+		"    Time timestep = day) -> ptr\n"
 		"MeteoStationList_add_station(MeteoStationList self, string name, point position, \n"
 		"    double latitude = 51, double longitude = 8, \n"
 		"    double timezone = 1, Time startTime = cmf::math::Time(1,1,2001), \n"
-		"    Time timestep = day)\n"
+		"    Time timestep = day) -> ptr\n"
 		"\n"
 		"meteo_station_pointer add_station(std::string name,\n"
 		"cmf::geometry::point position, double latitude=51, double longitude=8,\n"
@@ -64835,6 +68580,8 @@ static PyMethodDef SwigMethods[] = {
 		"void\n"
 		"set_saturated_depth(real depth) \n"
 		""},
+	 { (char *)"Cell_set_weather", _wrap_Cell_set_weather, METH_VARARGS, (char *)"Cell_set_weather(Cell self, Weather weather)"},
+	 { (char *)"Cell_set_rainfall", _wrap_Cell_set_rainfall, METH_VARARGS, (char *)"Cell_set_rainfall(Cell self, double rainfall)"},
 	 { (char *)"Cell_get_surfacewater", (PyCFunction)_wrap_Cell_get_surfacewater, METH_O, (char *)"\n"
 		"Cell_get_surfacewater(Cell self) -> ptr\n"
 		"\n"
@@ -64929,7 +68676,7 @@ static PyMethodDef SwigMethods[] = {
 		"layer_count() const \n"
 		""},
 	 { (char *)"Cell_get_layer", _wrap_Cell_get_layer, METH_VARARGS, (char *)"\n"
-		"Cell_get_layer(Cell self, int ndx) -> layer_ptr\n"
+		"Cell_get_layer(Cell self, int ndx) -> ptr\n"
 		"\n"
 		"cmf::upslope::layer_ptr get_layer(int ndx) const \n"
 		""},
@@ -64976,6 +68723,7 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"Cell_meteorology_set", _wrap_Cell_meteorology_set, METH_VARARGS, (char *)"Cell_meteorology_set(Cell self, Meteorology meteorology)"},
 	 { (char *)"Cell_meteorology_get", (PyCFunction)_wrap_Cell_meteorology_get, METH_O, (char *)"Cell_meteorology_get(Cell self) -> Meteorology"},
 	 { (char *)"Cell_rain_get", (PyCFunction)_wrap_Cell_rain_get, METH_O, (char *)"Cell_rain_get(Cell self) -> __dummy_10__"},
+	 { (char *)"Cell_layers_get", (PyCFunction)_wrap_Cell_layers_get, METH_O, (char *)"Cell_layers_get(Cell self) -> layer_list"},
 	 { (char *)"Cell_swigregister", Cell_swigregister, METH_VARARGS, NULL},
 	 { (char *)"Cell_swiginit", Cell_swiginit, METH_VARARGS, NULL},
 	 { (char *)"Topology_cell_get", (PyCFunction)_wrap_Topology_cell_get, METH_O, (char *)"Topology_cell_get(Topology self) -> Cell"},
@@ -65135,7 +68883,7 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"connect_cells_with_flux", _wrap_connect_cells_with_flux, METH_VARARGS, (char *)"connect_cells_with_flux(cells_ref cells, CellConnector connect, int start_at_layer = 0)"},
 	 { (char *)"fill_sinks", _wrap_fill_sinks, METH_VARARGS, (char *)"fill_sinks(cells_ref cells, double min_difference = 0.001) -> int"},
 	 { (char *)"area", (PyCFunction)_wrap_area, METH_O, (char *)"area(cells_ref cells) -> double"},
-	 { (char *)"set_meteo_station", _wrap_set_meteo_station, METH_VARARGS, (char *)"set_meteo_station(cells_ref cells,  meteo_station)"},
+	 { (char *)"set_meteo_station", _wrap_set_meteo_station, METH_VARARGS, (char *)"set_meteo_station(cells_ref cells, ptr meteo_station)"},
 	 { (char *)"set_precipitation", _wrap_set_precipitation, METH_VARARGS, (char *)"set_precipitation(cells_ref cells, timeseries data_in_mm_day)"},
 	 { (char *)"cell_positions", (PyCFunction)_wrap_cell_positions, METH_O, (char *)"cell_positions(cells_ref cells) -> point_vector"},
 	 { (char *)"cell_flux_directions", _wrap_cell_flux_directions, METH_VARARGS, (char *)"cell_flux_directions(cells_ref cells, Time arg1) -> point_vector"},
@@ -65394,20 +69142,6 @@ static PyMethodDef SwigMethods[] = {
 		"virtual\n"
 		"void set_soil(const cmf::upslope::RetentionCurve &r_curve) \n"
 		""},
-	 { (char *)"SoilLayer_get_theta", (PyCFunction)_wrap_SoilLayer_get_theta, METH_O, (char *)"\n"
-		"SoilLayer_get_theta(SoilLayer self) -> real\n"
-		"\n"
-		"virtual\n"
-		"real get_theta() const\n"
-		"\n"
-		"Returns the actual volumetric water content of the water storage. \n"
-		""},
-	 { (char *)"SoilLayer_set_theta", _wrap_SoilLayer_set_theta, METH_VARARGS, (char *)"\n"
-		"SoilLayer_set_theta(SoilLayer self, real Value)\n"
-		"\n"
-		"virtual\n"
-		"void set_theta(real Value) \n"
-		""},
 	 { (char *)"SoilLayer_get_capacity", (PyCFunction)_wrap_SoilLayer_get_capacity, METH_O, (char *)"\n"
 		"SoilLayer_get_capacity(SoilLayer self) -> real\n"
 		"\n"
@@ -65452,14 +69186,53 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"SoilLayer_matrix_potential_get", (PyCFunction)_wrap_SoilLayer_matrix_potential_get, METH_O, (char *)"SoilLayer_matrix_potential_get(SoilLayer self) -> real"},
 	 { (char *)"SoilLayer_wetness_set", _wrap_SoilLayer_wetness_set, METH_VARARGS, (char *)"SoilLayer_wetness_set(SoilLayer self, real wetness)"},
 	 { (char *)"SoilLayer_wetness_get", (PyCFunction)_wrap_SoilLayer_wetness_get, METH_O, (char *)"SoilLayer_wetness_get(SoilLayer self) -> real"},
+	 { (char *)"SoilLayer_theta_set", _wrap_SoilLayer_theta_set, METH_VARARGS, (char *)"SoilLayer_theta_set(SoilLayer self, real theta)"},
+	 { (char *)"SoilLayer_theta_get", (PyCFunction)_wrap_SoilLayer_theta_get, METH_O, (char *)"SoilLayer_theta_get(SoilLayer self) -> real"},
 	 { (char *)"SoilLayer_K_get", (PyCFunction)_wrap_SoilLayer_K_get, METH_O, (char *)"SoilLayer_K_get(SoilLayer self) -> real"},
 	 { (char *)"SoilLayer_Ksat_get", (PyCFunction)_wrap_SoilLayer_Ksat_get, METH_O, (char *)"SoilLayer_Ksat_get(SoilLayer self) -> real"},
 	 { (char *)"SoilLayer_thickness_get", (PyCFunction)_wrap_SoilLayer_thickness_get, METH_O, (char *)"SoilLayer_thickness_get(SoilLayer self) -> real"},
 	 { (char *)"SoilLayer_lower_boundary_get", (PyCFunction)_wrap_SoilLayer_lower_boundary_get, METH_O, (char *)"SoilLayer_lower_boundary_get(SoilLayer self) -> real"},
 	 { (char *)"SoilLayer_upper_boundary_get", (PyCFunction)_wrap_SoilLayer_upper_boundary_get, METH_O, (char *)"SoilLayer_upper_boundary_get(SoilLayer self) -> real"},
 	 { (char *)"SoilLayer_porosity_get", (PyCFunction)_wrap_SoilLayer_porosity_get, METH_O, (char *)"SoilLayer_porosity_get(SoilLayer self) -> real"},
+	 { (char *)"SoilLayer_upper_get", (PyCFunction)_wrap_SoilLayer_upper_get, METH_O, (char *)"SoilLayer_upper_get(SoilLayer self) -> SoilLayer"},
+	 { (char *)"SoilLayer_lower_get", (PyCFunction)_wrap_SoilLayer_lower_get, METH_O, (char *)"SoilLayer_lower_get(SoilLayer self) -> SoilLayer"},
 	 { (char *)"delete_SoilLayer", (PyCFunction)_wrap_delete_SoilLayer, METH_O, (char *)"delete_SoilLayer(SoilLayer self)"},
 	 { (char *)"SoilLayer_swigregister", SoilLayer_swigregister, METH_VARARGS, NULL},
+	 { (char *)"new_layer_list", _wrap_new_layer_list, METH_VARARGS, (char *)"\n"
+		"layer_list(layer_list for_copy)\n"
+		"layer_list()\n"
+		"new_layer_list(node_list for_copy) -> layer_list\n"
+		""},
+	 { (char *)"layer_list_pop", (PyCFunction)_wrap_layer_list_pop, METH_O, (char *)"layer_list_pop(layer_list self) -> ptr"},
+	 { (char *)"layer_list_append", _wrap_layer_list_append, METH_VARARGS, (char *)"\n"
+		"append(ptr l) -> layer_list\n"
+		"append(layer_list ll) -> layer_list\n"
+		"layer_list_append(layer_list self, node_list nl) -> layer_list\n"
+		""},
+	 { (char *)"layer_list_get_slice", _wrap_layer_list_get_slice, METH_VARARGS, (char *)"\n"
+		"layer_list_get_slice(layer_list self, size_t first = 0, size_t last = 1000000, \n"
+		"    size_t step = 1) -> layer_list\n"
+		""},
+	 { (char *)"layer_list_clear", (PyCFunction)_wrap_layer_list_clear, METH_O, (char *)"layer_list_clear(layer_list self)"},
+	 { (char *)"layer_list_size", (PyCFunction)_wrap_layer_list_size, METH_O, (char *)"layer_list_size(layer_list self) -> size_t"},
+	 { (char *)"layer_list_set_potential", _wrap_layer_list_set_potential, METH_VARARGS, (char *)"layer_list_set_potential(layer_list self, num_array Value, size_t offset = 0)"},
+	 { (char *)"layer_list_set_volume", _wrap_layer_list_set_volume, METH_VARARGS, (char *)"layer_list_set_volume(layer_list self, num_array Value, size_t offset = 0)"},
+	 { (char *)"layer_list_set_wetness", _wrap_layer_list_set_wetness, METH_VARARGS, (char *)"layer_list_set_wetness(layer_list self, num_array Value, size_t offset = 0)"},
+	 { (char *)"layer_list_gravitational_potential_get", (PyCFunction)_wrap_layer_list_gravitational_potential_get, METH_O, (char *)"layer_list_gravitational_potential_get(layer_list self) -> num_array"},
+	 { (char *)"layer_list_matrix_potential_get", (PyCFunction)_wrap_layer_list_matrix_potential_get, METH_O, (char *)"layer_list_matrix_potential_get(layer_list self) -> num_array"},
+	 { (char *)"layer_list_wetness_get", (PyCFunction)_wrap_layer_list_wetness_get, METH_O, (char *)"layer_list_wetness_get(layer_list self) -> num_array"},
+	 { (char *)"layer_list_volume_get", (PyCFunction)_wrap_layer_list_volume_get, METH_O, (char *)"layer_list_volume_get(layer_list self) -> num_array"},
+	 { (char *)"layer_list_potential_get", (PyCFunction)_wrap_layer_list_potential_get, METH_O, (char *)"layer_list_potential_get(layer_list self) -> num_array"},
+	 { (char *)"layer_list_K_get", (PyCFunction)_wrap_layer_list_K_get, METH_O, (char *)"layer_list_K_get(layer_list self) -> num_array"},
+	 { (char *)"layer_list_Ksat_get", (PyCFunction)_wrap_layer_list_Ksat_get, METH_O, (char *)"layer_list_Ksat_get(layer_list self) -> num_array"},
+	 { (char *)"layer_list_thickness_get", (PyCFunction)_wrap_layer_list_thickness_get, METH_O, (char *)"layer_list_thickness_get(layer_list self) -> num_array"},
+	 { (char *)"layer_list_lower_boundary_get", (PyCFunction)_wrap_layer_list_lower_boundary_get, METH_O, (char *)"layer_list_lower_boundary_get(layer_list self) -> num_array"},
+	 { (char *)"layer_list_upper_boundary_get", (PyCFunction)_wrap_layer_list_upper_boundary_get, METH_O, (char *)"layer_list_upper_boundary_get(layer_list self) -> num_array"},
+	 { (char *)"layer_list_porosity_get", (PyCFunction)_wrap_layer_list_porosity_get, METH_O, (char *)"layer_list_porosity_get(layer_list self) -> num_array"},
+	 { (char *)"layer_list___get", _wrap_layer_list___get, METH_VARARGS, (char *)"layer_list___get(layer_list self, int index) -> ptr"},
+	 { (char *)"delete_layer_list", (PyCFunction)_wrap_delete_layer_list, METH_O, (char *)"delete_layer_list(layer_list self)"},
+	 { (char *)"layer_list_swigregister", layer_list_swigregister, METH_VARARGS, NULL},
+	 { (char *)"layer_list_swiginit", layer_list_swiginit, METH_VARARGS, NULL},
 	 { (char *)"IVolumeHeightFunction_h", _wrap_IVolumeHeightFunction_h, METH_VARARGS, (char *)"\n"
 		"IVolumeHeightFunction_h(IVolumeHeightFunction self, double V) -> double\n"
 		"\n"
@@ -66721,50 +70494,26 @@ static void *_p_std__tr1__shared_ptrT_cmf__river__Reach_tTo_p_std__tr1__shared_p
   *newmemory = SWIG_CAST_NEW_MEMORY;
   return (void *) new std::tr1::shared_ptr< cmf::river::OpenWaterStorage >(*(std::tr1::shared_ptr< cmf::river::Reach > *)x);
 }
-static void *_p_cmf__atmosphere__RainCloudTo_p_cmf__geometry__Locatable(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((cmf::geometry::Locatable *) (cmf::water::flux_node *)(cmf::water::NeumannBoundary *) ((cmf::atmosphere::RainCloud *) x));
-}
-static void *_p_cmf__atmosphere__MeteoStationTo_p_cmf__geometry__Locatable(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((cmf::geometry::Locatable *)  ((cmf::atmosphere::MeteoStation *) x));
-}
 static void *_p_cmf__geometry__LocationTo_p_cmf__geometry__Locatable(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((cmf::geometry::Locatable *)  ((cmf::geometry::Location *) x));
-}
-static void *_p_cmf__atmosphere__MeteoStationReferenceTo_p_cmf__geometry__Locatable(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((cmf::geometry::Locatable *)  ((cmf::atmosphere::MeteoStationReference *) x));
-}
-static void *_p_cmf__water__NeumannBoundaryTo_p_cmf__geometry__Locatable(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((cmf::geometry::Locatable *) (cmf::water::flux_node *) ((cmf::water::NeumannBoundary *) x));
-}
-static void *_p_cmf__water__DricheletBoundaryTo_p_cmf__geometry__Locatable(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((cmf::geometry::Locatable *) (cmf::water::flux_node *) ((cmf::water::DricheletBoundary *) x));
 }
 static void *_p_cmf__upslope__CellTo_p_cmf__geometry__Locatable(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((cmf::geometry::Locatable *)  ((cmf::upslope::Cell *) x));
 }
-static void *_p_cmf__upslope__SoilLayerTo_p_cmf__geometry__Locatable(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((cmf::geometry::Locatable *) (cmf::water::flux_node *)(cmf::water::WaterStorage *) ((cmf::upslope::SoilLayer *) x));
+static void *_p_cmf__upslope__TopologyTo_p_cmf__geometry__Locatable(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((cmf::geometry::Locatable *)  ((cmf::upslope::Topology *) x));
+}
+static void *_p_cmf__atmosphere__MeteoStationReferenceTo_p_cmf__geometry__Locatable(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((cmf::geometry::Locatable *)  ((cmf::atmosphere::MeteoStationReference *) x));
+}
+static void *_p_cmf__atmosphere__MeteoStationTo_p_cmf__geometry__Locatable(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((cmf::geometry::Locatable *)  ((cmf::atmosphere::MeteoStation *) x));
 }
 static void *_p_std__tr1__shared_ptrT_cmf__water__flux_node_tTo_p_cmf__geometry__Locatable(void *x, int *newmemory) {{
   *newmemory = SWIG_POINTER_DISOWN;
   std::tr1::shared_ptr<cmf::water::flux_node>* from_with_type = (std::tr1::shared_ptr<cmf::water::flux_node>*)(x);
   return (from_with_type->get());  
 }}
-static void *_p_cmf__upslope__TopologyTo_p_cmf__geometry__Locatable(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((cmf::geometry::Locatable *)  ((cmf::upslope::Topology *) x));
-}
-static void *_p_cmf__water__flux_nodeTo_p_cmf__geometry__Locatable(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((cmf::geometry::Locatable *)  ((cmf::water::flux_node *) x));
-}
-static void *_p_cmf__river__ReachTo_p_cmf__geometry__Locatable(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((cmf::geometry::Locatable *) (cmf::water::flux_node *)(cmf::water::WaterStorage *)(cmf::river::OpenWaterStorage *) ((cmf::river::Reach *) x));
-}
-static void *_p_cmf__river__OpenWaterStorageTo_p_cmf__geometry__Locatable(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((cmf::geometry::Locatable *) (cmf::water::flux_node *)(cmf::water::WaterStorage *) ((cmf::river::OpenWaterStorage *) x));
-}
-static void *_p_cmf__water__WaterStorageTo_p_cmf__geometry__Locatable(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((cmf::geometry::Locatable *) (cmf::water::flux_node *) ((cmf::water::WaterStorage *) x));
-}
 static void *_p_cmf__math__StateVariableVectorTo_p_std__vectorT_cmf__math__StateVariable_p_std__allocatorT_cmf__math__StateVariable_p_t_t(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((std::vector< cmf::math::StateVariable *,std::allocator< cmf::math::StateVariable * > > *)  ((cmf::math::StateVariableVector *) x));
 }
@@ -66945,6 +70694,7 @@ static swig_type_info _swigt__p_cmf__upslope__connections__SimpleTindexSnowMelt 
 static swig_type_info _swigt__p_cmf__upslope__connections__Snowfall = {"_p_cmf__upslope__connections__Snowfall", "cmf::upslope::connections::Snowfall *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_cmf__upslope__connections__TopographicGradientDarcy = {"_p_cmf__upslope__connections__TopographicGradientDarcy", "cmf::upslope::connections::TopographicGradientDarcy *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_cmf__upslope__connections__lateral_sub_surface_flux = {"_p_cmf__upslope__connections__lateral_sub_surface_flux", "cmf::upslope::connections::lateral_sub_surface_flux *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_cmf__upslope__layer_list = {"_p_cmf__upslope__layer_list", "cmf::upslope::layer_list *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_cmf__upslope__vegetation__Vegetation = {"_p_cmf__upslope__vegetation__Vegetation", "cmf::upslope::vegetation::Vegetation *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_cmf__water__DricheletBoundary = {"_p_cmf__water__DricheletBoundary", "cmf::water::DricheletBoundary *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_cmf__water__NeumannBoundary = {"_p_cmf__water__NeumannBoundary", "cmf::water::NeumannBoundary *", 0, 0, (void*)0, 0};
@@ -67005,12 +70755,13 @@ static swig_type_info _swigt__p_p_cmf__water__NeumannFlux = {"_p_p_cmf__water__N
 static swig_type_info _swigt__p_p_cmf__upslope__ET__CanopyStorageEvaporation = {"_p_p_cmf__upslope__ET__CanopyStorageEvaporation", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_p_cmf__upslope__ET__PenmanEvaporation = {"_p_p_cmf__upslope__ET__PenmanEvaporation", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_std__setT_cmf__water__flux_connection_p_std__lessT_cmf__water__flux_connection_p_t_std__allocatorT_cmf__water__flux_connection_p_t_t__value_type = {"_p_std__setT_cmf__water__flux_connection_p_std__lessT_cmf__water__flux_connection_p_t_std__allocatorT_cmf__water__flux_connection_p_t_t__value_type", "cmf::water::flux_connection **|std::set< cmf::water::flux_connection * >::value_type *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_std__tr1__shared_ptrT_SoilLayer_t = {"_p_std__tr1__shared_ptrT_SoilLayer_t", "std::tr1::shared_ptr< SoilLayer > *|cmf::upslope::layer_ptr *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__tr1__shared_ptrT_cmf__atmosphere__MeteoStation_t = {"_p_std__tr1__shared_ptrT_cmf__atmosphere__MeteoStation_t", "std::tr1::shared_ptr< cmf::atmosphere::MeteoStation > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__tr1__shared_ptrT_cmf__atmosphere__RainCloud_t = {"_p_std__tr1__shared_ptrT_cmf__atmosphere__RainCloud_t", "std::tr1::shared_ptr< cmf::atmosphere::RainCloud > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__tr1__shared_ptrT_cmf__math__StateVariable_t = {"_p_std__tr1__shared_ptrT_cmf__math__StateVariable_t", "std::tr1::shared_ptr< cmf::math::StateVariable > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__tr1__shared_ptrT_cmf__river__OpenWaterStorage_t = {"_p_std__tr1__shared_ptrT_cmf__river__OpenWaterStorage_t", "std::tr1::shared_ptr< cmf::river::OpenWaterStorage > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__tr1__shared_ptrT_cmf__river__Reach_t = {"_p_std__tr1__shared_ptrT_cmf__river__Reach_t", "cmf::river::Reach_ptr *|std::tr1::shared_ptr< cmf::river::Reach > *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_std__tr1__shared_ptrT_cmf__upslope__SoilLayer_t = {"_p_std__tr1__shared_ptrT_cmf__upslope__SoilLayer_t", "std::tr1::shared_ptr< cmf::upslope::SoilLayer > *|cmf::upslope::layer_ptr *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_std__tr1__shared_ptrT_cmf__upslope__SoilLayer_t = {"_p_std__tr1__shared_ptrT_cmf__upslope__SoilLayer_t", "std::tr1::shared_ptr< cmf::upslope::SoilLayer > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__tr1__shared_ptrT_cmf__water__DricheletBoundary_t = {"_p_std__tr1__shared_ptrT_cmf__water__DricheletBoundary_t", "std::tr1::shared_ptr< cmf::water::DricheletBoundary > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__tr1__shared_ptrT_cmf__water__NeumannBoundary_t = {"_p_std__tr1__shared_ptrT_cmf__water__NeumannBoundary_t", "cmf::water::NeumannBoundary_ptr *|std::tr1::shared_ptr< cmf::water::NeumannBoundary > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__tr1__shared_ptrT_cmf__water__SoluteStorage_t = {"_p_std__tr1__shared_ptrT_cmf__water__SoluteStorage_t", "std::tr1::shared_ptr< cmf::water::SoluteStorage > *", 0, 0, (void*)0, 0};
@@ -67112,6 +70863,7 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_cmf__upslope__connections__Snowfall,
   &_swigt__p_cmf__upslope__connections__TopographicGradientDarcy,
   &_swigt__p_cmf__upslope__connections__lateral_sub_surface_flux,
+  &_swigt__p_cmf__upslope__layer_list,
   &_swigt__p_cmf__upslope__vegetation__Vegetation,
   &_swigt__p_cmf__water__DricheletBoundary,
   &_swigt__p_cmf__water__NeumannBoundary,
@@ -67172,6 +70924,7 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_std__setT_cmf__water__flux_connection_p_std__lessT_cmf__water__flux_connection_p_t_std__allocatorT_cmf__water__flux_connection_p_t_t,
   &_swigt__p_std__setT_cmf__water__flux_connection_p_std__lessT_cmf__water__flux_connection_p_t_std__allocatorT_cmf__water__flux_connection_p_t_t__key_type,
   &_swigt__p_std__setT_cmf__water__flux_connection_p_std__lessT_cmf__water__flux_connection_p_t_std__allocatorT_cmf__water__flux_connection_p_t_t__value_type,
+  &_swigt__p_std__tr1__shared_ptrT_SoilLayer_t,
   &_swigt__p_std__tr1__shared_ptrT_cmf__atmosphere__MeteoStation_t,
   &_swigt__p_std__tr1__shared_ptrT_cmf__atmosphere__RainCloud_t,
   &_swigt__p_std__tr1__shared_ptrT_cmf__math__StateVariable_t,
@@ -67209,7 +70962,7 @@ static swig_cast_info _swigc__p_cmf__atmosphere__MeteoStationReference[] = {  {&
 static swig_cast_info _swigc__p_cmf__atmosphere__Meteorology[] = {  {&_swigt__p_cmf__atmosphere__MeteoStationReference, _p_cmf__atmosphere__MeteoStationReferenceTo_p_cmf__atmosphere__Meteorology, 0, 0},  {&_swigt__p_cmf__atmosphere__Meteorology, 0, 0, 0},  {&_swigt__p_cmf__atmosphere__ConstantMeteorology, _p_cmf__atmosphere__ConstantMeteorologyTo_p_cmf__atmosphere__Meteorology, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_cmf__atmosphere__RainCloud[] = {  {&_swigt__p_cmf__atmosphere__RainCloud, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_cmf__atmosphere__Weather[] = {  {&_swigt__p_cmf__atmosphere__Weather, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_cmf__geometry__Locatable[] = {  {&_swigt__p_cmf__atmosphere__RainCloud, _p_cmf__atmosphere__RainCloudTo_p_cmf__geometry__Locatable, 0, 0},  {&_swigt__p_std__tr1__shared_ptrT_cmf__water__WaterStorage_t, 0, 0, 0},  {&_swigt__p_cmf__atmosphere__MeteoStation, _p_cmf__atmosphere__MeteoStationTo_p_cmf__geometry__Locatable, 0, 0},  {&_swigt__p_std__tr1__shared_ptrT_cmf__river__Reach_t, 0, 0, 0},  {&_swigt__p_cmf__upslope__Cell, _p_cmf__upslope__CellTo_p_cmf__geometry__Locatable, 0, 0},  {&_swigt__p_cmf__geometry__Location, _p_cmf__geometry__LocationTo_p_cmf__geometry__Locatable, 0, 0},  {&_swigt__p_cmf__atmosphere__MeteoStationReference, _p_cmf__atmosphere__MeteoStationReferenceTo_p_cmf__geometry__Locatable, 0, 0},  {&_swigt__p_std__tr1__shared_ptrT_cmf__atmosphere__RainCloud_t, 0, 0, 0},  {&_swigt__p_std__tr1__shared_ptrT_cmf__water__DricheletBoundary_t, 0, 0, 0},  {&_swigt__p_std__tr1__shared_ptrT_cmf__water__flux_node_t, _p_std__tr1__shared_ptrT_cmf__water__flux_node_tTo_p_cmf__geometry__Locatable, 0, 0},  {&_swigt__p_std__tr1__shared_ptrT_cmf__water__NeumannBoundary_t, 0, 0, 0},  {&_swigt__p_cmf__water__DricheletBoundary, _p_cmf__water__DricheletBoundaryTo_p_cmf__geometry__Locatable, 0, 0},  {&_swigt__p_cmf__water__NeumannBoundary, _p_cmf__water__NeumannBoundaryTo_p_cmf__geometry__Locatable, 0, 0},  {&_swigt__p_std__tr1__shared_ptrT_cmf__river__OpenWaterStorage_t, 0, 0, 0},  {&_swigt__p_cmf__upslope__SoilLayer, _p_cmf__upslope__SoilLayerTo_p_cmf__geometry__Locatable, 0, 0},  {&_swigt__p_cmf__upslope__Topology, _p_cmf__upslope__TopologyTo_p_cmf__geometry__Locatable, 0, 0},  {&_swigt__std__vectorT_cmf__upslope__Cell_p_std__allocatorT_cmf__upslope__Cell_p_t_t__value_type, 0, 0, 0},  {&_swigt__p_std__tr1__shared_ptrT_cmf__upslope__SoilLayer_t, 0, 0, 0},  {&_swigt__p_cmf__water__flux_node, _p_cmf__water__flux_nodeTo_p_cmf__geometry__Locatable, 0, 0},  {&_swigt__p_cmf__river__Reach, _p_cmf__river__ReachTo_p_cmf__geometry__Locatable, 0, 0},  {&_swigt__p_cmf__water__WaterStorage, _p_cmf__water__WaterStorageTo_p_cmf__geometry__Locatable, 0, 0},  {&_swigt__p_cmf__river__OpenWaterStorage, _p_cmf__river__OpenWaterStorageTo_p_cmf__geometry__Locatable, 0, 0},  {&_swigt__p_cmf__geometry__Locatable, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_cmf__geometry__Locatable[] = {  {&_swigt__p_std__tr1__shared_ptrT_cmf__water__WaterStorage_t, 0, 0, 0},  {&_swigt__p_std__tr1__shared_ptrT_cmf__river__Reach_t, 0, 0, 0},  {&_swigt__p_cmf__upslope__Cell, _p_cmf__upslope__CellTo_p_cmf__geometry__Locatable, 0, 0},  {&_swigt__p_cmf__geometry__Location, _p_cmf__geometry__LocationTo_p_cmf__geometry__Locatable, 0, 0},  {&_swigt__p_cmf__atmosphere__MeteoStation, _p_cmf__atmosphere__MeteoStationTo_p_cmf__geometry__Locatable, 0, 0},  {&_swigt__p_cmf__atmosphere__MeteoStationReference, _p_cmf__atmosphere__MeteoStationReferenceTo_p_cmf__geometry__Locatable, 0, 0},  {&_swigt__p_std__tr1__shared_ptrT_cmf__water__DricheletBoundary_t, 0, 0, 0},  {&_swigt__p_std__tr1__shared_ptrT_cmf__atmosphere__RainCloud_t, 0, 0, 0},  {&_swigt__p_std__tr1__shared_ptrT_cmf__water__flux_node_t, _p_std__tr1__shared_ptrT_cmf__water__flux_node_tTo_p_cmf__geometry__Locatable, 0, 0},  {&_swigt__p_std__tr1__shared_ptrT_cmf__water__NeumannBoundary_t, 0, 0, 0},  {&_swigt__p_std__tr1__shared_ptrT_cmf__river__OpenWaterStorage_t, 0, 0, 0},  {&_swigt__p_cmf__upslope__Topology, _p_cmf__upslope__TopologyTo_p_cmf__geometry__Locatable, 0, 0},  {&_swigt__std__vectorT_cmf__upslope__Cell_p_std__allocatorT_cmf__upslope__Cell_p_t_t__value_type, 0, 0, 0},  {&_swigt__p_std__tr1__shared_ptrT_cmf__upslope__SoilLayer_t, 0, 0, 0},  {&_swigt__p_cmf__geometry__Locatable, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_cmf__geometry__Location[] = {  {&_swigt__p_cmf__geometry__Location, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_cmf__geometry__point[] = {  {&_swigt__p_cmf__geometry__point, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_cmf__geometry__point_vector[] = {  {&_swigt__p_cmf__geometry__point_vector, 0, 0, 0},{0, 0, 0, 0}};
@@ -67279,6 +71032,7 @@ static swig_cast_info _swigc__p_cmf__upslope__connections__SimpleTindexSnowMelt[
 static swig_cast_info _swigc__p_cmf__upslope__connections__Snowfall[] = {  {&_swigt__p_cmf__upslope__connections__Snowfall, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_cmf__upslope__connections__TopographicGradientDarcy[] = {  {&_swigt__p_cmf__upslope__connections__TopographicGradientDarcy, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_cmf__upslope__connections__lateral_sub_surface_flux[] = {  {&_swigt__p_cmf__upslope__connections__TopographicGradientDarcy, _p_cmf__upslope__connections__TopographicGradientDarcyTo_p_cmf__upslope__connections__lateral_sub_surface_flux, 0, 0},  {&_swigt__p_cmf__upslope__connections__DarcyKinematic, _p_cmf__upslope__connections__DarcyKinematicTo_p_cmf__upslope__connections__lateral_sub_surface_flux, 0, 0},  {&_swigt__p_cmf__upslope__connections__Richards_lateral, _p_cmf__upslope__connections__Richards_lateralTo_p_cmf__upslope__connections__lateral_sub_surface_flux, 0, 0},  {&_swigt__p_cmf__upslope__connections__HBVlateral, _p_cmf__upslope__connections__HBVlateralTo_p_cmf__upslope__connections__lateral_sub_surface_flux, 0, 0},  {&_swigt__p_cmf__upslope__connections__lateral_sub_surface_flux, 0, 0, 0},  {&_swigt__p_cmf__upslope__connections__Darcy, _p_cmf__upslope__connections__DarcyTo_p_cmf__upslope__connections__lateral_sub_surface_flux, 0, 0},  {&_swigt__p_cmf__upslope__connections__OHDISflow, _p_cmf__upslope__connections__OHDISflowTo_p_cmf__upslope__connections__lateral_sub_surface_flux, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_cmf__upslope__layer_list[] = {  {&_swigt__p_cmf__upslope__layer_list, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_cmf__upslope__vegetation__Vegetation[] = {  {&_swigt__p_cmf__upslope__vegetation__Vegetation, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_cmf__water__DricheletBoundary[] = {  {&_swigt__p_cmf__water__DricheletBoundary, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_cmf__water__NeumannBoundary[] = {  {&_swigt__p_cmf__water__NeumannBoundary, 0, 0, 0},  {&_swigt__p_cmf__atmosphere__RainCloud, _p_cmf__atmosphere__RainCloudTo_p_cmf__water__NeumannBoundary, 0, 0},{0, 0, 0, 0}};
@@ -67339,6 +71093,7 @@ static swig_cast_info _swigc__p_p_cmf__upslope__ET__CanopyStorageEvaporation[] =
 static swig_cast_info _swigc__p_p_cmf__upslope__ET__PenmanEvaporation[] = {{&_swigt__p_p_cmf__upslope__ET__PenmanEvaporation, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__setT_cmf__water__flux_connection_p_std__lessT_cmf__water__flux_connection_p_t_std__allocatorT_cmf__water__flux_connection_p_t_t__key_type[] = {  {&_swigt__p_p_cmf__upslope__connections__Snowfall, 0, 0, 0},  {&_swigt__p_p_cmf__upslope__connections__CanopyOverflow, 0, 0, 0},  {&_swigt__p_p_cmf__water__waterbalance_connection, 0, 0, 0},  {&_swigt__p_p_cmf__upslope__connections__Rainfall, 0, 0, 0},  {&_swigt__p_p_cmf__river__Manning_Kinematic, 0, 0, 0},  {&_swigt__p_p_cmf__upslope__connections__DarcyKinematic, 0, 0, 0},  {&_swigt__p_p_cmf__upslope__connections__lateral_sub_surface_flux, 0, 0, 0},  {&_swigt__p_p_cmf__upslope__connections__SWATPercolation, 0, 0, 0},  {&_swigt__p_p_cmf__upslope__connections__HBVpercolation, 0, 0, 0},  {&_swigt__p_p_cmf__river__Manning_Diffusive, 0, 0, 0},  {&_swigt__p_p_cmf__upslope__connections__HBVlateral, 0, 0, 0},  {&_swigt__p_p_cmf__upslope__connections__Richards_lateral, 0, 0, 0},  {&_swigt__p_p_cmf__upslope__connections__CompleteInfiltration, 0, 0, 0},  {&_swigt__p_std__setT_cmf__water__flux_connection_p_std__lessT_cmf__water__flux_connection_p_t_std__allocatorT_cmf__water__flux_connection_p_t_t__key_type, 0, 0, 0},  {&_swigt__p_std__setT_cmf__water__flux_connection_p_std__lessT_cmf__water__flux_connection_p_t_std__allocatorT_cmf__water__flux_connection_p_t_t__value_type, 0, 0, 0},  {&_swigt__p_p_cmf__upslope__connections__SimpleTindexSnowMelt, 0, 0, 0},  {&_swigt__p_p_cmf__upslope__connections__Richards, 0, 0, 0},  {&_swigt__p_p_cmf__upslope__connections__SimplRichards, 0, 0, 0},  {&_swigt__p_p_cmf__upslope__ET__ShuttleworthWallaceET, 0, 0, 0},  {&_swigt__p_p_cmf__upslope__connections__Darcy, 0, 0, 0},  {&_swigt__p_p_cmf__upslope__connections__OHDISflow, 0, 0, 0},  {&_swigt__p_p_cmf__water__TechnicalFlux, 0, 0, 0},  {&_swigt__p_p_cmf__upslope__connections__TopographicGradientDarcy, 0, 0, 0},  {&_swigt__p_p_cmf__upslope__ET__constantETpot, 0, 0, 0},  {&_swigt__p_p_cmf__river__Manning, 0, 0, 0},  {&_swigt__p_p_cmf__upslope__connections__MatrixInfiltration, 0, 0, 0},  {&_swigt__p_p_cmf__upslope__ET__HargreaveET, 0, 0, 0},  {&_swigt__p_p_cmf__upslope__ET__PenmanMonteithET, 0, 0, 0},  {&_swigt__p_p_cmf__water__NeumannFlux, 0, 0, 0},  {&_swigt__p_p_cmf__upslope__ET__CanopyStorageEvaporation, 0, 0, 0},  {&_swigt__p_p_cmf__upslope__ET__PenmanEvaporation, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__setT_cmf__water__flux_connection_p_std__lessT_cmf__water__flux_connection_p_t_std__allocatorT_cmf__water__flux_connection_p_t_t__value_type[] = {  {&_swigt__p_p_cmf__upslope__connections__Snowfall, 0, 0, 0},  {&_swigt__p_p_cmf__upslope__connections__CanopyOverflow, 0, 0, 0},  {&_swigt__p_p_cmf__water__waterbalance_connection, 0, 0, 0},  {&_swigt__p_p_cmf__upslope__connections__Rainfall, 0, 0, 0},  {&_swigt__p_p_cmf__river__Manning_Kinematic, 0, 0, 0},  {&_swigt__p_p_cmf__upslope__connections__DarcyKinematic, 0, 0, 0},  {&_swigt__p_p_cmf__upslope__connections__lateral_sub_surface_flux, 0, 0, 0},  {&_swigt__p_p_cmf__upslope__connections__SWATPercolation, 0, 0, 0},  {&_swigt__p_p_cmf__upslope__connections__HBVpercolation, 0, 0, 0},  {&_swigt__p_p_cmf__river__Manning_Diffusive, 0, 0, 0},  {&_swigt__p_p_cmf__upslope__connections__HBVlateral, 0, 0, 0},  {&_swigt__p_p_cmf__upslope__connections__Richards_lateral, 0, 0, 0},  {&_swigt__p_p_cmf__upslope__connections__CompleteInfiltration, 0, 0, 0},  {&_swigt__p_std__setT_cmf__water__flux_connection_p_std__lessT_cmf__water__flux_connection_p_t_std__allocatorT_cmf__water__flux_connection_p_t_t__value_type, 0, 0, 0},  {&_swigt__p_std__setT_cmf__water__flux_connection_p_std__lessT_cmf__water__flux_connection_p_t_std__allocatorT_cmf__water__flux_connection_p_t_t__key_type, 0, 0, 0},  {&_swigt__p_p_cmf__upslope__connections__SimpleTindexSnowMelt, 0, 0, 0},  {&_swigt__p_p_cmf__upslope__connections__Richards, 0, 0, 0},  {&_swigt__p_p_cmf__upslope__connections__SimplRichards, 0, 0, 0},  {&_swigt__p_p_cmf__upslope__ET__ShuttleworthWallaceET, 0, 0, 0},  {&_swigt__p_p_cmf__upslope__connections__Darcy, 0, 0, 0},  {&_swigt__p_p_cmf__upslope__connections__OHDISflow, 0, 0, 0},  {&_swigt__p_p_cmf__water__TechnicalFlux, 0, 0, 0},  {&_swigt__p_p_cmf__upslope__connections__TopographicGradientDarcy, 0, 0, 0},  {&_swigt__p_p_cmf__upslope__ET__constantETpot, 0, 0, 0},  {&_swigt__p_p_cmf__river__Manning, 0, 0, 0},  {&_swigt__p_p_cmf__upslope__connections__MatrixInfiltration, 0, 0, 0},  {&_swigt__p_p_cmf__upslope__ET__HargreaveET, 0, 0, 0},  {&_swigt__p_p_cmf__upslope__ET__PenmanMonteithET, 0, 0, 0},  {&_swigt__p_p_cmf__water__NeumannFlux, 0, 0, 0},  {&_swigt__p_p_cmf__upslope__ET__CanopyStorageEvaporation, 0, 0, 0},  {&_swigt__p_p_cmf__upslope__ET__PenmanEvaporation, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_std__tr1__shared_ptrT_SoilLayer_t[] = {  {&_swigt__p_std__tr1__shared_ptrT_SoilLayer_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__tr1__shared_ptrT_cmf__atmosphere__MeteoStation_t[] = {  {&_swigt__p_std__tr1__shared_ptrT_cmf__atmosphere__MeteoStation_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__tr1__shared_ptrT_cmf__atmosphere__RainCloud_t[] = {  {&_swigt__p_std__tr1__shared_ptrT_cmf__atmosphere__RainCloud_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__tr1__shared_ptrT_cmf__math__StateVariable_t[] = {  {&_swigt__p_std__tr1__shared_ptrT_cmf__water__WaterStorage_t, _p_std__tr1__shared_ptrT_cmf__water__WaterStorage_tTo_p_std__tr1__shared_ptrT_cmf__math__StateVariable_t, 0, 0},  {&_swigt__p_std__tr1__shared_ptrT_cmf__math__StateVariable_t, 0, 0, 0},  {&_swigt__p_std__tr1__shared_ptrT_cmf__river__OpenWaterStorage_t, _p_std__tr1__shared_ptrT_cmf__river__OpenWaterStorage_tTo_p_std__tr1__shared_ptrT_cmf__math__StateVariable_t, 0, 0},  {&_swigt__p_std__tr1__shared_ptrT_cmf__upslope__SoilLayer_t, _p_std__tr1__shared_ptrT_cmf__upslope__SoilLayer_tTo_p_std__tr1__shared_ptrT_cmf__math__StateVariable_t, 0, 0},  {&_swigt__p_std__tr1__shared_ptrT_cmf__water__SoluteStorage_t, _p_std__tr1__shared_ptrT_cmf__water__SoluteStorage_tTo_p_std__tr1__shared_ptrT_cmf__math__StateVariable_t, 0, 0},  {&_swigt__p_std__tr1__shared_ptrT_cmf__river__Reach_t, _p_std__tr1__shared_ptrT_cmf__river__Reach_tTo_p_std__tr1__shared_ptrT_cmf__math__StateVariable_t, 0, 0},{0, 0, 0, 0}};
@@ -67446,6 +71201,7 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_cmf__upslope__connections__Snowfall,
   _swigc__p_cmf__upslope__connections__TopographicGradientDarcy,
   _swigc__p_cmf__upslope__connections__lateral_sub_surface_flux,
+  _swigc__p_cmf__upslope__layer_list,
   _swigc__p_cmf__upslope__vegetation__Vegetation,
   _swigc__p_cmf__water__DricheletBoundary,
   _swigc__p_cmf__water__NeumannBoundary,
@@ -67506,6 +71262,7 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_std__setT_cmf__water__flux_connection_p_std__lessT_cmf__water__flux_connection_p_t_std__allocatorT_cmf__water__flux_connection_p_t_t,
   _swigc__p_std__setT_cmf__water__flux_connection_p_std__lessT_cmf__water__flux_connection_p_t_std__allocatorT_cmf__water__flux_connection_p_t_t__key_type,
   _swigc__p_std__setT_cmf__water__flux_connection_p_std__lessT_cmf__water__flux_connection_p_t_std__allocatorT_cmf__water__flux_connection_p_t_t__value_type,
+  _swigc__p_std__tr1__shared_ptrT_SoilLayer_t,
   _swigc__p_std__tr1__shared_ptrT_cmf__atmosphere__MeteoStation_t,
   _swigc__p_std__tr1__shared_ptrT_cmf__atmosphere__RainCloud_t,
   _swigc__p_std__tr1__shared_ptrT_cmf__math__StateVariable_t,

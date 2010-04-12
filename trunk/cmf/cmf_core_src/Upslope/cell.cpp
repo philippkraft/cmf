@@ -66,13 +66,18 @@ real cmf::upslope::Cell::get_saturated_depth()
 {
 	if (m_SatDepth<-10000)
 	{
-		//m_SatDepth=get_layer(0).get_saturated_depth();
-		m_SatDepth = z - get_layer(-1)->get_potential();
-		for (int i = layer_count() -2 ; i >=0 ; --i)
+		// Find first saturated layer
+		layer_list::const_iterator it;
+		for (it = m_Layers.begin();it!=m_Layers.end();++it)
 		{
-			real sd = z - get_layer(i)->get_potential();
-			if (sd < m_SatDepth) m_SatDepth=sd;
+			if ((**it).get_wetness() >= 1.0) {
+				// Saturated depth is potential of deepest unsaturated layer
+				m_SatDepth = this->z - (**it).get_potential();
+				return m_SatDepth;
+			}
 		}
+		m_SatDepth = this->z - m_Layers[-1]->get_potential();
+
 	}
 	return m_SatDepth;
 }
@@ -99,7 +104,14 @@ void cmf::upslope::Cell::add_layer(real lowerboundary,const cmf::upslope::Retent
 	{
 		new connections::CompleteInfiltration(layer,m_SurfaceWater);
 	}
-	m_Layers.push_back(layer);
+	if (m_Layers.size()) {
+		m_Layers[-1]->m_lower = SoilLayer::weak_ptr(layer);
+		layer->m_upper = SoilLayer::weak_ptr(m_Layers[-1]);
+	}
+	m_Layers.append(layer);
+}
+cmf::upslope::SoilLayer::ptr cmf::upslope::Cell::get_layer(int index) const {
+	return m_Layers[index];
 }
 cmf::upslope::vegetation::Vegetation cmf::upslope::Cell::get_vegetation() const
 {
@@ -121,7 +133,7 @@ void cmf::upslope::Cell::remove_layers()
 
 void cmf::upslope::Cell::remove_last_layer()
 {
-	m_Layers.pop_back();
+	m_Layers.pop();
 }
 
 const cmf::project& cmf::upslope::Cell::project() const
@@ -244,12 +256,6 @@ std::string cmf::upslope::Cell::to_string()
 	return sstr.str();
 }
 
-cmf::upslope::layer_ptr cmf::upslope::Cell::get_layer( int ndx ) const
-{
-	if (ndx<0) ndx=layer_count()+ndx;
-	cmf::upslope::layer_ptr layer=m_Layers.at(ndx);
-	return layer;
-}
 
 cmf::water::flux_node::ptr cmf::upslope::Cell::get_surfacewater()
 {
@@ -259,4 +265,9 @@ cmf::water::flux_node::ptr cmf::upslope::Cell::get_surfacewater()
 		return m_SurfaceWater;
 	else
 		throw std::runtime_error("Neither the surface water flux node, nor the storage exists. Please inform author");
+}
+
+void cmf::upslope::Cell::set_rainfall( double rainfall )
+{
+	get_rainfall()->flux = rainfall;
 }

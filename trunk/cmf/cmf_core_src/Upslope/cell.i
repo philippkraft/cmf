@@ -36,10 +36,10 @@
                      return self.c.get_layer(lndx)
         def __getitem__(self,index):
             if (type(index)==slice):
-                 return list(map(self.get,range(*index.indices(len(self)))))
+                 return [self.__get(i) for i in range(*index.indices(len(self)))]
             try:
                  gen=iter(index)
-                 return list(map(self.__get,gen))
+                 return [self.__get(it) for it in gen]
             except TypeError:
                  return self.__get(index)
         def find_by_name(self,name):
@@ -76,7 +76,7 @@
 %attribute(cmf::upslope::Cell,cmf::water::flux_node::ptr,transpiration,get_transpiration);
 %attribute2(cmf::upslope::Cell,cmf::atmosphere::Meteorology,meteorology,get_meteorology,set_meteorology);
 %attribute(cmf::upslope::Cell,std::tr1::shared_ptr<cmf::atmosphere::RainCloud>,rain,get_rainfall);
-
+%attribute2(cmf::upslope::Cell,cmf::upslope::layer_list,layers,get_layers);
 
 %include "upslope/cell.h"
 
@@ -93,7 +93,6 @@
     
     storages=property(lambda c:_cell_object_list(c,'A'),None,"Provides access to all storages of the cell (surface storages and layers)")
     surface_storages=property(lambda c:_cell_object_list(c,'S'),None,"Provides access to all surface storages of the cell, like canopy, snow, surface water etc")
-    layers=property(lambda c:_cell_object_list(c,'L'),None,"Provides access to all soil water storages (layers) of the cell")
     surfacewater=property(get_surfacewater,None,"Gives access to the surface water, which is either a distributing flux node, or the storage for all surface water")
     canopy=property(get_canopy,None,"The canopy water storage of the cell, if it exists")
     snow=property(get_snow,None,"The snow pack of the cell, if a storage for the snow exists")

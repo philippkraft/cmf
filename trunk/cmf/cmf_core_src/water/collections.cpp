@@ -91,7 +91,7 @@ cmf::geometry::point_vector cmf::water::node_list::get_positions() const
 #pragma omp parallel for
 	for (int i = 0; i < (int)res.size() ; ++i)
 	{
-		res.set(i,m_nodes[i]->get_position());
+		res.set(i,m_nodes[i]->Location);
 	}
 	return res;
 

@@ -30,6 +30,9 @@ namespace cmf {
 	/// Contains classes to describe interactions with the atmosphere
 	namespace atmosphere {
 		double vapour_pressure(double T);
+		double vpd_from_rH(double T,double rH);
+		double rH_from_vpd(double T, double vpd);
+
 		double global_radiation(cmf::math::Time t,double height,double sunshine_fraction,double longitude=8,double latitude=51,double time_zone=1,bool daily=0);
 		double Pressure(double height);
 
@@ -73,6 +76,9 @@ namespace cmf {
 				:	T(15),Tmax(17),Tmin(10),Tground(16),
 				e_s(vapour_pressure(15)),e_a(0.8*vapour_pressure(15)),
 				Windspeed(2.),sunshine(0.5),Rs(15),instument_height(2) {}
+			Weather(double _T,double _Tmax,double _Tmin, double _rH, double _wind=2,double _sunshine=0.5,double  _Rs=15)
+				: T(_T), Tmax(_Tmax), Tmin(_Tmin), Tground(_T),e_s(vapour_pressure(_T)),e_a(_rH * vapour_pressure(_T)),
+				Windspeed(_wind),sunshine(_sunshine),Rs(_Rs) {}
 			std::string to_string() const
 			{
 				std::stringstream sstr;
@@ -87,7 +93,7 @@ namespace cmf {
 			static double snow_threshold;
 
 		};
-        /// @brief An abstract class, for objects generating Weather records at a sepcific time.
+        /// @brief An abstract class, for objects generating Weather records at a specific time.
 		class Meteorology
 		{
 		public:

@@ -21,7 +21,7 @@
 #include "math/Integrators/Integrator.h"
 #include "math/Integrators/BDF2.h"
 #include "math/Integrators/ExplicitEuler_fixed.h"
-#include "math/Integrators/FixpointImplicitEuler.h"
+#include "math/Integrators/FixPointImplicitEuler.h"
 #include "math/Integrators/RKFIntegrator.h"
 #include "math/Integrators/cvodeIntegrator.h"
 #include "math/Integrators/MultiIntegrator.h"

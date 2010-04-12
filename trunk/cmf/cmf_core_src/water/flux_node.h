@@ -79,6 +79,9 @@ namespace cmf {
 			std::string Name;
 			virtual std::string to_string() const {return "{" + Name + "}";}
 			cmf::water::connection_vector get_connections() const;
+
+			//cmf::geometry::point get_direction_to(const flux_node& cmp);
+
 			/// The destructor deletes all connections
 			virtual ~flux_node();
 			bool operator ==(const cmf::water::flux_node& other) const {return this==&other;}
