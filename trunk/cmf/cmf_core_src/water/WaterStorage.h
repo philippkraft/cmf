@@ -115,12 +115,23 @@ namespace cmf {
 				real dVdt = water_balance(time);
 				// If head is the integrated variable
 				if (get_state_variable_content()=='h')
+				{
+					double
+						dt = 1./(24.*60. * 60.),
+						h0 = get_state(),
+						V0 = head_to_volume(h0),
+						V1 = V0 + dVdt * dt,
+						h1 = volume_to_head(V1),
+						dhdt = (h1-h0) / dt;
+					
 					// The head one minute later (dV/(24*60)) is calculated and substracted from the current head
 					// The derivate is returned as head change rate in m/day
-					return (volume_to_head(get_volume() + dV/(24*60)) - get_state())*(24*60);
+					return dhdt;
+					
+				}
 				else
 					// The net flux of this water storage is the derivate of the Volume
-					return dV;
+					return dVdt;
 			}
 			real get_state() const
 			{
