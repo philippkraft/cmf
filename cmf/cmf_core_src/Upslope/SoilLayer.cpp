@@ -17,7 +17,7 @@
 //   along with cmf.  If not, see <http://www.gnu.org/licenses/>.
 //   
 #include "SoilLayer.h"
-
+#include "cell.h"
 #include "Topology.h"
 
 /************************************************************************/
@@ -50,10 +50,16 @@ real cmf::upslope::SoilLayer::get_gravitational_potential() const
 
 // public ctor
 cmf::upslope::SoilLayer::SoilLayer( cmf::upslope::Cell & _cell,real lowerboundary,const RetentionCurve& r_curve,real saturateddepth/*=10*/ ) 
-: cmf::water::WaterStorage(_cell.project(), 0),cell(_cell),m_retentioncurve(r_curve.copy()),
-	m_lowerboundary(lowerboundary),Position(_cell.layer_count())
+:	cmf::water::WaterStorage(_cell.project(), 0),
+	cell(_cell),
+	m_retentioncurve(r_curve.copy()),
+	m_lowerboundary(lowerboundary),
+	Position(_cell.layer_count())
+
 {
+	// Get the location from the layer
 	Location=cmf::geometry::point(_cell.x,_cell.y,_cell.z - lowerboundary);
+	// Get the upper boundary from the upper layer
 	m_upperboundary = cell.layer_count()>0 ? cell.get_layer(-1)->get_lower_boundary() : 0;
 	if (m_lowerboundary-m_upperboundary<=0)
 		throw std::runtime_error("0 m thickness of layer");
@@ -103,22 +109,24 @@ real cmf::upslope::SoilLayer::get_saturated_depth() const
 void cmf::upslope::SoilLayer::StateChangeAction()
 {
 	m_wet.C=get_soil().VoidVolume(get_upper_boundary(),get_lower_boundary(),cell.get_area());
-	m_wet.W=maximum(get_state(),0)/m_wet.C;
-	m_wet.theta=maximum(get_state(),0)/(cell.get_area()*get_thickness());
-	m_wet.Psi_m = get_soil().MatricPotential(get_wetness());
+	m_wet.W=maximum(get_volume(),0)/m_wet.C;
+	m_wet.theta=maximum(get_volume(),0)/(cell.get_area()*get_thickness());
+	m_wet.Psi_m = get_state_variable_content() == 'h' ?
+			get_state() - get_gravitational_potential()
+		:	get_soil().MatricPotential(get_wetness());
 	m_wet.Ksat=get_soil().K(1,0.5*(get_upper_boundary()+get_lower_boundary()));
 	m_wet.K=get_soil().K(m_wet.W,0.5*(get_upper_boundary()+get_lower_boundary()));
 	cell.InvalidateSatDepth();
 }
 
-virtual real cmf::upslope::SoilLayer::head_to_volume(real head) const
+real cmf::upslope::SoilLayer::head_to_volume(real head) const
 {
 	real 
 		mp = head - this->get_gravitational_potential(),
 		w  = get_soil().Wetness(mp);
 	return w * this->get_capacity();
 }
-virtual real cmf::upslope::SoilLayer::volume_to_head(real volume) const
+real cmf::upslope::SoilLayer::volume_to_head(real volume) const
 {
 	real
 		w = volume / this->get_capacity(),
@@ -126,4 +134,23 @@ virtual real cmf::upslope::SoilLayer::volume_to_head(real volume) const
 	return mp + this->get_gravitational_potential();
 }
 
+void cmf::upslope::SoilLayer::set_theta( real Value )
+{
+	if (get_state_variable_content()=='h')
+		set_state(get_soil().MatricPotential(get_wetness() * get_porosity()) + get_gravitational_potential());
+	else
+		set_state(Value*cell.get_area()*get_thickness());
+}
 
+real cmf::upslope::SoilLayer::get_porosity() const
+{
+	return get_capacity()/(cell.get_area() * get_thickness());
+}
+
+void cmf::upslope::SoilLayer::set_wetness( real wetness )
+{
+	if (get_state_variable_content()=='h')
+		set_state(get_soil().MatricPotential(wetness) + get_gravitational_potential());
+	else
+		set_state(wetness * get_capacity());
+}

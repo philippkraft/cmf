@@ -162,7 +162,6 @@ namespace raster {
 		bool m_statistic_actual;
 #ifndef SWIG
 		/// Definition of the spatial properties of the raster
-		template<class rasterType>
 		struct header {
 		public:
 			double      xllcorner; ///<x-Value for the Lower Left corner
@@ -225,7 +224,7 @@ namespace raster {
 			}
 
 		};
-		header<rasterType> m_Header; ///<contains the header of the dataset
+		header m_Header; ///<contains the header of the dataset
 		typedef std::vector<rasterType> data;
 		data m_data; ///<The dataset
 

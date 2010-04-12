@@ -33,7 +33,7 @@ void cmf::upslope::connections::Richards_lateral::connect_cells( cmf::upslope::C
 			for (int j = start_at_layer; j < (start_at_layer>=0 ? cell2.layer_count() : 0) ; ++j)	{
 				real ca=cell1.get_layer(i)->get_flow_crosssection(*cell2.get_layer(j));
 				if (ca>0)	{
-					real d=cell1.get_layer(i)->get_distance_to(*cell2.get_layer(j));
+					real d=cell1.get_layer(i)->Location.distanceTo(cell2.get_layer(j)->Location);
 					new Richards_lateral(cell1.get_layer(i),cell2.get_layer(j),w,d);
 				}	}	}
 	}
@@ -111,7 +111,7 @@ void cmf::upslope::connections::Darcy::connect_cells( cmf::upslope::Cell & cell1
 			for (int j = start_at_layer; j < (start_at_layer>=0 ? cell2.layer_count() : 0) ; ++j)	{
 				real ca=cell1.get_layer(i)->get_flow_crosssection(*cell2.get_layer(j));
 				if (ca>0)	{
-					real d=cell1.get_layer(i)->get_distance_to(*cell2.get_layer(j));
+					real d=cell1.get_layer(i)->Location.distanceTo(cell2.get_layer(j)->Location);
 					new Darcy(cell1.get_layer(i),cell2.get_layer(j),w,d);
 				}	}	}
 	}
@@ -156,7 +156,7 @@ void cmf::upslope::connections::TopographicGradientDarcy::connect_cells( cmf::up
 			for (int j = start_at_layer; j < (start_at_layer>=0 ? cell2.layer_count() : 0) ; ++j)	{
 				real ca=cell1.get_layer(i)->get_flow_crosssection(*cell2.get_layer(j));
 				if (ca>0)	{
-					real d=cell1.get_layer(i)->get_distance_to(*cell2.get_layer(j));
+					real d=cell1.get_layer(i)->Location.distanceTo(cell2.get_layer(j)->Location);
 				new TopographicGradientDarcy(cell1.get_layer(i),cell2.get_layer(j),w,d);
 			}	}	}
 	}
@@ -192,7 +192,7 @@ void cmf::upslope::connections::DarcyKinematic::connect_cells( cmf::upslope::Cel
 			for (int j = start_at_layer; j < (start_at_layer>=0 ? cell2.layer_count() : 0) ; ++j)	{
 				real ca=cell1.get_layer(i)->get_flow_crosssection(*cell2.get_layer(j));
 				if (ca>0)	{
-					real d=cell1.get_layer(i)->get_distance_to(*cell2.get_layer(j));
+					real d=cell1.get_layer(i)->Location.distanceTo(cell2.get_layer(j)->Location);
 				new DarcyKinematic(cell1.get_layer(i),cell2.get_layer(j),w,d);
 			}	}	}
 	}
@@ -257,7 +257,7 @@ void cmf::upslope::connections::OHDISflow::connect_cells( cmf::upslope::Cell & c
 			for (int j = start_at_layer; j < (start_at_layer>=0 ? cell2.layer_count() : 0) ; ++j)	{
 				real ca=cell1.get_layer(i)->get_flow_crosssection(*cell2.get_layer(j));
 				if (ca>0)	{
-					real d=cell1.get_layer(i)->get_distance_to(*cell2.get_layer(j));
+					real d=cell1.get_layer(i)->Location.distanceTo(cell2.get_layer(j)->Location);
 					new OHDISflow(cell1.get_layer(i),cell2.get_layer(j),w,d);
 				}	}	}
 	}

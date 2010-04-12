@@ -47,7 +47,7 @@ namespace cmf {
 				{
 					NewNodes();
 					if (Distance<=0)
-						distance=left->get_distance_to(*right);
+						distance=left->Location.distanceTo(right->Location);
 				}
 
 			};

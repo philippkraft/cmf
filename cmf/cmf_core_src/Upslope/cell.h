@@ -25,6 +25,8 @@
 #include "../water/WaterStorage.h"
 #include "../math/StateVariable.h"
 #include "Soil/RetentionCurve.h"
+#include "SoilLayer.h"
+#include "layer_list.h"
 #include <memory>
 #include <map>
 #include <vector>
@@ -42,7 +44,6 @@ namespace cmf {
     /// Contains the classes to describe the discretization of the soil continuum
 	/// @todo: Get Id in constructor for better naming of bounday conditions
 	namespace upslope {
-		class SoilLayer;
 		class Topology;
 		class Cell;
 		typedef void (*connectorfunction)(cmf::upslope::Cell&,cmf::upslope::Cell&,int);
@@ -116,14 +117,24 @@ namespace cmf {
 			
 			cmf::upslope::vegetation::Vegetation m_vegetation;
 		public:
+			/// Returns the meteorological data source
 			cmf::atmosphere::Meteorology& get_meteorology() const 
 			{
 				return *m_meteo;
 			}
+			/// Sets a meteorological data source
 			void set_meteorology(const cmf::atmosphere::Meteorology& new_meteo)
 			{
 				m_meteo.reset(new_meteo.copy());
 			}
+			/// Sets the weather for this cell. Connectivity to a meteorological station is lost.
+			void set_weather(const cmf::atmosphere::Weather& weather)
+			{
+				cmf::atmosphere::ConstantMeteorology meteo(weather);
+				m_meteo.reset(meteo.copy());
+			}
+			/// Exchanges a timeseries of rainfall with a constant flux
+			void set_rainfall(double rainfall);
 			std::tr1::shared_ptr<cmf::atmosphere::RainCloud> get_rainfall() const {return m_rainfall;}
 			/// Returns the end point of all evaporation of this cell
  			cmf::water::flux_node::ptr get_evaporation();
@@ -168,14 +179,15 @@ namespace cmf {
 			///@name Layers
 			//@{
 		private:
-			typedef std::vector<layer_ptr> layer_vector;
-			layer_vector m_Layers;
+			//typedef std::vector<layer_ptr> layer_vector;
+			layer_list m_Layers;
 		public:
 			int layer_count() const
 			{
 				return int(m_Layers.size());
 			}
-			cmf::upslope::layer_ptr get_layer(int ndx) const;
+			cmf::upslope::SoilLayer::ptr get_layer(int ndx) const;
+			const layer_list& get_layers() const {return m_Layers;}
 			void add_layer(real lowerboundary,const cmf::upslope::RetentionCurve& r_curve,real saturateddepth=10);
 			void remove_last_layer();
 			void remove_layers();

@@ -44,6 +44,8 @@ namespace cmf {
 		/// F&=& \mbox{Number of fluxes in water storage} \\
 		/// q_f&=& \mbox{Water flux in } \frac{m^3}{day}	\\
 		/// \f}
+		///
+		/// @todo Check the head based state mode 
 		class WaterStorage : public cmf::math::StateVariable,public cmf::math::StateVariableOwner,public cmf::water::flux_node
 		{
 		public:
@@ -61,17 +63,15 @@ namespace cmf {
 
 
 		protected:
-			virtual real head_to_volume(real head) const {
-				throw std::runtime_error("Head to volume function not implemented in " + this->Name);
-				return 0.0;
-			}
-			virtual real volume_to_head(real volume) const {
-				throw std::runtime_error("Head to volume function not implemented in " + this->Name);
-				return 0.0;
-			}
+			virtual real head_to_volume(real head) const;
+			virtual real volume_to_head(real volume) const;
+	
 		public:
+			/// A character indicating the integrated variable (either 'V' for Volume or 'h' for head)
 			inline char get_state_variable_content() const {return m_state_variable_content;}
+			/// A character indicating the integrated variable (either 'V' for Volume or 'h' for head)
 			void set_state_variable_content(char content);
+			/// Returns true, since this is a storage
 			virtual bool is_storage() const {return true;}
 			void AddStateVariables(cmf::math::StateVariableVector& vector);
 			/// creates a water storage (abstract class)
@@ -110,6 +110,10 @@ namespace cmf {
 				else
 					set_state(newwatercontent);
 			}
+<<<<<<< .mine
+			
+			virtual real Derivate(const cmf::math::Time& time);
+=======
 			virtual real Derivate(const cmf::math::Time& time) {
 				// Gets the net fluxes of this water storage in m3/day
 				real dVdt = water_balance(time);
@@ -133,6 +137,7 @@ namespace cmf {
 					// The net flux of this water storage is the derivate of the Volume
 					return dVdt;
 			}
+>>>>>>> .r107
 			real get_state() const
 			{
 				return cmf::math::StateVariable::get_state();
