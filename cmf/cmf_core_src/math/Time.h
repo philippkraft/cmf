@@ -30,8 +30,8 @@ namespace cmf {
 		/// A time class, used to pass around current modelling times
 		///
 		///	<p>
-		///		Timespans and dates in cmf are used with a special object, called Time. The advantage
-		///		of an extra class has the advantage, that the user does not has to rememember, which
+		///		Timespans and dates in cmf are used with a special object, called Time. An extra 
+		///		class has the advantage, that the user does not have to remember, which
 		///		unit of time he or she uses or what time unit is accepted by a specific function
 		///		of the model. Arithmetic and boolean operators are supported by Time. Internally
 		///		the time classes stores the time as integer milliseconds, therefore rounding issues
