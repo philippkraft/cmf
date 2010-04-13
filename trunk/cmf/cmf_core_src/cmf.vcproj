@@ -268,11 +268,11 @@
 				>
 			</File>
 			<File
-				RelativePath=".\math\integrators\ExplicitEuler_fixed.h"
+				RelativePath=".\math\integrators\explicit_euler.h"
 				>
 			</File>
 			<File
-				RelativePath=".\math\integrators\FixpointImplicitEuler.h"
+				RelativePath=".\math\integrators\ExplicitEuler_fixed.h"
 				>
 			</File>
 			<File
@@ -289,6 +289,10 @@
 			</File>
 			<File
 				RelativePath=".\upslope\connections\HBVflow.h"
+				>
+			</File>
+			<File
+				RelativePath=".\math\integrators\implicit_euler.h"
 				>
 			</File>
 			<File
@@ -456,10 +460,6 @@
 				>
 			</File>
 			<File
-				RelativePath=".\math\integrators\FixPointImplicitEuler.cpp"
-				>
-			</File>
-			<File
 				RelativePath=".\water\flux_connection.cpp"
 				>
 			</File>
@@ -473,6 +473,10 @@
 			</File>
 			<File
 				RelativePath=".\upslope\connections\HBVflow.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\math\integrators\implicit_euler.cpp"
 				>
 			</File>
 			<File
