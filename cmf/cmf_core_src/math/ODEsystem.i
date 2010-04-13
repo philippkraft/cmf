@@ -17,14 +17,14 @@
 //   along with cmf.  If not, see <http://www.gnu.org/licenses/>.
 //   
 %{
-#include "math/StateVariable.h"
-#include "math/Integrators/Integrator.h"
-#include "math/Integrators/BDF2.h"
-#include "math/Integrators/ExplicitEuler_fixed.h"
-#include "math/Integrators/FixPointImplicitEuler.h"
-#include "math/Integrators/RKFIntegrator.h"
-#include "math/Integrators/cvodeIntegrator.h"
-#include "math/Integrators/MultiIntegrator.h"
+#include "math/statevariable.h"
+#include "math/Integrators/integrator.h"
+#include "math/Integrators/bdf2.h"
+#include "math/Integrators/explicit_euler.h"
+#include "math/Integrators/implicit_euler.h"
+#include "math/Integrators/RKFintegrator.h"
+#include "math/Integrators/cvodeintegrator.h"
+#include "math/Integrators/multiintegrator.h"
 %}
 
 %ignore svVector;
@@ -38,13 +38,13 @@ namespace std {
 %attribute(cmf::math::StateVariable,real,state,get_state,set_state);
 %include "math/StateVariable.h"
 
-%include "math/Integrators/Integrator.h"
-%include "math/Integrators/BDF2.h"
-%include "math/Integrators/ExplicitEuler_fixed.h"
-%include "math/Integrators/FixpointImplicitEuler.h"
-%include "math/Integrators/RKFIntegrator.h"
-%include "math/Integrators/cvodeIntegrator.h"
-%include "math/Integrators/MultiIntegrator.h"
+%include "math/Integrators/integrator.h"
+%include "math/Integrators/bdf2.h"
+%include "math/Integrators/explicit_euler.h"
+%include "math/Integrators/implicit_euler.h"
+%include "math/Integrators/RKFintegrator.h"
+%include "math/Integrators/cvodeintegrator.h"
+%include "math/Integrators/multiintegrator.h"
 
 
 %extend cmf::math::Integrator { 

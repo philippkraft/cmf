@@ -18,24 +18,24 @@
 #   
 
 # This file can build and install cmf
-
-
-# Change these pathes to your sundials 2.4+ installation
-sundials_lib_path = r"..\sundials-2.4.0\inst_msvc\lib"
-sundials_include_path = r"..\sundials-2.4.0\inst_msvc\include"
-
-# Change this path to your boost installation (not needed for gcc)
-boost_path = r"..\boost_1_41_0"
+import sys
 
 # Change these variables to match your compiler. (gcc or 
 # For Visual Studio 2008 no action is needed
-gcc = 0
-msvc = 1
+gcc = sys.platform == 'linux2'
+msvc = sys.platform == 'win32'
+
+# Change these pathes to your sundials 2.4+ installation
+sundials_lib_path = r"..\sundials-2.4.0\inst_msvc\lib" if msvc else ""
+sundials_include_path = r"..\sundials-2.4.0\inst_msvc\include" if msvc else ""
+
+# Change this path to your boost installation (not needed for gcc)
+boost_path = r"..\boost_1_41_0" if msvc else ""
+
 
 
 # No user action required beyond this point
 import os
-import sys
 from distutils.core import setup,Extension
 if "swig" in sys.argv:
     os.chdir("cmf/cmf_core_src")
@@ -44,7 +44,8 @@ if "swig" in sys.argv:
 def make_cmf_core():
     library_dirs=[sundials_lib_path]
     include_dirs=[sundials_include_path]
-    include_dirs += [boost_path,boost_path+r"\boost\tr1"]
+    if msvc:
+        include_dirs += [boost_path,boost_path+r"\boost\tr1"]
     if msvc: 
         compile_args = ["/openmp","/EHsc",r'/Fd"build\vc90.pdb"']
         link_args=["/DEBUG",r'/PDB:"build\_cmf_core.pdb"']
@@ -67,7 +68,7 @@ def make_cmf_core():
                         )
     return cmf_core
 def make_raster():
-    files=[r'cmf\raster\raster_src\raster_wrap.cxx']
+    files=['cmf/raster/raster_src/raster_wrap.cxx']
     if msvc: compile_args = ["/openmp","/EHsc"]
     if gcc: compile_args = ["-std=gnu++98","-fopenmp","-w"]
     raster = Extension('cmf.raster._raster',
@@ -76,7 +77,8 @@ def make_raster():
                     )
     return raster
 if __name__=='__main__':
-    ext = [make_raster(),make_cmf_core()]
+    #ext = [make_raster(),make_cmf_core()]
+    ext = [make_cmf_core()]
     author = "Philipp Kraft"
     author_email = "philipp.kraft@umwelt.uni-giessen.de"
     url = "www.uni-giessen.de/ilr/frede/cmf"
@@ -99,6 +101,6 @@ if __name__=='__main__':
           requires=['shapely (>=1.0)'],author=author,
           url=url,author_email=author_email)
     
-    setup(name='cmf_setups',version='0.1',license='GPL',
-          py_modules=['cmf_setups.'+f[:-3] for f in os.listdir('cmf_setups') if f.endswith('.py')])
+    #setup(name='cmf_setups',version='0.1',license='GPL',
+    #      py_modules=['cmf_setups.'+f[:-3] for f in os.listdir('cmf_setups') if f.endswith('.py')])
     print "build ok"
