@@ -1,4 +1,4 @@
-/* Created with swigbuild.bat at 29.03.2010 11:58:59.67 */ 
+/* Created with swigbuild.bat at 12/04/2010 15:25:27.26 */ 
 #pragma warning(push) 
 #pragma warning (disable : 4244) 
 #ifndef _CONSOLE 
@@ -3744,14 +3744,14 @@ SWIGINTERN cmf::math::num_array cmf_math_num_array___rsub__(cmf::math::num_array
 SWIGINTERN cmf::math::num_array cmf_math_num_array___rmul__(cmf::math::num_array *self,real other){  return other*(*self);	}
 SWIGINTERN cmf::math::num_array cmf_math_num_array___rdiv__(cmf::math::num_array *self,real other){  return other/(*self);	}
 
-#include "math/StateVariable.h"
-#include "math/Integrators/Integrator.h"
-#include "math/Integrators/BDF2.h"
-#include "math/Integrators/ExplicitEuler_fixed.h"
-#include "math/Integrators/FixpointImplicitEuler.h"
-#include "math/Integrators/RKFIntegrator.h"
-#include "math/Integrators/cvodeIntegrator.h"
-#include "math/Integrators/MultiIntegrator.h"
+#include "math/statevariable.h"
+#include "math/Integrators/integrator.h"
+#include "math/Integrators/bdf2.h"
+#include "math/Integrators/explicit_euler.h"
+#include "math/Integrators/implicit_euler.h"
+#include "math/Integrators/RKFintegrator.h"
+#include "math/Integrators/cvodeintegrator.h"
+#include "math/Integrators/multiintegrator.h"
 
 
 namespace swig {  

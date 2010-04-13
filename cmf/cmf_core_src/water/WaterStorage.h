@@ -110,34 +110,8 @@ namespace cmf {
 				else
 					set_state(newwatercontent);
 			}
-<<<<<<< .mine
 			
 			virtual real Derivate(const cmf::math::Time& time);
-=======
-			virtual real Derivate(const cmf::math::Time& time) {
-				// Gets the net fluxes of this water storage in m3/day
-				real dVdt = water_balance(time);
-				// If head is the integrated variable
-				if (get_state_variable_content()=='h')
-				{
-					double
-						dt = 1./(24.*60. * 60.),
-						h0 = get_state(),
-						V0 = head_to_volume(h0),
-						V1 = V0 + dVdt * dt,
-						h1 = volume_to_head(V1),
-						dhdt = (h1-h0) / dt;
-					
-					// The head one minute later (dV/(24*60)) is calculated and substracted from the current head
-					// The derivate is returned as head change rate in m/day
-					return dhdt;
-					
-				}
-				else
-					// The net flux of this water storage is the derivate of the Volume
-					return dVdt;
-			}
->>>>>>> .r107
 			real get_state() const
 			{
 				return cmf::math::StateVariable::get_state();

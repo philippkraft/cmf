@@ -16,7 +16,7 @@
 //   You should have received a copy of the GNU General Public License
 //   along with cmf.  If not, see <http://www.gnu.org/licenses/>.
 //   
-#include "FixPointImplicitEuler.h"
+#include "implicit_euler.h"
 #include <iostream>
 #ifdef _OPENMP
 #include <omp.h>
