@@ -20,7 +20,7 @@
 #define Integrator_h__
 
 #include "../num_array.h"
-#include "../StateVariable.h"
+#include "../statevariable.h"
 #include "../real.h"
 #include <stdexcept>
 namespace cmf {

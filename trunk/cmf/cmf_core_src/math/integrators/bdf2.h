@@ -19,7 +19,7 @@
 #ifndef BDF2_h__
 #define BDF2_h__
 
-#include "Integrator.h"
+#include "integrator.h"
 #include "../real.h"
 namespace cmf {
 	namespace math {

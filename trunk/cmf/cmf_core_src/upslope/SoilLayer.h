@@ -21,7 +21,7 @@
 
 #include "../water/WaterStorage.h"
 #include "../water/flux_connection.h"
-#include "../Geometry/geometry.h"
+#include "../geometry/geometry.h"
 #include "Soil/RetentionCurve.h"
 #include <memory>
 namespace cmf {

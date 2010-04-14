@@ -18,7 +18,7 @@
 //   
 #ifndef StateVariable_h__
 #define StateVariable_h__
-#include "Time.h"
+#include "time.h"
 #include <string>
 #include <vector>
 #include <cmath>

@@ -16,7 +16,7 @@
 //   You should have received a copy of the GNU General Public License
 //   along with cmf.  If not, see <http://www.gnu.org/licenses/>.
 //   
-#include "Meteorology.h"
+#include "meteorology.h"
 #include <cmath>
 #include "../math/timeseries.h"
 #include <fstream>

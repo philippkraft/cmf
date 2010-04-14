@@ -20,7 +20,7 @@
 #define SoluteStorage_h__
 
 #include "Solute.h"
-#include "../math/StateVariable.h"
+#include "../math/statevariable.h"
 #include "../math/real.h"
 
 //#include "Reaction.h"

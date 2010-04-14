@@ -20,12 +20,13 @@
 #define Meteorology_h__
 
 
-#include "../math/Time.h"
+#include "../math/time.h"
 #include "../math/timeseries.h"
 #include "../water/Solute.h"
 #include "../water/WaterStorage.h"
-//#include "../Geometry/maps.h"
+
 #include <string>
+
 namespace cmf {
 	/// Contains classes to describe interactions with the atmosphere
 	namespace atmosphere {

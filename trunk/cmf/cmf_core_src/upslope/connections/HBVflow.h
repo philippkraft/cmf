@@ -21,7 +21,7 @@
 
 #include "../../water/flux_connection.h"
 #include "../cell.h"
-#include "../topology.h"
+#include "../Topology.h"
 #include "../SoilLayer.h"
 #include "subsurfacefluxes.h"
 #include "../Soil/RetentionCurve.h"

@@ -16,7 +16,7 @@
 //   You should have received a copy of the GNU General Public License
 //   along with cmf.  If not, see <http://www.gnu.org/licenses/>.
 //   
-#include "StateVariable.h"
+#include "statevariable.h"
 #include "num_array.h"
 #include <cmath>
 #ifdef _OPENMP

@@ -21,7 +21,7 @@
 // include CVODE
 #include <sundials/sundials_nvector.h>       /* serial N_Vector types, fct. and macros */
 
-#include "Integrator.h"
+#include "integrator.h"
 namespace cmf {
 	namespace math {
 		/// A wrapper class for the CVODE integrator from the SUNDIALS library

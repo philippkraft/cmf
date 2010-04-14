@@ -23,7 +23,7 @@
 #include "OpenWaterStorage.h"
 #include "ReachType.h"
 #include "../math/real.h"
-#include "../Upslope/cell.h"
+#include "../upslope/cell.h"
 namespace cmf {
 	namespace river {
 

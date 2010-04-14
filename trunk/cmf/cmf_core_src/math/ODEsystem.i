@@ -18,13 +18,13 @@
 //   
 %{
 #include "math/statevariable.h"
-#include "math/Integrators/integrator.h"
-#include "math/Integrators/bdf2.h"
-#include "math/Integrators/explicit_euler.h"
-#include "math/Integrators/implicit_euler.h"
-#include "math/Integrators/RKFintegrator.h"
-#include "math/Integrators/cvodeintegrator.h"
-#include "math/Integrators/multiintegrator.h"
+#include "math/integrators/integrator.h"
+#include "math/integrators/bdf2.h"
+#include "math/integrators/explicit_euler.h"
+#include "math/integrators/implicit_euler.h"
+#include "math/integrators/RKFintegrator.h"
+#include "math/integrators/cvodeintegrator.h"
+#include "math/integrators/multiintegrator.h"
 %}
 
 %ignore svVector;
@@ -36,15 +36,15 @@ namespace std {
 
 
 %attribute(cmf::math::StateVariable,real,state,get_state,set_state);
-%include "math/StateVariable.h"
+%include "math/statevariable.h"
 
-%include "math/Integrators/integrator.h"
-%include "math/Integrators/bdf2.h"
-%include "math/Integrators/explicit_euler.h"
-%include "math/Integrators/implicit_euler.h"
-%include "math/Integrators/RKFintegrator.h"
-%include "math/Integrators/cvodeintegrator.h"
-%include "math/Integrators/multiintegrator.h"
+%include "math/integrators/integrator.h"
+%include "math/integrators/bdf2.h"
+%include "math/integrators/explicit_euler.h"
+%include "math/integrators/implicit_euler.h"
+%include "math/integrators/RKFintegrator.h"
+%include "math/integrators/cvodeintegrator.h"
+%include "math/integrators/multiintegrator.h"
 
 
 %extend cmf::math::Integrator { 

@@ -21,7 +21,7 @@
 
 #include "../vegetation/StructVegetation.h"
 #include <cmath>
-#include "../../Atmosphere/Meteorology.h"
+#include "../../atmosphere/meteorology.h"
 
 namespace cmf {
 	namespace upslope {

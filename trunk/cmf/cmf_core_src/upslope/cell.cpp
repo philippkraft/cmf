@@ -23,12 +23,12 @@
 #include "connections/AtmosphericFluxes.h"
 #include "connections/surfacefluxes.h"
 #include "connections/infiltration.h"
-#include "../Reach/ManningConnection.h"
-#include "../Reach/ReachType.h"
-#include "../Reach/Reach.h"
+#include "../reach/ManningConnection.h"
+#include "../reach/ReachType.h"
+#include "../reach/Reach.h"
 #include "Topology.h"
-#include "../Atmosphere/Precipitation.h"
-#include "../Atmosphere/Meteorology.h"
+#include "../atmosphere/precipitation.h"
+#include "../atmosphere/meteorology.h"
 
 int cmf::upslope::Cell::cell_count=0;
 cmf::upslope::Cell::~Cell()

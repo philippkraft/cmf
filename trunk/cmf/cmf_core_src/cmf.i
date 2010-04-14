@@ -63,7 +63,6 @@
 }
 %enddef
 
-
 SWIG_SHARED_PTR(state_var,cmf::math::StateVariable);
    SWIG_SHARED_PTR_DERIVED(SoluteStorage,cmf::math::StateVariable,cmf::water::SoluteStorage);
 SWIG_SHARED_PTR(flux_node,cmf::water::flux_node);
@@ -173,42 +172,42 @@ EXTENT__REPR__(cmf::water::WaterStorage)
 %echo "water.i OK";
 
 
-%include "Atmosphere/Meteorology.i"
+%include "atmosphere/meteorology.i"
 EXTENT__REPR__(cmf::atmosphere::RainCloud)
 
 %echo "Atmosphere OK!";
 
 
-%include "Upslope/cell.i"
+%include "upslope/cell.i"
 %echo "Cell OK";
 
-%include "Upslope/Layer.i"
+%include "upslope/Layer.i"
 %echo "Layer ok"
 
-%include "Reach/Reach.i"
+%include "reach/Reach.i"
 %echo "Reach ok"
 
 %{
 	#include "upslope/connections/subsurfacefluxes.h"
 	#include "upslope/connections/surfacefluxes.h"
-	#include "upslope/connections/atmosphericfluxes.h"
+	#include "upslope/connections/AtmosphericFluxes.h"
 	#include "upslope/connections/infiltration.h"
 	#include "upslope/connections/Percolation.h"
 	#include "upslope/vegetation/ET.h"
     #include "upslope/connections/HBVflow.h"
 	// Include river model
-	#include "Reach/ManningConnection.h"
+	#include "reach/ManningConnection.h"
 	// Include the combined solver
-	#include "math/Integrators/WaterSoluteIntegrator.h"
+	#include "math/integrators/WaterSoluteIntegrator.h"
 %}
 
 
 
 %include "upslope/connections/subsurfacefluxes.h"
-%include "Reach/ManningConnection.h"
+%include "reach/ManningConnection.h"
 
 %include "upslope/connections/surfacefluxes.h"
-%include "upslope/connections/atmosphericfluxes.h"
+%include "upslope/connections/AtmosphericFluxes.h"
 %include "upslope/connections/infiltration.h"
 %include "upslope/connections/Percolation.h"
 %include "upslope/connections/HBVflow.h"
@@ -226,7 +225,7 @@ EXTENT__REPR__(cmf::atmosphere::RainCloud)
 
 %attribute(cmf::math::SoluteWaterIntegrator,cmf::math::Integrator*,solute_integrator,get_solute_integrator,set_solute_integrator);
 %attribute(cmf::math::SoluteWaterIntegrator,cmf::math::Integrator*,water_integrator,get_water_integrator,set_water_integrator);
-%include "math/Integrators/WaterSoluteIntegrator.h"
+%include "math/integrators/WaterSoluteIntegrator.h"
 
 %echo "cmf::project OK!";
 

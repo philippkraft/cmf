@@ -18,7 +18,7 @@
 //   
 #ifndef MultiIntegrator_h__
 #define MultiIntegrator_h__
-#include "Integrator.h"
+#include "integrator.h"
 #include <tr1/memory>
 namespace cmf {
 	namespace math {

@@ -18,8 +18,8 @@
 //   
 #include "project.h"
 #include "upslope/SoilLayer.h"
-#include "Upslope/Topology.h"
-#include "Upslope/algorithm.h"
+#include "upslope/Topology.h"
+#include "upslope/algorithm.h"
 #include <set>
 #ifdef _OPENMP
 #include <omp.h>

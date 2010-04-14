@@ -16,7 +16,7 @@
 //   You should have received a copy of the GNU General Public License
 //   along with cmf.  If not, see <http://www.gnu.org/licenses/>.
 //   
-#include "BDF2.h"
+#include "bdf2.h"
 #include <cmath>
 #ifdef _OPENMP
 #include <omp.h>
@@ -125,7 +125,7 @@ void cmf::math::BDF2::Gear2newState(real h)
 		for (int i = 0; i < count() ; i++)
 		{
 			// The formula is written so ugly to avoid internal memory allocation
-			// x_(n+1) = (p+1)²x_(n) - p²x_(n-1) + h (p+1) dxdt
+			// x_(n+1) = (p+1)ï¿½x_(n) - pï¿½x_(n-1) + h (p+1) dxdt
 			state_i  =        dxdt[i]; 
 			state_i *= h_p1;
 			state_i += p1_2 * pastStates(0)[i];
@@ -139,7 +139,7 @@ void cmf::math::BDF2::Gear2newState(real h)
 		for (int i = 0; i < count() ; i++)
 		{
 			// The formula is written so ugly to avoid internal memory allocation
-			// x_(n+1) = (p+1)²x_(n) - p²x_(n-1) + h (p+1) dxdt
+			// x_(n+1) = (p+1)ï¿½x_(n) - pï¿½x_(n-1) + h (p+1) dxdt
 			state_i  =        dxdt[i]; 
 			state_i *= h_p1;
 			state_i += p1_2 * pastStates(0)[i];

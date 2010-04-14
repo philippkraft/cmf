@@ -20,7 +20,7 @@
 #define timeseries_h__
 #include <vector>
 #include <iostream>
-#include "Time.h"
+#include "time.h"
 #include <tr1/memory>
 namespace cmf {
 	namespace math {

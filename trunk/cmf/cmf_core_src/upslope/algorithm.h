@@ -20,8 +20,8 @@
 #define algorithm_h__
 #include "cell.h"
 #include "../math/num_array.h"
-#include "../Atmosphere/Meteorology.h"
-#include "../Geometry/geometry.h"
+#include "../atmosphere/meteorology.h"
+#include "../geometry/geometry.h"
 namespace cmf {
 	namespace upslope {
 		typedef const cell_vector&  cells_ref;

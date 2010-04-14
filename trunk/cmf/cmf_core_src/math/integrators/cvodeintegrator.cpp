@@ -16,7 +16,7 @@
 //   You should have received a copy of the GNU General Public License
 //   along with cmf.  If not, see <http://www.gnu.org/licenses/>.
 //   
-#include "cvodeIntegrator.h"
+#include "cvodeintegrator.h"
 #include <cvode/cvode.h>                  /* main integrator header file */
 #include <cvode/cvode_spgmr.h>            /* prototypes & constants for CVSPGMR solver */
 #include <cvode/cvode_spbcgs.h>
