@@ -19,7 +19,7 @@
 %{
 #include "datetime.h"
 #include "math/real.h"
-#include "math/Time.h"
+#include "math/time.h"
 #include "math/timeseries.h"
 %}
 // Get Math
@@ -84,9 +84,8 @@ static cmf::math::Time convert_datetime_to_cmftime(PyObject* dt)
 %implicitconv cmf::math::Date;
 
 %include "math/real.h"
-%include "math/Time.h"
+%include "math/time.h"
 
-//%naturalvar cmf::math::Time;
 
 %attributeval(cmf::math::timeseries,cmf::math::Time,begin,begin);
 %attributeval(cmf::math::timeseries,cmf::math::Time,step,step);

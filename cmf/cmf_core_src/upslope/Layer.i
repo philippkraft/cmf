@@ -23,7 +23,7 @@
 %}
 // Get Upslope Classes
 
-%include "upslope/soil/RetentionCurve.h"
+%include "upslope/Soil/RetentionCurve.h"
 %extend cmf::upslope::BrooksCoreyRetentionCurve
 {
     %pythoncode {

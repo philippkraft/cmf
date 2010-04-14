@@ -22,7 +22,7 @@
 #include "../water/boundary_condition.h"
 #include "../water/Solute.h"
 #include "../project.h"
-#include "../Upslope/cell.h"
+#include "../upslope/cell.h"
 #include <tr1/memory>
 
 namespace cmf { 

@@ -17,7 +17,7 @@
 //   along with cmf.  If not, see <http://www.gnu.org/licenses/>.
 //   
 #include "infiltration.h"
-#include "../../math/Time.h"
+#include "../../math/time.h"
 /************************************************************************/
 /* Infiltration                                                         */
 /************************************************************************/

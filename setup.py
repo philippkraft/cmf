@@ -1,4 +1,4 @@
-#! /usr/bin/env python
+#!/usr/bin/python
 
 # Copyright 2010 by Philipp Kraft
 # This file is part of cmf.
@@ -26,8 +26,8 @@ gcc = sys.platform == 'linux2'
 msvc = sys.platform == 'win32'
 
 # Change these pathes to your sundials 2.4+ installation
-sundials_lib_path = r"..\sundials-2.4.0\inst_msvc\lib" if msvc else ""
-sundials_include_path = r"..\sundials-2.4.0\inst_msvc\include" if msvc else ""
+sundials_lib_path = [r"..\sundials-2.4.0\inst_msvc\lib"] if msvc else []
+sundials_include_path = [r"..\sundials-2.4.0\inst_msvc\include"] if msvc else []
 
 # Change this path to your boost installation (not needed for gcc)
 boost_path = r"..\boost_1_41_0" if msvc else ""
@@ -38,21 +38,24 @@ boost_path = r"..\boost_1_41_0" if msvc else ""
 import os
 from distutils.core import setup,Extension
 if "swig" in sys.argv:
-    os.chdir("cmf/cmf_core_src")
-    os.execvp("swig.exe",["-Wextra","-w512","-python","-castmode","-O","-c++","-o cmf_swig.cxx","-outdir ..","cmf.i"])
-    exit()
+    #os.chdir("cmf/cmf_core_src")
+    os.execvp("swig",["-Wextra","-w512","-python","-castmode","-O","-c++","-o cmf_wrap.cxx","-outdir ..","cmf/cmf_core_src/cmf.i"])
+    #exit()
+    sys.argv.pop("swig")
 def make_cmf_core():
-    library_dirs=[sundials_lib_path]
-    include_dirs=[sundials_include_path]
+    library_dirs=sundials_lib_path
+    include_dirs=sundials_include_path
     if msvc:
         include_dirs += [boost_path,boost_path+r"\boost\tr1"]
     if msvc: 
         compile_args = ["/openmp","/EHsc",r'/Fd"build\vc90.pdb"']
         link_args=["/DEBUG",r'/PDB:"build\_cmf_core.pdb"']
     if gcc: 
-        compile_args = ["-std=gnu++98","-fopenmp","-w"]
-        link_args=[]
+        compile_args = ["-std=gnu++98","-fopenmp"]
+        link_args=["-fopenmp"]
     libraries=["sundials_cvode","sundials_nvecserial"]
+    if gcc:
+        libraries += ['gomp']
     cmf_files=[]
     for root,dirs,files in os.walk('.'):
         cmf_files.extend(os.path.join(root,f) for f in files if f.endswith('.cpp'))

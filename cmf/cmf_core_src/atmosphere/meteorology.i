@@ -19,14 +19,13 @@
 SWIG_SHARED_PTR(MeteoStation,cmf::atmosphere::MeteoStation)
 
 %{
-	#include "Atmosphere/Meteorology.h"
-	#include "Atmosphere/Precipitation.h"
+	#include "atmosphere/meteorology.h"
+	#include "atmosphere/precipitation.h"
 %}
 
 %rename(__getitem__) cmf::atmosphere::MeteoStationList::operator[];
 %rename(__len__) cmf::atmosphere::MeteoStationList::size;
-%ignore cmf::atmosphere::meteo_station_pointer;
-%include "Atmosphere/Meteorology.h"
+%include "atmosphere/meteorology.h"
 
 %extend cmf::atmosphere::Weather {
     %pythoncode {
@@ -70,4 +69,4 @@ SWIG_SHARED_PTR(MeteoStation,cmf::atmosphere::MeteoStation)
 	}
 }
 
-%include "Precipitation.h"
+%include "precipitation.h"

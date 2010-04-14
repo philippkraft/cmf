@@ -19,7 +19,7 @@
 #ifndef WaterStorage_h__
 #define WaterStorage_h__
 
-#include "../math/StateVariable.h"
+#include "../math/statevariable.h"
 #include "../math/real.h"
 
 #include "Solute.h"

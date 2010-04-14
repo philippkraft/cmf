@@ -21,7 +21,7 @@
 
 
 
-#include "Integrator.h"
+#include "integrator.h"
 #include "../real.h"
 
 namespace cmf {

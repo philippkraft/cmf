@@ -18,12 +18,12 @@
 //   
 #ifndef cell_h__
 #define cell_h__
-#include "../Atmosphere/Meteorology.h"
-#include "../Geometry/geometry.h"
+#include "../atmosphere/meteorology.h"
+#include "../geometry/geometry.h"
 #include "../water/flux_connection.h"
 #include "vegetation/StructVegetation.h"
 #include "../water/WaterStorage.h"
-#include "../math/StateVariable.h"
+#include "../math/statevariable.h"
 #include "Soil/RetentionCurve.h"
 #include "SoilLayer.h"
 #include "layer_list.h"

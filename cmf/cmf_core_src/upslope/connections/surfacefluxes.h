@@ -21,7 +21,7 @@
 
 #include "../../water/flux_connection.h"
 #include "../cell.h"
-#include "../../Atmosphere/Precipitation.h"
+#include "../../atmosphere/precipitation.h"
 #include "AtmosphericFluxes.h"
 #include "../vegetation/ET.h"
 namespace cmf {
