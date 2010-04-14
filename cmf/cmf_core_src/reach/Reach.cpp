@@ -16,7 +16,7 @@
 //   You should have received a copy of the GNU General Public License
 //   along with cmf.  If not, see <http://www.gnu.org/licenses/>.
 //   
-#include "reach.h"
+#include "Reach.h"
 double cmf::river::make_river_gap( Reach_ptr reach )
 {
 	for (int i = 0; i < reach->upstream_count() ; ++i)

@@ -19,7 +19,7 @@
 #include "algorithm.h"
 #include "Topology.h"
 #include "SoilLayer.h"
-#include "../Atmosphere/Precipitation.h"
+#include "../atmosphere/precipitation.h"
 
 cmf::upslope::Cell* cmf::upslope::find_cell(cmf::upslope::cells_ref cells,cmf::geometry::point p,double max_dist )
 {

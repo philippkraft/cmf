@@ -57,13 +57,13 @@
 //SWIG_SHARED_PTR(Cell,cmf::upslope::Cell);
 
 %{
-	#include "upslope/Vegetation/StructVegetation.h"
+	#include "upslope/vegetation/StructVegetation.h"
 	#include "upslope/cell.h"
-	#include "upslope/topology.h"
+	#include "upslope/Topology.h"
 	#include "upslope/algorithm.h"
 %}
 
-%include "upslope/Vegetation/StructVegetation.h"
+%include "upslope/vegetation/StructVegetation.h"
 %nodefaultctor cmf::upslope::NeighborIterator;
 
 
@@ -135,7 +135,7 @@
         return "cell #%i(%g,%g,%g)" % (self.Id,self.x,self.y,self.z)
     }
 }
-%include "upslope/topology.h"
+%include "upslope/Topology.h"
 %extend cmf::upslope::NeighborIterator
 {
 	bool __eq__(const NeighborIterator& cmp) {return (*$self)==cmp;}

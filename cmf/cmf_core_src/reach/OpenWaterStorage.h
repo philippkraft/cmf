@@ -22,7 +22,7 @@
 #include "../water/WaterStorage.h"
 #include "ReachType.h"
 #include "../math/real.h"
-#include "../Upslope/cell.h"
+#include "../upslope/cell.h"
 namespace cmf {
 	///	Contains storages and connection for the simulation of surface water bodies, like rivers, channels, lakes and dams
 	namespace river {

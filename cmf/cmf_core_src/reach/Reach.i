@@ -17,17 +17,17 @@
 //   along with cmf.  If not, see <http://www.gnu.org/licenses/>.
 //   
 %{
-	#include "Reach/ReachType.h"
-	#include "Reach/OpenWaterStorage.h"
-	#include "Reach/reach.h"
+	#include "reach/ReachType.h"
+	#include "reach/OpenWaterStorage.h"
+	#include "reach/Reach.h"
 %}
 
 // Get river model classes
-%include "Reach/ReachType.h"
+%include "reach/ReachType.h"
 
 %attribute(cmf::river::OpenWaterStorage, real,depth,get_depth,set_depth);
 
-%include "Reach/OpenWaterStorage.h"
+%include "reach/OpenWaterStorage.h"
 
 %attributeval(cmf::river::Reach,cmf::upslope::cell_vector,cells,get_cells);
 %attribute(cmf::river::Reach,cmf::river::Reach,downstream,get_downstream);
@@ -38,7 +38,7 @@
 
 %attribute(cmf::river::ReachIterator,double,position,position);
 
-%include "Reach/reach.h"
+%include "reach/Reach.h"
 %extent cmf::river::Reach {
 %pythoncode {
     @property

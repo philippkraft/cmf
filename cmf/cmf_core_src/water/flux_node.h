@@ -19,9 +19,9 @@
 #ifndef flux_node_h__
 #define flux_node_h__
 
-#include "../math/Time.h"
+#include "../math/time.h"
 #include "../math/real.h"
-#include "../Geometry/geometry.h"
+#include "../geometry/geometry.h"
 #include "Solute.h"
 #include <map>
 #include <vector>
@@ -30,7 +30,7 @@
 #include <stdexcept>
 #include <tr1/memory>
 #include "../math/num_array.h"
-#include "../math/StateVariable.h"
+#include "../math/statevariable.h"
 
 namespace cmf {
 	class project;

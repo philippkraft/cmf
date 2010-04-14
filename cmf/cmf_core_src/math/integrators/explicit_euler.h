@@ -19,7 +19,7 @@
 #ifndef ExplicitEuler_fixed_h__
 #define ExplicitEuler_fixed_h__
 
-#include "Integrator.h"
+#include "integrator.h"
 namespace cmf {
 	namespace math {
 		/// An explicit Euler integrator, with a fixed time step

@@ -21,12 +21,12 @@
 #include <tr1/memory>
 #include <vector>
 #include <set>
-#include "Atmosphere/Meteorology.h"
-#include "Atmosphere/Precipitation.h"
-#include "Geometry/geometry.h"
-#include "Upslope/cell.h"
-#include "Reach/reach.h"
-#include "Upslope/Soil/RetentionCurve.h"
+#include "atmosphere/meteorology.h"
+#include "atmosphere/precipitation.h"
+#include "geometry/geometry.h"
+#include "upslope/cell.h"
+#include "reach/Reach.h"
+#include "upslope/Soil/RetentionCurve.h"
 #include "water/collections.h"
 /// The main namespace of the model framework. Contains the other namespaces and the project class
 namespace cmf {

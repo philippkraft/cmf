@@ -22,7 +22,7 @@
 #include "../../water/flux_connection.h"
 #include "../cell.h"
 #include "../../project.h"
-#include "../../Atmosphere/Precipitation.h"
+#include "../../atmosphere/precipitation.h"
 namespace cmf {
 	namespace upslope {
 

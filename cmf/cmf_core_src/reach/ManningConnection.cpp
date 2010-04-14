@@ -17,8 +17,8 @@
 //   along with cmf.  If not, see <http://www.gnu.org/licenses/>.
 //   
 #include "ManningConnection.h"
-#include "../Upslope/cell.h"
-#include "../Upslope/Topology.h"
+#include "../upslope/cell.h"
+#include "../upslope/Topology.h"
 real cmf::river::Manning::calc_q( cmf::math::Time t )
 {
 	OpenWaterStorage::ptr ows1=w1.lock(),ows2=w2.lock();

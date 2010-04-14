@@ -18,7 +18,7 @@
 //   
 #ifndef WaterSoluteIntegrator_h__
 #define WaterSoluteIntegrator_h__
-#include "Integrator.h"
+#include "integrator.h"
 #include "../../water/WaterStorage.h"
 #include "../../water/SoluteStorage.h"
 namespace cmf {

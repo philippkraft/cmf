@@ -18,9 +18,9 @@
 //   
 #ifndef flux_connection_h__
 #define flux_connection_h__
-#include "../math/Time.h"
+#include "../math/time.h"
 #include "../math/real.h"
-#include "../Geometry/geometry.h"
+#include "../geometry/geometry.h"
 #include "Solute.h"
 #include <map>
 #include <vector>

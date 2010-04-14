@@ -19,7 +19,7 @@
 #ifndef ET_h__
 #define ET_h__
 #include "../../water/flux_connection.h"
-#include "../../Atmosphere/Meteorology.h"
+#include "../../atmosphere/meteorology.h"
 #include "../../reach/OpenWaterStorage.h"
 #include "../SoilLayer.h"
 #include "../Soil/RetentionCurve.h"

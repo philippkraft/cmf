@@ -22,7 +22,7 @@
 #include "../water/WaterStorage.h"
 #include "ReachType.h"
 #include "../math/real.h"
-#include "../Upslope/cell.h"
+#include "../upslope/cell.h"
 #include "ManningConnection.h"
 #include <queue>
 
