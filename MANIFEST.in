@@ -1,0 +1,2 @@
+recursive-include cmf *.h *.i *.dox *.png *.txt
+include *.txt
