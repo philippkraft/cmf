@@ -39,7 +39,7 @@ namespace cmf {
 
 		private:
 			friend class Cell;
-			struct wet {real	W,Psi_m,theta,C,K,Ksat;	};
+			struct wet {real	W,Psi_m,h,V,theta,C,K,Ksat;	};
 			wet m_wet;
 			typedef std::tr1::weak_ptr<cmf::upslope::SoilLayer> weak_ptr;
 			weak_ptr m_upper;
@@ -77,6 +77,12 @@ namespace cmf {
 			/// Returns the actual volumetric water content of the water storage
 			virtual real get_theta() const {return m_wet.theta;}
 			virtual void set_theta(real Value);
+
+			virtual real get_volume() const {
+				return m_wet.V;
+			}
+			
+			
 			/// Returns the actual conductivity	\f$\frac{m}{day}\f$
 			real get_K() const {return m_wet.K;}
 			real get_Ksat() const {return m_wet.Ksat;}

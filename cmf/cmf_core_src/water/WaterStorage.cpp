@@ -110,10 +110,12 @@ real cmf::water::WaterStorage::Derivate( const cmf::math::Time& time )
 		// dh/dt = (h(V) - h(V+dV/dt * dt)/dt
 		// dh/dV(V) is calculated numerically using a discrete timestep of one minute
 		real dt = 1./(24.*60.);  // 1 min in days
+		real V0 = get_volume();
 		real h0 = get_state(); // current head
-		real V1 = get_volume() + dVdt * dt; // Projected volume at t+dt
+		real V1 = V0 + dVdt * dt; // Projected volume at t+dt
 		real h1 = volume_to_head(V1); // Projected head at t+dt
-		return (h1 - h0) / dt; // dh/dt in m/day
+		real dhdt = (h1-h0)/dt;
+		return dhdt; // dh/dt in m/day
 	}
 	else // Integrate over volume
 		// The net flux of this water storage is the derivate of the Volume

@@ -117,7 +117,7 @@ namespace cmf{namespace water {class flux_connection;}}
 
 // WaterStorage
 %attribute(cmf::water::WaterStorage,real,volume,get_volume,set_volume);
-
+%attribute(cmf::water::WaterStorage,char,statevariable,get_state_variable_content,set_state_variable_content);
 %include "water/WaterStorage.h"
 %template(storage_vector) std::vector<cmf::water::WaterStorage::ptr>;
 %include "water/collections.i"

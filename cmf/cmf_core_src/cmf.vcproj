@@ -90,7 +90,7 @@
 		<Configuration
 			Name="Release|Win32"
 			OutputDirectory="Release"
-			IntermediateDirectory="Release"
+			IntermediateDirectory="Release\Temp"
 			ConfigurationType="2"
 			>
 			<Tool
@@ -110,6 +110,7 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
+				Optimization="0"
 				InlineFunctionExpansion="2"
 				FavorSizeOrSpeed="1"
 				WholeProgramOptimization="false"
@@ -136,7 +137,7 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalDependencies="sundials_cvode.lib sundials_nvecserial.lib"
-				OutputFile="$(OutDir)\_$(ProjectName).pyd"
+				OutputFile="$(OutDir)\_cmf_core.pyd"
 				LinkIncremental="1"
 				AdditionalLibraryDirectories="c:\Python26\libs;&quot;D:\Code\sundials-2.4.0\inst_msvc\lib&quot;"
 				IgnoreAllDefaultLibraries="false"
@@ -166,6 +167,7 @@
 			/>
 			<Tool
 				Name="VCPostBuildEventTool"
+				CommandLine=""
 			/>
 		</Configuration>
 		<Configuration
@@ -602,6 +604,10 @@
 		</File>
 		<File
 			RelativePath=".\geometry\geometry.i"
+			>
+		</File>
+		<File
+			RelativePath=".\debug_scripts\integrate_head.py"
 			>
 		</File>
 		<File

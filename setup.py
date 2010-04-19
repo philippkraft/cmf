@@ -36,6 +36,7 @@ boost_path = r"..\boost_1_41_0" if msvc else ""
 
 # No user action required beyond this point
 import os
+import datetime
 from distutils.core import setup,Extension
 if "swig" in sys.argv:
     #os.chdir("cmf/cmf_core_src")
@@ -95,9 +96,9 @@ if __name__=='__main__':
             print 'In %s %i modules found' % (root,len(py_found))
         py.extend(py_found)
     
-    
+    now = datetime.datetime.now()
     setup(name='cmf',
-          version='0.1',
+          version='0.1.%4i.%02i.%02i.%02i.%02i' % (now.year,now.month,now.day,now.hour,now.minute),
           license='GPL',
           ext_modules=ext,
           py_modules=py, 
