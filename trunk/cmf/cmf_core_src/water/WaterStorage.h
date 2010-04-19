@@ -122,8 +122,12 @@ namespace cmf {
 			}
 			///@name Overrides of flux_node
 			//@{
-			virtual bool RecalcFluxes(cmf::math::Time t) {return StateIsChanged();}
-			virtual bool is_empty() const {return get_state()<=0;}
+			virtual bool RecalcFluxes(cmf::math::Time t) {
+				return StateIsChanged();
+			}
+			virtual bool is_empty() const {
+				return get_volume()<=0;
+			}
 			//@}
 			static std::tr1::shared_ptr<cmf::water::WaterStorage> cast(std::tr1::shared_ptr<cmf::water::flux_node> node)
 			{		

@@ -28,19 +28,16 @@
 // total get_potential
 real cmf::upslope::SoilLayer::get_potential() const
 {
-	real
-		mp=get_matrix_potential(),
-		gp=get_gravitational_potential();
-	return mp+gp;
+	return m_wet.h;
 }
 
 
 void cmf::upslope::SoilLayer::set_potential( real waterhead )
 {
-	real m_pot=waterhead - get_gravitational_potential();
-	real w=get_soil().Wetness(m_pot);
-	real vv=get_soil().VoidVolume(get_upper_boundary(),get_lower_boundary(),cell.get_area());
-	set_state(vv*w);
+	if (get_state_variable_content()=='h')
+		set_state(waterhead);
+	else 
+		set_state(head_to_volume(waterhead));
 }
 
 real cmf::upslope::SoilLayer::get_gravitational_potential() const
@@ -109,11 +106,16 @@ real cmf::upslope::SoilLayer::get_saturated_depth() const
 void cmf::upslope::SoilLayer::StateChangeAction()
 {
 	m_wet.C=get_soil().VoidVolume(get_upper_boundary(),get_lower_boundary(),cell.get_area());
-	m_wet.W=maximum(get_volume(),0)/m_wet.C;
-	m_wet.theta=maximum(get_volume(),0)/(cell.get_area()*get_thickness());
-	m_wet.Psi_m = get_state_variable_content() == 'h' ?
-			get_state() - get_gravitational_potential()
-		:	get_soil().MatricPotential(get_wetness());
+	if (get_state_variable_content()=='h') {
+		m_wet.V = head_to_volume(this->get_state());
+		m_wet.h = this->get_state();
+	} else {
+		m_wet.V = this->get_state();
+		m_wet.h = volume_to_head(this->get_state());
+	}
+	m_wet.W=std::max(m_wet.V,0.)/m_wet.C;
+	m_wet.theta=std::max(m_wet.V,0.)/(cell.get_area()*get_thickness());
+	m_wet.Psi_m = m_wet.h - get_gravitational_potential();
 	m_wet.Ksat=get_soil().K(1,0.5*(get_upper_boundary()+get_lower_boundary()));
 	m_wet.K=get_soil().K(m_wet.W,0.5*(get_upper_boundary()+get_lower_boundary()));
 	cell.InvalidateSatDepth();

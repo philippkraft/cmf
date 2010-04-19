@@ -3946,14 +3946,6 @@ class WaterStorage(StateVariable,StateVariableOwner,flux_node):
     """
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
     __repr__ = _swig_repr
-    def get_state_variable_content(self, *args):
-        """get_state_variable_content(self) -> char"""
-        return _cmf_core.WaterStorage_get_state_variable_content(self, *args)
-
-    def set_state_variable_content(self, *args):
-        """set_state_variable_content(self, char content)"""
-        return _cmf_core.WaterStorage_set_state_variable_content(self, *args)
-
     def __init__(self, *args): 
         """
         __init__(self, project _project, double InitialState = 0) -> WaterStorage
@@ -4014,12 +4006,11 @@ class WaterStorage(StateVariable,StateVariableOwner,flux_node):
 
     SWIGSharedPtrUpcast = staticmethod(SWIGSharedPtrUpcast)
     volume = _swig_property(_cmf_core.WaterStorage_volume_get, _cmf_core.WaterStorage_volume_set)
+    statevariable = _swig_property(_cmf_core.WaterStorage_statevariable_get, _cmf_core.WaterStorage_statevariable_set)
     def __repr__(self): 
         return self.to_string()
 
     __swig_destroy__ = _cmf_core.delete_WaterStorage
-WaterStorage.get_state_variable_content = new_instancemethod(_cmf_core.WaterStorage_get_state_variable_content,None,WaterStorage)
-WaterStorage.set_state_variable_content = new_instancemethod(_cmf_core.WaterStorage_set_state_variable_content,None,WaterStorage)
 WaterStorage.Solute = new_instancemethod(_cmf_core.WaterStorage_Solute,None,WaterStorage)
 WaterStorage.conc = new_instancemethod(_cmf_core.WaterStorage_conc,None,WaterStorage)
 WaterStorage_swigregister = _cmf_core.WaterStorage_swigregister
