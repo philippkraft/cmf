@@ -17,20 +17,23 @@
 //   along with cmf.  If not, see <http://www.gnu.org/licenses/>.
 //   
 #include "Reach.h"
-double cmf::river::make_river_gap( Reach_ptr reach )
+using namespace cmf::river;
+
+double cmf::river::make_river_gap( Reach::ptr reach )
 {
 	for (int i = 0; i < reach->upstream_count() ; ++i)
 	{
-		reach->Location.z=minimum(make_river_gap(reach->get_upstream(i)),reach->Location.z);
+		double gap_heigth = cmf::river::make_river_gap(reach->get_upstream(i));
+		reach->Location.z = std::min(gap_heigth,reach->Location.z);
 	}
 	return reach->Location.z;
 }
 
 
-void cmf::river::Reach::set_downstream(Reach_ptr new_downstream)
+void Reach::set_downstream(Reach::ptr new_downstream)
 {
 	// aquire reference to downstream
-	Reach_ptr downstream=m_downstream.lock();
+	Reach::ptr downstream=m_downstream.lock();
 	// If downstream exists already
 	if (downstream) 
 	{
@@ -51,22 +54,22 @@ void cmf::river::Reach::set_downstream(Reach_ptr new_downstream)
 		MeanChannel channel_between(this_ch,down_ch);
 		// Connect this with Manning eq. to the down stream
 		if (m_diffusive)
-			new cmf::river::Manning_Diffusive(weak_this.lock(),new_downstream,channel_between);		
+			new Manning_Diffusive(weak_this.lock(),new_downstream,channel_between);		
 		else
-			new cmf::river::Manning_Kinematic(weak_this.lock(),new_downstream,channel_between);		
+			new Manning_Kinematic(weak_this.lock(),new_downstream,channel_between);		
 	}
 
 }
-cmf::river::Reach_ptr cmf::river::Reach::get_downstream() const
+Reach::ptr Reach::get_downstream() const
 {
-	return Reach_ptr(m_downstream);
+	return Reach::ptr(m_downstream);
 }
 
-bool cmf::river::Reach::add_upstream(Reach_ptr r )
+bool Reach::add_upstream(Reach::ptr r )
 {
 	for(reach_vector::iterator it = m_upstream.begin(); it != m_upstream.end(); ++it)
 	{
-		Reach_ptr R = it->lock();
+		Reach::ptr R = it->lock();
 		if (R == r)
 		{
 			return false;
@@ -76,7 +79,7 @@ bool cmf::river::Reach::add_upstream(Reach_ptr r )
 	return true;
 }
 
-bool cmf::river::Reach::remove_upstream(const cmf::river::Reach* r)
+bool Reach::remove_upstream(const Reach* r)
 {
 	for(reach_vector::iterator it = m_upstream.begin(); it != m_upstream.end(); ++it)
 	{
@@ -89,59 +92,55 @@ bool cmf::river::Reach::remove_upstream(const cmf::river::Reach* r)
 	return false;
 }
 
-cmf::river::Reach_ptr cmf::river::Reach::get_root()
+Reach::ptr Reach::get_root()
 {
-	Reach_ptr down=get_downstream();
+	Reach::ptr down=get_downstream();
 	if (down)
 		return down->get_root();
 	else
-		return Reach_ptr(this);
+		return Reach::ptr(this);
 }
 
-void cmf::river::Reach::set_outlet(cmf::water::flux_node::ptr outlet )
+void Reach::set_outlet(cmf::water::flux_node::ptr outlet )
 {
-	set_downstream(Reach_ptr());
+	set_downstream(Reach::ptr());
 	if (outlet)
 		if (m_diffusive)
-			new cmf::river::Manning_Diffusive(weak_this.lock(),outlet, get_height_function());
+			new Manning_Diffusive(weak_this.lock(),outlet, get_height_function());
 		else
-			new cmf::river::Manning_Kinematic(weak_this.lock(),outlet, get_height_function());
+			new Manning_Kinematic(weak_this.lock(),outlet, get_height_function());
 }
 
-cmf::upslope::cell_vector cmf::river::Reach::get_cells() const
-{
-	cmf::upslope::cell_vector res;
-	for(cell_map::const_iterator it = m_cells.begin(); it != m_cells.end(); ++it)
-		res.push_back(it->first);
-	return res;
-}
 
-const cmf::river::IChannel& cmf::river::Reach::get_height_function() const
+const IChannel& Reach::get_height_function() const
 {
 	return m_shape;
 }
 
-cmf::river::Reach::~Reach()
+Reach::~Reach()
 {
 	if (!m_downstream.expired())
 		m_downstream.lock()->remove_upstream(this);
 }
 
-cmf::river::Reach_ptr cmf::river::Reach::get_upstream( int index ) const
+Reach::ptr Reach::get_upstream( int index ) const
 {
 	return m_upstream.at(index<0 ? m_upstream.size()+index : index).lock();
 }
 
-void cmf::river::Reach::add_cell( cmf::upslope::Cell* cell, bool soil_cut, real distance,real width )
+void Reach::connect_to_surfacewater( cmf::upslope::Cell* cell, real width,bool diffusive )
 {
-	m_cells[cell] = cell_relation(soil_cut,distance,width);
-	if (m_diffusive)
+	double 
+		outer_distance = cell->get_position().distanceTo(Location),
+		cell_radius = sqrt(cell->get_area())/cmf::geometry::PI,
+		distance = std::min(outer_distance,cell_radius/2);
+	if (diffusive)
 		new Manning_Diffusive(weak_this.lock(),cell->get_surfacewater(),RectangularReach(distance,width));
 	else
 		new Manning_Kinematic(weak_this.lock(),cell->get_surfacewater(),RectangularReach(distance,width));
 }
 
-void cmf::river::Reach::set_diffusive( bool use_diffusive_wave )
+void Reach::set_diffusive( bool use_diffusive_wave )
 {
 	// Get the nodes connected with this reach
 	cmf::water::connection_vector cv = this->get_connections();
@@ -157,13 +156,13 @@ void cmf::river::Reach::set_diffusive( bool use_diffusive_wave )
 	m_diffusive=use_diffusive_wave;
 }
 
-void cmf::river::Reach::set_dead_end()
+void Reach::set_dead_end()
 {
-	set_downstream(Reach_ptr());
+	set_downstream(Reach::ptr());
 	set_outlet(cmf::water::flux_node::ptr());
 }
 
-cmf::river::Reach::ptr cmf::river::Reach::create( const cmf::project& project,cmf::river::Channel shape, bool diffusive/*=false*/ )
+Reach::ptr Reach::create( const cmf::project& project,const IChannel& shape, bool diffusive/*=false*/ )
 {
 	Reach* pR =	 new Reach(project,shape,diffusive);
 	ptr R (pR);
@@ -174,7 +173,7 @@ cmf::river::Reach::ptr cmf::river::Reach::create( const cmf::project& project,cm
 /* Reach Iterator                                                       */
 /************************************************************************/
 
-cmf::river::Reach_ptr cmf::river::ReachIterator::next()
+Reach::ptr ReachIterator::next()
 {
 	if (reach_queue.empty()) throw std::out_of_range("No reaches in queue");
 	for (int i = 0; i < reach_queue.front().first->upstream_count() ; ++i)
@@ -188,33 +187,44 @@ cmf::river::Reach_ptr cmf::river::ReachIterator::next()
 	return current.first;
 }
 
-bool cmf::river::ReachIterator::valid() const
+bool ReachIterator::valid() const
 {
 	return !reach_queue.empty();
 }
 
-cmf::river::ReachIterator::ReachIterator( Reach_ptr first )
+ReachIterator::ReachIterator( Reach::ptr first )
 {
 	reach_queue.push(queue_value(first,0.0));
 	current=reach_queue.front();
 }
 
-cmf::river::Reach_ptr cmf::river::ReachIterator::operator->() const
+Reach::ptr ReachIterator::operator->() const
 {
 	return current.first;
 }
 
-void cmf::river::ReachIterator::operator++()
+void ReachIterator::operator++()
 {
 	next();
 }
 
-cmf::river::Reach_ptr cmf::river::ReachIterator::reach() const
+Reach::ptr ReachIterator::reach() const
 {
 	return current.first;
 }
 
-double cmf::river::ReachIterator::position() const
+double ReachIterator::position() const
 {
 	return current.second;
+}
+
+real cmf::river::Reach::get_length() const
+{
+	return get_height_function().get_length();
+}
+
+Reach::Reach( const cmf::project& _project,const IChannel& shape, bool diffusive/*=false*/ ) 
+: OpenWaterStorage(_project,shape), m_diffusive(diffusive), m_shape(shape)
+{
+
 }

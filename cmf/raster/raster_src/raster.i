@@ -16,7 +16,7 @@
 //   You should have received a copy of the GNU General Public License
 //   along with cmf.  If not, see <http://www.gnu.org/licenses/>.
 //   
-%include "stl.i"
+%include <exception.i>
 %module raster
 %pythoncode {
 from math import *
@@ -30,29 +30,22 @@ from math import *
         $action
     } 
     catch (std::runtime_error& e) {
-			SWIG_exception(SWIG_RuntimeError, e.what() );
-		}
-		catch (...) {
-			SWIG_exception(SWIG_UnknownError, "unknown exception");
-		}
+        SWIG_exception(SWIG_RuntimeError, e.what() );
+    }
+    catch (std::exception& e) {
+        SWIG_exception(SWIG_UnknownError, e.what());
+    }
 }
-%template(double_vector) std::vector<double>;
-%template(float_vector) std::vector<float>;
-%template(int_vector) std::vector<int>;
-
 // Raster.h
  
-%nodefaultctor raster::Raster;
-%newobject raster::Raster::ToInt();
-%newobject raster::Raster::ToDouble();
-%newobject raster::Raster::ToFloat();
-
+%nodefaultctor Raster;
+%echo "include raster.h"
 %include "raster.h"
-
-%template(double_raster) raster::Raster<double>;
-%template(int_raster) raster::Raster<int>;
-%template(single_raster) raster::Raster<float>;
-%extend raster::Histogram
+%echo "Create templates"
+%template(double_raster) Raster<double>;
+%template(int_raster) Raster<int>;
+%template(single_raster) Raster<float>;
+%extend Histogram
 {
 	%pythoncode
 	{
@@ -97,7 +90,7 @@ from math import *
             elif (dtype in ["i","i4"]):
                 rtype=int_raster
             else:
-                raise ValueError("Data type most be f,s or i")
+                raise ValueError("Data type mast be f,s or i")
             if (filename):
                 self.raster=rtype(filename)
             else:
@@ -125,8 +118,7 @@ from math import *
         @property
         def extent(self):
             "The extent of the raster (width,height) in map coordinates"
-            return (self.cellsize[0]*self.shape[1],
-                    self.cellsize[1]*self.shape[0])
+            return self.llcorner[0],self.llcorner[0]+self.extent[0],self.llcorner[1],self.llcorner[1]+self.extent[1]
         def neighbors(self,x,y):
             """ Returns a list of the neighbors to the given position
             x,y are intepreted as real coordinates, if they are floating point numbers,
@@ -250,6 +242,10 @@ from math import *
             """ Creates a new raster of type single (floating point 32) from self """
             res=self.raster.ToSingle()
             return Raster(dtype=self.dtype,raster=res)
+        @property
+        def mask(self):
+            res=self.raster.HasData()
+            return Raster(dtype='i',raster=res)
         def clone(self):
             """ Creates a copy of this raster """
             res=self.raster.clone()
@@ -355,31 +351,34 @@ from math import *
         def __array_interface__(self):
             "Returns the array interface for the raster."
             types={'i':'|i4','f':'|f8','s':'|f4'}
-            return dict(shape=self.shape,data=(self.raster.adress(),0),typestr=types[self.dtype])
-        def as_array(self):
-            if numpy:                
-                res=numpy.asarray(self)
-                if self.dtype=='i':
-                    mres=numpy.ma.masked_equal(res,self.nodata)
-                else:
-                    mres=numpy.ma.masked_values(res,self.nodata)
+            return dict(shape  = self.shape,
+                        data   = (self.raster.adress(),0),
+                        typestr= types[self.dtype],
+                        mask   = self.mask,
+                       )
+        def asarray(self):
+            "Returns a 2D masked array, where nodata areas are masked"
+            try:
+                import numpy.ma
+                mres=numpy.ma.array(self,self.mask,copy=False)
                 return mres
-            else:
-                raise NotImplementedError("as_array needs an installation of numpy to work!")
+            except ImportError:
+                raise NotImplementedError("asarray needs an installation of numpy to work!")
         def draw(self,cmap=None,vmin=None,vmax=None,hold=1,interpolation='nearest',**kwargs):
-            if pyplot:
+            try:
+                import matplotlib.pyplot as pyplot
                 if cmap is None:
                     cmap=pyplot.cm.jet
                 if vmin is None:
                     vmin=self.statistics.min
                 if vmax is None:
                     vmax=self.statistics.max
-                pyplot.imshow(self.as_array(),cmap,interpolation=interpolation,
+                pyplot.imshow(self.asarray(),cmap,interpolation=interpolation,
                               aspect='equal',vmin=vmin,vmax=vmax,hold=hold,
-                              extent=(self.llcorner[0],self.llcorner[0]+self.extent[0],self.llcorner[1],self.llcorner[1]+self.extent[1]),
+                              extent=self.extent
                               **kwargs)
-            else:
-                raise NotImplementedError("draw needs an installation of matplotlib to work")
+            except ImportError:
+                raise NotImplementedError("Raster.draw needs an installation of matplotlib to work")
         def __repr__(self):
             stat=self.statistics
             fmt="Raster<%s>: n=%i,min=%g,mean=%g,max=%g,stdev=%g,row,col=%s,cellsize=(%g,%g)"

@@ -1,5 +1,4 @@
 
-
 // Copyright 2010 by Philipp Kraft
 // This file is part of cmf.
 //
@@ -25,7 +24,7 @@
 
 %feature("compactdefaultargs");
 %include "docstrings.i"
-%feature("autodoc","1") ;
+%feature("autodoc","1");
 
 // Usage for automated downcast
 %include factory.i
@@ -222,7 +221,6 @@ EXTENT__REPR__(cmf::atmosphere::RainCloud)
 %echo "upslope::connections OK!";
 
 %include "project.i"
-
 %attribute(cmf::math::SoluteWaterIntegrator,cmf::math::Integrator*,solute_integrator,get_solute_integrator,set_solute_integrator);
 %attribute(cmf::math::SoluteWaterIntegrator,cmf::math::Integrator*,water_integrator,get_water_integrator,set_water_integrator);
 %include "math/integrators/WaterSoluteIntegrator.h"

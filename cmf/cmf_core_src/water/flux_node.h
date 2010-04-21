@@ -51,7 +51,11 @@ namespace cmf {
 		/// bridges to other model domains (e.g. Ponded water to river system).
 		/// The base class can be used where a simple routing, potentially with mixing,
 		/// is needed.
-		class flux_node : public std::tr1::enable_shared_from_this<flux_node> {
+		class flux_node 
+#ifndef SWIG
+			: public std::tr1::enable_shared_from_this<flux_node> 
+#endif
+		{
 		public:
 			typedef std::tr1::shared_ptr<cmf::water::flux_node> ptr;
 #ifndef SWIG

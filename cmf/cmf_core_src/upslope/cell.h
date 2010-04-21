@@ -171,7 +171,7 @@ namespace cmf {
 			void set_vegetation(cmf::upslope::vegetation::Vegetation val) { m_vegetation = val; }
 
 			int Id;
-			const cmf::project& project() const;
+			const cmf::project& get_project() const;
 			cmf::atmosphere::Weather get_weather(cmf::math::Time t) const;
 
 		public:

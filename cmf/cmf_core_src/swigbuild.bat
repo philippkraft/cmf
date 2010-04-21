@@ -1,6 +1,6 @@
 @echo off
 echo create SWIG wrapper as cmf_swig.cxx
-swig -Wextra -w512 -python -castmode -O -c++ -o cmf_swig.cxx -outdir .. cmf.i 
+swig -Wextra -w512 -w511 -python -keyword -castmode -O -c++ -o cmf_swig.cxx -outdir .. cmf.i 
 
 if %ERRORLEVEL%  NEQ 0 goto fine
 
@@ -17,3 +17,5 @@ echo #pragma warning(pop) >> cmf_wrap.cxx
 echo delete now obsolete cmf_swig.cxx
 del cmf_swig.cxx
 
+:fine
+echo swigbuild finished

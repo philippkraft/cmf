@@ -87,7 +87,7 @@ namespace cmf {
 			virtual double get_nManning() const {return nManning;}
 			virtual void set_nManning(double val) {nManning=val;}
 
-			double length; ///< Lenght of the reach
+			virtual double get_length() const=0; ///< Length of the reach
 
 			virtual char typecode() const=0;
 			/// @brief Calculates the flow width from a given actual depth [m] using the actual IChannel %geometry
@@ -104,9 +104,9 @@ namespace cmf {
 			/// @param depth get_depth of the reach [m]
 			virtual double get_flux_crossection(double depth) const=0;
 
-			virtual double h(double V) const {return get_depth(V/length);}
-			virtual double A(double V) const {return get_channel_width(h(V))*length;}
-			virtual double V(double h) const {return get_flux_crossection(h)*length;}
+			virtual double h(double V) const {return get_depth(V/get_length());}
+			virtual double A(double V) const {return get_channel_width(h(V))*get_length();}
+			virtual double V(double h) const {return get_flux_crossection(h)*get_length();}
 			virtual IChannel* copy() const=0;
 
 			/// Calculates the flow rate from a given water volume in the reach
@@ -122,8 +122,8 @@ namespace cmf {
 			/// @param A The area of the cross section [m<sup>2</sup>]
 			/// @param slope The slope of the reach [m/m]
 			double qManning(double A,double slope) const;
-			IChannel(double l) : nManning(0.035), length(l) {}
-		};
+			IChannel(double manning_n=0.035) : nManning(manning_n) {}
+	};
 
 
 		///@brief Structure for the description of structural parameters of a reach
@@ -132,8 +132,11 @@ namespace cmf {
 		///Differences to the SWAT geometry: The flood plain is not plain, but has a small slope=0.5%, but has an infinite width
 		class SWATReachType : public IChannel
 		{
-			public:
-				char typecode() const{return 'S';}
+		private:
+			double m_l;	
+		public:
+			double get_length() const {return m_l;}
+			char typecode() const{return 'S';}
 
 			double
 				BottomWidth, ///<get_channel_width of the IChannel bottom \f$ w_{bottom} [m] \f$
@@ -192,7 +195,7 @@ namespace cmf {
 			/// @param BankWidth get_channel_width of the reach from bank to bank [m]
 			/// @param Depth Depth of the reach [m]
 			SWATReachType(double l,double BankWidth,double Depth);
-			SWATReachType* copy() const { return new SWATReachType(length, BottomWidth+2*BankSlope*ChannelDepth,ChannelDepth);}
+			SWATReachType* copy() const { return new SWATReachType(get_length(), BottomWidth+2*BankSlope*ChannelDepth,ChannelDepth);}
 
 		};
 		/// @brief Structure for the description of reaches with a triangular cross section
@@ -200,7 +203,12 @@ namespace cmf {
 		/// Although double triangular cross section reach are rarely met, a triangular reach does scale with its water load, and is therefore preferable in case where nothing about IChannel geometry is known
 		class TriangularReach : public IChannel
 		{
+		private:
+			double m_l;	
 		public:
+			double get_length() const {
+				return m_l;
+			}
 			char typecode() const{return 'T';}
 			/// Inverse slope of the bank \f$ \Delta = 0.5 \frac w d \f$
 			double BankSlope;
@@ -226,7 +234,7 @@ namespace cmf {
 			virtual double get_flux_crossection(double depth) const;
 			/// Creates a new triangular reach type
 			TriangularReach(double l,double bankSlope=2);
-			TriangularReach* copy() const { return new TriangularReach(BankSlope);}
+			TriangularReach* copy() const;
 
 		};
 		/// Describes a IChannel with a rectangular crosssection
@@ -234,7 +242,9 @@ namespace cmf {
 		{
 		private:
 			double m_width;
+			double m_l;	
 		public:
+			double get_length() const {return m_l;}
 			char typecode() const{return 'R';}
 			/// Returns the width of the  stream at a given depth
 			/// \f{eqnarray*}
@@ -257,13 +267,16 @@ namespace cmf {
 			/// \f}
 			virtual double get_flux_crossection(double depth) const;
 			/// Creates a new rectangular reach type with width [m]
-			RectangularReach(double l,double width) : IChannel(l), m_width(width) {}
+			RectangularReach(double l,double width);
 			RectangularReach* copy() const;
 
 		};
 		class PipeReach : public IChannel
 		{
+		private:
+			double m_l;	
 		public:
+			double get_length() const {return m_l;}
 			char typecode() const{return 'P';}
 			double radius;
 			/// \f[w=2\sqrt{\left|r^2-(r-d)^2\right|} \f]
@@ -275,7 +288,7 @@ namespace cmf {
 			/// \f[A=r^2\arccos{\frac{r-d}{r}{r}} \f]
 			virtual double get_flux_crossection(double depth) const;
 			/// Creates a tube IChannel with diameter [m]
-			PipeReach(double l,double diameter) :IChannel(l), radius(diameter * 0.5) {}
+			PipeReach(double l,double diameter);
 			PipeReach* copy() const;
 		};
 
@@ -285,8 +298,10 @@ namespace cmf {
 		private:
 			std::auto_ptr<IChannel> m_channel;
 		public:
+			double get_length() const { return m_channel->get_length();}
+			Channel();
 			/// Creates a triangular reach of a length
-			Channel(double length=1.0) : IChannel(length), m_channel(new TriangularReach(length)) {}
+			Channel(double length);
 			/// Wraps an existing channel geometry
 			Channel(const IChannel& for_wrapping);
 
@@ -311,12 +326,22 @@ namespace cmf {
 			/// @param depth depth of the reach (ignored for typecode 'T','R','P','S')
 			Channel(char typecode, double length, double width=1.,double depth=0.25);
 			
-			char typecode()														const		{return m_channel->typecode();             }
-			double get_channel_width(double depth)		const		{return m_channel->get_channel_width(depth);}
-			double get_depth(double area)							const		{return m_channel->get_depth(area); }
-			double get_flux_crossection(double depth) const		{return m_channel->get_flux_crossection(depth); }
-			double get_wetted_perimeter(double depth) const		{return m_channel->get_wetted_perimeter(depth); }
-			Channel* copy()														const		{return new Channel(*this);		  }
+			char typecode() const {
+				return m_channel->typecode();             
+			}
+			double get_channel_width(double depth) const {
+				return m_channel->get_channel_width(depth);
+			}
+			double get_depth(double area) const	{
+				return m_channel->get_depth(area); 
+			}
+			double get_flux_crossection(double depth) const	{
+				return m_channel->get_flux_crossection(depth); 
+			}
+			double get_wetted_perimeter(double depth) const	{
+				return m_channel->get_wetted_perimeter(depth); 
+			}
+			Channel* copy()	const;
 			
 			void set_nManning(double val) {m_channel->set_nManning(val);} 
 			double get_nManning() const {return m_channel->get_nManning();}
@@ -329,16 +354,17 @@ namespace cmf {
 		private:
 			Channel m_channel1,m_channel2;
 		public:
+			double get_length() const;
 			/// Creates the mean geometry from the two channel geometries
 			MeanChannel(const IChannel& channel1,const IChannel& channel2);
 			MeanChannel(const MeanChannel& meanChannel);
 			
-			char typecode()														const;
-			double get_channel_width(double depth)		const;
-			double get_depth(double area)							const;
+			char typecode()  const;
+			double get_channel_width(double depth)	const;
+			double get_depth(double area)  const;
 			double get_flux_crossection(double depth) const;
 			double get_wetted_perimeter(double depth) const;
-			MeanChannel* copy()												const;
+			MeanChannel* copy() const;
 
 		};
 

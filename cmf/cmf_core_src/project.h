@@ -39,7 +39,7 @@ namespace cmf {
 	private:
 		friend class cmf::upslope::Cell;
 		upslope::cell_vector m_cells;
-		std::vector<cmf::river::Reach_ptr> m_reaches;
+		std::vector<cmf::river::Reach::ptr> m_reaches;
 
 	protected:
 		virtual void AddStateVariables(cmf::math::StateVariableVector& vector);
@@ -65,22 +65,17 @@ namespace cmf {
 			m_cells.push_back(new_cell);
 			return new_cell;
 		}
-		/// Creates a new cell
-		cmf::upslope::Cell* NewCell(cmf::geometry::point p, double Area)
-		{
-			return NewCell(p.x,p.y,p.z,Area);
-		}
 		/// Creates a new Drichelet boundary condition and adds it to the list of outlets
 		/// The potential of the Drichelet boundary equals p.z
-		cmf::water::DricheletBoundary::ptr NewOutlet(std::string name,cmf::geometry::point p);
+		cmf::water::DricheletBoundary::ptr NewOutlet(std::string name,double x, double y, double z);
 
 
-		cmf::river::Reach_ptr get_reach(int index);
+		cmf::river::Reach::ptr get_reach(int index);
 		int reach_count() const {return int(m_reaches.size());}
 
 		cmf::water::node_list get_storages();
 		/// Creates a new reach
-		cmf::river::Reach_ptr NewReach(cmf::river::Channel shape, bool diffusive=false);
+		cmf::river::Reach::ptr NewReach(double x,double y, double z, double length, char Type='T',double width=0.5,double depth=0.1, bool diffusive=false);
 
 	};
 
