@@ -50,7 +50,7 @@ def make_cmf_core():
         include_dirs += [boost_path,boost_path+r"\boost\tr1"]
     if msvc: 
         compile_args = ["/openmp","/EHsc",r'/Fd"build\vc90.pdb"']
-        link_args=["/DEBUG",r'/PDB:"build\_cmf_core.pdb"']
+        link_args=["/DEBUG"]
     if gcc: 
         compile_args = ["-std=gnu++98","-fopenmp"]
         link_args=["-fopenmp"]
@@ -59,9 +59,9 @@ def make_cmf_core():
         libraries += ['gomp']
     cmf_files=[]
     for root,dirs,files in os.walk('.'):
-        cmf_files.extend(os.path.join(root,f) for f in files if f.endswith('.cpp'))
+        cmf_files.extend(os.path.join(root,f) for f in files if f.endswith('.cpp') and f!='cmf_wrap.cpp')
     print "Compiling %i source files" % (len(cmf_files)+1)
-    cmf_files.append("cmf/cmf_core_src/cmf_wrap.cxx")
+    cmf_files.append("cmf/cmf_core_src/cmf.i")
     cmf_core = Extension('cmf._cmf_core',
                             sources=cmf_files,
                             library_dirs=library_dirs,
@@ -69,20 +69,31 @@ def make_cmf_core():
                             include_dirs=include_dirs,
                             extra_compile_args=compile_args,
                             extra_link_args=link_args,
+                            swig_opts=['-c++','-Wextra','-w512','-w511','-keyword','-castmode','-O']
                         )
     return cmf_core
 def make_raster():
-    files=['cmf/raster/raster_src/raster_wrap.cxx']
-    if msvc: compile_args = ["/openmp","/EHsc"]
-    if gcc: compile_args = ["-std=gnu++98","-fopenmp","-w"]
+    files=['cmf/raster/raster_src/raster.i']
+    if msvc: 
+        compile_args = ["/openmp","/EHsc",r'/Fd"build\vc90.pdb"']
+        link_args=["/DEBUG"]
+    if gcc: 
+        compile_args = ["-std=gnu++98","-fopenmp"]
+        link_args=["-fopenmp"]
+    libraries=[]
+    if gcc:
+        libraries += ['gomp']
     raster = Extension('cmf.raster._raster',
                         sources=files,
+                        libraries = libraries,
                         extra_compile_args=compile_args,
+                        extra_link_args=link_args,
+                        swig_opts=['-c++','-Wextra','-w512','-w511','-keyword','-castmode','-O']
                     )
     return raster
 if __name__=='__main__':
-    #ext = [make_raster(),make_cmf_core()]
-    ext = [make_cmf_core()]
+    ext = [make_raster(),make_cmf_core()]
+    #ext = [make_cmf_core()]
     author = "Philipp Kraft"
     author_email = "philipp.kraft@umwelt.uni-giessen.de"
     url = "www.uni-giessen.de/ilr/frede/cmf"
@@ -98,7 +109,7 @@ if __name__=='__main__':
     
     now = datetime.datetime.now()
     setup(name='cmf',
-          version='0.1.%4i.%02i.%02i.%02i.%02i' % (now.year,now.month,now.day,now.hour,now.minute),
+          version='0.1',
           license='GPL',
           ext_modules=ext,
           py_modules=py, 

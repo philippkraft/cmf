@@ -77,7 +77,7 @@
 %attribute2(cmf::upslope::Cell,cmf::atmosphere::Meteorology,meteorology,get_meteorology,set_meteorology);
 %attribute(cmf::upslope::Cell,std::tr1::shared_ptr<cmf::atmosphere::RainCloud>,rain,get_rainfall);
 %attribute2(cmf::upslope::Cell,cmf::upslope::layer_list,layers,get_layers);
-
+%attribute2(cmf::upslope::Cell,cmf::project,project,get_project);
 %include "upslope/cell.h"
 
 %extend cmf::upslope::Cell

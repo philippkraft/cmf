@@ -446,7 +446,7 @@
 				>
 			</File>
 			<File
-				RelativePath=".\cmf_wrap.cxx"
+				RelativePath=".\cmf_wrap.cpp"
 				>
 			</File>
 			<File
@@ -593,6 +593,16 @@
 		<File
 			RelativePath=".\cmf.i"
 			>
+			<FileConfiguration
+				Name="Release|Win32"
+				>
+				<Tool
+					Name="VCCustomBuildTool"
+					Description="swigging cmf.i -&gt; cmf_wrap.cpp"
+					CommandLine="swig.exe -python -c++ -Wextra -w512 -w511 -keyword -castmode -O -c++ -o $(InputDir)cmf_wrap.cpp -outdir $(InputDir).. $(InputDir)cmf.i"
+					Outputs="cmf_wrap.cpp"
+				/>
+			</FileConfiguration>
 		</File>
 		<File
 			RelativePath=".\water\collections.i"

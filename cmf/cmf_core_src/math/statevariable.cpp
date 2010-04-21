@@ -73,13 +73,13 @@ void cmf::math::StateVariableVector::CopyDerivs( Time time,num_array & destinati
 	{
 		if (factor==1)
 		{
-#pragma omp parallel for
+#pragma omp parallel for schedule(guided)
 			for (int i = 0; i < (int)size() ; ++i)
 				destination[i]=(*this)[i]->Derivate(time);
 		}
 		else
 		{
-#pragma omp parallel for
+#pragma omp parallel for schedule(guided)
 			for (int i = 0; i < (int)size() ; i++)
 			{
 				destination[i]=(*this)[i]->Derivate(time);
@@ -111,13 +111,13 @@ void cmf::math::StateVariableVector::CopyDerivs( Time time,real * destination,re
 	{
 		if (factor==1)
 		{
-#pragma omp parallel for
+#pragma omp parallel for schedule(guided)
 			for (int i = 0; i < (int)size() ; ++i)
 				destination[i]=(*this)[i]->Derivate(time);
 		}
 		else
 		{
-#pragma omp parallel for
+#pragma omp parallel for schedule(guided)
 			for (int i = 0; i < (int)size() ; i++)
 			{
 				destination[i]=(*this)[i]->Derivate(time);

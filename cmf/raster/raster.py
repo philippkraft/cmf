@@ -4,24 +4,6 @@
 # Do not make changes to this file unless you know what you are doing--modify
 # the SWIG interface file instead.
 
-
-# Copyright 2010 by Philipp Kraft
-# This file is part of cmf.
-#
-#   cmf is free software: you can redistribute it and/or modify
-#   it under the terms of the GNU General Public License as published by
-#   the Free Software Foundation, either version 2 of the License, or
-#   (at your option) any later version.
-#
-#   cmf is distributed in the hope that it will be useful,
-#   but WITHOUT ANY WARRANTY; without even the implied warranty of
-#   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#   GNU General Public License for more details.
-#
-#   You should have received a copy of the GNU General Public License
-#   along with cmf.  If not, see <http://www.gnu.org/licenses/>.
-#   
-
 from sys import version_info
 if version_info >= (3,0,0):
     new_instancemethod = lambda func, inst, cls: _raster.SWIG_PyInstanceMethod_New(func)
@@ -97,155 +79,7 @@ def _swig_setattr_nondynamic_method(set):
     return set_attr
 
 
-class SwigPyIterator(object):
-    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
-    def __init__(self, *args, **kwargs): raise AttributeError("No constructor defined - class is abstract")
-    __repr__ = _swig_repr
-    __swig_destroy__ = _raster.delete_SwigPyIterator
-    def __iter__(self): return self
-SwigPyIterator.value = new_instancemethod(_raster.SwigPyIterator_value,None,SwigPyIterator)
-SwigPyIterator.incr = new_instancemethod(_raster.SwigPyIterator_incr,None,SwigPyIterator)
-SwigPyIterator.decr = new_instancemethod(_raster.SwigPyIterator_decr,None,SwigPyIterator)
-SwigPyIterator.distance = new_instancemethod(_raster.SwigPyIterator_distance,None,SwigPyIterator)
-SwigPyIterator.equal = new_instancemethod(_raster.SwigPyIterator_equal,None,SwigPyIterator)
-SwigPyIterator.copy = new_instancemethod(_raster.SwigPyIterator_copy,None,SwigPyIterator)
-SwigPyIterator.next = new_instancemethod(_raster.SwigPyIterator_next,None,SwigPyIterator)
-SwigPyIterator.__next__ = new_instancemethod(_raster.SwigPyIterator___next__,None,SwigPyIterator)
-SwigPyIterator.previous = new_instancemethod(_raster.SwigPyIterator_previous,None,SwigPyIterator)
-SwigPyIterator.advance = new_instancemethod(_raster.SwigPyIterator_advance,None,SwigPyIterator)
-SwigPyIterator.__eq__ = new_instancemethod(_raster.SwigPyIterator___eq__,None,SwigPyIterator)
-SwigPyIterator.__ne__ = new_instancemethod(_raster.SwigPyIterator___ne__,None,SwigPyIterator)
-SwigPyIterator.__iadd__ = new_instancemethod(_raster.SwigPyIterator___iadd__,None,SwigPyIterator)
-SwigPyIterator.__isub__ = new_instancemethod(_raster.SwigPyIterator___isub__,None,SwigPyIterator)
-SwigPyIterator.__add__ = new_instancemethod(_raster.SwigPyIterator___add__,None,SwigPyIterator)
-SwigPyIterator.__sub__ = new_instancemethod(_raster.SwigPyIterator___sub__,None,SwigPyIterator)
-SwigPyIterator_swigregister = _raster.SwigPyIterator_swigregister
-SwigPyIterator_swigregister(SwigPyIterator)
-
 from math import *
-
-class double_vector(object):
-    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
-    __repr__ = _swig_repr
-    def __iter__(self): return self.iterator()
-    def __init__(self, *args): 
-        _raster.double_vector_swiginit(self,_raster.new_double_vector(*args))
-    __swig_destroy__ = _raster.delete_double_vector
-double_vector.iterator = new_instancemethod(_raster.double_vector_iterator,None,double_vector)
-double_vector.__nonzero__ = new_instancemethod(_raster.double_vector___nonzero__,None,double_vector)
-double_vector.__bool__ = new_instancemethod(_raster.double_vector___bool__,None,double_vector)
-double_vector.__len__ = new_instancemethod(_raster.double_vector___len__,None,double_vector)
-double_vector.pop = new_instancemethod(_raster.double_vector_pop,None,double_vector)
-double_vector.__getslice__ = new_instancemethod(_raster.double_vector___getslice__,None,double_vector)
-double_vector.__setslice__ = new_instancemethod(_raster.double_vector___setslice__,None,double_vector)
-double_vector.__delslice__ = new_instancemethod(_raster.double_vector___delslice__,None,double_vector)
-double_vector.__delitem__ = new_instancemethod(_raster.double_vector___delitem__,None,double_vector)
-double_vector.__getitem__ = new_instancemethod(_raster.double_vector___getitem__,None,double_vector)
-double_vector.__setitem__ = new_instancemethod(_raster.double_vector___setitem__,None,double_vector)
-double_vector.append = new_instancemethod(_raster.double_vector_append,None,double_vector)
-double_vector.empty = new_instancemethod(_raster.double_vector_empty,None,double_vector)
-double_vector.size = new_instancemethod(_raster.double_vector_size,None,double_vector)
-double_vector.clear = new_instancemethod(_raster.double_vector_clear,None,double_vector)
-double_vector.swap = new_instancemethod(_raster.double_vector_swap,None,double_vector)
-double_vector.get_allocator = new_instancemethod(_raster.double_vector_get_allocator,None,double_vector)
-double_vector.begin = new_instancemethod(_raster.double_vector_begin,None,double_vector)
-double_vector.end = new_instancemethod(_raster.double_vector_end,None,double_vector)
-double_vector.rbegin = new_instancemethod(_raster.double_vector_rbegin,None,double_vector)
-double_vector.rend = new_instancemethod(_raster.double_vector_rend,None,double_vector)
-double_vector.pop_back = new_instancemethod(_raster.double_vector_pop_back,None,double_vector)
-double_vector.erase = new_instancemethod(_raster.double_vector_erase,None,double_vector)
-double_vector.push_back = new_instancemethod(_raster.double_vector_push_back,None,double_vector)
-double_vector.front = new_instancemethod(_raster.double_vector_front,None,double_vector)
-double_vector.back = new_instancemethod(_raster.double_vector_back,None,double_vector)
-double_vector.assign = new_instancemethod(_raster.double_vector_assign,None,double_vector)
-double_vector.resize = new_instancemethod(_raster.double_vector_resize,None,double_vector)
-double_vector.insert = new_instancemethod(_raster.double_vector_insert,None,double_vector)
-double_vector.reserve = new_instancemethod(_raster.double_vector_reserve,None,double_vector)
-double_vector.capacity = new_instancemethod(_raster.double_vector_capacity,None,double_vector)
-double_vector_swigregister = _raster.double_vector_swigregister
-double_vector_swigregister(double_vector)
-
-class float_vector(object):
-    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
-    __repr__ = _swig_repr
-    def __iter__(self): return self.iterator()
-    def __init__(self, *args): 
-        _raster.float_vector_swiginit(self,_raster.new_float_vector(*args))
-    __swig_destroy__ = _raster.delete_float_vector
-float_vector.iterator = new_instancemethod(_raster.float_vector_iterator,None,float_vector)
-float_vector.__nonzero__ = new_instancemethod(_raster.float_vector___nonzero__,None,float_vector)
-float_vector.__bool__ = new_instancemethod(_raster.float_vector___bool__,None,float_vector)
-float_vector.__len__ = new_instancemethod(_raster.float_vector___len__,None,float_vector)
-float_vector.pop = new_instancemethod(_raster.float_vector_pop,None,float_vector)
-float_vector.__getslice__ = new_instancemethod(_raster.float_vector___getslice__,None,float_vector)
-float_vector.__setslice__ = new_instancemethod(_raster.float_vector___setslice__,None,float_vector)
-float_vector.__delslice__ = new_instancemethod(_raster.float_vector___delslice__,None,float_vector)
-float_vector.__delitem__ = new_instancemethod(_raster.float_vector___delitem__,None,float_vector)
-float_vector.__getitem__ = new_instancemethod(_raster.float_vector___getitem__,None,float_vector)
-float_vector.__setitem__ = new_instancemethod(_raster.float_vector___setitem__,None,float_vector)
-float_vector.append = new_instancemethod(_raster.float_vector_append,None,float_vector)
-float_vector.empty = new_instancemethod(_raster.float_vector_empty,None,float_vector)
-float_vector.size = new_instancemethod(_raster.float_vector_size,None,float_vector)
-float_vector.clear = new_instancemethod(_raster.float_vector_clear,None,float_vector)
-float_vector.swap = new_instancemethod(_raster.float_vector_swap,None,float_vector)
-float_vector.get_allocator = new_instancemethod(_raster.float_vector_get_allocator,None,float_vector)
-float_vector.begin = new_instancemethod(_raster.float_vector_begin,None,float_vector)
-float_vector.end = new_instancemethod(_raster.float_vector_end,None,float_vector)
-float_vector.rbegin = new_instancemethod(_raster.float_vector_rbegin,None,float_vector)
-float_vector.rend = new_instancemethod(_raster.float_vector_rend,None,float_vector)
-float_vector.pop_back = new_instancemethod(_raster.float_vector_pop_back,None,float_vector)
-float_vector.erase = new_instancemethod(_raster.float_vector_erase,None,float_vector)
-float_vector.push_back = new_instancemethod(_raster.float_vector_push_back,None,float_vector)
-float_vector.front = new_instancemethod(_raster.float_vector_front,None,float_vector)
-float_vector.back = new_instancemethod(_raster.float_vector_back,None,float_vector)
-float_vector.assign = new_instancemethod(_raster.float_vector_assign,None,float_vector)
-float_vector.resize = new_instancemethod(_raster.float_vector_resize,None,float_vector)
-float_vector.insert = new_instancemethod(_raster.float_vector_insert,None,float_vector)
-float_vector.reserve = new_instancemethod(_raster.float_vector_reserve,None,float_vector)
-float_vector.capacity = new_instancemethod(_raster.float_vector_capacity,None,float_vector)
-float_vector_swigregister = _raster.float_vector_swigregister
-float_vector_swigregister(float_vector)
-
-class int_vector(object):
-    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
-    __repr__ = _swig_repr
-    def __iter__(self): return self.iterator()
-    def __init__(self, *args): 
-        _raster.int_vector_swiginit(self,_raster.new_int_vector(*args))
-    __swig_destroy__ = _raster.delete_int_vector
-int_vector.iterator = new_instancemethod(_raster.int_vector_iterator,None,int_vector)
-int_vector.__nonzero__ = new_instancemethod(_raster.int_vector___nonzero__,None,int_vector)
-int_vector.__bool__ = new_instancemethod(_raster.int_vector___bool__,None,int_vector)
-int_vector.__len__ = new_instancemethod(_raster.int_vector___len__,None,int_vector)
-int_vector.pop = new_instancemethod(_raster.int_vector_pop,None,int_vector)
-int_vector.__getslice__ = new_instancemethod(_raster.int_vector___getslice__,None,int_vector)
-int_vector.__setslice__ = new_instancemethod(_raster.int_vector___setslice__,None,int_vector)
-int_vector.__delslice__ = new_instancemethod(_raster.int_vector___delslice__,None,int_vector)
-int_vector.__delitem__ = new_instancemethod(_raster.int_vector___delitem__,None,int_vector)
-int_vector.__getitem__ = new_instancemethod(_raster.int_vector___getitem__,None,int_vector)
-int_vector.__setitem__ = new_instancemethod(_raster.int_vector___setitem__,None,int_vector)
-int_vector.append = new_instancemethod(_raster.int_vector_append,None,int_vector)
-int_vector.empty = new_instancemethod(_raster.int_vector_empty,None,int_vector)
-int_vector.size = new_instancemethod(_raster.int_vector_size,None,int_vector)
-int_vector.clear = new_instancemethod(_raster.int_vector_clear,None,int_vector)
-int_vector.swap = new_instancemethod(_raster.int_vector_swap,None,int_vector)
-int_vector.get_allocator = new_instancemethod(_raster.int_vector_get_allocator,None,int_vector)
-int_vector.begin = new_instancemethod(_raster.int_vector_begin,None,int_vector)
-int_vector.end = new_instancemethod(_raster.int_vector_end,None,int_vector)
-int_vector.rbegin = new_instancemethod(_raster.int_vector_rbegin,None,int_vector)
-int_vector.rend = new_instancemethod(_raster.int_vector_rend,None,int_vector)
-int_vector.pop_back = new_instancemethod(_raster.int_vector_pop_back,None,int_vector)
-int_vector.erase = new_instancemethod(_raster.int_vector_erase,None,int_vector)
-int_vector.push_back = new_instancemethod(_raster.int_vector_push_back,None,int_vector)
-int_vector.front = new_instancemethod(_raster.int_vector_front,None,int_vector)
-int_vector.back = new_instancemethod(_raster.int_vector_back,None,int_vector)
-int_vector.assign = new_instancemethod(_raster.int_vector_assign,None,int_vector)
-int_vector.resize = new_instancemethod(_raster.int_vector_resize,None,int_vector)
-int_vector.insert = new_instancemethod(_raster.int_vector_insert,None,int_vector)
-int_vector.reserve = new_instancemethod(_raster.int_vector_reserve,None,int_vector)
-int_vector.capacity = new_instancemethod(_raster.int_vector_capacity,None,int_vector)
-int_vector_swigregister = _raster.int_vector_swigregister
-int_vector_swigregister(int_vector)
 
 class RasterStatistics(object):
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
@@ -460,7 +294,7 @@ class Raster:
         elif (dtype in ["i","i4"]):
             rtype=int_raster
         else:
-            raise ValueError("Data type most be f,s or i")
+            raise ValueError("Data type mast be f,s or i")
         if (filename):
             self.raster=rtype(filename)
         else:
@@ -613,6 +447,10 @@ class Raster:
         """ Creates a new raster of type single (floating point 32) from self """
         res=self.raster.ToSingle()
         return Raster(dtype=self.dtype,raster=res)
+    @property
+    def mask(self):
+        res=self.raster.HasData()
+        return Raster(dtype='i',raster=res)
     def clone(self):
         """ Creates a copy of this raster """
         res=self.raster.clone()
@@ -718,14 +556,14 @@ class Raster:
     def __array_interface__(self):
         "Returns the array interface for the raster."
         types={'i':'|i4','f':'|f8','s':'|f4'}
-        return dict(shape=self.shape,data=(self.raster.adress(),0),typestr=types[self.dtype])
+        return dict(shape  = self.shape,
+                    data   = (self.raster.adress(),0),
+                    typestr= types[self.dtype],
+                    mask   = self.mask,
+                   )
     def as_array(self):
         if numpy:                
-            res=numpy.asarray(self)
-            if self.dtype=='i':
-                mres=numpy.ma.masked_equal(res,self.nodata)
-            else:
-                mres=numpy.ma.masked_values(res,self.nodata)
+            mres=numpy.ma.array(res,self.nodata)
             return mres
         else:
             raise NotImplementedError("as_array needs an installation of numpy to work!")
