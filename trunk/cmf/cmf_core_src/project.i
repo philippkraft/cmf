@@ -23,7 +23,26 @@
 
 %rename(connect_cells_with_flux) cmf::connect_cells_with_flux;
 %attribute2(cmf::project,cmf::upslope::cell_vector,cells,get_cells);
+%pythoncode {
+    class reach_list:
+        def __init__(self,p):
+            self.project = p
+            self.__get = p.get_reach
+        def __len__(self):
+            return self.project.reach_count()
+        def __getitem__(self,index):
+            if (type(index)==slice):
+                 return [self.__get(i) for i in range(*index.indices(len(self)))]
+            try:
+                 gen=iter(index)
+                 return [self.__get(it) for it in gen]
+            except TypeError:
+                 return self.__get(index)
+        def __iter__(self):
+            for i in range(len(self)):
+                yield self.__get(i)
 
+}
 %include "project.h"
 %extend cmf::project {
     %pythoncode {
@@ -39,6 +58,9 @@
     def __iter__(self):
         for i in range(self.size()):
             yield self.get_cell(i)
+    @property
+    def reaches(self):
+        return reach_list(self)
     }
 }    
     

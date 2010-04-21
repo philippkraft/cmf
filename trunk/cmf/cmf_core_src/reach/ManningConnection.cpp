@@ -24,7 +24,7 @@ real cmf::river::Manning::calc_q( cmf::math::Time t )
 	OpenWaterStorage::ptr ows1=w1.lock(),ows2=w2.lock();
 	real 
 		// Distance between source and target
-		d=flux_geometry.length,
+		d=flux_geometry.get_length(),
 		// Gradient of the reach
 		slope = is_diffusive_wave ?  
 		/*diffusive slope*/	        (left_node()->get_potential()-right_node()->get_potential())/d

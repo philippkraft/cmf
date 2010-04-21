@@ -261,6 +261,40 @@ def create_reaches(project,outlets,features,
  
 
 
+def __create_reach_for_cell(reaches,downstream_reach,cell,cells,reach_geometry,subsurface_connection_type,width,depth,diffusive):
+    """for internal use only, do not invoke"""
+    assert(cell in cells)
+    # Get cells upstream of current cell
+    in_cells = [n for n,w in cell.neighbors if n.main_outlet == cell and n in cells]
+    # downstream length is half of the distance to the downstream reach
+    length = downstream_reach.Location.distanceTo(cell.position) * 0.5 if downstream_reach else 0.0
+    # upstream length of the reach is half of sum of distance to upstream cells
+    length += 0.5 * sum(cell.get_distance_to(c) for c in in_cells)
+    # Create the reach using the calculated length and the given parameters
+    r = cell.project.NewReach(cell.x,cell.y,cell.z-depth,length,reach_geometry,width,depth,diffusive)
+    r.Name = "~~ @%s" % cell
+    # Connect the reach to the cell
+    r.connect_to_cell(cell,width,subsurface_connection_type,diffusive)
+    # Set the downstream
+    if downstream_reach:
+        r.set_downstream(downstream_reach)
+    # Remove cell from task set
+    cells.remove(cell)
+    # Append reach to the results
+    reaches.append((r,cell))
+    # Create reaches for each upstream cell
+    for c in in_cells:
+        __create_reach_for_cell(reaches,r,c,cells,reach_geometry,subsurface_connection_type,width,depth,diffusive)
+def create_reaches_for_cells(cells_with_reach,reach_geometry='T',width=1.0,depth=0.25,subsurface_connection_type=None,diffusive=None):
+    """Creates reaches for a sequence of cells.
+    """
+    assert(subsurface_connection_type is None or issubclass(subsurface_connection_type, cmf.lateral_sub_surface_flux))
+    cells = set(cells_with_reach)
+    reaches=[]
+    while cells:
+        cur = min(cells,key = lambda c: c.z)
+        __create_reach_for_cell(reaches,None,cur,cells,reach_geometry,subsurface_connection_type,width,depth,diffusive)
+    return reaches
 def cell_neighbors(features,shape_callable=lambda feat:feat.shape):
     res={}
     pred=get_predicate(0.0,shape_callable)
@@ -323,6 +357,7 @@ def cells_from_polygons(project,features,shape_callable=lambda feat:feat.shape,i
                         cell_dict[s].topology.AddNeighbor(cell_dict[c],intersect)
                         con_count+=1
         print len(features),' %0.2f sec. %i comparisons' % (time.clock()-start,cmp_count)
+    cmf.Topology.calculate_contributing_area()
     return cell_dict  
 def cells_from_dem(project,dem,use_diagonals=True):
     """ Adds square cells from a dem to the project, and meshes them.
@@ -365,8 +400,13 @@ def cells_from_dem(project,dem,use_diagonals=True):
                 if n_cell:
                     flow_width=dem.cellsize[int(nc==c)]
                     act_cell.topology.AddNeighbor(n_cell,flow_width)
+    cmf.Topology.calculate_contributing_area(project.cells)
     return cells_dict
         
+def project_from_dem(dem,tracer_string=''):
+    p = cmf.project(tracer_string)
+    cells_from_dem(p,dem)
+    return p
     
         
         

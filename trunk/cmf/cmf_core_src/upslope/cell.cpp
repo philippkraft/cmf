@@ -57,7 +57,7 @@ m_meteo(new cmf::atmosphere::ConstantMeteorology)
 }
 
 cmf::upslope::Cell::Cell( const Cell& cpy ) 
-: m_project(cpy.project()),
+: m_project(cpy.get_project()),
 	x(cpy.x),y(cpy.y),z(cpy.z),m_Area(cpy.get_area())
 {
 
@@ -95,10 +95,10 @@ void cmf::upslope::Cell::AddStateVariables( cmf::math::StateVariableVector& vect
 
 void cmf::upslope::Cell::add_layer(real lowerboundary,const cmf::upslope::RetentionCurve& r_curve,real saturateddepth/*=-10*/ )
 {
-	if (project().debug)
+	if (get_project().debug)
 		std::cout << "Adds a layer to " << this->to_string() << " Name: ";
 	SoilLayer::ptr layer(new SoilLayer(*this,lowerboundary,r_curve,saturateddepth));
-	if (project().debug)
+	if (get_project().debug)
 		std::cout << layer->Name << std::endl;
 	if (m_Layers.size() == 0)
 	{
@@ -136,7 +136,7 @@ void cmf::upslope::Cell::remove_last_layer()
 	m_Layers.pop();
 }
 
-const cmf::project& cmf::upslope::Cell::project() const
+const cmf::project& cmf::upslope::Cell::get_project() const
 {
 return m_project;
 }
@@ -149,9 +149,9 @@ cmf::water::WaterStorage::ptr cmf::upslope::Cell::add_storage( std::string Name,
 	if (storage_role=='S' && m_Snow)   return m_Snow;
 	WaterStorage::ptr ws;
 	if (isopenwater)
-		ws = cmf::river::OpenWaterStorage::create(project(),get_area());
+		ws = cmf::river::OpenWaterStorage::create(get_project(),get_area());
 	else
-		ws = WaterStorage::create(project());
+		ws = WaterStorage::create(get_project());
 	ws->Location=get_position();
 	ws->Name=Name;
 	if (storage_role=='C')
@@ -164,7 +164,7 @@ cmf::water::WaterStorage::ptr cmf::upslope::Cell::add_storage( std::string Name,
 		m_Snow = ws;
 	}
 	m_storages.push_back(ws);
-	if (project().debug) 
+	if (get_project().debug) 
 		std::cout << " Add storage " << ws->Name << " to " << this->to_string() 
 		<< " as " << (storage_role=='W' ? "surface water" : storage_role=='C' ? "canopy" : storage_role=='S' ? "snow" : "anything")
 		<< std::endl;
@@ -203,7 +203,7 @@ void cmf::upslope::Cell::remove_storage( cmf::water::WaterStorage& storage )
 	if (&storage==m_Canopy.get()) m_Canopy.reset();
 	if (&storage==m_Snow.get()) m_Snow.reset();
 	if (&storage==m_SurfaceWaterStorage.get()) {
-		m_SurfaceWater.reset(new cmf::water::flux_node(project()));
+		m_SurfaceWater.reset(new cmf::water::flux_node(get_project()));
 		m_SurfaceWater->Name=storage.Name;
 		m_SurfaceWater->Location=storage.Location;
 		cmf::water::replace_node(m_SurfaceWaterStorage,m_SurfaceWater);

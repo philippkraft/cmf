@@ -47,7 +47,7 @@ real cmf::upslope::SoilLayer::get_gravitational_potential() const
 
 // public ctor
 cmf::upslope::SoilLayer::SoilLayer( cmf::upslope::Cell & _cell,real lowerboundary,const RetentionCurve& r_curve,real saturateddepth/*=10*/ ) 
-:	cmf::water::WaterStorage(_cell.project(), 0),
+:	cmf::water::WaterStorage(_cell.get_project(), 0),
 	cell(_cell),
 	m_retentioncurve(r_curve.copy()),
 	m_lowerboundary(lowerboundary),
@@ -67,7 +67,7 @@ cmf::upslope::SoilLayer::SoilLayer( cmf::upslope::Cell & _cell,real lowerboundar
 }
 // protected constructor
 cmf::upslope::SoilLayer::SoilLayer( cmf::upslope::Cell & _cell,real upperBoundary,real lowerboundary,const RetentionCurve& r_curve,int _Position ) 
-: cmf::water::WaterStorage(_cell.project()),cell(_cell),m_retentioncurve(r_curve.copy()),
+: cmf::water::WaterStorage(_cell.get_project()),cell(_cell),m_retentioncurve(r_curve.copy()),
 m_lowerboundary(lowerboundary),m_upperboundary(upperBoundary),Position(_Position)
 {
 	Location=cmf::geometry::point(_cell.x,_cell.y,_cell.z - lowerboundary);

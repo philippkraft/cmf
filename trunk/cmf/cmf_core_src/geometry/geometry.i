@@ -32,14 +32,13 @@
 }
 %extend cmf::geometry::point {
     inline int __len__() const { return 3; }
-    cmf::geometry::point __rmul__(double val)
-    {
+    cmf::geometry::point __rmul__(double val)    {
         return val*(*$self);
     }
-    cmf::geometry::point __rdiv__(double val)
-    {
+    cmf::geometry::point __rdiv__(double val)    {
         return val/(*$self);
     }
+
 
     %pythoncode 
     {
