@@ -7290,6 +7290,10 @@ class Reach(OpenWaterStorage):
         """connect_to_surfacewater(self, Cell cell, real width, bool diffusive)"""
         return _cmf_core.Reach_connect_to_surfacewater(self, *args, **kwargs)
 
+    def distance_to_cell(self, *args, **kwargs):
+        """distance_to_cell(self, Cell cell) -> double"""
+        return _cmf_core.Reach_distance_to_cell(self, *args, **kwargs)
+
     __swig_destroy__ = _cmf_core.delete_Reach
     def create(*args, **kwargs):
         """create(project project, IChannel shape, bool diffusive = False) -> ptr"""
@@ -7325,7 +7329,7 @@ class Reach(OpenWaterStorage):
             diffusive = self.diffusive
         self.connect_to_surfacewater(cell,width,diffusive)
         r_depth = cell.z - self.Location.z
-        distance = cell.position.distanceTo(self.Location)
+        distance = self.distance_to_cell(cell)
         if subsurface_connection_type:
             cell.connect_soil_with_node(self,subsurface_connection_type,width,distance,0,r_depth)
         
@@ -7339,6 +7343,7 @@ Reach.set_dead_end = new_instancemethod(_cmf_core.Reach_set_dead_end,None,Reach)
 Reach.set_downstream = new_instancemethod(_cmf_core.Reach_set_downstream,None,Reach)
 Reach.get_upstream = new_instancemethod(_cmf_core.Reach_get_upstream,None,Reach)
 Reach.connect_to_surfacewater = new_instancemethod(_cmf_core.Reach_connect_to_surfacewater,None,Reach)
+Reach.distance_to_cell = new_instancemethod(_cmf_core.Reach_distance_to_cell,None,Reach)
 Reach_swigregister = _cmf_core.Reach_swigregister
 Reach_swigregister(Reach)
 

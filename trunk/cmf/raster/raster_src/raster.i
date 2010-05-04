@@ -17,6 +17,7 @@
 //   along with cmf.  If not, see <http://www.gnu.org/licenses/>.
 //   
 %include <exception.i>
+%include <std_string.i>
 %module raster
 %pythoncode {
 from math import *
@@ -42,20 +43,40 @@ from math import *
 %echo "include raster.h"
 %include "raster.h"
 %echo "Create templates"
-%template(double_raster) Raster<double>;
-%template(int_raster) Raster<int>;
-%template(single_raster) Raster<float>;
+
+%define %makeraster(TYPE)
+%template(TYPE ## _raster) Raster< TYPE >;
+%extend Raster< TYPE > {
+	Raster< TYPE > __radd__(const TYPE & other) {
+		return other + (*$self);
+	}
+	Raster< TYPE > __rsub__(const TYPE & other) {
+		return other - (*$self);
+	}
+	Raster< TYPE > __rmul__(const TYPE & other) {
+		return other * (*$self);
+	}
+	Raster< TYPE > __rdiv__(const TYPE & other) {
+		return other / (*$self);
+	}
+}
+%enddef
+%makeraster(double)
+%makeraster(float)
+%makeraster(int)
+
+
 %extend Histogram
 {
-	%pythoncode
-	{
+    %pythoncode
+    {
     def __getitem__(self,index):
         if index<0 : index=self.size()+index
         if index<0 or index>=self.size() : raise IndexError("Bar of histogram not available")
         return (self.barcenter(index),self.frequency(index))
     def __len__(self):
         return self.size()
-	}
+    }
 }
 
 %pythoncode {
@@ -118,7 +139,7 @@ from math import *
         @property
         def extent(self):
             "The extent of the raster (width,height) in map coordinates"
-            return self.llcorner[0],self.llcorner[0]+self.extent[0],self.llcorner[1],self.llcorner[1]+self.extent[1]
+            return self.llcorner[0],self.llcorner[0]+self.shape[1]*self.cellsize[0],self.llcorner[1],self.llcorner[1]+self.shape[0]*self.cellsize[1]
         def neighbors(self,x,y):
             """ Returns a list of the neighbors to the given position
             x,y are intepreted as real coordinates, if they are floating point numbers,
@@ -332,21 +353,22 @@ from math import *
                    raise TypeError("Can't add a %s to this raster %s" % (typename(other),typename(self.raster)))
         def __rsub__(self,other):
             if type(other) is type(self):
-                return Raster(dtype=self.dtype,raster=self.raster-other.raster)
+                return Raster(dtype=self.dtype,raster=other.raster - self.raster)
             else:
                 try:
-                   return Raster(dtype=self.dtype,raster=self.raster-other)
+                   return Raster(dtype=self.dtype,raster=other - self.raster)
                 except TypeError:
                    raise TypeError("Can't add a %s to this raster %s" % (typename(other),typename(self.raster)))
         def __rdiv__(self,other):
             if type(other) is type(self):
-                return Raster(dtype=self.dtype,raster=self.raster/other.raster)
+                return Raster(dtype=self.dtype,raster=other.raster/self.raster)
             else:
                 try:
-                   return Raster(dtype=self.dtype,raster=self.raster/other)
+                   return Raster(dtype=self.dtype,raster=other/self.raster)
                 except TypeError:
                    raise TypeError("Can't add a %s to this raster %s" % (typename(other),typename(self.raster)))
-        
+        def __neg__(self):
+            return Raster(dtype=self.dtype,raster= self.raster * (-1))
         @property
         def __array_interface__(self):
             "Returns the array interface for the raster."
@@ -360,7 +382,7 @@ from math import *
             "Returns a 2D masked array, where nodata areas are masked"
             try:
                 import numpy.ma
-                mres=numpy.ma.array(self,self.mask,copy=False)
+                mres=numpy.ma.array(numpy.asarray(self),mask=1-numpy.asarray(self.mask,dtype=numpy.bool),copy=False)
                 return mres
             except ImportError:
                 raise NotImplementedError("asarray needs an installation of numpy to work!")
@@ -375,7 +397,7 @@ from math import *
                     vmax=self.statistics.max
                 pyplot.imshow(self.asarray(),cmap,interpolation=interpolation,
                               aspect='equal',vmin=vmin,vmax=vmax,hold=hold,
-                              extent=self.extent
+                              extent=self.extent,
                               **kwargs)
             except ImportError:
                 raise NotImplementedError("Raster.draw needs an installation of matplotlib to work")

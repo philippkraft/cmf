@@ -60,7 +60,7 @@
             diffusive = self.diffusive
         self.connect_to_surfacewater(cell,width,diffusive)
         r_depth = cell.z - self.Location.z
-        distance = cell.position.distanceTo(self.Location)
+        distance = self.distance_to_cell(cell)
         if subsurface_connection_type:
             cell.connect_soil_with_node(self,subsurface_connection_type,width,distance,0,r_depth)
         

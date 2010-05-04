@@ -172,7 +172,7 @@ except:
     
     
 def contour_raster(raster,**kwargs):
-    Z=raster.as_array()
+    Z=raster.asarray()
     Z=numpy.flipud(Z)
     extent=(raster.llcorner[0],raster.llcorner[0]+raster.extent[0],raster.llcorner[1],raster.llcorner[1]+raster.extent[1])
     C=pylab.contour(Z,extent=extent,**kwargs)
@@ -180,7 +180,7 @@ def contour_raster(raster,**kwargs):
     pylab.axis('scaled')
 
 def contourf_raster(raster,**kwargs):
-    Z=raster.as_array()
+    Z=raster.asarray()
     Z=numpy.flipud(Z)
     extent=(raster.llcorner[0],raster.llcorner[0]+raster.extent[0],raster.llcorner[1],raster.llcorner[1]+raster.extent[1])
     C=pylab.contourf(Z,extent=extent,**kwargs)

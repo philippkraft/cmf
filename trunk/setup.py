@@ -37,6 +37,7 @@ boost_path = r"..\boost_1_41_0" if msvc else ""
 # No user action required beyond this point
 import os
 import datetime
+import shutil
 from distutils.core import setup,Extension
 if "swig" in sys.argv:
     #os.chdir("cmf/cmf_core_src")
@@ -115,7 +116,7 @@ if __name__=='__main__':
           py_modules=py, 
           requires=['shapely (>=1.0)'],author=author,
           url=url,author_email=author_email)
-    
+    if msvc: shutil.copy('build/lib.win32-2.6/cmf/raster/_raster.pyd','cmf/raster/')
     #setup(name='cmf_setups',version='0.1',license='GPL',
     #      py_modules=['cmf_setups.'+f[:-3] for f in os.listdir('cmf_setups') if f.endswith('.py')])
     print "build ok"
