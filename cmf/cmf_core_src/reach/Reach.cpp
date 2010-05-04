@@ -130,10 +130,7 @@ Reach::ptr Reach::get_upstream( int index ) const
 
 void Reach::connect_to_surfacewater( cmf::upslope::Cell* cell, real width,bool diffusive )
 {
-	double 
-		outer_distance = cell->get_position().distanceTo(Location),
-		cell_radius = sqrt(cell->get_area())/cmf::geometry::PI,
-		distance = std::min(outer_distance,cell_radius/2);
+	double distance = distance_to_cell(cell);
 	if (diffusive)
 		new Manning_Diffusive(weak_this.lock(),cell->get_surfacewater(),RectangularReach(distance,width));
 	else
@@ -169,6 +166,27 @@ Reach::ptr Reach::create( const cmf::project& project,const IChannel& shape, boo
 	R->weak_this = R;
 	return R;
 }
+
+real cmf::river::Reach::get_length() const
+{
+	return get_height_function().get_length();
+}
+
+double cmf::river::Reach::distance_to_cell( cmf::upslope::Cell* cell ) const
+{
+	double 
+		outer_distance = cell->get_position().distanceTo(Location),
+		cell_radius = sqrt(cell->get_area())/cmf::geometry::PI,
+		distance = std::max(outer_distance,cell_radius/2);
+	return distance;
+
+}
+Reach::Reach( const cmf::project& _project,const IChannel& shape, bool diffusive/*=false*/ ) 
+: OpenWaterStorage(_project,shape), m_diffusive(diffusive), m_shape(shape)
+{
+
+}
+
 /************************************************************************/
 /* Reach Iterator                                                       */
 /************************************************************************/
@@ -218,13 +236,3 @@ double ReachIterator::position() const
 	return current.second;
 }
 
-real cmf::river::Reach::get_length() const
-{
-	return get_height_function().get_length();
-}
-
-Reach::Reach( const cmf::project& _project,const IChannel& shape, bool diffusive/*=false*/ ) 
-: OpenWaterStorage(_project,shape), m_diffusive(diffusive), m_shape(shape)
-{
-
-}

@@ -20,7 +20,7 @@
 #include "../upslope/cell.h"
 #include "../upslope/Topology.h"
 real cmf::river::Manning::calc_q( cmf::math::Time t )
-{
+{ 
 	OpenWaterStorage::ptr ows1=w1.lock(),ows2=w2.lock();
 	real 
 		// Distance between source and target

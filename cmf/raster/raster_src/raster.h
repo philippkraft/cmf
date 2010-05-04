@@ -499,49 +499,49 @@ public:
 			return *this;
 	}
 
-	Raster<_T> operator*(_T scalar)
+	Raster<_T> operator*(_T scalar) const
 	{
 		Raster<_T> res(*this);
 		res*=scalar;
 		return res;
 	}
-	Raster<_T> operator+(_T scalar)
+	Raster<_T> operator+(_T scalar) const
 	{
 		Raster<_T> res(*this);
 		res+=scalar;
 		return res;
 	}
-	Raster<_T> operator-(_T scalar)
+	Raster<_T> operator-(_T scalar) const
 	{
 		Raster<_T> res(*this);
 		res+=scalar;
 		return res;
 	}
-	Raster<_T> operator/(_T scalar)
+	Raster<_T> operator/(_T scalar) const
 	{
 		Raster<_T> res(*this);
 		res/=scalar;
 		return res;
 	}
-	Raster<_T> operator*(const Raster<_T> & other)
+	Raster<_T> operator*(const Raster<_T> & other) const
 	{
 		Raster<_T> res(*this);
 		res*=other;
 		return res;
 	}
-	Raster<_T> operator+(const Raster<_T> & other)
+	Raster<_T> operator+(const Raster<_T> & other) const
 	{
 		Raster<_T> res(*this);
 		res+=other;
 		return res;
 	}
-	Raster<_T> operator-(const Raster<_T> & other)
+	Raster<_T> operator-(const Raster<_T> & other) const
 	{
 		Raster<_T> res(*this);
 		res-=other;
 		return res;
 	}
-	Raster<_T> operator/(const Raster<_T> & other)
+	Raster<_T> operator/(const Raster<_T> & other) const
 	{
 		Raster<_T> res(*this);
 		res/=other;
@@ -559,9 +559,12 @@ public:
 	{	}
 	/// Copy constructor
 	Raster(const Raster<_T>& R) 
-		: 
-	m_Header(R.ColumnCount(),R.RowCount(),R.Xllcorner(),R.Yllcorner(),R.XCellsize(),R.YCellsize(),R.NoData()),
-		m_data(R.m_data),m_statistic_actual(false),m_statistic()
+		:	m_Header(R.ColumnCount(),R.RowCount(),R.Xllcorner(),R.Yllcorner(),
+					 R.XCellsize(),R.YCellsize(),R.NoData()
+					),
+			m_data(R.m_data),
+			m_statistic_actual(false),
+			m_statistic()
 	{ }
 	/// Copy constructor, creates an empty raster dataset with the same spatial properties like the input raster
 	Raster(const Raster<_T>& R,_T FixedValue) 
@@ -926,11 +929,40 @@ public:
 		}
 		return buffer.str();
 	}
-};
-/* RasterTemplate_h__ */
+};template<typename _T>
+Raster<_T> operator -(const _T& left,const Raster<_T>& right) {
+	Raster<_T> res(right);
+	res *= -1;
+	res += left;
+	return res;
+}
+template<typename _T>
+Raster<_T> operator +(const _T& left, const Raster<_T>& right) {
+	return right + left;
+}
+template<typename _T>
+Raster<_T> operator *(const _T& left, const Raster<_T>& right) {
+	return right * left;
+}
+template<typename _T>
+Raster<_T> operator /(const _T& left,const Raster<_T>& right) {
+	Raster<_T> res(right,right.NoData());
+	#pragma omp parallel for
+	for (int r = 0; r < right.RowCount() ; r++) {
+		for (int c = 0; c < right.ColumnCount() ; c++) {
+			if (right.HasData(c,r))
+				res.SetData(c,r,left/right.GetData(c,r));
+		}
+	}
+	return res;
+}
 
-#endif 
+
+#endif /* RasterTemplate_h__ */
+
+ 
 
 #ifdef SWIG
 	%echo "Raster ok"
 #endif
+
