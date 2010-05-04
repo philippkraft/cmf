@@ -92,6 +92,10 @@ namespace cmf {
 			/// @param distance The average distance from cell to this reach
 			/// @param width The flow width from cell to this reach
 			void connect_to_surfacewater( cmf::upslope::Cell* cell, real width,bool diffusive );
+			/// Returns the distance (d) for connections between this reach and a cell. 
+			/// If the effective inner cell distance (defined as \f$ R_{Cell} = 0.5\frac{\sqrt{A}}{\pi}\f$) is smaller 
+			/// than the distance between the center points, the cell radius is returned
+			double distance_to_cell(cmf::upslope::Cell* cell) const;
 			/// Returns if flow is calculated using a diffusive wave model
 			bool get_diffusive() const {return m_diffusive;}
 			/// Sets all Manning kind connections to either diffusive or kinematic

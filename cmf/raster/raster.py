@@ -166,8 +166,63 @@ double_raster.focal_mean_difference = new_instancemethod(_raster.double_raster_f
 double_raster.clone = new_instancemethod(_raster.double_raster_clone,None,double_raster)
 double_raster.GetData = new_instancemethod(_raster.double_raster_GetData,None,double_raster)
 double_raster.ToBuffer = new_instancemethod(_raster.double_raster_ToBuffer,None,double_raster)
+double_raster.__radd__ = new_instancemethod(_raster.double_raster___radd__,None,double_raster)
+double_raster.__rsub__ = new_instancemethod(_raster.double_raster___rsub__,None,double_raster)
+double_raster.__rmul__ = new_instancemethod(_raster.double_raster___rmul__,None,double_raster)
+double_raster.__rdiv__ = new_instancemethod(_raster.double_raster___rdiv__,None,double_raster)
 double_raster_swigregister = _raster.double_raster_swigregister
 double_raster_swigregister(double_raster)
+
+class float_raster(object):
+    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __repr__ = _swig_repr
+    def __init__(self, *args): 
+        _raster.float_raster_swiginit(self,_raster.new_float_raster(*args))
+    __swig_destroy__ = _raster.delete_float_raster
+float_raster.Xllcorner = new_instancemethod(_raster.float_raster_Xllcorner,None,float_raster)
+float_raster.Yllcorner = new_instancemethod(_raster.float_raster_Yllcorner,None,float_raster)
+float_raster.XCellsize = new_instancemethod(_raster.float_raster_XCellsize,None,float_raster)
+float_raster.YCellsize = new_instancemethod(_raster.float_raster_YCellsize,None,float_raster)
+float_raster.ColumnCount = new_instancemethod(_raster.float_raster_ColumnCount,None,float_raster)
+float_raster.RowCount = new_instancemethod(_raster.float_raster_RowCount,None,float_raster)
+float_raster.Width = new_instancemethod(_raster.float_raster_Width,None,float_raster)
+float_raster.Height = new_instancemethod(_raster.float_raster_Height,None,float_raster)
+float_raster.NoData = new_instancemethod(_raster.float_raster_NoData,None,float_raster)
+float_raster.HasData = new_instancemethod(_raster.float_raster_HasData,None,float_raster)
+float_raster.SetData = new_instancemethod(_raster.float_raster_SetData,None,float_raster)
+float_raster.GetXPosition = new_instancemethod(_raster.float_raster_GetXPosition,None,float_raster)
+float_raster.GetYPosition = new_instancemethod(_raster.float_raster_GetYPosition,None,float_raster)
+float_raster.statistics = new_instancemethod(_raster.float_raster_statistics,None,float_raster)
+float_raster.histogram = new_instancemethod(_raster.float_raster_histogram,None,float_raster)
+float_raster.__imul__ = new_instancemethod(_raster.float_raster___imul__,None,float_raster)
+float_raster.__iadd__ = new_instancemethod(_raster.float_raster___iadd__,None,float_raster)
+float_raster.__isub__ = new_instancemethod(_raster.float_raster___isub__,None,float_raster)
+float_raster.__idiv__ = new_instancemethod(_raster.float_raster___idiv__,None,float_raster)
+float_raster.__mul__ = new_instancemethod(_raster.float_raster___mul__,None,float_raster)
+float_raster.__add__ = new_instancemethod(_raster.float_raster___add__,None,float_raster)
+float_raster.__sub__ = new_instancemethod(_raster.float_raster___sub__,None,float_raster)
+float_raster.__div__ = new_instancemethod(_raster.float_raster___div__,None,float_raster)
+float_raster.WriteToASCFile = new_instancemethod(_raster.float_raster_WriteToASCFile,None,float_raster)
+float_raster.WriteToBinary = new_instancemethod(_raster.float_raster_WriteToBinary,None,float_raster)
+float_raster.ToInt = new_instancemethod(_raster.float_raster_ToInt,None,float_raster)
+float_raster.ToFloat = new_instancemethod(_raster.float_raster_ToFloat,None,float_raster)
+float_raster.ToDouble = new_instancemethod(_raster.float_raster_ToDouble,None,float_raster)
+float_raster.adress = new_instancemethod(_raster.float_raster_adress,None,float_raster)
+float_raster.focal_min = new_instancemethod(_raster.float_raster_focal_min,None,float_raster)
+float_raster.focal_max = new_instancemethod(_raster.float_raster_focal_max,None,float_raster)
+float_raster.focal_mean = new_instancemethod(_raster.float_raster_focal_mean,None,float_raster)
+float_raster.focal_stdev = new_instancemethod(_raster.float_raster_focal_stdev,None,float_raster)
+float_raster.focal_majority = new_instancemethod(_raster.float_raster_focal_majority,None,float_raster)
+float_raster.focal_mean_difference = new_instancemethod(_raster.float_raster_focal_mean_difference,None,float_raster)
+float_raster.clone = new_instancemethod(_raster.float_raster_clone,None,float_raster)
+float_raster.GetData = new_instancemethod(_raster.float_raster_GetData,None,float_raster)
+float_raster.ToBuffer = new_instancemethod(_raster.float_raster_ToBuffer,None,float_raster)
+float_raster.__radd__ = new_instancemethod(_raster.float_raster___radd__,None,float_raster)
+float_raster.__rsub__ = new_instancemethod(_raster.float_raster___rsub__,None,float_raster)
+float_raster.__rmul__ = new_instancemethod(_raster.float_raster___rmul__,None,float_raster)
+float_raster.__rdiv__ = new_instancemethod(_raster.float_raster___rdiv__,None,float_raster)
+float_raster_swigregister = _raster.float_raster_swigregister
+float_raster_swigregister(float_raster)
 
 class int_raster(object):
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
@@ -213,55 +268,12 @@ int_raster.focal_mean_difference = new_instancemethod(_raster.int_raster_focal_m
 int_raster.clone = new_instancemethod(_raster.int_raster_clone,None,int_raster)
 int_raster.GetData = new_instancemethod(_raster.int_raster_GetData,None,int_raster)
 int_raster.ToBuffer = new_instancemethod(_raster.int_raster_ToBuffer,None,int_raster)
+int_raster.__radd__ = new_instancemethod(_raster.int_raster___radd__,None,int_raster)
+int_raster.__rsub__ = new_instancemethod(_raster.int_raster___rsub__,None,int_raster)
+int_raster.__rmul__ = new_instancemethod(_raster.int_raster___rmul__,None,int_raster)
+int_raster.__rdiv__ = new_instancemethod(_raster.int_raster___rdiv__,None,int_raster)
 int_raster_swigregister = _raster.int_raster_swigregister
 int_raster_swigregister(int_raster)
-
-class single_raster(object):
-    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
-    __repr__ = _swig_repr
-    def __init__(self, *args): 
-        _raster.single_raster_swiginit(self,_raster.new_single_raster(*args))
-    __swig_destroy__ = _raster.delete_single_raster
-single_raster.Xllcorner = new_instancemethod(_raster.single_raster_Xllcorner,None,single_raster)
-single_raster.Yllcorner = new_instancemethod(_raster.single_raster_Yllcorner,None,single_raster)
-single_raster.XCellsize = new_instancemethod(_raster.single_raster_XCellsize,None,single_raster)
-single_raster.YCellsize = new_instancemethod(_raster.single_raster_YCellsize,None,single_raster)
-single_raster.ColumnCount = new_instancemethod(_raster.single_raster_ColumnCount,None,single_raster)
-single_raster.RowCount = new_instancemethod(_raster.single_raster_RowCount,None,single_raster)
-single_raster.Width = new_instancemethod(_raster.single_raster_Width,None,single_raster)
-single_raster.Height = new_instancemethod(_raster.single_raster_Height,None,single_raster)
-single_raster.NoData = new_instancemethod(_raster.single_raster_NoData,None,single_raster)
-single_raster.HasData = new_instancemethod(_raster.single_raster_HasData,None,single_raster)
-single_raster.SetData = new_instancemethod(_raster.single_raster_SetData,None,single_raster)
-single_raster.GetXPosition = new_instancemethod(_raster.single_raster_GetXPosition,None,single_raster)
-single_raster.GetYPosition = new_instancemethod(_raster.single_raster_GetYPosition,None,single_raster)
-single_raster.statistics = new_instancemethod(_raster.single_raster_statistics,None,single_raster)
-single_raster.histogram = new_instancemethod(_raster.single_raster_histogram,None,single_raster)
-single_raster.__imul__ = new_instancemethod(_raster.single_raster___imul__,None,single_raster)
-single_raster.__iadd__ = new_instancemethod(_raster.single_raster___iadd__,None,single_raster)
-single_raster.__isub__ = new_instancemethod(_raster.single_raster___isub__,None,single_raster)
-single_raster.__idiv__ = new_instancemethod(_raster.single_raster___idiv__,None,single_raster)
-single_raster.__mul__ = new_instancemethod(_raster.single_raster___mul__,None,single_raster)
-single_raster.__add__ = new_instancemethod(_raster.single_raster___add__,None,single_raster)
-single_raster.__sub__ = new_instancemethod(_raster.single_raster___sub__,None,single_raster)
-single_raster.__div__ = new_instancemethod(_raster.single_raster___div__,None,single_raster)
-single_raster.WriteToASCFile = new_instancemethod(_raster.single_raster_WriteToASCFile,None,single_raster)
-single_raster.WriteToBinary = new_instancemethod(_raster.single_raster_WriteToBinary,None,single_raster)
-single_raster.ToInt = new_instancemethod(_raster.single_raster_ToInt,None,single_raster)
-single_raster.ToFloat = new_instancemethod(_raster.single_raster_ToFloat,None,single_raster)
-single_raster.ToDouble = new_instancemethod(_raster.single_raster_ToDouble,None,single_raster)
-single_raster.adress = new_instancemethod(_raster.single_raster_adress,None,single_raster)
-single_raster.focal_min = new_instancemethod(_raster.single_raster_focal_min,None,single_raster)
-single_raster.focal_max = new_instancemethod(_raster.single_raster_focal_max,None,single_raster)
-single_raster.focal_mean = new_instancemethod(_raster.single_raster_focal_mean,None,single_raster)
-single_raster.focal_stdev = new_instancemethod(_raster.single_raster_focal_stdev,None,single_raster)
-single_raster.focal_majority = new_instancemethod(_raster.single_raster_focal_majority,None,single_raster)
-single_raster.focal_mean_difference = new_instancemethod(_raster.single_raster_focal_mean_difference,None,single_raster)
-single_raster.clone = new_instancemethod(_raster.single_raster_clone,None,single_raster)
-single_raster.GetData = new_instancemethod(_raster.single_raster_GetData,None,single_raster)
-single_raster.ToBuffer = new_instancemethod(_raster.single_raster_ToBuffer,None,single_raster)
-single_raster_swigregister = _raster.single_raster_swigregister
-single_raster_swigregister(single_raster)
 
 try:
     import numpy
@@ -322,8 +334,7 @@ class Raster:
     @property
     def extent(self):
         "The extent of the raster (width,height) in map coordinates"
-        return (self.cellsize[0]*self.shape[1],
-                self.cellsize[1]*self.shape[0])
+        return self.llcorner[0],self.llcorner[0]+self.shape[1]*self.cellsize[0],self.llcorner[1],self.llcorner[1]+self.shape[0]*self.cellsize[1]
     def neighbors(self,x,y):
         """ Returns a list of the neighbors to the given position
         x,y are intepreted as real coordinates, if they are floating point numbers,
@@ -537,21 +548,22 @@ class Raster:
                raise TypeError("Can't add a %s to this raster %s" % (typename(other),typename(self.raster)))
     def __rsub__(self,other):
         if type(other) is type(self):
-            return Raster(dtype=self.dtype,raster=self.raster-other.raster)
+            return Raster(dtype=self.dtype,raster=other.raster - self.raster)
         else:
             try:
-               return Raster(dtype=self.dtype,raster=self.raster-other)
+               return Raster(dtype=self.dtype,raster=other - self.raster)
             except TypeError:
                raise TypeError("Can't add a %s to this raster %s" % (typename(other),typename(self.raster)))
     def __rdiv__(self,other):
         if type(other) is type(self):
-            return Raster(dtype=self.dtype,raster=self.raster/other.raster)
+            return Raster(dtype=self.dtype,raster=other.raster/self.raster)
         else:
             try:
-               return Raster(dtype=self.dtype,raster=self.raster/other)
+               return Raster(dtype=self.dtype,raster=other/self.raster)
             except TypeError:
                raise TypeError("Can't add a %s to this raster %s" % (typename(other),typename(self.raster)))
-    
+    def __neg__(self):
+        return Raster(dtype=self.dtype,raster= self.raster * (-1))
     @property
     def __array_interface__(self):
         "Returns the array interface for the raster."
@@ -561,26 +573,29 @@ class Raster:
                     typestr= types[self.dtype],
                     mask   = self.mask,
                    )
-    def as_array(self):
-        if numpy:                
-            mres=numpy.ma.array(res,self.nodata)
+    def asarray(self):
+        "Returns a 2D masked array, where nodata areas are masked"
+        try:
+            import numpy.ma
+            mres=numpy.ma.array(numpy.asarray(self),mask=1-numpy.asarray(self.mask,dtype=numpy.bool),copy=False)
             return mres
-        else:
-            raise NotImplementedError("as_array needs an installation of numpy to work!")
+        except ImportError:
+            raise NotImplementedError("asarray needs an installation of numpy to work!")
     def draw(self,cmap=None,vmin=None,vmax=None,hold=1,interpolation='nearest',**kwargs):
-        if pyplot:
+        try:
+            import matplotlib.pyplot as pyplot
             if cmap is None:
                 cmap=pyplot.cm.jet
             if vmin is None:
                 vmin=self.statistics.min
             if vmax is None:
                 vmax=self.statistics.max
-            pyplot.imshow(self.as_array(),cmap,interpolation=interpolation,
+            pyplot.imshow(self.asarray(),cmap,interpolation=interpolation,
                           aspect='equal',vmin=vmin,vmax=vmax,hold=hold,
-                          extent=(self.llcorner[0],self.llcorner[0]+self.extent[0],self.llcorner[1],self.llcorner[1]+self.extent[1]),
+                          extent=self.extent,
                           **kwargs)
-        else:
-            raise NotImplementedError("draw needs an installation of matplotlib to work")
+        except ImportError:
+            raise NotImplementedError("Raster.draw needs an installation of matplotlib to work")
     def __repr__(self):
         stat=self.statistics
         fmt="Raster<%s>: n=%i,min=%g,mean=%g,max=%g,stdev=%g,row,col=%s,cellsize=(%g,%g)"
