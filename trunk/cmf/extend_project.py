@@ -33,9 +33,13 @@ class profilelayer:
         return self.lower_boundary-self.upper_boundary
     def __repr__(self):
         return "layer %g - %g m: %s" % (self.upper_boundary,self.lower_boundary,self.retentioncurve)
+
 class profile:
-    def __init__(self):
+    def __init__(self, retention_curves=[], depth=[]):
         self.layers=[]
+        if depth and retention_curves:
+            for i,d in enumerate(depth):
+                self.append(d,retention_curves[min(i,len(retention_curves)-1)])                                          
     def append(self,lower_boundary,r_curve):
         if len(self): self.layers[-1].islast=False
         pl=profilelayer(self.layers[-1].lower_boundary if len(self) else 0.0,lower_boundary,r_curve)
@@ -47,6 +51,9 @@ class profile:
         return len(self.layers)
     def __getitem__(self,index):
         return self.layers[index]
+    def __call__(self,x,y,z):
+        return self
+
 def add_layers_to_cells(cells,profile_map,soil_depth_map=None,min_thickness=0.05):
     """ Adds layers from a soil map containing soil profiles to a sequence of cells
         cells          : A sequence or iterator of cells (can be a cmf.project)

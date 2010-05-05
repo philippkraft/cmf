@@ -1,30 +1,6 @@
 
 // File: index.xml
 
-// File: struct___dls_mat.xml
-%feature("docstring") _DlsMat "";
-
-
-// File: struct__generic___n___vector.xml
-%feature("docstring") _generic_N_Vector "";
-
-
-// File: struct__generic___n___vector___ops.xml
-%feature("docstring") _generic_N_Vector_Ops "";
-
-
-// File: struct___n___vector_content___parallel.xml
-%feature("docstring") _N_VectorContent_Parallel "";
-
-
-// File: struct___n___vector_content___serial.xml
-%feature("docstring") _N_VectorContent_Serial "";
-
-
-// File: struct___spgmr_mem_rec.xml
-%feature("docstring") _SpgmrMemRec "";
-
-
 // File: classcmf_1_1math_1_1_b_d_f2.xml
 %feature("docstring") cmf::math::BDF2 "
 
@@ -1039,22 +1015,6 @@ Creates a new instannce of the ConstantMeteorology with the same
 weather. ";
 
 
-// File: struct_c_v_band_prec_data_rec.xml
-%feature("docstring") CVBandPrecDataRec "";
-
-
-// File: struct_c_v_b_b_d_prec_data_rec.xml
-%feature("docstring") CVBBDPrecDataRec "";
-
-
-// File: struct_c_v_diag_mem_rec.xml
-%feature("docstring") CVDiagMemRec "";
-
-
-// File: struct_c_v_dls_mem_rec.xml
-%feature("docstring") CVDlsMemRec "";
-
-
 // File: classcmf_1_1math_1_1_c_vode_integrator.xml
 %feature("docstring") cmf::math::CVodeIntegrator "
 
@@ -1180,8 +1140,7 @@ problem and MaxTime ";
 %feature("docstring")  cmf::math::CVodeIntegrator::Reset "virtual
 void Reset() ";
 
-%feature("docstring")  cmf::math::CVodeIntegrator::CVodeIntegrator "CVodeIntegrator(real epsilon=1e-9, cmf::math::Time
-tStepMin=Time::Milliseconds(50))
+%feature("docstring")  cmf::math::CVodeIntegrator::CVodeIntegrator "CVodeIntegrator(real epsilon=1e-9, char _preconditioner='R')
 
 Create a new CVODE integrator
 
@@ -1193,7 +1152,7 @@ epsilon:  relative and absolute error tolerance
 tStepMin:  Minimal timestep ";
 
 %feature("docstring")  cmf::math::CVodeIntegrator::CVodeIntegrator "CVodeIntegrator(cmf::math::StateVariableOwner &states, real
-epsilon=1e-9, cmf::math::Time tStepMin=Time::Milliseconds(50)) ";
+epsilon=1e-9, char _preconditioner='R') ";
 
 %feature("docstring")  cmf::math::CVodeIntegrator::CVodeIntegrator "CVodeIntegrator(const CVodeIntegrator &templ)
 
@@ -1221,14 +1180,6 @@ Simplifies the assessment of state variables. ";
 state(int position, real newState)
 
 Simplifies the assessment of state variables. ";
-
-
-// File: struct_c_vode_mem_rec.xml
-%feature("docstring") CVodeMemRec "";
-
-
-// File: struct_c_v_spils_mem_rec.xml
-%feature("docstring") CVSpilsMemRec "";
 
 
 // File: classcmf_1_1upslope_1_1connections_1_1_darcy.xml
@@ -1683,10 +1634,6 @@ Simplifies the assessment of state variables. ";
 state(int position, real newState)
 
 Simplifies the assessment of state variables. ";
-
-
-// File: struct_f_c_v_user_data.xml
-%feature("docstring") FCVUserData "";
 
 
 // File: classcmf_1_1water_1_1flux__connection.xml
@@ -2945,7 +2892,11 @@ Locatable. ";
 
 
 // File: classcmf_1_1geometry_1_1_location.xml
-%feature("docstring") cmf::geometry::Location "";
+%feature("docstring") cmf::geometry::Location "
+
+A minimal implementation of Locatable.
+
+C++ includes: geometry.h ";
 
 %feature("docstring")  cmf::geometry::Location::get_position "cmf::geometry::point get_position() const
 
@@ -4774,7 +4725,11 @@ short_string() const ";
 
 
 // File: classcmf_1_1river_1_1_pipe_reach.xml
-%feature("docstring") cmf::river::PipeReach "";
+%feature("docstring") cmf::river::PipeReach "
+
+Describes the geometry of a closed pipe.
+
+C++ includes: ReachType.h ";
 
 %feature("docstring")  cmf::river::PipeReach::get_length "double
 get_length() const
@@ -4906,7 +4861,11 @@ x-Axis in degrees. ";
 
 
 // File: classcmf_1_1geometry_1_1point__vector.xml
-%feature("docstring") cmf::geometry::point_vector "";
+%feature("docstring") cmf::geometry::point_vector "
+
+Holds three arrays x,y and z for fast access of point coordinates.
+
+C++ includes: geometry.h ";
 
 %feature("docstring")  cmf::geometry::point_vector::point_vector "point_vector(int size) ";
 
@@ -5125,12 +5084,18 @@ be here!
 C++ includes: project.h ";
 
 %feature("docstring")  cmf::project::get_cells "const
-upslope::cell_vector& get_cells() const ";
+upslope::cell_vector& get_cells() const
+
+Returns the vector of cells in the project. ";
 
 %feature("docstring")  cmf::project::get_cell "upslope::Cell&
-get_cell(int index) ";
+get_cell(int index)
 
-%feature("docstring")  cmf::project::size "int size() const ";
+Returns the reference to the cell at index in the project. ";
+
+%feature("docstring")  cmf::project::size "int size() const
+
+The number of cells in the project. ";
 
 %feature("docstring")  cmf::project::project "project(std::string
 solute_names=\"\")
@@ -5150,12 +5115,18 @@ x, double y, double z)
 Creates a new Drichelet boundary condition and adds it to the list of
 outlets The potential of the Drichelet boundary equals p.z ";
 
-%feature("docstring")  cmf::project::get_reach "cmf::river::Reach::ptr get_reach(int index) ";
+%feature("docstring")  cmf::project::get_reach "cmf::river::Reach::ptr get_reach(int index)
+
+Returns the reach at index. ";
 
 %feature("docstring")  cmf::project::reach_count "int reach_count()
-const ";
+const
 
-%feature("docstring")  cmf::project::get_storages "cmf::water::node_list get_storages() ";
+Returns the number of reaches in this project. ";
+
+%feature("docstring")  cmf::project::get_storages "cmf::water::node_list get_storages()
+
+Returns any storages of this project. ";
 
 %feature("docstring")  cmf::project::NewReach "cmf::river::Reach::ptr
 NewReach(double x, double y, double z, double length, char Type='T',
@@ -6843,7 +6814,14 @@ begin, cmf::math::Time step) ";
 
 
 // File: classcmf_1_1math_1_1_solute_water_integrator.xml
-%feature("docstring") cmf::math::SoluteWaterIntegrator "";
+%feature("docstring") cmf::math::SoluteWaterIntegrator "
+
+A SoluteWaterIntegrator implements the cmf::math::Integrator
+interface, but consists of two independent ODE-solvers. Added
+statevariables are sorted by waterstorages and solute storages and
+assigned to the correct solver.
+
+C++ includes: WaterSoluteIntegrator.h ";
 
 /*  The state variables to integrate  */
 
@@ -6989,18 +6967,8 @@ state(int position, real newState)
 Simplifies the assessment of state variables. ";
 
 
-// File: struct_spbcg_mem_rec.xml
-%feature("docstring") SpbcgMemRec "";
-
-
-// File: struct_sptfqmr_mem_rec.xml
-%feature("docstring") SptfqmrMemRec "";
-
-
 // File: classcmf_1_1math_1_1_state_variable.xml
 %feature("docstring") cmf::math::StateVariable "
-
-Abstract class state variable.
 
 Abstract class state variable
 
@@ -8776,1127 +8744,6 @@ real x_half) ";
 // File: statevariable_8h.xml
 
 
-// File: cvode_8h.xml
-%feature("docstring")  CVodeCreate "SUNDIALS_EXPORT void*
-CVodeCreate(int lmm, int iter) ";
-
-%feature("docstring")  CVodeSetErrHandlerFn "SUNDIALS_EXPORT int
-CVodeSetErrHandlerFn(void *cvode_mem, CVErrHandlerFn ehfun, void
-*eh_data) ";
-
-%feature("docstring")  CVodeSetErrFile "SUNDIALS_EXPORT int
-CVodeSetErrFile(void *cvode_mem, FILE *errfp) ";
-
-%feature("docstring")  CVodeSetUserData "SUNDIALS_EXPORT int
-CVodeSetUserData(void *cvode_mem, void *user_data) ";
-
-%feature("docstring")  CVodeSetMaxOrd "SUNDIALS_EXPORT int
-CVodeSetMaxOrd(void *cvode_mem, int maxord) ";
-
-%feature("docstring")  CVodeSetMaxNumSteps "SUNDIALS_EXPORT int
-CVodeSetMaxNumSteps(void *cvode_mem, long int mxsteps) ";
-
-%feature("docstring")  CVodeSetMaxHnilWarns "SUNDIALS_EXPORT int
-CVodeSetMaxHnilWarns(void *cvode_mem, int mxhnil) ";
-
-%feature("docstring")  CVodeSetStabLimDet "SUNDIALS_EXPORT int
-CVodeSetStabLimDet(void *cvode_mem, booleantype stldet) ";
-
-%feature("docstring")  CVodeSetInitStep "SUNDIALS_EXPORT int
-CVodeSetInitStep(void *cvode_mem, realtype hin) ";
-
-%feature("docstring")  CVodeSetMinStep "SUNDIALS_EXPORT int
-CVodeSetMinStep(void *cvode_mem, realtype hmin) ";
-
-%feature("docstring")  CVodeSetMaxStep "SUNDIALS_EXPORT int
-CVodeSetMaxStep(void *cvode_mem, realtype hmax) ";
-
-%feature("docstring")  CVodeSetStopTime "SUNDIALS_EXPORT int
-CVodeSetStopTime(void *cvode_mem, realtype tstop) ";
-
-%feature("docstring")  CVodeSetMaxErrTestFails "SUNDIALS_EXPORT int
-CVodeSetMaxErrTestFails(void *cvode_mem, int maxnef) ";
-
-%feature("docstring")  CVodeSetMaxNonlinIters "SUNDIALS_EXPORT int
-CVodeSetMaxNonlinIters(void *cvode_mem, int maxcor) ";
-
-%feature("docstring")  CVodeSetMaxConvFails "SUNDIALS_EXPORT int
-CVodeSetMaxConvFails(void *cvode_mem, int maxncf) ";
-
-%feature("docstring")  CVodeSetNonlinConvCoef "SUNDIALS_EXPORT int
-CVodeSetNonlinConvCoef(void *cvode_mem, realtype nlscoef) ";
-
-%feature("docstring")  CVodeSetIterType "SUNDIALS_EXPORT int
-CVodeSetIterType(void *cvode_mem, int iter) ";
-
-%feature("docstring")  CVodeSetRootDirection "SUNDIALS_EXPORT int
-CVodeSetRootDirection(void *cvode_mem, int *rootdir) ";
-
-%feature("docstring")  CVodeSetNoInactiveRootWarn "SUNDIALS_EXPORT
-int CVodeSetNoInactiveRootWarn(void *cvode_mem) ";
-
-%feature("docstring")  CVodeInit "SUNDIALS_EXPORT int CVodeInit(void
-*cvode_mem, CVRhsFn f, realtype t0, N_Vector y0) ";
-
-%feature("docstring")  CVodeReInit "SUNDIALS_EXPORT int
-CVodeReInit(void *cvode_mem, realtype t0, N_Vector y0) ";
-
-%feature("docstring")  CVodeSStolerances "SUNDIALS_EXPORT int
-CVodeSStolerances(void *cvode_mem, realtype reltol, realtype abstol)
-";
-
-%feature("docstring")  CVodeSVtolerances "SUNDIALS_EXPORT int
-CVodeSVtolerances(void *cvode_mem, realtype reltol, N_Vector abstol)
-";
-
-%feature("docstring")  CVodeWFtolerances "SUNDIALS_EXPORT int
-CVodeWFtolerances(void *cvode_mem, CVEwtFn efun) ";
-
-%feature("docstring")  CVodeRootInit "SUNDIALS_EXPORT int
-CVodeRootInit(void *cvode_mem, int nrtfn, CVRootFn g) ";
-
-%feature("docstring")  CVode "SUNDIALS_EXPORT int CVode(void
-*cvode_mem, realtype tout, N_Vector yout, realtype *tret, int itask)
-";
-
-%feature("docstring")  CVodeGetDky "SUNDIALS_EXPORT int
-CVodeGetDky(void *cvode_mem, realtype t, int k, N_Vector dky) ";
-
-%feature("docstring")  CVodeGetWorkSpace "SUNDIALS_EXPORT int
-CVodeGetWorkSpace(void *cvode_mem, long int *lenrw, long int *leniw)
-";
-
-%feature("docstring")  CVodeGetNumSteps "SUNDIALS_EXPORT int
-CVodeGetNumSteps(void *cvode_mem, long int *nsteps) ";
-
-%feature("docstring")  CVodeGetNumRhsEvals "SUNDIALS_EXPORT int
-CVodeGetNumRhsEvals(void *cvode_mem, long int *nfevals) ";
-
-%feature("docstring")  CVodeGetNumLinSolvSetups "SUNDIALS_EXPORT int
-CVodeGetNumLinSolvSetups(void *cvode_mem, long int *nlinsetups) ";
-
-%feature("docstring")  CVodeGetNumErrTestFails "SUNDIALS_EXPORT int
-CVodeGetNumErrTestFails(void *cvode_mem, long int *netfails) ";
-
-%feature("docstring")  CVodeGetLastOrder "SUNDIALS_EXPORT int
-CVodeGetLastOrder(void *cvode_mem, int *qlast) ";
-
-%feature("docstring")  CVodeGetCurrentOrder "SUNDIALS_EXPORT int
-CVodeGetCurrentOrder(void *cvode_mem, int *qcur) ";
-
-%feature("docstring")  CVodeGetNumStabLimOrderReds "SUNDIALS_EXPORT
-int CVodeGetNumStabLimOrderReds(void *cvode_mem, long int *nslred) ";
-
-%feature("docstring")  CVodeGetActualInitStep "SUNDIALS_EXPORT int
-CVodeGetActualInitStep(void *cvode_mem, realtype *hinused) ";
-
-%feature("docstring")  CVodeGetLastStep "SUNDIALS_EXPORT int
-CVodeGetLastStep(void *cvode_mem, realtype *hlast) ";
-
-%feature("docstring")  CVodeGetCurrentStep "SUNDIALS_EXPORT int
-CVodeGetCurrentStep(void *cvode_mem, realtype *hcur) ";
-
-%feature("docstring")  CVodeGetCurrentTime "SUNDIALS_EXPORT int
-CVodeGetCurrentTime(void *cvode_mem, realtype *tcur) ";
-
-%feature("docstring")  CVodeGetTolScaleFactor "SUNDIALS_EXPORT int
-CVodeGetTolScaleFactor(void *cvode_mem, realtype *tolsfac) ";
-
-%feature("docstring")  CVodeGetErrWeights "SUNDIALS_EXPORT int
-CVodeGetErrWeights(void *cvode_mem, N_Vector eweight) ";
-
-%feature("docstring")  CVodeGetEstLocalErrors "SUNDIALS_EXPORT int
-CVodeGetEstLocalErrors(void *cvode_mem, N_Vector ele) ";
-
-%feature("docstring")  CVodeGetNumGEvals "SUNDIALS_EXPORT int
-CVodeGetNumGEvals(void *cvode_mem, long int *ngevals) ";
-
-%feature("docstring")  CVodeGetRootInfo "SUNDIALS_EXPORT int
-CVodeGetRootInfo(void *cvode_mem, int *rootsfound) ";
-
-%feature("docstring")  CVodeGetIntegratorStats "SUNDIALS_EXPORT int
-CVodeGetIntegratorStats(void *cvode_mem, long int *nsteps, long int
-*nfevals, long int *nlinsetups, long int *netfails, int *qlast, int
-*qcur, realtype *hinused, realtype *hlast, realtype *hcur, realtype
-*tcur) ";
-
-%feature("docstring")  CVodeGetNumNonlinSolvIters "SUNDIALS_EXPORT
-int CVodeGetNumNonlinSolvIters(void *cvode_mem, long int *nniters) ";
-
-%feature("docstring")  CVodeGetNumNonlinSolvConvFails "SUNDIALS_EXPORT int CVodeGetNumNonlinSolvConvFails(void *cvode_mem,
-long int *nncfails) ";
-
-%feature("docstring")  CVodeGetNonlinSolvStats "SUNDIALS_EXPORT int
-CVodeGetNonlinSolvStats(void *cvode_mem, long int *nniters, long int
-*nncfails) ";
-
-%feature("docstring")  CVodeGetReturnFlagName "SUNDIALS_EXPORT char*
-CVodeGetReturnFlagName(int flag) ";
-
-%feature("docstring")  CVodeFree "SUNDIALS_EXPORT void CVodeFree(void
-**cvode_mem) ";
-
-
-// File: cvode__band_8h.xml
-%feature("docstring")  CVBand "SUNDIALS_EXPORT int CVBand(void
-*cvode_mem, int N, int mupper, int mlower) ";
-
-
-// File: cvode__bandpre_8h.xml
-%feature("docstring")  CVBandPrecInit "SUNDIALS_EXPORT int
-CVBandPrecInit(void *cvode_mem, int N, int mu, int ml) ";
-
-%feature("docstring")  CVBandPrecGetWorkSpace "SUNDIALS_EXPORT int
-CVBandPrecGetWorkSpace(void *cvode_mem, long int *lenrwLS, long int
-*leniwLS) ";
-
-%feature("docstring")  CVBandPrecGetNumRhsEvals "SUNDIALS_EXPORT int
-CVBandPrecGetNumRhsEvals(void *cvode_mem, long int *nfevalsBP) ";
-
-
-// File: cvode__bbdpre_8h.xml
-%feature("docstring")  CVBBDPrecInit "SUNDIALS_EXPORT int
-CVBBDPrecInit(void *cvode_mem, int Nlocal, int mudq, int mldq, int
-mukeep, int mlkeep, realtype dqrely, CVLocalFn gloc, CVCommFn cfn) ";
-
-%feature("docstring")  CVBBDPrecReInit "SUNDIALS_EXPORT int
-CVBBDPrecReInit(void *cvode_mem, int mudq, int mldq, realtype dqrely)
-";
-
-%feature("docstring")  CVBBDPrecGetWorkSpace "SUNDIALS_EXPORT int
-CVBBDPrecGetWorkSpace(void *cvode_mem, long int *lenrwLS, long int
-*leniwLS) ";
-
-%feature("docstring")  CVBBDPrecGetNumGfnEvals "SUNDIALS_EXPORT int
-CVBBDPrecGetNumGfnEvals(void *cvode_mem, long int *ngevalsBBDP) ";
-
-
-// File: cvode__dense_8h.xml
-%feature("docstring")  CVDense "SUNDIALS_EXPORT int CVDense(void
-*cvode_mem, int N) ";
-
-
-// File: cvode__diag_8h.xml
-%feature("docstring")  CVDiag "SUNDIALS_EXPORT int CVDiag(void
-*cvode_mem) ";
-
-%feature("docstring")  CVDiagGetWorkSpace "SUNDIALS_EXPORT int
-CVDiagGetWorkSpace(void *cvode_mem, long int *lenrwLS, long int
-*leniwLS) ";
-
-%feature("docstring")  CVDiagGetNumRhsEvals "SUNDIALS_EXPORT int
-CVDiagGetNumRhsEvals(void *cvode_mem, long int *nfevalsLS) ";
-
-%feature("docstring")  CVDiagGetLastFlag "SUNDIALS_EXPORT int
-CVDiagGetLastFlag(void *cvode_mem, int *flag) ";
-
-%feature("docstring")  CVDiagGetReturnFlagName "SUNDIALS_EXPORT char*
-CVDiagGetReturnFlagName(int flag) ";
-
-
-// File: cvode__direct_8h.xml
-%feature("docstring")  CVDlsSetDenseJacFn "SUNDIALS_EXPORT int
-CVDlsSetDenseJacFn(void *cvode_mem, CVDlsDenseJacFn jac) ";
-
-%feature("docstring")  CVDlsSetBandJacFn "SUNDIALS_EXPORT int
-CVDlsSetBandJacFn(void *cvode_mem, CVDlsBandJacFn jac) ";
-
-%feature("docstring")  CVDlsGetWorkSpace "SUNDIALS_EXPORT int
-CVDlsGetWorkSpace(void *cvode_mem, long int *lenrwLS, long int
-*leniwLS) ";
-
-%feature("docstring")  CVDlsGetNumJacEvals "SUNDIALS_EXPORT int
-CVDlsGetNumJacEvals(void *cvode_mem, long int *njevals) ";
-
-%feature("docstring")  CVDlsGetNumRhsEvals "SUNDIALS_EXPORT int
-CVDlsGetNumRhsEvals(void *cvode_mem, long int *nfevalsLS) ";
-
-%feature("docstring")  CVDlsGetLastFlag "SUNDIALS_EXPORT int
-CVDlsGetLastFlag(void *cvode_mem, int *flag) ";
-
-%feature("docstring")  CVDlsGetReturnFlagName "SUNDIALS_EXPORT char*
-CVDlsGetReturnFlagName(int flag) ";
-
-
-// File: cvode__lapack_8h.xml
-%feature("docstring")  CVLapackDense "SUNDIALS_EXPORT int
-CVLapackDense(void *cvode_mem, int N) ";
-
-%feature("docstring")  CVLapackBand "SUNDIALS_EXPORT int
-CVLapackBand(void *cvode_mem, int N, int mupper, int mlower) ";
-
-
-// File: cvode__spbcgs_8h.xml
-%feature("docstring")  CVSpbcg "SUNDIALS_EXPORT int CVSpbcg(void
-*cvode_mem, int pretype, int maxl) ";
-
-
-// File: cvode__spgmr_8h.xml
-%feature("docstring")  CVSpgmr "SUNDIALS_EXPORT int CVSpgmr(void
-*cvode_mem, int pretype, int maxl) ";
-
-
-// File: cvode__spils_8h.xml
-%feature("docstring")  CVSpilsSetPrecType "SUNDIALS_EXPORT int
-CVSpilsSetPrecType(void *cvode_mem, int pretype) ";
-
-%feature("docstring")  CVSpilsSetGSType "SUNDIALS_EXPORT int
-CVSpilsSetGSType(void *cvode_mem, int gstype) ";
-
-%feature("docstring")  CVSpilsSetMaxl "SUNDIALS_EXPORT int
-CVSpilsSetMaxl(void *cvode_mem, int maxl) ";
-
-%feature("docstring")  CVSpilsSetEpsLin "SUNDIALS_EXPORT int
-CVSpilsSetEpsLin(void *cvode_mem, realtype eplifac) ";
-
-%feature("docstring")  CVSpilsSetPreconditioner "SUNDIALS_EXPORT int
-CVSpilsSetPreconditioner(void *cvode_mem, CVSpilsPrecSetupFn pset,
-CVSpilsPrecSolveFn psolve) ";
-
-%feature("docstring")  CVSpilsSetJacTimesVecFn "SUNDIALS_EXPORT int
-CVSpilsSetJacTimesVecFn(void *cvode_mem, CVSpilsJacTimesVecFn jtv) ";
-
-%feature("docstring")  CVSpilsGetWorkSpace "SUNDIALS_EXPORT int
-CVSpilsGetWorkSpace(void *cvode_mem, long int *lenrwLS, long int
-*leniwLS) ";
-
-%feature("docstring")  CVSpilsGetNumPrecEvals "SUNDIALS_EXPORT int
-CVSpilsGetNumPrecEvals(void *cvode_mem, long int *npevals) ";
-
-%feature("docstring")  CVSpilsGetNumPrecSolves "SUNDIALS_EXPORT int
-CVSpilsGetNumPrecSolves(void *cvode_mem, long int *npsolves) ";
-
-%feature("docstring")  CVSpilsGetNumLinIters "SUNDIALS_EXPORT int
-CVSpilsGetNumLinIters(void *cvode_mem, long int *nliters) ";
-
-%feature("docstring")  CVSpilsGetNumConvFails "SUNDIALS_EXPORT int
-CVSpilsGetNumConvFails(void *cvode_mem, long int *nlcfails) ";
-
-%feature("docstring")  CVSpilsGetNumJtimesEvals "SUNDIALS_EXPORT int
-CVSpilsGetNumJtimesEvals(void *cvode_mem, long int *njvevals) ";
-
-%feature("docstring")  CVSpilsGetNumRhsEvals "SUNDIALS_EXPORT int
-CVSpilsGetNumRhsEvals(void *cvode_mem, long int *nfevalsLS) ";
-
-%feature("docstring")  CVSpilsGetLastFlag "SUNDIALS_EXPORT int
-CVSpilsGetLastFlag(void *cvode_mem, int *flag) ";
-
-%feature("docstring")  CVSpilsGetReturnFlagName "SUNDIALS_EXPORT
-char* CVSpilsGetReturnFlagName(int flag) ";
-
-
-// File: cvode__sptfqmr_8h.xml
-%feature("docstring")  CVSptfqmr "SUNDIALS_EXPORT int CVSptfqmr(void
-*cvode_mem, int pretype, int maxl) ";
-
-
-// File: nvector__parallel_8h.xml
-%feature("docstring")  N_VNew_Parallel "SUNDIALS_EXPORT N_Vector
-N_VNew_Parallel(MPI_Comm comm, long int local_length, long int
-global_length) ";
-
-%feature("docstring")  N_VNewEmpty_Parallel "SUNDIALS_EXPORT N_Vector
-N_VNewEmpty_Parallel(MPI_Comm comm, long int local_length, long int
-global_length) ";
-
-%feature("docstring")  N_VMake_Parallel "SUNDIALS_EXPORT N_Vector
-N_VMake_Parallel(MPI_Comm comm, long int local_length, long int
-global_length, realtype *v_data) ";
-
-%feature("docstring")  N_VCloneVectorArray_Parallel "SUNDIALS_EXPORT
-N_Vector* N_VCloneVectorArray_Parallel(int count, N_Vector w) ";
-
-%feature("docstring")  N_VCloneVectorArrayEmpty_Parallel "SUNDIALS_EXPORT N_Vector* N_VCloneVectorArrayEmpty_Parallel(int count,
-N_Vector w) ";
-
-%feature("docstring")  N_VDestroyVectorArray_Parallel "SUNDIALS_EXPORT void N_VDestroyVectorArray_Parallel(N_Vector *vs, int
-count) ";
-
-%feature("docstring")  N_VPrint_Parallel "SUNDIALS_EXPORT void
-N_VPrint_Parallel(N_Vector v) ";
-
-%feature("docstring")  N_VCloneEmpty_Parallel "SUNDIALS_EXPORT
-N_Vector N_VCloneEmpty_Parallel(N_Vector w) ";
-
-%feature("docstring")  N_VClone_Parallel "SUNDIALS_EXPORT N_Vector
-N_VClone_Parallel(N_Vector w) ";
-
-%feature("docstring")  N_VDestroy_Parallel "SUNDIALS_EXPORT void
-N_VDestroy_Parallel(N_Vector v) ";
-
-%feature("docstring")  N_VSpace_Parallel "SUNDIALS_EXPORT void
-N_VSpace_Parallel(N_Vector v, long int *lrw, long int *liw) ";
-
-%feature("docstring")  N_VGetArrayPointer_Parallel "SUNDIALS_EXPORT
-realtype* N_VGetArrayPointer_Parallel(N_Vector v) ";
-
-%feature("docstring")  N_VSetArrayPointer_Parallel "SUNDIALS_EXPORT
-void N_VSetArrayPointer_Parallel(realtype *v_data, N_Vector v) ";
-
-%feature("docstring")  N_VLinearSum_Parallel "SUNDIALS_EXPORT void
-N_VLinearSum_Parallel(realtype a, N_Vector x, realtype b, N_Vector y,
-N_Vector z) ";
-
-%feature("docstring")  N_VConst_Parallel "SUNDIALS_EXPORT void
-N_VConst_Parallel(realtype c, N_Vector z) ";
-
-%feature("docstring")  N_VProd_Parallel "SUNDIALS_EXPORT void
-N_VProd_Parallel(N_Vector x, N_Vector y, N_Vector z) ";
-
-%feature("docstring")  N_VDiv_Parallel "SUNDIALS_EXPORT void
-N_VDiv_Parallel(N_Vector x, N_Vector y, N_Vector z) ";
-
-%feature("docstring")  N_VScale_Parallel "SUNDIALS_EXPORT void
-N_VScale_Parallel(realtype c, N_Vector x, N_Vector z) ";
-
-%feature("docstring")  N_VAbs_Parallel "SUNDIALS_EXPORT void
-N_VAbs_Parallel(N_Vector x, N_Vector z) ";
-
-%feature("docstring")  N_VInv_Parallel "SUNDIALS_EXPORT void
-N_VInv_Parallel(N_Vector x, N_Vector z) ";
-
-%feature("docstring")  N_VAddConst_Parallel "SUNDIALS_EXPORT void
-N_VAddConst_Parallel(N_Vector x, realtype b, N_Vector z) ";
-
-%feature("docstring")  N_VDotProd_Parallel "SUNDIALS_EXPORT realtype
-N_VDotProd_Parallel(N_Vector x, N_Vector y) ";
-
-%feature("docstring")  N_VMaxNorm_Parallel "SUNDIALS_EXPORT realtype
-N_VMaxNorm_Parallel(N_Vector x) ";
-
-%feature("docstring")  N_VWrmsNorm_Parallel "SUNDIALS_EXPORT realtype
-N_VWrmsNorm_Parallel(N_Vector x, N_Vector w) ";
-
-%feature("docstring")  N_VWrmsNormMask_Parallel "SUNDIALS_EXPORT
-realtype N_VWrmsNormMask_Parallel(N_Vector x, N_Vector w, N_Vector id)
-";
-
-%feature("docstring")  N_VMin_Parallel "SUNDIALS_EXPORT realtype
-N_VMin_Parallel(N_Vector x) ";
-
-%feature("docstring")  N_VWL2Norm_Parallel "SUNDIALS_EXPORT realtype
-N_VWL2Norm_Parallel(N_Vector x, N_Vector w) ";
-
-%feature("docstring")  N_VL1Norm_Parallel "SUNDIALS_EXPORT realtype
-N_VL1Norm_Parallel(N_Vector x) ";
-
-%feature("docstring")  N_VCompare_Parallel "SUNDIALS_EXPORT void
-N_VCompare_Parallel(realtype c, N_Vector x, N_Vector z) ";
-
-%feature("docstring")  N_VInvTest_Parallel "SUNDIALS_EXPORT
-booleantype N_VInvTest_Parallel(N_Vector x, N_Vector z) ";
-
-%feature("docstring")  N_VConstrMask_Parallel "SUNDIALS_EXPORT
-booleantype N_VConstrMask_Parallel(N_Vector c, N_Vector x, N_Vector m)
-";
-
-%feature("docstring")  N_VMinQuotient_Parallel "SUNDIALS_EXPORT
-realtype N_VMinQuotient_Parallel(N_Vector num, N_Vector denom) ";
-
-
-// File: nvector__serial_8h.xml
-%feature("docstring")  N_VNew_Serial "SUNDIALS_EXPORT N_Vector
-N_VNew_Serial(long int vec_length) ";
-
-%feature("docstring")  N_VNewEmpty_Serial "SUNDIALS_EXPORT N_Vector
-N_VNewEmpty_Serial(long int vec_length) ";
-
-%feature("docstring")  N_VMake_Serial "SUNDIALS_EXPORT N_Vector
-N_VMake_Serial(long int vec_length, realtype *v_data) ";
-
-%feature("docstring")  N_VCloneVectorArray_Serial "SUNDIALS_EXPORT
-N_Vector* N_VCloneVectorArray_Serial(int count, N_Vector w) ";
-
-%feature("docstring")  N_VCloneVectorArrayEmpty_Serial "SUNDIALS_EXPORT N_Vector* N_VCloneVectorArrayEmpty_Serial(int count,
-N_Vector w) ";
-
-%feature("docstring")  N_VDestroyVectorArray_Serial "SUNDIALS_EXPORT
-void N_VDestroyVectorArray_Serial(N_Vector *vs, int count) ";
-
-%feature("docstring")  N_VPrint_Serial "SUNDIALS_EXPORT void
-N_VPrint_Serial(N_Vector v) ";
-
-%feature("docstring")  N_VCloneEmpty_Serial "SUNDIALS_EXPORT N_Vector
-N_VCloneEmpty_Serial(N_Vector w) ";
-
-%feature("docstring")  N_VClone_Serial "SUNDIALS_EXPORT N_Vector
-N_VClone_Serial(N_Vector w) ";
-
-%feature("docstring")  N_VDestroy_Serial "SUNDIALS_EXPORT void
-N_VDestroy_Serial(N_Vector v) ";
-
-%feature("docstring")  N_VSpace_Serial "SUNDIALS_EXPORT void
-N_VSpace_Serial(N_Vector v, long int *lrw, long int *liw) ";
-
-%feature("docstring")  N_VGetArrayPointer_Serial "SUNDIALS_EXPORT
-realtype* N_VGetArrayPointer_Serial(N_Vector v) ";
-
-%feature("docstring")  N_VSetArrayPointer_Serial "SUNDIALS_EXPORT
-void N_VSetArrayPointer_Serial(realtype *v_data, N_Vector v) ";
-
-%feature("docstring")  N_VLinearSum_Serial "SUNDIALS_EXPORT void
-N_VLinearSum_Serial(realtype a, N_Vector x, realtype b, N_Vector y,
-N_Vector z) ";
-
-%feature("docstring")  N_VConst_Serial "SUNDIALS_EXPORT void
-N_VConst_Serial(realtype c, N_Vector z) ";
-
-%feature("docstring")  N_VProd_Serial "SUNDIALS_EXPORT void
-N_VProd_Serial(N_Vector x, N_Vector y, N_Vector z) ";
-
-%feature("docstring")  N_VDiv_Serial "SUNDIALS_EXPORT void
-N_VDiv_Serial(N_Vector x, N_Vector y, N_Vector z) ";
-
-%feature("docstring")  N_VScale_Serial "SUNDIALS_EXPORT void
-N_VScale_Serial(realtype c, N_Vector x, N_Vector z) ";
-
-%feature("docstring")  N_VAbs_Serial "SUNDIALS_EXPORT void
-N_VAbs_Serial(N_Vector x, N_Vector z) ";
-
-%feature("docstring")  N_VInv_Serial "SUNDIALS_EXPORT void
-N_VInv_Serial(N_Vector x, N_Vector z) ";
-
-%feature("docstring")  N_VAddConst_Serial "SUNDIALS_EXPORT void
-N_VAddConst_Serial(N_Vector x, realtype b, N_Vector z) ";
-
-%feature("docstring")  N_VDotProd_Serial "SUNDIALS_EXPORT realtype
-N_VDotProd_Serial(N_Vector x, N_Vector y) ";
-
-%feature("docstring")  N_VMaxNorm_Serial "SUNDIALS_EXPORT realtype
-N_VMaxNorm_Serial(N_Vector x) ";
-
-%feature("docstring")  N_VWrmsNorm_Serial "SUNDIALS_EXPORT realtype
-N_VWrmsNorm_Serial(N_Vector x, N_Vector w) ";
-
-%feature("docstring")  N_VWrmsNormMask_Serial "SUNDIALS_EXPORT
-realtype N_VWrmsNormMask_Serial(N_Vector x, N_Vector w, N_Vector id)
-";
-
-%feature("docstring")  N_VMin_Serial "SUNDIALS_EXPORT realtype
-N_VMin_Serial(N_Vector x) ";
-
-%feature("docstring")  N_VWL2Norm_Serial "SUNDIALS_EXPORT realtype
-N_VWL2Norm_Serial(N_Vector x, N_Vector w) ";
-
-%feature("docstring")  N_VL1Norm_Serial "SUNDIALS_EXPORT realtype
-N_VL1Norm_Serial(N_Vector x) ";
-
-%feature("docstring")  N_VCompare_Serial "SUNDIALS_EXPORT void
-N_VCompare_Serial(realtype c, N_Vector x, N_Vector z) ";
-
-%feature("docstring")  N_VInvTest_Serial "SUNDIALS_EXPORT booleantype
-N_VInvTest_Serial(N_Vector x, N_Vector z) ";
-
-%feature("docstring")  N_VConstrMask_Serial "SUNDIALS_EXPORT
-booleantype N_VConstrMask_Serial(N_Vector c, N_Vector x, N_Vector m)
-";
-
-%feature("docstring")  N_VMinQuotient_Serial "SUNDIALS_EXPORT
-realtype N_VMinQuotient_Serial(N_Vector num, N_Vector denom) ";
-
-
-// File: sundials__band_8h.xml
-%feature("docstring")  BandGBTRF "SUNDIALS_EXPORT int
-BandGBTRF(DlsMat A, int *p) ";
-
-%feature("docstring")  bandGBTRF "SUNDIALS_EXPORT int
-bandGBTRF(realtype **a, int n, int mu, int ml, int smu, int *p) ";
-
-%feature("docstring")  BandGBTRS "SUNDIALS_EXPORT void
-BandGBTRS(DlsMat A, int *p, realtype *b) ";
-
-%feature("docstring")  bandGBTRS "SUNDIALS_EXPORT void
-bandGBTRS(realtype **a, int n, int smu, int ml, int *p, realtype *b)
-";
-
-%feature("docstring")  BandCopy "SUNDIALS_EXPORT void BandCopy(DlsMat
-A, DlsMat B, int copymu, int copyml) ";
-
-%feature("docstring")  bandCopy "SUNDIALS_EXPORT void
-bandCopy(realtype **a, realtype **b, int n, int a_smu, int b_smu, int
-copymu, int copyml) ";
-
-%feature("docstring")  BandScale "SUNDIALS_EXPORT void
-BandScale(realtype c, DlsMat A) ";
-
-%feature("docstring")  bandScale "SUNDIALS_EXPORT void
-bandScale(realtype c, realtype **a, int n, int mu, int ml, int smu) ";
-
-%feature("docstring")  bandAddIdentity "SUNDIALS_EXPORT void
-bandAddIdentity(realtype **a, int n, int smu) ";
-
-
-// File: sundials__dense_8h.xml
-%feature("docstring")  DenseGETRF "SUNDIALS_EXPORT int
-DenseGETRF(DlsMat A, int *p) ";
-
-%feature("docstring")  DenseGETRS "SUNDIALS_EXPORT void
-DenseGETRS(DlsMat A, int *p, realtype *b) ";
-
-%feature("docstring")  denseGETRF "SUNDIALS_EXPORT int
-denseGETRF(realtype **a, int m, int n, int *p) ";
-
-%feature("docstring")  denseGETRS "SUNDIALS_EXPORT void
-denseGETRS(realtype **a, int n, int *p, realtype *b) ";
-
-%feature("docstring")  DensePOTRF "SUNDIALS_EXPORT int
-DensePOTRF(DlsMat A) ";
-
-%feature("docstring")  DensePOTRS "SUNDIALS_EXPORT void
-DensePOTRS(DlsMat A, realtype *b) ";
-
-%feature("docstring")  densePOTRF "SUNDIALS_EXPORT int
-densePOTRF(realtype **a, int m) ";
-
-%feature("docstring")  densePOTRS "SUNDIALS_EXPORT void
-densePOTRS(realtype **a, int m, realtype *b) ";
-
-%feature("docstring")  DenseGEQRF "SUNDIALS_EXPORT int
-DenseGEQRF(DlsMat A, realtype *beta, realtype *wrk) ";
-
-%feature("docstring")  DenseORMQR "SUNDIALS_EXPORT int
-DenseORMQR(DlsMat A, realtype *beta, realtype *vn, realtype *vm,
-realtype *wrk) ";
-
-%feature("docstring")  denseGEQRF "SUNDIALS_EXPORT int
-denseGEQRF(realtype **a, int m, int n, realtype *beta, realtype *v) ";
-
-%feature("docstring")  denseORMQR "SUNDIALS_EXPORT int
-denseORMQR(realtype **a, int m, int n, realtype *beta, realtype *v,
-realtype *w, realtype *wrk) ";
-
-%feature("docstring")  DenseCopy "SUNDIALS_EXPORT void
-DenseCopy(DlsMat A, DlsMat B) ";
-
-%feature("docstring")  denseCopy "SUNDIALS_EXPORT void
-denseCopy(realtype **a, realtype **b, int m, int n) ";
-
-%feature("docstring")  DenseScale "SUNDIALS_EXPORT void
-DenseScale(realtype c, DlsMat A) ";
-
-%feature("docstring")  denseScale "SUNDIALS_EXPORT void
-denseScale(realtype c, realtype **a, int m, int n) ";
-
-%feature("docstring")  denseAddIdentity "SUNDIALS_EXPORT void
-denseAddIdentity(realtype **a, int n) ";
-
-
-// File: sundials__direct_8h.xml
-%feature("docstring")  NewDenseMat "SUNDIALS_EXPORT DlsMat
-NewDenseMat(int M, int N) ";
-
-%feature("docstring")  NewBandMat "SUNDIALS_EXPORT DlsMat
-NewBandMat(int N, int mu, int ml, int smu) ";
-
-%feature("docstring")  DestroyMat "SUNDIALS_EXPORT void
-DestroyMat(DlsMat A) ";
-
-%feature("docstring")  NewIntArray "SUNDIALS_EXPORT int*
-NewIntArray(int N) ";
-
-%feature("docstring")  NewRealArray "SUNDIALS_EXPORT realtype*
-NewRealArray(int N) ";
-
-%feature("docstring")  DestroyArray "SUNDIALS_EXPORT void
-DestroyArray(void *p) ";
-
-%feature("docstring")  AddIdentity "SUNDIALS_EXPORT void
-AddIdentity(DlsMat A) ";
-
-%feature("docstring")  SetToZero "SUNDIALS_EXPORT void
-SetToZero(DlsMat A) ";
-
-%feature("docstring")  PrintMat "SUNDIALS_EXPORT void PrintMat(DlsMat
-A) ";
-
-%feature("docstring")  newDenseMat "SUNDIALS_EXPORT realtype**
-newDenseMat(int m, int n) ";
-
-%feature("docstring")  newBandMat "SUNDIALS_EXPORT realtype**
-newBandMat(int n, int smu, int ml) ";
-
-%feature("docstring")  destroyMat "SUNDIALS_EXPORT void
-destroyMat(realtype **a) ";
-
-%feature("docstring")  newIntArray "SUNDIALS_EXPORT int*
-newIntArray(int n) ";
-
-%feature("docstring")  newRealArray "SUNDIALS_EXPORT realtype*
-newRealArray(int m) ";
-
-%feature("docstring")  destroyArray "SUNDIALS_EXPORT void
-destroyArray(void *v) ";
-
-
-// File: sundials__fnvector_8h.xml
-
-
-// File: sundials__iterative_8h.xml
-%feature("docstring")  ModifiedGS "SUNDIALS_EXPORT int
-ModifiedGS(N_Vector *v, realtype **h, int k, int p, realtype
-*new_vk_norm) ";
-
-%feature("docstring")  ClassicalGS "SUNDIALS_EXPORT int
-ClassicalGS(N_Vector *v, realtype **h, int k, int p, realtype
-*new_vk_norm, N_Vector temp, realtype *s) ";
-
-%feature("docstring")  QRfact "SUNDIALS_EXPORT int QRfact(int n,
-realtype **h, realtype *q, int job) ";
-
-%feature("docstring")  QRsol "SUNDIALS_EXPORT int QRsol(int n,
-realtype **h, realtype *q, realtype *b) ";
-
-
-// File: sundials__lapack_8h.xml
-%feature("docstring")  dcopy_f77 "void dcopy_f77(int *n, const double
-*x, const int *inc_x, double *y, const int *inc_y) ";
-
-%feature("docstring")  dscal_f77 "void dscal_f77(int *n, const double
-*alpha, double *x, const int *inc_x) ";
-
-%feature("docstring")  dgemv_f77 "void dgemv_f77(const char *trans,
-int *m, int *n, const double *alpha, const double *a, int *lda, const
-double *x, int *inc_x, const double *beta, double *y, int *inc_y, int
-len_trans) ";
-
-%feature("docstring")  dtrsv_f77 "void dtrsv_f77(const char *uplo,
-const char *trans, const char *diag, const int *n, const double *a,
-const int *lda, double *x, const int *inc_x, int len_uplo, int
-len_trans, int len_diag) ";
-
-%feature("docstring")  dsyrk_f77 "void dsyrk_f77(const char *uplo,
-const char *trans, const int *n, const int *k, const double *alpha,
-const double *a, const int *lda, const double *beta, const double *c,
-const int *ldc, int len_uplo, int len_trans) ";
-
-%feature("docstring")  dgbtrf_f77 "void dgbtrf_f77(const int *m,
-const int *n, const int *kl, const int *ku, double *ab, int *ldab, int
-*ipiv, int *info) ";
-
-%feature("docstring")  dgbtrs_f77 "void dgbtrs_f77(const char *trans,
-const int *n, const int *kl, const int *ku, const int *nrhs, double
-*ab, const int *ldab, int *ipiv, double *b, const int *ldb, int *info,
-int len_trans) ";
-
-%feature("docstring")  dgeqp3_f77 "void dgeqp3_f77(const int *m,
-const int *n, double *a, const int *lda, int *jpvt, double *tau,
-double *work, const int *lwork, int *info) ";
-
-%feature("docstring")  dgeqrf_f77 "void dgeqrf_f77(const int *m,
-const int *n, double *a, const int *lda, double *tau, double *work,
-const int *lwork, int *info) ";
-
-%feature("docstring")  dgetrf_f77 "void dgetrf_f77(const int *m,
-const int *n, double *a, int *lda, int *ipiv, int *info) ";
-
-%feature("docstring")  dgetrs_f77 "void dgetrs_f77(const char *trans,
-const int *n, const int *nrhs, double *a, const int *lda, int *ipiv,
-double *b, const int *ldb, int *info, int len_trans) ";
-
-%feature("docstring")  dormqr_f77 "void dormqr_f77(const char *side,
-const char *trans, const int *m, const int *n, const int *k, double
-*a, const int *lda, double *tau, double *c, const int *ldc, double
-*work, const int *lwork, int *info, int len_side, int len_trans) ";
-
-%feature("docstring")  dpotrf_f77 "void dpotrf_f77(const char *uplo,
-const int *n, double *a, int *lda, int *info, int len_uplo) ";
-
-%feature("docstring")  dpotrs_f77 "void dpotrs_f77(const char *uplo,
-const int *n, const int *nrhs, double *a, const int *lda, double *b,
-const int *ldb, int *info, int len_uplo) ";
-
-
-// File: sundials__math_8h.xml
-%feature("docstring")  RPowerI "SUNDIALS_EXPORT realtype
-RPowerI(realtype base, int exponent) ";
-
-%feature("docstring")  RPowerR "SUNDIALS_EXPORT realtype
-RPowerR(realtype base, realtype exponent) ";
-
-%feature("docstring")  RSqrt "SUNDIALS_EXPORT realtype RSqrt(realtype
-x) ";
-
-%feature("docstring")  RAbs "SUNDIALS_EXPORT realtype RAbs(realtype
-x) ";
-
-%feature("docstring")  RExp "SUNDIALS_EXPORT realtype RExp(realtype
-x) ";
-
-
-// File: sundials__nvector_8h.xml
-%feature("docstring")  N_VClone "SUNDIALS_EXPORT N_Vector
-N_VClone(N_Vector w) ";
-
-%feature("docstring")  N_VCloneEmpty "SUNDIALS_EXPORT N_Vector
-N_VCloneEmpty(N_Vector w) ";
-
-%feature("docstring")  N_VDestroy "SUNDIALS_EXPORT void
-N_VDestroy(N_Vector v) ";
-
-%feature("docstring")  N_VSpace "SUNDIALS_EXPORT void
-N_VSpace(N_Vector v, long int *lrw, long int *liw) ";
-
-%feature("docstring")  N_VGetArrayPointer "SUNDIALS_EXPORT realtype*
-N_VGetArrayPointer(N_Vector v) ";
-
-%feature("docstring")  N_VSetArrayPointer "SUNDIALS_EXPORT void
-N_VSetArrayPointer(realtype *v_data, N_Vector v) ";
-
-%feature("docstring")  N_VLinearSum "SUNDIALS_EXPORT void
-N_VLinearSum(realtype a, N_Vector x, realtype b, N_Vector y, N_Vector
-z) ";
-
-%feature("docstring")  N_VConst "SUNDIALS_EXPORT void
-N_VConst(realtype c, N_Vector z) ";
-
-%feature("docstring")  N_VProd "SUNDIALS_EXPORT void N_VProd(N_Vector
-x, N_Vector y, N_Vector z) ";
-
-%feature("docstring")  N_VDiv "SUNDIALS_EXPORT void N_VDiv(N_Vector
-x, N_Vector y, N_Vector z) ";
-
-%feature("docstring")  N_VScale "SUNDIALS_EXPORT void
-N_VScale(realtype c, N_Vector x, N_Vector z) ";
-
-%feature("docstring")  N_VAbs "SUNDIALS_EXPORT void N_VAbs(N_Vector
-x, N_Vector z) ";
-
-%feature("docstring")  N_VInv "SUNDIALS_EXPORT void N_VInv(N_Vector
-x, N_Vector z) ";
-
-%feature("docstring")  N_VAddConst "SUNDIALS_EXPORT void
-N_VAddConst(N_Vector x, realtype b, N_Vector z) ";
-
-%feature("docstring")  N_VDotProd "SUNDIALS_EXPORT realtype
-N_VDotProd(N_Vector x, N_Vector y) ";
-
-%feature("docstring")  N_VMaxNorm "SUNDIALS_EXPORT realtype
-N_VMaxNorm(N_Vector x) ";
-
-%feature("docstring")  N_VWrmsNorm "SUNDIALS_EXPORT realtype
-N_VWrmsNorm(N_Vector x, N_Vector w) ";
-
-%feature("docstring")  N_VWrmsNormMask "SUNDIALS_EXPORT realtype
-N_VWrmsNormMask(N_Vector x, N_Vector w, N_Vector id) ";
-
-%feature("docstring")  N_VMin "SUNDIALS_EXPORT realtype
-N_VMin(N_Vector x) ";
-
-%feature("docstring")  N_VWL2Norm "SUNDIALS_EXPORT realtype
-N_VWL2Norm(N_Vector x, N_Vector w) ";
-
-%feature("docstring")  N_VL1Norm "SUNDIALS_EXPORT realtype
-N_VL1Norm(N_Vector x) ";
-
-%feature("docstring")  N_VCompare "SUNDIALS_EXPORT void
-N_VCompare(realtype c, N_Vector x, N_Vector z) ";
-
-%feature("docstring")  N_VInvTest "SUNDIALS_EXPORT booleantype
-N_VInvTest(N_Vector x, N_Vector z) ";
-
-%feature("docstring")  N_VConstrMask "SUNDIALS_EXPORT booleantype
-N_VConstrMask(N_Vector c, N_Vector x, N_Vector m) ";
-
-%feature("docstring")  N_VMinQuotient "SUNDIALS_EXPORT realtype
-N_VMinQuotient(N_Vector num, N_Vector denom) ";
-
-%feature("docstring")  N_VCloneEmptyVectorArray "SUNDIALS_EXPORT
-N_Vector* N_VCloneEmptyVectorArray(int count, N_Vector w) ";
-
-%feature("docstring")  N_VCloneVectorArray "SUNDIALS_EXPORT N_Vector*
-N_VCloneVectorArray(int count, N_Vector w) ";
-
-%feature("docstring")  N_VDestroyVectorArray "SUNDIALS_EXPORT void
-N_VDestroyVectorArray(N_Vector *vs, int count) ";
-
-
-// File: sundials__spbcgs_8h.xml
-%feature("docstring")  SpbcgMalloc "SUNDIALS_EXPORT SpbcgMem
-SpbcgMalloc(int l_max, N_Vector vec_tmpl) ";
-
-%feature("docstring")  SpbcgSolve "SUNDIALS_EXPORT int
-SpbcgSolve(SpbcgMem mem, void *A_data, N_Vector x, N_Vector b, int
-pretype, realtype delta, void *P_data, N_Vector sx, N_Vector sb,
-ATimesFn atimes, PSolveFn psolve, realtype *res_norm, int *nli, int
-*nps) ";
-
-%feature("docstring")  SpbcgFree "SUNDIALS_EXPORT void
-SpbcgFree(SpbcgMem mem) ";
-
-
-// File: sundials__spgmr_8h.xml
-%feature("docstring")  SpgmrMalloc "SUNDIALS_EXPORT SpgmrMem
-SpgmrMalloc(int l_max, N_Vector vec_tmpl) ";
-
-%feature("docstring")  SpgmrSolve "SUNDIALS_EXPORT int
-SpgmrSolve(SpgmrMem mem, void *A_data, N_Vector x, N_Vector b, int
-pretype, int gstype, realtype delta, int max_restarts, void *P_data,
-N_Vector s1, N_Vector s2, ATimesFn atimes, PSolveFn psolve, realtype
-*res_norm, int *nli, int *nps) ";
-
-%feature("docstring")  SpgmrFree "SUNDIALS_EXPORT void
-SpgmrFree(SpgmrMem mem) ";
-
-
-// File: sundials__sptfqmr_8h.xml
-%feature("docstring")  SptfqmrMalloc "SUNDIALS_EXPORT SptfqmrMem
-SptfqmrMalloc(int l_max, N_Vector vec_tmpl) ";
-
-%feature("docstring")  SptfqmrSolve "SUNDIALS_EXPORT int
-SptfqmrSolve(SptfqmrMem mem, void *A_data, N_Vector x, N_Vector b, int
-pretype, realtype delta, void *P_data, N_Vector sx, N_Vector sb,
-ATimesFn atimes, PSolveFn psolve, realtype *res_norm, int *nli, int
-*nps) ";
-
-%feature("docstring")  SptfqmrFree "SUNDIALS_EXPORT void
-SptfqmrFree(SptfqmrMem mem) ";
-
-
-// File: sundials__types_8h.xml
-
-
-// File: cvode__bandpre__impl_8h.xml
-
-
-// File: cvode__bbdpre__impl_8h.xml
-
-
-// File: cvode__diag__impl_8h.xml
-
-
-// File: cvode__direct__impl_8h.xml
-%feature("docstring")  cvDlsDenseDQJac "int cvDlsDenseDQJac(int N,
-realtype t, N_Vector y, N_Vector fy, DlsMat Jac, void *data, N_Vector
-tmp1, N_Vector tmp2, N_Vector tmp3) ";
-
-%feature("docstring")  cvDlsBandDQJac "int cvDlsBandDQJac(int N, int
-mupper, int mlower, realtype t, N_Vector y, N_Vector fy, DlsMat Jac,
-void *data, N_Vector tmp1, N_Vector tmp2, N_Vector tmp3) ";
-
-
-// File: cvode__impl_8h.xml
-%feature("docstring")  CVEwtSet "int CVEwtSet(N_Vector ycur, N_Vector
-weight, void *data) ";
-
-%feature("docstring")  CVProcessError "void CVProcessError(CVodeMem
-cv_mem, int error_code, const char *module, const char *fname, const
-char *msgfmt,...) ";
-
-%feature("docstring")  CVErrHandler "void CVErrHandler(int
-error_code, const char *module, const char *function, char *msg, void
-*data) ";
-
-
-// File: cvode__spils__impl_8h.xml
-%feature("docstring")  CVSpilsAtimes "int CVSpilsAtimes(void *cv_mem,
-N_Vector v, N_Vector z) ";
-
-%feature("docstring")  CVSpilsPSolve "int CVSpilsPSolve(void *cv_mem,
-N_Vector r, N_Vector z, int lr) ";
-
-%feature("docstring")  CVSpilsDQJtimes "int CVSpilsDQJtimes(N_Vector
-v, N_Vector Jv, realtype t, N_Vector y, N_Vector fy, void *data,
-N_Vector work) ";
-
-
-// File: fcvbbd_8h.xml
-%feature("docstring")  FCV_BBDINIT "void FCV_BBDINIT(int *Nloc, int
-*mudq, int *mldq, int *mu, int *ml, realtype *dqrely, int *ier) ";
-
-%feature("docstring")  FCV_BBDREINIT "void FCV_BBDREINIT(int *Nloc,
-int *mudq, int *mldq, realtype *dqrely, int *ier) ";
-
-%feature("docstring")  FCV_BBDOPT "void FCV_BBDOPT(long int
-*lenrwbbd, long int *leniwbbd, long int *ngebbd) ";
-
-%feature("docstring")  FCVgloc "int FCVgloc(int Nloc, realtype t,
-N_Vector yloc, N_Vector gloc, void *user_data) ";
-
-%feature("docstring")  FCVcfn "int FCVcfn(int Nloc, realtype t,
-N_Vector y, void *user_data) ";
-
-
-// File: fcvbp_8h.xml
-%feature("docstring")  FCV_BPINIT "void FCV_BPINIT(long int *N, long
-int *mu, long int *ml, int *ier) ";
-
-%feature("docstring")  FCV_BPSPTFQMR "void FCV_BPSPTFQMR(int
-*pretype, int *maxl, realtype *delt, int *ier) ";
-
-%feature("docstring")  FCV_BPSPBCG "void FCV_BPSPBCG(int *pretype,
-int *maxl, realtype *delt, int *ier) ";
-
-%feature("docstring")  FCV_BPSPGMR "void FCV_BPSPGMR(int *pretype,
-int *gstype, int *maxl, realtype *delt, int *ier) ";
-
-%feature("docstring")  FCV_BPOPT "void FCV_BPOPT(long int *lenrwbp,
-long int *leniwbp, long int *nfebp) ";
-
-
-// File: fcvode_8h.xml
-%feature("docstring")  FCV_MALLOC "void FCV_MALLOC(realtype *t0,
-realtype *y0, int *meth, int *itmeth, int *iatol, realtype *rtol,
-realtype *atol, long int *iout, realtype *rout, long int *ipar,
-realtype *rpar, int *ier) ";
-
-%feature("docstring")  FCV_REINIT "void FCV_REINIT(realtype *t0,
-realtype *y0, int *iatol, realtype *rtol, realtype *atol, int *ier) ";
-
-%feature("docstring")  FCV_SETIIN "void FCV_SETIIN(char key_name[],
-long int *ival, int *ier, int key_len) ";
-
-%feature("docstring")  FCV_SETRIN "void FCV_SETRIN(char key_name[],
-realtype *rval, int *ier, int key_len) ";
-
-%feature("docstring")  FCV_EWTSET "void FCV_EWTSET(int *flag, int
-*ier) ";
-
-%feature("docstring")  FCV_DIAG "void FCV_DIAG(int *ier) ";
-
-%feature("docstring")  FCV_DENSE "void FCV_DENSE(int *neq, int *ier)
-";
-
-%feature("docstring")  FCV_DENSESETJAC "void FCV_DENSESETJAC(int
-*flag, int *ier) ";
-
-%feature("docstring")  FCV_BAND "void FCV_BAND(int *neq, int *mupper,
-int *mlower, int *ier) ";
-
-%feature("docstring")  FCV_BANDSETJAC "void FCV_BANDSETJAC(int *flag,
-int *ier) ";
-
-%feature("docstring")  FCV_LAPACKDENSE "void FCV_LAPACKDENSE(int
-*neq, int *ier) ";
-
-%feature("docstring")  FCV_LAPACKDENSESETJAC "void
-FCV_LAPACKDENSESETJAC(int *flag, int *ier) ";
-
-%feature("docstring")  FCV_LAPACKBAND "void FCV_LAPACKBAND(int *neq,
-int *mupper, int *mlower, int *ier) ";
-
-%feature("docstring")  FCV_LAPACKBANDSETJAC "void
-FCV_LAPACKBANDSETJAC(int *flag, int *ier) ";
-
-%feature("docstring")  FCV_SPGMR "void FCV_SPGMR(int *pretype, int
-*gstype, int *maxl, realtype *delt, int *ier) ";
-
-%feature("docstring")  FCV_SPGMRREINIT "void FCV_SPGMRREINIT(int
-*pretype, int *gstype, realtype *delt, int *ier) ";
-
-%feature("docstring")  FCV_SPBCG "void FCV_SPBCG(int *pretype, int
-*maxl, realtype *delt, int *ier) ";
-
-%feature("docstring")  FCV_SPBCGREINIT "void FCV_SPBCGREINIT(int
-*pretype, int *maxl, realtype *delt, int *ier) ";
-
-%feature("docstring")  FCV_SPTFQMR "void FCV_SPTFQMR(int *pretype,
-int *maxl, realtype *delt, int *ier) ";
-
-%feature("docstring")  FCV_SPTFQMRREINIT "void FCV_SPTFQMRREINIT(int
-*pretype, int *maxl, realtype *delt, int *ier) ";
-
-%feature("docstring")  FCV_SPILSSETJAC "void FCV_SPILSSETJAC(int
-*flag, int *ier) ";
-
-%feature("docstring")  FCV_SPILSSETPREC "void FCV_SPILSSETPREC(int
-*flag, int *ier) ";
-
-%feature("docstring")  FCV_CVODE "void FCV_CVODE(realtype *tout,
-realtype *t, realtype *y, int *itask, int *ier) ";
-
-%feature("docstring")  FCV_DKY "void FCV_DKY(realtype *t, int *k,
-realtype *dky, int *ier) ";
-
-%feature("docstring")  FCV_GETERRWEIGHTS "void
-FCV_GETERRWEIGHTS(realtype *eweight, int *ier) ";
-
-%feature("docstring")  FCV_GETESTLOCALERR "void
-FCV_GETESTLOCALERR(realtype *ele, int *ier) ";
-
-%feature("docstring")  FCV_FREE "void FCV_FREE(void) ";
-
-%feature("docstring")  FCVf "int FCVf(realtype t, N_Vector y,
-N_Vector ydot, void *user_data) ";
-
-%feature("docstring")  FCVDenseJac "int FCVDenseJac(int N, realtype
-t, N_Vector y, N_Vector fy, DlsMat J, void *user_data, N_Vector
-vtemp1, N_Vector vtemp2, N_Vector vtemp3) ";
-
-%feature("docstring")  FCVBandJac "int FCVBandJac(int N, int mupper,
-int mlower, realtype t, N_Vector y, N_Vector fy, DlsMat J, void
-*user_data, N_Vector vtemp1, N_Vector vtemp2, N_Vector vtemp3) ";
-
-%feature("docstring")  FCVLapackDenseJac "int FCVLapackDenseJac(int
-N, realtype t, N_Vector y, N_Vector fy, DlsMat Jac, void *user_data,
-N_Vector tmp1, N_Vector tmp2, N_Vector tmp3) ";
-
-%feature("docstring")  FCVLapackBandJac "int FCVLapackBandJac(int N,
-int mupper, int mlower, realtype t, N_Vector y, N_Vector fy, DlsMat
-Jac, void *user_data, N_Vector tmp1, N_Vector tmp2, N_Vector tmp3) ";
-
-%feature("docstring")  FCVPSet "int FCVPSet(realtype tn, N_Vector y,
-N_Vector fy, booleantype jok, booleantype *jcurPtr, realtype gamma,
-void *user_data, N_Vector vtemp1, N_Vector vtemp2, N_Vector vtemp3) ";
-
-%feature("docstring")  FCVPSol "int FCVPSol(realtype tn, N_Vector y,
-N_Vector fy, N_Vector r, N_Vector z, realtype gamma, realtype delta,
-int lr, void *user_data, N_Vector vtemp) ";
-
-%feature("docstring")  FCVJtimes "int FCVJtimes(N_Vector v, N_Vector
-Jv, realtype t, N_Vector y, N_Vector fy, void *user_data, N_Vector
-work) ";
-
-%feature("docstring")  FCVEwtSet "int FCVEwtSet(N_Vector y, N_Vector
-ewt, void *user_data) ";
-
-
-// File: fcvroot_8h.xml
-%feature("docstring")  FCV_ROOTINIT "void FCV_ROOTINIT(int *nrtfn,
-int *ier) ";
-
-%feature("docstring")  FCV_ROOTINFO "void FCV_ROOTINFO(int *nrtfn,
-int *info, int *ier) ";
-
-%feature("docstring")  FCV_ROOTFREE "void FCV_ROOTFREE(void) ";
-
-%feature("docstring")  FCVrootfunc "int FCVrootfunc(realtype t,
-N_Vector y, realtype *gout, void *user_data) ";
-
-
-// File: fnvector__parallel_8h.xml
-%feature("docstring")  FNV_INITP "void FNV_INITP(MPI_Fint *comm, int
-*code, long int *L, long int *N, int *ier) ";
-
-%feature("docstring")  FNV_INITP_Q "void FNV_INITP_Q(MPI_Fint *comm,
-int *code, long int *Lq, long int *Nq, int *ier) ";
-
-%feature("docstring")  FNV_INITP_B "void FNV_INITP_B(MPI_Fint *comm,
-int *code, long int *LB, long int *NB, int *ier) ";
-
-%feature("docstring")  FNV_INITP_QB "void FNV_INITP_QB(MPI_Fint
-*comm, int *code, long int *LqB, long int *NqB, int *ier) ";
-
-%feature("docstring")  FNV_INITP_S "void FNV_INITP_S(int *code, int
-*Ns, int *ier) ";
-
-
-// File: fnvector__serial_8h.xml
-%feature("docstring")  FNV_INITS "void FNV_INITS(int *code, long int
-*neq, int *ier) ";
-
-%feature("docstring")  FNV_INITS_Q "void FNV_INITS_Q(int *code, long
-int *Nq, int *ier) ";
-
-%feature("docstring")  FNV_INITS_S "void FNV_INITS_S(int *code, int
-*Ns, int *ier) ";
-
-%feature("docstring")  FNV_INITS_B "void FNV_INITS_B(int *code, long
-int *NB, int *ier) ";
-
-%feature("docstring")  FNV_INITS_QB "void FNV_INITS_QB(int *code,
-long int *NqB, int *ier) ";
-
-
 // File: time_8h.xml
 
 
@@ -10038,22 +8885,10 @@ long int *NqB, int *ier) ";
 // File: dir_5315b9f6f8b45e6135852d5c4b1290ec.xml
 
 
-// File: dir_210e3059893a2f792df907ac7a8cdede.xml
-
-
-// File: dir_085b673a926b67f4d2b68dd2b477de41.xml
-
-
 // File: dir_d4a7db5f75d53464017ea42e87e446ec.xml
 
 
-// File: dir_6afb42a43d9fdbd4d01792adb4ba0a63.xml
-
-
 // File: dir_33b844088382798bd5f490b8fb37bf85.xml
-
-
-// File: dir_0c8cf91f77cd791024c3705ca3d116d1.xml
 
 
 // File: dir_5d5bac740accd8f19340df0f60788684.xml
@@ -10062,28 +8897,10 @@ long int *NqB, int *ier) ";
 // File: dir_cc7a88951d84f2626826dfeb77aa5f8a.xml
 
 
-// File: dir_70e88bb755e080593883ef6f40df66e9.xml
-
-
-// File: dir_44a97513847960a5ff4bbadf48b6e11e.xml
-
-
-// File: dir_d44c28fd0d7d7329261caf68c34b8893.xml
-
-
 // File: dir_4e51a816ea379d271f9feb4b990df64d.xml
 
 
 // File: dir_25047dbca854cc54e58c932b1f7b1f34.xml
-
-
-// File: dir_77589c1b28a94469346a2d49c34f8b8e.xml
-
-
-// File: dir_d80d2da1115ddd17c185f268de4a2e14.xml
-
-
-// File: dir_f4d4ddf5157492f1559bdc2cbcf28abe.xml
 
 
 // File: dir_936659d8ee6b95d7313866de52cc56de.xml

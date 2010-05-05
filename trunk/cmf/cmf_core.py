@@ -437,7 +437,11 @@ Locatable_swigregister = _cmf_core.Locatable_swigregister
 Locatable_swigregister(Locatable)
 
 class Location(Locatable):
-    """Proxy of C++ cmf::geometry::Location class"""
+    """
+    A minimal implementation of Locatable.
+
+    C++ includes: geometry.h 
+    """
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
     __repr__ = _swig_repr
     def __init__(self, *args): 
@@ -453,7 +457,11 @@ Location_swigregister = _cmf_core.Location_swigregister
 Location_swigregister(Location)
 
 class point_vector(object):
-    """Proxy of C++ cmf::geometry::point_vector class"""
+    """
+    Holds three arrays x,y and z for fast access of point coordinates.
+
+    C++ includes: geometry.h 
+    """
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
     __repr__ = _swig_repr
     X = _swig_property(_cmf_core.point_vector_X_get, _cmf_core.point_vector_X_set)
@@ -2159,8 +2167,6 @@ def __mul__(*args):
 
 class StateVariable(object):
     """
-    Abstract class state variable.
-
     Abstract class state variable
 
     Simple exponential system class header implementing a state variable:
@@ -2711,8 +2717,8 @@ class CVodeIntegrator(Integrator):
 
     def __init__(self, *args): 
         """
-        __init__(self, real epsilon = 1e-9, Time tStepMin = cmf::math::Time::Milliseconds(50)) -> CVodeIntegrator
-        __init__(self, StateVariableOwner states, real epsilon = 1e-9, Time tStepMin = cmf::math::Time::Milliseconds(50)) -> CVodeIntegrator
+        __init__(self, real epsilon = 1e-9, char _preconditioner = 'R') -> CVodeIntegrator
+        __init__(self, StateVariableOwner states, real epsilon = 1e-9, char _preconditioner = 'R') -> CVodeIntegrator
         __init__(self, CVodeIntegrator templ) -> CVodeIntegrator
 
         CVodeIntegrator(const CVodeIntegrator &templ)
@@ -7168,7 +7174,11 @@ RectangularReach_swigregister = _cmf_core.RectangularReach_swigregister
 RectangularReach_swigregister(RectangularReach)
 
 class PipeReach(IChannel):
-    """Proxy of C++ cmf::river::PipeReach class"""
+    """
+    Describes the geometry of a closed pipe.
+
+    C++ includes: ReachType.h 
+    """
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
     __repr__ = _swig_repr
     radius = _swig_property(_cmf_core.PipeReach_radius_get, _cmf_core.PipeReach_radius_set)
@@ -8505,7 +8515,9 @@ class project(StateVariableOwner):
         get_cell(self, int index) -> Cell
 
         upslope::Cell&
-        get_cell(int index) 
+        get_cell(int index)
+
+        Returns the reference to the cell at index in the project. 
         """
         return _cmf_core.project_get_cell(self, *args, **kwargs)
 
@@ -8513,7 +8525,9 @@ class project(StateVariableOwner):
         """
         size(self) -> int
 
-        int size() const 
+        int size() const
+
+        The number of cells in the project. 
         """
         return _cmf_core.project_size(self, *args, **kwargs)
 
@@ -8556,7 +8570,9 @@ class project(StateVariableOwner):
         """
         get_reach(self, int index) -> ptr
 
-        cmf::river::Reach::ptr get_reach(int index) 
+        cmf::river::Reach::ptr get_reach(int index)
+
+        Returns the reach at index. 
         """
         return _cmf_core.project_get_reach(self, *args, **kwargs)
 
@@ -8565,7 +8581,9 @@ class project(StateVariableOwner):
         reach_count(self) -> int
 
         int reach_count()
-        const 
+        const
+
+        Returns the number of reaches in this project. 
         """
         return _cmf_core.project_reach_count(self, *args, **kwargs)
 
@@ -8573,7 +8591,9 @@ class project(StateVariableOwner):
         """
         get_storages(self) -> node_list
 
-        cmf::water::node_list get_storages() 
+        cmf::water::node_list get_storages()
+
+        Returns any storages of this project. 
         """
         return _cmf_core.project_get_storages(self, *args, **kwargs)
 
@@ -8620,7 +8640,14 @@ project_swigregister = _cmf_core.project_swigregister
 project_swigregister(project)
 
 class SoluteWaterIntegrator(Integrator):
-    """Proxy of C++ cmf::math::SoluteWaterIntegrator class"""
+    """
+    A SoluteWaterIntegrator implements the cmf::math::Integrator
+    interface, but consists of two independent ODE-solvers. Added
+    statevariables are sorted by waterstorages and solute storages and
+    assigned to the correct solver.
+
+    C++ includes: WaterSoluteIntegrator.h 
+    """
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
     __repr__ = _swig_repr
     def Copy(self, *args, **kwargs):
