@@ -32,7 +32,7 @@
 namespace cmf {
 	class bc_iterator;
 
-  /// @brief The study area, holding all cells, outlets and streams
+	/// @brief The study area, holding all cells, outlets and streams
 	/// \todo Where the fuck do you describe those stinkin tracers? They should be here!
 	class project	: public cmf::math::StateVariableOwner
 	{
@@ -44,14 +44,20 @@ namespace cmf {
 	protected:
 		virtual void AddStateVariables(cmf::math::StateVariableVector& vector);
 	public:
+		/// The solutes transported by the model
 		const cmf::water::solute_vector solutes;
+		/// The meteorological stations in the project
 		cmf::atmosphere::MeteoStationList meteo_stations;
+		/// The outlets of the model system
 		cmf::water::node_list outlets;
+		/// Returns the vector of cells in the project
 		const upslope::cell_vector& get_cells() const {return m_cells;}
+		/// Returns the reference to the cell at index in the project
 		upslope::Cell& get_cell(int index)
 		{
 			return *m_cells.at(index<0 ? m_cells.size()+index : index);
 		}
+		/// The number of cells in the project
 		int size() const { return int(m_cells.size());}
 		/// If set to true, creation and deletion of objects is logged
 		bool debug;
@@ -69,10 +75,11 @@ namespace cmf {
 		/// The potential of the Drichelet boundary equals p.z
 		cmf::water::DricheletBoundary::ptr NewOutlet(std::string name,double x, double y, double z);
 
-
+		/// Returns the reach at index
 		cmf::river::Reach::ptr get_reach(int index);
+		/// Returns the number of reaches in this project
 		int reach_count() const {return int(m_reaches.size());}
-
+		/// Returns any storages of this project
 		cmf::water::node_list get_storages();
 		/// Creates a new reach
 		cmf::river::Reach::ptr NewReach(double x,double y, double z, double length, char Type='T',double width=0.5,double depth=0.1, bool diffusive=false);

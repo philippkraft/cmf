@@ -1,0 +1,59 @@
+/**
+@page LM Building a landscape model
+
+Building a landscape model consists of the followng steps
+ -# @ref lm_project
+ -# @ref lm_discr_horiz
+ -# @ref lm_discr_vert
+ -# @ref lm_connect
+
+@section lm_project Creating a project
+@see cmf::project
+
+A project is the container for all parts of a the landscape model. It holds the cells,
+surface water bodies and the boundary conditions, and the meteorological stations.
+When creating a project, the tracers to be used in the study need to be specified.
+
+@code
+import cmf
+# Creates a project with three tracers, named NO3, NH4 and DOC
+project=cmf.project("NO3 NH4 DOC")
+@endcode
+
+@section lm_discr_horiz Horizontal discretization
+
+To create a landscape model, the study area must be discreized into finite volumes (\ref FVM).
+First horizontally, dividing the surface into cells, and secondly \ref lm_discr_vert "vertically".
+Cells have their position and area, as well as topological information as properties.
+
+This is how two cells might be created manually:
+
+@code
+cell1 = project.NewCell(x1,y1,z1,Area1)
+cell2 = project.NewCell(x2,y2,z2,Area2)
+cell1.topology.AddNeighbor(cell2,length_of_shared_boundary)
+cell2.topology.AddNeighbor(cell1,length_of_shared_boundary)
+@endcode
+
+For larger study areas then single hillslopes, this technique can become tedious, thus automatisation might help.
+The Python interface has already built in support for raster datasets and polygons from ESRI shapefiles. Code for
+the creation squared cells from a raster dataset might look like:
+
+@code
+dem = cmf.DoubleRaster('dem.asc') # loads an ESRI ASCII Raster
+cmf.cells_from_dem(project,dem)   # creates fully meshed cells
+@endcode
+
+For creating cells from an irregular network, created from a shapefile, please refer to the internal documentation.
+
+
+@see cmf::upslope::Cell
+@copydoc cmf::upslope::Cell
+@section lm_discr_vert Vertical discretization
+@see cmf::upslope::SoilLayer
+@section lm_connect Connecting volumes
+@copydoc connections
+@see connections
+
+
+**/
