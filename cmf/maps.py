@@ -47,6 +47,7 @@ class Map(object):
         return self.default
     def __nonzero__(self):
         return not self._default is None
+
 class simple_quad_tree:
     def add_object(self,object,bounds):
         imin=int(bounds[0]/self.dx)
@@ -155,7 +156,7 @@ class raster_map(Map):
         elif isinstance(source,str):
             self._raster=raster.Raster(source, 'i')
         else:
-            raise ValueError('Expected Raster of string as a source')
+            raise ValueError('Expected Raster or string as a source')
         self._objects={}
     @property
     def raster(self):
@@ -173,8 +174,8 @@ class raster_map(Map):
             yield v
     def __call__(self,x,y,z=0):
         v=self._raster(x,y)
-        if v!=self._raster.nodata and v in self._objects:
-            return self._objects[v]
+        if v!=self._raster.nodata:
+            return self._objects.get(v,self.default)
         else:
             return self.default
     def __nonzero__(self):

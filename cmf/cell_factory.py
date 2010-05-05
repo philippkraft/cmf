@@ -65,8 +65,8 @@ class cell_tree(object):
         self.__data[cell]=[]
         for n,w in cell.neighbors:
             if n.topology.MainOutlet() == cell:
-                 self.__data[cell].append(n)
-                 self.__addbranch(n)
+                self.__data[cell].append(n)
+                self.__addbranch(n)
     def __init__(self,start_cell):
         self.start=start_cell
         self.__data={}
@@ -359,7 +359,7 @@ def cells_from_polygons(project,features,shape_callable=lambda feat:feat.shape,i
         print len(features),' %0.2f sec. %i comparisons' % (time.clock()-start,cmp_count)
     cmf.Topology.calculate_contributing_area()
     return cell_dict  
-def cells_from_dem(project,dem,use_diagonals=True):
+def cells_from_dem(project,dem,direction_count=8):
     """ Adds square cells from a dem to the project, and meshes them.
     project       : cmf.project, where the cells should be added to
     dem           : a Raster representing the heights of cells
@@ -374,6 +374,10 @@ def cells_from_dem(project,dem,use_diagonals=True):
         straight flowwidth = cellsize[direction]
         diagonal flowwidth = 0
     """
+    if not direction_count in (1,4,8):
+        raise ValueError("You can only create cells from a dem with " +
+                         "1 (connection to downslope) 4 (straight connections)" +
+                         " or 8 (all neighbors) directions")
     cells_dict={}
     # Create the cells
     for x,y,z,area,c,r in dem.cells:
@@ -384,28 +388,39 @@ def cells_from_dem(project,dem,use_diagonals=True):
                             (x+dem.cellsize[0]*0.5,y-dem.cellsize[1]*0.5),
                             (x-dem.cellsize[0]*0.5,y-dem.cellsize[1]*0.5)))
         cells_dict[c,r]=cell
+    cellsize = 0.5 * (dem.cellsize[0] + dem.cellsize[1])
     for c,r in cells_dict:
         act_cell=cells_dict[c,r]
-        if use_diagonals:
+        if direction_count == 8:
             for nc,nr,nv,nd,dirx,diry in dem.neighbors(c, r):
                 n_cell=cells_dict[nc,nr]
                 if (dirx and diry): # diagonal
-                    flow_width=0.354*0.5*(dem.cellsize[0]+dem.cellsize[1])
+                    flow_width=0.354*cellsize
                 else:
                     flow_width=0.5*(abs(dem.cellsize[0]*dirx)+abs(dem.cellsize[1]*diry))
                 act_cell.topology.AddNeighbor(n_cell,flow_width)
-        else:
+        elif direction_count == 4:
             for nc,nr in ((c-1,r),(c,r+1),(c+1,r),(c,r-1)):
                 n_cell=cells_dict.get((nc,nr))
                 if n_cell:
                     flow_width=dem.cellsize[int(nc==c)]
                     act_cell.topology.AddNeighbor(n_cell,flow_width)
+        elif direction_count == 1:
+            # Get the lowest neighbor
+            nc,nr,nv,nd,dirx,diry = min(dem.neighbors(c,r),key=lambda t : (t[2]-act_cell.z)/t[3])
+            n_cell = cells_dict[nc,nr]
+            if act_cell.z>n_cell.z:
+                if (dirx and diry): # diagonal
+                    flow_width=0.354*cellsize
+                else:
+                    flow_width=0.5*(abs(dem.cellsize[0]*dirx)+abs(dem.cellsize[1]*diry))
+                act_cell.topology.AddNeighbor(n_cell,flow_width)
     cmf.Topology.calculate_contributing_area(project.cells)
     return cells_dict
         
-def project_from_dem(dem,tracer_string=''):
+def project_from_dem(dem,tracer_string='',dir_count=8):
     p = cmf.project(tracer_string)
-    cells_from_dem(p,dem)
+    cells_from_dem(p,dem,dir_count)
     return p
     
         
