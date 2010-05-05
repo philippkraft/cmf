@@ -125,7 +125,7 @@ namespace cmf {
 		};
 
 
-
+		/// A minimal implementation of Locatable
 		class Location : public Locatable
 		{
 		private:
@@ -139,7 +139,7 @@ namespace cmf {
 			Location(double x, double y, double z) 
 				: place(new point(x,y,z)) {}
 		};
-
+		/// Holds three arrays x,y and z for fast access of point coordinates
 		class point_vector
 		{
 		public:
