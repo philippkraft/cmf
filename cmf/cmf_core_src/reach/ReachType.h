@@ -271,6 +271,7 @@ namespace cmf {
 			RectangularReach* copy() const;
 
 		};
+		/// Describes the geometry of a closed pipe
 		class PipeReach : public IChannel
 		{
 		private:

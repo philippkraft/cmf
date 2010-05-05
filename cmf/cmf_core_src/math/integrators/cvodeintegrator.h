@@ -71,14 +71,14 @@ namespace cmf {
 			/// Create a new CVODE integrator
 			/// @param epsilon relative and absolute error tolerance
 			/// @param tStepMin Minimal timestep
-			CVodeIntegrator(real epsilon=1e-9,cmf::math::Time tStepMin=Time::Milliseconds(50)) 
-			: Integrator(epsilon,tStepMin), m_y(0),cvode_mem(0),precond_mem(0),preconditioner('N'),maxl(5),LinearSolver(3),
+			CVodeIntegrator(real epsilon=1e-9,char _preconditioner='R') 
+			: Integrator(epsilon,Time::Milliseconds(50)), m_y(0),cvode_mem(0),precond_mem(0),preconditioner(_preconditioner),maxl(5),LinearSolver(3),
 			MaxOrder(5),MaxNonLinearIterations(3),MaxErrorTestFailures(10),MaxConvergenceFailures(7),reinit_always(false),max_step(day)
 			{	
 				cvode_mem=0;
 			}
-			CVodeIntegrator(cmf::math::StateVariableOwner& states, real epsilon=1e-9,cmf::math::Time tStepMin=Time::Milliseconds(50)) 
-				: Integrator(states,epsilon,tStepMin), m_y(0),cvode_mem(0),precond_mem(0),preconditioner('N'),maxl(5),LinearSolver(3),
+			CVodeIntegrator(cmf::math::StateVariableOwner& states, real epsilon=1e-9,char _preconditioner='R') 
+				: Integrator(states,epsilon,Time::Milliseconds(50)), m_y(0),cvode_mem(0),precond_mem(0),preconditioner(_preconditioner),maxl(5),LinearSolver(3),
 				MaxOrder(5),MaxNonLinearIterations(3),MaxErrorTestFailures(10),MaxConvergenceFailures(7),reinit_always(false),max_step(day)
 			{
 				cvode_mem=0;

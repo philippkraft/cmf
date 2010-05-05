@@ -23,6 +23,9 @@
 #include "../../water/SoluteStorage.h"
 namespace cmf {
 	namespace math {
+		/// A SoluteWaterIntegrator implements the cmf::math::Integrator interface, but consists of 
+		/// two independent ODE-solvers. Added statevariables are sorted by waterstorages and solute storages and
+		/// assigned to the correct solver.
 		class SoluteWaterIntegrator : public cmf::math::Integrator
 		{
 		protected:

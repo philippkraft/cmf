@@ -28,19 +28,17 @@ namespace cmf {
 	/// Contains classes for numerical solving of ODE's
   namespace math {
 		/// Abstract class state variable
+		///		
+		///		Simple exponential system class header implementing a state variable:
+		///		@code
+		///		class RateGrowth
+		///		{
+		///		public:
+		///			real rate;
+		///			virtual real Derivate(const cmf::math::Time& time) {return rate*get_state();}
+		///		};
+		///		@endcode
 		///
-		/*! Abstract class state variable
-				
-				Simple exponential system class header implementing a state variable:
-				@code
-				class RateGrowth
-				{
-				public:
-					real rate;
-					virtual real Derivate(const cmf::math::Time& time) {return rate*get_state();}
-				};
-				@endcode
-		*/
 		class StateVariable
 		{
 		private:
