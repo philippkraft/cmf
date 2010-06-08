@@ -224,6 +224,7 @@ static cmf::math::Time convert_datetime_to_cmftime(PyObject* dt)
     def from_sequence(cls,begin,step,sequence=[],interpolation_mode=1):
         res=cls(begin,step,interpolation_mode)
         res.extend(sequence)
+        return res
         
     @classmethod
     def from_buffer(cls,buf):
@@ -231,6 +232,7 @@ static cmf::math::Time convert_datetime_to_cmftime(PyObject* dt)
         header=struct.unpack('qqqq',buffer[:header_length])
         res=cls(header[1]*ms,header[2]*ms,header[3])
         res.extend(struct.unpack('%id' % header[0],*buffer(buf,header_length,header[0]*8)))
+        return res
     @classmethod
     def from_file(cls,f):
         """ Loads a timeseries saved with to_file from a file 

@@ -17,7 +17,7 @@
 //   along with cmf.  If not, see <http://www.gnu.org/licenses/>.
 //   
 SWIG_SHARED_PTR(MeteoStation,cmf::atmosphere::MeteoStation)
-
+SWIG_SHARED_PTR(RainfallStation,cmf::atmosphere::RainfallStation)
 %{
 	#include "atmosphere/meteorology.h"
 	#include "atmosphere/precipitation.h"
@@ -63,10 +63,22 @@ SWIG_SHARED_PTR(MeteoStation,cmf::atmosphere::MeteoStation)
         return "cmf.MeteoStation(%s,lat=%0.5g,lon=%0.5g,z=%6.1f)" % (self.Name,self.Latitude,self.Longitude,self.z)
     }
 }
-%extent cmf::water::RainCloud {
-	std::string __repr__()	{
-		return $self->to_string();
-	}
+%rename(__repr__) cmf::atmosphere::RainfallStation::tostring;
+%extend cmf::atmosphere::RainfallStation {
+    double __call__(cmf::math::Time t) const { return $self->data[t]; }
 }
-
+%rename(__getitem__) cmf::atmosphere::RainfallStationList::operator[];
+%rename(__len__) cmf::atmosphere::RainfallStationList::size;
+%rename(__call__) cmf::atmosphere::RainSource::operator();
 %include "precipitation.h"
+
+%extend cmf::atmosphere::RainfallStationList {
+    %pythoncode {
+    def __repr__(self):
+        return repr(list(self))
+    def __iter__(self):
+        for i in range(len(self)):
+            yield self[i]
+    }
+}
+    

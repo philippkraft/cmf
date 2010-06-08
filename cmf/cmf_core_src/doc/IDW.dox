@@ -1,0 +1,26 @@
+/**
+@page IDW Inverse distance to a power (IDW) interpolation method
+@section IDW Inverse distance to a power (IDW) interpolation method
+
+Rainfall and other meterological data can be interpolated in space using the well known IDW interpolation technique.
+Since many variations of this simple interpolation technique exist, the one used in cmf sis described.
+Any spatial interpolation is a function of place and known data at places. The IDW function reads as:
+
+@f{eqnarray*}
+f(x,y,z,t) &=& \frac{\sum^N_{i=1}{f_i(t) \frac 1 {d_i(x,y,z)^2}}}{\sum^N_{i=0}{\frac 1 {d_i(x,y,z)^2}}}  \\
+d_i(x,y,z) &=& w_z \left|z-z_i\right| + \sqrt{\left(x-x_i\right)^2 + \left(y-y_i\right)^2} 
+@f}
+
+where:
+
+- @f$ x,y,z @f$ is the actual spatial position
+- @f$ t @f$ is the actual time step
+- @f$ N @f$ is the number of stations
+- @f$ f_i(t) @f$ is a data value of station @f$i@f$ and time step @f$t@f$
+- @f$ d_i(x,y,z)@f$ is the distance / proximity function of station @f$i@f$ for position @f$x,y,z@f$
+- @f$ x_i, y_i, z_i @f$ is the spatial position of station @f$i@f$
+- @f$ w_z @f$ is a weight parameter. This parameter can be used change the influence of height differences 
+on the proximity of places. @f$w_z=0@f$ resolves in a pure horizontal distance calculation, while very heigh values (eg. 10 000)
+resolve in an interpolation by height. Intermediate values (e.g. 10), depending on the height differences in the study area can 
+lead to realistic distributions of spatiotemporal values in the landscape.
+**/

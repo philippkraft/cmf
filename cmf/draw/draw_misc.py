@@ -21,6 +21,7 @@ import pylab
 import numpy
 from cmf.cell_factory import geometry as geoms
 import cmf.cell_factory
+import os
 
 class cell_polygon_map(object):
     def __call__(self,recalc_range=False):
@@ -149,7 +150,45 @@ class cell_quiver(object):
         self.quiver.scale = value
         self()
     scale = property(__get_scale,__set_scale)
-import os
+class quiver3d(object):
+    def __init__(self,objects,t,zscale=1.0,**kwargs):
+        """Invokes mlab.quiver3d. Mayavi 2 by Enthought has to be installed
+        objects: Either a cmf.node_list or a sequence of cells
+        t      : A cmf.Time or a datetime.datetime object
+        keywords are passed to mlab.quiver3d
+        """
+        try:
+            from enthought.mayavi import mlab
+            from numpy import asarray, meshgrid
+        except ImportError:
+            raise NotImplementedError("Raster.draw3d needs an installation of mayavi to work")
+        if isinstance(objects,cmf.node_list):
+            p=objects.get_positions()
+            f=objects.get_fluxes3d(t)
+        elif isinstance(objects,cmf.project):
+            p=cmf.cell_positions(objects.cells)
+            f=cmf.cell_fluxes(objects.cells,t)
+        elif isinstance(objects[0],cmf.Cell):
+            p=cmf.cell_positions(objects)
+            f=cmf.cell_fluxes(objects,t)
+        else:
+            raise ValueError("Given objects are not a nodelist or a sequence of cells")
+        self.objects = objects
+        self.zscale = zscale
+        self.quiver = mlab.quiver3d(p.X,p.Y,p.Z,f.X,f.Y,f.Z*zscale,**kwargs)
+    def __call__(self,t):
+        if isinstance(objects,cmf.node_list):
+            f=objects.get_fluxes3d(t)
+        elif isinstance(objects,cmf.project):
+            f=cmf.cell_fluxes(objects.cells,t)
+        elif isinstance(objects[0],cmf.Cell):
+            f=cmf.cell_fluxes(objects,t)
+        else:
+            raise ValueError("Given objects are not a nodelist or a sequence of cells")
+        self.quiver.mlab_source.set(u=f.X,v=f.Y,w=f.Z*self.zscale)
+        
+
+
 try:
     import Image
     def plot_image(filename,**kwargs):

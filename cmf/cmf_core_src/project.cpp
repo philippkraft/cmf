@@ -107,3 +107,36 @@ cmf::water::DricheletBoundary::ptr cmf::project::NewOutlet( std::string name,dou
 	outlets.append(res);
 	return res;
 }
+
+void cmf::project::use_IDW_meteo( double z_weight/*=0*/,double power/*=2*/ )
+{
+	for(upslope::cell_vector::iterator it = m_cells.begin(); it != m_cells.end(); ++it)
+	{
+		cmf::atmosphere::IDW_Meteorology meteo(**it,this->meteo_stations,z_weight,power);
+		(**it).set_meteorology(meteo);
+	}
+}
+
+void cmf::project::use_nearest_meteo( double z_weight/*=0*/ )
+{
+	for(upslope::cell_vector::iterator it = m_cells.begin(); it != m_cells.end(); ++it)
+	{	
+		(**it).set_meteorology(this->meteo_stations.reference_to_nearest(**it,z_weight));
+	}
+
+}
+
+void cmf::project::use_IDW_rainfall( double z_weight/*=0*/,double power/*=2*/ )
+{
+	for(upslope::cell_vector::iterator it = m_cells.begin(); it != m_cells.end(); ++it)
+	{
+		cmf::atmosphere::IDWRainfall::ptr rs = cmf::atmosphere::IDWRainfall::create(*this,(**it).get_position(),z_weight,power);
+		(**it).set_rain_source(rs);
+	}
+}
+
+void cmf::project::use_nearest_rainfall( double z_weight/*=0*/ )
+{
+	for(upslope::cell_vector::iterator it = m_cells.begin(); it != m_cells.end(); ++it)
+		(**it).set_rain_source(cmf::atmosphere::RainfallStationReference::from_nearest_station(*this,(**it).get_position(),z_weight));
+}

@@ -140,6 +140,12 @@ from math import *
         def extent(self):
             "The extent of the raster (width,height) in map coordinates"
             return self.llcorner[0],self.llcorner[0]+self.shape[1]*self.cellsize[0],self.llcorner[1],self.llcorner[1]+self.shape[0]*self.cellsize[1]
+        @property
+        def x_coordinates(self):
+            return [self.llcorner[0]+(i+0.5) * self.cellsize[0] for i in range(self.shape[1])]
+        @property
+        def y_coordinates(self):
+            return [self.llcorner[1]+(i+0.5) * self.cellsize[1] for i in range(self.shape[0])]
         def neighbors(self,x,y):
             """ Returns a list of the neighbors to the given position
             x,y are intepreted as real coordinates, if they are floating point numbers,
@@ -161,10 +167,10 @@ from math import *
             return res
         def xy(self,col,row):
             "Gets a position in world coordinates from a position in the dataset (col,row)->(x,y)"
-            return (col*self.cellsize[0]+self.llcorner[0],(self.shape[0]-row)*self.cellsize[1]+self.llcorner[1])
+            return (col*self.cellsize[0]+self.llcorner[0]+0.5*self.cellsize[0],(self.shape[0]-row)*self.cellsize[1]+self.llcorner[1]+0.5*self.cellsize[0])
         def colrow(self,x,y):
             "Gets a position in the dataset from world coordinates (x,y)->(colr,row)"
-            return (int((x-self.corner[0])/self.cellsize[0]),int(self.shape[0]-(y-self.corner[1])/self.cellsize[1]))
+            return (int((x-self.llcorner[0])/self.cellsize[0]),int(self.shape[0]-(y-selfll.corner[1])/self.cellsize[1]))
         @property
         def nodata(self):
             "Gets the no data value of the raster"
@@ -263,6 +269,8 @@ from math import *
             """ Creates a new raster of type single (floating point 32) from self """
             res=self.raster.ToSingle()
             return Raster(dtype=self.dtype,raster=res)
+        def fill(self,min_diff=0.01,max_iter=100,debug=False):
+            return self.raster.fill(min_diff,max_iter,debug)
         @property
         def mask(self):
             res=self.raster.HasData()
@@ -406,7 +414,32 @@ from math import *
             fmt="Raster<%s>: n=%i,min=%g,mean=%g,max=%g,stdev=%g,row,col=%s,cellsize=(%g,%g)"
             return fmt % (self.dtype,stat.count,stat.min,stat.mean,stat.max,stat.stdev,
                           self.shape,self.cellsize[0],self.cellsize[1])
-
+        def draw3D(self,dem=None,vmin=None,vmax=None):
+            '''Draws a 3d representation of self using the mlab module of Mayavi2 
+            from Enthought. It needs to be installed.
+            Code is inspired http://gael-varoquaux.info/blog/?p=128
+            dem is a raster with the same extent as self used for the elevation. Default is self
+            vmin, vmax represent the value extent, by default it is the z extent of self
+            '''
+            
+            try:
+                from enthought.mayavi import mlab
+                from numpy import asarray, meshgrid
+            except ImportError:
+                raise NotImplementedError("Raster.draw3d needs an installation of mayavi to work")
+            if dem is None:
+                dem = self
+            dem_array = dem.asarray()
+            if vmin is None:
+                vmin = self.statistics.min
+            if vmax is None:
+                vmax = self.statistics.max
+            x,y = meshgrid(dem.x_coordinates, dem.y_coordinates)
+            mesh = mlab.mesh(x[::-1,...],y[::-1,...],dem_array.data,
+                             scalars = asarray(self),
+                             mask = dem_array.mask,
+                             vmin=vmin,
+                             vmax=vmax)
+            return mesh
 }
-
 

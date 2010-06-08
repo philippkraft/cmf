@@ -222,6 +222,14 @@ class point(object):
         """
         return _cmf_core.point_distanceTo(self, *args, **kwargs)
 
+    def z_weight_distance(self, *args, **kwargs):
+        """
+        z_weight_distance(self, point p, double z_weight) -> double
+
+        double z_weight_distance(point p, double z_weight) const 
+        """
+        return _cmf_core.point_z_weight_distance(self, *args, **kwargs)
+
     def distance3DTo(self, *args, **kwargs):
         """
         distance3DTo(self, point p) -> double
@@ -351,6 +359,7 @@ class point(object):
     __swig_destroy__ = _cmf_core.delete_point
 point.Center = new_instancemethod(_cmf_core.point_Center,None,point)
 point.distanceTo = new_instancemethod(_cmf_core.point_distanceTo,None,point)
+point.z_weight_distance = new_instancemethod(_cmf_core.point_z_weight_distance,None,point)
 point.distance3DTo = new_instancemethod(_cmf_core.point_distance3DTo,None,point)
 point.distance_max = new_instancemethod(_cmf_core.point_distance_max,None,point)
 point.azimuth = new_instancemethod(_cmf_core.point_azimuth,None,point)
@@ -1546,6 +1555,7 @@ class timeseries(object):
     def from_sequence(cls,begin,step,sequence=[],interpolation_mode=1):
         res=cls(begin,step,interpolation_mode)
         res.extend(sequence)
+        return res
         
     @classmethod
     def from_buffer(cls,buf):
@@ -1553,6 +1563,7 @@ class timeseries(object):
         header=struct.unpack('qqqq',buffer[:header_length])
         res=cls(header[1]*ms,header[2]*ms,header[3])
         res.extend(struct.unpack('%id' % header[0],*buffer(buf,header_length,header[0]*8)))
+        return res
     @classmethod
     def from_file(cls,f):
         """ Loads a timeseries saved with to_file from a file 
@@ -3691,9 +3702,9 @@ flux_connection_swigregister(flux_connection)
 
 def replace_node(*args, **kwargs):
   """
-    replace_node(ptr oldnode, ptr newnode)
+    replace_node(ptr oldnode, ptr newnode) -> int
 
-    void
+    int
     cmf::water::replace_node(cmf::water::flux_node::ptr oldnode,
     cmf::water::flux_node::ptr newnode) 
     """
@@ -3914,7 +3925,7 @@ class TechnicalFlux(flux_connection):
     FluxDecreaseTime = _swig_property(_cmf_core.TechnicalFlux_FluxDecreaseTime_get, _cmf_core.TechnicalFlux_FluxDecreaseTime_set)
     def __init__(self, *args, **kwargs): 
         """
-        __init__(self, __dummy_12__ source, __dummy_4__ target, real maximum_flux, 
+        __init__(self, __dummy_18__ source, __dummy_4__ target, real maximum_flux, 
             real minimal_state = 0, Time flux_decrease_time = h) -> TechnicalFlux
 
         TechnicalFlux(std::tr1::shared_ptr< cmf::water::WaterStorage >
@@ -3977,7 +3988,7 @@ class WaterStorage(StateVariable,StateVariableOwner,flux_node):
         """
         _cmf_core.WaterStorage_swiginit(self,_cmf_core.new_WaterStorage(*args, **kwargs))
     def from_node(*args, **kwargs):
-        """from_node(ptr node) -> __dummy_12__"""
+        """from_node(ptr node) -> __dummy_18__"""
         return _cmf_core.WaterStorage_from_node(*args, **kwargs)
 
     from_node = staticmethod(from_node)
@@ -4005,17 +4016,17 @@ class WaterStorage(StateVariable,StateVariableOwner,flux_node):
         return _cmf_core.WaterStorage_conc(self, *args)
 
     def cast(*args, **kwargs):
-        """cast(__dummy_4__ node) -> __dummy_12__"""
+        """cast(__dummy_4__ node) -> __dummy_18__"""
         return _cmf_core.WaterStorage_cast(*args, **kwargs)
 
     cast = staticmethod(cast)
     def create(*args, **kwargs):
-        """create(project _project, real initial_state = 0.0) -> __dummy_12__"""
+        """create(project _project, real initial_state = 0.0) -> __dummy_18__"""
         return _cmf_core.WaterStorage_create(*args, **kwargs)
 
     create = staticmethod(create)
     def SWIGSharedPtrUpcast(*args, **kwargs):
-        """SWIGSharedPtrUpcast(__dummy_12__ swigSharedPtrUpcast) -> __dummy_4__"""
+        """SWIGSharedPtrUpcast(__dummy_18__ swigSharedPtrUpcast) -> __dummy_4__"""
         return _cmf_core.WaterStorage_SWIGSharedPtrUpcast(*args, **kwargs)
 
     SWIGSharedPtrUpcast = staticmethod(SWIGSharedPtrUpcast)
@@ -4031,19 +4042,19 @@ WaterStorage_swigregister = _cmf_core.WaterStorage_swigregister
 WaterStorage_swigregister(WaterStorage)
 
 def WaterStorage_from_node(*args, **kwargs):
-  """WaterStorage_from_node(ptr node) -> __dummy_12__"""
+  """WaterStorage_from_node(ptr node) -> __dummy_18__"""
   return _cmf_core.WaterStorage_from_node(*args, **kwargs)
 
 def WaterStorage_cast(*args, **kwargs):
-  """WaterStorage_cast(__dummy_4__ node) -> __dummy_12__"""
+  """WaterStorage_cast(__dummy_4__ node) -> __dummy_18__"""
   return _cmf_core.WaterStorage_cast(*args, **kwargs)
 
 def WaterStorage_create(*args, **kwargs):
-  """WaterStorage_create(project _project, real initial_state = 0.0) -> __dummy_12__"""
+  """WaterStorage_create(project _project, real initial_state = 0.0) -> __dummy_18__"""
   return _cmf_core.WaterStorage_create(*args, **kwargs)
 
 def WaterStorage_SWIGSharedPtrUpcast(*args, **kwargs):
-  """WaterStorage_SWIGSharedPtrUpcast(__dummy_12__ swigSharedPtrUpcast) -> __dummy_4__"""
+  """WaterStorage_SWIGSharedPtrUpcast(__dummy_18__ swigSharedPtrUpcast) -> __dummy_4__"""
   return _cmf_core.WaterStorage_SWIGSharedPtrUpcast(*args, **kwargs)
 
 class storage_vector(object):
@@ -4655,9 +4666,9 @@ def Pressure(*args, **kwargs):
 class Weather(object):
     """
     A structure holding meteorological information, excluding
-    precipitation.
+    precipitation
 
-    C++ includes: meteorology.h 
+    C++ includes: Meteorology.h 
     """
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
     __repr__ = _swig_repr
@@ -4670,7 +4681,7 @@ class Weather(object):
     e_s = _swig_property(_cmf_core.Weather_e_s_get, _cmf_core.Weather_e_s_set)
     sunshine = _swig_property(_cmf_core.Weather_sunshine_get, _cmf_core.Weather_sunshine_set)
     Rs = _swig_property(_cmf_core.Weather_Rs_get, _cmf_core.Weather_Rs_set)
-    instument_height = _swig_property(_cmf_core.Weather_instument_height_get, _cmf_core.Weather_instument_height_set)
+    instrument_height = _swig_property(_cmf_core.Weather_instrument_height_get, _cmf_core.Weather_instrument_height_set)
     def Rn(self, *args, **kwargs):
         """
         Rn(self, double albedo, bool daily = False) -> double
@@ -4712,7 +4723,27 @@ class Weather(object):
             double _wind = 2, double _sunshine = 0.5, double _Rs = 15) -> Weather
 
         Weather(double _T, double _Tmax, double _Tmin, double _rH, double
-        _wind=2, double _sunshine=0.5, double _Rs=15) 
+        _wind=2, double _sunshine=0.5, double _Rs=15)
+
+        Creates a "weather" from given data
+
+        Parameters:
+        -----------
+
+        _T:  actual Temperature in deg C
+
+        _Tmax:  daily maximum Temperature in deg C
+
+        _Tmin:  daily minimum Temperature in deg C
+
+        _rH:  actual relative humidity in % [0..100]
+
+        _wind:  actual wind speed in m/s
+
+        _sunshine:  actual fraction of sunshine duration per potential
+        sunshine duration in h/h
+
+        _Rs:  actual incoming shortwave global radiation in MJ/(m2 day) 
         """
         _cmf_core.Weather_swiginit(self,_cmf_core.new_Weather(*args))
     def to_string(self, *args, **kwargs):
@@ -4724,6 +4755,22 @@ class Weather(object):
         return _cmf_core.Weather_to_string(self, *args, **kwargs)
 
     snow_threshold = _swig_property(_cmf_core.Weather_snow_threshold_get, _cmf_core.Weather_snow_threshold_set)
+    def __iadd__(self, *args, **kwargs):
+        """__iadd__(self, Weather w) -> Weather"""
+        return _cmf_core.Weather___iadd__(self, *args, **kwargs)
+
+    def __imul__(self, *args, **kwargs):
+        """__imul__(self, double factor) -> Weather"""
+        return _cmf_core.Weather___imul__(self, *args, **kwargs)
+
+    def __add__(self, *args, **kwargs):
+        """__add__(self, Weather w) -> Weather"""
+        return _cmf_core.Weather___add__(self, *args, **kwargs)
+
+    def __mul__(self, *args, **kwargs):
+        """__mul__(self, double factor) -> Weather"""
+        return _cmf_core.Weather___mul__(self, *args, **kwargs)
+
     def __repr__(self):
         return "cmf.Weather()"
     def __str__(self):
@@ -4732,6 +4779,10 @@ class Weather(object):
     __swig_destroy__ = _cmf_core.delete_Weather
 Weather.Rn = new_instancemethod(_cmf_core.Weather_Rn,None,Weather)
 Weather.to_string = new_instancemethod(_cmf_core.Weather_to_string,None,Weather)
+Weather.__iadd__ = new_instancemethod(_cmf_core.Weather___iadd__,None,Weather)
+Weather.__imul__ = new_instancemethod(_cmf_core.Weather___imul__,None,Weather)
+Weather.__add__ = new_instancemethod(_cmf_core.Weather___add__,None,Weather)
+Weather.__mul__ = new_instancemethod(_cmf_core.Weather___mul__,None,Weather)
 Weather_swigregister = _cmf_core.Weather_swigregister
 Weather_swigregister(Weather)
 
@@ -4740,7 +4791,7 @@ class Meteorology(object):
     An abstract class, for objects generating Weather records at a
     specific time.
 
-    C++ includes: meteorology.h 
+    C++ includes: Meteorology.h 
     """
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
     def __init__(self, *args, **kwargs): raise AttributeError("No constructor defined - class is abstract")
@@ -4795,7 +4846,7 @@ class ConstantMeteorology(Meteorology):
     A primitive implementation of the Meteorology interface. Holds a
     Weather record and returns it for any date.
 
-    C++ includes: meteorology.h 
+    C++ includes: Meteorology.h 
     """
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
     __repr__ = _swig_repr
@@ -4878,7 +4929,7 @@ class MeteoStation(Locatable):
     # Daily mean Rs, since daily=true print 'Temperature:',weather.T
     # Daily mean T, since nothing else in known
 
-    C++ includes: meteorology.h 
+    C++ includes: Meteorology.h 
     """
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
     __repr__ = _swig_repr
@@ -5005,7 +5056,7 @@ class MeteoStationReference(Meteorology,Locatable):
     A reference to a meteorological station. Returns the weather at a
     given time for its place using MeteoStation::T_lapse.
 
-    C++ includes: meteorology.h 
+    C++ includes: Meteorology.h 
     """
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
     __repr__ = _swig_repr
@@ -5052,7 +5103,7 @@ class MeteoStationList(object):
     Can find the nearest station for a position and calculate the
     temperature lapse
 
-    C++ includes: meteorology.h 
+    C++ includes: Meteorology.h 
     """
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
     __repr__ = _swig_repr
@@ -5190,42 +5241,358 @@ MeteoStationList.reference_to_nearest = new_instancemethod(_cmf_core.MeteoStatio
 MeteoStationList_swigregister = _cmf_core.MeteoStationList_swigregister
 MeteoStationList_swigregister(MeteoStationList)
 
-class RainCloud(NeumannBoundary):
+class IDW_Meteorology(Meteorology):
     """
-    RainCloud is a specialization of NeumannBoundary . The only difference
-    is a reference to the owning cell and the unit conversion of the flux
-    timeseries from mm/day to m3/day
+    Regionalizes meteorological measurements using a simple inverse
+    distance weighted (IDW) method See:  IDW
 
-    C++ includes: precipitation.h 
+    C++ includes: Meteorology.h 
     """
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
-    def __init__(self, *args, **kwargs): raise AttributeError("No constructor defined")
     __repr__ = _swig_repr
-    def get_cell(self, *args, **kwargs):
+    def __init__(self, *args): 
         """
-        get_cell(self) -> Cell
+        __init__(self, Locatable position, MeteoStationList stations, double z_weight, 
+            double power) -> IDW_Meteorology
+        __init__(self, IDW_Meteorology copy) -> IDW_Meteorology
 
-        const
-        cmf::upslope::Cell& get_cell() const 
+        IDW_Meteorology(const IDW_Meteorology &copy) 
         """
-        return _cmf_core.RainCloud_get_cell(self, *args, **kwargs)
+        _cmf_core.IDW_Meteorology_swiginit(self,_cmf_core.new_IDW_Meteorology(*args))
+    def copy(self, *args, **kwargs):
+        """
+        copy(self) -> IDW_Meteorology
+
+        virtual IDW_Meteorology* copy() const
+
+        Returns a copy of the meteorology object. Pure virtual function, needs
+        to be implemented. 
+        """
+        return _cmf_core.IDW_Meteorology_copy(self, *args, **kwargs)
+
+    __swig_destroy__ = _cmf_core.delete_IDW_Meteorology
+IDW_Meteorology.copy = new_instancemethod(_cmf_core.IDW_Meteorology_copy,None,IDW_Meteorology)
+IDW_Meteorology_swigregister = _cmf_core.IDW_Meteorology_swigregister
+IDW_Meteorology_swigregister(IDW_Meteorology)
+
+class RainSource(flux_node):
+    """
+    An abstract class for different types of rainfall sources
+
+    C++ includes: Precipitation.h 
+    """
+    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    def __init__(self, *args, **kwargs): raise AttributeError("No constructor defined - class is abstract")
+    __repr__ = _swig_repr
+    def __call__(self, *args, **kwargs):
+        """__call__(self, Time t) -> real"""
+        return _cmf_core.RainSource___call__(self, *args, **kwargs)
+
+    def get_intensity(self, *args, **kwargs):
+        """
+        get_intensity(self, Time t) -> real
+
+        virtual real get_intensity(cmf::math::Time t) const =0
+
+        Returns the actual rainfall intensity in mm/day. 
+        """
+        return _cmf_core.RainSource_get_intensity(self, *args, **kwargs)
+
+    def conc(self, *args, **kwargs):
+        """
+        conc(self, Time t, solute Solute) -> real
+
+        virtual
+        real conc(cmf::math::Time t, const cmf::water::solute &Solute) const
+
+        Returns the water quality of the flux_node, if it is not overridden
+        this is the mix of the incoming fluxes. 
+        """
+        return _cmf_core.RainSource_conc(self, *args, **kwargs)
 
     def SWIGSharedPtrUpcast(*args, **kwargs):
-        """SWIGSharedPtrUpcast(__dummy_10__ swigSharedPtrUpcast) -> __dummy_8__"""
-        return _cmf_core.RainCloud_SWIGSharedPtrUpcast(*args, **kwargs)
+        """SWIGSharedPtrUpcast(__dummy_10__ swigSharedPtrUpcast) -> __dummy_4__"""
+        return _cmf_core.RainSource_SWIGSharedPtrUpcast(*args, **kwargs)
 
     SWIGSharedPtrUpcast = staticmethod(SWIGSharedPtrUpcast)
     def __repr__(self): 
         return self.to_string()
 
-    __swig_destroy__ = _cmf_core.delete_RainCloud
-RainCloud.get_cell = new_instancemethod(_cmf_core.RainCloud_get_cell,None,RainCloud)
-RainCloud_swigregister = _cmf_core.RainCloud_swigregister
-RainCloud_swigregister(RainCloud)
+    __swig_destroy__ = _cmf_core.delete_RainSource
+RainSource.__call__ = new_instancemethod(_cmf_core.RainSource___call__,None,RainSource)
+RainSource.get_intensity = new_instancemethod(_cmf_core.RainSource_get_intensity,None,RainSource)
+RainSource.conc = new_instancemethod(_cmf_core.RainSource_conc,None,RainSource)
+RainSource_swigregister = _cmf_core.RainSource_swigregister
+RainSource_swigregister(RainSource)
 
-def RainCloud_SWIGSharedPtrUpcast(*args, **kwargs):
-  """RainCloud_SWIGSharedPtrUpcast(__dummy_10__ swigSharedPtrUpcast) -> __dummy_8__"""
-  return _cmf_core.RainCloud_SWIGSharedPtrUpcast(*args, **kwargs)
+def RainSource_SWIGSharedPtrUpcast(*args, **kwargs):
+  """RainSource_SWIGSharedPtrUpcast(__dummy_10__ swigSharedPtrUpcast) -> __dummy_4__"""
+  return _cmf_core.RainSource_SWIGSharedPtrUpcast(*args, **kwargs)
+
+class ConstantRainSource(RainSource):
+    """
+    A simple implementation of RainSource. Returns intensity for any time
+    step.
+
+    C++ includes: Precipitation.h 
+    """
+    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __repr__ = _swig_repr
+    intensity = _swig_property(_cmf_core.ConstantRainSource_intensity_get, _cmf_core.ConstantRainSource_intensity_set)
+    def __init__(self, *args, **kwargs): 
+        """
+        __init__(self, project _project, point location, real _intensity) -> ConstantRainSource
+
+        ConstantRainSource(const cmf::project &_project, cmf::geometry::point
+        location, real _intensity)
+
+        Creates a new ConstantRainSource. Consider using Cell::set_rainfall
+        for internal creation of a constant rain source, instead of direct use
+
+        Parameters:
+        -----------
+
+        _project:  The project the rain source is belonging to.
+
+        location:  The location of the rain source
+
+        _intensity:  The constant rainfall intensity in mm/day 
+        """
+        _cmf_core.ConstantRainSource_swiginit(self,_cmf_core.new_ConstantRainSource(*args, **kwargs))
+    def set_conc(self, *args, **kwargs):
+        """
+        set_conc(self, solute Solute, real value)
+
+        void set_conc(const cmf::water::solute &Solute, real value) 
+        """
+        return _cmf_core.ConstantRainSource_set_conc(self, *args, **kwargs)
+
+    def SWIGSharedPtrUpcast(*args, **kwargs):
+        """SWIGSharedPtrUpcast(__dummy_16__ swigSharedPtrUpcast) -> __dummy_10__"""
+        return _cmf_core.ConstantRainSource_SWIGSharedPtrUpcast(*args, **kwargs)
+
+    SWIGSharedPtrUpcast = staticmethod(SWIGSharedPtrUpcast)
+    def __repr__(self): 
+        return self.to_string()
+
+    __swig_destroy__ = _cmf_core.delete_ConstantRainSource
+ConstantRainSource.set_conc = new_instancemethod(_cmf_core.ConstantRainSource_set_conc,None,ConstantRainSource)
+ConstantRainSource_swigregister = _cmf_core.ConstantRainSource_swigregister
+ConstantRainSource_swigregister(ConstantRainSource)
+
+def ConstantRainSource_SWIGSharedPtrUpcast(*args, **kwargs):
+  """ConstantRainSource_SWIGSharedPtrUpcast(__dummy_16__ swigSharedPtrUpcast) -> __dummy_10__"""
+  return _cmf_core.ConstantRainSource_SWIGSharedPtrUpcast(*args, **kwargs)
+
+class RainfallStation(object):
+    """
+    RainfallStation describes a rainfall timeseries in mm/day at a certain
+    place. Use RainfallStationReference or IDWRainfall to distribute the
+    data into space
+
+    C++ includes: Precipitation.h 
+    """
+    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    def create(*args, **kwargs):
+        """create(size_t Id, string Name, timeseries Data, point position) -> ptr"""
+        return _cmf_core.RainfallStation_create(*args, **kwargs)
+
+    create = staticmethod(create)
+    id = _swig_property(_cmf_core.RainfallStation_id_get)
+    name = _swig_property(_cmf_core.RainfallStation_name_get)
+    data = _swig_property(_cmf_core.RainfallStation_data_get, _cmf_core.RainfallStation_data_set)
+    def __repr__(self, *args, **kwargs):
+        """
+        __repr__(self) -> string
+
+        std::string tostring() const
+
+        Returns the name and the mean yearly rainfall. 
+        """
+        return _cmf_core.RainfallStation___repr__(self, *args, **kwargs)
+
+    concentration = _swig_property(_cmf_core.RainfallStation_concentration_get, _cmf_core.RainfallStation_concentration_set)
+    def get_position(self, *args, **kwargs):
+        """
+        get_position(self) -> point
+
+        cmf::geometry::point get_position() const
+
+        Returns the position of the object. 
+        """
+        return _cmf_core.RainfallStation_get_position(self, *args, **kwargs)
+
+    def __init__(self, *args, **kwargs): 
+        """
+        __init__(self, RainfallStation copy) -> RainfallStation
+
+        RainfallStation(const RainfallStation &copy) 
+        """
+        _cmf_core.RainfallStation_swiginit(self,_cmf_core.new_RainfallStation(*args, **kwargs))
+    def __call__(self, *args, **kwargs):
+        """__call__(self, Time t) -> double"""
+        return _cmf_core.RainfallStation___call__(self, *args, **kwargs)
+
+    __swig_destroy__ = _cmf_core.delete_RainfallStation
+RainfallStation.__repr__ = new_instancemethod(_cmf_core.RainfallStation___repr__,None,RainfallStation)
+RainfallStation.get_position = new_instancemethod(_cmf_core.RainfallStation_get_position,None,RainfallStation)
+RainfallStation.__call__ = new_instancemethod(_cmf_core.RainfallStation___call__,None,RainfallStation)
+RainfallStation_swigregister = _cmf_core.RainfallStation_swigregister
+RainfallStation_swigregister(RainfallStation)
+
+def RainfallStation_create(*args, **kwargs):
+  """RainfallStation_create(size_t Id, string Name, timeseries Data, point position) -> ptr"""
+  return _cmf_core.RainfallStation_create(*args, **kwargs)
+
+class RainfallStationList(object):
+    """
+    A list of rainfall stations
+
+    C++ includes: Precipitation.h 
+    """
+    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __repr__ = _swig_repr
+    def __len__(self, *args, **kwargs):
+        """
+        __len__(self) -> size_t
+
+        size_t size() const
+
+        Returns the number of rainfall stations. 
+        """
+        return _cmf_core.RainfallStationList___len__(self, *args, **kwargs)
+
+    def __getitem__(self, *args):
+        """
+        __getitem__(self, int index) -> ptr
+        __getitem__(self, int index) -> ptr
+        """
+        return _cmf_core.RainfallStationList___getitem__(self, *args)
+
+    def add(self, *args, **kwargs):
+        """
+        add(self, string Name, timeseries Data, point Position) -> ptr
+
+        RainfallStation::ptr add(std::string Name, cmf::math::timeseries Data,
+        cmf::geometry::point Position)
+
+        Creates a new RainfallStation and adds it to the list. Usage: The
+        position of the rainfall station will be used as identifier A new
+        rainfall station
+
+        Parameters:
+        -----------
+
+        Name:  Name of the station
+
+        Data:  Rainfall timeseries
+
+        position:  Spatial position of the new station 
+        """
+        return _cmf_core.RainfallStationList_add(self, *args, **kwargs)
+
+    def remove(self, *args, **kwargs):
+        """
+        remove(self, int index)
+
+        void remove(int index) 
+        """
+        return _cmf_core.RainfallStationList_remove(self, *args, **kwargs)
+
+    def __repr__(self):
+        return repr(list(self))
+    def __iter__(self):
+        for i in range(len(self)):
+            yield self[i]
+
+    def __init__(self, *args, **kwargs): 
+        """__init__(self) -> RainfallStationList"""
+        _cmf_core.RainfallStationList_swiginit(self,_cmf_core.new_RainfallStationList(*args, **kwargs))
+    __swig_destroy__ = _cmf_core.delete_RainfallStationList
+RainfallStationList.__len__ = new_instancemethod(_cmf_core.RainfallStationList___len__,None,RainfallStationList)
+RainfallStationList.__getitem__ = new_instancemethod(_cmf_core.RainfallStationList___getitem__,None,RainfallStationList)
+RainfallStationList.add = new_instancemethod(_cmf_core.RainfallStationList_add,None,RainfallStationList)
+RainfallStationList.remove = new_instancemethod(_cmf_core.RainfallStationList_remove,None,RainfallStationList)
+RainfallStationList_swigregister = _cmf_core.RainfallStationList_swigregister
+RainfallStationList_swigregister(RainfallStationList)
+
+class RainfallStationReference(RainSource):
+    """
+    References a single RainfallStation to provide rainfall intensity data
+
+    C++ includes: Precipitation.h 
+    """
+    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    def __init__(self, *args, **kwargs): raise AttributeError("No constructor defined")
+    __repr__ = _swig_repr
+    def from_nearest_station(*args, **kwargs):
+        """from_nearest_station(project project, point position, double z_weight) -> ptr"""
+        return _cmf_core.RainfallStationReference_from_nearest_station(*args, **kwargs)
+
+    from_nearest_station = staticmethod(from_nearest_station)
+    def from_station_id(*args, **kwargs):
+        """from_station_id(project project, point position, size_t id) -> ptr"""
+        return _cmf_core.RainfallStationReference_from_station_id(*args, **kwargs)
+
+    from_station_id = staticmethod(from_station_id)
+    def SWIGSharedPtrUpcast(*args, **kwargs):
+        """SWIGSharedPtrUpcast(__dummy_12__ swigSharedPtrUpcast) -> __dummy_10__"""
+        return _cmf_core.RainfallStationReference_SWIGSharedPtrUpcast(*args, **kwargs)
+
+    SWIGSharedPtrUpcast = staticmethod(SWIGSharedPtrUpcast)
+    def __repr__(self): 
+        return self.to_string()
+
+    __swig_destroy__ = _cmf_core.delete_RainfallStationReference
+RainfallStationReference_swigregister = _cmf_core.RainfallStationReference_swigregister
+RainfallStationReference_swigregister(RainfallStationReference)
+
+def RainfallStationReference_from_nearest_station(*args, **kwargs):
+  """RainfallStationReference_from_nearest_station(project project, point position, double z_weight) -> ptr"""
+  return _cmf_core.RainfallStationReference_from_nearest_station(*args, **kwargs)
+
+def RainfallStationReference_from_station_id(*args, **kwargs):
+  """RainfallStationReference_from_station_id(project project, point position, size_t id) -> ptr"""
+  return _cmf_core.RainfallStationReference_from_station_id(*args, **kwargs)
+
+def RainfallStationReference_SWIGSharedPtrUpcast(*args, **kwargs):
+  """RainfallStationReference_SWIGSharedPtrUpcast(__dummy_12__ swigSharedPtrUpcast) -> __dummy_10__"""
+  return _cmf_core.RainfallStationReference_SWIGSharedPtrUpcast(*args, **kwargs)
+
+class IDWRainfall(RainSource):
+    """
+    A RainSource using an spatially interpolated rainfall intensity from
+    all stations. Interpolation method is inverse distance weighted (IDW)
+
+    C++ includes: Precipitation.h 
+    """
+    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    def __init__(self, *args, **kwargs): raise AttributeError("No constructor defined")
+    __repr__ = _swig_repr
+    def create(*args, **kwargs):
+        """create(project project, point position, double z_weight, double power) -> ptr"""
+        return _cmf_core.IDWRainfall_create(*args, **kwargs)
+
+    create = staticmethod(create)
+    def SWIGSharedPtrUpcast(*args, **kwargs):
+        """SWIGSharedPtrUpcast(__dummy_14__ swigSharedPtrUpcast) -> __dummy_10__"""
+        return _cmf_core.IDWRainfall_SWIGSharedPtrUpcast(*args, **kwargs)
+
+    SWIGSharedPtrUpcast = staticmethod(SWIGSharedPtrUpcast)
+    def __repr__(self): 
+        return self.to_string()
+
+    __swig_destroy__ = _cmf_core.delete_IDWRainfall
+IDWRainfall_swigregister = _cmf_core.IDWRainfall_swigregister
+IDWRainfall_swigregister(IDWRainfall)
+
+def IDWRainfall_create(*args, **kwargs):
+  """IDWRainfall_create(project project, point position, double z_weight, double power) -> ptr"""
+  return _cmf_core.IDWRainfall_create(*args, **kwargs)
+
+def IDWRainfall_SWIGSharedPtrUpcast(*args, **kwargs):
+  """IDWRainfall_SWIGSharedPtrUpcast(__dummy_14__ swigSharedPtrUpcast) -> __dummy_10__"""
+  return _cmf_core.IDWRainfall_SWIGSharedPtrUpcast(*args, **kwargs)
 
 class _cell_object_list:
     def __init__(self,c,kind):
@@ -5409,6 +5776,17 @@ class Cell(StateVariableOwner,Locatable):
         Exchanges a timeseries of rainfall with a constant flux. 
         """
         return _cmf_core.Cell_set_rainfall(self, *args, **kwargs)
+
+    def get_rainfall(self, *args, **kwargs):
+        """
+        get_rainfall(self, Time t) -> double
+
+        double
+        get_rainfall(cmf::math::Time t) const
+
+        Returns the current rainfall flux in m3/day. 
+        """
+        return _cmf_core.Cell_get_rainfall(self, *args, **kwargs)
 
     def get_surfacewater(self, *args, **kwargs):
         """
@@ -5599,7 +5977,7 @@ class Cell(StateVariableOwner,Locatable):
     evaporation = _swig_property(_cmf_core.Cell_evaporation_get)
     transpiration = _swig_property(_cmf_core.Cell_transpiration_get)
     meteorology = _swig_property(_cmf_core.Cell_meteorology_get, _cmf_core.Cell_meteorology_set)
-    rain = _swig_property(_cmf_core.Cell_rain_get)
+    rain_source = _swig_property(_cmf_core.Cell_rain_source_get, _cmf_core.Cell_rain_source_set)
     layers = _swig_property(_cmf_core.Cell_layers_get)
     project = _swig_property(_cmf_core.Cell_project_get)
     @property
@@ -5658,6 +6036,7 @@ Cell.get_saturated_depth = new_instancemethod(_cmf_core.Cell_get_saturated_depth
 Cell.set_saturated_depth = new_instancemethod(_cmf_core.Cell_set_saturated_depth,None,Cell)
 Cell.set_weather = new_instancemethod(_cmf_core.Cell_set_weather,None,Cell)
 Cell.set_rainfall = new_instancemethod(_cmf_core.Cell_set_rainfall,None,Cell)
+Cell.get_rainfall = new_instancemethod(_cmf_core.Cell_get_rainfall,None,Cell)
 Cell.get_surfacewater = new_instancemethod(_cmf_core.Cell_get_surfacewater,None,Cell)
 Cell.surfacewater_as_storage = new_instancemethod(_cmf_core.Cell_surfacewater_as_storage,None,Cell)
 Cell.add_storage = new_instancemethod(_cmf_core.Cell_add_storage,None,Cell)
@@ -6058,14 +6437,6 @@ def area(*args, **kwargs):
   """area(cells_ref cells) -> double"""
   return _cmf_core.area(*args, **kwargs)
 
-def set_meteo_station(*args, **kwargs):
-  """set_meteo_station(cells_ref cells, ptr meteo_station)"""
-  return _cmf_core.set_meteo_station(*args, **kwargs)
-
-def set_precipitation(*args, **kwargs):
-  """set_precipitation(cells_ref cells, timeseries data_in_mm_day)"""
-  return _cmf_core.set_precipitation(*args, **kwargs)
-
 def cell_positions(*args, **kwargs):
   """cell_positions(cells_ref cells) -> point_vector"""
   return _cmf_core.cell_positions(*args, **kwargs)
@@ -6073,6 +6444,40 @@ def cell_positions(*args, **kwargs):
 def cell_flux_directions(*args, **kwargs):
   """cell_flux_directions(cells_ref cells, Time arg1) -> point_vector"""
   return _cmf_core.cell_flux_directions(*args, **kwargs)
+class subcatchment(object):
+    """
+    A class to structure cells in a project using their main outlets.
+
+    C++ includes: algorithm.h 
+    """
+    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __repr__ = _swig_repr
+    pourpoint = _swig_property(_cmf_core.subcatchment_pourpoint_get)
+    inflowcells = _swig_property(_cmf_core.subcatchment_inflowcells_get, _cmf_core.subcatchment_inflowcells_set)
+    cells = _swig_property(_cmf_core.subcatchment_cells_get, _cmf_core.subcatchment_cells_set)
+    def __init__(self, *args, **kwargs): 
+        """
+        __init__(self, Cell pourpoint, double area_threshold = 1e308) -> subcatchment
+
+        subcatchment(cmf::upslope::Cell &pourpoint, double
+        area_threshold=1e308)
+
+        Creates a subcatchment from a pourpoint cell
+
+        Parameters:
+        -----------
+
+        pourpoint:  The pourpoint (outlet of the subcatchment)
+
+        area_threshold:  Minimum contributing area size to form a
+        subcatchment. When area_threshold > area(cells), all upslope cells of
+        pourpoint are used. 
+        """
+        _cmf_core.subcatchment_swiginit(self,_cmf_core.new_subcatchment(*args, **kwargs))
+    __swig_destroy__ = _cmf_core.delete_subcatchment
+subcatchment_swigregister = _cmf_core.subcatchment_swigregister
+subcatchment_swigregister(subcatchment)
+
 
 def pressure_to_waterhead(*args, **kwargs):
   """pressure_to_waterhead(double Pressure) -> double"""
@@ -6467,7 +6872,6 @@ class LinearRetention(RetentionCurve):
     residual_wetness = _swig_property(_cmf_core.LinearRetention_residual_wetness_get, _cmf_core.LinearRetention_residual_wetness_set)
     porosity_decay = _swig_property(_cmf_core.LinearRetention_porosity_decay_get, _cmf_core.LinearRetention_porosity_decay_set)
     Ksat_decay = _swig_property(_cmf_core.LinearRetention_Ksat_decay_get, _cmf_core.LinearRetention_Ksat_decay_set)
-    beta = _swig_property(_cmf_core.LinearRetention_beta_get, _cmf_core.LinearRetention_beta_set)
     def copy(self, *args, **kwargs):
         """
         copy(self) -> LinearRetention
@@ -6479,12 +6883,12 @@ class LinearRetention(RetentionCurve):
     def __init__(self, *args, **kwargs): 
         """
         __init__(self, real _Ksat, real _Phi, real _thickness, real _beta = 1.0, 
-            real Ss = 1e-4, real _residual_wetness = 0.0, 
-            real _ksat_decay = 0.0, real _porosity_decay = 0.0) -> LinearRetention
+            real _residual_wetness = 0.0, real _ksat_decay = 0.0, 
+            real _porosity_decay = 0.0) -> LinearRetention
 
         LinearRetention(real _Ksat, real _Phi, real _thickness, real
-        _beta=1.0, real Ss=1e-4, real _residual_wetness=0.0, real
-        _ksat_decay=0.0, real _porosity_decay=0.0) 
+        _beta=1.0, real _residual_wetness=0.0, real _ksat_decay=0.0, real
+        _porosity_decay=0.0) 
         """
         _cmf_core.LinearRetention_swiginit(self,_cmf_core.new_LinearRetention(*args, **kwargs))
     __swig_destroy__ = _cmf_core.delete_LinearRetention
@@ -6577,7 +6981,7 @@ class SoilLayer(WaterStorage):
 
     cast = staticmethod(cast)
     def SWIGSharedPtrUpcast(*args, **kwargs):
-        """SWIGSharedPtrUpcast(__dummy_18__ swigSharedPtrUpcast) -> __dummy_12__"""
+        """SWIGSharedPtrUpcast(__dummy_24__ swigSharedPtrUpcast) -> __dummy_18__"""
         return _cmf_core.SoilLayer_SWIGSharedPtrUpcast(*args, **kwargs)
 
     SWIGSharedPtrUpcast = staticmethod(SWIGSharedPtrUpcast)
@@ -6614,7 +7018,7 @@ def SoilLayer_cast(*args, **kwargs):
   return _cmf_core.SoilLayer_cast(*args, **kwargs)
 
 def SoilLayer_SWIGSharedPtrUpcast(*args, **kwargs):
-  """SoilLayer_SWIGSharedPtrUpcast(__dummy_18__ swigSharedPtrUpcast) -> __dummy_12__"""
+  """SoilLayer_SWIGSharedPtrUpcast(__dummy_24__ swigSharedPtrUpcast) -> __dummy_18__"""
   return _cmf_core.SoilLayer_SWIGSharedPtrUpcast(*args, **kwargs)
 
 class layer_list(object):
@@ -7353,7 +7757,7 @@ class OpenWaterStorage(WaterStorage):
 
     cast = staticmethod(cast)
     def SWIGSharedPtrUpcast(*args, **kwargs):
-        """SWIGSharedPtrUpcast(__dummy_14__ swigSharedPtrUpcast) -> __dummy_12__"""
+        """SWIGSharedPtrUpcast(__dummy_20__ swigSharedPtrUpcast) -> __dummy_18__"""
         return _cmf_core.OpenWaterStorage_SWIGSharedPtrUpcast(*args, **kwargs)
 
     SWIGSharedPtrUpcast = staticmethod(SWIGSharedPtrUpcast)
@@ -7384,7 +7788,7 @@ def OpenWaterStorage_cast(*args, **kwargs):
   return _cmf_core.OpenWaterStorage_cast(*args, **kwargs)
 
 def OpenWaterStorage_SWIGSharedPtrUpcast(*args, **kwargs):
-  """OpenWaterStorage_SWIGSharedPtrUpcast(__dummy_14__ swigSharedPtrUpcast) -> __dummy_12__"""
+  """OpenWaterStorage_SWIGSharedPtrUpcast(__dummy_20__ swigSharedPtrUpcast) -> __dummy_18__"""
   return _cmf_core.OpenWaterStorage_SWIGSharedPtrUpcast(*args, **kwargs)
 
 class Reach(OpenWaterStorage):
@@ -7492,7 +7896,7 @@ class Reach(OpenWaterStorage):
 
     create = staticmethod(create)
     def SWIGSharedPtrUpcast(*args, **kwargs):
-        """SWIGSharedPtrUpcast(__dummy_16__ swigSharedPtrUpcast) -> __dummy_14__"""
+        """SWIGSharedPtrUpcast(__dummy_22__ swigSharedPtrUpcast) -> __dummy_20__"""
         return _cmf_core.Reach_SWIGSharedPtrUpcast(*args, **kwargs)
 
     SWIGSharedPtrUpcast = staticmethod(SWIGSharedPtrUpcast)
@@ -7543,7 +7947,7 @@ def Reach_create(*args, **kwargs):
   return _cmf_core.Reach_create(*args, **kwargs)
 
 def Reach_SWIGSharedPtrUpcast(*args, **kwargs):
-  """Reach_SWIGSharedPtrUpcast(__dummy_16__ swigSharedPtrUpcast) -> __dummy_14__"""
+  """Reach_SWIGSharedPtrUpcast(__dummy_22__ swigSharedPtrUpcast) -> __dummy_20__"""
   return _cmf_core.Reach_SWIGSharedPtrUpcast(*args, **kwargs)
 
 class ReachIterator(object):
@@ -8509,6 +8913,43 @@ class project(StateVariableOwner):
     __repr__ = _swig_repr
     solutes = _swig_property(_cmf_core.project_solutes_get)
     meteo_stations = _swig_property(_cmf_core.project_meteo_stations_get, _cmf_core.project_meteo_stations_set)
+    rainfall_stations = _swig_property(_cmf_core.project_rainfall_stations_get, _cmf_core.project_rainfall_stations_set)
+    def use_IDW_meteo(self, *args, **kwargs):
+        """
+        use_IDW_meteo(self, double z_weight = 0, double power = 2)
+
+        void
+        use_IDW_meteo(double z_weight=0, double power=2) 
+        """
+        return _cmf_core.project_use_IDW_meteo(self, *args, **kwargs)
+
+    def use_nearest_meteo(self, *args, **kwargs):
+        """
+        use_nearest_meteo(self, double z_weight = 0)
+
+        void
+        use_nearest_meteo(double z_weight=0) 
+        """
+        return _cmf_core.project_use_nearest_meteo(self, *args, **kwargs)
+
+    def use_IDW_rainfall(self, *args, **kwargs):
+        """
+        use_IDW_rainfall(self, double z_weight = 0, double power = 2)
+
+        void
+        use_IDW_rainfall(double z_weight=0, double power=2) 
+        """
+        return _cmf_core.project_use_IDW_rainfall(self, *args, **kwargs)
+
+    def use_nearest_rainfall(self, *args, **kwargs):
+        """
+        use_nearest_rainfall(self, double z_weight = 0)
+
+        void
+        use_nearest_rainfall(double z_weight=0) 
+        """
+        return _cmf_core.project_use_nearest_rainfall(self, *args, **kwargs)
+
     outlets = _swig_property(_cmf_core.project_outlets_get, _cmf_core.project_outlets_set)
     def get_cell(self, *args, **kwargs):
         """
@@ -8628,6 +9069,10 @@ class project(StateVariableOwner):
     def reaches(self):
         return reach_list(self)
 
+project.use_IDW_meteo = new_instancemethod(_cmf_core.project_use_IDW_meteo,None,project)
+project.use_nearest_meteo = new_instancemethod(_cmf_core.project_use_nearest_meteo,None,project)
+project.use_IDW_rainfall = new_instancemethod(_cmf_core.project_use_IDW_rainfall,None,project)
+project.use_nearest_rainfall = new_instancemethod(_cmf_core.project_use_nearest_rainfall,None,project)
 project.get_cell = new_instancemethod(_cmf_core.project_get_cell,None,project)
 project.size = new_instancemethod(_cmf_core.project_size,None,project)
 project.NewCell = new_instancemethod(_cmf_core.project_NewCell,None,project)

@@ -79,7 +79,7 @@ real cmf::upslope::connections::SimplRichards::calc_q( cmf::math::Time t )
 	real
 		K = l1->get_K();
 	if (l2)
-			K *= 1 - l2->get_wetness();
+		K *= 1 - l2->get_wetness();
 	real r_flow=K * l1->cell.get_area();
 	if (left_node()->is_empty())
 		r_flow=minimum(0,r_flow);
@@ -100,13 +100,12 @@ real cmf::upslope::connections::SWATPercolation::calc_q( cmf::math::Time t )
 		capacity=l1->get_capacity(),
 		fc_waterhead=pressure_to_waterhead(-33000), // Field capacity suction in m
 		fc=l1->get_soil().Wetness(fc_waterhead)*capacity, // Water storage at field capacity
-		sw_excess=l1->get_state()-fc; // drainable water volume
+		sw_excess=l1->get_volume()-fc; // drainable water volume
 	if (sw_excess<=0) return 0.0;
 	real
-		Vol_d=l1->get_capacity()-fc, // drainable pore volume in m3
 		Ksat=l1->get_Ksat(),
 		// Percolation travel time in days = drainable volume[m3]/(get_area[m2] * Conductivity[m/day])
-		tt_perc=maximum(l1->get_capacity()-fc,0)/(l1->cell.get_area() * Ksat),
+		tt_perc=sw_excess/(l1->cell.get_area() * Ksat),
 		w_perc=sw_excess*(1-exp(-1/tt_perc));
 	return w_perc*maximum(0,0.9-l2->get_wetness());
 

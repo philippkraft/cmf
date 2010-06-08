@@ -114,13 +114,18 @@ bool cmf::water::flux_connection::kill_me()
 		right->DeregisterConnection(this);
 	return weak_this.use_count() <= 1;
 }
-void cmf::water::replace_node(cmf::water::flux_node::ptr oldnode,cmf::water::flux_node::ptr newnode)
+int cmf::water::replace_node(cmf::water::flux_node::ptr oldnode,cmf::water::flux_node::ptr newnode)
 {
-	newnode->Location=oldnode->Location;
-	newnode->Name=oldnode->Name;
-	connection_vector cons=oldnode->get_connections();
-	for(connection_vector::iterator it = cons.begin(); it != cons.end(); ++it)
-	{
-		(**it).exchange_target(oldnode,newnode);
+	int changes=0;
+	if (oldnode && newnode) {
+		newnode->Location=oldnode->Location;
+		newnode->Name=oldnode->Name;
+		connection_vector cons=oldnode->get_connections();
+		for(connection_vector::iterator it = cons.begin(); it != cons.end(); ++it)		{
+			++changes;
+			(**it).exchange_target(oldnode,newnode);
+		}
 	}
+	return changes;
+
 }

@@ -44,7 +44,11 @@ namespace cmf {
 
 			}
 		};
+		
+		/// @defgroup boundary Boundary conditions
 		/// @ingroup nodes
+
+		/// @ingroup boundary
 		/// Drichelet (constant head) boundary condition
 		///
 		/// This boundary condition can be used either as a pure sink boundary condition or as a conditional source / sink boundary condition.
@@ -84,7 +88,7 @@ namespace cmf {
 			DricheletBoundary(const cmf::project& _p,real potential,cmf::geometry::point Location=cmf::geometry::point());
 			
 		};
-		/// @ingroup nodes
+		/// @ingroup boundary
 		/// A Neumann boundary condition (constant flux boundary condition)
 		///
 		/// The flux is a timeseries, but can be used as a scalar.
