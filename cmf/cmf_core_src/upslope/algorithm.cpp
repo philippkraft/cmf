@@ -16,11 +16,13 @@
 //   You should have received a copy of the GNU General Public License
 //   along with cmf.  If not, see <http://www.gnu.org/licenses/>.
 //   
+
 #include "algorithm.h"
 #include "Topology.h"
 #include "SoilLayer.h"
 #include "../atmosphere/precipitation.h"
-
+#include <queue>
+#include <set>
 cmf::upslope::Cell* cmf::upslope::find_cell(cmf::upslope::cells_ref cells,cmf::geometry::point p,double max_dist )
 {
 	double min_dist=max_dist;
@@ -217,24 +219,6 @@ int cmf::upslope::fill_sinks( cmf::upslope::cells_ref cells,double min_differenc
 
 }
 
-void cmf::upslope::set_precipitation( cmf::upslope::cells_ref cells,cmf::math::timeseries data_in_mm_day )
-{
-	for(cmf::upslope::cell_vector::const_iterator it = cells.begin(); it != cells.end(); ++it)
-	{
-		cmf::upslope::Cell& c=**it;
-		c.get_rainfall()->flux=data_in_mm_day;
-	}
-	
-}
-void cmf::upslope::set_meteo_station(cmf::upslope::cells_ref cells,cmf::atmosphere::MeteoStation::ptr meteo_station)
-{
-	for(cmf::upslope::cell_vector::const_iterator it = cells.begin(); it != cells.end(); ++it)
-	{
-		cmf::upslope::Cell& c=**it;
-		c.set_meteorology(cmf::atmosphere::MeteoStationReference(meteo_station,c));
-	}
-}
-
 cmf::geometry::point_vector cmf::upslope::cell_positions( cells_ref cells )
 {
 	cmf::geometry::point_vector res(int(cells.size()));
@@ -265,3 +249,62 @@ cmf::geometry::point_vector cmf::upslope::cell_flux_directions( cells_ref cells,
 
 
 
+
+
+inline bool isstream(cmf::upslope::Topology& t,double area_threshold) {
+	return t.ContributingArea()>area_threshold;
+}
+
+cmf::upslope::subcatchment::subcatchment(cmf::upslope::Cell& pourpoint_cell,double area_threshold/*=1e308*/ )
+:	pourpoint(pourpoint_cell)
+{
+	using namespace cmf::upslope;
+	// To do lists
+	std::queue<Cell*> to_do;
+	// Local queue of stream cells (is empty at end of each loop)
+	std::queue<Cell*> to_do_stream;
+
+	// Start with pourpoint
+	to_do.push(&pourpoint_cell);
+					   
+	// While there is something to do
+	while (to_do.size())	{
+		// Get a cell to work on
+		Cell* cell = to_do.front();
+
+		// for each neighbor of cell
+		for (NeighborIterator neighbor=*cell; neighbor.valid(); ++neighbor)
+		{
+			// if cell is mainoutlet of cell
+			if (neighbor->MainOutlet() == cell) {
+				// if neighbor is a stream cell
+				if (isstream(*neighbor,area_threshold)) {
+					// add neighbor to stream to do queue
+					to_do_stream.push(&neighbor.cell());
+				} else {
+					// add neighbor to usual to do
+					to_do.push(&neighbor.cell());
+				}
+			}
+		}
+
+		// If only one inflowing cell is a stream cell, do not divide subcatchment, but proceed
+		if (to_do_stream.size() == 1) {
+			// add stream cell to to do queue
+			to_do.push(to_do_stream.front());
+			// and empty the stream cell queue
+			to_do_stream.pop();
+
+		} else if (to_do_stream.size() > 1) { 
+			// If more than one inflow cell is stream cell, start a new subcatchments
+			while (to_do_stream.size()) {
+				inflowcells.push_back(to_do_stream.front());
+				to_do_stream.pop();
+			}
+		}
+		// add cell to cells of subcatchment
+		cells.push_back(cell);
+		// Work done on cell
+		to_do.pop();
+	} // end while(to_do)
+}

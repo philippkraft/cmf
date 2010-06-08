@@ -24,8 +24,8 @@ Dependencies:
 """
 import dbf
 import struct
-from math import *
-import shapely.geometry
+import os
+import math
     
 class shapefile:
     """ The shapefile class, create it from a .shp file
@@ -156,7 +156,13 @@ class shapefile:
         return number,obj 
     def __init__(self,filename):
         """ Loads a shapefile from a filename"""
-        f=file(filename,'rb')
+        if os.path.exists(filename):
+            f=file(filename,'rb')
+        elif os.path.exists(filename +'.shp'):
+            f=file(filename+'.shp','rb')
+        else:
+            raise IOError("No such shapefile '%f' " % filename)
+        
         self.readHeader(f)
         
         shapes={}

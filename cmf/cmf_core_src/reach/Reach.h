@@ -58,6 +58,8 @@ namespace cmf {
 
 			// The downstream reach
 			weak_reach_ptr m_downstream;
+			typedef std::tr1::weak_ptr<cmf::water::flux_node> weak_node_ptr;
+			weak_node_ptr m_outlet;
 			Channel m_shape;
 
 			// adds an upstream reach (only called by set_downstream)
@@ -74,14 +76,17 @@ namespace cmf {
 			void set_height_function(const IChannel& val) {m_shape=val;}
 			/// Returns the length of the reach
 			real get_length() const;
-
+			
+			
 			/// Connects the reach to an outlet, e.g. a boundary condition
 			void set_outlet(cmf::water::flux_node::ptr outlet);
 			void set_dead_end();
 			/// Connects the reach to another one downstream
 			void set_downstream(ptr new_downstream);
 			/// Returns the reach downstream of this (or null if there is no reach downstream)
-			ptr get_downstream() const;
+			cmf::water::flux_node::ptr get_downstream() const;
+
+			
 			/// Returns the number of reaches upstream of this
 			int upstream_count() const {return int(m_upstream.size());}
 			/// Returns a reach upstream of this

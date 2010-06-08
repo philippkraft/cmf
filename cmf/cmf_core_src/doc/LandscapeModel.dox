@@ -55,5 +55,4 @@ For creating cells from an irregular network, created from a shapefile, please r
 @copydoc connections
 @see connections
 
-
 **/

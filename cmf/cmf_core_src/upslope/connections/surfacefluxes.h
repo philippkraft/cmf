@@ -50,9 +50,9 @@ namespace cmf {
 				{
 					// If the canopy of this cell is not a storage, create a canopy storage
 					cmf::water::WaterStorage::ptr canopy=cell.add_storage("Canopy",'C');	
-					if (cell.get_rainfall()->get_connection(*cell.get_surfacewater()))
+					if (cell.get_rain_source()->get_connection(*cell.get_surfacewater()))
 					{
-						cell.get_rainfall()->remove_connection(cell.get_surfacewater());
+						cell.get_rain_source()->remove_connection(cell.get_surfacewater());
 					}
 					new Rainfall(canopy,cell,false,true);
 					new Rainfall(cell.get_surfacewater(),cell,true,false);

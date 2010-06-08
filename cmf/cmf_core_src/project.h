@@ -48,6 +48,12 @@ namespace cmf {
 		const cmf::water::solute_vector solutes;
 		/// The meteorological stations in the project
 		cmf::atmosphere::MeteoStationList meteo_stations;
+		cmf::atmosphere::RainfallStationList rainfall_stations;
+
+		void use_IDW_meteo(double z_weight=0,double power=2);
+		void use_nearest_meteo(double z_weight=0);
+		void use_IDW_rainfall(double z_weight=0,double power=2);
+		void use_nearest_rainfall(double z_weight=0);
 		/// The outlets of the model system
 		cmf::water::node_list outlets;
 		/// Returns the vector of cells in the project

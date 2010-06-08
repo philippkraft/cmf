@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 10.00
 # Visual Studio 2008
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "cmf", "cmf.vcproj", "{16A0D5F0-F9D9-4E6D-8747-80D3CFDC980A}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "soiltemp", "..\..\..\DNDCsoiltemp\soiltemp.vcproj", "{90A01E19-1E73-466A-8A85-3224C1AA77F5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -16,6 +18,12 @@ Global
 		{16A0D5F0-F9D9-4E6D-8747-80D3CFDC980A}.distutil|Win32.Build.0 = distutil|Win32
 		{16A0D5F0-F9D9-4E6D-8747-80D3CFDC980A}.Release|Win32.ActiveCfg = Release|Win32
 		{16A0D5F0-F9D9-4E6D-8747-80D3CFDC980A}.Release|Win32.Build.0 = Release|Win32
+		{90A01E19-1E73-466A-8A85-3224C1AA77F5}.Debug|Win32.ActiveCfg = Debug|Win32
+		{90A01E19-1E73-466A-8A85-3224C1AA77F5}.Debug|Win32.Build.0 = Debug|Win32
+		{90A01E19-1E73-466A-8A85-3224C1AA77F5}.distutil|Win32.ActiveCfg = Debug|Win32
+		{90A01E19-1E73-466A-8A85-3224C1AA77F5}.distutil|Win32.Build.0 = Debug|Win32
+		{90A01E19-1E73-466A-8A85-3224C1AA77F5}.Release|Win32.ActiveCfg = Release|Win32
+		{90A01E19-1E73-466A-8A85-3224C1AA77F5}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

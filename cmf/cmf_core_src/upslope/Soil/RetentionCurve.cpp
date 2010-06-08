@@ -283,7 +283,7 @@ real cmf::upslope::LinearRetention::K( real wetness,real depth ) const
 {
 	wetness=minmax(wetness,0,1);
 	real _Ksat=Ksat*pow(1-Ksat_decay,depth);
-	return _Ksat*pow((wetness - residual_wetness) / (1 - residual_wetness),beta);
+	return _Ksat*(wetness - residual_wetness) / (1 - residual_wetness);
 }
 
 real cmf::upslope::LinearRetention::Porosity( real depth ) const

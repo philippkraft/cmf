@@ -28,6 +28,12 @@
 #include <string>
 
 namespace cmf {
+	/// @defgroup meteo Meteorological data
+	/// Meteorological data contains objects to store an regionalize rainfall measurements on the one hand, 
+	/// and other meteorological data, used for ET calculations on the other side. In the following the term 
+	/// meteorology is not used for rainfall measurements.
+
+	/// @ingroup meteo
 	/// Contains classes to describe interactions with the atmosphere
 	namespace atmosphere {
 		double vapour_pressure(double T);
@@ -37,7 +43,8 @@ namespace cmf {
 		double global_radiation(cmf::math::Time t,double height,double sunshine_fraction,double longitude=8,double latitude=51,double time_zone=1,bool daily=0);
 		double Pressure(double height);
 
-    /// A structure holding meteorological information, excluding precipitation
+		/// @ingroup meteo
+	    /// A structure holding meteorological information, excluding precipitation
 		struct Weather
 		{
 			double
@@ -50,7 +57,7 @@ namespace cmf {
 				e_s,				///< Saturated vapor pressure in \f$e_s [kPa]\f$
 				sunshine,		///< Fractional sunshine duration (per potential sunshine duration) \f$\frac n N\ [-]\f$
 				Rs,					///< Global Radiation in \f$R_s \left[\frac{MJ}{m^2 day}\right]\f$
-				instument_height; ///< Height of the measuring instuments above the vegetation
+				instrument_height; ///< Height of the measuring instuments above the vegetation
 			/** Calculates the net radiation flux  \f$R_n \left[\frac{MJ}{m^2 day}\right]\f$
 			
 			\f{eqnarray*}
@@ -76,9 +83,17 @@ namespace cmf {
 			Weather()
 				:	T(15),Tmax(17),Tmin(10),Tground(16),
 				e_s(vapour_pressure(15)),e_a(0.8*vapour_pressure(15)),
-				Windspeed(2.),sunshine(0.5),Rs(15),instument_height(2) {}
+				Windspeed(2.),sunshine(0.5),Rs(15),instrument_height(2) {}
+			/// Creates a "weather" from given data
+			/// @param _T        actual Temperature in deg C
+			/// @param _Tmax     daily maximum Temperature in deg C
+			/// @param _Tmin     daily minimum Temperature in deg C
+			/// @param _rH       actual relative humidity in % [0..100]
+			/// @param _wind     actual wind speed in m/s
+			/// @param _sunshine actual fraction of sunshine duration per potential sunshine duration in h/h
+			/// @param _Rs       actual incoming shortwave global radiation in MJ/(m2 day)
 			Weather(double _T,double _Tmax,double _Tmin, double _rH, double _wind=2,double _sunshine=0.5,double  _Rs=15)
-				: T(_T), Tmax(_Tmax), Tmin(_Tmin), Tground(_T),e_s(vapour_pressure(_T)),e_a(_rH * vapour_pressure(_T)),
+				: T(_T), Tmax(_Tmax), Tmin(_Tmin), Tground(_T),e_s(vapour_pressure(_T)),e_a(_rH/100. * vapour_pressure(_T)),
 				Windspeed(_wind),sunshine(_sunshine),Rs(_Rs) {}
 			std::string to_string() const
 			{
@@ -92,9 +107,22 @@ namespace cmf {
 			}
 
 			static double snow_threshold;
+			Weather& operator+=(const Weather& w);
+			Weather& operator*=(double factor);
+			Weather operator+(const Weather& w) {
+				Weather res=*this;
+				res+=w;
+				return res;
+			}
+			Weather operator*(double factor) {
+				Weather res=*this;
+				res*=factor;
+				return res;
+			}
 
 		};
-        /// @brief An abstract class, for objects generating Weather records at a specific time.
+		/// @ingroup meteo
+		/// @brief An abstract class, for objects generating Weather records at a specific time.
 		class Meteorology
 		{
 		public:
@@ -110,7 +138,8 @@ namespace cmf {
 			virtual Meteorology* copy() const=0;
 			virtual real get_instrument_height() const=0;
 		};
-        /// @brief A primitive implementation of the Meteorology interface. Holds a Weather record and returns it for any date
+		/// @ingroup meteo
+		/// @brief A primitive implementation of the Meteorology interface. Holds a Weather record and returns it for any date
 		class ConstantMeteorology : public Meteorology
 		{
 		public:
@@ -136,8 +165,9 @@ namespace cmf {
 
 		class MeteoStationList;
         
-    /// @brief A meteorological station holding timeseries to create Weather records
-    ///
+		/// @ingroup meteo
+		/// @brief A meteorological station holding timeseries to create Weather records
+	    ///
 		/// In order to calculate ETpot with cmf a big amount of meteorological data is needed,
 		/// more data than usually available. The MeteoStation class can estimate missing data
 		/// from a minimal set. As more data, as one provides, the better the calculation of
@@ -192,7 +222,7 @@ namespace cmf {
 		/// print 'Temperature:',weather.T               # Daily mean T, since nothing else in known
 		/// </pre>
 		/// </div>
-	class MeteoStation: public cmf::geometry::Locatable
+		class MeteoStation: public cmf::geometry::Locatable
 		{
 		private:
 			friend class MeteoStationList;
@@ -297,6 +327,7 @@ namespace cmf {
 		};
 
 
+		/// @ingroup meteo
 		/// @brief A reference to a meteorological station. Returns the weather at a given time for its place using MeteoStation::T_lapse
 		class MeteoStationReference 
 		: public Meteorology, public cmf::geometry::Locatable
@@ -338,7 +369,8 @@ namespace cmf {
 
 		};
 
-        /// @brief A list of meteorological stations
+		/// @ingroup meteo
+		/// @brief A list of meteorological stations
         ///
         /// Can find the nearest station for a position and calculate the temperature lapse
 		class MeteoStationList
@@ -424,29 +456,28 @@ namespace cmf {
 		};
 
 
-// 		class IDW_Meteorology : 
-// 		{
-// 		private:
-// 			int m_station_count;
-// 			
-// 			typedef std::map<MeteoStation::ptr,double> weight_map;
-// 			weight_map weights;
-// 			const cmf::geometry::Locatable* m_location;
-// 			double distanceTo(MeteoStation::ptr target) const
-// 			{
-// 				cmf::geometry::point p=m_location->get_position();
-// 				return p.distanceTo(target.get_position())+z_weight*abs(p.z-target.z);
-// 			}
-// 			
-// 		public:
-// 			real power;
-// 			real z_weight;
-// 			int station_count() const {return station_count;}
-// 			IDW_Meteorology(const cmf::geometry::Locatable& position,MeteoStationList stations)
-// 			{
-// 			
-// 			}
-//		};
+		
+		/// @ingroup meteo
+		/// Regionalizes meteorological measurements using a simple inverse distance weighted (IDW) method
+		/// @sa IDW
+		class IDW_Meteorology : public Meteorology
+		{
+		private:		
+			typedef std::map<MeteoStation::ptr,double> weight_map;
+			weight_map weights;
+			const cmf::geometry::point m_position;
+		public:
+
+			IDW_Meteorology(const cmf::geometry::Locatable& position,const MeteoStationList& stations,double z_weight, double power);
+			IDW_Meteorology(const IDW_Meteorology& copy)
+				: m_position(copy.m_position), weights(copy.weights) 
+			{}
+			virtual Weather get_weather(cmf::math::Time t) const;
+			virtual IDW_Meteorology* copy() const {
+				return new IDW_Meteorology(*this);
+			}
+			virtual real get_instrument_height() const;
+		};
 
 	}	
 }
