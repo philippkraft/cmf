@@ -539,8 +539,19 @@ set_rainfall(double rainfall)
 
 Exchanges a timeseries of rainfall with a constant flux. ";
 
-%feature("docstring")  cmf::upslope::Cell::get_rainfall "std::tr1::shared_ptr<cmf::atmosphere::RainCloud> get_rainfall() const
-";
+%feature("docstring")  cmf::upslope::Cell::get_rainfall "double
+get_rainfall(cmf::math::Time t) const
+
+Returns the current rainfall flux in m3/day. ";
+
+%feature("docstring")  cmf::upslope::Cell::set_rain_source "void
+set_rain_source(cmf::atmosphere::RainSource::ptr new_source)
+
+Changes the current source of rainfall. ";
+
+%feature("docstring")  cmf::upslope::Cell::get_rain_source "cmf::atmosphere::RainSource::ptr get_rain_source()
+
+Returns the current source for rainfall. ";
 
 %feature("docstring")  cmf::upslope::Cell::get_evaporation "cmf::water::flux_node::ptr get_evaporation()
 
@@ -983,7 +994,7 @@ set_tracer_filter(real value) ";
 A primitive implementation of the Meteorology interface. Holds a
 Weather record and returns it for any date.
 
-C++ includes: meteorology.h ";
+C++ includes: Meteorology.h ";
 
 %feature("docstring")
 cmf::atmosphere::ConstantMeteorology::get_weather "virtual
@@ -1013,6 +1024,125 @@ cmf::atmosphere::ConstantMeteorology::ConstantMeteorology "ConstantMeteorology(c
 
 Creates a new instannce of the ConstantMeteorology with the same
 weather. ";
+
+
+// File: classcmf_1_1atmosphere_1_1_constant_rain_source.xml
+%feature("docstring") cmf::atmosphere::ConstantRainSource "
+
+A simple implementation of RainSource. Returns intensity for any time
+step.
+
+C++ includes: Precipitation.h ";
+
+%feature("docstring")
+cmf::atmosphere::ConstantRainSource::ConstantRainSource "ConstantRainSource(const cmf::project &_project, cmf::geometry::point
+location, real _intensity)
+
+Creates a new ConstantRainSource. Consider using Cell::set_rainfall
+for internal creation of a constant rain source, instead of direct use
+
+Parameters:
+-----------
+
+_project:  The project the rain source is belonging to.
+
+location:  The location of the rain source
+
+_intensity:  The constant rainfall intensity in mm/day ";
+
+%feature("docstring")
+cmf::atmosphere::ConstantRainSource::get_intensity "real
+get_intensity(cmf::math::Time t) const
+
+Returns the actual rainfall intensity in mm/day. ";
+
+%feature("docstring")  cmf::atmosphere::ConstantRainSource::conc "virtual real conc(cmf::math::Time t, const cmf::water::solute &Solute)
+
+Returns the concentration of a solute in the rainfall at time t. ";
+
+%feature("docstring")  cmf::atmosphere::ConstantRainSource::set_conc "void set_conc(const cmf::water::solute &Solute, real value) ";
+
+%feature("docstring")  cmf::atmosphere::ConstantRainSource::conc "virtual real conc(cmf::math::Time t, const cmf::water::solute &Solute)
+const
+
+Returns the water quality of the flux_node, if it is not overridden
+this is the mix of the incoming fluxes. ";
+
+%feature("docstring")
+cmf::atmosphere::ConstantRainSource::RecalcFluxes "virtual bool
+RecalcFluxes(cmf::math::Time t)
+
+Pure flux_nodes do not influence fluxes, therefore no recalculation of
+fluxes is required by flux_node. WaterStorage overrides this, since
+state changes require an update of the fluxes ";
+
+%feature("docstring")  cmf::atmosphere::ConstantRainSource::is_empty "virtual bool is_empty() const ";
+
+%feature("docstring")  cmf::atmosphere::ConstantRainSource::project "const cmf::project& project() const
+
+Returns the project, this node is part of. ";
+
+%feature("docstring")  cmf::atmosphere::ConstantRainSource::is_storage
+"virtual bool is_storage() const
+
+true, if this is a waterstorage ";
+
+%feature("docstring")  cmf::atmosphere::ConstantRainSource::to_string
+"virtual std::string to_string() const ";
+
+%feature("docstring")
+cmf::atmosphere::ConstantRainSource::get_connections "cmf::water::connection_vector get_connections() const ";
+
+%feature("docstring")
+cmf::atmosphere::ConstantRainSource::get_connection "cmf::water::flux_connection* get_connection(const
+cmf::water::flux_node &target)
+
+Returns the connection between this and target. ";
+
+%feature("docstring")
+cmf::atmosphere::ConstantRainSource::remove_connection "bool
+remove_connection(cmf::water::flux_node::ptr To)
+
+Remove the connection. ";
+
+%feature("docstring")  cmf::atmosphere::ConstantRainSource::flux_to "real flux_to(const cmf::water::flux_node &target, cmf::math::Time t)
+
+Returns the actual flux between this and target (positive sign means
+\"from target into this\"). ";
+
+%feature("docstring")  cmf::atmosphere::ConstantRainSource::flux3d_to
+"cmf::geometry::point flux3d_to(const cmf::water::flux_node &target,
+cmf::math::Time t) ";
+
+%feature("docstring")
+cmf::atmosphere::ConstantRainSource::get_3d_flux "cmf::geometry::point get_3d_flux(cmf::math::Time t) ";
+
+%feature("docstring")
+cmf::atmosphere::ConstantRainSource::water_balance "real
+water_balance(cmf::math::Time t, const flux_connection *Without=0)
+const
+
+Returns the sum of all fluxes (positive and negative) at time t.
+Single fluxes can be excluded from the calculation
+
+Parameters:
+-----------
+
+t:  Time of the query
+
+Without:  A flux_connection that is excluded from the water_balance
+(e.g. to prevent closed circuits) ";
+
+%feature("docstring")
+cmf::atmosphere::ConstantRainSource::get_potential "virtual real
+get_potential() const
+
+Returns the water potential of the node in m waterhead The base class
+water storage always returns the height of the location ";
+
+%feature("docstring")
+cmf::atmosphere::ConstantRainSource::set_potential "virtual void
+set_potential(real new_potential) ";
 
 
 // File: classcmf_1_1math_1_1_c_vode_integrator.xml
@@ -2211,6 +2341,123 @@ slope:  The slope of the reach [m/m] ";
 %feature("docstring")  cmf::river::IChannel::IChannel "IChannel(double manning_n=0.035) ";
 
 
+// File: classcmf_1_1atmosphere_1_1_i_d_w___meteorology.xml
+%feature("docstring") cmf::atmosphere::IDW_Meteorology "
+
+Regionalizes meteorological measurements using a simple inverse
+distance weighted (IDW) method See:  IDW
+
+C++ includes: Meteorology.h ";
+
+%feature("docstring")
+cmf::atmosphere::IDW_Meteorology::IDW_Meteorology "IDW_Meteorology(const cmf::geometry::Locatable &position, const
+MeteoStationList &stations, double z_weight, double power) ";
+
+%feature("docstring")
+cmf::atmosphere::IDW_Meteorology::IDW_Meteorology "IDW_Meteorology(const IDW_Meteorology &copy) ";
+
+%feature("docstring")  cmf::atmosphere::IDW_Meteorology::get_weather "virtual Weather get_weather(cmf::math::Time t) const
+
+Returns the Weather at time t. Pure virtual function. Must get
+implemented by child functions. ";
+
+%feature("docstring")  cmf::atmosphere::IDW_Meteorology::copy "virtual IDW_Meteorology* copy() const
+
+Returns a copy of the meteorology object. Pure virtual function, needs
+to be implemented. ";
+
+%feature("docstring")
+cmf::atmosphere::IDW_Meteorology::get_instrument_height "virtual real
+get_instrument_height() const ";
+
+
+// File: classcmf_1_1atmosphere_1_1_i_d_w_rainfall.xml
+%feature("docstring") cmf::atmosphere::IDWRainfall "
+
+A RainSource using an spatially interpolated rainfall intensity from
+all stations. Interpolation method is inverse distance weighted (IDW)
+
+C++ includes: Precipitation.h ";
+
+%feature("docstring")  cmf::atmosphere::IDWRainfall::get_intensity "real get_intensity(cmf::math::Time t) const
+
+Returns the actual rainfall intensity in mm/day. ";
+
+%feature("docstring")  cmf::atmosphere::IDWRainfall::conc "real
+conc(cmf::math::Time t, const cmf::water::solute &Solute)
+
+Returns the concentration of a solute in the rainfall at time t. ";
+
+%feature("docstring")  cmf::atmosphere::IDWRainfall::conc "virtual
+real conc(cmf::math::Time t, const cmf::water::solute &Solute) const
+
+Returns the water quality of the flux_node, if it is not overridden
+this is the mix of the incoming fluxes. ";
+
+%feature("docstring")  cmf::atmosphere::IDWRainfall::RecalcFluxes "virtual bool RecalcFluxes(cmf::math::Time t)
+
+Pure flux_nodes do not influence fluxes, therefore no recalculation of
+fluxes is required by flux_node. WaterStorage overrides this, since
+state changes require an update of the fluxes ";
+
+%feature("docstring")  cmf::atmosphere::IDWRainfall::is_empty "virtual bool is_empty() const ";
+
+%feature("docstring")  cmf::atmosphere::IDWRainfall::project "const
+cmf::project& project() const
+
+Returns the project, this node is part of. ";
+
+%feature("docstring")  cmf::atmosphere::IDWRainfall::is_storage "virtual bool is_storage() const
+
+true, if this is a waterstorage ";
+
+%feature("docstring")  cmf::atmosphere::IDWRainfall::to_string "virtual std::string to_string() const ";
+
+%feature("docstring")  cmf::atmosphere::IDWRainfall::get_connections "cmf::water::connection_vector get_connections() const ";
+
+%feature("docstring")  cmf::atmosphere::IDWRainfall::get_connection "cmf::water::flux_connection* get_connection(const
+cmf::water::flux_node &target)
+
+Returns the connection between this and target. ";
+
+%feature("docstring")  cmf::atmosphere::IDWRainfall::remove_connection
+"bool remove_connection(cmf::water::flux_node::ptr To)
+
+Remove the connection. ";
+
+%feature("docstring")  cmf::atmosphere::IDWRainfall::flux_to "real
+flux_to(const cmf::water::flux_node &target, cmf::math::Time t)
+
+Returns the actual flux between this and target (positive sign means
+\"from target into this\"). ";
+
+%feature("docstring")  cmf::atmosphere::IDWRainfall::flux3d_to "cmf::geometry::point flux3d_to(const cmf::water::flux_node &target,
+cmf::math::Time t) ";
+
+%feature("docstring")  cmf::atmosphere::IDWRainfall::get_3d_flux "cmf::geometry::point get_3d_flux(cmf::math::Time t) ";
+
+%feature("docstring")  cmf::atmosphere::IDWRainfall::water_balance "real water_balance(cmf::math::Time t, const flux_connection
+*Without=0) const
+
+Returns the sum of all fluxes (positive and negative) at time t.
+Single fluxes can be excluded from the calculation
+
+Parameters:
+-----------
+
+t:  Time of the query
+
+Without:  A flux_connection that is excluded from the water_balance
+(e.g. to prevent closed circuits) ";
+
+%feature("docstring")  cmf::atmosphere::IDWRainfall::get_potential "virtual real get_potential() const
+
+Returns the water potential of the node in m waterhead The base class
+water storage always returns the height of the location ";
+
+%feature("docstring")  cmf::atmosphere::IDWRainfall::set_potential "virtual void set_potential(real new_potential) ";
+
+
 // File: classcmf_1_1math_1_1_implicit_euler.xml
 %feature("docstring") cmf::math::ImplicitEuler "
 
@@ -2850,8 +3097,8 @@ Returns the thickness of a soil column with a certain pore volume. ";
 
 %feature("docstring")  cmf::upslope::LinearRetention::LinearRetention
 "LinearRetention(real _Ksat, real _Phi, real _thickness, real
-_beta=1.0, real Ss=1e-4, real _residual_wetness=0.0, real
-_ksat_decay=0.0, real _porosity_decay=0.0) ";
+_beta=1.0, real _residual_wetness=0.0, real _ksat_decay=0.0, real
+_porosity_decay=0.0) ";
 
 %feature("docstring")  cmf::upslope::LinearRetention::Wetness_eff "virtual real Wetness_eff(real wetness, real pF_r=4.2) const
 
@@ -3301,7 +3548,7 @@ slope:  The slope of the reach [m/m] ";
 An abstract class, for objects generating Weather records at a
 specific time.
 
-C++ includes: meteorology.h ";
+C++ includes: Meteorology.h ";
 
 %feature("docstring")  cmf::atmosphere::Meteorology::get_weather "virtual cmf::atmosphere::Weather get_weather(cmf::math::Time t) const
 =0
@@ -3373,7 +3620,7 @@ weather=meteo.get_data(cmf.Time(3,2,2009,14)) # Weather at Feb. 3rd,
 # Daily mean Rs, since daily=true print 'Temperature:',weather.T
 # Daily mean T, since nothing else in known
 
-C++ includes: meteorology.h ";
+C++ includes: Meteorology.h ";
 
 /*  Location and behaviour properties  */
 
@@ -3483,7 +3730,7 @@ A list of meteorological stations.
 Can find the nearest station for a position and calculate the
 temperature lapse
 
-C++ includes: meteorology.h ";
+C++ includes: Meteorology.h ";
 
 %feature("docstring")  cmf::atmosphere::MeteoStationList::size "int
 size() const
@@ -3577,7 +3824,7 @@ z_weight:  The weight of the height difference $\\\\lambda_z$ ";
 A reference to a meteorological station. Returns the weather at a
 given time for its place using MeteoStation::T_lapse.
 
-C++ includes: meteorology.h ";
+C++ includes: Meteorology.h ";
 
 %feature("docstring")
 cmf::atmosphere::MeteoStationReference::get_station "MeteoStation::ptr get_station() const
@@ -4839,6 +5086,8 @@ distanceTo(point p) const
 Returns the euclidian distance to another point.
 $\\\\sqrt{(this.x-p.x)^2+(this.y-p.y)^2}$ ";
 
+%feature("docstring")  cmf::geometry::point::z_weight_distance "double z_weight_distance(point p, double z_weight) const ";
+
 %feature("docstring")  cmf::geometry::point::distance3DTo "double
 distance3DTo(point p) const ";
 
@@ -5083,6 +5332,18 @@ be here!
 
 C++ includes: project.h ";
 
+%feature("docstring")  cmf::project::use_IDW_meteo "void
+use_IDW_meteo(double z_weight=0, double power=2) ";
+
+%feature("docstring")  cmf::project::use_nearest_meteo "void
+use_nearest_meteo(double z_weight=0) ";
+
+%feature("docstring")  cmf::project::use_IDW_rainfall "void
+use_IDW_rainfall(double z_weight=0, double power=2) ";
+
+%feature("docstring")  cmf::project::use_nearest_rainfall "void
+use_nearest_rainfall(double z_weight=0) ";
+
 %feature("docstring")  cmf::project::get_cells "const
 upslope::cell_vector& get_cells() const
 
@@ -5133,92 +5394,6 @@ NewReach(double x, double y, double z, double length, char Type='T',
 double width=0.5, double depth=0.1, bool diffusive=false)
 
 Creates a new reach. ";
-
-
-// File: classcmf_1_1atmosphere_1_1_rain_cloud.xml
-%feature("docstring") cmf::atmosphere::RainCloud "
-
-RainCloud is a specialization of NeumannBoundary . The only difference
-is a reference to the owning cell and the unit conversion of the flux
-timeseries from mm/day to m3/day
-
-C++ includes: precipitation.h ";
-
-%feature("docstring")  cmf::atmosphere::RainCloud::get_cell "const
-cmf::upslope::Cell& get_cell() const ";
-
-%feature("docstring")  cmf::atmosphere::RainCloud::conc "real
-conc(cmf::math::Time t, const cmf::water::solute &_Solute) const
-
-Returns the solute concentrations of the flux at a given time. ";
-
-%feature("docstring")  cmf::atmosphere::RainCloud::is_empty "bool
-is_empty() const ";
-
-%feature("docstring")  cmf::atmosphere::RainCloud::RecalcFluxes "bool
-RecalcFluxes(cmf::math::Time t)
-
-Pure flux_nodes do not influence fluxes, therefore no recalculation of
-fluxes is required by flux_node. WaterStorage overrides this, since
-state changes require an update of the fluxes ";
-
-%feature("docstring")  cmf::atmosphere::RainCloud::connect_to "void
-connect_to(cmf::water::flux_node::ptr target) ";
-
-%feature("docstring")  cmf::atmosphere::RainCloud::project "const
-cmf::project& project() const
-
-Returns the project, this node is part of. ";
-
-%feature("docstring")  cmf::atmosphere::RainCloud::is_storage "virtual bool is_storage() const
-
-true, if this is a waterstorage ";
-
-%feature("docstring")  cmf::atmosphere::RainCloud::to_string "virtual
-std::string to_string() const ";
-
-%feature("docstring")  cmf::atmosphere::RainCloud::get_connections "cmf::water::connection_vector get_connections() const ";
-
-%feature("docstring")  cmf::atmosphere::RainCloud::get_connection "cmf::water::flux_connection* get_connection(const
-cmf::water::flux_node &target)
-
-Returns the connection between this and target. ";
-
-%feature("docstring")  cmf::atmosphere::RainCloud::remove_connection "bool remove_connection(cmf::water::flux_node::ptr To)
-
-Remove the connection. ";
-
-%feature("docstring")  cmf::atmosphere::RainCloud::flux_to "real
-flux_to(const cmf::water::flux_node &target, cmf::math::Time t)
-
-Returns the actual flux between this and target (positive sign means
-\"from target into this\"). ";
-
-%feature("docstring")  cmf::atmosphere::RainCloud::flux3d_to "cmf::geometry::point flux3d_to(const cmf::water::flux_node &target,
-cmf::math::Time t) ";
-
-%feature("docstring")  cmf::atmosphere::RainCloud::get_3d_flux "cmf::geometry::point get_3d_flux(cmf::math::Time t) ";
-
-%feature("docstring")  cmf::atmosphere::RainCloud::water_balance "real water_balance(cmf::math::Time t, const flux_connection
-*Without=0) const
-
-Returns the sum of all fluxes (positive and negative) at time t.
-Single fluxes can be excluded from the calculation
-
-Parameters:
------------
-
-t:  Time of the query
-
-Without:  A flux_connection that is excluded from the water_balance
-(e.g. to prevent closed circuits) ";
-
-%feature("docstring")  cmf::atmosphere::RainCloud::get_potential "virtual real get_potential() const
-
-Returns the water potential of the node in m waterhead The base class
-water storage always returns the height of the location ";
-
-%feature("docstring")  cmf::atmosphere::RainCloud::set_potential "virtual void set_potential(real new_potential) ";
 
 
 // File: classcmf_1_1upslope_1_1connections_1_1_rainfall.xml
@@ -5291,6 +5466,273 @@ cmf::upslope::connections::Rainfall::short_string "std::string
 short_string() const ";
 
 
+// File: classcmf_1_1atmosphere_1_1_rainfall_station.xml
+%feature("docstring") cmf::atmosphere::RainfallStation "
+
+RainfallStation describes a rainfall timeseries in mm/day at a certain
+place. Use RainfallStationReference or IDWRainfall to distribute the
+data into space
+
+C++ includes: Precipitation.h ";
+
+%feature("docstring")  cmf::atmosphere::RainfallStation::tostring "std::string tostring() const
+
+Returns the name and the mean yearly rainfall. ";
+
+%feature("docstring")  cmf::atmosphere::RainfallStation::get_position
+"cmf::geometry::point get_position() const
+
+Returns the position of the object. ";
+
+%feature("docstring")
+cmf::atmosphere::RainfallStation::RainfallStation "RainfallStation(const RainfallStation &copy) ";
+
+%feature("docstring")  cmf::atmosphere::RainfallStation::set_position
+"virtual void set_position(cmf::geometry::point p)
+
+Sets the location. If not implemented by the child class, an exception
+is thrown. ";
+
+%feature("docstring")
+cmf::atmosphere::RainfallStation::get_distance_to "double
+get_distance_to(const Locatable &cmp)
+
+Returns the distance between two locatable objects. ";
+
+%feature("docstring")
+cmf::atmosphere::RainfallStation::get_direction_to "cmf::geometry::point get_direction_to(const Locatable &cmp)
+
+Returns a vector with length=1 pointing in the direction of another
+Locatable. ";
+
+
+// File: classcmf_1_1atmosphere_1_1_rainfall_station_list.xml
+%feature("docstring") cmf::atmosphere::RainfallStationList "
+
+A list of rainfall stations
+
+C++ includes: Precipitation.h ";
+
+%feature("docstring")  cmf::atmosphere::RainfallStationList::size "size_t size() const
+
+Returns the number of rainfall stations. ";
+
+%feature("docstring")  cmf::atmosphere::RainfallStationList::add "RainfallStation::ptr add(std::string Name, cmf::math::timeseries Data,
+cmf::geometry::point Position)
+
+Creates a new RainfallStation and adds it to the list. Usage: The
+position of the rainfall station will be used as identifier A new
+rainfall station
+
+Parameters:
+-----------
+
+Name:  Name of the station
+
+Data:  Rainfall timeseries
+
+position:  Spatial position of the new station ";
+
+%feature("docstring")  cmf::atmosphere::RainfallStationList::remove "void remove(int index) ";
+
+
+// File: classcmf_1_1atmosphere_1_1_rainfall_station_reference.xml
+%feature("docstring") cmf::atmosphere::RainfallStationReference "
+
+References a single RainfallStation to provide rainfall intensity data
+
+C++ includes: Precipitation.h ";
+
+%feature("docstring")
+cmf::atmosphere::RainfallStationReference::get_intensity "real
+get_intensity(cmf::math::Time t) const
+
+Returns the actual rainfall intensity in mm/day. ";
+
+%feature("docstring")  cmf::atmosphere::RainfallStationReference::conc
+"real conc(cmf::math::Time t, const cmf::water::solute &Solute)
+
+Returns the concentration of a solute in the rainfall at time t. ";
+
+%feature("docstring")  cmf::atmosphere::RainfallStationReference::conc
+"virtual real conc(cmf::math::Time t, const cmf::water::solute
+&Solute) const
+
+Returns the water quality of the flux_node, if it is not overridden
+this is the mix of the incoming fluxes. ";
+
+%feature("docstring")
+cmf::atmosphere::RainfallStationReference::RecalcFluxes "virtual bool
+RecalcFluxes(cmf::math::Time t)
+
+Pure flux_nodes do not influence fluxes, therefore no recalculation of
+fluxes is required by flux_node. WaterStorage overrides this, since
+state changes require an update of the fluxes ";
+
+%feature("docstring")
+cmf::atmosphere::RainfallStationReference::is_empty "virtual bool
+is_empty() const ";
+
+%feature("docstring")
+cmf::atmosphere::RainfallStationReference::project "const
+cmf::project& project() const
+
+Returns the project, this node is part of. ";
+
+%feature("docstring")
+cmf::atmosphere::RainfallStationReference::is_storage "virtual bool
+is_storage() const
+
+true, if this is a waterstorage ";
+
+%feature("docstring")
+cmf::atmosphere::RainfallStationReference::to_string "virtual
+std::string to_string() const ";
+
+%feature("docstring")
+cmf::atmosphere::RainfallStationReference::get_connections "cmf::water::connection_vector get_connections() const ";
+
+%feature("docstring")
+cmf::atmosphere::RainfallStationReference::get_connection "cmf::water::flux_connection* get_connection(const
+cmf::water::flux_node &target)
+
+Returns the connection between this and target. ";
+
+%feature("docstring")
+cmf::atmosphere::RainfallStationReference::remove_connection "bool
+remove_connection(cmf::water::flux_node::ptr To)
+
+Remove the connection. ";
+
+%feature("docstring")
+cmf::atmosphere::RainfallStationReference::flux_to "real
+flux_to(const cmf::water::flux_node &target, cmf::math::Time t)
+
+Returns the actual flux between this and target (positive sign means
+\"from target into this\"). ";
+
+%feature("docstring")
+cmf::atmosphere::RainfallStationReference::flux3d_to "cmf::geometry::point flux3d_to(const cmf::water::flux_node &target,
+cmf::math::Time t) ";
+
+%feature("docstring")
+cmf::atmosphere::RainfallStationReference::get_3d_flux "cmf::geometry::point get_3d_flux(cmf::math::Time t) ";
+
+%feature("docstring")
+cmf::atmosphere::RainfallStationReference::water_balance "real
+water_balance(cmf::math::Time t, const flux_connection *Without=0)
+const
+
+Returns the sum of all fluxes (positive and negative) at time t.
+Single fluxes can be excluded from the calculation
+
+Parameters:
+-----------
+
+t:  Time of the query
+
+Without:  A flux_connection that is excluded from the water_balance
+(e.g. to prevent closed circuits) ";
+
+%feature("docstring")
+cmf::atmosphere::RainfallStationReference::get_potential "virtual
+real get_potential() const
+
+Returns the water potential of the node in m waterhead The base class
+water storage always returns the height of the location ";
+
+%feature("docstring")
+cmf::atmosphere::RainfallStationReference::set_potential "virtual
+void set_potential(real new_potential) ";
+
+
+// File: classcmf_1_1atmosphere_1_1_rain_source.xml
+%feature("docstring") cmf::atmosphere::RainSource "
+
+An abstract class for different types of rainfall sources
+
+C++ includes: Precipitation.h ";
+
+%feature("docstring")  cmf::atmosphere::RainSource::get_intensity "virtual real get_intensity(cmf::math::Time t) const =0
+
+Returns the actual rainfall intensity in mm/day. ";
+
+%feature("docstring")  cmf::atmosphere::RainSource::conc "virtual
+real conc(cmf::math::Time t, const cmf::water::solute &Solute)=0
+
+Returns the concentration of a solute in the rainfall at time t. ";
+
+%feature("docstring")  cmf::atmosphere::RainSource::RecalcFluxes "virtual bool RecalcFluxes(cmf::math::Time t)
+
+Pure flux_nodes do not influence fluxes, therefore no recalculation of
+fluxes is required by flux_node. WaterStorage overrides this, since
+state changes require an update of the fluxes ";
+
+%feature("docstring")  cmf::atmosphere::RainSource::is_empty "virtual
+bool is_empty() const ";
+
+%feature("docstring")  cmf::atmosphere::RainSource::project "const
+cmf::project& project() const
+
+Returns the project, this node is part of. ";
+
+%feature("docstring")  cmf::atmosphere::RainSource::is_storage "virtual bool is_storage() const
+
+true, if this is a waterstorage ";
+
+%feature("docstring")  cmf::atmosphere::RainSource::to_string "virtual std::string to_string() const ";
+
+%feature("docstring")  cmf::atmosphere::RainSource::get_connections "cmf::water::connection_vector get_connections() const ";
+
+%feature("docstring")  cmf::atmosphere::RainSource::get_connection "cmf::water::flux_connection* get_connection(const
+cmf::water::flux_node &target)
+
+Returns the connection between this and target. ";
+
+%feature("docstring")  cmf::atmosphere::RainSource::remove_connection
+"bool remove_connection(cmf::water::flux_node::ptr To)
+
+Remove the connection. ";
+
+%feature("docstring")  cmf::atmosphere::RainSource::flux_to "real
+flux_to(const cmf::water::flux_node &target, cmf::math::Time t)
+
+Returns the actual flux between this and target (positive sign means
+\"from target into this\"). ";
+
+%feature("docstring")  cmf::atmosphere::RainSource::flux3d_to "cmf::geometry::point flux3d_to(const cmf::water::flux_node &target,
+cmf::math::Time t) ";
+
+%feature("docstring")  cmf::atmosphere::RainSource::get_3d_flux "cmf::geometry::point get_3d_flux(cmf::math::Time t) ";
+
+%feature("docstring")  cmf::atmosphere::RainSource::water_balance "real water_balance(cmf::math::Time t, const flux_connection
+*Without=0) const
+
+Returns the sum of all fluxes (positive and negative) at time t.
+Single fluxes can be excluded from the calculation
+
+Parameters:
+-----------
+
+t:  Time of the query
+
+Without:  A flux_connection that is excluded from the water_balance
+(e.g. to prevent closed circuits) ";
+
+%feature("docstring")  cmf::atmosphere::RainSource::conc "virtual
+real conc(cmf::math::Time t, const cmf::water::solute &Solute) const
+
+Returns the water quality of the flux_node, if it is not overridden
+this is the mix of the incoming fluxes. ";
+
+%feature("docstring")  cmf::atmosphere::RainSource::get_potential "virtual real get_potential() const
+
+Returns the water potential of the node in m waterhead The base class
+water storage always returns the height of the location ";
+
+%feature("docstring")  cmf::atmosphere::RainSource::set_potential "virtual void set_potential(real new_potential) ";
+
+
 // File: classcmf_1_1river_1_1_reach.xml
 %feature("docstring") cmf::river::Reach "
 
@@ -5345,8 +5787,7 @@ set_downstream(ptr new_downstream)
 
 Connects the reach to another one downstream. ";
 
-%feature("docstring")  cmf::river::Reach::get_downstream "ptr
-get_downstream() const
+%feature("docstring")  cmf::river::Reach::get_downstream "cmf::water::flux_node::ptr get_downstream() const
 
 Returns the reach downstream of this (or null if there is no reach
 downstream). ";
@@ -7081,6 +7522,28 @@ allocation. ";
 cmf::math::StateVariableVector::StateVariableVector "StateVariableVector() ";
 
 
+// File: classcmf_1_1upslope_1_1subcatchment.xml
+%feature("docstring") cmf::upslope::subcatchment "
+
+A class to structure cells in a project using their main outlets.
+
+C++ includes: algorithm.h ";
+
+%feature("docstring")  cmf::upslope::subcatchment::subcatchment "subcatchment(cmf::upslope::Cell &pourpoint, double
+area_threshold=1e308)
+
+Creates a subcatchment from a pourpoint cell
+
+Parameters:
+-----------
+
+pourpoint:  The pourpoint (outlet of the subcatchment)
+
+area_threshold:  Minimum contributing area size to form a
+subcatchment. When area_threshold > area(cells), all upslope cells of
+pourpoint are used. ";
+
+
 // File: classcmf_1_1upslope_1_1connections_1_1_s_w_a_t_percolation.xml
 %feature("docstring") cmf::upslope::connections::SWATPercolation "
 
@@ -8411,9 +8874,9 @@ water storage always returns the height of the location ";
 %feature("docstring") cmf::atmosphere::Weather "
 
 A structure holding meteorological information, excluding
-precipitation.
+precipitation
 
-C++ includes: meteorology.h ";
+C++ includes: Meteorology.h ";
 
 %feature("docstring")  cmf::atmosphere::Weather::Rn "double Rn(double
 albedo, bool daily=false) const
@@ -8448,7 +8911,27 @@ calculated ";
 Calculates the mean pressure for a specific height. ";
 
 %feature("docstring")  cmf::atmosphere::Weather::Weather "Weather(double _T, double _Tmax, double _Tmin, double _rH, double
-_wind=2, double _sunshine=0.5, double _Rs=15) ";
+_wind=2, double _sunshine=0.5, double _Rs=15)
+
+Creates a \"weather\" from given data
+
+Parameters:
+-----------
+
+_T:  actual Temperature in deg C
+
+_Tmax:  daily maximum Temperature in deg C
+
+_Tmin:  daily minimum Temperature in deg C
+
+_rH:  actual relative humidity in % [0..100]
+
+_wind:  actual wind speed in m/s
+
+_sunshine:  actual fraction of sunshine duration per potential
+sunshine duration in h/h
+
+_Rs:  actual incoming shortwave global radiation in MJ/(m2 day) ";
 
 %feature("docstring")  cmf::atmosphere::Weather::to_string "std::string to_string() const ";
 
@@ -8508,13 +8991,20 @@ minimum height of any (possibly distant) upstream reach. ";
 
 // File: namespacecmf_1_1upslope.xml
 %feature("docstring")  cmf::upslope::connections::find_cell "cmf::upslope::Cell* cmf::upslope::find_cell(cells_ref,
-cmf::geometry::point p, double max_dist=1e20) ";
+cmf::geometry::point p, double max_dist=1e20)
+
+Finds the nearest cell for a position. ";
 
 %feature("docstring")  cmf::upslope::connections::get_boundary_cells "cmf::upslope::cell_vector
-cmf::upslope::get_boundary_cells(cmf::upslope::cells_ref cells) ";
+cmf::upslope::get_boundary_cells(cmf::upslope::cells_ref cells)
+
+Gets the outer cells of a network. Unstable! Might create an infinite
+loop. ";
 
 %feature("docstring")  cmf::upslope::connections::get_connections "cmf::water::connection_set cmf::upslope::get_connections(cells_ref
-cells) ";
+cells)
+
+Gets all connections of a bunch of cells. ";
 
 %feature("docstring")
 cmf::upslope::connections::connect_cells_with_flux "void
@@ -8526,16 +9016,14 @@ CellConnector protocol. ";
 
 %feature("docstring")  cmf::upslope::connections::fill_sinks "int
 cmf::upslope::fill_sinks(cells_ref cells, double min_difference=0.001)
+
+Fills the sinks in a network. Unstable! Might create an infinite loop.
 ";
 
 %feature("docstring")  cmf::upslope::connections::area "double
-cmf::upslope::area(cells_ref cells) ";
+cmf::upslope::area(cells_ref cells)
 
-%feature("docstring")  cmf::upslope::connections::set_meteo_station "void cmf::upslope::set_meteo_station(cmf::upslope::cells_ref cells,
-cmf::atmosphere::MeteoStation::ptr meteo_station) ";
-
-%feature("docstring")  cmf::upslope::connections::set_precipitation "void cmf::upslope::set_precipitation(cmf::upslope::cells_ref cells,
-cmf::math::timeseries data_in_mm_day) ";
+Returns the total area of a cell collection. ";
 
 %feature("docstring")  cmf::upslope::connections::cell_positions "cmf::geometry::point_vector
 cmf::upslope::cell_positions(cmf::upslope::cells_ref cells) ";
@@ -8643,7 +9131,7 @@ const cmf::upslope::vegetation::Vegetation &veg) ";
 
 
 // File: namespacecmf_1_1water.xml
-%feature("docstring")  cmf::water::replace_node "void
+%feature("docstring")  cmf::water::replace_node "int
 cmf::water::replace_node(cmf::water::flux_node::ptr oldnode,
 cmf::water::flux_node::ptr newnode) ";
 
@@ -8659,10 +9147,10 @@ cmf::water::get_lower_node(flux_node::ptr node1, flux_node::ptr node2)
 ";
 
 
-// File: meteorology_8h.xml
+// File: _meteorology_8h.xml
 
 
-// File: precipitation_8h.xml
+// File: _precipitation_8h.xml
 
 
 // File: implicitconv_8h.xml
@@ -8672,6 +9160,9 @@ cmf::water::get_lower_node(flux_node::ptr node1, flux_node::ptr node2)
 
 
 // File: _f_v_m_8dox.xml
+
+
+// File: _i_d_w_8dox.xml
 
 
 // File: _landscape_model_8dox.xml
@@ -8831,19 +9322,7 @@ real x_half) ";
 // File: _water_storage_8h.xml
 
 
-// File: group__manning.xml
-
-
-// File: group___h_b_v.xml
-
-
-// File: group__infiltration.xml
-
-
-// File: group__perc.xml
-
-
-// File: group__latflux.xml
+// File: group__boundary.xml
 
 
 // File: group__surfacefluxes.xml
@@ -8855,13 +9334,34 @@ real x_half) ";
 // File: group__connections.xml
 
 
-// File: group__nodes.xml
+// File: group___h_b_v.xml
+
+
+// File: group__infiltration.xml
+
+
+// File: group__meteo.xml
+
+
+// File: group__perc.xml
 
 
 // File: group__storages.xml
 
 
+// File: group__manning.xml
+
+
+// File: group__nodes.xml
+
+
+// File: group__latflux.xml
+
+
 // File: _f_v_m.xml
+
+
+// File: _i_d_w.xml
 
 
 // File: _l_m.xml
@@ -8873,43 +9373,43 @@ real x_half) ";
 // File: todo.xml
 
 
-// File: dir_980f1c9ad6bc3d277adbbf22154e83dd.xml
+// File: dir_9592ab4aaa0d9c46a819f7f81e09220a.xml
 
 
-// File: dir_c9ecd100d3db6cfa4c76ef46fe268ecd.xml
+// File: dir_a16da2e77d7736c8ef82aa4fb58f4d7a.xml
 
 
-// File: dir_40cac598ea7692ef7b1d8d6cb2d3affc.xml
+// File: dir_98acbbad275b391c1ade88ff097e61c2.xml
 
 
-// File: dir_5315b9f6f8b45e6135852d5c4b1290ec.xml
+// File: dir_8410d30186ae5b9b3ffde0ee7f4d44e7.xml
 
 
-// File: dir_d4a7db5f75d53464017ea42e87e446ec.xml
+// File: dir_a908fbf2eb3f8c8152fb61ab6347c49b.xml
 
 
-// File: dir_33b844088382798bd5f490b8fb37bf85.xml
+// File: dir_ea86885cf3f09bc8723d5eddb49a3fb1.xml
 
 
-// File: dir_5d5bac740accd8f19340df0f60788684.xml
+// File: dir_ace73d892420b0c6d251d9a3a47aa20d.xml
 
 
-// File: dir_cc7a88951d84f2626826dfeb77aa5f8a.xml
+// File: dir_245345c6834d8cbe65c8078f132e59b7.xml
 
 
-// File: dir_4e51a816ea379d271f9feb4b990df64d.xml
+// File: dir_cc7bcbd64709af57d5efb77b5a4368ed.xml
 
 
-// File: dir_25047dbca854cc54e58c932b1f7b1f34.xml
+// File: dir_95270cf67a60bfc82738cbf6d50d39ed.xml
 
 
-// File: dir_936659d8ee6b95d7313866de52cc56de.xml
+// File: dir_6133eb82dc0ddcdba471fd038299ba04.xml
 
 
-// File: dir_e0027c5779ed86fa0946da05a34ab206.xml
+// File: dir_006f6fc26db23124fae960566a4f6405.xml
 
 
-// File: dir_5cfbe4c55bb4c51f4fce7ebbe7add314.xml
+// File: dir_031051fb4244b6bc74c5e3edb1f57762.xml
 
 
 // File: main.xml

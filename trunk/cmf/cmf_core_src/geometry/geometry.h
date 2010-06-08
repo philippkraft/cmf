@@ -61,6 +61,9 @@ namespace cmf {
 				double distanceTo(point p) const { 
 					return sqrt((x-p.x)*(x-p.x)+(y-p.y)*(y-p.y));
 				}
+				double z_weight_distance(point p,double z_weight) const {
+					return distanceTo(p) + z_weight * abs(z - p.z);
+				}
 				double distance3DTo(point p) const;
 				static double distance(point p1,point p2) {
 					return sqrt((p1.x-p2.x)*(p1.x-p2.x) + (p1.y-p2.y)*(p1.y-p2.y));

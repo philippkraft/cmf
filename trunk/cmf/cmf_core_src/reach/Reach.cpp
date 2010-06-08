@@ -18,6 +18,7 @@
 //   
 #include "Reach.h"
 using namespace cmf::river;
+using namespace cmf::water;
 
 double cmf::river::make_river_gap( Reach::ptr reach )
 {
@@ -60,9 +61,15 @@ void Reach::set_downstream(Reach::ptr new_downstream)
 	}
 
 }
-Reach::ptr Reach::get_downstream() const
+flux_node::ptr Reach::get_downstream() const
 {
-	return Reach::ptr(m_downstream);
+	if (!m_downstream.expired())
+		return m_downstream.lock();
+	else if (!m_outlet.expired())
+		return m_outlet.lock();
+	else 
+		return flux_node::ptr();
+
 }
 
 bool Reach::add_upstream(Reach::ptr r )
@@ -94,17 +101,18 @@ bool Reach::remove_upstream(const Reach* r)
 
 Reach::ptr Reach::get_root()
 {
-	Reach::ptr down=get_downstream();
+	Reach::ptr down=m_downstream.lock();
 	if (down)
 		return down->get_root();
 	else
-		return Reach::ptr(this);
+		return weak_this.lock();
 }
 
 void Reach::set_outlet(cmf::water::flux_node::ptr outlet )
 {
 	set_downstream(Reach::ptr());
 	if (outlet)
+		m_outlet = outlet;
 		if (m_diffusive)
 			new Manning_Diffusive(weak_this.lock(),outlet, get_height_function());
 		else

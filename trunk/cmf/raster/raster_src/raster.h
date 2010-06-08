@@ -547,6 +547,79 @@ public:
 		res/=other;
 		return res;
 	}
+	int fill(_T min_diff,size_t max_iter=100,bool debug=false)
+	{
+		Raster<_T> original(*this);
+		std::vector<int> inside_r,   inside_c;
+		_T max = _T(statistics().max) * 10;
+		_T e = min_diff;
+		// Step 1: Fill the whole DEM with a very high value, excluding boundaries
+		for (int r=0;r<RowCount();++r) {
+			for (int c=0;c<ColumnCount();++c) {
+				int ncount=0;
+				for (int nr=-1;nr<=1;++nr) 
+					for (int nc=-1;nc<=1;++nc) 
+						if (this->HasData(c+nc,r+nr))
+							++ncount;
+				if (ncount==9) { // only non-boundary cells have 8 neighbors (+1 for the cell itself)
+					inside_r.push_back(r);
+					inside_c.push_back(c);
+					SetData(c,r,max);
+				} 
+			}
+		}
+		if (debug) std::cout << inside_c.size() << " Cells raised";
+		bool continue_inc=true;
+		size_t inc_count=0;
+		size_t action_count=0;
+		while (continue_inc)
+		{
+			if (inc_count++ > max_iter)
+				throw std::runtime_error("Maximum number of iterations. Fill algorithm failed.");
+			continue_inc=false;
+			for (int i = 0; i < int(inside_r.size()) ; ++i)
+			{
+				int c = inside_c[i],r=inside_r[i];
+				_T Wc = this->GetData(c,r);
+				_T Zc = original.GetData(c,r);
+				// Action needed ?
+				if (Wc > Zc) {
+					bool no_op=true;
+					for (int nr=-1;nr<=1 && no_op;++nr) {
+						for (int nc=-1;nc<=1 && no_op;++nc) {
+							if (nc || nr) {
+								_T Wn=this->GetData(c+nc,r+nr);
+								// operation 1 applicable?
+								if (Zc>=Wn + e) {
+									//Do operation 1 (If there is a lower new height than the original height of the cell in the neighborhood, we can use the original height again)
+									Wc=Zc;
+									continue_inc=true;
+									//nothing else to be done in the neighbor loop
+									no_op=false;
+								
+								// Operation 2 applicable?
+								} else if (Wc > Wn + e) {
+									//Do Operation 2 (If there is a lower new height than the actual cell height in the neighborhood, we use that height)
+									Wc = Wn + e;
+									continue_inc=true;
+									++action_count;
+								} // Operations if
+							} // neighbor != current cell
+						} // nc loop
+					} // nr loop
+					this->SetData(c,r,Wc);
+
+				} // Action needed
+			} // for cells
+			if (debug) {
+				std::cout << "Iteration: " << inc_count << " Actions taken: " << action_count << std::endl;
+				action_count=0;
+			}
+		} // while continue_inc
+		return action_count;
+	
+
+	}
 	//@}
 
 	/// @name Constructors & IO-Methods
@@ -706,11 +779,11 @@ public:
 				result.SetData(c,r,double(GetData(c,r)));
 		return result;
 	}
-/// Returns the memory adress of the data
-size_t adress() const
-{
-	return (size_t)(&m_data[0]);
-}
+	/// Returns the memory adress of the data
+	size_t adress() const
+	{
+		return (size_t)(&m_data[0]);
+	}
 	//@}
 
 	/// @name Focal functions

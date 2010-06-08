@@ -19,6 +19,7 @@
 #ifndef cell_h__
 #define cell_h__
 #include "../atmosphere/meteorology.h"
+#include "../atmosphere/precipitation.h"
 #include "../geometry/geometry.h"
 #include "../water/flux_connection.h"
 #include "vegetation/StructVegetation.h"
@@ -109,7 +110,7 @@ namespace cmf {
 				m_Snow,
 				m_SurfaceWaterStorage;
 			cmf::water::flux_node::ptr m_SurfaceWater;
-			std::tr1::shared_ptr<cmf::atmosphere::RainCloud> m_rainfall;
+			cmf::atmosphere::RainSource::ptr m_rainfall;
 			cmf::water::flux_node::ptr m_Evaporation, m_Transpiration;
 
 			const cmf::project & m_project;
@@ -135,7 +136,14 @@ namespace cmf {
 			}
 			/// Exchanges a timeseries of rainfall with a constant flux
 			void set_rainfall(double rainfall);
-			std::tr1::shared_ptr<cmf::atmosphere::RainCloud> get_rainfall() const {return m_rainfall;}
+			/// Returns the current rainfall flux in m3/day
+			double get_rainfall(cmf::math::Time t) const {return m_rainfall->get_intensity(t) * 1e-3 * m_Area;}
+			/// Changes the current source of rainfall
+			void set_rain_source(cmf::atmosphere::RainSource::ptr new_source);
+			/// Returns the current source for rainfall
+			cmf::atmosphere::RainSource::ptr get_rain_source() {
+				return m_rainfall;
+			}
 			/// Returns the end point of all evaporation of this cell
  			cmf::water::flux_node::ptr get_evaporation();
  			/// Returns the end point of all transpiration of this cell

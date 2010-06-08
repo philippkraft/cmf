@@ -44,6 +44,12 @@ if "swig" in sys.argv:
     os.execvp("swig",["-Wextra","-w512","-python","-castmode","-O","-c++","-o cmf_wrap.cxx","-outdir ..","cmf/cmf_core_src/cmf.i"])
     #exit()
     sys.argv.pop("swig")
+def count_lines(files):
+    lcount=0
+    for fn in files:
+        lines = file(fn).readlines()
+        lcount+=len(lines)
+    return lcount
 def make_cmf_core():
     library_dirs=sundials_lib_path
     include_dirs=sundials_include_path
@@ -59,10 +65,13 @@ def make_cmf_core():
     if gcc:
         libraries += ['gomp']
     cmf_files=[]
-    for root,dirs,files in os.walk('.'):
+    cmf_headers=[]
+    for root,dirs,files in os.walk('cmf/cmf_core_src'):
         cmf_files.extend(os.path.join(root,f) for f in files if f.endswith('.cpp') and f!='cmf_wrap.cpp')
+        cmf_headers.extend(os.path.join(root,f) for f in files if f.endswith('.h'))
     print "Compiling %i source files" % (len(cmf_files)+1)
     cmf_files.append("cmf/cmf_core_src/cmf.i")
+    print "Total number of C++ loc:", count_lines(cmf_files + cmf_headers)
     cmf_core = Extension('cmf._cmf_core',
                             sources=cmf_files,
                             library_dirs=library_dirs,

@@ -19,13 +19,15 @@
 #include "meteorology.h"
 #include <cmath>
 #include "../math/timeseries.h"
+#include "../math/num_array.h"
 #include <fstream>
 #define min(a,b) ((a)<(b)) ? (a) : (b)
 #define max(a,b) ((a)>(b)) ? (a) : (b)
 #define clip(v,mn,mx) (max(min(v,mx),mn))
 
-static const double PI=3.141592654;
 using namespace cmf::atmosphere;
+using namespace cmf::math;
+using namespace cmf::geometry;
 double cmf::atmosphere::Pressure( double height )	
 {
 	return 101.3*pow((293-0.0065*height)/293,5.26);
@@ -48,7 +50,35 @@ double cmf::atmosphere::Weather::Rn( double albedo,bool daily/*=false*/ ) const
 	return Rns-Rnl;
 }
 
+cmf::atmosphere::Weather& cmf::atmosphere::Weather::operator+=( const Weather& w )
+{
+	T+=w.T;
+	Tmax+=w.Tmax;
+	Tmin+=w.Tmin;
+	Tground+=w.Tground;
+	Windspeed+=w.Windspeed;
+	e_a+=w.e_a;
+	e_s+=w.e_s;
+	sunshine+=w.sunshine;
+	Rs+=w.Rs;
+	instrument_height+=w.instrument_height;
+	return *this;
+}
 
+cmf::atmosphere::Weather& cmf::atmosphere::Weather::operator*=( double factor )
+{
+	T*=factor;
+	Tmax*=factor;
+	Tmin*=factor;
+	Tground*=factor;
+	Windspeed*=factor;
+	e_a*=factor;
+	e_s*=factor;
+	sunshine*=factor;
+	Rs*=factor;
+	instrument_height*=factor;
+	return *this;
+}
 
 double cmf::atmosphere::vapour_pressure( double T )	
 {
@@ -96,7 +126,7 @@ double cmf::atmosphere::vpd_from_rH( double T,double rH )
 double cmf::atmosphere::rH_from_vpd( double T, double vpd )
 {
 	double e_s = vapour_pressure(T), e_a = e_s - vpd;
-	return e_a/e_s;
+	return 100 * e_a/e_s;
 }
 double cmf::atmosphere::Weather::snow_threshold=0.5;
 
@@ -121,7 +151,7 @@ cmf::atmosphere::Weather cmf::atmosphere::MeteoStation::get_data( cmf::math::Tim
 	}
 	if (Tground.is_empty()) A.Tground=A.T;
 	else A.Tground=Tground[t];
-	A.instument_height=InstrumentHeight;
+	A.instrument_height=InstrumentHeight;
 	A.Windspeed=Windspeed.is_empty() ? 
 		2. 	// If windspeed is missing, use 2m/s as default
 		: max(Windspeed[t],0.5); 	// Windspeed shoud not be smaller than 0.5m/s
@@ -225,6 +255,7 @@ double cmf::atmosphere::MeteoStationList::calculate_Temp_lapse( cmf::math::Time 
 	int steps=0;
 	timeseries temp_lapse(begin,step);
 	double avg_lapse=0;
+	double inv_size = 1./(n-1.);
 	for (Time t=begin;t<=end;t+=step)
 	{
 		real SShT=0,SShh=0,sum_T=0,sum_h=0;
@@ -239,8 +270,8 @@ double cmf::atmosphere::MeteoStationList::calculate_Temp_lapse( cmf::math::Time 
 			sum_h+=h;
 			sum_T+=T;
 		}
-		SShT=1/(n-1)*(SShT-sum_h*sum_T);
-		SShh=1/(n-1)*(SShh-sum_h*sum_T);
+		SShT=inv_size * (SShT-sum_h*sum_T);
+		SShh=inv_size * (SShh-sum_h*sum_T);
 		temp_lapse.add(SShT/SShh);
 		++steps;
 		for(vector::iterator it = m_stations.begin(); it != m_stations.end(); ++it)
@@ -283,4 +314,40 @@ cmf::atmosphere::MeteoStation::ptr cmf::atmosphere::MeteoStationList::add_statio
 	m_stations.push_back(result);
 	m_name_map[name]=size()-1;
 	return result;
+}
+
+cmf::atmosphere::IDW_Meteorology::IDW_Meteorology( const cmf::geometry::Locatable& position,const MeteoStationList& stations,double z_weight, double power )
+: m_position(position.get_position())
+{
+	point p=position.get_position();
+	// Create a vector of distances to the stations
+	num_array dist(stations.size());
+	for (int i = 0; i < stations.size() ; ++i)
+		dist[i] = p.distanceTo(point(stations[i]->x,stations[i]->y))+z_weight*abs(p.z-stations[i]->z);
+	
+	// Calculate the weight of each station using IDW
+	num_array weights_ = 1./dist.power(power);
+	double weightsum = weights_.sum();
+	weights_/=weightsum; // normalize the weights
+	// Create a weight map
+	for (int i = 0; i < stations.size() ; ++i)
+		weights[stations[i]] = weights_[i];
+}
+
+cmf::atmosphere::Weather cmf::atmosphere::IDW_Meteorology::get_weather( cmf::math::Time t ) const
+{
+	Weather res = Weather() * 0.0; // Create a NULL weather
+	// Add each station record, weighted by IDW
+	for(weight_map::const_iterator it = weights.begin(); it != weights.end(); ++it)
+	    res += it->first->get_data(t,m_position.z) * it->second;
+	return res;
+}
+
+real cmf::atmosphere::IDW_Meteorology::get_instrument_height() const
+{
+	real res=0.0;
+	for(weight_map::const_iterator it = weights.begin(); it != weights.end(); ++it)
+		res += it->first->InstrumentHeight * it->second;
+	return res;
+
 }

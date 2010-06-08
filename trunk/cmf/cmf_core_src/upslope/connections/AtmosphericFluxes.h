@@ -44,7 +44,7 @@ namespace cmf {
 						real f=0; // Fraction of rainfall to use
 						if (Throughfall) f+=1-veg.CanopyClosure;
 						if (InterceptedRainfall) f+=veg.CanopyClosure;
-						return f * (*m_cell.get_rainfall())(t); 
+						return f * m_cell.get_rainfall(t); 
 					}
 				}
 				void NewNodes() {}
@@ -52,7 +52,7 @@ namespace cmf {
 				bool Throughfall;
 				bool InterceptedRainfall;
 				Rainfall(cmf::water::flux_node::ptr target,cmf::upslope::Cell & cell,bool getthroughfall=true,bool getintercepted=true) 
-					: cmf::water::flux_connection(cell.get_rainfall(),target,
+					: cmf::water::flux_connection(cell.get_rain_source(),target,
 					getthroughfall && getintercepted ? "Rainfall" : getthroughfall ? "Throughfall" : getintercepted ? "Intercepted rain" : "No rain"),
 					m_cell(cell),Throughfall(getthroughfall),InterceptedRainfall(getintercepted) {
 						NewNodes();
@@ -68,7 +68,7 @@ namespace cmf {
 				{
 					bool snow=(m_cell.get_snow()!=0) && m_cell.get_weather(t).T<cmf::atmosphere::Weather::snow_threshold;
 					if (snow)
-						return (*m_cell.get_rainfall())(t); // Convert mm/day to m3/day
+						return m_cell.get_rainfall(t); // Convert mm/day to m3/day
 					else
 						return 0.0;
 				}
@@ -76,7 +76,7 @@ namespace cmf {
 
 			public:
 				Snowfall(cmf::water::flux_node::ptr target,cmf::upslope::Cell & cell) 
-					: cmf::water::flux_connection(cell.get_rainfall(),target,"Snowfall"),m_cell(cell) {
+					: cmf::water::flux_connection(cell.get_rain_source(),target,"Snowfall"),m_cell(cell) {
 						NewNodes();
 				}
 

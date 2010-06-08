@@ -118,7 +118,7 @@ namespace cmf {
 			virtual ~flux_connection();
 		};
 
-		void replace_node(cmf::water::flux_node::ptr oldnode,cmf::water::flux_node::ptr newnode);
+		int replace_node(cmf::water::flux_node::ptr oldnode,cmf::water::flux_node::ptr newnode);
 
 		
 

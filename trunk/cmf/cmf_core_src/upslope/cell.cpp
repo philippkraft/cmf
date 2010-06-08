@@ -51,8 +51,7 @@ m_meteo(new cmf::atmosphere::ConstantMeteorology)
 	m_Evaporation->Name="Evaporation of cell #" + cell_id;
 	m_Transpiration.reset(new cmf::water::flux_node(_project,cmf::geometry::point(x,y,z+20)));
 	m_Transpiration->Name="Transpiration of cell #" + cell_id;
-	m_rainfall.reset(new cmf::atmosphere::RainCloud(*this));
-	m_rainfall->Name="Rain of cell #" + cell_id;
+	m_rainfall.reset(new cmf::atmosphere::ConstantRainSource(_project,cmf::geometry::point(x,y,z+20),0.0));
 	new connections::Rainfall(get_surfacewater(),*this);
 }
 
@@ -269,5 +268,17 @@ cmf::water::flux_node::ptr cmf::upslope::Cell::get_surfacewater()
 
 void cmf::upslope::Cell::set_rainfall( double rainfall )
 {
-	get_rainfall()->flux = rainfall;
+	cmf::atmosphere::ConstantRainSource* new_source = new cmf::atmosphere::ConstantRainSource(this->get_project(),this->get_position(),rainfall);
+	cmf::atmosphere::ConstantRainSource::ptr new_source_ptr(new_source);
+	cmf::water::replace_node(m_rainfall,new_source_ptr);
+	m_rainfall = new_source_ptr;
+
+}
+
+void cmf::upslope::Cell::set_rain_source( cmf::atmosphere::RainSource::ptr new_source )
+{
+	if (m_rainfall) {
+		cmf::water::replace_node(m_rainfall,new_source);
+	}
+	m_rainfall = new_source;
 }

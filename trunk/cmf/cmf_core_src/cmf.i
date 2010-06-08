@@ -67,7 +67,12 @@ SWIG_SHARED_PTR(state_var,cmf::math::StateVariable);
 SWIG_SHARED_PTR(flux_node,cmf::water::flux_node);
     SWIG_SHARED_PTR_DERIVED(DricheletBoundary,cmf::water::flux_node,cmf::water::DricheletBoundary);
     SWIG_SHARED_PTR_DERIVED(NeumannBoundary, cmf::water::flux_node, cmf::water::NeumannBoundary);
-        SWIG_SHARED_PTR_DERIVED(RainCloud, cmf::water::NeumannBoundary, cmf::atmosphere::RainCloud);
+    SWIG_SHARED_PTR_DERIVED(RainSource, cmf::water::flux_node, cmf::atmosphere::RainSource);
+        SWIG_SHARED_PTR_DERIVED(RainfallStationReference, cmf::atmosphere::RainSource, cmf::atmosphere::RainfallStationReference);
+        SWIG_SHARED_PTR_DERIVED(IDWRainfall, cmf::atmosphere::RainSource, cmf::atmosphere::IDWRainfall);
+        SWIG_SHARED_PTR_DERIVED(ConstantRainSource, cmf::atmosphere::RainSource, cmf::atmosphere::ConstantRainSource);
+        
+        
     SWIG_SHARED_PTR_DERIVED(WaterStorage,cmf::water::flux_node,cmf::water::WaterStorage);
         SWIG_SHARED_PTR_DERIVED(OpenWaterStorage,cmf::water::WaterStorage,cmf::river::OpenWaterStorage);
             SWIG_SHARED_PTR_DERIVED(Reach,cmf::river::OpenWaterStorage,cmf::river::Reach);
@@ -124,7 +129,9 @@ SWIG_SHARED_MULTICAST(cmf::river::OpenWaterStorage, cmf::math::StateVariable)
 SWIG_SHARED_MULTICAST(cmf::river::Reach, cmf::math::StateVariable)
 SWIG_SHARED_MULTICAST(cmf::water::WaterStorage, cmf::math::StateVariable)
 
-SWIG_SHARED_MULTICAST(cmf::atmosphere::RainCloud, cmf::water::flux_node)
+SWIG_SHARED_MULTICAST(cmf::atmosphere::RainfallStationReference, cmf::water::flux_node);
+SWIG_SHARED_MULTICAST(cmf::atmosphere::IDWRainfall, cmf::water::flux_node);
+SWIG_SHARED_MULTICAST(cmf::atmosphere::ConstantRainSource, cmf::water::flux_node);
 
 
 
@@ -148,7 +155,7 @@ SWIG_SHARED_MULTICAST(cmf::atmosphere::RainCloud, cmf::water::flux_node)
 %define %node_downcast_all(Method)
 //Downcast to all children of cmf::water::flux_node
 %node_downcast(Method,
-   cmf::atmosphere::RainCloud,cmf::water::DricheletBoundary,cmf::water::NeumannBoundary,
+   cmf::atmosphere::RainSource,cmf::water::DricheletBoundary,cmf::water::NeumannBoundary,
    cmf::upslope::SoilLayer,  cmf::river::Reach,cmf::river::OpenWaterStorage,cmf::water::WaterStorage
 )
 %enddef
@@ -172,7 +179,10 @@ EXTENT__REPR__(cmf::water::WaterStorage)
 
 
 %include "atmosphere/meteorology.i"
-EXTENT__REPR__(cmf::atmosphere::RainCloud)
+EXTENT__REPR__(cmf::atmosphere::RainSource)
+EXTENT__REPR__(cmf::atmosphere::RainfallStationReference)
+EXTENT__REPR__(cmf::atmosphere::ConstantRainSource)
+EXTENT__REPR__(cmf::atmosphere::IDWRainfall)
 
 %echo "Atmosphere OK!";
 

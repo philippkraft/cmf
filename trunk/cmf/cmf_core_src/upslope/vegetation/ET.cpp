@@ -111,8 +111,8 @@ namespace cmf {
 					z_om=0.123*h,                          // roughness length governing momentum transfer
 					z_oh=0.1*z_om,                         // roughness length governing transfer of heat and vapour
 					k2=0.1681,                             // von Karman's constant squared (0.41^2=0.1681)
-					ra_u =   log((h+A.instument_height-d)/z_om)
-								 * log((h+A.instument_height-d)/z_oh)
+					ra_u =   log((h+A.instrument_height-d)/z_om)
+								 * log((h+A.instrument_height-d)/z_oh)
 								 / k2;																	// Aerodynamic resistence * Windspeed
 				return ra_u/maximum(A.Windspeed,0.5);   // Aerodynamic resistence
 			}
