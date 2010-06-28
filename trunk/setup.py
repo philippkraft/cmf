@@ -68,7 +68,7 @@ def make_cmf_core():
         compile_args = ["/openmp","/EHsc",r'/Fd"build\vc90.pdb"',"/D_SCL_SECURE_NO_WARNINGS"]
         link_args=["/DEBUG"]
     if gcc: 
-        compile_args = ["-std=gnu++98","-fopenmp"]
+        compile_args=['-fopenmp','-Wno-comment','-Wno-reorder','-Wno-unused','-Wno-sign-compare']
         link_args=["-fopenmp"]
     libraries=["sundials_cvode","sundials_nvecserial"]
     if gcc:
