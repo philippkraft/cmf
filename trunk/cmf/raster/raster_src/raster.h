@@ -46,10 +46,6 @@ struct RasterStatistics
 };
 /// Holds the histogram for a raster
 class Histogram	{
-private:
-	double m_width,m_min;
-	int count;
-	std::vector<int> m_frequency;
 public:
 	/// Returns the left side of the first histogram bar
 	double min() const  { return m_min;}
@@ -145,14 +141,20 @@ public:
 		++count;
 	}
 	/// Creates a histogram with bars ranging from _min to _max with a width of width
-	Histogram(double _min,double _max, double _width) : m_min(_min),m_width(_width),m_frequency(size_t((_max-_min)/_width),0),count(0) {}
+	Histogram(double _min,double _max, double _width)
+	: m_min(_min),m_width(_width),m_frequency(size_t((_max-_min)/_width),0),count(0) {}
 	/// Creates a histogram with count bars ranging from _min to _max
-	Histogram(double _min,double _max, size_t _count) : m_min(_min),m_width((_max-_min)/_count),m_frequency(_count,0),count(0) {}
+	Histogram(double _min,double _max, size_t _count)
+	: m_min(_min),m_width((_max-_min)/_count),m_frequency(_count,0),count(0) {}
+private:
+	double m_width,m_min;
+	int count;
+	std::vector<int> m_frequency;
 
 
 };
 /// Definition of the spatial properties of the raster
-template<class _T>
+template<typename _T>
 class header {
 public:
 	double      xllcorner; ///<x-Value for the Lower Left corner
@@ -216,7 +218,8 @@ public:
 
 };
 ///Represents a raster dataset.
-template<class _T> class Raster {
+template<typename _T> class Raster {
+private:
 	RasterStatistics m_statistic;
 	bool m_statistic_actual;
 #ifndef SWIG
@@ -227,8 +230,8 @@ template<class _T> class Raster {
 	/// Loads the data from an ESRI ASC-File (without the header)
 	void LoadFromASC(std::istream& ASCFile)
 	{
-		m_data=std::vector<_T>(m_Header.ncols*m_Header.nrows);
-		data::iterator pdata=m_data.begin();
+		m_data=data(m_Header.ncols*m_Header.nrows);
+		typename data::iterator pdata=m_data.begin();
 		double buffer=0;
 		for (int i=0 ;i<m_Header.ncols*m_Header.nrows;i++)
 		{
@@ -676,7 +679,7 @@ public:
 	void WriteToASCFile(std::ostream& ASCFile) const
 	{
 		m_Header.WriteToStream(ASCFile);
-		data::const_iterator reader=m_data.begin();
+		typename data::const_iterator reader=m_data.begin();
 		for (int row=0;row<this->m_Header.nrows;row++)
 		{
 			for (int col=0;col<this->m_Header.ncols;col++)
@@ -722,8 +725,8 @@ public:
 		hdrfile << "BYTEORDER MSBFIRST" << std::endl;
 		hdrfile.close();
 		std::ofstream binfile;
-		binfile.open(filename.c_str(),std::ios_base::binary || std::ios_base::out);
-		for(data::const_iterator it = m_data.begin(); it != m_data.end(); ++it)
+		binfile.open(filename.c_str(),std::ios_base::binary | std::ios_base::out);
+		for(typename data::const_iterator it = m_data.begin(); it != m_data.end(); ++it)
 		{
 			binfile.write((const char*)&(*it),sizeof(_T));
 		}
@@ -996,7 +999,7 @@ public:
 	std::string ToBuffer() const	{
 		std::stringstream buffer;
 		std::streamsize dsize=sizeof(m_data[0]);
-		for(data::const_iterator it = m_data.begin(); it != m_data.end(); ++it)
+		for(typename data::const_iterator it = m_data.begin(); it != m_data.end(); ++it)
 		{
 			buffer.write((char*)(&(*it)),dsize);
 		}
