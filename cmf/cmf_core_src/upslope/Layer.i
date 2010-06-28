@@ -53,6 +53,8 @@
 %attribute(cmf::upslope::SoilLayer,real,lower_boundary,get_lower_boundary);
 %attribute(cmf::upslope::SoilLayer,real,upper_boundary,get_upper_boundary);
 %attribute(cmf::upslope::SoilLayer,real,porosity,get_porosity);
+%attribute(cmf::upslope::SoilLayer,real,ice_fraction,get_ice_fraction,set_ice_fraction);
+
 %attribute(cmf::upslope::SoilLayer,cmf::upslope::SoilLayer, upper, get_upper);
 %attribute(cmf::upslope::SoilLayer,cmf::upslope::SoilLayer, lower, get_lower);
 %include "upslope/SoilLayer.h"
@@ -69,17 +71,18 @@
 EXTENT__REPR__(cmf::upslope::SoilLayer)
 
 
-%attributeval(cmf::upslope::layer_list,cmf::math::num_array,gravitational_potential,get_gravitational_potential);
-%attributeval(cmf::upslope::layer_list,cmf::math::num_array,matrix_potential,get_matrix_potential);
-%attributeval(cmf::upslope::layer_list,cmf::math::num_array,wetness,get_wetness);
-%attributeval(cmf::upslope::layer_list,cmf::math::num_array,volume,get_volume);
-%attributeval(cmf::upslope::layer_list,cmf::math::num_array,potential,get_potential);
-%attributeval(cmf::upslope::layer_list,cmf::math::num_array,K,get_K);
-%attributeval(cmf::upslope::layer_list,cmf::math::num_array,Ksat,get_Ksat);
-%attributeval(cmf::upslope::layer_list,cmf::math::num_array,thickness,get_thickness);
-%attributeval(cmf::upslope::layer_list,cmf::math::num_array,lower_boundary,get_lower_boundary);
-%attributeval(cmf::upslope::layer_list,cmf::math::num_array,upper_boundary,get_upper_boundary);
-%attributeval(cmf::upslope::layer_list,cmf::math::num_array,porosity,get_porosity);
+%attribute(cmf::upslope::layer_list,cmf::math::num_array,gravitational_potential,get_gravitational_potential);
+%attribute(cmf::upslope::layer_list,cmf::math::num_array,matrix_potential,get_matrix_potential);
+%attribute(cmf::upslope::layer_list,cmf::math::num_array,wetness,get_wetness);
+%attribute(cmf::upslope::layer_list,cmf::math::num_array,volume,get_volume);
+%attribute(cmf::upslope::layer_list,cmf::math::num_array,potential,get_potential);
+%attribute(cmf::upslope::layer_list,cmf::math::num_array,K,get_K);
+%attribute(cmf::upslope::layer_list,cmf::math::num_array,Ksat,get_Ksat);
+%attribute(cmf::upslope::layer_list,cmf::math::num_array,thickness,get_thickness);
+%attribute(cmf::upslope::layer_list,cmf::math::num_array,lower_boundary,get_lower_boundary);
+%attribute(cmf::upslope::layer_list,cmf::math::num_array,upper_boundary,get_upper_boundary);
+%attribute(cmf::upslope::layer_list,cmf::math::num_array,porosity,get_porosity);
+%attribute(cmf::upslope::layer_list,cmf::math::num_array,ice_fraction,get_ice_fraction);
 
 %include "upslope/layer_list.h"
 

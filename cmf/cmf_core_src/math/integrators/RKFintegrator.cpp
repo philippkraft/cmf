@@ -26,7 +26,7 @@ Integrator(states,epsilon,tStepMin),oldStates(m_States.size())
 {
 	
 	for (int i = 0; i < 6 ; i++)
-		kValues[i]= num_array(count(),0);
+		kValues[i]= num_array(size(),0);
 }
 cmf::math::RKFIntegrator::RKFIntegrator( real epsilon/*=1e-9*/,cmf::math::Time tStepMin/*=10.0/(3600.0*24.0)*/ ) : 
 Integrator(epsilon,tStepMin)
@@ -41,9 +41,9 @@ cmf::math::RKFIntegrator::RKFIntegrator( const cmf::math::Integrator& forCopy ) 
 void cmf::math::RKFIntegrator::AddStatesFromOwner( cmf::math::StateVariableOwner& stateOwner )
 {
 	Integrator::AddStatesFromOwner(stateOwner);
-	oldStates.resize(count());
+	oldStates.resize(size());
 	for (int i = 0; i < 6 ; i++)
-		kValues[i].resize(count());
+		kValues[i].resize(size());
 }
 	const real 
 // Runge-Kutta-Fehlberg formula of 4-th order
@@ -77,9 +77,9 @@ int cmf::math::RKFIntegrator::Integrate(cmf::math::Time MaxTime,cmf::math::Time 
 		m_TimeStep = MaxTime - m_Time;
 		//Calculate new states with an eulerian step : x(t+h) = x(t) + timeStep * dx/dt
 		// Copy derivates multipied with time step to dxdt
-		States().CopyDerivs(ModelTime(),kValues[0],TimeStep.AsDays());
+		CopyDerivs(ModelTime(),kValues[0],TimeStep.AsDays());
 		// Update time step with delta x
-		States() += kValues[0];
+		AddValuesToStates(kValues[0]);
 
 		//Step to MaxTime
 		m_Time = MaxTime;
@@ -89,7 +89,7 @@ int cmf::math::RKFIntegrator::Integrate(cmf::math::Time MaxTime,cmf::math::Time 
 	//Trying the complete timestep
 	//Adjust the timestep to avoid the eularian solution above
 	AdjustTimestep(TimeStep,MaxTime);
-	States().CopyStates(oldStates);
+	CopyStates(oldStates);
 
 
 	//h is the normal name of the variable TimeStep
@@ -104,7 +104,7 @@ int cmf::math::RKFIntegrator::Integrate(cmf::math::Time MaxTime,cmf::math::Time 
 		error=0;
 		//Calculate k[0] (the current derivate)	
 		
-		States().CopyDerivs(m_Time,k(0));
+		CopyDerivs(m_Time,k(0));
 
 		//For each higher order of the Runge-Kutta integrator
 		for (int order = 1; order <= 5 ; order++)
@@ -113,7 +113,7 @@ int cmf::math::RKFIntegrator::Integrate(cmf::math::Time MaxTime,cmf::math::Time 
 			real kSum=0;
 			int m;
 #pragma omp parallel for private(kSum,m) firstprivate(order)
-			for (int i = 0; i < count() ; i++)
+			for (int i = 0; i < size() ; i++)
 			{
 				//Weighted sum of k-values
 				//Sum up the k-Values weighted by the j'th row
@@ -122,11 +122,11 @@ int cmf::math::RKFIntegrator::Integrate(cmf::math::Time MaxTime,cmf::math::Time 
 					kSum += A[order][m] * k(order,i);
 
 				//Update the state value for that order, to calculate the next k value
-				state(i,kSum * h.AsDays() + oldStates[i]); 
+				set_state(i,kSum * h.AsDays() + oldStates[i]); 
 			} //Done with system equations
 			const Time subTimestep = m_Time + h * c[order];
 			//For each differential equation of the system, calculate the derivate from the new state
-			States().CopyDerivs(subTimestep,k(order));
+			CopyDerivs(subTimestep,k(order));
 		} // next order
 
 		//Sum up the k - Values to obtain the final state for the 5th order RK-solution
@@ -135,7 +135,7 @@ int cmf::math::RKFIntegrator::Integrate(cmf::math::Time MaxTime,cmf::math::Time 
 			real kSum=0;
 			real localError=0;
 #pragma omp parallel for private(kSum,localError) shared(error)
-		for (int i = 0; i < count() ; i++)
+		for (int i = 0; i < size() ; i++)
 		{
 			kSum=0;
 			localError=0;
@@ -148,7 +148,7 @@ int cmf::math::RKFIntegrator::Integrate(cmf::math::Time MaxTime,cmf::math::Time 
 			//Get the absolute of the local error
 			localError = fabs(localError);
 			//Update the state value for that order
-			state(i,kSum * h.AsDays() + oldStates[i]);
+			set_state(i,kSum * h.AsDays() + oldStates[i]);
 			//Calculates the local error weighted with h
 			if (localError>error)
 			{
@@ -180,7 +180,7 @@ int cmf::math::RKFIntegrator::Integrate(cmf::math::Time MaxTime,cmf::math::Time 
 		if (error > Epsilon && Loops<100 && TimeStep>m_MinTimestep)
 		{
 			//Reset the states to the old states, and try again with the new time step
-			States().SetStates(oldStates);
+			SetStates(oldStates);
 		}
 		//In case of a good solution or if no solution after 100 tries is found, we exit the trying
 	} while (error > Epsilon && Loops<100 && TimeStep>m_MinTimestep);

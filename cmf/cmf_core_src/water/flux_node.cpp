@@ -178,7 +178,7 @@ cmf::water::connection_vector cmf::water::flux_node::get_connections() const
 	connection_vector res;
 	for(ConnectionMap::const_iterator it = m_Connections.begin(); it != m_Connections.end(); ++it)
 	{		
-		res.push_back(it->second.get());
+		res.push_back(it->second);
 	}
 	return res;
 }

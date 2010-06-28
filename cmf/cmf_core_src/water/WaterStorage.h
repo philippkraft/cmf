@@ -52,6 +52,7 @@ namespace cmf {
 			typedef std::tr1::shared_ptr<cmf::water::WaterStorage> ptr;
 #ifndef SWIG
 			operator ptr() {return std::tr1::static_pointer_cast<WaterStorage>(shared_from_this());}
+
 #endif
 		private:
 			// Character indicating if Volume ('V') or head ('h') is the state variable
@@ -73,7 +74,7 @@ namespace cmf {
 			void set_state_variable_content(char content);
 			/// Returns true, since this is a storage
 			virtual bool is_storage() const {return true;}
-			void AddStateVariables(cmf::math::StateVariableVector& vector);
+			cmf::math::state_queue get_states();
 			/// creates a water storage (abstract class)
 			/// @param _project The project the waterstorage belongs to
 			/// @param InitialState Initial water content in m<sup>3</sup>

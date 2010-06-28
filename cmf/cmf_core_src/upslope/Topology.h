@@ -20,18 +20,20 @@
 #define Topology_h__
 
 #include "cell.h"
+#include "algorithm.h"
 #include <memory>
 #include <map>
 #include <vector>
 #include <set>
 namespace cmf {
 	namespace upslope {
-		class NeighborIterator;
+		class neighbor_iterator;
 		/// represents the connectivity of cells to each other
 		class Topology : public cmf::geometry::Locatable
 		{
 		private:
-			friend class NeighborIterator;
+			friend class neighbor_iterator;
+			friend class neighbor_const_iterator;
 			friend class Cell;
 			typedef std::map<Topology*,double> mapNeighbor;
 			mapNeighbor m_Neighbors;
@@ -91,7 +93,7 @@ namespace cmf {
 
 		};
 		/// A class to iterate through the neighbors of a cell (const). Not needed from the Python side, use the generator cell.neighbors instead.
-		class NeighborIterator
+		class neighbor_iterator
 		{
 		private:
 			typedef Topology::mapNeighbor::iterator map_iterator;
@@ -104,16 +106,16 @@ namespace cmf {
 				return *current->first;}
 			Topology* operator->() {
 				return current->first;}
-			NeighborIterator& operator++(){
+			neighbor_iterator& operator++(){
 				return next();
 			}
-			NeighborIterator(cmf::upslope::Topology& topo) : current(topo.m_Neighbors.begin()),end(topo.m_Neighbors.end()) {}
-			bool operator==(const NeighborIterator& cmp) const {return current==cmp.current;}
+			neighbor_iterator(cmf::upslope::Topology& topo) : current(topo.m_Neighbors.begin()),end(topo.m_Neighbors.end()) {}
+			bool operator==(const neighbor_iterator& cmp) const {return current==cmp.current;}
 			bool operator==(const Cell* cmp) const {return current->first->cell == cmp;}
-			bool operator!=(const NeighborIterator& cmp) const {return current!=cmp.current;}
+			bool operator!=(const neighbor_iterator& cmp) const {return current!=cmp.current;}
 #endif
 
-			NeighborIterator(cmf::upslope::Cell* cell) : current(cell->get_topology().m_Neighbors.begin()),end(cell->get_topology().m_Neighbors.end()) {}
+			neighbor_iterator(cmf::upslope::Cell* cell) : current(cell->get_topology().m_Neighbors.begin()),end(cell->get_topology().m_Neighbors.end()) {}
 
 			Cell& cell() {
 				return *current->first->cell;}
@@ -124,7 +126,7 @@ namespace cmf {
 				return current!=end;
 			}
 			/// Points the iterator to the next neighbor
-			NeighborIterator& next(){
+			neighbor_iterator& next(){
 				if (current==end) throw std::out_of_range("No neighbors left");
 				++current; 
 				return *this;

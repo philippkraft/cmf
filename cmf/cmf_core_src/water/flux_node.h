@@ -38,8 +38,8 @@ namespace cmf {
 
 		class flux_connection;
 		class node_list;
-		typedef std::vector<cmf::water::flux_connection* > connection_vector;
-		typedef std::set<cmf::water::flux_connection* > connection_set;
+		typedef std::vector<std::tr1::shared_ptr<cmf::water::flux_connection> > connection_vector;
+		typedef std::set<std::tr1::shared_ptr<cmf::water::flux_connection>  > connection_set;
 
 		/// @defgroup nodes	Water nodes
 		/// @todo Elaborate on Water nodes
@@ -59,13 +59,14 @@ namespace cmf {
 		public:
 			typedef std::tr1::shared_ptr<cmf::water::flux_node> ptr;
 #ifndef SWIG
-			operator ptr()		{	return shared_from_this();	}
+			operator ptr()	{	return shared_from_this();	}
 #endif
 		private:
+			typedef std::tr1::shared_ptr<flux_connection> con_ptr;
 			void RegisterConnection(flux_connection* newConnection);
 			void DeregisterConnection(flux_connection* target);
 			friend class flux_connection;
-			typedef std::map<int, std::tr1::shared_ptr<flux_connection> > ConnectionMap;
+			typedef std::map<int, con_ptr > ConnectionMap;
 			ConnectionMap m_Connections;
 			const cmf::project& m_project;
 		protected:
@@ -105,6 +106,10 @@ namespace cmf {
 			/// @param t Time of the query
 			/// @param Without A flux_connection that is excluded from the water_balance (e.g. to prevent closed circuits)
 			real water_balance(cmf::math::Time t,const flux_connection* Without=0) const;
+
+			real operator()(cmf::math::Time t) const {
+				return water_balance(t);
+			}
 			/// Returns the water quality of the flux_node, if it is not overridden this is the mix of the incoming fluxes
 			virtual real conc(cmf::math::Time t, const cmf::water::solute& Solute) const;
 			cmf::geometry::point Location;

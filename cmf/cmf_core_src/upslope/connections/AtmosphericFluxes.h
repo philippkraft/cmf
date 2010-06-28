@@ -40,7 +40,7 @@ namespace cmf {
 						return 0.0;
 					else
 					{
-						cmf::upslope::vegetation::Vegetation veg=m_cell.get_vegetation();
+						const cmf::upslope::vegetation::Vegetation& veg=m_cell.vegetation;
 						real f=0; // Fraction of rainfall to use
 						if (Throughfall) f+=1-veg.CanopyClosure;
 						if (InterceptedRainfall) f+=veg.CanopyClosure;

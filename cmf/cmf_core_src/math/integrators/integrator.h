@@ -32,36 +32,60 @@ namespace cmf {
 		/// - Copy
 		/// Please provide a custom copy constructor
 		/// @todo Put the methods of StateVariableVector here, and delete StateVariableVector
-		class Integrator
+		class Integrator : public StateVariableOwner
 		{
 		protected:
 			///@name The state variables to integrate
 			//@{
-			StateVariableVector m_States;
+			typedef std::vector<StateVariable::ptr> state_vector;
+			state_vector m_States;
+
 			int error_position;
-			real error_exceedance( const num_array& compare,int * biggest_error_position=0 )
+			real error_exceedance( const num_array& compare,int * biggest_error_position=0 );
+			/// Copies the states to a numeric vector using use_OpenMP
+#ifndef SWIG
+		public:
+			void CopyStates(num_array & destination) const;
+			void CopyStates(real * destination) const;
+			/// Copies the new states to the actual states
+			void SetStates(const num_array & newStates) ;
+			void SetStates(real * newStates);
+			/// Copies the derivatives at time step "time" to a numeric vector using use_OpenMP
+			/// @param time Time at which the derivatives should be calculated
+			/// @param destination Vector to be overwritten by the results
+			/// @param factor A factor that is multiplied to the derivate (e.g. unit conversion or integration length)
+			void CopyDerivs(Time time,num_array & destination, real factor=1) const;
+			/// Copies the derivatives at time step "time" to an preallocated c array
+			/// @param time Time at which the derivatives should be calculated
+			/// @param destination Allocated c array
+			/// @param factor A factor that is multiplied to the derivate (e.g. unit conversion or integration length)
+			void CopyDerivs(Time time,real * destination,real factor=1) const;
+			/// Returns the states in a numeric vector using :CopyStates, but is slower because of additional memory allocation
+			num_array GetStates() const 
 			{
-				real res=0;
-#pragma omp parallel for shared(res)
-				for (int i = 0; i < count() ; i++)
-				{
-					real error=fabs(compare[i]-state(i));
-					// Calculate absolute error tolerance as: epsilon + |(x_p+x_(n+1))/2|*epsilon
-					real errortol=Epsilon + fabs(state(i))*Epsilon;
-					if (error/errortol>res)
-#pragma omp critical
-					{
-						if (error/errortol>res)
-						{
-							res=error/errortol;
-							if (biggest_error_position)
-								*biggest_error_position=i;
-						}
-					}
-				}
-				return res;
+				num_array result(this->size());
+				CopyStates(result);
+				return result;
 			}
-			
+			/// Returns the derivatives at time step "time" in a numeric vector using :CopyDerivs, but is slower because of additional memory allocation
+			num_array GetDerivs(Time time) const 
+			{
+				num_array result(this->size());
+				CopyDerivs(time,result);
+				return result;
+			}
+			void AddValuesToStates(const num_array& operands);
+#endif
+			virtual void AddStatesFromOwner(cmf::math::StateVariableOwner& stateOwner) {
+				state_queue sq = stateOwner.get_states();
+				m_States.insert(m_States.end(),sq.begin(),sq.end());
+			}
+			virtual void AddState(cmf::math::StateVariable::ptr state) {
+				m_States.push_back(state);
+			}
+
+
+
 			//@}
 		public:
 			/// A public variable to identify the solver
@@ -70,39 +94,36 @@ namespace cmf {
 			bool use_OpenMP;
 
 			/// returns the number of state variables
-			int count() const
+			int size() const
 			{
 				return (int)m_States.size();
 			}
+			StateVariable::ptr operator[](int position) {
+				return m_States[position];
+			}
 			/// Simplifies the assessment of state variables
-			real state(int position) const
+			real get_state(int position) const
 			{
 				return m_States[position]->get_state();
 			}
 			/// Simplifies the assessment of state variables
-			void state(int position,real newState)
+			void set_state(int position,real newState)
 			{
 				m_States[position]->set_state(newState);
 			}
+
+			state_queue get_states() {
+				state_queue q;
+				for(state_vector::const_iterator it = m_States.begin(); it != m_States.end(); ++it)
+				{
+				    q.push(*it);
+				}
+				return q;
+			}
 			
-			/// @name Assessment of state variables for integration
-			//@{ 
-			/// Adds the state variables of a StateVariableOwner to the state variables of the solver
-			virtual void AddStatesFromOwner(cmf::math::StateVariableOwner& stateOwner)
-			{
-				stateOwner.AddStateVariables(m_States);
-			}
-			virtual void AddState(cmf::math::StateVariable& statevar)
-			{
-				m_States.push_back(&statevar);
-			}
-			//@}
 
 		protected:
-			/// Returns the vector of StateVariable pointers 
-			cmf::math::StateVariableVector& States() {return m_States;}
-			const cmf::math::StateVariableVector& States() const {return m_States;}
-			///@name Accuracy parameters
+		///@name Accuracy parameters
 			//@{
 			///Tolerable error
 			const real Epsilon;
@@ -148,14 +169,7 @@ namespace cmf {
 			//@}
 			/// @name Constructors and Destructors
 			//@{
-			/// Constructs a new FixPointImplicitEuler from a pointer to a vector of state variables
-			/// @note The RKF Integrator becomes the owner of states
-			/// @param states Statevariables of the system
-			/// @param epsilon relative error tolerance per time step (default=1e-9)
-			/// @param tStepMin minimum time step (default=10s)
-			Integrator(const StateVariableVector& states, real epsilon=1e-9,cmf::math::Time tStepMin=10.0/(3600.0*24.0)) 
-				: m_States(states), Epsilon(epsilon),m_MinTimestep(tStepMin),m_TimeStep(1.0),m_Time(0.0),m_NextTimeStep(1.0),error_position(0),UseEulerAtTmin(0),use_OpenMP(1)			{			}
-			
+
 			/// Constructs a new Integrator with a new own state vector
 			/// @param epsilon relative error tolerance per time step (default=1e-9)
 			/// @param tStepMin minimum time step (default=10s)
@@ -165,7 +179,11 @@ namespace cmf {
 			Integrator(cmf::math::StateVariableOwner& states,real epsilon=1e-9,cmf::math::Time tStepMin=cmf::math::sec * 10.0)
 				: m_States(),Epsilon(epsilon),m_MinTimestep(tStepMin),m_TimeStep(1.0),m_Time(0.0),m_NextTimeStep(1.0),error_position(0),UseEulerAtTmin(0) ,use_OpenMP(1)
 			{
-				states.AddStateVariables(m_States);
+				state_queue sq = states.get_states();
+				m_States.insert(m_States.end(),sq.begin(),sq.end());
+			}
+			void operator+=(StateVariableOwner& states) {
+				AddStatesFromOwner(states);
 			}
 			/// Copy constructor, does not copy the state variables
 			Integrator(const Integrator& forCopy)

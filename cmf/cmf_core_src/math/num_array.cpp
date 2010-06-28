@@ -42,12 +42,10 @@ cmf::math::num_array::num_array( size_t count,real Value/*=0*/ ) : m_size(int(co
 		m_data[i]=Value;
 }
 
-cmf::math::num_array::num_array( const num_array& Vector ) : m_size(Vector.size())
+cmf::math::num_array::num_array( const num_array& Vector ) 
+: m_size(Vector.size()), m_data(new double[Vector.size()])
 {
-	m_data=new real[m_size];
-#pragma omp parallel for
-	for (int i = 0; i < m_size ; ++i)
-		m_data[i]=Vector[i];
+	std::copy(Vector.begin(),Vector.end(),m_data);
 }
 
 cmf::math::num_array::num_array() : m_size(1)
@@ -56,15 +54,8 @@ cmf::math::num_array::num_array() : m_size(1)
 	m_data[0]=0;
 }
 
-cmf::math::num_array::num_array( const std::valarray<real>& Vector )
-{
-	m_data=new real[m_size];
-#pragma omp parallel for
-	for (int i = 0; i < m_size ; ++i)
-		m_data[i]=Vector[i];
-}
 
-cmf::math::num_array::num_array( double * data,int count )
+cmf::math::num_array::num_array( double * data,size_t count )
 {
 	m_data=data;
 	m_size=count;
@@ -72,7 +63,8 @@ cmf::math::num_array::num_array( double * data,int count )
 
 cmf::math::num_array::~num_array()
 {
-	delete[] m_data;
+	if (m_size)
+		delete[] m_data;
 }
 
 cmf::math::num_array& cmf::math::num_array::operator=( const num_array& vector )
@@ -308,10 +300,6 @@ real cmf::math::num_array::norm( int normtype ) const
 	}
 }
 
-size_t cmf::math::num_array::adress() const
-{
-	return size_t(m_data);
-}
 //
 // Binary Operators
 //
@@ -381,16 +369,6 @@ cmf::math::num_array cmf::math::num_array::operator/(real _Right )
 	return result;
 }
 
-void cmf::math::num_array::set_data_from_adress(size_t data_adress,size_t count )
-{
-	resize(count);
-	double * data=(double *)data_adress;
-#pragma omp parallel for
-	for (int i = 0; i < (int)count ; ++i)
-	{
-		m_data[i]=data[i];		
-	}
-}
 cmf::math::num_array cmf::math::operator+( real _Left,const num_array& _Right )
 {
 	cmf::math::num_array result(_Right.size());
@@ -424,29 +402,3 @@ cmf::math::num_array cmf::math::operator/( real _Left,const num_array& _Right )
 	return result;
 }
 
-// static num_array* convert_array_interface_to_num_array(PyObject* obj)
-// {
-// 	if (PyObject_HasAttrString(obj,"__array_interface__"))
-// 	{
-// 		PyObject* ai=PyObject_GetAttrString(obj,"__array_interface__");
-// 		if (PyDict_Check(ai))
-// 		{
-// 			 PyObject* data=PyDict_GetItemString(obj,"data");
-// 			 PyObject* adress=PyLong_AsLongLong(PyTuple_GetItem(data,0));
-// 			 PyObject* shape=PyDict_GetItemString(obj,"shape");
-// 			 long long size=0;
-// 			 for (Py_ssize_t i = 0; i < PyTuple_Size(shape) ; ++i)
-// 			 {
-// 				 size*=PyTuple_GetItem(shape,i);
-// 			 }
-// 			 PyObject* typestr=PyDict_GetItemString(obj,"typestr");
-// 			 PyObject* version=PyDict_GetItemString(obj,"version");
-// 			 		
-// 			 
-// 
-// 		}
-// 		Py_XDECREF(ai);
-// 	}
-// 	return 0;
-// }
-	

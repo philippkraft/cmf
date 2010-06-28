@@ -66,9 +66,8 @@ real cmf::water::NeumannFlux::calc_q( cmf::math::Time t )
 }
 
 
-cmf::water::DricheletBoundary::DricheletBoundary(const cmf::project& _p,real potential,
-																								 cmf::geometry::point Location/*=cmf::geometry::point()*/ ) 
-: flux_node(_p,Location),m_Potential(potential)
+cmf::water::DricheletBoundary::DricheletBoundary(const cmf::project& _p,real potential,cmf::geometry::point Location/*=cmf::geometry::point()*/ ) 
+: flux_node(_p,Location),m_Potential(potential), is_source(0)
 {	
 }
 

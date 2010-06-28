@@ -91,7 +91,7 @@ namespace cmf {
 			real constantETpot::calc_q( cmf::math::Time t ) 
 			{
 				cmf::upslope::SoilLayer::ptr layer=sw.lock();
-				cmf::upslope::vegetation::Vegetation veg=layer->cell.get_vegetation(); 
+				cmf::upslope::vegetation::Vegetation veg=layer->cell.vegetation; 
 				return Tact(ETpot_value,*layer,veg);
 			}
 
@@ -124,7 +124,7 @@ namespace cmf {
 				if (!cell.has_wet_leaves())
 				{
 					cmf::atmosphere::Weather A=cell.get_weather(t);
-					cmf::upslope::vegetation::Vegetation veg=cell.get_vegetation();
+					cmf::upslope::vegetation::Vegetation veg=cell.vegetation;
 					real 
 						Rn = A.Rn(veg.albedo,daily), // Net radiation flux 
 						G = daily ? 0									// If calculation takes place on daily basis, the soil heat flux is 0 (FAO 1998,Eq. 42)
@@ -143,76 +143,12 @@ namespace cmf {
 					new PenmanMonteithET(cell.get_layer(i),cell.get_transpiration());
 				}
 			}
-			real ShuttleworthWallaceET::calc_q( cmf::math::Time t )
-			{
-				cmf::upslope::SoilLayer::ptr layer=m_SoilLayer.lock();
-				cmf::water::WaterStorage::ptr canopy=m_waterstorage.lock();
-				cmf::upslope::Cell & cell=layer->cell;
-				cmf::atmosphere::Weather w=cell.get_weather(t);
-				cmf::upslope::vegetation::Vegetation veg=cell.get_vegetation();
-				bool IsEvaporation = right_node() == m_cell.get_evaporation();
-				using namespace cmf::upslope::vegetation;
-				if (IsEvaporation)
-				{
-					// If source is soil and target is evaporation calc soil evaporation
-					if (layer && !m_cell.has_surface_water()) 
-					{
-						ShuttleworthWallace _ET_mm(w,layer->get_matrix_potential(),veg,!cell.has_wet_leaves());
-						return _ET_mm.E * 1e-3 * cell.get_area() * (1-m_cell.snow_coverage());
-					}
-					// If source is canopy (which stores water)
-					else if (canopy && canopy == m_cell.get_canopy() && !canopy->is_empty())
-					{			
-						ShuttleworthWallace _ET_mm(w,m_cell.layer_count() ? m_cell.get_layer(0)->get_matrix_potential(): -2,veg,true);
-						return _ET_mm.T * 1e-3*cell.get_area();
-					}
-					else if (canopy && !canopy->is_empty())
-					{
-						ShuttleworthWallace _ET_mm(w,0,veg,false);
-					}
-				}
-				else if (canopy && !m_cell.has_wet_leaves()) // Transpiration=Root uptake from soil (not presented if canopy is wet)
-				{
-					ShuttleworthWallace _ET_mm(w,layer->get_matrix_potential(),veg,false);
-					return _ET_mm.T * 1e-3*cell.get_area();
-				}
-				if (cell.has_wet_leaves() && (cell.has_surface_water() || cell.snow_coverage()>=1))
-					return 0;
-				else
-				{
-					cmf::upslope::vegetation::ShuttleworthWallace _ET_mm(w,layer->get_potential(),veg,!cell.has_wet_leaves());
-					real _ET_m3=0;
-					// If the canopy is not empty, no water is taken from the soil by transpiration
-					real root_frac=cell.get_vegetation().RootFraction(layer->get_upper_boundary(),layer->get_lower_boundary());
-					if (!cell.has_wet_leaves())
-						_ET_m3 += _ET_mm.T * 1e-3 * cell.get_area() * root_frac;			
-					// use soil evaporation only if the soil water storage is the first layer and there is no snow and no surface water
-					if (layer->get_upper_boundary()==0 && (!cell.has_surface_water()))
-						_ET_m3 += _ET_mm.E * 1e-3 * cell.get_area() * (1-cell.snow_coverage());
-					return _ET_m3;
-				}
-			}
-
-			void ShuttleworthWallaceET::use_for_cell( cmf::upslope::Cell& cell )
-			{
-				for (int i = 0; i < cell.storage_count() ; ++i)
-				{
-					new ShuttleworthWallaceET(cell.get_storage(i),cell.get_evaporation(),cell);
-				}
-
-				for (int i = 0; i < cell.layer_count() ; ++i)
-				{
-					if (i == 0) new ShuttleworthWallaceET(cell.get_layer(i),cell.get_evaporation(),cell,"Soil evaporation (SW)");
-					new ShuttleworthWallaceET(cell.get_layer(i),cell.get_transpiration(),cell,"Root water uptake (SW)");
-				}
-			}
-
 			real CanopyStorageEvaporation::calc_q( cmf::math::Time t )
 			{
 				cmf::water::WaterStorage::ptr canopy=c_stor.lock();
 				if (left_node()->is_empty()) return 0;
 				cmf::atmosphere::Weather w=m_cell.get_weather(t);
-				cmf::upslope::vegetation::Vegetation veg=m_cell.get_vegetation();
+				cmf::upslope::vegetation::Vegetation veg=m_cell.vegetation;
 				real PM=PenmanMonteith(w,veg,m_cell.z)*0.001*m_cell.get_area();
 				return minimum(canopy->get_state()*2/cmf::math::h.AsDays(),PM);
 			}
@@ -222,7 +158,7 @@ namespace cmf {
 				cmf::upslope::SoilLayer::ptr layer=sw.lock();
 				double pi=cmf::geometry::PI;
 				cmf::atmosphere::Weather A=layer->cell.get_weather(t);
-				cmf::upslope::vegetation::Vegetation veg=layer->cell.get_vegetation();
+				cmf::upslope::vegetation::Vegetation veg=layer->cell.vegetation;
 				double 
 					// Latitude in radians
 					phi = pi * 51 / 180.0,
@@ -269,5 +205,22 @@ namespace cmf {
 				NewNodes();
 			}
 		}
+	}
+
+	void atmosphere::log_wind_profile::get_aerodynamic_resistance( double & r_ag,double & r_ac, cmf::math::Time t ) const
+	{
+		cmf::atmosphere::Weather w = cell.get_weather(t);
+		cmf::upslope::vegetation::Vegetation& v = cell.vegetation;
+		double
+			h=v.Height,
+			d=0.666667*h,	                         // zero plane displacement height
+			z_om=0.123*h,                          // roughness length governing momentum transfer
+			z_oh=0.1*z_om,                         // roughness length governing transfer of heat and vapour
+			k2=0.1681;                             // von Karman's constant squared (0.41^2=0.1681)
+		r_ac = (log((h+w.instrument_height-d)/z_om)
+			* log((h+w.instrument_height-d)/z_oh))
+			/ (k2 * w.Windspeed);                           // Aerodynamic resistence
+		double z0_g = 0.001 * cell.snow_coverage() + 0.05 * (1-cell.snow_coverage());
+		r_ag = (log((h+w.instrument_height)/z0_g) * log((h+w.instrument_height)/(0.1*z0_g))) / (k2 * w.Windspeed);
 	}
 }

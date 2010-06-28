@@ -86,7 +86,7 @@
     {
     @property
     def neighbors(self):
-        c_iter=NeighborIterator(self)
+        c_iter=neighbor_iterator(self)
         while c_iter.valid():
             yield (c_iter.cell(),c_iter.flowwidth())
             c_iter.next()
@@ -101,7 +101,6 @@
     soildepth=property(lambda self:0 if self.layer_count()==0 else self.layers[-1].boundary[-1],None,"the soildepth in m (lower boundary of lowest layer)")
     reach=property(lambda self:self.get_reach(0),None,"The first reach of the cell, other reaches are accessible via reaches[n]")
     reaches=property(lambda self:[self.get_reach(i) for i in range(self.ReachCount())],None,"The reaches of this cell")
-    Vegetation=property(get_vegetation,set_vegetation,"The vegetational parameters of the cell")
     
     
     contributing_area=property(lambda self:self.topology.ContributingArea(),None,"Contributing area of this cell m2")
@@ -136,13 +135,48 @@
     }
 }
 %include "upslope/Topology.h"
-%extend cmf::upslope::NeighborIterator
+%extend cmf::upslope::neighbor_iterator
 {
-	bool __eq__(const NeighborIterator& cmp) {return (*$self)==cmp;}
-	bool __neq__(const NeighborIterator& cmp) {return (*$self)!=cmp;}
+	bool __eq__(const cmf::upslope::neighbor_iterator& cmp) {return (*$self)==cmp;}
+	bool __neq__(const cmf::upslope::neighbor_iterator& cmp) {return (*$self)!=cmp;}
 }
 
-%template(cell_vector) std::vector<cmf::upslope::Cell*>;
+%typemap(in) cmf::upslope::cell_vector& (cmf::upslope::cell_vector temp_cell_vector){
+    // %typemap(in) cmf::upslope::cell_vector&
+    // If $input is a cmf::upslope::cell_vector, use it directly
+    if (SWIG_ConvertPtr($input, (void **) &$1, $1_descriptor, SWIG_POINTER_EXCEPTION) == -1) {
+        // Else convert from iterator
+    	PyObject* iter = PyObject_GetIter($input);
+	    if (iter == 0) {
+	        // no iterator
+		    SWIG_exception_fail(SWIG_TypeError,"Only iterables can be used as a cell_vector");
+		    return NULL;
+		}
+		$1 = &temp_cell_vector;
+	    while (PyObject* item = PyIter_Next(iter)) {
+		    cmf::upslope::Cell* cell=0;
+		    // if the item is a cell, append to cell_vector
+		    int is_cell = SWIG_ConvertPtr(item, (void**)&cell, $descriptor(cmf::upslope::Cell*), SWIG_POINTER_EXCEPTION);
+		    if (is_cell == 0 && cell != 0 ) { 
+			    temp_cell_vector.append(*cell);
+		    }
+		    Py_DECREF(item);
+	    }
+	    Py_DECREF(iter);
+    }
+}
+
+%rename(__len__) cmf::upslope::cell_vector::size;
+%rename(__getitem__) cmf::upslope::cell_vector::operator[];
+%rename(__getslice__) cmf::upslope::cell_vector::get_slice;
+%include "upslope/cell_vector.h"
+
+%extend cmf::upslope::cell_vector {
+%pythoncode {
+    def __iter__(self):
+        for i in range(len(self)):
+            yield self[i]   
+}}
 
 %include "upslope/algorithm.h"
 

@@ -83,12 +83,6 @@ namespace cmf {
 			{
 				return error_position;
 			}
-			/// Constructs a new Gears_var_Step from a pointer to a vector of state variables
-			/// @note The Integrator becomes the owner of states
-			/// @param states Statevariables of the system
-			/// @param epsilon relative error tolerance per time step (default=1e-9)
-			/// @param tStepMin minimum time step (default=10s)
-			BDF2(const StateVariableVector& states, real epsilon=1e-9,cmf::math::Time tStepMin=Time::Milliseconds(10));
 			/// Constructs a new Gears_var_Step
 			/// @param epsilon relative error tolerance per time step (default=1e-9)
 			/// @param tStepMin minimum time step (default=10s)

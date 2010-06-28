@@ -93,7 +93,7 @@ namespace cmf {
 			}
 
 			/// Implements StateVariableOwner
-			void AddStateVariables(cmf::math::StateVariableVector& vector);
+			cmf::math::state_queue get_states();
 			/// Adds a flux node to the list
 			void append(flux_node::ptr node);
 
@@ -149,7 +149,6 @@ namespace cmf {
 
 		};
 
-		typedef std::tr1::shared_ptr<NeumannBoundary> NeumannBoundary_ptr;
 
 		/// If many Neumann boundary conditions are present in a project, a fast data exchange to update the fluxes might be needed.
 		///
@@ -174,13 +173,13 @@ namespace cmf {
 			{ return *m_boundaries.at(index<0 ? m_boundaries.size()+index : index );	}
 #endif
 			/// Returns the Neumann boundary condition at position index
-			NeumannBoundary_ptr get(int index) const
+			NeumannBoundary::ptr get(int index) const
 			{ return m_boundaries.at(index<0 ? m_boundaries.size()+index : index );	}
 
 			/// Returns the fluxes of the items as an array
 			cmf::math::num_array get_fluxes(cmf::math::Time t=cmf::math::Time()) const;
 			void set_fluxes(cmf::math::num_array values);
-			void append(NeumannBoundary_ptr nbc)
+			void append(NeumannBoundary::ptr nbc)
 			{
 				m_boundaries.push_back(nbc);
 			}
@@ -216,7 +215,9 @@ namespace cmf {
 
 
 		};
+		
 	}
+
 	
 }
 #endif // collections_h__

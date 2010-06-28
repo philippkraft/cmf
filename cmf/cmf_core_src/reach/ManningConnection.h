@@ -53,6 +53,8 @@ namespace cmf {
 			bool is_diffusive_wave;
 			cmf::river::Channel flux_geometry;
 			
+			typedef std::tr1::shared_ptr<Manning> ptr;
+			
 
 			
 		};
@@ -65,6 +67,7 @@ namespace cmf {
 			{		cmf::river::Manning::connect_cells(c1,c2,true);		}
 
 		public:
+			typedef std::tr1::shared_ptr<Manning_Diffusive> ptr;
 			static const cmf::upslope::CellConnector cell_connector;
 			Manning_Diffusive(cmf::river::OpenWaterStorage::ptr left,cmf::water::flux_node::ptr right,cmf::river::Channel reachtype)
 				: Manning(left,right,reachtype,true)
@@ -79,6 +82,7 @@ namespace cmf {
 			{		cmf::river::Manning::connect_cells(c1,c2,false);		}
 
 		public:
+			typedef std::tr1::shared_ptr<Manning_Kinematic> ptr;
 			static const cmf::upslope::CellConnector cell_connector;
 			Manning_Kinematic(cmf::river::OpenWaterStorage::ptr left,cmf::water::flux_node::ptr right,cmf::river::Channel reachtype)
 				: Manning(left,right,reachtype,false)

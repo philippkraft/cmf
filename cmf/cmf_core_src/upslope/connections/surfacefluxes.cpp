@@ -25,7 +25,7 @@ real cmf::upslope::connections::CanopyOverflow::calc_q( cmf::math::Time t )
 {
 	// The maximum capacity of the canopy in m3
 	real 
-		Vmax=m_cell.get_vegetation().CanopyCapacityPerLAI * m_cell.get_vegetation().LAI * m_cell.get_area() * 1e-3,
+		Vmax=m_cell.vegetation.CanopyCapacityPerLAI * m_cell.vegetation.LAI * m_cell.get_area() * 1e-3,
 		Vact=m_Canopy.lock()->get_state();
 	return maximum((Vact-Vmax)/24,0);
 }

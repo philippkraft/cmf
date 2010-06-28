@@ -41,6 +41,7 @@ namespace cmf {
 	namespace atmosphere {
 		class RainCloud;
 
+
 	}
     /// Contains the classes to describe the discretization of the soil continuum
 	/// @todo: Get Id in constructor for better naming of bounday conditions
@@ -67,6 +68,8 @@ namespace cmf {
 				m_connector(cell1,cell2,start_at_layer);
 			}
 		};
+
+
 		/// This class is the basic landscape object. It is the owner of water storages, and the upper and lower boundary conditions 
 		/// of the system (rainfall, atmospheric vapor, deep groundwater)
 		class Cell : public cmf::math::StateVariableOwner, public cmf::geometry::Locatable {
@@ -86,16 +89,16 @@ namespace cmf {
 			cmf::geometry::point get_position() const { return cmf::geometry::point(x,y,z); }
 		private:
 			double m_Area;
-			real m_SatDepth;
+			mutable real m_SatDepth;
 		public:
 			/// Returns the area of the cell
 			double get_area() const { return m_Area; }
 			/// @name Saturation
 			//@{
 			/// Marks the saturated depth as unvalid
-			void InvalidateSatDepth() {m_SatDepth=-1e20;}
+			void InvalidateSatDepth() const {m_SatDepth=-1e20;}
 			/// 
-			real get_saturated_depth() ;
+			real get_saturated_depth() const;
 			void set_saturated_depth(real depth);
 			//@}
 		private:
@@ -112,16 +115,22 @@ namespace cmf {
 			cmf::water::flux_node::ptr m_SurfaceWater;
 			cmf::atmosphere::RainSource::ptr m_rainfall;
 			cmf::water::flux_node::ptr m_Evaporation, m_Transpiration;
+			cmf::atmosphere::aerodynamic_resistance::ptr m_aerodynamic_resistance;
 
 			const cmf::project & m_project;
 			meteo_pointer m_meteo;
+
 			
-			cmf::upslope::vegetation::Vegetation m_vegetation;
 		public:
+			cmf::upslope::vegetation::Vegetation vegetation;
 			/// Returns the meteorological data source
 			cmf::atmosphere::Meteorology& get_meteorology() const 
 			{
 				return *m_meteo;
+			}
+			/// Sets the method to calculate aerodynamic resistance against turbulent sensible heat fluxes
+			void set_aerodynamic_resistance(cmf::atmosphere::aerodynamic_resistance::ptr Ra) {
+				m_aerodynamic_resistance = Ra;
 			}
 			/// Sets a meteorological data source
 			void set_meteorology(const cmf::atmosphere::Meteorology& new_meteo)
@@ -163,10 +172,23 @@ namespace cmf {
 			real snow_coverage() const
 			{
 				if (m_Snow)
-					return piecewise_linear(m_Snow->get_state()/get_area(),0,0.01);
+					return piecewise_linear(m_Snow->get_volume()/get_area(),0,0.01,0,1-surface_water_coverage());
 				else
 					return 0.0;
 			}
+			real albedo() const;
+			real surface_water_coverage() const 
+			{
+				if (m_SurfaceWaterStorage)
+					return piecewise_linear(m_SurfaceWaterStorage->get_volume()/get_area(),0,0.01);
+				else
+					return 0.0;
+			}
+			/// Calculates the surface heat balance
+			/// @param t Time step
+			/// @param Tground Ground temperature, default is Tground of weather (usually Tground = Tair)
+			real heat_flux(cmf::math::Time t) const;
+			real Tground;
 			bool has_wet_leaves() const
 			{
 				return (m_Canopy) && (m_Canopy->get_state()>1e-6*get_area());
@@ -175,9 +197,6 @@ namespace cmf {
 			{
 				return (m_SurfaceWaterStorage) && (m_SurfaceWaterStorage->get_state()>1e-6*get_area());
 			}
-			cmf::upslope::vegetation::Vegetation get_vegetation() const;
-			void set_vegetation(cmf::upslope::vegetation::Vegetation val) { m_vegetation = val; }
-
 			int Id;
 			const cmf::project& get_project() const;
 			cmf::atmosphere::Weather get_weather(cmf::math::Time t) const;
@@ -206,14 +225,9 @@ namespace cmf {
 			Cell(double x,double y,double z,double area,cmf::project & _project);
 			std::string to_string();
 			//@}
-			void AddStateVariables(cmf::math::StateVariableVector& vector);
+			cmf::math::state_queue get_states();
 		};
 		
-		typedef std::vector<cmf::upslope::Cell*> cell_vector;
-		typedef std::set<cmf::upslope::Cell*> cell_set;
-
-
-
 	}
 	
 }

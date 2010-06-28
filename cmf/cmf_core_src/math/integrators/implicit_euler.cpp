@@ -59,7 +59,7 @@ int cmf::math::ImplicitEuler::Integrate(cmf::math::Time MaxTime,cmf::math::Time 
 	}
 
 	// Copies the actual states to the history as x_(n)
-	States().CopyStates(oldStates);
+	CopyStates(oldStates);
 	// Count the iterations
 	int iter=0;
 	
@@ -71,12 +71,12 @@ int cmf::math::ImplicitEuler::Integrate(cmf::math::Time MaxTime,cmf::math::Time 
 	do 
 	{
 		// Remember the current state for convergence criterion
-		States().CopyStates(compareStates);
+		CopyStates(compareStates);
 		// Get derivatives at t(n+1) * h[d]
-		States().CopyDerivs(this->ModelTime() + h,dxdt,h.AsDays());
+		CopyDerivs(this->ModelTime() + h,dxdt,h.AsDays());
 		//// Updates the state variables with the new states, according to the current order
-		States().SetStates(oldStates);
-		States() += dxdt;
+		SetStates(oldStates);
+		AddValuesToStates(dxdt);
 
 		old_err_ex=err_ex;
 		err_ex=error_exceedance(compareStates);
@@ -100,7 +100,7 @@ int cmf::math::ImplicitEuler::Integrate(cmf::math::Time MaxTime,cmf::math::Time 
 				throw std::runtime_error("No convergence with a time step > minimal time step");
 			}
 			// Restore states
-			States().SetStates(oldStates);
+			SetStates(oldStates);
 			iter=0;
 			err_ex=REAL_MAX/2;
 			old_err_ex=REAL_MAX;

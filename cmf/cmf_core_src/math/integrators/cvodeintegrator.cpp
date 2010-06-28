@@ -34,19 +34,18 @@
 // Right hand side function f in dy/dt=f(y,t)
 int cmf::math::CVodeIntegrator::f( realtype t, N_Vector u, N_Vector udot, void *f_data )
 {
-	// Get the state variables from the user data
-	StateVariableVector& state_vars=*(StateVariableVector *)(f_data);
+	cmf::math::CVodeIntegrator* integ= static_cast<cmf::math::CVodeIntegrator*>(f_data);
 	// Get the pointers to the data of the vectors u and udot
 	realtype * udata=NV_DATA_S(u);
 	realtype * dudata=NV_DATA_S(udot);
 	// Get size of the problem
-	int nsize=int(state_vars.size());
+	int nsize=int(integ->size());
 	// Update the states from the state vector
-	state_vars.SetStates(udata);
+	integ->SetStates(udata);
 
 	Time T=cmf::math::day * t;
 	// Get the derivatives at time T
-	state_vars.CopyDerivs(T,dudata);
+	integ->CopyDerivs(T,dudata);
 	return 0;
 }
 
@@ -67,11 +66,11 @@ void cmf::math::CVodeIntegrator::Initialize()
 	int N=int(m_States.size());              // size of problem
 	m_y=N_VNew_Serial(N);										 // Allocate vector y
 	realtype * y_data = NV_DATA_S(m_y);      // Pointer to data of vector y
-	m_States.CopyStates(y_data);						 // Copy states to y
+	CopyStates(y_data);						 // Copy states to y
 	// Create a implicit (CV_BDF) solver with Newton iteration (CV_NEWTON)
 	cvode_mem = CVodeCreate(CV_BDF,CV_NEWTON);
 	// Set the state vector as user data of the solver
-	CVodeSetUserData(cvode_mem,(void *) &m_States);
+	CVodeSetUserData(cvode_mem,(void *) this);
 	// Local copy of Epsilon needed for CVodeMalloc
 	realtype epsilon=Epsilon;
 	int flag=0;
@@ -147,7 +146,7 @@ int cmf::math::CVodeIntegrator::Integrate( cmf::math::Time MaxTime,cmf::math::Ti
 	// Throw if integration fails
 	if (res<0) 
 	{
-		m_States.SetStates(y_data);
+		SetStates(y_data);
 		throw std::runtime_error("CVode could not integrate due to failure (see message above)");
 	}
 	// Get statistics about CVode call
@@ -159,7 +158,7 @@ int cmf::math::CVodeIntegrator::Integrate( cmf::math::Time MaxTime,cmf::math::Ti
 	// Set new time
 	m_Time=MaxTime;
 	// Copy result to state variables
-	m_States.SetStates(y_data);
+	SetStates(y_data);
 	return res;
 }
 
