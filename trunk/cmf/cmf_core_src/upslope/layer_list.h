@@ -50,10 +50,16 @@ namespace cmf {
 			void clear() { m_layers.clear();}
 			/// Number of layers in the list
 			size_t size() const {return m_layers.size();}
+			/// Sets the wetness in m3/m3 of layers [offset : arraysize]
+			void set_wetness(const cmf::math::num_array& Value,size_t offset = 0);
 			/// Returns an array containing the potentials of all layers in the list
 			cmf::math::num_array get_potential() const;
+			/// Sets the potential (head) in m of layers [offset : arraysize]
+			void set_potential(const cmf::math::num_array& Value,size_t offset = 0);
 			/// Returns an array containing the wetness in m3 H2O/m3 pore space of all layers in the list
 			cmf::math::num_array get_wetness() const;
+			/// Sets the Volume in m3 of layers [offset : arraysize]
+			void set_volume(const cmf::math::num_array& Value,size_t offset = 0);
 			///  Returns an array containing the matrix potential in m of all layers in the list
 			cmf::math::num_array get_matrix_potential() const;
 			///  Returns an array containing the porosity in m3/m3 of all layers in the list
@@ -73,12 +79,10 @@ namespace cmf {
 			///  Returns an array containing the upper boundary in m below surface of all layers in the list
 			cmf::math::num_array get_upper_boundary() const;
 
-			/// Sets the potential (head) in m of layers [offset : arraysize]
-			void set_potential(const cmf::math::num_array& Value,size_t offset = 0);
-			/// Sets the Volume in m3 of layers [offset : arraysize]
-			void set_volume(const cmf::math::num_array& Value,size_t offset = 0);
-			/// Sets the wetness in m3/m3 of layers [offset : arraysize]
-			void set_wetness(const cmf::math::num_array& Value,size_t offset = 0);
+			cmf::math::num_array get_ice_fraction() const;
+
+			void set_ice_fraction(const cmf::math::num_array& Value, size_t offset=0);
+
 		};
 		
 	}

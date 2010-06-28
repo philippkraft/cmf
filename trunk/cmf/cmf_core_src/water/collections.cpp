@@ -158,23 +158,26 @@ int cmf::water::node_list::set_solute_source( const cmf::water::solute& _Solute,
 
 }
 
-void cmf::water::node_list::AddStateVariables( cmf::math::StateVariableVector& vector )
-{
-	for(node_vector::iterator it = m_nodes.begin(); it != m_nodes.end(); ++it)
-	{
-		cmf::math::StateVariableOwner *state_owner = dynamic_cast<cmf::math::StateVariableOwner *>(it->get());
-		cmf::math::StateVariable* state=dynamic_cast<cmf::math::StateVariable*>(it->get());
-		if(state_owner) 
-			state_owner->AddStateVariables(vector);
-		else if (state) 
-			vector.push_back(state);
-	}
-}
 
 void cmf::water::node_list::append( flux_node::ptr node )
 {
 	if (node==0) throw std::invalid_argument("node_list may only contain valid objects");
 	m_nodes.push_back(node);
+}
+
+cmf::math::state_queue cmf::water::node_list::get_states()
+{
+	cmf::math::state_queue q;
+	for(node_vector::const_iterator it = m_nodes.begin(); it != m_nodes.end(); ++it)
+	{
+		cmf::math::StateVariableOwner *state_owner = dynamic_cast<cmf::math::StateVariableOwner *>(it->get());
+		cmf::math::StateVariable::ptr state = std::tr1::dynamic_pointer_cast<cmf::math::StateVariable>(*it);
+		if(state_owner) 
+			q.push(*state_owner);
+		else if (state) 
+			q.push(state);
+	}
+	return q;
 }
 /************************************************************************/
 /* Neumann-Boundary list                                                */
@@ -229,7 +232,7 @@ cmf::water::NeumannBoundary_list::NeumannBoundary_list( const cmf::water::node_l
 {
 	for (int i = 0; i < copy.size() ; ++i)
 	{
-		NeumannBoundary_ptr nbc=std::tr1::dynamic_pointer_cast<cmf::water::NeumannBoundary>(copy[i]);
+		NeumannBoundary::ptr nbc=std::tr1::dynamic_pointer_cast<cmf::water::NeumannBoundary>(copy[i]);
 		if (nbc)
 			m_boundaries.push_back(nbc);
 	}

@@ -19,8 +19,8 @@
 %{
 #include "water/collections.h"
 %}
-%attributeval(cmf::water::node_list,cmf::math::num_array,potentials,get_potentials,set_potentials);
-%attributeval(cmf::water::NeumannBoundary_list,cmf::math::num_array,fluxes,get_fluxes,set_fluxes);
+%attribute(cmf::water::node_list,cmf::math::num_array,potentials,get_potentials,set_potentials);
+%attribute(cmf::water::NeumannBoundary_list,cmf::math::num_array,fluxes,get_fluxes,set_fluxes);
 
 //%factory(cmf::water::flux_node& cmf::water::node_list::get,cmf::water::NeumannBoundary, cmf::water::DricheletBoundary,cmf::river::OpenWaterStorage,cmf::upslope::SoilLayer,cmf::water::WaterStorage,cmf::water::flux_node);
 

@@ -23,56 +23,59 @@
 #include "../atmosphere/precipitation.h"
 #include <queue>
 #include <set>
-cmf::upslope::Cell* cmf::upslope::find_cell(cmf::upslope::cells_ref cells,cmf::geometry::point p,double max_dist )
+
+using namespace cmf::upslope;
+
+Cell* cmf::upslope::find_cell(cells_ref cells,cmf::geometry::point p,double max_dist )
 {
 	double min_dist=max_dist;
-	cmf::upslope::Cell* res=0;
-	for(cmf::upslope::cell_vector::const_iterator it = cells.begin(); it != cells.end(); ++it)
+	Cell* res=0;
+	for(cell_vector::iterator it = cells.begin(); it != cells.end(); ++it)
 	{
-		double dist=p.distanceTo((*it)->get_position());
+		double dist=p.distanceTo(it->get_position());
 		if (dist<min_dist)
 		{
 			min_dist=dist;
-			res=*it;
+			res=it;
 		}
 	}
 	return res;
 }
 
-cmf::upslope::cell_vector cmf::upslope::get_boundary_cells(cmf::upslope::cells_ref cells)
+cell_vector cmf::upslope::get_boundary_cells(cells_ref cells)
 {
 	using namespace cmf;
 	using namespace cmf::upslope;
-	cmf::upslope::cell_vector resVector;
+	cell_vector resVector;
 	if (cells.size()==0) return resVector;
 	//Build a set of upslope cells from Upslope() for faster random access
-	cmf::upslope::cell_set upcSet(cells.begin(),cells.end());
+	std::set<Cell*> upcSet = cells.as_set();
 
 	//Find a cell to start. We use the most western one, which has to be a boundary cell
-	cmf::upslope::Cell* startCell=cells[0];
-	for (cmf::upslope::cell_vector::const_iterator it=cells.begin();it!=cells.end();it++)
-		if ((*it)->x < startCell->x)
-			startCell=*it;
+	Cell* startCell = &cells[0];
+	for (cell_vector::iterator it=cells.begin();it!=cells.end();++it)
+		if (it->x < startCell->x)
+			startCell=it.ptr();
 
 	//From this start cell we are looking for the next neighbor in clockwise direction
-	cmf::upslope::Cell* nextCell=0;
-	cmf::upslope::Cell* thisCell=0;
+	Cell* nextCell=0;
+	Cell* thisCell=0;
 	//until we are again at the start
 	while (startCell!=nextCell)
 	{
 		//remember the last cell
-		cmf::upslope::Cell* lastCell=thisCell;
+		Cell* lastCell=thisCell;
 		//if the "next" cell is not definied use the start cell
 		thisCell=nextCell ? nextCell : startCell;
 		//remember the current cell
-		resVector.push_back(thisCell);
+		resVector.append(*thisCell);
 		//the azimuth to the cell from where we are coming (or 0 if it's the first loop)
 		double azimuthToLast=lastCell ? thisCell->get_position().azimuth(lastCell->get_position()) : 270;
 		//We are looking for the next cell clockwise
 		double minAngleDiff=361;
 		nextCell=0;
 		//Find the next cell in the neighborhood in clockwise direction
-		for (cmf::upslope::NeighborIterator neighbor = thisCell; neighbor.valid(); ++neighbor)
+		for (neighbor_iterator neighbor = thisCell; neighbor.valid(); ++neighbor)
 		{
 			// If the connection to the neighbor is active and element of this
 			if ((upcSet.find(neighbor->cell)!=upcSet.end()))
@@ -94,15 +97,15 @@ cmf::upslope::cell_vector cmf::upslope::get_boundary_cells(cmf::upslope::cells_r
 }
 
 
-void cmf::upslope::connect_cells_with_flux(cmf::upslope::cells_ref cells, const cmf::upslope::CellConnector& connect,int start_at_layer)
+void cmf::upslope::connect_cells_with_flux(cells_ref cells, const CellConnector& connect,int start_at_layer)
 {
-	cmf::upslope::cell_set cs(cells.begin(),cells.end());
+	std::set<Cell*> cs=cells.as_set();
 	int i=0;
 	while (cs.size())
 	{
-		cmf::upslope::Cell& cell=**cs.begin();
+		Cell& cell=**cs.begin();
 		cs.erase(&cell);
-		for (cmf::upslope::NeighborIterator it(cell);it.valid();++it)
+		for (neighbor_iterator it(cell);it.valid();++it)
 			if (cs.find(&it.cell())!=cs.end())
 				connect(cell,it.cell(),start_at_layer);
 	}
@@ -115,45 +118,35 @@ void insert_connections_in_set(cmf::water::connection_set& cset,cmf::water::flux
 		cset.insert(*it);
 	}
 }
-cmf::water::connection_set cmf::upslope::get_connections(cmf::upslope::cells_ref cells)
+cmf::water::connection_set cmf::upslope::get_connections(cells_ref cells)
 {
 	using namespace cmf::water;
 	cmf::water::connection_set cset;
 	//insert_connections_in_set(cset,&Rainfall());
-	for(cmf::upslope::cell_vector::const_iterator it = cells.begin(); it != cells.end(); ++it)
+	for(cell_vector::iterator it = cells.begin(); it != cells.end(); ++it)
 	{
-		cmf::upslope::Cell& c=**it;
-		//insert_connections_in_set(cset,&c.Evaporation());
-		insert_connections_in_set(cset,c.get_surfacewater());
-		for (int i = 0; i < c.storage_count(); ++i)
+		//insert_connections_in_set(cset,&it->Evaporation());
+		insert_connections_in_set(cset,it->get_surfacewater());
+		for (int i = 0; i < it->storage_count(); ++i)
 		{
-			insert_connections_in_set(cset,c.get_storage(i));
+			insert_connections_in_set(cset,it->get_storage(i));
 		}
-		for (int i = 0; i < c.layer_count() ; ++i)
+		for (int i = 0; i < it->layer_count() ; ++i)
 		{
-			insert_connections_in_set(cset,c.get_layer(i));
+			insert_connections_in_set(cset,it->get_layer(i));
 		}		 
 	}
 	return cset;
 }
 
-double cmf::upslope::area( cmf::upslope::cells_ref cells )
-{
-	double sum=0;
-	for(cmf::upslope::cell_vector::const_iterator it = cells.begin(); it != cells.end(); ++it)
-	{
-		sum+=(*it)->get_area();
-	}
-	return sum;
-}
 
-int cmf::upslope::fill_sinks( cmf::upslope::cells_ref cells,double min_difference/*=0.001*/ )
+int cmf::upslope::fill_sinks( cells_ref cells,double min_difference/*=0.001*/ )
 {
 	using namespace cmf::upslope;
 	int NoOfActions=0;
 	cell_vector boundary=cmf::upslope::get_boundary_cells(cells);
 	/// A set of boundary cells, (set::find is faster than vector::find) needed for the alghorithm
-	std::set<Cell*> boundarySet=std::set<Cell*>(boundary.begin(),boundary.end());
+	std::set<Cell*> boundarySet=boundary.as_set();
 
 
 	//Fill sinks according to 
@@ -165,12 +158,12 @@ int cmf::upslope::fill_sinks( cmf::upslope::cells_ref cells,double min_differenc
 	std::map<Cell*,double>& oldHeightMap=*new std::map<Cell*,double>;
 
 	//Step 1: Fill the whole DEM with water (without the boundaries)
-	for (cell_vector::const_iterator it=cells.begin();it!=cells.end();it++)
+	for (cell_vector::iterator it=cells.begin();it!=cells.end();++it)
 	{
-		if (boundarySet.find(*it)==boundarySet.end())
+		if (boundarySet.find(it)==boundarySet.end())
 		{
-			oldHeightMap.insert(std::make_pair(*it,(*it)->z));
-			(*it)->z=1e17;
+			oldHeightMap[it] = it->z;
+			it->z=1e17;
 		}
 	}
 	//Step 2: Drain the water, until the sinks are filled
@@ -190,7 +183,7 @@ int cmf::upslope::fill_sinks( cmf::upslope::cells_ref cells,double min_differenc
 			if (Wc > Zc)
 			{
 				//Loop through the neighbors end exit if operation 1 was performed
-				for (NeighborIterator n_iter(it->first); n_iter.valid() ; ++n_iter)
+				for (neighbor_iterator n_iter(it->first); n_iter.valid() ; ++n_iter)
 				{
 					double Wn=n_iter->z;
 					//Operation 1 applicable?
@@ -225,7 +218,7 @@ cmf::geometry::point_vector cmf::upslope::cell_positions( cells_ref cells )
 #pragma omp parallel for
 	for (int i = 0; i < (int)cells.size() ; ++i)
 	{
-		res.set(i,cells[i]->get_position());
+		res.set(i,cells[i].get_position());
 	}
 	return res;
 }
@@ -237,7 +230,7 @@ cmf::geometry::point_vector cmf::upslope::cell_flux_directions( cells_ref cells,
 	for (int i = 0; i < (int)cells.size() ; ++i)
 	{
 		cmf::geometry::point p;
-		cmf::upslope::Cell & c=*cells[i];
+		Cell & c = cells[i];
 		for (int j = 0; j < c.storage_count() ; ++j)
 			p+=c.get_storage(j)->get_3d_flux(t);
 		for (int j = 0; j < c.layer_count() ; ++j)
@@ -251,11 +244,11 @@ cmf::geometry::point_vector cmf::upslope::cell_flux_directions( cells_ref cells,
 
 
 
-inline bool isstream(cmf::upslope::Topology& t,double area_threshold) {
+inline bool isstream(Topology& t,double area_threshold) {
 	return t.ContributingArea()>area_threshold;
 }
 
-cmf::upslope::subcatchment::subcatchment(cmf::upslope::Cell& pourpoint_cell,double area_threshold/*=1e308*/ )
+cmf::upslope::subcatchment::subcatchment(Cell& pourpoint_cell,double area_threshold/*=1e308*/ )
 :	pourpoint(pourpoint_cell)
 {
 	using namespace cmf::upslope;
@@ -273,7 +266,7 @@ cmf::upslope::subcatchment::subcatchment(cmf::upslope::Cell& pourpoint_cell,doub
 		Cell* cell = to_do.front();
 
 		// for each neighbor of cell
-		for (NeighborIterator neighbor=*cell; neighbor.valid(); ++neighbor)
+		for (neighbor_iterator neighbor=*cell; neighbor.valid(); ++neighbor)
 		{
 			// if cell is mainoutlet of cell
 			if (neighbor->MainOutlet() == cell) {
@@ -298,12 +291,12 @@ cmf::upslope::subcatchment::subcatchment(cmf::upslope::Cell& pourpoint_cell,doub
 		} else if (to_do_stream.size() > 1) { 
 			// If more than one inflow cell is stream cell, start a new subcatchments
 			while (to_do_stream.size()) {
-				inflowcells.push_back(to_do_stream.front());
+				inflowcells.append(*to_do_stream.front());
 				to_do_stream.pop();
 			}
 		}
 		// add cell to cells of subcatchment
-		cells.push_back(cell);
+		cells.append(*cell);
 		// Work done on cell
 		to_do.pop();
 	} // end while(to_do)

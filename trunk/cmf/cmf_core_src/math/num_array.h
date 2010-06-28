@@ -43,37 +43,36 @@
 			num_array(const num_array& Vector);
 		
 			/// Creates a new vector using data. Not for external use
-			num_array(double * data,int count);
+			num_array(double * data, size_t count);
 
-			void set_data_from_adress(size_t data_adress,size_t count);
-
-			size_t adress() const;
-
-#ifndef SWIG
-			/// Convert from valarray<real>
-			num_array(const std::valarray<real>& Vector);
-#endif
 			/// Destructor
 			~num_array();
 			//@}
-#ifndef SWIG
 			/// Assigns the given vector to this. If the sizes differ, the size of this gets adjusted
 			num_array& operator=(const num_array& vector);
 			num_array& operator=(const std::vector<double>& vector);
 			/// Sets each element of this to scalar
 			num_array& operator=(real scalar);
-#endif
+			typedef double* iterator;
+			typedef const double * const_iterator;
+			iterator begin() const {return m_data;}
+			iterator end()  const {return m_data + size();}
 			/// Size of the vector
 			int size() const { return m_size;}
 			/// Changes the size of the vector
 			void resize(int count);
 			void resize(size_t count) {resize(int(count));}
-#ifndef SWIG
+			/// Prevents deletion of the stored data. 
+			/// Use with care, and only if you know what you are doing.
+			iterator release() {
+				iterator res = m_data;
+				m_size=0;m_data=0;
+				return res;
+			}
 			/// returns the element at position pos (immutable vector)
-			real operator[](int pos) const { return m_data[pos];}
+			const real& operator[](int pos) const { return m_data[pos];}
 			/// returns the element at position pos (mutable vector)
 			real& operator[](int pos) { return m_data[pos];}
-#endif			
 			/// @name Operators
 			/// Binary operators defined as free operators:
 			///

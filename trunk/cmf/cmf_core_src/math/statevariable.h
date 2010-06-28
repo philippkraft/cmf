@@ -20,13 +20,37 @@
 #define StateVariable_h__
 #include "time.h"
 #include <string>
-#include <vector>
+#include <deque>
+#include <tr1/memory>
 #include <cmath>
 #include "num_array.h"
 #include "real.h"
 namespace cmf {
 	/// Contains classes for numerical solving of ODE's
   namespace math {
+	  struct integratable {
+		  real x;
+		  Time t;
+		  integratable(real _x,Time _t) : x(_x),t(_t) {}
+		  integratable(const integratable& cpy) : x(cpy.x),t(cpy.t) {} // Copy constructorable
+		  integratable& operator=(const integratable& cpy) {x=cpy.x;t=cpy.t; return *this;} // Assignable
+		  integratable() : x(0.0),t() {} // Default ctor
+		  void integrate(real dxdt, Time dt) {
+			  x+= dxdt * dt.AsDays();
+			  t+=dt;
+		  }
+		  void integrate_until(real dxdt, Time until) {
+			  integrate(dxdt,until - t);
+		  }
+		  integratable& operator+=(const integratable& other) {  x+=other.x;  t+=other.t; return *this; }
+		  integratable& operator-=(const integratable& other) {  x-=other.x;  t-=other.t; return *this; }
+		  integratable& operator*=(real f) {  x*=f;t*=f; return *this;}
+		  integratable& operator/=(real f) {  x/=f;t/=f; return *this;}
+		  integratable operator+(const integratable& other) const {return integratable(x+other.x,t+other.t);}
+		  integratable operator-(const integratable& other) const {return integratable(x-other.x,t-other.t);}
+		  integratable operator*(real f) const {return integratable(x*f,t*f);}
+		  integratable operator/(real f) const {return integratable(x/f,t/f);}
+	  };
 		/// Abstract class state variable
 		///		
 		///		Simple exponential system class header implementing a state variable:
@@ -50,6 +74,7 @@ namespace cmf {
 			/// Sets the updated flag (m_StateIsNew) to false
 			void MarkStateChangeHandled() {m_StateIsNew=false;}
 		public:
+			typedef std::tr1::shared_ptr<StateVariable> ptr;
 			/// Returns the derivate of the state variable at time @c time
 			virtual real Derivate(const cmf::math::Time& time)=0;
 			/// Returns the current state of the variable
@@ -67,59 +92,56 @@ namespace cmf {
 			StateVariable(real InitialState=0) : m_State(InitialState),m_StateIsNew(true) {}
 		};
 
-		/// @internal A vector of state variables, can be solved by an Integrator
-		class StateVariableVector : public std::vector<StateVariable*>
-		{
-			void AddValuesToStates(const num_array& operands);
-		public:
-			bool use_OpenMP;
-			/// Copies the states to a numeric vector using use_OpenMP
-			void CopyStates(num_array & destination) const;
-			void CopyStates(real * destination) const;
-			/// Copies the new states to the actual states
-			void SetStates(const num_array & newStates) ;
-			void SetStates(real * newStates);
-			/// Operator to add something to the states
-			StateVariableVector& operator+=(const num_array& aVector)
-			{
-				this->AddValuesToStates(aVector);
-				return *this;
-			}
-			/// Copies the derivatives at time step "time" to a numeric vector using use_OpenMP
-			/// @param time Time at which the derivatives should be calculated
-			/// @param destination Vector to be overwritten by the results
-			/// @param factor A factor that is multiplied to the derivate (e.g. unit conversion or integration length)
-			void CopyDerivs(Time time,num_array & destination, real factor=1) const;
-			/// Copies the derivatives at time step "time" to an preallocated c array
-			/// @param time Time at which the derivatives should be calculated
-			/// @param destination Allocated c array
-			/// @param factor A factor that is multiplied to the derivate (e.g. unit conversion or integration length)
-			void CopyDerivs(Time time,real * destination,real factor=1) const;
-			/// Returns the states in a numeric vector using :CopyStates, but is slower because of additional memory allocation
-			num_array GetStates() const 
-			{
-				num_array result(this->size());
-				CopyStates(result);
-				return result;
-			}
-			/// Returns the derivatives at time step "time" in a numeric vector using :CopyDerivs, but is slower because of additional memory allocation
-			num_array GetDerivs(Time time) const 
-			{
-				num_array result(this->size());
-				CopyDerivs(time,result);
-				return result;
-			}
-			StateVariableVector() : use_OpenMP(true) {}
-		};
-		
+		class state_queue;
 		/// An abstract class, that owns one or more state variables, that can add them to a vector of state variables in a certain order
 		class StateVariableOwner
 		{
 		public:
 			/// Add the state variables, owned by an object derived from StateVariableOwner, to the given vector
-			virtual void AddStateVariables(cmf::math::StateVariableVector& vector)=0;
-			explicit StateVariableOwner() {}
+			virtual state_queue get_states()=0;
 		};
+
+		class state_queue {
+			typedef std::deque<StateVariable::ptr> state_deque;
+			state_deque	m_queue;
+		public:
+
+#ifndef SWIG
+			state_deque::iterator begin() {return m_queue.begin();}
+			state_deque::iterator end() {return m_queue.end();}
+			state_deque::const_iterator begin() const {return m_queue.begin();}
+			state_deque::const_iterator end() const {return m_queue.end();}
+#endif
+
+			void push(StateVariable::ptr sv) {
+				m_queue.push_back(sv);
+			}
+			void push(StateVariableOwner& svo) {
+				(*this) += svo.get_states();
+			}
+			StateVariable::ptr pop() {
+				StateVariable::ptr res = m_queue.front();
+				m_queue.pop_front();
+				return res;
+			}
+			StateVariable::ptr front() const {
+				return m_queue.front();
+			}
+			void eat(state_queue& food) {
+				while (food) 
+					push(food.pop());
+			}
+			operator bool() const {return m_queue.size()>0;}
+			state_queue& operator +=(state_queue& food) {
+				m_queue.insert(m_queue.end(),food.m_queue.begin(),food.m_queue.end());
+				return *this;
+			}
+			state_queue& operator +=(StateVariableOwner& svo) {
+				return (*this)+=svo.get_states();
+			}
+			size_t size() const {return m_queue.size();}
+		};
+
 	}
 }
 

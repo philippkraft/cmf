@@ -29,7 +29,6 @@ namespace cmf {
 		struct Date;
 		/// A time class, used to pass around current modelling times
 		///
-		///	<p>
 		///		Timespans and dates in cmf are used with a special object, called Time. An extra 
 		///		class has the advantage, that the user does not have to remember, which
 		///		unit of time he or she uses or what time unit is accepted by a specific function
@@ -39,90 +38,68 @@ namespace cmf {
 		///		as milliseconds gone by from Dec, 31st 1899. Microsoft Excel dates are represented
 		///		as days from that time, using floating point numbers, therefore it is very simple
 		///		to convert Excel time representations to cmf time.
-		///	</p>
-		///	<p>
+		///	
 		///		Another object is Date, which is doesn't provide the operators, but has a nice printed
 		///		version and some special date functions, like day of year (DOY) and provides access
 		///		to the current hour of day and so on, which only applyto dates and not to time spans.
 		///		You can convert Time to Date an vice versa. The printing is not culture aware and
 		///		uses the European representation. If you use the Python standard library datetime,
-		///		conversion between Python time and cmf time is possible</p>
-		///	<h2>
-		///		Creating absolute time values (dates)</h2>
-		///	<div class="fragment">
-		///		<pre class="fragment">import CMFlib as cmf
+		///		conversion between Python time and cmf time is possible
+		///
+		/// Creating absolute time values (dates)
+		///\code
+		///import CMFlib as cmf
 		///# Create the time: Jan, 5th 2001, 2:30 pm, 20s, 412 ms
 		///t=cmf.Time(5,1,2001,14,30,20,412)
 		///print t # Prints: '36896d:14:30:20.412h'
 		///print t.AsDate() # Prints: '05.01.2001 14:30:20.412'
-		///</pre>
-		///	</div>
-		///	<h2>
-		///		Creating time spans</h2>
-		///	<p>
+		///\endcode
+		///	Creating time spans
+		///
 		///		In principle, there are three ways to create time spans. One is to use one of the
 		///		static functions, another is to multiply an existing time span (like one of the
 		///		build in constants) or to substrate two absolute times.
-		///	</p>
-		///	<h3>
-		///		Available static functions, the default value is always 1</h3>
-		///	<ul>
-		///		<li>Milliseconds(): <code>t=cmf.Time.Milliseconds(4100)</code>, create a timespan
-		///			of 4.1 seconds</li>
-		///		<li>Seconds(): <code>t=cmf.Time.Seconds(4.1)</code>, create a timespan of 4.1 seconds</li>
-		///		<li>Minutes(): <code>t=cmf.Time.Minutes(138)</code>, create a timespan of 2.3 hours
-		///			(138 min)</li>
-		///		<li>Hours():<code>t=cmf.Time.Hours(2.3)</code>, create a timespan of 2.3 hours (138
-		///			min)</li>
-		///		<li>Days():<code>t=cmf.Time.Days(2.5)</code>, create a timespan of 60 hours</li>
-		///		<li>Years():<code>t=cmf.Time.Years()</code>, create a timespan of 365 days</li>
-		///	</ul>
-		///	<h3>
-		///		Available constants</h3>
-		///	<ul>
-		///		<li><code>cmf.sec * 4.1</code>: 4.1 seconds</li>
-		///		<li><code>cmf.min * 138</code>: 2.3 hours (138 min)</li>
-		///		<li><code>cmf.h * 2.3</code>: 2.3 hours (138 min)</li>
-		///		<li><code>cmf.day * 2.5</code>: 60 hours (2.5 days)</li>
-		///		<li><code>cmf.week </code>: 7 days</li>
-		///		<li><code>cmf.month</code>: 365/12 days (30.4167 days)</li>
-		///		<li><code>cmf.year</code>: 365 days</li>
-		///	</ul>
-		///	<h3>
-		///		Available operators:</h3>
-		///	<ul>
-		///		<li>time + time = time, time - time = time</li>
-		///		<li>time * float = time ,time / float = time</li>
-		///		<li>time/time=float</li>
-		///		<li>&gt, &lt, ==, !=</li>
-		///	</ul>
-		///	<h2>
-		///		Conversions</h2>
-		///	<h3>
-		///		Converting to python datetime</h3>
-		///	<div class="fragment">
-		///		<pre class="fragment">
+		///
+		///		Available constants
+		///		 - @code cmf.sec * 4.1 @endcode : 4.1 seconds 
+		///		 - @code cmf.min * 138 @endcode : 2.3 hours (138 min)
+		///		 - @code cmf.h * 2.3 @endcode : 2.3 hours (138 min)
+		///		 - @code cmf.day * 2.5 @endcode : 60 hours (2.5 days)
+		///		 - @code cmf.week @endcode : 7 days
+		///		 - @code cmf.month @endcode : 365/12 days (30.4167 days)
+		///		 - @code cmf.year @endcode : 365 days
+		///	
+		///		Available operators:
+		///	
+		///		 - time + time = time, time - time = time
+		///		 - time * float = time ,time / float = time
+		///		 - time/time=float
+		///		 - &gt, &lt, ==, !=
+		///	
+		///	
+		///		Conversions
+		///	
+		///		Converting to python datetime
+		///@code
 		///import CMFlib as cmf
 		///pythontime = cmf.year.AsPython()
 		///cmftime=cmf.AsCMFTime(pythontime)
 		///print type(pythontime) # '&lt;type 'datetime.datetime'&gt;'
 		///print type(cmftime)    # '&lt;class 'CMFLib.Time'&gt;'
-		///</pre>
-		///	</div>
-		///	<h3>
-		///		Converting to numbers</h3>
-		///	<ul>
-		///		<li>t.AsMilliseconds()</li>
-		///		<li>t.AsSeconds()</li>
-		///		<li>t.AsMinutes()</li>
-		///		<li>t.AsHours()</li>
-		///		<li>t.AsDays()</li>
-		///		<li>t.AsYears()</li>
-		///	</ul>
-		///	<h2>
-		///		Creating time ranges</h2>
-		///	<div class="fragment">
-		///		<pre class="fragment">
+		///@endcode
+		///	
+		///		Converting to numbers
+		///	
+		///		 - t.AsMilliseconds()
+		///		 - t.AsSeconds()
+		///		 - t.AsMinutes()
+		///		 - t.AsHours()
+		///		 - t.AsDays()
+		///		 - t.AsYears()
+		///	
+		///	
+		///		Creating time ranges
+		///	@code
 		///import CMFLib as cmf
 		///start=cmf.Time(5,1,2001)
 		///end=cmf.Time(6,1,2001)
@@ -134,8 +111,8 @@ namespace cmf {
 		///# 05.01.2001 06:00
 		///# 05.01.2001 12:00
 		///# 05.01.2001 18:00
-		///</pre>
-		///	</div>
+		///@endcode
+
 		class Time
 		{
 		private:

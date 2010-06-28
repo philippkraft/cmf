@@ -40,7 +40,7 @@ cmf::upslope::Cell::~Cell()
 cmf::upslope::Cell::Cell( double _x,double _y,double _z,double area,cmf::project& _project/*=0*/ ) 
 : x(_x),y(_y),z(_z),m_Area(area),m_project(_project),
 m_SurfaceWater(new cmf::water::DricheletBoundary(_project,_z)),	Id(cell_count++),
-m_meteo(new cmf::atmosphere::ConstantMeteorology)
+m_meteo(new cmf::atmosphere::ConstantMeteorology), Tground(-300)
 {
 	std::stringstream sstr;
 	sstr << Id;
@@ -53,6 +53,7 @@ m_meteo(new cmf::atmosphere::ConstantMeteorology)
 	m_Transpiration->Name="Transpiration of cell #" + cell_id;
 	m_rainfall.reset(new cmf::atmosphere::ConstantRainSource(_project,cmf::geometry::point(x,y,z+20),0.0));
 	new connections::Rainfall(get_surfacewater(),*this);
+	m_aerodynamic_resistance = cmf::atmosphere::aerodynamic_resistance::ptr(new cmf::atmosphere::log_wind_profile(*this));
 }
 
 cmf::upslope::Cell::Cell( const Cell& cpy ) 
@@ -61,7 +62,7 @@ cmf::upslope::Cell::Cell( const Cell& cpy )
 {
 
 }
-real cmf::upslope::Cell::get_saturated_depth()	
+real cmf::upslope::Cell::get_saturated_depth() const
 {
 	if (m_SatDepth<-10000)
 	{
@@ -83,13 +84,6 @@ real cmf::upslope::Cell::get_saturated_depth()
 
 
 
-void cmf::upslope::Cell::AddStateVariables( cmf::math::StateVariableVector& vector )
-{
-	for (int i = 0; i < storage_count() ; ++i)
-		get_storage(i)->AddStateVariables(vector);
-	for (int i = 0; i < layer_count() ; ++i)
-		get_layer(i)->AddStateVariables(vector);
-}
 
 
 void cmf::upslope::Cell::add_layer(real lowerboundary,const cmf::upslope::RetentionCurve& r_curve,real saturateddepth/*=-10*/ )
@@ -112,17 +106,14 @@ void cmf::upslope::Cell::add_layer(real lowerboundary,const cmf::upslope::Retent
 cmf::upslope::SoilLayer::ptr cmf::upslope::Cell::get_layer(int index) const {
 	return m_Layers[index];
 }
-cmf::upslope::vegetation::Vegetation cmf::upslope::Cell::get_vegetation() const
-{
-	vegetation::Vegetation res=m_vegetation;
-	real snw_cvr=snow_coverage();
-	res.albedo=snw_cvr * 0.9 + (1-snw_cvr)*res.albedo;
-	return res;
-}
 
 cmf::atmosphere::Weather cmf::upslope::Cell::get_weather( cmf::math::Time t ) const
 {
-	return get_meteorology()(t);
+	cmf::atmosphere::Weather w = get_meteorology()(t);
+	if (Tground>-273) w.Tground = Tground;
+	cmf::water::WaterStorage::ptr snow = get_snow();
+	if (snow && !snow->is_empty()) w.Tground = std::min(w.Tground, 0.0);
+	return w;
 }
 
 void cmf::upslope::Cell::remove_layers()
@@ -156,7 +147,7 @@ cmf::water::WaterStorage::ptr cmf::upslope::Cell::add_storage( std::string Name,
 	if (storage_role=='C')
 	{
 		m_Canopy = ws;
-		ws->Location.z+=get_vegetation().Height;
+		ws->Location.z+=vegetation.Height;
 	}
 	else if (storage_role=='S')
 	{
@@ -281,4 +272,45 @@ void cmf::upslope::Cell::set_rain_source( cmf::atmosphere::RainSource::ptr new_s
 		cmf::water::replace_node(m_rainfall,new_source);
 	}
 	m_rainfall = new_source;
+}
+
+cmf::math::state_queue cmf::upslope::Cell::get_states()
+{
+	cmf::math::state_queue q;
+	for (int i = 0; i < storage_count() ; ++i)
+		q.push(get_storage(i));
+	for (int i = 0; i < layer_count() ; ++i)
+		q.push(get_layer(i));
+	return q;
+}
+
+real cmf::upslope::Cell::heat_flux( cmf::math::Time t) const
+{
+	cmf::atmosphere::Weather w = get_weather(t);
+	real Rn = w.Rn(albedo()); // surface heat flux in MJ/(m2 day)
+	
+	// Calculate latent heat flux (Ql) MJ/(m2 day)
+	double 
+		Lv = 2448, // MJ/Mg * 1Mg/m3 = MJ/m3
+		lat_T = (*m_Transpiration)(t) / m_Area * Lv, // latent heat flux by transpiration m3 day-1  m-2 
+		lat_E = (*m_Evaporation)(t) / m_Area * Lv,   // latent heat flux by evaporation
+		Ql = -lat_T - lat_E;
+	
+	// Calculate sensible heat flux
+	double
+		c_w = 4.180, // J/(K g) -> MJ/(K * m3)
+		c_aV = 1.009 * 1.2 * 1e-3, // Volumetric specific heat  kJ/(K kg) * kg/m3 * MJ/kJ = MJ/(K m3)
+		r_ag=100, r_ac=50;		         // mean air density at constant pressure
+	// get resistances
+	m_aerodynamic_resistance->get_aerodynamic_resistance(r_ag,r_ac,t);
+	double Qs = c_aV * (w.T - w.Tground)/r_ag * 24*60*60; // MJ/(K m3) * K * m/s * 24*60*60 s/day = MJ/(m2 * day)
+
+	return Rn + Qs + Ql;
+}
+
+real cmf::upslope::Cell::albedo() const
+{
+	return vegetation.albedo * (1-snow_coverage()-surface_water_coverage()) 
+		+ 0.9 * snow_coverage()
+		+ 0.5 * surface_water_coverage();
 }

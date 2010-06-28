@@ -65,7 +65,7 @@ namespace cmf {
 					perc(_perc),fc(_fc),uplim(_uplim),lowlim(_lowlim),beta(_beta),
 					cfmax(_cfmax),sfcf(_sfcf),cfr(_cfr),cwh(_cwh)
 				{}
-				virtual real K(real wetness,real depth) const {return perc * wetness;}
+				virtual real K(real wetness) const {return perc * wetness;}
 				virtual real Porosity(real depth) const { return fc;}
 				virtual real VoidVolume(real upperDepth,real lowerDepth,real Area) const {return fc * Area * (lowerDepth-upperDepth);}
 				virtual real Wetness(real suction) const {return 10/(10-suction);}

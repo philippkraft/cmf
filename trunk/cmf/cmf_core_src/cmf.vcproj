@@ -115,7 +115,7 @@
 				FavorSizeOrSpeed="1"
 				WholeProgramOptimization="false"
 				AdditionalIncludeDirectories="C:\Python26\include;&quot;d:\Code\sundials-2.4.0\inst_msvc\include&quot;;d:\Code\boost_1_41_0\boost\tr1;d:\Code\boost_1_41_0"
-				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;_USRDLL;CMF_EXPORTS;"
+				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;_USRDLL;CMF_EXPORTS;_SCL_SECURE_NO_WARNINGS"
 				RuntimeLibrary="2"
 				DisableLanguageExtensions="false"
 				OpenMP="true"
@@ -136,6 +136,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
+				AdditionalOptions="/ignore:4099"
 				AdditionalDependencies="sundials_cvode.lib sundials_nvecserial.lib"
 				OutputFile="$(OutDir)\_cmf_core.pyd"
 				LinkIncremental="1"
@@ -255,6 +256,10 @@
 			</File>
 			<File
 				RelativePath=".\upslope\cell.h"
+				>
+			</File>
+			<File
+				RelativePath=".\upslope\cell_vector.h"
 				>
 			</File>
 			<File
@@ -442,6 +447,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\upslope\cell_vector.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\cmf.cpp"
 				>
 			</File>
@@ -483,6 +492,10 @@
 			</File>
 			<File
 				RelativePath=".\upslope\connections\infiltration.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\math\integrators\Integrator.cpp"
 				>
 			</File>
 			<File

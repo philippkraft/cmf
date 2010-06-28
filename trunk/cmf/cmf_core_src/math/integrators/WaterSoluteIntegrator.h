@@ -33,11 +33,11 @@ namespace cmf {
 			std::auto_ptr<cmf::math::Integrator> SoluteIntegrator;
 			void distribute_states()
 			{
-				for(cmf::math::StateVariableVector::iterator it = m_States.begin(); it != m_States.end(); ++it)
+				for(state_vector::iterator it = m_States.begin(); it != m_States.end(); ++it)
 				{
-					cmf::water::WaterStorage *ws = dynamic_cast<cmf::water::WaterStorage *>(*it);
-					if(ws)	WaterIntegrator->AddState(*ws);
-					else SoluteIntegrator->AddState(**it);
+					cmf::water::WaterStorage::ptr ws = std::tr1::dynamic_pointer_cast<cmf::water::WaterStorage>(*it);
+					if(ws)	WaterIntegrator->AddState(ws);
+					else SoluteIntegrator->AddState(*it);
 				}
 			}
 

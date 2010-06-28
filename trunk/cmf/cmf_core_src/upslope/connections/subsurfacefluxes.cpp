@@ -93,8 +93,8 @@ real cmf::upslope::connections::Darcy::calc_q( cmf::math::Time t )
 		flow_thick2 = l2 ? get_flow_thick(l2) : flow_thick1;
 	if ((flow_thick1 + flow_thick2)<=0) return 0.0;
 	real
-		T1 = l1->get_soil().Transmissivity(l1->get_lower_boundary()-flow_thick1,l1->get_lower_boundary(),1),
-		T2 = l2 ? l2->get_soil().Transmissivity(l2->get_lower_boundary()-flow_thick2, l2->get_lower_boundary(),1) : T1,
+		T1 = l1->get_Ksat() *  (l1->get_lower_boundary() - (l1->get_lower_boundary()-flow_thick1)),
+		T2 = l2 ? l2->get_Ksat() * (l2->get_lower_boundary() - (l2->get_lower_boundary()-flow_thick2)) : T1,
 		T = mean(T1,T2);
 
 	
@@ -138,8 +138,8 @@ real cmf::upslope::connections::TopographicGradientDarcy::calc_q( cmf::math::Tim
 		Psi_t2=l2 ? l2->cell.z : right_node()->get_potential(),
 		gradient=(Psi_t1-Psi_t2)/distance,
 		// Transmissivity
-		T1=l1->get_soil().Transmissivity(l1->get_lower_boundary()-flow_thick1,l1->get_lower_boundary(),l1->get_wetness()),
-		T2=l2 ? l2->get_soil().Transmissivity(l2->get_lower_boundary()-flow_thick2,l2->get_lower_boundary(),l2->get_wetness()) : T1,
+		T1 = l1->get_Ksat() *  (l1->get_lower_boundary() - (l1->get_lower_boundary()-flow_thick1)),
+		T2 = l2 ? l2->get_Ksat() * (l2->get_lower_boundary() - (l2->get_lower_boundary()-flow_thick2)) : T1,
 		T = gradient>0 ? T1 : T2;
 	if (right_node()->is_empty() && gradient<0)
 		return 0.0;

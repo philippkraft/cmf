@@ -85,7 +85,7 @@ namespace cmf {
 		class RainfallStation  {
 			cmf::geometry::point m_Position;
 			RainfallStation(size_t Id,std::string Name, cmf::math::timeseries Data, cmf::geometry::point position)
-				: name(Name),data(Data),m_Position(position), id(Id) {}
+				: name(Name),data(Data.copy()),m_Position(position), id(Id) {}
 		public:
 			typedef std::tr1::shared_ptr<RainfallStation> ptr;
 

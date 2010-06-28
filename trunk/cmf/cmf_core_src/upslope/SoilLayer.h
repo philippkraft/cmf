@@ -39,11 +39,21 @@ namespace cmf {
 
 		private:
 			friend class Cell;
-			struct wet {real	W,Psi_m,h,V,theta,C,K,Ksat;	};
+			struct wet {real	W,Psi_m,h,V,theta,C,K,Ksat, ice_fraction;	};
 			wet m_wet;
 			typedef std::tr1::weak_ptr<cmf::upslope::SoilLayer> weak_ptr;
 			weak_ptr m_upper;
 			weak_ptr m_lower;
+			real m_ice_fraction;
+		public:
+			/// real (Ice_fraction)
+			real get_ice_fraction() const { return m_ice_fraction; }
+			///@param val Ice_fraction (real)
+			void set_ice_fraction(real val) { 
+				m_ice_fraction = val; 
+				StateChangeAction();
+			}
+		private:
 		protected:
 
 			real m_upperboundary,m_lowerboundary;
@@ -57,6 +67,7 @@ namespace cmf {
 			virtual real volume_to_head(real volume) const;
 
 		public:
+
 			const int Position;
 			cmf::upslope::Cell & cell;
 			/// Returns the upper boundary of the water storage below ground in m

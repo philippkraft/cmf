@@ -29,11 +29,6 @@
 
 %ignore svVector;
 
-class cmf::math::StateVariable;
-namespace std {
-	%template(svVector) vector<cmf::math::StateVariable*>; 
-}
-
 
 %attribute(cmf::math::StateVariable,real,state,get_state,set_state);
 %include "math/statevariable.h"

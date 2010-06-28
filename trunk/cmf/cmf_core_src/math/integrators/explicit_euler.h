@@ -32,7 +32,7 @@ namespace cmf {
 			void AddStatesFromOwner(cmf::math::StateVariableOwner& stateOwner)
 			{
 				Integrator::AddStatesFromOwner(stateOwner);
-				dxdt.resize(count());
+				dxdt.resize(size());
 			}
 
 			/// Constructs a new ExplicitEuler_fixed from a pointer to a vector of state variables
@@ -40,10 +40,6 @@ namespace cmf {
 			/// @param states Statevariables of the system
 			/// @param epsilon (ignored) relative error tolerance per time step (default=1e-9)
 			/// @param tStepMin (ignored) minimum time step (default=10s)
-			ExplicitEuler_fixed(const StateVariableVector& states, real epsilon=1e-9,cmf::math::Time tStepMin=Time::Seconds(10))
-				: Integrator(states,epsilon,tStepMin),
-				dxdt(states.size())
-			{}
 			ExplicitEuler_fixed(StateVariableOwner& states, real epsilon=1e-9,cmf::math::Time tStepMin=Time::Seconds(10))
 				: Integrator(states,epsilon,tStepMin),
 				dxdt(m_States.size())
@@ -73,9 +69,9 @@ namespace cmf {
 				if (m_TimeStep>MaxTime-ModelTime())
 					m_TimeStep=MaxTime-ModelTime();
 				// Copy derivates multipied with time step to dxdt
-				States().CopyDerivs(ModelTime(),dxdt,m_TimeStep.AsDays());
+				CopyDerivs(ModelTime(),dxdt,m_TimeStep.AsDays());
 				// Update time step with delta x
-				States() += dxdt;
+				AddValuesToStates(dxdt);
 				m_Time += m_TimeStep;
 				
 				return 1;
@@ -94,18 +90,11 @@ namespace cmf {
 			void AddStatesFromOwner(cmf::math::StateVariableOwner& stateOwner)
 			{
 				Integrator::AddStatesFromOwner(stateOwner);
-				dxdt0.resize(count());
-				dxdt1.resize(count());
-				old_states.resize(count());
+				dxdt0.resize(size());
+				dxdt1.resize(size());
+				old_states.resize(size());
 			}
 			real alpha;
-			/// Constructs a new PredictCorrectSimple from a pointer to a vector of state variables
-			/// @note The Integrator becomes the owner of states
-			/// @param states Statevariables of the system
-			/// @param Alpha Weight factor \f$\alpha\f$ to weight \f$f(y^n)\f$ and \f$f(y^{n+1})\f$
-			PredictCorrectSimple(const StateVariableVector& states, real Alpha)
-				: Integrator(states,1e-9,Time::Seconds()), alpha(Alpha)
-			{}
 			/// Constructs a new PredictCorrectSimple from a pointer to a vector of state variables
 			/// @note The Integrator becomes the owner of states
 			/// @param states Statevariable owner of the system
@@ -135,24 +124,24 @@ namespace cmf {
 				m_TimeStep=TimeStep;
 				if (m_TimeStep>MaxTime-ModelTime())
 					m_TimeStep=MaxTime-ModelTime();
-				States().CopyStates(old_states);
+				CopyStates(old_states);
 				// get f(y^n)dt
-				States().CopyDerivs(ModelTime(),dxdt0,m_TimeStep.AsDays());
+				CopyDerivs(ModelTime(),dxdt0,m_TimeStep.AsDays());
 				// Update time step with delta x
-				States() += dxdt0;
+				AddValuesToStates(dxdt0);
 				if (alpha>0)
 				{
 					// get f(y^n+1)dt
-					States().CopyDerivs(ModelTime(),dxdt1,m_TimeStep.AsDays() * alpha);
+					CopyDerivs(ModelTime(),dxdt1,m_TimeStep.AsDays() * alpha);
 					// reset states to y^n
-					States().SetStates(old_states);
+					SetStates(old_states);
 					// update states to y^n+1
 					if (alpha<1) 
 					{
 						dxdt0 *= (1-alpha);
-						States()+=dxdt0;
+						AddValuesToStates(dxdt0);
 					}
-					States() +=dxdt1;
+					AddValuesToStates(dxdt1);
 				}
 				m_Time += m_TimeStep;
 

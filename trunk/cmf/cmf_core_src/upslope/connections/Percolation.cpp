@@ -38,11 +38,12 @@ real cmf::upslope::connections::Richards::calc_q( cmf::math::Time t )
 	real
 		distance = l2 ? 
 		fabs((l1->get_upper_boundary()-l2->get_upper_boundary())*0.5+(l1->get_lower_boundary()-l2->get_lower_boundary())*0.5)
-		: l1->Location.distanceTo(right_node()->Location),
+		: l1->Location.distance3DTo(right_node()->Location),
 		Psi_t1=l1->get_potential(),
 		Psi_t2=right_node()->get_potential(),
 		gradient=(Psi_t1-Psi_t2)/distance,
 		K=0.0;
+	if (distance == 0.0) distance = l1->get_thickness();
 	//K=gradient<0 && l2 ? l2->K() : l1->K();      
 	if (l2)
 		K = geo_mean(l1->get_K(),l2->get_K());

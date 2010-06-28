@@ -51,7 +51,8 @@ cmf::upslope::SoilLayer::SoilLayer( cmf::upslope::Cell & _cell,real lowerboundar
 	cell(_cell),
 	m_retentioncurve(r_curve.copy()),
 	m_lowerboundary(lowerboundary),
-	Position(_cell.layer_count())
+	Position(_cell.layer_count()), 
+	m_ice_fraction(0.0)
 
 {
 	// Get the location from the layer
@@ -68,7 +69,7 @@ cmf::upslope::SoilLayer::SoilLayer( cmf::upslope::Cell & _cell,real lowerboundar
 // protected constructor
 cmf::upslope::SoilLayer::SoilLayer( cmf::upslope::Cell & _cell,real upperBoundary,real lowerboundary,const RetentionCurve& r_curve,int _Position ) 
 : cmf::water::WaterStorage(_cell.get_project()),cell(_cell),m_retentioncurve(r_curve.copy()),
-m_lowerboundary(lowerboundary),m_upperboundary(upperBoundary),Position(_Position)
+m_lowerboundary(lowerboundary),m_upperboundary(upperBoundary),Position(_Position), 	m_ice_fraction(0.0)
 {
 	Location=cmf::geometry::point(_cell.x,_cell.y,_cell.z - lowerboundary);
 	if (m_lowerboundary-m_upperboundary<=0)
@@ -105,7 +106,8 @@ real cmf::upslope::SoilLayer::get_saturated_depth() const
 
 void cmf::upslope::SoilLayer::StateChangeAction()
 {
-	m_wet.C=get_soil().VoidVolume(get_upper_boundary(),get_lower_boundary(),cell.get_area());
+	cmf::upslope::RetentionCurve& s = get_soil();
+	m_wet.C = s.VoidVolume(get_upper_boundary(),get_lower_boundary(),cell.get_area());
 	if (get_state_variable_content()=='h') {
 		m_wet.V = head_to_volume(this->get_state());
 		m_wet.h = this->get_state();
@@ -113,11 +115,11 @@ void cmf::upslope::SoilLayer::StateChangeAction()
 		m_wet.V = this->get_state();
 		m_wet.h = volume_to_head(this->get_state());
 	}
+	m_wet.theta=std::max(m_wet.V,0.)/(cell.get_area()*get_thickness()) * (1 - m_ice_fraction);
 	m_wet.W=std::max(m_wet.V,0.)/m_wet.C;
-	m_wet.theta=std::max(m_wet.V,0.)/(cell.get_area()*get_thickness());
 	m_wet.Psi_m = m_wet.h - get_gravitational_potential();
-	m_wet.Ksat=get_soil().K(1,0.5*(get_upper_boundary()+get_lower_boundary()));
-	m_wet.K=get_soil().K(m_wet.W,0.5*(get_upper_boundary()+get_lower_boundary()));
+	m_wet.Ksat = s.K(1-m_ice_fraction);
+	m_wet.K    = s.K(m_wet.W) / s.K(1) * m_wet.Ksat;
 	cell.InvalidateSatDepth();
 }
 
