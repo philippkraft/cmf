@@ -52,7 +52,7 @@ int cmf::math::CVodeIntegrator::f( realtype t, N_Vector u, N_Vector udot, void *
 
 void cmf::math::CVodeIntegrator::ReInit(Time initdt, real epsilon)
 {
-	if (epsilon=0) epsilon=Epsilon;
+	if (epsilon==0) epsilon=Epsilon;
 	CVodeReInit(cvode_mem,ModelTime().AsDays(),m_y);
 	CVodeSetInitStep(cvode_mem,initdt.AsDays());
 }

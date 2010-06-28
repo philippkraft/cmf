@@ -22,7 +22,7 @@
 #include "cell.h"
 #include "../math/num_array.h"
 #include "../atmosphere/meteorology.h"
-#include "../math/StateVariable.h"
+#include "../math/statevariable.h"
 #include "../geometry/geometry.h"
 #include "cell_vector.h"
 namespace cmf {
