@@ -2,10 +2,12 @@
 #define cell_vector_h__
 
 #include <set>
-#include "../math/StateVariable.h"
+#include "../math/statevariable.h"
 namespace cmf {
 	namespace upslope {
 		class Cell;
+		class cell_iterator;
+		class cell_const_iterator;
 		class cell_vector : public cmf::math::StateVariableOwner {
 		private:
 			typedef std::vector<cmf::upslope::Cell*> cellvec;
@@ -30,9 +32,9 @@ namespace cmf {
 			cell_vector get_slice(int start,int end,int step) ;
 
 #ifndef SWIG
-			cell_vector(cell_const_iterator first,cell_const_iterator last);
 			typedef cell_iterator iterator;
 			typedef cell_const_iterator const_iterator;
+			cell_vector(cell_const_iterator first,cell_const_iterator last);
 			cell_iterator begin();
 			cell_iterator end();
 			cellvec::iterator ptr_begin() {return m_cells.begin();}
@@ -61,6 +63,7 @@ namespace cmf {
 				: current(copy.current)	{}
 			cell_iterator& operator=(const cell_iterator& copy) {
 				current = copy.current;
+				return *this;
 			}
 			iterator as_iterator() { return current;}
 			cmf::upslope::Cell& operator*() const {
@@ -88,6 +91,7 @@ namespace cmf {
 			cell_iterator operator+(int pos) {
 				cell_iterator res=*this;
 				res+=pos;
+				return res;
 			}
 			void operator--() {
 				--current;
@@ -106,6 +110,7 @@ namespace cmf {
 			cell_iterator operator-(int pos) {
 				cell_iterator res=*this;
 				res-=pos;
+				return res;
 			}
 			int operator-(cell_iterator b) {
 				return current - b.current;
@@ -133,6 +138,7 @@ namespace cmf {
 				: current(copy.current) {}
 			cell_const_iterator& operator=(const cell_const_iterator& copy) {
 				current = copy.current;
+				return *this;
 			}
 			const_iterator as_iterator() { return current;}
 
@@ -160,6 +166,7 @@ namespace cmf {
 			cell_const_iterator operator+(int pos) {
 				cell_const_iterator res=*this;
 				res+=pos;
+				return res;
 			}
 			void operator--() {
 				--current;
@@ -178,6 +185,7 @@ namespace cmf {
 			cell_const_iterator operator-(int pos) {
 				cell_const_iterator res=*this;
 				res-=pos;
+				return res;
 			}
 			int operator-(cell_const_iterator b) {
 				return current - b.current;

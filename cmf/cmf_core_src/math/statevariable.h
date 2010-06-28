@@ -132,7 +132,7 @@ namespace cmf {
 					push(food.pop());
 			}
 			operator bool() const {return m_queue.size()>0;}
-			state_queue& operator +=(state_queue& food) {
+			state_queue& operator +=(const state_queue& food) {
 				m_queue.insert(m_queue.end(),food.m_queue.begin(),food.m_queue.end());
 				return *this;
 			}

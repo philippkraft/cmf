@@ -266,7 +266,7 @@ cmf::upslope::subcatchment::subcatchment(Cell& pourpoint_cell,double area_thresh
 		Cell* cell = to_do.front();
 
 		// for each neighbor of cell
-		for (neighbor_iterator neighbor=*cell; neighbor.valid(); ++neighbor)
+		for (neighbor_iterator neighbor(*cell); neighbor.valid(); ++neighbor)
 		{
 			// if cell is mainoutlet of cell
 			if (neighbor->MainOutlet() == cell) {
