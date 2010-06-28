@@ -67,9 +67,10 @@
 %include "water/SoluteStorage.h"
 
 // flux_connection and Node
+
+
 namespace cmf{namespace water {class flux_connection;}}
-%template(connection_vector) std::vector<cmf::water::flux_connection* >;
-%template(connection_set) std::set<cmf::water::flux_connection* >;
+
 %node_downcast_all(cmf::water::flux_node::ptr cmf::water::flux_connection::get_target)
 %node_downcast_all(cmf::water::flux_node::ptr cmf::water::node_list::get)
 
@@ -81,6 +82,20 @@ namespace cmf{namespace water {class flux_connection;}}
 %pythonappend cmf::water::flux_connection::flux_connection{
     self.thisown=0
 }
+
+%typemap(out) cmf::water::connection_vector* {
+  // %typemap(out) cmf::water::connection_vector {
+  $result = PyList_New($1->size());
+  for (Py_ssize_t i = 0; i <Py_ssize_t($1->size()); ++i) {
+    cmf::water::flux_connection* item = (*$1)[i].get();
+    PyObject* py_item = SWIG_NewPointerObj(item,$descriptor(cmf::water::flux_connection*),0);
+    PyList_SetItem($result,i,py_item);
+  }
+  delete $1;
+}
+
+
+
 %include "water/flux_node.h"
 %include "water/flux_connection.h"
 %extend cmf::water::flux_connection { %pythoncode {
@@ -106,6 +121,7 @@ namespace cmf{namespace water {class flux_connection;}}
   }
 }
 
+
 %include "water/boundary_condition.h"
 %extent cmf::water::DricheletBoundary {  %pythoncode {
     def __repr__(self): return self.to_string()
@@ -119,7 +135,6 @@ namespace cmf{namespace water {class flux_connection;}}
 %attribute(cmf::water::WaterStorage,real,volume,get_volume,set_volume);
 %attribute(cmf::water::WaterStorage,char,statevariable,get_state_variable_content,set_state_variable_content);
 %include "water/WaterStorage.h"
-%template(storage_vector) std::vector<cmf::water::WaterStorage::ptr>;
 %include "water/collections.i"
 
 // Add some function for down casting

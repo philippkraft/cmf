@@ -40,7 +40,7 @@ double cmf::atmosphere::Weather::Rn( double albedo,bool daily/*=false*/ ) const
 		// Blackbody radiation
 		sigmaT= daily ?	
 		4.903e-9*(pow(Tmax+273.16,4)+pow(Tmin+273.16,4))/2
-		:	4.903e-9*pow(T+273.16,4),
+		:	4.903e-9*pow(Tground+273.16,4),
 
 		// Long wave radiation is reflected by vapor
 		emissivity=0.34-0.14*sqrt(e_a),      
@@ -61,6 +61,7 @@ cmf::atmosphere::Weather& cmf::atmosphere::Weather::operator+=( const Weather& w
 	e_s+=w.e_s;
 	sunshine+=w.sunshine;
 	Rs+=w.Rs;
+	daylength+=w.daylength;
 	instrument_height+=w.instrument_height;
 	return *this;
 }
@@ -76,6 +77,7 @@ cmf::atmosphere::Weather& cmf::atmosphere::Weather::operator*=( double factor )
 	e_s*=factor;
 	sunshine*=factor;
 	Rs*=factor;
+	daylength*=factor;
 	instrument_height*=factor;
 	return *this;
 }

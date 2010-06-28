@@ -32,8 +32,7 @@ cmf::project::project(std::string solutenames) :	debug(false), solutes(solutenam
 cmf::project::~project()
 {
 	for(cmf::upslope::cell_vector::iterator it = m_cells.begin(); it != m_cells.end(); ++it)
-		delete *it;
-	m_cells.clear();
+		delete it.ptr();
 }
 
 
@@ -47,27 +46,6 @@ cmf::river::Reach::ptr cmf::project::NewReach( double x,double y, double z, doub
 	return m_reaches.back();
 }
 
-void cmf::project::AddStateVariables( cmf::math::StateVariableVector& vector )
-{
-	using namespace cmf::upslope;
-	using namespace cmf::river;
-
-	std::map<Cell*, Reach::ptr> reaches;
-	for(std::vector<cmf::river::Reach::ptr>::iterator r_it = m_reaches.begin(); r_it != m_reaches.end(); ++r_it)
-	{
-		cmf::river::Reach::ptr reach=*r_it;
-		reach->AddStateVariables(vector);
-	}
-
-	for(cmf::upslope::cell_vector::iterator it = m_cells.begin(); it != m_cells.end(); ++it)
-	{
-		for (int i = 0; i < (**it).layer_count() ; ++i)
-			(**it).get_layer(i)->AddStateVariables(vector);
-		for (int i = 0; i < (**it).storage_count() ; ++i)
-			(**it).get_storage(i)->AddStateVariables(vector);
-	}
-
-}
 cmf::river::Reach::ptr cmf::project::get_reach( int index )
 {
 	return m_reaches.at(index<0 ? index + m_reaches.size() : index);
@@ -88,12 +66,12 @@ cmf::water::node_list cmf::project::get_storages()
 
 	for(cmf::upslope::cell_vector::iterator it = m_cells.begin(); it != m_cells.end(); ++it)
 	{
-		for (int i = 0; i < (**it).layer_count() ; ++i)
-			res.append((**it).get_layer(i));
-		for (int i = 0; i < (**it).storage_count() ; ++i)
-			res.append((**it).get_storage(i));
-		if (reaches.find(*it)!=reaches.end())
-			res.append(reaches[*it]);
+		for (int i = 0; i < it->layer_count() ; ++i)
+			res.append(it->get_layer(i));
+		for (int i = 0; i < it->storage_count() ; ++i)
+			res.append(it->get_storage(i));
+		if (reaches.find(it)!=reaches.end())
+			res.append(reaches[it]);
 	}
 	return res;
 
@@ -112,8 +90,8 @@ void cmf::project::use_IDW_meteo( double z_weight/*=0*/,double power/*=2*/ )
 {
 	for(upslope::cell_vector::iterator it = m_cells.begin(); it != m_cells.end(); ++it)
 	{
-		cmf::atmosphere::IDW_Meteorology meteo(**it,this->meteo_stations,z_weight,power);
-		(**it).set_meteorology(meteo);
+		cmf::atmosphere::IDW_Meteorology meteo(*it,this->meteo_stations,z_weight,power);
+		it->set_meteorology(meteo);
 	}
 }
 
@@ -121,7 +99,7 @@ void cmf::project::use_nearest_meteo( double z_weight/*=0*/ )
 {
 	for(upslope::cell_vector::iterator it = m_cells.begin(); it != m_cells.end(); ++it)
 	{	
-		(**it).set_meteorology(this->meteo_stations.reference_to_nearest(**it,z_weight));
+		it->set_meteorology(this->meteo_stations.reference_to_nearest(*it,z_weight));
 	}
 
 }
@@ -130,13 +108,27 @@ void cmf::project::use_IDW_rainfall( double z_weight/*=0*/,double power/*=2*/ )
 {
 	for(upslope::cell_vector::iterator it = m_cells.begin(); it != m_cells.end(); ++it)
 	{
-		cmf::atmosphere::IDWRainfall::ptr rs = cmf::atmosphere::IDWRainfall::create(*this,(**it).get_position(),z_weight,power);
-		(**it).set_rain_source(rs);
+		cmf::atmosphere::IDWRainfall::ptr rs = cmf::atmosphere::IDWRainfall::create(*this,it->get_position(),z_weight,power);
+		it->set_rain_source(rs);
 	}
 }
 
 void cmf::project::use_nearest_rainfall( double z_weight/*=0*/ )
 {
 	for(upslope::cell_vector::iterator it = m_cells.begin(); it != m_cells.end(); ++it)
-		(**it).set_rain_source(cmf::atmosphere::RainfallStationReference::from_nearest_station(*this,(**it).get_position(),z_weight));
+		it->set_rain_source(cmf::atmosphere::RainfallStationReference::from_nearest_station(*this,it->get_position(),z_weight));
+}
+
+cmf::math::state_queue cmf::project::get_states()
+{
+	cmf::math::state_queue q;
+	using namespace cmf::upslope;
+	using namespace cmf::river;
+
+	for(std::vector<cmf::river::Reach::ptr>::iterator r_it = m_reaches.begin(); r_it != m_reaches.end(); ++r_it)
+		q.push(**r_it);
+
+	for(cmf::upslope::cell_vector::iterator it = m_cells.begin(); it != m_cells.end(); ++it)
+		q.push(*it);
+	return q;
 }

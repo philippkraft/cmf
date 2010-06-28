@@ -57,7 +57,9 @@ namespace cmf {
 				e_s,				///< Saturated vapor pressure in \f$e_s [kPa]\f$
 				sunshine,		///< Fractional sunshine duration (per potential sunshine duration) \f$\frac n N\ [-]\f$
 				Rs,					///< Global Radiation in \f$R_s \left[\frac{MJ}{m^2 day}\right]\f$
+				daylength,
 				instrument_height; ///< Height of the measuring instuments above the vegetation
+
 			/** Calculates the net radiation flux  \f$R_n \left[\frac{MJ}{m^2 day}\right]\f$
 			
 			\f{eqnarray*}
@@ -92,9 +94,9 @@ namespace cmf {
 			/// @param _wind     actual wind speed in m/s
 			/// @param _sunshine actual fraction of sunshine duration per potential sunshine duration in h/h
 			/// @param _Rs       actual incoming shortwave global radiation in MJ/(m2 day)
-			Weather(double _T,double _Tmax,double _Tmin, double _rH, double _wind=2,double _sunshine=0.5,double  _Rs=15)
+			Weather(double _T,double _Tmax,double _Tmin, double _rH, double _wind=2,double _sunshine=0.5,double  _Rs=15, double _daylength=12)
 				: T(_T), Tmax(_Tmax), Tmin(_Tmin), Tground(_T),e_s(vapour_pressure(_T)),e_a(_rH/100. * vapour_pressure(_T)),
-				Windspeed(_wind),sunshine(_sunshine),Rs(_Rs) {}
+				Windspeed(_wind),sunshine(_sunshine),Rs(_Rs),daylength(_daylength) {}
 			std::string to_string() const
 			{
 				std::stringstream sstr;
@@ -478,6 +480,15 @@ namespace cmf {
 			}
 			virtual real get_instrument_height() const;
 		};
+		
+		/// Abstract class. Child classes can be used to calculate aerodynamic resistances against turbulent heat fluxes
+		class aerodynamic_resistance {
+		public:
+			/// aerodynamic resistance from ground to atmosphere (r_ag) and from canopy to atmosphere (r_ac)
+			virtual void get_aerodynamic_resistance(double & r_ag,double & r_ac, cmf::math::Time t) const=0;
+			typedef std::tr1::shared_ptr<aerodynamic_resistance> ptr;
+		};
+
 
 	}	
 }

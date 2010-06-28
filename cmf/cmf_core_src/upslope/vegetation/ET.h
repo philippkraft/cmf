@@ -23,13 +23,155 @@
 #include "../../reach/OpenWaterStorage.h"
 #include "../SoilLayer.h"
 #include "../Soil/RetentionCurve.h"
-#include "ShuttleworthWallace.h"
+#include "../cell.h"
+/// @defgroup ET Evapotranspiration
+/// @ingroup connections
+
+
 namespace cmf {
+	namespace atmosphere {
+		/// @ingroup meteo, ET
+		/// A logarithmic wind profile
+		/// @todo Cite literature for this windprofile and insert equation
+		class log_wind_profile : public aerodynamic_resistance {
+		private:
+			cmf::upslope::Cell& cell;
+		public:
+			log_wind_profile(cmf::upslope::Cell& _cell) 
+				: cell(_cell)
+			{}
+			virtual void get_aerodynamic_resistance(double & r_ag,double & r_ac, cmf::math::Time t) const;
+
+		};
+		
+	}
 	namespace upslope {
+		/// @ingroup ET
 		/// Contains different flux_connection classes for the description of evaporation and transpiration
 		namespace ET {
-			/// @defgroup ET Evapotranspiration
-			/// @ingroup connections
+			/// Abstract class. Child classes are defining a method for transpiration calculation
+			class transpiration_method {
+			public:
+				/// returns the transpiration rate from one layer in m3/day
+				virtual double transp_from_layer(cmf::upslope::SoilLayer::ptr,cmf::math::Time t) =0;
+			};
+
+			/// Abstract class. Child classes are defining a method for soil evaporation calculation
+			class soil_evaporation_method {
+			public:
+				/// returns the soil evaporation rate from one layer in m3/day
+				virtual double evap_from_layer(cmf::upslope::SoilLayer::ptr,cmf::math::Time t) =0;
+			};
+			/// Abstract class. Child classes are defining a method for surface water evaporation calculation
+			class surface_water_evaporation_method {
+			public:
+				virtual double evap_from_openwater(cmf::river::OpenWaterStorage::ptr,cmf::math::Time) =0;
+			};
+			/// Abstract class. Child classes are defining a method for intercepted canopy water evaporation calculation
+			class canopy_evaporation_method {
+			public:
+				virtual double evap_from_canopy(cmf::water::WaterStorage::ptr,cmf::math::Time) =0;
+			};
+			/// Abstract class. Child classes are defining a method for snow evaporation calculation
+			class snow_evaporation_method {
+			public:
+				virtual double evap_from_snow(cmf::water::WaterStorage::ptr snow, cmf::math::Time t)=0;
+			};
+
+
+
+			/// Flux connection using a transpiration_method
+			class transpiration : public cmf::water::flux_connection {
+			protected:
+				std::tr1::weak_ptr<cmf::upslope::SoilLayer> sw;
+				std::tr1::shared_ptr<transpiration_method> Method;
+				real calc_q(cmf::math::Time t) {
+					return Method->transp_from_layer(sw.lock(),t);
+				}
+				void NewNodes()
+				{
+					sw=cmf::upslope::SoilLayer::cast(left_node());
+				}
+			public:
+				transpiration(cmf::upslope::SoilLayer::ptr source,cmf::water::flux_node::ptr ET_target, std::tr1::shared_ptr<transpiration_method> _method, std::string method_name) 
+					: flux_connection(source,ET_target,"Transpiration using " + method_name),sw(source), Method(_method) {
+						NewNodes();
+				}
+			};
+			/// Flux_connection using a soil_evaporation_method
+			class soil_evaporation : public cmf::water::flux_connection {
+			protected:
+				std::tr1::weak_ptr<cmf::upslope::SoilLayer> sw;
+				std::tr1::shared_ptr<soil_evaporation_method> Method;
+				real calc_q(cmf::math::Time t) {
+					return Method->evap_from_layer(sw.lock(),t);
+				}
+				void NewNodes()
+				{
+					sw=cmf::upslope::SoilLayer::cast(left_node());
+				}
+			public:
+				soil_evaporation(cmf::upslope::SoilLayer::ptr source,cmf::water::flux_node::ptr ET_target, std::tr1::shared_ptr<soil_evaporation_method> _method, std::string method_name) 
+					: flux_connection(source,ET_target,"Soil evaporation using " + method_name),sw(source), Method(_method) {
+						NewNodes();
+				}
+			};
+			/// Flux connection using a canopy_evaporation_method
+			class canopy_evaporation : public cmf::water::flux_connection {
+			protected:
+				std::tr1::weak_ptr<cmf::water::WaterStorage> canopy;
+				std::tr1::shared_ptr<canopy_evaporation_method> Method;
+				real calc_q(cmf::math::Time t) {
+					return Method->evap_from_canopy(canopy.lock(),t);
+				}
+				void NewNodes()
+				{
+					canopy=cmf::water::WaterStorage::cast(left_node());
+				}
+			public:
+				canopy_evaporation(cmf::water::WaterStorage::ptr source,cmf::water::flux_node::ptr ET_target, std::tr1::shared_ptr<canopy_evaporation_method> _method, std::string method_name) 
+					: flux_connection(source,ET_target,"Canopy evaporation using " + method_name),canopy(source), Method(_method) {
+						NewNodes();
+				}
+			};
+
+			/// Flux connection using a snow_evaporation_method
+			class snow_evaporation : public cmf::water::flux_connection {
+			protected:
+				std::tr1::weak_ptr<cmf::water::WaterStorage> snow;
+				std::tr1::shared_ptr<snow_evaporation_method> Method;
+				real calc_q(cmf::math::Time t) {
+					return Method->evap_from_snow(snow.lock(),t);
+				}
+				void NewNodes()
+				{
+					snow=cmf::water::WaterStorage::cast(left_node());
+				}
+			public:
+				snow_evaporation(cmf::water::WaterStorage::ptr source,cmf::water::flux_node::ptr ET_target, std::tr1::shared_ptr<snow_evaporation_method> _method, std::string method_name) 
+					: flux_connection(source,ET_target,"Snow evaporation using " + method_name),snow(source), Method(_method) {
+						NewNodes();
+				}
+			};
+			/// Flux connection using an surface_water_evaporation_method
+			class surface_water_evaporation : public cmf::water::flux_connection {
+			protected:
+				std::tr1::weak_ptr<cmf::river::OpenWaterStorage> surface_water;
+				std::tr1::shared_ptr<surface_water_evaporation_method> Method;
+				real calc_q(cmf::math::Time t) {
+					return Method->evap_from_openwater(surface_water.lock(),t);
+				}
+				void NewNodes()
+				{
+					surface_water=cmf::river::OpenWaterStorage::cast(left_node());
+				}
+			public:
+				surface_water_evaporation(cmf::river::OpenWaterStorage::ptr source,cmf::water::flux_node::ptr ET_target, std::tr1::shared_ptr<surface_water_evaporation_method> _method, std::string method_name) 
+					: flux_connection(source,ET_target,"surface_water evaporation using " + method_name),surface_water(source), Method(_method) {
+						NewNodes();
+				}
+			};
+
 
 			/// Returns the potential ET after Penman-Monteith using some simplifications for a given Radiation balance, 
 			/// aerodynamic and surface resistances, and a vapor pressure deficit
@@ -124,30 +266,6 @@ namespace cmf {
 			};
 
 			/// @ingroup ET
-			/// Calculates the actual transpiration and the soil evaporation from a soil layer
-			class ShuttleworthWallaceET : public cmf::water::flux_connection {
-			protected:
-				std::tr1::weak_ptr<cmf::upslope::SoilLayer> m_SoilLayer;
-				std::tr1::weak_ptr<cmf::water::WaterStorage> m_waterstorage;
-				cmf::upslope::Cell& m_cell;
-				virtual real calc_q(cmf::math::Time t);
-				void NewNodes()
-				{
-					m_SoilLayer=cmf::upslope::SoilLayer::cast(left_node());
-					if (!m_SoilLayer.expired())
-						m_waterstorage= cmf::water::WaterStorage::cast(left_node());
-					else
-						m_waterstorage.reset();
-				}
-			public:
-				ShuttleworthWallaceET(cmf::water::WaterStorage::ptr source,cmf::water::flux_node::ptr ET_target,cmf::upslope::Cell& cell,std::string Type="Shuttleworth Wallace get_evaporation") 
-					: cmf::water::flux_connection(source,ET_target,Type),m_cell(cell) {
-						NewNodes();
-				}
-				static void use_for_cell(cmf::upslope::Cell& cell);
-
-			};
-			/// @ingroup ET
 			/// Calculates the Evapotranspiration using Hargreave's equation
 			///
 			/// @todo document Hargreave
@@ -171,7 +289,7 @@ namespace cmf {
 			/// Calculates the evaporation from a canopy storage
 			class CanopyStorageEvaporation : public cmf::water::flux_connection {
 			protected:
-				const cmf::upslope::Cell & m_cell;
+				cmf::upslope::Cell & m_cell;
 				std::tr1::weak_ptr<cmf::water::WaterStorage> c_stor;
 				virtual real calc_q(cmf::math::Time t);
 				void NewNodes()

@@ -30,8 +30,7 @@
 %include factory.i
 
 // Include typemaps for STL
-%include "stl.i"
-%include "std_set.i"
+%include "std_string.i"
 
 // enable exception support
 %include "exception.i"
@@ -109,7 +108,6 @@ SWIG_SHARED_PTR(flux_node,cmf::water::flux_node);
 %echo "time.i OK";
 
 %include "math/num_array.i"
-%echo "num_array.i OK";
 
 %include "math/ODEsystem.i"
 %echo "ODEsystem.i OK";
@@ -203,6 +201,7 @@ EXTENT__REPR__(cmf::atmosphere::IDWRainfall)
 	#include "upslope/connections/infiltration.h"
 	#include "upslope/connections/Percolation.h"
 	#include "upslope/vegetation/ET.h"
+	#include "upslope/vegetation/ShuttleworthWallace.h"
     #include "upslope/connections/HBVflow.h"
 	// Include river model
 	#include "reach/ManningConnection.h"
@@ -221,6 +220,7 @@ EXTENT__REPR__(cmf::atmosphere::IDWRainfall)
 %include "upslope/connections/Percolation.h"
 %include "upslope/connections/HBVflow.h"
 %include "upslope/vegetation/ET.h"
+%include "upslope/vegetation/ShuttleworthWallace.h"
 
 %pythoncode
 {

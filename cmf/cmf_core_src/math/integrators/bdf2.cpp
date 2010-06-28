@@ -25,16 +25,6 @@
 // Just a macro to compare two values
 #define min(a,b) (((a)<(b)) ? (a) : (b))
 
-// Creates a new Integrator w states
-cmf::math::BDF2::BDF2(const StateVariableVector& states, real epsilon/*=1e-9*/,cmf::math::Time tStepMin/*=Time::Seconds(10)*/ )
-: Integrator(states,epsilon,tStepMin),	compareStates(m_States.size()),	dxdt(m_States.size()),order(1),stepNo(0)
-{
-
-	// Assessing multistep functions
-	calc_newState[0] = &cmf::math::BDF2::Gear1newState; // impl. Euler
-	calc_newState[1] = &cmf::math::BDF2::Gear2newState; // 2nd order Gear
-
-}
 
 // Creates a new Integrator w/o states
 cmf::math::BDF2::BDF2( real epsilon/*=1e-9*/,cmf::math::Time tStepMin/*=Time::Seconds(10)*/) 
@@ -68,10 +58,10 @@ void cmf::math::BDF2::AddStatesFromOwner( cmf::math::StateVariableOwner& stateOw
 	// Call base class function
 	Integrator::AddStatesFromOwner(stateOwner);
 	// Resize helper vectors (convergence check,derivatives and history)
-	compareStates.resize(count());
-	dxdt.resize(count());
+	compareStates.resize(size());
+	dxdt.resize(size());
 	for (int i = 0; i < 2 ; i++)
-		pastStatesArray[i].resize(count());
+		pastStatesArray[i].resize(size());
 }
 
 
@@ -83,26 +73,26 @@ void cmf::math::BDF2::Gear1newState( real h )
 	if (use_OpenMP)
 	{
 #pragma omp parallel for private(state_i)
-		for (int i = 0; i < count() ; i++)
+		for (int i = 0; i < size() ; i++)
 		{
 			// The formula is written so ugly to avoid internal memory allocation
 			// x_n+1 = x_(n) + h dxdt
 			state_i  =       dxdt[i]; 
 			state_i *= h; 
 			state_i +=       pastStates(0)[i];
-			state(i, state_i);
+			set_state(i, state_i);
 		}
 	}
 	else
 	{
-		for (int i = 0; i < count() ; i++)
+		for (int i = 0; i < size() ; i++)
 		{
 			// The formula is written so ugly to avoid internal memory allocation
 			// x_n+1 = x_(n) + h dxdt
 			state_i  =       dxdt[i]; 
 			state_i *= h; 
 			state_i +=       pastStates(0)[i];
-			state(i, state_i);
+			set_state(i, state_i);
 		}
 
 	}
@@ -122,7 +112,7 @@ void cmf::math::BDF2::Gear2newState(real h)
 	if (use_OpenMP)
 	{
 	#pragma omp parallel for private(state_i)
-		for (int i = 0; i < count() ; i++)
+		for (int i = 0; i < size() ; i++)
 		{
 			// The formula is written so ugly to avoid internal memory allocation
 			// x_(n+1) = (p+1)�x_(n) - p�x_(n-1) + h (p+1) dxdt
@@ -131,12 +121,12 @@ void cmf::math::BDF2::Gear2newState(real h)
 			state_i += p1_2 * pastStates(0)[i];
 			state_i -= p_2  * pastStates(1)[i];
 			state_i /= 1.0 + 2.0*p;
-			state(i, state_i);
+			set_state(i, state_i);
 		}
 	}
 	else
 	{
-		for (int i = 0; i < count() ; i++)
+		for (int i = 0; i < size() ; i++)
 		{
 			// The formula is written so ugly to avoid internal memory allocation
 			// x_(n+1) = (p+1)�x_(n) - p�x_(n-1) + h (p+1) dxdt
@@ -145,7 +135,7 @@ void cmf::math::BDF2::Gear2newState(real h)
 			state_i += p1_2 * pastStates(0)[i];
 			state_i -= p_2  * pastStates(1)[i];
 			state_i /= 1.0 + 2.0*p;
-			state(i, state_i);
+			set_state(i, state_i);
 		}
 	}
 
@@ -165,7 +155,7 @@ int cmf::math::BDF2::Integrate( cmf::math::Time MaxTime,cmf::math::Time timestep
 	}
 
 	// Copies the actual states to the history as x_(n)
-	States().CopyStates(pastStates(0));
+	CopyStates(pastStates(0));
 	// Count the iterations
 	int iter=0;
 	real old_err_ex=REAL_MAX;
@@ -174,9 +164,9 @@ int cmf::math::BDF2::Integrate( cmf::math::Time MaxTime,cmf::math::Time timestep
 	do 
 	{
 		// Remember the current state for convergence criterion
-		States().CopyStates(compareStates);
+		CopyStates(compareStates);
 		// Get derivatives at t(n+1)
-		States().CopyDerivs(this->ModelTime() + h,dxdt);
+		CopyDerivs(this->ModelTime() + h,dxdt);
 		// Updates the state variables with the new states, according to the current order
 		(this->*(calc_newState[order-1]))(h.AsDays());
 
@@ -204,7 +194,7 @@ int cmf::math::BDF2::Integrate( cmf::math::Time MaxTime,cmf::math::Time timestep
 					h=MinTimestep();
 					std::cerr << "No convergence! Time=" << ModelTime().AsDate().to_string() << " Euler step taken for " << h.to_string() << std::endl;
 					dxdt*=h.AsDays(); 
-					States() += dxdt;
+					AddValuesToStates(dxdt);
 					order=1;
 					break;
 				}
@@ -215,7 +205,7 @@ int cmf::math::BDF2::Integrate( cmf::math::Time MaxTime,cmf::math::Time timestep
 				}
 			}
 			// Restore states
-			States().SetStates(pastStates(0));
+			SetStates(pastStates(0));
 
 			iter=0;
 			err_ex=REAL_MAX/2;

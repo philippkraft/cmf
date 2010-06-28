@@ -72,7 +72,7 @@ cmf::atmosphere::RainfallStationReference::ptr cmf::atmosphere::RainfallStationR
 }
 
 cmf::atmosphere::RainfallStationReference::RainfallStationReference( const cmf::project& project, cmf::geometry::point position, RainfallStation::ptr station ) 
-	: RainSource(project,position)
+	: RainSource(project,position), m_station(station)
 {
 	Name = "Rainfall from " + station->name;
 }
@@ -93,7 +93,7 @@ std::string cmf::atmosphere::RainfallStation::tostring() const
 }
 
 cmf::atmosphere::RainfallStation::RainfallStation( const RainfallStation& copy ) 
-: id(copy.id), name(copy.name), data(copy.data), m_Position(copy.m_Position)
+: id(copy.id), name(copy.name), data(copy.data.copy()), m_Position(copy.m_Position)
 {
 
 }

@@ -35,14 +35,14 @@ namespace cmf {
 		double waterhead_to_pF(double waterhead);
 
 
+
 		/// Abstract base class for different types of retention curves
 		///
 		/// This class, and its children uses wetness instead of volumetric water content. The wetness of a soil is defined as water content per void volume
 		class RetentionCurve {
-
 		public:
 			/// Returns the conductivity in m/day at a certain depth and water content
-			virtual real K(real wetness,real depth) const = 0;
+			virtual real K(real wetness) const = 0;
 			/// Returns the effective wetness, using a residual pF value
 			/// \f[w_{eff}  = \frac{w_{act}-w\left(pF_r\right)}{1-w\left(pF_r\right)}\f]
 			virtual real Wetness_eff(real wetness,real pF_r=4.2) const
@@ -59,10 +59,6 @@ namespace cmf {
 			/// Returns the thickness of a soil column with a certain pore volume
 			virtual real FillHeight(real lowerDepth,real Area,real Volume) const {
 				throw std::runtime_error("This retention curve type can't calculate the FillHeight, choose another type");
-			};
-			/// Returns the transmissivity of a part of a soil column
-			virtual real Transmissivity(real upperDepth,real lowerDepth,real wetness) const {
-				throw std::runtime_error("This retention curve type can't calculate the Transmissivity, choose another type");
 			};
 			/// returns the wetness (volumetric water content per pore space) at a given suction pressure
 			virtual real Wetness(real suction) const {
@@ -97,21 +93,13 @@ namespace cmf {
 		class BrooksCoreyRetentionCurve : public RetentionCurve
 		{
 		private:
-			real m_Ksat;
-			real m_KsatDecay;
-		public:
-			virtual real K(real wetness,real depth) const;
-			void SetKsat(real ksat,real ksat_decay)
-			{
-				m_Ksat=ksat;
-				m_KsatDecay=ksat_decay;
-			}
-		private:
 			real m_Porosity;
 			real m_PorosityDecay;
 			real m_m,m_Wi,m_Psi_i,m_n,m_b;
 			void Set_Saturated_pF_curve_tail_parameters();
 		public:
+			real Ksat;
+			virtual real K(real wetness) const;
 			/// real (Porosity)
 			real Porosity(real depth) const;
 			/// Sets the porosity (Volume of pores per volume of soil) and the exponential porosity decline with depth
@@ -143,9 +131,8 @@ namespace cmf {
 			/// @param _b Shape of the retention curve (if you do not know how to parameterize this, take a look at the other constructor)
 			/// @param theta_x \f$\theta_X\f$ Water content at a specific suction pressure
 			/// @param psi_x Suction pressure for \f$\theta_X\f$ in m water column, use the conversion functions pF_to_waterhead, pressure_to_waterhead to convert pressure in to waterhead height (default pF=2.5)
-			/// @param ksat_decay Relative decay of conductivity with depth, e.g. 0.1 means conductivity gets 10% smaller per meter
 			/// @param porosity_decay Relative decay of porosity with depth, e.g. 0.1 means conductivity gets 10% smaller per meter
-			BrooksCoreyRetentionCurve(real ksat=15,real porosity=0.5,real _b=5,real theta_x=0.2,real psi_x=pF_to_waterhead(2.5),real ksat_decay=0,real porosity_decay=0);
+			BrooksCoreyRetentionCurve(real ksat=15,real porosity=0.5,real _b=5,real theta_x=0.2,real psi_x=pF_to_waterhead(2.5),real porosity_decay=0);
 
 			/// Creates a soiltype from two known points of the retention curve (e.g. fieldcapacity and wilting point)
 			/// @param ksat Saturated conductivity \f$\frac{m}{day}\f$
@@ -160,7 +147,7 @@ namespace cmf {
 			static BrooksCoreyRetentionCurve CreateFrom2Points(real ksat,real porosity,real theta1,real theta2,real psi_1=pF_to_waterhead(2.5),real psi_2=pF_to_waterhead(4.2));
 			virtual BrooksCoreyRetentionCurve* copy() const
 			{
-				return new BrooksCoreyRetentionCurve(m_Ksat,m_Porosity,b(),wetness_X*m_Porosity,Psi_X,m_KsatDecay,m_PorosityDecay);
+				return new BrooksCoreyRetentionCurve(Ksat,m_Porosity,b(),wetness_X*m_Porosity,Psi_X,m_PorosityDecay);
 			}
 		};
 		
@@ -190,7 +177,7 @@ namespace cmf {
 			/// \f[\Psi(W) = 0.01 \frac{m}{cm} \frac{{\left(1-{W}^{\frac{1}{m}}\right) }^{\frac{1}{n}}}{\alpha\,{W}^{\frac{1}{m\,n}}}  \f]
 			virtual real MatricPotential(real wetness) const;
 			/// \f[K(W) = K_{sat} \sqrt{W} \left(\left(1-w^{1/m}\right)^m\right)^2 \f]
-			virtual real K(real wetness,real depth) const;
+			virtual real K(real wetness) const;
 			/// \f[V_{void}=A\,\left(d_{lower}-d_{upper}\right)\f]
 			virtual real VoidVolume(real upperDepth,real lowerDepth,real Area) const;
 			/// \f[T=K(W)\,\left(d_{lower}-d_{upper}\right)\f]
@@ -213,7 +200,7 @@ namespace cmf {
 		/// The linear retention curve provides a simple linear relationship between storage and head
 		/// 
 		/// Head function (head in m, calculated from upper side control volume)
-		/// \f[ h(\theta) = -\Delta z \left( 1 - \frac{\theta - \theta_r}{\Phi - \theta_r} \right) \f]
+		/// \f[ h(\theta) = -\Delta z \left( 1 - \frac{\theta - \theta_r}{\theta_s - \theta_r} \right) \f]
 		/// Conductivity function
 		/// \f[ K(\theta) = K_{sat}  \left(\frac{\theta - \theta_r}{\theta_s - \theta_r}\right)^\beta	\f]
 		class LinearRetention : public RetentionCurve
@@ -226,13 +213,13 @@ namespace cmf {
 				residual_wetness; ///< Residual wetness \f$ \frac{\theta_r}{\Phi}, where K(\theta_r) = 0 \f$
 			real
 				porosity_decay,		///< Depth dependent decay of porosity in fraction/m. 0.1 means a decay of 10% per meter depth
-				Ksat_decay;		///< Depth dependent decay of Ksat in fraction/m. 0.1 means a decay of 10% per meter depth
+				beta;				///< Power Law Constant. 
 			/// Returns the potential below upper side of the control volume in m
 			virtual real MatricPotential(real wetness) const;
 			/// Returns the wetness (water content per pore volume) at a given head
 			virtual real Wetness(real suction) const;
 			
-			virtual real K(real wetness,real depth) const;
+			virtual real K(real wetness) const;
 			virtual real VoidVolume(real upperDepth,real lowerDepth,real Area) const;
 			virtual real Transmissivity(real upperDepth,real lowerDepth,real wetness) const;
 			virtual real Porosity(real depth) const;
@@ -243,8 +230,8 @@ namespace cmf {
 			{
 				 return new LinearRetention(*this);
 			}
-			LinearRetention(real _Ksat,real _Phi, real _thickness, real _beta=1.0,real _residual_wetness=0.0,real _ksat_decay=0.0, real _porosity_decay=0.0)
-				: Ksat(_Ksat),porosity(_Phi),thickness(_thickness),residual_wetness(_residual_wetness) , Ksat_decay(_ksat_decay), porosity_decay(_porosity_decay)
+			LinearRetention(real _Ksat,real _Phi, real _thickness)
+				: Ksat(_Ksat),porosity(_Phi),thickness(_thickness),residual_wetness(0.0) ,beta(1.0), porosity_decay(0.0)
 			{			}
 		};
 

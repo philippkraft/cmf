@@ -16,30 +16,30 @@
 //   You should have received a copy of the GNU General Public License
 //   along with cmf.  If not, see <http://www.gnu.org/licenses/>.
 //   
+
 #ifndef algorithm_h__
 #define algorithm_h__
 #include "cell.h"
 #include "../math/num_array.h"
 #include "../atmosphere/meteorology.h"
-
+#include "../math/StateVariable.h"
 #include "../geometry/geometry.h"
+#include "cell_vector.h"
 namespace cmf {
 	namespace upslope {
-		typedef const cell_vector&  cells_ref;
+		typedef cell_vector&  cells_ref;
 
 
 		/// Finds the nearest cell for a position
 		cmf::upslope::Cell* find_cell(cells_ref,cmf::geometry::point p,double max_dist=1e20);
 		/// Gets the outer cells of a network. Unstable! Might create an infinite loop
-		cmf::upslope::cell_vector get_boundary_cells(cmf::upslope::cells_ref cells);
+		cell_vector get_boundary_cells(cells_ref cells);
 		/// Gets all connections of a bunch of cells
 		cmf::water::connection_set get_connections(cells_ref cells);
 		/// Connects all adjacent cells with a flux connection, implementing the CellConnector protocol
 		void connect_cells_with_flux(cells_ref cells, const cmf::upslope::CellConnector& connect,int start_at_layer=0);
 		/// Fills the sinks in a network. Unstable! Might create an infinite loop
 		int fill_sinks(cells_ref cells,double min_difference=0.001);
-		/// Returns the total area of a cell collection
-		double area(cells_ref cells);
 		
 
 		cmf::geometry::point_vector cell_positions(cmf::upslope::cells_ref cells);

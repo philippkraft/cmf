@@ -14,7 +14,14 @@ using namespace cmf::water;
 	for (size_t i = offset; (i < size()) && (i < Values.size()+offset); ++i) \
 		m_layers[i]->setter(Values[i]); }
 
-CMF_LAYERLIST_ARRAY_GET( get_potential)
+//CMF_LAYERLIST_ARRAY_GET( get_potential)
+cmf::math::num_array layer_list::get_potential() const { 
+	cmf::math::num_array res(size()); 
+	for (size_t i = 0; i < size() ; ++i) 
+		res[i] = m_layers[i]->get_potential(); 
+	return res; 
+}
+
 CMF_LAYERLIST_ARRAY_GET( get_wetness)
 CMF_LAYERLIST_ARRAY_GET( get_matrix_potential)
 CMF_LAYERLIST_ARRAY_GET( get_porosity)
@@ -25,10 +32,12 @@ CMF_LAYERLIST_ARRAY_GET( get_K)
 CMF_LAYERLIST_ARRAY_GET( get_Ksat)
 CMF_LAYERLIST_ARRAY_GET( get_lower_boundary)
 CMF_LAYERLIST_ARRAY_GET( get_upper_boundary)
+CMF_LAYERLIST_ARRAY_GET( get_ice_fraction)
 
 CMF_LAYERLIST_ARRAY_SET( set_potential)
 CMF_LAYERLIST_ARRAY_SET( set_volume)
 CMF_LAYERLIST_ARRAY_SET( set_wetness)
+CMF_LAYERLIST_ARRAY_SET( set_ice_fraction)
 
 
 layer_list::layer_list(const cmf::water::node_list& for_copy) 
@@ -56,3 +65,4 @@ cmf::upslope::layer_list cmf::upslope::layer_list::get_slice( size_t first/*=0*/
 		res.append((*this)[i]);
 	return res;
 }
+

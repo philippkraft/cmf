@@ -32,14 +32,6 @@ void WaterStorage::initializeSoluteStorages(const solute_vector& solutes)
 	}
 }
 
-void WaterStorage::AddStateVariables( cmf::math::StateVariableVector& vector )
-{
-	vector.push_back(this);
-	for(SoluteStorageMap::const_iterator it = m_Concentrations.begin(); it != m_Concentrations.end(); ++it)
-	{
-	    vector.push_back(it->get());
-	}
-}
 
 WaterStorage::WaterStorage(const cmf::project& _project,double InitialState/*=0*/ ) 
 : cmf::math::StateVariable(InitialState),flux_node(_project) ,m_Concentrations(), m_state_variable_content('V')
@@ -120,4 +112,15 @@ real cmf::water::WaterStorage::Derivate( const cmf::math::Time& time )
 	else // Integrate over volume
 		// The net flux of this water storage is the derivate of the Volume
 		return dVdt;
+}
+
+cmf::math::state_queue cmf::water::WaterStorage::get_states() 
+{
+	cmf::math::state_queue q;
+	q.push(cmf::water::WaterStorage::ptr(*this));
+	for(SoluteStorageMap::const_iterator it = m_Concentrations.begin(); it != m_Concentrations.end(); ++it)
+	{
+		q.push(*it);
+	}
+	return q;
 }

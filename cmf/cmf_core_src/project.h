@@ -28,6 +28,7 @@
 #include "reach/Reach.h"
 #include "upslope/Soil/RetentionCurve.h"
 #include "water/collections.h"
+#include "upslope/cell_vector.h"
 /// The main namespace of the model framework. Contains the other namespaces and the project class
 namespace cmf {
 	class bc_iterator;
@@ -38,12 +39,12 @@ namespace cmf {
 	{
 	private:
 		friend class cmf::upslope::Cell;
-		upslope::cell_vector m_cells;
+		cmf::upslope::cell_vector m_cells;
 		std::vector<cmf::river::Reach::ptr> m_reaches;
 
-	protected:
-		virtual void AddStateVariables(cmf::math::StateVariableVector& vector);
 	public:
+		cmf::math::state_queue get_states(); 
+
 		/// The solutes transported by the model
 		const cmf::water::solute_vector solutes;
 		/// The meteorological stations in the project
@@ -61,7 +62,7 @@ namespace cmf {
 		/// Returns the reference to the cell at index in the project
 		upslope::Cell& get_cell(int index)
 		{
-			return *m_cells.at(index<0 ? m_cells.size()+index : index);
+			return m_cells[index];
 		}
 		/// The number of cells in the project
 		int size() const { return int(m_cells.size());}
@@ -74,7 +75,7 @@ namespace cmf {
 		cmf::upslope::Cell* NewCell(double x,double y,double z, double Area)
 		{
 			cmf::upslope::Cell* new_cell=new cmf::upslope::Cell(x,y,z,Area,*this);
-			m_cells.push_back(new_cell);
+			m_cells.append(*new_cell);
 			return new_cell;
 		}
 		/// Creates a new Drichelet boundary condition and adds it to the list of outlets
