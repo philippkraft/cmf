@@ -117,15 +117,15 @@ namespace cmf {
 		{
 		private:
 			long long m_time_in_ms;
-			Time(long long ms):m_time_in_ms(ms) {}
+			explicit Time(long long ms):m_time_in_ms(ms) {}
 		public:
+			friend Time timespan(long long);
 			static const long long ms_per_day=86400000;
 			/// @name Constructors
 			//@{
-			/// Conversion constructor
-			Time(double days):m_time_in_ms((long long)(days*ms_per_day)) {}
+
 			/// Construction from date and stores the time as Excel-Time (0 = 31.12.1899 0:00:00)
-			Time(int day,int month,int year=2001,int hour=0,int minute=0,int second=0,int ms=0);
+			Time(int day,int month,int year,int hour=0,int minute=0,int second=0,int ms=0);
 			/// Conversion constructor
 			Time(Date date);
 			/// Copy constructor
@@ -133,6 +133,13 @@ namespace cmf {
 			/// Standard constructor
 			Time():m_time_in_ms(0) {}
 			//@}
+#ifndef SWIG
+			Time& operator=(const Time& right);
+			
+			operator bool() const {
+				return m_time_in_ms!=0;
+			}
+#endif
 			/// @name Time unit conversion
 			//@{
 			/// Time in days
@@ -202,24 +209,14 @@ namespace cmf {
 			bool operator!=(const Time& t1)	const	{return m_time_in_ms!=t1.AsMilliseconds();}
 			//@}
 			
-			/// Creates a time representing y years
-			static Time Years(double y=1) {return Time((long long)(y*365*24*60*60*1000));}
-			/// Creates a time representing y days
-			static Time Days(double d=1) {return Time((long long)(d*24*60*60*1000));}
-			/// Creates a time representing h hours
-			static Time Hours(double h=1) {return Time((long long)(h*60*60*1000));}
-			/// Creates a time representing min minutes
-			static Time Minutes(double min=1) {return Time((long long)(min*60*1000));}
-			/// Creates a time representing secs seconds
-			static Time Seconds(double secs=1) {return Time((long long)(secs*1000));}
-			/// Creates a time representing ms milliseconds
-			static Time Milliseconds(long long ms=1) {return Time(ms);}
 		};
+#ifndef SWIG
 		Time operator*(double f,Time t);
 		Time operator*(int f,Time t);
+		Time timespan(long long ms);
 
-		Time minimum_t(Time t1,Time t2);
-		Time maximum_t(Time t1,Time t2);
+
+#endif
 
 		/// An absolute time, not for calculation. Date and Time are interchangable 
 		struct Date
@@ -233,7 +230,7 @@ namespace cmf {
 			int ms;    ///< millisecond of second
 
 			/// Creates a new date
-			Date(int _day,int _month,int _year=2001,int _hour=0,int _minute=0,int _second=0,int _ms=0):
+			Date(int _day,int _month,int _year,int _hour=0,int _minute=0,int _second=0,int _ms=0):
 			day(_day),month(_month),year(_year),hour(_hour),minute(_minute),second(_second),ms(_ms)
 			{	}
 
@@ -265,14 +262,14 @@ namespace cmf {
 			/// Returns a string representing the date
 			std::string to_string();
 		};
-		const Time ms=Time::Milliseconds();   ///< 1 milli second
-		const Time sec=Time::Seconds();       ///< 1 second
-		const Time min=Time::Minutes();	      ///< 1 minute
-		const Time h=Time::Hours();           ///< 1 hour
-		const Time day=Time::Days();		      ///< 1 day
-		const Time week=Time::Days(7);	      ///< 1 week
-		const Time month=Time::Days(365/12.0);///< 1 month = 30*day+10*h
-		const Time year=Time::Years();				///< 1 year  = 365*day
+		const Time ms   = timespan(1);  ///< 1 milli second
+		const Time sec  = 1000 * ms;    ///< 1 second
+		const Time min  = 60 * sec;	    ///< 1 minute
+		const Time h    = 60 * min;     ///< 1 hour
+		const Time day  = 24 * h;		///< 1 day
+		const Time week = 7 * day;	    ///< 1 week
+		const Time year = 365 * day;	///< 1 year  = 365*day
+		const Time month= year/12;		///< 1 month = 30*day+10*h
 	}
 }
 

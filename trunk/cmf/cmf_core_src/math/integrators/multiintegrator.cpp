@@ -22,23 +22,23 @@
 #endif
 
 
-int cmf::math::MultiIntegrator::Integrate( cmf::math::Time MaxTime,cmf::math::Time TimeStep )
+int cmf::math::MultiIntegrator::integrate( cmf::math::Time MaxTime,cmf::math::Time TimeStep )
 {
 	if (use_OpenMP)
 	{
 #pragma omp parallel for
 		for (int i = 0; i < (int)m_integrators.size() ; ++i)
 		{
-			m_integrators[i]->IntegrateUntil(MaxTime,TimeStep);
+			m_integrators[i]->integrate_until(MaxTime,TimeStep);
 		}
 	}
 	else
 	{
 		for(integ_vector::iterator it = m_integrators.begin(); it != m_integrators.end(); ++it)
 		{
-			(**it).IntegrateUntil(MaxTime,TimeStep);
+			(**it).integrate_until(MaxTime,TimeStep);
 		}
 	}
-	m_Time=MaxTime;
+	m_t=MaxTime;
 	return 1;
 }

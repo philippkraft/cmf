@@ -33,10 +33,11 @@ void WaterStorage::initializeSoluteStorages(const solute_vector& solutes)
 }
 
 
-WaterStorage::WaterStorage(const cmf::project& _project,double InitialState/*=0*/ ) 
+WaterStorage::WaterStorage(const cmf::project& _project, const std::string& _Name,double InitialState/*=0*/ ) 
 : cmf::math::StateVariable(InitialState),flux_node(_project) ,m_Concentrations(), m_state_variable_content('V')
 {
 	initializeSoluteStorages(_project.solutes);
+	this->Name = _Name;
 }
 
 
@@ -53,7 +54,7 @@ real WaterStorage::conc(const solute& _Solute) const
 
 std::tr1::shared_ptr<WaterStorage> WaterStorage::from_node( flux_node::ptr node )
 {
-	WaterStorage* ws=new WaterStorage(node->project());
+	WaterStorage* ws=new WaterStorage(node->project(), node->Name);
 	WaterStorage::ptr result(ws);
 
 	replace_node(node,result);
@@ -123,4 +124,11 @@ cmf::math::state_queue cmf::water::WaterStorage::get_states()
 		q.push(*it);
 	}
 	return q;
+}
+
+
+cmf::water::kinematic_wave::kinematic_wave( WaterStorage::ptr source,flux_node::ptr target,real _traveltime, real _exponent/*=1.0*/, real _residual_volume/*=0.0*/ ) 
+: flux_connection(source,target,"kinematic wave"),residencetime(_traveltime),exponent(_exponent), residual_volume(_residual_volume)
+{
+	NewNodes();
 }

@@ -25,7 +25,7 @@ using namespace cmf::upslope::vegetation;
 using namespace cmf::upslope::ET;
 
 
-#define sqr(a) a*a
+#define sqr(a) ((a)*(a))
 ///DT  time step for DFILE interval,  must be 1 d
 static const double DT = 1.;
 ///WTOMJ  (MJ m-2 d-1)/(watt/m2) = 86400 s/d * .000001 MJ/J
@@ -58,7 +58,9 @@ static const double K = 0.4;
 ///PI  pi
 static const double PI = 3.1416;
 
-
+double ShuttleworthWallace::RSSa=500.;
+double ShuttleworthWallace::RSSb=1.0;
+double ShuttleworthWallace::RSSa_pot=-3.22;
 
 /************************************************************************/
 /* PET.BAS                                                               */
@@ -135,7 +137,7 @@ double FRSS(double RSSA,double RSSB, double PSIF, double PSIM)
 	if (RSSB <= 0.0001)
 		return 10000000000.0;
 	else
-		return pow(RSSA * (PSIM / PSIF),RSSB);
+		return RSSA * pow(PSIM / PSIF,RSSB);
 }
 /// Penman-Monteith transpiration rate equation
 /// input
@@ -608,7 +610,7 @@ void TBYLAYER(int J,double PTR, double DISPC,
 			  int NOOUTF, 
 			  double& ATR,num_array& ATRANI)
 {
-	ATRANI.resize(NLAYER);
+	if (ATRANI.size() != NLAYER) throw std::runtime_error("Shuttleworth Wallace: Not correctly initialized ATR array");
 	num_array RI(RROOTI.size());   ///root plus rhizosphere resistance, MPa d/mm
 	double RT;             ///combined root resistance from unflagged layers, MPa d/mm
 	double SUM;            ///sum of layer conductances, (mm/d)/MPa
@@ -755,26 +757,42 @@ void SNOVAP (double TSNOW, double TA, double EA, double UA, double ZA, double HE
 }
 cmf::upslope::ET::ShuttleworthWallace::ShuttleworthWallace( cmf::upslope::Cell& _cell) 
 :	PTR(0), ATR_sum(0), ATR(0), GER(0),PIR(0),GIR(0), PSNVP(0), ASNVP(0), cell(_cell),KSNVP(1.0),
-	RAA(0),RAC(0),RAS(0),RSS(0),RSC(0)
+	RAA(0),RAC(0),RAS(0),RSS(0),RSC(0), refresh_counter(0)
 {
 	KSNVP = piecewise_linear(cell.vegetation.Height,1,5,1.0,0.3);
 }
 
 void cmf::upslope::ET::ShuttleworthWallace::refresh( cmf::math::Time t )
 {
-
+	if (t == refresh_time) return;
+	refresh_time=t;
+	++refresh_counter;
 	vegetation::Vegetation& v = cell.vegetation;
 	cmf::atmosphere::Weather w = cell.get_weather(t);
 
 
 	const int lc = cell.layer_count(); 
-	const double GLMIN = 0.; // min stomatal conductivity (night times)
+	const double GLMIN = 1e-6; // min stomatal conductivity (night times)
 	const double GLMAX = 1. / v.StomatalResistance; // max stomatal conductivity m/s
+	
 	// wind/diffusivity extinction coefficient, dimensionless. NN is the canopy extinction coefficient for wind and eddy diffusivity. 
 	// NN is fixed at 2.5 following Shuttleworth and Gurney (1990). Federer and others (1995) show that PE is insensitive to the 
 	// value of n, but they did not test sparse canopies in a wet climate.
 	const double NN = 2.5; 
 	const double RHOTP = 2.; // Ratio of total leaf area and projected leaf area
+	///   R5      solar radiation at which conductance is halved, W/m2
+	///   CVPD    vpd at which leaf conductance is halved, kPa
+	///   RM      maximum solar radiation, at which FR = 1, W/m2
+	///   CR      light extinction coefficient for LAI, projected area
+	///   TL      temperature below which stomates are closed, degC
+	///   T1      lowest temp. at which stomates not temp. limited, degC
+	///   T2      highest temp. at which stomates not temp. limited,degC
+	///   TH      temperature above which stomates are closed, degC
+
+	const double R5 = 100.; // W/m2, radiation where half of the transpiration occurs
+	const double RM = 1000.; // W/m2, radiation where stomata are open for transpiration
+	const double CVPD = 2.; //  vpd at which leaf conductance is halved, kPa
+	const double T_f[] = {0,10,30,40}; // Fuzzy number describing temperature influence on leaf conductance
 
 
 	
@@ -815,12 +833,12 @@ void cmf::upslope::ET::ShuttleworthWallace::refresh( cmf::math::Time t )
 	double albedo = cell.snow_coverage() * 0.9 + (1-cell.snow_coverage()) * v.albedo;
 	double RN = w.Rn(albedo) / WTOMJ;
 	double RNground = RN * exp(-v.CanopyPARExtinction * (LAI+SAI));
-	RSS = FRSS(500 /*s/m*/,1.0, -31.6 /*kPa*/, PSITI[0]);
+	RSS = FRSS(RSSa ,RSSb, RSSa_pot, cell.get_layer(0)->get_matrix_potential());
 	SWGRA(UA,ZA,h,Z0,DISP,Z0C,DISPC,Z0GS,v.LeafWidth,RHOTP,NN,LAI,SAI,RAA,RAC,RAS);
 	if (w.Rs>0) {
 		SRSC(w.Rs / WTOMJ, w.T, w.e_s-w.e_a, LAI, SAI, GLMIN, GLMAX,
-			100. /*R5,W/m2*/,2. /*CVPD, kPa*/,1000. /*RM, W/m2*/,v.CanopyPARExtinction,
-			0 /*TL degC*/,10 /*T1 degC*/,30 /* T2 degC*/,40 /*TH degC*/,
+			R5,CVPD,RM,v.CanopyPARExtinction,
+			T_f[0],T_f[1],T_f[2],T_f[3],
 			RSC);
 	} else {
 		RSC = 1 / (GLMIN * LAI);
@@ -837,12 +855,14 @@ void cmf::upslope::ET::ShuttleworthWallace::refresh( cmf::math::Time t )
 	if (PTR>0.001)	{
 		TBYLAYER(1,PTR,DISPC,ALPHA,KK,RROOTI,RXYLEM,PSITI,lc, RHOWG * pF_to_waterhead(4.2),1,ATR_sum,ATR);
 		if (ATR_sum < PTR)
-			SWGE(RN,RNground,w.e_s-w.e_a,RAA,RAS,RSS,DELTA,ATR_sum,GER);
+			SWGE(RN,RNground,w.e_s-w.e_a,RAA,RAS,RSS,DELTA,ATR_sum + AIR,GER);
 
 	} else {
 		PTR = 0.0;
 		ATR = 0.0;
-		SWGE(RN,RNground,w.e_s-w.e_a,RAA,RAS,RSS,DELTA,ATR_sum,GER);
+		ATR_sum=0.0;
+		ATR = 0.0;	
+		SWGE(RN,RNground,w.e_s-w.e_a,RAA,RAS,RSS,DELTA,ATR_sum + AIR,GER);
 	}
 }
 
@@ -866,6 +886,8 @@ cmf::upslope::ET::ShuttleworthWallace* cmf::upslope::ET::ShuttleworthWallace::us
 	if (cell.get_surfacewater()->is_storage()) {
 		new surface_water_evaporation(cmf::river::OpenWaterStorage::cast(cell.get_surfacewater()),cell.get_evaporation(),sw,"Shuttleworth - Wallace");
 	}
+	sw->ATR.resize(cell.layer_count());
+	sw->ATR = 0.0;
 	cell.set_aerodynamic_resistance(sw);
 	return sw.get();
 }

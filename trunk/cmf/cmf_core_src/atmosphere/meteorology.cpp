@@ -20,9 +20,11 @@
 #include <cmath>
 #include "../math/timeseries.h"
 #include "../math/num_array.h"
+#include "../upslope/cell.h"
+#include "../project.h"
 #include <fstream>
-#define min(a,b) ((a)<(b)) ? (a) : (b)
-#define max(a,b) ((a)>(b)) ? (a) : (b)
+#define min(a,get_b) ((a)<(get_b)) ? (a) : (get_b)
+#define max(a,get_b) ((a)>(get_b)) ? (a) : (get_b)
 #define clip(v,mn,mx) (max(min(v,mx),mn))
 
 using namespace cmf::atmosphere;
@@ -249,6 +251,20 @@ cmf::atmosphere::MeteoStation::MeteoStation( const cmf::atmosphere::MeteoStation
 	Name=other.Name;
 }
 
+void cmf::atmosphere::MeteoStation::use_for_cell( cmf::upslope::Cell& c )
+{
+	MeteoStation::ptr sh_this;
+	const MeteoStationList& msl =  c.get_project().meteo_stations;
+	for (int i = 0; i < msl.size() ; ++i)
+	{
+		if (msl[i].get() == this) {
+			MeteoStationReference mref(msl[i],c);
+			c.set_meteorology(mref);
+			break;
+		}
+	}
+
+}
 
 double cmf::atmosphere::MeteoStationList::calculate_Temp_lapse( cmf::math::Time begin, cmf::math::Time step,cmf::math::Time end )
 {

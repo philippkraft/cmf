@@ -52,6 +52,7 @@ namespace cmf {
 			int stepNo;
 			/// Current order of Gear formula
 			int order;
+			Time dt_min;
 			/// Gets one of the last states
 			/// @returns   the n<sup>th</sup> state in history
 			/// @param toBack Number of steps back (ranging from 1..4, no runtime check)
@@ -78,16 +79,25 @@ namespace cmf {
 
 		public:
 
+			/// Add state variables from a StateVariableOwner
 			void AddStatesFromOwner(cmf::math::StateVariableOwner& stateOwner);
+			/// Returns the position of the biggest error
 			int get_error_position() const
 			{
 				return error_position;
 			}
-			/// Constructs a new Gears_var_Step
+			/// Constructs a new BDF2 integrator
 			/// @param epsilon relative error tolerance per time step (default=1e-9)
 			/// @param tStepMin minimum time step (default=10s)
-			BDF2(real epsilon=1e-9,cmf::math::Time tStepMin=Time::Milliseconds(10));
-			BDF2(cmf::math::StateVariableOwner& states, real epsilon=1e-9,cmf::math::Time tStepMin=Time::Milliseconds(10));
+			BDF2(real epsilon=1e-9,cmf::math::Time tStepMin=cmf::math::timespan(10));
+			/// Constructs a new Gears_var_Step
+			/// @param states States to be added to the solver
+			/// @param epsilon relative error tolerance per time step (default=1e-9)
+			/// @param tStepMin minimum time step (default=10s)
+			BDF2(cmf::math::StateVariableOwner& states, real epsilon=1e-9,cmf::math::Time tStepMin=cmf::math::timespan(10));
+			
+			/// Constructs a new BDF2 integrator
+			/// @param templ Template to be used to construct a BDF2 method
 			BDF2(const Integrator & templ);
 			virtual Integrator * Copy() const
 			{
@@ -107,7 +117,7 @@ namespace cmf {
 			///  - If too many iterations are needed, or the error is rising, repeat iteration with \f$ h_{n+1} = \frac{h_{n+1}}{2} \f$
 			/// @param MaxTime To stop the model (if running in a model framework) at time steps of value exchange e.g. full hours, the next value exchange time can be given
 			/// @param TimeStep Takes the proposed timestep, ignored by this solver
-			int Integrate(cmf::math::Time MaxTime,cmf::math::Time TimeStep);
+			int integrate(cmf::math::Time MaxTime,cmf::math::Time TimeStep);
 		};
 	}
 }

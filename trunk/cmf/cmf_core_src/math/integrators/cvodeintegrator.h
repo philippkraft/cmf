@@ -19,8 +19,8 @@
 #ifndef cvode_h__
 #define cvode_h__
 // include CVODE
+#include <cvode/cvode.h>
 #include <sundials/sundials_nvector.h>       /* serial N_Vector types, fct. and macros */
-
 #include "integrator.h"
 namespace cmf {
 	namespace math {
@@ -58,28 +58,38 @@ namespace cmf {
 			int LinearSolver;
 			/// Maximal order of the solver
 			int MaxOrder;
-			bool reinit_always;
+			/// Maximal size of a time step
 			cmf::math::Time max_step;
 			/// Returns the last order of the solver used, may be smaller than MaxOrder due to the number of steps already taken or to fullfill stability limit
 			int GetOrder();
+			/// Reinitialization of the solver
 			void ReInit(Time initdt, real epsilon=0);
 			/// Initializes the solver. Do not add or remove statevariables after initialization
 			void Initialize();
-			virtual int Integrate(cmf::math::Time MaxTime,cmf::math::Time TimeStep);
+
+			virtual int integrate(cmf::math::Time MaxTime,cmf::math::Time TimeStep);
+			/// Resets the integrator
 			virtual void Reset();
 			
 			/// Create a new CVODE integrator
 			/// @param epsilon relative and absolute error tolerance
-			/// @param tStepMin Minimal timestep
+			/// @param _preconditioner [R]ight, [L]eft, [B]oth side Krylov preconditioner or [N]o preconditioner
 			CVodeIntegrator(real epsilon=1e-9,char _preconditioner='R') 
-			: Integrator(epsilon,Time::Milliseconds(50)), m_y(0),cvode_mem(0),precond_mem(0),preconditioner(_preconditioner),maxl(5),LinearSolver(3),
-			MaxOrder(5),MaxNonLinearIterations(3),MaxErrorTestFailures(10),MaxConvergenceFailures(7),reinit_always(false),max_step(day)
+			:	Integrator(epsilon), 
+				m_y(0),cvode_mem(0),precond_mem(0),
+				preconditioner(_preconditioner),maxl(5),LinearSolver(3),
+				MaxOrder(5),MaxNonLinearIterations(3),MaxErrorTestFailures(10),MaxConvergenceFailures(7),
+				max_step(day)
 			{	
 				cvode_mem=0;
 			}
+			/// Create a new CVODE integrator
+			/// @param states State variables to be added to the integrator
+			/// @param epsilon relative and absolute error tolerance
+			/// @param _preconditioner [R]ight, [L]eft, [B]oth side Krylov preconditioner or [N]o preconditioner
 			CVodeIntegrator(cmf::math::StateVariableOwner& states, real epsilon=1e-9,char _preconditioner='R') 
-				: Integrator(states,epsilon,Time::Milliseconds(50)), m_y(0),cvode_mem(0),precond_mem(0),preconditioner(_preconditioner),maxl(5),LinearSolver(3),
-				MaxOrder(5),MaxNonLinearIterations(3),MaxErrorTestFailures(10),MaxConvergenceFailures(7),reinit_always(false),max_step(day)
+				: Integrator(states,epsilon), m_y(0),cvode_mem(0),precond_mem(0),preconditioner(_preconditioner),maxl(5),LinearSolver(3),
+				MaxOrder(5),MaxNonLinearIterations(3),MaxErrorTestFailures(10),MaxConvergenceFailures(7)
 			{
 				cvode_mem=0;
 			}
@@ -88,11 +98,13 @@ namespace cmf {
 			CVodeIntegrator(const CVodeIntegrator & templ) 
 				: Integrator(templ),preconditioner(templ.preconditioner),maxl(templ.maxl),m_y(0),cvode_mem(0),precond_mem(0),LinearSolver(templ.LinearSolver),
 				MaxOrder(templ.MaxOrder),MaxNonLinearIterations(templ.MaxNonLinearIterations),MaxErrorTestFailures(templ.MaxErrorTestFailures),
-				MaxConvergenceFailures(templ.MaxConvergenceFailures),reinit_always(templ.reinit_always)	,max_step(templ.max_step)
+				MaxConvergenceFailures(templ.MaxConvergenceFailures),max_step(templ.max_step)
 			{
 				cvode_mem=0;
 			}
-			
+			/// Error vector of the integrator
+			cmf::math::num_array get_error() const;
+
 			CVodeIntegrator * Copy() const
 			{
 				return new CVodeIntegrator(*this);

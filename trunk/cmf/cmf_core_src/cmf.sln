@@ -5,6 +5,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "cmf", "cmf.vcproj", "{16A0D
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "soiltemp", "..\..\..\DNDCsoiltemp\soiltemp.vcproj", "{90A01E19-1E73-466A-8A85-3224C1AA77F5}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "cvode_msvc", "..\..\..\sundials-2.4.0\cvode_msvc\cvode_msvc.vcproj", "{ED046891-329D-4FA2-86AA-07933051871D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -34,6 +36,16 @@ Global
 		{90A01E19-1E73-466A-8A85-3224C1AA77F5}.Release|Win32.Build.0 = Release|Win32
 		{90A01E19-1E73-466A-8A85-3224C1AA77F5}.RelWithDebInfo|Win32.ActiveCfg = Release|Win32
 		{90A01E19-1E73-466A-8A85-3224C1AA77F5}.RelWithDebInfo|Win32.Build.0 = Release|Win32
+		{ED046891-329D-4FA2-86AA-07933051871D}.Debug|Win32.ActiveCfg = Debug|Win32
+		{ED046891-329D-4FA2-86AA-07933051871D}.Debug|Win32.Build.0 = Debug|Win32
+		{ED046891-329D-4FA2-86AA-07933051871D}.distutil|Win32.ActiveCfg = Debug|Win32
+		{ED046891-329D-4FA2-86AA-07933051871D}.distutil|Win32.Build.0 = Debug|Win32
+		{ED046891-329D-4FA2-86AA-07933051871D}.MinSizeRel|Win32.ActiveCfg = Release|Win32
+		{ED046891-329D-4FA2-86AA-07933051871D}.MinSizeRel|Win32.Build.0 = Release|Win32
+		{ED046891-329D-4FA2-86AA-07933051871D}.Release|Win32.ActiveCfg = Release|Win32
+		{ED046891-329D-4FA2-86AA-07933051871D}.Release|Win32.Build.0 = Release|Win32
+		{ED046891-329D-4FA2-86AA-07933051871D}.RelWithDebInfo|Win32.ActiveCfg = Release|Win32
+		{ED046891-329D-4FA2-86AA-07933051871D}.RelWithDebInfo|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

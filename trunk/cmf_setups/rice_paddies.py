@@ -23,7 +23,9 @@ Created on Thu Nov 05 09:10:18 2009
 @author: philkraf
 """
 import cmf
-from DECOMP.cmf_DECOMP import DECOMPcmf
+from cmf.raster import Raster
+from DECOMP.cmf import DECOMPcmf
+import DECOMP
 from matplotlib.pylab import *
 def add_cell(p,x,h,last_cell):
     for i in range(1):
@@ -84,20 +86,18 @@ def make_rice_paddies(project,count=3,cells_per_paddy=10,dam_height=1.0,terrace_
     #project[-1].connect_soil_with_node(dbc,cmf.Richards_lateral,10,1)
     return pools,dbc, pool_of_cell
 
-def draw_fig(storages,t=cmf.Time(),qscale=100,alpha=1.0,tracer=None):
+def draw_fig(storages,t=cmf.Time(),qscale=100,alpha=1.0,tracer=None,drawclr=0):
     ioff()
-    r=cmf.Raster(shape=(max(c.layer_count() for c in p),len(p)),
-                 corner=(-0.5,0),cellsize=(1,0.1))
+    r=Raster(shape=(max(c.layer_count() for c in p),len(p)),corner=(-0.5,0),cellsize=(1,0.1))
     for s in storages:
         if isinstance(s, cmf.SoilLayer):
             r[s.Location.x, s.Location.z] = s.conc(tracer) if tracer else s.wetness 
     r.draw(hold=0,cmap=cm.RdYlGn_r if tracer else cm.RdYlBu,alpha=alpha,vmax=1.0,zorder=1,interpolation='nearest')
+    if drawclr: colorbar()
     axis('tight')
     pos=storages.get_positions()
     f=storages.get_fluxes3d(t)
-    q=quiver(array(pos.X),array(pos.Z),array(f.X),array(f.Z),
-            scale=qscale,minlength=0.1,zorder=2)
-    
+    q=quiver(array(pos.X),array(pos.Z),array(f.X),array(f.Z),scale=qscale,minlength=0.1,zorder=2)
     draw()
     ion()
 if __name__=='__main__':
@@ -112,25 +112,26 @@ if __name__=='__main__':
     storages=cmf.node_list.from_sequence(pools)
     storages.extend(cmf.get_layers(p))
     for c in pool_cell_dict:
-        c.layers[2].soil.SetKsat(0.1,0.0)
-        c.layers[2].soil.Set_b(7.5)
+        c.layers[2].soil.Ksat=0.1
+        c.layers[2].soil.b=7.5
     winteg=cmf.CVodeIntegrator(1e-6)
     winteg.preconditioner='R'
-    sinteg=cmf.BDF2(1e-6)
+    sinteg=cmf.ImplicitEuler(1e-6)
     integ=cmf.SoluteWaterIntegrator(winteg,sinteg,p)    
+    integ=cmf.CVodeIntegrator(p,1e-6)
     pools[0].depth = dam_height
     b = lambda : bar(left  =[(pool_length+2) * i +.5 for i in range(pool_count) ],
                      bottom=[(pool_count-i+2)*terrace_height for i in range(pool_count)],
                      width=pool_length,
                      height=[pool.depth for pool in pools],
                      zorder=0,fc=(0.6,0.6,1.0),ec=(0.3,0.3,1.0))
-    scale=500
+    scale=500.
     
     DECOMPcells=dict((c,DECOMPcmf(c)) for c in pool_cell_dict)
     for c,D in DECOMPcells.iteritems():
-        D.DECOMPlayers[0] = DECOMP.SOM(0.1*1e2,1e2)
+        D[0] = DECOMP.SOM(0.1*1e2,1e2)
 
-    def run(p,for_t=cmf.min*15):
+    def run(p,for_t=cmf.min*15,show_it=1):
         for c,P in pool_cell_dict.iteritems():
             c.surfacewater.potential = P.potential
             c.surfacewater.is_source = not P.is_empty()
@@ -138,14 +139,22 @@ if __name__=='__main__':
         integ(integ.t+for_t)
         for c,P in pool_cell_dict.iteritems():
             P.volume += c.surfacewater.water_balance(integ.t) * for_t.AsDays()
-        subplot(212)
-        draw_fig(storages,integ.t,scale,0.85,tracer=p.solutes[0])
-        b()
-        subplot(211)
-        draw_fig(storages,integ.t,scale,0.85)
-        b()
-        title(integ.t)
+        if show_it:
+            subplot(212)
+            draw_fig(storages,integ.t,scale,0.85,tracer=p.solutes[0])
+            b()
+            subplot(211)
+            draw_fig(storages,integ.t,scale,0.85)
+            b()
+            title(integ.t)
         return integ.t, [p.depth for p in pools]
+    subplot(212)
+    draw_fig(storages,integ.t,scale,0.85,tracer=p.solutes[0],drawclr=1)
+    b()
+    subplot(211)
+    draw_fig(storages,integ.t,scale,0.85,drawclr=1)
+    b()
+    title(integ.t)
     N,DOC=p.solutes
     show()
     

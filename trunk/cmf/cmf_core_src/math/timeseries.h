@@ -137,15 +137,14 @@ namespace cmf {
 
 #ifndef SWIG
 			/// Returns an interpolated value at time t
-			double operator[](cmf::math::Time t) const {return interpolate(t,interpolationpower());}
+			double operator[](cmf::math::Time t) const {return get_t(t);}
+			double operator[](cmf::math::Time t) {return get_t(t);}
 			/// Returns a reference to the value at position i
-			double& operator[](int i)			{
-				int ndx=i<0 ? int(m_data->values.size())+i : i;
-				return m_data->values.at(ndx);
+			double& operator[](int i){
+				return m_data->values.at(i<0 ? size()+i :i);
 			}
-			double operator[](int i) const			{
-				int ndx=i<0 ? int(m_data->values.size())+i : i;
-				return m_data->values.at(ndx);
+			const double& operator[](int i) const			{
+				return m_data->values.at(i<0 ? size()+i :i);
 			}
 #endif
 			double get_t(cmf::math::Time t) const {return interpolate(t,interpolationpower());}
@@ -153,19 +152,16 @@ namespace cmf {
 			{
 				return m_data->values.at(i<0 ? size()+i :i);
 			}
-			void set_t(cmf::math::Time t,double value)
-			{
-				int pos=int(position(t)+0.5);
-				set_i(pos,value);
-			}
-			void set_i(int i,double value)
-			{
-				m_data->values.at(i<0 ? size()+i :i)=value;
-			}
+			void set_t(cmf::math::Time t,double value);
+			void set_i(int i,double value);
 			cmf::math::timeseries get_slice(cmf::math::Time _begin,cmf::math::Time _end,cmf::math::Time _step=cmf::math::Time());
 			void set_slice(cmf::math::Time _begin,cmf::math::Time _end, cmf::math::timeseries values);
 			cmf::math::timeseries get_slice(int _begin,int _end,int step=1);
 			void set_slice(int _begin,int _end,cmf::math::timeseries _values);
+
+			void remove_nodata(double nodata_value);
+
+			
 			/// @name Operators
 			/// Binary operators defined as free operators:
 			///
@@ -216,7 +212,6 @@ namespace cmf {
 			timeseries log10() const;
 			timeseries power(double exponent) const;
 			timeseries exp() const;
-
 
 
 

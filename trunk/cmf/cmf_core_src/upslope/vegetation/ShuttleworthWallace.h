@@ -63,10 +63,17 @@ namespace cmf {
 			{
 			private:
 				cmf::upslope::Cell& cell;
-				double RAA,RAC,RAS,RSS,RSC;
+				mutable cmf::math::Time refresh_time;
+				static double RSSa,RSSb,RSSa_pot;
 			public:
+				double RAA,RAC,RAS,RSS,RSC;
+				int refresh_counter;
 				/// Calculates all the values
 				void refresh(cmf::math::Time t);
+				void refresh() {
+					refresh_time-=cmf::math::min;
+					refresh(refresh_time+cmf::math::min);
+				}
 				/// Potential transpiration rate in mm/day
 				double PTR;
 				/// Potential snow evaporation rate in mm/day
@@ -127,6 +134,18 @@ namespace cmf {
 					r_ag = RAA + RAS;
 					r_ac = RAA + RAC;
 				}
+
+				/// Sets the parameters of the soil surface resistance, a function of the actual water potential
+				/// \f[ r^s_s = RSS_a \left(\frac{\Psi}{\Psi_{RSS_a}}\right)^RSS_b \f]
+				/// @param _RSSa Resistance in s/m at potential in RSSa_pot
+				/// @param _RSSb Exponent for curve shape
+				/// @param _RSSa_pot Matrix potential (m), where \f$r^s_s = RSS_a\f$
+				static void set_RSS_parameters(double _RSSa=500., double _RSSb=1.0, double _RSSa_pot=-3.22) {
+					RSSa = _RSSa;
+					RSSb = _RSSb;
+					RSSa_pot = _RSSa_pot;
+				}
+
 
 
 

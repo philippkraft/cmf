@@ -33,47 +33,54 @@ PyDateTime_IMPORT;
 %}
 
 %{
-static cmf::math::Time convert_datetime_to_cmftime(PyObject* dt)
+static int convert_datetime_to_cmftime(PyObject* dt, cmf::math::Time* pT)
 {
-    void * pt; 
-    int res=SWIG_ConvertPtr(dt,&pt,SWIGTYPE_p_cmf__math__Time,0);
-    if (SWIG_IsOK(res))
+	void* _pT = pT;
+	int res=SWIG_ConvertPtr(dt,&_pT,SWIGTYPE_p_cmf__math__Time,0);
+    if (SWIG_IsOK(res) && pT!=0)
     {
-        cmf::math::Time * temp = reinterpret_cast< cmf::math::Time * >(pt);
-        return *temp;
+        return SWIG_OK;
     }
-    else if (PyDateTime_Check(dt))
-       return cmf::math::Time(PyDateTime_GET_DAY(dt),
+	else if (PyDateTime_Check(dt)) {
+       *pT  = cmf::math::Time(PyDateTime_GET_DAY(dt),
                               PyDateTime_GET_MONTH(dt),
                               PyDateTime_GET_YEAR(dt),
-                              PyDateTime_TIME_GET_HOUR(dt),
-                              PyDateTime_TIME_GET_MINUTE(dt),
-                              PyDateTime_TIME_GET_SECOND(dt),
-                              PyDateTime_TIME_GET_MICROSECOND(dt)/1000);
-   else if (PyDate_Check(dt))
-       return cmf::math::Time(PyDateTime_GET_DAY(dt),
+                              PyDateTime_DATE_GET_HOUR(dt),
+                              PyDateTime_DATE_GET_MINUTE(dt),
+                              PyDateTime_DATE_GET_SECOND(dt),
+                              PyDateTime_DATE_GET_MICROSECOND(dt)/1000);
+	   return SWIG_OK;
+	}
+	else if (PyDate_Check(dt)) {
+       *pT = cmf::math::Time(PyDateTime_GET_DAY(dt),
                               PyDateTime_GET_MONTH(dt),
                               PyDateTime_GET_YEAR(dt));
-   else if (PyDelta_Check(dt))
-   {
-     PyDateTime_Delta* delta=(PyDateTime_Delta*)(dt);
-     long long ms=24 * 3600;
-     ms*=delta->days;
-     ms+=delta->seconds;
-     ms*=1000;
-     ms+=delta->microseconds/1000;
-     return cmf::math::Time::Milliseconds(ms);
+	   return SWIG_OK;
+	}
+	else if (PyDelta_Check(dt)) {
+        PyDateTime_Delta* delta=(PyDateTime_Delta*)(dt);
+		 long long ms=24 * 3600;
+		 ms*=delta->days;
+		 ms+=delta->seconds;
+		 ms*=1000;
+		 ms+=delta->microseconds/1000;
+		*pT = cmf::math::timespan(ms);
+		return SWIG_OK;
    }
-   else 
-   {
-     PyErr_SetString(PyExc_ValueError,"Type is neither a cmf.Time nor a Python datetime object");
-     return cmf::math::Time();
+   else  {
+	   return SWIG_TypeError;
    } 
 }
+
 %}                         
 
 %typemap(in) cmf::math::Time {
-    $1 = convert_datetime_to_cmftime($input);    
+    cmf::math::Time *pT = &$1;
+    int res=SWIG_ConvertPtr($input,(void**)(&pT),SWIGTYPE_p_cmf__math__Time,0);
+    if (!(SWIG_IsOK(res)) || pT==0)
+        if (convert_datetime_to_cmftime($input, pT)!=SWIG_OK) 
+            SWIG_exception_fail(SWIG_TypeError,"Can't convert input value to cmf.Time object");
+    $1 = *pT;
 }
 %typemap(typecheck,precedence=0) cmf::math::Time {
     void * pt;    
@@ -165,7 +172,7 @@ static cmf::math::Time convert_datetime_to_cmftime(PyObject* dt)
     def __setitem__(self,index,value):
         if isinstance(index,int):
             self.set_i(index,value)
-        if isinstance(index,slice):
+        elif isinstance(index,slice):
             if index.step:
                 raise ValueError("Slices must be continous, when used for setting")
             else:

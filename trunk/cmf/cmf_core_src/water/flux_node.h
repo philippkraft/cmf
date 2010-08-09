@@ -123,6 +123,7 @@ namespace cmf {
 			{
 				throw std::runtime_error("Potential of " + Name + " is read only");
 			}
+			/// Returns true if the node has no water.
 			virtual bool is_empty() const
 			{
 				return true;

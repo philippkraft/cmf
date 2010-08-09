@@ -76,6 +76,7 @@ namespace cmf {
 			}
 			void AddValuesToStates(const num_array& operands);
 #endif
+			/// Add state variables from a StateVariableOwner
 			virtual void AddStatesFromOwner(cmf::math::StateVariableOwner& stateOwner) {
 				state_queue sq = stateOwner.get_states();
 				m_States.insert(m_States.end(),sq.begin(),sq.end());
@@ -88,9 +89,7 @@ namespace cmf {
 
 			//@}
 		public:
-			/// A public variable to identify the solver
-			char Tag;
-			bool UseEulerAtTmin;
+			/// if true (default), OpenMP is used calculate the right hand side function f(y,t) in parallel
 			bool use_OpenMP;
 
 			/// returns the number of state variables
@@ -98,6 +97,7 @@ namespace cmf {
 			{
 				return (int)m_States.size();
 			}
+			/// Returns the statevariable at position
 			StateVariable::ptr operator[](int position) {
 				return m_States[position];
 			}
@@ -111,7 +111,7 @@ namespace cmf {
 			{
 				m_States[position]->set_state(newState);
 			}
-
+			/// gets the state variables of the integrator
 			state_queue get_states() {
 				state_queue q;
 				for(state_vector::const_iterator it = m_States.begin(); it != m_States.end(); ++it)
@@ -127,42 +127,32 @@ namespace cmf {
 			//@{
 			///Tolerable error
 			const real Epsilon;
-			///Minimal timestep
-			const cmf::math::Time m_MinTimestep;
 			//@}
 			/// @name model time
 			//@{
 			/// Actual time of the solver
-			cmf::math::Time m_Time;
+			cmf::math::Time m_t;
 			/// last time step of the solver
-			cmf::math::Time m_TimeStep;
-			/// Proposed step width for the next time step
-			cmf::math::Time m_NextTimeStep;
+			cmf::math::Time m_dt;
 			/// Protected function to adjust the step width for stability reasons
 			void AdjustTimestep(cmf::math::Time& TimeStep,cmf::math::Time MaxTime)
 			{
 				//We should not step over the maximum time
-				if ( MaxTime - m_Time <= TimeStep) 
-					TimeStep = MaxTime-m_Time;
+				if ( MaxTime - m_t <= TimeStep) 
+					TimeStep = MaxTime-m_t;
 				//If the max time is reached at the next time step, we should lower the timestep, to avoid a too short timestep on the next call
-				else if	((MaxTime - m_Time) < TimeStep*2.0) 
-					TimeStep = (MaxTime - m_Time) * 0.5;
+				else if	((MaxTime - m_t) < TimeStep*2.0) 
+					TimeStep = (MaxTime - m_t) * 0.5;
 			}
 			//number of iterations
 			int m_Iterations;
 		public:
 			///Returns the current model time
-			cmf::math::Time ModelTime() const { return m_Time; }
+			cmf::math::Time get_t() const { return m_t; }
 			///Sets the current model time
-			void ModelTime(cmf::math::Time val) { m_Time = val;Reset(); }
+			void set_t(cmf::math::Time val) { m_t = val;Reset(); }
 			///Returns the last time step
-			cmf::math::Time TimeStep() const { return m_TimeStep; }
-			///Returns the next time step width
-			cmf::math::Time NextTimeStep() const { return m_NextTimeStep; }
-			///Sets the next time step width
-			void NextTimeStep(cmf::math::Time val) { m_NextTimeStep = val; }
-			///Returns The minimal allowed time step length
-			const cmf::math::Time MinTimestep() const { return m_MinTimestep; }
+			cmf::math::Time get_dt() const { return m_dt; }
 			int Iterations() const { return m_Iterations;}
 			void ResetIterations() {m_Iterations=0;}
 			virtual void Reset() {}
@@ -173,11 +163,11 @@ namespace cmf {
 			/// Constructs a new Integrator with a new own state vector
 			/// @param epsilon relative error tolerance per time step (default=1e-9)
 			/// @param tStepMin minimum time step (default=10s)
-			Integrator(real epsilon=1e-9,cmf::math::Time tStepMin=Time::Seconds(10)) 
-				: m_States(), Epsilon(epsilon),m_MinTimestep(tStepMin),m_TimeStep(1.0),m_Time(0.0),m_NextTimeStep(1.0),UseEulerAtTmin(0)
+			Integrator(real epsilon=1e-9) 
+				: m_States(), Epsilon(epsilon),m_dt(day),m_t(day)
 			{}
-			Integrator(cmf::math::StateVariableOwner& states,real epsilon=1e-9,cmf::math::Time tStepMin=cmf::math::sec * 10.0)
-				: m_States(),Epsilon(epsilon),m_MinTimestep(tStepMin),m_TimeStep(1.0),m_Time(0.0),m_NextTimeStep(1.0),error_position(0),UseEulerAtTmin(0) ,use_OpenMP(1)
+			Integrator(cmf::math::StateVariableOwner& states,real epsilon=1e-9)
+				: m_States(),Epsilon(epsilon),m_dt(day),m_t(day*0),error_position(0) ,use_OpenMP(1)
 			{
 				state_queue sq = states.get_states();
 				m_States.insert(m_States.end(),sq.begin(),sq.end());
@@ -185,11 +175,6 @@ namespace cmf {
 			void operator+=(StateVariableOwner& states) {
 				AddStatesFromOwner(states);
 			}
-			/// Copy constructor, does not copy the state variables
-			Integrator(const Integrator& forCopy)
-				: Epsilon(forCopy.Epsilon), m_MinTimestep(forCopy.m_MinTimestep),m_NextTimeStep(forCopy.m_NextTimeStep),m_Time(forCopy.m_Time),m_TimeStep(forCopy.m_TimeStep),
-				Tag(forCopy.Tag),m_States(),UseEulerAtTmin(forCopy.UseEulerAtTmin),use_OpenMP(forCopy.use_OpenMP)
-			{}
 			
 			/// Returns a new Integrator, based on this (without the state variables), e.g. same type, epsilon, model time etc.
 			virtual cmf::math::Integrator * Copy() const=0;
@@ -201,19 +186,20 @@ namespace cmf {
 			///Integrates the vector of state variables
 			/// @param MaxTime To stop the model (if running in a model framework) at time steps of value exchange e.g. full hours, the next value exchange time can be given
 			/// @param TimeStep Takes the proposed timestep, and changes it into the effictivly used timestep according to the local stiffness of the problem and MaxTime
-			virtual int Integrate(cmf::math::Time MaxTime,cmf::math::Time TimeStep)=0;
-			int Integrate( cmf::math::Time MaxTime)
-			{		return Integrate(MaxTime,m_NextTimeStep);	}
-			///
-			void IntegrateUntil(cmf::math::Time MaxTime)
-			{ IntegrateUntil(MaxTime,m_NextTimeStep);	}
+			virtual int integrate(cmf::math::Time t_max,cmf::math::Time dt)=0;
 			///Integrates the vector of state variables until MaxTime
-			void IntegrateUntil(cmf::math::Time MaxTime,cmf::math::Time TimeStep)
+			void integrate_until(cmf::math::Time t_max,cmf::math::Time dt=Time(),bool reset=false)
 			{
 				m_Iterations=0;
-				m_NextTimeStep=TimeStep;
-				while (m_Time < MaxTime)
-					Integrate(MaxTime);
+				int i=0;
+				Time start = m_t;
+				if (reset) Reset();
+				if (!dt) dt=m_dt;
+				while (m_t < t_max) {
+					integrate(t_max,dt);
+					++i;
+				}
+				m_dt = (t_max - start)/i;
 			}
 
 			//@}

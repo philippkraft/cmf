@@ -44,22 +44,25 @@ namespace cmf {
 			{return kValues[order]; }
 			///Vector of the state variable in the beginning of the integration
 			num_array oldStates;
+			/// Copy constructor, does not copy 
+			RKFIntegrator(const RKFIntegrator& forCopy);
+
+			Time dt_min;
 			//@}
 		public:
+			/// Adds states from an StateVariableOwner
 			void AddStatesFromOwner( cmf::math::StateVariableOwner& stateOwner );
 
 			/// Constructs a new RKFIntegrator from a pointer to a vector of state variables
 			/// @note The RKF Integrator becomes the owner of states
 			/// @param states Statevariables of the system
 			/// @param epsilon relative error tolerance per time step (default=1e-9)
-			/// @param tStepMin minimum time step (default=10s)
-			RKFIntegrator(StateVariableOwner& states, real epsilon=1e-9,cmf::math::Time tStepMin=Time::Seconds(10));
+			/// @param tStepMin minimum time step (default=1s)
+			RKFIntegrator(StateVariableOwner& states, real epsilon=1e-9,cmf::math::Time dt_min=cmf::math::timespan(1000));
 			/// Constructs a new RKFIntegrator
 			/// @param epsilon relative error tolerance per time step (default=1e-9)
-			/// @param tStepMin minimum time step (default=10s)
-			RKFIntegrator(real epsilon=1e-9,cmf::math::Time tStepMin=Time::Seconds(10));
-			/// Copy constructor, does not copy 
-			RKFIntegrator(const Integrator& forCopy);
+			/// @param tStepMin minimum time step (default=1s)
+			RKFIntegrator(real epsilon=1e-9,cmf::math::Time dt_min=cmf::math::timespan(1000));
 			
 
 			virtual Integrator * Copy() const
@@ -70,7 +73,7 @@ namespace cmf {
 			///Integrates the vector of state variables
 			/// @param MaxTime To stop the model (if running in a model framework) at time steps of value exchange e.g. full hours, the next value exchange time can be given
 			/// @param TimeStep Takes the proposed timestep, and changes it into the effictivly used timestep according to the local stiffness of the problem and MaxTime
-			int Integrate(cmf::math::Time MaxTime,cmf::math::Time TimeStep);
+			int integrate(cmf::math::Time MaxTime,cmf::math::Time TimeStep);
 	
 
 		};

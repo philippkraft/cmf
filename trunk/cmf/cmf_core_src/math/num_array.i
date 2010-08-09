@@ -118,6 +118,8 @@ size_t from_npy_array(PyObject* op,double ** data) {
     $result = as_npy_array($1);
 }
 
+
+
 %echo "num_array.i OK";
 
 

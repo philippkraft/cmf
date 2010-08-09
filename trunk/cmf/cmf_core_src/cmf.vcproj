@@ -111,11 +111,11 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				InlineFunctionExpansion="2"
-				FavorSizeOrSpeed="1"
+				InlineFunctionExpansion="0"
+				FavorSizeOrSpeed="0"
 				WholeProgramOptimization="false"
-				AdditionalIncludeDirectories="C:\Python26\include;&quot;d:\Code\sundials-2.4.0\inst_msvc\include&quot;;d:\Code\boost_1_41_0\boost\tr1;d:\Code\boost_1_41_0"
-				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;_USRDLL;CMF_EXPORTS;_SCL_SECURE_NO_WARNINGS"
+				AdditionalIncludeDirectories="D:\Code\cmf\cmf\cmf_core_src\math\integrators\sundials_cvode\include;C:\Python26\include;d:\Code\boost_1_41_0\boost\tr1;d:\Code\boost_1_41_0"
+				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;_USRDLL;CMF_EXPORTS;_SCL_SECURE_NO_WARNINGS;_CRT_SECURE_NO_WARNINGS;CMF_DEBUG"
 				RuntimeLibrary="2"
 				DisableLanguageExtensions="false"
 				OpenMP="true"
@@ -137,10 +137,9 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalOptions="/ignore:4099"
-				AdditionalDependencies="sundials_cvode.lib sundials_nvecserial.lib"
 				OutputFile="$(OutDir)\_cmf_core.pyd"
 				LinkIncremental="1"
-				AdditionalLibraryDirectories="c:\Python26\libs;&quot;D:\Code\sundials-2.4.0\inst_msvc\lib&quot;"
+				AdditionalLibraryDirectories="c:\Python26\libs;"
 				IgnoreAllDefaultLibraries="false"
 				GenerateDebugInformation="true"
 				SubSystem="2"
@@ -267,6 +266,74 @@
 				>
 			</File>
 			<File
+				RelativePath=".\math\integrators\sundials_cvode\include\cvode\cvode.h"
+				>
+			</File>
+			<File
+				RelativePath=".\math\integrators\sundials_cvode\include\cvode\cvode_band.h"
+				>
+			</File>
+			<File
+				RelativePath=".\math\integrators\sundials_cvode\include\cvode\cvode_bandpre.h"
+				>
+			</File>
+			<File
+				RelativePath=".\math\integrators\sundials_cvode\src\cvode_bandpre_impl.h"
+				>
+			</File>
+			<File
+				RelativePath=".\math\integrators\sundials_cvode\include\cvode\cvode_bbdpre.h"
+				>
+			</File>
+			<File
+				RelativePath=".\math\integrators\sundials_cvode\src\cvode_bbdpre_impl.h"
+				>
+			</File>
+			<File
+				RelativePath=".\math\integrators\sundials_cvode\include\cvode\cvode_dense.h"
+				>
+			</File>
+			<File
+				RelativePath=".\math\integrators\sundials_cvode\include\cvode\cvode_diag.h"
+				>
+			</File>
+			<File
+				RelativePath=".\math\integrators\sundials_cvode\src\cvode_diag_impl.h"
+				>
+			</File>
+			<File
+				RelativePath=".\math\integrators\sundials_cvode\include\cvode\cvode_direct.h"
+				>
+			</File>
+			<File
+				RelativePath=".\math\integrators\sundials_cvode\src\cvode_direct_impl.h"
+				>
+			</File>
+			<File
+				RelativePath=".\math\integrators\sundials_cvode\src\cvode_impl.h"
+				>
+			</File>
+			<File
+				RelativePath=".\math\integrators\sundials_cvode\include\cvode\cvode_spbcgs.h"
+				>
+			</File>
+			<File
+				RelativePath=".\math\integrators\sundials_cvode\include\cvode\cvode_spgmr.h"
+				>
+			</File>
+			<File
+				RelativePath=".\math\integrators\sundials_cvode\include\cvode\cvode_spils.h"
+				>
+			</File>
+			<File
+				RelativePath=".\math\integrators\sundials_cvode\src\cvode_spils_impl.h"
+				>
+			</File>
+			<File
+				RelativePath=".\math\integrators\sundials_cvode\include\cvode\cvode_sptfqmr.h"
+				>
+			</File>
+			<File
 				RelativePath=".\math\integrators\cvodeIntegrator.h"
 				>
 			</File>
@@ -311,6 +378,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\math\irregular_timeseries.h"
+				>
+			</File>
+			<File
 				RelativePath=".\Upslope\layer_list.h"
 				>
 			</File>
@@ -328,6 +399,14 @@
 			</File>
 			<File
 				RelativePath=".\math\num_array.h"
+				>
+			</File>
+			<File
+				RelativePath=".\math\integrators\sundials_cvode\include\nvector\nvector_parallel.h"
+				>
+			</File>
+			<File
+				RelativePath=".\math\integrators\sundials_cvode\include\nvector\nvector_serial.h"
 				>
 			</File>
 			<File
@@ -392,6 +471,58 @@
 			</File>
 			<File
 				RelativePath=".\upslope\connections\subsurfacefluxes.h"
+				>
+			</File>
+			<File
+				RelativePath=".\math\integrators\sundials_cvode\include\sundials\sundials_band.h"
+				>
+			</File>
+			<File
+				RelativePath=".\math\integrators\sundials_cvode\include\sundials\sundials_config.h"
+				>
+			</File>
+			<File
+				RelativePath=".\math\integrators\sundials_cvode\include\sundials\sundials_dense.h"
+				>
+			</File>
+			<File
+				RelativePath=".\math\integrators\sundials_cvode\include\sundials\sundials_direct.h"
+				>
+			</File>
+			<File
+				RelativePath=".\math\integrators\sundials_cvode\include\sundials\sundials_fnvector.h"
+				>
+			</File>
+			<File
+				RelativePath=".\math\integrators\sundials_cvode\include\sundials\sundials_iterative.h"
+				>
+			</File>
+			<File
+				RelativePath=".\math\integrators\sundials_cvode\include\sundials\sundials_lapack.h"
+				>
+			</File>
+			<File
+				RelativePath=".\math\integrators\sundials_cvode\include\sundials\sundials_math.h"
+				>
+			</File>
+			<File
+				RelativePath=".\math\integrators\sundials_cvode\include\sundials\sundials_nvector.h"
+				>
+			</File>
+			<File
+				RelativePath=".\math\integrators\sundials_cvode\include\sundials\sundials_spbcgs.h"
+				>
+			</File>
+			<File
+				RelativePath=".\math\integrators\sundials_cvode\include\sundials\sundials_spgmr.h"
+				>
+			</File>
+			<File
+				RelativePath=".\math\integrators\sundials_cvode\include\sundials\sundials_sptfqmr.h"
+				>
+			</File>
+			<File
+				RelativePath=".\math\integrators\sundials_cvode\include\sundials\sundials_types.h"
 				>
 			</File>
 			<File
@@ -463,6 +594,54 @@
 				>
 			</File>
 			<File
+				RelativePath=".\math\integrators\sundials_cvode\src\cvode.c"
+				>
+			</File>
+			<File
+				RelativePath=".\math\integrators\sundials_cvode\src\cvode_band.c"
+				>
+			</File>
+			<File
+				RelativePath=".\math\integrators\sundials_cvode\src\cvode_bandpre.c"
+				>
+			</File>
+			<File
+				RelativePath=".\math\integrators\sundials_cvode\src\cvode_bbdpre.c"
+				>
+			</File>
+			<File
+				RelativePath=".\math\integrators\sundials_cvode\src\cvode_dense.c"
+				>
+			</File>
+			<File
+				RelativePath=".\math\integrators\sundials_cvode\src\cvode_diag.c"
+				>
+			</File>
+			<File
+				RelativePath=".\math\integrators\sundials_cvode\src\cvode_direct.c"
+				>
+			</File>
+			<File
+				RelativePath=".\math\integrators\sundials_cvode\src\cvode_io.c"
+				>
+			</File>
+			<File
+				RelativePath=".\math\integrators\sundials_cvode\src\cvode_spbcgs.c"
+				>
+			</File>
+			<File
+				RelativePath=".\math\integrators\sundials_cvode\src\cvode_spgmr.c"
+				>
+			</File>
+			<File
+				RelativePath=".\math\integrators\sundials_cvode\src\cvode_spils.c"
+				>
+			</File>
+			<File
+				RelativePath=".\math\integrators\sundials_cvode\src\cvode_sptfqmr.c"
+				>
+			</File>
+			<File
 				RelativePath=".\math\integrators\cvodeIntegrator.cpp"
 				>
 			</File>
@@ -516,6 +695,10 @@
 			</File>
 			<File
 				RelativePath=".\math\num_array.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\math\integrators\sundials_cvode\src\nvector_serial.c"
 				>
 			</File>
 			<File
@@ -576,6 +759,42 @@
 			</File>
 			<File
 				RelativePath=".\upslope\connections\subsurfacefluxes.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\math\integrators\sundials_cvode\src\sundials_band.c"
+				>
+			</File>
+			<File
+				RelativePath=".\math\integrators\sundials_cvode\src\sundials_dense.c"
+				>
+			</File>
+			<File
+				RelativePath=".\math\integrators\sundials_cvode\src\sundials_direct.c"
+				>
+			</File>
+			<File
+				RelativePath=".\math\integrators\sundials_cvode\src\sundials_iterative.c"
+				>
+			</File>
+			<File
+				RelativePath=".\math\integrators\sundials_cvode\src\sundials_math.c"
+				>
+			</File>
+			<File
+				RelativePath=".\math\integrators\sundials_cvode\src\sundials_nvector.c"
+				>
+			</File>
+			<File
+				RelativePath=".\math\integrators\sundials_cvode\src\sundials_spbcgs.c"
+				>
+			</File>
+			<File
+				RelativePath=".\math\integrators\sundials_cvode\src\sundials_spgmr.c"
+				>
+			</File>
+			<File
+				RelativePath=".\math\integrators\sundials_cvode\src\sundials_sptfqmr.c"
 				>
 			</File>
 			<File

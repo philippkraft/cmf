@@ -61,6 +61,12 @@ cmf::math::num_array::num_array( double * data,size_t count )
 	m_size=count;
 }
 
+cmf::math::num_array::num_array( const_iterator begin,const_iterator end )
+{
+	m_size = end - begin;
+	m_data = new double[m_size];
+	std::copy(begin,end,m_data);
+}
 cmf::math::num_array::~num_array()
 {
 	if (m_size)
@@ -88,7 +94,6 @@ cmf::math::num_array& cmf::math::num_array::operator=( const num_array& vector )
 
 cmf::math::num_array& cmf::math::num_array::operator=( real scalar )
 {
-#pragma omp parallel for
 	for (int i = 0; i < size(); ++i)
 		m_data[i] = scalar;
 	return (*this);
@@ -104,6 +109,7 @@ cmf::math::num_array& cmf::math::num_array::operator=( const std::vector<double>
 	}
 	return *this;
 }
+
 cmf::math::num_array& cmf::math::num_array::operator-=( real _Right )
 {
 #pragma omp parallel for
