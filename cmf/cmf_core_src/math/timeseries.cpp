@@ -106,8 +106,10 @@ cmf::math::timeseries& cmf::math::timeseries::operator/=( double _Right )
 cmf::math::timeseries& cmf::math::timeseries::operator+=(timeseries _Right )
 {
 #pragma omp parallel for
-	for (int i = 0; i < size(); ++i)
-		m_data->values[i] += _Right[time_at_position(i)];
+	for (int i = 0; i < size(); ++i) {
+		Time t = time_at_position(i);
+		m_data->values[i] += _Right[t];
+	}
 	return (*this);
 }
 cmf::math::timeseries& cmf::math::timeseries::operator-=(timeseries _Right )
@@ -461,14 +463,63 @@ cmf::math::timeseries cmf::math::timeseries::power(double exponent) const
 		res.add(pow(get_i(i),exponent));
 	return res;
 }
+inline bool is_nodata(double value,double nodata_value) { return fabs(value-nodata_value)<1e-15;}
+void cmf::math::timeseries::remove_nodata( double nodata_value )
+{
+	int i =0;
+	while (i<size())	{
+		double current_value = this->get_i(i);
+		double next_value=nodata_value;
+		double first_value=nodata_value;
+		if (is_nodata(current_value,nodata_value))	{
+			int j=i;
+			while (j<size() && is_nodata(get_i(j),nodata_value)) ++j;
+			if (j<size()) 
+				next_value = get_i(j);
+			else if (i) 
+				next_value = get_i(i-1);
+			else
+				throw std::runtime_error("Timeseries contains only no data values. Can't remove them.");
+
+			if (i) // use value before nodat occurance as left side value for interpolation
+				first_value = get_i(i-1);
+			else // use constant right value for interpolation
+				first_value = next_value;
+			// interpolate linear
+			for (int k = i; k < j; ++k) {
+				double f_next = double(k-(i-1))/double(j-(i-1));
+				set_i(k, f_next * next_value + (1-f_next) * first_value);
+			}
+			i=j;
+		} else {
+			// Goto next value
+			++i;
+		}
+	}
+}
+
+void cmf::math::timeseries::set_i( int i,double value )
+{
+	int ndx = i;
+	if (ndx<0) ndx = size() + i;
+	if (ndx>=size()) throw std::out_of_range("Index is out of range of the timeseries");
+	double & d=m_data->values[ndx];
+	d=value;
+}
+
+void cmf::math::timeseries::set_t( cmf::math::Time t,double value )
+{
+	int pos=int(position(t)+0.5);
+	set_i(pos,value);
+}
 
 double cmf::math::nash_sutcliff(const cmf::math::timeseries& model,const cmf::math::timeseries& observation)
 {
 	double mean_obs=observation.mean();
 	double sq_sum_diff=0,sq_sum_ind=0;
-	cmf::math::Time begin=maximum_t(model.begin(),observation.begin());
-	cmf::math::Time end=minimum_t(model.end(),observation.end());
-	cmf::math::Time step=maximum_t(model.step(),observation.step());
+	cmf::math::Time begin=std::max(model.begin(),observation.begin());
+	cmf::math::Time end=std::min(model.end(),observation.end());
+	cmf::math::Time step=std::max(model.step(),observation.step());
 	double model_t, obs_t;
 	for (cmf::math::Time t=begin;t<=end;t+=step)
 	{
@@ -487,9 +538,9 @@ double cmf::math::R2( const cmf::math::timeseries& model,const cmf::math::timese
 {
 	double mean_y=observation.mean();
 	double numerator=0,denominator=0;
-	cmf::math::Time begin=maximum_t(model.begin(),observation.begin());
-	cmf::math::Time end=minimum_t(model.begin(),observation.begin());
-	cmf::math::Time step=maximum_t(model.begin(),observation.begin());
+	cmf::math::Time begin=std::max(model.begin(),observation.begin());
+	cmf::math::Time end=std::min(model.begin(),observation.begin());
+	cmf::math::Time step=std::max(model.begin(),observation.begin());
 	for (cmf::math::Time t=begin;t<=end;t+=step)
 	{
 		numerator+=square(model[t]-mean_y);

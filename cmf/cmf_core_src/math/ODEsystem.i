@@ -27,10 +27,11 @@
 #include "math/integrators/multiintegrator.h"
 %}
 
-%ignore svVector;
 
 
 %attribute(cmf::math::StateVariable,real,state,get_state,set_state);
+%attributeval(cmf::math::Integrator,cmf::math::Time,t,get_t,set_t);
+%attributeval(cmf::math::Integrator,cmf::math::Time,dt,get_dt);
 %include "math/statevariable.h"
 
 %include "math/integrators/integrator.h"
@@ -44,15 +45,18 @@
 
 %extend cmf::math::Integrator { 
 %pythoncode {
-    t=property(ModelTime,ModelTime,"Gets or sets the model time of the integrator")
-    dt=property(TimeStep,None,"Gets the length of the last internal time step of the integrator")
-    def __call__(self,t):
+    def __call__(self,t,dt=None):
+        if dt is None:
+            dt = Time()
         if t<self.t:
-            self.IntegrateUntil(self.t+t)
+            self.integrate_until(self.t+t)
         else:
-            self.IntegrateUntil(t)
-    def run(self,start=day*0,end=day*1,step=day*1):
-        self.t=start
+            self.integrate_until(t)
+    def run(self,start=None,end=None,step=day*1):
+        if not start is None:
+            self.t=start
+        if end is None:
+            end = self.t + 100*step
         while self.t<end:
             self(self.t+step)
             yield self.t

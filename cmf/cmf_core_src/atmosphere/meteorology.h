@@ -28,6 +28,9 @@
 #include <string>
 
 namespace cmf {
+	namespace upslope {
+		class Cell;
+	}
 	/// @defgroup meteo Meteorological data
 	/// Meteorological data contains objects to store an regionalize rainfall measurements on the one hand, 
 	/// and other meteorological data, used for ET calculations on the other side. In the following the term 
@@ -36,11 +39,15 @@ namespace cmf {
 	/// @ingroup meteo
 	/// Contains classes to describe interactions with the atmosphere
 	namespace atmosphere {
+		/// Returns the saturated vapor pressure  in Pa for temperature T [degC]
 		double vapour_pressure(double T);
+		/// Returns the vapor pressure deficit in Pa for temperature T [degC] and rel. humidity rH [%]
 		double vpd_from_rH(double T,double rH);
+		/// Returns the rel. humidity in % for temperature T [degC] and vapor pressure deficit vpd [Pa]
 		double rH_from_vpd(double T, double vpd);
-
+		/// Returns the global radiation in MJ/(m2 day)
 		double global_radiation(cmf::math::Time t,double height,double sunshine_fraction,double longitude=8,double latitude=51,double time_zone=1,bool daily=0);
+		/// Returns the average air pressure for a height (m a.s.l.)
 		double Pressure(double height);
 
 		/// @ingroup meteo
@@ -57,7 +64,7 @@ namespace cmf {
 				e_s,				///< Saturated vapor pressure in \f$e_s [kPa]\f$
 				sunshine,		///< Fractional sunshine duration (per potential sunshine duration) \f$\frac n N\ [-]\f$
 				Rs,					///< Global Radiation in \f$R_s \left[\frac{MJ}{m^2 day}\right]\f$
-				daylength,
+				daylength,    /// length of the day in h
 				instrument_height; ///< Height of the measuring instuments above the vegetation
 
 			/** Calculates the net radiation flux  \f$R_n \left[\frac{MJ}{m^2 day}\right]\f$
@@ -94,9 +101,11 @@ namespace cmf {
 			/// @param _wind     actual wind speed in m/s
 			/// @param _sunshine actual fraction of sunshine duration per potential sunshine duration in h/h
 			/// @param _Rs       actual incoming shortwave global radiation in MJ/(m2 day)
+			/// @param _daylength length of the day in h
 			Weather(double _T,double _Tmax,double _Tmin, double _rH, double _wind=2,double _sunshine=0.5,double  _Rs=15, double _daylength=12)
 				: T(_T), Tmax(_Tmax), Tmin(_Tmin), Tground(_T),e_s(vapour_pressure(_T)),e_a(_rH/100. * vapour_pressure(_T)),
 				Windspeed(_wind),sunshine(_sunshine),Rs(_Rs),daylength(_daylength) {}
+			/// Returns a string representation
 			std::string to_string() const
 			{
 				std::stringstream sstr;
@@ -107,15 +116,19 @@ namespace cmf {
 					<< " Wind=" << Windspeed << " m/s";
 				return sstr.str();
 			}
-
+			/// A model parameter, below which T in degC precipitation falls as snow
 			static double snow_threshold;
+			/// inplace add
 			Weather& operator+=(const Weather& w);
+			/// inplace multiplication
 			Weather& operator*=(double factor);
+			/// add operator
 			Weather operator+(const Weather& w) {
 				Weather res=*this;
 				res+=w;
 				return res;
 			}
+			/// Multiply
 			Weather operator*(double factor) {
 				Weather res=*this;
 				res*=factor;
@@ -138,10 +151,12 @@ namespace cmf {
 
 			/// Returns a copy of the meteorology object. Pure virtual function, needs to be implemented
 			virtual Meteorology* copy() const=0;
+			/// Returns the height of the instruments above canopy
 			virtual real get_instrument_height() const=0;
 		};
 		/// @ingroup meteo
-		/// @brief A primitive implementation of the Meteorology interface. Holds a Weather record and returns it for any date
+		/// A primitive implementation of the Meteorology interface. 
+		/// Holds a Weather record and returns it for any date
 		class ConstantMeteorology : public Meteorology
 		{
 		public:
@@ -157,6 +172,7 @@ namespace cmf {
 			ConstantMeteorology() {}
             /// Creates a ConstantMeteorology with weather w
 			ConstantMeteorology(const cmf::atmosphere::Weather& w) : weather(w) {}
+			/// Copy constructor
 			ConstantMeteorology(const cmf::atmosphere::ConstantMeteorology & other) : weather(other.weather) {}
             /// Creates a new instannce of the ConstantMeteorology with the same weather
 			ConstantMeteorology* copy() const
@@ -232,6 +248,7 @@ namespace cmf {
 				cmf::math::Time startTime=cmf::math::Time(1,1,2001),cmf::math::Time timestep=cmf::math::day,std::string name="");
 
 		public:
+			/// shared pointer
 			typedef std::tr1::shared_ptr<MeteoStation> ptr;
 			///@name Location and behaviour properties
 			//@{
@@ -249,11 +266,13 @@ namespace cmf {
 			bool daily;
 			real InstrumentHeight;
 			//@}
+			/// Copy c'tor
 			MeteoStation(const cmf::atmosphere::MeteoStation& other);
 			///@name Data access methods
 			//@{
 			/// Returns the current Atmosphere state. Uses default values for missing timeseries
 			cmf::atmosphere::Weather get_data(cmf::math::Time t,double height) const;
+			void use_for_cell(cmf::upslope::Cell& c);
 
 			
 			/** Returns the global radiation at a given time step \f$ R_s \frac{MJ}{m^2day}\f$, see http://www.fao.org/docrep/X0490E/x0490e07.htm#radiation
@@ -353,16 +372,26 @@ namespace cmf {
 			{
 				return m_station->InstrumentHeight;
 			}
+			
+			/// Create a located reference to a meteo station
+			/// @param station MeteoStation
+			/// @param location Location of the reference
 			MeteoStationReference(MeteoStation::ptr station,const cmf::geometry::Locatable& location)
 				: m_station(station),m_location(&location), m_kill_location(false) {}
+			/// Create a located reference to a meteo station
+			/// @param station MeteoStation
+			/// @param location Location of the reference
 			MeteoStationReference(MeteoStation::ptr station,cmf::geometry::point location)
 				: m_station(station),m_location(new cmf::geometry::Location(location)), m_kill_location(true) {}
+			/// Copy c'tor
 			MeteoStationReference(const MeteoStationReference& copy)
 				: m_station(copy.m_station),m_location(copy.m_location) {}
+			/// Creates a new copy of the reference
 			MeteoStationReference* copy() const
 			{
 				return new MeteoStationReference(*this);
 			}
+			/// d'tor
 			virtual ~MeteoStationReference()
 			{
 				if (m_kill_location)  
@@ -438,8 +467,9 @@ namespace cmf {
 				m_stations.erase(m_stations.begin()+ (index<0 ? size()+index : index));
 				return res;
 			}
-
+			/// Create empty list
 			MeteoStationList() {}
+			/// Copy c'tor
 			MeteoStationList(const MeteoStationList& copy)
 				: m_stations(copy.m_stations),m_name_map(copy.m_name_map)
 			{
@@ -470,7 +500,13 @@ namespace cmf {
 			const cmf::geometry::point m_position;
 		public:
 
+			/// Creates an reference to a list of stations and interpolates the weather using IDW.
+			/// @param position Position of reference
+			/// @param stations Meteo stations
+			/// @param z_weight Weight of height in IDW procedure
+			/// @param power Power of IDW procedure
 			IDW_Meteorology(const cmf::geometry::Locatable& position,const MeteoStationList& stations,double z_weight, double power);
+			/// Copy c'tor
 			IDW_Meteorology(const IDW_Meteorology& copy)
 				: m_position(copy.m_position), weights(copy.weights) 
 			{}
@@ -486,6 +522,7 @@ namespace cmf {
 		public:
 			/// aerodynamic resistance from ground to atmosphere (r_ag) and from canopy to atmosphere (r_ac)
 			virtual void get_aerodynamic_resistance(double & r_ag,double & r_ac, cmf::math::Time t) const=0;
+			/// shared pointer
 			typedef std::tr1::shared_ptr<aerodynamic_resistance> ptr;
 		};
 

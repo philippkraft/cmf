@@ -21,20 +21,20 @@
 #include <omp.h>
 #endif
 using namespace std;
-cmf::math::RKFIntegrator::RKFIntegrator(StateVariableOwner& states, real epsilon/*=1e-9*/,cmf::math::Time tStepMin/*=10.0/(3600.0*24.0)*/ ) : 
-Integrator(states,epsilon,tStepMin),oldStates(m_States.size())
-{
-	
+cmf::math::RKFIntegrator::RKFIntegrator(StateVariableOwner& states, real epsilon/*=1e-9*/,cmf::math::Time _dt_min/*=10.0/(3600.0*24.0)*/ ) : 
+Integrator(states,epsilon),oldStates(m_States.size()),dt_min(_dt_min)
+{	
 	for (int i = 0; i < 6 ; i++)
 		kValues[i]= num_array(size(),0);
 }
-cmf::math::RKFIntegrator::RKFIntegrator( real epsilon/*=1e-9*/,cmf::math::Time tStepMin/*=10.0/(3600.0*24.0)*/ ) : 
-Integrator(epsilon,tStepMin)
+cmf::math::RKFIntegrator::RKFIntegrator( real epsilon/*=1e-9*/,cmf::math::Time _dt_min/*=10.0/(3600.0*24.0)*/ ) : 
+Integrator(epsilon), dt_min(_dt_min)
 {
 	
 }
 
-cmf::math::RKFIntegrator::RKFIntegrator( const cmf::math::Integrator& forCopy ) : Integrator(forCopy)
+cmf::math::RKFIntegrator::RKFIntegrator( const cmf::math::RKFIntegrator& forCopy ) 
+: Integrator(forCopy),dt_min(forCopy.dt_min)
 {
 	
 }
@@ -64,25 +64,23 @@ cmf::math::RKFIntegrator::e[6] = { -1.0/360.0,  0.0, 128.0/4275.0, 2197.0/75240.
 
 //Returns the proposed timestep for the next integration
 
-int cmf::math::RKFIntegrator::Integrate(cmf::math::Time MaxTime,cmf::math::Time TimeStep)
+int cmf::math::RKFIntegrator::integrate(cmf::math::Time MaxTime,cmf::math::Time TimeStep)
 {
-	if (TimeStep<m_MinTimestep)
-		TimeStep=m_MinTimestep;
+	if (TimeStep<dt_min)
+		TimeStep=dt_min;
 	//If we are nearly at the maximum time, we do a (small) Euler step)
-	if (MaxTime - m_Time < m_MinTimestep)
+	if (MaxTime - m_t < dt_min)
 	{
-		//Preserve the given timestep as a proposal for the next
-		m_NextTimeStep=TimeStep;
 		//Use as time step the difference between MaxTime and Time
-		m_TimeStep = MaxTime - m_Time;
+		m_dt = MaxTime - m_t;
 		//Calculate new states with an eulerian step : x(t+h) = x(t) + timeStep * dx/dt
 		// Copy derivates multipied with time step to dxdt
-		CopyDerivs(ModelTime(),kValues[0],TimeStep.AsDays());
+		CopyDerivs(get_t(),kValues[0],TimeStep.AsDays());
 		// Update time step with delta x
 		AddValuesToStates(kValues[0]);
 
 		//Step to MaxTime
-		m_Time = MaxTime;
+		m_t = MaxTime;
 		
 	  return 1;
 	}
@@ -104,7 +102,7 @@ int cmf::math::RKFIntegrator::Integrate(cmf::math::Time MaxTime,cmf::math::Time 
 		error=0;
 		//Calculate k[0] (the current derivate)	
 		
-		CopyDerivs(m_Time,k(0));
+		CopyDerivs(m_t,k(0));
 
 		//For each higher order of the Runge-Kutta integrator
 		for (int order = 1; order <= 5 ; order++)
@@ -124,7 +122,7 @@ int cmf::math::RKFIntegrator::Integrate(cmf::math::Time MaxTime,cmf::math::Time 
 				//Update the state value for that order, to calculate the next k value
 				set_state(i,kSum * h.AsDays() + oldStates[i]); 
 			} //Done with system equations
-			const Time subTimestep = m_Time + h * c[order];
+			const Time subTimestep = m_t + h * c[order];
 			//For each differential equation of the system, calculate the derivate from the new state
 			CopyDerivs(subTimestep,k(order));
 		} // next order
@@ -173,23 +171,22 @@ int cmf::math::RKFIntegrator::Integrate(cmf::math::Time MaxTime,cmf::math::Time 
 		s = s < 0.1 ? 0.1 : s;
 		//Last but not least, no timesteps smaller than minTimestep are allowed, 
 		//maybe in this case the model should exit with an error "No stable solution possible"
-		h = h*s < m_MinTimestep ? m_MinTimestep : h*s;
+		h = h*s < dt_min ? dt_min : h*s;
 		//Count the number of tries
 		Loops++;
 		//If we have to try again:
-		if (error > Epsilon && Loops<100 && TimeStep>m_MinTimestep)
+		if (error > Epsilon && Loops<100 && TimeStep>dt_min)
 		{
 			//Reset the states to the old states, and try again with the new time step
 			SetStates(oldStates);
 		}
 		//In case of a good solution or if no solution after 100 tries is found, we exit the trying
-	} while (error > Epsilon && Loops<100 && TimeStep>m_MinTimestep);
+	} while (error > Epsilon && Loops<100 && TimeStep>dt_min);
 	// A stable solution for the timestep TimeStep is found, h is the proposal for the next time step
 	//Add the last timestep to the system time
-	m_Time +=TimeStep;
-	m_TimeStep=TimeStep;
+	m_t +=TimeStep;
+	m_dt=TimeStep;
 	//return the proposed time step for the next integration
-	m_NextTimeStep=h;
 	++m_Iterations;
 	return Loops;
 

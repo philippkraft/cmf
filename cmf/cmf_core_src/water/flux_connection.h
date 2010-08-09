@@ -141,6 +141,36 @@ namespace cmf {
 				RecalcAlways=true;
 			}
 		};
+
+		/// @ingroup connections
+		/// Flux from one node to another, controlled by the user or an external program, 
+		/// by changing the flux constant
+		class external_control_connection : public flux_connection {
+		protected:
+			real calc_q(cmf::math::Time t)	{
+				return flux;
+			}
+			void NewNodes() {}
+		public:
+			real flux;
+			external_control_connection(flux_node::ptr source,flux_node::ptr target,real flux_value=0) 
+				: flux_connection(source,target,"external controlled connection"),flux(flux_value)			
+			{
+				RecalcAlways=true;
+			}
+		};
+		/// @ingroup connections
+		/// Sets a constant flux between two nodes, if an external_control_connection exists. 
+		// Otherwise an error is thrown
+		void set_flux(flux_node::ptr source,flux_node::ptr target,real flux_value);
+		
+		/// @ingroup connections
+		/// Checks if a constant flux between two nodes can be set. Returns true
+		/// if the nodes are connected by an external_control_connection
+		bool can_set_flux(flux_node::ptr source,flux_node::ptr target);
+
+
+
 	}
 }
 

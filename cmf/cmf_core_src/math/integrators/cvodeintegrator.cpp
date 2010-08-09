@@ -42,10 +42,24 @@ int cmf::math::CVodeIntegrator::f( realtype t, N_Vector u, N_Vector udot, void *
 	int nsize=int(integ->size());
 	// Update the states from the state vector
 	integ->SetStates(udata);
-
 	Time T=cmf::math::day * t;
+	Time T_model = integ->get_t();
+	real sec_local = (T - T_model)/sec;
 	// Get the derivatives at time T
+
+/*
+#ifdef CMF_DEBUG
+	num_array cmp_dudata(dudata,dudata+nsize);
+#endif
+*/
 	integ->CopyDerivs(T,dudata);
+/*
+#ifdef CMF_DEBUG
+	num_array new_dudata(dudata,nsize);
+	cmp_dudata-=new_dudata;
+#endif
+*/
+
 	return 0;
 }
 
@@ -53,7 +67,7 @@ int cmf::math::CVodeIntegrator::f( realtype t, N_Vector u, N_Vector udot, void *
 void cmf::math::CVodeIntegrator::ReInit(Time initdt, real epsilon)
 {
 	if (epsilon==0) epsilon=Epsilon;
-	CVodeReInit(cvode_mem,ModelTime().AsDays(),m_y);
+	CVodeReInit(cvode_mem,get_t().AsDays(),m_y);
 	CVodeSetInitStep(cvode_mem,initdt.AsDays());
 }
 
@@ -72,11 +86,15 @@ void cmf::math::CVodeIntegrator::Initialize()
 	// Set the state vector as user data of the solver
 	CVodeSetUserData(cvode_mem,(void *) this);
 	// Local copy of Epsilon needed for CVodeMalloc
-	realtype epsilon=Epsilon;
+	realtype reltol=Epsilon;
+	N_Vector abstol=N_VNew_Serial(N);
+	realtype * abstol_data=NV_DATA_S(abstol);
+	for (int i = 0; i < N ; ++i)
+		abstol_data[i] = m_States[i]->get_abs_errtol(reltol);
 	int flag=0;
 	// Allocate memory for solver and set the right hand side function, start time and error tolerance
-	flag=CVodeInit(cvode_mem,cmf::math::CVodeIntegrator::f,ModelTime().AsDays(),m_y);
-	flag=CVodeSStolerances(cvode_mem,epsilon,epsilon);
+	flag=CVodeInit(cvode_mem,cmf::math::CVodeIntegrator::f,get_t().AsDays(),m_y);
+	flag=CVodeSVtolerances(cvode_mem,reltol,abstol);
 	if (MaxOrder>2) flag=CVodeSetStabLimDet(cvode_mem,1);
 	flag=CVodeSetMaxOrd(cvode_mem,MaxOrder);
 	flag=CVodeSetMaxNonlinIters(cvode_mem,MaxNonLinearIterations);
@@ -123,40 +141,44 @@ cmf::math::CVodeIntegrator::~CVodeIntegrator()
 	if (cvode_mem) CVodeFree(&cvode_mem);
 
 }
-int cmf::math::CVodeIntegrator::Integrate( cmf::math::Time MaxTime,cmf::math::Time TimeStep )
+int cmf::math::CVodeIntegrator::integrate( cmf::math::Time MaxTime,cmf::math::Time TimeStep )
 {
+	
 	// If solver or y is not initialized, initialize them
 	if (!cvode_mem || !m_y )
 	{
-		m_TimeStep=MaxTime-ModelTime();
+		m_dt=MaxTime-get_t();
 		Initialize();
-	}
-	if (reinit_always)
-	{
-		realtype epsilon=Epsilon;
-		CVodeReInit(cvode_mem,ModelTime().AsDays(),m_y);
 	}
 	// Get data of y
 	realtype * y_data=NV_DATA_S(m_y);
 	// Time step, needed as return value
-	realtype t=0;
-	// Solver until MaxTime
+	realtype t_ret,t_step;
 	CVodeSetStopTime(cvode_mem,MaxTime.AsDays());
-	int res=CVode(cvode_mem,MaxTime.AsDays(),m_y,&t,CV_NORMAL);
-	// Throw if integration fails
-	if (res<0) 
-	{
+	int res = CVode(cvode_mem,MaxTime.AsDays(),m_y, &t_ret, CV_ONE_STEP);
+	if (res<0) {
 		SetStates(y_data);
-		throw std::runtime_error("CVode could not integrate due to failure (see message above)");
+		throw std::runtime_error("CVode could not integrate due to failure (see message above) at t=" + (day*t_ret).AsDate().to_string());
 	}
-	// Get statistics about CVode call
 	long iterations;
 	CVodeGetNumRhsEvals(cvode_mem,&iterations);
 	m_Iterations=(int)iterations;
-	CVodeGetLastStep(cvode_mem,&t);
-	m_TimeStep=day*t;
-	// Set new time
-	m_Time=MaxTime;
+	CVodeGetLastStep(cvode_mem,&t_step);
+	m_dt=day*t_step;
+	real sec_step = t_step * 24*60*60;
+	double sec_to_go = (MaxTime - t_ret*day)/sec;
+	if (res == CV_TSTOP_RETURN) {
+		if ((day*t_ret - MaxTime).AsMilliseconds()>5 || (day*t_ret - MaxTime).AsMilliseconds()<-5) {
+			throw std::runtime_error("Time returned by CVODE ("+(day*t_ret).to_string() 
+				+") differs from given end time(" 
+				+ MaxTime.to_string() + "). Please inform cmf maintainer");
+		}
+		m_t = MaxTime;
+	} else {
+		m_t = t_ret*day;
+	}
+
+
 	// Copy result to state variables
 	SetStates(y_data);
 	return res;
@@ -164,7 +186,8 @@ int cmf::math::CVodeIntegrator::Integrate( cmf::math::Time MaxTime,cmf::math::Ti
 
 void cmf::math::CVodeIntegrator::Reset()
 {
-	Initialize();
+	if (cvode_mem)
+		CVodeReInit(cvode_mem,get_t()/day,m_y);
 }
 
 int cmf::math::CVodeIntegrator::GetOrder()
@@ -173,5 +196,20 @@ int cmf::math::CVodeIntegrator::GetOrder()
 	CVodeGetLastOrder(cvode_mem,&result);
 	return result;
 
+
+}
+
+cmf::math::num_array cmf::math::CVodeIntegrator::get_error() const
+{
+	N_Vector ele = N_VNew_Serial(size());
+	N_Vector eweight = N_VNew_Serial(size());
+	CVodeGetEstLocalErrors(cvode_mem,ele);
+	CVodeGetErrWeights(cvode_mem,eweight);
+	N_Vector result = N_VNew_Serial(size());
+	N_VProd(ele,eweight,result);
+	num_array res(NV_DATA_S(result),NV_DATA_S(result)+size());
+	N_VDestroy_Serial(ele);
+	N_VDestroy_Serial(eweight);
+	return res;
 
 }

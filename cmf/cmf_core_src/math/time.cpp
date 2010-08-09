@@ -24,6 +24,10 @@ namespace cmf {
 		cmf::math::Time operator*(double f,Time t) {return t*f;}
 		cmf::math::Time operator*(int f,Time t) {return t*f;}
 
+		cmf::math::Time timespan( long long ms )
+		{
+			return Time(ms);
+		}
 
 	}
 }
@@ -96,6 +100,11 @@ double cmf::math::Time::DOY() const
 	return AsDate().DOY();
 }
 
+cmf::math::Time& cmf::math::Time::operator=( const cmf::math::Time& other )
+{
+	this->m_time_in_ms = other.m_time_in_ms;
+	return *this;
+}
 std::string cmf::math::Date::to_string()
 {
 	std::stringstream str;
@@ -158,11 +167,3 @@ std::string cmf::math::Date::to_string()
 		return os;
 	}
 
-	cmf::math::Time cmf::math::minimum_t(cmf::math::Time t1,cmf::math::Time t2)
-	{
-		return t1<t2 ? t1 : t2;
-	}
-	cmf::math::Time cmf::math::maximum_t(cmf::math::Time t1,cmf::math::Time t2)
-	{
-		return t1>t2 ? t1 : t2;
-	}

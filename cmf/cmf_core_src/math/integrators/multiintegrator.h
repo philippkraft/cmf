@@ -30,27 +30,33 @@ namespace cmf {
 			integ_vector m_integrators;
 			std::auto_ptr<cmf::math::Integrator> m_template;
 		public:
-			int Integrate(cmf::math::Time MaxTime,cmf::math::Time TimeStep);
+			int integrate(cmf::math::Time MaxTime,cmf::math::Time TimeStep);
 			virtual cmf::math::MultiIntegrator* Copy() const
 			{
 				return new MultiIntegrator(*m_template,int(m_integrators.size()));
 			}
+			/// Resets the integrator
 			virtual void Reset()
 			{
 				for(integ_vector::iterator it = m_integrators.begin(); it != m_integrators.end(); ++it)
 				{
-				    (**it).ModelTime(m_Time);
+				    (**it).set_t(m_t);
 				}
 			}
+			/// Only there to override Integrator::AddStatesFromOwner. Throws an exception. Use add_states_to_integrator instead
 			void AddStatesFromOwner(cmf::math::StateVariableOwner& stateOwner)
 			{
 				throw std::runtime_error("States can only be added to one integrator of the multi integrator. Use add_state_to_integrator");
 			}
+			/// Add state variables from a StateVariableOwner
 			void add_states_to_integrator(cmf::math::StateVariableOwner& stateOwner, int integrator_position)
 			{
 				integ_ptr& integ=m_integrators.at(integrator_position<0 ? m_integrators.size()-integrator_position : integrator_position);
 				integ->AddStatesFromOwner(stateOwner);
 			}
+			/// Creates a new MultiIntegrator
+			/// @param template_integrator Template for the integrators
+			/// @param count Number of integrators
 			MultiIntegrator(const cmf::math::Integrator& template_integrator,int count)
 				: Integrator(), m_template(template_integrator.Copy())
 			{

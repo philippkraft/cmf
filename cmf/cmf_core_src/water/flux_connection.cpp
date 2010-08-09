@@ -22,12 +22,15 @@
  /* flux_connection                                                       */
 /*************************************************************************/
 
-int cmf::water::flux_connection::nextconnectionid=0;
-cmf::water::flux_connection::~flux_connection()
+using namespace cmf::water;
+using namespace cmf::math;
+
+int flux_connection::nextconnectionid=0;
+flux_connection::~flux_connection()
 {
 }
 
-cmf::water::flux_connection::flux_connection( cmf::water::flux_node::ptr left,cmf::water::flux_node::ptr right,std::string _type ) 
+flux_connection::flux_connection( flux_node::ptr left,flux_node::ptr right,std::string _type ) 
 : m_left(left),m_right(right),RecalcAlways(false),type(_type),connection_id(nextconnectionid++),m_tracer_filter(1.0)
 {
 	if ((!left) || (!right)) 
@@ -39,7 +42,7 @@ cmf::water::flux_connection::flux_connection( cmf::water::flux_node::ptr left,cm
 	right->RegisterConnection(this);
 }
 
-void cmf::water::flux_connection::exchange_target( cmf::water::flux_node::ptr oldtarget,cmf::water::flux_node::ptr newTarget )
+void flux_connection::exchange_target( flux_node::ptr oldtarget,flux_node::ptr newTarget )
 {
 	flux_connection::ptr This(weak_this);
 	left_node()->DeregisterConnection(this);
@@ -62,13 +65,13 @@ void cmf::water::flux_connection::exchange_target( cmf::water::flux_node::ptr ol
 
 }
 
-std::string cmf::water::flux_connection::to_string() const
+std::string flux_connection::to_string() const
 {
 	return type + "(" + left_node()->to_string() + "<->" + right_node()->to_string() + ")";
 }
 
 
-cmf::water::flux_node::ptr cmf::water::flux_connection::get_target( int index ) const
+flux_node::ptr flux_connection::get_target( int index ) const
 {
 	if (index==0 || index==-2)
 		return left_node();
@@ -78,7 +81,7 @@ cmf::water::flux_node::ptr cmf::water::flux_connection::get_target( int index ) 
 		throw std::out_of_range("Only indices 0 and 1 are valid for querying a connection target");
 }
 
-cmf::water::flux_node::ptr cmf::water::flux_connection::get_target(const flux_node& inquirer )
+flux_node::ptr flux_connection::get_target(const flux_node& inquirer )
 {
 	if 		   (left_node() && inquirer == *left_node()) 
 			return right_node();
@@ -88,7 +91,7 @@ cmf::water::flux_node::ptr cmf::water::flux_connection::get_target(const flux_no
 			return flux_node::ptr();
 }
 
-real cmf::water::flux_connection::conc( cmf::math::Time t, const cmf::water::solute& _Solute )
+real flux_connection::conc( cmf::math::Time t, const solute& _Solute )
 {
 	real _q=q(t);
 	if (_q>0) return left_node()->conc(t,_Solute);
@@ -96,15 +99,16 @@ real cmf::water::flux_connection::conc( cmf::math::Time t, const cmf::water::sol
 	else return 0.0;
 }
 
-std::string cmf::water::flux_connection::short_string() const
+std::string flux_connection::short_string() const
 {
 	std::stringstream str;
 	str << type << "#" << connection_id;
 	return str.str();
 }
 
-bool cmf::water::flux_connection::kill_me()
+bool flux_connection::kill_me()
 {
+	flux_connection::ptr shared_this(weak_this);
 	flux_node::ptr 
 		left=left_node(),
 		right=right_node();
@@ -114,14 +118,14 @@ bool cmf::water::flux_connection::kill_me()
 		right->DeregisterConnection(this);
 	return weak_this.use_count() <= 1;
 }
-int cmf::water::replace_node(cmf::water::flux_node::ptr oldnode,cmf::water::flux_node::ptr newnode)
+int cmf::water::replace_node(flux_node::ptr oldnode,flux_node::ptr newnode)
 {
 	int changes=0;
 	if (oldnode && newnode) {
 		newnode->Location=oldnode->Location;
 		newnode->Name=oldnode->Name;
 		connection_vector cons=oldnode->get_connections();
-		for(connection_vector::iterator it = cons.begin(); it != cons.end(); ++it)		{
+		for(connection_vector::iterator it = cons.begin(); it != cons.end(); ++it) {
 			++changes;
 			(**it).exchange_target(oldnode,newnode);
 		}
@@ -129,3 +133,23 @@ int cmf::water::replace_node(cmf::water::flux_node::ptr oldnode,cmf::water::flux
 	return changes;
 
 }
+
+void cmf::water::set_flux( flux_node::ptr source,flux_node::ptr target,real flux_value)
+{
+	external_control_connection* con = dynamic_cast<external_control_connection*>(source->get_connection(*target));
+	if (con) {
+		con->flux = (con->left_node() == source ? flux_value  : -flux_value);
+	} else {
+		throw std::runtime_error("No external controlled connection between " 
+			+ source->to_string() + " and " 
+			+ target->to_string()+". \n You can create one overriding any existing connection (Python):\n>>> cmf.connect(" + source->Name + "," + target->Name + ",flux)");
+	}
+
+}
+
+bool cmf::water::can_set_flux( flux_node::ptr source,flux_node::ptr target )
+{
+	external_control_connection* con = dynamic_cast<external_control_connection*>(source->get_connection(*target));
+	return con != 0;
+}
+

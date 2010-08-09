@@ -64,6 +64,24 @@
 %}
 
 %include "upslope/vegetation/StructVegetation.h"
+%extend cmf::upslope::vegetation::Vegetation {
+    std::string __repr__() {
+        std::stringstream sstr;
+        sstr << "cmf.vegetation(\n" 
+             << "                 Height = " << $self->Height << " [m]" << std::endl
+             << "                    LAI = " << $self->LAI << " [m2/m2]" << std::endl
+             << "                 albedo = " << $self->albedo << " [W/W]" << std::endl
+             << "          CanopyClosure = " << $self->CanopyClosure << " [m2/m2]" << std::endl
+             << "    CanopyPARExtinction = " << $self->CanopyPARExtinction << std::endl
+             << "   CanopyCapacityPerLAI = " << $self->CanopyCapacityPerLAI << " [mm]" << std::endl
+             << "     StomatalResistance = " << $self->StomatalResistance << " [s/m]" << std::endl
+             << "              RootDepth = " << $self->RootDepth << " [m]" << std::endl
+             << "  fraction_at_rootdepth = " << $self->fraction_at_rootdepth << " [-]" << std::endl
+             << "            RootContent = " << $self->RootContent << " [kg/m3]" << std::endl
+             << ")" << std::endl;
+        return sstr.str();
+    }
+}
 %nodefaultctor cmf::upslope::NeighborIterator;
 
 

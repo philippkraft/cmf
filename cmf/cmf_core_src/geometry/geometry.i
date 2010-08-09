@@ -22,7 +22,9 @@
 // Include geometry
 #include "geometry/geometry.h"
 %}
-
+//%attribute(cmf::geometry::point_vector,cmf::math::num_array,x,get_x);
+//%attribute(cmf::geometry::point_vector,cmf::math::num_array,y,get_y);
+//%attribute(cmf::geometry::point_vector,cmf::math::num_array,z,get_z);
 // Geometry.h
 %include "geometry/geometry.h"
 %extend cmf::geometry::Locatable{
@@ -202,6 +204,5 @@ static std::string convert_xyz_to_point(PyObject* input,cmf::geometry::point& p)
 	cmf::geometry::point p;
 	$1=check_xy($input) || check_seq_point($input);
 }
-
 
 

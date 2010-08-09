@@ -1,5 +1,6 @@
 #include "precipitation.h"
 #include "../project.h"
+#include "../upslope/cell.h"
 #include "../math/num_array.h"
 using namespace cmf::atmosphere;
 using namespace cmf::geometry;
@@ -11,7 +12,7 @@ IDWRainfall::IDWRainfall( const cmf::project& project, cmf::geometry::point posi
 	// Create a vector of distances to the stations
 	num_array dist(stations.size());
 	for (size_t i = 0; i < stations.size() ; ++i)
-		dist[i] = p.z_weight_distance(stations[i]->get_position(),z_weight);
+		dist[i] = p.z_weight_distance(stations[i]->Location,z_weight);
 
 	// Calculate the weight of each station using IDW
 	num_array weights_ = 1./dist.power(power);
@@ -50,11 +51,11 @@ cmf::atmosphere::RainfallStationReference::ptr cmf::atmosphere::RainfallStationR
 {
 	if (project.rainfall_stations.size() == 0)
 		throw std::runtime_error("Can't create RainfallStationReference without rainfall stations");
-	double min_dist = position.z_weight_distance(project.rainfall_stations[0]->get_position(),z_weight);
+	double min_dist = position.z_weight_distance(project.rainfall_stations[0]->Location,z_weight);
 	RainfallStation::ptr station=project.rainfall_stations[0];
 	for (size_t i = 1; i < project.rainfall_stations.size() ; ++i)
 	{
-		double dist = position.z_weight_distance(project.rainfall_stations[i]->get_position(),z_weight);
+		double dist = position.z_weight_distance(project.rainfall_stations[i]->Location,z_weight);
 		if (dist<min_dist) {
 			dist=min_dist;
 			station = project.rainfall_stations[i];
@@ -66,7 +67,7 @@ cmf::atmosphere::RainfallStationReference::ptr cmf::atmosphere::RainfallStationR
 
 cmf::atmosphere::RainfallStationReference::ptr cmf::atmosphere::RainfallStationReference::from_station_id( const cmf::project& project, cmf::geometry::point position, size_t id )
 {
-	if (project.rainfall_stations.size() >= id)
+	if (id >= project.rainfall_stations.size() )
 		throw std::runtime_error("Id out of range");
 	return ptr(new RainfallStationReference(project,position,project.rainfall_stations[id]));
 }
@@ -93,7 +94,7 @@ std::string cmf::atmosphere::RainfallStation::tostring() const
 }
 
 cmf::atmosphere::RainfallStation::RainfallStation( const RainfallStation& copy ) 
-: id(copy.id), name(copy.name), data(copy.data.copy()), m_Position(copy.m_Position)
+: id(copy.id), name(copy.name), data(copy.data.copy()), Location(copy.Location)
 {
 
 }
@@ -102,6 +103,11 @@ cmf::atmosphere::RainfallStation::ptr cmf::atmosphere::RainfallStation::create( 
 {
 	RainfallStation* new_rfs = new RainfallStation(Id,Name,Data,position);
 	return ptr(new_rfs);
+}
+
+void cmf::atmosphere::RainfallStation::use_for_cell( cmf::upslope::Cell& c )
+{
+	c.set_rain_source(RainfallStationReference::from_station_id(c.get_project(), c.get_position(), this->id));
 }
 RainfallStation::ptr cmf::atmosphere::RainfallStationList::operator[]( int index )
 {

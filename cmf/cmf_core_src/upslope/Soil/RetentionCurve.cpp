@@ -70,7 +70,7 @@ double cmf::upslope::waterhead_to_pF(double waterhead)        {
 real cmf::upslope::BrooksCoreyRetentionCurve::K( real wetness) const
 {
 	wetness=minmax(wetness,0,1);
-	return Ksat*minimum(pow(wetness,2+3*b()),1);
+	return Ksat*minimum(pow(wetness,2+3*get_b()),1);
 }
 
 real cmf::upslope::BrooksCoreyRetentionCurve::Porosity( real depth ) const
@@ -134,7 +134,7 @@ real cmf::upslope::BrooksCoreyRetentionCurve::MatricPotential( real wetness ) co
 	}
 	else
 	{
-		return minimum(Psi_X * pow(wetness/wetness_X,-b()),1e6);
+		return minimum(Psi_X * pow(wetness/wetness_X,-get_b()),1e6);
 	}
 
 }

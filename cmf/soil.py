@@ -235,7 +235,7 @@ class layer :
             self.porosity=0.000001
             self.wiltpoint=0
             self.texture="Solid"
-            self.bulkdens=2000.0
+            self.bulkdens=2750.0
     def Wetness(self,theta):
         return theta/self.porosity
     def K(self,theta):
