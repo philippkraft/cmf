@@ -27,6 +27,7 @@
 #include <vector>
 #include "SoluteStorage.h"
 #include "flux_node.h"
+#include "flux_connection.h"
 #include <tr1/memory>
 
 namespace cmf {
@@ -68,6 +69,9 @@ namespace cmf {
 			virtual real volume_to_head(real volume) const;
 	
 		public:
+			real get_abs_errtol(real rel_errtol) const {
+				return std::max(rel_errtol * get_volume(),rel_errtol);
+			}
 			/// A character indicating the integrated variable (either 'V' for Volume or 'h' for head)
 			inline char get_state_variable_content() const {return m_state_variable_content;}
 			/// A character indicating the integrated variable (either 'V' for Volume or 'h' for head)
@@ -78,7 +82,7 @@ namespace cmf {
 			/// creates a water storage (abstract class)
 			/// @param _project The project the waterstorage belongs to
 			/// @param InitialState Initial water content in m<sup>3</sup>
-			WaterStorage(const cmf::project& _project, double InitialState=0);
+			WaterStorage(const cmf::project& _project,const std::string & Name="", double InitialState=0);
 			
 			static std::tr1::shared_ptr<WaterStorage> from_node(cmf::water::flux_node::ptr node);
 			/// Returns the water quality of the water storage.
@@ -136,11 +140,49 @@ namespace cmf {
 			}
 			static std::tr1::shared_ptr<cmf::water::WaterStorage> create(const cmf::project& _project, real initial_state=0.0)
 			{
-				return std::tr1::shared_ptr<cmf::water::WaterStorage>(new WaterStorage(_project,initial_state));
+				return std::tr1::shared_ptr<cmf::water::WaterStorage>(new WaterStorage(_project,"unknown",initial_state));
 			}
 
 		};
 		typedef std::vector<WaterStorage::ptr> storage_vector;
+
+
+		/// @ingroup connections
+		/// Calculates flux out of a storage as a linear function of its volume to a power.
+		///
+		/// \f[ q = \frac {V_{mobile}^\beta}{t_r} \f]
+		/// where:
+		/// - \f$V_{mobile} [m^3] = V - V_{residual}\f$ the stored mobile volume
+		/// - \f$\beta [-]\f$ An empirical exponent to shape the flux function
+		/// - \f$t_r [days]\f$ The residence time of the water in this storage in days
+		class kinematic_wave : public flux_connection {
+		protected:
+			WaterStorage::ptr source;
+			real calc_q(cmf::math::Time t)	{
+				real V= std::max(0.0,source->get_volume()-residual_volume);
+				return pow(V,exponent)/residencetime;
+			}
+			void NewNodes() {
+				source = WaterStorage::cast(left_node());
+			}
+		public:
+			/// Linear flow parameter traveltime in days
+			real residencetime;
+			/// Exponent of volume, beta
+			real exponent;
+			/// residual volume in m3
+			real residual_volume;
+
+			/// Creates a kinematic wave connection.
+			/// \f[ q = \frac {\left(V - V_{residual}\right)^\beta}{t_r} \f]
+			/// @param source Water storage from which the water flows out. Flux is a function of source.volume
+			/// @param target Target node (boundary condition or storage). Does not influence the strength of the flow
+			/// @param residencetime \f$t_r [days]\f$ The residence time of the water in this storage
+			/// @param exponent \f$\beta [-]\f$ An empirical exponent to shape the flux function (default = 1 (linear function))
+			/// @param residual_volume \f$V_{residual} [m^3]\f$ The volume of water not flowing out (default = 0 m3)
+			kinematic_wave(WaterStorage::ptr source,flux_node::ptr target,real residencetime, real exponent=1.0, real residual_volume=0.0);
+		};
+
 
 	}
 }

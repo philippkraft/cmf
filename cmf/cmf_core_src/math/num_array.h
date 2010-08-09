@@ -42,8 +42,13 @@
 			/// Copy constructor
 			num_array(const num_array& Vector);
 		
-			/// Creates a new vector using data. Not for external use
+			/// Creates a vector from data. After creation is vector the owner of data
 			num_array(double * data, size_t count);
+			typedef double* iterator;
+			typedef const double * const_iterator;
+
+			/// Create a vector from an iterator range. Copies the data
+			num_array(const_iterator begin,const_iterator end);
 
 			/// Destructor
 			~num_array();
@@ -53,8 +58,6 @@
 			num_array& operator=(const std::vector<double>& vector);
 			/// Sets each element of this to scalar
 			num_array& operator=(real scalar);
-			typedef double* iterator;
-			typedef const double * const_iterator;
 			iterator begin() const {return m_data;}
 			iterator end()  const {return m_data + size();}
 			/// Size of the vector

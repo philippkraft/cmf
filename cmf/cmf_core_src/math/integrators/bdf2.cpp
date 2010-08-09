@@ -23,12 +23,12 @@
 #endif
 #include <iostream>
 // Just a macro to compare two values
-#define min(a,b) (((a)<(b)) ? (a) : (b))
+#define min(a,get_b) (((a)<(get_b)) ? (a) : (get_b))
 
 
 // Creates a new Integrator w/o states
 cmf::math::BDF2::BDF2( real epsilon/*=1e-9*/,cmf::math::Time tStepMin/*=Time::Seconds(10)*/) 
-: Integrator(epsilon,tStepMin),	order(1),stepNo(0)
+: Integrator(epsilon),	order(1),stepNo(0), dt_min(tStepMin)
 { 
 	// Assessing multistep functions
 	calc_newState[0] = &cmf::math::BDF2::Gear1newState; // impl. Euler
@@ -45,7 +45,7 @@ cmf::math::Integrator(templ),order(1),stepNo(0)
 }
 
 cmf::math::BDF2::BDF2( cmf::math::StateVariableOwner& states, real epsilon/*=1e-9*/,cmf::math::Time tStepMin/*=Time::Milliseconds(10)*/ )
- : Integrator(states,epsilon,tStepMin), order(1),stepNo(0)
+ : Integrator(states,epsilon), order(1),stepNo(0), dt_min(tStepMin)
 {
 	// Assessing multistep functions
 	calc_newState[0] = &cmf::math::BDF2::Gear1newState; // impl. Euler
@@ -104,7 +104,7 @@ void cmf::math::BDF2::Gear2newState(real h)
 	real state_i;
 	const real 
 		// p is the relative change of time step size
-		p    = h/TimeStep().AsDays(),
+		p    = h/get_dt().AsDays(),
 		p1   = 1 + p,
 		h_p1 = h * p1,
 		p1_2 = p1 * p1,
@@ -144,14 +144,14 @@ void cmf::math::BDF2::Gear2newState(real h)
 
 
 
-int cmf::math::BDF2::Integrate( cmf::math::Time MaxTime,cmf::math::Time timestep )
+int cmf::math::BDF2::integrate( cmf::math::Time MaxTime,cmf::math::Time timestep )
 {
 	// h is standard name in numeric for time step size
-	Time h=MaxTime-ModelTime();
+	Time h=MaxTime-get_t();
 	// Don't stretch the current timestep more the 2 times the last timestep
-	if (h>TimeStep()*2) 
+	if (h>get_dt()*2) 
 	{
-		h=TimeStep()*2;
+		h=get_dt()*2;
 	}
 
 	// Copies the actual states to the history as x_(n)
@@ -166,7 +166,7 @@ int cmf::math::BDF2::Integrate( cmf::math::Time MaxTime,cmf::math::Time timestep
 		// Remember the current state for convergence criterion
 		CopyStates(compareStates);
 		// Get derivatives at t(n+1)
-		CopyDerivs(this->ModelTime() + h,dxdt);
+		CopyDerivs(this->get_t() + h,dxdt);
 		// Updates the state variables with the new states, according to the current order
 		(this->*(calc_newState[order-1]))(h.AsDays());
 
@@ -187,22 +187,10 @@ int cmf::math::BDF2::Integrate( cmf::math::Time MaxTime,cmf::math::Time timestep
 			h /= 2;
 			//std::cout << '-';
 			// If the time step becomes too small, throw exception
-			if (h<MinTimestep())
+			if (h<dt_min)
 			{
-				if (UseEulerAtTmin) // If an explicit euler step is to be taken at Tmin, do it
-				{
-					h=MinTimestep();
-					std::cerr << "No convergence! Time=" << ModelTime().AsDate().to_string() << " Euler step taken for " << h.to_string() << std::endl;
-					dxdt*=h.AsDays(); 
-					AddValuesToStates(dxdt);
-					order=1;
-					break;
-				}
-				else
-				{
-					std::cerr << "No convergence! Time=" << ModelTime().AsDate().to_string() << " Iter: " << iter << " StateV No." << error_position << std::endl;
-					throw std::runtime_error("No convergence with a time step > minimal time step");
-				}
+				std::cerr << "No convergence! Time=" << get_t().AsDate().to_string() << " Iter: " << iter << " StateV No." << error_position << std::endl;
+				throw std::runtime_error("No convergence with a time step > minimal time step");
 			}
 			// Restore states
 			SetStates(pastStates(0));
@@ -215,7 +203,7 @@ int cmf::math::BDF2::Integrate( cmf::math::Time MaxTime,cmf::math::Time timestep
 		// Loop until the iterations converge
 	} while(err_ex > 1);
 
-	m_TimeStep=h;
+	m_dt=h;
 	
 	// If we're just using this integrator to bootstrap a
 	// higher-order method, arrange to transfer control to 
@@ -223,7 +211,7 @@ int cmf::math::BDF2::Integrate( cmf::math::Time MaxTime,cmf::math::Time timestep
 	if (order<2) ++order;
 	// Raise the number of steps
 	++stepNo;
-	ModelTime(ModelTime() + h);
+	set_t(get_t() + h);
 	return iter;
 }
 

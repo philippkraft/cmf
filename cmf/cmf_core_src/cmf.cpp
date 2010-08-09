@@ -113,14 +113,14 @@ int main(int argc, char* argv[])
 		int i=0;
 		//cout << integ.ModelTime() << " dt:" << integ.TimeStep() << " perc=" << perc << " overflow=" << overflow << " s_pot=" << sat->get_potential() << " u_pot=" << unsat->get_potential() <<  endl;
 		cout.precision(3);
-		while (integ.ModelTime() < day*20)
+		while (integ.get_t() < day*20)
 		{
-			integ.IntegrateUntil(integ.ModelTime()+math::day);
-			cout << integ.ModelTime();
+			integ.integrate_until(integ.get_t()+math::day);
+			cout << integ.get_t();
 			for (int i = 0; i < p.size() ; ++i)
 			{
 				if (i)
-					cout << " q" << i << i-1 << "=" << p.get_cell(i).get_layer(-1)->flux_to(*p.get_cell(i-1).get_layer(-1),integ.ModelTime());
+					cout << " q" << i << i-1 << "=" << p.get_cell(i).get_layer(-1)->flux_to(*p.get_cell(i-1).get_layer(-1),integ.get_t());
 				//cout << "(" << p.get_cell(i).get_layer(0).get_state() << "," << p.get_cell(i).get_layer(-1).get_state() << ")";
 				cout << "(X" << p.get_cell(i).get_layer(-1)->conc(X)<< ",Y"  << p.get_cell(i).get_layer(-1)->conc(Y) << ")";
 			}

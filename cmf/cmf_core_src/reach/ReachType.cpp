@@ -355,3 +355,8 @@ cmf::river::Channel::Channel()
 	m_channel.reset();
 	double a=0;
 }
+
+double cmf::river::Prism::A( double V ) const
+{
+	return Area * piecewise_linear(V/Area,0,RoughThickness);
+}

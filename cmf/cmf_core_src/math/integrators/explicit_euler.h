@@ -29,6 +29,7 @@ namespace cmf {
 			num_array 
 				dxdt;
 		public:
+			/// Add state variables from a StateVariableOwner
 			void AddStatesFromOwner(cmf::math::StateVariableOwner& stateOwner)
 			{
 				Integrator::AddStatesFromOwner(stateOwner);
@@ -40,16 +41,16 @@ namespace cmf {
 			/// @param states Statevariables of the system
 			/// @param epsilon (ignored) relative error tolerance per time step (default=1e-9)
 			/// @param tStepMin (ignored) minimum time step (default=10s)
-			ExplicitEuler_fixed(StateVariableOwner& states, real epsilon=1e-9,cmf::math::Time tStepMin=Time::Seconds(10))
-				: Integrator(states,epsilon,tStepMin),
+			ExplicitEuler_fixed(StateVariableOwner& states)
+				: Integrator(states,0.0),
 				dxdt(m_States.size())
 			{}
 
 			/// Constructs a new ExplicitEuler_fixed
 			/// @param epsilon (ignored) relative error tolerance per time step (default=1e-9)
 			/// @param tStepMin (ignored) minimum time step (default=10s)
-			ExplicitEuler_fixed(real epsilon=1e-9,cmf::math::Time tStepMin=Time::Seconds(10))
-				: Integrator(epsilon,tStepMin)
+			ExplicitEuler_fixed(real epsilon=1e-9)
+				: Integrator(epsilon)
 			{	}
 
 			/// Copy constructor
@@ -63,16 +64,16 @@ namespace cmf {
 			///Integrates the vector of state variables
 			/// @param MaxTime (ignored) To stop the model (if running in a model framework) at time steps of value exchange e.g. full hours, the next value exchange time can be given
 			/// @param TimeStep Takes the proposed time step
-			int Integrate(cmf::math::Time MaxTime,cmf::math::Time TimeStep)
+			int integrate(cmf::math::Time MaxTime,cmf::math::Time TimeStep)
 			{
-				m_TimeStep=TimeStep;
-				if (m_TimeStep>MaxTime-ModelTime())
-					m_TimeStep=MaxTime-ModelTime();
+				m_dt=TimeStep;
+				if (m_dt>MaxTime-get_t())
+					m_dt=MaxTime-get_t();
 				// Copy derivates multipied with time step to dxdt
-				CopyDerivs(ModelTime(),dxdt,m_TimeStep.AsDays());
+				CopyDerivs(get_t(),dxdt,m_dt.AsDays());
 				// Update time step with delta x
 				AddValuesToStates(dxdt);
-				m_Time += m_TimeStep;
+				m_t += m_dt;
 				
 				return 1;
 			}
@@ -87,6 +88,7 @@ namespace cmf {
 			num_array 
 				dxdt0, dxdt1, old_states;
 		public:
+			/// Add state variables from a StateVariableOwner
 			void AddStatesFromOwner(cmf::math::StateVariableOwner& stateOwner)
 			{
 				Integrator::AddStatesFromOwner(stateOwner);
@@ -94,19 +96,20 @@ namespace cmf {
 				dxdt1.resize(size());
 				old_states.resize(size());
 			}
+			/// Alpha Weight factor \f$\alpha\f$ to weight \f$f(y^n)\f$ and \f$f(y^{n+1})\f$
 			real alpha;
 			/// Constructs a new PredictCorrectSimple from a pointer to a vector of state variables
 			/// @note The Integrator becomes the owner of states
 			/// @param states Statevariable owner of the system
 			/// @param Alpha Weight factor \f$\alpha\f$ to weight \f$f(y^n)\f$ and \f$f(y^{n+1})\f$
 			PredictCorrectSimple(StateVariableOwner& states, real Alpha)
-				: Integrator(states,1e-9,Time::Seconds()),alpha(Alpha)
+				: Integrator(states,0.0),alpha(Alpha)
 			{}
 
 			/// Constructs a new PredictCorrectSimple
 			/// @param Alpha Weight factor \f$\alpha\f$ to weight \f$f(y^n)\f$ and \f$f(y^{n+1})\f$
 			PredictCorrectSimple(real Alpha=0.5)
-				: Integrator(1e-9,Time::Seconds()),alpha(Alpha)
+				: Integrator(),alpha(Alpha)
 			{	}
 
 			/// Copy constructor
@@ -119,20 +122,20 @@ namespace cmf {
 			///Integrates the vector of state variables
 			/// @param MaxTime (ignored) To stop the model (if running in a model framework) at time steps of value exchange e.g. full hours, the next value exchange time can be given
 			/// @param TimeStep Takes the proposed time step
-			int Integrate(cmf::math::Time MaxTime,cmf::math::Time TimeStep)
+			int integrate(cmf::math::Time MaxTime,cmf::math::Time TimeStep)
 			{
-				m_TimeStep=TimeStep;
-				if (m_TimeStep>MaxTime-ModelTime())
-					m_TimeStep=MaxTime-ModelTime();
+				m_dt=TimeStep;
+				if (m_dt>MaxTime-get_t())
+					m_dt=MaxTime-get_t();
 				CopyStates(old_states);
 				// get f(y^n)dt
-				CopyDerivs(ModelTime(),dxdt0,m_TimeStep.AsDays());
+				CopyDerivs(get_t(),dxdt0,m_dt.AsDays());
 				// Update time step with delta x
 				AddValuesToStates(dxdt0);
 				if (alpha>0)
 				{
 					// get f(y^n+1)dt
-					CopyDerivs(ModelTime(),dxdt1,m_TimeStep.AsDays() * alpha);
+					CopyDerivs(get_t(),dxdt1,m_dt.AsDays() * alpha);
 					// reset states to y^n
 					SetStates(old_states);
 					// update states to y^n+1
@@ -143,7 +146,7 @@ namespace cmf {
 					}
 					AddValuesToStates(dxdt1);
 				}
-				m_Time += m_TimeStep;
+				m_t += m_dt;
 
 				return 1;
 			}

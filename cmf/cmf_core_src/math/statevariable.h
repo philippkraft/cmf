@@ -86,6 +86,9 @@ namespace cmf {
 				m_StateIsNew=true;
 				if (m_StateIsNew) StateChangeAction();
 			}
+			virtual real get_abs_errtol(real rel_errtol) const{
+				return rel_errtol;
+			}
 			/// Returns if the state was currently updated
 			bool StateIsChanged() {return m_StateIsNew;}
 			/// ctor
@@ -101,7 +104,7 @@ namespace cmf {
 			virtual state_queue get_states()=0;
 		};
 
-		class state_queue {
+		class state_queue : public StateVariableOwner {
 			typedef std::deque<StateVariable::ptr> state_deque;
 			state_deque	m_queue;
 		public:
@@ -126,6 +129,9 @@ namespace cmf {
 			}
 			StateVariable::ptr front() const {
 				return m_queue.front();
+			}
+			state_queue get_states() {
+				return *this;
 			}
 			void eat(state_queue& food) {
 				while (food) 

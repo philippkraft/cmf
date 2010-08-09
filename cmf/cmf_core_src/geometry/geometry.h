@@ -30,13 +30,12 @@
 namespace cmf {
 	/// Contains geometric features like point (=location) and raster datasets
 	namespace geometry	{
-
+		// \f$\pi = 3.141592654\f$
 		const double PI=3.141592654;
 		class point;
 
 
-		typedef std::vector<cmf::geometry::point> Points;
-		
+	
 		/// 2D-Point Class.
 		///
 		/// Used as location property anywhere in the text 
@@ -49,26 +48,29 @@ namespace cmf {
 				double x; ///< East-value of the location in m.
 				double y; ///< North-value of the location in m.
 				double z; ///< Height of the location in m.a.s.l.
-				point Center() const { return *this;}
 				///Empty Constructor. Creates an (0 0) location
 				point(); 
 				///Copy Constructor
 				point(const point& p);
 				///Creates a point from two doubles
 				point(double x_,double y_,double z_=0.0);
-				///Returns the euclidian distance to another point.
+				///Returns the horizontal euclidian distance to another point p.
 				/// \f$\sqrt{(this.x-p.x)^2+(this.y-p.y)^2}\f$
 				double distanceTo(point p) const { 
 					return sqrt((x-p.x)*(x-p.x)+(y-p.y)*(y-p.y));
 				}
+				/// Returns the horizontal euclidian distance plus the absolute of the height difference times a factor.
+				/// \f$\sqrt{(this.x-p.x)^2+(this.y-p.y)^2}\ +\ w_{z}|this.z-p.z|\f$
 				double z_weight_distance(point p,double z_weight) const {
 					return distanceTo(p) + z_weight * abs(z - p.z);
 				}
+				/// Returns the euclidian distance in space to another point p.
 				double distance3DTo(point p) const;
+				/// Returns the horizontal euclidian distance between p1 and p2.
 				static double distance(point p1,point p2) {
 					return sqrt((p1.x-p2.x)*(p1.x-p2.x) + (p1.y-p2.y)*(p1.y-p2.y));
 				}
-				///Returns the distance by the maximum orthogonal offset
+				///Returns the distance by the maximum orthogonal offset.
 				double distance_max(point p) const;
 				///Returns the azimuth angle of the line \f$ \overline{this,p} \f$ to the Azimuth in degrees
 				double azimuth(point p) const {
@@ -80,22 +82,23 @@ namespace cmf {
 					return atan2(p.y-y,p.x-x)*180/PI;						
 				}
 #ifndef SWIG
+				/// Assignment op
 				point& operator=(const point &p) {this->x=p.x;this->y=p.y;this->z=p.z; return *this;}
 #endif
-				point operator+(const point &p) const; 
-				point operator-(const point &p) const;
-				point operator*(double left) const { return point(x*left,y*left,z*left);}
-				point operator/(double left) const { return point(x/left,y/left,z/left);}
-				point operator*(const point&p) const { return point(x*p.x,y*p.y,z*p.z);}
-				point operator/(const point&p) const { return point(x/p.x,y/p.y,z/p.z);}
-				point operator+=(const point &p);
-				point operator-=(const point &p);
-				bool operator ==(const point &p) const;
-				bool operator !=(const point &p) const {return !(*this == p);}
+				point operator+(const point &p) const; ///< plus
+				point operator-(const point &p) const; ///< minus
+				point operator*(double left) const { return point(x*left,y*left,z*left);} ///< scalar multiply
+				point operator/(double left) const { return point(x/left,y/left,z/left);} ///< scalar div
+				point operator*(const point&p) const { return point(x*p.x,y*p.y,z*p.z);} ///< mult
+				point operator/(const point&p) const { return point(x/p.x,y/p.y,z/p.z);} ///< div
+				point operator+=(const point &p);///< inplace plus
+				point operator-=(const point &p);///< inplace minus
+				bool operator ==(const point &p) const; ///< equal
+				bool operator !=(const point &p) const {return !(*this == p);} ///< not equal
 		};
 #ifndef SWIG
-		point operator*(double d,const point &p);
-		point operator/(double d,const point &p);
+		point operator*(double d,const point &p);	///< scalar mult
+		point operator/(double d,const point &p);///< scalar div
 #endif
 
 
@@ -136,9 +139,12 @@ namespace cmf {
 			place_pointer place;
 		public:
 			cmf::geometry::point get_position() const {return *place;}
+			/// Creates a location from a position
 			Location(cmf::geometry::point position) 
 				: place(new point(position))
 			{			}
+
+			/// Creates a location from a position
 			Location(double x, double y, double z) 
 				: place(new point(x,y,z)) {}
 		};
@@ -147,19 +153,26 @@ namespace cmf {
 		{
 		public:
 #ifndef SWIG
+			/// Return point at index
 			point operator[](int index) const
 			{
 				return cmf::geometry::point(X[index],Y[index],Z[index]);
 			}
-
 #endif
-			cmf::math::num_array X,Y,Z;
+			cmf::math::num_array 
+				X, /// x coordinates
+				Y, /// y coordinates
+				Z; /// z coordinates
+			/// Create a point vector of a specific size
 			point_vector(int size) : X(size),Y(size),Z(size)
 			{
 
 			}
+			/// Return a point at index
 			point get(int index) const { return cmf::geometry::point(X[index],Y[index],Z[index]);}
+			/// Change the point at index
 			void set(int index,cmf::geometry::point p) {X[index]=p.x;Y[index]=p.y;Z[index]=p.z;}
+			/// Return the number of points in the point_vector
 			int size() const
 			{
 				return X.size();

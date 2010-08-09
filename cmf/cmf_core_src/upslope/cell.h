@@ -169,13 +169,7 @@ namespace cmf {
 			cmf::water::WaterStorage::ptr get_storage(int index) const;
 			cmf::water::WaterStorage::ptr get_canopy() const;
 			cmf::water::WaterStorage::ptr get_snow() const;
-			real snow_coverage() const
-			{
-				if (m_Snow)
-					return piecewise_linear(m_Snow->get_volume()/get_area(),0,0.01,0,1-surface_water_coverage());
-				else
-					return 0.0;
-			}
+			real snow_coverage() const;
 			real albedo() const;
 			real surface_water_coverage() const 
 			{

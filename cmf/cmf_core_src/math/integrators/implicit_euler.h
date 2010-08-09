@@ -45,17 +45,20 @@ namespace cmf {
 
 
 		public:
+			/// The shortest allowed timestep
+			Time dt_min;
+			/// Add state variables from a StateVariableOwner
 			void AddStatesFromOwner(cmf::math::StateVariableOwner& stateOwner);
 			/// Constructs a new FixPointImplicitEuler from a pointer to a vector of state variables
 			/// @note The Integrator becomes the owner of states
 			/// @param states Statevariables of the system
 			/// @param epsilon relative error tolerance per time step (default=1e-9)
 			/// @param tStepMin minimum time step (default=10s)
-			ImplicitEuler(StateVariableOwner& states, real epsilon=1e-9,cmf::math::Time tStepMin=Time::Seconds(10));
+			ImplicitEuler(StateVariableOwner& states, real epsilon=1e-9,cmf::math::Time tStepMin=cmf::math::timespan(10));
 			/// Constructs a new FixPointImplicitEuler
 			/// @param epsilon relative error tolerance per time step (default=1e-9)
 			/// @param tStepMin minimum time step (default=10s)
-			ImplicitEuler(real epsilon=1e-9,cmf::math::Time tStepMin=Time::Seconds(10));
+			ImplicitEuler(real epsilon=1e-9,cmf::math::Time tStepMin=cmf::math::timespan(10));
 
 			/// Copy constructor
 			ImplicitEuler(const Integrator&);
@@ -67,7 +70,7 @@ namespace cmf {
 			///Integrates the vector of state variables
 			/// @param MaxTime To stop the model (if running in a model framework) at time steps of value exchange e.g. full hours, the next value exchange time can be given
 			/// @param TimeStep Takes the proposed timestep, and changes it into the effictivly used timestep according to the local stiffness of the problem and MaxTime
-			int Integrate(cmf::math::Time MaxTime,cmf::math::Time TimeStep);
+			int integrate(cmf::math::Time MaxTime,cmf::math::Time TimeStep);
 		};
 	}
 }

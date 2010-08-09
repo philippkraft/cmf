@@ -116,8 +116,8 @@ namespace cmf {
 			/// Matric potential at the wetness X in m
 			real Psi_X;
 			/// Retention curve shape parameter
-			real b() const { return m_b;}
-			void Set_b(real new_b) {
+			real get_b() const { return m_b;}
+			void set_b(real new_b) {
 				m_b=new_b;
 				Set_Saturated_pF_curve_tail_parameters();
 
@@ -147,7 +147,7 @@ namespace cmf {
 			static BrooksCoreyRetentionCurve CreateFrom2Points(real ksat,real porosity,real theta1,real theta2,real psi_1=pF_to_waterhead(2.5),real psi_2=pF_to_waterhead(4.2));
 			virtual BrooksCoreyRetentionCurve* copy() const
 			{
-				return new BrooksCoreyRetentionCurve(Ksat,m_Porosity,b(),wetness_X*m_Porosity,Psi_X,m_PorosityDecay);
+				return new BrooksCoreyRetentionCurve(Ksat,m_Porosity,get_b(),wetness_X*m_Porosity,Psi_X,m_PorosityDecay);
 			}
 		};
 		

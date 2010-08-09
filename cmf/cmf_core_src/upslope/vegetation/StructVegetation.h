@@ -29,6 +29,7 @@ namespace cmf {
 					LAI, ///< Leaf area index
 					Height, ///< Height of the vegetation in m
 					albedo, ///< Fraction of reflected radiation
+					snow_albedo, ///< Fraction of reflected radiation at snow cover
 					CanopyCapacityPerLAI, ///< Capacity of interception storage per LAI unit in mm
 					RootDepth, ///< Depth of rooting zone in m, see fraction_at_rootdepth
 					RootContent, ///< average fine root content in kg/m3 (default 2 kg/m3) in root depth.
@@ -77,7 +78,7 @@ namespace cmf {
 					: LAI(_LAI),Height(_Height),albedo(_albedo), RootContent(2.0),
 					  CanopyCapacityPerLAI(_CanopyCapacityPerLAI),CanopyPARExtinction(0.6),
 					  RootDepth(_RootDepth),StomatalResistance(_StomatalResistance),
-					  CanopyClosure(_CanopyClosure), LeafWidth(0.05),fraction_at_rootdepth(_fraction_at_rootdepth)
+					  CanopyClosure(_CanopyClosure), LeafWidth(0.05),fraction_at_rootdepth(_fraction_at_rootdepth), snow_albedo(0.85)
 				{
 				}
 			};			

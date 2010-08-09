@@ -48,41 +48,32 @@ namespace cmf {
 
 		public:
 			/// The functional relation between volume, depth and exposed area
-			virtual const IVolumeHeightFunction& get_height_function() const 			{
+			virtual const IVolumeHeightFunction& get_height_function() const {
 				return height_function;
 			}
-			virtual void set_height_function(const IVolumeHeightFunction& val)			{
+			virtual void set_height_function(const IVolumeHeightFunction& val){
 				height_function = val;
 			}
 
 			/// Returns the water table depth 
-			real get_depth() const {return height_function.h(maximum(0,get_state()));}
+			real get_depth() const;
 			void set_depth(real new_depth) {set_volume(height_function.V(new_depth));}
 			/// Returns the exposed surface area in m2
 			real wet_area() const {return height_function.A(maximum(0,get_state()));}
 			/// Returns the gravitational potential
 			/// \f[ \Psi_G = z + h(V) \f]
-			real get_potential() const {return Location.z+get_depth();} 
+			real get_potential() const; 
 			/// Creates an open water storage with a prismatic volume			
-			static ptr create(const cmf::project& _project,real Area)
-			{
-				ptr res(new OpenWaterStorage(_project,Area));
-				return res;
-			}
+			static ptr create(const cmf::project& _project,real Area);
 			/// Creates an open water storage with any type of a volume
-			static ptr create(const cmf::project& _project, const cmf::river::IVolumeHeightFunction& base_geo)
-			{
-				return ptr(new OpenWaterStorage(_project,base_geo));
-			}
-			real conc(cmf::math::Time t,const cmf::water::solute& solute)	const
-			{
-				if (is_empty())
-					return cmf::water::flux_node::conc(t,solute);
-				else
-					return cmf::water::WaterStorage::conc(t,solute);
-			}
+			static ptr create(const cmf::project& _project, const cmf::river::IVolumeHeightFunction& base_geo);
+			real conc(cmf::math::Time t,const cmf::water::solute& solute)	const;
 			/// Creates an open water storage from a flux node with a prismatic volume
 			static ptr from_node(cmf::water::flux_node::ptr node,real Area);
+
+			real get_abs_errtol(real rel_errtol) const {
+				return rel_errtol * height_function.V(0.001);
+			}
 			
 			/// Casts a flux node to an open water storage
 			static ptr cast(cmf::water::flux_node::ptr node);

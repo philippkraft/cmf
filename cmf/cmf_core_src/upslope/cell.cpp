@@ -110,9 +110,10 @@ cmf::upslope::SoilLayer::ptr cmf::upslope::Cell::get_layer(int index) const {
 cmf::atmosphere::Weather cmf::upslope::Cell::get_weather( cmf::math::Time t ) const
 {
 	cmf::atmosphere::Weather w = get_meteorology()(t);
-	if (Tground>-273) w.Tground = Tground;
-	cmf::water::WaterStorage::ptr snow = get_snow();
-	if (snow && !snow->is_empty()) w.Tground = std::min(w.Tground, 0.0);
+	if (Tground>-273) 
+		w.Tground = Tground;
+	else if (snow_coverage()>0.5) 
+		w.Tground = std::min(w.Tground, 0.0);
 	return w;
 }
 
@@ -268,9 +269,11 @@ void cmf::upslope::Cell::set_rainfall( double rainfall )
 
 void cmf::upslope::Cell::set_rain_source( cmf::atmosphere::RainSource::ptr new_source )
 {
+	std::string new_name = new_source->Name;
 	if (m_rainfall) {
 		cmf::water::replace_node(m_rainfall,new_source);
 	}
+	new_source->Name = new_name;
 	m_rainfall = new_source;
 }
 
@@ -278,9 +281,9 @@ cmf::math::state_queue cmf::upslope::Cell::get_states()
 {
 	cmf::math::state_queue q;
 	for (int i = 0; i < storage_count() ; ++i)
-		q.push(get_storage(i));
+		q.push(*get_storage(i));
 	for (int i = 0; i < layer_count() ; ++i)
-		q.push(get_layer(i));
+		q.push(*get_layer(i));
 	return q;
 }
 
@@ -292,25 +295,37 @@ real cmf::upslope::Cell::heat_flux( cmf::math::Time t) const
 	// Calculate latent heat flux (Ql) MJ/(m2 day)
 	double 
 		Lv = 2448, // MJ/Mg * 1Mg/m3 = MJ/m3
-		lat_T = (*m_Transpiration)(t) / m_Area * Lv, // latent heat flux by transpiration m3 day-1  m-2 
+		lat_T = (*m_Transpiration)(t) / m_Area * Lv, // latent heat flux by transpiration m3  * day-1 * m-2 * MJ/m3 = MJ/(m2 day)
 		lat_E = (*m_Evaporation)(t) / m_Area * Lv,   // latent heat flux by evaporation
 		Ql = -lat_T - lat_E;
 	
 	// Calculate sensible heat flux
 	double
 		c_w = 4.180, // J/(K g) -> MJ/(K * m3)
-		c_aV = 1.009 * 1.2 * 1e-3, // Volumetric specific heat  kJ/(K kg) * kg/m3 * MJ/kJ = MJ/(K m3)
+		c_aV = 1.009 * 1.2 * 1e-3, // Volumetric specific heat of air kJ/(K kg) * kg/m3 * MJ/kJ = MJ/(K m3)
 		r_ag=100, r_ac=50;		         // mean air density at constant pressure
 	// get resistances
 	m_aerodynamic_resistance->get_aerodynamic_resistance(r_ag,r_ac,t);
-	double Qs = c_aV * (w.T - w.Tground)/r_ag * 24*60*60; // MJ/(K m3) * K * m/s * 24*60*60 s/day = MJ/(m2 * day)
-
+	//MJ/(m2 * day) = MJ/(K m3) *        K         * m/s * 24*60*60 s/day
+	double Qs       =   c_aV    * (w.T - w.Tground)/r_ag * 24*60*60; 
 	return Rn + Qs + Ql;
 }
 
 real cmf::upslope::Cell::albedo() const
 {
-	return vegetation.albedo * (1-snow_coverage()-surface_water_coverage()) 
-		+ 0.9 * snow_coverage()
-		+ 0.5 * surface_water_coverage();
+	double 
+		snow_cov = snow_coverage(),
+		surf_cov = surface_water_coverage();
+
+	return vegetation.albedo * (1-snow_cov-surf_cov) 
+		+ vegetation.snow_albedo * snow_cov
+		+ 0.5 * surf_cov;
+}
+
+real cmf::upslope::Cell::snow_coverage() const
+{
+	if (m_Snow)
+		return piecewise_linear(m_Snow->get_volume()/get_area()*1e3,0,4., 0 , 1-surface_water_coverage());
+	else
+		return 0.0;
 }

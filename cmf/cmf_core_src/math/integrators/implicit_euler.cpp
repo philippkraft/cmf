@@ -22,19 +22,22 @@
 #include <omp.h>
 #endif
 using namespace std;
-cmf::math::ImplicitEuler::ImplicitEuler(StateVariableOwner& states, real epsilon/*=1e-9*/,cmf::math::Time tStepMin/*=10.0/(3600.0*24.0)*/ ) : 
-Integrator(states,epsilon,tStepMin)
+cmf::math::ImplicitEuler::ImplicitEuler(StateVariableOwner& states, 
+										real epsilon/*=1e-9*/,
+										cmf::math::Time tStepMin/*=10.0/(3600.0*24.0)*/ ) 
+: Integrator(states,epsilon),dt_min(tStepMin)
 {
-	oldStates		  = num_array(int(m_States.size()),0);
-	compareStates	= num_array(int(m_States.size()),0);
-	dxdt          = num_array(int(m_States.size()),0);
+	oldStates      = num_array(int(m_States.size()),0);
+	compareStates  = num_array(int(m_States.size()),0);
+	dxdt           = num_array(int(m_States.size()),0);
 }
 cmf::math::ImplicitEuler::ImplicitEuler( real epsilon/*=1e-9*/,cmf::math::Time tStepMin/*=10.0/(3600.0*24.0)*/ ) : 
-Integrator(epsilon,tStepMin)
+Integrator(epsilon), dt_min(tStepMin)
 {
 }
 
-cmf::math::ImplicitEuler::ImplicitEuler( const cmf::math::Integrator& forCopy) : cmf::math::Integrator(forCopy)
+cmf::math::ImplicitEuler::ImplicitEuler( const cmf::math::Integrator& forCopy) 
+: cmf::math::Integrator(forCopy)
 {
 
 }
@@ -48,14 +51,14 @@ void cmf::math::ImplicitEuler::AddStatesFromOwner( cmf::math::StateVariableOwner
 
 
 
-int cmf::math::ImplicitEuler::Integrate(cmf::math::Time MaxTime,cmf::math::Time TimeStep)
+int cmf::math::ImplicitEuler::integrate(cmf::math::Time MaxTime,cmf::math::Time TimeStep)
 {
 	// h is standard name in numeric for time step size
-	Time h=MaxTime-ModelTime();
+	Time h=MaxTime-get_t();
 	// Don't stretch the current timestep more the 4 times the last timestep
-	if (h > this->TimeStep() * 2) 
+	if (h > this->get_dt() * 2) 
 	{
-		h=this->TimeStep() * 2;
+		h=this->get_dt() * 2;
 	}
 
 	// Copies the actual states to the history as x_(n)
@@ -73,7 +76,7 @@ int cmf::math::ImplicitEuler::Integrate(cmf::math::Time MaxTime,cmf::math::Time 
 		// Remember the current state for convergence criterion
 		CopyStates(compareStates);
 		// Get derivatives at t(n+1) * h[d]
-		CopyDerivs(this->ModelTime() + h,dxdt,h.AsDays());
+		CopyDerivs(this->get_t() + h,dxdt,h.AsDays());
 		//// Updates the state variables with the new states, according to the current order
 		SetStates(oldStates);
 		AddValuesToStates(dxdt);
@@ -94,9 +97,9 @@ int cmf::math::ImplicitEuler::Integrate(cmf::math::Time MaxTime,cmf::math::Time 
 			h /= 2;
 			//std::cout << '-';
 			// If the time step becomes too small, throw exception
-			if (m_NextTimeStep<MinTimestep())
+			if (m_dt<dt_min)
 			{
-				std::cerr << "No convergence! Time=" << ModelTime().AsDate().to_string() << " Iter: " << iter << " Reach:" << Tag << std::endl;
+				std::cerr << "No convergence! Time=" << get_t().AsDate().to_string() << " Iter: " << iter << std::endl;
 				throw std::runtime_error("No convergence with a time step > minimal time step");
 			}
 			// Restore states
@@ -109,8 +112,8 @@ int cmf::math::ImplicitEuler::Integrate(cmf::math::Time MaxTime,cmf::math::Time 
 		// Loop until the iterations converge
 	} while(err_ex > 1);
 
-	m_TimeStep=h;
+	m_dt=h;
 
-	ModelTime(ModelTime() + h);
+	set_t(get_t() + h);
 	return iter;
 }

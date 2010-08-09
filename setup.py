@@ -26,8 +26,6 @@ gcc = sys.platform == 'linux2'
 msvc = sys.platform == 'win32'
 
 # Change these pathes to your sundials 2.4+ installation
-sundials_lib_path = [r"..\sundials-2.4.0\inst_msvc\lib"] if msvc else []
-sundials_include_path = [r"..\sundials-2.4.0\inst_msvc\include"] if msvc else []
 
 # Change this path to your boost installation (not needed for gcc)
 boost_path = r"..\boost_1_41_0" if msvc else ""
@@ -55,35 +53,43 @@ if "swig" in sys.argv:
 def count_lines(files):
     lcount=0
     for fn in files:
-        lines = file(fn).readlines()
-        lcount+=len(lines)
+        if not fn.endswith('.c'):
+            lines = file(fn).readlines()
+            lcount+=len(lines)
     return lcount
+def is_source_file(fn,include_headerfiles=False):
+    fn=fn.lower()
+    res = False
+    res = res or fn.endswith('.cpp')
+    res = res or fn.endswith('.c')
+    res = res or fn.endswith('.cc')
+    res = res or (include_headerfiles and fn.endswith('.h'))
+    res = res or (include_headerfiles and fn.endswith('.hpp'))
+    return res
 def make_cmf_core():
-    library_dirs=sundials_lib_path
-    include_dirs=sundials_include_path
+    include_dirs=[os.path.join(*'cmf/cmf_core_src/math/integrators/sundials_cvode/include'.split('/'))]
     include_dirs += [get_numpy_include()]
+    libraries=None
     if msvc:
         include_dirs += [boost_path,boost_path+r"\boost\tr1"]
     if msvc: 
-        compile_args = ["/openmp","/EHsc",r'/Fd"build\vc90.pdb"',"/D_SCL_SECURE_NO_WARNINGS"]
+        compile_args = ["/openmp","/EHsc",r'/Fd"build\vc90.pdb"',"/D_SCL_SECURE_NO_WARNINGS", "/D_CRT_SECURE_NO_WARNINGS"]
         link_args=["/DEBUG"]
     if gcc: 
         compile_args=['-fopenmp','-Wno-comment','-Wno-reorder','-Wno-unused','-Wno-sign-compare']
         link_args=["-fopenmp"]
-    libraries=["sundials_cvode","sundials_nvecserial"]
     if gcc:
-        libraries += ['gomp']
+        libraries = ['gomp']
     cmf_files=[]
     cmf_headers=[]
     for root,dirs,files in os.walk('cmf/cmf_core_src'):
-        cmf_files.extend(os.path.join(root,f) for f in files if f.endswith('.cpp') and f!='cmf_wrap.cpp')
+        cmf_files.extend(os.path.join(root,f) for f in files if is_source_file(f) and f!='cmf_wrap.cpp')
         cmf_headers.extend(os.path.join(root,f) for f in files if f.endswith('.h'))
     print "Compiling %i source files" % (len(cmf_files)+1)
     cmf_files.append("cmf/cmf_core_src/cmf.i")
     print "Total number of C++ loc:", count_lines(cmf_files + cmf_headers)
     cmf_core = Extension('cmf._cmf_core',
                             sources=cmf_files,
-                            library_dirs=library_dirs,
                             libraries = libraries,
                             include_dirs=include_dirs,
                             extra_compile_args=compile_args,
@@ -116,6 +122,11 @@ if __name__=='__main__':
     author = "Philipp Kraft"
     author_email = "philipp.kraft@umwelt.uni-giessen.de"
     url = "www.uni-giessen.de/ilr/frede/cmf"
+    description="""
+    cmf extends Python by hydrological objects. The objects of the framework, allows the user to create a wide range
+    of hydrological models using Python.
+    This version was compiled on %s
+    """ % datetime.datetime.now().strftime('%d. %b %Y (%H:%M)')
     py=[]
     for root,dirs,files in os.walk('cmf'):
         for d in dirs:
@@ -132,8 +143,11 @@ if __name__=='__main__':
           license='GPL',
           ext_modules=ext,
           py_modules=py, 
-          requires=['shapely (>=1.0)'],author=author,
-          url=url,author_email=author_email)
+          requires=['shapely (>=1.0)'],
+          author=author,
+          url=url,
+          description=description,
+          author_email=author_email)
     if msvc: shutil.copy('build/lib.win32-2.6/cmf/raster/_raster.pyd','cmf/raster/')
     #setup(name='cmf_setups',version='0.1',license='GPL',
     #      py_modules=['cmf_setups.'+f[:-3] for f in os.listdir('cmf_setups') if f.endswith('.py')])

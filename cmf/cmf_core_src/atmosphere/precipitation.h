@@ -25,22 +25,30 @@
 
 namespace cmf { 
 	class project;
+	namespace upslope{
+		class Cell;
+	}
 	namespace atmosphere {
 		/// @ingroup boundary meteo
 		/// An abstract class for different types of rainfall sources
 		class RainSource : public cmf::water::flux_node 
 		{
 		protected:
+			/// protected c'tor
 			RainSource(const cmf::project& _project,cmf::geometry::point location=cmf::geometry::point())
 				: flux_node(_project,location) {}
 		public:
+			/// shared pointer
 			typedef std::tr1::shared_ptr<RainSource> ptr;
+			/// Functor declartion RainSource(t) = RainSource.get_intensity(t)
 			real operator()(cmf::math::Time t) const { return get_intensity(t);}
 			/// Returns the actual rainfall intensity in mm/day
 			virtual real get_intensity(cmf::math::Time t) const=0;
 			/// Returns the concentration of a solute in the rainfall at time t
 			virtual real conc(cmf::math::Time t, const cmf::water::solute& Solute)=0;
+			
 			virtual bool RecalcFluxes(cmf::math::Time t) {return true;}
+			/// Returns false
 			virtual bool is_empty() const
 			{
 				return false;
@@ -54,7 +62,7 @@ namespace cmf {
 		class ConstantRainSource : public RainSource {
 			cmf::math::num_array concentrations;
 		public:
-
+			/// shared pointer
 			typedef std::tr1::shared_ptr<ConstantRainSource> ptr;
 
 			/// The rain fall intensity in mm/day. This value is returned by 
@@ -72,6 +80,7 @@ namespace cmf {
 			virtual real conc(cmf::math::Time t, const cmf::water::solute& Solute) {
 				return concentrations[Solute.Id];
 			}
+			/// Sets the concentration of a solute in the rainfall
 			void set_conc(const cmf::water::solute& Solute, real value) {
 				concentrations[Solute.Id] = value;
 			}
@@ -83,11 +92,12 @@ namespace cmf {
 		/// RainfallStation describes a rainfall timeseries in mm/day at a certain place. 
 		/// Use RainfallStationReference or IDWRainfall to distribute the data into space
 		class RainfallStation  {
-			cmf::geometry::point m_Position;
 			RainfallStation(size_t Id,std::string Name, cmf::math::timeseries Data, cmf::geometry::point position)
-				: name(Name),data(Data.copy()),m_Position(position), id(Id) {}
+				: name(Name),data(Data.copy()),Location(position), id(Id) {}
 		public:
 			typedef std::tr1::shared_ptr<RainfallStation> ptr;
+			/// Location of the station
+			cmf::geometry::point Location;
 
 			/// Creates a new RainfallStation. Is called by RainfallStationList::add. 
 			/// Using RainfallStationList::add is in most cases the better choice, eg. from Python
@@ -109,9 +119,9 @@ namespace cmf {
 			std::string tostring() const;
 			/// Contains the solute cocentration data
 			cmf::water::SoluteTimeseries concentration;
-			/// Returns the position of the object
-			cmf::geometry::point get_position() const {return m_Position;}
-			
+			/// Connects a cell with this rainfall station
+			void use_for_cell(cmf::upslope::Cell& c);
+			/// copy c'tor
 			RainfallStation(const RainfallStation& copy);
 		};
 		
@@ -138,12 +148,13 @@ namespace cmf {
 			/// @returns A new rainfall station
 			/// @param Name Name of the station
 			/// @param Data Rainfall timeseries
-			/// @param position Spatial position of the new station
+			/// @param Position Spatial position of the new station
 			RainfallStation::ptr add(std::string Name, cmf::math::timeseries Data, cmf::geometry::point Position) {
 				RainfallStation::ptr rfs=RainfallStation::create(size(),Name,Data,Position);
 				m_stations.push_back(rfs);
 				return rfs;
 			}
+			/// Removes the station at index from this list
 			void remove(int index) {
 				m_stations.erase(m_stations.begin() + (index > 0 ? index : int(size()) + index));
 			}
@@ -155,6 +166,7 @@ namespace cmf {
 			RainfallStation::ptr m_station;
 			RainfallStationReference(const cmf::project& project, cmf::geometry::point position, RainfallStation::ptr station);
 		public:
+			/// shared_ptr
 			typedef std::tr1::shared_ptr<cmf::atmosphere::RainfallStationReference > ptr;
 			
 			/// Finds the nearest RainfallStation to position using z_weight for cmf::geometry::point::z_weight_distance

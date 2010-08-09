@@ -93,6 +93,9 @@ namespace cmf {
 				return m_wet.V;
 			}
 			
+			real get_abs_errtol(real rel_errtol) const {
+				return rel_errtol * get_capacity();
+			}
 			
 			/// Returns the actual conductivity	\f$\frac{m}{day}\f$
 			real get_K() const {return m_wet.K;}
@@ -131,7 +134,7 @@ namespace cmf {
 			}
 		protected:
 			SoilLayer(cmf::upslope::Cell & _cell,real lowerboundary,
-												const RetentionCurve& r_curve,real saturateddepth=10);
+				const RetentionCurve& r_curve,real saturateddepth=10);
 			SoilLayer(cmf::upslope::Cell & _cell,real upperBoundary,real lowerboundary,
 												const RetentionCurve& r_curve,int _Position);
 			/// Invalidates the saturated depth of the cell

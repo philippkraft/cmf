@@ -29,8 +29,11 @@ namespace cmf {
 		class SoluteWaterIntegrator : public cmf::math::Integrator
 		{
 		protected:
+			/// integrator for the water storages
 			std::auto_ptr<cmf::math::Integrator> WaterIntegrator;
+			/// integrator for the solute storages
 			std::auto_ptr<cmf::math::Integrator> SoluteIntegrator;
+			/// Function to add the states to the appropriate integrator
 			void distribute_states()
 			{
 				for(state_vector::iterator it = m_States.begin(); it != m_States.end(); ++it)
@@ -42,58 +45,76 @@ namespace cmf {
 			}
 
 		public:
+			/// Returns the integrator for WaterStorage state variables
 			cmf::math::Integrator* get_water_integrator() const
 			{
 				return WaterIntegrator.get();
 			}
+			/// Returns the integrator for SoluteStorage state variables
 			cmf::math::Integrator* get_solute_integrator() const
 			{
 				return SoluteIntegrator.get();
 			}
+
+			/// Changes the integrator for WaterStorage state variables
 			void set_water_integrator(cmf::math::Integrator* templ)
 			{
 				WaterIntegrator.reset(templ->Copy());
 				SoluteIntegrator.reset(SoluteIntegrator->Copy());
 				distribute_states();
 			}
+			/// Changes the integrator for SoluteStorage state variables
 			void set_solute_integrator(cmf::math::Integrator* templ)
 			{
 				SoluteIntegrator.reset(templ->Copy());
 				WaterIntegrator.reset(WaterIntegrator->Copy());
 				distribute_states();
 			}
+			/// Add state variables from a StateVariableOwner
 			void AddStatesFromOwner(cmf::math::StateVariableOwner& stateOwner)
 			{
 				Integrator::AddStatesFromOwner(stateOwner);
 				distribute_states();
 			}
-			int Integrate(cmf::math::Time MaxTime,cmf::math::Time TimeStep)
+			int integrate(cmf::math::Time MaxTime,cmf::math::Time TimeStep)
 			{
-				WaterIntegrator->IntegrateUntil(MaxTime,TimeStep);
-				SoluteIntegrator->IntegrateUntil(MaxTime,TimeStep);
-				m_Time=MaxTime;
-				m_TimeStep=WaterIntegrator->TimeStep();
+				WaterIntegrator->integrate_until(MaxTime,TimeStep);
+				SoluteIntegrator->integrate_until(MaxTime,TimeStep);
+				m_t=MaxTime;
+				m_dt=WaterIntegrator->get_dt();
 				return 1;
 			}
 			virtual cmf::math::SoluteWaterIntegrator* Copy() const
 			{
 				return new SoluteWaterIntegrator(*WaterIntegrator,*SoluteIntegrator);
 			}
+		
+			/// Creates a new SoluteWaterIntegrator
+			/// @param water_integrator Template for the integrator of WaterStorage state varaiables
+			/// @param solute_integrator Template for the integrator of soluteStorage state varaiables
 			SoluteWaterIntegrator(const cmf::math::Integrator& water_integrator, const cmf::math::Integrator& solute_integrator)
 				: Integrator(), WaterIntegrator(water_integrator.Copy()), SoluteIntegrator(solute_integrator.Copy())
 			{
 
 			}
-			virtual void Reset()
-			{
-				WaterIntegrator->ModelTime(m_Time);
-				SoluteIntegrator->ModelTime(m_Time);
-			}
+
+			/// Creates a new SoluteWaterIntegrator
+			/// @param water_integrator Template for the integrator of WaterStorage state varaiables
+			/// @param solute_integrator Template for the integrator of soluteStorage state varaiables
+			/// @param states States to be added to the integrators
 			SoluteWaterIntegrator(const cmf::math::Integrator& water_integrator, const cmf::math::Integrator& solute_integrator, cmf::math::StateVariableOwner& states)
 				: Integrator(), WaterIntegrator(water_integrator.Copy()), SoluteIntegrator(solute_integrator.Copy())
 			{
-				 AddStatesFromOwner(states);
+				AddStatesFromOwner(states);
 			}
+
+			/// Resets the integrators (only needed for multistep methods)
+			virtual void Reset()
+			{
+				WaterIntegrator->set_t(m_t);
+				SoluteIntegrator->set_t(m_t);
+			}
+
 
 
 		};

@@ -31,22 +31,57 @@ cmf::river::OpenWaterStorage::ptr cmf::river::OpenWaterStorage::cast( cmf::water
 }
 
 cmf::river::OpenWaterStorage::OpenWaterStorage( const cmf::project& _project,real Area ) 
-: cmf::water::WaterStorage(_project,0), height_function(Prism(Area))
+: cmf::water::WaterStorage(_project,"Unnamed OpenWaterStorage",0), height_function(Prism(Area))
 {
 
 }
 
 cmf::river::OpenWaterStorage::OpenWaterStorage( const cmf::project& _project, const cmf::river::IVolumeHeightFunction& base_geo )
-: cmf::water::WaterStorage(_project,0), height_function(base_geo)
+: cmf::water::WaterStorage(_project,"Unnamed OpenWaterStorage",0), height_function(base_geo)
 {
 
 }
 
-real cmf::river::OpenWaterStorage::head_to_volume(real head) const
+inline real cmf::river::OpenWaterStorage::head_to_volume(real head) const
 {
 	return height_function.V(head - this->Location.z);
 }
-real cmf::river::OpenWaterStorage::volume_to_head(real volume) const
+inline real cmf::river::OpenWaterStorage::volume_to_head(real volume) const
 {
 	return height_function.h(volume) + this->Location.z;
+}
+
+real cmf::river::OpenWaterStorage::get_depth() const
+{
+	if (get_state_variable_content()=='h') 
+		return std::max(get_state() - Location.z,0.0);
+	else
+		return height_function.h(std::max(0.0,get_state()));
+}
+
+real cmf::river::OpenWaterStorage::get_potential() const
+{
+	if (get_state_variable_content()=='h')
+		return get_state();
+	else
+		return volume_to_head(get_state());
+}
+
+real cmf::river::OpenWaterStorage::conc( cmf::math::Time t,const cmf::water::solute& solute ) const
+{
+	if (is_empty())
+		return cmf::water::flux_node::conc(t,solute);
+	else
+		return cmf::water::WaterStorage::conc(t,solute);
+}
+
+cmf::river::OpenWaterStorage::ptr cmf::river::OpenWaterStorage::create( const cmf::project& _project, const cmf::river::IVolumeHeightFunction& base_geo )
+{
+	return ptr(new OpenWaterStorage(_project,base_geo));
+}
+
+cmf::river::OpenWaterStorage::ptr cmf::river::OpenWaterStorage::create( const cmf::project& _project,real Area )
+{
+	ptr res(new OpenWaterStorage(_project,Area));
+	return res;
 }

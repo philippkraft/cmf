@@ -43,7 +43,7 @@
 	real geo_mean(real a,real b);
 	real harmonic_mean(real a,real b);
 	real piecewise_linear(real x,real xmin,real xmax,real ymin=0,real ymax=1);
-	real boltzmann(real x,real tau,real x_half);
+	real boltzmann(real x,real x_half,real tau);
 	real sign(real x);
 	real square(real x);
 

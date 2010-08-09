@@ -22,13 +22,13 @@
 	#include "upslope/SoilLayer.h"
 %}
 // Get Upslope Classes
-
+%attribute(cmf::upslope::BrooksCoreyRetentionCurve,real, b,get_b,set_b);
 %include "upslope/Soil/RetentionCurve.h"
 %extend cmf::upslope::BrooksCoreyRetentionCurve
 {
     %pythoncode {
     def __repr__(self):
-        return "Brooks-Corey (Ksat=%g,porosity=%g,b=%g,wetness @ h=%g @ %g)" % (self.K(1,0),self.Porosity(0),self.b(),self.wetness_X,self.Psi_X)
+        return "Brooks-Corey (Ksat=%g,por.=%0.0f%%,b=%g,%0.1f%% wfps at pF%0.2f)" % (self.K(1),self.Porosity(0)*100,self.b,self.wetness_X * 100,waterhead_to_pF(self.Psi_X))
     }
 }
 %extend cmf::upslope::VanGenuchtenMualem

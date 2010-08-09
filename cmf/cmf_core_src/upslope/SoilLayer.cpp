@@ -47,14 +47,11 @@ real cmf::upslope::SoilLayer::get_gravitational_potential() const
 
 // public ctor
 cmf::upslope::SoilLayer::SoilLayer( cmf::upslope::Cell & _cell,real lowerboundary,const RetentionCurve& r_curve,real saturateddepth/*=10*/ ) 
-:	cmf::water::WaterStorage(_cell.get_project(), 0),
-	cell(_cell),
-	m_retentioncurve(r_curve.copy()),
-	m_lowerboundary(lowerboundary),
-	Position(_cell.layer_count()), 
-	m_ice_fraction(0.0)
-
+:	cmf::water::WaterStorage(_cell.get_project()),cell(_cell),	Position(_cell.layer_count())
 {
+	m_retentioncurve=std::auto_ptr<RetentionCurve>(r_curve.copy());
+	m_lowerboundary=lowerboundary;
+	m_ice_fraction = 0.0;
 	// Get the location from the layer
 	Location=cmf::geometry::point(_cell.x,_cell.y,_cell.z - lowerboundary);
 	// Get the upper boundary from the upper layer
