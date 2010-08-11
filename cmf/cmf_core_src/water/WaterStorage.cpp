@@ -62,12 +62,18 @@ std::tr1::shared_ptr<WaterStorage> WaterStorage::from_node( flux_node::ptr node 
 }
 
 void WaterStorage::set_state_variable_content(char content) {
-	if (content == 'V' || content == 'h') {
+	if (content == 'V' || content == 'h' && content!=m_state_variable_content) {
 		if (m_state_variable_content != content) {
-			real newstate=get_state();
+			real oldstate=get_state();
+			real newstate=0.0;
 			try
 			{
-				newstate =  (content=='h') ? volume_to_head(newstate) : head_to_volume(newstate);
+				if (content == 'h') {
+					newstate = volume_to_head(oldstate);
+					real V = head_to_volume(newstate);
+				} else {
+					newstate =  head_to_volume(oldstate);
+				}
 				set_state(newstate);
 				m_state_variable_content=content;
 			}
@@ -89,8 +95,7 @@ real cmf::water::WaterStorage::head_to_volume( real head ) const
 
 real cmf::water::WaterStorage::volume_to_head( real volume ) const
 {
-	throw std::runtime_error("Head to volume function not implemented in " + this->Name);
-	return 0.0;
+	return Location.z;
 }
 
 real cmf::water::WaterStorage::Derivate( const cmf::math::Time& time )

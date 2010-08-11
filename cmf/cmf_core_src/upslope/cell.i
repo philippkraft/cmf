@@ -183,6 +183,22 @@
 	    Py_DECREF(iter);
     }
 }
+%typemap(typecheck,precedence=0) cmf::upslope::cell_vector& {
+	void * pt;
+	int res=SWIG_ConvertPtr($input,&pt,$1_descriptor,0);
+	if (res!=-1) {
+		$1 = 1;
+	} else  {
+		PyObject* iter = PyObject_GetIter($input);
+		if (iter != 0) {
+			Py_DECREF(iter);
+			$1 = 1;
+		} 
+		else 
+		    $1 = 0;
+	} 
+}
+
 
 %rename(__len__) cmf::upslope::cell_vector::size;
 %rename(__getitem__) cmf::upslope::cell_vector::operator[];

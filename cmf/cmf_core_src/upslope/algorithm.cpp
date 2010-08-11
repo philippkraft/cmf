@@ -240,7 +240,25 @@ cmf::geometry::point_vector cmf::upslope::cell_flux_directions( cells_ref cells,
 	return res;
 }
 
+double cmf::upslope::get_area( cells_ref cells )
+{
+	real sum=0;
+	for(cell_vector::iterator it = cells.begin(); it != cells.end(); ++it)
+		sum+=it->get_area();
+	return sum;
+}
 
+cmf::geometry::point cmf::upslope::get_center( cells_ref cells )
+{
+	cmf::geometry::point center;
+	real sum=0;
+	for(cell_vector::iterator it = cells.begin(); it != cells.end(); ++it) {
+		sum    += it->get_area();
+		center += it->get_position() * it->get_area();
+	}
+	return center/sum;
+
+}
 
 
 

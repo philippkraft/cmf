@@ -28,29 +28,15 @@
 namespace cmf {
 	/// Contains classes for numerical solving of ODE's
   namespace math {
-	  struct integratable {
-		  real x;
-		  Time t;
-		  integratable(real _x,Time _t) : x(_x),t(_t) {}
-		  integratable(const integratable& cpy) : x(cpy.x),t(cpy.t) {} // Copy constructorable
-		  integratable& operator=(const integratable& cpy) {x=cpy.x;t=cpy.t; return *this;} // Assignable
-		  integratable() : x(0.0),t() {} // Default ctor
-		  void integrate(real dxdt, Time dt) {
-			  x+= dxdt * dt.AsDays();
-			  t+=dt;
-		  }
-		  void integrate_until(real dxdt, Time until) {
-			  integrate(dxdt,until - t);
-		  }
-		  integratable& operator+=(const integratable& other) {  x+=other.x;  t+=other.t; return *this; }
-		  integratable& operator-=(const integratable& other) {  x-=other.x;  t-=other.t; return *this; }
-		  integratable& operator*=(real f) {  x*=f;t*=f; return *this;}
-		  integratable& operator/=(real f) {  x/=f;t/=f; return *this;}
-		  integratable operator+(const integratable& other) const {return integratable(x+other.x,t+other.t);}
-		  integratable operator-(const integratable& other) const {return integratable(x-other.x,t-other.t);}
-		  integratable operator*(real f) const {return integratable(x*f,t*f);}
-		  integratable operator/(real f) const {return integratable(x/f,t/f);}
+	  /// integration_variable is a functionality for different classes for integrating values over time.
+	  ///
+	  /// Main usage of an integration_variable is the calculation of average fluxes
+	  class integratable {
+	  public:
+		  virtual void integrate(Time t)=0;
+		  virtual void reset(Time t)=0;
 	  };
+
 		/// Abstract class state variable
 		///		
 		///		Simple exponential system class header implementing a state variable:
@@ -63,8 +49,7 @@ namespace cmf {
 		///		};
 		///		@endcode
 		///
-		class StateVariable
-		{
+	  class StateVariable {
 		private:
 			bool m_StateIsNew;
 			/// Holds the value of the Statevariable

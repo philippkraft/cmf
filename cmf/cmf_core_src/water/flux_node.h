@@ -66,8 +66,10 @@ namespace cmf {
 			void RegisterConnection(flux_connection* newConnection);
 			void DeregisterConnection(flux_connection* target);
 			friend class flux_connection;
+			friend class water_balance_integrator;
 			typedef std::map<int, con_ptr > ConnectionMap;
 			ConnectionMap m_Connections;
+			double water_balance_without_refresh() const;
 			const cmf::project& m_project;
 		protected:
 			cmf::math::Time m_LastQuery;
@@ -138,6 +140,42 @@ namespace cmf {
 
 		flux_node::ptr get_higher_node(flux_node::ptr node1,flux_node::ptr node2);
 		flux_node::ptr get_lower_node(flux_node::ptr node1,flux_node::ptr node2);
+
+		class water_balance_integrator : public cmf::math::integratable {
+		private:
+			double _sum;
+			cmf::math::Time _start_time;
+			cmf::math::Time _t;
+			const std::tr1::weak_ptr<flux_node> _node;
+			std::string _name;
+
+		public:
+			/// Returns the total absolute waterbalance of the node in integration time [m3]
+			double sum() const {
+				return _sum;
+			}
+			/// Returns the duration of the integration
+			cmf::math::Time integration_t() const {
+				return _t-_start_time;
+			}
+			/// Returns the start time of the integration
+			cmf::math::Time t0() const { return _start_time; }
+
+			/// Returns the average flux over the integration time in m3/day
+			double avg() const;
+			/// Initializes the integration
+			void reset(cmf::math::Time t) {
+				_start_time = t;
+				_sum=0.0;
+			}
+			flux_node::ptr node() const {
+				return _node.lock();
+			}
+			/// Integrates the flux a timestep further. Note: until is an absolut time. If until is before t0, the integration is initilized again
+			void integrate(cmf::math::Time until);
+			water_balance_integrator(cmf::water::flux_node::ptr node) 
+				:	_node(node), _sum(0.0), _t(cmf::math::year*5000), _name(node->to_string()+ " (Integrator)") {}
+		};
 
 
 	}
