@@ -53,9 +53,9 @@ cmf::upslope::SoilLayer::SoilLayer( cmf::upslope::Cell & _cell,real lowerboundar
 	m_lowerboundary=lowerboundary;
 	m_ice_fraction = 0.0;
 	// Get the location from the layer
-	Location=cmf::geometry::point(_cell.x,_cell.y,_cell.z - lowerboundary);
 	// Get the upper boundary from the upper layer
 	m_upperboundary = cell.layer_count()>0 ? cell.get_layer(-1)->get_lower_boundary() : 0;
+	Location=cmf::geometry::point(_cell.x,_cell.y,_cell.z - 0.5*(m_upperboundary + m_lowerboundary));
 	if (m_lowerboundary-m_upperboundary<=0)
 		throw std::runtime_error("0 m thickness of layer");
 	set_potential(cell.z - saturateddepth);

@@ -44,14 +44,15 @@
 
 
 %extend cmf::math::Integrator { 
+    StateVariable::ptr __getitem__(int index) {
+        return (*$self)[index];
+    }
 %pythoncode {
-    def __call__(self,t,dt=None):
-        if dt is None:
-            dt = Time()
+    def __call__(self,t,reset=False):
         if t<self.t:
-            self.integrate_until(self.t+t)
+            self.integrate_until(self.t+t,reset=reset)
         else:
-            self.integrate_until(t)
+            self.integrate_until(t,reset=reset)
     def run(self,start=None,end=None,step=day*1):
         if not start is None:
             self.t=start

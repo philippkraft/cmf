@@ -182,6 +182,18 @@ cmf::water::connection_vector cmf::water::flux_node::get_connections() const
 	}
 	return res;
 }
+
+double cmf::water::flux_node::water_balance_without_refresh() const
+{
+	real waterbalance=0;
+	for(flux_node::ConnectionMap::const_iterator it = m_Connections.begin(); it != m_Connections.end(); ++it)
+	{
+		flux_connection* conn=it->second.get();
+		waterbalance+=this == conn->left_node().get() ? -conn->m_q : conn->m_q;
+	}
+	return waterbalance;
+
+}
 int cmf::water::count_node_references( flux_node::ptr node )
 {
 	return int(node.use_count());
@@ -195,4 +207,28 @@ cmf::water::flux_node::ptr cmf::water::get_higher_node( cmf::water::flux_node::p
 cmf::water::flux_node::ptr cmf::water::get_lower_node( cmf::water::flux_node::ptr node1,cmf::water::flux_node::ptr node2 )
 {
 	return node1->Location.z >= node2->Location.z ? node2 : node1;
+}
+
+void cmf::water::water_balance_integrator::integrate( cmf::math::Time until )
+{
+	if (_node.expired()) {
+		throw std::runtime_error("Connection for "+_name+" does not exist any more");
+	}
+	cmf::math::Time dt = until-_t;
+	if (until<_t) {
+		reset(until);
+		return;
+	}
+	_t=until;
+	flux_node::ptr node = _node.lock();
+	_sum += node->water_balance_without_refresh() * dt.AsDays();
+
+}
+
+double cmf::water::water_balance_integrator::avg() const
+{
+	if (_t>_start_time)
+		return _sum/(_t-_start_time).AsDays();
+	else
+		return 0.0;
 }

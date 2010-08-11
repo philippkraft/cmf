@@ -41,6 +41,8 @@ namespace cmf {
 		/// Fills the sinks in a network. Unstable! Might create an infinite loop
 		int fill_sinks(cells_ref cells,double min_difference=0.001);
 		
+		double get_area(cells_ref cells);
+		cmf::geometry::point get_center(cells_ref cells);
 
 		cmf::geometry::point_vector cell_positions(cmf::upslope::cells_ref cells);
 		cmf::geometry::point_vector cell_flux_directions(cmf::upslope::cells_ref cells,cmf::math::Time);

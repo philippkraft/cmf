@@ -21,6 +21,7 @@
 
 #include <string>
 #include <sstream>
+#define sqr(x) ((x)*(x))
 namespace cmf {
 	namespace geometry	{
 		point::point():x(0.0),y(0.0),z(0.0) {}
@@ -37,20 +38,6 @@ namespace cmf {
 			point res(x-p.x,y-p.y,z-p.z);
 			return res;
 		}
-		point point::operator+=(const point &p) 
-		{
-			x+=p.x;
-			y+=p.y;
-			z+=p.z;
-			return *this;
-		}
-		point point::operator-=(const point &p) 
-		{
-			x-=p.x;
-			y-=p.y;
-			z-=p.z;
-			return *this;
-		}
 		bool point::operator ==(const point &p) const 
 		{
 			return this->x==p.x && this->y == p.y && this->z==p.z;
@@ -66,6 +53,10 @@ namespace cmf {
 			return maximum(fabs(x-p.x),fabs(y-p.y));
 		}
 
+		double point::length() const
+		{
+			return sqrt(sqr(x)+sqr(y)+sqr(z));
+		}
 		cmf::geometry::point operator*( double d,const point &p )
 		{
 			return p*d;
@@ -74,6 +65,11 @@ namespace cmf {
 		cmf::geometry::point operator/( double d,const point &p )
 		{
 			return cmf::geometry::point(d,d,d) / p;
+		}
+
+		double dot( const point &p1, const point &p2 )
+		{
+			return p1.x*p2.x + p1.y*p2.y + p1.z * p2.z;
 		}
 	}
 }

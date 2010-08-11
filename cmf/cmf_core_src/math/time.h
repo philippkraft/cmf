@@ -118,8 +118,10 @@ namespace cmf {
 		private:
 			long long m_time_in_ms;
 			explicit Time(long long ms):m_time_in_ms(ms) {}
-		public:
+#ifndef SWIG
 			friend Time timespan(long long);
+#endif
+		public:
 			static const long long ms_per_day=86400000;
 			/// @name Constructors
 			//@{
@@ -214,8 +216,6 @@ namespace cmf {
 		Time operator*(double f,Time t);
 		Time operator*(int f,Time t);
 		Time timespan(long long ms);
-
-
 #endif
 
 		/// An absolute time, not for calculation. Date and Time are interchangable 

@@ -105,9 +105,32 @@ def drawobjects(objects,style=None,hold=1,**kwargs):
         pylab.draw() 
         pylab.ion()
 
-   
-def plot_timeseries(data,style='-',**kwargs):    
-    return pylab.plot_date(map(lambda t:(t-cmf.Time(1,1,1)).AsDays(),cmf.timerange(data.begin,data.end,data.step)),list(data),style,**kwargs)[0]
+def __x_from_ts(ts):
+    return pylab.fromiter(((t-cmf.Time(1,1,1))/cmf.day for t in ts.iter_time()),dtype=numpy.float)
+def plot_timeseries(data,style='-',**kwargs):  
+    try:
+        step = kwargs.pop('step')        
+        ts = data.reduce_avg(data.begin - data.begin % step,step)
+    except KeyError:
+        ts=data
+    return pylab.plot_date(_x_from_ts(ts),asarray(ts),style,**kwargs)[0]
+def bar_timeseries(data,**kwargs):
+    try:
+        step = kwargs.pop('step')        
+        ts = data.reduce_avg(data.begin - data.begin % step,step)
+    except KeyError:
+        ts=data
+    x=__x_from_ts(ts)
+    was_inter = pylab.isinteractive()
+    pylab.ioff()
+    bars=pylab.bar(x,ts,ts.step/cmf.day,**kwargs)
+    ax=pylab.gca()
+    ax.xaxis_date()
+    if was_inter:
+        pylab.draw()
+        pylab.ion()
+    return bars
+    
 def plot_locatables(locatables,style='kx',**kwargs):
     get_x=lambda l:l.position.x
     get_y=lambda l:l.position.y

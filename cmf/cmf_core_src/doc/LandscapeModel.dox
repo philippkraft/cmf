@@ -1,6 +1,6 @@
 /**
 @page LM Building a landscape model
-
+@section lm_intro Introduction
 Building a landscape model consists of the followng steps
  -# @ref lm_project
  -# @ref lm_discr_horiz

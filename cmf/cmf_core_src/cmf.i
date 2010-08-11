@@ -76,6 +76,7 @@ SWIG_SHARED_PTR(flux_node,cmf::water::flux_node);
         SWIG_SHARED_PTR_DERIVED(OpenWaterStorage,cmf::water::WaterStorage,cmf::river::OpenWaterStorage);
             SWIG_SHARED_PTR_DERIVED(Reach,cmf::river::OpenWaterStorage,cmf::river::Reach);
         SWIG_SHARED_PTR_DERIVED(SoilLayer,cmf::water::WaterStorage,cmf::upslope::SoilLayer);
+        SWIG_SHARED_PTR_DERIVED(aquifer,cmf::water::WaterStorage,cmf::upslope::aquifer);
 
 #define %ptr(Type) SWIG_SHARED_PTR_QNAMESPACE::shared_ptr<Type>
 #define %dynptrcast(Type,input) SWIG_SHARED_PTR_QNAMESPACE::dynamic_pointer_cast<Type>(input) 
@@ -116,6 +117,7 @@ SWIG_SHARED_PTR(flux_node,cmf::water::flux_node);
 
 
 SWIG_SHARED_MULTICAST(cmf::upslope::SoilLayer, cmf::water::flux_node)
+SWIG_SHARED_MULTICAST(cmf::upslope::aquifer, cmf::water::flux_node)
 
 
 SWIG_SHARED_MULTICAST(cmf::river::Reach, cmf::water::WaterStorage)
@@ -123,6 +125,7 @@ SWIG_SHARED_MULTICAST(cmf::river::Reach, cmf::water::flux_node)
 SWIG_SHARED_MULTICAST(cmf::river::OpenWaterStorage, cmf::water::flux_node)
 
 SWIG_SHARED_MULTICAST(cmf::upslope::SoilLayer, cmf::math::StateVariable)
+SWIG_SHARED_MULTICAST(cmf::upslope::aquifer, cmf::math::StateVariable)
 SWIG_SHARED_MULTICAST(cmf::river::OpenWaterStorage, cmf::math::StateVariable)
 SWIG_SHARED_MULTICAST(cmf::river::Reach, cmf::math::StateVariable)
 SWIG_SHARED_MULTICAST(cmf::water::WaterStorage, cmf::math::StateVariable)
@@ -154,7 +157,7 @@ SWIG_SHARED_MULTICAST(cmf::atmosphere::ConstantRainSource, cmf::water::flux_node
 //Downcast to all children of cmf::water::flux_node
 %node_downcast(Method,
    cmf::atmosphere::RainSource,cmf::water::DricheletBoundary,cmf::water::NeumannBoundary,
-   cmf::upslope::SoilLayer,  cmf::river::Reach,cmf::river::OpenWaterStorage,cmf::water::WaterStorage
+   cmf::upslope::SoilLayer, cmf::upslope::aquifer,  cmf::river::Reach,cmf::river::OpenWaterStorage,cmf::water::WaterStorage
 )
 %enddef
 
@@ -195,6 +198,7 @@ EXTENT__REPR__(cmf::atmosphere::IDWRainfall)
 %echo "Reach ok"
 
 %{
+	#include "upslope/groundwater.h"
 	#include "upslope/connections/subsurfacefluxes.h"
 	#include "upslope/connections/surfacefluxes.h"
 	#include "upslope/connections/AtmosphericFluxes.h"
@@ -210,6 +214,9 @@ EXTENT__REPR__(cmf::atmosphere::IDWRainfall)
 %}
 
 
+%attribute(cmf::upslope::aquifer,double,base_height,get_base_height);
+%attribute(cmf::upslope::aquifer,double,top_height,get_top_height);
+%include "upslope/groundwater.h"
 
 %include "upslope/connections/subsurfacefluxes.h"
 %include "reach/ManningConnection.h"

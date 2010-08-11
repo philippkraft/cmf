@@ -52,7 +52,7 @@ namespace cmf {
 			double A(double V) const;
 			double V(double h) const {return h*Area;}
 		};
-	  /// A wrapper class for volume / height functional relations
+	    /// A wrapper class for volume / height functional relations
 		class volume_height_function : public IVolumeHeightFunction
 		{
 		private:

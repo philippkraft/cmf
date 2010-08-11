@@ -38,7 +38,10 @@ namespace cmf {
 			///@name The state variables to integrate
 			//@{
 			typedef std::vector<StateVariable::ptr> state_vector;
+			typedef std::tr1::shared_ptr<integratable> integratable_ptr;
+			typedef std::vector<integratable_ptr> integratable_vector;
 			state_vector m_States;
+			integratable_vector m_integratables;
 
 			int error_position;
 			real error_exceedance( const num_array& compare,int * biggest_error_position=0 );
@@ -98,9 +101,12 @@ namespace cmf {
 				return (int)m_States.size();
 			}
 			/// Returns the statevariable at position
+#ifndef SWIG
 			StateVariable::ptr operator[](int position) {
 				return m_States[position];
 			}
+
+#endif
 			/// Simplifies the assessment of state variables
 			real get_state(int position) const
 			{
@@ -188,23 +194,8 @@ namespace cmf {
 			/// @param TimeStep Takes the proposed timestep, and changes it into the effictivly used timestep according to the local stiffness of the problem and MaxTime
 			virtual int integrate(cmf::math::Time t_max,cmf::math::Time dt)=0;
 			///Integrates the vector of state variables until MaxTime
-			void integrate_until(cmf::math::Time t_max,cmf::math::Time dt=Time(),bool reset=false)
-			{
-				m_Iterations=0;
-				int i=0;
-				Time start = m_t;
-				if (reset) Reset();
-				if (!dt) dt=m_dt;
-				while (m_t < t_max) {
-					integrate(t_max,dt);
-					++i;
-				}
-				m_dt = (t_max - start)/i;
-			}
-
+			void integrate_until(cmf::math::Time t_max,cmf::math::Time dt=Time(),bool reset=false);
 			//@}
-
-
 		};
 	}
 }

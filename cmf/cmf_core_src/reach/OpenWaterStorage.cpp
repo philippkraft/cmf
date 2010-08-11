@@ -59,13 +59,6 @@ real cmf::river::OpenWaterStorage::get_depth() const
 		return height_function.h(std::max(0.0,get_state()));
 }
 
-real cmf::river::OpenWaterStorage::get_potential() const
-{
-	if (get_state_variable_content()=='h')
-		return get_state();
-	else
-		return volume_to_head(get_state());
-}
 
 real cmf::river::OpenWaterStorage::conc( cmf::math::Time t,const cmf::water::solute& solute ) const
 {

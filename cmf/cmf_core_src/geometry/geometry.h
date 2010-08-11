@@ -81,21 +81,36 @@ namespace cmf {
 				double angleToXAxis(point p) const {
 					return atan2(p.y-y,p.x-x)*180/PI;						
 				}
+				/// Returns x+y+z
+				double sum() const {
+					return x+y+z;
+				}
+				double length() const;
 #ifndef SWIG
 				/// Assignment op
-				point& operator=(const point &p) {this->x=p.x;this->y=p.y;this->z=p.z; return *this;}
+				point& operator=(const point& p) {this->x=p.x;this->y=p.y;this->z=p.z; return *this;}
 #endif
-				point operator+(const point &p) const; ///< plus
-				point operator-(const point &p) const; ///< minus
+				point operator+(const point& p) const; ///< plus
+				point& operator+=(const point& left) { x+=left.x;y+=left.y;z+=left.z; return *this;} ///< scalar multiply
+
+				point operator-(const point& p) const; ///< minus
+				point& operator-=(const point& left) { x-=left.x;y-=left.y;z-=left.z; return *this;} ///< scalar multiply
+
 				point operator*(double left) const { return point(x*left,y*left,z*left);} ///< scalar multiply
+				point& operator*=(double left) { x*=left;y*=left;z*=left; return *this;} ///< scalar multiply
 				point operator/(double left) const { return point(x/left,y/left,z/left);} ///< scalar div
-				point operator*(const point&p) const { return point(x*p.x,y*p.y,z*p.z);} ///< mult
-				point operator/(const point&p) const { return point(x/p.x,y/p.y,z/p.z);} ///< div
-				point operator+=(const point &p);///< inplace plus
-				point operator-=(const point &p);///< inplace minus
+				point& operator/=(double left) { x/=left;y/=left;z/=left; return *this;} ///< scalar multiply
+
+				point operator*(const point& p) const { return point(x*p.x,y*p.y,z*p.z);} ///< mult
+				point& operator*=(const point& left) { x*=left.x;y*=left.y;z*=left.z; return *this;} ///< scalar multiply
+
+				point operator/(const point& p) const { return point(x/p.x,y/p.y,z/p.z);} ///< div
+				point& operator/=(const point& left) { x/=left.x;y/=left.y;z/=left.z; return *this;} ///< scalar multiply
+
 				bool operator ==(const point &p) const; ///< equal
 				bool operator !=(const point &p) const {return !(*this == p);} ///< not equal
 		};
+		double dot(const point &p1, const point &p2);
 #ifndef SWIG
 		point operator*(double d,const point &p);	///< scalar mult
 		point operator/(double d,const point &p);///< scalar div

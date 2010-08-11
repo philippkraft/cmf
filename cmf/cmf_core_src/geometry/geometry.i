@@ -46,7 +46,7 @@
     {
     def __getitem__(self,index) :
         if isinstance(index,slice):
-            return [self[i] for i in range(*index.indices(len(p)))]
+            return [self[i] for i in range(*index.indices(len(self)))]
         if index==0 :
             return self.x
         elif index==1 :

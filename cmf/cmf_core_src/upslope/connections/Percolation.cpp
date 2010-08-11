@@ -36,9 +36,7 @@ real cmf::upslope::connections::Richards::calc_q( cmf::math::Time t )
 		l2=sw2.lock();
 
 	real
-		distance = l2 ? 
-		fabs((l1->get_upper_boundary()-l2->get_upper_boundary())*0.5+(l1->get_lower_boundary()-l2->get_lower_boundary())*0.5)
-		: l1->Location.distance3DTo(right_node()->Location),
+		distance = l1->Location.z - right_node()->Location.z,		
 		Psi_t1=l1->get_potential(),
 		Psi_t2=right_node()->get_potential(),
 		gradient=(Psi_t1-Psi_t2)/distance,
