@@ -108,6 +108,13 @@ namespace cmf {
 					return get_state();
 
 			}
+			virtual real get_potential() const	{
+				if (get_state_variable_content()=='h')
+					return get_state();
+				else
+					return volume_to_head(get_state());
+			}
+
 			/// Sets the volume of water in this storage in m<sup>3</sup>
 			virtual void set_volume(real newwatercontent)	{
 				if (get_state_variable_content()=='h')

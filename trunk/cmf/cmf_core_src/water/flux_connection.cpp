@@ -153,3 +153,26 @@ bool cmf::water::can_set_flux( flux_node::ptr source,flux_node::ptr target )
 	return con != 0;
 }
 
+
+void cmf::water::connection_integrator::integrate( cmf::math::Time until )
+{
+	if (_connection.expired()) {
+		throw std::runtime_error("Connection for "+_name+" does not exist any more");
+	}
+	cmf::math::Time dt = until-_t;
+	if (until<_t) {
+		reset(until);
+		return;
+	}
+	_t=until;
+	flux_connection::ptr con = _connection.lock();
+	_sum += con->m_q * dt.AsDays();
+}
+
+double cmf::water::connection_integrator::avg() const
+{
+	if (_t>_start_time)
+		return _sum/(_t-_start_time).AsDays();
+	else
+		return 0.0;
+}

@@ -61,9 +61,11 @@
         self.connect_to_surfacewater(cell,width,diffusive)
         r_depth = cell.z - self.Location.z
         distance = self.distance_to_cell(cell)
+        connections=[self.get_connection(cell.surfacewater)]
         if subsurface_connection_type:
             cell.connect_soil_with_node(self,subsurface_connection_type,width,distance,0,r_depth)
-        
+            connections.extend(self.get_connection(l) for l in cell.layers)
+        return connections
 }}
 
 

@@ -46,6 +46,7 @@ namespace cmf {
 			typedef std::tr1::weak_ptr<flux_node> weak_flux_node_ptr;
 		private:
 			friend class flux_node;
+			friend class connection_integrator;
 			static int nextconnectionid;
 			flux_connection(const flux_connection& copy):connection_id(nextconnectionid) {
 				throw std::runtime_error("Never copy construct a flux_connection");
@@ -120,7 +121,41 @@ namespace cmf {
 
 		int replace_node(cmf::water::flux_node::ptr oldnode,cmf::water::flux_node::ptr newnode);
 
-		
+		class connection_integrator : public cmf::math::integratable {
+		private:
+			double _sum;
+			cmf::math::Time _start_time;
+			cmf::math::Time _t;
+			const std::tr1::weak_ptr<flux_connection> _connection;
+			std::string _name;
+
+		public:
+			/// Returns the amount of water along this connection in the integration time in m3
+			double sum() const {
+				return _sum;
+			}
+			/// Returns the duration of the integration
+			cmf::math::Time integration_t() const {
+				return _t-_start_time;
+			}
+			/// Returns the start time of the integration
+			cmf::math::Time t0() const { return _start_time; }
+
+			/// Returns the average flux of the integration time in m3/day
+			double avg() const;
+			/// Initializes the integration
+			void reset(cmf::math::Time t) {
+				_start_time = t;
+				_sum=0.0;
+			}
+			flux_connection::ptr connection() const {
+				return _connection.lock();
+			}
+			/// Integrates the flux a timestep further. Note: until is an absolut time. If until is before t0, the integration is initilized again
+			void integrate(cmf::math::Time until);
+			connection_integrator(cmf::water::flux_connection::ptr connection) 
+				:	_connection(connection), _sum(0.0), _t(cmf::math::year*5000), _name(connection->to_string()+ " (Integrator)") {}
+		};
 
 		/// @ingroup connections
 		/// Routes the sum of all other fluxes to a target

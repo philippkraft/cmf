@@ -141,7 +141,7 @@ double TriangularReach::get_wetted_perimeter( double depth ) const
 /// \f}
 double TriangularReach::get_depth( double area ) const
 {
-	return sqrt(area/BankSlope);
+	return sign(area/BankSlope) * sqrt(fabs(area/BankSlope));
 }
 /// \f{eqnarray*}
 /// A &=& d^2 \Delta

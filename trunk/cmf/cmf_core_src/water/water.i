@@ -67,6 +67,8 @@
 %include "water/SoluteStorage.h"
 
 // flux_connection and Node
+%feature("ref") cmf::water::flux_connection ""
+%feature("unref") cmf::water::flux_connection ""
 
 
 namespace cmf{namespace water {class flux_connection;}}

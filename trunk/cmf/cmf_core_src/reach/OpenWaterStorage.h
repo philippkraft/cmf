@@ -60,9 +60,6 @@ namespace cmf {
 			void set_depth(real new_depth) {set_volume(height_function.V(new_depth));}
 			/// Returns the exposed surface area in m2
 			real wet_area() const {return height_function.A(maximum(0,get_state()));}
-			/// Returns the gravitational potential
-			/// \f[ \Psi_G = z + h(V) \f]
-			real get_potential() const; 
 			/// Creates an open water storage with a prismatic volume			
 			static ptr create(const cmf::project& _project,real Area);
 			/// Creates an open water storage with any type of a volume

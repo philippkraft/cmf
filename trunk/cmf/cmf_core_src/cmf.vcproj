@@ -362,6 +362,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\upslope\groundwater.h"
+				>
+			</File>
+			<File
 				RelativePath=".\upslope\connections\HBVflow.h"
 				>
 			</File>
@@ -659,6 +663,10 @@
 			</File>
 			<File
 				RelativePath=".\geometry\geometry.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\upslope\groundwater.cpp"
 				>
 			</File>
 			<File
