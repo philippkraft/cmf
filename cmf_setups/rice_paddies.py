@@ -132,6 +132,10 @@ if __name__=='__main__':
         D[0] = DECOMP.SOM(0.1*1e2,1e2)
 
     def run(p,for_t=cmf.min*15,show_it=1):
+        if pools[0].depth<=0.0 : 
+            pools[0].depth = dam_height
+            integ.t=integ.t
+        
         for c,P in pool_cell_dict.iteritems():
             c.surfacewater.potential = P.potential
             c.surfacewater.is_source = not P.is_empty()
