@@ -21,9 +21,11 @@
 %}
 %attribute(cmf::water::node_list,cmf::math::num_array,potentials,get_potentials,set_potentials);
 %attribute(cmf::water::NeumannBoundary_list,cmf::math::num_array,fluxes,get_fluxes,set_fluxes);
+%node_downcast_all(cmf::water::flux_node::ptr cmf::water::node_list::get)
 
-//%factory(cmf::water::flux_node& cmf::water::node_list::get,cmf::water::NeumannBoundary, cmf::water::DricheletBoundary,cmf::river::OpenWaterStorage,cmf::upslope::SoilLayer,cmf::water::WaterStorage,cmf::water::flux_node);
 
+%iterable_to_list(cmf::water::node_list,cmf::water::flux_node::ptr)
+%iterable_to_list(cmf::water::NeumannBoundary_list,cmf::water::NeumannBoundary::ptr)
 
 %include "water/collections.h"
 
@@ -39,6 +41,9 @@
     def __iter__(self):
         for i in xrange(self.size()):
             yield self[i]
+    def __repr__(self):
+        if len(self): return "[%i nodes: %s ... %s]" % (len(self),self[0], self[-1])
+        else: return "[empty node list]"
     def extend(self,sequence):
         """Extends the node list with the sequence (any iterable will do) """
         for o in sequence:

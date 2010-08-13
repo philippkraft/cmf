@@ -46,7 +46,7 @@ m_meteo(new cmf::atmosphere::ConstantMeteorology), Tground(-300)
 	sstr << Id;
 	std::string cell_id=sstr.str();
 	m_SurfaceWater->Name="Surface water of cell #" + cell_id;
-	m_SurfaceWater->Location=get_position();
+	m_SurfaceWater->position=get_position();
 	m_Evaporation.reset(new cmf::water::flux_node(_project,cmf::geometry::point(x,y,z+20)));
 	m_Evaporation->Name="Evaporation of cell #" + cell_id;
 	m_Transpiration.reset(new cmf::water::flux_node(_project,cmf::geometry::point(x,y,z+20)));
@@ -143,12 +143,12 @@ cmf::water::WaterStorage::ptr cmf::upslope::Cell::add_storage( std::string Name,
 		ws = cmf::river::OpenWaterStorage::create(get_project(),get_area());
 	else
 		ws = WaterStorage::create(get_project());
-	ws->Location=get_position();
+	ws->position=get_position();
 	ws->Name=Name;
 	if (storage_role=='C')
 	{
 		m_Canopy = ws;
-		ws->Location.z+=vegetation.Height;
+		ws->position.z+=vegetation.Height;
 	}
 	else if (storage_role=='S')
 	{
@@ -196,7 +196,7 @@ void cmf::upslope::Cell::remove_storage( cmf::water::WaterStorage& storage )
 	if (&storage==m_SurfaceWaterStorage.get()) {
 		m_SurfaceWater.reset(new cmf::water::flux_node(get_project()));
 		m_SurfaceWater->Name=storage.Name;
-		m_SurfaceWater->Location=storage.Location;
+		m_SurfaceWater->position=storage.position;
 		cmf::water::replace_node(m_SurfaceWaterStorage,m_SurfaceWater);
 		m_SurfaceWaterStorage.reset();
 	}
@@ -240,7 +240,7 @@ void cmf::upslope::Cell::surfacewater_as_storage()
 	}
 }
 
-std::string cmf::upslope::Cell::to_string()
+std::string cmf::upslope::Cell::to_string() const
 {
 	std::stringstream sstr;
 	sstr << "cell #" << Id << "(" << x << "," << y << "," << z << ")";
@@ -328,4 +328,27 @@ real cmf::upslope::Cell::snow_coverage() const
 		return piecewise_linear(m_Snow->get_volume()/get_area()*1e3,0,4., 0 , 1-surface_water_coverage());
 	else
 		return 0.0;
+}
+
+double cmf::upslope::Cell::get_soildepth() const
+{
+	int lc=layer_count();
+	if (lc) 
+		return get_layer(lc-1)->get_lower_boundary();
+	else
+		return 0.0;
+
+}
+
+cmf::math::num_array cmf::upslope::Cell::get_percolation( cmf::math::Time t ) const
+{
+	cmf::math::num_array res(layer_count());
+	if (layer_count()) {
+		res[0] = m_Layers[0]->cell.get_surfacewater()->flux_to(*get_layer(0),t);
+		for (int i = 1; i < layer_count() ; ++i)
+			res[i] = get_layer(i-1)->flux_to(*get_layer(i),t);
+	} 
+	return res;
+
+
 }

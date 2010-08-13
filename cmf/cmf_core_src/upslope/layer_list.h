@@ -41,9 +41,9 @@ namespace cmf {
 			/// Appends a soil layer to the list
 			layer_list& append(SoilLayer::ptr l) { m_layers.push_back(l); return *this;}
 			/// Appends all soil layers of layer_list to this
-			layer_list& append(const layer_list& ll) { std::copy(ll.begin(),ll.end(),this->end()); return *this;}
+			layer_list& extend(const layer_list& ll) { std::copy(ll.begin(),ll.end(),this->end()); return *this;}
 			/// Appends all soil layers from a node_list to this
-			layer_list& append(const cmf::water::node_list& nl); 
+			layer_list& extend(const cmf::water::node_list& nl); 
 
 			layer_list get_slice(size_t first=0, size_t last=1000000, size_t step = 1);
 			/// Clears the list
@@ -82,6 +82,7 @@ namespace cmf {
 			cmf::math::num_array get_ice_fraction() const;
 
 			void set_ice_fraction(const cmf::math::num_array& Value, size_t offset=0);
+
 
 		};
 		

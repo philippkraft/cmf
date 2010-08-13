@@ -93,13 +93,12 @@ account for anisotropy \\\\[ \\\\|K\\\\|(d) = \\\\frac{d}{\\\\|d\\\\|}
 %feature("docstring")  cmf::upslope::aquifer::get_base_height "real
 get_base_height() const
 
-Returns the base height of the aquifer (Location.z - thickness) in m
-a.s.l. ";
+Returns the base height of the aquifer in m a.s.l. ";
 
 %feature("docstring")  cmf::upslope::aquifer::get_top_height "real
 get_top_height() const
 
-Returns the top height of the aquifer (Location.z) in m a.s.l. ";
+Returns the top height of the aquifer in m a.s.l. ";
 
 %feature("docstring")  cmf::upslope::aquifer::set_potential "virtual
 void set_potential(real new_potential) ";
@@ -232,8 +231,8 @@ StateIsChanged()
 
 Returns if the state was currently updated. ";
 
-%feature("docstring")  cmf::upslope::aquifer::project "const
-cmf::project& project() const
+%feature("docstring")  cmf::upslope::aquifer::get_project "const
+cmf::project& get_project() const
 
 Returns the project, this node is part of. ";
 
@@ -1149,6 +1148,9 @@ remove_last_layer() ";
 %feature("docstring")  cmf::upslope::Cell::remove_layers "void
 remove_layers() ";
 
+%feature("docstring")  cmf::upslope::Cell::get_soildepth "double
+get_soildepth() const ";
+
 %feature("docstring")  cmf::upslope::Cell::~Cell "virtual ~Cell() ";
 
 /*  Saturation  */
@@ -1172,28 +1174,12 @@ set_saturated_depth(real depth) ";
 double y, double z, double area, cmf::project &_project) ";
 
 %feature("docstring")  cmf::upslope::Cell::to_string "std::string
-to_string() ";
+to_string() const ";
 
 %feature("docstring")  cmf::upslope::Cell::get_states "cmf::math::state_queue get_states()
 
 Add the state variables, owned by an object derived from
 StateVariableOwner, to the given vector. ";
-
-%feature("docstring")  cmf::upslope::Cell::set_position "virtual void
-set_position(cmf::geometry::point p)
-
-Sets the location. If not implemented by the child class, an exception
-is thrown. ";
-
-%feature("docstring")  cmf::upslope::Cell::get_distance_to "double
-get_distance_to(const Locatable &cmp)
-
-Returns the distance between two locatable objects. ";
-
-%feature("docstring")  cmf::upslope::Cell::get_direction_to "cmf::geometry::point get_direction_to(const Locatable &cmp)
-
-Returns a vector with length=1 pointing in the direction of another
-Locatable. ";
 
 
 // File: classcmf_1_1upslope_1_1cell__const__iterator.xml
@@ -1225,7 +1211,11 @@ cmf::upslope::Cell* ptr() const ";
 
 
 // File: classcmf_1_1upslope_1_1cell__vector.xml
-%feature("docstring") cmf::upslope::cell_vector "";
+%feature("docstring") cmf::upslope::cell_vector "
+
+A cell vector holds a bunch of cells.
+
+C++ includes: cell_vector.h ";
 
 %feature("docstring")  cmf::upslope::cell_vector::cell_vector "cell_vector() ";
 
@@ -1239,10 +1229,38 @@ StateVariableOwner, to the given vector. ";
 %feature("docstring")  cmf::upslope::cell_vector::append "void
 append(cmf::upslope::Cell &cell) ";
 
+%feature("docstring")  cmf::upslope::cell_vector::remove "void
+remove(int index) ";
+
+%feature("docstring")  cmf::upslope::cell_vector::remove "void
+remove(const cmf::upslope::Cell &cell) ";
+
+%feature("docstring")  cmf::upslope::cell_vector::pop "Cell& pop()
+
+Returns and removes the last cell. ";
+
 %feature("docstring")  cmf::upslope::cell_vector::size "size_t size()
 const ";
 
-%feature("docstring")  cmf::upslope::cell_vector::get_slice "cell_vector get_slice(int start, int end, int step) ";
+%feature("docstring")  cmf::upslope::cell_vector::get_slice "cell_vector get_slice(int start, int end, int step=1) ";
+
+%feature("docstring")  cmf::upslope::cell_vector::get_lowest "Cell&
+get_lowest() const
+
+Returns the cell with the lowest height. ";
+
+%feature("docstring")  cmf::upslope::cell_vector::get_highest "Cell&
+get_highest() const
+
+Returns the heighest cell. ";
+
+%feature("docstring")  cmf::upslope::cell_vector::get_area "double
+get_area() const
+
+Returns sum of the area of the cells. ";
+
+%feature("docstring")  cmf::upslope::cell_vector::contains "bool
+contains(const cmf::upslope::Cell &cell) const ";
 
 %feature("docstring")  cmf::upslope::cell_vector::cell_vector "cell_vector(cell_const_iterator first, cell_const_iterator last) ";
 
@@ -1701,7 +1719,9 @@ state changes require an update of the fluxes. ";
 
 Returns false. ";
 
-%feature("docstring")  cmf::atmosphere::ConstantRainSource::project "const cmf::project& project() const
+%feature("docstring")
+cmf::atmosphere::ConstantRainSource::get_project "const cmf::project&
+get_project() const
 
 Returns the project, this node is part of. ";
 
@@ -2255,8 +2275,7 @@ Returns true if the node has no water. ";
 cmf::water::DricheletBoundary::DricheletBoundary "DricheletBoundary(const cmf::project &_p, real potential,
 cmf::geometry::point Location=cmf::geometry::point()) ";
 
-%feature("docstring")  cmf::water::DricheletBoundary::project "const
-cmf::project& project() const
+%feature("docstring")  cmf::water::DricheletBoundary::get_project "const cmf::project& get_project() const
 
 Returns the project, this node is part of. ";
 
@@ -2756,8 +2775,8 @@ mixing, is needed.
 
 C++ includes: flux_node.h ";
 
-%feature("docstring")  cmf::water::flux_node::project "const
-cmf::project& project() const
+%feature("docstring")  cmf::water::flux_node::get_project "const
+cmf::project& get_project() const
 
 Returns the project, this node is part of. ";
 
@@ -3252,7 +3271,7 @@ See:  IDW
 C++ includes: meteorology.h ";
 
 %feature("docstring")
-cmf::atmosphere::IDW_Meteorology::IDW_Meteorology "IDW_Meteorology(const cmf::geometry::Locatable &position, const
+cmf::atmosphere::IDW_Meteorology::IDW_Meteorology "IDW_Meteorology(const cmf::geometry::point &position, const
 MeteoStationList &stations, double z_weight, double power)
 
 Creates an reference to a list of stations and interpolates the
@@ -3324,8 +3343,7 @@ state changes require an update of the fluxes. ";
 
 Returns false. ";
 
-%feature("docstring")  cmf::atmosphere::IDWRainfall::project "const
-cmf::project& project() const
+%feature("docstring")  cmf::atmosphere::IDWRainfall::get_project "const cmf::project& get_project() const
 
 Returns the project, this node is part of. ";
 
@@ -4037,13 +4055,13 @@ append(SoilLayer::ptr l)
 
 Appends a soil layer to the list. ";
 
-%feature("docstring")  cmf::upslope::layer_list::append "layer_list&
-append(const layer_list &ll)
+%feature("docstring")  cmf::upslope::layer_list::extend "layer_list&
+extend(const layer_list &ll)
 
 Appends all soil layers of layer_list to this. ";
 
-%feature("docstring")  cmf::upslope::layer_list::append "layer_list&
-append(const cmf::water::node_list &nl)
+%feature("docstring")  cmf::upslope::layer_list::extend "layer_list&
+extend(const cmf::water::node_list &nl)
 
 Appends all soil layers from a node_list to this. ";
 
@@ -4211,67 +4229,6 @@ Returns the effective wetness, using a residual pF value \\\\[w_{eff}
 %feature("docstring")  cmf::upslope::LinearRetention::Wetness_pF "real Wetness_pF(real pF) const
 
 returns the volumetric water content at a given pF value ";
-
-
-// File: classcmf_1_1geometry_1_1_locatable.xml
-%feature("docstring") cmf::geometry::Locatable "
-
-An interface for objects having a location in space.
-
-C++ includes: geometry.h ";
-
-%feature("docstring")  cmf::geometry::Locatable::get_position "virtual cmf::geometry::point get_position() const =0
-
-Pure virtual function. Should return the position of the locatable. ";
-
-%feature("docstring")  cmf::geometry::Locatable::set_position "virtual void set_position(cmf::geometry::point p)
-
-Sets the location. If not implemented by the child class, an exception
-is thrown. ";
-
-%feature("docstring")  cmf::geometry::Locatable::get_distance_to "double get_distance_to(const Locatable &cmp)
-
-Returns the distance between two locatable objects. ";
-
-%feature("docstring")  cmf::geometry::Locatable::get_direction_to "cmf::geometry::point get_direction_to(const Locatable &cmp)
-
-Returns a vector with length=1 pointing in the direction of another
-Locatable. ";
-
-
-// File: classcmf_1_1geometry_1_1_location.xml
-%feature("docstring") cmf::geometry::Location "
-
-A minimal implementation of Locatable.
-
-C++ includes: geometry.h ";
-
-%feature("docstring")  cmf::geometry::Location::get_position "cmf::geometry::point get_position() const
-
-Pure virtual function. Should return the position of the locatable. ";
-
-%feature("docstring")  cmf::geometry::Location::Location "Location(cmf::geometry::point position)
-
-Creates a location from a position. ";
-
-%feature("docstring")  cmf::geometry::Location::Location "Location(double x, double y, double z)
-
-Creates a location from a position. ";
-
-%feature("docstring")  cmf::geometry::Location::set_position "virtual
-void set_position(cmf::geometry::point p)
-
-Sets the location. If not implemented by the child class, an exception
-is thrown. ";
-
-%feature("docstring")  cmf::geometry::Location::get_distance_to "double get_distance_to(const Locatable &cmp)
-
-Returns the distance between two locatable objects. ";
-
-%feature("docstring")  cmf::geometry::Location::get_direction_to "cmf::geometry::point get_direction_to(const Locatable &cmp)
-
-Returns a vector with length=1 pointing in the direction of another
-Locatable. ";
 
 
 // File: classcmf_1_1atmosphere_1_1log__wind__profile.xml
@@ -4757,9 +4714,7 @@ C++ includes: meteorology.h ";
 
 */
 
-%feature("docstring")  cmf::atmosphere::MeteoStation::get_position "virtual cmf::geometry::point get_position() const
-
-Pure virtual function. Should return the position of the locatable. ";
+%feature("docstring")  cmf::atmosphere::MeteoStation::get_position "cmf::geometry::point get_position() const ";
 
 /*  Timeseries of meteorological data  */
 
@@ -4837,22 +4792,6 @@ n\\\\mbox{Absolute sunshine duration} \\\\end{eqnarray*} ";
 %feature("docstring")  cmf::atmosphere::MeteoStation::MeteoStation "MeteoStation(const cmf::atmosphere::MeteoStation &other)
 
 Copy c'tor. ";
-
-%feature("docstring")  cmf::atmosphere::MeteoStation::set_position "virtual void set_position(cmf::geometry::point p)
-
-Sets the location. If not implemented by the child class, an exception
-is thrown. ";
-
-%feature("docstring")  cmf::atmosphere::MeteoStation::get_distance_to
-"double get_distance_to(const Locatable &cmp)
-
-Returns the distance between two locatable objects. ";
-
-%feature("docstring")  cmf::atmosphere::MeteoStation::get_direction_to
-"cmf::geometry::point get_direction_to(const Locatable &cmp)
-
-Returns a vector with length=1 pointing in the direction of another
-Locatable. ";
 
 
 // File: classcmf_1_1atmosphere_1_1_meteo_station_list.xml
@@ -4935,8 +4874,8 @@ cmf::atmosphere::MeteoStationList::MeteoStationList "MeteoStationList(const Mete
 Copy c'tor. ";
 
 %feature("docstring")
-cmf::atmosphere::MeteoStationList::reference_to_nearest "MeteoStationReference reference_to_nearest(const
-cmf::geometry::Locatable &position, double z_weight=0) const
+cmf::atmosphere::MeteoStationList::reference_to_nearest "MeteoStationReference reference_to_nearest(const cmf::geometry::point
+&position, double z_weight=0) const
 
 Creates a MeteoStationReference from the nearest station to position
 at position.
@@ -4985,19 +4924,6 @@ get_instrument_height() const
 Creates a reference for a MeteoStation at a location. ";
 
 %feature("docstring")
-cmf::atmosphere::MeteoStationReference::MeteoStationReference "MeteoStationReference(MeteoStation::ptr station, const
-cmf::geometry::Locatable &location)
-
-Create a located reference to a meteo station.
-
-Parameters:
------------
-
-station:   MeteoStation
-
-location:  Location of the reference ";
-
-%feature("docstring")
 cmf::atmosphere::MeteoStationReference::MeteoStationReference "MeteoStationReference(MeteoStation::ptr station, cmf::geometry::point
 location)
 
@@ -5018,30 +4944,6 @@ Copy c'tor. ";
 %feature("docstring")  cmf::atmosphere::MeteoStationReference::copy "MeteoStationReference* copy() const
 
 Creates a new copy of the reference. ";
-
-%feature("docstring")
-cmf::atmosphere::MeteoStationReference::~MeteoStationReference "virtual ~MeteoStationReference()
-
-d'tor ";
-
-%feature("docstring")
-cmf::atmosphere::MeteoStationReference::set_position "virtual void
-set_position(cmf::geometry::point p)
-
-Sets the location. If not implemented by the child class, an exception
-is thrown. ";
-
-%feature("docstring")
-cmf::atmosphere::MeteoStationReference::get_distance_to "double
-get_distance_to(const Locatable &cmp)
-
-Returns the distance between two locatable objects. ";
-
-%feature("docstring")
-cmf::atmosphere::MeteoStationReference::get_direction_to "cmf::geometry::point get_direction_to(const Locatable &cmp)
-
-Returns a vector with length=1 pointing in the direction of another
-Locatable. ";
 
 
 // File: classcmf_1_1math_1_1_multi_integrator.xml
@@ -5321,8 +5223,7 @@ loc:  The location of the boundary condition ";
 %feature("docstring")  cmf::water::NeumannBoundary::NeumannBoundary "NeumannBoundary(const cmf::project &_project, cmf::geometry::point
 loc=cmf::geometry::point()) ";
 
-%feature("docstring")  cmf::water::NeumannBoundary::project "const
-cmf::project& project() const
+%feature("docstring")  cmf::water::NeumannBoundary::get_project "const cmf::project& get_project() const
 
 Returns the project, this node is part of. ";
 
@@ -5534,7 +5435,7 @@ The number of nodes. ";
 
 Creates an empty node_lust. ";
 
-%feature("docstring")  cmf::water::node_list::node_list "node_list(const node_list &forcopy)
+%feature("docstring")  cmf::water::node_list::node_list "node_list(const cmf::water::node_list &forcopy)
 
 Copy the node_list. ";
 
@@ -5562,10 +5463,12 @@ set_potentials(const cmf::math::num_array &potentials)
 
 Sets the potentials of the node_lists.
 
-If node do not have changeabe potentials, they are skipped The number
-of nodes with changed potential ";
+If nodes do not have changeable potentials, they are skipped silently
+The number of nodes with changed potential ";
 
-%feature("docstring")  cmf::water::node_list::get_potentials "cmf::math::num_array get_potentials() ";
+%feature("docstring")  cmf::water::node_list::get_potentials "cmf::math::num_array get_potentials()
+
+Returns the potential of the nodes. ";
 
 %feature("docstring")  cmf::water::node_list::global_water_balance "real global_water_balance(cmf::math::Time t) const
 
@@ -5975,8 +5878,7 @@ Gives access to the state variable. ";
 
 Returns if the state was currently updated. ";
 
-%feature("docstring")  cmf::river::OpenWaterStorage::project "const
-cmf::project& project() const
+%feature("docstring")  cmf::river::OpenWaterStorage::get_project "const cmf::project& get_project() const
 
 Returns the project, this node is part of. ";
 
@@ -6848,8 +6750,8 @@ is_empty() const
 Returns false. ";
 
 %feature("docstring")
-cmf::atmosphere::RainfallStationReference::project "const
-cmf::project& project() const
+cmf::atmosphere::RainfallStationReference::get_project "const
+cmf::project& get_project() const
 
 Returns the project, this node is part of. ";
 
@@ -6947,8 +6849,7 @@ bool is_empty() const
 
 Returns false. ";
 
-%feature("docstring")  cmf::atmosphere::RainSource::project "const
-cmf::project& project() const
+%feature("docstring")  cmf::atmosphere::RainSource::get_project "const cmf::project& get_project() const
 
 Returns the project, this node is part of. ";
 
@@ -7217,8 +7118,8 @@ StateIsChanged()
 
 Returns if the state was currently updated. ";
 
-%feature("docstring")  cmf::river::Reach::project "const
-cmf::project& project() const
+%feature("docstring")  cmf::river::Reach::get_project "const
+cmf::project& get_project() const
 
 Returns the project, this node is part of. ";
 
@@ -8545,8 +8446,8 @@ StateIsChanged()
 
 Returns if the state was currently updated. ";
 
-%feature("docstring")  cmf::upslope::SoilLayer::project "const
-cmf::project& project() const
+%feature("docstring")  cmf::upslope::SoilLayer::get_project "const
+cmf::project& get_project() const
 
 Returns the project, this node is part of. ";
 
@@ -9941,21 +9842,6 @@ MainOutlet(bool forceRecalc=false) ";
 
 %feature("docstring")  cmf::upslope::Topology::ContributingArea "double ContributingArea() const ";
 
-%feature("docstring")  cmf::upslope::Topology::set_position "virtual
-void set_position(cmf::geometry::point p)
-
-Sets the location. If not implemented by the child class, an exception
-is thrown. ";
-
-%feature("docstring")  cmf::upslope::Topology::get_distance_to "double get_distance_to(const Locatable &cmp)
-
-Returns the distance between two locatable objects. ";
-
-%feature("docstring")  cmf::upslope::Topology::get_direction_to "cmf::geometry::point get_direction_to(const Locatable &cmp)
-
-Returns a vector with length=1 pointing in the direction of another
-Locatable. ";
-
 
 // File: classcmf_1_1upslope_1_1_e_t_1_1transpiration.xml
 %feature("docstring") cmf::upslope::ET::transpiration "
@@ -10536,8 +10422,8 @@ StateIsChanged()
 
 Returns if the state was currently updated. ";
 
-%feature("docstring")  cmf::water::WaterStorage::project "const
-cmf::project& project() const
+%feature("docstring")  cmf::water::WaterStorage::get_project "const
+cmf::project& get_project() const
 
 Returns the project, this node is part of. ";
 

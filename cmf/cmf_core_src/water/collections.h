@@ -57,40 +57,20 @@ namespace cmf {
 			/// Creates an empty node_lust			
 			node_list() {}
 			/// Copy the node_list
-			node_list(const node_list& forcopy)
+			node_list(const cmf::water::node_list& forcopy)
 				: m_nodes(forcopy.m_nodes) {}
 
 			/// Extends the node_list with another
-			node_list& operator+=(const node_list& right)
-			{
-				for (int i = 0; i < right.size() ; ++i)
-				{
-					append(right[i]);
-				}
-				return *this;
-			}
+			node_list& operator+=(const cmf::water::node_list& right);
+			
 			/// Returns the union of two node_lists
-			cmf::water::node_list operator+(const cmf::water::node_list & right) const
-			{
-				cmf::water::node_list res(*this);
-				res+=right;
-				return res;
-			}
+			cmf::water::node_list operator+(const cmf::water::node_list & right) const;
+			
 			/// Returns a node in the node_list
-			flux_node::ptr get(int index) const
-			{
-				return m_nodes.at(index<0 ? size()+index : index);
-			}
+			flux_node::ptr get(int index) const;
+			
 			/// Returns a slice of the node_list
-			node_list get(int begin,int end,int step=1) const
-			{
-				node_list res;
-				for (int i = begin; i <end  ; i+=step)
-				{
-					res.append(get(i));
-				}
-				return res;
-			}
+			node_list get(int begin,int end,int step=1) const;
 
 			/// Implements StateVariableOwner
 			cmf::math::state_queue get_states();
@@ -99,10 +79,13 @@ namespace cmf {
 
 			/// Sets the potentials of the node_lists
 			///
-			/// If node do not have changeabe potentials, they are skipped
+			/// If nodes do not have changeable potentials, they are skipped silently
 			/// @returns The number of nodes with changed potential
 			int set_potentials(const cmf::math::num_array& potentials);
+			
+			/// Returns the potential of the nodes
 			cmf::math::num_array get_potentials();
+
 			/// Returns the sum of the water balances of the nodes
 			///
 			/// \f[\sigma_{global} = \sum_{i=0}^N{\sum_{j=0}^{C_i}{q_{ij}(t)}} \f]
@@ -114,6 +97,7 @@ namespace cmf {
 			///     sum+=n.water_balance(t)
 			/// @endcode
 			real global_water_balance(cmf::math::Time t) const;
+						
 			/// Returns the water balance of each vector as a vector
 			///
 			/// \f[ \sigma_i = \sum_{j=0}^{C_i}{q_{ij}(t)} \f]
@@ -126,6 +110,7 @@ namespace cmf {
 
 			/// Returns an array holding the concentration of all the flux nodes for the given solute
 			cmf::math::num_array conc(cmf::math::Time t, const cmf::water::solute& _Solute) const;
+			
 			/// Sets the source flux of a solute storage associated  with a node (node has to be a water storage)
 			int set_solute_source(const cmf::water::solute& _Solute, cmf::math::num_array source_fluxes);
 
@@ -140,10 +125,13 @@ namespace cmf {
 			/// fluxes=[left_node[i].flux_to(right_node[i],t) for i in range(len(left_nodes))]
 			/// @endcode
 			cmf::math::num_array get_fluxes_to( const cmf::water::node_list& targets ,cmf::math::Time t) const;
+			
 			/// Returns the flux vectors to the nodes of a given target node_list
 			cmf::geometry::point_vector get_fluxes3d_to( const cmf::water::node_list& targets ,cmf::math::Time t) const;
+			
 			/// Returns the current flow vector for each node
 			cmf::geometry::point_vector get_fluxes3d(cmf::math::Time t) const;
+			
 			/// Returns the positions of the nodes
 			cmf::geometry::point_vector get_positions() const;
 

@@ -74,8 +74,8 @@
 namespace cmf{namespace water {class flux_connection;}}
 
 %node_downcast_all(cmf::water::flux_node::ptr cmf::water::flux_connection::get_target)
-%node_downcast_all(cmf::water::flux_node::ptr cmf::water::node_list::get)
 
+%attribute2(cmf::water::flux_node,cmf::project,project,get_project);
 
 %attribute(cmf::water::flux_node,real,potential,get_potential,set_potential);
 %attributeval(cmf::water::flux_node, cmf::water::connection_vector, connections, get_connections);
@@ -140,5 +140,4 @@ namespace cmf{namespace water {class flux_connection;}}
 %include "water/collections.i"
 
 // Add some function for down casting
-// DOWNCASTdefinition(cmf::water::flux_node,cmf::water::WaterStorage,AsStorage)
 

@@ -84,6 +84,9 @@ EXTENT__REPR__(cmf::upslope::SoilLayer)
 %attribute(cmf::upslope::layer_list,cmf::math::num_array,porosity,get_porosity);
 %attribute(cmf::upslope::layer_list,cmf::math::num_array,ice_fraction,get_ice_fraction);
 
+%iterable_to_list(cmf::upslope::layer_list,cmf::upslope::SoilLayer::ptr)
+
+
 %include "upslope/layer_list.h"
 
 %extend cmf::upslope::layer_list {

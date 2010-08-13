@@ -119,9 +119,12 @@ namespace cmf {
 			/// @param _begin First date of measurement
 			/// @param _step Time between measurements
 			/// @param _interpolationmethod Method for the interpolation (0 - Nearest neighbor, 1- linear, 2 - cubic spline (not implemented yet)
-			timeseries(cmf::math::Time _begin,cmf::math::Time _step,int _interpolationmethod=1) 
+			timeseries(cmf::math::Time _begin,cmf::math::Time _step,int _interpolationmethod=1,size_t size=0) 
 				: m_data(make_data(_begin,_step,_interpolationmethod))
-			{ }
+			{ 
+				if (size) 
+					m_data->values = std::vector<double>(size,0.0);
+			}
 			timeseries() : m_data(make_data()) 
 			{	}
 			timeseries( const cmf::math::timeseries& ts ) 
@@ -201,6 +204,7 @@ namespace cmf {
 			timeseries reduce_avg(cmf::math::Time begin,cmf::math::Time step) const; /// Creates a timeseries with a bigger timestep, containing the average
 
 			timeseries floating_avg(cmf::math::Time window_width) const;
+			timeseries floating_avg(size_t window_size) const;
 			timeseries floating_max(cmf::math::Time window_width) const;
 			timeseries floating_min(cmf::math::Time window_width) const;
 

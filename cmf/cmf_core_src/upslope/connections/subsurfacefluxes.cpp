@@ -33,7 +33,7 @@ void cmf::upslope::connections::Richards_lateral::connect_cells( cmf::upslope::C
 			for (int j = start_at_layer; j < (start_at_layer>=0 ? cell2.layer_count() : 0) ; ++j)	{
 				real ca=cell1.get_layer(i)->get_flow_crosssection(*cell2.get_layer(j));
 				if (ca>0)	{
-					real d=cell1.get_layer(i)->Location.distanceTo(cell2.get_layer(j)->Location);
+					real d=cell1.get_layer(i)->position.distanceTo(cell2.get_layer(j)->position);
 					new Richards_lateral(cell1.get_layer(i),cell2.get_layer(j),w,d);
 				}	}	}
 	}
@@ -79,8 +79,8 @@ real cmf::upslope::connections::Darcy::calc_q( cmf::math::Time t )
 		l2=sw2.lock();
 	// Calculate the gradient
 	real
-		Psi_t1 = l1->cell.z - l1->cell.get_saturated_depth(),
-		Psi_t2 = l2->cell.z - l2->cell.get_saturated_depth(),
+		Psi_t1 = left_node()->get_potential(),
+		Psi_t2 = right_node()->get_potential(),
 		gradient=(Psi_t1-Psi_t2)/distance;
 
 	if (right_node()->is_empty() && gradient<=0)
@@ -111,7 +111,7 @@ void cmf::upslope::connections::Darcy::connect_cells( cmf::upslope::Cell & cell1
 			for (int j = start_at_layer; j < (start_at_layer>=0 ? cell2.layer_count() : 0) ; ++j)	{
 				real ca=cell1.get_layer(i)->get_flow_crosssection(*cell2.get_layer(j));
 				if (ca>0)	{
-					real d=cell1.get_layer(i)->Location.distanceTo(cell2.get_layer(j)->Location);
+					real d=cell1.get_layer(i)->position.distanceTo(cell2.get_layer(j)->position);
 					new Darcy(cell1.get_layer(i),cell2.get_layer(j),w,d);
 				}	}	}
 	}
@@ -156,7 +156,7 @@ void cmf::upslope::connections::TopographicGradientDarcy::connect_cells( cmf::up
 			for (int j = start_at_layer; j < (start_at_layer>=0 ? cell2.layer_count() : 0) ; ++j)	{
 				real ca=cell1.get_layer(i)->get_flow_crosssection(*cell2.get_layer(j));
 				if (ca>0)	{
-					real d=cell1.get_layer(i)->Location.distanceTo(cell2.get_layer(j)->Location);
+					real d=cell1.get_layer(i)->position.distanceTo(cell2.get_layer(j)->position);
 				new TopographicGradientDarcy(cell1.get_layer(i),cell2.get_layer(j),w,d);
 			}	}	}
 	}
@@ -192,7 +192,7 @@ void cmf::upslope::connections::DarcyKinematic::connect_cells( cmf::upslope::Cel
 			for (int j = start_at_layer; j < (start_at_layer>=0 ? cell2.layer_count() : 0) ; ++j)	{
 				real ca=cell1.get_layer(i)->get_flow_crosssection(*cell2.get_layer(j));
 				if (ca>0)	{
-					real d=cell1.get_layer(i)->Location.distanceTo(cell2.get_layer(j)->Location);
+					real d=cell1.get_layer(i)->position.distanceTo(cell2.get_layer(j)->position);
 				new DarcyKinematic(cell1.get_layer(i),cell2.get_layer(j),w,d);
 			}	}	}
 	}
@@ -257,7 +257,7 @@ void cmf::upslope::connections::OHDISflow::connect_cells( cmf::upslope::Cell & c
 			for (int j = start_at_layer; j < (start_at_layer>=0 ? cell2.layer_count() : 0) ; ++j)	{
 				real ca=cell1.get_layer(i)->get_flow_crosssection(*cell2.get_layer(j));
 				if (ca>0)	{
-					real d=cell1.get_layer(i)->Location.distanceTo(cell2.get_layer(j)->Location);
+					real d=cell1.get_layer(i)->position.distanceTo(cell2.get_layer(j)->position);
 					new OHDISflow(cell1.get_layer(i),cell2.get_layer(j),w,d);
 				}	}	}
 	}
@@ -277,4 +277,11 @@ void cmf::upslope::connections::lateral_sub_surface_flux::NewNodes()
 	sw1 = l1;
 	sw2 = l2;
 
+}
+
+cmf::upslope::connections::lateral_sub_surface_flux::lateral_sub_surface_flux( cmf::upslope::SoilLayer::ptr left,cmf::water::flux_node::ptr right, std::string Name,real FlowWidth,real Distance/*=0*/ ) : cmf::water::flux_connection(left,right,Name), flow_width(FlowWidth), distance(Distance)
+{
+	NewNodes();
+	if (Distance<=0)
+		distance=left->position.distanceTo(right->position);
 }

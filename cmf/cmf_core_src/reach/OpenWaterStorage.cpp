@@ -20,7 +20,7 @@
 
 cmf::river::OpenWaterStorage::ptr cmf::river::OpenWaterStorage::from_node( cmf::water::flux_node::ptr node,real Area )
 {
-	cmf::river::OpenWaterStorage::ptr ows=cmf::river::OpenWaterStorage::create(node->project(),Area);
+	cmf::river::OpenWaterStorage::ptr ows=cmf::river::OpenWaterStorage::create(node->get_project(),Area);
 	cmf::water::replace_node(node,ows);
 	return ows;
 }
@@ -44,17 +44,17 @@ cmf::river::OpenWaterStorage::OpenWaterStorage( const cmf::project& _project, co
 
 inline real cmf::river::OpenWaterStorage::head_to_volume(real head) const
 {
-	return height_function.V(head - this->Location.z);
+	return height_function.V(head - this->position.z);
 }
 inline real cmf::river::OpenWaterStorage::volume_to_head(real volume) const
 {
-	return height_function.h(volume) + this->Location.z;
+	return height_function.h(volume) + this->position.z;
 }
 
 real cmf::river::OpenWaterStorage::get_depth() const
 {
 	if (get_state_variable_content()=='h') 
-		return std::max(get_state() - Location.z,0.0);
+		return std::max(get_state() - position.z,0.0);
 	else
 		return height_function.h(std::max(0.0,get_state()));
 }

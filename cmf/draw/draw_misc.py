@@ -113,7 +113,12 @@ def plot_timeseries(data,style='-',**kwargs):
         ts = data.reduce_avg(data.begin - data.begin % step,step)
     except KeyError:
         ts=data
-    return pylab.plot_date(_x_from_ts(ts),asarray(ts),style,**kwargs)[0]
+    
+    x=__x_from_ts(ts)
+    line=pylab.plot(x,pylab.asarray(ts),style,**kwargs)[0]
+    ax=pylab.gca()
+    ax.xaxis_date()
+    return line
 def bar_timeseries(data,**kwargs):
     try:
         step = kwargs.pop('step')        

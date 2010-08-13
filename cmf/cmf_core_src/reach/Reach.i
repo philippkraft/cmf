@@ -59,7 +59,7 @@
         if diffusive is None:
             diffusive = self.diffusive
         self.connect_to_surfacewater(cell,width,diffusive)
-        r_depth = cell.z - self.Location.z
+        r_depth = cell.z - self.position.z
         distance = self.distance_to_cell(cell)
         connections=[self.get_connection(cell.surfacewater)]
         if subsurface_connection_type:
