@@ -57,27 +57,36 @@ namespace cmf {
 #endif
 		{
 		public:
+			/// Shortcut to the shared pointer
 			typedef std::tr1::shared_ptr<cmf::water::flux_node> ptr;
-#ifndef SWIG
-			operator ptr()	{	return shared_from_this();	}
-#endif
 		private:
+			// Pointer for a connection
 			typedef std::tr1::shared_ptr<flux_connection> con_ptr;
+			// Registers a newly build connection
 			void RegisterConnection(flux_connection* newConnection);
+			// Deregisters a connection, and kills it
 			void DeregisterConnection(flux_connection* target);
+			// Allows the flux_connection class to call thereregister / deregister themselfs
 			friend class flux_connection;
+			// allows the water_balance_integrator to call the water balance without refreshing the connection
 			friend class water_balance_integrator;
+
+			// The mapping of the connections. The id is holding the node id's
 			typedef std::map<int, con_ptr > ConnectionMap;
 			ConnectionMap m_Connections;
+
+			// Returns the waterbalance (sum of all current fluxes) without updating the calculated fluxes
 			double water_balance_without_refresh() const;
+			// The project this node belongs to
 			const cmf::project& m_project;
+/*
 		protected:
 			cmf::math::Time m_LastQuery;
+*/
 
 		public:
-
 			/// Returns the project, this node is part of
-			const cmf::project& project() const {return m_project;}
+			const cmf::project& get_project() const {return m_project;}
 			/// The Id of the node
 			const int node_id;
 			/// true, if this is a waterstorage
@@ -114,12 +123,14 @@ namespace cmf {
 			}
 			/// Returns the water quality of the flux_node, if it is not overridden this is the mix of the incoming fluxes
 			virtual real conc(cmf::math::Time t, const cmf::water::solute& Solute) const;
-			cmf::geometry::point Location;
+			
+			/// The spatial position of the node
+			cmf::geometry::point position;
 			/// Returns the water potential of the node in m waterhead
 			/// The base class water storage always returns the height of the location
 			virtual real get_potential() const
 			{
-				return Location.z;
+				return position.z;
 			}
 			virtual void set_potential(real new_potential)
 			{

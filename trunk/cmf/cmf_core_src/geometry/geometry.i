@@ -27,11 +27,7 @@
 //%attribute(cmf::geometry::point_vector,cmf::math::num_array,z,get_z);
 // Geometry.h
 %include "geometry/geometry.h"
-%extend cmf::geometry::Locatable{
-    %pythoncode{
-    position=property(get_position,set_position,"The position ofthe locatabe object")
-    }
-}
+
 %extend cmf::geometry::point {
     inline int __len__() const { return 3; }
     cmf::geometry::point __rmul__(double val)    {

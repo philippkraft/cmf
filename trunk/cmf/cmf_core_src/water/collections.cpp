@@ -91,7 +91,7 @@ cmf::geometry::point_vector cmf::water::node_list::get_positions() const
 #pragma omp parallel for
 	for (int i = 0; i < (int)res.size() ; ++i)
 	{
-		res.set(i,m_nodes[i]->Location);
+		res.set(i,m_nodes[i]->position);
 	}
 	return res;
 
@@ -178,6 +178,37 @@ cmf::math::state_queue cmf::water::node_list::get_states()
 			q.push(state);
 	}
 	return q;
+}
+
+cmf::water::node_list& cmf::water::node_list::operator+=( const cmf::water::node_list& right )
+{
+	for (int i = 0; i < right.size() ; ++i)
+	{
+		append(right[i]);
+	}
+	return *this;
+}
+
+cmf::water::node_list cmf::water::node_list::operator+( const cmf::water::node_list & right ) const
+{
+	cmf::water::node_list res(*this);
+	res+=right;
+	return res;
+}
+
+cmf::water::flux_node::ptr cmf::water::node_list::get( int index ) const
+{
+	return m_nodes.at(index<0 ? size()+index : index);
+}
+
+cmf::water::node_list cmf::water::node_list::get( int begin,int end,int step/*=1*/ ) const
+{
+	node_list res;
+	for (int i = begin; i <end  ; i+=step)
+	{
+		res.append(get(i));
+	}
+	return res;
 }
 /************************************************************************/
 /* Neumann-Boundary list                                                */

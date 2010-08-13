@@ -335,7 +335,7 @@ cmf::math::timeseries cmf::math::timeseries::floating_avg( cmf::math::Time windo
 	{
 		double sum=0;
 		size_t i=0;
-		for (Time tsub=t-half_window;tsub<=t+half_window;t+=step())
+		for (Time tsub=t-half_window;tsub<=t+half_window;tsub+=step())
 		{
 			++i;
 			sum+=get_t(tsub);
@@ -344,7 +344,24 @@ cmf::math::timeseries cmf::math::timeseries::floating_avg( cmf::math::Time windo
 	}
 	return res;
 }
-
+inline static double array_mean(std::vector<double>::iterator begin, size_t size) {
+	double sum=0;
+	for (size_t i = 0; i < size ; ++i)
+		sum+=*begin++;
+	return sum/size;
+}
+cmf::math::timeseries cmf::math::timeseries::floating_avg( size_t window_size ) const
+{
+	cmf::math::timeseries res(begin(),step(),interpolationpower(),size());
+	std::vector<double> window_content(window_size, get_i(0));
+	size_t half_size=window_size/2;
+	for (int i = 0; i < size(); ++i)
+	{
+		window_content[i % window_size] = get_i(i);
+		res.set_i(i,array_mean(window_content.begin(),window_size));
+	}
+	return res;
+}
 cmf::math::timeseries cmf::math::timeseries::floating_max( cmf::math::Time window_width ) const
 {
 	cmf::math::timeseries res(begin(),step());
@@ -352,9 +369,9 @@ cmf::math::timeseries cmf::math::timeseries::floating_max( cmf::math::Time windo
 	for (Time t=res.begin();t<=end();t+=res.step())
 	{
 		double value=get_t(t);
-		for (Time tsub=t-half_window;tsub<=t+half_window;t+=step())
+		for (Time tsub=t-half_window;tsub<=t+half_window;tsub+=step())
 		{
-			value=maximum(value,get_t(tsub));
+			value=std::max(value,get_t(tsub));
 		}
 		res.add(value);
 	}
@@ -368,9 +385,9 @@ cmf::math::timeseries cmf::math::timeseries::floating_min( cmf::math::Time windo
 	for (Time t=res.begin();t<=end();t+=res.step())
 	{
 		double value=get_t(t);
-		for (Time tsub=t-half_window;tsub<=t+half_window;t+=step())
+		for (Time tsub=t-half_window;tsub<=t+half_window;tsub+=step())
 		{
-			value=minimum(value,get_t(tsub));
+			value=std::min(value,get_t(tsub));
 		}
 		res.add(value);
 	}

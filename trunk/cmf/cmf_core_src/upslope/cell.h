@@ -72,7 +72,7 @@ namespace cmf {
 
 		/// This class is the basic landscape object. It is the owner of water storages, and the upper and lower boundary conditions 
 		/// of the system (rainfall, atmospheric vapor, deep groundwater)
-		class Cell : public cmf::math::StateVariableOwner, public cmf::geometry::Locatable {
+		class Cell : public cmf::math::StateVariableOwner {
 			Cell(const Cell& cpy);
 			friend class project;
 			/// @name Location
@@ -93,6 +93,9 @@ namespace cmf {
 		public:
 			/// Returns the area of the cell
 			double get_area() const { return m_Area; }
+			/// Converts a volume in m3 in mm for the cell area
+			double m3_to_mm(double volume) const { return volume/m_Area * 1e3;}
+			double mm_to_m3(double depth) const { return depth * m_Area * 1e-3;}
 			/// @name Saturation
 			//@{
 			/// Marks the saturated depth as unvalid
@@ -212,12 +215,18 @@ namespace cmf {
 			void add_layer(real lowerboundary,const cmf::upslope::RetentionCurve& r_curve,real saturateddepth=10);
 			void remove_last_layer();
 			void remove_layers();
+			double get_soildepth() const;
+
+			/// Returns the flux to each layer from the upperlayer, or, in case of the first layer from the surface water 
+			cmf::math::num_array get_percolation(cmf::math::Time t) const;
+
+
 			virtual ~Cell();
 			//@}
 
 
 			Cell(double x,double y,double z,double area,cmf::project & _project);
-			std::string to_string();
+			std::string to_string() const;
 			//@}
 			cmf::math::state_queue get_states();
 		};

@@ -802,7 +802,8 @@ void cmf::upslope::ET::ShuttleworthWallace::refresh( cmf::math::Time t )
 	// Just some temporary variables to be set by CANOPY
 	double h,LAI,SAI,RTLEN,RPLANT;
 	// Get Canopy parameters
-	CANOPY(v.Height,v.LAI,snow,0.3,v.RootLength(),8.,0.035,v.CanopyClosure,h,LAI,SAI,RTLEN,RPLANT);
+	CANOPY(v.Height,v.LAI,snow,0.3 /* SNODEN*/,v.RootLength(),8./*vegKPL*/,0.035 /*CS*/,v.CanopyClosure,
+	       h,LAI,SAI,RTLEN,RPLANT);
 	
 	// Roughness parameters
 	double Z0GS = 0.001 * cell.snow_coverage() + 0.05 * (1-cell.snow_coverage()),
@@ -825,7 +826,7 @@ void cmf::upslope::ET::ShuttleworthWallace::refresh( cmf::math::Time t )
 	PLNTRES(lc,THICK,STONEF,v.RootLength(),v.RootFraction(THICK),3.5,RPLANT,piecewise_linear(v.Height,0,25,0,0.5),RXYLEM,RROOTI,ALPHA);
 	double UA = w.Windspeed * WNDADJ(ZA,DISP,Z0,5000.,10.,0.005);
 
-	if (snow>0) {
+	if (snow>0.01) {
 		SNOVAP(w.Tground,w.T,w.e_a,UA,ZA,h,Z0,DISP,Z0C,DISPC,Z0GS,v.LeafWidth,RHOTP,NN,LAI,SAI,KSNVP,PSNVP);
 	}
 	ASNVP = PSNVP * piecewise_linear(snow,0,1);
@@ -850,7 +851,10 @@ void cmf::upslope::ET::ShuttleworthWallace::refresh( cmf::math::Time t )
 	// Shuttleworth-Wallace potential interception and ground evap. rates
 	// RSC = 0, RSS not changed
 	SWPE(RN,RNground,w.e_s-w.e_a,RAA,RAC,RAS,0,RSS,DELTA,PIR,GIR);
-	AIR = PIR * (cell.has_wet_leaves() ? piecewise_linear(cell.get_canopy()->get_volume() / cell.get_area() * 1e3,0,0.1) : 0);
+
+	double VOL_IN_CANOPY = cell.get_canopy() ? cell.m3_to_mm(cell.get_canopy()->get_volume()): 0.0;
+	double MAX_VOL_IN_CANOPY = LAI * cell.vegetation.CanopyCapacityPerLAI;
+	AIR = PIR * (VOL_IN_CANOPY/MAX_VOL_IN_CANOPY);
 	PTR -= AIR;
 	if (PTR>0.001)	{
 		TBYLAYER(1,PTR,DISPC,ALPHA,KK,RROOTI,RXYLEM,PSITI,lc, RHOWG * pF_to_waterhead(4.2),1,ATR_sum,ATR);

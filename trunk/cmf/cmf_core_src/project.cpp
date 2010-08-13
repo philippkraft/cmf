@@ -41,7 +41,7 @@ cmf::river::Reach::ptr cmf::project::NewReach( double x,double y, double z, doub
 {
 	cmf::river::Channel ch(Type,length,width,depth);
 	cmf::river::Reach::ptr R = cmf::river::Reach::create(*this,ch,diffusive);
-	R->Location=cmf::geometry::point(x,y,z);
+	R->position=cmf::geometry::point(x,y,z);
 	m_reaches.push_back(R);
 	return m_reaches.back();
 }
@@ -90,7 +90,7 @@ void cmf::project::use_IDW_meteo( double z_weight/*=0*/,double power/*=2*/ )
 {
 	for(upslope::cell_vector::iterator it = m_cells.begin(); it != m_cells.end(); ++it)
 	{
-		cmf::atmosphere::IDW_Meteorology meteo(*it,this->meteo_stations,z_weight,power);
+		cmf::atmosphere::IDW_Meteorology meteo(it->get_position(),this->meteo_stations,z_weight,power);
 		it->set_meteorology(meteo);
 	}
 }
@@ -99,7 +99,7 @@ void cmf::project::use_nearest_meteo( double z_weight/*=0*/ )
 {
 	for(upslope::cell_vector::iterator it = m_cells.begin(); it != m_cells.end(); ++it)
 	{	
-		it->set_meteorology(this->meteo_stations.reference_to_nearest(*it,z_weight));
+		it->set_meteorology(this->meteo_stations.reference_to_nearest(it->get_position(),z_weight));
 	}
 
 }

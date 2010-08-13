@@ -16,8 +16,8 @@
 //   You should have received a copy of the GNU General Public License
 //   along with cmf.  If not, see <http://www.gnu.org/licenses/>.
 //   
-SWIG_SHARED_PTR(MeteoStation,cmf::atmosphere::MeteoStation)
-SWIG_SHARED_PTR(RainfallStation,cmf::atmosphere::RainfallStation)
+%shared_ptr(cmf::atmosphere::MeteoStation)
+%shared_ptr(cmf::atmosphere::RainfallStation)
 %{
 	#include "atmosphere/meteorology.h"
 	#include "atmosphere/precipitation.h"

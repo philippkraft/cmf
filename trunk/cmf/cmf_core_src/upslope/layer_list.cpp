@@ -3,6 +3,8 @@
 using namespace cmf::upslope;
 using namespace cmf::water;
 
+#include "cell.h"
+
 
 #define CMF_LAYERLIST_ARRAY_GET(getter) cmf::math::num_array layer_list::getter() const { \
 	cmf::math::num_array res(size()); \
@@ -44,15 +46,15 @@ layer_list::layer_list(const cmf::water::node_list& for_copy)
 {
 	for(cmf::water::node_list::const_iterator it = for_copy.begin(); it != for_copy.end(); ++it)
 	{
-		SoilLayer::ptr l = SoilLayer::cast(**it);
+		SoilLayer::ptr l = SoilLayer::cast(*it);
 		if (l) m_layers.push_back(l);
 	}
 }
 
-layer_list& layer_list::append(const cmf::water::node_list& nl) { 
+layer_list& layer_list::extend(const cmf::water::node_list& nl) { 
 	for(node_list::const_iterator it = nl.begin(); it != nl.end(); ++it)
 	{
-		SoilLayer::ptr l = SoilLayer::cast(**it);
+		SoilLayer::ptr l = SoilLayer::cast(*it);
 		if (l) m_layers.push_back(l);
 	}
 	return *this;

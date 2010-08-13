@@ -36,7 +36,7 @@ real cmf::upslope::connections::Richards::calc_q( cmf::math::Time t )
 		l2=sw2.lock();
 
 	real
-		distance = l1->Location.z - right_node()->Location.z,		
+		distance = l1->position.z - right_node()->position.z,		
 		Psi_t1=l1->get_potential(),
 		Psi_t2=right_node()->get_potential(),
 		gradient=(Psi_t1-Psi_t2)/distance,

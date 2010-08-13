@@ -240,7 +240,7 @@ namespace cmf {
 		/// print 'Temperature:',weather.T               # Daily mean T, since nothing else in known
 		/// </pre>
 		/// </div>
-		class MeteoStation: public cmf::geometry::Locatable
+		class MeteoStation
 		{
 		private:
 			friend class MeteoStationList;
@@ -259,7 +259,7 @@ namespace cmf {
 				x,y,z;   ///< elevation of the station in m a.s.l.
 			std::string 
 				Name; ///< Name of the Station
-			virtual cmf::geometry::point get_position() const
+			cmf::geometry::point get_position() const
 			{
 				return cmf::geometry::point(x,y,z);
 			}
@@ -351,17 +351,16 @@ namespace cmf {
 		/// @ingroup meteo
 		/// @brief A reference to a meteorological station. Returns the weather at a given time for its place using MeteoStation::T_lapse
 		class MeteoStationReference 
-		: public Meteorology, public cmf::geometry::Locatable
+		: public Meteorology
 		{
 		private:
 			MeteoStation::ptr m_station;
-			const cmf::geometry::Locatable* m_location;
-			bool m_kill_location;
+			cmf::geometry::point m_location;
 		public:
 			/// Returns the station referenced
 			MeteoStation::ptr get_station() const {return m_station;}
 			/// Returns the position of the reference
-			cmf::geometry::point get_position() const {return m_location->get_position();}
+			cmf::geometry::point get_position() const {return m_location;}
 			/// Returns the weather at the time t
 			cmf::atmosphere::Weather get_weather(cmf::math::Time t) const
 			{
@@ -376,13 +375,8 @@ namespace cmf {
 			/// Create a located reference to a meteo station
 			/// @param station MeteoStation
 			/// @param location Location of the reference
-			MeteoStationReference(MeteoStation::ptr station,const cmf::geometry::Locatable& location)
-				: m_station(station),m_location(&location), m_kill_location(false) {}
-			/// Create a located reference to a meteo station
-			/// @param station MeteoStation
-			/// @param location Location of the reference
 			MeteoStationReference(MeteoStation::ptr station,cmf::geometry::point location)
-				: m_station(station),m_location(new cmf::geometry::Location(location)), m_kill_location(true) {}
+				: m_station(station),m_location(location) {}
 			/// Copy c'tor
 			MeteoStationReference(const MeteoStationReference& copy)
 				: m_station(copy.m_station),m_location(copy.m_location) {}
@@ -390,12 +384,6 @@ namespace cmf {
 			MeteoStationReference* copy() const
 			{
 				return new MeteoStationReference(*this);
-			}
-			/// d'tor
-			virtual ~MeteoStationReference()
-			{
-				if (m_kill_location)  
-					delete m_location;
 			}
 
 		};
@@ -484,7 +472,7 @@ namespace cmf {
 			/// @returns A Meteorology using the data of the nearest station to position 
 			/// @param position The position (any locatable, like e.g. Cell possible) to look for the station. The reference should be owned by the locatable
 			/// @param z_weight The weight of the height difference \f$\lambda_z\f$
-			MeteoStationReference reference_to_nearest(const cmf::geometry::Locatable& position,double z_weight=0) const;
+			MeteoStationReference reference_to_nearest(const cmf::geometry::point& position,double z_weight=0) const;
 		};
 
 
@@ -505,7 +493,7 @@ namespace cmf {
 			/// @param stations Meteo stations
 			/// @param z_weight Weight of height in IDW procedure
 			/// @param power Power of IDW procedure
-			IDW_Meteorology(const cmf::geometry::Locatable& position,const MeteoStationList& stations,double z_weight, double power);
+			IDW_Meteorology(const cmf::geometry::point& position,const MeteoStationList& stations,double z_weight, double power);
 			/// Copy c'tor
 			IDW_Meteorology(const IDW_Meteorology& copy)
 				: m_position(copy.m_position), weights(copy.weights) 

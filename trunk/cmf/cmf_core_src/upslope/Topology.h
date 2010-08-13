@@ -29,7 +29,7 @@ namespace cmf {
 	namespace upslope {
 		class neighbor_iterator;
 		/// represents the connectivity of cells to each other
-		class Topology : public cmf::geometry::Locatable
+		class Topology
 		{
 		private:
 			friend class neighbor_iterator;

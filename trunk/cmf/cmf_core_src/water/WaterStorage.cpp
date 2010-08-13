@@ -54,7 +54,7 @@ real WaterStorage::conc(const solute& _Solute) const
 
 std::tr1::shared_ptr<WaterStorage> WaterStorage::from_node( flux_node::ptr node )
 {
-	WaterStorage* ws=new WaterStorage(node->project(), node->Name);
+	WaterStorage* ws=new WaterStorage(node->get_project(), node->Name);
 	WaterStorage::ptr result(ws);
 
 	replace_node(node,result);
@@ -95,7 +95,7 @@ real cmf::water::WaterStorage::head_to_volume( real head ) const
 
 real cmf::water::WaterStorage::volume_to_head( real volume ) const
 {
-	return Location.z;
+	return position.z;
 }
 
 real cmf::water::WaterStorage::Derivate( const cmf::math::Time& time )

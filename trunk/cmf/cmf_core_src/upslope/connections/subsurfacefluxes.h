@@ -42,13 +42,7 @@ namespace cmf {
 				virtual real calc_q(cmf::math::Time t)=0;
 				virtual void NewNodes();
 
-				lateral_sub_surface_flux(cmf::upslope::SoilLayer::ptr left,cmf::water::flux_node::ptr right, std::string Name,real FlowWidth,real Distance=0)
-					: cmf::water::flux_connection(left,right,Name), flow_width(FlowWidth), distance(Distance)
-				{
-					NewNodes();
-					if (Distance<=0)
-						distance=left->Location.distanceTo(right->Location);
-				}
+				lateral_sub_surface_flux(cmf::upslope::SoilLayer::ptr left,cmf::water::flux_node::ptr right, std::string Name,real FlowWidth,real Distance=0);
 
 			};
 

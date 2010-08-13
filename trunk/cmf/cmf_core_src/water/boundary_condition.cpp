@@ -50,7 +50,9 @@ cmf::water::NeumannBoundary::NeumannBoundary(const cmf::project& _project,
 
 cmf::water::NeumannBoundary::ptr cmf::water::NeumannBoundary::create( cmf::water::flux_node::ptr target )
 {
-	cmf::water::NeumannBoundary::ptr res = cmf::water::NeumannBoundary::ptr(new NeumannBoundary(target->project(),target->Location));
+	using cmf::water::NeumannBoundary;
+	NeumannBoundary* new_bound = new NeumannBoundary(target->get_project(),target->position);
+	NeumannBoundary::ptr res(new_bound);
 	res->Name = "Boundary at " + target->Name;
 	res->connect_to(target);
 	return res;
@@ -66,8 +68,8 @@ real cmf::water::NeumannFlux::calc_q( cmf::math::Time t )
 }
 
 
-cmf::water::DricheletBoundary::DricheletBoundary(const cmf::project& _p,real potential,cmf::geometry::point Location/*=cmf::geometry::point()*/ ) 
-: flux_node(_p,Location),m_Potential(potential), is_source(0)
+cmf::water::DricheletBoundary::DricheletBoundary(const cmf::project& _p,real potential,cmf::geometry::point position/*=cmf::geometry::point()*/ ) 
+: flux_node(_p,position),m_Potential(potential), is_source(0)
 {	
 }
 
