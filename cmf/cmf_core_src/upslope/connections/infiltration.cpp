@@ -28,22 +28,24 @@ real cmf::upslope::connections::MatrixInfiltration::calc_q( cmf::math::Time t )
 	cmf::water::flux_node::ptr surfacewater=left_node();
 	cmf::upslope::Cell& cell=soilwater->cell;
 	real
-		Pot_surf = surfacewater->get_potential(),																				// get_potential of the surface water				
-		Pot_soil = soilwater->get_potential(),																					// get_potential of the soil water
-		gradient = (Pot_surf-Pot_soil)/(0.5*soilwater->get_thickness()),								// Gradient surface->soil
-		K = geo_mean(soilwater->get_K(),soilwater->get_Ksat()),										        // Conductivity in m/day
+		// get_potential of the surface water				
+		Pot_surf = surfacewater->get_potential(),
+		// get_potential of the soil water
+		Pot_soil = soilwater->get_potential(),
+		// Gradient surface->soil
+		gradient = (Pot_surf-Pot_soil)/(0.5*soilwater->get_thickness()),								
+		// Conductivity in m/day
+		K = geo_mean(soilwater->get_K(),soilwater->get_Ksat()),										        
 		maxInfiltration = gradient * K * cell.get_area();
 
-	real
-		inflow=0,
-		f_wb=1;
+	real inflow=0;
 	if (surfacewaterstorage) // If the surface water is a storage
 	{
-		f_wb=1-sqrt(piecewise_linear(surfacewaterstorage->get_depth(),0,0.01)); // get a factor how dominant the inflow to the surface water, versus the state dependent outflow is
-		inflow=(1-f_wb) * maxInfiltration;		// get the state dependend outflow
+		// get the state dependend outflow
+		inflow = maxInfiltration * cell.surface_water_coverage();		
 	}
 	else // inflow is the sum of the inflows to surface water
-		inflow += f_wb * surfacewater->water_balance(t,this);							// get the inflow dependent outflow
+		inflow = surfacewater->water_balance(t,this);							
 
 	return minimum(maxInfiltration,inflow);
 }
@@ -68,7 +70,7 @@ real cmf::upslope::connections::CompleteInfiltration::calc_q( cmf::math::Time t 
 	if (surfacewaterstorage) // If the surface water is a storage
 	{
 		f_wb=1-sqrt(piecewise_linear(surfacewaterstorage->get_depth(),0,0.01)); // get a factor how dominant the inflow to the surface water, versus the state dependent outflow is
-		inflow=(1-f_wb) * maxInfiltration;		// get the state dependend outflow
+		inflow=(1-f_wb) * maxInfiltration;		// get the state dependent outflow
 	}
 	else // inflow is the sum of the inflows to surface water
 		inflow += f_wb * surfacewater->water_balance(t,this);							// get the inflow dependent outflow

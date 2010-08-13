@@ -8,6 +8,8 @@ namespace cmf {
 		class Cell;
 		class cell_iterator;
 		class cell_const_iterator;
+
+		/// A cell vector holds a bunch of cells
 		class cell_vector : public cmf::math::StateVariableOwner {
 		private:
 			typedef std::vector<cmf::upslope::Cell*> cellvec;
@@ -21,6 +23,7 @@ namespace cmf {
 			cell_vector() {}
 			cell_vector(const cell_vector& copy)
 				: m_cells(copy.m_cells) {}
+			
 			cmf::upslope::Cell& operator[](int index) {
 				return *m_cells.at(index >=0 ? index : m_cells.size() + index);
 			}
@@ -28,8 +31,29 @@ namespace cmf {
 			void append(cmf::upslope::Cell& cell) {
 				m_cells.push_back(&cell);
 			}
+			void remove(int index) {
+				int ndx = index<0 ? size()+index : index;
+				m_cells.erase(m_cells.begin() + ndx);
+			}
+			void remove(const cmf::upslope::Cell& cell);
+			/// Returns and removes the last cell
+			Cell& pop();
+
 			size_t size() const {return m_cells.size();}
-			cell_vector get_slice(int start,int end,int step) ;
+
+			cell_vector get_slice(int start,int end,int step=1) ;
+
+			/// Returns the cell with the lowest height
+			Cell& get_lowest() const;
+			/// Returns the heighest cell
+			Cell& get_highest() const;
+
+			/// Returns sum of the area of the cells
+			double get_area() const;
+			bool contains(const cmf::upslope::Cell& cell) const;
+
+
+
 
 #ifndef SWIG
 			typedef cell_iterator iterator;

@@ -258,7 +258,7 @@ void cmf::atmosphere::MeteoStation::use_for_cell( cmf::upslope::Cell& c )
 	for (int i = 0; i < msl.size() ; ++i)
 	{
 		if (msl[i].get() == this) {
-			MeteoStationReference mref(msl[i],c);
+			MeteoStationReference mref(msl[i],c.get_position());
 			c.set_meteorology(mref);
 			break;
 		}
@@ -302,12 +302,12 @@ double cmf::atmosphere::MeteoStationList::calculate_Temp_lapse( cmf::math::Time 
 	return avg_lapse/steps;
 }
 
-cmf::atmosphere::MeteoStationReference cmf::atmosphere::MeteoStationList::reference_to_nearest( const cmf::geometry::Locatable& position,double z_weight/*=0*/ ) const
+cmf::atmosphere::MeteoStationReference cmf::atmosphere::MeteoStationList::reference_to_nearest( const cmf::geometry::point& position,double z_weight/*=0*/ ) const
 {
 	if (!size()) throw std::out_of_range("No stations in list");
 	MeteoStation::ptr nearest;
 	double min_dist=1e300;
-	cmf::geometry::point p=position.get_position();
+	cmf::geometry::point p;
 	for(vector::const_iterator it = m_stations.begin(); it != m_stations.end(); ++it)
 	{
 		const MeteoStation::ptr& station=*it;
@@ -334,10 +334,10 @@ cmf::atmosphere::MeteoStation::ptr cmf::atmosphere::MeteoStationList::add_statio
 	return result;
 }
 
-cmf::atmosphere::IDW_Meteorology::IDW_Meteorology( const cmf::geometry::Locatable& position,const MeteoStationList& stations,double z_weight, double power )
-: m_position(position.get_position())
+cmf::atmosphere::IDW_Meteorology::IDW_Meteorology( const cmf::geometry::point& position,const MeteoStationList& stations,double z_weight, double power )
+: m_position(position)
 {
-	point p=position.get_position();
+	point p=position;
 	// Create a vector of distances to the stations
 	num_array dist(stations.size());
 	for (int i = 0; i < stations.size() ; ++i)

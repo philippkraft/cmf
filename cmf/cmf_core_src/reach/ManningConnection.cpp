@@ -28,7 +28,7 @@ real cmf::river::Manning::calc_q( cmf::math::Time t )
 		// Gradient of the reach
 		slope = is_diffusive_wave ?  
 		/*diffusive slope*/	        (left_node()->get_potential()-right_node()->get_potential())/d
-		/*kinematic slope*/	      : (left_node()->Location.z - right_node()->Location.z)/d,
+		/*kinematic slope*/	      : (left_node()->position.z - right_node()->position.z)/d,
 		
 		abs_slope=fabs(slope);
 	// No slope, no flux
@@ -56,7 +56,7 @@ real cmf::river::Manning::calc_q( cmf::math::Time t )
 void cmf::river::Manning::connect_cells( cmf::upslope::Cell& c1,cmf::upslope::Cell& c2,bool diffusive)
 {
 	real w=c1.get_topology().flowwidth(c2);
-	real d=c1.get_distance_to(c2);
+	real d=c1.get_position().distanceTo(c2.get_position());
 	if (w<=0) return;
 	RectangularReach r_type(d,w);
 	

@@ -117,52 +117,6 @@ namespace cmf {
 #endif
 
 
-		/// An interface for objects having a location in space
-		class Locatable
-		{
-		public:
-			/// Pure virtual function. Should return the position of the locatable
-			virtual cmf::geometry::point get_position() const=0;
-			/// Sets the location. If not implemented by the child class, an exception is thrown
-			virtual void set_position(cmf::geometry::point p)
-			{
-				throw std::runtime_error("The position is readonly");
-			}
-			/// Returns the distance between two locatable objects
-			double get_distance_to(const Locatable& cmp)
-			{
-				return get_position().distance3DTo(cmp.get_position());
-			}
-			/// Returns a vector with length=1 pointing in the direction of another Locatable
-			cmf::geometry::point get_direction_to(const Locatable& cmp)
-			{
-				cmf::geometry::point p1=get_position(),p2=cmp.get_position();
-				double d=p1.distance3DTo(p2);
-				if (d<=0) 
-					return cmf::geometry::point();
-				else
-					return (p2-p1)/d;
-			}
-		};
-
-
-		/// A minimal implementation of Locatable
-		class Location : public Locatable
-		{
-		private:
-			typedef std::tr1::shared_ptr<const point> place_pointer;
-			place_pointer place;
-		public:
-			cmf::geometry::point get_position() const {return *place;}
-			/// Creates a location from a position
-			Location(cmf::geometry::point position) 
-				: place(new point(position))
-			{			}
-
-			/// Creates a location from a position
-			Location(double x, double y, double z) 
-				: place(new point(x,y,z)) {}
-		};
 		/// Holds three arrays x,y and z for fast access of point coordinates
 		class point_vector
 		{

@@ -25,9 +25,9 @@ double cmf::river::make_river_gap( Reach::ptr reach )
 	for (int i = 0; i < reach->upstream_count() ; ++i)
 	{
 		double gap_heigth = cmf::river::make_river_gap(reach->get_upstream(i));
-		reach->Location.z = std::min(gap_heigth,reach->Location.z);
+		reach->position.z = std::min(gap_heigth,reach->position.z);
 	}
-	return reach->Location.z;
+	return reach->position.z;
 }
 
 
@@ -184,7 +184,7 @@ real cmf::river::Reach::get_length() const
 double cmf::river::Reach::distance_to_cell( cmf::upslope::Cell* cell ) const
 {
 	double 
-		outer_distance = cell->get_position().distanceTo(Location),
+		outer_distance = cell->get_position().distanceTo(position),
 		cell_radius = sqrt(cell->get_area())/cmf::geometry::PI,
 		distance = std::max(outer_distance,cell_radius/2);
 	return distance;

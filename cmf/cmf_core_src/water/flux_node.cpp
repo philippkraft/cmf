@@ -27,7 +27,7 @@ static int nextnodeid=0;
 
 cmf::geometry::point get_direction_to(const cmf::water::flux_node & node, const cmf::water::flux_node& cmp )
 {
-	cmf::geometry::point p1=node.Location,p2=cmp.Location;
+	cmf::geometry::point p1=node.position,p2=cmp.position;
 	double d=p1.distance3DTo(p2);
 	if (d<=0) 
 		return cmf::geometry::point();
@@ -110,7 +110,7 @@ cmf::water::flux_node::~flux_node()
 		m_Connections.erase(m_Connections.begin());
 		con->kill_me();
 	}
-	if (project().debug)
+	if (get_project().debug)
 		std::cout << "Deleted " << Name << std::endl;
 }
 
@@ -143,7 +143,7 @@ real cmf::water::flux_node::conc( cmf::math::Time t, const cmf::water::solute& _
 
 
 cmf::water::flux_node::flux_node( const cmf::project& _project,cmf::geometry::point location ) 
-: m_project(_project), node_id(nextnodeid++),Location(location)
+: m_project(_project), node_id(nextnodeid++),position(location)
 {
 	if (m_project.debug) std::cout << "new node #" << node_id << std::endl;
 }
@@ -201,12 +201,12 @@ int cmf::water::count_node_references( flux_node::ptr node )
 
 cmf::water::flux_node::ptr cmf::water::get_higher_node( cmf::water::flux_node::ptr node1,cmf::water::flux_node::ptr node2 )
 {
-	return node1->Location.z >= node2->Location.z ? node1 : node2;
+	return node1->position.z >= node2->position.z ? node1 : node2;
 }
 
 cmf::water::flux_node::ptr cmf::water::get_lower_node( cmf::water::flux_node::ptr node1,cmf::water::flux_node::ptr node2 )
 {
-	return node1->Location.z >= node2->Location.z ? node2 : node1;
+	return node1->position.z >= node2->position.z ? node2 : node1;
 }
 
 void cmf::water::water_balance_integrator::integrate( cmf::math::Time until )
