@@ -22,7 +22,8 @@
 %attribute(cmf::water::node_list,cmf::math::num_array,potentials,get_potentials,set_potentials);
 %attribute(cmf::water::NeumannBoundary_list,cmf::math::num_array,fluxes,get_fluxes,set_fluxes);
 %node_downcast_all(cmf::water::flux_node::ptr cmf::water::node_list::get)
-
+%rename(__get) cmf::water::node_list::get;
+%rename(__getslice) cmf::water::node_list::getslice;
 
 %iterable_to_list(cmf::water::node_list,cmf::water::flux_node::ptr)
 %iterable_to_list(cmf::water::NeumannBoundary_list,cmf::water::NeumannBoundary::ptr)
@@ -32,10 +33,15 @@
 %extend cmf::water::node_list {
 %pythoncode {
     def __getitem__(self,index):
-        return self.get(index)
-    def __getslice__(self,slice):
-        indices=slice.indices(self.size())
-        return self.get(indices[0],indices[1],indices[2])
+        if isinstance(index,slice):
+            return self.__getslice(*index.indices(self.size())) 
+        else:
+            try:
+                it = iter(index)
+                return node_list(self.__get(i) for i in it)
+            except:
+                return self.__get(index)
+                
     def __len__(self):
         return self.size()       
     def __iter__(self):

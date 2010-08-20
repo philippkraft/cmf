@@ -15,7 +15,12 @@
 //
 //   You should have received a copy of the GNU General Public License
 //   along with cmf.  If not, see <http://www.gnu.org/licenses/>.
-//   
+//  
+
+%shared_ptr(cmf::river::OpenWaterStorage);
+%shared_ptr(cmf::river::Reach);
+
+ 
 %{
 	#include "reach/ReachType.h"
 	#include "reach/OpenWaterStorage.h"
@@ -30,6 +35,7 @@
 %include "reach/OpenWaterStorage.h"
 
 %attribute(cmf::river::Reach,real,length,get_length);
+%attribute(cmf::river::Reach,real,width,get_width);
 %attribute2(cmf::river::Reach,cmf::river::IChannel,channel,get_height_function);
 %attribute(cmf::river::ReachIterator,cmf::river::Reach,reach,reach);
 %attribute(cmf::river::Reach,cmf::river::Reach,downstream,get_downstream);
@@ -77,5 +83,5 @@
             yield (self.reach,self.position)
 }}
 
-EXTENT__REPR__(cmf::river::OpenWaterStorage)
-EXTENT__REPR__(cmf::river::Reach)
+%extend__repr__(cmf::river::OpenWaterStorage)
+%extend__repr__(cmf::river::Reach)

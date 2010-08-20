@@ -15,9 +15,16 @@
 //
 //   You should have received a copy of the GNU General Public License
 //   along with cmf.  If not, see <http://www.gnu.org/licenses/>.
-//   
+// 
+  
 %shared_ptr(cmf::atmosphere::MeteoStation)
 %shared_ptr(cmf::atmosphere::RainfallStation)
+%shared_ptr(cmf::atmosphere::RainSource);
+%shared_ptr(cmf::atmosphere::RainfallStationReference);
+%shared_ptr(cmf::atmosphere::IDWRainfall);
+%shared_ptr(cmf::atmosphere::ConstantRainSource);
+
+
 %{
 	#include "atmosphere/meteorology.h"
 	#include "atmosphere/precipitation.h"
@@ -82,3 +89,7 @@
     }
 }
     
+%extend__repr__(cmf::atmosphere::RainSource)
+%extend__repr__(cmf::atmosphere::RainfallStationReference)
+%extend__repr__(cmf::atmosphere::ConstantRainSource)
+%extend__repr__(cmf::atmosphere::IDWRainfall)

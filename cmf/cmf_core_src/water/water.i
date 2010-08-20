@@ -18,6 +18,17 @@
 //   
 
 
+%shared_ptr(cmf::water::SoluteStorage);
+
+%shared_ptr(cmf::water::flux_node);
+%shared_ptr(cmf::water::WaterStorage);
+%shared_ptr(cmf::water::DricheletBoundary);
+%shared_ptr(cmf::water::NeumannBoundary);
+%shared_ptr(cmf::water::SystemBridge);
+
+%shared_ptr(cmf::water::water_balance_integrator);
+%shared_ptr(cmf::water::connection_integrator);
+
 %{
 	// Include Water
 	#include "water/Solute.h"
@@ -25,6 +36,7 @@
 	#include "water/WaterStorage.h"
 	#include "water/flux_connection.h"
     #include "water/boundary_condition.h"
+    #include "water/system_bridge.h"
 %}
 // Include Water
 %include "water/Solute.h"
@@ -125,19 +137,24 @@ namespace cmf{namespace water {class flux_connection;}}
 
 
 %include "water/boundary_condition.h"
-%extent cmf::water::DricheletBoundary {  %pythoncode {
-    def __repr__(self): return self.to_string()
-}}
-%extent cmf::water::NeumannBoundary {   %pythoncode {
-    def __repr__(self): return self.to_string()
-}}
 
 
 // WaterStorage
 %attribute(cmf::water::WaterStorage,real,volume,get_volume,set_volume);
 %attribute(cmf::water::WaterStorage,char,statevariable,get_state_variable_content,set_state_variable_content);
 %include "water/WaterStorage.h"
+
+%extend__repr__(cmf::water::DricheletBoundary)
+%extend__repr__(cmf::water::NeumannBoundary)
+%extend__repr__(cmf::water::WaterStorage)
+
+
 %include "water/collections.i"
 
-// Add some function for down casting
+// system bridge
+
+%include "water/system_bridge.h"
+
+
+
 

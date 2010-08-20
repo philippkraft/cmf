@@ -28,11 +28,13 @@
 namespace cmf {
 	/// Contains classes for numerical solving of ODE's
   namespace math {
+	  
 	  /// integration_variable is a functionality for different classes for integrating values over time.
 	  ///
-	  /// Main usage of an integration_variable is the calculation of average fluxes
+	  /// Main usage of an integration_variable is the calculation of average fluxes over time
 	  class integratable {
 	  public:
+		  typedef std::tr1::shared_ptr<integratable> ptr;
 		  virtual void integrate(Time t)=0;
 		  virtual void reset(Time t)=0;
 	  };

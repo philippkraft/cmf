@@ -32,6 +32,7 @@
 namespace cmf {
 	class project;
 	namespace water {
+
 		/// @defgroup connections Flux connections
 		///
 		/// The connections between the nodes (boundary conditions, storages) of the water network
@@ -70,6 +71,12 @@ namespace cmf {
 			}
 		public:
 			typedef std::tr1::shared_ptr<flux_connection> ptr;
+#ifndef SWIG
+			ptr get_ptr() const {
+				return weak_this.lock();
+			}
+			
+#endif
 			/// Returns the left node of this connection
 			flux_node::ptr left_node() const {return m_left.expired() ? flux_node::ptr() : flux_node::ptr(m_left);}
 			/// returns the right node of this connection
@@ -153,8 +160,7 @@ namespace cmf {
 			}
 			/// Integrates the flux a timestep further. Note: until is an absolut time. If until is before t0, the integration is initilized again
 			void integrate(cmf::math::Time until);
-			connection_integrator(cmf::water::flux_connection::ptr connection) 
-				:	_connection(connection), _sum(0.0), _t(cmf::math::year*5000), _name(connection->to_string()+ " (Integrator)") {}
+			connection_integrator(cmf::water::flux_connection& connection);
 		};
 
 		/// @ingroup connections

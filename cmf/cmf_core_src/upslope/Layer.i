@@ -16,6 +16,9 @@
 //   You should have received a copy of the GNU General Public License
 //   along with cmf.  If not, see <http://www.gnu.org/licenses/>.
 //   
+
+%shared_ptr(cmf::upslope::SoilLayer);
+
 %{
 	// Include Upslope
 	#include "upslope/Soil/RetentionCurve.h"
@@ -68,7 +71,7 @@
   }
 }
 
-EXTENT__REPR__(cmf::upslope::SoilLayer)
+%extend__repr__(cmf::upslope::SoilLayer)
 
 
 %attribute(cmf::upslope::layer_list,cmf::math::num_array,gravitational_potential,get_gravitational_potential);
@@ -85,8 +88,6 @@ EXTENT__REPR__(cmf::upslope::SoilLayer)
 %attribute(cmf::upslope::layer_list,cmf::math::num_array,ice_fraction,get_ice_fraction);
 
 %iterable_to_list(cmf::upslope::layer_list,cmf::upslope::SoilLayer::ptr)
-
-
 %include "upslope/layer_list.h"
 
 %extend cmf::upslope::layer_list {

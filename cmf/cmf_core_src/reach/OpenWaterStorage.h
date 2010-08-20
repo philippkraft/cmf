@@ -36,7 +36,7 @@ namespace cmf {
 			operator ptr() {return std::tr1::static_pointer_cast<OpenWaterStorage >(shared_from_this());}
 #endif
 		private:
-			volume_height_function height_function;
+			std::auto_ptr<IVolumeHeightFunction> height_function;
 		protected:
 			/// Creates an open water storage with a prismatic volume			
 			OpenWaterStorage(const cmf::project& _project,real Area);
@@ -49,17 +49,18 @@ namespace cmf {
 		public:
 			/// The functional relation between volume, depth and exposed area
 			virtual const IVolumeHeightFunction& get_height_function() const {
-				return height_function;
+				return *height_function;
 			}
 			virtual void set_height_function(const IVolumeHeightFunction& val){
-				height_function = val;
+				IVolumeHeightFunction* new_hf = val.copy();
+				height_function.reset(new_hf);
 			}
 
 			/// Returns the water table depth 
 			real get_depth() const;
-			void set_depth(real new_depth) {set_volume(height_function.V(new_depth));}
+			void set_depth(real new_depth) {set_volume(height_function->V(new_depth));}
 			/// Returns the exposed surface area in m2
-			real wet_area() const {return height_function.A(maximum(0,get_state()));}
+			real wet_area() const {return height_function->A(maximum(0,get_volume()));}
 			/// Creates an open water storage with a prismatic volume			
 			static ptr create(const cmf::project& _project,real Area);
 			/// Creates an open water storage with any type of a volume
@@ -69,7 +70,7 @@ namespace cmf {
 			static ptr from_node(cmf::water::flux_node::ptr node,real Area);
 
 			real get_abs_errtol(real rel_errtol) const {
-				return rel_errtol * height_function.V(0.001);
+				return rel_errtol * height_function->V(0.001);
 			}
 			
 			/// Casts a flux node to an open water storage
