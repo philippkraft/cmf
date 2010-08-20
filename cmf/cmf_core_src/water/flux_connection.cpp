@@ -107,6 +107,7 @@ std::string flux_connection::short_string() const
 	return str.str();
 }
 
+// delete the connection
 bool flux_connection::kill_me()
 {
 	flux_connection::ptr shared_this(weak_this);
@@ -157,24 +158,31 @@ bool cmf::water::can_set_flux( flux_node::ptr source,flux_node::ptr target )
 
 void cmf::water::connection_integrator::integrate( cmf::math::Time until )
 {
+	/* If connection is expired, throw error */
 	if (_connection.expired()) {
 		throw std::runtime_error("Connection for "+_name+" does not exist any more");
-	}
-	cmf::math::Time dt = until-_t;
-	if (until<_t) {
+	} else if /* end time is before current time, reset the integration*/ (until<_t) {	
 		reset(until);
-		return;
+	} else /* integrate */ {
+		// get timestep length
+		cmf::math::Time dt = until-_t;
+		// get the connection
+		flux_connection::ptr con = _connection.lock();
+		// add flux in timestep to current sum
+		_sum += con->m_q * dt.AsDays();
+		// set new current time
+		_t=until;
 	}
-	_t=until;
-	flux_connection::ptr con = _connection.lock();
-	_sum += con->m_q * dt.AsDays();
 }
 
+
+// returns the average flux over the timestep
 double cmf::water::connection_integrator::avg() const
 {
-	if (_t>_start_time)
+	// if variable is already integrated
+	if (_t>_start_time) 
 		return _sum/(_t-_start_time).AsDays();
-	else
+	else // else return zero...
 		return 0.0;
 }
 
@@ -182,6 +190,16 @@ cmf::water::connection_integrator::connection_integrator( cmf::water::flux_conne
 	:	_connection(connection.weak_this), 
 		_sum(0.0), _t(cmf::math::year*5000), 
 		_name(connection.to_string()+ " (Integrator)")
-{
+{}
 
+
+void cmf::water::connection_integrator::reset( cmf::math::Time t )
+{
+	_start_time = t;
+	_sum=0.0;
+}
+
+flux_connection::ptr cmf::water::connection_integrator::connection() const
+{
+	return _connection.lock();
 }

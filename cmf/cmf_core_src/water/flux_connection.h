@@ -151,15 +151,12 @@ namespace cmf {
 			/// Returns the average flux of the integration time in m3/day
 			double avg() const;
 			/// Initializes the integration
-			void reset(cmf::math::Time t) {
-				_start_time = t;
-				_sum=0.0;
-			}
-			flux_connection::ptr connection() const {
-				return _connection.lock();
-			}
-			/// Integrates the flux a timestep further. Note: until is an absolut time. If until is before t0, the integration is initilized again
+			void reset(cmf::math::Time t);
+			/// Returns the flux_connection
+			flux_connection::ptr connection() const;
+			/// Integrates the flux a timestep further. Note: until is an absolute time. If until is before t0, the integration is initilized again
 			void integrate(cmf::math::Time until);
+
 			connection_integrator(cmf::water::flux_connection& connection);
 		};
 
