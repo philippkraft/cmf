@@ -28,6 +28,7 @@ using namespace cmf::math;
 int flux_connection::nextconnectionid=0;
 flux_connection::~flux_connection()
 {
+	
 }
 
 flux_connection::flux_connection( flux_node::ptr left,flux_node::ptr right,std::string _type ) 
@@ -175,4 +176,12 @@ double cmf::water::connection_integrator::avg() const
 		return _sum/(_t-_start_time).AsDays();
 	else
 		return 0.0;
+}
+
+cmf::water::connection_integrator::connection_integrator( cmf::water::flux_connection& connection ) 
+	:	_connection(connection.weak_this), 
+		_sum(0.0), _t(cmf::math::year*5000), 
+		_name(connection.to_string()+ " (Integrator)")
+{
+
 }

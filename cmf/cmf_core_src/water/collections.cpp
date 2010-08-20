@@ -201,7 +201,7 @@ cmf::water::flux_node::ptr cmf::water::node_list::get( int index ) const
 	return m_nodes.at(index<0 ? size()+index : index);
 }
 
-cmf::water::node_list cmf::water::node_list::get( int begin,int end,int step/*=1*/ ) const
+cmf::water::node_list cmf::water::node_list::getslice( int begin,int end,int step/*=1*/ ) const
 {
 	node_list res;
 	for (int i = begin; i <end  ; i+=step)

@@ -58,12 +58,10 @@ namespace cmf {
 			connectorfunction m_connector;
 			CellConnector():m_connector(0) {}
 		public:
-#ifndef SWIG
 			CellConnector(connectorfunction connector) : m_connector(connector)			{	}
 			void operator()(cmf::upslope::Cell& cell1,cmf::upslope::Cell& cell2,int start_at_layer=0) const	{
 				connect(cell1,cell2,start_at_layer);
 			}
-#endif
 			void connect(cmf::upslope::Cell& cell1,cmf::upslope::Cell& cell2,int start_at_layer=0) const {
 				m_connector(cell1,cell2,start_at_layer);
 			}

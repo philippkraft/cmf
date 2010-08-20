@@ -534,6 +534,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\water\system_bridge.h"
+				>
+			</File>
+			<File
 				RelativePath=".\math\Time.h"
 				>
 			</File>
@@ -810,6 +814,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\water\system_bridge.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\math\Time.cpp"
 				>
 			</File>
@@ -847,6 +855,10 @@
 					Outputs="cmf_wrap.cpp"
 				/>
 			</FileConfiguration>
+		</File>
+		<File
+			RelativePath=".\cmf_swiglib.i"
+			>
 		</File>
 		<File
 			RelativePath=".\water\collections.i"

@@ -70,7 +70,7 @@ namespace cmf {
 			flux_node::ptr get(int index) const;
 			
 			/// Returns a slice of the node_list
-			node_list get(int begin,int end,int step=1) const;
+			node_list getslice(int begin,int end,int step=1) const;
 
 			/// Implements StateVariableOwner
 			cmf::math::state_queue get_states();
@@ -138,6 +138,8 @@ namespace cmf {
 		};
 
 
+		/// Provides fast access to Neumann boundaries for flux update
+		///
 		/// If many Neumann boundary conditions are present in a project, a fast data exchange to update the fluxes might be needed.
 		///
 		/// With this specialized list a num_array can be passed to the boundary conditions for a fast flux update

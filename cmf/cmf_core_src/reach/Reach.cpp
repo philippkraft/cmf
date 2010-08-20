@@ -120,9 +120,9 @@ void Reach::set_outlet(cmf::water::flux_node::ptr outlet )
 }
 
 
-const IChannel& Reach::get_height_function() const
+Channel Reach::get_reachtype() const
 {
-	return m_shape;
+	return cmf::river::OpenWaterStorage::get_height_function();
 }
 
 Reach::~Reach()
@@ -178,7 +178,7 @@ Reach::ptr Reach::create( const cmf::project& project,const IChannel& shape, boo
 
 real cmf::river::Reach::get_length() const
 {
-	return get_height_function().get_length();
+	return get_reachtype().get_length();
 }
 
 double cmf::river::Reach::distance_to_cell( cmf::upslope::Cell* cell ) const
@@ -190,8 +190,18 @@ double cmf::river::Reach::distance_to_cell( cmf::upslope::Cell* cell ) const
 	return distance;
 
 }
+
+void cmf::river::Reach::set_height_function( const IChannel& val )
+{
+	cmf::river::OpenWaterStorage::set_height_function(val);
+}
+
+real cmf::river::Reach::get_width() const
+{
+	return wet_area()/get_length();
+}
 Reach::Reach( const cmf::project& _project,const IChannel& shape, bool diffusive/*=false*/ ) 
-: OpenWaterStorage(_project,shape), m_diffusive(diffusive), m_shape(shape)
+: OpenWaterStorage(_project,shape), m_diffusive(diffusive)
 {
 
 }
