@@ -31,24 +31,24 @@ cmf::river::OpenWaterStorage::ptr cmf::river::OpenWaterStorage::cast( cmf::water
 }
 
 cmf::river::OpenWaterStorage::OpenWaterStorage( const cmf::project& _project,real Area ) 
-: cmf::water::WaterStorage(_project,"Unnamed OpenWaterStorage",0), height_function(Prism(Area))
+: cmf::water::WaterStorage(_project,"Unnamed OpenWaterStorage",0), height_function(new Prism(Area))
 {
 
 }
 
 cmf::river::OpenWaterStorage::OpenWaterStorage( const cmf::project& _project, const cmf::river::IVolumeHeightFunction& base_geo )
-: cmf::water::WaterStorage(_project,"Unnamed OpenWaterStorage",0), height_function(base_geo)
+: cmf::water::WaterStorage(_project,"Unnamed OpenWaterStorage",0), height_function(base_geo.copy())
 {
 
 }
 
 inline real cmf::river::OpenWaterStorage::head_to_volume(real head) const
 {
-	return height_function.V(head - this->position.z);
+	return height_function->V(head - this->position.z);
 }
 inline real cmf::river::OpenWaterStorage::volume_to_head(real volume) const
 {
-	return height_function.h(volume) + this->position.z;
+	return height_function->h(volume) + this->position.z;
 }
 
 real cmf::river::OpenWaterStorage::get_depth() const
@@ -56,7 +56,7 @@ real cmf::river::OpenWaterStorage::get_depth() const
 	if (get_state_variable_content()=='h') 
 		return std::max(get_state() - position.z,0.0);
 	else
-		return height_function.h(std::max(0.0,get_state()));
+		return height_function->h(std::max(0.0,get_state()));
 }
 
 

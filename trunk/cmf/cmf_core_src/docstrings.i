@@ -310,6 +310,9 @@ flux_node &inquirer, cmf::math::Time t)
 Returns the current flux through a connection. Negative signs mean out
 of the inquirer, positive are inflows to the inquirer. ";
 
+%feature("docstring")  cmf::upslope::aquifer_Darcy::get_ptr "ptr
+get_ptr() const ";
+
 %feature("docstring")  cmf::upslope::aquifer_Darcy::left_node "flux_node::ptr left_node() const
 
 Returns the left node of this connection. ";
@@ -460,6 +463,9 @@ AddValuesToStates(const num_array &operands) ";
 
 %feature("docstring")  cmf::math::BDF2::AddState "virtual void
 AddState(cmf::math::StateVariable::ptr state) ";
+
+%feature("docstring")  cmf::math::BDF2::AddIntegratable "void
+AddIntegratable(cmf::math::integratable::ptr integratable) ";
 
 /*  model time  */
 
@@ -770,6 +776,8 @@ q(const flux_node &inquirer, cmf::math::Time t)
 Returns the current flux through a connection. Negative signs mean out
 of the inquirer, positive are inflows to the inquirer. ";
 
+%feature("docstring")  cmf::upslope::ET::canopy_evaporation::get_ptr "ptr get_ptr() const ";
+
 %feature("docstring")  cmf::upslope::ET::canopy_evaporation::left_node
 "flux_node::ptr left_node() const
 
@@ -856,6 +864,10 @@ Returns the current flux through a connection. Negative signs mean out
 of the inquirer, positive are inflows to the inquirer. ";
 
 %feature("docstring")
+cmf::upslope::connections::CanopyOverflow::get_ptr "ptr get_ptr()
+const ";
+
+%feature("docstring")
 cmf::upslope::connections::CanopyOverflow::left_node "flux_node::ptr
 left_node() const
 
@@ -930,6 +942,10 @@ cmf::water::flux_node::ptr ET_target, cmf::upslope::Cell &cell) ";
 
 Returns the current flux through a connection. Negative signs mean out
 of the inquirer, positive are inflows to the inquirer. ";
+
+%feature("docstring")
+cmf::upslope::ET::CanopyStorageEvaporation::get_ptr "ptr get_ptr()
+const ";
 
 %feature("docstring")
 cmf::upslope::ET::CanopyStorageEvaporation::left_node "flux_node::ptr
@@ -1124,6 +1140,14 @@ get_area() const
 
 Returns the area of the cell. ";
 
+%feature("docstring")  cmf::upslope::Cell::m3_to_mm "double
+m3_to_mm(double volume) const
+
+Converts a volume in m3 in mm for the cell area. ";
+
+%feature("docstring")  cmf::upslope::Cell::mm_to_m3 "double
+mm_to_m3(double depth) const ";
+
 /*  Layers  */
 
 /*
@@ -1150,6 +1174,11 @@ remove_layers() ";
 
 %feature("docstring")  cmf::upslope::Cell::get_soildepth "double
 get_soildepth() const ";
+
+%feature("docstring")  cmf::upslope::Cell::get_percolation "cmf::math::num_array get_percolation(cmf::math::Time t) const
+
+Returns the flux to each layer from the upperlayer, or, in case of the
+first layer from the surface water. ";
 
 %feature("docstring")  cmf::upslope::Cell::~Cell "virtual ~Cell() ";
 
@@ -1461,6 +1490,10 @@ Returns the current flux through a connection. Negative signs mean out
 of the inquirer, positive are inflows to the inquirer. ";
 
 %feature("docstring")
+cmf::upslope::connections::CompleteInfiltration::get_ptr "ptr
+get_ptr() const ";
+
+%feature("docstring")
 cmf::upslope::connections::CompleteInfiltration::left_node "flux_node::ptr left_node() const
 
 Returns the left node of this connection. ";
@@ -1551,7 +1584,7 @@ Integrates the flux a timestep further. Note: until is an absolut
 time. If until is before t0, the integration is initilized again. ";
 
 %feature("docstring")
-cmf::water::connection_integrator::connection_integrator "connection_integrator(cmf::water::flux_connection::ptr connection) ";
+cmf::water::connection_integrator::connection_integrator "connection_integrator(cmf::water::flux_connection &connection) ";
 
 
 // File: classcmf_1_1upslope_1_1_e_t_1_1constant_e_tpot.xml
@@ -1572,6 +1605,9 @@ q(const flux_node &inquirer, cmf::math::Time t)
 
 Returns the current flux through a connection. Negative signs mean out
 of the inquirer, positive are inflows to the inquirer. ";
+
+%feature("docstring")  cmf::upslope::ET::constantETpot::get_ptr "ptr
+get_ptr() const ";
 
 %feature("docstring")  cmf::upslope::ET::constantETpot::left_node "flux_node::ptr left_node() const
 
@@ -1889,6 +1925,8 @@ Add state variables from a StateVariableOwner. ";
 %feature("docstring")  cmf::math::CVodeIntegrator::AddState "virtual
 void AddState(cmf::math::StateVariable::ptr state) ";
 
+%feature("docstring")  cmf::math::CVodeIntegrator::AddIntegratable "void AddIntegratable(cmf::math::integratable::ptr integratable) ";
+
 /*  model time  */
 
 /*
@@ -2074,6 +2112,9 @@ q(const flux_node &inquirer, cmf::math::Time t)
 Returns the current flux through a connection. Negative signs mean out
 of the inquirer, positive are inflows to the inquirer. ";
 
+%feature("docstring")  cmf::upslope::connections::Darcy::get_ptr "ptr
+get_ptr() const ";
+
 %feature("docstring")  cmf::upslope::connections::Darcy::left_node "flux_node::ptr left_node() const
 
 Returns the left node of this connection. ";
@@ -2140,6 +2181,10 @@ cmf::water::flux_node::ptr right, real FlowWidth, real Distance=0) ";
 
 Returns the current flux through a connection. Negative signs mean out
 of the inquirer, positive are inflows to the inquirer. ";
+
+%feature("docstring")
+cmf::upslope::connections::DarcyKinematic::get_ptr "ptr get_ptr()
+const ";
 
 %feature("docstring")
 cmf::upslope::connections::DarcyKinematic::left_node "flux_node::ptr
@@ -2352,6 +2397,10 @@ Returns the current flux through a connection. Negative signs mean out
 of the inquirer, positive are inflows to the inquirer. ";
 
 %feature("docstring")
+cmf::upslope::connections::EnergyBudgetSnowMelt::get_ptr "ptr
+get_ptr() const ";
+
+%feature("docstring")
 cmf::upslope::connections::EnergyBudgetSnowMelt::left_node "flux_node::ptr left_node() const
 
 Returns the left node of this connection. ";
@@ -2477,6 +2526,9 @@ cmf::math::ExplicitEuler_fixed::AddValuesToStates "void
 AddValuesToStates(const num_array &operands) ";
 
 %feature("docstring")  cmf::math::ExplicitEuler_fixed::AddState "virtual void AddState(cmf::math::StateVariable::ptr state) ";
+
+%feature("docstring")  cmf::math::ExplicitEuler_fixed::AddIntegratable
+"void AddIntegratable(cmf::math::integratable::ptr integratable) ";
 
 /*  model time  */
 
@@ -2631,6 +2683,10 @@ Returns the current flux through a connection. Negative signs mean out
 of the inquirer, positive are inflows to the inquirer. ";
 
 %feature("docstring")
+cmf::water::external_control_connection::get_ptr "ptr get_ptr() const
+";
+
+%feature("docstring")
 cmf::water::external_control_connection::left_node "flux_node::ptr
 left_node() const
 
@@ -2695,6 +2751,9 @@ short_string() const ";
 Represents a connection between flux_nodes, where water fluxes occur.
 
 C++ includes: flux_connection.h ";
+
+%feature("docstring")  cmf::water::flux_connection::get_ptr "ptr
+get_ptr() const ";
 
 %feature("docstring")  cmf::water::flux_connection::left_node "flux_node::ptr left_node() const
 
@@ -2880,6 +2939,9 @@ flux_node &inquirer, cmf::math::Time t)
 Returns the current flux through a connection. Negative signs mean out
 of the inquirer, positive are inflows to the inquirer. ";
 
+%feature("docstring")  cmf::upslope::ET::HargreaveET::get_ptr "ptr
+get_ptr() const ";
+
 %feature("docstring")  cmf::upslope::ET::HargreaveET::left_node "flux_node::ptr left_node() const
 
 Returns the left node of this connection. ";
@@ -2947,6 +3009,9 @@ q(const flux_node &inquirer, cmf::math::Time t)
 
 Returns the current flux through a connection. Negative signs mean out
 of the inquirer, positive are inflows to the inquirer. ";
+
+%feature("docstring")  cmf::upslope::connections::HBVlateral::get_ptr
+"ptr get_ptr() const ";
 
 %feature("docstring")
 cmf::upslope::connections::HBVlateral::left_node "flux_node::ptr
@@ -3100,6 +3165,10 @@ cmf::water::flux_node::ptr right) ";
 
 Returns the current flux through a connection. Negative signs mean out
 of the inquirer, positive are inflows to the inquirer. ";
+
+%feature("docstring")
+cmf::upslope::connections::HBVpercolation::get_ptr "ptr get_ptr()
+const ";
 
 %feature("docstring")
 cmf::upslope::connections::HBVpercolation::left_node "flux_node::ptr
@@ -3483,6 +3552,8 @@ allocation. ";
 %feature("docstring")  cmf::math::ImplicitEuler::AddState "virtual
 void AddState(cmf::math::StateVariable::ptr state) ";
 
+%feature("docstring")  cmf::math::ImplicitEuler::AddIntegratable "void AddIntegratable(cmf::math::integratable::ptr integratable) ";
+
 /*  model time  */
 
 /*
@@ -3619,7 +3690,7 @@ integration_variable is a functionality for different classes for
 integrating values over time.
 
 Main usage of an integration_variable is the calculation of average
-fluxes
+fluxes over time
 
 C++ includes: statevariable.h ";
 
@@ -3719,6 +3790,9 @@ Add state variables from a StateVariableOwner. ";
 
 %feature("docstring")  cmf::math::Integrator::AddState "virtual void
 AddState(cmf::math::StateVariable::ptr state) ";
+
+%feature("docstring")  cmf::math::Integrator::AddIntegratable "void
+AddIntegratable(cmf::math::integratable::ptr integratable) ";
 
 /*  Accuracy parameters  */
 
@@ -3900,6 +3974,9 @@ flux_node &inquirer, cmf::math::Time t)
 Returns the current flux through a connection. Negative signs mean out
 of the inquirer, positive are inflows to the inquirer. ";
 
+%feature("docstring")  cmf::water::kinematic_wave::get_ptr "ptr
+get_ptr() const ";
+
 %feature("docstring")  cmf::water::kinematic_wave::left_node "flux_node::ptr left_node() const
 
 Returns the left node of this connection. ";
@@ -3957,6 +4034,10 @@ flux_node &inquirer, cmf::math::Time t)
 
 Returns the current flux through a connection. Negative signs mean out
 of the inquirer, positive are inflows to the inquirer. ";
+
+%feature("docstring")
+cmf::upslope::connections::lateral_sub_surface_flux::get_ptr "ptr
+get_ptr() const ";
 
 %feature("docstring")
 cmf::upslope::connections::lateral_sub_surface_flux::left_node "flux_node::ptr left_node() const
@@ -4265,6 +4346,9 @@ C++ includes: ManningConnection.h ";
 Returns the current flux through a connection. Negative signs mean out
 of the inquirer, positive are inflows to the inquirer. ";
 
+%feature("docstring")  cmf::river::Manning::get_ptr "ptr get_ptr()
+const ";
+
 %feature("docstring")  cmf::river::Manning::left_node "flux_node::ptr
 left_node() const
 
@@ -4329,6 +4413,9 @@ flux_node &inquirer, cmf::math::Time t)
 
 Returns the current flux through a connection. Negative signs mean out
 of the inquirer, positive are inflows to the inquirer. ";
+
+%feature("docstring")  cmf::river::Manning_Diffusive::get_ptr "ptr
+get_ptr() const ";
 
 %feature("docstring")  cmf::river::Manning_Diffusive::left_node "flux_node::ptr left_node() const
 
@@ -4395,6 +4482,9 @@ flux_node &inquirer, cmf::math::Time t)
 
 Returns the current flux through a connection. Negative signs mean out
 of the inquirer, positive are inflows to the inquirer. ";
+
+%feature("docstring")  cmf::river::Manning_Kinematic::get_ptr "ptr
+get_ptr() const ";
 
 %feature("docstring")  cmf::river::Manning_Kinematic::left_node "flux_node::ptr left_node() const
 
@@ -4467,6 +4557,10 @@ flux_node &inquirer, cmf::math::Time t)
 
 Returns the current flux through a connection. Negative signs mean out
 of the inquirer, positive are inflows to the inquirer. ";
+
+%feature("docstring")
+cmf::upslope::connections::MatrixInfiltration::get_ptr "ptr get_ptr()
+const ";
 
 %feature("docstring")
 cmf::upslope::connections::MatrixInfiltration::left_node "flux_node::ptr left_node() const
@@ -5025,6 +5119,8 @@ allocation. ";
 %feature("docstring")  cmf::math::MultiIntegrator::AddState "virtual
 void AddState(cmf::math::StateVariable::ptr state) ";
 
+%feature("docstring")  cmf::math::MultiIntegrator::AddIntegratable "void AddIntegratable(cmf::math::integratable::ptr integratable) ";
+
 /*  model time  */
 
 /*
@@ -5281,6 +5377,8 @@ water storage always returns the height of the location. ";
 // File: classcmf_1_1water_1_1_neumann_boundary__list.xml
 %feature("docstring") cmf::water::NeumannBoundary_list "
 
+Provides fast access to Neumann boundaries for flux update.
+
 If many Neumann boundary conditions are present in a project, a fast
 data exchange to update the fluxes might be needed.
 
@@ -5360,6 +5458,9 @@ flux_node &inquirer, cmf::math::Time t)
 
 Returns the current flux through a connection. Negative signs mean out
 of the inquirer, positive are inflows to the inquirer. ";
+
+%feature("docstring")  cmf::water::NeumannFlux::get_ptr "ptr
+get_ptr() const ";
 
 %feature("docstring")  cmf::water::NeumannFlux::left_node "flux_node::ptr left_node() const
 
@@ -5444,8 +5545,8 @@ get(int index) const
 
 Returns a node in the node_list. ";
 
-%feature("docstring")  cmf::water::node_list::get "node_list get(int
-begin, int end, int step=1) const
+%feature("docstring")  cmf::water::node_list::getslice "node_list
+getslice(int begin, int end, int step=1) const
 
 Returns a slice of the node_list. ";
 
@@ -5697,6 +5798,8 @@ q(const flux_node &inquirer, cmf::math::Time t)
 Returns the current flux through a connection. Negative signs mean out
 of the inquirer, positive are inflows to the inquirer. ";
 
+%feature("docstring")  cmf::upslope::connections::OHDISflow::get_ptr "ptr get_ptr() const ";
+
 %feature("docstring")  cmf::upslope::connections::OHDISflow::left_node
 "flux_node::ptr left_node() const
 
@@ -5942,6 +6045,8 @@ q(const flux_node &inquirer, cmf::math::Time t)
 Returns the current flux through a connection. Negative signs mean out
 of the inquirer, positive are inflows to the inquirer. ";
 
+%feature("docstring")  cmf::upslope::ET::PenmanEvaporation::get_ptr "ptr get_ptr() const ";
+
 %feature("docstring")  cmf::upslope::ET::PenmanEvaporation::left_node
 "flux_node::ptr left_node() const
 
@@ -6049,6 +6154,8 @@ q(const flux_node &inquirer, cmf::math::Time t)
 
 Returns the current flux through a connection. Negative signs mean out
 of the inquirer, positive are inflows to the inquirer. ";
+
+%feature("docstring")  cmf::upslope::ET::PenmanMonteithET::get_ptr "ptr get_ptr() const ";
 
 %feature("docstring")  cmf::upslope::ET::PenmanMonteithET::left_node "flux_node::ptr left_node() const
 
@@ -6351,6 +6458,10 @@ AddValuesToStates(const num_array &operands) ";
 
 %feature("docstring")  cmf::math::PredictCorrectSimple::AddState "virtual void AddState(cmf::math::StateVariable::ptr state) ";
 
+%feature("docstring")
+cmf::math::PredictCorrectSimple::AddIntegratable "void
+AddIntegratable(cmf::math::integratable::ptr integratable) ";
+
 /*  model time  */
 
 /*
@@ -6598,6 +6709,8 @@ q(const flux_node &inquirer, cmf::math::Time t)
 
 Returns the current flux through a connection. Negative signs mean out
 of the inquirer, positive are inflows to the inquirer. ";
+
+%feature("docstring")  cmf::upslope::connections::Rainfall::get_ptr "ptr get_ptr() const ";
 
 %feature("docstring")  cmf::upslope::connections::Rainfall::left_node
 "flux_node::ptr left_node() const
@@ -6938,8 +7051,8 @@ is_empty() const
 
 Returns true if the node has no water. ";
 
-%feature("docstring")  cmf::river::Reach::get_height_function "const
-IChannel& get_height_function() const
+%feature("docstring")  cmf::river::Reach::get_reachtype "Channel
+get_reachtype() const
 
 Returns the channel shape. ";
 
@@ -6952,6 +7065,11 @@ Sets the channel shape. ";
 get_length() const
 
 Returns the length of the reach. ";
+
+%feature("docstring")  cmf::river::Reach::get_width "real get_width()
+const
+
+Returns the average width of the reach. ";
 
 %feature("docstring")  cmf::river::Reach::set_outlet "void
 set_outlet(cmf::water::flux_node::ptr outlet)
@@ -7020,6 +7138,10 @@ Sets all Manning kind connections to either diffusive or kinematic. ";
 Returns the reach most downstream from this reach. ";
 
 %feature("docstring")  cmf::river::Reach::~Reach "virtual ~Reach() ";
+
+%feature("docstring")  cmf::river::Reach::get_height_function "virtual const IVolumeHeightFunction& get_height_function() const
+
+The functional relation between volume, depth and exposed area. ";
 
 %feature("docstring")  cmf::river::Reach::set_height_function "virtual void set_height_function(const IVolumeHeightFunction &val) ";
 
@@ -7379,6 +7501,8 @@ q(const flux_node &inquirer, cmf::math::Time t)
 Returns the current flux through a connection. Negative signs mean out
 of the inquirer, positive are inflows to the inquirer. ";
 
+%feature("docstring")  cmf::upslope::connections::Richards::get_ptr "ptr get_ptr() const ";
+
 %feature("docstring")  cmf::upslope::connections::Richards::left_node
 "flux_node::ptr left_node() const
 
@@ -7449,6 +7573,10 @@ cmf::water::flux_node::ptr right, real FlowWidth=0, real Distance=0)
 
 Returns the current flux through a connection. Negative signs mean out
 of the inquirer, positive are inflows to the inquirer. ";
+
+%feature("docstring")
+cmf::upslope::connections::Richards_lateral::get_ptr "ptr get_ptr()
+const ";
 
 %feature("docstring")
 cmf::upslope::connections::Richards_lateral::left_node "flux_node::ptr left_node() const
@@ -7585,6 +7713,8 @@ allocation. ";
 
 %feature("docstring")  cmf::math::RKFIntegrator::AddState "virtual
 void AddState(cmf::math::StateVariable::ptr state) ";
+
+%feature("docstring")  cmf::math::RKFIntegrator::AddIntegratable "void AddIntegratable(cmf::math::integratable::ptr integratable) ";
 
 /*  model time  */
 
@@ -7846,6 +7976,10 @@ Returns the current flux through a connection. Negative signs mean out
 of the inquirer, positive are inflows to the inquirer. ";
 
 %feature("docstring")
+cmf::upslope::connections::SimpleTindexSnowMelt::get_ptr "ptr
+get_ptr() const ";
+
+%feature("docstring")
 cmf::upslope::connections::SimpleTindexSnowMelt::left_node "flux_node::ptr left_node() const
 
 Returns the left node of this connection. ";
@@ -7925,6 +8059,10 @@ Returns the current flux through a connection. Negative signs mean out
 of the inquirer, positive are inflows to the inquirer. ";
 
 %feature("docstring")
+cmf::upslope::connections::SimplRichards::get_ptr "ptr get_ptr()
+const ";
+
+%feature("docstring")
 cmf::upslope::connections::SimplRichards::left_node "flux_node::ptr
 left_node() const
 
@@ -8001,6 +8139,8 @@ q(const flux_node &inquirer, cmf::math::Time t)
 
 Returns the current flux through a connection. Negative signs mean out
 of the inquirer, positive are inflows to the inquirer. ";
+
+%feature("docstring")  cmf::upslope::ET::snow_evaporation::get_ptr "ptr get_ptr() const ";
 
 %feature("docstring")  cmf::upslope::ET::snow_evaporation::left_node "flux_node::ptr left_node() const
 
@@ -8085,6 +8225,8 @@ q(const flux_node &inquirer, cmf::math::Time t)
 Returns the current flux through a connection. Negative signs mean out
 of the inquirer, positive are inflows to the inquirer. ";
 
+%feature("docstring")  cmf::upslope::connections::Snowfall::get_ptr "ptr get_ptr() const ";
+
 %feature("docstring")  cmf::upslope::connections::Snowfall::left_node
 "flux_node::ptr left_node() const
 
@@ -8155,6 +8297,8 @@ q(const flux_node &inquirer, cmf::math::Time t)
 
 Returns the current flux through a connection. Negative signs mean out
 of the inquirer, positive are inflows to the inquirer. ";
+
+%feature("docstring")  cmf::upslope::ET::soil_evaporation::get_ptr "ptr get_ptr() const ";
 
 %feature("docstring")  cmf::upslope::ET::soil_evaporation::left_node "flux_node::ptr left_node() const
 
@@ -8685,6 +8829,10 @@ AddValuesToStates(const num_array &operands) ";
 
 %feature("docstring")  cmf::math::SoluteWaterIntegrator::AddState "virtual void AddState(cmf::math::StateVariable::ptr state) ";
 
+%feature("docstring")
+cmf::math::SoluteWaterIntegrator::AddIntegratable "void
+AddIntegratable(cmf::math::integratable::ptr integratable) ";
+
 /*  Accuracy parameters  */
 
 /*
@@ -8867,10 +9015,7 @@ push(StateVariableOwner &svo) ";
 
 %feature("docstring")  cmf::math::state_queue::front "StateVariable::ptr front() const ";
 
-%feature("docstring")  cmf::math::state_queue::get_states "state_queue get_states()
-
-Add the state variables, owned by an object derived from
-StateVariableOwner, to the given vector. ";
+%feature("docstring")  cmf::math::state_queue::get_states "state_queue get_states() ";
 
 %feature("docstring")  cmf::math::state_queue::eat "void
 eat(state_queue &food) ";
@@ -8972,6 +9117,10 @@ Returns the current flux through a connection. Negative signs mean out
 of the inquirer, positive are inflows to the inquirer. ";
 
 %feature("docstring")
+cmf::upslope::ET::surface_water_evaporation::get_ptr "ptr get_ptr()
+const ";
+
+%feature("docstring")
 cmf::upslope::ET::surface_water_evaporation::left_node "flux_node::ptr left_node() const
 
 Returns the left node of this connection. ";
@@ -9064,6 +9213,10 @@ cmf::upslope::SoilLayer::ptr lowerLayer) ";
 
 Returns the current flux through a connection. Negative signs mean out
 of the inquirer, positive are inflows to the inquirer. ";
+
+%feature("docstring")
+cmf::upslope::connections::SWATPercolation::get_ptr "ptr get_ptr()
+const ";
 
 %feature("docstring")
 cmf::upslope::connections::SWATPercolation::left_node "flux_node::ptr
@@ -9279,6 +9432,189 @@ A:  The area of the cross section [m2]
 slope:  The slope of the reach [m/m] ";
 
 
+// File: classcmf_1_1water_1_1_system_bridge.xml
+%feature("docstring") cmf::water::SystemBridge "
+
+A SystemBridge is an advanced feature for tuning of the calculation
+time.
+
+A SystemBridge can be used to replace an existing connection between
+nodes. It is created using the system_bridge function After
+installation, the two nodes can more safely be added to different
+integrator systems. One node (called upper) is connected with the
+system bridge with the connection formerly connecting the nodes, the
+second node (called lower) is connected to the system bridge with as a
+Neumann boundary condition. The flux equals the average flux of the
+connection upper <-> SystemBridge. Therefore, the system bridge must
+become an integratable of the integrator system the upper node belongs
+to. Use as an upper system (system upper node is belonging to) the
+faster reacting system. For the connection between upper and
+SystemBridge, the SystemBridge reacts as an Drichelet boundary
+condition, providing the potential of the lower node.
+
+C++ includes: system_bridge.h ";
+
+%feature("docstring")  cmf::water::SystemBridge::get_upper_node "flux_node::ptr get_upper_node() const
+
+Returns the upper node. ";
+
+%feature("docstring")  cmf::water::SystemBridge::get_lower_node "flux_node::ptr get_lower_node() const
+
+Returns the lower node. ";
+
+%feature("docstring")  cmf::water::SystemBridge::get_potential "double get_potential() const
+
+Returns the water potential of the node in m waterhead The base class
+water storage always returns the height of the location. ";
+
+%feature("docstring")  cmf::water::SystemBridge::get_down_flux "double get_down_flux() const
+
+Returns the currently integrated flux to the lower node. ";
+
+%feature("docstring")  cmf::water::SystemBridge::integrate "virtual
+void integrate(cmf::math::Time t) ";
+
+%feature("docstring")  cmf::water::SystemBridge::reset "virtual void
+reset(cmf::math::Time t) ";
+
+%feature("docstring")  cmf::water::SystemBridge::get_project "const
+cmf::project& get_project() const
+
+Returns the project, this node is part of. ";
+
+%feature("docstring")  cmf::water::SystemBridge::is_storage "virtual
+bool is_storage() const
+
+true, if this is a waterstorage ";
+
+%feature("docstring")  cmf::water::SystemBridge::to_string "virtual
+std::string to_string() const ";
+
+%feature("docstring")  cmf::water::SystemBridge::get_connections "cmf::water::connection_vector get_connections() const ";
+
+%feature("docstring")  cmf::water::SystemBridge::RecalcFluxes "virtual bool RecalcFluxes(cmf::math::Time t)
+
+Pure flux_nodes do not influence fluxes, therefore no recalculation of
+fluxes is required by flux_node. WaterStorage overrides this, since
+state changes require an update of the fluxes. ";
+
+%feature("docstring")  cmf::water::SystemBridge::get_connection "cmf::water::flux_connection* get_connection(const
+cmf::water::flux_node &target)
+
+Returns the connection between this and target. ";
+
+%feature("docstring")  cmf::water::SystemBridge::remove_connection "bool remove_connection(cmf::water::flux_node::ptr To)
+
+Remove the connection. ";
+
+%feature("docstring")  cmf::water::SystemBridge::flux_to "real
+flux_to(const cmf::water::flux_node &target, cmf::math::Time t)
+
+Returns the actual flux between this and target (positive sign means
+\"from target into this\"). ";
+
+%feature("docstring")  cmf::water::SystemBridge::flux3d_to "cmf::geometry::point flux3d_to(const cmf::water::flux_node &target,
+cmf::math::Time t) ";
+
+%feature("docstring")  cmf::water::SystemBridge::get_3d_flux "cmf::geometry::point get_3d_flux(cmf::math::Time t) ";
+
+%feature("docstring")  cmf::water::SystemBridge::water_balance "real
+water_balance(cmf::math::Time t, const flux_connection *Without=0)
+const
+
+Returns the sum of all fluxes (positive and negative) at time t.
+Single fluxes can be excluded from the calculation.
+
+Parameters:
+-----------
+
+t:  Time of the query
+
+Without:  A flux_connection that is excluded from the water_balance
+(e.g. to prevent closed circuits) ";
+
+%feature("docstring")  cmf::water::SystemBridge::conc "virtual real
+conc(cmf::math::Time t, const cmf::water::solute &Solute) const
+
+Returns the water quality of the flux_node, if it is not overridden
+this is the mix of the incoming fluxes. ";
+
+%feature("docstring")  cmf::water::SystemBridge::set_potential "virtual void set_potential(real new_potential) ";
+
+%feature("docstring")  cmf::water::SystemBridge::is_empty "virtual
+bool is_empty() const
+
+Returns true if the node has no water. ";
+
+
+// File: classcmf_1_1water_1_1_system_bridge_connection.xml
+%feature("docstring") cmf::water::SystemBridgeConnection "
+
+Connects a system bridge with its lower node. Is created automatically
+when creating a SystemBridge.
+
+C++ includes: system_bridge.h ";
+
+%feature("docstring")  cmf::water::SystemBridgeConnection::q "real
+q(const flux_node &inquirer, cmf::math::Time t)
+
+Returns the current flux through a connection. Negative signs mean out
+of the inquirer, positive are inflows to the inquirer. ";
+
+%feature("docstring")  cmf::water::SystemBridgeConnection::get_ptr "ptr get_ptr() const ";
+
+%feature("docstring")  cmf::water::SystemBridgeConnection::left_node "flux_node::ptr left_node() const
+
+Returns the left node of this connection. ";
+
+%feature("docstring")  cmf::water::SystemBridgeConnection::right_node
+"flux_node::ptr right_node() const
+
+returns the right node of this connection ";
+
+%feature("docstring")  cmf::water::SystemBridgeConnection::kill_me "bool kill_me()
+
+Deregisters this connection from its nodes. Returns true if only one
+reference is left. ";
+
+%feature("docstring")  cmf::water::SystemBridgeConnection::get_target
+"flux_node::ptr get_target(const flux_node &inquirer)
+
+Returns the other end of a connection than the asking end. ";
+
+%feature("docstring")  cmf::water::SystemBridgeConnection::get_target
+"flux_node::ptr get_target(int index) const
+
+With index 0, the left node is returned, with index 1 the right node
+of the connection. ";
+
+%feature("docstring")
+cmf::water::SystemBridgeConnection::exchange_target "void
+exchange_target(flux_node::ptr oldtarget, flux_node::ptr newTarget) ";
+
+%feature("docstring")  cmf::water::SystemBridgeConnection::conc "real
+conc(cmf::math::Time t, const cmf::water::solute &_Solute)
+
+Returns the concentration of the flux. If not overridden, it returns
+the concentration of the source of the flux (direction depending). ";
+
+%feature("docstring")
+cmf::water::SystemBridgeConnection::get_tracer_filter "real
+get_tracer_filter()
+
+A value ranging from 0 to 1. ";
+
+%feature("docstring")
+cmf::water::SystemBridgeConnection::set_tracer_filter "void
+set_tracer_filter(real value) ";
+
+%feature("docstring")  cmf::water::SystemBridgeConnection::to_string "std::string to_string() const ";
+
+%feature("docstring")
+cmf::water::SystemBridgeConnection::short_string "std::string
+short_string() const ";
+
+
 // File: classcmf_1_1water_1_1_technical_flux.xml
 %feature("docstring") cmf::water::TechnicalFlux "
 
@@ -9318,6 +9654,9 @@ flux_node &inquirer, cmf::math::Time t)
 
 Returns the current flux through a connection. Negative signs mean out
 of the inquirer, positive are inflows to the inquirer. ";
+
+%feature("docstring")  cmf::water::TechnicalFlux::get_ptr "ptr
+get_ptr() const ";
 
 %feature("docstring")  cmf::water::TechnicalFlux::left_node "flux_node::ptr left_node() const
 
@@ -9600,6 +9939,8 @@ Creates a timeseries with a bigger timestep, containing the sum. ";
 Creates a timeseries with a bigger timestep, containing the average.
 ";
 
+%feature("docstring")  cmf::math::timeseries::floating_avg "timeseries floating_avg(size_t window_size) const ";
+
 %feature("docstring")  cmf::math::timeseries::floating_max "timeseries floating_max(cmf::math::Time window_width) const ";
 
 %feature("docstring")  cmf::math::timeseries::floating_min "timeseries floating_min(cmf::math::Time window_width) const ";
@@ -9670,7 +10011,7 @@ const ";
 ";
 
 %feature("docstring")  cmf::math::timeseries::timeseries "timeseries(cmf::math::Time _begin, cmf::math::Time _step, int
-_interpolationmethod=1)
+_interpolationmethod=1, size_t size=0)
 
 Constructor of a time series.
 
@@ -9751,6 +10092,10 @@ flux_node &inquirer, cmf::math::Time t)
 
 Returns the current flux through a connection. Negative signs mean out
 of the inquirer, positive are inflows to the inquirer. ";
+
+%feature("docstring")
+cmf::upslope::connections::TopographicGradientDarcy::get_ptr "ptr
+get_ptr() const ";
 
 %feature("docstring")
 cmf::upslope::connections::TopographicGradientDarcy::left_node "flux_node::ptr left_node() const
@@ -9860,6 +10205,9 @@ q(const flux_node &inquirer, cmf::math::Time t)
 
 Returns the current flux through a connection. Negative signs mean out
 of the inquirer, positive are inflows to the inquirer. ";
+
+%feature("docstring")  cmf::upslope::ET::transpiration::get_ptr "ptr
+get_ptr() const ";
 
 %feature("docstring")  cmf::upslope::ET::transpiration::left_node "flux_node::ptr left_node() const
 
@@ -10239,6 +10587,8 @@ q(const flux_node &inquirer, cmf::math::Time t)
 
 Returns the current flux through a connection. Negative signs mean out
 of the inquirer, positive are inflows to the inquirer. ";
+
+%feature("docstring")  cmf::water::waterbalance_connection::get_ptr "ptr get_ptr() const ";
 
 %feature("docstring")  cmf::water::waterbalance_connection::left_node
 "flux_node::ptr left_node() const
@@ -10772,6 +11122,38 @@ node2) ";
 
 %feature("docstring")  cmf::water::get_lower_node "flux_node::ptr
 cmf::water::get_lower_node(flux_node::ptr node1, flux_node::ptr node2)
+";
+
+%feature("docstring")  cmf::water::system_bridge "SystemBridge::ptr
+cmf::water::system_bridge(cmf::project &p, flux_node::ptr upper,
+flux_node::ptr lower)
+
+Creates a SystemBridge object. This is an advanced feature for tuning
+of the calculation time.
+
+A SystemBridge can be used to replace an existing connection between
+nodes. After installation, the two nodes can more safely be added to
+different integrator systems. One node (called upper) is connected
+with the system bridge with the connection formerly connecting the
+nodes, the second node (called lower) is connected to the system
+bridge with as a Neumann boundary condition. The flux equals the
+average flux of the connection upper <-> SystemBridge. Therefore, the
+system bridge must become an integratable of the integrator system the
+upper node belongs to. Use as an upper system (system upper node is
+belonging to) the faster reacting system. For the connection between
+upper and SystemBridge, the SystemBridge reacts as an Drichelet
+boundary condition, providing the potential of the lower node.
+
+a new SystemBridge object
+
+Parameters:
+-----------
+
+p:  cmf project
+
+upper:  Upper boundary flux node (part of the faster reacting system).
+
+lower:  Lower boundary flux node (part of the slower reacting system).
 ";
 
 
@@ -11872,6 +12254,9 @@ real tau) ";
 
 
 // File: _solute_storage_8h.xml
+
+
+// File: system__bridge_8h.xml
 
 
 // File: _water_storage_8h.xml

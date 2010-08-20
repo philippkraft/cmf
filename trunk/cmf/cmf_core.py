@@ -985,7 +985,8 @@ class timeseries(object):
 
     def __init__(self, *args): 
         """
-        __init__(self, Time _begin, Time _step, int _interpolationmethod = 1) -> timeseries
+        __init__(self, Time _begin, Time _step, int _interpolationmethod = 1, 
+            size_t size = 0) -> timeseries
         __init__(self) -> timeseries
         __init__(self, timeseries ts) -> timeseries
         __init__(self, double scalar) -> timeseries
@@ -1170,16 +1171,17 @@ class timeseries(object):
         """
         return _cmf_core.timeseries_reduce_avg(self, *args, **kwargs)
 
-    def floating_avg(self, *args, **kwargs):
+    def floating_avg(self, *args):
         """
         floating_avg(self, Time window_width) -> timeseries
+        floating_avg(self, size_t window_size) -> timeseries
 
         timeseries floating_avg(cmf::math::Time window_width) const
 
         Creates a timeseries with a bigger timestep, containing the average.
 
         """
-        return _cmf_core.timeseries_floating_avg(self, *args, **kwargs)
+        return _cmf_core.timeseries_floating_avg(self, *args)
 
     def floating_max(self, *args, **kwargs):
         """
@@ -2881,7 +2883,7 @@ class connection_integrator(integratable):
 
     def __init__(self, *args, **kwargs): 
         """
-        __init__(self, ptr connection) -> connection_integrator
+        __init__(self, flux_connection connection) -> connection_integrator
 
         connection_integrator(cmf::water::flux_connection::ptr connection) 
         """
@@ -3111,7 +3113,7 @@ class NeumannFlux(flux_connection):
     __repr__ = _swig_repr
     def __init__(self, *args, **kwargs): 
         """
-        __init__(self, __dummy_8__ left, ptr right) -> NeumannFlux
+        __init__(self, __dummy_12__ left, ptr right) -> NeumannFlux
 
         NeumannFlux(std::tr1::shared_ptr< NeumannBoundary > left,
         cmf::water::flux_node::ptr right) 
@@ -3140,7 +3142,7 @@ class TechnicalFlux(flux_connection):
     FluxDecreaseTime = _swig_property(_cmf_core.TechnicalFlux_FluxDecreaseTime_get, _cmf_core.TechnicalFlux_FluxDecreaseTime_set)
     def __init__(self, *args, **kwargs): 
         """
-        __init__(self, __dummy_18__ source, __dummy_4__ target, real maximum_flux, 
+        __init__(self, __dummy_8__ source, __dummy_6__ target, real maximum_flux, 
             real minimal_state = 0, Time flux_decrease_time = h) -> TechnicalFlux
 
         TechnicalFlux(std::tr1::shared_ptr< cmf::water::WaterStorage >
@@ -3204,7 +3206,7 @@ class WaterStorage(StateVariable,StateVariableOwner,flux_node):
         """
         _cmf_core.WaterStorage_swiginit(self,_cmf_core.new_WaterStorage(*args, **kwargs))
     def from_node(*args, **kwargs):
-        """from_node(ptr node) -> __dummy_18__"""
+        """from_node(ptr node) -> __dummy_8__"""
         return _cmf_core.WaterStorage_from_node(*args, **kwargs)
 
     from_node = staticmethod(from_node)
@@ -3232,12 +3234,12 @@ class WaterStorage(StateVariable,StateVariableOwner,flux_node):
         return _cmf_core.WaterStorage_conc(self, *args)
 
     def cast(*args, **kwargs):
-        """cast(__dummy_4__ node) -> __dummy_18__"""
+        """cast(__dummy_6__ node) -> __dummy_8__"""
         return _cmf_core.WaterStorage_cast(*args, **kwargs)
 
     cast = staticmethod(cast)
     def create(*args, **kwargs):
-        """create(project _project, real initial_state = 0.0) -> __dummy_18__"""
+        """create(project _project, real initial_state = 0.0) -> __dummy_8__"""
         return _cmf_core.WaterStorage_create(*args, **kwargs)
 
     create = staticmethod(create)
@@ -3253,15 +3255,15 @@ WaterStorage_swigregister = _cmf_core.WaterStorage_swigregister
 WaterStorage_swigregister(WaterStorage)
 
 def WaterStorage_from_node(*args, **kwargs):
-  """WaterStorage_from_node(ptr node) -> __dummy_18__"""
+  """WaterStorage_from_node(ptr node) -> __dummy_8__"""
   return _cmf_core.WaterStorage_from_node(*args, **kwargs)
 
 def WaterStorage_cast(*args, **kwargs):
-  """WaterStorage_cast(__dummy_4__ node) -> __dummy_18__"""
+  """WaterStorage_cast(__dummy_6__ node) -> __dummy_8__"""
   return _cmf_core.WaterStorage_cast(*args, **kwargs)
 
 def WaterStorage_create(*args, **kwargs):
-  """WaterStorage_create(project _project, real initial_state = 0.0) -> __dummy_18__"""
+  """WaterStorage_create(project _project, real initial_state = 0.0) -> __dummy_8__"""
   return _cmf_core.WaterStorage_create(*args, **kwargs)
 
 class kinematic_wave(flux_connection):
@@ -3361,17 +3363,20 @@ class node_list(StateVariableOwner):
         """__add__(self, node_list right) -> node_list"""
         return _cmf_core.node_list___add__(self, *args, **kwargs)
 
-    def get(self, *args):
+    def __get(self, *args, **kwargs):
         """
-        get(self, int index) -> ptr
-        get(self, int begin, int end, int step = 1) -> node_list
+        __get(self, int index) -> ptr
 
         node_list get(int
         begin, int end, int step=1) const
 
         Returns a slice of the node_list. 
         """
-        return _cmf_core.node_list_get(self, *args)
+        return _cmf_core.node_list___get(self, *args, **kwargs)
+
+    def __getslice(self, *args, **kwargs):
+        """__getslice(self, int begin, int end, int step = 1) -> node_list"""
+        return _cmf_core.node_list___getslice(self, *args, **kwargs)
 
     def append(self, *args, **kwargs):
         """
@@ -3494,10 +3499,15 @@ class node_list(StateVariableOwner):
 
     potentials = _swig_property(_cmf_core.node_list_potentials_get, _cmf_core.node_list_potentials_set)
     def __getitem__(self,index):
-        return self.get(index)
-    def __getslice__(self,slice):
-        indices=slice.indices(self.size())
-        return self.get(indices[0],indices[1],indices[2])
+        if isinstance(index,slice):
+            return self.__getslice(*index.indices(self.size())) 
+        else:
+            try:
+                it = iter(index)
+                return node_list(self.__get(i) for i in it)
+            except:
+                return self.__get(index)
+                
     def __len__(self):
         return self.size()       
     def __iter__(self):
@@ -3521,7 +3531,8 @@ class node_list(StateVariableOwner):
 node_list.size = new_instancemethod(_cmf_core.node_list_size,None,node_list)
 node_list.__iadd__ = new_instancemethod(_cmf_core.node_list___iadd__,None,node_list)
 node_list.__add__ = new_instancemethod(_cmf_core.node_list___add__,None,node_list)
-node_list.get = new_instancemethod(_cmf_core.node_list_get,None,node_list)
+node_list.__get = new_instancemethod(_cmf_core.node_list___get,None,node_list)
+node_list.__getslice = new_instancemethod(_cmf_core.node_list___getslice,None,node_list)
 node_list.append = new_instancemethod(_cmf_core.node_list_append,None,node_list)
 node_list.global_water_balance = new_instancemethod(_cmf_core.node_list_global_water_balance,None,node_list)
 node_list.water_balance = new_instancemethod(_cmf_core.node_list_water_balance,None,node_list)
@@ -3667,6 +3678,43 @@ NeumannBoundary_list.water_balance = new_instancemethod(_cmf_core.NeumannBoundar
 NeumannBoundary_list_swigregister = _cmf_core.NeumannBoundary_list_swigregister
 NeumannBoundary_list_swigregister(NeumannBoundary_list)
 
+class SystemBridge(flux_node,integratable):
+    """Proxy of C++ cmf::water::SystemBridge class"""
+    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    def __init__(self, *args, **kwargs): raise AttributeError("No constructor defined")
+    __repr__ = _swig_repr
+    def get_upper_node(self, *args, **kwargs):
+        """get_upper_node(self) -> ptr"""
+        return _cmf_core.SystemBridge_get_upper_node(self, *args, **kwargs)
+
+    def get_lower_node(self, *args, **kwargs):
+        """get_lower_node(self) -> ptr"""
+        return _cmf_core.SystemBridge_get_lower_node(self, *args, **kwargs)
+
+    def get_down_flux(self, *args, **kwargs):
+        """get_down_flux(self) -> double"""
+        return _cmf_core.SystemBridge_get_down_flux(self, *args, **kwargs)
+
+    __swig_destroy__ = _cmf_core.delete_SystemBridge
+SystemBridge.get_upper_node = new_instancemethod(_cmf_core.SystemBridge_get_upper_node,None,SystemBridge)
+SystemBridge.get_lower_node = new_instancemethod(_cmf_core.SystemBridge_get_lower_node,None,SystemBridge)
+SystemBridge.get_down_flux = new_instancemethod(_cmf_core.SystemBridge_get_down_flux,None,SystemBridge)
+SystemBridge_swigregister = _cmf_core.SystemBridge_swigregister
+SystemBridge_swigregister(SystemBridge)
+
+class SystemBridgeConnection(flux_connection):
+    """Proxy of C++ cmf::water::SystemBridgeConnection class"""
+    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    def __init__(self, *args, **kwargs): raise AttributeError("No constructor defined")
+    __repr__ = _swig_repr
+    __swig_destroy__ = _cmf_core.delete_SystemBridgeConnection
+SystemBridgeConnection_swigregister = _cmf_core.SystemBridgeConnection_swigregister
+SystemBridgeConnection_swigregister(SystemBridgeConnection)
+
+
+def system_bridge(*args, **kwargs):
+  """system_bridge(project p, ptr upper, ptr lower) -> ptr"""
+  return _cmf_core.system_bridge(*args, **kwargs)
 
 def vapour_pressure(*args, **kwargs):
   """
@@ -4787,8 +4835,18 @@ class CellConnector(object):
     C++ includes: cell.h 
     """
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
-    def __init__(self, *args, **kwargs): raise AttributeError("No constructor defined")
     __repr__ = _swig_repr
+    def __init__(self, *args, **kwargs): 
+        """
+        __init__(self, connectorfunction connector) -> CellConnector
+
+        CellConnector(connectorfunction connector) 
+        """
+        _cmf_core.CellConnector_swiginit(self,_cmf_core.new_CellConnector(*args, **kwargs))
+    def __call__(self, *args, **kwargs):
+        """__call__(self, Cell cell1, Cell cell2, int start_at_layer = 0)"""
+        return _cmf_core.CellConnector___call__(self, *args, **kwargs)
+
     def connect(self, *args, **kwargs):
         """
         connect(self, Cell cell1, Cell cell2, int start_at_layer = 0)
@@ -4800,6 +4858,7 @@ class CellConnector(object):
         return _cmf_core.CellConnector_connect(self, *args, **kwargs)
 
     __swig_destroy__ = _cmf_core.delete_CellConnector
+CellConnector.__call__ = new_instancemethod(_cmf_core.CellConnector___call__,None,CellConnector)
 CellConnector.connect = new_instancemethod(_cmf_core.CellConnector_connect,None,CellConnector)
 CellConnector_swigregister = _cmf_core.CellConnector_swigregister
 CellConnector_swigregister(CellConnector)
@@ -4826,6 +4885,14 @@ class Cell(StateVariableOwner):
         Returns the location of the cell. 
         """
         return _cmf_core.Cell_get_position(self, *args, **kwargs)
+
+    def m3_to_mm(self, *args, **kwargs):
+        """m3_to_mm(self, double volume) -> double"""
+        return _cmf_core.Cell_m3_to_mm(self, *args, **kwargs)
+
+    def mm_to_m3(self, *args, **kwargs):
+        """mm_to_m3(self, double depth) -> double"""
+        return _cmf_core.Cell_mm_to_m3(self, *args, **kwargs)
 
     def InvalidateSatDepth(self, *args, **kwargs):
         """
@@ -5073,6 +5140,10 @@ class Cell(StateVariableOwner):
         """
         return _cmf_core.Cell_remove_layers(self, *args, **kwargs)
 
+    def get_percolation(self, *args, **kwargs):
+        """get_percolation(self, Time t) -> cmf::math::num_array"""
+        return _cmf_core.Cell_get_percolation(self, *args, **kwargs)
+
     __swig_destroy__ = _cmf_core.delete_Cell
     def __init__(self, *args, **kwargs): 
         """
@@ -5152,6 +5223,8 @@ class Cell(StateVariableOwner):
         return "cell #%i(%g,%g,%g)" % (self.Id,self.x,self.y,self.z)
 
 Cell.get_position = new_instancemethod(_cmf_core.Cell_get_position,None,Cell)
+Cell.m3_to_mm = new_instancemethod(_cmf_core.Cell_m3_to_mm,None,Cell)
+Cell.mm_to_m3 = new_instancemethod(_cmf_core.Cell_mm_to_m3,None,Cell)
 Cell.InvalidateSatDepth = new_instancemethod(_cmf_core.Cell_InvalidateSatDepth,None,Cell)
 Cell.set_aerodynamic_resistance = new_instancemethod(_cmf_core.Cell_set_aerodynamic_resistance,None,Cell)
 Cell.set_weather = new_instancemethod(_cmf_core.Cell_set_weather,None,Cell)
@@ -5177,6 +5250,7 @@ Cell.get_layer = new_instancemethod(_cmf_core.Cell_get_layer,None,Cell)
 Cell.add_layer = new_instancemethod(_cmf_core.Cell_add_layer,None,Cell)
 Cell.remove_last_layer = new_instancemethod(_cmf_core.Cell_remove_last_layer,None,Cell)
 Cell.remove_layers = new_instancemethod(_cmf_core.Cell_remove_layers,None,Cell)
+Cell.get_percolation = new_instancemethod(_cmf_core.Cell_get_percolation,None,Cell)
 Cell.to_string = new_instancemethod(_cmf_core.Cell_to_string,None,Cell)
 Cell_swigregister = _cmf_core.Cell_swigregister
 Cell_swigregister(Cell)
@@ -6855,6 +6929,10 @@ class Reach(OpenWaterStorage):
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
     def __init__(self, *args, **kwargs): raise AttributeError("No constructor defined")
     __repr__ = _swig_repr
+    def get_reachtype(self, *args, **kwargs):
+        """get_reachtype(self) -> Channel"""
+        return _cmf_core.Reach_get_reachtype(self, *args, **kwargs)
+
     def set_height_function(self, *args, **kwargs):
         """
         set_height_function(self, IChannel val)
@@ -6948,6 +7026,7 @@ class Reach(OpenWaterStorage):
 
     create = staticmethod(create)
     length = _swig_property(_cmf_core.Reach_length_get)
+    width = _swig_property(_cmf_core.Reach_width_get)
     channel = _swig_property(_cmf_core.Reach_channel_get)
     downstream = _swig_property(_cmf_core.Reach_downstream_get)
     root = _swig_property(_cmf_core.Reach_root_get)
@@ -6981,6 +7060,7 @@ class Reach(OpenWaterStorage):
     def __repr__(self): 
         return self.to_string()
 
+Reach.get_reachtype = new_instancemethod(_cmf_core.Reach_get_reachtype,None,Reach)
 Reach.set_height_function = new_instancemethod(_cmf_core.Reach_set_height_function,None,Reach)
 Reach.set_outlet = new_instancemethod(_cmf_core.Reach_set_outlet,None,Reach)
 Reach.set_dead_end = new_instancemethod(_cmf_core.Reach_set_dead_end,None,Reach)
@@ -8693,18 +8773,6 @@ SoluteWaterIntegrator.AddStatesFromOwner = new_instancemethod(_cmf_core.SoluteWa
 SoluteWaterIntegrator.Copy = new_instancemethod(_cmf_core.SoluteWaterIntegrator_Copy,None,SoluteWaterIntegrator)
 SoluteWaterIntegrator_swigregister = _cmf_core.SoluteWaterIntegrator_swigregister
 SoluteWaterIntegrator_swigregister(SoluteWaterIntegrator)
-
-def get_layers(cells):
-    for c in cells:
-        for l in c.layers:
-           yield l
-def count_layers(cells):
-    res=0
-    for c in cells:
-        res+=c.layer_count()
-    return res
-def __doc__(self):
-    return "cmf -> Catchment Model Framework, extending Python with hydrological elements " + VERSION
 
 
 

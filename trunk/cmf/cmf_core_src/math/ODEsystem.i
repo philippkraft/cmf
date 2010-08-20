@@ -27,6 +27,8 @@
 #include "math/integrators/multiintegrator.h"
 %}
 
+%shared_ptr(cmf::math::StateVariable);
+%shared_ptr(cmf::math::integratable);
 
 
 %attribute(cmf::math::StateVariable,real,state,get_state,set_state);

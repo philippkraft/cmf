@@ -90,11 +90,13 @@ real cmf::upslope::connections::Darcy::calc_q( cmf::math::Time t )
 	real
 		// Transmissivity
 		flow_thick1 = get_flow_thick(l1), 
-		flow_thick2 = l2 ? get_flow_thick(l2) : flow_thick1;
+		flow_thick2 = l2 ? get_flow_thick(l2) : l1->get_thickness();
 	if ((flow_thick1 + flow_thick2)<=0) return 0.0;
 	real
-		T1 = l1->get_Ksat() *  (l1->get_lower_boundary() - (l1->get_lower_boundary()-flow_thick1)),
-		T2 = l2 ? l2->get_Ksat() * (l2->get_lower_boundary() - (l2->get_lower_boundary()-flow_thick2)) : T1,
+		T1 = l1->get_Ksat() *  flow_thick1,
+		T2 = l2 
+			? l2->get_Ksat() * flow_thick2 
+			: l1->get_Ksat() * flow_thick2,
 		T = mean(T1,T2);
 
 	

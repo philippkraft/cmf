@@ -38,8 +38,7 @@ namespace cmf {
 			///@name The state variables to integrate
 			//@{
 			typedef std::vector<StateVariable::ptr> state_vector;
-			typedef std::tr1::shared_ptr<integratable> integratable_ptr;
-			typedef std::vector<integratable_ptr> integratable_vector;
+			typedef std::vector<integratable::ptr> integratable_vector;
 			state_vector m_States;
 			integratable_vector m_integratables;
 
@@ -86,6 +85,10 @@ namespace cmf {
 			}
 			virtual void AddState(cmf::math::StateVariable::ptr state) {
 				m_States.push_back(state);
+			}
+
+			void AddIntegratable(cmf::math::integratable::ptr integratable) {
+				m_integratables.push_back(integratable);
 			}
 
 

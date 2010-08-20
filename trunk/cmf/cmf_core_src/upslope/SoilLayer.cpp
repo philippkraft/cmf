@@ -103,8 +103,11 @@ real cmf::upslope::SoilLayer::get_saturated_depth() const
 
 void cmf::upslope::SoilLayer::StateChangeAction()
 {
+	// Get the retention curve
 	cmf::upslope::RetentionCurve& s = get_soil();
+	// Calculate the capacity of the layer
 	m_wet.C = s.VoidVolume(get_upper_boundary(),get_lower_boundary(),cell.get_area());
+	// Get the volume (different for h and V as state variables)
 	if (get_state_variable_content()=='h') {
 		m_wet.V = head_to_volume(this->get_state());
 		m_wet.h = this->get_state();
@@ -112,9 +115,13 @@ void cmf::upslope::SoilLayer::StateChangeAction()
 		m_wet.V = this->get_state();
 		m_wet.h = volume_to_head(this->get_state());
 	}
+	// Calc water content/soil
 	m_wet.theta=std::max(m_wet.V,0.)/(cell.get_area()*get_thickness()) * (1 - m_ice_fraction);
+	// Calc water content/pores
 	m_wet.W=std::max(m_wet.V,0.)/m_wet.C;
+	// Calc matrix potential
 	m_wet.Psi_m = m_wet.h - get_gravitational_potential();
+	// calc Ksat using ice content
 	m_wet.Ksat = s.K(1-m_ice_fraction);
 	m_wet.K    = s.K(m_wet.W) / s.K(1) * m_wet.Ksat;
 	cell.InvalidateSatDepth();
