@@ -77,9 +77,9 @@ namespace cmf {
 			virtual void set_conc(const cmf::water::solute& _Solute, double value);
 			virtual real conc(cmf::math::Time t, const cmf::water::solute& _Solute) const;
 			bool is_source;
-			bool is_empty() const
+			double is_empty() const
 			{
-				return !is_source;
+				return is_source ? 0 : 1;
 			}
 			bool RecalcFluxes(cmf::math::Time t) const
 			{
@@ -120,9 +120,9 @@ namespace cmf {
 			}
 			/// Returns the flux at a given time
 			real operator()(cmf::math::Time t) const;
-			bool is_empty() const
+			double is_empty() const
 			{
-				return flux.is_empty();
+				return flux.is_empty() ? 1 : 0;
 			}
 			bool RecalcFluxes(cmf::math::Time t) 
 			{

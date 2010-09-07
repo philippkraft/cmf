@@ -61,8 +61,8 @@ cmf::water::NeumannBoundary::ptr cmf::water::NeumannBoundary::create( cmf::water
 real cmf::water::NeumannFlux::calc_q( cmf::math::Time t )
 {
 	real f=(*m_bc.lock())(t);
-	if (f<0 && right_node()->is_empty())
-		return 0.0;
+	if (f<0)
+		return f * (1 - right_node()->is_empty());
 	else
 		return f;
 }
@@ -76,7 +76,7 @@ cmf::water::DricheletBoundary::DricheletBoundary(const cmf::project& _p,real pot
 real cmf::water::DricheletBoundary::conc( cmf::math::Time t, const cmf::water::solute& _Solute ) const
 {
 	real node_conc=	cmf::water::flux_node::conc(t,_Solute);
-	if (node_conc<=0.0 && (!is_empty()))
+	if (node_conc<=0.0 && (is_empty()<1.0))
 	{
 		conc_map::const_iterator it=m_concentration.find(_Solute);
 		if (it!=m_concentration.end())

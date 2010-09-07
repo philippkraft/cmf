@@ -69,6 +69,15 @@ namespace cmf {
 					m_q=calc_q(t);
 				return m_q;
 			}
+
+			double prevent_negative_volume(double flow) {
+				if (flow>0)
+					return flow * (1 - left_node()->is_empty());
+				else
+					return flow * (1 - right_node()->is_empty());
+			}
+
+
 		public:
 			typedef std::tr1::shared_ptr<flux_connection> ptr;
 #ifndef SWIG

@@ -228,6 +228,7 @@ namespace cmf {
 			//@}
 			cmf::math::state_queue get_states();
 		};
+
 		
 	}
 	

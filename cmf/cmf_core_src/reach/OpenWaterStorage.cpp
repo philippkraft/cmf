@@ -62,10 +62,8 @@ real cmf::river::OpenWaterStorage::get_depth() const
 
 real cmf::river::OpenWaterStorage::conc( cmf::math::Time t,const cmf::water::solute& solute ) const
 {
-	if (is_empty())
-		return cmf::water::flux_node::conc(t,solute);
-	else
-		return cmf::water::WaterStorage::conc(t,solute);
+	return is_empty()    * cmf::water::flux_node::conc(t,solute)
+		+ (1-is_empty()) * cmf::water::WaterStorage::conc(t,solute);
 }
 
 cmf::river::OpenWaterStorage::ptr cmf::river::OpenWaterStorage::create( const cmf::project& _project, const cmf::river::IVolumeHeightFunction& base_geo )
@@ -77,4 +75,9 @@ cmf::river::OpenWaterStorage::ptr cmf::river::OpenWaterStorage::create( const cm
 {
 	ptr res(new OpenWaterStorage(_project,Area));
 	return res;
+}
+
+real cmf::river::OpenWaterStorage::get_abs_errtol( real rel_errtol ) const
+{
+	return rel_errtol * height_function->V(1);
 }

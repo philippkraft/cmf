@@ -7,8 +7,8 @@
 @if "x%1x"=="xcleanx" goto clean
 @python setup.py build_ext 
 @if ERRORLEVEL 1 goto error
-@move /Y cmf_core.py cmf\
-@move /Y raster.py cmf\raster\
+@move /Y cmf\cmf_core_src\cmf_core.py cmf\
+@move /Y cmf\raster\raster_src\raster.py cmf\raster\
 @python setup.py build_py -c -O2 -f
 @if ERRORLEVEL 1 goto error
 @python setup.py install

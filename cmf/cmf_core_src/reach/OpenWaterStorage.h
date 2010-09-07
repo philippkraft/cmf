@@ -69,9 +69,7 @@ namespace cmf {
 			/// Creates an open water storage from a flux node with a prismatic volume
 			static ptr from_node(cmf::water::flux_node::ptr node,real Area);
 
-			real get_abs_errtol(real rel_errtol) const {
-				return rel_errtol * height_function->V(0.001);
-			}
+			real get_abs_errtol(real rel_errtol) const;
 			
 			/// Casts a flux node to an open water storage
 			static ptr cast(cmf::water::flux_node::ptr node);

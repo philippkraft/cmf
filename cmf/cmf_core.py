@@ -334,6 +334,10 @@ def dot(*args, **kwargs):
     cmf::geometry::dot(const point &p1, const point &p2) 
     """
   return _cmf_core.dot(*args, **kwargs)
+
+def distance(*args, **kwargs):
+  """distance(point p1, point p2) -> double"""
+  return _cmf_core.distance(*args, **kwargs)
 class point_vector(object):
     """
     Holds three arrays x,y and z for fast access of point coordinates.
@@ -1176,10 +1180,7 @@ class timeseries(object):
         floating_avg(self, Time window_width) -> timeseries
         floating_avg(self, size_t window_size) -> timeseries
 
-        timeseries floating_avg(cmf::math::Time window_width) const
-
-        Creates a timeseries with a bigger timestep, containing the average.
-
+        timeseries floating_avg(size_t window_size) const 
         """
         return _cmf_core.timeseries_floating_avg(self, *args)
 
@@ -1464,7 +1465,7 @@ class integratable(object):
     integrating values over time.
 
     Main usage of an integration_variable is the calculation of average
-    fluxes
+    fluxes over time
 
     C++ includes: statevariable.h 
     """
@@ -1902,43 +1903,6 @@ class ExplicitEuler_fixed(Integrator):
 ExplicitEuler_fixed.AddStatesFromOwner = new_instancemethod(_cmf_core.ExplicitEuler_fixed_AddStatesFromOwner,None,ExplicitEuler_fixed)
 ExplicitEuler_fixed_swigregister = _cmf_core.ExplicitEuler_fixed_swigregister
 ExplicitEuler_fixed_swigregister(ExplicitEuler_fixed)
-
-class PredictCorrectSimple(Integrator):
-    """
-    A simple predictor - corrector solver $ y^{n+1} = y^n + \\alpha
-    f(y^n + f(y^n)dt)dt + (1-\\alpha)f(y^n)dt $.
-
-    C++ includes: explicit_euler.h 
-    """
-    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
-    __repr__ = _swig_repr
-    def AddStatesFromOwner(self, *args, **kwargs):
-        """
-        AddStatesFromOwner(self, StateVariableOwner stateOwner)
-
-        void
-        AddStatesFromOwner(cmf::math::StateVariableOwner &stateOwner)
-
-        Add state variables from a StateVariableOwner. 
-        """
-        return _cmf_core.PredictCorrectSimple_AddStatesFromOwner(self, *args, **kwargs)
-
-    alpha = _swig_property(_cmf_core.PredictCorrectSimple_alpha_get, _cmf_core.PredictCorrectSimple_alpha_set)
-    def __init__(self, *args): 
-        """
-        __init__(self, StateVariableOwner states, real Alpha) -> PredictCorrectSimple
-        __init__(self, real Alpha = 0.5) -> PredictCorrectSimple
-        __init__(self, Integrator copy) -> PredictCorrectSimple
-
-        PredictCorrectSimple(const Integrator &copy)
-
-        Copy constructor. 
-        """
-        _cmf_core.PredictCorrectSimple_swiginit(self,_cmf_core.new_PredictCorrectSimple(*args))
-    __swig_destroy__ = _cmf_core.delete_PredictCorrectSimple
-PredictCorrectSimple.AddStatesFromOwner = new_instancemethod(_cmf_core.PredictCorrectSimple_AddStatesFromOwner,None,PredictCorrectSimple)
-PredictCorrectSimple_swigregister = _cmf_core.PredictCorrectSimple_swigregister
-PredictCorrectSimple_swigregister(PredictCorrectSimple)
 
 class ImplicitEuler(Integrator):
     """
@@ -2540,7 +2504,7 @@ class flux_node(object):
     position = _swig_property(_cmf_core.flux_node_position_get, _cmf_core.flux_node_position_set)
     def is_empty(self, *args, **kwargs):
         """
-        is_empty(self) -> bool
+        is_empty(self) -> double
 
         virtual bool
         is_empty() const
@@ -2877,7 +2841,9 @@ class connection_integrator(integratable):
         """
         connection(self) -> ptr
 
-        flux_connection::ptr connection() const 
+        flux_connection::ptr connection() const
+
+        Returns the flux_connection. 
         """
         return _cmf_core.connection_integrator_connection(self, *args, **kwargs)
 
@@ -2885,7 +2851,7 @@ class connection_integrator(integratable):
         """
         __init__(self, flux_connection connection) -> connection_integrator
 
-        connection_integrator(cmf::water::flux_connection::ptr connection) 
+        connection_integrator(cmf::water::flux_connection &connection) 
         """
         _cmf_core.connection_integrator_swiginit(self,_cmf_core.new_connection_integrator(*args, **kwargs))
     __swig_destroy__ = _cmf_core.delete_connection_integrator
@@ -3367,15 +3333,22 @@ class node_list(StateVariableOwner):
         """
         __get(self, int index) -> ptr
 
-        node_list get(int
-        begin, int end, int step=1) const
+        flux_node::ptr
+        get(int index) const
 
-        Returns a slice of the node_list. 
+        Returns a node in the node_list. 
         """
         return _cmf_core.node_list___get(self, *args, **kwargs)
 
     def __getslice(self, *args, **kwargs):
-        """__getslice(self, int begin, int end, int step = 1) -> node_list"""
+        """
+        __getslice(self, int begin, int end, int step = 1) -> node_list
+
+        node_list
+        getslice(int begin, int end, int step=1) const
+
+        Returns a slice of the node_list. 
+        """
         return _cmf_core.node_list___getslice(self, *args, **kwargs)
 
     def append(self, *args, **kwargs):
@@ -3547,6 +3520,8 @@ node_list_swigregister(node_list)
 
 class NeumannBoundary_list(object):
     """
+    Provides fast access to Neumann boundaries for flux update.
+
     If many Neumann boundary conditions are present in a project, a fast
     data exchange to update the fluxes might be needed.
 
@@ -3679,20 +3654,57 @@ NeumannBoundary_list_swigregister = _cmf_core.NeumannBoundary_list_swigregister
 NeumannBoundary_list_swigregister(NeumannBoundary_list)
 
 class SystemBridge(flux_node,integratable):
-    """Proxy of C++ cmf::water::SystemBridge class"""
+    """
+    A SystemBridge is an advanced feature for tuning of the calculation
+    time.
+
+    A SystemBridge can be used to replace an existing connection between
+    nodes. It is created using the system_bridge function After
+    installation, the two nodes can more safely be added to different
+    integrator systems. One node (called upper) is connected with the
+    system bridge with the connection formerly connecting the nodes, the
+    second node (called lower) is connected to the system bridge with as a
+    Neumann boundary condition. The flux equals the average flux of the
+    connection upper <-> SystemBridge. Therefore, the system bridge must
+    become an integratable of the integrator system the upper node belongs
+    to. Use as an upper system (system upper node is belonging to) the
+    faster reacting system. For the connection between upper and
+    SystemBridge, the SystemBridge reacts as an Drichelet boundary
+    condition, providing the potential of the lower node.
+
+    C++ includes: system_bridge.h 
+    """
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
     def __init__(self, *args, **kwargs): raise AttributeError("No constructor defined")
     __repr__ = _swig_repr
     def get_upper_node(self, *args, **kwargs):
-        """get_upper_node(self) -> ptr"""
+        """
+        get_upper_node(self) -> ptr
+
+        flux_node::ptr get_upper_node() const
+
+        Returns the upper node. 
+        """
         return _cmf_core.SystemBridge_get_upper_node(self, *args, **kwargs)
 
     def get_lower_node(self, *args, **kwargs):
-        """get_lower_node(self) -> ptr"""
+        """
+        get_lower_node(self) -> ptr
+
+        flux_node::ptr get_lower_node() const
+
+        Returns the lower node. 
+        """
         return _cmf_core.SystemBridge_get_lower_node(self, *args, **kwargs)
 
     def get_down_flux(self, *args, **kwargs):
-        """get_down_flux(self) -> double"""
+        """
+        get_down_flux(self) -> double
+
+        double get_down_flux() const
+
+        Returns the currently integrated flux to the lower node. 
+        """
         return _cmf_core.SystemBridge_get_down_flux(self, *args, **kwargs)
 
     __swig_destroy__ = _cmf_core.delete_SystemBridge
@@ -3703,7 +3715,12 @@ SystemBridge_swigregister = _cmf_core.SystemBridge_swigregister
 SystemBridge_swigregister(SystemBridge)
 
 class SystemBridgeConnection(flux_connection):
-    """Proxy of C++ cmf::water::SystemBridgeConnection class"""
+    """
+    Connects a system bridge with its lower node. Is created automatically
+    when creating a SystemBridge.
+
+    C++ includes: system_bridge.h 
+    """
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
     def __init__(self, *args, **kwargs): raise AttributeError("No constructor defined")
     __repr__ = _swig_repr
@@ -3713,7 +3730,41 @@ SystemBridgeConnection_swigregister(SystemBridgeConnection)
 
 
 def system_bridge(*args, **kwargs):
-  """system_bridge(project p, ptr upper, ptr lower) -> ptr"""
+  """
+    system_bridge(project p, ptr upper, ptr lower) -> ptr
+
+    SystemBridge::ptr
+    cmf::water::system_bridge(cmf::project &p, flux_node::ptr upper,
+    flux_node::ptr lower)
+
+    Creates a SystemBridge object. This is an advanced feature for tuning
+    of the calculation time.
+
+    A SystemBridge can be used to replace an existing connection between
+    nodes. After installation, the two nodes can more safely be added to
+    different integrator systems. One node (called upper) is connected
+    with the system bridge with the connection formerly connecting the
+    nodes, the second node (called lower) is connected to the system
+    bridge with as a Neumann boundary condition. The flux equals the
+    average flux of the connection upper <-> SystemBridge. Therefore, the
+    system bridge must become an integratable of the integrator system the
+    upper node belongs to. Use as an upper system (system upper node is
+    belonging to) the faster reacting system. For the connection between
+    upper and SystemBridge, the SystemBridge reacts as an Drichelet
+    boundary condition, providing the potential of the lower node.
+
+    a new SystemBridge object
+
+    Parameters:
+    -----------
+
+    p:  cmf project
+
+    upper:  Upper boundary flux node (part of the faster reacting system).
+
+    lower:  Lower boundary flux node (part of the slower reacting system).
+
+    """
   return _cmf_core.system_bridge(*args, **kwargs)
 
 def vapour_pressure(*args, **kwargs):
@@ -4887,11 +4938,23 @@ class Cell(StateVariableOwner):
         return _cmf_core.Cell_get_position(self, *args, **kwargs)
 
     def m3_to_mm(self, *args, **kwargs):
-        """m3_to_mm(self, double volume) -> double"""
+        """
+        m3_to_mm(self, double volume) -> double
+
+        double
+        m3_to_mm(double volume) const
+
+        Converts a volume in m3 in mm for the cell area. 
+        """
         return _cmf_core.Cell_m3_to_mm(self, *args, **kwargs)
 
     def mm_to_m3(self, *args, **kwargs):
-        """mm_to_m3(self, double depth) -> double"""
+        """
+        mm_to_m3(self, double depth) -> double
+
+        double
+        mm_to_m3(double depth) const 
+        """
         return _cmf_core.Cell_mm_to_m3(self, *args, **kwargs)
 
     def InvalidateSatDepth(self, *args, **kwargs):
@@ -5141,7 +5204,14 @@ class Cell(StateVariableOwner):
         return _cmf_core.Cell_remove_layers(self, *args, **kwargs)
 
     def get_percolation(self, *args, **kwargs):
-        """get_percolation(self, Time t) -> cmf::math::num_array"""
+        """
+        get_percolation(self, Time t) -> cmf::math::num_array
+
+        cmf::math::num_array get_percolation(cmf::math::Time t) const
+
+        Returns the flux to each layer from the upperlayer, or, in case of the
+        first layer from the surface water. 
+        """
         return _cmf_core.Cell_get_percolation(self, *args, **kwargs)
 
     __swig_destroy__ = _cmf_core.delete_Cell
@@ -5195,7 +5265,7 @@ class Cell(StateVariableOwner):
     contributing_area=property(lambda self:self.topology.ContributingArea(),None,"Contributing area of this cell m2")
     main_outlet=property(lambda self:self.topology.MainOutlet(),None,"The main outlet of the surface water of this cell")
 
-    def connect_soil_with_node(self,node,type,flowwidth,distance,upper_boundary=0,lower_boundary=None):
+    def connect_soil_with_node(self,node,ctype,flowwidth,distance,upper_boundary=0,lower_boundary=None):
         """Connects all layers between the boundaries with a node using a flux connection
         node: Target node (flux_node)
         type: Type of the connection (e.g. cmf.Richards_lateral)
@@ -5206,9 +5276,11 @@ class Cell(StateVariableOwner):
         """
         if lower_boundary is None:
             lower_boundary=self.soildepth
-        for l in self.layers:
-            if l.boundary[0]<lower_boundary and l.boundary[1]>upper_boundary:
-                type(l,node,flowwidth,distance).thisown=0
+        connections=[ctype(l,node,flowwidth,distance) 
+                     for l in self.layers 
+                     if     l.boundary[0]<lower_boundary 
+                        and l.boundary[1]>upper_boundary 
+                    ]
         
     def install_connection(self,connection_type):
         if hasattr(connection_type,"use_for_cell"):
@@ -5576,6 +5648,10 @@ def cell_positions(*args, **kwargs):
 def cell_flux_directions(*args, **kwargs):
   """cell_flux_directions(cells_ref cells, Time arg1) -> point_vector"""
   return _cmf_core.cell_flux_directions(*args, **kwargs)
+
+def cell_distance(*args, **kwargs):
+  """cell_distance(Cell c1, Cell c2) -> double"""
+  return _cmf_core.cell_distance(*args, **kwargs)
 class subcatchment(object):
     """
     A class to structure cells in a project using their main outlets.
@@ -6930,7 +7006,14 @@ class Reach(OpenWaterStorage):
     def __init__(self, *args, **kwargs): raise AttributeError("No constructor defined")
     __repr__ = _swig_repr
     def get_reachtype(self, *args, **kwargs):
-        """get_reachtype(self) -> Channel"""
+        """
+        get_reachtype(self) -> Channel
+
+        Channel
+        get_reachtype() const
+
+        Returns the channel shape. 
+        """
         return _cmf_core.Reach_get_reachtype(self, *args, **kwargs)
 
     def set_height_function(self, *args, **kwargs):
@@ -7038,22 +7121,26 @@ class Reach(OpenWaterStorage):
         return [self.get_upstream(i) for i in range(self.upstream_count)]
     def __hash__(self):
         return hash(self.water.node_id)
-    def connect_to_cell(self,cell,width,subsurface_connection_type=None,diffusive=None):
+    def connect_to_cell(self,cell,width,subsurface_connection_type=None,subsurface_connection_depth=None,diffusive=None):
         """ Connects a cell with this reach using Manning's equation for surface runoff and
         a given connection for subsurface interflow 
-         - subsurface_connection_type : Any lateral flow connection type
          - width : Boundary width in m
+         - subsurface_connection_type  : Any lateral flow connection type
+         - subsurface_connection_depth : The depth below ground of the deepest layer to be connected by subsurface_connection_type,
+                                         default (None) = cell.z - reach.position.z
          - diffusive: Determines if a kinematic or diffusive wave is to be used for surface runoff
         """
         assert(subsurface_connection_type is None or issubclass(subsurface_connection_type, lateral_sub_surface_flux))
         if diffusive is None:
             diffusive = self.diffusive
+        if subsurface_connection_depth is None:
+            subsurface_connection_depth = cell.z - self.position.z
         self.connect_to_surfacewater(cell,width,diffusive)
         r_depth = cell.z - self.position.z
         distance = self.distance_to_cell(cell)
         connections=[self.get_connection(cell.surfacewater)]
         if subsurface_connection_type:
-            cell.connect_soil_with_node(self,subsurface_connection_type,width,distance,0,r_depth)
+            cell.connect_soil_with_node(self,subsurface_connection_type,width,distance,0,subsurface_connection_depth)
             connections.extend(self.get_connection(l) for l in cell.layers)
         return connections
 
