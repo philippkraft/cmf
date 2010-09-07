@@ -37,7 +37,6 @@ import os
 import datetime
 import shutil
 from distutils.core import setup,Extension
-
 try:
     # Import a function to get a path to the include directories of numpy
     from numpy import get_include as get_numpy_include
@@ -142,7 +141,8 @@ if __name__=='__main__':
         if py_found:
             print 'In %s %i modules found' % (root,len(py_found))
         py.extend(py_found)
-    
+    if 'noswig' in sys.argv:
+        sys.argv.remove('noswig')
     now = datetime.datetime.now()
     setup(name='cmf',
           version='0.1',
