@@ -100,9 +100,9 @@ def make_cmf_core():
     return cmf_core
 def make_raster():
     if "noswig" in sys.argv:
-        files=['cmf/raster/raster_src/raster.i']
-    else:
         files=['cmf/raster/raster_src/raster_wrap.cpp']
+    else:
+        files=['cmf/raster/raster_src/raster.i']
 
     if msvc: 
         compile_args = ["/openmp","/EHsc",r'/Fd"build\vc90.pdb"']
