@@ -1576,11 +1576,13 @@ reset(cmf::math::Time t)
 
 Initializes the integration. ";
 
-%feature("docstring")  cmf::water::connection_integrator::connection "flux_connection::ptr connection() const ";
+%feature("docstring")  cmf::water::connection_integrator::connection "flux_connection::ptr connection() const
+
+Returns the flux_connection. ";
 
 %feature("docstring")  cmf::water::connection_integrator::integrate "void integrate(cmf::math::Time until)
 
-Integrates the flux a timestep further. Note: until is an absolut
+Integrates the flux a timestep further. Note: until is an absolute
 time. If until is before t0, the integration is initilized again. ";
 
 %feature("docstring")

@@ -19,6 +19,8 @@
 #include "subsurfacefluxes.h"
 #include "../../math/real.h"
 
+using namespace cmf::water;
+
 /************************************************************************/
 /* Precolation and 3D fluxes                                            */
 /************************************************************************/
@@ -50,12 +52,9 @@ real cmf::upslope::connections::Richards_lateral::calc_q( cmf::math::Time t )
 		gradient=(Psi_t1-Psi_t2)/distance,
 		//K=gradient<0 && l2 ? l2->K() : l1->K();      
 		K=l2 ? geo_mean(l1->get_K(),l2->get_K()) : l1->get_K();
-	real r_flow=K*gradient*flow_width * flow_thickness;
-	if (left_node()->is_empty())
-		r_flow=minimum(0,r_flow);
-	if (right_node()->is_empty())
-		r_flow=maximum(0,r_flow);
-	return r_flow; 
+	real r_flow = K * gradient * flow_width * flow_thickness;
+	// If flow from left to right
+	return prevent_negative_volume(r_flow); 
 
 
 }
@@ -83,8 +82,6 @@ real cmf::upslope::connections::Darcy::calc_q( cmf::math::Time t )
 		Psi_t2 = right_node()->get_potential(),
 		gradient=(Psi_t1-Psi_t2)/distance;
 
-	if (right_node()->is_empty() && gradient<=0)
-		return 0.0;
 
 	//cmf::upslope::SoilLayer::ptr source =  (gradient < 0) && l2 ? l2 : l1;
 	real
@@ -143,9 +140,7 @@ real cmf::upslope::connections::TopographicGradientDarcy::calc_q( cmf::math::Tim
 		T1 = l1->get_Ksat() *  (l1->get_lower_boundary() - (l1->get_lower_boundary()-flow_thick1)),
 		T2 = l2 ? l2->get_Ksat() * (l2->get_lower_boundary() - (l2->get_lower_boundary()-flow_thick2)) : T1,
 		T = gradient>0 ? T1 : T2;
-	if (right_node()->is_empty() && gradient<0)
-		return 0.0;
-	return T*gradient*flow_width;
+	return prevent_negative_volume(T*gradient*flow_width);
 
 }
 
@@ -177,11 +172,9 @@ real cmf::upslope::connections::DarcyKinematic::calc_q( cmf::math::Time t )
 		// Topographic gradient
 		Psi_t1=l1->cell.z,
 		Psi_t2=l2 ? l2->cell.z : right_node()->get_potential(),
-		gradient=(Psi_t1-Psi_t2)/distance;
-	if (right_node()->is_empty() && gradient<0)
-		return 0.0;
-	else
-		return K*source->get_thickness()*flow_width*gradient;
+		gradient=(Psi_t1-Psi_t2)/distance,
+		flow=K*source->get_thickness()*flow_width*gradient;
+	return prevent_negative_volume(flow);
 
 }
 

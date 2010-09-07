@@ -18,6 +18,7 @@
 //   
 #include "Percolation.h"
 
+using namespace cmf::water;
 void cmf::upslope::connections::Richards::use_for_cell( cmf::upslope::Cell & cell,bool no_override/*=true*/ )
 {
 	for (int i = 0; i < cell.layer_count()-1 ; ++i)
@@ -52,11 +53,7 @@ real cmf::upslope::connections::Richards::calc_q( cmf::math::Time t )
 	//  	if (fabs(K*gradient)>l1->get_Ksat()) K=l1->get_Ksat()/fabs(gradient);
 	//  	if (l2 && fabs(K*gradient)>l2->get_Ksat()) K=l2->get_Ksat()/fabs(gradient);
 	real r_flow=K*gradient*l1->cell.get_area();
-	if (left_node()->is_empty())
-		r_flow=minimum(0,r_flow);
-	if (right_node()->is_empty())
-		r_flow=maximum(0,r_flow);
-	return r_flow; 
+	return prevent_negative_volume(r_flow);
 }
 void cmf::upslope::connections::SimplRichards::use_for_cell( cmf::upslope::Cell & cell,bool no_override/*=true*/ )
 {
@@ -80,11 +77,7 @@ real cmf::upslope::connections::SimplRichards::calc_q( cmf::math::Time t )
 	if (l2)
 		K *= 1 - l2->get_wetness();
 	real r_flow=K * l1->cell.get_area();
-	if (left_node()->is_empty())
-		r_flow=minimum(0,r_flow);
-	if (right_node()->is_empty())
-		r_flow=maximum(0,r_flow);
-	return r_flow;
+	return prevent_negative_volume(r_flow);
 }
 
 

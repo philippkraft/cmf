@@ -17,60 +17,9 @@
 //   along with cmf.  If not, see <http://www.gnu.org/licenses/>.
 //   
 
-%echo "Entering geometry.i"
 %{
 // Include geometry
 #include "geometry/geometry.h"
-%}
-//%attribute(cmf::geometry::point_vector,cmf::math::num_array,x,get_x);
-//%attribute(cmf::geometry::point_vector,cmf::math::num_array,y,get_y);
-//%attribute(cmf::geometry::point_vector,cmf::math::num_array,z,get_z);
-// Geometry.h
-%include "geometry/geometry.h"
-
-%extend cmf::geometry::point {
-    inline int __len__() const { return 3; }
-    cmf::geometry::point __rmul__(double val)    {
-        return val*(*$self);
-    }
-    cmf::geometry::point __rdiv__(double val)    {
-        return val/(*$self);
-    }
-
-
-    %pythoncode 
-    {
-    def __getitem__(self,index) :
-        if isinstance(index,slice):
-            return [self[i] for i in range(*index.indices(len(self)))]
-        if index==0 :
-            return self.x
-        elif index==1 :
-            return self.y
-        elif index==2 :
-            return self.z
-        else :
-            raise IndexError("Only Index 0 .. 2 are allowed")
-    def __setitem__(self,index,value) :
-        if index==0 :
-            self.x=value
-        elif index==1 :
-            self.y=value
-        elif index==2 :
-            self.z=value
-        else :
-            raise IndexError("Only Index 0 .. 2 are allowed")
-    def __iter__(self):
-        yield self.x
-        yield self.y
-        yield self.z
-    def __repr__(self):
-        return 'cmf.point(%g,%g,%g)' % (self.x,self.y,self.z)
-	}
-}
-
-//Create helper function for mapping a tuple to a point
-%{
 static bool check_seq_point(PyObject* input) {
   if (PySequence_Check(input)) {
     Py_ssize_t len = PySequence_Length(input);
@@ -144,8 +93,8 @@ static std::string convert_xyz_to_point(PyObject* input,cmf::geometry::point& p)
   return "";
 }
 
-%}
 
+%}
 // typemap to convert python object to point
 %typemap(in) cmf::geometry::point {
     if (check_xy($input)) {
@@ -200,5 +149,49 @@ static std::string convert_xyz_to_point(PyObject* input,cmf::geometry::point& p)
 	cmf::geometry::point p;
 	$1=check_xy($input) || check_seq_point($input);
 }
+%apply  cmf::geometry::point* {cmf::geometry::point &}
 
+// Geometry.h
+%include "geometry/geometry.h"
+
+%extend cmf::geometry::point {
+    inline int __len__() const { return 3; }
+    cmf::geometry::point __rmul__(double val)    {
+        return val*(*$self);
+    }
+    cmf::geometry::point __rdiv__(double val)    {
+        return val/(*$self);
+    }
+
+
+    %pythoncode 
+    {
+    def __getitem__(self,index) :
+        if isinstance(index,slice):
+            return [self[i] for i in range(*index.indices(len(self)))]
+        if index==0 :
+            return self.x
+        elif index==1 :
+            return self.y
+        elif index==2 :
+            return self.z
+        else :
+            raise IndexError("Only Index 0 .. 2 are allowed")
+    def __setitem__(self,index,value) :
+        if index==0 :
+            self.x=value
+        elif index==1 :
+            self.y=value
+        elif index==2 :
+            self.z=value
+        else :
+            raise IndexError("Only Index 0 .. 2 are allowed")
+    def __iter__(self):
+        yield self.x
+        yield self.y
+        yield self.z
+    def __repr__(self):
+        return 'cmf.point(%g,%g,%g)' % (self.x,self.y,self.z)
+	}
+}
 

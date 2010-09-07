@@ -91,7 +91,7 @@
     contributing_area=property(lambda self:self.topology.ContributingArea(),None,"Contributing area of this cell m2")
     main_outlet=property(lambda self:self.topology.MainOutlet(),None,"The main outlet of the surface water of this cell")
     
-    def connect_soil_with_node(self,node,type,flowwidth,distance,upper_boundary=0,lower_boundary=None):
+    def connect_soil_with_node(self,node,ctype,flowwidth,distance,upper_boundary=0,lower_boundary=None):
         """Connects all layers between the boundaries with a node using a flux connection
         node: Target node (flux_node)
         type: Type of the connection (e.g. cmf.Richards_lateral)
@@ -102,9 +102,11 @@
         """
         if lower_boundary is None:
             lower_boundary=self.soildepth
-        for l in self.layers:
-            if l.boundary[0]<lower_boundary and l.boundary[1]>upper_boundary:
-                type(l,node,flowwidth,distance).thisown=0
+        connections=[ctype(l,node,flowwidth,distance) 
+                     for l in self.layers 
+                     if     l.boundary[0]<lower_boundary 
+                        and l.boundary[1]>upper_boundary 
+                    ]
         
     def install_connection(self,connection_type):
         if hasattr(connection_type,"use_for_cell"):

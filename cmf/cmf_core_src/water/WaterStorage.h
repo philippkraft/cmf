@@ -70,7 +70,7 @@ namespace cmf {
 	
 		public:
 			real get_abs_errtol(real rel_errtol) const {
-				return std::max(rel_errtol * get_volume(),rel_errtol);
+				return rel_errtol;
 			}
 			/// A character indicating the integrated variable (either 'V' for Volume or 'h' for head)
 			inline char get_state_variable_content() const {return m_state_variable_content;}
@@ -137,8 +137,8 @@ namespace cmf {
 			virtual bool RecalcFluxes(cmf::math::Time t) {
 				return StateIsChanged();
 			}
-			virtual bool is_empty() const {
-				return get_volume()<=0;
+			virtual double is_empty() const {
+				return 1-piecewise_linear(get_volume(),0,get_abs_errtol(1e-4));
 			}
 			//@}
 			static std::tr1::shared_ptr<cmf::water::WaterStorage> cast(std::tr1::shared_ptr<cmf::water::flux_node> node)

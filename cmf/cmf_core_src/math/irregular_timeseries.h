@@ -140,13 +140,13 @@ namespace cmf {
 				}
 				size_t size() const {return values.size();}
 			};
-#endif
 			typedef std::tr1::shared_ptr<data> data_pointer;
 			data_pointer m_data;
 			static data_pointer make_data() {
 				data* new_data = new data;
 				return data_pointer(new_data);
 			}
+#endif
 		public:
 			/// First date of measurement
 			cmf::math::Time begin() const {
@@ -214,9 +214,6 @@ namespace cmf {
 			Time avg_timestep() {
 				return (end()-begin())/size();
 			}
-
-
-
 	}
 }
 #endif // timeseries_h__

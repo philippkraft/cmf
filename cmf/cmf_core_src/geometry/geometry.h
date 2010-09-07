@@ -111,11 +111,11 @@ namespace cmf {
 				bool operator !=(const point &p) const {return !(*this == p);} ///< not equal
 		};
 		double dot(const point &p1, const point &p2);
+		double distance(const point & p1, const point & p2);
 #ifndef SWIG
 		point operator*(double d,const point &p);	///< scalar mult
 		point operator/(double d,const point &p);///< scalar div
 #endif
-
 
 		/// Holds three arrays x,y and z for fast access of point coordinates
 		class point_vector

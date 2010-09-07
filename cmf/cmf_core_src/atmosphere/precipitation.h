@@ -49,9 +49,9 @@ namespace cmf {
 			
 			virtual bool RecalcFluxes(cmf::math::Time t) {return true;}
 			/// Returns false
-			virtual bool is_empty() const
+			virtual double is_empty() const
 			{
-				return false;
+				return 0;
 			}
 			
 

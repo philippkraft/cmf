@@ -72,7 +72,6 @@ def make_cmf_core():
     libraries=None
     if msvc:
         include_dirs += [boost_path,boost_path+r"\boost\tr1"]
-    if msvc: 
         compile_args = ["/openmp","/EHsc",r'/Fd"build\vc90.pdb"',"/D_SCL_SECURE_NO_WARNINGS", "/D_CRT_SECURE_NO_WARNINGS"]
         link_args=["/DEBUG"]
     if gcc: 
@@ -86,7 +85,10 @@ def make_cmf_core():
         cmf_files.extend(os.path.join(root,f) for f in files if is_source_file(f) and f!='cmf_wrap.cpp')
         cmf_headers.extend(os.path.join(root,f) for f in files if f.endswith('.h'))
     print "Compiling %i source files" % (len(cmf_files)+1)
-    cmf_files.append("cmf/cmf_core_src/cmf.i")
+    if "noswig" in sys.argv:
+        cmf_files.append("cmf/cmf_core_src/cmf_wrap.cpp")
+    else:
+        cmf_files.append("cmf/cmf_core_src/cmf.i")
     print "Total number of C++ loc:", count_lines(cmf_files + cmf_headers)
     cmf_core = Extension('cmf._cmf_core',
                             sources=cmf_files,
@@ -98,7 +100,11 @@ def make_cmf_core():
                         )
     return cmf_core
 def make_raster():
-    files=['cmf/raster/raster_src/raster.i']
+    if "noswig" in sys.argv:
+        files=['cmf/raster/raster_src/raster.i']
+    else:
+        files=['cmf/raster/raster_src/raster_wrap.cpp']
+
     if msvc: 
         compile_args = ["/openmp","/EHsc",r'/Fd"build\vc90.pdb"']
         link_args=["/DEBUG"]
