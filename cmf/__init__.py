@@ -40,4 +40,12 @@ from extend_project import add_layers_to_cells
 from extend_project import change_vegetation,connect_cells_with_flux
 from extend_project import profile
 from stopwatch import StopWatch
-import draw
+
+try:
+    import pylab as __pylab
+    __pylab_loaded=True
+except ImportError:
+    print "Matplotlib is not installed. cmf.draw is disabled"
+    __pylab_loaded=False
+if __pylab_loaded:
+    import draw
