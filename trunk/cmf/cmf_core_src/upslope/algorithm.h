@@ -47,6 +47,9 @@ namespace cmf {
 		cmf::geometry::point_vector cell_positions(cmf::upslope::cells_ref cells);
 		cmf::geometry::point_vector cell_flux_directions(cmf::upslope::cells_ref cells,cmf::math::Time);
 		
+		
+		double cell_distance(cmf::upslope::Cell& c1, cmf::upslope::Cell& c2);
+		
 		/// A class to structure cells in a project using their main outlets.
 		class subcatchment
 		{

@@ -80,7 +80,8 @@ namespace cmf {
 
 		};
 
-		/// A simple predictor - corrector solver
+#ifdef EXPERIMENTAL
+		/// A simple predictor - corrector solver. Not tested and very experimentally
 		/// \f$ y^{n+1} = y^n + \alpha f(y^n + f(y^n)dt)dt + (1-\alpha)f(y^n)dt \f$
 		class PredictCorrectSimple : public Integrator
 		{
@@ -152,6 +153,7 @@ namespace cmf {
 			}
 
 		};
+#endif
 
 	}
 }

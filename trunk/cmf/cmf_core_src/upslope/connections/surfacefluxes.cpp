@@ -40,7 +40,7 @@ real cmf::upslope::connections::CanopyOverflow::calc_q( cmf::math::Time t )
 real cmf::upslope::connections::SimpleTindexSnowMelt::calc_q( cmf::math::Time t )
 {
 	cmf::water::WaterStorage::ptr Snow=m_Snow.lock();
-	if (Snow->is_empty())
+	if (Snow->is_empty()>=1.0)
 		return 0.0;
 	else 
 	{

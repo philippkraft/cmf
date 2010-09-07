@@ -146,7 +146,7 @@ namespace cmf {
 			real CanopyStorageEvaporation::calc_q( cmf::math::Time t )
 			{
 				cmf::water::WaterStorage::ptr canopy=c_stor.lock();
-				if (left_node()->is_empty()) return 0;
+				if (left_node()->is_empty()>=1.0) return 0;
 				cmf::atmosphere::Weather w=m_cell.get_weather(t);
 				cmf::upslope::vegetation::Vegetation veg=m_cell.vegetation;
 				real PM=PenmanMonteith(w,veg,m_cell.z)*0.001*m_cell.get_area();
@@ -194,7 +194,7 @@ namespace cmf {
 			real PenmanEvaporation::calc_q( cmf::math::Time t )
 			{
 				cmf::river::OpenWaterStorage::ptr source=m_source.lock();
-				if (left_node()->is_empty()) return 0;
+				if (left_node()->is_empty()>=1.0) return 0;
 				cmf::atmosphere::Weather w=m_meteo->get_weather(t);
 				real PM=PenmanMonteith(w.Rn(0.1),PenmanMonteithET::r_a(w,0.1),0.0,w.T,w.e_s-w.e_a) * 0.001 * source->wet_area();
 				return minimum(source->get_state()*2/cmf::math::h.AsDays(),PM);

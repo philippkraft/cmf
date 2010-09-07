@@ -120,7 +120,3 @@ size_t from_npy_array(PyObject* op,double ** data) {
 
 
 
-%echo "num_array.i OK";
-
-
-

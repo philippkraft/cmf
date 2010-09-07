@@ -79,10 +79,6 @@ namespace cmf {
 			double water_balance_without_refresh() const;
 			// The project this node belongs to
 			const cmf::project& m_project;
-/*
-		protected:
-			cmf::math::Time m_LastQuery;
-*/
 
 		public:
 			/// Returns the project, this node is part of
@@ -137,9 +133,9 @@ namespace cmf {
 				throw std::runtime_error("Potential of " + Name + " is read only");
 			}
 			/// Returns true if the node has no water.
-			virtual bool is_empty() const
+			virtual double is_empty() const
 			{
-				return true;
+				return 1;
 			}
 			
 			flux_node(const cmf::project& _project,cmf::geometry::point location=cmf::geometry::point());

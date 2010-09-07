@@ -115,19 +115,16 @@ namespace cmf {
 				}
 				virtual double evap_from_openwater(cmf::river::OpenWaterStorage::ptr ows,cmf::math::Time t) {
 					// If open water is empty return zero
-					if (ows->is_empty()) return 0.0;
 					if (ows->RecalcFluxes(t)) refresh(t);
-					return GIR * ows->get_height_function().A(ows->get_volume()) * 1e-3;
+					return GIR * ows->get_height_function().A(ows->get_volume()) * 1e-3 * (1-ows->is_empty());
 				}
 				virtual double evap_from_canopy(cmf::water::WaterStorage::ptr canopy,cmf::math::Time t) {
-					if (canopy->is_empty()) return 0.0;
 					if (canopy->RecalcFluxes(t)) refresh(t);
-					return AIR * 1e-3 * cell.get_area();
+					return AIR * 1e-3 * cell.get_area() * (1-canopy->is_empty());
 				}
 				virtual double evap_from_snow(cmf::water::WaterStorage::ptr snow,cmf::math::Time t) {
-					if (snow->is_empty()) return 0.0;
 					if (snow->RecalcFluxes(t)) refresh(t);
-					return ASNVP * 1e-3 * cell.get_area();
+					return ASNVP * 1e-3 * cell.get_area() * (1-snow->is_empty());
 				}
 
 				virtual void get_aerodynamic_resistance(double & r_ag,double & r_ac, cmf::math::Time t)  const{

@@ -854,7 +854,7 @@ void cmf::upslope::ET::ShuttleworthWallace::refresh( cmf::math::Time t )
 
 	double VOL_IN_CANOPY = cell.get_canopy() ? cell.m3_to_mm(cell.get_canopy()->get_volume()): 0.0;
 	double MAX_VOL_IN_CANOPY = LAI * cell.vegetation.CanopyCapacityPerLAI;
-	AIR = PIR * (VOL_IN_CANOPY/MAX_VOL_IN_CANOPY);
+	AIR =  piecewise_linear(VOL_IN_CANOPY,0,MAX_VOL_IN_CANOPY,0,PIR);
 	PTR -= AIR;
 	if (PTR>0.001)	{
 		TBYLAYER(1,PTR,DISPC,ALPHA,KK,RROOTI,RXYLEM,PSITI,lc, RHOWG * pF_to_waterhead(4.2),1,ATR_sum,ATR);

@@ -25,6 +25,7 @@
 #include <set>
 
 using namespace cmf::upslope;
+using namespace cmf::geometry;
 
 Cell* cmf::upslope::find_cell(cells_ref cells,cmf::geometry::point p,double max_dist )
 {
@@ -260,6 +261,12 @@ cmf::geometry::point cmf::upslope::get_center( cells_ref cells )
 
 }
 
+double cmf::upslope::cell_distance( Cell& c1, Cell& c2)
+{
+	point p1(c1.x,c1.y,c1.z), 
+		  p2(c2.x,c2.y,c2.z);
+	return p1.distanceTo(p2);
+}
 
 
 inline bool isstream(Topology& t,double area_threshold) {

@@ -54,22 +54,26 @@
         return [self.get_upstream(i) for i in range(self.upstream_count)]
     def __hash__(self):
         return hash(self.water.node_id)
-    def connect_to_cell(self,cell,width,subsurface_connection_type=None,diffusive=None):
+    def connect_to_cell(self,cell,width,subsurface_connection_type=None,subsurface_connection_depth=None,diffusive=None):
         """ Connects a cell with this reach using Manning's equation for surface runoff and
         a given connection for subsurface interflow 
-         - subsurface_connection_type : Any lateral flow connection type
          - width : Boundary width in m
+         - subsurface_connection_type  : Any lateral flow connection type
+         - subsurface_connection_depth : The depth below ground of the deepest layer to be connected by subsurface_connection_type,
+                                         default (None) = cell.z - reach.position.z
          - diffusive: Determines if a kinematic or diffusive wave is to be used for surface runoff
         """
         assert(subsurface_connection_type is None or issubclass(subsurface_connection_type, lateral_sub_surface_flux))
         if diffusive is None:
             diffusive = self.diffusive
+        if subsurface_connection_depth is None:
+            subsurface_connection_depth = cell.z - self.position.z
         self.connect_to_surfacewater(cell,width,diffusive)
         r_depth = cell.z - self.position.z
         distance = self.distance_to_cell(cell)
         connections=[self.get_connection(cell.surfacewater)]
         if subsurface_connection_type:
-            cell.connect_soil_with_node(self,subsurface_connection_type,width,distance,0,r_depth)
+            cell.connect_soil_with_node(self,subsurface_connection_type,width,distance,0,subsurface_connection_depth)
             connections.extend(self.get_connection(l) for l in cell.layers)
         return connections
 }}
