@@ -62,7 +62,7 @@ std::tr1::shared_ptr<WaterStorage> WaterStorage::from_node( flux_node::ptr node 
 }
 
 void WaterStorage::set_state_variable_content(char content) {
-	if (content == 'V' || content == 'h' && content!=m_state_variable_content) {
+	if (content == 'V' || content == 'h') {
 		if (m_state_variable_content != content) {
 			real oldstate=get_state();
 			real newstate=0.0;

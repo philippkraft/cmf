@@ -95,9 +95,8 @@ namespace cmf {
 			ptr get_upstream(int index) const;
 			/// Connects the surfacewater of a cell with this reach
 			/// @param cell The cell with the surface water to be connected with this reach
-			/// @param soil_cut True, if this reach might have inflow through the bank
-			/// @param distance The average distance from cell to this reach
 			/// @param width The flow width from cell to this reach
+			/// @param diffusive If diffusive is false, a ManningKinematic connection is used, else a ManningDiffusive connection
 			void connect_to_surfacewater( cmf::upslope::Cell* cell, real width,bool diffusive );
 			/// Returns the distance (d) for connections between this reach and a cell. 
 			/// If the effective inner cell distance (defined as \f$ R_{Cell} = 0.5\frac{\sqrt{A}}{\pi}\f$) is smaller 

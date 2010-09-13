@@ -5,7 +5,7 @@
 @ren cmf\cmf_core_src\cmf_1.i cmf.i
 :build
 @if "x%1x"=="xcleanx" goto clean
-@python setup.py build_ext 
+@python setup.py build_ext swig
 @if ERRORLEVEL 1 goto error
 @move /Y cmf\cmf_core_src\cmf_core.py cmf\
 @move /Y cmf\raster\raster_src\raster.py cmf\raster\

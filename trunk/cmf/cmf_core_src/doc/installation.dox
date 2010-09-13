@@ -1,0 +1,139 @@
+/**
+@page inst Installation
+
+- @ref wininst
+- @ref nixinst
+- @ref download
+cmf has been tested on the following systems:
+- Windows 7 with python(x,y)
+- Ubuntu 10.04
+- scientific linux 5.5 without root privilegs
+
+@section download Download sources for cmf
+The current location of the cmf should be:
+ - http://www.uni-giessen.de/~gh1961/download/cmf-0.1.zip : source code distribution, for Linux, UNIX and everyone interested
+ - http://www.uni-giessen.de/~gh1961/download/cmf-0.1.win32-py2.6.exe : binary distribution for Windows and python 2.6, 32bit
+
+@section wininst Installation on a Windows system
+@subsection wininst_dep Dependencies of cmf under windows:
+- python(x,y) (http://www.pythonxy.com)
+- Shapely >1.2 (http://trac.gispython.org/lab/wiki/Shapely)
+
+If you prefer not to install python(x,y) make sure to have the following 
+programs installed:
+- Python 2.6 or Python 2.7 (not tested) (http://www.python.org)
+- numpy 1.3 or later (http://numpy.scipy.org)
+
+And optional, though recommended for graphical output of cmf results:
+- matplotlib 1.0 or later (http://matplotlib.sourceforge.net)
+@subsection wininst_pre Installation from a precompiled package 
+The installation should work automatically by starting the setup program 
+(exe or msi installer).
+
+@subsection wininst_compile Installation from source (Windows)
+To compile the source distribution additional prerequisites apply:
+ - Microsoft Visual Studio 2008 Professional (mingw g++ should work, but not out of the box)
+ - the boost library (http://www.boost.org) 
+ - an environmental variable called BOOSTDIR pointing to the boost installation directory. 
+
+Compiling cmf and installing it for your computer is than as simple as typing in a command line:
+@code
+d:\cmf>python setup.py install
+@endcode
+If you don't want to have support for multi-core processors:
+@code
+d:\cmf>python setup.py install noopenmp
+@endcode
+
+
+@section nixinst Installation on a Unix / Linux system 
+@subsection nixinst_dep Dependencies of cmf
+- python 2.6 or python 2.7 (not tested) (http://www.python.org)
+- setuptools (http://pypi.python.org/pypi/setuptools)
+- numpy 1.3 or later (http://numpy.scipy.org)
+- libgeos_c >3.1 (http://trac.osgeo.org/geos/)
+- Shapely >1.2 (http://trac.gispython.org/lab/wiki/Shapely)
+
+And optional, though recommended for graphical output of cmf results:
+- matplotlib 1.0 or later (http://matplotlib.sourceforge.net)
+
+To install these dependencies, you must have root privileges for the target machine. If you 
+don't have root privileges an installation in the $HOME directory is needed. Below are some 
+hints for @b one possible solution to install the whole tool chain locally.
+The installation process is described on the given homepages, however, getting precompiled
+binaries for your specific Linux/UNIX distribution might be easier.
+
+Another possibility is to install everything using easy_install. Before you copy the script below,
+check for newer versions.
+
+@code
+$ wget http://pypi.python.org/packages/2.6/s/setuptools/setuptools-0.6c11-py2.6.egg
+$ sh setuptools-0.6c11-py2.6.egg
+$ easy_install numpy
+$ easy_install matplotlib
+$ wget http://download.osgeo.org/geos/geos-3.2.2.tar.bz2
+$ tar -xjf geos-3.2.2.tar.bz2
+$ cd geos-3.2.2
+$ ./configure
+$ make
+$ make install
+$ cd ..
+$ easy_install shapely
+@endcode
+
+@subsection nixinst2 Installation on Unix / Linux
+
+The installation of cmf is started by:
+
+@code
+$ cd cmf
+$ python setup.py install
+@endcode
+or, without multi core processor support (without OpenMP)
+@code
+$ cd cmf
+$ python setup.py install noopenmp
+@endcode
+
+@subsection nixinst_dep2 Installing Python and other dependencies without root privileges
+This install guide for installing python and the other cmf dependencies without 
+root privileges on a UNIX machine. Change carefully the version numbers to use newer versions.
+Of course installing Python modules to the home directory for a machine wide installaton of Python
+is possible, but not explained here.
+
+@code
+$ mkdir local
+$ wget http://www.python.org/ftp/python/2.6.6/Python-2.6.6.tgz
+$ tar -xzf Python-2.6.6.tgz
+$ cd Python-2.6.6
+$ ./configure --prefix=$HOME/local
+$ make
+$ make install
+$ cd ..
+$ PATH=$HOME/local/bin:$PATH
+$ LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/local/lib
+$ wget http://pypi.python.org/packages/2.6/s/setuptools/setuptools-0.6c11-py2.6.egg
+$ sh setuptools-0.6c11-py2.6.egg
+$ easy_install numpy
+$ wget http://download.osgeo.org/geos/geos-3.2.2.tar.bz2
+$ tar -xjf geos-3.2.2.tar.bz2
+$ cd geos-3.2.2
+$ ./configure --prefix=$HOME/local
+$ make
+$ make install
+$ cd ..
+$ easy_install shapely
+$ easy_install matplotlib # Not needed for a pure cluster installation
+$ cd cmf
+$ python setup.py install
+@endcode
+
+Shapely 1.2.3 (presumably older versions to) has a bug (or rather ctypes, but shapely depends on it). A locally 
+installed library is not found. Just change in $HOME/local/lib/python2.6/site-packages/Shapely-1.2.3.egg/shapely/geos.py
+line 28 to
+@code
+if sys.platform=="linux2" and False:
+    ...
+@endcode
+This should fix the problem.
+**/

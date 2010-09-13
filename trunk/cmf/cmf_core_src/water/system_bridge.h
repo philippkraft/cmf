@@ -81,11 +81,6 @@ namespace cmf {
 		/// the upper node belongs to. Use as an upper system (system upper node is belonging to) the faster reacting system.
 		/// For the connection between upper and SystemBridge, the SystemBridge reacts as an Drichelet boundary condition, providing the potential 
 		/// of the lower node.
-		///
-		/// @returns a new SystemBridge object
-		/// @param p cmf project
-		/// @param upper Upper boundary flux node (part of the faster reacting system). 
-		/// @param lower Lower boundary flux node (part of the slower reacting system).
 		SystemBridge::ptr system_bridge(cmf::project& p, flux_node::ptr upper,flux_node::ptr lower);
 
 

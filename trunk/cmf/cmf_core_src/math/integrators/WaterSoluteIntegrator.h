@@ -76,11 +76,11 @@ namespace cmf {
 				Integrator::AddStatesFromOwner(stateOwner);
 				distribute_states();
 			}
-			int integrate(cmf::math::Time MaxTime,cmf::math::Time TimeStep)
+			int integrate(cmf::math::Time t_max,cmf::math::Time dt)
 			{
-				WaterIntegrator->integrate_until(MaxTime,TimeStep);
-				SoluteIntegrator->integrate_until(MaxTime,TimeStep);
-				m_t=MaxTime;
+				WaterIntegrator->integrate_until(t_max,dt);
+				SoluteIntegrator->integrate_until(t_max,dt);
+				m_t=t_max;
 				m_dt=WaterIntegrator->get_dt();
 				return 1;
 			}

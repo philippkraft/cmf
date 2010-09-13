@@ -37,18 +37,24 @@ import os
 import datetime
 import shutil
 from distutils.core import setup,Extension
+
 try:
     # Import a function to get a path to the include directories of numpy
     from numpy import get_include as get_numpy_include
 except ImportError:
     raise RuntimeError("For building and running of cmf an installation of numpy is needed")
 
-
 if "swig" in sys.argv:
-    #os.chdir("cmf/cmf_core_src")
-    os.execvp("swig",["-Wextra","-w512","-python","-castmode","-O","-c++","-o cmf_wrap.cxx","-outdir ..","cmf/cmf_core_src/cmf.i"])
-    #exit()
-    sys.argv.pop("swig")
+    swig=True
+    sys.argv.remove("swig")
+else:
+    swig=False
+if "noopenmp" in sys.argv:
+    openmp=False
+    sys.argv.remove("noopenmp")
+else:
+    openmp=True
+
 def count_lines(files):
     lcount=0
     for fn in files:
@@ -71,23 +77,24 @@ def make_cmf_core():
     libraries=None
     if msvc:
         include_dirs += [boost_path,boost_path+r"\boost\tr1"]
-        compile_args = ["/openmp","/EHsc",r'/Fd"build\vc90.pdb"',"/D_SCL_SECURE_NO_WARNINGS", "/D_CRT_SECURE_NO_WARNINGS"]
+        compile_args = ["/EHsc",r'/Fd"build\vc90.pdb"',"/D_SCL_SECURE_NO_WARNINGS", "/D_CRT_SECURE_NO_WARNINGS"]
+        if openmp: compile_args.append("/openmp")
         link_args=["/DEBUG"]
     if gcc: 
-        compile_args=['-fopenmp','-Wno-comment','-Wno-reorder','-Wno-unused','-Wno-sign-compare']
-        link_args=["-fopenmp"]
-    if gcc:
-        libraries = ['gomp']
+        compile_args=['-Wno-comment','-Wno-reorder','-Wno-unused','-Wno-sign-compare']
+        if openmp: compile_args.append('-fopenmp')
+        link_args=["-fopenmp"] if openmp else None
+        libraries = ['gomp'] if openmp else None
     cmf_files=[]
     cmf_headers=[]
     for root,dirs,files in os.walk('cmf/cmf_core_src'):
         cmf_files.extend(os.path.join(root,f) for f in files if is_source_file(f) and f!='cmf_wrap.cpp')
         cmf_headers.extend(os.path.join(root,f) for f in files if f.endswith('.h'))
     print "Compiling %i source files" % (len(cmf_files)+1)
-    if "noswig" in sys.argv:
-        cmf_files.append("cmf/cmf_core_src/cmf_wrap.cpp")
-    else:
+    if swig:
         cmf_files.append("cmf/cmf_core_src/cmf.i")
+    else:
+        cmf_files.append("cmf/cmf_core_src/cmf_wrap.cpp")
     print "Total number of C++ loc:", count_lines(cmf_files + cmf_headers)
     cmf_core = Extension('cmf._cmf_core',
                             sources=cmf_files,
@@ -99,20 +106,21 @@ def make_cmf_core():
                         )
     return cmf_core
 def make_raster():
-    if "noswig" in sys.argv:
-        files=['cmf/raster/raster_src/raster_wrap.cpp']
-    else:
+    if swig:
         files=['cmf/raster/raster_src/raster.i']
-
+    else:
+        files=['cmf/raster/raster_src/raster_wrap.cpp']
+ 
     if msvc: 
-        compile_args = ["/openmp","/EHsc",r'/Fd"build\vc90.pdb"']
+        compile_args = ["/EHsc",r'/Fd"build\vc90.pdb"']
+        if openmp: compile_args.append("/openmp")
         link_args=["/DEBUG"]
+        libraries=None
     if gcc: 
-        compile_args = ["-std=gnu++98","-fopenmp"]
-        link_args=["-fopenmp"]
-    libraries=[]
-    if gcc:
-        libraries += ['gomp']
+        compile_args=['-Wno-comment','-Wno-reorder','-Wno-unused','-Wno-sign-compare']
+        if openmp: compile_args.append('-fopenmp')
+        link_args=["-fopenmp"] if openmp else None
+        libraries = ['gomp'] if openmp else None
     raster = Extension('cmf.raster._raster',
                         sources=files,
                         libraries = libraries,
@@ -123,7 +131,6 @@ def make_raster():
     return raster
 if __name__=='__main__':
     ext = [make_raster(),make_cmf_core()]
-    #ext = [make_cmf_core()]
     author = "Philipp Kraft"
     author_email = "philipp.kraft@umwelt.uni-giessen.de"
     url = "www.uni-giessen.de/ilr/frede/cmf"
@@ -141,11 +148,10 @@ if __name__=='__main__':
         if py_found:
             print 'In %s %i modules found' % (root,len(py_found))
         py.extend(py_found)
-    if 'noswig' in sys.argv:
-        sys.argv.remove('noswig')
+    
     now = datetime.datetime.now()
     setup(name='cmf',
-          version='0.1',
+          version='0.3',
           license='GPL',
           ext_modules=ext,
           py_modules=py, 

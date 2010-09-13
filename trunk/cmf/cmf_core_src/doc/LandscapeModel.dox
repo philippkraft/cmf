@@ -55,4 +55,8 @@ For creating cells from an irregular network, created from a shapefile, please r
 @copydoc connections
 @see connections
 
+For distribution of rainfall and other meteorological time series a specialized version of the IDW interpolation 
+may be used, which is explained here:
+@subpage IDW
+
 **/
