@@ -29,10 +29,9 @@ namespace cmf {
 		///	the number of values. Values queried for times before the start time are returned
 		///	as the first item, values after the end time equal the last item. A timeseries with
 		///	only one item reacts like a scalar value.
-		///	<h3>
-		///		Creating a time series</h3>
-		///	<div class="fragment">
-		///		<pre class="fragment">
+		///
+		/// <b>Creating a time series</b>
+		/// @code
 		///import CMFLib as cmf
 		///# Start date is the January 5th 2001 at 2:30 pm
 		///start=cmf.Time(5,1,2001,14,30)                      
@@ -49,20 +48,19 @@ namespace cmf {
 		///# add data
 		///timeseries.add(0.1) # Value at 2001/5/1 2:30pm is 0.1
 		///timeseries.add(0.2) # Value at 2001/5/1 2:50pm is 0.2
-		///timeseries.add(0.1) # Value at 2001/5/1 3:10pm is 0.1	</pre>
-		///	</div>
-		///	<p>
-		///		With this technic it is simple to read files or databases to fill timeseries.</p>
-		///	<h3>
-		///		Using a timeseries</h3>
-		///	<div class="fragment">
-		///		<pre class="fragment">
+		///timeseries.add(0.1) # Value at 2001/5/1 3:10pm is 0.1	
+		/// @endcode
+		///
+		/// With this technique it is simple to read files or databases to fill timeseries.
+		///
+		///	<b> Using a timeseries</b>
+		///@code
 		///# Query every minute between 2:15 and 3:14 pm
 		///for t in cmf.timerange(start,start+cmf.h,cmf.min):
 		///    print "Time:",t.AsDate(),"Value:",timeseries[t]
 		///# Query a specific position of the timeseries
-		///print timeseries[2]</pre>
-		///	</div>
+		///print timeseries[2]
+		///@endcode
 		class timeseries
 		{
 		private:
@@ -116,15 +114,11 @@ namespace cmf {
 			timeseries copy() const;
 			int size() const {return int(m_data->values.size());}
 			/// Constructor of a time series
-			/// @param _begin First date of measurement
-			/// @param _step Time between measurements
-			/// @param _interpolationmethod Method for the interpolation (0 - Nearest neighbor, 1- linear, 2 - cubic spline (not implemented yet)
-			timeseries(cmf::math::Time _begin,cmf::math::Time _step,int _interpolationmethod=1,size_t size=0) 
-				: m_data(make_data(_begin,_step,_interpolationmethod))
-			{ 
-				if (size) 
-					m_data->values = std::vector<double>(size,0.0);
-			}
+			/// @param begin First date of measurement
+			/// @param step Time between measurements
+			/// @param interpolationmethod Method for the interpolation (0 - Nearest neighbor, 1- linear, 2 - cubic spline (not implemented yet)
+			/// @param size Initial number of items. Items are filled with 0.0
+			timeseries(cmf::math::Time begin,cmf::math::Time step,int interpolationmethod=1,size_t size=0);
 			timeseries() : m_data(make_data()) 
 			{	}
 			timeseries( const cmf::math::timeseries& ts ) 

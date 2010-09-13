@@ -73,9 +73,6 @@ class simple_quad_tree:
         self.dy=dy
         self.areas={}
         
-                        
-        
-       
 class nearest_neighbor_map(Map):
     """A map (spatial distribution of data) returning the nearest neighbor to the queried position
     Stores position referenced objects.

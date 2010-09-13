@@ -147,11 +147,6 @@ namespace cmf {
 
 
 				/// Calculates the transpiration and the soil evaporation from dry surfaces
-				/// @param w A meteorological data record
-				/// @param soilwater_matrixpotential The suction of the soil water in m water column
-				/// @param veg The parameters of the vegetation
-				/// @param CanopyStoresWater Flag indicating wet leaves. If true, a canopy surface resistance of 0 is assumed
-				/// @param measurement_height_above_canopy The height of the wind speed above the canopy in m
 				ShuttleworthWallace(cmf::upslope::Cell& cell);
 
 				static ShuttleworthWallace* use_for_cell(cmf::upslope::Cell& cell);

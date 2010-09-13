@@ -1,0 +1,40 @@
+/**
+@page python The cmf Python modules
+After installation of cmf (@ref inst) cmf can be imported, like any other 
+Python module.
+@code
+>>>import cmf
+@endcode
+@section pack Packages
+If an installation of matplotlib is found, a submodule @c cmf.draw is loaded, 
+which provides a selection of helper functions, for visualization of states 
+and fluxes of cmf objects. This library is not very well documented. 
+
+For accessing raster data, mainly in the ESRI ASCII-grid format the package
+@c cmf.raster is provided. It contains one class @c Raster which is not imported
+automatically with cmf.
+@code
+>>>from cmf.raster import Raster
+@endcode
+
+@section mod Modules
+
+@subsection maps cmf.maps
+Maps are used to distribute objects, like soil types into space. Basically they
+need to implement a __call__ function, taking three floats (x,y,z) and returning 
+the object at this position.
+
+Implemented maps:
+- nearest_neighbor_map
+- polygon_map
+- raster_map
+
+@subsection soil cmf.soil
+cmf needs for most setups soilphysical properties like pF curve and saturated conductivity.
+This module includes the pedotransfer tables from the German "KA4". Other pedotransfer functions
+may follow.
+
+@subsection shp cmf.shapefile
+An ESRI shapefile reader 
+
+**/

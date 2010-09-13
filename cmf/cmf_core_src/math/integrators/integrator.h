@@ -171,7 +171,6 @@ namespace cmf {
 
 			/// Constructs a new Integrator with a new own state vector
 			/// @param epsilon relative error tolerance per time step (default=1e-9)
-			/// @param tStepMin minimum time step (default=10s)
 			Integrator(real epsilon=1e-9) 
 				: m_States(), Epsilon(epsilon),m_dt(day),m_t(day)
 			{}
@@ -193,10 +192,13 @@ namespace cmf {
 			//@{
 
 			///Integrates the vector of state variables
-			/// @param MaxTime To stop the model (if running in a model framework) at time steps of value exchange e.g. full hours, the next value exchange time can be given
-			/// @param TimeStep Takes the proposed timestep, and changes it into the effictivly used timestep according to the local stiffness of the problem and MaxTime
+			/// @param t_max To stop the model (if running in a model framework) at time steps of value exchange e.g. full hours, the next value exchange time can be given
+			/// @param dt Takes the proposed timestep, and changes it into the effictivly used timestep according to the local stiffness of the problem and MaxTime
 			virtual int integrate(cmf::math::Time t_max,cmf::math::Time dt)=0;
-			///Integrates the vector of state variables until MaxTime
+			///Integrates the vector of state variables until t_max
+			/// @param t_max Time, the solver should run to
+			/// @param dt Time step (may be omitted)
+			/// @param reset If true, solver is resetted before integration starts
 			void integrate_until(cmf::math::Time t_max,cmf::math::Time dt=Time(),bool reset=false);
 			//@}
 		};

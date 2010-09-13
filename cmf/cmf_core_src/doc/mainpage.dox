@@ -4,19 +4,23 @@
 
 This is cmf, the Catchment Model Framework.
 
-cmf is a library containing classes and methods to create hydrological models, wich are highly modular 
-and connectible to other models. Although written in C++, it primary usage is to be compiled as an 
-extension to other programming languages, using SWIG (http://www.swig.org). 
+cmf is a programming library to create hydrological models, wich are highly modular 
+and connectible to other models. Although written in C++, its primary usage is to be compiled as an 
+extension to other programming languages, using <a class="el" href=http://www.swig.org>SWIG</a>. 
 
-Until now only Python as a target language is actively supported. 
+Until now only <a class="el" href="http://www.python.org">Python</a> as a target language is actively supported. 
 
-An overview of the architecture of cmf, and the
-theory behind the architecture can be found here: \subpage FVM
+Further reading:
+- @subpage FVM
+- @subpage inst
+- @subpage python
+- @subpage LM
+- @subpage license
 
-If you'd like to start about how to build a landscape model for water and solute transport, start here: \subpage LM
+cmf is open source and generally licensed by GNU public license (GPLv3): \subpage license
 
 These texts are mainly citations from: Philipp Kraft, Kellie B. Vache, Lutz Breuer, Hans-Georg Frede: 
-\image html cmf_background.png
+\image html cmf_background2.png
 \author Philipp Kraft, Kellie B. Vache, Lutz Breuer, Hans-Georg Frede
 \author Justus Liebig University, Giessen, Germany
 \author Institute for Landscape planning and Ressource Management
