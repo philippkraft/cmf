@@ -67,7 +67,7 @@ namespace cmf {
 			/// Initializes the solver. Do not add or remove statevariables after initialization
 			void Initialize();
 
-			virtual int integrate(cmf::math::Time MaxTime,cmf::math::Time TimeStep);
+			virtual int integrate(cmf::math::Time t_max,cmf::math::Time dt);
 			/// Resets the integrator
 			virtual void Reset();
 			

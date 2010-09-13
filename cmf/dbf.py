@@ -23,6 +23,8 @@ but slightly adopted (default return of float instead only decimals)
 All other function by Philipp Kraft
 """
 import struct, datetime, decimal, itertools
+from collections import namedtuple
+from os import path
 
 def dbfreader(f,numberAsFloat=True):
     """Returns an iterator over records in a Xbase DBF file.
@@ -79,6 +81,8 @@ def dbfreader(f,numberAsFloat=True):
                 value = datetime.date(y, m, d)
             elif typ == 'L':
                 value = (value in 'YyTt' and 'T') or (value in 'NnFf' and 'F') or '?'
+            elif typ == 'C':
+                value = value.strip()
             result.append(value)
         yield result
 
@@ -151,24 +155,20 @@ def dbflist(filename) :
     l=list(dbf)
     f.close()
     return l[0],l[1],l[2:]
-def objects(classname,fieldnames,data):
-    str = "class %s:\n    def __init__(self,params):\n" % classname
-    for i,f in enumerate(fieldnames):
-        str+=" " * 8 + "self.%s=params[%i]\n" % (f,i)
-    exec(str)
-    c=eval(classname)
-    result=[]
-    for line in data:
-        result.append(c(line))
-    return result
+def objects(typename,fieldnames,data):
+    nt = namedtuple(typename,fieldnames)
+    return [nt(*line) for line in data]
     
-def dbfclass(classname,filename):
+def dbfclass(filename):
     """Returns a list of object of a class tailored with the fields as attributes"""
     fields,types,data=dbflist(filename)
-    return objects(classname, fields, data)
-def txtclass(classname,filename,seperator='\t',decimalpoint='.'):
+    bn=path.basename(filename)
+    bn,ext = path.splitext(bn)
+    return objects(bn, fields, data)
+def txtclass(filename,seperator='\t',decimalpoint='.'):
     fields,data=txtlist(filename, seperator, decimalpoint) 
-    return objects(classname,fields,data)
+    bn,ext = path.splitext(bn)
+    return objects(bn, fields, data)
 def txtlist(filename,seperator='\t',decimalpoint='.'):
     """ Opens a tab or other character seperated txt file and returns a list of fieldnames and a list of data"""
     f=file(filename)

@@ -26,8 +26,9 @@ import dbf
 import struct
 import os
 import math
+from collections import namedtuple
 try:
-    import shapely
+    import shapely.geometry
     has_shapely = True
 except ImportError:
     has_shapely= False
@@ -46,7 +47,8 @@ if has_shapely:
             """ internal function to read a format fmt from file f """
             return struct.unpack(fmt,f.read(struct.calcsize(fmt)))        
         def readHeader(self,f):
-            """ reads the header of a shape file (see ESRI Shapefile Whitepaper (http://www.esri.com/library/whitepapers/pdfs/shapefile.pdf)"""
+            """ reads the header of a shape file (see ESRI Shapefile Whitepaper 
+            http://www.esri.com/library/whitepapers/pdfs/shapefile.pdf)"""
             fmt_begin='>i5i'
             begin=self.__readfmt(fmt_begin, f)
             self.file_size=self.__readfmt('>i', f)[0]*2
@@ -166,17 +168,18 @@ if has_shapely:
             elif os.path.exists(filename +'.shp'):
                 f=file(filename+'.shp','rb')
             else:
-                raise IOError("No such shapefile '%f' " % filename)
+                raise IOError("No such shapefile '%s' " % filename)
             
             self.readHeader(f)
             
-            shapes={}
-            number,obj=self.readRecord(f)
-            shapes[number]=obj
+            self.__data=[]
+            fields,types,data=dbf.dbflist(filename.lower().replace('.shp','.dbf'))
+            shpname=os.path.basename(filename).replace('.','_')
+            TYPE = namedtuple(shpname,['shape','OID'] + fields)
             while f.tell()<self.file_size :
                 try:
                     number,obj=self.readRecord(f)
-                    shapes[number]=obj
+                    self.__data.append(TYPE(obj,number,*data[number]))
                 except ValueError,e:
                     print e
                     print "Last imported object number:",number
@@ -186,9 +189,7 @@ if has_shapely:
                     print e
                     break
             f.close()
-            self.__data=dbf.dbfclass('attributes', filename.lower().replace('.shp','.dbf'))
-            for i,rec in enumerate(self.__data):
-                rec.shape=shapes[i+1]
+                
         def shapes(self):
             """ Returns a list of shapes """
             return [rec.shape for rec in self]

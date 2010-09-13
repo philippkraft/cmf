@@ -57,11 +57,11 @@ namespace cmf {
 			/// @note The RKF Integrator becomes the owner of states
 			/// @param states Statevariables of the system
 			/// @param epsilon relative error tolerance per time step (default=1e-9)
-			/// @param tStepMin minimum time step (default=1s)
+			/// @param dt_min minimum time step (default=1s)
 			RKFIntegrator(StateVariableOwner& states, real epsilon=1e-9,cmf::math::Time dt_min=cmf::math::timespan(1000));
 			/// Constructs a new RKFIntegrator
 			/// @param epsilon relative error tolerance per time step (default=1e-9)
-			/// @param tStepMin minimum time step (default=1s)
+			/// @param dt_min minimum time step (default=1s)
 			RKFIntegrator(real epsilon=1e-9,cmf::math::Time dt_min=cmf::math::timespan(1000));
 			
 

@@ -218,11 +218,11 @@ namespace cmf {
 			/// @ingroup ET
 			/// Calculates the potential evapotranspiration according to FAO(1998)
 			///
-			/// Gouverning equations:
+			/// Governing equations:
 			/// \f{eqnarray*}
-			/// \lambda get_evaporation &=& \frac{\Delta\left(R_n - G\right)+\rho_a c_p \frac{e_s - e_a}{r_a}}{\Delta + \gamma\left(1+\frac{r_s}{r_a}\right)} \mbox{ FAO 1998, Eq. 3} \\
+			/// \lambda ET &=& \frac{\Delta\left(R_n - G\right)+\rho_a c_p \frac{e_s - e_a}{r_a}}{\Delta + \gamma\left(1+\frac{r_s}{r_a}\right)} \mbox{ FAO 1998, Eq. 3} \\
 			/// \mbox{With:} \\
-			/// \Delta &=& 4098 \frac{0.6108 e^{17.27 T}}{(T+237.3)^2} \frac{kPa}{^\circ C} \mbox{	(FAO 1998, Eq. 13): Slope of vapor pressure }	\\
+			/// \Delta &=& 4098 \frac{0.6108 e^{17.27 T}}{(T+237.3)^2} \frac{kPa}{^\circ C} \mbox{	(FAO 1998, Eq. 13)}	\\
 			/// T &=& \mbox{Actual Temperature in } ^\circ C  \\
 			/// R_n &=& \mbox{net Radiation (see Atmosphere) in } \frac{MJ}{m^2day}	\\
 			/// G &=& 0 \ \frac{MJ}{m^2day} \mbox{ if daily average (FAO 1998, Eq. 42)} \\
@@ -230,18 +230,18 @@ namespace cmf {
 			///     && 0.5 R_n \ \mbox{ if night time (FAO 1998, Eq. 46)} \\
 			/// \gamma &=& \frac{c_p P}{\epsilon \lambda} \mbox{ (FAO 1998,Eq. 8): Psychrometric constant } \frac{kPa}{^\circ C} \\
 			/// c_p &=& 0.001013 \frac{MJ}{kg\ ^\circ C}\mbox{ specific heat at constant pressure } \\
-			/// P &=& 101.3 \left(\frac{293-0.0065z}{293}\right)^{5.26}  \mbox{ (FAO 1998,Eq. 7): Mean pressure kPa as a function of elevation above sea level in m} \\
-			/// \epsilon &=& 0.622 \mbox{	ratio molecular weight of water vapour/dry air} \\
-			/// \lambda &=& 2.45 \frac{MJ}{kg} \mbox{ (FAO 1998,Eq. 8): latent heat of vaporization} \\
-			/// R &=& 0.287 \frac{kJ}{kg\ k}\mbox{ Specific gas constant }		\\
-			/// \rho_a &=&	\frac{P}{1.01(T+273)R} \mbox{ (FAO 1998,Box. 6): Mean air density at constant pressure} \\
-			/// e_s &=& \mbox{ Saturated vapor pressure (see Atmosphere) in } kPa \\
-			/// e_a &=& \mbox{ Actual vapor pressure (see Atmosphere) in } kPa \\
-			/// r_a &=& \frac{\ln\left(\frac{2-d}{z_{om}}\right)\ln\left(\frac{2-d}{z_{oh}}\right)}{k^2 u_2} \mbox{ (FAO 1998, Eq. 4/Box 4): Aerodynamic resitance in } \frac s m \\
+			/// P &=& 101.3 \left(\frac{293-0.0065z}{293}\right)^{5.26}  \mbox{ (FAO 1998,Eq. 7)} \\
+			/// \epsilon &=& 0.622 \frac{mol/g \mbox{ vapor}}{mol/g \mbox{ liquid water}} \\
+			/// \lambda &=& 2.45 \frac{MJ}{kg} \mbox{ (FAO 1998,Eq. 8)} \\
+			/// R &=& 0.287 \frac{kJ}{kg\ k}\mbox{ Spec. gas const.}		\\
+			/// \rho_a &=&	\frac{P}{1.01(T+273)R} \mbox{ (FAO 1998,Box. 6)} \\
+			/// e_s &=& \mbox{ Sat. vapor press. } [kPa] \\
+			/// e_a &=& \mbox{ Act. vapor press. } [kPa] \\
+			/// r_a &=& \frac{\ln\left(\frac{2-d}{z_{om}}\right)\ln\left(\frac{2-d}{z_{oh}}\right)}{k^2 u_2} \mbox{ (FAO 1998, Eq. 4/Box 4} \frac s m \\
 			/// && d=\frac 2 3 h,z_{om}=0.123 h,z_{oh}=0.1 z_{om}, k=0.41 \\
 			/// h &=& \mbox{ Vegetation height in }m \\
-			/// u_2 &=& \mbox{ Windspeed in 2m above ground (see Atmosphere) } \frac m s \\
-			/// r_s &=& \frac{r_l}{LAI_{Active}} \mbox{ (FAO 1998, Eq. 5/Box 5): bulk surface resistance} \frac s m \\
+			/// u_2 &=& \mbox{ Windspeed in 2m above canopy } \frac m s \\
+			/// r_s &=& \frac{r_l}{LAI_{Active}} \mbox{ (FAO 1998, Eq. 5/Box 5)} \frac s m \\
 			/// && r_l=100 \frac s m, LAI_{Active}=0.5 LAI
 			/// \f}
 			class PenmanMonteithET : public cmf::water::flux_connection {

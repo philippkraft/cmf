@@ -408,3 +408,8 @@ cmf::math::num_array cmf::math::operator/( real _Left,const num_array& _Right )
 	return result;
 }
 
+int cmf::math::count_parallel_threads()
+{
+	return omp_get_max_threads();
+
+}

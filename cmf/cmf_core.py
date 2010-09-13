@@ -80,14 +80,14 @@ def _swig_setattr_nondynamic_method(set):
 
 
 SHARED_PTR_DISOWN = _cmf_core.SHARED_PTR_DISOWN
+
+def count_parallel_threads(*args):
+  """count_parallel_threads() -> int"""
+  return _cmf_core.count_parallel_threads(*args)
 class point(object):
     """
-    2D-Point Class.
-
-    Used as location property anywhere in the text Calculation of
-    distances
-
-    +,-,-=,*= Operators overloaded
+    2D-Point Class. /// /// Used as location property anywhere in the text
+    /// - Calculation of distances /// - +,-,-=,*= Operators overloaded
 
     C++ includes: geometry.h 
     """
@@ -115,7 +115,7 @@ class point(object):
         double
         distanceTo(point p) const
 
-        Returns the horizontal euclidian distance to another point p.
+        Returns the horizontal euclidian distance to another point p. ///
         $\\sqrt{(this.x-p.x)^2+(this.y-p.y)^2}$. 
         """
         return _cmf_core.point_distanceTo(self, *args, **kwargs)
@@ -127,7 +127,7 @@ class point(object):
         double z_weight_distance(point p, double z_weight) const
 
         Returns the horizontal euclidian distance plus the absolute of the
-        height difference times a factor.
+        height difference times a factor. ///
         $\\sqrt{(this.x-p.x)^2+(this.y-p.y)^2}\\ +\\ w_{z}|this.z-p.z|$.
 
         """
@@ -336,7 +336,12 @@ def dot(*args, **kwargs):
   return _cmf_core.dot(*args, **kwargs)
 
 def distance(*args, **kwargs):
-  """distance(point p1, point p2) -> double"""
+  """
+    distance(point p1, point p2) -> double
+
+    double
+    cmf::geometry::distance(const point &p1, const point &p2) 
+    """
   return _cmf_core.distance(*args, **kwargs)
 class point_vector(object):
     """
@@ -355,7 +360,7 @@ class point_vector(object):
 
         point_vector(int size)
 
-        z coordinates Create a point vector of a specific size 
+        z coordinates /// Create a point vector of a specific size 
         """
         _cmf_core.point_vector_swiginit(self,_cmf_core.new_point_vector(*args, **kwargs))
     def get(self, *args, **kwargs):
@@ -490,78 +495,43 @@ def square(*args, **kwargs):
 JULIANDAY_0_1_1900 = _cmf_core.JULIANDAY_0_1_1900
 class Time(object):
     """
-    A time class, used to pass around current modelling times.
-
+    A time class, used to pass around current modelling times /// ///
     Timespans and dates in cmf are used with a special object, called
-    Time. An extra class has the advantage, that the user does not have to
-    remember, which unit of time he or she uses or what time unit is
-    accepted by a specific function of the model. Arithmetic and boolean
-    operators are supported by Time. Internally the time classes stores
-    the time as integer milliseconds, therefore rounding issues will only
-    appear at very small time ranges. Absolute time (like dates) are
-    represented as milliseconds gone by from Dec, 31st 1899. Microsoft
-    Excel dates are represented as days from that time, using floating
-    point numbers, therefore it is very simple to convert Excel time
-    representations to cmf time.
+    Time. An extra /// class has the advantage, that the user does not
+    have to remember, which /// unit of time he or she uses or what time
+    unit is accepted by a specific function /// of the model. Arithmetic
+    and boolean operators are supported by Time. Internally /// the time
+    classes stores the time as integer milliseconds, therefore rounding
+    issues /// will only appear at very small time ranges. Absolute time
+    (like dates) are represented /// as milliseconds gone by from Dec,
+    31st 1899. Microsoft Excel dates are represented /// as days from that
+    time, using floating point numbers, therefore it is very simple /// to
+    convert Excel time representations to cmf time. /// /// Another object
+    is Date, which is doesn't provide the operators, but has a nice
+    printed /// version and some special date functions, like day of year
+    (DOY) and provides access /// to the current hour of day and so on,
+    which only applyto dates and not to time spans. /// You can convert
+    Time to Date an vice versa. The printing is not culture aware and ///
+    uses the European representation. If you use the Python standard
+    library datetime, /// conversion between Python time and cmf time is
+    possible /// /// Creating absolute time values (dates) ///.
 
-    Another object is Date, which is doesn't provide the operators, but
-    has a nice printed version and some special date functions, like day
-    of year (DOY) and provides access to the current hour of day and so
-    on, which only applyto dates and not to time spans. You can convert
-    Time to Date an vice versa. The printing is not culture aware and uses
-    the European representation. If you use the Python standard library
-    datetime, conversion between Python time and cmf time is possible
+    /// Creating time spans /// /// In principle, there are three ways to
+    create time spans. One is to use one of the /// static functions,
+    another is to multiply an existing time span (like one of the ///
+    build in constants) or to substrate two absolute times. /// ///
+    Available constants /// - : 4.1 seconds /// - : 2.3 hours (138 min)
+    /// - : 2.3 hours (138 min) /// - : 60 hours (2.5 days) /// - : 7 days
+    /// - : 365/12 days (30.4167 days) /// - : 365 days /// // Available
+    operators: /// /// - time + time = time, time - time = time /// - time
+    * float = time ,time / float = time /// - time/time=float /// - &gt,
+    &lt, ==, != ///
 
-    Creating absolute time values (dates) Creating time spans
+    /// Conversions /// /// Converting to python datetime ///
 
-    In principle, there are three ways to create time spans. One is to use
-    one of the static functions, another is to multiply an existing time
-    span (like one of the build in constants) or to substrate two absolute
-    times.
-
-    Available constants  : 4.1 seconds
-
-    : 2.3 hours (138 min)
-
-    : 2.3 hours (138 min)
-
-    : 60 hours (2.5 days)
-
-    : 7 days
-
-    : 365/12 days (30.4167 days)
-
-    : 365 days
-
-    Available operators:
-
-    time + time = time, time - time = time
-
-    time * float = time ,time / float = time
-
-    time/time=float
-
-    &gt, &lt, ==, !=
-
-    Conversions
-
-    Converting to python datetime
-
-    Converting to numbers
-
-    t.AsMilliseconds()
-
-    t.AsSeconds()
-
-    t.AsMinutes()
-
-    t.AsHours()
-
-    t.AsDays()
-
-    t.AsYears()
-
-    Creating time ranges
+    /// Converting to numbers /// /// - t.AsMilliseconds() /// -
+    t.AsSeconds() /// - t.AsMinutes() /// - t.AsHours() /// - t.AsDays()
+    /// - t.AsYears() /// /// /// Creating time ranges ///
 
     C++ includes: time.h 
     """
@@ -886,33 +856,34 @@ Date_swigregister(Date)
 class timeseries(object):
     """
     A timeseries is a list of values, equally distributed over time. To
-    create one, one have to provide as start date and a step size. The end
-    time is calculated from the number of values. Values queried for times
-    before the start time are returned as the first item, values after the
-    end time equal the last item. A timeseries with only one item reacts
-    like a scalar value.
+    create one, /// one have to provide as start date and a step size. The
+    end time is calculated from /// the number of values. Values queried
+    for times before the start time are returned /// as the first item,
+    values after the end time equal the last item. A timeseries with ///
+    only one item reacts like a scalar value. ///.
 
-    Creating a time series
+    /// Creating a time series
 
-    import CMFLib as cmf                 # Start date is the January 5th
-    2001 at 2:30 pm start=cmf.Time(5,1,2001,14,30)
-    # time step of the timeseries is 20 minutes step=cmf.min*20
-    # Type of interpolation between values # 0 - Nearest neighbor,
-    # 1 - Linear, # 2 - Squared,                 # 3 - Cubic, etc.
-    interpolation=1                                                      #
-    Create timeseries timeseries=cmf.timeseries(start,step,interpolation)
-    # add data timeseries.add(0.1) # Value at 2001/5/1 2:30pm is 0.1
-    timeseries.add(0.2) # Value at 2001/5/1 2:50pm is 0.2
-    timeseries.add(0.1) # Value at 2001/5/1 3:10pm is 0.1
+    ///                 ///import CMFLib as cmf                 ///# Start
+    date is the January 5th 2001 at 2:30 pm
+    ///start=cmf.Time(5,1,2001,14,30) ///# time step of the timeseries is
+    20 minutes ///step=cmf.min*20                 ///# Type of
+    interpolation between values                 ///# 0 - Nearest
+    neighbor,                 ///# 1 - Linear,                 ///# 2 -
+    Squared,                 ///# 3 - Cubic, etc.
+    ///interpolation=1 ///# Create timeseries
+    ///timeseries=cmf.timeseries(start,step,interpolation) ///# add data
+    ///timeseries.add(0.1) # Value at 2001/5/1 2:30pm is 0.1
+    ///timeseries.add(0.2) # Value at 2001/5/1 2:50pm is 0.2
+    ///timeseries.add(0.1) # Value at 2001/5/1 3:10pm is 0.1 ///  ///
 
-    With this technic it is simple to read files or databases to fill
-    timeseries.Using a timeseries
+    /// With this technic it is simple to read files or databases to fill
+    timeseries. ////// Using a timeseries
 
-    # Query every minute between 2:15 and 3:14 pm for t in
-    cmf.timerange(start,start+cmf.h,cmf.min): print
-    "Time:",t.AsDate(),"Value:",timeseries[t]                 # Query
-    a specific position of the timeseries                 print
-    timeseries[2]
+    ///  ///                 ///# Query every minute between 2:15 and 3:14
+    pm ///for t in cmf.timerange(start,start+cmf.h,cmf.min): ///    print
+    "Time:",t.AsDate(),"Value:",timeseries[t] ///# Query a specific
+    position of the timeseries ///print timeseries[2] ///
 
     C++ includes: timeseries.h 
     """
@@ -989,7 +960,7 @@ class timeseries(object):
 
     def __init__(self, *args): 
         """
-        __init__(self, Time _begin, Time _step, int _interpolationmethod = 1, 
+        __init__(self, Time begin, Time step, int interpolationmethod = 1, 
             size_t size = 0) -> timeseries
         __init__(self) -> timeseries
         __init__(self, timeseries ts) -> timeseries
@@ -1462,10 +1433,8 @@ def xtimerange(start,end,step=day):
 class integratable(object):
     """
     integration_variable is a functionality for different classes for
-    integrating values over time.
-
-    Main usage of an integration_variable is the calculation of average
-    fluxes over time
+    integrating values over time. /// /// Main usage of an
+    integration_variable is the calculation of average fluxes over time
 
     C++ includes: statevariable.h 
     """
@@ -1498,9 +1467,10 @@ integratable_swigregister(integratable)
 
 class StateVariable(object):
     """
-    Abstract class state variable.
+    Abstract class state variable /// /// Simple exponential system class
+    header implementing a state variable: ///.
 
-    Simple exponential system class header implementing a state variable:
+    ///
 
     C++ includes: statevariable.h 
     """
@@ -1646,12 +1616,12 @@ state_queue_swigregister(state_queue)
 
 class Integrator(StateVariableOwner):
     """
-    Base class for any kind of integrator.
+    Base class for any kind of integrator /// /// Pure virtual functions:
+    /// - Integrate /// - Copy /// Please provide a custom copy
+    constructor ///.
 
-    Pure virtual functions: Integrate
-
-    Copy Please provide a custom copy constructorTodo Put the methods of
-    StateVariableVector here, and delete StateVariableVector
+    Todo Put the methods of StateVariableVector here, and delete
+    StateVariableVector
 
     C++ includes: integrator.h 
     """
@@ -1741,14 +1711,14 @@ class Integrator(StateVariableOwner):
         virtual int
         integrate(cmf::math::Time t_max, cmf::math::Time dt)=0
 
-        Integrates the vector of state variables.
+        Integrates the vector of state variables ///.
 
         Parameters:
         -----------
 
         MaxTime:  To stop the model (if running in a model framework) at time
         steps of value exchange e.g. full hours, the next value exchange time
-        can be given
+        can be given ///
 
         TimeStep:  Takes the proposed timestep, and changes it into the
         effictivly used timestep according to the local stiffness of the
@@ -1806,19 +1776,14 @@ Integrator_swigregister(Integrator)
 class BDF2(Integrator):
     """
     An order 2 BDF-Method with fixed-point iteration and variable step
-    size.
-
-    Recommended integrator for CMF (so far)
-
-    Derived from Roussel C. and Roussel M. (2003) "Generic Object-
-    Oriented Differential Equation Integrators", C/C++ User Journal, Nov.
-    2003,http://www.ddj.com/cpp/184401724?pgno=8 and
-
-    Eckert S., Baaser H., Gross D. and Scherf O. (2004) "A BDF2
-    integration method with step size control for elasto-plasticity",
-    Computational Mechanics 34, 377 - 386, DOI: 10.1007/s00466-004-0581-1
-
-    Most important function: Integrate
+    size /// /// Recommended integrator for CMF (so far) /// /// Derived
+    from /// - Roussel C. and Roussel M. (2003) "Generic Object-Oriented
+    Differential Equation Integrators", /// C/C++ User Journal, Nov.
+    2003,http://www.ddj.com/cpp/184401724?pgno=8 and /// - Eckert S.,
+    Baaser H., Gross D. and Scherf O. (2004) "A BDF2 integration method
+    with step size control for elasto- plasticity", /// Computational
+    Mechanics 34, 377 - 386, DOI: 10.1007/s00466-004-0581-1 /// /// Most
+    important function: Integrate.
 
     C++ includes: bdf2.h 
     """
@@ -1855,7 +1820,7 @@ class BDF2(Integrator):
         BDF2(const Integrator
         &templ)
 
-        Constructs a new BDF2 integrator.
+        Constructs a new BDF2 integrator ///.
 
         Parameters:
         -----------
@@ -1891,7 +1856,7 @@ class ExplicitEuler_fixed(Integrator):
     def __init__(self, *args): 
         """
         __init__(self, StateVariableOwner states) -> ExplicitEuler_fixed
-        __init__(self, real epsilon = 1e-9) -> ExplicitEuler_fixed
+        __init__(self) -> ExplicitEuler_fixed
         __init__(self, Integrator copy) -> ExplicitEuler_fixed
 
         ExplicitEuler_fixed(const Integrator &copy)
@@ -1966,12 +1931,12 @@ class RKFIntegrator(Integrator):
         RKFIntegrator(real epsilon=1e-9, cmf::math::Time
         dt_min=cmf::math::timespan(1000))
 
-        Constructs a new RKFIntegrator.
+        Constructs a new RKFIntegrator ///.
 
         Parameters:
         -----------
 
-        epsilon:  relative error tolerance per time step (default=1e-9)
+        epsilon:  relative error tolerance per time step (default=1e-9) ///
 
         tStepMin:  minimum time step (default=1s) 
         """
@@ -1983,9 +1948,8 @@ RKFIntegrator_swigregister(RKFIntegrator)
 
 class CVodeIntegrator(Integrator):
     """
-    A wrapper class for the CVODE integrator from the SUNDIALS library.
-
-    https://computation.llnl.gov/casc/sundials/main.html
+    A wrapper class for the CVODE integrator from the SUNDIALS library ///
+    ///https://computation.llnl.gov/casc/sundials/main.html.
 
     C++ includes: cvodeintegrator.h 
     """
@@ -2129,12 +2093,12 @@ class MultiIntegrator(Integrator):
         MultiIntegrator(const cmf::math::Integrator &template_integrator, int
         count)
 
-        Creates a new MultiIntegrator.
+        Creates a new MultiIntegrator ///.
 
         Parameters:
         -----------
 
-        template_integrator:  Template for the integrators
+        template_integrator:  Template for the integrators ///
 
         count:  Number of integrators 
         """
@@ -2322,19 +2286,18 @@ SoluteTimeseries_swigregister(SoluteTimeseries)
 class SoluteStorage(StateVariable):
     """
     A class for the storage of any tracer. The state is the amount (mol,
-    kg etc. see cmf::water) of the tracer in the storage.
-
-    The derivative function is given by: \\begin{eqnarray*}
+    kg etc. see cmf::water) /// of the tracer in the storage. /// /// The
+    derivative function is given by: /// \\begin{eqnarray*} ///
     \\frac{dX}{dt}&=&\\sum_{f=1}^{F}\\left( q_f [X]_f\\right) +
-    X_{in} - r^-X \\left[\\frac{mol}{day}\\right]\\\\ F&=&
-    \\mbox{Number of fluxes in water storage} \\\\ q_f&=&
-    \\mbox{Water flux in } \\frac{m^3}{day} \\\\
+    X_{in} - r^-X \\left[\\frac{mol}{day}\\right]\\\\ /// F&=&
+    \\mbox{Number of fluxes in water storage} \\\\ /// q_f&=&
+    \\mbox{Water flux in } \\frac{m^3}{day} \\\\ ///
     \\left[X\\right]_f &=& \\mbox{Concentration of solute X in flux
-    }q_f \\mbox{ in } \\frac{mol}{m^3} \\\\ X_{in} &=&
-    \\mbox{Absolute source or sink term} \\frac{mol}{day} \\\\ r^-
-    &=& \\mbox{Decay rate} \\frac 1{day} \\\\ V &=&
-    \\mbox{Volume of water in water storage }\\left[m^3\\right]
-    \\end{eqnarray*}
+    }q_f \\mbox{ in } \\frac{mol}{m^3} \\\\ /// X_{in} &=&
+    \\mbox{Absolute source or sink term} \\frac{mol}{day} \\\\ ///
+    r^- &=& \\mbox{Decay rate} \\frac 1{day} \\\\ /// V &=&
+    \\mbox{Volume of water in water storage }\\left[m^3\\right] ///
+    \\end{eqnarray*}.
 
     C++ includes: SoluteStorage.h 
     """
@@ -2362,12 +2325,11 @@ SoluteStorage_swigregister(SoluteStorage)
 
 class flux_node(object):
     """
-    Base class for everything that can be connected by fluxes.
-
+    Base class for everything that can be connected by fluxes. /// /// ///
     Flux nodes can be WaterStorages, flux end points, sinks, sources and
-    bridges to other model domains (e.g. Ponded water to river system).
-    The base class can be used where a simple routing, potentially with
-    mixing, is needed.
+    /// bridges to other model domains (e.g. Ponded water to river
+    system). /// The base class can be used where a simple routing,
+    potentially with mixing, /// is needed.
 
     C++ includes: flux_node.h 
     """
@@ -2408,8 +2370,8 @@ class flux_node(object):
         bool RecalcFluxes(cmf::math::Time t)
 
         Pure flux_nodes do not influence fluxes, therefore no recalculation of
-        fluxes is required by flux_node. WaterStorage overrides this, since
-        state changes require an update of the fluxes. 
+        fluxes is required by flux_node. /// WaterStorage overrides this,
+        since state changes require an update of the fluxes. 
         """
         return _cmf_core.flux_node_RecalcFluxes(self, *args, **kwargs)
 
@@ -2473,12 +2435,12 @@ class flux_node(object):
         const
 
         Returns the sum of all fluxes (positive and negative) at time t.
-        Single fluxes can be excluded from the calculation.
+        Single fluxes can be excluded from the calculation ///.
 
         Parameters:
         -----------
 
-        t:  Time of the query
+        t:  Time of the query ///
 
         Without:  A flux_connection that is excluded from the water_balance
         (e.g. to prevent closed circuits) 
@@ -2506,8 +2468,8 @@ class flux_node(object):
         """
         is_empty(self) -> double
 
-        virtual bool
-        is_empty() const
+        virtual
+        double is_empty() const
 
         Returns true if the node has no water. 
         """
@@ -2648,7 +2610,8 @@ water_balance_integrator_swigregister(water_balance_integrator)
 
 class flux_connection(object):
     """
-    Represents a connection between flux_nodes, where water fluxes occur.
+    /// Represents a connection between flux_nodes, where water fluxes
+    occur.
 
     C++ includes: flux_connection.h 
     """
@@ -2732,8 +2695,9 @@ class flux_connection(object):
         real
         conc(cmf::math::Time t, const cmf::water::solute &_Solute)
 
-        Returns the concentration of the flux. If not overridden, it returns
-        the concentration of the source of the flux (direction depending). 
+        Returns the concentration of the flux. If not overridden, /// it
+        returns the concentration of the source of the flux (direction
+        depending). 
         """
         return _cmf_core.flux_connection_conc(self, *args, **kwargs)
 
@@ -2865,7 +2829,7 @@ connection_integrator_swigregister(connection_integrator)
 
 class waterbalance_connection(flux_connection):
     """
-    Routes the sum of all other fluxes to a target.
+    /// Routes the sum of all other fluxes to a target
 
     C++ includes: flux_connection.h 
     """
@@ -2885,8 +2849,8 @@ waterbalance_connection_swigregister(waterbalance_connection)
 
 class external_control_connection(flux_connection):
     """
-    Flux from one node to another, controlled by the user or an external
-    program, by changing the flux constant.
+    /// Flux from one node to another, controlled by the user or an
+    external program, /// by changing the flux constant
 
     C++ includes: flux_connection.h 
     """
@@ -2914,7 +2878,7 @@ def set_flux(*args, **kwargs):
     cmf::water::set_flux(flux_node::ptr source, flux_node::ptr target,
     real flux_value)
 
-    Sets a constant flux between two nodes, if an
+    /// Sets a constant flux between two nodes, if an
     external_control_connection exists. 
     """
   return _cmf_core.set_flux(*args, **kwargs)
@@ -2926,8 +2890,9 @@ def can_set_flux(*args, **kwargs):
     bool
     cmf::water::can_set_flux(flux_node::ptr source, flux_node::ptr target)
 
-    Checks if a constant flux between two nodes can be set. Returns true
-    if the nodes are connected by an external_control_connection. 
+    /// Checks if a constant flux between two nodes can be set. Returns
+    true /// if the nodes are connected by an external_control_connection
+
     """
   return _cmf_core.can_set_flux(*args, **kwargs)
 class linear_scale(object):
@@ -2961,13 +2926,12 @@ linear_scale_swigregister(linear_scale)
 
 class DricheletBoundary(flux_node):
     """
-    Drichelet (constant head) boundary condition.
-
-    This boundary condition can be used either as a pure sink boundary
-    condition or as a conditional source / sink boundary condition. The
-    constant head of the boundary condition is interpreted and handled by
-    the connections of the boundary condition. Not head aware connections,
-    should not be used, since they are ignoring the constant head.
+    /// Drichelet (constant head) boundary condition /// /// This boundary
+    condition can be used either as a pure sink boundary condition or as a
+    conditional source / sink boundary condition. /// The constant head of
+    the boundary condition is interpreted and handled by the connections
+    of the boundary condition. /// Not head aware connections, should not
+    be used, since they are ignoring the constant head.
 
     C++ includes: boundary_condition.h 
     """
@@ -2990,8 +2954,8 @@ class DricheletBoundary(flux_node):
         virtual bool RecalcFluxes(cmf::math::Time t)
 
         Pure flux_nodes do not influence fluxes, therefore no recalculation of
-        fluxes is required by flux_node. WaterStorage overrides this, since
-        state changes require an update of the fluxes. 
+        fluxes is required by flux_node. /// WaterStorage overrides this,
+        since state changes require an update of the fluxes. 
         """
         return _cmf_core.DricheletBoundary_RecalcFluxes(self, *args, **kwargs)
 
@@ -3014,11 +2978,10 @@ DricheletBoundary_swigregister(DricheletBoundary)
 
 class NeumannBoundary(flux_node):
     """
-    A Neumann boundary condition (constant flux boundary condition).
-
-    The flux is a timeseries, but can be used as a scalar. To scale the
-    timeseries to the specific conditions of this boundary condition the
-    linear_scale flux_scale can be used.
+    /// A Neumann boundary condition (constant flux boundary condition)
+    /// /// The flux is a timeseries, but can be used as a scalar. /// To
+    scale the timeseries to the specific conditions of this boundary
+    condition the linear_scale flux_scale can be used.
 
     C++ includes: boundary_condition.h 
     """
@@ -3070,8 +3033,8 @@ def NeumannBoundary_create(*args, **kwargs):
 
 class NeumannFlux(flux_connection):
     """
-    This flux_connection is created, when connecting a Neumann boundary
-    condition with a state variable using Neumann::connect_to.
+    /// This flux_connection is created, when connecting a Neumann
+    boundary condition with a state variable using Neumann::connect_to
 
     C++ includes: boundary_condition.h 
     """
@@ -3091,13 +3054,11 @@ NeumannFlux_swigregister(NeumannFlux)
 
 class TechnicalFlux(flux_connection):
     """
-    Produces a constant but changeable flux from a source to a target, if
-    enough water is present in the source.
-
-    $ q=\\left\\{0 \\mbox{ if }V_{source}\\le V_{min}\\\\
-    \\frac{V_{source} - V_{min}}{t_{decr} q_{0} - V_{min}}\\mbox{ if }
-    V_{source} t_{decr} q_{0}\\\\ q_{0} \\mbox{ else}\\le
-    \\right. $
+    /// Produces a constant but changeable flux from a source to a target,
+    if enough water is present in the source /// /// $ q=\\left\\{0
+    \\mbox{ if }V_{source}\\le V_{min}\\\\ \\frac{V_{source} -
+    V_{min}}{t_{decr} q_{0} - V_{min}}\\mbox{ if } V_{source} t_{decr}
+    q_{0}\\\\ q_{0} \\mbox{ else}\\le \\right. $
 
     C++ includes: boundary_condition.h 
     """
@@ -3117,18 +3078,18 @@ class TechnicalFlux(flux_connection):
         flux_decrease_time=cmf::math::h)
 
         Produces a constant but changeable flux from a source to a target, if
-        enough water is present in the source.
+        enough water is present in the source ///.
 
         Parameters:
         -----------
 
-        source:  The source of the water
+        source:  The source of the water ///
 
-        target:  The target of the water
+        target:  The target of the water ///
 
-        maximum_flux:  The requested flux $q_{0}$
+        maximum_flux:  The requested flux $q_{0}$ ///
 
-        minimal_state:  Minimal volume of stored water in source
+        minimal_state:  Minimal volume of stored water in source ///
 
         flux_decrease_time:  ( cmf::math::Time) 
         """
@@ -3139,14 +3100,13 @@ TechnicalFlux_swigregister(TechnicalFlux)
 
 class WaterStorage(StateVariable,StateVariableOwner,flux_node):
     """
-    A state variable for the storage of water.
-
-    A class for the storage of water. The state is the volume of water
-    stored in $m^3$ The derivative function is given by:
-    \\begin{eqnarray*} \\frac{dV}{dt}&=&\\sum_{f=1}^{F} q_f \\\\
-    F&=& \\mbox{Number of fluxes in water storage} \\\\ q_f&=&
-    \\mbox{Water flux in } \\frac{m^3}{day} \\\\
-    \\end{eqnarray*}
+    /// A state variable for the storage of water /// /// A class for the
+    storage of water. The state is the volume of water stored in $m^3$ ///
+    The derivative function is given by: /// \\begin{eqnarray*} ///
+    \\frac{dV}{dt}&=&\\sum_{f=1}^{F} q_f \\\\ /// F&=&
+    \\mbox{Number of fluxes in water storage} \\\\ /// q_f&=&
+    \\mbox{Water flux in } \\frac{m^3}{day} \\\\ ///
+    \\end{eqnarray*} /// ///
 
     Todo Check the head based state mode
 
@@ -3156,17 +3116,17 @@ class WaterStorage(StateVariable,StateVariableOwner,flux_node):
     __repr__ = _swig_repr
     def __init__(self, *args, **kwargs): 
         """
-        __init__(self, project _project, string Name = "", double InitialState = 0) -> WaterStorage
+        __init__(self, project project, string Name = "", double InitialState = 0) -> WaterStorage
 
         WaterStorage(const cmf::project &_project, const std::string
         &Name="", double InitialState=0)
 
-        creates a water storage (abstract class)
+        creates a water storage (abstract class) ///
 
         Parameters:
         -----------
 
-        _project:  The project the waterstorage belongs to
+        _project:  The project the waterstorage belongs to ///
 
         InitialState:  Initial water content in m3 
         """
@@ -3234,15 +3194,12 @@ def WaterStorage_create(*args, **kwargs):
 
 class kinematic_wave(flux_connection):
     """
-    Calculates flux out of a storage as a linear function of its volume to
-    a power.
-
-    \\[ q = \\frac {V_{mobile}^\\beta}{t_r} \\] where:
-    $V_{mobile} [m^3] = V - V_{residual}$ the stored mobile volume
-
-    $\\beta [-]$ An empirical exponent to shape the flux function
-
-    $t_r [days]$ The residence time of the water in this storage in days
+    /// Calculates flux out of a storage as a linear function of its
+    volume to a power. /// /// \\[ q = \\frac
+    {V_{mobile}^\\beta}{t_r} \\] /// where: /// - $V_{mobile} [m^3] =
+    V - V_{residual}$ the stored mobile volume  $\\beta [-]$ An
+    empirical exponent to shape the flux function /// - $t_r [days]$ The
+    residence time of the water in this storage in days
 
     C++ includes: WaterStorage.h 
     """
@@ -3259,23 +3216,23 @@ class kinematic_wave(flux_connection):
         kinematic_wave(WaterStorage::ptr source, flux_node::ptr target, real
         residencetime, real exponent=1.0, real residual_volume=0.0)
 
-        Creates a kinematic wave connection. \\[ q = \\frac {\\left(V -
-        V_{residual}\\right)^\\beta}{t_r} \\].
+        Creates a kinematic wave connection. /// \\[ q = \\frac
+        {\\left(V - V_{residual}\\right)^\\beta}{t_r} \\] ///.
 
         Parameters:
         -----------
 
         source:  Water storage from which the water flows out. Flux is a
-        function of source.volume
+        function of source.volume ///
 
         target:  Target node (boundary condition or storage). Does not
-        influence the strength of the flow
+        influence the strength of the flow ///
 
         residencetime:   $t_r [days]$ The residence time of the water in this
-        storage
+        storage ///
 
         exponent:   $\\beta [-]$ An empirical exponent to shape the flux
-        function (default = 1 (linear function))
+        function (default = 1 (linear function)) ///
 
         residual_volume:   $V_{residual} [m^3]$ The volume of water not
         flowing out (default = 0 m3) 
@@ -3287,12 +3244,11 @@ kinematic_wave_swigregister(kinematic_wave)
 
 class node_list(StateVariableOwner):
     """
-    A collection of nodes for fast access of the waterbalance.
-
-    In setups with many storages and rather fast computations, the speed
-    of data access for output generation can take a high portion of the
-    total run time. To accelerate data access, one can use the node_list
-    object
+    A collection of nodes for fast access of the waterbalance /// /// In
+    setups with many storages and rather fast computations, the speed of
+    data access for output generation can take a high portion of the total
+    run time. /// To accelerate data access, one can use the node_list
+    object /// ///.
 
     Todo Add a get_volume / set_volume function pair, to complement
     get_potential / set_potential
@@ -3368,12 +3324,10 @@ class node_list(StateVariableOwner):
 
         real global_water_balance(cmf::math::Time t) const
 
-        Returns the sum of the water balances of the nodes.
-
+        Returns the sum of the water balances of the nodes /// ///
         \\[\\sigma_{global} =
-        \\sum_{i=0}^N{\\sum_{j=0}^{C_i}{q_{ij}(t)}} \\]
-
-        Replaces slow Python code like: 
+        \\sum_{i=0}^N{\\sum_{j=0}^{C_i}{q_{ij}(t)}} \\] /// /// Replaces
+        slow Python code like: ///. 
         """
         return _cmf_core.node_list_global_water_balance(self, *args, **kwargs)
 
@@ -3383,11 +3337,9 @@ class node_list(StateVariableOwner):
 
         cmf::math::num_array water_balance(cmf::math::Time t) const
 
-        Returns the water balance of each vector as a vector.
-
-        \\[ \\sigma_i = \\sum_{j=0}^{C_i}{q_{ij}(t)} \\]
-
-        Replaces slow Python code like: 
+        Returns the water balance of each vector as a vector /// /// \\[
+        \\sigma_i = \\sum_{j=0}^{C_i}{q_{ij}(t)} \\] /// /// Replaces
+        slow Python code like: ///. 
         """
         return _cmf_core.node_list_water_balance(self, *args, **kwargs)
 
@@ -3424,18 +3376,17 @@ class node_list(StateVariableOwner):
         &targets, cmf::math::Time t) const
 
         A fast method to perform flux queries as a batch. The node lists left
-        and right should have the same length.
+        and right should have the same length. /// ///.
 
         The vector containing the flux from left to right at the same position
+        ///
 
         Parameters:
         -----------
 
-        targets:  A node_list containing the source nodes
+        targets:  A node_list containing the source nodes ///
 
-        t:  The time for the fluxes
-
-        Replaces slow Python code like: 
+        t:  The time for the fluxes /// Replaces slow Python code like: /// 
         """
         return _cmf_core.node_list_get_fluxes_to(self, *args, **kwargs)
 
@@ -3520,18 +3471,16 @@ node_list_swigregister(node_list)
 
 class NeumannBoundary_list(object):
     """
-    Provides fast access to Neumann boundaries for flux update.
-
-    If many Neumann boundary conditions are present in a project, a fast
-    data exchange to update the fluxes might be needed.
-
-    With this specialized list a num_array can be passed to the boundary
-    conditions for a fast flux update If a multiple system layout for the
-    cmf setup is chosen, we might have a node_list Drichelet boundary
+    Provides fast access to Neumann boundaries for flux update /// /// If
+    many Neumann boundary conditions are present in a project, a fast data
+    exchange to update the fluxes might be needed. /// /// With this
+    specialized list a num_array can be passed to the boundary conditions
+    for a fast flux update /// If a multiple system layout for the cmf
+    setup is chosen, we might have a /// node_list Drichelet boundary
     conditions (dbc), a corresponding NeumannBoundary_list (nbc) of
-    Neumann boundaries and a node_list containing the storages connected
-    with the NeumannBoundary_list (storages). The fast data exchange is
-    written in Python as:
+    Neumann boundaries and a node_list /// containing the storages
+    connected with the NeumannBoundary_list (storages). The fast data
+    exchange is written in Python as: ///.
 
     C++ includes: collections.h 
     """
@@ -3602,11 +3551,10 @@ class NeumannBoundary_list(object):
         real
         global_water_balance(cmf::math::Time t) const
 
-        Returns the sum of the water balances of the nodes
+        Returns the sum of the water balances of the nodes ///
         \\[\\sigma_{global} =
-        \\sum_{i=0}^N{\\sum_{j=0}^{C_i}{q_{ij}(t)}} \\].
-
-        Replaces slow Python code like: 
+        \\sum_{i=0}^N{\\sum_{j=0}^{C_i}{q_{ij}(t)}} \\] /// /// Replaces
+        slow Python code like: ///. 
         """
         return _cmf_core.NeumannBoundary_list_global_water_balance(self, *args, **kwargs)
 
@@ -3616,10 +3564,9 @@ class NeumannBoundary_list(object):
 
         cmf::math::num_array water_balance(cmf::math::Time t) const
 
-        Returns the water balance of each vector as a vector \\[ \\sigma_i
-        = \\sum_{j=0}^{C_i}{q_{ij}(t)} \\].
-
-        Replaces slow Python code like: 
+        Returns the water balance of each vector as a vector /// \\[
+        \\sigma_i = \\sum_{j=0}^{C_i}{q_{ij}(t)} \\] /// /// Replaces
+        slow Python code like: ///. 
         """
         return _cmf_core.NeumannBoundary_list_water_balance(self, *args, **kwargs)
 
@@ -3656,21 +3603,20 @@ NeumannBoundary_list_swigregister(NeumannBoundary_list)
 class SystemBridge(flux_node,integratable):
     """
     A SystemBridge is an advanced feature for tuning of the calculation
-    time.
-
-    A SystemBridge can be used to replace an existing connection between
-    nodes. It is created using the system_bridge function After
-    installation, the two nodes can more safely be added to different
-    integrator systems. One node (called upper) is connected with the
-    system bridge with the connection formerly connecting the nodes, the
-    second node (called lower) is connected to the system bridge with as a
-    Neumann boundary condition. The flux equals the average flux of the
-    connection upper <-> SystemBridge. Therefore, the system bridge must
-    become an integratable of the integrator system the upper node belongs
-    to. Use as an upper system (system upper node is belonging to) the
-    faster reacting system. For the connection between upper and
-    SystemBridge, the SystemBridge reacts as an Drichelet boundary
-    condition, providing the potential of the lower node.
+    time. /// /// A SystemBridge can be used to replace an existing
+    connection between nodes. It is created using the system_bridge
+    function /// After installation, the two nodes can more safely be
+    added to different integrator systems. /// One node (called upper) is
+    connected with the system bridge with the connection formerly
+    connecting the nodes, /// the second node (called lower) is connected
+    to the system bridge with as a Neumann boundary condition. The flux
+    equals the average flux // of the connection upper <-> SystemBridge.
+    Therefore, the system bridge must become an integratable of the
+    integrator system / the upper node belongs to. Use as an upper system
+    (system upper node is belonging to) the faster reacting system. ///
+    For the connection between upper and SystemBridge, the SystemBridge
+    reacts as an Drichelet boundary condition, providing the potential ///
+    of the lower node.
 
     C++ includes: system_bridge.h 
     """
@@ -3738,29 +3684,29 @@ def system_bridge(*args, **kwargs):
     flux_node::ptr lower)
 
     Creates a SystemBridge object. This is an advanced feature for tuning
-    of the calculation time.
+    of the calculation time. /// /// A SystemBridge can be used to replace
+    an existing connection between nodes. / After installation, the two
+    nodes can more safely be added to different integrator systems. ///
+    One node (called upper) is connected with the system bridge with the
+    connection formerly connecting the nodes, /// the second node (called
+    lower) is connected to the system bridge with as a Neumann boundary
+    condition. The flux equals the average flux /// of the connection
+    upper <-> SystemBridge. Therefore, the system bridge must become an
+    integratable of the integrator system /// the upper node belongs to.
+    Use as an upper system (system upper node is belonging to) the faster
+    reacting system. /// For the connection between upper and
+    SystemBridge, the SystemBridge reacts as an Drichelet boundary
+    condition, providing the potential /// of the lower node. /// ///.
 
-    A SystemBridge can be used to replace an existing connection between
-    nodes. After installation, the two nodes can more safely be added to
-    different integrator systems. One node (called upper) is connected
-    with the system bridge with the connection formerly connecting the
-    nodes, the second node (called lower) is connected to the system
-    bridge with as a Neumann boundary condition. The flux equals the
-    average flux of the connection upper <-> SystemBridge. Therefore, the
-    system bridge must become an integratable of the integrator system the
-    upper node belongs to. Use as an upper system (system upper node is
-    belonging to) the faster reacting system. For the connection between
-    upper and SystemBridge, the SystemBridge reacts as an Drichelet
-    boundary condition, providing the potential of the lower node.
-
-    a new SystemBridge object
+    a new SystemBridge object ///
 
     Parameters:
     -----------
 
-    p:  cmf project
+    p:  cmf project ///
 
     upper:  Upper boundary flux node (part of the faster reacting system).
+    ///
 
     lower:  Lower boundary flux node (part of the slower reacting system).
 
@@ -3830,8 +3776,8 @@ def Pressure(*args, **kwargs):
   return _cmf_core.Pressure(*args, **kwargs)
 class Weather(object):
     """
-    A structure holding meteorological information, excluding
-    precipitation.
+    /// A structure holding meteorological information, excluding
+    precipitation
 
     C++ includes: meteorology.h 
     """
@@ -3892,25 +3838,25 @@ class Weather(object):
         Weather(double _T, double _Tmax, double _Tmin, double _rH, double
         _wind=2, double _sunshine=0.5, double _Rs=15, double _daylength=12)
 
-        Creates a "weather" from given data.
+        Creates a "weather" from given data ///.
 
         Parameters:
         -----------
 
-        _T:  actual Temperature in deg C
+        _T:  actual Temperature in deg C ///
 
-        _Tmax:  daily maximum Temperature in deg C
+        _Tmax:  daily maximum Temperature in deg C ///
 
-        _Tmin:  daily minimum Temperature in deg C
+        _Tmin:  daily minimum Temperature in deg C ///
 
-        _rH:  actual relative humidity in % [0..100]
+        _rH:  actual relative humidity in % [0..100] ///
 
-        _wind:  actual wind speed in m/s
+        _wind:  actual wind speed in m/s ///
 
         _sunshine:  actual fraction of sunshine duration per potential
-        sunshine duration in h/h
+        sunshine duration in h/h ///
 
-        _Rs:  actual incoming shortwave global radiation in MJ/(m2 day)
+        _Rs:  actual incoming shortwave global radiation in MJ/(m2 day) ///
 
         _daylength:  length of the day in h 
         """
@@ -3959,6 +3905,8 @@ Weather_swigregister(Weather)
 
 class Meteorology(object):
     """
+    ///
+
     An abstract class, for objects generating Weather records at a
     specific time.
 
@@ -4016,8 +3964,8 @@ Meteorology_swigregister(Meteorology)
 
 class ConstantMeteorology(Meteorology):
     """
-    A primitive implementation of the Meteorology interface. Holds a
-    Weather record and returns it for any date.
+    /// A primitive implementation of the Meteorology interface. /// Holds
+    a Weather record and returns it for any date
 
     C++ includes: meteorology.h 
     """
@@ -4053,56 +4001,58 @@ ConstantMeteorology_swigregister(ConstantMeteorology)
 
 class MeteoStation(object):
     """
-    A meteorological station holding timeseries to create Weather records.
+    ///
 
-    In order to calculate ETpot with cmf a big amount of meteorological
-    data is needed, more data than usually available. The MeteoStation
-    class can estimate missing data from a minimal set. As more data, as
-    one provides, the better the calculation of ETpot becomes. The minimal
-    data needed is Tmin and Tmax (daily) and precipitation. To calculate
-    the global radiation (although measured global radiation could be
-    inserted), the position of meteorological station in geographic
-    coordinates has to be set.
+    A meteorological station holding timeseries to create Weather records
+    /// /// In order to calculate ETpot with cmf a big amount of
+    meteorological data is needed, /// more data than usually available.
+    The MeteoStation class can estimate missing data /// from a minimal
+    set. As more data, as one provides, the better the calculation of ///
+    ETpot becomes. The minimal data needed is Tmin and Tmax (daily) and
+    precipitation. /// To calculate the global radiation (although
+    measured global radiation could be inserted), /// the position of
+    meteorological station in geographic coordinates has to be set. ///
+    /// /// There are two modes for the meteorology: daily=true and
+    daily=false. If daily=true, /// Radiation is given as a daily mean
+    value. If daily=false, Radiation is given as /// an hourly mean value,
+    which shows the dial ETpot variation but results in erronous ///
+    results if the timestep is daily. /// /// /// In the following, we
+    will assume a meteorological station with given Tmin, Tmax, ///
+    precipitation and daily mean relative humidity. To use other
+    meteorological data, /// please consult the description of the
+    MeteoStation class in the API documentation ////// Creating a
+    meteorological station
 
-    There are two modes for the meteorology: daily=true and daily=false.
-    If daily=true, Radiation is given as a daily mean value. If
-    daily=false, Radiation is given as an hourly mean value, which shows
-    the dial ETpot variation but results in erronous results if the
-    timestep is daily.
-
-    In the following, we will assume a meteorological station with given
-    Tmin, Tmax, precipitation and daily mean relative humidity. To use
-    other meteorological data, please consult the description of the
-    MeteoStation class in the API documentationCreating a meteorological
-    station
-
-    import CMFlib as cmf                  latitude=51.2 # Latitude of
-    station in decimal degrees longitude=8.1 # Longitude of station in
-    decimal degrees (only needed for daily=false)
-    timezone=1    # Timezone, pos. values mean east of GMT, negative west
-    (Germany=1, Pacific time=-8, only needed for daily=false)
+    ///  ///                 /// import CMFlib as cmf                 ///
+    latitude=51.2 # Latitude of station in decimal degrees ///
+    longitude=8.1 # Longitude of station in decimal degrees (only needed
+    for daily=false)                 /// timezone=1    # Timezone, pos.
+    values mean east of GMT, negative west (Germany=1, Pacific time=-8,
+    only needed for daily=false)                 ///
     start=cmf.Time(1,1,2001) # Creates all timeseries with this start
-    time, one can change them later                  step=cmf.day
-    # s. start name="Giessen"           # A name for the station
-    (optional)
+    time, one can change them later                 /// step=cmf.day # s.
+    start                 /// name="Giessen"           # A name for the
+    station (optional)                 ///
     meteo=cmf.MeteoStation(latitude,longitude,timezone,start,step,name)
-
-    The daily flag is automatically set to true, since the step width is
-    &ge cmf.dayLoading data into the meteorological station
-
-    # MeteoData.txt is tab seperated file containing # Tmin [deg C],Tmax
-    [deg C],rHmean [%] and precipitation [mm/day] values for every day
-    f=file('MeteoData.txt') for line in file:
-    meteo.Tmin.Add(float(line.split('\\t')[0]))
-    meteo.Tmax.Add(float(line.split('\\t')[1]))
-    meteo.rHmean.Add(float(line.split('\\t')[2]))
-    meteo.Prec.Add(float(line.split('\\t')[3]))Using a meteorological
+    ///  /// /// The daily flag is automatically set to true, since the
+    step width is &ge cmf.day ////// Loading data into the meteorological
     station
 
+    ///  ///                 /// # MeteoData.txt is tab seperated file
+    containing /// # Tmin [deg C],Tmax [deg C],rHmean [%] and
+    precipitation [mm/day] values for every day                 ///
+    f=file('MeteoData.txt') /// for line infile:                 ///
+    meteo.Tmin.Add(float(line.split('\\t')[0])) ///
+    meteo.Tmax.Add(float(line.split('\\t')[1]))                 ///
+    meteo.rHmean.Add(float(line.split('\\t')[2]))                 ///
+    meteo.Prec.Add(float(line.split('\\t')[3])) ////// Using a
+    meteorological station
+
+    ///  ///                 ///
     weather=meteo.get_data(cmf.Time(3,2,2009,14)) # Weather at Feb. 3rd,
-    2009, 2pm                  print 'Global Radiation: ',weather.Rs
-    # Daily mean Rs, since daily=true print 'Temperature:',weather.T
-    # Daily mean T, since nothing else in known
+    2009, 2pm                 /// print 'Global Radiation: ',weather.Rs
+    # Daily mean Rs, since daily=true /// print 'Temperature:',weather.T
+    # Daily mean T, since nothing else in known                 /// ///
 
     C++ includes: meteorology.h 
     """
@@ -4248,8 +4198,10 @@ MeteoStation_swigregister(MeteoStation)
 
 class MeteoStationReference(Meteorology):
     """
+    ///
+
     A reference to a meteorological station. Returns the weather at a
-    given time for its place using MeteoStation::T_lapse.
+    given time for its place using MeteoStation::T_lapse
 
     C++ includes: meteorology.h 
     """
@@ -4304,10 +4256,10 @@ MeteoStationReference_swigregister(MeteoStationReference)
 
 class MeteoStationList(object):
     """
-    A list of meteorological stations.
+    ///
 
-    Can find the nearest station for a position and calculate the
-    temperature lapse
+    A list of meteorological stations /// /// Can find the nearest station
+    for a position and calculate the temperature lapse
 
     C++ includes: meteorology.h 
     """
@@ -4340,9 +4292,8 @@ class MeteoStationList(object):
         cmf::math::Time end)
 
         Calculates the temperature lapse from all stations in the list and
-        sets the T_lapse attribute of each station.
-
-        Returns the average lapse over the whole period. 
+        sets the T_lapse attribute of each station. /// // Returns the average
+        lapse over the whole period. 
         """
         return _cmf_core.MeteoStationList_calculate_Temp_lapse(self, *args, **kwargs)
 
@@ -4362,24 +4313,24 @@ class MeteoStationList(object):
         timestep=cmf::math::day)
 
         Creates a meteorological station at a certain position and adds it to
-        the list.
+        the list ///.
 
         Parameters:
         -----------
 
-        name:  Name of the station
+        name:  Name of the station //
 
-        position:  The location of the station in map coordinates
+        position:  The location of the station in map coordinates ///
 
-        latitude:  Latitude of the study area (for solar radiation)
+        latitude:  Latitude of the study area (for solar radiation) ///
 
-        longitude:  Longitude of the study area (for solar time)
+        longitude:  Longitude of the study area (for solar time) ///
 
         timezone:  Time zone of the study area (e.g Germany +1,U.S. Pacific
-        time -8
+        time -8 ///
 
         startTime:  Date of the beginning of the climatic data (may be changed
-        for each time series later)
+        for each time series later) ///
 
         timestep:  Frequency of climatic data (may be changed for each time
         series later) 
@@ -4416,12 +4367,11 @@ class MeteoStationList(object):
         &position, double z_weight=0) const
 
         Creates a MeteoStationReference from the nearest station to position
-        at position.
+        at position /// /// The distance is calculated as $ d=\\sqrt{(x_{s}
+        - x_{l})^2 + (y_{s} - y_{l})^2} + \\lambda_z\\|z_{s} - z_{l}\\|
+        $ /// Where $s$ is the station and $l$ is the locatable ///.
 
-        The distance is calculated as $ d=\\sqrt{(x_{s} - x_{l})^2 + (y_{s}
-        - y_{l})^2} + \\lambda_z\\|z_{s} - z_{l}\\| $ Where $s$ is the
-        station and $l$ is the locatable A Meteorology using the data of the
-        nearest station to position
+        A Meteorology using the data of the nearest station to position ///
 
         Parameters:
         -----------
@@ -4451,8 +4401,8 @@ MeteoStationList_swigregister(MeteoStationList)
 
 class IDW_Meteorology(Meteorology):
     """
-    Regionalizes meteorological measurements using a simple inverse
-    distance weighted (IDW) method.
+    /// Regionalizes meteorological measurements using a simple inverse
+    distance weighted (IDW) method ///
 
     See:  IDW
 
@@ -4516,7 +4466,7 @@ aerodynamic_resistance_swigregister(aerodynamic_resistance)
 
 class RainSource(flux_node):
     """
-    An abstract class for different types of rainfall sources.
+    /// An abstract class for different types of rainfall sources
 
     C++ includes: precipitation.h 
     """
@@ -4561,8 +4511,8 @@ RainSource_swigregister(RainSource)
 
 class ConstantRainSource(RainSource):
     """
-    A simple implementation of RainSource. Returns intensity for any time
-    step.
+    /// A simple implementation of RainSource. Returns intensity for any
+    time step.
 
     C++ includes: precipitation.h 
     """
@@ -4577,15 +4527,15 @@ class ConstantRainSource(RainSource):
         location, real _intensity)
 
         Creates a new ConstantRainSource. Consider using Cell::set_rainfall
-        for internal creation of a constant rain source, instead of direct
-        use.
+        /// for internal creation of a constant rain source, instead of direct
+        use ///.
 
         Parameters:
         -----------
 
-        _project:  The project the rain source is belonging to.
+        _project:  The project the rain source is belonging to. ///
 
-        location:  The location of the rain source
+        location:  The location of the rain source ///
 
         _intensity:  The constant rainfall intensity in mm/day 
         """
@@ -4610,9 +4560,9 @@ ConstantRainSource_swigregister(ConstantRainSource)
 
 class RainfallStation(object):
     """
-    RainfallStation describes a rainfall timeseries in mm/day at a certain
-    place. Use RainfallStationReference or IDWRainfall to distribute the
-    data into space.
+    /// RainfallStation describes a rainfall timeseries in mm/day at a
+    certain place. /// Use RainfallStationReference or IDWRainfall to
+    distribute the data into space
 
     C++ includes: precipitation.h 
     """
@@ -4673,7 +4623,7 @@ def RainfallStation_create(*args, **kwargs):
 
 class RainfallStationList(object):
     """
-    A list of rainfall stations.
+    /// A list of rainfall stations
 
     C++ includes: precipitation.h 
     """
@@ -4703,17 +4653,17 @@ class RainfallStationList(object):
         RainfallStation::ptr add(std::string Name, cmf::math::timeseries Data,
         cmf::geometry::point Position)
 
-        Creates a new RainfallStation and adds it to the list. Usage:.
+        Creates a new RainfallStation and adds it to the list. Usage: ///.
 
-        The position of the rainfall station will be used as identifier A new
-        rainfall station
+        / The position of the rainfall station will be used as identifier ///
+        A new rainfall station ///
 
         Parameters:
         -----------
 
-        Name:  Name of the station
+        Name:  Name of the station ///
 
-        Data:  Rainfall timeseries
+        Data:  Rainfall timeseries ///
 
         Position:  Spatial position of the new station 
         """
@@ -4748,8 +4698,8 @@ RainfallStationList_swigregister(RainfallStationList)
 
 class RainfallStationReference(RainSource):
     """
-    References a single RainfallStation to provide rainfall intensity
-    data.
+    /// References a single RainfallStation to provide rainfall intensity
+    data
 
     C++ includes: precipitation.h 
     """
@@ -4783,8 +4733,9 @@ def RainfallStationReference_from_station_id(*args, **kwargs):
 
 class IDWRainfall(RainSource):
     """
-    A RainSource using an spatially interpolated rainfall intensity from
-    all stations. Interpolation method is inverse distance weighted (IDW).
+    /// A RainSource using an spatially interpolated rainfall intensity
+    from all stations. /// Interpolation method is inverse distance
+    weighted (IDW)
 
     C++ includes: precipitation.h 
     """
@@ -4834,7 +4785,7 @@ class Vegetation(object):
         double RootLength()
         const
 
-        Returns the average root length in m/m2 \\[ l_R
+        Returns the average root length in m/m2 /// \\[ l_R
         \\left[\\frac{m}{m^2}\\right]= \\frac{ c_R
         \\left[\\frac{kg}{m^3}\\right] z_R \\left[m\\right] }
         {0.5\\left[\\frac{kg}{m^3}\\right] \\pi
@@ -4917,8 +4868,8 @@ CellConnector_swigregister(CellConnector)
 class Cell(StateVariableOwner):
     """
     This class is the basic landscape object. It is the owner of water
-    storages, and the upper and lower boundary conditions of the system
-    (rainfall, atmospheric vapor, deep groundwater).
+    storages, and the upper and lower boundary conditions /// of the
+    system (rainfall, atmospheric vapor, deep groundwater).
 
     C++ includes: cell.h 
     """
@@ -5118,12 +5069,12 @@ class Cell(StateVariableOwner):
         real
         heat_flux(cmf::math::Time t) const
 
-        Calculates the surface heat balance.
+        Calculates the surface heat balance ///.
 
         Parameters:
         -----------
 
-        t:  Time step
+        t:  Time step ///
 
         Tground:  Ground temperature, default is Tground of weather (usually
         Tground = Tair) 
@@ -5670,16 +5621,16 @@ class subcatchment(object):
         subcatchment(cmf::upslope::Cell &pourpoint, double
         area_threshold=1e308)
 
-        Creates a subcatchment from a pourpoint cell.
+        Creates a subcatchment from a pourpoint cell ///.
 
         Parameters:
         -----------
 
-        pourpoint:  The pourpoint (outlet of the subcatchment)
+        pourpoint:  The pourpoint (outlet of the subcatchment) ///
 
         area_threshold:  Minimum contributing area size to form a
-        subcatchment. When area_threshold > area(cells), all upslope cells of
-        pourpoint are used. 
+        subcatchment. /// When area_threshold > area(cells), all upslope cells
+        of pourpoint are used. 
         """
         _cmf_core.subcatchment_swiginit(self,_cmf_core.new_subcatchment(*args, **kwargs))
     __swig_destroy__ = _cmf_core.delete_subcatchment
@@ -5704,11 +5655,10 @@ def waterhead_to_pF(*args, **kwargs):
   return _cmf_core.waterhead_to_pF(*args, **kwargs)
 class RetentionCurve(object):
     """
-    Abstract base class for different types of retention curves.
-
+    Abstract base class for different types of retention curves /// ///
     This class, and its children uses wetness instead of volumetric water
     content. The wetness of a soil is defined as water content per void
-    volume
+    volume.
 
     C++ includes: RetentionCurve.h 
     """
@@ -5733,8 +5683,8 @@ class RetentionCurve(object):
 
         virtual real Wetness_eff(real wetness, real pF_r=4.2) const
 
-        Returns the effective wetness, using a residual pF value \\[w_{eff}
-        =
+        Returns the effective wetness, using a residual pF value ///
+        \\[w_{eff} =
         \\frac{w_{act}-w\\left(pF_r\\right)}{1-w\\left(pF_r\\right)}\\].
 
         """
@@ -5829,31 +5779,24 @@ rho_wg = cvar.rho_wg
 
 class BrooksCoreyRetentionCurve(RetentionCurve):
     """
-    Provides the use of the Brooks-Corey retention curve.
-
-    \\begin{eqnarray*} W(\\theta) &=& \\frac{\\theta -
-    \\theta_r}{\\theta_s - \\theta_r} \\\\ K(W) &=& K_{sat}
-    W^{2+3b} \\\\ \\Psi(W) &=& \\Psi_X
-    \\left(\\frac{W}{W_X}\\right)^{-b} \\\\ W(\\Psi) &=&
+    Provides the use of the Brooks-Corey retention curve /// ///
+    \\begin{eqnarray*} /// W(\\theta) &=& \\frac{\\theta -
+    \\theta_r}{\\theta_s - \\theta_r} \\\\ /// K(W) &=& K_{sat}
+    W^{2+3b} \\\\ // \\Psi(W) &=& \\Psi_X
+    \\left(\\frac{W}{W_X}\\right)^{-b} \\\\ /// W(\\Psi) &=&
     {\\left( \\frac{\\Psi_X}{\\Psi}\\right)
-    }^{\\frac{1}{b}}\\ W_X \\end{eqnarray*} where:  $K$ is the
-    conductivity in $\\frac m {day}$
-
-    $W$ is the wetness (Volume of soil water per volume of pores)
-
-    $b$ is the shape of the retention curve (usually between 4 (sand) and
-    14 (clay))
-
-    $\\Psi(W)$ is the matric potential in $m H_2O$ at wetness W
-
-    $\\Psi_X$ is a matric potential at a known wetness in $m H_2O$
-
-    $W_X$ is the wetness with a known matric potential for dynamic changes
-    with depth, exponential decays of porosity and saturated conductivity
-    are used The decay function is: $ v(d)=v(0) (1+a)^{-d} $, where v is
-    the value ( $ K_{sat},\\Phi$), d is the depth in m and a is the
-    fractional decay per m. E.g. 0.1 means the value has in 1 m depth 90%
-    of the value at the surface
+    }^{\\frac{1}{b}}\\ W_X /// \\end{eqnarray*} /// where: /// - $K$
+    is the conductivity in $\\frac m {day}$ /// - $W$ is the wetness
+    (Volume of soil water per volume of pores) /// - $b$ is the shape of
+    the retention curve (usually between 4 (sand) and 14 (clay)) /// -
+    $\\Psi(W)$ is the matric potential in $m H_2O$ at wetness W /// -
+    $\\Psi_X$ is a matric potential at a known wetness in $m H_2O$ /// -
+    $W_X$ is the wetness with a known matric potential /// for dynamic
+    changes with depth, exponential decays of porosity and saturated
+    conductivity are used // The decay function is: $ v(d)=v(0) (1+a)^{-d}
+    $, where v is the value ( $ K_{sat},\\Phi$), d is the depth in m ///
+    and a is the fractional decay per m. E.g. 0.1 means the value has in 1
+    m depth 90% of the value at the surface.
 
     C++ includes: RetentionCurve.h 
     """
@@ -5893,23 +5836,24 @@ class BrooksCoreyRetentionCurve(RetentionCurve):
         real theta_x=0.2, real psi_x=pF_to_waterhead(2.5), real
         porosity_decay=0)
 
-        Creates a brooks corey retention curve.
+        Creates a brooks corey retention curve ///.
 
         Parameters:
         -----------
 
-        ksat:  Saturated conductivity $\\frac{m}{day}$
+        ksat:  Saturated conductivity $\\frac{m}{day}$ ///
 
-        porosity:   $\\frac {m^3 Pores}{m^3 Soil}$
+        porosity:   $\\frac {m^3 Pores}{m^3 Soil}$ ///
 
         _b:  Shape of the retention curve (if you do not know how to
-        parameterize this, take a look at the other constructor)
+        parameterize this, take a look at the other constructor) ///
 
         theta_x:   $\\theta_X$ Water content at a specific suction pressure
+        ///
 
         psi_x:  Suction pressure for $\\theta_X$ in m water column, use the
         conversion functions pF_to_waterhead, pressure_to_waterhead to convert
-        pressure in to waterhead height (default pF=2.5)
+        pressure in to waterhead height (default pF=2.5) ///
 
         porosity_decay:  Relative decay of porosity with depth, e.g. 0.1 means
         conductivity gets 10% smaller per meter 
@@ -5954,27 +5898,20 @@ def BrooksCoreyRetentionCurve_CreateFrom2Points(*args, **kwargs):
 class VanGenuchtenMualem(RetentionCurve):
     """
     Provides the use of the Van Genuchten - Mualem retention curve (Van
-    Genuchten 1980).
-
-    Head - moisture realtionship: \\begin{eqnarray*} W(\\theta) &=&
-    \\frac{\\theta - \\theta_r}{\\theta_s - \\theta_r} \\\\
-    K(W) &=& K_{sat} \\sqrt{W}
-    \\left(\\left(1-w^{1/m}\\right)^m\\right)^2 \\\\ m &=&
-    1-\\frac 1 n \\\\ \\Psi(W) &=& 0.01 \\frac{m}{cm}
-    \\frac{{\\left(1-{W}^{\\frac{1}{m}}\\right)
+    Genuchten 1980) /// /// Head - moisture realtionship: ///
+    \\begin{eqnarray*} /// W(\\theta) &=& \\frac{\\theta -
+    \\theta_r}{\\theta_s - \\theta_r} \\\\ /// K(W) &=& K_{sat}
+    \\sqrt{W} \\left(\\left(1-w^{1/m}\\right)^m\\right)^2
+    \\\\ /// m &=& 1-\\frac 1 n \\\\ /// \\Psi(W) &=& 0.01
+    \\frac{m}{cm} \\frac{{\\left(1-{W}^{\\frac{1}{m}}\\right)
     }^{\\frac{1}{n}}}{\\alpha\\,{W}^{\\frac{1}{m\\,n}}} \\\\
-    W(\\Psi) &=&
+    /// W(\\Psi) &=&
     \\left(1+\\left(\\alpha\\,100\\frac{cm}{m}\\Psi\\right)^n\\right)^{-m}
-    \\end{eqnarray*} where:  $K$ is the conductivity in $\\frac m
-    {day}$
-
-    $W$ is the wetness (Volume of soil water per volume of pores)
-
-    $n$ is a shape parameter of the retention curve
-
-    $\\alpha$ is inverse of the air entry potential in $cm^{-1}$
-
-    $\\Psi(W)$ is the matric potential in $m H_2O$ at wetness W
+    /// \\end{eqnarray*} /// where: /// - $K$ is the conductivity in
+    $\\frac m {day}$ /// - $W$ is the wetness (Volume of soil water per
+    volume of pores) /// - $n$ is a shape parameter of the retention curve
+    /// - $\\alpha$ is inverse of the air entry potential in $cm^{-1}$
+    /// - $\\Psi(W)$ is the matric potential in $m H_2O$ at wetness W.
 
     C++ includes: RetentionCurve.h 
     """
@@ -6013,18 +5950,18 @@ class VanGenuchtenMualem(RetentionCurve):
         VanGenuchtenMualem(real _Ksat, real _phi, real _alpha, real _n, real
         _m=-1)
 
-        Creates a van Genuchten-Mualem retention curve.
+        Creates a van Genuchten-Mualem retention curve ///.
 
         Parameters:
         -----------
 
-        _Ksat:  Saturated conductivity in $\\frac m{day}$
+        _Ksat:  Saturated conductivity in $\\frac m{day}$ ///
 
-        _phi:  Porosity in $\\frac{m^3 Pores}{m^3 Soil}$
+        _phi:  Porosity in $\\frac{m^3 Pores}{m^3 Soil}$ ///
 
-        _alpha:  Van Genuchten $\\alpha$ in $\\frac 1{cm}$
+        _alpha:  Van Genuchten $\\alpha$ in $\\frac 1{cm}$ ///
 
-        _n:  Van Genuchten n
+        _n:  Van Genuchten n ///
 
         _m:  m parameter, if negative m is calculated as $ 1-\\frac 1 n$ 
         """
@@ -6041,13 +5978,12 @@ VanGenuchtenMualem_swigregister(VanGenuchtenMualem)
 class LinearRetention(RetentionCurve):
     """
     The linear retention curve provides a simple linear relationship
-    between storage and head.
-
-    Head function (head in m, calculated from upper side control volume)
-    \\[ h(\\theta) = -\\Delta z \\left( 1 - \\frac{\\theta -
-    \\theta_r}{\\theta_s - \\theta_r} \\right) \\] Conductivity
-    function \\[ K(\\theta) = K_{sat} \\left(\\frac{\\theta -
-    \\theta_r}{\\theta_s - \\theta_r}\\right)^\\beta \\]
+    between storage and head /// /// Head function (head in m, calculated
+    from upper side control volume) /// \\[ h(\\theta) = -\\Delta z
+    \\left( 1 - \\frac{\\theta - \\theta_r}{\\theta_s -
+    \\theta_r} \\right) \\] /// Conductivity function /// \\[
+    K(\\theta) = K_{sat} \\left(\\frac{\\theta -
+    \\theta_r}{\\theta_s - \\theta_r}\\right)^\\beta \\].
 
     C++ includes: RetentionCurve.h 
     """
@@ -6091,7 +6027,7 @@ LinearRetention_swigregister(LinearRetention)
 
 class SoilLayer(WaterStorage):
     """
-    A representation of a SoilLayer.
+    /// A representation of a SoilLayer
 
     C++ includes: SoilLayer.h 
     """
@@ -6137,7 +6073,7 @@ class SoilLayer(WaterStorage):
 
         virtual real get_saturated_depth() const
 
-        Returns the depth for saturation \\[ z_{sat,this} =
+        Returns the depth for saturation /// \\[ z_{sat,this} =
         \\left\\{z_{cell}-\\Psi_{tot} \\mbox{ if } W<1 \\\\
         z_{sat,upper layer} \\right. \\]. 
         """
@@ -6151,16 +6087,16 @@ class SoilLayer(WaterStorage):
         bool HorizontalLayers=false) const
 
         Calculates the shared crosssectional area of this and another soil
-        water storage.
+        water storage. /// /// If both layers belong to the same cell, the
+        area of the cell is returned, if they belong to different cells the
+        area of the vertical shared boundary is returned ///.
 
-        If both layers belong to the same cell, the area of the cell is
-        returned, if they belong to different cells the area of the vertical
-        shared boundary is returned get_area in m2
+        get_area in m2 ///
 
         Parameters:
         -----------
 
-        target:  The other soil water storage
+        target:  The other soil water storage ///
 
         HorizontalLayers:  If true, the layers are assumed to be parallel to
         the gravitational potential, otherwise they are assumed to be parallel
@@ -6389,7 +6325,7 @@ class IVolumeHeightFunction(object):
     """
     Volume height relations are functional objects, which return a height
     and a crosssectional area of a volume for different geometric bodies.
-    This is the abstract base class, where the geometries derive from.
+    /// This is the abstract base class, where the geometries derive from.
 
     C++ includes: ReachType.h 
     """
@@ -6514,7 +6450,7 @@ volume_height_function_swigregister(volume_height_function)
 class IChannel(IVolumeHeightFunction):
     """
     Structure for the description of structural parameters of a reach
-    Abstract base class for different IChannel geometries.
+    ///Abstract base class for different IChannel geometries.
 
     C++ includes: ReachType.h 
     """
@@ -6588,9 +6524,10 @@ class IChannel(IVolumeHeightFunction):
         virtual
         double get_depth(double area) const =0
 
-        Calculates the actual depth of the reach using the IChannel geometry.
+        Calculates the actual depth of the reach using the IChannel geometry
+        ///.
 
-        get_depth of the reach [m]
+        get_depth of the reach [m] ///
 
         Parameters:
         -----------
@@ -6608,9 +6545,9 @@ class IChannel(IVolumeHeightFunction):
 
         Calculates the wetted area from a given depth using the IChannel
         geometry. In most cases use get_flux_crossection=V/l, where V is the
-        stored volume and l is the reach length.
+        stored volume and l is the reach length
 
-        Wetted area of a river cross section [m2]
+        Wetted area of a river cross section [m2] ///
 
         Parameters:
         -----------
@@ -6635,22 +6572,23 @@ class IChannel(IVolumeHeightFunction):
         double
         qManning(double A, double slope) const
 
-        Calculates the flow rate from a given water volume in the reach
-        \\begin{eqnarray*} q_{Manning}&=& A R^{\\frac 2 3}
-        \\sqrt{\\frac {\\Delta_z} n} \\\\ A &=& \\frac V l
+        Calculates the flow rate from a given water volume in the reach ///
+        \\begin{eqnarray*} /// q_{Manning}&=& A R^{\\frac 2 3}
+        \\sqrt{\\frac {\\Delta_z} n} \\\\ /// A &=& \\frac V l
         \\mbox{, (Crosssectional area of the wetted crossection, Volume per
-        length)} \\\\ R &=& \\frac A {P(d)} \\\\ P(d) &=& \\mbox{
-        the perimeter of the wetted crosssection, a function of reach depth}
-        \\\\ d(V) &=& \\mbox{ the depth of the reach a function of the
-        volume} \\\\ \\Delta_z &=& \\frac{z_{max} - z_{min}}{l}
-        \\mbox{ Slope of the reach} \\end{eqnarray*}.
+        length)} \\\\ /// R &=& \\frac A {P(d)} \\\\ /// P(d) &=&
+        \\mbox{ the perimeter of the wetted crosssection, a function of
+        reach depth} \\\\ /// d(V) &=& \\mbox{ the depth of the reach a
+        function of the volume} \\\\ /// \\Delta_z &=& \\frac{z_{max}
+        - z_{min}}{l} \\mbox{ Slope of the reach} /// \\end{eqnarray*}
+        ///.
 
-        Flow rate [m3/s]
+        Flow rate [m3/s] ///
 
         Parameters:
         -----------
 
-        A:  The area of the cross section [m2]
+        A:  The area of the cross section [m2] ///
 
         slope:  The slope of the reach [m/m] 
         """
@@ -6672,13 +6610,12 @@ IChannel_swigregister(IChannel)
 
 class SWATReachType(IChannel):
     """
-    Structure for the description of structural parameters of a reach.
-
-    Uses the SWAT IChannel geometry (see SWAT Theoretical Documentation,
-    Version 2005 (ch. 7:1.1), Neitsch et al. 2005), in this class
-    referenced as SWATtheoDoc. Differences to the SWAT geometry: The flood
-    plain is not plain, but has a small slope=0.5%, but has an infinite
-    width
+    Structure for the description of structural parameters of a reach ///
+    ///Uses the SWAT IChannel geometry (see SWAT Theoretical
+    Documentation, Version 2005 (ch. 7:1.1), Neitsch et al. 2005), in this
+    class referenced as SWATtheoDoc. ///Differences to the SWAT geometry:
+    The flood plain is not plain, but has a small slope=0.5%, but has an
+    infinite width.
 
     C++ includes: ReachType.h 
     """
@@ -6695,14 +6632,14 @@ class SWATReachType(IChannel):
 
         SWATReachType(double l, double BankWidth, double Depth)
 
-        Creates a new reach structure from a give width and depth.
+        Creates a new reach structure from a give width and depth ///.
 
         Parameters:
         -----------
 
-        l:  length of the channel [m]
+        l:  length of the channel [m] ///
 
-        BankWidth:  get_channel_width of the reach from bank to bank [m]
+        BankWidth:  get_channel_width of the reach from bank to bank [m] ///
 
         Depth:  Depth of the reach [m] 
         """
@@ -6723,11 +6660,10 @@ SWATReachType_swigregister(SWATReachType)
 class TriangularReach(IChannel):
     """
     Structure for the description of reaches with a triangular cross
-    section.
-
-    Although double triangular cross section reach are rarely met, a
-    triangular reach does scale with its water load, and is therefore
-    preferable in case where nothing about IChannel geometry is known
+    section /// /// Although double triangular cross section reach are
+    rarely met, a triangular reach does scale with its water load, and is
+    therefore preferable in case where nothing about IChannel geometry is
+    known.
 
     C++ includes: ReachType.h 
     """
@@ -6838,28 +6774,24 @@ class Channel(IChannel):
         Channel(char
         typecode, double length, double width=1., double depth=0.25)
 
-        Creates a reachtype using a short cut character. Acceptes one of the
-        following characters: 'T' TriangularReach, width and depth are
-        ignored.
-
-        'R' RectangularReach, depth is ignored
-
-        'P' PipeReach, depth is ignored, width is the diameter of the pipe
-
+        Creates a reachtype using a short cut character. /// Acceptes one of
+        the following characters: /// - 'T' TriangularReach, width and depth
+        are ignored. /// - 'R' RectangularReach, depth is ignored /// - 'P'
+        PipeReach, depth is ignored, width is the diameter of the pipe /// -
         'S' SWATReachType, a trapezoid flow cross section, as used in the SWAT
-        model, width (bank width) and depth are used.
+        model, width (bank width) and depth are used ///.
 
-        the reach type
+        the reach type ///
 
         Parameters:
         -----------
 
-        typecode:  Describes the geometry of the reach cross section.
+        typecode:  Describes the geometry of the reach cross section. ///
 
-        length:  The length of the channel in m
+        length:  The length of the channel in m ///
 
         width:  width of the reach cross section in m (ignored for typecode
-        'T')
+        'T') ///
 
         depth:  depth of the reach (ignored for typecode 'T','R','P','S') 
         """
@@ -6910,8 +6842,8 @@ MeanChannel_swigregister(MeanChannel)
 
 class OpenWaterStorage(WaterStorage):
     """
-    An open water body. The potential is calculated from the stored water
-    using a water table function.
+    /// An open water body. The potential is calculated from the stored
+    water using a water table function
 
     C++ includes: OpenWaterStorage.h 
     """
@@ -6995,10 +6927,9 @@ def OpenWaterStorage_cast(*args, **kwargs):
 
 class Reach(OpenWaterStorage):
     """
-    A reach is a specialization of an open water storage.
-
-    The OpenWaterStorage attributes and methods are extended by
-    topological features, for the creation of a network of reaches.
+    /// A reach is a specialization of an open water storage. /// /// The
+    OpenWaterStorage attributes and methods are extended by topological
+    features, for the creation /// of a network of reaches.
 
     C++ includes: Reach.h 
     """
@@ -7073,16 +7004,17 @@ class Reach(OpenWaterStorage):
         void connect_to_surfacewater(cmf::upslope::Cell *cell, real width,
         bool diffusive)
 
-        Connects the surfacewater of a cell with this reach.
+        Connects the surfacewater of a cell with this reach ///.
 
         Parameters:
         -----------
 
         cell:  The cell with the surface water to be connected with this reach
+        ///
 
-        soil_cut:  True, if this reach might have inflow through the bank
+        soil_cut:  True, if this reach might have inflow through the bank ///
 
-        distance:  The average distance from cell to this reach
+        distance:  The average distance from cell to this reach ///
 
         width:  The flow width from cell to this reach 
         """
@@ -7096,8 +7028,8 @@ class Reach(OpenWaterStorage):
         distance_to_cell(cmf::upslope::Cell *cell) const
 
         Returns the distance (d) for connections between this reach and a
-        cell. If the effective inner cell distance (defined as $ R_{Cell} =
-        0.5\\frac{\\sqrt{A}}{\\pi}$) is smaller than the distance
+        cell. /// If the effective inner cell distance (defined as $ R_{Cell}
+        = 0.5\\frac{\\sqrt{A}}{\\pi}$) is smaller than the distance
         between the center points, the cell radius is returned. 
         """
         return _cmf_core.Reach_distance_to_cell(self, *args, **kwargs)
@@ -7165,9 +7097,9 @@ def Reach_create(*args, **kwargs):
 class ReachIterator(object):
     """
     An iterator over every upstream reach from a start reach. Implements
-    both the Python and the C++ iterator interface Usage C++:.
+    both the Python and the C++ iterator interface /// Usage C++: ///.
 
-    Usage Python:
+    /// Usage Python:
 
     C++ includes: Reach.h 
     """
@@ -7225,31 +7157,24 @@ def make_river_gap(*args, **kwargs):
     double
     cmf::river::make_river_gap(Reach::ptr root_reach)
 
-    Ensures that rivers have a monotone downward flow direction. Reaches
-    with a bottom higher than any upstream reach are lowered to the
-    minimum height of any (possibly distant) upstream reach. 
+    Ensures that rivers have a monotone downward flow direction. ///
+    Reaches with a bottom higher than any upstream reach are lowered to
+    the minimum height of any (possibly distant) upstream reach. 
     """
   return _cmf_core.make_river_gap(*args, **kwargs)
 class aquifer(WaterStorage):
     """
-    A class to represent large groundwater storages, not bounded to the
-    usual horizontal discretization scheme, the Cell.
-
+    /// A class to represent large groundwater storages, /// not bounded
+    to the usual horizontal discretization scheme, the Cell. /// ///
     Naturally aquifers are connected with aquifer_Darcy or kinematic_wave
-    connections. As a boundary condition for a cell based soil water
-    system, aquifers are used as a right hand side node of percolation
-    connections.
-
-    Basic head ( $\\Psi$) / volume ( $V$) relation: \\[ \\Psi =
-    z_{base} + \\frac {V}{A \\Phi} \\]  $\\Psi$ water head in m
-
-    $z_{base}$ base height of the aquifer
-
-    $V$ volume of stored water in m3
-
-    $A$ Base area of the aquifer in m2
-
-    $\\Phi$ Porosity, or more general, $\\frac {dV_{bulk}}{dV_{H_2O}}$
+    connections. /// As a boundary condition for a cell based soil water
+    system, aquifers are used /// as a right hand side node of percolation
+    connections. /// /// Basic head ( $\\Psi$) / volume ( $V$) relation:
+    /// \\[ \\Psi = z_{base} + \\frac {V}{A \\Phi} \\] / -
+    $\\Psi$ water head in m /// - $z_{base}$ base height of the aquifer
+    /// - $V$ volume of stored water in m3 / - $A$ Base area of the
+    aquifer in m2 /// - $\\Phi$ Porosity, or more general, $\\frac
+    {dV_{bulk}}{dV_{H_2O}}$
 
     C++ includes: groundwater.h 
     """
@@ -7266,9 +7191,9 @@ class aquifer(WaterStorage):
         real
         get_K(cmf::geometry::point direction)
 
-        Returns the conductivity in m/day for a specific direction. Takes
-        account for anisotropy \\[ \\|K\\|(d) = \\frac{d}{\\|d\\|}
-        \\bullet K\\]. 
+        Returns the conductivity in m/day for a specific direction. /// Takes
+        account for anisotropy /// \\[ \\|K\\|(d) =
+        \\frac{d}{\\|d\\|} \\bullet K\\]. 
         """
         return _cmf_core.aquifer_get_K(self, *args, **kwargs)
 
@@ -7281,18 +7206,18 @@ class aquifer(WaterStorage):
         aquifer(cmf::upslope::cell_vector &cells, real thickness, real
         porosity, real K=1e-4)
 
-        Creates an aquifer below a collection of cells.
+        Creates an aquifer below a collection of cells ///.
 
         Parameters:
         -----------
 
         cells:  The cells above the aquifer. The area of the aquifer equals
-        the area of the cells, and the upper boundary equals the soildepth of
-        the lowest cell
+        the area of the cells, /// and the upper boundary equals the soildepth
+        of the lowest cell ///
 
-        thickness:  The thickness of the aquifer in m
+        thickness:  The thickness of the aquifer in m ///
 
-        porosity:  Porosity of the aquifer
+        porosity:  Porosity of the aquifer ///
 
         K:  Conductivity of the aquifer in m/day. If the conductivity should
         be anisotropic, change the x,y and z values of the member K 
@@ -7319,9 +7244,8 @@ def aquifer_cast(*args, **kwargs):
 
 class aquifer_Darcy(flux_connection):
     """
-    Lateral darcy flow between aquifer objects.
-
-    \\[v_{Darcy}=K_{1,2}\\nabla\\Psi \\] \\[q = v_{Darcy} w
+    /// Lateral darcy flow between aquifer objects. /// ///
+    \\[v_{Darcy}=K_{1,2}\\nabla\\Psi \\] /// \\[q = v_{Darcy} w
     \\Delta z\\]
 
     C++ includes: groundwater.h 
@@ -7336,16 +7260,16 @@ class aquifer_Darcy(flux_connection):
         aquifer_Darcy(aquifer::ptr left, cmf::water::flux_node::ptr right,
         real width)
 
-        Creates a new Darcy flow connection between two aquifers, or an
-        aquifer and another node acting as Drichelet boundary condition.
+        Creates a new Darcy flow connection between two aquifers, /// or an
+        aquifer and another node acting as Drichelet boundary condition ///.
 
         Parameters:
         -----------
 
-        left:  One aquifer
+        left:  One aquifer ///
 
         right:  Another aquifer, or a flux node that can be interpreted as an
-        Drichelet boundary
+        Drichelet boundary ///
 
         width:  Width of the connection 
         """
@@ -7356,7 +7280,7 @@ aquifer_Darcy_swigregister(aquifer_Darcy)
 
 class lateral_sub_surface_flux(flux_connection):
     """
-    An abstract base class for lateral subsurface fluxes.
+    /// An abstract base class for lateral subsurface fluxes
 
     C++ includes: subsurfacefluxes.h 
     """
@@ -7369,19 +7293,14 @@ lateral_sub_surface_flux_swigregister(lateral_sub_surface_flux)
 
 class Darcy(lateral_sub_surface_flux):
     """
-    Calculates the lateral flow using the gravitational potential gradient
-    only.
-
-    \\[ q_{lat} = \\frac{\\Delta \\Psi_G}{\\|C_1-C_2\\|}
-    \\frac 12 (T(C_1)+T(C_2)) w \\] where  $ \\Delta \\Psi_G $ is
-    the gravitational potential difference
-
-    $ \\|C_1-C_2\\| $ is the distance from Cell 1 to Cell 2
-
-    $ T(C) $ is the transmissivity of cell C, calculated by
-    SoilType::Transmissivity
-
-    $ w $ is the width of the connection of the cells
+    /// Calculates the lateral flow using the gravitational potential
+    gradient only /// /// \\[ q_{lat} = \\frac{\\Delta
+    \\Psi_G}{\\|C_1-C_2\\|} \\frac 12 (T(C_1)+T(C_2)) w \\] ///
+    where /// - $ \\Delta \\Psi_G $ is the gravitational potential
+    difference /// - $ \\|C_1-C_2\\| $ is the distance from Cell 1 to
+    Cell 2 /// - $ T(C) $ is the transmissivity of cell C, calculated by
+    SoilType::Transmissivity  $ w $ is the width of the connection of the
+    cells
 
     C++ includes: subsurfacefluxes.h 
     """
@@ -7402,18 +7321,13 @@ Darcy.cell_connector = _cmf_core.cvar.Darcy_cell_connector
 
 class TopographicGradientDarcy(lateral_sub_surface_flux):
     """
-    Calculates the lateral flow using the topographic gradient.
-
+    /// Calculates the lateral flow using the topographic gradient /// ///
     \\[ q_{lat} = \\frac{z_1 - z_2}{\\|C_1-C_2\\|} \\frac 12
-    (T(C_1)+T(C_2)) w \\] where  $ z_1 - z_2 $ is the topographic height
-    difference
-
-    $ \\|C_1-C_2\\| $ is the distance from Cell 1 to Cell 2
-
-    $ T(C) $ is the transmissivity of cell C, calculated by
-    SoilType::Transmissivity
-
-    $ w $ is the width of the connection of the cells
+    (T(C_1)+T(C_2)) w \\] /// where /// - $ z_1 - z_2 $ is the
+    topographic height difference /// - $ \\|C_1-C_2\\| $ is the
+    distance from Cell 1 to Cell 2 /// - $ T(C) $ is the transmissivity of
+    cell C, calculated by SoilType::Transmissivity /// - $ w $ is the
+    width of the connection of the cells
 
     C++ includes: subsurfacefluxes.h 
     """
@@ -7434,8 +7348,9 @@ TopographicGradientDarcy.cell_connector = _cmf_core.cvar.TopographicGradientDarc
 
 class OHDISflow(lateral_sub_surface_flux):
     """
-    A connection similar to OHDIS-KWMSS (OHymos-based DIStributed model -
-    with Kinematic Wave Method for Surface and Subsurface runoff).
+    /// A connection similar to OHDIS-KWMSS (OHymos-based DIStributed
+    model - with Kinematic Wave Method for Surface and Subsurface runoff)
+    ///
 
     C++ includes: subsurfacefluxes.h 
     """
@@ -7456,10 +7371,9 @@ OHDISflow.cell_connector = _cmf_core.cvar.OHDISflow_cell_connector
 
 class DarcyKinematic(lateral_sub_surface_flux):
     """
-    A simple kinemtic wave model for subsurface flux.
-
-    \\[ q = \\frac{\\Delta z_{surface}}{d} K(\\theta)_{source}
-    A_{cross} \\]
+    /// A simple kinemtic wave model for subsurface flux /// /// \\[ q =
+    \\frac{\\Delta z_{surface}}{d} K(\\theta)_{source} A_{cross}
+    \\]
 
     C++ includes: subsurfacefluxes.h 
     """
@@ -7480,7 +7394,7 @@ DarcyKinematic.cell_connector = _cmf_core.cvar.DarcyKinematic_cell_connector
 
 class Richards_lateral(lateral_sub_surface_flux):
     """
-    Calculates the flux using Richard's equation for adjecent layers.
+    /// Calculates the flux using Richard's equation for adjecent layers
 
     C++ includes: subsurfacefluxes.h 
     """
@@ -7502,8 +7416,8 @@ Richards_lateral.cell_connector = _cmf_core.cvar.Richards_lateral_cell_connector
 
 class Manning(flux_connection):
     """
-    Calculates the flux between two open water bodies, using Manning's
-    equation.
+    /// Calculates the flux between two open water bodies, using Manning's
+    equation
 
     C++ includes: ManningConnection.h 
     """
@@ -7518,8 +7432,8 @@ Manning_swigregister(Manning)
 
 class Manning_Diffusive(Manning):
     """
-    Connecting surface water bodies using a diffusive wave. Not stable
-    deep water with small gradient.
+    /// Connecting surface water bodies using a diffusive wave. Not stable
+    deep water with small gradient
 
     C++ includes: ManningConnection.h 
     """
@@ -7540,8 +7454,8 @@ Manning_Diffusive.cell_connector = _cmf_core.cvar.Manning_Diffusive_cell_connect
 
 class Manning_Kinematic(Manning):
     """
-    Connecting surface water bodies using a kinematic wave. Note the fixed
-    gradient.
+    /// Connecting surface water bodies using a kinematic wave. Note the
+    fixed gradient
 
     C++ includes: ManningConnection.h 
     """
@@ -7562,7 +7476,7 @@ Manning_Kinematic.cell_connector = _cmf_core.cvar.Manning_Kinematic_cell_connect
 
 class CanopyOverflow(flux_connection):
     """
-    Calculates the overflow of a canopy storage.
+    /// Calculates the overflow of a canopy storage
 
     C++ includes: surfacefluxes.h 
     """
@@ -7591,7 +7505,7 @@ def CanopyOverflow_use_for_cell(*args, **kwargs):
 
 class SimpleTindexSnowMelt(flux_connection):
     """
-    Calculates snow melt using a simple degree day method.
+    /// Calculates snow melt using a simple degree day method
 
     C++ includes: surfacefluxes.h 
     """
@@ -7621,7 +7535,7 @@ def SimpleTindexSnowMelt_use_for_cell(*args, **kwargs):
 
 class EnergyBudgetSnowMelt(flux_connection):
     """
-    Calculates snow melt using the surface energy budget method.
+    /// Calculates snow melt using the surface energy budget method
 
     C++ includes: surfacefluxes.h 
     """
@@ -7650,8 +7564,8 @@ def EnergyBudgetSnowMelt_use_for_cell(*args, **kwargs):
 
 class Rainfall(flux_connection):
     """
-    A connection routing rainfall to surface water and to an eventually
-    existing canopy storage.
+    /// A connection routing rainfall to surface water and to an
+    eventually existing canopy storage
 
     C++ includes: AtmosphericFluxes.h 
     """
@@ -7674,8 +7588,8 @@ Rainfall_swigregister(Rainfall)
 
 class Snowfall(flux_connection):
     """
-    A connection routing snowfall (precipitation below freezing Temp) to
-    the snow pack.
+    /// A connection routing snowfall (precipitation below freezing Temp)
+    to the snow pack
 
     C++ includes: AtmosphericFluxes.h 
     """
@@ -7695,13 +7609,12 @@ Snowfall_swigregister(Snowfall)
 
 class MatrixInfiltration(flux_connection):
     """
-    Connects the surfacewater and the most upper layer.
-
-    If UpslopeCell::InfiltrationExcess and Cell is not saturated \\[ K_I
-    = \\min\\left(\\frac{\\rho_{wg} \\Delta
+    /// Connects the surfacewater and the most upper layer /// /// If
+    UpslopeCell::InfiltrationExcess and Cell is not saturated /// \\[
+    K_I = \\min\\left(\\frac{\\rho_{wg} \\Delta
     z-\\Psi_M}{\\Delta z \\rho_{wg}}
     K\\left(\\theta\\right),\\sum q_{surface\\ in}\\right)
-    \\] else \\[ K_I = \\sum q_{surface\\ in} \\]
+    \\] /// else /// \\[ K_I = \\sum q_{surface\\ in} \\]
 
     C++ includes: infiltration.h 
     """
@@ -7730,7 +7643,7 @@ def MatrixInfiltration_use_for_cell(*args, **kwargs):
 
 class CompleteInfiltration(flux_connection):
     """
-    Connection for infiltration with saturated conductivity.
+    /// Connection for infiltration with saturated conductivity
 
     C++ includes: infiltration.h 
     """
@@ -7750,13 +7663,12 @@ CompleteInfiltration_swigregister(CompleteInfiltration)
 
 class SWATPercolation(flux_connection):
     """
-    A tipping bucket percolation approach similar to the approach in SWAT.
-
-    \\begin{eqnarray*} q_{perc} &=&
+    /// A tipping bucket percolation approach similar to the approach in
+    SWAT /// /// \\begin{eqnarray*} q_{perc} &=&
     V_{H_2O,drain}\\left(1-e^{-\\frac 1{-TT_{perc}}}\\right)
-    \\\\ TT_{perc} &=& \\frac{V_{pores,drain} - V_{field
-    cap.}}{K_{sat}} \\\\ V_{x,drain} &=& V_{x,drain} - V_{field cap.}
-    \\end{eqnarray*}
+    \\\\ /// TT_{perc} &=& \\frac{V_{pores,drain} - V_{field
+    cap.}}{K_{sat}} \\\\ /// V_{x,drain} &=& V_{x,drain} - V_{field
+    cap.} \\end{eqnarray*} ///
 
     C++ includes: Percolation.h 
     """
@@ -7785,25 +7697,18 @@ def SWATPercolation_use_for_cell(*args, **kwargs):
 
 class Richards(flux_connection):
     """
-    Calculates flow according to the Richards equation.
-
-    \\begin{eqnarray*} q_{Richards} &=&
-    \\frac{\\Delta\\Psi_{tot}}{d} K(\\theta) A \\\\
-    \\Psi_{tot} &= &\\Psi_{M}(\\theta) + h \\end{eqnarray*} where
-    $ \\Delta\\Psi_{tot} [m]$ is the difference of the total water
-    potentials of the two soil layers
-
-    $ d [m]$ is the distance between the two soil layers
-
-    $ K(\\theta)\\left[\\frac m{day}\\right]$ is the geometric
-    mean conductivity (see SoilType::Kunsat)
-
-    $ A [m^2]$ is the crosssectional area of the flux
-
-    $ \\Psi_M(\\theta) [m]$ is the matrix potential (see
-    SoilType::MatrixPotential)
-
-    $ h [m]$ is the height of a soil layer above sea level
+    /// Calculates flow according to the Richards equation /// ///
+    \\begin{eqnarray*} /// q_{Richards} &=&
+    \\frac{\\Delta\\Psi_{tot}}{d} K(\\theta) A \\\\ ///
+    \\Psi_{tot} &= &\\Psi_{M}(\\theta) + h /// \\end{eqnarray*}
+    /// where /// - $ \\Delta\\Psi_{tot} [m]$ is the difference of the
+    total water potentials of the two soil layers /// - $ d [m]$ is the
+    distance between the two soil layers /// - $
+    K(\\theta)\\left[\\frac m{day}\\right]$ is the geometric mean
+    conductivity (see SoilType::Kunsat) /// - $ A [m^2]$ is the
+    crosssectional area of the flux /// - $ \\Psi_M(\\theta) [m]$ is
+    the matrix potential (see SoilType::MatrixPotential) /// - $ h [m]$ is
+    the height of a soil layer above sea level
 
     C++ includes: Percolation.h 
     """
@@ -7832,16 +7737,13 @@ def Richards_use_for_cell(*args, **kwargs):
 
 class SimplRichards(flux_connection):
     """
-    Calculates flow according to a simplified Richards equation.
-
-    \\begin{eqnarray*} q_{Richards} &=& (K(\\theta) - K(\\theta_r))
-    A \\\\ \\end{eqnarray*} where  $ d [m]$ is the distance between
-    the two soil layers
-
-    $ K(\\theta)\\left[\\frac m{day}\\right]$ is the geometric
-    mean conductivity (see SoilType::Kunsat)
-
-    $ A [m^2]$ is the crosssectional area of the flux
+    /// Calculates flow according to a simplified Richards equation ///
+    /// \\begin{eqnarray*} /// q_{Richards} &=& (K(\\theta) -
+    K(\\theta_r)) A \\\\ /// \\end{eqnarray*} /// where /// - $ d
+    [m]$ is the distance between the two soil layers /// - $
+    K(\\theta)\\left[\\frac m{day}\\right]$ is the geometric mean
+    conductivity (see SoilType::Kunsat) /// - $ A [m^2]$ is the
+    crosssectional area of the flux
 
     C++ includes: Percolation.h 
     """
@@ -7870,13 +7772,12 @@ def SimplRichards_use_for_cell(*args, **kwargs):
 
 class HBVparameters(RetentionCurve):
     """
-    This class holds the properties for all HBV like connections
+    /// This class holds the properties for all HBV like connections ///
     Implements the RetentionCurve interface is only partly, therefore it
-    is not suitable for other connection types.
-
-    \\begin{eqnarray*} K(w,d) &=& PERC w \\\\ \\Psi_{M} &=& 10 -
-    \\frac{10}{w}\\\\ w(\\Psi_{M}) &=& \\frac{10}{10 -
-    \\Psi_M} \\end{eqnarray*}
+    is not suitable for other connection types /// ///
+    \\begin{eqnarray*} /// K(w,d) &=& PERC w \\\\ /// \\Psi_{M}
+    &=& 10 - \\frac{10}{w}\\\\ /// w(\\Psi_{M}) &=&
+    \\frac{10}{10 - \\Psi_M} /// \\end{eqnarray*}
 
     C++ includes: HBVflow.h 
     """
@@ -7932,11 +7833,10 @@ def HBVparameters_cast(*args, **kwargs):
 
 class HBVpercolation(flux_connection):
     """
-    Calculates the percolation as in the HBV model.
-
-    \\[ Q = \\left\\{Q_{in}
+    /// Calculates the percolation as in the HBV model /// /// \\[ Q =
+    \\left\\{Q_{in}
     \\left(\\frac{V}{FC}\\right)^\\beta\\mbox{ if first layer}
-    \\\\ min(PERC, V_{lower} - V_{lower,max}) \\right. \\]
+    \\\\ /// min(PERC, V_{lower} - V_{lower,max}) \\right. \\]
 
     C++ includes: HBVflow.h 
     """
@@ -7956,10 +7856,9 @@ HBVpercolation_swigregister(HBVpercolation)
 
 class HBVlateral(lateral_sub_surface_flux):
     """
-    Lateral flow using a simple linear storage, can be directed to another
-    cell (HBV D like) or to a reach (HBV like).
-
-    \\[ q = kV \\]
+    /// Lateral flow using a simple linear storage, can be directed to
+    another cell (HBV D like) or to a reach (HBV like) /// /// \\[ q =
+    kV \\]
 
     C++ includes: HBVflow.h 
     """
@@ -7987,24 +7886,23 @@ def HBVinstall(*args, **kwargs):
     cmf::upslope::connections::HBVinstall(HBVparameters parameters,
     cmf::upslope::Cell &cell)
 
-    Installs an HBV like model setup at a cell Reference: Bergstroem et al
-    1995, in Singh (1995): Computer models of watershed hydrology.
-
-    Removes the layers of a cell and adds three layers with 1m thickness
-    and the HBVparameters as retention curve. Installs HBVpercolation
-    between the layers
+    Installs an HBV like model setup at a cell /// Reference: Bergstroem
+    et al 1995, in Singh (1995): Computer models of watershed hydrology
+    /// /// Removes the layers of a cell and adds three layers with 1m
+    thickness and the HBVparameters as retention curve. /// Installs
+    HBVpercolation between the layers ///.
 
     Parameters:
     -----------
 
-    parameters:  The parameters for the HBV like setup
+    parameters:  The parameters for the HBV like setup ///
 
     cell:   Cell where HBV like percolation is to be calculated 
     """
   return _cmf_core.HBVinstall(*args, **kwargs)
 class log_wind_profile(aerodynamic_resistance):
     """
-    , A logarithmic wind profile
+    , /// A logarithmic wind profile ///
 
     Todo Cite literature for this windprofile and insert equation
 
@@ -8274,7 +8172,7 @@ def Tact(*args, **kwargs):
   return _cmf_core.Tact(*args, **kwargs)
 class constantETpot(flux_connection):
     """
-    A constant evapotranspiration.
+    /// A constant evapotranspiration
 
     C++ includes: ET.h 
     """
@@ -8315,45 +8213,45 @@ def PenmanMonteith(*args):
 
 class PenmanMonteithET(flux_connection):
     """
-    Calculates the potential evapotranspiration according to FAO(1998).
-
-    Gouverning equations: \\begin{eqnarray*} \\lambda get_evaporation
-    &=& \\frac{\\Delta\\left(R_n - G\\right)+\\rho_a c_p
-    \\frac{e_s - e_a}{r_a}}{\\Delta +
+    /// Calculates the potential evapotranspiration according to FAO(1998)
+    /// /// Gouverning equations: /// \\begin{eqnarray*} /// \\lambda
+    get_evaporation &=& \\frac{\\Delta\\left(R_n -
+    G\\right)+\\rho_a c_p \\frac{e_s - e_a}{r_a}}{\\Delta +
     \\gamma\\left(1+\\frac{r_s}{r_a}\\right)} \\mbox{ FAO 1998,
-    Eq. 3} \\\\ \\mbox{With:} \\\\ \\Delta &=& 4098
+    Eq. 3} \\\\ /// \\mbox{With:} \\\\ /// \\Delta &=& 4098
     \\frac{0.6108 e^{17.27 T}}{(T+237.3)^2} \\frac{kPa}{^\\circ C}
-    \\mbox{ (FAO 1998, Eq. 13): Slope of vapor pressure } \\\\ T &=&
-    \\mbox{Actual Temperature in } ^\\circ C \\\\ R_n &=&
+    \\mbox{ (FAO 1998, Eq. 13): Slope of vapor pressure } \\\\ /// T
+    &=& \\mbox{Actual Temperature in } ^\\circ C \\\\ /// R_n &=&
     \\mbox{net Radiation (see Atmosphere) in } \\frac{MJ}{m^2day}
-    \\\\ G &=& 0 \\ \\frac{MJ}{m^2day} \\mbox{ if daily average
-    (FAO 1998, Eq. 42)} \\\\ && 0.1 R_n \\ \\mbox{ if day time
-    (FAO 1998, Eq. 45)} \\\\ && 0.5 R_n \\ \\mbox{ if night time
-    (FAO 1998, Eq. 46)} \\\\ \\gamma &=& \\frac{c_p P}{\\epsilon
-    \\lambda} \\mbox{ (FAO 1998,Eq. 8): Psychrometric constant }
-    \\frac{kPa}{^\\circ C} \\\\ c_p &=& 0.001013
+    \\\\ /// G &=& 0 \\ \\frac{MJ}{m^2day} \\mbox{ if daily
+    average (FAO 1998, Eq. 42)} \\\\ /// && 0.1 R_n \\ \\mbox{ if
+    day time (FAO 1998, Eq. 45)} \\\\ /// && 0.5 R_n \\ \\mbox{ if
+    night time (FAO 1998, Eq. 46)} \\\\ /// \\gamma &=& \\frac{c_p
+    P}{\\epsilon \\lambda} \\mbox{ (FAO 1998,Eq. 8): Psychrometric
+    constant } \\frac{kPa}{^\\circ C} \\\\ /// c_p &=& 0.001013
     \\frac{MJ}{kg\\ ^\\circ C}\\mbox{ specific heat at constant
-    pressure } \\\\ P &=& 101.3
+    pressure } \\\\ /// P &=& 101.3
     \\left(\\frac{293-0.0065z}{293}\\right)^{5.26} \\mbox{ (FAO
     1998,Eq. 7): Mean pressure kPa as a function of elevation above sea
-    level in m} \\\\ \\epsilon &=& 0.622 \\mbox{ ratio molecular
-    weight of water vapour/dry air} \\\\ \\lambda &=& 2.45
+    level in m} \\\\ / \\epsilon &=& 0.622 \\mbox{ ratio molecular
+    weight of water vapour/dry air} \\\\ /// \\lambda &=& 2.45
     \\frac{MJ}{kg} \\mbox{ (FAO 1998,Eq. 8): latent heat of
-    vaporization} \\\\ R &=& 0.287 \\frac{kJ}{kg\\ k}\\mbox{
-    Specific gas constant } \\\\ \\rho_a &=&
+    vaporization} \\\\ /// R &=& 0.287 \\frac{kJ}{kg\\ k}\\mbox{
+    Specific gas constant } \\\\ /// \\rho_a &=&
     \\frac{P}{1.01(T+273)R} \\mbox{ (FAO 1998,Box. 6): Mean air
-    density at constant pressure} \\\\ e_s &=& \\mbox{ Saturated
-    vapor pressure (see Atmosphere) in } kPa \\\\ e_a &=& \\mbox{
-    Actual vapor pressure (see Atmosphere) in } kPa \\\\ r_a &=&
+    density at constant pressure} \\\\ /// e_s &=& \\mbox{ Saturated
+    vapor pressure (see Atmosphere) in } kPa \\\\ /// e_a &=&
+    \\mbox{ Actual vapor pressure (see Atmosphere) in } kPa \\\\ ///
+    r_a &=&
     \\frac{\\ln\\left(\\frac{2-d}{z_{om}}\\right)\\ln\\left(\\frac{2-d}{z_{oh}}\\right)}{k^2
     u_2} \\mbox{ (FAO 1998, Eq. 4/Box 4): Aerodynamic resitance in }
-    \\frac s m \\\\ && d=\\frac 2 3 h,z_{om}=0.123 h,z_{oh}=0.1
-    z_{om}, k=0.41 \\\\ h &=& \\mbox{ Vegetation height in }m
-    \\\\ u_2 &=& \\mbox{ Windspeed in 2m above ground (see
-    Atmosphere) } \\frac m s \\\\ r_s &=&
+    \\frac s m \\\\ /// && d=\\frac 2 3 h,z_{om}=0.123
+    h,z_{oh}=0.1 z_{om}, k=0.41 \\\\ /// h &=& \\mbox{ Vegetation
+    height in }m \\\\ /// u_2 &=& \\mbox{ Windspeed in 2m above
+    ground (see Atmosphere) } \\frac m s \\\\ /// r_s &=&
     \\frac{r_l}{LAI_{Active}} \\mbox{ (FAO 1998, Eq. 5/Box 5): bulk
-    surface resistance} \\frac s m \\\\ && r_l=100 \\frac s m,
-    LAI_{Active}=0.5 LAI \\end{eqnarray*}
+    surface resistance} \\frac s m \\\\ /// && r_l=100 \\frac s m,
+    LAI_{Active}=0.5 LAI /// \\end{eqnarray*}
 
     C++ includes: ET.h 
     """
@@ -8401,7 +8299,8 @@ def PenmanMonteithET_use_for_cell(*args, **kwargs):
 
 class HargreaveET(flux_connection):
     """
-    Calculates the Evapotranspiration using Hargreave's equation.
+    /// Calculates the Evapotranspiration using Hargreave's equation ///
+    ///
 
     Todo document Hargreave
 
@@ -8432,7 +8331,7 @@ def HargreaveET_use_for_cell(*args, **kwargs):
 
 class CanopyStorageEvaporation(flux_connection):
     """
-    Calculates the evaporation from a canopy storage.
+    /// Calculates the evaporation from a canopy storage
 
     C++ includes: ET.h 
     """
@@ -8452,7 +8351,7 @@ CanopyStorageEvaporation_swigregister(CanopyStorageEvaporation)
 
 class PenmanEvaporation(flux_connection):
     """
-    Calculates evaporation from an open water body.
+    /// Calculates evaporation from an open water body
 
     C++ includes: ET.h 
     """
@@ -8474,46 +8373,30 @@ PenmanEvaporation_swigregister(PenmanEvaporation)
 class ShuttleworthWallace(transpiration_method,soil_evaporation_method,surface_water_evaporation_method,canopy_evaporation_method,snow_evaporation_method,aerodynamic_resistance):
     """
     Calculates the sum of soil evaporation and transpiration according to
-    Shuttleworth & Wallace 1985, as implemented in BROOK 90 (Federer
-    1990).
-
-    The difference to BROOK90 is, that the actual transpiration is not
-    calculated by plant resitance and potential gradient between plant and
-    soil, but by an piecewise linear function of the pF value $ pF =
-    \\log_{10}\\left(-\\Psi [hPa]\\right) $: \\[
-    \\frac{T_{act}}{T_{pot}} = \\left\\{\\begin{array}{cl} 1 &
-    \\mbox{if $pF \\le 3.35$} \\\\ \\frac{pF - 4.2}{3.35 - 4.2}
-    & \\mbox{if $pF \\in [3.35 .. 4.2] $} \\\\ 0 & \\mbox{if $pF
-    \\ge 4.2$} \\end{array}\\right. \\]
-
-    Calculation procedure, as in BROOK 90:
-
-    Evapotranspiration from the canopy: $\\lambda ET_{canopy} = \\frac
-    {r_{ac} \\Delta\\ R_{n,canopy} + c_p\\rho D_0}{\\Delta
-    \\gamma r_{ac} + \\gamma r_{sc}} $
-
-    Evaporation from the ground: $\\lambda E_{ground} = \\frac {r_{as}
-    \\Delta\\ R_{n,ground} + c_p\\rho D_0}{\\Delta \\gamma
-    r_{as} + \\gamma r_{ss}} $
-
-    with  $ \\Delta = \\frac{de_s}{dT} = 4098\\ 0.6108
+    Shuttleworth & Wallace 1985, as implemented in BROOK 90 (Federer 1990)
+    /// /// The difference to BROOK90 is, that the actual transpiration is
+    not calculated by plant resitance and potential gradient between plant
+    and soil, /// but by an piecewise linear function of the pF value $ pF
+    = \\log_{10}\\left(-\\Psi [hPa]\\right) $: /// \\[
+    \\frac{T_{act}}{T_{pot}} = \\left\\{\\begin{array}{cl} /// 1 &
+    \\mbox{if $pF \\le 3.35$} \\\\ /// \\frac{pF - 4.2}{3.35 -
+    4.2} & \\mbox{if $pF \\in [3.35 .. 4.2] $} \\\\ /// 0 &
+    \\mbox{if $pF \\ge 4.2$} \\end{array}\\right. \\] /// ///
+    Calculation procedure, as in BROOK 90: /// /// Evapotranspiration from
+    the canopy: /// $\\lambda ET_{canopy} = \\frac {r_{ac}
+    \\Delta\\ R_{n,canopy} + c_p\\rho D_0}{\\Delta \\gamma
+    r_{ac} + \\gamma r_{sc}} $ /// /// Evaporation from the ground: ///
+    $\\lambda E_{ground} = \\frac {r_{as} \\Delta\\ R_{n,ground} +
+    c_p\\rho D_0}{\\Delta \\gamma r_{as} + \\gamma r_{ss}} $ ///
+    /// with /// - $ \\Delta = \\frac{de_s}{dT} = 4098\\ 0.6108
     \\exp\\left(\\frac{17.27 T}{T+237.3}\\right)(T+237.3)^{-2} $,
-    the slope of the sat. vap. press. T function
-
-    $ R_{n,ground} = R_n \\exp(-C_R LAI) $, the net radiation flux in
-    the ground
-
-    $ R_{n_canopy} = R_n - R_{n,ground} $, the net radiation flux in the
-    canopy
-
-    $ \\lambda,c_p\\rho,\\gamma,C_R $ constants lambda, c_p_rho,
-    gamma, C_R
-
-    $ D_0 $ vapor pressure deficit at effective source height, see
-    function D0
-
-    $ r_{ac}, r_{sc}, r_{as}, r_{ss} $ Resistances for the vapor pressure
-    (see below)
+    the slope of the sat. vap. press. T function /// - $ R_{n,ground} =
+    R_n \\exp(-C_R LAI) $, the net radiation flux in the ground /// - $
+    R_{n_canopy} = R_n - R_{n,ground} $, the net radiation flux in the
+    canopy /// - $ \\lambda,c_p\\rho,\\gamma,C_R $ constants lambda,
+    c_p_rho, gamma, C_R /// - $ D_0 $ vapor pressure deficit at effective
+    source height, see function D0 /// - $ r_{ac}, r_{sc}, r_{as}, r_{ss}
+    $ Resistances for the vapor pressure (see below) ///.
 
     C++ includes: ShuttleworthWallace.h 
     """
@@ -8556,20 +8439,20 @@ class ShuttleworthWallace(transpiration_method,soil_evaporation_method,surface_w
         ShuttleworthWallace(cmf::upslope::Cell &cell)
 
         Calculates the transpiration and the soil evaporation from dry
-        surfaces.
+        surfaces ///.
 
         Parameters:
         -----------
 
-        w:  A meteorological data record
+        w:  A meteorological data record /
 
         soilwater_matrixpotential:  The suction of the soil water in m water
-        column
+        column ///
 
-        veg:  The parameters of the vegetation
+        veg:  The parameters of the vegetation ///
 
         CanopyStoresWater:  Flag indicating wet leaves. If true, a canopy
-        surface resistance of 0 is assumed
+        surface resistance of 0 is assumed ///
 
         measurement_height_above_canopy:  The height of the wind speed above
         the canopy in m 
@@ -8614,7 +8497,7 @@ class reach_list:
 
 class project(StateVariableOwner):
     """
-    The study area, holding all cells, outlets and streams.
+    The study area, holding all cells, outlets and streams ///.
 
     Todo Where the fuck do you describe those stinkin tracers? They should
     be here!
@@ -8715,7 +8598,7 @@ class project(StateVariableOwner):
         x, double y, double z)
 
         Creates a new Drichelet boundary condition and adds it to the list of
-        outlets The potential of the Drichelet boundary equals p.z. 
+        outlets /// The potential of the Drichelet boundary equals p.z. 
         """
         return _cmf_core.project_NewOutlet(self, *args, **kwargs)
 
@@ -8799,8 +8682,8 @@ project_swigregister(project)
 class SoluteWaterIntegrator(Integrator):
     """
     A SoluteWaterIntegrator implements the cmf::math::Integrator
-    interface, but consists of two independent ODE-solvers. Added
-    statevariables are sorted by waterstorages and solute storages and
+    interface, but consists of /// two independent ODE-solvers. Added
+    statevariables are sorted by waterstorages and solute storages and ///
     assigned to the correct solver.
 
     C++ includes: WaterSoluteIntegrator.h 
@@ -8839,16 +8722,16 @@ class SoluteWaterIntegrator(Integrator):
         const cmf::math::Integrator &solute_integrator,
         cmf::math::StateVariableOwner &states)
 
-        Creates a new SoluteWaterIntegrator.
+        Creates a new SoluteWaterIntegrator ///.
 
         Parameters:
         -----------
 
         water_integrator:  Template for the integrator of WaterStorage state
-        varaiables
+        varaiables ///
 
         solute_integrator:  Template for the integrator of soluteStorage state
-        varaiables
+        varaiables ///
 
         states:  States to be added to the integrators 
         """

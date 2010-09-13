@@ -117,6 +117,8 @@ size_t from_npy_array(PyObject* op,double ** data) {
 %typemap(out) cmf::math::num_array {
     $result = as_npy_array($1);
 }
-
+namespace cmf { namespace math {
+int count_parallel_threads();
+}}
 
 

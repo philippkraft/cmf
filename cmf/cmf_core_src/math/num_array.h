@@ -142,6 +142,8 @@
 		num_array operator*(real _Left,const num_array& _Right);
 		num_array operator/(real _Left,const num_array& _Right);
 
+		int count_parallel_threads();
+
 	}
 }
 

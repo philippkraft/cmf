@@ -80,9 +80,10 @@ namespace cmf {
 			virtual bool is_storage() const {return true;}
 			cmf::math::state_queue get_states();
 			/// creates a water storage (abstract class)
-			/// @param _project The project the waterstorage belongs to
+			/// @param project The project the waterstorage belongs to
+			/// @param Name Name of the water storage
 			/// @param InitialState Initial water content in m<sup>3</sup>
-			WaterStorage(const cmf::project& _project,const std::string & Name="", double InitialState=0);
+			WaterStorage(const cmf::project& project,const std::string & Name="", double InitialState=0);
 			
 			static std::tr1::shared_ptr<WaterStorage> from_node(cmf::water::flux_node::ptr node);
 			/// Returns the water quality of the water storage.

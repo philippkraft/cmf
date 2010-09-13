@@ -3976,6 +3976,28 @@ SWIGINTERN cmf::upslope::SoilLayer::ptr cmf_upslope_layer_list___get(cmf::upslop
 #ifdef __cplusplus
 extern "C" {
 #endif
+SWIGINTERN PyObject *_wrap_count_parallel_threads(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  int result;
+  
+  if (!SWIG_Python_UnpackTuple(args,"count_parallel_threads",0,0,0)) SWIG_fail;
+  {
+    try {
+      result = (int)cmf::math::count_parallel_threads();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+    
+  }
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN int Swig_var_PI_set(PyObject *) {
   SWIG_Error(SWIG_AttributeError,"Variable PI is read-only.");
   return 1;
@@ -16484,24 +16506,14 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_new_ExplicitEuler_fixed__SWIG_1(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_new_ExplicitEuler_fixed__SWIG_1(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **SWIGUNUSEDPARM(swig_obj)) {
   PyObject *resultobj = 0;
-  real arg1 = (real) 1e-9 ;
-  double val1 ;
-  int ecode1 = 0 ;
   cmf::math::ExplicitEuler_fixed *result = 0 ;
   
-  if ((nobjs < 0) || (nobjs > 1)) SWIG_fail;
-  if (swig_obj[0]) {
-    ecode1 = SWIG_AsVal_double(swig_obj[0], &val1);
-    if (!SWIG_IsOK(ecode1)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "new_ExplicitEuler_fixed" "', argument " "1"" of type '" "real""'");
-    } 
-    arg1 = static_cast< real >(val1);
-  }
+  if ((nobjs < 0) || (nobjs > 0)) SWIG_fail;
   {
     try {
-      result = (cmf::math::ExplicitEuler_fixed *)new cmf::math::ExplicitEuler_fixed(arg1);
+      result = (cmf::math::ExplicitEuler_fixed *)new cmf::math::ExplicitEuler_fixed();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -16558,30 +16570,14 @@ SWIGINTERN PyObject *_wrap_new_ExplicitEuler_fixed(PyObject *self, PyObject *arg
   {
     unsigned long _index = 0;
     SWIG_TypeRank _rank = 0; 
-    if ((argc >= 0) && (argc <= 1)) {
+    if (argc == 0) {
       SWIG_TypeRank _ranki = 0;
       SWIG_TypeRank _rankm = 0;
-      SWIG_TypeRank _pi = 1;
-      int _v = 0;
-      if (argc > 0) {
-        {
-          {
-            int res = SWIG_AsVal_double(argv[0], NULL);
-            _v = SWIG_CheckState(res);
-          }
-        }
-        if (!_v) goto check_1;
-        _ranki += _v*_pi;
-        _rankm += _pi;
-        _pi *= SWIG_MAXCASTRANK;
-      }
       if (!_index || (_ranki < _rank)) {
         _rank = _ranki; _index = 1;
         if (_rank == _rankm) goto dispatch;
       }
     }
-  check_1:
-    
     if (argc == 1) {
       SWIG_TypeRank _ranki = 0;
       SWIG_TypeRank _rankm = 0;
@@ -16638,7 +16634,7 @@ fail:
   SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number of arguments for overloaded function 'new_ExplicitEuler_fixed'.\n"
     "  Possible C/C++ prototypes are:\n"
     "    cmf::math::ExplicitEuler_fixed(cmf::math::StateVariableOwner &)\n"
-    "    cmf::math::ExplicitEuler_fixed(real)\n"
+    "    cmf::math::ExplicitEuler_fixed()\n"
     "    cmf::math::ExplicitEuler_fixed(cmf::math::Integrator const &)\n");
   return NULL;
 }
@@ -22053,7 +22049,7 @@ SWIGINTERN PyObject *_wrap_flux_connection_get_target__SWIG_0(PyObject *SWIGUNUS
   }
   {
     int dcast = 0;
-    /*@SWIG:C:\Program Files\swigwin-2.0.0\Lib\typemaps\swigmacros.swg,200,%formacro@*//*@SWIG:C:\Program Files\swigwin-2.0.0\Lib\typemaps\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf\cmf_core_src\cmf_swiglib.i,52,%_node_down_cast@*/
+    /*@SWIG:C:\Program Files\swigwin-2.0.0\Lib\typemaps\swigmacros.swg,200,%formacro@*//*@SWIG:C:\Program Files\swigwin-2.0.0\Lib\typemaps\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf\cmf_core_src\cmf_swiglib.i,53,%_node_down_cast@*/
     if (dcast==0 && result) /*check for cmf::atmosphere::RainSource*/  {
       std::tr1::shared_ptr<cmf::atmosphere::RainSource> output = std::tr1::dynamic_pointer_cast<cmf::atmosphere::RainSource>(result);
       if (output) /*flux_node is cmf::atmosphere::RainSource */ {
@@ -22063,7 +22059,7 @@ SWIGINTERN PyObject *_wrap_flux_connection_get_target__SWIG_0(PyObject *SWIGUNUS
     }
     /*@SWIG@*/
     
-    /*@SWIG:C:\Program Files\swigwin-2.0.0\Lib\typemaps\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf\cmf_core_src\cmf_swiglib.i,52,%_node_down_cast@*/
+    /*@SWIG:C:\Program Files\swigwin-2.0.0\Lib\typemaps\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf\cmf_core_src\cmf_swiglib.i,53,%_node_down_cast@*/
     if (dcast==0 && result) /*check for cmf::water::DricheletBoundary*/  {
       std::tr1::shared_ptr<cmf::water::DricheletBoundary> output = std::tr1::dynamic_pointer_cast<cmf::water::DricheletBoundary>(result);
       if (output) /*flux_node is cmf::water::DricheletBoundary */ {
@@ -22073,7 +22069,7 @@ SWIGINTERN PyObject *_wrap_flux_connection_get_target__SWIG_0(PyObject *SWIGUNUS
     }
     /*@SWIG@*/
     
-    /*@SWIG:C:\Program Files\swigwin-2.0.0\Lib\typemaps\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf\cmf_core_src\cmf_swiglib.i,52,%_node_down_cast@*/
+    /*@SWIG:C:\Program Files\swigwin-2.0.0\Lib\typemaps\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf\cmf_core_src\cmf_swiglib.i,53,%_node_down_cast@*/
     if (dcast==0 && result) /*check for cmf::water::NeumannBoundary*/  {
       std::tr1::shared_ptr<cmf::water::NeumannBoundary> output = std::tr1::dynamic_pointer_cast<cmf::water::NeumannBoundary>(result);
       if (output) /*flux_node is cmf::water::NeumannBoundary */ {
@@ -22083,7 +22079,7 @@ SWIGINTERN PyObject *_wrap_flux_connection_get_target__SWIG_0(PyObject *SWIGUNUS
     }
     /*@SWIG@*/
     
-    /*@SWIG:C:\Program Files\swigwin-2.0.0\Lib\typemaps\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf\cmf_core_src\cmf_swiglib.i,52,%_node_down_cast@*/
+    /*@SWIG:C:\Program Files\swigwin-2.0.0\Lib\typemaps\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf\cmf_core_src\cmf_swiglib.i,53,%_node_down_cast@*/
     if (dcast==0 && result) /*check for cmf::upslope::SoilLayer*/  {
       std::tr1::shared_ptr<cmf::upslope::SoilLayer> output = std::tr1::dynamic_pointer_cast<cmf::upslope::SoilLayer>(result);
       if (output) /*flux_node is cmf::upslope::SoilLayer */ {
@@ -22093,7 +22089,7 @@ SWIGINTERN PyObject *_wrap_flux_connection_get_target__SWIG_0(PyObject *SWIGUNUS
     }
     /*@SWIG@*/
     
-    /*@SWIG:C:\Program Files\swigwin-2.0.0\Lib\typemaps\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf\cmf_core_src\cmf_swiglib.i,52,%_node_down_cast@*/
+    /*@SWIG:C:\Program Files\swigwin-2.0.0\Lib\typemaps\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf\cmf_core_src\cmf_swiglib.i,53,%_node_down_cast@*/
     if (dcast==0 && result) /*check for cmf::upslope::aquifer*/  {
       std::tr1::shared_ptr<cmf::upslope::aquifer> output = std::tr1::dynamic_pointer_cast<cmf::upslope::aquifer>(result);
       if (output) /*flux_node is cmf::upslope::aquifer */ {
@@ -22103,7 +22099,7 @@ SWIGINTERN PyObject *_wrap_flux_connection_get_target__SWIG_0(PyObject *SWIGUNUS
     }
     /*@SWIG@*/
     
-    /*@SWIG:C:\Program Files\swigwin-2.0.0\Lib\typemaps\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf\cmf_core_src\cmf_swiglib.i,52,%_node_down_cast@*/
+    /*@SWIG:C:\Program Files\swigwin-2.0.0\Lib\typemaps\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf\cmf_core_src\cmf_swiglib.i,53,%_node_down_cast@*/
     if (dcast==0 && result) /*check for cmf::river::Reach*/  {
       std::tr1::shared_ptr<cmf::river::Reach> output = std::tr1::dynamic_pointer_cast<cmf::river::Reach>(result);
       if (output) /*flux_node is cmf::river::Reach */ {
@@ -22113,7 +22109,7 @@ SWIGINTERN PyObject *_wrap_flux_connection_get_target__SWIG_0(PyObject *SWIGUNUS
     }
     /*@SWIG@*/
     
-    /*@SWIG:C:\Program Files\swigwin-2.0.0\Lib\typemaps\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf\cmf_core_src\cmf_swiglib.i,52,%_node_down_cast@*/
+    /*@SWIG:C:\Program Files\swigwin-2.0.0\Lib\typemaps\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf\cmf_core_src\cmf_swiglib.i,53,%_node_down_cast@*/
     if (dcast==0 && result) /*check for cmf::river::OpenWaterStorage*/  {
       std::tr1::shared_ptr<cmf::river::OpenWaterStorage> output = std::tr1::dynamic_pointer_cast<cmf::river::OpenWaterStorage>(result);
       if (output) /*flux_node is cmf::river::OpenWaterStorage */ {
@@ -22123,7 +22119,7 @@ SWIGINTERN PyObject *_wrap_flux_connection_get_target__SWIG_0(PyObject *SWIGUNUS
     }
     /*@SWIG@*/
     
-    /*@SWIG:C:\Program Files\swigwin-2.0.0\Lib\typemaps\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf\cmf_core_src\cmf_swiglib.i,52,%_node_down_cast@*/
+    /*@SWIG:C:\Program Files\swigwin-2.0.0\Lib\typemaps\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf\cmf_core_src\cmf_swiglib.i,53,%_node_down_cast@*/
     if (dcast==0 && result) /*check for cmf::water::WaterStorage*/  {
       std::tr1::shared_ptr<cmf::water::WaterStorage> output = std::tr1::dynamic_pointer_cast<cmf::water::WaterStorage>(result);
       if (output) /*flux_node is cmf::water::WaterStorage */ {
@@ -22191,7 +22187,7 @@ SWIGINTERN PyObject *_wrap_flux_connection_get_target__SWIG_1(PyObject *SWIGUNUS
   }
   {
     int dcast = 0;
-    /*@SWIG:C:\Program Files\swigwin-2.0.0\Lib\typemaps\swigmacros.swg,200,%formacro@*//*@SWIG:C:\Program Files\swigwin-2.0.0\Lib\typemaps\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf\cmf_core_src\cmf_swiglib.i,52,%_node_down_cast@*/
+    /*@SWIG:C:\Program Files\swigwin-2.0.0\Lib\typemaps\swigmacros.swg,200,%formacro@*//*@SWIG:C:\Program Files\swigwin-2.0.0\Lib\typemaps\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf\cmf_core_src\cmf_swiglib.i,53,%_node_down_cast@*/
     if (dcast==0 && result) /*check for cmf::atmosphere::RainSource*/  {
       std::tr1::shared_ptr<cmf::atmosphere::RainSource> output = std::tr1::dynamic_pointer_cast<cmf::atmosphere::RainSource>(result);
       if (output) /*flux_node is cmf::atmosphere::RainSource */ {
@@ -22201,7 +22197,7 @@ SWIGINTERN PyObject *_wrap_flux_connection_get_target__SWIG_1(PyObject *SWIGUNUS
     }
     /*@SWIG@*/
     
-    /*@SWIG:C:\Program Files\swigwin-2.0.0\Lib\typemaps\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf\cmf_core_src\cmf_swiglib.i,52,%_node_down_cast@*/
+    /*@SWIG:C:\Program Files\swigwin-2.0.0\Lib\typemaps\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf\cmf_core_src\cmf_swiglib.i,53,%_node_down_cast@*/
     if (dcast==0 && result) /*check for cmf::water::DricheletBoundary*/  {
       std::tr1::shared_ptr<cmf::water::DricheletBoundary> output = std::tr1::dynamic_pointer_cast<cmf::water::DricheletBoundary>(result);
       if (output) /*flux_node is cmf::water::DricheletBoundary */ {
@@ -22211,7 +22207,7 @@ SWIGINTERN PyObject *_wrap_flux_connection_get_target__SWIG_1(PyObject *SWIGUNUS
     }
     /*@SWIG@*/
     
-    /*@SWIG:C:\Program Files\swigwin-2.0.0\Lib\typemaps\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf\cmf_core_src\cmf_swiglib.i,52,%_node_down_cast@*/
+    /*@SWIG:C:\Program Files\swigwin-2.0.0\Lib\typemaps\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf\cmf_core_src\cmf_swiglib.i,53,%_node_down_cast@*/
     if (dcast==0 && result) /*check for cmf::water::NeumannBoundary*/  {
       std::tr1::shared_ptr<cmf::water::NeumannBoundary> output = std::tr1::dynamic_pointer_cast<cmf::water::NeumannBoundary>(result);
       if (output) /*flux_node is cmf::water::NeumannBoundary */ {
@@ -22221,7 +22217,7 @@ SWIGINTERN PyObject *_wrap_flux_connection_get_target__SWIG_1(PyObject *SWIGUNUS
     }
     /*@SWIG@*/
     
-    /*@SWIG:C:\Program Files\swigwin-2.0.0\Lib\typemaps\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf\cmf_core_src\cmf_swiglib.i,52,%_node_down_cast@*/
+    /*@SWIG:C:\Program Files\swigwin-2.0.0\Lib\typemaps\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf\cmf_core_src\cmf_swiglib.i,53,%_node_down_cast@*/
     if (dcast==0 && result) /*check for cmf::upslope::SoilLayer*/  {
       std::tr1::shared_ptr<cmf::upslope::SoilLayer> output = std::tr1::dynamic_pointer_cast<cmf::upslope::SoilLayer>(result);
       if (output) /*flux_node is cmf::upslope::SoilLayer */ {
@@ -22231,7 +22227,7 @@ SWIGINTERN PyObject *_wrap_flux_connection_get_target__SWIG_1(PyObject *SWIGUNUS
     }
     /*@SWIG@*/
     
-    /*@SWIG:C:\Program Files\swigwin-2.0.0\Lib\typemaps\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf\cmf_core_src\cmf_swiglib.i,52,%_node_down_cast@*/
+    /*@SWIG:C:\Program Files\swigwin-2.0.0\Lib\typemaps\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf\cmf_core_src\cmf_swiglib.i,53,%_node_down_cast@*/
     if (dcast==0 && result) /*check for cmf::upslope::aquifer*/  {
       std::tr1::shared_ptr<cmf::upslope::aquifer> output = std::tr1::dynamic_pointer_cast<cmf::upslope::aquifer>(result);
       if (output) /*flux_node is cmf::upslope::aquifer */ {
@@ -22241,7 +22237,7 @@ SWIGINTERN PyObject *_wrap_flux_connection_get_target__SWIG_1(PyObject *SWIGUNUS
     }
     /*@SWIG@*/
     
-    /*@SWIG:C:\Program Files\swigwin-2.0.0\Lib\typemaps\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf\cmf_core_src\cmf_swiglib.i,52,%_node_down_cast@*/
+    /*@SWIG:C:\Program Files\swigwin-2.0.0\Lib\typemaps\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf\cmf_core_src\cmf_swiglib.i,53,%_node_down_cast@*/
     if (dcast==0 && result) /*check for cmf::river::Reach*/  {
       std::tr1::shared_ptr<cmf::river::Reach> output = std::tr1::dynamic_pointer_cast<cmf::river::Reach>(result);
       if (output) /*flux_node is cmf::river::Reach */ {
@@ -22251,7 +22247,7 @@ SWIGINTERN PyObject *_wrap_flux_connection_get_target__SWIG_1(PyObject *SWIGUNUS
     }
     /*@SWIG@*/
     
-    /*@SWIG:C:\Program Files\swigwin-2.0.0\Lib\typemaps\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf\cmf_core_src\cmf_swiglib.i,52,%_node_down_cast@*/
+    /*@SWIG:C:\Program Files\swigwin-2.0.0\Lib\typemaps\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf\cmf_core_src\cmf_swiglib.i,53,%_node_down_cast@*/
     if (dcast==0 && result) /*check for cmf::river::OpenWaterStorage*/  {
       std::tr1::shared_ptr<cmf::river::OpenWaterStorage> output = std::tr1::dynamic_pointer_cast<cmf::river::OpenWaterStorage>(result);
       if (output) /*flux_node is cmf::river::OpenWaterStorage */ {
@@ -22261,7 +22257,7 @@ SWIGINTERN PyObject *_wrap_flux_connection_get_target__SWIG_1(PyObject *SWIGUNUS
     }
     /*@SWIG@*/
     
-    /*@SWIG:C:\Program Files\swigwin-2.0.0\Lib\typemaps\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf\cmf_core_src\cmf_swiglib.i,52,%_node_down_cast@*/
+    /*@SWIG:C:\Program Files\swigwin-2.0.0\Lib\typemaps\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf\cmf_core_src\cmf_swiglib.i,53,%_node_down_cast@*/
     if (dcast==0 && result) /*check for cmf::water::WaterStorage*/  {
       std::tr1::shared_ptr<cmf::water::WaterStorage> output = std::tr1::dynamic_pointer_cast<cmf::water::WaterStorage>(result);
       if (output) /*flux_node is cmf::water::WaterStorage */ {
@@ -25141,7 +25137,7 @@ SWIGINTERN PyObject *_wrap_new_WaterStorage(PyObject *SWIGUNUSEDPARM(self), PyOb
   PyObject * obj1 = 0 ;
   PyObject * obj2 = 0 ;
   char *  kwnames[] = {
-    (char *) "_project",(char *) "Name",(char *) "InitialState", NULL 
+    (char *) "project",(char *) "Name",(char *) "InitialState", NULL 
   };
   cmf::water::WaterStorage *result = 0 ;
   
@@ -26633,7 +26629,7 @@ SWIGINTERN PyObject *_wrap_node_list___get(PyObject *SWIGUNUSEDPARM(self), PyObj
   }
   {
     int dcast = 0;
-    /*@SWIG:C:\Program Files\swigwin-2.0.0\Lib\typemaps\swigmacros.swg,200,%formacro@*//*@SWIG:C:\Program Files\swigwin-2.0.0\Lib\typemaps\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf\cmf_core_src\cmf_swiglib.i,52,%_node_down_cast@*/
+    /*@SWIG:C:\Program Files\swigwin-2.0.0\Lib\typemaps\swigmacros.swg,200,%formacro@*//*@SWIG:C:\Program Files\swigwin-2.0.0\Lib\typemaps\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf\cmf_core_src\cmf_swiglib.i,53,%_node_down_cast@*/
     if (dcast==0 && result) /*check for cmf::atmosphere::RainSource*/  {
       std::tr1::shared_ptr<cmf::atmosphere::RainSource> output = std::tr1::dynamic_pointer_cast<cmf::atmosphere::RainSource>(result);
       if (output) /*flux_node is cmf::atmosphere::RainSource */ {
@@ -26643,7 +26639,7 @@ SWIGINTERN PyObject *_wrap_node_list___get(PyObject *SWIGUNUSEDPARM(self), PyObj
     }
     /*@SWIG@*/
     
-    /*@SWIG:C:\Program Files\swigwin-2.0.0\Lib\typemaps\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf\cmf_core_src\cmf_swiglib.i,52,%_node_down_cast@*/
+    /*@SWIG:C:\Program Files\swigwin-2.0.0\Lib\typemaps\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf\cmf_core_src\cmf_swiglib.i,53,%_node_down_cast@*/
     if (dcast==0 && result) /*check for cmf::water::DricheletBoundary*/  {
       std::tr1::shared_ptr<cmf::water::DricheletBoundary> output = std::tr1::dynamic_pointer_cast<cmf::water::DricheletBoundary>(result);
       if (output) /*flux_node is cmf::water::DricheletBoundary */ {
@@ -26653,7 +26649,7 @@ SWIGINTERN PyObject *_wrap_node_list___get(PyObject *SWIGUNUSEDPARM(self), PyObj
     }
     /*@SWIG@*/
     
-    /*@SWIG:C:\Program Files\swigwin-2.0.0\Lib\typemaps\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf\cmf_core_src\cmf_swiglib.i,52,%_node_down_cast@*/
+    /*@SWIG:C:\Program Files\swigwin-2.0.0\Lib\typemaps\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf\cmf_core_src\cmf_swiglib.i,53,%_node_down_cast@*/
     if (dcast==0 && result) /*check for cmf::water::NeumannBoundary*/  {
       std::tr1::shared_ptr<cmf::water::NeumannBoundary> output = std::tr1::dynamic_pointer_cast<cmf::water::NeumannBoundary>(result);
       if (output) /*flux_node is cmf::water::NeumannBoundary */ {
@@ -26663,7 +26659,7 @@ SWIGINTERN PyObject *_wrap_node_list___get(PyObject *SWIGUNUSEDPARM(self), PyObj
     }
     /*@SWIG@*/
     
-    /*@SWIG:C:\Program Files\swigwin-2.0.0\Lib\typemaps\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf\cmf_core_src\cmf_swiglib.i,52,%_node_down_cast@*/
+    /*@SWIG:C:\Program Files\swigwin-2.0.0\Lib\typemaps\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf\cmf_core_src\cmf_swiglib.i,53,%_node_down_cast@*/
     if (dcast==0 && result) /*check for cmf::upslope::SoilLayer*/  {
       std::tr1::shared_ptr<cmf::upslope::SoilLayer> output = std::tr1::dynamic_pointer_cast<cmf::upslope::SoilLayer>(result);
       if (output) /*flux_node is cmf::upslope::SoilLayer */ {
@@ -26673,7 +26669,7 @@ SWIGINTERN PyObject *_wrap_node_list___get(PyObject *SWIGUNUSEDPARM(self), PyObj
     }
     /*@SWIG@*/
     
-    /*@SWIG:C:\Program Files\swigwin-2.0.0\Lib\typemaps\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf\cmf_core_src\cmf_swiglib.i,52,%_node_down_cast@*/
+    /*@SWIG:C:\Program Files\swigwin-2.0.0\Lib\typemaps\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf\cmf_core_src\cmf_swiglib.i,53,%_node_down_cast@*/
     if (dcast==0 && result) /*check for cmf::upslope::aquifer*/  {
       std::tr1::shared_ptr<cmf::upslope::aquifer> output = std::tr1::dynamic_pointer_cast<cmf::upslope::aquifer>(result);
       if (output) /*flux_node is cmf::upslope::aquifer */ {
@@ -26683,7 +26679,7 @@ SWIGINTERN PyObject *_wrap_node_list___get(PyObject *SWIGUNUSEDPARM(self), PyObj
     }
     /*@SWIG@*/
     
-    /*@SWIG:C:\Program Files\swigwin-2.0.0\Lib\typemaps\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf\cmf_core_src\cmf_swiglib.i,52,%_node_down_cast@*/
+    /*@SWIG:C:\Program Files\swigwin-2.0.0\Lib\typemaps\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf\cmf_core_src\cmf_swiglib.i,53,%_node_down_cast@*/
     if (dcast==0 && result) /*check for cmf::river::Reach*/  {
       std::tr1::shared_ptr<cmf::river::Reach> output = std::tr1::dynamic_pointer_cast<cmf::river::Reach>(result);
       if (output) /*flux_node is cmf::river::Reach */ {
@@ -26693,7 +26689,7 @@ SWIGINTERN PyObject *_wrap_node_list___get(PyObject *SWIGUNUSEDPARM(self), PyObj
     }
     /*@SWIG@*/
     
-    /*@SWIG:C:\Program Files\swigwin-2.0.0\Lib\typemaps\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf\cmf_core_src\cmf_swiglib.i,52,%_node_down_cast@*/
+    /*@SWIG:C:\Program Files\swigwin-2.0.0\Lib\typemaps\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf\cmf_core_src\cmf_swiglib.i,53,%_node_down_cast@*/
     if (dcast==0 && result) /*check for cmf::river::OpenWaterStorage*/  {
       std::tr1::shared_ptr<cmf::river::OpenWaterStorage> output = std::tr1::dynamic_pointer_cast<cmf::river::OpenWaterStorage>(result);
       if (output) /*flux_node is cmf::river::OpenWaterStorage */ {
@@ -26703,7 +26699,7 @@ SWIGINTERN PyObject *_wrap_node_list___get(PyObject *SWIGUNUSEDPARM(self), PyObj
     }
     /*@SWIG@*/
     
-    /*@SWIG:C:\Program Files\swigwin-2.0.0\Lib\typemaps\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf\cmf_core_src\cmf_swiglib.i,52,%_node_down_cast@*/
+    /*@SWIG:C:\Program Files\swigwin-2.0.0\Lib\typemaps\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf\cmf_core_src\cmf_swiglib.i,53,%_node_down_cast@*/
     if (dcast==0 && result) /*check for cmf::water::WaterStorage*/  {
       std::tr1::shared_ptr<cmf::water::WaterStorage> output = std::tr1::dynamic_pointer_cast<cmf::water::WaterStorage>(result);
       if (output) /*flux_node is cmf::water::WaterStorage */ {
@@ -37434,7 +37430,7 @@ SWIGINTERN PyObject *_wrap_Cell_get_surfacewater(PyObject *SWIGUNUSEDPARM(self),
   }
   {
     int dcast = 0;
-    /*@SWIG:C:\Program Files\swigwin-2.0.0\Lib\typemaps\swigmacros.swg,200,%formacro@*//*@SWIG:C:\Program Files\swigwin-2.0.0\Lib\typemaps\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf\cmf_core_src\cmf_swiglib.i,52,%_node_down_cast@*/
+    /*@SWIG:C:\Program Files\swigwin-2.0.0\Lib\typemaps\swigmacros.swg,200,%formacro@*//*@SWIG:C:\Program Files\swigwin-2.0.0\Lib\typemaps\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf\cmf_core_src\cmf_swiglib.i,53,%_node_down_cast@*/
     if (dcast==0 && result) /*check for cmf::river::OpenWaterStorage*/  {
       std::tr1::shared_ptr<cmf::river::OpenWaterStorage> output = std::tr1::dynamic_pointer_cast<cmf::river::OpenWaterStorage>(result);
       if (output) /*flux_node is cmf::river::OpenWaterStorage */ {
@@ -37444,7 +37440,7 @@ SWIGINTERN PyObject *_wrap_Cell_get_surfacewater(PyObject *SWIGUNUSEDPARM(self),
     }
     /*@SWIG@*/
     
-    /*@SWIG:C:\Program Files\swigwin-2.0.0\Lib\typemaps\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf\cmf_core_src\cmf_swiglib.i,52,%_node_down_cast@*/
+    /*@SWIG:C:\Program Files\swigwin-2.0.0\Lib\typemaps\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf\cmf_core_src\cmf_swiglib.i,53,%_node_down_cast@*/
     if (dcast==0 && result) /*check for cmf::water::DricheletBoundary*/  {
       std::tr1::shared_ptr<cmf::water::DricheletBoundary> output = std::tr1::dynamic_pointer_cast<cmf::water::DricheletBoundary>(result);
       if (output) /*flux_node is cmf::water::DricheletBoundary */ {
@@ -37693,7 +37689,7 @@ SWIGINTERN PyObject *_wrap_Cell_get_storage(PyObject *SWIGUNUSEDPARM(self), PyOb
   }
   {
     int dcast = 0;
-    /*@SWIG:C:\Program Files\swigwin-2.0.0\Lib\typemaps\swigmacros.swg,200,%formacro@*//*@SWIG:C:\Program Files\swigwin-2.0.0\Lib\typemaps\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf\cmf_core_src\cmf_swiglib.i,52,%_node_down_cast@*/
+    /*@SWIG:C:\Program Files\swigwin-2.0.0\Lib\typemaps\swigmacros.swg,200,%formacro@*//*@SWIG:C:\Program Files\swigwin-2.0.0\Lib\typemaps\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf\cmf_core_src\cmf_swiglib.i,53,%_node_down_cast@*/
     if (dcast==0 && result) /*check for cmf::river::OpenWaterStorage*/  {
       std::tr1::shared_ptr<cmf::river::OpenWaterStorage> output = std::tr1::dynamic_pointer_cast<cmf::river::OpenWaterStorage>(result);
       if (output) /*flux_node is cmf::river::OpenWaterStorage */ {
@@ -37703,7 +37699,7 @@ SWIGINTERN PyObject *_wrap_Cell_get_storage(PyObject *SWIGUNUSEDPARM(self), PyOb
     }
     /*@SWIG@*/
     
-    /*@SWIG:C:\Program Files\swigwin-2.0.0\Lib\typemaps\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf\cmf_core_src\cmf_swiglib.i,52,%_node_down_cast@*/
+    /*@SWIG:C:\Program Files\swigwin-2.0.0\Lib\typemaps\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf\cmf_core_src\cmf_swiglib.i,53,%_node_down_cast@*/
     if (dcast==0 && result) /*check for cmf::water::WaterStorage*/  {
       std::tr1::shared_ptr<cmf::water::WaterStorage> output = std::tr1::dynamic_pointer_cast<cmf::water::WaterStorage>(result);
       if (output) /*flux_node is cmf::water::WaterStorage */ {
@@ -60463,6 +60459,7 @@ SWIGINTERN PyObject *SoluteWaterIntegrator_swiginit(PyObject *SWIGUNUSEDPARM(sel
 
 static PyMethodDef SwigMethods[] = {
 	 { (char *)"SWIG_PyInstanceMethod_New", (PyCFunction)SWIG_PyInstanceMethod_New, METH_O, NULL},
+	 { (char *)"count_parallel_threads", (PyCFunction)_wrap_count_parallel_threads, METH_NOARGS, (char *)"count_parallel_threads() -> int"},
 	 { (char *)"point_x_set", _wrap_point_x_set, METH_VARARGS, (char *)"point_x_set(point self, double x)"},
 	 { (char *)"point_x_get", (PyCFunction)_wrap_point_x_get, METH_O, (char *)"point_x_get(point self) -> double"},
 	 { (char *)"point_y_set", _wrap_point_y_set, METH_VARARGS, (char *)"point_y_set(point self, double y)"},
@@ -60485,7 +60482,7 @@ static PyMethodDef SwigMethods[] = {
 		"double\n"
 		"distanceTo(point p) const\n"
 		"\n"
-		"Returns the horizontal euclidian distance to another point p.\n"
+		"Returns the horizontal euclidian distance to another point p. ///\n"
 		"$\\\\sqrt{(this.x-p.x)^2+(this.y-p.y)^2}$. \n"
 		""},
 	 { (char *)"point_z_weight_distance", (PyCFunction) _wrap_point_z_weight_distance, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
@@ -60494,7 +60491,7 @@ static PyMethodDef SwigMethods[] = {
 		"double z_weight_distance(point p, double z_weight) const\n"
 		"\n"
 		"Returns the horizontal euclidian distance plus the absolute of the\n"
-		"height difference times a factor.\n"
+		"height difference times a factor. ///\n"
 		"$\\\\sqrt{(this.x-p.x)^2+(this.y-p.y)^2}\\\\ +\\\\ w_{z}|this.z-p.z|$.\n"
 		"\n"
 		""},
@@ -60580,7 +60577,12 @@ static PyMethodDef SwigMethods[] = {
 		"double\n"
 		"cmf::geometry::dot(const point &p1, const point &p2) \n"
 		""},
-	 { (char *)"distance", (PyCFunction) _wrap_distance, METH_VARARGS | METH_KEYWORDS, (char *)"distance(point p1, point p2) -> double"},
+	 { (char *)"distance", (PyCFunction) _wrap_distance, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
+		"distance(point p1, point p2) -> double\n"
+		"\n"
+		"double\n"
+		"cmf::geometry::distance(const point &p1, const point &p2) \n"
+		""},
 	 { (char *)"point_vector_X_set", _wrap_point_vector_X_set, METH_VARARGS, (char *)"point_vector_X_set(point_vector self, cmf::math::num_array X)"},
 	 { (char *)"point_vector_X_get", (PyCFunction)_wrap_point_vector_X_get, METH_O, (char *)"point_vector_X_get(point_vector self) -> cmf::math::num_array"},
 	 { (char *)"point_vector_Y_set", _wrap_point_vector_Y_set, METH_VARARGS, (char *)"point_vector_Y_set(point_vector self, cmf::math::num_array Y)"},
@@ -60592,7 +60594,7 @@ static PyMethodDef SwigMethods[] = {
 		"\n"
 		"point_vector(int size)\n"
 		"\n"
-		"z coordinates Create a point vector of a specific size \n"
+		"z coordinates /// Create a point vector of a specific size \n"
 		""},
 	 { (char *)"point_vector_get", (PyCFunction) _wrap_point_vector_get, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
 		"point_vector_get(point_vector self, int index) -> point\n"
@@ -60889,7 +60891,7 @@ static PyMethodDef SwigMethods[] = {
 		"\n"
 		""},
 	 { (char *)"new_timeseries", _wrap_new_timeseries, METH_VARARGS, (char *)"\n"
-		"timeseries(Time _begin, Time _step, int _interpolationmethod = 1, \n"
+		"timeseries(Time begin, Time step, int interpolationmethod = 1, \n"
 		"    size_t size = 0)\n"
 		"timeseries()\n"
 		"timeseries(timeseries ts)\n"
@@ -61259,14 +61261,14 @@ static PyMethodDef SwigMethods[] = {
 		"virtual int\n"
 		"integrate(cmf::math::Time t_max, cmf::math::Time dt)=0\n"
 		"\n"
-		"Integrates the vector of state variables.\n"
+		"Integrates the vector of state variables ///.\n"
 		"\n"
 		"Parameters:\n"
 		"-----------\n"
 		"\n"
 		"MaxTime:  To stop the model (if running in a model framework) at time\n"
 		"steps of value exchange e.g. full hours, the next value exchange time\n"
-		"can be given\n"
+		"can be given ///\n"
 		"\n"
 		"TimeStep:  Takes the proposed timestep, and changes it into the\n"
 		"effictivly used timestep according to the local stiffness of the\n"
@@ -61312,7 +61314,7 @@ static PyMethodDef SwigMethods[] = {
 		"BDF2(const Integrator\n"
 		"&templ)\n"
 		"\n"
-		"Constructs a new BDF2 integrator.\n"
+		"Constructs a new BDF2 integrator ///.\n"
 		"\n"
 		"Parameters:\n"
 		"-----------\n"
@@ -61332,7 +61334,7 @@ static PyMethodDef SwigMethods[] = {
 		""},
 	 { (char *)"new_ExplicitEuler_fixed", _wrap_new_ExplicitEuler_fixed, METH_VARARGS, (char *)"\n"
 		"ExplicitEuler_fixed(StateVariableOwner states)\n"
-		"ExplicitEuler_fixed(real epsilon = 1e-9)\n"
+		"ExplicitEuler_fixed()\n"
 		"new_ExplicitEuler_fixed(Integrator copy) -> ExplicitEuler_fixed\n"
 		"\n"
 		"ExplicitEuler_fixed(const Integrator &copy)\n"
@@ -61382,12 +61384,12 @@ static PyMethodDef SwigMethods[] = {
 		"RKFIntegrator(real epsilon=1e-9, cmf::math::Time\n"
 		"dt_min=cmf::math::timespan(1000))\n"
 		"\n"
-		"Constructs a new RKFIntegrator.\n"
+		"Constructs a new RKFIntegrator ///.\n"
 		"\n"
 		"Parameters:\n"
 		"-----------\n"
 		"\n"
-		"epsilon:  relative error tolerance per time step (default=1e-9)\n"
+		"epsilon:  relative error tolerance per time step (default=1e-9) ///\n"
 		"\n"
 		"tStepMin:  minimum time step (default=1s) \n"
 		""},
@@ -61502,12 +61504,12 @@ static PyMethodDef SwigMethods[] = {
 		"MultiIntegrator(const cmf::math::Integrator &template_integrator, int\n"
 		"count)\n"
 		"\n"
-		"Creates a new MultiIntegrator.\n"
+		"Creates a new MultiIntegrator ///.\n"
 		"\n"
 		"Parameters:\n"
 		"-----------\n"
 		"\n"
-		"template_integrator:  Template for the integrators\n"
+		"template_integrator:  Template for the integrators ///\n"
 		"\n"
 		"count:  Number of integrators \n"
 		""},
@@ -61636,8 +61638,8 @@ static PyMethodDef SwigMethods[] = {
 		"bool RecalcFluxes(cmf::math::Time t)\n"
 		"\n"
 		"Pure flux_nodes do not influence fluxes, therefore no recalculation of\n"
-		"fluxes is required by flux_node. WaterStorage overrides this, since\n"
-		"state changes require an update of the fluxes. \n"
+		"fluxes is required by flux_node. /// WaterStorage overrides this,\n"
+		"since state changes require an update of the fluxes. \n"
 		""},
 	 { (char *)"flux_node_get_connection", (PyCFunction) _wrap_flux_node_get_connection, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
 		"flux_node_get_connection(flux_node self, flux_node target) -> flux_connection\n"
@@ -61683,12 +61685,12 @@ static PyMethodDef SwigMethods[] = {
 		"const\n"
 		"\n"
 		"Returns the sum of all fluxes (positive and negative) at time t.\n"
-		"Single fluxes can be excluded from the calculation.\n"
+		"Single fluxes can be excluded from the calculation ///.\n"
 		"\n"
 		"Parameters:\n"
 		"-----------\n"
 		"\n"
-		"t:  Time of the query\n"
+		"t:  Time of the query ///\n"
 		"\n"
 		"Without:  A flux_connection that is excluded from the water_balance\n"
 		"(e.g. to prevent closed circuits) \n"
@@ -61708,8 +61710,8 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"flux_node_is_empty", (PyCFunction)_wrap_flux_node_is_empty, METH_O, (char *)"\n"
 		"flux_node_is_empty(flux_node self) -> double\n"
 		"\n"
-		"virtual bool\n"
-		"is_empty() const\n"
+		"virtual\n"
+		"double is_empty() const\n"
 		"\n"
 		"Returns true if the node has no water. \n"
 		""},
@@ -61843,8 +61845,9 @@ static PyMethodDef SwigMethods[] = {
 		"real\n"
 		"conc(cmf::math::Time t, const cmf::water::solute &_Solute)\n"
 		"\n"
-		"Returns the concentration of the flux. If not overridden, it returns\n"
-		"the concentration of the source of the flux (direction depending). \n"
+		"Returns the concentration of the flux. If not overridden, /// it\n"
+		"returns the concentration of the source of the flux (direction\n"
+		"depending). \n"
 		""},
 	 { (char *)"flux_connection_type_get", (PyCFunction)_wrap_flux_connection_type_get, METH_O, (char *)"flux_connection_type_get(flux_connection self) -> string"},
 	 { (char *)"flux_connection_to_string", (PyCFunction)_wrap_flux_connection_to_string, METH_O, (char *)"\n"
@@ -61946,7 +61949,7 @@ static PyMethodDef SwigMethods[] = {
 		"cmf::water::set_flux(flux_node::ptr source, flux_node::ptr target,\n"
 		"real flux_value)\n"
 		"\n"
-		"Sets a constant flux between two nodes, if an\n"
+		"/// Sets a constant flux between two nodes, if an\n"
 		"external_control_connection exists. \n"
 		""},
 	 { (char *)"can_set_flux", (PyCFunction) _wrap_can_set_flux, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
@@ -61955,8 +61958,9 @@ static PyMethodDef SwigMethods[] = {
 		"bool\n"
 		"cmf::water::can_set_flux(flux_node::ptr source, flux_node::ptr target)\n"
 		"\n"
-		"Checks if a constant flux between two nodes can be set. Returns true\n"
-		"if the nodes are connected by an external_control_connection. \n"
+		"/// Checks if a constant flux between two nodes can be set. Returns\n"
+		"true /// if the nodes are connected by an external_control_connection\n"
+		"\n"
 		""},
 	 { (char *)"linear_scale_displacement_set", _wrap_linear_scale_displacement_set, METH_VARARGS, (char *)"linear_scale_displacement_set(linear_scale self, real displacement)"},
 	 { (char *)"linear_scale_displacement_get", (PyCFunction)_wrap_linear_scale_displacement_get, METH_O, (char *)"linear_scale_displacement_get(linear_scale self) -> real"},
@@ -61988,8 +61992,8 @@ static PyMethodDef SwigMethods[] = {
 		"virtual bool RecalcFluxes(cmf::math::Time t)\n"
 		"\n"
 		"Pure flux_nodes do not influence fluxes, therefore no recalculation of\n"
-		"fluxes is required by flux_node. WaterStorage overrides this, since\n"
-		"state changes require an update of the fluxes. \n"
+		"fluxes is required by flux_node. /// WaterStorage overrides this,\n"
+		"since state changes require an update of the fluxes. \n"
 		""},
 	 { (char *)"new_DricheletBoundary", (PyCFunction) _wrap_new_DricheletBoundary, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
 		"new_DricheletBoundary(project _p, real potential, point Location = cmf::geometry::point()) -> DricheletBoundary\n"
@@ -62050,18 +62054,18 @@ static PyMethodDef SwigMethods[] = {
 		"flux_decrease_time=cmf::math::h)\n"
 		"\n"
 		"Produces a constant but changeable flux from a source to a target, if\n"
-		"enough water is present in the source.\n"
+		"enough water is present in the source ///.\n"
 		"\n"
 		"Parameters:\n"
 		"-----------\n"
 		"\n"
-		"source:  The source of the water\n"
+		"source:  The source of the water ///\n"
 		"\n"
-		"target:  The target of the water\n"
+		"target:  The target of the water ///\n"
 		"\n"
-		"maximum_flux:  The requested flux $q_{0}$\n"
+		"maximum_flux:  The requested flux $q_{0}$ ///\n"
 		"\n"
-		"minimal_state:  Minimal volume of stored water in source\n"
+		"minimal_state:  Minimal volume of stored water in source ///\n"
 		"\n"
 		"flux_decrease_time:  ( cmf::math::Time) \n"
 		""},
@@ -62069,17 +62073,17 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"TechnicalFlux_swigregister", TechnicalFlux_swigregister, METH_VARARGS, NULL},
 	 { (char *)"TechnicalFlux_swiginit", TechnicalFlux_swiginit, METH_VARARGS, NULL},
 	 { (char *)"new_WaterStorage", (PyCFunction) _wrap_new_WaterStorage, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
-		"new_WaterStorage(project _project, string Name = \"\", double InitialState = 0) -> WaterStorage\n"
+		"new_WaterStorage(project project, string Name = \"\", double InitialState = 0) -> WaterStorage\n"
 		"\n"
 		"WaterStorage(const cmf::project &_project, const std::string\n"
 		"&Name=\"\", double InitialState=0)\n"
 		"\n"
-		"creates a water storage (abstract class)\n"
+		"creates a water storage (abstract class) ///\n"
 		"\n"
 		"Parameters:\n"
 		"-----------\n"
 		"\n"
-		"_project:  The project the waterstorage belongs to\n"
+		"_project:  The project the waterstorage belongs to ///\n"
 		"\n"
 		"InitialState:  Initial water content in m3 \n"
 		""},
@@ -62123,23 +62127,23 @@ static PyMethodDef SwigMethods[] = {
 		"kinematic_wave(WaterStorage::ptr source, flux_node::ptr target, real\n"
 		"residencetime, real exponent=1.0, real residual_volume=0.0)\n"
 		"\n"
-		"Creates a kinematic wave connection. \\\\[ q = \\\\frac {\\\\left(V -\n"
-		"V_{residual}\\\\right)^\\\\beta}{t_r} \\\\].\n"
+		"Creates a kinematic wave connection. /// \\\\[ q = \\\\frac\n"
+		"{\\\\left(V - V_{residual}\\\\right)^\\\\beta}{t_r} \\\\] ///.\n"
 		"\n"
 		"Parameters:\n"
 		"-----------\n"
 		"\n"
 		"source:  Water storage from which the water flows out. Flux is a\n"
-		"function of source.volume\n"
+		"function of source.volume ///\n"
 		"\n"
 		"target:  Target node (boundary condition or storage). Does not\n"
-		"influence the strength of the flow\n"
+		"influence the strength of the flow ///\n"
 		"\n"
 		"residencetime:   $t_r [days]$ The residence time of the water in this\n"
-		"storage\n"
+		"storage ///\n"
 		"\n"
 		"exponent:   $\\\\beta [-]$ An empirical exponent to shape the flux\n"
-		"function (default = 1 (linear function))\n"
+		"function (default = 1 (linear function)) ///\n"
 		"\n"
 		"residual_volume:   $V_{residual} [m^3]$ The volume of water not\n"
 		"flowing out (default = 0 m3) \n"
@@ -62193,23 +62197,19 @@ static PyMethodDef SwigMethods[] = {
 		"\n"
 		"real global_water_balance(cmf::math::Time t) const\n"
 		"\n"
-		"Returns the sum of the water balances of the nodes.\n"
-		"\n"
+		"Returns the sum of the water balances of the nodes /// ///\n"
 		"\\\\[\\\\sigma_{global} =\n"
-		"\\\\sum_{i=0}^N{\\\\sum_{j=0}^{C_i}{q_{ij}(t)}} \\\\]\n"
-		"\n"
-		"Replaces slow Python code like: \n"
+		"\\\\sum_{i=0}^N{\\\\sum_{j=0}^{C_i}{q_{ij}(t)}} \\\\] /// /// Replaces\n"
+		"slow Python code like: ///. \n"
 		""},
 	 { (char *)"node_list_water_balance", (PyCFunction) _wrap_node_list_water_balance, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
 		"node_list_water_balance(node_list self, Time t) -> cmf::math::num_array\n"
 		"\n"
 		"cmf::math::num_array water_balance(cmf::math::Time t) const\n"
 		"\n"
-		"Returns the water balance of each vector as a vector.\n"
-		"\n"
-		"\\\\[ \\\\sigma_i = \\\\sum_{j=0}^{C_i}{q_{ij}(t)} \\\\]\n"
-		"\n"
-		"Replaces slow Python code like: \n"
+		"Returns the water balance of each vector as a vector /// /// \\\\[\n"
+		"\\\\sigma_i = \\\\sum_{j=0}^{C_i}{q_{ij}(t)} \\\\] /// /// Replaces\n"
+		"slow Python code like: ///. \n"
 		""},
 	 { (char *)"node_list_conc", (PyCFunction) _wrap_node_list_conc, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
 		"node_list_conc(node_list self, Time t, solute _Solute) -> cmf::math::num_array\n"
@@ -62237,18 +62237,17 @@ static PyMethodDef SwigMethods[] = {
 		"&targets, cmf::math::Time t) const\n"
 		"\n"
 		"A fast method to perform flux queries as a batch. The node lists left\n"
-		"and right should have the same length.\n"
+		"and right should have the same length. /// ///.\n"
 		"\n"
 		"The vector containing the flux from left to right at the same position\n"
+		"///\n"
 		"\n"
 		"Parameters:\n"
 		"-----------\n"
 		"\n"
-		"targets:  A node_list containing the source nodes\n"
+		"targets:  A node_list containing the source nodes ///\n"
 		"\n"
-		"t:  The time for the fluxes\n"
-		"\n"
-		"Replaces slow Python code like: \n"
+		"t:  The time for the fluxes /// Replaces slow Python code like: /// \n"
 		""},
 	 { (char *)"node_list_get_fluxes3d_to", (PyCFunction) _wrap_node_list_get_fluxes3d_to, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
 		"node_list_get_fluxes3d_to(node_list self, node_list targets, Time t) -> point_vector\n"
@@ -62324,21 +62323,19 @@ static PyMethodDef SwigMethods[] = {
 		"real\n"
 		"global_water_balance(cmf::math::Time t) const\n"
 		"\n"
-		"Returns the sum of the water balances of the nodes\n"
+		"Returns the sum of the water balances of the nodes ///\n"
 		"\\\\[\\\\sigma_{global} =\n"
-		"\\\\sum_{i=0}^N{\\\\sum_{j=0}^{C_i}{q_{ij}(t)}} \\\\].\n"
-		"\n"
-		"Replaces slow Python code like: \n"
+		"\\\\sum_{i=0}^N{\\\\sum_{j=0}^{C_i}{q_{ij}(t)}} \\\\] /// /// Replaces\n"
+		"slow Python code like: ///. \n"
 		""},
 	 { (char *)"NeumannBoundary_list_water_balance", (PyCFunction) _wrap_NeumannBoundary_list_water_balance, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
 		"NeumannBoundary_list_water_balance(NeumannBoundary_list self, Time t) -> cmf::math::num_array\n"
 		"\n"
 		"cmf::math::num_array water_balance(cmf::math::Time t) const\n"
 		"\n"
-		"Returns the water balance of each vector as a vector \\\\[ \\\\sigma_i\n"
-		"= \\\\sum_{j=0}^{C_i}{q_{ij}(t)} \\\\].\n"
-		"\n"
-		"Replaces slow Python code like: \n"
+		"Returns the water balance of each vector as a vector /// \\\\[\n"
+		"\\\\sigma_i = \\\\sum_{j=0}^{C_i}{q_{ij}(t)} \\\\] /// /// Replaces\n"
+		"slow Python code like: ///. \n"
 		""},
 	 { (char *)"NeumannBoundary_list_fluxes_set", _wrap_NeumannBoundary_list_fluxes_set, METH_VARARGS, (char *)"NeumannBoundary_list_fluxes_set(NeumannBoundary_list self, cmf::math::num_array fluxes)"},
 	 { (char *)"NeumannBoundary_list_fluxes_get", (PyCFunction)_wrap_NeumannBoundary_list_fluxes_get, METH_O, (char *)"NeumannBoundary_list_fluxes_get(NeumannBoundary_list self) -> cmf::math::num_array"},
@@ -62378,29 +62375,29 @@ static PyMethodDef SwigMethods[] = {
 		"flux_node::ptr lower)\n"
 		"\n"
 		"Creates a SystemBridge object. This is an advanced feature for tuning\n"
-		"of the calculation time.\n"
+		"of the calculation time. /// /// A SystemBridge can be used to replace\n"
+		"an existing connection between nodes. / After installation, the two\n"
+		"nodes can more safely be added to different integrator systems. ///\n"
+		"One node (called upper) is connected with the system bridge with the\n"
+		"connection formerly connecting the nodes, /// the second node (called\n"
+		"lower) is connected to the system bridge with as a Neumann boundary\n"
+		"condition. The flux equals the average flux /// of the connection\n"
+		"upper <-> SystemBridge. Therefore, the system bridge must become an\n"
+		"integratable of the integrator system /// the upper node belongs to.\n"
+		"Use as an upper system (system upper node is belonging to) the faster\n"
+		"reacting system. /// For the connection between upper and\n"
+		"SystemBridge, the SystemBridge reacts as an Drichelet boundary\n"
+		"condition, providing the potential /// of the lower node. /// ///.\n"
 		"\n"
-		"A SystemBridge can be used to replace an existing connection between\n"
-		"nodes. After installation, the two nodes can more safely be added to\n"
-		"different integrator systems. One node (called upper) is connected\n"
-		"with the system bridge with the connection formerly connecting the\n"
-		"nodes, the second node (called lower) is connected to the system\n"
-		"bridge with as a Neumann boundary condition. The flux equals the\n"
-		"average flux of the connection upper <-> SystemBridge. Therefore, the\n"
-		"system bridge must become an integratable of the integrator system the\n"
-		"upper node belongs to. Use as an upper system (system upper node is\n"
-		"belonging to) the faster reacting system. For the connection between\n"
-		"upper and SystemBridge, the SystemBridge reacts as an Drichelet\n"
-		"boundary condition, providing the potential of the lower node.\n"
-		"\n"
-		"a new SystemBridge object\n"
+		"a new SystemBridge object ///\n"
 		"\n"
 		"Parameters:\n"
 		"-----------\n"
 		"\n"
-		"p:  cmf project\n"
+		"p:  cmf project ///\n"
 		"\n"
 		"upper:  Upper boundary flux node (part of the faster reacting system).\n"
+		"///\n"
 		"\n"
 		"lower:  Lower boundary flux node (part of the slower reacting system).\n"
 		"\n"
@@ -62514,25 +62511,25 @@ static PyMethodDef SwigMethods[] = {
 		"Weather(double _T, double _Tmax, double _Tmin, double _rH, double\n"
 		"_wind=2, double _sunshine=0.5, double _Rs=15, double _daylength=12)\n"
 		"\n"
-		"Creates a \"weather\" from given data.\n"
+		"Creates a \"weather\" from given data ///.\n"
 		"\n"
 		"Parameters:\n"
 		"-----------\n"
 		"\n"
-		"_T:  actual Temperature in deg C\n"
+		"_T:  actual Temperature in deg C ///\n"
 		"\n"
-		"_Tmax:  daily maximum Temperature in deg C\n"
+		"_Tmax:  daily maximum Temperature in deg C ///\n"
 		"\n"
-		"_Tmin:  daily minimum Temperature in deg C\n"
+		"_Tmin:  daily minimum Temperature in deg C ///\n"
 		"\n"
-		"_rH:  actual relative humidity in % [0..100]\n"
+		"_rH:  actual relative humidity in % [0..100] ///\n"
 		"\n"
-		"_wind:  actual wind speed in m/s\n"
+		"_wind:  actual wind speed in m/s ///\n"
 		"\n"
 		"_sunshine:  actual fraction of sunshine duration per potential\n"
-		"sunshine duration in h/h\n"
+		"sunshine duration in h/h ///\n"
 		"\n"
-		"_Rs:  actual incoming shortwave global radiation in MJ/(m2 day)\n"
+		"_Rs:  actual incoming shortwave global radiation in MJ/(m2 day) ///\n"
 		"\n"
 		"_daylength:  length of the day in h \n"
 		""},
@@ -62781,9 +62778,8 @@ static PyMethodDef SwigMethods[] = {
 		"cmf::math::Time end)\n"
 		"\n"
 		"Calculates the temperature lapse from all stations in the list and\n"
-		"sets the T_lapse attribute of each station.\n"
-		"\n"
-		"Returns the average lapse over the whole period. \n"
+		"sets the T_lapse attribute of each station. /// // Returns the average\n"
+		"lapse over the whole period. \n"
 		""},
 	 { (char *)"MeteoStationList_add_station", _wrap_MeteoStationList_add_station, METH_VARARGS, (char *)"\n"
 		"add_station(string name, double latitude = 51, double longitude = 8, \n"
@@ -62801,24 +62797,24 @@ static PyMethodDef SwigMethods[] = {
 		"timestep=cmf::math::day)\n"
 		"\n"
 		"Creates a meteorological station at a certain position and adds it to\n"
-		"the list.\n"
+		"the list ///.\n"
 		"\n"
 		"Parameters:\n"
 		"-----------\n"
 		"\n"
-		"name:  Name of the station\n"
+		"name:  Name of the station //\n"
 		"\n"
-		"position:  The location of the station in map coordinates\n"
+		"position:  The location of the station in map coordinates ///\n"
 		"\n"
-		"latitude:  Latitude of the study area (for solar radiation)\n"
+		"latitude:  Latitude of the study area (for solar radiation) ///\n"
 		"\n"
-		"longitude:  Longitude of the study area (for solar time)\n"
+		"longitude:  Longitude of the study area (for solar time) ///\n"
 		"\n"
 		"timezone:  Time zone of the study area (e.g Germany +1,U.S. Pacific\n"
-		"time -8\n"
+		"time -8 ///\n"
 		"\n"
 		"startTime:  Date of the beginning of the climatic data (may be changed\n"
-		"for each time series later)\n"
+		"for each time series later) ///\n"
 		"\n"
 		"timestep:  Frequency of climatic data (may be changed for each time\n"
 		"series later) \n"
@@ -62847,12 +62843,11 @@ static PyMethodDef SwigMethods[] = {
 		"&position, double z_weight=0) const\n"
 		"\n"
 		"Creates a MeteoStationReference from the nearest station to position\n"
-		"at position.\n"
+		"at position /// /// The distance is calculated as $ d=\\\\sqrt{(x_{s}\n"
+		"- x_{l})^2 + (y_{s} - y_{l})^2} + \\\\lambda_z\\\\|z_{s} - z_{l}\\\\|\n"
+		"$ /// Where $s$ is the station and $l$ is the locatable ///.\n"
 		"\n"
-		"The distance is calculated as $ d=\\\\sqrt{(x_{s} - x_{l})^2 + (y_{s}\n"
-		"- y_{l})^2} + \\\\lambda_z\\\\|z_{s} - z_{l}\\\\| $ Where $s$ is the\n"
-		"station and $l$ is the locatable A Meteorology using the data of the\n"
-		"nearest station to position\n"
+		"A Meteorology using the data of the nearest station to position ///\n"
 		"\n"
 		"Parameters:\n"
 		"-----------\n"
@@ -62925,15 +62920,15 @@ static PyMethodDef SwigMethods[] = {
 		"location, real _intensity)\n"
 		"\n"
 		"Creates a new ConstantRainSource. Consider using Cell::set_rainfall\n"
-		"for internal creation of a constant rain source, instead of direct\n"
-		"use.\n"
+		"/// for internal creation of a constant rain source, instead of direct\n"
+		"use ///.\n"
 		"\n"
 		"Parameters:\n"
 		"-----------\n"
 		"\n"
-		"_project:  The project the rain source is belonging to.\n"
+		"_project:  The project the rain source is belonging to. ///\n"
 		"\n"
-		"location:  The location of the rain source\n"
+		"location:  The location of the rain source ///\n"
 		"\n"
 		"_intensity:  The constant rainfall intensity in mm/day \n"
 		""},
@@ -62999,17 +62994,17 @@ static PyMethodDef SwigMethods[] = {
 		"RainfallStation::ptr add(std::string Name, cmf::math::timeseries Data,\n"
 		"cmf::geometry::point Position)\n"
 		"\n"
-		"Creates a new RainfallStation and adds it to the list. Usage:.\n"
+		"Creates a new RainfallStation and adds it to the list. Usage: ///.\n"
 		"\n"
-		"The position of the rainfall station will be used as identifier A new\n"
-		"rainfall station\n"
+		"/ The position of the rainfall station will be used as identifier ///\n"
+		"A new rainfall station ///\n"
 		"\n"
 		"Parameters:\n"
 		"-----------\n"
 		"\n"
-		"Name:  Name of the station\n"
+		"Name:  Name of the station ///\n"
 		"\n"
-		"Data:  Rainfall timeseries\n"
+		"Data:  Rainfall timeseries ///\n"
 		"\n"
 		"Position:  Spatial position of the new station \n"
 		""},
@@ -63061,7 +63056,7 @@ static PyMethodDef SwigMethods[] = {
 		"double RootLength()\n"
 		"const\n"
 		"\n"
-		"Returns the average root length in m/m2 \\\\[ l_R\n"
+		"Returns the average root length in m/m2 /// \\\\[ l_R\n"
 		"\\\\left[\\\\frac{m}{m^2}\\\\right]= \\\\frac{ c_R\n"
 		"\\\\left[\\\\frac{kg}{m^3}\\\\right] z_R \\\\left[m\\\\right] }\n"
 		"{0.5\\\\left[\\\\frac{kg}{m^3}\\\\right] \\\\pi\n"
@@ -63247,12 +63242,12 @@ static PyMethodDef SwigMethods[] = {
 		"real\n"
 		"heat_flux(cmf::math::Time t) const\n"
 		"\n"
-		"Calculates the surface heat balance.\n"
+		"Calculates the surface heat balance ///.\n"
 		"\n"
 		"Parameters:\n"
 		"-----------\n"
 		"\n"
-		"t:  Time step\n"
+		"t:  Time step ///\n"
 		"\n"
 		"Tground:  Ground temperature, default is Tground of weather (usually\n"
 		"Tground = Tair) \n"
@@ -63519,16 +63514,16 @@ static PyMethodDef SwigMethods[] = {
 		"subcatchment(cmf::upslope::Cell &pourpoint, double\n"
 		"area_threshold=1e308)\n"
 		"\n"
-		"Creates a subcatchment from a pourpoint cell.\n"
+		"Creates a subcatchment from a pourpoint cell ///.\n"
 		"\n"
 		"Parameters:\n"
 		"-----------\n"
 		"\n"
-		"pourpoint:  The pourpoint (outlet of the subcatchment)\n"
+		"pourpoint:  The pourpoint (outlet of the subcatchment) ///\n"
 		"\n"
 		"area_threshold:  Minimum contributing area size to form a\n"
-		"subcatchment. When area_threshold > area(cells), all upslope cells of\n"
-		"pourpoint are used. \n"
+		"subcatchment. /// When area_threshold > area(cells), all upslope cells\n"
+		"of pourpoint are used. \n"
 		""},
 	 { (char *)"delete_subcatchment", (PyCFunction)_wrap_delete_subcatchment, METH_O, (char *)"delete_subcatchment(subcatchment self)"},
 	 { (char *)"subcatchment_swigregister", subcatchment_swigregister, METH_VARARGS, NULL},
@@ -63551,8 +63546,8 @@ static PyMethodDef SwigMethods[] = {
 		"\n"
 		"virtual real Wetness_eff(real wetness, real pF_r=4.2) const\n"
 		"\n"
-		"Returns the effective wetness, using a residual pF value \\\\[w_{eff}\n"
-		"=\n"
+		"Returns the effective wetness, using a residual pF value ///\n"
+		"\\\\[w_{eff} =\n"
 		"\\\\frac{w_{act}-w\\\\left(pF_r\\\\right)}{1-w\\\\left(pF_r\\\\right)}\\\\].\n"
 		"\n"
 		""},
@@ -63642,23 +63637,24 @@ static PyMethodDef SwigMethods[] = {
 		"real theta_x=0.2, real psi_x=pF_to_waterhead(2.5), real\n"
 		"porosity_decay=0)\n"
 		"\n"
-		"Creates a brooks corey retention curve.\n"
+		"Creates a brooks corey retention curve ///.\n"
 		"\n"
 		"Parameters:\n"
 		"-----------\n"
 		"\n"
-		"ksat:  Saturated conductivity $\\\\frac{m}{day}$\n"
+		"ksat:  Saturated conductivity $\\\\frac{m}{day}$ ///\n"
 		"\n"
-		"porosity:   $\\\\frac {m^3 Pores}{m^3 Soil}$\n"
+		"porosity:   $\\\\frac {m^3 Pores}{m^3 Soil}$ ///\n"
 		"\n"
 		"_b:  Shape of the retention curve (if you do not know how to\n"
-		"parameterize this, take a look at the other constructor)\n"
+		"parameterize this, take a look at the other constructor) ///\n"
 		"\n"
 		"theta_x:   $\\\\theta_X$ Water content at a specific suction pressure\n"
+		"///\n"
 		"\n"
 		"psi_x:  Suction pressure for $\\\\theta_X$ in m water column, use the\n"
 		"conversion functions pF_to_waterhead, pressure_to_waterhead to convert\n"
-		"pressure in to waterhead height (default pF=2.5)\n"
+		"pressure in to waterhead height (default pF=2.5) ///\n"
 		"\n"
 		"porosity_decay:  Relative decay of porosity with depth, e.g. 0.1 means\n"
 		"conductivity gets 10% smaller per meter \n"
@@ -63711,18 +63707,18 @@ static PyMethodDef SwigMethods[] = {
 		"VanGenuchtenMualem(real _Ksat, real _phi, real _alpha, real _n, real\n"
 		"_m=-1)\n"
 		"\n"
-		"Creates a van Genuchten-Mualem retention curve.\n"
+		"Creates a van Genuchten-Mualem retention curve ///.\n"
 		"\n"
 		"Parameters:\n"
 		"-----------\n"
 		"\n"
-		"_Ksat:  Saturated conductivity in $\\\\frac m{day}$\n"
+		"_Ksat:  Saturated conductivity in $\\\\frac m{day}$ ///\n"
 		"\n"
-		"_phi:  Porosity in $\\\\frac{m^3 Pores}{m^3 Soil}$\n"
+		"_phi:  Porosity in $\\\\frac{m^3 Pores}{m^3 Soil}$ ///\n"
 		"\n"
-		"_alpha:  Van Genuchten $\\\\alpha$ in $\\\\frac 1{cm}$\n"
+		"_alpha:  Van Genuchten $\\\\alpha$ in $\\\\frac 1{cm}$ ///\n"
 		"\n"
-		"_n:  Van Genuchten n\n"
+		"_n:  Van Genuchten n ///\n"
 		"\n"
 		"_m:  m parameter, if negative m is calculated as $ 1-\\\\frac 1 n$ \n"
 		""},
@@ -63790,7 +63786,7 @@ static PyMethodDef SwigMethods[] = {
 		"\n"
 		"virtual real get_saturated_depth() const\n"
 		"\n"
-		"Returns the depth for saturation \\\\[ z_{sat,this} =\n"
+		"Returns the depth for saturation /// \\\\[ z_{sat,this} =\n"
 		"\\\\left\\\\{z_{cell}-\\\\Psi_{tot} \\\\mbox{ if } W<1 \\\\\\\\\n"
 		"z_{sat,upper layer} \\\\right. \\\\]. \n"
 		""},
@@ -63801,16 +63797,16 @@ static PyMethodDef SwigMethods[] = {
 		"bool HorizontalLayers=false) const\n"
 		"\n"
 		"Calculates the shared crosssectional area of this and another soil\n"
-		"water storage.\n"
+		"water storage. /// /// If both layers belong to the same cell, the\n"
+		"area of the cell is returned, if they belong to different cells the\n"
+		"area of the vertical shared boundary is returned ///.\n"
 		"\n"
-		"If both layers belong to the same cell, the area of the cell is\n"
-		"returned, if they belong to different cells the area of the vertical\n"
-		"shared boundary is returned get_area in m2\n"
+		"get_area in m2 ///\n"
 		"\n"
 		"Parameters:\n"
 		"-----------\n"
 		"\n"
-		"target:  The other soil water storage\n"
+		"target:  The other soil water storage ///\n"
 		"\n"
 		"HorizontalLayers:  If true, the layers are assumed to be parallel to\n"
 		"the gravitational potential, otherwise they are assumed to be parallel\n"
@@ -64050,9 +64046,10 @@ static PyMethodDef SwigMethods[] = {
 		"virtual\n"
 		"double get_depth(double area) const =0\n"
 		"\n"
-		"Calculates the actual depth of the reach using the IChannel geometry.\n"
+		"Calculates the actual depth of the reach using the IChannel geometry\n"
+		"///.\n"
 		"\n"
-		"get_depth of the reach [m]\n"
+		"get_depth of the reach [m] ///\n"
 		"\n"
 		"Parameters:\n"
 		"-----------\n"
@@ -64067,9 +64064,9 @@ static PyMethodDef SwigMethods[] = {
 		"\n"
 		"Calculates the wetted area from a given depth using the IChannel\n"
 		"geometry. In most cases use get_flux_crossection=V/l, where V is the\n"
-		"stored volume and l is the reach length.\n"
+		"stored volume and l is the reach length\n"
 		"\n"
-		"Wetted area of a river cross section [m2]\n"
+		"Wetted area of a river cross section [m2] ///\n"
 		"\n"
 		"Parameters:\n"
 		"-----------\n"
@@ -64088,22 +64085,23 @@ static PyMethodDef SwigMethods[] = {
 		"double\n"
 		"qManning(double A, double slope) const\n"
 		"\n"
-		"Calculates the flow rate from a given water volume in the reach\n"
-		"\\\\begin{eqnarray*} q_{Manning}&=& A R^{\\\\frac 2 3}\n"
-		"\\\\sqrt{\\\\frac {\\\\Delta_z} n} \\\\\\\\ A &=& \\\\frac V l\n"
+		"Calculates the flow rate from a given water volume in the reach ///\n"
+		"\\\\begin{eqnarray*} /// q_{Manning}&=& A R^{\\\\frac 2 3}\n"
+		"\\\\sqrt{\\\\frac {\\\\Delta_z} n} \\\\\\\\ /// A &=& \\\\frac V l\n"
 		"\\\\mbox{, (Crosssectional area of the wetted crossection, Volume per\n"
-		"length)} \\\\\\\\ R &=& \\\\frac A {P(d)} \\\\\\\\ P(d) &=& \\\\mbox{\n"
-		"the perimeter of the wetted crosssection, a function of reach depth}\n"
-		"\\\\\\\\ d(V) &=& \\\\mbox{ the depth of the reach a function of the\n"
-		"volume} \\\\\\\\ \\\\Delta_z &=& \\\\frac{z_{max} - z_{min}}{l}\n"
-		"\\\\mbox{ Slope of the reach} \\\\end{eqnarray*}.\n"
+		"length)} \\\\\\\\ /// R &=& \\\\frac A {P(d)} \\\\\\\\ /// P(d) &=&\n"
+		"\\\\mbox{ the perimeter of the wetted crosssection, a function of\n"
+		"reach depth} \\\\\\\\ /// d(V) &=& \\\\mbox{ the depth of the reach a\n"
+		"function of the volume} \\\\\\\\ /// \\\\Delta_z &=& \\\\frac{z_{max}\n"
+		"- z_{min}}{l} \\\\mbox{ Slope of the reach} /// \\\\end{eqnarray*}\n"
+		"///.\n"
 		"\n"
-		"Flow rate [m3/s]\n"
+		"Flow rate [m3/s] ///\n"
 		"\n"
 		"Parameters:\n"
 		"-----------\n"
 		"\n"
-		"A:  The area of the cross section [m2]\n"
+		"A:  The area of the cross section [m2] ///\n"
 		"\n"
 		"slope:  The slope of the reach [m/m] \n"
 		""},
@@ -64123,14 +64121,14 @@ static PyMethodDef SwigMethods[] = {
 		"\n"
 		"SWATReachType(double l, double BankWidth, double Depth)\n"
 		"\n"
-		"Creates a new reach structure from a give width and depth.\n"
+		"Creates a new reach structure from a give width and depth ///.\n"
 		"\n"
 		"Parameters:\n"
 		"-----------\n"
 		"\n"
-		"l:  length of the channel [m]\n"
+		"l:  length of the channel [m] ///\n"
 		"\n"
-		"BankWidth:  get_channel_width of the reach from bank to bank [m]\n"
+		"BankWidth:  get_channel_width of the reach from bank to bank [m] ///\n"
 		"\n"
 		"Depth:  Depth of the reach [m] \n"
 		""},
@@ -64203,28 +64201,24 @@ static PyMethodDef SwigMethods[] = {
 		"Channel(char\n"
 		"typecode, double length, double width=1., double depth=0.25)\n"
 		"\n"
-		"Creates a reachtype using a short cut character. Acceptes one of the\n"
-		"following characters: 'T' TriangularReach, width and depth are\n"
-		"ignored.\n"
-		"\n"
-		"'R' RectangularReach, depth is ignored\n"
-		"\n"
-		"'P' PipeReach, depth is ignored, width is the diameter of the pipe\n"
-		"\n"
+		"Creates a reachtype using a short cut character. /// Acceptes one of\n"
+		"the following characters: /// - 'T' TriangularReach, width and depth\n"
+		"are ignored. /// - 'R' RectangularReach, depth is ignored /// - 'P'\n"
+		"PipeReach, depth is ignored, width is the diameter of the pipe /// -\n"
 		"'S' SWATReachType, a trapezoid flow cross section, as used in the SWAT\n"
-		"model, width (bank width) and depth are used.\n"
+		"model, width (bank width) and depth are used ///.\n"
 		"\n"
-		"the reach type\n"
+		"the reach type ///\n"
 		"\n"
 		"Parameters:\n"
 		"-----------\n"
 		"\n"
-		"typecode:  Describes the geometry of the reach cross section.\n"
+		"typecode:  Describes the geometry of the reach cross section. ///\n"
 		"\n"
-		"length:  The length of the channel in m\n"
+		"length:  The length of the channel in m ///\n"
 		"\n"
 		"width:  width of the reach cross section in m (ignored for typecode\n"
-		"'T')\n"
+		"'T') ///\n"
 		"\n"
 		"depth:  depth of the reach (ignored for typecode 'T','R','P','S') \n"
 		""},
@@ -64333,16 +64327,17 @@ static PyMethodDef SwigMethods[] = {
 		"void connect_to_surfacewater(cmf::upslope::Cell *cell, real width,\n"
 		"bool diffusive)\n"
 		"\n"
-		"Connects the surfacewater of a cell with this reach.\n"
+		"Connects the surfacewater of a cell with this reach ///.\n"
 		"\n"
 		"Parameters:\n"
 		"-----------\n"
 		"\n"
 		"cell:  The cell with the surface water to be connected with this reach\n"
+		"///\n"
 		"\n"
-		"soil_cut:  True, if this reach might have inflow through the bank\n"
+		"soil_cut:  True, if this reach might have inflow through the bank ///\n"
 		"\n"
-		"distance:  The average distance from cell to this reach\n"
+		"distance:  The average distance from cell to this reach ///\n"
 		"\n"
 		"width:  The flow width from cell to this reach \n"
 		""},
@@ -64353,8 +64348,8 @@ static PyMethodDef SwigMethods[] = {
 		"distance_to_cell(cmf::upslope::Cell *cell) const\n"
 		"\n"
 		"Returns the distance (d) for connections between this reach and a\n"
-		"cell. If the effective inner cell distance (defined as $ R_{Cell} =\n"
-		"0.5\\\\frac{\\\\sqrt{A}}{\\\\pi}$) is smaller than the distance\n"
+		"cell. /// If the effective inner cell distance (defined as $ R_{Cell}\n"
+		"= 0.5\\\\frac{\\\\sqrt{A}}{\\\\pi}$) is smaller than the distance\n"
 		"between the center points, the cell radius is returned. \n"
 		""},
 	 { (char *)"delete_Reach", (PyCFunction)_wrap_delete_Reach, METH_O, (char *)"\n"
@@ -64427,9 +64422,9 @@ static PyMethodDef SwigMethods[] = {
 		"double\n"
 		"cmf::river::make_river_gap(Reach::ptr root_reach)\n"
 		"\n"
-		"Ensures that rivers have a monotone downward flow direction. Reaches\n"
-		"with a bottom higher than any upstream reach are lowered to the\n"
-		"minimum height of any (possibly distant) upstream reach. \n"
+		"Ensures that rivers have a monotone downward flow direction. ///\n"
+		"Reaches with a bottom higher than any upstream reach are lowered to\n"
+		"the minimum height of any (possibly distant) upstream reach. \n"
 		""},
 	 { (char *)"aquifer_area_set", _wrap_aquifer_area_set, METH_VARARGS, (char *)"aquifer_area_set(aquifer self, real area)"},
 	 { (char *)"aquifer_area_get", (PyCFunction)_wrap_aquifer_area_get, METH_O, (char *)"aquifer_area_get(aquifer self) -> real"},
@@ -64445,9 +64440,9 @@ static PyMethodDef SwigMethods[] = {
 		"real\n"
 		"get_K(cmf::geometry::point direction)\n"
 		"\n"
-		"Returns the conductivity in m/day for a specific direction. Takes\n"
-		"account for anisotropy \\\\[ \\\\|K\\\\|(d) = \\\\frac{d}{\\\\|d\\\\|}\n"
-		"\\\\bullet K\\\\]. \n"
+		"Returns the conductivity in m/day for a specific direction. /// Takes\n"
+		"account for anisotropy /// \\\\[ \\\\|K\\\\|(d) =\n"
+		"\\\\frac{d}{\\\\|d\\\\|} \\\\bullet K\\\\]. \n"
 		""},
 	 { (char *)"new_aquifer", _wrap_new_aquifer, METH_VARARGS, (char *)"\n"
 		"aquifer(project p, point position, real area, real thickness, \n"
@@ -64457,18 +64452,18 @@ static PyMethodDef SwigMethods[] = {
 		"aquifer(cmf::upslope::cell_vector &cells, real thickness, real\n"
 		"porosity, real K=1e-4)\n"
 		"\n"
-		"Creates an aquifer below a collection of cells.\n"
+		"Creates an aquifer below a collection of cells ///.\n"
 		"\n"
 		"Parameters:\n"
 		"-----------\n"
 		"\n"
 		"cells:  The cells above the aquifer. The area of the aquifer equals\n"
-		"the area of the cells, and the upper boundary equals the soildepth of\n"
-		"the lowest cell\n"
+		"the area of the cells, /// and the upper boundary equals the soildepth\n"
+		"of the lowest cell ///\n"
 		"\n"
-		"thickness:  The thickness of the aquifer in m\n"
+		"thickness:  The thickness of the aquifer in m ///\n"
 		"\n"
-		"porosity:  Porosity of the aquifer\n"
+		"porosity:  Porosity of the aquifer ///\n"
 		"\n"
 		"K:  Conductivity of the aquifer in m/day. If the conductivity should\n"
 		"be anisotropic, change the x,y and z values of the member K \n"
@@ -64487,16 +64482,16 @@ static PyMethodDef SwigMethods[] = {
 		"aquifer_Darcy(aquifer::ptr left, cmf::water::flux_node::ptr right,\n"
 		"real width)\n"
 		"\n"
-		"Creates a new Darcy flow connection between two aquifers, or an\n"
-		"aquifer and another node acting as Drichelet boundary condition.\n"
+		"Creates a new Darcy flow connection between two aquifers, /// or an\n"
+		"aquifer and another node acting as Drichelet boundary condition ///.\n"
 		"\n"
 		"Parameters:\n"
 		"-----------\n"
 		"\n"
-		"left:  One aquifer\n"
+		"left:  One aquifer ///\n"
 		"\n"
 		"right:  Another aquifer, or a flux node that can be interpreted as an\n"
-		"Drichelet boundary\n"
+		"Drichelet boundary ///\n"
 		"\n"
 		"width:  Width of the connection \n"
 		""},
@@ -64749,17 +64744,16 @@ static PyMethodDef SwigMethods[] = {
 		"cmf::upslope::connections::HBVinstall(HBVparameters parameters,\n"
 		"cmf::upslope::Cell &cell)\n"
 		"\n"
-		"Installs an HBV like model setup at a cell Reference: Bergstroem et al\n"
-		"1995, in Singh (1995): Computer models of watershed hydrology.\n"
-		"\n"
-		"Removes the layers of a cell and adds three layers with 1m thickness\n"
-		"and the HBVparameters as retention curve. Installs HBVpercolation\n"
-		"between the layers\n"
+		"Installs an HBV like model setup at a cell /// Reference: Bergstroem\n"
+		"et al 1995, in Singh (1995): Computer models of watershed hydrology\n"
+		"/// /// Removes the layers of a cell and adds three layers with 1m\n"
+		"thickness and the HBVparameters as retention curve. /// Installs\n"
+		"HBVpercolation between the layers ///.\n"
 		"\n"
 		"Parameters:\n"
 		"-----------\n"
 		"\n"
-		"parameters:  The parameters for the HBV like setup\n"
+		"parameters:  The parameters for the HBV like setup ///\n"
 		"\n"
 		"cell:   Cell where HBV like percolation is to be calculated \n"
 		""},
@@ -64994,20 +64988,20 @@ static PyMethodDef SwigMethods[] = {
 		"ShuttleworthWallace(cmf::upslope::Cell &cell)\n"
 		"\n"
 		"Calculates the transpiration and the soil evaporation from dry\n"
-		"surfaces.\n"
+		"surfaces ///.\n"
 		"\n"
 		"Parameters:\n"
 		"-----------\n"
 		"\n"
-		"w:  A meteorological data record\n"
+		"w:  A meteorological data record /\n"
 		"\n"
 		"soilwater_matrixpotential:  The suction of the soil water in m water\n"
-		"column\n"
+		"column ///\n"
 		"\n"
-		"veg:  The parameters of the vegetation\n"
+		"veg:  The parameters of the vegetation ///\n"
 		"\n"
 		"CanopyStoresWater:  Flag indicating wet leaves. If true, a canopy\n"
-		"surface resistance of 0 is assumed\n"
+		"surface resistance of 0 is assumed ///\n"
 		"\n"
 		"measurement_height_above_canopy:  The height of the wind speed above\n"
 		"the canopy in m \n"
@@ -65092,7 +65086,7 @@ static PyMethodDef SwigMethods[] = {
 		"x, double y, double z)\n"
 		"\n"
 		"Creates a new Drichelet boundary condition and adds it to the list of\n"
-		"outlets The potential of the Drichelet boundary equals p.z. \n"
+		"outlets /// The potential of the Drichelet boundary equals p.z. \n"
 		""},
 	 { (char *)"project_get_reach", (PyCFunction) _wrap_project_get_reach, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
 		"project_get_reach(project self, int index) -> ptr\n"
@@ -65155,16 +65149,16 @@ static PyMethodDef SwigMethods[] = {
 		"const cmf::math::Integrator &solute_integrator,\n"
 		"cmf::math::StateVariableOwner &states)\n"
 		"\n"
-		"Creates a new SoluteWaterIntegrator.\n"
+		"Creates a new SoluteWaterIntegrator ///.\n"
 		"\n"
 		"Parameters:\n"
 		"-----------\n"
 		"\n"
 		"water_integrator:  Template for the integrator of WaterStorage state\n"
-		"varaiables\n"
+		"varaiables ///\n"
 		"\n"
 		"solute_integrator:  Template for the integrator of soluteStorage state\n"
-		"varaiables\n"
+		"varaiables ///\n"
 		"\n"
 		"states:  States to be added to the integrators \n"
 		""},

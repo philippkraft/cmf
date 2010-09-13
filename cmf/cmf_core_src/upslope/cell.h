@@ -181,7 +181,6 @@ namespace cmf {
 			}
 			/// Calculates the surface heat balance
 			/// @param t Time step
-			/// @param Tground Ground temperature, default is Tground of weather (usually Tground = Tair)
 			real heat_flux(cmf::math::Time t) const;
 			real Tground;
 			bool has_wet_leaves() const

@@ -39,18 +39,14 @@ namespace cmf {
 			/// Constructs a new ExplicitEuler_fixed from a pointer to a vector of state variables
 			/// @note The Integrator becomes the owner of states
 			/// @param states Statevariables of the system
-			/// @param epsilon (ignored) relative error tolerance per time step (default=1e-9)
-			/// @param tStepMin (ignored) minimum time step (default=10s)
 			ExplicitEuler_fixed(StateVariableOwner& states)
 				: Integrator(states,0.0),
 				dxdt(m_States.size())
 			{}
 
 			/// Constructs a new ExplicitEuler_fixed
-			/// @param epsilon (ignored) relative error tolerance per time step (default=1e-9)
-			/// @param tStepMin (ignored) minimum time step (default=10s)
-			ExplicitEuler_fixed(real epsilon=1e-9)
-				: Integrator(epsilon)
+			ExplicitEuler_fixed()
+				: Integrator(1e-9)
 			{	}
 
 			/// Copy constructor

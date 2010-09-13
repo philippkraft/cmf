@@ -30,7 +30,7 @@ namespace cmf {
 			integ_vector m_integrators;
 			std::auto_ptr<cmf::math::Integrator> m_template;
 		public:
-			int integrate(cmf::math::Time MaxTime,cmf::math::Time TimeStep);
+			int integrate(cmf::math::Time t_max,cmf::math::Time dt);
 			virtual cmf::math::MultiIntegrator* Copy() const
 			{
 				return new MultiIntegrator(*m_template,int(m_integrators.size()));
