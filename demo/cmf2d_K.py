@@ -5,7 +5,16 @@ This file creates a hillslope to calculate a transsect using a 2D Richards equat
 """
 import cmf
 import sys
-from pylab import *
+import cmf
+import sys
+import numpy as np
+try:
+    if "noshow" in sys.argv:
+        raise ImportError()
+    else:
+        import pylab
+except ImportError:
+    pylab=None
 
 def load_meteo(project):
     # Load rain timeseries (doubled rain of giessen for more intersting results)
@@ -46,7 +55,7 @@ p=cmf.project()
 
 
 # Create a cells at position x
-for x in arange(0,cellcount*celllength,celllength):
+for x in np.arange(0,cellcount*celllength,celllength):
     c= p.NewCell(x,0,z(x),celllength**2)
 # Make cell topology
 for i,c in enumerate(p[:-1]):
@@ -94,5 +103,6 @@ def run(until=cmf.year,dt=cmf.day):
     return outflow
 if "run" in sys.argv:
     outflow=run()
-    cmf.draw.plot_timeseries(outflow)
-    show()
+    if pylab:
+        cmf.draw.plot_timeseries(outflow)
+        pylab.show()
