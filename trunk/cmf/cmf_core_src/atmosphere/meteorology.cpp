@@ -310,8 +310,7 @@ cmf::atmosphere::MeteoStationReference cmf::atmosphere::MeteoStationList::refere
 	for(vector::const_iterator it = m_stations.begin(); it != m_stations.end(); ++it)
 	{
 		const MeteoStation::ptr& station=*it;
-		double dist=p
-			.distanceTo(station->get_position())+z_weight*abs(p.z-station->z);
+		double dist=p.z_weight_distance(station->get_position(),z_weight);
 		if (dist<min_dist)
 		{
 			min_dist=dist;

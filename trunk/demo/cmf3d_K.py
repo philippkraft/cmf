@@ -6,7 +6,16 @@ cmf3d_Richards.py
 import cmf
 import sys
 from cmf.raster import Raster
-from pylab import *
+import cmf
+import sys
+import numpy as np
+try:
+    if "noshow" in sys.argv:
+        raise ImportError()
+    else:
+        import pylab
+except ImportError:
+    pylab=None
 
 def load_meteo(project):
     # Load rain timeseries (doubled rain of giessen for more intersting results)
