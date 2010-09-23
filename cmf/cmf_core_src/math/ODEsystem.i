@@ -30,7 +30,7 @@
 %shared_ptr(cmf::math::StateVariable);
 %shared_ptr(cmf::math::integratable);
 
-
+%iterable_to_list(cmf::math::StateVariableList,cmf::math::StateVariable::ptr)
 %attribute(cmf::math::StateVariable,real,state,get_state,set_state);
 %attributeval(cmf::math::Integrator,cmf::math::Time,t,get_t,set_t);
 %attributeval(cmf::math::Integrator,cmf::math::Time,dt,get_dt);

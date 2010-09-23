@@ -43,7 +43,7 @@ namespace cmf {
 		std::vector<cmf::river::Reach::ptr> m_reaches;
 
 	public:
-		cmf::math::state_queue get_states(); 
+		cmf::math::StateVariableList get_states(); 
 
 		/// The solutes transported by the model
 		const cmf::water::solute_vector solutes;

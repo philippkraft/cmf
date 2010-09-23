@@ -26,8 +26,8 @@
 %shared_ptr(cmf::water::NeumannBoundary);
 %shared_ptr(cmf::water::SystemBridge);
 
-%shared_ptr(cmf::water::water_balance_integrator);
-%shared_ptr(cmf::water::connection_integrator);
+%shared_ptr(cmf::water::waterbalance_integrator);
+%shared_ptr(cmf::water::flux_integrator);
 
 %{
 	// Include Water
@@ -91,6 +91,7 @@ namespace cmf{namespace water {class flux_connection;}}
 
 %attribute(cmf::water::flux_node,real,potential,get_potential,set_potential);
 %attributeval(cmf::water::flux_node, cmf::water::connection_vector, connections, get_connections);
+%attribute(cmf::water::waterbalance_integrator, cmf::water::flux_node::ptr, node, get_node, set_node);
 %attribute(cmf::water::flux_connection, real, tracer_filter, get_tracer_filter, set_tracer_filter);
 
 %pythonappend cmf::water::flux_connection::flux_connection{
@@ -156,5 +157,19 @@ namespace cmf{namespace water {class flux_connection;}}
 %include "water/system_bridge.h"
 
 
-
+%pythoncode {
+    def integrate_over(item,solver=None):
+        """Returns a suitable cmf.integratable implementation for item, if available.
+        The created integratable is integrated by solver, if given"""
+        if isinstance(item,flux_node):
+            res= cmf.waterbalance_integrator(item)
+        elif isinstance(item,flux_connection):
+            res= cmf.flux_integrator(item)
+        else:
+            raise TypeError("""Only the waterbalance of flux_nodes and the flux of flux_connections
+                are integratable. Received: """ + str(item))
+        if isinstance(solver,cmf.Integrator):
+            solver.add_integratable(res)
+        return res
+}
 

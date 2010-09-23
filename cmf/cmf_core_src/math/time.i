@@ -84,7 +84,7 @@ static int convert_datetime_to_cmftime(PyObject* dt, cmf::math::Time* pT)
 }
 %typemap(typecheck,precedence=0) cmf::math::Time {
     void * pt;    
-    int res=SWIG_ConvertPtr($input,&pt,SWIGTYPE_p_cmf__math__Time,0);
+    int res=SWIG_ConvertPtr($input,&pt,$descriptor(cmf::math::Time*),0);
     $1=SWIG_IsOK(res) || PyDateTime_Check($input) || PyDelta_Check($input) || PyDate_Check($input);
 }
 %implicitconv cmf::math::Time;
@@ -93,6 +93,26 @@ static int convert_datetime_to_cmftime(PyObject* dt, cmf::math::Time* pT)
 %include "math/real.h"
 %include "math/time.h"
 
+
+%typemap(in) cmf::math::timeseries {
+    cmf::math::timeseries *p_ts = &$1;
+    int res=SWIG_ConvertPtr($input,(void**)(&p_ts),$descriptor(cmf::math::timeseries*),0);
+    if (!(SWIG_IsOK(res)) || p_ts==0) {
+	    if (PyNumber_Check($input)) {
+		    double scalar = PyFloat_AsDouble($input);
+		    $1 = cmf::math::timeseries(scalar);
+	    } else {
+	        SWIG_exception_fail(SWIG_TypeError,"Can't convert input value to cmf.timeseries object");
+	    }   
+	} else {
+	    $1 = *p_ts;
+	}      
+}
+%typemap(typecheck,precedence=0) cmf::math::timeseries {
+    void * pt;    
+    int res=SWIG_ConvertPtr($input,&pt,SWIGTYPE_p_cmf__math__Time,0);
+    $1=SWIG_IsOK(res) || PyNumber_Check($input);
+}
 
 %attributeval(cmf::math::timeseries,cmf::math::Time,begin,begin);
 %attributeval(cmf::math::timeseries,cmf::math::Time,step,step);

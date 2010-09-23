@@ -361,18 +361,19 @@ def cells_from_polygons(project,features,shape_callable=lambda feat:feat.shape,i
     return cell_dict  
 def cells_from_dem(project,dem,direction_count=8):
     """ Adds square cells from a dem to the project, and meshes them.
-    project       : cmf.project, where the cells should be added to
-    dem           : a Raster representing the heights of cells
-    use_diagonals : If True (default) the diagonal neighbors of the cells are included
+    project         : cmf.project, where the cells should be added to
+    dem             : a Raster representing the heights of cells
+    direction_count : Number of directions to connect cells
+             1: Every cell gets connected with its steepest downward neighbor. 
+                Flow width is cellsize for orthogonal and sqrt(2)*cellsize for
+                diagonal directions
+             4: Every cell gets connected to its 4 direct orthogonal neighbors
+                Flow width equals the cellsize
+             8: Every cell gets connected to its 8 neighbors
+                Flow width is 0.5*cellsize for orthogonal and sqrt(2)/4*cellsize 
+                for diagonal neighbors
     Returns: a dictionary with the tuple (column,row) as key and the cells as values 
     
-    The width of the connection between cells is based on an octagon
-    if use_diagonals:
-        straight flowwidth = 1/2*cellsize[direction]
-        diagonal flowwidth = 1/sqrt(2)*avg(cellsize)
-    else:
-        straight flowwidth = cellsize[direction]
-        diagonal flowwidth = 0
     """
     if not direction_count in (1,4,8):
         raise ValueError("You can only create cells from a dem with " +
@@ -411,9 +412,9 @@ def cells_from_dem(project,dem,direction_count=8):
             n_cell = cells_dict[nc,nr]
             if act_cell.z>n_cell.z:
                 if (dirx and diry): # diagonal
-                    flow_width=0.354*cellsize
+                    flow_width=sqrt(2.)*cellsize
                 else:
-                    flow_width=0.5*(abs(dem.cellsize[0]*dirx)+abs(dem.cellsize[1]*diry))
+                    flow_width=dem.cellsize[int(nc==c)]
                 act_cell.topology.AddNeighbor(n_cell,flow_width)
     cmf.Topology.calculate_contributing_area(project.cells)
     return cells_dict

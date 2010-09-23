@@ -167,6 +167,7 @@ def dbfclass(filename):
     return objects(bn, fields, data)
 def txtclass(filename,seperator='\t',decimalpoint='.'):
     fields,data=txtlist(filename, seperator, decimalpoint) 
+    bn=path.basename(filename)
     bn,ext = path.splitext(bn)
     return objects(bn, fields, data)
 def txtlist(filename,seperator='\t',decimalpoint='.'):

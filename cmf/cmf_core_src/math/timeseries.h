@@ -21,6 +21,7 @@
 #include <vector>
 #include <iostream>
 #include "time.h"
+#include "num_array.h"
 #include <tr1/memory>
 namespace cmf {
 	namespace math {
@@ -122,10 +123,10 @@ namespace cmf {
 			timeseries() : m_data(make_data()) 
 			{	}
 			timeseries( const cmf::math::timeseries& ts ) 
-				//: m_data(ts.m_data)
 			{
 				m_data=ts.m_data;
 			}
+			timeseries(cmf::math::Time begin, cmf::math::Time step, const cmf::math::num_array& data);
 			timeseries(double scalar) : m_data(make_data())
 			{
 				m_data->values.push_back(scalar);

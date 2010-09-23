@@ -530,10 +530,17 @@ void cmf::math::timeseries::set_t( cmf::math::Time t,double value )
 	set_i(pos,value);
 }
 
-cmf::math::timeseries::timeseries( cmf::math::Time _begin,cmf::math::Time _step,int _interpolationmethod/*=1*/,size_t size/*=0*/ ) : m_data(make_data(_begin,_step,_interpolationmethod))
+cmf::math::timeseries::timeseries( cmf::math::Time _begin,cmf::math::Time _step,int _interpolationmethod/*=1*/,size_t size/*=0*/ ) 
+: m_data(make_data(_begin,_step,_interpolationmethod))
 {
 	if (size) 
 		m_data->values = std::vector<double>(size,0.0);
+}
+
+cmf::math::timeseries::timeseries( cmf::math::Time _begin, cmf::math::Time _step, const cmf::math::num_array& _data )
+: m_data(make_data(_begin,_step))
+{
+	m_data->values = std::vector<double>(_data.begin(),_data.end());
 }
 double cmf::math::nash_sutcliff(const cmf::math::timeseries& model,const cmf::math::timeseries& observation)
 {

@@ -277,13 +277,13 @@ void cmf::upslope::Cell::set_rain_source( cmf::atmosphere::RainSource::ptr new_s
 	m_rainfall = new_source;
 }
 
-cmf::math::state_queue cmf::upslope::Cell::get_states()
+cmf::math::StateVariableList cmf::upslope::Cell::get_states()
 {
-	cmf::math::state_queue q;
+	cmf::math::StateVariableList q;
 	for (int i = 0; i < storage_count() ; ++i)
-		q.push(*get_storage(i));
+		q.extend(*get_storage(i));
 	for (int i = 0; i < layer_count() ; ++i)
-		q.push(*get_layer(i));
+		q.extend(*get_layer(i));
 	return q;
 }
 

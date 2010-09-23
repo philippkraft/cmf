@@ -47,7 +47,7 @@ namespace cmf {
 			typedef std::tr1::weak_ptr<flux_node> weak_flux_node_ptr;
 		private:
 			friend class flux_node;
-			friend class connection_integrator;
+			friend class flux_integrator;
 			static int nextconnectionid;
 			flux_connection(const flux_connection& copy):connection_id(nextconnectionid) {
 				throw std::runtime_error("Never copy construct a flux_connection");
@@ -136,8 +136,11 @@ namespace cmf {
 		};
 
 		int replace_node(cmf::water::flux_node::ptr oldnode,cmf::water::flux_node::ptr newnode);
+		
 
-		class connection_integrator : public cmf::math::integratable {
+		/// The flux_integrator is an integratable for precise output of average fluxes over time. It can be added to
+		/// solver (any cmf::math::Integrator), which is than calling the integrate method at each substep.
+		class flux_integrator : public cmf::math::integratable {
 		private:
 			double _sum;
 			cmf::math::Time _start_time;
@@ -166,8 +169,9 @@ namespace cmf {
 			/// Integrates the flux a timestep further. Note: until is an absolute time. If until is before t0, the integration is initilized again
 			void integrate(cmf::math::Time until);
 
-			connection_integrator(cmf::water::flux_connection& connection);
+			flux_integrator(cmf::water::flux_connection& connection);
 		};
+
 
 		/// @ingroup connections
 		/// Routes the sum of all other fluxes to a target
@@ -176,7 +180,7 @@ namespace cmf {
 		protected:
 			real calc_q(cmf::math::Time t) 
 			{
-				real q = left_node()->water_balance(t,this);
+				real q = left_node()->waterbalance(t,this);
 				if (q > 0) return q;
 				else return 0.0;
 			}

@@ -109,7 +109,23 @@ size_t from_npy_array(PyObject* op,double ** data) {
 
 // Typecheck typemap for dispatching of overloaded functions
 %typemap(typecheck,precedence=0) cmf::math::num_array {
-    $1 = test_npy_array<Class>($input);
+    $1 = test_npy_array($input);
+}
+// Typecheck typemap for dispatching of overloaded functions
+%typemap(typecheck,precedence=0) cmf::math::num_array* {
+    $1 = test_npy_array($input);
+}
+// Typecheck typemap for dispatching of overloaded functions
+%typemap(typecheck,precedence=0) cmf::math::num_array* {
+    $1 = test_npy_array($input);
+}
+// Typecheck typemap for dispatching of overloaded functions
+%typemap(typecheck,precedence=0) const cmf::math::num_array& {
+    $1 = test_npy_array($input);
+}
+// Typecheck typemap for dispatching of overloaded functions
+%typemap(typecheck,precedence=0) cmf::math::num_array& {
+    $1 = test_npy_array($input);
 }
 
 // Out typemap, returns the data of array<T> wrapped as a numpy array, 
