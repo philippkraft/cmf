@@ -61,7 +61,7 @@ namespace cmf {
 			/// Returns the concentration of the solute
 			real conc() const;
 
-			virtual real Derivate(const cmf::math::Time& time);
+			virtual real dxdt(const cmf::math::Time& time);
 		};
 	}
 }

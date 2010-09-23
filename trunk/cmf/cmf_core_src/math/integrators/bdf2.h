@@ -75,12 +75,12 @@ namespace cmf {
 			void Gear2newState(real h);
 
 			//@}
-
-
+			real error_exceedance( const num_array& compare,int * biggest_error_position=0);
+			int error_position;
 		public:
 
 			/// Add state variables from a StateVariableOwner
-			void AddStatesFromOwner(cmf::math::StateVariableOwner& stateOwner);
+			void add_states(cmf::math::StateVariableOwner& stateOwner);
 			/// Returns the position of the biggest error
 			int get_error_position() const
 			{
@@ -99,7 +99,7 @@ namespace cmf {
 			/// Constructs a new BDF2 integrator
 			/// @param templ Template to be used to construct a BDF2 method
 			BDF2(const Integrator & templ);
-			virtual Integrator * Copy() const
+			virtual Integrator * copy() const
 			{
 				return new BDF2(*this);
 			}

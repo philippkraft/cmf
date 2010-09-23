@@ -30,9 +30,9 @@ namespace cmf {
 				dxdt;
 		public:
 			/// Add state variables from a StateVariableOwner
-			void AddStatesFromOwner(cmf::math::StateVariableOwner& stateOwner)
+			void add_states(cmf::math::StateVariableOwner& stateOwner)
 			{
-				Integrator::AddStatesFromOwner(stateOwner);
+				Integrator::add_states(stateOwner);
 				dxdt.resize(size());
 			}
 
@@ -49,10 +49,10 @@ namespace cmf {
 				: Integrator(1e-9)
 			{	}
 
-			/// Copy constructor
+			/// copy constructor
 			ExplicitEuler_fixed(const Integrator& copy) : Integrator(copy) {}
 			virtual ~ExplicitEuler_fixed() {}
-			virtual Integrator * Copy() const
+			virtual Integrator * copy() const
 			{
 				return new ExplicitEuler_fixed(*this);
 			}
@@ -62,13 +62,15 @@ namespace cmf {
 			/// @param TimeStep Takes the proposed time step
 			int integrate(cmf::math::Time MaxTime,cmf::math::Time TimeStep)
 			{
+				if (m_States.size()==0)
+					throw std::out_of_range("No states to integrate!");
 				m_dt=TimeStep;
 				if (m_dt>MaxTime-get_t())
 					m_dt=MaxTime-get_t();
-				// Copy derivates multipied with time step to dxdt
-				CopyDerivs(get_t(),dxdt,m_dt.AsDays());
+				// copy derivates multipied with time step to dxdt
+				copy_dxdt(get_t(),dxdt,m_dt.AsDays());
 				// Update time step with delta x
-				AddValuesToStates(dxdt);
+				add_values_to_states(dxdt);
 				m_t += m_dt;
 				
 				return 1;
@@ -86,9 +88,9 @@ namespace cmf {
 				dxdt0, dxdt1, old_states;
 		public:
 			/// Add state variables from a StateVariableOwner
-			void AddStatesFromOwner(cmf::math::StateVariableOwner& stateOwner)
+			void add_states(cmf::math::StateVariableOwner& stateOwner)
 			{
-				Integrator::AddStatesFromOwner(stateOwner);
+				Integrator::add_states(stateOwner);
 				dxdt0.resize(size());
 				dxdt1.resize(size());
 				old_states.resize(size());
@@ -109,9 +111,9 @@ namespace cmf {
 				: Integrator(),alpha(Alpha)
 			{	}
 
-			/// Copy constructor
+			/// copy constructor
 			PredictCorrectSimple(const Integrator& copy) : Integrator(copy) {}
-			virtual Integrator * Copy() const
+			virtual Integrator * copy() const
 			{
 				return new ExplicitEuler_fixed(*this);
 			}
@@ -124,24 +126,24 @@ namespace cmf {
 				m_dt=TimeStep;
 				if (m_dt>MaxTime-get_t())
 					m_dt=MaxTime-get_t();
-				CopyStates(old_states);
+				copy_states(old_states);
 				// get f(y^n)dt
-				CopyDerivs(get_t(),dxdt0,m_dt.AsDays());
+				copy_dxdt(get_t(),dxdt0,m_dt.AsDays());
 				// Update time step with delta x
-				AddValuesToStates(dxdt0);
+				add_values_to_states(dxdt0);
 				if (alpha>0)
 				{
 					// get f(y^n+1)dt
-					CopyDerivs(get_t(),dxdt1,m_dt.AsDays() * alpha);
+					copy_dxdt(get_t(),dxdt1,m_dt.AsDays() * alpha);
 					// reset states to y^n
-					SetStates(old_states);
+					set_states(old_states);
 					// update states to y^n+1
 					if (alpha<1) 
 					{
 						dxdt0 *= (1-alpha);
-						AddValuesToStates(dxdt0);
+						add_values_to_states(dxdt0);
 					}
-					AddValuesToStates(dxdt1);
+					add_values_to_states(dxdt1);
 				}
 				m_t += m_dt;
 

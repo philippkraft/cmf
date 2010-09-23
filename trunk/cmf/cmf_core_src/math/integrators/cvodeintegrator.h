@@ -69,7 +69,7 @@ namespace cmf {
 
 			virtual int integrate(cmf::math::Time t_max,cmf::math::Time dt);
 			/// Resets the integrator
-			virtual void Reset();
+			virtual void reset();
 			
 			/// Create a new CVODE integrator
 			/// @param epsilon relative and absolute error tolerance
@@ -94,7 +94,7 @@ namespace cmf {
 				cvode_mem=0;
 			}
 
-			/// Copy constructor, creates a new CVODE integrator similiar to the given, but without statevariables
+			/// copy constructor, creates a new CVODE integrator similiar to the given, but without statevariables
 			CVodeIntegrator(const CVodeIntegrator & templ) 
 				: Integrator(templ),preconditioner(templ.preconditioner),maxl(templ.maxl),m_y(0),cvode_mem(0),precond_mem(0),LinearSolver(templ.LinearSolver),
 				MaxOrder(templ.MaxOrder),MaxNonLinearIterations(templ.MaxNonLinearIterations),MaxErrorTestFailures(templ.MaxErrorTestFailures),
@@ -105,7 +105,7 @@ namespace cmf {
 			/// Error vector of the integrator
 			cmf::math::num_array get_error() const;
 
-			CVodeIntegrator * Copy() const
+			CVodeIntegrator * copy() const
 			{
 				return new CVodeIntegrator(*this);
 			}

@@ -44,14 +44,14 @@ namespace cmf {
 			{return kValues[order]; }
 			///Vector of the state variable in the beginning of the integration
 			num_array oldStates;
-			/// Copy constructor, does not copy 
+			/// copy constructor, does not copy 
 			RKFIntegrator(const RKFIntegrator& forCopy);
 
 			Time dt_min;
 			//@}
 		public:
 			/// Adds states from an StateVariableOwner
-			void AddStatesFromOwner( cmf::math::StateVariableOwner& stateOwner );
+			void add_states( cmf::math::StateVariableOwner& stateOwner );
 
 			/// Constructs a new RKFIntegrator from a pointer to a vector of state variables
 			/// @note The RKF Integrator becomes the owner of states
@@ -65,7 +65,7 @@ namespace cmf {
 			RKFIntegrator(real epsilon=1e-9,cmf::math::Time dt_min=cmf::math::timespan(1000));
 			
 
-			virtual Integrator * Copy() const
+			virtual Integrator * copy() const
 			{
 				return new RKFIntegrator(*this);
 			}

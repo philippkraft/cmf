@@ -60,10 +60,12 @@ namespace cmf {
 			virtual void StateChangeAction() {}
 			/// Sets the updated flag (m_StateIsNew) to false
 			void MarkStateChangeHandled() {m_StateIsNew=false;}
+			/// Returns if the state was currently updated
+			bool StateIsChanged() {return m_StateIsNew;}
 		public:
 			typedef std::tr1::shared_ptr<StateVariable> ptr;
 			/// Returns the derivate of the state variable at time @c time
-			virtual real Derivate(const cmf::math::Time& time)=0;
+			virtual real dxdt(const cmf::math::Time& time)=0;
 			/// Returns the current state of the variable
 			real get_state() const {return m_State;}
 			/// Gives access to the state variable
@@ -76,63 +78,49 @@ namespace cmf {
 			virtual real get_abs_errtol(real rel_errtol) const{
 				return rel_errtol;
 			}
-			/// Returns if the state was currently updated
-			bool StateIsChanged() {return m_StateIsNew;}
 			/// ctor
 			StateVariable(real InitialState=0) : m_State(InitialState),m_StateIsNew(true) {}
 		};
 
-		class state_queue;
+		class StateVariableList;
 		/// An abstract class, that owns one or more state variables, that can add them to a vector of state variables in a certain order
 		class StateVariableOwner
 		{
 		public:
 			/// Add the state variables, owned by an object derived from StateVariableOwner, to the given vector
-			virtual state_queue get_states()=0;
+			virtual StateVariableList get_states()=0;
 		};
 
-		class state_queue : public StateVariableOwner {
-			typedef std::deque<StateVariable::ptr> state_deque;
-			state_deque	m_queue;
+		class StateVariableList : public StateVariableOwner {
+			typedef std::vector<StateVariable::ptr> state_vector;
+			state_vector m_vector;
 		public:
 
 #ifndef SWIG
-			state_deque::iterator begin() {return m_queue.begin();}
-			state_deque::iterator end() {return m_queue.end();}
-			state_deque::const_iterator begin() const {return m_queue.begin();}
-			state_deque::const_iterator end() const {return m_queue.end();}
+			state_vector::iterator begin() {return m_vector.begin();}
+			state_vector::iterator end() {return m_vector.end();}
+			state_vector::const_iterator begin() const {return m_vector.begin();}
+			state_vector::const_iterator end() const {return m_vector.end();}
 #endif
 
-			void push(StateVariable::ptr sv) {
-				m_queue.push_back(sv);
+			void append(StateVariable::ptr sv) {
+				m_vector.push_back(sv);
 			}
-			void push(StateVariableOwner& svo) {
+			void extend(StateVariableOwner& svo) {
 				(*this) += svo.get_states();
 			}
-			StateVariable::ptr pop() {
-				StateVariable::ptr res = m_queue.front();
-				m_queue.pop_front();
-				return res;
-			}
-			StateVariable::ptr front() const {
-				return m_queue.front();
-			}
-			state_queue get_states() {
+			StateVariableList get_states() {
 				return *this;
 			}
-			void eat(state_queue& food) {
-				while (food) 
-					push(food.pop());
-			}
-			operator bool() const {return m_queue.size()>0;}
-			state_queue& operator +=(const state_queue& food) {
-				m_queue.insert(m_queue.end(),food.m_queue.begin(),food.m_queue.end());
+			operator bool() const {return m_vector.size()>0;}
+			StateVariableList& operator +=(const StateVariableList& food) {
+				m_vector.insert(m_vector.end(),food.m_vector.begin(),food.m_vector.end());
 				return *this;
 			}
-			state_queue& operator +=(StateVariableOwner& svo) {
+			StateVariableList& operator +=(StateVariableOwner& svo) {
 				return (*this)+=svo.get_states();
 			}
-			size_t size() const {return m_queue.size();}
+			size_t size() const {return m_vector.size();}
 		};
 
 	}

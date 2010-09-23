@@ -78,7 +78,7 @@ namespace cmf {
 			void set_state_variable_content(char content);
 			/// Returns true, since this is a storage
 			virtual bool is_storage() const {return true;}
-			cmf::math::state_queue get_states();
+			cmf::math::StateVariableList get_states();
 			/// creates a water storage (abstract class)
 			/// @param project The project the waterstorage belongs to
 			/// @param Name Name of the water storage
@@ -124,7 +124,7 @@ namespace cmf {
 					set_state(newwatercontent);
 			}
 			
-			virtual real Derivate(const cmf::math::Time& time);
+			virtual real dxdt(const cmf::math::Time& time);
 			real get_state() const
 			{
 				return cmf::math::StateVariable::get_state();

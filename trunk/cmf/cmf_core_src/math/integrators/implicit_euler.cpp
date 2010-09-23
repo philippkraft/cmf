@@ -41,9 +41,33 @@ cmf::math::ImplicitEuler::ImplicitEuler( const cmf::math::Integrator& forCopy)
 {
 
 }
-void cmf::math::ImplicitEuler::AddStatesFromOwner( cmf::math::StateVariableOwner& stateOwner ) 
+
+real cmf::math::ImplicitEuler::error_exceedance( const num_array& compare,int * biggest_error_position/*=0 */ )
 {
-	Integrator::AddStatesFromOwner(stateOwner);
+	real res=0;
+#pragma omp parallel for shared(res)
+	for (int i = 0; i < size() ; i++)
+	{
+		real error=fabs(compare[i]-get_state(i));
+		// Calculate absolute error tolerance as: epsilon + |(x_p+x_(n+1))/2|*epsilon
+		real errortol=Epsilon + fabs(get_state(i))*Epsilon;
+		if (error/errortol>res)
+#pragma omp critical
+		{
+			if (error/errortol>res)
+			{
+				res=error/errortol;
+				if (biggest_error_position)
+					*biggest_error_position=i;
+			}
+		}
+	}
+	return res;
+}
+
+void cmf::math::ImplicitEuler::add_states( cmf::math::StateVariableOwner& stateOwner ) 
+{
+	Integrator::add_states(stateOwner);
 	oldStates.resize(int(m_States.size()));
 	compareStates.resize(int(m_States.size()));
 	dxdt.resize(int(m_States.size()));
@@ -53,6 +77,9 @@ void cmf::math::ImplicitEuler::AddStatesFromOwner( cmf::math::StateVariableOwner
 
 int cmf::math::ImplicitEuler::integrate(cmf::math::Time MaxTime,cmf::math::Time TimeStep)
 {
+	if (m_States.size()==0)
+		throw std::out_of_range("No states to integrate!");
+
 	// h is standard name in numeric for time step size
 	Time h=MaxTime-get_t();
 	// Don't stretch the current timestep more the 4 times the last timestep
@@ -62,7 +89,7 @@ int cmf::math::ImplicitEuler::integrate(cmf::math::Time MaxTime,cmf::math::Time 
 	}
 
 	// Copies the actual states to the history as x_(n)
-	CopyStates(oldStates);
+	copy_states(oldStates);
 	// Count the iterations
 	int iter=0;
 	
@@ -74,12 +101,12 @@ int cmf::math::ImplicitEuler::integrate(cmf::math::Time MaxTime,cmf::math::Time 
 	do 
 	{
 		// Remember the current state for convergence criterion
-		CopyStates(compareStates);
+		copy_states(compareStates);
 		// Get derivatives at t(n+1) * h[d]
-		CopyDerivs(this->get_t() + h,dxdt,h.AsDays());
+		copy_dxdt(this->get_t() + h,dxdt,h.AsDays());
 		//// Updates the state variables with the new states, according to the current order
-		SetStates(oldStates);
-		AddValuesToStates(dxdt);
+		set_states(oldStates);
+		add_values_to_states(dxdt);
 
 		old_err_ex=err_ex;
 		err_ex=error_exceedance(compareStates);
@@ -103,7 +130,7 @@ int cmf::math::ImplicitEuler::integrate(cmf::math::Time MaxTime,cmf::math::Time 
 				throw std::runtime_error("No convergence with a time step > minimal time step");
 			}
 			// Restore states
-			SetStates(oldStates);
+			set_states(oldStates);
 			iter=0;
 			err_ex=REAL_MAX/2;
 			old_err_ex=REAL_MAX;

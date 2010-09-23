@@ -28,7 +28,7 @@
 
 // Creates a new Integrator w/o states
 cmf::math::BDF2::BDF2( real epsilon/*=1e-9*/,cmf::math::Time tStepMin/*=Time::Seconds(10)*/) 
-: Integrator(epsilon),	order(1),stepNo(0), dt_min(tStepMin)
+: Integrator(epsilon),	order(1),stepNo(0), dt_min(tStepMin), error_position(-1)
 { 
 	// Assessing multistep functions
 	calc_newState[0] = &cmf::math::BDF2::Gear1newState; // impl. Euler
@@ -36,7 +36,7 @@ cmf::math::BDF2::BDF2( real epsilon/*=1e-9*/,cmf::math::Time tStepMin/*=Time::Se
 }
 
 cmf::math::BDF2::BDF2( const Integrator& templ) :
-cmf::math::Integrator(templ),order(1),stepNo(0)
+cmf::math::Integrator(templ),order(1),stepNo(0), error_position(-1)
 {
 
 	// Assessing multistep functions
@@ -45,7 +45,7 @@ cmf::math::Integrator(templ),order(1),stepNo(0)
 }
 
 cmf::math::BDF2::BDF2( cmf::math::StateVariableOwner& states, real epsilon/*=1e-9*/,cmf::math::Time tStepMin/*=Time::Milliseconds(10)*/ )
- : Integrator(states,epsilon), order(1),stepNo(0), dt_min(tStepMin)
+ : Integrator(states,epsilon), order(1),stepNo(0), dt_min(tStepMin), error_position(-1)
 {
 	// Assessing multistep functions
 	calc_newState[0] = &cmf::math::BDF2::Gear1newState; // impl. Euler
@@ -53,10 +53,10 @@ cmf::math::BDF2::BDF2( cmf::math::StateVariableOwner& states, real epsilon/*=1e-
 
 }
 // Adds states to the vector of states
-void cmf::math::BDF2::AddStatesFromOwner( cmf::math::StateVariableOwner& stateOwner )
+void cmf::math::BDF2::add_states( cmf::math::StateVariableOwner& stateOwner )
 {
 	// Call base class function
-	Integrator::AddStatesFromOwner(stateOwner);
+	Integrator::add_states(stateOwner);
 	// Resize helper vectors (convergence check,derivatives and history)
 	compareStates.resize(size());
 	dxdt.resize(size());
@@ -141,11 +141,34 @@ void cmf::math::BDF2::Gear2newState(real h)
 
 }
 
-
+real cmf::math::BDF2::error_exceedance( const num_array& compare,int * biggest_error_position/*=0 */ )
+{
+	real res=0;
+#pragma omp parallel for shared(res)
+	for (int i = 0; i < size() ; i++)
+	{
+		real error=fabs(compare[i]-get_state(i));
+		// Calculate absolute error tolerance as: epsilon + |(x_p+x_(n+1))/2|*epsilon
+		real errortol=Epsilon + fabs(get_state(i))*Epsilon;
+		if (error/errortol>res)
+#pragma omp critical
+		{
+			if (error/errortol>res)
+			{
+				res=error/errortol;
+				if (biggest_error_position)
+					*biggest_error_position=i;
+			}
+		}
+	}
+	return res;
+}
 
 
 int cmf::math::BDF2::integrate( cmf::math::Time MaxTime,cmf::math::Time timestep )
 {
+	if (m_States.size()==0)
+		throw std::out_of_range("No states to integrate!");
 	// h is standard name in numeric for time step size
 	Time h=MaxTime-get_t();
 	// Don't stretch the current timestep more the 2 times the last timestep
@@ -155,7 +178,7 @@ int cmf::math::BDF2::integrate( cmf::math::Time MaxTime,cmf::math::Time timestep
 	}
 
 	// Copies the actual states to the history as x_(n)
-	CopyStates(pastStates(0));
+	copy_states(pastStates(0));
 	// Count the iterations
 	int iter=0;
 	real old_err_ex=REAL_MAX;
@@ -164,9 +187,9 @@ int cmf::math::BDF2::integrate( cmf::math::Time MaxTime,cmf::math::Time timestep
 	do 
 	{
 		// Remember the current state for convergence criterion
-		CopyStates(compareStates);
+		copy_states(compareStates);
 		// Get derivatives at t(n+1)
-		CopyDerivs(this->get_t() + h,dxdt);
+		copy_dxdt(this->get_t() + h,dxdt);
 		// Updates the state variables with the new states, according to the current order
 		(this->*(calc_newState[order-1]))(h.AsDays());
 
@@ -193,7 +216,7 @@ int cmf::math::BDF2::integrate( cmf::math::Time MaxTime,cmf::math::Time timestep
 				throw std::runtime_error("No convergence with a time step > minimal time step");
 			}
 			// Restore states
-			SetStates(pastStates(0));
+			set_states(pastStates(0));
 
 			iter=0;
 			err_ex=REAL_MAX/2;

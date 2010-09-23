@@ -19,6 +19,7 @@
    
 import numpy
 from matplotlib import pyplot
+from itertools import chain
 import cmf
 class hill_plot(object):
     def __get_snow_height(self):
@@ -37,17 +38,15 @@ class hill_plot(object):
     def __x(self,x=0,y=0,cell=None):
         c=self.cells[0]
         if cell:
-            return c.get_distance_to(cell)
+            return cmf.distance(c,cell)
         else:
             return numpy.sqrt((x-c.x)**2.0 + (y-c.y)**2.0)
     def __init__(self,cells,t,solute=None,cmap=pyplot.cm.jet):
         was_interactive=pyplot.isinteractive()
         if was_interactive: pyplot.ioff()
         self.cells=cells
-        self.layers=cmf.node_list()
-        self.layers.extend(cmf.get_layers(cells))
-        self.surfacewater=cmf.node_list()
-        self.surfacewater.extend((c.surfacewater for c in cells))
+        self.layers=cmf.node_list(chain(*[c.layers for c in cells]))
+        self.surfacewater=cmf.node_list(c.surfacewater for c in cells)
         x_pos=[self.__x(c.x,c.y) for c in cells]
         self.topline=pyplot.plot(x_pos,self.__get_snow_height() ,'k-',lw=2)[0]
         self.__cells_of_layer={}
@@ -70,7 +69,7 @@ class hill_plot(object):
         w=numpy.array([l.wetness for l in self.layers])
         layer_f=self.layers.get_fluxes3d(t)
         surf_f=self.surfacewater.get_fluxes3d(t)
-        scale = max(surf_f.X.norm() , layer_f.X.norm()) * 10
+        scale = max(numpy.linalg.norm(surf_f.X), numpy.linalg.norm(layer_f.X)) * 10
         layerX = self.__x(numpy.asarray(layer_pos.X),numpy.asarray( layer_pos.Y))
         surfX = self.__x(numpy.asarray(surf_pos.X),numpy.asarray(surf_pos.Y))
         self.q_sub=pyplot.quiver(layerX,layer_pos.Z,layer_f.X + layer_f.Y,layer_f.Z,scale=scale,minlength=0.1,pivot='middle',zorder=1)

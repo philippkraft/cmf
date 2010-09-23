@@ -110,6 +110,7 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
+				AdditionalOptions="/MP"
 				Optimization="0"
 				InlineFunctionExpansion="0"
 				FavorSizeOrSpeed="0"

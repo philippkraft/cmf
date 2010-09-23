@@ -45,7 +45,7 @@ real cmf::upslope::connections::MatrixInfiltration::calc_q( cmf::math::Time t )
 		inflow = maxInfiltration * cell.surface_water_coverage();		
 	}
 	else // inflow is the sum of the inflows to surface water
-		inflow = surfacewater->water_balance(t,this);							
+		inflow = surfacewater->waterbalance(t,this);							
 
 	return minimum(maxInfiltration,inflow);
 }
@@ -73,7 +73,7 @@ real cmf::upslope::connections::CompleteInfiltration::calc_q( cmf::math::Time t 
 		inflow=(1-f_wb) * maxInfiltration;		// get the state dependent outflow
 	}
 	else // inflow is the sum of the inflows to surface water
-		inflow += f_wb * surfacewater->water_balance(t,this);							// get the inflow dependent outflow
+		inflow += f_wb * surfacewater->waterbalance(t,this);							// get the inflow dependent outflow
 
 	return minimum(maxInfiltration,inflow);
 

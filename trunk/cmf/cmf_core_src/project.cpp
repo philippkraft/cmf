@@ -119,16 +119,16 @@ void cmf::project::use_nearest_rainfall( double z_weight/*=0*/ )
 		it->set_rain_source(cmf::atmosphere::RainfallStationReference::from_nearest_station(*this,it->get_position(),z_weight));
 }
 
-cmf::math::state_queue cmf::project::get_states()
+cmf::math::StateVariableList cmf::project::get_states()
 {
-	cmf::math::state_queue q;
+	cmf::math::StateVariableList q;
 	using namespace cmf::upslope;
 	using namespace cmf::river;
 
 	for(std::vector<cmf::river::Reach::ptr>::iterator r_it = m_reaches.begin(); r_it != m_reaches.end(); ++r_it)
-		q.push(**r_it);
+		q.extend(**r_it);
 
 	for(cmf::upslope::cell_vector::iterator it = m_cells.begin(); it != m_cells.end(); ++it)
-		q.push(*it);
+		q.extend(*it);
 	return q;
 }

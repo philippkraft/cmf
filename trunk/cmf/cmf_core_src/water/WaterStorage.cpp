@@ -98,10 +98,10 @@ real cmf::water::WaterStorage::volume_to_head( real volume ) const
 	return position.z;
 }
 
-real cmf::water::WaterStorage::Derivate( const cmf::math::Time& time )
+real cmf::water::WaterStorage::dxdt( const cmf::math::Time& time )
 {
 	// Gets the net fluxes of this water storage in m3/day
-	real dVdt = water_balance(time);
+	real dVdt = waterbalance(time);
 	// If head is the integrated variable
 	if (get_state_variable_content()=='h')
 	{
@@ -120,13 +120,13 @@ real cmf::water::WaterStorage::Derivate( const cmf::math::Time& time )
 		return dVdt;
 }
 
-cmf::math::state_queue cmf::water::WaterStorage::get_states() 
+cmf::math::StateVariableList cmf::water::WaterStorage::get_states() 
 {
-	cmf::math::state_queue q;
-	q.push(cmf::water::WaterStorage::ptr(*this));
+	cmf::math::StateVariableList q;
+	q.append(cmf::water::WaterStorage::ptr(*this));
 	for(SoluteStorageMap::const_iterator it = m_Concentrations.begin(); it != m_Concentrations.end(); ++it)
 	{
-		q.push(*it);
+		q.append(*it);
 	}
 	return q;
 }

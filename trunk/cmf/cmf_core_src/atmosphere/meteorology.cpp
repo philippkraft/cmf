@@ -302,16 +302,16 @@ double cmf::atmosphere::MeteoStationList::calculate_Temp_lapse( cmf::math::Time 
 	return avg_lapse/steps;
 }
 
-cmf::atmosphere::MeteoStationReference cmf::atmosphere::MeteoStationList::reference_to_nearest( const cmf::geometry::point& position,double z_weight/*=0*/ ) const
+cmf::atmosphere::MeteoStationReference cmf::atmosphere::MeteoStationList::reference_to_nearest( const cmf::geometry::point& p,double z_weight/*=0*/ ) const
 {
 	if (!size()) throw std::out_of_range("No stations in list");
 	MeteoStation::ptr nearest;
 	double min_dist=1e300;
-	cmf::geometry::point p;
 	for(vector::const_iterator it = m_stations.begin(); it != m_stations.end(); ++it)
 	{
 		const MeteoStation::ptr& station=*it;
-		double dist=p.distanceTo(station->get_position())+z_weight*abs(p.z-station->z);
+		double dist=p
+			.distanceTo(station->get_position())+z_weight*abs(p.z-station->z);
 		if (dist<min_dist)
 		{
 			min_dist=dist;
@@ -319,7 +319,7 @@ cmf::atmosphere::MeteoStationReference cmf::atmosphere::MeteoStationList::refere
 		}
 	}
 	if (nearest)
-		return MeteoStationReference(nearest,position);
+		return MeteoStationReference(nearest,p);
 	else
 		throw std::runtime_error("No station found");
 }

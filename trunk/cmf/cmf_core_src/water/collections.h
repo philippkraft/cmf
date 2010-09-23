@@ -73,7 +73,7 @@ namespace cmf {
 			node_list getslice(int begin,int end,int step=1) const;
 
 			/// Implements StateVariableOwner
-			cmf::math::state_queue get_states();
+			cmf::math::StateVariableList get_states();
 			/// Adds a flux node to the list
 			void append(flux_node::ptr node);
 

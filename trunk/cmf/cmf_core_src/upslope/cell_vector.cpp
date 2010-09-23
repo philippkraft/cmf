@@ -13,11 +13,11 @@ cell_iterator cell_vector::end()
 	return m_cells.end();
 }
 
-cmf::math::state_queue cell_vector::get_states()
+cmf::math::StateVariableList cell_vector::get_states()
 {
-	cmf::math::state_queue q;
+	cmf::math::StateVariableList q;
 	for(cell_vector::iterator it = begin(); it != end(); ++it)
-		q.push(*it);
+		q.extend(*it);
 	return q;
 }
 

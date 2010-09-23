@@ -42,13 +42,15 @@ namespace cmf {
 			num_array dxdt;
 			//@}
 
+			real error_exceedance( const num_array& compare,int * biggest_error_position=0 );
+
 
 
 		public:
 			/// The shortest allowed timestep
 			Time dt_min;
 			/// Add state variables from a StateVariableOwner
-			void AddStatesFromOwner(cmf::math::StateVariableOwner& stateOwner);
+			void add_states(cmf::math::StateVariableOwner& stateOwner);
 			/// Constructs a new FixPointImplicitEuler from a pointer to a vector of state variables
 			/// @note The Integrator becomes the owner of states
 			/// @param states Statevariables of the system
@@ -60,10 +62,10 @@ namespace cmf {
 			/// @param tStepMin minimum time step (default=10s)
 			ImplicitEuler(real epsilon=1e-9,cmf::math::Time tStepMin=cmf::math::timespan(10));
 
-			/// Copy constructor
+			/// copy constructor
 			ImplicitEuler(const Integrator&);
 
-			virtual Integrator * Copy() const
+			virtual Integrator * copy() const
 			{
 				return new ImplicitEuler(*this);
 			}

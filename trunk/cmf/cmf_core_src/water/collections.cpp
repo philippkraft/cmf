@@ -27,7 +27,7 @@ real cmf::water::node_list::global_water_balance( cmf::math::Time t )	const
 #pragma omp parallel for reduction(+ : sum)
 	for (int i = 0; i < (int)size() ; ++i)
 	{
-		sum+=m_nodes[i]->water_balance(t);					
+		sum+=m_nodes[i]->waterbalance(t);					
 	}
 	return sum;
 }
@@ -38,7 +38,7 @@ cmf::math::num_array cmf::water::node_list::water_balance( cmf::math::Time t ) c
 #pragma omp parallel for
 	for (int i = 0; i < (int)size() ; ++i)
 	{
-		res[i]=m_nodes[i]->water_balance(t);
+		res[i]=m_nodes[i]->waterbalance(t);
 	}
 	return res;
 }
@@ -165,17 +165,17 @@ void cmf::water::node_list::append( flux_node::ptr node )
 	m_nodes.push_back(node);
 }
 
-cmf::math::state_queue cmf::water::node_list::get_states()
+cmf::math::StateVariableList cmf::water::node_list::get_states()
 {
-	cmf::math::state_queue q;
+	cmf::math::StateVariableList q;
 	for(node_vector::const_iterator it = m_nodes.begin(); it != m_nodes.end(); ++it)
 	{
 		cmf::math::StateVariableOwner *state_owner = dynamic_cast<cmf::math::StateVariableOwner *>(it->get());
 		cmf::math::StateVariable::ptr state = std::tr1::dynamic_pointer_cast<cmf::math::StateVariable>(*it);
 		if(state_owner) 
-			q.push(*state_owner);
+			q.extend(*state_owner);
 		else if (state) 
-			q.push(state);
+			q.append(state);
 	}
 	return q;
 }
@@ -243,7 +243,7 @@ real cmf::water::NeumannBoundary_list::global_water_balance( cmf::math::Time t )
 #pragma omp parallel for reduction(+ : sum)
 	for (int i = 0; i < (int)size() ; ++i)
 	{
-		sum+=m_boundaries[i]->water_balance(t);					
+		sum+=m_boundaries[i]->waterbalance(t);					
 	}
 	return sum;
 }
@@ -254,7 +254,7 @@ cmf::math::num_array cmf::water::NeumannBoundary_list::water_balance( cmf::math:
 #pragma omp parallel for
 	for (int i = 0; i < (int)size() ; ++i)
 	{
-		res[i]=m_boundaries[i]->water_balance(t);
+		res[i]=m_boundaries[i]->waterbalance(t);
 	}
 	return res;
 }
