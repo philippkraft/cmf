@@ -83,18 +83,20 @@ def run(until=cmf.year,dt=cmf.day):
     return outflow,wetness
 if "run" in sys.argv:
     outflow,wetness=run(2*cmf.year)
-    subplot(211)
-    cmf.draw.plot_timeseries(outflow)
-    axis('tight')
-    subplot(212)
-    wetness=array(wetness)
-    contourf([date2num(t.AsPython()) for t in outflow.iter_time()],
-              c.layers.thickness*0.5-c.layers.lower_boundary, 
-              transpose(wetness),
-              levels=linspace(wetness.min(),1,20),
-              cmap=cm.jet_r,
-              extend='both',
-              )
-    gca().xaxis_date()
-    axis('tight')
-    show()
+    if pylab:
+        from pylab import *
+        subplot(211)
+        cmf.draw.plot_timeseries(outflow)
+        axis('tight')
+        subplot(212)
+        wetness=array(wetness)
+        contourf([date2num(t.AsPython()) for t in outflow.iter_time()],
+                  c.layers.thickness*0.5-c.layers.lower_boundary, 
+                  transpose(wetness),
+                  levels=linspace(wetness.min(),1,20),
+                  cmap=cm.jet_r,
+                  extend='both',
+                  )
+        gca().xaxis_date()
+        axis('tight')
+        show()

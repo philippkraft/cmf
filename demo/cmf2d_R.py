@@ -5,7 +5,14 @@ This file creates a hillslope to calculate a transsect using a 2D Richards equat
 """
 import cmf
 import sys
-from pylab import *
+import numpy as np
+try:
+    if "noshow" in sys.argv:
+        raise ImportError()
+    else:
+        import pylab
+except ImportError:
+    pylab=None
 
 def load_meteo(project):
     # Load rain timeseries (doubled rain of giessen for more intersting results)
@@ -31,10 +38,10 @@ def load_meteo(project):
 cellcount = 20 # numbers of cells
 celllength= 10 # length of cells in m
 # A function to shape the hillslope (e.g. "lambda x: 0.05*x" would make linear slope)
-def z(x): return 10/(1+exp((x-100)/30))
+def z(x): return 10/(1+np.exp((x-100)/30))
 # Create a retention curve (used for the whole profile)
 def soiltype(depth):
-    return cmf.BrooksCoreyRetentionCurve(ksat=15*exp(-d),
+    return cmf.BrooksCoreyRetentionCurve(ksat=15*np.exp(-d),
                                          porosity=0.5,
                                          _b=5.5,
                                          theta_x=0.35)
@@ -46,7 +53,7 @@ p=cmf.project()
 
 
 # Create a cells at position x
-for x in arange(0,cellcount*celllength,celllength):
+for x in np.arange(0,cellcount*celllength,celllength):
     c= p.NewCell(x,0,z(x),celllength**2)
 # Make cell topology
 for i,c in enumerate(p[:-1]):
@@ -92,5 +99,6 @@ def run(until=cmf.year,dt=cmf.day):
     return outflow
 if "run" in sys.argv:
     outflow=run()
-    cmf.draw.plot_timeseries(outflow)
-    show()
+    if pylab:
+        cmf.draw.plot_timeseries(outflow)
+        pylab.show()
