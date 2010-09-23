@@ -29,65 +29,69 @@ namespace cmf {
 		///
 		/// Pure virtual functions:
 		/// - Integrate
-		/// - Copy
+		/// - copy
 		/// Please provide a custom copy constructor
 		/// @todo Put the methods of StateVariableVector here, and delete StateVariableVector
 		class Integrator : public StateVariableOwner
 		{
 		protected:
-			///@name The state variables to integrate
-			//@{
 			typedef std::vector<StateVariable::ptr> state_vector;
 			typedef std::vector<integratable::ptr> integratable_vector;
 			state_vector m_States;
 			integratable_vector m_integratables;
 
-			int error_position;
-			real error_exceedance( const num_array& compare,int * biggest_error_position=0 );
 			/// Copies the states to a numeric vector using use_OpenMP
-#ifndef SWIG
 		public:
-			void CopyStates(num_array & destination) const;
-			void CopyStates(real * destination) const;
+#ifndef SWIG
+			void copy_states(num_array & destination) const;
+			void copy_states(real * destination) const;
 			/// Copies the new states to the actual states
-			void SetStates(const num_array & newStates) ;
-			void SetStates(real * newStates);
+			void set_states(const num_array & newStates) ;
+			void set_states(real * newStates);
 			/// Copies the derivatives at time step "time" to a numeric vector using use_OpenMP
 			/// @param time Time at which the derivatives should be calculated
 			/// @param destination Vector to be overwritten by the results
 			/// @param factor A factor that is multiplied to the derivate (e.g. unit conversion or integration length)
-			void CopyDerivs(Time time,num_array & destination, real factor=1) const;
+			void copy_dxdt(Time time,num_array & destination, real factor=1) const;
 			/// Copies the derivatives at time step "time" to an preallocated c array
 			/// @param time Time at which the derivatives should be calculated
 			/// @param destination Allocated c array
 			/// @param factor A factor that is multiplied to the derivate (e.g. unit conversion or integration length)
-			void CopyDerivs(Time time,real * destination,real factor=1) const;
+			void copy_dxdt(Time time,real * destination,real factor=1) const;
 			/// Returns the states in a numeric vector using :CopyStates, but is slower because of additional memory allocation
-			num_array GetStates() const 
-			{
-				num_array result(this->size());
-				CopyStates(result);
-				return result;
-			}
 			/// Returns the derivatives at time step "time" in a numeric vector using :CopyDerivs, but is slower because of additional memory allocation
-			num_array GetDerivs(Time time) const 
-			{
-				num_array result(this->size());
-				CopyDerivs(time,result);
-				return result;
-			}
-			void AddValuesToStates(const num_array& operands);
-#endif
-			/// Add state variables from a StateVariableOwner
-			virtual void AddStatesFromOwner(cmf::math::StateVariableOwner& stateOwner) {
-				state_queue sq = stateOwner.get_states();
-				m_States.insert(m_States.end(),sq.begin(),sq.end());
-			}
-			virtual void AddState(cmf::math::StateVariable::ptr state) {
-				m_States.push_back(state);
+			void add_values_to_states(const num_array& operands);
+			StateVariable::ptr operator[](int position) {
+				return m_States[position];
 			}
 
-			void AddIntegratable(cmf::math::integratable::ptr integratable) {
+
+#endif
+			cmf::math::num_array get_dxdt(Time time) const 
+			{
+				num_array result(this->size());
+				copy_dxdt(time,result);
+				return result;
+			}
+			cmf::math::num_array get_states() const 
+			{
+				num_array result(this->size());
+				copy_states(result);
+				return result;
+			}
+
+			/// Add state variables from a StateVariableOwner
+			virtual void add_states(cmf::math::StateVariableOwner& stateOwner) {
+				StateVariableList sq = stateOwner.get_states();
+				m_States.insert(m_States.end(),sq.begin(),sq.end());
+			}
+			/// Adds a single state variable to the integrator
+			virtual void add_single_state(cmf::math::StateVariable::ptr state) {
+				m_States.push_back(state);
+			}
+			
+			/// Adds an integratable non-state variable, to be integrated for each substep
+			void add_integratable(cmf::math::integratable::ptr integratable) {
 				m_integratables.push_back(integratable);
 			}
 
@@ -104,12 +108,6 @@ namespace cmf {
 				return (int)m_States.size();
 			}
 			/// Returns the statevariable at position
-#ifndef SWIG
-			StateVariable::ptr operator[](int position) {
-				return m_States[position];
-			}
-
-#endif
 			/// Simplifies the assessment of state variables
 			real get_state(int position) const
 			{
@@ -121,11 +119,11 @@ namespace cmf {
 				m_States[position]->set_state(newState);
 			}
 			/// gets the state variables of the integrator
-			state_queue get_states() {
-				state_queue q;
+			StateVariableList get_states() {
+				StateVariableList q;
 				for(state_vector::const_iterator it = m_States.begin(); it != m_States.end(); ++it)
 				{
-				    q.push(*it);
+				    q.append(*it);
 				}
 				return q;
 			}
@@ -159,12 +157,11 @@ namespace cmf {
 			///Returns the current model time
 			cmf::math::Time get_t() const { return m_t; }
 			///Sets the current model time
-			void set_t(cmf::math::Time val) { m_t = val;Reset(); }
+			void set_t(cmf::math::Time val) { m_t = val;reset(); }
 			///Returns the last time step
 			cmf::math::Time get_dt() const { return m_dt; }
-			int Iterations() const { return m_Iterations;}
-			void ResetIterations() {m_Iterations=0;}
-			virtual void Reset() {}
+			/// Resets any saved history (for multistep methods)
+			virtual void reset() {}
 			//@}
 			/// @name Constructors and Destructors
 			//@{
@@ -175,17 +172,13 @@ namespace cmf {
 				: m_States(), Epsilon(epsilon),m_dt(day),m_t(day)
 			{}
 			Integrator(cmf::math::StateVariableOwner& states,real epsilon=1e-9)
-				: m_States(),Epsilon(epsilon),m_dt(day),m_t(day*0),error_position(0) ,use_OpenMP(1)
+				: m_States(),Epsilon(epsilon),m_dt(day),m_t(day*0) ,use_OpenMP(1)
 			{
-				state_queue sq = states.get_states();
+				StateVariableList sq = states.get_states();
 				m_States.insert(m_States.end(),sq.begin(),sq.end());
 			}
-			void operator+=(StateVariableOwner& states) {
-				AddStatesFromOwner(states);
-			}
-			
-			/// Returns a new Integrator, based on this (without the state variables), e.g. same type, epsilon, model time etc.
-			virtual cmf::math::Integrator * Copy() const=0;
+			/// Polymorphic copy constructor
+			virtual Integrator * copy() const=0;
 			//@}
 
 			///@name Integrate
@@ -193,12 +186,12 @@ namespace cmf {
 
 			///Integrates the vector of state variables
 			/// @param t_max To stop the model (if running in a model framework) at time steps of value exchange e.g. full hours, the next value exchange time can be given
-			/// @param dt Takes the proposed timestep, and changes it into the effictivly used timestep according to the local stiffness of the problem and MaxTime
+			/// @param dt Takes the proposed time step, and changes it into the effectively used time step according to the local stiffness of the problem and MaxTime
 			virtual int integrate(cmf::math::Time t_max,cmf::math::Time dt)=0;
 			///Integrates the vector of state variables until t_max
 			/// @param t_max Time, the solver should run to
 			/// @param dt Time step (may be omitted)
-			/// @param reset If true, solver is resetted before integration starts
+			/// @param reset If true, solver is reseted before integration starts
 			void integrate_until(cmf::math::Time t_max,cmf::math::Time dt=Time(),bool reset=false);
 			//@}
 		};

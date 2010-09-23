@@ -225,7 +225,7 @@ namespace cmf {
 			Cell(double x,double y,double z,double area,cmf::project & _project);
 			std::string to_string() const;
 			//@}
-			cmf::math::state_queue get_states();
+			cmf::math::StateVariableList get_states();
 		};
 
 		

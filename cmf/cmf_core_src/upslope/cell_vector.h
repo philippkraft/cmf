@@ -27,7 +27,7 @@ namespace cmf {
 			cmf::upslope::Cell& operator[](int index) {
 				return *m_cells.at(index >=0 ? index : m_cells.size() + index);
 			}
-						cmf::math::state_queue get_states();
+						cmf::math::StateVariableList get_states();
 			void append(cmf::upslope::Cell& cell) {
 				m_cells.push_back(&cell);
 			}

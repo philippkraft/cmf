@@ -68,8 +68,8 @@ namespace cmf {
 			void DeregisterConnection(flux_connection* target);
 			// Allows the flux_connection class to call thereregister / deregister themselfs
 			friend class flux_connection;
-			// allows the water_balance_integrator to call the water balance without refreshing the connection
-			friend class water_balance_integrator;
+			// allows the waterbalance_integrator to call the water balance without refreshing the connection
+			friend class waterbalance_integrator;
 
 			// The mapping of the connections. The id is holding the node id's
 			typedef std::map<int, con_ptr > ConnectionMap;
@@ -102,20 +102,21 @@ namespace cmf {
 			/// WaterStorage overrides this, since state changes require an update of the fluxes
 			virtual bool RecalcFluxes(cmf::math::Time t) {return false;}
 			/// Returns the connection between this and target
-			cmf::water::flux_connection* get_connection(const cmf::water::flux_node& target);
+			cmf::water::flux_connection* connection_to(const cmf::water::flux_node& target);
 			/// Remove the connection
 			bool remove_connection(cmf::water::flux_node::ptr To);
 			/// Returns the actual flux between this and target	(positive sign means "from target into this")
 			real flux_to( const cmf::water::flux_node& target,cmf::math::Time t );
 			cmf::geometry::point flux3d_to(const cmf::water::flux_node& target,cmf::math::Time t );
+			/// Returns the sum of all flux vectors
 			cmf::geometry::point get_3d_flux(cmf::math::Time t);
 			/// Returns the sum of all fluxes (positive and negative) at time t. Single fluxes can be excluded from the calculation
 			/// @param t Time of the query
-			/// @param Without A flux_connection that is excluded from the water_balance (e.g. to prevent closed circuits)
-			real water_balance(cmf::math::Time t,const flux_connection* Without=0) const;
+			/// @param Without A flux_connection that is excluded from the waterbalance (e.g. to prevent closed circuits)
+			real waterbalance(cmf::math::Time t,const flux_connection* Without=0) const;
 
 			real operator()(cmf::math::Time t) const {
-				return water_balance(t);
+				return waterbalance(t);
 			}
 			/// Returns the water quality of the flux_node, if it is not overridden this is the mix of the incoming fluxes
 			virtual real conc(cmf::math::Time t, const cmf::water::solute& Solute) const;
@@ -148,12 +149,15 @@ namespace cmf {
 		flux_node::ptr get_higher_node(flux_node::ptr node1,flux_node::ptr node2);
 		flux_node::ptr get_lower_node(flux_node::ptr node1,flux_node::ptr node2);
 
-		class water_balance_integrator : public cmf::math::integratable {
+		/// The waterbalance_integrator is an integratable for precise output of the average water balance 
+		/// of a flux_node over time. It can be added to a solver (any cmf::math::Integrator), 
+		/// which is than calling the integrate method at each substep.
+		class waterbalance_integrator : public cmf::math::integratable {
 		private:
 			double _sum;
 			cmf::math::Time _start_time;
 			cmf::math::Time _t;
-			const std::tr1::weak_ptr<flux_node> _node;
+			std::tr1::weak_ptr<flux_node> _node;
 			std::string _name;
 
 		public:
@@ -173,14 +177,22 @@ namespace cmf {
 			/// Initializes the integration
 			void reset(cmf::math::Time t) {
 				_start_time = t;
+				_t=_start_time;
 				_sum=0.0;
 			}
-			flux_node::ptr node() const {
+			/// Returns the node of this integrator
+			flux_node::ptr get_node() const {
 				return _node.lock();
+			}
+			void set_node(cmf::water::flux_node::ptr node) {
+				_sum=0;
+				_start_time=cmf::math::Time();
+				_t=_start_time;
+				_node =  node;
 			}
 			/// Integrates the flux a timestep further. Note: until is an absolut time. If until is before t0, the integration is initilized again
 			void integrate(cmf::math::Time until);
-			water_balance_integrator(cmf::water::flux_node::ptr node) 
+			waterbalance_integrator(cmf::water::flux_node::ptr node) 
 				:	_node(node), _sum(0.0), _t(cmf::math::year*5000), _name(node->to_string()+ " (Integrator)") {}
 		};
 

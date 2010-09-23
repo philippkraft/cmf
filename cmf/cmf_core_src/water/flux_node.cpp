@@ -69,7 +69,7 @@ void cmf::water::flux_node::DeregisterConnection(flux_connection* oldConnection)
 }
 
 
-cmf::water::flux_connection* cmf::water::flux_node::get_connection( const cmf::water::flux_node& target )
+cmf::water::flux_connection* cmf::water::flux_node::connection_to( const cmf::water::flux_node& target )
 {
 	if (m_Connections.find(target.node_id)!=m_Connections.end())
 		return m_Connections[target.node_id].get();
@@ -88,7 +88,7 @@ real cmf::water::flux_node::flux_to( const flux_node& target,cmf::math::Time t )
 
 
 
-real cmf::water::flux_node::water_balance( cmf::math::Time t,const flux_connection* Without/*=0*/ ) const
+real cmf::water::flux_node::waterbalance( cmf::math::Time t,const flux_connection* Without/*=0*/ ) const
 {
 	real waterbalance=0;
 	for(flux_node::ConnectionMap::const_iterator it = m_Connections.begin(); it != m_Connections.end(); ++it)
@@ -120,7 +120,7 @@ bool cmf::water::flux_node::remove_connection( flux_node::ptr To )
 {
 	if (To)
 	{
-		flux_connection* con = get_connection(*To);
+		flux_connection* con = connection_to(*To);
 		if (con) return con->kill_me();
 	}
 	return false;
@@ -209,7 +209,7 @@ cmf::water::flux_node::ptr cmf::water::get_lower_node( cmf::water::flux_node::pt
 	return node1->position.z >= node2->position.z ? node2 : node1;
 }
 
-void cmf::water::water_balance_integrator::integrate( cmf::math::Time until )
+void cmf::water::waterbalance_integrator::integrate( cmf::math::Time until )
 {
 	if (_node.expired()) {
 		throw std::runtime_error("Connection for "+_name+" does not exist any more");
@@ -225,7 +225,7 @@ void cmf::water::water_balance_integrator::integrate( cmf::math::Time until )
 
 }
 
-double cmf::water::water_balance_integrator::avg() const
+double cmf::water::waterbalance_integrator::avg() const
 {
 	if (_t>_start_time)
 		return _sum/(_t-_start_time).AsDays();

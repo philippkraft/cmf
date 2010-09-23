@@ -19,7 +19,7 @@
 #include "SoluteStorage.h"
 #include "WaterStorage.h"
 #include "flux_connection.h"
-real cmf::water::SoluteStorage::Derivate( const cmf::math::Time& time )
+real cmf::water::SoluteStorage::dxdt( const cmf::math::Time& time )
 {
  	// Sums up the fluxes as water fluxes (mol/day)
 	

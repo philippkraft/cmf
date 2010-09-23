@@ -18,7 +18,7 @@ namespace cmf {
 		class SystemBridge : public cmf::water::flux_node , public cmf::math::integratable
 		{
 		private:
-			std::auto_ptr<connection_integrator> m_ci;
+			std::auto_ptr<flux_integrator> m_ci;
 			flux_node::ptr lower_node,upper_node;
 			SystemBridge(cmf::project& p, flux_connection& con);
 		public:

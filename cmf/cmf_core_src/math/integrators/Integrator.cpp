@@ -1,30 +1,8 @@
 #include "integrator.h"
 
-real cmf::math::Integrator::error_exceedance( const num_array& compare,int * biggest_error_position/*=0 */ )
-{
-	real res=0;
-#pragma omp parallel for shared(res)
-	for (int i = 0; i < size() ; i++)
-	{
-		real error=fabs(compare[i]-get_state(i));
-		// Calculate absolute error tolerance as: epsilon + |(x_p+x_(n+1))/2|*epsilon
-		real errortol=Epsilon + fabs(get_state(i))*Epsilon;
-		if (error/errortol>res)
-#pragma omp critical
-		{
-			if (error/errortol>res)
-			{
-				res=error/errortol;
-				if (biggest_error_position)
-					*biggest_error_position=i;
-			}
-		}
-	}
-	return res;
-}
 
 
-void cmf::math::Integrator::CopyStates( num_array & destination ) const
+void cmf::math::Integrator::copy_states( num_array & destination ) const
 {
 	if (destination.size()!=(int)size())
 		destination.resize(size());
@@ -46,7 +24,7 @@ void cmf::math::Integrator::CopyStates( num_array & destination ) const
 
 }
 
-void cmf::math::Integrator::CopyStates( real * destination ) const
+void cmf::math::Integrator::copy_states( real * destination ) const
 {
 	if (use_OpenMP)
 	{
@@ -65,7 +43,7 @@ void cmf::math::Integrator::CopyStates( real * destination ) const
 
 	}
 }
-void cmf::math::Integrator::CopyDerivs( Time time,num_array & destination,real factor ) const
+void cmf::math::Integrator::copy_dxdt( Time time,num_array & destination,real factor ) const
 {
 	if (destination.size()!=(int)size())
 		destination.resize(size());
@@ -75,14 +53,14 @@ void cmf::math::Integrator::CopyDerivs( Time time,num_array & destination,real f
 		{
 #pragma omp parallel for schedule(guided)
 			for (int i = 0; i < (int)size() ; ++i)
-				destination[i]=m_States[i]->Derivate(time);
+				destination[i]=m_States[i]->dxdt(time);
 		}
 		else
 		{
 #pragma omp parallel for schedule(guided)
 			for (int i = 0; i < (int)size() ; i++)
 			{
-				destination[i]=m_States[i]->Derivate(time);
+				destination[i]=m_States[i]->dxdt(time);
 				destination[i]*=factor;
 			}
 		}
@@ -92,20 +70,20 @@ void cmf::math::Integrator::CopyDerivs( Time time,num_array & destination,real f
 		if (factor==1)
 		{
 			for (int i = 0; i < (int)size() ; ++i)
-				destination[i]=m_States[i]->Derivate(time);
+				destination[i]=m_States[i]->dxdt(time);
 		}
 		else
 		{
 			for (int i = 0; i < (int)size() ; i++)
 			{
-				destination[i]=m_States[i]->Derivate(time);
+				destination[i]=m_States[i]->dxdt(time);
 				destination[i]*=factor;
 			}
 		}
 	}
 }
 
-void cmf::math::Integrator::CopyDerivs( Time time,real * destination,real factor/*=1*/ ) const
+void cmf::math::Integrator::copy_dxdt( Time time,real * destination,real factor/*=1*/ ) const
 {
 	if (use_OpenMP)
 	{
@@ -113,14 +91,14 @@ void cmf::math::Integrator::CopyDerivs( Time time,real * destination,real factor
 		{
 #pragma omp parallel for schedule(guided)
 			for (int i = 0; i < (int)size() ; ++i)
-				destination[i]=m_States[i]->Derivate(time);
+				destination[i]=m_States[i]->dxdt(time);
 		}
 		else
 		{
 #pragma omp parallel for schedule(guided)
 			for (int i = 0; i < (int)size() ; i++)
 			{
-				destination[i]=m_States[i]->Derivate(time);
+				destination[i]=m_States[i]->dxdt(time);
 				destination[i]*=factor;
 			}
 		}
@@ -130,20 +108,20 @@ void cmf::math::Integrator::CopyDerivs( Time time,real * destination,real factor
 		if (factor==1)
 		{
 			for (int i = 0; i < (int)size() ; ++i)
-				destination[i]=m_States[i]->Derivate(time);
+				destination[i]=m_States[i]->dxdt(time);
 		}
 		else
 		{
 			for (int i = 0; i < (int)size() ; i++)
 			{
-				destination[i]=m_States[i]->Derivate(time);
+				destination[i]=m_States[i]->dxdt(time);
 				destination[i]*=factor;
 			}
 		}
 	}
 
 }
-void cmf::math::Integrator::SetStates(const num_array & newStates )
+void cmf::math::Integrator::set_states(const num_array & newStates )
 {
 	if (use_OpenMP)
 	{
@@ -163,7 +141,7 @@ void cmf::math::Integrator::SetStates(const num_array & newStates )
 
 }
 
-void cmf::math::Integrator::SetStates( real * newStates )
+void cmf::math::Integrator::set_states( real * newStates )
 {
 	if (use_OpenMP)
 	{
@@ -182,7 +160,7 @@ void cmf::math::Integrator::SetStates( real * newStates )
 	}
 }
 
-void cmf::math::Integrator::AddValuesToStates(const num_array& operands)
+void cmf::math::Integrator::add_values_to_states(const num_array& operands)
 {
 	if (use_OpenMP)
 	{
@@ -201,12 +179,12 @@ void cmf::math::Integrator::AddValuesToStates(const num_array& operands)
 	}
 }
 
-void cmf::math::Integrator::integrate_until( cmf::math::Time t_max,cmf::math::Time dt/*=Time()*/,bool reset/*=false*/ )
+void cmf::math::Integrator::integrate_until( cmf::math::Time t_max,cmf::math::Time dt/*=Time()*/,bool reset_solver/*=false*/ )
 {
 	m_Iterations=0;
 	int i=0;
 	Time start = m_t;
-	if (reset) Reset();
+	if (reset_solver) reset();
 	if (!dt) dt=m_dt;
 	for(integratable_vector::iterator it = m_integratables.begin(); it != m_integratables.end(); ++it)
 		(*it)->reset(start);

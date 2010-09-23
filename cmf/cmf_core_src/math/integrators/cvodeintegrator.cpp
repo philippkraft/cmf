@@ -41,7 +41,7 @@ int cmf::math::CVodeIntegrator::f( realtype t, N_Vector u, N_Vector udot, void *
 	// Get size of the problem
 	int nsize=int(integ->size());
 	// Update the states from the state vector
-	integ->SetStates(udata);
+	integ->set_states(udata);
 	Time T=cmf::math::day * t;
 	Time T_model = integ->get_t();
 	real sec_local = (T - T_model)/sec;
@@ -52,7 +52,7 @@ int cmf::math::CVodeIntegrator::f( realtype t, N_Vector u, N_Vector udot, void *
 	num_array cmp_dudata(dudata,dudata+nsize);
 #endif
 */
-	integ->CopyDerivs(T,dudata);
+	integ->copy_dxdt(T,dudata);
 /*
 #ifdef CMF_DEBUG
 	num_array new_dudata(dudata,nsize);
@@ -80,7 +80,7 @@ void cmf::math::CVodeIntegrator::Initialize()
 	int N=int(m_States.size());              // size of problem
 	m_y=N_VNew_Serial(N);										 // Allocate vector y
 	realtype * y_data = NV_DATA_S(m_y);      // Pointer to data of vector y
-	CopyStates(y_data);						 // Copy states to y
+	copy_states(y_data);						 // Copy states to y
 	// Create a implicit (CV_BDF) solver with Newton iteration (CV_NEWTON)
 	cvode_mem = CVodeCreate(CV_BDF,CV_NEWTON);
 	// Set the state vector as user data of the solver
@@ -143,7 +143,9 @@ cmf::math::CVodeIntegrator::~CVodeIntegrator()
 }
 int cmf::math::CVodeIntegrator::integrate( cmf::math::Time MaxTime,cmf::math::Time TimeStep )
 {
-	
+	if (m_States.size()==0)
+		throw std::out_of_range("No states to integrate!");
+
 	// If solver or y is not initialized, initialize them
 	if (!cvode_mem || !m_y )
 	{
@@ -157,7 +159,7 @@ int cmf::math::CVodeIntegrator::integrate( cmf::math::Time MaxTime,cmf::math::Ti
 	CVodeSetStopTime(cvode_mem,MaxTime.AsDays());
 	int res = CVode(cvode_mem,MaxTime.AsDays(),m_y, &t_ret, CV_ONE_STEP);
 	if (res<0) {
-		SetStates(y_data);
+		set_states(y_data);
 		throw std::runtime_error("CVode could not integrate due to failure (see message above) at t=" + (day*t_ret).AsDate().to_string());
 	}
 	long iterations;
@@ -180,11 +182,11 @@ int cmf::math::CVodeIntegrator::integrate( cmf::math::Time MaxTime,cmf::math::Ti
 
 
 	// Copy result to state variables
-	SetStates(y_data);
+	set_states(y_data);
 	return res;
 }
 
-void cmf::math::CVodeIntegrator::Reset()
+void cmf::math::CVodeIntegrator::reset()
 {
 	if (cvode_mem)
 		CVodeReInit(cvode_mem,get_t()/day,m_y);

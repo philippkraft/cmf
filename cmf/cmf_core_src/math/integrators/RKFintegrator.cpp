@@ -38,9 +38,9 @@ cmf::math::RKFIntegrator::RKFIntegrator( const cmf::math::RKFIntegrator& forCopy
 {
 	
 }
-void cmf::math::RKFIntegrator::AddStatesFromOwner( cmf::math::StateVariableOwner& stateOwner )
+void cmf::math::RKFIntegrator::add_states( cmf::math::StateVariableOwner& stateOwner )
 {
-	Integrator::AddStatesFromOwner(stateOwner);
+	Integrator::add_states(stateOwner);
 	oldStates.resize(size());
 	for (int i = 0; i < 6 ; i++)
 		kValues[i].resize(size());
@@ -66,6 +66,9 @@ cmf::math::RKFIntegrator::e[6] = { -1.0/360.0,  0.0, 128.0/4275.0, 2197.0/75240.
 
 int cmf::math::RKFIntegrator::integrate(cmf::math::Time MaxTime,cmf::math::Time TimeStep)
 {
+	if (m_States.size()==0)
+		throw std::out_of_range("No states to integrate!");
+
 	if (TimeStep<dt_min)
 		TimeStep=dt_min;
 	//If we are nearly at the maximum time, we do a (small) Euler step)
@@ -75,9 +78,9 @@ int cmf::math::RKFIntegrator::integrate(cmf::math::Time MaxTime,cmf::math::Time 
 		m_dt = MaxTime - m_t;
 		//Calculate new states with an eulerian step : x(t+h) = x(t) + timeStep * dx/dt
 		// Copy derivates multipied with time step to dxdt
-		CopyDerivs(get_t(),kValues[0],TimeStep.AsDays());
+		copy_dxdt(get_t(),kValues[0],TimeStep.AsDays());
 		// Update time step with delta x
-		AddValuesToStates(kValues[0]);
+		add_values_to_states(kValues[0]);
 
 		//Step to MaxTime
 		m_t = MaxTime;
@@ -87,7 +90,7 @@ int cmf::math::RKFIntegrator::integrate(cmf::math::Time MaxTime,cmf::math::Time 
 	//Trying the complete timestep
 	//Adjust the timestep to avoid the eularian solution above
 	AdjustTimestep(TimeStep,MaxTime);
-	CopyStates(oldStates);
+	copy_states(oldStates);
 
 
 	//h is the normal name of the variable TimeStep
@@ -102,7 +105,7 @@ int cmf::math::RKFIntegrator::integrate(cmf::math::Time MaxTime,cmf::math::Time 
 		error=0;
 		//Calculate k[0] (the current derivate)	
 		
-		CopyDerivs(m_t,k(0));
+		copy_dxdt(m_t,k(0));
 
 		//For each higher order of the Runge-Kutta integrator
 		for (int order = 1; order <= 5 ; order++)
@@ -124,7 +127,7 @@ int cmf::math::RKFIntegrator::integrate(cmf::math::Time MaxTime,cmf::math::Time 
 			} //Done with system equations
 			const Time subTimestep = m_t + h * c[order];
 			//For each differential equation of the system, calculate the derivate from the new state
-			CopyDerivs(subTimestep,k(order));
+			copy_dxdt(subTimestep,k(order));
 		} // next order
 
 		//Sum up the k - Values to obtain the final state for the 5th order RK-solution
@@ -178,7 +181,7 @@ int cmf::math::RKFIntegrator::integrate(cmf::math::Time MaxTime,cmf::math::Time 
 		if (error > Epsilon && Loops<100 && TimeStep>dt_min)
 		{
 			//Reset the states to the old states, and try again with the new time step
-			SetStates(oldStates);
+			set_states(oldStates);
 		}
 		//In case of a good solution or if no solution after 100 tries is found, we exit the trying
 	} while (error > Epsilon && Loops<100 && TimeStep>dt_min);

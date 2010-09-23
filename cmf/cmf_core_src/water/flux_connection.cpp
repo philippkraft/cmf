@@ -138,7 +138,7 @@ int cmf::water::replace_node(flux_node::ptr oldnode,flux_node::ptr newnode)
 
 void cmf::water::set_flux( flux_node::ptr source,flux_node::ptr target,real flux_value)
 {
-	external_control_connection* con = dynamic_cast<external_control_connection*>(source->get_connection(*target));
+	external_control_connection* con = dynamic_cast<external_control_connection*>(source->connection_to(*target));
 	if (con) {
 		con->flux = (con->left_node() == source ? flux_value  : -flux_value);
 	} else {
@@ -151,12 +151,12 @@ void cmf::water::set_flux( flux_node::ptr source,flux_node::ptr target,real flux
 
 bool cmf::water::can_set_flux( flux_node::ptr source,flux_node::ptr target )
 {
-	external_control_connection* con = dynamic_cast<external_control_connection*>(source->get_connection(*target));
+	external_control_connection* con = dynamic_cast<external_control_connection*>(source->connection_to(*target));
 	return con != 0;
 }
 
 
-void cmf::water::connection_integrator::integrate( cmf::math::Time until )
+void cmf::water::flux_integrator::integrate( cmf::math::Time until )
 {
 	/* If connection is expired, throw error */
 	if (_connection.expired()) {
@@ -177,7 +177,7 @@ void cmf::water::connection_integrator::integrate( cmf::math::Time until )
 
 
 // returns the average flux over the timestep
-double cmf::water::connection_integrator::avg() const
+double cmf::water::flux_integrator::avg() const
 {
 	// if variable is already integrated
 	if (_t>_start_time) 
@@ -186,20 +186,21 @@ double cmf::water::connection_integrator::avg() const
 		return 0.0;
 }
 
-cmf::water::connection_integrator::connection_integrator( cmf::water::flux_connection& connection ) 
+cmf::water::flux_integrator::flux_integrator( cmf::water::flux_connection& connection ) 
 	:	_connection(connection.weak_this), 
 		_sum(0.0), _t(cmf::math::year*5000), 
 		_name(connection.to_string()+ " (Integrator)")
 {}
 
 
-void cmf::water::connection_integrator::reset( cmf::math::Time t )
+void cmf::water::flux_integrator::reset( cmf::math::Time t )
 {
 	_start_time = t;
+	_t=_start_time;
 	_sum=0.0;
 }
 
-flux_connection::ptr cmf::water::connection_integrator::connection() const
+flux_connection::ptr cmf::water::flux_integrator::connection() const
 {
 	return _connection.lock();
 }

@@ -179,7 +179,7 @@ if has_shapely:
             while f.tell()<self.file_size :
                 try:
                     number,obj=self.readRecord(f)
-                    self.__data.append(TYPE(obj,number,*data[number]))
+                    self.__data.append(TYPE(obj,number,*data[number-1]))
                 except ValueError,e:
                     print e
                     print "Last imported object number:",number

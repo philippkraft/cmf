@@ -309,7 +309,7 @@ class Raster:
         elif (dtype in ["i","i4"]):
             rtype=int_raster
         else:
-            raise ValueError("Data type mast be f,s or i")
+            raise ValueError("Data type must be in ('f','s','i'). Given type is " + dtype)
         if (filename):
             self.raster=rtype(filename)
         else:
