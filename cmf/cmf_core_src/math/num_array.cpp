@@ -410,6 +410,9 @@ cmf::math::num_array cmf::math::operator/( real _Left,const num_array& _Right )
 
 int cmf::math::count_parallel_threads()
 {
+#ifdef _OPENMP
 	return omp_get_max_threads();
-
+#else
+	return 1;
+#endif
 }
