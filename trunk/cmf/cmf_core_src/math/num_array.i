@@ -53,6 +53,8 @@ PyObject* as_npy_array(cmf::math::num_array& a)
 	cmf::math::num_array::iterator start = a.release();
 	// Creates the numpy array using size, place and type information
 	PyArrayObject* pyA =(PyArrayObject*)PyArray_SimpleNewFromData(1,dims,NPY_DOUBLE,(void *)start);
+	// Make the NumPy array own the data
+	pyA->flags |= NPY_OWNDATA;
 	return (PyObject*)(pyA);
 }
 // This function creates a new array<T> from any object providing the array interface or from a sequence.
@@ -75,7 +77,8 @@ size_t from_npy_array(PyObject* op,double ** data) {
 		    // if array is newly constructed in this function, data needs to be copied prior
 			double * begin = (double*)PyArray_DATA(ao);
 			*data = new double[size];
-			std::copy(begin,begin+size,*data);
+			double * target = *data;
+			std::copy(begin,begin+size,target);
 		}
 		Py_DECREF(ao);
 		// Return the size

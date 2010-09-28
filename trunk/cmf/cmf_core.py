@@ -1492,11 +1492,67 @@ class integratable(object):
         """
         return _cmf_core.integratable_reset(self, *args, **kwargs)
 
+    def sum(self, *args, **kwargs):
+        """sum(self) -> double"""
+        return _cmf_core.integratable_sum(self, *args, **kwargs)
+
+    def avg(self, *args, **kwargs):
+        """avg(self) -> double"""
+        return _cmf_core.integratable_avg(self, *args, **kwargs)
+
     __swig_destroy__ = _cmf_core.delete_integratable
 integratable.integrate = new_instancemethod(_cmf_core.integratable_integrate,None,integratable)
 integratable.reset = new_instancemethod(_cmf_core.integratable_reset,None,integratable)
+integratable.sum = new_instancemethod(_cmf_core.integratable_sum,None,integratable)
+integratable.avg = new_instancemethod(_cmf_core.integratable_avg,None,integratable)
 integratable_swigregister = _cmf_core.integratable_swigregister
 integratable_swigregister(integratable)
+
+class integratable_list(object):
+    """Proxy of C++ cmf::math::integratable_list class"""
+    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __repr__ = _swig_repr
+    def append(self, *args, **kwargs):
+        """append(self, ptr add)"""
+        return _cmf_core.integratable_list_append(self, *args, **kwargs)
+
+    def remove(self, *args, **kwargs):
+        """remove(self, ptr rm)"""
+        return _cmf_core.integratable_list_remove(self, *args, **kwargs)
+
+    def size(self, *args, **kwargs):
+        """size(self) -> size_t"""
+        return _cmf_core.integratable_list_size(self, *args, **kwargs)
+
+    def avg(self, *args, **kwargs):
+        """avg(self) -> cmf::math::num_array"""
+        return _cmf_core.integratable_list_avg(self, *args, **kwargs)
+
+    def sum(self, *args, **kwargs):
+        """sum(self) -> cmf::math::num_array"""
+        return _cmf_core.integratable_list_sum(self, *args, **kwargs)
+
+    def reset(self, *args, **kwargs):
+        """reset(self, Time t)"""
+        return _cmf_core.integratable_list_reset(self, *args, **kwargs)
+
+    def integrate(self, *args, **kwargs):
+        """integrate(self, Time t)"""
+        return _cmf_core.integratable_list_integrate(self, *args, **kwargs)
+
+    def __init__(self, *args, **kwargs): 
+        """__init__(self) -> integratable_list"""
+        _cmf_core.integratable_list_swiginit(self,_cmf_core.new_integratable_list(*args, **kwargs))
+    __swig_destroy__ = _cmf_core.delete_integratable_list
+integratable_list.append = new_instancemethod(_cmf_core.integratable_list_append,None,integratable_list)
+integratable_list.remove = new_instancemethod(_cmf_core.integratable_list_remove,None,integratable_list)
+integratable_list.size = new_instancemethod(_cmf_core.integratable_list_size,None,integratable_list)
+integratable_list.avg = new_instancemethod(_cmf_core.integratable_list_avg,None,integratable_list)
+integratable_list.sum = new_instancemethod(_cmf_core.integratable_list_sum,None,integratable_list)
+integratable_list.reset = new_instancemethod(_cmf_core.integratable_list_reset,None,integratable_list)
+integratable_list.integrate = new_instancemethod(_cmf_core.integratable_list_integrate,None,integratable_list)
+integratable_list_swigregister = _cmf_core.integratable_list_swigregister
+integratable_list_swigregister(integratable_list)
 
 class StateVariable(object):
     """
@@ -2543,17 +2599,6 @@ class waterbalance_integrator(integratable):
     """
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
     __repr__ = _swig_repr
-    def sum(self, *args, **kwargs):
-        """
-        sum(self) -> double
-
-        double sum() const
-
-        Returns the total absolute waterbalance of the node in integration
-        time [m3]. 
-        """
-        return _cmf_core.waterbalance_integrator_sum(self, *args, **kwargs)
-
     def integration_t(self, *args, **kwargs):
         """
         integration_t(self) -> Time
@@ -2575,16 +2620,6 @@ class waterbalance_integrator(integratable):
         """
         return _cmf_core.waterbalance_integrator_t0(self, *args, **kwargs)
 
-    def avg(self, *args, **kwargs):
-        """
-        avg(self) -> double
-
-        double avg() const
-
-        Returns the average flux over the integration time in m3/day. 
-        """
-        return _cmf_core.waterbalance_integrator_avg(self, *args, **kwargs)
-
     def __init__(self, *args, **kwargs): 
         """
         __init__(self, ptr node) -> waterbalance_integrator
@@ -2594,10 +2629,8 @@ class waterbalance_integrator(integratable):
         _cmf_core.waterbalance_integrator_swiginit(self,_cmf_core.new_waterbalance_integrator(*args, **kwargs))
     node = _swig_property(_cmf_core.waterbalance_integrator_node_get, _cmf_core.waterbalance_integrator_node_set)
     __swig_destroy__ = _cmf_core.delete_waterbalance_integrator
-waterbalance_integrator.sum = new_instancemethod(_cmf_core.waterbalance_integrator_sum,None,waterbalance_integrator)
 waterbalance_integrator.integration_t = new_instancemethod(_cmf_core.waterbalance_integrator_integration_t,None,waterbalance_integrator)
 waterbalance_integrator.t0 = new_instancemethod(_cmf_core.waterbalance_integrator_t0,None,waterbalance_integrator)
-waterbalance_integrator.avg = new_instancemethod(_cmf_core.waterbalance_integrator_avg,None,waterbalance_integrator)
 waterbalance_integrator_swigregister = _cmf_core.waterbalance_integrator_swigregister
 waterbalance_integrator_swigregister(waterbalance_integrator)
 
@@ -2755,18 +2788,6 @@ class flux_integrator(integratable):
     """
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
     __repr__ = _swig_repr
-    def sum(self, *args, **kwargs):
-        """
-        sum(self) -> double
-
-        double sum()
-        const
-
-        Returns the amount of water along this connection in the integration
-        time in m3. 
-        """
-        return _cmf_core.flux_integrator_sum(self, *args, **kwargs)
-
     def integration_t(self, *args, **kwargs):
         """
         integration_t(self) -> Time
@@ -2787,17 +2808,6 @@ class flux_integrator(integratable):
         """
         return _cmf_core.flux_integrator_t0(self, *args, **kwargs)
 
-    def avg(self, *args, **kwargs):
-        """
-        avg(self) -> double
-
-        double avg()
-        const
-
-        Returns the average flux of the integration time in m3/day. 
-        """
-        return _cmf_core.flux_integrator_avg(self, *args, **kwargs)
-
     def connection(self, *args, **kwargs):
         """
         connection(self) -> ptr
@@ -2816,10 +2826,8 @@ class flux_integrator(integratable):
         """
         _cmf_core.flux_integrator_swiginit(self,_cmf_core.new_flux_integrator(*args, **kwargs))
     __swig_destroy__ = _cmf_core.delete_flux_integrator
-flux_integrator.sum = new_instancemethod(_cmf_core.flux_integrator_sum,None,flux_integrator)
 flux_integrator.integration_t = new_instancemethod(_cmf_core.flux_integrator_integration_t,None,flux_integrator)
 flux_integrator.t0 = new_instancemethod(_cmf_core.flux_integrator_t0,None,flux_integrator)
-flux_integrator.avg = new_instancemethod(_cmf_core.flux_integrator_avg,None,flux_integrator)
 flux_integrator.connection = new_instancemethod(_cmf_core.flux_integrator_connection,None,flux_integrator)
 flux_integrator_swigregister = _cmf_core.flux_integrator_swigregister
 flux_integrator_swigregister(flux_integrator)
@@ -3616,7 +3624,7 @@ NeumannBoundary_list.water_balance = new_instancemethod(_cmf_core.NeumannBoundar
 NeumannBoundary_list_swigregister = _cmf_core.NeumannBoundary_list_swigregister
 NeumannBoundary_list_swigregister(NeumannBoundary_list)
 
-class SystemBridge(flux_node,integratable):
+class SystemBridge(flux_node):
     """
     A SystemBridge is an advanced feature for tuning of the calculation
     time.
@@ -3670,10 +3678,15 @@ class SystemBridge(flux_node,integratable):
         """
         return _cmf_core.SystemBridge_get_down_flux(self, *args, **kwargs)
 
+    def down_flux_integrator(self, *args, **kwargs):
+        """down_flux_integrator(self) -> ptr"""
+        return _cmf_core.SystemBridge_down_flux_integrator(self, *args, **kwargs)
+
     __swig_destroy__ = _cmf_core.delete_SystemBridge
 SystemBridge.get_upper_node = new_instancemethod(_cmf_core.SystemBridge_get_upper_node,None,SystemBridge)
 SystemBridge.get_lower_node = new_instancemethod(_cmf_core.SystemBridge_get_lower_node,None,SystemBridge)
 SystemBridge.get_down_flux = new_instancemethod(_cmf_core.SystemBridge_get_down_flux,None,SystemBridge)
+SystemBridge.down_flux_integrator = new_instancemethod(_cmf_core.SystemBridge_down_flux_integrator,None,SystemBridge)
 SystemBridge_swigregister = _cmf_core.SystemBridge_swigregister
 SystemBridge_swigregister(SystemBridge)
 

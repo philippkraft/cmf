@@ -7,18 +7,27 @@ namespace cmf {
 	namespace water {
 		/// A SystemBridge is an advanced feature for tuning of the calculation time.
 		///
-		/// A SystemBridge can be used to replace an existing connection between nodes. It is created using the system_bridge function
-		/// After installation, the two nodes can more safely be added to different integrator systems. 
+		/// A SystemBridge can be used to replace an existing connection between nodes. 
+		/// It is created using the system_bridge function. After installation, the two 
+		/// nodes can more safely be added to different integrator systems. 
 		/// One node (called upper) is connected with the system bridge with the connection formerly connecting the nodes,
 		/// the second node (called lower) is connected to the system bridge with as a Neumann boundary condition. The flux equals the average flux
-		/// of the connection upper <-> SystemBridge. Therefore, the system bridge must become an integratable of the integrator system
+		/// of the connection upper <-> SystemBridge. Therefore, the downward flux needs to be integrated over time by the solver
 		/// the upper node belongs to. Use as an upper system (system upper node is belonging to) the faster reacting system.
-		/// For the connection between upper and SystemBridge, the SystemBridge reacts as an Drichelet boundary condition, providing the potential 
+		/// For the connection between upper and SystemBridge, the SystemBridge reacts as an Dirichlet boundary condition, providing the potential 
 		/// of the lower node.
-		class SystemBridge : public cmf::water::flux_node , public cmf::math::integratable
+		///
+		/// The following example code creates a system bridge between the nodes upper and lower. 
+		/// To integrate the flux over each timestep automatically, the systembridge is added
+		/// to the solver of upper, as an integratable
+		/// @code
+		/// sys_bridge = cmf.system_bridge(p,upper,lower)
+		/// upper_solver.add_integratable(sys_bridge.down_flux_integrator())
+		/// @endcode
+		class SystemBridge : public cmf::water::flux_node
 		{
 		private:
-			std::auto_ptr<flux_integrator> m_ci;
+			flux_integrator::ptr m_ci;
 			flux_node::ptr lower_node,upper_node;
 			SystemBridge(cmf::project& p, flux_connection& con);
 		public:
@@ -41,13 +50,10 @@ namespace cmf {
 			double get_down_flux() const {
 				return m_ci->avg();
 			}
-			virtual void integrate(cmf::math::Time t) {
-				m_ci->integrate(t);
+			flux_integrator::ptr down_flux_integrator() const {
+				return m_ci;
 			}
 
-			virtual void reset(cmf::math::Time t) {
-				m_ci->reset(t);
-			}
 		};
 
 		/// Connects a system bridge with its lower node. Is created automatically when creating a SystemBridge
