@@ -21,6 +21,7 @@
 #include "time.h"
 #include <string>
 #include <deque>
+#include <vector>
 #include <tr1/memory>
 #include <cmath>
 #include "num_array.h"
@@ -31,12 +32,36 @@ namespace cmf {
 	  
 	  /// integration_variable is a functionality for different classes for integrating values over time.
 	  ///
-	  /// Main usage of an integration_variable is the calculation of average fluxes over time
+	  /// Main usage of an integration_variable is the calculation of average fluxes over time e.g.
+	  /// \f[ \int_{t_0}^{t_{end}}q\left(t,V_i,V_j\right)dt \f]
 	  class integratable {
 	  public:
 		  typedef std::tr1::shared_ptr<integratable> ptr;
+		  /// Integrates the variable until time t
 		  virtual void integrate(Time t)=0;
+		  /// Sets the start time of the integral
 		  virtual void reset(Time t)=0;
+		  virtual double sum() const =0;
+		  virtual double avg() const =0;
+	  };
+	  class integratable_list {
+	  private:
+		  typedef std::vector<integratable::ptr> integ_vector;
+		  integ_vector m_items;
+	  public:
+		  /// Adds an integratable to the list
+		  void append(cmf::math::integratable::ptr add);
+		  /// Removes an integratable from the list
+		  void remove(cmf::math::integratable::ptr rm);
+
+		  integratable::ptr operator[](int index) const;
+		  /// Number of integratables in the list
+		  size_t size() const {return m_items.size();}
+		  cmf::math::num_array avg() const;
+		  cmf::math::num_array sum() const;
+		  void reset(Time t);
+		  void integrate(Time t);
+
 	  };
 
 		/// Abstract class state variable
