@@ -31,10 +31,12 @@
 %shared_ptr(cmf::math::integratable);
 
 %iterable_to_list(cmf::math::StateVariableList,cmf::math::StateVariable::ptr)
+%iterable_to_list(cmf::math::integratable_list,cmf::math::integratable::ptr)
 %attribute(cmf::math::StateVariable,real,state,get_state,set_state);
 %attributeval(cmf::math::Integrator,cmf::math::Time,t,get_t,set_t);
 %attributeval(cmf::math::Integrator,cmf::math::Time,dt,get_dt);
 %include "math/statevariable.h"
+
 
 %include "math/integrators/integrator.h"
 %include "math/integrators/bdf2.h"
