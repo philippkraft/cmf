@@ -3051,17 +3051,14 @@ size_t from_npy_array(PyObject* op,double ** data) {
 		return 0;
 	} else	{
 		// Get pointer to data
-		*data = (double*)PyArray_DATA(ao);
+		double * p_array=(double*)PyArray_DATA(ao);
 		// Get size
 		size_t size = (size_t)PyArray_DIM(ao,0);
-		if (ao->ob_refcnt == 1) {
-		    // if array is newly constructed in this function, data needs to be copied prior
-			double * begin = (double*)PyArray_DATA(ao);
-			*data = new double[size];
-			double * target = *data;
-			std::copy(begin,begin+size,target);
-		}
+		double * res=new double[size];
+		for (size_t i=0;i<size;++i) 
+		    res[i] = p_array[i];
 		Py_DECREF(ao);
+		*data = res;
 		// Return the size
 		return size;
 	}
@@ -10985,7 +10982,6 @@ SWIGINTERN PyObject *_wrap_new_timeseries__SWIG_3(PyObject *SWIGUNUSEDPARM(self)
   cmf::math::Time arg1 ;
   cmf::math::Time arg2 ;
   cmf::math::num_array *arg3 = 0 ;
-  cmf::math::num_array temp_array3 ;
   cmf::math::timeseries *result = 0 ;
   
   if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
@@ -36569,7 +36565,6 @@ SWIGINTERN PyObject *_wrap_Vegetation_RootFraction__SWIG_1(PyObject *SWIGUNUSEDP
   cmf::math::num_array *arg2 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  cmf::math::num_array temp_array2 ;
   cmf::math::num_array result;
   
   if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
@@ -45954,7 +45949,6 @@ SWIGINTERN PyObject *_wrap_layer_list_set_wetness(PyObject *SWIGUNUSEDPARM(self)
   size_t arg3 = (size_t) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  cmf::math::num_array temp_array2 ;
   size_t val3 ;
   int ecode3 = 0 ;
   PyObject * obj0 = 0 ;
@@ -46017,7 +46011,6 @@ SWIGINTERN PyObject *_wrap_layer_list_set_potential(PyObject *SWIGUNUSEDPARM(sel
   size_t arg3 = (size_t) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  cmf::math::num_array temp_array2 ;
   size_t val3 ;
   int ecode3 = 0 ;
   PyObject * obj0 = 0 ;
@@ -46080,7 +46073,6 @@ SWIGINTERN PyObject *_wrap_layer_list_set_volume(PyObject *SWIGUNUSEDPARM(self),
   size_t arg3 = (size_t) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  cmf::math::num_array temp_array2 ;
   size_t val3 ;
   int ecode3 = 0 ;
   PyObject * obj0 = 0 ;
@@ -46143,7 +46135,6 @@ SWIGINTERN PyObject *_wrap_layer_list_set_ice_fraction(PyObject *SWIGUNUSEDPARM(
   size_t arg3 = (size_t) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  cmf::math::num_array temp_array2 ;
   size_t val3 ;
   int ecode3 = 0 ;
   PyObject * obj0 = 0 ;

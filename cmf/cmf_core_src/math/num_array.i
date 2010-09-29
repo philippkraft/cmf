@@ -70,17 +70,14 @@ size_t from_npy_array(PyObject* op,double ** data) {
 		return 0;
 	} else	{
 		// Get pointer to data
-		*data = (double*)PyArray_DATA(ao);
+		double * p_array=(double*)PyArray_DATA(ao);
 		// Get size
 		size_t size = (size_t)PyArray_DIM(ao,0);
-		if (ao->ob_refcnt == 1) {
-		    // if array is newly constructed in this function, data needs to be copied prior
-			double * begin = (double*)PyArray_DATA(ao);
-			*data = new double[size];
-			double * target = *data;
-			std::copy(begin,begin+size,target);
-		}
+		double * res=new double[size];
+		for (size_t i=0;i<size;++i) 
+		    res[i] = p_array[i];
 		Py_DECREF(ao);
+		*data = res;
 		// Return the size
 		return size;
 	}
@@ -98,7 +95,7 @@ size_t from_npy_array(PyObject* op,double ** data) {
     $1 = cmf::math::num_array(data,size);
 }
 // The actual typemaps have to be defined for each specialization
-%typemap(in) const cmf::math::num_array& (cmf::math::num_array temp_array) {
+%typemap(in) const cmf::math::num_array& {
     // Convert a array_wrapper from numpy array
     double * data=0;
     size_t size = from_npy_array($input,&data); 
