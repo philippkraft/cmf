@@ -106,10 +106,11 @@ size_t from_npy_array(PyObject* op,double ** data) {
         SWIG_exception_fail(SWIG_TypeError,"Input data is not 'array-like' (in the sense of numpy arrays)");
         return NULL;
     }
-    temp_array = cmf::math::num_array(data,size);
-    $1 = &temp_array;
+    $1 = new cmf::math::num_array(data,size);
 }
-
+%typemap(freearg) const cmf::math::num_array& {
+    delete $1;
+}
 // Typecheck typemap for dispatching of overloaded functions
 %typemap(typecheck,precedence=0) cmf::math::num_array {
     $1 = test_npy_array($input);
