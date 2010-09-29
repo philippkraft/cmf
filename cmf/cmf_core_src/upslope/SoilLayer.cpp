@@ -58,6 +58,7 @@ cmf::upslope::SoilLayer::SoilLayer( cmf::upslope::Cell & _cell,real lowerboundar
 	position=cmf::geometry::point(_cell.x,_cell.y,_cell.z - 0.5*(m_upperboundary + m_lowerboundary));
 	if (m_lowerboundary-m_upperboundary<=0)
 		throw std::runtime_error("0 m thickness of layer");
+	StateChangeAction();
 	set_potential(cell.z - saturateddepth);
 	std::stringstream sstr;
 	sstr << "Layer #" << Position << " of cell #" << cell.Id;
