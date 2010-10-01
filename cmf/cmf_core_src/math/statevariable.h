@@ -29,7 +29,26 @@
 namespace cmf {
 	/// Contains classes for numerical solving of ODE's
   namespace math {
-	  
+	  template<typename _Ty, typename _BaseIterator> class iterable {
+		  _BaseIterator begin,end;
+	  public:
+#ifndef SWIG
+		  iterable(_BaseIterator Begin,_BaseIterator End) 
+			  : begin(Begin), end(End)
+		  {}
+		  void operator++() {++begin;}
+		  iterable operator++() {return begin++;}
+#endif
+		  bool valid() const {return begin!=end;}
+		  _Ty next() {
+			  ++begin; 
+			  if (valid()) 
+				  return *begin;
+			  else
+				  throw std::out_of_range("Iterator has stopped!");
+		  }			
+	  };
+
 	  /// integration_variable is a functionality for different classes for integrating values over time.
 	  ///
 	  /// Main usage of an integration_variable is the calculation of average fluxes over time e.g.
@@ -44,6 +63,9 @@ namespace cmf {
 		  virtual double sum() const =0;
 		  virtual double avg() const =0;
 	  };
+	  /// A list of cmf::math::integratable objects
+	  ///
+	  /// @todo TODO: Complete collection interface (getitem with slicing etc.)
 	  class integratable_list {
 	  private:
 		  typedef std::vector<integratable::ptr> integ_vector;
@@ -54,7 +76,10 @@ namespace cmf {
 		  /// Removes an integratable from the list
 		  void remove(cmf::math::integratable::ptr rm);
 
-		  integratable::ptr operator[](int index) const;
+		  integratable::ptr operator[](int index) const {
+			  return m_items.at(index < 0 ? index+size() : index);
+		  }
+
 		  /// Number of integratables in the list
 		  size_t size() const {return m_items.size();}
 		  cmf::math::num_array avg() const;

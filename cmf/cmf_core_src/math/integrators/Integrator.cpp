@@ -186,12 +186,11 @@ void cmf::math::Integrator::integrate_until( cmf::math::Time t_max,cmf::math::Ti
 	Time start = m_t;
 	if (reset_solver) reset();
 	if (!dt) dt=m_dt;
-	for(integratable_vector::iterator it = m_integratables.begin(); it != m_integratables.end(); ++it)
-		(*it)->reset(start);
+	integratables.reset(start);
 	while (m_t < t_max) {
+		
 		integrate(t_max,dt);
-		for(integratable_vector::iterator it = m_integratables.begin(); it != m_integratables.end(); ++it)
-			(*it)->integrate(m_t);
+		integratables.integrate(m_t);
 		++i;
 	}
 	if (i>0) m_dt = (t_max - start)/i;

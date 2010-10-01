@@ -1520,6 +1520,10 @@ class integratable_list(object):
         """remove(self, ptr rm)"""
         return _cmf_core.integratable_list_remove(self, *args, **kwargs)
 
+    def __getitem(self, *args, **kwargs):
+        """__getitem(self, int index) -> ptr"""
+        return _cmf_core.integratable_list___getitem(self, *args, **kwargs)
+
     def size(self, *args, **kwargs):
         """size(self) -> size_t"""
         return _cmf_core.integratable_list_size(self, *args, **kwargs)
@@ -1540,17 +1544,36 @@ class integratable_list(object):
         """integrate(self, Time t)"""
         return _cmf_core.integratable_list_integrate(self, *args, **kwargs)
 
+    def __len__(self, *args, **kwargs):
+        """__len__(self) -> size_t"""
+        return _cmf_core.integratable_list___len__(self, *args, **kwargs)
+
+    def __iter__(self):
+        for i in xrange(len(self)):
+            return self[i]
+    def __getitem__(self,index):
+        if isinstance(index,slice):
+            return [self.__getitem(i) for i in range(*index.indices(len(self)))]
+        else:
+            try:
+                it=iter(index)
+                return [self.__getitem(i) for i in it]
+            except:
+                return self.__getitem(index)
+
     def __init__(self, *args, **kwargs): 
         """__init__(self) -> integratable_list"""
         _cmf_core.integratable_list_swiginit(self,_cmf_core.new_integratable_list(*args, **kwargs))
     __swig_destroy__ = _cmf_core.delete_integratable_list
 integratable_list.append = new_instancemethod(_cmf_core.integratable_list_append,None,integratable_list)
 integratable_list.remove = new_instancemethod(_cmf_core.integratable_list_remove,None,integratable_list)
+integratable_list.__getitem = new_instancemethod(_cmf_core.integratable_list___getitem,None,integratable_list)
 integratable_list.size = new_instancemethod(_cmf_core.integratable_list_size,None,integratable_list)
 integratable_list.avg = new_instancemethod(_cmf_core.integratable_list_avg,None,integratable_list)
 integratable_list.sum = new_instancemethod(_cmf_core.integratable_list_sum,None,integratable_list)
 integratable_list.reset = new_instancemethod(_cmf_core.integratable_list_reset,None,integratable_list)
 integratable_list.integrate = new_instancemethod(_cmf_core.integratable_list_integrate,None,integratable_list)
+integratable_list.__len__ = new_instancemethod(_cmf_core.integratable_list___len__,None,integratable_list)
 integratable_list_swigregister = _cmf_core.integratable_list_swigregister
 integratable_list_swigregister(integratable_list)
 
@@ -1714,18 +1737,7 @@ class Integrator(StateVariableOwner):
         """
         return _cmf_core.Integrator_add_single_state(self, *args, **kwargs)
 
-    def add_integratable(self, *args, **kwargs):
-        """
-        add_integratable(self, ptr integratable)
-
-        void
-        add_integratable(cmf::math::integratable::ptr integratable)
-
-        Adds an integratable non-state variable, to be integrated for each
-        substep. 
-        """
-        return _cmf_core.Integrator_add_integratable(self, *args, **kwargs)
-
+    integratables = _swig_property(_cmf_core.Integrator_integratables_get, _cmf_core.Integrator_integratables_set)
     use_OpenMP = _swig_property(_cmf_core.Integrator_use_OpenMP_get, _cmf_core.Integrator_use_OpenMP_set)
     def size(self, *args, **kwargs):
         """
@@ -1860,7 +1872,6 @@ class Integrator(StateVariableOwner):
 Integrator.get_dxdt = new_instancemethod(_cmf_core.Integrator_get_dxdt,None,Integrator)
 Integrator.add_states = new_instancemethod(_cmf_core.Integrator_add_states,None,Integrator)
 Integrator.add_single_state = new_instancemethod(_cmf_core.Integrator_add_single_state,None,Integrator)
-Integrator.add_integratable = new_instancemethod(_cmf_core.Integrator_add_integratable,None,Integrator)
 Integrator.size = new_instancemethod(_cmf_core.Integrator_size,None,Integrator)
 Integrator.get_state = new_instancemethod(_cmf_core.Integrator_get_state,None,Integrator)
 Integrator.set_state = new_instancemethod(_cmf_core.Integrator_set_state,None,Integrator)
