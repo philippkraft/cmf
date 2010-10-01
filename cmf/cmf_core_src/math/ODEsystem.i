@@ -33,9 +33,32 @@
 %iterable_to_list(cmf::math::StateVariableList,cmf::math::StateVariable::ptr)
 %iterable_to_list(cmf::math::integratable_list,cmf::math::integratable::ptr)
 %attribute(cmf::math::StateVariable,real,state,get_state,set_state);
+
+%rename(__getitem) cmf::math::integratable_list::operator[];
+
+%include "math/statevariable.h"
+%extend cmf::math::integratable_list {
+    size_t __len__() const {
+        return $self->size();
+    }
+    %pythoncode {
+    def __iter__(self):
+        for i in xrange(len(self)):
+            return self[i]
+    def __getitem__(self,index):
+        if isinstance(index,slice):
+            return [self.__getitem(i) for i in range(*index.indices(len(self)))]
+        else:
+            try:
+                it=iter(index)
+                return [self.__getitem(i) for i in it]
+            except:
+                return self.__getitem(index)
+    }
+}    
+
 %attributeval(cmf::math::Integrator,cmf::math::Time,t,get_t,set_t);
 %attributeval(cmf::math::Integrator,cmf::math::Time,dt,get_dt);
-%include "math/statevariable.h"
 
 
 %include "math/integrators/integrator.h"

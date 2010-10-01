@@ -36,9 +36,7 @@ namespace cmf {
 		{
 		protected:
 			typedef std::vector<StateVariable::ptr> state_vector;
-			typedef std::vector<integratable::ptr> integratable_vector;
 			state_vector m_States;
-			integratable_vector m_integratables;
 
 			/// Copies the states to a numeric vector using use_OpenMP
 		public:
@@ -65,7 +63,6 @@ namespace cmf {
 				return m_States[position];
 			}
 
-
 #endif
 			cmf::math::num_array get_dxdt(Time time) const 
 			{
@@ -90,10 +87,9 @@ namespace cmf {
 				m_States.push_back(state);
 			}
 			
-			/// Adds an integratable non-state variable, to be integrated for each substep
-			void add_integratable(cmf::math::integratable::ptr integratable) {
-				m_integratables.push_back(integratable);
-			}
+			/// Public access to integratables
+			integratable_list integratables;
+
 
 
 

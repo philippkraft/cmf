@@ -7,10 +7,6 @@ void integratable_list::append( cmf::math::integratable::ptr add )
 	m_items.push_back(add);
 }
 
-inline integratable::ptr cmf::math::integratable_list::operator[]( int index ) const
-{
-	return m_items.at(index < 0 ? index+size() : index);
-}
 
 cmf::math::num_array cmf::math::integratable_list::avg() const
 {
