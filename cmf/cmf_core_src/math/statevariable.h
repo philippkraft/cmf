@@ -29,6 +29,7 @@
 namespace cmf {
 	/// Contains classes for numerical solving of ODE's
   namespace math {
+	  /*
 	  template<typename _Ty, typename _BaseIterator> class iterable {
 		  _BaseIterator begin,end;
 	  public:
@@ -48,7 +49,7 @@ namespace cmf {
 				  throw std::out_of_range("Iterator has stopped!");
 		  }			
 	  };
-
+*/
 	  /// integration_variable is a functionality for different classes for integrating values over time.
 	  ///
 	  /// Main usage of an integration_variable is the calculation of average fluxes over time e.g.
