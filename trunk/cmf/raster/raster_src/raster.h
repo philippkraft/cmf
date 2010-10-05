@@ -27,7 +27,6 @@
 #include <stdexcept>
 #ifdef _OPENMP
 #  include <omp.h>
-#endif
 /// Holds the statistics for a raster
 struct RasterStatistics
 {			
