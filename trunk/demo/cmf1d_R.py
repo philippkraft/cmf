@@ -86,7 +86,7 @@ def run(until=cmf.year,dt=cmf.day):
         outflow.add(out_integ.avg())
         wetness.append(c.layers.wetness)
         print "%s - %6.2fm3/day (%s/%s)" % (t,outlet(t),ele*cmf.sec,tot*cmf.sec)
-    return outflow,wetness,perc
+    return outflow,wetness
 if "run" in sys.argv:
     outflow,wetness=run(10*cmf.year)
     if pylab:
