@@ -42111,7 +42111,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_RetentionCurve_K(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+SWIGINTERN PyObject *_wrap_RetentionCurve_K__SWIG_0(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   cmf::upslope::RetentionCurve *arg1 = (cmf::upslope::RetentionCurve *) 0 ;
   real arg2 ;
@@ -42119,20 +42119,15 @@ SWIGINTERN PyObject *_wrap_RetentionCurve_K(PyObject *SWIGUNUSEDPARM(self), PyOb
   int res1 = 0 ;
   double val2 ;
   int ecode2 = 0 ;
-  PyObject * obj0 = 0 ;
-  PyObject * obj1 = 0 ;
-  char *  kwnames[] = {
-    (char *) "self",(char *) "wetness", NULL 
-  };
   real result;
   
-  if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"OO:RetentionCurve_K",kwnames,&obj0,&obj1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_cmf__upslope__RetentionCurve, 0 |  0 );
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__upslope__RetentionCurve, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RetentionCurve_K" "', argument " "1"" of type '" "cmf::upslope::RetentionCurve const *""'"); 
   }
   arg1 = reinterpret_cast< cmf::upslope::RetentionCurve * >(argp1);
-  ecode2 = SWIG_AsVal_double(obj1, &val2);
+  ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
   if (!SWIG_IsOK(ecode2)) {
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "RetentionCurve_K" "', argument " "2"" of type '" "real""'");
   } 
@@ -42150,6 +42145,143 @@ SWIGINTERN PyObject *_wrap_RetentionCurve_K(PyObject *SWIGUNUSEDPARM(self), PyOb
   resultobj = SWIG_From_double(static_cast< double >(result));
   return resultobj;
 fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_RetentionCurve_K__SWIG_1(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  cmf::upslope::RetentionCurve *arg1 = (cmf::upslope::RetentionCurve *) 0 ;
+  cmf::math::num_array *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  cmf::math::num_array result;
+  
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__upslope__RetentionCurve, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RetentionCurve_K" "', argument " "1"" of type '" "cmf::upslope::RetentionCurve const *""'"); 
+  }
+  arg1 = reinterpret_cast< cmf::upslope::RetentionCurve * >(argp1);
+  {
+    // Convert a array_wrapper from numpy array
+    double * data=0;
+    size_t size = from_npy_array(swig_obj[1],&data); 
+    if (!data) {
+      SWIG_exception_fail(SWIG_TypeError,"Input data is not 'array-like' (in the sense of numpy arrays)");
+      return NULL;
+    }
+    arg2 = new cmf::math::num_array(data,size);
+  }
+  {
+    try {
+      result = ((cmf::upslope::RetentionCurve const *)arg1)->K((cmf::math::num_array const &)*arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+    
+  }
+  {
+    resultobj = as_npy_array(result);
+  }
+  {
+    delete arg2;
+  }
+  return resultobj;
+fail:
+  {
+    delete arg2;
+  }
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_RetentionCurve_K(PyObject *self, PyObject *args) {
+  int argc;
+  PyObject *argv[3];
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args,"RetentionCurve_K",0,2,argv))) SWIG_fail;
+  --argc;
+  {
+    unsigned long _index = 0;
+    SWIG_TypeRank _rank = 0; 
+    if (argc == 2) {
+      SWIG_TypeRank _ranki = 0;
+      SWIG_TypeRank _rankm = 0;
+      SWIG_TypeRank _pi = 1;
+      int _v = 0;
+      {
+        void *vptr = 0;
+        int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_cmf__upslope__RetentionCurve, 0);
+        _v = SWIG_CheckState(res);
+      }
+      if (!_v) goto check_1;
+      _ranki += _v*_pi;
+      _rankm += _pi;
+      _pi *= SWIG_MAXCASTRANK;
+      {
+        {
+          _v = test_npy_array(argv[1]);
+        }
+      }
+      if (!_v) goto check_1;
+      _ranki += _v*_pi;
+      _rankm += _pi;
+      _pi *= SWIG_MAXCASTRANK;
+      if (!_index || (_ranki < _rank)) {
+        _rank = _ranki; _index = 1;
+        if (_rank == _rankm) goto dispatch;
+      }
+    }
+  check_1:
+    
+    if (argc == 2) {
+      SWIG_TypeRank _ranki = 0;
+      SWIG_TypeRank _rankm = 0;
+      SWIG_TypeRank _pi = 1;
+      int _v = 0;
+      {
+        void *vptr = 0;
+        int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_cmf__upslope__RetentionCurve, 0);
+        _v = SWIG_CheckState(res);
+      }
+      if (!_v) goto check_2;
+      _ranki += _v*_pi;
+      _rankm += _pi;
+      _pi *= SWIG_MAXCASTRANK;
+      {
+        {
+          int res = SWIG_AsVal_double(argv[1], NULL);
+          _v = SWIG_CheckState(res);
+        }
+      }
+      if (!_v) goto check_2;
+      _ranki += _v*_pi;
+      _rankm += _pi;
+      _pi *= SWIG_MAXCASTRANK;
+      if (!_index || (_ranki < _rank)) {
+        _rank = _ranki; _index = 2;
+        if (_rank == _rankm) goto dispatch;
+      }
+    }
+  check_2:
+    
+  dispatch:
+    switch(_index) {
+    case 1:
+      return _wrap_RetentionCurve_K__SWIG_1(self, argc, argv);
+    case 2:
+      return _wrap_RetentionCurve_K__SWIG_0(self, argc, argv);
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number of arguments for overloaded function 'RetentionCurve_K'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    K(cmf::upslope::RetentionCurve const *,real)\n"
+    "    K(cmf::upslope::RetentionCurve const *,cmf::math::num_array const &)\n");
   return NULL;
 }
 
@@ -42373,7 +42505,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_RetentionCurve_Wetness(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+SWIGINTERN PyObject *_wrap_RetentionCurve_Wetness__SWIG_0(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   cmf::upslope::RetentionCurve *arg1 = (cmf::upslope::RetentionCurve *) 0 ;
   real arg2 ;
@@ -42381,20 +42513,15 @@ SWIGINTERN PyObject *_wrap_RetentionCurve_Wetness(PyObject *SWIGUNUSEDPARM(self)
   int res1 = 0 ;
   double val2 ;
   int ecode2 = 0 ;
-  PyObject * obj0 = 0 ;
-  PyObject * obj1 = 0 ;
-  char *  kwnames[] = {
-    (char *) "self",(char *) "suction", NULL 
-  };
   real result;
   
-  if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"OO:RetentionCurve_Wetness",kwnames,&obj0,&obj1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_cmf__upslope__RetentionCurve, 0 |  0 );
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__upslope__RetentionCurve, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RetentionCurve_Wetness" "', argument " "1"" of type '" "cmf::upslope::RetentionCurve const *""'"); 
   }
   arg1 = reinterpret_cast< cmf::upslope::RetentionCurve * >(argp1);
-  ecode2 = SWIG_AsVal_double(obj1, &val2);
+  ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
   if (!SWIG_IsOK(ecode2)) {
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "RetentionCurve_Wetness" "', argument " "2"" of type '" "real""'");
   } 
@@ -42416,7 +42543,144 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_RetentionCurve_Wetness_pF(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+SWIGINTERN PyObject *_wrap_RetentionCurve_Wetness__SWIG_1(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  cmf::upslope::RetentionCurve *arg1 = (cmf::upslope::RetentionCurve *) 0 ;
+  cmf::math::num_array *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  cmf::math::num_array result;
+  
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__upslope__RetentionCurve, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RetentionCurve_Wetness" "', argument " "1"" of type '" "cmf::upslope::RetentionCurve const *""'"); 
+  }
+  arg1 = reinterpret_cast< cmf::upslope::RetentionCurve * >(argp1);
+  {
+    // Convert a array_wrapper from numpy array
+    double * data=0;
+    size_t size = from_npy_array(swig_obj[1],&data); 
+    if (!data) {
+      SWIG_exception_fail(SWIG_TypeError,"Input data is not 'array-like' (in the sense of numpy arrays)");
+      return NULL;
+    }
+    arg2 = new cmf::math::num_array(data,size);
+  }
+  {
+    try {
+      result = ((cmf::upslope::RetentionCurve const *)arg1)->Wetness((cmf::math::num_array const &)*arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+    
+  }
+  {
+    resultobj = as_npy_array(result);
+  }
+  {
+    delete arg2;
+  }
+  return resultobj;
+fail:
+  {
+    delete arg2;
+  }
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_RetentionCurve_Wetness(PyObject *self, PyObject *args) {
+  int argc;
+  PyObject *argv[3];
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args,"RetentionCurve_Wetness",0,2,argv))) SWIG_fail;
+  --argc;
+  {
+    unsigned long _index = 0;
+    SWIG_TypeRank _rank = 0; 
+    if (argc == 2) {
+      SWIG_TypeRank _ranki = 0;
+      SWIG_TypeRank _rankm = 0;
+      SWIG_TypeRank _pi = 1;
+      int _v = 0;
+      {
+        void *vptr = 0;
+        int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_cmf__upslope__RetentionCurve, 0);
+        _v = SWIG_CheckState(res);
+      }
+      if (!_v) goto check_1;
+      _ranki += _v*_pi;
+      _rankm += _pi;
+      _pi *= SWIG_MAXCASTRANK;
+      {
+        {
+          _v = test_npy_array(argv[1]);
+        }
+      }
+      if (!_v) goto check_1;
+      _ranki += _v*_pi;
+      _rankm += _pi;
+      _pi *= SWIG_MAXCASTRANK;
+      if (!_index || (_ranki < _rank)) {
+        _rank = _ranki; _index = 1;
+        if (_rank == _rankm) goto dispatch;
+      }
+    }
+  check_1:
+    
+    if (argc == 2) {
+      SWIG_TypeRank _ranki = 0;
+      SWIG_TypeRank _rankm = 0;
+      SWIG_TypeRank _pi = 1;
+      int _v = 0;
+      {
+        void *vptr = 0;
+        int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_cmf__upslope__RetentionCurve, 0);
+        _v = SWIG_CheckState(res);
+      }
+      if (!_v) goto check_2;
+      _ranki += _v*_pi;
+      _rankm += _pi;
+      _pi *= SWIG_MAXCASTRANK;
+      {
+        {
+          int res = SWIG_AsVal_double(argv[1], NULL);
+          _v = SWIG_CheckState(res);
+        }
+      }
+      if (!_v) goto check_2;
+      _ranki += _v*_pi;
+      _rankm += _pi;
+      _pi *= SWIG_MAXCASTRANK;
+      if (!_index || (_ranki < _rank)) {
+        _rank = _ranki; _index = 2;
+        if (_rank == _rankm) goto dispatch;
+      }
+    }
+  check_2:
+    
+  dispatch:
+    switch(_index) {
+    case 1:
+      return _wrap_RetentionCurve_Wetness__SWIG_1(self, argc, argv);
+    case 2:
+      return _wrap_RetentionCurve_Wetness__SWIG_0(self, argc, argv);
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number of arguments for overloaded function 'RetentionCurve_Wetness'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    Wetness(cmf::upslope::RetentionCurve const *,real)\n"
+    "    Wetness(cmf::upslope::RetentionCurve const *,cmf::math::num_array const &)\n");
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_RetentionCurve_Wetness_pF__SWIG_0(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   cmf::upslope::RetentionCurve *arg1 = (cmf::upslope::RetentionCurve *) 0 ;
   real arg2 ;
@@ -42424,20 +42688,15 @@ SWIGINTERN PyObject *_wrap_RetentionCurve_Wetness_pF(PyObject *SWIGUNUSEDPARM(se
   int res1 = 0 ;
   double val2 ;
   int ecode2 = 0 ;
-  PyObject * obj0 = 0 ;
-  PyObject * obj1 = 0 ;
-  char *  kwnames[] = {
-    (char *) "self",(char *) "pF", NULL 
-  };
   real result;
   
-  if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"OO:RetentionCurve_Wetness_pF",kwnames,&obj0,&obj1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_cmf__upslope__RetentionCurve, 0 |  0 );
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__upslope__RetentionCurve, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RetentionCurve_Wetness_pF" "', argument " "1"" of type '" "cmf::upslope::RetentionCurve const *""'"); 
   }
   arg1 = reinterpret_cast< cmf::upslope::RetentionCurve * >(argp1);
-  ecode2 = SWIG_AsVal_double(obj1, &val2);
+  ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
   if (!SWIG_IsOK(ecode2)) {
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "RetentionCurve_Wetness_pF" "', argument " "2"" of type '" "real""'");
   } 
@@ -42459,7 +42718,144 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_RetentionCurve_MatricPotential(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+SWIGINTERN PyObject *_wrap_RetentionCurve_Wetness_pF__SWIG_1(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  cmf::upslope::RetentionCurve *arg1 = (cmf::upslope::RetentionCurve *) 0 ;
+  cmf::math::num_array *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  cmf::math::num_array result;
+  
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__upslope__RetentionCurve, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RetentionCurve_Wetness_pF" "', argument " "1"" of type '" "cmf::upslope::RetentionCurve const *""'"); 
+  }
+  arg1 = reinterpret_cast< cmf::upslope::RetentionCurve * >(argp1);
+  {
+    // Convert a array_wrapper from numpy array
+    double * data=0;
+    size_t size = from_npy_array(swig_obj[1],&data); 
+    if (!data) {
+      SWIG_exception_fail(SWIG_TypeError,"Input data is not 'array-like' (in the sense of numpy arrays)");
+      return NULL;
+    }
+    arg2 = new cmf::math::num_array(data,size);
+  }
+  {
+    try {
+      result = ((cmf::upslope::RetentionCurve const *)arg1)->Wetness_pF((cmf::math::num_array const &)*arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+    
+  }
+  {
+    resultobj = as_npy_array(result);
+  }
+  {
+    delete arg2;
+  }
+  return resultobj;
+fail:
+  {
+    delete arg2;
+  }
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_RetentionCurve_Wetness_pF(PyObject *self, PyObject *args) {
+  int argc;
+  PyObject *argv[3];
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args,"RetentionCurve_Wetness_pF",0,2,argv))) SWIG_fail;
+  --argc;
+  {
+    unsigned long _index = 0;
+    SWIG_TypeRank _rank = 0; 
+    if (argc == 2) {
+      SWIG_TypeRank _ranki = 0;
+      SWIG_TypeRank _rankm = 0;
+      SWIG_TypeRank _pi = 1;
+      int _v = 0;
+      {
+        void *vptr = 0;
+        int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_cmf__upslope__RetentionCurve, 0);
+        _v = SWIG_CheckState(res);
+      }
+      if (!_v) goto check_1;
+      _ranki += _v*_pi;
+      _rankm += _pi;
+      _pi *= SWIG_MAXCASTRANK;
+      {
+        {
+          _v = test_npy_array(argv[1]);
+        }
+      }
+      if (!_v) goto check_1;
+      _ranki += _v*_pi;
+      _rankm += _pi;
+      _pi *= SWIG_MAXCASTRANK;
+      if (!_index || (_ranki < _rank)) {
+        _rank = _ranki; _index = 1;
+        if (_rank == _rankm) goto dispatch;
+      }
+    }
+  check_1:
+    
+    if (argc == 2) {
+      SWIG_TypeRank _ranki = 0;
+      SWIG_TypeRank _rankm = 0;
+      SWIG_TypeRank _pi = 1;
+      int _v = 0;
+      {
+        void *vptr = 0;
+        int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_cmf__upslope__RetentionCurve, 0);
+        _v = SWIG_CheckState(res);
+      }
+      if (!_v) goto check_2;
+      _ranki += _v*_pi;
+      _rankm += _pi;
+      _pi *= SWIG_MAXCASTRANK;
+      {
+        {
+          int res = SWIG_AsVal_double(argv[1], NULL);
+          _v = SWIG_CheckState(res);
+        }
+      }
+      if (!_v) goto check_2;
+      _ranki += _v*_pi;
+      _rankm += _pi;
+      _pi *= SWIG_MAXCASTRANK;
+      if (!_index || (_ranki < _rank)) {
+        _rank = _ranki; _index = 2;
+        if (_rank == _rankm) goto dispatch;
+      }
+    }
+  check_2:
+    
+  dispatch:
+    switch(_index) {
+    case 1:
+      return _wrap_RetentionCurve_Wetness_pF__SWIG_1(self, argc, argv);
+    case 2:
+      return _wrap_RetentionCurve_Wetness_pF__SWIG_0(self, argc, argv);
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number of arguments for overloaded function 'RetentionCurve_Wetness_pF'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    Wetness_pF(cmf::upslope::RetentionCurve const *,real)\n"
+    "    Wetness_pF(cmf::upslope::RetentionCurve const *,cmf::math::num_array const &)\n");
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_RetentionCurve_MatricPotential__SWIG_0(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   cmf::upslope::RetentionCurve *arg1 = (cmf::upslope::RetentionCurve *) 0 ;
   real arg2 ;
@@ -42467,20 +42863,15 @@ SWIGINTERN PyObject *_wrap_RetentionCurve_MatricPotential(PyObject *SWIGUNUSEDPA
   int res1 = 0 ;
   double val2 ;
   int ecode2 = 0 ;
-  PyObject * obj0 = 0 ;
-  PyObject * obj1 = 0 ;
-  char *  kwnames[] = {
-    (char *) "self",(char *) "wetness", NULL 
-  };
   real result;
   
-  if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"OO:RetentionCurve_MatricPotential",kwnames,&obj0,&obj1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_cmf__upslope__RetentionCurve, 0 |  0 );
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__upslope__RetentionCurve, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RetentionCurve_MatricPotential" "', argument " "1"" of type '" "cmf::upslope::RetentionCurve const *""'"); 
   }
   arg1 = reinterpret_cast< cmf::upslope::RetentionCurve * >(argp1);
-  ecode2 = SWIG_AsVal_double(obj1, &val2);
+  ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
   if (!SWIG_IsOK(ecode2)) {
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "RetentionCurve_MatricPotential" "', argument " "2"" of type '" "real""'");
   } 
@@ -42498,6 +42889,143 @@ SWIGINTERN PyObject *_wrap_RetentionCurve_MatricPotential(PyObject *SWIGUNUSEDPA
   resultobj = SWIG_From_double(static_cast< double >(result));
   return resultobj;
 fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_RetentionCurve_MatricPotential__SWIG_1(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  cmf::upslope::RetentionCurve *arg1 = (cmf::upslope::RetentionCurve *) 0 ;
+  cmf::math::num_array *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  cmf::math::num_array result;
+  
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__upslope__RetentionCurve, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RetentionCurve_MatricPotential" "', argument " "1"" of type '" "cmf::upslope::RetentionCurve const *""'"); 
+  }
+  arg1 = reinterpret_cast< cmf::upslope::RetentionCurve * >(argp1);
+  {
+    // Convert a array_wrapper from numpy array
+    double * data=0;
+    size_t size = from_npy_array(swig_obj[1],&data); 
+    if (!data) {
+      SWIG_exception_fail(SWIG_TypeError,"Input data is not 'array-like' (in the sense of numpy arrays)");
+      return NULL;
+    }
+    arg2 = new cmf::math::num_array(data,size);
+  }
+  {
+    try {
+      result = ((cmf::upslope::RetentionCurve const *)arg1)->MatricPotential((cmf::math::num_array const &)*arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+    
+  }
+  {
+    resultobj = as_npy_array(result);
+  }
+  {
+    delete arg2;
+  }
+  return resultobj;
+fail:
+  {
+    delete arg2;
+  }
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_RetentionCurve_MatricPotential(PyObject *self, PyObject *args) {
+  int argc;
+  PyObject *argv[3];
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args,"RetentionCurve_MatricPotential",0,2,argv))) SWIG_fail;
+  --argc;
+  {
+    unsigned long _index = 0;
+    SWIG_TypeRank _rank = 0; 
+    if (argc == 2) {
+      SWIG_TypeRank _ranki = 0;
+      SWIG_TypeRank _rankm = 0;
+      SWIG_TypeRank _pi = 1;
+      int _v = 0;
+      {
+        void *vptr = 0;
+        int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_cmf__upslope__RetentionCurve, 0);
+        _v = SWIG_CheckState(res);
+      }
+      if (!_v) goto check_1;
+      _ranki += _v*_pi;
+      _rankm += _pi;
+      _pi *= SWIG_MAXCASTRANK;
+      {
+        {
+          _v = test_npy_array(argv[1]);
+        }
+      }
+      if (!_v) goto check_1;
+      _ranki += _v*_pi;
+      _rankm += _pi;
+      _pi *= SWIG_MAXCASTRANK;
+      if (!_index || (_ranki < _rank)) {
+        _rank = _ranki; _index = 1;
+        if (_rank == _rankm) goto dispatch;
+      }
+    }
+  check_1:
+    
+    if (argc == 2) {
+      SWIG_TypeRank _ranki = 0;
+      SWIG_TypeRank _rankm = 0;
+      SWIG_TypeRank _pi = 1;
+      int _v = 0;
+      {
+        void *vptr = 0;
+        int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_cmf__upslope__RetentionCurve, 0);
+        _v = SWIG_CheckState(res);
+      }
+      if (!_v) goto check_2;
+      _ranki += _v*_pi;
+      _rankm += _pi;
+      _pi *= SWIG_MAXCASTRANK;
+      {
+        {
+          int res = SWIG_AsVal_double(argv[1], NULL);
+          _v = SWIG_CheckState(res);
+        }
+      }
+      if (!_v) goto check_2;
+      _ranki += _v*_pi;
+      _rankm += _pi;
+      _pi *= SWIG_MAXCASTRANK;
+      if (!_index || (_ranki < _rank)) {
+        _rank = _ranki; _index = 2;
+        if (_rank == _rankm) goto dispatch;
+      }
+    }
+  check_2:
+    
+  dispatch:
+    switch(_index) {
+    case 1:
+      return _wrap_RetentionCurve_MatricPotential__SWIG_1(self, argc, argv);
+    case 2:
+      return _wrap_RetentionCurve_MatricPotential__SWIG_0(self, argc, argv);
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number of arguments for overloaded function 'RetentionCurve_MatricPotential'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    MatricPotential(cmf::upslope::RetentionCurve const *,real)\n"
+    "    MatricPotential(cmf::upslope::RetentionCurve const *,cmf::math::num_array const &)\n");
   return NULL;
 }
 
@@ -63780,8 +64308,9 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"waterhead_to_pressure", (PyCFunction) _wrap_waterhead_to_pressure, METH_VARARGS | METH_KEYWORDS, (char *)"waterhead_to_pressure(double waterhead) -> double"},
 	 { (char *)"pF_to_waterhead", (PyCFunction) _wrap_pF_to_waterhead, METH_VARARGS | METH_KEYWORDS, (char *)"pF_to_waterhead(double pF) -> double"},
 	 { (char *)"waterhead_to_pF", (PyCFunction) _wrap_waterhead_to_pF, METH_VARARGS | METH_KEYWORDS, (char *)"waterhead_to_pF(double waterhead) -> double"},
-	 { (char *)"RetentionCurve_K", (PyCFunction) _wrap_RetentionCurve_K, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
-		"RetentionCurve_K(RetentionCurve self, real wetness) -> real\n"
+	 { (char *)"RetentionCurve_K", _wrap_RetentionCurve_K, METH_VARARGS, (char *)"\n"
+		"K(real wetness) -> real\n"
+		"RetentionCurve_K(RetentionCurve self, cmf::math::num_array wetness) -> cmf::math::num_array\n"
 		"\n"
 		"virtual real\n"
 		"K(real wetness) const =0\n"
@@ -63822,8 +64351,9 @@ static PyMethodDef SwigMethods[] = {
 		"\n"
 		"Returns the thickness of a soil column with a certain pore volume. \n"
 		""},
-	 { (char *)"RetentionCurve_Wetness", (PyCFunction) _wrap_RetentionCurve_Wetness, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
-		"RetentionCurve_Wetness(RetentionCurve self, real suction) -> real\n"
+	 { (char *)"RetentionCurve_Wetness", _wrap_RetentionCurve_Wetness, METH_VARARGS, (char *)"\n"
+		"Wetness(real suction) -> real\n"
+		"RetentionCurve_Wetness(RetentionCurve self, cmf::math::num_array suction) -> cmf::math::num_array\n"
 		"\n"
 		"virtual\n"
 		"real Wetness(real suction) const\n"
@@ -63831,16 +64361,18 @@ static PyMethodDef SwigMethods[] = {
 		"returns the wetness (volumetric water content per pore space) at a\n"
 		"given suction pressure \n"
 		""},
-	 { (char *)"RetentionCurve_Wetness_pF", (PyCFunction) _wrap_RetentionCurve_Wetness_pF, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
-		"RetentionCurve_Wetness_pF(RetentionCurve self, real pF) -> real\n"
+	 { (char *)"RetentionCurve_Wetness_pF", _wrap_RetentionCurve_Wetness_pF, METH_VARARGS, (char *)"\n"
+		"Wetness_pF(real pF) -> real\n"
+		"RetentionCurve_Wetness_pF(RetentionCurve self, cmf::math::num_array pF) -> cmf::math::num_array\n"
 		"\n"
 		"real\n"
 		"Wetness_pF(real pF) const\n"
 		"\n"
 		"returns the volumetric water content at a given pF value \n"
 		""},
-	 { (char *)"RetentionCurve_MatricPotential", (PyCFunction) _wrap_RetentionCurve_MatricPotential, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
-		"RetentionCurve_MatricPotential(RetentionCurve self, real wetness) -> real\n"
+	 { (char *)"RetentionCurve_MatricPotential", _wrap_RetentionCurve_MatricPotential, METH_VARARGS, (char *)"\n"
+		"MatricPotential(real wetness) -> real\n"
+		"RetentionCurve_MatricPotential(RetentionCurve self, cmf::math::num_array wetness) -> cmf::math::num_array\n"
 		"\n"
 		"virtual real MatricPotential(real wetness) const\n"
 		"\n"
