@@ -22,6 +22,7 @@
 #include <vector>
 #include <stdexcept>
 #include <tr1/memory>
+#include "../../math/num_array.h"
 namespace cmf {
 	namespace upslope {
 		const double rho_wg=9810; // Pa/m
@@ -42,7 +43,16 @@ namespace cmf {
 		class RetentionCurve {
 		public:
 			/// Returns the conductivity in m/day at a certain depth and water content
-			virtual real K(real wetness) const = 0;
+			virtual real K(real wetness) const {
+				throw std::runtime_error("This retention curve type can't calculate conductivity (K), choose another type");
+			}
+			cmf::math::num_array K(const cmf::math::num_array& wetness) const {
+				cmf::math::num_array res(wetness.size());
+				for (int i = 0; i < wetness.size() ; ++i)
+					res[i] = K(wetness[i]);
+				return res;
+			}
+
 			/// Returns the effective wetness, using a residual pF value
 			/// \f[w_{eff}  = \frac{w_{act}-w\left(pF_r\right)}{1-w\left(pF_r\right)}\f]
 			virtual real Wetness_eff(real wetness,real pF_r=4.2) const
@@ -64,12 +74,31 @@ namespace cmf {
 			virtual real Wetness(real suction) const {
 				throw std::runtime_error("This retention curve type can't calculate the Wetness from a suction pressure, choose another type");
 			};
+			cmf::math::num_array Wetness(const cmf::math::num_array& suction) const {
+				cmf::math::num_array res(suction.size());
+				for (int i = 0; i < suction.size() ; ++i)
+					res[i] = Wetness(suction[i]);
+				return res;
+			}
 			/// returns the volumetric water content at a given pF value
 			real Wetness_pF(real pF) const {return Wetness(pF_to_waterhead(pF));}
+			cmf::math::num_array Wetness_pF(const cmf::math::num_array& pF) const {
+				cmf::math::num_array res(pF.size());
+				for (int i = 0; i < pF.size() ; ++i)
+					res[i] = Wetness_pF(pF[i]);
+				return res;
+			}
 			/// returns the wetness of the soil at given water content
 			virtual real MatricPotential(real wetness) const {
 				throw std::runtime_error("This retention curve type can't calculate the matrix potential for a wetness, choose another type");
 			};
+			cmf::math::num_array MatricPotential(const cmf::math::num_array& wetness) const {
+				cmf::math::num_array res(wetness.size());
+				for (int i = 0; i < wetness.size() ; ++i)
+					res[i] = MatricPotential(wetness[i]);
+				return res;
+			
+			}
 			virtual RetentionCurve* copy() const=0;
 		};
 		/// Provides the use of the Brooks-Corey retention curve

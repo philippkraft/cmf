@@ -77,7 +77,7 @@ def make_cmf_core():
     libraries=None
     if msvc:
         include_dirs += [boost_path,boost_path+r"\boost\tr1"]
-        compile_args = ["/EHsc",r'/Fd"build\vc90.pdb"',"/D_SCL_SECURE_NO_WARNINGS", "/D_CRT_SECURE_NO_WARNINGS"]
+        compile_args = ["/EHsc",r'/Fd"build\vc90.pdb"',"/D_SCL_SECURE_NO_WARNINGS", "/D_CRT_SECURE_NO_WARNINGS","/MP"]
         if openmp: compile_args.append("/openmp")
         link_args=["/DEBUG"]
     if gcc: 
@@ -112,7 +112,7 @@ def make_raster():
         files=['cmf/raster/raster_src/raster_wrap.cpp']
  
     if msvc: 
-        compile_args = ["/EHsc",r'/Fd"build\vc90.pdb"']
+        compile_args = ["/EHsc",r'/Fd"build\vc90.pdb"',"/MP"]
         if openmp: compile_args.append("/openmp")
         link_args=["/DEBUG"]
         libraries=None

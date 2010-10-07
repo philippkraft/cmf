@@ -21,12 +21,10 @@
 
 #include <cmath>
 #include <iostream>
-#include <stdlib.h>
 #include <string>
-#include <vector>
 #include <stdexcept>
-#include <tr1/memory>
 #include "../math/num_array.h"
+#include "../math/real.h"
 namespace cmf {
 	/// Contains geometric features like point (=location) and raster datasets
 	namespace geometry	{
@@ -56,9 +54,7 @@ namespace cmf {
 				point(double x_,double y_,double z_=0.0);
 				///Returns the horizontal euclidian distance to another point p.
 				/// \f$\sqrt{(this.x-p.x)^2+(this.y-p.y)^2}\f$
-				double distanceTo(point p) const { 
-					return sqrt((x-p.x)*(x-p.x)+(y-p.y)*(y-p.y));
-				}
+				double distanceTo(point p) const;
 				/// Returns the horizontal euclidian distance plus the absolute of the height difference times a factor.
 				/// \f$\sqrt{(this.x-p.x)^2+(this.y-p.y)^2}\ +\ w_{z}|this.z-p.z|\f$
 				double z_weight_distance(point p,double z_weight) const {

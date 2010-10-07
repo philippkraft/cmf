@@ -88,7 +88,7 @@ solver=cmf.CVodeIntegrator(p,1e-6)
 solver.t=cmf.Time(1,1,1980)
 # Integrates the waterbalance over each internal substep
 out_integ=cmf.waterbalance_integrator(outlet)
-solver.add_integratable(out_integ)
+solver.integratables.append(out_integ)
 def run(until=cmf.year,dt=cmf.day):
     sw=cmf.StopWatch(solver.t,solver.t+until if until<solver.t else until)
     outflow = cmf.timeseries(solver.t,dt)

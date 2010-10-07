@@ -22,6 +22,16 @@
 #include <string>
 #include <sstream>
 #define sqr(x) ((x)*(x))
+
+#include <limits>
+inline bool isfinite(real v)
+{
+	typedef  std::numeric_limits<real> limit;
+	return 
+		v != limit::infinity() &&
+		v != -limit::infinity() &&
+		v == v;
+}
 namespace cmf {
 	namespace geometry	{
 		point::point():x(0.0),y(0.0),z(0.0) {}
@@ -56,6 +66,11 @@ namespace cmf {
 		double point::length() const
 		{
 			return sqrt(sqr(x)+sqr(y)+sqr(z));
+		}
+
+		double point::distanceTo( point p ) const
+		{
+			return sqrt(sqr(x-p.x)+sqr(y-p.y));
 		}
 		cmf::geometry::point operator*( double d,const point &p )
 		{

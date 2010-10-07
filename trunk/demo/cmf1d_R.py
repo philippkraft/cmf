@@ -5,7 +5,13 @@ This file creates a single cell to calculate a soil column using a 1D Richards e
 """
 import cmf
 import sys
-from pylab import *
+try:
+    if "noshow" in sys.argv:
+        raise ImportError()
+    else:
+        import pylab
+except ImportError:
+    pylab=None
 
 def load_meteo(project):
     # Load rain timeseries (doubled rain of giessen for more intersting results)
@@ -30,7 +36,7 @@ def load_meteo(project):
 
 # Create a retention curve (used for the whole profile)
 def soiltype(depth):
-    return cmf.BrooksCoreyRetentionCurve(ksat=15*exp(-d),
+    return cmf.BrooksCoreyRetentionCurve(ksat=15*pylab.exp(-d),
                                          porosity=0.5,
                                          _b=5.5,
                                          theta_x=0.35)
@@ -67,7 +73,7 @@ solver=cmf.CVodeIntegrator(p,1e-6)
 solver.t=cmf.Time(1,1,1980)
 # Integrates the waterbalance over each internal substep
 out_integ=cmf.waterbalance_integrator(outlet)
-solver.add_integratable(out_integ)
+solver.integratables.append(out_integ)
 
 def run(until=cmf.year,dt=cmf.day):
     """Runs a the model, and saves the outflow"""
