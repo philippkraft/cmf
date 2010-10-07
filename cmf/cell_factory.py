@@ -21,6 +21,7 @@ import cmf_core as cmf
 #from raster import Raster
 import maps
 import time
+from math import *
 class Geometry:
     def __init__(self):
         self.__dict={}

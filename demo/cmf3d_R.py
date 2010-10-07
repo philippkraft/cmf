@@ -71,7 +71,7 @@ outlet=p.NewOutlet('outlet',outcell.x-10, outcell.y-10, outcell.z-.3)
 p[0].connect_soil_with_node(outlet,cmf.Richards_lateral,10.0,5.0)
 # Connect outlet to surfacewater (overbank flow)
 cmf.Manning_Kinematic(p[0].surfacewater, outlet, 
-                      cmf.Channel('R',celllength,celllength))
+                      cmf.Channel('R',*dem.cellsize))
 load_meteo(p)
 # Make solver
 solver=cmf.CVodeIntegrator(p,1e-6)

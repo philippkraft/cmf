@@ -12,7 +12,7 @@ try:
         import pylab
 except ImportError:
     pylab=None
-
+from math import exp
 def load_meteo(project):
     # Load rain timeseries (doubled rain of giessen for more intersting results)
     rain=cmf.timeseries.from_file('giessen.rain')
@@ -36,7 +36,7 @@ def load_meteo(project):
 
 # Create a retention curve (used for the whole profile)
 def soiltype(depth):
-    return cmf.BrooksCoreyRetentionCurve(ksat=15*pylab.exp(-d),
+    return cmf.BrooksCoreyRetentionCurve(ksat=15*exp(-d),
                                          porosity=0.5,
                                          _b=5.5,
                                          theta_x=0.35)
@@ -83,16 +83,17 @@ def run(until=cmf.year,dt=cmf.day):
     until = until if until>solver.t else solver.t+until
     for t in solver.run(solver.t,until,dt):
         ele,tot,rem= sw(t)
-        outflow.add(outlet(t))
+        outflow.add(out_integ.avg())
         wetness.append(c.layers.wetness)
         print "%s - %6.2fm3/day (%s/%s)" % (t,outlet(t),ele*cmf.sec,tot*cmf.sec)
-    return outflow,wetness
+    return outflow,wetness,perc
 if "run" in sys.argv:
-    outflow,wetness=run(2*cmf.year)
+    outflow,wetness=run(10*cmf.year)
     if pylab:
         from pylab import *
         subplot(211)
         cmf.draw.plot_timeseries(outflow)
+        cmf.draw.plot_timeseries(perc)
         axis('tight')
         subplot(212)
         wetness=array(wetness)
