@@ -235,18 +235,18 @@ cmf::atmosphere::MeteoStation::MeteoStation( double latitude/*=51*/,double longi
 	Windspeed(startTime,timestep,1),
 	rHmean(startTime,timestep,1),rHmax(startTime,timestep,1),rHmin(startTime,timestep,1),
 	Tdew(startTime,timestep,1),Sunshine(startTime,timestep,1),Tground(startTime,timestep,1),
-	Rs(startTime,timestep,1),T_lapse(startTime,timestep,1), InstrumentHeight(2)
+	Rs(startTime,timestep,1),T_lapse(startTime,timestep,1), InstrumentHeight(2),x(0),y(0)
 {
 	Name=name;
 }
 
 cmf::atmosphere::MeteoStation::MeteoStation( const cmf::atmosphere::MeteoStation& other )
-:	Latitude(other.Latitude),Longitude(other.Longitude),Timezone(other.Timezone),z(other.z),daily(other.daily),
+:	Latitude(other.Latitude),Longitude(other.Longitude),Timezone(other.Timezone),daily(other.daily),
 	Tmax(other.Tmax),Tmin(other.Tmin),T(other.T),
 	Windspeed(other.Windspeed),
 	rHmean(other.rHmean),rHmax(other.rHmax),rHmin(other.rHmin),
 	Tdew(other.Tdew),Sunshine(other.Sunshine),Rs(other.Rs),Tground(other.Tground),
-	T_lapse(other.T_lapse),InstrumentHeight(other.InstrumentHeight)
+	T_lapse(other.T_lapse),InstrumentHeight(other.InstrumentHeight),x(other.x),y(other.y),z(other.z)
 {
 	Name=other.Name;
 }
@@ -304,12 +304,12 @@ double cmf::atmosphere::MeteoStationList::calculate_Temp_lapse( cmf::math::Time 
 
 cmf::atmosphere::MeteoStationReference cmf::atmosphere::MeteoStationList::reference_to_nearest( const cmf::geometry::point& p,double z_weight/*=0*/ ) const
 {
-	if (!size()) throw std::out_of_range("No stations in list");
+	if (m_stations.size() == 0) throw std::out_of_range("No stations in list");
 	MeteoStation::ptr nearest;
 	double min_dist=1e300;
 	for(vector::const_iterator it = m_stations.begin(); it != m_stations.end(); ++it)
 	{
-		const MeteoStation::ptr& station=*it;
+		MeteoStation::ptr station=*it;
 		double dist=p.z_weight_distance(station->get_position(),z_weight);
 		if (dist<min_dist)
 		{
@@ -317,7 +317,7 @@ cmf::atmosphere::MeteoStationReference cmf::atmosphere::MeteoStationList::refere
 			nearest=station;
 		}
 	}
-	if (nearest)
+	if (nearest!=0)
 		return MeteoStationReference(nearest,p);
 	else
 		throw std::runtime_error("No station found");

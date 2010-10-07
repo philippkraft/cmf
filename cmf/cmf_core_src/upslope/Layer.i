@@ -38,7 +38,7 @@
 {
     %pythoncode {
     def __repr__(self):
-        return "VanGenuchten-Mualem (Ksat=%g,porosity=%g,alpha=%g, n=%g)" % (self.K(1,0),self.Porosity(0),self.alpha,self.n)
+        return "VanGenuchten-Mualem (Ksat=%g,por.=%0.0f%%,alpha=%g 1/cm, n=%g)" % (self.K(1),self.Porosity(0)*100,self.alpha,self.n)
     }
 }
 

@@ -19,8 +19,8 @@
 #include "timeseries.h"
 #include <cmath>
 #include "real.h"
-#include <limits>
 #include <stdexcept>
+#include <limits>
 inline bool isfinite(real v)
 {
 	typedef  std::numeric_limits<real> limit;
@@ -570,10 +570,16 @@ double cmf::math::R2( const cmf::math::timeseries& model,const cmf::math::timese
 	cmf::math::Time begin=std::max(model.begin(),observation.begin());
 	cmf::math::Time end=std::min(model.begin(),observation.begin());
 	cmf::math::Time step=std::max(model.begin(),observation.begin());
+	double model_t, obs_t;
 	for (cmf::math::Time t=begin;t<=end;t+=step)
 	{
-		numerator+=square(model[t]-mean_y);
-		denominator=square(observation[t]-mean_y);
+		model_t = model[t];
+		obs_t  = observation[t];
+		if (isfinite(model_t) && isfinite(obs_t))
+		{
+			numerator+=square(model_t-mean_y);
+			denominator=square(obs_t-mean_y);
+		}
 	}
 	return numerator/denominator;
 

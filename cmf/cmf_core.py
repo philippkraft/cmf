@@ -5695,9 +5695,10 @@ class RetentionCurve(object):
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
     def __init__(self, *args, **kwargs): raise AttributeError("No constructor defined - class is abstract")
     __repr__ = _swig_repr
-    def K(self, *args, **kwargs):
+    def K(self, *args):
         """
         K(self, real wetness) -> real
+        K(self, cmf::math::num_array wetness) -> cmf::math::num_array
 
         virtual real
         K(real wetness) const =0
@@ -5705,7 +5706,7 @@ class RetentionCurve(object):
         Returns the conductivity in m/day at a certain depth and water
         content. 
         """
-        return _cmf_core.RetentionCurve_K(self, *args, **kwargs)
+        return _cmf_core.RetentionCurve_K(self, *args)
 
     def Wetness_eff(self, *args, **kwargs):
         """
@@ -5751,9 +5752,10 @@ class RetentionCurve(object):
         """
         return _cmf_core.RetentionCurve_FillHeight(self, *args, **kwargs)
 
-    def Wetness(self, *args, **kwargs):
+    def Wetness(self, *args):
         """
         Wetness(self, real suction) -> real
+        Wetness(self, cmf::math::num_array suction) -> cmf::math::num_array
 
         virtual
         real Wetness(real suction) const
@@ -5761,28 +5763,30 @@ class RetentionCurve(object):
         returns the wetness (volumetric water content per pore space) at a
         given suction pressure 
         """
-        return _cmf_core.RetentionCurve_Wetness(self, *args, **kwargs)
+        return _cmf_core.RetentionCurve_Wetness(self, *args)
 
-    def Wetness_pF(self, *args, **kwargs):
+    def Wetness_pF(self, *args):
         """
         Wetness_pF(self, real pF) -> real
+        Wetness_pF(self, cmf::math::num_array pF) -> cmf::math::num_array
 
         real
         Wetness_pF(real pF) const
 
         returns the volumetric water content at a given pF value 
         """
-        return _cmf_core.RetentionCurve_Wetness_pF(self, *args, **kwargs)
+        return _cmf_core.RetentionCurve_Wetness_pF(self, *args)
 
-    def MatricPotential(self, *args, **kwargs):
+    def MatricPotential(self, *args):
         """
         MatricPotential(self, real wetness) -> real
+        MatricPotential(self, cmf::math::num_array wetness) -> cmf::math::num_array
 
         virtual real MatricPotential(real wetness) const
 
         returns the wetness of the soil at given water content 
         """
-        return _cmf_core.RetentionCurve_MatricPotential(self, *args, **kwargs)
+        return _cmf_core.RetentionCurve_MatricPotential(self, *args)
 
     def copy(self, *args, **kwargs):
         """
@@ -6010,7 +6014,7 @@ class VanGenuchtenMualem(RetentionCurve):
         """
         _cmf_core.VanGenuchtenMualem_swiginit(self,_cmf_core.new_VanGenuchtenMualem(*args))
     def __repr__(self):
-        return "VanGenuchten-Mualem (Ksat=%g,porosity=%g,alpha=%g, n=%g)" % (self.K(1,0),self.Porosity(0),self.alpha,self.n)
+        return "VanGenuchten-Mualem (Ksat=%g,por.=%0.0f%%,alpha=%g 1/cm, n=%g)" % (self.K(1),self.Porosity(0)*100,self.alpha,self.n)
 
     __swig_destroy__ = _cmf_core.delete_VanGenuchtenMualem
 VanGenuchtenMualem.Transmissivity = new_instancemethod(_cmf_core.VanGenuchtenMualem_Transmissivity,None,VanGenuchtenMualem)

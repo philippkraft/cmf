@@ -31,7 +31,7 @@ import scipy.optimize as opt
 import random
 def get_error_bc(params, pF,theta):
     bc=cmf.BrooksCoreyRetentionCurve(1,params[0],params[1],params[2])
-    model_wetness=np.array([bc.Wetness_pF(v) for v in pF])
+    model_wetness=bc.Wetness_pF(pF)
     err = np.sum((theta - params[0] * model_wetness)**2)
     return err
             
@@ -56,7 +56,7 @@ def fit_bc(pF,theta,count=20):
 
 def get_error_vgm(params,pF,theta):
     vgm=cmf.VanGenuchtenMualem(1.0, *params)
-    model_wetness=np.array([vgm.Wetness_pF(v) for v in pF])
+    model_wetness=vgm.Wetness_pF(pF)
     err = np.sum((theta - params[0] * model_wetness )**2)
     return err
     
