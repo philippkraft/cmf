@@ -6,6 +6,8 @@ This file creates a hillslope to calculate a transsect using a 2D Richards equat
 import cmf
 import sys
 import numpy as np
+from optparse import OptionParser
+
 try:
     if "noshow" in sys.argv:
         raise ImportError()
@@ -63,7 +65,7 @@ for i,c in enumerate(p[:-1]):
 for c in p:    
     for d in [0.05,0.1,0.2,0.3,0.5,0.75,1.0,1.3,1.7,2.]:
         c.add_layer(d, soiltype(d))
-    c.saturated_depth=1
+    c.saturated_depth=2.
     c.surfacewater_as_storage()
     # use Richards connection
     c.install_connection(cmf.Richards)
@@ -78,22 +80,26 @@ cmf.connect_cells_with_flux(p,cmf.Manning_Kinematic)
 # Make an outlet (ditch, 30cm deep)
 outlet=p.NewOutlet('outlet',-celllength, 0, -.3)
 # Connect outlet to soil
-p[0].connect_soil_with_node(outlet,cmf.DarcyKinematic,10.0,5.0)
+p[0].connect_soil_with_node(outlet,cmf.Richards_lateral,10.0,5.0)
 # Connect outlet to surfacewater (overbank flow)
 cmf.Manning_Kinematic(p[0].surfacewater, outlet, 
                       cmf.Channel('R',celllength,celllength))
 load_meteo(p)
 # Make solver
 solver=cmf.CVodeIntegrator(p,1e-6)
-solver.t=cmf.Time(1,1,1980)
+solver.t=cmf.Time(1,1,1990)
 # Integrates the waterbalance over each internal substep
 out_integ=cmf.waterbalance_integrator(outlet)
 solver.integratables.append(out_integ)
+perc_integ=cmf.flux_integrator(p[0].layers[0].connection_to(p[0].layers[1]))
+solver.integratables.append(perc_integ)
 def run(until=cmf.year,dt=cmf.day):
     sw=cmf.StopWatch(solver.t,solver.t+until if until<solver.t else until)
     outflow = cmf.timeseries(solver.t,dt)
+    perc=cmf.timeseries(solver.t,dt)
     for t in solver.run(solver.t,solver.t+cmf.year,cmf.day):
         outflow.add(out_integ.avg())
+        perc.add(perc_integ.avg())
         ele,tot,rem= sw(t)
         print "%s - %6.2fm3/day (%s/%s)" % (t,outflow[-1],ele*cmf.sec,tot*cmf.sec)
     return outflow
