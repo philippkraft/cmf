@@ -65,7 +65,7 @@ for i,c in enumerate(p[:-1]):
 for c in p:    
     for d in [0.05,0.1,0.2,0.3,0.5,0.75,1.0,1.3,1.7,2.]:
         c.add_layer(d, soiltype(d))
-    c.saturated_depth=1
+    c.saturated_depth=2.
     c.surfacewater_as_storage()
     # use Richards connection
     c.install_connection(cmf.Richards)
