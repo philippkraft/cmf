@@ -651,7 +651,7 @@ void TBYLAYER(int J,double PTR, double DISPC,
 		if (SUM < 1E-20) {
 			///     all layers flagged, no transpiration
 			ATR = 0.;
-			PSIT = -10000000000;
+			PSIT = -10000000000.; 
 			break;
 		} else {
 			RT = 1. / SUM;
