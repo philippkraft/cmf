@@ -78,7 +78,7 @@ $ ./configure
 $ make
 $ make install
 $ cd ..
-$ easy_install shapely
+$ easy_install -U sshapely
 @endcode
 
 @subsection nixinst2 Installation on Unix / Linux
@@ -122,18 +122,11 @@ $ ./configure --prefix=$HOME/local
 $ make
 $ make install
 $ cd ..
-$ easy_install shapely
+$ easy_install -U shapely
 $ easy_install matplotlib # Not needed for a pure cluster installation
 $ cd cmf
 $ python setup.py install
 @endcode
 
-Shapely 1.2.3 (presumably older versions to) has a bug (or rather ctypes, but shapely depends on it). A locally 
-installed library is not found. Just change in $HOME/local/lib/python2.6/site-packages/Shapely-1.2.3.egg/shapely/geos.py
-line 28 to
-@code
-if sys.platform=="linux2" and False:
-    ...
-@endcode
-This should fix the problem.
+
 **/
