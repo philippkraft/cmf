@@ -85,7 +85,7 @@ namespace cmf {
 		/// the second node (called lower) is connected to the system bridge with as a Neumann boundary condition. The flux equals the average flux
 		/// of the connection upper <-> SystemBridge. Therefore, the system bridge must become an integratable of the integrator system
 		/// the upper node belongs to. Use as an upper system (system upper node is belonging to) the faster reacting system.
-		/// For the connection between upper and SystemBridge, the SystemBridge reacts as an Drichelet boundary condition, providing the potential 
+		/// For the connection between upper and SystemBridge, the SystemBridge reacts as an Dirichlet boundary condition, providing the potential 
 		/// of the lower node.
 		SystemBridge::ptr system_bridge(cmf::project& p, flux_node::ptr upper,flux_node::ptr lower);
 

@@ -93,6 +93,7 @@ or, without multi core processor support (without OpenMP)
 @code
 $ cd cmf
 $ python setup.py install noopenmp
+$ cd ..
 @endcode
 
 @subsection nixinst_dep2 Installing Python and other dependencies without root privileges
@@ -126,6 +127,7 @@ $ easy_install -U shapely
 $ easy_install matplotlib # Not needed for a pure cluster installation
 $ cd cmf
 $ python setup.py install
+$ cd ..
 @endcode
 
 
