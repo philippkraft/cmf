@@ -144,12 +144,12 @@ namespace cmf {
 		///
 		/// With this specialized list a num_array can be passed to the boundary conditions for a fast flux update
 		/// If a multiple system layout for the cmf setup is chosen, we might have a 
-		/// node_list Drichelet boundary conditions (dbc), a corresponding NeumannBoundary_list (nbc) of Neumann boundaries and a node_list
+		/// node_list Dirichlet boundary conditions (dbc), a corresponding NeumannBoundary_list (nbc) of Neumann boundaries and a node_list
 		/// containing the storages connected with the NeumannBoundary_list (storages). The fast data exchange is written in Python as:
 		/// @code
-		/// # Update the fluxes at the Neumann boundary conditions with net fluxes at the Drichelet boundary conditions
+		/// # Update the fluxes at the Neumann boundary conditions with net fluxes at the Dirichlet boundary conditions
 		/// nbc.fluxes = dbc.water_balance(t)    
-		/// # Update the potentials at the Drichelet boundary conditions
+		/// # Update the potentials at the Dirichlet boundary conditions
 		/// dbc.potentials = storages.potentials 
 		/// @endcode
 		class NeumannBoundary_list

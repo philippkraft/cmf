@@ -49,22 +49,22 @@ namespace cmf {
 		/// @ingroup nodes
 
 		/// @ingroup boundary
-		/// Drichelet (constant head) boundary condition
+		/// Dirichlet (constant head) boundary condition
 		///
 		/// This boundary condition can be used either as a pure sink boundary condition or as a conditional source / sink boundary condition.
 		/// The constant head of the boundary condition is interpreted and handled by the connections of the boundary condition. 
 		/// Not head aware connections, should not be used, since they are ignoring the constant head.
 
-		class DricheletBoundary : public cmf::water::flux_node
+		class DirichletBoundary : public cmf::water::flux_node
 		{
 		protected:
 			real m_Potential;
 			typedef std::map<solute,real> conc_map;
 			conc_map m_concentration;
 		public:
-			typedef std::tr1::shared_ptr<cmf::water::DricheletBoundary> ptr;
+			typedef std::tr1::shared_ptr<cmf::water::DirichletBoundary> ptr;
 #ifndef SWIG
-			operator ptr() {return std::tr1::static_pointer_cast<DricheletBoundary>(shared_from_this());}
+			operator ptr() {return std::tr1::static_pointer_cast<DirichletBoundary>(shared_from_this());}
 #endif
 			real get_potential() const
 			{
@@ -85,7 +85,7 @@ namespace cmf {
 			{
 				return 1;
 			}
-			DricheletBoundary(const cmf::project& _p,real potential,cmf::geometry::point Location=cmf::geometry::point());
+			DirichletBoundary(const cmf::project& _p,real potential,cmf::geometry::point Location=cmf::geometry::point());
 			
 		};
 		/// @ingroup boundary

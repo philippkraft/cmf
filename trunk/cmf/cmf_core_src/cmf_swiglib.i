@@ -71,7 +71,7 @@ Included macros:
 %define %node_downcast_all(Method)
 //Downcast to all children of cmf::water::flux_node
 %node_downcast(Method,
-   cmf::atmosphere::RainSource,cmf::water::DricheletBoundary,cmf::water::NeumannBoundary,
+   cmf::atmosphere::RainSource,cmf::water::DirichletBoundary,cmf::water::NeumannBoundary,
    cmf::upslope::SoilLayer, cmf::upslope::aquifer,  cmf::river::Reach,cmf::river::OpenWaterStorage,cmf::water::WaterStorage
 )
 %enddef

@@ -22,8 +22,8 @@ import sys
 
 # Change these variables to match your compiler. (gcc or 
 # For Visual Studio 2008 no action is needed
-gcc = sys.platform == 'linux2'
 msvc = sys.platform == 'win32'
+gcc = not msvc
 
 # Change these pathes to your sundials 2.4+ installation
 
