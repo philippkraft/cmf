@@ -98,9 +98,9 @@ namespace cmf {
 			real flux_width;
 
 			/// Creates a new Darcy flow connection between two aquifers, 
-			/// or an aquifer and another node acting as Drichelet boundary condition
+			/// or an aquifer and another node acting as Dirichlet boundary condition
 			/// @param left One aquifer
-			/// @param right Another aquifer, or a flux node that can be interpreted as an Drichelet boundary
+			/// @param right Another aquifer, or a flux node that can be interpreted as an Dirichlet boundary
 			/// @param width Width of the connection
 			aquifer_Darcy(aquifer::ptr left, cmf::water::flux_node::ptr right, real width);
 

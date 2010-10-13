@@ -304,7 +304,7 @@ C++ includes: groundwater.h ";
 real width)
 
 Creates a new Darcy flow connection between two aquifers, or an
-aquifer and another node acting as Drichelet boundary condition
+aquifer and another node acting as Dirichlet boundary condition
 
 Parameters:
 -----------
@@ -312,7 +312,7 @@ Parameters:
 left:  One aquifer
 
 right:  Another aquifer, or a flux node that can be interpreted as an
-Drichelet boundary
+Dirichlet boundary
 
 width:  Width of the connection ";
 
@@ -607,12 +607,6 @@ void add_single_state(cmf::math::StateVariable::ptr state)
 
 Adds a single state variable to the integrator. ";
 
-%feature("docstring")  cmf::math::BDF2::add_integratable "void
-add_integratable(cmf::math::integratable::ptr integratable)
-
-Adds an integratable non-state variable, to be integrated for each
-substep. ";
-
 %feature("docstring")  cmf::math::BDF2::size "int size() const
 
 returns the number of state variables ";
@@ -747,6 +741,8 @@ conductivity gets 10% smaller per meter ";
 
 %feature("docstring")  cmf::upslope::BrooksCoreyRetentionCurve::copy "virtual BrooksCoreyRetentionCurve* copy() const ";
 
+%feature("docstring")  cmf::upslope::BrooksCoreyRetentionCurve::K "cmf::math::num_array K(const cmf::math::num_array &wetness) const ";
+
 %feature("docstring")
 cmf::upslope::BrooksCoreyRetentionCurve::Wetness_eff "virtual real
 Wetness_eff(real wetness, real pF_r=4.2) const
@@ -757,10 +753,22 @@ Returns the effective wetness, using a residual pF value \\\\[w_{eff}
 ";
 
 %feature("docstring")
+cmf::upslope::BrooksCoreyRetentionCurve::Wetness "cmf::math::num_array Wetness(const cmf::math::num_array &suction)
+const ";
+
+%feature("docstring")
 cmf::upslope::BrooksCoreyRetentionCurve::Wetness_pF "real
 Wetness_pF(real pF) const
 
 returns the volumetric water content at a given pF value ";
+
+%feature("docstring")
+cmf::upslope::BrooksCoreyRetentionCurve::Wetness_pF "cmf::math::num_array Wetness_pF(const cmf::math::num_array &pF) const
+";
+
+%feature("docstring")
+cmf::upslope::BrooksCoreyRetentionCurve::MatricPotential "cmf::math::num_array MatricPotential(const cmf::math::num_array
+&wetness) const ";
 
 
 // File: classcmf_1_1upslope_1_1_e_t_1_1canopy__evaporation.xml
@@ -2006,11 +2014,6 @@ Add state variables from a StateVariableOwner. ";
 
 Adds a single state variable to the integrator. ";
 
-%feature("docstring")  cmf::math::CVodeIntegrator::add_integratable "void add_integratable(cmf::math::integratable::ptr integratable)
-
-Adds an integratable non-state variable, to be integrated for each
-substep. ";
-
 %feature("docstring")  cmf::math::CVodeIntegrator::size "int size()
 const
 
@@ -2232,10 +2235,10 @@ to_string()
 Returns a string representing the date. ";
 
 
-// File: classcmf_1_1water_1_1_drichelet_boundary.xml
-%feature("docstring") cmf::water::DricheletBoundary "
+// File: classcmf_1_1water_1_1_dirichlet_boundary.xml
+%feature("docstring") cmf::water::DirichletBoundary "
 
-Drichelet (constant head) boundary condition
+Dirichlet (constant head) boundary condition
 
 This boundary condition can be used either as a pure sink boundary
 condition or as a conditional source / sink boundary condition. The
@@ -2245,76 +2248,76 @@ should not be used, since they are ignoring the constant head.
 
 C++ includes: boundary_condition.h ";
 
-%feature("docstring")  cmf::water::DricheletBoundary::get_potential "real get_potential() const
+%feature("docstring")  cmf::water::DirichletBoundary::get_potential "real get_potential() const
 
 Returns the water potential of the node in m waterhead The base class
 water storage always returns the height of the location ";
 
-%feature("docstring")  cmf::water::DricheletBoundary::set_potential "void set_potential(real new_potential) ";
+%feature("docstring")  cmf::water::DirichletBoundary::set_potential "void set_potential(real new_potential) ";
 
-%feature("docstring")  cmf::water::DricheletBoundary::set_conc "virtual void set_conc(const cmf::water::solute &_Solute, double value)
+%feature("docstring")  cmf::water::DirichletBoundary::set_conc "virtual void set_conc(const cmf::water::solute &_Solute, double value)
 ";
 
-%feature("docstring")  cmf::water::DricheletBoundary::conc "virtual
+%feature("docstring")  cmf::water::DirichletBoundary::conc "virtual
 real conc(cmf::math::Time t, const cmf::water::solute &_Solute) const
 
 Returns the water quality of the flux_node, if it is not overridden
 this is the mix of the incoming fluxes. ";
 
-%feature("docstring")  cmf::water::DricheletBoundary::is_empty "double is_empty() const
+%feature("docstring")  cmf::water::DirichletBoundary::is_empty "double is_empty() const
 
 Returns true if the node has no water. ";
 
-%feature("docstring")  cmf::water::DricheletBoundary::RecalcFluxes "bool RecalcFluxes(cmf::math::Time t) const ";
+%feature("docstring")  cmf::water::DirichletBoundary::RecalcFluxes "bool RecalcFluxes(cmf::math::Time t) const ";
 
 %feature("docstring")
-cmf::water::DricheletBoundary::DricheletBoundary "DricheletBoundary(const cmf::project &_p, real potential,
+cmf::water::DirichletBoundary::DirichletBoundary "DirichletBoundary(const cmf::project &_p, real potential,
 cmf::geometry::point Location=cmf::geometry::point()) ";
 
-%feature("docstring")  cmf::water::DricheletBoundary::get_project "const cmf::project& get_project() const
+%feature("docstring")  cmf::water::DirichletBoundary::get_project "const cmf::project& get_project() const
 
 Returns the project, this node is part of. ";
 
-%feature("docstring")  cmf::water::DricheletBoundary::is_storage "virtual bool is_storage() const
+%feature("docstring")  cmf::water::DirichletBoundary::is_storage "virtual bool is_storage() const
 
 true, if this is a waterstorage ";
 
-%feature("docstring")  cmf::water::DricheletBoundary::to_string "virtual std::string to_string() const ";
+%feature("docstring")  cmf::water::DirichletBoundary::to_string "virtual std::string to_string() const ";
 
-%feature("docstring")  cmf::water::DricheletBoundary::get_connections
+%feature("docstring")  cmf::water::DirichletBoundary::get_connections
 "cmf::water::connection_vector get_connections() const ";
 
-%feature("docstring")  cmf::water::DricheletBoundary::RecalcFluxes "virtual bool RecalcFluxes(cmf::math::Time t)
+%feature("docstring")  cmf::water::DirichletBoundary::RecalcFluxes "virtual bool RecalcFluxes(cmf::math::Time t)
 
 Pure flux_nodes do not influence fluxes, therefore no recalculation of
 fluxes is required by flux_node. WaterStorage overrides this, since
 state changes require an update of the fluxes ";
 
-%feature("docstring")  cmf::water::DricheletBoundary::connection_to "cmf::water::flux_connection* connection_to(const cmf::water::flux_node
+%feature("docstring")  cmf::water::DirichletBoundary::connection_to "cmf::water::flux_connection* connection_to(const cmf::water::flux_node
 &target)
 
 Returns the connection between this and target. ";
 
 %feature("docstring")
-cmf::water::DricheletBoundary::remove_connection "bool
+cmf::water::DirichletBoundary::remove_connection "bool
 remove_connection(cmf::water::flux_node::ptr To)
 
 Remove the connection. ";
 
-%feature("docstring")  cmf::water::DricheletBoundary::flux_to "real
+%feature("docstring")  cmf::water::DirichletBoundary::flux_to "real
 flux_to(const cmf::water::flux_node &target, cmf::math::Time t)
 
 Returns the actual flux between this and target (positive sign means
 \"from target into this\"). ";
 
-%feature("docstring")  cmf::water::DricheletBoundary::flux3d_to "cmf::geometry::point flux3d_to(const cmf::water::flux_node &target,
+%feature("docstring")  cmf::water::DirichletBoundary::flux3d_to "cmf::geometry::point flux3d_to(const cmf::water::flux_node &target,
 cmf::math::Time t) ";
 
-%feature("docstring")  cmf::water::DricheletBoundary::get_3d_flux "cmf::geometry::point get_3d_flux(cmf::math::Time t)
+%feature("docstring")  cmf::water::DirichletBoundary::get_3d_flux "cmf::geometry::point get_3d_flux(cmf::math::Time t)
 
 Returns the sum of all flux vectors. ";
 
-%feature("docstring")  cmf::water::DricheletBoundary::waterbalance "real waterbalance(cmf::math::Time t, const flux_connection *Without=0)
+%feature("docstring")  cmf::water::DirichletBoundary::waterbalance "real waterbalance(cmf::math::Time t, const flux_connection *Without=0)
 const
 
 Returns the sum of all fluxes (positive and negative) at time t.
@@ -2577,13 +2580,6 @@ cmf::math::ExplicitEuler_fixed::add_single_state "virtual void
 add_single_state(cmf::math::StateVariable::ptr state)
 
 Adds a single state variable to the integrator. ";
-
-%feature("docstring")
-cmf::math::ExplicitEuler_fixed::add_integratable "void
-add_integratable(cmf::math::integratable::ptr integratable)
-
-Adds an integratable non-state variable, to be integrated for each
-substep. ";
 
 %feature("docstring")  cmf::math::ExplicitEuler_fixed::size "int
 size() const
@@ -3108,6 +3104,8 @@ returns the wetness of the soil at given water content ";
 %feature("docstring")  cmf::upslope::connections::HBVparameters::copy
 "virtual HBVparameters* copy() const ";
 
+%feature("docstring")  cmf::upslope::connections::HBVparameters::K "cmf::math::num_array K(const cmf::math::num_array &wetness) const ";
+
 %feature("docstring")
 cmf::upslope::connections::HBVparameters::Wetness_eff "virtual real
 Wetness_eff(real wetness, real pF_r=4.2) const
@@ -3124,10 +3122,22 @@ FillHeight(real lowerDepth, real Area, real Volume) const
 Returns the thickness of a soil column with a certain pore volume. ";
 
 %feature("docstring")
+cmf::upslope::connections::HBVparameters::Wetness "cmf::math::num_array Wetness(const cmf::math::num_array &suction)
+const ";
+
+%feature("docstring")
 cmf::upslope::connections::HBVparameters::Wetness_pF "real
 Wetness_pF(real pF) const
 
 returns the volumetric water content at a given pF value ";
+
+%feature("docstring")
+cmf::upslope::connections::HBVparameters::Wetness_pF "cmf::math::num_array Wetness_pF(const cmf::math::num_array &pF) const
+";
+
+%feature("docstring")
+cmf::upslope::connections::HBVparameters::MatricPotential "cmf::math::num_array MatricPotential(const cmf::math::num_array
+&wetness) const ";
 
 
 // File: classcmf_1_1upslope_1_1connections_1_1_h_b_vpercolation.xml
@@ -3636,11 +3646,6 @@ gets the state variables of the integrator ";
 
 Adds a single state variable to the integrator. ";
 
-%feature("docstring")  cmf::math::ImplicitEuler::add_integratable "void add_integratable(cmf::math::integratable::ptr integratable)
-
-Adds an integratable non-state variable, to be integrated for each
-substep. ";
-
 %feature("docstring")  cmf::math::ImplicitEuler::size "int size()
 const
 
@@ -3665,15 +3670,61 @@ integration_variable is a functionality for different classes for
 integrating values over time.
 
 Main usage of an integration_variable is the calculation of average
-fluxes over time
+fluxes over time e.g. \\\\[
+\\\\int_{t_0}^{t_{end}}q\\\\left(t,V_i,V_j\\\\right)dt \\\\]
 
 C++ includes: statevariable.h ";
 
 %feature("docstring")  cmf::math::integratable::integrate "virtual
-void integrate(Time t)=0 ";
+void integrate(Time t)=0
+
+Integrates the variable until time t. ";
 
 %feature("docstring")  cmf::math::integratable::reset "virtual void
-reset(Time t)=0 ";
+reset(Time t)=0
+
+Sets the start time of the integral. ";
+
+%feature("docstring")  cmf::math::integratable::sum "virtual double
+sum() const =0 ";
+
+%feature("docstring")  cmf::math::integratable::avg "virtual double
+avg() const =0 ";
+
+
+// File: classcmf_1_1math_1_1integratable__list.xml
+%feature("docstring") cmf::math::integratable_list "
+
+A list of cmf::math::integratable objects
+
+Todo TODO: Complete collection interface (getitem with slicing etc.)
+
+C++ includes: statevariable.h ";
+
+%feature("docstring")  cmf::math::integratable_list::append "void
+append(cmf::math::integratable::ptr add)
+
+Adds an integratable to the list. ";
+
+%feature("docstring")  cmf::math::integratable_list::remove "void
+remove(cmf::math::integratable::ptr rm)
+
+Removes an integratable from the list. ";
+
+%feature("docstring")  cmf::math::integratable_list::size "size_t
+size() const
+
+Number of integratables in the list. ";
+
+%feature("docstring")  cmf::math::integratable_list::avg "cmf::math::num_array avg() const ";
+
+%feature("docstring")  cmf::math::integratable_list::sum "cmf::math::num_array sum() const ";
+
+%feature("docstring")  cmf::math::integratable_list::reset "void
+reset(Time t) ";
+
+%feature("docstring")  cmf::math::integratable_list::integrate "void
+integrate(Time t) ";
 
 
 // File: classcmf_1_1math_1_1_integrator.xml
@@ -3847,12 +3898,6 @@ Add state variables from a StateVariableOwner. ";
 %feature("docstring")  cmf::math::Integrator::add_single_state "virtual void add_single_state(cmf::math::StateVariable::ptr state)
 
 Adds a single state variable to the integrator. ";
-
-%feature("docstring")  cmf::math::Integrator::add_integratable "void
-add_integratable(cmf::math::integratable::ptr integratable)
-
-Adds an integratable non-state variable, to be integrated for each
-substep. ";
 
 %feature("docstring")  cmf::math::Integrator::size "int size() const
 
@@ -4270,6 +4315,8 @@ Returns the thickness of a soil column with a certain pore volume. ";
 %feature("docstring")  cmf::upslope::LinearRetention::LinearRetention
 "LinearRetention(real _Ksat, real _Phi, real _thickness) ";
 
+%feature("docstring")  cmf::upslope::LinearRetention::K "cmf::math::num_array K(const cmf::math::num_array &wetness) const ";
+
 %feature("docstring")  cmf::upslope::LinearRetention::Wetness_eff "virtual real Wetness_eff(real wetness, real pF_r=4.2) const
 
 Returns the effective wetness, using a residual pF value \\\\[w_{eff}
@@ -4277,9 +4324,19 @@ Returns the effective wetness, using a residual pF value \\\\[w_{eff}
 \\\\frac{w_{act}-w\\\\left(pF_r\\\\right)}{1-w\\\\left(pF_r\\\\right)}\\\\]
 ";
 
+%feature("docstring")  cmf::upslope::LinearRetention::Wetness "cmf::math::num_array Wetness(const cmf::math::num_array &suction)
+const ";
+
 %feature("docstring")  cmf::upslope::LinearRetention::Wetness_pF "real Wetness_pF(real pF) const
 
 returns the volumetric water content at a given pF value ";
+
+%feature("docstring")  cmf::upslope::LinearRetention::Wetness_pF "cmf::math::num_array Wetness_pF(const cmf::math::num_array &pF) const
+";
+
+%feature("docstring")  cmf::upslope::LinearRetention::MatricPotential
+"cmf::math::num_array MatricPotential(const cmf::math::num_array
+&wetness) const ";
 
 
 // File: classcmf_1_1atmosphere_1_1log__wind__profile.xml
@@ -5179,11 +5236,6 @@ gets the state variables of the integrator ";
 
 Adds a single state variable to the integrator. ";
 
-%feature("docstring")  cmf::math::MultiIntegrator::add_integratable "void add_integratable(cmf::math::integratable::ptr integratable)
-
-Adds an integratable non-state variable, to be integrated for each
-substep. ";
-
 %feature("docstring")  cmf::math::MultiIntegrator::size "int size()
 const
 
@@ -5347,7 +5399,7 @@ data exchange to update the fluxes might be needed.
 
 With this specialized list a num_array can be passed to the boundary
 conditions for a fast flux update If a multiple system layout for the
-cmf setup is chosen, we might have a node_list Drichelet boundary
+cmf setup is chosen, we might have a node_list Dirichlet boundary
 conditions (dbc), a corresponding NeumannBoundary_list (nbc) of
 Neumann boundaries and a node_list containing the storages connected
 with the NeumannBoundary_list (storages). The fast data exchange is
@@ -6437,11 +6489,11 @@ NewCell(double x, double y, double z, double Area)
 
 Creates a new cell. ";
 
-%feature("docstring")  cmf::project::NewOutlet "cmf::water::DricheletBoundary::ptr NewOutlet(std::string name, double
+%feature("docstring")  cmf::project::NewOutlet "cmf::water::DirichletBoundary::ptr NewOutlet(std::string name, double
 x, double y, double z)
 
-Creates a new Drichelet boundary condition and adds it to the list of
-outlets The potential of the Drichelet boundary equals p.z ";
+Creates a new Dirichlet boundary condition and adds it to the list of
+outlets The potential of the Dirichlet boundary equals p.z ";
 
 %feature("docstring")  cmf::project::get_reach "cmf::river::Reach::ptr get_reach(int index)
 
@@ -7204,10 +7256,12 @@ volume
 C++ includes: RetentionCurve.h ";
 
 %feature("docstring")  cmf::upslope::RetentionCurve::K "virtual real
-K(real wetness) const =0
+K(real wetness) const
 
 Returns the conductivity in m/day at a certain depth and water
 content. ";
+
+%feature("docstring")  cmf::upslope::RetentionCurve::K "cmf::math::num_array K(const cmf::math::num_array &wetness) const ";
 
 %feature("docstring")  cmf::upslope::RetentionCurve::Wetness_eff "virtual real Wetness_eff(real wetness, real pF_r=4.2) const
 
@@ -7235,14 +7289,23 @@ real Wetness(real suction) const
 returns the wetness (volumetric water content per pore space) at a
 given suction pressure ";
 
+%feature("docstring")  cmf::upslope::RetentionCurve::Wetness "cmf::math::num_array Wetness(const cmf::math::num_array &suction)
+const ";
+
 %feature("docstring")  cmf::upslope::RetentionCurve::Wetness_pF "real
 Wetness_pF(real pF) const
 
 returns the volumetric water content at a given pF value ";
 
+%feature("docstring")  cmf::upslope::RetentionCurve::Wetness_pF "cmf::math::num_array Wetness_pF(const cmf::math::num_array &pF) const
+";
+
 %feature("docstring")  cmf::upslope::RetentionCurve::MatricPotential "virtual real MatricPotential(real wetness) const
 
 returns the wetness of the soil at given water content ";
+
+%feature("docstring")  cmf::upslope::RetentionCurve::MatricPotential "cmf::math::num_array MatricPotential(const cmf::math::num_array
+&wetness) const ";
 
 %feature("docstring")  cmf::upslope::RetentionCurve::copy "virtual
 RetentionCurve* copy() const =0 ";
@@ -7593,11 +7656,6 @@ gets the state variables of the integrator ";
 %feature("docstring")  cmf::math::RKFIntegrator::add_single_state "virtual void add_single_state(cmf::math::StateVariable::ptr state)
 
 Adds a single state variable to the integrator. ";
-
-%feature("docstring")  cmf::math::RKFIntegrator::add_integratable "void add_integratable(cmf::math::integratable::ptr integratable)
-
-Adds an integratable non-state variable, to be integrated for each
-substep. ";
 
 %feature("docstring")  cmf::math::RKFIntegrator::size "int size()
 const
@@ -8747,13 +8805,6 @@ add_single_state(cmf::math::StateVariable::ptr state)
 
 Adds a single state variable to the integrator. ";
 
-%feature("docstring")
-cmf::math::SoluteWaterIntegrator::add_integratable "void
-add_integratable(cmf::math::integratable::ptr integratable)
-
-Adds an integratable non-state variable, to be integrated for each
-substep. ";
-
 %feature("docstring")  cmf::math::SoluteWaterIntegrator::size "int
 size() const
 
@@ -9202,18 +9253,23 @@ A SystemBridge is an advanced feature for tuning of the calculation
 time.
 
 A SystemBridge can be used to replace an existing connection between
-nodes. It is created using the system_bridge function After
+nodes. It is created using the system_bridge function. After
 installation, the two nodes can more safely be added to different
 integrator systems. One node (called upper) is connected with the
 system bridge with the connection formerly connecting the nodes, the
 second node (called lower) is connected to the system bridge with as a
 Neumann boundary condition. The flux equals the average flux of the
-connection upper <-> SystemBridge. Therefore, the system bridge must
-become an integratable of the integrator system the upper node belongs
-to. Use as an upper system (system upper node is belonging to) the
-faster reacting system. For the connection between upper and
-SystemBridge, the SystemBridge reacts as an Drichelet boundary
-condition, providing the potential of the lower node.
+connection upper <-> SystemBridge. Therefore, the downward flux needs
+to be integrated over time by the solver the upper node belongs to.
+Use as an upper system (system upper node is belonging to) the faster
+reacting system. For the connection between upper and SystemBridge,
+the SystemBridge reacts as an Dirichlet boundary condition, providing
+the potential of the lower node.
+
+The following example code creates a system bridge between the nodes
+upper and lower. To integrate the flux over each timestep
+automatically, the systembridge is added to the solver of upper, as an
+integratable
 
 C++ includes: system_bridge.h ";
 
@@ -9225,17 +9281,17 @@ Returns the upper node. ";
 
 Returns the lower node. ";
 
-%feature("docstring")  cmf::water::SystemBridge::get_potential "double get_potential() const ";
+%feature("docstring")  cmf::water::SystemBridge::get_potential "double get_potential() const
+
+Returns the water potential of the node in m waterhead The base class
+water storage always returns the height of the location ";
 
 %feature("docstring")  cmf::water::SystemBridge::get_down_flux "double get_down_flux() const
 
 Returns the currently integrated flux to the lower node. ";
 
-%feature("docstring")  cmf::water::SystemBridge::integrate "virtual
-void integrate(cmf::math::Time t) ";
-
-%feature("docstring")  cmf::water::SystemBridge::reset "virtual void
-reset(cmf::math::Time t) ";
+%feature("docstring")  cmf::water::SystemBridge::down_flux_integrator
+"flux_integrator::ptr down_flux_integrator() const ";
 
 %feature("docstring")  cmf::water::SystemBridge::get_project "const
 cmf::project& get_project() const
@@ -9300,11 +9356,6 @@ conc(cmf::math::Time t, const cmf::water::solute &Solute) const
 
 Returns the water quality of the flux_node, if it is not overridden
 this is the mix of the incoming fluxes. ";
-
-%feature("docstring")  cmf::water::SystemBridge::get_potential "virtual real get_potential() const
-
-Returns the water potential of the node in m waterhead The base class
-water storage always returns the height of the location ";
 
 %feature("docstring")  cmf::water::SystemBridge::set_potential "virtual void set_potential(real new_potential) ";
 
@@ -9783,6 +9834,9 @@ size:  Initial number of items. Items are filled with 0.0 ";
 
 %feature("docstring")  cmf::math::timeseries::timeseries "timeseries(const cmf::math::timeseries &ts) ";
 
+%feature("docstring")  cmf::math::timeseries::timeseries "timeseries(cmf::math::Time begin, cmf::math::Time step, const
+cmf::math::num_array &data) ";
+
 %feature("docstring")  cmf::math::timeseries::timeseries "timeseries(double scalar) ";
 
 %feature("docstring")  cmf::math::timeseries::get_t "double
@@ -10207,6 +10261,8 @@ _n:  Van Genuchten n
 
 _m:  m parameter, if negative m is calculated as $ 1-\\\\frac 1 n$ ";
 
+%feature("docstring")  cmf::upslope::VanGenuchtenMualem::K "cmf::math::num_array K(const cmf::math::num_array &wetness) const ";
+
 %feature("docstring")  cmf::upslope::VanGenuchtenMualem::Wetness_eff "virtual real Wetness_eff(real wetness, real pF_r=4.2) const
 
 Returns the effective wetness, using a residual pF value \\\\[w_{eff}
@@ -10214,9 +10270,19 @@ Returns the effective wetness, using a residual pF value \\\\[w_{eff}
 \\\\frac{w_{act}-w\\\\left(pF_r\\\\right)}{1-w\\\\left(pF_r\\\\right)}\\\\]
 ";
 
+%feature("docstring")  cmf::upslope::VanGenuchtenMualem::Wetness "cmf::math::num_array Wetness(const cmf::math::num_array &suction)
+const ";
+
 %feature("docstring")  cmf::upslope::VanGenuchtenMualem::Wetness_pF "real Wetness_pF(real pF) const
 
 returns the volumetric water content at a given pF value ";
+
+%feature("docstring")  cmf::upslope::VanGenuchtenMualem::Wetness_pF "cmf::math::num_array Wetness_pF(const cmf::math::num_array &pF) const
+";
+
+%feature("docstring")
+cmf::upslope::VanGenuchtenMualem::MatricPotential "cmf::math::num_array MatricPotential(const cmf::math::num_array
+&wetness) const ";
 
 
 // File: structcmf_1_1upslope_1_1vegetation_1_1_vegetation.xml
@@ -10927,7 +10993,7 @@ average flux of the connection upper <-> SystemBridge. Therefore, the
 system bridge must become an integratable of the integrator system the
 upper node belongs to. Use as an upper system (system upper node is
 belonging to) the faster reacting system. For the connection between
-upper and SystemBridge, the SystemBridge reacts as an Drichelet
+upper and SystemBridge, the SystemBridge reacts as an Dirichlet
 boundary condition, providing the potential of the lower node. ";
 
 

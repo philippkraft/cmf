@@ -22,7 +22,7 @@
 
 %shared_ptr(cmf::water::flux_node);
 %shared_ptr(cmf::water::WaterStorage);
-%shared_ptr(cmf::water::DricheletBoundary);
+%shared_ptr(cmf::water::DirichletBoundary);
 %shared_ptr(cmf::water::NeumannBoundary);
 %shared_ptr(cmf::water::SystemBridge);
 
@@ -145,7 +145,7 @@ namespace cmf{namespace water {class flux_connection;}}
 %attribute(cmf::water::WaterStorage,char,statevariable,get_state_variable_content,set_state_variable_content);
 %include "water/WaterStorage.h"
 
-%extend__repr__(cmf::water::DricheletBoundary)
+%extend__repr__(cmf::water::DirichletBoundary)
 %extend__repr__(cmf::water::NeumannBoundary)
 %extend__repr__(cmf::water::WaterStorage)
 

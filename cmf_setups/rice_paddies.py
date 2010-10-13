@@ -78,8 +78,6 @@ def make_rice_paddies(project,count=3,cells_per_paddy=10,dam_height=1.0,terrace_
                 target = find_layer(n,l.Location.z)
                 if target:
                     cmf.connect(cmf.Richards_lateral,l,target,w,1)
-#    dbc=cmf.DricheletBoundary(project,0)
-#    dbc.Name="Trench"
     c=project[-1]
 #    dbc.Location = cmf.point(c.x+1,c.y,0)
     dbc=None

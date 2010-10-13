@@ -78,9 +78,9 @@ namespace cmf {
 			m_cells.append(*new_cell);
 			return new_cell;
 		}
-		/// Creates a new Drichelet boundary condition and adds it to the list of outlets
-		/// The potential of the Drichelet boundary equals p.z
-		cmf::water::DricheletBoundary::ptr NewOutlet(std::string name,double x, double y, double z);
+		/// Creates a new Dirichlet boundary condition and adds it to the list of outlets
+		/// The potential of the Dirichlet boundary equals p.z
+		cmf::water::DirichletBoundary::ptr NewOutlet(std::string name,double x, double y, double z);
 
 		/// Returns the reach at index
 		cmf::river::Reach::ptr get_reach(int index);

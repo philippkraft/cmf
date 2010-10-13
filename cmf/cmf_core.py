@@ -1467,7 +1467,8 @@ class integratable(object):
     integrating values over time.
 
     Main usage of an integration_variable is the calculation of average
-    fluxes over time
+    fluxes over time e.g. \\[
+    \\int_{t_0}^{t_{end}}q\\left(t,V_i,V_j\\right)dt \\]
 
     C++ includes: statevariable.h 
     """
@@ -1479,7 +1480,9 @@ class integratable(object):
         integrate(self, Time t)
 
         virtual
-        void integrate(Time t)=0 
+        void integrate(Time t)=0
+
+        Integrates the variable until time t. 
         """
         return _cmf_core.integratable_integrate(self, *args, **kwargs)
 
@@ -1488,16 +1491,28 @@ class integratable(object):
         reset(self, Time t)
 
         virtual void
-        reset(Time t)=0 
+        reset(Time t)=0
+
+        Sets the start time of the integral. 
         """
         return _cmf_core.integratable_reset(self, *args, **kwargs)
 
     def sum(self, *args, **kwargs):
-        """sum(self) -> double"""
+        """
+        sum(self) -> double
+
+        virtual double
+        sum() const =0 
+        """
         return _cmf_core.integratable_sum(self, *args, **kwargs)
 
     def avg(self, *args, **kwargs):
-        """avg(self) -> double"""
+        """
+        avg(self) -> double
+
+        virtual double
+        avg() const =0 
+        """
         return _cmf_core.integratable_avg(self, *args, **kwargs)
 
     __swig_destroy__ = _cmf_core.delete_integratable
@@ -1509,15 +1524,35 @@ integratable_swigregister = _cmf_core.integratable_swigregister
 integratable_swigregister(integratable)
 
 class integratable_list(object):
-    """Proxy of C++ cmf::math::integratable_list class"""
+    """
+    A list of cmf::math::integratable objects
+
+    Todo TODO: Complete collection interface (getitem with slicing etc.)
+
+    C++ includes: statevariable.h 
+    """
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
     __repr__ = _swig_repr
     def append(self, *args, **kwargs):
-        """append(self, ptr add)"""
+        """
+        append(self, ptr add)
+
+        void
+        append(cmf::math::integratable::ptr add)
+
+        Adds an integratable to the list. 
+        """
         return _cmf_core.integratable_list_append(self, *args, **kwargs)
 
     def remove(self, *args, **kwargs):
-        """remove(self, ptr rm)"""
+        """
+        remove(self, ptr rm)
+
+        void
+        remove(cmf::math::integratable::ptr rm)
+
+        Removes an integratable from the list. 
+        """
         return _cmf_core.integratable_list_remove(self, *args, **kwargs)
 
     def __getitem(self, *args, **kwargs):
@@ -1525,23 +1560,48 @@ class integratable_list(object):
         return _cmf_core.integratable_list___getitem(self, *args, **kwargs)
 
     def size(self, *args, **kwargs):
-        """size(self) -> size_t"""
+        """
+        size(self) -> size_t
+
+        size_t
+        size() const
+
+        Number of integratables in the list. 
+        """
         return _cmf_core.integratable_list_size(self, *args, **kwargs)
 
     def avg(self, *args, **kwargs):
-        """avg(self) -> cmf::math::num_array"""
+        """
+        avg(self) -> cmf::math::num_array
+
+        cmf::math::num_array avg() const 
+        """
         return _cmf_core.integratable_list_avg(self, *args, **kwargs)
 
     def sum(self, *args, **kwargs):
-        """sum(self) -> cmf::math::num_array"""
+        """
+        sum(self) -> cmf::math::num_array
+
+        cmf::math::num_array sum() const 
+        """
         return _cmf_core.integratable_list_sum(self, *args, **kwargs)
 
     def reset(self, *args, **kwargs):
-        """reset(self, Time t)"""
+        """
+        reset(self, Time t)
+
+        void
+        reset(Time t) 
+        """
         return _cmf_core.integratable_list_reset(self, *args, **kwargs)
 
     def integrate(self, *args, **kwargs):
-        """integrate(self, Time t)"""
+        """
+        integrate(self, Time t)
+
+        void
+        integrate(Time t) 
+        """
         return _cmf_core.integratable_list_integrate(self, *args, **kwargs)
 
     def __len__(self, *args, **kwargs):
@@ -2939,9 +2999,9 @@ linear_scale.__call__ = new_instancemethod(_cmf_core.linear_scale___call__,None,
 linear_scale_swigregister = _cmf_core.linear_scale_swigregister
 linear_scale_swigregister(linear_scale)
 
-class DricheletBoundary(flux_node):
+class DirichletBoundary(flux_node):
     """
-    Drichelet (constant head) boundary condition
+    Dirichlet (constant head) boundary condition
 
     This boundary condition can be used either as a pure sink boundary
     condition or as a conditional source / sink boundary condition. The
@@ -2960,9 +3020,9 @@ class DricheletBoundary(flux_node):
         virtual void set_conc(const cmf::water::solute &_Solute, double value)
 
         """
-        return _cmf_core.DricheletBoundary_set_conc(self, *args, **kwargs)
+        return _cmf_core.DirichletBoundary_set_conc(self, *args, **kwargs)
 
-    is_source = _swig_property(_cmf_core.DricheletBoundary_is_source_get, _cmf_core.DricheletBoundary_is_source_set)
+    is_source = _swig_property(_cmf_core.DirichletBoundary_is_source_get, _cmf_core.DirichletBoundary_is_source_set)
     def RecalcFluxes(self, *args, **kwargs):
         """
         RecalcFluxes(self, Time t) -> bool
@@ -2973,24 +3033,24 @@ class DricheletBoundary(flux_node):
         fluxes is required by flux_node. WaterStorage overrides this, since
         state changes require an update of the fluxes 
         """
-        return _cmf_core.DricheletBoundary_RecalcFluxes(self, *args, **kwargs)
+        return _cmf_core.DirichletBoundary_RecalcFluxes(self, *args, **kwargs)
 
     def __init__(self, *args, **kwargs): 
         """
-        __init__(self, project _p, real potential, point Location = cmf::geometry::point()) -> DricheletBoundary
+        __init__(self, project _p, real potential, point Location = cmf::geometry::point()) -> DirichletBoundary
 
-        DricheletBoundary(const cmf::project &_p, real potential,
+        DirichletBoundary(const cmf::project &_p, real potential,
         cmf::geometry::point Location=cmf::geometry::point()) 
         """
-        _cmf_core.DricheletBoundary_swiginit(self,_cmf_core.new_DricheletBoundary(*args, **kwargs))
+        _cmf_core.DirichletBoundary_swiginit(self,_cmf_core.new_DirichletBoundary(*args, **kwargs))
     def __repr__(self): 
         return self.to_string()
 
-    __swig_destroy__ = _cmf_core.delete_DricheletBoundary
-DricheletBoundary.set_conc = new_instancemethod(_cmf_core.DricheletBoundary_set_conc,None,DricheletBoundary)
-DricheletBoundary.RecalcFluxes = new_instancemethod(_cmf_core.DricheletBoundary_RecalcFluxes,None,DricheletBoundary)
-DricheletBoundary_swigregister = _cmf_core.DricheletBoundary_swigregister
-DricheletBoundary_swigregister(DricheletBoundary)
+    __swig_destroy__ = _cmf_core.delete_DirichletBoundary
+DirichletBoundary.set_conc = new_instancemethod(_cmf_core.DirichletBoundary_set_conc,None,DirichletBoundary)
+DirichletBoundary.RecalcFluxes = new_instancemethod(_cmf_core.DirichletBoundary_RecalcFluxes,None,DirichletBoundary)
+DirichletBoundary_swigregister = _cmf_core.DirichletBoundary_swigregister
+DirichletBoundary_swigregister(DirichletBoundary)
 
 class NeumannBoundary(flux_node):
     """
@@ -3509,7 +3569,7 @@ class NeumannBoundary_list(object):
 
     With this specialized list a num_array can be passed to the boundary
     conditions for a fast flux update If a multiple system layout for the
-    cmf setup is chosen, we might have a node_list Drichelet boundary
+    cmf setup is chosen, we might have a node_list Dirichlet boundary
     conditions (dbc), a corresponding NeumannBoundary_list (nbc) of
     Neumann boundaries and a node_list containing the storages connected
     with the NeumannBoundary_list (storages). The fast data exchange is
@@ -3641,18 +3701,23 @@ class SystemBridge(flux_node):
     time.
 
     A SystemBridge can be used to replace an existing connection between
-    nodes. It is created using the system_bridge function After
+    nodes. It is created using the system_bridge function. After
     installation, the two nodes can more safely be added to different
     integrator systems. One node (called upper) is connected with the
     system bridge with the connection formerly connecting the nodes, the
     second node (called lower) is connected to the system bridge with as a
     Neumann boundary condition. The flux equals the average flux of the
-    connection upper <-> SystemBridge. Therefore, the system bridge must
-    become an integratable of the integrator system the upper node belongs
-    to. Use as an upper system (system upper node is belonging to) the
-    faster reacting system. For the connection between upper and
-    SystemBridge, the SystemBridge reacts as an Drichelet boundary
-    condition, providing the potential of the lower node.
+    connection upper <-> SystemBridge. Therefore, the downward flux needs
+    to be integrated over time by the solver the upper node belongs to.
+    Use as an upper system (system upper node is belonging to) the faster
+    reacting system. For the connection between upper and SystemBridge,
+    the SystemBridge reacts as an Dirichlet boundary condition, providing
+    the potential of the lower node.
+
+    The following example code creates a system bridge between the nodes
+    upper and lower. To integrate the flux over each timestep
+    automatically, the systembridge is added to the solver of upper, as an
+    integratable
 
     C++ includes: system_bridge.h 
     """
@@ -3690,7 +3755,11 @@ class SystemBridge(flux_node):
         return _cmf_core.SystemBridge_get_down_flux(self, *args, **kwargs)
 
     def down_flux_integrator(self, *args, **kwargs):
-        """down_flux_integrator(self) -> ptr"""
+        """
+        down_flux_integrator(self) -> ptr
+
+        flux_integrator::ptr down_flux_integrator() const 
+        """
         return _cmf_core.SystemBridge_down_flux_integrator(self, *args, **kwargs)
 
     __swig_destroy__ = _cmf_core.delete_SystemBridge
@@ -3737,7 +3806,7 @@ def system_bridge(*args, **kwargs):
     system bridge must become an integratable of the integrator system the
     upper node belongs to. Use as an upper system (system upper node is
     belonging to) the faster reacting system. For the connection between
-    upper and SystemBridge, the SystemBridge reacts as an Drichelet
+    upper and SystemBridge, the SystemBridge reacts as an Dirichlet
     boundary condition, providing the potential of the lower node. 
     """
   return _cmf_core.system_bridge(*args, **kwargs)
@@ -5700,11 +5769,7 @@ class RetentionCurve(object):
         K(self, real wetness) -> real
         K(self, cmf::math::num_array wetness) -> cmf::math::num_array
 
-        virtual real
-        K(real wetness) const =0
-
-        Returns the conductivity in m/day at a certain depth and water
-        content. 
+        cmf::math::num_array K(const cmf::math::num_array &wetness) const 
         """
         return _cmf_core.RetentionCurve_K(self, *args)
 
@@ -5757,11 +5822,8 @@ class RetentionCurve(object):
         Wetness(self, real suction) -> real
         Wetness(self, cmf::math::num_array suction) -> cmf::math::num_array
 
-        virtual
-        real Wetness(real suction) const
-
-        returns the wetness (volumetric water content per pore space) at a
-        given suction pressure 
+        cmf::math::num_array Wetness(const cmf::math::num_array &suction)
+        const 
         """
         return _cmf_core.RetentionCurve_Wetness(self, *args)
 
@@ -5770,10 +5832,8 @@ class RetentionCurve(object):
         Wetness_pF(self, real pF) -> real
         Wetness_pF(self, cmf::math::num_array pF) -> cmf::math::num_array
 
-        real
-        Wetness_pF(real pF) const
+        cmf::math::num_array Wetness_pF(const cmf::math::num_array &pF) const
 
-        returns the volumetric water content at a given pF value 
         """
         return _cmf_core.RetentionCurve_Wetness_pF(self, *args)
 
@@ -5782,9 +5842,8 @@ class RetentionCurve(object):
         MatricPotential(self, real wetness) -> real
         MatricPotential(self, cmf::math::num_array wetness) -> cmf::math::num_array
 
-        virtual real MatricPotential(real wetness) const
-
-        returns the wetness of the soil at given water content 
+        cmf::math::num_array MatricPotential(const cmf::math::num_array
+        &wetness) const 
         """
         return _cmf_core.RetentionCurve_MatricPotential(self, *args)
 
@@ -7314,7 +7373,7 @@ class aquifer_Darcy(flux_connection):
         real width)
 
         Creates a new Darcy flow connection between two aquifers, or an
-        aquifer and another node acting as Drichelet boundary condition
+        aquifer and another node acting as Dirichlet boundary condition
 
         Parameters:
         -----------
@@ -7322,7 +7381,7 @@ class aquifer_Darcy(flux_connection):
         left:  One aquifer
 
         right:  Another aquifer, or a flux node that can be interpreted as an
-        Drichelet boundary
+        Dirichlet boundary
 
         width:  Width of the connection 
         """
@@ -8667,11 +8726,11 @@ class project(StateVariableOwner):
         """
         NewOutlet(self, string name, double x, double y, double z) -> ptr
 
-        cmf::water::DricheletBoundary::ptr NewOutlet(std::string name, double
+        cmf::water::DirichletBoundary::ptr NewOutlet(std::string name, double
         x, double y, double z)
 
-        Creates a new Drichelet boundary condition and adds it to the list of
-        outlets The potential of the Drichelet boundary equals p.z 
+        Creates a new Dirichlet boundary condition and adds it to the list of
+        outlets The potential of the Dirichlet boundary equals p.z 
         """
         return _cmf_core.project_NewOutlet(self, *args, **kwargs)
 

@@ -2786,7 +2786,7 @@ SWIG_Python_MustGetPtr(PyObject *obj, swig_type_info *ty, int argnum, int flags)
 #define SWIGTYPE_p_cmf__upslope__neighbor_iterator swig_types[98]
 #define SWIGTYPE_p_cmf__upslope__subcatchment swig_types[99]
 #define SWIGTYPE_p_cmf__upslope__vegetation__Vegetation swig_types[100]
-#define SWIGTYPE_p_cmf__water__DricheletBoundary swig_types[101]
+#define SWIGTYPE_p_cmf__water__DirichletBoundary swig_types[101]
 #define SWIGTYPE_p_cmf__water__NeumannBoundary swig_types[102]
 #define SWIGTYPE_p_cmf__water__NeumannBoundary_list swig_types[103]
 #define SWIGTYPE_p_cmf__water__NeumannFlux swig_types[104]
@@ -2830,7 +2830,7 @@ SWIG_Python_MustGetPtr(PyObject *obj, swig_type_info *ty, int argnum, int flags)
 #define SWIGTYPE_p_std__tr1__shared_ptrT_cmf__upslope__ET__transpiration_method_t swig_types[142]
 #define SWIGTYPE_p_std__tr1__shared_ptrT_cmf__upslope__SoilLayer_t swig_types[143]
 #define SWIGTYPE_p_std__tr1__shared_ptrT_cmf__upslope__aquifer_t swig_types[144]
-#define SWIGTYPE_p_std__tr1__shared_ptrT_cmf__water__DricheletBoundary_t swig_types[145]
+#define SWIGTYPE_p_std__tr1__shared_ptrT_cmf__water__DirichletBoundary_t swig_types[145]
 #define SWIGTYPE_p_std__tr1__shared_ptrT_cmf__water__NeumannBoundary_t swig_types[146]
 #define SWIGTYPE_p_std__tr1__shared_ptrT_cmf__water__SoluteStorage_t swig_types[147]
 #define SWIGTYPE_p_std__tr1__shared_ptrT_cmf__water__SystemBridge_t swig_types[148]
@@ -22423,11 +22423,11 @@ SWIGINTERN PyObject *_wrap_flux_connection_get_target__SWIG_0(PyObject *SWIGUNUS
     /*@SWIG@*/
     
     /*@SWIG:C:\Program Files\pythonxy\swig\Lib\typemaps\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf\cmf_core_src\cmf_swiglib.i,53,%_node_down_cast@*/
-    if (dcast==0 && result) /*check for cmf::water::DricheletBoundary*/  {
-      std::tr1::shared_ptr<cmf::water::DricheletBoundary> output = std::tr1::dynamic_pointer_cast<cmf::water::DricheletBoundary>(result);
-      if (output) /*flux_node is cmf::water::DricheletBoundary */ {
+    if (dcast==0 && result) /*check for cmf::water::DirichletBoundary*/  {
+      std::tr1::shared_ptr<cmf::water::DirichletBoundary> output = std::tr1::dynamic_pointer_cast<cmf::water::DirichletBoundary>(result);
+      if (output) /*flux_node is cmf::water::DirichletBoundary */ {
         dcast=1; 
-        resultobj = SWIG_NewPointerObj(new std::tr1::shared_ptr<cmf::water::DricheletBoundary>(output),SWIGTYPE_p_std__tr1__shared_ptrT_cmf__water__DricheletBoundary_t, SWIG_POINTER_OWN); 
+        resultobj = SWIG_NewPointerObj(new std::tr1::shared_ptr<cmf::water::DirichletBoundary>(output),SWIGTYPE_p_std__tr1__shared_ptrT_cmf__water__DirichletBoundary_t, SWIG_POINTER_OWN); 
       }
     }
     /*@SWIG@*/
@@ -22561,11 +22561,11 @@ SWIGINTERN PyObject *_wrap_flux_connection_get_target__SWIG_1(PyObject *SWIGUNUS
     /*@SWIG@*/
     
     /*@SWIG:C:\Program Files\pythonxy\swig\Lib\typemaps\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf\cmf_core_src\cmf_swiglib.i,53,%_node_down_cast@*/
-    if (dcast==0 && result) /*check for cmf::water::DricheletBoundary*/  {
-      std::tr1::shared_ptr<cmf::water::DricheletBoundary> output = std::tr1::dynamic_pointer_cast<cmf::water::DricheletBoundary>(result);
-      if (output) /*flux_node is cmf::water::DricheletBoundary */ {
+    if (dcast==0 && result) /*check for cmf::water::DirichletBoundary*/  {
+      std::tr1::shared_ptr<cmf::water::DirichletBoundary> output = std::tr1::dynamic_pointer_cast<cmf::water::DirichletBoundary>(result);
+      if (output) /*flux_node is cmf::water::DirichletBoundary */ {
         dcast=1; 
-        resultobj = SWIG_NewPointerObj(new std::tr1::shared_ptr<cmf::water::DricheletBoundary>(output),SWIGTYPE_p_std__tr1__shared_ptrT_cmf__water__DricheletBoundary_t, SWIG_POINTER_OWN); 
+        resultobj = SWIG_NewPointerObj(new std::tr1::shared_ptr<cmf::water::DirichletBoundary>(output),SWIGTYPE_p_std__tr1__shared_ptrT_cmf__water__DirichletBoundary_t, SWIG_POINTER_OWN); 
       }
     }
     /*@SWIG@*/
@@ -23992,15 +23992,15 @@ SWIGINTERN PyObject *linear_scale_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObj
   return SWIG_Python_InitShadowInstance(args);
 }
 
-SWIGINTERN PyObject *_wrap_DricheletBoundary_set_conc(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+SWIGINTERN PyObject *_wrap_DirichletBoundary_set_conc(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
-  cmf::water::DricheletBoundary *arg1 = (cmf::water::DricheletBoundary *) 0 ;
+  cmf::water::DirichletBoundary *arg1 = (cmf::water::DirichletBoundary *) 0 ;
   cmf::water::solute *arg2 = 0 ;
   double arg3 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  std::tr1::shared_ptr< cmf::water::DricheletBoundary > tempshared1 ;
-  std::tr1::shared_ptr< cmf::water::DricheletBoundary > *smartarg1 = 0 ;
+  std::tr1::shared_ptr< cmf::water::DirichletBoundary > tempshared1 ;
+  std::tr1::shared_ptr< cmf::water::DirichletBoundary > *smartarg1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
   double val3 ;
@@ -24012,33 +24012,33 @@ SWIGINTERN PyObject *_wrap_DricheletBoundary_set_conc(PyObject *SWIGUNUSEDPARM(s
     (char *) "self",(char *) "_Solute",(char *) "value", NULL 
   };
   
-  if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"OOO:DricheletBoundary_set_conc",kwnames,&obj0,&obj1,&obj2)) SWIG_fail;
+  if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"OOO:DirichletBoundary_set_conc",kwnames,&obj0,&obj1,&obj2)) SWIG_fail;
   {
     int newmem = 0;
-    res1 = SWIG_ConvertPtrAndOwn(obj0, &argp1, SWIGTYPE_p_std__tr1__shared_ptrT_cmf__water__DricheletBoundary_t, 0 |  0 , &newmem);
+    res1 = SWIG_ConvertPtrAndOwn(obj0, &argp1, SWIGTYPE_p_std__tr1__shared_ptrT_cmf__water__DirichletBoundary_t, 0 |  0 , &newmem);
     if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DricheletBoundary_set_conc" "', argument " "1"" of type '" "cmf::water::DricheletBoundary *""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DirichletBoundary_set_conc" "', argument " "1"" of type '" "cmf::water::DirichletBoundary *""'"); 
     }
     if (newmem & SWIG_CAST_NEW_MEMORY) {
-      tempshared1 = *reinterpret_cast< std::tr1::shared_ptr<  cmf::water::DricheletBoundary > * >(argp1);
-      delete reinterpret_cast< std::tr1::shared_ptr<  cmf::water::DricheletBoundary > * >(argp1);
-      arg1 = const_cast< cmf::water::DricheletBoundary * >(tempshared1.get());
+      tempshared1 = *reinterpret_cast< std::tr1::shared_ptr<  cmf::water::DirichletBoundary > * >(argp1);
+      delete reinterpret_cast< std::tr1::shared_ptr<  cmf::water::DirichletBoundary > * >(argp1);
+      arg1 = const_cast< cmf::water::DirichletBoundary * >(tempshared1.get());
     } else {
-      smartarg1 = reinterpret_cast< std::tr1::shared_ptr<  cmf::water::DricheletBoundary > * >(argp1);
-      arg1 = const_cast< cmf::water::DricheletBoundary * >((smartarg1 ? smartarg1->get() : 0));
+      smartarg1 = reinterpret_cast< std::tr1::shared_ptr<  cmf::water::DirichletBoundary > * >(argp1);
+      arg1 = const_cast< cmf::water::DirichletBoundary * >((smartarg1 ? smartarg1->get() : 0));
     }
   }
   res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_cmf__water__solute,  0  | 0);
   if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "DricheletBoundary_set_conc" "', argument " "2"" of type '" "cmf::water::solute const &""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "DirichletBoundary_set_conc" "', argument " "2"" of type '" "cmf::water::solute const &""'"); 
   }
   if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "DricheletBoundary_set_conc" "', argument " "2"" of type '" "cmf::water::solute const &""'"); 
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "DirichletBoundary_set_conc" "', argument " "2"" of type '" "cmf::water::solute const &""'"); 
   }
   arg2 = reinterpret_cast< cmf::water::solute * >(argp2);
   ecode3 = SWIG_AsVal_double(obj2, &val3);
   if (!SWIG_IsOK(ecode3)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "DricheletBoundary_set_conc" "', argument " "3"" of type '" "double""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "DirichletBoundary_set_conc" "', argument " "3"" of type '" "double""'");
   } 
   arg3 = static_cast< double >(val3);
   {
@@ -24058,37 +24058,37 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_DricheletBoundary_is_source_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_DirichletBoundary_is_source_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  cmf::water::DricheletBoundary *arg1 = (cmf::water::DricheletBoundary *) 0 ;
+  cmf::water::DirichletBoundary *arg1 = (cmf::water::DirichletBoundary *) 0 ;
   bool arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  std::tr1::shared_ptr< cmf::water::DricheletBoundary > tempshared1 ;
-  std::tr1::shared_ptr< cmf::water::DricheletBoundary > *smartarg1 = 0 ;
+  std::tr1::shared_ptr< cmf::water::DirichletBoundary > tempshared1 ;
+  std::tr1::shared_ptr< cmf::water::DirichletBoundary > *smartarg1 = 0 ;
   bool val2 ;
   int ecode2 = 0 ;
   PyObject *swig_obj[2] ;
   
-  if (!SWIG_Python_UnpackTuple(args,"DricheletBoundary_is_source_set",2,2,swig_obj)) SWIG_fail;
+  if (!SWIG_Python_UnpackTuple(args,"DirichletBoundary_is_source_set",2,2,swig_obj)) SWIG_fail;
   {
     int newmem = 0;
-    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_std__tr1__shared_ptrT_cmf__water__DricheletBoundary_t, 0 |  0 , &newmem);
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_std__tr1__shared_ptrT_cmf__water__DirichletBoundary_t, 0 |  0 , &newmem);
     if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DricheletBoundary_is_source_set" "', argument " "1"" of type '" "cmf::water::DricheletBoundary *""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DirichletBoundary_is_source_set" "', argument " "1"" of type '" "cmf::water::DirichletBoundary *""'"); 
     }
     if (newmem & SWIG_CAST_NEW_MEMORY) {
-      tempshared1 = *reinterpret_cast< std::tr1::shared_ptr<  cmf::water::DricheletBoundary > * >(argp1);
-      delete reinterpret_cast< std::tr1::shared_ptr<  cmf::water::DricheletBoundary > * >(argp1);
-      arg1 = const_cast< cmf::water::DricheletBoundary * >(tempshared1.get());
+      tempshared1 = *reinterpret_cast< std::tr1::shared_ptr<  cmf::water::DirichletBoundary > * >(argp1);
+      delete reinterpret_cast< std::tr1::shared_ptr<  cmf::water::DirichletBoundary > * >(argp1);
+      arg1 = const_cast< cmf::water::DirichletBoundary * >(tempshared1.get());
     } else {
-      smartarg1 = reinterpret_cast< std::tr1::shared_ptr<  cmf::water::DricheletBoundary > * >(argp1);
-      arg1 = const_cast< cmf::water::DricheletBoundary * >((smartarg1 ? smartarg1->get() : 0));
+      smartarg1 = reinterpret_cast< std::tr1::shared_ptr<  cmf::water::DirichletBoundary > * >(argp1);
+      arg1 = const_cast< cmf::water::DirichletBoundary * >((smartarg1 ? smartarg1->get() : 0));
     }
   }
   ecode2 = SWIG_AsVal_bool(swig_obj[1], &val2);
   if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "DricheletBoundary_is_source_set" "', argument " "2"" of type '" "bool""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "DirichletBoundary_is_source_set" "', argument " "2"" of type '" "bool""'");
   } 
   arg2 = static_cast< bool >(val2);
   if (arg1) (arg1)->is_source = arg2;
@@ -24099,13 +24099,13 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_DricheletBoundary_is_source_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_DirichletBoundary_is_source_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  cmf::water::DricheletBoundary *arg1 = (cmf::water::DricheletBoundary *) 0 ;
+  cmf::water::DirichletBoundary *arg1 = (cmf::water::DirichletBoundary *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  std::tr1::shared_ptr< cmf::water::DricheletBoundary > tempshared1 ;
-  std::tr1::shared_ptr< cmf::water::DricheletBoundary > *smartarg1 = 0 ;
+  std::tr1::shared_ptr< cmf::water::DirichletBoundary > tempshared1 ;
+  std::tr1::shared_ptr< cmf::water::DirichletBoundary > *smartarg1 = 0 ;
   PyObject *swig_obj[1] ;
   bool result;
   
@@ -24113,17 +24113,17 @@ SWIGINTERN PyObject *_wrap_DricheletBoundary_is_source_get(PyObject *SWIGUNUSEDP
   swig_obj[0] = args;
   {
     int newmem = 0;
-    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_std__tr1__shared_ptrT_cmf__water__DricheletBoundary_t, 0 |  0 , &newmem);
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_std__tr1__shared_ptrT_cmf__water__DirichletBoundary_t, 0 |  0 , &newmem);
     if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DricheletBoundary_is_source_get" "', argument " "1"" of type '" "cmf::water::DricheletBoundary *""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DirichletBoundary_is_source_get" "', argument " "1"" of type '" "cmf::water::DirichletBoundary *""'"); 
     }
     if (newmem & SWIG_CAST_NEW_MEMORY) {
-      tempshared1 = *reinterpret_cast< std::tr1::shared_ptr<  cmf::water::DricheletBoundary > * >(argp1);
-      delete reinterpret_cast< std::tr1::shared_ptr<  cmf::water::DricheletBoundary > * >(argp1);
-      arg1 = const_cast< cmf::water::DricheletBoundary * >(tempshared1.get());
+      tempshared1 = *reinterpret_cast< std::tr1::shared_ptr<  cmf::water::DirichletBoundary > * >(argp1);
+      delete reinterpret_cast< std::tr1::shared_ptr<  cmf::water::DirichletBoundary > * >(argp1);
+      arg1 = const_cast< cmf::water::DirichletBoundary * >(tempshared1.get());
     } else {
-      smartarg1 = reinterpret_cast< std::tr1::shared_ptr<  cmf::water::DricheletBoundary > * >(argp1);
-      arg1 = const_cast< cmf::water::DricheletBoundary * >((smartarg1 ? smartarg1->get() : 0));
+      smartarg1 = reinterpret_cast< std::tr1::shared_ptr<  cmf::water::DirichletBoundary > * >(argp1);
+      arg1 = const_cast< cmf::water::DirichletBoundary * >((smartarg1 ? smartarg1->get() : 0));
     }
   }
   result = (bool) ((arg1)->is_source);
@@ -24134,14 +24134,14 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_DricheletBoundary_RecalcFluxes(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+SWIGINTERN PyObject *_wrap_DirichletBoundary_RecalcFluxes(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
-  cmf::water::DricheletBoundary *arg1 = (cmf::water::DricheletBoundary *) 0 ;
+  cmf::water::DirichletBoundary *arg1 = (cmf::water::DirichletBoundary *) 0 ;
   cmf::math::Time arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  std::tr1::shared_ptr< cmf::water::DricheletBoundary const > tempshared1 ;
-  std::tr1::shared_ptr< cmf::water::DricheletBoundary const > *smartarg1 = 0 ;
+  std::tr1::shared_ptr< cmf::water::DirichletBoundary const > tempshared1 ;
+  std::tr1::shared_ptr< cmf::water::DirichletBoundary const > *smartarg1 = 0 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   char *  kwnames[] = {
@@ -24149,20 +24149,20 @@ SWIGINTERN PyObject *_wrap_DricheletBoundary_RecalcFluxes(PyObject *SWIGUNUSEDPA
   };
   bool result;
   
-  if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"OO:DricheletBoundary_RecalcFluxes",kwnames,&obj0,&obj1)) SWIG_fail;
+  if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"OO:DirichletBoundary_RecalcFluxes",kwnames,&obj0,&obj1)) SWIG_fail;
   {
     int newmem = 0;
-    res1 = SWIG_ConvertPtrAndOwn(obj0, &argp1, SWIGTYPE_p_std__tr1__shared_ptrT_cmf__water__DricheletBoundary_t, 0 |  0 , &newmem);
+    res1 = SWIG_ConvertPtrAndOwn(obj0, &argp1, SWIGTYPE_p_std__tr1__shared_ptrT_cmf__water__DirichletBoundary_t, 0 |  0 , &newmem);
     if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DricheletBoundary_RecalcFluxes" "', argument " "1"" of type '" "cmf::water::DricheletBoundary const *""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DirichletBoundary_RecalcFluxes" "', argument " "1"" of type '" "cmf::water::DirichletBoundary const *""'"); 
     }
     if (newmem & SWIG_CAST_NEW_MEMORY) {
-      tempshared1 = *reinterpret_cast< std::tr1::shared_ptr< const cmf::water::DricheletBoundary > * >(argp1);
-      delete reinterpret_cast< std::tr1::shared_ptr< const cmf::water::DricheletBoundary > * >(argp1);
-      arg1 = const_cast< cmf::water::DricheletBoundary * >(tempshared1.get());
+      tempshared1 = *reinterpret_cast< std::tr1::shared_ptr< const cmf::water::DirichletBoundary > * >(argp1);
+      delete reinterpret_cast< std::tr1::shared_ptr< const cmf::water::DirichletBoundary > * >(argp1);
+      arg1 = const_cast< cmf::water::DirichletBoundary * >(tempshared1.get());
     } else {
-      smartarg1 = reinterpret_cast< std::tr1::shared_ptr< const cmf::water::DricheletBoundary > * >(argp1);
-      arg1 = const_cast< cmf::water::DricheletBoundary * >((smartarg1 ? smartarg1->get() : 0));
+      smartarg1 = reinterpret_cast< std::tr1::shared_ptr< const cmf::water::DirichletBoundary > * >(argp1);
+      arg1 = const_cast< cmf::water::DirichletBoundary * >((smartarg1 ? smartarg1->get() : 0));
     }
   }
   {
@@ -24175,7 +24175,7 @@ SWIGINTERN PyObject *_wrap_DricheletBoundary_RecalcFluxes(PyObject *SWIGUNUSEDPA
   }
   {
     try {
-      result = (bool)((cmf::water::DricheletBoundary const *)arg1)->RecalcFluxes(arg2);
+      result = (bool)((cmf::water::DirichletBoundary const *)arg1)->RecalcFluxes(arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -24190,7 +24190,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_new_DricheletBoundary(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+SWIGINTERN PyObject *_wrap_new_DirichletBoundary(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   cmf::project *arg1 = 0 ;
   real arg2 ;
@@ -24205,20 +24205,20 @@ SWIGINTERN PyObject *_wrap_new_DricheletBoundary(PyObject *SWIGUNUSEDPARM(self),
   char *  kwnames[] = {
     (char *) "_p",(char *) "potential",(char *) "Location", NULL 
   };
-  cmf::water::DricheletBoundary *result = 0 ;
+  cmf::water::DirichletBoundary *result = 0 ;
   
-  if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"OO|O:new_DricheletBoundary",kwnames,&obj0,&obj1,&obj2)) SWIG_fail;
+  if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"OO|O:new_DirichletBoundary",kwnames,&obj0,&obj1,&obj2)) SWIG_fail;
   res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_cmf__project,  0  | 0);
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_DricheletBoundary" "', argument " "1"" of type '" "cmf::project const &""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_DirichletBoundary" "', argument " "1"" of type '" "cmf::project const &""'"); 
   }
   if (!argp1) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_DricheletBoundary" "', argument " "1"" of type '" "cmf::project const &""'"); 
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_DirichletBoundary" "', argument " "1"" of type '" "cmf::project const &""'"); 
   }
   arg1 = reinterpret_cast< cmf::project * >(argp1);
   ecode2 = SWIG_AsVal_double(obj1, &val2);
   if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "new_DricheletBoundary" "', argument " "2"" of type '" "real""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "new_DirichletBoundary" "', argument " "2"" of type '" "real""'");
   } 
   arg2 = static_cast< real >(val2);
   if (obj2) {
@@ -24245,7 +24245,7 @@ SWIGINTERN PyObject *_wrap_new_DricheletBoundary(PyObject *SWIGUNUSEDPARM(self),
   }
   {
     try {
-      result = (cmf::water::DricheletBoundary *)new cmf::water::DricheletBoundary((cmf::project const &)*arg1,arg2,arg3);
+      result = (cmf::water::DirichletBoundary *)new cmf::water::DirichletBoundary((cmf::project const &)*arg1,arg2,arg3);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -24254,8 +24254,8 @@ SWIGINTERN PyObject *_wrap_new_DricheletBoundary(PyObject *SWIGUNUSEDPARM(self),
     
   }
   {
-    std::tr1::shared_ptr<  cmf::water::DricheletBoundary > *smartresult = result ? new std::tr1::shared_ptr<  cmf::water::DricheletBoundary >(result SWIG_NO_NULL_DELETER_SWIG_POINTER_NEW) : 0;
-    resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(smartresult), SWIGTYPE_p_std__tr1__shared_ptrT_cmf__water__DricheletBoundary_t, SWIG_POINTER_NEW | SWIG_POINTER_OWN);
+    std::tr1::shared_ptr<  cmf::water::DirichletBoundary > *smartresult = result ? new std::tr1::shared_ptr<  cmf::water::DirichletBoundary >(result SWIG_NO_NULL_DELETER_SWIG_POINTER_NEW) : 0;
+    resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(smartresult), SWIGTYPE_p_std__tr1__shared_ptrT_cmf__water__DirichletBoundary_t, SWIG_POINTER_NEW | SWIG_POINTER_OWN);
   }
   return resultobj;
 fail:
@@ -24263,30 +24263,30 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_delete_DricheletBoundary(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_delete_DirichletBoundary(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  cmf::water::DricheletBoundary *arg1 = (cmf::water::DricheletBoundary *) 0 ;
+  cmf::water::DirichletBoundary *arg1 = (cmf::water::DirichletBoundary *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  std::tr1::shared_ptr< cmf::water::DricheletBoundary > tempshared1 ;
-  std::tr1::shared_ptr< cmf::water::DricheletBoundary > *smartarg1 = 0 ;
+  std::tr1::shared_ptr< cmf::water::DirichletBoundary > tempshared1 ;
+  std::tr1::shared_ptr< cmf::water::DirichletBoundary > *smartarg1 = 0 ;
   PyObject *swig_obj[1] ;
   
   if (!args) SWIG_fail;
   swig_obj[0] = args;
   {
     int newmem = 0;
-    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_std__tr1__shared_ptrT_cmf__water__DricheletBoundary_t, 0 |  0 , &newmem);
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_std__tr1__shared_ptrT_cmf__water__DirichletBoundary_t, 0 |  0 , &newmem);
     if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_DricheletBoundary" "', argument " "1"" of type '" "cmf::water::DricheletBoundary *""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_DirichletBoundary" "', argument " "1"" of type '" "cmf::water::DirichletBoundary *""'"); 
     }
     if (newmem & SWIG_CAST_NEW_MEMORY) {
-      tempshared1 = *reinterpret_cast< std::tr1::shared_ptr<  cmf::water::DricheletBoundary > * >(argp1);
-      delete reinterpret_cast< std::tr1::shared_ptr<  cmf::water::DricheletBoundary > * >(argp1);
-      arg1 = const_cast< cmf::water::DricheletBoundary * >(tempshared1.get());
+      tempshared1 = *reinterpret_cast< std::tr1::shared_ptr<  cmf::water::DirichletBoundary > * >(argp1);
+      delete reinterpret_cast< std::tr1::shared_ptr<  cmf::water::DirichletBoundary > * >(argp1);
+      arg1 = const_cast< cmf::water::DirichletBoundary * >(tempshared1.get());
     } else {
-      smartarg1 = reinterpret_cast< std::tr1::shared_ptr<  cmf::water::DricheletBoundary > * >(argp1);
-      arg1 = const_cast< cmf::water::DricheletBoundary * >((smartarg1 ? smartarg1->get() : 0));
+      smartarg1 = reinterpret_cast< std::tr1::shared_ptr<  cmf::water::DirichletBoundary > * >(argp1);
+      arg1 = const_cast< cmf::water::DirichletBoundary * >((smartarg1 ? smartarg1->get() : 0));
     }
   }
   {
@@ -24306,14 +24306,14 @@ fail:
 }
 
 
-SWIGINTERN PyObject *DricheletBoundary_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *DirichletBoundary_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *obj;
   if (!SWIG_Python_UnpackTuple(args,(char*)"swigregister", 1, 1,&obj)) return NULL;
-  SWIG_TypeNewClientData(SWIGTYPE_p_std__tr1__shared_ptrT_cmf__water__DricheletBoundary_t, SWIG_NewClientData(obj));
+  SWIG_TypeNewClientData(SWIGTYPE_p_std__tr1__shared_ptrT_cmf__water__DirichletBoundary_t, SWIG_NewClientData(obj));
   return SWIG_Py_Void();
 }
 
-SWIGINTERN PyObject *DricheletBoundary_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *DirichletBoundary_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   return SWIG_Python_InitShadowInstance(args);
 }
 
@@ -26917,11 +26917,11 @@ SWIGINTERN PyObject *_wrap_node_list___get(PyObject *SWIGUNUSEDPARM(self), PyObj
     /*@SWIG@*/
     
     /*@SWIG:C:\Program Files\pythonxy\swig\Lib\typemaps\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf\cmf_core_src\cmf_swiglib.i,53,%_node_down_cast@*/
-    if (dcast==0 && result) /*check for cmf::water::DricheletBoundary*/  {
-      std::tr1::shared_ptr<cmf::water::DricheletBoundary> output = std::tr1::dynamic_pointer_cast<cmf::water::DricheletBoundary>(result);
-      if (output) /*flux_node is cmf::water::DricheletBoundary */ {
+    if (dcast==0 && result) /*check for cmf::water::DirichletBoundary*/  {
+      std::tr1::shared_ptr<cmf::water::DirichletBoundary> output = std::tr1::dynamic_pointer_cast<cmf::water::DirichletBoundary>(result);
+      if (output) /*flux_node is cmf::water::DirichletBoundary */ {
         dcast=1; 
-        resultobj = SWIG_NewPointerObj(new std::tr1::shared_ptr<cmf::water::DricheletBoundary>(output),SWIGTYPE_p_std__tr1__shared_ptrT_cmf__water__DricheletBoundary_t, SWIG_POINTER_OWN); 
+        resultobj = SWIG_NewPointerObj(new std::tr1::shared_ptr<cmf::water::DirichletBoundary>(output),SWIGTYPE_p_std__tr1__shared_ptrT_cmf__water__DirichletBoundary_t, SWIG_POINTER_OWN); 
       }
     }
     /*@SWIG@*/
@@ -37767,11 +37767,11 @@ SWIGINTERN PyObject *_wrap_Cell_get_surfacewater(PyObject *SWIGUNUSEDPARM(self),
     /*@SWIG@*/
     
     /*@SWIG:C:\Program Files\pythonxy\swig\Lib\typemaps\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf\cmf_core_src\cmf_swiglib.i,53,%_node_down_cast@*/
-    if (dcast==0 && result) /*check for cmf::water::DricheletBoundary*/  {
-      std::tr1::shared_ptr<cmf::water::DricheletBoundary> output = std::tr1::dynamic_pointer_cast<cmf::water::DricheletBoundary>(result);
-      if (output) /*flux_node is cmf::water::DricheletBoundary */ {
+    if (dcast==0 && result) /*check for cmf::water::DirichletBoundary*/  {
+      std::tr1::shared_ptr<cmf::water::DirichletBoundary> output = std::tr1::dynamic_pointer_cast<cmf::water::DirichletBoundary>(result);
+      if (output) /*flux_node is cmf::water::DirichletBoundary */ {
         dcast=1; 
-        resultobj = SWIG_NewPointerObj(new std::tr1::shared_ptr<cmf::water::DricheletBoundary>(output),SWIGTYPE_p_std__tr1__shared_ptrT_cmf__water__DricheletBoundary_t, SWIG_POINTER_OWN); 
+        resultobj = SWIG_NewPointerObj(new std::tr1::shared_ptr<cmf::water::DirichletBoundary>(output),SWIGTYPE_p_std__tr1__shared_ptrT_cmf__water__DirichletBoundary_t, SWIG_POINTER_OWN); 
       }
     }
     /*@SWIG@*/
@@ -60555,7 +60555,7 @@ SWIGINTERN PyObject *_wrap_project_NewOutlet(PyObject *SWIGUNUSEDPARM(self), PyO
   char *  kwnames[] = {
     (char *) "self",(char *) "name",(char *) "x",(char *) "y",(char *) "z", NULL 
   };
-  cmf::water::DricheletBoundary::ptr result;
+  cmf::water::DirichletBoundary::ptr result;
   
   if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"OOOOO:project_NewOutlet",kwnames,&obj0,&obj1,&obj2,&obj3,&obj4)) SWIG_fail;
   res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_cmf__project, 0 |  0 );
@@ -60598,8 +60598,8 @@ SWIGINTERN PyObject *_wrap_project_NewOutlet(PyObject *SWIGUNUSEDPARM(self), PyO
     
   }
   {
-    std::tr1::shared_ptr<  cmf::water::DricheletBoundary > *smartresult = result ? new std::tr1::shared_ptr<  cmf::water::DricheletBoundary >(result) : 0;
-    resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(smartresult), SWIGTYPE_p_std__tr1__shared_ptrT_cmf__water__DricheletBoundary_t, SWIG_POINTER_OWN);
+    std::tr1::shared_ptr<  cmf::water::DirichletBoundary > *smartresult = result ? new std::tr1::shared_ptr<  cmf::water::DirichletBoundary >(result) : 0;
+    resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(smartresult), SWIGTYPE_p_std__tr1__shared_ptrT_cmf__water__DirichletBoundary_t, SWIG_POINTER_OWN);
   }
   return resultobj;
 fail:
@@ -61952,26 +61952,79 @@ static PyMethodDef SwigMethods[] = {
 		"integratable_integrate(integratable self, Time t)\n"
 		"\n"
 		"virtual\n"
-		"void integrate(Time t)=0 \n"
+		"void integrate(Time t)=0\n"
+		"\n"
+		"Integrates the variable until time t. \n"
 		""},
 	 { (char *)"integratable_reset", (PyCFunction) _wrap_integratable_reset, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
 		"integratable_reset(integratable self, Time t)\n"
 		"\n"
 		"virtual void\n"
-		"reset(Time t)=0 \n"
+		"reset(Time t)=0\n"
+		"\n"
+		"Sets the start time of the integral. \n"
 		""},
-	 { (char *)"integratable_sum", (PyCFunction)_wrap_integratable_sum, METH_O, (char *)"integratable_sum(integratable self) -> double"},
-	 { (char *)"integratable_avg", (PyCFunction)_wrap_integratable_avg, METH_O, (char *)"integratable_avg(integratable self) -> double"},
+	 { (char *)"integratable_sum", (PyCFunction)_wrap_integratable_sum, METH_O, (char *)"\n"
+		"integratable_sum(integratable self) -> double\n"
+		"\n"
+		"virtual double\n"
+		"sum() const =0 \n"
+		""},
+	 { (char *)"integratable_avg", (PyCFunction)_wrap_integratable_avg, METH_O, (char *)"\n"
+		"integratable_avg(integratable self) -> double\n"
+		"\n"
+		"virtual double\n"
+		"avg() const =0 \n"
+		""},
 	 { (char *)"delete_integratable", (PyCFunction)_wrap_delete_integratable, METH_O, (char *)"delete_integratable(integratable self)"},
 	 { (char *)"integratable_swigregister", integratable_swigregister, METH_VARARGS, NULL},
-	 { (char *)"integratable_list_append", (PyCFunction) _wrap_integratable_list_append, METH_VARARGS | METH_KEYWORDS, (char *)"integratable_list_append(integratable_list self, ptr add)"},
-	 { (char *)"integratable_list_remove", (PyCFunction) _wrap_integratable_list_remove, METH_VARARGS | METH_KEYWORDS, (char *)"integratable_list_remove(integratable_list self, ptr rm)"},
+	 { (char *)"integratable_list_append", (PyCFunction) _wrap_integratable_list_append, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
+		"integratable_list_append(integratable_list self, ptr add)\n"
+		"\n"
+		"void\n"
+		"append(cmf::math::integratable::ptr add)\n"
+		"\n"
+		"Adds an integratable to the list. \n"
+		""},
+	 { (char *)"integratable_list_remove", (PyCFunction) _wrap_integratable_list_remove, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
+		"integratable_list_remove(integratable_list self, ptr rm)\n"
+		"\n"
+		"void\n"
+		"remove(cmf::math::integratable::ptr rm)\n"
+		"\n"
+		"Removes an integratable from the list. \n"
+		""},
 	 { (char *)"integratable_list___getitem", (PyCFunction) _wrap_integratable_list___getitem, METH_VARARGS | METH_KEYWORDS, (char *)"integratable_list___getitem(integratable_list self, int index) -> ptr"},
-	 { (char *)"integratable_list_size", (PyCFunction)_wrap_integratable_list_size, METH_O, (char *)"integratable_list_size(integratable_list self) -> size_t"},
-	 { (char *)"integratable_list_avg", (PyCFunction)_wrap_integratable_list_avg, METH_O, (char *)"integratable_list_avg(integratable_list self) -> cmf::math::num_array"},
-	 { (char *)"integratable_list_sum", (PyCFunction)_wrap_integratable_list_sum, METH_O, (char *)"integratable_list_sum(integratable_list self) -> cmf::math::num_array"},
-	 { (char *)"integratable_list_reset", (PyCFunction) _wrap_integratable_list_reset, METH_VARARGS | METH_KEYWORDS, (char *)"integratable_list_reset(integratable_list self, Time t)"},
-	 { (char *)"integratable_list_integrate", (PyCFunction) _wrap_integratable_list_integrate, METH_VARARGS | METH_KEYWORDS, (char *)"integratable_list_integrate(integratable_list self, Time t)"},
+	 { (char *)"integratable_list_size", (PyCFunction)_wrap_integratable_list_size, METH_O, (char *)"\n"
+		"integratable_list_size(integratable_list self) -> size_t\n"
+		"\n"
+		"size_t\n"
+		"size() const\n"
+		"\n"
+		"Number of integratables in the list. \n"
+		""},
+	 { (char *)"integratable_list_avg", (PyCFunction)_wrap_integratable_list_avg, METH_O, (char *)"\n"
+		"integratable_list_avg(integratable_list self) -> cmf::math::num_array\n"
+		"\n"
+		"cmf::math::num_array avg() const \n"
+		""},
+	 { (char *)"integratable_list_sum", (PyCFunction)_wrap_integratable_list_sum, METH_O, (char *)"\n"
+		"integratable_list_sum(integratable_list self) -> cmf::math::num_array\n"
+		"\n"
+		"cmf::math::num_array sum() const \n"
+		""},
+	 { (char *)"integratable_list_reset", (PyCFunction) _wrap_integratable_list_reset, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
+		"integratable_list_reset(integratable_list self, Time t)\n"
+		"\n"
+		"void\n"
+		"reset(Time t) \n"
+		""},
+	 { (char *)"integratable_list_integrate", (PyCFunction) _wrap_integratable_list_integrate, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
+		"integratable_list_integrate(integratable_list self, Time t)\n"
+		"\n"
+		"void\n"
+		"integrate(Time t) \n"
+		""},
 	 { (char *)"integratable_list___len__", (PyCFunction)_wrap_integratable_list___len__, METH_O, (char *)"integratable_list___len__(integratable_list self) -> size_t"},
 	 { (char *)"new_integratable_list", (PyCFunction)_wrap_new_integratable_list, METH_NOARGS, (char *)"new_integratable_list() -> integratable_list"},
 	 { (char *)"delete_integratable_list", (PyCFunction)_wrap_delete_integratable_list, METH_O, (char *)"delete_integratable_list(integratable_list self)"},
@@ -62759,16 +62812,16 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"delete_linear_scale", (PyCFunction)_wrap_delete_linear_scale, METH_O, (char *)"delete_linear_scale(linear_scale self)"},
 	 { (char *)"linear_scale_swigregister", linear_scale_swigregister, METH_VARARGS, NULL},
 	 { (char *)"linear_scale_swiginit", linear_scale_swiginit, METH_VARARGS, NULL},
-	 { (char *)"DricheletBoundary_set_conc", (PyCFunction) _wrap_DricheletBoundary_set_conc, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
-		"DricheletBoundary_set_conc(DricheletBoundary self, solute _Solute, double value)\n"
+	 { (char *)"DirichletBoundary_set_conc", (PyCFunction) _wrap_DirichletBoundary_set_conc, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
+		"DirichletBoundary_set_conc(DirichletBoundary self, solute _Solute, double value)\n"
 		"\n"
 		"virtual void set_conc(const cmf::water::solute &_Solute, double value)\n"
 		"\n"
 		""},
-	 { (char *)"DricheletBoundary_is_source_set", _wrap_DricheletBoundary_is_source_set, METH_VARARGS, (char *)"DricheletBoundary_is_source_set(DricheletBoundary self, bool is_source)"},
-	 { (char *)"DricheletBoundary_is_source_get", (PyCFunction)_wrap_DricheletBoundary_is_source_get, METH_O, (char *)"DricheletBoundary_is_source_get(DricheletBoundary self) -> bool"},
-	 { (char *)"DricheletBoundary_RecalcFluxes", (PyCFunction) _wrap_DricheletBoundary_RecalcFluxes, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
-		"DricheletBoundary_RecalcFluxes(DricheletBoundary self, Time t) -> bool\n"
+	 { (char *)"DirichletBoundary_is_source_set", _wrap_DirichletBoundary_is_source_set, METH_VARARGS, (char *)"DirichletBoundary_is_source_set(DirichletBoundary self, bool is_source)"},
+	 { (char *)"DirichletBoundary_is_source_get", (PyCFunction)_wrap_DirichletBoundary_is_source_get, METH_O, (char *)"DirichletBoundary_is_source_get(DirichletBoundary self) -> bool"},
+	 { (char *)"DirichletBoundary_RecalcFluxes", (PyCFunction) _wrap_DirichletBoundary_RecalcFluxes, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
+		"DirichletBoundary_RecalcFluxes(DirichletBoundary self, Time t) -> bool\n"
 		"\n"
 		"virtual bool RecalcFluxes(cmf::math::Time t)\n"
 		"\n"
@@ -62776,15 +62829,15 @@ static PyMethodDef SwigMethods[] = {
 		"fluxes is required by flux_node. WaterStorage overrides this, since\n"
 		"state changes require an update of the fluxes \n"
 		""},
-	 { (char *)"new_DricheletBoundary", (PyCFunction) _wrap_new_DricheletBoundary, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
-		"new_DricheletBoundary(project _p, real potential, point Location = cmf::geometry::point()) -> DricheletBoundary\n"
+	 { (char *)"new_DirichletBoundary", (PyCFunction) _wrap_new_DirichletBoundary, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
+		"new_DirichletBoundary(project _p, real potential, point Location = cmf::geometry::point()) -> DirichletBoundary\n"
 		"\n"
-		"DricheletBoundary(const cmf::project &_p, real potential,\n"
+		"DirichletBoundary(const cmf::project &_p, real potential,\n"
 		"cmf::geometry::point Location=cmf::geometry::point()) \n"
 		""},
-	 { (char *)"delete_DricheletBoundary", (PyCFunction)_wrap_delete_DricheletBoundary, METH_O, (char *)"delete_DricheletBoundary(DricheletBoundary self)"},
-	 { (char *)"DricheletBoundary_swigregister", DricheletBoundary_swigregister, METH_VARARGS, NULL},
-	 { (char *)"DricheletBoundary_swiginit", DricheletBoundary_swiginit, METH_VARARGS, NULL},
+	 { (char *)"delete_DirichletBoundary", (PyCFunction)_wrap_delete_DirichletBoundary, METH_O, (char *)"delete_DirichletBoundary(DirichletBoundary self)"},
+	 { (char *)"DirichletBoundary_swigregister", DirichletBoundary_swigregister, METH_VARARGS, NULL},
+	 { (char *)"DirichletBoundary_swiginit", DirichletBoundary_swiginit, METH_VARARGS, NULL},
 	 { (char *)"NeumannBoundary_flux_set", _wrap_NeumannBoundary_flux_set, METH_VARARGS, (char *)"NeumannBoundary_flux_set(NeumannBoundary self, timeseries flux)"},
 	 { (char *)"NeumannBoundary_flux_get", (PyCFunction)_wrap_NeumannBoundary_flux_get, METH_O, (char *)"NeumannBoundary_flux_get(NeumannBoundary self) -> timeseries"},
 	 { (char *)"NeumannBoundary_flux_scale_set", _wrap_NeumannBoundary_flux_scale_set, METH_VARARGS, (char *)"NeumannBoundary_flux_scale_set(NeumannBoundary self, linear_scale flux_scale)"},
@@ -63153,7 +63206,11 @@ static PyMethodDef SwigMethods[] = {
 		"\n"
 		"Returns the currently integrated flux to the lower node. \n"
 		""},
-	 { (char *)"SystemBridge_down_flux_integrator", (PyCFunction)_wrap_SystemBridge_down_flux_integrator, METH_O, (char *)"SystemBridge_down_flux_integrator(SystemBridge self) -> ptr"},
+	 { (char *)"SystemBridge_down_flux_integrator", (PyCFunction)_wrap_SystemBridge_down_flux_integrator, METH_O, (char *)"\n"
+		"SystemBridge_down_flux_integrator(SystemBridge self) -> ptr\n"
+		"\n"
+		"flux_integrator::ptr down_flux_integrator() const \n"
+		""},
 	 { (char *)"delete_SystemBridge", (PyCFunction)_wrap_delete_SystemBridge, METH_O, (char *)"delete_SystemBridge(SystemBridge self)"},
 	 { (char *)"SystemBridge_swigregister", SystemBridge_swigregister, METH_VARARGS, NULL},
 	 { (char *)"delete_SystemBridgeConnection", (PyCFunction)_wrap_delete_SystemBridgeConnection, METH_O, (char *)"delete_SystemBridgeConnection(SystemBridgeConnection self)"},
@@ -63178,7 +63235,7 @@ static PyMethodDef SwigMethods[] = {
 		"system bridge must become an integratable of the integrator system the\n"
 		"upper node belongs to. Use as an upper system (system upper node is\n"
 		"belonging to) the faster reacting system. For the connection between\n"
-		"upper and SystemBridge, the SystemBridge reacts as an Drichelet\n"
+		"upper and SystemBridge, the SystemBridge reacts as an Dirichlet\n"
 		"boundary condition, providing the potential of the lower node. \n"
 		""},
 	 { (char *)"vapour_pressure", (PyCFunction) _wrap_vapour_pressure, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
@@ -64312,11 +64369,7 @@ static PyMethodDef SwigMethods[] = {
 		"K(real wetness) -> real\n"
 		"RetentionCurve_K(RetentionCurve self, cmf::math::num_array wetness) -> cmf::math::num_array\n"
 		"\n"
-		"virtual real\n"
-		"K(real wetness) const =0\n"
-		"\n"
-		"Returns the conductivity in m/day at a certain depth and water\n"
-		"content. \n"
+		"cmf::math::num_array K(const cmf::math::num_array &wetness) const \n"
 		""},
 	 { (char *)"RetentionCurve_Wetness_eff", (PyCFunction) _wrap_RetentionCurve_Wetness_eff, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
 		"RetentionCurve_Wetness_eff(RetentionCurve self, real wetness, real pF_r = 4.2) -> real\n"
@@ -64355,28 +64408,22 @@ static PyMethodDef SwigMethods[] = {
 		"Wetness(real suction) -> real\n"
 		"RetentionCurve_Wetness(RetentionCurve self, cmf::math::num_array suction) -> cmf::math::num_array\n"
 		"\n"
-		"virtual\n"
-		"real Wetness(real suction) const\n"
-		"\n"
-		"returns the wetness (volumetric water content per pore space) at a\n"
-		"given suction pressure \n"
+		"cmf::math::num_array Wetness(const cmf::math::num_array &suction)\n"
+		"const \n"
 		""},
 	 { (char *)"RetentionCurve_Wetness_pF", _wrap_RetentionCurve_Wetness_pF, METH_VARARGS, (char *)"\n"
 		"Wetness_pF(real pF) -> real\n"
 		"RetentionCurve_Wetness_pF(RetentionCurve self, cmf::math::num_array pF) -> cmf::math::num_array\n"
 		"\n"
-		"real\n"
-		"Wetness_pF(real pF) const\n"
+		"cmf::math::num_array Wetness_pF(const cmf::math::num_array &pF) const\n"
 		"\n"
-		"returns the volumetric water content at a given pF value \n"
 		""},
 	 { (char *)"RetentionCurve_MatricPotential", _wrap_RetentionCurve_MatricPotential, METH_VARARGS, (char *)"\n"
 		"MatricPotential(real wetness) -> real\n"
 		"RetentionCurve_MatricPotential(RetentionCurve self, cmf::math::num_array wetness) -> cmf::math::num_array\n"
 		"\n"
-		"virtual real MatricPotential(real wetness) const\n"
-		"\n"
-		"returns the wetness of the soil at given water content \n"
+		"cmf::math::num_array MatricPotential(const cmf::math::num_array\n"
+		"&wetness) const \n"
 		""},
 	 { (char *)"RetentionCurve_copy", (PyCFunction)_wrap_RetentionCurve_copy, METH_O, (char *)"\n"
 		"RetentionCurve_copy(RetentionCurve self) -> RetentionCurve\n"
@@ -65257,7 +65304,7 @@ static PyMethodDef SwigMethods[] = {
 		"real width)\n"
 		"\n"
 		"Creates a new Darcy flow connection between two aquifers, or an\n"
-		"aquifer and another node acting as Drichelet boundary condition\n"
+		"aquifer and another node acting as Dirichlet boundary condition\n"
 		"\n"
 		"Parameters:\n"
 		"-----------\n"
@@ -65265,7 +65312,7 @@ static PyMethodDef SwigMethods[] = {
 		"left:  One aquifer\n"
 		"\n"
 		"right:  Another aquifer, or a flux node that can be interpreted as an\n"
-		"Drichelet boundary\n"
+		"Dirichlet boundary\n"
 		"\n"
 		"width:  Width of the connection \n"
 		""},
@@ -65841,11 +65888,11 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"project_NewOutlet", (PyCFunction) _wrap_project_NewOutlet, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
 		"project_NewOutlet(project self, string name, double x, double y, double z) -> ptr\n"
 		"\n"
-		"cmf::water::DricheletBoundary::ptr NewOutlet(std::string name, double\n"
+		"cmf::water::DirichletBoundary::ptr NewOutlet(std::string name, double\n"
 		"x, double y, double z)\n"
 		"\n"
-		"Creates a new Drichelet boundary condition and adds it to the list of\n"
-		"outlets The potential of the Drichelet boundary equals p.z \n"
+		"Creates a new Dirichlet boundary condition and adds it to the list of\n"
+		"outlets The potential of the Dirichlet boundary equals p.z \n"
 		""},
 	 { (char *)"project_get_reach", (PyCFunction) _wrap_project_get_reach, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
 		"project_get_reach(project self, int index) -> ptr\n"
@@ -66068,8 +66115,8 @@ static void *_p_cmf__atmosphere__RainSourceTo_p_cmf__water__flux_node(void *x, i
 static void *_p_cmf__atmosphere__ConstantRainSourceTo_p_cmf__water__flux_node(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((cmf::water::flux_node *) (cmf::atmosphere::RainSource *) ((cmf::atmosphere::ConstantRainSource *) x));
 }
-static void *_p_cmf__water__DricheletBoundaryTo_p_cmf__water__flux_node(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((cmf::water::flux_node *)  ((cmf::water::DricheletBoundary *) x));
+static void *_p_cmf__water__DirichletBoundaryTo_p_cmf__water__flux_node(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((cmf::water::flux_node *)  ((cmf::water::DirichletBoundary *) x));
 }
 static void *_p_cmf__water__NeumannBoundaryTo_p_cmf__water__flux_node(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((cmf::water::flux_node *)  ((cmf::water::NeumannBoundary *) x));
@@ -66212,9 +66259,9 @@ static void *_p_std__tr1__shared_ptrT_cmf__upslope__aquifer_tTo_p_std__tr1__shar
     *newmemory = SWIG_CAST_NEW_MEMORY;
     return (void *) new std::tr1::shared_ptr< cmf::water::flux_node >(*(std::tr1::shared_ptr< cmf::upslope::aquifer > *)x);
 }
-static void *_p_std__tr1__shared_ptrT_cmf__water__DricheletBoundary_tTo_p_std__tr1__shared_ptrT_cmf__water__flux_node_t(void *x, int *newmemory) {
+static void *_p_std__tr1__shared_ptrT_cmf__water__DirichletBoundary_tTo_p_std__tr1__shared_ptrT_cmf__water__flux_node_t(void *x, int *newmemory) {
     *newmemory = SWIG_CAST_NEW_MEMORY;
-    return (void *) new std::tr1::shared_ptr< cmf::water::flux_node >(*(std::tr1::shared_ptr< cmf::water::DricheletBoundary > *)x);
+    return (void *) new std::tr1::shared_ptr< cmf::water::flux_node >(*(std::tr1::shared_ptr< cmf::water::DirichletBoundary > *)x);
 }
 static void *_p_std__tr1__shared_ptrT_cmf__atmosphere__RainSource_tTo_p_std__tr1__shared_ptrT_cmf__water__flux_node_t(void *x, int *newmemory) {
     *newmemory = SWIG_CAST_NEW_MEMORY;
@@ -66522,7 +66569,7 @@ static swig_type_info _swigt__p_cmf__upslope__layer_list = {"_p_cmf__upslope__la
 static swig_type_info _swigt__p_cmf__upslope__neighbor_iterator = {"_p_cmf__upslope__neighbor_iterator", "cmf::upslope::neighbor_iterator *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_cmf__upslope__subcatchment = {"_p_cmf__upslope__subcatchment", "cmf::upslope::subcatchment *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_cmf__upslope__vegetation__Vegetation = {"_p_cmf__upslope__vegetation__Vegetation", "cmf::upslope::vegetation::Vegetation *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_cmf__water__DricheletBoundary = {"_p_cmf__water__DricheletBoundary", "cmf::water::DricheletBoundary *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_cmf__water__DirichletBoundary = {"_p_cmf__water__DirichletBoundary", "cmf::water::DirichletBoundary *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_cmf__water__NeumannBoundary = {"_p_cmf__water__NeumannBoundary", "cmf::water::NeumannBoundary *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_cmf__water__NeumannBoundary_list = {"_p_cmf__water__NeumannBoundary_list", "cmf::water::NeumannBoundary_list *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_cmf__water__NeumannFlux = {"_p_cmf__water__NeumannFlux", "cmf::water::NeumannFlux *", 0, 0, (void*)0, 0};
@@ -66566,7 +66613,7 @@ static swig_type_info _swigt__p_std__tr1__shared_ptrT_cmf__upslope__ET__surface_
 static swig_type_info _swigt__p_std__tr1__shared_ptrT_cmf__upslope__ET__transpiration_method_t = {"_p_std__tr1__shared_ptrT_cmf__upslope__ET__transpiration_method_t", "std::tr1::shared_ptr< cmf::upslope::ET::transpiration_method > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__tr1__shared_ptrT_cmf__upslope__SoilLayer_t = {"_p_std__tr1__shared_ptrT_cmf__upslope__SoilLayer_t", "cmf::upslope::SoilLayer::ptr *|std::tr1::shared_ptr< cmf::upslope::SoilLayer > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__tr1__shared_ptrT_cmf__upslope__aquifer_t = {"_p_std__tr1__shared_ptrT_cmf__upslope__aquifer_t", "std::tr1::shared_ptr< cmf::upslope::aquifer > *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_std__tr1__shared_ptrT_cmf__water__DricheletBoundary_t = {"_p_std__tr1__shared_ptrT_cmf__water__DricheletBoundary_t", "std::tr1::shared_ptr< cmf::water::DricheletBoundary > *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_std__tr1__shared_ptrT_cmf__water__DirichletBoundary_t = {"_p_std__tr1__shared_ptrT_cmf__water__DirichletBoundary_t", "std::tr1::shared_ptr< cmf::water::DirichletBoundary > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__tr1__shared_ptrT_cmf__water__NeumannBoundary_t = {"_p_std__tr1__shared_ptrT_cmf__water__NeumannBoundary_t", "cmf::water::NeumannBoundary::ptr *|std::tr1::shared_ptr< cmf::water::NeumannBoundary > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__tr1__shared_ptrT_cmf__water__SoluteStorage_t = {"_p_std__tr1__shared_ptrT_cmf__water__SoluteStorage_t", "std::tr1::shared_ptr< cmf::water::SoluteStorage > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__tr1__shared_ptrT_cmf__water__SystemBridge_t = {"_p_std__tr1__shared_ptrT_cmf__water__SystemBridge_t", "std::tr1::shared_ptr< cmf::water::SystemBridge > *", 0, 0, (void*)0, 0};
@@ -66682,7 +66729,7 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_cmf__upslope__neighbor_iterator,
   &_swigt__p_cmf__upslope__subcatchment,
   &_swigt__p_cmf__upslope__vegetation__Vegetation,
-  &_swigt__p_cmf__water__DricheletBoundary,
+  &_swigt__p_cmf__water__DirichletBoundary,
   &_swigt__p_cmf__water__NeumannBoundary,
   &_swigt__p_cmf__water__NeumannBoundary_list,
   &_swigt__p_cmf__water__NeumannFlux,
@@ -66726,7 +66773,7 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_std__tr1__shared_ptrT_cmf__upslope__ET__transpiration_method_t,
   &_swigt__p_std__tr1__shared_ptrT_cmf__upslope__SoilLayer_t,
   &_swigt__p_std__tr1__shared_ptrT_cmf__upslope__aquifer_t,
-  &_swigt__p_std__tr1__shared_ptrT_cmf__water__DricheletBoundary_t,
+  &_swigt__p_std__tr1__shared_ptrT_cmf__water__DirichletBoundary_t,
   &_swigt__p_std__tr1__shared_ptrT_cmf__water__NeumannBoundary_t,
   &_swigt__p_std__tr1__shared_ptrT_cmf__water__SoluteStorage_t,
   &_swigt__p_std__tr1__shared_ptrT_cmf__water__SystemBridge_t,
@@ -66842,7 +66889,7 @@ static swig_cast_info _swigc__p_cmf__upslope__layer_list[] = {  {&_swigt__p_cmf_
 static swig_cast_info _swigc__p_cmf__upslope__neighbor_iterator[] = {  {&_swigt__p_cmf__upslope__neighbor_iterator, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_cmf__upslope__subcatchment[] = {  {&_swigt__p_cmf__upslope__subcatchment, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_cmf__upslope__vegetation__Vegetation[] = {  {&_swigt__p_cmf__upslope__vegetation__Vegetation, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_cmf__water__DricheletBoundary[] = {  {&_swigt__p_cmf__water__DricheletBoundary, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_cmf__water__DirichletBoundary[] = {  {&_swigt__p_cmf__water__DirichletBoundary, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_cmf__water__NeumannBoundary[] = {  {&_swigt__p_cmf__water__NeumannBoundary, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_cmf__water__NeumannBoundary_list[] = {  {&_swigt__p_cmf__water__NeumannBoundary_list, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_cmf__water__NeumannFlux[] = {  {&_swigt__p_cmf__water__NeumannFlux, 0, 0, 0},{0, 0, 0, 0}};
@@ -66855,7 +66902,7 @@ static swig_cast_info _swigc__p_cmf__water__WaterStorage[] = {  {&_swigt__p_cmf_
 static swig_cast_info _swigc__p_cmf__water__external_control_connection[] = {  {&_swigt__p_cmf__water__external_control_connection, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_cmf__water__flux_connection[] = {  {&_swigt__p_cmf__upslope__connections__HBVpercolation, _p_cmf__upslope__connections__HBVpercolationTo_p_cmf__water__flux_connection, 0, 0},  {&_swigt__p_cmf__upslope__connections__SWATPercolation, _p_cmf__upslope__connections__SWATPercolationTo_p_cmf__water__flux_connection, 0, 0},  {&_swigt__p_cmf__upslope__ET__HargreaveET, _p_cmf__upslope__ET__HargreaveETTo_p_cmf__water__flux_connection, 0, 0},  {&_swigt__p_cmf__upslope__connections__TopographicGradientDarcy, _p_cmf__upslope__connections__TopographicGradientDarcyTo_p_cmf__water__flux_connection, 0, 0},  {&_swigt__p_cmf__river__Manning_Diffusive, _p_cmf__river__Manning_DiffusiveTo_p_cmf__water__flux_connection, 0, 0},  {&_swigt__p_cmf__upslope__connections__EnergyBudgetSnowMelt, _p_cmf__upslope__connections__EnergyBudgetSnowMeltTo_p_cmf__water__flux_connection, 0, 0},  {&_swigt__p_cmf__upslope__connections__SimpleTindexSnowMelt, _p_cmf__upslope__connections__SimpleTindexSnowMeltTo_p_cmf__water__flux_connection, 0, 0},  {&_swigt__p_cmf__upslope__connections__Rainfall, _p_cmf__upslope__connections__RainfallTo_p_cmf__water__flux_connection, 0, 0},  {&_swigt__p_cmf__upslope__ET__canopy_evaporation, _p_cmf__upslope__ET__canopy_evaporationTo_p_cmf__water__flux_connection, 0, 0},  {&_swigt__p_cmf__upslope__ET__snow_evaporation, _p_cmf__upslope__ET__snow_evaporationTo_p_cmf__water__flux_connection, 0, 0},  {&_swigt__p_cmf__upslope__ET__PenmanEvaporation, _p_cmf__upslope__ET__PenmanEvaporationTo_p_cmf__water__flux_connection, 0, 0},  {&_swigt__p_cmf__upslope__ET__CanopyStorageEvaporation, _p_cmf__upslope__ET__CanopyStorageEvaporationTo_p_cmf__water__flux_connection, 0, 0},  {&_swigt__p_cmf__upslope__ET__transpiration, _p_cmf__upslope__ET__transpirationTo_p_cmf__water__flux_connection, 0, 0},  {&_swigt__p_cmf__upslope__ET__soil_evaporation, _p_cmf__upslope__ET__soil_evaporationTo_p_cmf__water__flux_connection, 0, 0},  {&_swigt__p_cmf__upslope__ET__surface_water_evaporation, _p_cmf__upslope__ET__surface_water_evaporationTo_p_cmf__water__flux_connection, 0, 0},  {&_swigt__p_cmf__upslope__connections__CanopyOverflow, _p_cmf__upslope__connections__CanopyOverflowTo_p_cmf__water__flux_connection, 0, 0},  {&_swigt__p_cmf__upslope__connections__SimplRichards, _p_cmf__upslope__connections__SimplRichardsTo_p_cmf__water__flux_connection, 0, 0},  {&_swigt__p_cmf__upslope__connections__Richards, _p_cmf__upslope__connections__RichardsTo_p_cmf__water__flux_connection, 0, 0},  {&_swigt__p_cmf__upslope__connections__Darcy, _p_cmf__upslope__connections__DarcyTo_p_cmf__water__flux_connection, 0, 0},  {&_swigt__p_cmf__water__waterbalance_connection, _p_cmf__water__waterbalance_connectionTo_p_cmf__water__flux_connection, 0, 0},  {&_swigt__p_cmf__water__external_control_connection, _p_cmf__water__external_control_connectionTo_p_cmf__water__flux_connection, 0, 0},  {&_swigt__p_cmf__water__SystemBridgeConnection, _p_cmf__water__SystemBridgeConnectionTo_p_cmf__water__flux_connection, 0, 0},  {&_swigt__p_cmf__water__flux_connection, 0, 0, 0},  {&_swigt__p_cmf__river__Manning_Kinematic, _p_cmf__river__Manning_KinematicTo_p_cmf__water__flux_connection, 0, 0},  {&_swigt__p_cmf__upslope__connections__DarcyKinematic, _p_cmf__upslope__connections__DarcyKinematicTo_p_cmf__water__flux_connection, 0, 0},  {&_swigt__p_cmf__upslope__connections__OHDISflow, _p_cmf__upslope__connections__OHDISflowTo_p_cmf__water__flux_connection, 0, 0},  {&_swigt__p_cmf__upslope__connections__CompleteInfiltration, _p_cmf__upslope__connections__CompleteInfiltrationTo_p_cmf__water__flux_connection, 0, 0},  {&_swigt__p_cmf__upslope__connections__MatrixInfiltration, _p_cmf__upslope__connections__MatrixInfiltrationTo_p_cmf__water__flux_connection, 0, 0},  {&_swigt__p_cmf__water__NeumannFlux, _p_cmf__water__NeumannFluxTo_p_cmf__water__flux_connection, 0, 0},  {&_swigt__p_cmf__upslope__aquifer_Darcy, _p_cmf__upslope__aquifer_DarcyTo_p_cmf__water__flux_connection, 0, 0},  {&_swigt__p_cmf__water__kinematic_wave, _p_cmf__water__kinematic_waveTo_p_cmf__water__flux_connection, 0, 0},  {&_swigt__p_cmf__upslope__ET__constantETpot, _p_cmf__upslope__ET__constantETpotTo_p_cmf__water__flux_connection, 0, 0},  {&_swigt__p_cmf__water__TechnicalFlux, _p_cmf__water__TechnicalFluxTo_p_cmf__water__flux_connection, 0, 0},  {&_swigt__p_cmf__upslope__connections__lateral_sub_surface_flux, _p_cmf__upslope__connections__lateral_sub_surface_fluxTo_p_cmf__water__flux_connection, 0, 0},  {&_swigt__p_cmf__upslope__connections__Snowfall, _p_cmf__upslope__connections__SnowfallTo_p_cmf__water__flux_connection, 0, 0},  {&_swigt__p_cmf__river__Manning, _p_cmf__river__ManningTo_p_cmf__water__flux_connection, 0, 0},  {&_swigt__p_cmf__upslope__connections__Richards_lateral, _p_cmf__upslope__connections__Richards_lateralTo_p_cmf__water__flux_connection, 0, 0},  {&_swigt__p_cmf__upslope__connections__HBVlateral, _p_cmf__upslope__connections__HBVlateralTo_p_cmf__water__flux_connection, 0, 0},  {&_swigt__p_cmf__upslope__ET__PenmanMonteithET, _p_cmf__upslope__ET__PenmanMonteithETTo_p_cmf__water__flux_connection, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_cmf__water__flux_integrator[] = {  {&_swigt__p_cmf__water__flux_integrator, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_cmf__water__flux_node[] = {  {&_swigt__p_cmf__water__flux_node, 0, 0, 0},  {&_swigt__p_cmf__river__Reach, _p_cmf__river__ReachTo_p_cmf__water__flux_node, 0, 0},  {&_swigt__p_cmf__atmosphere__RainSource, _p_cmf__atmosphere__RainSourceTo_p_cmf__water__flux_node, 0, 0},  {&_swigt__p_cmf__atmosphere__ConstantRainSource, _p_cmf__atmosphere__ConstantRainSourceTo_p_cmf__water__flux_node, 0, 0},  {&_swigt__p_cmf__water__DricheletBoundary, _p_cmf__water__DricheletBoundaryTo_p_cmf__water__flux_node, 0, 0},  {&_swigt__p_cmf__water__NeumannBoundary, _p_cmf__water__NeumannBoundaryTo_p_cmf__water__flux_node, 0, 0},  {&_swigt__p_cmf__upslope__SoilLayer, _p_cmf__upslope__SoilLayerTo_p_cmf__water__flux_node, 0, 0},  {&_swigt__p_cmf__water__WaterStorage, _p_cmf__water__WaterStorageTo_p_cmf__water__flux_node, 0, 0},  {&_swigt__p_cmf__river__OpenWaterStorage, _p_cmf__river__OpenWaterStorageTo_p_cmf__water__flux_node, 0, 0},  {&_swigt__p_cmf__atmosphere__RainfallStationReference, _p_cmf__atmosphere__RainfallStationReferenceTo_p_cmf__water__flux_node, 0, 0},  {&_swigt__p_cmf__water__SystemBridge, _p_cmf__water__SystemBridgeTo_p_cmf__water__flux_node, 0, 0},  {&_swigt__p_cmf__atmosphere__IDWRainfall, _p_cmf__atmosphere__IDWRainfallTo_p_cmf__water__flux_node, 0, 0},  {&_swigt__p_cmf__upslope__aquifer, _p_cmf__upslope__aquiferTo_p_cmf__water__flux_node, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_cmf__water__flux_node[] = {  {&_swigt__p_cmf__water__flux_node, 0, 0, 0},  {&_swigt__p_cmf__river__Reach, _p_cmf__river__ReachTo_p_cmf__water__flux_node, 0, 0},  {&_swigt__p_cmf__atmosphere__RainSource, _p_cmf__atmosphere__RainSourceTo_p_cmf__water__flux_node, 0, 0},  {&_swigt__p_cmf__atmosphere__ConstantRainSource, _p_cmf__atmosphere__ConstantRainSourceTo_p_cmf__water__flux_node, 0, 0},  {&_swigt__p_cmf__water__DirichletBoundary, _p_cmf__water__DirichletBoundaryTo_p_cmf__water__flux_node, 0, 0},  {&_swigt__p_cmf__water__NeumannBoundary, _p_cmf__water__NeumannBoundaryTo_p_cmf__water__flux_node, 0, 0},  {&_swigt__p_cmf__upslope__SoilLayer, _p_cmf__upslope__SoilLayerTo_p_cmf__water__flux_node, 0, 0},  {&_swigt__p_cmf__water__WaterStorage, _p_cmf__water__WaterStorageTo_p_cmf__water__flux_node, 0, 0},  {&_swigt__p_cmf__river__OpenWaterStorage, _p_cmf__river__OpenWaterStorageTo_p_cmf__water__flux_node, 0, 0},  {&_swigt__p_cmf__atmosphere__RainfallStationReference, _p_cmf__atmosphere__RainfallStationReferenceTo_p_cmf__water__flux_node, 0, 0},  {&_swigt__p_cmf__water__SystemBridge, _p_cmf__water__SystemBridgeTo_p_cmf__water__flux_node, 0, 0},  {&_swigt__p_cmf__atmosphere__IDWRainfall, _p_cmf__atmosphere__IDWRainfallTo_p_cmf__water__flux_node, 0, 0},  {&_swigt__p_cmf__upslope__aquifer, _p_cmf__upslope__aquiferTo_p_cmf__water__flux_node, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_cmf__water__kinematic_wave[] = {  {&_swigt__p_cmf__water__kinematic_wave, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_cmf__water__linear_scale[] = {  {&_swigt__p_cmf__water__linear_scale, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_cmf__water__node_list[] = {  {&_swigt__p_cmf__water__node_list, 0, 0, 0},{0, 0, 0, 0}};
@@ -66886,14 +66933,14 @@ static swig_cast_info _swigc__p_std__tr1__shared_ptrT_cmf__upslope__ET__surface_
 static swig_cast_info _swigc__p_std__tr1__shared_ptrT_cmf__upslope__ET__transpiration_method_t[] = {  {&_swigt__p_std__tr1__shared_ptrT_cmf__upslope__ET__transpiration_method_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__tr1__shared_ptrT_cmf__upslope__SoilLayer_t[] = {  {&_swigt__p_std__tr1__shared_ptrT_cmf__upslope__SoilLayer_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__tr1__shared_ptrT_cmf__upslope__aquifer_t[] = {  {&_swigt__p_std__tr1__shared_ptrT_cmf__upslope__aquifer_t, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_std__tr1__shared_ptrT_cmf__water__DricheletBoundary_t[] = {  {&_swigt__p_std__tr1__shared_ptrT_cmf__water__DricheletBoundary_t, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_std__tr1__shared_ptrT_cmf__water__DirichletBoundary_t[] = {  {&_swigt__p_std__tr1__shared_ptrT_cmf__water__DirichletBoundary_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__tr1__shared_ptrT_cmf__water__NeumannBoundary_t[] = {  {&_swigt__p_std__tr1__shared_ptrT_cmf__water__NeumannBoundary_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__tr1__shared_ptrT_cmf__water__SoluteStorage_t[] = {  {&_swigt__p_std__tr1__shared_ptrT_cmf__water__SoluteStorage_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__tr1__shared_ptrT_cmf__water__SystemBridge_t[] = {  {&_swigt__p_std__tr1__shared_ptrT_cmf__water__SystemBridge_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__tr1__shared_ptrT_cmf__water__WaterStorage_t[] = {  {&_swigt__p_std__tr1__shared_ptrT_cmf__water__WaterStorage_t, 0, 0, 0},  {&_swigt__p_std__tr1__shared_ptrT_cmf__river__OpenWaterStorage_t, _p_std__tr1__shared_ptrT_cmf__river__OpenWaterStorage_tTo_p_std__tr1__shared_ptrT_cmf__water__WaterStorage_t, 0, 0},  {&_swigt__p_std__tr1__shared_ptrT_cmf__upslope__SoilLayer_t, _p_std__tr1__shared_ptrT_cmf__upslope__SoilLayer_tTo_p_std__tr1__shared_ptrT_cmf__water__WaterStorage_t, 0, 0},  {&_swigt__p_std__tr1__shared_ptrT_cmf__river__Reach_t, _p_std__tr1__shared_ptrT_cmf__river__Reach_tTo_p_std__tr1__shared_ptrT_cmf__water__WaterStorage_t, 0, 0},  {&_swigt__p_std__tr1__shared_ptrT_cmf__upslope__aquifer_t, _p_std__tr1__shared_ptrT_cmf__upslope__aquifer_tTo_p_std__tr1__shared_ptrT_cmf__water__WaterStorage_t, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__tr1__shared_ptrT_cmf__water__flux_connection_t[] = {  {&_swigt__p_std__tr1__shared_ptrT_cmf__water__flux_connection_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__tr1__shared_ptrT_cmf__water__flux_integrator_t[] = {  {&_swigt__p_std__tr1__shared_ptrT_cmf__water__flux_integrator_t, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_std__tr1__shared_ptrT_cmf__water__flux_node_t[] = {  {&_swigt__p_std__tr1__shared_ptrT_cmf__atmosphere__RainSource_t, _p_std__tr1__shared_ptrT_cmf__atmosphere__RainSource_tTo_p_std__tr1__shared_ptrT_cmf__water__flux_node_t, 0, 0},  {&_swigt__p_std__tr1__shared_ptrT_cmf__water__WaterStorage_t, _p_std__tr1__shared_ptrT_cmf__water__WaterStorage_tTo_p_std__tr1__shared_ptrT_cmf__water__flux_node_t, 0, 0},  {&_swigt__p_std__tr1__shared_ptrT_cmf__water__NeumannBoundary_t, _p_std__tr1__shared_ptrT_cmf__water__NeumannBoundary_tTo_p_std__tr1__shared_ptrT_cmf__water__flux_node_t, 0, 0},  {&_swigt__p_std__tr1__shared_ptrT_cmf__water__SystemBridge_t, _p_std__tr1__shared_ptrT_cmf__water__SystemBridge_tTo_p_std__tr1__shared_ptrT_cmf__water__flux_node_t, 0, 0},  {&_swigt__p_std__tr1__shared_ptrT_cmf__water__flux_node_t, 0, 0, 0},  {&_swigt__p_std__tr1__shared_ptrT_cmf__atmosphere__ConstantRainSource_t, _p_std__tr1__shared_ptrT_cmf__atmosphere__ConstantRainSource_tTo_p_std__tr1__shared_ptrT_cmf__water__flux_node_t, 0, 0},  {&_swigt__p_std__tr1__shared_ptrT_cmf__river__OpenWaterStorage_t, _p_std__tr1__shared_ptrT_cmf__river__OpenWaterStorage_tTo_p_std__tr1__shared_ptrT_cmf__water__flux_node_t, 0, 0},  {&_swigt__p_std__tr1__shared_ptrT_cmf__upslope__SoilLayer_t, _p_std__tr1__shared_ptrT_cmf__upslope__SoilLayer_tTo_p_std__tr1__shared_ptrT_cmf__water__flux_node_t, 0, 0},  {&_swigt__p_std__tr1__shared_ptrT_cmf__water__DricheletBoundary_t, _p_std__tr1__shared_ptrT_cmf__water__DricheletBoundary_tTo_p_std__tr1__shared_ptrT_cmf__water__flux_node_t, 0, 0},  {&_swigt__p_std__tr1__shared_ptrT_cmf__atmosphere__IDWRainfall_t, _p_std__tr1__shared_ptrT_cmf__atmosphere__IDWRainfall_tTo_p_std__tr1__shared_ptrT_cmf__water__flux_node_t, 0, 0},  {&_swigt__p_std__tr1__shared_ptrT_cmf__river__Reach_t, _p_std__tr1__shared_ptrT_cmf__river__Reach_tTo_p_std__tr1__shared_ptrT_cmf__water__flux_node_t, 0, 0},  {&_swigt__p_std__tr1__shared_ptrT_cmf__upslope__aquifer_t, _p_std__tr1__shared_ptrT_cmf__upslope__aquifer_tTo_p_std__tr1__shared_ptrT_cmf__water__flux_node_t, 0, 0},  {&_swigt__p_std__tr1__shared_ptrT_cmf__atmosphere__RainfallStationReference_t, _p_std__tr1__shared_ptrT_cmf__atmosphere__RainfallStationReference_tTo_p_std__tr1__shared_ptrT_cmf__water__flux_node_t, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_std__tr1__shared_ptrT_cmf__water__flux_node_t[] = {  {&_swigt__p_std__tr1__shared_ptrT_cmf__atmosphere__RainSource_t, _p_std__tr1__shared_ptrT_cmf__atmosphere__RainSource_tTo_p_std__tr1__shared_ptrT_cmf__water__flux_node_t, 0, 0},  {&_swigt__p_std__tr1__shared_ptrT_cmf__water__WaterStorage_t, _p_std__tr1__shared_ptrT_cmf__water__WaterStorage_tTo_p_std__tr1__shared_ptrT_cmf__water__flux_node_t, 0, 0},  {&_swigt__p_std__tr1__shared_ptrT_cmf__water__NeumannBoundary_t, _p_std__tr1__shared_ptrT_cmf__water__NeumannBoundary_tTo_p_std__tr1__shared_ptrT_cmf__water__flux_node_t, 0, 0},  {&_swigt__p_std__tr1__shared_ptrT_cmf__water__SystemBridge_t, _p_std__tr1__shared_ptrT_cmf__water__SystemBridge_tTo_p_std__tr1__shared_ptrT_cmf__water__flux_node_t, 0, 0},  {&_swigt__p_std__tr1__shared_ptrT_cmf__water__flux_node_t, 0, 0, 0},  {&_swigt__p_std__tr1__shared_ptrT_cmf__atmosphere__ConstantRainSource_t, _p_std__tr1__shared_ptrT_cmf__atmosphere__ConstantRainSource_tTo_p_std__tr1__shared_ptrT_cmf__water__flux_node_t, 0, 0},  {&_swigt__p_std__tr1__shared_ptrT_cmf__river__OpenWaterStorage_t, _p_std__tr1__shared_ptrT_cmf__river__OpenWaterStorage_tTo_p_std__tr1__shared_ptrT_cmf__water__flux_node_t, 0, 0},  {&_swigt__p_std__tr1__shared_ptrT_cmf__upslope__SoilLayer_t, _p_std__tr1__shared_ptrT_cmf__upslope__SoilLayer_tTo_p_std__tr1__shared_ptrT_cmf__water__flux_node_t, 0, 0},  {&_swigt__p_std__tr1__shared_ptrT_cmf__water__DirichletBoundary_t, _p_std__tr1__shared_ptrT_cmf__water__DirichletBoundary_tTo_p_std__tr1__shared_ptrT_cmf__water__flux_node_t, 0, 0},  {&_swigt__p_std__tr1__shared_ptrT_cmf__atmosphere__IDWRainfall_t, _p_std__tr1__shared_ptrT_cmf__atmosphere__IDWRainfall_tTo_p_std__tr1__shared_ptrT_cmf__water__flux_node_t, 0, 0},  {&_swigt__p_std__tr1__shared_ptrT_cmf__river__Reach_t, _p_std__tr1__shared_ptrT_cmf__river__Reach_tTo_p_std__tr1__shared_ptrT_cmf__water__flux_node_t, 0, 0},  {&_swigt__p_std__tr1__shared_ptrT_cmf__upslope__aquifer_t, _p_std__tr1__shared_ptrT_cmf__upslope__aquifer_tTo_p_std__tr1__shared_ptrT_cmf__water__flux_node_t, 0, 0},  {&_swigt__p_std__tr1__shared_ptrT_cmf__atmosphere__RainfallStationReference_t, _p_std__tr1__shared_ptrT_cmf__atmosphere__RainfallStationReference_tTo_p_std__tr1__shared_ptrT_cmf__water__flux_node_t, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__tr1__shared_ptrT_cmf__water__waterbalance_integrator_t[] = {  {&_swigt__p_std__tr1__shared_ptrT_cmf__water__waterbalance_integrator_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__tr1__shared_ptrT_std__tr1__shared_ptrT_cmf__atmosphere__ConstantRainSource_t_t[] = {  {&_swigt__p_std__tr1__shared_ptrT_std__tr1__shared_ptrT_cmf__atmosphere__ConstantRainSource_t_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__tr1__shared_ptrT_std__tr1__shared_ptrT_cmf__atmosphere__RainfallStationReference_t_t[] = {  {&_swigt__p_std__tr1__shared_ptrT_std__tr1__shared_ptrT_cmf__atmosphere__RainfallStationReference_t_t, 0, 0, 0},{0, 0, 0, 0}};
@@ -67002,7 +67049,7 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_cmf__upslope__neighbor_iterator,
   _swigc__p_cmf__upslope__subcatchment,
   _swigc__p_cmf__upslope__vegetation__Vegetation,
-  _swigc__p_cmf__water__DricheletBoundary,
+  _swigc__p_cmf__water__DirichletBoundary,
   _swigc__p_cmf__water__NeumannBoundary,
   _swigc__p_cmf__water__NeumannBoundary_list,
   _swigc__p_cmf__water__NeumannFlux,
@@ -67046,7 +67093,7 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_std__tr1__shared_ptrT_cmf__upslope__ET__transpiration_method_t,
   _swigc__p_std__tr1__shared_ptrT_cmf__upslope__SoilLayer_t,
   _swigc__p_std__tr1__shared_ptrT_cmf__upslope__aquifer_t,
-  _swigc__p_std__tr1__shared_ptrT_cmf__water__DricheletBoundary_t,
+  _swigc__p_std__tr1__shared_ptrT_cmf__water__DirichletBoundary_t,
   _swigc__p_std__tr1__shared_ptrT_cmf__water__NeumannBoundary_t,
   _swigc__p_std__tr1__shared_ptrT_cmf__water__SoluteStorage_t,
   _swigc__p_std__tr1__shared_ptrT_cmf__water__SystemBridge_t,
