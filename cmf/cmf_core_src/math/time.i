@@ -108,9 +108,9 @@ static int convert_datetime_to_cmftime(PyObject* dt, cmf::math::Time* pT)
 	    $1 = *p_ts;
 	}      
 }
-%typemap(typecheck,precedence=0) cmf::math::timeseries {
+%typemap(typecheck,precedence=200) cmf::math::timeseries {
     void * pt;    
-    int res=SWIG_ConvertPtr($input,&pt,SWIGTYPE_p_cmf__math__Time,0);
+    int res=SWIG_ConvertPtr($input,&pt,SWIGTYPE_p_cmf__math__timeseries,0);
     $1=SWIG_IsOK(res) || PyNumber_Check($input);
 }
 

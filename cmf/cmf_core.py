@@ -988,10 +988,14 @@ class timeseries(object):
         """
         return _cmf_core.timeseries_size(self, *args, **kwargs)
 
+    def count_values(self, *args, **kwargs):
+        """count_values(self) -> int"""
+        return _cmf_core.timeseries_count_values(self, *args, **kwargs)
+
     def __init__(self, *args): 
         """
         __init__(self, Time begin, Time step, int interpolationmethod = 1, 
-            size_t size = 0) -> timeseries
+            size_t count = 0) -> timeseries
         __init__(self) -> timeseries
         __init__(self, timeseries ts) -> timeseries
         __init__(self, Time begin, Time step, cmf::math::num_array data) -> timeseries
@@ -1095,28 +1099,28 @@ class timeseries(object):
     def __add__(self, *args):
         """
         __add__(self, timeseries arg0) -> timeseries
-        __add__(self, double other) -> timeseries
+        __add__(self, double arg0) -> timeseries
         """
         return _cmf_core.timeseries___add__(self, *args)
 
     def __sub__(self, *args):
         """
-        __sub__(self, timeseries other) -> timeseries
-        __sub__(self, double other) -> timeseries
+        __sub__(self, timeseries arg0) -> timeseries
+        __sub__(self, double arg0) -> timeseries
         """
         return _cmf_core.timeseries___sub__(self, *args)
 
     def __mul__(self, *args):
         """
-        __mul__(self, timeseries other) -> timeseries
-        __mul__(self, double other) -> timeseries
+        __mul__(self, timeseries arg0) -> timeseries
+        __mul__(self, double arg0) -> timeseries
         """
         return _cmf_core.timeseries___mul__(self, *args)
 
     def __div__(self, *args):
         """
-        __div__(self, timeseries other) -> timeseries
-        __div__(self, double other) -> timeseries
+        __div__(self, timeseries arg0) -> timeseries
+        __div__(self, double arg0) -> timeseries
         """
         return _cmf_core.timeseries___div__(self, *args)
 
@@ -1388,6 +1392,7 @@ timeseries.clear = new_instancemethod(_cmf_core.timeseries_clear,None,timeseries
 timeseries.adress = new_instancemethod(_cmf_core.timeseries_adress,None,timeseries)
 timeseries.copy = new_instancemethod(_cmf_core.timeseries_copy,None,timeseries)
 timeseries.size = new_instancemethod(_cmf_core.timeseries_size,None,timeseries)
+timeseries.count_values = new_instancemethod(_cmf_core.timeseries_count_values,None,timeseries)
 timeseries.get_t = new_instancemethod(_cmf_core.timeseries_get_t,None,timeseries)
 timeseries.get_i = new_instancemethod(_cmf_core.timeseries_get_i,None,timeseries)
 timeseries.set_t = new_instancemethod(_cmf_core.timeseries_set_t,None,timeseries)
