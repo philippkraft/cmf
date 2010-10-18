@@ -116,13 +116,13 @@ namespace cmf {
 			/// Number of items in the timeseries
 			int size() const {return int(m_data->values.size());}
 			/// Number of valid values (=size - # of NaN's)
-			int count_values() const
+			int count_values() const;
 			/// Constructor of a time series
 			/// @param begin First date of measurement
 			/// @param step Time between measurements
 			/// @param interpolationmethod Method for the interpolation (0 - Nearest neighbor, 1- linear, 2 - cubic spline (not implemented yet)
-			/// @param size Initial number of items. Items are filled with 0.0
-			timeseries(cmf::math::Time begin,cmf::math::Time step,int interpolationmethod=1,size_t size=0);
+			/// @param count Initial number of items. Items are filled with 0.0
+			timeseries(cmf::math::Time begin,cmf::math::Time step,int interpolationmethod=1,size_t count=0);
 			timeseries() : m_data(make_data()) 
 			{	}
 			timeseries( const cmf::math::timeseries& ts ) 
@@ -173,24 +173,24 @@ namespace cmf {
 			/// - timeseries = double x timeseries
 			/// - timeseries = timeseries x double
 			//@{
-			timeseries& operator+=(timeseries);      ///< add timeseries to this
+			timeseries& operator+=(cmf::math::timeseries);      ///< add timeseries to this
 			timeseries& operator+=(double);          ///< add scalar to this
-			timeseries& operator-=(timeseries);      ///< Subtract timeseries from this
+			timeseries& operator-=(cmf::math::timeseries);      ///< Subtract timeseries from this
 			timeseries& operator-=(double);          ///< Subtract scalar from this
-			timeseries& operator*=(timeseries);      ///< Multiply each element of timeseries with each element of this
+			timeseries& operator*=(cmf::math::timeseries);      ///< Multiply each element of timeseries with each element of this
 			timeseries& operator*=(double);          ///< Multiply each element of timeseries with scalar
-			timeseries& operator/=(timeseries);      ///< Divide each element of this by each element of timeseries
+			timeseries& operator/=(cmf::math::timeseries);      ///< Divide each element of this by each element of timeseries
 			timeseries& operator/=(double);          ///< Divide each element of this by scalar
 
-			timeseries operator+(timeseries) const;
-			timeseries operator-(timeseries other) const;
-			timeseries operator*(timeseries other) const;
-			timeseries operator/(timeseries other) const;
+			timeseries operator+(cmf::math::timeseries) const;
+			timeseries operator-(cmf::math::timeseries) const;
+			timeseries operator*(cmf::math::timeseries) const;
+			timeseries operator/(cmf::math::timeseries) const;
 
-			timeseries operator+(double other) const;
-			timeseries operator-(double other) const;
-			timeseries operator*(double other) const;
-			timeseries operator/(double other) const;
+			timeseries operator+(double) const;
+			timeseries operator-(double) const;
+			timeseries operator*(double) const;
+			timeseries operator/(double) const;
 
 			timeseries operator-() const;
 			timeseries inv() const;
