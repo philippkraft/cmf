@@ -113,7 +113,10 @@ namespace cmf {
 				return size_t(&(m_data->values[0]));
 			}
 			timeseries copy() const;
+			/// Number of items in the timeseries
 			int size() const {return int(m_data->values.size());}
+			/// Number of valid values (=size - # of NaN's)
+			int count_values() const
 			/// Constructor of a time series
 			/// @param begin First date of measurement
 			/// @param step Time between measurements
@@ -171,13 +174,13 @@ namespace cmf {
 			/// - timeseries = timeseries x double
 			//@{
 			timeseries& operator+=(timeseries);      ///< add timeseries to this
-			timeseries& operator+=(double);                ///< add scalar to this
+			timeseries& operator+=(double);          ///< add scalar to this
 			timeseries& operator-=(timeseries);      ///< Subtract timeseries from this
-			timeseries& operator-=(double);                ///< Subtract scalar from this
+			timeseries& operator-=(double);          ///< Subtract scalar from this
 			timeseries& operator*=(timeseries);      ///< Multiply each element of timeseries with each element of this
-			timeseries& operator*=(double);                ///< Multiply each element of timeseries with scalar
+			timeseries& operator*=(double);          ///< Multiply each element of timeseries with scalar
 			timeseries& operator/=(timeseries);      ///< Divide each element of this by each element of timeseries
-			timeseries& operator/=(double);                ///< Divide each element of this by scalar
+			timeseries& operator/=(double);          ///< Divide each element of this by scalar
 
 			timeseries operator+(timeseries) const;
 			timeseries operator-(timeseries other) const;

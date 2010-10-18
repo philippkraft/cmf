@@ -542,6 +542,14 @@ cmf::math::timeseries::timeseries( cmf::math::Time _begin, cmf::math::Time _step
 {
 	m_data->values = std::vector<double>(_data.begin(),_data.end());
 }
+
+int cmf::math::timeseries::count_values() const /*/ Constructor of a time series */ /*/ @param begin First date of measurement */ /*/ @param step Time between measurements */ /*/ @param interpolationmethod Method for the interpolation (0 - Nearest neighbor, 1- linear, 2 - cubic spline (not implemented yet) */ /*/ @param size Initial number of items. Items are filled with 0.0 */ timeseries(cmf::math::Time begin,cmf::math::Time step,int interpolationmethod/*=1*/,size_t size/*=0*/)
+{
+	int count=0;
+	for (int i = 0; i <  size(); ++i)
+		if isfinite(m_data->values[i]) ++count;
+	return count;
+}
 double cmf::math::nash_sutcliff(const cmf::math::timeseries& model,const cmf::math::timeseries& observation)
 {
 	double mean_obs=observation.mean();
