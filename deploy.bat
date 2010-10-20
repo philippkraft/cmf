@@ -9,3 +9,4 @@ copy dist\*.zip \\winfile\fb09-ilr\Alle\Philipp\cmf_dist\
 
 @echo Copy doxy-doc
 xcopy doxy\html \\winfile\fb09-ilr\Alle\Philipp\cmf_dist\doc\html\ /s /m /q /y
+informusers.py
