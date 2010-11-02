@@ -145,7 +145,7 @@ namespace cmf {
 			double _sum;
 			cmf::math::Time _start_time;
 			cmf::math::Time _t;
-			const std::tr1::weak_ptr<flux_connection> _connection;
+			std::tr1::weak_ptr<flux_connection> _connection;
 			std::string _name;
 
 		public:
@@ -170,6 +170,7 @@ namespace cmf {
 			void integrate(cmf::math::Time until);
 
 			flux_integrator(cmf::water::flux_connection& connection);
+			flux_integrator(cmf::water::flux_node::ptr left, cmf::water::flux_node::ptr right);
 		};
 
 

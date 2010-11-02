@@ -192,6 +192,16 @@ cmf::water::flux_integrator::flux_integrator( cmf::water::flux_connection& conne
 		_name(connection.to_string()+ " (Integrator)")
 {}
 
+flux_integrator::flux_integrator( flux_node::ptr left, flux_node::ptr right )
+: 	_sum(0.0), _t(cmf::math::year*5000)
+{
+	flux_connection* con = left->connection_to(*right);
+	if (con) {
+		_connection = con->weak_this;
+		_name = con->to_string() + " (Integrator)";
+	} else 
+		throw std::runtime_error("Can't create flux_integrator between " + left->Name + " and " + right->Name + ". No connection.");
+}
 
 void cmf::water::flux_integrator::reset( cmf::math::Time t )
 {
