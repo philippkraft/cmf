@@ -315,11 +315,19 @@ real cmf::upslope::LinearRetention::Transmissivity( real upperDepth,real lowerDe
 
 real cmf::upslope::LinearRetention::Wetness( real suction ) const
 {
-	return 1 + suction * (1 - residual_wetness)/thickness;
+	if (suction>-thickness)
+		return 1 + (1 - 2* residual_wetness) * suction/thickness;
+	else
+		return residual_wetness + residual_wetness * exp(suction+thickness);
 }
 real cmf::upslope::LinearRetention::MatricPotential( real wetness ) const
 {
-	return -thickness * (1-(wetness - residual_wetness)/(1 - residual_wetness));
+	if (wetness>2*residual_wetness)
+		return -thickness * (1-(wetness - 2*residual_wetness)/(1 - 2*residual_wetness));
+	else if (wetness>residual_wetness)
+		return log(wetness/residual_wetness-1)-thickness;
+	else
+		return -std::numeric_limits<real>::infinity();
 }
 
 cmf::upslope::LinearRetention::LinearRetention( real _Ksat,real _Phi, real _thickness,real _residual_wetness/*=0.1*/ ) 

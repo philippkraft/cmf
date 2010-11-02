@@ -45,11 +45,11 @@ double cmf::atmosphere::Weather::Rn( double albedo,bool daily/*=false*/ ) const
 		:	4.903e-9*pow(Tground+273.16,4),
 
 		// Long wave radiation is reflected by vapor
-		emissivity=0.34-0.14*sqrt(e_a),      
+		emissivity= 1.24 *pow(10.0 * e_a / (T+273.16),1./7.),
 		// Long wave radiation is reflected by clouds
-		clear_sky=0.1+0.9*sunshine, 
-		Rnl=sigmaT * emissivity * clear_sky;
-	return Rns-Rnl;
+		clear_sky=0.2+0.8*sunshine,
+		Rnl=sigmaT * (emissivity-1) * clear_sky;
+	return Rns+Rnl;
 }
 
 cmf::atmosphere::Weather& cmf::atmosphere::Weather::operator+=( const Weather& w )

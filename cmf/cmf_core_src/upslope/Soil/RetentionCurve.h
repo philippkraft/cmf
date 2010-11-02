@@ -200,7 +200,7 @@ namespace cmf {
 		{
 		public:
 			real
-				alpha,n,Ksat,Phi,Psi_full,m;
+				alpha,n,Ksat,Phi,m;
 			///\f[ W(\Psi) = \left(1+\left(\alpha\,100\frac{cm}{m}\Psi\right)^n\right)^{-m} \f]
 			virtual real Wetness(real suction) const;
 			/// \f[\Psi(W) = 0.01 \frac{m}{cm} \frac{{\left(1-{W}^{\frac{1}{m}}\right) }^{\frac{1}{n}}}{\alpha\,{W}^{\frac{1}{m\,n}}}  \f]
@@ -217,12 +217,12 @@ namespace cmf {
 			VanGenuchtenMualem* copy() const;
 			VanGenuchtenMualem();
 			/// Creates a van Genuchten-Mualem retention curve
-			/// @param _Ksat Saturated conductivity in \f$\frac m{day}\f$
-			/// @param _phi Porosity in \f$\frac{m^3 Pores}{m^3 Soil}\f$
-			/// @param _alpha Van Genuchten \f$\alpha\f$ in \f$\frac 1{cm}\f$
-			/// @param _n Van Genuchten n
-			/// @param _m m parameter, if negative m is calculated as \f$ 1-\frac 1 n\f$
-			VanGenuchtenMualem(real _Ksat, real _phi,real _alpha, real _n, real _m=-1);
+			/// @param Ksat Saturated conductivity in \f$\frac m{day}\f$
+			/// @param phi Porosity in \f$\frac{m^3 Pores}{m^3 Soil}\f$
+			/// @param alpha Van Genuchten \f$\alpha\f$ in \f$\frac 1{cm}\f$
+			/// @param n Van Genuchten n
+			/// @param m Van Genuchten m parameter, if negative m is calculated as \f$ 1-\frac 1 n\f$
+			VanGenuchtenMualem(real Ksat, real phi,real alpha, real n, real m=-1);
 
 		};
 
