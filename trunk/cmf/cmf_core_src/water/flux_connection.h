@@ -168,8 +168,9 @@ namespace cmf {
 			flux_connection::ptr connection() const;
 			/// Integrates the flux a timestep further. Note: until is an absolute time. If until is before t0, the integration is initilized again
 			void integrate(cmf::math::Time until);
-
+			/// Creates a flux_integrator from an connection
 			flux_integrator(cmf::water::flux_connection& connection);
+			/// Creates a flux_integrator from the endpoints of a connection. Throws if there is no connection between the endpoints
 			flux_integrator(cmf::water::flux_node::ptr left, cmf::water::flux_node::ptr right);
 		};
 
