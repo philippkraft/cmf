@@ -259,9 +259,7 @@ namespace cmf {
 			{
 				 return new LinearRetention(*this);
 			}
-			LinearRetention(real _Ksat,real _Phi, real _thickness)
-				: Ksat(_Ksat),porosity(_Phi),thickness(_thickness),residual_wetness(0.0) ,beta(1.0), porosity_decay(0.0)
-			{			}
+			LinearRetention(real ksat,real phi, real thickness,real residual_wetness=0.1);
 		};
 
 	}

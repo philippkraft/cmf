@@ -322,3 +322,8 @@ real cmf::upslope::LinearRetention::MatricPotential( real wetness ) const
 	return -thickness * (1-(wetness - residual_wetness)/(1 - residual_wetness));
 }
 
+cmf::upslope::LinearRetention::LinearRetention( real _Ksat,real _Phi, real _thickness,real _residual_wetness/*=0.1*/ ) 
+: Ksat(_Ksat),porosity(_Phi),thickness(_thickness),residual_wetness(_residual_wetness) ,beta(1.0), porosity_decay(0.0)
+{
+
+}
