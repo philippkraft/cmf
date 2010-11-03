@@ -270,7 +270,7 @@ cmf::upslope::VanGenuchtenMualem::VanGenuchtenMualem()
 
 real cmf::upslope::LinearRetention::K( real wetness) const
 {
-	wetness=minmax(wetness,0,1);
+	wetness=minmax(wetness,residual_wetness,1);
 	return Ksat * pow((wetness - residual_wetness) / (1 - residual_wetness),beta);
 }
 
@@ -316,16 +316,16 @@ real cmf::upslope::LinearRetention::Transmissivity( real upperDepth,real lowerDe
 real cmf::upslope::LinearRetention::Wetness( real suction ) const
 {
 	if (suction>-thickness)
-		return 1 + (1 - 2* residual_wetness) * suction/thickness;
+		return 1 + (1 - residual_wetness) * suction/thickness;
 	else
-		return residual_wetness + residual_wetness * exp(suction+thickness);
+		return residual_wetness * exp(suction+thickness);
 }
 real cmf::upslope::LinearRetention::MatricPotential( real wetness ) const
 {
-	if (wetness>2*residual_wetness)
-		return -thickness * (1-(wetness - 2*residual_wetness)/(1 - 2*residual_wetness));
-	else if (wetness>residual_wetness)
-		return log(wetness/residual_wetness-1)-thickness;
+	if (wetness>residual_wetness)
+		return -thickness * (1-(wetness - residual_wetness)/(1 - residual_wetness));
+	else if (wetness>0)
+		return log(wetness/residual_wetness)-thickness;
 	else
 		return -std::numeric_limits<real>::infinity();
 }
