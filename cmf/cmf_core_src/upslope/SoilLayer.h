@@ -23,13 +23,14 @@
 #include "../water/flux_connection.h"
 #include "../geometry/geometry.h"
 #include "Soil/RetentionCurve.h"
+#include "conductable.h"
 #include <memory>
 namespace cmf {
 	namespace upslope {
 		class Cell;
 		/// @ingroup storages
 		/// A representation of a SoilLayer
-		class SoilLayer: public cmf::water::WaterStorage
+		class SoilLayer: public cmf::water::WaterStorage, public cmf::upslope::conductable
 		{
 		public:
 			typedef std::tr1::shared_ptr<cmf::upslope::SoilLayer> ptr;
@@ -97,8 +98,11 @@ namespace cmf {
 				return rel_errtol * get_capacity();
 			}
 			
-			/// Returns the actual conductivity	\f$\frac{m}{day}\f$
+			/// Returns the actual isotropic conductivity using the function from soil \f$\frac{m}{day}\f$
 			real get_K() const {return m_wet.K;}
+			/// Returns the actual anisotropic conductivity along a direction \f$K = (k_f \cdot d) K\f$
+			virtual real get_K(cmf::geometry::point direction) const;
+			cmf::geometry::point anisotropic_kf;
 			real get_Ksat() const {return m_wet.Ksat;}
 			/// Returns the wetness of the soil \f$ \frac{V_{H_2O}}{V_{pores}} \f$
 			virtual real get_wetness() const {return m_wet.W;}
