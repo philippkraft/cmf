@@ -57,7 +57,7 @@ void cmf::upslope::aquifer::set_potential( real new_potential )
 	}
 }
 
-real cmf::upslope::aquifer::get_K( cmf::geometry::point direction )
+real cmf::upslope::aquifer::get_K( cmf::geometry::point direction ) const
 {
 	return fabs(cmf::geometry::dot(direction/direction.length(),K));
 }

@@ -47,7 +47,7 @@ real cmf::upslope::SoilLayer::get_gravitational_potential() const
 
 // public ctor
 cmf::upslope::SoilLayer::SoilLayer( cmf::upslope::Cell & _cell,real lowerboundary,const RetentionCurve& r_curve,real saturateddepth/*=10*/ ) 
-:	cmf::water::WaterStorage(_cell.get_project()),cell(_cell),	Position(_cell.layer_count())
+:	cmf::water::WaterStorage(_cell.get_project()),cell(_cell),	Position(_cell.layer_count()), anisotropic_kf(1,1,1)
 {
 	m_retentioncurve=std::auto_ptr<RetentionCurve>(r_curve.copy());
 	m_lowerboundary=lowerboundary;
@@ -67,7 +67,7 @@ cmf::upslope::SoilLayer::SoilLayer( cmf::upslope::Cell & _cell,real lowerboundar
 // protected constructor
 cmf::upslope::SoilLayer::SoilLayer( cmf::upslope::Cell & _cell,real upperBoundary,real lowerboundary,const RetentionCurve& r_curve,int _Position ) 
 : cmf::water::WaterStorage(_cell.get_project()),cell(_cell),m_retentioncurve(r_curve.copy()),
-m_lowerboundary(lowerboundary),m_upperboundary(upperBoundary),Position(_Position), 	m_ice_fraction(0.0)
+m_lowerboundary(lowerboundary),m_upperboundary(upperBoundary),Position(_Position), 	m_ice_fraction(0.0), anisotropic_kf(1,1,1)
 {
 	position=cmf::geometry::point(_cell.x,_cell.y,_cell.z - lowerboundary);
 	if (m_lowerboundary-m_upperboundary<=0)
@@ -162,4 +162,9 @@ void cmf::upslope::SoilLayer::set_wetness( real wetness )
 		set_state(get_soil().MatricPotential(wetness) + get_gravitational_potential());
 	else
 		set_state(wetness * get_capacity());
+}
+
+real cmf::upslope::SoilLayer::get_K( cmf::geometry::point direction ) const
+{
+	return m_wet.K * cmf::geometry::dot(anisotropic_kf/anisotropic_kf.length(),direction/direction.length());
 }

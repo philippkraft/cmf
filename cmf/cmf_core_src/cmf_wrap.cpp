@@ -45130,6 +45130,167 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_SoilLayer_get_K(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  cmf::upslope::SoilLayer *arg1 = (cmf::upslope::SoilLayer *) 0 ;
+  cmf::geometry::point arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  std::tr1::shared_ptr< cmf::upslope::SoilLayer const > tempshared1 ;
+  std::tr1::shared_ptr< cmf::upslope::SoilLayer const > *smartarg1 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char *  kwnames[] = {
+    (char *) "self",(char *) "direction", NULL 
+  };
+  real result;
+  
+  if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"OO:SoilLayer_get_K",kwnames,&obj0,&obj1)) SWIG_fail;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(obj0, &argp1, SWIGTYPE_p_std__tr1__shared_ptrT_cmf__upslope__SoilLayer_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SoilLayer_get_K" "', argument " "1"" of type '" "cmf::upslope::SoilLayer const *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< std::tr1::shared_ptr< const cmf::upslope::SoilLayer > * >(argp1);
+      delete reinterpret_cast< std::tr1::shared_ptr< const cmf::upslope::SoilLayer > * >(argp1);
+      arg1 = const_cast< cmf::upslope::SoilLayer * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< std::tr1::shared_ptr< const cmf::upslope::SoilLayer > * >(argp1);
+      arg1 = const_cast< cmf::upslope::SoilLayer * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  {
+    if (check_xy(obj1)) {
+      std::string res = convert_xyz_to_point(obj1,arg2);
+      if (res.size()) {
+        SWIG_exception_fail(SWIG_ValueError,res.c_str());
+        return NULL;
+      }
+    } 
+    else if (PySequence_Check(obj1)) {
+      std::string res = convert_seq_to_point(obj1,arg2);
+      if (res.size()) {
+        SWIG_exception_fail(SWIG_ValueError, res.c_str());
+      }
+    } else {
+      std::string res="<";
+      res+=PyObject_REPR(obj1);
+      res+="> has to be a cmf.point, a sequence, or any object with x and y (optional z) attributes";
+      SWIG_exception_fail(SWIG_ValueError,res.c_str());
+    }
+  }
+  {
+    try {
+      result = (real)((cmf::upslope::SoilLayer const *)arg1)->get_K(arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+    
+  }
+  resultobj = SWIG_From_double(static_cast< double >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_SoilLayer_anisotropic_kf_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  cmf::upslope::SoilLayer *arg1 = (cmf::upslope::SoilLayer *) 0 ;
+  cmf::geometry::point *arg2 = (cmf::geometry::point *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  std::tr1::shared_ptr< cmf::upslope::SoilLayer > tempshared1 ;
+  std::tr1::shared_ptr< cmf::upslope::SoilLayer > *smartarg1 = 0 ;
+  cmf::geometry::point p2 ;
+  PyObject *swig_obj[2] ;
+  
+  if (!SWIG_Python_UnpackTuple(args,"SoilLayer_anisotropic_kf_set",2,2,swig_obj)) SWIG_fail;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_std__tr1__shared_ptrT_cmf__upslope__SoilLayer_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SoilLayer_anisotropic_kf_set" "', argument " "1"" of type '" "cmf::upslope::SoilLayer *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< std::tr1::shared_ptr<  cmf::upslope::SoilLayer > * >(argp1);
+      delete reinterpret_cast< std::tr1::shared_ptr<  cmf::upslope::SoilLayer > * >(argp1);
+      arg1 = const_cast< cmf::upslope::SoilLayer * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< std::tr1::shared_ptr<  cmf::upslope::SoilLayer > * >(argp1);
+      arg1 = const_cast< cmf::upslope::SoilLayer * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  {
+    if (SWIG_ConvertPtr(swig_obj[1], (void **) &arg2, SWIGTYPE_p_cmf__geometry__point, SWIG_POINTER_EXCEPTION) == -1) {
+      if (check_xy(swig_obj[1])) {
+        std::string res = convert_xyz_to_point(swig_obj[1],p2);
+        if (res.size()) {
+          SWIG_exception_fail(SWIG_ValueError,res.c_str());
+          return NULL;
+        }
+      } 
+      else if (PySequence_Check(swig_obj[1])) {
+        std::string res = convert_seq_to_point(swig_obj[1],p2);
+        if (res.size()) {
+          SWIG_exception_fail(SWIG_ValueError, res.c_str());
+        }
+      } else {
+        std::string res="<";
+        res+=PyObject_REPR(swig_obj[1]);
+        res+="> has to be a cmf.point, a sequence, or any object with x and y (optional z) attributes";
+        SWIG_exception_fail(SWIG_ValueError,res.c_str());
+      }
+      arg2 = &p2;
+    }
+  }
+  if (arg1) (arg1)->anisotropic_kf = *arg2;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_SoilLayer_anisotropic_kf_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  cmf::upslope::SoilLayer *arg1 = (cmf::upslope::SoilLayer *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  std::tr1::shared_ptr< cmf::upslope::SoilLayer > tempshared1 ;
+  std::tr1::shared_ptr< cmf::upslope::SoilLayer > *smartarg1 = 0 ;
+  PyObject *swig_obj[1] ;
+  cmf::geometry::point *result = 0 ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_std__tr1__shared_ptrT_cmf__upslope__SoilLayer_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SoilLayer_anisotropic_kf_get" "', argument " "1"" of type '" "cmf::upslope::SoilLayer *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< std::tr1::shared_ptr<  cmf::upslope::SoilLayer > * >(argp1);
+      delete reinterpret_cast< std::tr1::shared_ptr<  cmf::upslope::SoilLayer > * >(argp1);
+      arg1 = const_cast< cmf::upslope::SoilLayer * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< std::tr1::shared_ptr<  cmf::upslope::SoilLayer > * >(argp1);
+      arg1 = const_cast< cmf::upslope::SoilLayer * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  result = (cmf::geometry::point *)& ((arg1)->anisotropic_kf);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_cmf__geometry__point, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_SoilLayer_get_capacity(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   cmf::upslope::SoilLayer *arg1 = (cmf::upslope::SoilLayer *) 0 ;
@@ -52174,8 +52335,8 @@ SWIGINTERN PyObject *_wrap_aquifer_get_K(PyObject *SWIGUNUSEDPARM(self), PyObjec
   cmf::geometry::point arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  std::tr1::shared_ptr< cmf::upslope::aquifer > tempshared1 ;
-  std::tr1::shared_ptr< cmf::upslope::aquifer > *smartarg1 = 0 ;
+  std::tr1::shared_ptr< cmf::upslope::aquifer const > tempshared1 ;
+  std::tr1::shared_ptr< cmf::upslope::aquifer const > *smartarg1 = 0 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   char *  kwnames[] = {
@@ -52188,14 +52349,14 @@ SWIGINTERN PyObject *_wrap_aquifer_get_K(PyObject *SWIGUNUSEDPARM(self), PyObjec
     int newmem = 0;
     res1 = SWIG_ConvertPtrAndOwn(obj0, &argp1, SWIGTYPE_p_std__tr1__shared_ptrT_cmf__upslope__aquifer_t, 0 |  0 , &newmem);
     if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "aquifer_get_K" "', argument " "1"" of type '" "cmf::upslope::aquifer *""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "aquifer_get_K" "', argument " "1"" of type '" "cmf::upslope::aquifer const *""'"); 
     }
     if (newmem & SWIG_CAST_NEW_MEMORY) {
-      tempshared1 = *reinterpret_cast< std::tr1::shared_ptr<  cmf::upslope::aquifer > * >(argp1);
-      delete reinterpret_cast< std::tr1::shared_ptr<  cmf::upslope::aquifer > * >(argp1);
+      tempshared1 = *reinterpret_cast< std::tr1::shared_ptr< const cmf::upslope::aquifer > * >(argp1);
+      delete reinterpret_cast< std::tr1::shared_ptr< const cmf::upslope::aquifer > * >(argp1);
       arg1 = const_cast< cmf::upslope::aquifer * >(tempshared1.get());
     } else {
-      smartarg1 = reinterpret_cast< std::tr1::shared_ptr<  cmf::upslope::aquifer > * >(argp1);
+      smartarg1 = reinterpret_cast< std::tr1::shared_ptr< const cmf::upslope::aquifer > * >(argp1);
       arg1 = const_cast< cmf::upslope::aquifer * >((smartarg1 ? smartarg1->get() : 0));
     }
   }
@@ -52221,7 +52382,7 @@ SWIGINTERN PyObject *_wrap_aquifer_get_K(PyObject *SWIGUNUSEDPARM(self), PyObjec
   }
   {
     try {
-      result = (real)(arg1)->get_K(arg2);
+      result = (real)((cmf::upslope::aquifer const *)arg1)->get_K(arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -64711,6 +64872,16 @@ static PyMethodDef SwigMethods[] = {
 		"virtual\n"
 		"void set_soil(const cmf::upslope::RetentionCurve &r_curve) \n"
 		""},
+	 { (char *)"SoilLayer_get_K", (PyCFunction) _wrap_SoilLayer_get_K, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
+		"SoilLayer_get_K(SoilLayer self, point direction) -> real\n"
+		"\n"
+		"real get_K()\n"
+		"const\n"
+		"\n"
+		"Returns the actual conductivity $\\\\frac{m}{day}$. \n"
+		""},
+	 { (char *)"SoilLayer_anisotropic_kf_set", _wrap_SoilLayer_anisotropic_kf_set, METH_VARARGS, (char *)"SoilLayer_anisotropic_kf_set(SoilLayer self, point anisotropic_kf)"},
+	 { (char *)"SoilLayer_anisotropic_kf_get", (PyCFunction)_wrap_SoilLayer_anisotropic_kf_get, METH_O, (char *)"SoilLayer_anisotropic_kf_get(SoilLayer self) -> point"},
 	 { (char *)"SoilLayer_get_capacity", (PyCFunction)_wrap_SoilLayer_get_capacity, METH_O, (char *)"\n"
 		"SoilLayer_get_capacity(SoilLayer self) -> real\n"
 		"\n"
