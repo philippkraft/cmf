@@ -267,6 +267,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\upslope\conductable.h"
+				>
+			</File>
+			<File
 				RelativePath=".\math\integrators\sundials_cvode\include\cvode\cvode.h"
 				>
 			</File>

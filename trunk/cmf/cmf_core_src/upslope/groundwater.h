@@ -4,6 +4,7 @@
 #include "../water/WaterStorage.h"
 #include "cell.h"
 #include "cell_vector.h"
+#include "conductable.h"
 namespace cmf {
 	namespace upslope {
 
@@ -22,7 +23,7 @@ namespace cmf {
 		/// - \f$V\f$ volume of stored water in m3
 		/// - \f$A\f$ Base area of the aquifer in m2
 		/// - \f$\Phi\f$ Porosity, or more general, \f$\frac {dV_{bulk}}{dV_{H_2O}}\f$
-		class aquifer : public cmf::water::WaterStorage {
+		class aquifer : public cmf::water::WaterStorage, public cmf::upslope::conductable {
 
 		protected:
 			virtual real head_to_volume(real head) const;
@@ -41,7 +42,7 @@ namespace cmf {
 			/// Returns the conductivity in m/day for a specific direction.
 			/// Takes account for anisotropy
 			/// \f[ \|K\|(d) = \frac{d}{\|d\|} \bullet K\f]
-			real get_K(cmf::geometry::point direction);
+			virtual real get_K(cmf::geometry::point direction) const;
 			/// Returns the base height of the aquifer in m a.s.l.
 			real get_base_height() const {
 				return position.z - 0.5 * thickness;
