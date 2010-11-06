@@ -18,15 +18,16 @@
 //   
 #include "subsurfacefluxes.h"
 #include "../../math/real.h"
-
+#include "../../geometry/geometry.h"
 using namespace cmf::water;
-
+using namespace cmf::upslope;
+using namespace cmf::geometry;
 /************************************************************************/
 /* Precolation and 3D fluxes                                            */
 /************************************************************************/
 // Richards eq.
-const cmf::upslope::CellConnector cmf::upslope::connections::Richards_lateral::cell_connector=CellConnector(cmf::upslope::connections::Richards_lateral::connect_cells);
-void cmf::upslope::connections::Richards_lateral::connect_cells( cmf::upslope::Cell & cell1,cmf::upslope::Cell & cell2,int start_at_layer/*=0*/ )
+const CellConnector connections::Richards_lateral::cell_connector=CellConnector(connections::Richards_lateral::connect_cells);
+void connections::Richards_lateral::connect_cells( Cell & cell1,Cell & cell2,int start_at_layer/*=0*/ )
 {
 	real w=cell1.get_topology().flowwidth(cell2);
 	if (w>0)
@@ -40,18 +41,24 @@ void cmf::upslope::connections::Richards_lateral::connect_cells( cmf::upslope::C
 				}	}	}
 	}
 }
-real cmf::upslope::connections::Richards_lateral::calc_q( cmf::math::Time t )
+real connections::Richards_lateral::calc_q( cmf::math::Time t )
 {
-	cmf::upslope::SoilLayer::ptr 
+	SoilLayer::ptr 
 		l1=sw1.lock(),
 		l2=sw2.lock();
+	conductable::ptr C2=c2.lock();
 	// Richards flux
 	real
 		Psi_t1=l1->get_potential(),
 		Psi_t2=right_node()->get_potential(),
 		gradient=(Psi_t1-Psi_t2)/distance,
 		//K=gradient<0 && l2 ? l2->K() : l1->K();      
-		K=l2 ? geo_mean(l1->get_K(),l2->get_K()) : l1->get_K();
+		K=0.0;
+	point direction=left_node()->position - right_node()->position;
+	if (C2) 
+		K= geo_mean(l1->get_K(direction),C2->get_K(direction));
+	else 
+		l1->get_K(direction);
 	real r_flow = K * gradient * flow_width * flow_thickness;
 	// If flow from left to right
 	return prevent_negative_volume(r_flow); 
@@ -62,7 +69,7 @@ real cmf::upslope::connections::Richards_lateral::calc_q( cmf::math::Time t )
 /* Lateral fluxes                                                       */
 /************************************************************************/
 // Darcy connection
-real get_flow_thick(cmf::upslope::SoilLayer::ptr l)
+real get_flow_thick(SoilLayer::ptr l)
 {
 	real 
 		thick=l->get_thickness(),
@@ -71,9 +78,9 @@ real get_flow_thick(cmf::upslope::SoilLayer::ptr l)
 		
 	return minmax(thick + mp /* w_eff*/ ,0.0,thick);
 }
-real cmf::upslope::connections::Darcy::calc_q( cmf::math::Time t )	
+real connections::Darcy::calc_q( cmf::math::Time t )	
 {
-	cmf::upslope::SoilLayer::ptr 
+	SoilLayer::ptr 
 		l1=sw1.lock(),
 		l2=sw2.lock();
 	// Calculate the gradient
@@ -83,7 +90,7 @@ real cmf::upslope::connections::Darcy::calc_q( cmf::math::Time t )
 		gradient=(Psi_t1-Psi_t2)/distance;
 
 
-	//cmf::upslope::SoilLayer::ptr source =  (gradient < 0) && l2 ? l2 : l1;
+	//SoilLayer::ptr source =  (gradient < 0) && l2 ? l2 : l1;
 	real
 		// Transmissivity
 		flow_thick1 = get_flow_thick(l1), 
@@ -101,7 +108,7 @@ real cmf::upslope::connections::Darcy::calc_q( cmf::math::Time t )
 
 }
 
-void cmf::upslope::connections::Darcy::connect_cells( cmf::upslope::Cell & cell1,cmf::upslope::Cell & cell2,int start_at_layer/*=0*/ )
+void connections::Darcy::connect_cells( Cell & cell1,Cell & cell2,int start_at_layer/*=0*/ )
 {
 	real w=cell1.get_topology().flowwidth(cell2);
 	if (w>0)
@@ -115,14 +122,14 @@ void cmf::upslope::connections::Darcy::connect_cells( cmf::upslope::Cell & cell1
 				}	}	}
 	}
 }
-const cmf::upslope::CellConnector cmf::upslope::connections::Darcy::cell_connector=CellConnector(cmf::upslope::connections::Darcy::connect_cells);
+const CellConnector connections::Darcy::cell_connector=CellConnector(connections::Darcy::connect_cells);
 
 // Topographic gradient connection
-const cmf::upslope::CellConnector cmf::upslope::connections::TopographicGradientDarcy::cell_connector=CellConnector(cmf::upslope::connections::TopographicGradientDarcy::connect_cells);
-real cmf::upslope::connections::TopographicGradientDarcy::calc_q( cmf::math::Time t )
+const CellConnector connections::TopographicGradientDarcy::cell_connector=CellConnector(connections::TopographicGradientDarcy::connect_cells);
+real connections::TopographicGradientDarcy::calc_q( cmf::math::Time t )
 {
 	// Darcy flux
-	cmf::upslope::SoilLayer::ptr 
+	SoilLayer::ptr 
 		l1=sw1.lock(),
 		l2=sw2.lock();
 
@@ -144,7 +151,7 @@ real cmf::upslope::connections::TopographicGradientDarcy::calc_q( cmf::math::Tim
 
 }
 
-void cmf::upslope::connections::TopographicGradientDarcy::connect_cells( cmf::upslope::Cell & cell1,cmf::upslope::Cell & cell2,int start_at_layer/*=0*/ )
+void connections::TopographicGradientDarcy::connect_cells( Cell & cell1,Cell & cell2,int start_at_layer/*=0*/ )
 {
 	real w=cell1.get_topology().flowwidth(cell2);
 	if (w>0)
@@ -160,10 +167,10 @@ void cmf::upslope::connections::TopographicGradientDarcy::connect_cells( cmf::up
 
 }
 
-real cmf::upslope::connections::DarcyKinematic::calc_q( cmf::math::Time t )
+real connections::DarcyKinematic::calc_q( cmf::math::Time t )
 {
 	// Darcy flux
-	cmf::upslope::SoilLayer::ptr
+	SoilLayer::ptr
 		l1=sw1.lock(),
 		l2=sw2.lock(),
 		source = (l2 && l1->cell.z < l2->cell.z) ? l2 : l1;
@@ -178,7 +185,7 @@ real cmf::upslope::connections::DarcyKinematic::calc_q( cmf::math::Time t )
 
 }
 
-void cmf::upslope::connections::DarcyKinematic::connect_cells( cmf::upslope::Cell & cell1,cmf::upslope::Cell & cell2,int start_at_layer/*=0*/ )
+void connections::DarcyKinematic::connect_cells( Cell & cell1,Cell & cell2,int start_at_layer/*=0*/ )
 {
 	real w=cell1.get_topology().flowwidth(cell2);
 	if (w>0)
@@ -193,14 +200,14 @@ void cmf::upslope::connections::DarcyKinematic::connect_cells( cmf::upslope::Cel
 	}
 
 }
-const cmf::upslope::CellConnector cmf::upslope::connections::DarcyKinematic::cell_connector(cmf::upslope::connections::DarcyKinematic::connect_cells);
+const CellConnector connections::DarcyKinematic::cell_connector(connections::DarcyKinematic::connect_cells);
 
 
 
 
-real cmf::upslope::connections::OHDISflow::calc_q( cmf::math::Time t )
+real connections::OHDISflow::calc_q( cmf::math::Time t )
 {
-	cmf::upslope::SoilLayer::ptr 
+	SoilLayer::ptr 
 		l1=sw1.lock(),
 		l2=sw2.lock();
 	// The resulting flux
@@ -242,8 +249,8 @@ real cmf::upslope::connections::OHDISflow::calc_q( cmf::math::Time t )
 
 
 }
-const cmf::upslope::CellConnector cmf::upslope::connections::OHDISflow::cell_connector(cmf::upslope::connections::OHDISflow::connect_cells);
-void cmf::upslope::connections::OHDISflow::connect_cells( cmf::upslope::Cell & cell1,cmf::upslope::Cell & cell2,int start_at_layer/*=0*/ )
+const CellConnector connections::OHDISflow::cell_connector(connections::OHDISflow::connect_cells);
+void connections::OHDISflow::connect_cells( Cell & cell1,Cell & cell2,int start_at_layer/*=0*/ )
 {
 	real w=cell1.get_topology().flowwidth(cell2);
 	if (w>0)
@@ -260,21 +267,21 @@ void cmf::upslope::connections::OHDISflow::connect_cells( cmf::upslope::Cell & c
 }
 
 
-void cmf::upslope::connections::lateral_sub_surface_flux::NewNodes()
+void connections::lateral_sub_surface_flux::NewNodes()
 {
-	cmf::upslope::SoilLayer::ptr l1,l2;
+	SoilLayer::ptr l1,l2;
 	
-	l1=cmf::upslope::SoilLayer::cast(left_node());
-	l2=cmf::upslope::SoilLayer::cast(right_node());
-
+	l1=SoilLayer::cast(left_node());
+	l2=SoilLayer::cast(right_node());
 	if (!l1) 
 		throw std::runtime_error("Can't create " + this->type + ", left node {" + left_node()->Name + "} is not a soil layer!" );
 	sw1 = l1;
 	sw2 = l2;
+	c2=conductable::cast(right_node());
 
 }
 
-cmf::upslope::connections::lateral_sub_surface_flux::lateral_sub_surface_flux( cmf::upslope::SoilLayer::ptr left,cmf::water::flux_node::ptr right, std::string Name,real FlowWidth,real Distance/*=0*/ ) : cmf::water::flux_connection(left,right,Name), flow_width(FlowWidth), distance(Distance)
+connections::lateral_sub_surface_flux::lateral_sub_surface_flux( SoilLayer::ptr left,cmf::water::flux_node::ptr right, std::string Name,real FlowWidth,real Distance/*=0*/ ) : cmf::water::flux_connection(left,right,Name), flow_width(FlowWidth), distance(Distance)
 {
 	NewNodes();
 	if (Distance<=0)

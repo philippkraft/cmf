@@ -36,6 +36,7 @@ namespace cmf {
 			class lateral_sub_surface_flux : public cmf::water::flux_connection {
 			protected:
 				std::tr1::weak_ptr<cmf::upslope::SoilLayer> sw1,sw2;
+				std::tr1::weak_ptr<cmf::upslope::conductable> c2;
 				real 
 					flow_width, distance;
 

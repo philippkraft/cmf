@@ -24,6 +24,7 @@
 #include "../cell.h"
 #include "../Topology.h"
 #include "../SoilLayer.h"
+#include "../conductable.h"
 
 namespace cmf {
 	namespace upslope {
@@ -73,10 +74,12 @@ namespace cmf {
 			class Richards : public cmf::water::flux_connection {
 			protected:
 				std::tr1::weak_ptr<cmf::upslope::SoilLayer> sw1,sw2;
+				std::tr1::weak_ptr<cmf::upslope::conductable> c2;
 				void NewNodes()
 				{
 					sw1=cmf::upslope::SoilLayer::cast(left_node());
 					sw2=cmf::upslope::SoilLayer::cast(right_node());
+					c2=cmf::upslope::conductable::cast(right_node());
 				}
 
 				virtual real calc_q(cmf::math::Time t) ;
