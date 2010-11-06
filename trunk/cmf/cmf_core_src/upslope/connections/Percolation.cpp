@@ -31,25 +31,32 @@ void cmf::upslope::connections::Richards::use_for_cell( cmf::upslope::Cell & cel
 
 real cmf::upslope::connections::Richards::calc_q( cmf::math::Time t ) 
 {
+	using namespace cmf::upslope;
+	using namespace cmf::geometry;
 	// Richards flux
-	cmf::upslope::SoilLayer::ptr 
+	SoilLayer::ptr 
 		l1=sw1.lock(),
 		l2=sw2.lock();
+	conductable::ptr C2 = c2.lock();
+
 
 	real
-		distance = l1->position.z - right_node()->position.z,		
+		distance = l1->position.z - right_node()->position.z,
 		Psi_t1=l1->get_potential(),
 		Psi_t2=right_node()->get_potential(),
 		gradient=(Psi_t1-Psi_t2)/distance,
 		K=0.0;
+	point direction =  l1->position - right_node()->position;
 	if (distance == 0.0) distance = l1->get_thickness();
 	//K=gradient<0 && l2 ? l2->K() : l1->K();      
 	if (l2)
-		K = geo_mean(l1->get_K(),l2->get_K());
+		K = geo_mean(l1->get_K(direction),l2->get_K(direction));
+	else if (C2)
+		K = geo_mean(l1->get_K(direction),C2->get_K(direction));
 	else if (right_node()->is_empty() || right_node()->get_potential() < l1->get_gravitational_potential())
-		K = l1->get_K();
+		K = l1->get_K(direction);
 	else
-		K = geo_mean(l1->get_K(),l1->get_Ksat());
+		K = geo_mean(l1->get_K(direction),l1->get_Ksat());
 	//  	if (fabs(K*gradient)>l1->get_Ksat()) K=l1->get_Ksat()/fabs(gradient);
 	//  	if (l2 && fabs(K*gradient)>l2->get_Ksat()) K=l2->get_Ksat()/fabs(gradient);
 	real r_flow=K*gradient*l1->cell.get_area();

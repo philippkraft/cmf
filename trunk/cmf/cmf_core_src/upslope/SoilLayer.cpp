@@ -19,20 +19,21 @@
 #include "SoilLayer.h"
 #include "cell.h"
 #include "Topology.h"
-
+using namespace cmf::geometry;
+using namespace cmf::upslope;
 /************************************************************************/
 /* SoilLayer                                                     */
 /************************************************************************/
 // Actual volumetric water content of the soil (m3 H2O/m3 get_soil)
 // Actual conductivity
 // total get_potential
-real cmf::upslope::SoilLayer::get_potential() const
+real SoilLayer::get_potential() const
 {
 	return m_wet.h;
 }
 
 
-void cmf::upslope::SoilLayer::set_potential( real waterhead )
+void SoilLayer::set_potential( real waterhead )
 {
 	if (get_state_variable_content()=='h')
 		set_state(waterhead);
@@ -40,13 +41,13 @@ void cmf::upslope::SoilLayer::set_potential( real waterhead )
 		set_state(head_to_volume(waterhead));
 }
 
-real cmf::upslope::SoilLayer::get_gravitational_potential() const
+real SoilLayer::get_gravitational_potential() const
 {
 	return cell.z-get_upper_boundary();
 }
 
 // public ctor
-cmf::upslope::SoilLayer::SoilLayer( cmf::upslope::Cell & _cell,real lowerboundary,const RetentionCurve& r_curve,real saturateddepth/*=10*/ ) 
+SoilLayer::SoilLayer( Cell & _cell,real lowerboundary,const RetentionCurve& r_curve,real saturateddepth/*=10*/ ) 
 :	cmf::water::WaterStorage(_cell.get_project()),cell(_cell),	Position(_cell.layer_count()), anisotropic_kf(1,1,1)
 {
 	m_retentioncurve=std::auto_ptr<RetentionCurve>(r_curve.copy());
@@ -65,7 +66,7 @@ cmf::upslope::SoilLayer::SoilLayer( cmf::upslope::Cell & _cell,real lowerboundar
 	Name=sstr.str();
 }
 // protected constructor
-cmf::upslope::SoilLayer::SoilLayer( cmf::upslope::Cell & _cell,real upperBoundary,real lowerboundary,const RetentionCurve& r_curve,int _Position ) 
+SoilLayer::SoilLayer( Cell & _cell,real upperBoundary,real lowerboundary,const RetentionCurve& r_curve,int _Position ) 
 : cmf::water::WaterStorage(_cell.get_project()),cell(_cell),m_retentioncurve(r_curve.copy()),
 m_lowerboundary(lowerboundary),m_upperboundary(upperBoundary),Position(_Position), 	m_ice_fraction(0.0), anisotropic_kf(1,1,1)
 {
@@ -75,7 +76,7 @@ m_lowerboundary(lowerboundary),m_upperboundary(upperBoundary),Position(_Position
 
 }
 
-real cmf::upslope::SoilLayer::get_flow_crosssection( const cmf::upslope::SoilLayer& target,bool HorizontalLayers/*=false*/ ) const
+real SoilLayer::get_flow_crosssection( const SoilLayer& target,bool HorizontalLayers/*=false*/ ) const
 {
 	if (&cell == &target.cell)
 	{
@@ -97,15 +98,15 @@ real cmf::upslope::SoilLayer::get_flow_crosssection( const cmf::upslope::SoilLay
 	}
 }
 
-real cmf::upslope::SoilLayer::get_saturated_depth() const
+real SoilLayer::get_saturated_depth() const
 {
 	return cell.get_saturated_depth();
 }
 
-void cmf::upslope::SoilLayer::StateChangeAction()
+void SoilLayer::StateChangeAction()
 {
 	// Get the retention curve
-	cmf::upslope::RetentionCurve& s = get_soil();
+	RetentionCurve& s = get_soil();
 	// Calculate the capacity of the layer
 	m_wet.C = s.VoidVolume(get_upper_boundary(),get_lower_boundary(),cell.get_area());
 	// Get the volume (different for h and V as state variables)
@@ -128,14 +129,14 @@ void cmf::upslope::SoilLayer::StateChangeAction()
 	cell.InvalidateSatDepth();
 }
 
-real cmf::upslope::SoilLayer::head_to_volume(real head) const
+real SoilLayer::head_to_volume(real head) const
 {
 	real 
 		mp = head - this->get_gravitational_potential(),
 		w  = get_soil().Wetness(mp);
 	return w * this->get_capacity();
 }
-real cmf::upslope::SoilLayer::volume_to_head(real volume) const
+real SoilLayer::volume_to_head(real volume) const
 {
 	real
 		w = volume / this->get_capacity(),
@@ -143,7 +144,7 @@ real cmf::upslope::SoilLayer::volume_to_head(real volume) const
 	return mp + this->get_gravitational_potential();
 }
 
-void cmf::upslope::SoilLayer::set_theta( real Value )
+void SoilLayer::set_theta( real Value )
 {
 	if (get_state_variable_content()=='h')
 		set_state(get_soil().MatricPotential(get_wetness() * get_porosity()) + get_gravitational_potential());
@@ -151,12 +152,12 @@ void cmf::upslope::SoilLayer::set_theta( real Value )
 		set_state(Value*cell.get_area()*get_thickness());
 }
 
-real cmf::upslope::SoilLayer::get_porosity() const
+real SoilLayer::get_porosity() const
 {
 	return get_capacity()/(cell.get_area() * get_thickness());
 }
 
-void cmf::upslope::SoilLayer::set_wetness( real wetness )
+void SoilLayer::set_wetness( real wetness )
 {
 	if (get_state_variable_content()=='h')
 		set_state(get_soil().MatricPotential(wetness) + get_gravitational_potential());
@@ -164,7 +165,10 @@ void cmf::upslope::SoilLayer::set_wetness( real wetness )
 		set_state(wetness * get_capacity());
 }
 
-real cmf::upslope::SoilLayer::get_K( cmf::geometry::point direction ) const
+real SoilLayer::get_K( point direction ) const
 {
-	return m_wet.K * cmf::geometry::dot(anisotropic_kf/anisotropic_kf.length(),direction/direction.length());
+	point 
+		dir = direction/direction.length(),
+		kf  = anisotropic_kf/anisotropic_kf.length();
+	return m_wet.K * fabs(dot(dir,kf));
 }
