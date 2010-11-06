@@ -3,7 +3,7 @@
 
 #include <tr1/memory>
 #include "../geometry/geometry.h"
-
+#include "../water/flux_node.h"
 namespace cmf {
 	namespace upslope {
 		/// An abstract interface for all classes providing a conductivity (e.g. soil layer or aquifer)
@@ -14,6 +14,9 @@ namespace cmf {
 		public:
 			virtual real get_K(cmf::geometry::point direction) const=0;
 			typedef std::tr1::shared_ptr<conductable> ptr;
+			static ptr cast(cmf::water::flux_node::ptr node) {
+				return std::tr1::dynamic_pointer_cast<conductable>(node);
+			}
 		};
 	}
 
