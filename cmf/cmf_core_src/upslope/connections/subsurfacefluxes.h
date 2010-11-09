@@ -131,13 +131,13 @@ namespace cmf {
 			class Richards_lateral: public lateral_sub_surface_flux
 			{
 			protected:
-				real flow_thickness;
 				static void connect_cells(cmf::upslope::Cell & cell1,cmf::upslope::Cell & cell2,int start_at_layer=0);
 				virtual real calc_q(cmf::math::Time t) ;
 
 			public:
+				real flow_thickness;
 				Richards_lateral(cmf::upslope::SoilLayer::ptr left,cmf::water::flux_node::ptr right,real FlowWidth=0,real Distance=0)
-					: lateral_sub_surface_flux(left,right,"Richards eq.",FlowWidth,Distance)
+					: lateral_sub_surface_flux(left,right,"Richards eq. (lat)",FlowWidth,Distance)
 				{
 					flow_thickness=left->get_thickness();
 					if (!sw2.expired())
