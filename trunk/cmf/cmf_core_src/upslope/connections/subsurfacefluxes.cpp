@@ -58,7 +58,7 @@ real connections::Richards_lateral::calc_q( cmf::math::Time t )
 	if (C2) 
 		K= geo_mean(l1->get_K(direction),C2->get_K(direction));
 	else 
-		l1->get_K(direction);
+		K=l1->get_K(direction);
 	real r_flow = K * gradient * flow_width * flow_thickness;
 	// If flow from left to right
 	return prevent_negative_volume(r_flow); 
