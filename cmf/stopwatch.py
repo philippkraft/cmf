@@ -43,11 +43,11 @@ class StopWatch :
     def __init__(self,start=0.0,stop=1.0):
         self.start=start
         self.stop=stop
-        self.t0=time.clock()
+        self.t0=time.time()
     def start(self):
-        self.t0=time.clock()
+        self.t0=time.time()
     def __call__(self,progress):
-        now=time.clock()
+        now=time.time()
         elapsed=(now-self.t0)
         if progress>self.start :
             total= elapsed * (self.stop-self.start)/(progress-self.start)
