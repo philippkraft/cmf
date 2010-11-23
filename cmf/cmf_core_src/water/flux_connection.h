@@ -159,6 +159,8 @@ namespace cmf {
 			}
 			/// Returns the start time of the integration
 			cmf::math::Time t0() const { return _start_time; }
+			/// If invert is true, then integrate over the negetive flux
+			bool invert;
 
 			/// Returns the average flux of the integration time in m3/day
 			double avg() const;

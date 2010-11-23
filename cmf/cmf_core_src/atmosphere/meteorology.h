@@ -104,7 +104,7 @@ namespace cmf {
 			/// @param _daylength length of the day in h
 			Weather(double _T,double _Tmax,double _Tmin, double _rH, double _wind=2,double _sunshine=0.5,double  _Rs=15, double _daylength=12)
 				: T(_T), Tmax(_Tmax), Tmin(_Tmin), Tground(_T),e_s(vapour_pressure(_T)),e_a(_rH/100. * vapour_pressure(_T)),
-				Windspeed(_wind),sunshine(_sunshine),Rs(_Rs),daylength(_daylength) {}
+				Windspeed(_wind),sunshine(_sunshine),Rs(_Rs),daylength(_daylength), instrument_height(2) {}
 			/// Returns a string representation
 			std::string to_string() const
 			{
