@@ -169,7 +169,10 @@ void cmf::water::flux_integrator::integrate( cmf::math::Time until )
 		// get the connection
 		flux_connection::ptr con = _connection.lock();
 		// add flux in timestep to current sum
-		_sum += con->m_q * dt.AsDays();
+		if (invert)
+			_sum -= con->m_q * dt.AsDays();
+		else
+			_sum += con->m_q * dt.AsDays();
 		// set new current time
 		_t=until;
 	}
@@ -189,7 +192,7 @@ double cmf::water::flux_integrator::avg() const
 cmf::water::flux_integrator::flux_integrator( cmf::water::flux_connection& connection ) 
 	:	_connection(connection.weak_this), 
 		_sum(0.0), _t(cmf::math::year*5000), 
-		_name(connection.to_string()+ " (Integrator)")
+		_name(connection.to_string()+ " (Integrator)"), invert(false)
 {}
 
 flux_integrator::flux_integrator( flux_node::ptr left, flux_node::ptr right )
@@ -199,6 +202,7 @@ flux_integrator::flux_integrator( flux_node::ptr left, flux_node::ptr right )
 	if (con) {
 		_connection = con->weak_this;
 		_name = con->to_string() + " (Integrator)";
+		invert = con->left_node() == right;
 	} else 
 		throw std::runtime_error("Can't create flux_integrator between " + left->Name + " and " + right->Name + ". No connection.");
 }

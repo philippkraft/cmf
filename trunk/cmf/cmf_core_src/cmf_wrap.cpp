@@ -24762,6 +24762,90 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_flux_integrator_invert_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  cmf::water::flux_integrator *arg1 = (cmf::water::flux_integrator *) 0 ;
+  bool arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  std::tr1::shared_ptr< cmf::water::flux_integrator > tempshared1 ;
+  std::tr1::shared_ptr< cmf::water::flux_integrator > *smartarg1 = 0 ;
+  bool val2 ;
+  int ecode2 = 0 ;
+  PyObject *swig_obj[2] ;
+  
+  if (!SWIG_Python_UnpackTuple(args,"flux_integrator_invert_set",2,2,swig_obj)) SWIG_fail;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_std__tr1__shared_ptrT_cmf__water__flux_integrator_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "flux_integrator_invert_set" "', argument " "1"" of type '" "cmf::water::flux_integrator *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< std::tr1::shared_ptr<  cmf::water::flux_integrator > * >(argp1);
+      delete reinterpret_cast< std::tr1::shared_ptr<  cmf::water::flux_integrator > * >(argp1);
+      arg1 = const_cast< cmf::water::flux_integrator * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< std::tr1::shared_ptr<  cmf::water::flux_integrator > * >(argp1);
+      arg1 = const_cast< cmf::water::flux_integrator * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  ecode2 = SWIG_AsVal_bool(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "flux_integrator_invert_set" "', argument " "2"" of type '" "bool""'");
+  } 
+  arg2 = static_cast< bool >(val2);
+  {
+    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
+    if (arg1) (arg1)->invert = arg2;
+    SWIG_PYTHON_THREAD_END_ALLOW;
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_flux_integrator_invert_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  cmf::water::flux_integrator *arg1 = (cmf::water::flux_integrator *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  std::tr1::shared_ptr< cmf::water::flux_integrator > tempshared1 ;
+  std::tr1::shared_ptr< cmf::water::flux_integrator > *smartarg1 = 0 ;
+  PyObject *swig_obj[1] ;
+  bool result;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_std__tr1__shared_ptrT_cmf__water__flux_integrator_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "flux_integrator_invert_get" "', argument " "1"" of type '" "cmf::water::flux_integrator *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< std::tr1::shared_ptr<  cmf::water::flux_integrator > * >(argp1);
+      delete reinterpret_cast< std::tr1::shared_ptr<  cmf::water::flux_integrator > * >(argp1);
+      arg1 = const_cast< cmf::water::flux_integrator * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< std::tr1::shared_ptr<  cmf::water::flux_integrator > * >(argp1);
+      arg1 = const_cast< cmf::water::flux_integrator * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  {
+    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
+    result = (bool) ((arg1)->invert);
+    SWIG_PYTHON_THREAD_END_ALLOW;
+  }
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_flux_integrator_connection(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   cmf::water::flux_integrator *arg1 = (cmf::water::flux_integrator *) 0 ;
@@ -67949,6 +68033,8 @@ static PyMethodDef SwigMethods[] = {
 		"\n"
 		"Returns the start time of the integration. \n"
 		""},
+	 { (char *)"flux_integrator_invert_set", _wrap_flux_integrator_invert_set, METH_VARARGS, (char *)"flux_integrator_invert_set(flux_integrator self, bool invert)"},
+	 { (char *)"flux_integrator_invert_get", (PyCFunction)_wrap_flux_integrator_invert_get, METH_O, (char *)"flux_integrator_invert_get(flux_integrator self) -> bool"},
 	 { (char *)"flux_integrator_connection", (PyCFunction)_wrap_flux_integrator_connection, METH_O, (char *)"\n"
 		"flux_integrator_connection(flux_integrator self) -> ptr\n"
 		"\n"
