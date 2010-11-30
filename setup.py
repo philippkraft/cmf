@@ -151,7 +151,7 @@ if __name__=='__main__':
     
     now = datetime.datetime.now()
     setup(name='cmf',
-          version='0.3',
+          version='0.3.2',
           license='GPL',
           ext_modules=ext,
           py_modules=py, 

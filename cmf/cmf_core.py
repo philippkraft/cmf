@@ -2884,6 +2884,7 @@ class flux_integrator(integratable):
         """
         return _cmf_core.flux_integrator_t0(self, *args, **kwargs)
 
+    invert = _swig_property(_cmf_core.flux_integrator_invert_get, _cmf_core.flux_integrator_invert_set)
     def connection(self, *args, **kwargs):
         """
         connection(self) -> ptr
