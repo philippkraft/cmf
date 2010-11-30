@@ -123,7 +123,12 @@ namespace cmf {
 				else
 					set_state(newwatercontent);
 			}
-			
+			virtual void set_potential(real newpotential) {
+				if (get_state_variable_content()=='h')
+					set_state(newpotential);
+				else
+					set_state(head_to_volume(newpotential));
+			}
 			virtual real dxdt(const cmf::math::Time& time);
 			real get_state() const
 			{
