@@ -3,16 +3,13 @@
 
 - @ref wininst
 - @ref nixinst
-- @ref download
+
 cmf has been tested on the following systems:
 - Windows 7 with python(x,y)
 - Ubuntu 10.04
+- Fedora 13
 - scientific linux 5.5 without root privilegs
-
-@section download Download sources for cmf
-The current location of the cmf should be:
- - http://www.uni-giessen.de/~gh1961/download/cmf-0.1.zip : source code distribution, for Linux, UNIX and everyone interested
- - http://www.uni-giessen.de/~gh1961/download/cmf-0.1.win32-py2.6.exe : binary distribution for Windows and python 2.6, 32bit
+- Mac OS X 10.6
 
 @section wininst Installation on a Windows system
 @subsection wininst_dep Dependencies of cmf under windows:
