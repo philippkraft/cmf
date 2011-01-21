@@ -27,6 +27,8 @@ And optional, though recommended for graphical output of cmf results:
 The installation should work automatically by starting the setup program 
 (exe or msi installer).
 
+You can get the preinstalled binaries from the <a href="../index.html">cmf homepage</a>
+
 @subsection wininst_compile Installation from source (Windows)
 To compile the source distribution additional prerequisites apply:
  - Microsoft Visual Studio 2008 Professional (mingw g++ should work, but not out of the box)
@@ -42,6 +44,7 @@ If you don't want to have support for multi-core processors:
 d:\cmf>python setup.py install noopenmp
 @endcode
 
+You can get the cmf source code from the <a href="../index.html">cmf homepage</a>
 
 @section nixinst Installation on a Unix / Linux system 
 @subsection nixinst_dep Dependencies of cmf
@@ -53,6 +56,8 @@ d:\cmf>python setup.py install noopenmp
 
 And optional, though recommended for graphical output of cmf results:
 - matplotlib 1.0 or later (http://matplotlib.sourceforge.net)
+
+You can get the cmf source code from the <a href="../index.html">cmf homepage</a>
 
 To install these dependencies, you must have root privileges for the target machine. If you 
 don't have root privileges an installation in the $HOME directory is needed. Below are some 
@@ -98,6 +103,8 @@ This install guide for installing python and the other cmf dependencies without
 root privileges on a UNIX machine. Change carefully the version numbers to use newer versions.
 Of course installing Python modules to the home directory for a machine wide installaton of Python
 is possible, but not explained here.
+
+You can get the cmf source code from the <a href="../index.html">cmf homepage</a>
 
 @code
 $ mkdir local

@@ -423,16 +423,6 @@ namespace cmf {
 			/// Returns the average lapse over the whole period.
 			double calculate_Temp_lapse(cmf::math::Time begin, cmf::math::Time step,cmf::math::Time end);
 			
-			/// Creates a meteorological station and adds it to the list.
-			MeteoStation::ptr add_station(std::string name,double latitude=51,double longitude=8,double timezone=1,double elevation=0,
-				cmf::math::Time startTime=cmf::math::Time(1,1,2001),cmf::math::Time timestep=cmf::math::day)
-			{
-				MeteoStation* new_station=new MeteoStation(latitude,longitude,timezone,elevation,startTime,timestep,name);
-				MeteoStation::ptr result(new_station);
-				m_stations.push_back(result);
-				m_name_map[name]=size()-1;
-				return result;
-			}
 			/// Creates a meteorological station at a certain position and adds it to the list
 			/// @param name Name of the station
 			/// @param position The location of the station in map coordinates

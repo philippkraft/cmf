@@ -56,10 +56,10 @@ def refresh(t):
             r.set_fc(cm.jet_r(l.wetness))
     timelabel.set_text(t)
     f_maize= maize_growth(t)
-    c_maize.vegetation.LAI = 3.0 * f_maize
+    c_maize.vegetation.LAI = 4.0 * f_maize
     c_maize.vegetation.RootDepth = 0.4 * f_maize
-    c_maize.vegetation.albedo = 0.25 * f_maize
-    c_maize.vegetation.Height = 1.5 * f_maize
+    c_maize.vegetation.albedo =0.4 - 0.15 * f_maize
+    c_maize.vegetation.Height = 2.0 * f_maize
     draw()
 
 if "run" in sys.argv:

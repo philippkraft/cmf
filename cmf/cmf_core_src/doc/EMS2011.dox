@@ -1,7 +1,7 @@
 /**
 @page EMS2011 A hydrological programming language extension for integrated catchment models 
 
-Philipp Kraft , Kellie B. Vaché1, , Hans-Georg Frede1, Lutz Breuer1
+Philipp Kraft , Kellie B. Vach&eacute;, , Hans-Georg Frede, Lutz Breuer
 
 NOTICE: this is the author's version of a work that was accepted for publication in Environmental Modelling and Software. 
 Changes resulting from the publishing process, such as peer review, editing, corrections, structural formatting, and other 
@@ -20,9 +20,9 @@ Keywords: Hydrological model, solute transport, model coupling, object orientate
 
 @section EMS2011_softavail Software availability
 <table>
-<tr><td>Software name</td><td>Catchment Modelling Framework – CMF</td></tr>
+<tr><td>Software name</td><td>Catchment Modelling Framework "CMF"</td></tr>
 <tr><td>Software homepage</td><td>http://www.uni-giessen.de/cms/faculties/f09/institutes/ilr/ilr-frede/download</td></tr>
-<tr><td>Developers</td><td>Philipp Kraft, Kellie B. Vaché</td></tr>
+<tr><td>Developers</td><td>Philipp Kraft, Kellie B. Vach&eacute;</td></tr>
 <tr><td>Contact</td><td>Philipp.kraft@umwelt.uni-giessen.de</td></tr>
 <tr><td>Year first available</td><td>2010</td></tr>
 <tr><td>Availability</td><td>free download, GNU public license, v2</td></tr>
@@ -47,21 +47,21 @@ between-model connections, particularly in the case of water quality models, to 
 model approach. 
 
 @section EMS2011_body Software design concept
-Our approach presented here, originally based on the rejectionist framework approach by Vaché and McDonnell (2006), represents a 
+Our approach presented here, originally based on the rejectionist framework approach by Vach&eacute; and McDonnell (2006), represents a 
 model abstraction concept similar to the finite volume method (FVM) approach by Qu and Duffy  (2007). The Catchment Modelling Framework 
 (CMF) generalizes the FVM discretization scheme to let the user attach the finite volumes (water storages in CMF) with a variety of 
 flow accounting equations (flux connections in CMF). The compounds of the model are assembled using the well known scripting language 
 Python. The advantages of scripting computer languages for scientific modelling are described by Ousterhout (1998) and 
 Karssenberg et al. (2007), namely rapid application development using very high level instructions and a dynamic typing system. To benefit 
 from the simplicity of scripting languages on the one hand, and from the reduced computation effort of compiled languages, the core 
-components of the framework are written in C++ as an extension for Python, using the “Simplified Wrapper Interface Generator” (SWIG) 
+components of the framework are written in C++ as an extension for Python, using the "Simplified Wrapper Interface Generator" (SWIG) 
 by Beazley and Lomdahl (1996).
 
 A model built on CMF is composed of a network, a spatial context and a solver (Figure 1). The nodes of the network correspond to the 
-water storages and boundary conditions, and the network edges to the governing equations, like Richard’s or Manning’s equation, amongst others. 
+water storages and boundary conditions, and the network edges to the governing equations, like Richard's or Manning's equation, amongst others. 
 The differential equation representing the water volume (V) in one storage-object i is then derived from the network, and is defined as: 
 
-\f$\frac{{dV_i }}{{dt}} = \sum\limits_{j = 1}^{N_i } { - q_{i,j} \left( {V_i ,V_j ,t} \right)} \f$    (1)
+\f[\frac{{dV_i }}{{dt}} = \sum\limits_{j = 1}^{N_i } { - q_{i,j} \left( {V_i ,V_j ,t} \right)} (1)\f]
 
 The flux function q is calculated by the flux connection objects, the edges of the network. N is the number of connected nodes of the actual 
 node i and j denotes a node connected to i. Sources and sinks of water are realized by boundary objects. Solute storages are associated with 
@@ -71,12 +71,12 @@ other integration methods for the few cases of non-stiff setups. Any solver in C
 of the network is part of a spatial context, either the whole study area (the project), like reaches and big aquifers, or of a horizontal 
 discretization unit, the cell. 
 
-@image html EMS2011fig.png "Figure 1: Simplified UML class diagram of CMF. The left section (light gray) includes the components for defining the network of water fluxes, the upper right part (dark gray) the classes to create and solve the resulting equation system, and the lower right (white) part shows classes for the spatial context"
+@image html cmf-uml-bunt.png "Figure 1: Simplified UML class diagram of CMF. The left section (light gray) includes the components for defining the network of water fluxes, the upper right part (dark gray) the classes to create and solve the resulting equation system, and the lower right (white) part shows classes for the spatial context"
 
 Using these components a wide range of hydrological catchment models can be build: Lumped conceptual models with physically based boundary 
 conditions, semidistributed models as well as highly detailed physically based fully distributed models. Other modular framework approaches 
 limit the range of models to be built to a specific model type. FUSE (Clark et al., 2008) and FLEX (Fenicia et al., 2006) for example are 
-restricted to lumped and semidistributed approaches and the rejectionist framework by Vaché and McDonnell (2006) constrained to distributed 
+restricted to lumped and semidistributed approaches and the rejectionist framework by Vach&eacute; and McDonnell (2006) constrained to distributed 
 topographic gradient driven approaches. The MIKE SHE model (Refsgaard and Storm 1995) covers a broader range of possible model setups. 
 However due to the closed nature of the source code, the user cannot extend the system by his or herself.
 
@@ -97,7 +97,7 @@ Hindmarsh, A.C., Brown, P.N., Grant, K.E., Lee, S.L., Serban, R., Shumaker, D.E.
 
 Karssenberg, D., de Jong, K. van der Kwast, J. 2007. Modelling landscape dynamics with Python. International Journal of Geographical Information Science 21, 483-495.
 
-Kraft, P., Multsch, S., Vaché, K.B., Frede, H.-G. Breuer, L. 2010. Using Python as a coupling platform for integrated catchment models. Advances in Geosciences 27, 51-56.
+Kraft, P., Multsch, S., Vach&eacute;, K.B., Frede, H.-G. Breuer, L. 2010. Using Python as a coupling platform for integrated catchment models. Advances in Geosciences 27, 51-56.
 
 Ousterhout, J.K. 1998. Scripting: Higher-level programming for the 21st century. IEEE Computer 31, 23-30.
 
@@ -105,6 +105,6 @@ Qu, Y.Z. Duffy, C.J. 2007. A semidiscrete finite volume formulation for multipro
 
 Refsgaard,J.C.& Storm,B. 1995. MIKE SHE. In: Computer Models of Watershed Hydrology (ed V.P.Singh), pp. 809-846. Water Resources Publications, Highlands Ranch, Colorado.
 
-Vache, K.B. McDonnell, J.J. 2006. A process-based rejectionist framework for evaluating catchment runoff model structure. Water Resources Research W02409, doi:10.1029/2005WR004247.
+Vach&eacute;, K.B. McDonnell, J.J. 2006. A process-based rejectionist framework for evaluating catchment runoff model structure. Water Resources Research W02409, doi:10.1029/2005WR004247.
 
 **/

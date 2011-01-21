@@ -19,7 +19,8 @@ Further reading:
 
 cmf is open source and generally licensed by GNU public license (GPLv3): \subpage license
 
-These texts are mainly citations from: Philipp Kraft, Kellie B. Vache, Lutz Breuer, Hans-Georg Frede: 
+A published short introduction into cmf can be found here: @subpage EMS2011 
+ 
 \image html cmf_background2.png
 \author Philipp Kraft, Kellie B. Vache, Lutz Breuer, Hans-Georg Frede
 \author Justus Liebig University, Giessen, Germany
