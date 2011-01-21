@@ -35533,116 +35533,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_MeteoStationList_add_station__SWIG_0(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  cmf::atmosphere::MeteoStationList *arg1 = (cmf::atmosphere::MeteoStationList *) 0 ;
-  std::string arg2 ;
-  double arg3 = (double) 51 ;
-  double arg4 = (double) 8 ;
-  double arg5 = (double) 1 ;
-  double arg6 = (double) 0 ;
-  cmf::math::Time arg7 = (cmf::math::Time) cmf::math::Time(1,1,2001) ;
-  cmf::math::Time arg8 = (cmf::math::Time) cmf::math::day ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  double val3 ;
-  int ecode3 = 0 ;
-  double val4 ;
-  int ecode4 = 0 ;
-  double val5 ;
-  int ecode5 = 0 ;
-  double val6 ;
-  int ecode6 = 0 ;
-  cmf::atmosphere::MeteoStation::ptr result;
-  
-  if ((nobjs < 2) || (nobjs > 8)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__atmosphere__MeteoStationList, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MeteoStationList_add_station" "', argument " "1"" of type '" "cmf::atmosphere::MeteoStationList *""'"); 
-  }
-  arg1 = reinterpret_cast< cmf::atmosphere::MeteoStationList * >(argp1);
-  {
-    std::string *ptr = (std::string *)0;
-    int res = SWIG_AsPtr_std_string(swig_obj[1], &ptr);
-    if (!SWIG_IsOK(res) || !ptr) {
-      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "MeteoStationList_add_station" "', argument " "2"" of type '" "std::string""'"); 
-    }
-    arg2 = *ptr;
-    if (SWIG_IsNewObj(res)) delete ptr;
-  }
-  if (swig_obj[2]) {
-    ecode3 = SWIG_AsVal_double(swig_obj[2], &val3);
-    if (!SWIG_IsOK(ecode3)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "MeteoStationList_add_station" "', argument " "3"" of type '" "double""'");
-    } 
-    arg3 = static_cast< double >(val3);
-  }
-  if (swig_obj[3]) {
-    ecode4 = SWIG_AsVal_double(swig_obj[3], &val4);
-    if (!SWIG_IsOK(ecode4)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "MeteoStationList_add_station" "', argument " "4"" of type '" "double""'");
-    } 
-    arg4 = static_cast< double >(val4);
-  }
-  if (swig_obj[4]) {
-    ecode5 = SWIG_AsVal_double(swig_obj[4], &val5);
-    if (!SWIG_IsOK(ecode5)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "MeteoStationList_add_station" "', argument " "5"" of type '" "double""'");
-    } 
-    arg5 = static_cast< double >(val5);
-  }
-  if (swig_obj[5]) {
-    ecode6 = SWIG_AsVal_double(swig_obj[5], &val6);
-    if (!SWIG_IsOK(ecode6)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode6), "in method '" "MeteoStationList_add_station" "', argument " "6"" of type '" "double""'");
-    } 
-    arg6 = static_cast< double >(val6);
-  }
-  if (swig_obj[6]) {
-    {
-      cmf::math::Time *pT = &arg7;
-      int res=SWIG_ConvertPtr(swig_obj[6],(void**)(&pT),SWIGTYPE_p_cmf__math__Time,0);
-      if (!(SWIG_IsOK(res)) || pT==0)
-      if (convert_datetime_to_cmftime(swig_obj[6], pT)!=SWIG_OK) 
-      SWIG_exception_fail(SWIG_TypeError,"Can't convert input value to cmf.Time object");
-      arg7 = *pT;
-    }
-  }
-  if (swig_obj[7]) {
-    {
-      cmf::math::Time *pT = &arg8;
-      int res=SWIG_ConvertPtr(swig_obj[7],(void**)(&pT),SWIGTYPE_p_cmf__math__Time,0);
-      if (!(SWIG_IsOK(res)) || pT==0)
-      if (convert_datetime_to_cmftime(swig_obj[7], pT)!=SWIG_OK) 
-      SWIG_exception_fail(SWIG_TypeError,"Can't convert input value to cmf.Time object");
-      arg8 = *pT;
-    }
-  }
-  {
-    try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (arg1)->add_station(arg2,arg3,arg4,arg5,arg6,arg7,arg8);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
-    } catch (const std::out_of_range& e) {
-      SWIG_exception(SWIG_IndexError, e.what());    
-    } catch (const std::exception& e) {
-      SWIG_exception(SWIG_RuntimeError, e.what());
-    }
-    
-  }
-  {
-    std::tr1::shared_ptr<  cmf::atmosphere::MeteoStation > *smartresult = result ? new std::tr1::shared_ptr<  cmf::atmosphere::MeteoStation >(result) : 0;
-    resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(smartresult), SWIGTYPE_p_std__tr1__shared_ptrT_cmf__atmosphere__MeteoStation_t, SWIG_POINTER_OWN);
-  }
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_MeteoStationList_add_station__SWIG_1(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_MeteoStationList_add_station(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   cmf::atmosphere::MeteoStationList *arg1 = (cmf::atmosphere::MeteoStationList *) 0 ;
   std::string arg2 ;
@@ -35660,17 +35551,28 @@ SWIGINTERN PyObject *_wrap_MeteoStationList_add_station__SWIG_1(PyObject *SWIGUN
   int ecode5 = 0 ;
   double val6 ;
   int ecode6 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  PyObject * obj4 = 0 ;
+  PyObject * obj5 = 0 ;
+  PyObject * obj6 = 0 ;
+  PyObject * obj7 = 0 ;
+  char *  kwnames[] = {
+    (char *) "self",(char *) "name",(char *) "position",(char *) "latitude",(char *) "longitude",(char *) "timezone",(char *) "startTime",(char *) "timestep", NULL 
+  };
   cmf::atmosphere::MeteoStation::ptr result;
   
-  if ((nobjs < 3) || (nobjs > 8)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__atmosphere__MeteoStationList, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"OOO|OOOOO:MeteoStationList_add_station",kwnames,&obj0,&obj1,&obj2,&obj3,&obj4,&obj5,&obj6,&obj7)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_cmf__atmosphere__MeteoStationList, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MeteoStationList_add_station" "', argument " "1"" of type '" "cmf::atmosphere::MeteoStationList *""'"); 
   }
   arg1 = reinterpret_cast< cmf::atmosphere::MeteoStationList * >(argp1);
   {
     std::string *ptr = (std::string *)0;
-    int res = SWIG_AsPtr_std_string(swig_obj[1], &ptr);
+    int res = SWIG_AsPtr_std_string(obj1, &ptr);
     if (!SWIG_IsOK(res) || !ptr) {
       SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "MeteoStationList_add_station" "', argument " "2"" of type '" "std::string""'"); 
     }
@@ -35678,62 +35580,62 @@ SWIGINTERN PyObject *_wrap_MeteoStationList_add_station__SWIG_1(PyObject *SWIGUN
     if (SWIG_IsNewObj(res)) delete ptr;
   }
   {
-    if (check_xy(swig_obj[2])) {
-      std::string res = convert_xyz_to_point(swig_obj[2],arg3);
+    if (check_xy(obj2)) {
+      std::string res = convert_xyz_to_point(obj2,arg3);
       if (res.size()) {
         SWIG_exception_fail(SWIG_ValueError,res.c_str());
         return NULL;
       }
     } 
-    else if (PySequence_Check(swig_obj[2])) {
-      std::string res = convert_seq_to_point(swig_obj[2],arg3);
+    else if (PySequence_Check(obj2)) {
+      std::string res = convert_seq_to_point(obj2,arg3);
       if (res.size()) {
         SWIG_exception_fail(SWIG_ValueError, res.c_str());
       }
     } else {
       std::string res="<";
-      res+=PyObject_REPR(swig_obj[2]);
+      res+=PyObject_REPR(obj2);
       res+="> has to be a cmf.point, a sequence, or any object with x and y (optional z) attributes";
       SWIG_exception_fail(SWIG_ValueError,res.c_str());
     }
   }
-  if (swig_obj[3]) {
-    ecode4 = SWIG_AsVal_double(swig_obj[3], &val4);
+  if (obj3) {
+    ecode4 = SWIG_AsVal_double(obj3, &val4);
     if (!SWIG_IsOK(ecode4)) {
       SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "MeteoStationList_add_station" "', argument " "4"" of type '" "double""'");
     } 
     arg4 = static_cast< double >(val4);
   }
-  if (swig_obj[4]) {
-    ecode5 = SWIG_AsVal_double(swig_obj[4], &val5);
+  if (obj4) {
+    ecode5 = SWIG_AsVal_double(obj4, &val5);
     if (!SWIG_IsOK(ecode5)) {
       SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "MeteoStationList_add_station" "', argument " "5"" of type '" "double""'");
     } 
     arg5 = static_cast< double >(val5);
   }
-  if (swig_obj[5]) {
-    ecode6 = SWIG_AsVal_double(swig_obj[5], &val6);
+  if (obj5) {
+    ecode6 = SWIG_AsVal_double(obj5, &val6);
     if (!SWIG_IsOK(ecode6)) {
       SWIG_exception_fail(SWIG_ArgError(ecode6), "in method '" "MeteoStationList_add_station" "', argument " "6"" of type '" "double""'");
     } 
     arg6 = static_cast< double >(val6);
   }
-  if (swig_obj[6]) {
+  if (obj6) {
     {
       cmf::math::Time *pT = &arg7;
-      int res=SWIG_ConvertPtr(swig_obj[6],(void**)(&pT),SWIGTYPE_p_cmf__math__Time,0);
+      int res=SWIG_ConvertPtr(obj6,(void**)(&pT),SWIGTYPE_p_cmf__math__Time,0);
       if (!(SWIG_IsOK(res)) || pT==0)
-      if (convert_datetime_to_cmftime(swig_obj[6], pT)!=SWIG_OK) 
+      if (convert_datetime_to_cmftime(obj6, pT)!=SWIG_OK) 
       SWIG_exception_fail(SWIG_TypeError,"Can't convert input value to cmf.Time object");
       arg7 = *pT;
     }
   }
-  if (swig_obj[7]) {
+  if (obj7) {
     {
       cmf::math::Time *pT = &arg8;
-      int res=SWIG_ConvertPtr(swig_obj[7],(void**)(&pT),SWIGTYPE_p_cmf__math__Time,0);
+      int res=SWIG_ConvertPtr(obj7,(void**)(&pT),SWIGTYPE_p_cmf__math__Time,0);
       if (!(SWIG_IsOK(res)) || pT==0)
-      if (convert_datetime_to_cmftime(swig_obj[7], pT)!=SWIG_OK) 
+      if (convert_datetime_to_cmftime(obj7, pT)!=SWIG_OK) 
       SWIG_exception_fail(SWIG_TypeError,"Can't convert input value to cmf.Time object");
       arg8 = *pT;
     }
@@ -35758,237 +35660,6 @@ SWIGINTERN PyObject *_wrap_MeteoStationList_add_station__SWIG_1(PyObject *SWIGUN
   }
   return resultobj;
 fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_MeteoStationList_add_station(PyObject *self, PyObject *args) {
-  int argc;
-  PyObject *argv[9];
-  
-  if (!(argc = SWIG_Python_UnpackTuple(args,"MeteoStationList_add_station",0,8,argv))) SWIG_fail;
-  --argc;
-  {
-    unsigned long _index = 0;
-    SWIG_TypeRank _rank = 0; 
-    if ((argc >= 2) && (argc <= 8)) {
-      SWIG_TypeRank _ranki = 0;
-      SWIG_TypeRank _rankm = 0;
-      SWIG_TypeRank _pi = 1;
-      int _v = 0;
-      {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_cmf__atmosphere__MeteoStationList, 0);
-        _v = SWIG_CheckState(res);
-      }
-      if (!_v) goto check_1;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      {
-        int res = SWIG_AsPtr_std_string(argv[1], (std::string**)(0));
-        _v = SWIG_CheckState(res);
-      }
-      if (!_v) goto check_1;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      if (argc > 2) {
-        {
-          {
-            int res = SWIG_AsVal_double(argv[2], NULL);
-            _v = SWIG_CheckState(res);
-          }
-        }
-        if (!_v) goto check_1;
-        _ranki += _v*_pi;
-        _rankm += _pi;
-        _pi *= SWIG_MAXCASTRANK;
-        if (argc > 3) {
-          {
-            {
-              int res = SWIG_AsVal_double(argv[3], NULL);
-              _v = SWIG_CheckState(res);
-            }
-          }
-          if (!_v) goto check_1;
-          _ranki += _v*_pi;
-          _rankm += _pi;
-          _pi *= SWIG_MAXCASTRANK;
-          if (argc > 4) {
-            {
-              {
-                int res = SWIG_AsVal_double(argv[4], NULL);
-                _v = SWIG_CheckState(res);
-              }
-            }
-            if (!_v) goto check_1;
-            _ranki += _v*_pi;
-            _rankm += _pi;
-            _pi *= SWIG_MAXCASTRANK;
-            if (argc > 5) {
-              {
-                {
-                  int res = SWIG_AsVal_double(argv[5], NULL);
-                  _v = SWIG_CheckState(res);
-                }
-              }
-              if (!_v) goto check_1;
-              _ranki += _v*_pi;
-              _rankm += _pi;
-              _pi *= SWIG_MAXCASTRANK;
-              if (argc > 6) {
-                {
-                  {
-                    void * pt;    
-                    int res=SWIG_ConvertPtr(argv[6],&pt,SWIGTYPE_p_cmf__math__Time,0);
-                    _v=SWIG_IsOK(res) || PyDateTime_Check(argv[6]) || PyDelta_Check(argv[6]) || PyDate_Check(argv[6]);
-                  }
-                }
-                if (!_v) goto check_1;
-                _ranki += _v*_pi;
-                _rankm += _pi;
-                _pi *= SWIG_MAXCASTRANK;
-                if (argc > 7) {
-                  {
-                    {
-                      void * pt;    
-                      int res=SWIG_ConvertPtr(argv[7],&pt,SWIGTYPE_p_cmf__math__Time,0);
-                      _v=SWIG_IsOK(res) || PyDateTime_Check(argv[7]) || PyDelta_Check(argv[7]) || PyDate_Check(argv[7]);
-                    }
-                  }
-                  if (!_v) goto check_1;
-                  _ranki += _v*_pi;
-                  _rankm += _pi;
-                  _pi *= SWIG_MAXCASTRANK;
-                }
-              }
-            }
-          }
-        }
-      }
-      if (!_index || (_ranki < _rank)) {
-        _rank = _ranki; _index = 1;
-        if (_rank == _rankm) goto dispatch;
-      }
-    }
-  check_1:
-    
-    if ((argc >= 3) && (argc <= 8)) {
-      SWIG_TypeRank _ranki = 0;
-      SWIG_TypeRank _rankm = 0;
-      SWIG_TypeRank _pi = 1;
-      int _v = 0;
-      {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_cmf__atmosphere__MeteoStationList, 0);
-        _v = SWIG_CheckState(res);
-      }
-      if (!_v) goto check_2;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      {
-        int res = SWIG_AsPtr_std_string(argv[1], (std::string**)(0));
-        _v = SWIG_CheckState(res);
-      }
-      if (!_v) goto check_2;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      {
-        {
-          cmf::geometry::point p;
-          _v=check_xy(argv[2]) || check_seq_point(argv[2]);
-        }
-      }
-      if (!_v) goto check_2;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      if (argc > 3) {
-        {
-          {
-            int res = SWIG_AsVal_double(argv[3], NULL);
-            _v = SWIG_CheckState(res);
-          }
-        }
-        if (!_v) goto check_2;
-        _ranki += _v*_pi;
-        _rankm += _pi;
-        _pi *= SWIG_MAXCASTRANK;
-        if (argc > 4) {
-          {
-            {
-              int res = SWIG_AsVal_double(argv[4], NULL);
-              _v = SWIG_CheckState(res);
-            }
-          }
-          if (!_v) goto check_2;
-          _ranki += _v*_pi;
-          _rankm += _pi;
-          _pi *= SWIG_MAXCASTRANK;
-          if (argc > 5) {
-            {
-              {
-                int res = SWIG_AsVal_double(argv[5], NULL);
-                _v = SWIG_CheckState(res);
-              }
-            }
-            if (!_v) goto check_2;
-            _ranki += _v*_pi;
-            _rankm += _pi;
-            _pi *= SWIG_MAXCASTRANK;
-            if (argc > 6) {
-              {
-                {
-                  void * pt;    
-                  int res=SWIG_ConvertPtr(argv[6],&pt,SWIGTYPE_p_cmf__math__Time,0);
-                  _v=SWIG_IsOK(res) || PyDateTime_Check(argv[6]) || PyDelta_Check(argv[6]) || PyDate_Check(argv[6]);
-                }
-              }
-              if (!_v) goto check_2;
-              _ranki += _v*_pi;
-              _rankm += _pi;
-              _pi *= SWIG_MAXCASTRANK;
-              if (argc > 7) {
-                {
-                  {
-                    void * pt;    
-                    int res=SWIG_ConvertPtr(argv[7],&pt,SWIGTYPE_p_cmf__math__Time,0);
-                    _v=SWIG_IsOK(res) || PyDateTime_Check(argv[7]) || PyDelta_Check(argv[7]) || PyDate_Check(argv[7]);
-                  }
-                }
-                if (!_v) goto check_2;
-                _ranki += _v*_pi;
-                _rankm += _pi;
-                _pi *= SWIG_MAXCASTRANK;
-              }
-            }
-          }
-        }
-      }
-      if (!_index || (_ranki < _rank)) {
-        _rank = _ranki; _index = 2;
-        if (_rank == _rankm) goto dispatch;
-      }
-    }
-  check_2:
-    
-  dispatch:
-    switch(_index) {
-    case 1:
-      return _wrap_MeteoStationList_add_station__SWIG_0(self, argc, argv);
-    case 2:
-      return _wrap_MeteoStationList_add_station__SWIG_1(self, argc, argv);
-    }
-  }
-  
-fail:
-  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'MeteoStationList_add_station'.\n"
-    "  Possible C/C++ prototypes are:\n"
-    "    add_station(cmf::atmosphere::MeteoStationList *,std::string,double,double,double,double,cmf::math::Time,cmf::math::Time)\n"
-    "    add_station(cmf::atmosphere::MeteoStationList *,std::string,cmf::geometry::point,double,double,double,cmf::math::Time,cmf::math::Time)\n");
   return NULL;
 }
 
@@ -68912,11 +68583,7 @@ static PyMethodDef SwigMethods[] = {
 		"\n"
 		"Returns the average lapse over the whole period. \n"
 		""},
-	 { (char *)"MeteoStationList_add_station", _wrap_MeteoStationList_add_station, METH_VARARGS, (char *)"\n"
-		"add_station(string name, double latitude = 51, double longitude = 8, \n"
-		"    double timezone = 1, double elevation = 0, \n"
-		"    Time startTime = cmf::math::Time(1,1,2001), \n"
-		"    Time timestep = day) -> ptr\n"
+	 { (char *)"MeteoStationList_add_station", (PyCFunction) _wrap_MeteoStationList_add_station, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
 		"MeteoStationList_add_station(MeteoStationList self, string name, point position, \n"
 		"    double latitude = 51, double longitude = 8, \n"
 		"    double timezone = 1, Time startTime = cmf::math::Time(1,1,2001), \n"
