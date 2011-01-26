@@ -59,7 +59,7 @@
 
 %attributeval(cmf::math::Integrator,cmf::math::Time,t,get_t,set_t);
 %attributeval(cmf::math::Integrator,cmf::math::Time,dt,get_dt);
-
+%attribute(cmf::math::CVodeIntegrator,int,order,get_order);
 
 %include "math/integrators/integrator.h"
 %include "math/integrators/bdf2.h"
