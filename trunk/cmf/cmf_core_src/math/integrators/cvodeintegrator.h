@@ -61,14 +61,14 @@ namespace cmf {
 			/// Maximal size of a time step
 			cmf::math::Time max_step;
 			/// Returns the last order of the solver used, may be smaller than MaxOrder due to the number of steps already taken or to fullfill stability limit
-			int GetOrder();
-			/// Reinitialization of the solver
-			void ReInit(Time initdt, real epsilon=0);
-			/// Initializes the solver. Do not add or remove statevariables after initialization
-			void Initialize();
+			int get_order() const;
+			/// Initializes the solver. Do not add or remove state variables after initialization. The solver is automatically intialized when integrating
+			void initialize();
+			/// Releases the internal solver. Call release before you add state variables or to change properties.
+			void release();
 
 			virtual int integrate(cmf::math::Time t_max,cmf::math::Time dt);
-			/// Resets the integrator
+			/// Resets the multi-step integrator. External changes to the state variables get recognized by the solver. Parameter changes of solver are ignored.
 			virtual void reset();
 			
 			/// Create a new CVODE integrator

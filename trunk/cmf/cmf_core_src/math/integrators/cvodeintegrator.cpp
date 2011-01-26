@@ -46,46 +46,35 @@ int cmf::math::CVodeIntegrator::f( realtype t, N_Vector u, N_Vector udot, void *
 	Time T_model = integ->get_t();
 	real sec_local = (T - T_model)/sec;
 	// Get the derivatives at time T
-
-/*
-#ifdef CMF_DEBUG
-	num_array cmp_dudata(dudata,dudata+nsize);
-#endif
-*/
 	integ->copy_dxdt(T,dudata);
-/*
-#ifdef CMF_DEBUG
-	num_array new_dudata(dudata,nsize);
-	cmp_dudata-=new_dudata;
-#endif
-*/
 
 	return 0;
 }
 
-
-void cmf::math::CVodeIntegrator::ReInit(Time initdt, real epsilon)
+void cmf::math::CVodeIntegrator::release()
 {
-	if (epsilon==0) epsilon=Epsilon;
-	CVodeReInit(cvode_mem,get_t().AsDays(),m_y);
-	CVodeSetInitStep(cvode_mem,initdt.AsDays());
+	// If saved vector exists, destroy it
+	if (m_y!=0) N_VDestroy_Serial(m_y);
+	// Destroys any existent solver
+	if (cvode_mem!=0) CVodeFree(&cvode_mem); 
 }
 
-void cmf::math::CVodeIntegrator::Initialize()
+void cmf::math::CVodeIntegrator::initialize()
 {
-	if (m_y!=0)
-		N_VDestroy_Serial(m_y);
-	if (cvode_mem!=0)	
-		CVodeFree(&cvode_mem); // Destroys any existent solver
-	int N=int(m_States.size());              // size of problem
-	m_y=N_VNew_Serial(N);										 // Allocate vector y
-	realtype * y_data = NV_DATA_S(m_y);      // Pointer to data of vector y
-	copy_states(y_data);						 // Copy states to y
+	release();
+	// size of problem
+	int N=int(m_States.size());              
+	// Allocate vector y
+	m_y=N_VNew_Serial(N);
+	// Pointer to data of vector y
+	realtype * y_data = NV_DATA_S(m_y);      
+	// Copy states to y
+	copy_states(y_data);					 
 	// Create a implicit (CV_BDF) solver with Newton iteration (CV_NEWTON)
 	cvode_mem = CVodeCreate(CV_BDF,CV_NEWTON);
-	// Set the state vector as user data of the solver
+	// Set this wrapper as user data of the solver
 	CVodeSetUserData(cvode_mem,(void *) this);
-	// Local copy of Epsilon needed for CVodeMalloc
+	// Local copy of Epsilon needed for CVodeSVtolerances
 	realtype reltol=Epsilon;
 	N_Vector abstol=N_VNew_Serial(N);
 	realtype * abstol_data=NV_DATA_S(abstol);
@@ -106,8 +95,8 @@ void cmf::math::CVodeIntegrator::Initialize()
 	switch(LinearSolver)
 	{
 	case 0 : flag=CVDense(cvode_mem,N);		          break;
-	case 1 : flag=CVBand(cvode_mem,N,maxl,maxl);		break;
-	case 2 : flag=CVDiag(cvode_mem);                break;
+	case 1 : flag=CVBand(cvode_mem,N,maxl,maxl);	  break;
+	case 2 : flag=CVDiag(cvode_mem);                  break;
 	case 3 : 
 		flag=CVSpgmr(cvode_mem,PREC,maxl);
 		// Create a banded preconditioner
@@ -150,7 +139,7 @@ int cmf::math::CVodeIntegrator::integrate( cmf::math::Time MaxTime,cmf::math::Ti
 	if (!cvode_mem || !m_y )
 	{
 		m_dt=MaxTime-get_t();
-		Initialize();
+		initialize();
 	}
 	// Get data of y
 	realtype * y_data=NV_DATA_S(m_y);
@@ -188,17 +177,18 @@ int cmf::math::CVodeIntegrator::integrate( cmf::math::Time MaxTime,cmf::math::Ti
 
 void cmf::math::CVodeIntegrator::reset()
 {
-	if (cvode_mem)
+	if (cvode_mem) {
+		realtype* y_data = NV_DATA_S(m_y);
+		this->copy_states(y_data);
 		CVodeReInit(cvode_mem,get_t()/day,m_y);
+	}
 }
 
-int cmf::math::CVodeIntegrator::GetOrder()
+int cmf::math::CVodeIntegrator::get_order() const
 {
 	int result;
 	CVodeGetLastOrder(cvode_mem,&result);
 	return result;
-
-
 }
 
 cmf::math::num_array cmf::math::CVodeIntegrator::get_error() const
@@ -215,3 +205,4 @@ cmf::math::num_array cmf::math::CVodeIntegrator::get_error() const
 	return res;
 
 }
+
