@@ -161,15 +161,25 @@ namespace cmf{namespace water {class flux_connection;}}
     def integrate_over(item,solver=None):
         """Returns a suitable cmf.integratable implementation for item, if available.
         The created integratable is integrated by solver, if given"""
-        if isinstance(item,flux_node):
-            res= cmf.waterbalance_integrator(item)
+        try:
+            it = iter(item)
+        except:
+            it=None
+        if it:
+            res = integratable_list()
+            for i in it:
+                integ = integrate_over(i,solver)
+                res.append(integ)
+            return res
+        elif isinstance(item,flux_node):
+            res = waterbalance_integrator(item)
         elif isinstance(item,flux_connection):
-            res= cmf.flux_integrator(item)
+            res = flux_integrator(item)
         else:
             raise TypeError("""Only the waterbalance of flux_nodes and the flux of flux_connections
                 are integratable. Received: """ + str(item))
-        if isinstance(solver,cmf.Integrator):
-            solver.add_integratable(res)
+        if isinstance(solver,Integrator):
+            solver.integratables.append(res)
         return res
 }
 

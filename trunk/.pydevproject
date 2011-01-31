@@ -8,5 +8,9 @@
 <path>/cmf/cmf</path>
 <path>/cmf/cmf_setups</path>
 <path>/cmf</path>
+<path>/cmf/cmf_visual</path>
+</pydev_pathproperty>
+<pydev_pathproperty name="org.python.pydev.PROJECT_EXTERNAL_SOURCE_PATH">
+<path>/usr/lib/pymodules/python2.6</path>
 </pydev_pathproperty>
 </pydev_project>

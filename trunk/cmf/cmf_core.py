@@ -1609,13 +1609,19 @@ class integratable_list(object):
         """
         return _cmf_core.integratable_list_integrate(self, *args, **kwargs)
 
+    def __init__(self, *args): 
+        """
+        __init__(self) -> integratable_list
+        __init__(self, integratable_list for_copy) -> integratable_list
+        """
+        _cmf_core.integratable_list_swiginit(self,_cmf_core.new_integratable_list(*args))
     def __len__(self, *args, **kwargs):
         """__len__(self) -> size_t"""
         return _cmf_core.integratable_list___len__(self, *args, **kwargs)
 
     def __iter__(self):
         for i in xrange(len(self)):
-            return self[i]
+            yield self[i]
     def __getitem__(self,index):
         if isinstance(index,slice):
             return [self.__getitem(i) for i in range(*index.indices(len(self)))]
@@ -1626,9 +1632,6 @@ class integratable_list(object):
             except:
                 return self.__getitem(index)
 
-    def __init__(self, *args, **kwargs): 
-        """__init__(self) -> integratable_list"""
-        _cmf_core.integratable_list_swiginit(self,_cmf_core.new_integratable_list(*args, **kwargs))
     __swig_destroy__ = _cmf_core.delete_integratable_list
 integratable_list.append = new_instancemethod(_cmf_core.integratable_list_append,None,integratable_list)
 integratable_list.remove = new_instancemethod(_cmf_core.integratable_list_remove,None,integratable_list)
@@ -1803,6 +1806,7 @@ class Integrator(StateVariableOwner):
         return _cmf_core.Integrator_add_single_state(self, *args, **kwargs)
 
     integratables = _swig_property(_cmf_core.Integrator_integratables_get, _cmf_core.Integrator_integratables_set)
+    reset_integratables = _swig_property(_cmf_core.Integrator_reset_integratables_get, _cmf_core.Integrator_reset_integratables_set)
     use_OpenMP = _swig_property(_cmf_core.Integrator_use_OpenMP_get, _cmf_core.Integrator_use_OpenMP_set)
     def size(self, *args, **kwargs):
         """
@@ -2099,41 +2103,13 @@ class CVodeIntegrator(Integrator):
     LinearSolver = _swig_property(_cmf_core.CVodeIntegrator_LinearSolver_get, _cmf_core.CVodeIntegrator_LinearSolver_set)
     MaxOrder = _swig_property(_cmf_core.CVodeIntegrator_MaxOrder_get, _cmf_core.CVodeIntegrator_MaxOrder_set)
     max_step = _swig_property(_cmf_core.CVodeIntegrator_max_step_get, _cmf_core.CVodeIntegrator_max_step_set)
-    def GetOrder(self, *args, **kwargs):
-        """
-        GetOrder(self) -> int
+    def initialize(self, *args, **kwargs):
+        """initialize(self)"""
+        return _cmf_core.CVodeIntegrator_initialize(self, *args, **kwargs)
 
-        int
-        GetOrder()
-
-        Returns the last order of the solver used, may be smaller than
-        MaxOrder due to the number of steps already taken or to fullfill
-        stability limit. 
-        """
-        return _cmf_core.CVodeIntegrator_GetOrder(self, *args, **kwargs)
-
-    def ReInit(self, *args, **kwargs):
-        """
-        ReInit(self, Time initdt, real epsilon = 0)
-
-        void
-        ReInit(Time initdt, real epsilon=0)
-
-        Reinitialization of the solver. 
-        """
-        return _cmf_core.CVodeIntegrator_ReInit(self, *args, **kwargs)
-
-    def Initialize(self, *args, **kwargs):
-        """
-        Initialize(self)
-
-        void
-        Initialize()
-
-        Initializes the solver. Do not add or remove statevariables after
-        initialization. 
-        """
-        return _cmf_core.CVodeIntegrator_Initialize(self, *args, **kwargs)
+    def release(self, *args, **kwargs):
+        """release(self)"""
+        return _cmf_core.CVodeIntegrator_release(self, *args, **kwargs)
 
     def __init__(self, *args): 
         """
@@ -2168,9 +2144,9 @@ class CVodeIntegrator(Integrator):
         return _cmf_core.CVodeIntegrator_copy(self, *args, **kwargs)
 
     __swig_destroy__ = _cmf_core.delete_CVodeIntegrator
-CVodeIntegrator.GetOrder = new_instancemethod(_cmf_core.CVodeIntegrator_GetOrder,None,CVodeIntegrator)
-CVodeIntegrator.ReInit = new_instancemethod(_cmf_core.CVodeIntegrator_ReInit,None,CVodeIntegrator)
-CVodeIntegrator.Initialize = new_instancemethod(_cmf_core.CVodeIntegrator_Initialize,None,CVodeIntegrator)
+    order = _swig_property(_cmf_core.CVodeIntegrator_order_get)
+CVodeIntegrator.initialize = new_instancemethod(_cmf_core.CVodeIntegrator_initialize,None,CVodeIntegrator)
+CVodeIntegrator.release = new_instancemethod(_cmf_core.CVodeIntegrator_release,None,CVodeIntegrator)
 CVodeIntegrator.get_error = new_instancemethod(_cmf_core.CVodeIntegrator_get_error,None,CVodeIntegrator)
 CVodeIntegrator.copy = new_instancemethod(_cmf_core.CVodeIntegrator_copy,None,CVodeIntegrator)
 CVodeIntegrator_swigregister = _cmf_core.CVodeIntegrator_swigregister
@@ -3820,15 +3796,25 @@ def system_bridge(*args, **kwargs):
 def integrate_over(item,solver=None):
     """Returns a suitable cmf.integratable implementation for item, if available.
     The created integratable is integrated by solver, if given"""
-    if isinstance(item,flux_node):
-        res= cmf.waterbalance_integrator(item)
+    try:
+        it = iter(item)
+    except:
+        it=None
+    if it:
+        res = integratable_list()
+        for i in it:
+            integ = integrate_over(i,solver)
+            res.append(integ)
+        return res
+    elif isinstance(item,flux_node):
+        res = waterbalance_integrator(item)
     elif isinstance(item,flux_connection):
-        res= cmf.flux_integrator(item)
+        res = flux_integrator(item)
     else:
         raise TypeError("""Only the waterbalance of flux_nodes and the flux of flux_connections
             are integratable. Received: """ + str(item))
-    if isinstance(solver,cmf.Integrator):
-        solver.add_integratable(res)
+    if isinstance(solver,Integrator):
+        solver.integratables.append(res)
     return res
 
 
@@ -4410,12 +4396,8 @@ class MeteoStationList(object):
         """
         return _cmf_core.MeteoStationList_calculate_Temp_lapse(self, *args, **kwargs)
 
-    def add_station(self, *args):
+    def add_station(self, *args, **kwargs):
         """
-        add_station(self, string name, double latitude = 51, double longitude = 8, 
-            double timezone = 1, double elevation = 0, 
-            Time startTime = cmf::math::Time(1,1,2001), 
-            Time timestep = day) -> ptr
         add_station(self, string name, point position, double latitude = 51, 
             double longitude = 8, double timezone = 1, Time startTime = cmf::math::Time(1,1,2001), 
             Time timestep = day) -> ptr
@@ -4448,7 +4430,7 @@ class MeteoStationList(object):
         timestep:  Frequency of climatic data (may be changed for each time
         series later) 
         """
-        return _cmf_core.MeteoStationList_add_station(self, *args)
+        return _cmf_core.MeteoStationList_add_station(self, *args, **kwargs)
 
     def remove_station(self, *args, **kwargs):
         """
