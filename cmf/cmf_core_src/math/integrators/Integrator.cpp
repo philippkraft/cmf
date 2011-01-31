@@ -186,7 +186,7 @@ void cmf::math::Integrator::integrate_until( cmf::math::Time t_max,cmf::math::Ti
 	Time start = m_t;
 	if (reset_solver) reset();
 	if (!dt) dt=m_dt;
-	integratables.reset(start);
+	if (reset_integratables) integratables.reset(start);
 	while (m_t < t_max) {
 		
 		integrate(t_max,dt);

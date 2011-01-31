@@ -29,27 +29,6 @@
 namespace cmf {
 	/// Contains classes for numerical solving of ODE's
   namespace math {
-	  /*
-	  template<typename _Ty, typename _BaseIterator> class iterable {
-		  _BaseIterator begin,end;
-	  public:
-#ifndef SWIG
-		  iterable(_BaseIterator Begin,_BaseIterator End) 
-			  : begin(Begin), end(End)
-		  {}
-		  void operator++() {++begin;}
-		  iterable operator++() {return begin++;}
-#endif
-		  bool valid() const {return begin!=end;}
-		  _Ty next() {
-			  ++begin; 
-			  if (valid()) 
-				  return *begin;
-			  else
-				  throw std::out_of_range("Iterator has stopped!");
-		  }			
-	  };
-*/
 	  /// integration_variable is a functionality for different classes for integrating values over time.
 	  ///
 	  /// Main usage of an integration_variable is the calculation of average fluxes over time e.g.
@@ -87,6 +66,10 @@ namespace cmf {
 		  cmf::math::num_array sum() const;
 		  void reset(Time t);
 		  void integrate(Time t);
+		  integratable_list() {}
+		  integratable_list(const integratable_list& for_copy)
+		  : m_items(for_copy.m_items)
+		  {	  }
 
 	  };
 

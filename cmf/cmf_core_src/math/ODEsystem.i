@@ -44,7 +44,7 @@
     %pythoncode {
     def __iter__(self):
         for i in xrange(len(self)):
-            return self[i]
+            yield self[i]
     def __getitem__(self,index):
         if isinstance(index,slice):
             return [self.__getitem(i) for i in range(*index.indices(len(self)))]
