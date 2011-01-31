@@ -89,12 +89,13 @@ namespace cmf {
 			
 			/// Public access to integratables
 			integratable_list integratables;
+			/// If true, the integratables of this solver are reset
+			bool reset_integratables;
 
 
 
 
 			//@}
-		public:
 			/// if true (default), OpenMP is used calculate the right hand side function f(y,t) in parallel
 			bool use_OpenMP;
 
@@ -165,10 +166,12 @@ namespace cmf {
 			/// Constructs a new Integrator with a new own state vector
 			/// @param epsilon relative error tolerance per time step (default=1e-9)
 			Integrator(real epsilon=1e-9) 
-				: m_States(), Epsilon(epsilon),m_dt(day),m_t(day)
+				: m_States(), Epsilon(epsilon),m_dt(day),m_t(day),
+				  use_OpenMP(true), reset_integratables(true)
 			{}
 			Integrator(cmf::math::StateVariableOwner& states,real epsilon=1e-9)
-				: m_States(),Epsilon(epsilon),m_dt(day),m_t(day*0) ,use_OpenMP(1)
+				: m_States(),Epsilon(epsilon),m_dt(day),m_t(day*0),
+				  use_OpenMP(true), reset_integratables(true)
 			{
 				StateVariableList sq = states.get_states();
 				m_States.insert(m_States.end(),sq.begin(),sq.end());
