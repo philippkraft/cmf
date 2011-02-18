@@ -111,18 +111,18 @@ void cmf::upslope::connect_cells_with_flux(cells_ref cells, const CellConnector&
 				connect(cell,it.cell(),start_at_layer);
 	}
 }
-void insert_connections_in_set(cmf::water::connection_set& cset,cmf::water::flux_node::ptr node)
+void insert_connections_in_set(cmf::water::connection_list& cset,cmf::water::flux_node::ptr node)
 {
-	cmf::water::connection_vector cons=node->get_connections();
-	for(cmf::water::connection_vector::const_iterator it = cons.begin(); it != cons.end(); ++it)
+	cmf::water::connection_list cons=node->get_connections();
+	for(cmf::water::connection_list::const_iterator it = cons.begin(); it != cons.end(); ++it)
 	{
-		cset.insert(*it);
+		cset.append(*it);
 	}
 }
-cmf::water::connection_set cmf::upslope::get_connections(cells_ref cells)
+cmf::water::connection_list cmf::upslope::get_connections(cells_ref cells)
 {
 	using namespace cmf::water;
-	cmf::water::connection_set cset;
+	cmf::water::connection_list cset;
 	//insert_connections_in_set(cset,&Rainfall());
 	for(cell_vector::iterator it = cells.begin(); it != cells.end(); ++it)
 	{

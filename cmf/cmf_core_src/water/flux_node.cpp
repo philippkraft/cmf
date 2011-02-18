@@ -173,12 +173,12 @@ cmf::geometry::point cmf::water::flux_node::get_3d_flux( cmf::math::Time t )
 
 }
 
-cmf::water::connection_vector cmf::water::flux_node::get_connections() const
+cmf::water::connection_list cmf::water::flux_node::get_connections() const
 {
-	connection_vector res;
+	connection_list res;
 	for(ConnectionMap::const_iterator it = m_Connections.begin(); it != m_Connections.end(); ++it)
 	{		
-		res.push_back(it->second);
+		res.append(it->second);
 	}
 	return res;
 }

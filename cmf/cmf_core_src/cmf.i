@@ -1,4 +1,3 @@
-
 // Copyright 2010 by Philipp Kraft
 // This file is part of cmf.
 //
