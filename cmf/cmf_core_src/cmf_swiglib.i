@@ -85,12 +85,10 @@ Included macros:
         return self.to_string()
 }}
 %enddef
-
+%{
 // **********************************************************************************************
 // %iterable_to_list(LISTTYPE,ITEMTYPE) typemap system. Puts a function template into the header for general usage
-
 // Function to convert an iterable to a list type (class with append function). For use in typemaps
-%{
     template<typename _item_type, typename _Ty> 
     int iterable_to_list(PyObject* iterable,swig_type_info* _item_descriptor, _Ty& temp_list) {
     	PyObject* iter = PyObject_GetIter(iterable);

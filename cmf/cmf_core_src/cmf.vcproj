@@ -459,6 +459,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\water\simple_connections.h"
+				>
+			</File>
+			<File
 				RelativePath=".\upslope\SoilLayer.h"
 				>
 			</File>
@@ -759,6 +763,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\water\simple_connections.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\upslope\SoilLayer.cpp"
 				>
 			</File>
@@ -856,7 +864,7 @@
 				<Tool
 					Name="VCCustomBuildTool"
 					Description="swigging cmf.i -&gt; cmf_wrap.cpp"
-					CommandLine="swig.exe -python -c++ -Wextra -w512 -w511 -keyword -castmode -O -c++ -o $(InputDir)cmf_wrap.cpp -outdir $(InputDir).. $(InputDir)cmf.i&#x0D;&#x0A;"
+					CommandLine="swig.exe -python -c++ -Wextra -w512 -w511 -keyword -castmode -O -c++ -o $(InputDir)cmf_wrap.cpp -threads -outdir $(InputDir).. $(InputDir)cmf.i&#x0D;&#x0A;"
 					Outputs="cmf_wrap.cpp"
 				/>
 			</FileConfiguration>

@@ -131,9 +131,3 @@ cmf::math::StateVariableList cmf::water::WaterStorage::get_states()
 	return q;
 }
 
-
-cmf::water::kinematic_wave::kinematic_wave( WaterStorage::ptr source,flux_node::ptr target,real _traveltime, real _exponent/*=1.0*/, real _residual_volume/*=0.0*/ ) 
-: flux_connection(source,target,"kinematic wave"),residencetime(_traveltime),exponent(_exponent), residual_volume(_residual_volume)
-{
-	NewNodes();
-}
