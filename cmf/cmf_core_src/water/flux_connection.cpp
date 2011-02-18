@@ -240,3 +240,26 @@ bool cmf::water::connection_list::remove( const flux_connection::ptr& connection
 	} else return false;
 }
 
+
+void cmf::water::flux_integrator::integrate( cmf::math::Time until )
+{
+	/* If connection is expired, throw error */
+	if (_connection.expired()) {
+		throw std::runtime_error("Connection for "+_name+" does not exist any more");
+	} else if /* end time is before current time, reset the integration*/ (until<_t) {	
+		reset(until);
+	} else /* integrate */ {
+		// get timestep length
+		cmf::math::Time dt = until-_t;
+		// get the connection
+		flux_connection::ptr con = _connection.lock();
+		// add flux in timestep to current sum
+		if (invert)
+			_sum -= con->m_q * dt.AsDays();
+		else
+			_sum += con->m_q * dt.AsDays();
+		// set new current time
+		_t=until;
+	}
+}
+
