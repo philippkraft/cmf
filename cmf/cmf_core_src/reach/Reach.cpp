@@ -148,9 +148,9 @@ void Reach::connect_to_surfacewater( cmf::upslope::Cell* cell, real width,bool d
 void Reach::set_diffusive( bool use_diffusive_wave )
 {
 	// Get the nodes connected with this reach
-	cmf::water::connection_vector cv = this->get_connections();
+	cmf::water::connection_list cv = this->get_connections();
 	// For each node connected to this reach:
-	for(cmf::water::connection_vector::iterator it = cv.begin(); it != cv.end(); ++it)
+	for(cmf::water::connection_list::iterator it = cv.begin(); it != cv.end(); ++it)
 	{
 		// Get the connection as a manning connection
 		std::tr1::shared_ptr<cmf::river::Manning> mc = std::tr1::dynamic_pointer_cast<cmf::river::Manning>(*it);

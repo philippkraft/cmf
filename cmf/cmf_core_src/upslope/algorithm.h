@@ -24,6 +24,7 @@
 #include "../atmosphere/meteorology.h"
 #include "../math/statevariable.h"
 #include "../geometry/geometry.h"
+#include "../water/flux_connection.h"
 #include "cell_vector.h"
 namespace cmf {
 	namespace upslope {
@@ -35,7 +36,7 @@ namespace cmf {
 		/// Gets the outer cells of a network. Unstable! Might create an infinite loop
 		cell_vector get_boundary_cells(cells_ref cells);
 		/// Gets all connections of a bunch of cells
-		cmf::water::connection_set get_connections(cells_ref cells);
+		cmf::water::connection_list get_connections(cells_ref cells);
 		/// Connects all adjacent cells with a flux connection, implementing the CellConnector protocol
 		void connect_cells_with_flux(cells_ref cells, const cmf::upslope::CellConnector& connect,int start_at_layer=0);
 		/// Fills the sinks in a network. Unstable! Might create an infinite loop

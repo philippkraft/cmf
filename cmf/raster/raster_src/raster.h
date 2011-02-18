@@ -25,6 +25,8 @@
 #include <sstream>
 #include <vector>
 #include <stdexcept>
+
+
 #ifdef _OPENMP
 #  include <omp.h>
 #endif
@@ -374,6 +376,22 @@ public:
 				if (this->HasData(c,r))
 					hist.CountValue(this->GetData(c,r));
 		return hist;
+	}
+	void clip(double x1,double y1,double x2, double y2) {
+		double
+			x,y,
+			xmin = x1<x2 ? x1 : x2,
+			xmax = x1>x2 ? x1 : x2,
+			ymin = y1<y2 ? y1 : y2,
+			ymax = y1>y2 ? y1 : y2;
+		for (int r = 0; r < m_Header.nrows ; ++r) {
+			y = GetYPosition(r);
+			for (int c = 0; c < m_Header.ncols ; ++c) {
+				x = GetXPosition(c);
+				if (x<xmin || x>xmax || y<ymin || y>ymax)
+					SetData(c,r,NoData());
+			}
+		}
 	}
 	//@}
 	/// @name Operators
