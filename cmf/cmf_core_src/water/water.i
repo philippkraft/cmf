@@ -112,7 +112,9 @@ namespace cmf{namespace water {class flux_connection;}}
 
 
 %include "water/flux_node.h"
+%iterable_to_list(cmf::water::connection_list,cmf::water::flux_connection::ptr);
 %include "water/flux_connection.h"
+
 %extend cmf::water::flux_connection { %pythoncode {
     def __repr__(self):
         return self.to_string()
@@ -124,6 +126,20 @@ namespace cmf{namespace water {class flux_connection;}}
     def __contains__(self,cmp):
         return cmp==self[0] or cmp==self[1]
 }}
+%extend cmf::water::connection_list {
+    size_t __len__() const { return $self->size();}
+    bool __contains__(const cmf::water::connection::ptr& con) const { return $self->contains(con);}
+%pythoncode {
+    def __repr__(self):
+        return repr(list(self)) + "<cmf.connection_list>"
+    def __getitem__(self,index):
+        return self[index]
+    def __iter__(self):
+        for i in xrange(len(self)):
+            yield self.at(i)
+    }
+}
+
 
 %extend cmf::water::flux_node { 
 %pythoncode {
