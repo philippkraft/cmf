@@ -37,9 +37,10 @@ namespace cmf {
 	namespace water {
 
 		class flux_connection;
+		class connection_list;
 		class node_list;
-		typedef std::vector<std::tr1::shared_ptr<cmf::water::flux_connection> > connection_vector;
-		typedef std::set<std::tr1::shared_ptr<cmf::water::flux_connection>  > connection_set;
+// 		typedef std::vector<std::tr1::shared_ptr<cmf::water::flux_connection> > connection_vector;
+// 		typedef std::set<std::tr1::shared_ptr<cmf::water::flux_connection>  > connection_set;
 
 		/// @defgroup nodes	Water nodes
 		/// @todo Elaborate on Water nodes
@@ -90,7 +91,7 @@ namespace cmf {
 			/// The Name of this node
 			std::string Name;
 			virtual std::string to_string() const {return "{" + Name + "}";}
-			cmf::water::connection_vector get_connections() const;
+			cmf::water::connection_list get_connections() const;
 
 			//cmf::geometry::point get_direction_to(const flux_node& cmp);
 

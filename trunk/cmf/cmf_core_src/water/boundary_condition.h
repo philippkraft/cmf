@@ -163,43 +163,6 @@ namespace cmf {
 			}
 			
 		};
-		/// @ingroup connections
-		/// Produces a constant but changeable flux from a source to a target, if enough water is present in the source
-		///
-		/// \f$ q=\left\{0 \mbox{ if }V_{source}\le V_{min}\\ \frac{V_{source} - V_{min}}{t_{decr} q_{0} - V_{min}}\mbox{ if } V_{source} t_{decr} q_{0}\\ q_{0} \mbox{ else}\le \right. \f$
-		class TechnicalFlux : public cmf::water::flux_connection
-		{
-		protected:
-			std::tr1::weak_ptr<cmf::water::WaterStorage> source;
-			virtual real calc_q(cmf::math::Time t)
-			{
-				return piecewise_linear(source.lock()->get_state(),MinState,MinState+FluxDecreaseTime.AsDays()*MaxFlux,0,MaxFlux);
-			}
-			void NewNodes()
-			{
-				source = cmf::water::WaterStorage::cast(left_node());
-			}
-
-		public:
-			/// The requested flux \f$q_{0}\left[frac{m^3}{day}\right]\f$
-			real MaxFlux;
-			/// The minimal volume of the state  \f$V_{min}\left[m^3\right]\f$
-			real MinState;
-			/// The flux is linearly decreased, if it takes less than FluxDecreaseTime \f$t_{decr}\f$ to reach MinState with MaxFlux
-			cmf::math::Time FluxDecreaseTime;
-
-			/// Produces a constant but changeable flux from a source to a target, if enough water is present in the source
-			/// @param source The source of the water
-			/// @param target The target of the water
-			/// @param maximum_flux The requested flux \f$q_{0}\f$
-			/// @param minimal_state Minimal volume of stored water in source
-			/// @param flux_decrease_time (cmf::math::Time)
-			TechnicalFlux(std::tr1::shared_ptr<cmf::water::WaterStorage> & source,std::tr1::shared_ptr<cmf::water::flux_node> target,real maximum_flux,real minimal_state=0,cmf::math::Time flux_decrease_time=cmf::math::h)
-				: flux_connection(source,target,"Technical flux"),MaxFlux(maximum_flux),MinState(minimal_state),FluxDecreaseTime(flux_decrease_time) {}
-		};
-
-
-
 
 		
 	}

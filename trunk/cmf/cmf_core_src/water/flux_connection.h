@@ -24,7 +24,6 @@
 #include "Solute.h"
 #include <map>
 #include <vector>
-#include <set>
 #include <string>
 #include "flux_node.h"
 #include <stdexcept>
@@ -93,6 +92,10 @@ namespace cmf {
 			
 			/// Deregisters this connection from its nodes. Returns true if only one reference is left.
 			bool kill_me();
+			/// Performes a new calculation of the flux
+			void refresh(cmf::math::Time t) {
+				m_q = calc_q(t);
+			}
 
 
 			const int connection_id;
@@ -137,6 +140,41 @@ namespace cmf {
 
 		int replace_node(cmf::water::flux_node::ptr oldnode,cmf::water::flux_node::ptr newnode);
 		
+		/// A self sorting list of connections
+		class connection_list : public cmf::math::precalculatable {
+		private:
+			typedef std::vector<flux_connection::ptr> _list;
+			_list m_con;
+		public:
+			typedef _list::iterator iterator;
+			typedef _list::const_iterator const_iterator;
+			bool append(flux_connection::ptr connection);
+			void extend(const connection_list& connections);
+			bool contains(const flux_connection::ptr& connection) const;
+			bool remove(const flux_connection::ptr& connection);
+			void do_action(cmf::math::Time t, bool use_OpenMP = true);
+			size_t size() const { return m_con.size();}
+			const flux_connection::ptr& operator[](size_t pos) const {
+				return m_con[pos];
+			}
+			flux_connection::ptr& operator[](size_t pos) {
+				return m_con[pos];
+			}
+			flux_connection::ptr at(size_t pos) const { return m_con.at(pos); }
+			iterator begin() {
+				return m_con.begin();
+			}
+			iterator end() {
+				return m_con.end();
+			}
+			const_iterator begin() const {
+				return m_con.begin();
+			}
+			const_iterator end() const {
+				return m_con.end();
+			}
+
+		};
 
 		/// The flux_integrator is an integratable for precise output of average fluxes over time. It can be added to
 		/// solver (any cmf::math::Integrator), which is than calling the integrate method at each substep.
@@ -175,54 +213,6 @@ namespace cmf {
 			/// Creates a flux_integrator from the endpoints of a connection. Throws if there is no connection between the endpoints
 			flux_integrator(cmf::water::flux_node::ptr left, cmf::water::flux_node::ptr right);
 		};
-
-
-		/// @ingroup connections
-		/// Routes the sum of all other fluxes to a target
-		class waterbalance_connection : public flux_connection
-		{
-		protected:
-			real calc_q(cmf::math::Time t) 
-			{
-				real q = left_node()->waterbalance(t,this);
-				if (q > 0) return q;
-				else return 0.0;
-			}
-			void NewNodes() {}
-		public:
-			waterbalance_connection(flux_node::ptr source,flux_node::ptr target) 
-				: flux_connection(source,target,"waterbalance connection")
-			{
-				RecalcAlways=true;
-			}
-		};
-
-		/// @ingroup connections
-		/// Flux from one node to another, controlled by the user or an external program, 
-		/// by changing the flux constant
-		class external_control_connection : public flux_connection {
-		protected:
-			real calc_q(cmf::math::Time t)	{
-				return flux;
-			}
-			void NewNodes() {}
-		public:
-			real flux;
-			external_control_connection(flux_node::ptr source,flux_node::ptr target,real flux_value=0) 
-				: flux_connection(source,target,"external controlled connection"),flux(flux_value)			
-			{
-				RecalcAlways=true;
-			}
-		};
-		/// @ingroup connections
-		/// Sets a constant flux between two nodes, if an external_control_connection exists. 
-		// Otherwise an error is thrown
-		void set_flux(flux_node::ptr source,flux_node::ptr target,real flux_value);
-		
-		/// @ingroup connections
-		/// Checks if a constant flux between two nodes can be set. Returns true
-		/// if the nodes are connected by an external_control_connection
-		bool can_set_flux(flux_node::ptr source,flux_node::ptr target);
 
 
 

@@ -29,6 +29,15 @@
 namespace cmf {
 	/// Contains classes for numerical solving of ODE's
   namespace math {
+#ifndef SWIG
+	  class precalculatable {
+	  public:
+		  virtual void do_action(Time t, bool use_OpenMP = true)=0;
+	  };
+
+#endif
+
+
 	  /// integration_variable is a functionality for different classes for integrating values over time.
 	  ///
 	  /// Main usage of an integration_variable is the calculation of average fluxes over time e.g.

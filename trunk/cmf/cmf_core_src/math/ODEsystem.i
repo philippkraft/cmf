@@ -80,6 +80,7 @@
             self.integrate_until(self.t+t,reset=reset)
         else:
             self.integrate_until(t,reset=reset)
+        return self.t
     def run(self,start=None,end=None,step=day*1):
         if not start is None:
             self.t=start

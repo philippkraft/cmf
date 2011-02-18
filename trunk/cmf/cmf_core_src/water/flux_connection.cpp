@@ -16,6 +16,7 @@
 //   You should have received a copy of the GNU General Public License
 //   along with cmf.  If not, see <http://www.gnu.org/licenses/>.
 //   
+#include <algorithm>
 #include "flux_connection.h"
 #include "../project.h"
   /*************************************************************************/
@@ -120,65 +121,6 @@ bool flux_connection::kill_me()
 		right->DeregisterConnection(this);
 	return weak_this.use_count() <= 1;
 }
-int cmf::water::replace_node(flux_node::ptr oldnode,flux_node::ptr newnode)
-{
-	int changes=0;
-	if (oldnode && newnode) {
-		newnode->position=oldnode->position;
-		newnode->Name=oldnode->Name;
-		connection_vector cons=oldnode->get_connections();
-		for(connection_vector::iterator it = cons.begin(); it != cons.end(); ++it) {
-			++changes;
-			(**it).exchange_target(oldnode,newnode);
-		}
-	}
-	return changes;
-
-}
-
-void cmf::water::set_flux( flux_node::ptr source,flux_node::ptr target,real flux_value)
-{
-	external_control_connection* con = dynamic_cast<external_control_connection*>(source->connection_to(*target));
-	if (con) {
-		con->flux = (con->left_node() == source ? flux_value  : -flux_value);
-	} else {
-		throw std::runtime_error("No external controlled connection between " 
-			+ source->to_string() + " and " 
-			+ target->to_string()+". \n You can create one overriding any existing connection (Python):\n>>> cmf.connect(" + source->Name + "," + target->Name + ",flux)");
-	}
-
-}
-
-bool cmf::water::can_set_flux( flux_node::ptr source,flux_node::ptr target )
-{
-	external_control_connection* con = dynamic_cast<external_control_connection*>(source->connection_to(*target));
-	return con != 0;
-}
-
-
-void cmf::water::flux_integrator::integrate( cmf::math::Time until )
-{
-	/* If connection is expired, throw error */
-	if (_connection.expired()) {
-		throw std::runtime_error("Connection for "+_name+" does not exist any more");
-	} else if /* end time is before current time, reset the integration*/ (until<_t) {	
-		reset(until);
-	} else /* integrate */ {
-		// get timestep length
-		cmf::math::Time dt = until-_t;
-		// get the connection
-		flux_connection::ptr con = _connection.lock();
-		// add flux in timestep to current sum
-		if (invert)
-			_sum -= con->m_q * dt.AsDays();
-		else
-			_sum += con->m_q * dt.AsDays();
-		// set new current time
-		_t=until;
-	}
-}
-
-
 // returns the average flux over the timestep
 double cmf::water::flux_integrator::avg() const
 {
@@ -218,3 +160,83 @@ flux_connection::ptr cmf::water::flux_integrator::connection() const
 {
 	return _connection.lock();
 }
+
+
+
+int cmf::water::replace_node(flux_node::ptr oldnode,flux_node::ptr newnode)
+{
+	int changes=0;
+	if (oldnode && newnode) {
+		newnode->position=oldnode->position;
+		newnode->Name=oldnode->Name;
+		connection_list cons=oldnode->get_connections();
+		for(connection_list::iterator it = cons.begin(); it != cons.end(); ++it) {
+			++changes;
+			(**it).exchange_target(oldnode,newnode);
+		}
+	}
+	return changes;
+
+}
+
+
+#ifdef _OPENMP
+#include <omp.h>
+#endif
+
+
+inline bool connection_less(const flux_connection::ptr& con1,const flux_connection::ptr& con2) {
+	const int 
+		con1_left  = con1->left_node()->node_id, 
+		con2_left  = con2->left_node()->node_id, 
+		con1_right = con1->right_node()->node_id, 
+		con2_right = con1->right_node()->node_id;
+	return con1_left < con2_left  || ((con1_left == con2_left) && (con1_right<con2_right));
+}
+void cmf::water::connection_list::do_action( Time t , bool use_OpenMP)
+{
+	if (use_OpenMP) 
+	{
+		#pragma omp parallel for
+		for (int i = 0; i < (int)m_con.size() ; ++i)
+		{
+			m_con[i]->refresh(t);			
+		}
+	} /* if OpenMP */
+	else 
+	{
+		for(_list::const_iterator it = m_con.begin(); it != m_con.end(); ++it)
+		{
+		    (**it).refresh(t);
+		}
+
+	} /* if no OpenMP */
+
+}
+bool cmf::water::connection_list::contains( const flux_connection::ptr& connection ) const
+{
+	return std::binary_search(begin(),end(), connection, connection_less);
+}
+bool cmf::water::connection_list::append( flux_connection::ptr connection )
+{
+	_list::iterator it = std::lower_bound(begin(),end(),connection, connection_less);
+	if ((it == end()) || (*it != connection)) {
+		m_con.insert(it,connection);
+		return true;
+	} else {
+		return false;
+	}
+}
+void cmf::water::connection_list::extend(const connection_list& connections) {
+	for(connection_list::const_iterator it = connections.begin(); it != connections.end(); ++it)
+	    append(*it);
+}
+bool cmf::water::connection_list::remove( const flux_connection::ptr& connection )
+{
+	iterator it = std::lower_bound(begin(),end(),connection, connection_less);
+	if (it!=end()) {
+		m_con.erase(it);
+		return true;
+	} else return false;
+}
+

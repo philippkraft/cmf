@@ -1,5 +1,7 @@
 #include "integrator.h"
-
+#ifdef _OPENMP
+#include <omp.h>
+#endif
 
 
 void cmf::math::Integrator::copy_states( num_array & destination ) const
