@@ -279,6 +279,9 @@ from math import *
             """ Creates a copy of this raster """
             res=self.raster.clone()
             return Raster(dtype=self.dtype,raster=res)
+        def clip(self,x1,y1,x2,y2):
+        	""" Clips the raster to the given bounding box by marking all data outside the box as nodata """
+        	self.raster.clip(x1,y1,x2,y2)
         def __iadd__(self,other):
             if type(other) is type(self):
                 self.raster+=other.raster

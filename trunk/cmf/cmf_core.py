@@ -1928,6 +1928,7 @@ class Integrator(StateVariableOwner):
             self.integrate_until(self.t+t,reset=reset)
         else:
             self.integrate_until(t,reset=reset)
+        return self.t
     def run(self,start=None,end=None,step=day*1):
         if not start is None:
             self.t=start
@@ -2727,6 +2728,10 @@ class flux_connection(object):
         """
         return _cmf_core.flux_connection_kill_me(self, *args, **kwargs)
 
+    def refresh(self, *args, **kwargs):
+        """refresh(self, Time t)"""
+        return _cmf_core.flux_connection_refresh(self, *args, **kwargs)
+
     connection_id = _swig_property(_cmf_core.flux_connection_connection_id_get)
     def __eq__(self, *args, **kwargs):
         """__eq__(self, flux_connection other) -> bool"""
@@ -2809,6 +2814,7 @@ class flux_connection(object):
 flux_connection.left_node = new_instancemethod(_cmf_core.flux_connection_left_node,None,flux_connection)
 flux_connection.right_node = new_instancemethod(_cmf_core.flux_connection_right_node,None,flux_connection)
 flux_connection.kill_me = new_instancemethod(_cmf_core.flux_connection_kill_me,None,flux_connection)
+flux_connection.refresh = new_instancemethod(_cmf_core.flux_connection_refresh,None,flux_connection)
 flux_connection.__eq__ = new_instancemethod(_cmf_core.flux_connection___eq__,None,flux_connection)
 flux_connection.get_target = new_instancemethod(_cmf_core.flux_connection_get_target,None,flux_connection)
 flux_connection.exchange_target = new_instancemethod(_cmf_core.flux_connection_exchange_target,None,flux_connection)
@@ -2829,6 +2835,86 @@ def replace_node(*args, **kwargs):
     cmf::water::flux_node::ptr newnode) 
     """
   return _cmf_core.replace_node(*args, **kwargs)
+class connection_list(object):
+    """Proxy of C++ cmf::water::connection_list class"""
+    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __repr__ = _swig_repr
+    def append(self, *args, **kwargs):
+        """append(self, ptr connection) -> bool"""
+        return _cmf_core.connection_list_append(self, *args, **kwargs)
+
+    def extend(self, *args, **kwargs):
+        """extend(self, connection_list connections)"""
+        return _cmf_core.connection_list_extend(self, *args, **kwargs)
+
+    def contains(self, *args, **kwargs):
+        """contains(self, ptr connection) -> bool"""
+        return _cmf_core.connection_list_contains(self, *args, **kwargs)
+
+    def remove(self, *args, **kwargs):
+        """remove(self, ptr connection) -> bool"""
+        return _cmf_core.connection_list_remove(self, *args, **kwargs)
+
+    def do_action(self, *args, **kwargs):
+        """do_action(self, Time t, bool use_OpenMP = True)"""
+        return _cmf_core.connection_list_do_action(self, *args, **kwargs)
+
+    def size(self, *args, **kwargs):
+        """size(self) -> size_t"""
+        return _cmf_core.connection_list_size(self, *args, **kwargs)
+
+    def at(self, *args, **kwargs):
+        """at(self, size_t pos) -> ptr"""
+        return _cmf_core.connection_list_at(self, *args, **kwargs)
+
+    def begin(self, *args):
+        """
+        begin(self) -> iterator
+        begin(self) -> const_iterator
+        """
+        return _cmf_core.connection_list_begin(self, *args)
+
+    def end(self, *args):
+        """
+        end(self) -> iterator
+        end(self) -> const_iterator
+        """
+        return _cmf_core.connection_list_end(self, *args)
+
+    def __len__(self, *args, **kwargs):
+        """__len__(self) -> size_t"""
+        return _cmf_core.connection_list___len__(self, *args, **kwargs)
+
+    def __contains__(self, *args, **kwargs):
+        """__contains__(self, cmf::water::connection::ptr con) -> bool"""
+        return _cmf_core.connection_list___contains__(self, *args, **kwargs)
+
+    def __repr__(self):
+        return repr(list(self)) + "<cmf.connection_list>"
+    def __getitem__(self,index):
+        return self[index]
+    def __iter__(self):
+        for i in xrange(len(self)):
+            yield self.at(i)
+
+    def __init__(self, *args, **kwargs): 
+        """__init__(self) -> connection_list"""
+        _cmf_core.connection_list_swiginit(self,_cmf_core.new_connection_list(*args, **kwargs))
+    __swig_destroy__ = _cmf_core.delete_connection_list
+connection_list.append = new_instancemethod(_cmf_core.connection_list_append,None,connection_list)
+connection_list.extend = new_instancemethod(_cmf_core.connection_list_extend,None,connection_list)
+connection_list.contains = new_instancemethod(_cmf_core.connection_list_contains,None,connection_list)
+connection_list.remove = new_instancemethod(_cmf_core.connection_list_remove,None,connection_list)
+connection_list.do_action = new_instancemethod(_cmf_core.connection_list_do_action,None,connection_list)
+connection_list.size = new_instancemethod(_cmf_core.connection_list_size,None,connection_list)
+connection_list.at = new_instancemethod(_cmf_core.connection_list_at,None,connection_list)
+connection_list.begin = new_instancemethod(_cmf_core.connection_list_begin,None,connection_list)
+connection_list.end = new_instancemethod(_cmf_core.connection_list_end,None,connection_list)
+connection_list.__len__ = new_instancemethod(_cmf_core.connection_list___len__,None,connection_list)
+connection_list.__contains__ = new_instancemethod(_cmf_core.connection_list___contains__,None,connection_list)
+connection_list_swigregister = _cmf_core.connection_list_swigregister
+connection_list_swigregister(connection_list)
+
 class flux_integrator(integratable):
     """
     The flux_integrator is an integratable for precise output of average
@@ -2886,73 +2972,6 @@ flux_integrator.connection = new_instancemethod(_cmf_core.flux_integrator_connec
 flux_integrator_swigregister = _cmf_core.flux_integrator_swigregister
 flux_integrator_swigregister(flux_integrator)
 
-class waterbalance_connection(flux_connection):
-    """
-    Routes the sum of all other fluxes to a target
-
-    C++ includes: flux_connection.h 
-    """
-    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
-    __repr__ = _swig_repr
-    def __init__(self, *args, **kwargs): 
-        """
-        __init__(self, ptr source, ptr target) -> waterbalance_connection
-
-        waterbalance_connection(flux_node::ptr source, flux_node::ptr target)
-
-        """
-        _cmf_core.waterbalance_connection_swiginit(self,_cmf_core.new_waterbalance_connection(*args, **kwargs))
-    __swig_destroy__ = _cmf_core.delete_waterbalance_connection
-waterbalance_connection_swigregister = _cmf_core.waterbalance_connection_swigregister
-waterbalance_connection_swigregister(waterbalance_connection)
-
-class external_control_connection(flux_connection):
-    """
-    Flux from one node to another, controlled by the user or an external
-    program, by changing the flux constant
-
-    C++ includes: flux_connection.h 
-    """
-    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
-    __repr__ = _swig_repr
-    flux = _swig_property(_cmf_core.external_control_connection_flux_get, _cmf_core.external_control_connection_flux_set)
-    def __init__(self, *args, **kwargs): 
-        """
-        __init__(self, ptr source, ptr target, real flux_value = 0) -> external_control_connection
-
-        external_control_connection(flux_node::ptr source, flux_node::ptr
-        target, real flux_value=0) 
-        """
-        _cmf_core.external_control_connection_swiginit(self,_cmf_core.new_external_control_connection(*args, **kwargs))
-    __swig_destroy__ = _cmf_core.delete_external_control_connection
-external_control_connection_swigregister = _cmf_core.external_control_connection_swigregister
-external_control_connection_swigregister(external_control_connection)
-
-
-def set_flux(*args, **kwargs):
-  """
-    set_flux(ptr source, ptr target, real flux_value)
-
-    void
-    cmf::water::set_flux(flux_node::ptr source, flux_node::ptr target,
-    real flux_value)
-
-    Sets a constant flux between two nodes, if an
-    external_control_connection exists. 
-    """
-  return _cmf_core.set_flux(*args, **kwargs)
-
-def can_set_flux(*args, **kwargs):
-  """
-    can_set_flux(ptr source, ptr target) -> bool
-
-    bool
-    cmf::water::can_set_flux(flux_node::ptr source, flux_node::ptr target)
-
-    Checks if a constant flux between two nodes can be set. Returns true
-    if the nodes are connected by an external_control_connection 
-    """
-  return _cmf_core.can_set_flux(*args, **kwargs)
 class linear_scale(object):
     """
     A linear scaling functor, with slope and displacement.
@@ -3112,54 +3131,6 @@ class NeumannFlux(flux_connection):
 NeumannFlux_swigregister = _cmf_core.NeumannFlux_swigregister
 NeumannFlux_swigregister(NeumannFlux)
 
-class TechnicalFlux(flux_connection):
-    """
-    Produces a constant but changeable flux from a source to a target, if
-    enough water is present in the source
-
-    $ q=\\left\\{0 \\mbox{ if }V_{source}\\le V_{min}\\\\
-    \\frac{V_{source} - V_{min}}{t_{decr} q_{0} - V_{min}}\\mbox{ if }
-    V_{source} t_{decr} q_{0}\\\\ q_{0} \\mbox{ else}\\le
-    \\right. $
-
-    C++ includes: boundary_condition.h 
-    """
-    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
-    __repr__ = _swig_repr
-    MaxFlux = _swig_property(_cmf_core.TechnicalFlux_MaxFlux_get, _cmf_core.TechnicalFlux_MaxFlux_set)
-    MinState = _swig_property(_cmf_core.TechnicalFlux_MinState_get, _cmf_core.TechnicalFlux_MinState_set)
-    FluxDecreaseTime = _swig_property(_cmf_core.TechnicalFlux_FluxDecreaseTime_get, _cmf_core.TechnicalFlux_FluxDecreaseTime_set)
-    def __init__(self, *args, **kwargs): 
-        """
-        __init__(self, __dummy_8__ source, __dummy_6__ target, real maximum_flux, 
-            real minimal_state = 0, Time flux_decrease_time = h) -> TechnicalFlux
-
-        TechnicalFlux(std::tr1::shared_ptr< cmf::water::WaterStorage >
-        &source, std::tr1::shared_ptr< cmf::water::flux_node > target, real
-        maximum_flux, real minimal_state=0, cmf::math::Time
-        flux_decrease_time=cmf::math::h)
-
-        Produces a constant but changeable flux from a source to a target, if
-        enough water is present in the source
-
-        Parameters:
-        -----------
-
-        source:  The source of the water
-
-        target:  The target of the water
-
-        maximum_flux:  The requested flux $q_{0}$
-
-        minimal_state:  Minimal volume of stored water in source
-
-        flux_decrease_time:  ( cmf::math::Time) 
-        """
-        _cmf_core.TechnicalFlux_swiginit(self,_cmf_core.new_TechnicalFlux(*args, **kwargs))
-    __swig_destroy__ = _cmf_core.delete_TechnicalFlux
-TechnicalFlux_swigregister = _cmf_core.TechnicalFlux_swigregister
-TechnicalFlux_swigregister(TechnicalFlux)
-
 class WaterStorage(StateVariable,StateVariableOwner,flux_node):
     """
     A state variable for the storage of water
@@ -3256,59 +3227,6 @@ def WaterStorage_cast(*args, **kwargs):
 def WaterStorage_create(*args, **kwargs):
   """WaterStorage_create(project _project, real initial_state = 0.0) -> __dummy_8__"""
   return _cmf_core.WaterStorage_create(*args, **kwargs)
-
-class kinematic_wave(flux_connection):
-    """
-    Calculates flux out of a storage as a linear function of its volume to
-    a power.
-
-    \\[ q = \\frac {V_{mobile}^\\beta}{t_r} \\] where:
-    $V_{mobile} [m^3] = V - V_{residual}$ the stored mobile volume
-
-    $\\beta [-]$ An empirical exponent to shape the flux function
-
-    $t_r [days]$ The residence time of the water in this storage in days
-
-    C++ includes: WaterStorage.h 
-    """
-    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
-    __repr__ = _swig_repr
-    residencetime = _swig_property(_cmf_core.kinematic_wave_residencetime_get, _cmf_core.kinematic_wave_residencetime_set)
-    exponent = _swig_property(_cmf_core.kinematic_wave_exponent_get, _cmf_core.kinematic_wave_exponent_set)
-    residual_volume = _swig_property(_cmf_core.kinematic_wave_residual_volume_get, _cmf_core.kinematic_wave_residual_volume_set)
-    def __init__(self, *args, **kwargs): 
-        """
-        __init__(self, ptr source, ptr target, real residencetime, real exponent = 1.0, 
-            real residual_volume = 0.0) -> kinematic_wave
-
-        kinematic_wave(WaterStorage::ptr source, flux_node::ptr target, real
-        residencetime, real exponent=1.0, real residual_volume=0.0)
-
-        Creates a kinematic wave connection. \\[ q = \\frac {\\left(V -
-        V_{residual}\\right)^\\beta}{t_r} \\]
-
-        Parameters:
-        -----------
-
-        source:  Water storage from which the water flows out. Flux is a
-        function of source.volume
-
-        target:  Target node (boundary condition or storage). Does not
-        influence the strength of the flow
-
-        residencetime:   $t_r [days]$ The residence time of the water in this
-        storage
-
-        exponent:   $\\beta [-]$ An empirical exponent to shape the flux
-        function (default = 1 (linear function))
-
-        residual_volume:   $V_{residual} [m^3]$ The volume of water not
-        flowing out (default = 0 m3) 
-        """
-        _cmf_core.kinematic_wave_swiginit(self,_cmf_core.new_kinematic_wave(*args, **kwargs))
-    __swig_destroy__ = _cmf_core.delete_kinematic_wave
-kinematic_wave_swigregister = _cmf_core.kinematic_wave_swigregister
-kinematic_wave_swigregister(kinematic_wave)
 
 class node_list(StateVariableOwner):
     """
@@ -5660,7 +5578,7 @@ def get_boundary_cells(*args, **kwargs):
   return _cmf_core.get_boundary_cells(*args, **kwargs)
 
 def get_connections(*args, **kwargs):
-  """get_connections(cells_ref cells) -> connection_set"""
+  """get_connections(cells_ref cells) -> connection_list"""
   return _cmf_core.get_connections(*args, **kwargs)
 
 def connect_cells_with_flux(*args, **kwargs):

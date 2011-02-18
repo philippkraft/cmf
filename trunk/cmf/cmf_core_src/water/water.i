@@ -90,7 +90,7 @@ namespace cmf{namespace water {class flux_connection;}}
 %attribute2(cmf::water::flux_node,cmf::project,project,get_project);
 
 %attribute(cmf::water::flux_node,real,potential,get_potential,set_potential);
-%attributeval(cmf::water::flux_node, cmf::water::connection_vector, connections, get_connections);
+%attributeval(cmf::water::flux_node, cmf::water::connection_list, connections, get_connections);
 %attribute(cmf::water::waterbalance_integrator, cmf::water::flux_node::ptr, node, get_node, set_node);
 %attribute(cmf::water::flux_connection, real, tracer_filter, get_tracer_filter, set_tracer_filter);
 
@@ -128,7 +128,7 @@ namespace cmf{namespace water {class flux_connection;}}
 }}
 %extend cmf::water::connection_list {
     size_t __len__() const { return $self->size();}
-    bool __contains__(const cmf::water::connection::ptr& con) const { return $self->contains(con);}
+    bool __contains__(const cmf::water::flux_connection::ptr& con) const { return $self->contains(con);}
 %pythoncode {
     def __repr__(self):
         return repr(list(self)) + "<cmf.connection_list>"

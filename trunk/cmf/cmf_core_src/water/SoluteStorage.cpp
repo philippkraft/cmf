@@ -23,9 +23,9 @@ real cmf::water::SoluteStorage::dxdt( const cmf::math::Time& time )
 {
  	// Sums up the fluxes as water fluxes (mol/day)
 	
-	cmf::water::connection_vector connections=m_water->get_connections();
+	cmf::water::connection_list connections=m_water->get_connections();
 	real inflow=0, outflow=0;
-	for (cmf::water::connection_vector::iterator it = connections.begin();it!=connections.end();++it)
+	for (cmf::water::connection_list::iterator it = connections.begin();it!=connections.end();++it)
 	{
 		cmf::water::flux_connection& con=**it;
 		real q=con.q(*m_water,time);
