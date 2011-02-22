@@ -213,7 +213,7 @@ void cmf::water::connection_list::do_action( Time t , bool use_OpenMP)
 	} /* if no OpenMP */
 
 }
-bool cmf::water::connection_list::contains( const flux_connection::ptr& connection ) const
+bool cmf::water::connection_list::contains(flux_connection::ptr connection ) const
 {
 	return std::binary_search(begin(),end(), connection, connection_less);
 }
@@ -231,7 +231,7 @@ void cmf::water::connection_list::extend(const connection_list& connections) {
 	for(connection_list::const_iterator it = connections.begin(); it != connections.end(); ++it)
 	    append(*it);
 }
-bool cmf::water::connection_list::remove( const flux_connection::ptr& connection )
+bool cmf::water::connection_list::remove(flux_connection::ptr connection )
 {
 	iterator it = std::lower_bound(begin(),end(),connection, connection_less);
 	if (it!=end()) {

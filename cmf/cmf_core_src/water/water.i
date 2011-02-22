@@ -36,6 +36,7 @@
 	#include "water/WaterStorage.h"
 	#include "water/flux_connection.h"
     #include "water/boundary_condition.h"
+    #include "water/simple_connections.h"
     #include "water/system_bridge.h"
 %}
 // Include Water
@@ -98,7 +99,7 @@ namespace cmf{namespace water {class flux_connection;}}
     self.thisown=0
 }
 
-%typemap(out) cmf::water::connection_vector* {
+%typemap(out) cmf::water::connection_list* {
   // %typemap(out) cmf::water::connection_vector {
   $result = PyList_New($1->size());
   for (Py_ssize_t i = 0; i <Py_ssize_t($1->size()); ++i) {
@@ -133,7 +134,7 @@ namespace cmf{namespace water {class flux_connection;}}
     def __repr__(self):
         return repr(list(self)) + "<cmf.connection_list>"
     def __getitem__(self,index):
-        return self[index]
+        return self.at(index)
     def __iter__(self):
         for i in xrange(len(self)):
             yield self.at(i)
@@ -165,6 +166,7 @@ namespace cmf{namespace water {class flux_connection;}}
 %extend__repr__(cmf::water::NeumannBoundary)
 %extend__repr__(cmf::water::WaterStorage)
 
+%include "water/simple_connections.h"
 
 %include "water/collections.i"
 

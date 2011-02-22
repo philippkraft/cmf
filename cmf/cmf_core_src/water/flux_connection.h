@@ -148,19 +148,16 @@ namespace cmf {
 		public:
 			typedef _list::iterator iterator;
 			typedef _list::const_iterator const_iterator;
-			bool append(flux_connection::ptr connection);
+			bool append(cmf::water::flux_connection::ptr connection);
 			void extend(const connection_list& connections);
-			bool contains(const flux_connection::ptr& connection) const;
-			bool remove(const flux_connection::ptr& connection);
+			bool contains(cmf::water::flux_connection::ptr connection) const;
+			bool remove(cmf::water::flux_connection::ptr connection);
 			void do_action(cmf::math::Time t, bool use_OpenMP = true);
 			size_t size() const { return m_con.size();}
-			const flux_connection::ptr& operator[](size_t pos) const {
+			cmf::water::flux_connection::ptr operator[](size_t pos) const {
 				return m_con[pos];
 			}
-			flux_connection::ptr& operator[](size_t pos) {
-				return m_con[pos];
-			}
-			flux_connection::ptr at(size_t pos) const { return m_con.at(pos); }
+			cmf::water::flux_connection::ptr at(size_t pos) const { return m_con.at(pos); }
 			iterator begin() {
 				return m_con.begin();
 			}

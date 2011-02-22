@@ -261,40 +261,45 @@ def create_reaches(project,outlets,features,
  
 
 
-def __create_reach_for_cell(reaches,downstream_reach,cell,cells,reach_geometry,subsurface_connection_type,width,depth,diffusive):
+def __create_reach_for_cell(reaches,outlets,downstream_reach,cell,cells,reach_geometry,subsurface_connection_type,width,depth,diffusive):
     """for internal use only, do not invoke"""
     assert(cell in cells)
     # Get cells upstream of current cell
     in_cells = [n for n,w in cell.neighbors if n.main_outlet == cell and n in cells]
     # downstream length is half of the distance to the downstream reach
-    length = downstream_reach.Location.distanceTo(cell.position) * 0.5 if downstream_reach else 0.0
+    length = cmf.distance(downstream_reach.position,cell) * 0.5 if downstream_reach else 0.5*sqrt(cell.area)
     # upstream length of the reach is half of sum of distance to upstream cells
-    length += 0.5 * sum(cell.get_distance_to(c) for c in in_cells)
+    length += 0.5 * sum(cmf.distance(cell,in_cell) for in_cell in in_cells)
     # Create the reach using the calculated length and the given parameters
     r = cell.project.NewReach(cell.x,cell.y,cell.z-depth,length,reach_geometry,width,depth,diffusive)
-    r.Name = "~~ @%s" % cell
+    r.Name = "~~ C[%i]" % cell.Id
     # Connect the reach to the cell
     r.connect_to_cell(cell,width,subsurface_connection_type,diffusive)
     # Set the downstream
     if downstream_reach:
         r.set_downstream(downstream_reach)
+    else:
+        outlet = cell.project.NewOutlet("Outlet of %s" % r.Name, r.position.x,r.position.y,r.position.z-0.1)
+        r.set_outlet(outlet)
+        outlets.append(outlet)
     # Remove cell from task set
     cells.remove(cell)
     # Append reach to the results
-    reaches.append((r,cell))
+    reaches.append(r)
     # Create reaches for each upstream cell
     for c in in_cells:
-        __create_reach_for_cell(reaches,r,c,cells,reach_geometry,subsurface_connection_type,width,depth,diffusive)
+        __create_reach_for_cell(reaches,outlets,r,c,cells,reach_geometry,subsurface_connection_type,width,depth,diffusive)
 def create_reaches_for_cells(cells_with_reach,reach_geometry='T',width=1.0,depth=0.25,subsurface_connection_type=None,diffusive=None):
     """Creates reaches for a sequence of cells.
     """
     assert(subsurface_connection_type is None or issubclass(subsurface_connection_type, cmf.lateral_sub_surface_flux))
     cells = set(cells_with_reach)
     reaches=[]
+    outlets=[]
     while cells:
         cur = min(cells,key = lambda c: c.z)
-        __create_reach_for_cell(reaches,None,cur,cells,reach_geometry,subsurface_connection_type,width,depth,diffusive)
-    return reaches
+        __create_reach_for_cell(reaches,outlets,None,cur,cells,reach_geometry,subsurface_connection_type,width,depth,diffusive)
+    return cmf.node_list(reaches),cmf.node_list(outlets)
 def cell_neighbors(features,shape_callable=lambda feat:feat.shape):
     res={}
     pred=get_predicate(0.0,shape_callable)
