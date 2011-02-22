@@ -2886,13 +2886,13 @@ class connection_list(object):
         return _cmf_core.connection_list___len__(self, *args, **kwargs)
 
     def __contains__(self, *args, **kwargs):
-        """__contains__(self, cmf::water::connection::ptr con) -> bool"""
+        """__contains__(self, ptr con) -> bool"""
         return _cmf_core.connection_list___contains__(self, *args, **kwargs)
 
     def __repr__(self):
         return repr(list(self)) + "<cmf.connection_list>"
     def __getitem__(self,index):
-        return self[index]
+        return self.at(index)
     def __iter__(self):
         for i in xrange(len(self)):
             yield self.at(i)
@@ -3227,6 +3227,174 @@ def WaterStorage_cast(*args, **kwargs):
 def WaterStorage_create(*args, **kwargs):
   """WaterStorage_create(project _project, real initial_state = 0.0) -> __dummy_8__"""
   return _cmf_core.WaterStorage_create(*args, **kwargs)
+
+class waterbalance_connection(flux_connection):
+    """
+    Routes the sum of all other fluxes to a target
+
+    C++ includes: flux_connection.h 
+    """
+    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __repr__ = _swig_repr
+    def __init__(self, *args, **kwargs): 
+        """
+        __init__(self, ptr source, ptr target) -> waterbalance_connection
+
+        waterbalance_connection(flux_node::ptr source, flux_node::ptr target)
+
+        """
+        _cmf_core.waterbalance_connection_swiginit(self,_cmf_core.new_waterbalance_connection(*args, **kwargs))
+    __swig_destroy__ = _cmf_core.delete_waterbalance_connection
+waterbalance_connection_swigregister = _cmf_core.waterbalance_connection_swigregister
+waterbalance_connection_swigregister(waterbalance_connection)
+
+class external_control_connection(flux_connection):
+    """
+    Flux from one node to another, controlled by the user or an external
+    program, by changing the flux constant
+
+    C++ includes: flux_connection.h 
+    """
+    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __repr__ = _swig_repr
+    flux = _swig_property(_cmf_core.external_control_connection_flux_get, _cmf_core.external_control_connection_flux_set)
+    def __init__(self, *args, **kwargs): 
+        """
+        __init__(self, ptr source, ptr target, real flux_value = 0) -> external_control_connection
+
+        external_control_connection(flux_node::ptr source, flux_node::ptr
+        target, real flux_value=0) 
+        """
+        _cmf_core.external_control_connection_swiginit(self,_cmf_core.new_external_control_connection(*args, **kwargs))
+    __swig_destroy__ = _cmf_core.delete_external_control_connection
+external_control_connection_swigregister = _cmf_core.external_control_connection_swigregister
+external_control_connection_swigregister(external_control_connection)
+
+
+def set_flux(*args, **kwargs):
+  """
+    set_flux(ptr source, ptr target, real flux_value)
+
+    void
+    cmf::water::set_flux(flux_node::ptr source, flux_node::ptr target,
+    real flux_value)
+
+    Sets a constant flux between two nodes, if an
+    external_control_connection exists. 
+    """
+  return _cmf_core.set_flux(*args, **kwargs)
+
+def can_set_flux(*args, **kwargs):
+  """
+    can_set_flux(ptr source, ptr target) -> bool
+
+    bool
+    cmf::water::can_set_flux(flux_node::ptr source, flux_node::ptr target)
+
+    Checks if a constant flux between two nodes can be set. Returns true
+    if the nodes are connected by an external_control_connection 
+    """
+  return _cmf_core.can_set_flux(*args, **kwargs)
+class kinematic_wave(flux_connection):
+    """
+    Calculates flux out of a storage as a linear function of its volume to
+    a power.
+
+    \\[ q = \\frac {V_{mobile}^\\beta}{t_r} \\] where:
+    $V_{mobile} [m^3] = V - V_{residual}$ the stored mobile volume
+
+    $\\beta [-]$ An empirical exponent to shape the flux function
+
+    $t_r [days]$ The residence time of the water in this storage in days
+
+    C++ includes: WaterStorage.h 
+    """
+    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __repr__ = _swig_repr
+    residencetime = _swig_property(_cmf_core.kinematic_wave_residencetime_get, _cmf_core.kinematic_wave_residencetime_set)
+    exponent = _swig_property(_cmf_core.kinematic_wave_exponent_get, _cmf_core.kinematic_wave_exponent_set)
+    residual_volume = _swig_property(_cmf_core.kinematic_wave_residual_volume_get, _cmf_core.kinematic_wave_residual_volume_set)
+    def __init__(self, *args, **kwargs): 
+        """
+        __init__(self, ptr source, ptr target, real residencetime, real exponent = 1.0, 
+            real residual_volume = 0.0) -> kinematic_wave
+
+        kinematic_wave(WaterStorage::ptr source, flux_node::ptr target, real
+        residencetime, real exponent=1.0, real residual_volume=0.0)
+
+        Creates a kinematic wave connection. \\[ q = \\frac {\\left(V -
+        V_{residual}\\right)^\\beta}{t_r} \\]
+
+        Parameters:
+        -----------
+
+        source:  Water storage from which the water flows out. Flux is a
+        function of source.volume
+
+        target:  Target node (boundary condition or storage). Does not
+        influence the strength of the flow
+
+        residencetime:   $t_r [days]$ The residence time of the water in this
+        storage
+
+        exponent:   $\\beta [-]$ An empirical exponent to shape the flux
+        function (default = 1 (linear function))
+
+        residual_volume:   $V_{residual} [m^3]$ The volume of water not
+        flowing out (default = 0 m3) 
+        """
+        _cmf_core.kinematic_wave_swiginit(self,_cmf_core.new_kinematic_wave(*args, **kwargs))
+    __swig_destroy__ = _cmf_core.delete_kinematic_wave
+kinematic_wave_swigregister = _cmf_core.kinematic_wave_swigregister
+kinematic_wave_swigregister(kinematic_wave)
+
+class TechnicalFlux(flux_connection):
+    """
+    Produces a constant but changeable flux from a source to a target, if
+    enough water is present in the source
+
+    $ q=\\left\\{0 \\mbox{ if }V_{source}\\le V_{min}\\\\
+    \\frac{V_{source} - V_{min}}{t_{decr} q_{0} - V_{min}}\\mbox{ if }
+    V_{source} t_{decr} q_{0}\\\\ q_{0} \\mbox{ else}\\le
+    \\right. $
+
+    C++ includes: boundary_condition.h 
+    """
+    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __repr__ = _swig_repr
+    MaxFlux = _swig_property(_cmf_core.TechnicalFlux_MaxFlux_get, _cmf_core.TechnicalFlux_MaxFlux_set)
+    MinState = _swig_property(_cmf_core.TechnicalFlux_MinState_get, _cmf_core.TechnicalFlux_MinState_set)
+    FluxDecreaseTime = _swig_property(_cmf_core.TechnicalFlux_FluxDecreaseTime_get, _cmf_core.TechnicalFlux_FluxDecreaseTime_set)
+    def __init__(self, *args, **kwargs): 
+        """
+        __init__(self, __dummy_8__ source, __dummy_6__ target, real maximum_flux, 
+            real minimal_state = 0, Time flux_decrease_time = h) -> TechnicalFlux
+
+        TechnicalFlux(std::tr1::shared_ptr< cmf::water::WaterStorage >
+        &source, std::tr1::shared_ptr< cmf::water::flux_node > target, real
+        maximum_flux, real minimal_state=0, cmf::math::Time
+        flux_decrease_time=cmf::math::h)
+
+        Produces a constant but changeable flux from a source to a target, if
+        enough water is present in the source
+
+        Parameters:
+        -----------
+
+        source:  The source of the water
+
+        target:  The target of the water
+
+        maximum_flux:  The requested flux $q_{0}$
+
+        minimal_state:  Minimal volume of stored water in source
+
+        flux_decrease_time:  ( cmf::math::Time) 
+        """
+        _cmf_core.TechnicalFlux_swiginit(self,_cmf_core.new_TechnicalFlux(*args, **kwargs))
+    __swig_destroy__ = _cmf_core.delete_TechnicalFlux
+TechnicalFlux_swigregister = _cmf_core.TechnicalFlux_swigregister
+TechnicalFlux_swigregister(TechnicalFlux)
 
 class node_list(StateVariableOwner):
     """

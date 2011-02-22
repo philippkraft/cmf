@@ -4,7 +4,7 @@
 
 #include "flux_connection.h"
 #include "flux_node.h"
-#include "waterstorage.h"
+#include "WaterStorage.h"
 
 namespace cmf {
 	namespace water {
