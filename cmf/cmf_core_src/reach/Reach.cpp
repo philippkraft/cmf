@@ -68,7 +68,8 @@ flux_node::ptr Reach::get_downstream() const
 	else if (!m_outlet.expired())
 		return m_outlet.lock();
 	else 
-		throw std::runtime_error("No downstream is set. Use set_downstream or set_outlet to construct a downstream object");
+		return flux_node::ptr();
+		//throw std::runtime_error("No downstream is set. Use set_downstream or set_outlet to construct a downstream object");
 
 }
 
