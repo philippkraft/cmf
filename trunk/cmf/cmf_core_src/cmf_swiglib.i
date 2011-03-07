@@ -62,9 +62,10 @@ Included macros:
 
 %define %node_downcast(typemaptarget, Types...)
 %typemap(out) typemaptarget {
+   if (!($1)) %set_output(SWIG_NewPointerObj(0,$descriptor(%ptr(cmf::water::flux_node)*), SWIG_POINTER_OWN));
    int dcast = 0;
    %formacro(%_node_down_cast, Types)
-   if (!dcast) %set_output(SWIG_NewPointerObj($1 ? new %ptr(cmf::water::flux_node)($1) : 0,$descriptor(%ptr(cmf::water::flux_node)*), SWIG_POINTER_OWN));   
+   if (!dcast) %set_output(SWIG_NewPointerObj(new %ptr(cmf::water::flux_node)($1),$descriptor(%ptr(cmf::water::flux_node)*), SWIG_POINTER_OWN));
 }
 %enddef      
 

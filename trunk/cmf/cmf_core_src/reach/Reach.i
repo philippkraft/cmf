@@ -37,9 +37,9 @@
 %attribute(cmf::river::Reach,real,length,get_length);
 %attribute(cmf::river::Reach,real,width,get_width);
 %attribute2(cmf::river::Reach,cmf::river::IChannel,channel,get_height_function);
-%attribute(cmf::river::ReachIterator,cmf::river::Reach,reach,reach);
-%attribute(cmf::river::Reach,cmf::river::Reach,downstream,get_downstream);
-%attribute(cmf::river::Reach,cmf::river::Reach,root,get_root);
+%attribute(cmf::river::ReachIterator,cmf::river::Reach::ptr,reach,reach);
+%attribute(cmf::river::Reach,cmf::water::flux_node::ptr,downstream,get_downstream);
+%attribute(cmf::river::Reach,cmf::river::Reach::ptr,root,get_root);
 %attribute(cmf::river::Reach,int,upstream_count,upstream_count);
 %attribute(cmf::river::Reach,bool,diffusive,get_diffusive,set_diffusive);
 
