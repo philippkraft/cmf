@@ -119,8 +119,31 @@ namespace cmf {
 			/// @param maximum_flux The requested flux \f$q_{0}\f$
 			/// @param minimal_state Minimal volume of stored water in source
 			/// @param flux_decrease_time (cmf::math::Time)
-			TechnicalFlux(std::tr1::shared_ptr<cmf::water::WaterStorage> & source,std::tr1::shared_ptr<cmf::water::flux_node> target,real maximum_flux,real minimal_state=0,cmf::math::Time flux_decrease_time=cmf::math::h)
-				: flux_connection(source,target,"Technical flux"),MaxFlux(maximum_flux),MinState(minimal_state),FluxDecreaseTime(flux_decrease_time) {}
+			TechnicalFlux(cmf::water::WaterStorage::ptr source,cmf::water::flux_node::ptr target,real maximum_flux,real minimal_state=0,cmf::math::Time flux_decrease_time=cmf::math::h)
+				: flux_connection(source,target,"Technical flux"),MaxFlux(maximum_flux),MinState(minimal_state),FluxDecreaseTime(flux_decrease_time) {
+					NewNodes();
+			}
+		};
+
+		/// @ingroup connections
+		/// Calculates a flux to or from a water storage to hold it's state at a more or less constant level
+		/// \f[ q=\frac{h_1 - h_{target}}{t_c [days]} \f]
+		class statecontrol_connection 
+			: public flux_connection 
+		{
+		protected:
+			std::tr1::weak_ptr<cmf::water::WaterStorage> source;
+			virtual real calc_q(cmf::math::Time t);
+			void NewNodes();
+		public:
+			cmf::math::Time reaction_time;
+			real target_state;
+			/// Creates a flux connection to control the state of a storage
+			/// @param controlled_storage Water storage, to be controlled
+			/// @param other_end source of missing water or target of excessive water
+			/// @param target_state State the controlled storage should hold (\f$h_{target}\f$)
+			/// @param ReactionTime Time to reach state (\f$t_c\f$)
+			statecontrol_connection(cmf::water::WaterStorage::ptr controlled_storage, cmf::water::flux_node::ptr other_end, real target_state, cmf::math::Time reaction_time );
 		};
 
 
