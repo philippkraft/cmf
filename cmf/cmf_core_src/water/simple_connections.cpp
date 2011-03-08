@@ -35,3 +35,24 @@ cmf::water::kinematic_wave::kinematic_wave( WaterStorage::ptr source,flux_node::
 {
 	NewNodes();
 }
+
+cmf::water::statecontrol_connection::statecontrol_connection( cmf::water::WaterStorage::ptr controlled_storage, cmf::water::flux_node::ptr other_end, 
+															 real _target_state, cmf::math::Time _reaction_time ) 
+: flux_connection(controlled_storage,other_end, "State controlling flux"), target_state(_target_state), reaction_time(_reaction_time)
+{
+	NewNodes();
+}
+
+void cmf::water::statecontrol_connection::NewNodes()
+{
+	source = cmf::water::WaterStorage::cast(left_node());
+}
+
+real cmf::water::statecontrol_connection::calc_q( cmf::math::Time t )
+{
+	real dV = source.lock()->get_state() - target_state ;
+	if (dV > 0) // If water is to be removed from the controlled storage
+		return (1-left_node()->is_empty()) * dV/reaction_time.AsDays();
+	else // If the controlled storage is to be refilled
+		return (1-right_node()->is_empty()) * dV/reaction_time.AsDays();
+}
