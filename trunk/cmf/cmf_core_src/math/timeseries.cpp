@@ -573,20 +573,22 @@ double cmf::math::nash_sutcliff(const cmf::math::timeseries& model,const cmf::ma
 
 double cmf::math::R2( const cmf::math::timeseries& model,const cmf::math::timeseries& observation )
 {
+	using namespace cmf::math;
+	
 	double mean_y=observation.mean();
 	double numerator=0,denominator=0;
-	cmf::math::Time begin=std::max(model.begin(),observation.begin());
-	cmf::math::Time end=std::min(model.begin(),observation.begin());
-	cmf::math::Time step=std::max(model.begin(),observation.begin());
+	Time begin=std::max(model.begin(),observation.begin());
+	Time end=std::min(model.begin(),observation.begin());
+	Time step=std::max(model.begin(),observation.begin());
 	double model_t, obs_t;
-	for (cmf::math::Time t=begin;t<=end;t+=step)
+	for (Time t=begin;t<=end;t+=step)
 	{
 		model_t = model[t];
 		obs_t  = observation[t];
 		if (isfinite(model_t) && isfinite(obs_t))
 		{
 			numerator+=square(model_t-mean_y);
-			denominator=square(obs_t-mean_y);
+			denominator+=square(obs_t-mean_y);
 		}
 	}
 	return numerator/denominator;
