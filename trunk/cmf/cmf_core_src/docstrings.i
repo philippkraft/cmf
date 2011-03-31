@@ -83,8 +83,8 @@ double is_empty() const
 
 Returns true if the node has no water. ";
 
-%feature("docstring")  cmf::upslope::aquifer::get_K "real
-get_K(cmf::geometry::point direction)
+%feature("docstring")  cmf::upslope::aquifer::get_K "virtual real
+get_K(cmf::geometry::point direction) const
 
 Returns the conductivity in m/day for a specific direction. Takes
 account for anisotropy \\\\[ \\\\|K\\\\|(d) = \\\\frac{d}{\\\\|d\\\\|}
@@ -217,6 +217,9 @@ void set_volume(real newwatercontent)
 
 Sets the volume of water in this storage in m3 ";
 
+%feature("docstring")  cmf::upslope::aquifer::set_potential "virtual
+void set_potential(real newpotential) ";
+
 %feature("docstring")  cmf::upslope::aquifer::dxdt "virtual real
 dxdt(const cmf::math::Time &time) ";
 
@@ -249,7 +252,7 @@ Returns the project, this node is part of. ";
 %feature("docstring")  cmf::upslope::aquifer::to_string "virtual
 std::string to_string() const ";
 
-%feature("docstring")  cmf::upslope::aquifer::get_connections "cmf::water::connection_vector get_connections() const ";
+%feature("docstring")  cmf::upslope::aquifer::get_connections "cmf::water::connection_list get_connections() const ";
 
 %feature("docstring")  cmf::upslope::aquifer::connection_to "cmf::water::flux_connection* connection_to(const cmf::water::flux_node
 &target)
@@ -338,6 +341,11 @@ kill_me()
 
 Deregisters this connection from its nodes. Returns true if only one
 reference is left. ";
+
+%feature("docstring")  cmf::upslope::aquifer_Darcy::refresh "void
+refresh(cmf::math::Time t)
+
+Performes a new calculation of the flux. ";
 
 %feature("docstring")  cmf::upslope::aquifer_Darcy::get_target "flux_node::ptr get_target(const flux_node &inquirer)
 
@@ -807,6 +815,10 @@ returns the right node of this connection ";
 Deregisters this connection from its nodes. Returns true if only one
 reference is left. ";
 
+%feature("docstring")  cmf::upslope::ET::canopy_evaporation::refresh "void refresh(cmf::math::Time t)
+
+Performes a new calculation of the flux. ";
+
 %feature("docstring")
 cmf::upslope::ET::canopy_evaporation::get_target "flux_node::ptr
 get_target(const flux_node &inquirer)
@@ -899,6 +911,12 @@ Deregisters this connection from its nodes. Returns true if only one
 reference is left. ";
 
 %feature("docstring")
+cmf::upslope::connections::CanopyOverflow::refresh "void
+refresh(cmf::math::Time t)
+
+Performes a new calculation of the flux. ";
+
+%feature("docstring")
 cmf::upslope::connections::CanopyOverflow::get_target "flux_node::ptr
 get_target(const flux_node &inquirer)
 
@@ -976,6 +994,12 @@ cmf::upslope::ET::CanopyStorageEvaporation::kill_me "bool kill_me()
 
 Deregisters this connection from its nodes. Returns true if only one
 reference is left. ";
+
+%feature("docstring")
+cmf::upslope::ET::CanopyStorageEvaporation::refresh "void
+refresh(cmf::math::Time t)
+
+Performes a new calculation of the flux. ";
 
 %feature("docstring")
 cmf::upslope::ET::CanopyStorageEvaporation::get_target "flux_node::ptr get_target(const flux_node &inquirer)
@@ -1516,6 +1540,12 @@ Deregisters this connection from its nodes. Returns true if only one
 reference is left. ";
 
 %feature("docstring")
+cmf::upslope::connections::CompleteInfiltration::refresh "void
+refresh(cmf::math::Time t)
+
+Performes a new calculation of the flux. ";
+
+%feature("docstring")
 cmf::upslope::connections::CompleteInfiltration::get_target "flux_node::ptr get_target(const flux_node &inquirer)
 
 Returns the other end of a connection than the asking end. ";
@@ -1550,6 +1580,61 @@ cmf::upslope::connections::CompleteInfiltration::to_string "std::string to_strin
 
 %feature("docstring")
 cmf::upslope::connections::CompleteInfiltration::short_string "std::string short_string() const ";
+
+
+// File: classcmf_1_1upslope_1_1conductable.xml
+%feature("docstring") cmf::upslope::conductable "
+
+An abstract interface for all classes providing a conductivity (e.g.
+soil layer or aquifer) Each water storage where the concept of
+conductivity is applicable should implement (by deriving) the
+interface
+
+This class is not part of the Python interface, since a dynamic typed
+language can use duck typing instead of this interface
+
+C++ includes: conductable.h ";
+
+%feature("docstring")  cmf::upslope::conductable::get_K "virtual real
+get_K(cmf::geometry::point direction) const =0 ";
+
+
+// File: classcmf_1_1water_1_1connection__list.xml
+%feature("docstring") cmf::water::connection_list "
+
+A self sorting list of connections.
+
+C++ includes: flux_connection.h ";
+
+%feature("docstring")  cmf::water::connection_list::append "bool
+append(cmf::water::flux_connection::ptr connection) ";
+
+%feature("docstring")  cmf::water::connection_list::extend "void
+extend(const connection_list &connections) ";
+
+%feature("docstring")  cmf::water::connection_list::contains "bool
+contains(cmf::water::flux_connection::ptr connection) const ";
+
+%feature("docstring")  cmf::water::connection_list::remove "bool
+remove(cmf::water::flux_connection::ptr connection) ";
+
+%feature("docstring")  cmf::water::connection_list::do_action "void
+do_action(cmf::math::Time t, bool use_OpenMP=true) ";
+
+%feature("docstring")  cmf::water::connection_list::size "size_t
+size() const ";
+
+%feature("docstring")  cmf::water::connection_list::at "cmf::water::flux_connection::ptr at(size_t pos) const ";
+
+%feature("docstring")  cmf::water::connection_list::begin "iterator
+begin() ";
+
+%feature("docstring")  cmf::water::connection_list::end "iterator
+end() ";
+
+%feature("docstring")  cmf::water::connection_list::begin "const_iterator begin() const ";
+
+%feature("docstring")  cmf::water::connection_list::end "const_iterator end() const ";
 
 
 // File: classcmf_1_1upslope_1_1_e_t_1_1constant_e_tpot.xml
@@ -1587,6 +1672,11 @@ kill_me()
 
 Deregisters this connection from its nodes. Returns true if only one
 reference is left. ";
+
+%feature("docstring")  cmf::upslope::ET::constantETpot::refresh "void
+refresh(cmf::math::Time t)
+
+Performes a new calculation of the flux. ";
 
 %feature("docstring")  cmf::upslope::ET::constantETpot::get_target "flux_node::ptr get_target(const flux_node &inquirer)
 
@@ -1734,7 +1824,7 @@ true, if this is a waterstorage ";
 "virtual std::string to_string() const ";
 
 %feature("docstring")
-cmf::atmosphere::ConstantRainSource::get_connections "cmf::water::connection_vector get_connections() const ";
+cmf::atmosphere::ConstantRainSource::get_connections "cmf::water::connection_list get_connections() const ";
 
 %feature("docstring")
 cmf::atmosphere::ConstantRainSource::connection_to "cmf::water::flux_connection* connection_to(const cmf::water::flux_node
@@ -1860,23 +1950,25 @@ reset:  If true, solver is reseted before integration starts ";
 
 */
 
-%feature("docstring")  cmf::math::CVodeIntegrator::GetOrder "int
-GetOrder()
+%feature("docstring")  cmf::math::CVodeIntegrator::get_order "int
+get_order() const
 
 Returns the last order of the solver used, may be smaller than
 MaxOrder due to the number of steps already taken or to fullfill
 stability limit. ";
 
-%feature("docstring")  cmf::math::CVodeIntegrator::ReInit "void
-ReInit(Time initdt, real epsilon=0)
+%feature("docstring")  cmf::math::CVodeIntegrator::initialize "void
+initialize()
 
-Reinitialization of the solver. ";
+Initializes the solver. Do not add or remove state variables after
+initialization. The solver is automatically intialized when
+integrating. ";
 
-%feature("docstring")  cmf::math::CVodeIntegrator::Initialize "void
-Initialize()
+%feature("docstring")  cmf::math::CVodeIntegrator::release "void
+release()
 
-Initializes the solver. Do not add or remove statevariables after
-initialization. ";
+Releases the internal solver. Call release before you add state
+variables or to change properties. ";
 
 %feature("docstring")  cmf::math::CVodeIntegrator::integrate "virtual
 int integrate(cmf::math::Time t_max, cmf::math::Time dt)
@@ -1897,7 +1989,9 @@ MaxTime ";
 %feature("docstring")  cmf::math::CVodeIntegrator::reset "virtual
 void reset()
 
-Resets the integrator. ";
+Resets the multi-step integrator. External changes to the state
+variables get recognized by the solver. Parameter changes of solver
+are ignored. ";
 
 %feature("docstring")  cmf::math::CVodeIntegrator::CVodeIntegrator "CVodeIntegrator(real epsilon=1e-9, char _preconditioner='R')
 
@@ -2083,6 +2177,10 @@ returns the right node of this connection ";
 Deregisters this connection from its nodes. Returns true if only one
 reference is left. ";
 
+%feature("docstring")  cmf::upslope::connections::Darcy::refresh "void refresh(cmf::math::Time t)
+
+Performes a new calculation of the flux. ";
+
 %feature("docstring")  cmf::upslope::connections::Darcy::get_target "flux_node::ptr get_target(const flux_node &inquirer)
 
 Returns the other end of a connection than the asking end. ";
@@ -2158,6 +2256,12 @@ cmf::upslope::connections::DarcyKinematic::kill_me "bool kill_me()
 
 Deregisters this connection from its nodes. Returns true if only one
 reference is left. ";
+
+%feature("docstring")
+cmf::upslope::connections::DarcyKinematic::refresh "void
+refresh(cmf::math::Time t)
+
+Performes a new calculation of the flux. ";
 
 %feature("docstring")
 cmf::upslope::connections::DarcyKinematic::get_target "flux_node::ptr
@@ -2285,7 +2389,7 @@ true, if this is a waterstorage ";
 %feature("docstring")  cmf::water::DirichletBoundary::to_string "virtual std::string to_string() const ";
 
 %feature("docstring")  cmf::water::DirichletBoundary::get_connections
-"cmf::water::connection_vector get_connections() const ";
+"cmf::water::connection_list get_connections() const ";
 
 %feature("docstring")  cmf::water::DirichletBoundary::RecalcFluxes "virtual bool RecalcFluxes(cmf::math::Time t)
 
@@ -2372,6 +2476,12 @@ kill_me()
 
 Deregisters this connection from its nodes. Returns true if only one
 reference is left. ";
+
+%feature("docstring")
+cmf::upslope::connections::EnergyBudgetSnowMelt::refresh "void
+refresh(cmf::math::Time t)
+
+Performes a new calculation of the flux. ";
 
 %feature("docstring")
 cmf::upslope::connections::EnergyBudgetSnowMelt::get_target "flux_node::ptr get_target(const flux_node &inquirer)
@@ -2602,7 +2712,7 @@ Simplifies the assessment of state variables. ";
 Flux from one node to another, controlled by the user or an external
 program, by changing the flux constant
 
-C++ includes: flux_connection.h ";
+C++ includes: simple_connections.h ";
 
 %feature("docstring")
 cmf::water::external_control_connection::external_control_connection "external_control_connection(flux_node::ptr source, flux_node::ptr
@@ -2634,6 +2744,12 @@ cmf::water::external_control_connection::kill_me "bool kill_me()
 
 Deregisters this connection from its nodes. Returns true if only one
 reference is left. ";
+
+%feature("docstring")
+cmf::water::external_control_connection::refresh "void
+refresh(cmf::math::Time t)
+
+Performes a new calculation of the flux. ";
 
 %feature("docstring")
 cmf::water::external_control_connection::get_target "flux_node::ptr
@@ -2699,6 +2815,11 @@ kill_me()
 
 Deregisters this connection from its nodes. Returns true if only one
 reference is left. ";
+
+%feature("docstring")  cmf::water::flux_connection::refresh "void
+refresh(cmf::math::Time t)
+
+Performes a new calculation of the flux. ";
 
 %feature("docstring")  cmf::water::flux_connection::get_target "flux_node::ptr get_target(const flux_node &inquirer)
 
@@ -2797,7 +2918,15 @@ integrate(cmf::math::Time until)
 Integrates the flux a timestep further. Note: until is an absolute
 time. If until is before t0, the integration is initilized again. ";
 
-%feature("docstring")  cmf::water::flux_integrator::flux_integrator "flux_integrator(cmf::water::flux_connection &connection) ";
+%feature("docstring")  cmf::water::flux_integrator::flux_integrator "flux_integrator(cmf::water::flux_connection &connection)
+
+Creates a flux_integrator from an connection. ";
+
+%feature("docstring")  cmf::water::flux_integrator::flux_integrator "flux_integrator(cmf::water::flux_node::ptr left,
+cmf::water::flux_node::ptr right)
+
+Creates a flux_integrator from the endpoints of a connection. Throws
+if there is no connection between the endpoints. ";
 
 
 // File: classcmf_1_1water_1_1flux__node.xml
@@ -2825,7 +2954,7 @@ true, if this is a waterstorage ";
 %feature("docstring")  cmf::water::flux_node::to_string "virtual
 std::string to_string() const ";
 
-%feature("docstring")  cmf::water::flux_node::get_connections "cmf::water::connection_vector get_connections() const ";
+%feature("docstring")  cmf::water::flux_node::get_connections "cmf::water::connection_list get_connections() const ";
 
 %feature("docstring")  cmf::water::flux_node::~flux_node "virtual
 ~flux_node()
@@ -2936,6 +3065,11 @@ kill_me()
 Deregisters this connection from its nodes. Returns true if only one
 reference is left. ";
 
+%feature("docstring")  cmf::upslope::ET::HargreaveET::refresh "void
+refresh(cmf::math::Time t)
+
+Performes a new calculation of the flux. ";
+
 %feature("docstring")  cmf::upslope::ET::HargreaveET::get_target "flux_node::ptr get_target(const flux_node &inquirer)
 
 Returns the other end of a connection than the asking end. ";
@@ -3010,6 +3144,11 @@ returns the right node of this connection ";
 
 Deregisters this connection from its nodes. Returns true if only one
 reference is left. ";
+
+%feature("docstring")  cmf::upslope::connections::HBVlateral::refresh
+"void refresh(cmf::math::Time t)
+
+Performes a new calculation of the flux. ";
 
 %feature("docstring")
 cmf::upslope::connections::HBVlateral::get_target "flux_node::ptr
@@ -3181,6 +3320,12 @@ cmf::upslope::connections::HBVpercolation::kill_me "bool kill_me()
 
 Deregisters this connection from its nodes. Returns true if only one
 reference is left. ";
+
+%feature("docstring")
+cmf::upslope::connections::HBVpercolation::refresh "void
+refresh(cmf::math::Time t)
+
+Performes a new calculation of the flux. ";
 
 %feature("docstring")
 cmf::upslope::connections::HBVpercolation::get_target "flux_node::ptr
@@ -3411,7 +3556,7 @@ true, if this is a waterstorage ";
 
 %feature("docstring")  cmf::atmosphere::IDWRainfall::to_string "virtual std::string to_string() const ";
 
-%feature("docstring")  cmf::atmosphere::IDWRainfall::get_connections "cmf::water::connection_vector get_connections() const ";
+%feature("docstring")  cmf::atmosphere::IDWRainfall::get_connections "cmf::water::connection_list get_connections() const ";
 
 %feature("docstring")  cmf::atmosphere::IDWRainfall::connection_to "cmf::water::flux_connection* connection_to(const cmf::water::flux_node
 &target)
@@ -3726,6 +3871,12 @@ reset(Time t) ";
 %feature("docstring")  cmf::math::integratable_list::integrate "void
 integrate(Time t) ";
 
+%feature("docstring")  cmf::math::integratable_list::integratable_list
+"integratable_list() ";
+
+%feature("docstring")  cmf::math::integratable_list::integratable_list
+"integratable_list(const integratable_list &for_copy) ";
+
 
 // File: classcmf_1_1math_1_1_integrator.xml
 %feature("docstring") cmf::math::Integrator "
@@ -3957,7 +4108,7 @@ $\\\\beta [-]$ An empirical exponent to shape the flux function
 
 $t_r [days]$ The residence time of the water in this storage in days
 
-C++ includes: WaterStorage.h ";
+C++ includes: simple_connections.h ";
 
 %feature("docstring")  cmf::water::kinematic_wave::kinematic_wave "kinematic_wave(WaterStorage::ptr source, flux_node::ptr target, real
 residencetime, real exponent=1.0, real residual_volume=0.0)
@@ -4005,6 +4156,11 @@ kill_me()
 
 Deregisters this connection from its nodes. Returns true if only one
 reference is left. ";
+
+%feature("docstring")  cmf::water::kinematic_wave::refresh "void
+refresh(cmf::math::Time t)
+
+Performes a new calculation of the flux. ";
 
 %feature("docstring")  cmf::water::kinematic_wave::get_target "flux_node::ptr get_target(const flux_node &inquirer)
 
@@ -4070,6 +4226,12 @@ kill_me()
 
 Deregisters this connection from its nodes. Returns true if only one
 reference is left. ";
+
+%feature("docstring")
+cmf::upslope::connections::lateral_sub_surface_flux::refresh "void
+refresh(cmf::math::Time t)
+
+Performes a new calculation of the flux. ";
 
 %feature("docstring")
 cmf::upslope::connections::lateral_sub_surface_flux::get_target "flux_node::ptr get_target(const flux_node &inquirer)
@@ -4313,7 +4475,8 @@ Returns the thickness of a soil column with a certain pore volume. ";
 %feature("docstring")  cmf::upslope::LinearRetention::copy "LinearRetention* copy() const ";
 
 %feature("docstring")  cmf::upslope::LinearRetention::LinearRetention
-"LinearRetention(real _Ksat, real _Phi, real _thickness) ";
+"LinearRetention(real ksat, real phi, real thickness, real
+residual_wetness=0.1) ";
 
 %feature("docstring")  cmf::upslope::LinearRetention::K "cmf::math::num_array K(const cmf::math::num_array &wetness) const ";
 
@@ -4389,6 +4552,11 @@ returns the right node of this connection ";
 Deregisters this connection from its nodes. Returns true if only one
 reference is left. ";
 
+%feature("docstring")  cmf::river::Manning::refresh "void
+refresh(cmf::math::Time t)
+
+Performes a new calculation of the flux. ";
+
 %feature("docstring")  cmf::river::Manning::get_target "flux_node::ptr get_target(const flux_node &inquirer)
 
 Returns the other end of a connection than the asking end. ";
@@ -4456,6 +4624,11 @@ kill_me()
 
 Deregisters this connection from its nodes. Returns true if only one
 reference is left. ";
+
+%feature("docstring")  cmf::river::Manning_Diffusive::refresh "void
+refresh(cmf::math::Time t)
+
+Performes a new calculation of the flux. ";
 
 %feature("docstring")  cmf::river::Manning_Diffusive::get_target "flux_node::ptr get_target(const flux_node &inquirer)
 
@@ -4525,6 +4698,11 @@ kill_me()
 
 Deregisters this connection from its nodes. Returns true if only one
 reference is left. ";
+
+%feature("docstring")  cmf::river::Manning_Kinematic::refresh "void
+refresh(cmf::math::Time t)
+
+Performes a new calculation of the flux. ";
 
 %feature("docstring")  cmf::river::Manning_Kinematic::get_target "flux_node::ptr get_target(const flux_node &inquirer)
 
@@ -4604,6 +4782,12 @@ kill_me()
 
 Deregisters this connection from its nodes. Returns true if only one
 reference is left. ";
+
+%feature("docstring")
+cmf::upslope::connections::MatrixInfiltration::refresh "void
+refresh(cmf::math::Time t)
+
+Performes a new calculation of the flux. ";
 
 %feature("docstring")
 cmf::upslope::connections::MatrixInfiltration::get_target "flux_node::ptr get_target(const flux_node &inquirer)
@@ -4934,14 +5118,6 @@ Calculates the temperature lapse from all stations in the list and
 sets the T_lapse attribute of each station.
 
 Returns the average lapse over the whole period. ";
-
-%feature("docstring")  cmf::atmosphere::MeteoStationList::add_station
-"MeteoStation::ptr add_station(std::string name, double latitude=51,
-double longitude=8, double timezone=1, double elevation=0,
-cmf::math::Time startTime=cmf::math::Time(1, 1, 2001), cmf::math::Time
-timestep=cmf::math::day)
-
-Creates a meteorological station and adds it to the list. ";
 
 %feature("docstring")  cmf::atmosphere::MeteoStationList::add_station
 "MeteoStation::ptr add_station(std::string name, cmf::geometry::point
@@ -5342,7 +5518,7 @@ true, if this is a waterstorage ";
 
 %feature("docstring")  cmf::water::NeumannBoundary::to_string "virtual std::string to_string() const ";
 
-%feature("docstring")  cmf::water::NeumannBoundary::get_connections "cmf::water::connection_vector get_connections() const ";
+%feature("docstring")  cmf::water::NeumannBoundary::get_connections "cmf::water::connection_list get_connections() const ";
 
 %feature("docstring")  cmf::water::NeumannBoundary::connection_to "cmf::water::flux_connection* connection_to(const cmf::water::flux_node
 &target)
@@ -5490,6 +5666,11 @@ kill_me()
 
 Deregisters this connection from its nodes. Returns true if only one
 reference is left. ";
+
+%feature("docstring")  cmf::water::NeumannFlux::refresh "void
+refresh(cmf::math::Time t)
+
+Performes a new calculation of the flux. ";
 
 %feature("docstring")  cmf::water::NeumannFlux::get_target "flux_node::ptr get_target(const flux_node &inquirer)
 
@@ -5831,6 +6012,10 @@ returns the right node of this connection ";
 Deregisters this connection from its nodes. Returns true if only one
 reference is left. ";
 
+%feature("docstring")  cmf::upslope::connections::OHDISflow::refresh "void refresh(cmf::math::Time t)
+
+Performes a new calculation of the flux. ";
+
 %feature("docstring")
 cmf::upslope::connections::OHDISflow::get_target "flux_node::ptr
 get_target(const flux_node &inquirer)
@@ -5982,6 +6167,8 @@ water storage always returns the height of the location ";
 
 Sets the volume of water in this storage in m3 ";
 
+%feature("docstring")  cmf::river::OpenWaterStorage::set_potential "virtual void set_potential(real newpotential) ";
+
 %feature("docstring")  cmf::river::OpenWaterStorage::dxdt "virtual
 real dxdt(const cmf::math::Time &time) ";
 
@@ -6012,7 +6199,7 @@ Returns the project, this node is part of. ";
 
 %feature("docstring")  cmf::river::OpenWaterStorage::to_string "virtual std::string to_string() const ";
 
-%feature("docstring")  cmf::river::OpenWaterStorage::get_connections "cmf::water::connection_vector get_connections() const ";
+%feature("docstring")  cmf::river::OpenWaterStorage::get_connections "cmf::water::connection_list get_connections() const ";
 
 %feature("docstring")  cmf::river::OpenWaterStorage::connection_to "cmf::water::flux_connection* connection_to(const cmf::water::flux_node
 &target)
@@ -6051,8 +6238,6 @@ t:  Time of the query
 Without:  A flux_connection that is excluded from the waterbalance
 (e.g. to prevent closed circuits) ";
 
-%feature("docstring")  cmf::river::OpenWaterStorage::set_potential "virtual void set_potential(real new_potential) ";
-
 
 // File: classcmf_1_1upslope_1_1_e_t_1_1_penman_evaporation.xml
 %feature("docstring") cmf::upslope::ET::PenmanEvaporation "
@@ -6088,6 +6273,10 @@ returns the right node of this connection ";
 
 Deregisters this connection from its nodes. Returns true if only one
 reference is left. ";
+
+%feature("docstring")  cmf::upslope::ET::PenmanEvaporation::refresh "void refresh(cmf::math::Time t)
+
+Performes a new calculation of the flux. ";
 
 %feature("docstring")  cmf::upslope::ET::PenmanEvaporation::get_target
 "flux_node::ptr get_target(const flux_node &inquirer)
@@ -6194,6 +6383,10 @@ returns the right node of this connection ";
 
 Deregisters this connection from its nodes. Returns true if only one
 reference is left. ";
+
+%feature("docstring")  cmf::upslope::ET::PenmanMonteithET::refresh "void refresh(cmf::math::Time t)
+
+Performes a new calculation of the flux. ";
 
 %feature("docstring")  cmf::upslope::ET::PenmanMonteithET::get_target
 "flux_node::ptr get_target(const flux_node &inquirer)
@@ -6411,6 +6604,13 @@ const
 Return the number of points in the point_vector. ";
 
 
+// File: classcmf_1_1math_1_1precalculatable.xml
+%feature("docstring") cmf::math::precalculatable "";
+
+%feature("docstring")  cmf::math::precalculatable::do_action "virtual
+void do_action(Time t, bool use_OpenMP=true)=0 ";
+
+
 // File: classcmf_1_1river_1_1_prism.xml
 %feature("docstring") cmf::river::Prism "
 
@@ -6441,8 +6641,7 @@ $ A(V) = A_{base} $ ";
 
 The study area, holding all cells, outlets and streams.
 
-Todo Where the fuck do you describe those stinkin tracers? They should
-be here!
+Todo Describe tracers
 
 C++ includes: project.h ";
 
@@ -6548,6 +6747,10 @@ returns the right node of this connection ";
 
 Deregisters this connection from its nodes. Returns true if only one
 reference is left. ";
+
+%feature("docstring")  cmf::upslope::connections::Rainfall::refresh "void refresh(cmf::math::Time t)
+
+Performes a new calculation of the flux. ";
 
 %feature("docstring")  cmf::upslope::connections::Rainfall::get_target
 "flux_node::ptr get_target(const flux_node &inquirer)
@@ -6699,7 +6902,7 @@ cmf::atmosphere::RainfallStationReference::to_string "virtual
 std::string to_string() const ";
 
 %feature("docstring")
-cmf::atmosphere::RainfallStationReference::get_connections "cmf::water::connection_vector get_connections() const ";
+cmf::atmosphere::RainfallStationReference::get_connections "cmf::water::connection_list get_connections() const ";
 
 %feature("docstring")
 cmf::atmosphere::RainfallStationReference::connection_to "cmf::water::flux_connection* connection_to(const cmf::water::flux_node
@@ -6794,7 +6997,7 @@ true, if this is a waterstorage ";
 
 %feature("docstring")  cmf::atmosphere::RainSource::to_string "virtual std::string to_string() const ";
 
-%feature("docstring")  cmf::atmosphere::RainSource::get_connections "cmf::water::connection_vector get_connections() const ";
+%feature("docstring")  cmf::atmosphere::RainSource::get_connections "cmf::water::connection_list get_connections() const ";
 
 %feature("docstring")  cmf::atmosphere::RainSource::connection_to "cmf::water::flux_connection* connection_to(const cmf::water::flux_node
 &target)
@@ -7049,6 +7252,9 @@ set_volume(real newwatercontent)
 
 Sets the volume of water in this storage in m3 ";
 
+%feature("docstring")  cmf::river::Reach::set_potential "virtual void
+set_potential(real newpotential) ";
+
 %feature("docstring")  cmf::river::Reach::dxdt "virtual real
 dxdt(const cmf::math::Time &time) ";
 
@@ -7081,7 +7287,7 @@ Returns the project, this node is part of. ";
 %feature("docstring")  cmf::river::Reach::to_string "virtual
 std::string to_string() const ";
 
-%feature("docstring")  cmf::river::Reach::get_connections "cmf::water::connection_vector get_connections() const ";
+%feature("docstring")  cmf::river::Reach::get_connections "cmf::water::connection_list get_connections() const ";
 
 %feature("docstring")  cmf::river::Reach::connection_to "cmf::water::flux_connection* connection_to(const cmf::water::flux_node
 &target)
@@ -7120,9 +7326,6 @@ t:  Time of the query
 
 Without:  A flux_connection that is excluded from the waterbalance
 (e.g. to prevent closed circuits) ";
-
-%feature("docstring")  cmf::river::Reach::set_potential "virtual void
-set_potential(real new_potential) ";
 
 
 // File: classcmf_1_1river_1_1_reach_iterator.xml
@@ -7362,6 +7565,10 @@ returns the right node of this connection ";
 Deregisters this connection from its nodes. Returns true if only one
 reference is left. ";
 
+%feature("docstring")  cmf::upslope::connections::Richards::refresh "void refresh(cmf::math::Time t)
+
+Performes a new calculation of the flux. ";
+
 %feature("docstring")  cmf::upslope::connections::Richards::get_target
 "flux_node::ptr get_target(const flux_node &inquirer)
 
@@ -7437,6 +7644,12 @@ cmf::upslope::connections::Richards_lateral::kill_me "bool kill_me()
 
 Deregisters this connection from its nodes. Returns true if only one
 reference is left. ";
+
+%feature("docstring")
+cmf::upslope::connections::Richards_lateral::refresh "void
+refresh(cmf::math::Time t)
+
+Performes a new calculation of the flux. ";
 
 %feature("docstring")
 cmf::upslope::connections::Richards_lateral::get_target "flux_node::ptr get_target(const flux_node &inquirer)
@@ -7838,6 +8051,12 @@ Deregisters this connection from its nodes. Returns true if only one
 reference is left. ";
 
 %feature("docstring")
+cmf::upslope::connections::SimpleTindexSnowMelt::refresh "void
+refresh(cmf::math::Time t)
+
+Performes a new calculation of the flux. ";
+
+%feature("docstring")
 cmf::upslope::connections::SimpleTindexSnowMelt::get_target "flux_node::ptr get_target(const flux_node &inquirer)
 
 Returns the other end of a connection than the asking end. ";
@@ -7922,6 +8141,12 @@ Deregisters this connection from its nodes. Returns true if only one
 reference is left. ";
 
 %feature("docstring")
+cmf::upslope::connections::SimplRichards::refresh "void
+refresh(cmf::math::Time t)
+
+Performes a new calculation of the flux. ";
+
+%feature("docstring")
 cmf::upslope::connections::SimplRichards::get_target "flux_node::ptr
 get_target(const flux_node &inquirer)
 
@@ -7996,6 +8221,10 @@ returns the right node of this connection ";
 
 Deregisters this connection from its nodes. Returns true if only one
 reference is left. ";
+
+%feature("docstring")  cmf::upslope::ET::snow_evaporation::refresh "void refresh(cmf::math::Time t)
+
+Performes a new calculation of the flux. ";
 
 %feature("docstring")  cmf::upslope::ET::snow_evaporation::get_target
 "flux_node::ptr get_target(const flux_node &inquirer)
@@ -8083,6 +8312,10 @@ returns the right node of this connection ";
 Deregisters this connection from its nodes. Returns true if only one
 reference is left. ";
 
+%feature("docstring")  cmf::upslope::connections::Snowfall::refresh "void refresh(cmf::math::Time t)
+
+Performes a new calculation of the flux. ";
+
 %feature("docstring")  cmf::upslope::connections::Snowfall::get_target
 "flux_node::ptr get_target(const flux_node &inquirer)
 
@@ -8154,6 +8387,10 @@ returns the right node of this connection ";
 
 Deregisters this connection from its nodes. Returns true if only one
 reference is left. ";
+
+%feature("docstring")  cmf::upslope::ET::soil_evaporation::refresh "void refresh(cmf::math::Time t)
+
+Performes a new calculation of the flux. ";
 
 %feature("docstring")  cmf::upslope::ET::soil_evaporation::get_target
 "flux_node::ptr get_target(const flux_node &inquirer)
@@ -8279,9 +8516,7 @@ Returns the actual volumetric water content of the water storage. ";
 void set_theta(real Value) ";
 
 %feature("docstring")  cmf::upslope::SoilLayer::get_volume "virtual
-real get_volume() const
-
-Returns the volume of water in this storage in m3 ";
+real get_volume() const ";
 
 %feature("docstring")  cmf::upslope::SoilLayer::get_abs_errtol "real
 get_abs_errtol(real rel_errtol) const ";
@@ -8289,7 +8524,14 @@ get_abs_errtol(real rel_errtol) const ";
 %feature("docstring")  cmf::upslope::SoilLayer::get_K "real get_K()
 const
 
-Returns the actual conductivity $\\\\frac{m}{day}$. ";
+Returns the actual isotropic conductivity using the function from soil
+$\\\\frac{m}{day}$. ";
+
+%feature("docstring")  cmf::upslope::SoilLayer::get_K "virtual real
+get_K(cmf::geometry::point direction) const
+
+Returns the actual anisotropic conductivity along a direction $K =
+(k_f \\\\cdot d) K$. ";
 
 %feature("docstring")  cmf::upslope::SoilLayer::get_Ksat "real
 get_Ksat() const ";
@@ -8360,6 +8602,9 @@ HorizontalLayers:  If true, the layers are assumed to be parallel to
 the gravitational potential, otherwise they are assumed to be parallel
 to the ground topography ";
 
+%feature("docstring")  cmf::upslope::SoilLayer::get_abs_errtol "real
+get_abs_errtol(real rel_errtol) const ";
+
 %feature("docstring")  cmf::upslope::SoilLayer::get_abs_errtol "virtual real get_abs_errtol(real rel_errtol) const ";
 
 %feature("docstring")
@@ -8411,10 +8656,22 @@ cmf::water::solute &_Solute, real NewConcetration)
 
 Sets a new concentration. ";
 
+%feature("docstring")  cmf::upslope::SoilLayer::get_volume "virtual
+real get_volume() const
+
+Returns the volume of water in this storage in m3 ";
+
+%feature("docstring")  cmf::upslope::SoilLayer::get_potential "virtual real get_potential() const
+
+Returns the water potential of the node in m waterhead The base class
+water storage always returns the height of the location ";
+
 %feature("docstring")  cmf::upslope::SoilLayer::set_volume "virtual
 void set_volume(real newwatercontent)
 
 Sets the volume of water in this storage in m3 ";
+
+%feature("docstring")  cmf::upslope::SoilLayer::set_potential "virtual void set_potential(real newpotential) ";
 
 %feature("docstring")  cmf::upslope::SoilLayer::dxdt "virtual real
 dxdt(const cmf::math::Time &time) ";
@@ -8448,7 +8705,7 @@ Returns the project, this node is part of. ";
 %feature("docstring")  cmf::upslope::SoilLayer::to_string "virtual
 std::string to_string() const ";
 
-%feature("docstring")  cmf::upslope::SoilLayer::get_connections "cmf::water::connection_vector get_connections() const ";
+%feature("docstring")  cmf::upslope::SoilLayer::get_connections "cmf::water::connection_list get_connections() const ";
 
 %feature("docstring")  cmf::upslope::SoilLayer::connection_to "cmf::water::flux_connection* connection_to(const cmf::water::flux_node
 &target)
@@ -8828,6 +9085,99 @@ Simplifies the assessment of state variables. ";
 %feature("docstring") SptfqmrMemRec "";
 
 
+// File: classcmf_1_1water_1_1statecontrol__connection.xml
+%feature("docstring") cmf::water::statecontrol_connection "
+
+Calculates a flux to or from a water storage to hold it's state at a
+more or less constant level \\\\[ q=\\\\frac{h_1 - h_{target}}{t_c
+[days]} \\\\]
+
+C++ includes: simple_connections.h ";
+
+%feature("docstring")
+cmf::water::statecontrol_connection::statecontrol_connection "statecontrol_connection(cmf::water::WaterStorage::ptr
+controlled_storage, cmf::water::flux_node::ptr other_end, real
+target_state, cmf::math::Time reaction_time)
+
+Creates a flux connection to control the state of a storage
+
+Parameters:
+-----------
+
+controlled_storage:  Water storage, to be controlled
+
+other_end:  source of missing water or target of excessive water
+
+target_state:  State the controlled storage should hold (
+$h_{target}$)
+
+ReactionTime:  Time to reach state ( $t_c$) ";
+
+%feature("docstring")  cmf::water::statecontrol_connection::q "real
+q(const flux_node &inquirer, cmf::math::Time t)
+
+Returns the current flux through a connection. Negative signs mean out
+of the inquirer, positive are inflows to the inquirer. ";
+
+%feature("docstring")  cmf::water::statecontrol_connection::get_ptr "ptr get_ptr() const ";
+
+%feature("docstring")  cmf::water::statecontrol_connection::left_node
+"flux_node::ptr left_node() const
+
+Returns the left node of this connection. ";
+
+%feature("docstring")  cmf::water::statecontrol_connection::right_node
+"flux_node::ptr right_node() const
+
+returns the right node of this connection ";
+
+%feature("docstring")  cmf::water::statecontrol_connection::kill_me "bool kill_me()
+
+Deregisters this connection from its nodes. Returns true if only one
+reference is left. ";
+
+%feature("docstring")  cmf::water::statecontrol_connection::refresh "void refresh(cmf::math::Time t)
+
+Performes a new calculation of the flux. ";
+
+%feature("docstring")  cmf::water::statecontrol_connection::get_target
+"flux_node::ptr get_target(const flux_node &inquirer)
+
+Returns the other end of a connection than the asking end. ";
+
+%feature("docstring")  cmf::water::statecontrol_connection::get_target
+"flux_node::ptr get_target(int index) const
+
+With index 0, the left node is returned, with index 1 the right node
+of the connection. ";
+
+%feature("docstring")
+cmf::water::statecontrol_connection::exchange_target "void
+exchange_target(flux_node::ptr oldtarget, flux_node::ptr newTarget) ";
+
+%feature("docstring")  cmf::water::statecontrol_connection::conc "real conc(cmf::math::Time t, const cmf::water::solute &_Solute)
+
+Returns the concentration of the flux. If not overridden, it returns
+the concentration of the source of the flux (direction depending) ";
+
+%feature("docstring")
+cmf::water::statecontrol_connection::get_tracer_filter "real
+get_tracer_filter()
+
+A value ranging from 0 to 1. ";
+
+%feature("docstring")
+cmf::water::statecontrol_connection::set_tracer_filter "void
+set_tracer_filter(real value) ";
+
+%feature("docstring")  cmf::water::statecontrol_connection::to_string
+"std::string to_string() const ";
+
+%feature("docstring")
+cmf::water::statecontrol_connection::short_string "std::string
+short_string() const ";
+
+
 // File: classcmf_1_1math_1_1_state_variable.xml
 %feature("docstring") cmf::math::StateVariable "
 
@@ -8959,6 +9309,12 @@ Deregisters this connection from its nodes. Returns true if only one
 reference is left. ";
 
 %feature("docstring")
+cmf::upslope::ET::surface_water_evaporation::refresh "void
+refresh(cmf::math::Time t)
+
+Performes a new calculation of the flux. ";
+
+%feature("docstring")
 cmf::upslope::ET::surface_water_evaporation::get_target "flux_node::ptr get_target(const flux_node &inquirer)
 
 Returns the other end of a connection than the asking end. ";
@@ -9056,6 +9412,12 @@ cmf::upslope::connections::SWATPercolation::kill_me "bool kill_me()
 
 Deregisters this connection from its nodes. Returns true if only one
 reference is left. ";
+
+%feature("docstring")
+cmf::upslope::connections::SWATPercolation::refresh "void
+refresh(cmf::math::Time t)
+
+Performes a new calculation of the flux. ";
 
 %feature("docstring")
 cmf::upslope::connections::SWATPercolation::get_target "flux_node::ptr get_target(const flux_node &inquirer)
@@ -9306,7 +9668,7 @@ true, if this is a waterstorage ";
 %feature("docstring")  cmf::water::SystemBridge::to_string "virtual
 std::string to_string() const ";
 
-%feature("docstring")  cmf::water::SystemBridge::get_connections "cmf::water::connection_vector get_connections() const ";
+%feature("docstring")  cmf::water::SystemBridge::get_connections "cmf::water::connection_list get_connections() const ";
 
 %feature("docstring")  cmf::water::SystemBridge::RecalcFluxes "virtual bool RecalcFluxes(cmf::math::Time t)
 
@@ -9395,6 +9757,10 @@ returns the right node of this connection ";
 Deregisters this connection from its nodes. Returns true if only one
 reference is left. ";
 
+%feature("docstring")  cmf::water::SystemBridgeConnection::refresh "void refresh(cmf::math::Time t)
+
+Performes a new calculation of the flux. ";
+
 %feature("docstring")  cmf::water::SystemBridgeConnection::get_target
 "flux_node::ptr get_target(const flux_node &inquirer)
 
@@ -9444,12 +9810,11 @@ $ q=\\\\left\\\\{0 \\\\mbox{ if }V_{source}\\\\le V_{min}\\\\\\\\
 V_{source} t_{decr} q_{0}\\\\\\\\ q_{0} \\\\mbox{ else}\\\\le
 \\\\right. $
 
-C++ includes: boundary_condition.h ";
+C++ includes: simple_connections.h ";
 
-%feature("docstring")  cmf::water::TechnicalFlux::TechnicalFlux "TechnicalFlux(std::tr1::shared_ptr< cmf::water::WaterStorage >
-&source, std::tr1::shared_ptr< cmf::water::flux_node > target, real
-maximum_flux, real minimal_state=0, cmf::math::Time
-flux_decrease_time=cmf::math::h)
+%feature("docstring")  cmf::water::TechnicalFlux::TechnicalFlux "TechnicalFlux(cmf::water::WaterStorage::ptr source,
+cmf::water::flux_node::ptr target, real maximum_flux, real
+minimal_state=0, cmf::math::Time flux_decrease_time=cmf::math::h)
 
 Produces a constant but changeable flux from a source to a target, if
 enough water is present in the source
@@ -9489,6 +9854,11 @@ kill_me()
 
 Deregisters this connection from its nodes. Returns true if only one
 reference is left. ";
+
+%feature("docstring")  cmf::water::TechnicalFlux::refresh "void
+refresh(cmf::math::Time t)
+
+Performes a new calculation of the flux. ";
 
 %feature("docstring")  cmf::water::TechnicalFlux::get_target "flux_node::ptr get_target(const flux_node &inquirer)
 
@@ -9811,10 +10181,16 @@ const ";
 const ";
 
 %feature("docstring")  cmf::math::timeseries::size "int size() const
-";
+
+Number of items in the timeseries. ";
+
+%feature("docstring")  cmf::math::timeseries::count_values "int
+count_values() const
+
+Number of valid values (=size - # of NaN's). ";
 
 %feature("docstring")  cmf::math::timeseries::timeseries "timeseries(cmf::math::Time begin, cmf::math::Time step, int
-interpolationmethod=1, size_t size=0)
+interpolationmethod=1, size_t count=0)
 
 Constructor of a time series
 
@@ -9828,7 +10204,7 @@ step:   Time between measurements
 interpolationmethod:  Method for the interpolation (0 - Nearest
 neighbor, 1- linear, 2 - cubic spline (not implemented yet)
 
-size:  Initial number of items. Items are filled with 0.0 ";
+count:  Initial number of items. Items are filled with 0.0 ";
 
 %feature("docstring")  cmf::math::timeseries::timeseries "timeseries() ";
 
@@ -9921,6 +10297,12 @@ kill_me()
 
 Deregisters this connection from its nodes. Returns true if only one
 reference is left. ";
+
+%feature("docstring")
+cmf::upslope::connections::TopographicGradientDarcy::refresh "void
+refresh(cmf::math::Time t)
+
+Performes a new calculation of the flux. ";
 
 %feature("docstring")
 cmf::upslope::connections::TopographicGradientDarcy::get_target "flux_node::ptr get_target(const flux_node &inquirer)
@@ -10030,6 +10412,11 @@ kill_me()
 
 Deregisters this connection from its nodes. Returns true if only one
 reference is left. ";
+
+%feature("docstring")  cmf::upslope::ET::transpiration::refresh "void
+refresh(cmf::math::Time t)
+
+Performes a new calculation of the flux. ";
 
 %feature("docstring")  cmf::upslope::ET::transpiration::get_target "flux_node::ptr get_target(const flux_node &inquirer)
 
@@ -10243,23 +10630,23 @@ Returns the thickness of a soil column with a certain pore volume. ";
 cmf::upslope::VanGenuchtenMualem::VanGenuchtenMualem "VanGenuchtenMualem() ";
 
 %feature("docstring")
-cmf::upslope::VanGenuchtenMualem::VanGenuchtenMualem "VanGenuchtenMualem(real _Ksat, real _phi, real _alpha, real _n, real
-_m=-1)
+cmf::upslope::VanGenuchtenMualem::VanGenuchtenMualem "VanGenuchtenMualem(real Ksat, real phi, real alpha, real n, real m=-1)
 
 Creates a van Genuchten-Mualem retention curve
 
 Parameters:
 -----------
 
-_Ksat:  Saturated conductivity in $\\\\frac m{day}$
+Ksat:  Saturated conductivity in $\\\\frac m{day}$
 
-_phi:  Porosity in $\\\\frac{m^3 Pores}{m^3 Soil}$
+phi:  Porosity in $\\\\frac{m^3 Pores}{m^3 Soil}$
 
-_alpha:  Van Genuchten $\\\\alpha$ in $\\\\frac 1{cm}$
+alpha:  Van Genuchten $\\\\alpha$ in $\\\\frac 1{cm}$
 
-_n:  Van Genuchten n
+n:  Van Genuchten n
 
-_m:  m parameter, if negative m is calculated as $ 1-\\\\frac 1 n$ ";
+m:  Van Genuchten m parameter, if negative m is calculated as $
+1-\\\\frac 1 n$ ";
 
 %feature("docstring")  cmf::upslope::VanGenuchtenMualem::K "cmf::math::num_array K(const cmf::math::num_array &wetness) const ";
 
@@ -10357,7 +10744,7 @@ V(double h) const ";
 
 Routes the sum of all other fluxes to a target
 
-C++ includes: flux_connection.h ";
+C++ includes: simple_connections.h ";
 
 %feature("docstring")
 cmf::water::waterbalance_connection::waterbalance_connection "waterbalance_connection(flux_node::ptr source, flux_node::ptr target)
@@ -10385,6 +10772,10 @@ returns the right node of this connection ";
 
 Deregisters this connection from its nodes. Returns true if only one
 reference is left. ";
+
+%feature("docstring")  cmf::water::waterbalance_connection::refresh "void refresh(cmf::math::Time t)
+
+Performes a new calculation of the flux. ";
 
 %feature("docstring")  cmf::water::waterbalance_connection::get_target
 "flux_node::ptr get_target(const flux_node &inquirer)
@@ -10581,6 +10972,8 @@ void set_volume(real newwatercontent)
 
 Sets the volume of water in this storage in m3 ";
 
+%feature("docstring")  cmf::water::WaterStorage::set_potential "virtual void set_potential(real newpotential) ";
+
 %feature("docstring")  cmf::water::WaterStorage::dxdt "virtual real
 dxdt(const cmf::math::Time &time) ";
 
@@ -10621,7 +11014,7 @@ Returns the project, this node is part of. ";
 %feature("docstring")  cmf::water::WaterStorage::to_string "virtual
 std::string to_string() const ";
 
-%feature("docstring")  cmf::water::WaterStorage::get_connections "cmf::water::connection_vector get_connections() const ";
+%feature("docstring")  cmf::water::WaterStorage::get_connections "cmf::water::connection_list get_connections() const ";
 
 %feature("docstring")  cmf::water::WaterStorage::connection_to "cmf::water::flux_connection* connection_to(const cmf::water::flux_node
 &target)
@@ -10660,8 +11053,6 @@ t:  Time of the query
 Without:  A flux_connection that is excluded from the waterbalance
 (e.g. to prevent closed circuits) ";
 
-%feature("docstring")  cmf::water::WaterStorage::set_potential "virtual void set_potential(real new_potential) ";
-
 
 // File: structcmf_1_1atmosphere_1_1_weather.xml
 %feature("docstring") cmf::atmosphere::Weather "
@@ -10669,7 +11060,7 @@ Without:  A flux_connection that is excluded from the waterbalance
 A structure holding meteorological information, excluding
 precipitation
 
-C++ includes: meteorology.h ";
+C++ includes: Weather.h ";
 
 %feature("docstring")  cmf::atmosphere::Weather::Rn "double Rn(double
 albedo, bool daily=false) const
@@ -10699,12 +11090,9 @@ albedo:  the albedo $\\\\alpha$ of the surface
 daily:  If true, the net radiation for daily averages will be
 calculated ";
 
-%feature("docstring")  cmf::atmosphere::Weather::Weather "Weather()
-
-Calculates the mean pressure for a specific height. ";
-
-%feature("docstring")  cmf::atmosphere::Weather::Weather "Weather(double _T, double _Tmax, double _Tmin, double _rH, double
-_wind=2, double _sunshine=0.5, double _Rs=15, double _daylength=12)
+%feature("docstring")  cmf::atmosphere::Weather::Weather "Weather(double T=15.0, double Tmax=17.0, double Tmin=13.0, double
+rH=70.0, double wind=2.0, double sunshine=0.5, double Rs=15, double
+daylength=12)
 
 Creates a \"weather\" from given data
 
@@ -10815,7 +11203,7 @@ Finds the nearest cell for a position. ";
 Gets the outer cells of a network. Unstable! Might create an infinite
 loop. ";
 
-%feature("docstring")  cmf::upslope::connections::get_connections "cmf::water::connection_set cmf::upslope::get_connections(cells_ref
+%feature("docstring")  cmf::upslope::connections::get_connections "cmf::water::connection_list cmf::upslope::get_connections(cells_ref
 cells)
 
 Gets all connections of a bunch of cells. ";
@@ -10952,6 +11340,17 @@ const cmf::upslope::vegetation::Vegetation &veg) ";
 cmf::water::replace_node(cmf::water::flux_node::ptr oldnode,
 cmf::water::flux_node::ptr newnode) ";
 
+%feature("docstring")  cmf::water::count_node_references "int
+cmf::water::count_node_references(flux_node::ptr node) ";
+
+%feature("docstring")  cmf::water::get_higher_node "flux_node::ptr
+cmf::water::get_higher_node(flux_node::ptr node1, flux_node::ptr
+node2) ";
+
+%feature("docstring")  cmf::water::get_lower_node "flux_node::ptr
+cmf::water::get_lower_node(flux_node::ptr node1, flux_node::ptr node2)
+";
+
 %feature("docstring")  cmf::water::set_flux "void
 cmf::water::set_flux(flux_node::ptr source, flux_node::ptr target,
 real flux_value)
@@ -10964,17 +11363,6 @@ cmf::water::can_set_flux(flux_node::ptr source, flux_node::ptr target)
 
 Checks if a constant flux between two nodes can be set. Returns true
 if the nodes are connected by an external_control_connection ";
-
-%feature("docstring")  cmf::water::count_node_references "int
-cmf::water::count_node_references(flux_node::ptr node) ";
-
-%feature("docstring")  cmf::water::get_higher_node "flux_node::ptr
-cmf::water::get_higher_node(flux_node::ptr node1, flux_node::ptr
-node2) ";
-
-%feature("docstring")  cmf::water::get_lower_node "flux_node::ptr
-cmf::water::get_lower_node(flux_node::ptr node1, flux_node::ptr node2)
-";
 
 %feature("docstring")  cmf::water::system_bridge "SystemBridge::ptr
 cmf::water::system_bridge(cmf::project &p, flux_node::ptr upper,
@@ -11003,10 +11391,16 @@ boundary condition, providing the potential of the lower node. ";
 // File: precipitation_8h.xml
 
 
+// File: _weather_8h.xml
+
+
 // File: implicitconv_8h.xml
 %feature("docstring")  feature "feature(\"compactdefaultargs\") ";
 
 %feature("docstring")  feature "feature(\"autodoc\",\"1\") ";
+
+
+// File: _e_m_s2011_8dox.xml
 
 
 // File: _f_v_m_8dox.xml
@@ -12042,6 +12436,9 @@ real tau) ";
 // File: cell__vector_8h.xml
 
 
+// File: conductable_8h.xml
+
+
 // File: _atmospheric_fluxes_8h.xml
 
 
@@ -12096,6 +12493,9 @@ real tau) ";
 // File: flux__node_8h.xml
 
 
+// File: simple__connections_8h.xml
+
+
 // File: _solute_8h.xml
 
 
@@ -12142,6 +12542,9 @@ real tau) ";
 
 
 // File: group__latflux.xml
+
+
+// File: _e_m_s2011.xml
 
 
 // File: _f_v_m.xml
