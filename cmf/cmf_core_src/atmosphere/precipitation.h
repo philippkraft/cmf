@@ -45,7 +45,7 @@ namespace cmf {
 			/// Returns the actual rainfall intensity in mm/day
 			virtual real get_intensity(cmf::math::Time t) const=0;
 			/// Returns the concentration of a solute in the rainfall at time t
-			virtual real conc(cmf::math::Time t, const cmf::water::solute& Solute)=0;
+			virtual real conc(cmf::math::Time t, const cmf::water::solute& Solute) const =0;
 			
 			virtual bool RecalcFluxes(cmf::math::Time t) {return true;}
 			/// Returns false
@@ -77,7 +77,7 @@ namespace cmf {
 			real get_intensity(cmf::math::Time t) const {
 				return intensity;
 			}
-			virtual real conc(cmf::math::Time t, const cmf::water::solute& Solute) {
+			virtual real conc(cmf::math::Time t, const cmf::water::solute& Solute) const {
 				return concentrations[Solute.Id];
 			}
 			/// Sets the concentration of a solute in the rainfall
@@ -184,7 +184,7 @@ namespace cmf {
 				return m_station->data[t];
 			}
 			
-			real conc(cmf::math::Time t, const cmf::water::solute& Solute) {
+			real conc(cmf::math::Time t, const cmf::water::solute& Solute) const{
 				return m_station->concentration.conc(t,Solute);
 			}
 
@@ -207,7 +207,7 @@ namespace cmf {
 			/// @param power (double)
 			static ptr create(const cmf::project& project, cmf::geometry::point position, double z_weight, double power);
 			real get_intensity(cmf::math::Time t) const;
-			real conc(cmf::math::Time t, const cmf::water::solute& Solute);
+			real conc(cmf::math::Time t, const cmf::water::solute& Solute) const;
 
 
 		};
