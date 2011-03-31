@@ -58,11 +58,11 @@ real connections::Richards_lateral::calc_q( cmf::math::Time t )
 	point direction=left_node()->position - right_node()->position;
 	if (l2) {
 		K= geo_mean(l1->get_K(direction),l2->get_K(direction));
-		Ksat = geo_mean(l1->get_Ksat(),l2->get_Ksat())
+		Ksat = geo_mean(l1->get_Ksat(),l2->get_Ksat());
 	}
-	if (C2){
+	else if (C2){
 		K= geo_mean(l1->get_K(direction),C2->get_K(direction));
-		Ksat = geo_mean(l1->get_Ksat(direction),C2->get_K(direction))
+		Ksat = geo_mean(l1->get_Ksat(),C2->get_K(direction));
 	}
 	else {
 		K=l1->get_K(direction);
