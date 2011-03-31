@@ -41,6 +41,7 @@ void connections::Richards_lateral::connect_cells( Cell & cell1,Cell & cell2,int
 				}	}	}
 	}
 }
+bool connections::Richards_lateral::baseflow=false;
 real connections::Richards_lateral::calc_q( cmf::math::Time t )
 {
 	SoilLayer::ptr 
@@ -53,13 +54,30 @@ real connections::Richards_lateral::calc_q( cmf::math::Time t )
 		Psi_t2=right_node()->get_potential(),
 		gradient=(Psi_t1-Psi_t2)/distance,
 		//K=gradient<0 && l2 ? l2->K() : l1->K();      
-		K=0.0;
+		K=0.0, Ksat =.0;
 	point direction=left_node()->position - right_node()->position;
-	if (C2) 
+	if (l2) {
+		K= geo_mean(l1->get_K(direction),l2->get_K(direction));
+		Ksat = geo_mean(l1->get_Ksat(),l2->get_Ksat())
+	}
+	if (C2){
 		K= geo_mean(l1->get_K(direction),C2->get_K(direction));
-	else 
+		Ksat = geo_mean(l1->get_Ksat(direction),C2->get_K(direction))
+	}
+	else {
 		K=l1->get_K(direction);
+		Ksat = l1->get_Ksat();
+	}
 	real r_flow = K * gradient * flow_width * flow_thickness;
+	if (baseflow) {
+		double ft = flow_thickness + l1->get_matrix_potential();
+		if (l2) ft = std::max(flow_thickness + l2->get_matrix_potential(),ft);
+		ft = minmax(ft,0,flow_thickness);
+		real d_flow = Ksat * gradient * flow_width * ft;
+		r_flow *= (1-ft/flow_thickness);
+		r_flow += d_flow;
+	}
+
 	// If flow from left to right
 	return prevent_negative_volume(r_flow); 
 
