@@ -17,22 +17,15 @@
 //   along with cmf.  If not, see <http://www.gnu.org/licenses/>.
 // 
   
-%shared_ptr(cmf::atmosphere::MeteoStation)
-%shared_ptr(cmf::atmosphere::RainfallStation)
-%shared_ptr(cmf::atmosphere::RainSource);
-%shared_ptr(cmf::atmosphere::RainfallStationReference);
-%shared_ptr(cmf::atmosphere::IDWRainfall);
-%shared_ptr(cmf::atmosphere::ConstantRainSource);
 
 
 %{
+	#include "atmosphere/weather.h"
 	#include "atmosphere/meteorology.h"
 	#include "atmosphere/precipitation.h"
 %}
 
-%rename(__getitem__) cmf::atmosphere::MeteoStationList::operator[];
-%rename(__len__) cmf::atmosphere::MeteoStationList::size;
-%include "atmosphere/meteorology.h"
+%include "Weather.h"
 
 %extend cmf::atmosphere::Weather {
     %pythoncode {
@@ -41,6 +34,20 @@
     def __str__(self):
         return "Weather: T(max/min)=%6.2f(%3.0f/%3.0f), Rs=%7.2f, rH=%3.0f%%" % (self.T,self.Tmin,self.Tmax,self.Rs,100*self.e_a/self.e_s)
 }}
+
+
+%shared_ptr(cmf::atmosphere::MeteoStation)
+%shared_ptr(cmf::atmosphere::RainfallStation)
+%shared_ptr(cmf::atmosphere::RainSource);
+%shared_ptr(cmf::atmosphere::RainfallStationReference);
+%shared_ptr(cmf::atmosphere::IDWRainfall);
+%shared_ptr(cmf::atmosphere::ConstantRainSource);
+
+
+%rename(__getitem__) cmf::atmosphere::MeteoStationList::operator[];
+%rename(__len__) cmf::atmosphere::MeteoStationList::size;
+%include "atmosphere/meteorology.h"
+
 
 %extend cmf::atmosphere::MeteoStationList {
     %pythoncode {

@@ -566,6 +566,10 @@
 				RelativePath=".\water\WaterStorage.h"
 				>
 			</File>
+			<File
+				RelativePath=".\atmosphere\Weather.h"
+				>
+			</File>
 		</Filter>
 		<Filter
 			Name="Resource Files"
@@ -844,6 +848,10 @@
 			</File>
 			<File
 				RelativePath=".\water\WaterStorage.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\atmosphere\Weather.cpp"
 				>
 			</File>
 		</Filter>

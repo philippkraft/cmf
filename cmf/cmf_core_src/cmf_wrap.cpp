@@ -3767,6 +3767,7 @@ SWIGINTERN bool cmf_water_connection_list___contains__(cmf::water::connection_li
 #define cmf_water_NeumannBoundary_list_fluxes_set(self_, val_) self_->set_fluxes(val_)
   
 
+	#include "atmosphere/weather.h"
 	#include "atmosphere/meteorology.h"
 	#include "atmosphere/precipitation.h"
 
@@ -32908,39 +32909,13 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_new_Weather__SWIG_0(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **SWIGUNUSEDPARM(swig_obj)) {
+SWIGINTERN PyObject *_wrap_new_Weather(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
-  cmf::atmosphere::Weather *result = 0 ;
-  
-  if ((nobjs < 0) || (nobjs > 0)) SWIG_fail;
-  {
-    try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::atmosphere::Weather *)new cmf::atmosphere::Weather();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
-    } catch (const std::out_of_range& e) {
-      SWIG_exception(SWIG_IndexError, e.what());    
-    } catch (const std::exception& e) {
-      SWIG_exception(SWIG_RuntimeError, e.what());
-    }
-    
-  }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_cmf__atmosphere__Weather, SWIG_POINTER_NEW |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_new_Weather__SWIG_1(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  double arg1 ;
-  double arg2 ;
-  double arg3 ;
-  double arg4 ;
-  double arg5 = (double) 2 ;
+  double arg1 = (double) 15.0 ;
+  double arg2 = (double) 17.0 ;
+  double arg3 = (double) 13.0 ;
+  double arg4 = (double) 70.0 ;
+  double arg5 = (double) 2.0 ;
   double arg6 = (double) 0.5 ;
   double arg7 = (double) 15 ;
   double arg8 = (double) 12 ;
@@ -32960,52 +32935,71 @@ SWIGINTERN PyObject *_wrap_new_Weather__SWIG_1(PyObject *SWIGUNUSEDPARM(self), i
   int ecode7 = 0 ;
   double val8 ;
   int ecode8 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  PyObject * obj4 = 0 ;
+  PyObject * obj5 = 0 ;
+  PyObject * obj6 = 0 ;
+  PyObject * obj7 = 0 ;
+  char *  kwnames[] = {
+    (char *) "T",(char *) "Tmax",(char *) "Tmin",(char *) "rH",(char *) "wind",(char *) "sunshine",(char *) "Rs",(char *) "daylength", NULL 
+  };
   cmf::atmosphere::Weather *result = 0 ;
   
-  if ((nobjs < 4) || (nobjs > 8)) SWIG_fail;
-  ecode1 = SWIG_AsVal_double(swig_obj[0], &val1);
-  if (!SWIG_IsOK(ecode1)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "new_Weather" "', argument " "1"" of type '" "double""'");
-  } 
-  arg1 = static_cast< double >(val1);
-  ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "new_Weather" "', argument " "2"" of type '" "double""'");
-  } 
-  arg2 = static_cast< double >(val2);
-  ecode3 = SWIG_AsVal_double(swig_obj[2], &val3);
-  if (!SWIG_IsOK(ecode3)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "new_Weather" "', argument " "3"" of type '" "double""'");
-  } 
-  arg3 = static_cast< double >(val3);
-  ecode4 = SWIG_AsVal_double(swig_obj[3], &val4);
-  if (!SWIG_IsOK(ecode4)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "new_Weather" "', argument " "4"" of type '" "double""'");
-  } 
-  arg4 = static_cast< double >(val4);
-  if (swig_obj[4]) {
-    ecode5 = SWIG_AsVal_double(swig_obj[4], &val5);
+  if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"|OOOOOOOO:new_Weather",kwnames,&obj0,&obj1,&obj2,&obj3,&obj4,&obj5,&obj6,&obj7)) SWIG_fail;
+  if (obj0) {
+    ecode1 = SWIG_AsVal_double(obj0, &val1);
+    if (!SWIG_IsOK(ecode1)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "new_Weather" "', argument " "1"" of type '" "double""'");
+    } 
+    arg1 = static_cast< double >(val1);
+  }
+  if (obj1) {
+    ecode2 = SWIG_AsVal_double(obj1, &val2);
+    if (!SWIG_IsOK(ecode2)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "new_Weather" "', argument " "2"" of type '" "double""'");
+    } 
+    arg2 = static_cast< double >(val2);
+  }
+  if (obj2) {
+    ecode3 = SWIG_AsVal_double(obj2, &val3);
+    if (!SWIG_IsOK(ecode3)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "new_Weather" "', argument " "3"" of type '" "double""'");
+    } 
+    arg3 = static_cast< double >(val3);
+  }
+  if (obj3) {
+    ecode4 = SWIG_AsVal_double(obj3, &val4);
+    if (!SWIG_IsOK(ecode4)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "new_Weather" "', argument " "4"" of type '" "double""'");
+    } 
+    arg4 = static_cast< double >(val4);
+  }
+  if (obj4) {
+    ecode5 = SWIG_AsVal_double(obj4, &val5);
     if (!SWIG_IsOK(ecode5)) {
       SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "new_Weather" "', argument " "5"" of type '" "double""'");
     } 
     arg5 = static_cast< double >(val5);
   }
-  if (swig_obj[5]) {
-    ecode6 = SWIG_AsVal_double(swig_obj[5], &val6);
+  if (obj5) {
+    ecode6 = SWIG_AsVal_double(obj5, &val6);
     if (!SWIG_IsOK(ecode6)) {
       SWIG_exception_fail(SWIG_ArgError(ecode6), "in method '" "new_Weather" "', argument " "6"" of type '" "double""'");
     } 
     arg6 = static_cast< double >(val6);
   }
-  if (swig_obj[6]) {
-    ecode7 = SWIG_AsVal_double(swig_obj[6], &val7);
+  if (obj6) {
+    ecode7 = SWIG_AsVal_double(obj6, &val7);
     if (!SWIG_IsOK(ecode7)) {
       SWIG_exception_fail(SWIG_ArgError(ecode7), "in method '" "new_Weather" "', argument " "7"" of type '" "double""'");
     } 
     arg7 = static_cast< double >(val7);
   }
-  if (swig_obj[7]) {
-    ecode8 = SWIG_AsVal_double(swig_obj[7], &val8);
+  if (obj7) {
+    ecode8 = SWIG_AsVal_double(obj7, &val8);
     if (!SWIG_IsOK(ecode8)) {
       SWIG_exception_fail(SWIG_ArgError(ecode8), "in method '" "new_Weather" "', argument " "8"" of type '" "double""'");
     } 
@@ -33028,141 +33022,6 @@ SWIGINTERN PyObject *_wrap_new_Weather__SWIG_1(PyObject *SWIGUNUSEDPARM(self), i
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_cmf__atmosphere__Weather, SWIG_POINTER_NEW |  0 );
   return resultobj;
 fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_new_Weather(PyObject *self, PyObject *args) {
-  int argc;
-  PyObject *argv[9];
-  
-  if (!(argc = SWIG_Python_UnpackTuple(args,"new_Weather",0,8,argv))) SWIG_fail;
-  --argc;
-  {
-    unsigned long _index = 0;
-    SWIG_TypeRank _rank = 0; 
-    if (argc == 0) {
-      SWIG_TypeRank _ranki = 0;
-      SWIG_TypeRank _rankm = 0;
-      if (!_index || (_ranki < _rank)) {
-        _rank = _ranki; _index = 1;
-        if (_rank == _rankm) goto dispatch;
-      }
-    }
-    if ((argc >= 4) && (argc <= 8)) {
-      SWIG_TypeRank _ranki = 0;
-      SWIG_TypeRank _rankm = 0;
-      SWIG_TypeRank _pi = 1;
-      int _v = 0;
-      {
-        {
-          int res = SWIG_AsVal_double(argv[0], NULL);
-          _v = SWIG_CheckState(res);
-        }
-      }
-      if (!_v) goto check_2;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      {
-        {
-          int res = SWIG_AsVal_double(argv[1], NULL);
-          _v = SWIG_CheckState(res);
-        }
-      }
-      if (!_v) goto check_2;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      {
-        {
-          int res = SWIG_AsVal_double(argv[2], NULL);
-          _v = SWIG_CheckState(res);
-        }
-      }
-      if (!_v) goto check_2;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      {
-        {
-          int res = SWIG_AsVal_double(argv[3], NULL);
-          _v = SWIG_CheckState(res);
-        }
-      }
-      if (!_v) goto check_2;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      if (argc > 4) {
-        {
-          {
-            int res = SWIG_AsVal_double(argv[4], NULL);
-            _v = SWIG_CheckState(res);
-          }
-        }
-        if (!_v) goto check_2;
-        _ranki += _v*_pi;
-        _rankm += _pi;
-        _pi *= SWIG_MAXCASTRANK;
-        if (argc > 5) {
-          {
-            {
-              int res = SWIG_AsVal_double(argv[5], NULL);
-              _v = SWIG_CheckState(res);
-            }
-          }
-          if (!_v) goto check_2;
-          _ranki += _v*_pi;
-          _rankm += _pi;
-          _pi *= SWIG_MAXCASTRANK;
-          if (argc > 6) {
-            {
-              {
-                int res = SWIG_AsVal_double(argv[6], NULL);
-                _v = SWIG_CheckState(res);
-              }
-            }
-            if (!_v) goto check_2;
-            _ranki += _v*_pi;
-            _rankm += _pi;
-            _pi *= SWIG_MAXCASTRANK;
-            if (argc > 7) {
-              {
-                {
-                  int res = SWIG_AsVal_double(argv[7], NULL);
-                  _v = SWIG_CheckState(res);
-                }
-              }
-              if (!_v) goto check_2;
-              _ranki += _v*_pi;
-              _rankm += _pi;
-              _pi *= SWIG_MAXCASTRANK;
-            }
-          }
-        }
-      }
-      if (!_index || (_ranki < _rank)) {
-        _rank = _ranki; _index = 2;
-        if (_rank == _rankm) goto dispatch;
-      }
-    }
-  check_2:
-    
-  dispatch:
-    switch(_index) {
-    case 1:
-      return _wrap_new_Weather__SWIG_0(self, argc, argv);
-    case 2:
-      return _wrap_new_Weather__SWIG_1(self, argc, argv);
-    }
-  }
-  
-fail:
-  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number of arguments for overloaded function 'new_Weather'.\n"
-    "  Possible C/C++ prototypes are:\n"
-    "    cmf::atmosphere::Weather()\n"
-    "    cmf::atmosphere::Weather(double,double,double,double,double,double,double,double)\n");
   return NULL;
 }
 
@@ -69541,11 +69400,10 @@ static PyMethodDef SwigMethods[] = {
 		"daily:  If true, the net radiation for daily averages will be\n"
 		"calculated \n"
 		""},
-	 { (char *)"new_Weather", _wrap_new_Weather, METH_VARARGS, (char *)"\n"
-		"Weather()\n"
-		"new_Weather(double _T, double _Tmax, double _Tmin, double _rH, \n"
-		"    double _wind = 2, double _sunshine = 0.5, double _Rs = 15, \n"
-		"    double _daylength = 12) -> Weather\n"
+	 { (char *)"new_Weather", (PyCFunction) _wrap_new_Weather, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
+		"new_Weather(double T = 15.0, double Tmax = 17.0, double Tmin = 13.0, \n"
+		"    double rH = 70.0, double wind = 2.0, double sunshine = 0.5, \n"
+		"    double Rs = 15, double daylength = 12) -> Weather\n"
 		"\n"
 		"Weather(double _T, double _Tmax, double _Tmin, double _rH, double\n"
 		"_wind=2, double _sunshine=0.5, double _Rs=15, double _daylength=12)\n"
