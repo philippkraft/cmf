@@ -39,7 +39,7 @@ real cmf::atmosphere::IDWRainfall::get_intensity( cmf::math::Time t ) const
 	return res;
 }
 
-real cmf::atmosphere::IDWRainfall::conc( cmf::math::Time t, const cmf::water::solute& Solute )
+real cmf::atmosphere::IDWRainfall::conc( cmf::math::Time t, const cmf::water::solute& Solute ) const
 {
 	double res = 0.0; 
 	// Add each station record, weighted by IDW
