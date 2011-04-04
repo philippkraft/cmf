@@ -20,7 +20,7 @@
 
 
 %{
-	#include "atmosphere/weather.h"
+	#include "atmosphere/Weather.h"
 	#include "atmosphere/meteorology.h"
 	#include "atmosphere/precipitation.h"
 %}
