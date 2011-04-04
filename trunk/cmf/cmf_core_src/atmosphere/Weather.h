@@ -55,14 +55,14 @@ namespace cmf {
 			
 			
 			/// Creates a "weather" from given data
-			/// @param _T        actual Temperature in deg C
-			/// @param _Tmax     daily maximum Temperature in deg C
-			/// @param _Tmin     daily minimum Temperature in deg C
-			/// @param _rH       actual relative humidity in % [0..100]
-			/// @param _wind     actual wind speed in m/s
-			/// @param _sunshine actual fraction of sunshine duration per potential sunshine duration in h/h
-			/// @param _Rs       actual incoming shortwave global radiation in MJ/(m2 day)
-			/// @param _daylength length of the day in h
+			/// @param T        actual Temperature in deg C
+			/// @param Tmax     daily maximum Temperature in deg C
+			/// @param Tmin     daily minimum Temperature in deg C
+			/// @param rH       actual relative humidity in % [0..100]
+			/// @param wind     actual wind speed in m/s
+			/// @param sunshine actual fraction of sunshine duration per potential sunshine duration in h/h
+			/// @param Rs       actual incoming shortwave global radiation in MJ/(m2 day)
+			/// @param daylength length of the day in h
 			Weather(double T=15.0,double Tmax=17.0,double Tmin=13.0, 
 					double rH=70.0, double wind=2.0,
 					double sunshine=0.5,double  Rs=15, double daylength=12);

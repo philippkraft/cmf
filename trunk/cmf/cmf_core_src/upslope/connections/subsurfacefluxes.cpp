@@ -41,7 +41,10 @@ void connections::Richards_lateral::connect_cells( Cell & cell1,Cell & cell2,int
 				}	}	}
 	}
 }
-bool connections::Richards_lateral::baseflow=false;
+bool baseflow=false;
+void connections::Richards_lateral::usebaseflow(bool use) {
+	baseflow = use;
+}
 real connections::Richards_lateral::calc_q( cmf::math::Time t )
 {
 	SoilLayer::ptr 
