@@ -9111,7 +9111,7 @@ other_end:  source of missing water or target of excessive water
 target_state:  State the controlled storage should hold (
 $h_{target}$)
 
-ReactionTime:  Time to reach state ( $t_c$) ";
+reaction_time:  Time to reach state ( $t_c$) ";
 
 %feature("docstring")  cmf::water::statecontrol_connection::q "real
 q(const flux_node &inquirer, cmf::math::Time t)
@@ -11099,22 +11099,22 @@ Creates a \"weather\" from given data
 Parameters:
 -----------
 
-_T:  actual Temperature in deg C
+T:  actual Temperature in deg C
 
-_Tmax:  daily maximum Temperature in deg C
+Tmax:  daily maximum Temperature in deg C
 
-_Tmin:  daily minimum Temperature in deg C
+Tmin:  daily minimum Temperature in deg C
 
-_rH:  actual relative humidity in % [0..100]
+rH:  actual relative humidity in % [0..100]
 
-_wind:  actual wind speed in m/s
+wind:  actual wind speed in m/s
 
-_sunshine:  actual fraction of sunshine duration per potential
-sunshine duration in h/h
+sunshine:  actual fraction of sunshine duration per potential sunshine
+duration in h/h
 
-_Rs:  actual incoming shortwave global radiation in MJ/(m2 day)
+Rs:  actual incoming shortwave global radiation in MJ/(m2 day)
 
-_daylength:  length of the day in h ";
+daylength:  length of the day in h ";
 
 %feature("docstring")  cmf::atmosphere::Weather::to_string "std::string to_string() const
 
@@ -11392,12 +11392,6 @@ boundary condition, providing the potential of the lower node. ";
 
 
 // File: _weather_8h.xml
-
-
-// File: implicitconv_8h.xml
-%feature("docstring")  feature "feature(\"compactdefaultargs\") ";
-
-%feature("docstring")  feature "feature(\"autodoc\",\"1\") ";
 
 
 // File: _e_m_s2011_8dox.xml
@@ -12568,61 +12562,58 @@ real tau) ";
 // File: todo.xml
 
 
-// File: dir_9592ab4aaa0d9c46a819f7f81e09220a.xml
+// File: dir_a34c0a3a997751912cbeeb3f6a2018d4.xml
 
 
-// File: dir_a16da2e77d7736c8ef82aa4fb58f4d7a.xml
+// File: dir_e44d263e82e73e5cd45e66a9d5484f0e.xml
 
 
-// File: dir_98acbbad275b391c1ade88ff097e61c2.xml
+// File: dir_1c689e9749401ee508c4e3b2747d036e.xml
 
 
-// File: dir_8410d30186ae5b9b3ffde0ee7f4d44e7.xml
+// File: dir_35473c2924978da3332cfde17d1d6b99.xml
 
 
-// File: dir_d84f819267443b9d347ca10497bd17cb.xml
+// File: dir_af937d60eb69dba91a5be756eec0a3ea.xml
 
 
-// File: dir_a908fbf2eb3f8c8152fb61ab6347c49b.xml
+// File: dir_074680f4811abdc846d4a1ca8117269b.xml
 
 
-// File: dir_ea86885cf3f09bc8723d5eddb49a3fb1.xml
+// File: dir_6914091710f015cd771e4c69991e0321.xml
 
 
-// File: dir_ffa27a37f48bee51852b2c83f3c1f284.xml
+// File: dir_9ba2403456dedd4364a1ad5ef46b0674.xml
 
 
-// File: dir_ace73d892420b0c6d251d9a3a47aa20d.xml
+// File: dir_881a4b4145393ba5aa926042f2b0ab4d.xml
 
 
-// File: dir_245345c6834d8cbe65c8078f132e59b7.xml
+// File: dir_5ee593482e72b5c4adf127b682cc064b.xml
 
 
-// File: dir_05332baf58e3cdbbe58e637050009c92.xml
+// File: dir_6729183fec5c38381d2b4a165ab87aab.xml
 
 
-// File: dir_cc7bcbd64709af57d5efb77b5a4368ed.xml
+// File: dir_da4bfa092f42b4972ab12dc096d9b871.xml
 
 
-// File: dir_95270cf67a60bfc82738cbf6d50d39ed.xml
+// File: dir_28ca05f8518a347825525f957ad42f18.xml
 
 
-// File: dir_6cd133866fc54d272300a088c612a935.xml
+// File: dir_4f5dd0ddca36aa533ebaad82a6c4b0e2.xml
 
 
-// File: dir_d9ed39cc78657331f4bff01ef7040133.xml
+// File: dir_bbd991016cf40466555088dc9588afdf.xml
 
 
-// File: dir_75334eb6260b9b83ebb793e1e851087c.xml
+// File: dir_7ec89ba203c4709e08ce3f8fa76928c4.xml
 
 
-// File: dir_6133eb82dc0ddcdba471fd038299ba04.xml
+// File: dir_18152b86c6724725c4b0fa1db5a5b7b6.xml
 
 
-// File: dir_006f6fc26db23124fae960566a4f6405.xml
-
-
-// File: dir_031051fb4244b6bc74c5e3edb1f57762.xml
+// File: dir_8b4109f3d59abed5ff481179ab00febc.xml
 
 
 // File: main.xml

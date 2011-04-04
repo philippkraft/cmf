@@ -142,7 +142,7 @@ namespace cmf {
 			/// @param controlled_storage Water storage, to be controlled
 			/// @param other_end source of missing water or target of excessive water
 			/// @param target_state State the controlled storage should hold (\f$h_{target}\f$)
-			/// @param ReactionTime Time to reach state (\f$t_c\f$)
+			/// @param reaction_time Time to reach state (\f$t_c\f$)
 			statecontrol_connection(cmf::water::WaterStorage::ptr controlled_storage, cmf::water::flux_node::ptr other_end, real target_state, cmf::math::Time reaction_time );
 		};
 
