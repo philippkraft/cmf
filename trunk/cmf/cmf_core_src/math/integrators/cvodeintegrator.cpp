@@ -206,3 +206,11 @@ cmf::math::num_array cmf::math::CVodeIntegrator::get_error() const
 
 }
 
+int cmf::math::CVodeIntegrator::get_nonlinear_iterations() const
+{
+	if (cvode_mem) {
+		long result;
+		CVodeGetNumNonlinSolvIters(cvode_mem,*result);
+		return result;
+	}
+}

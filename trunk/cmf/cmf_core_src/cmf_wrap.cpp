@@ -19867,6 +19867,42 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_CVodeIntegrator_get_nonlinear_iterations(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  cmf::math::CVodeIntegrator *arg1 = (cmf::math::CVodeIntegrator *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  int result;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__math__CVodeIntegrator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CVodeIntegrator_get_nonlinear_iterations" "', argument " "1"" of type '" "cmf::math::CVodeIntegrator const *""'"); 
+  }
+  arg1 = reinterpret_cast< cmf::math::CVodeIntegrator * >(argp1);
+  {
+    try {
+      {
+        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
+        result = (int)((cmf::math::CVodeIntegrator const *)arg1)->get_nonlinear_iterations();
+        SWIG_PYTHON_THREAD_END_ALLOW;
+      }
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+    
+  }
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_CVodeIntegrator_copy(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   cmf::math::CVodeIntegrator *arg1 = (cmf::math::CVodeIntegrator *) 0 ;
@@ -68353,6 +68389,7 @@ static PyMethodDef SwigMethods[] = {
 		"\n"
 		"Error vector of the integrator. \n"
 		""},
+	 { (char *)"CVodeIntegrator_get_nonlinear_iterations", (PyCFunction)_wrap_CVodeIntegrator_get_nonlinear_iterations, METH_O, (char *)"CVodeIntegrator_get_nonlinear_iterations(CVodeIntegrator self) -> int"},
 	 { (char *)"CVodeIntegrator_copy", (PyCFunction)_wrap_CVodeIntegrator_copy, METH_O, (char *)"\n"
 		"CVodeIntegrator_copy(CVodeIntegrator self) -> CVodeIntegrator\n"
 		"\n"

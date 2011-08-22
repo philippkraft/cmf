@@ -105,6 +105,9 @@ namespace cmf {
 			/// Error vector of the integrator
 			cmf::math::num_array get_error() const;
 
+			/// Returns the number of non-linear iterations performed. Calls CVodeGetNumNonlinSolvIters
+			int get_nonlinear_iterations() const;
+
 			CVodeIntegrator * copy() const
 			{
 				return new CVodeIntegrator(*this);
