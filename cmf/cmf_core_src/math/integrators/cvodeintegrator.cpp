@@ -210,7 +210,7 @@ int cmf::math::CVodeIntegrator::get_nonlinear_iterations() const
 {
 	if (cvode_mem) {
 		long result;
-		CVodeGetNumNonlinSolvIters(cvode_mem,*result);
+		CVodeGetNumNonlinSolvIters(cvode_mem,&result);
 		return result;
 	}
 }
