@@ -25,13 +25,16 @@ bool cmf::water::can_set_flux( flux_node::ptr source,flux_node::ptr target )
 
 real cmf::water::kinematic_wave::calc_q( cmf::math::Time t )
 {
-	real V= std::max(0.0,source->get_volume()-residual_volume);
-	return pow(V,exponent)/residencetime;
+	real V= std::max(0.0,source->get_volume());
+	return pow(V/V0 - residual,exponent)/residencetime;
 }
 
 
-cmf::water::kinematic_wave::kinematic_wave( WaterStorage::ptr source,flux_node::ptr target,real _traveltime, real _exponent/*=1.0*/, real _residual_volume/*=0.0*/ ) 
-: flux_connection(source,target,"kinematic wave"),residencetime(_traveltime),exponent(_exponent), residual_volume(_residual_volume)
+cmf::water::kinematic_wave::kinematic_wave( WaterStorage::ptr source,flux_node::ptr target,
+											real _traveltime, real _exponent/*=1.0*/,
+											real _residual/*=0.0*/, real _V0 )
+: flux_connection(source,target,"kinematic wave"),residencetime(_traveltime),
+  exponent(_exponent), residual(_residual), V0(_V0)
 {
 	NewNodes();
 }

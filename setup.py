@@ -129,7 +129,11 @@ def make_raster():
                         swig_opts=['-c++','-Wextra','-w512','-w511','-keyword','-castmode','-O','-threads']
                     )
     return raster
+def get_revision():
+    pipe = os.popen('svnversion')
+    return pipe.read().strip()
 if __name__=='__main__':
+    
     ext = [make_raster(),make_cmf_core()]
     author = "Philipp Kraft"
     author_email = "philipp.kraft@umwelt.uni-giessen.de"
@@ -151,7 +155,7 @@ if __name__=='__main__':
     
     now = datetime.datetime.now()
     setup(name='cmf',
-          version='0.3.2',
+          version=get_revision(),
           license='GPL',
           ext_modules=ext,
           py_modules=py, 
