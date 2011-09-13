@@ -73,19 +73,23 @@ namespace cmf {
 		public:
 			/// Linear flow parameter traveltime in days
 			real residencetime;
-			/// Exponent of volume, beta
+			/// Exponent of volume, \f$\beta\f$
 			real exponent;
-			/// residual volume in m3
-			real residual_volume;
+			/// residual fraction \f$f_r\f$ of reference volume V0
+			real residual;
+			/// Reference volume \f$V_0\f$
+			real V0;
 
 			/// Creates a kinematic wave connection.
-			/// \f[ q = \frac {\left(V - V_{residual}\right)^\beta}{t_r} \f]
+			/// \f[ q = \frac {\left(\frac{V}{V_0} - f_{residual}\right)^\beta}{t_r} \f]
 			/// @param source Water storage from which the water flows out. Flux is a function of source.volume
 			/// @param target Target node (boundary condition or storage). Does not influence the strength of the flow
 			/// @param residencetime \f$t_r [days]\f$ The residence time of the water in this storage
 			/// @param exponent \f$\beta [-]\f$ An empirical exponent to shape the flux function (default = 1 (linear function))
-			/// @param residual_volume \f$V_{residual} [m^3]\f$ The volume of water not flowing out (default = 0 m3)
-			kinematic_wave(WaterStorage::ptr source,flux_node::ptr target,real residencetime, real exponent=1.0, real residual_volume=0.0);
+			/// @param residual \f$V_{residual} [m^3]\f$ The volume of water not flowing out (default = 0)
+			/// @param V0 \f$V_0\f$ The reference volume to scale the exponent
+			kinematic_wave(WaterStorage::ptr source,flux_node::ptr target,real residencetime,
+							real exponent=1.0,real residual=0.0,real V0 = 1.0);
 		};
 
 		/// @ingroup connections
