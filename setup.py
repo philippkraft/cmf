@@ -131,7 +131,11 @@ def make_raster():
     return raster
 def get_revision():
     pipe = os.popen('svnversion')
-    return pipe.read().strip()
+    res=pipe.read().strip()
+    if ':' in res:
+        return res.split(':')[0]
+    else:
+        return res
 if __name__=='__main__':
     
     ext = [make_raster(),make_cmf_core()]
