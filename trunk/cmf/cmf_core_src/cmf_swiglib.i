@@ -25,6 +25,10 @@ Included macros:
 %dynptrcast(TYPE,INPUT) 
     Shortcut for dynamic casts to %ptr(TYPE) from INPUT
 
+%shared_attr(owner, name, getter, setter)
+    %attribute surrogate for shared_ptr. Uses Python to create the property and hides the
+    getter / setter function by adding underscores and NOT with %ignore.
+
 %node_downcast(typemaptarget, Types...)
 
 %define %node_downcast_all(Method)
@@ -46,6 +50,23 @@ Included macros:
 
 #define %ptr(Type) SWIG_SHARED_PTR_QNAMESPACE::shared_ptr<Type>
 #define %dynptrcast(Type,input) SWIG_SHARED_PTR_QNAMESPACE::dynamic_pointer_cast<Type>(input) 
+
+%define %shared_attr(owner, owner_short, name, getter, setter...)
+    %rename(__ ## getter) owner::getter;
+    //%ignore owner::getter ;
+    #if #setter==""
+        %extend owner { %pythoncode {
+        name = _swig_property(_cmf_core. ## owner_short ##___## getter)
+        }}
+    #else
+        %rename(__ ## setter) owner::setter;
+        //%ignore owner::setter;
+        %extend owner { %pythoncode {
+        name = _swig_property(_cmf_core. ## owner_short ##___## getter,
+                              _cmf_core. ## owner_short ##___## setter)
+        }}
+    #endif
+%enddef
 
 
 // **********************************************************************************************
