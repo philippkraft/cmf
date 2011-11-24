@@ -60,8 +60,8 @@
 %attribute(cmf::upslope::SoilLayer,real,porosity,get_porosity);
 %attribute(cmf::upslope::SoilLayer,real,ice_fraction,get_ice_fraction,set_ice_fraction);
 
-%attribute(cmf::upslope::SoilLayer,cmf::upslope::SoilLayer::ptr, upper, get_upper);
-%attribute(cmf::upslope::SoilLayer,cmf::upslope::SoilLayer::ptr, lower, get_lower);
+%shared_attr(cmf::upslope::SoilLayer,SoilLayer, upper, get_upper);
+%shared_attr(cmf::upslope::SoilLayer,SoilLayer, lower, get_lower);
 %include "upslope/SoilLayer.h"
 
 

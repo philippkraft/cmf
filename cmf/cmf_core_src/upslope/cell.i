@@ -52,10 +52,10 @@
 %node_downcast(cmf::atmosphere::RainSource::ptr cmf::upslope::Cell::get_rain_source,cmf::atmosphere::RainfallStationReference::ptr,cmf::atmosphere::ConstantRainSource::ptr, cmf::atmosphere::IDWRainfall)
 
 %attribute2(cmf::upslope::Cell,cmf::upslope::Topology,topology,get_topology);
-%attribute(cmf::upslope::Cell,cmf::water::flux_node::ptr,evaporation,get_evaporation);
-%attribute(cmf::upslope::Cell,cmf::water::flux_node::ptr,transpiration,get_transpiration);
+%shared_attr(cmf::upslope::Cell,Cell,evaporation,get_evaporation);
+%shared_attr(cmf::upslope::Cell,Cell,transpiration,get_transpiration);
 %attribute2(cmf::upslope::Cell,cmf::atmosphere::Meteorology,meteorology,get_meteorology,set_meteorology);
-%attribute(cmf::upslope::Cell, cmf::atmosphere::RainSource::ptr,rain_source,get_rain_source,set_rain_source);
+%shared_attr(cmf::upslope::Cell, Cell,rain_source,get_rain_source,set_rain_source);
 %attribute2(cmf::upslope::Cell,cmf::upslope::layer_list,layers,get_layers);
 %attribute2(cmf::upslope::Cell,cmf::project,project,get_project);
 
