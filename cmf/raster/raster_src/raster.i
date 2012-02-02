@@ -45,6 +45,7 @@ from math import *
 %echo "Create templates"
 
 %define %makeraster(TYPE)
+//%template(load_ ## TYPE) load< TYPE >;
 %template(TYPE ## _raster) Raster< TYPE >;
 %extend Raster< TYPE > {
 	Raster< TYPE > __radd__(const TYPE & other) {
@@ -60,7 +61,9 @@ from math import *
 		return other / (*$self);
 	}
 }
+
 %enddef
+
 %makeraster(double)
 %makeraster(float)
 %makeraster(int)
@@ -115,10 +118,10 @@ from math import *
             if (raster):
                 self.raster=raster
                 return
-            if (dtype in ["f","f8"]):
+            if (dtype in ["f","f8","d"]):
                 rtype=double_raster
-            elif (dtype in ["s","f4"]):
-                rtype=single_raster
+            elif (dtype in ["s","f4","r"]):
+                rtype=float_raster
             elif (dtype in ["i","i4"]):
                 rtype=int_raster
             else:

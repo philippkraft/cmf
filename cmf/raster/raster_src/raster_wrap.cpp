@@ -9,10 +9,7 @@
  * ----------------------------------------------------------------------------- */
 
 #define SWIGPYTHON
-#define SWIG_PYTHON_NO_BUILD_NONE
 #define SWIG_PYTHON_DIRECTOR_NO_VTABLE
-#define SWIG_CASTRANK_MODE
-#define SWIG_PYTHON_CAST_MODE
 #define SWIGPYTHON_BUILTIN
 
 
@@ -3471,19 +3468,6 @@ static swig_module_info swig_module = {swig_types, 12, 0, 0, 0, 0};
 #  error "This python version requires swig to be run with the '-classic' option"
 # endif
 #endif
-#if (PY_VERSION_HEX <= 0x02020000)
-# error "This python version requires swig to be run with the '-nomodern' option"
-#endif
-#if (PY_VERSION_HEX <= 0x02020000)
-# error "This python version requires swig to be run with the '-nomodernargs' option"
-#endif
-#ifndef METH_O
-# error "This python version requires swig to be run with the '-nofastunpack' option"
-#endif
-#ifdef SWIG_TypeQuery
-# undef SWIG_TypeQuery
-#endif
-#define SWIG_TypeQuery SWIG_Python_TypeQuery
 
 /*-----------------------------------------------
               @(target):= _raster.so
@@ -4038,16 +4022,15 @@ SWIGINTERN PyObject *_wrap_RasterStatistics_min_set(PyObject *self, PyObject *ar
   int res1 = 0 ;
   double val2 ;
   int ecode2 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj1 = 0 ;
   
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
+  if (!PyArg_ParseTuple(args,(char *)"O:RasterStatistics_min_set",&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterStatistics, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RasterStatistics_min_set" "', argument " "1"" of type '" "RasterStatistics *""'"); 
   }
   arg1 = reinterpret_cast< RasterStatistics * >(argp1);
-  ecode2 = SWIG_AsVal_double(swig_obj[0], &val2);
+  ecode2 = SWIG_AsVal_double(obj1, &val2);
   if (!SWIG_IsOK(ecode2)) {
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "RasterStatistics_min_set" "', argument " "2"" of type '" "double""'");
   } 
@@ -4065,10 +4048,9 @@ SWIGINTERN PyObject *_wrap_RasterStatistics_min_get(PyObject *self, PyObject *ar
   RasterStatistics *arg1 = (RasterStatistics *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[1] ;
   double result;
   
-  if (!SWIG_Python_UnpackTuple(args,"RasterStatistics_min_get",0,0,0)) SWIG_fail;
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterStatistics, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RasterStatistics_min_get" "', argument " "1"" of type '" "RasterStatistics *""'"); 
@@ -4090,16 +4072,15 @@ SWIGINTERN PyObject *_wrap_RasterStatistics_max_set(PyObject *self, PyObject *ar
   int res1 = 0 ;
   double val2 ;
   int ecode2 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj1 = 0 ;
   
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
+  if (!PyArg_ParseTuple(args,(char *)"O:RasterStatistics_max_set",&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterStatistics, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RasterStatistics_max_set" "', argument " "1"" of type '" "RasterStatistics *""'"); 
   }
   arg1 = reinterpret_cast< RasterStatistics * >(argp1);
-  ecode2 = SWIG_AsVal_double(swig_obj[0], &val2);
+  ecode2 = SWIG_AsVal_double(obj1, &val2);
   if (!SWIG_IsOK(ecode2)) {
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "RasterStatistics_max_set" "', argument " "2"" of type '" "double""'");
   } 
@@ -4117,10 +4098,9 @@ SWIGINTERN PyObject *_wrap_RasterStatistics_max_get(PyObject *self, PyObject *ar
   RasterStatistics *arg1 = (RasterStatistics *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[1] ;
   double result;
   
-  if (!SWIG_Python_UnpackTuple(args,"RasterStatistics_max_get",0,0,0)) SWIG_fail;
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterStatistics, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RasterStatistics_max_get" "', argument " "1"" of type '" "RasterStatistics *""'"); 
@@ -4142,16 +4122,15 @@ SWIGINTERN PyObject *_wrap_RasterStatistics_mean_set(PyObject *self, PyObject *a
   int res1 = 0 ;
   double val2 ;
   int ecode2 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj1 = 0 ;
   
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
+  if (!PyArg_ParseTuple(args,(char *)"O:RasterStatistics_mean_set",&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterStatistics, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RasterStatistics_mean_set" "', argument " "1"" of type '" "RasterStatistics *""'"); 
   }
   arg1 = reinterpret_cast< RasterStatistics * >(argp1);
-  ecode2 = SWIG_AsVal_double(swig_obj[0], &val2);
+  ecode2 = SWIG_AsVal_double(obj1, &val2);
   if (!SWIG_IsOK(ecode2)) {
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "RasterStatistics_mean_set" "', argument " "2"" of type '" "double""'");
   } 
@@ -4169,10 +4148,9 @@ SWIGINTERN PyObject *_wrap_RasterStatistics_mean_get(PyObject *self, PyObject *a
   RasterStatistics *arg1 = (RasterStatistics *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[1] ;
   double result;
   
-  if (!SWIG_Python_UnpackTuple(args,"RasterStatistics_mean_get",0,0,0)) SWIG_fail;
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterStatistics, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RasterStatistics_mean_get" "', argument " "1"" of type '" "RasterStatistics *""'"); 
@@ -4194,16 +4172,15 @@ SWIGINTERN PyObject *_wrap_RasterStatistics_stdev_set(PyObject *self, PyObject *
   int res1 = 0 ;
   double val2 ;
   int ecode2 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj1 = 0 ;
   
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
+  if (!PyArg_ParseTuple(args,(char *)"O:RasterStatistics_stdev_set",&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterStatistics, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RasterStatistics_stdev_set" "', argument " "1"" of type '" "RasterStatistics *""'"); 
   }
   arg1 = reinterpret_cast< RasterStatistics * >(argp1);
-  ecode2 = SWIG_AsVal_double(swig_obj[0], &val2);
+  ecode2 = SWIG_AsVal_double(obj1, &val2);
   if (!SWIG_IsOK(ecode2)) {
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "RasterStatistics_stdev_set" "', argument " "2"" of type '" "double""'");
   } 
@@ -4221,10 +4198,9 @@ SWIGINTERN PyObject *_wrap_RasterStatistics_stdev_get(PyObject *self, PyObject *
   RasterStatistics *arg1 = (RasterStatistics *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[1] ;
   double result;
   
-  if (!SWIG_Python_UnpackTuple(args,"RasterStatistics_stdev_get",0,0,0)) SWIG_fail;
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterStatistics, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RasterStatistics_stdev_get" "', argument " "1"" of type '" "RasterStatistics *""'"); 
@@ -4246,16 +4222,15 @@ SWIGINTERN PyObject *_wrap_RasterStatistics_count_set(PyObject *self, PyObject *
   int res1 = 0 ;
   size_t val2 ;
   int ecode2 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj1 = 0 ;
   
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
+  if (!PyArg_ParseTuple(args,(char *)"O:RasterStatistics_count_set",&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterStatistics, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RasterStatistics_count_set" "', argument " "1"" of type '" "RasterStatistics *""'"); 
   }
   arg1 = reinterpret_cast< RasterStatistics * >(argp1);
-  ecode2 = SWIG_AsVal_size_t(swig_obj[0], &val2);
+  ecode2 = SWIG_AsVal_size_t(obj1, &val2);
   if (!SWIG_IsOK(ecode2)) {
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "RasterStatistics_count_set" "', argument " "2"" of type '" "size_t""'");
   } 
@@ -4273,10 +4248,9 @@ SWIGINTERN PyObject *_wrap_RasterStatistics_count_get(PyObject *self, PyObject *
   RasterStatistics *arg1 = (RasterStatistics *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[1] ;
   size_t result;
   
-  if (!SWIG_Python_UnpackTuple(args,"RasterStatistics_count_get",0,0,0)) SWIG_fail;
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterStatistics, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RasterStatistics_count_get" "', argument " "1"" of type '" "RasterStatistics *""'"); 
@@ -4294,7 +4268,7 @@ SWIGINTERN int _wrap_new_RasterStatistics(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   RasterStatistics *result = 0 ;
   
-  if (!SWIG_Python_UnpackTuple(args,"new_RasterStatistics",0,0,0)) SWIG_fail;
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
   {
     try {
       result = (RasterStatistics *)new RasterStatistics();
@@ -4318,9 +4292,8 @@ SWIGINTERN PyObject *_wrap_delete_RasterStatistics(PyObject *self, PyObject *arg
   RasterStatistics *arg1 = (RasterStatistics *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[1] ;
   
-  if (!SWIG_Python_UnpackTuple(args,"delete_RasterStatistics",0,0,0)) SWIG_fail;
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterStatistics, SWIG_POINTER_DISOWN |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_RasterStatistics" "', argument " "1"" of type '" "RasterStatistics *""'"); 
@@ -4349,10 +4322,9 @@ SWIGINTERN PyObject *_wrap_Histogram_min(PyObject *self, PyObject *args) {
   Histogram *arg1 = (Histogram *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[1] ;
   double result;
   
-  if (!SWIG_Python_UnpackTuple(args,"Histogram_min",0,0,0)) SWIG_fail;
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_Histogram, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Histogram_min" "', argument " "1"" of type '" "Histogram const *""'"); 
@@ -4381,10 +4353,9 @@ SWIGINTERN PyObject *_wrap_Histogram_max(PyObject *self, PyObject *args) {
   Histogram *arg1 = (Histogram *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[1] ;
   double result;
   
-  if (!SWIG_Python_UnpackTuple(args,"Histogram_max",0,0,0)) SWIG_fail;
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_Histogram, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Histogram_max" "', argument " "1"" of type '" "Histogram const *""'"); 
@@ -4413,10 +4384,9 @@ SWIGINTERN PyObject *_wrap_Histogram_barwidth(PyObject *self, PyObject *args) {
   Histogram *arg1 = (Histogram *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[1] ;
   double result;
   
-  if (!SWIG_Python_UnpackTuple(args,"Histogram_barwidth",0,0,0)) SWIG_fail;
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_Histogram, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Histogram_barwidth" "', argument " "1"" of type '" "Histogram const *""'"); 
@@ -4445,10 +4415,9 @@ SWIGINTERN PyObject *_wrap_Histogram_size(PyObject *self, PyObject *args) {
   Histogram *arg1 = (Histogram *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[1] ;
   int result;
   
-  if (!SWIG_Python_UnpackTuple(args,"Histogram_size",0,0,0)) SWIG_fail;
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_Histogram, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Histogram_size" "', argument " "1"" of type '" "Histogram const *""'"); 
@@ -4472,33 +4441,28 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Histogram_sum(PyObject *self, PyObject *args, PyObject *kwargs) {
+SWIGINTERN PyObject *_wrap_Histogram_sum__SWIG_0(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   Histogram *arg1 = (Histogram *) 0 ;
-  double arg2 = (double) 1e308 ;
+  double arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   double val2 ;
   int ecode2 = 0 ;
   PyObject * obj1 = 0 ;
-  char *  kwnames[] = {
-    (char *) "until", NULL 
-  };
   int result;
   
-  if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"|O:Histogram_sum",kwnames,&obj1)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"O:Histogram_sum",&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_Histogram, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Histogram_sum" "', argument " "1"" of type '" "Histogram const *""'"); 
   }
   arg1 = reinterpret_cast< Histogram * >(argp1);
-  if (obj1) {
-    ecode2 = SWIG_AsVal_double(obj1, &val2);
-    if (!SWIG_IsOK(ecode2)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Histogram_sum" "', argument " "2"" of type '" "double""'");
-    } 
-    arg2 = static_cast< double >(val2);
-  }
+  ecode2 = SWIG_AsVal_double(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Histogram_sum" "', argument " "2"" of type '" "double""'");
+  } 
+  arg2 = static_cast< double >(val2);
   {
     try {
       result = (int)((Histogram const *)arg1)->sum(arg2);
@@ -4517,7 +4481,84 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Histogram_frequency__SWIG_0(PyObject *self, int nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_Histogram_sum__SWIG_1(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  Histogram *arg1 = (Histogram *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int result;
+  
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_Histogram, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Histogram_sum" "', argument " "1"" of type '" "Histogram const *""'"); 
+  }
+  arg1 = reinterpret_cast< Histogram * >(argp1);
+  {
+    try {
+      result = (int)((Histogram const *)arg1)->sum();
+    } 
+    catch (std::runtime_error& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what() );
+    }
+    catch (std::exception& e) {
+      SWIG_exception(SWIG_UnknownError, e.what());
+    }
+  }
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Histogram_sum(PyObject *self, PyObject *args) {
+  int argc;
+  PyObject *argv[3];
+  int ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? (int)PyObject_Length(args) : 0;
+  argv[0] = self;
+  for (ii = 0; (ii < 1) && (ii < argc); ii++) {
+    argv[ii + 1] = PyTuple_GET_ITEM(args,ii);
+  }
+  argc++;
+  if (argc == 1) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_Histogram, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_Histogram_sum__SWIG_1(self, args);
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_Histogram, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        int res = SWIG_AsVal_double(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        return _wrap_Histogram_sum__SWIG_0(self, args);
+      }
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'Histogram_sum'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    Histogram::sum(double) const\n"
+    "    Histogram::sum() const\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_Histogram_frequency__SWIG_0(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   Histogram *arg1 = (Histogram *) 0 ;
   double arg2 ;
@@ -4525,15 +4566,16 @@ SWIGINTERN PyObject *_wrap_Histogram_frequency__SWIG_0(PyObject *self, int nobjs
   int res1 = 0 ;
   double val2 ;
   int ecode2 = 0 ;
+  PyObject * obj1 = 0 ;
   int result;
   
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"O:Histogram_frequency",&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_Histogram, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Histogram_frequency" "', argument " "1"" of type '" "Histogram const *""'"); 
   }
   arg1 = reinterpret_cast< Histogram * >(argp1);
-  ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
+  ecode2 = SWIG_AsVal_double(obj1, &val2);
   if (!SWIG_IsOK(ecode2)) {
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Histogram_frequency" "', argument " "2"" of type '" "double""'");
   } 
@@ -4556,7 +4598,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Histogram_relfrequency__SWIG_0(PyObject *self, int nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_Histogram_relfrequency__SWIG_0(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   Histogram *arg1 = (Histogram *) 0 ;
   double arg2 ;
@@ -4564,15 +4606,16 @@ SWIGINTERN PyObject *_wrap_Histogram_relfrequency__SWIG_0(PyObject *self, int no
   int res1 = 0 ;
   double val2 ;
   int ecode2 = 0 ;
+  PyObject * obj1 = 0 ;
   double result;
   
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"O:Histogram_relfrequency",&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_Histogram, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Histogram_relfrequency" "', argument " "1"" of type '" "Histogram const *""'"); 
   }
   arg1 = reinterpret_cast< Histogram * >(argp1);
-  ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
+  ecode2 = SWIG_AsVal_double(obj1, &val2);
   if (!SWIG_IsOK(ecode2)) {
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Histogram_relfrequency" "', argument " "2"" of type '" "double""'");
   } 
@@ -4595,7 +4638,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Histogram_frequency__SWIG_1(PyObject *self, int nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_Histogram_frequency__SWIG_1(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   Histogram *arg1 = (Histogram *) 0 ;
   int arg2 ;
@@ -4603,15 +4646,16 @@ SWIGINTERN PyObject *_wrap_Histogram_frequency__SWIG_1(PyObject *self, int nobjs
   int res1 = 0 ;
   int val2 ;
   int ecode2 = 0 ;
+  PyObject * obj1 = 0 ;
   int result;
   
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"O:Histogram_frequency",&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_Histogram, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Histogram_frequency" "', argument " "1"" of type '" "Histogram const *""'"); 
   }
   arg1 = reinterpret_cast< Histogram * >(argp1);
-  ecode2 = SWIG_AsVal_int(swig_obj[1], &val2);
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
   if (!SWIG_IsOK(ecode2)) {
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Histogram_frequency" "', argument " "2"" of type '" "int""'");
   } 
@@ -4637,80 +4681,43 @@ fail:
 SWIGINTERN PyObject *_wrap_Histogram_frequency(PyObject *self, PyObject *args) {
   int argc;
   PyObject *argv[3];
+  int ii;
   
-  if (!(argc = SWIG_Python_UnpackTuple(args,"Histogram_frequency",0,2,argv+1))) SWIG_fail;
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? (int)PyObject_Length(args) : 0;
   argv[0] = self;
-  {
-    unsigned long _index = 0;
-    SWIG_TypeRank _rank = 0; 
-    if (argc == 2) {
-      SWIG_TypeRank _ranki = 0;
-      SWIG_TypeRank _rankm = 0;
-      SWIG_TypeRank _pi = 1;
-      int _v = 0;
+  for (ii = 0; (ii < 1) && (ii < argc); ii++) {
+    argv[ii + 1] = PyTuple_GET_ITEM(args,ii);
+  }
+  argc++;
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_Histogram, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
       {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_Histogram, 0);
+        int res = SWIG_AsVal_int(argv[1], NULL);
         _v = SWIG_CheckState(res);
       }
-      if (!_v) goto check_1;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      {
-        {
-          int res = SWIG_AsVal_int(argv[1], NULL);
-          _v = SWIG_CheckState(res);
-        }
-      }
-      if (!_v) goto check_1;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      if (!_index || (_ranki < _rank)) {
-        _rank = _ranki; _index = 1;
-        if (_rank == _rankm) goto dispatch;
+      if (_v) {
+        return _wrap_Histogram_frequency__SWIG_1(self, args);
       }
     }
-  check_1:
-    
-    if (argc == 2) {
-      SWIG_TypeRank _ranki = 0;
-      SWIG_TypeRank _rankm = 0;
-      SWIG_TypeRank _pi = 1;
-      int _v = 0;
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_Histogram, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
       {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_Histogram, 0);
+        int res = SWIG_AsVal_double(argv[1], NULL);
         _v = SWIG_CheckState(res);
       }
-      if (!_v) goto check_2;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      {
-        {
-          int res = SWIG_AsVal_double(argv[1], NULL);
-          _v = SWIG_CheckState(res);
-        }
+      if (_v) {
+        return _wrap_Histogram_frequency__SWIG_0(self, args);
       }
-      if (!_v) goto check_2;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      if (!_index || (_ranki < _rank)) {
-        _rank = _ranki; _index = 2;
-        if (_rank == _rankm) goto dispatch;
-      }
-    }
-  check_2:
-    
-  dispatch:
-    switch(_index) {
-    case 1:
-      return _wrap_Histogram_frequency__SWIG_1(self, argc, argv);
-    case 2:
-      return _wrap_Histogram_frequency__SWIG_0(self, argc, argv);
     }
   }
   
@@ -4723,7 +4730,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Histogram_relfrequency__SWIG_1(PyObject *self, int nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_Histogram_relfrequency__SWIG_1(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   Histogram *arg1 = (Histogram *) 0 ;
   int arg2 ;
@@ -4731,15 +4738,16 @@ SWIGINTERN PyObject *_wrap_Histogram_relfrequency__SWIG_1(PyObject *self, int no
   int res1 = 0 ;
   int val2 ;
   int ecode2 = 0 ;
+  PyObject * obj1 = 0 ;
   double result;
   
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"O:Histogram_relfrequency",&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_Histogram, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Histogram_relfrequency" "', argument " "1"" of type '" "Histogram const *""'"); 
   }
   arg1 = reinterpret_cast< Histogram * >(argp1);
-  ecode2 = SWIG_AsVal_int(swig_obj[1], &val2);
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
   if (!SWIG_IsOK(ecode2)) {
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Histogram_relfrequency" "', argument " "2"" of type '" "int""'");
   } 
@@ -4765,80 +4773,43 @@ fail:
 SWIGINTERN PyObject *_wrap_Histogram_relfrequency(PyObject *self, PyObject *args) {
   int argc;
   PyObject *argv[3];
+  int ii;
   
-  if (!(argc = SWIG_Python_UnpackTuple(args,"Histogram_relfrequency",0,2,argv+1))) SWIG_fail;
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? (int)PyObject_Length(args) : 0;
   argv[0] = self;
-  {
-    unsigned long _index = 0;
-    SWIG_TypeRank _rank = 0; 
-    if (argc == 2) {
-      SWIG_TypeRank _ranki = 0;
-      SWIG_TypeRank _rankm = 0;
-      SWIG_TypeRank _pi = 1;
-      int _v = 0;
+  for (ii = 0; (ii < 1) && (ii < argc); ii++) {
+    argv[ii + 1] = PyTuple_GET_ITEM(args,ii);
+  }
+  argc++;
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_Histogram, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
       {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_Histogram, 0);
+        int res = SWIG_AsVal_int(argv[1], NULL);
         _v = SWIG_CheckState(res);
       }
-      if (!_v) goto check_1;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      {
-        {
-          int res = SWIG_AsVal_int(argv[1], NULL);
-          _v = SWIG_CheckState(res);
-        }
-      }
-      if (!_v) goto check_1;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      if (!_index || (_ranki < _rank)) {
-        _rank = _ranki; _index = 1;
-        if (_rank == _rankm) goto dispatch;
+      if (_v) {
+        return _wrap_Histogram_relfrequency__SWIG_1(self, args);
       }
     }
-  check_1:
-    
-    if (argc == 2) {
-      SWIG_TypeRank _ranki = 0;
-      SWIG_TypeRank _rankm = 0;
-      SWIG_TypeRank _pi = 1;
-      int _v = 0;
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_Histogram, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
       {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_Histogram, 0);
+        int res = SWIG_AsVal_double(argv[1], NULL);
         _v = SWIG_CheckState(res);
       }
-      if (!_v) goto check_2;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      {
-        {
-          int res = SWIG_AsVal_double(argv[1], NULL);
-          _v = SWIG_CheckState(res);
-        }
+      if (_v) {
+        return _wrap_Histogram_relfrequency__SWIG_0(self, args);
       }
-      if (!_v) goto check_2;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      if (!_index || (_ranki < _rank)) {
-        _rank = _ranki; _index = 2;
-        if (_rank == _rankm) goto dispatch;
-      }
-    }
-  check_2:
-    
-  dispatch:
-    switch(_index) {
-    case 1:
-      return _wrap_Histogram_relfrequency__SWIG_1(self, argc, argv);
-    case 2:
-      return _wrap_Histogram_relfrequency__SWIG_0(self, argc, argv);
     }
   }
   
@@ -4851,7 +4822,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Histogram_pos(PyObject *self, PyObject *args, PyObject *kwargs) {
+SWIGINTERN PyObject *_wrap_Histogram_pos(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   Histogram *arg1 = (Histogram *) 0 ;
   double arg2 ;
@@ -4860,12 +4831,9 @@ SWIGINTERN PyObject *_wrap_Histogram_pos(PyObject *self, PyObject *args, PyObjec
   double val2 ;
   int ecode2 = 0 ;
   PyObject * obj1 = 0 ;
-  char *  kwnames[] = {
-    (char *) "val", NULL 
-  };
   int result;
   
-  if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"O:Histogram_pos",kwnames,&obj1)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"O:Histogram_pos",&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_Histogram, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Histogram_pos" "', argument " "1"" of type '" "Histogram const *""'"); 
@@ -4894,7 +4862,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Histogram_barcenter(PyObject *self, PyObject *args, PyObject *kwargs) {
+SWIGINTERN PyObject *_wrap_Histogram_barcenter(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   Histogram *arg1 = (Histogram *) 0 ;
   double arg2 ;
@@ -4903,12 +4871,9 @@ SWIGINTERN PyObject *_wrap_Histogram_barcenter(PyObject *self, PyObject *args, P
   double val2 ;
   int ecode2 = 0 ;
   PyObject * obj1 = 0 ;
-  char *  kwnames[] = {
-    (char *) "pos", NULL 
-  };
   double result;
   
-  if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"O:Histogram_barcenter",kwnames,&obj1)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"O:Histogram_barcenter",&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_Histogram, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Histogram_barcenter" "', argument " "1"" of type '" "Histogram const *""'"); 
@@ -4937,33 +4902,28 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Histogram_quantile(PyObject *self, PyObject *args, PyObject *kwargs) {
+SWIGINTERN PyObject *_wrap_Histogram_quantile__SWIG_0(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   Histogram *arg1 = (Histogram *) 0 ;
-  double arg2 = (double) 0.5 ;
+  double arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   double val2 ;
   int ecode2 = 0 ;
   PyObject * obj1 = 0 ;
-  char *  kwnames[] = {
-    (char *) "Quantile", NULL 
-  };
   double result;
   
-  if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"|O:Histogram_quantile",kwnames,&obj1)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"O:Histogram_quantile",&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_Histogram, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Histogram_quantile" "', argument " "1"" of type '" "Histogram const *""'"); 
   }
   arg1 = reinterpret_cast< Histogram * >(argp1);
-  if (obj1) {
-    ecode2 = SWIG_AsVal_double(obj1, &val2);
-    if (!SWIG_IsOK(ecode2)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Histogram_quantile" "', argument " "2"" of type '" "double""'");
-    } 
-    arg2 = static_cast< double >(val2);
-  }
+  ecode2 = SWIG_AsVal_double(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Histogram_quantile" "', argument " "2"" of type '" "double""'");
+  } 
+  arg2 = static_cast< double >(val2);
   {
     try {
       result = (double)((Histogram const *)arg1)->quantile(arg2);
@@ -4982,7 +4942,84 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Histogram_CountValue(PyObject *self, PyObject *args, PyObject *kwargs) {
+SWIGINTERN PyObject *_wrap_Histogram_quantile__SWIG_1(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  Histogram *arg1 = (Histogram *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  double result;
+  
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_Histogram, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Histogram_quantile" "', argument " "1"" of type '" "Histogram const *""'"); 
+  }
+  arg1 = reinterpret_cast< Histogram * >(argp1);
+  {
+    try {
+      result = (double)((Histogram const *)arg1)->quantile();
+    } 
+    catch (std::runtime_error& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what() );
+    }
+    catch (std::exception& e) {
+      SWIG_exception(SWIG_UnknownError, e.what());
+    }
+  }
+  resultobj = SWIG_From_double(static_cast< double >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Histogram_quantile(PyObject *self, PyObject *args) {
+  int argc;
+  PyObject *argv[3];
+  int ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? (int)PyObject_Length(args) : 0;
+  argv[0] = self;
+  for (ii = 0; (ii < 1) && (ii < argc); ii++) {
+    argv[ii + 1] = PyTuple_GET_ITEM(args,ii);
+  }
+  argc++;
+  if (argc == 1) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_Histogram, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_Histogram_quantile__SWIG_1(self, args);
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_Histogram, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        int res = SWIG_AsVal_double(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        return _wrap_Histogram_quantile__SWIG_0(self, args);
+      }
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'Histogram_quantile'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    Histogram::quantile(double) const\n"
+    "    Histogram::quantile() const\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_Histogram_CountValue(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   Histogram *arg1 = (Histogram *) 0 ;
   double arg2 ;
@@ -4991,11 +5028,8 @@ SWIGINTERN PyObject *_wrap_Histogram_CountValue(PyObject *self, PyObject *args, 
   double val2 ;
   int ecode2 = 0 ;
   PyObject * obj1 = 0 ;
-  char *  kwnames[] = {
-    (char *) "val", NULL 
-  };
   
-  if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"O:Histogram_CountValue",kwnames,&obj1)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"O:Histogram_CountValue",&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_Histogram, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Histogram_CountValue" "', argument " "1"" of type '" "Histogram *""'"); 
@@ -5024,7 +5058,7 @@ fail:
 }
 
 
-SWIGINTERN int _wrap_new_Histogram__SWIG_0(PyObject *self, int nobjs, PyObject **swig_obj) {
+SWIGINTERN int _wrap_new_Histogram__SWIG_0(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   double arg1 ;
   double arg2 ;
@@ -5035,20 +5069,23 @@ SWIGINTERN int _wrap_new_Histogram__SWIG_0(PyObject *self, int nobjs, PyObject *
   int ecode2 = 0 ;
   double val3 ;
   int ecode3 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
   Histogram *result = 0 ;
   
-  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
-  ecode1 = SWIG_AsVal_double(swig_obj[0], &val1);
+  if (!PyArg_ParseTuple(args,(char *)"OOO:new_Histogram",&obj1,&obj2,&obj3)) SWIG_fail;
+  ecode1 = SWIG_AsVal_double(obj1, &val1);
   if (!SWIG_IsOK(ecode1)) {
     SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "new_Histogram" "', argument " "1"" of type '" "double""'");
   } 
   arg1 = static_cast< double >(val1);
-  ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
+  ecode2 = SWIG_AsVal_double(obj2, &val2);
   if (!SWIG_IsOK(ecode2)) {
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "new_Histogram" "', argument " "2"" of type '" "double""'");
   } 
   arg2 = static_cast< double >(val2);
-  ecode3 = SWIG_AsVal_double(swig_obj[2], &val3);
+  ecode3 = SWIG_AsVal_double(obj3, &val3);
   if (!SWIG_IsOK(ecode3)) {
     SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "new_Histogram" "', argument " "3"" of type '" "double""'");
   } 
@@ -5071,7 +5108,7 @@ fail:
 }
 
 
-SWIGINTERN int _wrap_new_Histogram__SWIG_1(PyObject *self, int nobjs, PyObject **swig_obj) {
+SWIGINTERN int _wrap_new_Histogram__SWIG_1(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   double arg1 ;
   double arg2 ;
@@ -5082,20 +5119,23 @@ SWIGINTERN int _wrap_new_Histogram__SWIG_1(PyObject *self, int nobjs, PyObject *
   int ecode2 = 0 ;
   size_t val3 ;
   int ecode3 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
   Histogram *result = 0 ;
   
-  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
-  ecode1 = SWIG_AsVal_double(swig_obj[0], &val1);
+  if (!PyArg_ParseTuple(args,(char *)"OOO:new_Histogram",&obj1,&obj2,&obj3)) SWIG_fail;
+  ecode1 = SWIG_AsVal_double(obj1, &val1);
   if (!SWIG_IsOK(ecode1)) {
     SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "new_Histogram" "', argument " "1"" of type '" "double""'");
   } 
   arg1 = static_cast< double >(val1);
-  ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
+  ecode2 = SWIG_AsVal_double(obj2, &val2);
   if (!SWIG_IsOK(ecode2)) {
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "new_Histogram" "', argument " "2"" of type '" "double""'");
   } 
   arg2 = static_cast< double >(val2);
-  ecode3 = SWIG_AsVal_size_t(swig_obj[2], &val3);
+  ecode3 = SWIG_AsVal_size_t(obj3, &val3);
   if (!SWIG_IsOK(ecode3)) {
     SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "new_Histogram" "', argument " "3"" of type '" "size_t""'");
   } 
@@ -5121,102 +5161,55 @@ fail:
 SWIGINTERN int _wrap_new_Histogram(PyObject *self, PyObject *args) {
   int argc;
   PyObject *argv[4];
+  int ii;
   
-  if (!(argc = SWIG_Python_UnpackTuple(args,"new_Histogram",0,3,argv))) SWIG_fail;
-  --argc;
-  {
-    unsigned long _index = 0;
-    SWIG_TypeRank _rank = 0; 
-    if (argc == 3) {
-      SWIG_TypeRank _ranki = 0;
-      SWIG_TypeRank _rankm = 0;
-      SWIG_TypeRank _pi = 1;
-      int _v = 0;
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? (int)PyObject_Length(args) : 0;
+  for (ii = 0; (ii < 3) && (ii < argc); ii++) {
+    argv[ii] = PyTuple_GET_ITEM(args,ii);
+  }
+  if (argc == 3) {
+    int _v;
+    {
+      int res = SWIG_AsVal_double(argv[0], NULL);
+      _v = SWIG_CheckState(res);
+    }
+    if (_v) {
       {
-        {
-          int res = SWIG_AsVal_double(argv[0], NULL);
-          _v = SWIG_CheckState(res);
-        }
+        int res = SWIG_AsVal_double(argv[1], NULL);
+        _v = SWIG_CheckState(res);
       }
-      if (!_v) goto check_1;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      {
-        {
-          int res = SWIG_AsVal_double(argv[1], NULL);
-          _v = SWIG_CheckState(res);
-        }
-      }
-      if (!_v) goto check_1;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      {
+      if (_v) {
         {
           int res = SWIG_AsVal_size_t(argv[2], NULL);
           _v = SWIG_CheckState(res);
         }
-      }
-      if (!_v) goto check_1;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      if (!_index || (_ranki < _rank)) {
-        _rank = _ranki; _index = 1;
-        if (_rank == _rankm) goto dispatch;
+        if (_v) {
+          return _wrap_new_Histogram__SWIG_1(self, args);
+        }
       }
     }
-  check_1:
-    
-    if (argc == 3) {
-      SWIG_TypeRank _ranki = 0;
-      SWIG_TypeRank _rankm = 0;
-      SWIG_TypeRank _pi = 1;
-      int _v = 0;
+  }
+  if (argc == 3) {
+    int _v;
+    {
+      int res = SWIG_AsVal_double(argv[0], NULL);
+      _v = SWIG_CheckState(res);
+    }
+    if (_v) {
       {
-        {
-          int res = SWIG_AsVal_double(argv[0], NULL);
-          _v = SWIG_CheckState(res);
-        }
+        int res = SWIG_AsVal_double(argv[1], NULL);
+        _v = SWIG_CheckState(res);
       }
-      if (!_v) goto check_2;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      {
-        {
-          int res = SWIG_AsVal_double(argv[1], NULL);
-          _v = SWIG_CheckState(res);
-        }
-      }
-      if (!_v) goto check_2;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      {
+      if (_v) {
         {
           int res = SWIG_AsVal_double(argv[2], NULL);
           _v = SWIG_CheckState(res);
         }
+        if (_v) {
+          return _wrap_new_Histogram__SWIG_0(self, args);
+        }
       }
-      if (!_v) goto check_2;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      if (!_index || (_ranki < _rank)) {
-        _rank = _ranki; _index = 2;
-        if (_rank == _rankm) goto dispatch;
-      }
-    }
-  check_2:
-    
-  dispatch:
-    switch(_index) {
-    case 1:
-      return _wrap_new_Histogram__SWIG_1(self, argc, argv);
-    case 2:
-      return _wrap_new_Histogram__SWIG_0(self, argc, argv);
     }
   }
   
@@ -5234,9 +5227,8 @@ SWIGINTERN PyObject *_wrap_delete_Histogram(PyObject *self, PyObject *args) {
   Histogram *arg1 = (Histogram *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[1] ;
   
-  if (!SWIG_Python_UnpackTuple(args,"delete_Histogram",0,0,0)) SWIG_fail;
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_Histogram, SWIG_POINTER_DISOWN |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_Histogram" "', argument " "1"" of type '" "Histogram *""'"); 
@@ -5265,10 +5257,9 @@ SWIGINTERN PyObject *_wrap_double_raster_Xllcorner(PyObject *self, PyObject *arg
   Raster< double > *arg1 = (Raster< double > *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[1] ;
   double result;
   
-  if (!SWIG_Python_UnpackTuple(args,"double_raster_Xllcorner",0,0,0)) SWIG_fail;
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_double_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "double_raster_Xllcorner" "', argument " "1"" of type '" "Raster< double > const *""'"); 
@@ -5297,10 +5288,9 @@ SWIGINTERN PyObject *_wrap_double_raster_Yllcorner(PyObject *self, PyObject *arg
   Raster< double > *arg1 = (Raster< double > *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[1] ;
   double result;
   
-  if (!SWIG_Python_UnpackTuple(args,"double_raster_Yllcorner",0,0,0)) SWIG_fail;
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_double_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "double_raster_Yllcorner" "', argument " "1"" of type '" "Raster< double > const *""'"); 
@@ -5329,10 +5319,9 @@ SWIGINTERN PyObject *_wrap_double_raster_XCellsize(PyObject *self, PyObject *arg
   Raster< double > *arg1 = (Raster< double > *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[1] ;
   double result;
   
-  if (!SWIG_Python_UnpackTuple(args,"double_raster_XCellsize",0,0,0)) SWIG_fail;
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_double_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "double_raster_XCellsize" "', argument " "1"" of type '" "Raster< double > const *""'"); 
@@ -5361,10 +5350,9 @@ SWIGINTERN PyObject *_wrap_double_raster_YCellsize(PyObject *self, PyObject *arg
   Raster< double > *arg1 = (Raster< double > *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[1] ;
   double result;
   
-  if (!SWIG_Python_UnpackTuple(args,"double_raster_YCellsize",0,0,0)) SWIG_fail;
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_double_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "double_raster_YCellsize" "', argument " "1"" of type '" "Raster< double > const *""'"); 
@@ -5393,10 +5381,9 @@ SWIGINTERN PyObject *_wrap_double_raster_ColumnCount(PyObject *self, PyObject *a
   Raster< double > *arg1 = (Raster< double > *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[1] ;
   int result;
   
-  if (!SWIG_Python_UnpackTuple(args,"double_raster_ColumnCount",0,0,0)) SWIG_fail;
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_double_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "double_raster_ColumnCount" "', argument " "1"" of type '" "Raster< double > const *""'"); 
@@ -5425,10 +5412,9 @@ SWIGINTERN PyObject *_wrap_double_raster_RowCount(PyObject *self, PyObject *args
   Raster< double > *arg1 = (Raster< double > *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[1] ;
   int result;
   
-  if (!SWIG_Python_UnpackTuple(args,"double_raster_RowCount",0,0,0)) SWIG_fail;
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_double_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "double_raster_RowCount" "', argument " "1"" of type '" "Raster< double > const *""'"); 
@@ -5457,10 +5443,9 @@ SWIGINTERN PyObject *_wrap_double_raster_Width(PyObject *self, PyObject *args) {
   Raster< double > *arg1 = (Raster< double > *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[1] ;
   double result;
   
-  if (!SWIG_Python_UnpackTuple(args,"double_raster_Width",0,0,0)) SWIG_fail;
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_double_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "double_raster_Width" "', argument " "1"" of type '" "Raster< double > const *""'"); 
@@ -5489,10 +5474,9 @@ SWIGINTERN PyObject *_wrap_double_raster_Height(PyObject *self, PyObject *args) 
   Raster< double > *arg1 = (Raster< double > *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[1] ;
   double result;
   
-  if (!SWIG_Python_UnpackTuple(args,"double_raster_Height",0,0,0)) SWIG_fail;
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_double_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "double_raster_Height" "', argument " "1"" of type '" "Raster< double > const *""'"); 
@@ -5521,10 +5505,9 @@ SWIGINTERN PyObject *_wrap_double_raster_NoData(PyObject *self, PyObject *args) 
   Raster< double > *arg1 = (Raster< double > *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[1] ;
   double result;
   
-  if (!SWIG_Python_UnpackTuple(args,"double_raster_NoData",0,0,0)) SWIG_fail;
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_double_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "double_raster_NoData" "', argument " "1"" of type '" "Raster< double > const *""'"); 
@@ -5548,7 +5531,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_double_raster_GetData__SWIG_0(PyObject *self, int nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_double_raster_GetData__SWIG_0(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   Raster< double > *arg1 = (Raster< double > *) 0 ;
   double arg2 ;
@@ -5559,20 +5542,22 @@ SWIGINTERN PyObject *_wrap_double_raster_GetData__SWIG_0(PyObject *self, int nob
   int ecode2 = 0 ;
   double val3 ;
   int ecode3 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
   double result;
   
-  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"OO:double_raster_GetData",&obj1,&obj2)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_double_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "double_raster_GetData" "', argument " "1"" of type '" "Raster< double > const *""'"); 
   }
   arg1 = reinterpret_cast< Raster< double > * >(argp1);
-  ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
+  ecode2 = SWIG_AsVal_double(obj1, &val2);
   if (!SWIG_IsOK(ecode2)) {
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "double_raster_GetData" "', argument " "2"" of type '" "double""'");
   } 
   arg2 = static_cast< double >(val2);
-  ecode3 = SWIG_AsVal_double(swig_obj[2], &val3);
+  ecode3 = SWIG_AsVal_double(obj2, &val3);
   if (!SWIG_IsOK(ecode3)) {
     SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "double_raster_GetData" "', argument " "3"" of type '" "double""'");
   } 
@@ -5595,7 +5580,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_double_raster_GetData__SWIG_1(PyObject *self, int nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_double_raster_GetData__SWIG_1(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   Raster< double > *arg1 = (Raster< double > *) 0 ;
   int arg2 ;
@@ -5606,20 +5591,22 @@ SWIGINTERN PyObject *_wrap_double_raster_GetData__SWIG_1(PyObject *self, int nob
   int ecode2 = 0 ;
   int val3 ;
   int ecode3 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
   double result;
   
-  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"OO:double_raster_GetData",&obj1,&obj2)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_double_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "double_raster_GetData" "', argument " "1"" of type '" "Raster< double > const *""'"); 
   }
   arg1 = reinterpret_cast< Raster< double > * >(argp1);
-  ecode2 = SWIG_AsVal_int(swig_obj[1], &val2);
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
   if (!SWIG_IsOK(ecode2)) {
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "double_raster_GetData" "', argument " "2"" of type '" "int""'");
   } 
   arg2 = static_cast< int >(val2);
-  ecode3 = SWIG_AsVal_int(swig_obj[2], &val3);
+  ecode3 = SWIG_AsVal_int(obj2, &val3);
   if (!SWIG_IsOK(ecode3)) {
     SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "double_raster_GetData" "', argument " "3"" of type '" "int""'");
   } 
@@ -5642,7 +5629,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_double_raster_HasData__SWIG_0(PyObject *self, int nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_double_raster_HasData__SWIG_0(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   Raster< double > *arg1 = (Raster< double > *) 0 ;
   double arg2 ;
@@ -5653,20 +5640,22 @@ SWIGINTERN PyObject *_wrap_double_raster_HasData__SWIG_0(PyObject *self, int nob
   int ecode2 = 0 ;
   double val3 ;
   int ecode3 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
   bool result;
   
-  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"OO:double_raster_HasData",&obj1,&obj2)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_double_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "double_raster_HasData" "', argument " "1"" of type '" "Raster< double > const *""'"); 
   }
   arg1 = reinterpret_cast< Raster< double > * >(argp1);
-  ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
+  ecode2 = SWIG_AsVal_double(obj1, &val2);
   if (!SWIG_IsOK(ecode2)) {
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "double_raster_HasData" "', argument " "2"" of type '" "double""'");
   } 
   arg2 = static_cast< double >(val2);
-  ecode3 = SWIG_AsVal_double(swig_obj[2], &val3);
+  ecode3 = SWIG_AsVal_double(obj2, &val3);
   if (!SWIG_IsOK(ecode3)) {
     SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "double_raster_HasData" "', argument " "3"" of type '" "double""'");
   } 
@@ -5689,7 +5678,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_double_raster_HasData__SWIG_1(PyObject *self, int nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_double_raster_HasData__SWIG_1(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   Raster< double > *arg1 = (Raster< double > *) 0 ;
   int arg2 ;
@@ -5700,20 +5689,22 @@ SWIGINTERN PyObject *_wrap_double_raster_HasData__SWIG_1(PyObject *self, int nob
   int ecode2 = 0 ;
   int val3 ;
   int ecode3 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
   bool result;
   
-  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"OO:double_raster_HasData",&obj1,&obj2)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_double_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "double_raster_HasData" "', argument " "1"" of type '" "Raster< double > const *""'"); 
   }
   arg1 = reinterpret_cast< Raster< double > * >(argp1);
-  ecode2 = SWIG_AsVal_int(swig_obj[1], &val2);
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
   if (!SWIG_IsOK(ecode2)) {
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "double_raster_HasData" "', argument " "2"" of type '" "int""'");
   } 
   arg2 = static_cast< int >(val2);
-  ecode3 = SWIG_AsVal_int(swig_obj[2], &val3);
+  ecode3 = SWIG_AsVal_int(obj2, &val3);
   if (!SWIG_IsOK(ecode3)) {
     SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "double_raster_HasData" "', argument " "3"" of type '" "int""'");
   } 
@@ -5736,14 +5727,14 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_double_raster_HasData__SWIG_2(PyObject *self, int nobjs, PyObject **SWIGUNUSEDPARM(swig_obj)) {
+SWIGINTERN PyObject *_wrap_double_raster_HasData__SWIG_2(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   Raster< double > *arg1 = (Raster< double > *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   SwigValueWrapper< Raster< int > > result;
   
-  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_double_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "double_raster_HasData" "', argument " "1"" of type '" "Raster< double > const *""'"); 
@@ -5770,123 +5761,64 @@ fail:
 SWIGINTERN PyObject *_wrap_double_raster_HasData(PyObject *self, PyObject *args) {
   int argc;
   PyObject *argv[4];
+  int ii;
   
-  if (!(argc = SWIG_Python_UnpackTuple(args,"double_raster_HasData",0,3,argv+1))) SWIG_fail;
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? (int)PyObject_Length(args) : 0;
   argv[0] = self;
-  {
-    unsigned long _index = 0;
-    SWIG_TypeRank _rank = 0; 
-    if (argc == 1) {
-      SWIG_TypeRank _ranki = 0;
-      SWIG_TypeRank _rankm = 0;
-      SWIG_TypeRank _pi = 1;
-      int _v = 0;
-      {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_double_t, 0);
-        _v = SWIG_CheckState(res);
-      }
-      if (!_v) goto check_1;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      if (!_index || (_ranki < _rank)) {
-        _rank = _ranki; _index = 1;
-        if (_rank == _rankm) goto dispatch;
-      }
+  for (ii = 0; (ii < 2) && (ii < argc); ii++) {
+    argv[ii + 1] = PyTuple_GET_ITEM(args,ii);
+  }
+  argc++;
+  if (argc == 1) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_double_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_double_raster_HasData__SWIG_2(self, args);
     }
-  check_1:
-    
-    if (argc == 3) {
-      SWIG_TypeRank _ranki = 0;
-      SWIG_TypeRank _rankm = 0;
-      SWIG_TypeRank _pi = 1;
-      int _v = 0;
+  }
+  if (argc == 3) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_double_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
       {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_double_t, 0);
+        int res = SWIG_AsVal_int(argv[1], NULL);
         _v = SWIG_CheckState(res);
       }
-      if (!_v) goto check_2;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      {
-        {
-          int res = SWIG_AsVal_int(argv[1], NULL);
-          _v = SWIG_CheckState(res);
-        }
-      }
-      if (!_v) goto check_2;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      {
+      if (_v) {
         {
           int res = SWIG_AsVal_int(argv[2], NULL);
           _v = SWIG_CheckState(res);
         }
-      }
-      if (!_v) goto check_2;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      if (!_index || (_ranki < _rank)) {
-        _rank = _ranki; _index = 2;
-        if (_rank == _rankm) goto dispatch;
-      }
-    }
-  check_2:
-    
-    if (argc == 3) {
-      SWIG_TypeRank _ranki = 0;
-      SWIG_TypeRank _rankm = 0;
-      SWIG_TypeRank _pi = 1;
-      int _v = 0;
-      {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_double_t, 0);
-        _v = SWIG_CheckState(res);
-      }
-      if (!_v) goto check_3;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      {
-        {
-          int res = SWIG_AsVal_double(argv[1], NULL);
-          _v = SWIG_CheckState(res);
+        if (_v) {
+          return _wrap_double_raster_HasData__SWIG_1(self, args);
         }
       }
-      if (!_v) goto check_3;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
+    }
+  }
+  if (argc == 3) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_double_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
       {
+        int res = SWIG_AsVal_double(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
         {
           int res = SWIG_AsVal_double(argv[2], NULL);
           _v = SWIG_CheckState(res);
         }
+        if (_v) {
+          return _wrap_double_raster_HasData__SWIG_0(self, args);
+        }
       }
-      if (!_v) goto check_3;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      if (!_index || (_ranki < _rank)) {
-        _rank = _ranki; _index = 3;
-        if (_rank == _rankm) goto dispatch;
-      }
-    }
-  check_3:
-    
-  dispatch:
-    switch(_index) {
-    case 1:
-      return _wrap_double_raster_HasData__SWIG_2(self, argc, argv);
-    case 2:
-      return _wrap_double_raster_HasData__SWIG_1(self, argc, argv);
-    case 3:
-      return _wrap_double_raster_HasData__SWIG_0(self, argc, argv);
     }
   }
   
@@ -5900,7 +5832,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_double_raster_SetData__SWIG_0(PyObject *self, int nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_double_raster_SetData__SWIG_0(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   Raster< double > *arg1 = (Raster< double > *) 0 ;
   double arg2 ;
@@ -5914,24 +5846,27 @@ SWIGINTERN PyObject *_wrap_double_raster_SetData__SWIG_0(PyObject *self, int nob
   int ecode3 = 0 ;
   double val4 ;
   int ecode4 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
   
-  if ((nobjs < 4) || (nobjs > 4)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"OOO:double_raster_SetData",&obj1,&obj2,&obj3)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_double_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "double_raster_SetData" "', argument " "1"" of type '" "Raster< double > *""'"); 
   }
   arg1 = reinterpret_cast< Raster< double > * >(argp1);
-  ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
+  ecode2 = SWIG_AsVal_double(obj1, &val2);
   if (!SWIG_IsOK(ecode2)) {
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "double_raster_SetData" "', argument " "2"" of type '" "double""'");
   } 
   arg2 = static_cast< double >(val2);
-  ecode3 = SWIG_AsVal_double(swig_obj[2], &val3);
+  ecode3 = SWIG_AsVal_double(obj2, &val3);
   if (!SWIG_IsOK(ecode3)) {
     SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "double_raster_SetData" "', argument " "3"" of type '" "double""'");
   } 
   arg3 = static_cast< double >(val3);
-  ecode4 = SWIG_AsVal_double(swig_obj[3], &val4);
+  ecode4 = SWIG_AsVal_double(obj3, &val4);
   if (!SWIG_IsOK(ecode4)) {
     SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "double_raster_SetData" "', argument " "4"" of type '" "double""'");
   } 
@@ -5954,7 +5889,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_double_raster_SetData__SWIG_1(PyObject *self, int nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_double_raster_SetData__SWIG_1(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   Raster< double > *arg1 = (Raster< double > *) 0 ;
   int arg2 ;
@@ -5968,24 +5903,27 @@ SWIGINTERN PyObject *_wrap_double_raster_SetData__SWIG_1(PyObject *self, int nob
   int ecode3 = 0 ;
   double val4 ;
   int ecode4 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
   
-  if ((nobjs < 4) || (nobjs > 4)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"OOO:double_raster_SetData",&obj1,&obj2,&obj3)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_double_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "double_raster_SetData" "', argument " "1"" of type '" "Raster< double > *""'"); 
   }
   arg1 = reinterpret_cast< Raster< double > * >(argp1);
-  ecode2 = SWIG_AsVal_int(swig_obj[1], &val2);
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
   if (!SWIG_IsOK(ecode2)) {
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "double_raster_SetData" "', argument " "2"" of type '" "int""'");
   } 
   arg2 = static_cast< int >(val2);
-  ecode3 = SWIG_AsVal_int(swig_obj[2], &val3);
+  ecode3 = SWIG_AsVal_int(obj2, &val3);
   if (!SWIG_IsOK(ecode3)) {
     SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "double_raster_SetData" "', argument " "3"" of type '" "int""'");
   } 
   arg3 = static_cast< int >(val3);
-  ecode4 = SWIG_AsVal_double(swig_obj[3], &val4);
+  ecode4 = SWIG_AsVal_double(obj3, &val4);
   if (!SWIG_IsOK(ecode4)) {
     SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "double_raster_SetData" "', argument " "4"" of type '" "double""'");
   } 
@@ -6011,120 +5949,67 @@ fail:
 SWIGINTERN PyObject *_wrap_double_raster_SetData(PyObject *self, PyObject *args) {
   int argc;
   PyObject *argv[5];
+  int ii;
   
-  if (!(argc = SWIG_Python_UnpackTuple(args,"double_raster_SetData",0,4,argv+1))) SWIG_fail;
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? (int)PyObject_Length(args) : 0;
   argv[0] = self;
-  {
-    unsigned long _index = 0;
-    SWIG_TypeRank _rank = 0; 
-    if (argc == 4) {
-      SWIG_TypeRank _ranki = 0;
-      SWIG_TypeRank _rankm = 0;
-      SWIG_TypeRank _pi = 1;
-      int _v = 0;
+  for (ii = 0; (ii < 3) && (ii < argc); ii++) {
+    argv[ii + 1] = PyTuple_GET_ITEM(args,ii);
+  }
+  argc++;
+  if (argc == 4) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_double_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
       {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_double_t, 0);
+        int res = SWIG_AsVal_int(argv[1], NULL);
         _v = SWIG_CheckState(res);
       }
-      if (!_v) goto check_1;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      {
-        {
-          int res = SWIG_AsVal_int(argv[1], NULL);
-          _v = SWIG_CheckState(res);
-        }
-      }
-      if (!_v) goto check_1;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      {
+      if (_v) {
         {
           int res = SWIG_AsVal_int(argv[2], NULL);
           _v = SWIG_CheckState(res);
         }
-      }
-      if (!_v) goto check_1;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      {
-        {
-          int res = SWIG_AsVal_double(argv[3], NULL);
-          _v = SWIG_CheckState(res);
+        if (_v) {
+          {
+            int res = SWIG_AsVal_double(argv[3], NULL);
+            _v = SWIG_CheckState(res);
+          }
+          if (_v) {
+            return _wrap_double_raster_SetData__SWIG_1(self, args);
+          }
         }
-      }
-      if (!_v) goto check_1;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      if (!_index || (_ranki < _rank)) {
-        _rank = _ranki; _index = 1;
-        if (_rank == _rankm) goto dispatch;
       }
     }
-  check_1:
-    
-    if (argc == 4) {
-      SWIG_TypeRank _ranki = 0;
-      SWIG_TypeRank _rankm = 0;
-      SWIG_TypeRank _pi = 1;
-      int _v = 0;
+  }
+  if (argc == 4) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_double_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
       {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_double_t, 0);
+        int res = SWIG_AsVal_double(argv[1], NULL);
         _v = SWIG_CheckState(res);
       }
-      if (!_v) goto check_2;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      {
-        {
-          int res = SWIG_AsVal_double(argv[1], NULL);
-          _v = SWIG_CheckState(res);
-        }
-      }
-      if (!_v) goto check_2;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      {
+      if (_v) {
         {
           int res = SWIG_AsVal_double(argv[2], NULL);
           _v = SWIG_CheckState(res);
         }
-      }
-      if (!_v) goto check_2;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      {
-        {
-          int res = SWIG_AsVal_double(argv[3], NULL);
-          _v = SWIG_CheckState(res);
+        if (_v) {
+          {
+            int res = SWIG_AsVal_double(argv[3], NULL);
+            _v = SWIG_CheckState(res);
+          }
+          if (_v) {
+            return _wrap_double_raster_SetData__SWIG_0(self, args);
+          }
         }
       }
-      if (!_v) goto check_2;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      if (!_index || (_ranki < _rank)) {
-        _rank = _ranki; _index = 2;
-        if (_rank == _rankm) goto dispatch;
-      }
-    }
-  check_2:
-    
-  dispatch:
-    switch(_index) {
-    case 1:
-      return _wrap_double_raster_SetData__SWIG_1(self, argc, argv);
-    case 2:
-      return _wrap_double_raster_SetData__SWIG_0(self, argc, argv);
     }
   }
   
@@ -6137,7 +6022,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_double_raster_GetXPosition(PyObject *self, PyObject *args, PyObject *kwargs) {
+SWIGINTERN PyObject *_wrap_double_raster_GetXPosition(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   Raster< double > *arg1 = (Raster< double > *) 0 ;
   int arg2 ;
@@ -6146,12 +6031,9 @@ SWIGINTERN PyObject *_wrap_double_raster_GetXPosition(PyObject *self, PyObject *
   int val2 ;
   int ecode2 = 0 ;
   PyObject * obj1 = 0 ;
-  char *  kwnames[] = {
-    (char *) "col", NULL 
-  };
   double result;
   
-  if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"O:double_raster_GetXPosition",kwnames,&obj1)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"O:double_raster_GetXPosition",&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_double_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "double_raster_GetXPosition" "', argument " "1"" of type '" "Raster< double > *""'"); 
@@ -6180,7 +6062,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_double_raster_GetYPosition(PyObject *self, PyObject *args, PyObject *kwargs) {
+SWIGINTERN PyObject *_wrap_double_raster_GetYPosition(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   Raster< double > *arg1 = (Raster< double > *) 0 ;
   int arg2 ;
@@ -6189,12 +6071,9 @@ SWIGINTERN PyObject *_wrap_double_raster_GetYPosition(PyObject *self, PyObject *
   int val2 ;
   int ecode2 = 0 ;
   PyObject * obj1 = 0 ;
-  char *  kwnames[] = {
-    (char *) "row", NULL 
-  };
   double result;
   
-  if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"O:double_raster_GetYPosition",kwnames,&obj1)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"O:double_raster_GetYPosition",&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_double_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "double_raster_GetYPosition" "', argument " "1"" of type '" "Raster< double > *""'"); 
@@ -6228,10 +6107,9 @@ SWIGINTERN PyObject *_wrap_double_raster_statistics(PyObject *self, PyObject *ar
   Raster< double > *arg1 = (Raster< double > *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[1] ;
   RasterStatistics result;
   
-  if (!SWIG_Python_UnpackTuple(args,"double_raster_statistics",0,0,0)) SWIG_fail;
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_double_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "double_raster_statistics" "', argument " "1"" of type '" "Raster< double > *""'"); 
@@ -6255,33 +6133,28 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_double_raster_histogram(PyObject *self, PyObject *args, PyObject *kwargs) {
+SWIGINTERN PyObject *_wrap_double_raster_histogram__SWIG_0(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   Raster< double > *arg1 = (Raster< double > *) 0 ;
-  size_t arg2 = (size_t) 100 ;
+  size_t arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   size_t val2 ;
   int ecode2 = 0 ;
   PyObject * obj1 = 0 ;
-  char *  kwnames[] = {
-    (char *) "bins", NULL 
-  };
   SwigValueWrapper< Histogram > result;
   
-  if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"|O:double_raster_histogram",kwnames,&obj1)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"O:double_raster_histogram",&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_double_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "double_raster_histogram" "', argument " "1"" of type '" "Raster< double > *""'"); 
   }
   arg1 = reinterpret_cast< Raster< double > * >(argp1);
-  if (obj1) {
-    ecode2 = SWIG_AsVal_size_t(obj1, &val2);
-    if (!SWIG_IsOK(ecode2)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "double_raster_histogram" "', argument " "2"" of type '" "size_t""'");
-    } 
-    arg2 = static_cast< size_t >(val2);
-  }
+  ecode2 = SWIG_AsVal_size_t(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "double_raster_histogram" "', argument " "2"" of type '" "size_t""'");
+  } 
+  arg2 = static_cast< size_t >(val2);
   {
     try {
       result = (arg1)->histogram(arg2);
@@ -6300,7 +6173,84 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_double_raster_clip(PyObject *self, PyObject *args, PyObject *kwargs) {
+SWIGINTERN PyObject *_wrap_double_raster_histogram__SWIG_1(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  Raster< double > *arg1 = (Raster< double > *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  SwigValueWrapper< Histogram > result;
+  
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_double_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "double_raster_histogram" "', argument " "1"" of type '" "Raster< double > *""'"); 
+  }
+  arg1 = reinterpret_cast< Raster< double > * >(argp1);
+  {
+    try {
+      result = (arg1)->histogram();
+    } 
+    catch (std::runtime_error& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what() );
+    }
+    catch (std::exception& e) {
+      SWIG_exception(SWIG_UnknownError, e.what());
+    }
+  }
+  resultobj = SWIG_NewPointerObj((new Histogram(static_cast< const Histogram& >(result))), SWIGTYPE_p_Histogram, SWIG_POINTER_OWN |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_double_raster_histogram(PyObject *self, PyObject *args) {
+  int argc;
+  PyObject *argv[3];
+  int ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? (int)PyObject_Length(args) : 0;
+  argv[0] = self;
+  for (ii = 0; (ii < 1) && (ii < argc); ii++) {
+    argv[ii + 1] = PyTuple_GET_ITEM(args,ii);
+  }
+  argc++;
+  if (argc == 1) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_double_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_double_raster_histogram__SWIG_1(self, args);
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_double_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        int res = SWIG_AsVal_size_t(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        return _wrap_double_raster_histogram__SWIG_0(self, args);
+      }
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'double_raster_histogram'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    Raster< double >::histogram(size_t)\n"
+    "    Raster< double >::histogram()\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_double_raster_clip(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   Raster< double > *arg1 = (Raster< double > *) 0 ;
   double arg2 ;
@@ -6321,11 +6271,8 @@ SWIGINTERN PyObject *_wrap_double_raster_clip(PyObject *self, PyObject *args, Py
   PyObject * obj2 = 0 ;
   PyObject * obj3 = 0 ;
   PyObject * obj4 = 0 ;
-  char *  kwnames[] = {
-    (char *) "x1",(char *) "y1",(char *) "x2",(char *) "y2", NULL 
-  };
   
-  if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"OOOO:double_raster_clip",kwnames,&obj1,&obj2,&obj3,&obj4)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"OOOO:double_raster_clip",&obj1,&obj2,&obj3,&obj4)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_double_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "double_raster_clip" "', argument " "1"" of type '" "Raster< double > *""'"); 
@@ -6369,7 +6316,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_double_raster___imul____SWIG_0(PyObject *self, int nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_double_raster___imul____SWIG_0(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   Raster< double > *arg1 = (Raster< double > *) 0 ;
   double arg2 ;
@@ -6377,15 +6324,16 @@ SWIGINTERN PyObject *_wrap_double_raster___imul____SWIG_0(PyObject *self, int no
   int res1 = 0 ;
   double val2 ;
   int ecode2 = 0 ;
+  PyObject * obj1 = 0 ;
   Raster< double > *result = 0 ;
   
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"O:double_raster___imul__",&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_double_t, SWIG_POINTER_DISOWN |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "double_raster___imul__" "', argument " "1"" of type '" "Raster< double > *""'"); 
   }
   arg1 = reinterpret_cast< Raster< double > * >(argp1);
-  ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
+  ecode2 = SWIG_AsVal_double(obj1, &val2);
   if (!SWIG_IsOK(ecode2)) {
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "double_raster___imul__" "', argument " "2"" of type '" "double""'");
   } 
@@ -6408,7 +6356,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_double_raster___imul____SWIG_1(PyObject *self, int nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_double_raster___imul____SWIG_1(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   Raster< double > *arg1 = (Raster< double > *) 0 ;
   Raster< double > *arg2 = 0 ;
@@ -6416,15 +6364,16 @@ SWIGINTERN PyObject *_wrap_double_raster___imul____SWIG_1(PyObject *self, int no
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
+  PyObject * obj1 = 0 ;
   Raster< double > *result = 0 ;
   
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"O:double_raster___imul__",&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_double_t, SWIG_POINTER_DISOWN |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "double_raster___imul__" "', argument " "1"" of type '" "Raster< double > *""'"); 
   }
   arg1 = reinterpret_cast< Raster< double > * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_RasterT_double_t,  0  | 0);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_RasterT_double_t,  0  | 0);
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "double_raster___imul__" "', argument " "2"" of type '" "Raster< double > const &""'"); 
   }
@@ -6453,78 +6402,41 @@ fail:
 SWIGINTERN PyObject *_wrap_double_raster___imul__(PyObject *self, PyObject *args) {
   int argc;
   PyObject *argv[3];
+  int ii;
   
-  if (!(argc = SWIG_Python_UnpackTuple(args,"double_raster___imul__",0,2,argv+1))) SWIG_fail;
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? (int)PyObject_Length(args) : 0;
   argv[0] = self;
-  {
-    unsigned long _index = 0;
-    SWIG_TypeRank _rank = 0; 
-    if (argc == 2) {
-      SWIG_TypeRank _ranki = 0;
-      SWIG_TypeRank _rankm = 0;
-      SWIG_TypeRank _pi = 1;
-      int _v = 0;
-      {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_double_t, 0);
-        _v = SWIG_CheckState(res);
-      }
-      if (!_v) goto check_1;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      {
-        int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_RasterT_double_t, 0);
-        _v = SWIG_CheckState(res);
-      }
-      if (!_v) goto check_1;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      if (!_index || (_ranki < _rank)) {
-        _rank = _ranki; _index = 1;
-        if (_rank == _rankm) goto dispatch;
+  for (ii = 0; (ii < 1) && (ii < argc); ii++) {
+    argv[ii + 1] = PyTuple_GET_ITEM(args,ii);
+  }
+  argc++;
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_double_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_RasterT_double_t, 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        return _wrap_double_raster___imul____SWIG_1(self, args);
       }
     }
-  check_1:
-    
-    if (argc == 2) {
-      SWIG_TypeRank _ranki = 0;
-      SWIG_TypeRank _rankm = 0;
-      SWIG_TypeRank _pi = 1;
-      int _v = 0;
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_double_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
       {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_double_t, 0);
+        int res = SWIG_AsVal_double(argv[1], NULL);
         _v = SWIG_CheckState(res);
       }
-      if (!_v) goto check_2;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      {
-        {
-          int res = SWIG_AsVal_double(argv[1], NULL);
-          _v = SWIG_CheckState(res);
-        }
+      if (_v) {
+        return _wrap_double_raster___imul____SWIG_0(self, args);
       }
-      if (!_v) goto check_2;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      if (!_index || (_ranki < _rank)) {
-        _rank = _ranki; _index = 2;
-        if (_rank == _rankm) goto dispatch;
-      }
-    }
-  check_2:
-    
-  dispatch:
-    switch(_index) {
-    case 1:
-      return _wrap_double_raster___imul____SWIG_1(self, argc, argv);
-    case 2:
-      return _wrap_double_raster___imul____SWIG_0(self, argc, argv);
     }
   }
   
@@ -6539,7 +6451,7 @@ fail:
 
 SWIGPY_BINARYFUNC_CLOSURE(_wrap_double_raster___imul__)
 
-SWIGINTERN PyObject *_wrap_double_raster___iadd____SWIG_0(PyObject *self, int nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_double_raster___iadd____SWIG_0(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   Raster< double > *arg1 = (Raster< double > *) 0 ;
   double arg2 ;
@@ -6547,15 +6459,16 @@ SWIGINTERN PyObject *_wrap_double_raster___iadd____SWIG_0(PyObject *self, int no
   int res1 = 0 ;
   double val2 ;
   int ecode2 = 0 ;
+  PyObject * obj1 = 0 ;
   Raster< double > *result = 0 ;
   
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"O:double_raster___iadd__",&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_double_t, SWIG_POINTER_DISOWN |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "double_raster___iadd__" "', argument " "1"" of type '" "Raster< double > *""'"); 
   }
   arg1 = reinterpret_cast< Raster< double > * >(argp1);
-  ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
+  ecode2 = SWIG_AsVal_double(obj1, &val2);
   if (!SWIG_IsOK(ecode2)) {
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "double_raster___iadd__" "', argument " "2"" of type '" "double""'");
   } 
@@ -6578,7 +6491,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_double_raster___iadd____SWIG_1(PyObject *self, int nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_double_raster___iadd____SWIG_1(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   Raster< double > *arg1 = (Raster< double > *) 0 ;
   Raster< double > *arg2 = 0 ;
@@ -6586,15 +6499,16 @@ SWIGINTERN PyObject *_wrap_double_raster___iadd____SWIG_1(PyObject *self, int no
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
+  PyObject * obj1 = 0 ;
   Raster< double > *result = 0 ;
   
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"O:double_raster___iadd__",&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_double_t, SWIG_POINTER_DISOWN |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "double_raster___iadd__" "', argument " "1"" of type '" "Raster< double > *""'"); 
   }
   arg1 = reinterpret_cast< Raster< double > * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_RasterT_double_t,  0  | 0);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_RasterT_double_t,  0  | 0);
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "double_raster___iadd__" "', argument " "2"" of type '" "Raster< double > const &""'"); 
   }
@@ -6623,78 +6537,41 @@ fail:
 SWIGINTERN PyObject *_wrap_double_raster___iadd__(PyObject *self, PyObject *args) {
   int argc;
   PyObject *argv[3];
+  int ii;
   
-  if (!(argc = SWIG_Python_UnpackTuple(args,"double_raster___iadd__",0,2,argv+1))) SWIG_fail;
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? (int)PyObject_Length(args) : 0;
   argv[0] = self;
-  {
-    unsigned long _index = 0;
-    SWIG_TypeRank _rank = 0; 
-    if (argc == 2) {
-      SWIG_TypeRank _ranki = 0;
-      SWIG_TypeRank _rankm = 0;
-      SWIG_TypeRank _pi = 1;
-      int _v = 0;
-      {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_double_t, 0);
-        _v = SWIG_CheckState(res);
-      }
-      if (!_v) goto check_1;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      {
-        int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_RasterT_double_t, 0);
-        _v = SWIG_CheckState(res);
-      }
-      if (!_v) goto check_1;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      if (!_index || (_ranki < _rank)) {
-        _rank = _ranki; _index = 1;
-        if (_rank == _rankm) goto dispatch;
+  for (ii = 0; (ii < 1) && (ii < argc); ii++) {
+    argv[ii + 1] = PyTuple_GET_ITEM(args,ii);
+  }
+  argc++;
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_double_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_RasterT_double_t, 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        return _wrap_double_raster___iadd____SWIG_1(self, args);
       }
     }
-  check_1:
-    
-    if (argc == 2) {
-      SWIG_TypeRank _ranki = 0;
-      SWIG_TypeRank _rankm = 0;
-      SWIG_TypeRank _pi = 1;
-      int _v = 0;
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_double_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
       {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_double_t, 0);
+        int res = SWIG_AsVal_double(argv[1], NULL);
         _v = SWIG_CheckState(res);
       }
-      if (!_v) goto check_2;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      {
-        {
-          int res = SWIG_AsVal_double(argv[1], NULL);
-          _v = SWIG_CheckState(res);
-        }
+      if (_v) {
+        return _wrap_double_raster___iadd____SWIG_0(self, args);
       }
-      if (!_v) goto check_2;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      if (!_index || (_ranki < _rank)) {
-        _rank = _ranki; _index = 2;
-        if (_rank == _rankm) goto dispatch;
-      }
-    }
-  check_2:
-    
-  dispatch:
-    switch(_index) {
-    case 1:
-      return _wrap_double_raster___iadd____SWIG_1(self, argc, argv);
-    case 2:
-      return _wrap_double_raster___iadd____SWIG_0(self, argc, argv);
     }
   }
   
@@ -6709,7 +6586,7 @@ fail:
 
 SWIGPY_BINARYFUNC_CLOSURE(_wrap_double_raster___iadd__)
 
-SWIGINTERN PyObject *_wrap_double_raster___isub____SWIG_0(PyObject *self, int nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_double_raster___isub____SWIG_0(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   Raster< double > *arg1 = (Raster< double > *) 0 ;
   double arg2 ;
@@ -6717,15 +6594,16 @@ SWIGINTERN PyObject *_wrap_double_raster___isub____SWIG_0(PyObject *self, int no
   int res1 = 0 ;
   double val2 ;
   int ecode2 = 0 ;
+  PyObject * obj1 = 0 ;
   Raster< double > *result = 0 ;
   
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"O:double_raster___isub__",&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_double_t, SWIG_POINTER_DISOWN |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "double_raster___isub__" "', argument " "1"" of type '" "Raster< double > *""'"); 
   }
   arg1 = reinterpret_cast< Raster< double > * >(argp1);
-  ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
+  ecode2 = SWIG_AsVal_double(obj1, &val2);
   if (!SWIG_IsOK(ecode2)) {
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "double_raster___isub__" "', argument " "2"" of type '" "double""'");
   } 
@@ -6748,7 +6626,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_double_raster___isub____SWIG_1(PyObject *self, int nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_double_raster___isub____SWIG_1(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   Raster< double > *arg1 = (Raster< double > *) 0 ;
   Raster< double > *arg2 = 0 ;
@@ -6756,15 +6634,16 @@ SWIGINTERN PyObject *_wrap_double_raster___isub____SWIG_1(PyObject *self, int no
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
+  PyObject * obj1 = 0 ;
   Raster< double > *result = 0 ;
   
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"O:double_raster___isub__",&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_double_t, SWIG_POINTER_DISOWN |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "double_raster___isub__" "', argument " "1"" of type '" "Raster< double > *""'"); 
   }
   arg1 = reinterpret_cast< Raster< double > * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_RasterT_double_t,  0  | 0);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_RasterT_double_t,  0  | 0);
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "double_raster___isub__" "', argument " "2"" of type '" "Raster< double > const &""'"); 
   }
@@ -6793,78 +6672,41 @@ fail:
 SWIGINTERN PyObject *_wrap_double_raster___isub__(PyObject *self, PyObject *args) {
   int argc;
   PyObject *argv[3];
+  int ii;
   
-  if (!(argc = SWIG_Python_UnpackTuple(args,"double_raster___isub__",0,2,argv+1))) SWIG_fail;
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? (int)PyObject_Length(args) : 0;
   argv[0] = self;
-  {
-    unsigned long _index = 0;
-    SWIG_TypeRank _rank = 0; 
-    if (argc == 2) {
-      SWIG_TypeRank _ranki = 0;
-      SWIG_TypeRank _rankm = 0;
-      SWIG_TypeRank _pi = 1;
-      int _v = 0;
-      {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_double_t, 0);
-        _v = SWIG_CheckState(res);
-      }
-      if (!_v) goto check_1;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      {
-        int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_RasterT_double_t, 0);
-        _v = SWIG_CheckState(res);
-      }
-      if (!_v) goto check_1;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      if (!_index || (_ranki < _rank)) {
-        _rank = _ranki; _index = 1;
-        if (_rank == _rankm) goto dispatch;
+  for (ii = 0; (ii < 1) && (ii < argc); ii++) {
+    argv[ii + 1] = PyTuple_GET_ITEM(args,ii);
+  }
+  argc++;
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_double_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_RasterT_double_t, 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        return _wrap_double_raster___isub____SWIG_1(self, args);
       }
     }
-  check_1:
-    
-    if (argc == 2) {
-      SWIG_TypeRank _ranki = 0;
-      SWIG_TypeRank _rankm = 0;
-      SWIG_TypeRank _pi = 1;
-      int _v = 0;
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_double_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
       {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_double_t, 0);
+        int res = SWIG_AsVal_double(argv[1], NULL);
         _v = SWIG_CheckState(res);
       }
-      if (!_v) goto check_2;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      {
-        {
-          int res = SWIG_AsVal_double(argv[1], NULL);
-          _v = SWIG_CheckState(res);
-        }
+      if (_v) {
+        return _wrap_double_raster___isub____SWIG_0(self, args);
       }
-      if (!_v) goto check_2;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      if (!_index || (_ranki < _rank)) {
-        _rank = _ranki; _index = 2;
-        if (_rank == _rankm) goto dispatch;
-      }
-    }
-  check_2:
-    
-  dispatch:
-    switch(_index) {
-    case 1:
-      return _wrap_double_raster___isub____SWIG_1(self, argc, argv);
-    case 2:
-      return _wrap_double_raster___isub____SWIG_0(self, argc, argv);
     }
   }
   
@@ -6879,7 +6721,7 @@ fail:
 
 SWIGPY_BINARYFUNC_CLOSURE(_wrap_double_raster___isub__)
 
-SWIGINTERN PyObject *_wrap_double_raster___idiv____SWIG_0(PyObject *self, int nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_double_raster___idiv____SWIG_0(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   Raster< double > *arg1 = (Raster< double > *) 0 ;
   double arg2 ;
@@ -6887,15 +6729,16 @@ SWIGINTERN PyObject *_wrap_double_raster___idiv____SWIG_0(PyObject *self, int no
   int res1 = 0 ;
   double val2 ;
   int ecode2 = 0 ;
+  PyObject * obj1 = 0 ;
   Raster< double > *result = 0 ;
   
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"O:double_raster___idiv__",&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_double_t, SWIG_POINTER_DISOWN |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "double_raster___idiv__" "', argument " "1"" of type '" "Raster< double > *""'"); 
   }
   arg1 = reinterpret_cast< Raster< double > * >(argp1);
-  ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
+  ecode2 = SWIG_AsVal_double(obj1, &val2);
   if (!SWIG_IsOK(ecode2)) {
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "double_raster___idiv__" "', argument " "2"" of type '" "double""'");
   } 
@@ -6918,7 +6761,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_double_raster___idiv____SWIG_1(PyObject *self, int nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_double_raster___idiv____SWIG_1(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   Raster< double > *arg1 = (Raster< double > *) 0 ;
   Raster< double > *arg2 = 0 ;
@@ -6926,15 +6769,16 @@ SWIGINTERN PyObject *_wrap_double_raster___idiv____SWIG_1(PyObject *self, int no
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
+  PyObject * obj1 = 0 ;
   Raster< double > *result = 0 ;
   
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"O:double_raster___idiv__",&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_double_t, SWIG_POINTER_DISOWN |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "double_raster___idiv__" "', argument " "1"" of type '" "Raster< double > *""'"); 
   }
   arg1 = reinterpret_cast< Raster< double > * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_RasterT_double_t,  0  | 0);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_RasterT_double_t,  0  | 0);
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "double_raster___idiv__" "', argument " "2"" of type '" "Raster< double > const &""'"); 
   }
@@ -6963,78 +6807,41 @@ fail:
 SWIGINTERN PyObject *_wrap_double_raster___idiv__(PyObject *self, PyObject *args) {
   int argc;
   PyObject *argv[3];
+  int ii;
   
-  if (!(argc = SWIG_Python_UnpackTuple(args,"double_raster___idiv__",0,2,argv+1))) SWIG_fail;
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? (int)PyObject_Length(args) : 0;
   argv[0] = self;
-  {
-    unsigned long _index = 0;
-    SWIG_TypeRank _rank = 0; 
-    if (argc == 2) {
-      SWIG_TypeRank _ranki = 0;
-      SWIG_TypeRank _rankm = 0;
-      SWIG_TypeRank _pi = 1;
-      int _v = 0;
-      {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_double_t, 0);
-        _v = SWIG_CheckState(res);
-      }
-      if (!_v) goto check_1;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      {
-        int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_RasterT_double_t, 0);
-        _v = SWIG_CheckState(res);
-      }
-      if (!_v) goto check_1;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      if (!_index || (_ranki < _rank)) {
-        _rank = _ranki; _index = 1;
-        if (_rank == _rankm) goto dispatch;
+  for (ii = 0; (ii < 1) && (ii < argc); ii++) {
+    argv[ii + 1] = PyTuple_GET_ITEM(args,ii);
+  }
+  argc++;
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_double_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_RasterT_double_t, 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        return _wrap_double_raster___idiv____SWIG_1(self, args);
       }
     }
-  check_1:
-    
-    if (argc == 2) {
-      SWIG_TypeRank _ranki = 0;
-      SWIG_TypeRank _rankm = 0;
-      SWIG_TypeRank _pi = 1;
-      int _v = 0;
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_double_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
       {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_double_t, 0);
+        int res = SWIG_AsVal_double(argv[1], NULL);
         _v = SWIG_CheckState(res);
       }
-      if (!_v) goto check_2;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      {
-        {
-          int res = SWIG_AsVal_double(argv[1], NULL);
-          _v = SWIG_CheckState(res);
-        }
+      if (_v) {
+        return _wrap_double_raster___idiv____SWIG_0(self, args);
       }
-      if (!_v) goto check_2;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      if (!_index || (_ranki < _rank)) {
-        _rank = _ranki; _index = 2;
-        if (_rank == _rankm) goto dispatch;
-      }
-    }
-  check_2:
-    
-  dispatch:
-    switch(_index) {
-    case 1:
-      return _wrap_double_raster___idiv____SWIG_1(self, argc, argv);
-    case 2:
-      return _wrap_double_raster___idiv____SWIG_0(self, argc, argv);
     }
   }
   
@@ -7049,7 +6856,7 @@ fail:
 
 SWIGPY_BINARYFUNC_CLOSURE(_wrap_double_raster___idiv__)
 
-SWIGINTERN PyObject *_wrap_double_raster___mul____SWIG_0(PyObject *self, int nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_double_raster___mul____SWIG_0(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   Raster< double > *arg1 = (Raster< double > *) 0 ;
   double arg2 ;
@@ -7057,15 +6864,16 @@ SWIGINTERN PyObject *_wrap_double_raster___mul____SWIG_0(PyObject *self, int nob
   int res1 = 0 ;
   double val2 ;
   int ecode2 = 0 ;
+  PyObject * obj1 = 0 ;
   SwigValueWrapper< Raster< double > > result;
   
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"O:double_raster___mul__",&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_double_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "double_raster___mul__" "', argument " "1"" of type '" "Raster< double > const *""'"); 
   }
   arg1 = reinterpret_cast< Raster< double > * >(argp1);
-  ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
+  ecode2 = SWIG_AsVal_double(obj1, &val2);
   if (!SWIG_IsOK(ecode2)) {
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "double_raster___mul__" "', argument " "2"" of type '" "double""'");
   } 
@@ -7088,7 +6896,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_double_raster___add____SWIG_0(PyObject *self, int nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_double_raster___add____SWIG_0(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   Raster< double > *arg1 = (Raster< double > *) 0 ;
   double arg2 ;
@@ -7096,15 +6904,16 @@ SWIGINTERN PyObject *_wrap_double_raster___add____SWIG_0(PyObject *self, int nob
   int res1 = 0 ;
   double val2 ;
   int ecode2 = 0 ;
+  PyObject * obj1 = 0 ;
   SwigValueWrapper< Raster< double > > result;
   
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"O:double_raster___add__",&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_double_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "double_raster___add__" "', argument " "1"" of type '" "Raster< double > const *""'"); 
   }
   arg1 = reinterpret_cast< Raster< double > * >(argp1);
-  ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
+  ecode2 = SWIG_AsVal_double(obj1, &val2);
   if (!SWIG_IsOK(ecode2)) {
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "double_raster___add__" "', argument " "2"" of type '" "double""'");
   } 
@@ -7127,7 +6936,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_double_raster___sub____SWIG_0(PyObject *self, int nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_double_raster___sub____SWIG_0(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   Raster< double > *arg1 = (Raster< double > *) 0 ;
   double arg2 ;
@@ -7135,15 +6944,16 @@ SWIGINTERN PyObject *_wrap_double_raster___sub____SWIG_0(PyObject *self, int nob
   int res1 = 0 ;
   double val2 ;
   int ecode2 = 0 ;
+  PyObject * obj1 = 0 ;
   SwigValueWrapper< Raster< double > > result;
   
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"O:double_raster___sub__",&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_double_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "double_raster___sub__" "', argument " "1"" of type '" "Raster< double > const *""'"); 
   }
   arg1 = reinterpret_cast< Raster< double > * >(argp1);
-  ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
+  ecode2 = SWIG_AsVal_double(obj1, &val2);
   if (!SWIG_IsOK(ecode2)) {
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "double_raster___sub__" "', argument " "2"" of type '" "double""'");
   } 
@@ -7166,7 +6976,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_double_raster___div____SWIG_0(PyObject *self, int nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_double_raster___div____SWIG_0(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   Raster< double > *arg1 = (Raster< double > *) 0 ;
   double arg2 ;
@@ -7174,15 +6984,16 @@ SWIGINTERN PyObject *_wrap_double_raster___div____SWIG_0(PyObject *self, int nob
   int res1 = 0 ;
   double val2 ;
   int ecode2 = 0 ;
+  PyObject * obj1 = 0 ;
   SwigValueWrapper< Raster< double > > result;
   
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"O:double_raster___div__",&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_double_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "double_raster___div__" "', argument " "1"" of type '" "Raster< double > const *""'"); 
   }
   arg1 = reinterpret_cast< Raster< double > * >(argp1);
-  ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
+  ecode2 = SWIG_AsVal_double(obj1, &val2);
   if (!SWIG_IsOK(ecode2)) {
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "double_raster___div__" "', argument " "2"" of type '" "double""'");
   } 
@@ -7205,7 +7016,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_double_raster___mul____SWIG_1(PyObject *self, int nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_double_raster___mul____SWIG_1(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   Raster< double > *arg1 = (Raster< double > *) 0 ;
   Raster< double > *arg2 = 0 ;
@@ -7213,15 +7024,16 @@ SWIGINTERN PyObject *_wrap_double_raster___mul____SWIG_1(PyObject *self, int nob
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
+  PyObject * obj1 = 0 ;
   SwigValueWrapper< Raster< double > > result;
   
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"O:double_raster___mul__",&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_double_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "double_raster___mul__" "', argument " "1"" of type '" "Raster< double > const *""'"); 
   }
   arg1 = reinterpret_cast< Raster< double > * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_RasterT_double_t,  0  | 0);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_RasterT_double_t,  0  | 0);
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "double_raster___mul__" "', argument " "2"" of type '" "Raster< double > const &""'"); 
   }
@@ -7250,78 +7062,41 @@ fail:
 SWIGINTERN PyObject *_wrap_double_raster___mul__(PyObject *self, PyObject *args) {
   int argc;
   PyObject *argv[3];
+  int ii;
   
-  if (!(argc = SWIG_Python_UnpackTuple(args,"double_raster___mul__",0,2,argv+1))) SWIG_fail;
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? (int)PyObject_Length(args) : 0;
   argv[0] = self;
-  {
-    unsigned long _index = 0;
-    SWIG_TypeRank _rank = 0; 
-    if (argc == 2) {
-      SWIG_TypeRank _ranki = 0;
-      SWIG_TypeRank _rankm = 0;
-      SWIG_TypeRank _pi = 1;
-      int _v = 0;
-      {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_double_t, 0);
-        _v = SWIG_CheckState(res);
-      }
-      if (!_v) goto check_1;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      {
-        int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_RasterT_double_t, 0);
-        _v = SWIG_CheckState(res);
-      }
-      if (!_v) goto check_1;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      if (!_index || (_ranki < _rank)) {
-        _rank = _ranki; _index = 1;
-        if (_rank == _rankm) goto dispatch;
+  for (ii = 0; (ii < 1) && (ii < argc); ii++) {
+    argv[ii + 1] = PyTuple_GET_ITEM(args,ii);
+  }
+  argc++;
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_double_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_RasterT_double_t, 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        return _wrap_double_raster___mul____SWIG_1(self, args);
       }
     }
-  check_1:
-    
-    if (argc == 2) {
-      SWIG_TypeRank _ranki = 0;
-      SWIG_TypeRank _rankm = 0;
-      SWIG_TypeRank _pi = 1;
-      int _v = 0;
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_double_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
       {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_double_t, 0);
+        int res = SWIG_AsVal_double(argv[1], NULL);
         _v = SWIG_CheckState(res);
       }
-      if (!_v) goto check_2;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      {
-        {
-          int res = SWIG_AsVal_double(argv[1], NULL);
-          _v = SWIG_CheckState(res);
-        }
+      if (_v) {
+        return _wrap_double_raster___mul____SWIG_0(self, args);
       }
-      if (!_v) goto check_2;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      if (!_index || (_ranki < _rank)) {
-        _rank = _ranki; _index = 2;
-        if (_rank == _rankm) goto dispatch;
-      }
-    }
-  check_2:
-    
-  dispatch:
-    switch(_index) {
-    case 1:
-      return _wrap_double_raster___mul____SWIG_1(self, argc, argv);
-    case 2:
-      return _wrap_double_raster___mul____SWIG_0(self, argc, argv);
     }
   }
   
@@ -7333,7 +7108,7 @@ fail:
 
 SWIGPY_BINARYFUNC_CLOSURE(_wrap_double_raster___mul__)
 
-SWIGINTERN PyObject *_wrap_double_raster___add____SWIG_1(PyObject *self, int nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_double_raster___add____SWIG_1(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   Raster< double > *arg1 = (Raster< double > *) 0 ;
   Raster< double > *arg2 = 0 ;
@@ -7341,15 +7116,16 @@ SWIGINTERN PyObject *_wrap_double_raster___add____SWIG_1(PyObject *self, int nob
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
+  PyObject * obj1 = 0 ;
   SwigValueWrapper< Raster< double > > result;
   
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"O:double_raster___add__",&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_double_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "double_raster___add__" "', argument " "1"" of type '" "Raster< double > const *""'"); 
   }
   arg1 = reinterpret_cast< Raster< double > * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_RasterT_double_t,  0  | 0);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_RasterT_double_t,  0  | 0);
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "double_raster___add__" "', argument " "2"" of type '" "Raster< double > const &""'"); 
   }
@@ -7378,78 +7154,41 @@ fail:
 SWIGINTERN PyObject *_wrap_double_raster___add__(PyObject *self, PyObject *args) {
   int argc;
   PyObject *argv[3];
+  int ii;
   
-  if (!(argc = SWIG_Python_UnpackTuple(args,"double_raster___add__",0,2,argv+1))) SWIG_fail;
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? (int)PyObject_Length(args) : 0;
   argv[0] = self;
-  {
-    unsigned long _index = 0;
-    SWIG_TypeRank _rank = 0; 
-    if (argc == 2) {
-      SWIG_TypeRank _ranki = 0;
-      SWIG_TypeRank _rankm = 0;
-      SWIG_TypeRank _pi = 1;
-      int _v = 0;
-      {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_double_t, 0);
-        _v = SWIG_CheckState(res);
-      }
-      if (!_v) goto check_1;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      {
-        int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_RasterT_double_t, 0);
-        _v = SWIG_CheckState(res);
-      }
-      if (!_v) goto check_1;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      if (!_index || (_ranki < _rank)) {
-        _rank = _ranki; _index = 1;
-        if (_rank == _rankm) goto dispatch;
+  for (ii = 0; (ii < 1) && (ii < argc); ii++) {
+    argv[ii + 1] = PyTuple_GET_ITEM(args,ii);
+  }
+  argc++;
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_double_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_RasterT_double_t, 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        return _wrap_double_raster___add____SWIG_1(self, args);
       }
     }
-  check_1:
-    
-    if (argc == 2) {
-      SWIG_TypeRank _ranki = 0;
-      SWIG_TypeRank _rankm = 0;
-      SWIG_TypeRank _pi = 1;
-      int _v = 0;
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_double_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
       {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_double_t, 0);
+        int res = SWIG_AsVal_double(argv[1], NULL);
         _v = SWIG_CheckState(res);
       }
-      if (!_v) goto check_2;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      {
-        {
-          int res = SWIG_AsVal_double(argv[1], NULL);
-          _v = SWIG_CheckState(res);
-        }
+      if (_v) {
+        return _wrap_double_raster___add____SWIG_0(self, args);
       }
-      if (!_v) goto check_2;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      if (!_index || (_ranki < _rank)) {
-        _rank = _ranki; _index = 2;
-        if (_rank == _rankm) goto dispatch;
-      }
-    }
-  check_2:
-    
-  dispatch:
-    switch(_index) {
-    case 1:
-      return _wrap_double_raster___add____SWIG_1(self, argc, argv);
-    case 2:
-      return _wrap_double_raster___add____SWIG_0(self, argc, argv);
     }
   }
   
@@ -7461,7 +7200,7 @@ fail:
 
 SWIGPY_BINARYFUNC_CLOSURE(_wrap_double_raster___add__)
 
-SWIGINTERN PyObject *_wrap_double_raster___sub____SWIG_1(PyObject *self, int nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_double_raster___sub____SWIG_1(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   Raster< double > *arg1 = (Raster< double > *) 0 ;
   Raster< double > *arg2 = 0 ;
@@ -7469,15 +7208,16 @@ SWIGINTERN PyObject *_wrap_double_raster___sub____SWIG_1(PyObject *self, int nob
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
+  PyObject * obj1 = 0 ;
   SwigValueWrapper< Raster< double > > result;
   
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"O:double_raster___sub__",&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_double_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "double_raster___sub__" "', argument " "1"" of type '" "Raster< double > const *""'"); 
   }
   arg1 = reinterpret_cast< Raster< double > * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_RasterT_double_t,  0  | 0);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_RasterT_double_t,  0  | 0);
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "double_raster___sub__" "', argument " "2"" of type '" "Raster< double > const &""'"); 
   }
@@ -7506,78 +7246,41 @@ fail:
 SWIGINTERN PyObject *_wrap_double_raster___sub__(PyObject *self, PyObject *args) {
   int argc;
   PyObject *argv[3];
+  int ii;
   
-  if (!(argc = SWIG_Python_UnpackTuple(args,"double_raster___sub__",0,2,argv+1))) SWIG_fail;
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? (int)PyObject_Length(args) : 0;
   argv[0] = self;
-  {
-    unsigned long _index = 0;
-    SWIG_TypeRank _rank = 0; 
-    if (argc == 2) {
-      SWIG_TypeRank _ranki = 0;
-      SWIG_TypeRank _rankm = 0;
-      SWIG_TypeRank _pi = 1;
-      int _v = 0;
-      {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_double_t, 0);
-        _v = SWIG_CheckState(res);
-      }
-      if (!_v) goto check_1;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      {
-        int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_RasterT_double_t, 0);
-        _v = SWIG_CheckState(res);
-      }
-      if (!_v) goto check_1;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      if (!_index || (_ranki < _rank)) {
-        _rank = _ranki; _index = 1;
-        if (_rank == _rankm) goto dispatch;
+  for (ii = 0; (ii < 1) && (ii < argc); ii++) {
+    argv[ii + 1] = PyTuple_GET_ITEM(args,ii);
+  }
+  argc++;
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_double_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_RasterT_double_t, 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        return _wrap_double_raster___sub____SWIG_1(self, args);
       }
     }
-  check_1:
-    
-    if (argc == 2) {
-      SWIG_TypeRank _ranki = 0;
-      SWIG_TypeRank _rankm = 0;
-      SWIG_TypeRank _pi = 1;
-      int _v = 0;
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_double_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
       {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_double_t, 0);
+        int res = SWIG_AsVal_double(argv[1], NULL);
         _v = SWIG_CheckState(res);
       }
-      if (!_v) goto check_2;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      {
-        {
-          int res = SWIG_AsVal_double(argv[1], NULL);
-          _v = SWIG_CheckState(res);
-        }
+      if (_v) {
+        return _wrap_double_raster___sub____SWIG_0(self, args);
       }
-      if (!_v) goto check_2;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      if (!_index || (_ranki < _rank)) {
-        _rank = _ranki; _index = 2;
-        if (_rank == _rankm) goto dispatch;
-      }
-    }
-  check_2:
-    
-  dispatch:
-    switch(_index) {
-    case 1:
-      return _wrap_double_raster___sub____SWIG_1(self, argc, argv);
-    case 2:
-      return _wrap_double_raster___sub____SWIG_0(self, argc, argv);
     }
   }
   
@@ -7589,7 +7292,7 @@ fail:
 
 SWIGPY_BINARYFUNC_CLOSURE(_wrap_double_raster___sub__)
 
-SWIGINTERN PyObject *_wrap_double_raster___div____SWIG_1(PyObject *self, int nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_double_raster___div____SWIG_1(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   Raster< double > *arg1 = (Raster< double > *) 0 ;
   Raster< double > *arg2 = 0 ;
@@ -7597,15 +7300,16 @@ SWIGINTERN PyObject *_wrap_double_raster___div____SWIG_1(PyObject *self, int nob
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
+  PyObject * obj1 = 0 ;
   SwigValueWrapper< Raster< double > > result;
   
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"O:double_raster___div__",&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_double_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "double_raster___div__" "', argument " "1"" of type '" "Raster< double > const *""'"); 
   }
   arg1 = reinterpret_cast< Raster< double > * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_RasterT_double_t,  0  | 0);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_RasterT_double_t,  0  | 0);
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "double_raster___div__" "', argument " "2"" of type '" "Raster< double > const &""'"); 
   }
@@ -7634,78 +7338,41 @@ fail:
 SWIGINTERN PyObject *_wrap_double_raster___div__(PyObject *self, PyObject *args) {
   int argc;
   PyObject *argv[3];
+  int ii;
   
-  if (!(argc = SWIG_Python_UnpackTuple(args,"double_raster___div__",0,2,argv+1))) SWIG_fail;
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? (int)PyObject_Length(args) : 0;
   argv[0] = self;
-  {
-    unsigned long _index = 0;
-    SWIG_TypeRank _rank = 0; 
-    if (argc == 2) {
-      SWIG_TypeRank _ranki = 0;
-      SWIG_TypeRank _rankm = 0;
-      SWIG_TypeRank _pi = 1;
-      int _v = 0;
-      {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_double_t, 0);
-        _v = SWIG_CheckState(res);
-      }
-      if (!_v) goto check_1;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      {
-        int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_RasterT_double_t, 0);
-        _v = SWIG_CheckState(res);
-      }
-      if (!_v) goto check_1;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      if (!_index || (_ranki < _rank)) {
-        _rank = _ranki; _index = 1;
-        if (_rank == _rankm) goto dispatch;
+  for (ii = 0; (ii < 1) && (ii < argc); ii++) {
+    argv[ii + 1] = PyTuple_GET_ITEM(args,ii);
+  }
+  argc++;
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_double_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_RasterT_double_t, 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        return _wrap_double_raster___div____SWIG_1(self, args);
       }
     }
-  check_1:
-    
-    if (argc == 2) {
-      SWIG_TypeRank _ranki = 0;
-      SWIG_TypeRank _rankm = 0;
-      SWIG_TypeRank _pi = 1;
-      int _v = 0;
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_double_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
       {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_double_t, 0);
+        int res = SWIG_AsVal_double(argv[1], NULL);
         _v = SWIG_CheckState(res);
       }
-      if (!_v) goto check_2;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      {
-        {
-          int res = SWIG_AsVal_double(argv[1], NULL);
-          _v = SWIG_CheckState(res);
-        }
+      if (_v) {
+        return _wrap_double_raster___div____SWIG_0(self, args);
       }
-      if (!_v) goto check_2;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      if (!_index || (_ranki < _rank)) {
-        _rank = _ranki; _index = 2;
-        if (_rank == _rankm) goto dispatch;
-      }
-    }
-  check_2:
-    
-  dispatch:
-    switch(_index) {
-    case 1:
-      return _wrap_double_raster___div____SWIG_1(self, argc, argv);
-    case 2:
-      return _wrap_double_raster___div____SWIG_0(self, argc, argv);
     }
   }
   
@@ -7717,12 +7384,12 @@ fail:
 
 SWIGPY_BINARYFUNC_CLOSURE(_wrap_double_raster___div__)
 
-SWIGINTERN PyObject *_wrap_double_raster_fill(PyObject *self, PyObject *args, PyObject *kwargs) {
+SWIGINTERN PyObject *_wrap_double_raster_fill__SWIG_0(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   Raster< double > *arg1 = (Raster< double > *) 0 ;
   double arg2 ;
-  size_t arg3 = (size_t) 100 ;
-  bool arg4 = (bool) false ;
+  size_t arg3 ;
+  bool arg4 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   double val2 ;
@@ -7734,12 +7401,9 @@ SWIGINTERN PyObject *_wrap_double_raster_fill(PyObject *self, PyObject *args, Py
   PyObject * obj1 = 0 ;
   PyObject * obj2 = 0 ;
   PyObject * obj3 = 0 ;
-  char *  kwnames[] = {
-    (char *) "min_diff",(char *) "max_iter",(char *) "debug", NULL 
-  };
   size_t result;
   
-  if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"O|OO:double_raster_fill",kwnames,&obj1,&obj2,&obj3)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"OOO:double_raster_fill",&obj1,&obj2,&obj3)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_double_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "double_raster_fill" "', argument " "1"" of type '" "Raster< double > *""'"); 
@@ -7750,20 +7414,16 @@ SWIGINTERN PyObject *_wrap_double_raster_fill(PyObject *self, PyObject *args, Py
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "double_raster_fill" "', argument " "2"" of type '" "double""'");
   } 
   arg2 = static_cast< double >(val2);
-  if (obj2) {
-    ecode3 = SWIG_AsVal_size_t(obj2, &val3);
-    if (!SWIG_IsOK(ecode3)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "double_raster_fill" "', argument " "3"" of type '" "size_t""'");
-    } 
-    arg3 = static_cast< size_t >(val3);
-  }
-  if (obj3) {
-    ecode4 = SWIG_AsVal_bool(obj3, &val4);
-    if (!SWIG_IsOK(ecode4)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "double_raster_fill" "', argument " "4"" of type '" "bool""'");
-    } 
-    arg4 = static_cast< bool >(val4);
-  }
+  ecode3 = SWIG_AsVal_size_t(obj2, &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "double_raster_fill" "', argument " "3"" of type '" "size_t""'");
+  } 
+  arg3 = static_cast< size_t >(val3);
+  ecode4 = SWIG_AsVal_bool(obj3, &val4);
+  if (!SWIG_IsOK(ecode4)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "double_raster_fill" "', argument " "4"" of type '" "bool""'");
+  } 
+  arg4 = static_cast< bool >(val4);
   {
     try {
       result = (arg1)->fill(arg2,arg3,arg4);
@@ -7782,7 +7442,182 @@ fail:
 }
 
 
-SWIGINTERN int _wrap_new_double_raster__SWIG_0(PyObject *self, int nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_double_raster_fill__SWIG_1(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  Raster< double > *arg1 = (Raster< double > *) 0 ;
+  double arg2 ;
+  size_t arg3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  double val2 ;
+  int ecode2 = 0 ;
+  size_t val3 ;
+  int ecode3 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  size_t result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:double_raster_fill",&obj1,&obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_double_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "double_raster_fill" "', argument " "1"" of type '" "Raster< double > *""'"); 
+  }
+  arg1 = reinterpret_cast< Raster< double > * >(argp1);
+  ecode2 = SWIG_AsVal_double(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "double_raster_fill" "', argument " "2"" of type '" "double""'");
+  } 
+  arg2 = static_cast< double >(val2);
+  ecode3 = SWIG_AsVal_size_t(obj2, &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "double_raster_fill" "', argument " "3"" of type '" "size_t""'");
+  } 
+  arg3 = static_cast< size_t >(val3);
+  {
+    try {
+      result = (arg1)->fill(arg2,arg3);
+    } 
+    catch (std::runtime_error& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what() );
+    }
+    catch (std::exception& e) {
+      SWIG_exception(SWIG_UnknownError, e.what());
+    }
+  }
+  resultobj = SWIG_From_size_t(static_cast< size_t >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_double_raster_fill__SWIG_2(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  Raster< double > *arg1 = (Raster< double > *) 0 ;
+  double arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  double val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj1 = 0 ;
+  size_t result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:double_raster_fill",&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_double_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "double_raster_fill" "', argument " "1"" of type '" "Raster< double > *""'"); 
+  }
+  arg1 = reinterpret_cast< Raster< double > * >(argp1);
+  ecode2 = SWIG_AsVal_double(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "double_raster_fill" "', argument " "2"" of type '" "double""'");
+  } 
+  arg2 = static_cast< double >(val2);
+  {
+    try {
+      result = (arg1)->fill(arg2);
+    } 
+    catch (std::runtime_error& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what() );
+    }
+    catch (std::exception& e) {
+      SWIG_exception(SWIG_UnknownError, e.what());
+    }
+  }
+  resultobj = SWIG_From_size_t(static_cast< size_t >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_double_raster_fill(PyObject *self, PyObject *args) {
+  int argc;
+  PyObject *argv[5];
+  int ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? (int)PyObject_Length(args) : 0;
+  argv[0] = self;
+  for (ii = 0; (ii < 3) && (ii < argc); ii++) {
+    argv[ii + 1] = PyTuple_GET_ITEM(args,ii);
+  }
+  argc++;
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_double_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        int res = SWIG_AsVal_double(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        return _wrap_double_raster_fill__SWIG_2(self, args);
+      }
+    }
+  }
+  if (argc == 3) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_double_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        int res = SWIG_AsVal_double(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        {
+          int res = SWIG_AsVal_size_t(argv[2], NULL);
+          _v = SWIG_CheckState(res);
+        }
+        if (_v) {
+          return _wrap_double_raster_fill__SWIG_1(self, args);
+        }
+      }
+    }
+  }
+  if (argc == 4) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_double_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        int res = SWIG_AsVal_double(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        {
+          int res = SWIG_AsVal_size_t(argv[2], NULL);
+          _v = SWIG_CheckState(res);
+        }
+        if (_v) {
+          {
+            int res = SWIG_AsVal_bool(argv[3], NULL);
+            _v = SWIG_CheckState(res);
+          }
+          if (_v) {
+            return _wrap_double_raster_fill__SWIG_0(self, args);
+          }
+        }
+      }
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'double_raster_fill'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    Raster< double >::fill(double,size_t,bool)\n"
+    "    Raster< double >::fill(double,size_t)\n"
+    "    Raster< double >::fill(double)\n");
+  return 0;
+}
+
+
+SWIGINTERN int _wrap_new_double_raster__SWIG_0(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   int arg1 ;
   int arg2 ;
@@ -7791,7 +7626,7 @@ SWIGINTERN int _wrap_new_double_raster__SWIG_0(PyObject *self, int nobjs, PyObje
   double arg5 ;
   double arg6 ;
   double arg7 ;
-  double arg8 = (double) 0 ;
+  double arg8 ;
   int val1 ;
   int ecode1 = 0 ;
   int val2 ;
@@ -7808,51 +7643,57 @@ SWIGINTERN int _wrap_new_double_raster__SWIG_0(PyObject *self, int nobjs, PyObje
   int ecode7 = 0 ;
   double val8 ;
   int ecode8 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  PyObject * obj4 = 0 ;
+  PyObject * obj5 = 0 ;
+  PyObject * obj6 = 0 ;
+  PyObject * obj7 = 0 ;
+  PyObject * obj8 = 0 ;
   Raster< double > *result = 0 ;
   
-  if ((nobjs < 7) || (nobjs > 8)) SWIG_fail;
-  ecode1 = SWIG_AsVal_int(swig_obj[0], &val1);
+  if (!PyArg_ParseTuple(args,(char *)"OOOOOOOO:new_double_raster",&obj1,&obj2,&obj3,&obj4,&obj5,&obj6,&obj7,&obj8)) SWIG_fail;
+  ecode1 = SWIG_AsVal_int(obj1, &val1);
   if (!SWIG_IsOK(ecode1)) {
     SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "new_double_raster" "', argument " "1"" of type '" "int""'");
   } 
   arg1 = static_cast< int >(val1);
-  ecode2 = SWIG_AsVal_int(swig_obj[1], &val2);
+  ecode2 = SWIG_AsVal_int(obj2, &val2);
   if (!SWIG_IsOK(ecode2)) {
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "new_double_raster" "', argument " "2"" of type '" "int""'");
   } 
   arg2 = static_cast< int >(val2);
-  ecode3 = SWIG_AsVal_double(swig_obj[2], &val3);
+  ecode3 = SWIG_AsVal_double(obj3, &val3);
   if (!SWIG_IsOK(ecode3)) {
     SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "new_double_raster" "', argument " "3"" of type '" "double""'");
   } 
   arg3 = static_cast< double >(val3);
-  ecode4 = SWIG_AsVal_double(swig_obj[3], &val4);
+  ecode4 = SWIG_AsVal_double(obj4, &val4);
   if (!SWIG_IsOK(ecode4)) {
     SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "new_double_raster" "', argument " "4"" of type '" "double""'");
   } 
   arg4 = static_cast< double >(val4);
-  ecode5 = SWIG_AsVal_double(swig_obj[4], &val5);
+  ecode5 = SWIG_AsVal_double(obj5, &val5);
   if (!SWIG_IsOK(ecode5)) {
     SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "new_double_raster" "', argument " "5"" of type '" "double""'");
   } 
   arg5 = static_cast< double >(val5);
-  ecode6 = SWIG_AsVal_double(swig_obj[5], &val6);
+  ecode6 = SWIG_AsVal_double(obj6, &val6);
   if (!SWIG_IsOK(ecode6)) {
     SWIG_exception_fail(SWIG_ArgError(ecode6), "in method '" "new_double_raster" "', argument " "6"" of type '" "double""'");
   } 
   arg6 = static_cast< double >(val6);
-  ecode7 = SWIG_AsVal_double(swig_obj[6], &val7);
+  ecode7 = SWIG_AsVal_double(obj7, &val7);
   if (!SWIG_IsOK(ecode7)) {
     SWIG_exception_fail(SWIG_ArgError(ecode7), "in method '" "new_double_raster" "', argument " "7"" of type '" "double""'");
   } 
   arg7 = static_cast< double >(val7);
-  if (swig_obj[7]) {
-    ecode8 = SWIG_AsVal_double(swig_obj[7], &val8);
-    if (!SWIG_IsOK(ecode8)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode8), "in method '" "new_double_raster" "', argument " "8"" of type '" "double""'");
-    } 
-    arg8 = static_cast< double >(val8);
-  }
+  ecode8 = SWIG_AsVal_double(obj8, &val8);
+  if (!SWIG_IsOK(ecode8)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode8), "in method '" "new_double_raster" "', argument " "8"" of type '" "double""'");
+  } 
+  arg8 = static_cast< double >(val8);
   {
     try {
       result = (Raster< double > *)new Raster< double >(arg1,arg2,arg3,arg4,arg5,arg6,arg7,arg8);
@@ -7871,15 +7712,102 @@ fail:
 }
 
 
-SWIGINTERN int _wrap_new_double_raster__SWIG_1(PyObject *self, int nobjs, PyObject **swig_obj) {
+SWIGINTERN int _wrap_new_double_raster__SWIG_1(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  int arg1 ;
+  int arg2 ;
+  double arg3 ;
+  double arg4 ;
+  double arg5 ;
+  double arg6 ;
+  double arg7 ;
+  int val1 ;
+  int ecode1 = 0 ;
+  int val2 ;
+  int ecode2 = 0 ;
+  double val3 ;
+  int ecode3 = 0 ;
+  double val4 ;
+  int ecode4 = 0 ;
+  double val5 ;
+  int ecode5 = 0 ;
+  double val6 ;
+  int ecode6 = 0 ;
+  double val7 ;
+  int ecode7 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  PyObject * obj4 = 0 ;
+  PyObject * obj5 = 0 ;
+  PyObject * obj6 = 0 ;
+  PyObject * obj7 = 0 ;
+  Raster< double > *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOOOOOO:new_double_raster",&obj1,&obj2,&obj3,&obj4,&obj5,&obj6,&obj7)) SWIG_fail;
+  ecode1 = SWIG_AsVal_int(obj1, &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "new_double_raster" "', argument " "1"" of type '" "int""'");
+  } 
+  arg1 = static_cast< int >(val1);
+  ecode2 = SWIG_AsVal_int(obj2, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "new_double_raster" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
+  ecode3 = SWIG_AsVal_double(obj3, &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "new_double_raster" "', argument " "3"" of type '" "double""'");
+  } 
+  arg3 = static_cast< double >(val3);
+  ecode4 = SWIG_AsVal_double(obj4, &val4);
+  if (!SWIG_IsOK(ecode4)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "new_double_raster" "', argument " "4"" of type '" "double""'");
+  } 
+  arg4 = static_cast< double >(val4);
+  ecode5 = SWIG_AsVal_double(obj5, &val5);
+  if (!SWIG_IsOK(ecode5)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "new_double_raster" "', argument " "5"" of type '" "double""'");
+  } 
+  arg5 = static_cast< double >(val5);
+  ecode6 = SWIG_AsVal_double(obj6, &val6);
+  if (!SWIG_IsOK(ecode6)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode6), "in method '" "new_double_raster" "', argument " "6"" of type '" "double""'");
+  } 
+  arg6 = static_cast< double >(val6);
+  ecode7 = SWIG_AsVal_double(obj7, &val7);
+  if (!SWIG_IsOK(ecode7)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode7), "in method '" "new_double_raster" "', argument " "7"" of type '" "double""'");
+  } 
+  arg7 = static_cast< double >(val7);
+  {
+    try {
+      result = (Raster< double > *)new Raster< double >(arg1,arg2,arg3,arg4,arg5,arg6,arg7);
+    } 
+    catch (std::runtime_error& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what() );
+    }
+    catch (std::exception& e) {
+      SWIG_exception(SWIG_UnknownError, e.what());
+    }
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_RasterT_double_t, SWIG_BUILTIN_INIT |  0 );
+  return resultobj == Py_None ? 1 : 0;
+fail:
+  return -1;
+}
+
+
+SWIGINTERN int _wrap_new_double_raster__SWIG_2(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   Raster< double > *arg1 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
+  PyObject * obj1 = 0 ;
   Raster< double > *result = 0 ;
   
-  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_RasterT_double_t,  0  | 0);
+  if (!PyArg_ParseTuple(args,(char *)"O:new_double_raster",&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj1, &argp1, SWIGTYPE_p_RasterT_double_t,  0  | 0);
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_double_raster" "', argument " "1"" of type '" "Raster< double > const &""'"); 
   }
@@ -7905,7 +7833,7 @@ fail:
 }
 
 
-SWIGINTERN int _wrap_new_double_raster__SWIG_2(PyObject *self, int nobjs, PyObject **swig_obj) {
+SWIGINTERN int _wrap_new_double_raster__SWIG_3(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   Raster< double > *arg1 = 0 ;
   double arg2 ;
@@ -7913,10 +7841,12 @@ SWIGINTERN int _wrap_new_double_raster__SWIG_2(PyObject *self, int nobjs, PyObje
   int res1 = 0 ;
   double val2 ;
   int ecode2 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
   Raster< double > *result = 0 ;
   
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_RasterT_double_t,  0  | 0);
+  if (!PyArg_ParseTuple(args,(char *)"OO:new_double_raster",&obj1,&obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj1, &argp1, SWIGTYPE_p_RasterT_double_t,  0  | 0);
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_double_raster" "', argument " "1"" of type '" "Raster< double > const &""'"); 
   }
@@ -7924,7 +7854,7 @@ SWIGINTERN int _wrap_new_double_raster__SWIG_2(PyObject *self, int nobjs, PyObje
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_double_raster" "', argument " "1"" of type '" "Raster< double > const &""'"); 
   }
   arg1 = reinterpret_cast< Raster< double > * >(argp1);
-  ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
+  ecode2 = SWIG_AsVal_double(obj2, &val2);
   if (!SWIG_IsOK(ecode2)) {
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "new_double_raster" "', argument " "2"" of type '" "double""'");
   } 
@@ -7947,16 +7877,17 @@ fail:
 }
 
 
-SWIGINTERN int _wrap_new_double_raster__SWIG_3(PyObject *self, int nobjs, PyObject **swig_obj) {
+SWIGINTERN int _wrap_new_double_raster__SWIG_4(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   std::string *arg1 = 0 ;
   int res1 = SWIG_OLDOBJ ;
+  PyObject * obj1 = 0 ;
   Raster< double > *result = 0 ;
   
-  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"O:new_double_raster",&obj1)) SWIG_fail;
   {
     std::string *ptr = (std::string *)0;
-    res1 = SWIG_AsPtr_std_string(swig_obj[0], &ptr);
+    res1 = SWIG_AsPtr_std_string(obj1, &ptr);
     if (!SWIG_IsOK(res1)) {
       SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_double_raster" "', argument " "1"" of type '" "std::string const &""'"); 
     }
@@ -7985,15 +7916,16 @@ fail:
 }
 
 
-SWIGINTERN int _wrap_new_double_raster__SWIG_4(PyObject *self, int nobjs, PyObject **swig_obj) {
+SWIGINTERN int _wrap_new_double_raster__SWIG_5(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   std::istream *arg1 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
+  PyObject * obj1 = 0 ;
   Raster< double > *result = 0 ;
   
-  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_std__istream,  0 );
+  if (!PyArg_ParseTuple(args,(char *)"O:new_double_raster",&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj1, &argp1, SWIGTYPE_p_std__istream,  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_double_raster" "', argument " "1"" of type '" "std::istream &""'"); 
   }
@@ -8022,209 +7954,148 @@ fail:
 SWIGINTERN int _wrap_new_double_raster(PyObject *self, PyObject *args) {
   int argc;
   PyObject *argv[9];
+  int ii;
   
-  if (!(argc = SWIG_Python_UnpackTuple(args,"new_double_raster",0,8,argv))) SWIG_fail;
-  --argc;
-  {
-    unsigned long _index = 0;
-    SWIG_TypeRank _rank = 0; 
-    if (argc == 1) {
-      SWIG_TypeRank _ranki = 0;
-      SWIG_TypeRank _rankm = 0;
-      SWIG_TypeRank _pi = 1;
-      int _v = 0;
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? (int)PyObject_Length(args) : 0;
+  for (ii = 0; (ii < 8) && (ii < argc); ii++) {
+    argv[ii] = PyTuple_GET_ITEM(args,ii);
+  }
+  if (argc == 1) {
+    int _v;
+    int res = SWIG_ConvertPtr(argv[0], 0, SWIGTYPE_p_RasterT_double_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_new_double_raster__SWIG_2(self, args);
+    }
+  }
+  if (argc == 1) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_std__istream, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_new_double_raster__SWIG_5(self, args);
+    }
+  }
+  if (argc == 1) {
+    int _v;
+    int res = SWIG_AsPtr_std_string(argv[0], (std::string**)(0));
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_new_double_raster__SWIG_4(self, args);
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    int res = SWIG_ConvertPtr(argv[0], 0, SWIGTYPE_p_RasterT_double_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
       {
-        int res = SWIG_ConvertPtr(argv[0], 0, SWIGTYPE_p_RasterT_double_t, 0);
+        int res = SWIG_AsVal_double(argv[1], NULL);
         _v = SWIG_CheckState(res);
       }
-      if (!_v) goto check_1;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      if (!_index || (_ranki < _rank)) {
-        _rank = _ranki; _index = 1;
-        if (_rank == _rankm) goto dispatch;
+      if (_v) {
+        return _wrap_new_double_raster__SWIG_3(self, args);
       }
     }
-  check_1:
-    
-    if (argc == 1) {
-      SWIG_TypeRank _ranki = 0;
-      SWIG_TypeRank _rankm = 0;
-      SWIG_TypeRank _pi = 1;
-      int _v = 0;
+  }
+  if (argc == 7) {
+    int _v;
+    {
+      int res = SWIG_AsVal_int(argv[0], NULL);
+      _v = SWIG_CheckState(res);
+    }
+    if (_v) {
       {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_std__istream, 0);
+        int res = SWIG_AsVal_int(argv[1], NULL);
         _v = SWIG_CheckState(res);
       }
-      if (!_v) goto check_2;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      if (!_index || (_ranki < _rank)) {
-        _rank = _ranki; _index = 2;
-        if (_rank == _rankm) goto dispatch;
-      }
-    }
-  check_2:
-    
-    if (argc == 1) {
-      SWIG_TypeRank _ranki = 0;
-      SWIG_TypeRank _rankm = 0;
-      SWIG_TypeRank _pi = 1;
-      int _v = 0;
-      {
-        int res = SWIG_AsPtr_std_string(argv[0], (std::string**)(0));
-        _v = SWIG_CheckState(res);
-      }
-      if (!_v) goto check_3;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      if (!_index || (_ranki < _rank)) {
-        _rank = _ranki; _index = 3;
-        if (_rank == _rankm) goto dispatch;
-      }
-    }
-  check_3:
-    
-    if (argc == 2) {
-      SWIG_TypeRank _ranki = 0;
-      SWIG_TypeRank _rankm = 0;
-      SWIG_TypeRank _pi = 1;
-      int _v = 0;
-      {
-        int res = SWIG_ConvertPtr(argv[0], 0, SWIGTYPE_p_RasterT_double_t, 0);
-        _v = SWIG_CheckState(res);
-      }
-      if (!_v) goto check_4;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      {
-        {
-          int res = SWIG_AsVal_double(argv[1], NULL);
-          _v = SWIG_CheckState(res);
-        }
-      }
-      if (!_v) goto check_4;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      if (!_index || (_ranki < _rank)) {
-        _rank = _ranki; _index = 4;
-        if (_rank == _rankm) goto dispatch;
-      }
-    }
-  check_4:
-    
-    if ((argc >= 7) && (argc <= 8)) {
-      SWIG_TypeRank _ranki = 0;
-      SWIG_TypeRank _rankm = 0;
-      SWIG_TypeRank _pi = 1;
-      int _v = 0;
-      {
-        {
-          int res = SWIG_AsVal_int(argv[0], NULL);
-          _v = SWIG_CheckState(res);
-        }
-      }
-      if (!_v) goto check_5;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      {
-        {
-          int res = SWIG_AsVal_int(argv[1], NULL);
-          _v = SWIG_CheckState(res);
-        }
-      }
-      if (!_v) goto check_5;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      {
+      if (_v) {
         {
           int res = SWIG_AsVal_double(argv[2], NULL);
           _v = SWIG_CheckState(res);
         }
-      }
-      if (!_v) goto check_5;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      {
-        {
-          int res = SWIG_AsVal_double(argv[3], NULL);
-          _v = SWIG_CheckState(res);
-        }
-      }
-      if (!_v) goto check_5;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      {
-        {
-          int res = SWIG_AsVal_double(argv[4], NULL);
-          _v = SWIG_CheckState(res);
-        }
-      }
-      if (!_v) goto check_5;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      {
-        {
-          int res = SWIG_AsVal_double(argv[5], NULL);
-          _v = SWIG_CheckState(res);
-        }
-      }
-      if (!_v) goto check_5;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      {
-        {
-          int res = SWIG_AsVal_double(argv[6], NULL);
-          _v = SWIG_CheckState(res);
-        }
-      }
-      if (!_v) goto check_5;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      if (argc > 7) {
-        {
+        if (_v) {
           {
-            int res = SWIG_AsVal_double(argv[7], NULL);
+            int res = SWIG_AsVal_double(argv[3], NULL);
             _v = SWIG_CheckState(res);
           }
+          if (_v) {
+            {
+              int res = SWIG_AsVal_double(argv[4], NULL);
+              _v = SWIG_CheckState(res);
+            }
+            if (_v) {
+              {
+                int res = SWIG_AsVal_double(argv[5], NULL);
+                _v = SWIG_CheckState(res);
+              }
+              if (_v) {
+                {
+                  int res = SWIG_AsVal_double(argv[6], NULL);
+                  _v = SWIG_CheckState(res);
+                }
+                if (_v) {
+                  return _wrap_new_double_raster__SWIG_1(self, args);
+                }
+              }
+            }
+          }
         }
-        if (!_v) goto check_5;
-        _ranki += _v*_pi;
-        _rankm += _pi;
-        _pi *= SWIG_MAXCASTRANK;
-      }
-      if (!_index || (_ranki < _rank)) {
-        _rank = _ranki; _index = 5;
-        if (_rank == _rankm) goto dispatch;
       }
     }
-  check_5:
-    
-  dispatch:
-    switch(_index) {
-    case 1:
-      return _wrap_new_double_raster__SWIG_1(self, argc, argv);
-    case 2:
-      return _wrap_new_double_raster__SWIG_4(self, argc, argv);
-    case 3:
-      return _wrap_new_double_raster__SWIG_3(self, argc, argv);
-    case 4:
-      return _wrap_new_double_raster__SWIG_2(self, argc, argv);
-    case 5:
-      return _wrap_new_double_raster__SWIG_0(self, argc, argv);
+  }
+  if (argc == 8) {
+    int _v;
+    {
+      int res = SWIG_AsVal_int(argv[0], NULL);
+      _v = SWIG_CheckState(res);
+    }
+    if (_v) {
+      {
+        int res = SWIG_AsVal_int(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        {
+          int res = SWIG_AsVal_double(argv[2], NULL);
+          _v = SWIG_CheckState(res);
+        }
+        if (_v) {
+          {
+            int res = SWIG_AsVal_double(argv[3], NULL);
+            _v = SWIG_CheckState(res);
+          }
+          if (_v) {
+            {
+              int res = SWIG_AsVal_double(argv[4], NULL);
+              _v = SWIG_CheckState(res);
+            }
+            if (_v) {
+              {
+                int res = SWIG_AsVal_double(argv[5], NULL);
+                _v = SWIG_CheckState(res);
+              }
+              if (_v) {
+                {
+                  int res = SWIG_AsVal_double(argv[6], NULL);
+                  _v = SWIG_CheckState(res);
+                }
+                if (_v) {
+                  {
+                    int res = SWIG_AsVal_double(argv[7], NULL);
+                    _v = SWIG_CheckState(res);
+                  }
+                  if (_v) {
+                    return _wrap_new_double_raster__SWIG_0(self, args);
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
     }
   }
   
@@ -8232,6 +8103,7 @@ fail:
   SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'new_double_raster'.\n"
     "  Possible C/C++ prototypes are:\n"
     "    Raster< double >::Raster(int,int,double,double,double,double,double,double)\n"
+    "    Raster< double >::Raster(int,int,double,double,double,double,double)\n"
     "    Raster< double >::Raster(Raster< double > const &)\n"
     "    Raster< double >::Raster(Raster< double > const &,double)\n"
     "    Raster< double >::Raster(std::string const &)\n"
@@ -8240,7 +8112,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_double_raster_WriteToASCFile__SWIG_0(PyObject *self, int nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_double_raster_WriteToASCFile__SWIG_0(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   Raster< double > *arg1 = (Raster< double > *) 0 ;
   std::ostream *arg2 = 0 ;
@@ -8248,14 +8120,15 @@ SWIGINTERN PyObject *_wrap_double_raster_WriteToASCFile__SWIG_0(PyObject *self, 
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
+  PyObject * obj1 = 0 ;
   
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"O:double_raster_WriteToASCFile",&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_double_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "double_raster_WriteToASCFile" "', argument " "1"" of type '" "Raster< double > const *""'"); 
   }
   arg1 = reinterpret_cast< Raster< double > * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_std__ostream,  0 );
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_std__ostream,  0 );
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "double_raster_WriteToASCFile" "', argument " "2"" of type '" "std::ostream &""'"); 
   }
@@ -8281,14 +8154,15 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_double_raster_WriteToASCFile__SWIG_1(PyObject *self, int nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_double_raster_WriteToASCFile__SWIG_1(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   Raster< double > *arg1 = (Raster< double > *) 0 ;
   std::string arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
+  PyObject * obj1 = 0 ;
   
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"O:double_raster_WriteToASCFile",&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_double_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "double_raster_WriteToASCFile" "', argument " "1"" of type '" "Raster< double > const *""'"); 
@@ -8296,7 +8170,7 @@ SWIGINTERN PyObject *_wrap_double_raster_WriteToASCFile__SWIG_1(PyObject *self, 
   arg1 = reinterpret_cast< Raster< double > * >(argp1);
   {
     std::string *ptr = (std::string *)0;
-    int res = SWIG_AsPtr_std_string(swig_obj[1], &ptr);
+    int res = SWIG_AsPtr_std_string(obj1, &ptr);
     if (!SWIG_IsOK(res) || !ptr) {
       SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "double_raster_WriteToASCFile" "', argument " "2"" of type '" "std::string""'"); 
     }
@@ -8324,77 +8198,40 @@ fail:
 SWIGINTERN PyObject *_wrap_double_raster_WriteToASCFile(PyObject *self, PyObject *args) {
   int argc;
   PyObject *argv[3];
+  int ii;
   
-  if (!(argc = SWIG_Python_UnpackTuple(args,"double_raster_WriteToASCFile",0,2,argv+1))) SWIG_fail;
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? (int)PyObject_Length(args) : 0;
   argv[0] = self;
-  {
-    unsigned long _index = 0;
-    SWIG_TypeRank _rank = 0; 
-    if (argc == 2) {
-      SWIG_TypeRank _ranki = 0;
-      SWIG_TypeRank _rankm = 0;
-      SWIG_TypeRank _pi = 1;
-      int _v = 0;
-      {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_double_t, 0);
-        _v = SWIG_CheckState(res);
-      }
-      if (!_v) goto check_1;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_std__ostream, 0);
-        _v = SWIG_CheckState(res);
-      }
-      if (!_v) goto check_1;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      if (!_index || (_ranki < _rank)) {
-        _rank = _ranki; _index = 1;
-        if (_rank == _rankm) goto dispatch;
+  for (ii = 0; (ii < 1) && (ii < argc); ii++) {
+    argv[ii + 1] = PyTuple_GET_ITEM(args,ii);
+  }
+  argc++;
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_double_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      void *vptr = 0;
+      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_std__ostream, 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        return _wrap_double_raster_WriteToASCFile__SWIG_0(self, args);
       }
     }
-  check_1:
-    
-    if (argc == 2) {
-      SWIG_TypeRank _ranki = 0;
-      SWIG_TypeRank _rankm = 0;
-      SWIG_TypeRank _pi = 1;
-      int _v = 0;
-      {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_double_t, 0);
-        _v = SWIG_CheckState(res);
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_double_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_AsPtr_std_string(argv[1], (std::string**)(0));
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        return _wrap_double_raster_WriteToASCFile__SWIG_1(self, args);
       }
-      if (!_v) goto check_2;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      {
-        int res = SWIG_AsPtr_std_string(argv[1], (std::string**)(0));
-        _v = SWIG_CheckState(res);
-      }
-      if (!_v) goto check_2;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      if (!_index || (_ranki < _rank)) {
-        _rank = _ranki; _index = 2;
-        if (_rank == _rankm) goto dispatch;
-      }
-    }
-  check_2:
-    
-  dispatch:
-    switch(_index) {
-    case 1:
-      return _wrap_double_raster_WriteToASCFile__SWIG_0(self, argc, argv);
-    case 2:
-      return _wrap_double_raster_WriteToASCFile__SWIG_1(self, argc, argv);
     }
   }
   
@@ -8407,18 +8244,15 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_double_raster_WriteToBinary(PyObject *self, PyObject *args, PyObject *kwargs) {
+SWIGINTERN PyObject *_wrap_double_raster_WriteToBinary(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   Raster< double > *arg1 = (Raster< double > *) 0 ;
   std::string arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   PyObject * obj1 = 0 ;
-  char *  kwnames[] = {
-    (char *) "filename", NULL 
-  };
   
-  if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"O:double_raster_WriteToBinary",kwnames,&obj1)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"O:double_raster_WriteToBinary",&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_double_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "double_raster_WriteToBinary" "', argument " "1"" of type '" "Raster< double > const *""'"); 
@@ -8451,7 +8285,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_double_raster_extract(PyObject *self, PyObject *args, PyObject *kwargs) {
+SWIGINTERN PyObject *_wrap_double_raster_extract(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   Raster< double > *arg1 = (Raster< double > *) 0 ;
   double arg2 ;
@@ -8472,12 +8306,9 @@ SWIGINTERN PyObject *_wrap_double_raster_extract(PyObject *self, PyObject *args,
   PyObject * obj2 = 0 ;
   PyObject * obj3 = 0 ;
   PyObject * obj4 = 0 ;
-  char *  kwnames[] = {
-    (char *) "x1",(char *) "y1",(char *) "x2",(char *) "y2", NULL 
-  };
   SwigValueWrapper< Raster< double > > result;
   
-  if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"OOOO:double_raster_extract",kwnames,&obj1,&obj2,&obj3,&obj4)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"OOOO:double_raster_extract",&obj1,&obj2,&obj3,&obj4)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_double_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "double_raster_extract" "', argument " "1"" of type '" "Raster< double > *""'"); 
@@ -8526,10 +8357,9 @@ SWIGINTERN PyObject *_wrap_double_raster_ToInt(PyObject *self, PyObject *args) {
   Raster< double > *arg1 = (Raster< double > *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[1] ;
   SwigValueWrapper< Raster< int > > result;
   
-  if (!SWIG_Python_UnpackTuple(args,"double_raster_ToInt",0,0,0)) SWIG_fail;
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_double_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "double_raster_ToInt" "', argument " "1"" of type '" "Raster< double > const *""'"); 
@@ -8558,10 +8388,9 @@ SWIGINTERN PyObject *_wrap_double_raster_ToFloat(PyObject *self, PyObject *args)
   Raster< double > *arg1 = (Raster< double > *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[1] ;
   SwigValueWrapper< Raster< float > > result;
   
-  if (!SWIG_Python_UnpackTuple(args,"double_raster_ToFloat",0,0,0)) SWIG_fail;
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_double_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "double_raster_ToFloat" "', argument " "1"" of type '" "Raster< double > const *""'"); 
@@ -8590,10 +8419,9 @@ SWIGINTERN PyObject *_wrap_double_raster_ToDouble(PyObject *self, PyObject *args
   Raster< double > *arg1 = (Raster< double > *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[1] ;
   SwigValueWrapper< Raster< double > > result;
   
-  if (!SWIG_Python_UnpackTuple(args,"double_raster_ToDouble",0,0,0)) SWIG_fail;
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_double_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "double_raster_ToDouble" "', argument " "1"" of type '" "Raster< double > const *""'"); 
@@ -8622,10 +8450,9 @@ SWIGINTERN PyObject *_wrap_double_raster_adress(PyObject *self, PyObject *args) 
   Raster< double > *arg1 = (Raster< double > *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[1] ;
   size_t result;
   
-  if (!SWIG_Python_UnpackTuple(args,"double_raster_adress",0,0,0)) SWIG_fail;
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_double_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "double_raster_adress" "', argument " "1"" of type '" "Raster< double > const *""'"); 
@@ -8649,33 +8476,28 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_double_raster_focal_min(PyObject *self, PyObject *args, PyObject *kwargs) {
+SWIGINTERN PyObject *_wrap_double_raster_focal_min__SWIG_0(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   Raster< double > *arg1 = (Raster< double > *) 0 ;
-  int arg2 = (int) 3 ;
+  int arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int val2 ;
   int ecode2 = 0 ;
   PyObject * obj1 = 0 ;
-  char *  kwnames[] = {
-    (char *) "n", NULL 
-  };
   SwigValueWrapper< Raster< double > > result;
   
-  if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"|O:double_raster_focal_min",kwnames,&obj1)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"O:double_raster_focal_min",&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_double_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "double_raster_focal_min" "', argument " "1"" of type '" "Raster< double > *""'"); 
   }
   arg1 = reinterpret_cast< Raster< double > * >(argp1);
-  if (obj1) {
-    ecode2 = SWIG_AsVal_int(obj1, &val2);
-    if (!SWIG_IsOK(ecode2)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "double_raster_focal_min" "', argument " "2"" of type '" "int""'");
-    } 
-    arg2 = static_cast< int >(val2);
-  }
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "double_raster_focal_min" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
   {
     try {
       result = (arg1)->focal_min(arg2);
@@ -8694,33 +8516,105 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_double_raster_focal_max(PyObject *self, PyObject *args, PyObject *kwargs) {
+SWIGINTERN PyObject *_wrap_double_raster_focal_min__SWIG_1(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   Raster< double > *arg1 = (Raster< double > *) 0 ;
-  int arg2 = (int) 3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  SwigValueWrapper< Raster< double > > result;
+  
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_double_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "double_raster_focal_min" "', argument " "1"" of type '" "Raster< double > *""'"); 
+  }
+  arg1 = reinterpret_cast< Raster< double > * >(argp1);
+  {
+    try {
+      result = (arg1)->focal_min();
+    } 
+    catch (std::runtime_error& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what() );
+    }
+    catch (std::exception& e) {
+      SWIG_exception(SWIG_UnknownError, e.what());
+    }
+  }
+  resultobj = SWIG_NewPointerObj((new Raster< double >(static_cast< const Raster< double >& >(result))), SWIGTYPE_p_RasterT_double_t, SWIG_POINTER_OWN |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_double_raster_focal_min(PyObject *self, PyObject *args) {
+  int argc;
+  PyObject *argv[3];
+  int ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? (int)PyObject_Length(args) : 0;
+  argv[0] = self;
+  for (ii = 0; (ii < 1) && (ii < argc); ii++) {
+    argv[ii + 1] = PyTuple_GET_ITEM(args,ii);
+  }
+  argc++;
+  if (argc == 1) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_double_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_double_raster_focal_min__SWIG_1(self, args);
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_double_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        int res = SWIG_AsVal_int(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        return _wrap_double_raster_focal_min__SWIG_0(self, args);
+      }
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'double_raster_focal_min'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    Raster< double >::focal_min(int)\n"
+    "    Raster< double >::focal_min()\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_double_raster_focal_max__SWIG_0(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  Raster< double > *arg1 = (Raster< double > *) 0 ;
+  int arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int val2 ;
   int ecode2 = 0 ;
   PyObject * obj1 = 0 ;
-  char *  kwnames[] = {
-    (char *) "n", NULL 
-  };
   SwigValueWrapper< Raster< double > > result;
   
-  if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"|O:double_raster_focal_max",kwnames,&obj1)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"O:double_raster_focal_max",&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_double_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "double_raster_focal_max" "', argument " "1"" of type '" "Raster< double > *""'"); 
   }
   arg1 = reinterpret_cast< Raster< double > * >(argp1);
-  if (obj1) {
-    ecode2 = SWIG_AsVal_int(obj1, &val2);
-    if (!SWIG_IsOK(ecode2)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "double_raster_focal_max" "', argument " "2"" of type '" "int""'");
-    } 
-    arg2 = static_cast< int >(val2);
-  }
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "double_raster_focal_max" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
   {
     try {
       result = (arg1)->focal_max(arg2);
@@ -8739,33 +8633,105 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_double_raster_focal_mean(PyObject *self, PyObject *args, PyObject *kwargs) {
+SWIGINTERN PyObject *_wrap_double_raster_focal_max__SWIG_1(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   Raster< double > *arg1 = (Raster< double > *) 0 ;
-  int arg2 = (int) 3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  SwigValueWrapper< Raster< double > > result;
+  
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_double_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "double_raster_focal_max" "', argument " "1"" of type '" "Raster< double > *""'"); 
+  }
+  arg1 = reinterpret_cast< Raster< double > * >(argp1);
+  {
+    try {
+      result = (arg1)->focal_max();
+    } 
+    catch (std::runtime_error& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what() );
+    }
+    catch (std::exception& e) {
+      SWIG_exception(SWIG_UnknownError, e.what());
+    }
+  }
+  resultobj = SWIG_NewPointerObj((new Raster< double >(static_cast< const Raster< double >& >(result))), SWIGTYPE_p_RasterT_double_t, SWIG_POINTER_OWN |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_double_raster_focal_max(PyObject *self, PyObject *args) {
+  int argc;
+  PyObject *argv[3];
+  int ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? (int)PyObject_Length(args) : 0;
+  argv[0] = self;
+  for (ii = 0; (ii < 1) && (ii < argc); ii++) {
+    argv[ii + 1] = PyTuple_GET_ITEM(args,ii);
+  }
+  argc++;
+  if (argc == 1) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_double_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_double_raster_focal_max__SWIG_1(self, args);
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_double_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        int res = SWIG_AsVal_int(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        return _wrap_double_raster_focal_max__SWIG_0(self, args);
+      }
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'double_raster_focal_max'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    Raster< double >::focal_max(int)\n"
+    "    Raster< double >::focal_max()\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_double_raster_focal_mean__SWIG_0(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  Raster< double > *arg1 = (Raster< double > *) 0 ;
+  int arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int val2 ;
   int ecode2 = 0 ;
   PyObject * obj1 = 0 ;
-  char *  kwnames[] = {
-    (char *) "n", NULL 
-  };
   SwigValueWrapper< Raster< double > > result;
   
-  if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"|O:double_raster_focal_mean",kwnames,&obj1)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"O:double_raster_focal_mean",&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_double_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "double_raster_focal_mean" "', argument " "1"" of type '" "Raster< double > *""'"); 
   }
   arg1 = reinterpret_cast< Raster< double > * >(argp1);
-  if (obj1) {
-    ecode2 = SWIG_AsVal_int(obj1, &val2);
-    if (!SWIG_IsOK(ecode2)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "double_raster_focal_mean" "', argument " "2"" of type '" "int""'");
-    } 
-    arg2 = static_cast< int >(val2);
-  }
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "double_raster_focal_mean" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
   {
     try {
       result = (arg1)->focal_mean(arg2);
@@ -8784,33 +8750,105 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_double_raster_focal_stdev(PyObject *self, PyObject *args, PyObject *kwargs) {
+SWIGINTERN PyObject *_wrap_double_raster_focal_mean__SWIG_1(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   Raster< double > *arg1 = (Raster< double > *) 0 ;
-  int arg2 = (int) 3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  SwigValueWrapper< Raster< double > > result;
+  
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_double_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "double_raster_focal_mean" "', argument " "1"" of type '" "Raster< double > *""'"); 
+  }
+  arg1 = reinterpret_cast< Raster< double > * >(argp1);
+  {
+    try {
+      result = (arg1)->focal_mean();
+    } 
+    catch (std::runtime_error& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what() );
+    }
+    catch (std::exception& e) {
+      SWIG_exception(SWIG_UnknownError, e.what());
+    }
+  }
+  resultobj = SWIG_NewPointerObj((new Raster< double >(static_cast< const Raster< double >& >(result))), SWIGTYPE_p_RasterT_double_t, SWIG_POINTER_OWN |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_double_raster_focal_mean(PyObject *self, PyObject *args) {
+  int argc;
+  PyObject *argv[3];
+  int ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? (int)PyObject_Length(args) : 0;
+  argv[0] = self;
+  for (ii = 0; (ii < 1) && (ii < argc); ii++) {
+    argv[ii + 1] = PyTuple_GET_ITEM(args,ii);
+  }
+  argc++;
+  if (argc == 1) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_double_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_double_raster_focal_mean__SWIG_1(self, args);
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_double_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        int res = SWIG_AsVal_int(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        return _wrap_double_raster_focal_mean__SWIG_0(self, args);
+      }
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'double_raster_focal_mean'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    Raster< double >::focal_mean(int)\n"
+    "    Raster< double >::focal_mean()\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_double_raster_focal_stdev__SWIG_0(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  Raster< double > *arg1 = (Raster< double > *) 0 ;
+  int arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int val2 ;
   int ecode2 = 0 ;
   PyObject * obj1 = 0 ;
-  char *  kwnames[] = {
-    (char *) "n", NULL 
-  };
   SwigValueWrapper< Raster< double > > result;
   
-  if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"|O:double_raster_focal_stdev",kwnames,&obj1)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"O:double_raster_focal_stdev",&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_double_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "double_raster_focal_stdev" "', argument " "1"" of type '" "Raster< double > *""'"); 
   }
   arg1 = reinterpret_cast< Raster< double > * >(argp1);
-  if (obj1) {
-    ecode2 = SWIG_AsVal_int(obj1, &val2);
-    if (!SWIG_IsOK(ecode2)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "double_raster_focal_stdev" "', argument " "2"" of type '" "int""'");
-    } 
-    arg2 = static_cast< int >(val2);
-  }
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "double_raster_focal_stdev" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
   {
     try {
       result = (arg1)->focal_stdev(arg2);
@@ -8829,33 +8867,105 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_double_raster_focal_majority(PyObject *self, PyObject *args, PyObject *kwargs) {
+SWIGINTERN PyObject *_wrap_double_raster_focal_stdev__SWIG_1(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   Raster< double > *arg1 = (Raster< double > *) 0 ;
-  int arg2 = (int) 3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  SwigValueWrapper< Raster< double > > result;
+  
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_double_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "double_raster_focal_stdev" "', argument " "1"" of type '" "Raster< double > *""'"); 
+  }
+  arg1 = reinterpret_cast< Raster< double > * >(argp1);
+  {
+    try {
+      result = (arg1)->focal_stdev();
+    } 
+    catch (std::runtime_error& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what() );
+    }
+    catch (std::exception& e) {
+      SWIG_exception(SWIG_UnknownError, e.what());
+    }
+  }
+  resultobj = SWIG_NewPointerObj((new Raster< double >(static_cast< const Raster< double >& >(result))), SWIGTYPE_p_RasterT_double_t, SWIG_POINTER_OWN |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_double_raster_focal_stdev(PyObject *self, PyObject *args) {
+  int argc;
+  PyObject *argv[3];
+  int ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? (int)PyObject_Length(args) : 0;
+  argv[0] = self;
+  for (ii = 0; (ii < 1) && (ii < argc); ii++) {
+    argv[ii + 1] = PyTuple_GET_ITEM(args,ii);
+  }
+  argc++;
+  if (argc == 1) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_double_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_double_raster_focal_stdev__SWIG_1(self, args);
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_double_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        int res = SWIG_AsVal_int(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        return _wrap_double_raster_focal_stdev__SWIG_0(self, args);
+      }
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'double_raster_focal_stdev'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    Raster< double >::focal_stdev(int)\n"
+    "    Raster< double >::focal_stdev()\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_double_raster_focal_majority__SWIG_0(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  Raster< double > *arg1 = (Raster< double > *) 0 ;
+  int arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int val2 ;
   int ecode2 = 0 ;
   PyObject * obj1 = 0 ;
-  char *  kwnames[] = {
-    (char *) "n", NULL 
-  };
   SwigValueWrapper< Raster< double > > result;
   
-  if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"|O:double_raster_focal_majority",kwnames,&obj1)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"O:double_raster_focal_majority",&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_double_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "double_raster_focal_majority" "', argument " "1"" of type '" "Raster< double > *""'"); 
   }
   arg1 = reinterpret_cast< Raster< double > * >(argp1);
-  if (obj1) {
-    ecode2 = SWIG_AsVal_int(obj1, &val2);
-    if (!SWIG_IsOK(ecode2)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "double_raster_focal_majority" "', argument " "2"" of type '" "int""'");
-    } 
-    arg2 = static_cast< int >(val2);
-  }
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "double_raster_focal_majority" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
   {
     try {
       result = (arg1)->focal_majority(arg2);
@@ -8874,33 +8984,105 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_double_raster_focal_mean_difference(PyObject *self, PyObject *args, PyObject *kwargs) {
+SWIGINTERN PyObject *_wrap_double_raster_focal_majority__SWIG_1(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   Raster< double > *arg1 = (Raster< double > *) 0 ;
-  int arg2 = (int) 3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  SwigValueWrapper< Raster< double > > result;
+  
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_double_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "double_raster_focal_majority" "', argument " "1"" of type '" "Raster< double > *""'"); 
+  }
+  arg1 = reinterpret_cast< Raster< double > * >(argp1);
+  {
+    try {
+      result = (arg1)->focal_majority();
+    } 
+    catch (std::runtime_error& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what() );
+    }
+    catch (std::exception& e) {
+      SWIG_exception(SWIG_UnknownError, e.what());
+    }
+  }
+  resultobj = SWIG_NewPointerObj((new Raster< double >(static_cast< const Raster< double >& >(result))), SWIGTYPE_p_RasterT_double_t, SWIG_POINTER_OWN |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_double_raster_focal_majority(PyObject *self, PyObject *args) {
+  int argc;
+  PyObject *argv[3];
+  int ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? (int)PyObject_Length(args) : 0;
+  argv[0] = self;
+  for (ii = 0; (ii < 1) && (ii < argc); ii++) {
+    argv[ii + 1] = PyTuple_GET_ITEM(args,ii);
+  }
+  argc++;
+  if (argc == 1) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_double_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_double_raster_focal_majority__SWIG_1(self, args);
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_double_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        int res = SWIG_AsVal_int(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        return _wrap_double_raster_focal_majority__SWIG_0(self, args);
+      }
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'double_raster_focal_majority'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    Raster< double >::focal_majority(int)\n"
+    "    Raster< double >::focal_majority()\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_double_raster_focal_mean_difference__SWIG_0(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  Raster< double > *arg1 = (Raster< double > *) 0 ;
+  int arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int val2 ;
   int ecode2 = 0 ;
   PyObject * obj1 = 0 ;
-  char *  kwnames[] = {
-    (char *) "n", NULL 
-  };
   SwigValueWrapper< Raster< double > > result;
   
-  if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"|O:double_raster_focal_mean_difference",kwnames,&obj1)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"O:double_raster_focal_mean_difference",&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_double_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "double_raster_focal_mean_difference" "', argument " "1"" of type '" "Raster< double > *""'"); 
   }
   arg1 = reinterpret_cast< Raster< double > * >(argp1);
-  if (obj1) {
-    ecode2 = SWIG_AsVal_int(obj1, &val2);
-    if (!SWIG_IsOK(ecode2)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "double_raster_focal_mean_difference" "', argument " "2"" of type '" "int""'");
-    } 
-    arg2 = static_cast< int >(val2);
-  }
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "double_raster_focal_mean_difference" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
   {
     try {
       result = (arg1)->focal_mean_difference(arg2);
@@ -8919,33 +9101,105 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_double_raster_downscale_mean(PyObject *self, PyObject *args, PyObject *kwargs) {
+SWIGINTERN PyObject *_wrap_double_raster_focal_mean_difference__SWIG_1(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   Raster< double > *arg1 = (Raster< double > *) 0 ;
-  int arg2 = (int) 3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  SwigValueWrapper< Raster< double > > result;
+  
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_double_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "double_raster_focal_mean_difference" "', argument " "1"" of type '" "Raster< double > *""'"); 
+  }
+  arg1 = reinterpret_cast< Raster< double > * >(argp1);
+  {
+    try {
+      result = (arg1)->focal_mean_difference();
+    } 
+    catch (std::runtime_error& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what() );
+    }
+    catch (std::exception& e) {
+      SWIG_exception(SWIG_UnknownError, e.what());
+    }
+  }
+  resultobj = SWIG_NewPointerObj((new Raster< double >(static_cast< const Raster< double >& >(result))), SWIGTYPE_p_RasterT_double_t, SWIG_POINTER_OWN |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_double_raster_focal_mean_difference(PyObject *self, PyObject *args) {
+  int argc;
+  PyObject *argv[3];
+  int ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? (int)PyObject_Length(args) : 0;
+  argv[0] = self;
+  for (ii = 0; (ii < 1) && (ii < argc); ii++) {
+    argv[ii + 1] = PyTuple_GET_ITEM(args,ii);
+  }
+  argc++;
+  if (argc == 1) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_double_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_double_raster_focal_mean_difference__SWIG_1(self, args);
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_double_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        int res = SWIG_AsVal_int(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        return _wrap_double_raster_focal_mean_difference__SWIG_0(self, args);
+      }
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'double_raster_focal_mean_difference'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    Raster< double >::focal_mean_difference(int)\n"
+    "    Raster< double >::focal_mean_difference()\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_double_raster_downscale_mean__SWIG_0(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  Raster< double > *arg1 = (Raster< double > *) 0 ;
+  int arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int val2 ;
   int ecode2 = 0 ;
   PyObject * obj1 = 0 ;
-  char *  kwnames[] = {
-    (char *) "n", NULL 
-  };
   SwigValueWrapper< Raster< double > > result;
   
-  if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"|O:double_raster_downscale_mean",kwnames,&obj1)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"O:double_raster_downscale_mean",&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_double_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "double_raster_downscale_mean" "', argument " "1"" of type '" "Raster< double > *""'"); 
   }
   arg1 = reinterpret_cast< Raster< double > * >(argp1);
-  if (obj1) {
-    ecode2 = SWIG_AsVal_int(obj1, &val2);
-    if (!SWIG_IsOK(ecode2)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "double_raster_downscale_mean" "', argument " "2"" of type '" "int""'");
-    } 
-    arg2 = static_cast< int >(val2);
-  }
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "double_raster_downscale_mean" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
   {
     try {
       result = (arg1)->downscale_mean(arg2);
@@ -8964,33 +9218,105 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_double_raster_downscale_min(PyObject *self, PyObject *args, PyObject *kwargs) {
+SWIGINTERN PyObject *_wrap_double_raster_downscale_mean__SWIG_1(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   Raster< double > *arg1 = (Raster< double > *) 0 ;
-  int arg2 = (int) 3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  SwigValueWrapper< Raster< double > > result;
+  
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_double_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "double_raster_downscale_mean" "', argument " "1"" of type '" "Raster< double > *""'"); 
+  }
+  arg1 = reinterpret_cast< Raster< double > * >(argp1);
+  {
+    try {
+      result = (arg1)->downscale_mean();
+    } 
+    catch (std::runtime_error& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what() );
+    }
+    catch (std::exception& e) {
+      SWIG_exception(SWIG_UnknownError, e.what());
+    }
+  }
+  resultobj = SWIG_NewPointerObj((new Raster< double >(static_cast< const Raster< double >& >(result))), SWIGTYPE_p_RasterT_double_t, SWIG_POINTER_OWN |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_double_raster_downscale_mean(PyObject *self, PyObject *args) {
+  int argc;
+  PyObject *argv[3];
+  int ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? (int)PyObject_Length(args) : 0;
+  argv[0] = self;
+  for (ii = 0; (ii < 1) && (ii < argc); ii++) {
+    argv[ii + 1] = PyTuple_GET_ITEM(args,ii);
+  }
+  argc++;
+  if (argc == 1) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_double_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_double_raster_downscale_mean__SWIG_1(self, args);
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_double_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        int res = SWIG_AsVal_int(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        return _wrap_double_raster_downscale_mean__SWIG_0(self, args);
+      }
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'double_raster_downscale_mean'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    Raster< double >::downscale_mean(int)\n"
+    "    Raster< double >::downscale_mean()\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_double_raster_downscale_min__SWIG_0(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  Raster< double > *arg1 = (Raster< double > *) 0 ;
+  int arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int val2 ;
   int ecode2 = 0 ;
   PyObject * obj1 = 0 ;
-  char *  kwnames[] = {
-    (char *) "n", NULL 
-  };
   SwigValueWrapper< Raster< double > > result;
   
-  if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"|O:double_raster_downscale_min",kwnames,&obj1)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"O:double_raster_downscale_min",&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_double_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "double_raster_downscale_min" "', argument " "1"" of type '" "Raster< double > *""'"); 
   }
   arg1 = reinterpret_cast< Raster< double > * >(argp1);
-  if (obj1) {
-    ecode2 = SWIG_AsVal_int(obj1, &val2);
-    if (!SWIG_IsOK(ecode2)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "double_raster_downscale_min" "', argument " "2"" of type '" "int""'");
-    } 
-    arg2 = static_cast< int >(val2);
-  }
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "double_raster_downscale_min" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
   {
     try {
       result = (arg1)->downscale_min(arg2);
@@ -9009,33 +9335,105 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_double_raster_downscale_max(PyObject *self, PyObject *args, PyObject *kwargs) {
+SWIGINTERN PyObject *_wrap_double_raster_downscale_min__SWIG_1(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   Raster< double > *arg1 = (Raster< double > *) 0 ;
-  int arg2 = (int) 3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  SwigValueWrapper< Raster< double > > result;
+  
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_double_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "double_raster_downscale_min" "', argument " "1"" of type '" "Raster< double > *""'"); 
+  }
+  arg1 = reinterpret_cast< Raster< double > * >(argp1);
+  {
+    try {
+      result = (arg1)->downscale_min();
+    } 
+    catch (std::runtime_error& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what() );
+    }
+    catch (std::exception& e) {
+      SWIG_exception(SWIG_UnknownError, e.what());
+    }
+  }
+  resultobj = SWIG_NewPointerObj((new Raster< double >(static_cast< const Raster< double >& >(result))), SWIGTYPE_p_RasterT_double_t, SWIG_POINTER_OWN |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_double_raster_downscale_min(PyObject *self, PyObject *args) {
+  int argc;
+  PyObject *argv[3];
+  int ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? (int)PyObject_Length(args) : 0;
+  argv[0] = self;
+  for (ii = 0; (ii < 1) && (ii < argc); ii++) {
+    argv[ii + 1] = PyTuple_GET_ITEM(args,ii);
+  }
+  argc++;
+  if (argc == 1) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_double_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_double_raster_downscale_min__SWIG_1(self, args);
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_double_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        int res = SWIG_AsVal_int(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        return _wrap_double_raster_downscale_min__SWIG_0(self, args);
+      }
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'double_raster_downscale_min'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    Raster< double >::downscale_min(int)\n"
+    "    Raster< double >::downscale_min()\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_double_raster_downscale_max__SWIG_0(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  Raster< double > *arg1 = (Raster< double > *) 0 ;
+  int arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int val2 ;
   int ecode2 = 0 ;
   PyObject * obj1 = 0 ;
-  char *  kwnames[] = {
-    (char *) "n", NULL 
-  };
   SwigValueWrapper< Raster< double > > result;
   
-  if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"|O:double_raster_downscale_max",kwnames,&obj1)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"O:double_raster_downscale_max",&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_double_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "double_raster_downscale_max" "', argument " "1"" of type '" "Raster< double > *""'"); 
   }
   arg1 = reinterpret_cast< Raster< double > * >(argp1);
-  if (obj1) {
-    ecode2 = SWIG_AsVal_int(obj1, &val2);
-    if (!SWIG_IsOK(ecode2)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "double_raster_downscale_max" "', argument " "2"" of type '" "int""'");
-    } 
-    arg2 = static_cast< int >(val2);
-  }
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "double_raster_downscale_max" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
   {
     try {
       result = (arg1)->downscale_max(arg2);
@@ -9054,33 +9452,105 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_double_raster_downscale_majority(PyObject *self, PyObject *args, PyObject *kwargs) {
+SWIGINTERN PyObject *_wrap_double_raster_downscale_max__SWIG_1(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   Raster< double > *arg1 = (Raster< double > *) 0 ;
-  int arg2 = (int) 3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  SwigValueWrapper< Raster< double > > result;
+  
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_double_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "double_raster_downscale_max" "', argument " "1"" of type '" "Raster< double > *""'"); 
+  }
+  arg1 = reinterpret_cast< Raster< double > * >(argp1);
+  {
+    try {
+      result = (arg1)->downscale_max();
+    } 
+    catch (std::runtime_error& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what() );
+    }
+    catch (std::exception& e) {
+      SWIG_exception(SWIG_UnknownError, e.what());
+    }
+  }
+  resultobj = SWIG_NewPointerObj((new Raster< double >(static_cast< const Raster< double >& >(result))), SWIGTYPE_p_RasterT_double_t, SWIG_POINTER_OWN |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_double_raster_downscale_max(PyObject *self, PyObject *args) {
+  int argc;
+  PyObject *argv[3];
+  int ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? (int)PyObject_Length(args) : 0;
+  argv[0] = self;
+  for (ii = 0; (ii < 1) && (ii < argc); ii++) {
+    argv[ii + 1] = PyTuple_GET_ITEM(args,ii);
+  }
+  argc++;
+  if (argc == 1) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_double_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_double_raster_downscale_max__SWIG_1(self, args);
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_double_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        int res = SWIG_AsVal_int(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        return _wrap_double_raster_downscale_max__SWIG_0(self, args);
+      }
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'double_raster_downscale_max'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    Raster< double >::downscale_max(int)\n"
+    "    Raster< double >::downscale_max()\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_double_raster_downscale_majority__SWIG_0(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  Raster< double > *arg1 = (Raster< double > *) 0 ;
+  int arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int val2 ;
   int ecode2 = 0 ;
   PyObject * obj1 = 0 ;
-  char *  kwnames[] = {
-    (char *) "n", NULL 
-  };
   SwigValueWrapper< Raster< double > > result;
   
-  if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"|O:double_raster_downscale_majority",kwnames,&obj1)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"O:double_raster_downscale_majority",&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_double_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "double_raster_downscale_majority" "', argument " "1"" of type '" "Raster< double > *""'"); 
   }
   arg1 = reinterpret_cast< Raster< double > * >(argp1);
-  if (obj1) {
-    ecode2 = SWIG_AsVal_int(obj1, &val2);
-    if (!SWIG_IsOK(ecode2)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "double_raster_downscale_majority" "', argument " "2"" of type '" "int""'");
-    } 
-    arg2 = static_cast< int >(val2);
-  }
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "double_raster_downscale_majority" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
   {
     try {
       result = (arg1)->downscale_majority(arg2);
@@ -9099,33 +9569,105 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_double_raster_downscale_stdev(PyObject *self, PyObject *args, PyObject *kwargs) {
+SWIGINTERN PyObject *_wrap_double_raster_downscale_majority__SWIG_1(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   Raster< double > *arg1 = (Raster< double > *) 0 ;
-  int arg2 = (int) 3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  SwigValueWrapper< Raster< double > > result;
+  
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_double_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "double_raster_downscale_majority" "', argument " "1"" of type '" "Raster< double > *""'"); 
+  }
+  arg1 = reinterpret_cast< Raster< double > * >(argp1);
+  {
+    try {
+      result = (arg1)->downscale_majority();
+    } 
+    catch (std::runtime_error& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what() );
+    }
+    catch (std::exception& e) {
+      SWIG_exception(SWIG_UnknownError, e.what());
+    }
+  }
+  resultobj = SWIG_NewPointerObj((new Raster< double >(static_cast< const Raster< double >& >(result))), SWIGTYPE_p_RasterT_double_t, SWIG_POINTER_OWN |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_double_raster_downscale_majority(PyObject *self, PyObject *args) {
+  int argc;
+  PyObject *argv[3];
+  int ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? (int)PyObject_Length(args) : 0;
+  argv[0] = self;
+  for (ii = 0; (ii < 1) && (ii < argc); ii++) {
+    argv[ii + 1] = PyTuple_GET_ITEM(args,ii);
+  }
+  argc++;
+  if (argc == 1) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_double_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_double_raster_downscale_majority__SWIG_1(self, args);
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_double_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        int res = SWIG_AsVal_int(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        return _wrap_double_raster_downscale_majority__SWIG_0(self, args);
+      }
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'double_raster_downscale_majority'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    Raster< double >::downscale_majority(int)\n"
+    "    Raster< double >::downscale_majority()\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_double_raster_downscale_stdev__SWIG_0(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  Raster< double > *arg1 = (Raster< double > *) 0 ;
+  int arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int val2 ;
   int ecode2 = 0 ;
   PyObject * obj1 = 0 ;
-  char *  kwnames[] = {
-    (char *) "n", NULL 
-  };
   SwigValueWrapper< Raster< double > > result;
   
-  if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"|O:double_raster_downscale_stdev",kwnames,&obj1)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"O:double_raster_downscale_stdev",&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_double_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "double_raster_downscale_stdev" "', argument " "1"" of type '" "Raster< double > *""'"); 
   }
   arg1 = reinterpret_cast< Raster< double > * >(argp1);
-  if (obj1) {
-    ecode2 = SWIG_AsVal_int(obj1, &val2);
-    if (!SWIG_IsOK(ecode2)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "double_raster_downscale_stdev" "', argument " "2"" of type '" "int""'");
-    } 
-    arg2 = static_cast< int >(val2);
-  }
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "double_raster_downscale_stdev" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
   {
     try {
       result = (arg1)->downscale_stdev(arg2);
@@ -9144,33 +9686,105 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_double_raster_downscale_mean_difference(PyObject *self, PyObject *args, PyObject *kwargs) {
+SWIGINTERN PyObject *_wrap_double_raster_downscale_stdev__SWIG_1(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   Raster< double > *arg1 = (Raster< double > *) 0 ;
-  int arg2 = (int) 3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  SwigValueWrapper< Raster< double > > result;
+  
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_double_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "double_raster_downscale_stdev" "', argument " "1"" of type '" "Raster< double > *""'"); 
+  }
+  arg1 = reinterpret_cast< Raster< double > * >(argp1);
+  {
+    try {
+      result = (arg1)->downscale_stdev();
+    } 
+    catch (std::runtime_error& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what() );
+    }
+    catch (std::exception& e) {
+      SWIG_exception(SWIG_UnknownError, e.what());
+    }
+  }
+  resultobj = SWIG_NewPointerObj((new Raster< double >(static_cast< const Raster< double >& >(result))), SWIGTYPE_p_RasterT_double_t, SWIG_POINTER_OWN |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_double_raster_downscale_stdev(PyObject *self, PyObject *args) {
+  int argc;
+  PyObject *argv[3];
+  int ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? (int)PyObject_Length(args) : 0;
+  argv[0] = self;
+  for (ii = 0; (ii < 1) && (ii < argc); ii++) {
+    argv[ii + 1] = PyTuple_GET_ITEM(args,ii);
+  }
+  argc++;
+  if (argc == 1) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_double_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_double_raster_downscale_stdev__SWIG_1(self, args);
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_double_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        int res = SWIG_AsVal_int(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        return _wrap_double_raster_downscale_stdev__SWIG_0(self, args);
+      }
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'double_raster_downscale_stdev'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    Raster< double >::downscale_stdev(int)\n"
+    "    Raster< double >::downscale_stdev()\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_double_raster_downscale_mean_difference__SWIG_0(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  Raster< double > *arg1 = (Raster< double > *) 0 ;
+  int arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int val2 ;
   int ecode2 = 0 ;
   PyObject * obj1 = 0 ;
-  char *  kwnames[] = {
-    (char *) "n", NULL 
-  };
   SwigValueWrapper< Raster< double > > result;
   
-  if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"|O:double_raster_downscale_mean_difference",kwnames,&obj1)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"O:double_raster_downscale_mean_difference",&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_double_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "double_raster_downscale_mean_difference" "', argument " "1"" of type '" "Raster< double > *""'"); 
   }
   arg1 = reinterpret_cast< Raster< double > * >(argp1);
-  if (obj1) {
-    ecode2 = SWIG_AsVal_int(obj1, &val2);
-    if (!SWIG_IsOK(ecode2)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "double_raster_downscale_mean_difference" "', argument " "2"" of type '" "int""'");
-    } 
-    arg2 = static_cast< int >(val2);
-  }
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "double_raster_downscale_mean_difference" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
   {
     try {
       result = (arg1)->downscale_mean_difference(arg2);
@@ -9189,15 +9803,91 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_double_raster_downscale_mean_difference__SWIG_1(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  Raster< double > *arg1 = (Raster< double > *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  SwigValueWrapper< Raster< double > > result;
+  
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_double_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "double_raster_downscale_mean_difference" "', argument " "1"" of type '" "Raster< double > *""'"); 
+  }
+  arg1 = reinterpret_cast< Raster< double > * >(argp1);
+  {
+    try {
+      result = (arg1)->downscale_mean_difference();
+    } 
+    catch (std::runtime_error& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what() );
+    }
+    catch (std::exception& e) {
+      SWIG_exception(SWIG_UnknownError, e.what());
+    }
+  }
+  resultobj = SWIG_NewPointerObj((new Raster< double >(static_cast< const Raster< double >& >(result))), SWIGTYPE_p_RasterT_double_t, SWIG_POINTER_OWN |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_double_raster_downscale_mean_difference(PyObject *self, PyObject *args) {
+  int argc;
+  PyObject *argv[3];
+  int ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? (int)PyObject_Length(args) : 0;
+  argv[0] = self;
+  for (ii = 0; (ii < 1) && (ii < argc); ii++) {
+    argv[ii + 1] = PyTuple_GET_ITEM(args,ii);
+  }
+  argc++;
+  if (argc == 1) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_double_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_double_raster_downscale_mean_difference__SWIG_1(self, args);
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_double_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        int res = SWIG_AsVal_int(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        return _wrap_double_raster_downscale_mean_difference__SWIG_0(self, args);
+      }
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'double_raster_downscale_mean_difference'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    Raster< double >::downscale_mean_difference(int)\n"
+    "    Raster< double >::downscale_mean_difference()\n");
+  return 0;
+}
+
+
 SWIGINTERN PyObject *_wrap_double_raster_clone(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   Raster< double > *arg1 = (Raster< double > *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[1] ;
   SwigValueWrapper< Raster< double > > result;
   
-  if (!SWIG_Python_UnpackTuple(args,"double_raster_clone",0,0,0)) SWIG_fail;
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_double_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "double_raster_clone" "', argument " "1"" of type '" "Raster< double > const *""'"); 
@@ -9221,7 +9911,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_double_raster_GetData__SWIG_2(PyObject *self, int nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_double_raster_GetData__SWIG_2(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   Raster< double > *arg1 = (Raster< double > *) 0 ;
   std::vector< double > arg2 ;
@@ -9232,16 +9922,18 @@ SWIGINTERN PyObject *_wrap_double_raster_GetData__SWIG_2(PyObject *self, int nob
   int res2 = 0 ;
   void *argp3 ;
   int res3 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
   std::vector< double > result;
   
-  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"OO:double_raster_GetData",&obj1,&obj2)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_double_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "double_raster_GetData" "', argument " "1"" of type '" "Raster< double > *""'"); 
   }
   arg1 = reinterpret_cast< Raster< double > * >(argp1);
   {
-    res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_std__vectorT_double_t,  0  | 0);
+    res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_std__vectorT_double_t,  0  | 0);
     if (!SWIG_IsOK(res2)) {
       SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "double_raster_GetData" "', argument " "2"" of type '" "std::vector< double >""'"); 
     }  
@@ -9254,7 +9946,7 @@ SWIGINTERN PyObject *_wrap_double_raster_GetData__SWIG_2(PyObject *self, int nob
     }
   }
   {
-    res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_std__vectorT_double_t,  0  | 0);
+    res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_std__vectorT_double_t,  0  | 0);
     if (!SWIG_IsOK(res3)) {
       SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "double_raster_GetData" "', argument " "3"" of type '" "std::vector< double >""'"); 
     }  
@@ -9287,139 +9979,72 @@ fail:
 SWIGINTERN PyObject *_wrap_double_raster_GetData(PyObject *self, PyObject *args) {
   int argc;
   PyObject *argv[4];
+  int ii;
   
-  if (!(argc = SWIG_Python_UnpackTuple(args,"double_raster_GetData",0,3,argv+1))) SWIG_fail;
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? (int)PyObject_Length(args) : 0;
   argv[0] = self;
-  {
-    unsigned long _index = 0;
-    SWIG_TypeRank _rank = 0; 
-    if (argc == 3) {
-      SWIG_TypeRank _ranki = 0;
-      SWIG_TypeRank _rankm = 0;
-      SWIG_TypeRank _pi = 1;
-      int _v = 0;
-      {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_double_t, 0);
-        _v = SWIG_CheckState(res);
-      }
-      if (!_v) goto check_1;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      {
-        int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_std__vectorT_double_t, 0);
-        _v = SWIG_CheckState(res);
-      }
-      if (!_v) goto check_1;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      {
+  for (ii = 0; (ii < 2) && (ii < argc); ii++) {
+    argv[ii + 1] = PyTuple_GET_ITEM(args,ii);
+  }
+  argc++;
+  if (argc == 3) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_double_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_std__vectorT_double_t, 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
         int res = SWIG_ConvertPtr(argv[2], 0, SWIGTYPE_p_std__vectorT_double_t, 0);
         _v = SWIG_CheckState(res);
-      }
-      if (!_v) goto check_1;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      if (!_index || (_ranki < _rank)) {
-        _rank = _ranki; _index = 1;
-        if (_rank == _rankm) goto dispatch;
-      }
-    }
-  check_1:
-    
-    if (argc == 3) {
-      SWIG_TypeRank _ranki = 0;
-      SWIG_TypeRank _rankm = 0;
-      SWIG_TypeRank _pi = 1;
-      int _v = 0;
-      {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_double_t, 0);
-        _v = SWIG_CheckState(res);
-      }
-      if (!_v) goto check_2;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      {
-        {
-          int res = SWIG_AsVal_int(argv[1], NULL);
-          _v = SWIG_CheckState(res);
+        if (_v) {
+          return _wrap_double_raster_GetData__SWIG_2(self, args);
         }
       }
-      if (!_v) goto check_2;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
+    }
+  }
+  if (argc == 3) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_double_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
       {
+        int res = SWIG_AsVal_int(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
         {
           int res = SWIG_AsVal_int(argv[2], NULL);
           _v = SWIG_CheckState(res);
         }
-      }
-      if (!_v) goto check_2;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      if (!_index || (_ranki < _rank)) {
-        _rank = _ranki; _index = 2;
-        if (_rank == _rankm) goto dispatch;
-      }
-    }
-  check_2:
-    
-    if (argc == 3) {
-      SWIG_TypeRank _ranki = 0;
-      SWIG_TypeRank _rankm = 0;
-      SWIG_TypeRank _pi = 1;
-      int _v = 0;
-      {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_double_t, 0);
-        _v = SWIG_CheckState(res);
-      }
-      if (!_v) goto check_3;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      {
-        {
-          int res = SWIG_AsVal_double(argv[1], NULL);
-          _v = SWIG_CheckState(res);
+        if (_v) {
+          return _wrap_double_raster_GetData__SWIG_1(self, args);
         }
       }
-      if (!_v) goto check_3;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
+    }
+  }
+  if (argc == 3) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_double_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
       {
+        int res = SWIG_AsVal_double(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
         {
           int res = SWIG_AsVal_double(argv[2], NULL);
           _v = SWIG_CheckState(res);
         }
+        if (_v) {
+          return _wrap_double_raster_GetData__SWIG_0(self, args);
+        }
       }
-      if (!_v) goto check_3;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      if (!_index || (_ranki < _rank)) {
-        _rank = _ranki; _index = 3;
-        if (_rank == _rankm) goto dispatch;
-      }
-    }
-  check_3:
-    
-  dispatch:
-    switch(_index) {
-    case 1:
-      return _wrap_double_raster_GetData__SWIG_2(self, argc, argv);
-    case 2:
-      return _wrap_double_raster_GetData__SWIG_1(self, argc, argv);
-    case 3:
-      return _wrap_double_raster_GetData__SWIG_0(self, argc, argv);
     }
   }
   
@@ -9438,10 +10063,9 @@ SWIGINTERN PyObject *_wrap_double_raster_ToBuffer(PyObject *self, PyObject *args
   Raster< double > *arg1 = (Raster< double > *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[1] ;
   std::string result;
   
-  if (!SWIG_Python_UnpackTuple(args,"double_raster_ToBuffer",0,0,0)) SWIG_fail;
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_double_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "double_raster_ToBuffer" "', argument " "1"" of type '" "Raster< double > const *""'"); 
@@ -9465,7 +10089,136 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_double_raster___radd__(PyObject *self, PyObject *args, PyObject *kwargs) {
+SWIGINTERN PyObject *_wrap_double_raster_load__SWIG_0(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  std::string *arg1 = 0 ;
+  bool arg2 ;
+  int res1 = SWIG_OLDOBJ ;
+  bool val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  SwigValueWrapper< Raster< double > > result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:double_raster_load",&obj0,&obj1)) SWIG_fail;
+  {
+    std::string *ptr = (std::string *)0;
+    res1 = SWIG_AsPtr_std_string(obj0, &ptr);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "double_raster_load" "', argument " "1"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "double_raster_load" "', argument " "1"" of type '" "std::string const &""'"); 
+    }
+    arg1 = ptr;
+  }
+  ecode2 = SWIG_AsVal_bool(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "double_raster_load" "', argument " "2"" of type '" "bool""'");
+  } 
+  arg2 = static_cast< bool >(val2);
+  {
+    try {
+      result = Raster< double >::SWIGTEMPLATEDISAMBIGUATOR load((std::string const &)*arg1,arg2);
+    } 
+    catch (std::runtime_error& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what() );
+    }
+    catch (std::exception& e) {
+      SWIG_exception(SWIG_UnknownError, e.what());
+    }
+  }
+  resultobj = SWIG_NewPointerObj((new Raster< double >(static_cast< const Raster< double >& >(result))), SWIGTYPE_p_RasterT_double_t, SWIG_POINTER_OWN |  0 );
+  if (SWIG_IsNewObj(res1)) delete arg1;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res1)) delete arg1;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_double_raster_load__SWIG_1(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  std::string *arg1 = 0 ;
+  int res1 = SWIG_OLDOBJ ;
+  PyObject * obj0 = 0 ;
+  SwigValueWrapper< Raster< double > > result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:double_raster_load",&obj0)) SWIG_fail;
+  {
+    std::string *ptr = (std::string *)0;
+    res1 = SWIG_AsPtr_std_string(obj0, &ptr);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "double_raster_load" "', argument " "1"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "double_raster_load" "', argument " "1"" of type '" "std::string const &""'"); 
+    }
+    arg1 = ptr;
+  }
+  {
+    try {
+      result = Raster< double >::SWIGTEMPLATEDISAMBIGUATOR load((std::string const &)*arg1);
+    } 
+    catch (std::runtime_error& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what() );
+    }
+    catch (std::exception& e) {
+      SWIG_exception(SWIG_UnknownError, e.what());
+    }
+  }
+  resultobj = SWIG_NewPointerObj((new Raster< double >(static_cast< const Raster< double >& >(result))), SWIGTYPE_p_RasterT_double_t, SWIG_POINTER_OWN |  0 );
+  if (SWIG_IsNewObj(res1)) delete arg1;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res1)) delete arg1;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_double_raster_load(PyObject *self, PyObject *args) {
+  int argc;
+  PyObject *argv[3];
+  int ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? (int)PyObject_Length(args) : 0;
+  for (ii = 0; (ii < 2) && (ii < argc); ii++) {
+    argv[ii] = PyTuple_GET_ITEM(args,ii);
+  }
+  if (argc == 1) {
+    int _v;
+    int res = SWIG_AsPtr_std_string(argv[0], (std::string**)(0));
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_double_raster_load__SWIG_1(self, args);
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    int res = SWIG_AsPtr_std_string(argv[0], (std::string**)(0));
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        int res = SWIG_AsVal_bool(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        return _wrap_double_raster_load__SWIG_0(self, args);
+      }
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'double_raster_load'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    Raster< double >::load(std::string const &,bool)\n"
+    "    Raster< double >::load(std::string const &)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_double_raster___radd__(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   Raster< double > *arg1 = (Raster< double > *) 0 ;
   double *arg2 = 0 ;
@@ -9475,12 +10228,9 @@ SWIGINTERN PyObject *_wrap_double_raster___radd__(PyObject *self, PyObject *args
   double val2 ;
   int ecode2 = 0 ;
   PyObject * obj1 = 0 ;
-  char *  kwnames[] = {
-    (char *) "other", NULL 
-  };
   SwigValueWrapper< Raster< double > > result;
   
-  if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"O:double_raster___radd__",kwnames,&obj1)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"O:double_raster___radd__",&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_double_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "double_raster___radd__" "', argument " "1"" of type '" "Raster< double > *""'"); 
@@ -9510,7 +10260,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_double_raster___rsub__(PyObject *self, PyObject *args, PyObject *kwargs) {
+SWIGINTERN PyObject *_wrap_double_raster___rsub__(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   Raster< double > *arg1 = (Raster< double > *) 0 ;
   double *arg2 = 0 ;
@@ -9520,12 +10270,9 @@ SWIGINTERN PyObject *_wrap_double_raster___rsub__(PyObject *self, PyObject *args
   double val2 ;
   int ecode2 = 0 ;
   PyObject * obj1 = 0 ;
-  char *  kwnames[] = {
-    (char *) "other", NULL 
-  };
   SwigValueWrapper< Raster< double > > result;
   
-  if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"O:double_raster___rsub__",kwnames,&obj1)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"O:double_raster___rsub__",&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_double_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "double_raster___rsub__" "', argument " "1"" of type '" "Raster< double > *""'"); 
@@ -9555,7 +10302,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_double_raster___rmul__(PyObject *self, PyObject *args, PyObject *kwargs) {
+SWIGINTERN PyObject *_wrap_double_raster___rmul__(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   Raster< double > *arg1 = (Raster< double > *) 0 ;
   double *arg2 = 0 ;
@@ -9565,12 +10312,9 @@ SWIGINTERN PyObject *_wrap_double_raster___rmul__(PyObject *self, PyObject *args
   double val2 ;
   int ecode2 = 0 ;
   PyObject * obj1 = 0 ;
-  char *  kwnames[] = {
-    (char *) "other", NULL 
-  };
   SwigValueWrapper< Raster< double > > result;
   
-  if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"O:double_raster___rmul__",kwnames,&obj1)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"O:double_raster___rmul__",&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_double_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "double_raster___rmul__" "', argument " "1"" of type '" "Raster< double > *""'"); 
@@ -9600,7 +10344,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_double_raster___rdiv__(PyObject *self, PyObject *args, PyObject *kwargs) {
+SWIGINTERN PyObject *_wrap_double_raster___rdiv__(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   Raster< double > *arg1 = (Raster< double > *) 0 ;
   double *arg2 = 0 ;
@@ -9610,12 +10354,9 @@ SWIGINTERN PyObject *_wrap_double_raster___rdiv__(PyObject *self, PyObject *args
   double val2 ;
   int ecode2 = 0 ;
   PyObject * obj1 = 0 ;
-  char *  kwnames[] = {
-    (char *) "other", NULL 
-  };
   SwigValueWrapper< Raster< double > > result;
   
-  if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"O:double_raster___rdiv__",kwnames,&obj1)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"O:double_raster___rdiv__",&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_double_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "double_raster___rdiv__" "', argument " "1"" of type '" "Raster< double > *""'"); 
@@ -9650,9 +10391,8 @@ SWIGINTERN PyObject *_wrap_delete_double_raster(PyObject *self, PyObject *args) 
   Raster< double > *arg1 = (Raster< double > *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[1] ;
   
-  if (!SWIG_Python_UnpackTuple(args,"delete_double_raster",0,0,0)) SWIG_fail;
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_double_t, SWIG_POINTER_DISOWN |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_double_raster" "', argument " "1"" of type '" "Raster< double > *""'"); 
@@ -9681,10 +10421,9 @@ SWIGINTERN PyObject *_wrap_float_raster_Xllcorner(PyObject *self, PyObject *args
   Raster< float > *arg1 = (Raster< float > *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[1] ;
   double result;
   
-  if (!SWIG_Python_UnpackTuple(args,"float_raster_Xllcorner",0,0,0)) SWIG_fail;
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_float_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "float_raster_Xllcorner" "', argument " "1"" of type '" "Raster< float > const *""'"); 
@@ -9713,10 +10452,9 @@ SWIGINTERN PyObject *_wrap_float_raster_Yllcorner(PyObject *self, PyObject *args
   Raster< float > *arg1 = (Raster< float > *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[1] ;
   double result;
   
-  if (!SWIG_Python_UnpackTuple(args,"float_raster_Yllcorner",0,0,0)) SWIG_fail;
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_float_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "float_raster_Yllcorner" "', argument " "1"" of type '" "Raster< float > const *""'"); 
@@ -9745,10 +10483,9 @@ SWIGINTERN PyObject *_wrap_float_raster_XCellsize(PyObject *self, PyObject *args
   Raster< float > *arg1 = (Raster< float > *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[1] ;
   double result;
   
-  if (!SWIG_Python_UnpackTuple(args,"float_raster_XCellsize",0,0,0)) SWIG_fail;
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_float_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "float_raster_XCellsize" "', argument " "1"" of type '" "Raster< float > const *""'"); 
@@ -9777,10 +10514,9 @@ SWIGINTERN PyObject *_wrap_float_raster_YCellsize(PyObject *self, PyObject *args
   Raster< float > *arg1 = (Raster< float > *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[1] ;
   double result;
   
-  if (!SWIG_Python_UnpackTuple(args,"float_raster_YCellsize",0,0,0)) SWIG_fail;
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_float_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "float_raster_YCellsize" "', argument " "1"" of type '" "Raster< float > const *""'"); 
@@ -9809,10 +10545,9 @@ SWIGINTERN PyObject *_wrap_float_raster_ColumnCount(PyObject *self, PyObject *ar
   Raster< float > *arg1 = (Raster< float > *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[1] ;
   int result;
   
-  if (!SWIG_Python_UnpackTuple(args,"float_raster_ColumnCount",0,0,0)) SWIG_fail;
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_float_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "float_raster_ColumnCount" "', argument " "1"" of type '" "Raster< float > const *""'"); 
@@ -9841,10 +10576,9 @@ SWIGINTERN PyObject *_wrap_float_raster_RowCount(PyObject *self, PyObject *args)
   Raster< float > *arg1 = (Raster< float > *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[1] ;
   int result;
   
-  if (!SWIG_Python_UnpackTuple(args,"float_raster_RowCount",0,0,0)) SWIG_fail;
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_float_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "float_raster_RowCount" "', argument " "1"" of type '" "Raster< float > const *""'"); 
@@ -9873,10 +10607,9 @@ SWIGINTERN PyObject *_wrap_float_raster_Width(PyObject *self, PyObject *args) {
   Raster< float > *arg1 = (Raster< float > *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[1] ;
   double result;
   
-  if (!SWIG_Python_UnpackTuple(args,"float_raster_Width",0,0,0)) SWIG_fail;
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_float_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "float_raster_Width" "', argument " "1"" of type '" "Raster< float > const *""'"); 
@@ -9905,10 +10638,9 @@ SWIGINTERN PyObject *_wrap_float_raster_Height(PyObject *self, PyObject *args) {
   Raster< float > *arg1 = (Raster< float > *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[1] ;
   double result;
   
-  if (!SWIG_Python_UnpackTuple(args,"float_raster_Height",0,0,0)) SWIG_fail;
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_float_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "float_raster_Height" "', argument " "1"" of type '" "Raster< float > const *""'"); 
@@ -9937,10 +10669,9 @@ SWIGINTERN PyObject *_wrap_float_raster_NoData(PyObject *self, PyObject *args) {
   Raster< float > *arg1 = (Raster< float > *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[1] ;
   float result;
   
-  if (!SWIG_Python_UnpackTuple(args,"float_raster_NoData",0,0,0)) SWIG_fail;
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_float_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "float_raster_NoData" "', argument " "1"" of type '" "Raster< float > const *""'"); 
@@ -9964,7 +10695,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_float_raster_GetData__SWIG_0(PyObject *self, int nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_float_raster_GetData__SWIG_0(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   Raster< float > *arg1 = (Raster< float > *) 0 ;
   double arg2 ;
@@ -9975,20 +10706,22 @@ SWIGINTERN PyObject *_wrap_float_raster_GetData__SWIG_0(PyObject *self, int nobj
   int ecode2 = 0 ;
   double val3 ;
   int ecode3 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
   float result;
   
-  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"OO:float_raster_GetData",&obj1,&obj2)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_float_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "float_raster_GetData" "', argument " "1"" of type '" "Raster< float > const *""'"); 
   }
   arg1 = reinterpret_cast< Raster< float > * >(argp1);
-  ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
+  ecode2 = SWIG_AsVal_double(obj1, &val2);
   if (!SWIG_IsOK(ecode2)) {
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "float_raster_GetData" "', argument " "2"" of type '" "double""'");
   } 
   arg2 = static_cast< double >(val2);
-  ecode3 = SWIG_AsVal_double(swig_obj[2], &val3);
+  ecode3 = SWIG_AsVal_double(obj2, &val3);
   if (!SWIG_IsOK(ecode3)) {
     SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "float_raster_GetData" "', argument " "3"" of type '" "double""'");
   } 
@@ -10011,7 +10744,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_float_raster_GetData__SWIG_1(PyObject *self, int nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_float_raster_GetData__SWIG_1(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   Raster< float > *arg1 = (Raster< float > *) 0 ;
   int arg2 ;
@@ -10022,20 +10755,22 @@ SWIGINTERN PyObject *_wrap_float_raster_GetData__SWIG_1(PyObject *self, int nobj
   int ecode2 = 0 ;
   int val3 ;
   int ecode3 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
   float result;
   
-  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"OO:float_raster_GetData",&obj1,&obj2)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_float_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "float_raster_GetData" "', argument " "1"" of type '" "Raster< float > const *""'"); 
   }
   arg1 = reinterpret_cast< Raster< float > * >(argp1);
-  ecode2 = SWIG_AsVal_int(swig_obj[1], &val2);
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
   if (!SWIG_IsOK(ecode2)) {
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "float_raster_GetData" "', argument " "2"" of type '" "int""'");
   } 
   arg2 = static_cast< int >(val2);
-  ecode3 = SWIG_AsVal_int(swig_obj[2], &val3);
+  ecode3 = SWIG_AsVal_int(obj2, &val3);
   if (!SWIG_IsOK(ecode3)) {
     SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "float_raster_GetData" "', argument " "3"" of type '" "int""'");
   } 
@@ -10058,7 +10793,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_float_raster_HasData__SWIG_0(PyObject *self, int nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_float_raster_HasData__SWIG_0(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   Raster< float > *arg1 = (Raster< float > *) 0 ;
   double arg2 ;
@@ -10069,20 +10804,22 @@ SWIGINTERN PyObject *_wrap_float_raster_HasData__SWIG_0(PyObject *self, int nobj
   int ecode2 = 0 ;
   double val3 ;
   int ecode3 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
   bool result;
   
-  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"OO:float_raster_HasData",&obj1,&obj2)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_float_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "float_raster_HasData" "', argument " "1"" of type '" "Raster< float > const *""'"); 
   }
   arg1 = reinterpret_cast< Raster< float > * >(argp1);
-  ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
+  ecode2 = SWIG_AsVal_double(obj1, &val2);
   if (!SWIG_IsOK(ecode2)) {
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "float_raster_HasData" "', argument " "2"" of type '" "double""'");
   } 
   arg2 = static_cast< double >(val2);
-  ecode3 = SWIG_AsVal_double(swig_obj[2], &val3);
+  ecode3 = SWIG_AsVal_double(obj2, &val3);
   if (!SWIG_IsOK(ecode3)) {
     SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "float_raster_HasData" "', argument " "3"" of type '" "double""'");
   } 
@@ -10105,7 +10842,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_float_raster_HasData__SWIG_1(PyObject *self, int nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_float_raster_HasData__SWIG_1(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   Raster< float > *arg1 = (Raster< float > *) 0 ;
   int arg2 ;
@@ -10116,20 +10853,22 @@ SWIGINTERN PyObject *_wrap_float_raster_HasData__SWIG_1(PyObject *self, int nobj
   int ecode2 = 0 ;
   int val3 ;
   int ecode3 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
   bool result;
   
-  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"OO:float_raster_HasData",&obj1,&obj2)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_float_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "float_raster_HasData" "', argument " "1"" of type '" "Raster< float > const *""'"); 
   }
   arg1 = reinterpret_cast< Raster< float > * >(argp1);
-  ecode2 = SWIG_AsVal_int(swig_obj[1], &val2);
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
   if (!SWIG_IsOK(ecode2)) {
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "float_raster_HasData" "', argument " "2"" of type '" "int""'");
   } 
   arg2 = static_cast< int >(val2);
-  ecode3 = SWIG_AsVal_int(swig_obj[2], &val3);
+  ecode3 = SWIG_AsVal_int(obj2, &val3);
   if (!SWIG_IsOK(ecode3)) {
     SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "float_raster_HasData" "', argument " "3"" of type '" "int""'");
   } 
@@ -10152,14 +10891,14 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_float_raster_HasData__SWIG_2(PyObject *self, int nobjs, PyObject **SWIGUNUSEDPARM(swig_obj)) {
+SWIGINTERN PyObject *_wrap_float_raster_HasData__SWIG_2(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   Raster< float > *arg1 = (Raster< float > *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   SwigValueWrapper< Raster< int > > result;
   
-  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_float_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "float_raster_HasData" "', argument " "1"" of type '" "Raster< float > const *""'"); 
@@ -10186,123 +10925,64 @@ fail:
 SWIGINTERN PyObject *_wrap_float_raster_HasData(PyObject *self, PyObject *args) {
   int argc;
   PyObject *argv[4];
+  int ii;
   
-  if (!(argc = SWIG_Python_UnpackTuple(args,"float_raster_HasData",0,3,argv+1))) SWIG_fail;
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? (int)PyObject_Length(args) : 0;
   argv[0] = self;
-  {
-    unsigned long _index = 0;
-    SWIG_TypeRank _rank = 0; 
-    if (argc == 1) {
-      SWIG_TypeRank _ranki = 0;
-      SWIG_TypeRank _rankm = 0;
-      SWIG_TypeRank _pi = 1;
-      int _v = 0;
-      {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_float_t, 0);
-        _v = SWIG_CheckState(res);
-      }
-      if (!_v) goto check_1;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      if (!_index || (_ranki < _rank)) {
-        _rank = _ranki; _index = 1;
-        if (_rank == _rankm) goto dispatch;
-      }
+  for (ii = 0; (ii < 2) && (ii < argc); ii++) {
+    argv[ii + 1] = PyTuple_GET_ITEM(args,ii);
+  }
+  argc++;
+  if (argc == 1) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_float_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_float_raster_HasData__SWIG_2(self, args);
     }
-  check_1:
-    
-    if (argc == 3) {
-      SWIG_TypeRank _ranki = 0;
-      SWIG_TypeRank _rankm = 0;
-      SWIG_TypeRank _pi = 1;
-      int _v = 0;
+  }
+  if (argc == 3) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_float_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
       {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_float_t, 0);
+        int res = SWIG_AsVal_int(argv[1], NULL);
         _v = SWIG_CheckState(res);
       }
-      if (!_v) goto check_2;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      {
-        {
-          int res = SWIG_AsVal_int(argv[1], NULL);
-          _v = SWIG_CheckState(res);
-        }
-      }
-      if (!_v) goto check_2;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      {
+      if (_v) {
         {
           int res = SWIG_AsVal_int(argv[2], NULL);
           _v = SWIG_CheckState(res);
         }
-      }
-      if (!_v) goto check_2;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      if (!_index || (_ranki < _rank)) {
-        _rank = _ranki; _index = 2;
-        if (_rank == _rankm) goto dispatch;
-      }
-    }
-  check_2:
-    
-    if (argc == 3) {
-      SWIG_TypeRank _ranki = 0;
-      SWIG_TypeRank _rankm = 0;
-      SWIG_TypeRank _pi = 1;
-      int _v = 0;
-      {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_float_t, 0);
-        _v = SWIG_CheckState(res);
-      }
-      if (!_v) goto check_3;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      {
-        {
-          int res = SWIG_AsVal_double(argv[1], NULL);
-          _v = SWIG_CheckState(res);
+        if (_v) {
+          return _wrap_float_raster_HasData__SWIG_1(self, args);
         }
       }
-      if (!_v) goto check_3;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
+    }
+  }
+  if (argc == 3) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_float_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
       {
+        int res = SWIG_AsVal_double(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
         {
           int res = SWIG_AsVal_double(argv[2], NULL);
           _v = SWIG_CheckState(res);
         }
+        if (_v) {
+          return _wrap_float_raster_HasData__SWIG_0(self, args);
+        }
       }
-      if (!_v) goto check_3;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      if (!_index || (_ranki < _rank)) {
-        _rank = _ranki; _index = 3;
-        if (_rank == _rankm) goto dispatch;
-      }
-    }
-  check_3:
-    
-  dispatch:
-    switch(_index) {
-    case 1:
-      return _wrap_float_raster_HasData__SWIG_2(self, argc, argv);
-    case 2:
-      return _wrap_float_raster_HasData__SWIG_1(self, argc, argv);
-    case 3:
-      return _wrap_float_raster_HasData__SWIG_0(self, argc, argv);
     }
   }
   
@@ -10316,7 +10996,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_float_raster_SetData__SWIG_0(PyObject *self, int nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_float_raster_SetData__SWIG_0(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   Raster< float > *arg1 = (Raster< float > *) 0 ;
   double arg2 ;
@@ -10330,24 +11010,27 @@ SWIGINTERN PyObject *_wrap_float_raster_SetData__SWIG_0(PyObject *self, int nobj
   int ecode3 = 0 ;
   float val4 ;
   int ecode4 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
   
-  if ((nobjs < 4) || (nobjs > 4)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"OOO:float_raster_SetData",&obj1,&obj2,&obj3)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_float_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "float_raster_SetData" "', argument " "1"" of type '" "Raster< float > *""'"); 
   }
   arg1 = reinterpret_cast< Raster< float > * >(argp1);
-  ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
+  ecode2 = SWIG_AsVal_double(obj1, &val2);
   if (!SWIG_IsOK(ecode2)) {
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "float_raster_SetData" "', argument " "2"" of type '" "double""'");
   } 
   arg2 = static_cast< double >(val2);
-  ecode3 = SWIG_AsVal_double(swig_obj[2], &val3);
+  ecode3 = SWIG_AsVal_double(obj2, &val3);
   if (!SWIG_IsOK(ecode3)) {
     SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "float_raster_SetData" "', argument " "3"" of type '" "double""'");
   } 
   arg3 = static_cast< double >(val3);
-  ecode4 = SWIG_AsVal_float(swig_obj[3], &val4);
+  ecode4 = SWIG_AsVal_float(obj3, &val4);
   if (!SWIG_IsOK(ecode4)) {
     SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "float_raster_SetData" "', argument " "4"" of type '" "float""'");
   } 
@@ -10370,7 +11053,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_float_raster_SetData__SWIG_1(PyObject *self, int nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_float_raster_SetData__SWIG_1(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   Raster< float > *arg1 = (Raster< float > *) 0 ;
   int arg2 ;
@@ -10384,24 +11067,27 @@ SWIGINTERN PyObject *_wrap_float_raster_SetData__SWIG_1(PyObject *self, int nobj
   int ecode3 = 0 ;
   float val4 ;
   int ecode4 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
   
-  if ((nobjs < 4) || (nobjs > 4)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"OOO:float_raster_SetData",&obj1,&obj2,&obj3)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_float_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "float_raster_SetData" "', argument " "1"" of type '" "Raster< float > *""'"); 
   }
   arg1 = reinterpret_cast< Raster< float > * >(argp1);
-  ecode2 = SWIG_AsVal_int(swig_obj[1], &val2);
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
   if (!SWIG_IsOK(ecode2)) {
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "float_raster_SetData" "', argument " "2"" of type '" "int""'");
   } 
   arg2 = static_cast< int >(val2);
-  ecode3 = SWIG_AsVal_int(swig_obj[2], &val3);
+  ecode3 = SWIG_AsVal_int(obj2, &val3);
   if (!SWIG_IsOK(ecode3)) {
     SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "float_raster_SetData" "', argument " "3"" of type '" "int""'");
   } 
   arg3 = static_cast< int >(val3);
-  ecode4 = SWIG_AsVal_float(swig_obj[3], &val4);
+  ecode4 = SWIG_AsVal_float(obj3, &val4);
   if (!SWIG_IsOK(ecode4)) {
     SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "float_raster_SetData" "', argument " "4"" of type '" "float""'");
   } 
@@ -10427,120 +11113,67 @@ fail:
 SWIGINTERN PyObject *_wrap_float_raster_SetData(PyObject *self, PyObject *args) {
   int argc;
   PyObject *argv[5];
+  int ii;
   
-  if (!(argc = SWIG_Python_UnpackTuple(args,"float_raster_SetData",0,4,argv+1))) SWIG_fail;
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? (int)PyObject_Length(args) : 0;
   argv[0] = self;
-  {
-    unsigned long _index = 0;
-    SWIG_TypeRank _rank = 0; 
-    if (argc == 4) {
-      SWIG_TypeRank _ranki = 0;
-      SWIG_TypeRank _rankm = 0;
-      SWIG_TypeRank _pi = 1;
-      int _v = 0;
+  for (ii = 0; (ii < 3) && (ii < argc); ii++) {
+    argv[ii + 1] = PyTuple_GET_ITEM(args,ii);
+  }
+  argc++;
+  if (argc == 4) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_float_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
       {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_float_t, 0);
+        int res = SWIG_AsVal_int(argv[1], NULL);
         _v = SWIG_CheckState(res);
       }
-      if (!_v) goto check_1;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      {
-        {
-          int res = SWIG_AsVal_int(argv[1], NULL);
-          _v = SWIG_CheckState(res);
-        }
-      }
-      if (!_v) goto check_1;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      {
+      if (_v) {
         {
           int res = SWIG_AsVal_int(argv[2], NULL);
           _v = SWIG_CheckState(res);
         }
-      }
-      if (!_v) goto check_1;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      {
-        {
-          int res = SWIG_AsVal_float(argv[3], NULL);
-          _v = SWIG_CheckState(res);
+        if (_v) {
+          {
+            int res = SWIG_AsVal_float(argv[3], NULL);
+            _v = SWIG_CheckState(res);
+          }
+          if (_v) {
+            return _wrap_float_raster_SetData__SWIG_1(self, args);
+          }
         }
-      }
-      if (!_v) goto check_1;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      if (!_index || (_ranki < _rank)) {
-        _rank = _ranki; _index = 1;
-        if (_rank == _rankm) goto dispatch;
       }
     }
-  check_1:
-    
-    if (argc == 4) {
-      SWIG_TypeRank _ranki = 0;
-      SWIG_TypeRank _rankm = 0;
-      SWIG_TypeRank _pi = 1;
-      int _v = 0;
+  }
+  if (argc == 4) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_float_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
       {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_float_t, 0);
+        int res = SWIG_AsVal_double(argv[1], NULL);
         _v = SWIG_CheckState(res);
       }
-      if (!_v) goto check_2;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      {
-        {
-          int res = SWIG_AsVal_double(argv[1], NULL);
-          _v = SWIG_CheckState(res);
-        }
-      }
-      if (!_v) goto check_2;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      {
+      if (_v) {
         {
           int res = SWIG_AsVal_double(argv[2], NULL);
           _v = SWIG_CheckState(res);
         }
-      }
-      if (!_v) goto check_2;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      {
-        {
-          int res = SWIG_AsVal_float(argv[3], NULL);
-          _v = SWIG_CheckState(res);
+        if (_v) {
+          {
+            int res = SWIG_AsVal_float(argv[3], NULL);
+            _v = SWIG_CheckState(res);
+          }
+          if (_v) {
+            return _wrap_float_raster_SetData__SWIG_0(self, args);
+          }
         }
       }
-      if (!_v) goto check_2;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      if (!_index || (_ranki < _rank)) {
-        _rank = _ranki; _index = 2;
-        if (_rank == _rankm) goto dispatch;
-      }
-    }
-  check_2:
-    
-  dispatch:
-    switch(_index) {
-    case 1:
-      return _wrap_float_raster_SetData__SWIG_1(self, argc, argv);
-    case 2:
-      return _wrap_float_raster_SetData__SWIG_0(self, argc, argv);
     }
   }
   
@@ -10553,7 +11186,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_float_raster_GetXPosition(PyObject *self, PyObject *args, PyObject *kwargs) {
+SWIGINTERN PyObject *_wrap_float_raster_GetXPosition(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   Raster< float > *arg1 = (Raster< float > *) 0 ;
   int arg2 ;
@@ -10562,12 +11195,9 @@ SWIGINTERN PyObject *_wrap_float_raster_GetXPosition(PyObject *self, PyObject *a
   int val2 ;
   int ecode2 = 0 ;
   PyObject * obj1 = 0 ;
-  char *  kwnames[] = {
-    (char *) "col", NULL 
-  };
   double result;
   
-  if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"O:float_raster_GetXPosition",kwnames,&obj1)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"O:float_raster_GetXPosition",&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_float_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "float_raster_GetXPosition" "', argument " "1"" of type '" "Raster< float > *""'"); 
@@ -10596,7 +11226,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_float_raster_GetYPosition(PyObject *self, PyObject *args, PyObject *kwargs) {
+SWIGINTERN PyObject *_wrap_float_raster_GetYPosition(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   Raster< float > *arg1 = (Raster< float > *) 0 ;
   int arg2 ;
@@ -10605,12 +11235,9 @@ SWIGINTERN PyObject *_wrap_float_raster_GetYPosition(PyObject *self, PyObject *a
   int val2 ;
   int ecode2 = 0 ;
   PyObject * obj1 = 0 ;
-  char *  kwnames[] = {
-    (char *) "row", NULL 
-  };
   double result;
   
-  if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"O:float_raster_GetYPosition",kwnames,&obj1)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"O:float_raster_GetYPosition",&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_float_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "float_raster_GetYPosition" "', argument " "1"" of type '" "Raster< float > *""'"); 
@@ -10644,10 +11271,9 @@ SWIGINTERN PyObject *_wrap_float_raster_statistics(PyObject *self, PyObject *arg
   Raster< float > *arg1 = (Raster< float > *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[1] ;
   RasterStatistics result;
   
-  if (!SWIG_Python_UnpackTuple(args,"float_raster_statistics",0,0,0)) SWIG_fail;
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_float_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "float_raster_statistics" "', argument " "1"" of type '" "Raster< float > *""'"); 
@@ -10671,33 +11297,28 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_float_raster_histogram(PyObject *self, PyObject *args, PyObject *kwargs) {
+SWIGINTERN PyObject *_wrap_float_raster_histogram__SWIG_0(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   Raster< float > *arg1 = (Raster< float > *) 0 ;
-  size_t arg2 = (size_t) 100 ;
+  size_t arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   size_t val2 ;
   int ecode2 = 0 ;
   PyObject * obj1 = 0 ;
-  char *  kwnames[] = {
-    (char *) "bins", NULL 
-  };
   SwigValueWrapper< Histogram > result;
   
-  if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"|O:float_raster_histogram",kwnames,&obj1)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"O:float_raster_histogram",&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_float_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "float_raster_histogram" "', argument " "1"" of type '" "Raster< float > *""'"); 
   }
   arg1 = reinterpret_cast< Raster< float > * >(argp1);
-  if (obj1) {
-    ecode2 = SWIG_AsVal_size_t(obj1, &val2);
-    if (!SWIG_IsOK(ecode2)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "float_raster_histogram" "', argument " "2"" of type '" "size_t""'");
-    } 
-    arg2 = static_cast< size_t >(val2);
-  }
+  ecode2 = SWIG_AsVal_size_t(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "float_raster_histogram" "', argument " "2"" of type '" "size_t""'");
+  } 
+  arg2 = static_cast< size_t >(val2);
   {
     try {
       result = (arg1)->histogram(arg2);
@@ -10716,7 +11337,84 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_float_raster_clip(PyObject *self, PyObject *args, PyObject *kwargs) {
+SWIGINTERN PyObject *_wrap_float_raster_histogram__SWIG_1(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  Raster< float > *arg1 = (Raster< float > *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  SwigValueWrapper< Histogram > result;
+  
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_float_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "float_raster_histogram" "', argument " "1"" of type '" "Raster< float > *""'"); 
+  }
+  arg1 = reinterpret_cast< Raster< float > * >(argp1);
+  {
+    try {
+      result = (arg1)->histogram();
+    } 
+    catch (std::runtime_error& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what() );
+    }
+    catch (std::exception& e) {
+      SWIG_exception(SWIG_UnknownError, e.what());
+    }
+  }
+  resultobj = SWIG_NewPointerObj((new Histogram(static_cast< const Histogram& >(result))), SWIGTYPE_p_Histogram, SWIG_POINTER_OWN |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_float_raster_histogram(PyObject *self, PyObject *args) {
+  int argc;
+  PyObject *argv[3];
+  int ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? (int)PyObject_Length(args) : 0;
+  argv[0] = self;
+  for (ii = 0; (ii < 1) && (ii < argc); ii++) {
+    argv[ii + 1] = PyTuple_GET_ITEM(args,ii);
+  }
+  argc++;
+  if (argc == 1) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_float_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_float_raster_histogram__SWIG_1(self, args);
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_float_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        int res = SWIG_AsVal_size_t(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        return _wrap_float_raster_histogram__SWIG_0(self, args);
+      }
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'float_raster_histogram'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    Raster< float >::histogram(size_t)\n"
+    "    Raster< float >::histogram()\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_float_raster_clip(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   Raster< float > *arg1 = (Raster< float > *) 0 ;
   double arg2 ;
@@ -10737,11 +11435,8 @@ SWIGINTERN PyObject *_wrap_float_raster_clip(PyObject *self, PyObject *args, PyO
   PyObject * obj2 = 0 ;
   PyObject * obj3 = 0 ;
   PyObject * obj4 = 0 ;
-  char *  kwnames[] = {
-    (char *) "x1",(char *) "y1",(char *) "x2",(char *) "y2", NULL 
-  };
   
-  if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"OOOO:float_raster_clip",kwnames,&obj1,&obj2,&obj3,&obj4)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"OOOO:float_raster_clip",&obj1,&obj2,&obj3,&obj4)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_float_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "float_raster_clip" "', argument " "1"" of type '" "Raster< float > *""'"); 
@@ -10785,7 +11480,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_float_raster___imul____SWIG_0(PyObject *self, int nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_float_raster___imul____SWIG_0(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   Raster< float > *arg1 = (Raster< float > *) 0 ;
   float arg2 ;
@@ -10793,15 +11488,16 @@ SWIGINTERN PyObject *_wrap_float_raster___imul____SWIG_0(PyObject *self, int nob
   int res1 = 0 ;
   float val2 ;
   int ecode2 = 0 ;
+  PyObject * obj1 = 0 ;
   Raster< float > *result = 0 ;
   
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"O:float_raster___imul__",&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_float_t, SWIG_POINTER_DISOWN |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "float_raster___imul__" "', argument " "1"" of type '" "Raster< float > *""'"); 
   }
   arg1 = reinterpret_cast< Raster< float > * >(argp1);
-  ecode2 = SWIG_AsVal_float(swig_obj[1], &val2);
+  ecode2 = SWIG_AsVal_float(obj1, &val2);
   if (!SWIG_IsOK(ecode2)) {
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "float_raster___imul__" "', argument " "2"" of type '" "float""'");
   } 
@@ -10824,7 +11520,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_float_raster___imul____SWIG_1(PyObject *self, int nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_float_raster___imul____SWIG_1(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   Raster< float > *arg1 = (Raster< float > *) 0 ;
   Raster< float > *arg2 = 0 ;
@@ -10832,15 +11528,16 @@ SWIGINTERN PyObject *_wrap_float_raster___imul____SWIG_1(PyObject *self, int nob
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
+  PyObject * obj1 = 0 ;
   Raster< float > *result = 0 ;
   
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"O:float_raster___imul__",&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_float_t, SWIG_POINTER_DISOWN |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "float_raster___imul__" "', argument " "1"" of type '" "Raster< float > *""'"); 
   }
   arg1 = reinterpret_cast< Raster< float > * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_RasterT_float_t,  0  | 0);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_RasterT_float_t,  0  | 0);
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "float_raster___imul__" "', argument " "2"" of type '" "Raster< float > const &""'"); 
   }
@@ -10869,78 +11566,41 @@ fail:
 SWIGINTERN PyObject *_wrap_float_raster___imul__(PyObject *self, PyObject *args) {
   int argc;
   PyObject *argv[3];
+  int ii;
   
-  if (!(argc = SWIG_Python_UnpackTuple(args,"float_raster___imul__",0,2,argv+1))) SWIG_fail;
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? (int)PyObject_Length(args) : 0;
   argv[0] = self;
-  {
-    unsigned long _index = 0;
-    SWIG_TypeRank _rank = 0; 
-    if (argc == 2) {
-      SWIG_TypeRank _ranki = 0;
-      SWIG_TypeRank _rankm = 0;
-      SWIG_TypeRank _pi = 1;
-      int _v = 0;
-      {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_float_t, 0);
-        _v = SWIG_CheckState(res);
-      }
-      if (!_v) goto check_1;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      {
-        int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_RasterT_float_t, 0);
-        _v = SWIG_CheckState(res);
-      }
-      if (!_v) goto check_1;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      if (!_index || (_ranki < _rank)) {
-        _rank = _ranki; _index = 1;
-        if (_rank == _rankm) goto dispatch;
+  for (ii = 0; (ii < 1) && (ii < argc); ii++) {
+    argv[ii + 1] = PyTuple_GET_ITEM(args,ii);
+  }
+  argc++;
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_float_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_RasterT_float_t, 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        return _wrap_float_raster___imul____SWIG_1(self, args);
       }
     }
-  check_1:
-    
-    if (argc == 2) {
-      SWIG_TypeRank _ranki = 0;
-      SWIG_TypeRank _rankm = 0;
-      SWIG_TypeRank _pi = 1;
-      int _v = 0;
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_float_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
       {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_float_t, 0);
+        int res = SWIG_AsVal_float(argv[1], NULL);
         _v = SWIG_CheckState(res);
       }
-      if (!_v) goto check_2;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      {
-        {
-          int res = SWIG_AsVal_float(argv[1], NULL);
-          _v = SWIG_CheckState(res);
-        }
+      if (_v) {
+        return _wrap_float_raster___imul____SWIG_0(self, args);
       }
-      if (!_v) goto check_2;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      if (!_index || (_ranki < _rank)) {
-        _rank = _ranki; _index = 2;
-        if (_rank == _rankm) goto dispatch;
-      }
-    }
-  check_2:
-    
-  dispatch:
-    switch(_index) {
-    case 1:
-      return _wrap_float_raster___imul____SWIG_1(self, argc, argv);
-    case 2:
-      return _wrap_float_raster___imul____SWIG_0(self, argc, argv);
     }
   }
   
@@ -10955,7 +11615,7 @@ fail:
 
 SWIGPY_BINARYFUNC_CLOSURE(_wrap_float_raster___imul__)
 
-SWIGINTERN PyObject *_wrap_float_raster___iadd____SWIG_0(PyObject *self, int nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_float_raster___iadd____SWIG_0(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   Raster< float > *arg1 = (Raster< float > *) 0 ;
   float arg2 ;
@@ -10963,15 +11623,16 @@ SWIGINTERN PyObject *_wrap_float_raster___iadd____SWIG_0(PyObject *self, int nob
   int res1 = 0 ;
   float val2 ;
   int ecode2 = 0 ;
+  PyObject * obj1 = 0 ;
   Raster< float > *result = 0 ;
   
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"O:float_raster___iadd__",&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_float_t, SWIG_POINTER_DISOWN |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "float_raster___iadd__" "', argument " "1"" of type '" "Raster< float > *""'"); 
   }
   arg1 = reinterpret_cast< Raster< float > * >(argp1);
-  ecode2 = SWIG_AsVal_float(swig_obj[1], &val2);
+  ecode2 = SWIG_AsVal_float(obj1, &val2);
   if (!SWIG_IsOK(ecode2)) {
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "float_raster___iadd__" "', argument " "2"" of type '" "float""'");
   } 
@@ -10994,7 +11655,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_float_raster___iadd____SWIG_1(PyObject *self, int nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_float_raster___iadd____SWIG_1(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   Raster< float > *arg1 = (Raster< float > *) 0 ;
   Raster< float > *arg2 = 0 ;
@@ -11002,15 +11663,16 @@ SWIGINTERN PyObject *_wrap_float_raster___iadd____SWIG_1(PyObject *self, int nob
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
+  PyObject * obj1 = 0 ;
   Raster< float > *result = 0 ;
   
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"O:float_raster___iadd__",&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_float_t, SWIG_POINTER_DISOWN |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "float_raster___iadd__" "', argument " "1"" of type '" "Raster< float > *""'"); 
   }
   arg1 = reinterpret_cast< Raster< float > * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_RasterT_float_t,  0  | 0);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_RasterT_float_t,  0  | 0);
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "float_raster___iadd__" "', argument " "2"" of type '" "Raster< float > const &""'"); 
   }
@@ -11039,78 +11701,41 @@ fail:
 SWIGINTERN PyObject *_wrap_float_raster___iadd__(PyObject *self, PyObject *args) {
   int argc;
   PyObject *argv[3];
+  int ii;
   
-  if (!(argc = SWIG_Python_UnpackTuple(args,"float_raster___iadd__",0,2,argv+1))) SWIG_fail;
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? (int)PyObject_Length(args) : 0;
   argv[0] = self;
-  {
-    unsigned long _index = 0;
-    SWIG_TypeRank _rank = 0; 
-    if (argc == 2) {
-      SWIG_TypeRank _ranki = 0;
-      SWIG_TypeRank _rankm = 0;
-      SWIG_TypeRank _pi = 1;
-      int _v = 0;
-      {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_float_t, 0);
-        _v = SWIG_CheckState(res);
-      }
-      if (!_v) goto check_1;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      {
-        int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_RasterT_float_t, 0);
-        _v = SWIG_CheckState(res);
-      }
-      if (!_v) goto check_1;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      if (!_index || (_ranki < _rank)) {
-        _rank = _ranki; _index = 1;
-        if (_rank == _rankm) goto dispatch;
+  for (ii = 0; (ii < 1) && (ii < argc); ii++) {
+    argv[ii + 1] = PyTuple_GET_ITEM(args,ii);
+  }
+  argc++;
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_float_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_RasterT_float_t, 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        return _wrap_float_raster___iadd____SWIG_1(self, args);
       }
     }
-  check_1:
-    
-    if (argc == 2) {
-      SWIG_TypeRank _ranki = 0;
-      SWIG_TypeRank _rankm = 0;
-      SWIG_TypeRank _pi = 1;
-      int _v = 0;
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_float_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
       {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_float_t, 0);
+        int res = SWIG_AsVal_float(argv[1], NULL);
         _v = SWIG_CheckState(res);
       }
-      if (!_v) goto check_2;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      {
-        {
-          int res = SWIG_AsVal_float(argv[1], NULL);
-          _v = SWIG_CheckState(res);
-        }
+      if (_v) {
+        return _wrap_float_raster___iadd____SWIG_0(self, args);
       }
-      if (!_v) goto check_2;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      if (!_index || (_ranki < _rank)) {
-        _rank = _ranki; _index = 2;
-        if (_rank == _rankm) goto dispatch;
-      }
-    }
-  check_2:
-    
-  dispatch:
-    switch(_index) {
-    case 1:
-      return _wrap_float_raster___iadd____SWIG_1(self, argc, argv);
-    case 2:
-      return _wrap_float_raster___iadd____SWIG_0(self, argc, argv);
     }
   }
   
@@ -11125,7 +11750,7 @@ fail:
 
 SWIGPY_BINARYFUNC_CLOSURE(_wrap_float_raster___iadd__)
 
-SWIGINTERN PyObject *_wrap_float_raster___isub____SWIG_0(PyObject *self, int nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_float_raster___isub____SWIG_0(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   Raster< float > *arg1 = (Raster< float > *) 0 ;
   float arg2 ;
@@ -11133,15 +11758,16 @@ SWIGINTERN PyObject *_wrap_float_raster___isub____SWIG_0(PyObject *self, int nob
   int res1 = 0 ;
   float val2 ;
   int ecode2 = 0 ;
+  PyObject * obj1 = 0 ;
   Raster< float > *result = 0 ;
   
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"O:float_raster___isub__",&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_float_t, SWIG_POINTER_DISOWN |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "float_raster___isub__" "', argument " "1"" of type '" "Raster< float > *""'"); 
   }
   arg1 = reinterpret_cast< Raster< float > * >(argp1);
-  ecode2 = SWIG_AsVal_float(swig_obj[1], &val2);
+  ecode2 = SWIG_AsVal_float(obj1, &val2);
   if (!SWIG_IsOK(ecode2)) {
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "float_raster___isub__" "', argument " "2"" of type '" "float""'");
   } 
@@ -11164,7 +11790,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_float_raster___isub____SWIG_1(PyObject *self, int nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_float_raster___isub____SWIG_1(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   Raster< float > *arg1 = (Raster< float > *) 0 ;
   Raster< float > *arg2 = 0 ;
@@ -11172,15 +11798,16 @@ SWIGINTERN PyObject *_wrap_float_raster___isub____SWIG_1(PyObject *self, int nob
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
+  PyObject * obj1 = 0 ;
   Raster< float > *result = 0 ;
   
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"O:float_raster___isub__",&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_float_t, SWIG_POINTER_DISOWN |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "float_raster___isub__" "', argument " "1"" of type '" "Raster< float > *""'"); 
   }
   arg1 = reinterpret_cast< Raster< float > * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_RasterT_float_t,  0  | 0);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_RasterT_float_t,  0  | 0);
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "float_raster___isub__" "', argument " "2"" of type '" "Raster< float > const &""'"); 
   }
@@ -11209,78 +11836,41 @@ fail:
 SWIGINTERN PyObject *_wrap_float_raster___isub__(PyObject *self, PyObject *args) {
   int argc;
   PyObject *argv[3];
+  int ii;
   
-  if (!(argc = SWIG_Python_UnpackTuple(args,"float_raster___isub__",0,2,argv+1))) SWIG_fail;
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? (int)PyObject_Length(args) : 0;
   argv[0] = self;
-  {
-    unsigned long _index = 0;
-    SWIG_TypeRank _rank = 0; 
-    if (argc == 2) {
-      SWIG_TypeRank _ranki = 0;
-      SWIG_TypeRank _rankm = 0;
-      SWIG_TypeRank _pi = 1;
-      int _v = 0;
-      {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_float_t, 0);
-        _v = SWIG_CheckState(res);
-      }
-      if (!_v) goto check_1;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      {
-        int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_RasterT_float_t, 0);
-        _v = SWIG_CheckState(res);
-      }
-      if (!_v) goto check_1;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      if (!_index || (_ranki < _rank)) {
-        _rank = _ranki; _index = 1;
-        if (_rank == _rankm) goto dispatch;
+  for (ii = 0; (ii < 1) && (ii < argc); ii++) {
+    argv[ii + 1] = PyTuple_GET_ITEM(args,ii);
+  }
+  argc++;
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_float_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_RasterT_float_t, 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        return _wrap_float_raster___isub____SWIG_1(self, args);
       }
     }
-  check_1:
-    
-    if (argc == 2) {
-      SWIG_TypeRank _ranki = 0;
-      SWIG_TypeRank _rankm = 0;
-      SWIG_TypeRank _pi = 1;
-      int _v = 0;
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_float_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
       {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_float_t, 0);
+        int res = SWIG_AsVal_float(argv[1], NULL);
         _v = SWIG_CheckState(res);
       }
-      if (!_v) goto check_2;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      {
-        {
-          int res = SWIG_AsVal_float(argv[1], NULL);
-          _v = SWIG_CheckState(res);
-        }
+      if (_v) {
+        return _wrap_float_raster___isub____SWIG_0(self, args);
       }
-      if (!_v) goto check_2;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      if (!_index || (_ranki < _rank)) {
-        _rank = _ranki; _index = 2;
-        if (_rank == _rankm) goto dispatch;
-      }
-    }
-  check_2:
-    
-  dispatch:
-    switch(_index) {
-    case 1:
-      return _wrap_float_raster___isub____SWIG_1(self, argc, argv);
-    case 2:
-      return _wrap_float_raster___isub____SWIG_0(self, argc, argv);
     }
   }
   
@@ -11295,7 +11885,7 @@ fail:
 
 SWIGPY_BINARYFUNC_CLOSURE(_wrap_float_raster___isub__)
 
-SWIGINTERN PyObject *_wrap_float_raster___idiv____SWIG_0(PyObject *self, int nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_float_raster___idiv____SWIG_0(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   Raster< float > *arg1 = (Raster< float > *) 0 ;
   float arg2 ;
@@ -11303,15 +11893,16 @@ SWIGINTERN PyObject *_wrap_float_raster___idiv____SWIG_0(PyObject *self, int nob
   int res1 = 0 ;
   float val2 ;
   int ecode2 = 0 ;
+  PyObject * obj1 = 0 ;
   Raster< float > *result = 0 ;
   
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"O:float_raster___idiv__",&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_float_t, SWIG_POINTER_DISOWN |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "float_raster___idiv__" "', argument " "1"" of type '" "Raster< float > *""'"); 
   }
   arg1 = reinterpret_cast< Raster< float > * >(argp1);
-  ecode2 = SWIG_AsVal_float(swig_obj[1], &val2);
+  ecode2 = SWIG_AsVal_float(obj1, &val2);
   if (!SWIG_IsOK(ecode2)) {
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "float_raster___idiv__" "', argument " "2"" of type '" "float""'");
   } 
@@ -11334,7 +11925,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_float_raster___idiv____SWIG_1(PyObject *self, int nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_float_raster___idiv____SWIG_1(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   Raster< float > *arg1 = (Raster< float > *) 0 ;
   Raster< float > *arg2 = 0 ;
@@ -11342,15 +11933,16 @@ SWIGINTERN PyObject *_wrap_float_raster___idiv____SWIG_1(PyObject *self, int nob
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
+  PyObject * obj1 = 0 ;
   Raster< float > *result = 0 ;
   
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"O:float_raster___idiv__",&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_float_t, SWIG_POINTER_DISOWN |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "float_raster___idiv__" "', argument " "1"" of type '" "Raster< float > *""'"); 
   }
   arg1 = reinterpret_cast< Raster< float > * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_RasterT_float_t,  0  | 0);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_RasterT_float_t,  0  | 0);
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "float_raster___idiv__" "', argument " "2"" of type '" "Raster< float > const &""'"); 
   }
@@ -11379,78 +11971,41 @@ fail:
 SWIGINTERN PyObject *_wrap_float_raster___idiv__(PyObject *self, PyObject *args) {
   int argc;
   PyObject *argv[3];
+  int ii;
   
-  if (!(argc = SWIG_Python_UnpackTuple(args,"float_raster___idiv__",0,2,argv+1))) SWIG_fail;
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? (int)PyObject_Length(args) : 0;
   argv[0] = self;
-  {
-    unsigned long _index = 0;
-    SWIG_TypeRank _rank = 0; 
-    if (argc == 2) {
-      SWIG_TypeRank _ranki = 0;
-      SWIG_TypeRank _rankm = 0;
-      SWIG_TypeRank _pi = 1;
-      int _v = 0;
-      {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_float_t, 0);
-        _v = SWIG_CheckState(res);
-      }
-      if (!_v) goto check_1;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      {
-        int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_RasterT_float_t, 0);
-        _v = SWIG_CheckState(res);
-      }
-      if (!_v) goto check_1;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      if (!_index || (_ranki < _rank)) {
-        _rank = _ranki; _index = 1;
-        if (_rank == _rankm) goto dispatch;
+  for (ii = 0; (ii < 1) && (ii < argc); ii++) {
+    argv[ii + 1] = PyTuple_GET_ITEM(args,ii);
+  }
+  argc++;
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_float_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_RasterT_float_t, 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        return _wrap_float_raster___idiv____SWIG_1(self, args);
       }
     }
-  check_1:
-    
-    if (argc == 2) {
-      SWIG_TypeRank _ranki = 0;
-      SWIG_TypeRank _rankm = 0;
-      SWIG_TypeRank _pi = 1;
-      int _v = 0;
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_float_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
       {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_float_t, 0);
+        int res = SWIG_AsVal_float(argv[1], NULL);
         _v = SWIG_CheckState(res);
       }
-      if (!_v) goto check_2;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      {
-        {
-          int res = SWIG_AsVal_float(argv[1], NULL);
-          _v = SWIG_CheckState(res);
-        }
+      if (_v) {
+        return _wrap_float_raster___idiv____SWIG_0(self, args);
       }
-      if (!_v) goto check_2;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      if (!_index || (_ranki < _rank)) {
-        _rank = _ranki; _index = 2;
-        if (_rank == _rankm) goto dispatch;
-      }
-    }
-  check_2:
-    
-  dispatch:
-    switch(_index) {
-    case 1:
-      return _wrap_float_raster___idiv____SWIG_1(self, argc, argv);
-    case 2:
-      return _wrap_float_raster___idiv____SWIG_0(self, argc, argv);
     }
   }
   
@@ -11465,7 +12020,7 @@ fail:
 
 SWIGPY_BINARYFUNC_CLOSURE(_wrap_float_raster___idiv__)
 
-SWIGINTERN PyObject *_wrap_float_raster___mul____SWIG_0(PyObject *self, int nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_float_raster___mul____SWIG_0(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   Raster< float > *arg1 = (Raster< float > *) 0 ;
   float arg2 ;
@@ -11473,15 +12028,16 @@ SWIGINTERN PyObject *_wrap_float_raster___mul____SWIG_0(PyObject *self, int nobj
   int res1 = 0 ;
   float val2 ;
   int ecode2 = 0 ;
+  PyObject * obj1 = 0 ;
   SwigValueWrapper< Raster< float > > result;
   
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"O:float_raster___mul__",&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_float_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "float_raster___mul__" "', argument " "1"" of type '" "Raster< float > const *""'"); 
   }
   arg1 = reinterpret_cast< Raster< float > * >(argp1);
-  ecode2 = SWIG_AsVal_float(swig_obj[1], &val2);
+  ecode2 = SWIG_AsVal_float(obj1, &val2);
   if (!SWIG_IsOK(ecode2)) {
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "float_raster___mul__" "', argument " "2"" of type '" "float""'");
   } 
@@ -11504,7 +12060,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_float_raster___add____SWIG_0(PyObject *self, int nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_float_raster___add____SWIG_0(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   Raster< float > *arg1 = (Raster< float > *) 0 ;
   float arg2 ;
@@ -11512,15 +12068,16 @@ SWIGINTERN PyObject *_wrap_float_raster___add____SWIG_0(PyObject *self, int nobj
   int res1 = 0 ;
   float val2 ;
   int ecode2 = 0 ;
+  PyObject * obj1 = 0 ;
   SwigValueWrapper< Raster< float > > result;
   
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"O:float_raster___add__",&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_float_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "float_raster___add__" "', argument " "1"" of type '" "Raster< float > const *""'"); 
   }
   arg1 = reinterpret_cast< Raster< float > * >(argp1);
-  ecode2 = SWIG_AsVal_float(swig_obj[1], &val2);
+  ecode2 = SWIG_AsVal_float(obj1, &val2);
   if (!SWIG_IsOK(ecode2)) {
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "float_raster___add__" "', argument " "2"" of type '" "float""'");
   } 
@@ -11543,7 +12100,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_float_raster___sub____SWIG_0(PyObject *self, int nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_float_raster___sub____SWIG_0(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   Raster< float > *arg1 = (Raster< float > *) 0 ;
   float arg2 ;
@@ -11551,15 +12108,16 @@ SWIGINTERN PyObject *_wrap_float_raster___sub____SWIG_0(PyObject *self, int nobj
   int res1 = 0 ;
   float val2 ;
   int ecode2 = 0 ;
+  PyObject * obj1 = 0 ;
   SwigValueWrapper< Raster< float > > result;
   
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"O:float_raster___sub__",&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_float_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "float_raster___sub__" "', argument " "1"" of type '" "Raster< float > const *""'"); 
   }
   arg1 = reinterpret_cast< Raster< float > * >(argp1);
-  ecode2 = SWIG_AsVal_float(swig_obj[1], &val2);
+  ecode2 = SWIG_AsVal_float(obj1, &val2);
   if (!SWIG_IsOK(ecode2)) {
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "float_raster___sub__" "', argument " "2"" of type '" "float""'");
   } 
@@ -11582,7 +12140,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_float_raster___div____SWIG_0(PyObject *self, int nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_float_raster___div____SWIG_0(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   Raster< float > *arg1 = (Raster< float > *) 0 ;
   float arg2 ;
@@ -11590,15 +12148,16 @@ SWIGINTERN PyObject *_wrap_float_raster___div____SWIG_0(PyObject *self, int nobj
   int res1 = 0 ;
   float val2 ;
   int ecode2 = 0 ;
+  PyObject * obj1 = 0 ;
   SwigValueWrapper< Raster< float > > result;
   
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"O:float_raster___div__",&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_float_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "float_raster___div__" "', argument " "1"" of type '" "Raster< float > const *""'"); 
   }
   arg1 = reinterpret_cast< Raster< float > * >(argp1);
-  ecode2 = SWIG_AsVal_float(swig_obj[1], &val2);
+  ecode2 = SWIG_AsVal_float(obj1, &val2);
   if (!SWIG_IsOK(ecode2)) {
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "float_raster___div__" "', argument " "2"" of type '" "float""'");
   } 
@@ -11621,7 +12180,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_float_raster___mul____SWIG_1(PyObject *self, int nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_float_raster___mul____SWIG_1(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   Raster< float > *arg1 = (Raster< float > *) 0 ;
   Raster< float > *arg2 = 0 ;
@@ -11629,15 +12188,16 @@ SWIGINTERN PyObject *_wrap_float_raster___mul____SWIG_1(PyObject *self, int nobj
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
+  PyObject * obj1 = 0 ;
   SwigValueWrapper< Raster< float > > result;
   
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"O:float_raster___mul__",&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_float_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "float_raster___mul__" "', argument " "1"" of type '" "Raster< float > const *""'"); 
   }
   arg1 = reinterpret_cast< Raster< float > * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_RasterT_float_t,  0  | 0);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_RasterT_float_t,  0  | 0);
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "float_raster___mul__" "', argument " "2"" of type '" "Raster< float > const &""'"); 
   }
@@ -11666,78 +12226,41 @@ fail:
 SWIGINTERN PyObject *_wrap_float_raster___mul__(PyObject *self, PyObject *args) {
   int argc;
   PyObject *argv[3];
+  int ii;
   
-  if (!(argc = SWIG_Python_UnpackTuple(args,"float_raster___mul__",0,2,argv+1))) SWIG_fail;
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? (int)PyObject_Length(args) : 0;
   argv[0] = self;
-  {
-    unsigned long _index = 0;
-    SWIG_TypeRank _rank = 0; 
-    if (argc == 2) {
-      SWIG_TypeRank _ranki = 0;
-      SWIG_TypeRank _rankm = 0;
-      SWIG_TypeRank _pi = 1;
-      int _v = 0;
-      {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_float_t, 0);
-        _v = SWIG_CheckState(res);
-      }
-      if (!_v) goto check_1;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      {
-        int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_RasterT_float_t, 0);
-        _v = SWIG_CheckState(res);
-      }
-      if (!_v) goto check_1;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      if (!_index || (_ranki < _rank)) {
-        _rank = _ranki; _index = 1;
-        if (_rank == _rankm) goto dispatch;
+  for (ii = 0; (ii < 1) && (ii < argc); ii++) {
+    argv[ii + 1] = PyTuple_GET_ITEM(args,ii);
+  }
+  argc++;
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_float_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_RasterT_float_t, 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        return _wrap_float_raster___mul____SWIG_1(self, args);
       }
     }
-  check_1:
-    
-    if (argc == 2) {
-      SWIG_TypeRank _ranki = 0;
-      SWIG_TypeRank _rankm = 0;
-      SWIG_TypeRank _pi = 1;
-      int _v = 0;
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_float_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
       {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_float_t, 0);
+        int res = SWIG_AsVal_float(argv[1], NULL);
         _v = SWIG_CheckState(res);
       }
-      if (!_v) goto check_2;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      {
-        {
-          int res = SWIG_AsVal_float(argv[1], NULL);
-          _v = SWIG_CheckState(res);
-        }
+      if (_v) {
+        return _wrap_float_raster___mul____SWIG_0(self, args);
       }
-      if (!_v) goto check_2;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      if (!_index || (_ranki < _rank)) {
-        _rank = _ranki; _index = 2;
-        if (_rank == _rankm) goto dispatch;
-      }
-    }
-  check_2:
-    
-  dispatch:
-    switch(_index) {
-    case 1:
-      return _wrap_float_raster___mul____SWIG_1(self, argc, argv);
-    case 2:
-      return _wrap_float_raster___mul____SWIG_0(self, argc, argv);
     }
   }
   
@@ -11749,7 +12272,7 @@ fail:
 
 SWIGPY_BINARYFUNC_CLOSURE(_wrap_float_raster___mul__)
 
-SWIGINTERN PyObject *_wrap_float_raster___add____SWIG_1(PyObject *self, int nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_float_raster___add____SWIG_1(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   Raster< float > *arg1 = (Raster< float > *) 0 ;
   Raster< float > *arg2 = 0 ;
@@ -11757,15 +12280,16 @@ SWIGINTERN PyObject *_wrap_float_raster___add____SWIG_1(PyObject *self, int nobj
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
+  PyObject * obj1 = 0 ;
   SwigValueWrapper< Raster< float > > result;
   
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"O:float_raster___add__",&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_float_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "float_raster___add__" "', argument " "1"" of type '" "Raster< float > const *""'"); 
   }
   arg1 = reinterpret_cast< Raster< float > * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_RasterT_float_t,  0  | 0);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_RasterT_float_t,  0  | 0);
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "float_raster___add__" "', argument " "2"" of type '" "Raster< float > const &""'"); 
   }
@@ -11794,78 +12318,41 @@ fail:
 SWIGINTERN PyObject *_wrap_float_raster___add__(PyObject *self, PyObject *args) {
   int argc;
   PyObject *argv[3];
+  int ii;
   
-  if (!(argc = SWIG_Python_UnpackTuple(args,"float_raster___add__",0,2,argv+1))) SWIG_fail;
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? (int)PyObject_Length(args) : 0;
   argv[0] = self;
-  {
-    unsigned long _index = 0;
-    SWIG_TypeRank _rank = 0; 
-    if (argc == 2) {
-      SWIG_TypeRank _ranki = 0;
-      SWIG_TypeRank _rankm = 0;
-      SWIG_TypeRank _pi = 1;
-      int _v = 0;
-      {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_float_t, 0);
-        _v = SWIG_CheckState(res);
-      }
-      if (!_v) goto check_1;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      {
-        int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_RasterT_float_t, 0);
-        _v = SWIG_CheckState(res);
-      }
-      if (!_v) goto check_1;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      if (!_index || (_ranki < _rank)) {
-        _rank = _ranki; _index = 1;
-        if (_rank == _rankm) goto dispatch;
+  for (ii = 0; (ii < 1) && (ii < argc); ii++) {
+    argv[ii + 1] = PyTuple_GET_ITEM(args,ii);
+  }
+  argc++;
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_float_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_RasterT_float_t, 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        return _wrap_float_raster___add____SWIG_1(self, args);
       }
     }
-  check_1:
-    
-    if (argc == 2) {
-      SWIG_TypeRank _ranki = 0;
-      SWIG_TypeRank _rankm = 0;
-      SWIG_TypeRank _pi = 1;
-      int _v = 0;
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_float_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
       {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_float_t, 0);
+        int res = SWIG_AsVal_float(argv[1], NULL);
         _v = SWIG_CheckState(res);
       }
-      if (!_v) goto check_2;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      {
-        {
-          int res = SWIG_AsVal_float(argv[1], NULL);
-          _v = SWIG_CheckState(res);
-        }
+      if (_v) {
+        return _wrap_float_raster___add____SWIG_0(self, args);
       }
-      if (!_v) goto check_2;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      if (!_index || (_ranki < _rank)) {
-        _rank = _ranki; _index = 2;
-        if (_rank == _rankm) goto dispatch;
-      }
-    }
-  check_2:
-    
-  dispatch:
-    switch(_index) {
-    case 1:
-      return _wrap_float_raster___add____SWIG_1(self, argc, argv);
-    case 2:
-      return _wrap_float_raster___add____SWIG_0(self, argc, argv);
     }
   }
   
@@ -11877,7 +12364,7 @@ fail:
 
 SWIGPY_BINARYFUNC_CLOSURE(_wrap_float_raster___add__)
 
-SWIGINTERN PyObject *_wrap_float_raster___sub____SWIG_1(PyObject *self, int nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_float_raster___sub____SWIG_1(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   Raster< float > *arg1 = (Raster< float > *) 0 ;
   Raster< float > *arg2 = 0 ;
@@ -11885,15 +12372,16 @@ SWIGINTERN PyObject *_wrap_float_raster___sub____SWIG_1(PyObject *self, int nobj
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
+  PyObject * obj1 = 0 ;
   SwigValueWrapper< Raster< float > > result;
   
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"O:float_raster___sub__",&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_float_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "float_raster___sub__" "', argument " "1"" of type '" "Raster< float > const *""'"); 
   }
   arg1 = reinterpret_cast< Raster< float > * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_RasterT_float_t,  0  | 0);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_RasterT_float_t,  0  | 0);
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "float_raster___sub__" "', argument " "2"" of type '" "Raster< float > const &""'"); 
   }
@@ -11922,78 +12410,41 @@ fail:
 SWIGINTERN PyObject *_wrap_float_raster___sub__(PyObject *self, PyObject *args) {
   int argc;
   PyObject *argv[3];
+  int ii;
   
-  if (!(argc = SWIG_Python_UnpackTuple(args,"float_raster___sub__",0,2,argv+1))) SWIG_fail;
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? (int)PyObject_Length(args) : 0;
   argv[0] = self;
-  {
-    unsigned long _index = 0;
-    SWIG_TypeRank _rank = 0; 
-    if (argc == 2) {
-      SWIG_TypeRank _ranki = 0;
-      SWIG_TypeRank _rankm = 0;
-      SWIG_TypeRank _pi = 1;
-      int _v = 0;
-      {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_float_t, 0);
-        _v = SWIG_CheckState(res);
-      }
-      if (!_v) goto check_1;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      {
-        int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_RasterT_float_t, 0);
-        _v = SWIG_CheckState(res);
-      }
-      if (!_v) goto check_1;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      if (!_index || (_ranki < _rank)) {
-        _rank = _ranki; _index = 1;
-        if (_rank == _rankm) goto dispatch;
+  for (ii = 0; (ii < 1) && (ii < argc); ii++) {
+    argv[ii + 1] = PyTuple_GET_ITEM(args,ii);
+  }
+  argc++;
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_float_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_RasterT_float_t, 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        return _wrap_float_raster___sub____SWIG_1(self, args);
       }
     }
-  check_1:
-    
-    if (argc == 2) {
-      SWIG_TypeRank _ranki = 0;
-      SWIG_TypeRank _rankm = 0;
-      SWIG_TypeRank _pi = 1;
-      int _v = 0;
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_float_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
       {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_float_t, 0);
+        int res = SWIG_AsVal_float(argv[1], NULL);
         _v = SWIG_CheckState(res);
       }
-      if (!_v) goto check_2;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      {
-        {
-          int res = SWIG_AsVal_float(argv[1], NULL);
-          _v = SWIG_CheckState(res);
-        }
+      if (_v) {
+        return _wrap_float_raster___sub____SWIG_0(self, args);
       }
-      if (!_v) goto check_2;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      if (!_index || (_ranki < _rank)) {
-        _rank = _ranki; _index = 2;
-        if (_rank == _rankm) goto dispatch;
-      }
-    }
-  check_2:
-    
-  dispatch:
-    switch(_index) {
-    case 1:
-      return _wrap_float_raster___sub____SWIG_1(self, argc, argv);
-    case 2:
-      return _wrap_float_raster___sub____SWIG_0(self, argc, argv);
     }
   }
   
@@ -12005,7 +12456,7 @@ fail:
 
 SWIGPY_BINARYFUNC_CLOSURE(_wrap_float_raster___sub__)
 
-SWIGINTERN PyObject *_wrap_float_raster___div____SWIG_1(PyObject *self, int nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_float_raster___div____SWIG_1(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   Raster< float > *arg1 = (Raster< float > *) 0 ;
   Raster< float > *arg2 = 0 ;
@@ -12013,15 +12464,16 @@ SWIGINTERN PyObject *_wrap_float_raster___div____SWIG_1(PyObject *self, int nobj
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
+  PyObject * obj1 = 0 ;
   SwigValueWrapper< Raster< float > > result;
   
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"O:float_raster___div__",&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_float_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "float_raster___div__" "', argument " "1"" of type '" "Raster< float > const *""'"); 
   }
   arg1 = reinterpret_cast< Raster< float > * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_RasterT_float_t,  0  | 0);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_RasterT_float_t,  0  | 0);
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "float_raster___div__" "', argument " "2"" of type '" "Raster< float > const &""'"); 
   }
@@ -12050,78 +12502,41 @@ fail:
 SWIGINTERN PyObject *_wrap_float_raster___div__(PyObject *self, PyObject *args) {
   int argc;
   PyObject *argv[3];
+  int ii;
   
-  if (!(argc = SWIG_Python_UnpackTuple(args,"float_raster___div__",0,2,argv+1))) SWIG_fail;
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? (int)PyObject_Length(args) : 0;
   argv[0] = self;
-  {
-    unsigned long _index = 0;
-    SWIG_TypeRank _rank = 0; 
-    if (argc == 2) {
-      SWIG_TypeRank _ranki = 0;
-      SWIG_TypeRank _rankm = 0;
-      SWIG_TypeRank _pi = 1;
-      int _v = 0;
-      {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_float_t, 0);
-        _v = SWIG_CheckState(res);
-      }
-      if (!_v) goto check_1;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      {
-        int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_RasterT_float_t, 0);
-        _v = SWIG_CheckState(res);
-      }
-      if (!_v) goto check_1;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      if (!_index || (_ranki < _rank)) {
-        _rank = _ranki; _index = 1;
-        if (_rank == _rankm) goto dispatch;
+  for (ii = 0; (ii < 1) && (ii < argc); ii++) {
+    argv[ii + 1] = PyTuple_GET_ITEM(args,ii);
+  }
+  argc++;
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_float_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_RasterT_float_t, 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        return _wrap_float_raster___div____SWIG_1(self, args);
       }
     }
-  check_1:
-    
-    if (argc == 2) {
-      SWIG_TypeRank _ranki = 0;
-      SWIG_TypeRank _rankm = 0;
-      SWIG_TypeRank _pi = 1;
-      int _v = 0;
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_float_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
       {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_float_t, 0);
+        int res = SWIG_AsVal_float(argv[1], NULL);
         _v = SWIG_CheckState(res);
       }
-      if (!_v) goto check_2;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      {
-        {
-          int res = SWIG_AsVal_float(argv[1], NULL);
-          _v = SWIG_CheckState(res);
-        }
+      if (_v) {
+        return _wrap_float_raster___div____SWIG_0(self, args);
       }
-      if (!_v) goto check_2;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      if (!_index || (_ranki < _rank)) {
-        _rank = _ranki; _index = 2;
-        if (_rank == _rankm) goto dispatch;
-      }
-    }
-  check_2:
-    
-  dispatch:
-    switch(_index) {
-    case 1:
-      return _wrap_float_raster___div____SWIG_1(self, argc, argv);
-    case 2:
-      return _wrap_float_raster___div____SWIG_0(self, argc, argv);
     }
   }
   
@@ -12133,12 +12548,12 @@ fail:
 
 SWIGPY_BINARYFUNC_CLOSURE(_wrap_float_raster___div__)
 
-SWIGINTERN PyObject *_wrap_float_raster_fill(PyObject *self, PyObject *args, PyObject *kwargs) {
+SWIGINTERN PyObject *_wrap_float_raster_fill__SWIG_0(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   Raster< float > *arg1 = (Raster< float > *) 0 ;
   float arg2 ;
-  size_t arg3 = (size_t) 100 ;
-  bool arg4 = (bool) false ;
+  size_t arg3 ;
+  bool arg4 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   float val2 ;
@@ -12150,12 +12565,9 @@ SWIGINTERN PyObject *_wrap_float_raster_fill(PyObject *self, PyObject *args, PyO
   PyObject * obj1 = 0 ;
   PyObject * obj2 = 0 ;
   PyObject * obj3 = 0 ;
-  char *  kwnames[] = {
-    (char *) "min_diff",(char *) "max_iter",(char *) "debug", NULL 
-  };
   size_t result;
   
-  if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"O|OO:float_raster_fill",kwnames,&obj1,&obj2,&obj3)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"OOO:float_raster_fill",&obj1,&obj2,&obj3)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_float_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "float_raster_fill" "', argument " "1"" of type '" "Raster< float > *""'"); 
@@ -12166,20 +12578,16 @@ SWIGINTERN PyObject *_wrap_float_raster_fill(PyObject *self, PyObject *args, PyO
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "float_raster_fill" "', argument " "2"" of type '" "float""'");
   } 
   arg2 = static_cast< float >(val2);
-  if (obj2) {
-    ecode3 = SWIG_AsVal_size_t(obj2, &val3);
-    if (!SWIG_IsOK(ecode3)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "float_raster_fill" "', argument " "3"" of type '" "size_t""'");
-    } 
-    arg3 = static_cast< size_t >(val3);
-  }
-  if (obj3) {
-    ecode4 = SWIG_AsVal_bool(obj3, &val4);
-    if (!SWIG_IsOK(ecode4)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "float_raster_fill" "', argument " "4"" of type '" "bool""'");
-    } 
-    arg4 = static_cast< bool >(val4);
-  }
+  ecode3 = SWIG_AsVal_size_t(obj2, &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "float_raster_fill" "', argument " "3"" of type '" "size_t""'");
+  } 
+  arg3 = static_cast< size_t >(val3);
+  ecode4 = SWIG_AsVal_bool(obj3, &val4);
+  if (!SWIG_IsOK(ecode4)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "float_raster_fill" "', argument " "4"" of type '" "bool""'");
+  } 
+  arg4 = static_cast< bool >(val4);
   {
     try {
       result = (arg1)->fill(arg2,arg3,arg4);
@@ -12198,7 +12606,182 @@ fail:
 }
 
 
-SWIGINTERN int _wrap_new_float_raster__SWIG_0(PyObject *self, int nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_float_raster_fill__SWIG_1(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  Raster< float > *arg1 = (Raster< float > *) 0 ;
+  float arg2 ;
+  size_t arg3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  float val2 ;
+  int ecode2 = 0 ;
+  size_t val3 ;
+  int ecode3 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  size_t result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:float_raster_fill",&obj1,&obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_float_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "float_raster_fill" "', argument " "1"" of type '" "Raster< float > *""'"); 
+  }
+  arg1 = reinterpret_cast< Raster< float > * >(argp1);
+  ecode2 = SWIG_AsVal_float(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "float_raster_fill" "', argument " "2"" of type '" "float""'");
+  } 
+  arg2 = static_cast< float >(val2);
+  ecode3 = SWIG_AsVal_size_t(obj2, &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "float_raster_fill" "', argument " "3"" of type '" "size_t""'");
+  } 
+  arg3 = static_cast< size_t >(val3);
+  {
+    try {
+      result = (arg1)->fill(arg2,arg3);
+    } 
+    catch (std::runtime_error& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what() );
+    }
+    catch (std::exception& e) {
+      SWIG_exception(SWIG_UnknownError, e.what());
+    }
+  }
+  resultobj = SWIG_From_size_t(static_cast< size_t >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_float_raster_fill__SWIG_2(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  Raster< float > *arg1 = (Raster< float > *) 0 ;
+  float arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  float val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj1 = 0 ;
+  size_t result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:float_raster_fill",&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_float_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "float_raster_fill" "', argument " "1"" of type '" "Raster< float > *""'"); 
+  }
+  arg1 = reinterpret_cast< Raster< float > * >(argp1);
+  ecode2 = SWIG_AsVal_float(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "float_raster_fill" "', argument " "2"" of type '" "float""'");
+  } 
+  arg2 = static_cast< float >(val2);
+  {
+    try {
+      result = (arg1)->fill(arg2);
+    } 
+    catch (std::runtime_error& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what() );
+    }
+    catch (std::exception& e) {
+      SWIG_exception(SWIG_UnknownError, e.what());
+    }
+  }
+  resultobj = SWIG_From_size_t(static_cast< size_t >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_float_raster_fill(PyObject *self, PyObject *args) {
+  int argc;
+  PyObject *argv[5];
+  int ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? (int)PyObject_Length(args) : 0;
+  argv[0] = self;
+  for (ii = 0; (ii < 3) && (ii < argc); ii++) {
+    argv[ii + 1] = PyTuple_GET_ITEM(args,ii);
+  }
+  argc++;
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_float_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        int res = SWIG_AsVal_float(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        return _wrap_float_raster_fill__SWIG_2(self, args);
+      }
+    }
+  }
+  if (argc == 3) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_float_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        int res = SWIG_AsVal_float(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        {
+          int res = SWIG_AsVal_size_t(argv[2], NULL);
+          _v = SWIG_CheckState(res);
+        }
+        if (_v) {
+          return _wrap_float_raster_fill__SWIG_1(self, args);
+        }
+      }
+    }
+  }
+  if (argc == 4) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_float_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        int res = SWIG_AsVal_float(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        {
+          int res = SWIG_AsVal_size_t(argv[2], NULL);
+          _v = SWIG_CheckState(res);
+        }
+        if (_v) {
+          {
+            int res = SWIG_AsVal_bool(argv[3], NULL);
+            _v = SWIG_CheckState(res);
+          }
+          if (_v) {
+            return _wrap_float_raster_fill__SWIG_0(self, args);
+          }
+        }
+      }
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'float_raster_fill'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    Raster< float >::fill(float,size_t,bool)\n"
+    "    Raster< float >::fill(float,size_t)\n"
+    "    Raster< float >::fill(float)\n");
+  return 0;
+}
+
+
+SWIGINTERN int _wrap_new_float_raster__SWIG_0(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   int arg1 ;
   int arg2 ;
@@ -12207,7 +12790,7 @@ SWIGINTERN int _wrap_new_float_raster__SWIG_0(PyObject *self, int nobjs, PyObjec
   double arg5 ;
   double arg6 ;
   float arg7 ;
-  float arg8 = (float) 0 ;
+  float arg8 ;
   int val1 ;
   int ecode1 = 0 ;
   int val2 ;
@@ -12224,51 +12807,57 @@ SWIGINTERN int _wrap_new_float_raster__SWIG_0(PyObject *self, int nobjs, PyObjec
   int ecode7 = 0 ;
   float val8 ;
   int ecode8 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  PyObject * obj4 = 0 ;
+  PyObject * obj5 = 0 ;
+  PyObject * obj6 = 0 ;
+  PyObject * obj7 = 0 ;
+  PyObject * obj8 = 0 ;
   Raster< float > *result = 0 ;
   
-  if ((nobjs < 7) || (nobjs > 8)) SWIG_fail;
-  ecode1 = SWIG_AsVal_int(swig_obj[0], &val1);
+  if (!PyArg_ParseTuple(args,(char *)"OOOOOOOO:new_float_raster",&obj1,&obj2,&obj3,&obj4,&obj5,&obj6,&obj7,&obj8)) SWIG_fail;
+  ecode1 = SWIG_AsVal_int(obj1, &val1);
   if (!SWIG_IsOK(ecode1)) {
     SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "new_float_raster" "', argument " "1"" of type '" "int""'");
   } 
   arg1 = static_cast< int >(val1);
-  ecode2 = SWIG_AsVal_int(swig_obj[1], &val2);
+  ecode2 = SWIG_AsVal_int(obj2, &val2);
   if (!SWIG_IsOK(ecode2)) {
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "new_float_raster" "', argument " "2"" of type '" "int""'");
   } 
   arg2 = static_cast< int >(val2);
-  ecode3 = SWIG_AsVal_double(swig_obj[2], &val3);
+  ecode3 = SWIG_AsVal_double(obj3, &val3);
   if (!SWIG_IsOK(ecode3)) {
     SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "new_float_raster" "', argument " "3"" of type '" "double""'");
   } 
   arg3 = static_cast< double >(val3);
-  ecode4 = SWIG_AsVal_double(swig_obj[3], &val4);
+  ecode4 = SWIG_AsVal_double(obj4, &val4);
   if (!SWIG_IsOK(ecode4)) {
     SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "new_float_raster" "', argument " "4"" of type '" "double""'");
   } 
   arg4 = static_cast< double >(val4);
-  ecode5 = SWIG_AsVal_double(swig_obj[4], &val5);
+  ecode5 = SWIG_AsVal_double(obj5, &val5);
   if (!SWIG_IsOK(ecode5)) {
     SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "new_float_raster" "', argument " "5"" of type '" "double""'");
   } 
   arg5 = static_cast< double >(val5);
-  ecode6 = SWIG_AsVal_double(swig_obj[5], &val6);
+  ecode6 = SWIG_AsVal_double(obj6, &val6);
   if (!SWIG_IsOK(ecode6)) {
     SWIG_exception_fail(SWIG_ArgError(ecode6), "in method '" "new_float_raster" "', argument " "6"" of type '" "double""'");
   } 
   arg6 = static_cast< double >(val6);
-  ecode7 = SWIG_AsVal_float(swig_obj[6], &val7);
+  ecode7 = SWIG_AsVal_float(obj7, &val7);
   if (!SWIG_IsOK(ecode7)) {
     SWIG_exception_fail(SWIG_ArgError(ecode7), "in method '" "new_float_raster" "', argument " "7"" of type '" "float""'");
   } 
   arg7 = static_cast< float >(val7);
-  if (swig_obj[7]) {
-    ecode8 = SWIG_AsVal_float(swig_obj[7], &val8);
-    if (!SWIG_IsOK(ecode8)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode8), "in method '" "new_float_raster" "', argument " "8"" of type '" "float""'");
-    } 
-    arg8 = static_cast< float >(val8);
-  }
+  ecode8 = SWIG_AsVal_float(obj8, &val8);
+  if (!SWIG_IsOK(ecode8)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode8), "in method '" "new_float_raster" "', argument " "8"" of type '" "float""'");
+  } 
+  arg8 = static_cast< float >(val8);
   {
     try {
       result = (Raster< float > *)new Raster< float >(arg1,arg2,arg3,arg4,arg5,arg6,arg7,arg8);
@@ -12287,15 +12876,102 @@ fail:
 }
 
 
-SWIGINTERN int _wrap_new_float_raster__SWIG_1(PyObject *self, int nobjs, PyObject **swig_obj) {
+SWIGINTERN int _wrap_new_float_raster__SWIG_1(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  int arg1 ;
+  int arg2 ;
+  double arg3 ;
+  double arg4 ;
+  double arg5 ;
+  double arg6 ;
+  float arg7 ;
+  int val1 ;
+  int ecode1 = 0 ;
+  int val2 ;
+  int ecode2 = 0 ;
+  double val3 ;
+  int ecode3 = 0 ;
+  double val4 ;
+  int ecode4 = 0 ;
+  double val5 ;
+  int ecode5 = 0 ;
+  double val6 ;
+  int ecode6 = 0 ;
+  float val7 ;
+  int ecode7 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  PyObject * obj4 = 0 ;
+  PyObject * obj5 = 0 ;
+  PyObject * obj6 = 0 ;
+  PyObject * obj7 = 0 ;
+  Raster< float > *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOOOOOO:new_float_raster",&obj1,&obj2,&obj3,&obj4,&obj5,&obj6,&obj7)) SWIG_fail;
+  ecode1 = SWIG_AsVal_int(obj1, &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "new_float_raster" "', argument " "1"" of type '" "int""'");
+  } 
+  arg1 = static_cast< int >(val1);
+  ecode2 = SWIG_AsVal_int(obj2, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "new_float_raster" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
+  ecode3 = SWIG_AsVal_double(obj3, &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "new_float_raster" "', argument " "3"" of type '" "double""'");
+  } 
+  arg3 = static_cast< double >(val3);
+  ecode4 = SWIG_AsVal_double(obj4, &val4);
+  if (!SWIG_IsOK(ecode4)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "new_float_raster" "', argument " "4"" of type '" "double""'");
+  } 
+  arg4 = static_cast< double >(val4);
+  ecode5 = SWIG_AsVal_double(obj5, &val5);
+  if (!SWIG_IsOK(ecode5)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "new_float_raster" "', argument " "5"" of type '" "double""'");
+  } 
+  arg5 = static_cast< double >(val5);
+  ecode6 = SWIG_AsVal_double(obj6, &val6);
+  if (!SWIG_IsOK(ecode6)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode6), "in method '" "new_float_raster" "', argument " "6"" of type '" "double""'");
+  } 
+  arg6 = static_cast< double >(val6);
+  ecode7 = SWIG_AsVal_float(obj7, &val7);
+  if (!SWIG_IsOK(ecode7)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode7), "in method '" "new_float_raster" "', argument " "7"" of type '" "float""'");
+  } 
+  arg7 = static_cast< float >(val7);
+  {
+    try {
+      result = (Raster< float > *)new Raster< float >(arg1,arg2,arg3,arg4,arg5,arg6,arg7);
+    } 
+    catch (std::runtime_error& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what() );
+    }
+    catch (std::exception& e) {
+      SWIG_exception(SWIG_UnknownError, e.what());
+    }
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_RasterT_float_t, SWIG_BUILTIN_INIT |  0 );
+  return resultobj == Py_None ? 1 : 0;
+fail:
+  return -1;
+}
+
+
+SWIGINTERN int _wrap_new_float_raster__SWIG_2(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   Raster< float > *arg1 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
+  PyObject * obj1 = 0 ;
   Raster< float > *result = 0 ;
   
-  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_RasterT_float_t,  0  | 0);
+  if (!PyArg_ParseTuple(args,(char *)"O:new_float_raster",&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj1, &argp1, SWIGTYPE_p_RasterT_float_t,  0  | 0);
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_float_raster" "', argument " "1"" of type '" "Raster< float > const &""'"); 
   }
@@ -12321,7 +12997,7 @@ fail:
 }
 
 
-SWIGINTERN int _wrap_new_float_raster__SWIG_2(PyObject *self, int nobjs, PyObject **swig_obj) {
+SWIGINTERN int _wrap_new_float_raster__SWIG_3(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   Raster< float > *arg1 = 0 ;
   float arg2 ;
@@ -12329,10 +13005,12 @@ SWIGINTERN int _wrap_new_float_raster__SWIG_2(PyObject *self, int nobjs, PyObjec
   int res1 = 0 ;
   float val2 ;
   int ecode2 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
   Raster< float > *result = 0 ;
   
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_RasterT_float_t,  0  | 0);
+  if (!PyArg_ParseTuple(args,(char *)"OO:new_float_raster",&obj1,&obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj1, &argp1, SWIGTYPE_p_RasterT_float_t,  0  | 0);
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_float_raster" "', argument " "1"" of type '" "Raster< float > const &""'"); 
   }
@@ -12340,7 +13018,7 @@ SWIGINTERN int _wrap_new_float_raster__SWIG_2(PyObject *self, int nobjs, PyObjec
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_float_raster" "', argument " "1"" of type '" "Raster< float > const &""'"); 
   }
   arg1 = reinterpret_cast< Raster< float > * >(argp1);
-  ecode2 = SWIG_AsVal_float(swig_obj[1], &val2);
+  ecode2 = SWIG_AsVal_float(obj2, &val2);
   if (!SWIG_IsOK(ecode2)) {
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "new_float_raster" "', argument " "2"" of type '" "float""'");
   } 
@@ -12363,16 +13041,17 @@ fail:
 }
 
 
-SWIGINTERN int _wrap_new_float_raster__SWIG_3(PyObject *self, int nobjs, PyObject **swig_obj) {
+SWIGINTERN int _wrap_new_float_raster__SWIG_4(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   std::string *arg1 = 0 ;
   int res1 = SWIG_OLDOBJ ;
+  PyObject * obj1 = 0 ;
   Raster< float > *result = 0 ;
   
-  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"O:new_float_raster",&obj1)) SWIG_fail;
   {
     std::string *ptr = (std::string *)0;
-    res1 = SWIG_AsPtr_std_string(swig_obj[0], &ptr);
+    res1 = SWIG_AsPtr_std_string(obj1, &ptr);
     if (!SWIG_IsOK(res1)) {
       SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_float_raster" "', argument " "1"" of type '" "std::string const &""'"); 
     }
@@ -12401,15 +13080,16 @@ fail:
 }
 
 
-SWIGINTERN int _wrap_new_float_raster__SWIG_4(PyObject *self, int nobjs, PyObject **swig_obj) {
+SWIGINTERN int _wrap_new_float_raster__SWIG_5(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   std::istream *arg1 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
+  PyObject * obj1 = 0 ;
   Raster< float > *result = 0 ;
   
-  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_std__istream,  0 );
+  if (!PyArg_ParseTuple(args,(char *)"O:new_float_raster",&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj1, &argp1, SWIGTYPE_p_std__istream,  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_float_raster" "', argument " "1"" of type '" "std::istream &""'"); 
   }
@@ -12438,209 +13118,148 @@ fail:
 SWIGINTERN int _wrap_new_float_raster(PyObject *self, PyObject *args) {
   int argc;
   PyObject *argv[9];
+  int ii;
   
-  if (!(argc = SWIG_Python_UnpackTuple(args,"new_float_raster",0,8,argv))) SWIG_fail;
-  --argc;
-  {
-    unsigned long _index = 0;
-    SWIG_TypeRank _rank = 0; 
-    if (argc == 1) {
-      SWIG_TypeRank _ranki = 0;
-      SWIG_TypeRank _rankm = 0;
-      SWIG_TypeRank _pi = 1;
-      int _v = 0;
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? (int)PyObject_Length(args) : 0;
+  for (ii = 0; (ii < 8) && (ii < argc); ii++) {
+    argv[ii] = PyTuple_GET_ITEM(args,ii);
+  }
+  if (argc == 1) {
+    int _v;
+    int res = SWIG_ConvertPtr(argv[0], 0, SWIGTYPE_p_RasterT_float_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_new_float_raster__SWIG_2(self, args);
+    }
+  }
+  if (argc == 1) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_std__istream, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_new_float_raster__SWIG_5(self, args);
+    }
+  }
+  if (argc == 1) {
+    int _v;
+    int res = SWIG_AsPtr_std_string(argv[0], (std::string**)(0));
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_new_float_raster__SWIG_4(self, args);
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    int res = SWIG_ConvertPtr(argv[0], 0, SWIGTYPE_p_RasterT_float_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
       {
-        int res = SWIG_ConvertPtr(argv[0], 0, SWIGTYPE_p_RasterT_float_t, 0);
+        int res = SWIG_AsVal_float(argv[1], NULL);
         _v = SWIG_CheckState(res);
       }
-      if (!_v) goto check_1;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      if (!_index || (_ranki < _rank)) {
-        _rank = _ranki; _index = 1;
-        if (_rank == _rankm) goto dispatch;
+      if (_v) {
+        return _wrap_new_float_raster__SWIG_3(self, args);
       }
     }
-  check_1:
-    
-    if (argc == 1) {
-      SWIG_TypeRank _ranki = 0;
-      SWIG_TypeRank _rankm = 0;
-      SWIG_TypeRank _pi = 1;
-      int _v = 0;
+  }
+  if (argc == 7) {
+    int _v;
+    {
+      int res = SWIG_AsVal_int(argv[0], NULL);
+      _v = SWIG_CheckState(res);
+    }
+    if (_v) {
       {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_std__istream, 0);
+        int res = SWIG_AsVal_int(argv[1], NULL);
         _v = SWIG_CheckState(res);
       }
-      if (!_v) goto check_2;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      if (!_index || (_ranki < _rank)) {
-        _rank = _ranki; _index = 2;
-        if (_rank == _rankm) goto dispatch;
-      }
-    }
-  check_2:
-    
-    if (argc == 1) {
-      SWIG_TypeRank _ranki = 0;
-      SWIG_TypeRank _rankm = 0;
-      SWIG_TypeRank _pi = 1;
-      int _v = 0;
-      {
-        int res = SWIG_AsPtr_std_string(argv[0], (std::string**)(0));
-        _v = SWIG_CheckState(res);
-      }
-      if (!_v) goto check_3;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      if (!_index || (_ranki < _rank)) {
-        _rank = _ranki; _index = 3;
-        if (_rank == _rankm) goto dispatch;
-      }
-    }
-  check_3:
-    
-    if (argc == 2) {
-      SWIG_TypeRank _ranki = 0;
-      SWIG_TypeRank _rankm = 0;
-      SWIG_TypeRank _pi = 1;
-      int _v = 0;
-      {
-        int res = SWIG_ConvertPtr(argv[0], 0, SWIGTYPE_p_RasterT_float_t, 0);
-        _v = SWIG_CheckState(res);
-      }
-      if (!_v) goto check_4;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      {
-        {
-          int res = SWIG_AsVal_float(argv[1], NULL);
-          _v = SWIG_CheckState(res);
-        }
-      }
-      if (!_v) goto check_4;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      if (!_index || (_ranki < _rank)) {
-        _rank = _ranki; _index = 4;
-        if (_rank == _rankm) goto dispatch;
-      }
-    }
-  check_4:
-    
-    if ((argc >= 7) && (argc <= 8)) {
-      SWIG_TypeRank _ranki = 0;
-      SWIG_TypeRank _rankm = 0;
-      SWIG_TypeRank _pi = 1;
-      int _v = 0;
-      {
-        {
-          int res = SWIG_AsVal_int(argv[0], NULL);
-          _v = SWIG_CheckState(res);
-        }
-      }
-      if (!_v) goto check_5;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      {
-        {
-          int res = SWIG_AsVal_int(argv[1], NULL);
-          _v = SWIG_CheckState(res);
-        }
-      }
-      if (!_v) goto check_5;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      {
+      if (_v) {
         {
           int res = SWIG_AsVal_double(argv[2], NULL);
           _v = SWIG_CheckState(res);
         }
-      }
-      if (!_v) goto check_5;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      {
-        {
-          int res = SWIG_AsVal_double(argv[3], NULL);
-          _v = SWIG_CheckState(res);
-        }
-      }
-      if (!_v) goto check_5;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      {
-        {
-          int res = SWIG_AsVal_double(argv[4], NULL);
-          _v = SWIG_CheckState(res);
-        }
-      }
-      if (!_v) goto check_5;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      {
-        {
-          int res = SWIG_AsVal_double(argv[5], NULL);
-          _v = SWIG_CheckState(res);
-        }
-      }
-      if (!_v) goto check_5;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      {
-        {
-          int res = SWIG_AsVal_float(argv[6], NULL);
-          _v = SWIG_CheckState(res);
-        }
-      }
-      if (!_v) goto check_5;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      if (argc > 7) {
-        {
+        if (_v) {
           {
-            int res = SWIG_AsVal_float(argv[7], NULL);
+            int res = SWIG_AsVal_double(argv[3], NULL);
             _v = SWIG_CheckState(res);
           }
+          if (_v) {
+            {
+              int res = SWIG_AsVal_double(argv[4], NULL);
+              _v = SWIG_CheckState(res);
+            }
+            if (_v) {
+              {
+                int res = SWIG_AsVal_double(argv[5], NULL);
+                _v = SWIG_CheckState(res);
+              }
+              if (_v) {
+                {
+                  int res = SWIG_AsVal_float(argv[6], NULL);
+                  _v = SWIG_CheckState(res);
+                }
+                if (_v) {
+                  return _wrap_new_float_raster__SWIG_1(self, args);
+                }
+              }
+            }
+          }
         }
-        if (!_v) goto check_5;
-        _ranki += _v*_pi;
-        _rankm += _pi;
-        _pi *= SWIG_MAXCASTRANK;
-      }
-      if (!_index || (_ranki < _rank)) {
-        _rank = _ranki; _index = 5;
-        if (_rank == _rankm) goto dispatch;
       }
     }
-  check_5:
-    
-  dispatch:
-    switch(_index) {
-    case 1:
-      return _wrap_new_float_raster__SWIG_1(self, argc, argv);
-    case 2:
-      return _wrap_new_float_raster__SWIG_4(self, argc, argv);
-    case 3:
-      return _wrap_new_float_raster__SWIG_3(self, argc, argv);
-    case 4:
-      return _wrap_new_float_raster__SWIG_2(self, argc, argv);
-    case 5:
-      return _wrap_new_float_raster__SWIG_0(self, argc, argv);
+  }
+  if (argc == 8) {
+    int _v;
+    {
+      int res = SWIG_AsVal_int(argv[0], NULL);
+      _v = SWIG_CheckState(res);
+    }
+    if (_v) {
+      {
+        int res = SWIG_AsVal_int(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        {
+          int res = SWIG_AsVal_double(argv[2], NULL);
+          _v = SWIG_CheckState(res);
+        }
+        if (_v) {
+          {
+            int res = SWIG_AsVal_double(argv[3], NULL);
+            _v = SWIG_CheckState(res);
+          }
+          if (_v) {
+            {
+              int res = SWIG_AsVal_double(argv[4], NULL);
+              _v = SWIG_CheckState(res);
+            }
+            if (_v) {
+              {
+                int res = SWIG_AsVal_double(argv[5], NULL);
+                _v = SWIG_CheckState(res);
+              }
+              if (_v) {
+                {
+                  int res = SWIG_AsVal_float(argv[6], NULL);
+                  _v = SWIG_CheckState(res);
+                }
+                if (_v) {
+                  {
+                    int res = SWIG_AsVal_float(argv[7], NULL);
+                    _v = SWIG_CheckState(res);
+                  }
+                  if (_v) {
+                    return _wrap_new_float_raster__SWIG_0(self, args);
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
     }
   }
   
@@ -12648,6 +13267,7 @@ fail:
   SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'new_float_raster'.\n"
     "  Possible C/C++ prototypes are:\n"
     "    Raster< float >::Raster(int,int,double,double,double,double,float,float)\n"
+    "    Raster< float >::Raster(int,int,double,double,double,double,float)\n"
     "    Raster< float >::Raster(Raster< float > const &)\n"
     "    Raster< float >::Raster(Raster< float > const &,float)\n"
     "    Raster< float >::Raster(std::string const &)\n"
@@ -12656,7 +13276,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_float_raster_WriteToASCFile__SWIG_0(PyObject *self, int nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_float_raster_WriteToASCFile__SWIG_0(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   Raster< float > *arg1 = (Raster< float > *) 0 ;
   std::ostream *arg2 = 0 ;
@@ -12664,14 +13284,15 @@ SWIGINTERN PyObject *_wrap_float_raster_WriteToASCFile__SWIG_0(PyObject *self, i
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
+  PyObject * obj1 = 0 ;
   
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"O:float_raster_WriteToASCFile",&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_float_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "float_raster_WriteToASCFile" "', argument " "1"" of type '" "Raster< float > const *""'"); 
   }
   arg1 = reinterpret_cast< Raster< float > * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_std__ostream,  0 );
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_std__ostream,  0 );
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "float_raster_WriteToASCFile" "', argument " "2"" of type '" "std::ostream &""'"); 
   }
@@ -12697,14 +13318,15 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_float_raster_WriteToASCFile__SWIG_1(PyObject *self, int nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_float_raster_WriteToASCFile__SWIG_1(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   Raster< float > *arg1 = (Raster< float > *) 0 ;
   std::string arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
+  PyObject * obj1 = 0 ;
   
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"O:float_raster_WriteToASCFile",&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_float_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "float_raster_WriteToASCFile" "', argument " "1"" of type '" "Raster< float > const *""'"); 
@@ -12712,7 +13334,7 @@ SWIGINTERN PyObject *_wrap_float_raster_WriteToASCFile__SWIG_1(PyObject *self, i
   arg1 = reinterpret_cast< Raster< float > * >(argp1);
   {
     std::string *ptr = (std::string *)0;
-    int res = SWIG_AsPtr_std_string(swig_obj[1], &ptr);
+    int res = SWIG_AsPtr_std_string(obj1, &ptr);
     if (!SWIG_IsOK(res) || !ptr) {
       SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "float_raster_WriteToASCFile" "', argument " "2"" of type '" "std::string""'"); 
     }
@@ -12740,77 +13362,40 @@ fail:
 SWIGINTERN PyObject *_wrap_float_raster_WriteToASCFile(PyObject *self, PyObject *args) {
   int argc;
   PyObject *argv[3];
+  int ii;
   
-  if (!(argc = SWIG_Python_UnpackTuple(args,"float_raster_WriteToASCFile",0,2,argv+1))) SWIG_fail;
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? (int)PyObject_Length(args) : 0;
   argv[0] = self;
-  {
-    unsigned long _index = 0;
-    SWIG_TypeRank _rank = 0; 
-    if (argc == 2) {
-      SWIG_TypeRank _ranki = 0;
-      SWIG_TypeRank _rankm = 0;
-      SWIG_TypeRank _pi = 1;
-      int _v = 0;
-      {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_float_t, 0);
-        _v = SWIG_CheckState(res);
-      }
-      if (!_v) goto check_1;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_std__ostream, 0);
-        _v = SWIG_CheckState(res);
-      }
-      if (!_v) goto check_1;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      if (!_index || (_ranki < _rank)) {
-        _rank = _ranki; _index = 1;
-        if (_rank == _rankm) goto dispatch;
+  for (ii = 0; (ii < 1) && (ii < argc); ii++) {
+    argv[ii + 1] = PyTuple_GET_ITEM(args,ii);
+  }
+  argc++;
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_float_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      void *vptr = 0;
+      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_std__ostream, 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        return _wrap_float_raster_WriteToASCFile__SWIG_0(self, args);
       }
     }
-  check_1:
-    
-    if (argc == 2) {
-      SWIG_TypeRank _ranki = 0;
-      SWIG_TypeRank _rankm = 0;
-      SWIG_TypeRank _pi = 1;
-      int _v = 0;
-      {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_float_t, 0);
-        _v = SWIG_CheckState(res);
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_float_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_AsPtr_std_string(argv[1], (std::string**)(0));
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        return _wrap_float_raster_WriteToASCFile__SWIG_1(self, args);
       }
-      if (!_v) goto check_2;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      {
-        int res = SWIG_AsPtr_std_string(argv[1], (std::string**)(0));
-        _v = SWIG_CheckState(res);
-      }
-      if (!_v) goto check_2;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      if (!_index || (_ranki < _rank)) {
-        _rank = _ranki; _index = 2;
-        if (_rank == _rankm) goto dispatch;
-      }
-    }
-  check_2:
-    
-  dispatch:
-    switch(_index) {
-    case 1:
-      return _wrap_float_raster_WriteToASCFile__SWIG_0(self, argc, argv);
-    case 2:
-      return _wrap_float_raster_WriteToASCFile__SWIG_1(self, argc, argv);
     }
   }
   
@@ -12823,18 +13408,15 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_float_raster_WriteToBinary(PyObject *self, PyObject *args, PyObject *kwargs) {
+SWIGINTERN PyObject *_wrap_float_raster_WriteToBinary(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   Raster< float > *arg1 = (Raster< float > *) 0 ;
   std::string arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   PyObject * obj1 = 0 ;
-  char *  kwnames[] = {
-    (char *) "filename", NULL 
-  };
   
-  if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"O:float_raster_WriteToBinary",kwnames,&obj1)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"O:float_raster_WriteToBinary",&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_float_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "float_raster_WriteToBinary" "', argument " "1"" of type '" "Raster< float > const *""'"); 
@@ -12867,7 +13449,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_float_raster_extract(PyObject *self, PyObject *args, PyObject *kwargs) {
+SWIGINTERN PyObject *_wrap_float_raster_extract(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   Raster< float > *arg1 = (Raster< float > *) 0 ;
   double arg2 ;
@@ -12888,12 +13470,9 @@ SWIGINTERN PyObject *_wrap_float_raster_extract(PyObject *self, PyObject *args, 
   PyObject * obj2 = 0 ;
   PyObject * obj3 = 0 ;
   PyObject * obj4 = 0 ;
-  char *  kwnames[] = {
-    (char *) "x1",(char *) "y1",(char *) "x2",(char *) "y2", NULL 
-  };
   SwigValueWrapper< Raster< float > > result;
   
-  if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"OOOO:float_raster_extract",kwnames,&obj1,&obj2,&obj3,&obj4)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"OOOO:float_raster_extract",&obj1,&obj2,&obj3,&obj4)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_float_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "float_raster_extract" "', argument " "1"" of type '" "Raster< float > *""'"); 
@@ -12942,10 +13521,9 @@ SWIGINTERN PyObject *_wrap_float_raster_ToInt(PyObject *self, PyObject *args) {
   Raster< float > *arg1 = (Raster< float > *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[1] ;
   SwigValueWrapper< Raster< int > > result;
   
-  if (!SWIG_Python_UnpackTuple(args,"float_raster_ToInt",0,0,0)) SWIG_fail;
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_float_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "float_raster_ToInt" "', argument " "1"" of type '" "Raster< float > const *""'"); 
@@ -12974,10 +13552,9 @@ SWIGINTERN PyObject *_wrap_float_raster_ToFloat(PyObject *self, PyObject *args) 
   Raster< float > *arg1 = (Raster< float > *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[1] ;
   SwigValueWrapper< Raster< float > > result;
   
-  if (!SWIG_Python_UnpackTuple(args,"float_raster_ToFloat",0,0,0)) SWIG_fail;
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_float_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "float_raster_ToFloat" "', argument " "1"" of type '" "Raster< float > const *""'"); 
@@ -13006,10 +13583,9 @@ SWIGINTERN PyObject *_wrap_float_raster_ToDouble(PyObject *self, PyObject *args)
   Raster< float > *arg1 = (Raster< float > *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[1] ;
   SwigValueWrapper< Raster< double > > result;
   
-  if (!SWIG_Python_UnpackTuple(args,"float_raster_ToDouble",0,0,0)) SWIG_fail;
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_float_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "float_raster_ToDouble" "', argument " "1"" of type '" "Raster< float > const *""'"); 
@@ -13038,10 +13614,9 @@ SWIGINTERN PyObject *_wrap_float_raster_adress(PyObject *self, PyObject *args) {
   Raster< float > *arg1 = (Raster< float > *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[1] ;
   size_t result;
   
-  if (!SWIG_Python_UnpackTuple(args,"float_raster_adress",0,0,0)) SWIG_fail;
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_float_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "float_raster_adress" "', argument " "1"" of type '" "Raster< float > const *""'"); 
@@ -13065,33 +13640,28 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_float_raster_focal_min(PyObject *self, PyObject *args, PyObject *kwargs) {
+SWIGINTERN PyObject *_wrap_float_raster_focal_min__SWIG_0(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   Raster< float > *arg1 = (Raster< float > *) 0 ;
-  int arg2 = (int) 3 ;
+  int arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int val2 ;
   int ecode2 = 0 ;
   PyObject * obj1 = 0 ;
-  char *  kwnames[] = {
-    (char *) "n", NULL 
-  };
   SwigValueWrapper< Raster< float > > result;
   
-  if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"|O:float_raster_focal_min",kwnames,&obj1)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"O:float_raster_focal_min",&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_float_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "float_raster_focal_min" "', argument " "1"" of type '" "Raster< float > *""'"); 
   }
   arg1 = reinterpret_cast< Raster< float > * >(argp1);
-  if (obj1) {
-    ecode2 = SWIG_AsVal_int(obj1, &val2);
-    if (!SWIG_IsOK(ecode2)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "float_raster_focal_min" "', argument " "2"" of type '" "int""'");
-    } 
-    arg2 = static_cast< int >(val2);
-  }
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "float_raster_focal_min" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
   {
     try {
       result = (arg1)->focal_min(arg2);
@@ -13110,33 +13680,105 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_float_raster_focal_max(PyObject *self, PyObject *args, PyObject *kwargs) {
+SWIGINTERN PyObject *_wrap_float_raster_focal_min__SWIG_1(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   Raster< float > *arg1 = (Raster< float > *) 0 ;
-  int arg2 = (int) 3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  SwigValueWrapper< Raster< float > > result;
+  
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_float_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "float_raster_focal_min" "', argument " "1"" of type '" "Raster< float > *""'"); 
+  }
+  arg1 = reinterpret_cast< Raster< float > * >(argp1);
+  {
+    try {
+      result = (arg1)->focal_min();
+    } 
+    catch (std::runtime_error& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what() );
+    }
+    catch (std::exception& e) {
+      SWIG_exception(SWIG_UnknownError, e.what());
+    }
+  }
+  resultobj = SWIG_NewPointerObj((new Raster< float >(static_cast< const Raster< float >& >(result))), SWIGTYPE_p_RasterT_float_t, SWIG_POINTER_OWN |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_float_raster_focal_min(PyObject *self, PyObject *args) {
+  int argc;
+  PyObject *argv[3];
+  int ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? (int)PyObject_Length(args) : 0;
+  argv[0] = self;
+  for (ii = 0; (ii < 1) && (ii < argc); ii++) {
+    argv[ii + 1] = PyTuple_GET_ITEM(args,ii);
+  }
+  argc++;
+  if (argc == 1) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_float_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_float_raster_focal_min__SWIG_1(self, args);
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_float_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        int res = SWIG_AsVal_int(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        return _wrap_float_raster_focal_min__SWIG_0(self, args);
+      }
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'float_raster_focal_min'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    Raster< float >::focal_min(int)\n"
+    "    Raster< float >::focal_min()\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_float_raster_focal_max__SWIG_0(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  Raster< float > *arg1 = (Raster< float > *) 0 ;
+  int arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int val2 ;
   int ecode2 = 0 ;
   PyObject * obj1 = 0 ;
-  char *  kwnames[] = {
-    (char *) "n", NULL 
-  };
   SwigValueWrapper< Raster< float > > result;
   
-  if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"|O:float_raster_focal_max",kwnames,&obj1)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"O:float_raster_focal_max",&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_float_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "float_raster_focal_max" "', argument " "1"" of type '" "Raster< float > *""'"); 
   }
   arg1 = reinterpret_cast< Raster< float > * >(argp1);
-  if (obj1) {
-    ecode2 = SWIG_AsVal_int(obj1, &val2);
-    if (!SWIG_IsOK(ecode2)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "float_raster_focal_max" "', argument " "2"" of type '" "int""'");
-    } 
-    arg2 = static_cast< int >(val2);
-  }
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "float_raster_focal_max" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
   {
     try {
       result = (arg1)->focal_max(arg2);
@@ -13155,33 +13797,105 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_float_raster_focal_mean(PyObject *self, PyObject *args, PyObject *kwargs) {
+SWIGINTERN PyObject *_wrap_float_raster_focal_max__SWIG_1(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   Raster< float > *arg1 = (Raster< float > *) 0 ;
-  int arg2 = (int) 3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  SwigValueWrapper< Raster< float > > result;
+  
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_float_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "float_raster_focal_max" "', argument " "1"" of type '" "Raster< float > *""'"); 
+  }
+  arg1 = reinterpret_cast< Raster< float > * >(argp1);
+  {
+    try {
+      result = (arg1)->focal_max();
+    } 
+    catch (std::runtime_error& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what() );
+    }
+    catch (std::exception& e) {
+      SWIG_exception(SWIG_UnknownError, e.what());
+    }
+  }
+  resultobj = SWIG_NewPointerObj((new Raster< float >(static_cast< const Raster< float >& >(result))), SWIGTYPE_p_RasterT_float_t, SWIG_POINTER_OWN |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_float_raster_focal_max(PyObject *self, PyObject *args) {
+  int argc;
+  PyObject *argv[3];
+  int ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? (int)PyObject_Length(args) : 0;
+  argv[0] = self;
+  for (ii = 0; (ii < 1) && (ii < argc); ii++) {
+    argv[ii + 1] = PyTuple_GET_ITEM(args,ii);
+  }
+  argc++;
+  if (argc == 1) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_float_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_float_raster_focal_max__SWIG_1(self, args);
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_float_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        int res = SWIG_AsVal_int(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        return _wrap_float_raster_focal_max__SWIG_0(self, args);
+      }
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'float_raster_focal_max'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    Raster< float >::focal_max(int)\n"
+    "    Raster< float >::focal_max()\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_float_raster_focal_mean__SWIG_0(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  Raster< float > *arg1 = (Raster< float > *) 0 ;
+  int arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int val2 ;
   int ecode2 = 0 ;
   PyObject * obj1 = 0 ;
-  char *  kwnames[] = {
-    (char *) "n", NULL 
-  };
   SwigValueWrapper< Raster< float > > result;
   
-  if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"|O:float_raster_focal_mean",kwnames,&obj1)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"O:float_raster_focal_mean",&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_float_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "float_raster_focal_mean" "', argument " "1"" of type '" "Raster< float > *""'"); 
   }
   arg1 = reinterpret_cast< Raster< float > * >(argp1);
-  if (obj1) {
-    ecode2 = SWIG_AsVal_int(obj1, &val2);
-    if (!SWIG_IsOK(ecode2)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "float_raster_focal_mean" "', argument " "2"" of type '" "int""'");
-    } 
-    arg2 = static_cast< int >(val2);
-  }
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "float_raster_focal_mean" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
   {
     try {
       result = (arg1)->focal_mean(arg2);
@@ -13200,33 +13914,105 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_float_raster_focal_stdev(PyObject *self, PyObject *args, PyObject *kwargs) {
+SWIGINTERN PyObject *_wrap_float_raster_focal_mean__SWIG_1(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   Raster< float > *arg1 = (Raster< float > *) 0 ;
-  int arg2 = (int) 3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  SwigValueWrapper< Raster< float > > result;
+  
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_float_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "float_raster_focal_mean" "', argument " "1"" of type '" "Raster< float > *""'"); 
+  }
+  arg1 = reinterpret_cast< Raster< float > * >(argp1);
+  {
+    try {
+      result = (arg1)->focal_mean();
+    } 
+    catch (std::runtime_error& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what() );
+    }
+    catch (std::exception& e) {
+      SWIG_exception(SWIG_UnknownError, e.what());
+    }
+  }
+  resultobj = SWIG_NewPointerObj((new Raster< float >(static_cast< const Raster< float >& >(result))), SWIGTYPE_p_RasterT_float_t, SWIG_POINTER_OWN |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_float_raster_focal_mean(PyObject *self, PyObject *args) {
+  int argc;
+  PyObject *argv[3];
+  int ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? (int)PyObject_Length(args) : 0;
+  argv[0] = self;
+  for (ii = 0; (ii < 1) && (ii < argc); ii++) {
+    argv[ii + 1] = PyTuple_GET_ITEM(args,ii);
+  }
+  argc++;
+  if (argc == 1) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_float_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_float_raster_focal_mean__SWIG_1(self, args);
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_float_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        int res = SWIG_AsVal_int(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        return _wrap_float_raster_focal_mean__SWIG_0(self, args);
+      }
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'float_raster_focal_mean'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    Raster< float >::focal_mean(int)\n"
+    "    Raster< float >::focal_mean()\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_float_raster_focal_stdev__SWIG_0(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  Raster< float > *arg1 = (Raster< float > *) 0 ;
+  int arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int val2 ;
   int ecode2 = 0 ;
   PyObject * obj1 = 0 ;
-  char *  kwnames[] = {
-    (char *) "n", NULL 
-  };
   SwigValueWrapper< Raster< float > > result;
   
-  if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"|O:float_raster_focal_stdev",kwnames,&obj1)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"O:float_raster_focal_stdev",&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_float_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "float_raster_focal_stdev" "', argument " "1"" of type '" "Raster< float > *""'"); 
   }
   arg1 = reinterpret_cast< Raster< float > * >(argp1);
-  if (obj1) {
-    ecode2 = SWIG_AsVal_int(obj1, &val2);
-    if (!SWIG_IsOK(ecode2)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "float_raster_focal_stdev" "', argument " "2"" of type '" "int""'");
-    } 
-    arg2 = static_cast< int >(val2);
-  }
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "float_raster_focal_stdev" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
   {
     try {
       result = (arg1)->focal_stdev(arg2);
@@ -13245,33 +14031,105 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_float_raster_focal_majority(PyObject *self, PyObject *args, PyObject *kwargs) {
+SWIGINTERN PyObject *_wrap_float_raster_focal_stdev__SWIG_1(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   Raster< float > *arg1 = (Raster< float > *) 0 ;
-  int arg2 = (int) 3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  SwigValueWrapper< Raster< float > > result;
+  
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_float_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "float_raster_focal_stdev" "', argument " "1"" of type '" "Raster< float > *""'"); 
+  }
+  arg1 = reinterpret_cast< Raster< float > * >(argp1);
+  {
+    try {
+      result = (arg1)->focal_stdev();
+    } 
+    catch (std::runtime_error& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what() );
+    }
+    catch (std::exception& e) {
+      SWIG_exception(SWIG_UnknownError, e.what());
+    }
+  }
+  resultobj = SWIG_NewPointerObj((new Raster< float >(static_cast< const Raster< float >& >(result))), SWIGTYPE_p_RasterT_float_t, SWIG_POINTER_OWN |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_float_raster_focal_stdev(PyObject *self, PyObject *args) {
+  int argc;
+  PyObject *argv[3];
+  int ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? (int)PyObject_Length(args) : 0;
+  argv[0] = self;
+  for (ii = 0; (ii < 1) && (ii < argc); ii++) {
+    argv[ii + 1] = PyTuple_GET_ITEM(args,ii);
+  }
+  argc++;
+  if (argc == 1) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_float_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_float_raster_focal_stdev__SWIG_1(self, args);
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_float_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        int res = SWIG_AsVal_int(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        return _wrap_float_raster_focal_stdev__SWIG_0(self, args);
+      }
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'float_raster_focal_stdev'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    Raster< float >::focal_stdev(int)\n"
+    "    Raster< float >::focal_stdev()\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_float_raster_focal_majority__SWIG_0(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  Raster< float > *arg1 = (Raster< float > *) 0 ;
+  int arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int val2 ;
   int ecode2 = 0 ;
   PyObject * obj1 = 0 ;
-  char *  kwnames[] = {
-    (char *) "n", NULL 
-  };
   SwigValueWrapper< Raster< float > > result;
   
-  if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"|O:float_raster_focal_majority",kwnames,&obj1)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"O:float_raster_focal_majority",&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_float_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "float_raster_focal_majority" "', argument " "1"" of type '" "Raster< float > *""'"); 
   }
   arg1 = reinterpret_cast< Raster< float > * >(argp1);
-  if (obj1) {
-    ecode2 = SWIG_AsVal_int(obj1, &val2);
-    if (!SWIG_IsOK(ecode2)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "float_raster_focal_majority" "', argument " "2"" of type '" "int""'");
-    } 
-    arg2 = static_cast< int >(val2);
-  }
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "float_raster_focal_majority" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
   {
     try {
       result = (arg1)->focal_majority(arg2);
@@ -13290,33 +14148,105 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_float_raster_focal_mean_difference(PyObject *self, PyObject *args, PyObject *kwargs) {
+SWIGINTERN PyObject *_wrap_float_raster_focal_majority__SWIG_1(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   Raster< float > *arg1 = (Raster< float > *) 0 ;
-  int arg2 = (int) 3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  SwigValueWrapper< Raster< float > > result;
+  
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_float_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "float_raster_focal_majority" "', argument " "1"" of type '" "Raster< float > *""'"); 
+  }
+  arg1 = reinterpret_cast< Raster< float > * >(argp1);
+  {
+    try {
+      result = (arg1)->focal_majority();
+    } 
+    catch (std::runtime_error& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what() );
+    }
+    catch (std::exception& e) {
+      SWIG_exception(SWIG_UnknownError, e.what());
+    }
+  }
+  resultobj = SWIG_NewPointerObj((new Raster< float >(static_cast< const Raster< float >& >(result))), SWIGTYPE_p_RasterT_float_t, SWIG_POINTER_OWN |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_float_raster_focal_majority(PyObject *self, PyObject *args) {
+  int argc;
+  PyObject *argv[3];
+  int ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? (int)PyObject_Length(args) : 0;
+  argv[0] = self;
+  for (ii = 0; (ii < 1) && (ii < argc); ii++) {
+    argv[ii + 1] = PyTuple_GET_ITEM(args,ii);
+  }
+  argc++;
+  if (argc == 1) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_float_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_float_raster_focal_majority__SWIG_1(self, args);
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_float_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        int res = SWIG_AsVal_int(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        return _wrap_float_raster_focal_majority__SWIG_0(self, args);
+      }
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'float_raster_focal_majority'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    Raster< float >::focal_majority(int)\n"
+    "    Raster< float >::focal_majority()\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_float_raster_focal_mean_difference__SWIG_0(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  Raster< float > *arg1 = (Raster< float > *) 0 ;
+  int arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int val2 ;
   int ecode2 = 0 ;
   PyObject * obj1 = 0 ;
-  char *  kwnames[] = {
-    (char *) "n", NULL 
-  };
   SwigValueWrapper< Raster< float > > result;
   
-  if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"|O:float_raster_focal_mean_difference",kwnames,&obj1)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"O:float_raster_focal_mean_difference",&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_float_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "float_raster_focal_mean_difference" "', argument " "1"" of type '" "Raster< float > *""'"); 
   }
   arg1 = reinterpret_cast< Raster< float > * >(argp1);
-  if (obj1) {
-    ecode2 = SWIG_AsVal_int(obj1, &val2);
-    if (!SWIG_IsOK(ecode2)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "float_raster_focal_mean_difference" "', argument " "2"" of type '" "int""'");
-    } 
-    arg2 = static_cast< int >(val2);
-  }
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "float_raster_focal_mean_difference" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
   {
     try {
       result = (arg1)->focal_mean_difference(arg2);
@@ -13335,33 +14265,105 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_float_raster_downscale_mean(PyObject *self, PyObject *args, PyObject *kwargs) {
+SWIGINTERN PyObject *_wrap_float_raster_focal_mean_difference__SWIG_1(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   Raster< float > *arg1 = (Raster< float > *) 0 ;
-  int arg2 = (int) 3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  SwigValueWrapper< Raster< float > > result;
+  
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_float_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "float_raster_focal_mean_difference" "', argument " "1"" of type '" "Raster< float > *""'"); 
+  }
+  arg1 = reinterpret_cast< Raster< float > * >(argp1);
+  {
+    try {
+      result = (arg1)->focal_mean_difference();
+    } 
+    catch (std::runtime_error& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what() );
+    }
+    catch (std::exception& e) {
+      SWIG_exception(SWIG_UnknownError, e.what());
+    }
+  }
+  resultobj = SWIG_NewPointerObj((new Raster< float >(static_cast< const Raster< float >& >(result))), SWIGTYPE_p_RasterT_float_t, SWIG_POINTER_OWN |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_float_raster_focal_mean_difference(PyObject *self, PyObject *args) {
+  int argc;
+  PyObject *argv[3];
+  int ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? (int)PyObject_Length(args) : 0;
+  argv[0] = self;
+  for (ii = 0; (ii < 1) && (ii < argc); ii++) {
+    argv[ii + 1] = PyTuple_GET_ITEM(args,ii);
+  }
+  argc++;
+  if (argc == 1) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_float_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_float_raster_focal_mean_difference__SWIG_1(self, args);
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_float_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        int res = SWIG_AsVal_int(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        return _wrap_float_raster_focal_mean_difference__SWIG_0(self, args);
+      }
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'float_raster_focal_mean_difference'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    Raster< float >::focal_mean_difference(int)\n"
+    "    Raster< float >::focal_mean_difference()\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_float_raster_downscale_mean__SWIG_0(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  Raster< float > *arg1 = (Raster< float > *) 0 ;
+  int arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int val2 ;
   int ecode2 = 0 ;
   PyObject * obj1 = 0 ;
-  char *  kwnames[] = {
-    (char *) "n", NULL 
-  };
   SwigValueWrapper< Raster< float > > result;
   
-  if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"|O:float_raster_downscale_mean",kwnames,&obj1)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"O:float_raster_downscale_mean",&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_float_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "float_raster_downscale_mean" "', argument " "1"" of type '" "Raster< float > *""'"); 
   }
   arg1 = reinterpret_cast< Raster< float > * >(argp1);
-  if (obj1) {
-    ecode2 = SWIG_AsVal_int(obj1, &val2);
-    if (!SWIG_IsOK(ecode2)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "float_raster_downscale_mean" "', argument " "2"" of type '" "int""'");
-    } 
-    arg2 = static_cast< int >(val2);
-  }
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "float_raster_downscale_mean" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
   {
     try {
       result = (arg1)->downscale_mean(arg2);
@@ -13380,33 +14382,105 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_float_raster_downscale_min(PyObject *self, PyObject *args, PyObject *kwargs) {
+SWIGINTERN PyObject *_wrap_float_raster_downscale_mean__SWIG_1(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   Raster< float > *arg1 = (Raster< float > *) 0 ;
-  int arg2 = (int) 3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  SwigValueWrapper< Raster< float > > result;
+  
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_float_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "float_raster_downscale_mean" "', argument " "1"" of type '" "Raster< float > *""'"); 
+  }
+  arg1 = reinterpret_cast< Raster< float > * >(argp1);
+  {
+    try {
+      result = (arg1)->downscale_mean();
+    } 
+    catch (std::runtime_error& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what() );
+    }
+    catch (std::exception& e) {
+      SWIG_exception(SWIG_UnknownError, e.what());
+    }
+  }
+  resultobj = SWIG_NewPointerObj((new Raster< float >(static_cast< const Raster< float >& >(result))), SWIGTYPE_p_RasterT_float_t, SWIG_POINTER_OWN |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_float_raster_downscale_mean(PyObject *self, PyObject *args) {
+  int argc;
+  PyObject *argv[3];
+  int ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? (int)PyObject_Length(args) : 0;
+  argv[0] = self;
+  for (ii = 0; (ii < 1) && (ii < argc); ii++) {
+    argv[ii + 1] = PyTuple_GET_ITEM(args,ii);
+  }
+  argc++;
+  if (argc == 1) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_float_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_float_raster_downscale_mean__SWIG_1(self, args);
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_float_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        int res = SWIG_AsVal_int(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        return _wrap_float_raster_downscale_mean__SWIG_0(self, args);
+      }
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'float_raster_downscale_mean'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    Raster< float >::downscale_mean(int)\n"
+    "    Raster< float >::downscale_mean()\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_float_raster_downscale_min__SWIG_0(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  Raster< float > *arg1 = (Raster< float > *) 0 ;
+  int arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int val2 ;
   int ecode2 = 0 ;
   PyObject * obj1 = 0 ;
-  char *  kwnames[] = {
-    (char *) "n", NULL 
-  };
   SwigValueWrapper< Raster< float > > result;
   
-  if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"|O:float_raster_downscale_min",kwnames,&obj1)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"O:float_raster_downscale_min",&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_float_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "float_raster_downscale_min" "', argument " "1"" of type '" "Raster< float > *""'"); 
   }
   arg1 = reinterpret_cast< Raster< float > * >(argp1);
-  if (obj1) {
-    ecode2 = SWIG_AsVal_int(obj1, &val2);
-    if (!SWIG_IsOK(ecode2)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "float_raster_downscale_min" "', argument " "2"" of type '" "int""'");
-    } 
-    arg2 = static_cast< int >(val2);
-  }
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "float_raster_downscale_min" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
   {
     try {
       result = (arg1)->downscale_min(arg2);
@@ -13425,33 +14499,105 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_float_raster_downscale_max(PyObject *self, PyObject *args, PyObject *kwargs) {
+SWIGINTERN PyObject *_wrap_float_raster_downscale_min__SWIG_1(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   Raster< float > *arg1 = (Raster< float > *) 0 ;
-  int arg2 = (int) 3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  SwigValueWrapper< Raster< float > > result;
+  
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_float_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "float_raster_downscale_min" "', argument " "1"" of type '" "Raster< float > *""'"); 
+  }
+  arg1 = reinterpret_cast< Raster< float > * >(argp1);
+  {
+    try {
+      result = (arg1)->downscale_min();
+    } 
+    catch (std::runtime_error& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what() );
+    }
+    catch (std::exception& e) {
+      SWIG_exception(SWIG_UnknownError, e.what());
+    }
+  }
+  resultobj = SWIG_NewPointerObj((new Raster< float >(static_cast< const Raster< float >& >(result))), SWIGTYPE_p_RasterT_float_t, SWIG_POINTER_OWN |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_float_raster_downscale_min(PyObject *self, PyObject *args) {
+  int argc;
+  PyObject *argv[3];
+  int ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? (int)PyObject_Length(args) : 0;
+  argv[0] = self;
+  for (ii = 0; (ii < 1) && (ii < argc); ii++) {
+    argv[ii + 1] = PyTuple_GET_ITEM(args,ii);
+  }
+  argc++;
+  if (argc == 1) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_float_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_float_raster_downscale_min__SWIG_1(self, args);
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_float_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        int res = SWIG_AsVal_int(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        return _wrap_float_raster_downscale_min__SWIG_0(self, args);
+      }
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'float_raster_downscale_min'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    Raster< float >::downscale_min(int)\n"
+    "    Raster< float >::downscale_min()\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_float_raster_downscale_max__SWIG_0(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  Raster< float > *arg1 = (Raster< float > *) 0 ;
+  int arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int val2 ;
   int ecode2 = 0 ;
   PyObject * obj1 = 0 ;
-  char *  kwnames[] = {
-    (char *) "n", NULL 
-  };
   SwigValueWrapper< Raster< float > > result;
   
-  if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"|O:float_raster_downscale_max",kwnames,&obj1)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"O:float_raster_downscale_max",&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_float_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "float_raster_downscale_max" "', argument " "1"" of type '" "Raster< float > *""'"); 
   }
   arg1 = reinterpret_cast< Raster< float > * >(argp1);
-  if (obj1) {
-    ecode2 = SWIG_AsVal_int(obj1, &val2);
-    if (!SWIG_IsOK(ecode2)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "float_raster_downscale_max" "', argument " "2"" of type '" "int""'");
-    } 
-    arg2 = static_cast< int >(val2);
-  }
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "float_raster_downscale_max" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
   {
     try {
       result = (arg1)->downscale_max(arg2);
@@ -13470,33 +14616,105 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_float_raster_downscale_majority(PyObject *self, PyObject *args, PyObject *kwargs) {
+SWIGINTERN PyObject *_wrap_float_raster_downscale_max__SWIG_1(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   Raster< float > *arg1 = (Raster< float > *) 0 ;
-  int arg2 = (int) 3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  SwigValueWrapper< Raster< float > > result;
+  
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_float_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "float_raster_downscale_max" "', argument " "1"" of type '" "Raster< float > *""'"); 
+  }
+  arg1 = reinterpret_cast< Raster< float > * >(argp1);
+  {
+    try {
+      result = (arg1)->downscale_max();
+    } 
+    catch (std::runtime_error& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what() );
+    }
+    catch (std::exception& e) {
+      SWIG_exception(SWIG_UnknownError, e.what());
+    }
+  }
+  resultobj = SWIG_NewPointerObj((new Raster< float >(static_cast< const Raster< float >& >(result))), SWIGTYPE_p_RasterT_float_t, SWIG_POINTER_OWN |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_float_raster_downscale_max(PyObject *self, PyObject *args) {
+  int argc;
+  PyObject *argv[3];
+  int ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? (int)PyObject_Length(args) : 0;
+  argv[0] = self;
+  for (ii = 0; (ii < 1) && (ii < argc); ii++) {
+    argv[ii + 1] = PyTuple_GET_ITEM(args,ii);
+  }
+  argc++;
+  if (argc == 1) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_float_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_float_raster_downscale_max__SWIG_1(self, args);
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_float_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        int res = SWIG_AsVal_int(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        return _wrap_float_raster_downscale_max__SWIG_0(self, args);
+      }
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'float_raster_downscale_max'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    Raster< float >::downscale_max(int)\n"
+    "    Raster< float >::downscale_max()\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_float_raster_downscale_majority__SWIG_0(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  Raster< float > *arg1 = (Raster< float > *) 0 ;
+  int arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int val2 ;
   int ecode2 = 0 ;
   PyObject * obj1 = 0 ;
-  char *  kwnames[] = {
-    (char *) "n", NULL 
-  };
   SwigValueWrapper< Raster< float > > result;
   
-  if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"|O:float_raster_downscale_majority",kwnames,&obj1)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"O:float_raster_downscale_majority",&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_float_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "float_raster_downscale_majority" "', argument " "1"" of type '" "Raster< float > *""'"); 
   }
   arg1 = reinterpret_cast< Raster< float > * >(argp1);
-  if (obj1) {
-    ecode2 = SWIG_AsVal_int(obj1, &val2);
-    if (!SWIG_IsOK(ecode2)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "float_raster_downscale_majority" "', argument " "2"" of type '" "int""'");
-    } 
-    arg2 = static_cast< int >(val2);
-  }
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "float_raster_downscale_majority" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
   {
     try {
       result = (arg1)->downscale_majority(arg2);
@@ -13515,33 +14733,105 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_float_raster_downscale_stdev(PyObject *self, PyObject *args, PyObject *kwargs) {
+SWIGINTERN PyObject *_wrap_float_raster_downscale_majority__SWIG_1(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   Raster< float > *arg1 = (Raster< float > *) 0 ;
-  int arg2 = (int) 3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  SwigValueWrapper< Raster< float > > result;
+  
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_float_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "float_raster_downscale_majority" "', argument " "1"" of type '" "Raster< float > *""'"); 
+  }
+  arg1 = reinterpret_cast< Raster< float > * >(argp1);
+  {
+    try {
+      result = (arg1)->downscale_majority();
+    } 
+    catch (std::runtime_error& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what() );
+    }
+    catch (std::exception& e) {
+      SWIG_exception(SWIG_UnknownError, e.what());
+    }
+  }
+  resultobj = SWIG_NewPointerObj((new Raster< float >(static_cast< const Raster< float >& >(result))), SWIGTYPE_p_RasterT_float_t, SWIG_POINTER_OWN |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_float_raster_downscale_majority(PyObject *self, PyObject *args) {
+  int argc;
+  PyObject *argv[3];
+  int ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? (int)PyObject_Length(args) : 0;
+  argv[0] = self;
+  for (ii = 0; (ii < 1) && (ii < argc); ii++) {
+    argv[ii + 1] = PyTuple_GET_ITEM(args,ii);
+  }
+  argc++;
+  if (argc == 1) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_float_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_float_raster_downscale_majority__SWIG_1(self, args);
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_float_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        int res = SWIG_AsVal_int(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        return _wrap_float_raster_downscale_majority__SWIG_0(self, args);
+      }
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'float_raster_downscale_majority'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    Raster< float >::downscale_majority(int)\n"
+    "    Raster< float >::downscale_majority()\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_float_raster_downscale_stdev__SWIG_0(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  Raster< float > *arg1 = (Raster< float > *) 0 ;
+  int arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int val2 ;
   int ecode2 = 0 ;
   PyObject * obj1 = 0 ;
-  char *  kwnames[] = {
-    (char *) "n", NULL 
-  };
   SwigValueWrapper< Raster< float > > result;
   
-  if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"|O:float_raster_downscale_stdev",kwnames,&obj1)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"O:float_raster_downscale_stdev",&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_float_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "float_raster_downscale_stdev" "', argument " "1"" of type '" "Raster< float > *""'"); 
   }
   arg1 = reinterpret_cast< Raster< float > * >(argp1);
-  if (obj1) {
-    ecode2 = SWIG_AsVal_int(obj1, &val2);
-    if (!SWIG_IsOK(ecode2)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "float_raster_downscale_stdev" "', argument " "2"" of type '" "int""'");
-    } 
-    arg2 = static_cast< int >(val2);
-  }
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "float_raster_downscale_stdev" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
   {
     try {
       result = (arg1)->downscale_stdev(arg2);
@@ -13560,33 +14850,105 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_float_raster_downscale_mean_difference(PyObject *self, PyObject *args, PyObject *kwargs) {
+SWIGINTERN PyObject *_wrap_float_raster_downscale_stdev__SWIG_1(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   Raster< float > *arg1 = (Raster< float > *) 0 ;
-  int arg2 = (int) 3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  SwigValueWrapper< Raster< float > > result;
+  
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_float_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "float_raster_downscale_stdev" "', argument " "1"" of type '" "Raster< float > *""'"); 
+  }
+  arg1 = reinterpret_cast< Raster< float > * >(argp1);
+  {
+    try {
+      result = (arg1)->downscale_stdev();
+    } 
+    catch (std::runtime_error& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what() );
+    }
+    catch (std::exception& e) {
+      SWIG_exception(SWIG_UnknownError, e.what());
+    }
+  }
+  resultobj = SWIG_NewPointerObj((new Raster< float >(static_cast< const Raster< float >& >(result))), SWIGTYPE_p_RasterT_float_t, SWIG_POINTER_OWN |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_float_raster_downscale_stdev(PyObject *self, PyObject *args) {
+  int argc;
+  PyObject *argv[3];
+  int ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? (int)PyObject_Length(args) : 0;
+  argv[0] = self;
+  for (ii = 0; (ii < 1) && (ii < argc); ii++) {
+    argv[ii + 1] = PyTuple_GET_ITEM(args,ii);
+  }
+  argc++;
+  if (argc == 1) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_float_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_float_raster_downscale_stdev__SWIG_1(self, args);
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_float_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        int res = SWIG_AsVal_int(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        return _wrap_float_raster_downscale_stdev__SWIG_0(self, args);
+      }
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'float_raster_downscale_stdev'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    Raster< float >::downscale_stdev(int)\n"
+    "    Raster< float >::downscale_stdev()\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_float_raster_downscale_mean_difference__SWIG_0(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  Raster< float > *arg1 = (Raster< float > *) 0 ;
+  int arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int val2 ;
   int ecode2 = 0 ;
   PyObject * obj1 = 0 ;
-  char *  kwnames[] = {
-    (char *) "n", NULL 
-  };
   SwigValueWrapper< Raster< float > > result;
   
-  if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"|O:float_raster_downscale_mean_difference",kwnames,&obj1)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"O:float_raster_downscale_mean_difference",&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_float_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "float_raster_downscale_mean_difference" "', argument " "1"" of type '" "Raster< float > *""'"); 
   }
   arg1 = reinterpret_cast< Raster< float > * >(argp1);
-  if (obj1) {
-    ecode2 = SWIG_AsVal_int(obj1, &val2);
-    if (!SWIG_IsOK(ecode2)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "float_raster_downscale_mean_difference" "', argument " "2"" of type '" "int""'");
-    } 
-    arg2 = static_cast< int >(val2);
-  }
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "float_raster_downscale_mean_difference" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
   {
     try {
       result = (arg1)->downscale_mean_difference(arg2);
@@ -13605,15 +14967,91 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_float_raster_downscale_mean_difference__SWIG_1(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  Raster< float > *arg1 = (Raster< float > *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  SwigValueWrapper< Raster< float > > result;
+  
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_float_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "float_raster_downscale_mean_difference" "', argument " "1"" of type '" "Raster< float > *""'"); 
+  }
+  arg1 = reinterpret_cast< Raster< float > * >(argp1);
+  {
+    try {
+      result = (arg1)->downscale_mean_difference();
+    } 
+    catch (std::runtime_error& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what() );
+    }
+    catch (std::exception& e) {
+      SWIG_exception(SWIG_UnknownError, e.what());
+    }
+  }
+  resultobj = SWIG_NewPointerObj((new Raster< float >(static_cast< const Raster< float >& >(result))), SWIGTYPE_p_RasterT_float_t, SWIG_POINTER_OWN |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_float_raster_downscale_mean_difference(PyObject *self, PyObject *args) {
+  int argc;
+  PyObject *argv[3];
+  int ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? (int)PyObject_Length(args) : 0;
+  argv[0] = self;
+  for (ii = 0; (ii < 1) && (ii < argc); ii++) {
+    argv[ii + 1] = PyTuple_GET_ITEM(args,ii);
+  }
+  argc++;
+  if (argc == 1) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_float_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_float_raster_downscale_mean_difference__SWIG_1(self, args);
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_float_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        int res = SWIG_AsVal_int(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        return _wrap_float_raster_downscale_mean_difference__SWIG_0(self, args);
+      }
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'float_raster_downscale_mean_difference'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    Raster< float >::downscale_mean_difference(int)\n"
+    "    Raster< float >::downscale_mean_difference()\n");
+  return 0;
+}
+
+
 SWIGINTERN PyObject *_wrap_float_raster_clone(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   Raster< float > *arg1 = (Raster< float > *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[1] ;
   SwigValueWrapper< Raster< float > > result;
   
-  if (!SWIG_Python_UnpackTuple(args,"float_raster_clone",0,0,0)) SWIG_fail;
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_float_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "float_raster_clone" "', argument " "1"" of type '" "Raster< float > const *""'"); 
@@ -13637,7 +15075,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_float_raster_GetData__SWIG_2(PyObject *self, int nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_float_raster_GetData__SWIG_2(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   Raster< float > *arg1 = (Raster< float > *) 0 ;
   std::vector< double > arg2 ;
@@ -13648,16 +15086,18 @@ SWIGINTERN PyObject *_wrap_float_raster_GetData__SWIG_2(PyObject *self, int nobj
   int res2 = 0 ;
   void *argp3 ;
   int res3 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
   std::vector< float > result;
   
-  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"OO:float_raster_GetData",&obj1,&obj2)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_float_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "float_raster_GetData" "', argument " "1"" of type '" "Raster< float > *""'"); 
   }
   arg1 = reinterpret_cast< Raster< float > * >(argp1);
   {
-    res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_std__vectorT_double_t,  0  | 0);
+    res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_std__vectorT_double_t,  0  | 0);
     if (!SWIG_IsOK(res2)) {
       SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "float_raster_GetData" "', argument " "2"" of type '" "std::vector< double >""'"); 
     }  
@@ -13670,7 +15110,7 @@ SWIGINTERN PyObject *_wrap_float_raster_GetData__SWIG_2(PyObject *self, int nobj
     }
   }
   {
-    res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_std__vectorT_double_t,  0  | 0);
+    res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_std__vectorT_double_t,  0  | 0);
     if (!SWIG_IsOK(res3)) {
       SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "float_raster_GetData" "', argument " "3"" of type '" "std::vector< double >""'"); 
     }  
@@ -13703,139 +15143,72 @@ fail:
 SWIGINTERN PyObject *_wrap_float_raster_GetData(PyObject *self, PyObject *args) {
   int argc;
   PyObject *argv[4];
+  int ii;
   
-  if (!(argc = SWIG_Python_UnpackTuple(args,"float_raster_GetData",0,3,argv+1))) SWIG_fail;
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? (int)PyObject_Length(args) : 0;
   argv[0] = self;
-  {
-    unsigned long _index = 0;
-    SWIG_TypeRank _rank = 0; 
-    if (argc == 3) {
-      SWIG_TypeRank _ranki = 0;
-      SWIG_TypeRank _rankm = 0;
-      SWIG_TypeRank _pi = 1;
-      int _v = 0;
-      {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_float_t, 0);
-        _v = SWIG_CheckState(res);
-      }
-      if (!_v) goto check_1;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      {
-        int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_std__vectorT_double_t, 0);
-        _v = SWIG_CheckState(res);
-      }
-      if (!_v) goto check_1;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      {
+  for (ii = 0; (ii < 2) && (ii < argc); ii++) {
+    argv[ii + 1] = PyTuple_GET_ITEM(args,ii);
+  }
+  argc++;
+  if (argc == 3) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_float_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_std__vectorT_double_t, 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
         int res = SWIG_ConvertPtr(argv[2], 0, SWIGTYPE_p_std__vectorT_double_t, 0);
         _v = SWIG_CheckState(res);
-      }
-      if (!_v) goto check_1;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      if (!_index || (_ranki < _rank)) {
-        _rank = _ranki; _index = 1;
-        if (_rank == _rankm) goto dispatch;
-      }
-    }
-  check_1:
-    
-    if (argc == 3) {
-      SWIG_TypeRank _ranki = 0;
-      SWIG_TypeRank _rankm = 0;
-      SWIG_TypeRank _pi = 1;
-      int _v = 0;
-      {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_float_t, 0);
-        _v = SWIG_CheckState(res);
-      }
-      if (!_v) goto check_2;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      {
-        {
-          int res = SWIG_AsVal_int(argv[1], NULL);
-          _v = SWIG_CheckState(res);
+        if (_v) {
+          return _wrap_float_raster_GetData__SWIG_2(self, args);
         }
       }
-      if (!_v) goto check_2;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
+    }
+  }
+  if (argc == 3) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_float_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
       {
+        int res = SWIG_AsVal_int(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
         {
           int res = SWIG_AsVal_int(argv[2], NULL);
           _v = SWIG_CheckState(res);
         }
-      }
-      if (!_v) goto check_2;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      if (!_index || (_ranki < _rank)) {
-        _rank = _ranki; _index = 2;
-        if (_rank == _rankm) goto dispatch;
-      }
-    }
-  check_2:
-    
-    if (argc == 3) {
-      SWIG_TypeRank _ranki = 0;
-      SWIG_TypeRank _rankm = 0;
-      SWIG_TypeRank _pi = 1;
-      int _v = 0;
-      {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_float_t, 0);
-        _v = SWIG_CheckState(res);
-      }
-      if (!_v) goto check_3;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      {
-        {
-          int res = SWIG_AsVal_double(argv[1], NULL);
-          _v = SWIG_CheckState(res);
+        if (_v) {
+          return _wrap_float_raster_GetData__SWIG_1(self, args);
         }
       }
-      if (!_v) goto check_3;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
+    }
+  }
+  if (argc == 3) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_float_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
       {
+        int res = SWIG_AsVal_double(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
         {
           int res = SWIG_AsVal_double(argv[2], NULL);
           _v = SWIG_CheckState(res);
         }
+        if (_v) {
+          return _wrap_float_raster_GetData__SWIG_0(self, args);
+        }
       }
-      if (!_v) goto check_3;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      if (!_index || (_ranki < _rank)) {
-        _rank = _ranki; _index = 3;
-        if (_rank == _rankm) goto dispatch;
-      }
-    }
-  check_3:
-    
-  dispatch:
-    switch(_index) {
-    case 1:
-      return _wrap_float_raster_GetData__SWIG_2(self, argc, argv);
-    case 2:
-      return _wrap_float_raster_GetData__SWIG_1(self, argc, argv);
-    case 3:
-      return _wrap_float_raster_GetData__SWIG_0(self, argc, argv);
     }
   }
   
@@ -13854,10 +15227,9 @@ SWIGINTERN PyObject *_wrap_float_raster_ToBuffer(PyObject *self, PyObject *args)
   Raster< float > *arg1 = (Raster< float > *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[1] ;
   std::string result;
   
-  if (!SWIG_Python_UnpackTuple(args,"float_raster_ToBuffer",0,0,0)) SWIG_fail;
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_float_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "float_raster_ToBuffer" "', argument " "1"" of type '" "Raster< float > const *""'"); 
@@ -13881,7 +15253,136 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_float_raster___radd__(PyObject *self, PyObject *args, PyObject *kwargs) {
+SWIGINTERN PyObject *_wrap_float_raster_load__SWIG_0(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  std::string *arg1 = 0 ;
+  bool arg2 ;
+  int res1 = SWIG_OLDOBJ ;
+  bool val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  SwigValueWrapper< Raster< float > > result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:float_raster_load",&obj0,&obj1)) SWIG_fail;
+  {
+    std::string *ptr = (std::string *)0;
+    res1 = SWIG_AsPtr_std_string(obj0, &ptr);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "float_raster_load" "', argument " "1"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "float_raster_load" "', argument " "1"" of type '" "std::string const &""'"); 
+    }
+    arg1 = ptr;
+  }
+  ecode2 = SWIG_AsVal_bool(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "float_raster_load" "', argument " "2"" of type '" "bool""'");
+  } 
+  arg2 = static_cast< bool >(val2);
+  {
+    try {
+      result = Raster< float >::SWIGTEMPLATEDISAMBIGUATOR load((std::string const &)*arg1,arg2);
+    } 
+    catch (std::runtime_error& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what() );
+    }
+    catch (std::exception& e) {
+      SWIG_exception(SWIG_UnknownError, e.what());
+    }
+  }
+  resultobj = SWIG_NewPointerObj((new Raster< float >(static_cast< const Raster< float >& >(result))), SWIGTYPE_p_RasterT_float_t, SWIG_POINTER_OWN |  0 );
+  if (SWIG_IsNewObj(res1)) delete arg1;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res1)) delete arg1;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_float_raster_load__SWIG_1(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  std::string *arg1 = 0 ;
+  int res1 = SWIG_OLDOBJ ;
+  PyObject * obj0 = 0 ;
+  SwigValueWrapper< Raster< float > > result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:float_raster_load",&obj0)) SWIG_fail;
+  {
+    std::string *ptr = (std::string *)0;
+    res1 = SWIG_AsPtr_std_string(obj0, &ptr);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "float_raster_load" "', argument " "1"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "float_raster_load" "', argument " "1"" of type '" "std::string const &""'"); 
+    }
+    arg1 = ptr;
+  }
+  {
+    try {
+      result = Raster< float >::SWIGTEMPLATEDISAMBIGUATOR load((std::string const &)*arg1);
+    } 
+    catch (std::runtime_error& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what() );
+    }
+    catch (std::exception& e) {
+      SWIG_exception(SWIG_UnknownError, e.what());
+    }
+  }
+  resultobj = SWIG_NewPointerObj((new Raster< float >(static_cast< const Raster< float >& >(result))), SWIGTYPE_p_RasterT_float_t, SWIG_POINTER_OWN |  0 );
+  if (SWIG_IsNewObj(res1)) delete arg1;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res1)) delete arg1;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_float_raster_load(PyObject *self, PyObject *args) {
+  int argc;
+  PyObject *argv[3];
+  int ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? (int)PyObject_Length(args) : 0;
+  for (ii = 0; (ii < 2) && (ii < argc); ii++) {
+    argv[ii] = PyTuple_GET_ITEM(args,ii);
+  }
+  if (argc == 1) {
+    int _v;
+    int res = SWIG_AsPtr_std_string(argv[0], (std::string**)(0));
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_float_raster_load__SWIG_1(self, args);
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    int res = SWIG_AsPtr_std_string(argv[0], (std::string**)(0));
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        int res = SWIG_AsVal_bool(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        return _wrap_float_raster_load__SWIG_0(self, args);
+      }
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'float_raster_load'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    Raster< float >::load(std::string const &,bool)\n"
+    "    Raster< float >::load(std::string const &)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_float_raster___radd__(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   Raster< float > *arg1 = (Raster< float > *) 0 ;
   float *arg2 = 0 ;
@@ -13891,12 +15392,9 @@ SWIGINTERN PyObject *_wrap_float_raster___radd__(PyObject *self, PyObject *args,
   float val2 ;
   int ecode2 = 0 ;
   PyObject * obj1 = 0 ;
-  char *  kwnames[] = {
-    (char *) "other", NULL 
-  };
   SwigValueWrapper< Raster< float > > result;
   
-  if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"O:float_raster___radd__",kwnames,&obj1)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"O:float_raster___radd__",&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_float_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "float_raster___radd__" "', argument " "1"" of type '" "Raster< float > *""'"); 
@@ -13926,7 +15424,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_float_raster___rsub__(PyObject *self, PyObject *args, PyObject *kwargs) {
+SWIGINTERN PyObject *_wrap_float_raster___rsub__(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   Raster< float > *arg1 = (Raster< float > *) 0 ;
   float *arg2 = 0 ;
@@ -13936,12 +15434,9 @@ SWIGINTERN PyObject *_wrap_float_raster___rsub__(PyObject *self, PyObject *args,
   float val2 ;
   int ecode2 = 0 ;
   PyObject * obj1 = 0 ;
-  char *  kwnames[] = {
-    (char *) "other", NULL 
-  };
   SwigValueWrapper< Raster< float > > result;
   
-  if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"O:float_raster___rsub__",kwnames,&obj1)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"O:float_raster___rsub__",&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_float_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "float_raster___rsub__" "', argument " "1"" of type '" "Raster< float > *""'"); 
@@ -13971,7 +15466,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_float_raster___rmul__(PyObject *self, PyObject *args, PyObject *kwargs) {
+SWIGINTERN PyObject *_wrap_float_raster___rmul__(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   Raster< float > *arg1 = (Raster< float > *) 0 ;
   float *arg2 = 0 ;
@@ -13981,12 +15476,9 @@ SWIGINTERN PyObject *_wrap_float_raster___rmul__(PyObject *self, PyObject *args,
   float val2 ;
   int ecode2 = 0 ;
   PyObject * obj1 = 0 ;
-  char *  kwnames[] = {
-    (char *) "other", NULL 
-  };
   SwigValueWrapper< Raster< float > > result;
   
-  if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"O:float_raster___rmul__",kwnames,&obj1)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"O:float_raster___rmul__",&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_float_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "float_raster___rmul__" "', argument " "1"" of type '" "Raster< float > *""'"); 
@@ -14016,7 +15508,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_float_raster___rdiv__(PyObject *self, PyObject *args, PyObject *kwargs) {
+SWIGINTERN PyObject *_wrap_float_raster___rdiv__(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   Raster< float > *arg1 = (Raster< float > *) 0 ;
   float *arg2 = 0 ;
@@ -14026,12 +15518,9 @@ SWIGINTERN PyObject *_wrap_float_raster___rdiv__(PyObject *self, PyObject *args,
   float val2 ;
   int ecode2 = 0 ;
   PyObject * obj1 = 0 ;
-  char *  kwnames[] = {
-    (char *) "other", NULL 
-  };
   SwigValueWrapper< Raster< float > > result;
   
-  if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"O:float_raster___rdiv__",kwnames,&obj1)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"O:float_raster___rdiv__",&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_float_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "float_raster___rdiv__" "', argument " "1"" of type '" "Raster< float > *""'"); 
@@ -14066,9 +15555,8 @@ SWIGINTERN PyObject *_wrap_delete_float_raster(PyObject *self, PyObject *args) {
   Raster< float > *arg1 = (Raster< float > *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[1] ;
   
-  if (!SWIG_Python_UnpackTuple(args,"delete_float_raster",0,0,0)) SWIG_fail;
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_float_t, SWIG_POINTER_DISOWN |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_float_raster" "', argument " "1"" of type '" "Raster< float > *""'"); 
@@ -14097,10 +15585,9 @@ SWIGINTERN PyObject *_wrap_int_raster_Xllcorner(PyObject *self, PyObject *args) 
   Raster< int > *arg1 = (Raster< int > *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[1] ;
   double result;
   
-  if (!SWIG_Python_UnpackTuple(args,"int_raster_Xllcorner",0,0,0)) SWIG_fail;
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_int_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "int_raster_Xllcorner" "', argument " "1"" of type '" "Raster< int > const *""'"); 
@@ -14129,10 +15616,9 @@ SWIGINTERN PyObject *_wrap_int_raster_Yllcorner(PyObject *self, PyObject *args) 
   Raster< int > *arg1 = (Raster< int > *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[1] ;
   double result;
   
-  if (!SWIG_Python_UnpackTuple(args,"int_raster_Yllcorner",0,0,0)) SWIG_fail;
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_int_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "int_raster_Yllcorner" "', argument " "1"" of type '" "Raster< int > const *""'"); 
@@ -14161,10 +15647,9 @@ SWIGINTERN PyObject *_wrap_int_raster_XCellsize(PyObject *self, PyObject *args) 
   Raster< int > *arg1 = (Raster< int > *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[1] ;
   double result;
   
-  if (!SWIG_Python_UnpackTuple(args,"int_raster_XCellsize",0,0,0)) SWIG_fail;
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_int_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "int_raster_XCellsize" "', argument " "1"" of type '" "Raster< int > const *""'"); 
@@ -14193,10 +15678,9 @@ SWIGINTERN PyObject *_wrap_int_raster_YCellsize(PyObject *self, PyObject *args) 
   Raster< int > *arg1 = (Raster< int > *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[1] ;
   double result;
   
-  if (!SWIG_Python_UnpackTuple(args,"int_raster_YCellsize",0,0,0)) SWIG_fail;
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_int_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "int_raster_YCellsize" "', argument " "1"" of type '" "Raster< int > const *""'"); 
@@ -14225,10 +15709,9 @@ SWIGINTERN PyObject *_wrap_int_raster_ColumnCount(PyObject *self, PyObject *args
   Raster< int > *arg1 = (Raster< int > *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[1] ;
   int result;
   
-  if (!SWIG_Python_UnpackTuple(args,"int_raster_ColumnCount",0,0,0)) SWIG_fail;
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_int_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "int_raster_ColumnCount" "', argument " "1"" of type '" "Raster< int > const *""'"); 
@@ -14257,10 +15740,9 @@ SWIGINTERN PyObject *_wrap_int_raster_RowCount(PyObject *self, PyObject *args) {
   Raster< int > *arg1 = (Raster< int > *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[1] ;
   int result;
   
-  if (!SWIG_Python_UnpackTuple(args,"int_raster_RowCount",0,0,0)) SWIG_fail;
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_int_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "int_raster_RowCount" "', argument " "1"" of type '" "Raster< int > const *""'"); 
@@ -14289,10 +15771,9 @@ SWIGINTERN PyObject *_wrap_int_raster_Width(PyObject *self, PyObject *args) {
   Raster< int > *arg1 = (Raster< int > *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[1] ;
   double result;
   
-  if (!SWIG_Python_UnpackTuple(args,"int_raster_Width",0,0,0)) SWIG_fail;
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_int_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "int_raster_Width" "', argument " "1"" of type '" "Raster< int > const *""'"); 
@@ -14321,10 +15802,9 @@ SWIGINTERN PyObject *_wrap_int_raster_Height(PyObject *self, PyObject *args) {
   Raster< int > *arg1 = (Raster< int > *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[1] ;
   double result;
   
-  if (!SWIG_Python_UnpackTuple(args,"int_raster_Height",0,0,0)) SWIG_fail;
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_int_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "int_raster_Height" "', argument " "1"" of type '" "Raster< int > const *""'"); 
@@ -14353,10 +15833,9 @@ SWIGINTERN PyObject *_wrap_int_raster_NoData(PyObject *self, PyObject *args) {
   Raster< int > *arg1 = (Raster< int > *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[1] ;
   int result;
   
-  if (!SWIG_Python_UnpackTuple(args,"int_raster_NoData",0,0,0)) SWIG_fail;
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_int_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "int_raster_NoData" "', argument " "1"" of type '" "Raster< int > const *""'"); 
@@ -14380,7 +15859,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_int_raster_GetData__SWIG_0(PyObject *self, int nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_int_raster_GetData__SWIG_0(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   Raster< int > *arg1 = (Raster< int > *) 0 ;
   double arg2 ;
@@ -14391,20 +15870,22 @@ SWIGINTERN PyObject *_wrap_int_raster_GetData__SWIG_0(PyObject *self, int nobjs,
   int ecode2 = 0 ;
   double val3 ;
   int ecode3 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
   int result;
   
-  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"OO:int_raster_GetData",&obj1,&obj2)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_int_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "int_raster_GetData" "', argument " "1"" of type '" "Raster< int > const *""'"); 
   }
   arg1 = reinterpret_cast< Raster< int > * >(argp1);
-  ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
+  ecode2 = SWIG_AsVal_double(obj1, &val2);
   if (!SWIG_IsOK(ecode2)) {
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "int_raster_GetData" "', argument " "2"" of type '" "double""'");
   } 
   arg2 = static_cast< double >(val2);
-  ecode3 = SWIG_AsVal_double(swig_obj[2], &val3);
+  ecode3 = SWIG_AsVal_double(obj2, &val3);
   if (!SWIG_IsOK(ecode3)) {
     SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "int_raster_GetData" "', argument " "3"" of type '" "double""'");
   } 
@@ -14427,7 +15908,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_int_raster_GetData__SWIG_1(PyObject *self, int nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_int_raster_GetData__SWIG_1(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   Raster< int > *arg1 = (Raster< int > *) 0 ;
   int arg2 ;
@@ -14438,20 +15919,22 @@ SWIGINTERN PyObject *_wrap_int_raster_GetData__SWIG_1(PyObject *self, int nobjs,
   int ecode2 = 0 ;
   int val3 ;
   int ecode3 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
   int result;
   
-  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"OO:int_raster_GetData",&obj1,&obj2)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_int_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "int_raster_GetData" "', argument " "1"" of type '" "Raster< int > const *""'"); 
   }
   arg1 = reinterpret_cast< Raster< int > * >(argp1);
-  ecode2 = SWIG_AsVal_int(swig_obj[1], &val2);
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
   if (!SWIG_IsOK(ecode2)) {
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "int_raster_GetData" "', argument " "2"" of type '" "int""'");
   } 
   arg2 = static_cast< int >(val2);
-  ecode3 = SWIG_AsVal_int(swig_obj[2], &val3);
+  ecode3 = SWIG_AsVal_int(obj2, &val3);
   if (!SWIG_IsOK(ecode3)) {
     SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "int_raster_GetData" "', argument " "3"" of type '" "int""'");
   } 
@@ -14474,7 +15957,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_int_raster_HasData__SWIG_0(PyObject *self, int nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_int_raster_HasData__SWIG_0(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   Raster< int > *arg1 = (Raster< int > *) 0 ;
   double arg2 ;
@@ -14485,20 +15968,22 @@ SWIGINTERN PyObject *_wrap_int_raster_HasData__SWIG_0(PyObject *self, int nobjs,
   int ecode2 = 0 ;
   double val3 ;
   int ecode3 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
   bool result;
   
-  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"OO:int_raster_HasData",&obj1,&obj2)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_int_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "int_raster_HasData" "', argument " "1"" of type '" "Raster< int > const *""'"); 
   }
   arg1 = reinterpret_cast< Raster< int > * >(argp1);
-  ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
+  ecode2 = SWIG_AsVal_double(obj1, &val2);
   if (!SWIG_IsOK(ecode2)) {
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "int_raster_HasData" "', argument " "2"" of type '" "double""'");
   } 
   arg2 = static_cast< double >(val2);
-  ecode3 = SWIG_AsVal_double(swig_obj[2], &val3);
+  ecode3 = SWIG_AsVal_double(obj2, &val3);
   if (!SWIG_IsOK(ecode3)) {
     SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "int_raster_HasData" "', argument " "3"" of type '" "double""'");
   } 
@@ -14521,7 +16006,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_int_raster_HasData__SWIG_1(PyObject *self, int nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_int_raster_HasData__SWIG_1(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   Raster< int > *arg1 = (Raster< int > *) 0 ;
   int arg2 ;
@@ -14532,20 +16017,22 @@ SWIGINTERN PyObject *_wrap_int_raster_HasData__SWIG_1(PyObject *self, int nobjs,
   int ecode2 = 0 ;
   int val3 ;
   int ecode3 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
   bool result;
   
-  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"OO:int_raster_HasData",&obj1,&obj2)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_int_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "int_raster_HasData" "', argument " "1"" of type '" "Raster< int > const *""'"); 
   }
   arg1 = reinterpret_cast< Raster< int > * >(argp1);
-  ecode2 = SWIG_AsVal_int(swig_obj[1], &val2);
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
   if (!SWIG_IsOK(ecode2)) {
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "int_raster_HasData" "', argument " "2"" of type '" "int""'");
   } 
   arg2 = static_cast< int >(val2);
-  ecode3 = SWIG_AsVal_int(swig_obj[2], &val3);
+  ecode3 = SWIG_AsVal_int(obj2, &val3);
   if (!SWIG_IsOK(ecode3)) {
     SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "int_raster_HasData" "', argument " "3"" of type '" "int""'");
   } 
@@ -14568,14 +16055,14 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_int_raster_HasData__SWIG_2(PyObject *self, int nobjs, PyObject **SWIGUNUSEDPARM(swig_obj)) {
+SWIGINTERN PyObject *_wrap_int_raster_HasData__SWIG_2(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   Raster< int > *arg1 = (Raster< int > *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   SwigValueWrapper< Raster< int > > result;
   
-  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_int_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "int_raster_HasData" "', argument " "1"" of type '" "Raster< int > const *""'"); 
@@ -14602,123 +16089,64 @@ fail:
 SWIGINTERN PyObject *_wrap_int_raster_HasData(PyObject *self, PyObject *args) {
   int argc;
   PyObject *argv[4];
+  int ii;
   
-  if (!(argc = SWIG_Python_UnpackTuple(args,"int_raster_HasData",0,3,argv+1))) SWIG_fail;
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? (int)PyObject_Length(args) : 0;
   argv[0] = self;
-  {
-    unsigned long _index = 0;
-    SWIG_TypeRank _rank = 0; 
-    if (argc == 1) {
-      SWIG_TypeRank _ranki = 0;
-      SWIG_TypeRank _rankm = 0;
-      SWIG_TypeRank _pi = 1;
-      int _v = 0;
-      {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_int_t, 0);
-        _v = SWIG_CheckState(res);
-      }
-      if (!_v) goto check_1;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      if (!_index || (_ranki < _rank)) {
-        _rank = _ranki; _index = 1;
-        if (_rank == _rankm) goto dispatch;
-      }
+  for (ii = 0; (ii < 2) && (ii < argc); ii++) {
+    argv[ii + 1] = PyTuple_GET_ITEM(args,ii);
+  }
+  argc++;
+  if (argc == 1) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_int_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_int_raster_HasData__SWIG_2(self, args);
     }
-  check_1:
-    
-    if (argc == 3) {
-      SWIG_TypeRank _ranki = 0;
-      SWIG_TypeRank _rankm = 0;
-      SWIG_TypeRank _pi = 1;
-      int _v = 0;
+  }
+  if (argc == 3) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_int_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
       {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_int_t, 0);
+        int res = SWIG_AsVal_int(argv[1], NULL);
         _v = SWIG_CheckState(res);
       }
-      if (!_v) goto check_2;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      {
-        {
-          int res = SWIG_AsVal_int(argv[1], NULL);
-          _v = SWIG_CheckState(res);
-        }
-      }
-      if (!_v) goto check_2;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      {
+      if (_v) {
         {
           int res = SWIG_AsVal_int(argv[2], NULL);
           _v = SWIG_CheckState(res);
         }
-      }
-      if (!_v) goto check_2;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      if (!_index || (_ranki < _rank)) {
-        _rank = _ranki; _index = 2;
-        if (_rank == _rankm) goto dispatch;
-      }
-    }
-  check_2:
-    
-    if (argc == 3) {
-      SWIG_TypeRank _ranki = 0;
-      SWIG_TypeRank _rankm = 0;
-      SWIG_TypeRank _pi = 1;
-      int _v = 0;
-      {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_int_t, 0);
-        _v = SWIG_CheckState(res);
-      }
-      if (!_v) goto check_3;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      {
-        {
-          int res = SWIG_AsVal_double(argv[1], NULL);
-          _v = SWIG_CheckState(res);
+        if (_v) {
+          return _wrap_int_raster_HasData__SWIG_1(self, args);
         }
       }
-      if (!_v) goto check_3;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
+    }
+  }
+  if (argc == 3) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_int_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
       {
+        int res = SWIG_AsVal_double(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
         {
           int res = SWIG_AsVal_double(argv[2], NULL);
           _v = SWIG_CheckState(res);
         }
+        if (_v) {
+          return _wrap_int_raster_HasData__SWIG_0(self, args);
+        }
       }
-      if (!_v) goto check_3;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      if (!_index || (_ranki < _rank)) {
-        _rank = _ranki; _index = 3;
-        if (_rank == _rankm) goto dispatch;
-      }
-    }
-  check_3:
-    
-  dispatch:
-    switch(_index) {
-    case 1:
-      return _wrap_int_raster_HasData__SWIG_2(self, argc, argv);
-    case 2:
-      return _wrap_int_raster_HasData__SWIG_1(self, argc, argv);
-    case 3:
-      return _wrap_int_raster_HasData__SWIG_0(self, argc, argv);
     }
   }
   
@@ -14732,7 +16160,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_int_raster_SetData__SWIG_0(PyObject *self, int nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_int_raster_SetData__SWIG_0(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   Raster< int > *arg1 = (Raster< int > *) 0 ;
   double arg2 ;
@@ -14746,24 +16174,27 @@ SWIGINTERN PyObject *_wrap_int_raster_SetData__SWIG_0(PyObject *self, int nobjs,
   int ecode3 = 0 ;
   int val4 ;
   int ecode4 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
   
-  if ((nobjs < 4) || (nobjs > 4)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"OOO:int_raster_SetData",&obj1,&obj2,&obj3)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_int_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "int_raster_SetData" "', argument " "1"" of type '" "Raster< int > *""'"); 
   }
   arg1 = reinterpret_cast< Raster< int > * >(argp1);
-  ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
+  ecode2 = SWIG_AsVal_double(obj1, &val2);
   if (!SWIG_IsOK(ecode2)) {
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "int_raster_SetData" "', argument " "2"" of type '" "double""'");
   } 
   arg2 = static_cast< double >(val2);
-  ecode3 = SWIG_AsVal_double(swig_obj[2], &val3);
+  ecode3 = SWIG_AsVal_double(obj2, &val3);
   if (!SWIG_IsOK(ecode3)) {
     SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "int_raster_SetData" "', argument " "3"" of type '" "double""'");
   } 
   arg3 = static_cast< double >(val3);
-  ecode4 = SWIG_AsVal_int(swig_obj[3], &val4);
+  ecode4 = SWIG_AsVal_int(obj3, &val4);
   if (!SWIG_IsOK(ecode4)) {
     SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "int_raster_SetData" "', argument " "4"" of type '" "int""'");
   } 
@@ -14786,7 +16217,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_int_raster_SetData__SWIG_1(PyObject *self, int nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_int_raster_SetData__SWIG_1(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   Raster< int > *arg1 = (Raster< int > *) 0 ;
   int arg2 ;
@@ -14800,24 +16231,27 @@ SWIGINTERN PyObject *_wrap_int_raster_SetData__SWIG_1(PyObject *self, int nobjs,
   int ecode3 = 0 ;
   int val4 ;
   int ecode4 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
   
-  if ((nobjs < 4) || (nobjs > 4)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"OOO:int_raster_SetData",&obj1,&obj2,&obj3)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_int_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "int_raster_SetData" "', argument " "1"" of type '" "Raster< int > *""'"); 
   }
   arg1 = reinterpret_cast< Raster< int > * >(argp1);
-  ecode2 = SWIG_AsVal_int(swig_obj[1], &val2);
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
   if (!SWIG_IsOK(ecode2)) {
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "int_raster_SetData" "', argument " "2"" of type '" "int""'");
   } 
   arg2 = static_cast< int >(val2);
-  ecode3 = SWIG_AsVal_int(swig_obj[2], &val3);
+  ecode3 = SWIG_AsVal_int(obj2, &val3);
   if (!SWIG_IsOK(ecode3)) {
     SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "int_raster_SetData" "', argument " "3"" of type '" "int""'");
   } 
   arg3 = static_cast< int >(val3);
-  ecode4 = SWIG_AsVal_int(swig_obj[3], &val4);
+  ecode4 = SWIG_AsVal_int(obj3, &val4);
   if (!SWIG_IsOK(ecode4)) {
     SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "int_raster_SetData" "', argument " "4"" of type '" "int""'");
   } 
@@ -14843,120 +16277,67 @@ fail:
 SWIGINTERN PyObject *_wrap_int_raster_SetData(PyObject *self, PyObject *args) {
   int argc;
   PyObject *argv[5];
+  int ii;
   
-  if (!(argc = SWIG_Python_UnpackTuple(args,"int_raster_SetData",0,4,argv+1))) SWIG_fail;
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? (int)PyObject_Length(args) : 0;
   argv[0] = self;
-  {
-    unsigned long _index = 0;
-    SWIG_TypeRank _rank = 0; 
-    if (argc == 4) {
-      SWIG_TypeRank _ranki = 0;
-      SWIG_TypeRank _rankm = 0;
-      SWIG_TypeRank _pi = 1;
-      int _v = 0;
+  for (ii = 0; (ii < 3) && (ii < argc); ii++) {
+    argv[ii + 1] = PyTuple_GET_ITEM(args,ii);
+  }
+  argc++;
+  if (argc == 4) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_int_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
       {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_int_t, 0);
+        int res = SWIG_AsVal_int(argv[1], NULL);
         _v = SWIG_CheckState(res);
       }
-      if (!_v) goto check_1;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      {
-        {
-          int res = SWIG_AsVal_int(argv[1], NULL);
-          _v = SWIG_CheckState(res);
-        }
-      }
-      if (!_v) goto check_1;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      {
+      if (_v) {
         {
           int res = SWIG_AsVal_int(argv[2], NULL);
           _v = SWIG_CheckState(res);
         }
-      }
-      if (!_v) goto check_1;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      {
-        {
-          int res = SWIG_AsVal_int(argv[3], NULL);
-          _v = SWIG_CheckState(res);
+        if (_v) {
+          {
+            int res = SWIG_AsVal_int(argv[3], NULL);
+            _v = SWIG_CheckState(res);
+          }
+          if (_v) {
+            return _wrap_int_raster_SetData__SWIG_1(self, args);
+          }
         }
-      }
-      if (!_v) goto check_1;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      if (!_index || (_ranki < _rank)) {
-        _rank = _ranki; _index = 1;
-        if (_rank == _rankm) goto dispatch;
       }
     }
-  check_1:
-    
-    if (argc == 4) {
-      SWIG_TypeRank _ranki = 0;
-      SWIG_TypeRank _rankm = 0;
-      SWIG_TypeRank _pi = 1;
-      int _v = 0;
+  }
+  if (argc == 4) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_int_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
       {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_int_t, 0);
+        int res = SWIG_AsVal_double(argv[1], NULL);
         _v = SWIG_CheckState(res);
       }
-      if (!_v) goto check_2;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      {
-        {
-          int res = SWIG_AsVal_double(argv[1], NULL);
-          _v = SWIG_CheckState(res);
-        }
-      }
-      if (!_v) goto check_2;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      {
+      if (_v) {
         {
           int res = SWIG_AsVal_double(argv[2], NULL);
           _v = SWIG_CheckState(res);
         }
-      }
-      if (!_v) goto check_2;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      {
-        {
-          int res = SWIG_AsVal_int(argv[3], NULL);
-          _v = SWIG_CheckState(res);
+        if (_v) {
+          {
+            int res = SWIG_AsVal_int(argv[3], NULL);
+            _v = SWIG_CheckState(res);
+          }
+          if (_v) {
+            return _wrap_int_raster_SetData__SWIG_0(self, args);
+          }
         }
       }
-      if (!_v) goto check_2;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      if (!_index || (_ranki < _rank)) {
-        _rank = _ranki; _index = 2;
-        if (_rank == _rankm) goto dispatch;
-      }
-    }
-  check_2:
-    
-  dispatch:
-    switch(_index) {
-    case 1:
-      return _wrap_int_raster_SetData__SWIG_1(self, argc, argv);
-    case 2:
-      return _wrap_int_raster_SetData__SWIG_0(self, argc, argv);
     }
   }
   
@@ -14969,7 +16350,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_int_raster_GetXPosition(PyObject *self, PyObject *args, PyObject *kwargs) {
+SWIGINTERN PyObject *_wrap_int_raster_GetXPosition(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   Raster< int > *arg1 = (Raster< int > *) 0 ;
   int arg2 ;
@@ -14978,12 +16359,9 @@ SWIGINTERN PyObject *_wrap_int_raster_GetXPosition(PyObject *self, PyObject *arg
   int val2 ;
   int ecode2 = 0 ;
   PyObject * obj1 = 0 ;
-  char *  kwnames[] = {
-    (char *) "col", NULL 
-  };
   double result;
   
-  if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"O:int_raster_GetXPosition",kwnames,&obj1)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"O:int_raster_GetXPosition",&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_int_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "int_raster_GetXPosition" "', argument " "1"" of type '" "Raster< int > *""'"); 
@@ -15012,7 +16390,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_int_raster_GetYPosition(PyObject *self, PyObject *args, PyObject *kwargs) {
+SWIGINTERN PyObject *_wrap_int_raster_GetYPosition(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   Raster< int > *arg1 = (Raster< int > *) 0 ;
   int arg2 ;
@@ -15021,12 +16399,9 @@ SWIGINTERN PyObject *_wrap_int_raster_GetYPosition(PyObject *self, PyObject *arg
   int val2 ;
   int ecode2 = 0 ;
   PyObject * obj1 = 0 ;
-  char *  kwnames[] = {
-    (char *) "row", NULL 
-  };
   double result;
   
-  if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"O:int_raster_GetYPosition",kwnames,&obj1)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"O:int_raster_GetYPosition",&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_int_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "int_raster_GetYPosition" "', argument " "1"" of type '" "Raster< int > *""'"); 
@@ -15060,10 +16435,9 @@ SWIGINTERN PyObject *_wrap_int_raster_statistics(PyObject *self, PyObject *args)
   Raster< int > *arg1 = (Raster< int > *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[1] ;
   RasterStatistics result;
   
-  if (!SWIG_Python_UnpackTuple(args,"int_raster_statistics",0,0,0)) SWIG_fail;
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_int_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "int_raster_statistics" "', argument " "1"" of type '" "Raster< int > *""'"); 
@@ -15087,33 +16461,28 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_int_raster_histogram(PyObject *self, PyObject *args, PyObject *kwargs) {
+SWIGINTERN PyObject *_wrap_int_raster_histogram__SWIG_0(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   Raster< int > *arg1 = (Raster< int > *) 0 ;
-  size_t arg2 = (size_t) 100 ;
+  size_t arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   size_t val2 ;
   int ecode2 = 0 ;
   PyObject * obj1 = 0 ;
-  char *  kwnames[] = {
-    (char *) "bins", NULL 
-  };
   SwigValueWrapper< Histogram > result;
   
-  if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"|O:int_raster_histogram",kwnames,&obj1)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"O:int_raster_histogram",&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_int_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "int_raster_histogram" "', argument " "1"" of type '" "Raster< int > *""'"); 
   }
   arg1 = reinterpret_cast< Raster< int > * >(argp1);
-  if (obj1) {
-    ecode2 = SWIG_AsVal_size_t(obj1, &val2);
-    if (!SWIG_IsOK(ecode2)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "int_raster_histogram" "', argument " "2"" of type '" "size_t""'");
-    } 
-    arg2 = static_cast< size_t >(val2);
-  }
+  ecode2 = SWIG_AsVal_size_t(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "int_raster_histogram" "', argument " "2"" of type '" "size_t""'");
+  } 
+  arg2 = static_cast< size_t >(val2);
   {
     try {
       result = (arg1)->histogram(arg2);
@@ -15132,7 +16501,84 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_int_raster_clip(PyObject *self, PyObject *args, PyObject *kwargs) {
+SWIGINTERN PyObject *_wrap_int_raster_histogram__SWIG_1(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  Raster< int > *arg1 = (Raster< int > *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  SwigValueWrapper< Histogram > result;
+  
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_int_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "int_raster_histogram" "', argument " "1"" of type '" "Raster< int > *""'"); 
+  }
+  arg1 = reinterpret_cast< Raster< int > * >(argp1);
+  {
+    try {
+      result = (arg1)->histogram();
+    } 
+    catch (std::runtime_error& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what() );
+    }
+    catch (std::exception& e) {
+      SWIG_exception(SWIG_UnknownError, e.what());
+    }
+  }
+  resultobj = SWIG_NewPointerObj((new Histogram(static_cast< const Histogram& >(result))), SWIGTYPE_p_Histogram, SWIG_POINTER_OWN |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_int_raster_histogram(PyObject *self, PyObject *args) {
+  int argc;
+  PyObject *argv[3];
+  int ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? (int)PyObject_Length(args) : 0;
+  argv[0] = self;
+  for (ii = 0; (ii < 1) && (ii < argc); ii++) {
+    argv[ii + 1] = PyTuple_GET_ITEM(args,ii);
+  }
+  argc++;
+  if (argc == 1) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_int_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_int_raster_histogram__SWIG_1(self, args);
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_int_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        int res = SWIG_AsVal_size_t(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        return _wrap_int_raster_histogram__SWIG_0(self, args);
+      }
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'int_raster_histogram'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    Raster< int >::histogram(size_t)\n"
+    "    Raster< int >::histogram()\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_int_raster_clip(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   Raster< int > *arg1 = (Raster< int > *) 0 ;
   double arg2 ;
@@ -15153,11 +16599,8 @@ SWIGINTERN PyObject *_wrap_int_raster_clip(PyObject *self, PyObject *args, PyObj
   PyObject * obj2 = 0 ;
   PyObject * obj3 = 0 ;
   PyObject * obj4 = 0 ;
-  char *  kwnames[] = {
-    (char *) "x1",(char *) "y1",(char *) "x2",(char *) "y2", NULL 
-  };
   
-  if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"OOOO:int_raster_clip",kwnames,&obj1,&obj2,&obj3,&obj4)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"OOOO:int_raster_clip",&obj1,&obj2,&obj3,&obj4)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_int_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "int_raster_clip" "', argument " "1"" of type '" "Raster< int > *""'"); 
@@ -15201,7 +16644,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_int_raster___imul____SWIG_0(PyObject *self, int nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_int_raster___imul____SWIG_0(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   Raster< int > *arg1 = (Raster< int > *) 0 ;
   int arg2 ;
@@ -15209,15 +16652,16 @@ SWIGINTERN PyObject *_wrap_int_raster___imul____SWIG_0(PyObject *self, int nobjs
   int res1 = 0 ;
   int val2 ;
   int ecode2 = 0 ;
+  PyObject * obj1 = 0 ;
   Raster< int > *result = 0 ;
   
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"O:int_raster___imul__",&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_int_t, SWIG_POINTER_DISOWN |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "int_raster___imul__" "', argument " "1"" of type '" "Raster< int > *""'"); 
   }
   arg1 = reinterpret_cast< Raster< int > * >(argp1);
-  ecode2 = SWIG_AsVal_int(swig_obj[1], &val2);
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
   if (!SWIG_IsOK(ecode2)) {
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "int_raster___imul__" "', argument " "2"" of type '" "int""'");
   } 
@@ -15240,7 +16684,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_int_raster___imul____SWIG_1(PyObject *self, int nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_int_raster___imul____SWIG_1(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   Raster< int > *arg1 = (Raster< int > *) 0 ;
   Raster< int > *arg2 = 0 ;
@@ -15248,15 +16692,16 @@ SWIGINTERN PyObject *_wrap_int_raster___imul____SWIG_1(PyObject *self, int nobjs
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
+  PyObject * obj1 = 0 ;
   Raster< int > *result = 0 ;
   
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"O:int_raster___imul__",&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_int_t, SWIG_POINTER_DISOWN |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "int_raster___imul__" "', argument " "1"" of type '" "Raster< int > *""'"); 
   }
   arg1 = reinterpret_cast< Raster< int > * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_RasterT_int_t,  0  | 0);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_RasterT_int_t,  0  | 0);
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "int_raster___imul__" "', argument " "2"" of type '" "Raster< int > const &""'"); 
   }
@@ -15285,78 +16730,41 @@ fail:
 SWIGINTERN PyObject *_wrap_int_raster___imul__(PyObject *self, PyObject *args) {
   int argc;
   PyObject *argv[3];
+  int ii;
   
-  if (!(argc = SWIG_Python_UnpackTuple(args,"int_raster___imul__",0,2,argv+1))) SWIG_fail;
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? (int)PyObject_Length(args) : 0;
   argv[0] = self;
-  {
-    unsigned long _index = 0;
-    SWIG_TypeRank _rank = 0; 
-    if (argc == 2) {
-      SWIG_TypeRank _ranki = 0;
-      SWIG_TypeRank _rankm = 0;
-      SWIG_TypeRank _pi = 1;
-      int _v = 0;
-      {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_int_t, 0);
-        _v = SWIG_CheckState(res);
-      }
-      if (!_v) goto check_1;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      {
-        int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_RasterT_int_t, 0);
-        _v = SWIG_CheckState(res);
-      }
-      if (!_v) goto check_1;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      if (!_index || (_ranki < _rank)) {
-        _rank = _ranki; _index = 1;
-        if (_rank == _rankm) goto dispatch;
+  for (ii = 0; (ii < 1) && (ii < argc); ii++) {
+    argv[ii + 1] = PyTuple_GET_ITEM(args,ii);
+  }
+  argc++;
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_int_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_RasterT_int_t, 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        return _wrap_int_raster___imul____SWIG_1(self, args);
       }
     }
-  check_1:
-    
-    if (argc == 2) {
-      SWIG_TypeRank _ranki = 0;
-      SWIG_TypeRank _rankm = 0;
-      SWIG_TypeRank _pi = 1;
-      int _v = 0;
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_int_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
       {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_int_t, 0);
+        int res = SWIG_AsVal_int(argv[1], NULL);
         _v = SWIG_CheckState(res);
       }
-      if (!_v) goto check_2;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      {
-        {
-          int res = SWIG_AsVal_int(argv[1], NULL);
-          _v = SWIG_CheckState(res);
-        }
+      if (_v) {
+        return _wrap_int_raster___imul____SWIG_0(self, args);
       }
-      if (!_v) goto check_2;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      if (!_index || (_ranki < _rank)) {
-        _rank = _ranki; _index = 2;
-        if (_rank == _rankm) goto dispatch;
-      }
-    }
-  check_2:
-    
-  dispatch:
-    switch(_index) {
-    case 1:
-      return _wrap_int_raster___imul____SWIG_1(self, argc, argv);
-    case 2:
-      return _wrap_int_raster___imul____SWIG_0(self, argc, argv);
     }
   }
   
@@ -15371,7 +16779,7 @@ fail:
 
 SWIGPY_BINARYFUNC_CLOSURE(_wrap_int_raster___imul__)
 
-SWIGINTERN PyObject *_wrap_int_raster___iadd____SWIG_0(PyObject *self, int nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_int_raster___iadd____SWIG_0(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   Raster< int > *arg1 = (Raster< int > *) 0 ;
   int arg2 ;
@@ -15379,15 +16787,16 @@ SWIGINTERN PyObject *_wrap_int_raster___iadd____SWIG_0(PyObject *self, int nobjs
   int res1 = 0 ;
   int val2 ;
   int ecode2 = 0 ;
+  PyObject * obj1 = 0 ;
   Raster< int > *result = 0 ;
   
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"O:int_raster___iadd__",&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_int_t, SWIG_POINTER_DISOWN |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "int_raster___iadd__" "', argument " "1"" of type '" "Raster< int > *""'"); 
   }
   arg1 = reinterpret_cast< Raster< int > * >(argp1);
-  ecode2 = SWIG_AsVal_int(swig_obj[1], &val2);
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
   if (!SWIG_IsOK(ecode2)) {
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "int_raster___iadd__" "', argument " "2"" of type '" "int""'");
   } 
@@ -15410,7 +16819,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_int_raster___iadd____SWIG_1(PyObject *self, int nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_int_raster___iadd____SWIG_1(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   Raster< int > *arg1 = (Raster< int > *) 0 ;
   Raster< int > *arg2 = 0 ;
@@ -15418,15 +16827,16 @@ SWIGINTERN PyObject *_wrap_int_raster___iadd____SWIG_1(PyObject *self, int nobjs
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
+  PyObject * obj1 = 0 ;
   Raster< int > *result = 0 ;
   
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"O:int_raster___iadd__",&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_int_t, SWIG_POINTER_DISOWN |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "int_raster___iadd__" "', argument " "1"" of type '" "Raster< int > *""'"); 
   }
   arg1 = reinterpret_cast< Raster< int > * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_RasterT_int_t,  0  | 0);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_RasterT_int_t,  0  | 0);
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "int_raster___iadd__" "', argument " "2"" of type '" "Raster< int > const &""'"); 
   }
@@ -15455,78 +16865,41 @@ fail:
 SWIGINTERN PyObject *_wrap_int_raster___iadd__(PyObject *self, PyObject *args) {
   int argc;
   PyObject *argv[3];
+  int ii;
   
-  if (!(argc = SWIG_Python_UnpackTuple(args,"int_raster___iadd__",0,2,argv+1))) SWIG_fail;
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? (int)PyObject_Length(args) : 0;
   argv[0] = self;
-  {
-    unsigned long _index = 0;
-    SWIG_TypeRank _rank = 0; 
-    if (argc == 2) {
-      SWIG_TypeRank _ranki = 0;
-      SWIG_TypeRank _rankm = 0;
-      SWIG_TypeRank _pi = 1;
-      int _v = 0;
-      {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_int_t, 0);
-        _v = SWIG_CheckState(res);
-      }
-      if (!_v) goto check_1;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      {
-        int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_RasterT_int_t, 0);
-        _v = SWIG_CheckState(res);
-      }
-      if (!_v) goto check_1;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      if (!_index || (_ranki < _rank)) {
-        _rank = _ranki; _index = 1;
-        if (_rank == _rankm) goto dispatch;
+  for (ii = 0; (ii < 1) && (ii < argc); ii++) {
+    argv[ii + 1] = PyTuple_GET_ITEM(args,ii);
+  }
+  argc++;
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_int_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_RasterT_int_t, 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        return _wrap_int_raster___iadd____SWIG_1(self, args);
       }
     }
-  check_1:
-    
-    if (argc == 2) {
-      SWIG_TypeRank _ranki = 0;
-      SWIG_TypeRank _rankm = 0;
-      SWIG_TypeRank _pi = 1;
-      int _v = 0;
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_int_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
       {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_int_t, 0);
+        int res = SWIG_AsVal_int(argv[1], NULL);
         _v = SWIG_CheckState(res);
       }
-      if (!_v) goto check_2;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      {
-        {
-          int res = SWIG_AsVal_int(argv[1], NULL);
-          _v = SWIG_CheckState(res);
-        }
+      if (_v) {
+        return _wrap_int_raster___iadd____SWIG_0(self, args);
       }
-      if (!_v) goto check_2;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      if (!_index || (_ranki < _rank)) {
-        _rank = _ranki; _index = 2;
-        if (_rank == _rankm) goto dispatch;
-      }
-    }
-  check_2:
-    
-  dispatch:
-    switch(_index) {
-    case 1:
-      return _wrap_int_raster___iadd____SWIG_1(self, argc, argv);
-    case 2:
-      return _wrap_int_raster___iadd____SWIG_0(self, argc, argv);
     }
   }
   
@@ -15541,7 +16914,7 @@ fail:
 
 SWIGPY_BINARYFUNC_CLOSURE(_wrap_int_raster___iadd__)
 
-SWIGINTERN PyObject *_wrap_int_raster___isub____SWIG_0(PyObject *self, int nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_int_raster___isub____SWIG_0(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   Raster< int > *arg1 = (Raster< int > *) 0 ;
   int arg2 ;
@@ -15549,15 +16922,16 @@ SWIGINTERN PyObject *_wrap_int_raster___isub____SWIG_0(PyObject *self, int nobjs
   int res1 = 0 ;
   int val2 ;
   int ecode2 = 0 ;
+  PyObject * obj1 = 0 ;
   Raster< int > *result = 0 ;
   
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"O:int_raster___isub__",&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_int_t, SWIG_POINTER_DISOWN |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "int_raster___isub__" "', argument " "1"" of type '" "Raster< int > *""'"); 
   }
   arg1 = reinterpret_cast< Raster< int > * >(argp1);
-  ecode2 = SWIG_AsVal_int(swig_obj[1], &val2);
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
   if (!SWIG_IsOK(ecode2)) {
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "int_raster___isub__" "', argument " "2"" of type '" "int""'");
   } 
@@ -15580,7 +16954,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_int_raster___isub____SWIG_1(PyObject *self, int nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_int_raster___isub____SWIG_1(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   Raster< int > *arg1 = (Raster< int > *) 0 ;
   Raster< int > *arg2 = 0 ;
@@ -15588,15 +16962,16 @@ SWIGINTERN PyObject *_wrap_int_raster___isub____SWIG_1(PyObject *self, int nobjs
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
+  PyObject * obj1 = 0 ;
   Raster< int > *result = 0 ;
   
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"O:int_raster___isub__",&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_int_t, SWIG_POINTER_DISOWN |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "int_raster___isub__" "', argument " "1"" of type '" "Raster< int > *""'"); 
   }
   arg1 = reinterpret_cast< Raster< int > * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_RasterT_int_t,  0  | 0);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_RasterT_int_t,  0  | 0);
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "int_raster___isub__" "', argument " "2"" of type '" "Raster< int > const &""'"); 
   }
@@ -15625,78 +17000,41 @@ fail:
 SWIGINTERN PyObject *_wrap_int_raster___isub__(PyObject *self, PyObject *args) {
   int argc;
   PyObject *argv[3];
+  int ii;
   
-  if (!(argc = SWIG_Python_UnpackTuple(args,"int_raster___isub__",0,2,argv+1))) SWIG_fail;
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? (int)PyObject_Length(args) : 0;
   argv[0] = self;
-  {
-    unsigned long _index = 0;
-    SWIG_TypeRank _rank = 0; 
-    if (argc == 2) {
-      SWIG_TypeRank _ranki = 0;
-      SWIG_TypeRank _rankm = 0;
-      SWIG_TypeRank _pi = 1;
-      int _v = 0;
-      {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_int_t, 0);
-        _v = SWIG_CheckState(res);
-      }
-      if (!_v) goto check_1;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      {
-        int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_RasterT_int_t, 0);
-        _v = SWIG_CheckState(res);
-      }
-      if (!_v) goto check_1;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      if (!_index || (_ranki < _rank)) {
-        _rank = _ranki; _index = 1;
-        if (_rank == _rankm) goto dispatch;
+  for (ii = 0; (ii < 1) && (ii < argc); ii++) {
+    argv[ii + 1] = PyTuple_GET_ITEM(args,ii);
+  }
+  argc++;
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_int_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_RasterT_int_t, 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        return _wrap_int_raster___isub____SWIG_1(self, args);
       }
     }
-  check_1:
-    
-    if (argc == 2) {
-      SWIG_TypeRank _ranki = 0;
-      SWIG_TypeRank _rankm = 0;
-      SWIG_TypeRank _pi = 1;
-      int _v = 0;
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_int_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
       {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_int_t, 0);
+        int res = SWIG_AsVal_int(argv[1], NULL);
         _v = SWIG_CheckState(res);
       }
-      if (!_v) goto check_2;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      {
-        {
-          int res = SWIG_AsVal_int(argv[1], NULL);
-          _v = SWIG_CheckState(res);
-        }
+      if (_v) {
+        return _wrap_int_raster___isub____SWIG_0(self, args);
       }
-      if (!_v) goto check_2;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      if (!_index || (_ranki < _rank)) {
-        _rank = _ranki; _index = 2;
-        if (_rank == _rankm) goto dispatch;
-      }
-    }
-  check_2:
-    
-  dispatch:
-    switch(_index) {
-    case 1:
-      return _wrap_int_raster___isub____SWIG_1(self, argc, argv);
-    case 2:
-      return _wrap_int_raster___isub____SWIG_0(self, argc, argv);
     }
   }
   
@@ -15711,7 +17049,7 @@ fail:
 
 SWIGPY_BINARYFUNC_CLOSURE(_wrap_int_raster___isub__)
 
-SWIGINTERN PyObject *_wrap_int_raster___idiv____SWIG_0(PyObject *self, int nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_int_raster___idiv____SWIG_0(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   Raster< int > *arg1 = (Raster< int > *) 0 ;
   int arg2 ;
@@ -15719,15 +17057,16 @@ SWIGINTERN PyObject *_wrap_int_raster___idiv____SWIG_0(PyObject *self, int nobjs
   int res1 = 0 ;
   int val2 ;
   int ecode2 = 0 ;
+  PyObject * obj1 = 0 ;
   Raster< int > *result = 0 ;
   
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"O:int_raster___idiv__",&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_int_t, SWIG_POINTER_DISOWN |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "int_raster___idiv__" "', argument " "1"" of type '" "Raster< int > *""'"); 
   }
   arg1 = reinterpret_cast< Raster< int > * >(argp1);
-  ecode2 = SWIG_AsVal_int(swig_obj[1], &val2);
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
   if (!SWIG_IsOK(ecode2)) {
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "int_raster___idiv__" "', argument " "2"" of type '" "int""'");
   } 
@@ -15750,7 +17089,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_int_raster___idiv____SWIG_1(PyObject *self, int nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_int_raster___idiv____SWIG_1(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   Raster< int > *arg1 = (Raster< int > *) 0 ;
   Raster< int > *arg2 = 0 ;
@@ -15758,15 +17097,16 @@ SWIGINTERN PyObject *_wrap_int_raster___idiv____SWIG_1(PyObject *self, int nobjs
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
+  PyObject * obj1 = 0 ;
   Raster< int > *result = 0 ;
   
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"O:int_raster___idiv__",&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_int_t, SWIG_POINTER_DISOWN |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "int_raster___idiv__" "', argument " "1"" of type '" "Raster< int > *""'"); 
   }
   arg1 = reinterpret_cast< Raster< int > * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_RasterT_int_t,  0  | 0);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_RasterT_int_t,  0  | 0);
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "int_raster___idiv__" "', argument " "2"" of type '" "Raster< int > const &""'"); 
   }
@@ -15795,78 +17135,41 @@ fail:
 SWIGINTERN PyObject *_wrap_int_raster___idiv__(PyObject *self, PyObject *args) {
   int argc;
   PyObject *argv[3];
+  int ii;
   
-  if (!(argc = SWIG_Python_UnpackTuple(args,"int_raster___idiv__",0,2,argv+1))) SWIG_fail;
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? (int)PyObject_Length(args) : 0;
   argv[0] = self;
-  {
-    unsigned long _index = 0;
-    SWIG_TypeRank _rank = 0; 
-    if (argc == 2) {
-      SWIG_TypeRank _ranki = 0;
-      SWIG_TypeRank _rankm = 0;
-      SWIG_TypeRank _pi = 1;
-      int _v = 0;
-      {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_int_t, 0);
-        _v = SWIG_CheckState(res);
-      }
-      if (!_v) goto check_1;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      {
-        int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_RasterT_int_t, 0);
-        _v = SWIG_CheckState(res);
-      }
-      if (!_v) goto check_1;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      if (!_index || (_ranki < _rank)) {
-        _rank = _ranki; _index = 1;
-        if (_rank == _rankm) goto dispatch;
+  for (ii = 0; (ii < 1) && (ii < argc); ii++) {
+    argv[ii + 1] = PyTuple_GET_ITEM(args,ii);
+  }
+  argc++;
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_int_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_RasterT_int_t, 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        return _wrap_int_raster___idiv____SWIG_1(self, args);
       }
     }
-  check_1:
-    
-    if (argc == 2) {
-      SWIG_TypeRank _ranki = 0;
-      SWIG_TypeRank _rankm = 0;
-      SWIG_TypeRank _pi = 1;
-      int _v = 0;
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_int_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
       {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_int_t, 0);
+        int res = SWIG_AsVal_int(argv[1], NULL);
         _v = SWIG_CheckState(res);
       }
-      if (!_v) goto check_2;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      {
-        {
-          int res = SWIG_AsVal_int(argv[1], NULL);
-          _v = SWIG_CheckState(res);
-        }
+      if (_v) {
+        return _wrap_int_raster___idiv____SWIG_0(self, args);
       }
-      if (!_v) goto check_2;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      if (!_index || (_ranki < _rank)) {
-        _rank = _ranki; _index = 2;
-        if (_rank == _rankm) goto dispatch;
-      }
-    }
-  check_2:
-    
-  dispatch:
-    switch(_index) {
-    case 1:
-      return _wrap_int_raster___idiv____SWIG_1(self, argc, argv);
-    case 2:
-      return _wrap_int_raster___idiv____SWIG_0(self, argc, argv);
     }
   }
   
@@ -15881,7 +17184,7 @@ fail:
 
 SWIGPY_BINARYFUNC_CLOSURE(_wrap_int_raster___idiv__)
 
-SWIGINTERN PyObject *_wrap_int_raster___mul____SWIG_0(PyObject *self, int nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_int_raster___mul____SWIG_0(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   Raster< int > *arg1 = (Raster< int > *) 0 ;
   int arg2 ;
@@ -15889,15 +17192,16 @@ SWIGINTERN PyObject *_wrap_int_raster___mul____SWIG_0(PyObject *self, int nobjs,
   int res1 = 0 ;
   int val2 ;
   int ecode2 = 0 ;
+  PyObject * obj1 = 0 ;
   SwigValueWrapper< Raster< int > > result;
   
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"O:int_raster___mul__",&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_int_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "int_raster___mul__" "', argument " "1"" of type '" "Raster< int > const *""'"); 
   }
   arg1 = reinterpret_cast< Raster< int > * >(argp1);
-  ecode2 = SWIG_AsVal_int(swig_obj[1], &val2);
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
   if (!SWIG_IsOK(ecode2)) {
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "int_raster___mul__" "', argument " "2"" of type '" "int""'");
   } 
@@ -15920,7 +17224,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_int_raster___add____SWIG_0(PyObject *self, int nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_int_raster___add____SWIG_0(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   Raster< int > *arg1 = (Raster< int > *) 0 ;
   int arg2 ;
@@ -15928,15 +17232,16 @@ SWIGINTERN PyObject *_wrap_int_raster___add____SWIG_0(PyObject *self, int nobjs,
   int res1 = 0 ;
   int val2 ;
   int ecode2 = 0 ;
+  PyObject * obj1 = 0 ;
   SwigValueWrapper< Raster< int > > result;
   
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"O:int_raster___add__",&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_int_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "int_raster___add__" "', argument " "1"" of type '" "Raster< int > const *""'"); 
   }
   arg1 = reinterpret_cast< Raster< int > * >(argp1);
-  ecode2 = SWIG_AsVal_int(swig_obj[1], &val2);
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
   if (!SWIG_IsOK(ecode2)) {
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "int_raster___add__" "', argument " "2"" of type '" "int""'");
   } 
@@ -15959,7 +17264,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_int_raster___sub____SWIG_0(PyObject *self, int nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_int_raster___sub____SWIG_0(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   Raster< int > *arg1 = (Raster< int > *) 0 ;
   int arg2 ;
@@ -15967,15 +17272,16 @@ SWIGINTERN PyObject *_wrap_int_raster___sub____SWIG_0(PyObject *self, int nobjs,
   int res1 = 0 ;
   int val2 ;
   int ecode2 = 0 ;
+  PyObject * obj1 = 0 ;
   SwigValueWrapper< Raster< int > > result;
   
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"O:int_raster___sub__",&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_int_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "int_raster___sub__" "', argument " "1"" of type '" "Raster< int > const *""'"); 
   }
   arg1 = reinterpret_cast< Raster< int > * >(argp1);
-  ecode2 = SWIG_AsVal_int(swig_obj[1], &val2);
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
   if (!SWIG_IsOK(ecode2)) {
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "int_raster___sub__" "', argument " "2"" of type '" "int""'");
   } 
@@ -15998,7 +17304,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_int_raster___div____SWIG_0(PyObject *self, int nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_int_raster___div____SWIG_0(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   Raster< int > *arg1 = (Raster< int > *) 0 ;
   int arg2 ;
@@ -16006,15 +17312,16 @@ SWIGINTERN PyObject *_wrap_int_raster___div____SWIG_0(PyObject *self, int nobjs,
   int res1 = 0 ;
   int val2 ;
   int ecode2 = 0 ;
+  PyObject * obj1 = 0 ;
   SwigValueWrapper< Raster< int > > result;
   
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"O:int_raster___div__",&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_int_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "int_raster___div__" "', argument " "1"" of type '" "Raster< int > const *""'"); 
   }
   arg1 = reinterpret_cast< Raster< int > * >(argp1);
-  ecode2 = SWIG_AsVal_int(swig_obj[1], &val2);
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
   if (!SWIG_IsOK(ecode2)) {
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "int_raster___div__" "', argument " "2"" of type '" "int""'");
   } 
@@ -16037,7 +17344,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_int_raster___mul____SWIG_1(PyObject *self, int nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_int_raster___mul____SWIG_1(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   Raster< int > *arg1 = (Raster< int > *) 0 ;
   Raster< int > *arg2 = 0 ;
@@ -16045,15 +17352,16 @@ SWIGINTERN PyObject *_wrap_int_raster___mul____SWIG_1(PyObject *self, int nobjs,
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
+  PyObject * obj1 = 0 ;
   SwigValueWrapper< Raster< int > > result;
   
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"O:int_raster___mul__",&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_int_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "int_raster___mul__" "', argument " "1"" of type '" "Raster< int > const *""'"); 
   }
   arg1 = reinterpret_cast< Raster< int > * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_RasterT_int_t,  0  | 0);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_RasterT_int_t,  0  | 0);
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "int_raster___mul__" "', argument " "2"" of type '" "Raster< int > const &""'"); 
   }
@@ -16082,78 +17390,41 @@ fail:
 SWIGINTERN PyObject *_wrap_int_raster___mul__(PyObject *self, PyObject *args) {
   int argc;
   PyObject *argv[3];
+  int ii;
   
-  if (!(argc = SWIG_Python_UnpackTuple(args,"int_raster___mul__",0,2,argv+1))) SWIG_fail;
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? (int)PyObject_Length(args) : 0;
   argv[0] = self;
-  {
-    unsigned long _index = 0;
-    SWIG_TypeRank _rank = 0; 
-    if (argc == 2) {
-      SWIG_TypeRank _ranki = 0;
-      SWIG_TypeRank _rankm = 0;
-      SWIG_TypeRank _pi = 1;
-      int _v = 0;
-      {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_int_t, 0);
-        _v = SWIG_CheckState(res);
-      }
-      if (!_v) goto check_1;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      {
-        int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_RasterT_int_t, 0);
-        _v = SWIG_CheckState(res);
-      }
-      if (!_v) goto check_1;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      if (!_index || (_ranki < _rank)) {
-        _rank = _ranki; _index = 1;
-        if (_rank == _rankm) goto dispatch;
+  for (ii = 0; (ii < 1) && (ii < argc); ii++) {
+    argv[ii + 1] = PyTuple_GET_ITEM(args,ii);
+  }
+  argc++;
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_int_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_RasterT_int_t, 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        return _wrap_int_raster___mul____SWIG_1(self, args);
       }
     }
-  check_1:
-    
-    if (argc == 2) {
-      SWIG_TypeRank _ranki = 0;
-      SWIG_TypeRank _rankm = 0;
-      SWIG_TypeRank _pi = 1;
-      int _v = 0;
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_int_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
       {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_int_t, 0);
+        int res = SWIG_AsVal_int(argv[1], NULL);
         _v = SWIG_CheckState(res);
       }
-      if (!_v) goto check_2;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      {
-        {
-          int res = SWIG_AsVal_int(argv[1], NULL);
-          _v = SWIG_CheckState(res);
-        }
+      if (_v) {
+        return _wrap_int_raster___mul____SWIG_0(self, args);
       }
-      if (!_v) goto check_2;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      if (!_index || (_ranki < _rank)) {
-        _rank = _ranki; _index = 2;
-        if (_rank == _rankm) goto dispatch;
-      }
-    }
-  check_2:
-    
-  dispatch:
-    switch(_index) {
-    case 1:
-      return _wrap_int_raster___mul____SWIG_1(self, argc, argv);
-    case 2:
-      return _wrap_int_raster___mul____SWIG_0(self, argc, argv);
     }
   }
   
@@ -16165,7 +17436,7 @@ fail:
 
 SWIGPY_BINARYFUNC_CLOSURE(_wrap_int_raster___mul__)
 
-SWIGINTERN PyObject *_wrap_int_raster___add____SWIG_1(PyObject *self, int nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_int_raster___add____SWIG_1(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   Raster< int > *arg1 = (Raster< int > *) 0 ;
   Raster< int > *arg2 = 0 ;
@@ -16173,15 +17444,16 @@ SWIGINTERN PyObject *_wrap_int_raster___add____SWIG_1(PyObject *self, int nobjs,
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
+  PyObject * obj1 = 0 ;
   SwigValueWrapper< Raster< int > > result;
   
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"O:int_raster___add__",&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_int_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "int_raster___add__" "', argument " "1"" of type '" "Raster< int > const *""'"); 
   }
   arg1 = reinterpret_cast< Raster< int > * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_RasterT_int_t,  0  | 0);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_RasterT_int_t,  0  | 0);
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "int_raster___add__" "', argument " "2"" of type '" "Raster< int > const &""'"); 
   }
@@ -16210,78 +17482,41 @@ fail:
 SWIGINTERN PyObject *_wrap_int_raster___add__(PyObject *self, PyObject *args) {
   int argc;
   PyObject *argv[3];
+  int ii;
   
-  if (!(argc = SWIG_Python_UnpackTuple(args,"int_raster___add__",0,2,argv+1))) SWIG_fail;
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? (int)PyObject_Length(args) : 0;
   argv[0] = self;
-  {
-    unsigned long _index = 0;
-    SWIG_TypeRank _rank = 0; 
-    if (argc == 2) {
-      SWIG_TypeRank _ranki = 0;
-      SWIG_TypeRank _rankm = 0;
-      SWIG_TypeRank _pi = 1;
-      int _v = 0;
-      {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_int_t, 0);
-        _v = SWIG_CheckState(res);
-      }
-      if (!_v) goto check_1;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      {
-        int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_RasterT_int_t, 0);
-        _v = SWIG_CheckState(res);
-      }
-      if (!_v) goto check_1;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      if (!_index || (_ranki < _rank)) {
-        _rank = _ranki; _index = 1;
-        if (_rank == _rankm) goto dispatch;
+  for (ii = 0; (ii < 1) && (ii < argc); ii++) {
+    argv[ii + 1] = PyTuple_GET_ITEM(args,ii);
+  }
+  argc++;
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_int_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_RasterT_int_t, 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        return _wrap_int_raster___add____SWIG_1(self, args);
       }
     }
-  check_1:
-    
-    if (argc == 2) {
-      SWIG_TypeRank _ranki = 0;
-      SWIG_TypeRank _rankm = 0;
-      SWIG_TypeRank _pi = 1;
-      int _v = 0;
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_int_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
       {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_int_t, 0);
+        int res = SWIG_AsVal_int(argv[1], NULL);
         _v = SWIG_CheckState(res);
       }
-      if (!_v) goto check_2;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      {
-        {
-          int res = SWIG_AsVal_int(argv[1], NULL);
-          _v = SWIG_CheckState(res);
-        }
+      if (_v) {
+        return _wrap_int_raster___add____SWIG_0(self, args);
       }
-      if (!_v) goto check_2;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      if (!_index || (_ranki < _rank)) {
-        _rank = _ranki; _index = 2;
-        if (_rank == _rankm) goto dispatch;
-      }
-    }
-  check_2:
-    
-  dispatch:
-    switch(_index) {
-    case 1:
-      return _wrap_int_raster___add____SWIG_1(self, argc, argv);
-    case 2:
-      return _wrap_int_raster___add____SWIG_0(self, argc, argv);
     }
   }
   
@@ -16293,7 +17528,7 @@ fail:
 
 SWIGPY_BINARYFUNC_CLOSURE(_wrap_int_raster___add__)
 
-SWIGINTERN PyObject *_wrap_int_raster___sub____SWIG_1(PyObject *self, int nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_int_raster___sub____SWIG_1(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   Raster< int > *arg1 = (Raster< int > *) 0 ;
   Raster< int > *arg2 = 0 ;
@@ -16301,15 +17536,16 @@ SWIGINTERN PyObject *_wrap_int_raster___sub____SWIG_1(PyObject *self, int nobjs,
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
+  PyObject * obj1 = 0 ;
   SwigValueWrapper< Raster< int > > result;
   
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"O:int_raster___sub__",&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_int_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "int_raster___sub__" "', argument " "1"" of type '" "Raster< int > const *""'"); 
   }
   arg1 = reinterpret_cast< Raster< int > * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_RasterT_int_t,  0  | 0);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_RasterT_int_t,  0  | 0);
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "int_raster___sub__" "', argument " "2"" of type '" "Raster< int > const &""'"); 
   }
@@ -16338,78 +17574,41 @@ fail:
 SWIGINTERN PyObject *_wrap_int_raster___sub__(PyObject *self, PyObject *args) {
   int argc;
   PyObject *argv[3];
+  int ii;
   
-  if (!(argc = SWIG_Python_UnpackTuple(args,"int_raster___sub__",0,2,argv+1))) SWIG_fail;
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? (int)PyObject_Length(args) : 0;
   argv[0] = self;
-  {
-    unsigned long _index = 0;
-    SWIG_TypeRank _rank = 0; 
-    if (argc == 2) {
-      SWIG_TypeRank _ranki = 0;
-      SWIG_TypeRank _rankm = 0;
-      SWIG_TypeRank _pi = 1;
-      int _v = 0;
-      {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_int_t, 0);
-        _v = SWIG_CheckState(res);
-      }
-      if (!_v) goto check_1;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      {
-        int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_RasterT_int_t, 0);
-        _v = SWIG_CheckState(res);
-      }
-      if (!_v) goto check_1;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      if (!_index || (_ranki < _rank)) {
-        _rank = _ranki; _index = 1;
-        if (_rank == _rankm) goto dispatch;
+  for (ii = 0; (ii < 1) && (ii < argc); ii++) {
+    argv[ii + 1] = PyTuple_GET_ITEM(args,ii);
+  }
+  argc++;
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_int_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_RasterT_int_t, 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        return _wrap_int_raster___sub____SWIG_1(self, args);
       }
     }
-  check_1:
-    
-    if (argc == 2) {
-      SWIG_TypeRank _ranki = 0;
-      SWIG_TypeRank _rankm = 0;
-      SWIG_TypeRank _pi = 1;
-      int _v = 0;
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_int_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
       {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_int_t, 0);
+        int res = SWIG_AsVal_int(argv[1], NULL);
         _v = SWIG_CheckState(res);
       }
-      if (!_v) goto check_2;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      {
-        {
-          int res = SWIG_AsVal_int(argv[1], NULL);
-          _v = SWIG_CheckState(res);
-        }
+      if (_v) {
+        return _wrap_int_raster___sub____SWIG_0(self, args);
       }
-      if (!_v) goto check_2;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      if (!_index || (_ranki < _rank)) {
-        _rank = _ranki; _index = 2;
-        if (_rank == _rankm) goto dispatch;
-      }
-    }
-  check_2:
-    
-  dispatch:
-    switch(_index) {
-    case 1:
-      return _wrap_int_raster___sub____SWIG_1(self, argc, argv);
-    case 2:
-      return _wrap_int_raster___sub____SWIG_0(self, argc, argv);
     }
   }
   
@@ -16421,7 +17620,7 @@ fail:
 
 SWIGPY_BINARYFUNC_CLOSURE(_wrap_int_raster___sub__)
 
-SWIGINTERN PyObject *_wrap_int_raster___div____SWIG_1(PyObject *self, int nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_int_raster___div____SWIG_1(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   Raster< int > *arg1 = (Raster< int > *) 0 ;
   Raster< int > *arg2 = 0 ;
@@ -16429,15 +17628,16 @@ SWIGINTERN PyObject *_wrap_int_raster___div____SWIG_1(PyObject *self, int nobjs,
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
+  PyObject * obj1 = 0 ;
   SwigValueWrapper< Raster< int > > result;
   
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"O:int_raster___div__",&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_int_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "int_raster___div__" "', argument " "1"" of type '" "Raster< int > const *""'"); 
   }
   arg1 = reinterpret_cast< Raster< int > * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_RasterT_int_t,  0  | 0);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_RasterT_int_t,  0  | 0);
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "int_raster___div__" "', argument " "2"" of type '" "Raster< int > const &""'"); 
   }
@@ -16466,78 +17666,41 @@ fail:
 SWIGINTERN PyObject *_wrap_int_raster___div__(PyObject *self, PyObject *args) {
   int argc;
   PyObject *argv[3];
+  int ii;
   
-  if (!(argc = SWIG_Python_UnpackTuple(args,"int_raster___div__",0,2,argv+1))) SWIG_fail;
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? (int)PyObject_Length(args) : 0;
   argv[0] = self;
-  {
-    unsigned long _index = 0;
-    SWIG_TypeRank _rank = 0; 
-    if (argc == 2) {
-      SWIG_TypeRank _ranki = 0;
-      SWIG_TypeRank _rankm = 0;
-      SWIG_TypeRank _pi = 1;
-      int _v = 0;
-      {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_int_t, 0);
-        _v = SWIG_CheckState(res);
-      }
-      if (!_v) goto check_1;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      {
-        int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_RasterT_int_t, 0);
-        _v = SWIG_CheckState(res);
-      }
-      if (!_v) goto check_1;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      if (!_index || (_ranki < _rank)) {
-        _rank = _ranki; _index = 1;
-        if (_rank == _rankm) goto dispatch;
+  for (ii = 0; (ii < 1) && (ii < argc); ii++) {
+    argv[ii + 1] = PyTuple_GET_ITEM(args,ii);
+  }
+  argc++;
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_int_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_RasterT_int_t, 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        return _wrap_int_raster___div____SWIG_1(self, args);
       }
     }
-  check_1:
-    
-    if (argc == 2) {
-      SWIG_TypeRank _ranki = 0;
-      SWIG_TypeRank _rankm = 0;
-      SWIG_TypeRank _pi = 1;
-      int _v = 0;
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_int_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
       {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_int_t, 0);
+        int res = SWIG_AsVal_int(argv[1], NULL);
         _v = SWIG_CheckState(res);
       }
-      if (!_v) goto check_2;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      {
-        {
-          int res = SWIG_AsVal_int(argv[1], NULL);
-          _v = SWIG_CheckState(res);
-        }
+      if (_v) {
+        return _wrap_int_raster___div____SWIG_0(self, args);
       }
-      if (!_v) goto check_2;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      if (!_index || (_ranki < _rank)) {
-        _rank = _ranki; _index = 2;
-        if (_rank == _rankm) goto dispatch;
-      }
-    }
-  check_2:
-    
-  dispatch:
-    switch(_index) {
-    case 1:
-      return _wrap_int_raster___div____SWIG_1(self, argc, argv);
-    case 2:
-      return _wrap_int_raster___div____SWIG_0(self, argc, argv);
     }
   }
   
@@ -16549,12 +17712,12 @@ fail:
 
 SWIGPY_BINARYFUNC_CLOSURE(_wrap_int_raster___div__)
 
-SWIGINTERN PyObject *_wrap_int_raster_fill(PyObject *self, PyObject *args, PyObject *kwargs) {
+SWIGINTERN PyObject *_wrap_int_raster_fill__SWIG_0(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   Raster< int > *arg1 = (Raster< int > *) 0 ;
   int arg2 ;
-  size_t arg3 = (size_t) 100 ;
-  bool arg4 = (bool) false ;
+  size_t arg3 ;
+  bool arg4 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int val2 ;
@@ -16566,12 +17729,9 @@ SWIGINTERN PyObject *_wrap_int_raster_fill(PyObject *self, PyObject *args, PyObj
   PyObject * obj1 = 0 ;
   PyObject * obj2 = 0 ;
   PyObject * obj3 = 0 ;
-  char *  kwnames[] = {
-    (char *) "min_diff",(char *) "max_iter",(char *) "debug", NULL 
-  };
   size_t result;
   
-  if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"O|OO:int_raster_fill",kwnames,&obj1,&obj2,&obj3)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"OOO:int_raster_fill",&obj1,&obj2,&obj3)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_int_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "int_raster_fill" "', argument " "1"" of type '" "Raster< int > *""'"); 
@@ -16582,20 +17742,16 @@ SWIGINTERN PyObject *_wrap_int_raster_fill(PyObject *self, PyObject *args, PyObj
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "int_raster_fill" "', argument " "2"" of type '" "int""'");
   } 
   arg2 = static_cast< int >(val2);
-  if (obj2) {
-    ecode3 = SWIG_AsVal_size_t(obj2, &val3);
-    if (!SWIG_IsOK(ecode3)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "int_raster_fill" "', argument " "3"" of type '" "size_t""'");
-    } 
-    arg3 = static_cast< size_t >(val3);
-  }
-  if (obj3) {
-    ecode4 = SWIG_AsVal_bool(obj3, &val4);
-    if (!SWIG_IsOK(ecode4)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "int_raster_fill" "', argument " "4"" of type '" "bool""'");
-    } 
-    arg4 = static_cast< bool >(val4);
-  }
+  ecode3 = SWIG_AsVal_size_t(obj2, &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "int_raster_fill" "', argument " "3"" of type '" "size_t""'");
+  } 
+  arg3 = static_cast< size_t >(val3);
+  ecode4 = SWIG_AsVal_bool(obj3, &val4);
+  if (!SWIG_IsOK(ecode4)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "int_raster_fill" "', argument " "4"" of type '" "bool""'");
+  } 
+  arg4 = static_cast< bool >(val4);
   {
     try {
       result = (arg1)->fill(arg2,arg3,arg4);
@@ -16614,7 +17770,182 @@ fail:
 }
 
 
-SWIGINTERN int _wrap_new_int_raster__SWIG_0(PyObject *self, int nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_int_raster_fill__SWIG_1(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  Raster< int > *arg1 = (Raster< int > *) 0 ;
+  int arg2 ;
+  size_t arg3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int val2 ;
+  int ecode2 = 0 ;
+  size_t val3 ;
+  int ecode3 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  size_t result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:int_raster_fill",&obj1,&obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_int_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "int_raster_fill" "', argument " "1"" of type '" "Raster< int > *""'"); 
+  }
+  arg1 = reinterpret_cast< Raster< int > * >(argp1);
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "int_raster_fill" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
+  ecode3 = SWIG_AsVal_size_t(obj2, &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "int_raster_fill" "', argument " "3"" of type '" "size_t""'");
+  } 
+  arg3 = static_cast< size_t >(val3);
+  {
+    try {
+      result = (arg1)->fill(arg2,arg3);
+    } 
+    catch (std::runtime_error& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what() );
+    }
+    catch (std::exception& e) {
+      SWIG_exception(SWIG_UnknownError, e.what());
+    }
+  }
+  resultobj = SWIG_From_size_t(static_cast< size_t >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_int_raster_fill__SWIG_2(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  Raster< int > *arg1 = (Raster< int > *) 0 ;
+  int arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj1 = 0 ;
+  size_t result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:int_raster_fill",&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_int_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "int_raster_fill" "', argument " "1"" of type '" "Raster< int > *""'"); 
+  }
+  arg1 = reinterpret_cast< Raster< int > * >(argp1);
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "int_raster_fill" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
+  {
+    try {
+      result = (arg1)->fill(arg2);
+    } 
+    catch (std::runtime_error& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what() );
+    }
+    catch (std::exception& e) {
+      SWIG_exception(SWIG_UnknownError, e.what());
+    }
+  }
+  resultobj = SWIG_From_size_t(static_cast< size_t >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_int_raster_fill(PyObject *self, PyObject *args) {
+  int argc;
+  PyObject *argv[5];
+  int ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? (int)PyObject_Length(args) : 0;
+  argv[0] = self;
+  for (ii = 0; (ii < 3) && (ii < argc); ii++) {
+    argv[ii + 1] = PyTuple_GET_ITEM(args,ii);
+  }
+  argc++;
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_int_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        int res = SWIG_AsVal_int(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        return _wrap_int_raster_fill__SWIG_2(self, args);
+      }
+    }
+  }
+  if (argc == 3) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_int_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        int res = SWIG_AsVal_int(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        {
+          int res = SWIG_AsVal_size_t(argv[2], NULL);
+          _v = SWIG_CheckState(res);
+        }
+        if (_v) {
+          return _wrap_int_raster_fill__SWIG_1(self, args);
+        }
+      }
+    }
+  }
+  if (argc == 4) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_int_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        int res = SWIG_AsVal_int(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        {
+          int res = SWIG_AsVal_size_t(argv[2], NULL);
+          _v = SWIG_CheckState(res);
+        }
+        if (_v) {
+          {
+            int res = SWIG_AsVal_bool(argv[3], NULL);
+            _v = SWIG_CheckState(res);
+          }
+          if (_v) {
+            return _wrap_int_raster_fill__SWIG_0(self, args);
+          }
+        }
+      }
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'int_raster_fill'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    Raster< int >::fill(int,size_t,bool)\n"
+    "    Raster< int >::fill(int,size_t)\n"
+    "    Raster< int >::fill(int)\n");
+  return 0;
+}
+
+
+SWIGINTERN int _wrap_new_int_raster__SWIG_0(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   int arg1 ;
   int arg2 ;
@@ -16623,7 +17954,7 @@ SWIGINTERN int _wrap_new_int_raster__SWIG_0(PyObject *self, int nobjs, PyObject 
   double arg5 ;
   double arg6 ;
   int arg7 ;
-  int arg8 = (int) 0 ;
+  int arg8 ;
   int val1 ;
   int ecode1 = 0 ;
   int val2 ;
@@ -16640,51 +17971,57 @@ SWIGINTERN int _wrap_new_int_raster__SWIG_0(PyObject *self, int nobjs, PyObject 
   int ecode7 = 0 ;
   int val8 ;
   int ecode8 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  PyObject * obj4 = 0 ;
+  PyObject * obj5 = 0 ;
+  PyObject * obj6 = 0 ;
+  PyObject * obj7 = 0 ;
+  PyObject * obj8 = 0 ;
   Raster< int > *result = 0 ;
   
-  if ((nobjs < 7) || (nobjs > 8)) SWIG_fail;
-  ecode1 = SWIG_AsVal_int(swig_obj[0], &val1);
+  if (!PyArg_ParseTuple(args,(char *)"OOOOOOOO:new_int_raster",&obj1,&obj2,&obj3,&obj4,&obj5,&obj6,&obj7,&obj8)) SWIG_fail;
+  ecode1 = SWIG_AsVal_int(obj1, &val1);
   if (!SWIG_IsOK(ecode1)) {
     SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "new_int_raster" "', argument " "1"" of type '" "int""'");
   } 
   arg1 = static_cast< int >(val1);
-  ecode2 = SWIG_AsVal_int(swig_obj[1], &val2);
+  ecode2 = SWIG_AsVal_int(obj2, &val2);
   if (!SWIG_IsOK(ecode2)) {
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "new_int_raster" "', argument " "2"" of type '" "int""'");
   } 
   arg2 = static_cast< int >(val2);
-  ecode3 = SWIG_AsVal_double(swig_obj[2], &val3);
+  ecode3 = SWIG_AsVal_double(obj3, &val3);
   if (!SWIG_IsOK(ecode3)) {
     SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "new_int_raster" "', argument " "3"" of type '" "double""'");
   } 
   arg3 = static_cast< double >(val3);
-  ecode4 = SWIG_AsVal_double(swig_obj[3], &val4);
+  ecode4 = SWIG_AsVal_double(obj4, &val4);
   if (!SWIG_IsOK(ecode4)) {
     SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "new_int_raster" "', argument " "4"" of type '" "double""'");
   } 
   arg4 = static_cast< double >(val4);
-  ecode5 = SWIG_AsVal_double(swig_obj[4], &val5);
+  ecode5 = SWIG_AsVal_double(obj5, &val5);
   if (!SWIG_IsOK(ecode5)) {
     SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "new_int_raster" "', argument " "5"" of type '" "double""'");
   } 
   arg5 = static_cast< double >(val5);
-  ecode6 = SWIG_AsVal_double(swig_obj[5], &val6);
+  ecode6 = SWIG_AsVal_double(obj6, &val6);
   if (!SWIG_IsOK(ecode6)) {
     SWIG_exception_fail(SWIG_ArgError(ecode6), "in method '" "new_int_raster" "', argument " "6"" of type '" "double""'");
   } 
   arg6 = static_cast< double >(val6);
-  ecode7 = SWIG_AsVal_int(swig_obj[6], &val7);
+  ecode7 = SWIG_AsVal_int(obj7, &val7);
   if (!SWIG_IsOK(ecode7)) {
     SWIG_exception_fail(SWIG_ArgError(ecode7), "in method '" "new_int_raster" "', argument " "7"" of type '" "int""'");
   } 
   arg7 = static_cast< int >(val7);
-  if (swig_obj[7]) {
-    ecode8 = SWIG_AsVal_int(swig_obj[7], &val8);
-    if (!SWIG_IsOK(ecode8)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode8), "in method '" "new_int_raster" "', argument " "8"" of type '" "int""'");
-    } 
-    arg8 = static_cast< int >(val8);
-  }
+  ecode8 = SWIG_AsVal_int(obj8, &val8);
+  if (!SWIG_IsOK(ecode8)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode8), "in method '" "new_int_raster" "', argument " "8"" of type '" "int""'");
+  } 
+  arg8 = static_cast< int >(val8);
   {
     try {
       result = (Raster< int > *)new Raster< int >(arg1,arg2,arg3,arg4,arg5,arg6,arg7,arg8);
@@ -16703,15 +18040,102 @@ fail:
 }
 
 
-SWIGINTERN int _wrap_new_int_raster__SWIG_1(PyObject *self, int nobjs, PyObject **swig_obj) {
+SWIGINTERN int _wrap_new_int_raster__SWIG_1(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  int arg1 ;
+  int arg2 ;
+  double arg3 ;
+  double arg4 ;
+  double arg5 ;
+  double arg6 ;
+  int arg7 ;
+  int val1 ;
+  int ecode1 = 0 ;
+  int val2 ;
+  int ecode2 = 0 ;
+  double val3 ;
+  int ecode3 = 0 ;
+  double val4 ;
+  int ecode4 = 0 ;
+  double val5 ;
+  int ecode5 = 0 ;
+  double val6 ;
+  int ecode6 = 0 ;
+  int val7 ;
+  int ecode7 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  PyObject * obj4 = 0 ;
+  PyObject * obj5 = 0 ;
+  PyObject * obj6 = 0 ;
+  PyObject * obj7 = 0 ;
+  Raster< int > *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOOOOOO:new_int_raster",&obj1,&obj2,&obj3,&obj4,&obj5,&obj6,&obj7)) SWIG_fail;
+  ecode1 = SWIG_AsVal_int(obj1, &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "new_int_raster" "', argument " "1"" of type '" "int""'");
+  } 
+  arg1 = static_cast< int >(val1);
+  ecode2 = SWIG_AsVal_int(obj2, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "new_int_raster" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
+  ecode3 = SWIG_AsVal_double(obj3, &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "new_int_raster" "', argument " "3"" of type '" "double""'");
+  } 
+  arg3 = static_cast< double >(val3);
+  ecode4 = SWIG_AsVal_double(obj4, &val4);
+  if (!SWIG_IsOK(ecode4)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "new_int_raster" "', argument " "4"" of type '" "double""'");
+  } 
+  arg4 = static_cast< double >(val4);
+  ecode5 = SWIG_AsVal_double(obj5, &val5);
+  if (!SWIG_IsOK(ecode5)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "new_int_raster" "', argument " "5"" of type '" "double""'");
+  } 
+  arg5 = static_cast< double >(val5);
+  ecode6 = SWIG_AsVal_double(obj6, &val6);
+  if (!SWIG_IsOK(ecode6)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode6), "in method '" "new_int_raster" "', argument " "6"" of type '" "double""'");
+  } 
+  arg6 = static_cast< double >(val6);
+  ecode7 = SWIG_AsVal_int(obj7, &val7);
+  if (!SWIG_IsOK(ecode7)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode7), "in method '" "new_int_raster" "', argument " "7"" of type '" "int""'");
+  } 
+  arg7 = static_cast< int >(val7);
+  {
+    try {
+      result = (Raster< int > *)new Raster< int >(arg1,arg2,arg3,arg4,arg5,arg6,arg7);
+    } 
+    catch (std::runtime_error& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what() );
+    }
+    catch (std::exception& e) {
+      SWIG_exception(SWIG_UnknownError, e.what());
+    }
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_RasterT_int_t, SWIG_BUILTIN_INIT |  0 );
+  return resultobj == Py_None ? 1 : 0;
+fail:
+  return -1;
+}
+
+
+SWIGINTERN int _wrap_new_int_raster__SWIG_2(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   Raster< int > *arg1 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
+  PyObject * obj1 = 0 ;
   Raster< int > *result = 0 ;
   
-  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_RasterT_int_t,  0  | 0);
+  if (!PyArg_ParseTuple(args,(char *)"O:new_int_raster",&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj1, &argp1, SWIGTYPE_p_RasterT_int_t,  0  | 0);
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_int_raster" "', argument " "1"" of type '" "Raster< int > const &""'"); 
   }
@@ -16737,7 +18161,7 @@ fail:
 }
 
 
-SWIGINTERN int _wrap_new_int_raster__SWIG_2(PyObject *self, int nobjs, PyObject **swig_obj) {
+SWIGINTERN int _wrap_new_int_raster__SWIG_3(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   Raster< int > *arg1 = 0 ;
   int arg2 ;
@@ -16745,10 +18169,12 @@ SWIGINTERN int _wrap_new_int_raster__SWIG_2(PyObject *self, int nobjs, PyObject 
   int res1 = 0 ;
   int val2 ;
   int ecode2 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
   Raster< int > *result = 0 ;
   
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_RasterT_int_t,  0  | 0);
+  if (!PyArg_ParseTuple(args,(char *)"OO:new_int_raster",&obj1,&obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj1, &argp1, SWIGTYPE_p_RasterT_int_t,  0  | 0);
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_int_raster" "', argument " "1"" of type '" "Raster< int > const &""'"); 
   }
@@ -16756,7 +18182,7 @@ SWIGINTERN int _wrap_new_int_raster__SWIG_2(PyObject *self, int nobjs, PyObject 
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_int_raster" "', argument " "1"" of type '" "Raster< int > const &""'"); 
   }
   arg1 = reinterpret_cast< Raster< int > * >(argp1);
-  ecode2 = SWIG_AsVal_int(swig_obj[1], &val2);
+  ecode2 = SWIG_AsVal_int(obj2, &val2);
   if (!SWIG_IsOK(ecode2)) {
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "new_int_raster" "', argument " "2"" of type '" "int""'");
   } 
@@ -16779,16 +18205,17 @@ fail:
 }
 
 
-SWIGINTERN int _wrap_new_int_raster__SWIG_3(PyObject *self, int nobjs, PyObject **swig_obj) {
+SWIGINTERN int _wrap_new_int_raster__SWIG_4(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   std::string *arg1 = 0 ;
   int res1 = SWIG_OLDOBJ ;
+  PyObject * obj1 = 0 ;
   Raster< int > *result = 0 ;
   
-  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"O:new_int_raster",&obj1)) SWIG_fail;
   {
     std::string *ptr = (std::string *)0;
-    res1 = SWIG_AsPtr_std_string(swig_obj[0], &ptr);
+    res1 = SWIG_AsPtr_std_string(obj1, &ptr);
     if (!SWIG_IsOK(res1)) {
       SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_int_raster" "', argument " "1"" of type '" "std::string const &""'"); 
     }
@@ -16817,15 +18244,16 @@ fail:
 }
 
 
-SWIGINTERN int _wrap_new_int_raster__SWIG_4(PyObject *self, int nobjs, PyObject **swig_obj) {
+SWIGINTERN int _wrap_new_int_raster__SWIG_5(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   std::istream *arg1 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
+  PyObject * obj1 = 0 ;
   Raster< int > *result = 0 ;
   
-  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_std__istream,  0 );
+  if (!PyArg_ParseTuple(args,(char *)"O:new_int_raster",&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj1, &argp1, SWIGTYPE_p_std__istream,  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_int_raster" "', argument " "1"" of type '" "std::istream &""'"); 
   }
@@ -16854,209 +18282,148 @@ fail:
 SWIGINTERN int _wrap_new_int_raster(PyObject *self, PyObject *args) {
   int argc;
   PyObject *argv[9];
+  int ii;
   
-  if (!(argc = SWIG_Python_UnpackTuple(args,"new_int_raster",0,8,argv))) SWIG_fail;
-  --argc;
-  {
-    unsigned long _index = 0;
-    SWIG_TypeRank _rank = 0; 
-    if (argc == 1) {
-      SWIG_TypeRank _ranki = 0;
-      SWIG_TypeRank _rankm = 0;
-      SWIG_TypeRank _pi = 1;
-      int _v = 0;
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? (int)PyObject_Length(args) : 0;
+  for (ii = 0; (ii < 8) && (ii < argc); ii++) {
+    argv[ii] = PyTuple_GET_ITEM(args,ii);
+  }
+  if (argc == 1) {
+    int _v;
+    int res = SWIG_ConvertPtr(argv[0], 0, SWIGTYPE_p_RasterT_int_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_new_int_raster__SWIG_2(self, args);
+    }
+  }
+  if (argc == 1) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_std__istream, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_new_int_raster__SWIG_5(self, args);
+    }
+  }
+  if (argc == 1) {
+    int _v;
+    int res = SWIG_AsPtr_std_string(argv[0], (std::string**)(0));
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_new_int_raster__SWIG_4(self, args);
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    int res = SWIG_ConvertPtr(argv[0], 0, SWIGTYPE_p_RasterT_int_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
       {
-        int res = SWIG_ConvertPtr(argv[0], 0, SWIGTYPE_p_RasterT_int_t, 0);
+        int res = SWIG_AsVal_int(argv[1], NULL);
         _v = SWIG_CheckState(res);
       }
-      if (!_v) goto check_1;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      if (!_index || (_ranki < _rank)) {
-        _rank = _ranki; _index = 1;
-        if (_rank == _rankm) goto dispatch;
+      if (_v) {
+        return _wrap_new_int_raster__SWIG_3(self, args);
       }
     }
-  check_1:
-    
-    if (argc == 1) {
-      SWIG_TypeRank _ranki = 0;
-      SWIG_TypeRank _rankm = 0;
-      SWIG_TypeRank _pi = 1;
-      int _v = 0;
+  }
+  if (argc == 7) {
+    int _v;
+    {
+      int res = SWIG_AsVal_int(argv[0], NULL);
+      _v = SWIG_CheckState(res);
+    }
+    if (_v) {
       {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_std__istream, 0);
+        int res = SWIG_AsVal_int(argv[1], NULL);
         _v = SWIG_CheckState(res);
       }
-      if (!_v) goto check_2;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      if (!_index || (_ranki < _rank)) {
-        _rank = _ranki; _index = 2;
-        if (_rank == _rankm) goto dispatch;
-      }
-    }
-  check_2:
-    
-    if (argc == 1) {
-      SWIG_TypeRank _ranki = 0;
-      SWIG_TypeRank _rankm = 0;
-      SWIG_TypeRank _pi = 1;
-      int _v = 0;
-      {
-        int res = SWIG_AsPtr_std_string(argv[0], (std::string**)(0));
-        _v = SWIG_CheckState(res);
-      }
-      if (!_v) goto check_3;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      if (!_index || (_ranki < _rank)) {
-        _rank = _ranki; _index = 3;
-        if (_rank == _rankm) goto dispatch;
-      }
-    }
-  check_3:
-    
-    if (argc == 2) {
-      SWIG_TypeRank _ranki = 0;
-      SWIG_TypeRank _rankm = 0;
-      SWIG_TypeRank _pi = 1;
-      int _v = 0;
-      {
-        int res = SWIG_ConvertPtr(argv[0], 0, SWIGTYPE_p_RasterT_int_t, 0);
-        _v = SWIG_CheckState(res);
-      }
-      if (!_v) goto check_4;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      {
-        {
-          int res = SWIG_AsVal_int(argv[1], NULL);
-          _v = SWIG_CheckState(res);
-        }
-      }
-      if (!_v) goto check_4;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      if (!_index || (_ranki < _rank)) {
-        _rank = _ranki; _index = 4;
-        if (_rank == _rankm) goto dispatch;
-      }
-    }
-  check_4:
-    
-    if ((argc >= 7) && (argc <= 8)) {
-      SWIG_TypeRank _ranki = 0;
-      SWIG_TypeRank _rankm = 0;
-      SWIG_TypeRank _pi = 1;
-      int _v = 0;
-      {
-        {
-          int res = SWIG_AsVal_int(argv[0], NULL);
-          _v = SWIG_CheckState(res);
-        }
-      }
-      if (!_v) goto check_5;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      {
-        {
-          int res = SWIG_AsVal_int(argv[1], NULL);
-          _v = SWIG_CheckState(res);
-        }
-      }
-      if (!_v) goto check_5;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      {
+      if (_v) {
         {
           int res = SWIG_AsVal_double(argv[2], NULL);
           _v = SWIG_CheckState(res);
         }
-      }
-      if (!_v) goto check_5;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      {
-        {
-          int res = SWIG_AsVal_double(argv[3], NULL);
-          _v = SWIG_CheckState(res);
-        }
-      }
-      if (!_v) goto check_5;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      {
-        {
-          int res = SWIG_AsVal_double(argv[4], NULL);
-          _v = SWIG_CheckState(res);
-        }
-      }
-      if (!_v) goto check_5;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      {
-        {
-          int res = SWIG_AsVal_double(argv[5], NULL);
-          _v = SWIG_CheckState(res);
-        }
-      }
-      if (!_v) goto check_5;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      {
-        {
-          int res = SWIG_AsVal_int(argv[6], NULL);
-          _v = SWIG_CheckState(res);
-        }
-      }
-      if (!_v) goto check_5;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      if (argc > 7) {
-        {
+        if (_v) {
           {
-            int res = SWIG_AsVal_int(argv[7], NULL);
+            int res = SWIG_AsVal_double(argv[3], NULL);
             _v = SWIG_CheckState(res);
           }
+          if (_v) {
+            {
+              int res = SWIG_AsVal_double(argv[4], NULL);
+              _v = SWIG_CheckState(res);
+            }
+            if (_v) {
+              {
+                int res = SWIG_AsVal_double(argv[5], NULL);
+                _v = SWIG_CheckState(res);
+              }
+              if (_v) {
+                {
+                  int res = SWIG_AsVal_int(argv[6], NULL);
+                  _v = SWIG_CheckState(res);
+                }
+                if (_v) {
+                  return _wrap_new_int_raster__SWIG_1(self, args);
+                }
+              }
+            }
+          }
         }
-        if (!_v) goto check_5;
-        _ranki += _v*_pi;
-        _rankm += _pi;
-        _pi *= SWIG_MAXCASTRANK;
-      }
-      if (!_index || (_ranki < _rank)) {
-        _rank = _ranki; _index = 5;
-        if (_rank == _rankm) goto dispatch;
       }
     }
-  check_5:
-    
-  dispatch:
-    switch(_index) {
-    case 1:
-      return _wrap_new_int_raster__SWIG_1(self, argc, argv);
-    case 2:
-      return _wrap_new_int_raster__SWIG_4(self, argc, argv);
-    case 3:
-      return _wrap_new_int_raster__SWIG_3(self, argc, argv);
-    case 4:
-      return _wrap_new_int_raster__SWIG_2(self, argc, argv);
-    case 5:
-      return _wrap_new_int_raster__SWIG_0(self, argc, argv);
+  }
+  if (argc == 8) {
+    int _v;
+    {
+      int res = SWIG_AsVal_int(argv[0], NULL);
+      _v = SWIG_CheckState(res);
+    }
+    if (_v) {
+      {
+        int res = SWIG_AsVal_int(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        {
+          int res = SWIG_AsVal_double(argv[2], NULL);
+          _v = SWIG_CheckState(res);
+        }
+        if (_v) {
+          {
+            int res = SWIG_AsVal_double(argv[3], NULL);
+            _v = SWIG_CheckState(res);
+          }
+          if (_v) {
+            {
+              int res = SWIG_AsVal_double(argv[4], NULL);
+              _v = SWIG_CheckState(res);
+            }
+            if (_v) {
+              {
+                int res = SWIG_AsVal_double(argv[5], NULL);
+                _v = SWIG_CheckState(res);
+              }
+              if (_v) {
+                {
+                  int res = SWIG_AsVal_int(argv[6], NULL);
+                  _v = SWIG_CheckState(res);
+                }
+                if (_v) {
+                  {
+                    int res = SWIG_AsVal_int(argv[7], NULL);
+                    _v = SWIG_CheckState(res);
+                  }
+                  if (_v) {
+                    return _wrap_new_int_raster__SWIG_0(self, args);
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
     }
   }
   
@@ -17064,6 +18431,7 @@ fail:
   SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'new_int_raster'.\n"
     "  Possible C/C++ prototypes are:\n"
     "    Raster< int >::Raster(int,int,double,double,double,double,int,int)\n"
+    "    Raster< int >::Raster(int,int,double,double,double,double,int)\n"
     "    Raster< int >::Raster(Raster< int > const &)\n"
     "    Raster< int >::Raster(Raster< int > const &,int)\n"
     "    Raster< int >::Raster(std::string const &)\n"
@@ -17072,7 +18440,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_int_raster_WriteToASCFile__SWIG_0(PyObject *self, int nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_int_raster_WriteToASCFile__SWIG_0(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   Raster< int > *arg1 = (Raster< int > *) 0 ;
   std::ostream *arg2 = 0 ;
@@ -17080,14 +18448,15 @@ SWIGINTERN PyObject *_wrap_int_raster_WriteToASCFile__SWIG_0(PyObject *self, int
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
+  PyObject * obj1 = 0 ;
   
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"O:int_raster_WriteToASCFile",&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_int_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "int_raster_WriteToASCFile" "', argument " "1"" of type '" "Raster< int > const *""'"); 
   }
   arg1 = reinterpret_cast< Raster< int > * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_std__ostream,  0 );
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_std__ostream,  0 );
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "int_raster_WriteToASCFile" "', argument " "2"" of type '" "std::ostream &""'"); 
   }
@@ -17113,14 +18482,15 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_int_raster_WriteToASCFile__SWIG_1(PyObject *self, int nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_int_raster_WriteToASCFile__SWIG_1(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   Raster< int > *arg1 = (Raster< int > *) 0 ;
   std::string arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
+  PyObject * obj1 = 0 ;
   
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"O:int_raster_WriteToASCFile",&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_int_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "int_raster_WriteToASCFile" "', argument " "1"" of type '" "Raster< int > const *""'"); 
@@ -17128,7 +18498,7 @@ SWIGINTERN PyObject *_wrap_int_raster_WriteToASCFile__SWIG_1(PyObject *self, int
   arg1 = reinterpret_cast< Raster< int > * >(argp1);
   {
     std::string *ptr = (std::string *)0;
-    int res = SWIG_AsPtr_std_string(swig_obj[1], &ptr);
+    int res = SWIG_AsPtr_std_string(obj1, &ptr);
     if (!SWIG_IsOK(res) || !ptr) {
       SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "int_raster_WriteToASCFile" "', argument " "2"" of type '" "std::string""'"); 
     }
@@ -17156,77 +18526,40 @@ fail:
 SWIGINTERN PyObject *_wrap_int_raster_WriteToASCFile(PyObject *self, PyObject *args) {
   int argc;
   PyObject *argv[3];
+  int ii;
   
-  if (!(argc = SWIG_Python_UnpackTuple(args,"int_raster_WriteToASCFile",0,2,argv+1))) SWIG_fail;
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? (int)PyObject_Length(args) : 0;
   argv[0] = self;
-  {
-    unsigned long _index = 0;
-    SWIG_TypeRank _rank = 0; 
-    if (argc == 2) {
-      SWIG_TypeRank _ranki = 0;
-      SWIG_TypeRank _rankm = 0;
-      SWIG_TypeRank _pi = 1;
-      int _v = 0;
-      {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_int_t, 0);
-        _v = SWIG_CheckState(res);
-      }
-      if (!_v) goto check_1;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_std__ostream, 0);
-        _v = SWIG_CheckState(res);
-      }
-      if (!_v) goto check_1;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      if (!_index || (_ranki < _rank)) {
-        _rank = _ranki; _index = 1;
-        if (_rank == _rankm) goto dispatch;
+  for (ii = 0; (ii < 1) && (ii < argc); ii++) {
+    argv[ii + 1] = PyTuple_GET_ITEM(args,ii);
+  }
+  argc++;
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_int_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      void *vptr = 0;
+      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_std__ostream, 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        return _wrap_int_raster_WriteToASCFile__SWIG_0(self, args);
       }
     }
-  check_1:
-    
-    if (argc == 2) {
-      SWIG_TypeRank _ranki = 0;
-      SWIG_TypeRank _rankm = 0;
-      SWIG_TypeRank _pi = 1;
-      int _v = 0;
-      {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_int_t, 0);
-        _v = SWIG_CheckState(res);
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_int_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_AsPtr_std_string(argv[1], (std::string**)(0));
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        return _wrap_int_raster_WriteToASCFile__SWIG_1(self, args);
       }
-      if (!_v) goto check_2;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      {
-        int res = SWIG_AsPtr_std_string(argv[1], (std::string**)(0));
-        _v = SWIG_CheckState(res);
-      }
-      if (!_v) goto check_2;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      if (!_index || (_ranki < _rank)) {
-        _rank = _ranki; _index = 2;
-        if (_rank == _rankm) goto dispatch;
-      }
-    }
-  check_2:
-    
-  dispatch:
-    switch(_index) {
-    case 1:
-      return _wrap_int_raster_WriteToASCFile__SWIG_0(self, argc, argv);
-    case 2:
-      return _wrap_int_raster_WriteToASCFile__SWIG_1(self, argc, argv);
     }
   }
   
@@ -17239,18 +18572,15 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_int_raster_WriteToBinary(PyObject *self, PyObject *args, PyObject *kwargs) {
+SWIGINTERN PyObject *_wrap_int_raster_WriteToBinary(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   Raster< int > *arg1 = (Raster< int > *) 0 ;
   std::string arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   PyObject * obj1 = 0 ;
-  char *  kwnames[] = {
-    (char *) "filename", NULL 
-  };
   
-  if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"O:int_raster_WriteToBinary",kwnames,&obj1)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"O:int_raster_WriteToBinary",&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_int_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "int_raster_WriteToBinary" "', argument " "1"" of type '" "Raster< int > const *""'"); 
@@ -17283,7 +18613,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_int_raster_extract(PyObject *self, PyObject *args, PyObject *kwargs) {
+SWIGINTERN PyObject *_wrap_int_raster_extract(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   Raster< int > *arg1 = (Raster< int > *) 0 ;
   double arg2 ;
@@ -17304,12 +18634,9 @@ SWIGINTERN PyObject *_wrap_int_raster_extract(PyObject *self, PyObject *args, Py
   PyObject * obj2 = 0 ;
   PyObject * obj3 = 0 ;
   PyObject * obj4 = 0 ;
-  char *  kwnames[] = {
-    (char *) "x1",(char *) "y1",(char *) "x2",(char *) "y2", NULL 
-  };
   SwigValueWrapper< Raster< int > > result;
   
-  if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"OOOO:int_raster_extract",kwnames,&obj1,&obj2,&obj3,&obj4)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"OOOO:int_raster_extract",&obj1,&obj2,&obj3,&obj4)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_int_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "int_raster_extract" "', argument " "1"" of type '" "Raster< int > *""'"); 
@@ -17358,10 +18685,9 @@ SWIGINTERN PyObject *_wrap_int_raster_ToInt(PyObject *self, PyObject *args) {
   Raster< int > *arg1 = (Raster< int > *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[1] ;
   SwigValueWrapper< Raster< int > > result;
   
-  if (!SWIG_Python_UnpackTuple(args,"int_raster_ToInt",0,0,0)) SWIG_fail;
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_int_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "int_raster_ToInt" "', argument " "1"" of type '" "Raster< int > const *""'"); 
@@ -17390,10 +18716,9 @@ SWIGINTERN PyObject *_wrap_int_raster_ToFloat(PyObject *self, PyObject *args) {
   Raster< int > *arg1 = (Raster< int > *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[1] ;
   SwigValueWrapper< Raster< float > > result;
   
-  if (!SWIG_Python_UnpackTuple(args,"int_raster_ToFloat",0,0,0)) SWIG_fail;
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_int_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "int_raster_ToFloat" "', argument " "1"" of type '" "Raster< int > const *""'"); 
@@ -17422,10 +18747,9 @@ SWIGINTERN PyObject *_wrap_int_raster_ToDouble(PyObject *self, PyObject *args) {
   Raster< int > *arg1 = (Raster< int > *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[1] ;
   SwigValueWrapper< Raster< double > > result;
   
-  if (!SWIG_Python_UnpackTuple(args,"int_raster_ToDouble",0,0,0)) SWIG_fail;
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_int_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "int_raster_ToDouble" "', argument " "1"" of type '" "Raster< int > const *""'"); 
@@ -17454,10 +18778,9 @@ SWIGINTERN PyObject *_wrap_int_raster_adress(PyObject *self, PyObject *args) {
   Raster< int > *arg1 = (Raster< int > *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[1] ;
   size_t result;
   
-  if (!SWIG_Python_UnpackTuple(args,"int_raster_adress",0,0,0)) SWIG_fail;
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_int_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "int_raster_adress" "', argument " "1"" of type '" "Raster< int > const *""'"); 
@@ -17481,33 +18804,28 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_int_raster_focal_min(PyObject *self, PyObject *args, PyObject *kwargs) {
+SWIGINTERN PyObject *_wrap_int_raster_focal_min__SWIG_0(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   Raster< int > *arg1 = (Raster< int > *) 0 ;
-  int arg2 = (int) 3 ;
+  int arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int val2 ;
   int ecode2 = 0 ;
   PyObject * obj1 = 0 ;
-  char *  kwnames[] = {
-    (char *) "n", NULL 
-  };
   SwigValueWrapper< Raster< int > > result;
   
-  if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"|O:int_raster_focal_min",kwnames,&obj1)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"O:int_raster_focal_min",&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_int_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "int_raster_focal_min" "', argument " "1"" of type '" "Raster< int > *""'"); 
   }
   arg1 = reinterpret_cast< Raster< int > * >(argp1);
-  if (obj1) {
-    ecode2 = SWIG_AsVal_int(obj1, &val2);
-    if (!SWIG_IsOK(ecode2)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "int_raster_focal_min" "', argument " "2"" of type '" "int""'");
-    } 
-    arg2 = static_cast< int >(val2);
-  }
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "int_raster_focal_min" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
   {
     try {
       result = (arg1)->focal_min(arg2);
@@ -17526,33 +18844,105 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_int_raster_focal_max(PyObject *self, PyObject *args, PyObject *kwargs) {
+SWIGINTERN PyObject *_wrap_int_raster_focal_min__SWIG_1(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   Raster< int > *arg1 = (Raster< int > *) 0 ;
-  int arg2 = (int) 3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  SwigValueWrapper< Raster< int > > result;
+  
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_int_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "int_raster_focal_min" "', argument " "1"" of type '" "Raster< int > *""'"); 
+  }
+  arg1 = reinterpret_cast< Raster< int > * >(argp1);
+  {
+    try {
+      result = (arg1)->focal_min();
+    } 
+    catch (std::runtime_error& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what() );
+    }
+    catch (std::exception& e) {
+      SWIG_exception(SWIG_UnknownError, e.what());
+    }
+  }
+  resultobj = SWIG_NewPointerObj((new Raster< int >(static_cast< const Raster< int >& >(result))), SWIGTYPE_p_RasterT_int_t, SWIG_POINTER_OWN |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_int_raster_focal_min(PyObject *self, PyObject *args) {
+  int argc;
+  PyObject *argv[3];
+  int ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? (int)PyObject_Length(args) : 0;
+  argv[0] = self;
+  for (ii = 0; (ii < 1) && (ii < argc); ii++) {
+    argv[ii + 1] = PyTuple_GET_ITEM(args,ii);
+  }
+  argc++;
+  if (argc == 1) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_int_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_int_raster_focal_min__SWIG_1(self, args);
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_int_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        int res = SWIG_AsVal_int(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        return _wrap_int_raster_focal_min__SWIG_0(self, args);
+      }
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'int_raster_focal_min'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    Raster< int >::focal_min(int)\n"
+    "    Raster< int >::focal_min()\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_int_raster_focal_max__SWIG_0(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  Raster< int > *arg1 = (Raster< int > *) 0 ;
+  int arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int val2 ;
   int ecode2 = 0 ;
   PyObject * obj1 = 0 ;
-  char *  kwnames[] = {
-    (char *) "n", NULL 
-  };
   SwigValueWrapper< Raster< int > > result;
   
-  if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"|O:int_raster_focal_max",kwnames,&obj1)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"O:int_raster_focal_max",&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_int_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "int_raster_focal_max" "', argument " "1"" of type '" "Raster< int > *""'"); 
   }
   arg1 = reinterpret_cast< Raster< int > * >(argp1);
-  if (obj1) {
-    ecode2 = SWIG_AsVal_int(obj1, &val2);
-    if (!SWIG_IsOK(ecode2)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "int_raster_focal_max" "', argument " "2"" of type '" "int""'");
-    } 
-    arg2 = static_cast< int >(val2);
-  }
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "int_raster_focal_max" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
   {
     try {
       result = (arg1)->focal_max(arg2);
@@ -17571,33 +18961,105 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_int_raster_focal_mean(PyObject *self, PyObject *args, PyObject *kwargs) {
+SWIGINTERN PyObject *_wrap_int_raster_focal_max__SWIG_1(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   Raster< int > *arg1 = (Raster< int > *) 0 ;
-  int arg2 = (int) 3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  SwigValueWrapper< Raster< int > > result;
+  
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_int_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "int_raster_focal_max" "', argument " "1"" of type '" "Raster< int > *""'"); 
+  }
+  arg1 = reinterpret_cast< Raster< int > * >(argp1);
+  {
+    try {
+      result = (arg1)->focal_max();
+    } 
+    catch (std::runtime_error& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what() );
+    }
+    catch (std::exception& e) {
+      SWIG_exception(SWIG_UnknownError, e.what());
+    }
+  }
+  resultobj = SWIG_NewPointerObj((new Raster< int >(static_cast< const Raster< int >& >(result))), SWIGTYPE_p_RasterT_int_t, SWIG_POINTER_OWN |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_int_raster_focal_max(PyObject *self, PyObject *args) {
+  int argc;
+  PyObject *argv[3];
+  int ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? (int)PyObject_Length(args) : 0;
+  argv[0] = self;
+  for (ii = 0; (ii < 1) && (ii < argc); ii++) {
+    argv[ii + 1] = PyTuple_GET_ITEM(args,ii);
+  }
+  argc++;
+  if (argc == 1) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_int_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_int_raster_focal_max__SWIG_1(self, args);
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_int_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        int res = SWIG_AsVal_int(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        return _wrap_int_raster_focal_max__SWIG_0(self, args);
+      }
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'int_raster_focal_max'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    Raster< int >::focal_max(int)\n"
+    "    Raster< int >::focal_max()\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_int_raster_focal_mean__SWIG_0(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  Raster< int > *arg1 = (Raster< int > *) 0 ;
+  int arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int val2 ;
   int ecode2 = 0 ;
   PyObject * obj1 = 0 ;
-  char *  kwnames[] = {
-    (char *) "n", NULL 
-  };
   SwigValueWrapper< Raster< int > > result;
   
-  if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"|O:int_raster_focal_mean",kwnames,&obj1)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"O:int_raster_focal_mean",&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_int_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "int_raster_focal_mean" "', argument " "1"" of type '" "Raster< int > *""'"); 
   }
   arg1 = reinterpret_cast< Raster< int > * >(argp1);
-  if (obj1) {
-    ecode2 = SWIG_AsVal_int(obj1, &val2);
-    if (!SWIG_IsOK(ecode2)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "int_raster_focal_mean" "', argument " "2"" of type '" "int""'");
-    } 
-    arg2 = static_cast< int >(val2);
-  }
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "int_raster_focal_mean" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
   {
     try {
       result = (arg1)->focal_mean(arg2);
@@ -17616,33 +19078,105 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_int_raster_focal_stdev(PyObject *self, PyObject *args, PyObject *kwargs) {
+SWIGINTERN PyObject *_wrap_int_raster_focal_mean__SWIG_1(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   Raster< int > *arg1 = (Raster< int > *) 0 ;
-  int arg2 = (int) 3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  SwigValueWrapper< Raster< int > > result;
+  
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_int_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "int_raster_focal_mean" "', argument " "1"" of type '" "Raster< int > *""'"); 
+  }
+  arg1 = reinterpret_cast< Raster< int > * >(argp1);
+  {
+    try {
+      result = (arg1)->focal_mean();
+    } 
+    catch (std::runtime_error& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what() );
+    }
+    catch (std::exception& e) {
+      SWIG_exception(SWIG_UnknownError, e.what());
+    }
+  }
+  resultobj = SWIG_NewPointerObj((new Raster< int >(static_cast< const Raster< int >& >(result))), SWIGTYPE_p_RasterT_int_t, SWIG_POINTER_OWN |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_int_raster_focal_mean(PyObject *self, PyObject *args) {
+  int argc;
+  PyObject *argv[3];
+  int ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? (int)PyObject_Length(args) : 0;
+  argv[0] = self;
+  for (ii = 0; (ii < 1) && (ii < argc); ii++) {
+    argv[ii + 1] = PyTuple_GET_ITEM(args,ii);
+  }
+  argc++;
+  if (argc == 1) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_int_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_int_raster_focal_mean__SWIG_1(self, args);
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_int_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        int res = SWIG_AsVal_int(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        return _wrap_int_raster_focal_mean__SWIG_0(self, args);
+      }
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'int_raster_focal_mean'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    Raster< int >::focal_mean(int)\n"
+    "    Raster< int >::focal_mean()\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_int_raster_focal_stdev__SWIG_0(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  Raster< int > *arg1 = (Raster< int > *) 0 ;
+  int arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int val2 ;
   int ecode2 = 0 ;
   PyObject * obj1 = 0 ;
-  char *  kwnames[] = {
-    (char *) "n", NULL 
-  };
   SwigValueWrapper< Raster< int > > result;
   
-  if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"|O:int_raster_focal_stdev",kwnames,&obj1)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"O:int_raster_focal_stdev",&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_int_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "int_raster_focal_stdev" "', argument " "1"" of type '" "Raster< int > *""'"); 
   }
   arg1 = reinterpret_cast< Raster< int > * >(argp1);
-  if (obj1) {
-    ecode2 = SWIG_AsVal_int(obj1, &val2);
-    if (!SWIG_IsOK(ecode2)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "int_raster_focal_stdev" "', argument " "2"" of type '" "int""'");
-    } 
-    arg2 = static_cast< int >(val2);
-  }
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "int_raster_focal_stdev" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
   {
     try {
       result = (arg1)->focal_stdev(arg2);
@@ -17661,33 +19195,105 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_int_raster_focal_majority(PyObject *self, PyObject *args, PyObject *kwargs) {
+SWIGINTERN PyObject *_wrap_int_raster_focal_stdev__SWIG_1(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   Raster< int > *arg1 = (Raster< int > *) 0 ;
-  int arg2 = (int) 3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  SwigValueWrapper< Raster< int > > result;
+  
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_int_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "int_raster_focal_stdev" "', argument " "1"" of type '" "Raster< int > *""'"); 
+  }
+  arg1 = reinterpret_cast< Raster< int > * >(argp1);
+  {
+    try {
+      result = (arg1)->focal_stdev();
+    } 
+    catch (std::runtime_error& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what() );
+    }
+    catch (std::exception& e) {
+      SWIG_exception(SWIG_UnknownError, e.what());
+    }
+  }
+  resultobj = SWIG_NewPointerObj((new Raster< int >(static_cast< const Raster< int >& >(result))), SWIGTYPE_p_RasterT_int_t, SWIG_POINTER_OWN |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_int_raster_focal_stdev(PyObject *self, PyObject *args) {
+  int argc;
+  PyObject *argv[3];
+  int ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? (int)PyObject_Length(args) : 0;
+  argv[0] = self;
+  for (ii = 0; (ii < 1) && (ii < argc); ii++) {
+    argv[ii + 1] = PyTuple_GET_ITEM(args,ii);
+  }
+  argc++;
+  if (argc == 1) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_int_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_int_raster_focal_stdev__SWIG_1(self, args);
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_int_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        int res = SWIG_AsVal_int(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        return _wrap_int_raster_focal_stdev__SWIG_0(self, args);
+      }
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'int_raster_focal_stdev'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    Raster< int >::focal_stdev(int)\n"
+    "    Raster< int >::focal_stdev()\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_int_raster_focal_majority__SWIG_0(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  Raster< int > *arg1 = (Raster< int > *) 0 ;
+  int arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int val2 ;
   int ecode2 = 0 ;
   PyObject * obj1 = 0 ;
-  char *  kwnames[] = {
-    (char *) "n", NULL 
-  };
   SwigValueWrapper< Raster< int > > result;
   
-  if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"|O:int_raster_focal_majority",kwnames,&obj1)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"O:int_raster_focal_majority",&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_int_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "int_raster_focal_majority" "', argument " "1"" of type '" "Raster< int > *""'"); 
   }
   arg1 = reinterpret_cast< Raster< int > * >(argp1);
-  if (obj1) {
-    ecode2 = SWIG_AsVal_int(obj1, &val2);
-    if (!SWIG_IsOK(ecode2)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "int_raster_focal_majority" "', argument " "2"" of type '" "int""'");
-    } 
-    arg2 = static_cast< int >(val2);
-  }
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "int_raster_focal_majority" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
   {
     try {
       result = (arg1)->focal_majority(arg2);
@@ -17706,33 +19312,105 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_int_raster_focal_mean_difference(PyObject *self, PyObject *args, PyObject *kwargs) {
+SWIGINTERN PyObject *_wrap_int_raster_focal_majority__SWIG_1(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   Raster< int > *arg1 = (Raster< int > *) 0 ;
-  int arg2 = (int) 3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  SwigValueWrapper< Raster< int > > result;
+  
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_int_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "int_raster_focal_majority" "', argument " "1"" of type '" "Raster< int > *""'"); 
+  }
+  arg1 = reinterpret_cast< Raster< int > * >(argp1);
+  {
+    try {
+      result = (arg1)->focal_majority();
+    } 
+    catch (std::runtime_error& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what() );
+    }
+    catch (std::exception& e) {
+      SWIG_exception(SWIG_UnknownError, e.what());
+    }
+  }
+  resultobj = SWIG_NewPointerObj((new Raster< int >(static_cast< const Raster< int >& >(result))), SWIGTYPE_p_RasterT_int_t, SWIG_POINTER_OWN |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_int_raster_focal_majority(PyObject *self, PyObject *args) {
+  int argc;
+  PyObject *argv[3];
+  int ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? (int)PyObject_Length(args) : 0;
+  argv[0] = self;
+  for (ii = 0; (ii < 1) && (ii < argc); ii++) {
+    argv[ii + 1] = PyTuple_GET_ITEM(args,ii);
+  }
+  argc++;
+  if (argc == 1) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_int_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_int_raster_focal_majority__SWIG_1(self, args);
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_int_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        int res = SWIG_AsVal_int(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        return _wrap_int_raster_focal_majority__SWIG_0(self, args);
+      }
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'int_raster_focal_majority'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    Raster< int >::focal_majority(int)\n"
+    "    Raster< int >::focal_majority()\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_int_raster_focal_mean_difference__SWIG_0(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  Raster< int > *arg1 = (Raster< int > *) 0 ;
+  int arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int val2 ;
   int ecode2 = 0 ;
   PyObject * obj1 = 0 ;
-  char *  kwnames[] = {
-    (char *) "n", NULL 
-  };
   SwigValueWrapper< Raster< int > > result;
   
-  if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"|O:int_raster_focal_mean_difference",kwnames,&obj1)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"O:int_raster_focal_mean_difference",&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_int_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "int_raster_focal_mean_difference" "', argument " "1"" of type '" "Raster< int > *""'"); 
   }
   arg1 = reinterpret_cast< Raster< int > * >(argp1);
-  if (obj1) {
-    ecode2 = SWIG_AsVal_int(obj1, &val2);
-    if (!SWIG_IsOK(ecode2)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "int_raster_focal_mean_difference" "', argument " "2"" of type '" "int""'");
-    } 
-    arg2 = static_cast< int >(val2);
-  }
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "int_raster_focal_mean_difference" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
   {
     try {
       result = (arg1)->focal_mean_difference(arg2);
@@ -17751,33 +19429,105 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_int_raster_downscale_mean(PyObject *self, PyObject *args, PyObject *kwargs) {
+SWIGINTERN PyObject *_wrap_int_raster_focal_mean_difference__SWIG_1(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   Raster< int > *arg1 = (Raster< int > *) 0 ;
-  int arg2 = (int) 3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  SwigValueWrapper< Raster< int > > result;
+  
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_int_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "int_raster_focal_mean_difference" "', argument " "1"" of type '" "Raster< int > *""'"); 
+  }
+  arg1 = reinterpret_cast< Raster< int > * >(argp1);
+  {
+    try {
+      result = (arg1)->focal_mean_difference();
+    } 
+    catch (std::runtime_error& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what() );
+    }
+    catch (std::exception& e) {
+      SWIG_exception(SWIG_UnknownError, e.what());
+    }
+  }
+  resultobj = SWIG_NewPointerObj((new Raster< int >(static_cast< const Raster< int >& >(result))), SWIGTYPE_p_RasterT_int_t, SWIG_POINTER_OWN |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_int_raster_focal_mean_difference(PyObject *self, PyObject *args) {
+  int argc;
+  PyObject *argv[3];
+  int ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? (int)PyObject_Length(args) : 0;
+  argv[0] = self;
+  for (ii = 0; (ii < 1) && (ii < argc); ii++) {
+    argv[ii + 1] = PyTuple_GET_ITEM(args,ii);
+  }
+  argc++;
+  if (argc == 1) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_int_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_int_raster_focal_mean_difference__SWIG_1(self, args);
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_int_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        int res = SWIG_AsVal_int(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        return _wrap_int_raster_focal_mean_difference__SWIG_0(self, args);
+      }
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'int_raster_focal_mean_difference'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    Raster< int >::focal_mean_difference(int)\n"
+    "    Raster< int >::focal_mean_difference()\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_int_raster_downscale_mean__SWIG_0(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  Raster< int > *arg1 = (Raster< int > *) 0 ;
+  int arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int val2 ;
   int ecode2 = 0 ;
   PyObject * obj1 = 0 ;
-  char *  kwnames[] = {
-    (char *) "n", NULL 
-  };
   SwigValueWrapper< Raster< int > > result;
   
-  if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"|O:int_raster_downscale_mean",kwnames,&obj1)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"O:int_raster_downscale_mean",&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_int_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "int_raster_downscale_mean" "', argument " "1"" of type '" "Raster< int > *""'"); 
   }
   arg1 = reinterpret_cast< Raster< int > * >(argp1);
-  if (obj1) {
-    ecode2 = SWIG_AsVal_int(obj1, &val2);
-    if (!SWIG_IsOK(ecode2)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "int_raster_downscale_mean" "', argument " "2"" of type '" "int""'");
-    } 
-    arg2 = static_cast< int >(val2);
-  }
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "int_raster_downscale_mean" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
   {
     try {
       result = (arg1)->downscale_mean(arg2);
@@ -17796,33 +19546,105 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_int_raster_downscale_min(PyObject *self, PyObject *args, PyObject *kwargs) {
+SWIGINTERN PyObject *_wrap_int_raster_downscale_mean__SWIG_1(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   Raster< int > *arg1 = (Raster< int > *) 0 ;
-  int arg2 = (int) 3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  SwigValueWrapper< Raster< int > > result;
+  
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_int_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "int_raster_downscale_mean" "', argument " "1"" of type '" "Raster< int > *""'"); 
+  }
+  arg1 = reinterpret_cast< Raster< int > * >(argp1);
+  {
+    try {
+      result = (arg1)->downscale_mean();
+    } 
+    catch (std::runtime_error& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what() );
+    }
+    catch (std::exception& e) {
+      SWIG_exception(SWIG_UnknownError, e.what());
+    }
+  }
+  resultobj = SWIG_NewPointerObj((new Raster< int >(static_cast< const Raster< int >& >(result))), SWIGTYPE_p_RasterT_int_t, SWIG_POINTER_OWN |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_int_raster_downscale_mean(PyObject *self, PyObject *args) {
+  int argc;
+  PyObject *argv[3];
+  int ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? (int)PyObject_Length(args) : 0;
+  argv[0] = self;
+  for (ii = 0; (ii < 1) && (ii < argc); ii++) {
+    argv[ii + 1] = PyTuple_GET_ITEM(args,ii);
+  }
+  argc++;
+  if (argc == 1) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_int_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_int_raster_downscale_mean__SWIG_1(self, args);
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_int_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        int res = SWIG_AsVal_int(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        return _wrap_int_raster_downscale_mean__SWIG_0(self, args);
+      }
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'int_raster_downscale_mean'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    Raster< int >::downscale_mean(int)\n"
+    "    Raster< int >::downscale_mean()\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_int_raster_downscale_min__SWIG_0(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  Raster< int > *arg1 = (Raster< int > *) 0 ;
+  int arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int val2 ;
   int ecode2 = 0 ;
   PyObject * obj1 = 0 ;
-  char *  kwnames[] = {
-    (char *) "n", NULL 
-  };
   SwigValueWrapper< Raster< int > > result;
   
-  if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"|O:int_raster_downscale_min",kwnames,&obj1)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"O:int_raster_downscale_min",&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_int_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "int_raster_downscale_min" "', argument " "1"" of type '" "Raster< int > *""'"); 
   }
   arg1 = reinterpret_cast< Raster< int > * >(argp1);
-  if (obj1) {
-    ecode2 = SWIG_AsVal_int(obj1, &val2);
-    if (!SWIG_IsOK(ecode2)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "int_raster_downscale_min" "', argument " "2"" of type '" "int""'");
-    } 
-    arg2 = static_cast< int >(val2);
-  }
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "int_raster_downscale_min" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
   {
     try {
       result = (arg1)->downscale_min(arg2);
@@ -17841,33 +19663,105 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_int_raster_downscale_max(PyObject *self, PyObject *args, PyObject *kwargs) {
+SWIGINTERN PyObject *_wrap_int_raster_downscale_min__SWIG_1(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   Raster< int > *arg1 = (Raster< int > *) 0 ;
-  int arg2 = (int) 3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  SwigValueWrapper< Raster< int > > result;
+  
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_int_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "int_raster_downscale_min" "', argument " "1"" of type '" "Raster< int > *""'"); 
+  }
+  arg1 = reinterpret_cast< Raster< int > * >(argp1);
+  {
+    try {
+      result = (arg1)->downscale_min();
+    } 
+    catch (std::runtime_error& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what() );
+    }
+    catch (std::exception& e) {
+      SWIG_exception(SWIG_UnknownError, e.what());
+    }
+  }
+  resultobj = SWIG_NewPointerObj((new Raster< int >(static_cast< const Raster< int >& >(result))), SWIGTYPE_p_RasterT_int_t, SWIG_POINTER_OWN |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_int_raster_downscale_min(PyObject *self, PyObject *args) {
+  int argc;
+  PyObject *argv[3];
+  int ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? (int)PyObject_Length(args) : 0;
+  argv[0] = self;
+  for (ii = 0; (ii < 1) && (ii < argc); ii++) {
+    argv[ii + 1] = PyTuple_GET_ITEM(args,ii);
+  }
+  argc++;
+  if (argc == 1) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_int_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_int_raster_downscale_min__SWIG_1(self, args);
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_int_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        int res = SWIG_AsVal_int(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        return _wrap_int_raster_downscale_min__SWIG_0(self, args);
+      }
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'int_raster_downscale_min'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    Raster< int >::downscale_min(int)\n"
+    "    Raster< int >::downscale_min()\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_int_raster_downscale_max__SWIG_0(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  Raster< int > *arg1 = (Raster< int > *) 0 ;
+  int arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int val2 ;
   int ecode2 = 0 ;
   PyObject * obj1 = 0 ;
-  char *  kwnames[] = {
-    (char *) "n", NULL 
-  };
   SwigValueWrapper< Raster< int > > result;
   
-  if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"|O:int_raster_downscale_max",kwnames,&obj1)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"O:int_raster_downscale_max",&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_int_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "int_raster_downscale_max" "', argument " "1"" of type '" "Raster< int > *""'"); 
   }
   arg1 = reinterpret_cast< Raster< int > * >(argp1);
-  if (obj1) {
-    ecode2 = SWIG_AsVal_int(obj1, &val2);
-    if (!SWIG_IsOK(ecode2)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "int_raster_downscale_max" "', argument " "2"" of type '" "int""'");
-    } 
-    arg2 = static_cast< int >(val2);
-  }
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "int_raster_downscale_max" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
   {
     try {
       result = (arg1)->downscale_max(arg2);
@@ -17886,33 +19780,105 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_int_raster_downscale_majority(PyObject *self, PyObject *args, PyObject *kwargs) {
+SWIGINTERN PyObject *_wrap_int_raster_downscale_max__SWIG_1(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   Raster< int > *arg1 = (Raster< int > *) 0 ;
-  int arg2 = (int) 3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  SwigValueWrapper< Raster< int > > result;
+  
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_int_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "int_raster_downscale_max" "', argument " "1"" of type '" "Raster< int > *""'"); 
+  }
+  arg1 = reinterpret_cast< Raster< int > * >(argp1);
+  {
+    try {
+      result = (arg1)->downscale_max();
+    } 
+    catch (std::runtime_error& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what() );
+    }
+    catch (std::exception& e) {
+      SWIG_exception(SWIG_UnknownError, e.what());
+    }
+  }
+  resultobj = SWIG_NewPointerObj((new Raster< int >(static_cast< const Raster< int >& >(result))), SWIGTYPE_p_RasterT_int_t, SWIG_POINTER_OWN |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_int_raster_downscale_max(PyObject *self, PyObject *args) {
+  int argc;
+  PyObject *argv[3];
+  int ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? (int)PyObject_Length(args) : 0;
+  argv[0] = self;
+  for (ii = 0; (ii < 1) && (ii < argc); ii++) {
+    argv[ii + 1] = PyTuple_GET_ITEM(args,ii);
+  }
+  argc++;
+  if (argc == 1) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_int_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_int_raster_downscale_max__SWIG_1(self, args);
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_int_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        int res = SWIG_AsVal_int(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        return _wrap_int_raster_downscale_max__SWIG_0(self, args);
+      }
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'int_raster_downscale_max'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    Raster< int >::downscale_max(int)\n"
+    "    Raster< int >::downscale_max()\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_int_raster_downscale_majority__SWIG_0(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  Raster< int > *arg1 = (Raster< int > *) 0 ;
+  int arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int val2 ;
   int ecode2 = 0 ;
   PyObject * obj1 = 0 ;
-  char *  kwnames[] = {
-    (char *) "n", NULL 
-  };
   SwigValueWrapper< Raster< int > > result;
   
-  if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"|O:int_raster_downscale_majority",kwnames,&obj1)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"O:int_raster_downscale_majority",&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_int_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "int_raster_downscale_majority" "', argument " "1"" of type '" "Raster< int > *""'"); 
   }
   arg1 = reinterpret_cast< Raster< int > * >(argp1);
-  if (obj1) {
-    ecode2 = SWIG_AsVal_int(obj1, &val2);
-    if (!SWIG_IsOK(ecode2)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "int_raster_downscale_majority" "', argument " "2"" of type '" "int""'");
-    } 
-    arg2 = static_cast< int >(val2);
-  }
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "int_raster_downscale_majority" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
   {
     try {
       result = (arg1)->downscale_majority(arg2);
@@ -17931,33 +19897,105 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_int_raster_downscale_stdev(PyObject *self, PyObject *args, PyObject *kwargs) {
+SWIGINTERN PyObject *_wrap_int_raster_downscale_majority__SWIG_1(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   Raster< int > *arg1 = (Raster< int > *) 0 ;
-  int arg2 = (int) 3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  SwigValueWrapper< Raster< int > > result;
+  
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_int_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "int_raster_downscale_majority" "', argument " "1"" of type '" "Raster< int > *""'"); 
+  }
+  arg1 = reinterpret_cast< Raster< int > * >(argp1);
+  {
+    try {
+      result = (arg1)->downscale_majority();
+    } 
+    catch (std::runtime_error& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what() );
+    }
+    catch (std::exception& e) {
+      SWIG_exception(SWIG_UnknownError, e.what());
+    }
+  }
+  resultobj = SWIG_NewPointerObj((new Raster< int >(static_cast< const Raster< int >& >(result))), SWIGTYPE_p_RasterT_int_t, SWIG_POINTER_OWN |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_int_raster_downscale_majority(PyObject *self, PyObject *args) {
+  int argc;
+  PyObject *argv[3];
+  int ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? (int)PyObject_Length(args) : 0;
+  argv[0] = self;
+  for (ii = 0; (ii < 1) && (ii < argc); ii++) {
+    argv[ii + 1] = PyTuple_GET_ITEM(args,ii);
+  }
+  argc++;
+  if (argc == 1) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_int_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_int_raster_downscale_majority__SWIG_1(self, args);
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_int_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        int res = SWIG_AsVal_int(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        return _wrap_int_raster_downscale_majority__SWIG_0(self, args);
+      }
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'int_raster_downscale_majority'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    Raster< int >::downscale_majority(int)\n"
+    "    Raster< int >::downscale_majority()\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_int_raster_downscale_stdev__SWIG_0(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  Raster< int > *arg1 = (Raster< int > *) 0 ;
+  int arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int val2 ;
   int ecode2 = 0 ;
   PyObject * obj1 = 0 ;
-  char *  kwnames[] = {
-    (char *) "n", NULL 
-  };
   SwigValueWrapper< Raster< int > > result;
   
-  if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"|O:int_raster_downscale_stdev",kwnames,&obj1)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"O:int_raster_downscale_stdev",&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_int_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "int_raster_downscale_stdev" "', argument " "1"" of type '" "Raster< int > *""'"); 
   }
   arg1 = reinterpret_cast< Raster< int > * >(argp1);
-  if (obj1) {
-    ecode2 = SWIG_AsVal_int(obj1, &val2);
-    if (!SWIG_IsOK(ecode2)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "int_raster_downscale_stdev" "', argument " "2"" of type '" "int""'");
-    } 
-    arg2 = static_cast< int >(val2);
-  }
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "int_raster_downscale_stdev" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
   {
     try {
       result = (arg1)->downscale_stdev(arg2);
@@ -17976,33 +20014,105 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_int_raster_downscale_mean_difference(PyObject *self, PyObject *args, PyObject *kwargs) {
+SWIGINTERN PyObject *_wrap_int_raster_downscale_stdev__SWIG_1(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   Raster< int > *arg1 = (Raster< int > *) 0 ;
-  int arg2 = (int) 3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  SwigValueWrapper< Raster< int > > result;
+  
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_int_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "int_raster_downscale_stdev" "', argument " "1"" of type '" "Raster< int > *""'"); 
+  }
+  arg1 = reinterpret_cast< Raster< int > * >(argp1);
+  {
+    try {
+      result = (arg1)->downscale_stdev();
+    } 
+    catch (std::runtime_error& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what() );
+    }
+    catch (std::exception& e) {
+      SWIG_exception(SWIG_UnknownError, e.what());
+    }
+  }
+  resultobj = SWIG_NewPointerObj((new Raster< int >(static_cast< const Raster< int >& >(result))), SWIGTYPE_p_RasterT_int_t, SWIG_POINTER_OWN |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_int_raster_downscale_stdev(PyObject *self, PyObject *args) {
+  int argc;
+  PyObject *argv[3];
+  int ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? (int)PyObject_Length(args) : 0;
+  argv[0] = self;
+  for (ii = 0; (ii < 1) && (ii < argc); ii++) {
+    argv[ii + 1] = PyTuple_GET_ITEM(args,ii);
+  }
+  argc++;
+  if (argc == 1) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_int_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_int_raster_downscale_stdev__SWIG_1(self, args);
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_int_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        int res = SWIG_AsVal_int(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        return _wrap_int_raster_downscale_stdev__SWIG_0(self, args);
+      }
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'int_raster_downscale_stdev'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    Raster< int >::downscale_stdev(int)\n"
+    "    Raster< int >::downscale_stdev()\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_int_raster_downscale_mean_difference__SWIG_0(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  Raster< int > *arg1 = (Raster< int > *) 0 ;
+  int arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int val2 ;
   int ecode2 = 0 ;
   PyObject * obj1 = 0 ;
-  char *  kwnames[] = {
-    (char *) "n", NULL 
-  };
   SwigValueWrapper< Raster< int > > result;
   
-  if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"|O:int_raster_downscale_mean_difference",kwnames,&obj1)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"O:int_raster_downscale_mean_difference",&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_int_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "int_raster_downscale_mean_difference" "', argument " "1"" of type '" "Raster< int > *""'"); 
   }
   arg1 = reinterpret_cast< Raster< int > * >(argp1);
-  if (obj1) {
-    ecode2 = SWIG_AsVal_int(obj1, &val2);
-    if (!SWIG_IsOK(ecode2)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "int_raster_downscale_mean_difference" "', argument " "2"" of type '" "int""'");
-    } 
-    arg2 = static_cast< int >(val2);
-  }
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "int_raster_downscale_mean_difference" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
   {
     try {
       result = (arg1)->downscale_mean_difference(arg2);
@@ -18021,15 +20131,91 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_int_raster_downscale_mean_difference__SWIG_1(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  Raster< int > *arg1 = (Raster< int > *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  SwigValueWrapper< Raster< int > > result;
+  
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_int_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "int_raster_downscale_mean_difference" "', argument " "1"" of type '" "Raster< int > *""'"); 
+  }
+  arg1 = reinterpret_cast< Raster< int > * >(argp1);
+  {
+    try {
+      result = (arg1)->downscale_mean_difference();
+    } 
+    catch (std::runtime_error& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what() );
+    }
+    catch (std::exception& e) {
+      SWIG_exception(SWIG_UnknownError, e.what());
+    }
+  }
+  resultobj = SWIG_NewPointerObj((new Raster< int >(static_cast< const Raster< int >& >(result))), SWIGTYPE_p_RasterT_int_t, SWIG_POINTER_OWN |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_int_raster_downscale_mean_difference(PyObject *self, PyObject *args) {
+  int argc;
+  PyObject *argv[3];
+  int ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? (int)PyObject_Length(args) : 0;
+  argv[0] = self;
+  for (ii = 0; (ii < 1) && (ii < argc); ii++) {
+    argv[ii + 1] = PyTuple_GET_ITEM(args,ii);
+  }
+  argc++;
+  if (argc == 1) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_int_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_int_raster_downscale_mean_difference__SWIG_1(self, args);
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_int_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        int res = SWIG_AsVal_int(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        return _wrap_int_raster_downscale_mean_difference__SWIG_0(self, args);
+      }
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'int_raster_downscale_mean_difference'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    Raster< int >::downscale_mean_difference(int)\n"
+    "    Raster< int >::downscale_mean_difference()\n");
+  return 0;
+}
+
+
 SWIGINTERN PyObject *_wrap_int_raster_clone(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   Raster< int > *arg1 = (Raster< int > *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[1] ;
   SwigValueWrapper< Raster< int > > result;
   
-  if (!SWIG_Python_UnpackTuple(args,"int_raster_clone",0,0,0)) SWIG_fail;
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_int_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "int_raster_clone" "', argument " "1"" of type '" "Raster< int > const *""'"); 
@@ -18053,7 +20239,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_int_raster_GetData__SWIG_2(PyObject *self, int nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_int_raster_GetData__SWIG_2(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   Raster< int > *arg1 = (Raster< int > *) 0 ;
   std::vector< double > arg2 ;
@@ -18064,16 +20250,18 @@ SWIGINTERN PyObject *_wrap_int_raster_GetData__SWIG_2(PyObject *self, int nobjs,
   int res2 = 0 ;
   void *argp3 ;
   int res3 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
   std::vector< int > result;
   
-  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"OO:int_raster_GetData",&obj1,&obj2)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_int_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "int_raster_GetData" "', argument " "1"" of type '" "Raster< int > *""'"); 
   }
   arg1 = reinterpret_cast< Raster< int > * >(argp1);
   {
-    res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_std__vectorT_double_t,  0  | 0);
+    res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_std__vectorT_double_t,  0  | 0);
     if (!SWIG_IsOK(res2)) {
       SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "int_raster_GetData" "', argument " "2"" of type '" "std::vector< double >""'"); 
     }  
@@ -18086,7 +20274,7 @@ SWIGINTERN PyObject *_wrap_int_raster_GetData__SWIG_2(PyObject *self, int nobjs,
     }
   }
   {
-    res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_std__vectorT_double_t,  0  | 0);
+    res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_std__vectorT_double_t,  0  | 0);
     if (!SWIG_IsOK(res3)) {
       SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "int_raster_GetData" "', argument " "3"" of type '" "std::vector< double >""'"); 
     }  
@@ -18119,139 +20307,72 @@ fail:
 SWIGINTERN PyObject *_wrap_int_raster_GetData(PyObject *self, PyObject *args) {
   int argc;
   PyObject *argv[4];
+  int ii;
   
-  if (!(argc = SWIG_Python_UnpackTuple(args,"int_raster_GetData",0,3,argv+1))) SWIG_fail;
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? (int)PyObject_Length(args) : 0;
   argv[0] = self;
-  {
-    unsigned long _index = 0;
-    SWIG_TypeRank _rank = 0; 
-    if (argc == 3) {
-      SWIG_TypeRank _ranki = 0;
-      SWIG_TypeRank _rankm = 0;
-      SWIG_TypeRank _pi = 1;
-      int _v = 0;
-      {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_int_t, 0);
-        _v = SWIG_CheckState(res);
-      }
-      if (!_v) goto check_1;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      {
-        int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_std__vectorT_double_t, 0);
-        _v = SWIG_CheckState(res);
-      }
-      if (!_v) goto check_1;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      {
+  for (ii = 0; (ii < 2) && (ii < argc); ii++) {
+    argv[ii + 1] = PyTuple_GET_ITEM(args,ii);
+  }
+  argc++;
+  if (argc == 3) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_int_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_std__vectorT_double_t, 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
         int res = SWIG_ConvertPtr(argv[2], 0, SWIGTYPE_p_std__vectorT_double_t, 0);
         _v = SWIG_CheckState(res);
-      }
-      if (!_v) goto check_1;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      if (!_index || (_ranki < _rank)) {
-        _rank = _ranki; _index = 1;
-        if (_rank == _rankm) goto dispatch;
-      }
-    }
-  check_1:
-    
-    if (argc == 3) {
-      SWIG_TypeRank _ranki = 0;
-      SWIG_TypeRank _rankm = 0;
-      SWIG_TypeRank _pi = 1;
-      int _v = 0;
-      {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_int_t, 0);
-        _v = SWIG_CheckState(res);
-      }
-      if (!_v) goto check_2;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      {
-        {
-          int res = SWIG_AsVal_int(argv[1], NULL);
-          _v = SWIG_CheckState(res);
+        if (_v) {
+          return _wrap_int_raster_GetData__SWIG_2(self, args);
         }
       }
-      if (!_v) goto check_2;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
+    }
+  }
+  if (argc == 3) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_int_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
       {
+        int res = SWIG_AsVal_int(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
         {
           int res = SWIG_AsVal_int(argv[2], NULL);
           _v = SWIG_CheckState(res);
         }
-      }
-      if (!_v) goto check_2;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      if (!_index || (_ranki < _rank)) {
-        _rank = _ranki; _index = 2;
-        if (_rank == _rankm) goto dispatch;
-      }
-    }
-  check_2:
-    
-    if (argc == 3) {
-      SWIG_TypeRank _ranki = 0;
-      SWIG_TypeRank _rankm = 0;
-      SWIG_TypeRank _pi = 1;
-      int _v = 0;
-      {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_int_t, 0);
-        _v = SWIG_CheckState(res);
-      }
-      if (!_v) goto check_3;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      {
-        {
-          int res = SWIG_AsVal_double(argv[1], NULL);
-          _v = SWIG_CheckState(res);
+        if (_v) {
+          return _wrap_int_raster_GetData__SWIG_1(self, args);
         }
       }
-      if (!_v) goto check_3;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
+    }
+  }
+  if (argc == 3) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RasterT_int_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
       {
+        int res = SWIG_AsVal_double(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
         {
           int res = SWIG_AsVal_double(argv[2], NULL);
           _v = SWIG_CheckState(res);
         }
+        if (_v) {
+          return _wrap_int_raster_GetData__SWIG_0(self, args);
+        }
       }
-      if (!_v) goto check_3;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      if (!_index || (_ranki < _rank)) {
-        _rank = _ranki; _index = 3;
-        if (_rank == _rankm) goto dispatch;
-      }
-    }
-  check_3:
-    
-  dispatch:
-    switch(_index) {
-    case 1:
-      return _wrap_int_raster_GetData__SWIG_2(self, argc, argv);
-    case 2:
-      return _wrap_int_raster_GetData__SWIG_1(self, argc, argv);
-    case 3:
-      return _wrap_int_raster_GetData__SWIG_0(self, argc, argv);
     }
   }
   
@@ -18270,10 +20391,9 @@ SWIGINTERN PyObject *_wrap_int_raster_ToBuffer(PyObject *self, PyObject *args) {
   Raster< int > *arg1 = (Raster< int > *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[1] ;
   std::string result;
   
-  if (!SWIG_Python_UnpackTuple(args,"int_raster_ToBuffer",0,0,0)) SWIG_fail;
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_int_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "int_raster_ToBuffer" "', argument " "1"" of type '" "Raster< int > const *""'"); 
@@ -18297,7 +20417,136 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_int_raster___radd__(PyObject *self, PyObject *args, PyObject *kwargs) {
+SWIGINTERN PyObject *_wrap_int_raster_load__SWIG_0(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  std::string *arg1 = 0 ;
+  bool arg2 ;
+  int res1 = SWIG_OLDOBJ ;
+  bool val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  SwigValueWrapper< Raster< int > > result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:int_raster_load",&obj0,&obj1)) SWIG_fail;
+  {
+    std::string *ptr = (std::string *)0;
+    res1 = SWIG_AsPtr_std_string(obj0, &ptr);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "int_raster_load" "', argument " "1"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "int_raster_load" "', argument " "1"" of type '" "std::string const &""'"); 
+    }
+    arg1 = ptr;
+  }
+  ecode2 = SWIG_AsVal_bool(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "int_raster_load" "', argument " "2"" of type '" "bool""'");
+  } 
+  arg2 = static_cast< bool >(val2);
+  {
+    try {
+      result = Raster< int >::SWIGTEMPLATEDISAMBIGUATOR load((std::string const &)*arg1,arg2);
+    } 
+    catch (std::runtime_error& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what() );
+    }
+    catch (std::exception& e) {
+      SWIG_exception(SWIG_UnknownError, e.what());
+    }
+  }
+  resultobj = SWIG_NewPointerObj((new Raster< int >(static_cast< const Raster< int >& >(result))), SWIGTYPE_p_RasterT_int_t, SWIG_POINTER_OWN |  0 );
+  if (SWIG_IsNewObj(res1)) delete arg1;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res1)) delete arg1;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_int_raster_load__SWIG_1(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  std::string *arg1 = 0 ;
+  int res1 = SWIG_OLDOBJ ;
+  PyObject * obj0 = 0 ;
+  SwigValueWrapper< Raster< int > > result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:int_raster_load",&obj0)) SWIG_fail;
+  {
+    std::string *ptr = (std::string *)0;
+    res1 = SWIG_AsPtr_std_string(obj0, &ptr);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "int_raster_load" "', argument " "1"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "int_raster_load" "', argument " "1"" of type '" "std::string const &""'"); 
+    }
+    arg1 = ptr;
+  }
+  {
+    try {
+      result = Raster< int >::SWIGTEMPLATEDISAMBIGUATOR load((std::string const &)*arg1);
+    } 
+    catch (std::runtime_error& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what() );
+    }
+    catch (std::exception& e) {
+      SWIG_exception(SWIG_UnknownError, e.what());
+    }
+  }
+  resultobj = SWIG_NewPointerObj((new Raster< int >(static_cast< const Raster< int >& >(result))), SWIGTYPE_p_RasterT_int_t, SWIG_POINTER_OWN |  0 );
+  if (SWIG_IsNewObj(res1)) delete arg1;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res1)) delete arg1;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_int_raster_load(PyObject *self, PyObject *args) {
+  int argc;
+  PyObject *argv[3];
+  int ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? (int)PyObject_Length(args) : 0;
+  for (ii = 0; (ii < 2) && (ii < argc); ii++) {
+    argv[ii] = PyTuple_GET_ITEM(args,ii);
+  }
+  if (argc == 1) {
+    int _v;
+    int res = SWIG_AsPtr_std_string(argv[0], (std::string**)(0));
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_int_raster_load__SWIG_1(self, args);
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    int res = SWIG_AsPtr_std_string(argv[0], (std::string**)(0));
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        int res = SWIG_AsVal_bool(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        return _wrap_int_raster_load__SWIG_0(self, args);
+      }
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'int_raster_load'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    Raster< int >::load(std::string const &,bool)\n"
+    "    Raster< int >::load(std::string const &)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_int_raster___radd__(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   Raster< int > *arg1 = (Raster< int > *) 0 ;
   int *arg2 = 0 ;
@@ -18307,12 +20556,9 @@ SWIGINTERN PyObject *_wrap_int_raster___radd__(PyObject *self, PyObject *args, P
   int val2 ;
   int ecode2 = 0 ;
   PyObject * obj1 = 0 ;
-  char *  kwnames[] = {
-    (char *) "other", NULL 
-  };
   SwigValueWrapper< Raster< int > > result;
   
-  if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"O:int_raster___radd__",kwnames,&obj1)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"O:int_raster___radd__",&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_int_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "int_raster___radd__" "', argument " "1"" of type '" "Raster< int > *""'"); 
@@ -18342,7 +20588,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_int_raster___rsub__(PyObject *self, PyObject *args, PyObject *kwargs) {
+SWIGINTERN PyObject *_wrap_int_raster___rsub__(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   Raster< int > *arg1 = (Raster< int > *) 0 ;
   int *arg2 = 0 ;
@@ -18352,12 +20598,9 @@ SWIGINTERN PyObject *_wrap_int_raster___rsub__(PyObject *self, PyObject *args, P
   int val2 ;
   int ecode2 = 0 ;
   PyObject * obj1 = 0 ;
-  char *  kwnames[] = {
-    (char *) "other", NULL 
-  };
   SwigValueWrapper< Raster< int > > result;
   
-  if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"O:int_raster___rsub__",kwnames,&obj1)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"O:int_raster___rsub__",&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_int_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "int_raster___rsub__" "', argument " "1"" of type '" "Raster< int > *""'"); 
@@ -18387,7 +20630,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_int_raster___rmul__(PyObject *self, PyObject *args, PyObject *kwargs) {
+SWIGINTERN PyObject *_wrap_int_raster___rmul__(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   Raster< int > *arg1 = (Raster< int > *) 0 ;
   int *arg2 = 0 ;
@@ -18397,12 +20640,9 @@ SWIGINTERN PyObject *_wrap_int_raster___rmul__(PyObject *self, PyObject *args, P
   int val2 ;
   int ecode2 = 0 ;
   PyObject * obj1 = 0 ;
-  char *  kwnames[] = {
-    (char *) "other", NULL 
-  };
   SwigValueWrapper< Raster< int > > result;
   
-  if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"O:int_raster___rmul__",kwnames,&obj1)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"O:int_raster___rmul__",&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_int_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "int_raster___rmul__" "', argument " "1"" of type '" "Raster< int > *""'"); 
@@ -18432,7 +20672,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_int_raster___rdiv__(PyObject *self, PyObject *args, PyObject *kwargs) {
+SWIGINTERN PyObject *_wrap_int_raster___rdiv__(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   Raster< int > *arg1 = (Raster< int > *) 0 ;
   int *arg2 = 0 ;
@@ -18442,12 +20682,9 @@ SWIGINTERN PyObject *_wrap_int_raster___rdiv__(PyObject *self, PyObject *args, P
   int val2 ;
   int ecode2 = 0 ;
   PyObject * obj1 = 0 ;
-  char *  kwnames[] = {
-    (char *) "other", NULL 
-  };
   SwigValueWrapper< Raster< int > > result;
   
-  if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"O:int_raster___rdiv__",kwnames,&obj1)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"O:int_raster___rdiv__",&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_int_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "int_raster___rdiv__" "', argument " "1"" of type '" "Raster< int > *""'"); 
@@ -18482,9 +20719,8 @@ SWIGINTERN PyObject *_wrap_delete_int_raster(PyObject *self, PyObject *args) {
   Raster< int > *arg1 = (Raster< int > *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[1] ;
   
-  if (!SWIG_Python_UnpackTuple(args,"delete_int_raster",0,0,0)) SWIG_fail;
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_RasterT_int_t, SWIG_POINTER_DISOWN |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_int_raster" "', argument " "1"" of type '" "Raster< int > *""'"); 
@@ -18510,6 +20746,9 @@ fail:
 
 static PyMethodDef SwigMethods[] = {
 	 { (char *)"SWIG_PyInstanceMethod_New", (PyCFunction)SWIG_PyInstanceMethod_New, METH_O, NULL},
+	 { (char *)"double_raster_load", _wrap_double_raster_load, METH_VARARGS, NULL},
+	 { (char *)"float_raster_load", _wrap_float_raster_load, METH_VARARGS, NULL},
+	 { (char *)"int_raster_load", _wrap_int_raster_load, METH_VARARGS, NULL},
 	 { NULL, NULL, 0, NULL }
 };
 
@@ -18520,15 +20759,15 @@ static SwigPyGetSet RasterStatistics_mean_getset = { _wrap_RasterStatistics_mean
 static SwigPyGetSet RasterStatistics_max_getset = { _wrap_RasterStatistics_max_get, _wrap_RasterStatistics_max_set };
 static SwigPyGetSet RasterStatistics_min_getset = { _wrap_RasterStatistics_min_get, _wrap_RasterStatistics_min_set };
 SWIGINTERN PyGetSetDef SwigPyBuiltin__RasterStatistics_getset[] = {
-    { (char*) "count", (getter) SwigPyBuiltin_FunpackGetterClosure, (setter) SwigPyBuiltin_FunpackSetterClosure, (char*)"RasterStatistics.count", (void*) &RasterStatistics_count_getset }
+    { (char*) "count", (getter) SwigPyBuiltin_GetterClosure, (setter) SwigPyBuiltin_SetterClosure, (char*)"RasterStatistics.count", (void*) &RasterStatistics_count_getset }
 ,
-    { (char*) "stdev", (getter) SwigPyBuiltin_FunpackGetterClosure, (setter) SwigPyBuiltin_FunpackSetterClosure, (char*)"RasterStatistics.stdev", (void*) &RasterStatistics_stdev_getset }
+    { (char*) "stdev", (getter) SwigPyBuiltin_GetterClosure, (setter) SwigPyBuiltin_SetterClosure, (char*)"RasterStatistics.stdev", (void*) &RasterStatistics_stdev_getset }
 ,
-    { (char*) "mean", (getter) SwigPyBuiltin_FunpackGetterClosure, (setter) SwigPyBuiltin_FunpackSetterClosure, (char*)"RasterStatistics.mean", (void*) &RasterStatistics_mean_getset }
+    { (char*) "mean", (getter) SwigPyBuiltin_GetterClosure, (setter) SwigPyBuiltin_SetterClosure, (char*)"RasterStatistics.mean", (void*) &RasterStatistics_mean_getset }
 ,
-    { (char*) "max", (getter) SwigPyBuiltin_FunpackGetterClosure, (setter) SwigPyBuiltin_FunpackSetterClosure, (char*)"RasterStatistics.max", (void*) &RasterStatistics_max_getset }
+    { (char*) "max", (getter) SwigPyBuiltin_GetterClosure, (setter) SwigPyBuiltin_SetterClosure, (char*)"RasterStatistics.max", (void*) &RasterStatistics_max_getset }
 ,
-    { (char*) "min", (getter) SwigPyBuiltin_FunpackGetterClosure, (setter) SwigPyBuiltin_FunpackSetterClosure, (char*)"RasterStatistics.min", (void*) &RasterStatistics_min_getset }
+    { (char*) "min", (getter) SwigPyBuiltin_GetterClosure, (setter) SwigPyBuiltin_SetterClosure, (char*)"RasterStatistics.min", (void*) &RasterStatistics_min_getset }
 ,
     {NULL, NULL, NULL, NULL, NULL} /* Sentinel */
 };
@@ -18536,6 +20775,10 @@ SWIGINTERN PyGetSetDef SwigPyBuiltin__RasterStatistics_getset[] = {
 SWIGINTERN PyObject *
 SwigPyBuiltin__RasterStatistics_richcompare(PyObject *self, PyObject *other, int op) {
   PyObject *result = NULL;
+  PyObject *tuple = PyTuple_New(1);
+  assert(tuple);
+  PyTuple_SET_ITEM(tuple, 0, other);
+  Py_XINCREF(other);
   if (!result) {
     if (SwigPyObject_Check(self) && SwigPyObject_Check(other)) {
       result = SwigPyObject_richcompare((SwigPyObject *)self, (SwigPyObject *)other, op);
@@ -18544,6 +20787,7 @@ SwigPyBuiltin__RasterStatistics_richcompare(PyObject *self, PyObject *other, int
       Py_INCREF(result);
     }
   }
+  Py_DECREF(tuple);
   return result;
 }
 
@@ -18722,6 +20966,10 @@ SWIGINTERN PyGetSetDef SwigPyBuiltin__Histogram_getset[] = {
 SWIGINTERN PyObject *
 SwigPyBuiltin__Histogram_richcompare(PyObject *self, PyObject *other, int op) {
   PyObject *result = NULL;
+  PyObject *tuple = PyTuple_New(1);
+  assert(tuple);
+  PyTuple_SET_ITEM(tuple, 0, other);
+  Py_XINCREF(other);
   if (!result) {
     if (SwigPyObject_Check(self) && SwigPyObject_Check(other)) {
       result = SwigPyObject_richcompare((SwigPyObject *)self, (SwigPyObject *)other, op);
@@ -18730,21 +20978,22 @@ SwigPyBuiltin__Histogram_richcompare(PyObject *self, PyObject *other, int op) {
       Py_INCREF(result);
     }
   }
+  Py_DECREF(tuple);
   return result;
 }
 
 SWIGINTERN PyMethodDef SwigPyBuiltin__Histogram_methods[] = {
-  { "min", (PyCFunction) _wrap_Histogram_min, METH_VARARGS|METH_KEYWORDS, (char*) "" },
-  { "max", (PyCFunction) _wrap_Histogram_max, METH_VARARGS|METH_KEYWORDS, (char*) "" },
-  { "barwidth", (PyCFunction) _wrap_Histogram_barwidth, METH_VARARGS|METH_KEYWORDS, (char*) "" },
-  { "size", (PyCFunction) _wrap_Histogram_size, METH_VARARGS|METH_KEYWORDS, (char*) "" },
-  { "sum", (PyCFunction) _wrap_Histogram_sum, METH_VARARGS|METH_KEYWORDS, (char*) "" },
-  { "frequency", (PyCFunction) _wrap_Histogram_frequency, METH_VARARGS|METH_KEYWORDS, (char*) "" },
-  { "relfrequency", (PyCFunction) _wrap_Histogram_relfrequency, METH_VARARGS|METH_KEYWORDS, (char*) "" },
-  { "pos", (PyCFunction) _wrap_Histogram_pos, METH_VARARGS|METH_KEYWORDS, (char*) "" },
-  { "barcenter", (PyCFunction) _wrap_Histogram_barcenter, METH_VARARGS|METH_KEYWORDS, (char*) "" },
-  { "quantile", (PyCFunction) _wrap_Histogram_quantile, METH_VARARGS|METH_KEYWORDS, (char*) "" },
-  { "CountValue", (PyCFunction) _wrap_Histogram_CountValue, METH_VARARGS|METH_KEYWORDS, (char*) "" },
+  { "min", (PyCFunction) _wrap_Histogram_min, METH_VARARGS, (char*) "" },
+  { "max", (PyCFunction) _wrap_Histogram_max, METH_VARARGS, (char*) "" },
+  { "barwidth", (PyCFunction) _wrap_Histogram_barwidth, METH_VARARGS, (char*) "" },
+  { "size", (PyCFunction) _wrap_Histogram_size, METH_VARARGS, (char*) "" },
+  { "sum", (PyCFunction) _wrap_Histogram_sum, METH_VARARGS, (char*) "" },
+  { "frequency", (PyCFunction) _wrap_Histogram_frequency, METH_VARARGS, (char*) "" },
+  { "relfrequency", (PyCFunction) _wrap_Histogram_relfrequency, METH_VARARGS, (char*) "" },
+  { "pos", (PyCFunction) _wrap_Histogram_pos, METH_VARARGS, (char*) "" },
+  { "barcenter", (PyCFunction) _wrap_Histogram_barcenter, METH_VARARGS, (char*) "" },
+  { "quantile", (PyCFunction) _wrap_Histogram_quantile, METH_VARARGS, (char*) "" },
+  { "CountValue", (PyCFunction) _wrap_Histogram_CountValue, METH_VARARGS, (char*) "" },
   { NULL, NULL, 0, NULL } /* Sentinel */
 };
 
@@ -18919,6 +21168,10 @@ SWIGINTERN PyGetSetDef SwigPyBuiltin__RasterT_double_t_getset[] = {
 SWIGINTERN PyObject *
 SwigPyBuiltin__RasterT_double_t_richcompare(PyObject *self, PyObject *other, int op) {
   PyObject *result = NULL;
+  PyObject *tuple = PyTuple_New(1);
+  assert(tuple);
+  PyTuple_SET_ITEM(tuple, 0, other);
+  Py_XINCREF(other);
   if (!result) {
     if (SwigPyObject_Check(self) && SwigPyObject_Check(other)) {
       result = SwigPyObject_richcompare((SwigPyObject *)self, (SwigPyObject *)other, op);
@@ -18927,61 +21180,63 @@ SwigPyBuiltin__RasterT_double_t_richcompare(PyObject *self, PyObject *other, int
       Py_INCREF(result);
     }
   }
+  Py_DECREF(tuple);
   return result;
 }
 
 SWIGINTERN PyMethodDef SwigPyBuiltin__RasterT_double_t_methods[] = {
-  { "Xllcorner", (PyCFunction) _wrap_double_raster_Xllcorner, METH_VARARGS|METH_KEYWORDS, (char*) "" },
-  { "Yllcorner", (PyCFunction) _wrap_double_raster_Yllcorner, METH_VARARGS|METH_KEYWORDS, (char*) "" },
-  { "XCellsize", (PyCFunction) _wrap_double_raster_XCellsize, METH_VARARGS|METH_KEYWORDS, (char*) "" },
-  { "YCellsize", (PyCFunction) _wrap_double_raster_YCellsize, METH_VARARGS|METH_KEYWORDS, (char*) "" },
-  { "ColumnCount", (PyCFunction) _wrap_double_raster_ColumnCount, METH_VARARGS|METH_KEYWORDS, (char*) "" },
-  { "RowCount", (PyCFunction) _wrap_double_raster_RowCount, METH_VARARGS|METH_KEYWORDS, (char*) "" },
-  { "Width", (PyCFunction) _wrap_double_raster_Width, METH_VARARGS|METH_KEYWORDS, (char*) "" },
-  { "Height", (PyCFunction) _wrap_double_raster_Height, METH_VARARGS|METH_KEYWORDS, (char*) "" },
-  { "NoData", (PyCFunction) _wrap_double_raster_NoData, METH_VARARGS|METH_KEYWORDS, (char*) "" },
-  { "GetData", (PyCFunction) _wrap_double_raster_GetData, METH_VARARGS|METH_KEYWORDS, (char*) "" },
-  { "HasData", (PyCFunction) _wrap_double_raster_HasData, METH_VARARGS|METH_KEYWORDS, (char*) "" },
-  { "SetData", (PyCFunction) _wrap_double_raster_SetData, METH_VARARGS|METH_KEYWORDS, (char*) "" },
-  { "GetXPosition", (PyCFunction) _wrap_double_raster_GetXPosition, METH_VARARGS|METH_KEYWORDS, (char*) "" },
-  { "GetYPosition", (PyCFunction) _wrap_double_raster_GetYPosition, METH_VARARGS|METH_KEYWORDS, (char*) "" },
-  { "statistics", (PyCFunction) _wrap_double_raster_statistics, METH_VARARGS|METH_KEYWORDS, (char*) "" },
-  { "histogram", (PyCFunction) _wrap_double_raster_histogram, METH_VARARGS|METH_KEYWORDS, (char*) "" },
-  { "clip", (PyCFunction) _wrap_double_raster_clip, METH_VARARGS|METH_KEYWORDS, (char*) "" },
-  { "__imul__", (PyCFunction) _wrap_double_raster___imul__, METH_VARARGS|METH_KEYWORDS, (char*) "" },
-  { "__iadd__", (PyCFunction) _wrap_double_raster___iadd__, METH_VARARGS|METH_KEYWORDS, (char*) "" },
-  { "__isub__", (PyCFunction) _wrap_double_raster___isub__, METH_VARARGS|METH_KEYWORDS, (char*) "" },
-  { "__idiv__", (PyCFunction) _wrap_double_raster___idiv__, METH_VARARGS|METH_KEYWORDS, (char*) "" },
-  { "__mul__", (PyCFunction) _wrap_double_raster___mul__, METH_VARARGS|METH_KEYWORDS, (char*) "" },
-  { "__add__", (PyCFunction) _wrap_double_raster___add__, METH_VARARGS|METH_KEYWORDS, (char*) "" },
-  { "__sub__", (PyCFunction) _wrap_double_raster___sub__, METH_VARARGS|METH_KEYWORDS, (char*) "" },
-  { "__div__", (PyCFunction) _wrap_double_raster___div__, METH_VARARGS|METH_KEYWORDS, (char*) "" },
-  { "fill", (PyCFunction) _wrap_double_raster_fill, METH_VARARGS|METH_KEYWORDS, (char*) "" },
-  { "WriteToASCFile", (PyCFunction) _wrap_double_raster_WriteToASCFile, METH_VARARGS|METH_KEYWORDS, (char*) "" },
-  { "WriteToBinary", (PyCFunction) _wrap_double_raster_WriteToBinary, METH_VARARGS|METH_KEYWORDS, (char*) "" },
-  { "extract", (PyCFunction) _wrap_double_raster_extract, METH_VARARGS|METH_KEYWORDS, (char*) "" },
-  { "ToInt", (PyCFunction) _wrap_double_raster_ToInt, METH_VARARGS|METH_KEYWORDS, (char*) "" },
-  { "ToFloat", (PyCFunction) _wrap_double_raster_ToFloat, METH_VARARGS|METH_KEYWORDS, (char*) "" },
-  { "ToDouble", (PyCFunction) _wrap_double_raster_ToDouble, METH_VARARGS|METH_KEYWORDS, (char*) "" },
-  { "adress", (PyCFunction) _wrap_double_raster_adress, METH_VARARGS|METH_KEYWORDS, (char*) "" },
-  { "focal_min", (PyCFunction) _wrap_double_raster_focal_min, METH_VARARGS|METH_KEYWORDS, (char*) "" },
-  { "focal_max", (PyCFunction) _wrap_double_raster_focal_max, METH_VARARGS|METH_KEYWORDS, (char*) "" },
-  { "focal_mean", (PyCFunction) _wrap_double_raster_focal_mean, METH_VARARGS|METH_KEYWORDS, (char*) "" },
-  { "focal_stdev", (PyCFunction) _wrap_double_raster_focal_stdev, METH_VARARGS|METH_KEYWORDS, (char*) "" },
-  { "focal_majority", (PyCFunction) _wrap_double_raster_focal_majority, METH_VARARGS|METH_KEYWORDS, (char*) "" },
-  { "focal_mean_difference", (PyCFunction) _wrap_double_raster_focal_mean_difference, METH_VARARGS|METH_KEYWORDS, (char*) "" },
-  { "downscale_mean", (PyCFunction) _wrap_double_raster_downscale_mean, METH_VARARGS|METH_KEYWORDS, (char*) "" },
-  { "downscale_min", (PyCFunction) _wrap_double_raster_downscale_min, METH_VARARGS|METH_KEYWORDS, (char*) "" },
-  { "downscale_max", (PyCFunction) _wrap_double_raster_downscale_max, METH_VARARGS|METH_KEYWORDS, (char*) "" },
-  { "downscale_majority", (PyCFunction) _wrap_double_raster_downscale_majority, METH_VARARGS|METH_KEYWORDS, (char*) "" },
-  { "downscale_stdev", (PyCFunction) _wrap_double_raster_downscale_stdev, METH_VARARGS|METH_KEYWORDS, (char*) "" },
-  { "downscale_mean_difference", (PyCFunction) _wrap_double_raster_downscale_mean_difference, METH_VARARGS|METH_KEYWORDS, (char*) "" },
-  { "clone", (PyCFunction) _wrap_double_raster_clone, METH_VARARGS|METH_KEYWORDS, (char*) "" },
-  { "ToBuffer", (PyCFunction) _wrap_double_raster_ToBuffer, METH_VARARGS|METH_KEYWORDS, (char*) "" },
-  { "__radd__", (PyCFunction) _wrap_double_raster___radd__, METH_VARARGS|METH_KEYWORDS, (char*) "" },
-  { "__rsub__", (PyCFunction) _wrap_double_raster___rsub__, METH_VARARGS|METH_KEYWORDS, (char*) "" },
-  { "__rmul__", (PyCFunction) _wrap_double_raster___rmul__, METH_VARARGS|METH_KEYWORDS, (char*) "" },
-  { "__rdiv__", (PyCFunction) _wrap_double_raster___rdiv__, METH_VARARGS|METH_KEYWORDS, (char*) "" },
+  { "Xllcorner", (PyCFunction) _wrap_double_raster_Xllcorner, METH_VARARGS, (char*) "" },
+  { "Yllcorner", (PyCFunction) _wrap_double_raster_Yllcorner, METH_VARARGS, (char*) "" },
+  { "XCellsize", (PyCFunction) _wrap_double_raster_XCellsize, METH_VARARGS, (char*) "" },
+  { "YCellsize", (PyCFunction) _wrap_double_raster_YCellsize, METH_VARARGS, (char*) "" },
+  { "ColumnCount", (PyCFunction) _wrap_double_raster_ColumnCount, METH_VARARGS, (char*) "" },
+  { "RowCount", (PyCFunction) _wrap_double_raster_RowCount, METH_VARARGS, (char*) "" },
+  { "Width", (PyCFunction) _wrap_double_raster_Width, METH_VARARGS, (char*) "" },
+  { "Height", (PyCFunction) _wrap_double_raster_Height, METH_VARARGS, (char*) "" },
+  { "NoData", (PyCFunction) _wrap_double_raster_NoData, METH_VARARGS, (char*) "" },
+  { "GetData", (PyCFunction) _wrap_double_raster_GetData, METH_VARARGS, (char*) "" },
+  { "HasData", (PyCFunction) _wrap_double_raster_HasData, METH_VARARGS, (char*) "" },
+  { "SetData", (PyCFunction) _wrap_double_raster_SetData, METH_VARARGS, (char*) "" },
+  { "GetXPosition", (PyCFunction) _wrap_double_raster_GetXPosition, METH_VARARGS, (char*) "" },
+  { "GetYPosition", (PyCFunction) _wrap_double_raster_GetYPosition, METH_VARARGS, (char*) "" },
+  { "statistics", (PyCFunction) _wrap_double_raster_statistics, METH_VARARGS, (char*) "" },
+  { "histogram", (PyCFunction) _wrap_double_raster_histogram, METH_VARARGS, (char*) "" },
+  { "clip", (PyCFunction) _wrap_double_raster_clip, METH_VARARGS, (char*) "" },
+  { "__imul__", (PyCFunction) _wrap_double_raster___imul__, METH_VARARGS, (char*) "" },
+  { "__iadd__", (PyCFunction) _wrap_double_raster___iadd__, METH_VARARGS, (char*) "" },
+  { "__isub__", (PyCFunction) _wrap_double_raster___isub__, METH_VARARGS, (char*) "" },
+  { "__idiv__", (PyCFunction) _wrap_double_raster___idiv__, METH_VARARGS, (char*) "" },
+  { "__mul__", (PyCFunction) _wrap_double_raster___mul__, METH_VARARGS, (char*) "" },
+  { "__add__", (PyCFunction) _wrap_double_raster___add__, METH_VARARGS, (char*) "" },
+  { "__sub__", (PyCFunction) _wrap_double_raster___sub__, METH_VARARGS, (char*) "" },
+  { "__div__", (PyCFunction) _wrap_double_raster___div__, METH_VARARGS, (char*) "" },
+  { "fill", (PyCFunction) _wrap_double_raster_fill, METH_VARARGS, (char*) "" },
+  { "WriteToASCFile", (PyCFunction) _wrap_double_raster_WriteToASCFile, METH_VARARGS, (char*) "" },
+  { "WriteToBinary", (PyCFunction) _wrap_double_raster_WriteToBinary, METH_VARARGS, (char*) "" },
+  { "extract", (PyCFunction) _wrap_double_raster_extract, METH_VARARGS, (char*) "" },
+  { "ToInt", (PyCFunction) _wrap_double_raster_ToInt, METH_VARARGS, (char*) "" },
+  { "ToFloat", (PyCFunction) _wrap_double_raster_ToFloat, METH_VARARGS, (char*) "" },
+  { "ToDouble", (PyCFunction) _wrap_double_raster_ToDouble, METH_VARARGS, (char*) "" },
+  { "adress", (PyCFunction) _wrap_double_raster_adress, METH_VARARGS, (char*) "" },
+  { "focal_min", (PyCFunction) _wrap_double_raster_focal_min, METH_VARARGS, (char*) "" },
+  { "focal_max", (PyCFunction) _wrap_double_raster_focal_max, METH_VARARGS, (char*) "" },
+  { "focal_mean", (PyCFunction) _wrap_double_raster_focal_mean, METH_VARARGS, (char*) "" },
+  { "focal_stdev", (PyCFunction) _wrap_double_raster_focal_stdev, METH_VARARGS, (char*) "" },
+  { "focal_majority", (PyCFunction) _wrap_double_raster_focal_majority, METH_VARARGS, (char*) "" },
+  { "focal_mean_difference", (PyCFunction) _wrap_double_raster_focal_mean_difference, METH_VARARGS, (char*) "" },
+  { "downscale_mean", (PyCFunction) _wrap_double_raster_downscale_mean, METH_VARARGS, (char*) "" },
+  { "downscale_min", (PyCFunction) _wrap_double_raster_downscale_min, METH_VARARGS, (char*) "" },
+  { "downscale_max", (PyCFunction) _wrap_double_raster_downscale_max, METH_VARARGS, (char*) "" },
+  { "downscale_majority", (PyCFunction) _wrap_double_raster_downscale_majority, METH_VARARGS, (char*) "" },
+  { "downscale_stdev", (PyCFunction) _wrap_double_raster_downscale_stdev, METH_VARARGS, (char*) "" },
+  { "downscale_mean_difference", (PyCFunction) _wrap_double_raster_downscale_mean_difference, METH_VARARGS, (char*) "" },
+  { "clone", (PyCFunction) _wrap_double_raster_clone, METH_VARARGS, (char*) "" },
+  { "ToBuffer", (PyCFunction) _wrap_double_raster_ToBuffer, METH_VARARGS, (char*) "" },
+  { "load", (PyCFunction) _wrap_double_raster_load, METH_STATIC|METH_VARARGS, "" },
+  { "__radd__", (PyCFunction) _wrap_double_raster___radd__, METH_VARARGS, (char*) "" },
+  { "__rsub__", (PyCFunction) _wrap_double_raster___rsub__, METH_VARARGS, (char*) "" },
+  { "__rmul__", (PyCFunction) _wrap_double_raster___rmul__, METH_VARARGS, (char*) "" },
+  { "__rdiv__", (PyCFunction) _wrap_double_raster___rdiv__, METH_VARARGS, (char*) "" },
   { NULL, NULL, 0, NULL } /* Sentinel */
 };
 
@@ -19156,6 +21411,10 @@ SWIGINTERN PyGetSetDef SwigPyBuiltin__RasterT_float_t_getset[] = {
 SWIGINTERN PyObject *
 SwigPyBuiltin__RasterT_float_t_richcompare(PyObject *self, PyObject *other, int op) {
   PyObject *result = NULL;
+  PyObject *tuple = PyTuple_New(1);
+  assert(tuple);
+  PyTuple_SET_ITEM(tuple, 0, other);
+  Py_XINCREF(other);
   if (!result) {
     if (SwigPyObject_Check(self) && SwigPyObject_Check(other)) {
       result = SwigPyObject_richcompare((SwigPyObject *)self, (SwigPyObject *)other, op);
@@ -19164,61 +21423,63 @@ SwigPyBuiltin__RasterT_float_t_richcompare(PyObject *self, PyObject *other, int 
       Py_INCREF(result);
     }
   }
+  Py_DECREF(tuple);
   return result;
 }
 
 SWIGINTERN PyMethodDef SwigPyBuiltin__RasterT_float_t_methods[] = {
-  { "Xllcorner", (PyCFunction) _wrap_float_raster_Xllcorner, METH_VARARGS|METH_KEYWORDS, (char*) "" },
-  { "Yllcorner", (PyCFunction) _wrap_float_raster_Yllcorner, METH_VARARGS|METH_KEYWORDS, (char*) "" },
-  { "XCellsize", (PyCFunction) _wrap_float_raster_XCellsize, METH_VARARGS|METH_KEYWORDS, (char*) "" },
-  { "YCellsize", (PyCFunction) _wrap_float_raster_YCellsize, METH_VARARGS|METH_KEYWORDS, (char*) "" },
-  { "ColumnCount", (PyCFunction) _wrap_float_raster_ColumnCount, METH_VARARGS|METH_KEYWORDS, (char*) "" },
-  { "RowCount", (PyCFunction) _wrap_float_raster_RowCount, METH_VARARGS|METH_KEYWORDS, (char*) "" },
-  { "Width", (PyCFunction) _wrap_float_raster_Width, METH_VARARGS|METH_KEYWORDS, (char*) "" },
-  { "Height", (PyCFunction) _wrap_float_raster_Height, METH_VARARGS|METH_KEYWORDS, (char*) "" },
-  { "NoData", (PyCFunction) _wrap_float_raster_NoData, METH_VARARGS|METH_KEYWORDS, (char*) "" },
-  { "GetData", (PyCFunction) _wrap_float_raster_GetData, METH_VARARGS|METH_KEYWORDS, (char*) "" },
-  { "HasData", (PyCFunction) _wrap_float_raster_HasData, METH_VARARGS|METH_KEYWORDS, (char*) "" },
-  { "SetData", (PyCFunction) _wrap_float_raster_SetData, METH_VARARGS|METH_KEYWORDS, (char*) "" },
-  { "GetXPosition", (PyCFunction) _wrap_float_raster_GetXPosition, METH_VARARGS|METH_KEYWORDS, (char*) "" },
-  { "GetYPosition", (PyCFunction) _wrap_float_raster_GetYPosition, METH_VARARGS|METH_KEYWORDS, (char*) "" },
-  { "statistics", (PyCFunction) _wrap_float_raster_statistics, METH_VARARGS|METH_KEYWORDS, (char*) "" },
-  { "histogram", (PyCFunction) _wrap_float_raster_histogram, METH_VARARGS|METH_KEYWORDS, (char*) "" },
-  { "clip", (PyCFunction) _wrap_float_raster_clip, METH_VARARGS|METH_KEYWORDS, (char*) "" },
-  { "__imul__", (PyCFunction) _wrap_float_raster___imul__, METH_VARARGS|METH_KEYWORDS, (char*) "" },
-  { "__iadd__", (PyCFunction) _wrap_float_raster___iadd__, METH_VARARGS|METH_KEYWORDS, (char*) "" },
-  { "__isub__", (PyCFunction) _wrap_float_raster___isub__, METH_VARARGS|METH_KEYWORDS, (char*) "" },
-  { "__idiv__", (PyCFunction) _wrap_float_raster___idiv__, METH_VARARGS|METH_KEYWORDS, (char*) "" },
-  { "__mul__", (PyCFunction) _wrap_float_raster___mul__, METH_VARARGS|METH_KEYWORDS, (char*) "" },
-  { "__add__", (PyCFunction) _wrap_float_raster___add__, METH_VARARGS|METH_KEYWORDS, (char*) "" },
-  { "__sub__", (PyCFunction) _wrap_float_raster___sub__, METH_VARARGS|METH_KEYWORDS, (char*) "" },
-  { "__div__", (PyCFunction) _wrap_float_raster___div__, METH_VARARGS|METH_KEYWORDS, (char*) "" },
-  { "fill", (PyCFunction) _wrap_float_raster_fill, METH_VARARGS|METH_KEYWORDS, (char*) "" },
-  { "WriteToASCFile", (PyCFunction) _wrap_float_raster_WriteToASCFile, METH_VARARGS|METH_KEYWORDS, (char*) "" },
-  { "WriteToBinary", (PyCFunction) _wrap_float_raster_WriteToBinary, METH_VARARGS|METH_KEYWORDS, (char*) "" },
-  { "extract", (PyCFunction) _wrap_float_raster_extract, METH_VARARGS|METH_KEYWORDS, (char*) "" },
-  { "ToInt", (PyCFunction) _wrap_float_raster_ToInt, METH_VARARGS|METH_KEYWORDS, (char*) "" },
-  { "ToFloat", (PyCFunction) _wrap_float_raster_ToFloat, METH_VARARGS|METH_KEYWORDS, (char*) "" },
-  { "ToDouble", (PyCFunction) _wrap_float_raster_ToDouble, METH_VARARGS|METH_KEYWORDS, (char*) "" },
-  { "adress", (PyCFunction) _wrap_float_raster_adress, METH_VARARGS|METH_KEYWORDS, (char*) "" },
-  { "focal_min", (PyCFunction) _wrap_float_raster_focal_min, METH_VARARGS|METH_KEYWORDS, (char*) "" },
-  { "focal_max", (PyCFunction) _wrap_float_raster_focal_max, METH_VARARGS|METH_KEYWORDS, (char*) "" },
-  { "focal_mean", (PyCFunction) _wrap_float_raster_focal_mean, METH_VARARGS|METH_KEYWORDS, (char*) "" },
-  { "focal_stdev", (PyCFunction) _wrap_float_raster_focal_stdev, METH_VARARGS|METH_KEYWORDS, (char*) "" },
-  { "focal_majority", (PyCFunction) _wrap_float_raster_focal_majority, METH_VARARGS|METH_KEYWORDS, (char*) "" },
-  { "focal_mean_difference", (PyCFunction) _wrap_float_raster_focal_mean_difference, METH_VARARGS|METH_KEYWORDS, (char*) "" },
-  { "downscale_mean", (PyCFunction) _wrap_float_raster_downscale_mean, METH_VARARGS|METH_KEYWORDS, (char*) "" },
-  { "downscale_min", (PyCFunction) _wrap_float_raster_downscale_min, METH_VARARGS|METH_KEYWORDS, (char*) "" },
-  { "downscale_max", (PyCFunction) _wrap_float_raster_downscale_max, METH_VARARGS|METH_KEYWORDS, (char*) "" },
-  { "downscale_majority", (PyCFunction) _wrap_float_raster_downscale_majority, METH_VARARGS|METH_KEYWORDS, (char*) "" },
-  { "downscale_stdev", (PyCFunction) _wrap_float_raster_downscale_stdev, METH_VARARGS|METH_KEYWORDS, (char*) "" },
-  { "downscale_mean_difference", (PyCFunction) _wrap_float_raster_downscale_mean_difference, METH_VARARGS|METH_KEYWORDS, (char*) "" },
-  { "clone", (PyCFunction) _wrap_float_raster_clone, METH_VARARGS|METH_KEYWORDS, (char*) "" },
-  { "ToBuffer", (PyCFunction) _wrap_float_raster_ToBuffer, METH_VARARGS|METH_KEYWORDS, (char*) "" },
-  { "__radd__", (PyCFunction) _wrap_float_raster___radd__, METH_VARARGS|METH_KEYWORDS, (char*) "" },
-  { "__rsub__", (PyCFunction) _wrap_float_raster___rsub__, METH_VARARGS|METH_KEYWORDS, (char*) "" },
-  { "__rmul__", (PyCFunction) _wrap_float_raster___rmul__, METH_VARARGS|METH_KEYWORDS, (char*) "" },
-  { "__rdiv__", (PyCFunction) _wrap_float_raster___rdiv__, METH_VARARGS|METH_KEYWORDS, (char*) "" },
+  { "Xllcorner", (PyCFunction) _wrap_float_raster_Xllcorner, METH_VARARGS, (char*) "" },
+  { "Yllcorner", (PyCFunction) _wrap_float_raster_Yllcorner, METH_VARARGS, (char*) "" },
+  { "XCellsize", (PyCFunction) _wrap_float_raster_XCellsize, METH_VARARGS, (char*) "" },
+  { "YCellsize", (PyCFunction) _wrap_float_raster_YCellsize, METH_VARARGS, (char*) "" },
+  { "ColumnCount", (PyCFunction) _wrap_float_raster_ColumnCount, METH_VARARGS, (char*) "" },
+  { "RowCount", (PyCFunction) _wrap_float_raster_RowCount, METH_VARARGS, (char*) "" },
+  { "Width", (PyCFunction) _wrap_float_raster_Width, METH_VARARGS, (char*) "" },
+  { "Height", (PyCFunction) _wrap_float_raster_Height, METH_VARARGS, (char*) "" },
+  { "NoData", (PyCFunction) _wrap_float_raster_NoData, METH_VARARGS, (char*) "" },
+  { "GetData", (PyCFunction) _wrap_float_raster_GetData, METH_VARARGS, (char*) "" },
+  { "HasData", (PyCFunction) _wrap_float_raster_HasData, METH_VARARGS, (char*) "" },
+  { "SetData", (PyCFunction) _wrap_float_raster_SetData, METH_VARARGS, (char*) "" },
+  { "GetXPosition", (PyCFunction) _wrap_float_raster_GetXPosition, METH_VARARGS, (char*) "" },
+  { "GetYPosition", (PyCFunction) _wrap_float_raster_GetYPosition, METH_VARARGS, (char*) "" },
+  { "statistics", (PyCFunction) _wrap_float_raster_statistics, METH_VARARGS, (char*) "" },
+  { "histogram", (PyCFunction) _wrap_float_raster_histogram, METH_VARARGS, (char*) "" },
+  { "clip", (PyCFunction) _wrap_float_raster_clip, METH_VARARGS, (char*) "" },
+  { "__imul__", (PyCFunction) _wrap_float_raster___imul__, METH_VARARGS, (char*) "" },
+  { "__iadd__", (PyCFunction) _wrap_float_raster___iadd__, METH_VARARGS, (char*) "" },
+  { "__isub__", (PyCFunction) _wrap_float_raster___isub__, METH_VARARGS, (char*) "" },
+  { "__idiv__", (PyCFunction) _wrap_float_raster___idiv__, METH_VARARGS, (char*) "" },
+  { "__mul__", (PyCFunction) _wrap_float_raster___mul__, METH_VARARGS, (char*) "" },
+  { "__add__", (PyCFunction) _wrap_float_raster___add__, METH_VARARGS, (char*) "" },
+  { "__sub__", (PyCFunction) _wrap_float_raster___sub__, METH_VARARGS, (char*) "" },
+  { "__div__", (PyCFunction) _wrap_float_raster___div__, METH_VARARGS, (char*) "" },
+  { "fill", (PyCFunction) _wrap_float_raster_fill, METH_VARARGS, (char*) "" },
+  { "WriteToASCFile", (PyCFunction) _wrap_float_raster_WriteToASCFile, METH_VARARGS, (char*) "" },
+  { "WriteToBinary", (PyCFunction) _wrap_float_raster_WriteToBinary, METH_VARARGS, (char*) "" },
+  { "extract", (PyCFunction) _wrap_float_raster_extract, METH_VARARGS, (char*) "" },
+  { "ToInt", (PyCFunction) _wrap_float_raster_ToInt, METH_VARARGS, (char*) "" },
+  { "ToFloat", (PyCFunction) _wrap_float_raster_ToFloat, METH_VARARGS, (char*) "" },
+  { "ToDouble", (PyCFunction) _wrap_float_raster_ToDouble, METH_VARARGS, (char*) "" },
+  { "adress", (PyCFunction) _wrap_float_raster_adress, METH_VARARGS, (char*) "" },
+  { "focal_min", (PyCFunction) _wrap_float_raster_focal_min, METH_VARARGS, (char*) "" },
+  { "focal_max", (PyCFunction) _wrap_float_raster_focal_max, METH_VARARGS, (char*) "" },
+  { "focal_mean", (PyCFunction) _wrap_float_raster_focal_mean, METH_VARARGS, (char*) "" },
+  { "focal_stdev", (PyCFunction) _wrap_float_raster_focal_stdev, METH_VARARGS, (char*) "" },
+  { "focal_majority", (PyCFunction) _wrap_float_raster_focal_majority, METH_VARARGS, (char*) "" },
+  { "focal_mean_difference", (PyCFunction) _wrap_float_raster_focal_mean_difference, METH_VARARGS, (char*) "" },
+  { "downscale_mean", (PyCFunction) _wrap_float_raster_downscale_mean, METH_VARARGS, (char*) "" },
+  { "downscale_min", (PyCFunction) _wrap_float_raster_downscale_min, METH_VARARGS, (char*) "" },
+  { "downscale_max", (PyCFunction) _wrap_float_raster_downscale_max, METH_VARARGS, (char*) "" },
+  { "downscale_majority", (PyCFunction) _wrap_float_raster_downscale_majority, METH_VARARGS, (char*) "" },
+  { "downscale_stdev", (PyCFunction) _wrap_float_raster_downscale_stdev, METH_VARARGS, (char*) "" },
+  { "downscale_mean_difference", (PyCFunction) _wrap_float_raster_downscale_mean_difference, METH_VARARGS, (char*) "" },
+  { "clone", (PyCFunction) _wrap_float_raster_clone, METH_VARARGS, (char*) "" },
+  { "ToBuffer", (PyCFunction) _wrap_float_raster_ToBuffer, METH_VARARGS, (char*) "" },
+  { "load", (PyCFunction) _wrap_float_raster_load, METH_STATIC|METH_VARARGS, "" },
+  { "__radd__", (PyCFunction) _wrap_float_raster___radd__, METH_VARARGS, (char*) "" },
+  { "__rsub__", (PyCFunction) _wrap_float_raster___rsub__, METH_VARARGS, (char*) "" },
+  { "__rmul__", (PyCFunction) _wrap_float_raster___rmul__, METH_VARARGS, (char*) "" },
+  { "__rdiv__", (PyCFunction) _wrap_float_raster___rdiv__, METH_VARARGS, (char*) "" },
   { NULL, NULL, 0, NULL } /* Sentinel */
 };
 
@@ -19393,6 +21654,10 @@ SWIGINTERN PyGetSetDef SwigPyBuiltin__RasterT_int_t_getset[] = {
 SWIGINTERN PyObject *
 SwigPyBuiltin__RasterT_int_t_richcompare(PyObject *self, PyObject *other, int op) {
   PyObject *result = NULL;
+  PyObject *tuple = PyTuple_New(1);
+  assert(tuple);
+  PyTuple_SET_ITEM(tuple, 0, other);
+  Py_XINCREF(other);
   if (!result) {
     if (SwigPyObject_Check(self) && SwigPyObject_Check(other)) {
       result = SwigPyObject_richcompare((SwigPyObject *)self, (SwigPyObject *)other, op);
@@ -19401,61 +21666,63 @@ SwigPyBuiltin__RasterT_int_t_richcompare(PyObject *self, PyObject *other, int op
       Py_INCREF(result);
     }
   }
+  Py_DECREF(tuple);
   return result;
 }
 
 SWIGINTERN PyMethodDef SwigPyBuiltin__RasterT_int_t_methods[] = {
-  { "Xllcorner", (PyCFunction) _wrap_int_raster_Xllcorner, METH_VARARGS|METH_KEYWORDS, (char*) "" },
-  { "Yllcorner", (PyCFunction) _wrap_int_raster_Yllcorner, METH_VARARGS|METH_KEYWORDS, (char*) "" },
-  { "XCellsize", (PyCFunction) _wrap_int_raster_XCellsize, METH_VARARGS|METH_KEYWORDS, (char*) "" },
-  { "YCellsize", (PyCFunction) _wrap_int_raster_YCellsize, METH_VARARGS|METH_KEYWORDS, (char*) "" },
-  { "ColumnCount", (PyCFunction) _wrap_int_raster_ColumnCount, METH_VARARGS|METH_KEYWORDS, (char*) "" },
-  { "RowCount", (PyCFunction) _wrap_int_raster_RowCount, METH_VARARGS|METH_KEYWORDS, (char*) "" },
-  { "Width", (PyCFunction) _wrap_int_raster_Width, METH_VARARGS|METH_KEYWORDS, (char*) "" },
-  { "Height", (PyCFunction) _wrap_int_raster_Height, METH_VARARGS|METH_KEYWORDS, (char*) "" },
-  { "NoData", (PyCFunction) _wrap_int_raster_NoData, METH_VARARGS|METH_KEYWORDS, (char*) "" },
-  { "GetData", (PyCFunction) _wrap_int_raster_GetData, METH_VARARGS|METH_KEYWORDS, (char*) "" },
-  { "HasData", (PyCFunction) _wrap_int_raster_HasData, METH_VARARGS|METH_KEYWORDS, (char*) "" },
-  { "SetData", (PyCFunction) _wrap_int_raster_SetData, METH_VARARGS|METH_KEYWORDS, (char*) "" },
-  { "GetXPosition", (PyCFunction) _wrap_int_raster_GetXPosition, METH_VARARGS|METH_KEYWORDS, (char*) "" },
-  { "GetYPosition", (PyCFunction) _wrap_int_raster_GetYPosition, METH_VARARGS|METH_KEYWORDS, (char*) "" },
-  { "statistics", (PyCFunction) _wrap_int_raster_statistics, METH_VARARGS|METH_KEYWORDS, (char*) "" },
-  { "histogram", (PyCFunction) _wrap_int_raster_histogram, METH_VARARGS|METH_KEYWORDS, (char*) "" },
-  { "clip", (PyCFunction) _wrap_int_raster_clip, METH_VARARGS|METH_KEYWORDS, (char*) "" },
-  { "__imul__", (PyCFunction) _wrap_int_raster___imul__, METH_VARARGS|METH_KEYWORDS, (char*) "" },
-  { "__iadd__", (PyCFunction) _wrap_int_raster___iadd__, METH_VARARGS|METH_KEYWORDS, (char*) "" },
-  { "__isub__", (PyCFunction) _wrap_int_raster___isub__, METH_VARARGS|METH_KEYWORDS, (char*) "" },
-  { "__idiv__", (PyCFunction) _wrap_int_raster___idiv__, METH_VARARGS|METH_KEYWORDS, (char*) "" },
-  { "__mul__", (PyCFunction) _wrap_int_raster___mul__, METH_VARARGS|METH_KEYWORDS, (char*) "" },
-  { "__add__", (PyCFunction) _wrap_int_raster___add__, METH_VARARGS|METH_KEYWORDS, (char*) "" },
-  { "__sub__", (PyCFunction) _wrap_int_raster___sub__, METH_VARARGS|METH_KEYWORDS, (char*) "" },
-  { "__div__", (PyCFunction) _wrap_int_raster___div__, METH_VARARGS|METH_KEYWORDS, (char*) "" },
-  { "fill", (PyCFunction) _wrap_int_raster_fill, METH_VARARGS|METH_KEYWORDS, (char*) "" },
-  { "WriteToASCFile", (PyCFunction) _wrap_int_raster_WriteToASCFile, METH_VARARGS|METH_KEYWORDS, (char*) "" },
-  { "WriteToBinary", (PyCFunction) _wrap_int_raster_WriteToBinary, METH_VARARGS|METH_KEYWORDS, (char*) "" },
-  { "extract", (PyCFunction) _wrap_int_raster_extract, METH_VARARGS|METH_KEYWORDS, (char*) "" },
-  { "ToInt", (PyCFunction) _wrap_int_raster_ToInt, METH_VARARGS|METH_KEYWORDS, (char*) "" },
-  { "ToFloat", (PyCFunction) _wrap_int_raster_ToFloat, METH_VARARGS|METH_KEYWORDS, (char*) "" },
-  { "ToDouble", (PyCFunction) _wrap_int_raster_ToDouble, METH_VARARGS|METH_KEYWORDS, (char*) "" },
-  { "adress", (PyCFunction) _wrap_int_raster_adress, METH_VARARGS|METH_KEYWORDS, (char*) "" },
-  { "focal_min", (PyCFunction) _wrap_int_raster_focal_min, METH_VARARGS|METH_KEYWORDS, (char*) "" },
-  { "focal_max", (PyCFunction) _wrap_int_raster_focal_max, METH_VARARGS|METH_KEYWORDS, (char*) "" },
-  { "focal_mean", (PyCFunction) _wrap_int_raster_focal_mean, METH_VARARGS|METH_KEYWORDS, (char*) "" },
-  { "focal_stdev", (PyCFunction) _wrap_int_raster_focal_stdev, METH_VARARGS|METH_KEYWORDS, (char*) "" },
-  { "focal_majority", (PyCFunction) _wrap_int_raster_focal_majority, METH_VARARGS|METH_KEYWORDS, (char*) "" },
-  { "focal_mean_difference", (PyCFunction) _wrap_int_raster_focal_mean_difference, METH_VARARGS|METH_KEYWORDS, (char*) "" },
-  { "downscale_mean", (PyCFunction) _wrap_int_raster_downscale_mean, METH_VARARGS|METH_KEYWORDS, (char*) "" },
-  { "downscale_min", (PyCFunction) _wrap_int_raster_downscale_min, METH_VARARGS|METH_KEYWORDS, (char*) "" },
-  { "downscale_max", (PyCFunction) _wrap_int_raster_downscale_max, METH_VARARGS|METH_KEYWORDS, (char*) "" },
-  { "downscale_majority", (PyCFunction) _wrap_int_raster_downscale_majority, METH_VARARGS|METH_KEYWORDS, (char*) "" },
-  { "downscale_stdev", (PyCFunction) _wrap_int_raster_downscale_stdev, METH_VARARGS|METH_KEYWORDS, (char*) "" },
-  { "downscale_mean_difference", (PyCFunction) _wrap_int_raster_downscale_mean_difference, METH_VARARGS|METH_KEYWORDS, (char*) "" },
-  { "clone", (PyCFunction) _wrap_int_raster_clone, METH_VARARGS|METH_KEYWORDS, (char*) "" },
-  { "ToBuffer", (PyCFunction) _wrap_int_raster_ToBuffer, METH_VARARGS|METH_KEYWORDS, (char*) "" },
-  { "__radd__", (PyCFunction) _wrap_int_raster___radd__, METH_VARARGS|METH_KEYWORDS, (char*) "" },
-  { "__rsub__", (PyCFunction) _wrap_int_raster___rsub__, METH_VARARGS|METH_KEYWORDS, (char*) "" },
-  { "__rmul__", (PyCFunction) _wrap_int_raster___rmul__, METH_VARARGS|METH_KEYWORDS, (char*) "" },
-  { "__rdiv__", (PyCFunction) _wrap_int_raster___rdiv__, METH_VARARGS|METH_KEYWORDS, (char*) "" },
+  { "Xllcorner", (PyCFunction) _wrap_int_raster_Xllcorner, METH_VARARGS, (char*) "" },
+  { "Yllcorner", (PyCFunction) _wrap_int_raster_Yllcorner, METH_VARARGS, (char*) "" },
+  { "XCellsize", (PyCFunction) _wrap_int_raster_XCellsize, METH_VARARGS, (char*) "" },
+  { "YCellsize", (PyCFunction) _wrap_int_raster_YCellsize, METH_VARARGS, (char*) "" },
+  { "ColumnCount", (PyCFunction) _wrap_int_raster_ColumnCount, METH_VARARGS, (char*) "" },
+  { "RowCount", (PyCFunction) _wrap_int_raster_RowCount, METH_VARARGS, (char*) "" },
+  { "Width", (PyCFunction) _wrap_int_raster_Width, METH_VARARGS, (char*) "" },
+  { "Height", (PyCFunction) _wrap_int_raster_Height, METH_VARARGS, (char*) "" },
+  { "NoData", (PyCFunction) _wrap_int_raster_NoData, METH_VARARGS, (char*) "" },
+  { "GetData", (PyCFunction) _wrap_int_raster_GetData, METH_VARARGS, (char*) "" },
+  { "HasData", (PyCFunction) _wrap_int_raster_HasData, METH_VARARGS, (char*) "" },
+  { "SetData", (PyCFunction) _wrap_int_raster_SetData, METH_VARARGS, (char*) "" },
+  { "GetXPosition", (PyCFunction) _wrap_int_raster_GetXPosition, METH_VARARGS, (char*) "" },
+  { "GetYPosition", (PyCFunction) _wrap_int_raster_GetYPosition, METH_VARARGS, (char*) "" },
+  { "statistics", (PyCFunction) _wrap_int_raster_statistics, METH_VARARGS, (char*) "" },
+  { "histogram", (PyCFunction) _wrap_int_raster_histogram, METH_VARARGS, (char*) "" },
+  { "clip", (PyCFunction) _wrap_int_raster_clip, METH_VARARGS, (char*) "" },
+  { "__imul__", (PyCFunction) _wrap_int_raster___imul__, METH_VARARGS, (char*) "" },
+  { "__iadd__", (PyCFunction) _wrap_int_raster___iadd__, METH_VARARGS, (char*) "" },
+  { "__isub__", (PyCFunction) _wrap_int_raster___isub__, METH_VARARGS, (char*) "" },
+  { "__idiv__", (PyCFunction) _wrap_int_raster___idiv__, METH_VARARGS, (char*) "" },
+  { "__mul__", (PyCFunction) _wrap_int_raster___mul__, METH_VARARGS, (char*) "" },
+  { "__add__", (PyCFunction) _wrap_int_raster___add__, METH_VARARGS, (char*) "" },
+  { "__sub__", (PyCFunction) _wrap_int_raster___sub__, METH_VARARGS, (char*) "" },
+  { "__div__", (PyCFunction) _wrap_int_raster___div__, METH_VARARGS, (char*) "" },
+  { "fill", (PyCFunction) _wrap_int_raster_fill, METH_VARARGS, (char*) "" },
+  { "WriteToASCFile", (PyCFunction) _wrap_int_raster_WriteToASCFile, METH_VARARGS, (char*) "" },
+  { "WriteToBinary", (PyCFunction) _wrap_int_raster_WriteToBinary, METH_VARARGS, (char*) "" },
+  { "extract", (PyCFunction) _wrap_int_raster_extract, METH_VARARGS, (char*) "" },
+  { "ToInt", (PyCFunction) _wrap_int_raster_ToInt, METH_VARARGS, (char*) "" },
+  { "ToFloat", (PyCFunction) _wrap_int_raster_ToFloat, METH_VARARGS, (char*) "" },
+  { "ToDouble", (PyCFunction) _wrap_int_raster_ToDouble, METH_VARARGS, (char*) "" },
+  { "adress", (PyCFunction) _wrap_int_raster_adress, METH_VARARGS, (char*) "" },
+  { "focal_min", (PyCFunction) _wrap_int_raster_focal_min, METH_VARARGS, (char*) "" },
+  { "focal_max", (PyCFunction) _wrap_int_raster_focal_max, METH_VARARGS, (char*) "" },
+  { "focal_mean", (PyCFunction) _wrap_int_raster_focal_mean, METH_VARARGS, (char*) "" },
+  { "focal_stdev", (PyCFunction) _wrap_int_raster_focal_stdev, METH_VARARGS, (char*) "" },
+  { "focal_majority", (PyCFunction) _wrap_int_raster_focal_majority, METH_VARARGS, (char*) "" },
+  { "focal_mean_difference", (PyCFunction) _wrap_int_raster_focal_mean_difference, METH_VARARGS, (char*) "" },
+  { "downscale_mean", (PyCFunction) _wrap_int_raster_downscale_mean, METH_VARARGS, (char*) "" },
+  { "downscale_min", (PyCFunction) _wrap_int_raster_downscale_min, METH_VARARGS, (char*) "" },
+  { "downscale_max", (PyCFunction) _wrap_int_raster_downscale_max, METH_VARARGS, (char*) "" },
+  { "downscale_majority", (PyCFunction) _wrap_int_raster_downscale_majority, METH_VARARGS, (char*) "" },
+  { "downscale_stdev", (PyCFunction) _wrap_int_raster_downscale_stdev, METH_VARARGS, (char*) "" },
+  { "downscale_mean_difference", (PyCFunction) _wrap_int_raster_downscale_mean_difference, METH_VARARGS, (char*) "" },
+  { "clone", (PyCFunction) _wrap_int_raster_clone, METH_VARARGS, (char*) "" },
+  { "ToBuffer", (PyCFunction) _wrap_int_raster_ToBuffer, METH_VARARGS, (char*) "" },
+  { "load", (PyCFunction) _wrap_int_raster_load, METH_STATIC|METH_VARARGS, "" },
+  { "__radd__", (PyCFunction) _wrap_int_raster___radd__, METH_VARARGS, (char*) "" },
+  { "__rsub__", (PyCFunction) _wrap_int_raster___rsub__, METH_VARARGS, (char*) "" },
+  { "__rmul__", (PyCFunction) _wrap_int_raster___rmul__, METH_VARARGS, (char*) "" },
+  { "__rdiv__", (PyCFunction) _wrap_int_raster___rdiv__, METH_VARARGS, (char*) "" },
   { NULL, NULL, 0, NULL } /* Sentinel */
 };
 

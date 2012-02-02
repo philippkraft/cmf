@@ -6,7 +6,7 @@
 
 cmf has been tested on the following systems:
 - Windows 7 with python(x,y)
-- Ubuntu 10.04
+- Ubuntu 10.04 - 11.10
 - Fedora 13
 - scientific linux 5.5 without root privilegs
 - Mac OS X 10.6
@@ -18,7 +18,7 @@ cmf has been tested on the following systems:
 
 If you prefer not to install python(x,y) make sure to have the following 
 programs installed:
-- Python 2.6 or Python 2.7 (not tested) (http://www.python.org)
+- Python 2.7 (http://www.python.org) (Python 2.6 used to work also)
 - numpy 1.3 or later (http://numpy.scipy.org)
 
 And optional, though recommended for graphical output of cmf results:
@@ -48,7 +48,7 @@ You can get the cmf source code from the <a href="../index.html">cmf homepage</a
 
 @section nixinst Installation on a Unix / Linux system 
 @subsection nixinst_dep Dependencies of cmf
-- python 2.6 or python 2.7 (not tested) (http://www.python.org)
+- python 2.6 or python 2.7 (http://www.python.org)
 - setuptools (http://pypi.python.org/pypi/setuptools)
 - numpy 1.3 or later (http://numpy.scipy.org)
 - libgeos_c >3.1 (http://trac.osgeo.org/geos/)
@@ -65,12 +65,11 @@ hints for @b one possible solution to install the whole tool chain locally.
 The installation process is described on the given homepages, however, getting precompiled
 binaries for your specific Linux/UNIX distribution might be easier.
 
-Another possibility is to install everything using easy_install. Before you copy the script below,
+Another possibility is to install everything using easy_install. You need to have 
+<a href="http://pypi.python.org/pypi/setuptools">setuptools</a>. Before you copy the script below,
 check for newer versions.
 
 @code
-$ wget http://pypi.python.org/packages/2.6/s/setuptools/setuptools-0.6c11-py2.6.egg
-$ sh setuptools-0.6c11-py2.6.egg
 $ easy_install numpy
 $ easy_install matplotlib
 $ wget http://download.osgeo.org/geos/geos-3.2.2.tar.bz2
