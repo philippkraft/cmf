@@ -7,6 +7,10 @@
 
 
 from sys import version_info
+if version_info >= (3,0,0):
+    new_instancemethod = lambda func, inst, cls: _raster.SWIG_PyInstanceMethod_New(func)
+else:
+    from new import instancemethod as new_instancemethod
 if version_info >= (2,6,0):
     def swig_import_helper():
         from os.path import dirname
@@ -28,7 +32,6 @@ if version_info >= (2,6,0):
 else:
     import _raster
 del version_info
-from _raster import *
 try:
     _swig_property = property
 except NameError:
@@ -80,10 +83,234 @@ def _swig_setattr_nondynamic_method(set):
 
 from math import *
 
+class RasterStatistics(object):
+    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __repr__ = _swig_repr
+    min = _swig_property(_raster.RasterStatistics_min_get, _raster.RasterStatistics_min_set)
+    max = _swig_property(_raster.RasterStatistics_max_get, _raster.RasterStatistics_max_set)
+    mean = _swig_property(_raster.RasterStatistics_mean_get, _raster.RasterStatistics_mean_set)
+    stdev = _swig_property(_raster.RasterStatistics_stdev_get, _raster.RasterStatistics_stdev_set)
+    count = _swig_property(_raster.RasterStatistics_count_get, _raster.RasterStatistics_count_set)
+    def __init__(self): 
+        _raster.RasterStatistics_swiginit(self,_raster.new_RasterStatistics())
+    def __repr__(self):
+        return "<RasterStatistics(min=%g,max=%g,mean=%g,stdev=%g,count=%i)>" % (self.min,self.max,self.mean,self.stdev,self.count)
+    def __str__(self):
+        return "min=%10.5g,max=%10.5g,mean=%10.5g,stdev=%10.5g,count=%i" % (self.min,self.max,self.mean,self.stdev,self.count)
+    def __iter__(self):
+        for kw,v in zip("min,max,mean,stdev,count".split(","),(self.min,self.max,self.mean,self.stdev,self.count)):
+            yield kw,v
 
+    __swig_destroy__ = _raster.delete_RasterStatistics
+RasterStatistics_swigregister = _raster.RasterStatistics_swigregister
+RasterStatistics_swigregister(RasterStatistics)
 
+class Histogram(object):
+    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __repr__ = _swig_repr
+    def __init__(self, *args): 
+        _raster.Histogram_swiginit(self,_raster.new_Histogram(*args))
+    def __getitem__(self,index):
+        if index<0 : index=self.size()+index
+        if index<0 or index>=self.size() : raise IndexError("Bar of histogram not available")
+        return (self.barcenter(index),self.frequency(index))
+    def __len__(self):
+        return self.size()
 
+    __swig_destroy__ = _raster.delete_Histogram
+Histogram.min = new_instancemethod(_raster.Histogram_min,None,Histogram)
+Histogram.max = new_instancemethod(_raster.Histogram_max,None,Histogram)
+Histogram.barwidth = new_instancemethod(_raster.Histogram_barwidth,None,Histogram)
+Histogram.size = new_instancemethod(_raster.Histogram_size,None,Histogram)
+Histogram.sum = new_instancemethod(_raster.Histogram_sum,None,Histogram)
+Histogram.frequency = new_instancemethod(_raster.Histogram_frequency,None,Histogram)
+Histogram.relfrequency = new_instancemethod(_raster.Histogram_relfrequency,None,Histogram)
+Histogram.pos = new_instancemethod(_raster.Histogram_pos,None,Histogram)
+Histogram.barcenter = new_instancemethod(_raster.Histogram_barcenter,None,Histogram)
+Histogram.quantile = new_instancemethod(_raster.Histogram_quantile,None,Histogram)
+Histogram.CountValue = new_instancemethod(_raster.Histogram_CountValue,None,Histogram)
+Histogram_swigregister = _raster.Histogram_swigregister
+Histogram_swigregister(Histogram)
 
+class double_raster(object):
+    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __repr__ = _swig_repr
+    def __init__(self, *args): 
+        _raster.double_raster_swiginit(self,_raster.new_double_raster(*args))
+    __swig_destroy__ = _raster.delete_double_raster
+double_raster.Xllcorner = new_instancemethod(_raster.double_raster_Xllcorner,None,double_raster)
+double_raster.Yllcorner = new_instancemethod(_raster.double_raster_Yllcorner,None,double_raster)
+double_raster.XCellsize = new_instancemethod(_raster.double_raster_XCellsize,None,double_raster)
+double_raster.YCellsize = new_instancemethod(_raster.double_raster_YCellsize,None,double_raster)
+double_raster.ColumnCount = new_instancemethod(_raster.double_raster_ColumnCount,None,double_raster)
+double_raster.RowCount = new_instancemethod(_raster.double_raster_RowCount,None,double_raster)
+double_raster.Width = new_instancemethod(_raster.double_raster_Width,None,double_raster)
+double_raster.Height = new_instancemethod(_raster.double_raster_Height,None,double_raster)
+double_raster.NoData = new_instancemethod(_raster.double_raster_NoData,None,double_raster)
+double_raster.HasData = new_instancemethod(_raster.double_raster_HasData,None,double_raster)
+double_raster.SetData = new_instancemethod(_raster.double_raster_SetData,None,double_raster)
+double_raster.GetXPosition = new_instancemethod(_raster.double_raster_GetXPosition,None,double_raster)
+double_raster.GetYPosition = new_instancemethod(_raster.double_raster_GetYPosition,None,double_raster)
+double_raster.statistics = new_instancemethod(_raster.double_raster_statistics,None,double_raster)
+double_raster.histogram = new_instancemethod(_raster.double_raster_histogram,None,double_raster)
+double_raster.clip = new_instancemethod(_raster.double_raster_clip,None,double_raster)
+double_raster.__imul__ = new_instancemethod(_raster.double_raster___imul__,None,double_raster)
+double_raster.__iadd__ = new_instancemethod(_raster.double_raster___iadd__,None,double_raster)
+double_raster.__isub__ = new_instancemethod(_raster.double_raster___isub__,None,double_raster)
+double_raster.__idiv__ = new_instancemethod(_raster.double_raster___idiv__,None,double_raster)
+double_raster.__mul__ = new_instancemethod(_raster.double_raster___mul__,None,double_raster)
+double_raster.__add__ = new_instancemethod(_raster.double_raster___add__,None,double_raster)
+double_raster.__sub__ = new_instancemethod(_raster.double_raster___sub__,None,double_raster)
+double_raster.__div__ = new_instancemethod(_raster.double_raster___div__,None,double_raster)
+double_raster.fill = new_instancemethod(_raster.double_raster_fill,None,double_raster)
+double_raster.WriteToASCFile = new_instancemethod(_raster.double_raster_WriteToASCFile,None,double_raster)
+double_raster.WriteToBinary = new_instancemethod(_raster.double_raster_WriteToBinary,None,double_raster)
+double_raster.extract = new_instancemethod(_raster.double_raster_extract,None,double_raster)
+double_raster.ToInt = new_instancemethod(_raster.double_raster_ToInt,None,double_raster)
+double_raster.ToFloat = new_instancemethod(_raster.double_raster_ToFloat,None,double_raster)
+double_raster.ToDouble = new_instancemethod(_raster.double_raster_ToDouble,None,double_raster)
+double_raster.adress = new_instancemethod(_raster.double_raster_adress,None,double_raster)
+double_raster.focal_min = new_instancemethod(_raster.double_raster_focal_min,None,double_raster)
+double_raster.focal_max = new_instancemethod(_raster.double_raster_focal_max,None,double_raster)
+double_raster.focal_mean = new_instancemethod(_raster.double_raster_focal_mean,None,double_raster)
+double_raster.focal_stdev = new_instancemethod(_raster.double_raster_focal_stdev,None,double_raster)
+double_raster.focal_majority = new_instancemethod(_raster.double_raster_focal_majority,None,double_raster)
+double_raster.focal_mean_difference = new_instancemethod(_raster.double_raster_focal_mean_difference,None,double_raster)
+double_raster.downscale_mean = new_instancemethod(_raster.double_raster_downscale_mean,None,double_raster)
+double_raster.downscale_min = new_instancemethod(_raster.double_raster_downscale_min,None,double_raster)
+double_raster.downscale_max = new_instancemethod(_raster.double_raster_downscale_max,None,double_raster)
+double_raster.downscale_majority = new_instancemethod(_raster.double_raster_downscale_majority,None,double_raster)
+double_raster.downscale_stdev = new_instancemethod(_raster.double_raster_downscale_stdev,None,double_raster)
+double_raster.downscale_mean_difference = new_instancemethod(_raster.double_raster_downscale_mean_difference,None,double_raster)
+double_raster.clone = new_instancemethod(_raster.double_raster_clone,None,double_raster)
+double_raster.GetData = new_instancemethod(_raster.double_raster_GetData,None,double_raster)
+double_raster.ToBuffer = new_instancemethod(_raster.double_raster_ToBuffer,None,double_raster)
+double_raster.__radd__ = new_instancemethod(_raster.double_raster___radd__,None,double_raster)
+double_raster.__rsub__ = new_instancemethod(_raster.double_raster___rsub__,None,double_raster)
+double_raster.__rmul__ = new_instancemethod(_raster.double_raster___rmul__,None,double_raster)
+double_raster.__rdiv__ = new_instancemethod(_raster.double_raster___rdiv__,None,double_raster)
+double_raster_swigregister = _raster.double_raster_swigregister
+double_raster_swigregister(double_raster)
+
+class float_raster(object):
+    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __repr__ = _swig_repr
+    def __init__(self, *args): 
+        _raster.float_raster_swiginit(self,_raster.new_float_raster(*args))
+    __swig_destroy__ = _raster.delete_float_raster
+float_raster.Xllcorner = new_instancemethod(_raster.float_raster_Xllcorner,None,float_raster)
+float_raster.Yllcorner = new_instancemethod(_raster.float_raster_Yllcorner,None,float_raster)
+float_raster.XCellsize = new_instancemethod(_raster.float_raster_XCellsize,None,float_raster)
+float_raster.YCellsize = new_instancemethod(_raster.float_raster_YCellsize,None,float_raster)
+float_raster.ColumnCount = new_instancemethod(_raster.float_raster_ColumnCount,None,float_raster)
+float_raster.RowCount = new_instancemethod(_raster.float_raster_RowCount,None,float_raster)
+float_raster.Width = new_instancemethod(_raster.float_raster_Width,None,float_raster)
+float_raster.Height = new_instancemethod(_raster.float_raster_Height,None,float_raster)
+float_raster.NoData = new_instancemethod(_raster.float_raster_NoData,None,float_raster)
+float_raster.HasData = new_instancemethod(_raster.float_raster_HasData,None,float_raster)
+float_raster.SetData = new_instancemethod(_raster.float_raster_SetData,None,float_raster)
+float_raster.GetXPosition = new_instancemethod(_raster.float_raster_GetXPosition,None,float_raster)
+float_raster.GetYPosition = new_instancemethod(_raster.float_raster_GetYPosition,None,float_raster)
+float_raster.statistics = new_instancemethod(_raster.float_raster_statistics,None,float_raster)
+float_raster.histogram = new_instancemethod(_raster.float_raster_histogram,None,float_raster)
+float_raster.clip = new_instancemethod(_raster.float_raster_clip,None,float_raster)
+float_raster.__imul__ = new_instancemethod(_raster.float_raster___imul__,None,float_raster)
+float_raster.__iadd__ = new_instancemethod(_raster.float_raster___iadd__,None,float_raster)
+float_raster.__isub__ = new_instancemethod(_raster.float_raster___isub__,None,float_raster)
+float_raster.__idiv__ = new_instancemethod(_raster.float_raster___idiv__,None,float_raster)
+float_raster.__mul__ = new_instancemethod(_raster.float_raster___mul__,None,float_raster)
+float_raster.__add__ = new_instancemethod(_raster.float_raster___add__,None,float_raster)
+float_raster.__sub__ = new_instancemethod(_raster.float_raster___sub__,None,float_raster)
+float_raster.__div__ = new_instancemethod(_raster.float_raster___div__,None,float_raster)
+float_raster.fill = new_instancemethod(_raster.float_raster_fill,None,float_raster)
+float_raster.WriteToASCFile = new_instancemethod(_raster.float_raster_WriteToASCFile,None,float_raster)
+float_raster.WriteToBinary = new_instancemethod(_raster.float_raster_WriteToBinary,None,float_raster)
+float_raster.extract = new_instancemethod(_raster.float_raster_extract,None,float_raster)
+float_raster.ToInt = new_instancemethod(_raster.float_raster_ToInt,None,float_raster)
+float_raster.ToFloat = new_instancemethod(_raster.float_raster_ToFloat,None,float_raster)
+float_raster.ToDouble = new_instancemethod(_raster.float_raster_ToDouble,None,float_raster)
+float_raster.adress = new_instancemethod(_raster.float_raster_adress,None,float_raster)
+float_raster.focal_min = new_instancemethod(_raster.float_raster_focal_min,None,float_raster)
+float_raster.focal_max = new_instancemethod(_raster.float_raster_focal_max,None,float_raster)
+float_raster.focal_mean = new_instancemethod(_raster.float_raster_focal_mean,None,float_raster)
+float_raster.focal_stdev = new_instancemethod(_raster.float_raster_focal_stdev,None,float_raster)
+float_raster.focal_majority = new_instancemethod(_raster.float_raster_focal_majority,None,float_raster)
+float_raster.focal_mean_difference = new_instancemethod(_raster.float_raster_focal_mean_difference,None,float_raster)
+float_raster.downscale_mean = new_instancemethod(_raster.float_raster_downscale_mean,None,float_raster)
+float_raster.downscale_min = new_instancemethod(_raster.float_raster_downscale_min,None,float_raster)
+float_raster.downscale_max = new_instancemethod(_raster.float_raster_downscale_max,None,float_raster)
+float_raster.downscale_majority = new_instancemethod(_raster.float_raster_downscale_majority,None,float_raster)
+float_raster.downscale_stdev = new_instancemethod(_raster.float_raster_downscale_stdev,None,float_raster)
+float_raster.downscale_mean_difference = new_instancemethod(_raster.float_raster_downscale_mean_difference,None,float_raster)
+float_raster.clone = new_instancemethod(_raster.float_raster_clone,None,float_raster)
+float_raster.GetData = new_instancemethod(_raster.float_raster_GetData,None,float_raster)
+float_raster.ToBuffer = new_instancemethod(_raster.float_raster_ToBuffer,None,float_raster)
+float_raster.__radd__ = new_instancemethod(_raster.float_raster___radd__,None,float_raster)
+float_raster.__rsub__ = new_instancemethod(_raster.float_raster___rsub__,None,float_raster)
+float_raster.__rmul__ = new_instancemethod(_raster.float_raster___rmul__,None,float_raster)
+float_raster.__rdiv__ = new_instancemethod(_raster.float_raster___rdiv__,None,float_raster)
+float_raster_swigregister = _raster.float_raster_swigregister
+float_raster_swigregister(float_raster)
+
+class int_raster(object):
+    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __repr__ = _swig_repr
+    def __init__(self, *args): 
+        _raster.int_raster_swiginit(self,_raster.new_int_raster(*args))
+    __swig_destroy__ = _raster.delete_int_raster
+int_raster.Xllcorner = new_instancemethod(_raster.int_raster_Xllcorner,None,int_raster)
+int_raster.Yllcorner = new_instancemethod(_raster.int_raster_Yllcorner,None,int_raster)
+int_raster.XCellsize = new_instancemethod(_raster.int_raster_XCellsize,None,int_raster)
+int_raster.YCellsize = new_instancemethod(_raster.int_raster_YCellsize,None,int_raster)
+int_raster.ColumnCount = new_instancemethod(_raster.int_raster_ColumnCount,None,int_raster)
+int_raster.RowCount = new_instancemethod(_raster.int_raster_RowCount,None,int_raster)
+int_raster.Width = new_instancemethod(_raster.int_raster_Width,None,int_raster)
+int_raster.Height = new_instancemethod(_raster.int_raster_Height,None,int_raster)
+int_raster.NoData = new_instancemethod(_raster.int_raster_NoData,None,int_raster)
+int_raster.HasData = new_instancemethod(_raster.int_raster_HasData,None,int_raster)
+int_raster.SetData = new_instancemethod(_raster.int_raster_SetData,None,int_raster)
+int_raster.GetXPosition = new_instancemethod(_raster.int_raster_GetXPosition,None,int_raster)
+int_raster.GetYPosition = new_instancemethod(_raster.int_raster_GetYPosition,None,int_raster)
+int_raster.statistics = new_instancemethod(_raster.int_raster_statistics,None,int_raster)
+int_raster.histogram = new_instancemethod(_raster.int_raster_histogram,None,int_raster)
+int_raster.clip = new_instancemethod(_raster.int_raster_clip,None,int_raster)
+int_raster.__imul__ = new_instancemethod(_raster.int_raster___imul__,None,int_raster)
+int_raster.__iadd__ = new_instancemethod(_raster.int_raster___iadd__,None,int_raster)
+int_raster.__isub__ = new_instancemethod(_raster.int_raster___isub__,None,int_raster)
+int_raster.__idiv__ = new_instancemethod(_raster.int_raster___idiv__,None,int_raster)
+int_raster.__mul__ = new_instancemethod(_raster.int_raster___mul__,None,int_raster)
+int_raster.__add__ = new_instancemethod(_raster.int_raster___add__,None,int_raster)
+int_raster.__sub__ = new_instancemethod(_raster.int_raster___sub__,None,int_raster)
+int_raster.__div__ = new_instancemethod(_raster.int_raster___div__,None,int_raster)
+int_raster.fill = new_instancemethod(_raster.int_raster_fill,None,int_raster)
+int_raster.WriteToASCFile = new_instancemethod(_raster.int_raster_WriteToASCFile,None,int_raster)
+int_raster.WriteToBinary = new_instancemethod(_raster.int_raster_WriteToBinary,None,int_raster)
+int_raster.extract = new_instancemethod(_raster.int_raster_extract,None,int_raster)
+int_raster.ToInt = new_instancemethod(_raster.int_raster_ToInt,None,int_raster)
+int_raster.ToFloat = new_instancemethod(_raster.int_raster_ToFloat,None,int_raster)
+int_raster.ToDouble = new_instancemethod(_raster.int_raster_ToDouble,None,int_raster)
+int_raster.adress = new_instancemethod(_raster.int_raster_adress,None,int_raster)
+int_raster.focal_min = new_instancemethod(_raster.int_raster_focal_min,None,int_raster)
+int_raster.focal_max = new_instancemethod(_raster.int_raster_focal_max,None,int_raster)
+int_raster.focal_mean = new_instancemethod(_raster.int_raster_focal_mean,None,int_raster)
+int_raster.focal_stdev = new_instancemethod(_raster.int_raster_focal_stdev,None,int_raster)
+int_raster.focal_majority = new_instancemethod(_raster.int_raster_focal_majority,None,int_raster)
+int_raster.focal_mean_difference = new_instancemethod(_raster.int_raster_focal_mean_difference,None,int_raster)
+int_raster.downscale_mean = new_instancemethod(_raster.int_raster_downscale_mean,None,int_raster)
+int_raster.downscale_min = new_instancemethod(_raster.int_raster_downscale_min,None,int_raster)
+int_raster.downscale_max = new_instancemethod(_raster.int_raster_downscale_max,None,int_raster)
+int_raster.downscale_majority = new_instancemethod(_raster.int_raster_downscale_majority,None,int_raster)
+int_raster.downscale_stdev = new_instancemethod(_raster.int_raster_downscale_stdev,None,int_raster)
+int_raster.downscale_mean_difference = new_instancemethod(_raster.int_raster_downscale_mean_difference,None,int_raster)
+int_raster.clone = new_instancemethod(_raster.int_raster_clone,None,int_raster)
+int_raster.GetData = new_instancemethod(_raster.int_raster_GetData,None,int_raster)
+int_raster.ToBuffer = new_instancemethod(_raster.int_raster_ToBuffer,None,int_raster)
+int_raster.__radd__ = new_instancemethod(_raster.int_raster___radd__,None,int_raster)
+int_raster.__rsub__ = new_instancemethod(_raster.int_raster___rsub__,None,int_raster)
+int_raster.__rmul__ = new_instancemethod(_raster.int_raster___rmul__,None,int_raster)
+int_raster.__rdiv__ = new_instancemethod(_raster.int_raster___rdiv__,None,int_raster)
+int_raster_swigregister = _raster.int_raster_swigregister
+int_raster_swigregister(int_raster)
 
 try:
     import numpy
@@ -109,10 +336,10 @@ class Raster:
         if (raster):
             self.raster=raster
             return
-        if (dtype in ["f","f8"]):
+        if (dtype in ["f","f8","d"]):
             rtype=double_raster
-        elif (dtype in ["s","f4"]):
-            rtype=single_raster
+        elif (dtype in ["s","f4","r"]):
+            rtype=float_raster
         elif (dtype in ["i","i4"]):
             rtype=int_raster
         else:
