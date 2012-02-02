@@ -220,7 +220,8 @@ public:
 
 };
 ///Represents a raster dataset.
-template<typename _T> class Raster {
+template<typename _T> 
+class Raster {
 private:
 	RasterStatistics m_statistic;
 	bool m_statistic_actual;
@@ -393,6 +394,7 @@ public:
 			}
 		}
 	}
+
 	//@}
 	/// @name Operators
 	//@{
@@ -568,7 +570,7 @@ public:
 		res/=other;
 		return res;
 	}
-	int fill(_T min_diff,size_t max_iter=100,bool debug=false)
+	size_t fill(_T min_diff,size_t max_iter=100,bool debug=false)
 	{
 		Raster<_T> original(*this);
 		std::vector<int> inside_r,   inside_c;
@@ -769,6 +771,29 @@ public:
 #endif
 	//@}
 
+
+	Raster<_T> extract(double x1,double y1, double x2, double y2) {
+		double
+			xmin = x1<x2 ? x1 : x2,
+			xmax = x1>x2 ? x1 : x2,
+			ymin = y1<y2 ? y1 : y2,
+			ymax = y1>y2 ? y1 : y2;
+		int
+			cols = int((xmax-xmin)/XCellsize()),
+			rows = int((ymax-ymin)/YCellsize()),
+			offsetcol = int((xmin-Xllcorner())/XCellsize()),
+			offsetrow = int((ymin-Yllcorner())/YCellsize());
+
+		Raster<_T> result = Raster<_T>(cols,rows,xmin,ymin,XCellsize(),YCellsize(),NoData());
+		_T z;
+		for(int j=0;j<rows;++j) {
+			for(int i=0;i<cols;++i) {
+				z=GetData(i+offsetcol,j+offsetrow);
+				result.SetData(i,j,z);
+			}
+		}
+		return result;
+	}
 	///@name Conversion functions
 	//@{
 	/// Converts the raster to a raster of int
@@ -816,6 +841,10 @@ private:
 	private:
 	public:
 		int center_row,center_col,windowsize;
+		void setcenter(int c, int r) {
+			center_row=r;
+			center_col=c;
+		}
 		int begin() const {return 0;}
 		int end() const {return windowsize*windowsize;}
 		int col(int index) const
@@ -951,6 +980,30 @@ private:
 			}
 		}
 	}
+	void downscale(Raster<_T> & result,int window_function, int WindowSize) {
+		_T val;
+
+		#pragma omp parallel for
+		for (int r = 0; r < (int)result.RowCount() ; ++r)
+		{
+			Window window(0,0,WindowSize);
+			int rpick = r * WindowSize + WindowSize / 2;
+			for (int c=0; c<result.ColumnCount(); ++c) {
+				int cpick = c * WindowSize + WindowSize / 2;
+				window.setcenter(cpick,rpick);
+				switch(window_function) {
+					case 1: val = window_mean(window); break;
+					case 2: val = window_min(window); break;
+					case 3: val = window_max(window); break;
+					case 4: val = window_majority(window); break;
+					case 5: val = window_stdev(window); break;
+					case 6: val = window_mean_difference(window); break;
+					default: NoData(); 
+				}
+				result.SetData(c,r,val);
+			}
+		}
+	}
 #endif
 public:
 	/// Creates a raster, which contains for each cell the minimum of the surrounding n x n window
@@ -994,6 +1047,43 @@ public:
 	{
 		Raster<_T> result(*this,_T(0));
 		focal(result,6,n);
+		return result;
+	}
+	
+	Raster<_T> downscale_mean(int n=3) {
+		Raster<_T> result=Raster<_T>(m_Header.ncols/n,m_Header.nrows/n,m_Header.xllcorner,m_Header.yllcorner,
+			m_Header.Xcellsize*n,m_Header.Ycellsize*n,NoData());
+		downscale(result,1,n);
+		return result;
+	}
+	Raster<_T> downscale_min(int n=3) {
+		Raster<_T> result=Raster<_T>(m_Header.ncols/n,m_Header.nrows/n,m_Header.xllcorner,m_Header.yllcorner,
+			m_Header.Xcellsize*n,m_Header.Ycellsize*n,NoData());
+		downscale(result,2,n);
+		return result;
+	}
+	Raster<_T> downscale_max(int n=3) {
+		Raster<_T> result=Raster<_T>(m_Header.ncols/n,m_Header.nrows/n,m_Header.xllcorner,m_Header.yllcorner,
+			m_Header.Xcellsize*n,m_Header.Ycellsize*n,NoData());
+		downscale(result,3,n);
+		return result;
+	}
+	Raster<_T> downscale_majority(int n=3) {
+		Raster<_T> result=Raster<_T>(m_Header.ncols/n,m_Header.nrows/n,m_Header.xllcorner,m_Header.yllcorner,
+			m_Header.Xcellsize*n,m_Header.Ycellsize*n,NoData());
+		downscale(result,4,n);
+		return result;
+	}
+	Raster<_T> downscale_stdev(int n=3) {
+		Raster<_T> result=Raster<_T>(m_Header.ncols/n,m_Header.nrows/n,m_Header.xllcorner,m_Header.yllcorner,
+			m_Header.Xcellsize*n,m_Header.Ycellsize*n,NoData());
+		downscale(result,5,n);
+		return result;
+	}
+	Raster<_T> downscale_mean_difference(int n=3) {
+		Raster<_T> result=Raster<_T>(m_Header.ncols/n,m_Header.nrows/n,m_Header.xllcorner,m_Header.yllcorner,
+			m_Header.Xcellsize*n,m_Header.Ycellsize*n,NoData());
+		downscale(result,6,n);
 		return result;
 	}
 	//@}

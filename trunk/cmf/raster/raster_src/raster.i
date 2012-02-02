@@ -78,7 +78,18 @@ from math import *
         return self.size()
     }
 }
-
+%extend RasterStatistics
+{
+    %pythoncode {
+    def __repr__(self):
+        return "<RasterStatistics(min=%g,max=%g,mean=%g,stdev=%g,count=%i)>" % (self.min,self.max,self.mean,self.stdev,self.count)
+    def __str__(self):
+        return "min=%10.5g,max=%10.5g,mean=%10.5g,stdev=%10.5g,count=%i" % (self.min,self.max,self.mean,self.stdev,self.count)
+    def __iter__(self):
+        for kw,v in zip("min,max,mean,stdev,count".split(","),(self.min,self.max,self.mean,self.stdev,self.count)):
+            yield kw,v
+   }
+}   
 %pythoncode {
     try:
         import numpy
@@ -257,6 +268,31 @@ from math import *
             """ Optimised shortcut for =r-r.focal_mean(n) """
             res=self.raster.focal_mean_difference(n)
             return Raster(dtype=self.dtype,raster=res)
+        def downscale_min(self,n=3):
+            """ Focal minimum function: each cell of the new raster gets the minimum value of the surrounding n x n matrix"""
+            res=self.raster.downscale_min(n)
+            return Raster(dtype=self.dtype,raster=res)
+        def downscale_max(self,n=3):
+            """ Focal maximum function: each cell of the new raster gets the maximum value of the surrounding n x n matrix"""
+            res=self.raster.downscale_max(n)
+            return Raster(self,raster=res)
+        def downscale_mean(self,n=3):
+            """ Focal mean function: each cell of the new raster gets the mean value of the surrounding n x n matrix"""
+            res=self.raster.downscale_mean(n)
+            return Raster(dtype=self.dtype,raster=res)
+        def downscale_stdev(self,n=3):
+            """ Focal standard deviation function: each cell of the new raster gets the standard deviation value of the surrounding n x n matrix"""
+            res=self.raster.downscale_stdev(n)
+            return Raster(dtype=self.dtype,raster=res)
+        def downscale_majority(self,n=3):
+            """ Focal majority function: each cell of the new raster gets the most frequent value of the surrounding n x n matrix. 
+                If each value is unique in the matrix, the result is the old value"""
+            res=self.raster.downscale_majority(n)
+            return Raster(dtype=self.dtype,raster=res)
+        def downscale_mean_difference(self,n=3):
+            """ Optimised shortcut for =r-r.downscale_mean(n) """
+            res=self.raster.downscale_mean_difference(n)
+            return Raster(dtype=self.dtype,raster=res)
         def to_int(self):
             """ Creates a new raster of type integer from self (int 32)"""
             res=self.raster.ToInt()
@@ -282,6 +318,10 @@ from math import *
         def clip(self,x1,y1,x2,y2):
         	""" Clips the raster to the given bounding box by marking all data outside the box as nodata """
         	self.raster.clip(x1,y1,x2,y2)
+        def extract(self,x1,y1,x2,y2):
+            """ Extracts a subset from the raster """
+            res=self.raster.extract(x1,y1,x2,y2)
+            return Raster(dtype=self.dtype,raster=res)
         def __iadd__(self,other):
             if type(other) is type(self):
                 self.raster+=other.raster
