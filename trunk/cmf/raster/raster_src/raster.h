@@ -225,6 +225,7 @@ class Raster {
 private:
 	RasterStatistics m_statistic;
 	bool m_statistic_actual;
+	//friend load<_T>(const std::string & filename,bool binary=false);
 #ifndef SWIG
 	header<_T> m_Header; ///<contains the header of the dataset
 	typedef std::vector<_T> data;
@@ -1113,7 +1114,43 @@ public:
 		}
 		return buffer.str();
 	}
-};template<typename _T>
+    static Raster<_T> load(const std::string & filename,bool binary=false) {
+    if (binary==false) {
+        return Raster<_T>(filename);
+    } else {
+    	size_t dotpos=filename.find_last_of('.');
+		std::string hdrfilename=filename.substr(0,dotpos) + ".hdr";
+		std::ifstream hdrfile;
+		try
+		{
+			hdrfile.open(hdrfilename.c_str());
+			if (!hdrfile) throw std::ofstream::failure("Raster file: " + hdrfilename + " could not be created");
+		}
+		catch (...)
+		{
+			hdrfile.close();
+			throw std::ofstream::failure("Raster file: " + hdrfilename + " could not be created");
+		}
+		header<_T> hdr(hdrfile);
+		Raster<_T> result(hdr.ncols,hdr.nrows,
+		                  hdr.xllcorner,hdr.yllcorner,
+                          hdr.Xcellsize,hdr.Ycellsize,hdr.NoData);
+		hdrfile.close();
+		std::ifstream binfile;
+		binfile.open(filename.c_str(),std::ios_base::binary | std::ios_base::in);
+		for(typename Raster<_T>::data::const_iterator it = result.m_data.begin(); it != result.m_data.end(); ++it)
+		{
+			binfile.read((char*)&(*it),sizeof(_T));
+		}
+		binfile.close();
+		return result;
+
+    
+    }
+}
+
+};
+template<typename _T>
 Raster<_T> operator -(const _T& left,const Raster<_T>& right) {
 	Raster<_T> res(right);
 	res *= -1;
@@ -1140,8 +1177,6 @@ Raster<_T> operator /(const _T& left,const Raster<_T>& right) {
 	}
 	return res;
 }
-
-
 #endif /* RasterTemplate_h__ */
 
  
@@ -1149,4 +1184,4 @@ Raster<_T> operator /(const _T& left,const Raster<_T>& right) {
 #ifdef SWIG
 	%echo "Raster ok"
 #endif
-
+

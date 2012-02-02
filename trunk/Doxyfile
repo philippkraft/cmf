@@ -798,13 +798,13 @@ HTML_FILE_EXTENSION    = .html
 # each generated HTML page. If it is left blank doxygen will generate a 
 # standard header.
 
-HTML_HEADER            = 
+HTML_HEADER            = cmf/cmf_core_src/doc/empty.html
 
 # The HTML_FOOTER tag can be used to specify a personal HTML footer for 
 # each generated HTML page. If it is left blank doxygen will generate a 
 # standard footer.
 
-HTML_FOOTER            = cmf/cmf_core_src/doc/footer.html
+HTML_FOOTER            = cmf/cmf_core_src/doc/empty.html
 
 # The HTML_STYLESHEET tag can be used to specify a user-defined cascading 
 # style sheet that is used by each HTML page. It can be used to 
@@ -1003,7 +1003,7 @@ QHG_LOCATION           =
 # the ECLIPSE_DOC_ID value. After copying Eclipse needs to be restarted before 
 # the help appears.
 
-GENERATE_ECLIPSEHELP   = NO
+GENERATE_ECLIPSEHELP   = YES
 
 # A unique identifier for the eclipse help plugin. When installing the plugin 
 # the directory name containing the HTML and XML files should also have 
