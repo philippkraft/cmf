@@ -21,7 +21,7 @@ def load_meteo(project):
     rain=cmf.timeseries.from_file('giessen.rain')
 
     # Create a meteo station
-    meteo=project.meteo_stations.add_station('Giessen')
+    meteo=project.meteo_stations.add_station(name = 'Giessen',position = (0,0,0))
 
     # Meteorological timeseries
     meteo.Tmax=cmf.timeseries.from_file('giessen.Tmax')
