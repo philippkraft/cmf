@@ -18,7 +18,7 @@ def load_meteo(project):
     rain=cmf.timeseries.from_file('giessen.rain')
 
     # Create a meteo station
-    meteo=project.meteo_stations.add_station('Giessen')
+    meteo=project.meteo_stations.add_station(name = 'Giessen',position = (0,0,0))
 
     # Meteorological timeseries
     meteo.Tmax=cmf.timeseries.from_file('giessen.Tmax')
@@ -88,12 +88,12 @@ def run(until=cmf.year,dt=cmf.day):
         print "%s - %6.2fm3/day (%s/%s)" % (t,outlet(t),ele*cmf.sec,tot*cmf.sec)
     return outflow,wetness
 if "run" in sys.argv:
-    outflow,wetness=run(10*cmf.year)
+    outflow,wetness=run(2*cmf.year)
     if pylab:
         from pylab import *
         subplot(211)
         cmf.draw.plot_timeseries(outflow)
-        cmf.draw.plot_timeseries(perc)
+        title('Outflow')
         axis('tight')
         subplot(212)
         wetness=array(wetness)
@@ -104,6 +104,7 @@ if "run" in sys.argv:
                   cmap=cm.jet_r,
                   extend='both',
                   )
+        title('Wetness')
         gca().xaxis_date()
         axis('tight')
         show()
