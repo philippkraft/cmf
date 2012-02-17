@@ -1784,18 +1784,13 @@ get_intensity(cmf::math::Time t) const
 Returns the actual rainfall intensity in mm/day. ";
 
 %feature("docstring")  cmf::atmosphere::ConstantRainSource::conc "virtual real conc(cmf::math::Time t, const cmf::water::solute &Solute)
+const
 
 Returns the concentration of a solute in the rainfall at time t. ";
 
 %feature("docstring")  cmf::atmosphere::ConstantRainSource::set_conc "void set_conc(const cmf::water::solute &Solute, real value)
 
 Sets the concentration of a solute in the rainfall. ";
-
-%feature("docstring")  cmf::atmosphere::ConstantRainSource::conc "virtual real conc(cmf::math::Time t, const cmf::water::solute &Solute)
-const
-
-Returns the water quality of the flux_node, if it is not overridden
-this is the mix of the incoming fluxes. ";
 
 %feature("docstring")
 cmf::atmosphere::ConstantRainSource::RecalcFluxes "virtual bool
@@ -2028,6 +2023,13 @@ given, but without statevariables ";
 %feature("docstring")  cmf::math::CVodeIntegrator::get_error "cmf::math::num_array get_error() const
 
 Error vector of the integrator. ";
+
+%feature("docstring")
+cmf::math::CVodeIntegrator::get_nonlinear_iterations "int
+get_nonlinear_iterations() const
+
+Returns the number of non-linear iterations performed. Calls
+CVodeGetNumNonlinSolvIters. ";
 
 %feature("docstring")  cmf::math::CVodeIntegrator::copy "CVodeIntegrator* copy() const
 
@@ -3526,15 +3528,9 @@ C++ includes: precipitation.h ";
 Returns the actual rainfall intensity in mm/day. ";
 
 %feature("docstring")  cmf::atmosphere::IDWRainfall::conc "real
-conc(cmf::math::Time t, const cmf::water::solute &Solute)
+conc(cmf::math::Time t, const cmf::water::solute &Solute) const
 
 Returns the concentration of a solute in the rainfall at time t. ";
-
-%feature("docstring")  cmf::atmosphere::IDWRainfall::conc "virtual
-real conc(cmf::math::Time t, const cmf::water::solute &Solute) const
-
-Returns the water quality of the flux_node, if it is not overridden
-this is the mix of the incoming fluxes. ";
 
 %feature("docstring")  cmf::atmosphere::IDWRainfall::RecalcFluxes "virtual bool RecalcFluxes(cmf::math::Time t)
 
@@ -4111,10 +4107,11 @@ $t_r [days]$ The residence time of the water in this storage in days
 C++ includes: simple_connections.h ";
 
 %feature("docstring")  cmf::water::kinematic_wave::kinematic_wave "kinematic_wave(WaterStorage::ptr source, flux_node::ptr target, real
-residencetime, real exponent=1.0, real residual_volume=0.0)
+residencetime, real exponent=1.0, real residual=0.0, real V0=1.0)
 
-Creates a kinematic wave connection. \\\\[ q = \\\\frac {\\\\left(V -
-V_{residual}\\\\right)^\\\\beta}{t_r} \\\\]
+Creates a kinematic wave connection. \\\\[ q = \\\\frac
+{\\\\left(\\\\frac{V}{V_0} - f_{residual}\\\\right)^\\\\beta}{t_r}
+\\\\]
 
 Parameters:
 -----------
@@ -4131,8 +4128,10 @@ storage
 exponent:   $\\\\beta [-]$ An empirical exponent to shape the flux
 function (default = 1 (linear function))
 
-residual_volume:   $V_{residual} [m^3]$ The volume of water not
-flowing out (default = 0 m3) ";
+residual:   $V_{residual} [m^3]$ The volume of water not flowing out
+(default = 0)
+
+V0:   $V_0$ The reference volume to scale the exponent ";
 
 %feature("docstring")  cmf::water::kinematic_wave::q "real q(const
 flux_node &inquirer, cmf::math::Time t)
@@ -6860,16 +6859,9 @@ get_intensity(cmf::math::Time t) const
 Returns the actual rainfall intensity in mm/day. ";
 
 %feature("docstring")  cmf::atmosphere::RainfallStationReference::conc
-"real conc(cmf::math::Time t, const cmf::water::solute &Solute)
+"real conc(cmf::math::Time t, const cmf::water::solute &Solute) const
 
 Returns the concentration of a solute in the rainfall at time t. ";
-
-%feature("docstring")  cmf::atmosphere::RainfallStationReference::conc
-"virtual real conc(cmf::math::Time t, const cmf::water::solute
-&Solute) const
-
-Returns the water quality of the flux_node, if it is not overridden
-this is the mix of the incoming fluxes. ";
 
 %feature("docstring")
 cmf::atmosphere::RainfallStationReference::RecalcFluxes "virtual bool
@@ -6972,7 +6964,8 @@ C++ includes: precipitation.h ";
 Returns the actual rainfall intensity in mm/day. ";
 
 %feature("docstring")  cmf::atmosphere::RainSource::conc "virtual
-real conc(cmf::math::Time t, const cmf::water::solute &Solute)=0
+real conc(cmf::math::Time t, const cmf::water::solute &Solute) const
+=0
 
 Returns the concentration of a solute in the rainfall at time t. ";
 
@@ -7035,12 +7028,6 @@ t:  Time of the query
 
 Without:  A flux_connection that is excluded from the waterbalance
 (e.g. to prevent closed circuits) ";
-
-%feature("docstring")  cmf::atmosphere::RainSource::conc "virtual
-real conc(cmf::math::Time t, const cmf::water::solute &Solute) const
-
-Returns the water quality of the flux_node, if it is not overridden
-this is the mix of the incoming fluxes. ";
 
 %feature("docstring")  cmf::atmosphere::RainSource::get_potential "virtual real get_potential() const
 
@@ -10088,29 +10075,29 @@ timeseries = timeseries x double
 const ";
 
 %feature("docstring")  cmf::math::timeseries::reduce_min "timeseries
-reduce_min(cmf::math::Time begin, cmf::math::Time step) const ";
+reduce_min(cmf::math::Time begin, cmf::math::Time step) const
+
+Creates a timeseries with a bigger timestep, containing the minimum.
+";
 
 %feature("docstring")  cmf::math::timeseries::reduce_max "timeseries
 reduce_max(cmf::math::Time begin, cmf::math::Time step) const
 
-Creates a timeseries with a bigger timestep, containing the minimum.
+Creates a timeseries with a bigger timestep, containing the maximum.
 ";
 
 %feature("docstring")  cmf::math::timeseries::reduce_sum "timeseries
 reduce_sum(cmf::math::Time begin, cmf::math::Time step) const
 
-Creates a timeseries with a bigger timestep, containing the maximum.
-";
+Creates a timeseries with a bigger timestep, containing the sum. ";
 
 %feature("docstring")  cmf::math::timeseries::reduce_avg "timeseries
 reduce_avg(cmf::math::Time begin, cmf::math::Time step) const
 
-Creates a timeseries with a bigger timestep, containing the sum. ";
-
-%feature("docstring")  cmf::math::timeseries::floating_avg "timeseries floating_avg(cmf::math::Time window_width) const
-
 Creates a timeseries with a bigger timestep, containing the average.
 ";
+
+%feature("docstring")  cmf::math::timeseries::floating_avg "timeseries floating_avg(cmf::math::Time window_width) const ";
 
 %feature("docstring")  cmf::math::timeseries::floating_avg "timeseries floating_avg(size_t window_size) const ";
 
@@ -10142,9 +10129,7 @@ const ";
 %feature("docstring")  cmf::math::timeseries::begin "cmf::math::Time
 begin() const
 
-Order of the interpolation.
-
-First date of measurement ";
+First date of measurement. ";
 
 %feature("docstring")  cmf::math::timeseries::step "cmf::math::Time
 step() const
@@ -10189,8 +10174,8 @@ count_values() const
 
 Number of valid values (=size - # of NaN's). ";
 
-%feature("docstring")  cmf::math::timeseries::timeseries "timeseries(cmf::math::Time begin, cmf::math::Time step, int
-interpolationmethod=1, size_t count=0)
+%feature("docstring")  cmf::math::timeseries::timeseries "timeseries(cmf::math::Time begin=cmf::math::Time(), cmf::math::Time
+step=cmf::math::day, int interpolationmethod=1, size_t count=0)
 
 Constructor of a time series
 
@@ -10206,14 +10191,7 @@ neighbor, 1- linear, 2 - cubic spline (not implemented yet)
 
 count:  Initial number of items. Items are filled with 0.0 ";
 
-%feature("docstring")  cmf::math::timeseries::timeseries "timeseries() ";
-
 %feature("docstring")  cmf::math::timeseries::timeseries "timeseries(const cmf::math::timeseries &ts) ";
-
-%feature("docstring")  cmf::math::timeseries::timeseries "timeseries(cmf::math::Time begin, cmf::math::Time step, const
-cmf::math::num_array &data) ";
-
-%feature("docstring")  cmf::math::timeseries::timeseries "timeseries(double scalar) ";
 
 %feature("docstring")  cmf::math::timeseries::get_t "double
 get_t(cmf::math::Time t) const ";
@@ -12562,58 +12540,58 @@ real tau) ";
 // File: todo.xml
 
 
-// File: dir_a34c0a3a997751912cbeeb3f6a2018d4.xml
+// File: dir_37bc87c1c4d7e8650365d012e9126e2d.xml
 
 
-// File: dir_e44d263e82e73e5cd45e66a9d5484f0e.xml
+// File: dir_814d734828fa965730c2dd3f6af292a1.xml
 
 
-// File: dir_1c689e9749401ee508c4e3b2747d036e.xml
+// File: dir_8ffb91d16a6a64a8805e69c168652840.xml
 
 
-// File: dir_35473c2924978da3332cfde17d1d6b99.xml
+// File: dir_3ed0765eb5901fdc3449b15208805995.xml
 
 
-// File: dir_af937d60eb69dba91a5be756eec0a3ea.xml
+// File: dir_ad68c0483b36238f6e6a1eaa7edf7ec2.xml
 
 
-// File: dir_074680f4811abdc846d4a1ca8117269b.xml
+// File: dir_34feb2f62dc0cad0119f312d8bb90a5b.xml
 
 
-// File: dir_6914091710f015cd771e4c69991e0321.xml
+// File: dir_f8296a2f37d97388413c2c14e5b183e5.xml
 
 
-// File: dir_9ba2403456dedd4364a1ad5ef46b0674.xml
+// File: dir_404ac2bcdddc3f0adcd0ebb0fd911bd1.xml
 
 
-// File: dir_881a4b4145393ba5aa926042f2b0ab4d.xml
+// File: dir_71a159ce2c57d49e45c879a346ef0945.xml
 
 
-// File: dir_5ee593482e72b5c4adf127b682cc064b.xml
+// File: dir_69ed31de07dfd8f5b4190e9532d95b24.xml
 
 
-// File: dir_6729183fec5c38381d2b4a165ab87aab.xml
+// File: dir_ea83c69c0d7d6b733137dc338936a50e.xml
 
 
-// File: dir_da4bfa092f42b4972ab12dc096d9b871.xml
+// File: dir_0033d40ac36103a543278d00ce59a0c0.xml
 
 
-// File: dir_28ca05f8518a347825525f957ad42f18.xml
+// File: dir_d87fd82c426a37f97954999433f9b603.xml
 
 
-// File: dir_4f5dd0ddca36aa533ebaad82a6c4b0e2.xml
+// File: dir_34b0f9b5a2cb4e7e3ee1ad3d3c17a1fc.xml
 
 
-// File: dir_bbd991016cf40466555088dc9588afdf.xml
+// File: dir_828f5ebd381a05f222ac04b144b0173d.xml
 
 
-// File: dir_7ec89ba203c4709e08ce3f8fa76928c4.xml
+// File: dir_8fd64e08e434218c3a2e2370b2792e7c.xml
 
 
-// File: dir_18152b86c6724725c4b0fa1db5a5b7b6.xml
+// File: dir_e35beae59e60b59d5a8f2f4e3f5fa8c7.xml
 
 
-// File: dir_8b4109f3d59abed5ff481179ab00febc.xml
+// File: dir_e9c656ec9c1707c19b035c0a6f4fca36.xml
 
 
 // File: main.xml

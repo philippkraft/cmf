@@ -18,7 +18,6 @@
 //   
 #include "time.h"
 #include <sstream>
-
 namespace cmf {
 	namespace math {
 		cmf::math::Time operator*(double f,Time t) {return t*f;}

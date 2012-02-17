@@ -5,12 +5,10 @@
 <pydev_property name="org.python.pydev.PYTHON_PROJECT_VERSION">python 2.6</pydev_property>
 <pydev_property name="org.python.pydev.PYTHON_PROJECT_INTERPRETER">Default</pydev_property>
 <pydev_pathproperty name="org.python.pydev.PROJECT_SOURCE_PATH">
-<path>/cmf/cmf</path>
-<path>/cmf/cmf_setups</path>
-<path>/cmf</path>
-<path>/cmf/cmf_visual</path>
+<path>/cmf-trunk/cmf</path>
+<path>/cmf-trunk/cmf_setups</path>
+<path>/cmf-trunk</path>
+<path>/cmf-trunk/cmf_visual</path>
 </pydev_pathproperty>
-<pydev_pathproperty name="org.python.pydev.PROJECT_EXTERNAL_SOURCE_PATH">
-<path>/usr/lib/pymodules/python2.6</path>
-</pydev_pathproperty>
+
 </pydev_project>

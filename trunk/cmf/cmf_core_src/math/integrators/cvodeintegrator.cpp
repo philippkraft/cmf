@@ -212,5 +212,7 @@ int cmf::math::CVodeIntegrator::get_nonlinear_iterations() const
 		long result;
 		CVodeGetNumNonlinSolvIters(cvode_mem,&result);
 		return result;
+	} else {
+		throw std::runtime_error("CVode solver is not initialized");
 	}
 }
