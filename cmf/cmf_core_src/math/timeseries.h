@@ -92,7 +92,6 @@ namespace cmf {
 			{
 				return begin()+step()*(pos<0 ? size()+pos : pos);
 			}
-			/// Order of the interpolation
 		protected:
 		public:
 			/// First date of measurement
@@ -122,17 +121,19 @@ namespace cmf {
 			/// @param step Time between measurements
 			/// @param interpolationmethod Method for the interpolation (0 - Nearest neighbor, 1- linear, 2 - cubic spline (not implemented yet)
 			/// @param count Initial number of items. Items are filled with 0.0
-			timeseries(cmf::math::Time begin,cmf::math::Time step,int interpolationmethod=1,size_t count=0);
-			timeseries() : m_data(make_data()) 
-			{	}
+			timeseries(cmf::math::Time begin=cmf::math::Time(),cmf::math::Time step=cmf::math::day,int interpolationmethod=1,size_t count=0);
+#ifndef SWIG
 			timeseries( const cmf::math::timeseries& ts ) 
 			{
 				m_data=ts.m_data;
 			}
-			timeseries(cmf::math::Time begin, cmf::math::Time step, const cmf::math::num_array& data);
-			timeseries(double scalar) : m_data(make_data())
+#endif
+			static timeseries from_array(cmf::math::Time begin, cmf::math::Time step, const cmf::math::num_array& data);
+			static timeseries from_scalar(double scalar)
 			{
-				m_data->values.push_back(scalar);
+				timeseries result;
+				result.m_data->values.push_back(scalar);
+				return result;
 			}
 
 
@@ -195,11 +196,14 @@ namespace cmf {
 			timeseries operator-() const;
 			timeseries inv() const;
 
-
-			timeseries reduce_min(cmf::math::Time begin,cmf::math::Time step) const; /// Creates a timeseries with a bigger timestep, containing the minimum
-			timeseries reduce_max(cmf::math::Time begin,cmf::math::Time step) const; /// Creates a timeseries with a bigger timestep, containing the maximum
-			timeseries reduce_sum(cmf::math::Time begin,cmf::math::Time step) const; /// Creates a timeseries with a bigger timestep, containing the sum
-			timeseries reduce_avg(cmf::math::Time begin,cmf::math::Time step) const; /// Creates a timeseries with a bigger timestep, containing the average
+			/// Creates a timeseries with a bigger timestep, containing the minimum
+			timeseries reduce_min(cmf::math::Time begin,cmf::math::Time step) const; 
+			/// Creates a timeseries with a bigger timestep, containing the maximum
+			timeseries reduce_max(cmf::math::Time begin,cmf::math::Time step) const; 
+			/// Creates a timeseries with a bigger timestep, containing the sum
+			timeseries reduce_sum(cmf::math::Time begin,cmf::math::Time step) const; 
+			/// Creates a timeseries with a bigger timestep, containing the average
+			timeseries reduce_avg(cmf::math::Time begin,cmf::math::Time step) const; 
 
 			timeseries floating_avg(cmf::math::Time window_width) const;
 			timeseries floating_avg(size_t window_size) const;

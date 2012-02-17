@@ -182,7 +182,7 @@ namespace cmf {
 		
 		/// Provides the use of the Van Genuchten - Mualem retention curve (Van Genuchten 1980)
 		///
-		/// Head - moisture realtionship:
+		/// Head - moisture relationship:
 		/// \f{eqnarray*}
 		/// W(\theta) &=& \frac{\theta - \theta_r}{\theta_s - \theta_r} \\
 		/// K(W) &=& K_{sat} \sqrt{W} \left(\left(1-w^{1/m}\right)^m\right)^2 \\
@@ -215,14 +215,13 @@ namespace cmf {
 			virtual real Porosity(real depth) const;
 			virtual real FillHeight(real lowerDepth,real Area,real Volume) const;
 			VanGenuchtenMualem* copy() const;
-			VanGenuchtenMualem();
 			/// Creates a van Genuchten-Mualem retention curve
 			/// @param Ksat Saturated conductivity in \f$\frac m{day}\f$
 			/// @param phi Porosity in \f$\frac{m^3 Pores}{m^3 Soil}\f$
 			/// @param alpha Van Genuchten \f$\alpha\f$ in \f$\frac 1{cm}\f$
 			/// @param n Van Genuchten n
 			/// @param m Van Genuchten m parameter, if negative m is calculated as \f$ 1-\frac 1 n\f$
-			VanGenuchtenMualem(real Ksat, real phi,real alpha, real n, real m=-1);
+			VanGenuchtenMualem(real Ksat=15, real phi=0.5,real alpha=0.2178, real n=1.211, real m=-1);
 
 		};
 

@@ -45,7 +45,7 @@ cmf::math::num_array::num_array( size_t count,real Value/*=0*/ ) : m_size(int(co
 cmf::math::num_array::num_array( const num_array& Vector ) 
 : m_size(Vector.size()), m_data(new double[Vector.size()])
 {
-	for (size_t i = 0; i < size() ; ++i)
+	for (int i = 0; i < size() ; ++i)
 		m_data[i] = Vector[i];
 }
 

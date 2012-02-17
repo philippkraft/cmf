@@ -188,11 +188,12 @@ void cmf::upslope::BrooksCoreyRetentionCurve::Set_Saturated_pF_curve_tail_parame
 
 real cmf::upslope::VanGenuchtenMualem::Wetness( real suction) const
 {
+	real _m = m<0 ? 1-1/n : m;
 	real h=-100 * suction;
 	real w0=0.99;
 	real p0=MatricPotential(w0);
 	if (suction<=p0)
-		return pow(1+pow(alpha*h,n),-m);
+		return pow(1+pow(alpha*h,n),-_m);
 	else
 	{
 		real dp0=1e6*(p0-MatricPotential(w0-1e-6));
@@ -204,11 +205,12 @@ real cmf::upslope::VanGenuchtenMualem::Wetness( real suction) const
 
 real cmf::upslope::VanGenuchtenMualem::MatricPotential( real w ) const
 {
+	real _m = m<0 ? 1-1/n : m;
 	real w0=0.99; // Wetness at the border between non-linear and linear part = wetness(h0)
 	if (w<=w0)
 	{
 		// inverse m and inverse n
-		real mi=1/m,ni=1/n;
+		real mi=1/_m,ni=1/n;
 		return -0.01*pow(1-pow(w,mi),ni)/(alpha*pow(w,mi*ni));
 	}
 	else
@@ -222,8 +224,9 @@ real cmf::upslope::VanGenuchtenMualem::MatricPotential( real w ) const
 
 real cmf::upslope::VanGenuchtenMualem::K( real wetness) const
 {
+	real _m = m<0 ? 1-1/n : m;
 	if (wetness>=1) return Ksat*exp(-(wetness-1)*10);
-	return Ksat*minimum(sqrt(wetness)*square(1-pow(1-pow(wetness,1/m),m)),1);
+	return Ksat*minimum(sqrt(wetness)*square(1-pow(1-pow(wetness,1/_m),_m)),1);
 }
 
 real cmf::upslope::VanGenuchtenMualem::VoidVolume( real upperDepth,real lowerDepth,real Area ) const
@@ -254,16 +257,10 @@ cmf::upslope::VanGenuchtenMualem* cmf::upslope::VanGenuchtenMualem::copy() const
 cmf::upslope::VanGenuchtenMualem::VanGenuchtenMualem( real _Ksat, real _phi,real _alpha, real _n, real _m/*=-1*/ ) 
 : n(_n),alpha(_alpha),Phi(_phi),Ksat(_Ksat), m(_m)
 {
-	if (m<0) 
-		m=1-1/n;
 
 }
 
-cmf::upslope::VanGenuchtenMualem::VanGenuchtenMualem()
-: n(1.211),alpha(0.2178),Phi(0.5),Ksat(15),m(1-1/1.211)
-{
 
-}
 /************************************************************************/
 /* Linear Retention curve                                               */
 /************************************************************************/

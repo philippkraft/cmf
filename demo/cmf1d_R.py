@@ -2,39 +2,71 @@
 from __future__ import division
 """
 This file creates a single cell to calculate a soil column using a 1D Richards equation
+
+It demonstrates how to use the cmf library - including how to load data
+Although it should be ok for users with mediate Python knowledge, it is using
+the so called list-comprehension mechanism in Python, which is sometimes ignored
+by textbooks. If you have problems to follow the Python in this example,
+please have a look at the tutorial at Python.org, a very good and concise ressource.
+If you have no programming experience at all, I would recommend a Python book. Avoid books
+with large chapters about graphic user interfaces.
 """
+
+# loads cmf as a library
 import cmf
-import sys
-try:
-    if "noshow" in sys.argv:
-        raise ImportError()
-    else:
-        import pylab
-except ImportError:
-    pylab=None
+
+from datetime import datetime, timedelta
 from math import exp
 def load_meteo(project):
-    # Load rain timeseries (doubled rain of giessen for more intersting results)
-    rain=cmf.timeseries.from_file('giessen.rain')
+    """Loads the meteorology from a csv file.
+    This is just one example for access your meteo data.
+    Thanks to Python, there is no problem to access most type of datasets,
+    including relational databases, hdf / netcdf files or what ever else.
+    """
+    
+    # Create a timeseries for rain - timeseries objects in cmf is a kind of extensible array of 
+    # numbers, with a begin date, a timestep.
+    begin = datetime(1980,1,3)
+    rain = cmf.timeseries(begin = begin, step = timedelta(days=1))
 
     # Create a meteo station
     meteo=project.meteo_stations.add_station(name = 'Giessen',position = (0,0,0))
 
-    # Meteorological timeseries
-    meteo.Tmax=cmf.timeseries.from_file('giessen.Tmax')
-    meteo.Tmin=cmf.timeseries.from_file('giessen.Tmin')
-    meteo.rHmean=cmf.timeseries.from_file('giessen.rHmean')
-    meteo.Windspeed=cmf.timeseries.from_file('giessen.Windspeed')
-    meteo.Sunshine=cmf.timeseries.from_file('giessen.Sunshine')
-    print project
+    # Meteorological timeseries, if you prefer the beginning of the timeseries
+    # read in from file, just go ahead, it is only a bit of Python programming
+    meteo.Tmax      = cmf.timeseries(begin = begin, step = timedelta(days=1))
+    meteo.Tmin      = cmf.timeseries(begin = begin, step = timedelta(days=1))
+    meteo.rHmean    = cmf.timeseries(begin = begin, step = timedelta(days=1))
+    meteo.Windspeed = cmf.timeseries(begin = begin, step = timedelta(days=1))
+    meteo.Sunshine  = cmf.timeseries(begin = begin, step = timedelta(days=1))
+    meteo.T         = (meteo.Tmax + meteo.Tmin) * 0.5
+
+    # Load climate data from csv file
+    # could be simplified with numpy's 
+    csvfile =  file('climate.csv') 
+    csvfile.readline() # Read the headers, and ignore them
+    for line in csvfile:
+        # split the line in to columns using commas
+        columns = line.split(',')
+        # Get the values, but ignore the date, we have begin and steo
+        # of the data file hardcoded
+        # If you don't get this line - it is standard Python, I would recommend the official Python.org tutorial
+        for timeseries,value in zip([rain,meteo.Tmax,meteo.Tmin,meteo.rHmean,meteo.Windspeed,meteo.Sunshine],
+                                    [float(col) for col in columns[1:]]):
+            # Add the value from the file to the timeseries
+            timeseries.add(value)
+             
+    # Create a rain gauge station
     project.rainfall_stations.add('Giessen',rain,(0,0,0))
+        
     # Use the rainfall for each cell in the project
     project.use_nearest_rainfall()
     # Use the meteorological station for each cell of the project
     project.use_nearest_meteo()
     
 
-# Create a retention curve (used for the whole profile)
+# A function to create a retention curve (used for the whole profile) 
+# for a specific depth, using an exponential decline function for Ksat with depth
 def soiltype(depth):
     return cmf.BrooksCoreyRetentionCurve(ksat=15*exp(-d),
                                          porosity=0.5,
@@ -48,63 +80,93 @@ p=cmf.project()
 c= p.NewCell(0,0,0,1000)
 
 # Customize cell
-for d in [0.05,0.1,0.2,0.3,0.5,0.75,1.0,1.3,1.7,2.]:
+# Create layers
+for d in [0.05,0.1,0.2,0.3,0.5,0.75,1.0,1.25,1.5,1.75,2.0]:
     c.add_layer(d, soiltype(d))
-c.saturated_depth=2.
+# Set the head of each layer at 2 m below ground
+c.saturated_depth=5.
+# Create a surfacewater storage
 c.surfacewater_as_storage()
+
 # use Richards connection
 c.install_connection(cmf.Richards)
+# Use matrix infiltration as connection between surface water and first layer
 c.install_connection(cmf.MatrixInfiltration)
-c.install_connection(cmf.CanopyOverflow)
+# Create a snow storage and use a simple Temperature index model as aconnection between snow and surfacewater
 c.install_connection(cmf.SimpleTindexSnowMelt)
-c.install_connection(cmf.PenmanMonteithET)
-
-# Make an outlet (ditch, 30cm deep)
-outlet=p.NewOutlet('outlet',-10, 0, -.3)
-# Connect outlet to soil
-p[0].connect_soil_with_node(outlet,cmf.Richards_lateral,10.0,10.0)
-# Connect outlet to surfacewater (overbank flow)
-cmf.Manning_Kinematic(p[0].surfacewater, outlet, 
-                      cmf.Channel('R',10.0,10.0))
+# Use Penman-Monteith for ET
+c.install_connection(cmf.ShuttleworthWallace)
+c.vegetation.stomatal_resistance = 200
+# Make an outlet (Groundwater as a boundary condition)
+groundwater=p.NewOutlet('outlet', 0, 0, -4.4)
+# Connect last layer with the groundwater, using Richards equation
+cmf.Richards(c.layers[-1],groundwater)
 # load meteorological data
 load_meteo(p)
 # Make solver
 solver=cmf.CVodeIntegrator(p,1e-6)
-solver.t=cmf.Time(1,1,1980)
-# Integrates the waterbalance over each internal substep
-out_integ=cmf.waterbalance_integrator(outlet)
-solver.integratables.append(out_integ)
+solver.t=cmf.Time(1,11,1980)
 
 def run(until=cmf.year,dt=cmf.day):
     """Runs a the model, and saves the outflow"""
-    sw=cmf.StopWatch(solver.t,solver.t+until if until<solver.t else until)
+    
+    # Create a timeseries for the outflow
     outflow = cmf.timeseries(solver.t,dt)
+    # Create a list to save the layer wetness 
     wetness = []
+    # Get the end time
     until = until if until>solver.t else solver.t+until
+    
+    # The run time loop. Iterates over the outer timestep of the model
+    # Internally, the model may take shorter timesteps
     for t in solver.run(solver.t,until,dt):
-        ele,tot,rem= sw(t)
-        outflow.add(out_integ.avg())
+        # store the actual groundwater recharge      
+        outflow.add(c.layers[-1].flux_to(groundwater,t))
+        # store the actual wetness
         wetness.append(c.layers.wetness)
-        print "%s - %6.2fm3/day (%s/%s)" % (t,outlet(t),ele*cmf.sec,tot*cmf.sec)
+        # Print, at which time step you are
+        print "%s - %6.2fm3/day" % (t,groundwater(t))
     return outflow,wetness
-if "run" in sys.argv:
-    outflow,wetness=run(2*cmf.year)
-    if pylab:
-        from pylab import *
-        subplot(211)
-        cmf.draw.plot_timeseries(outflow)
-        title('Outflow')
-        axis('tight')
-        subplot(212)
-        wetness=array(wetness)
-        contourf([date2num(t.AsPython()) for t in outflow.iter_time()],
-                  c.layers.thickness*0.5-c.layers.lower_boundary, 
-                  transpose(wetness),
-                  levels=linspace(wetness.min(),1,20),
-                  cmap=cm.jet_r,
-                  extend='both',
-                  )
-        title('Wetness')
-        gca().xaxis_date()
-        axis('tight')
-        show()
+
+def plotresult(outflow,wetness):
+    "Plots the result using matplotlib"
+    
+    # import some matplotlib functionality
+    import pylab
+    import numpy
+    # Make the upper plot
+    pylab.subplot(211)
+    # Draw the timeseries. cmf.draw.plot_timeseries is a thin wrapper over pylab.plot_date
+    cmf.draw.plot_timeseries(outflow)
+    pylab.title('Groundwater recharge')
+    pylab.axis('tight')
+    # Make the lower plot
+    pylab.subplot(212)
+    # Convert wetness to a numpy array - for faster analysis
+    wetness=numpy.array(wetness)
+    # Make a times/depth contour map
+    pylab.contourf([pylab.date2num(t.AsPython()) for t in outflow.iter_time()],
+              c.layers.thickness*0.5-c.layers.lower_boundary, 
+              wetness.T,
+              levels=numpy.linspace(wetness.min(),1,50),
+              cmap=pylab.cm.jet_r,
+              extend='both',
+              )
+    pylab.title('Wetness')
+    pylab.gca().xaxis_date()
+    pylab.axis('tight')
+    pylab.show()
+
+# If this file is started as a script and not imported as a library
+if __name__ == '__main__': 
+    # Run the model for 5 years
+    
+    outflow,wetness=run(5*cmf.year)
+    print c.vegetation
+    # Try to plot the results
+    try:
+        plotresult(outflow,wetness)
+    except ImportError:
+        print "Matplotlib is not installed or has a failure. No plotting possible"
+    
+
