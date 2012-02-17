@@ -232,7 +232,7 @@ void cmf::water::NeumannBoundary_list::set_fluxes( cmf::math::num_array values )
 	{
 		for (int i = 0; i < values.size() ; ++i)
 		{
-			m_boundaries[i]->flux = values[i];
+			m_boundaries[i]->flux= cmf::math::timeseries::from_scalar(values[i]);
 		}
 	}
 }

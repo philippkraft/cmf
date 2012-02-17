@@ -76,7 +76,7 @@ load_meteo(p)
 # Make solver
 solver=cmf.CVodeIntegrator(p,1e-6)
 solver.t=cmf.Time(1,1,1980)
-if "run" in sys.argv:
+if __name__ == '__main__':
     sw=cmf.StopWatch(solver.t,solver.t+cmf.year)
     for t in solver.run(solver.t,solver.t+cmf.year,cmf.day):
         ele,tot,rem= sw(t)

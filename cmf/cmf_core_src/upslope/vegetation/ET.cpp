@@ -85,7 +85,7 @@ namespace cmf {
 					rootfraction=veg.RootFraction(sw.get_upper_boundary(),sw.get_lower_boundary()),
 					Tpot_vol=Tpot*sw.cell.get_area() * 0.001 * rootfraction;
 			
-				return piecewise_linear(sw.get_matrix_potential(),-160,-5,0,Tpot_vol);
+				return pow(piecewise_linear(sw.get_matrix_potential(),-160,-5,0,Tpot_vol),2);
 			}
 
 			real constantETpot::calc_q( cmf::math::Time t ) 

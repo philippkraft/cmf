@@ -9,31 +9,52 @@ from cmf.raster import Raster
 import cmf
 import sys
 import numpy as np
-try:
-    if "noshow" in sys.argv:
-        raise ImportError()
-    else:
-        import pylab
-except ImportError:
-    pylab=None
 
+from datetime import datetime, timedelta
 def load_meteo(project):
-    # Load rain timeseries (doubled rain of giessen for more intersting results)
-    rain=cmf.timeseries.from_file('giessen.rain')
+    """Loads the meteorology from a csv file.
+    This is just one example for access your meteo data.
+    Thanks to Python, there is no problem to access most type of datasets,
+    including relational databases, hdf / netcdf files or what ever else.
+    """
     
+    # Create a timeseries for rain - timeseries objects in cmf is a kind of extensible array of 
+    # numbers, with a begin date, a timestep.
+    begin = datetime(1980,1,3)
+    rain = cmf.timeseries(begin = begin, step = timedelta(days=1))
+
     # Create a meteo station
     meteo=project.meteo_stations.add_station(name = 'Giessen',position = (0,0,0))
-    
-    # Meteorological timeseries
-    meteo.Tmax=cmf.timeseries.from_file('giessen.Tmax')
-    meteo.Tmin=cmf.timeseries.from_file('giessen.Tmin')
-    meteo.rHmean=cmf.timeseries.from_file('giessen.rHmean')
-    meteo.Windspeed=cmf.timeseries.from_file('giessen.Windspeed')
-    meteo.Sunshine=cmf.timeseries.from_file('giessen.Sunshine')
+
+    # Meteorological timeseries, if you prefer the beginning of the timeseries
+    # read in from file, just go ahead, it is only a bit of Python programming
+    meteo.Tmax      = cmf.timeseries(begin = begin, step = timedelta(days=1))
+    meteo.Tmin      = cmf.timeseries(begin = begin, step = timedelta(days=1))
+    meteo.rHmean    = cmf.timeseries(begin = begin, step = timedelta(days=1))
+    meteo.Windspeed = cmf.timeseries(begin = begin, step = timedelta(days=1))
+    meteo.Sunshine  = cmf.timeseries(begin = begin, step = timedelta(days=1))
+    meteo.T         = (meteo.Tmax + meteo.Tmin) * 0.5
+
+    # Load climate data from csv file
+    # could be simplified with numpy's 
+    csvfile =  file('climate.csv') 
+    csvfile.readline() # Read the headers, and ignore them
+    for line in csvfile:
+        # split the line in to columns using commas
+        columns = line.split(',')
+        # Get the values, but ignore the date, we have begin and steo
+        # of the data file hardcoded
+        # If you don't get this line - it is standard Python, I would recommend the official Python.org tutorial
+        for timeseries,value in zip([rain,meteo.Tmax,meteo.Tmin,meteo.rHmean,meteo.Windspeed,meteo.Sunshine],
+                                    [float(col) for col in columns[1:]]):
+            # Add the value from the file to the timeseries
+            timeseries.add(value)
+             
+    # Create a rain gauge station
     project.rainfall_stations.add('Giessen',rain,(0,0,0))
+        
     # Use the rainfall for each cell in the project
     project.use_nearest_rainfall()
-    
     # Use the meteorological station for each cell of the project
     project.use_nearest_meteo()
     
@@ -85,7 +106,7 @@ load_meteo(p)
 # Make solver
 solver=cmf.CVodeIntegrator(p,1e-6)
 solver.t=cmf.Time(1,1,1980)
-if "run" in sys.argv:
+if __name__ == '__main__':
     sw=cmf.StopWatch(solver.t,solver.t+cmf.year)
     for t in solver.run(solver.t,solver.t+cmf.year,cmf.day):
         ele,tot,rem= sw(t)

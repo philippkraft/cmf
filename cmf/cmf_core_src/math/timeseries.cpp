@@ -43,7 +43,7 @@ double cmf::math::timeseries::position( Time t ) const
 double cmf::math::timeseries::interpolate( cmf::math::Time t,double n ) const
 {
 	if (is_empty() || !m_data)
-		throw std::out_of_range("Time series is empty");
+		throw std::runtime_error("Time series is empty");
 	double pos=position(t);
 
 	// If nearest neighbor interpolation return nearest neighbor...
@@ -537,10 +537,11 @@ cmf::math::timeseries::timeseries( cmf::math::Time _begin,cmf::math::Time _step,
 		m_data->values = std::vector<double>(size,0.0);
 }
 
-cmf::math::timeseries::timeseries( cmf::math::Time _begin, cmf::math::Time _step, const cmf::math::num_array& _data )
-: m_data(make_data(_begin,_step))
+cmf::math::timeseries cmf::math::timeseries::from_array( cmf::math::Time _begin, cmf::math::Time _step, const cmf::math::num_array& _data )
 {
-	m_data->values = std::vector<double>(_data.begin(),_data.end());
+	timeseries result(_begin,_step);
+	result.m_data->values = std::vector<double>(_data.begin(),_data.end());
+	return result;
 }
 
 int cmf::math::timeseries::count_values() const
