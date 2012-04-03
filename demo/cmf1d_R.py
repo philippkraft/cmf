@@ -39,7 +39,6 @@ def load_meteo(project):
     meteo.rHmean    = cmf.timeseries(begin = begin, step = timedelta(days=1))
     meteo.Windspeed = cmf.timeseries(begin = begin, step = timedelta(days=1))
     meteo.Sunshine  = cmf.timeseries(begin = begin, step = timedelta(days=1))
-    meteo.T         = (meteo.Tmax + meteo.Tmin) * 0.5
 
     # Load climate data from csv file
     # could be simplified with numpy's 
@@ -55,6 +54,8 @@ def load_meteo(project):
                                     [float(col) for col in columns[1:]]):
             # Add the value from the file to the timeseries
             timeseries.add(value)
+
+    meteo.T         = (meteo.Tmax + meteo.Tmin) * 0.5
              
     # Create a rain gauge station
     project.rainfall_stations.add('Giessen',rain,(0,0,0))
