@@ -296,6 +296,8 @@ from math import *
             """ Optimised shortcut for =r-r.downscale_mean(n) """
             res=self.raster.downscale_mean_difference(n)
             return Raster(dtype=self.dtype,raster=res)
+        def slope(self):
+            res=self.raster.slope()
         def to_int(self):
             """ Creates a new raster of type integer from self (int 32)"""
             res=self.raster.ToInt()
