@@ -28,8 +28,8 @@ gcc = not msvc
 # Change these pathes to your sundials 2.4+ installation
 
 # Change this path to your boost installation (not needed for gcc)
-boost_path = r"..\boost_1_41_0" if msvc else ""
 
+boost_path = os.environ.get('BOOSTDIR',r"..\boost_1_41_0")
 
 
 # No user action required beyond this point
