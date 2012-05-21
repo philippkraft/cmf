@@ -19,6 +19,7 @@
 
 # This file can build and install cmf
 import sys
+import os
 
 # Change these variables to match your compiler. (gcc or 
 # For Visual Studio 2008 no action is needed
@@ -33,7 +34,6 @@ boost_path = os.environ.get('BOOSTDIR',r"..\boost_1_41_0")
 
 
 # No user action required beyond this point
-import os
 import datetime
 import shutil
 from distutils.core import setup,Extension
