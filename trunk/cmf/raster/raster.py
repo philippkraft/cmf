@@ -137,6 +137,7 @@ class double_raster(object):
     __repr__ = _swig_repr
     def __init__(self, *args): 
         _raster.double_raster_swiginit(self,_raster.new_double_raster(*args))
+    load = staticmethod(_raster.double_raster_load)
     __swig_destroy__ = _raster.delete_double_raster
 double_raster.Xllcorner = new_instancemethod(_raster.double_raster_Xllcorner,None,double_raster)
 double_raster.Yllcorner = new_instancemethod(_raster.double_raster_Yllcorner,None,double_raster)
@@ -192,11 +193,16 @@ double_raster.__rdiv__ = new_instancemethod(_raster.double_raster___rdiv__,None,
 double_raster_swigregister = _raster.double_raster_swigregister
 double_raster_swigregister(double_raster)
 
+def double_raster_load(*args, **kwargs):
+  return _raster.double_raster_load(*args, **kwargs)
+double_raster_load = _raster.double_raster_load
+
 class float_raster(object):
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
     __repr__ = _swig_repr
     def __init__(self, *args): 
         _raster.float_raster_swiginit(self,_raster.new_float_raster(*args))
+    load = staticmethod(_raster.float_raster_load)
     __swig_destroy__ = _raster.delete_float_raster
 float_raster.Xllcorner = new_instancemethod(_raster.float_raster_Xllcorner,None,float_raster)
 float_raster.Yllcorner = new_instancemethod(_raster.float_raster_Yllcorner,None,float_raster)
@@ -252,11 +258,16 @@ float_raster.__rdiv__ = new_instancemethod(_raster.float_raster___rdiv__,None,fl
 float_raster_swigregister = _raster.float_raster_swigregister
 float_raster_swigregister(float_raster)
 
+def float_raster_load(*args, **kwargs):
+  return _raster.float_raster_load(*args, **kwargs)
+float_raster_load = _raster.float_raster_load
+
 class int_raster(object):
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
     __repr__ = _swig_repr
     def __init__(self, *args): 
         _raster.int_raster_swiginit(self,_raster.new_int_raster(*args))
+    load = staticmethod(_raster.int_raster_load)
     __swig_destroy__ = _raster.delete_int_raster
 int_raster.Xllcorner = new_instancemethod(_raster.int_raster_Xllcorner,None,int_raster)
 int_raster.Yllcorner = new_instancemethod(_raster.int_raster_Yllcorner,None,int_raster)
@@ -311,6 +322,10 @@ int_raster.__rmul__ = new_instancemethod(_raster.int_raster___rmul__,None,int_ra
 int_raster.__rdiv__ = new_instancemethod(_raster.int_raster___rdiv__,None,int_raster)
 int_raster_swigregister = _raster.int_raster_swigregister
 int_raster_swigregister(int_raster)
+
+def int_raster_load(*args, **kwargs):
+  return _raster.int_raster_load(*args, **kwargs)
+int_raster_load = _raster.int_raster_load
 
 try:
     import numpy
@@ -678,6 +693,18 @@ class Raster:
         fmt="Raster<%s>: n=%i,min=%g,mean=%g,max=%g,stdev=%g,row,col=%s,cellsize=(%g,%g)"
         return fmt % (self.dtype,stat.count,stat.min,stat.mean,stat.max,stat.stdev,
                       self.shape,self.cellsize[0],self.cellsize[1])
+    @classmethod
+    def load(cls,filename,dtype='s',binary=False):
+        if (dtype in ["f","f8","d"]):
+            rtype=double_raster
+        elif (dtype in ["s","f4","r"]):
+            rtype=float_raster
+        elif (dtype in ["i","i4"]):
+            rtype=int_raster
+        res= rtype.load(filename,binary)
+        return Raster(dtype=dtype,raster=res)
+        
+        
     def draw3D(self,dem=None,vmin=None,vmax=None):
         '''Draws a 3d representation of self using the mlab module of Mayavi2 
         from Enthought. It needs to be installed.
