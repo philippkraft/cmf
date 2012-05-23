@@ -36,7 +36,7 @@ def get_error_bc(params, pF,theta):
     return err
             
 
-def fit_bc(pF,theta,count=20):
+def fit_bc(pF,theta,count=20,verbose=False):
     """Fits a Brooks-Corey retention curve into data
     pF: a sequence of pF values
     theta: an array of water contents
@@ -48,7 +48,7 @@ def fit_bc(pF,theta,count=20):
         x0=np.array(( random.uniform(0.01,1.0), random.uniform(1.0,20),random.uniform(0.01,1.0)))
         x_opt, f_opt,n_iter,n_eval, warn = opt.fmin(get_error_bc, x0 = x0, args=(pF,theta),full_output=1, disp=0)
         if f_opt<best_f:
-            print "%i: x=%s f=%0.12g iter=%i, eval=%i" % (i,x_opt,1-f_opt/ns_denom,n_iter,n_eval) 
+            if verbose: print "%i: x=%s f=%0.12g iter=%i, eval=%i" % (i,x_opt,1-f_opt/ns_denom,n_iter,n_eval) 
             bc=cmf.BrooksCoreyRetentionCurve(1.,x_opt[0],x_opt[1],x_opt[2])
             best_f=f_opt
 
@@ -60,7 +60,7 @@ def get_error_vgm(params,pF,theta):
     err = np.sum((theta - params[0] * model_wetness )**2)
     return err
     
-def fit_vgm(pF,theta,variable_m=False, count=20):
+def fit_vgm(pF,theta,variable_m=False, count=20, fitlevel=None,verbose=False):
     """Fits a Van Genuchten / Mualem retention curve into data
     pF: a sequence of pF values
     theta: an array of water contents
@@ -70,15 +70,17 @@ def fit_vgm(pF,theta,variable_m=False, count=20):
     theta_mean=np.mean(theta)
     ns_denom=np.sum((theta-theta_mean)**2)
 
-    best_f=1e12
+    best_f=1e120
     for i in range(count):
-        x0=[ random.uniform(0.01,1.0), random.uniform(0.0001,10),random.uniform(1.000001,5)]
-        if variable_m: x0.append(1-1/random.uniform(1.000001,5))
+        x0=[ random.uniform(0.01,1.0), random.uniform(0.0001,10),random.uniform(1.01,5)]
+        if variable_m: x0.append(1-1/random.uniform(1.01,5))
         x_opt, f_opt,n_iter,n_eval, warn = opt.fmin(get_error_vgm, x0 = np.array(x0), args=(pF,theta),full_output=1, disp=0)
         if f_opt<best_f:
-            print "%i: x=%s f=%0.12g iter=%i, eval=%i" % (i,x_opt,1-f_opt/ns_denom,n_iter,n_eval) 
+            if verbose: print "%i: x=%s f=%0.12g iter=%i, eval=%i" % (i,x_opt,1-f_opt/ns_denom,n_iter,n_eval) 
             vgm=cmf.VanGenuchtenMualem(1,*x_opt)
             best_f=f_opt
+            if 1-best_f/ns_denom>=fitlevel:
+                break
     theta_mean=np.mean(theta)
     return vgm, 1-best_f/ns_denom
     
