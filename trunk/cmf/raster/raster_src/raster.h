@@ -1095,7 +1095,7 @@ public:
 		_T a[9];
 #pragma omp parallel for
 		for (int r = 0; r < (int)result.RowCount(); ++r) {
-			for(int c = 0; c < (int)result.ColumnCount(); ++r) {
+			for(int c = 0; c < (int)result.ColumnCount(); ++c) {
 				if (HasData(c,r)) {
 					_T a [] = {GetData(c-1,r-1),GetData(c,r-1),GetData(c+1,r-1),
 						GetData(c-1,r),GetData(c,r),GetData(c+1,r),
