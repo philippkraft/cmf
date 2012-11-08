@@ -9101,6 +9101,43 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_double_raster_slope(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  Raster< double > *arg1 = (Raster< double > *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  SwigValueWrapper< Raster< double > > result;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_RasterT_double_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "double_raster_slope" "', argument " "1"" of type '" "Raster< double > *""'"); 
+  }
+  arg1 = reinterpret_cast< Raster< double > * >(argp1);
+  {
+    try {
+      {
+        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
+        result = (arg1)->slope();
+        SWIG_PYTHON_THREAD_END_ALLOW;
+      }
+    } 
+    catch (std::runtime_error& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what() );
+    }
+    catch (std::exception& e) {
+      SWIG_exception(SWIG_UnknownError, e.what());
+    }
+  }
+  resultobj = SWIG_NewPointerObj((new Raster< double >(static_cast< const Raster< double >& >(result))), SWIGTYPE_p_RasterT_double_t, SWIG_POINTER_OWN |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_double_raster_clone(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   Raster< double > *arg1 = (Raster< double > *) 0 ;
@@ -13887,6 +13924,43 @@ SWIGINTERN PyObject *_wrap_float_raster_downscale_mean_difference(PyObject *SWIG
     }
   }
   resultobj = SWIG_NewPointerObj((new Raster< float >(static_cast< const Raster< float >& >(result))), SWIGTYPE_p_RasterT_float_t, SWIG_POINTER_OWN |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_float_raster_slope(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  Raster< float > *arg1 = (Raster< float > *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  SwigValueWrapper< Raster< double > > result;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_RasterT_float_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "float_raster_slope" "', argument " "1"" of type '" "Raster< float > *""'"); 
+  }
+  arg1 = reinterpret_cast< Raster< float > * >(argp1);
+  {
+    try {
+      {
+        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
+        result = (arg1)->slope();
+        SWIG_PYTHON_THREAD_END_ALLOW;
+      }
+    } 
+    catch (std::runtime_error& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what() );
+    }
+    catch (std::exception& e) {
+      SWIG_exception(SWIG_UnknownError, e.what());
+    }
+  }
+  resultobj = SWIG_NewPointerObj((new Raster< double >(static_cast< const Raster< double >& >(result))), SWIGTYPE_p_RasterT_double_t, SWIG_POINTER_OWN |  0 );
   return resultobj;
 fail:
   return NULL;
@@ -18685,6 +18759,43 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_int_raster_slope(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  Raster< int > *arg1 = (Raster< int > *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  SwigValueWrapper< Raster< double > > result;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_RasterT_int_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "int_raster_slope" "', argument " "1"" of type '" "Raster< int > *""'"); 
+  }
+  arg1 = reinterpret_cast< Raster< int > * >(argp1);
+  {
+    try {
+      {
+        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
+        result = (arg1)->slope();
+        SWIG_PYTHON_THREAD_END_ALLOW;
+      }
+    } 
+    catch (std::runtime_error& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what() );
+    }
+    catch (std::exception& e) {
+      SWIG_exception(SWIG_UnknownError, e.what());
+    }
+  }
+  resultobj = SWIG_NewPointerObj((new Raster< double >(static_cast< const Raster< double >& >(result))), SWIGTYPE_p_RasterT_double_t, SWIG_POINTER_OWN |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_int_raster_clone(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   Raster< int > *arg1 = (Raster< int > *) 0 ;
@@ -19355,6 +19466,7 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"double_raster_downscale_majority", (PyCFunction) _wrap_double_raster_downscale_majority, METH_VARARGS | METH_KEYWORDS, NULL},
 	 { (char *)"double_raster_downscale_stdev", (PyCFunction) _wrap_double_raster_downscale_stdev, METH_VARARGS | METH_KEYWORDS, NULL},
 	 { (char *)"double_raster_downscale_mean_difference", (PyCFunction) _wrap_double_raster_downscale_mean_difference, METH_VARARGS | METH_KEYWORDS, NULL},
+	 { (char *)"double_raster_slope", (PyCFunction)_wrap_double_raster_slope, METH_O, NULL},
 	 { (char *)"double_raster_clone", (PyCFunction)_wrap_double_raster_clone, METH_O, NULL},
 	 { (char *)"double_raster_GetData", _wrap_double_raster_GetData, METH_VARARGS, NULL},
 	 { (char *)"double_raster_ToBuffer", (PyCFunction)_wrap_double_raster_ToBuffer, METH_O, NULL},
@@ -19411,6 +19523,7 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"float_raster_downscale_majority", (PyCFunction) _wrap_float_raster_downscale_majority, METH_VARARGS | METH_KEYWORDS, NULL},
 	 { (char *)"float_raster_downscale_stdev", (PyCFunction) _wrap_float_raster_downscale_stdev, METH_VARARGS | METH_KEYWORDS, NULL},
 	 { (char *)"float_raster_downscale_mean_difference", (PyCFunction) _wrap_float_raster_downscale_mean_difference, METH_VARARGS | METH_KEYWORDS, NULL},
+	 { (char *)"float_raster_slope", (PyCFunction)_wrap_float_raster_slope, METH_O, NULL},
 	 { (char *)"float_raster_clone", (PyCFunction)_wrap_float_raster_clone, METH_O, NULL},
 	 { (char *)"float_raster_GetData", _wrap_float_raster_GetData, METH_VARARGS, NULL},
 	 { (char *)"float_raster_ToBuffer", (PyCFunction)_wrap_float_raster_ToBuffer, METH_O, NULL},
@@ -19467,6 +19580,7 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"int_raster_downscale_majority", (PyCFunction) _wrap_int_raster_downscale_majority, METH_VARARGS | METH_KEYWORDS, NULL},
 	 { (char *)"int_raster_downscale_stdev", (PyCFunction) _wrap_int_raster_downscale_stdev, METH_VARARGS | METH_KEYWORDS, NULL},
 	 { (char *)"int_raster_downscale_mean_difference", (PyCFunction) _wrap_int_raster_downscale_mean_difference, METH_VARARGS | METH_KEYWORDS, NULL},
+	 { (char *)"int_raster_slope", (PyCFunction)_wrap_int_raster_slope, METH_O, NULL},
 	 { (char *)"int_raster_clone", (PyCFunction)_wrap_int_raster_clone, METH_O, NULL},
 	 { (char *)"int_raster_GetData", _wrap_int_raster_GetData, METH_VARARGS, NULL},
 	 { (char *)"int_raster_ToBuffer", (PyCFunction)_wrap_int_raster_ToBuffer, METH_O, NULL},

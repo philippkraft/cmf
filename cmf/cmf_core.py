@@ -1002,24 +1002,18 @@ class timeseries(object):
         """
         return _cmf_core.timeseries_count_values(self, *args, **kwargs)
 
-    def __init__(self, *args, **kwargs): 
+    def __init__(self, *args): 
         """
-        __init__(self, Time begin = cmf::math::Time(), Time step = day, int interpolationmethod = 1, 
+        __init__(self, Time begin, Time step, int interpolationmethod = 1, 
             size_t count = 0) -> timeseries
+        __init__(self) -> timeseries
+        __init__(self, timeseries ts) -> timeseries
+        __init__(self, Time begin, Time step, cmf::math::num_array data) -> timeseries
+        __init__(self, double scalar) -> timeseries
 
-        timeseries(const cmf::math::timeseries &ts) 
+        timeseries(double scalar) 
         """
-        _cmf_core.timeseries_swiginit(self,_cmf_core.new_timeseries(*args, **kwargs))
-    def from_array(*args, **kwargs):
-        """from_array(Time begin, Time step, cmf::math::num_array data) -> timeseries"""
-        return _cmf_core.timeseries_from_array(*args, **kwargs)
-
-    from_array = staticmethod(from_array)
-    def from_scalar(*args, **kwargs):
-        """from_scalar(double scalar) -> timeseries"""
-        return _cmf_core.timeseries_from_scalar(*args, **kwargs)
-
-    from_scalar = staticmethod(from_scalar)
+        _cmf_core.timeseries_swiginit(self,_cmf_core.new_timeseries(*args))
     def get_t(self, *args, **kwargs):
         """
         get_t(self, Time t) -> double
@@ -1158,10 +1152,7 @@ class timeseries(object):
         reduce_min(self, Time begin, Time step) -> timeseries
 
         timeseries
-        reduce_min(cmf::math::Time begin, cmf::math::Time step) const
-
-        Creates a timeseries with a bigger timestep, containing the minimum.
-
+        reduce_min(cmf::math::Time begin, cmf::math::Time step) const 
         """
         return _cmf_core.timeseries_reduce_min(self, *args, **kwargs)
 
@@ -1172,7 +1163,7 @@ class timeseries(object):
         timeseries
         reduce_max(cmf::math::Time begin, cmf::math::Time step) const
 
-        Creates a timeseries with a bigger timestep, containing the maximum.
+        Creates a timeseries with a bigger timestep, containing the minimum.
 
         """
         return _cmf_core.timeseries_reduce_max(self, *args, **kwargs)
@@ -1184,7 +1175,8 @@ class timeseries(object):
         timeseries
         reduce_sum(cmf::math::Time begin, cmf::math::Time step) const
 
-        Creates a timeseries with a bigger timestep, containing the sum. 
+        Creates a timeseries with a bigger timestep, containing the maximum.
+
         """
         return _cmf_core.timeseries_reduce_sum(self, *args, **kwargs)
 
@@ -1195,8 +1187,7 @@ class timeseries(object):
         timeseries
         reduce_avg(cmf::math::Time begin, cmf::math::Time step) const
 
-        Creates a timeseries with a bigger timestep, containing the average.
-
+        Creates a timeseries with a bigger timestep, containing the sum. 
         """
         return _cmf_core.timeseries_reduce_avg(self, *args, **kwargs)
 
@@ -1455,14 +1446,6 @@ week = cvar.week
 year = cvar.year
 month = cvar.month
 
-def timeseries_from_array(*args, **kwargs):
-  """timeseries_from_array(Time begin, Time step, cmf::math::num_array data) -> timeseries"""
-  return _cmf_core.timeseries_from_array(*args, **kwargs)
-
-def timeseries_from_scalar(*args, **kwargs):
-  """timeseries_from_scalar(double scalar) -> timeseries"""
-  return _cmf_core.timeseries_from_scalar(*args, **kwargs)
-
 
 def nash_sutcliff(*args, **kwargs):
   """
@@ -1696,6 +1679,10 @@ class StateVariable(object):
         """
         return _cmf_core.StateVariable_dxdt(self, *args, **kwargs)
 
+    def is_connected(self, *args, **kwargs):
+        """is_connected(self, StateVariable other) -> bool"""
+        return _cmf_core.StateVariable_is_connected(self, *args, **kwargs)
+
     def get_abs_errtol(self, *args, **kwargs):
         """
         get_abs_errtol(self, real rel_errtol) -> real
@@ -1707,6 +1694,7 @@ class StateVariable(object):
     state = _swig_property(_cmf_core.StateVariable_state_get, _cmf_core.StateVariable_state_set)
     __swig_destroy__ = _cmf_core.delete_StateVariable
 StateVariable.dxdt = new_instancemethod(_cmf_core.StateVariable_dxdt,None,StateVariable)
+StateVariable.is_connected = new_instancemethod(_cmf_core.StateVariable_is_connected,None,StateVariable)
 StateVariable.get_abs_errtol = new_instancemethod(_cmf_core.StateVariable_get_abs_errtol,None,StateVariable)
 StateVariable_swigregister = _cmf_core.StateVariable_swigregister
 StateVariable_swigregister(StateVariable)
@@ -2181,15 +2169,7 @@ class CVodeIntegrator(Integrator):
         return _cmf_core.CVodeIntegrator_get_error(self, *args, **kwargs)
 
     def get_nonlinear_iterations(self, *args, **kwargs):
-        """
-        get_nonlinear_iterations(self) -> int
-
-        int
-        get_nonlinear_iterations() const
-
-        Returns the number of non-linear iterations performed. Calls
-        CVodeGetNumNonlinSolvIters. 
-        """
+        """get_nonlinear_iterations(self) -> int"""
         return _cmf_core.CVodeIntegrator_get_nonlinear_iterations(self, *args, **kwargs)
 
     def copy(self, *args, **kwargs):
@@ -2732,24 +2712,6 @@ class waterbalance_integrator(integratable):
         """
         return _cmf_core.waterbalance_integrator_t0(self, *args, **kwargs)
 
-    def __get_node(self, *args, **kwargs):
-        """
-        __get_node(self) -> ptr
-
-        flux_node::ptr get_node() const
-
-        Returns the node of this integrator. 
-        """
-        return _cmf_core.waterbalance_integrator___get_node(self, *args, **kwargs)
-
-    def __set_node(self, *args, **kwargs):
-        """
-        __set_node(self, ptr node)
-
-        void set_node(cmf::water::flux_node::ptr node) 
-        """
-        return _cmf_core.waterbalance_integrator___set_node(self, *args, **kwargs)
-
     def __init__(self, *args, **kwargs): 
         """
         __init__(self, ptr node) -> waterbalance_integrator
@@ -2757,14 +2719,10 @@ class waterbalance_integrator(integratable):
         waterbalance_integrator(cmf::water::flux_node::ptr node) 
         """
         _cmf_core.waterbalance_integrator_swiginit(self,_cmf_core.new_waterbalance_integrator(*args, **kwargs))
-    node = _swig_property(_cmf_core.waterbalance_integrator___get_node,
-                          _cmf_core.waterbalance_integrator___set_node)
-
+    node = _swig_property(_cmf_core.waterbalance_integrator_node_get, _cmf_core.waterbalance_integrator_node_set)
     __swig_destroy__ = _cmf_core.delete_waterbalance_integrator
 waterbalance_integrator.integration_t = new_instancemethod(_cmf_core.waterbalance_integrator_integration_t,None,waterbalance_integrator)
 waterbalance_integrator.t0 = new_instancemethod(_cmf_core.waterbalance_integrator_t0,None,waterbalance_integrator)
-waterbalance_integrator.__get_node = new_instancemethod(_cmf_core.waterbalance_integrator___get_node,None,waterbalance_integrator)
-waterbalance_integrator.__set_node = new_instancemethod(_cmf_core.waterbalance_integrator___set_node,None,waterbalance_integrator)
 waterbalance_integrator_swigregister = _cmf_core.waterbalance_integrator_swigregister
 waterbalance_integrator_swigregister(waterbalance_integrator)
 
@@ -3455,11 +3413,10 @@ class kinematic_wave(flux_connection):
             real residual = 0.0, real V0 = 1.0) -> kinematic_wave
 
         kinematic_wave(WaterStorage::ptr source, flux_node::ptr target, real
-        residencetime, real exponent=1.0, real residual=0.0, real V0=1.0)
+        residencetime, real exponent=1.0, real residual_volume=0.0)
 
-        Creates a kinematic wave connection. \\[ q = \\frac
-        {\\left(\\frac{V}{V_0} - f_{residual}\\right)^\\beta}{t_r}
-        \\]
+        Creates a kinematic wave connection. \\[ q = \\frac {\\left(V -
+        V_{residual}\\right)^\\beta}{t_r} \\]
 
         Parameters:
         -----------
@@ -3476,10 +3433,8 @@ class kinematic_wave(flux_connection):
         exponent:   $\\beta [-]$ An empirical exponent to shape the flux
         function (default = 1 (linear function))
 
-        residual:   $V_{residual} [m^3]$ The volume of water not flowing out
-        (default = 0)
-
-        V0:   $V_0$ The reference volume to scale the exponent 
+        residual_volume:   $V_{residual} [m^3]$ The volume of water not
+        flowing out (default = 0 m3) 
         """
         _cmf_core.kinematic_wave_swiginit(self,_cmf_core.new_kinematic_wave(*args, **kwargs))
     __swig_destroy__ = _cmf_core.delete_kinematic_wave
@@ -5307,47 +5262,6 @@ class Cell(StateVariableOwner):
         """
         return _cmf_core.Cell_get_rainfall(self, *args, **kwargs)
 
-    def __set_rain_source(self, *args, **kwargs):
-        """
-        __set_rain_source(self, ptr new_source)
-
-        void
-        set_rain_source(cmf::atmosphere::RainSource::ptr new_source)
-
-        Changes the current source of rainfall. 
-        """
-        return _cmf_core.Cell___set_rain_source(self, *args, **kwargs)
-
-    def __get_rain_source(self, *args, **kwargs):
-        """
-        __get_rain_source(self) -> ptr
-
-        cmf::atmosphere::RainSource::ptr get_rain_source()
-
-        Returns the current source for rainfall. 
-        """
-        return _cmf_core.Cell___get_rain_source(self, *args, **kwargs)
-
-    def __get_evaporation(self, *args, **kwargs):
-        """
-        __get_evaporation(self) -> ptr
-
-        cmf::water::flux_node::ptr get_evaporation()
-
-        Returns the end point of all evaporation of this cell. 
-        """
-        return _cmf_core.Cell___get_evaporation(self, *args, **kwargs)
-
-    def __get_transpiration(self, *args, **kwargs):
-        """
-        __get_transpiration(self) -> ptr
-
-        cmf::water::flux_node::ptr get_transpiration()
-
-        Returns the end point of all transpiration of this cell. 
-        """
-        return _cmf_core.Cell___get_transpiration(self, *args, **kwargs)
-
     def get_surfacewater(self, *args, **kwargs):
         """
         get_surfacewater(self) -> ptr
@@ -5562,14 +5476,10 @@ class Cell(StateVariableOwner):
         return _cmf_core.Cell_to_string(self, *args, **kwargs)
 
     topology = _swig_property(_cmf_core.Cell_topology_get)
-    evaporation = _swig_property(_cmf_core.Cell___get_evaporation)
-
-    transpiration = _swig_property(_cmf_core.Cell___get_transpiration)
-
+    evaporation = _swig_property(_cmf_core.Cell_evaporation_get)
+    transpiration = _swig_property(_cmf_core.Cell_transpiration_get)
     meteorology = _swig_property(_cmf_core.Cell_meteorology_get, _cmf_core.Cell_meteorology_set)
-    rain_source = _swig_property(_cmf_core.Cell___get_rain_source,
-                          _cmf_core.Cell___set_rain_source)
-
+    rain_source = _swig_property(_cmf_core.Cell_rain_source_get, _cmf_core.Cell_rain_source_set)
     layers = _swig_property(_cmf_core.Cell_layers_get)
     project = _swig_property(_cmf_core.Cell_project_get)
     saturated_depth = _swig_property(_cmf_core.Cell_saturated_depth_get, _cmf_core.Cell_saturated_depth_set)
@@ -5635,10 +5545,6 @@ Cell.set_aerodynamic_resistance = new_instancemethod(_cmf_core.Cell_set_aerodyna
 Cell.set_weather = new_instancemethod(_cmf_core.Cell_set_weather,None,Cell)
 Cell.set_rainfall = new_instancemethod(_cmf_core.Cell_set_rainfall,None,Cell)
 Cell.get_rainfall = new_instancemethod(_cmf_core.Cell_get_rainfall,None,Cell)
-Cell.__set_rain_source = new_instancemethod(_cmf_core.Cell___set_rain_source,None,Cell)
-Cell.__get_rain_source = new_instancemethod(_cmf_core.Cell___get_rain_source,None,Cell)
-Cell.__get_evaporation = new_instancemethod(_cmf_core.Cell___get_evaporation,None,Cell)
-Cell.__get_transpiration = new_instancemethod(_cmf_core.Cell___get_transpiration,None,Cell)
 Cell.get_surfacewater = new_instancemethod(_cmf_core.Cell_get_surfacewater,None,Cell)
 Cell.surfacewater_as_storage = new_instancemethod(_cmf_core.Cell_surfacewater_as_storage,None,Cell)
 Cell.add_storage = new_instancemethod(_cmf_core.Cell_add_storage,None,Cell)
@@ -6335,10 +6241,10 @@ class VanGenuchtenMualem(RetentionCurve):
         """
         return _cmf_core.VanGenuchtenMualem_copy(self, *args, **kwargs)
 
-    def __init__(self, *args, **kwargs): 
+    def __init__(self, *args): 
         """
-        __init__(self, real Ksat = 15, real phi = 0.5, real alpha = 0.2178, 
-            real n = 1.211, real m = -1) -> VanGenuchtenMualem
+        __init__(self) -> VanGenuchtenMualem
+        __init__(self, real Ksat, real phi, real alpha, real n, real m = -1) -> VanGenuchtenMualem
 
         VanGenuchtenMualem(real Ksat, real phi, real alpha, real n, real m=-1)
 
@@ -6358,7 +6264,7 @@ class VanGenuchtenMualem(RetentionCurve):
         m:  Van Genuchten m parameter, if negative m is calculated as $
         1-\\frac 1 n$ 
         """
-        _cmf_core.VanGenuchtenMualem_swiginit(self,_cmf_core.new_VanGenuchtenMualem(*args, **kwargs))
+        _cmf_core.VanGenuchtenMualem_swiginit(self,_cmf_core.new_VanGenuchtenMualem(*args))
     def __repr__(self):
         return "cmf.VanGenuchtenMualem(Ksat=%0.3g,Phi=%0.3g,alpha=%0.3g,n=%0.3g,m=%0.3g)" % (self.K(1),self.Porosity(0),self.alpha,self.n,self.m)
     def __str__(self):
@@ -6433,24 +6339,6 @@ class SoilLayer(WaterStorage):
     __repr__ = _swig_repr
     Position = _swig_property(_cmf_core.SoilLayer_Position_get)
     cell = _swig_property(_cmf_core.SoilLayer_cell_get)
-    def __get_upper(self, *args, **kwargs):
-        """
-        __get_upper(self) -> ptr
-
-        ptr
-        get_upper() const 
-        """
-        return _cmf_core.SoilLayer___get_upper(self, *args, **kwargs)
-
-    def __get_lower(self, *args, **kwargs):
-        """
-        __get_lower(self) -> ptr
-
-        ptr
-        get_lower() const 
-        """
-        return _cmf_core.SoilLayer___get_lower(self, *args, **kwargs)
-
     def get_soil(self, *args, **kwargs):
         """
         get_soil(self) -> RetentionCurve
@@ -6548,10 +6436,8 @@ class SoilLayer(WaterStorage):
     upper_boundary = _swig_property(_cmf_core.SoilLayer_upper_boundary_get)
     porosity = _swig_property(_cmf_core.SoilLayer_porosity_get)
     ice_fraction = _swig_property(_cmf_core.SoilLayer_ice_fraction_get, _cmf_core.SoilLayer_ice_fraction_set)
-    upper = _swig_property(_cmf_core.SoilLayer___get_upper)
-
-    lower = _swig_property(_cmf_core.SoilLayer___get_lower)
-
+    upper = _swig_property(_cmf_core.SoilLayer_upper_get)
+    lower = _swig_property(_cmf_core.SoilLayer_lower_get)
     boundary=property(lambda self:(self.upper_boundary,self.lower_boundary),None,"Returns the upper and lower boundary of the layer")
     pF=property(lambda self : waterhead_to_pF(self.matrix_potential),None,"The actual pF value")
     soil=property(get_soil,set_soil,"The retention curve of the layer")
@@ -6560,8 +6446,6 @@ class SoilLayer(WaterStorage):
         return self.to_string()
 
     __swig_destroy__ = _cmf_core.delete_SoilLayer
-SoilLayer.__get_upper = new_instancemethod(_cmf_core.SoilLayer___get_upper,None,SoilLayer)
-SoilLayer.__get_lower = new_instancemethod(_cmf_core.SoilLayer___get_lower,None,SoilLayer)
 SoilLayer.get_soil = new_instancemethod(_cmf_core.SoilLayer_get_soil,None,SoilLayer)
 SoilLayer.set_soil = new_instancemethod(_cmf_core.SoilLayer_set_soil,None,SoilLayer)
 SoilLayer.get_K = new_instancemethod(_cmf_core.SoilLayer_get_K,None,SoilLayer)
@@ -7419,17 +7303,6 @@ class Reach(OpenWaterStorage):
         """
         return _cmf_core.Reach_set_downstream(self, *args, **kwargs)
 
-    def __get_downstream(self, *args, **kwargs):
-        """
-        __get_downstream(self) -> ptr
-
-        cmf::water::flux_node::ptr get_downstream() const
-
-        Returns the reach downstream of this (or null if there is no reach
-        downstream). 
-        """
-        return _cmf_core.Reach___get_downstream(self, *args, **kwargs)
-
     def get_upstream(self, *args, **kwargs):
         """
         get_upstream(self, int index) -> ptr
@@ -7476,16 +7349,6 @@ class Reach(OpenWaterStorage):
         """
         return _cmf_core.Reach_distance_to_cell(self, *args, **kwargs)
 
-    def __get_root(self, *args, **kwargs):
-        """
-        __get_root(self) -> ptr
-
-        ptr get_root()
-
-        Returns the reach most downstream from this reach. 
-        """
-        return _cmf_core.Reach___get_root(self, *args, **kwargs)
-
     __swig_destroy__ = _cmf_core.delete_Reach
     def create(*args, **kwargs):
         """create(project project, IChannel shape, bool diffusive = False) -> ptr"""
@@ -7495,10 +7358,8 @@ class Reach(OpenWaterStorage):
     length = _swig_property(_cmf_core.Reach_length_get)
     width = _swig_property(_cmf_core.Reach_width_get)
     channel = _swig_property(_cmf_core.Reach_channel_get)
-    downstream = _swig_property(_cmf_core.Reach___get_downstream)
-
-    root = _swig_property(_cmf_core.Reach___get_root)
-
+    downstream = _swig_property(_cmf_core.Reach_downstream_get)
+    root = _swig_property(_cmf_core.Reach_root_get)
     upstream_count = _swig_property(_cmf_core.Reach_upstream_count_get)
     diffusive = _swig_property(_cmf_core.Reach_diffusive_get, _cmf_core.Reach_diffusive_set)
     @property
@@ -7538,11 +7399,9 @@ Reach.set_height_function = new_instancemethod(_cmf_core.Reach_set_height_functi
 Reach.set_outlet = new_instancemethod(_cmf_core.Reach_set_outlet,None,Reach)
 Reach.set_dead_end = new_instancemethod(_cmf_core.Reach_set_dead_end,None,Reach)
 Reach.set_downstream = new_instancemethod(_cmf_core.Reach_set_downstream,None,Reach)
-Reach.__get_downstream = new_instancemethod(_cmf_core.Reach___get_downstream,None,Reach)
 Reach.get_upstream = new_instancemethod(_cmf_core.Reach_get_upstream,None,Reach)
 Reach.connect_to_surfacewater = new_instancemethod(_cmf_core.Reach_connect_to_surfacewater,None,Reach)
 Reach.distance_to_cell = new_instancemethod(_cmf_core.Reach_distance_to_cell,None,Reach)
-Reach.__get_root = new_instancemethod(_cmf_core.Reach___get_root,None,Reach)
 Reach_swigregister = _cmf_core.Reach_swigregister
 Reach_swigregister(Reach)
 
@@ -7591,20 +7450,8 @@ class ReachIterator(object):
         Creates a ReachIterator from a first reach. 
         """
         _cmf_core.ReachIterator_swiginit(self,_cmf_core.new_ReachIterator(*args, **kwargs))
-    def __reach(self, *args, **kwargs):
-        """
-        __reach(self) -> ptr
-
-        Reach::ptr
-        reach() const
-
-        Returns the current reach. 
-        """
-        return _cmf_core.ReachIterator___reach(self, *args, **kwargs)
-
+    reach = _swig_property(_cmf_core.ReachIterator_reach_get)
     position = _swig_property(_cmf_core.ReachIterator_position_get)
-    reach = _swig_property(_cmf_core.ReachIterator___reach)
-
     def __iter__(self):
         while self.valid():
             self.next()
@@ -7613,7 +7460,6 @@ class ReachIterator(object):
     __swig_destroy__ = _cmf_core.delete_ReachIterator
 ReachIterator.next = new_instancemethod(_cmf_core.ReachIterator_next,None,ReachIterator)
 ReachIterator.valid = new_instancemethod(_cmf_core.ReachIterator_valid,None,ReachIterator)
-ReachIterator.__reach = new_instancemethod(_cmf_core.ReachIterator___reach,None,ReachIterator)
 ReachIterator_swigregister = _cmf_core.ReachIterator_swigregister
 ReachIterator_swigregister(ReachIterator)
 
