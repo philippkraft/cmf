@@ -1088,24 +1088,24 @@ public:
 		return result;
 	}
 	
-	Raster<_T> slope() {
-		Raster<_T> result=Raster<_T>(m_Header.ncols,m_Header.nrows,m_Header.xllcorner,m_Header.yllcorner,
+	Raster<double> slope() {
+		Raster<double> result=Raster<double>(m_Header.ncols,m_Header.nrows,m_Header.xllcorner,m_Header.yllcorner,
 			m_Header.Xcellsize,m_Header.Ycellsize,NoData());
 		int A=0,B=1,C=2,D=3,E=4,F=5,G=6,H=7,I=8;
-		_T a[9];
+		double a[9];
 #pragma omp parallel for
 		for (int r = 0; r < (int)result.RowCount(); ++r) {
 			for(int c = 0; c < (int)result.ColumnCount(); ++c) {
 				if (HasData(c,r)) {
-					_T a [] = {GetData(c-1,r-1),GetData(c,r-1),GetData(c+1,r-1),
+					double a [] = {GetData(c-1,r-1),GetData(c,r-1),GetData(c+1,r-1),
 						GetData(c-1,r),GetData(c,r),GetData(c+1,r),
 						GetData(c-1,r+1),GetData(c,r+1),GetData(c+1,r+1)};
 					for (int i = 0; i < 9 ; ++i)
 						if (a[i]==NoData()) 
 							a[i]=a[E];
-					_T dz_dx = ((a[C]+2*a[F]+a[I]) - (a[A]+2*a[D]+a[G]))/(8 * XCellsize());
-					_T dz_dy = ((a[G]+2*a[H]+a[I]) - (a[A]+2*a[B]+a[C]))/(8 * YCellsize());
-					result.SetData(c,r,_T(sqrt(dz_dx*dz_dx+dz_dy*dz_dy)));
+					double dz_dx = ((a[C]+2*a[F]+a[I]) - (a[A]+2*a[D]+a[G]))/(8 * XCellsize());
+					double dz_dy = ((a[G]+2*a[H]+a[I]) - (a[A]+2*a[B]+a[C]))/(8 * YCellsize());
+					result.SetData(c,r,double(sqrt(dz_dx*dz_dx+dz_dy*dz_dy)));
 				}
 			}
 		}
