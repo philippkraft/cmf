@@ -31,16 +31,18 @@
 {
     %pythoncode {
     def __repr__(self):
-        return "cmf.BrooksCoreyRetentionCurve(Ksat=%g,por.=%0.0f%%,b=%g,%0.1f%% wfps at pF%0.2f)" % (self.K(1),self.Porosity(0)*100,self.b,self.wetness_X * 100,waterhead_to_pF(self.Psi_X))
+        return "cmf.BrooksCoreyRetentionCurve(Ksat=%g,phi=%g,b=%g,wfp0=%0.1f,pF0=%0.2f)" % (self.Ksat,self.Porosity(0.0),self.b,self.wetness_X,waterhead_to_pF(self.Psi_X))
+    def __str__(self):
+        return "Brooks-Corey retention curve: Ksat=%0.3g m/day,por.=%0.0f%%,b=%g,%0.1f%% water content at pF%0.2f)" % (self.Ksat,self.Porosity(0.0)*100,self.b,self.wetness_X * self.Porosity(0.0) * 100,waterhead_to_pF(self.Psi_X))
     }
 }
 %extend cmf::upslope::VanGenuchtenMualem
 {
     %pythoncode {
     def __repr__(self):
-        return "cmf.VanGenuchtenMualem(Ksat=%0.3g,Phi=%0.3g,alpha=%0.3g,n=%0.3g,m=%0.3g)" % (self.K(1),self.Porosity(0),self.alpha,self.n,self.m)
+        return "cmf.VanGenuchtenMualem(Ksat=%0.3g,Phi=%0.3g,alpha=%0.3g,n=%0.3g,m=%0.3g)" % (self.Ksat,self.Phi,self.alpha,self.n,self.m)
     def __str__(self):
-    	return "VanGenuchten / Mualem retention curve: Ksat=%0.3g m/day, %0.3g%% Pores, alpha=%0.3g 1/cm, n=%0.3g" % (self.K(1),self.Porosity(0),self.alpha,self.n) 
+    	return "VanGenuchten / Mualem retention curve: Ksat=%0.3g m/day, %0.3g%% Pores, alpha=%0.3g 1/cm, n=%0.3g" % (self.Ksat,self.Phi*100,self.alpha,self.n) 
     }
 }
 

@@ -225,7 +225,7 @@ real cmf::upslope::VanGenuchtenMualem::MatricPotential( real w ) const
 real cmf::upslope::VanGenuchtenMualem::K( real wetness) const
 {
 	real _m = m<0 ? 1-1/n : m;
-	if (wetness>=1) return Ksat*exp(-(wetness-1)*10);
+	if (wetness>=1) return Ksat;
 	return Ksat*minimum(sqrt(wetness)*square(1-pow(1-pow(wetness,1/_m),_m)),1);
 }
 
