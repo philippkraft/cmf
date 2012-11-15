@@ -183,6 +183,7 @@ double_raster.downscale_max = new_instancemethod(_raster.double_raster_downscale
 double_raster.downscale_majority = new_instancemethod(_raster.double_raster_downscale_majority,None,double_raster)
 double_raster.downscale_stdev = new_instancemethod(_raster.double_raster_downscale_stdev,None,double_raster)
 double_raster.downscale_mean_difference = new_instancemethod(_raster.double_raster_downscale_mean_difference,None,double_raster)
+double_raster.slope = new_instancemethod(_raster.double_raster_slope,None,double_raster)
 double_raster.clone = new_instancemethod(_raster.double_raster_clone,None,double_raster)
 double_raster.GetData = new_instancemethod(_raster.double_raster_GetData,None,double_raster)
 double_raster.ToBuffer = new_instancemethod(_raster.double_raster_ToBuffer,None,double_raster)
@@ -248,6 +249,7 @@ float_raster.downscale_max = new_instancemethod(_raster.float_raster_downscale_m
 float_raster.downscale_majority = new_instancemethod(_raster.float_raster_downscale_majority,None,float_raster)
 float_raster.downscale_stdev = new_instancemethod(_raster.float_raster_downscale_stdev,None,float_raster)
 float_raster.downscale_mean_difference = new_instancemethod(_raster.float_raster_downscale_mean_difference,None,float_raster)
+float_raster.slope = new_instancemethod(_raster.float_raster_slope,None,float_raster)
 float_raster.clone = new_instancemethod(_raster.float_raster_clone,None,float_raster)
 float_raster.GetData = new_instancemethod(_raster.float_raster_GetData,None,float_raster)
 float_raster.ToBuffer = new_instancemethod(_raster.float_raster_ToBuffer,None,float_raster)
@@ -313,6 +315,7 @@ int_raster.downscale_max = new_instancemethod(_raster.int_raster_downscale_max,N
 int_raster.downscale_majority = new_instancemethod(_raster.int_raster_downscale_majority,None,int_raster)
 int_raster.downscale_stdev = new_instancemethod(_raster.int_raster_downscale_stdev,None,int_raster)
 int_raster.downscale_mean_difference = new_instancemethod(_raster.int_raster_downscale_mean_difference,None,int_raster)
+int_raster.slope = new_instancemethod(_raster.int_raster_slope,None,int_raster)
 int_raster.clone = new_instancemethod(_raster.int_raster_clone,None,int_raster)
 int_raster.GetData = new_instancemethod(_raster.int_raster_GetData,None,int_raster)
 int_raster.ToBuffer = new_instancemethod(_raster.int_raster_ToBuffer,None,int_raster)
@@ -529,6 +532,8 @@ class Raster:
         """ Optimised shortcut for =r-r.downscale_mean(n) """
         res=self.raster.downscale_mean_difference(n)
         return Raster(dtype=self.dtype,raster=res)
+    def slope(self):
+        res=self.raster.slope()
     def to_int(self):
         """ Creates a new raster of type integer from self (int 32)"""
         res=self.raster.ToInt()
@@ -693,18 +698,6 @@ class Raster:
         fmt="Raster<%s>: n=%i,min=%g,mean=%g,max=%g,stdev=%g,row,col=%s,cellsize=(%g,%g)"
         return fmt % (self.dtype,stat.count,stat.min,stat.mean,stat.max,stat.stdev,
                       self.shape,self.cellsize[0],self.cellsize[1])
-    @classmethod
-    def load(cls,filename,dtype='s',binary=False):
-        if (dtype in ["f","f8","d"]):
-            rtype=double_raster
-        elif (dtype in ["s","f4","r"]):
-            rtype=float_raster
-        elif (dtype in ["i","i4"]):
-            rtype=int_raster
-        res= rtype.load(filename,binary)
-        return Raster(dtype=dtype,raster=res)
-        
-        
     def draw3D(self,dem=None,vmin=None,vmax=None):
         '''Draws a 3d representation of self using the mlab module of Mayavi2 
         from Enthought. It needs to be installed.
