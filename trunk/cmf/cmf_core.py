@@ -6265,7 +6265,7 @@ class BrooksCoreyRetentionCurve(RetentionCurve):
 
     b = _swig_property(_cmf_core.BrooksCoreyRetentionCurve_b_get, _cmf_core.BrooksCoreyRetentionCurve_b_set)
     def __repr__(self):
-        return "cmf.BrooksCoreyRetentionCurve(Ksat=%g,phi=%gf,b=%g,wfp0=%0.1f,pF0=%0.2f)" % (self.Ksat,self.Porosity(0.0),self.b,self.wetness_X,waterhead_to_pF(self.Psi_X))
+        return "cmf.BrooksCoreyRetentionCurve(Ksat=%g,phi=%g,b=%g,wfp0=%0.1f,pF0=%0.2f)" % (self.Ksat,self.Porosity(0.0),self.b,self.wetness_X,waterhead_to_pF(self.Psi_X))
     def __str__(self):
         return "Brooks-Corey retention curve: Ksat=%0.3g m/day,por.=%0.0f%%,b=%g,%0.1f%% water content at pF%0.2f)" % (self.Ksat,self.Porosity(0.0)*100,self.b,self.wetness_X * self.Porosity(0.0) * 100,waterhead_to_pF(self.Psi_X))
 
