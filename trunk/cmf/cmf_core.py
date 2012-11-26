@@ -8724,6 +8724,23 @@ def PenmanMonteith(*args):
     """
   return _cmf_core.PenmanMonteith(*args)
 
+class timeseriesETpot(flux_connection):
+    """Proxy of C++ cmf::upslope::ET::timeseriesETpot class"""
+    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __repr__ = _swig_repr
+    ETpot = _swig_property(_cmf_core.timeseriesETpot_ETpot_get, _cmf_core.timeseriesETpot_ETpot_set)
+    def GetETpot(self, *args, **kwargs):
+        """GetETpot(self, Time t) -> real"""
+        return _cmf_core.timeseriesETpot_GetETpot(self, *args, **kwargs)
+
+    def __init__(self, *args, **kwargs): 
+        """__init__(self, ptr source, ptr ET_target, timeseries ETpot_values) -> timeseriesETpot"""
+        _cmf_core.timeseriesETpot_swiginit(self,_cmf_core.new_timeseriesETpot(*args, **kwargs))
+    __swig_destroy__ = _cmf_core.delete_timeseriesETpot
+timeseriesETpot.GetETpot = new_instancemethod(_cmf_core.timeseriesETpot_GetETpot,None,timeseriesETpot)
+timeseriesETpot_swigregister = _cmf_core.timeseriesETpot_swigregister
+timeseriesETpot_swigregister(timeseriesETpot)
+
 class PenmanMonteithET(flux_connection):
     """
     Calculates the potential evapotranspiration according to FAO(1998)
