@@ -216,6 +216,25 @@ namespace cmf {
 				}
 			};
 			/// @ingroup ET
+			/// A ET connection for timeseries driven ETpot
+			class timeseriesETpot: public cmf::water::flux_connection {
+			protected:
+				std::tr1::weak_ptr<cmf::upslope::SoilLayer> sw;
+				virtual real calc_q(cmf::math::Time t);
+				void NewNodes() {
+					sw=cmf::upslope::SoilLayer::cast(left_node());
+				}
+			public:
+				cmf::math::timeseries ETpot;
+				real GetETpot(cmf::math::Time t) const {return ETpot.get_t(t);}
+				timeseriesETpot(cmf::upslope::SoilLayer::ptr source,cmf::water::flux_node::ptr ET_target,cmf::math::timeseries ETpot_values)
+					: flux_connection(source,ET_target,"Timeseries based ET connection"), ETpot(ETpot_values)
+				{
+					NewNodes();
+				}
+
+			};
+			/// @ingroup ET
 			/// Calculates the potential evapotranspiration according to FAO(1998)
 			///
 			/// Governing equations:

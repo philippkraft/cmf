@@ -91,8 +91,14 @@ namespace cmf {
 			real constantETpot::calc_q( cmf::math::Time t ) 
 			{
 				cmf::upslope::SoilLayer::ptr layer=sw.lock();
-				cmf::upslope::vegetation::Vegetation veg=layer->cell.vegetation; 
+				const cmf::upslope::vegetation::Vegetation& veg=layer->cell.vegetation; 
 				return Tact(ETpot_value,*layer,veg);
+			}
+			real timeseriesETpot::calc_q( cmf::math::Time t )
+			{
+				cmf::upslope::SoilLayer::ptr layer=sw.lock();
+				const cmf::upslope::vegetation::Vegetation & veg=layer->cell.vegetation;
+				return Tact(GetETpot(t),*layer,veg);
 			}
 
 			real PenmanMonteithET::r_s( const cmf::upslope::vegetation::Vegetation & veg ) 
@@ -204,6 +210,7 @@ namespace cmf {
 			{
 				NewNodes();
 			}
+
 		}
 	}
 
