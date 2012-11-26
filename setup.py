@@ -168,7 +168,7 @@ if __name__=='__main__':
           url=url,
           description=description,
           author_email=author_email)
-    if msvc: shutil.copy('build/lib.win32-2.7/cmf/raster/_raster.pyd','cmf/raster/')
+    #if msvc: shutil.copy('build/lib.win32-2.7/cmf/raster/_raster.pyd','cmf/raster/')
     #setup(name='cmf_setups',version='0.1',license='GPL',
     #      py_modules=['cmf_setups.'+f[:-3] for f in os.listdir('cmf_setups') if f.endswith('.py')])
     print "build ok"
