@@ -67,10 +67,6 @@ C++ includes: groundwater.h ";
 
 /*  Overrides of flux_node  */
 
-/*
-
-*/
-
 %feature("docstring")  cmf::upslope::aquifer::RecalcFluxes "virtual
 bool RecalcFluxes(cmf::math::Time t)
 
@@ -148,32 +144,26 @@ be anisotropic, change the x,y and z values of the member K ";
 %feature("docstring")  cmf::upslope::aquifer::get_abs_errtol "real
 get_abs_errtol(real rel_errtol) const ";
 
-%feature("docstring")  cmf::upslope::aquifer::get_abs_errtol "virtual
-real get_abs_errtol(real rel_errtol) const ";
-
 %feature("docstring")
 cmf::upslope::aquifer::get_state_variable_content "char
 get_state_variable_content() const
 
 A character indicating the integrated variable (either 'V' for Volume
-or 'h' for head). ";
+or 'h' for head) ";
 
 %feature("docstring")
 cmf::upslope::aquifer::set_state_variable_content "void
 set_state_variable_content(char content)
 
 A character indicating the integrated variable (either 'V' for Volume
-or 'h' for head). ";
+or 'h' for head) ";
 
 %feature("docstring")  cmf::upslope::aquifer::is_storage "virtual
 bool is_storage() const
 
 Returns true, since this is a storage. ";
 
-%feature("docstring")  cmf::upslope::aquifer::get_states "cmf::math::StateVariableList get_states() ";
-
-%feature("docstring")  cmf::upslope::aquifer::get_states "virtual
-StateVariableList get_states()=0
+%feature("docstring")  cmf::upslope::aquifer::get_states "cmf::math::StateVariableList get_states()
 
 Add the state variables, owned by an object derived from
 StateVariableOwner, to the given vector. ";
@@ -194,7 +184,7 @@ Returns the concentration of the given solute. ";
 %feature("docstring")  cmf::upslope::aquifer::conc "real
 conc(cmf::math::Time t, const cmf::water::solute &_Solute) const
 
-Returns the current WaterQuality (concentration of all solutes). ";
+Returns the current WaterQuality (concentration of all solutes) ";
 
 %feature("docstring")  cmf::upslope::aquifer::conc "void conc(const
 cmf::water::solute &_Solute, real NewConcetration)
@@ -217,27 +207,15 @@ void set_volume(real newwatercontent)
 
 Sets the volume of water in this storage in m3 ";
 
-%feature("docstring")  cmf::upslope::aquifer::set_potential "virtual
-void set_potential(real newpotential) ";
-
 %feature("docstring")  cmf::upslope::aquifer::dxdt "virtual real
-dxdt(const cmf::math::Time &time) ";
-
-%feature("docstring")  cmf::upslope::aquifer::dxdt "virtual real
-dxdt(const cmf::math::Time &time)=0
+dxdt(const cmf::math::Time &time)
 
 Returns the derivate of the state variable at time time. ";
-
-%feature("docstring")  cmf::upslope::aquifer::get_state "real
-get_state() const ";
 
 %feature("docstring")  cmf::upslope::aquifer::get_state "real
 get_state() const
 
 Returns the current state of the variable. ";
-
-%feature("docstring")  cmf::upslope::aquifer::set_state "void
-set_state(real newState) ";
 
 %feature("docstring")  cmf::upslope::aquifer::set_state "void
 set_state(real newState)
@@ -268,7 +246,7 @@ Remove the connection. ";
 flux_to(const cmf::water::flux_node &target, cmf::math::Time t)
 
 Returns the actual flux between this and target (positive sign means
-\"from target into this\"). ";
+\"from target into this\") ";
 
 %feature("docstring")  cmf::upslope::aquifer::flux3d_to "cmf::geometry::point flux3d_to(const cmf::water::flux_node &target,
 cmf::math::Time t) ";
@@ -398,24 +376,14 @@ Most important function: Integrate
 
 C++ includes: bdf2.h ";
 
+/*  Internal data storages  */
+
 /*  Gear functions: The following functions evaluate the Gear formulas
 of specified order, loading the results into compareStates.  */
 
-/*
-
-*/
-
-/*  Internal data storages  */
-
-/*
-
-*/
+/*  Accuracy parameters  */
 
 /*  model time  */
-
-/*
-
-*/
 
 %feature("docstring")  cmf::math::BDF2::get_t "cmf::math::Time
 get_t() const
@@ -434,13 +402,9 @@ Returns the last time step. ";
 
 %feature("docstring")  cmf::math::BDF2::reset "virtual void reset()
 
-Resets any saved history (for multistep methods). ";
+Resets any saved history (for multistep methods) ";
 
 /*  Integrate  */
-
-/*
-
-*/
 
 %feature("docstring")  cmf::math::BDF2::integrate_until "void
 integrate_until(cmf::math::Time t_max, cmf::math::Time dt=Time(), bool
@@ -456,12 +420,6 @@ t_max:   Time, the solver should run to
 dt:   Time step (may be omitted)
 
 reset:  If true, solver is reseted before integration starts ";
-
-/*  Accuracy parameters  */
-
-/*
-
-*/
 
 %feature("docstring")  cmf::math::BDF2::add_states "void
 add_states(cmf::math::StateVariableOwner &stateOwner)
@@ -636,12 +594,12 @@ Simplifies the assessment of state variables. ";
 
 Provides the use of the Brooks-Corey retention curve
 
-\\\\begin{eqnarray*} /// W(\\\\theta) &=& \\\\frac{\\\\theta -
-\\\\theta_r}{\\\\theta_s - \\\\theta_r} \\\\\\\\ /// K(W) &=& K_{sat}
-W^{2+3b} \\\\\\\\ /// \\\\Psi(W) &=& \\\\Psi_X
-\\\\left(\\\\frac{W}{W_X}\\\\right)^{-b} \\\\\\\\ /// W(\\\\Psi) &=&
+\\\\begin{eqnarray*} W(\\\\theta) &=& \\\\frac{\\\\theta -
+\\\\theta_r}{\\\\theta_s - \\\\theta_r} \\\\\\\\ K(W) &=& K_{sat}
+W^{2+3b} \\\\\\\\ \\\\Psi(W) &=& \\\\Psi_X
+\\\\left(\\\\frac{W}{W_X}\\\\right)^{-b} \\\\\\\\ W(\\\\Psi) &=&
 {\\\\left( \\\\frac{\\\\Psi_X}{\\\\Psi}\\\\right)
-}^{\\\\frac{1}{b}}\\\\ W_X /// \\\\end{eqnarray*} where:  $K$ is the
+}^{\\\\frac{1}{b}}\\\\ W_X \\\\end{eqnarray*} where:  $K$ is the
 conductivity in $\\\\frac m {day}$
 
 $W$ is the wetness (Volume of soil water per volume of pores)
@@ -1051,11 +1009,41 @@ storages, and the upper and lower boundary conditions of the system
 
 C++ includes: cell.h ";
 
+/*  Location  */
+
+%feature("docstring")  cmf::upslope::Cell::get_topology "cmf::upslope::Topology& get_topology() ";
+
+%feature("docstring")  cmf::upslope::Cell::get_position "cmf::geometry::point get_position() const
+
+Returns the location of the cell. ";
+
+%feature("docstring")  cmf::upslope::Cell::get_area "double
+get_area() const
+
+Returns the area of the cell. ";
+
+%feature("docstring")  cmf::upslope::Cell::m3_to_mm "double
+m3_to_mm(double volume) const
+
+Converts a volume in m3 in mm for the cell area. ";
+
+%feature("docstring")  cmf::upslope::Cell::mm_to_m3 "double
+mm_to_m3(double depth) const ";
+
+/*  Saturation  */
+
+%feature("docstring")  cmf::upslope::Cell::InvalidateSatDepth "void
+InvalidateSatDepth() const
+
+Marks the saturated depth as unvalid. ";
+
+%feature("docstring")  cmf::upslope::Cell::get_saturated_depth "real
+get_saturated_depth() const ";
+
+%feature("docstring")  cmf::upslope::Cell::set_saturated_depth "void
+set_saturated_depth(real depth) ";
+
 /*  Flux nodes of the cell  */
-
-/*
-
-*/
 
 %feature("docstring")  cmf::upslope::Cell::get_meteorology "cmf::atmosphere::Meteorology& get_meteorology() const
 
@@ -1157,36 +1145,7 @@ cmf::project& get_project() const ";
 
 %feature("docstring")  cmf::upslope::Cell::get_weather "cmf::atmosphere::Weather get_weather(cmf::math::Time t) const ";
 
-/*  Location  */
-
-/*
-
-*/
-
-%feature("docstring")  cmf::upslope::Cell::get_topology "cmf::upslope::Topology& get_topology() ";
-
-%feature("docstring")  cmf::upslope::Cell::get_position "cmf::geometry::point get_position() const
-
-Returns the location of the cell. ";
-
-%feature("docstring")  cmf::upslope::Cell::get_area "double
-get_area() const
-
-Returns the area of the cell. ";
-
-%feature("docstring")  cmf::upslope::Cell::m3_to_mm "double
-m3_to_mm(double volume) const
-
-Converts a volume in m3 in mm for the cell area. ";
-
-%feature("docstring")  cmf::upslope::Cell::mm_to_m3 "double
-mm_to_m3(double depth) const ";
-
 /*  Layers  */
-
-/*
-
-*/
 
 %feature("docstring")  cmf::upslope::Cell::layer_count "int
 layer_count() const ";
@@ -1215,23 +1174,6 @@ Returns the flux to each layer from the upperlayer, or, in case of the
 first layer from the surface water. ";
 
 %feature("docstring")  cmf::upslope::Cell::~Cell "virtual ~Cell() ";
-
-/*  Saturation  */
-
-/*
-
-*/
-
-%feature("docstring")  cmf::upslope::Cell::InvalidateSatDepth "void
-InvalidateSatDepth() const
-
-Marks the saturated depth as unvalid. ";
-
-%feature("docstring")  cmf::upslope::Cell::get_saturated_depth "real
-get_saturated_depth() const ";
-
-%feature("docstring")  cmf::upslope::Cell::set_saturated_depth "void
-set_saturated_depth(real depth) ";
 
 %feature("docstring")  cmf::upslope::Cell::Cell "Cell(double x,
 double y, double z, double area, cmf::project &_project) ";
@@ -1480,15 +1422,14 @@ V(double h) const ";
 qManning(double A, double slope) const
 
 Calculates the flow rate from a given water volume in the reach
-\\\\begin{eqnarray*} /// q_{Manning}&=& A R^{\\\\frac 2 3}
-\\\\sqrt{\\\\frac {\\\\Delta_z} n} \\\\\\\\ /// A &=& \\\\frac V l
+\\\\begin{eqnarray*} q_{Manning}&=& A R^{\\\\frac 2 3}
+\\\\sqrt{\\\\frac {\\\\Delta_z} n} \\\\\\\\ A &=& \\\\frac V l
 \\\\mbox{, (Crosssectional area of the wetted crossection, Volume per
-length)} \\\\\\\\ /// R &=& \\\\frac A {P(d)} \\\\\\\\ /// P(d) &=&
-\\\\mbox{ the perimeter of the wetted crosssection, a function of
-reach depth} \\\\\\\\ /// d(V) &=& \\\\mbox{ the depth of the reach a
-function of the volume} \\\\\\\\ /// \\\\Delta_z &=& \\\\frac{z_{max}
-- z_{min}}{l} \\\\mbox{ Slope of the reach} /// \\\\end{eqnarray*}
-Flow rate [m3/s]
+length)} \\\\\\\\ R &=& \\\\frac A {P(d)} \\\\\\\\ P(d) &=& \\\\mbox{
+the perimeter of the wetted crosssection, a function of reach depth}
+\\\\\\\\ d(V) &=& \\\\mbox{ the depth of the reach a function of the
+volume} \\\\\\\\ \\\\Delta_z &=& \\\\frac{z_{max} - z_{min}}{l}
+\\\\mbox{ Slope of the reach} \\\\end{eqnarray*} Flow rate [m3/s]
 
 Parameters:
 -----------
@@ -1836,7 +1777,7 @@ Remove the connection. ";
 %feature("docstring")  cmf::atmosphere::ConstantRainSource::flux_to "real flux_to(const cmf::water::flux_node &target, cmf::math::Time t)
 
 Returns the actual flux between this and target (positive sign means
-\"from target into this\"). ";
+\"from target into this\") ";
 
 %feature("docstring")  cmf::atmosphere::ConstantRainSource::flux3d_to
 "cmf::geometry::point flux3d_to(const cmf::water::flux_node &target,
@@ -1900,11 +1841,9 @@ https://computation.llnl.gov/casc/sundials/main.html
 
 C++ includes: cvodeintegrator.h ";
 
+/*  Accuracy parameters  */
+
 /*  model time  */
-
-/*
-
-*/
 
 %feature("docstring")  cmf::math::CVodeIntegrator::get_t "cmf::math::Time get_t() const
 
@@ -1921,10 +1860,6 @@ Returns the last time step. ";
 
 /*  Integrate  */
 
-/*
-
-*/
-
 %feature("docstring")  cmf::math::CVodeIntegrator::integrate_until "void integrate_until(cmf::math::Time t_max, cmf::math::Time dt=Time(),
 bool reset=false)
 
@@ -1938,12 +1873,6 @@ t_max:   Time, the solver should run to
 dt:   Time step (may be omitted)
 
 reset:  If true, solver is reseted before integration starts ";
-
-/*  Accuracy parameters  */
-
-/*
-
-*/
 
 %feature("docstring")  cmf::math::CVodeIntegrator::get_order "int
 get_order() const
@@ -2324,12 +2253,11 @@ Creates a new date. ";
 %feature("docstring")  cmf::math::Date::Date "Date(const Time &time)
 
 Creates a new date from time (based on the 31.12.1899, like in
-Excel(TM)). ";
+Excel(TM)) ";
 
 %feature("docstring")  cmf::math::Date::ToTime "Time ToTime()
 
-Converts a date to Time (based on the 31.12.1899, like in Excel(TM).
-";
+Converts a date to Time (based on the 31.12.1899, like in Excel(TM) ";
 
 %feature("docstring")  cmf::math::Date::DOY "double DOY()
 
@@ -2414,7 +2342,7 @@ Remove the connection. ";
 flux_to(const cmf::water::flux_node &target, cmf::math::Time t)
 
 Returns the actual flux between this and target (positive sign means
-\"from target into this\"). ";
+\"from target into this\") ";
 
 %feature("docstring")  cmf::water::DirichletBoundary::flux3d_to "cmf::geometry::point flux3d_to(const cmf::water::flux_node &target,
 cmf::math::Time t) ";
@@ -2529,11 +2457,9 @@ An explicit Euler integrator, with a fixed time step.
 
 C++ includes: explicit_euler.h ";
 
+/*  Accuracy parameters  */
+
 /*  model time  */
-
-/*
-
-*/
 
 %feature("docstring")  cmf::math::ExplicitEuler_fixed::get_t "cmf::math::Time get_t() const
 
@@ -2551,13 +2477,9 @@ Returns the last time step. ";
 %feature("docstring")  cmf::math::ExplicitEuler_fixed::reset "virtual
 void reset()
 
-Resets any saved history (for multistep methods). ";
+Resets any saved history (for multistep methods) ";
 
 /*  Integrate  */
-
-/*
-
-*/
 
 %feature("docstring")  cmf::math::ExplicitEuler_fixed::integrate_until
 "void integrate_until(cmf::math::Time t_max, cmf::math::Time
@@ -2573,12 +2495,6 @@ t_max:   Time, the solver should run to
 dt:   Time step (may be omitted)
 
 reset:  If true, solver is reseted before integration starts ";
-
-/*  Accuracy parameters  */
-
-/*
-
-*/
 
 %feature("docstring")  cmf::math::ExplicitEuler_fixed::add_states "void add_states(cmf::math::StateVariableOwner &stateOwner)
 
@@ -2984,7 +2900,7 @@ Remove the connection. ";
 flux_to(const cmf::water::flux_node &target, cmf::math::Time t)
 
 Returns the actual flux between this and target (positive sign means
-\"from target into this\"). ";
+\"from target into this\") ";
 
 %feature("docstring")  cmf::water::flux_node::flux3d_to "cmf::geometry::point flux3d_to(const cmf::water::flux_node &target,
 cmf::math::Time t) ";
@@ -3200,9 +3116,9 @@ This class holds the properties for all HBV like connections
 Implements the RetentionCurve interface is only partly, therefore it
 is not suitable for other connection types
 
-\\\\begin{eqnarray*} /// K(w,d) &=& PERC w \\\\\\\\ /// \\\\Psi_{M}
-&=& 10 - \\\\frac{10}{w}\\\\\\\\ /// w(\\\\Psi_{M}) &=&
-\\\\frac{10}{10 - \\\\Psi_M} /// \\\\end{eqnarray*}
+\\\\begin{eqnarray*} K(w,d) &=& PERC w \\\\\\\\ \\\\Psi_{M} &=& 10 -
+\\\\frac{10}{w}\\\\\\\\ w(\\\\Psi_{M}) &=& \\\\frac{10}{10 -
+\\\\Psi_M} \\\\end{eqnarray*}
 
 C++ includes: HBVflow.h ";
 
@@ -3288,7 +3204,7 @@ Calculates the percolation as in the HBV model
 
 \\\\[ Q = \\\\left\\\\{Q_{in}
 \\\\left(\\\\frac{V}{FC}\\\\right)^\\\\beta\\\\mbox{ if first layer}
-\\\\\\\\ /// min(PERC, V_{lower} - V_{lower,max}) \\\\right. \\\\]
+\\\\\\\\ min(PERC, V_{lower} - V_{lower,max}) \\\\right. \\\\]
 
 C++ includes: HBVflow.h ";
 
@@ -3447,15 +3363,14 @@ copy() const =0 ";
 qManning(double A, double slope) const
 
 Calculates the flow rate from a given water volume in the reach
-\\\\begin{eqnarray*} /// q_{Manning}&=& A R^{\\\\frac 2 3}
-\\\\sqrt{\\\\frac {\\\\Delta_z} n} \\\\\\\\ /// A &=& \\\\frac V l
+\\\\begin{eqnarray*} q_{Manning}&=& A R^{\\\\frac 2 3}
+\\\\sqrt{\\\\frac {\\\\Delta_z} n} \\\\\\\\ A &=& \\\\frac V l
 \\\\mbox{, (Crosssectional area of the wetted crossection, Volume per
-length)} \\\\\\\\ /// R &=& \\\\frac A {P(d)} \\\\\\\\ /// P(d) &=&
-\\\\mbox{ the perimeter of the wetted crosssection, a function of
-reach depth} \\\\\\\\ /// d(V) &=& \\\\mbox{ the depth of the reach a
-function of the volume} \\\\\\\\ /// \\\\Delta_z &=& \\\\frac{z_{max}
-- z_{min}}{l} \\\\mbox{ Slope of the reach} /// \\\\end{eqnarray*}
-Flow rate [m3/s]
+length)} \\\\\\\\ R &=& \\\\frac A {P(d)} \\\\\\\\ P(d) &=& \\\\mbox{
+the perimeter of the wetted crosssection, a function of reach depth}
+\\\\\\\\ d(V) &=& \\\\mbox{ the depth of the reach a function of the
+volume} \\\\\\\\ \\\\Delta_z &=& \\\\frac{z_{max} - z_{min}}{l}
+\\\\mbox{ Slope of the reach} \\\\end{eqnarray*} Flow rate [m3/s]
 
 Parameters:
 -----------
@@ -3568,7 +3483,7 @@ Remove the connection. ";
 flux_to(const cmf::water::flux_node &target, cmf::math::Time t)
 
 Returns the actual flux between this and target (positive sign means
-\"from target into this\"). ";
+\"from target into this\") ";
 
 %feature("docstring")  cmf::atmosphere::IDWRainfall::flux3d_to "cmf::geometry::point flux3d_to(const cmf::water::flux_node &target,
 cmf::math::Time t) ";
@@ -3608,15 +3523,9 @@ C++ includes: implicit_euler.h ";
 
 /*  Internal data storages  */
 
-/*
-
-*/
+/*  Accuracy parameters  */
 
 /*  model time  */
-
-/*
-
-*/
 
 %feature("docstring")  cmf::math::ImplicitEuler::get_t "cmf::math::Time get_t() const
 
@@ -3634,13 +3543,9 @@ Returns the last time step. ";
 %feature("docstring")  cmf::math::ImplicitEuler::reset "virtual void
 reset()
 
-Resets any saved history (for multistep methods). ";
+Resets any saved history (for multistep methods) ";
 
 /*  Integrate  */
-
-/*
-
-*/
 
 %feature("docstring")  cmf::math::ImplicitEuler::integrate_until "void integrate_until(cmf::math::Time t_max, cmf::math::Time dt=Time(),
 bool reset=false)
@@ -3655,12 +3560,6 @@ t_max:   Time, the solver should run to
 dt:   Time step (may be omitted)
 
 reset:  If true, solver is reseted before integration starts ";
-
-/*  Accuracy parameters  */
-
-/*
-
-*/
 
 %feature("docstring")  cmf::math::ImplicitEuler::add_states "void
 add_states(cmf::math::StateVariableOwner &stateOwner)
@@ -3888,15 +3787,7 @@ C++ includes: integrator.h ";
 
 /*  Accuracy parameters  */
 
-/*
-
-*/
-
 /*  model time  */
-
-/*
-
-*/
 
 %feature("docstring")  cmf::math::Integrator::get_t "cmf::math::Time
 get_t() const
@@ -3916,13 +3807,9 @@ Returns the last time step. ";
 %feature("docstring")  cmf::math::Integrator::reset "virtual void
 reset()
 
-Resets any saved history (for multistep methods). ";
+Resets any saved history (for multistep methods) ";
 
 /*  Constructors and Destructors  */
-
-/*
-
-*/
 
 %feature("docstring")  cmf::math::Integrator::Integrator "Integrator(real epsilon=1e-9)
 
@@ -3942,10 +3829,6 @@ Integrator* copy() const =0
 Polymorphic copy constructor. ";
 
 /*  Integrate  */
-
-/*
-
-*/
 
 %feature("docstring")  cmf::math::Integrator::integrate "virtual int
 integrate(cmf::math::Time t_max, cmf::math::Time dt)=0
@@ -4421,8 +4304,7 @@ C++ includes: boundary_condition.h ";
 
 %feature("docstring")  cmf::water::linear_scale::linear_scale "linear_scale(real _slope=1, real _displacement=0)
 
-Creates a linear scale (by default it is a unity scale, $a=1; b=0$).
-";
+Creates a linear scale (by default it is a unity scale, $a=1; b=0$) ";
 
 
 // File: classcmf_1_1upslope_1_1_linear_retention.xml
@@ -4524,7 +4406,14 @@ canopy to atmosphere (r_ac) ";
 %feature("docstring") cmf::river::Manning "
 
 Calculates the flux between two open water bodies, using Manning's
-equation
+equation \\\\begin{eqnarray*} q_{Manning}&=& A R^{\\\\frac 2 3}
+\\\\sqrt{\\\\frac {\\\\Delta_z} n} \\\\\\\\ A &=& \\\\frac V l
+\\\\mbox{, (Crosssectional area of the wetted crossection, Volume per
+length)} \\\\\\\\ R &=& \\\\frac A {P(d)} \\\\\\\\ P(d) &=& \\\\mbox{
+the perimeter of the wetted crosssection, a function of reach depth}
+\\\\\\\\ d(V) &=& \\\\mbox{ the depth of the reach a function of the
+volume} \\\\\\\\ \\\\Delta_z &=& \\\\frac{z_{max} - z_{min}}{l}
+\\\\mbox{ Slope of the reach} \\\\end{eqnarray*}
 
 C++ includes: ManningConnection.h ";
 
@@ -4592,8 +4481,16 @@ short_string() const ";
 // File: classcmf_1_1river_1_1_manning___diffusive.xml
 %feature("docstring") cmf::river::Manning_Diffusive "
 
-Connecting surface water bodies using a diffusive wave. Not stable
-deep water with small gradient
+Connecting surface water bodies using a diffusive wave. Not stable for
+deep water with small gradient \\\\begin{eqnarray*} q_{Manning}&=& A
+R^{\\\\frac 2 3} \\\\sqrt{\\\\frac {\\\\Delta_z} n} \\\\\\\\ A &=&
+\\\\frac V l \\\\mbox{, (Crosssectional area of the wetted
+crossection, Volume per length)} \\\\\\\\ R &=& \\\\frac A {P(d)}
+\\\\\\\\ P(d) &=& \\\\mbox{ the perimeter of the wetted crosssection,
+a function of reach depth} \\\\\\\\ d(V) &=& \\\\mbox{ the depth of
+the reach a function of the volume} \\\\\\\\ \\\\Delta_z &=&
+\\\\frac{z_{max} - z_{min}}{l} \\\\mbox{ Slope of the reach}
+\\\\end{eqnarray*}
 
 C++ includes: ManningConnection.h ";
 
@@ -4907,15 +4804,14 @@ V(double h) const ";
 qManning(double A, double slope) const
 
 Calculates the flow rate from a given water volume in the reach
-\\\\begin{eqnarray*} /// q_{Manning}&=& A R^{\\\\frac 2 3}
-\\\\sqrt{\\\\frac {\\\\Delta_z} n} \\\\\\\\ /// A &=& \\\\frac V l
+\\\\begin{eqnarray*} q_{Manning}&=& A R^{\\\\frac 2 3}
+\\\\sqrt{\\\\frac {\\\\Delta_z} n} \\\\\\\\ A &=& \\\\frac V l
 \\\\mbox{, (Crosssectional area of the wetted crossection, Volume per
-length)} \\\\\\\\ /// R &=& \\\\frac A {P(d)} \\\\\\\\ /// P(d) &=&
-\\\\mbox{ the perimeter of the wetted crosssection, a function of
-reach depth} \\\\\\\\ /// d(V) &=& \\\\mbox{ the depth of the reach a
-function of the volume} \\\\\\\\ /// \\\\Delta_z &=& \\\\frac{z_{max}
-- z_{min}}{l} \\\\mbox{ Slope of the reach} /// \\\\end{eqnarray*}
-Flow rate [m3/s]
+length)} \\\\\\\\ R &=& \\\\frac A {P(d)} \\\\\\\\ P(d) &=& \\\\mbox{
+the perimeter of the wetted crosssection, a function of reach depth}
+\\\\\\\\ d(V) &=& \\\\mbox{ the depth of the reach a function of the
+volume} \\\\\\\\ \\\\Delta_z &=& \\\\frac{z_{max} - z_{min}}{l}
+\\\\mbox{ Slope of the reach} \\\\end{eqnarray*} Flow rate [m3/s]
 
 Parameters:
 -----------
@@ -4993,7 +4889,7 @@ The daily flag is automatically set to true, since the step width is
 
 # MeteoData.txt is tab seperated file containing # Tmin [deg C],Tmax
 [deg C],rHmean [%] and precipitation [mm/day] values for every day
-f=file('MeteoData.txt') for line infile:
+f=file('MeteoData.txt') for line in file:
 meteo.Tmin.Add(float(line.split('\\\\t')[0]))
 meteo.Tmax.Add(float(line.split('\\\\t')[1]))
 meteo.rHmean.Add(float(line.split('\\\\t')[2]))
@@ -5009,23 +4905,9 @@ C++ includes: meteorology.h ";
 
 /*  Location and behaviour properties  */
 
-/*
-
-*/
-
 %feature("docstring")  cmf::atmosphere::MeteoStation::get_position "cmf::geometry::point get_position() const ";
 
-/*  Timeseries of meteorological data  */
-
-/*
-
-*/
-
 /*  Data access methods  */
-
-/*
-
-*/
 
 %feature("docstring")  cmf::atmosphere::MeteoStation::get_data "cmf::atmosphere::Weather get_data(cmf::math::Time t, double height)
 const
@@ -5087,6 +4969,8 @@ Latitude})^\\\\circ \\\\pi}{180^\\\\circ} \\\\mbox{ Latitude in }rad
 Sunset angle} \\\\\\\\ N &=& \\\\frac{24}{\\\\pi}\\\\omega_s \\\\mbox{
 potential duration of sunshine in }h \\\\\\\\ \\\\frac n N &&
 n\\\\mbox{Absolute sunshine duration} \\\\end{eqnarray*} ";
+
+/*  Timeseries of meteorological data  */
 
 %feature("docstring")  cmf::atmosphere::MeteoStation::MeteoStation "MeteoStation(const cmf::atmosphere::MeteoStation &other)
 
@@ -5246,11 +5130,9 @@ boundaries.
 
 C++ includes: multiintegrator.h ";
 
+/*  Accuracy parameters  */
+
 /*  model time  */
-
-/*
-
-*/
 
 %feature("docstring")  cmf::math::MultiIntegrator::get_t "cmf::math::Time get_t() const
 
@@ -5267,10 +5149,6 @@ Returns the last time step. ";
 
 /*  Integrate  */
 
-/*
-
-*/
-
 %feature("docstring")  cmf::math::MultiIntegrator::integrate_until "void integrate_until(cmf::math::Time t_max, cmf::math::Time dt=Time(),
 bool reset=false)
 
@@ -5284,12 +5162,6 @@ t_max:   Time, the solver should run to
 dt:   Time step (may be omitted)
 
 reset:  If true, solver is reseted before integration starts ";
-
-/*  Accuracy parameters  */
-
-/*
-
-*/
 
 %feature("docstring")  cmf::math::MultiIntegrator::integrate "int
 integrate(cmf::math::Time t_max, cmf::math::Time dt)
@@ -5533,7 +5405,7 @@ Remove the connection. ";
 flux_to(const cmf::water::flux_node &target, cmf::math::Time t)
 
 Returns the actual flux between this and target (positive sign means
-\"from target into this\"). ";
+\"from target into this\") ";
 
 %feature("docstring")  cmf::water::NeumannBoundary::flux3d_to "cmf::geometry::point flux3d_to(const cmf::water::flux_node &target,
 cmf::math::Time t) ";
@@ -5794,7 +5666,7 @@ set_solute_source(const cmf::water::solute &_Solute,
 cmf::math::num_array source_fluxes)
 
 Sets the source flux of a solute storage associated with a node (node
-has to be a water storage). ";
+has to be a water storage) ";
 
 %feature("docstring")  cmf::water::node_list::get_fluxes_to "cmf::math::num_array get_fluxes_to(const cmf::water::node_list
 &targets, cmf::math::Time t) const
@@ -5836,10 +5708,6 @@ C++ includes: num_array.h ";
 
 /*  Constructors & Destructors  */
 
-/*
-
-*/
-
 %feature("docstring")  cmf::math::num_array::num_array "num_array(int
 count, real Value=0)
 
@@ -5877,7 +5745,7 @@ Destructor. ";
 
 /*  Operators  */
 
-/*  Binary operators defined as free operators:
+/* Binary operators defined as free operators:
 
 x = {+,-,*,/}
 
@@ -5913,10 +5781,6 @@ funct:  a function of signature real funct(real)
 Example: Return the sinus of each element of vector x ";
 
 /*  Summarizing functions  */
-
-/*
-
-*/
 
 %feature("docstring")  cmf::math::num_array::dot "real dot(const
 num_array &) const
@@ -6065,10 +5929,6 @@ C++ includes: OpenWaterStorage.h ";
 
 /*  Overrides of flux_node  */
 
-/*
-
-*/
-
 %feature("docstring")  cmf::river::OpenWaterStorage::RecalcFluxes "virtual bool RecalcFluxes(cmf::math::Time t)
 
 Pure flux_nodes do not influence fluxes, therefore no recalculation of
@@ -6105,33 +5965,29 @@ Returns the exposed surface area in m2. ";
 %feature("docstring")  cmf::river::OpenWaterStorage::conc "real
 conc(cmf::math::Time t, const cmf::water::solute &solute) const
 
-Returns the current WaterQuality (concentration of all solutes). ";
+Returns the current WaterQuality (concentration of all solutes) ";
 
 %feature("docstring")  cmf::river::OpenWaterStorage::get_abs_errtol "real get_abs_errtol(real rel_errtol) const ";
-
-%feature("docstring")  cmf::river::OpenWaterStorage::get_abs_errtol "virtual real get_abs_errtol(real rel_errtol) const ";
 
 %feature("docstring")
 cmf::river::OpenWaterStorage::get_state_variable_content "char
 get_state_variable_content() const
 
 A character indicating the integrated variable (either 'V' for Volume
-or 'h' for head). ";
+or 'h' for head) ";
 
 %feature("docstring")
 cmf::river::OpenWaterStorage::set_state_variable_content "void
 set_state_variable_content(char content)
 
 A character indicating the integrated variable (either 'V' for Volume
-or 'h' for head). ";
+or 'h' for head) ";
 
 %feature("docstring")  cmf::river::OpenWaterStorage::is_storage "virtual bool is_storage() const
 
 Returns true, since this is a storage. ";
 
-%feature("docstring")  cmf::river::OpenWaterStorage::get_states "cmf::math::StateVariableList get_states() ";
-
-%feature("docstring")  cmf::river::OpenWaterStorage::get_states "virtual StateVariableList get_states()=0
+%feature("docstring")  cmf::river::OpenWaterStorage::get_states "cmf::math::StateVariableList get_states()
 
 Add the state variables, owned by an object derived from
 StateVariableOwner, to the given vector. ";
@@ -6169,23 +6025,14 @@ Sets the volume of water in this storage in m3 ";
 %feature("docstring")  cmf::river::OpenWaterStorage::set_potential "virtual void set_potential(real newpotential) ";
 
 %feature("docstring")  cmf::river::OpenWaterStorage::dxdt "virtual
-real dxdt(const cmf::math::Time &time) ";
-
-%feature("docstring")  cmf::river::OpenWaterStorage::dxdt "virtual
-real dxdt(const cmf::math::Time &time)=0
+real dxdt(const cmf::math::Time &time)
 
 Returns the derivate of the state variable at time time. ";
-
-%feature("docstring")  cmf::river::OpenWaterStorage::get_state "real
-get_state() const ";
 
 %feature("docstring")  cmf::river::OpenWaterStorage::get_state "real
 get_state() const
 
 Returns the current state of the variable. ";
-
-%feature("docstring")  cmf::river::OpenWaterStorage::set_state "void
-set_state(real newState) ";
 
 %feature("docstring")  cmf::river::OpenWaterStorage::set_state "void
 set_state(real newState)
@@ -6214,7 +6061,7 @@ Remove the connection. ";
 flux_to(const cmf::water::flux_node &target, cmf::math::Time t)
 
 Returns the actual flux between this and target (positive sign means
-\"from target into this\"). ";
+\"from target into this\") ";
 
 %feature("docstring")  cmf::river::OpenWaterStorage::flux3d_to "cmf::geometry::point flux3d_to(const cmf::water::flux_node &target,
 cmf::math::Time t) ";
@@ -6320,40 +6167,39 @@ short_string() const ";
 
 Calculates the potential evapotranspiration according to FAO(1998)
 
-Governing equations: \\\\begin{eqnarray*} /// \\\\lambda ET &=&
+Governing equations: \\\\begin{eqnarray*} \\\\lambda ET &=&
 \\\\frac{\\\\Delta\\\\left(R_n - G\\\\right)+\\\\rho_a c_p
 \\\\frac{e_s - e_a}{r_a}}{\\\\Delta +
 \\\\gamma\\\\left(1+\\\\frac{r_s}{r_a}\\\\right)} \\\\mbox{ FAO 1998,
-Eq. 3} \\\\\\\\ /// \\\\mbox{With:} \\\\\\\\ /// \\\\Delta &=& 4098
+Eq. 3} \\\\\\\\ \\\\mbox{With:} \\\\\\\\ \\\\Delta &=& 4098
 \\\\frac{0.6108 e^{17.27 T}}{(T+237.3)^2} \\\\frac{kPa}{^\\\\circ C}
-\\\\mbox{ (FAO 1998, Eq. 13)} \\\\\\\\ /// T &=& \\\\mbox{Actual
-Temperature in } ^\\\\circ C \\\\\\\\ /// R_n &=& \\\\mbox{net
-Radiation (see Atmosphere) in } \\\\frac{MJ}{m^2day} \\\\\\\\ /// G
-&=& 0 \\\\ \\\\frac{MJ}{m^2day} \\\\mbox{ if daily average (FAO 1998,
-Eq. 42)} \\\\\\\\ /// && 0.1 R_n \\\\ \\\\mbox{ if day time (FAO 1998,
-Eq. 45)} \\\\\\\\ /// && 0.5 R_n \\\\ \\\\mbox{ if night time (FAO
-1998, Eq. 46)} \\\\\\\\ /// \\\\gamma &=& \\\\frac{c_p P}{\\\\epsilon
-\\\\lambda} \\\\mbox{ (FAO 1998,Eq. 8): Psychrometric constant }
-\\\\frac{kPa}{^\\\\circ C} \\\\\\\\ /// c_p &=& 0.001013
+\\\\mbox{ (FAO 1998, Eq. 13)} \\\\\\\\ T &=& \\\\mbox{Actual
+Temperature in } ^\\\\circ C \\\\\\\\ R_n &=& \\\\mbox{net Radiation
+(see Atmosphere) in } \\\\frac{MJ}{m^2day} \\\\\\\\ G &=& 0 \\\\
+\\\\frac{MJ}{m^2day} \\\\mbox{ if daily average (FAO 1998, Eq. 42)}
+\\\\\\\\ && 0.1 R_n \\\\ \\\\mbox{ if day time (FAO 1998, Eq. 45)}
+\\\\\\\\ && 0.5 R_n \\\\ \\\\mbox{ if night time (FAO 1998, Eq. 46)}
+\\\\\\\\ \\\\gamma &=& \\\\frac{c_p P}{\\\\epsilon \\\\lambda}
+\\\\mbox{ (FAO 1998,Eq. 8): Psychrometric constant }
+\\\\frac{kPa}{^\\\\circ C} \\\\\\\\ c_p &=& 0.001013
 \\\\frac{MJ}{kg\\\\ ^\\\\circ C}\\\\mbox{ specific heat at constant
-pressure } \\\\\\\\ /// P &=& 101.3
+pressure } \\\\\\\\ P &=& 101.3
 \\\\left(\\\\frac{293-0.0065z}{293}\\\\right)^{5.26} \\\\mbox{ (FAO
-1998,Eq. 7)} \\\\\\\\ /// \\\\epsilon &=& 0.622 \\\\frac{mol/g
-\\\\mbox{ vapor}}{mol/g \\\\mbox{ liquid water}} \\\\\\\\ ///
-\\\\lambda &=& 2.45 \\\\frac{MJ}{kg} \\\\mbox{ (FAO 1998,Eq. 8)}
-\\\\\\\\ /// R &=& 0.287 \\\\frac{kJ}{kg\\\\ k}\\\\mbox{ Spec. gas
-const.} \\\\\\\\ /// \\\\rho_a &=& \\\\frac{P}{1.01(T+273)R} \\\\mbox{
-(FAO 1998,Box. 6)} \\\\\\\\ /// e_s &=& \\\\mbox{ Sat. vapor press. }
-[kPa] \\\\\\\\ /// e_a &=& \\\\mbox{ Act. vapor press. } [kPa]
-\\\\\\\\ /// r_a &=&
+1998,Eq. 7)} \\\\\\\\ \\\\epsilon &=& 0.622 \\\\frac{mol/g \\\\mbox{
+vapor}}{mol/g \\\\mbox{ liquid water}} \\\\\\\\ \\\\lambda &=& 2.45
+\\\\frac{MJ}{kg} \\\\mbox{ (FAO 1998,Eq. 8)} \\\\\\\\ R &=& 0.287
+\\\\frac{kJ}{kg\\\\ k}\\\\mbox{ Spec. gas const.} \\\\\\\\ \\\\rho_a
+&=& \\\\frac{P}{1.01(T+273)R} \\\\mbox{ (FAO 1998,Box. 6)} \\\\\\\\
+e_s &=& \\\\mbox{ Sat. vapor press. } [kPa] \\\\\\\\ e_a &=& \\\\mbox{
+Act. vapor press. } [kPa] \\\\\\\\ r_a &=&
 \\\\frac{\\\\ln\\\\left(\\\\frac{2-d}{z_{om}}\\\\right)\\\\ln\\\\left(\\\\frac{2-d}{z_{oh}}\\\\right)}{k^2
-u_2} \\\\mbox{ (FAO 1998, Eq. 4/Box 4} \\\\frac s m \\\\\\\\ /// &&
-d=\\\\frac 2 3 h,z_{om}=0.123 h,z_{oh}=0.1 z_{om}, k=0.41 \\\\\\\\ ///
-h &=& \\\\mbox{ Vegetation height in }m \\\\\\\\ /// u_2 &=& \\\\mbox{
-Windspeed in 2m above canopy } \\\\frac m s \\\\\\\\ /// r_s &=&
+u_2} \\\\mbox{ (FAO 1998, Eq. 4/Box 4} \\\\frac s m \\\\\\\\ &&
+d=\\\\frac 2 3 h,z_{om}=0.123 h,z_{oh}=0.1 z_{om}, k=0.41 \\\\\\\\ h
+&=& \\\\mbox{ Vegetation height in }m \\\\\\\\ u_2 &=& \\\\mbox{
+Windspeed in 2m above canopy } \\\\frac m s \\\\\\\\ r_s &=&
 \\\\frac{r_l}{LAI_{Active}} \\\\mbox{ (FAO 1998, Eq. 5/Box 5)}
-\\\\frac s m \\\\\\\\ /// && r_l=100 \\\\frac s m, LAI_{Active}=0.5
-LAI /// \\\\end{eqnarray*}
+\\\\frac s m \\\\\\\\ && r_l=100 \\\\frac s m, LAI_{Active}=0.5 LAI
+\\\\end{eqnarray*}
 
 C++ includes: ET.h ";
 
@@ -6487,15 +6333,14 @@ V(double h) const ";
 qManning(double A, double slope) const
 
 Calculates the flow rate from a given water volume in the reach
-\\\\begin{eqnarray*} /// q_{Manning}&=& A R^{\\\\frac 2 3}
-\\\\sqrt{\\\\frac {\\\\Delta_z} n} \\\\\\\\ /// A &=& \\\\frac V l
+\\\\begin{eqnarray*} q_{Manning}&=& A R^{\\\\frac 2 3}
+\\\\sqrt{\\\\frac {\\\\Delta_z} n} \\\\\\\\ A &=& \\\\frac V l
 \\\\mbox{, (Crosssectional area of the wetted crossection, Volume per
-length)} \\\\\\\\ /// R &=& \\\\frac A {P(d)} \\\\\\\\ /// P(d) &=&
-\\\\mbox{ the perimeter of the wetted crosssection, a function of
-reach depth} \\\\\\\\ /// d(V) &=& \\\\mbox{ the depth of the reach a
-function of the volume} \\\\\\\\ /// \\\\Delta_z &=& \\\\frac{z_{max}
-- z_{min}}{l} \\\\mbox{ Slope of the reach} /// \\\\end{eqnarray*}
-Flow rate [m3/s]
+length)} \\\\\\\\ R &=& \\\\frac A {P(d)} \\\\\\\\ P(d) &=& \\\\mbox{
+the perimeter of the wetted crosssection, a function of reach depth}
+\\\\\\\\ d(V) &=& \\\\mbox{ the depth of the reach a function of the
+volume} \\\\\\\\ \\\\Delta_z &=& \\\\frac{z_{max} - z_{min}}{l}
+\\\\mbox{ Slope of the reach} \\\\end{eqnarray*} Flow rate [m3/s]
 
 Parameters:
 -----------
@@ -6913,7 +6758,7 @@ cmf::atmosphere::RainfallStationReference::flux_to "real
 flux_to(const cmf::water::flux_node &target, cmf::math::Time t)
 
 Returns the actual flux between this and target (positive sign means
-\"from target into this\"). ";
+\"from target into this\") ";
 
 %feature("docstring")
 cmf::atmosphere::RainfallStationReference::flux3d_to "cmf::geometry::point flux3d_to(const cmf::water::flux_node &target,
@@ -7006,7 +6851,7 @@ Remove the connection. ";
 flux_to(const cmf::water::flux_node &target, cmf::math::Time t)
 
 Returns the actual flux between this and target (positive sign means
-\"from target into this\"). ";
+\"from target into this\") ";
 
 %feature("docstring")  cmf::atmosphere::RainSource::flux3d_to "cmf::geometry::point flux3d_to(const cmf::water::flux_node &target,
 cmf::math::Time t) ";
@@ -7048,10 +6893,6 @@ topological features, for the creation of a network of reaches.
 C++ includes: Reach.h ";
 
 /*  Overrides of flux_node  */
-
-/*
-
-*/
 
 %feature("docstring")  cmf::river::Reach::RecalcFluxes "virtual bool
 RecalcFluxes(cmf::math::Time t)
@@ -7101,7 +6942,7 @@ Connects the reach to another one downstream. ";
 %feature("docstring")  cmf::river::Reach::get_downstream "cmf::water::flux_node::ptr get_downstream() const
 
 Returns the reach downstream of this (or null if there is no reach
-downstream). ";
+downstream) ";
 
 %feature("docstring")  cmf::river::Reach::upstream_count "int
 upstream_count() const
@@ -7174,7 +7015,7 @@ Returns the exposed surface area in m2. ";
 %feature("docstring")  cmf::river::Reach::conc "real
 conc(cmf::math::Time t, const cmf::water::solute &solute) const
 
-Returns the current WaterQuality (concentration of all solutes). ";
+Returns the current WaterQuality (concentration of all solutes) ";
 
 %feature("docstring")  cmf::river::Reach::conc "real conc(const
 cmf::water::solute &_Solute) const
@@ -7189,28 +7030,22 @@ Sets a new concentration. ";
 %feature("docstring")  cmf::river::Reach::get_abs_errtol "real
 get_abs_errtol(real rel_errtol) const ";
 
-%feature("docstring")  cmf::river::Reach::get_abs_errtol "virtual
-real get_abs_errtol(real rel_errtol) const ";
-
 %feature("docstring")  cmf::river::Reach::get_state_variable_content "char get_state_variable_content() const
 
 A character indicating the integrated variable (either 'V' for Volume
-or 'h' for head). ";
+or 'h' for head) ";
 
 %feature("docstring")  cmf::river::Reach::set_state_variable_content "void set_state_variable_content(char content)
 
 A character indicating the integrated variable (either 'V' for Volume
-or 'h' for head). ";
+or 'h' for head) ";
 
 %feature("docstring")  cmf::river::Reach::is_storage "virtual bool
 is_storage() const
 
 Returns true, since this is a storage. ";
 
-%feature("docstring")  cmf::river::Reach::get_states "cmf::math::StateVariableList get_states() ";
-
-%feature("docstring")  cmf::river::Reach::get_states "virtual
-StateVariableList get_states()=0
+%feature("docstring")  cmf::river::Reach::get_states "cmf::math::StateVariableList get_states()
 
 Add the state variables, owned by an object derived from
 StateVariableOwner, to the given vector. ";
@@ -7243,23 +7078,14 @@ Sets the volume of water in this storage in m3 ";
 set_potential(real newpotential) ";
 
 %feature("docstring")  cmf::river::Reach::dxdt "virtual real
-dxdt(const cmf::math::Time &time) ";
-
-%feature("docstring")  cmf::river::Reach::dxdt "virtual real
-dxdt(const cmf::math::Time &time)=0
+dxdt(const cmf::math::Time &time)
 
 Returns the derivate of the state variable at time time. ";
-
-%feature("docstring")  cmf::river::Reach::get_state "real get_state()
-const ";
 
 %feature("docstring")  cmf::river::Reach::get_state "real get_state()
 const
 
 Returns the current state of the variable. ";
-
-%feature("docstring")  cmf::river::Reach::set_state "void
-set_state(real newState) ";
 
 %feature("docstring")  cmf::river::Reach::set_state "void
 set_state(real newState)
@@ -7290,7 +7116,7 @@ Remove the connection. ";
 cmf::water::flux_node &target, cmf::math::Time t)
 
 Returns the actual flux between this and target (positive sign means
-\"from target into this\"). ";
+\"from target into this\") ";
 
 %feature("docstring")  cmf::river::Reach::flux3d_to "cmf::geometry::point flux3d_to(const cmf::water::flux_node &target,
 cmf::math::Time t) ";
@@ -7367,26 +7193,26 @@ typecode() const ";
 "virtual double get_channel_width(double depth) const
 
 Returns the width of the stream at a given depth \\\\begin{eqnarray*}
-/// w &=& const /// \\\\end{eqnarray*} ";
+w &=& const \\\\end{eqnarray*} ";
 
 %feature("docstring")
 cmf::river::RectangularReach::get_wetted_perimeter "virtual double
 get_wetted_perimeter(double depth) const
 
-Returns the wetted perimeter at a given depth \\\\begin{eqnarray*} ///
-P &=& 2 d + w /// \\\\end{eqnarray*} ";
+Returns the wetted perimeter at a given depth \\\\begin{eqnarray*} P
+&=& 2 d + w \\\\end{eqnarray*} ";
 
 %feature("docstring")  cmf::river::RectangularReach::get_depth "virtual double get_depth(double area) const
 
-Returns the depth at a given crossection area \\\\begin{eqnarray*} ///
-d &=& \\\\frac A w /// \\\\end{eqnarray*} ";
+Returns the depth at a given crossection area \\\\begin{eqnarray*} d
+&=& \\\\frac A w \\\\end{eqnarray*} ";
 
 %feature("docstring")
 cmf::river::RectangularReach::get_flux_crossection "virtual double
 get_flux_crossection(double depth) const
 
-Returns the crossection area at a given depth \\\\begin{eqnarray*} ///
-A &=& d w /// \\\\end{eqnarray*} ";
+Returns the crossection area at a given depth \\\\begin{eqnarray*} A
+&=& d w \\\\end{eqnarray*} ";
 
 %feature("docstring")  cmf::river::RectangularReach::RectangularReach
 "RectangularReach(double l, double width)
@@ -7416,15 +7242,14 @@ double V(double h) const ";
 qManning(double A, double slope) const
 
 Calculates the flow rate from a given water volume in the reach
-\\\\begin{eqnarray*} /// q_{Manning}&=& A R^{\\\\frac 2 3}
-\\\\sqrt{\\\\frac {\\\\Delta_z} n} \\\\\\\\ /// A &=& \\\\frac V l
+\\\\begin{eqnarray*} q_{Manning}&=& A R^{\\\\frac 2 3}
+\\\\sqrt{\\\\frac {\\\\Delta_z} n} \\\\\\\\ A &=& \\\\frac V l
 \\\\mbox{, (Crosssectional area of the wetted crossection, Volume per
-length)} \\\\\\\\ /// R &=& \\\\frac A {P(d)} \\\\\\\\ /// P(d) &=&
-\\\\mbox{ the perimeter of the wetted crosssection, a function of
-reach depth} \\\\\\\\ /// d(V) &=& \\\\mbox{ the depth of the reach a
-function of the volume} \\\\\\\\ /// \\\\Delta_z &=& \\\\frac{z_{max}
-- z_{min}}{l} \\\\mbox{ Slope of the reach} /// \\\\end{eqnarray*}
-Flow rate [m3/s]
+length)} \\\\\\\\ R &=& \\\\frac A {P(d)} \\\\\\\\ P(d) &=& \\\\mbox{
+the perimeter of the wetted crosssection, a function of reach depth}
+\\\\\\\\ d(V) &=& \\\\mbox{ the depth of the reach a function of the
+volume} \\\\\\\\ \\\\Delta_z &=& \\\\frac{z_{max} - z_{min}}{l}
+\\\\mbox{ Slope of the reach} \\\\end{eqnarray*} Flow rate [m3/s]
 
 Parameters:
 -----------
@@ -7506,11 +7331,11 @@ RetentionCurve* copy() const =0 ";
 
 Calculates flow according to the Richards equation
 
-\\\\begin{eqnarray*} /// q_{Richards} &=&
-\\\\frac{\\\\Delta\\\\Psi_{tot}}{d} K(\\\\theta) A \\\\\\\\ ///
-\\\\Psi_{tot} &= &\\\\Psi_{M}(\\\\theta) + h /// \\\\end{eqnarray*}
-where  $ \\\\Delta\\\\Psi_{tot} [m]$ is the difference of the total
-water potentials of the two soil layers
+\\\\begin{eqnarray*} q_{Richards} &=&
+\\\\frac{\\\\Delta\\\\Psi_{tot}}{d} K(\\\\theta) A \\\\\\\\
+\\\\Psi_{tot} &= &\\\\Psi_{M}(\\\\theta) + h \\\\end{eqnarray*} where
+$ \\\\Delta\\\\Psi_{tot} [m]$ is the difference of the total water
+potentials of the two soil layers
 
 $ d [m]$ is the distance between the two soil layers
 
@@ -7686,11 +7511,9 @@ Fehlberg (RKF54) method.
 
 C++ includes: RKFintegrator.h ";
 
+/*  Accuracy parameters  */
+
 /*  model time  */
-
-/*
-
-*/
 
 %feature("docstring")  cmf::math::RKFIntegrator::get_t "cmf::math::Time get_t() const
 
@@ -7708,13 +7531,9 @@ Returns the last time step. ";
 %feature("docstring")  cmf::math::RKFIntegrator::reset "virtual void
 reset()
 
-Resets any saved history (for multistep methods). ";
+Resets any saved history (for multistep methods) ";
 
 /*  Integrate  */
-
-/*
-
-*/
 
 %feature("docstring")  cmf::math::RKFIntegrator::integrate_until "void integrate_until(cmf::math::Time t_max, cmf::math::Time dt=Time(),
 bool reset=false)
@@ -7729,12 +7548,6 @@ t_max:   Time, the solver should run to
 dt:   Time step (may be omitted)
 
 reset:  If true, solver is reseted before integration starts ";
-
-/*  Accuracy parameters  */
-
-/*
-
-*/
 
 %feature("docstring")  cmf::math::RKFIntegrator::add_states "void
 add_states(cmf::math::StateVariableOwner &stateOwner)
@@ -7884,10 +7697,10 @@ The difference to BROOK90 is, that the actual transpiration is not
 calculated by plant resitance and potential gradient between plant and
 soil, but by an piecewise linear function of the pF value $ pF =
 \\\\log_{10}\\\\left(-\\\\Psi [hPa]\\\\right) $: \\\\[
-\\\\frac{T_{act}}{T_{pot}} = \\\\left\\\\{\\\\begin{array}{cl} /// 1 &
-\\\\mbox{if $pF \\\\le 3.35$} \\\\\\\\ /// \\\\frac{pF - 4.2}{3.35 -
-4.2} & \\\\mbox{if $pF \\\\in [3.35 .. 4.2] $} \\\\\\\\ /// 0 &
-\\\\mbox{if $pF \\\\ge 4.2$} \\\\end{array}\\\\right. \\\\]
+\\\\frac{T_{act}}{T_{pot}} = \\\\left\\\\{\\\\begin{array}{cl} 1 &
+\\\\mbox{if $pF \\\\le 3.35$} \\\\\\\\ \\\\frac{pF - 4.2}{3.35 - 4.2}
+& \\\\mbox{if $pF \\\\in [3.35 .. 4.2] $} \\\\\\\\ 0 & \\\\mbox{if $pF
+\\\\ge 4.2$} \\\\end{array}\\\\right. \\\\]
 
 Calculation procedure, as in BROOK 90:
 
@@ -7931,12 +7744,16 @@ Calculates all the values. ";
 %feature("docstring")
 cmf::upslope::ET::ShuttleworthWallace::transp_from_layer "virtual
 double transp_from_layer(cmf::upslope::SoilLayer::ptr sl,
-cmf::math::Time t) ";
+cmf::math::Time t)
+
+returns the transpiration rate from one layer in m3/day ";
 
 %feature("docstring")
 cmf::upslope::ET::ShuttleworthWallace::evap_from_layer "virtual
 double evap_from_layer(cmf::upslope::SoilLayer::ptr sl,
-cmf::math::Time t) ";
+cmf::math::Time t)
+
+returns the soil evaporation rate from one layer in m3/day ";
 
 %feature("docstring")
 cmf::upslope::ET::ShuttleworthWallace::evap_from_openwater "virtual
@@ -7965,35 +7782,6 @@ cmf::upslope::ET::ShuttleworthWallace::ShuttleworthWallace "ShuttleworthWallace(
 
 Calculates the transpiration and the soil evaporation from dry
 surfaces. ";
-
-%feature("docstring")
-cmf::upslope::ET::ShuttleworthWallace::transp_from_layer "virtual
-double transp_from_layer(cmf::upslope::SoilLayer::ptr, cmf::math::Time
-t)=0
-
-returns the transpiration rate from one layer in m3/day ";
-
-%feature("docstring")
-cmf::upslope::ET::ShuttleworthWallace::evap_from_layer "virtual
-double evap_from_layer(cmf::upslope::SoilLayer::ptr, cmf::math::Time
-t)=0
-
-returns the soil evaporation rate from one layer in m3/day ";
-
-%feature("docstring")
-cmf::upslope::ET::ShuttleworthWallace::evap_from_openwater "virtual
-double evap_from_openwater(cmf::river::OpenWaterStorage::ptr,
-cmf::math::Time)=0 ";
-
-%feature("docstring")
-cmf::upslope::ET::ShuttleworthWallace::evap_from_canopy "virtual
-double evap_from_canopy(cmf::water::WaterStorage::ptr,
-cmf::math::Time)=0 ";
-
-%feature("docstring")
-cmf::upslope::ET::ShuttleworthWallace::evap_from_snow "virtual double
-evap_from_snow(cmf::water::WaterStorage::ptr snow, cmf::math::Time
-t)=0 ";
 
 
 // File: classcmf_1_1upslope_1_1connections_1_1_simple_tindex_snow_melt.xml
@@ -8085,9 +7873,9 @@ cmf::upslope::connections::SimpleTindexSnowMelt::short_string "std::string short
 
 Calculates flow according to a simplified Richards equation
 
-\\\\begin{eqnarray*} /// q_{Richards} &=& (K(\\\\theta) -
-K(\\\\theta_r)) A \\\\\\\\ /// \\\\end{eqnarray*} where  $ d [m]$ is
-the distance between the two soil layers
+\\\\begin{eqnarray*} q_{Richards} &=& (K(\\\\theta) - K(\\\\theta_r))
+A \\\\\\\\ \\\\end{eqnarray*} where  $ d [m]$ is the distance between
+the two soil layers
 
 $ K(\\\\theta)\\\\left[\\\\frac m{day}\\\\right]$ is the geometric
 mean conductivity (see SoilType::Kunsat)
@@ -8442,10 +8230,6 @@ C++ includes: SoilLayer.h ";
 
 /*  Overrides of flux_node  */
 
-/*
-
-*/
-
 %feature("docstring")  cmf::upslope::SoilLayer::RecalcFluxes "virtual
 bool RecalcFluxes(cmf::math::Time t)
 
@@ -8503,7 +8287,9 @@ Returns the actual volumetric water content of the water storage. ";
 void set_theta(real Value) ";
 
 %feature("docstring")  cmf::upslope::SoilLayer::get_volume "virtual
-real get_volume() const ";
+real get_volume() const
+
+Returns the volume of water in this storage in m3 ";
 
 %feature("docstring")  cmf::upslope::SoilLayer::get_abs_errtol "real
 get_abs_errtol(real rel_errtol) const ";
@@ -8589,34 +8375,26 @@ HorizontalLayers:  If true, the layers are assumed to be parallel to
 the gravitational potential, otherwise they are assumed to be parallel
 to the ground topography ";
 
-%feature("docstring")  cmf::upslope::SoilLayer::get_abs_errtol "real
-get_abs_errtol(real rel_errtol) const ";
-
-%feature("docstring")  cmf::upslope::SoilLayer::get_abs_errtol "virtual real get_abs_errtol(real rel_errtol) const ";
-
 %feature("docstring")
 cmf::upslope::SoilLayer::get_state_variable_content "char
 get_state_variable_content() const
 
 A character indicating the integrated variable (either 'V' for Volume
-or 'h' for head). ";
+or 'h' for head) ";
 
 %feature("docstring")
 cmf::upslope::SoilLayer::set_state_variable_content "void
 set_state_variable_content(char content)
 
 A character indicating the integrated variable (either 'V' for Volume
-or 'h' for head). ";
+or 'h' for head) ";
 
 %feature("docstring")  cmf::upslope::SoilLayer::is_storage "virtual
 bool is_storage() const
 
 Returns true, since this is a storage. ";
 
-%feature("docstring")  cmf::upslope::SoilLayer::get_states "cmf::math::StateVariableList get_states() ";
-
-%feature("docstring")  cmf::upslope::SoilLayer::get_states "virtual
-StateVariableList get_states()=0
+%feature("docstring")  cmf::upslope::SoilLayer::get_states "cmf::math::StateVariableList get_states()
 
 Add the state variables, owned by an object derived from
 StateVariableOwner, to the given vector. ";
@@ -8636,48 +8414,27 @@ Returns the concentration of the given solute. ";
 %feature("docstring")  cmf::upslope::SoilLayer::conc "real
 conc(cmf::math::Time t, const cmf::water::solute &_Solute) const
 
-Returns the current WaterQuality (concentration of all solutes). ";
+Returns the current WaterQuality (concentration of all solutes) ";
 
 %feature("docstring")  cmf::upslope::SoilLayer::conc "void conc(const
 cmf::water::solute &_Solute, real NewConcetration)
 
 Sets a new concentration. ";
 
-%feature("docstring")  cmf::upslope::SoilLayer::get_volume "virtual
-real get_volume() const
-
-Returns the volume of water in this storage in m3 ";
-
-%feature("docstring")  cmf::upslope::SoilLayer::get_potential "virtual real get_potential() const
-
-Returns the water potential of the node in m waterhead The base class
-water storage always returns the height of the location ";
-
 %feature("docstring")  cmf::upslope::SoilLayer::set_volume "virtual
 void set_volume(real newwatercontent)
 
 Sets the volume of water in this storage in m3 ";
 
-%feature("docstring")  cmf::upslope::SoilLayer::set_potential "virtual void set_potential(real newpotential) ";
-
 %feature("docstring")  cmf::upslope::SoilLayer::dxdt "virtual real
-dxdt(const cmf::math::Time &time) ";
-
-%feature("docstring")  cmf::upslope::SoilLayer::dxdt "virtual real
-dxdt(const cmf::math::Time &time)=0
+dxdt(const cmf::math::Time &time)
 
 Returns the derivate of the state variable at time time. ";
-
-%feature("docstring")  cmf::upslope::SoilLayer::get_state "real
-get_state() const ";
 
 %feature("docstring")  cmf::upslope::SoilLayer::get_state "real
 get_state() const
 
 Returns the current state of the variable. ";
-
-%feature("docstring")  cmf::upslope::SoilLayer::set_state "void
-set_state(real newState) ";
 
 %feature("docstring")  cmf::upslope::SoilLayer::set_state "void
 set_state(real newState)
@@ -8707,7 +8464,7 @@ Remove the connection. ";
 flux_to(const cmf::water::flux_node &target, cmf::math::Time t)
 
 Returns the actual flux between this and target (positive sign means
-\"from target into this\"). ";
+\"from target into this\") ";
 
 %feature("docstring")  cmf::upslope::SoilLayer::flux3d_to "cmf::geometry::point flux3d_to(const cmf::water::flux_node &target,
 cmf::math::Time t) ";
@@ -8756,7 +8513,7 @@ const ";
 %feature("docstring")  cmf::water::solute_vector::solute_vector "solute_vector(std::string str)
 
 Creates a solute vector from solute names, separated by whitespace.
-E.g. solutes=solute_vector(\"dO18 dH2\"). ";
+E.g. solutes= solute_vector(\"dO18 dH2\") ";
 
 %feature("docstring")  cmf::water::solute_vector::begin "const_iterator begin() const ";
 
@@ -8772,16 +8529,16 @@ end() const ";
 A class for the storage of any tracer. The state is the amount (mol,
 kg etc. see cmf::water) of the tracer in the storage.
 
-The derivative function is given by: \\\\begin{eqnarray*} ///
+The derivative function is given by: \\\\begin{eqnarray*}
 \\\\frac{dX}{dt}&=&\\\\sum_{f=1}^{F}\\\\left( q_f [X]_f\\\\right) +
-X_{in} - r^-X \\\\left[\\\\frac{mol}{day}\\\\right]\\\\\\\\ /// F&=&
-\\\\mbox{Number of fluxes in water storage} \\\\\\\\ /// q_f&=&
-\\\\mbox{Water flux in } \\\\frac{m^3}{day} \\\\\\\\ ///
+X_{in} - r^-X \\\\left[\\\\frac{mol}{day}\\\\right]\\\\\\\\ F&=&
+\\\\mbox{Number of fluxes in water storage} \\\\\\\\ q_f&=&
+\\\\mbox{Water flux in } \\\\frac{m^3}{day} \\\\\\\\
 \\\\left[X\\\\right]_f &=& \\\\mbox{Concentration of solute X in flux
-}q_f \\\\mbox{ in } \\\\frac{mol}{m^3} \\\\\\\\ /// X_{in} &=&
-\\\\mbox{Absolute source or sink term} \\\\frac{mol}{day} \\\\\\\\ ///
-r^- &=& \\\\mbox{Decay rate} \\\\frac 1{day} \\\\\\\\ /// V &=&
-\\\\mbox{Volume of water in water storage }\\\\left[m^3\\\\right] ///
+}q_f \\\\mbox{ in } \\\\frac{mol}{m^3} \\\\\\\\ X_{in} &=&
+\\\\mbox{Absolute source or sink term} \\\\frac{mol}{day} \\\\\\\\ r^-
+&=& \\\\mbox{Decay rate} \\\\frac 1{day} \\\\\\\\ V &=&
+\\\\mbox{Volume of water in water storage }\\\\left[m^3\\\\right]
 \\\\end{eqnarray*}
 
 C++ includes: SoluteStorage.h ";
@@ -8857,15 +8614,7 @@ C++ includes: WaterSoluteIntegrator.h ";
 
 /*  Accuracy parameters  */
 
-/*
-
-*/
-
 /*  model time  */
-
-/*
-
-*/
 
 %feature("docstring")  cmf::math::SoluteWaterIntegrator::get_t "cmf::math::Time get_t() const
 
@@ -8881,10 +8630,6 @@ Sets the current model time. ";
 Returns the last time step. ";
 
 /*  Integrate  */
-
-/*
-
-*/
 
 %feature("docstring")
 cmf::math::SoluteWaterIntegrator::integrate_until "void
@@ -8982,7 +8727,7 @@ states:  States to be added to the integrators ";
 
 %feature("docstring")  cmf::math::SoluteWaterIntegrator::reset "virtual void reset()
 
-Resets the integrators (only needed for multistep methods). ";
+Resets the integrators (only needed for multistep methods) ";
 
 %feature("docstring")  cmf::math::SoluteWaterIntegrator::copy_states "void copy_states(num_array &destination) const
 
@@ -9364,9 +9109,9 @@ A tipping bucket percolation approach similar to the approach in SWAT
 
 \\\\begin{eqnarray*} q_{perc} &=&
 V_{H_2O,drain}\\\\left(1-e^{-\\\\frac 1{-TT_{perc}}}\\\\right)
-\\\\\\\\ /// TT_{perc} &=& \\\\frac{V_{pores,drain} - V_{field
-cap.}}{K_{sat}} \\\\\\\\ /// V_{x,drain} &=& V_{x,drain} - V_{field
-cap.} \\\\end{eqnarray*}
+\\\\\\\\ TT_{perc} &=& \\\\frac{V_{pores,drain} - V_{field
+cap.}}{K_{sat}} \\\\\\\\ V_{x,drain} &=& V_{x,drain} - V_{field cap.}
+\\\\end{eqnarray*}
 
 C++ includes: Percolation.h ";
 
@@ -9471,23 +9216,23 @@ typecode() const ";
 %feature("docstring")  cmf::river::SWATReachType::get_channel_width "virtual double get_channel_width(double depth) const
 
 Calculates the flow width from a given actual depth [m] using the
-actual IChannel geometry \\\\begin{eqnarray*} /// \\\\mbox{If }
-d\\\\le d_{IChannel} && \\\\\\\\ /// w &=& w_{bottom} + 2
-\\\\Delta_{bank} d \\\\\\\\ /// \\\\mbox{else, } && \\\\mbox{if the
-river floods the flood plain} \\\\\\\\ /// w &=& w_{bank} + 2
-\\\\Delta_{Floodplain} (d-d_{IChannel} \\\\\\\\ /// \\\\end{eqnarray*}
-See:  SWATtheoDoc eq. 7:1.1.3 ";
+actual IChannel geometry \\\\begin{eqnarray*} \\\\mbox{If } d\\\\le
+d_{IChannel} && \\\\\\\\ w &=& w_{bottom} + 2 \\\\Delta_{bank} d
+\\\\\\\\ \\\\mbox{else, } && \\\\mbox{if the river floods the flood
+plain} \\\\\\\\ w &=& w_{bank} + 2 \\\\Delta_{Floodplain}
+(d-d_{IChannel} \\\\\\\\ \\\\end{eqnarray*} See:  SWATtheoDoc eq.
+7:1.1.3 ";
 
 %feature("docstring")  cmf::river::SWATReachType::get_wetted_perimeter
 "virtual double get_wetted_perimeter(double depth) const
 
 Calculates the wetted perimeter from a given actual depth [m] using
-the actual IChannel geometry \\\\begin{eqnarray*} /// \\\\mbox{If }
-d\\\\le d_{IChannel} && \\\\\\\\ /// P &=& w_{bottom} + 2 \\\\sqrt{1+
-{\\\\Delta_{bank}}^2} d \\\\\\\\ /// \\\\mbox{else, } && \\\\mbox{if
-the river floods the flood plain} \\\\\\\\ /// P &=& P(d_{IChannel} +
-2 \\\\sqrt{1+ {\\\\Delta_{flood\\\\ plain}}^2} (d-d_{IChannel})
-\\\\\\\\ /// \\\\end{eqnarray*} See:  SWATtheoDoc eq. 7:1.1.5
+the actual IChannel geometry \\\\begin{eqnarray*} \\\\mbox{If }
+d\\\\le d_{IChannel} && \\\\\\\\ P &=& w_{bottom} + 2 \\\\sqrt{1+
+{\\\\Delta_{bank}}^2} d \\\\\\\\ \\\\mbox{else, } && \\\\mbox{if the
+river floods the flood plain} \\\\\\\\ P &=& P(d_{IChannel} + 2
+\\\\sqrt{1+ {\\\\Delta_{flood\\\\ plain}}^2} (d-d_{IChannel}) \\\\\\\\
+\\\\end{eqnarray*} See:  SWATtheoDoc eq. 7:1.1.5
 
 Parameters:
 -----------
@@ -9498,14 +9243,14 @@ depth:  Actual depth of the reach [m] ";
 double get_depth(double area) const
 
 Calculates the actual depth of the reach using the IChannel geometry
-\\\\begin{eqnarray*} /// d &=& \\\\sqrt{\\\\frac{A}{\\\\Delta_{bank}}
-+ \\\\frac{{w_{bottom}}^2}{4 {\\\\Delta_{bank}}^2}} -
-\\\\frac{w_{bottom}}{2 \\\\Delta_{bank}} \\\\\\\\ /// \\\\mbox{If }
-d>d_{IChannel} &&\\\\\\\\ ///
+\\\\begin{eqnarray*} d &=& \\\\sqrt{\\\\frac{A}{\\\\Delta_{bank}} +
+\\\\frac{{w_{bottom}}^2}{4 {\\\\Delta_{bank}}^2}} -
+\\\\frac{w_{bottom}}{2 \\\\Delta_{bank}} \\\\\\\\ \\\\mbox{If }
+d>d_{IChannel} &&\\\\\\\\
 d&=&d_{IChannel}+\\\\sqrt{\\\\frac{A-A(d_{IChannel})}{\\\\Delta_{flood\\\\
 plain}} + \\\\frac{{w(d_{IChannel})}^2}{4 {\\\\Delta_{flood\\\\
 plain}}^2}} - \\\\frac{w(d_{IChannel})}{2 \\\\Delta_{flood\\\\ plain}}
-\\\\\\\\ /// \\\\end{eqnarray*} See:  SWATtheoDoc eq. 7:1.2.4
+\\\\\\\\ \\\\end{eqnarray*} See:  SWATtheoDoc eq. 7:1.2.4
 
 get_depth of the reach [m]
 
@@ -9520,13 +9265,13 @@ V/l, where V is the stored volume and l is the reach length ";
 
 Calculates the wetted area from a given depth using the IChannel
 geometry. In most cases use get_flux_crossection=V/l, where V is the
-stored volume and l is the reach length \\\\begin{eqnarray*} ///
-\\\\mbox{If } d>d_{IChannel} &&\\\\\\\\ /// A &=& \\\\left(w_{bottom}
-+ \\\\Delta_{bank} d\\\\right) d \\\\\\\\ /// \\\\mbox{else, } &&
-\\\\mbox{if the river floods the flood plain} \\\\\\\\ /// A &=&
+stored volume and l is the reach length \\\\begin{eqnarray*}
+\\\\mbox{If } d>d_{IChannel} &&\\\\\\\\ A &=& \\\\left(w_{bottom} +
+\\\\Delta_{bank} d\\\\right) d \\\\\\\\ \\\\mbox{else, } &&
+\\\\mbox{if the river floods the flood plain} \\\\\\\\ A &=&
 A(d_{IChannel}) + \\\\left(w(d_{IChannel} + \\\\Delta_{flood\\\\
 plain} \\\\left(d-d_{IChannel}\\\\right)\\\\right) (d-d_{IChannel})
-\\\\\\\\ /// \\\\end{eqnarray*} See:  SWATtheoDoc eq. 7:1.1.4
+\\\\\\\\ \\\\end{eqnarray*} See:  SWATtheoDoc eq. 7:1.1.4
 
 Wetted area of a river cross section [m2]
 
@@ -9577,15 +9322,14 @@ V(double h) const ";
 qManning(double A, double slope) const
 
 Calculates the flow rate from a given water volume in the reach
-\\\\begin{eqnarray*} /// q_{Manning}&=& A R^{\\\\frac 2 3}
-\\\\sqrt{\\\\frac {\\\\Delta_z} n} \\\\\\\\ /// A &=& \\\\frac V l
+\\\\begin{eqnarray*} q_{Manning}&=& A R^{\\\\frac 2 3}
+\\\\sqrt{\\\\frac {\\\\Delta_z} n} \\\\\\\\ A &=& \\\\frac V l
 \\\\mbox{, (Crosssectional area of the wetted crossection, Volume per
-length)} \\\\\\\\ /// R &=& \\\\frac A {P(d)} \\\\\\\\ /// P(d) &=&
-\\\\mbox{ the perimeter of the wetted crosssection, a function of
-reach depth} \\\\\\\\ /// d(V) &=& \\\\mbox{ the depth of the reach a
-function of the volume} \\\\\\\\ /// \\\\Delta_z &=& \\\\frac{z_{max}
-- z_{min}}{l} \\\\mbox{ Slope of the reach} /// \\\\end{eqnarray*}
-Flow rate [m3/s]
+length)} \\\\\\\\ R &=& \\\\frac A {P(d)} \\\\\\\\ P(d) &=& \\\\mbox{
+the perimeter of the wetted crosssection, a function of reach depth}
+\\\\\\\\ d(V) &=& \\\\mbox{ the depth of the reach a function of the
+volume} \\\\\\\\ \\\\Delta_z &=& \\\\frac{z_{max} - z_{min}}{l}
+\\\\mbox{ Slope of the reach} \\\\end{eqnarray*} Flow rate [m3/s]
 
 Parameters:
 -----------
@@ -9676,7 +9420,7 @@ Remove the connection. ";
 flux_to(const cmf::water::flux_node &target, cmf::math::Time t)
 
 Returns the actual flux between this and target (positive sign means
-\"from target into this\"). ";
+\"from target into this\") ";
 
 %feature("docstring")  cmf::water::SystemBridge::flux3d_to "cmf::geometry::point flux3d_to(const cmf::water::flux_node &target,
 cmf::math::Time t) ";
@@ -9956,15 +9700,11 @@ C++ includes: time.h ";
 
 /*  Constructors  */
 
-/*
-
-*/
-
 %feature("docstring")  cmf::math::Time::Time "Time(int day, int
 month, int year, int hour=0, int minute=0, int second=0, int ms=0)
 
 Construction from date and stores the time as Excel-Time (0 =
-31.12.1899 0:00:00). ";
+31.12.1899 0:00:00) ";
 
 %feature("docstring")  cmf::math::Time::Time "Time(Date date)
 
@@ -9979,10 +9719,6 @@ Copy constructor. ";
 Standard constructor. ";
 
 /*  Time unit conversion  */
-
-/*
-
-*/
 
 %feature("docstring")  cmf::math::Time::AsDays "double AsDays() const
 
@@ -10021,20 +9757,12 @@ const ";
 
 /*  Arithmetic operators  */
 
-/*
-
-*/
-
 %feature("docstring")  cmf::math::Time::times_in "long long
 times_in(const Time &t1) const
 
 Returns the number of times this is included in t1. ";
 
 /*  Boolean Operators  */
-
-/*
-
-*/
 
 
 // File: classcmf_1_1math_1_1timeseries.xml
@@ -10058,7 +9786,7 @@ C++ includes: timeseries.h ";
 
 /*  Operators  */
 
-/*  Binary operators defined as free operators:
+/* Binary operators defined as free operators:
 
 x = {+,-,*,/}
 
@@ -10145,7 +9873,7 @@ Last date of measurements. ";
 interpolationpower() const
 
 Method for the interpolation (0 - Nearest neighbor, 1- linear, 2 -
-cubic spline (not implemented yet). ";
+cubic spline (not implemented yet) ";
 
 %feature("docstring")  cmf::math::timeseries::add "void add(double
 Value)
@@ -10172,7 +9900,7 @@ Number of items in the timeseries. ";
 %feature("docstring")  cmf::math::timeseries::count_values "int
 count_values() const
 
-Number of valid values (=size - # of NaN's). ";
+Number of valid values (=size - # of NaN's) ";
 
 %feature("docstring")  cmf::math::timeseries::timeseries "timeseries(cmf::math::Time begin=cmf::math::Time(), cmf::math::Time
 step=cmf::math::day, int interpolationmethod=1, size_t count=0)
@@ -10222,6 +9950,80 @@ remove_nodata(double nodata_value) ";
 
 
 // File: structcmf_1_1math_1_1timeseries_1_1timeseries__data.xml
+
+
+// File: classcmf_1_1upslope_1_1_e_t_1_1timeseries_e_tpot.xml
+%feature("docstring") cmf::upslope::ET::timeseriesETpot "
+
+A ET connection for timeseries driven ETpot
+
+C++ includes: ET.h ";
+
+%feature("docstring")  cmf::upslope::ET::timeseriesETpot::GetETpot "real GetETpot(cmf::math::Time t) const ";
+
+%feature("docstring")
+cmf::upslope::ET::timeseriesETpot::timeseriesETpot "timeseriesETpot(cmf::upslope::SoilLayer::ptr source,
+cmf::water::flux_node::ptr ET_target, cmf::math::timeseries
+ETpot_values) ";
+
+%feature("docstring")  cmf::upslope::ET::timeseriesETpot::q "real
+q(const flux_node &inquirer, cmf::math::Time t)
+
+Returns the current flux through a connection. Negative signs mean out
+of the inquirer, positive are inflows to the inquirer. ";
+
+%feature("docstring")  cmf::upslope::ET::timeseriesETpot::get_ptr "ptr get_ptr() const ";
+
+%feature("docstring")  cmf::upslope::ET::timeseriesETpot::left_node "flux_node::ptr left_node() const
+
+Returns the left node of this connection. ";
+
+%feature("docstring")  cmf::upslope::ET::timeseriesETpot::right_node "flux_node::ptr right_node() const
+
+returns the right node of this connection ";
+
+%feature("docstring")  cmf::upslope::ET::timeseriesETpot::kill_me "bool kill_me()
+
+Deregisters this connection from its nodes. Returns true if only one
+reference is left. ";
+
+%feature("docstring")  cmf::upslope::ET::timeseriesETpot::refresh "void refresh(cmf::math::Time t)
+
+Performes a new calculation of the flux. ";
+
+%feature("docstring")  cmf::upslope::ET::timeseriesETpot::get_target "flux_node::ptr get_target(const flux_node &inquirer)
+
+Returns the other end of a connection than the asking end. ";
+
+%feature("docstring")  cmf::upslope::ET::timeseriesETpot::get_target "flux_node::ptr get_target(int index) const
+
+With index 0, the left node is returned, with index 1 the right node
+of the connection. ";
+
+%feature("docstring")
+cmf::upslope::ET::timeseriesETpot::exchange_target "void
+exchange_target(flux_node::ptr oldtarget, flux_node::ptr newTarget) ";
+
+%feature("docstring")  cmf::upslope::ET::timeseriesETpot::conc "real
+conc(cmf::math::Time t, const cmf::water::solute &_Solute)
+
+Returns the concentration of the flux. If not overridden, it returns
+the concentration of the source of the flux (direction depending) ";
+
+%feature("docstring")
+cmf::upslope::ET::timeseriesETpot::get_tracer_filter "real
+get_tracer_filter()
+
+A value ranging from 0 to 1. ";
+
+%feature("docstring")
+cmf::upslope::ET::timeseriesETpot::set_tracer_filter "void
+set_tracer_filter(real value) ";
+
+%feature("docstring")  cmf::upslope::ET::timeseriesETpot::to_string "std::string to_string() const ";
+
+%feature("docstring")  cmf::upslope::ET::timeseriesETpot::short_string
+"std::string short_string() const ";
 
 
 // File: classcmf_1_1upslope_1_1connections_1_1_topographic_gradient_darcy.xml
@@ -10469,26 +10271,26 @@ typecode() const ";
 "virtual double get_channel_width(double depth) const
 
 Returns the width of the stream at a given depth \\\\begin{eqnarray*}
-/// w &=& 2 \\\\Delta\\\\ d /// \\\\end{eqnarray*} ";
+w &=& 2 \\\\Delta\\\\ d \\\\end{eqnarray*} ";
 
 %feature("docstring")
 cmf::river::TriangularReach::get_wetted_perimeter "virtual double
 get_wetted_perimeter(double depth) const
 
-Returns the wetted perimeter at a given depth \\\\begin{eqnarray*} ///
-P &=& 2 d \\\\sqrt{1+\\\\Delta^2} /// \\\\end{eqnarray*} ";
+Returns the wetted perimeter at a given depth \\\\begin{eqnarray*} P
+&=& 2 d \\\\sqrt{1+\\\\Delta^2} \\\\end{eqnarray*} ";
 
 %feature("docstring")  cmf::river::TriangularReach::get_depth "virtual double get_depth(double area) const
 
-Returns the depth at a given crossection area \\\\begin{eqnarray*} ///
-d &=& \\\\sqrt{\\\\frac{A}{\\\\Delta}} /// \\\\end{eqnarray*} ";
+Returns the depth at a given crossection area \\\\begin{eqnarray*} d
+&=& \\\\sqrt{\\\\frac{A}{\\\\Delta}} \\\\end{eqnarray*} ";
 
 %feature("docstring")
 cmf::river::TriangularReach::get_flux_crossection "virtual double
 get_flux_crossection(double depth) const
 
-Returns the crossection area at a given depth \\\\begin{eqnarray*} ///
-A &=& d^2 \\\\Delta /// \\\\end{eqnarray*} ";
+Returns the crossection area at a given depth \\\\begin{eqnarray*} A
+&=& d^2 \\\\Delta \\\\end{eqnarray*} ";
 
 %feature("docstring")  cmf::river::TriangularReach::TriangularReach "TriangularReach(double l, double bankSlope=2)
 
@@ -10517,15 +10319,14 @@ V(double h) const ";
 qManning(double A, double slope) const
 
 Calculates the flow rate from a given water volume in the reach
-\\\\begin{eqnarray*} /// q_{Manning}&=& A R^{\\\\frac 2 3}
-\\\\sqrt{\\\\frac {\\\\Delta_z} n} \\\\\\\\ /// A &=& \\\\frac V l
+\\\\begin{eqnarray*} q_{Manning}&=& A R^{\\\\frac 2 3}
+\\\\sqrt{\\\\frac {\\\\Delta_z} n} \\\\\\\\ A &=& \\\\frac V l
 \\\\mbox{, (Crosssectional area of the wetted crossection, Volume per
-length)} \\\\\\\\ /// R &=& \\\\frac A {P(d)} \\\\\\\\ /// P(d) &=&
-\\\\mbox{ the perimeter of the wetted crosssection, a function of
-reach depth} \\\\\\\\ /// d(V) &=& \\\\mbox{ the depth of the reach a
-function of the volume} \\\\\\\\ /// \\\\Delta_z &=& \\\\frac{z_{max}
-- z_{min}}{l} \\\\mbox{ Slope of the reach} /// \\\\end{eqnarray*}
-Flow rate [m3/s]
+length)} \\\\\\\\ R &=& \\\\frac A {P(d)} \\\\\\\\ P(d) &=& \\\\mbox{
+the perimeter of the wetted crosssection, a function of reach depth}
+\\\\\\\\ d(V) &=& \\\\mbox{ the depth of the reach a function of the
+volume} \\\\\\\\ \\\\Delta_z &=& \\\\frac{z_{max} - z_{min}}{l}
+\\\\mbox{ Slope of the reach} \\\\end{eqnarray*} Flow rate [m3/s]
 
 Parameters:
 -----------
@@ -10541,16 +10342,16 @@ slope:  The slope of the reach [m/m] ";
 Provides the use of the Van Genuchten - Mualem retention curve (Van
 Genuchten 1980)
 
-Head - moisture realtionship: \\\\begin{eqnarray*} /// W(\\\\theta)
-&=& \\\\frac{\\\\theta - \\\\theta_r}{\\\\theta_s - \\\\theta_r}
-\\\\\\\\ /// K(W) &=& K_{sat} \\\\sqrt{W}
-\\\\left(\\\\left(1-w^{1/m}\\\\right)^m\\\\right)^2 \\\\\\\\ /// m &=&
-1-\\\\frac 1 n \\\\\\\\ /// \\\\Psi(W) &=& 0.01 \\\\frac{m}{cm}
+Head - moisture relationship: \\\\begin{eqnarray*} W(\\\\theta) &=&
+\\\\frac{\\\\theta - \\\\theta_r}{\\\\theta_s - \\\\theta_r} \\\\\\\\
+K(W) &=& K_{sat} \\\\sqrt{W}
+\\\\left(\\\\left(1-w^{1/m}\\\\right)^m\\\\right)^2 \\\\\\\\ m &=&
+1-\\\\frac 1 n \\\\\\\\ \\\\Psi(W) &=& 0.01 \\\\frac{m}{cm}
 \\\\frac{{\\\\left(1-{W}^{\\\\frac{1}{m}}\\\\right)
 }^{\\\\frac{1}{n}}}{\\\\alpha\\\\,{W}^{\\\\frac{1}{m\\\\,n}}} \\\\\\\\
-/// W(\\\\Psi) &=&
+W(\\\\Psi) &=&
 \\\\left(1+\\\\left(\\\\alpha\\\\,100\\\\frac{cm}{m}\\\\Psi\\\\right)^n\\\\right)^{-m}
-/// \\\\end{eqnarray*} where:  $K$ is the conductivity in $\\\\frac m
+\\\\end{eqnarray*} where:  $K$ is the conductivity in $\\\\frac m
 {day}$
 
 $W$ is the wetness (Volume of soil water per volume of pores)
@@ -10605,10 +10406,8 @@ Returns the thickness of a soil column with a certain pore volume. ";
 %feature("docstring")  cmf::upslope::VanGenuchtenMualem::copy "VanGenuchtenMualem* copy() const ";
 
 %feature("docstring")
-cmf::upslope::VanGenuchtenMualem::VanGenuchtenMualem "VanGenuchtenMualem() ";
-
-%feature("docstring")
-cmf::upslope::VanGenuchtenMualem::VanGenuchtenMualem "VanGenuchtenMualem(real Ksat, real phi, real alpha, real n, real m=-1)
+cmf::upslope::VanGenuchtenMualem::VanGenuchtenMualem "VanGenuchtenMualem(real Ksat=15, real phi=0.5, real alpha=0.2178, real
+n=1.211, real m=-1)
 
 Creates a van Genuchten-Mualem retention curve
 
@@ -10849,9 +10648,9 @@ A state variable for the storage of water
 
 A class for the storage of water. The state is the volume of water
 stored in $m^3$ The derivative function is given by:
-\\\\begin{eqnarray*} /// \\\\frac{dV}{dt}&=&\\\\sum_{f=1}^{F} q_f
-\\\\\\\\ /// F&=& \\\\mbox{Number of fluxes in water storage} \\\\\\\\
-/// q_f&=& \\\\mbox{Water flux in } \\\\frac{m^3}{day} \\\\\\\\ ///
+\\\\begin{eqnarray*} \\\\frac{dV}{dt}&=&\\\\sum_{f=1}^{F} q_f \\\\\\\\
+F&=& \\\\mbox{Number of fluxes in water storage} \\\\\\\\ q_f&=&
+\\\\mbox{Water flux in } \\\\frac{m^3}{day} \\\\\\\\
 \\\\end{eqnarray*}
 
 Todo Check the head based state mode
@@ -10859,10 +10658,6 @@ Todo Check the head based state mode
 C++ includes: WaterStorage.h ";
 
 /*  Overrides of flux_node  */
-
-/*
-
-*/
 
 %feature("docstring")  cmf::water::WaterStorage::RecalcFluxes "virtual bool RecalcFluxes(cmf::math::Time t)
 
@@ -10883,21 +10678,24 @@ cmf::water::WaterStorage::get_state_variable_content "char
 get_state_variable_content() const
 
 A character indicating the integrated variable (either 'V' for Volume
-or 'h' for head). ";
+or 'h' for head) ";
 
 %feature("docstring")
 cmf::water::WaterStorage::set_state_variable_content "void
 set_state_variable_content(char content)
 
 A character indicating the integrated variable (either 'V' for Volume
-or 'h' for head). ";
+or 'h' for head) ";
 
 %feature("docstring")  cmf::water::WaterStorage::is_storage "virtual
 bool is_storage() const
 
 Returns true, since this is a storage. ";
 
-%feature("docstring")  cmf::water::WaterStorage::get_states "cmf::math::StateVariableList get_states() ";
+%feature("docstring")  cmf::water::WaterStorage::get_states "cmf::math::StateVariableList get_states()
+
+Add the state variables, owned by an object derived from
+StateVariableOwner, to the given vector. ";
 
 %feature("docstring")  cmf::water::WaterStorage::WaterStorage "WaterStorage(const cmf::project &project, const std::string
 &Name=\"\", double InitialState=0)
@@ -10928,7 +10726,7 @@ Returns the concentration of the given solute. ";
 %feature("docstring")  cmf::water::WaterStorage::conc "real
 conc(cmf::math::Time t, const cmf::water::solute &_Solute) const
 
-Returns the current WaterQuality (concentration of all solutes). ";
+Returns the current WaterQuality (concentration of all solutes) ";
 
 %feature("docstring")  cmf::water::WaterStorage::conc "void
 conc(const cmf::water::solute &_Solute, real NewConcetration)
@@ -10953,16 +10751,7 @@ Sets the volume of water in this storage in m3 ";
 %feature("docstring")  cmf::water::WaterStorage::set_potential "virtual void set_potential(real newpotential) ";
 
 %feature("docstring")  cmf::water::WaterStorage::dxdt "virtual real
-dxdt(const cmf::math::Time &time) ";
-
-%feature("docstring")  cmf::water::WaterStorage::get_state "real
-get_state() const ";
-
-%feature("docstring")  cmf::water::WaterStorage::set_state "void
-set_state(real newState) ";
-
-%feature("docstring")  cmf::water::WaterStorage::dxdt "virtual real
-dxdt(const cmf::math::Time &time)=0
+dxdt(const cmf::math::Time &time)
 
 Returns the derivate of the state variable at time time. ";
 
@@ -10975,14 +10764,6 @@ Returns the current state of the variable. ";
 set_state(real newState)
 
 Gives access to the state variable. ";
-
-%feature("docstring")  cmf::water::WaterStorage::get_abs_errtol "virtual real get_abs_errtol(real rel_errtol) const ";
-
-%feature("docstring")  cmf::water::WaterStorage::get_states "virtual
-StateVariableList get_states()=0
-
-Add the state variables, owned by an object derived from
-StateVariableOwner, to the given vector. ";
 
 %feature("docstring")  cmf::water::WaterStorage::get_project "const
 cmf::project& get_project() const
@@ -11007,7 +10788,7 @@ Remove the connection. ";
 flux_to(const cmf::water::flux_node &target, cmf::math::Time t)
 
 Returns the actual flux between this and target (positive sign means
-\"from target into this\"). ";
+\"from target into this\") ";
 
 %feature("docstring")  cmf::water::WaterStorage::flux3d_to "cmf::geometry::point flux3d_to(const cmf::water::flux_node &target,
 cmf::math::Time t) ";
@@ -11129,12 +10910,12 @@ cmf::atmosphere::global_radiation(cmf::math::Time t, double height,
 double sunshine_fraction, double longitude=8, double latitude=51,
 double time_zone=1, bool daily=0)
 
-Returns the global radiation in MJ/(m2 day). ";
+Returns the global radiation in MJ/(m2 day) ";
 
 %feature("docstring")  cmf::atmosphere::Pressure "double
 cmf::atmosphere::Pressure(double height)
 
-Returns the average air pressure for a height (m a.s.l.). ";
+Returns the average air pressure for a height (m a.s.l.) ";
 
 
 // File: namespacecmf_1_1geometry.xml
@@ -11267,7 +11048,7 @@ simplifications for a given Radiation balance, aerodynamic and surface
 resistances, and a vapor pressure deficit
 
 \\\\[ ET = \\\\frac{\\\\Delta R_n}{\\\\lambda \\\\Delta + \\\\gamma +
-\\\\gamma \\\\frac{r_s}{r_a}} /// + \\\\frac{c_p\\\\rho_a}{\\\\Delta +
+\\\\gamma \\\\frac{r_s}{r_a}} + \\\\frac{c_p\\\\rho_a}{\\\\Delta +
 \\\\gamma + \\\\gamma \\\\frac{r_s}{r_a}} \\\\frac{e_s - e_a}{r_a}
 \\\\] where  $ ET $ is the evapotranspiration in $\\\\frac{kg}{m^2
 day}\\\\approx \\\\frac{mm}{day}$
@@ -12540,59 +12321,59 @@ real tau) ";
 // File: todo.xml
 
 
-// File: dir_37bc87c1c4d7e8650365d012e9126e2d.xml
+// File: dir_a34c0a3a997751912cbeeb3f6a2018d4.xml
 
 
-// File: dir_814d734828fa965730c2dd3f6af292a1.xml
+// File: dir_e44d263e82e73e5cd45e66a9d5484f0e.xml
 
 
-// File: dir_8ffb91d16a6a64a8805e69c168652840.xml
+// File: dir_1c689e9749401ee508c4e3b2747d036e.xml
 
 
-// File: dir_3ed0765eb5901fdc3449b15208805995.xml
+// File: dir_35473c2924978da3332cfde17d1d6b99.xml
 
 
-// File: dir_ad68c0483b36238f6e6a1eaa7edf7ec2.xml
+// File: dir_af937d60eb69dba91a5be756eec0a3ea.xml
 
 
-// File: dir_34feb2f62dc0cad0119f312d8bb90a5b.xml
+// File: dir_074680f4811abdc846d4a1ca8117269b.xml
 
 
-// File: dir_f8296a2f37d97388413c2c14e5b183e5.xml
+// File: dir_6914091710f015cd771e4c69991e0321.xml
 
 
-// File: dir_404ac2bcdddc3f0adcd0ebb0fd911bd1.xml
+// File: dir_9ba2403456dedd4364a1ad5ef46b0674.xml
 
 
-// File: dir_71a159ce2c57d49e45c879a346ef0945.xml
+// File: dir_881a4b4145393ba5aa926042f2b0ab4d.xml
 
 
-// File: dir_69ed31de07dfd8f5b4190e9532d95b24.xml
+// File: dir_5ee593482e72b5c4adf127b682cc064b.xml
 
 
-// File: dir_ea83c69c0d7d6b733137dc338936a50e.xml
+// File: dir_6729183fec5c38381d2b4a165ab87aab.xml
 
 
-// File: dir_0033d40ac36103a543278d00ce59a0c0.xml
+// File: dir_da4bfa092f42b4972ab12dc096d9b871.xml
 
 
-// File: dir_d87fd82c426a37f97954999433f9b603.xml
+// File: dir_28ca05f8518a347825525f957ad42f18.xml
 
 
-// File: dir_34b0f9b5a2cb4e7e3ee1ad3d3c17a1fc.xml
+// File: dir_4f5dd0ddca36aa533ebaad82a6c4b0e2.xml
 
 
-// File: dir_828f5ebd381a05f222ac04b144b0173d.xml
+// File: dir_bbd991016cf40466555088dc9588afdf.xml
 
 
-// File: dir_8fd64e08e434218c3a2e2370b2792e7c.xml
+// File: dir_7ec89ba203c4709e08ce3f8fa76928c4.xml
 
 
-// File: dir_e35beae59e60b59d5a8f2f4e3f5fa8c7.xml
+// File: dir_18152b86c6724725c4b0fa1db5a5b7b6.xml
 
 
-// File: dir_e9c656ec9c1707c19b035c0a6f4fca36.xml
+// File: dir_8b4109f3d59abed5ff481179ab00febc.xml
 
 
-// File: main.xml
+// File: indexpage.xml
 
