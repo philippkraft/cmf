@@ -232,6 +232,7 @@ namespace cmf {
 				{
 					NewNodes();
 				}
+				static void use_for_cell(cmf::upslope::Cell & cell);
 
 			};
 			/// @ingroup ET
