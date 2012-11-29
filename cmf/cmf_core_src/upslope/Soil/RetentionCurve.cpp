@@ -30,7 +30,8 @@ namespace cmf {
 			real a,b,c,w0,psi0;
 		public:
 			// Calculates the parabola parameters a,b,c using the starting point of the wetness / potential curve (w0,pot0) and the slope of the curve
-			parabolic_extrapolation(real wet0,real pot0,real slope0) : w0(wet0),psi0(pot0)
+			parabolic_extrapolation(real wet0,real pot0,real slope0) 
+				: w0(wet0),psi0(pot0)
 			{
 				real w0_2=w0*w0;	// wetness squared
 				a=(-slope0 - pot0 + slope0*w0)/(1 - 2*w0 + w0_2);
@@ -38,20 +39,15 @@ namespace cmf {
 				c=(pot0 - slope0*w0 - 2*w0*pot0 + slope0*w0_2)/(1 - 2*w0 + w0_2);
 			}
 			// returns the potential for a wetness. Does not test for wetness>w0
-			real get_potential(real wetness)
-			{
+			real get_potential(real wetness) {
 				return a*wetness*wetness + b*wetness + c;
 			}
 			// returns the wetness for a potential. The user is responsible to ensure the potential is higher than the starting point
-			real get_wetness(real potential)
-			{
+			real get_wetness(real potential) {
 				return 0.5*sqrt(-4*c/a+4*potential/a+(b*b)/(a*a))-b/(2*a);
 			}
 		};
-
-
 	}
-
 }
 
 
@@ -168,6 +164,26 @@ real cmf::upslope::BrooksCoreyRetentionCurve::Wetness( real suction ) const
 cmf::upslope::BrooksCoreyRetentionCurve::BrooksCoreyRetentionCurve( real ksat/*=15*/,real porosity/*=0.5*/,real _b/*=5*/,real theta_x/*=0.2*/,real psi_x/*=pF_to_waterhead(2.5)*/,real porosity_decay/*=0*/ )
 : Ksat(ksat),m_Porosity(porosity),m_b(_b),wetness_X(theta_x/porosity),Psi_X(psi_x),m_PorosityDecay(porosity_decay)
 {
+	std::strstream msg;
+	msg << "Can't create VanGenuchten-Mualem-Retention curve with ";
+	bool error=false;
+	if (_b<=1.0 || b>20.0) {
+		msg <<"b="<<_b << " outside [1.0..20-0]";error=true;
+	}
+	if (porosity>1.0 || porosity<=0.0) {
+		msg << (error ? " and " : "") << "porostiy=" << porosity << " not in [0.0..1.0]";error=true;
+	}
+	if (theta_x<=0.0 || theta_x>1.0) {
+		msg << (error ? " and " : "") << "theta_x=" <<theta_x << " not in [0.0..1.0]";error=true;
+	}
+	if (theta_x>=porosity){
+		msg << (error ? " and " : "") << "theta_x > porosity";error=true;
+	}
+	if (ksat<0.0) {
+		msg << (error ? " and " : "") << "with negative Ksat="<< ksat;error=true;
+	}
+	if (error) throw std::runtime_error(msg.str());
+
 	Set_Saturated_pF_curve_tail_parameters();
 }
 
@@ -257,6 +273,23 @@ cmf::upslope::VanGenuchtenMualem* cmf::upslope::VanGenuchtenMualem::copy() const
 cmf::upslope::VanGenuchtenMualem::VanGenuchtenMualem( real _Ksat, real _phi,real _alpha, real _n, real _m/*=-1*/ ) 
 : n(_n),alpha(_alpha),Phi(_phi),Ksat(_Ksat), m(_m)
 {
+	std::strstream msg;
+	msg << "Can't create VanGenuchten-Mualem-Retention curve with ";
+	bool error=false;
+	if (n<=1.0 || n>4.0) {
+		msg <<"n="<<_n << " outside [1.0..4.0]";error=true;
+	}
+	if (_phi>1.0 || _phi<=0.0) {
+		msg << (error ? " and " : "") << "phi=" << _phi << " not in [0.0..1.0]";error=true;
+	}
+	if (_alpha<=0.0 || _alpha>=2.0) {
+		msg << (error ? " and " : "") << "alpha=" <<_alpha << " not in [0.0..2.0]";error=true;
+	}
+	if (_Ksat<0.0) {
+		msg << (error ? " and " : "") << "with negative Ksat="<<_Ksat;error=true;
+	}
+	if (error) throw std::runtime_error(msg.str());
+
 
 }
 
