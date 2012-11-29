@@ -7665,16 +7665,16 @@ SWIGINTERN PyObject *Swig_var_Debug_get(void) {
 }
 
 
-SWIGINTERN int Swig_var_VERSION_set(PyObject *) {
-  SWIG_Error(SWIG_AttributeError,"Variable VERSION is read-only.");
+SWIGINTERN int Swig_var___compiledate___set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable __compiledate__ is read-only.");
   return 1;
 }
 
 
-SWIGINTERN PyObject *Swig_var_VERSION_get(void) {
+SWIGINTERN PyObject *Swig_var___compiledate___get(void) {
   PyObject *pyobj = 0;
   
-  pyobj = SWIG_From_std_string(static_cast< std::string >(VERSION));
+  pyobj = SWIG_From_std_string(static_cast< std::string >(__compiledate__));
   return pyobj;
 }
 
@@ -64055,6 +64055,46 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_timeseriesETpot_use_for_cell(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  cmf::upslope::Cell *arg1 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  char *  kwnames[] = {
+    (char *) "cell", NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"O:timeseriesETpot_use_for_cell",kwnames,&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_cmf__upslope__Cell,  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "timeseriesETpot_use_for_cell" "', argument " "1"" of type '" "cmf::upslope::Cell &""'"); 
+  }
+  if (!argp1) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "timeseriesETpot_use_for_cell" "', argument " "1"" of type '" "cmf::upslope::Cell &""'"); 
+  }
+  arg1 = reinterpret_cast< cmf::upslope::Cell * >(argp1);
+  {
+    try {
+      {
+        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
+        cmf::upslope::ET::timeseriesETpot::use_for_cell(*arg1);
+        SWIG_PYTHON_THREAD_END_ALLOW;
+      }
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_delete_timeseriesETpot(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   cmf::upslope::ET::timeseriesETpot *arg1 = (cmf::upslope::ET::timeseriesETpot *) 0 ;
@@ -67963,15 +68003,14 @@ static PyMethodDef SwigMethods[] = {
 		"Date(const Time &time)\n"
 		"\n"
 		"Creates a new date from time (based on the 31.12.1899, like in\n"
-		"Excel(TM)). \n"
+		"Excel(TM)) \n"
 		""},
 	 { (char *)"Date_ToTime", (PyCFunction)_wrap_Date_ToTime, METH_O, (char *)"\n"
 		"Date_ToTime(Date self) -> Time\n"
 		"\n"
 		"Time ToTime()\n"
 		"\n"
-		"Converts a date to Time (based on the 31.12.1899, like in Excel(TM).\n"
-		"\n"
+		"Converts a date to Time (based on the 31.12.1899, like in Excel(TM) \n"
 		""},
 	 { (char *)"Date_DOY", (PyCFunction)_wrap_Date_DOY, METH_O, (char *)"\n"
 		"Date_DOY(Date self) -> double\n"
@@ -67998,7 +68037,7 @@ static PyMethodDef SwigMethods[] = {
 		"interpolationpower() const\n"
 		"\n"
 		"Method for the interpolation (0 - Nearest neighbor, 1- linear, 2 -\n"
-		"cubic spline (not implemented yet). \n"
+		"cubic spline (not implemented yet) \n"
 		""},
 	 { (char *)"timeseries_add", (PyCFunction) _wrap_timeseries_add, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
 		"timeseries_add(timeseries self, double Value)\n"
@@ -68046,7 +68085,7 @@ static PyMethodDef SwigMethods[] = {
 		"int\n"
 		"count_values() const\n"
 		"\n"
-		"Number of valid values (=size - # of NaN's). \n"
+		"Number of valid values (=size - # of NaN's) \n"
 		""},
 	 { (char *)"new_timeseries", (PyCFunction) _wrap_new_timeseries, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
 		"new_timeseries(Time begin = cmf::math::Time(), Time step = day, int interpolationmethod = 1, \n"
@@ -68478,7 +68517,7 @@ static PyMethodDef SwigMethods[] = {
 		"virtual void\n"
 		"reset()\n"
 		"\n"
-		"Resets any saved history (for multistep methods). \n"
+		"Resets any saved history (for multistep methods) \n"
 		""},
 	 { (char *)"Integrator_copy", (PyCFunction)_wrap_Integrator_copy, METH_O, (char *)"\n"
 		"Integrator_copy(Integrator self) -> Integrator\n"
@@ -68755,7 +68794,7 @@ static PyMethodDef SwigMethods[] = {
 		"solute_vector(std::string str)\n"
 		"\n"
 		"Creates a solute vector from solute names, separated by whitespace.\n"
-		"E.g. solutes=solute_vector(\"dO18 dH2\"). \n"
+		"E.g. solutes= solute_vector(\"dO18 dH2\") \n"
 		""},
 	 { (char *)"solute_vector_get_solute", (PyCFunction) _wrap_solute_vector_get_solute, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
 		"solute_vector_get_solute(solute_vector self, int position) -> solute\n"
@@ -68868,7 +68907,7 @@ static PyMethodDef SwigMethods[] = {
 		"flux_to(const cmf::water::flux_node &target, cmf::math::Time t)\n"
 		"\n"
 		"Returns the actual flux between this and target (positive sign means\n"
-		"\"from target into this\"). \n"
+		"\"from target into this\") \n"
 		""},
 	 { (char *)"flux_node_flux3d_to", (PyCFunction) _wrap_flux_node_flux3d_to, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
 		"flux_node_flux3d_to(flux_node self, flux_node target, Time t) -> point\n"
@@ -69185,8 +69224,7 @@ static PyMethodDef SwigMethods[] = {
 		"\n"
 		"linear_scale(real _slope=1, real _displacement=0)\n"
 		"\n"
-		"Creates a linear scale (by default it is a unity scale, $a=1; b=0$).\n"
-		"\n"
+		"Creates a linear scale (by default it is a unity scale, $a=1; b=0$) \n"
 		""},
 	 { (char *)"delete_linear_scale", (PyCFunction)_wrap_delete_linear_scale, METH_O, (char *)"delete_linear_scale(linear_scale self)"},
 	 { (char *)"linear_scale_swigregister", linear_scale_swigregister, METH_VARARGS, NULL},
@@ -69519,7 +69557,7 @@ static PyMethodDef SwigMethods[] = {
 		"cmf::math::num_array source_fluxes)\n"
 		"\n"
 		"Sets the source flux of a solute storage associated with a node (node\n"
-		"has to be a water storage). \n"
+		"has to be a water storage) \n"
 		""},
 	 { (char *)"node_list_get_fluxes_to", (PyCFunction) _wrap_node_list_get_fluxes_to, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
 		"node_list_get_fluxes_to(node_list self, node_list targets, Time t) -> cmf::math::num_array\n"
@@ -69726,7 +69764,7 @@ static PyMethodDef SwigMethods[] = {
 		"double sunshine_fraction, double longitude=8, double latitude=51,\n"
 		"double time_zone=1, bool daily=0)\n"
 		"\n"
-		"Returns the global radiation in MJ/(m2 day). \n"
+		"Returns the global radiation in MJ/(m2 day) \n"
 		""},
 	 { (char *)"Pressure", (PyCFunction) _wrap_Pressure, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
 		"Pressure(double height) -> double\n"
@@ -69734,7 +69772,7 @@ static PyMethodDef SwigMethods[] = {
 		"double\n"
 		"cmf::atmosphere::Pressure(double height)\n"
 		"\n"
-		"Returns the average air pressure for a height (m a.s.l.). \n"
+		"Returns the average air pressure for a height (m a.s.l.) \n"
 		""},
 	 { (char *)"Weather_T_set", _wrap_Weather_T_set, METH_VARARGS, (char *)"Weather_T_set(Weather self, double T)"},
 	 { (char *)"Weather_T_get", (PyCFunction)_wrap_Weather_T_get, METH_O, (char *)"Weather_T_get(Weather self) -> double"},
@@ -70991,7 +71029,8 @@ static PyMethodDef SwigMethods[] = {
 		"new_VanGenuchtenMualem(real Ksat = 15, real phi = 0.5, real alpha = 0.2178, \n"
 		"    real n = 1.211, real m = -1) -> VanGenuchtenMualem\n"
 		"\n"
-		"VanGenuchtenMualem(real Ksat, real phi, real alpha, real n, real m=-1)\n"
+		"VanGenuchtenMualem(real Ksat=15, real phi=0.5, real alpha=0.2178, real\n"
+		"n=1.211, real m=-1)\n"
 		"\n"
 		"Creates a van Genuchten-Mualem retention curve\n"
 		"\n"
@@ -71392,15 +71431,14 @@ static PyMethodDef SwigMethods[] = {
 		"qManning(double A, double slope) const\n"
 		"\n"
 		"Calculates the flow rate from a given water volume in the reach\n"
-		"\\\\begin{eqnarray*} /// q_{Manning}&=& A R^{\\\\frac 2 3}\n"
-		"\\\\sqrt{\\\\frac {\\\\Delta_z} n} \\\\\\\\ /// A &=& \\\\frac V l\n"
+		"\\\\begin{eqnarray*} q_{Manning}&=& A R^{\\\\frac 2 3}\n"
+		"\\\\sqrt{\\\\frac {\\\\Delta_z} n} \\\\\\\\ A &=& \\\\frac V l\n"
 		"\\\\mbox{, (Crosssectional area of the wetted crossection, Volume per\n"
-		"length)} \\\\\\\\ /// R &=& \\\\frac A {P(d)} \\\\\\\\ /// P(d) &=&\n"
-		"\\\\mbox{ the perimeter of the wetted crosssection, a function of\n"
-		"reach depth} \\\\\\\\ /// d(V) &=& \\\\mbox{ the depth of the reach a\n"
-		"function of the volume} \\\\\\\\ /// \\\\Delta_z &=& \\\\frac{z_{max}\n"
-		"- z_{min}}{l} \\\\mbox{ Slope of the reach} /// \\\\end{eqnarray*}\n"
-		"Flow rate [m3/s]\n"
+		"length)} \\\\\\\\ R &=& \\\\frac A {P(d)} \\\\\\\\ P(d) &=& \\\\mbox{\n"
+		"the perimeter of the wetted crosssection, a function of reach depth}\n"
+		"\\\\\\\\ d(V) &=& \\\\mbox{ the depth of the reach a function of the\n"
+		"volume} \\\\\\\\ \\\\Delta_z &=& \\\\frac{z_{max} - z_{min}}{l}\n"
+		"\\\\mbox{ Slope of the reach} \\\\end{eqnarray*} Flow rate [m3/s]\n"
 		"\n"
 		"Parameters:\n"
 		"-----------\n"
@@ -71625,7 +71663,7 @@ static PyMethodDef SwigMethods[] = {
 		"cmf::water::flux_node::ptr get_downstream() const\n"
 		"\n"
 		"Returns the reach downstream of this (or null if there is no reach\n"
-		"downstream). \n"
+		"downstream) \n"
 		""},
 	 { (char *)"Reach_get_upstream", (PyCFunction) _wrap_Reach_get_upstream, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
 		"Reach_get_upstream(Reach self, int index) -> ptr\n"
@@ -72223,8 +72261,19 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"constantETpot_swiginit", constantETpot_swiginit, METH_VARARGS, NULL},
 	 { (char *)"timeseriesETpot_ETpot_set", _wrap_timeseriesETpot_ETpot_set, METH_VARARGS, (char *)"timeseriesETpot_ETpot_set(timeseriesETpot self, timeseries ETpot)"},
 	 { (char *)"timeseriesETpot_ETpot_get", (PyCFunction)_wrap_timeseriesETpot_ETpot_get, METH_O, (char *)"timeseriesETpot_ETpot_get(timeseriesETpot self) -> timeseries"},
-	 { (char *)"timeseriesETpot_GetETpot", (PyCFunction) _wrap_timeseriesETpot_GetETpot, METH_VARARGS | METH_KEYWORDS, (char *)"timeseriesETpot_GetETpot(timeseriesETpot self, Time t) -> real"},
-	 { (char *)"new_timeseriesETpot", (PyCFunction) _wrap_new_timeseriesETpot, METH_VARARGS | METH_KEYWORDS, (char *)"new_timeseriesETpot(ptr source, ptr ET_target, timeseries ETpot_values) -> timeseriesETpot"},
+	 { (char *)"timeseriesETpot_GetETpot", (PyCFunction) _wrap_timeseriesETpot_GetETpot, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
+		"timeseriesETpot_GetETpot(timeseriesETpot self, Time t) -> real\n"
+		"\n"
+		"real GetETpot(cmf::math::Time t) const \n"
+		""},
+	 { (char *)"new_timeseriesETpot", (PyCFunction) _wrap_new_timeseriesETpot, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
+		"new_timeseriesETpot(ptr source, ptr ET_target, timeseries ETpot_values) -> timeseriesETpot\n"
+		"\n"
+		"timeseriesETpot(cmf::upslope::SoilLayer::ptr source,\n"
+		"cmf::water::flux_node::ptr ET_target, cmf::math::timeseries\n"
+		"ETpot_values) \n"
+		""},
+	 { (char *)"timeseriesETpot_use_for_cell", (PyCFunction) _wrap_timeseriesETpot_use_for_cell, METH_VARARGS | METH_KEYWORDS, (char *)"timeseriesETpot_use_for_cell(Cell cell)"},
 	 { (char *)"delete_timeseriesETpot", (PyCFunction)_wrap_delete_timeseriesETpot, METH_O, (char *)"delete_timeseriesETpot(timeseriesETpot self)"},
 	 { (char *)"timeseriesETpot_swigregister", timeseriesETpot_swigregister, METH_VARARGS, NULL},
 	 { (char *)"timeseriesETpot_swiginit", timeseriesETpot_swiginit, METH_VARARGS, NULL},
@@ -74331,7 +74380,7 @@ SWIG_init(void) {
   PyDateTime_IMPORT;
   
   SWIG_addvarlink(SWIG_globals(),(char*)"Debug",Swig_var_Debug_get, Swig_var_Debug_set);
-  SWIG_addvarlink(SWIG_globals(),(char*)"VERSION",Swig_var_VERSION_get, Swig_var_VERSION_set);
+  SWIG_addvarlink(SWIG_globals(),(char*)"__compiledate__",Swig_var___compiledate___get, Swig_var___compiledate___set);
   SWIG_addvarlink(SWIG_globals(),(char*)"Pi",Swig_var_Pi_get, Swig_var_Pi_set);
   SWIG_Python_SetConstant(d, "JULIANDAY_0_1_1900",SWIG_From_int(static_cast< int >(2415019)));
   SWIG_Python_SetConstant(d, "Time_ms_per_day",SWIG_From_long_SS_long(static_cast< long long >(cmf::math::Time::ms_per_day)));
