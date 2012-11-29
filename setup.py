@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 
 # Copyright 2010 by Philipp Kraft
 # This file is part of cmf.
@@ -136,6 +136,14 @@ def get_revision():
         return res.split(':')[0]
     else:
         return res
+def updateversion(revision):
+    module_code = file('cmf/__init__.py').readlines()
+    fout = file('cmf/__init__.py','w')
+    for line in module_code:
+        if line.startswith('__version__'):
+            fout.write("__version__ = '%s'\n" % revision)
+        else:
+            fout.write(line)
 if __name__=='__main__':
     
     ext = [make_raster(),make_cmf_core()]
@@ -156,10 +164,12 @@ if __name__=='__main__':
         if py_found:
             print 'In %s %i modules found' % (root,len(py_found))
         py.extend(py_found)
-    
+    revision = get_revision()
+    if 'build' in sys.argv or 'build_py' in sys.argv:
+        updateversion(revision)
     now = datetime.datetime.now()
     setup(name='cmf',
-          version=get_revision(),
+          version=revision,
           license='GPL',
           ext_modules=ext,
           py_modules=py, 

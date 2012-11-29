@@ -826,7 +826,7 @@ Time.__ne__ = new_instancemethod(_cmf_core.Time___ne__,None,Time)
 Time_swigregister = _cmf_core.Time_swigregister
 Time_swigregister(Time)
 Debug = cvar.Debug
-VERSION = cvar.VERSION
+__compiledate__ = cvar.__compiledate__
 Pi = cvar.Pi
 
 class Date(object):
@@ -854,7 +854,7 @@ class Date(object):
         Date(const Time &time)
 
         Creates a new date from time (based on the 31.12.1899, like in
-        Excel(TM)). 
+        Excel(TM)) 
         """
         _cmf_core.Date_swiginit(self,_cmf_core.new_Date(*args))
     def ToTime(self, *args, **kwargs):
@@ -863,8 +863,7 @@ class Date(object):
 
         Time ToTime()
 
-        Converts a date to Time (based on the 31.12.1899, like in Excel(TM).
-
+        Converts a date to Time (based on the 31.12.1899, like in Excel(TM) 
         """
         return _cmf_core.Date_ToTime(self, *args, **kwargs)
 
@@ -929,7 +928,7 @@ class timeseries(object):
         interpolationpower() const
 
         Method for the interpolation (0 - Nearest neighbor, 1- linear, 2 -
-        cubic spline (not implemented yet). 
+        cubic spline (not implemented yet) 
         """
         return _cmf_core.timeseries_interpolationpower(self, *args, **kwargs)
 
@@ -998,7 +997,7 @@ class timeseries(object):
         int
         count_values() const
 
-        Number of valid values (=size - # of NaN's). 
+        Number of valid values (=size - # of NaN's) 
         """
         return _cmf_core.timeseries_count_values(self, *args, **kwargs)
 
@@ -1888,7 +1887,7 @@ class Integrator(StateVariableOwner):
         virtual void
         reset()
 
-        Resets any saved history (for multistep methods). 
+        Resets any saved history (for multistep methods) 
         """
         return _cmf_core.Integrator_reset(self, *args, **kwargs)
 
@@ -2350,7 +2349,7 @@ class solute_vector(object):
         solute_vector(std::string str)
 
         Creates a solute vector from solute names, separated by whitespace.
-        E.g. solutes=solute_vector("dO18 dH2"). 
+        E.g. solutes= solute_vector("dO18 dH2") 
         """
         _cmf_core.solute_vector_swiginit(self,_cmf_core.new_solute_vector(*args, **kwargs))
     def get_solute(self, *args, **kwargs):
@@ -2446,16 +2445,16 @@ class SoluteStorage(StateVariable):
     A class for the storage of any tracer. The state is the amount (mol,
     kg etc. see cmf::water) of the tracer in the storage.
 
-    The derivative function is given by: \\begin{eqnarray*} ///
+    The derivative function is given by: \\begin{eqnarray*}
     \\frac{dX}{dt}&=&\\sum_{f=1}^{F}\\left( q_f [X]_f\\right) +
-    X_{in} - r^-X \\left[\\frac{mol}{day}\\right]\\\\ /// F&=&
-    \\mbox{Number of fluxes in water storage} \\\\ /// q_f&=&
-    \\mbox{Water flux in } \\frac{m^3}{day} \\\\ ///
+    X_{in} - r^-X \\left[\\frac{mol}{day}\\right]\\\\ F&=&
+    \\mbox{Number of fluxes in water storage} \\\\ q_f&=&
+    \\mbox{Water flux in } \\frac{m^3}{day} \\\\
     \\left[X\\right]_f &=& \\mbox{Concentration of solute X in flux
-    }q_f \\mbox{ in } \\frac{mol}{m^3} \\\\ /// X_{in} &=&
-    \\mbox{Absolute source or sink term} \\frac{mol}{day} \\\\ ///
-    r^- &=& \\mbox{Decay rate} \\frac 1{day} \\\\ /// V &=&
-    \\mbox{Volume of water in water storage }\\left[m^3\\right] ///
+    }q_f \\mbox{ in } \\frac{mol}{m^3} \\\\ X_{in} &=&
+    \\mbox{Absolute source or sink term} \\frac{mol}{day} \\\\ r^-
+    &=& \\mbox{Decay rate} \\frac 1{day} \\\\ V &=&
+    \\mbox{Volume of water in water storage }\\left[m^3\\right]
     \\end{eqnarray*}
 
     C++ includes: SoluteStorage.h 
@@ -2565,7 +2564,7 @@ class flux_node(object):
         flux_to(const cmf::water::flux_node &target, cmf::math::Time t)
 
         Returns the actual flux between this and target (positive sign means
-        "from target into this"). 
+        "from target into this") 
         """
         return _cmf_core.flux_node_flux_to(self, *args, **kwargs)
 
@@ -3126,8 +3125,7 @@ class linear_scale(object):
 
         linear_scale(real _slope=1, real _displacement=0)
 
-        Creates a linear scale (by default it is a unity scale, $a=1; b=0$).
-
+        Creates a linear scale (by default it is a unity scale, $a=1; b=0$) 
         """
         _cmf_core.linear_scale_swiginit(self,_cmf_core.new_linear_scale(*args, **kwargs))
     __swig_destroy__ = _cmf_core.delete_linear_scale
@@ -3271,9 +3269,9 @@ class WaterStorage(StateVariable,StateVariableOwner,flux_node):
 
     A class for the storage of water. The state is the volume of water
     stored in $m^3$ The derivative function is given by:
-    \\begin{eqnarray*} /// \\frac{dV}{dt}&=&\\sum_{f=1}^{F} q_f
-    \\\\ /// F&=& \\mbox{Number of fluxes in water storage} \\\\
-    /// q_f&=& \\mbox{Water flux in } \\frac{m^3}{day} \\\\ ///
+    \\begin{eqnarray*} \\frac{dV}{dt}&=&\\sum_{f=1}^{F} q_f \\\\
+    F&=& \\mbox{Number of fluxes in water storage} \\\\ q_f&=&
+    \\mbox{Water flux in } \\frac{m^3}{day} \\\\
     \\end{eqnarray*}
 
     Todo Check the head based state mode
@@ -3700,7 +3698,7 @@ class node_list(StateVariableOwner):
         cmf::math::num_array source_fluxes)
 
         Sets the source flux of a solute storage associated with a node (node
-        has to be a water storage). 
+        has to be a water storage) 
         """
         return _cmf_core.node_list_set_solute_source(self, *args, **kwargs)
 
@@ -4128,7 +4126,7 @@ def global_radiation(*args, **kwargs):
     double sunshine_fraction, double longitude=8, double latitude=51,
     double time_zone=1, bool daily=0)
 
-    Returns the global radiation in MJ/(m2 day). 
+    Returns the global radiation in MJ/(m2 day) 
     """
   return _cmf_core.global_radiation(*args, **kwargs)
 
@@ -4139,7 +4137,7 @@ def Pressure(*args, **kwargs):
     double
     cmf::atmosphere::Pressure(double height)
 
-    Returns the average air pressure for a height (m a.s.l.). 
+    Returns the average air pressure for a height (m a.s.l.) 
     """
   return _cmf_core.Pressure(*args, **kwargs)
 class Weather(object):
@@ -4405,7 +4403,7 @@ class MeteoStation(object):
 
     # MeteoData.txt is tab seperated file containing # Tmin [deg C],Tmax
     [deg C],rHmean [%] and precipitation [mm/day] values for every day
-    f=file('MeteoData.txt') for line infile:
+    f=file('MeteoData.txt') for line in file:
     meteo.Tmin.Add(float(line.split('\\t')[0]))
     meteo.Tmax.Add(float(line.split('\\t')[1]))
     meteo.rHmean.Add(float(line.split('\\t')[2]))
@@ -6162,12 +6160,12 @@ class BrooksCoreyRetentionCurve(RetentionCurve):
     """
     Provides the use of the Brooks-Corey retention curve
 
-    \\begin{eqnarray*} /// W(\\theta) &=& \\frac{\\theta -
-    \\theta_r}{\\theta_s - \\theta_r} \\\\ /// K(W) &=& K_{sat}
-    W^{2+3b} \\\\ /// \\Psi(W) &=& \\Psi_X
-    \\left(\\frac{W}{W_X}\\right)^{-b} \\\\ /// W(\\Psi) &=&
+    \\begin{eqnarray*} W(\\theta) &=& \\frac{\\theta -
+    \\theta_r}{\\theta_s - \\theta_r} \\\\ K(W) &=& K_{sat}
+    W^{2+3b} \\\\ \\Psi(W) &=& \\Psi_X
+    \\left(\\frac{W}{W_X}\\right)^{-b} \\\\ W(\\Psi) &=&
     {\\left( \\frac{\\Psi_X}{\\Psi}\\right)
-    }^{\\frac{1}{b}}\\ W_X /// \\end{eqnarray*} where:  $K$ is the
+    }^{\\frac{1}{b}}\\ W_X \\end{eqnarray*} where:  $K$ is the
     conductivity in $\\frac m {day}$
 
     $W$ is the wetness (Volume of soil water per volume of pores)
@@ -6289,16 +6287,16 @@ class VanGenuchtenMualem(RetentionCurve):
     Provides the use of the Van Genuchten - Mualem retention curve (Van
     Genuchten 1980)
 
-    Head - moisture realtionship: \\begin{eqnarray*} /// W(\\theta)
-    &=& \\frac{\\theta - \\theta_r}{\\theta_s - \\theta_r}
-    \\\\ /// K(W) &=& K_{sat} \\sqrt{W}
-    \\left(\\left(1-w^{1/m}\\right)^m\\right)^2 \\\\ /// m &=&
-    1-\\frac 1 n \\\\ /// \\Psi(W) &=& 0.01 \\frac{m}{cm}
+    Head - moisture relationship: \\begin{eqnarray*} W(\\theta) &=&
+    \\frac{\\theta - \\theta_r}{\\theta_s - \\theta_r} \\\\
+    K(W) &=& K_{sat} \\sqrt{W}
+    \\left(\\left(1-w^{1/m}\\right)^m\\right)^2 \\\\ m &=&
+    1-\\frac 1 n \\\\ \\Psi(W) &=& 0.01 \\frac{m}{cm}
     \\frac{{\\left(1-{W}^{\\frac{1}{m}}\\right)
     }^{\\frac{1}{n}}}{\\alpha\\,{W}^{\\frac{1}{m\\,n}}} \\\\
-    /// W(\\Psi) &=&
+    W(\\Psi) &=&
     \\left(1+\\left(\\alpha\\,100\\frac{cm}{m}\\Psi\\right)^n\\right)^{-m}
-    /// \\end{eqnarray*} where:  $K$ is the conductivity in $\\frac m
+    \\end{eqnarray*} where:  $K$ is the conductivity in $\\frac m
     {day}$
 
     $W$ is the wetness (Volume of soil water per volume of pores)
@@ -6342,7 +6340,8 @@ class VanGenuchtenMualem(RetentionCurve):
         __init__(self, real Ksat = 15, real phi = 0.5, real alpha = 0.2178, 
             real n = 1.211, real m = -1) -> VanGenuchtenMualem
 
-        VanGenuchtenMualem(real Ksat, real phi, real alpha, real n, real m=-1)
+        VanGenuchtenMualem(real Ksat=15, real phi=0.5, real alpha=0.2178, real
+        n=1.211, real m=-1)
 
         Creates a van Genuchten-Mualem retention curve
 
@@ -7005,15 +7004,14 @@ class IChannel(IVolumeHeightFunction):
         qManning(double A, double slope) const
 
         Calculates the flow rate from a given water volume in the reach
-        \\begin{eqnarray*} /// q_{Manning}&=& A R^{\\frac 2 3}
-        \\sqrt{\\frac {\\Delta_z} n} \\\\ /// A &=& \\frac V l
+        \\begin{eqnarray*} q_{Manning}&=& A R^{\\frac 2 3}
+        \\sqrt{\\frac {\\Delta_z} n} \\\\ A &=& \\frac V l
         \\mbox{, (Crosssectional area of the wetted crossection, Volume per
-        length)} \\\\ /// R &=& \\frac A {P(d)} \\\\ /// P(d) &=&
-        \\mbox{ the perimeter of the wetted crosssection, a function of
-        reach depth} \\\\ /// d(V) &=& \\mbox{ the depth of the reach a
-        function of the volume} \\\\ /// \\Delta_z &=& \\frac{z_{max}
-        - z_{min}}{l} \\mbox{ Slope of the reach} /// \\end{eqnarray*}
-        Flow rate [m3/s]
+        length)} \\\\ R &=& \\frac A {P(d)} \\\\ P(d) &=& \\mbox{
+        the perimeter of the wetted crosssection, a function of reach depth}
+        \\\\ d(V) &=& \\mbox{ the depth of the reach a function of the
+        volume} \\\\ \\Delta_z &=& \\frac{z_{max} - z_{min}}{l}
+        \\mbox{ Slope of the reach} \\end{eqnarray*} Flow rate [m3/s]
 
         Parameters:
         -----------
@@ -7428,7 +7426,7 @@ class Reach(OpenWaterStorage):
         cmf::water::flux_node::ptr get_downstream() const
 
         Returns the reach downstream of this (or null if there is no reach
-        downstream). 
+        downstream) 
         """
         return _cmf_core.Reach___get_downstream(self, *args, **kwargs)
 
@@ -7915,7 +7913,14 @@ Richards_lateral.cell_connector = _cmf_core.cvar.Richards_lateral_cell_connector
 class Manning(flux_connection):
     """
     Calculates the flux between two open water bodies, using Manning's
-    equation
+    equation \\begin{eqnarray*} q_{Manning}&=& A R^{\\frac 2 3}
+    \\sqrt{\\frac {\\Delta_z} n} \\\\ A &=& \\frac V l
+    \\mbox{, (Crosssectional area of the wetted crossection, Volume per
+    length)} \\\\ R &=& \\frac A {P(d)} \\\\ P(d) &=& \\mbox{
+    the perimeter of the wetted crosssection, a function of reach depth}
+    \\\\ d(V) &=& \\mbox{ the depth of the reach a function of the
+    volume} \\\\ \\Delta_z &=& \\frac{z_{max} - z_{min}}{l}
+    \\mbox{ Slope of the reach} \\end{eqnarray*}
 
     C++ includes: ManningConnection.h 
     """
@@ -7930,8 +7935,16 @@ Manning_swigregister(Manning)
 
 class Manning_Diffusive(Manning):
     """
-    Connecting surface water bodies using a diffusive wave. Not stable
-    deep water with small gradient
+    Connecting surface water bodies using a diffusive wave. Not stable for
+    deep water with small gradient \\begin{eqnarray*} q_{Manning}&=& A
+    R^{\\frac 2 3} \\sqrt{\\frac {\\Delta_z} n} \\\\ A &=&
+    \\frac V l \\mbox{, (Crosssectional area of the wetted
+    crossection, Volume per length)} \\\\ R &=& \\frac A {P(d)}
+    \\\\ P(d) &=& \\mbox{ the perimeter of the wetted crosssection,
+    a function of reach depth} \\\\ d(V) &=& \\mbox{ the depth of
+    the reach a function of the volume} \\\\ \\Delta_z &=&
+    \\frac{z_{max} - z_{min}}{l} \\mbox{ Slope of the reach}
+    \\end{eqnarray*}
 
     C++ includes: ManningConnection.h 
     """
@@ -8166,9 +8179,9 @@ class SWATPercolation(flux_connection):
 
     \\begin{eqnarray*} q_{perc} &=&
     V_{H_2O,drain}\\left(1-e^{-\\frac 1{-TT_{perc}}}\\right)
-    \\\\ /// TT_{perc} &=& \\frac{V_{pores,drain} - V_{field
-    cap.}}{K_{sat}} \\\\ /// V_{x,drain} &=& V_{x,drain} - V_{field
-    cap.} \\end{eqnarray*}
+    \\\\ TT_{perc} &=& \\frac{V_{pores,drain} - V_{field
+    cap.}}{K_{sat}} \\\\ V_{x,drain} &=& V_{x,drain} - V_{field cap.}
+    \\end{eqnarray*}
 
     C++ includes: Percolation.h 
     """
@@ -8199,11 +8212,11 @@ class Richards(flux_connection):
     """
     Calculates flow according to the Richards equation
 
-    \\begin{eqnarray*} /// q_{Richards} &=&
-    \\frac{\\Delta\\Psi_{tot}}{d} K(\\theta) A \\\\ ///
-    \\Psi_{tot} &= &\\Psi_{M}(\\theta) + h /// \\end{eqnarray*}
-    where  $ \\Delta\\Psi_{tot} [m]$ is the difference of the total
-    water potentials of the two soil layers
+    \\begin{eqnarray*} q_{Richards} &=&
+    \\frac{\\Delta\\Psi_{tot}}{d} K(\\theta) A \\\\
+    \\Psi_{tot} &= &\\Psi_{M}(\\theta) + h \\end{eqnarray*} where
+    $ \\Delta\\Psi_{tot} [m]$ is the difference of the total water
+    potentials of the two soil layers
 
     $ d [m]$ is the distance between the two soil layers
 
@@ -8246,9 +8259,9 @@ class SimplRichards(flux_connection):
     """
     Calculates flow according to a simplified Richards equation
 
-    \\begin{eqnarray*} /// q_{Richards} &=& (K(\\theta) -
-    K(\\theta_r)) A \\\\ /// \\end{eqnarray*} where  $ d [m]$ is
-    the distance between the two soil layers
+    \\begin{eqnarray*} q_{Richards} &=& (K(\\theta) - K(\\theta_r))
+    A \\\\ \\end{eqnarray*} where  $ d [m]$ is the distance between
+    the two soil layers
 
     $ K(\\theta)\\left[\\frac m{day}\\right]$ is the geometric
     mean conductivity (see SoilType::Kunsat)
@@ -8286,9 +8299,9 @@ class HBVparameters(RetentionCurve):
     Implements the RetentionCurve interface is only partly, therefore it
     is not suitable for other connection types
 
-    \\begin{eqnarray*} /// K(w,d) &=& PERC w \\\\ /// \\Psi_{M}
-    &=& 10 - \\frac{10}{w}\\\\ /// w(\\Psi_{M}) &=&
-    \\frac{10}{10 - \\Psi_M} /// \\end{eqnarray*}
+    \\begin{eqnarray*} K(w,d) &=& PERC w \\\\ \\Psi_{M} &=& 10 -
+    \\frac{10}{w}\\\\ w(\\Psi_{M}) &=& \\frac{10}{10 -
+    \\Psi_M} \\end{eqnarray*}
 
     C++ includes: HBVflow.h 
     """
@@ -8348,7 +8361,7 @@ class HBVpercolation(flux_connection):
 
     \\[ Q = \\left\\{Q_{in}
     \\left(\\frac{V}{FC}\\right)^\\beta\\mbox{ if first layer}
-    \\\\ /// min(PERC, V_{lower} - V_{lower,max}) \\right. \\]
+    \\\\ min(PERC, V_{lower} - V_{lower,max}) \\right. \\]
 
     C++ includes: HBVflow.h 
     """
@@ -8725,60 +8738,82 @@ def PenmanMonteith(*args):
   return _cmf_core.PenmanMonteith(*args)
 
 class timeseriesETpot(flux_connection):
-    """Proxy of C++ cmf::upslope::ET::timeseriesETpot class"""
+    """
+    A ET connection for timeseries driven ETpot
+
+    C++ includes: ET.h 
+    """
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
     __repr__ = _swig_repr
     ETpot = _swig_property(_cmf_core.timeseriesETpot_ETpot_get, _cmf_core.timeseriesETpot_ETpot_set)
     def GetETpot(self, *args, **kwargs):
-        """GetETpot(self, Time t) -> real"""
+        """
+        GetETpot(self, Time t) -> real
+
+        real GetETpot(cmf::math::Time t) const 
+        """
         return _cmf_core.timeseriesETpot_GetETpot(self, *args, **kwargs)
 
     def __init__(self, *args, **kwargs): 
-        """__init__(self, ptr source, ptr ET_target, timeseries ETpot_values) -> timeseriesETpot"""
+        """
+        __init__(self, ptr source, ptr ET_target, timeseries ETpot_values) -> timeseriesETpot
+
+        timeseriesETpot(cmf::upslope::SoilLayer::ptr source,
+        cmf::water::flux_node::ptr ET_target, cmf::math::timeseries
+        ETpot_values) 
+        """
         _cmf_core.timeseriesETpot_swiginit(self,_cmf_core.new_timeseriesETpot(*args, **kwargs))
+    def use_for_cell(*args, **kwargs):
+        """use_for_cell(Cell cell)"""
+        return _cmf_core.timeseriesETpot_use_for_cell(*args, **kwargs)
+
+    use_for_cell = staticmethod(use_for_cell)
     __swig_destroy__ = _cmf_core.delete_timeseriesETpot
 timeseriesETpot.GetETpot = new_instancemethod(_cmf_core.timeseriesETpot_GetETpot,None,timeseriesETpot)
 timeseriesETpot_swigregister = _cmf_core.timeseriesETpot_swigregister
 timeseriesETpot_swigregister(timeseriesETpot)
 
+def timeseriesETpot_use_for_cell(*args, **kwargs):
+  """timeseriesETpot_use_for_cell(Cell cell)"""
+  return _cmf_core.timeseriesETpot_use_for_cell(*args, **kwargs)
+
 class PenmanMonteithET(flux_connection):
     """
     Calculates the potential evapotranspiration according to FAO(1998)
 
-    Governing equations: \\begin{eqnarray*} /// \\lambda ET &=&
+    Governing equations: \\begin{eqnarray*} \\lambda ET &=&
     \\frac{\\Delta\\left(R_n - G\\right)+\\rho_a c_p
     \\frac{e_s - e_a}{r_a}}{\\Delta +
     \\gamma\\left(1+\\frac{r_s}{r_a}\\right)} \\mbox{ FAO 1998,
-    Eq. 3} \\\\ /// \\mbox{With:} \\\\ /// \\Delta &=& 4098
+    Eq. 3} \\\\ \\mbox{With:} \\\\ \\Delta &=& 4098
     \\frac{0.6108 e^{17.27 T}}{(T+237.3)^2} \\frac{kPa}{^\\circ C}
-    \\mbox{ (FAO 1998, Eq. 13)} \\\\ /// T &=& \\mbox{Actual
-    Temperature in } ^\\circ C \\\\ /// R_n &=& \\mbox{net
-    Radiation (see Atmosphere) in } \\frac{MJ}{m^2day} \\\\ /// G
-    &=& 0 \\ \\frac{MJ}{m^2day} \\mbox{ if daily average (FAO 1998,
-    Eq. 42)} \\\\ /// && 0.1 R_n \\ \\mbox{ if day time (FAO 1998,
-    Eq. 45)} \\\\ /// && 0.5 R_n \\ \\mbox{ if night time (FAO
-    1998, Eq. 46)} \\\\ /// \\gamma &=& \\frac{c_p P}{\\epsilon
-    \\lambda} \\mbox{ (FAO 1998,Eq. 8): Psychrometric constant }
-    \\frac{kPa}{^\\circ C} \\\\ /// c_p &=& 0.001013
+    \\mbox{ (FAO 1998, Eq. 13)} \\\\ T &=& \\mbox{Actual
+    Temperature in } ^\\circ C \\\\ R_n &=& \\mbox{net Radiation
+    (see Atmosphere) in } \\frac{MJ}{m^2day} \\\\ G &=& 0 \\
+    \\frac{MJ}{m^2day} \\mbox{ if daily average (FAO 1998, Eq. 42)}
+    \\\\ && 0.1 R_n \\ \\mbox{ if day time (FAO 1998, Eq. 45)}
+    \\\\ && 0.5 R_n \\ \\mbox{ if night time (FAO 1998, Eq. 46)}
+    \\\\ \\gamma &=& \\frac{c_p P}{\\epsilon \\lambda}
+    \\mbox{ (FAO 1998,Eq. 8): Psychrometric constant }
+    \\frac{kPa}{^\\circ C} \\\\ c_p &=& 0.001013
     \\frac{MJ}{kg\\ ^\\circ C}\\mbox{ specific heat at constant
-    pressure } \\\\ /// P &=& 101.3
+    pressure } \\\\ P &=& 101.3
     \\left(\\frac{293-0.0065z}{293}\\right)^{5.26} \\mbox{ (FAO
-    1998,Eq. 7)} \\\\ /// \\epsilon &=& 0.622 \\frac{mol/g
-    \\mbox{ vapor}}{mol/g \\mbox{ liquid water}} \\\\ ///
-    \\lambda &=& 2.45 \\frac{MJ}{kg} \\mbox{ (FAO 1998,Eq. 8)}
-    \\\\ /// R &=& 0.287 \\frac{kJ}{kg\\ k}\\mbox{ Spec. gas
-    const.} \\\\ /// \\rho_a &=& \\frac{P}{1.01(T+273)R} \\mbox{
-    (FAO 1998,Box. 6)} \\\\ /// e_s &=& \\mbox{ Sat. vapor press. }
-    [kPa] \\\\ /// e_a &=& \\mbox{ Act. vapor press. } [kPa]
-    \\\\ /// r_a &=&
+    1998,Eq. 7)} \\\\ \\epsilon &=& 0.622 \\frac{mol/g \\mbox{
+    vapor}}{mol/g \\mbox{ liquid water}} \\\\ \\lambda &=& 2.45
+    \\frac{MJ}{kg} \\mbox{ (FAO 1998,Eq. 8)} \\\\ R &=& 0.287
+    \\frac{kJ}{kg\\ k}\\mbox{ Spec. gas const.} \\\\ \\rho_a
+    &=& \\frac{P}{1.01(T+273)R} \\mbox{ (FAO 1998,Box. 6)} \\\\
+    e_s &=& \\mbox{ Sat. vapor press. } [kPa] \\\\ e_a &=& \\mbox{
+    Act. vapor press. } [kPa] \\\\ r_a &=&
     \\frac{\\ln\\left(\\frac{2-d}{z_{om}}\\right)\\ln\\left(\\frac{2-d}{z_{oh}}\\right)}{k^2
-    u_2} \\mbox{ (FAO 1998, Eq. 4/Box 4} \\frac s m \\\\ /// &&
-    d=\\frac 2 3 h,z_{om}=0.123 h,z_{oh}=0.1 z_{om}, k=0.41 \\\\ ///
-    h &=& \\mbox{ Vegetation height in }m \\\\ /// u_2 &=& \\mbox{
-    Windspeed in 2m above canopy } \\frac m s \\\\ /// r_s &=&
+    u_2} \\mbox{ (FAO 1998, Eq. 4/Box 4} \\frac s m \\\\ &&
+    d=\\frac 2 3 h,z_{om}=0.123 h,z_{oh}=0.1 z_{om}, k=0.41 \\\\ h
+    &=& \\mbox{ Vegetation height in }m \\\\ u_2 &=& \\mbox{
+    Windspeed in 2m above canopy } \\frac m s \\\\ r_s &=&
     \\frac{r_l}{LAI_{Active}} \\mbox{ (FAO 1998, Eq. 5/Box 5)}
-    \\frac s m \\\\ /// && r_l=100 \\frac s m, LAI_{Active}=0.5
-    LAI /// \\end{eqnarray*}
+    \\frac s m \\\\ && r_l=100 \\frac s m, LAI_{Active}=0.5 LAI
+    \\end{eqnarray*}
 
     C++ includes: ET.h 
     """
@@ -8905,10 +8940,10 @@ class ShuttleworthWallace(transpiration_method,soil_evaporation_method,surface_w
     calculated by plant resitance and potential gradient between plant and
     soil, but by an piecewise linear function of the pF value $ pF =
     \\log_{10}\\left(-\\Psi [hPa]\\right) $: \\[
-    \\frac{T_{act}}{T_{pot}} = \\left\\{\\begin{array}{cl} /// 1 &
-    \\mbox{if $pF \\le 3.35$} \\\\ /// \\frac{pF - 4.2}{3.35 -
-    4.2} & \\mbox{if $pF \\in [3.35 .. 4.2] $} \\\\ /// 0 &
-    \\mbox{if $pF \\ge 4.2$} \\end{array}\\right. \\]
+    \\frac{T_{act}}{T_{pot}} = \\left\\{\\begin{array}{cl} 1 &
+    \\mbox{if $pF \\le 3.35$} \\\\ \\frac{pF - 4.2}{3.35 - 4.2}
+    & \\mbox{if $pF \\in [3.35 .. 4.2] $} \\\\ 0 & \\mbox{if $pF
+    \\ge 4.2$} \\end{array}\\right. \\]
 
     Calculation procedure, as in BROOK 90:
 
