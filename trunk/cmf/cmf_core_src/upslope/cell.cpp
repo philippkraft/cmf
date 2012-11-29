@@ -38,13 +38,16 @@ cmf::upslope::Cell::~Cell()
 
 
 cmf::upslope::Cell::Cell( double _x,double _y,double _z,double area,cmf::project& _project/*=0*/ ) 
-: x(_x),y(_y),z(_z),m_Area(area),m_project(_project),
-m_SurfaceWater(new cmf::water::DirichletBoundary(_project,_z)),	Id(cell_count++),
-m_meteo(new cmf::atmosphere::ConstantMeteorology), Tground(-300)
+	: x(_x),y(_y),z(_z),m_Area(area),m_project(_project),
+	  m_SurfaceWater(new cmf::water::DirichletBoundary(_project,_z)),	Id(cell_count++),
+	  m_meteo(new cmf::atmosphere::ConstantMeteorology), Tground(-300)
 {
 	std::stringstream sstr;
 	sstr << Id;
 	std::string cell_id=sstr.str();
+	if (area<=0) {
+		throw std::runtime_error("Can't create cell #"+cell_id+". Area<=0.0");
+	}
 	m_SurfaceWater->Name="Surface water of cell #" + cell_id;
 	m_SurfaceWater->position=get_position();
 	m_Evaporation.reset(new cmf::water::flux_node(_project,cmf::geometry::point(x,y,z+20)));
