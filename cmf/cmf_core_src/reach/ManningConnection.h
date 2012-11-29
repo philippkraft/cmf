@@ -93,6 +93,15 @@ namespace cmf {
 		};
 		/// @ingroup manning
 		/// Connecting surface water bodies using a kinematic wave. Note the fixed gradient
+		/// \f{eqnarray*}
+		/// q_{Manning}&=& A R^{\frac 2 3} \sqrt{\frac {\Delta_z} n} \\
+		/// A &=& \frac V l \mbox{, (Crosssectional area of the wetted crossection, Volume per length)} \\
+		/// R &=& \frac A {P(d)} \\
+		/// P(d) &=& \mbox{ the perimeter of the wetted crosssection, a function of reach depth} \\
+		/// d(V) &=& \mbox{ the depth of the reach a function of the volume} \\
+		/// \Delta_z &=& \frac{z_{max} - z_{min}}{l} \mbox{ Slope of the reach}
+		/// \f}
+
 		class Manning_Kinematic: public Manning
 		{
 		private:

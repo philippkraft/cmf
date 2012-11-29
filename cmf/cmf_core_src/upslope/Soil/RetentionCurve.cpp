@@ -19,6 +19,7 @@
 #include "RetentionCurve.h"
 #include <cmath>
 #include <limits>
+#include <sstream>
 #include "../../math/real.h"
 
 // Class for an parabolic extrapolation of a retention curve
@@ -164,10 +165,10 @@ real cmf::upslope::BrooksCoreyRetentionCurve::Wetness( real suction ) const
 cmf::upslope::BrooksCoreyRetentionCurve::BrooksCoreyRetentionCurve( real ksat/*=15*/,real porosity/*=0.5*/,real _b/*=5*/,real theta_x/*=0.2*/,real psi_x/*=pF_to_waterhead(2.5)*/,real porosity_decay/*=0*/ )
 : Ksat(ksat),m_Porosity(porosity),m_b(_b),wetness_X(theta_x/porosity),Psi_X(psi_x),m_PorosityDecay(porosity_decay)
 {
-	std::strstream msg;
+	std::stringstream msg;
 	msg << "Can't create VanGenuchten-Mualem-Retention curve with ";
 	bool error=false;
-	if (_b<=1.0 || b>20.0) {
+	if (_b<=1.0 || _b>20.0) {
 		msg <<"b="<<_b << " outside [1.0..20-0]";error=true;
 	}
 	if (porosity>1.0 || porosity<=0.0) {
@@ -273,7 +274,7 @@ cmf::upslope::VanGenuchtenMualem* cmf::upslope::VanGenuchtenMualem::copy() const
 cmf::upslope::VanGenuchtenMualem::VanGenuchtenMualem( real _Ksat, real _phi,real _alpha, real _n, real _m/*=-1*/ ) 
 : n(_n),alpha(_alpha),Phi(_phi),Ksat(_Ksat), m(_m)
 {
-	std::strstream msg;
+	std::stringstream msg;
 	msg << "Can't create VanGenuchten-Mualem-Retention curve with ";
 	bool error=false;
 	if (n<=1.0 || n>4.0) {

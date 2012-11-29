@@ -32,7 +32,7 @@
 #else
 	const bool Debug=0;
 #endif
-	const std::string VERSION = std::string("cmf compiled ") + std::string(__DATE__) + " - " + std::string(__TIME__);
+	const std::string __compiledate__ = std::string("cmf compiled ") + std::string(__DATE__) + " - " + std::string(__TIME__);
 
 	// Some helper functions
 	/// Returns the minimum of two values
