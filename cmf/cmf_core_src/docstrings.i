@@ -4411,9 +4411,13 @@ equation \\\\begin{eqnarray*} q_{Manning}&=& A R^{\\\\frac 2 3}
 \\\\mbox{, (Crosssectional area of the wetted crossection, Volume per
 length)} \\\\\\\\ R &=& \\\\frac A {P(d)} \\\\\\\\ P(d) &=& \\\\mbox{
 the perimeter of the wetted crosssection, a function of reach depth}
-\\\\\\\\ d(V) &=& \\\\mbox{ the depth of the reach a function of the
-volume} \\\\\\\\ \\\\Delta_z &=& \\\\frac{z_{max} - z_{min}}{l}
-\\\\mbox{ Slope of the reach} \\\\end{eqnarray*}
+\\\\\\\\ d(V) &=& \\\\mbox{ the depth of the reach, a function of the
+volume} \\\\\\\\ \\\\Delta_z &=& \\\\frac{\\\\|z_1 - z_2\\\\|}{l}
+\\\\mbox{ Slope of the reach} n&=&\\\\mbox{Manning friction number}
+\\\\end{eqnarray*} For the kinematic wave the slope of the river bed
+is used as slope $\\\\Delta_z = \\\\frac{|z_1 - z_2\\\\|}{l}$, while
+for the diffusive wave the slope is calculated from the actual water
+head. $\\\\Delta_z = \\\\|\\\\frac{h_1 - h_2}{l}$
 
 C++ includes: ManningConnection.h ";
 
@@ -4488,8 +4492,8 @@ R^{\\\\frac 2 3} \\\\sqrt{\\\\frac {\\\\Delta_z} n} \\\\\\\\ A &=&
 crossection, Volume per length)} \\\\\\\\ R &=& \\\\frac A {P(d)}
 \\\\\\\\ P(d) &=& \\\\mbox{ the perimeter of the wetted crosssection,
 a function of reach depth} \\\\\\\\ d(V) &=& \\\\mbox{ the depth of
-the reach a function of the volume} \\\\\\\\ \\\\Delta_z &=&
-\\\\frac{z_{max} - z_{min}}{l} \\\\mbox{ Slope of the reach}
+the reach a function of the volume} \\\\\\\\ \\\\Delta_z =
+\\\\|\\\\frac{h_1 - h_2}{l} \\\\mbox{ Slope of the reach waterlevels}
 \\\\end{eqnarray*}
 
 C++ includes: ManningConnection.h ";
@@ -4564,7 +4568,14 @@ set_tracer_filter(real value) ";
 %feature("docstring") cmf::river::Manning_Kinematic "
 
 Connecting surface water bodies using a kinematic wave. Note the fixed
-gradient
+gradient \\\\begin{eqnarray*} q_{Manning}&=& A R^{\\\\frac 2 3}
+\\\\sqrt{\\\\frac {\\\\Delta_z} n} \\\\\\\\ A &=& \\\\frac V l
+\\\\mbox{, (Crosssectional area of the wetted crossection, Volume per
+length)} \\\\\\\\ R &=& \\\\frac A {P(d)} \\\\\\\\ P(d) &=& \\\\mbox{
+the perimeter of the wetted crosssection, a function of reach depth}
+\\\\\\\\ d(V) &=& \\\\mbox{ the depth of the reach a function of the
+volume} \\\\\\\\ \\\\Delta_z &=& \\\\frac{\\\\|z_1 - z_2\\\\|}{l}
+\\\\mbox{ Slope of the reach} \\\\end{eqnarray*}
 
 C++ includes: ManningConnection.h ";
 

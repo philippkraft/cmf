@@ -144,6 +144,13 @@ def updateversion(revision):
             fout.write("__version__ = '%s'\n" % revision)
         else:
             fout.write(line)
+    doxycode = file('Doxyfile').readlines()
+    fout = file('Doxyfile','w')
+    for line in doxycode:
+        if line.strip().startswith('PROJECT_NUMBER'):
+            fout.write("PROJECT_NUMBER         = %s\n" % revision)
+        else:
+            fout.write(line)
 if __name__=='__main__':
     
     ext = [make_raster(),make_cmf_core()]
