@@ -37,10 +37,13 @@ namespace cmf {
 		/// A &=& \frac V l \mbox{, (Crosssectional area of the wetted crossection, Volume per length)} \\
 		/// R &=& \frac A {P(d)} \\
 		/// P(d) &=& \mbox{ the perimeter of the wetted crosssection, a function of reach depth} \\
-		/// d(V) &=& \mbox{ the depth of the reach a function of the volume} \\
-		/// \Delta_z &=& \frac{z_{max} - z_{min}}{l} \mbox{ Slope of the reach}
+		/// d(V) &=& \mbox{ the depth of the reach, a function of the volume} \\
+		/// \Delta_z &=& \frac{\|z_1 - z_2\|}{l} \mbox{ Slope of the reach}
+		/// n&=&\mbox{Manning friction number}
 		/// \f}
-
+		/// For the kinematic wave the slope of the river bed is used as slope \f$\Delta_z = \frac{|z_1 - z_2\|}{l}\f$, while for
+		/// the diffusive wave the slope is calculated from the actual water head. \f$\Delta_z = \|\frac{h_1 - h_2}{l}\f$
+		
 		class Manning : public cmf::water::flux_connection
 		{
 		protected:
@@ -75,7 +78,7 @@ namespace cmf {
 		/// R &=& \frac A {P(d)} \\
 		/// P(d) &=& \mbox{ the perimeter of the wetted crosssection, a function of reach depth} \\
 		/// d(V) &=& \mbox{ the depth of the reach a function of the volume} \\
-		/// \Delta_z &=& \frac{z_{max} - z_{min}}{l} \mbox{ Slope of the reach}
+		/// \Delta_z = \|\frac{h_1 - h_2}{l} \mbox{ Slope of the reach waterlevels}
 		/// \f}
 
 		class Manning_Diffusive: public Manning
@@ -91,6 +94,7 @@ namespace cmf {
 				: Manning(left,right,reachtype,true)
 			{			}
 		};
+
 		/// @ingroup manning
 		/// Connecting surface water bodies using a kinematic wave. Note the fixed gradient
 		/// \f{eqnarray*}
@@ -99,9 +103,10 @@ namespace cmf {
 		/// R &=& \frac A {P(d)} \\
 		/// P(d) &=& \mbox{ the perimeter of the wetted crosssection, a function of reach depth} \\
 		/// d(V) &=& \mbox{ the depth of the reach a function of the volume} \\
-		/// \Delta_z &=& \frac{z_{max} - z_{min}}{l} \mbox{ Slope of the reach}
+		/// \Delta_z &=& \frac{\|z_1 - z_2\|}{l} \mbox{ Slope of the reach}
 		/// \f}
 
+		
 		class Manning_Kinematic: public Manning
 		{
 		private:
