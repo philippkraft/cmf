@@ -25,8 +25,8 @@ bool cmf::water::can_set_flux( flux_node::ptr source,flux_node::ptr target )
 
 real cmf::water::kinematic_wave::calc_q( cmf::math::Time t )
 {
-	real V= std::max(0.0,source->get_volume());
-	return pow(V/V0 - residual,exponent)/residencetime;
+	real V= std::max(0.0,source->get_volume()-residual);
+	return pow(V/V0,exponent)/residencetime;
 }
 
 
