@@ -125,7 +125,7 @@ real connections::Darcy::calc_q( cmf::math::Time t )
 		T = mean(T1,T2);
 
 	
-	return T*gradient*flow_width;
+	return prevent_negative_volume(T*gradient*flow_width);
 
 }
 
