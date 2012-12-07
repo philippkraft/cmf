@@ -21,6 +21,7 @@
 /************************************************************************/
 /* Infiltration                                                         */
 /************************************************************************/
+
 real cmf::upslope::connections::MatrixInfiltration::calc_q( cmf::math::Time t )
 {
 	cmf::upslope::SoilLayer::ptr soilwater=m_soilwater.lock();

@@ -172,13 +172,16 @@ namespace cmf {
 			cmf::water::WaterStorage::ptr get_snow() const;
 			real snow_coverage() const;
 			real albedo() const;
-			real surface_water_coverage() const 
-			{
-				if (m_SurfaceWaterStorage)
-					return piecewise_linear(m_SurfaceWaterStorage->get_volume()/get_area(),0,0.01);
-				else
-					return 0.0;
-			}
+			real surface_amplitude;
+			/// Returns the coverage of the surface water.
+			///
+			/// The covered fraction (0..1) is simply modelled as a piecewise linear
+			/// function of the surface water depth. If the depth is above the
+			/// aggregate height, the coverage is 1, below it is given as
+			/// \f[ c = \frac{h_{water}}{\Delta h_{surface}}\f]
+			/// with c the coverage, \f$h_{water}\f$ the depth of the surface water and
+			/// \f$\Delta h_{surface}\f$ the amplitude of the surface roughness
+			real surface_water_coverage() const;
 			/// Calculates the surface heat balance
 			/// @param t Time step
 			real heat_flux(cmf::math::Time t) const;
