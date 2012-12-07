@@ -127,7 +127,17 @@ namespace cmf {
 			};
 
 			/// @ingroup latflux
-			/// Calculates the flux using Richard's equation for adjecent layers
+			/// Calculates the flux using Richard's equation for adjacent layers
+			/// \f[
+			/// 	q_{lat} = \frac{\Psi_1 - \Psi_2}{\|C_1-C_2\|}
+			/// 	K(\theta) A
+			/// \f]
+			/// where:
+			/// - \f$q_{lat}\f$ the lateral flow in m³/day
+			/// - \f$\Psi_i\f$ the head of node i
+			/// - \f$ \|C_1-C_2\| \f$ is the distance from Cell 1 to Cell 2
+			/// - \f$K(\theta_{1,2}) = \sqrt{K(\theta_1) K(\theta_2)}\f$
+			/// - \f$A\f$ the crosssectional area of the interface between storages 1 and 2
 			class Richards_lateral: public lateral_sub_surface_flux
 			{
 			protected:
