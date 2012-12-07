@@ -332,6 +332,15 @@ real cmf::upslope::Cell::snow_coverage() const
 	else
 		return 0.0;
 }
+real cmf::upslope::Cell::surface_amplitude = 0.01;
+real cmf::upslope::Cell::surface_water_coverage() const
+{
+	if (m_SurfaceWaterStorage)
+		return piecewise_linear(m_SurfaceWaterStorage->get_depth(),0,surface_amplitude);
+	else
+		return 0.0;
+}
+
 
 double cmf::upslope::Cell::get_soildepth() const
 {
