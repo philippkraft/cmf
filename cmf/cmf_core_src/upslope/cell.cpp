@@ -40,7 +40,7 @@ cmf::upslope::Cell::~Cell()
 cmf::upslope::Cell::Cell( double _x,double _y,double _z,double area,cmf::project& _project/*=0*/ ) 
 	: x(_x),y(_y),z(_z),m_Area(area),m_project(_project),
 	  m_SurfaceWater(new cmf::water::DirichletBoundary(_project,_z)),	Id(cell_count++),
-	  m_meteo(new cmf::atmosphere::ConstantMeteorology), Tground(-300)
+	  m_meteo(new cmf::atmosphere::ConstantMeteorology), Tground(-300), surface_amplitude(0.01)
 {
 	std::stringstream sstr;
 	sstr << Id;
@@ -98,7 +98,7 @@ void cmf::upslope::Cell::add_layer(real lowerboundary,const cmf::upslope::Retent
 		std::cout << layer->Name << std::endl;
 	if (m_Layers.size() == 0)
 	{
-		new connections::CompleteInfiltration(layer,m_SurfaceWater);
+		new connections::MatrixInfiltration(layer,m_SurfaceWater);
 	}
 	if (m_Layers.size()) {
 		m_Layers[-1]->m_lower = SoilLayer::weak_ptr(layer);
@@ -332,11 +332,10 @@ real cmf::upslope::Cell::snow_coverage() const
 	else
 		return 0.0;
 }
-real cmf::upslope::Cell::surface_amplitude = 0.01;
 real cmf::upslope::Cell::surface_water_coverage() const
 {
 	if (m_SurfaceWaterStorage)
-		return piecewise_linear(m_SurfaceWaterStorage->get_depth(),0,surface_amplitude);
+		return piecewise_linear(m_SurfaceWaterStorage->get_volume()/get_area(),0,surface_amplitude);
 	else
 		return 0.0;
 }
