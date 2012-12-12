@@ -782,9 +782,11 @@ class Time(object):
         else:
             return self.to_string()
     def __nonzero__(self):
-        return self.is_not_0();
+        return self.is_not_0()
     def __rmul__(self,other):
-        return self*other;
+        return self*other
+    def __radd__(self,other):
+        return self + other
     def AsPython(self):
         d=self.AsDate()
         return datetime.datetime(d.year,d.month,d.day,d.hour,d.minute,d.second,d.ms*1000)
@@ -5433,6 +5435,7 @@ class Cell(StateVariableOwner):
         """
         return _cmf_core.Cell_albedo(self, *args, **kwargs)
 
+    surface_amplitude = _swig_property(_cmf_core.Cell_surface_amplitude_get, _cmf_core.Cell_surface_amplitude_set)
     def surface_water_coverage(self, *args, **kwargs):
         """
         surface_water_coverage(self) -> real
@@ -7918,9 +7921,13 @@ class Manning(flux_connection):
     \\mbox{, (Crosssectional area of the wetted crossection, Volume per
     length)} \\\\ R &=& \\frac A {P(d)} \\\\ P(d) &=& \\mbox{
     the perimeter of the wetted crosssection, a function of reach depth}
-    \\\\ d(V) &=& \\mbox{ the depth of the reach a function of the
-    volume} \\\\ \\Delta_z &=& \\frac{z_{max} - z_{min}}{l}
-    \\mbox{ Slope of the reach} \\end{eqnarray*}
+    \\\\ d(V) &=& \\mbox{ the depth of the reach, a function of the
+    volume} \\\\ \\Delta_z &=& \\frac{\\|z_1 - z_2\\|}{l}
+    \\mbox{ Slope of the reach} n&=&\\mbox{Manning friction number}
+    \\end{eqnarray*} For the kinematic wave the slope of the river bed
+    is used as slope $\\Delta_z = \\frac{|z_1 - z_2\\|}{l}$, while
+    for the diffusive wave the slope is calculated from the actual water
+    head. $\\Delta_z = \\|\\frac{h_1 - h_2}{l}$
 
     C++ includes: ManningConnection.h 
     """
@@ -7942,8 +7949,8 @@ class Manning_Diffusive(Manning):
     crossection, Volume per length)} \\\\ R &=& \\frac A {P(d)}
     \\\\ P(d) &=& \\mbox{ the perimeter of the wetted crosssection,
     a function of reach depth} \\\\ d(V) &=& \\mbox{ the depth of
-    the reach a function of the volume} \\\\ \\Delta_z &=&
-    \\frac{z_{max} - z_{min}}{l} \\mbox{ Slope of the reach}
+    the reach a function of the volume} \\\\ \\Delta_z =
+    \\|\\frac{h_1 - h_2}{l} \\mbox{ Slope of the reach waterlevels}
     \\end{eqnarray*}
 
     C++ includes: ManningConnection.h 
@@ -7966,7 +7973,14 @@ Manning_Diffusive.cell_connector = _cmf_core.cvar.Manning_Diffusive_cell_connect
 class Manning_Kinematic(Manning):
     """
     Connecting surface water bodies using a kinematic wave. Note the fixed
-    gradient
+    gradient \\begin{eqnarray*} q_{Manning}&=& A R^{\\frac 2 3}
+    \\sqrt{\\frac {\\Delta_z} n} \\\\ A &=& \\frac V l
+    \\mbox{, (Crosssectional area of the wetted crossection, Volume per
+    length)} \\\\ R &=& \\frac A {P(d)} \\\\ P(d) &=& \\mbox{
+    the perimeter of the wetted crosssection, a function of reach depth}
+    \\\\ d(V) &=& \\mbox{ the depth of the reach a function of the
+    volume} \\\\ \\Delta_z &=& \\frac{\\|z_1 - z_2\\|}{l}
+    \\mbox{ Slope of the reach} \\end{eqnarray*}
 
     C++ includes: ManningConnection.h 
     """
