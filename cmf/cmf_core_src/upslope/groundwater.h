@@ -50,6 +50,10 @@ namespace cmf {
 			/// Returns the top height of the aquifer in m a.s.l.
 			real get_top_height() const {
 				return position.z + 0.5 * thickness;
+			
+			}
+			virtual real get_abs_errtol(real rel_errtol) {
+				return rel_errtol * this->area * this->thickness * this->porosity;
 			}
 
 			virtual void set_potential(real new_potential);

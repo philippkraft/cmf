@@ -91,6 +91,9 @@ namespace cmf {
 				: Integrator(states,epsilon), m_y(0),cvode_mem(0),precond_mem(0),preconditioner(_preconditioner),maxl(5),LinearSolver(3),
 				MaxOrder(5),MaxNonLinearIterations(3),MaxErrorTestFailures(10),MaxConvergenceFailures(7)
 			{
+				if (epsilon<=0.0 || epsilon>1e-3) {
+					throw std::runtime_error("CVodeIntegrator: 0.0 < epsilon < 1e-3 not fullfilled");
+				}
 				cvode_mem=0;
 			}
 

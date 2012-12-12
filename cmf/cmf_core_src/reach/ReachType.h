@@ -44,7 +44,7 @@ namespace cmf {
 		public:
 			double Area;
 			double RoughThickness;
-			Prism(double base_area, double thickness_of_rough_ground=0.01) : Area(base_area),RoughThickness(thickness_of_rough_ground) {}
+			Prism(double base_area, double thickness_of_rough_ground=0.01);
 			Prism* copy() const {return new Prism(Area);}
 			/// \f$ h(V) = \frac V A_{base} \f$
 			double h(double V) const {return V/Area;}

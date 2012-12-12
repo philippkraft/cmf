@@ -19,6 +19,11 @@ cmf::upslope::aquifer::aquifer(const cmf::project& p, cmf::geometry::point _posi
 	:	WaterStorage(p,"Groundwater storage",0), 
 		area(_area),thickness(_thickness),porosity(_porosity),K(_K,_K,_K)
 {
+	if (area<=0.0) throw std::runtime_error("Area of aquifer must be positive");
+	if (thickness<=0.0) throw std::runtime_error("Thickness of aquifer must be positive");
+	if (porosity<=0.0) throw std::runtime_error("Porosity of aquifer must be positive");
+	if (_K<0.0) throw std::runtime_error("Conductivity K of aquifer must be positive or zero");
+
 	position = _position;
 }
 
