@@ -7675,6 +7675,15 @@ class aquifer(WaterStorage):
         """
         return _cmf_core.aquifer_get_K(self, *args, **kwargs)
 
+    def get_abs_errtol(self, *args, **kwargs):
+        """
+        get_abs_errtol(self, real rel_errtol) -> real
+
+        real
+        get_abs_errtol(real rel_errtol) const 
+        """
+        return _cmf_core.aquifer_get_abs_errtol(self, *args, **kwargs)
+
     def __init__(self, *args): 
         """
         __init__(self, project p, point position, real area, real thickness, 
@@ -7713,6 +7722,7 @@ class aquifer(WaterStorage):
 
     __swig_destroy__ = _cmf_core.delete_aquifer
 aquifer.get_K = new_instancemethod(_cmf_core.aquifer_get_K,None,aquifer)
+aquifer.get_abs_errtol = new_instancemethod(_cmf_core.aquifer_get_abs_errtol,None,aquifer)
 aquifer_swigregister = _cmf_core.aquifer_swigregister
 aquifer_swigregister(aquifer)
 
