@@ -79,7 +79,7 @@ void cmf::math::CVodeIntegrator::initialize()
 	N_Vector abstol=N_VNew_Serial(N);
 	realtype * abstol_data=NV_DATA_S(abstol);
 	for (int i = 0; i < N ; ++i)
-		abstol_data[i] = m_States[i]->get_abs_errtol(reltol);
+		abstol_data[i] = m_States[i]->get_abs_errtol(reltol*1e-6);
 	int flag=0;
 	// Allocate memory for solver and set the right hand side function, start time and error tolerance
 	flag=CVodeInit(cvode_mem,cmf::math::CVodeIntegrator::f,get_t().AsDays(),m_y);

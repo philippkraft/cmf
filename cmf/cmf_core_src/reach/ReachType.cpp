@@ -99,21 +99,21 @@ double SWATReachType::get_flux_crossection( double depth ) const
 }
 
 SWATReachType::SWATReachType(double l) 
-: IChannel(), m_l(l), BottomWidth(3.0),ChannelDepth(0.5),BankSlope(2.0),FloodPlainSlope(200.0)
-{
-
+: IChannel(), m_l(l), BottomWidth(3.0),ChannelDepth(0.5),BankSlope(2.0),FloodPlainSlope(200.0) {
+	if (m_l<=0.0) throw std::runtime_error("Length of a channel needs to be >0.0");
 }
 
-SWATReachType::SWATReachType(double l, double BankWidth,double get_depth ) 
+SWATReachType::SWATReachType(double l, double BankWidth,double depth ) 
 : IChannel(), m_l(l), BottomWidth(3.0),ChannelDepth(0.5),BankSlope(2.0),FloodPlainSlope(100.0)
 {
-	ChannelDepth=get_depth;
-	BottomWidth=BankWidth-2*BankSlope*get_depth;
+	if (m_l<=0.0) throw std::runtime_error("Length of a channel needs to be >0.0");
+	ChannelDepth=depth;
+	BottomWidth=BankWidth-2*BankSlope*depth;
 	///For very narrow reaches (w/d is small) use steeper banks, minimum bottom width=0.5 bank width
 	if (BottomWidth<0.5*BankWidth)
 	{
 		BottomWidth=0.5*BankWidth;
-		BankSlope=(BankWidth-BottomWidth)/(2*get_depth);
+		BankSlope=(BankWidth-BottomWidth)/(2*depth);
 	}
 }
 
@@ -154,7 +154,7 @@ double TriangularReach::get_flux_crossection( double depth ) const
 TriangularReach::TriangularReach(double l, double bankSlope/*=2*/ ) 
 : IChannel(),m_l(l),BankSlope(bankSlope)
 {
-
+	if (m_l<=0.0) throw std::runtime_error("Length of a channel needs to be >0.0m");
 }
 
 TriangularReach* TriangularReach::copy() const
@@ -193,7 +193,7 @@ RectangularReach* RectangularReach::copy() const
 RectangularReach::RectangularReach( double l,double width ) 
 : IChannel(),m_l(l), m_width(width)
 {
-
+	if (m_l<=0.0) throw std::runtime_error("Length of a channel needs to be >0.0m");
 }
 /************************************************************************/
 /* Pipe                                                                 */
@@ -243,7 +243,7 @@ PipeReach* PipeReach::copy() const
 PipeReach::PipeReach( double l,double diameter ) 
 : IChannel(),m_l(l), radius(diameter * 0.5)
 {
-
+	if (m_l<=0.0) throw std::runtime_error("Length of a channel needs to be >0.0m");
 }
 /************************************************************************/
 /* Channel                                                              */
@@ -302,7 +302,7 @@ Channel::Channel( const IVolumeHeightFunction& for_casting )
 Channel::Channel( double length ) 
 : IChannel(), m_channel(new TriangularReach(length))
 {
-
+	if (length<=0.0) throw std::runtime_error("Length of a channel needs to be >0.0m");
 }
 Channel& Channel::operator=( const IChannel& for_assignment )
 {
@@ -359,4 +359,9 @@ cmf::river::Channel::Channel()
 double cmf::river::Prism::A( double V ) const
 {
 	return Area * piecewise_linear(V/Area,0,RoughThickness);
+}
+
+cmf::river::Prism::Prism( double base_area, double thickness_of_rough_ground/*=0.01*/ ) : Area(base_area),RoughThickness(thickness_of_rough_ground)
+{
+	if (Area<=0) throw std::runtime_error("Cannot construct prism volume to height relation with a base area of zero");
 }
