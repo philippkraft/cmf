@@ -48651,6 +48651,66 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_VanGenuchtenMualem_w0_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  cmf::upslope::VanGenuchtenMualem *arg1 = (cmf::upslope::VanGenuchtenMualem *) 0 ;
+  real arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  double val2 ;
+  int ecode2 = 0 ;
+  PyObject *swig_obj[2] ;
+  
+  if (!SWIG_Python_UnpackTuple(args,"VanGenuchtenMualem_w0_set",2,2,swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__upslope__VanGenuchtenMualem, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "VanGenuchtenMualem_w0_set" "', argument " "1"" of type '" "cmf::upslope::VanGenuchtenMualem *""'"); 
+  }
+  arg1 = reinterpret_cast< cmf::upslope::VanGenuchtenMualem * >(argp1);
+  ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "VanGenuchtenMualem_w0_set" "', argument " "2"" of type '" "real""'");
+  } 
+  arg2 = static_cast< real >(val2);
+  {
+    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
+    if (arg1) (arg1)->w0 = arg2;
+    SWIG_PYTHON_THREAD_END_ALLOW;
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_VanGenuchtenMualem_w0_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  cmf::upslope::VanGenuchtenMualem *arg1 = (cmf::upslope::VanGenuchtenMualem *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  real result;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__upslope__VanGenuchtenMualem, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "VanGenuchtenMualem_w0_get" "', argument " "1"" of type '" "cmf::upslope::VanGenuchtenMualem *""'"); 
+  }
+  arg1 = reinterpret_cast< cmf::upslope::VanGenuchtenMualem * >(argp1);
+  {
+    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
+    result = (real) ((arg1)->w0);
+    SWIG_PYTHON_THREAD_END_ALLOW;
+  }
+  resultobj = SWIG_From_double(static_cast< double >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_VanGenuchtenMualem_Transmissivity(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   cmf::upslope::VanGenuchtenMualem *arg1 = (cmf::upslope::VanGenuchtenMualem *) 0 ;
@@ -71400,6 +71460,8 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"VanGenuchtenMualem_Phi_get", (PyCFunction)_wrap_VanGenuchtenMualem_Phi_get, METH_O, (char *)"VanGenuchtenMualem_Phi_get(VanGenuchtenMualem self) -> real"},
 	 { (char *)"VanGenuchtenMualem_m_set", _wrap_VanGenuchtenMualem_m_set, METH_VARARGS, (char *)"VanGenuchtenMualem_m_set(VanGenuchtenMualem self, real m)"},
 	 { (char *)"VanGenuchtenMualem_m_get", (PyCFunction)_wrap_VanGenuchtenMualem_m_get, METH_O, (char *)"VanGenuchtenMualem_m_get(VanGenuchtenMualem self) -> real"},
+	 { (char *)"VanGenuchtenMualem_w0_set", _wrap_VanGenuchtenMualem_w0_set, METH_VARARGS, (char *)"VanGenuchtenMualem_w0_set(VanGenuchtenMualem self, real w0)"},
+	 { (char *)"VanGenuchtenMualem_w0_get", (PyCFunction)_wrap_VanGenuchtenMualem_w0_get, METH_O, (char *)"VanGenuchtenMualem_w0_get(VanGenuchtenMualem self) -> real"},
 	 { (char *)"VanGenuchtenMualem_Transmissivity", (PyCFunction) _wrap_VanGenuchtenMualem_Transmissivity, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
 		"VanGenuchtenMualem_Transmissivity(VanGenuchtenMualem self, real upperDepth, real lowerDepth, \n"
 		"    real wetness) -> real\n"

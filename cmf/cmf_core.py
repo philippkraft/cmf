@@ -6319,6 +6319,7 @@ class VanGenuchtenMualem(RetentionCurve):
     Ksat = _swig_property(_cmf_core.VanGenuchtenMualem_Ksat_get, _cmf_core.VanGenuchtenMualem_Ksat_set)
     Phi = _swig_property(_cmf_core.VanGenuchtenMualem_Phi_get, _cmf_core.VanGenuchtenMualem_Phi_set)
     m = _swig_property(_cmf_core.VanGenuchtenMualem_m_get, _cmf_core.VanGenuchtenMualem_m_set)
+    w0 = _swig_property(_cmf_core.VanGenuchtenMualem_w0_get, _cmf_core.VanGenuchtenMualem_w0_set)
     def Transmissivity(self, *args, **kwargs):
         """
         Transmissivity(self, real upperDepth, real lowerDepth, real wetness) -> real

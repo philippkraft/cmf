@@ -207,7 +207,7 @@ real cmf::upslope::VanGenuchtenMualem::Wetness( real suction) const
 {
 	real _m = m<0 ? 1-1/n : m;
 	real h=-100 * suction;
-	real w0=0.99;
+	//real w0=0.99;
 	real p0=MatricPotential(w0);
 	if (suction<=p0)
 		return pow(1+pow(alpha*h,n),-_m);
@@ -223,7 +223,7 @@ real cmf::upslope::VanGenuchtenMualem::Wetness( real suction) const
 real cmf::upslope::VanGenuchtenMualem::MatricPotential( real w ) const
 {
 	real _m = m<0 ? 1-1/n : m;
-	real w0=0.99; // Wetness at the border between non-linear and linear part = wetness(h0)
+	//real w0=0.99; // Wetness at the border between non-linear and linear part = wetness(h0)
 	if (w<=w0)
 	{
 		// inverse m and inverse n
@@ -272,7 +272,7 @@ cmf::upslope::VanGenuchtenMualem* cmf::upslope::VanGenuchtenMualem::copy() const
 }
 
 cmf::upslope::VanGenuchtenMualem::VanGenuchtenMualem( real _Ksat, real _phi,real _alpha, real _n, real _m/*=-1*/ ) 
-: n(_n),alpha(_alpha),Phi(_phi),Ksat(_Ksat), m(_m)
+: n(_n),alpha(_alpha),Phi(_phi),Ksat(_Ksat), m(_m), w0(.99)
 {
 	std::stringstream msg;
 	msg << "Can't create VanGenuchten-Mualem-Retention curve with ";
