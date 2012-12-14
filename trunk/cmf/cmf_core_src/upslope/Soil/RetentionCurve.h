@@ -200,7 +200,7 @@ namespace cmf {
 		{
 		public:
 			real
-				alpha,n,Ksat,Phi,m;
+				alpha,n,Ksat,Phi,m,w0;
 			///\f[ W(\Psi) = \left(1+\left(\alpha\,100\frac{cm}{m}\Psi\right)^n\right)^{-m} \f]
 			virtual real Wetness(real suction) const;
 			/// \f[\Psi(W) = 0.01 \frac{m}{cm} \frac{{\left(1-{W}^{\frac{1}{m}}\right) }^{\frac{1}{n}}}{\alpha\,{W}^{\frac{1}{m\,n}}}  \f]
