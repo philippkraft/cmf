@@ -133,7 +133,7 @@ namespace cmf {
 			/// 	K(\theta) A
 			/// \f]
 			/// where:
-			/// - \f$q_{lat}\f$ the lateral flow in m³/day
+			/// - \f$q_{lat}\f$ the lateral flow in \f$m^3/day\f$
 			/// - \f$\Psi_i\f$ the head of node i
 			/// - \f$ \|C_1-C_2\| \f$ is the distance from Cell 1 to Cell 2
 			/// - \f$K(\theta_{1,2}) = \sqrt{K(\theta_1) K(\theta_2)}\f$
