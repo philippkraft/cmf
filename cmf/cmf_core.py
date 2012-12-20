@@ -711,6 +711,7 @@ class Time(object):
     def __mul__(self, *args):
         """
         __mul__(self, double x) -> Time
+        __mul__(self, long long x) -> Time
         __mul__(self, int x) -> Time
         """
         return _cmf_core.Time___mul__(self, *args)
@@ -718,6 +719,7 @@ class Time(object):
     def __imul__(self, *args):
         """
         __imul__(self, double x) -> Time
+        __imul__(self, long long x) -> Time
         __imul__(self, int x) -> Time
         """
         return _cmf_core.Time___imul__(self, *args)
@@ -725,6 +727,7 @@ class Time(object):
     def __idiv__(self, *args):
         """
         __idiv__(self, double x) -> Time
+        __idiv__(self, long long x) -> Time
         __idiv__(self, int x) -> Time
         """
         return _cmf_core.Time___idiv__(self, *args)
@@ -736,6 +739,7 @@ class Time(object):
     def __div__(self, *args):
         """
         __div__(self, double x) -> Time
+        __div__(self, long long x) -> Time
         __div__(self, int x) -> Time
         __div__(self, Time t1) -> double
         """

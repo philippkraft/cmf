@@ -135,6 +135,7 @@ namespace cmf {
 				result.m_data->values.push_back(scalar);
 				return result;
 			}
+			static timeseries from_file(std::string filename);
 
 
 #ifndef SWIG

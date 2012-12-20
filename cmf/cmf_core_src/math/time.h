@@ -117,7 +117,6 @@ namespace cmf {
 		{
 		private:
 			long long m_time_in_ms;
-			explicit Time(long long ms):m_time_in_ms(ms) {}
 #ifndef SWIG
 			friend Time timespan(long long);
 #endif
@@ -136,6 +135,7 @@ namespace cmf {
 			Time():m_time_in_ms(0) {}
 			//@}
 #ifndef SWIG
+			explicit Time(long long ms):m_time_in_ms(ms) {}
 			Time& operator=(const Time& right);
 			
 			operator bool() const {
@@ -180,6 +180,14 @@ namespace cmf {
 			Time& operator*=(double x)							{m_time_in_ms= (long long)(m_time_in_ms * x); return *this;}
 			/// Time /= double
 			Time& operator/=(double x)							{m_time_in_ms= (long long)(m_time_in_ms / x); return *this;}
+			/// Time = Time * int
+			Time operator*(long long x) const           {return Time((long long)(m_time_in_ms*x));}
+			/// Time = Time / int
+			Time operator/(long long x) const           {return Time((long long)(m_time_in_ms/x));}
+			/// Time *= int
+			Time& operator*=(long long x)						  	{m_time_in_ms*= x; return *this;}
+			/// Time /= int
+			Time& operator/=(long long x)						  	{m_time_in_ms/= x; return *this;}
 			/// Time = Time * int
 			Time operator*(int x) const           {return Time((long long)(m_time_in_ms*x));}
 			/// Time = Time / int
