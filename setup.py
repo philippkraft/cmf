@@ -88,8 +88,9 @@ def make_cmf_core():
     cmf_files=[]
     cmf_headers=[]
     for root,dirs,files in os.walk('cmf/cmf_core_src'):
-        cmf_files.extend(os.path.join(root,f) for f in files if is_source_file(f) and f!='cmf_wrap.cpp')
-        cmf_headers.extend(os.path.join(root,f) for f in files if f.endswith('.h'))
+        if os.path.basename(root)!='debug_scripts':
+            cmf_files.extend(os.path.join(root,f) for f in files if is_source_file(f) and f!='cmf_wrap.cpp')
+            cmf_headers.extend(os.path.join(root,f) for f in files if f.endswith('.h'))
     print "Compiling %i source files" % (len(cmf_files)+1)
     if swig:
         cmf_files.append("cmf/cmf_core_src/cmf.i")

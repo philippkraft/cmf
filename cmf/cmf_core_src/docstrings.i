@@ -1122,7 +1122,16 @@ snow_coverage() const ";
 %feature("docstring")  cmf::upslope::Cell::albedo "real albedo()
 const ";
 
-%feature("docstring")  cmf::upslope::Cell::surface_water_coverage "real surface_water_coverage() const ";
+%feature("docstring")  cmf::upslope::Cell::surface_water_coverage "real surface_water_coverage() const
+
+Returns the coverage of the surface water.
+
+The covered fraction (0..1) is simply modelled as a piecewise linear
+function of the surface water depth. If the depth is above the
+aggregate height, the coverage is 1, below it is given as \\\\[ c =
+\\\\frac{h_{water}}{\\\\Delta h_{surface}}\\\\] with c the coverage,
+$h_{water}$ the depth of the surface water and $\\\\Delta h_{surface}$
+the amplitude of the surface roughness ";
 
 %feature("docstring")  cmf::upslope::Cell::heat_flux "real
 heat_flux(cmf::math::Time t) const
@@ -4648,13 +4657,30 @@ set_tracer_filter(real value) ";
 // File: classcmf_1_1upslope_1_1connections_1_1_matrix_infiltration.xml
 %feature("docstring") cmf::upslope::connections::MatrixInfiltration "
 
-Connects the surfacewater and the most upper layer
+Connects the surfacewater and the most upper layer using a Richards
+equation like infiltration model.
 
-If UpslopeCell::InfiltrationExcess and Cell is not saturated \\\\[ K_I
-= \\\\min\\\\left(\\\\frac{\\\\rho_{wg} \\\\Delta
-z-\\\\Psi_M}{\\\\Delta z \\\\rho_{wg}}
-K\\\\left(\\\\theta\\\\right),\\\\sum q_{surface\\\\ in}\\\\right)
-\\\\] else \\\\[ K_I = \\\\sum q_{surface\\\\ in} \\\\]
+The potential infiltration is calculated according to the Richards
+equation. The gradient is from the cell surface to the center of the
+first layer and the conductivity is the geometric mean of the wetted
+surface ( $K_{sat}$) and the conductivity of the layer center (
+$K(\\\\theta_{layer})$ \\\\begin{eqnarray*} q_{max} &=&
+\\\\frac{\\\\Psi_{surface} - \\\\Psi_{soil}}{\\\\Delta z} K A_{cell}
+\\\\\\\\ K &=& \\\\sqrt{K\\\\left(\\\\theta_{layer}\\\\right)K_{sat}}
+\\\\\\\\ \\\\Delta z &=& z_{cell} - z_{layer center}
+\\\\end{eqnarray*}
+
+If the surface water is modeled by a distinct water storage, the
+actual infiltration is given as the product of the potential
+infiltration with the coverage of the surface water
+cmf::upslope::Cell::surface_water_coverage \\\\[q_{act} = q_{max}
+\\\\frac{A_{water}}{A_{cell}}\\\\]
+
+If the surface water is no storage on its own, but just a water
+distribution node, the actual infiltration is the minimum of the
+potential infiltration and the current inflow (rain, snow melt) to the
+surface \\\\[q_{act} = \\\\min\\\\left(q_{max},
+\\\\sum{q_{in,surfacewater}}\\\\right)\\\\]
 
 C++ includes: infiltration.h ";
 
@@ -7433,7 +7459,17 @@ short_string() const ";
 // File: classcmf_1_1upslope_1_1connections_1_1_richards__lateral.xml
 %feature("docstring") cmf::upslope::connections::Richards_lateral "
 
-Calculates the flux using Richard's equation for adjecent layers
+Calculates the flux using Richard's equation for adjacent layers \\\\[
+q_{lat} = \\\\frac{\\\\Psi_1 - \\\\Psi_2}{\\\\|C_1-C_2\\\\|}
+K(\\\\theta) A \\\\] where:  $q_{lat}$ the lateral flow in $m^3/day$
+
+$\\\\Psi_i$ the head of node i
+
+$ \\\\|C_1-C_2\\\\| $ is the distance from Cell 1 to Cell 2
+
+$K(\\\\theta_{1,2}) = \\\\sqrt{K(\\\\theta_1) K(\\\\theta_2)}$
+
+$A$ the crosssectional area of the interface between storages 1 and 2
 
 C++ includes: subsurfacefluxes.h ";
 
