@@ -213,7 +213,7 @@ real cmf::upslope::VanGenuchtenMualem::Wetness( real suction) const
 		return pow(1+pow(alpha*h,n),-_m);
 	else
 	{
-		real dp0=1e6*(p0-MatricPotential(w0-1e-6));
+		real dp0=1e6*(p0-MatricPotential(w0-1e-9));
 		cmf::upslope::parabolic_extrapolation p(w0,p0,dp0);
 		return p.get_wetness(suction);
 	}

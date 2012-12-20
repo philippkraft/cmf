@@ -75,7 +75,29 @@ namespace cmf {
 				}
 			};
 			/// @ingroup infiltration
-			/// Connection for infiltration with saturated conductivity
+			/// Connects the surfacewater and the most upper layer using a Richards equation like infiltration
+			/// model but assuming saturated conductivity as the potential infiltration rate into the first layer.
+			///
+			/// The potential infiltration is calculated according to the Richards equation.
+			/// The gradient is from the cell surface to the center of the first layer and the
+			/// conductivity is \f$K_{sat}\f$
+			/// \f{eqnarray*}
+			/// q_{max} &=& \frac{\Psi_{surface} - \Psi_{soil}}{\Delta z} K A_{cell} \\
+			/// K &=& \sqrt{K\left(\theta_{layer}\right)K_{sat}} \\
+			/// \Delta z &=& z_{cell} - z_{layer center}
+			/// \f}
+			///
+			/// If the surface water is modeled by a distinct water storage, the actual infiltration is
+			/// given as the product of the potential infiltration with the coverage of the surface water
+			/// cmf::upslope::Cell::surface_water_coverage
+			/// \f[q_{act} = q_{max} \frac{A_{water}}{A_{cell}}\f]
+			///
+			/// If the surface water is no storage on its own, but just a water distribution node,
+			/// the actual infiltration is the minimum of the potential infiltration and the current
+			/// inflow (rain, snow melt) to the surface
+			/// \f[q_{act} = \min\left(q_{max}, \sum{q_{in,surfacewater}}\right)\f]
+
+
 			class CompleteInfiltration : public cmf::water::flux_connection {
 			protected:
 				std::tr1::weak_ptr<cmf::upslope::SoilLayer> m_soilwater;

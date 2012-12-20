@@ -3786,6 +3786,43 @@ SWIG_AsVal_char (PyObject * obj, char *val)
 }
 
 
+SWIGINTERN int
+SWIG_AsVal_long_SS_long (PyObject *obj, long long *val)
+{
+  int res = SWIG_TypeError;
+  if (PyLong_Check(obj)) {
+    long long v = PyLong_AsLongLong(obj);
+    if (!PyErr_Occurred()) {
+      if (val) *val = v;
+      return SWIG_OK;
+    } else {
+      PyErr_Clear();
+    }
+  } else {
+    long v;
+    res = SWIG_AsVal_long (obj,&v);
+    if (SWIG_IsOK(res)) {
+      if (val) *val = v;
+      return res;
+    }
+  }
+#ifdef SWIG_PYTHON_CAST_MODE
+  {
+    const double mant_max = 1LL << DBL_MANT_DIG;
+    const double mant_min = -mant_max;
+    double d;
+    res = SWIG_AsVal_double (obj,&d);
+    if (SWIG_IsOK(res) && SWIG_CanCastAsInteger(&d, mant_min, mant_max)) {
+      if (val) *val = (long long)(d);
+      return SWIG_AddCast(res);
+    }
+    res = SWIG_TypeError;
+  }
+#endif
+  return res;
+}
+
+
 #define cmf_math_timeseries_begin_get(self_) new cmf::math::Time(self_->begin())
   
 
@@ -9351,6 +9388,182 @@ fail:
 SWIGINTERN PyObject *_wrap_Time___mul____SWIG_1(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   cmf::math::Time *arg1 = (cmf::math::Time *) 0 ;
+  long long arg2 ;
+  long long val2 ;
+  int ecode2 = 0 ;
+  cmf::math::Time result;
+  
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  // typemap Time*
+  int timeconvert=convert_datetime_to_cmftime(swig_obj[0], &arg1);
+  if (!SWIG_IsOK(timeconvert))  {
+    SWIG_exception_fail(SWIG_TypeError,"Can't convert input value to cmf.Time object");
+  }
+  ecode2 = SWIG_AsVal_long_SS_long(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Time___mul__" "', argument " "2"" of type '" "long long""'");
+  } 
+  arg2 = static_cast< long long >(val2);
+  {
+    try {
+      {
+        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
+        result = ((cmf::math::Time const *)arg1)->operator *(arg2);
+        SWIG_PYTHON_THREAD_END_ALLOW;
+      }
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+    
+  }
+  resultobj = SWIG_NewPointerObj((new cmf::math::Time(static_cast< const cmf::math::Time& >(result))), SWIGTYPE_p_cmf__math__Time, SWIG_POINTER_OWN |  0 );
+  // %typemap(freearg) cmf::math::Time *
+  if (SWIG_IsNewObj(timeconvert))  delete arg1;
+  return resultobj;
+fail:
+  // %typemap(freearg) cmf::math::Time *
+  if (SWIG_IsNewObj(timeconvert))  delete arg1;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Time___div____SWIG_1(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  cmf::math::Time *arg1 = (cmf::math::Time *) 0 ;
+  long long arg2 ;
+  long long val2 ;
+  int ecode2 = 0 ;
+  cmf::math::Time result;
+  
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  // typemap Time*
+  int timeconvert=convert_datetime_to_cmftime(swig_obj[0], &arg1);
+  if (!SWIG_IsOK(timeconvert))  {
+    SWIG_exception_fail(SWIG_TypeError,"Can't convert input value to cmf.Time object");
+  }
+  ecode2 = SWIG_AsVal_long_SS_long(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Time___div__" "', argument " "2"" of type '" "long long""'");
+  } 
+  arg2 = static_cast< long long >(val2);
+  {
+    try {
+      {
+        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
+        result = ((cmf::math::Time const *)arg1)->operator /(arg2);
+        SWIG_PYTHON_THREAD_END_ALLOW;
+      }
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+    
+  }
+  resultobj = SWIG_NewPointerObj((new cmf::math::Time(static_cast< const cmf::math::Time& >(result))), SWIGTYPE_p_cmf__math__Time, SWIG_POINTER_OWN |  0 );
+  // %typemap(freearg) cmf::math::Time *
+  if (SWIG_IsNewObj(timeconvert))  delete arg1;
+  return resultobj;
+fail:
+  // %typemap(freearg) cmf::math::Time *
+  if (SWIG_IsNewObj(timeconvert))  delete arg1;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Time___imul____SWIG_1(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  cmf::math::Time *arg1 = (cmf::math::Time *) 0 ;
+  long long arg2 ;
+  long long val2 ;
+  int ecode2 = 0 ;
+  cmf::math::Time *result = 0 ;
+  
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  // typemap Time*
+  int timeconvert=convert_datetime_to_cmftime(swig_obj[0], &arg1);
+  if (!SWIG_IsOK(timeconvert))  {
+    SWIG_exception_fail(SWIG_TypeError,"Can't convert input value to cmf.Time object");
+  }
+  ecode2 = SWIG_AsVal_long_SS_long(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Time___imul__" "', argument " "2"" of type '" "long long""'");
+  } 
+  arg2 = static_cast< long long >(val2);
+  {
+    try {
+      {
+        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
+        result = (cmf::math::Time *) &(arg1)->operator *=(arg2);
+        SWIG_PYTHON_THREAD_END_ALLOW;
+      }
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_cmf__math__Time, SWIG_POINTER_OWN |  0 );
+  // %typemap(freearg) cmf::math::Time *
+  if (SWIG_IsNewObj(timeconvert))  delete arg1;
+  return resultobj;
+fail:
+  // %typemap(freearg) cmf::math::Time *
+  if (SWIG_IsNewObj(timeconvert))  delete arg1;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Time___idiv____SWIG_1(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  cmf::math::Time *arg1 = (cmf::math::Time *) 0 ;
+  long long arg2 ;
+  long long val2 ;
+  int ecode2 = 0 ;
+  cmf::math::Time *result = 0 ;
+  
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  // typemap Time*
+  int timeconvert=convert_datetime_to_cmftime(swig_obj[0], &arg1);
+  if (!SWIG_IsOK(timeconvert))  {
+    SWIG_exception_fail(SWIG_TypeError,"Can't convert input value to cmf.Time object");
+  }
+  ecode2 = SWIG_AsVal_long_SS_long(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Time___idiv__" "', argument " "2"" of type '" "long long""'");
+  } 
+  arg2 = static_cast< long long >(val2);
+  {
+    try {
+      {
+        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
+        result = (cmf::math::Time *) &(arg1)->operator /=(arg2);
+        SWIG_PYTHON_THREAD_END_ALLOW;
+      }
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_cmf__math__Time, SWIG_POINTER_OWN |  0 );
+  // %typemap(freearg) cmf::math::Time *
+  if (SWIG_IsNewObj(timeconvert))  delete arg1;
+  return resultobj;
+fail:
+  // %typemap(freearg) cmf::math::Time *
+  if (SWIG_IsNewObj(timeconvert))  delete arg1;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Time___mul____SWIG_2(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  cmf::math::Time *arg1 = (cmf::math::Time *) 0 ;
   int arg2 ;
   int val2 ;
   int ecode2 = 0 ;
@@ -9452,7 +9665,7 @@ SWIGINTERN PyObject *_wrap_Time___mul__(PyObject *self, PyObject *args) {
       _pi *= SWIG_MAXCASTRANK;
       {
         {
-          int res = SWIG_AsVal_double(argv[1], NULL);
+          int res = SWIG_AsVal_long_SS_long(argv[1], NULL);
           _v = SWIG_CheckState(res);
         }
       }
@@ -9467,11 +9680,46 @@ SWIGINTERN PyObject *_wrap_Time___mul__(PyObject *self, PyObject *args) {
     }
   check_2:
     
+    if (argc == 2) {
+      SWIG_TypeRank _ranki = 0;
+      SWIG_TypeRank _rankm = 0;
+      SWIG_TypeRank _pi = 1;
+      int _v = 0;
+      {
+        {
+          void * pt;
+          int res=SWIG_ConvertPtr(argv[0],&pt,SWIGTYPE_p_cmf__math__Time,0);
+          _v=SWIG_IsOK(res) || PyDateTime_Check(argv[0]) || PyDelta_Check(argv[0]) || PyDate_Check(argv[0]);
+        }
+      }
+      if (!_v) goto check_3;
+      _ranki += _v*_pi;
+      _rankm += _pi;
+      _pi *= SWIG_MAXCASTRANK;
+      {
+        {
+          int res = SWIG_AsVal_double(argv[1], NULL);
+          _v = SWIG_CheckState(res);
+        }
+      }
+      if (!_v) goto check_3;
+      _ranki += _v*_pi;
+      _rankm += _pi;
+      _pi *= SWIG_MAXCASTRANK;
+      if (!_index || (_ranki < _rank)) {
+        _rank = _ranki; _index = 3;
+        if (_rank == _rankm) goto dispatch;
+      }
+    }
+  check_3:
+    
   dispatch:
     switch(_index) {
     case 1:
-      return _wrap_Time___mul____SWIG_1(self, argc, argv);
+      return _wrap_Time___mul____SWIG_2(self, argc, argv);
     case 2:
+      return _wrap_Time___mul____SWIG_1(self, argc, argv);
+    case 3:
       return _wrap_Time___mul____SWIG_0(self, argc, argv);
     }
   }
@@ -9482,7 +9730,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Time___div____SWIG_1(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_Time___div____SWIG_2(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   cmf::math::Time *arg1 = (cmf::math::Time *) 0 ;
   int arg2 ;
@@ -9526,7 +9774,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Time___imul____SWIG_1(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_Time___imul____SWIG_2(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   cmf::math::Time *arg1 = (cmf::math::Time *) 0 ;
   int arg2 ;
@@ -9630,7 +9878,7 @@ SWIGINTERN PyObject *_wrap_Time___imul__(PyObject *self, PyObject *args) {
       _pi *= SWIG_MAXCASTRANK;
       {
         {
-          int res = SWIG_AsVal_double(argv[1], NULL);
+          int res = SWIG_AsVal_long_SS_long(argv[1], NULL);
           _v = SWIG_CheckState(res);
         }
       }
@@ -9645,11 +9893,46 @@ SWIGINTERN PyObject *_wrap_Time___imul__(PyObject *self, PyObject *args) {
     }
   check_2:
     
+    if (argc == 2) {
+      SWIG_TypeRank _ranki = 0;
+      SWIG_TypeRank _rankm = 0;
+      SWIG_TypeRank _pi = 1;
+      int _v = 0;
+      {
+        {
+          void * pt;
+          int res=SWIG_ConvertPtr(argv[0],&pt,SWIGTYPE_p_cmf__math__Time,0);
+          _v=SWIG_IsOK(res) || PyDateTime_Check(argv[0]) || PyDelta_Check(argv[0]) || PyDate_Check(argv[0]);
+        }
+      }
+      if (!_v) goto check_3;
+      _ranki += _v*_pi;
+      _rankm += _pi;
+      _pi *= SWIG_MAXCASTRANK;
+      {
+        {
+          int res = SWIG_AsVal_double(argv[1], NULL);
+          _v = SWIG_CheckState(res);
+        }
+      }
+      if (!_v) goto check_3;
+      _ranki += _v*_pi;
+      _rankm += _pi;
+      _pi *= SWIG_MAXCASTRANK;
+      if (!_index || (_ranki < _rank)) {
+        _rank = _ranki; _index = 3;
+        if (_rank == _rankm) goto dispatch;
+      }
+    }
+  check_3:
+    
   dispatch:
     switch(_index) {
     case 1:
-      return _wrap_Time___imul____SWIG_1(self, argc, argv);
+      return _wrap_Time___imul____SWIG_2(self, argc, argv);
     case 2:
+      return _wrap_Time___imul____SWIG_1(self, argc, argv);
+    case 3:
       return _wrap_Time___imul____SWIG_0(self, argc, argv);
     }
   }
@@ -9658,12 +9941,13 @@ fail:
   SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'Time___imul__'.\n"
     "  Possible C/C++ prototypes are:\n"
     "    cmf::math::Time::operator *=(double)\n"
+    "    cmf::math::Time::operator *=(long long)\n"
     "    cmf::math::Time::operator *=(int)\n");
   return 0;
 }
 
 
-SWIGINTERN PyObject *_wrap_Time___idiv____SWIG_1(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_Time___idiv____SWIG_2(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   cmf::math::Time *arg1 = (cmf::math::Time *) 0 ;
   int arg2 ;
@@ -9767,7 +10051,7 @@ SWIGINTERN PyObject *_wrap_Time___idiv__(PyObject *self, PyObject *args) {
       _pi *= SWIG_MAXCASTRANK;
       {
         {
-          int res = SWIG_AsVal_double(argv[1], NULL);
+          int res = SWIG_AsVal_long_SS_long(argv[1], NULL);
           _v = SWIG_CheckState(res);
         }
       }
@@ -9782,11 +10066,46 @@ SWIGINTERN PyObject *_wrap_Time___idiv__(PyObject *self, PyObject *args) {
     }
   check_2:
     
+    if (argc == 2) {
+      SWIG_TypeRank _ranki = 0;
+      SWIG_TypeRank _rankm = 0;
+      SWIG_TypeRank _pi = 1;
+      int _v = 0;
+      {
+        {
+          void * pt;
+          int res=SWIG_ConvertPtr(argv[0],&pt,SWIGTYPE_p_cmf__math__Time,0);
+          _v=SWIG_IsOK(res) || PyDateTime_Check(argv[0]) || PyDelta_Check(argv[0]) || PyDate_Check(argv[0]);
+        }
+      }
+      if (!_v) goto check_3;
+      _ranki += _v*_pi;
+      _rankm += _pi;
+      _pi *= SWIG_MAXCASTRANK;
+      {
+        {
+          int res = SWIG_AsVal_double(argv[1], NULL);
+          _v = SWIG_CheckState(res);
+        }
+      }
+      if (!_v) goto check_3;
+      _ranki += _v*_pi;
+      _rankm += _pi;
+      _pi *= SWIG_MAXCASTRANK;
+      if (!_index || (_ranki < _rank)) {
+        _rank = _ranki; _index = 3;
+        if (_rank == _rankm) goto dispatch;
+      }
+    }
+  check_3:
+    
   dispatch:
     switch(_index) {
     case 1:
-      return _wrap_Time___idiv____SWIG_1(self, argc, argv);
+      return _wrap_Time___idiv____SWIG_2(self, argc, argv);
     case 2:
+      return _wrap_Time___idiv____SWIG_1(self, argc, argv);
+    case 3:
       return _wrap_Time___idiv____SWIG_0(self, argc, argv);
     }
   }
@@ -9795,6 +10114,7 @@ fail:
   SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'Time___idiv__'.\n"
     "  Possible C/C++ prototypes are:\n"
     "    cmf::math::Time::operator /=(double)\n"
+    "    cmf::math::Time::operator /=(long long)\n"
     "    cmf::math::Time::operator /=(int)\n");
   return 0;
 }
@@ -9851,7 +10171,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Time___div____SWIG_2(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_Time___div____SWIG_3(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   cmf::math::Time *arg1 = (cmf::math::Time *) 0 ;
   cmf::math::Time *arg2 = 0 ;
@@ -9957,7 +10277,7 @@ SWIGINTERN PyObject *_wrap_Time___div__(PyObject *self, PyObject *args) {
       _pi *= SWIG_MAXCASTRANK;
       {
         {
-          int res = SWIG_AsVal_double(argv[1], NULL);
+          int res = SWIG_AsVal_long_SS_long(argv[1], NULL);
           _v = SWIG_CheckState(res);
         }
       }
@@ -9990,9 +10310,8 @@ SWIGINTERN PyObject *_wrap_Time___div__(PyObject *self, PyObject *args) {
       _pi *= SWIG_MAXCASTRANK;
       {
         {
-          void * pt;
-          int res=SWIG_ConvertPtr(argv[1],&pt,SWIGTYPE_p_cmf__math__Time,0);
-          _v=SWIG_IsOK(res) || PyDateTime_Check(argv[1]) || PyDelta_Check(argv[1]) || PyDate_Check(argv[1]);
+          int res = SWIG_AsVal_double(argv[1], NULL);
+          _v = SWIG_CheckState(res);
         }
       }
       if (!_v) goto check_3;
@@ -10006,14 +10325,50 @@ SWIGINTERN PyObject *_wrap_Time___div__(PyObject *self, PyObject *args) {
     }
   check_3:
     
+    if (argc == 2) {
+      SWIG_TypeRank _ranki = 0;
+      SWIG_TypeRank _rankm = 0;
+      SWIG_TypeRank _pi = 1;
+      int _v = 0;
+      {
+        {
+          void * pt;
+          int res=SWIG_ConvertPtr(argv[0],&pt,SWIGTYPE_p_cmf__math__Time,0);
+          _v=SWIG_IsOK(res) || PyDateTime_Check(argv[0]) || PyDelta_Check(argv[0]) || PyDate_Check(argv[0]);
+        }
+      }
+      if (!_v) goto check_4;
+      _ranki += _v*_pi;
+      _rankm += _pi;
+      _pi *= SWIG_MAXCASTRANK;
+      {
+        {
+          void * pt;
+          int res=SWIG_ConvertPtr(argv[1],&pt,SWIGTYPE_p_cmf__math__Time,0);
+          _v=SWIG_IsOK(res) || PyDateTime_Check(argv[1]) || PyDelta_Check(argv[1]) || PyDate_Check(argv[1]);
+        }
+      }
+      if (!_v) goto check_4;
+      _ranki += _v*_pi;
+      _rankm += _pi;
+      _pi *= SWIG_MAXCASTRANK;
+      if (!_index || (_ranki < _rank)) {
+        _rank = _ranki; _index = 4;
+        if (_rank == _rankm) goto dispatch;
+      }
+    }
+  check_4:
+    
   dispatch:
     switch(_index) {
     case 1:
-      return _wrap_Time___div____SWIG_1(self, argc, argv);
-    case 2:
-      return _wrap_Time___div____SWIG_0(self, argc, argv);
-    case 3:
       return _wrap_Time___div____SWIG_2(self, argc, argv);
+    case 2:
+      return _wrap_Time___div____SWIG_1(self, argc, argv);
+    case 3:
+      return _wrap_Time___div____SWIG_0(self, argc, argv);
+    case 4:
+      return _wrap_Time___div____SWIG_3(self, argc, argv);
     }
   }
   
@@ -68395,19 +68750,23 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"Time___mod__", (PyCFunction) _wrap_Time___mod__, METH_VARARGS | METH_KEYWORDS, (char *)"Time___mod__(Time self, Time t1) -> Time"},
 	 { (char *)"Time___mul__", _wrap_Time___mul__, METH_VARARGS, (char *)"\n"
 		"__mul__(double x) -> Time\n"
+		"__mul__(long long x) -> Time\n"
 		"Time___mul__(Time self, int x) -> Time\n"
 		""},
 	 { (char *)"Time___imul__", _wrap_Time___imul__, METH_VARARGS, (char *)"\n"
 		"__imul__(double x) -> Time\n"
+		"__imul__(long long x) -> Time\n"
 		"Time___imul__(Time self, int x) -> Time\n"
 		""},
 	 { (char *)"Time___idiv__", _wrap_Time___idiv__, METH_VARARGS, (char *)"\n"
 		"__idiv__(double x) -> Time\n"
+		"__idiv__(long long x) -> Time\n"
 		"Time___idiv__(Time self, int x) -> Time\n"
 		""},
 	 { (char *)"Time___imod__", (PyCFunction) _wrap_Time___imod__, METH_VARARGS | METH_KEYWORDS, (char *)"Time___imod__(Time self, Time t1) -> Time"},
 	 { (char *)"Time___div__", _wrap_Time___div__, METH_VARARGS, (char *)"\n"
 		"__div__(double x) -> Time\n"
+		"__div__(long long x) -> Time\n"
 		"__div__(int x) -> Time\n"
 		"Time___div__(Time self, Time t1) -> double\n"
 		""},

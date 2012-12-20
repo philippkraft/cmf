@@ -6,22 +6,16 @@ EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
-		distutil|Win32 = distutil|Win32
-		MinSizeRel|Win32 = MinSizeRel|Win32
+		Release_exe|Win32 = Release_exe|Win32
 		Release|Win32 = Release|Win32
-		RelWithDebInfo|Win32 = RelWithDebInfo|Win32
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{16A0D5F0-F9D9-4E6D-8747-80D3CFDC980A}.Debug|Win32.ActiveCfg = Debug|Win32
 		{16A0D5F0-F9D9-4E6D-8747-80D3CFDC980A}.Debug|Win32.Build.0 = Debug|Win32
-		{16A0D5F0-F9D9-4E6D-8747-80D3CFDC980A}.distutil|Win32.ActiveCfg = distutil|Win32
-		{16A0D5F0-F9D9-4E6D-8747-80D3CFDC980A}.distutil|Win32.Build.0 = distutil|Win32
-		{16A0D5F0-F9D9-4E6D-8747-80D3CFDC980A}.MinSizeRel|Win32.ActiveCfg = distutil|Win32
-		{16A0D5F0-F9D9-4E6D-8747-80D3CFDC980A}.MinSizeRel|Win32.Build.0 = distutil|Win32
+		{16A0D5F0-F9D9-4E6D-8747-80D3CFDC980A}.Release_exe|Win32.ActiveCfg = Release_exe|Win32
+		{16A0D5F0-F9D9-4E6D-8747-80D3CFDC980A}.Release_exe|Win32.Build.0 = Release_exe|Win32
 		{16A0D5F0-F9D9-4E6D-8747-80D3CFDC980A}.Release|Win32.ActiveCfg = Release|Win32
 		{16A0D5F0-F9D9-4E6D-8747-80D3CFDC980A}.Release|Win32.Build.0 = Release|Win32
-		{16A0D5F0-F9D9-4E6D-8747-80D3CFDC980A}.RelWithDebInfo|Win32.ActiveCfg = Release|Win32
-		{16A0D5F0-F9D9-4E6D-8747-80D3CFDC980A}.RelWithDebInfo|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
