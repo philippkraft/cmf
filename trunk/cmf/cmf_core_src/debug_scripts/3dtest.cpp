@@ -5,15 +5,15 @@
 #include <string>
 #include <exception>
 #include "../project.h"
-#include "../atmosphere/Meteorology.h"
-#include "../Upslope/Cell.h"
-#include "../Upslope/vegetation/ET.h"
-#include "../math/Integrators/cvodeIntegrator.h"
-#include "../Upslope/Soil/RetentionCurve.h"
-#include "../Upslope/connections/subsurfacefluxes.h"
-#include "../Upslope/connections/infiltration.h"
-#include "../Upslope/connections/percolation.h"
-#include "../Reach/ManningConnection.h"
+#include "../atmosphere/meteorology.h"
+#include "../upslope/cell.h"
+#include "../upslope/vegetation/ET.h"
+#include "../math/Integrators/cvodeintegrator.h"
+#include "../upslope/Soil/RetentionCurve.h"
+#include "../upslope/connections/subsurfacefluxes.h"
+#include "../upslope/connections/infiltration.h"
+#include "../upslope/connections/percolation.h"
+#include "../reach/ManningConnection.h"
 
 /// Main function of the program. Only for debugging and testing, the real CMF<sub>lib</sub> will be compiled as a DLL and the 
 /// main function will be replaced by Python code

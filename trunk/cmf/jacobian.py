@@ -27,7 +27,7 @@ class Jacobian(object):
     def dxdt(self):
         """Returns the current right hand side of the ODE for the current states and the current time
         """
-        return self.solver.get_dxdt(solver.t)
+        return self.solver.get_dxdt(self.t)
     def __len__(self):
         return self.solver.size()
     @property
@@ -36,9 +36,12 @@ class Jacobian(object):
     def __call__(self):
         dxdt = self.dxdt
         jac = self.jacobian
-        for i in range(len(solver)):
-            solver.set_state(i,solver.get_state(i)+self.delta)
-            jac[i] = (solver.get_dxdt(solver.t) - dxdt)/self.delta
-            solver.set_state(i, solver.get_state(i)-self.delta)
+        for i in range(len(self)):
+            # Change state i to S[i]+delta
+            self.solver.set_state(i,self.solver.get_state(i)+self.delta)
+            # Get approx. derivate df/dS = (f(S_i)-f(S))/delta
+            jac[i] = (self.solver.get_dxdt(self.t) - dxdt)/self.delta
+            # Reset change of S[i]
+            self.solver.set_state(i, self.solver.get_state(i)-self.delta)
         return jac
         

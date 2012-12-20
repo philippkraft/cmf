@@ -43,7 +43,7 @@ else:
 
 
 # Loading a height model from an ESRI ASCII raster dataset
-dem=Raster('small_dem.dem') * .25
+dem=Raster('small_dem.dem')
 
 # Creates cells for each grid cell
 cells = cmf.cells_from_dem(p,dem)
