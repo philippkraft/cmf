@@ -37,7 +37,7 @@ boost_path = os.environ.get('BOOSTDIR',r"..\boost_1_41_0")
 import datetime
 import shutil
 from distutils.core import setup,Extension
-
+from distutils.version import LooseVersion as Version
 try:
     # Import a function to get a path to the include directories of numpy
     from numpy import get_include as get_numpy_include
@@ -133,9 +133,8 @@ def get_revision():
     pipe = os.popen('svnversion')
     res=pipe.read().strip()
     if ':' in res:
-        return res.split(':')[0]
-    else:
-        return res
+        res=res.split(':')[0]
+    return res.strip('M')
 def updateversion(revision):
     module_code = file('cmf/__init__.py').readlines()
     fout = file('cmf/__init__.py','w')
@@ -176,7 +175,7 @@ if __name__=='__main__':
         updateversion(revision)
     now = datetime.datetime.now()
     setup(name='cmf',
-          version=revision,
+          version='0.' + revision,
           license='GPL',
           ext_modules=ext,
           py_modules=py, 

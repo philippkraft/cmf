@@ -21,6 +21,8 @@
 #include "real.h"
 #include <stdexcept>
 #include <limits>
+#include <iostream>
+#include <fstream>
 inline bool isfinite(real v)
 {
 	typedef  std::numeric_limits<real> limit;
@@ -550,6 +552,28 @@ int cmf::math::timeseries::count_values() const
 	for (int i = 0; i <  size(); ++i)
 		if (isfinite(m_data->values[i])) ++count;
 	return count;
+}
+
+cmf::math::timeseries cmf::math::timeseries::from_file( std::string filename )
+{
+	std::ifstream file;
+	file.open(filename.c_str(),std::ios::binary);
+	// 4 int64 describe the metadata of the timeseries (size,begin,step and interpolation shape)
+	long long metadata[4];
+	file.read((char*)metadata,32);
+	double buf;
+	// Create timeseries from meta data
+	timeseries ts(ms*metadata[1], // begin
+		ms*metadata[2], // step
+		size_t(metadata[3]), // interpolation shape 
+		size_t(metadata[0])); // size
+	// Read the data from file
+	for (int i = 0; i < metadata[0] ; ++i)
+	{
+		file.read((char*)(&buf),8);
+		ts[i] = buf;
+	}
+	return ts;
 }
 double cmf::math::nash_sutcliff(const cmf::math::timeseries& model,const cmf::math::timeseries& observation)
 {

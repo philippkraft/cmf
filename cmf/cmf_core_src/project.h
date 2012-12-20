@@ -90,6 +90,11 @@ namespace cmf {
 		cmf::water::node_list get_storages();
 		/// Creates a new reach
 		cmf::river::Reach::ptr NewReach(double x,double y, double z, double length, char Type='T',double width=0.5,double depth=0.1, bool diffusive=false);
+#ifndef SWIG
+		cmf::upslope::Cell& operator[](int index) {
+			return this->get_cell(index);
+		}
+#endif
 
 	};
 

@@ -79,5 +79,5 @@ cmf::river::OpenWaterStorage::ptr cmf::river::OpenWaterStorage::create( const cm
 
 real cmf::river::OpenWaterStorage::get_abs_errtol( real rel_errtol ) const
 {
-	return rel_errtol * height_function->V(0.01);
+	return rel_errtol * height_function->V(1);
 }
