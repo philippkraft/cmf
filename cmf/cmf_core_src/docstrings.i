@@ -96,12 +96,14 @@ get_top_height() const
 
 Returns the top height of the aquifer in m a.s.l. ";
 
+%feature("docstring")  cmf::upslope::aquifer::get_abs_errtol "virtual
+real get_abs_errtol(real rel_errtol) ";
+
 %feature("docstring")  cmf::upslope::aquifer::set_potential "virtual
 void set_potential(real new_potential) ";
 
-%feature("docstring")  cmf::upslope::aquifer::aquifer "aquifer(const
-cmf::project &p, cmf::geometry::point position, real area, real
-thickness, real porosity, real K=1e-4)
+%feature("docstring")  cmf::upslope::aquifer::aquifer "aquifer(cmf::project &p, cmf::geometry::point position, real area,
+real thickness, real porosity, real K=1e-4)
 
 Creates an aquifer at a certain position
 
@@ -213,17 +215,12 @@ dxdt(const cmf::math::Time &time)
 Returns the derivate of the state variable at time time. ";
 
 %feature("docstring")  cmf::upslope::aquifer::get_state "real
-get_state() const
-
-Returns the current state of the variable. ";
+get_state() const ";
 
 %feature("docstring")  cmf::upslope::aquifer::set_state "void
-set_state(real newState)
+set_state(real newState) ";
 
-Gives access to the state variable. ";
-
-%feature("docstring")  cmf::upslope::aquifer::get_project "const
-cmf::project& get_project() const
+%feature("docstring")  cmf::upslope::aquifer::get_project "cmf::project& get_project() const
 
 Returns the project, this node is part of. ";
 
@@ -1105,7 +1102,7 @@ returns the surface water of this cell ";
 storage_role='N', bool isopenwater=false) ";
 
 %feature("docstring")  cmf::upslope::Cell::remove_storage "void
-remove_storage(cmf::water::WaterStorage &storage) ";
+remove_storage(cmf::water::WaterStorage::ptr storage) ";
 
 %feature("docstring")  cmf::upslope::Cell::storage_count "int
 storage_count() const ";
@@ -1149,8 +1146,8 @@ has_wet_leaves() const ";
 %feature("docstring")  cmf::upslope::Cell::has_surface_water "bool
 has_surface_water() const ";
 
-%feature("docstring")  cmf::upslope::Cell::get_project "const
-cmf::project& get_project() const ";
+%feature("docstring")  cmf::upslope::Cell::get_project "cmf::project&
+get_project() const ";
 
 %feature("docstring")  cmf::upslope::Cell::get_weather "cmf::atmosphere::Weather get_weather(cmf::math::Time t) const ";
 
@@ -1452,7 +1449,29 @@ slope:  The slope of the reach [m/m] ";
 %feature("docstring") cmf::upslope::connections::CompleteInfiltration
 "
 
-Connection for infiltration with saturated conductivity
+Connects the surfacewater and the most upper layer using a Richards
+equation like infiltration model but assuming saturated conductivity
+as the potential infiltration rate into the first layer.
+
+The potential infiltration is calculated according to the Richards
+equation. The gradient is from the cell surface to the center of the
+first layer and the conductivity is $K_{sat}$ \\\\begin{eqnarray*}
+q_{max} &=& \\\\frac{\\\\Psi_{surface} - \\\\Psi_{soil}}{\\\\Delta z}
+K A_{cell} \\\\\\\\ K &=&
+\\\\sqrt{K\\\\left(\\\\theta_{layer}\\\\right)K_{sat}} \\\\\\\\
+\\\\Delta z &=& z_{cell} - z_{layer center} \\\\end{eqnarray*}
+
+If the surface water is modeled by a distinct water storage, the
+actual infiltration is given as the product of the potential
+infiltration with the coverage of the surface water
+cmf::upslope::Cell::surface_water_coverage \\\\[q_{act} = q_{max}
+\\\\frac{A_{water}}{A_{cell}}\\\\]
+
+If the surface water is no storage on its own, but just a water
+distribution node, the actual infiltration is the minimum of the
+potential infiltration and the current inflow (rain, snow melt) to the
+surface \\\\[q_{act} = \\\\min\\\\left(q_{max},
+\\\\sum{q_{in,surfacewater}}\\\\right)\\\\]
 
 C++ includes: infiltration.h ";
 
@@ -1712,7 +1731,7 @@ step.
 C++ includes: precipitation.h ";
 
 %feature("docstring")
-cmf::atmosphere::ConstantRainSource::ConstantRainSource "ConstantRainSource(const cmf::project &_project, cmf::geometry::point
+cmf::atmosphere::ConstantRainSource::ConstantRainSource "ConstantRainSource(cmf::project &_project, cmf::geometry::point
 location, real _intensity)
 
 Creates a new ConstantRainSource. Consider using Cell::set_rainfall
@@ -1755,7 +1774,7 @@ state changes require an update of the fluxes ";
 Returns false. ";
 
 %feature("docstring")
-cmf::atmosphere::ConstantRainSource::get_project "const cmf::project&
+cmf::atmosphere::ConstantRainSource::get_project "cmf::project&
 get_project() const
 
 Returns the project, this node is part of. ";
@@ -2314,10 +2333,10 @@ Returns true if the node has no water. ";
 %feature("docstring")  cmf::water::DirichletBoundary::RecalcFluxes "bool RecalcFluxes(cmf::math::Time t) const ";
 
 %feature("docstring")
-cmf::water::DirichletBoundary::DirichletBoundary "DirichletBoundary(const cmf::project &_p, real potential,
+cmf::water::DirichletBoundary::DirichletBoundary "DirichletBoundary(cmf::project &_p, real potential,
 cmf::geometry::point Location=cmf::geometry::point()) ";
 
-%feature("docstring")  cmf::water::DirichletBoundary::get_project "const cmf::project& get_project() const
+%feature("docstring")  cmf::water::DirichletBoundary::get_project "cmf::project& get_project() const
 
 Returns the project, this node is part of. ";
 
@@ -2868,8 +2887,7 @@ mixing, is needed.
 
 C++ includes: flux_node.h ";
 
-%feature("docstring")  cmf::water::flux_node::get_project "const
-cmf::project& get_project() const
+%feature("docstring")  cmf::water::flux_node::get_project "cmf::project& get_project() const
 
 Returns the project, this node is part of. ";
 
@@ -2953,7 +2971,7 @@ double is_empty() const
 
 Returns true if the node has no water. ";
 
-%feature("docstring")  cmf::water::flux_node::flux_node "flux_node(const cmf::project &_project, cmf::geometry::point
+%feature("docstring")  cmf::water::flux_node::flux_node "flux_node(cmf::project &_project, cmf::geometry::point
 location=cmf::geometry::point()) ";
 
 
@@ -3466,7 +3484,7 @@ state changes require an update of the fluxes ";
 
 Returns false. ";
 
-%feature("docstring")  cmf::atmosphere::IDWRainfall::get_project "const cmf::project& get_project() const
+%feature("docstring")  cmf::atmosphere::IDWRainfall::get_project "cmf::project& get_project() const
 
 Returns the project, this node is part of. ";
 
@@ -4913,19 +4931,21 @@ station
 
 import CMFlib as cmf latitude=51.2 # Latitude of station in decimal
 degrees longitude=8.1 # Longitude of station in decimal degrees (only
-needed for daily=false)                     timezone=1    # Timezone,
-pos. values mean east of GMT, negative west (Germany=1, Pacific
-time=-8, only needed for daily=false) start=cmf.Time(1,1,2001) #
-Creates all timeseries with this start time, one can change them later
-step=cmf.day # s. start                     name=\"Giessen\"
-# A name for the station (optional)
+needed for daily=false) timezone=1    # Timezone, pos. values mean
+east of GMT, negative west (Germany=1, Pacific time=-8, only needed
+for daily=false) start=cmf.Time(1,1,2001) # Creates all timeseries
+with this start time, one can change them later step=cmf.day # s.
+start name=\"Giessen\"           # A name for the station (optional)
 meteo=cmf.MeteoStation(latitude,longitude,timezone,start,step,name)
 
 The daily flag is automatically set to true, since the step width is
 &ge cmf.dayLoading data into the meteorological station
 
-# MeteoData.txt is tab seperated file containing # Tmin [deg C],Tmax
-[deg C],rHmean [%] and precipitation [mm/day] values for every day
+MeteoData.txt is tab seperated file containing
+
+Tmin [deg C],Tmax [deg C],rHmean [%] and precipitation [mm/day] values
+for every day
+
 f=file('MeteoData.txt') for line in file:
 meteo.Tmin.Add(float(line.split('\\\\t')[0]))
 meteo.Tmax.Add(float(line.split('\\\\t')[1]))
@@ -4934,9 +4954,9 @@ meteo.Prec.Add(float(line.split('\\\\t')[3]))Using a meteorological
 station
 
 weather=meteo.get_data(cmf.Time(3,2,2009,14)) # Weather at Feb. 3rd,
-2009, 2pm                     print 'Global Radiation: ',weather.Rs
-# Daily mean Rs, since daily=true print 'Temperature:',weather.T
-# Daily mean T, since nothing else in known
+2009, 2pm print 'Global Radiation: ',weather.Rs # Daily mean Rs, since
+daily=true print 'Temperature:',weather.T # Daily mean T, since
+nothing else in known
 
 C++ includes: meteorology.h ";
 
@@ -4958,9 +4978,8 @@ timeseries. ";
 cmf::atmosphere::MeteoStation::SetSunshineFraction "void
 SetSunshineFraction(cmf::math::timeseries sunshine_duration)
 
-Returns the global radiation at a given time step $ R_s
-\\\\frac{MJ}{m^2day}$,
-seehttp://www.fao.org/docrep/X0490E/x0490e07.htm#radiation
+Returns the global radiation at a given time step \\\\form#0, see
+http://www.fao.org/docrep/X0490E/x0490e07.htm#radiation
 \\\\begin{eqnarray*} \\\\phi &=& \\\\frac{(\\\\mbox{geogr.
 Latitude})^\\\\circ \\\\pi}{180^\\\\circ} \\\\mbox{ Latitude in }rad
 \\\\\\\\ \\\\delta &=& 0.409 \\\\sin\\\\left(\\\\frac{2\\\\pi}{365}DOY
@@ -5394,8 +5413,8 @@ state changes require an update of the fluxes ";
 %feature("docstring")  cmf::water::NeumannBoundary::connect_to "void
 connect_to(cmf::water::flux_node::ptr target) ";
 
-%feature("docstring")  cmf::water::NeumannBoundary::NeumannBoundary "NeumannBoundary(const cmf::project &_project, cmf::math::timeseries
-_flux, cmf::water::SoluteTimeseries
+%feature("docstring")  cmf::water::NeumannBoundary::NeumannBoundary "NeumannBoundary(cmf::project &_project, cmf::math::timeseries _flux,
+cmf::water::SoluteTimeseries
 _concentration=cmf::water::SoluteTimeseries(), cmf::geometry::point
 loc=cmf::geometry::point())
 
@@ -5413,10 +5432,10 @@ _concentration:  The concentration timeseries
 
 loc:  The location of the boundary condition ";
 
-%feature("docstring")  cmf::water::NeumannBoundary::NeumannBoundary "NeumannBoundary(const cmf::project &_project, cmf::geometry::point
+%feature("docstring")  cmf::water::NeumannBoundary::NeumannBoundary "NeumannBoundary(cmf::project &_project, cmf::geometry::point
 loc=cmf::geometry::point()) ";
 
-%feature("docstring")  cmf::water::NeumannBoundary::get_project "const cmf::project& get_project() const
+%feature("docstring")  cmf::water::NeumannBoundary::get_project "cmf::project& get_project() const
 
 Returns the project, this node is part of. ";
 
@@ -5662,6 +5681,11 @@ Implements StateVariableOwner. ";
 append(flux_node::ptr node)
 
 Adds a flux node to the list. ";
+
+%feature("docstring")  cmf::water::node_list::remove "bool
+remove(flux_node::ptr node)
+
+Removes a flux node from the list, returns true if successful. ";
 
 %feature("docstring")  cmf::water::node_list::set_potentials "int
 set_potentials(const cmf::math::num_array &potentials)
@@ -6002,7 +6026,8 @@ Returns the exposed surface area in m2. ";
 %feature("docstring")  cmf::river::OpenWaterStorage::conc "real
 conc(cmf::math::Time t, const cmf::water::solute &solute) const
 
-Returns the current WaterQuality (concentration of all solutes) ";
+Returns the water quality of the flux_node, if it is not overridden
+this is the mix of the incoming fluxes. ";
 
 %feature("docstring")  cmf::river::OpenWaterStorage::get_abs_errtol "real get_abs_errtol(real rel_errtol) const ";
 
@@ -6067,16 +6092,12 @@ real dxdt(const cmf::math::Time &time)
 Returns the derivate of the state variable at time time. ";
 
 %feature("docstring")  cmf::river::OpenWaterStorage::get_state "real
-get_state() const
-
-Returns the current state of the variable. ";
+get_state() const ";
 
 %feature("docstring")  cmf::river::OpenWaterStorage::set_state "void
-set_state(real newState)
+set_state(real newState) ";
 
-Gives access to the state variable. ";
-
-%feature("docstring")  cmf::river::OpenWaterStorage::get_project "const cmf::project& get_project() const
+%feature("docstring")  cmf::river::OpenWaterStorage::get_project "cmf::project& get_project() const
 
 Returns the project, this node is part of. ";
 
@@ -6531,6 +6552,19 @@ C++ includes: project.h ";
 Add the state variables, owned by an object derived from
 StateVariableOwner, to the given vector. ";
 
+%feature("docstring")  cmf::project::remove_node "int
+remove_node(cmf::water::flux_node::ptr node)
+
+Removes a node from the repository.
+
+Removes a node (boundary condition or water storage) from the node
+repository of the project. NOTE: If you have other references to this
+node, the node is not deleted. If you are creating a new solver, the
+node will not be part of the solver. ";
+
+%feature("docstring")  cmf::project::get_nodes "const
+cmf::water::node_list& get_nodes() const ";
+
 %feature("docstring")  cmf::project::use_IDW_meteo "void
 use_IDW_meteo(double z_weight=0, double power=2) ";
 
@@ -6565,7 +6599,8 @@ Creates a new project. ";
 %feature("docstring")  cmf::project::~project "~project() ";
 
 %feature("docstring")  cmf::project::NewCell "cmf::upslope::Cell*
-NewCell(double x, double y, double z, double Area)
+NewCell(double x, double y, double z, double area, bool
+with_surfacewater=false)
 
 Creates a new cell. ";
 
@@ -6573,7 +6608,26 @@ Creates a new cell. ";
 x, double y, double z)
 
 Creates a new Dirichlet boundary condition and adds it to the list of
-outlets The potential of the Dirichlet boundary equals p.z ";
+outlets The potential of the Dirichlet boundary equals p.z, but can be
+changed ";
+
+%feature("docstring")  cmf::project::NewStorage "cmf::water::WaterStorage::ptr NewStorage(std::string name, double x,
+double y, double z)
+
+Creates a new generic water storage at position x,y,z. The storage is
+added to the project nodes. ";
+
+%feature("docstring")  cmf::project::NewOpenStorage "cmf::river::OpenWaterStorage::ptr NewOpenStorage(std::string name,
+double x, double y, double z, double area)
+
+Creates a new open water storage with a prism geometry. The open water
+storage is added to the project nodes. ";
+
+%feature("docstring")  cmf::project::NewReach "cmf::river::Reach::ptr
+NewReach(double x, double y, double z, double length, char Type='T',
+double width=0.5, double depth=0.1, bool diffusive=false)
+
+Creates a new reach. ";
 
 %feature("docstring")  cmf::project::get_reach "cmf::river::Reach::ptr get_reach(int index)
 
@@ -6587,12 +6641,6 @@ Returns the number of reaches in this project. ";
 %feature("docstring")  cmf::project::get_storages "cmf::water::node_list get_storages()
 
 Returns any storages of this project. ";
-
-%feature("docstring")  cmf::project::NewReach "cmf::river::Reach::ptr
-NewReach(double x, double y, double z, double length, char Type='T',
-double width=0.5, double depth=0.1, bool diffusive=false)
-
-Creates a new reach. ";
 
 
 // File: classcmf_1_1upslope_1_1connections_1_1_rainfall.xml
@@ -6760,8 +6808,8 @@ is_empty() const
 Returns false. ";
 
 %feature("docstring")
-cmf::atmosphere::RainfallStationReference::get_project "const
-cmf::project& get_project() const
+cmf::atmosphere::RainfallStationReference::get_project "cmf::project&
+get_project() const
 
 Returns the project, this node is part of. ";
 
@@ -6862,7 +6910,7 @@ double is_empty() const
 
 Returns false. ";
 
-%feature("docstring")  cmf::atmosphere::RainSource::get_project "const cmf::project& get_project() const
+%feature("docstring")  cmf::atmosphere::RainSource::get_project "cmf::project& get_project() const
 
 Returns the project, this node is part of. ";
 
@@ -7052,7 +7100,8 @@ Returns the exposed surface area in m2. ";
 %feature("docstring")  cmf::river::Reach::conc "real
 conc(cmf::math::Time t, const cmf::water::solute &solute) const
 
-Returns the current WaterQuality (concentration of all solutes) ";
+Returns the water quality of the flux_node, if it is not overridden
+this is the mix of the incoming fluxes. ";
 
 %feature("docstring")  cmf::river::Reach::conc "real conc(const
 cmf::water::solute &_Solute) const
@@ -7120,17 +7169,13 @@ dxdt(const cmf::math::Time &time)
 Returns the derivate of the state variable at time time. ";
 
 %feature("docstring")  cmf::river::Reach::get_state "real get_state()
-const
-
-Returns the current state of the variable. ";
+const ";
 
 %feature("docstring")  cmf::river::Reach::set_state "void
-set_state(real newState)
+set_state(real newState) ";
 
-Gives access to the state variable. ";
-
-%feature("docstring")  cmf::river::Reach::get_project "const
-cmf::project& get_project() const
+%feature("docstring")  cmf::river::Reach::get_project "cmf::project&
+get_project() const
 
 Returns the project, this node is part of. ";
 
@@ -8479,17 +8524,12 @@ dxdt(const cmf::math::Time &time)
 Returns the derivate of the state variable at time time. ";
 
 %feature("docstring")  cmf::upslope::SoilLayer::get_state "real
-get_state() const
-
-Returns the current state of the variable. ";
+get_state() const ";
 
 %feature("docstring")  cmf::upslope::SoilLayer::set_state "void
-set_state(real newState)
+set_state(real newState) ";
 
-Gives access to the state variable. ";
-
-%feature("docstring")  cmf::upslope::SoilLayer::get_project "const
-cmf::project& get_project() const
+%feature("docstring")  cmf::upslope::SoilLayer::get_project "cmf::project& get_project() const
 
 Returns the project, this node is part of. ";
 
@@ -8960,9 +9000,8 @@ short_string() const ";
 // File: classcmf_1_1math_1_1_state_variable.xml
 %feature("docstring") cmf::math::StateVariable "
 
-Abstract class state variable
-
-Simple exponential system class header implementing a state variable:
+Abstract class state variableSimple exponential system class header
+implementing a state variable:
 
 C++ includes: statevariable.h ";
 
@@ -9433,8 +9472,7 @@ Returns the currently integrated flux to the lower node. ";
 %feature("docstring")  cmf::water::SystemBridge::down_flux_integrator
 "flux_integrator::ptr down_flux_integrator() const ";
 
-%feature("docstring")  cmf::water::SystemBridge::get_project "const
-cmf::project& get_project() const
+%feature("docstring")  cmf::water::SystemBridge::get_project "cmf::project& get_project() const
 
 Returns the project, this node is part of. ";
 
@@ -9670,78 +9708,41 @@ A value ranging from 0 to 1. ";
 // File: classcmf_1_1math_1_1_time.xml
 %feature("docstring") cmf::math::Time "
 
-A time class, used to pass around current modelling times
+A time class, used to pass around current modelling times   Timespans
+and dates in cmf are used with a special object, called Time. An extra
+class has the advantage, that the user does not have to remember,
+which    unit of time he or she uses or what time unit is accepted by
+a specific function    of the model. Arithmetic and boolean operators
+are supported by Time. Internally    the time classes stores the time
+as integer milliseconds, therefore rounding issues    will only appear
+at very small time ranges. Absolute time (like dates) are represented
+as milliseconds gone by from Dec, 31st 1899. Microsoft Excel dates are
+represented    as days from that time, using floating point numbers,
+therefore it is very simple    to convert Excel time representations
+to cmf time.     Another object is Date, which is doesn't provide the
+operators, but has a nice printed version and some special date
+functions, like day of year (DOY) and provides access    to the
+current hour of day and so on, which only applyto dates and not to
+time spans.    You can convert Time to Date an vice versa. The
+printing is not culture aware and    uses the European representation.
+If you use the Python standard library datetime,    conversion between
+Python time and cmf time is possible
 
-Timespans and dates in cmf are used with a special object, called
-Time. An extra class has the advantage, that the user does not have to
-remember, which unit of time he or she uses or what time unit is
-accepted by a specific function of the model. Arithmetic and boolean
-operators are supported by Time. Internally the time classes stores
-the time as integer milliseconds, therefore rounding issues will only
-appear at very small time ranges. Absolute time (like dates) are
-represented as milliseconds gone by from Dec, 31st 1899. Microsoft
-Excel dates are represented as days from that time, using floating
-point numbers, therefore it is very simple to convert Excel time
-representations to cmf time.
-
-Another object is Date, which is doesn't provide the operators, but
-has a nice printed version and some special date functions, like day
-of year (DOY) and provides access to the current hour of day and so
-on, which only applyto dates and not to time spans. You can convert
-Time to Date an vice versa. The printing is not culture aware and uses
-the European representation. If you use the Python standard library
-datetime, conversion between Python time and cmf time is possible
-
-Creating absolute time values (dates) Creating time spans
-
-In principle, there are three ways to create time spans. One is to use
-one of the static functions, another is to multiply an existing time
-span (like one of the build in constants) or to substrate two absolute
-times.
-
-Available constants  : 4.1 seconds
-
-: 2.3 hours (138 min)
-
-: 2.3 hours (138 min)
-
-: 60 hours (2.5 days)
-
-: 7 days
-
-: 365/12 days (30.4167 days)
-
-: 365 days
-
-Available operators:
-
-time + time = time, time - time = time
-
-time * float = time ,time / float = time
-
-time/time=float
-
-&gt, &lt, ==, !=
-
-Conversions
-
-Converting to python datetime
-
-Converting to numbers
-
-t.AsMilliseconds()
-
-t.AsSeconds()
-
-t.AsMinutes()
-
-t.AsHours()
-
-t.AsDays()
-
-t.AsYears()
-
-Creating time ranges
+Creating absolute time values (dates) Creating time spansIn principle,
+there are three ways to create time spans. One is to use one of the
+static functions, another is to multiply an existing time span (like
+one of the build in constants) or to substrate two absolute times.
+Available constants  - @code cmf.sec * 4.1 @endcode : 4.1 seconds   -
+@code cmf.min * 138 @endcode : 2.3 hours (138 min)  - @code cmf.h *
+2.3 @endcode : 2.3 hours (138 min)  - @code cmf.day * 2.5 @endcode :
+60 hours (2.5 days)  - @code cmf.week @endcode : 7 days - @code
+cmf.month @endcode : 365/12 days (30.4167 days)  - @code cmf.year
+@endcode : 365 days  Available operators:   - time + time = time, time
+- time = time  - time * float = time ,time / float = time -
+time/time=float  - &gt, &lt, ==, !=  Conversions  Converting to python
+datetime    Converting to numbers       - t.AsMilliseconds()      -
+t.AsSeconds()      - t.AsMinutes()      - t.AsHours()      -
+t.AsDays()      - t.AsYears()      Creating time ranges
 
 C++ includes: time.h ";
 
@@ -9810,6 +9811,8 @@ times_in(const Time &t1) const
 Returns the number of times this is included in t1. ";
 
 /*  Boolean Operators  */
+
+%feature("docstring")  cmf::math::Time::Time "Time(long long ms) ";
 
 
 // File: classcmf_1_1math_1_1timeseries.xml
@@ -10744,8 +10747,8 @@ Returns true, since this is a storage. ";
 Add the state variables, owned by an object derived from
 StateVariableOwner, to the given vector. ";
 
-%feature("docstring")  cmf::water::WaterStorage::WaterStorage "WaterStorage(const cmf::project &project, const std::string
-&Name=\"\", double InitialState=0)
+%feature("docstring")  cmf::water::WaterStorage::WaterStorage "WaterStorage(cmf::project &project, const std::string &Name=\"\",
+double InitialState=0)
 
 creates a water storage (abstract class)
 
@@ -10803,17 +10806,12 @@ dxdt(const cmf::math::Time &time)
 Returns the derivate of the state variable at time time. ";
 
 %feature("docstring")  cmf::water::WaterStorage::get_state "real
-get_state() const
-
-Returns the current state of the variable. ";
+get_state() const ";
 
 %feature("docstring")  cmf::water::WaterStorage::set_state "void
-set_state(real newState)
+set_state(real newState) ";
 
-Gives access to the state variable. ";
-
-%feature("docstring")  cmf::water::WaterStorage::get_project "const
-cmf::project& get_project() const
+%feature("docstring")  cmf::water::WaterStorage::get_project "cmf::project& get_project() const
 
 Returns the project, this node is part of. ";
 
@@ -10871,8 +10869,7 @@ C++ includes: Weather.h ";
 %feature("docstring")  cmf::atmosphere::Weather::Rn "double Rn(double
 albedo, bool daily=false) const
 
-Calculates the net radiation flux $R_n \\\\left[\\\\frac{MJ}{m^2
-day}\\\\right]$
+Calculates the net radiation flux \\\\form#30
 
 \\\\begin{eqnarray*} R_{n} &=& R_{ns} - R_{nl} \\\\\\\\ \\\\mbox{ Net
 short wave radiation: }R_{ns} &=& (1-\\\\alpha) R_s \\\\\\\\ \\\\mbox{
@@ -12368,58 +12365,58 @@ real tau) ";
 // File: todo.xml
 
 
-// File: dir_a34c0a3a997751912cbeeb3f6a2018d4.xml
+// File: dir_9592ab4aaa0d9c46a819f7f81e09220a.xml
 
 
-// File: dir_e44d263e82e73e5cd45e66a9d5484f0e.xml
+// File: dir_a16da2e77d7736c8ef82aa4fb58f4d7a.xml
 
 
-// File: dir_1c689e9749401ee508c4e3b2747d036e.xml
+// File: dir_98acbbad275b391c1ade88ff097e61c2.xml
 
 
-// File: dir_35473c2924978da3332cfde17d1d6b99.xml
+// File: dir_8410d30186ae5b9b3ffde0ee7f4d44e7.xml
 
 
-// File: dir_af937d60eb69dba91a5be756eec0a3ea.xml
+// File: dir_d84f819267443b9d347ca10497bd17cb.xml
 
 
-// File: dir_074680f4811abdc846d4a1ca8117269b.xml
+// File: dir_ea86885cf3f09bc8723d5eddb49a3fb1.xml
 
 
-// File: dir_6914091710f015cd771e4c69991e0321.xml
+// File: dir_ffa27a37f48bee51852b2c83f3c1f284.xml
 
 
-// File: dir_9ba2403456dedd4364a1ad5ef46b0674.xml
+// File: dir_ace73d892420b0c6d251d9a3a47aa20d.xml
 
 
-// File: dir_881a4b4145393ba5aa926042f2b0ab4d.xml
+// File: dir_245345c6834d8cbe65c8078f132e59b7.xml
 
 
-// File: dir_5ee593482e72b5c4adf127b682cc064b.xml
+// File: dir_05332baf58e3cdbbe58e637050009c92.xml
 
 
-// File: dir_6729183fec5c38381d2b4a165ab87aab.xml
+// File: dir_cc7bcbd64709af57d5efb77b5a4368ed.xml
 
 
-// File: dir_da4bfa092f42b4972ab12dc096d9b871.xml
+// File: dir_95270cf67a60bfc82738cbf6d50d39ed.xml
 
 
-// File: dir_28ca05f8518a347825525f957ad42f18.xml
+// File: dir_6cd133866fc54d272300a088c612a935.xml
 
 
-// File: dir_4f5dd0ddca36aa533ebaad82a6c4b0e2.xml
+// File: dir_d9ed39cc78657331f4bff01ef7040133.xml
 
 
-// File: dir_bbd991016cf40466555088dc9588afdf.xml
+// File: dir_75334eb6260b9b83ebb793e1e851087c.xml
 
 
-// File: dir_7ec89ba203c4709e08ce3f8fa76928c4.xml
+// File: dir_6133eb82dc0ddcdba471fd038299ba04.xml
 
 
-// File: dir_18152b86c6724725c4b0fa1db5a5b7b6.xml
+// File: dir_006f6fc26db23124fae960566a4f6405.xml
 
 
-// File: dir_8b4109f3d59abed5ff481179ab00febc.xml
+// File: dir_031051fb4244b6bc74c5e3edb1f57762.xml
 
 
 // File: indexpage.xml

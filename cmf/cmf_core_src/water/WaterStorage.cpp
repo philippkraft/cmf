@@ -21,10 +21,8 @@
 
 using namespace cmf::water;
 
-struct null_deleter {	void operator()(void const *) const {}};
 
-void WaterStorage::initializeSoluteStorages(const solute_vector& solutes)
-{
+void WaterStorage::initializeSoluteStorages(const solute_vector& solutes) {
 	for (solute_vector::const_iterator it=solutes.begin();it!=solutes.end();++it)
 	{
 		std::tr1::shared_ptr<SoluteStorage> s(new SoluteStorage(this,*it));
@@ -33,7 +31,7 @@ void WaterStorage::initializeSoluteStorages(const solute_vector& solutes)
 }
 
 
-WaterStorage::WaterStorage(const cmf::project& _project, const std::string& _Name,double InitialState/*=0*/ ) 
+WaterStorage::WaterStorage(cmf::project& _project, const std::string& _Name,double InitialState/*=0*/ ) 
 : cmf::math::StateVariable(InitialState),flux_node(_project) ,m_Concentrations(), m_state_variable_content('V')
 {
 	initializeSoluteStorages(_project.solutes);

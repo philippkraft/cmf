@@ -87,7 +87,7 @@ static int convert_datetime_to_cmftime(PyObject* dt, cmf::math::Time** pT)
     int res=SWIG_ConvertPtr($input,&pt,$descriptor(cmf::math::Time*),0);
     $1=SWIG_IsOK(res) || PyDateTime_Check($input) || PyDelta_Check($input) || PyDate_Check($input);
 }
-/*
+
 %typemap(in, noblock=1) cmf::math::Time * {
     // typemap Time*
     int timeconvert=convert_datetime_to_cmftime($input, &$1);
@@ -122,7 +122,7 @@ static int convert_datetime_to_cmftime(PyObject* dt, cmf::math::Time** pT)
     int res=SWIG_ConvertPtr($input,&pt,$descriptor(cmf::math::Time*),0);
     $1=SWIG_IsOK(res) || PyDateTime_Check($input) || PyDelta_Check($input) || PyDate_Check($input);
 }
-*/
+
 %implicitconv cmf::math::Time;
 %implicitconv cmf::math::Date;
 

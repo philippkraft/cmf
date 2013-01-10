@@ -14,7 +14,7 @@ inline real cmf::upslope::aquifer::head_to_volume( real head ) const
 }
 
 
-cmf::upslope::aquifer::aquifer(const cmf::project& p, cmf::geometry::point _position, 
+cmf::upslope::aquifer::aquifer(cmf::project& p, cmf::geometry::point _position, 
 									   real _area, real _thickness, real _porosity,real _K/*=1e-4*/ )
 	:	WaterStorage(p,"Groundwater storage",0), 
 		area(_area),thickness(_thickness),porosity(_porosity),K(_K,_K,_K)

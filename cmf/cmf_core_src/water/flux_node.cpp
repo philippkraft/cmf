@@ -142,10 +142,10 @@ real cmf::water::flux_node::conc( cmf::math::Time t, const cmf::water::solute& _
 }
 
 
-cmf::water::flux_node::flux_node( const cmf::project& _project,cmf::geometry::point location ) 
+cmf::water::flux_node::flux_node(cmf::project& _project,cmf::geometry::point location ) 
 : m_project(_project), node_id(nextnodeid++),position(location)
 {
-	if (m_project.debug) std::cout << "new node #" << node_id << std::endl;
+	//m_project.add_node(shared_from_this());
 }
 
 

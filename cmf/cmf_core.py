@@ -508,78 +508,41 @@ def square(*args, **kwargs):
 JULIANDAY_0_1_1900 = _cmf_core.JULIANDAY_0_1_1900
 class Time(object):
     """
-    A time class, used to pass around current modelling times
+    A time class, used to pass around current modelling times   Timespans
+    and dates in cmf are used with a special object, called Time. An extra
+    class has the advantage, that the user does not have to remember,
+    which    unit of time he or she uses or what time unit is accepted by
+    a specific function    of the model. Arithmetic and boolean operators
+    are supported by Time. Internally    the time classes stores the time
+    as integer milliseconds, therefore rounding issues    will only appear
+    at very small time ranges. Absolute time (like dates) are represented
+    as milliseconds gone by from Dec, 31st 1899. Microsoft Excel dates are
+    represented    as days from that time, using floating point numbers,
+    therefore it is very simple    to convert Excel time representations
+    to cmf time.     Another object is Date, which is doesn't provide the
+    operators, but has a nice printed version and some special date
+    functions, like day of year (DOY) and provides access    to the
+    current hour of day and so on, which only applyto dates and not to
+    time spans.    You can convert Time to Date an vice versa. The
+    printing is not culture aware and    uses the European representation.
+    If you use the Python standard library datetime,    conversion between
+    Python time and cmf time is possible
 
-    Timespans and dates in cmf are used with a special object, called
-    Time. An extra class has the advantage, that the user does not have to
-    remember, which unit of time he or she uses or what time unit is
-    accepted by a specific function of the model. Arithmetic and boolean
-    operators are supported by Time. Internally the time classes stores
-    the time as integer milliseconds, therefore rounding issues will only
-    appear at very small time ranges. Absolute time (like dates) are
-    represented as milliseconds gone by from Dec, 31st 1899. Microsoft
-    Excel dates are represented as days from that time, using floating
-    point numbers, therefore it is very simple to convert Excel time
-    representations to cmf time.
-
-    Another object is Date, which is doesn't provide the operators, but
-    has a nice printed version and some special date functions, like day
-    of year (DOY) and provides access to the current hour of day and so
-    on, which only applyto dates and not to time spans. You can convert
-    Time to Date an vice versa. The printing is not culture aware and uses
-    the European representation. If you use the Python standard library
-    datetime, conversion between Python time and cmf time is possible
-
-    Creating absolute time values (dates) Creating time spans
-
-    In principle, there are three ways to create time spans. One is to use
-    one of the static functions, another is to multiply an existing time
-    span (like one of the build in constants) or to substrate two absolute
-    times.
-
-    Available constants  : 4.1 seconds
-
-    : 2.3 hours (138 min)
-
-    : 2.3 hours (138 min)
-
-    : 60 hours (2.5 days)
-
-    : 7 days
-
-    : 365/12 days (30.4167 days)
-
-    : 365 days
-
-    Available operators:
-
-    time + time = time, time - time = time
-
-    time * float = time ,time / float = time
-
-    time/time=float
-
-    &gt, &lt, ==, !=
-
-    Conversions
-
-    Converting to python datetime
-
-    Converting to numbers
-
-    t.AsMilliseconds()
-
-    t.AsSeconds()
-
-    t.AsMinutes()
-
-    t.AsHours()
-
-    t.AsDays()
-
-    t.AsYears()
-
-    Creating time ranges
+    Creating absolute time values (dates) Creating time spansIn principle,
+    there are three ways to create time spans. One is to use one of the
+    static functions, another is to multiply an existing time span (like
+    one of the build in constants) or to substrate two absolute times.
+    Available constants  - @code cmf.sec * 4.1 @endcode : 4.1 seconds   -
+    @code cmf.min * 138 @endcode : 2.3 hours (138 min)  - @code cmf.h *
+    2.3 @endcode : 2.3 hours (138 min)  - @code cmf.day * 2.5 @endcode :
+    60 hours (2.5 days)  - @code cmf.week @endcode : 7 days - @code
+    cmf.month @endcode : 365/12 days (30.4167 days)  - @code cmf.year
+    @endcode : 365 days  Available operators:   - time + time = time, time
+    - time = time  - time * float = time ,time / float = time -
+    time/time=float  - &gt, &lt, ==, !=  Conversions  Converting to python
+    datetime    Converting to numbers       - t.AsMilliseconds()      -
+    t.AsSeconds()      - t.AsMinutes()      - t.AsHours()      -
+    t.AsDays()      - t.AsYears()      Creating time ranges
 
     C++ includes: time.h 
     """
@@ -594,9 +557,7 @@ class Time(object):
         __init__(self, Time t) -> Time
         __init__(self) -> Time
 
-        Time()
-
-        Standard constructor. 
+        Time(long long ms) 
         """
         _cmf_core.Time_swiginit(self,_cmf_core.new_Time(*args))
     def AsDays(self, *args, **kwargs):
@@ -1690,9 +1651,8 @@ integratable_list_swigregister(integratable_list)
 
 class StateVariable(object):
     """
-    Abstract class state variable
-
-    Simple exponential system class header implementing a state variable:
+    Abstract class state variableSimple exponential system class header
+    implementing a state variable:
 
     C++ includes: statevariable.h 
     """
@@ -2655,7 +2615,7 @@ class flux_node(object):
         """
         __init__(self, project _project, point location = cmf::geometry::point()) -> flux_node
 
-        flux_node(const cmf::project &_project, cmf::geometry::point
+        flux_node(cmf::project &_project, cmf::geometry::point
         location=cmf::geometry::point()) 
         """
         _cmf_core.flux_node_swiginit(self,_cmf_core.new_flux_node(*args, **kwargs))
@@ -3188,7 +3148,7 @@ class DirichletBoundary(flux_node):
         """
         __init__(self, project _p, real potential, point Location = cmf::geometry::point()) -> DirichletBoundary
 
-        DirichletBoundary(const cmf::project &_p, real potential,
+        DirichletBoundary(cmf::project &_p, real potential,
         cmf::geometry::point Location=cmf::geometry::point()) 
         """
         _cmf_core.DirichletBoundary_swiginit(self,_cmf_core.new_DirichletBoundary(*args, **kwargs))
@@ -3235,7 +3195,7 @@ class NeumannBoundary(flux_node):
             point loc = cmf::geometry::point()) -> NeumannBoundary
         __init__(self, project _project, point loc = cmf::geometry::point()) -> NeumannBoundary
 
-        NeumannBoundary(const cmf::project &_project, cmf::geometry::point
+        NeumannBoundary(cmf::project &_project, cmf::geometry::point
         loc=cmf::geometry::point()) 
         """
         _cmf_core.NeumannBoundary_swiginit(self,_cmf_core.new_NeumannBoundary(*args))
@@ -3299,8 +3259,8 @@ class WaterStorage(StateVariable,StateVariableOwner,flux_node):
         """
         __init__(self, project project, string Name = "", double InitialState = 0) -> WaterStorage
 
-        WaterStorage(const cmf::project &project, const std::string
-        &Name="", double InitialState=0)
+        WaterStorage(cmf::project &project, const std::string &Name="",
+        double InitialState=0)
 
         creates a water storage (abstract class)
 
@@ -3663,6 +3623,17 @@ class node_list(StateVariableOwner):
         """
         return _cmf_core.node_list_append(self, *args, **kwargs)
 
+    def remove(self, *args, **kwargs):
+        """
+        remove(self, ptr node) -> bool
+
+        bool
+        remove(flux_node::ptr node)
+
+        Removes a flux node from the list, returns true if successful. 
+        """
+        return _cmf_core.node_list_remove(self, *args, **kwargs)
+
     def global_water_balance(self, *args, **kwargs):
         """
         global_water_balance(self, Time t) -> real
@@ -3808,6 +3779,7 @@ node_list.__add__ = new_instancemethod(_cmf_core.node_list___add__,None,node_lis
 node_list.__get = new_instancemethod(_cmf_core.node_list___get,None,node_list)
 node_list.__getslice = new_instancemethod(_cmf_core.node_list___getslice,None,node_list)
 node_list.append = new_instancemethod(_cmf_core.node_list_append,None,node_list)
+node_list.remove = new_instancemethod(_cmf_core.node_list_remove,None,node_list)
 node_list.global_water_balance = new_instancemethod(_cmf_core.node_list_global_water_balance,None,node_list)
 node_list.water_balance = new_instancemethod(_cmf_core.node_list_water_balance,None,node_list)
 node_list.conc = new_instancemethod(_cmf_core.node_list_conc,None,node_list)
@@ -4182,8 +4154,7 @@ class Weather(object):
         double Rn(double
         albedo, bool daily=false) const
 
-        Calculates the net radiation flux $R_n \\left[\\frac{MJ}{m^2
-        day}\\right]$
+        Calculates the net radiation flux \\form#30
 
         \\begin{eqnarray*} R_{n} &=& R_{ns} - R_{nl} \\\\ \\mbox{ Net
         short wave radiation: }R_{ns} &=& (1-\\alpha) R_s \\\\ \\mbox{
@@ -4405,19 +4376,21 @@ class MeteoStation(object):
 
     import CMFlib as cmf latitude=51.2 # Latitude of station in decimal
     degrees longitude=8.1 # Longitude of station in decimal degrees (only
-    needed for daily=false)                     timezone=1    # Timezone,
-    pos. values mean east of GMT, negative west (Germany=1, Pacific
-    time=-8, only needed for daily=false) start=cmf.Time(1,1,2001) #
-    Creates all timeseries with this start time, one can change them later
-    step=cmf.day # s. start                     name="Giessen"
-    # A name for the station (optional)
+    needed for daily=false) timezone=1    # Timezone, pos. values mean
+    east of GMT, negative west (Germany=1, Pacific time=-8, only needed
+    for daily=false) start=cmf.Time(1,1,2001) # Creates all timeseries
+    with this start time, one can change them later step=cmf.day # s.
+    start name="Giessen"           # A name for the station (optional)
     meteo=cmf.MeteoStation(latitude,longitude,timezone,start,step,name)
 
     The daily flag is automatically set to true, since the step width is
     &ge cmf.dayLoading data into the meteorological station
 
-    # MeteoData.txt is tab seperated file containing # Tmin [deg C],Tmax
-    [deg C],rHmean [%] and precipitation [mm/day] values for every day
+    MeteoData.txt is tab seperated file containing
+
+    Tmin [deg C],Tmax [deg C],rHmean [%] and precipitation [mm/day] values
+    for every day
+
     f=file('MeteoData.txt') for line in file:
     meteo.Tmin.Add(float(line.split('\\t')[0]))
     meteo.Tmax.Add(float(line.split('\\t')[1]))
@@ -4426,9 +4399,9 @@ class MeteoStation(object):
     station
 
     weather=meteo.get_data(cmf.Time(3,2,2009,14)) # Weather at Feb. 3rd,
-    2009, 2pm                     print 'Global Radiation: ',weather.Rs
-    # Daily mean Rs, since daily=true print 'Temperature:',weather.T
-    # Daily mean T, since nothing else in known
+    2009, 2pm print 'Global Radiation: ',weather.Rs # Daily mean Rs, since
+    daily=true print 'Temperature:',weather.T # Daily mean T, since
+    nothing else in known
 
     C++ includes: meteorology.h 
     """
@@ -4487,9 +4460,8 @@ class MeteoStation(object):
         void
         SetSunshineFraction(cmf::math::timeseries sunshine_duration)
 
-        Returns the global radiation at a given time step $ R_s
-        \\frac{MJ}{m^2day}$,
-        seehttp://www.fao.org/docrep/X0490E/x0490e07.htm#radiation
+        Returns the global radiation at a given time step \\form#0, see
+        http://www.fao.org/docrep/X0490E/x0490e07.htm#radiation
         \\begin{eqnarray*} \\phi &=& \\frac{(\\mbox{geogr.
         Latitude})^\\circ \\pi}{180^\\circ} \\mbox{ Latitude in }rad
         \\\\ \\delta &=& 0.409 \\sin\\left(\\frac{2\\pi}{365}DOY
@@ -4880,7 +4852,7 @@ class ConstantRainSource(RainSource):
         """
         __init__(self, project _project, point location, real _intensity) -> ConstantRainSource
 
-        ConstantRainSource(const cmf::project &_project, cmf::geometry::point
+        ConstantRainSource(cmf::project &_project, cmf::geometry::point
         location, real _intensity)
 
         Creates a new ConstantRainSource. Consider using Cell::set_rainfall
@@ -5390,10 +5362,10 @@ class Cell(StateVariableOwner):
 
     def remove_storage(self, *args, **kwargs):
         """
-        remove_storage(self, WaterStorage storage)
+        remove_storage(self, ptr storage)
 
         void
-        remove_storage(cmf::water::WaterStorage &storage) 
+        remove_storage(cmf::water::WaterStorage::ptr storage) 
         """
         return _cmf_core.Cell_remove_storage(self, *args, **kwargs)
 
@@ -8229,7 +8201,29 @@ def MatrixInfiltration_use_for_cell(*args, **kwargs):
 
 class CompleteInfiltration(flux_connection):
     """
-    Connection for infiltration with saturated conductivity
+    Connects the surfacewater and the most upper layer using a Richards
+    equation like infiltration model but assuming saturated conductivity
+    as the potential infiltration rate into the first layer.
+
+    The potential infiltration is calculated according to the Richards
+    equation. The gradient is from the cell surface to the center of the
+    first layer and the conductivity is $K_{sat}$ \\begin{eqnarray*}
+    q_{max} &=& \\frac{\\Psi_{surface} - \\Psi_{soil}}{\\Delta z}
+    K A_{cell} \\\\ K &=&
+    \\sqrt{K\\left(\\theta_{layer}\\right)K_{sat}} \\\\
+    \\Delta z &=& z_{cell} - z_{layer center} \\end{eqnarray*}
+
+    If the surface water is modeled by a distinct water storage, the
+    actual infiltration is given as the product of the potential
+    infiltration with the coverage of the surface water
+    cmf::upslope::Cell::surface_water_coverage \\[q_{act} = q_{max}
+    \\frac{A_{water}}{A_{cell}}\\]
+
+    If the surface water is no storage on its own, but just a water
+    distribution node, the actual infiltration is the minimum of the
+    potential infiltration and the current inflow (rain, snow melt) to the
+    surface \\[q_{act} = \\min\\left(q_{max},
+    \\sum{q_{in,surfacewater}}\\right)\\]
 
     C++ includes: infiltration.h 
     """
@@ -9110,12 +9104,13 @@ def ShuttleworthWallace_use_for_cell(*args, **kwargs):
   """ShuttleworthWallace_use_for_cell(Cell cell) -> ShuttleworthWallace"""
   return _cmf_core.ShuttleworthWallace_use_for_cell(*args, **kwargs)
 
-class reach_list:
-    def __init__(self,p):
-        self.project = p
-        self.__get = p.get_reach
+class project_list_wrapper:
+    def __init__(self,getitem,getlen,name):
+        self.__get = getitem
+        self.__len = getlen
+        self.name = name
     def __len__(self):
-        return self.project.reach_count()
+        return self.__len()
     def __getitem__(self,index):
         if (type(index)==slice):
              return [self.__get(i) for i in range(*index.indices(len(self)))]
@@ -9127,6 +9122,8 @@ class reach_list:
     def __iter__(self):
         for i in range(len(self)):
             yield self.__get(i)
+    def __repr__(self):
+        return '[%i %s of project]' % (len(self),self.name)
 
 
 class project(StateVariableOwner):
@@ -9139,6 +9136,22 @@ class project(StateVariableOwner):
     """
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
     __repr__ = _swig_repr
+    def remove_node(self, *args, **kwargs):
+        """
+        remove_node(self, ptr node) -> int
+
+        int
+        remove_node(cmf::water::flux_node::ptr node)
+
+        Removes a node from the repository.
+
+        Removes a node (boundary condition or water storage) from the node
+        repository of the project. NOTE: If you have other references to this
+        node, the node is not deleted. If you are creating a new solver, the
+        node will not be part of the solver. 
+        """
+        return _cmf_core.project_remove_node(self, *args, **kwargs)
+
     solutes = _swig_property(_cmf_core.project_solutes_get)
     meteo_stations = _swig_property(_cmf_core.project_meteo_stations_get, _cmf_core.project_meteo_stations_set)
     rainfall_stations = _swig_property(_cmf_core.project_rainfall_stations_get, _cmf_core.project_rainfall_stations_set)
@@ -9178,7 +9191,6 @@ class project(StateVariableOwner):
         """
         return _cmf_core.project_use_nearest_rainfall(self, *args, **kwargs)
 
-    outlets = _swig_property(_cmf_core.project_outlets_get, _cmf_core.project_outlets_set)
     def get_cell(self, *args, **kwargs):
         """
         get_cell(self, int index) -> Cell
@@ -9214,10 +9226,11 @@ class project(StateVariableOwner):
     __swig_destroy__ = _cmf_core.delete_project
     def NewCell(self, *args, **kwargs):
         """
-        NewCell(self, double x, double y, double z, double Area) -> Cell
+        NewCell(self, double x, double y, double z, double area, bool with_surfacewater = False) -> Cell
 
         cmf::upslope::Cell*
-        NewCell(double x, double y, double z, double Area)
+        NewCell(double x, double y, double z, double area, bool
+        with_surfacewater=false)
 
         Creates a new cell. 
         """
@@ -9231,9 +9244,48 @@ class project(StateVariableOwner):
         x, double y, double z)
 
         Creates a new Dirichlet boundary condition and adds it to the list of
-        outlets The potential of the Dirichlet boundary equals p.z 
+        outlets The potential of the Dirichlet boundary equals p.z, but can be
+        changed 
         """
         return _cmf_core.project_NewOutlet(self, *args, **kwargs)
+
+    def NewStorage(self, *args, **kwargs):
+        """
+        NewStorage(self, string name, double x, double y, double z) -> ptr
+
+        cmf::water::WaterStorage::ptr NewStorage(std::string name, double x,
+        double y, double z)
+
+        Creates a new generic water storage at position x,y,z. The storage is
+        added to the project nodes. 
+        """
+        return _cmf_core.project_NewStorage(self, *args, **kwargs)
+
+    def NewOpenStorage(self, *args, **kwargs):
+        """
+        NewOpenStorage(self, string name, double x, double y, double z, double area) -> ptr
+
+        cmf::river::OpenWaterStorage::ptr NewOpenStorage(std::string name,
+        double x, double y, double z, double area)
+
+        Creates a new open water storage with a prism geometry. The open water
+        storage is added to the project nodes. 
+        """
+        return _cmf_core.project_NewOpenStorage(self, *args, **kwargs)
+
+    def NewReach(self, *args, **kwargs):
+        """
+        NewReach(self, double x, double y, double z, double length, char Type = 'T', 
+            double width = 0.5, double depth = 0.1, 
+            bool diffusive = False) -> ptr
+
+        cmf::river::Reach::ptr
+        NewReach(double x, double y, double z, double length, char Type='T',
+        double width=0.5, double depth=0.1, bool diffusive=false)
+
+        Creates a new reach. 
+        """
+        return _cmf_core.project_NewReach(self, *args, **kwargs)
 
     def get_reach(self, *args, **kwargs):
         """
@@ -9256,6 +9308,14 @@ class project(StateVariableOwner):
         """
         return _cmf_core.project_reach_count(self, *args, **kwargs)
 
+    def get_node(self, *args, **kwargs):
+        """get_node(self, int index) -> ptr"""
+        return _cmf_core.project_get_node(self, *args, **kwargs)
+
+    def node_count(self, *args, **kwargs):
+        """node_count(self) -> int"""
+        return _cmf_core.project_node_count(self, *args, **kwargs)
+
     def get_storages(self, *args, **kwargs):
         """
         get_storages(self) -> node_list
@@ -9266,23 +9326,9 @@ class project(StateVariableOwner):
         """
         return _cmf_core.project_get_storages(self, *args, **kwargs)
 
-    def NewReach(self, *args, **kwargs):
-        """
-        NewReach(self, double x, double y, double z, double length, char Type = 'T', 
-            double width = 0.5, double depth = 0.1, 
-            bool diffusive = False) -> ptr
-
-        cmf::river::Reach::ptr
-        NewReach(double x, double y, double z, double length, char Type='T',
-        double width=0.5, double depth=0.1, bool diffusive=false)
-
-        Creates a new reach. 
-        """
-        return _cmf_core.project_NewReach(self, *args, **kwargs)
-
     cells = _swig_property(_cmf_core.project_cells_get)
     def __repr__(self):
-        return "cmf.project(%i cells, %i meteo stations, %i outlets)" % (len(self.cells),len(self.meteo_stations),len(self.outlets))
+        return "cmf.project(%i cells, %i meteo stations, %i project nodes)" % (len(self.cells),len(self.meteo_stations),len(self.nodes))
     def __len__(self):
         return self.size()
     def __getitem__(self,index):
@@ -9295,8 +9341,14 @@ class project(StateVariableOwner):
             yield self.get_cell(i)
     @property
     def reaches(self):
-        return reach_list(self)
+        "Returns the reaches of the project"
+        return project_list_wrapper(self.get_reach,self.reach_count,'reaches')
+    @property
+    def nodes(self):
+        "Returns the nodes of the project"
+        return project_list_wrapper(self.get_node,self.node_count,'nodes')
 
+project.remove_node = new_instancemethod(_cmf_core.project_remove_node,None,project)
 project.use_IDW_meteo = new_instancemethod(_cmf_core.project_use_IDW_meteo,None,project)
 project.use_nearest_meteo = new_instancemethod(_cmf_core.project_use_nearest_meteo,None,project)
 project.use_IDW_rainfall = new_instancemethod(_cmf_core.project_use_IDW_rainfall,None,project)
@@ -9305,10 +9357,14 @@ project.get_cell = new_instancemethod(_cmf_core.project_get_cell,None,project)
 project.size = new_instancemethod(_cmf_core.project_size,None,project)
 project.NewCell = new_instancemethod(_cmf_core.project_NewCell,None,project)
 project.NewOutlet = new_instancemethod(_cmf_core.project_NewOutlet,None,project)
+project.NewStorage = new_instancemethod(_cmf_core.project_NewStorage,None,project)
+project.NewOpenStorage = new_instancemethod(_cmf_core.project_NewOpenStorage,None,project)
+project.NewReach = new_instancemethod(_cmf_core.project_NewReach,None,project)
 project.get_reach = new_instancemethod(_cmf_core.project_get_reach,None,project)
 project.reach_count = new_instancemethod(_cmf_core.project_reach_count,None,project)
+project.get_node = new_instancemethod(_cmf_core.project_get_node,None,project)
+project.node_count = new_instancemethod(_cmf_core.project_node_count,None,project)
 project.get_storages = new_instancemethod(_cmf_core.project_get_storages,None,project)
-project.NewReach = new_instancemethod(_cmf_core.project_NewReach,None,project)
 project_swigregister = _cmf_core.project_swigregister
 project_swigregister(project)
 
