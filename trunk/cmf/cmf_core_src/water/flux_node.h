@@ -29,6 +29,8 @@
 #include <string>
 #include <stdexcept>
 #include <tr1/memory>
+#include <algorithm>
+
 #include "../math/num_array.h"
 #include "../math/statevariable.h"
 
@@ -79,11 +81,11 @@ namespace cmf {
 			// Returns the waterbalance (sum of all current fluxes) without updating the calculated fluxes
 			double water_balance_without_refresh() const;
 			// The project this node belongs to
-			const cmf::project& m_project;
+			cmf::project& m_project;
 
 		public:
 			/// Returns the project, this node is part of
-			const cmf::project& get_project() const {return m_project;}
+			cmf::project& get_project() const {return m_project;}
 			/// The Id of the node
 			const int node_id;
 			/// true, if this is a waterstorage
@@ -140,7 +142,7 @@ namespace cmf {
 				return 1;
 			}
 			
-			flux_node(const cmf::project& _project,cmf::geometry::point location=cmf::geometry::point());
+			flux_node(cmf::project& _project,cmf::geometry::point location=cmf::geometry::point());
 			
 		};
 
@@ -196,6 +198,104 @@ namespace cmf {
 			waterbalance_integrator(cmf::water::flux_node::ptr node) 
 				:	_node(node), _sum(0.0), _t(cmf::math::year*5000), _name(node->to_string()+ " (Integrator)") {}
 		};
+/*
+		class ChildNodes;
+		class node_ref{
+			friend class ChildNodes;
+		private:
+			struct node_ref_inner {
+				flux_node* fn;
+				node_ref_inner(flux_node* node) : fn(node) {}
+			};
+			typedef std::tr1::shared_ptr<node_ref_inner> inner_ptr;
+			inner_ptr m_ref;
+			node_ref(flux_node* fn) : m_ref(inner_ptr(new node_ref_inner(fn))) {}
+			void kill_node() {
+				delete m_ref->fn;
+				m_ref->fn=0;
+			}
+		public:
+			node_ref(const node_ref& from) : m_ref(from.m_ref) {}
+			node_ref& operator=(const node_ref& from) {
+				m_ref = from.m_ref;
+			}
+			flux_node& operator*() const{
+				if (m_ref->fn) {
+					return *(m_ref->fn);
+				} else {
+					throw std::runtime_error("Node does not exist anymore");
+				}
+			}
+			flux_node* operator->() const {
+				if (m_ref->fn) {
+					return m_ref->fn;
+				} else {
+					throw std::runtime_error("Node does not exist anymore");
+				}
+			}
+			operator bool() const {
+				return m_ref->fn!=0;
+			}
+			bool operator==(const node_ref& cmp) const {
+				return m_ref->fn == cmp.m_ref->fn;
+			}
+			bool operator!=(const node_ref& cmp) const {
+				return m_ref->fn != cmp.m_ref->fn;
+			}
+		};
+		class ChildNodes {
+		private:
+			typedef std::vector<node_ref> ChildNodeVector;
+			ChildNodeVector m_v;
+			friend class flux_node;
+			int add_node(flux_node* fn) {
+				node_ref nr = fn;
+				return add_ref(nr);
+			}
+			int add_ref(const node_ref& nr) {
+				m_v.push_back(nr);
+				return m_v.size();
+			}
+			ChildNodeVector::iterator find(node_ref fn) {
+				ChildNodeVector::iterator it = m_v.begin();
+				for(; it != m_v.end(); ++it)
+					if (*it == fn)
+						break;
+				return it;
+			}
+		public:
+			int kill_child(node_ref fn) {
+				ChildNodeVector::iterator it = find(fn);
+				if (it==m_v.end()) {
+					throw std::invalid_argument(fn->to_string() + " is not part of this owner");
+				} else {
+					m_v.erase(it);
+					fn.kill_node();
+				}
+				return m_v.size();
+			}
+			bool is_child(flux_node* fn) {
+				ChildNodeVector::iterator it = find(fn);
+				return it!=m_v.end();
+			}
+			int transfer_node(node_ref fn,ChildNodes& target) {
+				ChildNodeVector::iterator it = find(fn);
+				if (it==m_v.end()) {
+					throw std::invalid_argument(fn->to_string() + " is not part of this owner");
+				} else {
+					m_v.erase(it);
+					target.add_ref(fn);
+				}
+				return m_v.size();
+			}
+			~ChildNodes() {
+				for(ChildNodeVector::iterator it = m_v.begin(); it != m_v.end(); ++it)
+				{
+					it->kill_node();
+				}
+			}
+		};
+*/
 
 
 	}

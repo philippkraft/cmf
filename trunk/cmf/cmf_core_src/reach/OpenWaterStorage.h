@@ -39,9 +39,9 @@ namespace cmf {
 			std::auto_ptr<IVolumeHeightFunction> height_function;
 		protected:
 			/// Creates an open water storage with a prismatic volume			
-			OpenWaterStorage(const cmf::project& _project,real Area);
+			OpenWaterStorage(cmf::project& _project,real Area);
 			/// Creates an open water storage with any type of a volume
-			OpenWaterStorage(const cmf::project& _project, const cmf::river::IVolumeHeightFunction& base_geo);
+			OpenWaterStorage(cmf::project& _project, const cmf::river::IVolumeHeightFunction& base_geo);
 
 			virtual real head_to_volume(real head) const;
 			virtual real volume_to_head(real volume) const;
@@ -62,9 +62,9 @@ namespace cmf {
 			/// Returns the exposed surface area in m2
 			real wet_area() const {return height_function->A(maximum(0,get_volume()));}
 			/// Creates an open water storage with a prismatic volume			
-			static ptr create(const cmf::project& _project,real Area);
+			static ptr create(cmf::project& _project,real Area);
 			/// Creates an open water storage with any type of a volume
-			static ptr create(const cmf::project& _project, const cmf::river::IVolumeHeightFunction& base_geo);
+			static ptr create(cmf::project& _project, const cmf::river::IVolumeHeightFunction& base_geo);
 			real conc(cmf::math::Time t,const cmf::water::solute& solute)	const;
 			/// Creates an open water storage from a flux node with a prismatic volume
 			static ptr from_node(cmf::water::flux_node::ptr node,real Area);

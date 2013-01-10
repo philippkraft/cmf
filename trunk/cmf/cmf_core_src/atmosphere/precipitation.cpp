@@ -5,7 +5,8 @@
 using namespace cmf::atmosphere;
 using namespace cmf::geometry;
 using namespace cmf::math;
-IDWRainfall::IDWRainfall( const cmf::project& project, cmf::geometry::point position, double z_weight, double power ) : RainSource(project,position)
+IDWRainfall::IDWRainfall( cmf::project& project, cmf::geometry::point position, double z_weight, double power ) 
+: RainSource(project,position)
 {
 	point p=position;
 	const RainfallStationList& stations = project.rainfall_stations;
@@ -24,7 +25,7 @@ IDWRainfall::IDWRainfall( const cmf::project& project, cmf::geometry::point posi
 	Name = "IDW - interpolated rainfall";
 }
 
-IDWRainfall::ptr cmf::atmosphere::IDWRainfall::create( const cmf::project& project, cmf::geometry::point position, double z_weight, double power )
+IDWRainfall::ptr cmf::atmosphere::IDWRainfall::create(cmf::project& project, cmf::geometry::point position, double z_weight, double power )
 {
 	IDWRainfall* new_obj = new IDWRainfall(project,position,z_weight,power);
 	return IDWRainfall::ptr(new_obj);
@@ -47,7 +48,7 @@ real cmf::atmosphere::IDWRainfall::conc( cmf::math::Time t, const cmf::water::so
 		res += it->first->concentration.conc(t,Solute) * it->second;
 	return res;
 }
-cmf::atmosphere::RainfallStationReference::ptr cmf::atmosphere::RainfallStationReference::from_nearest_station( const cmf::project& project, cmf::geometry::point position, double z_weight )
+cmf::atmosphere::RainfallStationReference::ptr cmf::atmosphere::RainfallStationReference::from_nearest_station(cmf::project& project, cmf::geometry::point position, double z_weight )
 {
 	if (project.rainfall_stations.size() == 0)
 		throw std::runtime_error("Can't create RainfallStationReference without rainfall stations");
@@ -65,19 +66,19 @@ cmf::atmosphere::RainfallStationReference::ptr cmf::atmosphere::RainfallStationR
 	return ptr(rfs_r);
 }
 
-cmf::atmosphere::RainfallStationReference::ptr cmf::atmosphere::RainfallStationReference::from_station_id( const cmf::project& project, cmf::geometry::point position, size_t id )
+cmf::atmosphere::RainfallStationReference::ptr cmf::atmosphere::RainfallStationReference::from_station_id( cmf::project& project, cmf::geometry::point position, size_t id )
 {
 	if (id >= project.rainfall_stations.size() )
 		throw std::runtime_error("Id out of range");
 	return ptr(new RainfallStationReference(project,position,project.rainfall_stations[id]));
 }
 
-cmf::atmosphere::RainfallStationReference::RainfallStationReference( const cmf::project& project, cmf::geometry::point position, RainfallStation::ptr station ) 
+cmf::atmosphere::RainfallStationReference::RainfallStationReference(cmf::project& project, cmf::geometry::point position, RainfallStation::ptr station ) 
 	: RainSource(project,position), m_station(station)
 {
 	Name = "Rainfall from " + station->name;
 }
-cmf::atmosphere::ConstantRainSource::ConstantRainSource( const cmf::project& _project,cmf::geometry::point location,real _intensity ) 
+cmf::atmosphere::ConstantRainSource::ConstantRainSource(cmf::project& _project,cmf::geometry::point location,real _intensity ) 
 : RainSource(_project,location), intensity(_intensity), concentrations(_project.solutes.size(),0.0)
 {
 	std::stringstream sstr;

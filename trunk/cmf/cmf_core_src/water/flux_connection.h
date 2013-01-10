@@ -154,9 +154,12 @@ namespace cmf {
 			bool remove(cmf::water::flux_connection::ptr connection);
 			void do_action(cmf::math::Time t, bool use_OpenMP = true);
 			size_t size() const { return m_con.size();}
+
+#ifndef SWIG
 			cmf::water::flux_connection::ptr operator[](size_t pos) const {
 				return m_con[pos];
 			}
+#endif
 			cmf::water::flux_connection::ptr at(size_t pos) const { return m_con.at(pos); }
 			iterator begin() {
 				return m_con.begin();

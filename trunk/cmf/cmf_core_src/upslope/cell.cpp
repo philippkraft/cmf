@@ -91,19 +91,14 @@ real cmf::upslope::Cell::get_saturated_depth() const
 
 void cmf::upslope::Cell::add_layer(real lowerboundary,const cmf::upslope::RetentionCurve& r_curve,real saturateddepth/*=-10*/ )
 {
-	if (get_project().debug)
-		std::cout << "Adds a layer to " << this->to_string() << " Name: ";
+	// Create new soil layer
 	SoilLayer::ptr layer(new SoilLayer(*this,lowerboundary,r_curve,saturateddepth));
-	if (get_project().debug)
-		std::cout << layer->Name << std::endl;
-	if (m_Layers.size() == 0)
-	{
-		new connections::MatrixInfiltration(layer,m_SurfaceWater);
-	}
-	if (m_Layers.size()) {
+	if (m_Layers.size() == 0) {// if this is the first layer, create a connection to surfacewater
+		new connections::MatrixInfiltration(layer,get_surfacewater());
+	} else  { // if it is not the first layer, make a double ended list of the layers
 		m_Layers[-1]->m_lower = SoilLayer::weak_ptr(layer);
 		layer->m_upper = SoilLayer::weak_ptr(m_Layers[-1]);
-	}
+	} // Add the new layer to the layer vector
 	m_Layers.append(layer);
 }
 cmf::upslope::SoilLayer::ptr cmf::upslope::Cell::get_layer(int index) const {
@@ -130,10 +125,6 @@ void cmf::upslope::Cell::remove_last_layer()
 	m_Layers.pop();
 }
 
-const cmf::project& cmf::upslope::Cell::get_project() const
-{
-return m_project;
-}
 
 
 cmf::water::WaterStorage::ptr cmf::upslope::Cell::add_storage( std::string Name,char storage_role/*='N'*/, bool isopenwater/*=false*/ )
@@ -191,25 +182,26 @@ cmf::water::WaterStorage::ptr cmf::upslope::Cell::get_canopy() const
 	return m_Canopy;
 }
 
+void deletestorage(cmf::project& p,cmf::water::flux_node::ptr storage, cmf::water::flux_node* replacement=0) {
+	p.remove_node(storage);
+	storage.reset(replacement);
+}
 
-void cmf::upslope::Cell::remove_storage( cmf::water::WaterStorage& storage )
+void cmf::upslope::Cell::remove_storage( cmf::water::WaterStorage::ptr storage )
 {
-	if (&storage==m_Canopy.get()) m_Canopy.reset();
-	if (&storage==m_Snow.get()) m_Snow.reset();
-	if (&storage==m_SurfaceWaterStorage.get()) {
-		m_SurfaceWater.reset(new cmf::water::flux_node(get_project()));
-		m_SurfaceWater->Name=storage.Name;
-		m_SurfaceWater->position=storage.position;
+	if (storage==m_Canopy) deletestorage(m_project,m_Canopy);
+	if (storage==m_Snow) deletestorage(m_project,m_Snow);
+	if (storage==m_SurfaceWaterStorage) {
+		deletestorage(m_project,m_SurfaceWater,new cmf::water::flux_node(get_project()));
+		m_SurfaceWater->Name=storage->Name;
+		m_SurfaceWater->position=storage->position;
 		cmf::water::replace_node(m_SurfaceWaterStorage,m_SurfaceWater);
 		m_SurfaceWaterStorage.reset();
 	}
-	for (int i = 0; i < this->storage_count(); ++i)
-	{
-		if (&storage==this->get_storage(i).get())
-		{
-			m_storages.erase(m_storages.begin()+i);
-			return;
-		}
+	storage_vector::iterator it = std::find(m_storages.begin(),m_storages.end(),storage);
+	if (it!=m_storages.end()) { 
+		m_storages.erase(it);
+		m_project.remove_node(*it);
 	}
 }
 

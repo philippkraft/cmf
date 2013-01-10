@@ -64,7 +64,7 @@ namespace cmf {
 			/// @param thickness Mean thickness of the aquifer in m
 			/// @param porosity Mean porositiy of the aquifer
 			/// @param K Conductivity of the aquifer in m/day. If the conductivity should be anisotropic, change the x,y and z values of the member K
-			aquifer(const cmf::project& p,cmf::geometry::point position, real area, real thickness, real porosity,real K=1e-4);
+			aquifer(cmf::project& p,cmf::geometry::point position, real area, real thickness, real porosity,real K=1e-4);
 			
 			
 			/// Creates an aquifer below a collection of cells

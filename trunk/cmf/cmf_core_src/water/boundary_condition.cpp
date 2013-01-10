@@ -31,18 +31,17 @@ real cmf::water::NeumannBoundary::operator()( cmf::math::Time t ) const
 		return scale_function(flux[t]);
 }
 
-cmf::water::NeumannBoundary::NeumannBoundary(const cmf::project& _project, 
-																						 cmf::math::timeseries _flux,
-																						 cmf::water::SoluteTimeseries _concentration/*=cmf::water::SoluteTimeseries()*/,
-																						 cmf::geometry::point loc/*=cmf::geometry::point()*/
+cmf::water::NeumannBoundary::NeumannBoundary(cmf::project& _project, 
+											 cmf::math::timeseries _flux,
+											 cmf::water::SoluteTimeseries _concentration/*=cmf::water::SoluteTimeseries()*/,
+											 cmf::geometry::point loc/*=cmf::geometry::point()*/
 																						) 
 : cmf::water::flux_node(_project,loc), flux(_flux),concentration(_concentration)
 {
 
 }
 
-cmf::water::NeumannBoundary::NeumannBoundary(const cmf::project& _project,
-																						 cmf::geometry::point loc) 
+cmf::water::NeumannBoundary::NeumannBoundary(cmf::project& _project,cmf::geometry::point loc) 
 : cmf::water::flux_node(_project,loc)
 {
 
@@ -68,7 +67,7 @@ real cmf::water::NeumannFlux::calc_q( cmf::math::Time t )
 }
 
 
-cmf::water::DirichletBoundary::DirichletBoundary(const cmf::project& _p,real potential,cmf::geometry::point position/*=cmf::geometry::point()*/ ) 
+cmf::water::DirichletBoundary::DirichletBoundary(cmf::project& _p,real potential,cmf::geometry::point position/*=cmf::geometry::point()*/ ) 
 : flux_node(_p,position),m_Potential(potential), is_source(0)
 {	
 }

@@ -58,7 +58,6 @@ namespace cmf {
 		private:
 			// Character indicating if Volume ('V') or head ('h') is the state variable
 			char m_state_variable_content;
-			std::tr1::shared_ptr<WaterStorage> this_no_delete;
 			typedef std::vector<std::tr1::shared_ptr<cmf::water::SoluteStorage> > SoluteStorageMap;
 			SoluteStorageMap m_Concentrations;
 			void initializeSoluteStorages(const cmf::water::solute_vector& solutes);
@@ -83,7 +82,7 @@ namespace cmf {
 			/// @param project The project the waterstorage belongs to
 			/// @param Name Name of the water storage
 			/// @param InitialState Initial water content in m<sup>3</sup>
-			WaterStorage(const cmf::project& project,const std::string & Name="", double InitialState=0);
+			WaterStorage(cmf::project& project,const std::string & Name="", double InitialState=0);
 			
 			static std::tr1::shared_ptr<WaterStorage> from_node(cmf::water::flux_node::ptr node);
 			/// Returns the water quality of the water storage.
@@ -151,7 +150,7 @@ namespace cmf {
 			{		
 				return std::tr1::dynamic_pointer_cast<cmf::water::WaterStorage>(node);
 			}
-			static std::tr1::shared_ptr<cmf::water::WaterStorage> create(const cmf::project& _project, real initial_state=0.0)
+			static std::tr1::shared_ptr<cmf::water::WaterStorage> create(cmf::project& _project, real initial_state=0.0)
 			{
 				return std::tr1::shared_ptr<cmf::water::WaterStorage>(new WaterStorage(_project,"unknown",initial_state));
 			}

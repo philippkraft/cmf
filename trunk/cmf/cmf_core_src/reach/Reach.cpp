@@ -169,7 +169,7 @@ void Reach::set_dead_end()
 	set_outlet(cmf::water::flux_node::ptr());
 }
 
-Reach::ptr Reach::create( const cmf::project& project,const IChannel& shape, bool diffusive/*=false*/ )
+Reach::ptr Reach::create(cmf::project& project,const IChannel& shape, bool diffusive/*=false*/ )
 {
 	Reach* pR =	 new Reach(project,shape,diffusive);
 	ptr R (pR);
@@ -201,7 +201,7 @@ real cmf::river::Reach::get_width() const
 {
 	return wet_area()/get_length();
 }
-Reach::Reach( const cmf::project& _project,const IChannel& shape, bool diffusive/*=false*/ ) 
+Reach::Reach(cmf::project& _project,const IChannel& shape, bool diffusive/*=false*/ ) 
 : OpenWaterStorage(_project,shape), m_diffusive(diffusive)
 {
 
