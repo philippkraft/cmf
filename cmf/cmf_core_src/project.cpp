@@ -37,14 +37,6 @@ cmf::project::~project()
 
 
 
-cmf::river::Reach::ptr cmf::project::NewReach( double x,double y, double z, double length, char Type/*='T'*/,double width/*=0.5*/,double depth/*=0.1*/, bool diffusive/*=false*/ )
-{
-	cmf::river::Channel ch(Type,length,width,depth);
-	cmf::river::Reach::ptr R = cmf::river::Reach::create(*this,ch,diffusive);
-	R->position=cmf::geometry::point(x,y,z);
-	m_reaches.push_back(R);
-	return m_reaches.back();
-}
 
 cmf::river::Reach::ptr cmf::project::get_reach( int index )
 {
@@ -55,36 +47,32 @@ cmf::water::node_list cmf::project::get_storages()
 {
 	using namespace cmf::upslope;
 	using namespace cmf::river;
+	using namespace cmf::water;
+	using namespace std;
 
-	cmf::water::node_list res;
-	std::map<Cell*, Reach::ptr> reaches;
-	for(std::vector<cmf::river::Reach::ptr>::iterator r_it = m_reaches.begin(); r_it != m_reaches.end(); ++r_it)
+	node_list res;
+	map<Cell*, Reach::ptr> reaches;
+	for(vector<Reach::ptr>::iterator r_it = m_reaches.begin(); r_it != m_reaches.end(); ++r_it)
 	{
-		cmf::river::Reach::ptr reach=*r_it;
+		Reach::ptr reach=*r_it;
 		res.append(reach);
 	}
 
-	for(cmf::upslope::cell_vector::iterator it = m_cells.begin(); it != m_cells.end(); ++it)
+	for(cell_vector::iterator it = m_cells.begin(); it != m_cells.end(); ++it)
 	{
-		for (int i = 0; i < it->layer_count() ; ++i)
-			res.append(it->get_layer(i));
 		for (int i = 0; i < it->storage_count() ; ++i)
 			res.append(it->get_storage(i));
-		if (reaches.find(it)!=reaches.end())
-			res.append(reaches[it]);
+		for (int i = 0; i < it->layer_count() ; ++i)
+			res.append(it->get_layer(i));
+	}
+	for(node_list::iterator it = m_nodes.begin(); it != m_nodes.end(); ++it)
+	{
+		WaterStorage::ptr ws = WaterStorage::cast(*it);
+		if (ws) res.append(ws);
 	}
 	return res;
-
-
 }
 
-cmf::water::DirichletBoundary::ptr cmf::project::NewOutlet( std::string name,double x, double y, double z)
-{
-	cmf::water::DirichletBoundary::ptr res(new cmf::water::DirichletBoundary(*this,z,cmf::geometry::point(x,y,z) ));
-	res->Name = name;
-	outlets.append(res);
-	return res;
-}
 
 void cmf::project::use_IDW_meteo( double z_weight/*=0*/,double power/*=2*/ )
 {
@@ -121,14 +109,83 @@ void cmf::project::use_nearest_rainfall( double z_weight/*=0*/ )
 
 cmf::math::StateVariableList cmf::project::get_states()
 {
-	cmf::math::StateVariableList q;
-	using namespace cmf::upslope;
-	using namespace cmf::river;
-
+	using namespace cmf::math;
+	using namespace cmf::water;
+	StateVariableList q;
+// 	for (node_list::iterator n_it = m_nodes.begin();n_it!=m_nodes.end();++n_it) {
+// 		WaterStorage::ptr storage = WaterStorage::cast(*n_it);
+// 		q.extend(*storage);
+// 	}	
 	for(std::vector<cmf::river::Reach::ptr>::iterator r_it = m_reaches.begin(); r_it != m_reaches.end(); ++r_it)
 		q.extend(**r_it);
 
 	for(cmf::upslope::cell_vector::iterator it = m_cells.begin(); it != m_cells.end(); ++it)
 		q.extend(*it);
+	q.extend(m_nodes);
+
 	return q;
+
+}
+
+int cmf::project::add_node( cmf::water::flux_node::ptr node )
+{
+	m_nodes.append(node);
+	return m_nodes.size();
+	if (debug) {
+		std::cout << "project<-" << node->to_string() << std::endl;
+	}
+}
+
+int cmf::project::remove_node( cmf::water::flux_node::ptr node )
+{
+	m_nodes.remove(node);
+	return m_nodes.size();
+}
+
+cmf::water::WaterStorage::ptr cmf::project::NewStorage( std::string Name,double x, double y, double z )
+{
+	cmf::water::WaterStorage::ptr s = cmf::water::WaterStorage::create(*this);
+	s->position = cmf::geometry::point(x,y,z);
+	s->Name = Name;
+	add_node(s);
+	if (this->debug) std::cout << "Create " << s->to_string() << std::endl;
+	return s;
+}
+
+cmf::river::OpenWaterStorage::ptr cmf::project::NewOpenStorage( std::string Name,double x, double y, double z,double area )
+{
+	cmf::river::OpenWaterStorage::ptr os = cmf::river::OpenWaterStorage::create(*this,area);
+	os->position = cmf::geometry::point(x,y,z);
+	os->Name = Name;
+	add_node(os);
+	if (this->debug) std::cout << "Create " << os->to_string() << std::endl;
+	return os;
+}
+
+cmf::river::Reach::ptr cmf::project::NewReach( double x,double y, double z, double length, char Type/*='T'*/,double width/*=0.5*/,double depth/*=0.1*/, bool diffusive/*=false*/ )
+{
+	cmf::river::Channel ch(Type,length,width,depth);
+	cmf::river::Reach::ptr R = cmf::river::Reach::create(*this,ch,diffusive);
+	R->position=cmf::geometry::point(x,y,z);
+	if (this->debug) std::cout << "Create " << R->to_string() << std::endl;
+	m_reaches.push_back(R);
+	return m_reaches.back();
+}
+
+cmf::water::DirichletBoundary::ptr cmf::project::NewOutlet( std::string name,double x, double y, double z)
+{
+	cmf::water::DirichletBoundary::ptr res(new cmf::water::DirichletBoundary(*this,z,cmf::geometry::point(x,y,z) ));
+	res->Name = name;
+	add_node(res);
+	if (this->debug) std::cout << "Create " << res->to_string() << std::endl;
+	return res;
+}
+
+
+cmf::upslope::Cell* cmf::project::NewCell( double x,double y,double z, double area,bool with_surfacewater/*=false*/ )
+{
+	cmf::upslope::Cell* new_cell=new cmf::upslope::Cell(x,y,z,area,*this);
+	if (with_surfacewater) new_cell->surfacewater_as_storage();
+	m_cells.append(*new_cell);
+	return new_cell;
 }

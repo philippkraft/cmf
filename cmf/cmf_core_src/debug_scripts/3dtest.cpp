@@ -4,16 +4,20 @@
 #include <fstream>
 #include <string>
 #include <exception>
+#include <cmath>
 #include "../project.h"
-#include "../atmosphere/meteorology.h"
-#include "../upslope/cell.h"
-#include "../upslope/vegetation/ET.h"
-#include "../math/Integrators/cvodeintegrator.h"
-#include "../upslope/Soil/RetentionCurve.h"
-#include "../upslope/connections/subsurfacefluxes.h"
-#include "../upslope/connections/infiltration.h"
-#include "../upslope/connections/percolation.h"
-#include "../reach/ManningConnection.h"
+#include "../atmosphere/Meteorology.h"
+#include "../Upslope/Cell.h"
+#include "../Upslope/vegetation/ET.h"
+#include "../math/integrators/cvodeIntegrator.h"
+#include "../math/integrators/explicit_euler.h"
+#include "../Upslope/Soil/RetentionCurve.h"
+#include "../Upslope/connections/subsurfacefluxes.h"
+#include "../Upslope/connections/infiltration.h"
+#include "../Upslope/connections/percolation.h"
+#include "../Reach/ManningConnection.h"
+#include "../water/WaterStorage.h"
+#include "../water/simple_connections.h"
 
 /// Main function of the program. Only for debugging and testing, the real CMF<sub>lib</sub> will be compiled as a DLL and the 
 /// main function will be replaced by Python code
@@ -43,7 +47,12 @@ int load_cells(project& p,string name) {
 	// Get filename for the cells
 	string filename = name + ".cells";
 	ifstream cellfile,topofile;
-	cellfile.open(filename.c_str());
+	try {
+		cellfile.open(filename.c_str());
+	} catch (ifstream::failure e) {
+		cerr << "Could not open " << filename << ", does it exist?" << endl;
+		return 0;
+	}
 	double x,y,z,area,w;
 	int id, n_id;
 	// Get location (x,y,z) and area for each cell from the file
@@ -60,20 +69,20 @@ int load_cells(project& p,string name) {
 		topofile >> id >> n_id >> w;
 		p.get_cell(id).get_topology().AddNeighbor(p.get_cell(n_id),w);
 	}
-	return 0;
+	return 1;
 }
 
 // Adds storages and local connections to a cell
 void designcell(Cell& c) {
 	// Lower boundary for layers (in m)
 	double depth[] = {0.05,0.1,0.2,0.3,0.5,0.75,1.0,1.3,1.7,2.};
+	// Create a surfacewater storage
+	c.surfacewater_as_storage();
 	// Add layers with changing sat. conductivity to the cell
 	for (int i = 0; i < 10 ; ++i)	{
 		VanGenuchtenMualem vgm(15 * exp(-depth[i]));
 		c.add_layer(depth[i],vgm);
 	}
-	// Create a surfacewater storage
-	c.surfacewater_as_storage();
 	// Use Richards equation for this cell
 	Richards::use_for_cell(c);
 	// Use MatrixInfiltration for this cell
@@ -113,19 +122,15 @@ void load_meteo(project& p,std::string name) {
 // Initializes all soil water storages with a solute conc. of 1.
 // Can be used to simulate a wash out process
 void init_solute(project & p,solute X) {
-	for (int i = 0; i < p.size() ; ++i)
-	{
+	for (int i = 0; i < p.size() ; ++i)	{
 		Cell& c=p[i];
-		for (int j = 0; j < c.layer_count() ; ++j)
-		{
+		for (int j = 0; j < c.layer_count() ; ++j)	{
 			SoilLayer::ptr l=c.get_layer(j);
 			l->conc(X,1.0);
 		}
 	}
 }
-
-int main(int argc,const char* argv[])
-{
+int create3d(std::string name) {
 	// If you want to simulate solute transport (wash out of old water), compile with SOLUTE peprocessor variable
 #ifdef SOLUTE
 	project p="X";
@@ -134,8 +139,9 @@ int main(int argc,const char* argv[])
 	project p;
 #endif
 	cout << "load cells...";
-	string name=argc ?  argv[0] : "test3d";
-	load_cells(p,"test3d");
+	if (!load_cells(p,name)) {
+		return 0;
+	};
 	cout << p.size() << endl;
 	cout << "Design cells";
 	for (int i = 0; i < p.size() ; ++i)	
@@ -160,7 +166,7 @@ int main(int argc,const char* argv[])
 	Time start(1,1,1980);
 	integ.set_t(start);
 
-	time_t walltime,walltimestart=time(0);
+	time_t walltime=time(0),walltimestart=time(0);
 	real overflow=0.0,perc=0.0;
 	int i=0;
 	cout.precision(3);
@@ -180,8 +186,43 @@ int main(int argc,const char* argv[])
 		cout << " P=" << p.rainfall_stations[0]->data.get_t(t);
 		cout << endl;
 	}
-	string dummy;
-	cin.get();
 	return 0;
 
+}
+int createsimple() {
+#ifdef SOLUTE
+	project p="X";
+	solute X=p.solutes[0];
+#else
+	project p;
+#endif
+	p.debug = true;
+	WaterStorage::ptr w1 = p.NewStorage("w1",0,0,0);
+	WaterStorage::ptr w2 = p.NewStorage("w2",10,0,0);
+	WaterStorage::ptr w3 = p.NewStorage("w3",20,0,0);
+	w1->set_volume(1.0);
+	kinematic_wave* con1 = new kinematic_wave(w1,w2,1.0);
+	kinematic_wave* con2 = new kinematic_wave(w2,w3,1.0);
+	CVodeIntegrator integ(p);
+	Time t0 = Time(1,1,2000);
+	integ.set_t(t0);
+	cout << "Integrator created with " << integ.size() << " states" << endl;
+	while (integ.get_t()<Time(4,1,2000)) {
+		integ.integrate_until(integ.get_t()+math::h);
+		Time t = integ.get_t();
+		cout << t.AsDate().to_string() << " V1m=" << w1->get_volume() << " V2m=" << w2->get_volume() << endl; 
+		
+	}
+	return 0;
+
+}
+int main(int argc,const char* argv[])
+{
+	if (argc>=2) {
+		string name=argv[1];
+		create3d(name);
+	} else {
+		createsimple();
+	}
+	cin.get();
 }

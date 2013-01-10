@@ -19,6 +19,7 @@
 #ifdef _OPENMP
 #include <omp.h>
 #endif
+#include <algorithm>
 #include "collections.h"
 #include "WaterStorage.h"
 real cmf::water::node_list::global_water_balance( cmf::math::Time t )	const
@@ -209,6 +210,20 @@ cmf::water::node_list cmf::water::node_list::getslice( int begin,int end,int ste
 		res.append(get(i));
 	}
 	return res;
+}
+
+bool cmf::water::node_list::remove( flux_node::ptr node )
+{
+	using namespace cmf::water;
+	node_list::iterator it = 
+		std::find(begin(),end(),node);
+	if (it!=end()) {
+		m_nodes.erase(it);
+		return true;
+	} else {
+		return false;
+	}
+
 }
 /************************************************************************/
 /* Neumann-Boundary list                                                */

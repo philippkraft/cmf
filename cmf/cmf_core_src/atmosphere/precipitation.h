@@ -35,7 +35,7 @@ namespace cmf {
 		{
 		protected:
 			/// protected c'tor
-			RainSource(const cmf::project& _project,cmf::geometry::point location=cmf::geometry::point())
+			RainSource(cmf::project& _project,cmf::geometry::point location=cmf::geometry::point())
 				: flux_node(_project,location) {}
 		public:
 			/// shared pointer
@@ -73,7 +73,7 @@ namespace cmf {
 			/// @param _project The project the rain source is belonging to.
 			/// @param location The location of the rain source
 			/// @param _intensity The constant rainfall intensity in mm/day
-			ConstantRainSource(const cmf::project& _project,cmf::geometry::point location,real _intensity);
+			ConstantRainSource(cmf::project& _project,cmf::geometry::point location,real _intensity);
 			real get_intensity(cmf::math::Time t) const {
 				return intensity;
 			}
@@ -164,7 +164,7 @@ namespace cmf {
 		/// References a single RainfallStation to provide rainfall intensity data
 		class RainfallStationReference : public RainSource {
 			RainfallStation::ptr m_station;
-			RainfallStationReference(const cmf::project& project, cmf::geometry::point position, RainfallStation::ptr station);
+			RainfallStationReference(cmf::project& project, cmf::geometry::point position, RainfallStation::ptr station);
 		public:
 			/// shared_ptr
 			typedef std::tr1::shared_ptr<cmf::atmosphere::RainfallStationReference > ptr;
@@ -175,10 +175,10 @@ namespace cmf {
 			/// @param project The actual project
 			/// @param position The actual position
 			/// @param z_weight The weight of height differences to find the "nearest" station
-			static ptr from_nearest_station(const cmf::project& project, cmf::geometry::point position, double z_weight);
+			static ptr from_nearest_station(cmf::project& project, cmf::geometry::point position, double z_weight);
 			
 			/// Creates a RainfallStationReference for a certain rainfall station
-			static ptr from_station_id(const cmf::project& project, cmf::geometry::point position, size_t id);
+			static ptr from_station_id(cmf::project& project, cmf::geometry::point position, size_t id);
 			
 			real get_intensity(cmf::math::Time t) const {
 				return m_station->data[t];
@@ -196,7 +196,7 @@ namespace cmf {
 		class IDWRainfall : public RainSource {
 			typedef std::map<RainfallStation::ptr,real> weight_map;
 			weight_map m_weights;
-			IDWRainfall(const cmf::project& project, cmf::geometry::point position, double z_weight, double power);
+			IDWRainfall(cmf::project& project, cmf::geometry::point position, double z_weight, double power);
 		public:
 			/// Creates an IDWRainfall object. This method is invoked by cmf::project::use_IDW_rainfall.
 			/// @sa IDW
@@ -205,7 +205,7 @@ namespace cmf {
 			/// @param position The actual position
 			/// @param z_weight The weight of height differences for the IDW method
 			/// @param power (double)
-			static ptr create(const cmf::project& project, cmf::geometry::point position, double z_weight, double power);
+			static ptr create(cmf::project& project, cmf::geometry::point position, double z_weight, double power);
 			real get_intensity(cmf::math::Time t) const;
 			real conc(cmf::math::Time t, const cmf::water::solute& Solute) const;
 

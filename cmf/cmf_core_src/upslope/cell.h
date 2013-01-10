@@ -38,11 +38,6 @@ namespace cmf {
 		class OpenWaterStorage;	
 		class Reach;
 	}
-	namespace atmosphere {
-		class RainCloud;
-
-
-	}
     /// Contains the classes to describe the discretization of the soil continuum
 	/// @todo: Get Id in constructor for better naming of bounday conditions
 	namespace upslope {
@@ -118,7 +113,7 @@ namespace cmf {
 			cmf::water::flux_node::ptr m_Evaporation, m_Transpiration;
 			cmf::atmosphere::aerodynamic_resistance::ptr m_aerodynamic_resistance;
 
-			const cmf::project & m_project;
+			cmf::project & m_project;
 			meteo_pointer m_meteo;
 
 			
@@ -162,7 +157,7 @@ namespace cmf {
 			cmf::water::flux_node::ptr get_surfacewater();
 			void surfacewater_as_storage();
 			cmf::water::WaterStorage::ptr add_storage(std::string Name,char storage_role='N',  bool isopenwater=false);
-			void remove_storage(cmf::water::WaterStorage& storage);
+			void remove_storage(cmf::water::WaterStorage::ptr storage);
 			int storage_count() const
 			{
 				return int(m_storages.size());
@@ -195,7 +190,10 @@ namespace cmf {
 				return (m_SurfaceWaterStorage) && (m_SurfaceWaterStorage->get_state()>1e-6*get_area());
 			}
 			int Id;
-			const cmf::project& get_project() const;
+			cmf::project& cmf::upslope::Cell::get_project() const
+			{
+				return m_project;
+			}
 			cmf::atmosphere::Weather get_weather(cmf::math::Time t) const;
 
 		public:

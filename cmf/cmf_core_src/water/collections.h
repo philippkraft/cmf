@@ -76,6 +76,8 @@ namespace cmf {
 			cmf::math::StateVariableList get_states();
 			/// Adds a flux node to the list
 			void append(flux_node::ptr node);
+			/// Removes a flux node from the list, returns true if successful
+			bool remove(flux_node::ptr node);
 
 			/// Sets the potentials of the node_lists
 			///

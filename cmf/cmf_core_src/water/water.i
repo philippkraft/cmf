@@ -158,6 +158,8 @@ namespace cmf{namespace water {class flux_connection;}}
 
 
 // WaterStorage
+// ignore the constructor
+%ignore cmf::water::WaterStorage(cmf::project&,const std::string&,double);
 %attribute(cmf::water::WaterStorage,real,volume,get_volume,set_volume);
 %attribute(cmf::water::WaterStorage,char,statevariable,get_state_variable_content,set_state_variable_content);
 %include "water/WaterStorage.h"

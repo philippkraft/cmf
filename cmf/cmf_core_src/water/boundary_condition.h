@@ -85,7 +85,7 @@ namespace cmf {
 			{
 				return 1;
 			}
-			DirichletBoundary(const cmf::project& _p,real potential,cmf::geometry::point Location=cmf::geometry::point());
+			DirichletBoundary(cmf::project& _p,real potential,cmf::geometry::point Location=cmf::geometry::point());
 			
 		};
 		/// @ingroup boundary
@@ -134,11 +134,11 @@ namespace cmf {
 			/// @param _flux The flux timeseries (a scalar is converted to a timeseries automatically)
 			/// @param _concentration The concentration timeseries
 			/// @param loc The location of the boundary condition
-			NeumannBoundary(const cmf::project& _project, 
+			NeumannBoundary(cmf::project& _project, 
 				cmf::math::timeseries _flux,
 				cmf::water::SoluteTimeseries _concentration=cmf::water::SoluteTimeseries(),
 				cmf::geometry::point loc=cmf::geometry::point());
-			NeumannBoundary(const cmf::project& _project,cmf::geometry::point loc=cmf::geometry::point());
+			NeumannBoundary(cmf::project& _project,cmf::geometry::point loc=cmf::geometry::point());
 
 			/// Creates a Neumann Boundary condition connected with target
 			static NeumannBoundary::ptr create(cmf::water::flux_node::ptr target);

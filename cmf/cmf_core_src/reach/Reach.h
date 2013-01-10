@@ -46,7 +46,7 @@ namespace cmf {
 		private:
 
 			/// Creates a reach
-			Reach(const cmf::project& _project,const IChannel& shape, bool diffusive=false);
+			Reach(cmf::project& _project,const IChannel& shape, bool diffusive=false);
 
 			// Typedefs using weak pointers
 			typedef std::tr1::weak_ptr<Reach> weak_reach_ptr;
@@ -110,7 +110,7 @@ namespace cmf {
 			ptr get_root();
 			
 			virtual ~Reach();
-			static ptr create(const cmf::project& project,const cmf::river::IChannel& shape, bool diffusive=false);
+			static ptr create(cmf::project& project,const cmf::river::IChannel& shape, bool diffusive=false);
 			
 		};
 

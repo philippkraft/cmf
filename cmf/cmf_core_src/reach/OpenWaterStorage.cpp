@@ -30,13 +30,13 @@ cmf::river::OpenWaterStorage::ptr cmf::river::OpenWaterStorage::cast( cmf::water
 	return std::tr1::dynamic_pointer_cast<OpenWaterStorage>(node);
 }
 
-cmf::river::OpenWaterStorage::OpenWaterStorage( const cmf::project& _project,real Area ) 
+cmf::river::OpenWaterStorage::OpenWaterStorage(cmf::project& _project,real Area ) 
 : cmf::water::WaterStorage(_project,"Unnamed OpenWaterStorage",0), height_function(new Prism(Area))
 {
 
 }
 
-cmf::river::OpenWaterStorage::OpenWaterStorage( const cmf::project& _project, const cmf::river::IVolumeHeightFunction& base_geo )
+cmf::river::OpenWaterStorage::OpenWaterStorage(cmf::project& _project, const cmf::river::IVolumeHeightFunction& base_geo )
 : cmf::water::WaterStorage(_project,"Unnamed OpenWaterStorage",0), height_function(base_geo.copy())
 {
 
@@ -66,12 +66,12 @@ real cmf::river::OpenWaterStorage::conc( cmf::math::Time t,const cmf::water::sol
 		+ (1-is_empty()) * cmf::water::WaterStorage::conc(t,solute);
 }
 
-cmf::river::OpenWaterStorage::ptr cmf::river::OpenWaterStorage::create( const cmf::project& _project, const cmf::river::IVolumeHeightFunction& base_geo )
+cmf::river::OpenWaterStorage::ptr cmf::river::OpenWaterStorage::create(cmf::project& _project, const cmf::river::IVolumeHeightFunction& base_geo )
 {
 	return ptr(new OpenWaterStorage(_project,base_geo));
 }
 
-cmf::river::OpenWaterStorage::ptr cmf::river::OpenWaterStorage::create( const cmf::project& _project,real Area )
+cmf::river::OpenWaterStorage::ptr cmf::river::OpenWaterStorage::create(cmf::project& _project,real Area )
 {
 	ptr res(new OpenWaterStorage(_project,Area));
 	return res;

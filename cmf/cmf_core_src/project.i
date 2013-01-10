@@ -24,12 +24,13 @@
 %rename(connect_cells_with_flux) cmf::connect_cells_with_flux;
 %attribute2(cmf::project,cmf::upslope::cell_vector,cells,get_cells);
 %pythoncode {
-    class reach_list:
-        def __init__(self,p):
-            self.project = p
-            self.__get = p.get_reach
+    class project_list_wrapper:
+        def __init__(self,getitem,getlen,name):
+            self.__get = getitem
+            self.__len = getlen
+            self.name = name
         def __len__(self):
-            return self.project.reach_count()
+            return self.__len()
         def __getitem__(self,index):
             if (type(index)==slice):
                  return [self.__get(i) for i in range(*index.indices(len(self)))]
@@ -41,13 +42,15 @@
         def __iter__(self):
             for i in range(len(self)):
                 yield self.__get(i)
+        def __repr__(self):
+            return '[%i %s of project]' % (len(self),self.name)
 
 }
 %include "project.h"
 %extend cmf::project {
     %pythoncode {
     def __repr__(self):
-        return "cmf.project(%i cells, %i meteo stations, %i outlets)" % (len(self.cells),len(self.meteo_stations),len(self.outlets))
+        return "cmf.project(%i cells, %i meteo stations, %i project nodes)" % (len(self.cells),len(self.meteo_stations),len(self.nodes))
     def __len__(self):
         return self.size()
     def __getitem__(self,index):
@@ -60,7 +63,12 @@
             yield self.get_cell(i)
     @property
     def reaches(self):
-        return reach_list(self)
+        "Returns the reaches of the project"
+        return project_list_wrapper(self.get_reach,self.reach_count,'reaches')
+    @property
+    def nodes(self):
+        "Returns the nodes of the project"
+        return project_list_wrapper(self.get_node,self.node_count,'nodes')
     }
 }    
     
