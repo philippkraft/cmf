@@ -2457,16 +2457,7 @@ SoluteStorage_swigregister = _cmf_core.SoluteStorage_swigregister
 SoluteStorage_swigregister(SoluteStorage)
 
 class flux_node(object):
-    """
-    Base class for everything that can be connected by fluxes.
-
-    Flux nodes can be WaterStorages, flux end points, sinks, sources and
-    bridges to other model domains (e.g. Ponded water to river system).
-    The base class can be used where a simple routing, potentially with
-    mixing, is needed.
-
-    C++ includes: flux_node.h 
-    """
+    """Proxy of C++ cmf::water::flux_node class"""
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
     __repr__ = _swig_repr
     node_id = _swig_property(_cmf_core.flux_node_node_id_get)
@@ -2505,7 +2496,7 @@ class flux_node(object):
 
         Pure flux_nodes do not influence fluxes, therefore no recalculation of
         fluxes is required by flux_node. WaterStorage overrides this, since
-        state changes require an update of the fluxes 
+        state changes require an update of the fluxes. 
         """
         return _cmf_core.flux_node_RecalcFluxes(self, *args, **kwargs)
 
@@ -2571,6 +2562,7 @@ class flux_node(object):
         const
 
         Returns the sum of all fluxes (positive and negative) at time t.
+
         Single fluxes can be excluded from the calculation
 
         Parameters:
@@ -2839,8 +2831,10 @@ class flux_connection(object):
         real
         conc(cmf::math::Time t, const cmf::water::solute &_Solute)
 
-        Returns the concentration of the flux. If not overridden, it returns
-        the concentration of the source of the flux (direction depending) 
+        Returns the concentration of the flux.
+
+        If not overridden, it returns the concentration of the source of the
+        flux (direction depending) 
         """
         return _cmf_core.flux_connection_conc(self, *args, **kwargs)
 
@@ -3022,9 +3016,10 @@ connection_list_swigregister(connection_list)
 class flux_integrator(integratable):
     """
     The flux_integrator is an integratable for precise output of average
-    fluxes over time. It can be added to solver (any
-    cmf::math::Integrator), which is than calling the integrate method at
-    each substep.
+    fluxes over time.
+
+    It can be added to solver (any cmf::math::Integrator), which is then
+    calling the integrate method at each substep.
 
     C++ includes: flux_connection.h 
     """
@@ -3110,7 +3105,7 @@ linear_scale_swigregister(linear_scale)
 
 class DirichletBoundary(flux_node):
     """
-    Dirichlet (constant head) boundary condition
+    Dirichlet (constant head) boundary condition.
 
     This boundary condition can be used either as a pure sink boundary
     condition or as a conditional source / sink boundary condition. The
@@ -3140,7 +3135,7 @@ class DirichletBoundary(flux_node):
 
         Pure flux_nodes do not influence fluxes, therefore no recalculation of
         fluxes is required by flux_node. WaterStorage overrides this, since
-        state changes require an update of the fluxes 
+        state changes require an update of the fluxes. 
         """
         return _cmf_core.DirichletBoundary_RecalcFluxes(self, *args, **kwargs)
 
@@ -3219,6 +3214,8 @@ def NeumannBoundary_create(*args, **kwargs):
 
 class NeumannFlux(flux_connection):
     """
+    Connection between Neumann-boundary and a flux node.
+
     This flux_connection is created, when connecting a Neumann boundary
     condition with a state variable using Neumann::connect_to
 
@@ -3240,7 +3237,7 @@ NeumannFlux_swigregister(NeumannFlux)
 
 class WaterStorage(StateVariable,StateVariableOwner,flux_node):
     """
-    A state variable for the storage of water
+    A state variable for the storage of water.
 
     A class for the storage of water. The state is the volume of water
     stored in $m^3$ The derivative function is given by:
@@ -3337,7 +3334,7 @@ def WaterStorage_create(*args, **kwargs):
 
 class waterbalance_connection(flux_connection):
     """
-    Routes the sum of all other fluxes to a target
+    Routes the sum of all other fluxes to a target.
 
     C++ includes: simple_connections.h 
     """
@@ -3358,7 +3355,7 @@ waterbalance_connection_swigregister(waterbalance_connection)
 class external_control_connection(flux_connection):
     """
     Flux from one node to another, controlled by the user or an external
-    program, by changing the flux constant
+    program, by changing the flux constant.
 
     C++ includes: simple_connections.h 
     """
@@ -3398,8 +3395,10 @@ def can_set_flux(*args, **kwargs):
     bool
     cmf::water::can_set_flux(flux_node::ptr source, flux_node::ptr target)
 
-    Checks if a constant flux between two nodes can be set. Returns true
-    if the nodes are connected by an external_control_connection 
+    Checks if a constant flux between two nodes can be set.
+
+    Returns true if the nodes are connected by an
+    external_control_connection 
     """
   return _cmf_core.can_set_flux(*args, **kwargs)
 class kinematic_wave(flux_connection):
@@ -3432,7 +3431,7 @@ class kinematic_wave(flux_connection):
 
         Creates a kinematic wave connection. \\[ q = \\frac
         {\\left(\\frac{V}{V_0} - f_{residual}\\right)^\\beta}{t_r}
-        \\]
+        \\].
 
         Parameters:
         -----------
@@ -3462,7 +3461,7 @@ kinematic_wave_swigregister(kinematic_wave)
 class TechnicalFlux(flux_connection):
     """
     Produces a constant but changeable flux from a source to a target, if
-    enough water is present in the source
+    enough water is present in the source.
 
     $ q=\\left\\{0 \\mbox{ if }V_{source}\\le V_{min}\\\\
     \\frac{V_{source} - V_{min}}{t_{decr} q_{0} - V_{min}}\\mbox{ if }
@@ -3486,7 +3485,7 @@ class TechnicalFlux(flux_connection):
         minimal_state=0, cmf::math::Time flux_decrease_time=cmf::math::h)
 
         Produces a constant but changeable flux from a source to a target, if
-        enough water is present in the source
+        enough water is present in the source.
 
         Parameters:
         -----------
@@ -3509,8 +3508,9 @@ TechnicalFlux_swigregister(TechnicalFlux)
 class statecontrol_connection(flux_connection):
     """
     Calculates a flux to or from a water storage to hold it's state at a
-    more or less constant level \\[ q=\\frac{h_1 - h_{target}}{t_c
-    [days]} \\]
+    more or less constant level.
+
+    \\[ q=\\frac{h_1 - h_{target}}{t_c [days]} \\]
 
     C++ includes: simple_connections.h 
     """
@@ -3527,7 +3527,7 @@ class statecontrol_connection(flux_connection):
         controlled_storage, cmf::water::flux_node::ptr other_end, real
         target_state, cmf::math::Time reaction_time)
 
-        Creates a flux connection to control the state of a storage
+        Creates a flux connection to control the state of a storage.
 
         Parameters:
         -----------
@@ -3548,7 +3548,7 @@ statecontrol_connection_swigregister(statecontrol_connection)
 
 class node_list(StateVariableOwner):
     """
-    A collection of nodes for fast access of the waterbalance
+    A collection of nodes for fast access of the waterbalance.
 
     In setups with many storages and rather fast computations, the speed
     of data access for output generation can take a high portion of the
@@ -3640,7 +3640,7 @@ class node_list(StateVariableOwner):
 
         real global_water_balance(cmf::math::Time t) const
 
-        Returns the sum of the water balances of the nodes
+        Returns the sum of the water balances of the nodes.
 
         \\[\\sigma_{global} =
         \\sum_{i=0}^N{\\sum_{j=0}^{C_i}{q_{ij}(t)}} \\]
@@ -3655,7 +3655,7 @@ class node_list(StateVariableOwner):
 
         cmf::math::num_array water_balance(cmf::math::Time t) const
 
-        Returns the water balance of each vector as a vector
+        Returns the water balance of each vector as a vector.
 
         \\[ \\sigma_i = \\sum_{j=0}^{C_i}{q_{ij}(t)} \\]
 
@@ -3793,7 +3793,7 @@ node_list_swigregister(node_list)
 
 class NeumannBoundary_list(object):
     """
-    Provides fast access to Neumann boundaries for flux update
+    Provides fast access to Neumann boundaries for flux update.
 
     If many Neumann boundary conditions are present in a project, a fast
     data exchange to update the fluxes might be needed.
@@ -3877,7 +3877,7 @@ class NeumannBoundary_list(object):
 
         Returns the sum of the water balances of the nodes
         \\[\\sigma_{global} =
-        \\sum_{i=0}^N{\\sum_{j=0}^{C_i}{q_{ij}(t)}} \\]
+        \\sum_{i=0}^N{\\sum_{j=0}^{C_i}{q_{ij}(t)}} \\].
 
         Replaces slow Python code like: 
         """
@@ -3890,7 +3890,7 @@ class NeumannBoundary_list(object):
         cmf::math::num_array water_balance(cmf::math::Time t) const
 
         Returns the water balance of each vector as a vector \\[ \\sigma_i
-        = \\sum_{j=0}^{C_i}{q_{ij}(t)} \\]
+        = \\sum_{j=0}^{C_i}{q_{ij}(t)} \\].
 
         Replaces slow Python code like: 
         """
@@ -6757,7 +6757,7 @@ class IVolumeHeightFunction(object):
     """
     Volume height relations are functional objects, which return a height
     and a crosssectional area of a volume for different geometric bodies.
-    This is the abstract base class, where the geometries derive from
+    This is the abstract base class, where the geometries derive from.
 
     C++ includes: ReachType.h 
     """
@@ -6818,7 +6818,7 @@ IVolumeHeightFunction_swigregister(IVolumeHeightFunction)
 
 class Prism(IVolumeHeightFunction):
     """
-    Returns the height of a volume in a Prism with a defined base area.
+    the height of a volume in a Prism with a defined base area
 
     C++ includes: ReachType.h 
     """
@@ -6882,7 +6882,7 @@ volume_height_function_swigregister(volume_height_function)
 class IChannel(IVolumeHeightFunction):
     """
     Structure for the description of structural parameters of a reach
-    Abstract base class for different IChannel geometries
+    Abstract base class for different IChannel geometries.
 
     C++ includes: ReachType.h 
     """
@@ -6956,7 +6956,8 @@ class IChannel(IVolumeHeightFunction):
         virtual
         double get_depth(double area) const =0
 
-        Calculates the actual depth of the reach using the IChannel geometry
+        Calculates the actual depth of the reach using the IChannel geometry.
+
         get_depth of the reach [m]
 
         Parameters:
@@ -6975,8 +6976,9 @@ class IChannel(IVolumeHeightFunction):
 
         Calculates the wetted area from a given depth using the IChannel
         geometry. In most cases use get_flux_crossection=V/l, where V is the
-        stored volume and l is the reach length Wetted area of a river cross
-        section [m2]
+        stored volume and l is the reach length.
+
+        Wetted area of a river cross section [m2]
 
         Parameters:
         -----------
@@ -7009,7 +7011,9 @@ class IChannel(IVolumeHeightFunction):
         the perimeter of the wetted crosssection, a function of reach depth}
         \\\\ d(V) &=& \\mbox{ the depth of the reach a function of the
         volume} \\\\ \\Delta_z &=& \\frac{z_{max} - z_{min}}{l}
-        \\mbox{ Slope of the reach} \\end{eqnarray*} Flow rate [m3/s]
+        \\mbox{ Slope of the reach} \\end{eqnarray*}.
+
+        Flow rate [m3/s]
 
         Parameters:
         -----------
@@ -7036,7 +7040,7 @@ IChannel_swigregister(IChannel)
 
 class SWATReachType(IChannel):
     """
-    Structure for the description of structural parameters of a reach
+    Structure for the description of structural parameters of a reach.
 
     Uses the SWAT IChannel geometry (see SWAT Theoretical Documentation,
     Version 2005 (ch. 7:1.1), Neitsch et al. 2005), in this class
@@ -7087,7 +7091,7 @@ SWATReachType_swigregister(SWATReachType)
 class TriangularReach(IChannel):
     """
     Structure for the description of reaches with a triangular cross
-    section
+    section.
 
     Although double triangular cross section reach are rarely met, a
     triangular reach does scale with its water load, and is therefore
@@ -7203,8 +7207,9 @@ class Channel(IChannel):
         typecode, double length, double width=1., double depth=0.25)
 
         Creates a reachtype using a short cut character. Acceptes one of the
-        following characters: 'T' TriangularReach, width and depth are
-        ignored.
+        following characters:
+
+        'T' TriangularReach, width and depth are ignored.
 
         'R' RectangularReach, depth is ignored
 
@@ -7273,7 +7278,7 @@ MeanChannel_swigregister(MeanChannel)
 class OpenWaterStorage(WaterStorage):
     """
     An open water body. The potential is calculated from the stored water
-    using a water table function
+    using a water table function.
 
     C++ includes: OpenWaterStorage.h 
     """
@@ -7357,7 +7362,8 @@ def OpenWaterStorage_cast(*args, **kwargs):
 
 class Reach(OpenWaterStorage):
     """
-    A reach is a specialization of an open water storage.
+    A reach represents the section of a riover and is a specialization of
+    an open water storage.
 
     The OpenWaterStorage attributes and methods are extended by
     topological features, for the creation of a network of reaches.
@@ -7402,7 +7408,9 @@ class Reach(OpenWaterStorage):
         set_dead_end(self)
 
         void
-        set_dead_end() 
+        set_dead_end()
+
+        Deletes any downstream connection. 
         """
         return _cmf_core.Reach_set_dead_end(self, *args, **kwargs)
 
@@ -7931,14 +7939,16 @@ Richards_lateral.cell_connector = _cmf_core.cvar.Richards_lateral_cell_connector
 class Manning(flux_connection):
     """
     Calculates the flux between two open water bodies, using Manning's
-    equation \\begin{eqnarray*} q_{Manning}&=& A R^{\\frac 2 3}
+    equation.
+
+    \\begin{eqnarray*} q_{Manning}&=& A R^{\\frac 2 3}
     \\sqrt{\\frac {\\Delta_z} n} \\\\ A &=& \\frac V l
     \\mbox{, (Crosssectional area of the wetted crossection, Volume per
     length)} \\\\ R &=& \\frac A {P(d)} \\\\ P(d) &=& \\mbox{
     the perimeter of the wetted crosssection, a function of reach depth}
     \\\\ d(V) &=& \\mbox{ the depth of the reach, a function of the
-    volume} \\\\ \\Delta_z &=& \\frac{\\|z_1 - z_2\\|}{l}
-    \\mbox{ Slope of the reach} n&=&\\mbox{Manning friction number}
+    volume} \\\\ \\Delta_z &=& \\frac{|z_1 - z_2|}{l} \\mbox{
+    Slope of the reach} \\\\ n&=&\\mbox{Manning friction number}
     \\end{eqnarray*} For the kinematic wave the slope of the river bed
     is used as slope $\\Delta_z = \\frac{|z_1 - z_2\\|}{l}$, while
     for the diffusive wave the slope is calculated from the actual water
@@ -7958,15 +7968,17 @@ Manning_swigregister(Manning)
 class Manning_Diffusive(Manning):
     """
     Connecting surface water bodies using a diffusive wave. Not stable for
-    deep water with small gradient \\begin{eqnarray*} q_{Manning}&=& A
-    R^{\\frac 2 3} \\sqrt{\\frac {\\Delta_z} n} \\\\ A &=&
-    \\frac V l \\mbox{, (Crosssectional area of the wetted
-    crossection, Volume per length)} \\\\ R &=& \\frac A {P(d)}
-    \\\\ P(d) &=& \\mbox{ the perimeter of the wetted crosssection,
-    a function of reach depth} \\\\ d(V) &=& \\mbox{ the depth of
-    the reach a function of the volume} \\\\ \\Delta_z =
-    \\|\\frac{h_1 - h_2}{l} \\mbox{ Slope of the reach waterlevels}
-    \\end{eqnarray*}
+    deep water with small gradient.
+
+    \\begin{eqnarray*} q_{Manning}&=& A R^{\\frac 2 3}
+    \\sqrt{\\frac {\\Delta_z} n} \\\\ A &=& \\frac V l
+    \\mbox{, (Crosssectional area of the wetted crossection, Volume per
+    length)} \\\\ R &=& \\frac A {P(d)} \\\\ P(d) &=& \\mbox{
+    the perimeter of the wetted crosssection, a function of reach depth}
+    \\\\ d(V) &=& \\mbox{ the depth of the reach a function of the
+    volume} \\\\ \\Delta_z = \\|\\frac{h_1 - h_2}{l} \\mbox{
+    Slope of the reach waterlevels} \\\\ n&=&\\mbox{Manning friction
+    number} \\end{eqnarray*}
 
     C++ includes: ManningConnection.h 
     """
@@ -7988,14 +8000,17 @@ Manning_Diffusive.cell_connector = _cmf_core.cvar.Manning_Diffusive_cell_connect
 class Manning_Kinematic(Manning):
     """
     Connecting surface water bodies using a kinematic wave. Note the fixed
-    gradient \\begin{eqnarray*} q_{Manning}&=& A R^{\\frac 2 3}
+    gradient.
+
+    \\begin{eqnarray*} q_{Manning}&=& A R^{\\frac 2 3}
     \\sqrt{\\frac {\\Delta_z} n} \\\\ A &=& \\frac V l
     \\mbox{, (Crosssectional area of the wetted crossection, Volume per
     length)} \\\\ R &=& \\frac A {P(d)} \\\\ P(d) &=& \\mbox{
     the perimeter of the wetted crosssection, a function of reach depth}
     \\\\ d(V) &=& \\mbox{ the depth of the reach a function of the
     volume} \\\\ \\Delta_z &=& \\frac{\\|z_1 - z_2\\|}{l}
-    \\mbox{ Slope of the reach} \\end{eqnarray*}
+    \\mbox{ Slope of the reach} \\\\ n&=&\\mbox{Manning friction
+    number} \\end{eqnarray*}
 
     C++ includes: ManningConnection.h 
     """
@@ -9160,7 +9175,45 @@ class project(StateVariableOwner):
         use_IDW_meteo(self, double z_weight = 0, double power = 2)
 
         void
-        use_IDW_meteo(double z_weight=0, double power=2) 
+        use_IDW_meteo(double z_weight=0, double power=2)
+
+        Uses IDW interpolation to generate meterological data for each cell of
+        project.
+
+        Creates a meteo-data source for each cell, using spatial interpolated
+        data from all meteorological stations of the project using Inverse
+        Distance Weighted (IDW) interpolation. The meteorolgical value f is
+        calculated with IDW for position x,y,z and time t as follows:
+        \\begin{eqnarray*} f(x,y,z,t) &=& \\sum^N_{i=1}{f_i(t) w_i(x,y,z)}
+        \\\\ w_i(x,y,z) &=&
+        \\frac{d_i(x,y,z)^{-p}}{\\sum^N_{j=0}{d_j(x,y,z)^{-p}}} \\\\
+        d_i(x,y,z) &=& w_z \\left|z-z_i\\right| +
+        \\sqrt{\\left(x-x_i\\right)^2 + \\left(y-y_i\\right)^2}
+        \\end{eqnarray*}  $N$ is the number of stations
+
+        $f_i(t)$ the meteorological value at time t, eg. Temperature, Humidity
+
+        $w_i$ is the weight of station i
+
+        $d_i$ is the distance from x,y,z to station i
+
+        $p$ the power of the weighting function, usually 2.
+
+        $x_i,y_i,z_i$ is the position of station i in space
+
+        $w_z$ is a factor to weight the vertical distance between stations and
+        the cell. 0 results in a pure horizontal interpolation (normal IDW).
+        If $w_z=1$, height difference is as important as horizontal distance,
+        and with $w_z>1$ the height difference is weighted more important than
+        horizontal distance See:  IDW_Meteorology
+
+        Parameters:
+        -----------
+
+        z_weight:   $w_z$ the weight of height difference between cell and
+        station
+
+        power:  the power of the distance weight 
         """
         return _cmf_core.project_use_IDW_meteo(self, *args, **kwargs)
 
@@ -9169,7 +9222,31 @@ class project(StateVariableOwner):
         use_nearest_meteo(self, double z_weight = 0)
 
         void
-        use_nearest_meteo(double z_weight=0) 
+        use_nearest_meteo(double z_weight=0)
+
+        Connects all cells of the project with its nearest meteorological
+        station.
+
+        Distance is calculated as follows: \\[d_i(x,y,z) = w_z
+        \\left|z-z_i\\right| + \\sqrt{\\left(x-x_i\\right)^2 +
+        \\left(y-y_i\\right)^2} \\]  $d_i$ is the distance from x,y,z to
+        station i
+
+        $p$ the power of the weighting function, usually 2.
+
+        $x_i,y_i,z_i$ is the position of station i in space
+
+        $w_z$ is a factor to weight the vertical distance between stations and
+        the cell. 0 results in a pure horizontal interpolation (normal IDW).
+        If $w_z=1$, height difference is as important as horizontal distance,
+        and with $w_z>1$ the height difference is weighted more important than
+        horizontal distance
+
+        Parameters:
+        -----------
+
+        z_weight:   $w_z$ the weight of height difference between cell and
+        station 
         """
         return _cmf_core.project_use_nearest_meteo(self, *args, **kwargs)
 
@@ -9178,7 +9255,45 @@ class project(StateVariableOwner):
         use_IDW_rainfall(self, double z_weight = 0, double power = 2)
 
         void
-        use_IDW_rainfall(double z_weight=0, double power=2) 
+        use_IDW_rainfall(double z_weight=0, double power=2)
+
+        Uses IDW interpolation to generate rainfall data for each cell of
+        project.
+
+        Creates a rainfall-data source for each cell, using spatial
+        interpolated data from all meteorological stations of the project
+        using Inverse Distance Weighted (IDW) interpolation. The rainfall
+        intensity P is calculated with IDW for position x,y,z and time t as
+        follows: \\begin{eqnarray*} P(x,y,z,t) &=& \\sum^N_{i=1}{P_i(t)
+        w_i(x,y,z)} \\\\ w_i(x,y,z) &=&
+        \\frac{d_i(x,y,z)^{-p}}{\\sum^N_{j=0}{d_j(x,y,z)^{-p}}} \\\\
+        d_i(x,y,z) &=& w_z \\left|z-z_i\\right| +
+        \\sqrt{\\left(x-x_i\\right)^2 + \\left(y-y_i\\right)^2}
+        \\end{eqnarray*}  $N$ is the number of stations
+
+        $P_i(t)$ the meteorological value at time t, eg. Temperature, Humidity
+
+        $w_i$ is the weight of station i
+
+        $d_i$ is the distance from x,y,z to station i
+
+        $p$ the power of the weighting function, usually 2.
+
+        $x_i,y_i,z_i$ is the position of station i in space
+
+        $w_z$ is a factor to weight the vertical distance between stations and
+        the cell. 0 results in a pure horizontal interpolation (normal IDW).
+        If $w_z=1$, height difference is as important as horizontal distance,
+        and with $w_z>1$ the height difference is weighted more important than
+        horizontal distance See:  IDW_Meteorology
+
+        Parameters:
+        -----------
+
+        z_weight:   $w_z$ the weight of height difference between cell and
+        station
+
+        power:  the power of the distance weight 
         """
         return _cmf_core.project_use_IDW_rainfall(self, *args, **kwargs)
 
@@ -9187,7 +9302,30 @@ class project(StateVariableOwner):
         use_nearest_rainfall(self, double z_weight = 0)
 
         void
-        use_nearest_rainfall(double z_weight=0) 
+        use_nearest_rainfall(double z_weight=0)
+
+        Connects all cells of the project with its nearest rainfall station.
+
+        Distance is calculated as follows: \\[d_i(x,y,z) = w_z
+        \\left|z-z_i\\right| + \\sqrt{\\left(x-x_i\\right)^2 +
+        \\left(y-y_i\\right)^2} \\]  $d_i$ is the distance from x,y,z to
+        station i
+
+        $p$ the power of the weighting function, usually 2.
+
+        $x_i,y_i,z_i$ is the position of station i in space
+
+        $w_z$ is a factor to weight the vertical distance between stations and
+        the cell. 0 results in a pure horizontal interpolation (normal IDW).
+        If $w_z=1$, height difference is as important as horizontal distance,
+        and with $w_z>1$ the height difference is weighted more important than
+        horizontal distance
+
+        Parameters:
+        -----------
+
+        z_weight:   $w_z$ the weight of height difference between cell and
+        station 
         """
         return _cmf_core.project_use_nearest_rainfall(self, *args, **kwargs)
 
@@ -9220,7 +9358,13 @@ class project(StateVariableOwner):
         project(std::string
         solute_names="")
 
-        Creates a new project. 
+        Creates a new project.
+
+        Parameters:
+        -----------
+
+        solute_names:  A string representing the names of the solutes to be
+        used in the project. Sepereate solute names with space. 
         """
         _cmf_core.project_swiginit(self,_cmf_core.new_project(*args, **kwargs))
     __swig_destroy__ = _cmf_core.delete_project
@@ -9232,7 +9376,17 @@ class project(StateVariableOwner):
         NewCell(double x, double y, double z, double area, bool
         with_surfacewater=false)
 
-        Creates a new cell. 
+        Creates a new cell A new cell, owned by the project
+
+        Parameters:
+        -----------
+
+        x:  y:  z:  Position of the cell center in project coordiantes (m)
+
+        area:  Area of the cell in m^2
+
+        with_surfacewater:  If true, the cell will own a surfacewater storage
+        upon creation 
         """
         return _cmf_core.project_NewCell(self, *args, **kwargs)
 
@@ -9244,8 +9398,16 @@ class project(StateVariableOwner):
         x, double y, double z)
 
         Creates a new Dirichlet boundary condition and adds it to the list of
-        outlets The potential of the Dirichlet boundary equals p.z, but can be
-        changed 
+        outlets The potential of the Dirichlet boundary equals z, but can be
+        changed
+
+        Parameters:
+        -----------
+
+        name:  Name of the boundary condition for output
+
+        x:  y:  z:  Position of the boundary condition in project coordinates
+
         """
         return _cmf_core.project_NewOutlet(self, *args, **kwargs)
 
@@ -9257,7 +9419,15 @@ class project(StateVariableOwner):
         double y, double z)
 
         Creates a new generic water storage at position x,y,z. The storage is
-        added to the project nodes. 
+        added to the project nodes A new water storage, owned by the project
+
+        Parameters:
+        -----------
+
+        name:  Name of the generic water storage for output
+
+        x:  y:  z:  Position of the generic water storage condition in project
+        coordinates 
         """
         return _cmf_core.project_NewStorage(self, *args, **kwargs)
 
@@ -9269,7 +9439,17 @@ class project(StateVariableOwner):
         double x, double y, double z, double area)
 
         Creates a new open water storage with a prism geometry. The open water
-        storage is added to the project nodes. 
+        storage is added to the project nodes A new open water storage, owned
+        by the project
+
+        Parameters:
+        -----------
+
+        name:  Name of the open water storage for output
+
+        x:  y:  z:  Position of the open water storage in project coordinates
+
+        area:  Surface area of the open water storage 
         """
         return _cmf_core.project_NewOpenStorage(self, *args, **kwargs)
 
@@ -9283,7 +9463,24 @@ class project(StateVariableOwner):
         NewReach(double x, double y, double z, double length, char Type='T',
         double width=0.5, double depth=0.1, bool diffusive=false)
 
-        Creates a new reach. 
+        Creates a new reach A new reach, owned by the project
+
+        Parameters:
+        -----------
+
+        x:  y:  z:  Position of the reach in project coordinates
+
+        length:  lenght of the reach in m
+
+        Type:  Geometry of the river crosssection. Possible values: T
+        (Triangular), R (Rectangular), S (SWAT like trapzeoid), P (pipe)
+
+        width:  Width of the channel between banks in m
+
+        depth:  Depth of the channel in m
+
+        diffusive:  If true, this reach uses by default a diffusive wave
+        connection 
         """
         return _cmf_core.project_NewReach(self, *args, **kwargs)
 
@@ -9309,11 +9506,24 @@ class project(StateVariableOwner):
         return _cmf_core.project_reach_count(self, *args, **kwargs)
 
     def get_node(self, *args, **kwargs):
-        """get_node(self, int index) -> ptr"""
+        """
+        get_node(self, int index) -> ptr
+
+        cmf::water::flux_node::ptr get_node(int index)
+
+        Returns the node from the project nodes at index. 
+        """
         return _cmf_core.project_get_node(self, *args, **kwargs)
 
     def node_count(self, *args, **kwargs):
-        """node_count(self) -> int"""
+        """
+        node_count(self) -> int
+
+        int node_count()
+        const
+
+        Returns the number of nodes saved with this project. 
+        """
         return _cmf_core.project_node_count(self, *args, **kwargs)
 
     def get_storages(self, *args, **kwargs):
@@ -9322,7 +9532,7 @@ class project(StateVariableOwner):
 
         cmf::water::node_list get_storages()
 
-        Returns any storages of this project. 
+        Returns a list of all storages of this project. 
         """
         return _cmf_core.project_get_storages(self, *args, **kwargs)
 

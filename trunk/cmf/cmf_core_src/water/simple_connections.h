@@ -9,7 +9,7 @@
 namespace cmf {
 	namespace water {
 		/// @ingroup connections
-		/// Routes the sum of all other fluxes to a target
+		/// @brief Routes the sum of all other fluxes to a target
 		class waterbalance_connection : public flux_connection
 		{
 		protected:
@@ -29,7 +29,7 @@ namespace cmf {
 		};
 
 		/// @ingroup connections
-		/// Flux from one node to another, controlled by the user or an external program, 
+		/// @brief Flux from one node to another, controlled by the user or an external program, 
 		/// by changing the flux constant
 		class external_control_connection : public flux_connection {
 		protected:
@@ -46,17 +46,18 @@ namespace cmf {
 			}
 		};
 		/// @ingroup connections
-		/// Sets a constant flux between two nodes, if an external_control_connection exists. 
+		/// @brief Sets a constant flux between two nodes, if an external_control_connection exists. 
 		// Otherwise an error is thrown
 		void set_flux(flux_node::ptr source,flux_node::ptr target,real flux_value);
 
 		/// @ingroup connections
-		/// Checks if a constant flux between two nodes can be set. Returns true
-		/// if the nodes are connected by an external_control_connection
+		/// @brief Checks if a constant flux between two nodes can be set. 
+        ///
+        /// Returns true if the nodes are connected by an external_control_connection
 		bool can_set_flux(flux_node::ptr source,flux_node::ptr target);
 
 		/// @ingroup connections
-		/// Calculates flux out of a storage as a linear function of its volume to a power.
+		/// @brief Calculates flux out of a storage as a linear function of its volume to a power.
 		///
 		/// \f[ q = \frac {V_{mobile}^\beta}{t_r} \f]
 		/// where:
@@ -71,16 +72,16 @@ namespace cmf {
 				source = WaterStorage::cast(left_node());
 			}
 		public:
-			/// Linear flow parameter traveltime in days
+			/// @brief Linear flow parameter traveltime in days
 			real residencetime;
-			/// Exponent of volume, \f$\beta\f$
+			/// @brief Exponent of volume, \f$\beta\f$
 			real exponent;
-			/// residual fraction \f$f_r\f$ of reference volume V0
+			/// @brief residual fraction \f$f_r\f$ of reference volume V0
 			real residual;
-			/// Reference volume \f$V_0\f$
+			/// @brief Reference volume \f$V_0\f$
 			real V0;
 
-			/// Creates a kinematic wave connection.
+			/// @brief Creates a kinematic wave connection.
 			/// \f[ q = \frac {\left(\frac{V}{V_0} - f_{residual}\right)^\beta}{t_r} \f]
 			/// @param source Water storage from which the water flows out. Flux is a function of source.volume
 			/// @param target Target node (boundary condition or storage). Does not influence the strength of the flow
@@ -93,7 +94,7 @@ namespace cmf {
 		};
 
 		/// @ingroup connections
-		/// Produces a constant but changeable flux from a source to a target, if enough water is present in the source
+		/// @brief Produces a constant but changeable flux from a source to a target, if enough water is present in the source
 		///
 		/// \f$ q=\left\{0 \mbox{ if }V_{source}\le V_{min}\\ \frac{V_{source} - V_{min}}{t_{decr} q_{0} - V_{min}}\mbox{ if } V_{source} t_{decr} q_{0}\\ q_{0} \mbox{ else}\le \right. \f$
 		class TechnicalFlux : public cmf::water::flux_connection
@@ -110,15 +111,16 @@ namespace cmf {
 			}
 
 		public:
-			/// The requested flux \f$q_{0}\left[frac{m^3}{day}\right]\f$
+			/// @brief The requested flux \f$q_{0}\left[frac{m^3}{day}\right]\f$
 			real MaxFlux;
-			/// The minimal volume of the state  \f$V_{min}\left[m^3\right]\f$
+			/// @brief The minimal volume of the state  \f$V_{min}\left[m^3\right]\f$
 			real MinState;
-			/// The flux is linearly decreased, if it takes less than FluxDecreaseTime \f$t_{decr}\f$ to reach MinState with MaxFlux
+			/// @brief The flux is linearly decreased, if it takes less than FluxDecreaseTime \f$t_{decr}\f$ to reach MinState with MaxFlux
 			cmf::math::Time FluxDecreaseTime;
 
-			/// Produces a constant but changeable flux from a source to a target, if enough water is present in the source
-			/// @param source The source of the water
+			/// @brief Produces a constant but changeable flux from a source to a target, if enough water is present in the source
+			///
+            /// @param source The source of the water
 			/// @param target The target of the water
 			/// @param maximum_flux The requested flux \f$q_{0}\f$
 			/// @param minimal_state Minimal volume of stored water in source
@@ -130,8 +132,9 @@ namespace cmf {
 		};
 
 		/// @ingroup connections
-		/// Calculates a flux to or from a water storage to hold it's state at a more or less constant level
-		/// \f[ q=\frac{h_1 - h_{target}}{t_c [days]} \f]
+		/// @brief Calculates a flux to or from a water storage to hold it's state at a more or less constant level
+		///
+        /// \f[ q=\frac{h_1 - h_{target}}{t_c [days]} \f]
 		class statecontrol_connection 
 			: public flux_connection 
 		{
@@ -142,7 +145,7 @@ namespace cmf {
 		public:
 			cmf::math::Time reaction_time;
 			real target_state;
-			/// Creates a flux connection to control the state of a storage
+			/// @brief Creates a flux connection to control the state of a storage
 			/// @param controlled_storage Water storage, to be controlled
 			/// @param other_end source of missing water or target of excessive water
 			/// @param target_state State the controlled storage should hold (\f$h_{target}\f$)

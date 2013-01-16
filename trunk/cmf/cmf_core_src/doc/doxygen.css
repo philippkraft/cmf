@@ -6,21 +6,22 @@ body, table, div, p, dl {
 }
 
 /* @group Heading Levels */
-
-h1 {
-	font-size: 180%;
-	font-weight: bold;
-	color: #FFFFFF;
-	background-image: url(cmf_background2.png);
-	font-style: italic;
+#titlearea {
+    background:#1f6992;
+    color: #fff;
 }
-
+h1 {
+ background-color: #1f6992;
+ color: #fff;
+ border-radius: 5px;
+ padding: .2em .5em;
+}
 h2 {
-	border-bottom: solid 2px #0040A0;
-	color: #FFFFFF;
-	font-size: 135%;
-	background-image: url(cmf_background2.png);
-	font-style: italic;
+ background-color: #cde;
+ color: #000;
+ border-radius: 5px;
+ padding: .2em .5em;
+ border-bottom: solid 2px #1f6992;
 }
 
 h3 {

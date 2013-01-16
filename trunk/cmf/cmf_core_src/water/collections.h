@@ -25,7 +25,7 @@
 namespace cmf {
 	namespace water {
 
-		/// A collection of nodes for fast access of the waterbalance
+		/// @brief A collection of nodes for fast access of the waterbalance
 		///
 		/// In setups with many storages and rather fast computations, the speed of data access for output generation can take a high portion of the total run time.
 		/// To accelerate data access, one can use the node_list object
@@ -38,7 +38,7 @@ namespace cmf {
 			typedef std::vector<flux_node::ptr> node_vector;
 			node_vector m_nodes;
 		public:
-			/// The number of nodes
+			/// @brief The number of nodes
 			int size() const {return int(m_nodes.size());}
 
 #ifndef SWIG
@@ -54,41 +54,42 @@ namespace cmf {
 			typedef node_vector::const_iterator const_iterator;
 
 #endif
-			/// Creates an empty node_lust			
+			/// @brief Creates an empty node_lust			
 			node_list() {}
-			/// Copy the node_list
+			/// @brief Copy the node_list
 			node_list(const cmf::water::node_list& forcopy)
 				: m_nodes(forcopy.m_nodes) {}
 
-			/// Extends the node_list with another
+			/// @brief Extends the node_list with another
 			node_list& operator+=(const cmf::water::node_list& right);
 			
-			/// Returns the union of two node_lists
+			/// @brief Returns the union of two node_lists
 			cmf::water::node_list operator+(const cmf::water::node_list & right) const;
 			
-			/// Returns a node in the node_list
+			/// @brief Returns a node in the node_list
 			flux_node::ptr get(int index) const;
 			
-			/// Returns a slice of the node_list
+			/// @brief Returns a slice of the node_list
 			node_list getslice(int begin,int end,int step=1) const;
 
-			/// Implements StateVariableOwner
+			/// @brief Implements StateVariableOwner
 			cmf::math::StateVariableList get_states();
-			/// Adds a flux node to the list
+			/// @brief Adds a flux node to the list
 			void append(flux_node::ptr node);
-			/// Removes a flux node from the list, returns true if successful
+			/// @brief Removes a flux node from the list, returns true if successful
 			bool remove(flux_node::ptr node);
 
-			/// Sets the potentials of the node_lists
+			/// @brief Sets the potentials of the node_list
 			///
 			/// If nodes do not have changeable potentials, they are skipped silently
 			/// @returns The number of nodes with changed potential
 			int set_potentials(const cmf::math::num_array& potentials);
 			
-			/// Returns the potential of the nodes
+			/// @brief Returns the potential of the nodes
 			cmf::math::num_array get_potentials();
+            
 
-			/// Returns the sum of the water balances of the nodes
+			/// @brief Returns the sum of the water balances of the nodes
 			///
 			/// \f[\sigma_{global} = \sum_{i=0}^N{\sum_{j=0}^{C_i}{q_{ij}(t)}} \f]
 			///
@@ -100,7 +101,7 @@ namespace cmf {
 			/// @endcode
 			real global_water_balance(cmf::math::Time t) const;
 						
-			/// Returns the water balance of each vector as a vector
+			/// @brief Returns the water balance of each vector as a vector
 			///
 			/// \f[ \sigma_i = \sum_{j=0}^{C_i}{q_{ij}(t)} \f]
 			///
@@ -110,13 +111,13 @@ namespace cmf {
 			/// @endcode
 			cmf::math::num_array water_balance(cmf::math::Time t) const;
 
-			/// Returns an array holding the concentration of all the flux nodes for the given solute
+			/// @brief Returns an array holding the concentration of all the flux nodes for the given solute
 			cmf::math::num_array conc(cmf::math::Time t, const cmf::water::solute& _Solute) const;
 			
-			/// Sets the source flux of a solute storage associated  with a node (node has to be a water storage)
+			/// @brief Sets the source flux of a solute storage associated  with a node (node has to be a water storage)
 			int set_solute_source(const cmf::water::solute& _Solute, cmf::math::num_array source_fluxes);
 
-			/// A fast method to perform flux queries as a batch. The node lists left and right should have the same length.
+			/// @brief A fast method to perform flux queries as a batch. The node lists left and right should have the same length.
 			///
 			/// @returns The vector containing the flux from left to right at the same position
 			/// @param targets A node_list containing the source nodes
@@ -128,19 +129,19 @@ namespace cmf {
 			/// @endcode
 			cmf::math::num_array get_fluxes_to( const cmf::water::node_list& targets ,cmf::math::Time t) const;
 			
-			/// Returns the flux vectors to the nodes of a given target node_list
+			/// @brief Returns the flux vectors to the nodes of a given target node_list
 			cmf::geometry::point_vector get_fluxes3d_to( const cmf::water::node_list& targets ,cmf::math::Time t) const;
 			
-			/// Returns the current flow vector for each node
+			/// @brief Returns the current flow vector for each node
 			cmf::geometry::point_vector get_fluxes3d(cmf::math::Time t) const;
 			
-			/// Returns the positions of the nodes
+			/// @brief Returns the positions of the nodes
 			cmf::geometry::point_vector get_positions() const;
 
 		};
 
 
-		/// Provides fast access to Neumann boundaries for flux update
+		/// @brief Provides fast access to Neumann boundaries for flux update
 		///
 		/// If many Neumann boundary conditions are present in a project, a fast data exchange to update the fluxes might be needed.
 		///
@@ -164,11 +165,11 @@ namespace cmf {
 			NeumannBoundary& operator[](int index) const
 			{ return *m_boundaries.at(index<0 ? m_boundaries.size()+index : index );	}
 #endif
-			/// Returns the Neumann boundary condition at position index
+			/// @brief Returns the Neumann boundary condition at position index
 			NeumannBoundary::ptr get(int index) const
 			{ return m_boundaries.at(index<0 ? m_boundaries.size()+index : index );	}
 
-			/// Returns the fluxes of the items as an array
+			/// @brief Returns the fluxes of the items as an array
 			cmf::math::num_array get_fluxes(cmf::math::Time t=cmf::math::Time()) const;
 			void set_fluxes(cmf::math::num_array values);
 			void append(NeumannBoundary::ptr nbc)
@@ -183,10 +184,10 @@ namespace cmf {
 			NeumannBoundary_list(const cmf::water::node_list& copy);
 			NeumannBoundary_list(const NeumannBoundary_list& copy);
 
-			/// Creates a node_list from this NeumannBoundary_list
+			/// @brief Creates a node_list from this NeumannBoundary_list
 			cmf::water::node_list to_node_list() const;
 
-			/// Returns the sum of the water balances of the nodes
+			/// @brief Returns the sum of the water balances of the nodes
 			/// \f[\sigma_{global} = \sum_{i=0}^N{\sum_{j=0}^{C_i}{q_{ij}(t)}} \f]
 			///
 			/// Replaces slow Python code like:
@@ -196,10 +197,10 @@ namespace cmf {
 			///     sum+=n.water_balance(t)
 			/// @endcode
 			real global_water_balance(cmf::math::Time t) const;
-			/// Returns the water balance of each vector as a vector
+			/// @brief Returns the water balance of each vector as a vector
 			/// \f[ \sigma_i = \sum_{j=0}^{C_i}{q_{ij}(t)} \f]
 			///
-			/// Replaces slow Python code like:
+			/// @brief Replaces slow Python code like:
 			/// @code
 			/// balances=[n.water_balance(t) for n in nodes]
 			/// @endcode

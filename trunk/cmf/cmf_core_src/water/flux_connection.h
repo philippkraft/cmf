@@ -34,7 +34,8 @@ namespace cmf {
 
 		/// @defgroup connections Flux connections
 		///
-		/// The connections between the nodes (boundary conditions, storages) of the water network
+		/// @brief The connections between the nodes (boundary conditions, storages) of the water network
+        ///
 		/// The connections in cmf hold the processes for the calculation of fluxes between water storages and model boundaries
 		/// @todo Elaborate on this
 
@@ -58,13 +59,12 @@ namespace cmf {
 		protected:
 			virtual void NewNodes()=0;
 			bool RecalcAlways;
-			/// this function needs to be overridden by realizations of connections
 			virtual real calc_q(cmf::math::Time t) = 0;
-			// Connection stores q to prevent unnecessary recalculations
 			real m_q; // Positive q means flux left to right
-			// returns the actual flux, recalculates it, if one of the two flux nodes requires it
 			real q(cmf::math::Time t) {
+            #ifndef NOQCACHE
 				if (RecalcAlways || m_left.lock()->RecalcFluxes(t) || m_right.lock()->RecalcFluxes(t))
+            #endif
 					m_q=calc_q(t);
 				return m_q;
 			}
@@ -85,14 +85,14 @@ namespace cmf {
 			}
 			
 #endif
-			/// Returns the left node of this connection
+			/// @brief Returns the left node of this connection
 			flux_node::ptr left_node() const {return m_left.expired() ? flux_node::ptr() : flux_node::ptr(m_left);}
-			/// returns the right node of this connection
+			/// @brief returns the right node of this connection
 			flux_node::ptr right_node() const {return m_right.expired() ? flux_node::ptr() : flux_node::ptr(m_right);}
 			
-			/// Deregisters this connection from its nodes. Returns true if only one reference is left.
+			/// @brief Deregisters this connection from its nodes. Returns true if only one reference is left.
 			bool kill_me();
-			/// Performes a new calculation of the flux
+			/// @brief Performes a new calculation of the flux
 			void refresh(cmf::math::Time t) {
 				m_q = calc_q(t);
 			}
@@ -102,9 +102,9 @@ namespace cmf {
 			
 			bool operator==(const cmf::water::flux_connection& other) {return connection_id==other.connection_id;}
 			
-			/// Returns the other end of a connection than the asking end
+			/// @brief Returns the other end of a connection than the asking end
 			flux_node::ptr get_target(const flux_node& inquirer);
-			/// With index 0, the left node is returned, with index 1 the right node of the connection
+			/// @brief With index 0, the left node is returned, with index 1 the right node of the connection
 			flux_node::ptr get_target(int index) const;
 			
 			void exchange_target(flux_node::ptr oldtarget,flux_node::ptr newTarget);
@@ -116,10 +116,11 @@ namespace cmf {
 					: inquirer==*right_node() ? q(t) : 0;  
 			}
 			
-			/// Returns the concentration of the flux. If not overridden,
-			/// it returns the concentration of the source of the flux (direction depending)
+			/// @brief Returns the concentration of the flux. 
+            ///
+            /// If not overridden, it returns the concentration of the source of the flux (direction depending)
 			real conc(cmf::math::Time t, const cmf::water::solute& _Solute);
-			/// A string describing the type of the connection
+			/// @brief A string describing the type of the connection
 			const std::string type;
 			/// A value ranging from 0 to 1 
 			real get_tracer_filter() { return m_tracer_filter;}
@@ -129,7 +130,7 @@ namespace cmf {
 			}
 			std::string to_string() const;
 			std::string short_string() const;
-			/// Creates a flux connection between the flux_node left and right
+			/// @brief Creates a flux connection between the flux_node left and right
 			/// @param left flux_node on the one side of the connection
 			/// @param right flux_node on the other side of the connection
 			/// @param _type Type of the flux connection
@@ -176,8 +177,9 @@ namespace cmf {
 
 		};
 
-		/// The flux_integrator is an integratable for precise output of average fluxes over time. It can be added to
-		/// solver (any cmf::math::Integrator), which is than calling the integrate method at each substep.
+		/// @brief The flux_integrator is an integratable for precise output of average fluxes over time. 
+        ///
+        /// It can be added to solver (any cmf::math::Integrator), which is then calling the integrate method at each substep.
 		class flux_integrator : public cmf::math::integratable {
 		private:
 			double _sum;
@@ -187,30 +189,30 @@ namespace cmf {
 			std::string _name;
 
 		public:
-			/// Returns the amount of water along this connection in the integration time in m3
+			/// @brief Returns the amount of water along this connection in the integration time in m3
 			double sum() const {
 				return _sum;
 			}
-			/// Returns the duration of the integration
+			/// @brief Returns the duration of the integration
 			cmf::math::Time integration_t() const {
 				return _t-_start_time;
 			}
-			/// Returns the start time of the integration
+			/// @brief Returns the start time of the integration
 			cmf::math::Time t0() const { return _start_time; }
-			/// If invert is true, then integrate over the negetive flux
+			/// @brief If invert is true, then integrate over the negetive flux
 			bool invert;
 
-			/// Returns the average flux of the integration time in m3/day
+			/// @brief Returns the average flux of the integration time in m3/day
 			double avg() const;
-			/// Initializes the integration
+			/// @brief Initializes the integration
 			void reset(cmf::math::Time t);
-			/// Returns the flux_connection
+			/// @brief Returns the flux_connection
 			flux_connection::ptr connection() const;
-			/// Integrates the flux a timestep further. Note: until is an absolute time. If until is before t0, the integration is initilized again
+			/// @brief Integrates the flux a timestep further. Note: until is an absolute time. If until is before t0, the integration is initilized again
 			void integrate(cmf::math::Time until);
-			/// Creates a flux_integrator from an connection
+			/// @brief Creates a flux_integrator from an connection
 			flux_integrator(cmf::water::flux_connection& connection);
-			/// Creates a flux_integrator from the endpoints of a connection. Throws if there is no connection between the endpoints
+			/// @brief Creates a flux_integrator from the endpoints of a connection. Throws if there is no connection between the endpoints
 			flux_integrator(cmf::water::flux_node::ptr left, cmf::water::flux_node::ptr right);
 		};
 
