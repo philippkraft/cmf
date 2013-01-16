@@ -36,7 +36,7 @@ namespace cmf {
 		/// @ingroup nodes
 
 		/// @ingroup storages
-		/// A state variable for the storage of water
+		/// @brief A state variable for the storage of water
 		///
 		/// A class for the storage of water. The state is the volume of water stored in \f$m^3\f$
 		/// The derivative function is given by:
@@ -56,7 +56,7 @@ namespace cmf {
 
 #endif
 		private:
-			// Character indicating if Volume ('V') or head ('h') is the state variable
+			// @brief Character indicating if Volume ('V') or head ('h') is the state variable
 			char m_state_variable_content;
 			typedef std::vector<std::tr1::shared_ptr<cmf::water::SoluteStorage> > SoluteStorageMap;
 			SoluteStorageMap m_Concentrations;
@@ -71,36 +71,36 @@ namespace cmf {
 			real get_abs_errtol(real rel_errtol) const {
 				return rel_errtol;
 			}
-			/// A character indicating the integrated variable (either 'V' for Volume or 'h' for head)
+			/// @brief A character indicating the integrated variable (either 'V' for Volume or 'h' for head)
 			inline char get_state_variable_content() const {return m_state_variable_content;}
-			/// A character indicating the integrated variable (either 'V' for Volume or 'h' for head)
+			/// @brief A character indicating the integrated variable (either 'V' for Volume or 'h' for head)
 			void set_state_variable_content(char content);
-			/// Returns true, since this is a storage
+			/// @brief Returns true, since this is a storage
 			virtual bool is_storage() const {return true;}
 			cmf::math::StateVariableList get_states();
-			/// creates a water storage (abstract class)
+			/// @brief creates a water storage (abstract class)
 			/// @param project The project the waterstorage belongs to
 			/// @param Name Name of the water storage
 			/// @param InitialState Initial water content in m<sup>3</sup>
 			WaterStorage(cmf::project& project,const std::string & Name="", double InitialState=0);
 			
 			static std::tr1::shared_ptr<WaterStorage> from_node(cmf::water::flux_node::ptr node);
-			/// Returns the water quality of the water storage.
+			/// @brief Returns the water quality of the water storage.
 			SoluteStorage& Solute(const cmf::water::solute& _Solute);
 			const SoluteStorage& Solute(const cmf::water::solute& _Solute) const {return *m_Concentrations[_Solute.Id];}
-			/// Returns the concentration of the given solute
+			/// @brief Returns the concentration of the given solute
 			real conc(const cmf::water::solute& _Solute) const;
-			/// Returns the current WaterQuality (concentration of all solutes)
+			/// @brief Returns the current WaterQuality (concentration of all solutes)
 			real conc(cmf::math::Time t,const cmf::water::solute& _Solute) const
 			{
 				return conc(_Solute);
 			}
-			/// Sets a new concentration
+			/// @brief Sets a new concentration
 			void conc(const cmf::water::solute& _Solute,real NewConcetration)
 			{
 				Solute(_Solute).set_state(NewConcetration*this->get_state());
 			}
-			/// Returns the volume of water in this storage in m<sup>3</sup>
+			/// @brief Returns the volume of water in this storage in m<sup>3</sup>
 			virtual real get_volume() const {
 				if (get_state_variable_content()=='h')
 					return head_to_volume(get_state());
@@ -115,7 +115,7 @@ namespace cmf {
 					return volume_to_head(get_state());
 			}
 
-			/// Sets the volume of water in this storage in m<sup>3</sup>
+			/// @brief Sets the volume of water in this storage in m<sup>3</sup>
 			virtual void set_volume(real newwatercontent)	{
 				if (get_state_variable_content()=='h')
 					set_state(volume_to_head(newwatercontent));

@@ -45,6 +45,7 @@ namespace cmf {
 		int add_node(cmf::water::flux_node::ptr node);
 
 	public:
+        /// @brief Returns all state variables of the project. Mostly for internal use.
 		cmf::math::StateVariableList get_states(); 
 		/// @brief Removes a node from the repository.
 		///
@@ -56,15 +57,85 @@ namespace cmf {
 
 		/// The solutes transported by the model
 		const cmf::water::solute_vector solutes;
-		/// The meteorological stations in the project
+		/// @brief The meteorological stations in the project
 		cmf::atmosphere::MeteoStationList meteo_stations;
+        /// @brief The rainfall stations of the project
 		cmf::atmosphere::RainfallStationList rainfall_stations;
-
+        
+        /// @brief Uses IDW interpolation to generate meterological data for each cell of project
+        ///
+        /// Creates a meteo-data source for each cell, using 
+        /// spatial interpolated data from all meteorological
+        /// stations of the project using Inverse Distance Weighted (IDW) interpolation. 
+        /// The meteorolgical value f is calculated with IDW for position x,y,z and time t as follows:
+        /// @f{eqnarray*}
+        /// f(x,y,z,t) &=& \sum^N_{i=1}{f_i(t) w_i(x,y,z)} \\
+        /// w_i(x,y,z) &=& \frac{d_i(x,y,z)^{-p}}{\sum^N_{j=0}{d_j(x,y,z)^{-p}}}  \\
+        /// d_i(x,y,z) &=& w_z \left|z-z_i\right| + \sqrt{\left(x-x_i\right)^2 + \left(y-y_i\right)^2} 
+        /// @f}
+        /// - @f$N@f$ is the number of stations
+        /// - @f$f_i(t)@f$ the meteorological value at time t, eg. Temperature, Humidity
+        /// - @f$w_i@f$ is the weight of station i
+        /// - @f$d_i@f$ is the distance from x,y,z to station i
+        /// - @f$p@f$ the power of the weighting function, usually 2.
+        /// - @f$x_i,y_i,z_i@f$ is the position of station i in space
+        /// - @f$w_z@f$ is a factor to weight the vertical distance between stations and the cell. 0 results
+        /// in a pure horizontal interpolation (normal IDW). If @f$w_z=1@f$, height difference is as important as
+        /// horizontal distance, and with @f$w_z>1@f$ the height difference is weighted more important than horizontal distance
+        /// @see IDW_Meteorology
+        /// @param z_weight @f$w_z@f$ the weight of height difference between cell and station
+        /// @param power the power of the distance weight
 		void use_IDW_meteo(double z_weight=0,double power=2);
-		void use_nearest_meteo(double z_weight=0);
+        
+        /// @brief Connects all cells of the project with its nearest meteorological station.
+        ///
+        /// Distance is calculated as follows:
+        /// @f[d_i(x,y,z) = w_z \left|z-z_i\right| + \sqrt{\left(x-x_i\right)^2 + \left(y-y_i\right)^2} @f]
+        /// - @f$d_i@f$ is the distance from x,y,z to station i
+        /// - @f$p@f$ the power of the weighting function, usually 2.
+        /// - @f$x_i,y_i,z_i@f$ is the position of station i in space
+        /// - @f$w_z@f$ is a factor to weight the vertical distance between stations and the cell. 0 results
+        /// in a pure horizontal interpolation (normal IDW). If @f$w_z=1@f$, height difference is as important as
+        /// horizontal distance, and with @f$w_z>1@f$ the height difference is weighted more important than horizontal distance
+        /// @param z_weight @f$w_z@f$ the weight of height difference between cell and station
+ 		void use_nearest_meteo(double z_weight=0);
+        /// @brief Uses IDW interpolation to generate rainfall data for each cell of project
+        ///
+        /// Creates a rainfall-data source for each cell, using 
+        /// spatial interpolated data from all meteorological
+        /// stations of the project using Inverse Distance Weighted (IDW) interpolation. 
+        /// The rainfall intensity P is calculated with IDW for position x,y,z and time t as follows:
+        /// @f{eqnarray*}
+        /// P(x,y,z,t) &=& \sum^N_{i=1}{P_i(t) w_i(x,y,z)} \\
+        /// w_i(x,y,z) &=& \frac{d_i(x,y,z)^{-p}}{\sum^N_{j=0}{d_j(x,y,z)^{-p}}}  \\
+        /// d_i(x,y,z) &=& w_z \left|z-z_i\right| + \sqrt{\left(x-x_i\right)^2 + \left(y-y_i\right)^2} 
+        /// @f}
+        /// - @f$N@f$ is the number of stations
+        /// - @f$P_i(t)@f$ the meteorological value at time t, eg. Temperature, Humidity
+        /// - @f$w_i@f$ is the weight of station i
+        /// - @f$d_i@f$ is the distance from x,y,z to station i
+        /// - @f$p@f$ the power of the weighting function, usually 2.
+        /// - @f$x_i,y_i,z_i@f$ is the position of station i in space
+        /// - @f$w_z@f$ is a factor to weight the vertical distance between stations and the cell. 0 results
+        /// in a pure horizontal interpolation (normal IDW). If @f$w_z=1@f$, height difference is as important as
+        /// horizontal distance, and with @f$w_z>1@f$ the height difference is weighted more important than horizontal distance
+        /// @see IDW_Meteorology
+        /// @param z_weight @f$w_z@f$ the weight of height difference between cell and station
+        /// @param power the power of the distance weight
 		void use_IDW_rainfall(double z_weight=0,double power=2);
+        /// @brief Connects all cells of the project with its nearest rainfall station.
+        ///
+        /// Distance is calculated as follows:
+        /// @f[d_i(x,y,z) = w_z \left|z-z_i\right| + \sqrt{\left(x-x_i\right)^2 + \left(y-y_i\right)^2} @f]
+        /// - @f$d_i@f$ is the distance from x,y,z to station i
+        /// - @f$p@f$ the power of the weighting function, usually 2.
+        /// - @f$x_i,y_i,z_i@f$ is the position of station i in space
+        /// - @f$w_z@f$ is a factor to weight the vertical distance between stations and the cell. 0 results
+        /// in a pure horizontal interpolation (normal IDW). If @f$w_z=1@f$, height difference is as important as
+        /// horizontal distance, and with @f$w_z>1@f$ the height difference is weighted more important than horizontal distance
+        /// @param z_weight @f$w_z@f$ the weight of height difference between cell and station
 		void use_nearest_rainfall(double z_weight=0);
-		/// Returns the vector of cells in the project
+		/// Returns the cells in the project
 		const upslope::cell_vector& get_cells() const {return m_cells;}
 		/// Returns the reference to the cell at index in the project
 		upslope::Cell& get_cell(int index)
@@ -73,21 +144,43 @@ namespace cmf {
 		}
 		/// The number of cells in the project
 		int size() const { return int(m_cells.size());}
-		/// If set to true, creation and deletion of objects is logged
+		/// @brief debug (true/false) If set to true, creation and deletion of objects is logged
 		bool debug;
-		/// Creates a new project
+		/// @brief Creates a new project
+        ///
+        /// @param solute_names A string representing the names of the solutes to be used in the project. Sepereate solute names with space.
 		project(std::string solute_names="");
 		~project();
 		/// Creates a new cell
+        /// @return A new cell, owned by the project
+        /// @param x,y,z Position of the cell center in project coordiantes (m)
+        /// @param area Area of the cell in m^2
+        /// @param with_surfacewater If true, the cell will own a surfacewater storage upon creation
 		cmf::upslope::Cell* NewCell(double x,double y,double z, double area,bool with_surfacewater = false);
 		/// Creates a new Dirichlet boundary condition and adds it to the list of outlets
-		/// The potential of the Dirichlet boundary equals p.z, but can be changed
+		/// The potential of the Dirichlet boundary equals z, but can be changed
+        /// @param name Name of the boundary condition for output
+        /// @param x,y,z Position of the boundary condition in project coordinates
 		cmf::water::DirichletBoundary::ptr NewOutlet(std::string name,double x, double y, double z);
 		/// Creates a new generic water storage at position x,y,z. The storage is added to the project nodes
+        /// @return A new water storage, owned by the project
+        /// @param name Name of the generic water storage for output
+        /// @param x,y,z Position of the generic water storage condition in project coordinates
 		cmf::water::WaterStorage::ptr NewStorage(std::string name,double x, double y, double z);
 		/// Creates a new open water storage with a prism geometry. The open water storage is added to the project nodes
+        /// @return A new open water storage, owned by the project
+        /// @param name  Name of the open water storage for output
+        /// @param x,y,z Position of the open water storage in project coordinates
+        /// @param area Surface area of the open water storage
 		cmf::river::OpenWaterStorage::ptr NewOpenStorage(std::string name,double x, double y, double z,double area);
 		/// Creates a new reach
+        /// @return A new reach, owned by the project
+        /// @param x,y,z Position of the reach in project coordinates
+        /// @param length lenght of the reach in m
+        /// @param Type Geometry of the river crosssection. Possible values: T (Triangular), R (Rectangular), S (SWAT like trapzeoid), P (pipe)
+        /// @param width Width of the channel between banks in m
+        /// @param depth Depth of the channel in m
+        /// @param diffusive If true, this reach uses by default a diffusive wave connection
 		cmf::river::Reach::ptr NewReach(double x,double y, double z, double length, char Type='T',double width=0.5,double depth=0.1, bool diffusive=false);
 
 		/// Returns the reach at index
@@ -102,7 +195,7 @@ namespace cmf {
 		/// Returns the number of nodes saved with this project
 		int node_count() const {return int(m_nodes.size());}
 		
-		/// Returns all storages of this project
+		/// Returns a list of all storages of this project
 		cmf::water::node_list get_storages();
 #ifndef SWIG
 		cmf::upslope::Cell& operator[](int index) {

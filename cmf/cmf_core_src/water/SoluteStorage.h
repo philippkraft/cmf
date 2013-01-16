@@ -29,7 +29,7 @@ namespace cmf {
 		class WaterStorage;
 		//class SoluteStorageMap;
 		
-		/// A class for the storage of any tracer. The state is the amount (mol, kg etc. see cmf::water) 
+		/// @brief A class for the storage of any tracer. The state is the amount (mol, kg etc. see cmf::water) 
 		/// of the tracer in the storage.
 		///
 		/// The derivative function is given by:
@@ -52,13 +52,13 @@ namespace cmf {
 			
 		public:
 			friend class WaterStorage;
-			/// Rate of decay of the solute (in 1/day)
+			/// @brief Rate of decay of the solute (in 1/day)
 			real decay;
-			/// A source or sink term of the solute as an absolute matter flux in state unit/day
+			/// @brief A source or sink term of the solute as an absolute matter flux in state unit/day
 			real source;
-			/// The solute, which is stored in this
+			/// @brief The solute, which is stored in this
 			const cmf::water::solute& Solute;
-			/// Returns the concentration of the solute
+			/// @brief Returns the concentration of the solute
 			real conc() const;
 
 			virtual real dxdt(const cmf::math::Time& time);

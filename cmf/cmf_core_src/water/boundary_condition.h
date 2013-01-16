@@ -49,12 +49,11 @@ namespace cmf {
 		/// @ingroup nodes
 
 		/// @ingroup boundary
-		/// Dirichlet (constant head) boundary condition
+		/// @brief Dirichlet (constant head) boundary condition
 		///
 		/// This boundary condition can be used either as a pure sink boundary condition or as a conditional source / sink boundary condition.
 		/// The constant head of the boundary condition is interpreted and handled by the connections of the boundary condition. 
 		/// Not head aware connections, should not be used, since they are ignoring the constant head.
-
 		class DirichletBoundary : public cmf::water::flux_node
 		{
 		protected:
@@ -89,7 +88,7 @@ namespace cmf {
 			
 		};
 		/// @ingroup boundary
-		/// A Neumann boundary condition (constant flux boundary condition)
+		/// @brief A Neumann boundary condition (constant flux boundary condition)
 		///
 		/// The flux is a timeseries, but can be used as a scalar.
 		/// To scale the timeseries to the specific conditions of this boundary condition the linear_scale flux_scale can be used.
@@ -145,6 +144,8 @@ namespace cmf {
 		};
 
 		/// @ingroup connections
+        /// @brief Connection between Neumann-boundary and a flux node
+        ///
 		/// This flux_connection is created, when connecting a Neumann boundary condition with a state variable using Neumann::connect_to
 		class NeumannFlux : public cmf::water::flux_connection
 		{

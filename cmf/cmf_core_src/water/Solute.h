@@ -31,7 +31,7 @@
 namespace cmf
 
 {
-	/// Contains generic classes for %solute and %water transport. 
+	/// @brief Contains generic classes for %solute and %water transport. 
 	///
 	/// You can use any unit for %solute amounts you like, like mol, g, kg, or none at all as long as you stay consistent. 
 	/// But for the concentrations, the nominator of the unit must be \f$m^3\f$, e.g. \f$\frac{mol}{m^3},\frac{g}{m^3},\frac{1}{m^3}\f$. For simplicity, in the following the unit of concentrations
@@ -39,7 +39,7 @@ namespace cmf
 	namespace water
 	{
 		class solute_vector;
-		/// A structure to identify a solute
+		/// @brief A structure to identify a solute
 		struct solute
 		{
 		private:
@@ -79,26 +79,26 @@ namespace cmf
 			}
 
 
-			/// Name of the solute
+			/// @brief Name of the solute
 			std::string Name;
-			/// Used unit for amount of solute e.g. 'mol','mmol','g','mg' etc.
+			/// @brief Used unit for amount of solute e.g. 'mol','mmol','g','mg' etc.
 			std::string Unit;
-			/// Fraction of the available concentration, that is taken up by vegetation
+			/// @brief Fraction of the available concentration, that is taken up by vegetation
 			/// - 0 means no uptake
 			/// - 0..1 mean uptake is partially inhibited
 			/// - 1 solute is taken up without changes in concentration
 			/// - >1 preferential uptake (not tested, may result in negative concentrations)
 			double Uptake;
-			/// An automatically set identifier of the solute
+			/// @brief An automatically set identifier of the solute
 			const size_t Id;
 		};
-		/// Manages the solutes of the model. 
+		/// @brief Manages the solutes of the model. 
 		class solute_vector
 		{
 			std::vector<cmf::water::solute>	m_Solutes;
 		public:
 			size_t size() const {return m_Solutes.size();}
-			/// Creates a solute vector from solute names, separated by whitespace. E.g. solutes=solute_vector("dO18 dH2")
+			/// @brief Creates a solute vector from solute names, separated by whitespace. E.g. solutes=solute_vector("dO18 dH2")
 			solute_vector(std::string str);
 #ifndef SWIG
 			const solute& operator[](int i) const;
@@ -112,7 +112,7 @@ namespace cmf
 			}
 		};
 
-		/// A map of concentration time series for solutes
+		/// @brief A map of concentration time series for solutes
 		class SoluteTimeseries
 		{
 		private:
@@ -120,7 +120,7 @@ namespace cmf
 			timeseriesVector conc_ts;
 		public:
 #ifndef SWIG
-			/// Returns a reference to the time series of the solute
+			/// @brief Returns a reference to the time series of the solute
 			cmf::math::timeseries& operator[](const cmf::water::solute& _Solute)
 			{
 				if (conc_ts.size()<=_Solute.Id)
@@ -148,7 +148,7 @@ namespace cmf
 			const_iterator end()   const {return const_iterator(conc_ts.end());  } 
 #endif
 			real conc(cmf::math::Time t,const cmf::water::solute& _Solute) const;
-			/// Returns the number of solutes in the solution
+			/// @brief Returns the number of solutes in the solution
 			size_t size() const
 			{
 				return conc_ts.size();

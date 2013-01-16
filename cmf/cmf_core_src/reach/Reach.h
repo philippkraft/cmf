@@ -32,7 +32,7 @@ namespace cmf {
 	namespace river {
 		class Reach;
 		/// @ingroup storages
-		/// A reach is a specialization of an open water storage.
+		/// @brief A reach represents the section of a riover and is a specialization of an open water storage.
 		///
 		/// The OpenWaterStorage attributes and methods are extended by topological features, for the creation 
 		/// of a network of reaches.
@@ -82,7 +82,8 @@ namespace cmf {
 			
 			/// Connects the reach to an outlet, e.g. a boundary condition
 			void set_outlet(cmf::water::flux_node::ptr outlet);
-			void set_dead_end();
+			/// Deletes any downstream connection
+            void set_dead_end();
 			/// Connects the reach to another one downstream
 			void set_downstream(ptr new_downstream);
 			/// Returns the reach downstream of this (or null if there is no reach downstream)
