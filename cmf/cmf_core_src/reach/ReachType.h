@@ -22,7 +22,7 @@
 
 namespace cmf {
 	namespace river {
-		/// Volume height relations are functional objects, which return a height and a crosssectional area of a volume for different geometric bodies.
+		/// @brief Volume height relations are functional objects, which return a height and a crosssectional area of a volume for different geometric bodies.
 		/// This is the abstract base class, where the geometries derive from
 		class IVolumeHeightFunction
 		{
@@ -38,7 +38,7 @@ namespace cmf {
 				return h(V);
 			}
 		};
-		/// Returns the height of a volume in a Prism with a defined base area
+		/// @brief the height of a volume in a Prism with a defined base area
 		class Prism : public IVolumeHeightFunction
 		{
 		public:
@@ -52,7 +52,7 @@ namespace cmf {
 			double A(double V) const;
 			double V(double h) const {return h*Area;}
 		};
-	    /// A wrapper class for volume / height functional relations
+	    /// @brief A wrapper class for volume / height functional relations
 		class volume_height_function : public IVolumeHeightFunction
 		{
 		private:
@@ -79,7 +79,7 @@ namespace cmf {
 			double V(double h) const {return vhf->V(h);}
 		};
 
-		///Structure for the description of structural parameters of a reach
+		///@brief Structure for the description of structural parameters of a reach
 		///Abstract base class for different IChannel geometries
 		class IChannel : public cmf::river::IVolumeHeightFunction
 		{
@@ -91,16 +91,16 @@ namespace cmf {
 			virtual double get_length() const=0; ///< Length of the reach
 
 			virtual char typecode() const=0;
-			/// Calculates the flow width from a given actual depth [m] using the actual IChannel %geometry
+			/// @brief Calculates the flow width from a given actual depth [m] using the actual IChannel %geometry
 			virtual double get_channel_width(double depth) const=0;
-			/// Calculates the wetted perimeter from a given actual depth [m] using the actual IChannel %geometry
+			/// @brief Calculates the wetted perimeter from a given actual depth [m] using the actual IChannel %geometry
 			virtual double get_wetted_perimeter(double depth) const=0;
-			/// Calculates the actual depth of the reach using the IChannel geometry
+			/// @brief Calculates the actual depth of the reach using the IChannel geometry
 			/// @returns  get_depth of the reach [m]
 			/// @param area Wetted area of a river cross section [m<sup>2</sup>], can be obtained by V/l, where V is the stored volume and l is the reach length
 			virtual double get_depth(double area) const=0;
 			
-			/// Calculates the wetted area from a given depth using the IChannel geometry. 
+			/// @brief Calculates the wetted area from a given depth using the IChannel geometry. 
 			/// In most cases use get_flux_crossection=V/l, where V is the stored volume and l is the reach length
 			/// @returns Wetted area of a river cross section [m<sup>2</sup>]
 			/// @param depth depth of the reach [m]
@@ -111,7 +111,7 @@ namespace cmf {
 			virtual double V(double h) const {return get_flux_crossection(h)*get_length();}
 			virtual IChannel* copy() const=0;
 
-			/// Calculates the flow rate from a given water volume in the reach
+			/// @brief Calculates the flow rate from a given water volume in the reach
 			/// \f{eqnarray*}
 			/// q_{Manning}&=& A R^{\frac 2 3} \sqrt{\frac {\Delta_z} n} \\
 			/// A &=& \frac V l \mbox{, (Crosssectional area of the wetted crossection, Volume per length)} \\
@@ -128,7 +128,7 @@ namespace cmf {
 	};
 
 
-		///Structure for the description of structural parameters of a reach
+		///@brief Structure for the description of structural parameters of a reach
 		///
 		///Uses the SWAT IChannel geometry (see SWAT Theoretical Documentation, Version 2005 (ch. 7:1.1), Neitsch et al. 2005), in this class referenced as SWATtheoDoc.
 		///Differences to the SWAT geometry: The flood plain is not plain, but has a small slope=0.5%, but has an infinite width
@@ -146,7 +146,7 @@ namespace cmf {
 				BankSlope, ///<Inverse slope of the river bank \f$ \Delta_{bank} \left[\frac m m\right] \f$
 				FloodPlainSlope; ///<Inverse slope of the flood plain \f$ \Delta_{flood\ plain} \left[\frac m m\right] \f$
 
-			///Calculates the flow width from a given actual depth [m] using the actual IChannel geometry
+			///@brief Calculates the flow width from a given actual depth [m] using the actual IChannel geometry
 			/// \f{eqnarray*}
 			/// \mbox{If }  d\le d_{IChannel} && \\
 			/// w &=& w_{bottom} + 2  \Delta_{bank} d \\
@@ -155,7 +155,7 @@ namespace cmf {
 			/// \f}
 			///@see SWATtheoDoc eq. 7:1.1.3
 			virtual double get_channel_width(double depth) const;
-			///Calculates the wetted perimeter from a given actual depth [m] using the actual IChannel geometry
+			///@brief Calculates the wetted perimeter from a given actual depth [m] using the actual IChannel geometry
 			/// \f{eqnarray*}
 			/// \mbox{If } d\le d_{IChannel} && \\
 			/// P &=& w_{bottom} + 2  \sqrt{1+ {\Delta_{bank}}^2} d \\
@@ -165,7 +165,7 @@ namespace cmf {
 			///@see SWATtheoDoc eq. 7:1.1.5
 			///@param depth Actual depth of the reach [m]
 			virtual double get_wetted_perimeter(double depth) const;
-			///Calculates the actual depth of the reach using the IChannel geometry
+			///@brief Calculates the actual depth of the reach using the IChannel geometry
 			/// \f{eqnarray*}
 			/// d &=& \sqrt{\frac{A}{\Delta_{bank}} + \frac{{w_{bottom}}^2}{4 {\Delta_{bank}}^2}} - \frac{w_{bottom}}{2 \Delta_{bank}} \\
 			/// \mbox{If } d>d_{IChannel} &&\\
@@ -175,7 +175,7 @@ namespace cmf {
 			/// @returns  get_depth of the reach [m]
 			/// @param area Wetted area of a river cross section [m<sup>2</sup>], can be obtained by V/l, where V is the stored volume and l is the reach length
 			virtual double get_depth(double area) const;
-			/// Calculates the wetted area from a given depth using the IChannel geometry. In most cases use get_flux_crossection=V/l, where V is the stored volume and l is the reach length
+			/// @brief Calculates the wetted area from a given depth using the IChannel geometry. In most cases use get_flux_crossection=V/l, where V is the stored volume and l is the reach length
 			/// \f{eqnarray*}
 			/// \mbox{If } d>d_{IChannel} &&\\
 			/// A &=& \left(w_{bottom} + \Delta_{bank} d\right) d \\
@@ -189,7 +189,7 @@ namespace cmf {
 
 
 
-			///Creates a new reach structure with standard values (small natural river)
+			///@brief Creates a new reach structure with standard values (small natural river)
 			///BottomWidth = 3m, ChannelDepth = 0.5m, BankSlope = 2, nManning = 0.0035, FloodPlainSlope = 200
 			SWATReachType(double l);
 			///Creates a new reach structure from a give width and depth
@@ -200,7 +200,7 @@ namespace cmf {
 			SWATReachType* copy() const { return new SWATReachType(get_length(), BottomWidth+2*BankSlope*ChannelDepth,ChannelDepth);}
 
 		};
-		/// Structure for the description of reaches with a triangular cross section
+		/// @brief Structure for the description of reaches with a triangular cross section
 		///
 		/// Although double triangular cross section reach are rarely met, a triangular reach does scale with its water load, and is therefore preferable in case where nothing about IChannel geometry is known
 		class TriangularReach : public IChannel
@@ -212,19 +212,19 @@ namespace cmf {
 				return m_l;
 			}
 			char typecode() const{return 'T';}
-			/// Inverse slope of the bank \f$ \Delta = 0.5 \frac w d \f$
+			/// @brief Inverse slope of the bank \f$ \Delta = 0.5 \frac w d \f$
 			double BankSlope;
-			/// Returns the width of the  stream at a given depth
+			/// @brief Returns the width of the  stream at a given depth
 			/// \f{eqnarray*}
 			/// w &=& 2 \Delta\ d
 			/// \f}
 			virtual double get_channel_width(double depth) const;
-			/// Returns the wetted perimeter at a given depth
+			/// @brief Returns the wetted perimeter at a given depth
 			/// \f{eqnarray*}
 			/// P &=& 2 d \sqrt{1+\Delta^2}
 			/// \f}
 			virtual double get_wetted_perimeter(double depth) const;
-			/// Returns the depth at a given crossection area
+			/// @brief Returns the depth at a given crossection area
 			/// \f{eqnarray*}
 			/// d &=& \sqrt{\frac{A}{\Delta}}
 			/// \f}
@@ -234,12 +234,12 @@ namespace cmf {
 			/// A &=& d^2 \Delta
 			/// \f}
 			virtual double get_flux_crossection(double depth) const;
-			/// Creates a new triangular reach type
+			/// @brief Creates a new triangular reach type
 			TriangularReach(double l,double bankSlope=2);
 			TriangularReach* copy() const;
 
 		};
-		/// Describes a IChannel with a rectangular crosssection
+		/// @brief Describes a IChannel with a rectangular crosssection
 		class RectangularReach : public IChannel
 		{
 		private:
@@ -273,7 +273,7 @@ namespace cmf {
 			RectangularReach* copy() const;
 
 		};
-		/// Describes the geometry of a closed pipe
+		/// @brief Describes the geometry of a closed pipe
 		class PipeReach : public IChannel
 		{
 		private:
@@ -295,7 +295,7 @@ namespace cmf {
 			PipeReach* copy() const;
 		};
 
-		/// A wrapper for channel geometries
+		/// @brief A wrapper for channel geometries
 		class Channel : public IChannel
 		{
 		private:
@@ -316,7 +316,7 @@ namespace cmf {
 			Channel& operator=(const IChannel& for_assignment);
 #endif
 			
-			/// Creates a reachtype using a short cut character.
+			/// @brief Creates a reachtype using a short cut character.
 			/// Acceptes one of the following characters:
 			/// - 'T' TriangularReach, width and depth are ignored.
 			/// - 'R' RectangularReach, depth is ignored
@@ -351,7 +351,7 @@ namespace cmf {
 			
 		};
 
-		/// A combination of two channel geometries
+		/// @brief A combination of two channel geometries
 		class MeanChannel : public IChannel
 		{
 		private:

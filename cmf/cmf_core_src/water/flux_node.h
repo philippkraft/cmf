@@ -41,14 +41,11 @@ namespace cmf {
 		class flux_connection;
 		class connection_list;
 		class node_list;
-// 		typedef std::vector<std::tr1::shared_ptr<cmf::water::flux_connection> > connection_vector;
-// 		typedef std::set<std::tr1::shared_ptr<cmf::water::flux_connection>  > connection_set;
 
 		/// @defgroup nodes	Water nodes
 		/// @todo Elaborate on Water nodes
-		
-		/// Base class for everything that can be connected by fluxes. 
 		/// @ingroup nodes
+		/// @brief Base class for everything that can be connected by fluxes. 
 		///
 		/// Flux nodes can be WaterStorages, flux end points, sinks, sources and 
 		/// bridges to other model domains (e.g. Ponded water to river system).
@@ -84,59 +81,61 @@ namespace cmf {
 			cmf::project& m_project;
 
 		public:
-			/// Returns the project, this node is part of
+			/// @brief Returns the project, this node is part of
 			cmf::project& get_project() const {return m_project;}
-			/// The Id of the node
+			/// @brief The Id of the node
 			const int node_id;
-			/// true, if this is a waterstorage
+			/// @brief true, if this is a waterstorage
 			virtual bool is_storage() const {return false;}
-			/// The Name of this node
+			/// @brief The Name of this node
 			std::string Name;
 			virtual std::string to_string() const {return "{" + Name + "}";}
 			cmf::water::connection_list get_connections() const;
-
-			//cmf::geometry::point get_direction_to(const flux_node& cmp);
 
 			/// The destructor deletes all connections
 			virtual ~flux_node();
 			bool operator ==(const cmf::water::flux_node& other) const {return this==&other;}
 
-			/// Pure flux_nodes do not influence fluxes, therefore no recalculation of fluxes is required by flux_node.
+			/// @brief Pure flux_nodes do not influence fluxes, therefore no recalculation of fluxes is required by flux_node.
 			/// WaterStorage overrides this, since state changes require an update of the fluxes
 			virtual bool RecalcFluxes(cmf::math::Time t) {return false;}
-			/// Returns the connection between this and target
+			/// @brief Returns the connection between this and target
 			cmf::water::flux_connection* connection_to(const cmf::water::flux_node& target);
-			/// Remove the connection
+			/// @brief Remove the connection
 			bool remove_connection(cmf::water::flux_node::ptr To);
-			/// Returns the actual flux between this and target	(positive sign means "from target into this")
+			/// @brief Returns the actual flux between this and target	(positive sign means "from target into this")
 			real flux_to( const cmf::water::flux_node& target,cmf::math::Time t );
 			cmf::geometry::point flux3d_to(const cmf::water::flux_node& target,cmf::math::Time t );
-			/// Returns the sum of all flux vectors
+			/// @brief Returns the sum of all flux vectors
 			cmf::geometry::point get_3d_flux(cmf::math::Time t);
-			/// Returns the sum of all fluxes (positive and negative) at time t. Single fluxes can be excluded from the calculation
+			/// @brief Returns the sum of all fluxes (positive and negative) at time t. 
+            ///
+            /// Single fluxes can be excluded from the calculation
 			/// @param t Time of the query
 			/// @param Without A flux_connection that is excluded from the waterbalance (e.g. to prevent closed circuits)
 			real waterbalance(cmf::math::Time t,const flux_connection* Without=0) const;
-
+            /// @brief returns the waterblance
 			real operator()(cmf::math::Time t) const {
 				return waterbalance(t);
 			}
-			/// Returns the water quality of the flux_node, if it is not overridden this is the mix of the incoming fluxes
+			/// @brief Returns the water quality of the flux_node, if it is not overridden this is the mix of the incoming fluxes
 			virtual real conc(cmf::math::Time t, const cmf::water::solute& Solute) const;
 			
-			/// The spatial position of the node
+			/// @brief The spatial position of the node
 			cmf::geometry::point position;
-			/// Returns the water potential of the node in m waterhead
+			/// @brief Returns the water potential of the node in m waterhead
+            ///
 			/// The base class water storage always returns the height of the location
 			virtual real get_potential() const
 			{
 				return position.z;
 			}
+            /// @brief Sets the potential of this flux node
 			virtual void set_potential(real new_potential)
 			{
 				throw std::runtime_error("Potential of " + Name + " is read only");
 			}
-			/// Returns true if the node has no water.
+			/// @brief Returns true if the node has no water.
 			virtual double is_empty() const
 			{
 				return 1;
@@ -152,7 +151,7 @@ namespace cmf {
 		flux_node::ptr get_higher_node(flux_node::ptr node1,flux_node::ptr node2);
 		flux_node::ptr get_lower_node(flux_node::ptr node1,flux_node::ptr node2);
 
-		/// The waterbalance_integrator is an integratable for precise output of the average water balance 
+		/// @brief The waterbalance_integrator is an integratable for precise output of the average water balance 
 		/// of a flux_node over time. It can be added to a solver (any cmf::math::Integrator), 
 		/// which is than calling the integrate method at each substep.
 		class waterbalance_integrator : public cmf::math::integratable {

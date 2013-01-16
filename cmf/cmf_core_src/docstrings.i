@@ -68,16 +68,10 @@ C++ includes: groundwater.h ";
 /*  Overrides of flux_node  */
 
 %feature("docstring")  cmf::upslope::aquifer::RecalcFluxes "virtual
-bool RecalcFluxes(cmf::math::Time t)
-
-Pure flux_nodes do not influence fluxes, therefore no recalculation of
-fluxes is required by flux_node. WaterStorage overrides this, since
-state changes require an update of the fluxes ";
+bool RecalcFluxes(cmf::math::Time t) ";
 
 %feature("docstring")  cmf::upslope::aquifer::is_empty "virtual
-double is_empty() const
-
-Returns true if the node has no water. ";
+double is_empty() const ";
 
 %feature("docstring")  cmf::upslope::aquifer::get_K "virtual real
 get_K(cmf::geometry::point direction) const
@@ -199,10 +193,7 @@ real get_volume() const
 Returns the volume of water in this storage in m3 ";
 
 %feature("docstring")  cmf::upslope::aquifer::get_potential "virtual
-real get_potential() const
-
-Returns the water potential of the node in m waterhead The base class
-water storage always returns the height of the location ";
+real get_potential() const ";
 
 %feature("docstring")  cmf::upslope::aquifer::set_volume "virtual
 void set_volume(real newwatercontent)
@@ -257,6 +248,7 @@ waterbalance(cmf::math::Time t, const flux_connection *Without=0)
 const
 
 Returns the sum of all fluxes (positive and negative) at time t.
+
 Single fluxes can be excluded from the calculation
 
 Parameters:
@@ -337,8 +329,10 @@ newTarget) ";
 %feature("docstring")  cmf::upslope::aquifer_Darcy::conc "real
 conc(cmf::math::Time t, const cmf::water::solute &_Solute)
 
-Returns the concentration of the flux. If not overridden, it returns
-the concentration of the source of the flux (direction depending) ";
+Returns the concentration of the flux.
+
+If not overridden, it returns the concentration of the source of the
+flux (direction depending) ";
 
 %feature("docstring")  cmf::upslope::aquifer_Darcy::get_tracer_filter
 "real get_tracer_filter()
@@ -793,8 +787,10 @@ exchange_target(flux_node::ptr oldtarget, flux_node::ptr newTarget) ";
 
 %feature("docstring")  cmf::upslope::ET::canopy_evaporation::conc "real conc(cmf::math::Time t, const cmf::water::solute &_Solute)
 
-Returns the concentration of the flux. If not overridden, it returns
-the concentration of the source of the flux (direction depending) ";
+Returns the concentration of the flux.
+
+If not overridden, it returns the concentration of the source of the
+flux (direction depending) ";
 
 %feature("docstring")
 cmf::upslope::ET::canopy_evaporation::get_tracer_filter "real
@@ -891,8 +887,10 @@ exchange_target(flux_node::ptr oldtarget, flux_node::ptr newTarget) ";
 %feature("docstring")  cmf::upslope::connections::CanopyOverflow::conc
 "real conc(cmf::math::Time t, const cmf::water::solute &_Solute)
 
-Returns the concentration of the flux. If not overridden, it returns
-the concentration of the source of the flux (direction depending) ";
+Returns the concentration of the flux.
+
+If not overridden, it returns the concentration of the source of the
+flux (direction depending) ";
 
 %feature("docstring")
 cmf::upslope::connections::CanopyOverflow::get_tracer_filter "real
@@ -975,8 +973,10 @@ exchange_target(flux_node::ptr oldtarget, flux_node::ptr newTarget) ";
 cmf::upslope::ET::CanopyStorageEvaporation::conc "real
 conc(cmf::math::Time t, const cmf::water::solute &_Solute)
 
-Returns the concentration of the flux. If not overridden, it returns
-the concentration of the source of the flux (direction depending) ";
+Returns the concentration of the flux.
+
+If not overridden, it returns the concentration of the source of the
+flux (direction depending) ";
 
 %feature("docstring")
 cmf::upslope::ET::CanopyStorageEvaporation::get_tracer_filter "real
@@ -1342,8 +1342,9 @@ Copy constructable. ";
 typecode, double length, double width=1., double depth=0.25)
 
 Creates a reachtype using a short cut character. Acceptes one of the
-following characters: 'T' TriangularReach, width and depth are
-ignored.
+following characters:
+
+'T' TriangularReach, width and depth are ignored.
 
 'R' RectangularReach, depth is ignored
 
@@ -1376,7 +1377,8 @@ actual IChannel geometry. ";
 %feature("docstring")  cmf::river::Channel::get_depth "double
 get_depth(double area) const
 
-Calculates the actual depth of the reach using the IChannel geometry
+Calculates the actual depth of the reach using the IChannel geometry.
+
 get_depth of the reach [m]
 
 Parameters:
@@ -1389,8 +1391,9 @@ V/l, where V is the stored volume and l is the reach length ";
 
 Calculates the wetted area from a given depth using the IChannel
 geometry. In most cases use get_flux_crossection=V/l, where V is the
-stored volume and l is the reach length Wetted area of a river cross
-section [m2]
+stored volume and l is the reach length.
+
+Wetted area of a river cross section [m2]
 
 Parameters:
 -----------
@@ -1435,7 +1438,9 @@ length)} \\\\\\\\ R &=& \\\\frac A {P(d)} \\\\\\\\ P(d) &=& \\\\mbox{
 the perimeter of the wetted crosssection, a function of reach depth}
 \\\\\\\\ d(V) &=& \\\\mbox{ the depth of the reach a function of the
 volume} \\\\\\\\ \\\\Delta_z &=& \\\\frac{z_{max} - z_{min}}{l}
-\\\\mbox{ Slope of the reach} \\\\end{eqnarray*} Flow rate [m3/s]
+\\\\mbox{ Slope of the reach} \\\\end{eqnarray*}.
+
+Flow rate [m3/s]
 
 Parameters:
 -----------
@@ -1533,8 +1538,10 @@ newTarget) ";
 cmf::upslope::connections::CompleteInfiltration::conc "real
 conc(cmf::math::Time t, const cmf::water::solute &_Solute)
 
-Returns the concentration of the flux. If not overridden, it returns
-the concentration of the source of the flux (direction depending) ";
+Returns the concentration of the flux.
+
+If not overridden, it returns the concentration of the source of the
+flux (direction depending) ";
 
 %feature("docstring")
 cmf::upslope::connections::CompleteInfiltration::get_tracer_filter "real get_tracer_filter()
@@ -1663,8 +1670,10 @@ exchange_target(flux_node::ptr oldtarget, flux_node::ptr newTarget) ";
 %feature("docstring")  cmf::upslope::ET::constantETpot::conc "real
 conc(cmf::math::Time t, const cmf::water::solute &_Solute)
 
-Returns the concentration of the flux. If not overridden, it returns
-the concentration of the source of the flux (direction depending) ";
+Returns the concentration of the flux.
+
+If not overridden, it returns the concentration of the source of the
+flux (direction depending) ";
 
 %feature("docstring")
 cmf::upslope::ET::constantETpot::get_tracer_filter "real
@@ -1763,11 +1772,7 @@ Sets the concentration of a solute in the rainfall. ";
 
 %feature("docstring")
 cmf::atmosphere::ConstantRainSource::RecalcFluxes "virtual bool
-RecalcFluxes(cmf::math::Time t)
-
-Pure flux_nodes do not influence fluxes, therefore no recalculation of
-fluxes is required by flux_node. WaterStorage overrides this, since
-state changes require an update of the fluxes ";
+RecalcFluxes(cmf::math::Time t) ";
 
 %feature("docstring")  cmf::atmosphere::ConstantRainSource::is_empty "virtual double is_empty() const
 
@@ -1822,6 +1827,7 @@ waterbalance(cmf::math::Time t, const flux_connection *Without=0)
 const
 
 Returns the sum of all fluxes (positive and negative) at time t.
+
 Single fluxes can be excluded from the calculation
 
 Parameters:
@@ -1836,12 +1842,16 @@ Without:  A flux_connection that is excluded from the waterbalance
 cmf::atmosphere::ConstantRainSource::get_potential "virtual real
 get_potential() const
 
-Returns the water potential of the node in m waterhead The base class
-water storage always returns the height of the location ";
+Returns the water potential of the node in m waterhead.
+
+The base class water storage always returns the height of the location
+";
 
 %feature("docstring")
 cmf::atmosphere::ConstantRainSource::set_potential "virtual void
-set_potential(real new_potential) ";
+set_potential(real new_potential)
+
+Sets the potential of this flux node. ";
 
 
 // File: struct_c_v_band_prec_data_rec.xml
@@ -2156,8 +2166,10 @@ exchange_target(flux_node::ptr oldtarget, flux_node::ptr newTarget) ";
 %feature("docstring")  cmf::upslope::connections::Darcy::conc "real
 conc(cmf::math::Time t, const cmf::water::solute &_Solute)
 
-Returns the concentration of the flux. If not overridden, it returns
-the concentration of the source of the flux (direction depending) ";
+Returns the concentration of the flux.
+
+If not overridden, it returns the concentration of the source of the
+flux (direction depending) ";
 
 %feature("docstring")
 cmf::upslope::connections::Darcy::get_tracer_filter "real
@@ -2242,8 +2254,10 @@ exchange_target(flux_node::ptr oldtarget, flux_node::ptr newTarget) ";
 %feature("docstring")  cmf::upslope::connections::DarcyKinematic::conc
 "real conc(cmf::math::Time t, const cmf::water::solute &_Solute)
 
-Returns the concentration of the flux. If not overridden, it returns
-the concentration of the source of the flux (direction depending) ";
+Returns the concentration of the flux.
+
+If not overridden, it returns the concentration of the source of the
+flux (direction depending) ";
 
 %feature("docstring")
 cmf::upslope::connections::DarcyKinematic::get_tracer_filter "real
@@ -2300,7 +2314,7 @@ Returns a string representing the date. ";
 // File: classcmf_1_1water_1_1_dirichlet_boundary.xml
 %feature("docstring") cmf::water::DirichletBoundary "
 
-Dirichlet (constant head) boundary condition
+Dirichlet (constant head) boundary condition.
 
 This boundary condition can be used either as a pure sink boundary
 condition or as a conditional source / sink boundary condition. The
@@ -2310,10 +2324,7 @@ should not be used, since they are ignoring the constant head.
 
 C++ includes: boundary_condition.h ";
 
-%feature("docstring")  cmf::water::DirichletBoundary::get_potential "real get_potential() const
-
-Returns the water potential of the node in m waterhead The base class
-water storage always returns the height of the location ";
+%feature("docstring")  cmf::water::DirichletBoundary::get_potential "real get_potential() const ";
 
 %feature("docstring")  cmf::water::DirichletBoundary::set_potential "void set_potential(real new_potential) ";
 
@@ -2322,13 +2333,9 @@ water storage always returns the height of the location ";
 
 %feature("docstring")  cmf::water::DirichletBoundary::conc "virtual
 real conc(cmf::math::Time t, const cmf::water::solute &_Solute) const
+";
 
-Returns the water quality of the flux_node, if it is not overridden
-this is the mix of the incoming fluxes. ";
-
-%feature("docstring")  cmf::water::DirichletBoundary::is_empty "double is_empty() const
-
-Returns true if the node has no water. ";
+%feature("docstring")  cmf::water::DirichletBoundary::is_empty "double is_empty() const ";
 
 %feature("docstring")  cmf::water::DirichletBoundary::RecalcFluxes "bool RecalcFluxes(cmf::math::Time t) const ";
 
@@ -2353,7 +2360,7 @@ true, if this is a waterstorage ";
 
 Pure flux_nodes do not influence fluxes, therefore no recalculation of
 fluxes is required by flux_node. WaterStorage overrides this, since
-state changes require an update of the fluxes ";
+state changes require an update of the fluxes. ";
 
 %feature("docstring")  cmf::water::DirichletBoundary::connection_to "cmf::water::flux_connection* connection_to(const cmf::water::flux_node
 &target)
@@ -2383,6 +2390,7 @@ Returns the sum of all flux vectors. ";
 const
 
 Returns the sum of all fluxes (positive and negative) at time t.
+
 Single fluxes can be excluded from the calculation
 
 Parameters:
@@ -2460,8 +2468,10 @@ newTarget) ";
 cmf::upslope::connections::EnergyBudgetSnowMelt::conc "real
 conc(cmf::math::Time t, const cmf::water::solute &_Solute)
 
-Returns the concentration of the flux. If not overridden, it returns
-the concentration of the source of the flux (direction depending) ";
+Returns the concentration of the flux.
+
+If not overridden, it returns the concentration of the source of the
+flux (direction depending) ";
 
 %feature("docstring")
 cmf::upslope::connections::EnergyBudgetSnowMelt::get_tracer_filter "real get_tracer_filter()
@@ -2656,7 +2666,7 @@ Simplifies the assessment of state variables. ";
 %feature("docstring") cmf::water::external_control_connection "
 
 Flux from one node to another, controlled by the user or an external
-program, by changing the flux constant
+program, by changing the flux constant.
 
 C++ includes: simple_connections.h ";
 
@@ -2716,8 +2726,10 @@ exchange_target(flux_node::ptr oldtarget, flux_node::ptr newTarget) ";
 
 %feature("docstring")  cmf::water::external_control_connection::conc "real conc(cmf::math::Time t, const cmf::water::solute &_Solute)
 
-Returns the concentration of the flux. If not overridden, it returns
-the concentration of the source of the flux (direction depending) ";
+Returns the concentration of the flux.
+
+If not overridden, it returns the concentration of the source of the
+flux (direction depending) ";
 
 %feature("docstring")
 cmf::water::external_control_connection::get_tracer_filter "real
@@ -2788,8 +2800,10 @@ of the inquirer, positive are inflows to the inquirer. ";
 %feature("docstring")  cmf::water::flux_connection::conc "real
 conc(cmf::math::Time t, const cmf::water::solute &_Solute)
 
-Returns the concentration of the flux. If not overridden, it returns
-the concentration of the source of the flux (direction depending) ";
+Returns the concentration of the flux.
+
+If not overridden, it returns the concentration of the source of the
+flux (direction depending) ";
 
 %feature("docstring")  cmf::water::flux_connection::get_tracer_filter
 "real get_tracer_filter()
@@ -2806,14 +2820,14 @@ A value ranging from 0 to 1. ";
 %feature("docstring")  cmf::water::flux_connection::flux_connection "flux_connection(flux_node::ptr left, flux_node::ptr right, std::string
 _type)
 
-Creates a flux connection between the flux_node left and right
+Creates a flux connection between the flux_node left and right.
 
 Parameters:
 -----------
 
-left:   flux_node on the one side of the connection
+left:  flux_node on the one side of the connection
 
-right:   flux_node on the other side of the connection
+right:  flux_node on the other side of the connection
 
 _type:  Type of the flux connection ";
 
@@ -2824,9 +2838,10 @@ _type:  Type of the flux connection ";
 %feature("docstring") cmf::water::flux_integrator "
 
 The flux_integrator is an integratable for precise output of average
-fluxes over time. It can be added to solver (any
-cmf::math::Integrator), which is than calling the integrate method at
-each substep.
+fluxes over time.
+
+It can be added to solver (any cmf::math::Integrator), which is then
+calling the integrate method at each substep.
 
 C++ includes: flux_connection.h ";
 
@@ -2876,16 +2891,7 @@ if there is no connection between the endpoints. ";
 
 
 // File: classcmf_1_1water_1_1flux__node.xml
-%feature("docstring") cmf::water::flux_node "
-
-Base class for everything that can be connected by fluxes.
-
-Flux nodes can be WaterStorages, flux end points, sinks, sources and
-bridges to other model domains (e.g. Ponded water to river system).
-The base class can be used where a simple routing, potentially with
-mixing, is needed.
-
-C++ includes: flux_node.h ";
+%feature("docstring") cmf::water::flux_node "";
 
 %feature("docstring")  cmf::water::flux_node::get_project "cmf::project& get_project() const
 
@@ -2911,7 +2917,7 @@ bool RecalcFluxes(cmf::math::Time t)
 
 Pure flux_nodes do not influence fluxes, therefore no recalculation of
 fluxes is required by flux_node. WaterStorage overrides this, since
-state changes require an update of the fluxes ";
+state changes require an update of the fluxes. ";
 
 %feature("docstring")  cmf::water::flux_node::connection_to "cmf::water::flux_connection* connection_to(const cmf::water::flux_node
 &target)
@@ -2941,6 +2947,7 @@ waterbalance(cmf::math::Time t, const flux_connection *Without=0)
 const
 
 Returns the sum of all fluxes (positive and negative) at time t.
+
 Single fluxes can be excluded from the calculation
 
 Parameters:
@@ -2960,11 +2967,15 @@ this is the mix of the incoming fluxes. ";
 %feature("docstring")  cmf::water::flux_node::get_potential "virtual
 real get_potential() const
 
-Returns the water potential of the node in m waterhead The base class
-water storage always returns the height of the location ";
+Returns the water potential of the node in m waterhead.
+
+The base class water storage always returns the height of the location
+";
 
 %feature("docstring")  cmf::water::flux_node::set_potential "virtual
-void set_potential(real new_potential) ";
+void set_potential(real new_potential)
+
+Sets the potential of this flux node. ";
 
 %feature("docstring")  cmf::water::flux_node::is_empty "virtual
 double is_empty() const
@@ -3031,8 +3042,10 @@ newTarget) ";
 %feature("docstring")  cmf::upslope::ET::HargreaveET::conc "real
 conc(cmf::math::Time t, const cmf::water::solute &_Solute)
 
-Returns the concentration of the flux. If not overridden, it returns
-the concentration of the source of the flux (direction depending) ";
+Returns the concentration of the flux.
+
+If not overridden, it returns the concentration of the source of the
+flux (direction depending) ";
 
 %feature("docstring")
 cmf::upslope::ET::HargreaveET::get_tracer_filter "real
@@ -3114,8 +3127,10 @@ exchange_target(flux_node::ptr oldtarget, flux_node::ptr newTarget) ";
 
 %feature("docstring")  cmf::upslope::connections::HBVlateral::conc "real conc(cmf::math::Time t, const cmf::water::solute &_Solute)
 
-Returns the concentration of the flux. If not overridden, it returns
-the concentration of the source of the flux (direction depending) ";
+Returns the concentration of the flux.
+
+If not overridden, it returns the concentration of the source of the
+flux (direction depending) ";
 
 %feature("docstring")
 cmf::upslope::connections::HBVlateral::get_tracer_filter "real
@@ -3292,8 +3307,10 @@ exchange_target(flux_node::ptr oldtarget, flux_node::ptr newTarget) ";
 %feature("docstring")  cmf::upslope::connections::HBVpercolation::conc
 "real conc(cmf::math::Time t, const cmf::water::solute &_Solute)
 
-Returns the concentration of the flux. If not overridden, it returns
-the concentration of the source of the flux (direction depending) ";
+Returns the concentration of the flux.
+
+If not overridden, it returns the concentration of the source of the
+flux (direction depending) ";
 
 %feature("docstring")
 cmf::upslope::connections::HBVpercolation::get_tracer_filter "real
@@ -3318,7 +3335,7 @@ short_string() const ";
 %feature("docstring") cmf::river::IChannel "
 
 Structure for the description of structural parameters of a reach
-Abstract base class for different IChannel geometries
+Abstract base class for different IChannel geometries.
 
 C++ includes: ReachType.h ";
 
@@ -3349,7 +3366,8 @@ the actual IChannel geometry. ";
 %feature("docstring")  cmf::river::IChannel::get_depth "virtual
 double get_depth(double area) const =0
 
-Calculates the actual depth of the reach using the IChannel geometry
+Calculates the actual depth of the reach using the IChannel geometry.
+
 get_depth of the reach [m]
 
 Parameters:
@@ -3362,8 +3380,9 @@ V/l, where V is the stored volume and l is the reach length ";
 
 Calculates the wetted area from a given depth using the IChannel
 geometry. In most cases use get_flux_crossection=V/l, where V is the
-stored volume and l is the reach length Wetted area of a river cross
-section [m2]
+stored volume and l is the reach length.
+
+Wetted area of a river cross section [m2]
 
 Parameters:
 -----------
@@ -3397,7 +3416,9 @@ length)} \\\\\\\\ R &=& \\\\frac A {P(d)} \\\\\\\\ P(d) &=& \\\\mbox{
 the perimeter of the wetted crosssection, a function of reach depth}
 \\\\\\\\ d(V) &=& \\\\mbox{ the depth of the reach a function of the
 volume} \\\\\\\\ \\\\Delta_z &=& \\\\frac{z_{max} - z_{min}}{l}
-\\\\mbox{ Slope of the reach} \\\\end{eqnarray*} Flow rate [m3/s]
+\\\\mbox{ Slope of the reach} \\\\end{eqnarray*}.
+
+Flow rate [m3/s]
 
 Parameters:
 -----------
@@ -3474,11 +3495,7 @@ conc(cmf::math::Time t, const cmf::water::solute &Solute) const
 
 Returns the concentration of a solute in the rainfall at time t. ";
 
-%feature("docstring")  cmf::atmosphere::IDWRainfall::RecalcFluxes "virtual bool RecalcFluxes(cmf::math::Time t)
-
-Pure flux_nodes do not influence fluxes, therefore no recalculation of
-fluxes is required by flux_node. WaterStorage overrides this, since
-state changes require an update of the fluxes ";
+%feature("docstring")  cmf::atmosphere::IDWRainfall::RecalcFluxes "virtual bool RecalcFluxes(cmf::math::Time t) ";
 
 %feature("docstring")  cmf::atmosphere::IDWRainfall::is_empty "virtual double is_empty() const
 
@@ -3523,6 +3540,7 @@ Returns the sum of all flux vectors. ";
 const
 
 Returns the sum of all fluxes (positive and negative) at time t.
+
 Single fluxes can be excluded from the calculation
 
 Parameters:
@@ -3535,10 +3553,14 @@ Without:  A flux_connection that is excluded from the waterbalance
 
 %feature("docstring")  cmf::atmosphere::IDWRainfall::get_potential "virtual real get_potential() const
 
-Returns the water potential of the node in m waterhead The base class
-water storage always returns the height of the location ";
+Returns the water potential of the node in m waterhead.
 
-%feature("docstring")  cmf::atmosphere::IDWRainfall::set_potential "virtual void set_potential(real new_potential) ";
+The base class water storage always returns the height of the location
+";
+
+%feature("docstring")  cmf::atmosphere::IDWRainfall::set_potential "virtual void set_potential(real new_potential)
+
+Sets the potential of this flux node. ";
 
 
 // File: classcmf_1_1math_1_1_implicit_euler.xml
@@ -3981,7 +4003,7 @@ gets the state variables of the integrator ";
 
 Volume height relations are functional objects, which return a height
 and a crosssectional area of a volume for different geometric bodies.
-This is the abstract base class, where the geometries derive from
+This is the abstract base class, where the geometries derive from.
 
 C++ includes: ReachType.h ";
 
@@ -4021,7 +4043,7 @@ residencetime, real exponent=1.0, real residual=0.0, real V0=1.0)
 
 Creates a kinematic wave connection. \\\\[ q = \\\\frac
 {\\\\left(\\\\frac{V}{V_0} - f_{residual}\\\\right)^\\\\beta}{t_r}
-\\\\]
+\\\\].
 
 Parameters:
 -----------
@@ -4086,8 +4108,10 @@ newTarget) ";
 %feature("docstring")  cmf::water::kinematic_wave::conc "real
 conc(cmf::math::Time t, const cmf::water::solute &_Solute)
 
-Returns the concentration of the flux. If not overridden, it returns
-the concentration of the source of the flux (direction depending) ";
+Returns the concentration of the flux.
+
+If not overridden, it returns the concentration of the source of the
+flux (direction depending) ";
 
 %feature("docstring")  cmf::water::kinematic_wave::get_tracer_filter "real get_tracer_filter()
 
@@ -4161,8 +4185,10 @@ newTarget) ";
 cmf::upslope::connections::lateral_sub_surface_flux::conc "real
 conc(cmf::math::Time t, const cmf::water::solute &_Solute)
 
-Returns the concentration of the flux. If not overridden, it returns
-the concentration of the source of the flux (direction depending) ";
+Returns the concentration of the flux.
+
+If not overridden, it returns the concentration of the source of the
+flux (direction depending) ";
 
 %feature("docstring")
 cmf::upslope::connections::lateral_sub_surface_flux::get_tracer_filter
@@ -4433,14 +4459,16 @@ canopy to atmosphere (r_ac) ";
 %feature("docstring") cmf::river::Manning "
 
 Calculates the flux between two open water bodies, using Manning's
-equation \\\\begin{eqnarray*} q_{Manning}&=& A R^{\\\\frac 2 3}
+equation.
+
+\\\\begin{eqnarray*} q_{Manning}&=& A R^{\\\\frac 2 3}
 \\\\sqrt{\\\\frac {\\\\Delta_z} n} \\\\\\\\ A &=& \\\\frac V l
 \\\\mbox{, (Crosssectional area of the wetted crossection, Volume per
 length)} \\\\\\\\ R &=& \\\\frac A {P(d)} \\\\\\\\ P(d) &=& \\\\mbox{
 the perimeter of the wetted crosssection, a function of reach depth}
 \\\\\\\\ d(V) &=& \\\\mbox{ the depth of the reach, a function of the
-volume} \\\\\\\\ \\\\Delta_z &=& \\\\frac{\\\\|z_1 - z_2\\\\|}{l}
-\\\\mbox{ Slope of the reach} n&=&\\\\mbox{Manning friction number}
+volume} \\\\\\\\ \\\\Delta_z &=& \\\\frac{|z_1 - z_2|}{l} \\\\mbox{
+Slope of the reach} \\\\\\\\ n&=&\\\\mbox{Manning friction number}
 \\\\end{eqnarray*} For the kinematic wave the slope of the river bed
 is used as slope $\\\\Delta_z = \\\\frac{|z_1 - z_2\\\\|}{l}$, while
 for the diffusive wave the slope is calculated from the actual water
@@ -4491,8 +4519,10 @@ exchange_target(flux_node::ptr oldtarget, flux_node::ptr newTarget) ";
 %feature("docstring")  cmf::river::Manning::conc "real
 conc(cmf::math::Time t, const cmf::water::solute &_Solute)
 
-Returns the concentration of the flux. If not overridden, it returns
-the concentration of the source of the flux (direction depending) ";
+Returns the concentration of the flux.
+
+If not overridden, it returns the concentration of the source of the
+flux (direction depending) ";
 
 %feature("docstring")  cmf::river::Manning::get_tracer_filter "real
 get_tracer_filter()
@@ -4513,15 +4543,17 @@ short_string() const ";
 %feature("docstring") cmf::river::Manning_Diffusive "
 
 Connecting surface water bodies using a diffusive wave. Not stable for
-deep water with small gradient \\\\begin{eqnarray*} q_{Manning}&=& A
-R^{\\\\frac 2 3} \\\\sqrt{\\\\frac {\\\\Delta_z} n} \\\\\\\\ A &=&
-\\\\frac V l \\\\mbox{, (Crosssectional area of the wetted
-crossection, Volume per length)} \\\\\\\\ R &=& \\\\frac A {P(d)}
-\\\\\\\\ P(d) &=& \\\\mbox{ the perimeter of the wetted crosssection,
-a function of reach depth} \\\\\\\\ d(V) &=& \\\\mbox{ the depth of
-the reach a function of the volume} \\\\\\\\ \\\\Delta_z =
-\\\\|\\\\frac{h_1 - h_2}{l} \\\\mbox{ Slope of the reach waterlevels}
-\\\\end{eqnarray*}
+deep water with small gradient.
+
+\\\\begin{eqnarray*} q_{Manning}&=& A R^{\\\\frac 2 3}
+\\\\sqrt{\\\\frac {\\\\Delta_z} n} \\\\\\\\ A &=& \\\\frac V l
+\\\\mbox{, (Crosssectional area of the wetted crossection, Volume per
+length)} \\\\\\\\ R &=& \\\\frac A {P(d)} \\\\\\\\ P(d) &=& \\\\mbox{
+the perimeter of the wetted crosssection, a function of reach depth}
+\\\\\\\\ d(V) &=& \\\\mbox{ the depth of the reach a function of the
+volume} \\\\\\\\ \\\\Delta_z = \\\\|\\\\frac{h_1 - h_2}{l} \\\\mbox{
+Slope of the reach waterlevels} \\\\\\\\ n&=&\\\\mbox{Manning friction
+number} \\\\end{eqnarray*}
 
 C++ includes: ManningConnection.h ";
 
@@ -4573,8 +4605,10 @@ newTarget) ";
 %feature("docstring")  cmf::river::Manning_Diffusive::conc "real
 conc(cmf::math::Time t, const cmf::water::solute &_Solute)
 
-Returns the concentration of the flux. If not overridden, it returns
-the concentration of the source of the flux (direction depending) ";
+Returns the concentration of the flux.
+
+If not overridden, it returns the concentration of the source of the
+flux (direction depending) ";
 
 %feature("docstring")
 cmf::river::Manning_Diffusive::get_tracer_filter "real
@@ -4595,14 +4629,17 @@ set_tracer_filter(real value) ";
 %feature("docstring") cmf::river::Manning_Kinematic "
 
 Connecting surface water bodies using a kinematic wave. Note the fixed
-gradient \\\\begin{eqnarray*} q_{Manning}&=& A R^{\\\\frac 2 3}
+gradient.
+
+\\\\begin{eqnarray*} q_{Manning}&=& A R^{\\\\frac 2 3}
 \\\\sqrt{\\\\frac {\\\\Delta_z} n} \\\\\\\\ A &=& \\\\frac V l
 \\\\mbox{, (Crosssectional area of the wetted crossection, Volume per
 length)} \\\\\\\\ R &=& \\\\frac A {P(d)} \\\\\\\\ P(d) &=& \\\\mbox{
 the perimeter of the wetted crosssection, a function of reach depth}
 \\\\\\\\ d(V) &=& \\\\mbox{ the depth of the reach a function of the
 volume} \\\\\\\\ \\\\Delta_z &=& \\\\frac{\\\\|z_1 - z_2\\\\|}{l}
-\\\\mbox{ Slope of the reach} \\\\end{eqnarray*}
+\\\\mbox{ Slope of the reach} \\\\\\\\ n&=&\\\\mbox{Manning friction
+number} \\\\end{eqnarray*}
 
 C++ includes: ManningConnection.h ";
 
@@ -4654,8 +4691,10 @@ newTarget) ";
 %feature("docstring")  cmf::river::Manning_Kinematic::conc "real
 conc(cmf::math::Time t, const cmf::water::solute &_Solute)
 
-Returns the concentration of the flux. If not overridden, it returns
-the concentration of the source of the flux (direction depending) ";
+Returns the concentration of the flux.
+
+If not overridden, it returns the concentration of the source of the
+flux (direction depending) ";
 
 %feature("docstring")
 cmf::river::Manning_Kinematic::get_tracer_filter "real
@@ -4759,8 +4798,10 @@ exchange_target(flux_node::ptr oldtarget, flux_node::ptr newTarget) ";
 cmf::upslope::connections::MatrixInfiltration::conc "real
 conc(cmf::math::Time t, const cmf::water::solute &_Solute)
 
-Returns the concentration of the flux. If not overridden, it returns
-the concentration of the source of the flux (direction depending) ";
+Returns the concentration of the flux.
+
+If not overridden, it returns the concentration of the source of the
+flux (direction depending) ";
 
 %feature("docstring")
 cmf::upslope::connections::MatrixInfiltration::get_tracer_filter "real get_tracer_filter()
@@ -4807,7 +4848,8 @@ actual IChannel geometry. ";
 %feature("docstring")  cmf::river::MeanChannel::get_depth "double
 get_depth(double area) const
 
-Calculates the actual depth of the reach using the IChannel geometry
+Calculates the actual depth of the reach using the IChannel geometry.
+
 get_depth of the reach [m]
 
 Parameters:
@@ -4820,8 +4862,9 @@ V/l, where V is the stored volume and l is the reach length ";
 
 Calculates the wetted area from a given depth using the IChannel
 geometry. In most cases use get_flux_crossection=V/l, where V is the
-stored volume and l is the reach length Wetted area of a river cross
-section [m2]
+stored volume and l is the reach length.
+
+Wetted area of a river cross section [m2]
 
 Parameters:
 -----------
@@ -4866,7 +4909,9 @@ length)} \\\\\\\\ R &=& \\\\frac A {P(d)} \\\\\\\\ P(d) &=& \\\\mbox{
 the perimeter of the wetted crosssection, a function of reach depth}
 \\\\\\\\ d(V) &=& \\\\mbox{ the depth of the reach a function of the
 volume} \\\\\\\\ \\\\Delta_z &=& \\\\frac{z_{max} - z_{min}}{l}
-\\\\mbox{ Slope of the reach} \\\\end{eqnarray*} Flow rate [m3/s]
+\\\\mbox{ Slope of the reach} \\\\end{eqnarray*}.
+
+Flow rate [m3/s]
 
 Parameters:
 -----------
@@ -5400,15 +5445,9 @@ conc(cmf::math::Time t, const cmf::water::solute &_Solute) const
 Returns the solute concentrations of the flux at a given time. ";
 
 %feature("docstring")  cmf::water::NeumannBoundary::is_empty "double
-is_empty() const
+is_empty() const ";
 
-Returns true if the node has no water. ";
-
-%feature("docstring")  cmf::water::NeumannBoundary::RecalcFluxes "bool RecalcFluxes(cmf::math::Time t)
-
-Pure flux_nodes do not influence fluxes, therefore no recalculation of
-fluxes is required by flux_node. WaterStorage overrides this, since
-state changes require an update of the fluxes ";
+%feature("docstring")  cmf::water::NeumannBoundary::RecalcFluxes "bool RecalcFluxes(cmf::math::Time t) ";
 
 %feature("docstring")  cmf::water::NeumannBoundary::connect_to "void
 connect_to(cmf::water::flux_node::ptr target) ";
@@ -5474,6 +5513,7 @@ Returns the sum of all flux vectors. ";
 const
 
 Returns the sum of all fluxes (positive and negative) at time t.
+
 Single fluxes can be excluded from the calculation
 
 Parameters:
@@ -5486,16 +5526,20 @@ Without:  A flux_connection that is excluded from the waterbalance
 
 %feature("docstring")  cmf::water::NeumannBoundary::get_potential "virtual real get_potential() const
 
-Returns the water potential of the node in m waterhead The base class
-water storage always returns the height of the location ";
+Returns the water potential of the node in m waterhead.
 
-%feature("docstring")  cmf::water::NeumannBoundary::set_potential "virtual void set_potential(real new_potential) ";
+The base class water storage always returns the height of the location
+";
+
+%feature("docstring")  cmf::water::NeumannBoundary::set_potential "virtual void set_potential(real new_potential)
+
+Sets the potential of this flux node. ";
 
 
 // File: classcmf_1_1water_1_1_neumann_boundary__list.xml
 %feature("docstring") cmf::water::NeumannBoundary_list "
 
-Provides fast access to Neumann boundaries for flux update
+Provides fast access to Neumann boundaries for flux update.
 
 If many Neumann boundary conditions are present in a project, a fast
 data exchange to update the fluxes might be needed.
@@ -5547,7 +5591,7 @@ global_water_balance(cmf::math::Time t) const
 
 Returns the sum of the water balances of the nodes
 \\\\[\\\\sigma_{global} =
-\\\\sum_{i=0}^N{\\\\sum_{j=0}^{C_i}{q_{ij}(t)}} \\\\]
+\\\\sum_{i=0}^N{\\\\sum_{j=0}^{C_i}{q_{ij}(t)}} \\\\].
 
 Replaces slow Python code like: ";
 
@@ -5555,13 +5599,15 @@ Replaces slow Python code like: ";
 "cmf::math::num_array water_balance(cmf::math::Time t) const
 
 Returns the water balance of each vector as a vector \\\\[ \\\\sigma_i
-= \\\\sum_{j=0}^{C_i}{q_{ij}(t)} \\\\]
+= \\\\sum_{j=0}^{C_i}{q_{ij}(t)} \\\\].
 
 Replaces slow Python code like: ";
 
 
 // File: classcmf_1_1water_1_1_neumann_flux.xml
 %feature("docstring") cmf::water::NeumannFlux "
+
+Connection between Neumann-boundary and a flux node.
 
 This flux_connection is created, when connecting a Neumann boundary
 condition with a state variable using Neumann::connect_to
@@ -5614,8 +5660,10 @@ exchange_target(flux_node::ptr oldtarget, flux_node::ptr newTarget) ";
 %feature("docstring")  cmf::water::NeumannFlux::conc "real
 conc(cmf::math::Time t, const cmf::water::solute &_Solute)
 
-Returns the concentration of the flux. If not overridden, it returns
-the concentration of the source of the flux (direction depending) ";
+Returns the concentration of the flux.
+
+If not overridden, it returns the concentration of the source of the
+flux (direction depending) ";
 
 %feature("docstring")  cmf::water::NeumannFlux::get_tracer_filter "real get_tracer_filter()
 
@@ -5631,7 +5679,7 @@ A value ranging from 0 to 1. ";
 // File: classcmf_1_1water_1_1node__list.xml
 %feature("docstring") cmf::water::node_list "
 
-A collection of nodes for fast access of the waterbalance
+A collection of nodes for fast access of the waterbalance.
 
 In setups with many storages and rather fast computations, the speed
 of data access for output generation can take a high portion of the
@@ -5690,7 +5738,7 @@ Removes a flux node from the list, returns true if successful. ";
 %feature("docstring")  cmf::water::node_list::set_potentials "int
 set_potentials(const cmf::math::num_array &potentials)
 
-Sets the potentials of the node_lists
+Sets the potentials of the node_list.
 
 If nodes do not have changeable potentials, they are skipped silently
 The number of nodes with changed potential ";
@@ -5701,7 +5749,7 @@ Returns the potential of the nodes. ";
 
 %feature("docstring")  cmf::water::node_list::global_water_balance "real global_water_balance(cmf::math::Time t) const
 
-Returns the sum of the water balances of the nodes
+Returns the sum of the water balances of the nodes.
 
 \\\\[\\\\sigma_{global} =
 \\\\sum_{i=0}^N{\\\\sum_{j=0}^{C_i}{q_{ij}(t)}} \\\\]
@@ -5710,7 +5758,7 @@ Replaces slow Python code like: ";
 
 %feature("docstring")  cmf::water::node_list::water_balance "cmf::math::num_array water_balance(cmf::math::Time t) const
 
-Returns the water balance of each vector as a vector
+Returns the water balance of each vector as a vector.
 
 \\\\[ \\\\sigma_i = \\\\sum_{j=0}^{C_i}{q_{ij}(t)} \\\\]
 
@@ -5959,8 +6007,10 @@ exchange_target(flux_node::ptr oldtarget, flux_node::ptr newTarget) ";
 
 %feature("docstring")  cmf::upslope::connections::OHDISflow::conc "real conc(cmf::math::Time t, const cmf::water::solute &_Solute)
 
-Returns the concentration of the flux. If not overridden, it returns
-the concentration of the source of the flux (direction depending) ";
+Returns the concentration of the flux.
+
+If not overridden, it returns the concentration of the source of the
+flux (direction depending) ";
 
 %feature("docstring")
 cmf::upslope::connections::OHDISflow::get_tracer_filter "real
@@ -5984,21 +6034,15 @@ short_string() const ";
 %feature("docstring") cmf::river::OpenWaterStorage "
 
 An open water body. The potential is calculated from the stored water
-using a water table function
+using a water table function.
 
 C++ includes: OpenWaterStorage.h ";
 
 /*  Overrides of flux_node  */
 
-%feature("docstring")  cmf::river::OpenWaterStorage::RecalcFluxes "virtual bool RecalcFluxes(cmf::math::Time t)
+%feature("docstring")  cmf::river::OpenWaterStorage::RecalcFluxes "virtual bool RecalcFluxes(cmf::math::Time t) ";
 
-Pure flux_nodes do not influence fluxes, therefore no recalculation of
-fluxes is required by flux_node. WaterStorage overrides this, since
-state changes require an update of the fluxes ";
-
-%feature("docstring")  cmf::river::OpenWaterStorage::is_empty "virtual double is_empty() const
-
-Returns true if the node has no water. ";
+%feature("docstring")  cmf::river::OpenWaterStorage::is_empty "virtual double is_empty() const ";
 
 %feature("docstring")
 cmf::river::OpenWaterStorage::get_height_function "virtual const
@@ -6024,10 +6068,7 @@ wet_area() const
 Returns the exposed surface area in m2. ";
 
 %feature("docstring")  cmf::river::OpenWaterStorage::conc "real
-conc(cmf::math::Time t, const cmf::water::solute &solute) const
-
-Returns the water quality of the flux_node, if it is not overridden
-this is the mix of the incoming fluxes. ";
+conc(cmf::math::Time t, const cmf::water::solute &solute) const ";
 
 %feature("docstring")  cmf::river::OpenWaterStorage::get_abs_errtol "real get_abs_errtol(real rel_errtol) const ";
 
@@ -6075,10 +6116,7 @@ Sets a new concentration. ";
 
 Returns the volume of water in this storage in m3 ";
 
-%feature("docstring")  cmf::river::OpenWaterStorage::get_potential "virtual real get_potential() const
-
-Returns the water potential of the node in m waterhead The base class
-water storage always returns the height of the location ";
+%feature("docstring")  cmf::river::OpenWaterStorage::get_potential "virtual real get_potential() const ";
 
 %feature("docstring")  cmf::river::OpenWaterStorage::set_volume "virtual void set_volume(real newwatercontent)
 
@@ -6132,6 +6170,7 @@ Returns the sum of all flux vectors. ";
 const
 
 Returns the sum of all fluxes (positive and negative) at time t.
+
 Single fluxes can be excluded from the calculation
 
 Parameters:
@@ -6199,8 +6238,10 @@ exchange_target(flux_node::ptr oldtarget, flux_node::ptr newTarget) ";
 
 %feature("docstring")  cmf::upslope::ET::PenmanEvaporation::conc "real conc(cmf::math::Time t, const cmf::water::solute &_Solute)
 
-Returns the concentration of the flux. If not overridden, it returns
-the concentration of the source of the flux (direction depending) ";
+Returns the concentration of the flux.
+
+If not overridden, it returns the concentration of the source of the
+flux (direction depending) ";
 
 %feature("docstring")
 cmf::upslope::ET::PenmanEvaporation::get_tracer_filter "real
@@ -6309,8 +6350,10 @@ exchange_target(flux_node::ptr oldtarget, flux_node::ptr newTarget) ";
 %feature("docstring")  cmf::upslope::ET::PenmanMonteithET::conc "real
 conc(cmf::math::Time t, const cmf::water::solute &_Solute)
 
-Returns the concentration of the flux. If not overridden, it returns
-the concentration of the source of the flux (direction depending) ";
+Returns the concentration of the flux.
+
+If not overridden, it returns the concentration of the source of the
+flux (direction depending) ";
 
 %feature("docstring")
 cmf::upslope::ET::PenmanMonteithET::get_tracer_filter "real
@@ -6398,7 +6441,9 @@ length)} \\\\\\\\ R &=& \\\\frac A {P(d)} \\\\\\\\ P(d) &=& \\\\mbox{
 the perimeter of the wetted crosssection, a function of reach depth}
 \\\\\\\\ d(V) &=& \\\\mbox{ the depth of the reach a function of the
 volume} \\\\\\\\ \\\\Delta_z &=& \\\\frac{z_{max} - z_{min}}{l}
-\\\\mbox{ Slope of the reach} \\\\end{eqnarray*} Flow rate [m3/s]
+\\\\mbox{ Slope of the reach} \\\\end{eqnarray*}.
+
+Flow rate [m3/s]
 
 Parameters:
 -----------
@@ -6516,7 +6561,7 @@ void do_action(Time t, bool use_OpenMP=true)=0 ";
 // File: classcmf_1_1river_1_1_prism.xml
 %feature("docstring") cmf::river::Prism "
 
-Returns the height of a volume in a Prism with a defined base area.
+the height of a volume in a Prism with a defined base area
 
 C++ includes: ReachType.h ";
 
@@ -6549,8 +6594,8 @@ C++ includes: project.h ";
 
 %feature("docstring")  cmf::project::get_states "cmf::math::StateVariableList get_states()
 
-Add the state variables, owned by an object derived from
-StateVariableOwner, to the given vector. ";
+Returns all state variables of the project. Mostly for internal use.
+";
 
 %feature("docstring")  cmf::project::remove_node "int
 remove_node(cmf::water::flux_node::ptr node)
@@ -6562,25 +6607,145 @@ repository of the project. NOTE: If you have other references to this
 node, the node is not deleted. If you are creating a new solver, the
 node will not be part of the solver. ";
 
-%feature("docstring")  cmf::project::get_nodes "const
-cmf::water::node_list& get_nodes() const ";
-
 %feature("docstring")  cmf::project::use_IDW_meteo "void
-use_IDW_meteo(double z_weight=0, double power=2) ";
+use_IDW_meteo(double z_weight=0, double power=2)
+
+Uses IDW interpolation to generate meterological data for each cell of
+project.
+
+Creates a meteo-data source for each cell, using spatial interpolated
+data from all meteorological stations of the project using Inverse
+Distance Weighted (IDW) interpolation. The meteorolgical value f is
+calculated with IDW for position x,y,z and time t as follows:
+\\\\begin{eqnarray*} f(x,y,z,t) &=& \\\\sum^N_{i=1}{f_i(t) w_i(x,y,z)}
+\\\\\\\\ w_i(x,y,z) &=&
+\\\\frac{d_i(x,y,z)^{-p}}{\\\\sum^N_{j=0}{d_j(x,y,z)^{-p}}} \\\\\\\\
+d_i(x,y,z) &=& w_z \\\\left|z-z_i\\\\right| +
+\\\\sqrt{\\\\left(x-x_i\\\\right)^2 + \\\\left(y-y_i\\\\right)^2}
+\\\\end{eqnarray*}  $N$ is the number of stations
+
+$f_i(t)$ the meteorological value at time t, eg. Temperature, Humidity
+
+$w_i$ is the weight of station i
+
+$d_i$ is the distance from x,y,z to station i
+
+$p$ the power of the weighting function, usually 2.
+
+$x_i,y_i,z_i$ is the position of station i in space
+
+$w_z$ is a factor to weight the vertical distance between stations and
+the cell. 0 results in a pure horizontal interpolation (normal IDW).
+If $w_z=1$, height difference is as important as horizontal distance,
+and with $w_z>1$ the height difference is weighted more important than
+horizontal distance See:  IDW_Meteorology
+
+Parameters:
+-----------
+
+z_weight:   $w_z$ the weight of height difference between cell and
+station
+
+power:  the power of the distance weight ";
 
 %feature("docstring")  cmf::project::use_nearest_meteo "void
-use_nearest_meteo(double z_weight=0) ";
+use_nearest_meteo(double z_weight=0)
+
+Connects all cells of the project with its nearest meteorological
+station.
+
+Distance is calculated as follows: \\\\[d_i(x,y,z) = w_z
+\\\\left|z-z_i\\\\right| + \\\\sqrt{\\\\left(x-x_i\\\\right)^2 +
+\\\\left(y-y_i\\\\right)^2} \\\\]  $d_i$ is the distance from x,y,z to
+station i
+
+$p$ the power of the weighting function, usually 2.
+
+$x_i,y_i,z_i$ is the position of station i in space
+
+$w_z$ is a factor to weight the vertical distance between stations and
+the cell. 0 results in a pure horizontal interpolation (normal IDW).
+If $w_z=1$, height difference is as important as horizontal distance,
+and with $w_z>1$ the height difference is weighted more important than
+horizontal distance
+
+Parameters:
+-----------
+
+z_weight:   $w_z$ the weight of height difference between cell and
+station ";
 
 %feature("docstring")  cmf::project::use_IDW_rainfall "void
-use_IDW_rainfall(double z_weight=0, double power=2) ";
+use_IDW_rainfall(double z_weight=0, double power=2)
+
+Uses IDW interpolation to generate rainfall data for each cell of
+project.
+
+Creates a rainfall-data source for each cell, using spatial
+interpolated data from all meteorological stations of the project
+using Inverse Distance Weighted (IDW) interpolation. The rainfall
+intensity P is calculated with IDW for position x,y,z and time t as
+follows: \\\\begin{eqnarray*} P(x,y,z,t) &=& \\\\sum^N_{i=1}{P_i(t)
+w_i(x,y,z)} \\\\\\\\ w_i(x,y,z) &=&
+\\\\frac{d_i(x,y,z)^{-p}}{\\\\sum^N_{j=0}{d_j(x,y,z)^{-p}}} \\\\\\\\
+d_i(x,y,z) &=& w_z \\\\left|z-z_i\\\\right| +
+\\\\sqrt{\\\\left(x-x_i\\\\right)^2 + \\\\left(y-y_i\\\\right)^2}
+\\\\end{eqnarray*}  $N$ is the number of stations
+
+$P_i(t)$ the meteorological value at time t, eg. Temperature, Humidity
+
+$w_i$ is the weight of station i
+
+$d_i$ is the distance from x,y,z to station i
+
+$p$ the power of the weighting function, usually 2.
+
+$x_i,y_i,z_i$ is the position of station i in space
+
+$w_z$ is a factor to weight the vertical distance between stations and
+the cell. 0 results in a pure horizontal interpolation (normal IDW).
+If $w_z=1$, height difference is as important as horizontal distance,
+and with $w_z>1$ the height difference is weighted more important than
+horizontal distance See:  IDW_Meteorology
+
+Parameters:
+-----------
+
+z_weight:   $w_z$ the weight of height difference between cell and
+station
+
+power:  the power of the distance weight ";
 
 %feature("docstring")  cmf::project::use_nearest_rainfall "void
-use_nearest_rainfall(double z_weight=0) ";
+use_nearest_rainfall(double z_weight=0)
+
+Connects all cells of the project with its nearest rainfall station.
+
+Distance is calculated as follows: \\\\[d_i(x,y,z) = w_z
+\\\\left|z-z_i\\\\right| + \\\\sqrt{\\\\left(x-x_i\\\\right)^2 +
+\\\\left(y-y_i\\\\right)^2} \\\\]  $d_i$ is the distance from x,y,z to
+station i
+
+$p$ the power of the weighting function, usually 2.
+
+$x_i,y_i,z_i$ is the position of station i in space
+
+$w_z$ is a factor to weight the vertical distance between stations and
+the cell. 0 results in a pure horizontal interpolation (normal IDW).
+If $w_z=1$, height difference is as important as horizontal distance,
+and with $w_z>1$ the height difference is weighted more important than
+horizontal distance
+
+Parameters:
+-----------
+
+z_weight:   $w_z$ the weight of height difference between cell and
+station ";
 
 %feature("docstring")  cmf::project::get_cells "const
 upslope::cell_vector& get_cells() const
 
-Returns the vector of cells in the project. ";
+Returns the cells in the project. ";
 
 %feature("docstring")  cmf::project::get_cell "upslope::Cell&
 get_cell(int index)
@@ -6594,7 +6759,13 @@ The number of cells in the project. ";
 %feature("docstring")  cmf::project::project "project(std::string
 solute_names=\"\")
 
-Creates a new project. ";
+Creates a new project.
+
+Parameters:
+-----------
+
+solute_names:  A string representing the names of the solutes to be
+used in the project. Sepereate solute names with space. ";
 
 %feature("docstring")  cmf::project::~project "~project() ";
 
@@ -6602,32 +6773,85 @@ Creates a new project. ";
 NewCell(double x, double y, double z, double area, bool
 with_surfacewater=false)
 
-Creates a new cell. ";
+Creates a new cell A new cell, owned by the project
+
+Parameters:
+-----------
+
+x:  y:  z:  Position of the cell center in project coordiantes (m)
+
+area:  Area of the cell in m^2
+
+with_surfacewater:  If true, the cell will own a surfacewater storage
+upon creation ";
 
 %feature("docstring")  cmf::project::NewOutlet "cmf::water::DirichletBoundary::ptr NewOutlet(std::string name, double
 x, double y, double z)
 
 Creates a new Dirichlet boundary condition and adds it to the list of
-outlets The potential of the Dirichlet boundary equals p.z, but can be
-changed ";
+outlets The potential of the Dirichlet boundary equals z, but can be
+changed
+
+Parameters:
+-----------
+
+name:  Name of the boundary condition for output
+
+x:  y:  z:  Position of the boundary condition in project coordinates
+";
 
 %feature("docstring")  cmf::project::NewStorage "cmf::water::WaterStorage::ptr NewStorage(std::string name, double x,
 double y, double z)
 
 Creates a new generic water storage at position x,y,z. The storage is
-added to the project nodes. ";
+added to the project nodes A new water storage, owned by the project
+
+Parameters:
+-----------
+
+name:  Name of the generic water storage for output
+
+x:  y:  z:  Position of the generic water storage condition in project
+coordinates ";
 
 %feature("docstring")  cmf::project::NewOpenStorage "cmf::river::OpenWaterStorage::ptr NewOpenStorage(std::string name,
 double x, double y, double z, double area)
 
 Creates a new open water storage with a prism geometry. The open water
-storage is added to the project nodes. ";
+storage is added to the project nodes A new open water storage, owned
+by the project
+
+Parameters:
+-----------
+
+name:  Name of the open water storage for output
+
+x:  y:  z:  Position of the open water storage in project coordinates
+
+area:  Surface area of the open water storage ";
 
 %feature("docstring")  cmf::project::NewReach "cmf::river::Reach::ptr
 NewReach(double x, double y, double z, double length, char Type='T',
 double width=0.5, double depth=0.1, bool diffusive=false)
 
-Creates a new reach. ";
+Creates a new reach A new reach, owned by the project
+
+Parameters:
+-----------
+
+x:  y:  z:  Position of the reach in project coordinates
+
+length:  lenght of the reach in m
+
+Type:  Geometry of the river crosssection. Possible values: T
+(Triangular), R (Rectangular), S (SWAT like trapzeoid), P (pipe)
+
+width:  Width of the channel between banks in m
+
+depth:  Depth of the channel in m
+
+diffusive:  If true, this reach uses by default a diffusive wave
+connection ";
 
 %feature("docstring")  cmf::project::get_reach "cmf::river::Reach::ptr get_reach(int index)
 
@@ -6638,9 +6862,18 @@ const
 
 Returns the number of reaches in this project. ";
 
+%feature("docstring")  cmf::project::get_node "cmf::water::flux_node::ptr get_node(int index)
+
+Returns the node from the project nodes at index. ";
+
+%feature("docstring")  cmf::project::node_count "int node_count()
+const
+
+Returns the number of nodes saved with this project. ";
+
 %feature("docstring")  cmf::project::get_storages "cmf::water::node_list get_storages()
 
-Returns any storages of this project. ";
+Returns a list of all storages of this project. ";
 
 
 // File: classcmf_1_1upslope_1_1connections_1_1_rainfall.xml
@@ -6698,8 +6931,10 @@ exchange_target(flux_node::ptr oldtarget, flux_node::ptr newTarget) ";
 
 %feature("docstring")  cmf::upslope::connections::Rainfall::conc "real conc(cmf::math::Time t, const cmf::water::solute &_Solute)
 
-Returns the concentration of the flux. If not overridden, it returns
-the concentration of the source of the flux (direction depending) ";
+Returns the concentration of the flux.
+
+If not overridden, it returns the concentration of the source of the
+flux (direction depending) ";
 
 %feature("docstring")
 cmf::upslope::connections::Rainfall::get_tracer_filter "real
@@ -6795,11 +7030,7 @@ Returns the concentration of a solute in the rainfall at time t. ";
 
 %feature("docstring")
 cmf::atmosphere::RainfallStationReference::RecalcFluxes "virtual bool
-RecalcFluxes(cmf::math::Time t)
-
-Pure flux_nodes do not influence fluxes, therefore no recalculation of
-fluxes is required by flux_node. WaterStorage overrides this, since
-state changes require an update of the fluxes ";
+RecalcFluxes(cmf::math::Time t) ";
 
 %feature("docstring")
 cmf::atmosphere::RainfallStationReference::is_empty "virtual double
@@ -6860,6 +7091,7 @@ waterbalance(cmf::math::Time t, const flux_connection *Without=0)
 const
 
 Returns the sum of all fluxes (positive and negative) at time t.
+
 Single fluxes can be excluded from the calculation
 
 Parameters:
@@ -6874,12 +7106,16 @@ Without:  A flux_connection that is excluded from the waterbalance
 cmf::atmosphere::RainfallStationReference::get_potential "virtual
 real get_potential() const
 
-Returns the water potential of the node in m waterhead The base class
-water storage always returns the height of the location ";
+Returns the water potential of the node in m waterhead.
+
+The base class water storage always returns the height of the location
+";
 
 %feature("docstring")
 cmf::atmosphere::RainfallStationReference::set_potential "virtual
-void set_potential(real new_potential) ";
+void set_potential(real new_potential)
+
+Sets the potential of this flux node. ";
 
 
 // File: classcmf_1_1atmosphere_1_1_rain_source.xml
@@ -6899,11 +7135,7 @@ real conc(cmf::math::Time t, const cmf::water::solute &Solute) const
 
 Returns the concentration of a solute in the rainfall at time t. ";
 
-%feature("docstring")  cmf::atmosphere::RainSource::RecalcFluxes "virtual bool RecalcFluxes(cmf::math::Time t)
-
-Pure flux_nodes do not influence fluxes, therefore no recalculation of
-fluxes is required by flux_node. WaterStorage overrides this, since
-state changes require an update of the fluxes ";
+%feature("docstring")  cmf::atmosphere::RainSource::RecalcFluxes "virtual bool RecalcFluxes(cmf::math::Time t) ";
 
 %feature("docstring")  cmf::atmosphere::RainSource::is_empty "virtual
 double is_empty() const
@@ -6949,6 +7181,7 @@ Returns the sum of all flux vectors. ";
 const
 
 Returns the sum of all fluxes (positive and negative) at time t.
+
 Single fluxes can be excluded from the calculation
 
 Parameters:
@@ -6961,16 +7194,21 @@ Without:  A flux_connection that is excluded from the waterbalance
 
 %feature("docstring")  cmf::atmosphere::RainSource::get_potential "virtual real get_potential() const
 
-Returns the water potential of the node in m waterhead The base class
-water storage always returns the height of the location ";
+Returns the water potential of the node in m waterhead.
 
-%feature("docstring")  cmf::atmosphere::RainSource::set_potential "virtual void set_potential(real new_potential) ";
+The base class water storage always returns the height of the location
+";
+
+%feature("docstring")  cmf::atmosphere::RainSource::set_potential "virtual void set_potential(real new_potential)
+
+Sets the potential of this flux node. ";
 
 
 // File: classcmf_1_1river_1_1_reach.xml
 %feature("docstring") cmf::river::Reach "
 
-A reach is a specialization of an open water storage.
+A reach represents the section of a riover and is a specialization of
+an open water storage.
 
 The OpenWaterStorage attributes and methods are extended by
 topological features, for the creation of a network of reaches.
@@ -6980,16 +7218,10 @@ C++ includes: Reach.h ";
 /*  Overrides of flux_node  */
 
 %feature("docstring")  cmf::river::Reach::RecalcFluxes "virtual bool
-RecalcFluxes(cmf::math::Time t)
-
-Pure flux_nodes do not influence fluxes, therefore no recalculation of
-fluxes is required by flux_node. WaterStorage overrides this, since
-state changes require an update of the fluxes ";
+RecalcFluxes(cmf::math::Time t) ";
 
 %feature("docstring")  cmf::river::Reach::is_empty "virtual double
-is_empty() const
-
-Returns true if the node has no water. ";
+is_empty() const ";
 
 %feature("docstring")  cmf::river::Reach::get_reachtype "Channel
 get_reachtype() const
@@ -7017,7 +7249,9 @@ set_outlet(cmf::water::flux_node::ptr outlet)
 Connects the reach to an outlet, e.g. a boundary condition. ";
 
 %feature("docstring")  cmf::river::Reach::set_dead_end "void
-set_dead_end() ";
+set_dead_end()
+
+Deletes any downstream connection. ";
 
 %feature("docstring")  cmf::river::Reach::set_downstream "void
 set_downstream(ptr new_downstream)
@@ -7098,10 +7332,7 @@ const
 Returns the exposed surface area in m2. ";
 
 %feature("docstring")  cmf::river::Reach::conc "real
-conc(cmf::math::Time t, const cmf::water::solute &solute) const
-
-Returns the water quality of the flux_node, if it is not overridden
-this is the mix of the incoming fluxes. ";
+conc(cmf::math::Time t, const cmf::water::solute &solute) const ";
 
 %feature("docstring")  cmf::river::Reach::conc "real conc(const
 cmf::water::solute &_Solute) const
@@ -7150,10 +7381,7 @@ get_volume() const
 Returns the volume of water in this storage in m3 ";
 
 %feature("docstring")  cmf::river::Reach::get_potential "virtual real
-get_potential() const
-
-Returns the water potential of the node in m waterhead The base class
-water storage always returns the height of the location ";
+get_potential() const ";
 
 %feature("docstring")  cmf::river::Reach::set_volume "virtual void
 set_volume(real newwatercontent)
@@ -7212,6 +7440,7 @@ waterbalance(cmf::math::Time t, const flux_connection *Without=0)
 const
 
 Returns the sum of all fluxes (positive and negative) at time t.
+
 Single fluxes can be excluded from the calculation
 
 Parameters:
@@ -7331,7 +7560,9 @@ length)} \\\\\\\\ R &=& \\\\frac A {P(d)} \\\\\\\\ P(d) &=& \\\\mbox{
 the perimeter of the wetted crosssection, a function of reach depth}
 \\\\\\\\ d(V) &=& \\\\mbox{ the depth of the reach a function of the
 volume} \\\\\\\\ \\\\Delta_z &=& \\\\frac{z_{max} - z_{min}}{l}
-\\\\mbox{ Slope of the reach} \\\\end{eqnarray*} Flow rate [m3/s]
+\\\\mbox{ Slope of the reach} \\\\end{eqnarray*}.
+
+Flow rate [m3/s]
 
 Parameters:
 -----------
@@ -7480,8 +7711,10 @@ exchange_target(flux_node::ptr oldtarget, flux_node::ptr newTarget) ";
 
 %feature("docstring")  cmf::upslope::connections::Richards::conc "real conc(cmf::math::Time t, const cmf::water::solute &_Solute)
 
-Returns the concentration of the flux. If not overridden, it returns
-the concentration of the source of the flux (direction depending) ";
+Returns the concentration of the flux.
+
+If not overridden, it returns the concentration of the source of the
+flux (direction depending) ";
 
 %feature("docstring")
 cmf::upslope::connections::Richards::get_tracer_filter "real
@@ -7574,8 +7807,10 @@ exchange_target(flux_node::ptr oldtarget, flux_node::ptr newTarget) ";
 cmf::upslope::connections::Richards_lateral::conc "real
 conc(cmf::math::Time t, const cmf::water::solute &_Solute)
 
-Returns the concentration of the flux. If not overridden, it returns
-the concentration of the source of the flux (direction depending) ";
+Returns the concentration of the flux.
+
+If not overridden, it returns the concentration of the source of the
+flux (direction depending) ";
 
 %feature("docstring")
 cmf::upslope::connections::Richards_lateral::get_tracer_filter "real
@@ -7942,8 +8177,10 @@ newTarget) ";
 cmf::upslope::connections::SimpleTindexSnowMelt::conc "real
 conc(cmf::math::Time t, const cmf::water::solute &_Solute)
 
-Returns the concentration of the flux. If not overridden, it returns
-the concentration of the source of the flux (direction depending) ";
+Returns the concentration of the flux.
+
+If not overridden, it returns the concentration of the source of the
+flux (direction depending) ";
 
 %feature("docstring")
 cmf::upslope::connections::SimpleTindexSnowMelt::get_tracer_filter "real get_tracer_filter()
@@ -8033,8 +8270,10 @@ exchange_target(flux_node::ptr oldtarget, flux_node::ptr newTarget) ";
 %feature("docstring")  cmf::upslope::connections::SimplRichards::conc
 "real conc(cmf::math::Time t, const cmf::water::solute &_Solute)
 
-Returns the concentration of the flux. If not overridden, it returns
-the concentration of the source of the flux (direction depending) ";
+Returns the concentration of the flux.
+
+If not overridden, it returns the concentration of the source of the
+flux (direction depending) ";
 
 %feature("docstring")
 cmf::upslope::connections::SimplRichards::get_tracer_filter "real
@@ -8111,8 +8350,10 @@ exchange_target(flux_node::ptr oldtarget, flux_node::ptr newTarget) ";
 %feature("docstring")  cmf::upslope::ET::snow_evaporation::conc "real
 conc(cmf::math::Time t, const cmf::water::solute &_Solute)
 
-Returns the concentration of the flux. If not overridden, it returns
-the concentration of the source of the flux (direction depending) ";
+Returns the concentration of the flux.
+
+If not overridden, it returns the concentration of the source of the
+flux (direction depending) ";
 
 %feature("docstring")
 cmf::upslope::ET::snow_evaporation::get_tracer_filter "real
@@ -8200,8 +8441,10 @@ exchange_target(flux_node::ptr oldtarget, flux_node::ptr newTarget) ";
 
 %feature("docstring")  cmf::upslope::connections::Snowfall::conc "real conc(cmf::math::Time t, const cmf::water::solute &_Solute)
 
-Returns the concentration of the flux. If not overridden, it returns
-the concentration of the source of the flux (direction depending) ";
+Returns the concentration of the flux.
+
+If not overridden, it returns the concentration of the source of the
+flux (direction depending) ";
 
 %feature("docstring")
 cmf::upslope::connections::Snowfall::get_tracer_filter "real
@@ -8277,8 +8520,10 @@ exchange_target(flux_node::ptr oldtarget, flux_node::ptr newTarget) ";
 %feature("docstring")  cmf::upslope::ET::soil_evaporation::conc "real
 conc(cmf::math::Time t, const cmf::water::solute &_Solute)
 
-Returns the concentration of the flux. If not overridden, it returns
-the concentration of the source of the flux (direction depending) ";
+Returns the concentration of the flux.
+
+If not overridden, it returns the concentration of the source of the
+flux (direction depending) ";
 
 %feature("docstring")
 cmf::upslope::ET::soil_evaporation::get_tracer_filter "real
@@ -8323,16 +8568,10 @@ C++ includes: SoilLayer.h ";
 /*  Overrides of flux_node  */
 
 %feature("docstring")  cmf::upslope::SoilLayer::RecalcFluxes "virtual
-bool RecalcFluxes(cmf::math::Time t)
-
-Pure flux_nodes do not influence fluxes, therefore no recalculation of
-fluxes is required by flux_node. WaterStorage overrides this, since
-state changes require an update of the fluxes ";
+bool RecalcFluxes(cmf::math::Time t) ";
 
 %feature("docstring")  cmf::upslope::SoilLayer::is_empty "virtual
-double is_empty() const
-
-Returns true if the node has no water. ";
+double is_empty() const ";
 
 %feature("docstring")  cmf::upslope::SoilLayer::get_ice_fraction "real get_ice_fraction() const
 
@@ -8565,6 +8804,7 @@ waterbalance(cmf::math::Time t, const flux_connection *Without=0)
 const
 
 Returns the sum of all fluxes (positive and negative) at time t.
+
 Single fluxes can be excluded from the calculation
 
 Parameters:
@@ -8908,8 +9148,9 @@ Simplifies the assessment of state variables. ";
 %feature("docstring") cmf::water::statecontrol_connection "
 
 Calculates a flux to or from a water storage to hold it's state at a
-more or less constant level \\\\[ q=\\\\frac{h_1 - h_{target}}{t_c
-[days]} \\\\]
+more or less constant level.
+
+\\\\[ q=\\\\frac{h_1 - h_{target}}{t_c [days]} \\\\]
 
 C++ includes: simple_connections.h ";
 
@@ -8918,7 +9159,7 @@ cmf::water::statecontrol_connection::statecontrol_connection "statecontrol_conne
 controlled_storage, cmf::water::flux_node::ptr other_end, real
 target_state, cmf::math::Time reaction_time)
 
-Creates a flux connection to control the state of a storage
+Creates a flux connection to control the state of a storage.
 
 Parameters:
 -----------
@@ -8976,8 +9217,10 @@ exchange_target(flux_node::ptr oldtarget, flux_node::ptr newTarget) ";
 
 %feature("docstring")  cmf::water::statecontrol_connection::conc "real conc(cmf::math::Time t, const cmf::water::solute &_Solute)
 
-Returns the concentration of the flux. If not overridden, it returns
-the concentration of the source of the flux (direction depending) ";
+Returns the concentration of the flux.
+
+If not overridden, it returns the concentration of the source of the
+flux (direction depending) ";
 
 %feature("docstring")
 cmf::water::statecontrol_connection::get_tracer_filter "real
@@ -9151,8 +9394,10 @@ exchange_target(flux_node::ptr oldtarget, flux_node::ptr newTarget) ";
 cmf::upslope::ET::surface_water_evaporation::conc "real
 conc(cmf::math::Time t, const cmf::water::solute &_Solute)
 
-Returns the concentration of the flux. If not overridden, it returns
-the concentration of the source of the flux (direction depending) ";
+Returns the concentration of the flux.
+
+If not overridden, it returns the concentration of the source of the
+flux (direction depending) ";
 
 %feature("docstring")
 cmf::upslope::ET::surface_water_evaporation::get_tracer_filter "real
@@ -9256,8 +9501,10 @@ exchange_target(flux_node::ptr oldtarget, flux_node::ptr newTarget) ";
 cmf::upslope::connections::SWATPercolation::conc "real
 conc(cmf::math::Time t, const cmf::water::solute &_Solute)
 
-Returns the concentration of the flux. If not overridden, it returns
-the concentration of the source of the flux (direction depending) ";
+Returns the concentration of the flux.
+
+If not overridden, it returns the concentration of the source of the
+flux (direction depending) ";
 
 %feature("docstring")
 cmf::upslope::connections::SWATPercolation::get_tracer_filter "real
@@ -9281,7 +9528,7 @@ short_string() const ";
 // File: classcmf_1_1river_1_1_s_w_a_t_reach_type.xml
 %feature("docstring") cmf::river::SWATReachType "
 
-Structure for the description of structural parameters of a reach
+Structure for the description of structural parameters of a reach.
 
 Uses the SWAT IChannel geometry (see SWAT Theoretical Documentation,
 Version 2005 (ch. 7:1.1), Neitsch et al. 2005), in this class
@@ -9306,8 +9553,9 @@ actual IChannel geometry \\\\begin{eqnarray*} \\\\mbox{If } d\\\\le
 d_{IChannel} && \\\\\\\\ w &=& w_{bottom} + 2 \\\\Delta_{bank} d
 \\\\\\\\ \\\\mbox{else, } && \\\\mbox{if the river floods the flood
 plain} \\\\\\\\ w &=& w_{bank} + 2 \\\\Delta_{Floodplain}
-(d-d_{IChannel} \\\\\\\\ \\\\end{eqnarray*} See:  SWATtheoDoc eq.
-7:1.1.3 ";
+(d-d_{IChannel} \\\\\\\\ \\\\end{eqnarray*}.
+
+See:  SWATtheoDoc eq. 7:1.1.3 ";
 
 %feature("docstring")  cmf::river::SWATReachType::get_wetted_perimeter
 "virtual double get_wetted_perimeter(double depth) const
@@ -9318,7 +9566,9 @@ d\\\\le d_{IChannel} && \\\\\\\\ P &=& w_{bottom} + 2 \\\\sqrt{1+
 {\\\\Delta_{bank}}^2} d \\\\\\\\ \\\\mbox{else, } && \\\\mbox{if the
 river floods the flood plain} \\\\\\\\ P &=& P(d_{IChannel} + 2
 \\\\sqrt{1+ {\\\\Delta_{flood\\\\ plain}}^2} (d-d_{IChannel}) \\\\\\\\
-\\\\end{eqnarray*} See:  SWATtheoDoc eq. 7:1.1.5
+\\\\end{eqnarray*}.
+
+See:  SWATtheoDoc eq. 7:1.1.5
 
 Parameters:
 -----------
@@ -9336,7 +9586,9 @@ d>d_{IChannel} &&\\\\\\\\
 d&=&d_{IChannel}+\\\\sqrt{\\\\frac{A-A(d_{IChannel})}{\\\\Delta_{flood\\\\
 plain}} + \\\\frac{{w(d_{IChannel})}^2}{4 {\\\\Delta_{flood\\\\
 plain}}^2}} - \\\\frac{w(d_{IChannel})}{2 \\\\Delta_{flood\\\\ plain}}
-\\\\\\\\ \\\\end{eqnarray*} See:  SWATtheoDoc eq. 7:1.2.4
+\\\\\\\\ \\\\end{eqnarray*}.
+
+See:  SWATtheoDoc eq. 7:1.2.4
 
 get_depth of the reach [m]
 
@@ -9357,7 +9609,9 @@ stored volume and l is the reach length \\\\begin{eqnarray*}
 \\\\mbox{if the river floods the flood plain} \\\\\\\\ A &=&
 A(d_{IChannel}) + \\\\left(w(d_{IChannel} + \\\\Delta_{flood\\\\
 plain} \\\\left(d-d_{IChannel}\\\\right)\\\\right) (d-d_{IChannel})
-\\\\\\\\ \\\\end{eqnarray*} See:  SWATtheoDoc eq. 7:1.1.4
+\\\\\\\\ \\\\end{eqnarray*}.
+
+See:  SWATtheoDoc eq. 7:1.1.4
 
 Wetted area of a river cross section [m2]
 
@@ -9370,7 +9624,7 @@ depth:  Depth of the reach [m] ";
 
 Creates a new reach structure with standard values (small natural
 river) BottomWidth = 3m, ChannelDepth = 0.5m, BankSlope = 2, nManning
-= 0.0035, FloodPlainSlope = 200 ";
+= 0.0035, FloodPlainSlope = 200. ";
 
 %feature("docstring")  cmf::river::SWATReachType::SWATReachType "SWATReachType(double l, double BankWidth, double Depth)
 
@@ -9415,7 +9669,9 @@ length)} \\\\\\\\ R &=& \\\\frac A {P(d)} \\\\\\\\ P(d) &=& \\\\mbox{
 the perimeter of the wetted crosssection, a function of reach depth}
 \\\\\\\\ d(V) &=& \\\\mbox{ the depth of the reach a function of the
 volume} \\\\\\\\ \\\\Delta_z &=& \\\\frac{z_{max} - z_{min}}{l}
-\\\\mbox{ Slope of the reach} \\\\end{eqnarray*} Flow rate [m3/s]
+\\\\mbox{ Slope of the reach} \\\\end{eqnarray*}.
+
+Flow rate [m3/s]
 
 Parameters:
 -----------
@@ -9460,10 +9716,7 @@ Returns the upper node. ";
 
 Returns the lower node. ";
 
-%feature("docstring")  cmf::water::SystemBridge::get_potential "double get_potential() const
-
-Returns the water potential of the node in m waterhead The base class
-water storage always returns the height of the location ";
+%feature("docstring")  cmf::water::SystemBridge::get_potential "double get_potential() const ";
 
 %feature("docstring")  cmf::water::SystemBridge::get_down_flux "double get_down_flux() const
 
@@ -9490,7 +9743,7 @@ std::string to_string() const ";
 
 Pure flux_nodes do not influence fluxes, therefore no recalculation of
 fluxes is required by flux_node. WaterStorage overrides this, since
-state changes require an update of the fluxes ";
+state changes require an update of the fluxes. ";
 
 %feature("docstring")  cmf::water::SystemBridge::connection_to "cmf::water::flux_connection* connection_to(const cmf::water::flux_node
 &target)
@@ -9519,6 +9772,7 @@ waterbalance(cmf::math::Time t, const flux_connection *Without=0)
 const
 
 Returns the sum of all fluxes (positive and negative) at time t.
+
 Single fluxes can be excluded from the calculation
 
 Parameters:
@@ -9535,7 +9789,9 @@ conc(cmf::math::Time t, const cmf::water::solute &Solute) const
 Returns the water quality of the flux_node, if it is not overridden
 this is the mix of the incoming fluxes. ";
 
-%feature("docstring")  cmf::water::SystemBridge::set_potential "virtual void set_potential(real new_potential) ";
+%feature("docstring")  cmf::water::SystemBridge::set_potential "virtual void set_potential(real new_potential)
+
+Sets the potential of this flux node. ";
 
 %feature("docstring")  cmf::water::SystemBridge::is_empty "virtual
 double is_empty() const
@@ -9595,8 +9851,10 @@ exchange_target(flux_node::ptr oldtarget, flux_node::ptr newTarget) ";
 %feature("docstring")  cmf::water::SystemBridgeConnection::conc "real
 conc(cmf::math::Time t, const cmf::water::solute &_Solute)
 
-Returns the concentration of the flux. If not overridden, it returns
-the concentration of the source of the flux (direction depending) ";
+Returns the concentration of the flux.
+
+If not overridden, it returns the concentration of the source of the
+flux (direction depending) ";
 
 %feature("docstring")
 cmf::water::SystemBridgeConnection::get_tracer_filter "real
@@ -9619,7 +9877,7 @@ short_string() const ";
 %feature("docstring") cmf::water::TechnicalFlux "
 
 Produces a constant but changeable flux from a source to a target, if
-enough water is present in the source
+enough water is present in the source.
 
 $ q=\\\\left\\\\{0 \\\\mbox{ if }V_{source}\\\\le V_{min}\\\\\\\\
 \\\\frac{V_{source} - V_{min}}{t_{decr} q_{0} - V_{min}}\\\\mbox{ if }
@@ -9633,7 +9891,7 @@ cmf::water::flux_node::ptr target, real maximum_flux, real
 minimal_state=0, cmf::math::Time flux_decrease_time=cmf::math::h)
 
 Produces a constant but changeable flux from a source to a target, if
-enough water is present in the source
+enough water is present in the source.
 
 Parameters:
 -----------
@@ -9691,8 +9949,10 @@ newTarget) ";
 %feature("docstring")  cmf::water::TechnicalFlux::conc "real
 conc(cmf::math::Time t, const cmf::water::solute &_Solute)
 
-Returns the concentration of the flux. If not overridden, it returns
-the concentration of the source of the flux (direction depending) ";
+Returns the concentration of the flux.
+
+If not overridden, it returns the concentration of the source of the
+flux (direction depending) ";
 
 %feature("docstring")  cmf::water::TechnicalFlux::get_tracer_filter "real get_tracer_filter()
 
@@ -10057,8 +10317,10 @@ exchange_target(flux_node::ptr oldtarget, flux_node::ptr newTarget) ";
 %feature("docstring")  cmf::upslope::ET::timeseriesETpot::conc "real
 conc(cmf::math::Time t, const cmf::water::solute &_Solute)
 
-Returns the concentration of the flux. If not overridden, it returns
-the concentration of the source of the flux (direction depending) ";
+Returns the concentration of the flux.
+
+If not overridden, it returns the concentration of the source of the
+flux (direction depending) ";
 
 %feature("docstring")
 cmf::upslope::ET::timeseriesETpot::get_tracer_filter "real
@@ -10153,8 +10415,10 @@ newTarget) ";
 cmf::upslope::connections::TopographicGradientDarcy::conc "real
 conc(cmf::math::Time t, const cmf::water::solute &_Solute)
 
-Returns the concentration of the flux. If not overridden, it returns
-the concentration of the source of the flux (direction depending) ";
+Returns the concentration of the flux.
+
+If not overridden, it returns the concentration of the source of the
+flux (direction depending) ";
 
 %feature("docstring")
 cmf::upslope::connections::TopographicGradientDarcy::get_tracer_filter
@@ -10264,8 +10528,10 @@ exchange_target(flux_node::ptr oldtarget, flux_node::ptr newTarget) ";
 %feature("docstring")  cmf::upslope::ET::transpiration::conc "real
 conc(cmf::math::Time t, const cmf::water::solute &_Solute)
 
-Returns the concentration of the flux. If not overridden, it returns
-the concentration of the source of the flux (direction depending) ";
+Returns the concentration of the flux.
+
+If not overridden, it returns the concentration of the source of the
+flux (direction depending) ";
 
 %feature("docstring")
 cmf::upslope::ET::transpiration::get_tracer_filter "real
@@ -10302,7 +10568,7 @@ returns the transpiration rate from one layer in m3/day ";
 %feature("docstring") cmf::river::TriangularReach "
 
 Structure for the description of reaches with a triangular cross
-section
+section.
 
 Although double triangular cross section reach are rarely met, a
 triangular reach does scale with its water load, and is therefore
@@ -10321,19 +10587,19 @@ typecode() const ";
 "virtual double get_channel_width(double depth) const
 
 Returns the width of the stream at a given depth \\\\begin{eqnarray*}
-w &=& 2 \\\\Delta\\\\ d \\\\end{eqnarray*} ";
+w &=& 2 \\\\Delta\\\\ d \\\\end{eqnarray*}. ";
 
 %feature("docstring")
 cmf::river::TriangularReach::get_wetted_perimeter "virtual double
 get_wetted_perimeter(double depth) const
 
 Returns the wetted perimeter at a given depth \\\\begin{eqnarray*} P
-&=& 2 d \\\\sqrt{1+\\\\Delta^2} \\\\end{eqnarray*} ";
+&=& 2 d \\\\sqrt{1+\\\\Delta^2} \\\\end{eqnarray*}. ";
 
 %feature("docstring")  cmf::river::TriangularReach::get_depth "virtual double get_depth(double area) const
 
 Returns the depth at a given crossection area \\\\begin{eqnarray*} d
-&=& \\\\sqrt{\\\\frac{A}{\\\\Delta}} \\\\end{eqnarray*} ";
+&=& \\\\sqrt{\\\\frac{A}{\\\\Delta}} \\\\end{eqnarray*}. ";
 
 %feature("docstring")
 cmf::river::TriangularReach::get_flux_crossection "virtual double
@@ -10376,7 +10642,9 @@ length)} \\\\\\\\ R &=& \\\\frac A {P(d)} \\\\\\\\ P(d) &=& \\\\mbox{
 the perimeter of the wetted crosssection, a function of reach depth}
 \\\\\\\\ d(V) &=& \\\\mbox{ the depth of the reach a function of the
 volume} \\\\\\\\ \\\\Delta_z &=& \\\\frac{z_{max} - z_{min}}{l}
-\\\\mbox{ Slope of the reach} \\\\end{eqnarray*} Flow rate [m3/s]
+\\\\mbox{ Slope of the reach} \\\\end{eqnarray*}.
+
+Flow rate [m3/s]
 
 Parameters:
 -----------
@@ -10569,7 +10837,7 @@ V(double h) const ";
 // File: classcmf_1_1water_1_1waterbalance__connection.xml
 %feature("docstring") cmf::water::waterbalance_connection "
 
-Routes the sum of all other fluxes to a target
+Routes the sum of all other fluxes to a target.
 
 C++ includes: simple_connections.h ";
 
@@ -10621,8 +10889,10 @@ exchange_target(flux_node::ptr oldtarget, flux_node::ptr newTarget) ";
 
 %feature("docstring")  cmf::water::waterbalance_connection::conc "real conc(cmf::math::Time t, const cmf::water::solute &_Solute)
 
-Returns the concentration of the flux. If not overridden, it returns
-the concentration of the source of the flux (direction depending) ";
+Returns the concentration of the flux.
+
+If not overridden, it returns the concentration of the source of the
+flux (direction depending) ";
 
 %feature("docstring")
 cmf::water::waterbalance_connection::get_tracer_filter "real
@@ -10694,7 +10964,7 @@ cmf::water::waterbalance_integrator::waterbalance_integrator "waterbalance_integ
 // File: classcmf_1_1water_1_1_water_storage.xml
 %feature("docstring") cmf::water::WaterStorage "
 
-A state variable for the storage of water
+A state variable for the storage of water.
 
 A class for the storage of water. The state is the volume of water
 stored in $m^3$ The derivative function is given by:
@@ -10709,16 +10979,10 @@ C++ includes: WaterStorage.h ";
 
 /*  Overrides of flux_node  */
 
-%feature("docstring")  cmf::water::WaterStorage::RecalcFluxes "virtual bool RecalcFluxes(cmf::math::Time t)
-
-Pure flux_nodes do not influence fluxes, therefore no recalculation of
-fluxes is required by flux_node. WaterStorage overrides this, since
-state changes require an update of the fluxes ";
+%feature("docstring")  cmf::water::WaterStorage::RecalcFluxes "virtual bool RecalcFluxes(cmf::math::Time t) ";
 
 %feature("docstring")  cmf::water::WaterStorage::is_empty "virtual
-double is_empty() const
-
-Returns true if the node has no water. ";
+double is_empty() const ";
 
 %feature("docstring")  cmf::water::WaterStorage::get_abs_errtol "real
 get_abs_errtol(real rel_errtol) const ";
@@ -10788,10 +11052,7 @@ real get_volume() const
 
 Returns the volume of water in this storage in m3 ";
 
-%feature("docstring")  cmf::water::WaterStorage::get_potential "virtual real get_potential() const
-
-Returns the water potential of the node in m waterhead The base class
-water storage always returns the height of the location ";
+%feature("docstring")  cmf::water::WaterStorage::get_potential "virtual real get_potential() const ";
 
 %feature("docstring")  cmf::water::WaterStorage::set_volume "virtual
 void set_volume(real newwatercontent)
@@ -10847,6 +11108,7 @@ waterbalance(cmf::math::Time t, const flux_connection *Without=0)
 const
 
 Returns the sum of all fluxes (positive and negative) at time t.
+
 Single fluxes can be excluded from the calculation
 
 Parameters:
@@ -11164,8 +11426,10 @@ external_control_connection exists. ";
 %feature("docstring")  cmf::water::can_set_flux "bool
 cmf::water::can_set_flux(flux_node::ptr source, flux_node::ptr target)
 
-Checks if a constant flux between two nodes can be set. Returns true
-if the nodes are connected by an external_control_connection ";
+Checks if a constant flux between two nodes can be set.
+
+Returns true if the nodes are connected by an
+external_control_connection ";
 
 %feature("docstring")  cmf::water::system_bridge "SystemBridge::ptr
 cmf::water::system_bridge(cmf::project &p, flux_node::ptr upper,
