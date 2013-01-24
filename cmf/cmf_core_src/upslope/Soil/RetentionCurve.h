@@ -26,7 +26,7 @@
 namespace cmf {
 	namespace upslope {
 		const double rho_wg=9810; // Pa/m
-		/// Converts a pressure in Pa to a lenght of a water column in m
+		/// Converts a pressure in Pa to a length of a water column in m
 		double pressure_to_waterhead(double Pressure);
 		/// Converts a height of a water column in m to a pressure in Pa
 		double waterhead_to_pressure(double waterhead);
@@ -200,7 +200,12 @@ namespace cmf {
 		{
 		public:
 			real
-				alpha,n,Ksat,Phi,m,w0;
+				alpha, ///< Inverse of water entry potential in 1/cm
+				n, ///< Pore size distribution parameter [-]
+				Ksat, ///< Saturated conductivity in m/day
+				Phi, ///< Porosity in m3/m3
+				m, ///< VanGenuchten m (if negative, 1-1/n is used)
+				w0; ///< Breakpoint wetness. If W>w0, a parabolic extrapolation is used
 			///\f[ W(\Psi) = \left(1+\left(\alpha\,100\frac{cm}{m}\Psi\right)^n\right)^{-m} \f]
 			virtual real Wetness(real suction) const;
 			/// \f[\Psi(W) = 0.01 \frac{m}{cm} \frac{{\left(1-{W}^{\frac{1}{m}}\right) }^{\frac{1}{n}}}{\alpha\,{W}^{\frac{1}{m\,n}}}  \f]
@@ -213,6 +218,13 @@ namespace cmf {
 			virtual real Transmissivity(real upperDepth,real lowerDepth,real wetness) const;
 			/// \f[\Phi(d)=const\f]
 			virtual real Porosity(real depth) const;
+			/// Fits the break point wetness w0, to ensure a specific oversaturation
+			/// at a given hydrostatic potential
+			/// @param w1 The oversaturation wetness to archieve (>1), default = 1.01
+			/// @param Psi_p the hydrostatic potential for w1, default = +1.0 m
+			/// @param tolerance
+			real fit_w0(real w1=1.01,real Psi_p=1.0,real tolerance=0.05);
+
 			virtual real FillHeight(real lowerDepth,real Area,real Volume) const;
 			VanGenuchtenMualem* copy() const;
 			/// Creates a van Genuchten-Mualem retention curve

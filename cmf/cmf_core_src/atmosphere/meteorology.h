@@ -95,54 +95,22 @@ namespace cmf {
 		/// ETpot becomes. The minimal data needed is Tmin and Tmax (daily) and precipitation.
 		/// To calculate the global radiation (although measured global radiation could be inserted),
 		/// the position of meteorological station in geographic coordinates has to be set.
-		/// 
-		/// 
+		///
+		/// A meteorological station is created by cmf::atmosphere::MeteoStationList::add_station . 
+		/// Usage from python:
+		/// @code{.py}
+		/// import cmf
+		/// p=cmf.project()
+		/// meteo=p.meteo_stations.add_station(name='<Station name>', position=(0,0,0), 
+		///	                                   latitude=51.1, longitude = 8.0, timezone=1,
+		///                                    daily=False)
+		/// @endcode
+		///
 		/// There are two modes for the meteorology: daily=true and daily=false. If daily=true,
 		/// Radiation is given as a daily mean value. If daily=false, Radiation is given as
 		/// an hourly mean value, which shows the dial ETpot variation but results in erronous
 		/// results if the timestep is daily.
 		/// 
-		/// 
-		/// In the following, we will assume a meteorological station with given Tmin, Tmax,
-		/// precipitation and daily mean relative humidity. To use other meteorological data,
-		/// please consult the description of the MeteoStation class in the API documentation
-		/// <h3>
-		/// Creating a meteorological station</h3>
-		/// <div class="fragment">
-		/// <pre class="fragment">
-		/// import CMFlib as cmf
-		/// latitude=51.2 # Latitude of station in decimal degrees
-		/// longitude=8.1 # Longitude of station in decimal degrees (only needed for daily=false)
-		/// timezone=1    # Timezone, pos. values mean east of GMT, negative west (Germany=1, Pacific time=-8, only needed for daily=false)
-		/// start=cmf.Time(1,1,2001) # Creates all timeseries with this start time, one can change them later
-		/// step=cmf.day             # s. start
-		/// name="Giessen"           # A name for the station (optional)
-		/// meteo=cmf.MeteoStation(latitude,longitude,timezone,start,step,name)</pre>
-		/// </div>
-		/// 
-		/// The daily flag is automatically set to true, since the step width is &ge cmf.day
-		/// <h3>
-		/// Loading data into the meteorological station</h3>
-		/// <div class="fragment">
-		/// <pre class="fragment">
-		/// # MeteoData.txt is tab seperated file containing 
-		/// # Tmin [deg C],Tmax [deg C],rHmean [%] and precipitation [mm/day] values for every day
-		/// f=file('MeteoData.txt')
-		/// for line in file:
-		/// meteo.Tmin.Add(float(line.split('\\t')[0]))
-		/// meteo.Tmax.Add(float(line.split('\\t')[1]))
-		/// meteo.rHmean.Add(float(line.split('\\t')[2]))
-		/// meteo.Prec.Add(float(line.split('\\t')[3]))</pre>
-		/// </div>
-		/// <h3>
-		/// Using a meteorological station</h3>
-		/// <div class="fragment">
-		/// <pre class="fragment">
-		/// weather=meteo.get_data(cmf.Time(3,2,2009,14)) # Weather at Feb. 3rd, 2009, 2pm
-		/// print 'Global Radiation: ',weather.Rs	       # Daily mean Rs, since daily=true
-		/// print 'Temperature:',weather.T               # Daily mean T, since nothing else in known
-		/// </pre>
-		/// </div>
 		class MeteoStation
 		{
 		private:
@@ -159,14 +127,18 @@ namespace cmf {
 				Latitude,			///< Latitude in dec. deg.
 				Longitude,			///< Longitude in dec. deg.
 				Timezone,	///< Time zone, 1 Germany, 0 UK, -8 Pacific U.S.
-				x,y,z;   ///< elevation of the station in m a.s.l.
+				x,y,z;   ///< position of the station in m 
 			std::string 
 				Name; ///< Name of the Station
 			cmf::geometry::point get_position() const
 			{
 				return cmf::geometry::point(x,y,z);
 			}
+			/// If true, the global radiation is calculated for daily averages (no day-night cycle), if false the hourly average is calculated
 			bool daily;
+			/// @brief The height of the meteorological instruments above the surface in m. Defaults to 2m. 
+			///
+			/// This can effect temperature and wind speed.
 			real InstrumentHeight;
 			//@}
 			/// Copy c'tor
@@ -178,35 +150,16 @@ namespace cmf {
 			void use_for_cell(cmf::upslope::Cell& c);
 
 			
-			/** Returns the global radiation at a given time step \f$ R_s \frac{MJ}{m^2day}\f$, see http://www.fao.org/docrep/X0490E/x0490e07.htm#radiation
-			 \f{eqnarray*}
-			 \phi &=& \frac{(\mbox{geogr. Latitude})^\circ \pi}{180^\circ} \mbox{ Latitude in }rad \\
-			 \delta &=& 0.409 \sin\left(\frac{2\pi}{365}DOY - 1.39\right) \mbox{ Declination, DOY is day of year}\\
-			 \omega_s &=& \arccos(-\tan\phi\tan\delta) \mbox{ Sunset angle} \\
-			 G_{sc} &=& 0.0802 \frac{MJ}{m^2min} \mbox{Solar constant} \\
-			 d_r &=& 1+0.033 \cos\left(\frac{2\pi}{365}DOY\right) \mbox{Inverse relative distance Earth-Sun} \\
-			 b &=& \frac{2\pi(DOY-81)}{364}\\
-			 S_c &=& 0.1645\sin(2b)-0.1255\cos(b)-0.025\sin(b) \mbox{ Seasonal correction for solar time} \\
-			 \omega &=& \frac {\pi} {12}	\left(t_h+\frac{(\mbox{geogr. Longitude})^\circ}{15}-\mbox{Timezone}+S_c-12\right) \mbox{ solar time in }rad \\
-			 \mbox{If daily}  \\
-			 R_a &=& \frac{24\ 60}{\pi}G_{sc}\ d_r \left(\omega_s \sin\phi \sin\delta + \cos\phi \cos\delta \sin\omega_s\right) \mbox{Extraterrestrial radiation } \frac{MJ}{m^2 day} \\
-			 \mbox{If hourly} \\
-			 R_a &=& \frac{12\ 24\ 60}{\pi}G_{sc}\ d_r \left(\left(\omega^+ -\omega^-\right) \sin\phi \sin\delta + \cos\phi \cos\delta \left(\sin\omega^+ - \sin\omega^-\right)\right) \\
-			 && \omega^+,\omega^- = \omega \pm\frac{\pi}{24} \\
-			 \frac n N &=& \mbox{Fractional sunshine duration}		 \\
-			 R_s &=& \left(0.25+\left(0.5+2\ 10^{-5}z\right)\frac{n}{N}\right)R_a \mbox{Global radiation in }\frac{MJ}{m^2 day} \\ 
-			 && z=\mbox{Height a.s.l. in }m \\
-			 \f}
-			double get_global_radiation(cmf::math::Time t,double height,double sunshine_fraction) const;
-			
-			 Calculates a timeseries of the sunshine fraction (to put into Sunshine) from a timeseries of absolute sunshine duration, using the potential sunshine duration in hours,
+			/**
+			 @brief Calculates a timeseries of the sunshine fraction (to put into Sunshine) from a timeseries of absolute sunshine duration
+			 
 			 see http://www.fao.org/docrep/X0490E/x0490e07.htm#radiation
 			 \f{eqnarray*}
 			 \phi &=& \frac{(\mbox{geogr. Latitude})^\circ \pi}{180^\circ} \mbox{ Latitude in }rad \\
 			 \delta &=& 0.409 \sin\left(\frac{2\pi}{365}DOY - 1.39\right) \mbox{ Declination, DOY is day of year}\\
-			 \omega_s &=& \arccos(-\tan\phi\tan\delta) \mbox{ Sunset angle} \\
+			 \omega_s &=& \arccos(-\tan\phi\tan\delta) \mbox{ Sunset angle in }rad \\
 			 N &=& \frac{24}{\pi}\omega_s \mbox{ potential duration of sunshine in }h \\
-			 \frac n N && n\mbox{Absolute sunshine duration}
+			 \frac n N &=& n\mbox{ absolute sunshine duration in }h
 			 \f} 
 			**/
 			void SetSunshineFraction(cmf::math::timeseries sunshine_duration); 
@@ -218,34 +171,43 @@ namespace cmf {
 				/// Timeseries of Temperature \f$ T\left[^\circ C\right] \f$ <b>Optional, can be calculated from </b> \f$ T=\frac{T_{max} + T_{min}} 2 \f$
 				T,
 				/// Timeseries of daily maximum Temperature \f$ T_{max} \left[^\circ C\right] \f$ 
-				/// <b>Requiered, but you can generate it from Generate TminTmax if a high resolution timeseries T is available</b>
+				/// <b>Required, but it can be generated from T</b>
+				///
+				/// If you have a high resolution timeseries for Temperature, Tmax can be generated as follows:
+				/// @code{.py}
+				/// meteo.Tmax = meteo.T.reduce_max(meteo.T.begin, cmf.day)
+				/// @endcode
 				Tmax,
 				/// Timeseries of daily minimum Temperature \f$ T_{min}\left[^\circ C\right] \f$ 
-				/// <b>Requiered, but you can generate it from Generate TminTmax if a high resolution timeseries T is available</b>
+				/// <b>Required, but it can generate from T</b>
+				///
+				/// If you have a high resolution timeseries for Temperature, Tmin can be generated as follows:
+				/// @code{.py}
+				/// meteo.Tmin = meteo.T.reduce_min(meteo.T.begin, cmf.day)
+				/// @endcode
 				Tmin,
 				/// Timeseries of upper soil temperature \f$ T_{ground}\left[^\circ C\right] \f$
 				/// <b> Optional</b>, if missing \f$ T_{ground} = T \f$
 				Tground,
-				/// Timeseries of incoming solar energy in \f$ R_s \left[\frac{MJ}{m^2 day}\right]\f$. <b>Requiered, but can be generated with GenerateRadiation</b>
+				/// Timeseries of windspeed at instrument height (default 2m) in \f$m/s\f$. 
+				/// <b>Optional, if not available the wind speed defaults to 2 m/s</b>
 				Windspeed,
 				/// Timeseries of relative mean Humidity  \f$ rH_{mean} \left[\%\right] \f$ <b>Optional, not used if rHmax or Tdew is available</b>
 				rHmean,
 				/// Timeseries of daily minimum relative Humidity \f$ rH_{min} \left[\%\right] \f$ <b>Optional, only used if rHmax is used </b>
 				rHmin,
-				/// Timeseries of daily maximum relative Humidity \f$ rH_{max} \left[\%\right] \f$	 <b>Optional, not used if Tdew is available</b>
+				/// Timeseries of daily maximum relative Humidity \f$ rH_{max} \left[\%\right] \f$<b>Optional, not used if Tdew is available</b>
 				rHmax,
-				/// Timeseries of dew point temperature \f$ T_{dew}\left[^\circ C\right]\f$					<b>Optional, if neither Tdew, rHmax or rHmean is available then Tdew = Tmin</b>
+				/// Timeseries of dew point temperature \f$ T_{dew}\left[^\circ C\right]\f$	<b>Optional, if neither Tdew, rHmax or rHmean is available then Tdew = Tmin</b>
 				Tdew,
 				/// Fractional sunshine \f$\frac{n}{N}\f$. Sunshine duration per potential sunshine duration<b>Optional, if not present 0.5</b>
-				/// If you have the total duration of sunshine, use CalcSunshineFraction. If you have cloud coverage instead of total sunshine duration you may assume
+				/// If you have the total duration of sunshine, use cmf::atmosphere::MeteoStation::SetSunshineFraction. If you have cloud coverage instead of total sunshine duration you may assume
 				/// that the fractional sunshine duration equals 1-cloudfraction
 				Sunshine,
-				/// Global Radiation in \f$ \frac{MJ}{m^2 day} \f$ <b> Optional, if not available get_global_radiation is used</b>
+				/// Global Radiation in \f$ \frac{MJ}{m^2 day} \f$ <b> Optional, if not available cmf::atmosphere::global_radiation is used</b>
 				Rs,
-				/// Temperature lapse, the slope of the temperature / height regression Typical values are \f$ -0.0004 .. -0.001 \frac{^\circ C}{m} \f$, default is \f$ 0\frac{^\circ C}{m} \f$ (no temperature adjusting)
+				/// Temperature lapse, the slope of the temperature / height regression. Typical values are \f$ -0.0004 .. -0.001 \frac{^\circ C}{m} \f$, default is \f$ 0\frac{^\circ C}{m} \f$ (no temperature adjusting)
 				T_lapse;
-
-
 			//@}
 
 		};
@@ -280,10 +242,10 @@ namespace cmf {
 			/// @param location Location of the reference
 			MeteoStationReference(MeteoStation::ptr station,cmf::geometry::point location)
 				: m_station(station),m_location(location) {}
-			/// Copy c'tor
+			// Copy c'tor
 			MeteoStationReference(const MeteoStationReference& copy)
 				: m_station(copy.m_station),m_location(copy.m_location) {}
-			/// Creates a new copy of the reference
+			// Creates a new copy of the reference
 			MeteoStationReference* copy() const
 			{
 				return new MeteoStationReference(*this);

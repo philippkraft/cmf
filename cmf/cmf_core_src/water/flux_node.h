@@ -44,6 +44,7 @@ namespace cmf {
 
 		/// @defgroup nodes	Water nodes
 		/// @todo Elaborate on Water nodes
+
 		/// @ingroup nodes
 		/// @brief Base class for everything that can be connected by fluxes. 
 		///

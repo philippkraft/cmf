@@ -290,10 +290,29 @@ cmf::upslope::VanGenuchtenMualem::VanGenuchtenMualem( real _Ksat, real _phi,real
 		msg << (error ? " and " : "") << "with negative Ksat="<<_Ksat;error=true;
 	}
 	if (error) throw std::runtime_error(msg.str());
-
-
 }
 
+real cmf::upslope::VanGenuchtenMualem::fit_w0( real w1/*=1.01*/,real Psi_p/*=1.0*/,real tolerance/*=0.1*/ )
+{
+	real w1_,error;
+	// Do not more then 100 iterations
+	for (int i = 0; i < 100 ; ++i)
+	{
+		// get wetness at Psi_p
+		w1_ = Wetness(Psi_p);
+		// Compare wetness
+		error = (w1_ - w1)/(w1-1);
+		// if w1_ is too big, raise w0
+		if (error>tolerance)
+			w0+=.5*(1-w0);
+		// if w1_ is too small, lower w0
+		else if (error<-tolerance)
+			w0-=.5*(1-w0);
+		else
+			break;
+	}
+	return w0;
+}
 
 /************************************************************************/
 /* Linear Retention curve                                               */

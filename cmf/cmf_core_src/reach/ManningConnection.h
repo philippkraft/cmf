@@ -70,6 +70,7 @@ namespace cmf {
 
 			
 		};
+        
 		/// @ingroup manning
 		/// @brief Connecting surface water bodies using a diffusive wave. Not stable for deep water with small gradient
         ///

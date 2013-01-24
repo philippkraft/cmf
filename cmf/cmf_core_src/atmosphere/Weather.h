@@ -3,13 +3,65 @@
 
 namespace cmf {
 	namespace atmosphere{
-				/// Returns the saturated vapor pressure  in Pa for temperature T [degC]
+		/// @brief Returns the saturated vapor pressure in Pa for temperature T [degC]
+		///
+		/// The saturated vapor pressure \f$e_s\f$ is calculated follwing the following formula
+		/// \f[e_s = 0.6108 \exp{\frac{17.27 T}{T+237.3}}\f]
+		/// The definition is from http://www.fao.org/docrep/X0490E/x0490e07.htm#concepts
 		double vapour_pressure(double T);
 		/// Returns the vapor pressure deficit in Pa for temperature T [degC] and rel. humidity rH [%]
+		///
+		/// The vapor pressure deficit \f$e_s - e_a\f$ is calculated from rel. humidity as:
+		/// \f[e_s - e_a = (1-rH/100) * e_s(T)\f]
+		/// The definition is from http://www.fao.org/docrep/X0490E/x0490e07.htm#concepts
+		/// @param T Air temperature in degC
+		/// @param rH Rel. humidity in %
+		///
+		/// \f$e_s(T)\f$ is calculated using cmf::atmosphere::vapor_pressure(double)
 		double vpd_from_rH(double T,double rH);
 		/// Returns the rel. humidity in % for temperature T [degC] and vapor pressure deficit vpd [Pa]
+		///
+		/// the rel. humidity is calculated from the vapor pressure deficit \f$vpd = e_s - e_a\f$ as:
+		/// \f[rH = 100 * \frac{e_a}{e_s(T)}, e_a = e_s(T) - vpd\f]
+		/// The definition is from http://www.fao.org/docrep/X0490E/x0490e07.htm#concepts
+		/// @param T Air temperature in degC
+		/// @param vpd Vapor pressure deficit in Pa
+		///
+		/// \f$e_s(T)\f$ is calculated using cmf::atmosphere::vapor_pressure(double)
 		double rH_from_vpd(double T, double vpd);
-		/// Returns the global radiation in MJ/(m2 day)
+		/// 
+		/**  @brief Calculates the global radiation in MJ/(m2 day) from the sun position and the sunshine fraction
+		
+			@param t actual time step
+			@param height Height above sea level
+			@param sunshine_fraction Fraction of sunshine hours per potential sunshine duration in h/h
+			@param longitude,latitude Geographical position in degree. Latitude is only taken into acount for subdaily calculation
+			@param time_zone Offset by timezone from GMT, eg. central Europe=1 US west coast = -8
+			@param daily If true, the average radiation for the whole day is given (therefore latitude and time zone ignored), otherwise the average of the
+			       current hour is returned
+			
+			The calculation of the global radiation follows http://www.fao.org/docrep/X0490E/x0490e07.htm#radiation.
+			
+			The following formula is used:
+			 \f{eqnarray*}
+			 \phi &=& \frac{(\mbox{geogr. Latitude})^\circ \pi}{180^\circ} \mbox{ Latitude in }rad \\
+			 \delta &=& 0.409 \sin\left(\frac{2\pi}{365}DOY - 1.39\right) \mbox{ Declination, DOY is day of year}\\
+			 \omega_s &=& \arccos(-\tan\phi\tan\delta) \mbox{ Sunset angle} \\
+			 G_{sc} &=& 0.0802 \frac{MJ}{m^2min} \mbox{Solar constant} \\
+			 d_r &=& 1+0.033 \cos\left(\frac{2\pi}{365}DOY\right) \mbox{Inverse relative distance Earth-Sun} \\
+			 b &=& \frac{2\pi(DOY-81)}{364}\\
+			 S_c &=& 0.1645\sin(2b)-0.1255\cos(b)-0.025\sin(b) \mbox{ Seasonal correction for solar time} \\
+			 \omega &=& \frac {\pi} {12}	\left(t_h+\frac{(\mbox{geogr. Longitude})^\circ}{15}-\mbox{Timezone}+S_c-12\right) \mbox{ solar time in }rad \\
+			 \mbox{If daily}  \\
+			 R_a &=& \frac{24\ 60}{\pi}G_{sc}\ d_r \left(\omega_s \sin\phi \sin\delta + \cos\phi \cos\delta \sin\omega_s\right) \mbox{Extraterrestrial radiation } \frac{MJ}{m^2 day} \\
+			 \mbox{If hourly} \\
+			 R_a &=& \frac{12\ 24\ 60}{\pi}G_{sc}\ d_r \left(\left(\omega^+ -\omega^-\right) \sin\phi \sin\delta + \cos\phi \cos\delta \left(\sin\omega^+ - \sin\omega^-\right)\right) \\
+			 && \omega^+,\omega^- = \omega \pm\frac{\pi}{24} \\
+			 \frac n N &=& \mbox{Fractional sunshine duration}		 \\
+			 R_s &=& \left(0.25+\left(0.5+2\ 10^{-5}z\right)\frac{n}{N}\right)R_a \mbox{Global radiation in }\frac{MJ}{m^2 day} \\ 
+			 && z=\mbox{Height a.s.l. in }m \\
+			 \f}
+			 **/
 		double global_radiation(cmf::math::Time t,double height,double sunshine_fraction,double longitude=8,double latitude=51,double time_zone=1,bool daily=0);
 		/// Returns the average air pressure for a height (m a.s.l.)
 		double Pressure(double height);
