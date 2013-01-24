@@ -49215,6 +49215,77 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_VanGenuchtenMualem_fit_w0(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  cmf::upslope::VanGenuchtenMualem *arg1 = (cmf::upslope::VanGenuchtenMualem *) 0 ;
+  real arg2 = (real) 1.01 ;
+  real arg3 = (real) 1.0 ;
+  real arg4 = (real) 0.05 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  double val2 ;
+  int ecode2 = 0 ;
+  double val3 ;
+  int ecode3 = 0 ;
+  double val4 ;
+  int ecode4 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  char *  kwnames[] = {
+    (char *) "self",(char *) "w1",(char *) "Psi_p",(char *) "tolerance", NULL 
+  };
+  real result;
+  
+  if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"O|OOO:VanGenuchtenMualem_fit_w0",kwnames,&obj0,&obj1,&obj2,&obj3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_cmf__upslope__VanGenuchtenMualem, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "VanGenuchtenMualem_fit_w0" "', argument " "1"" of type '" "cmf::upslope::VanGenuchtenMualem *""'"); 
+  }
+  arg1 = reinterpret_cast< cmf::upslope::VanGenuchtenMualem * >(argp1);
+  if (obj1) {
+    ecode2 = SWIG_AsVal_double(obj1, &val2);
+    if (!SWIG_IsOK(ecode2)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "VanGenuchtenMualem_fit_w0" "', argument " "2"" of type '" "real""'");
+    } 
+    arg2 = static_cast< real >(val2);
+  }
+  if (obj2) {
+    ecode3 = SWIG_AsVal_double(obj2, &val3);
+    if (!SWIG_IsOK(ecode3)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "VanGenuchtenMualem_fit_w0" "', argument " "3"" of type '" "real""'");
+    } 
+    arg3 = static_cast< real >(val3);
+  }
+  if (obj3) {
+    ecode4 = SWIG_AsVal_double(obj3, &val4);
+    if (!SWIG_IsOK(ecode4)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "VanGenuchtenMualem_fit_w0" "', argument " "4"" of type '" "real""'");
+    } 
+    arg4 = static_cast< real >(val4);
+  }
+  {
+    try {
+      {
+        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
+        result = (real)(arg1)->fit_w0(arg2,arg3,arg4);
+        SWIG_PYTHON_THREAD_END_ALLOW;
+      }
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+    
+  }
+  resultobj = SWIG_From_double(static_cast< double >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_VanGenuchtenMualem_copy(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   cmf::upslope::VanGenuchtenMualem *arg1 = (cmf::upslope::VanGenuchtenMualem *) 0 ;
@@ -68814,6 +68885,7 @@ static PyMethodDef SwigMethods[] = {
 		"distanceTo(point p) const\n"
 		"\n"
 		"Returns the horizontal euclidian distance to another point p.\n"
+		"\n"
 		"$\\\\sqrt{(this.x-p.x)^2+(this.y-p.y)^2}$ \n"
 		""},
 	 { (char *)"point_z_weight_distance", (PyCFunction) _wrap_point_z_weight_distance, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
@@ -68823,6 +68895,7 @@ static PyMethodDef SwigMethods[] = {
 		"\n"
 		"Returns the horizontal euclidian distance plus the absolute of the\n"
 		"height difference times a factor.\n"
+		"\n"
 		"$\\\\sqrt{(this.x-p.x)^2+(this.y-p.y)^2}\\\\ +\\\\ w_{z}|this.z-p.z|$\n"
 		"\n"
 		""},
@@ -68925,9 +68998,9 @@ static PyMethodDef SwigMethods[] = {
 		"\n"
 		"point_vector(int size)\n"
 		"\n"
-		"Create a point vector of a specific size.\n"
+		"z coordinates\n"
 		"\n"
-		"z coordinates \n"
+		"Create a point vector of a specific size \n"
 		""},
 	 { (char *)"point_vector_get", (PyCFunction) _wrap_point_vector_get, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
 		"point_vector_get(point_vector self, int index) -> point\n"
@@ -69640,7 +69713,7 @@ static PyMethodDef SwigMethods[] = {
 		"get_state(int position) const\n"
 		"\n"
 		"Returns the statevariable at position Simplifies the assessment of\n"
-		"state variables \n"
+		"state variables. \n"
 		""},
 	 { (char *)"Integrator_set_state", (PyCFunction) _wrap_Integrator_set_state, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
 		"Integrator_set_state(Integrator self, int position, real newState)\n"
@@ -69680,7 +69753,7 @@ static PyMethodDef SwigMethods[] = {
 		"virtual int\n"
 		"integrate(cmf::math::Time t_max, cmf::math::Time dt)=0\n"
 		"\n"
-		"Integrates the vector of state variables\n"
+		"Integrates the vector of state variables.\n"
 		"\n"
 		"Parameters:\n"
 		"-----------\n"
@@ -69701,7 +69774,7 @@ static PyMethodDef SwigMethods[] = {
 		"integrate_until(cmf::math::Time t_max, cmf::math::Time dt=Time(), bool\n"
 		"reset=false)\n"
 		"\n"
-		"Integrates the vector of state variables until t_max\n"
+		"Integrates the vector of state variables until t_max.\n"
 		"\n"
 		"Parameters:\n"
 		"-----------\n"
@@ -69734,7 +69807,7 @@ static PyMethodDef SwigMethods[] = {
 		"BDF2(const Integrator\n"
 		"&templ)\n"
 		"\n"
-		"Constructs a new BDF2 integrator\n"
+		"Constructs a new BDF2 integrator.\n"
 		"\n"
 		"Parameters:\n"
 		"-----------\n"
@@ -69782,7 +69855,7 @@ static PyMethodDef SwigMethods[] = {
 		"RKFIntegrator(real epsilon=1e-9, cmf::math::Time\n"
 		"dt_min=cmf::math::timespan(1000))\n"
 		"\n"
-		"Constructs a new RKFIntegrator\n"
+		"Constructs a new RKFIntegrator.\n"
 		"\n"
 		"Parameters:\n"
 		"-----------\n"
@@ -69894,7 +69967,7 @@ static PyMethodDef SwigMethods[] = {
 		"MultiIntegrator(const cmf::math::Integrator &template_integrator, int\n"
 		"count)\n"
 		"\n"
-		"Creates a new MultiIntegrator\n"
+		"Creates a new MultiIntegrator.\n"
 		"\n"
 		"Parameters:\n"
 		"-----------\n"
@@ -70028,8 +70101,10 @@ static PyMethodDef SwigMethods[] = {
 		"bool RecalcFluxes(cmf::math::Time t)\n"
 		"\n"
 		"Pure flux_nodes do not influence fluxes, therefore no recalculation of\n"
-		"fluxes is required by flux_node. WaterStorage overrides this, since\n"
-		"state changes require an update of the fluxes. \n"
+		"fluxes is required by flux_node.\n"
+		"\n"
+		"WaterStorage overrides this, since state changes require an update of\n"
+		"the fluxes \n"
 		""},
 	 { (char *)"flux_node_connection_to", (PyCFunction) _wrap_flux_node_connection_to, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
 		"flux_node_connection_to(flux_node self, flux_node target) -> flux_connection\n"
@@ -70393,8 +70468,10 @@ static PyMethodDef SwigMethods[] = {
 		"virtual bool RecalcFluxes(cmf::math::Time t)\n"
 		"\n"
 		"Pure flux_nodes do not influence fluxes, therefore no recalculation of\n"
-		"fluxes is required by flux_node. WaterStorage overrides this, since\n"
-		"state changes require an update of the fluxes. \n"
+		"fluxes is required by flux_node.\n"
+		"\n"
+		"WaterStorage overrides this, since state changes require an update of\n"
+		"the fluxes \n"
 		""},
 	 { (char *)"new_DirichletBoundary", (PyCFunction) _wrap_new_DirichletBoundary, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
 		"new_DirichletBoundary(project _p, real potential, point Location = cmf::geometry::point()) -> DirichletBoundary\n"
@@ -70539,9 +70616,10 @@ static PyMethodDef SwigMethods[] = {
 		"kinematic_wave(WaterStorage::ptr source, flux_node::ptr target, real\n"
 		"residencetime, real exponent=1.0, real residual=0.0, real V0=1.0)\n"
 		"\n"
-		"Creates a kinematic wave connection. \\\\[ q = \\\\frac\n"
-		"{\\\\left(\\\\frac{V}{V_0} - f_{residual}\\\\right)^\\\\beta}{t_r}\n"
-		"\\\\].\n"
+		"Creates a kinematic wave connection.\n"
+		"\n"
+		"\\\\[ q = \\\\frac {\\\\left(\\\\frac{V}{V_0} -\n"
+		"f_{residual}\\\\right)^\\\\beta}{t_r} \\\\]\n"
 		"\n"
 		"Parameters:\n"
 		"-----------\n"
@@ -70725,8 +70803,9 @@ static PyMethodDef SwigMethods[] = {
 		"cmf::math::num_array get_fluxes_to(const cmf::water::node_list\n"
 		"&targets, cmf::math::Time t) const\n"
 		"\n"
-		"A fast method to perform flux queries as a batch. The node lists left\n"
-		"and right should have the same length.\n"
+		"A fast method to perform flux queries as a batch.\n"
+		"\n"
+		"The node lists left and right should have the same length.\n"
 		"\n"
 		"The vector containing the flux from left to right at the same position\n"
 		"\n"
@@ -70871,8 +70950,9 @@ static PyMethodDef SwigMethods[] = {
 		"cmf::water::system_bridge(cmf::project &p, flux_node::ptr upper,\n"
 		"flux_node::ptr lower)\n"
 		"\n"
-		"Creates a SystemBridge object. This is an advanced feature for tuning\n"
-		"of the calculation time.\n"
+		"Creates a SystemBridge object.\n"
+		"\n"
+		"This is an advanced feature for tuning of the calculation time.\n"
 		"\n"
 		"A SystemBridge can be used to replace an existing connection between\n"
 		"nodes. After installation, the two nodes can more safely be added to\n"
@@ -70895,6 +70975,10 @@ static PyMethodDef SwigMethods[] = {
 		"\n"
 		"Returns the saturated vapor pressure in Pa for temperature T [degC].\n"
 		"\n"
+		"The saturated vapor pressure $e_s$ is calculated follwing the\n"
+		"following formula \\\\[e_s = 0.6108 \\\\exp{\\\\frac{17.27\n"
+		"T}{T+237.3}}\\\\] The definition is\n"
+		"fromhttp://www.fao.org/docrep/X0490E/x0490e07.htm#concepts \n"
 		""},
 	 { (char *)"vpd_from_rH", (PyCFunction) _wrap_vpd_from_rH, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
 		"vpd_from_rH(double T, double rH) -> double\n"
@@ -70903,7 +70987,23 @@ static PyMethodDef SwigMethods[] = {
 		"cmf::atmosphere::vpd_from_rH(double T, double rH)\n"
 		"\n"
 		"Returns the vapor pressure deficit in Pa for temperature T [degC] and\n"
-		"rel. humidity rH [%]. \n"
+		"rel.\n"
+		"\n"
+		"humidity rH [%]\n"
+		"\n"
+		"The vapor pressure deficit $e_s - e_a$ is calculated from rel.\n"
+		"humidity as: \\\\[e_s - e_a = (1-rH/100) * e_s(T)\\\\] The definition\n"
+		"is fromhttp://www.fao.org/docrep/X0490E/x0490e07.htm#concepts\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"T:  Air temperature in degC\n"
+		"\n"
+		"rH:  Rel. humidity in %\n"
+		"\n"
+		"$e_s(T)$ is calculated using cmf::atmosphere::vapor_pressure(double)\n"
+		"\n"
 		""},
 	 { (char *)"rH_from_vpd", (PyCFunction) _wrap_rH_from_vpd, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
 		"rH_from_vpd(double T, double vpd) -> double\n"
@@ -70911,8 +71011,25 @@ static PyMethodDef SwigMethods[] = {
 		"double\n"
 		"cmf::atmosphere::rH_from_vpd(double T, double vpd)\n"
 		"\n"
-		"Returns the rel. humidity in % for temperature T [degC] and vapor\n"
-		"pressure deficit vpd [Pa]. \n"
+		"Returns the rel.\n"
+		"\n"
+		"humidity in % for temperature T [degC] and vapor pressure deficit vpd\n"
+		"[Pa]\n"
+		"\n"
+		"the rel. humidity is calculated from the vapor pressure deficit $vpd =\n"
+		"e_s - e_a$ as: \\\\[rH = 100 * \\\\frac{e_a}{e_s(T)}, e_a = e_s(T) -\n"
+		"vpd\\\\] The definition is\n"
+		"fromhttp://www.fao.org/docrep/X0490E/x0490e07.htm#concepts\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"T:  Air temperature in degC\n"
+		"\n"
+		"vpd:  Vapor pressure deficit in Pa\n"
+		"\n"
+		"$e_s(T)$ is calculated using cmf::atmosphere::vapor_pressure(double)\n"
+		"\n"
 		""},
 	 { (char *)"global_radiation", (PyCFunction) _wrap_global_radiation, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
 		"global_radiation(Time t, double height, double sunshine_fraction, double longitude = 8, \n"
@@ -70924,7 +71041,63 @@ static PyMethodDef SwigMethods[] = {
 		"double sunshine_fraction, double longitude=8, double latitude=51,\n"
 		"double time_zone=1, bool daily=0)\n"
 		"\n"
-		"Returns the global radiation in MJ/(m2 day) \n"
+		"Calculates the global radiation in MJ/(m2 day) from the sun position\n"
+		"and the sunshine fraction.\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"t:  actual time step\n"
+		"\n"
+		"height:  Height above sea level\n"
+		"\n"
+		"sunshine_fraction:  Fraction of sunshine hours per potential sunshine\n"
+		"duration in h/h\n"
+		"\n"
+		"longitude:  latitude:  Geographical position in degree. Latitude is\n"
+		"only taken into acount for subdaily calculation\n"
+		"\n"
+		"time_zone:  Offset by timezone from GMT, eg. central Europe=1 US west\n"
+		"coast = -8\n"
+		"\n"
+		"daily:  If true, the average radiation for the whole day is given\n"
+		"(therefore latitude and time zone ignored), otherwise the average of\n"
+		"the current hour is returned\n"
+		"\n"
+		"The calculation of the global radiation\n"
+		"followshttp://www.fao.org/docrep/X0490E/x0490e07.htm#radiation.\n"
+		"\n"
+		"The following formula is used: \\\\begin{eqnarray*} \\\\phi &=&\n"
+		"\\\\frac{(\\\\mbox{geogr. Latitude})^\\\\circ \\\\pi}{180^\\\\circ}\n"
+		"\\\\mbox{ Latitude in }rad \\\\\\\\ \\\\delta &=& 0.409\n"
+		"\\\\sin\\\\left(\\\\frac{2\\\\pi}{365}DOY - 1.39\\\\right) \\\\mbox{\n"
+		"Declination, DOY is day of year}\\\\\\\\ \\\\omega_s &=&\n"
+		"\\\\arccos(-\\\\tan\\\\phi\\\\tan\\\\delta) \\\\mbox{ Sunset angle}\n"
+		"\\\\\\\\ G_{sc} &=& 0.0802 \\\\frac{MJ}{m^2min} \\\\mbox{Solar\n"
+		"constant} \\\\\\\\ d_r &=& 1+0.033\n"
+		"\\\\cos\\\\left(\\\\frac{2\\\\pi}{365}DOY\\\\right) \\\\mbox{Inverse\n"
+		"relative distance Earth-Sun} \\\\\\\\ b &=&\n"
+		"\\\\frac{2\\\\pi(DOY-81)}{364}\\\\\\\\ S_c &=&\n"
+		"0.1645\\\\sin(2b)-0.1255\\\\cos(b)-0.025\\\\sin(b) \\\\mbox{ Seasonal\n"
+		"correction for solar time} \\\\\\\\ \\\\omega &=& \\\\frac {\\\\pi}\n"
+		"{12} \\\\left(t_h+\\\\frac{(\\\\mbox{geogr.\n"
+		"Longitude})^\\\\circ}{15}-\\\\mbox{Timezone}+S_c-12\\\\right)\n"
+		"\\\\mbox{ solar time in }rad \\\\\\\\ \\\\mbox{If daily} \\\\\\\\ R_a\n"
+		"&=& \\\\frac{24\\\\ 60}{\\\\pi}G_{sc}\\\\ d_r \\\\left(\\\\omega_s\n"
+		"\\\\sin\\\\phi \\\\sin\\\\delta + \\\\cos\\\\phi \\\\cos\\\\delta\n"
+		"\\\\sin\\\\omega_s\\\\right) \\\\mbox{Extraterrestrial radiation }\n"
+		"\\\\frac{MJ}{m^2 day} \\\\\\\\ \\\\mbox{If hourly} \\\\\\\\ R_a &=&\n"
+		"\\\\frac{12\\\\ 24\\\\ 60}{\\\\pi}G_{sc}\\\\ d_r\n"
+		"\\\\left(\\\\left(\\\\omega^+ -\\\\omega^-\\\\right) \\\\sin\\\\phi\n"
+		"\\\\sin\\\\delta + \\\\cos\\\\phi \\\\cos\\\\delta\n"
+		"\\\\left(\\\\sin\\\\omega^+ - \\\\sin\\\\omega^-\\\\right)\\\\right)\n"
+		"\\\\\\\\ && \\\\omega^+,\\\\omega^- = \\\\omega\n"
+		"\\\\pm\\\\frac{\\\\pi}{24} \\\\\\\\ \\\\frac n N &=&\n"
+		"\\\\mbox{Fractional sunshine duration} \\\\\\\\ R_s &=&\n"
+		"\\\\left(0.25+\\\\left(0.5+2\\\\\n"
+		"10^{-5}z\\\\right)\\\\frac{n}{N}\\\\right)R_a \\\\mbox{Global\n"
+		"radiation in }\\\\frac{MJ}{m^2 day} \\\\\\\\ && z=\\\\mbox{Height\n"
+		"a.s.l. in }m \\\\\\\\ \\\\end{eqnarray*} \n"
 		""},
 	 { (char *)"Pressure", (PyCFunction) _wrap_Pressure, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
 		"Pressure(double height) -> double\n"
@@ -70962,7 +71135,8 @@ static PyMethodDef SwigMethods[] = {
 		"double Rn(double\n"
 		"albedo, bool daily=false) const\n"
 		"\n"
-		"Calculates the net radiation flux \\\\form#30\n"
+		"Calculates the net radiation flux $R_n \\\\left[\\\\frac{MJ}{m^2\n"
+		"day}\\\\right]$.\n"
 		"\n"
 		"\\\\begin{eqnarray*} R_{n} &=& R_{ns} - R_{nl} \\\\\\\\ \\\\mbox{ Net\n"
 		"short wave radiation: }R_{ns} &=& (1-\\\\alpha) R_s \\\\\\\\ \\\\mbox{\n"
@@ -70995,7 +71169,7 @@ static PyMethodDef SwigMethods[] = {
 		"rH=70.0, double wind=2.0, double sunshine=0.5, double Rs=15, double\n"
 		"daylength=12)\n"
 		"\n"
-		"Creates a \"weather\" from given data\n"
+		"Creates a \"weather\" from given data.\n"
 		"\n"
 		"Parameters:\n"
 		"-----------\n"
@@ -71134,41 +71308,6 @@ static PyMethodDef SwigMethods[] = {
 		"void\n"
 		"SetSunshineFraction(cmf::math::timeseries sunshine_duration)\n"
 		"\n"
-		"Returns the global radiation at a given time step \\\\form#0, see\n"
-		"http://www.fao.org/docrep/X0490E/x0490e07.htm#radiation\n"
-		"\\\\begin{eqnarray*} \\\\phi &=& \\\\frac{(\\\\mbox{geogr.\n"
-		"Latitude})^\\\\circ \\\\pi}{180^\\\\circ} \\\\mbox{ Latitude in }rad\n"
-		"\\\\\\\\ \\\\delta &=& 0.409 \\\\sin\\\\left(\\\\frac{2\\\\pi}{365}DOY\n"
-		"- 1.39\\\\right) \\\\mbox{ Declination, DOY is day of year}\\\\\\\\\n"
-		"\\\\omega_s &=& \\\\arccos(-\\\\tan\\\\phi\\\\tan\\\\delta) \\\\mbox{\n"
-		"Sunset angle} \\\\\\\\ G_{sc} &=& 0.0802 \\\\frac{MJ}{m^2min}\n"
-		"\\\\mbox{Solar constant} \\\\\\\\ d_r &=& 1+0.033\n"
-		"\\\\cos\\\\left(\\\\frac{2\\\\pi}{365}DOY\\\\right) \\\\mbox{Inverse\n"
-		"relative distance Earth-Sun} \\\\\\\\ b &=&\n"
-		"\\\\frac{2\\\\pi(DOY-81)}{364}\\\\\\\\ S_c &=&\n"
-		"0.1645\\\\sin(2b)-0.1255\\\\cos(b)-0.025\\\\sin(b) \\\\mbox{ Seasonal\n"
-		"correction for solar time} \\\\\\\\ \\\\omega &=& \\\\frac {\\\\pi}\n"
-		"{12} \\\\left(t_h+\\\\frac{(\\\\mbox{geogr.\n"
-		"Longitude})^\\\\circ}{15}-\\\\mbox{Timezone}+S_c-12\\\\right)\n"
-		"\\\\mbox{ solar time in }rad \\\\\\\\ \\\\mbox{If daily} \\\\\\\\ R_a\n"
-		"&=& \\\\frac{24\\\\ 60}{\\\\pi}G_{sc}\\\\ d_r \\\\left(\\\\omega_s\n"
-		"\\\\sin\\\\phi \\\\sin\\\\delta + \\\\cos\\\\phi \\\\cos\\\\delta\n"
-		"\\\\sin\\\\omega_s\\\\right) \\\\mbox{Extraterrestrial radiation }\n"
-		"\\\\frac{MJ}{m^2 day} \\\\\\\\ \\\\mbox{If hourly} \\\\\\\\ R_a &=&\n"
-		"\\\\frac{12\\\\ 24\\\\ 60}{\\\\pi}G_{sc}\\\\ d_r\n"
-		"\\\\left(\\\\left(\\\\omega^+ -\\\\omega^-\\\\right) \\\\sin\\\\phi\n"
-		"\\\\sin\\\\delta + \\\\cos\\\\phi \\\\cos\\\\delta\n"
-		"\\\\left(\\\\sin\\\\omega^+ - \\\\sin\\\\omega^-\\\\right)\\\\right)\n"
-		"\\\\\\\\ && \\\\omega^+,\\\\omega^- = \\\\omega\n"
-		"\\\\pm\\\\frac{\\\\pi}{24} \\\\\\\\ \\\\frac n N &=&\n"
-		"\\\\mbox{Fractional sunshine duration} \\\\\\\\ R_s &=&\n"
-		"\\\\left(0.25+\\\\left(0.5+2\\\\\n"
-		"10^{-5}z\\\\right)\\\\frac{n}{N}\\\\right)R_a \\\\mbox{Global\n"
-		"radiation in }\\\\frac{MJ}{m^2 day} \\\\\\\\ && z=\\\\mbox{Height\n"
-		"a.s.l. in }m \\\\\\\\ \\\\end{eqnarray*} double\n"
-		"get_global_radiation(cmf::math::Time t,double height,double\n"
-		"sunshine_fraction) const;\n"
-		"\n"
 		"Calculates a timeseries of the sunshine fraction (to put into\n"
 		"Sunshine) from a timeseries of absolute sunshine duration, using the\n"
 		"potential sunshine duration in hours,\n"
@@ -71180,7 +71319,7 @@ static PyMethodDef SwigMethods[] = {
 		"\\\\omega_s &=& \\\\arccos(-\\\\tan\\\\phi\\\\tan\\\\delta) \\\\mbox{\n"
 		"Sunset angle} \\\\\\\\ N &=& \\\\frac{24}{\\\\pi}\\\\omega_s \\\\mbox{\n"
 		"potential duration of sunshine in }h \\\\\\\\ \\\\frac n N &&\n"
-		"n\\\\mbox{Absolute sunshine duration} \\\\end{eqnarray*} \n"
+		"n\\\\mbox{Absolute sunshine duration} \\\\end{eqnarray*}. \n"
 		""},
 	 { (char *)"MeteoStation_T_set", _wrap_MeteoStation_T_set, METH_VARARGS, (char *)"MeteoStation_T_set(MeteoStation self, timeseries T)"},
 	 { (char *)"MeteoStation_T_get", (PyCFunction)_wrap_MeteoStation_T_get, METH_O, (char *)"MeteoStation_T_get(MeteoStation self) -> timeseries"},
@@ -71277,7 +71416,7 @@ static PyMethodDef SwigMethods[] = {
 		"timestep=cmf::math::day)\n"
 		"\n"
 		"Creates a meteorological station at a certain position and adds it to\n"
-		"the list\n"
+		"the list.\n"
 		"\n"
 		"Parameters:\n"
 		"-----------\n"
@@ -71323,7 +71462,7 @@ static PyMethodDef SwigMethods[] = {
 		"&position, double z_weight=0) const\n"
 		"\n"
 		"Creates a MeteoStationReference from the nearest station to position\n"
-		"at position\n"
+		"at position.\n"
 		"\n"
 		"The distance is calculated as $ d=\\\\sqrt{(x_{s} - x_{l})^2 + (y_{s}\n"
 		"- y_{l})^2} + \\\\lambda_z\\\\|z_{s} - z_{l}\\\\| $ Where $s$ is the\n"
@@ -71391,8 +71530,10 @@ static PyMethodDef SwigMethods[] = {
 		"ConstantRainSource(cmf::project &_project, cmf::geometry::point\n"
 		"location, real _intensity)\n"
 		"\n"
-		"Creates a new ConstantRainSource. Consider using Cell::set_rainfall\n"
-		"for internal creation of a constant rain source, instead of direct use\n"
+		"Creates a new ConstantRainSource.\n"
+		"\n"
+		"Consider using Cell::set_rainfall for internal creation of a constant\n"
+		"rain source, instead of direct use\n"
 		"\n"
 		"Parameters:\n"
 		"-----------\n"
@@ -71465,9 +71606,10 @@ static PyMethodDef SwigMethods[] = {
 		"RainfallStation::ptr add(std::string Name, cmf::math::timeseries Data,\n"
 		"cmf::geometry::point Position)\n"
 		"\n"
-		"Creates a new RainfallStation and adds it to the list. Usage: The\n"
-		"position of the rainfall station will be used as identifier A new\n"
-		"rainfall station\n"
+		"Creates a new RainfallStation and adds it to the list.\n"
+		"\n"
+		"Usage: The position of the rainfall station will be used as identifier\n"
+		"A new rainfall station\n"
 		"\n"
 		"Parameters:\n"
 		"-----------\n"
@@ -71530,7 +71672,7 @@ static PyMethodDef SwigMethods[] = {
 		"\\\\left[\\\\frac{m}{m^2}\\\\right]= \\\\frac{ c_R\n"
 		"\\\\left[\\\\frac{kg}{m^3}\\\\right] z_R \\\\left[m\\\\right] }\n"
 		"{0.5\\\\left[\\\\frac{kg}{m^3}\\\\right] \\\\pi\n"
-		"\\\\left(d_R/2\\\\right)^2 \\\\left[m^2\\\\right]} \\\\] \n"
+		"\\\\left(d_R/2\\\\right)^2 \\\\left[m^2\\\\right]} \\\\]. \n"
 		""},
 	 { (char *)"Vegetation_RootFraction", _wrap_Vegetation_RootFraction, METH_VARARGS, (char *)"\n"
 		"RootFraction(double upperBoundary, double lowerBoundary) -> double\n"
@@ -71752,7 +71894,7 @@ static PyMethodDef SwigMethods[] = {
 		"real\n"
 		"heat_flux(cmf::math::Time t) const\n"
 		"\n"
-		"Calculates the surface heat balance\n"
+		"Calculates the surface heat balance.\n"
 		"\n"
 		"Parameters:\n"
 		"-----------\n"
@@ -72017,7 +72159,7 @@ static PyMethodDef SwigMethods[] = {
 		"subcatchment(cmf::upslope::Cell &pourpoint, double\n"
 		"area_threshold=1e308)\n"
 		"\n"
-		"Creates a subcatchment from a pourpoint cell\n"
+		"Creates a subcatchment from a pourpoint cell.\n"
 		"\n"
 		"Parameters:\n"
 		"-----------\n"
@@ -72048,7 +72190,7 @@ static PyMethodDef SwigMethods[] = {
 		"\n"
 		"Returns the effective wetness, using a residual pF value \\\\[w_{eff}\n"
 		"=\n"
-		"\\\\frac{w_{act}-w\\\\left(pF_r\\\\right)}{1-w\\\\left(pF_r\\\\right)}\\\\]\n"
+		"\\\\frac{w_{act}-w\\\\left(pF_r\\\\right)}{1-w\\\\left(pF_r\\\\right)}\\\\].\n"
 		"\n"
 		""},
 	 { (char *)"RetentionCurve_Porosity", (PyCFunction) _wrap_RetentionCurve_Porosity, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
@@ -72134,7 +72276,7 @@ static PyMethodDef SwigMethods[] = {
 		"real theta_x=0.2, real psi_x=pF_to_waterhead(2.5), real\n"
 		"porosity_decay=0)\n"
 		"\n"
-		"Creates a brooks corey retention curve\n"
+		"Creates a brooks corey retention curve.\n"
 		"\n"
 		"Parameters:\n"
 		"-----------\n"
@@ -72191,6 +72333,10 @@ static PyMethodDef SwigMethods[] = {
 		"\n"
 		"\\\\[T=K(W)\\\\,\\\\left(d_{lower}-d_{upper}\\\\right)\\\\] \n"
 		""},
+	 { (char *)"VanGenuchtenMualem_fit_w0", (PyCFunction) _wrap_VanGenuchtenMualem_fit_w0, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
+		"VanGenuchtenMualem_fit_w0(VanGenuchtenMualem self, real w1 = 1.01, real Psi_p = 1.0, \n"
+		"    real tolerance = 0.05) -> real\n"
+		""},
 	 { (char *)"VanGenuchtenMualem_copy", (PyCFunction)_wrap_VanGenuchtenMualem_copy, METH_O, (char *)"\n"
 		"VanGenuchtenMualem_copy(VanGenuchtenMualem self) -> VanGenuchtenMualem\n"
 		"\n"
@@ -72203,7 +72349,7 @@ static PyMethodDef SwigMethods[] = {
 		"VanGenuchtenMualem(real Ksat=15, real phi=0.5, real alpha=0.2178, real\n"
 		"n=1.211, real m=-1)\n"
 		"\n"
-		"Creates a van Genuchten-Mualem retention curve\n"
+		"Creates a van Genuchten-Mualem retention curve.\n"
 		"\n"
 		"Parameters:\n"
 		"-----------\n"
@@ -72309,7 +72455,7 @@ static PyMethodDef SwigMethods[] = {
 		"\n"
 		"Returns the depth for saturation \\\\[ z_{sat,this} =\n"
 		"\\\\left\\\\{z_{cell}-\\\\Psi_{tot} \\\\mbox{ if } W<1 \\\\\\\\\n"
-		"z_{sat,upper layer} \\\\right. \\\\] \n"
+		"z_{sat,upper layer} \\\\right. \\\\]. \n"
 		""},
 	 { (char *)"SoilLayer_get_flow_crosssection", (PyCFunction) _wrap_SoilLayer_get_flow_crosssection, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
 		"SoilLayer_get_flow_crosssection(SoilLayer self, SoilLayer target, bool HorizontalLayers = False) -> real\n"
@@ -72581,10 +72727,11 @@ static PyMethodDef SwigMethods[] = {
 		"virtual double get_flux_crossection(double depth) const =0\n"
 		"\n"
 		"Calculates the wetted area from a given depth using the IChannel\n"
-		"geometry. In most cases use get_flux_crossection=V/l, where V is the\n"
-		"stored volume and l is the reach length.\n"
+		"geometry.\n"
 		"\n"
-		"Wetted area of a river cross section [m2]\n"
+		"In most cases use get_flux_crossection=V/l, where V is the stored\n"
+		"volume and l is the reach length Wetted area of a river cross section\n"
+		"[m2]\n"
 		"\n"
 		"Parameters:\n"
 		"-----------\n"
@@ -72638,7 +72785,7 @@ static PyMethodDef SwigMethods[] = {
 		"\n"
 		"SWATReachType(double l, double BankWidth, double Depth)\n"
 		"\n"
-		"Creates a new reach structure from a give width and depth\n"
+		"Creates a new reach structure from a give width and depth.\n"
 		"\n"
 		"Parameters:\n"
 		"-----------\n"
@@ -72718,10 +72865,10 @@ static PyMethodDef SwigMethods[] = {
 		"Channel(char\n"
 		"typecode, double length, double width=1., double depth=0.25)\n"
 		"\n"
-		"Creates a reachtype using a short cut character. Acceptes one of the\n"
-		"following characters:\n"
+		"Creates a reachtype using a short cut character.\n"
 		"\n"
-		"'T' TriangularReach, width and depth are ignored.\n"
+		"Acceptes one of the following characters: 'T' TriangularReach, width\n"
+		"and depth are ignored.\n"
 		"\n"
 		"'R' RectangularReach, depth is ignored\n"
 		"\n"
@@ -72857,7 +73004,7 @@ static PyMethodDef SwigMethods[] = {
 		"void connect_to_surfacewater(cmf::upslope::Cell *cell, real width,\n"
 		"bool diffusive)\n"
 		"\n"
-		"Connects the surfacewater of a cell with this reach\n"
+		"Connects the surfacewater of a cell with this reach.\n"
 		"\n"
 		"Parameters:\n"
 		"-----------\n"
@@ -72876,7 +73023,9 @@ static PyMethodDef SwigMethods[] = {
 		"distance_to_cell(cmf::upslope::Cell *cell) const\n"
 		"\n"
 		"Returns the distance (d) for connections between this reach and a\n"
-		"cell. If the effective inner cell distance (defined as $ R_{Cell} =\n"
+		"cell.\n"
+		"\n"
+		"If the effective inner cell distance (defined as $ R_{Cell} =\n"
 		"0.5\\\\frac{\\\\sqrt{A}}{\\\\pi}$) is smaller than the distance\n"
 		"between the center points, the cell radius is returned \n"
 		""},
@@ -72955,9 +73104,10 @@ static PyMethodDef SwigMethods[] = {
 		"double\n"
 		"cmf::river::make_river_gap(Reach::ptr root_reach)\n"
 		"\n"
-		"Ensures that rivers have a monotone downward flow direction. Reaches\n"
-		"with a bottom higher than any upstream reach are lowered to the\n"
-		"minimum height of any (possibly distant) upstream reach. \n"
+		"Ensures that rivers have a monotone downward flow direction.\n"
+		"\n"
+		"Reaches with a bottom higher than any upstream reach are lowered to\n"
+		"the minimum height of any (possibly distant) upstream reach. \n"
 		""},
 	 { (char *)"aquifer_area_set", _wrap_aquifer_area_set, METH_VARARGS, (char *)"aquifer_area_set(aquifer self, real area)"},
 	 { (char *)"aquifer_area_get", (PyCFunction)_wrap_aquifer_area_get, METH_O, (char *)"aquifer_area_get(aquifer self) -> real"},
@@ -72973,9 +73123,10 @@ static PyMethodDef SwigMethods[] = {
 		"virtual real\n"
 		"get_K(cmf::geometry::point direction) const\n"
 		"\n"
-		"Returns the conductivity in m/day for a specific direction. Takes\n"
-		"account for anisotropy \\\\[ \\\\|K\\\\|(d) = \\\\frac{d}{\\\\|d\\\\|}\n"
-		"\\\\bullet K\\\\] \n"
+		"Returns the conductivity in m/day for a specific direction.\n"
+		"\n"
+		"Takes account for anisotropy \\\\[ \\\\|K\\\\|(d) =\n"
+		"\\\\frac{d}{\\\\|d\\\\|} \\\\bullet K\\\\] \n"
 		""},
 	 { (char *)"aquifer_get_abs_errtol", (PyCFunction) _wrap_aquifer_get_abs_errtol, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
 		"aquifer_get_abs_errtol(aquifer self, real rel_errtol) -> real\n"
@@ -72991,7 +73142,7 @@ static PyMethodDef SwigMethods[] = {
 		"aquifer(cmf::upslope::cell_vector &cells, real thickness, real\n"
 		"porosity, real K=1e-4)\n"
 		"\n"
-		"Creates an aquifer below a collection of cells\n"
+		"Creates an aquifer below a collection of cells.\n"
 		"\n"
 		"Parameters:\n"
 		"-----------\n"
@@ -73022,7 +73173,7 @@ static PyMethodDef SwigMethods[] = {
 		"real width)\n"
 		"\n"
 		"Creates a new Darcy flow connection between two aquifers, or an\n"
-		"aquifer and another node acting as Dirichlet boundary condition\n"
+		"aquifer and another node acting as Dirichlet boundary condition.\n"
 		"\n"
 		"Parameters:\n"
 		"-----------\n"
@@ -73287,7 +73438,7 @@ static PyMethodDef SwigMethods[] = {
 		"cmf::upslope::Cell &cell)\n"
 		"\n"
 		"Installs an HBV like model setup at a cell Reference: Bergstroem et al\n"
-		"1995, in Singh (1995): Computer models of watershed hydrology\n"
+		"1995, in Singh (1995): Computer models of watershed hydrology.\n"
 		"\n"
 		"Removes the layers of a cell and adds three layers with 1m thickness\n"
 		"and the HBVparameters as retention curve. Installs HBVpercolation\n"
@@ -73764,7 +73915,9 @@ static PyMethodDef SwigMethods[] = {
 		"NewCell(double x, double y, double z, double area, bool\n"
 		"with_surfacewater=false)\n"
 		"\n"
-		"Creates a new cell A new cell, owned by the project\n"
+		"Creates a new cell.\n"
+		"\n"
+		"A new cell, owned by the project\n"
 		"\n"
 		"Parameters:\n"
 		"-----------\n"
@@ -73784,7 +73937,7 @@ static PyMethodDef SwigMethods[] = {
 		"\n"
 		"Creates a new Dirichlet boundary condition and adds it to the list of\n"
 		"outlets The potential of the Dirichlet boundary equals z, but can be\n"
-		"changed\n"
+		"changed.\n"
 		"\n"
 		"Parameters:\n"
 		"-----------\n"
@@ -73800,8 +73953,10 @@ static PyMethodDef SwigMethods[] = {
 		"cmf::water::WaterStorage::ptr NewStorage(std::string name, double x,\n"
 		"double y, double z)\n"
 		"\n"
-		"Creates a new generic water storage at position x,y,z. The storage is\n"
-		"added to the project nodes A new water storage, owned by the project\n"
+		"Creates a new generic water storage at position x,y,z.\n"
+		"\n"
+		"The storage is added to the project nodes A new water storage, owned\n"
+		"by the project\n"
 		"\n"
 		"Parameters:\n"
 		"-----------\n"
@@ -73818,9 +73973,10 @@ static PyMethodDef SwigMethods[] = {
 		"cmf::river::OpenWaterStorage::ptr NewOpenStorage(std::string name,\n"
 		"double x, double y, double z, double area)\n"
 		"\n"
-		"Creates a new open water storage with a prism geometry. The open water\n"
-		"storage is added to the project nodes A new open water storage, owned\n"
-		"by the project\n"
+		"Creates a new open water storage with a prism geometry.\n"
+		"\n"
+		"The open water storage is added to the project nodes A new open water\n"
+		"storage, owned by the project\n"
 		"\n"
 		"Parameters:\n"
 		"-----------\n"
@@ -73840,7 +73996,9 @@ static PyMethodDef SwigMethods[] = {
 		"NewReach(double x, double y, double z, double length, char Type='T',\n"
 		"double width=0.5, double depth=0.1, bool diffusive=false)\n"
 		"\n"
-		"Creates a new reach A new reach, owned by the project\n"
+		"Creates a new reach.\n"
+		"\n"
+		"A new reach, owned by the project\n"
 		"\n"
 		"Parameters:\n"
 		"-----------\n"
@@ -73915,7 +74073,7 @@ static PyMethodDef SwigMethods[] = {
 		"const cmf::math::Integrator &solute_integrator,\n"
 		"cmf::math::StateVariableOwner &states)\n"
 		"\n"
-		"Creates a new SoluteWaterIntegrator\n"
+		"Creates a new SoluteWaterIntegrator.\n"
 		"\n"
 		"Parameters:\n"
 		"-----------\n"

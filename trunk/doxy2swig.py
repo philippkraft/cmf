@@ -435,14 +435,22 @@ def main():
                       help='do not include doxygen function definitions')
     parser.add_option("-q", '--quiet',
                       action='store_true',
-                      default=False,
+                      default=True,
                       dest='quiet',
                       help='be quiet and minimise output')
+    parser.add_option("-v", '--verbose',
+                      action='store_true',
+                      default=False,
+                      dest='verbose',
+                      help='be verbose and give output')
     
     options, args = parser.parse_args()
-    if len(args) != 2:
+    options.quiet = not options.verbose
+    if len(args)==0:
+        args=['doxy/xml/index.xml','cmf/cmf_core_src/docstrings.i']
+    elif len(args) != 2:
         parser.error("error: no input and output specified")
-
+    print "Using %s to generate %s" % tuple(args)
     convert(args[0], args[1], not options.func_def, options.quiet)
     
 

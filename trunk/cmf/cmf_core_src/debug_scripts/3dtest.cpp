@@ -18,6 +18,7 @@
 #include "../Reach/ManningConnection.h"
 #include "../water/WaterStorage.h"
 #include "../water/simple_connections.h"
+#include "../math/spline.h"
 
 /// Main function of the program. Only for debugging and testing, the real CMF<sub>lib</sub> will be compiled as a DLL and the 
 /// main function will be replaced by Python code
@@ -220,6 +221,25 @@ int main(int argc,const char* argv[])
 {
 	if (argc>=2) {
 		string name=argv[1];
+		if (name=="spline") {
+			num_array x(6);
+			num_array y(6);
+			for (int i = 0; i < 6 ; ++i)
+			{
+				x[i] = i;
+				y[i] = i % 2;
+			}
+			cubicspline spline(x,y);
+			std::ofstream fout;
+			fout.open("spline.csv");
+			for (int i = 0; i < 50 ; ++i)
+			{
+				fout << i * .1 << "," << spline(i*.1) << endl;
+			}
+			fout.close();
+			
+
+		}
 		create3d(name);
 	} else {
 		createsimple();

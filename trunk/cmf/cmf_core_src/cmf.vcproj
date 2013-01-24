@@ -553,6 +553,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\math\spline.h"
+				>
+			</File>
+			<File
 				RelativePath=".\math\StateVariable.h"
 				>
 			</File>
@@ -910,6 +914,10 @@
 			</File>
 			<File
 				RelativePath=".\water\SoluteStorage.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\math\spline.cpp"
 				>
 			</File>
 			<File

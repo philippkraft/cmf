@@ -40,7 +40,7 @@ namespace cmf {
 		public:
 			/// shared pointer
 			typedef std::tr1::shared_ptr<RainSource> ptr;
-			/// Functor declartion RainSource(t) = RainSource.get_intensity(t)
+			/// Functor declaration RainSource(t) = RainSource.get_intensity(t)
 			real operator()(cmf::math::Time t) const { return get_intensity(t);}
 			/// Returns the actual rainfall intensity in mm/day
 			virtual real get_intensity(cmf::math::Time t) const=0;
@@ -142,8 +142,10 @@ namespace cmf {
 			const RainfallStation::ptr operator[](int index) const;
 			
 			
-			/// Creates a new RainfallStation and adds it to the list. Usage:
-			/// @code project.rainfall_stations.add("Name", cmf.timeseries.from_file('rainfall.bin'), (65124,78009,187)) @endcode
+			/// @brief Creates a new RainfallStation and adds it to the list. 
+			///
+			/// Usage:
+			/// @code project.rainfall_stations.add("Station name", cmf.timeseries.from_file('rainfall.bin'), (65124,78009,187)) @endcode
 			/// The position of the rainfall station will be used as identifier
 			/// @returns A new rainfall station
 			/// @param Name Name of the station
@@ -161,12 +163,11 @@ namespace cmf {
 		};
 		
 		/// @ingroup meteo boundary
-		/// References a single RainfallStation to provide rainfall intensity data
+		/// @brief References a single RainfallStation to provide rainfall intensity data
 		class RainfallStationReference : public RainSource {
 			RainfallStation::ptr m_station;
 			RainfallStationReference(cmf::project& project, cmf::geometry::point position, RainfallStation::ptr station);
 		public:
-			/// shared_ptr
 			typedef std::tr1::shared_ptr<cmf::atmosphere::RainfallStationReference > ptr;
 			
 			/// Finds the nearest RainfallStation to position using z_weight for cmf::geometry::point::z_weight_distance
@@ -179,11 +180,11 @@ namespace cmf {
 			
 			/// Creates a RainfallStationReference for a certain rainfall station
 			static ptr from_station_id(cmf::project& project, cmf::geometry::point position, size_t id);
-			
+			/// @brief Returns the rainfall intensity in mm/day at time t
 			real get_intensity(cmf::math::Time t) const {
 				return m_station->data[t];
 			}
-			
+			/// Returns the concentration of a solute in [solute unit]/m³ at time t in rainfall
 			real conc(cmf::math::Time t, const cmf::water::solute& Solute) const{
 				return m_station->concentration.conc(t,Solute);
 			}
@@ -191,7 +192,7 @@ namespace cmf {
 		};
 
 		/// @ingroup meteo boundary
-		/// A RainSource using an spatially interpolated rainfall intensity from all stations. 
+		/// A RainSource using a spatially interpolated rainfall intensity from all stations. 
 		/// Interpolation method is inverse distance weighted (IDW)
 		class IDWRainfall : public RainSource {
 			typedef std::map<RainfallStation::ptr,real> weight_map;
