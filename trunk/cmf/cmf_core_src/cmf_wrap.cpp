@@ -8369,10 +8369,14 @@ SWIGINTERN PyObject *_wrap_new_Time__SWIG_2(PyObject *SWIGUNUSEDPARM(self), int 
   cmf::math::Time *result = 0 ;
   
   if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
-  // typemap Time&
-  int timeconvert_r=convert_datetime_to_cmftime(swig_obj[0], &arg1);
-  if (!SWIG_IsOK(timeconvert_r))  {
-    SWIG_exception_fail(SWIG_TypeError,"Can't convert input value to cmf.Time object");
+  {
+    // typemap Time&
+    int timeconvert_r=convert_datetime_to_cmftime(swig_obj[0], &arg1);
+    if (!SWIG_IsOK(timeconvert_r))  {
+      SWIG_exception_fail(SWIG_TypeError,"Can't convert input value to cmf.Time object");
+    } else if (!SWIG_IsOldObj(timeconvert_r)) {
+      arg1 = new cmf::math::Time(*arg1);
+    }
   }
   {
     try {
@@ -8389,12 +8393,16 @@ SWIGINTERN PyObject *_wrap_new_Time__SWIG_2(PyObject *SWIGUNUSEDPARM(self), int 
     
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_cmf__math__Time, SWIG_POINTER_NEW |  0 );
-  // %typemap(freearg) cmf::math::Time *
-  if (SWIG_IsNewObj(timeconvert_r))  delete arg1;
+  {
+    // %typemap(freearg) cmf::math::Time &
+    delete arg1;
+  }
   return resultobj;
 fail:
-  // %typemap(freearg) cmf::math::Time *
-  if (SWIG_IsNewObj(timeconvert_r))  delete arg1;
+  {
+    // %typemap(freearg) cmf::math::Time &
+    delete arg1;
+  }
   return NULL;
 }
 
@@ -8607,10 +8615,14 @@ SWIGINTERN PyObject *_wrap_Time_AsDays(PyObject *SWIGUNUSEDPARM(self), PyObject 
   
   if (!args) SWIG_fail;
   swig_obj[0] = args;
-  // typemap Time*
-  int timeconvert=convert_datetime_to_cmftime(swig_obj[0], &arg1);
-  if (!SWIG_IsOK(timeconvert))  {
-    SWIG_exception_fail(SWIG_TypeError,"Can't convert input value to cmf.Time object");
+  {
+    // typemap Time*
+    int timeconvert=convert_datetime_to_cmftime(swig_obj[0], &arg1);
+    if (!SWIG_IsOK(timeconvert))  {
+      SWIG_exception_fail(SWIG_TypeError,"Can't convert input value to cmf.Time object");
+    } else if (!SWIG_IsOldObj(timeconvert)) {
+      arg1 = new cmf::math::Time(*arg1);
+    }
   }
   {
     try {
@@ -8628,11 +8640,11 @@ SWIGINTERN PyObject *_wrap_Time_AsDays(PyObject *SWIGUNUSEDPARM(self), PyObject 
   }
   resultobj = SWIG_From_double(static_cast< double >(result));
   // %typemap(freearg) cmf::math::Time *
-  if (SWIG_IsNewObj(timeconvert))  delete arg1;
+  delete arg1;
   return resultobj;
 fail:
   // %typemap(freearg) cmf::math::Time *
-  if (SWIG_IsNewObj(timeconvert))  delete arg1;
+  delete arg1;
   return NULL;
 }
 
@@ -8645,10 +8657,14 @@ SWIGINTERN PyObject *_wrap_Time_AsHours(PyObject *SWIGUNUSEDPARM(self), PyObject
   
   if (!args) SWIG_fail;
   swig_obj[0] = args;
-  // typemap Time*
-  int timeconvert=convert_datetime_to_cmftime(swig_obj[0], &arg1);
-  if (!SWIG_IsOK(timeconvert))  {
-    SWIG_exception_fail(SWIG_TypeError,"Can't convert input value to cmf.Time object");
+  {
+    // typemap Time*
+    int timeconvert=convert_datetime_to_cmftime(swig_obj[0], &arg1);
+    if (!SWIG_IsOK(timeconvert))  {
+      SWIG_exception_fail(SWIG_TypeError,"Can't convert input value to cmf.Time object");
+    } else if (!SWIG_IsOldObj(timeconvert)) {
+      arg1 = new cmf::math::Time(*arg1);
+    }
   }
   {
     try {
@@ -8666,11 +8682,11 @@ SWIGINTERN PyObject *_wrap_Time_AsHours(PyObject *SWIGUNUSEDPARM(self), PyObject
   }
   resultobj = SWIG_From_double(static_cast< double >(result));
   // %typemap(freearg) cmf::math::Time *
-  if (SWIG_IsNewObj(timeconvert))  delete arg1;
+  delete arg1;
   return resultobj;
 fail:
   // %typemap(freearg) cmf::math::Time *
-  if (SWIG_IsNewObj(timeconvert))  delete arg1;
+  delete arg1;
   return NULL;
 }
 
@@ -8683,10 +8699,14 @@ SWIGINTERN PyObject *_wrap_Time_AsMinutes(PyObject *SWIGUNUSEDPARM(self), PyObje
   
   if (!args) SWIG_fail;
   swig_obj[0] = args;
-  // typemap Time*
-  int timeconvert=convert_datetime_to_cmftime(swig_obj[0], &arg1);
-  if (!SWIG_IsOK(timeconvert))  {
-    SWIG_exception_fail(SWIG_TypeError,"Can't convert input value to cmf.Time object");
+  {
+    // typemap Time*
+    int timeconvert=convert_datetime_to_cmftime(swig_obj[0], &arg1);
+    if (!SWIG_IsOK(timeconvert))  {
+      SWIG_exception_fail(SWIG_TypeError,"Can't convert input value to cmf.Time object");
+    } else if (!SWIG_IsOldObj(timeconvert)) {
+      arg1 = new cmf::math::Time(*arg1);
+    }
   }
   {
     try {
@@ -8704,11 +8724,11 @@ SWIGINTERN PyObject *_wrap_Time_AsMinutes(PyObject *SWIGUNUSEDPARM(self), PyObje
   }
   resultobj = SWIG_From_double(static_cast< double >(result));
   // %typemap(freearg) cmf::math::Time *
-  if (SWIG_IsNewObj(timeconvert))  delete arg1;
+  delete arg1;
   return resultobj;
 fail:
   // %typemap(freearg) cmf::math::Time *
-  if (SWIG_IsNewObj(timeconvert))  delete arg1;
+  delete arg1;
   return NULL;
 }
 
@@ -8721,10 +8741,14 @@ SWIGINTERN PyObject *_wrap_Time_AsSeconds(PyObject *SWIGUNUSEDPARM(self), PyObje
   
   if (!args) SWIG_fail;
   swig_obj[0] = args;
-  // typemap Time*
-  int timeconvert=convert_datetime_to_cmftime(swig_obj[0], &arg1);
-  if (!SWIG_IsOK(timeconvert))  {
-    SWIG_exception_fail(SWIG_TypeError,"Can't convert input value to cmf.Time object");
+  {
+    // typemap Time*
+    int timeconvert=convert_datetime_to_cmftime(swig_obj[0], &arg1);
+    if (!SWIG_IsOK(timeconvert))  {
+      SWIG_exception_fail(SWIG_TypeError,"Can't convert input value to cmf.Time object");
+    } else if (!SWIG_IsOldObj(timeconvert)) {
+      arg1 = new cmf::math::Time(*arg1);
+    }
   }
   {
     try {
@@ -8742,11 +8766,11 @@ SWIGINTERN PyObject *_wrap_Time_AsSeconds(PyObject *SWIGUNUSEDPARM(self), PyObje
   }
   resultobj = SWIG_From_double(static_cast< double >(result));
   // %typemap(freearg) cmf::math::Time *
-  if (SWIG_IsNewObj(timeconvert))  delete arg1;
+  delete arg1;
   return resultobj;
 fail:
   // %typemap(freearg) cmf::math::Time *
-  if (SWIG_IsNewObj(timeconvert))  delete arg1;
+  delete arg1;
   return NULL;
 }
 
@@ -8759,10 +8783,14 @@ SWIGINTERN PyObject *_wrap_Time_AsMilliseconds(PyObject *SWIGUNUSEDPARM(self), P
   
   if (!args) SWIG_fail;
   swig_obj[0] = args;
-  // typemap Time*
-  int timeconvert=convert_datetime_to_cmftime(swig_obj[0], &arg1);
-  if (!SWIG_IsOK(timeconvert))  {
-    SWIG_exception_fail(SWIG_TypeError,"Can't convert input value to cmf.Time object");
+  {
+    // typemap Time*
+    int timeconvert=convert_datetime_to_cmftime(swig_obj[0], &arg1);
+    if (!SWIG_IsOK(timeconvert))  {
+      SWIG_exception_fail(SWIG_TypeError,"Can't convert input value to cmf.Time object");
+    } else if (!SWIG_IsOldObj(timeconvert)) {
+      arg1 = new cmf::math::Time(*arg1);
+    }
   }
   {
     try {
@@ -8780,11 +8808,11 @@ SWIGINTERN PyObject *_wrap_Time_AsMilliseconds(PyObject *SWIGUNUSEDPARM(self), P
   }
   resultobj = SWIG_From_long_SS_long(static_cast< long long >(result));
   // %typemap(freearg) cmf::math::Time *
-  if (SWIG_IsNewObj(timeconvert))  delete arg1;
+  delete arg1;
   return resultobj;
 fail:
   // %typemap(freearg) cmf::math::Time *
-  if (SWIG_IsNewObj(timeconvert))  delete arg1;
+  delete arg1;
   return NULL;
 }
 
@@ -8797,10 +8825,14 @@ SWIGINTERN PyObject *_wrap_Time_AsDate(PyObject *SWIGUNUSEDPARM(self), PyObject 
   
   if (!args) SWIG_fail;
   swig_obj[0] = args;
-  // typemap Time*
-  int timeconvert=convert_datetime_to_cmftime(swig_obj[0], &arg1);
-  if (!SWIG_IsOK(timeconvert))  {
-    SWIG_exception_fail(SWIG_TypeError,"Can't convert input value to cmf.Time object");
+  {
+    // typemap Time*
+    int timeconvert=convert_datetime_to_cmftime(swig_obj[0], &arg1);
+    if (!SWIG_IsOK(timeconvert))  {
+      SWIG_exception_fail(SWIG_TypeError,"Can't convert input value to cmf.Time object");
+    } else if (!SWIG_IsOldObj(timeconvert)) {
+      arg1 = new cmf::math::Time(*arg1);
+    }
   }
   {
     try {
@@ -8818,11 +8850,11 @@ SWIGINTERN PyObject *_wrap_Time_AsDate(PyObject *SWIGUNUSEDPARM(self), PyObject 
   }
   resultobj = SWIG_NewPointerObj((new cmf::math::Date(static_cast< const cmf::math::Date& >(result))), SWIGTYPE_p_cmf__math__Date, SWIG_POINTER_OWN |  0 );
   // %typemap(freearg) cmf::math::Time *
-  if (SWIG_IsNewObj(timeconvert))  delete arg1;
+  delete arg1;
   return resultobj;
 fail:
   // %typemap(freearg) cmf::math::Time *
-  if (SWIG_IsNewObj(timeconvert))  delete arg1;
+  delete arg1;
   return NULL;
 }
 
@@ -8841,10 +8873,14 @@ SWIGINTERN PyObject *_wrap_Time_to_string(PyObject *SWIGUNUSEDPARM(self), PyObje
   std::string result;
   
   if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"O|O:Time_to_string",kwnames,&obj0,&obj1)) SWIG_fail;
-  // typemap Time*
-  int timeconvert=convert_datetime_to_cmftime(obj0, &arg1);
-  if (!SWIG_IsOK(timeconvert))  {
-    SWIG_exception_fail(SWIG_TypeError,"Can't convert input value to cmf.Time object");
+  {
+    // typemap Time*
+    int timeconvert=convert_datetime_to_cmftime(obj0, &arg1);
+    if (!SWIG_IsOK(timeconvert))  {
+      SWIG_exception_fail(SWIG_TypeError,"Can't convert input value to cmf.Time object");
+    } else if (!SWIG_IsOldObj(timeconvert)) {
+      arg1 = new cmf::math::Time(*arg1);
+    }
   }
   if (obj1) {
     ecode2 = SWIG_AsVal_char(obj1, &val2);
@@ -8869,11 +8905,11 @@ SWIGINTERN PyObject *_wrap_Time_to_string(PyObject *SWIGUNUSEDPARM(self), PyObje
   }
   resultobj = SWIG_From_std_string(static_cast< std::string >(result));
   // %typemap(freearg) cmf::math::Time *
-  if (SWIG_IsNewObj(timeconvert))  delete arg1;
+  delete arg1;
   return resultobj;
 fail:
   // %typemap(freearg) cmf::math::Time *
-  if (SWIG_IsNewObj(timeconvert))  delete arg1;
+  delete arg1;
   return NULL;
 }
 
@@ -8886,10 +8922,14 @@ SWIGINTERN PyObject *_wrap_Time_is_not_0(PyObject *SWIGUNUSEDPARM(self), PyObjec
   
   if (!args) SWIG_fail;
   swig_obj[0] = args;
-  // typemap Time*
-  int timeconvert=convert_datetime_to_cmftime(swig_obj[0], &arg1);
-  if (!SWIG_IsOK(timeconvert))  {
-    SWIG_exception_fail(SWIG_TypeError,"Can't convert input value to cmf.Time object");
+  {
+    // typemap Time*
+    int timeconvert=convert_datetime_to_cmftime(swig_obj[0], &arg1);
+    if (!SWIG_IsOK(timeconvert))  {
+      SWIG_exception_fail(SWIG_TypeError,"Can't convert input value to cmf.Time object");
+    } else if (!SWIG_IsOldObj(timeconvert)) {
+      arg1 = new cmf::math::Time(*arg1);
+    }
   }
   {
     try {
@@ -8907,11 +8947,11 @@ SWIGINTERN PyObject *_wrap_Time_is_not_0(PyObject *SWIGUNUSEDPARM(self), PyObjec
   }
   resultobj = SWIG_From_bool(static_cast< bool >(result));
   // %typemap(freearg) cmf::math::Time *
-  if (SWIG_IsNewObj(timeconvert))  delete arg1;
+  delete arg1;
   return resultobj;
 fail:
   // %typemap(freearg) cmf::math::Time *
-  if (SWIG_IsNewObj(timeconvert))  delete arg1;
+  delete arg1;
   return NULL;
 }
 
@@ -8924,10 +8964,14 @@ SWIGINTERN PyObject *_wrap_Time_DOY(PyObject *SWIGUNUSEDPARM(self), PyObject *ar
   
   if (!args) SWIG_fail;
   swig_obj[0] = args;
-  // typemap Time*
-  int timeconvert=convert_datetime_to_cmftime(swig_obj[0], &arg1);
-  if (!SWIG_IsOK(timeconvert))  {
-    SWIG_exception_fail(SWIG_TypeError,"Can't convert input value to cmf.Time object");
+  {
+    // typemap Time*
+    int timeconvert=convert_datetime_to_cmftime(swig_obj[0], &arg1);
+    if (!SWIG_IsOK(timeconvert))  {
+      SWIG_exception_fail(SWIG_TypeError,"Can't convert input value to cmf.Time object");
+    } else if (!SWIG_IsOldObj(timeconvert)) {
+      arg1 = new cmf::math::Time(*arg1);
+    }
   }
   {
     try {
@@ -8945,11 +8989,11 @@ SWIGINTERN PyObject *_wrap_Time_DOY(PyObject *SWIGUNUSEDPARM(self), PyObject *ar
   }
   resultobj = SWIG_From_double(static_cast< double >(result));
   // %typemap(freearg) cmf::math::Time *
-  if (SWIG_IsNewObj(timeconvert))  delete arg1;
+  delete arg1;
   return resultobj;
 fail:
   // %typemap(freearg) cmf::math::Time *
-  if (SWIG_IsNewObj(timeconvert))  delete arg1;
+  delete arg1;
   return NULL;
 }
 
@@ -8966,15 +9010,23 @@ SWIGINTERN PyObject *_wrap_Time___add__(PyObject *SWIGUNUSEDPARM(self), PyObject
   cmf::math::Time result;
   
   if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"OO:Time___add__",kwnames,&obj0,&obj1)) SWIG_fail;
-  // typemap Time*
-  int timeconvert=convert_datetime_to_cmftime(obj0, &arg1);
-  if (!SWIG_IsOK(timeconvert))  {
-    SWIG_exception_fail(SWIG_TypeError,"Can't convert input value to cmf.Time object");
+  {
+    // typemap Time*
+    int timeconvert=convert_datetime_to_cmftime(obj0, &arg1);
+    if (!SWIG_IsOK(timeconvert))  {
+      SWIG_exception_fail(SWIG_TypeError,"Can't convert input value to cmf.Time object");
+    } else if (!SWIG_IsOldObj(timeconvert)) {
+      arg1 = new cmf::math::Time(*arg1);
+    }
   }
-  // typemap Time&
-  int timeconvert_r=convert_datetime_to_cmftime(obj1, &arg2);
-  if (!SWIG_IsOK(timeconvert_r))  {
-    SWIG_exception_fail(SWIG_TypeError,"Can't convert input value to cmf.Time object");
+  {
+    // typemap Time&
+    int timeconvert_r=convert_datetime_to_cmftime(obj1, &arg2);
+    if (!SWIG_IsOK(timeconvert_r))  {
+      SWIG_exception_fail(SWIG_TypeError,"Can't convert input value to cmf.Time object");
+    } else if (!SWIG_IsOldObj(timeconvert_r)) {
+      arg2 = new cmf::math::Time(*arg2);
+    }
   }
   {
     try {
@@ -8992,15 +9044,19 @@ SWIGINTERN PyObject *_wrap_Time___add__(PyObject *SWIGUNUSEDPARM(self), PyObject
   }
   resultobj = SWIG_NewPointerObj((new cmf::math::Time(static_cast< const cmf::math::Time& >(result))), SWIGTYPE_p_cmf__math__Time, SWIG_POINTER_OWN |  0 );
   // %typemap(freearg) cmf::math::Time *
-  if (SWIG_IsNewObj(timeconvert))  delete arg1;
-  // %typemap(freearg) cmf::math::Time *
-  if (SWIG_IsNewObj(timeconvert_r))  delete arg2;
+  delete arg1;
+  {
+    // %typemap(freearg) cmf::math::Time &
+    delete arg2;
+  }
   return resultobj;
 fail:
   // %typemap(freearg) cmf::math::Time *
-  if (SWIG_IsNewObj(timeconvert))  delete arg1;
-  // %typemap(freearg) cmf::math::Time *
-  if (SWIG_IsNewObj(timeconvert_r))  delete arg2;
+  delete arg1;
+  {
+    // %typemap(freearg) cmf::math::Time &
+    delete arg2;
+  }
   return NULL;
 }
 
@@ -9017,15 +9073,23 @@ SWIGINTERN PyObject *_wrap_Time___sub__(PyObject *SWIGUNUSEDPARM(self), PyObject
   cmf::math::Time result;
   
   if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"OO:Time___sub__",kwnames,&obj0,&obj1)) SWIG_fail;
-  // typemap Time*
-  int timeconvert=convert_datetime_to_cmftime(obj0, &arg1);
-  if (!SWIG_IsOK(timeconvert))  {
-    SWIG_exception_fail(SWIG_TypeError,"Can't convert input value to cmf.Time object");
+  {
+    // typemap Time*
+    int timeconvert=convert_datetime_to_cmftime(obj0, &arg1);
+    if (!SWIG_IsOK(timeconvert))  {
+      SWIG_exception_fail(SWIG_TypeError,"Can't convert input value to cmf.Time object");
+    } else if (!SWIG_IsOldObj(timeconvert)) {
+      arg1 = new cmf::math::Time(*arg1);
+    }
   }
-  // typemap Time&
-  int timeconvert_r=convert_datetime_to_cmftime(obj1, &arg2);
-  if (!SWIG_IsOK(timeconvert_r))  {
-    SWIG_exception_fail(SWIG_TypeError,"Can't convert input value to cmf.Time object");
+  {
+    // typemap Time&
+    int timeconvert_r=convert_datetime_to_cmftime(obj1, &arg2);
+    if (!SWIG_IsOK(timeconvert_r))  {
+      SWIG_exception_fail(SWIG_TypeError,"Can't convert input value to cmf.Time object");
+    } else if (!SWIG_IsOldObj(timeconvert_r)) {
+      arg2 = new cmf::math::Time(*arg2);
+    }
   }
   {
     try {
@@ -9043,15 +9107,19 @@ SWIGINTERN PyObject *_wrap_Time___sub__(PyObject *SWIGUNUSEDPARM(self), PyObject
   }
   resultobj = SWIG_NewPointerObj((new cmf::math::Time(static_cast< const cmf::math::Time& >(result))), SWIGTYPE_p_cmf__math__Time, SWIG_POINTER_OWN |  0 );
   // %typemap(freearg) cmf::math::Time *
-  if (SWIG_IsNewObj(timeconvert))  delete arg1;
-  // %typemap(freearg) cmf::math::Time *
-  if (SWIG_IsNewObj(timeconvert_r))  delete arg2;
+  delete arg1;
+  {
+    // %typemap(freearg) cmf::math::Time &
+    delete arg2;
+  }
   return resultobj;
 fail:
   // %typemap(freearg) cmf::math::Time *
-  if (SWIG_IsNewObj(timeconvert))  delete arg1;
-  // %typemap(freearg) cmf::math::Time *
-  if (SWIG_IsNewObj(timeconvert_r))  delete arg2;
+  delete arg1;
+  {
+    // %typemap(freearg) cmf::math::Time &
+    delete arg2;
+  }
   return NULL;
 }
 
@@ -9068,15 +9136,23 @@ SWIGINTERN PyObject *_wrap_Time___iadd__(PyObject *SWIGUNUSEDPARM(self), PyObjec
   cmf::math::Time result;
   
   if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"OO:Time___iadd__",kwnames,&obj0,&obj1)) SWIG_fail;
-  // typemap Time*
-  int timeconvert=convert_datetime_to_cmftime(obj0, &arg1);
-  if (!SWIG_IsOK(timeconvert))  {
-    SWIG_exception_fail(SWIG_TypeError,"Can't convert input value to cmf.Time object");
+  {
+    // typemap Time*
+    int timeconvert=convert_datetime_to_cmftime(obj0, &arg1);
+    if (!SWIG_IsOK(timeconvert))  {
+      SWIG_exception_fail(SWIG_TypeError,"Can't convert input value to cmf.Time object");
+    } else if (!SWIG_IsOldObj(timeconvert)) {
+      arg1 = new cmf::math::Time(*arg1);
+    }
   }
-  // typemap Time&
-  int timeconvert_r=convert_datetime_to_cmftime(obj1, &arg2);
-  if (!SWIG_IsOK(timeconvert_r))  {
-    SWIG_exception_fail(SWIG_TypeError,"Can't convert input value to cmf.Time object");
+  {
+    // typemap Time&
+    int timeconvert_r=convert_datetime_to_cmftime(obj1, &arg2);
+    if (!SWIG_IsOK(timeconvert_r))  {
+      SWIG_exception_fail(SWIG_TypeError,"Can't convert input value to cmf.Time object");
+    } else if (!SWIG_IsOldObj(timeconvert_r)) {
+      arg2 = new cmf::math::Time(*arg2);
+    }
   }
   {
     try {
@@ -9094,15 +9170,19 @@ SWIGINTERN PyObject *_wrap_Time___iadd__(PyObject *SWIGUNUSEDPARM(self), PyObjec
   }
   resultobj = SWIG_NewPointerObj((new cmf::math::Time(static_cast< const cmf::math::Time& >(result))), SWIGTYPE_p_cmf__math__Time, SWIG_POINTER_OWN |  0 );
   // %typemap(freearg) cmf::math::Time *
-  if (SWIG_IsNewObj(timeconvert))  delete arg1;
-  // %typemap(freearg) cmf::math::Time *
-  if (SWIG_IsNewObj(timeconvert_r))  delete arg2;
+  delete arg1;
+  {
+    // %typemap(freearg) cmf::math::Time &
+    delete arg2;
+  }
   return resultobj;
 fail:
   // %typemap(freearg) cmf::math::Time *
-  if (SWIG_IsNewObj(timeconvert))  delete arg1;
-  // %typemap(freearg) cmf::math::Time *
-  if (SWIG_IsNewObj(timeconvert_r))  delete arg2;
+  delete arg1;
+  {
+    // %typemap(freearg) cmf::math::Time &
+    delete arg2;
+  }
   return NULL;
 }
 
@@ -9119,15 +9199,23 @@ SWIGINTERN PyObject *_wrap_Time___isub__(PyObject *SWIGUNUSEDPARM(self), PyObjec
   cmf::math::Time result;
   
   if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"OO:Time___isub__",kwnames,&obj0,&obj1)) SWIG_fail;
-  // typemap Time*
-  int timeconvert=convert_datetime_to_cmftime(obj0, &arg1);
-  if (!SWIG_IsOK(timeconvert))  {
-    SWIG_exception_fail(SWIG_TypeError,"Can't convert input value to cmf.Time object");
+  {
+    // typemap Time*
+    int timeconvert=convert_datetime_to_cmftime(obj0, &arg1);
+    if (!SWIG_IsOK(timeconvert))  {
+      SWIG_exception_fail(SWIG_TypeError,"Can't convert input value to cmf.Time object");
+    } else if (!SWIG_IsOldObj(timeconvert)) {
+      arg1 = new cmf::math::Time(*arg1);
+    }
   }
-  // typemap Time&
-  int timeconvert_r=convert_datetime_to_cmftime(obj1, &arg2);
-  if (!SWIG_IsOK(timeconvert_r))  {
-    SWIG_exception_fail(SWIG_TypeError,"Can't convert input value to cmf.Time object");
+  {
+    // typemap Time&
+    int timeconvert_r=convert_datetime_to_cmftime(obj1, &arg2);
+    if (!SWIG_IsOK(timeconvert_r))  {
+      SWIG_exception_fail(SWIG_TypeError,"Can't convert input value to cmf.Time object");
+    } else if (!SWIG_IsOldObj(timeconvert_r)) {
+      arg2 = new cmf::math::Time(*arg2);
+    }
   }
   {
     try {
@@ -9145,15 +9233,19 @@ SWIGINTERN PyObject *_wrap_Time___isub__(PyObject *SWIGUNUSEDPARM(self), PyObjec
   }
   resultobj = SWIG_NewPointerObj((new cmf::math::Time(static_cast< const cmf::math::Time& >(result))), SWIGTYPE_p_cmf__math__Time, SWIG_POINTER_OWN |  0 );
   // %typemap(freearg) cmf::math::Time *
-  if (SWIG_IsNewObj(timeconvert))  delete arg1;
-  // %typemap(freearg) cmf::math::Time *
-  if (SWIG_IsNewObj(timeconvert_r))  delete arg2;
+  delete arg1;
+  {
+    // %typemap(freearg) cmf::math::Time &
+    delete arg2;
+  }
   return resultobj;
 fail:
   // %typemap(freearg) cmf::math::Time *
-  if (SWIG_IsNewObj(timeconvert))  delete arg1;
-  // %typemap(freearg) cmf::math::Time *
-  if (SWIG_IsNewObj(timeconvert_r))  delete arg2;
+  delete arg1;
+  {
+    // %typemap(freearg) cmf::math::Time &
+    delete arg2;
+  }
   return NULL;
 }
 
@@ -9167,10 +9259,14 @@ SWIGINTERN PyObject *_wrap_Time___mul____SWIG_0(PyObject *SWIGUNUSEDPARM(self), 
   cmf::math::Time result;
   
   if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
-  // typemap Time*
-  int timeconvert=convert_datetime_to_cmftime(swig_obj[0], &arg1);
-  if (!SWIG_IsOK(timeconvert))  {
-    SWIG_exception_fail(SWIG_TypeError,"Can't convert input value to cmf.Time object");
+  {
+    // typemap Time*
+    int timeconvert=convert_datetime_to_cmftime(swig_obj[0], &arg1);
+    if (!SWIG_IsOK(timeconvert))  {
+      SWIG_exception_fail(SWIG_TypeError,"Can't convert input value to cmf.Time object");
+    } else if (!SWIG_IsOldObj(timeconvert)) {
+      arg1 = new cmf::math::Time(*arg1);
+    }
   }
   ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
   if (!SWIG_IsOK(ecode2)) {
@@ -9193,11 +9289,11 @@ SWIGINTERN PyObject *_wrap_Time___mul____SWIG_0(PyObject *SWIGUNUSEDPARM(self), 
   }
   resultobj = SWIG_NewPointerObj((new cmf::math::Time(static_cast< const cmf::math::Time& >(result))), SWIGTYPE_p_cmf__math__Time, SWIG_POINTER_OWN |  0 );
   // %typemap(freearg) cmf::math::Time *
-  if (SWIG_IsNewObj(timeconvert))  delete arg1;
+  delete arg1;
   return resultobj;
 fail:
   // %typemap(freearg) cmf::math::Time *
-  if (SWIG_IsNewObj(timeconvert))  delete arg1;
+  delete arg1;
   return NULL;
 }
 
@@ -9211,10 +9307,14 @@ SWIGINTERN PyObject *_wrap_Time___div____SWIG_0(PyObject *SWIGUNUSEDPARM(self), 
   cmf::math::Time result;
   
   if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
-  // typemap Time*
-  int timeconvert=convert_datetime_to_cmftime(swig_obj[0], &arg1);
-  if (!SWIG_IsOK(timeconvert))  {
-    SWIG_exception_fail(SWIG_TypeError,"Can't convert input value to cmf.Time object");
+  {
+    // typemap Time*
+    int timeconvert=convert_datetime_to_cmftime(swig_obj[0], &arg1);
+    if (!SWIG_IsOK(timeconvert))  {
+      SWIG_exception_fail(SWIG_TypeError,"Can't convert input value to cmf.Time object");
+    } else if (!SWIG_IsOldObj(timeconvert)) {
+      arg1 = new cmf::math::Time(*arg1);
+    }
   }
   ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
   if (!SWIG_IsOK(ecode2)) {
@@ -9237,11 +9337,11 @@ SWIGINTERN PyObject *_wrap_Time___div____SWIG_0(PyObject *SWIGUNUSEDPARM(self), 
   }
   resultobj = SWIG_NewPointerObj((new cmf::math::Time(static_cast< const cmf::math::Time& >(result))), SWIGTYPE_p_cmf__math__Time, SWIG_POINTER_OWN |  0 );
   // %typemap(freearg) cmf::math::Time *
-  if (SWIG_IsNewObj(timeconvert))  delete arg1;
+  delete arg1;
   return resultobj;
 fail:
   // %typemap(freearg) cmf::math::Time *
-  if (SWIG_IsNewObj(timeconvert))  delete arg1;
+  delete arg1;
   return NULL;
 }
 
@@ -9258,15 +9358,23 @@ SWIGINTERN PyObject *_wrap_Time___mod__(PyObject *SWIGUNUSEDPARM(self), PyObject
   cmf::math::Time result;
   
   if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"OO:Time___mod__",kwnames,&obj0,&obj1)) SWIG_fail;
-  // typemap Time*
-  int timeconvert=convert_datetime_to_cmftime(obj0, &arg1);
-  if (!SWIG_IsOK(timeconvert))  {
-    SWIG_exception_fail(SWIG_TypeError,"Can't convert input value to cmf.Time object");
+  {
+    // typemap Time*
+    int timeconvert=convert_datetime_to_cmftime(obj0, &arg1);
+    if (!SWIG_IsOK(timeconvert))  {
+      SWIG_exception_fail(SWIG_TypeError,"Can't convert input value to cmf.Time object");
+    } else if (!SWIG_IsOldObj(timeconvert)) {
+      arg1 = new cmf::math::Time(*arg1);
+    }
   }
-  // typemap Time&
-  int timeconvert_r=convert_datetime_to_cmftime(obj1, &arg2);
-  if (!SWIG_IsOK(timeconvert_r))  {
-    SWIG_exception_fail(SWIG_TypeError,"Can't convert input value to cmf.Time object");
+  {
+    // typemap Time&
+    int timeconvert_r=convert_datetime_to_cmftime(obj1, &arg2);
+    if (!SWIG_IsOK(timeconvert_r))  {
+      SWIG_exception_fail(SWIG_TypeError,"Can't convert input value to cmf.Time object");
+    } else if (!SWIG_IsOldObj(timeconvert_r)) {
+      arg2 = new cmf::math::Time(*arg2);
+    }
   }
   {
     try {
@@ -9284,15 +9392,19 @@ SWIGINTERN PyObject *_wrap_Time___mod__(PyObject *SWIGUNUSEDPARM(self), PyObject
   }
   resultobj = SWIG_NewPointerObj((new cmf::math::Time(static_cast< const cmf::math::Time& >(result))), SWIGTYPE_p_cmf__math__Time, SWIG_POINTER_OWN |  0 );
   // %typemap(freearg) cmf::math::Time *
-  if (SWIG_IsNewObj(timeconvert))  delete arg1;
-  // %typemap(freearg) cmf::math::Time *
-  if (SWIG_IsNewObj(timeconvert_r))  delete arg2;
+  delete arg1;
+  {
+    // %typemap(freearg) cmf::math::Time &
+    delete arg2;
+  }
   return resultobj;
 fail:
   // %typemap(freearg) cmf::math::Time *
-  if (SWIG_IsNewObj(timeconvert))  delete arg1;
-  // %typemap(freearg) cmf::math::Time *
-  if (SWIG_IsNewObj(timeconvert_r))  delete arg2;
+  delete arg1;
+  {
+    // %typemap(freearg) cmf::math::Time &
+    delete arg2;
+  }
   return NULL;
 }
 
@@ -9306,10 +9418,14 @@ SWIGINTERN PyObject *_wrap_Time___imul____SWIG_0(PyObject *SWIGUNUSEDPARM(self),
   cmf::math::Time *result = 0 ;
   
   if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
-  // typemap Time*
-  int timeconvert=convert_datetime_to_cmftime(swig_obj[0], &arg1);
-  if (!SWIG_IsOK(timeconvert))  {
-    SWIG_exception_fail(SWIG_TypeError,"Can't convert input value to cmf.Time object");
+  {
+    // typemap Time*
+    int timeconvert=convert_datetime_to_cmftime(swig_obj[0], &arg1);
+    if (!SWIG_IsOK(timeconvert))  {
+      SWIG_exception_fail(SWIG_TypeError,"Can't convert input value to cmf.Time object");
+    } else if (!SWIG_IsOldObj(timeconvert)) {
+      arg1 = new cmf::math::Time(*arg1);
+    }
   }
   ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
   if (!SWIG_IsOK(ecode2)) {
@@ -9332,11 +9448,11 @@ SWIGINTERN PyObject *_wrap_Time___imul____SWIG_0(PyObject *SWIGUNUSEDPARM(self),
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_cmf__math__Time, SWIG_POINTER_OWN |  0 );
   // %typemap(freearg) cmf::math::Time *
-  if (SWIG_IsNewObj(timeconvert))  delete arg1;
+  delete arg1;
   return resultobj;
 fail:
   // %typemap(freearg) cmf::math::Time *
-  if (SWIG_IsNewObj(timeconvert))  delete arg1;
+  delete arg1;
   return NULL;
 }
 
@@ -9350,10 +9466,14 @@ SWIGINTERN PyObject *_wrap_Time___idiv____SWIG_0(PyObject *SWIGUNUSEDPARM(self),
   cmf::math::Time *result = 0 ;
   
   if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
-  // typemap Time*
-  int timeconvert=convert_datetime_to_cmftime(swig_obj[0], &arg1);
-  if (!SWIG_IsOK(timeconvert))  {
-    SWIG_exception_fail(SWIG_TypeError,"Can't convert input value to cmf.Time object");
+  {
+    // typemap Time*
+    int timeconvert=convert_datetime_to_cmftime(swig_obj[0], &arg1);
+    if (!SWIG_IsOK(timeconvert))  {
+      SWIG_exception_fail(SWIG_TypeError,"Can't convert input value to cmf.Time object");
+    } else if (!SWIG_IsOldObj(timeconvert)) {
+      arg1 = new cmf::math::Time(*arg1);
+    }
   }
   ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
   if (!SWIG_IsOK(ecode2)) {
@@ -9376,11 +9496,11 @@ SWIGINTERN PyObject *_wrap_Time___idiv____SWIG_0(PyObject *SWIGUNUSEDPARM(self),
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_cmf__math__Time, SWIG_POINTER_OWN |  0 );
   // %typemap(freearg) cmf::math::Time *
-  if (SWIG_IsNewObj(timeconvert))  delete arg1;
+  delete arg1;
   return resultobj;
 fail:
   // %typemap(freearg) cmf::math::Time *
-  if (SWIG_IsNewObj(timeconvert))  delete arg1;
+  delete arg1;
   return NULL;
 }
 
@@ -9394,10 +9514,14 @@ SWIGINTERN PyObject *_wrap_Time___mul____SWIG_1(PyObject *SWIGUNUSEDPARM(self), 
   cmf::math::Time result;
   
   if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
-  // typemap Time*
-  int timeconvert=convert_datetime_to_cmftime(swig_obj[0], &arg1);
-  if (!SWIG_IsOK(timeconvert))  {
-    SWIG_exception_fail(SWIG_TypeError,"Can't convert input value to cmf.Time object");
+  {
+    // typemap Time*
+    int timeconvert=convert_datetime_to_cmftime(swig_obj[0], &arg1);
+    if (!SWIG_IsOK(timeconvert))  {
+      SWIG_exception_fail(SWIG_TypeError,"Can't convert input value to cmf.Time object");
+    } else if (!SWIG_IsOldObj(timeconvert)) {
+      arg1 = new cmf::math::Time(*arg1);
+    }
   }
   ecode2 = SWIG_AsVal_long_SS_long(swig_obj[1], &val2);
   if (!SWIG_IsOK(ecode2)) {
@@ -9420,11 +9544,11 @@ SWIGINTERN PyObject *_wrap_Time___mul____SWIG_1(PyObject *SWIGUNUSEDPARM(self), 
   }
   resultobj = SWIG_NewPointerObj((new cmf::math::Time(static_cast< const cmf::math::Time& >(result))), SWIGTYPE_p_cmf__math__Time, SWIG_POINTER_OWN |  0 );
   // %typemap(freearg) cmf::math::Time *
-  if (SWIG_IsNewObj(timeconvert))  delete arg1;
+  delete arg1;
   return resultobj;
 fail:
   // %typemap(freearg) cmf::math::Time *
-  if (SWIG_IsNewObj(timeconvert))  delete arg1;
+  delete arg1;
   return NULL;
 }
 
@@ -9438,10 +9562,14 @@ SWIGINTERN PyObject *_wrap_Time___div____SWIG_1(PyObject *SWIGUNUSEDPARM(self), 
   cmf::math::Time result;
   
   if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
-  // typemap Time*
-  int timeconvert=convert_datetime_to_cmftime(swig_obj[0], &arg1);
-  if (!SWIG_IsOK(timeconvert))  {
-    SWIG_exception_fail(SWIG_TypeError,"Can't convert input value to cmf.Time object");
+  {
+    // typemap Time*
+    int timeconvert=convert_datetime_to_cmftime(swig_obj[0], &arg1);
+    if (!SWIG_IsOK(timeconvert))  {
+      SWIG_exception_fail(SWIG_TypeError,"Can't convert input value to cmf.Time object");
+    } else if (!SWIG_IsOldObj(timeconvert)) {
+      arg1 = new cmf::math::Time(*arg1);
+    }
   }
   ecode2 = SWIG_AsVal_long_SS_long(swig_obj[1], &val2);
   if (!SWIG_IsOK(ecode2)) {
@@ -9464,11 +9592,11 @@ SWIGINTERN PyObject *_wrap_Time___div____SWIG_1(PyObject *SWIGUNUSEDPARM(self), 
   }
   resultobj = SWIG_NewPointerObj((new cmf::math::Time(static_cast< const cmf::math::Time& >(result))), SWIGTYPE_p_cmf__math__Time, SWIG_POINTER_OWN |  0 );
   // %typemap(freearg) cmf::math::Time *
-  if (SWIG_IsNewObj(timeconvert))  delete arg1;
+  delete arg1;
   return resultobj;
 fail:
   // %typemap(freearg) cmf::math::Time *
-  if (SWIG_IsNewObj(timeconvert))  delete arg1;
+  delete arg1;
   return NULL;
 }
 
@@ -9482,10 +9610,14 @@ SWIGINTERN PyObject *_wrap_Time___imul____SWIG_1(PyObject *SWIGUNUSEDPARM(self),
   cmf::math::Time *result = 0 ;
   
   if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
-  // typemap Time*
-  int timeconvert=convert_datetime_to_cmftime(swig_obj[0], &arg1);
-  if (!SWIG_IsOK(timeconvert))  {
-    SWIG_exception_fail(SWIG_TypeError,"Can't convert input value to cmf.Time object");
+  {
+    // typemap Time*
+    int timeconvert=convert_datetime_to_cmftime(swig_obj[0], &arg1);
+    if (!SWIG_IsOK(timeconvert))  {
+      SWIG_exception_fail(SWIG_TypeError,"Can't convert input value to cmf.Time object");
+    } else if (!SWIG_IsOldObj(timeconvert)) {
+      arg1 = new cmf::math::Time(*arg1);
+    }
   }
   ecode2 = SWIG_AsVal_long_SS_long(swig_obj[1], &val2);
   if (!SWIG_IsOK(ecode2)) {
@@ -9508,11 +9640,11 @@ SWIGINTERN PyObject *_wrap_Time___imul____SWIG_1(PyObject *SWIGUNUSEDPARM(self),
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_cmf__math__Time, SWIG_POINTER_OWN |  0 );
   // %typemap(freearg) cmf::math::Time *
-  if (SWIG_IsNewObj(timeconvert))  delete arg1;
+  delete arg1;
   return resultobj;
 fail:
   // %typemap(freearg) cmf::math::Time *
-  if (SWIG_IsNewObj(timeconvert))  delete arg1;
+  delete arg1;
   return NULL;
 }
 
@@ -9526,10 +9658,14 @@ SWIGINTERN PyObject *_wrap_Time___idiv____SWIG_1(PyObject *SWIGUNUSEDPARM(self),
   cmf::math::Time *result = 0 ;
   
   if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
-  // typemap Time*
-  int timeconvert=convert_datetime_to_cmftime(swig_obj[0], &arg1);
-  if (!SWIG_IsOK(timeconvert))  {
-    SWIG_exception_fail(SWIG_TypeError,"Can't convert input value to cmf.Time object");
+  {
+    // typemap Time*
+    int timeconvert=convert_datetime_to_cmftime(swig_obj[0], &arg1);
+    if (!SWIG_IsOK(timeconvert))  {
+      SWIG_exception_fail(SWIG_TypeError,"Can't convert input value to cmf.Time object");
+    } else if (!SWIG_IsOldObj(timeconvert)) {
+      arg1 = new cmf::math::Time(*arg1);
+    }
   }
   ecode2 = SWIG_AsVal_long_SS_long(swig_obj[1], &val2);
   if (!SWIG_IsOK(ecode2)) {
@@ -9552,11 +9688,11 @@ SWIGINTERN PyObject *_wrap_Time___idiv____SWIG_1(PyObject *SWIGUNUSEDPARM(self),
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_cmf__math__Time, SWIG_POINTER_OWN |  0 );
   // %typemap(freearg) cmf::math::Time *
-  if (SWIG_IsNewObj(timeconvert))  delete arg1;
+  delete arg1;
   return resultobj;
 fail:
   // %typemap(freearg) cmf::math::Time *
-  if (SWIG_IsNewObj(timeconvert))  delete arg1;
+  delete arg1;
   return NULL;
 }
 
@@ -9570,10 +9706,14 @@ SWIGINTERN PyObject *_wrap_Time___mul____SWIG_2(PyObject *SWIGUNUSEDPARM(self), 
   cmf::math::Time result;
   
   if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
-  // typemap Time*
-  int timeconvert=convert_datetime_to_cmftime(swig_obj[0], &arg1);
-  if (!SWIG_IsOK(timeconvert))  {
-    SWIG_exception_fail(SWIG_TypeError,"Can't convert input value to cmf.Time object");
+  {
+    // typemap Time*
+    int timeconvert=convert_datetime_to_cmftime(swig_obj[0], &arg1);
+    if (!SWIG_IsOK(timeconvert))  {
+      SWIG_exception_fail(SWIG_TypeError,"Can't convert input value to cmf.Time object");
+    } else if (!SWIG_IsOldObj(timeconvert)) {
+      arg1 = new cmf::math::Time(*arg1);
+    }
   }
   ecode2 = SWIG_AsVal_int(swig_obj[1], &val2);
   if (!SWIG_IsOK(ecode2)) {
@@ -9596,11 +9736,11 @@ SWIGINTERN PyObject *_wrap_Time___mul____SWIG_2(PyObject *SWIGUNUSEDPARM(self), 
   }
   resultobj = SWIG_NewPointerObj((new cmf::math::Time(static_cast< const cmf::math::Time& >(result))), SWIGTYPE_p_cmf__math__Time, SWIG_POINTER_OWN |  0 );
   // %typemap(freearg) cmf::math::Time *
-  if (SWIG_IsNewObj(timeconvert))  delete arg1;
+  delete arg1;
   return resultobj;
 fail:
   // %typemap(freearg) cmf::math::Time *
-  if (SWIG_IsNewObj(timeconvert))  delete arg1;
+  delete arg1;
   return NULL;
 }
 
@@ -9739,10 +9879,14 @@ SWIGINTERN PyObject *_wrap_Time___div____SWIG_2(PyObject *SWIGUNUSEDPARM(self), 
   cmf::math::Time result;
   
   if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
-  // typemap Time*
-  int timeconvert=convert_datetime_to_cmftime(swig_obj[0], &arg1);
-  if (!SWIG_IsOK(timeconvert))  {
-    SWIG_exception_fail(SWIG_TypeError,"Can't convert input value to cmf.Time object");
+  {
+    // typemap Time*
+    int timeconvert=convert_datetime_to_cmftime(swig_obj[0], &arg1);
+    if (!SWIG_IsOK(timeconvert))  {
+      SWIG_exception_fail(SWIG_TypeError,"Can't convert input value to cmf.Time object");
+    } else if (!SWIG_IsOldObj(timeconvert)) {
+      arg1 = new cmf::math::Time(*arg1);
+    }
   }
   ecode2 = SWIG_AsVal_int(swig_obj[1], &val2);
   if (!SWIG_IsOK(ecode2)) {
@@ -9765,11 +9909,11 @@ SWIGINTERN PyObject *_wrap_Time___div____SWIG_2(PyObject *SWIGUNUSEDPARM(self), 
   }
   resultobj = SWIG_NewPointerObj((new cmf::math::Time(static_cast< const cmf::math::Time& >(result))), SWIGTYPE_p_cmf__math__Time, SWIG_POINTER_OWN |  0 );
   // %typemap(freearg) cmf::math::Time *
-  if (SWIG_IsNewObj(timeconvert))  delete arg1;
+  delete arg1;
   return resultobj;
 fail:
   // %typemap(freearg) cmf::math::Time *
-  if (SWIG_IsNewObj(timeconvert))  delete arg1;
+  delete arg1;
   return NULL;
 }
 
@@ -9783,10 +9927,14 @@ SWIGINTERN PyObject *_wrap_Time___imul____SWIG_2(PyObject *SWIGUNUSEDPARM(self),
   cmf::math::Time *result = 0 ;
   
   if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
-  // typemap Time*
-  int timeconvert=convert_datetime_to_cmftime(swig_obj[0], &arg1);
-  if (!SWIG_IsOK(timeconvert))  {
-    SWIG_exception_fail(SWIG_TypeError,"Can't convert input value to cmf.Time object");
+  {
+    // typemap Time*
+    int timeconvert=convert_datetime_to_cmftime(swig_obj[0], &arg1);
+    if (!SWIG_IsOK(timeconvert))  {
+      SWIG_exception_fail(SWIG_TypeError,"Can't convert input value to cmf.Time object");
+    } else if (!SWIG_IsOldObj(timeconvert)) {
+      arg1 = new cmf::math::Time(*arg1);
+    }
   }
   ecode2 = SWIG_AsVal_int(swig_obj[1], &val2);
   if (!SWIG_IsOK(ecode2)) {
@@ -9809,11 +9957,11 @@ SWIGINTERN PyObject *_wrap_Time___imul____SWIG_2(PyObject *SWIGUNUSEDPARM(self),
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_cmf__math__Time, SWIG_POINTER_OWN |  0 );
   // %typemap(freearg) cmf::math::Time *
-  if (SWIG_IsNewObj(timeconvert))  delete arg1;
+  delete arg1;
   return resultobj;
 fail:
   // %typemap(freearg) cmf::math::Time *
-  if (SWIG_IsNewObj(timeconvert))  delete arg1;
+  delete arg1;
   return NULL;
 }
 
@@ -9956,10 +10104,14 @@ SWIGINTERN PyObject *_wrap_Time___idiv____SWIG_2(PyObject *SWIGUNUSEDPARM(self),
   cmf::math::Time *result = 0 ;
   
   if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
-  // typemap Time*
-  int timeconvert=convert_datetime_to_cmftime(swig_obj[0], &arg1);
-  if (!SWIG_IsOK(timeconvert))  {
-    SWIG_exception_fail(SWIG_TypeError,"Can't convert input value to cmf.Time object");
+  {
+    // typemap Time*
+    int timeconvert=convert_datetime_to_cmftime(swig_obj[0], &arg1);
+    if (!SWIG_IsOK(timeconvert))  {
+      SWIG_exception_fail(SWIG_TypeError,"Can't convert input value to cmf.Time object");
+    } else if (!SWIG_IsOldObj(timeconvert)) {
+      arg1 = new cmf::math::Time(*arg1);
+    }
   }
   ecode2 = SWIG_AsVal_int(swig_obj[1], &val2);
   if (!SWIG_IsOK(ecode2)) {
@@ -9982,11 +10134,11 @@ SWIGINTERN PyObject *_wrap_Time___idiv____SWIG_2(PyObject *SWIGUNUSEDPARM(self),
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_cmf__math__Time, SWIG_POINTER_OWN |  0 );
   // %typemap(freearg) cmf::math::Time *
-  if (SWIG_IsNewObj(timeconvert))  delete arg1;
+  delete arg1;
   return resultobj;
 fail:
   // %typemap(freearg) cmf::math::Time *
-  if (SWIG_IsNewObj(timeconvert))  delete arg1;
+  delete arg1;
   return NULL;
 }
 
@@ -10132,15 +10284,23 @@ SWIGINTERN PyObject *_wrap_Time___imod__(PyObject *SWIGUNUSEDPARM(self), PyObjec
   cmf::math::Time *result = 0 ;
   
   if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"OO:Time___imod__",kwnames,&obj0,&obj1)) SWIG_fail;
-  // typemap Time*
-  int timeconvert=convert_datetime_to_cmftime(obj0, &arg1);
-  if (!SWIG_IsOK(timeconvert))  {
-    SWIG_exception_fail(SWIG_TypeError,"Can't convert input value to cmf.Time object");
+  {
+    // typemap Time*
+    int timeconvert=convert_datetime_to_cmftime(obj0, &arg1);
+    if (!SWIG_IsOK(timeconvert))  {
+      SWIG_exception_fail(SWIG_TypeError,"Can't convert input value to cmf.Time object");
+    } else if (!SWIG_IsOldObj(timeconvert)) {
+      arg1 = new cmf::math::Time(*arg1);
+    }
   }
-  // typemap Time&
-  int timeconvert_r=convert_datetime_to_cmftime(obj1, &arg2);
-  if (!SWIG_IsOK(timeconvert_r))  {
-    SWIG_exception_fail(SWIG_TypeError,"Can't convert input value to cmf.Time object");
+  {
+    // typemap Time&
+    int timeconvert_r=convert_datetime_to_cmftime(obj1, &arg2);
+    if (!SWIG_IsOK(timeconvert_r))  {
+      SWIG_exception_fail(SWIG_TypeError,"Can't convert input value to cmf.Time object");
+    } else if (!SWIG_IsOldObj(timeconvert_r)) {
+      arg2 = new cmf::math::Time(*arg2);
+    }
   }
   {
     try {
@@ -10158,15 +10318,19 @@ SWIGINTERN PyObject *_wrap_Time___imod__(PyObject *SWIGUNUSEDPARM(self), PyObjec
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_cmf__math__Time, SWIG_POINTER_OWN |  0 );
   // %typemap(freearg) cmf::math::Time *
-  if (SWIG_IsNewObj(timeconvert))  delete arg1;
-  // %typemap(freearg) cmf::math::Time *
-  if (SWIG_IsNewObj(timeconvert_r))  delete arg2;
+  delete arg1;
+  {
+    // %typemap(freearg) cmf::math::Time &
+    delete arg2;
+  }
   return resultobj;
 fail:
   // %typemap(freearg) cmf::math::Time *
-  if (SWIG_IsNewObj(timeconvert))  delete arg1;
-  // %typemap(freearg) cmf::math::Time *
-  if (SWIG_IsNewObj(timeconvert_r))  delete arg2;
+  delete arg1;
+  {
+    // %typemap(freearg) cmf::math::Time &
+    delete arg2;
+  }
   return NULL;
 }
 
@@ -10178,15 +10342,23 @@ SWIGINTERN PyObject *_wrap_Time___div____SWIG_3(PyObject *SWIGUNUSEDPARM(self), 
   double result;
   
   if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
-  // typemap Time*
-  int timeconvert=convert_datetime_to_cmftime(swig_obj[0], &arg1);
-  if (!SWIG_IsOK(timeconvert))  {
-    SWIG_exception_fail(SWIG_TypeError,"Can't convert input value to cmf.Time object");
+  {
+    // typemap Time*
+    int timeconvert=convert_datetime_to_cmftime(swig_obj[0], &arg1);
+    if (!SWIG_IsOK(timeconvert))  {
+      SWIG_exception_fail(SWIG_TypeError,"Can't convert input value to cmf.Time object");
+    } else if (!SWIG_IsOldObj(timeconvert)) {
+      arg1 = new cmf::math::Time(*arg1);
+    }
   }
-  // typemap Time&
-  int timeconvert_r=convert_datetime_to_cmftime(swig_obj[1], &arg2);
-  if (!SWIG_IsOK(timeconvert_r))  {
-    SWIG_exception_fail(SWIG_TypeError,"Can't convert input value to cmf.Time object");
+  {
+    // typemap Time&
+    int timeconvert_r=convert_datetime_to_cmftime(swig_obj[1], &arg2);
+    if (!SWIG_IsOK(timeconvert_r))  {
+      SWIG_exception_fail(SWIG_TypeError,"Can't convert input value to cmf.Time object");
+    } else if (!SWIG_IsOldObj(timeconvert_r)) {
+      arg2 = new cmf::math::Time(*arg2);
+    }
   }
   {
     try {
@@ -10204,15 +10376,19 @@ SWIGINTERN PyObject *_wrap_Time___div____SWIG_3(PyObject *SWIGUNUSEDPARM(self), 
   }
   resultobj = SWIG_From_double(static_cast< double >(result));
   // %typemap(freearg) cmf::math::Time *
-  if (SWIG_IsNewObj(timeconvert))  delete arg1;
-  // %typemap(freearg) cmf::math::Time *
-  if (SWIG_IsNewObj(timeconvert_r))  delete arg2;
+  delete arg1;
+  {
+    // %typemap(freearg) cmf::math::Time &
+    delete arg2;
+  }
   return resultobj;
 fail:
   // %typemap(freearg) cmf::math::Time *
-  if (SWIG_IsNewObj(timeconvert))  delete arg1;
-  // %typemap(freearg) cmf::math::Time *
-  if (SWIG_IsNewObj(timeconvert_r))  delete arg2;
+  delete arg1;
+  {
+    // %typemap(freearg) cmf::math::Time &
+    delete arg2;
+  }
   return NULL;
 }
 
@@ -10390,15 +10566,23 @@ SWIGINTERN PyObject *_wrap_Time_times_in(PyObject *SWIGUNUSEDPARM(self), PyObjec
   long long result;
   
   if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"OO:Time_times_in",kwnames,&obj0,&obj1)) SWIG_fail;
-  // typemap Time*
-  int timeconvert=convert_datetime_to_cmftime(obj0, &arg1);
-  if (!SWIG_IsOK(timeconvert))  {
-    SWIG_exception_fail(SWIG_TypeError,"Can't convert input value to cmf.Time object");
+  {
+    // typemap Time*
+    int timeconvert=convert_datetime_to_cmftime(obj0, &arg1);
+    if (!SWIG_IsOK(timeconvert))  {
+      SWIG_exception_fail(SWIG_TypeError,"Can't convert input value to cmf.Time object");
+    } else if (!SWIG_IsOldObj(timeconvert)) {
+      arg1 = new cmf::math::Time(*arg1);
+    }
   }
-  // typemap Time&
-  int timeconvert_r=convert_datetime_to_cmftime(obj1, &arg2);
-  if (!SWIG_IsOK(timeconvert_r))  {
-    SWIG_exception_fail(SWIG_TypeError,"Can't convert input value to cmf.Time object");
+  {
+    // typemap Time&
+    int timeconvert_r=convert_datetime_to_cmftime(obj1, &arg2);
+    if (!SWIG_IsOK(timeconvert_r))  {
+      SWIG_exception_fail(SWIG_TypeError,"Can't convert input value to cmf.Time object");
+    } else if (!SWIG_IsOldObj(timeconvert_r)) {
+      arg2 = new cmf::math::Time(*arg2);
+    }
   }
   {
     try {
@@ -10416,15 +10600,19 @@ SWIGINTERN PyObject *_wrap_Time_times_in(PyObject *SWIGUNUSEDPARM(self), PyObjec
   }
   resultobj = SWIG_From_long_SS_long(static_cast< long long >(result));
   // %typemap(freearg) cmf::math::Time *
-  if (SWIG_IsNewObj(timeconvert))  delete arg1;
-  // %typemap(freearg) cmf::math::Time *
-  if (SWIG_IsNewObj(timeconvert_r))  delete arg2;
+  delete arg1;
+  {
+    // %typemap(freearg) cmf::math::Time &
+    delete arg2;
+  }
   return resultobj;
 fail:
   // %typemap(freearg) cmf::math::Time *
-  if (SWIG_IsNewObj(timeconvert))  delete arg1;
-  // %typemap(freearg) cmf::math::Time *
-  if (SWIG_IsNewObj(timeconvert_r))  delete arg2;
+  delete arg1;
+  {
+    // %typemap(freearg) cmf::math::Time &
+    delete arg2;
+  }
   return NULL;
 }
 
@@ -10441,15 +10629,23 @@ SWIGINTERN PyObject *_wrap_Time___lt__(PyObject *SWIGUNUSEDPARM(self), PyObject 
   bool result;
   
   if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"OO:Time___lt__",kwnames,&obj0,&obj1)) SWIG_fail;
-  // typemap Time*
-  int timeconvert=convert_datetime_to_cmftime(obj0, &arg1);
-  if (!SWIG_IsOK(timeconvert))  {
-    SWIG_exception_fail(SWIG_TypeError,"Can't convert input value to cmf.Time object");
+  {
+    // typemap Time*
+    int timeconvert=convert_datetime_to_cmftime(obj0, &arg1);
+    if (!SWIG_IsOK(timeconvert))  {
+      SWIG_exception_fail(SWIG_TypeError,"Can't convert input value to cmf.Time object");
+    } else if (!SWIG_IsOldObj(timeconvert)) {
+      arg1 = new cmf::math::Time(*arg1);
+    }
   }
-  // typemap Time&
-  int timeconvert_r=convert_datetime_to_cmftime(obj1, &arg2);
-  if (!SWIG_IsOK(timeconvert_r))  {
-    SWIG_exception_fail(SWIG_TypeError,"Can't convert input value to cmf.Time object");
+  {
+    // typemap Time&
+    int timeconvert_r=convert_datetime_to_cmftime(obj1, &arg2);
+    if (!SWIG_IsOK(timeconvert_r))  {
+      SWIG_exception_fail(SWIG_TypeError,"Can't convert input value to cmf.Time object");
+    } else if (!SWIG_IsOldObj(timeconvert_r)) {
+      arg2 = new cmf::math::Time(*arg2);
+    }
   }
   {
     try {
@@ -10467,15 +10663,19 @@ SWIGINTERN PyObject *_wrap_Time___lt__(PyObject *SWIGUNUSEDPARM(self), PyObject 
   }
   resultobj = SWIG_From_bool(static_cast< bool >(result));
   // %typemap(freearg) cmf::math::Time *
-  if (SWIG_IsNewObj(timeconvert))  delete arg1;
-  // %typemap(freearg) cmf::math::Time *
-  if (SWIG_IsNewObj(timeconvert_r))  delete arg2;
+  delete arg1;
+  {
+    // %typemap(freearg) cmf::math::Time &
+    delete arg2;
+  }
   return resultobj;
 fail:
   // %typemap(freearg) cmf::math::Time *
-  if (SWIG_IsNewObj(timeconvert))  delete arg1;
-  // %typemap(freearg) cmf::math::Time *
-  if (SWIG_IsNewObj(timeconvert_r))  delete arg2;
+  delete arg1;
+  {
+    // %typemap(freearg) cmf::math::Time &
+    delete arg2;
+  }
   return NULL;
 }
 
@@ -10492,15 +10692,23 @@ SWIGINTERN PyObject *_wrap_Time___gt__(PyObject *SWIGUNUSEDPARM(self), PyObject 
   bool result;
   
   if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"OO:Time___gt__",kwnames,&obj0,&obj1)) SWIG_fail;
-  // typemap Time*
-  int timeconvert=convert_datetime_to_cmftime(obj0, &arg1);
-  if (!SWIG_IsOK(timeconvert))  {
-    SWIG_exception_fail(SWIG_TypeError,"Can't convert input value to cmf.Time object");
+  {
+    // typemap Time*
+    int timeconvert=convert_datetime_to_cmftime(obj0, &arg1);
+    if (!SWIG_IsOK(timeconvert))  {
+      SWIG_exception_fail(SWIG_TypeError,"Can't convert input value to cmf.Time object");
+    } else if (!SWIG_IsOldObj(timeconvert)) {
+      arg1 = new cmf::math::Time(*arg1);
+    }
   }
-  // typemap Time&
-  int timeconvert_r=convert_datetime_to_cmftime(obj1, &arg2);
-  if (!SWIG_IsOK(timeconvert_r))  {
-    SWIG_exception_fail(SWIG_TypeError,"Can't convert input value to cmf.Time object");
+  {
+    // typemap Time&
+    int timeconvert_r=convert_datetime_to_cmftime(obj1, &arg2);
+    if (!SWIG_IsOK(timeconvert_r))  {
+      SWIG_exception_fail(SWIG_TypeError,"Can't convert input value to cmf.Time object");
+    } else if (!SWIG_IsOldObj(timeconvert_r)) {
+      arg2 = new cmf::math::Time(*arg2);
+    }
   }
   {
     try {
@@ -10518,15 +10726,19 @@ SWIGINTERN PyObject *_wrap_Time___gt__(PyObject *SWIGUNUSEDPARM(self), PyObject 
   }
   resultobj = SWIG_From_bool(static_cast< bool >(result));
   // %typemap(freearg) cmf::math::Time *
-  if (SWIG_IsNewObj(timeconvert))  delete arg1;
-  // %typemap(freearg) cmf::math::Time *
-  if (SWIG_IsNewObj(timeconvert_r))  delete arg2;
+  delete arg1;
+  {
+    // %typemap(freearg) cmf::math::Time &
+    delete arg2;
+  }
   return resultobj;
 fail:
   // %typemap(freearg) cmf::math::Time *
-  if (SWIG_IsNewObj(timeconvert))  delete arg1;
-  // %typemap(freearg) cmf::math::Time *
-  if (SWIG_IsNewObj(timeconvert_r))  delete arg2;
+  delete arg1;
+  {
+    // %typemap(freearg) cmf::math::Time &
+    delete arg2;
+  }
   return NULL;
 }
 
@@ -10543,15 +10755,23 @@ SWIGINTERN PyObject *_wrap_Time___le__(PyObject *SWIGUNUSEDPARM(self), PyObject 
   bool result;
   
   if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"OO:Time___le__",kwnames,&obj0,&obj1)) SWIG_fail;
-  // typemap Time*
-  int timeconvert=convert_datetime_to_cmftime(obj0, &arg1);
-  if (!SWIG_IsOK(timeconvert))  {
-    SWIG_exception_fail(SWIG_TypeError,"Can't convert input value to cmf.Time object");
+  {
+    // typemap Time*
+    int timeconvert=convert_datetime_to_cmftime(obj0, &arg1);
+    if (!SWIG_IsOK(timeconvert))  {
+      SWIG_exception_fail(SWIG_TypeError,"Can't convert input value to cmf.Time object");
+    } else if (!SWIG_IsOldObj(timeconvert)) {
+      arg1 = new cmf::math::Time(*arg1);
+    }
   }
-  // typemap Time&
-  int timeconvert_r=convert_datetime_to_cmftime(obj1, &arg2);
-  if (!SWIG_IsOK(timeconvert_r))  {
-    SWIG_exception_fail(SWIG_TypeError,"Can't convert input value to cmf.Time object");
+  {
+    // typemap Time&
+    int timeconvert_r=convert_datetime_to_cmftime(obj1, &arg2);
+    if (!SWIG_IsOK(timeconvert_r))  {
+      SWIG_exception_fail(SWIG_TypeError,"Can't convert input value to cmf.Time object");
+    } else if (!SWIG_IsOldObj(timeconvert_r)) {
+      arg2 = new cmf::math::Time(*arg2);
+    }
   }
   {
     try {
@@ -10569,15 +10789,19 @@ SWIGINTERN PyObject *_wrap_Time___le__(PyObject *SWIGUNUSEDPARM(self), PyObject 
   }
   resultobj = SWIG_From_bool(static_cast< bool >(result));
   // %typemap(freearg) cmf::math::Time *
-  if (SWIG_IsNewObj(timeconvert))  delete arg1;
-  // %typemap(freearg) cmf::math::Time *
-  if (SWIG_IsNewObj(timeconvert_r))  delete arg2;
+  delete arg1;
+  {
+    // %typemap(freearg) cmf::math::Time &
+    delete arg2;
+  }
   return resultobj;
 fail:
   // %typemap(freearg) cmf::math::Time *
-  if (SWIG_IsNewObj(timeconvert))  delete arg1;
-  // %typemap(freearg) cmf::math::Time *
-  if (SWIG_IsNewObj(timeconvert_r))  delete arg2;
+  delete arg1;
+  {
+    // %typemap(freearg) cmf::math::Time &
+    delete arg2;
+  }
   return NULL;
 }
 
@@ -10594,15 +10818,23 @@ SWIGINTERN PyObject *_wrap_Time___ge__(PyObject *SWIGUNUSEDPARM(self), PyObject 
   bool result;
   
   if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"OO:Time___ge__",kwnames,&obj0,&obj1)) SWIG_fail;
-  // typemap Time*
-  int timeconvert=convert_datetime_to_cmftime(obj0, &arg1);
-  if (!SWIG_IsOK(timeconvert))  {
-    SWIG_exception_fail(SWIG_TypeError,"Can't convert input value to cmf.Time object");
+  {
+    // typemap Time*
+    int timeconvert=convert_datetime_to_cmftime(obj0, &arg1);
+    if (!SWIG_IsOK(timeconvert))  {
+      SWIG_exception_fail(SWIG_TypeError,"Can't convert input value to cmf.Time object");
+    } else if (!SWIG_IsOldObj(timeconvert)) {
+      arg1 = new cmf::math::Time(*arg1);
+    }
   }
-  // typemap Time&
-  int timeconvert_r=convert_datetime_to_cmftime(obj1, &arg2);
-  if (!SWIG_IsOK(timeconvert_r))  {
-    SWIG_exception_fail(SWIG_TypeError,"Can't convert input value to cmf.Time object");
+  {
+    // typemap Time&
+    int timeconvert_r=convert_datetime_to_cmftime(obj1, &arg2);
+    if (!SWIG_IsOK(timeconvert_r))  {
+      SWIG_exception_fail(SWIG_TypeError,"Can't convert input value to cmf.Time object");
+    } else if (!SWIG_IsOldObj(timeconvert_r)) {
+      arg2 = new cmf::math::Time(*arg2);
+    }
   }
   {
     try {
@@ -10620,15 +10852,19 @@ SWIGINTERN PyObject *_wrap_Time___ge__(PyObject *SWIGUNUSEDPARM(self), PyObject 
   }
   resultobj = SWIG_From_bool(static_cast< bool >(result));
   // %typemap(freearg) cmf::math::Time *
-  if (SWIG_IsNewObj(timeconvert))  delete arg1;
-  // %typemap(freearg) cmf::math::Time *
-  if (SWIG_IsNewObj(timeconvert_r))  delete arg2;
+  delete arg1;
+  {
+    // %typemap(freearg) cmf::math::Time &
+    delete arg2;
+  }
   return resultobj;
 fail:
   // %typemap(freearg) cmf::math::Time *
-  if (SWIG_IsNewObj(timeconvert))  delete arg1;
-  // %typemap(freearg) cmf::math::Time *
-  if (SWIG_IsNewObj(timeconvert_r))  delete arg2;
+  delete arg1;
+  {
+    // %typemap(freearg) cmf::math::Time &
+    delete arg2;
+  }
   return NULL;
 }
 
@@ -10645,15 +10881,23 @@ SWIGINTERN PyObject *_wrap_Time___eq__(PyObject *SWIGUNUSEDPARM(self), PyObject 
   bool result;
   
   if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"OO:Time___eq__",kwnames,&obj0,&obj1)) SWIG_fail;
-  // typemap Time*
-  int timeconvert=convert_datetime_to_cmftime(obj0, &arg1);
-  if (!SWIG_IsOK(timeconvert))  {
-    SWIG_exception_fail(SWIG_TypeError,"Can't convert input value to cmf.Time object");
+  {
+    // typemap Time*
+    int timeconvert=convert_datetime_to_cmftime(obj0, &arg1);
+    if (!SWIG_IsOK(timeconvert))  {
+      SWIG_exception_fail(SWIG_TypeError,"Can't convert input value to cmf.Time object");
+    } else if (!SWIG_IsOldObj(timeconvert)) {
+      arg1 = new cmf::math::Time(*arg1);
+    }
   }
-  // typemap Time&
-  int timeconvert_r=convert_datetime_to_cmftime(obj1, &arg2);
-  if (!SWIG_IsOK(timeconvert_r))  {
-    SWIG_exception_fail(SWIG_TypeError,"Can't convert input value to cmf.Time object");
+  {
+    // typemap Time&
+    int timeconvert_r=convert_datetime_to_cmftime(obj1, &arg2);
+    if (!SWIG_IsOK(timeconvert_r))  {
+      SWIG_exception_fail(SWIG_TypeError,"Can't convert input value to cmf.Time object");
+    } else if (!SWIG_IsOldObj(timeconvert_r)) {
+      arg2 = new cmf::math::Time(*arg2);
+    }
   }
   {
     try {
@@ -10671,15 +10915,19 @@ SWIGINTERN PyObject *_wrap_Time___eq__(PyObject *SWIGUNUSEDPARM(self), PyObject 
   }
   resultobj = SWIG_From_bool(static_cast< bool >(result));
   // %typemap(freearg) cmf::math::Time *
-  if (SWIG_IsNewObj(timeconvert))  delete arg1;
-  // %typemap(freearg) cmf::math::Time *
-  if (SWIG_IsNewObj(timeconvert_r))  delete arg2;
+  delete arg1;
+  {
+    // %typemap(freearg) cmf::math::Time &
+    delete arg2;
+  }
   return resultobj;
 fail:
   // %typemap(freearg) cmf::math::Time *
-  if (SWIG_IsNewObj(timeconvert))  delete arg1;
-  // %typemap(freearg) cmf::math::Time *
-  if (SWIG_IsNewObj(timeconvert_r))  delete arg2;
+  delete arg1;
+  {
+    // %typemap(freearg) cmf::math::Time &
+    delete arg2;
+  }
   return NULL;
 }
 
@@ -10696,15 +10944,23 @@ SWIGINTERN PyObject *_wrap_Time___ne__(PyObject *SWIGUNUSEDPARM(self), PyObject 
   bool result;
   
   if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"OO:Time___ne__",kwnames,&obj0,&obj1)) SWIG_fail;
-  // typemap Time*
-  int timeconvert=convert_datetime_to_cmftime(obj0, &arg1);
-  if (!SWIG_IsOK(timeconvert))  {
-    SWIG_exception_fail(SWIG_TypeError,"Can't convert input value to cmf.Time object");
+  {
+    // typemap Time*
+    int timeconvert=convert_datetime_to_cmftime(obj0, &arg1);
+    if (!SWIG_IsOK(timeconvert))  {
+      SWIG_exception_fail(SWIG_TypeError,"Can't convert input value to cmf.Time object");
+    } else if (!SWIG_IsOldObj(timeconvert)) {
+      arg1 = new cmf::math::Time(*arg1);
+    }
   }
-  // typemap Time&
-  int timeconvert_r=convert_datetime_to_cmftime(obj1, &arg2);
-  if (!SWIG_IsOK(timeconvert_r))  {
-    SWIG_exception_fail(SWIG_TypeError,"Can't convert input value to cmf.Time object");
+  {
+    // typemap Time&
+    int timeconvert_r=convert_datetime_to_cmftime(obj1, &arg2);
+    if (!SWIG_IsOK(timeconvert_r))  {
+      SWIG_exception_fail(SWIG_TypeError,"Can't convert input value to cmf.Time object");
+    } else if (!SWIG_IsOldObj(timeconvert_r)) {
+      arg2 = new cmf::math::Time(*arg2);
+    }
   }
   {
     try {
@@ -10722,15 +10978,19 @@ SWIGINTERN PyObject *_wrap_Time___ne__(PyObject *SWIGUNUSEDPARM(self), PyObject 
   }
   resultobj = SWIG_From_bool(static_cast< bool >(result));
   // %typemap(freearg) cmf::math::Time *
-  if (SWIG_IsNewObj(timeconvert))  delete arg1;
-  // %typemap(freearg) cmf::math::Time *
-  if (SWIG_IsNewObj(timeconvert_r))  delete arg2;
+  delete arg1;
+  {
+    // %typemap(freearg) cmf::math::Time &
+    delete arg2;
+  }
   return resultobj;
 fail:
   // %typemap(freearg) cmf::math::Time *
-  if (SWIG_IsNewObj(timeconvert))  delete arg1;
-  // %typemap(freearg) cmf::math::Time *
-  if (SWIG_IsNewObj(timeconvert_r))  delete arg2;
+  delete arg1;
+  {
+    // %typemap(freearg) cmf::math::Time &
+    delete arg2;
+  }
   return NULL;
 }
 
@@ -10742,10 +11002,14 @@ SWIGINTERN PyObject *_wrap_delete_Time(PyObject *SWIGUNUSEDPARM(self), PyObject 
   
   if (!args) SWIG_fail;
   swig_obj[0] = args;
-  // typemap Time*
-  int timeconvert=convert_datetime_to_cmftime(swig_obj[0], &arg1);
-  if (!SWIG_IsOK(timeconvert))  {
-    SWIG_exception_fail(SWIG_TypeError,"Can't convert input value to cmf.Time object");
+  {
+    // typemap Time*
+    int timeconvert=convert_datetime_to_cmftime(swig_obj[0], &arg1);
+    if (!SWIG_IsOK(timeconvert))  {
+      SWIG_exception_fail(SWIG_TypeError,"Can't convert input value to cmf.Time object");
+    } else if (!SWIG_IsOldObj(timeconvert)) {
+      arg1 = new cmf::math::Time(*arg1);
+    }
   }
   {
     try {
@@ -10763,11 +11027,11 @@ SWIGINTERN PyObject *_wrap_delete_Time(PyObject *SWIGUNUSEDPARM(self), PyObject 
   }
   resultobj = SWIG_Py_Void();
   // %typemap(freearg) cmf::math::Time *
-  if (SWIG_IsNewObj(timeconvert))  delete arg1;
+  delete arg1;
   return resultobj;
 fail:
   // %typemap(freearg) cmf::math::Time *
-  if (SWIG_IsNewObj(timeconvert))  delete arg1;
+  delete arg1;
   return NULL;
 }
 
@@ -11299,10 +11563,14 @@ SWIGINTERN PyObject *_wrap_new_Date__SWIG_1(PyObject *SWIGUNUSEDPARM(self), int 
   cmf::math::Date *result = 0 ;
   
   if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
-  // typemap Time&
-  int timeconvert_r=convert_datetime_to_cmftime(swig_obj[0], &arg1);
-  if (!SWIG_IsOK(timeconvert_r))  {
-    SWIG_exception_fail(SWIG_TypeError,"Can't convert input value to cmf.Time object");
+  {
+    // typemap Time&
+    int timeconvert_r=convert_datetime_to_cmftime(swig_obj[0], &arg1);
+    if (!SWIG_IsOK(timeconvert_r))  {
+      SWIG_exception_fail(SWIG_TypeError,"Can't convert input value to cmf.Time object");
+    } else if (!SWIG_IsOldObj(timeconvert_r)) {
+      arg1 = new cmf::math::Time(*arg1);
+    }
   }
   {
     try {
@@ -11319,12 +11587,16 @@ SWIGINTERN PyObject *_wrap_new_Date__SWIG_1(PyObject *SWIGUNUSEDPARM(self), int 
     
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_cmf__math__Date, SWIG_POINTER_NEW |  0 );
-  // %typemap(freearg) cmf::math::Time *
-  if (SWIG_IsNewObj(timeconvert_r))  delete arg1;
+  {
+    // %typemap(freearg) cmf::math::Time &
+    delete arg1;
+  }
   return resultobj;
 fail:
-  // %typemap(freearg) cmf::math::Time *
-  if (SWIG_IsNewObj(timeconvert_r))  delete arg1;
+  {
+    // %typemap(freearg) cmf::math::Time &
+    delete arg1;
+  }
   return NULL;
 }
 
@@ -16539,10 +16811,14 @@ SWIGINTERN PyObject *_wrap_StateVariable_dxdt(PyObject *SWIGUNUSEDPARM(self), Py
       arg1 = const_cast< cmf::math::StateVariable * >((smartarg1 ? smartarg1->get() : 0));
     }
   }
-  // typemap Time&
-  int timeconvert_r=convert_datetime_to_cmftime(obj1, &arg2);
-  if (!SWIG_IsOK(timeconvert_r))  {
-    SWIG_exception_fail(SWIG_TypeError,"Can't convert input value to cmf.Time object");
+  {
+    // typemap Time&
+    int timeconvert_r=convert_datetime_to_cmftime(obj1, &arg2);
+    if (!SWIG_IsOK(timeconvert_r))  {
+      SWIG_exception_fail(SWIG_TypeError,"Can't convert input value to cmf.Time object");
+    } else if (!SWIG_IsOldObj(timeconvert_r)) {
+      arg2 = new cmf::math::Time(*arg2);
+    }
   }
   {
     try {
@@ -16559,12 +16835,16 @@ SWIGINTERN PyObject *_wrap_StateVariable_dxdt(PyObject *SWIGUNUSEDPARM(self), Py
     
   }
   resultobj = SWIG_From_double(static_cast< double >(result));
-  // %typemap(freearg) cmf::math::Time *
-  if (SWIG_IsNewObj(timeconvert_r))  delete arg2;
+  {
+    // %typemap(freearg) cmf::math::Time &
+    delete arg2;
+  }
   return resultobj;
 fail:
-  // %typemap(freearg) cmf::math::Time *
-  if (SWIG_IsNewObj(timeconvert_r))  delete arg2;
+  {
+    // %typemap(freearg) cmf::math::Time &
+    delete arg2;
+  }
   return NULL;
 }
 
@@ -18117,10 +18397,14 @@ SWIGINTERN PyObject *_wrap_Integrator_t_set(PyObject *SWIGUNUSEDPARM(self), PyOb
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Integrator_t_set" "', argument " "1"" of type '" "cmf::math::Integrator *""'"); 
   }
   arg1 = reinterpret_cast< cmf::math::Integrator * >(argp1);
-  // typemap Time*
-  int timeconvert=convert_datetime_to_cmftime(swig_obj[1], &arg2);
-  if (!SWIG_IsOK(timeconvert))  {
-    SWIG_exception_fail(SWIG_TypeError,"Can't convert input value to cmf.Time object");
+  {
+    // typemap Time*
+    int timeconvert=convert_datetime_to_cmftime(swig_obj[1], &arg2);
+    if (!SWIG_IsOK(timeconvert))  {
+      SWIG_exception_fail(SWIG_TypeError,"Can't convert input value to cmf.Time object");
+    } else if (!SWIG_IsOldObj(timeconvert)) {
+      arg2 = new cmf::math::Time(*arg2);
+    }
   }
   {
     try {
@@ -18138,11 +18422,11 @@ SWIGINTERN PyObject *_wrap_Integrator_t_set(PyObject *SWIGUNUSEDPARM(self), PyOb
   }
   resultobj = SWIG_Py_Void();
   // %typemap(freearg) cmf::math::Time *
-  if (SWIG_IsNewObj(timeconvert))  delete arg2;
+  delete arg2;
   return resultobj;
 fail:
   // %typemap(freearg) cmf::math::Time *
-  if (SWIG_IsNewObj(timeconvert))  delete arg2;
+  delete arg2;
   return NULL;
 }
 
@@ -18913,10 +19197,14 @@ SWIGINTERN PyObject *_wrap_ImplicitEuler_dt_min_set(PyObject *SWIGUNUSEDPARM(sel
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ImplicitEuler_dt_min_set" "', argument " "1"" of type '" "cmf::math::ImplicitEuler *""'"); 
   }
   arg1 = reinterpret_cast< cmf::math::ImplicitEuler * >(argp1);
-  // typemap Time*
-  int timeconvert=convert_datetime_to_cmftime(swig_obj[1], &arg2);
-  if (!SWIG_IsOK(timeconvert))  {
-    SWIG_exception_fail(SWIG_TypeError,"Can't convert input value to cmf.Time object");
+  {
+    // typemap Time*
+    int timeconvert=convert_datetime_to_cmftime(swig_obj[1], &arg2);
+    if (!SWIG_IsOK(timeconvert))  {
+      SWIG_exception_fail(SWIG_TypeError,"Can't convert input value to cmf.Time object");
+    } else if (!SWIG_IsOldObj(timeconvert)) {
+      arg2 = new cmf::math::Time(*arg2);
+    }
   }
   {
     SWIG_PYTHON_THREAD_BEGIN_ALLOW;
@@ -18925,11 +19213,11 @@ SWIGINTERN PyObject *_wrap_ImplicitEuler_dt_min_set(PyObject *SWIGUNUSEDPARM(sel
   }
   resultobj = SWIG_Py_Void();
   // %typemap(freearg) cmf::math::Time *
-  if (SWIG_IsNewObj(timeconvert))  delete arg2;
+  delete arg2;
   return resultobj;
 fail:
   // %typemap(freearg) cmf::math::Time *
-  if (SWIG_IsNewObj(timeconvert))  delete arg2;
+  delete arg2;
   return NULL;
 }
 
@@ -19989,10 +20277,14 @@ SWIGINTERN PyObject *_wrap_CVodeIntegrator_max_step_set(PyObject *SWIGUNUSEDPARM
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CVodeIntegrator_max_step_set" "', argument " "1"" of type '" "cmf::math::CVodeIntegrator *""'"); 
   }
   arg1 = reinterpret_cast< cmf::math::CVodeIntegrator * >(argp1);
-  // typemap Time*
-  int timeconvert=convert_datetime_to_cmftime(swig_obj[1], &arg2);
-  if (!SWIG_IsOK(timeconvert))  {
-    SWIG_exception_fail(SWIG_TypeError,"Can't convert input value to cmf.Time object");
+  {
+    // typemap Time*
+    int timeconvert=convert_datetime_to_cmftime(swig_obj[1], &arg2);
+    if (!SWIG_IsOK(timeconvert))  {
+      SWIG_exception_fail(SWIG_TypeError,"Can't convert input value to cmf.Time object");
+    } else if (!SWIG_IsOldObj(timeconvert)) {
+      arg2 = new cmf::math::Time(*arg2);
+    }
   }
   {
     SWIG_PYTHON_THREAD_BEGIN_ALLOW;
@@ -20001,11 +20293,11 @@ SWIGINTERN PyObject *_wrap_CVodeIntegrator_max_step_set(PyObject *SWIGUNUSEDPARM
   }
   resultobj = SWIG_Py_Void();
   // %typemap(freearg) cmf::math::Time *
-  if (SWIG_IsNewObj(timeconvert))  delete arg2;
+  delete arg2;
   return resultobj;
 fail:
   // %typemap(freearg) cmf::math::Time *
-  if (SWIG_IsNewObj(timeconvert))  delete arg2;
+  delete arg2;
   return NULL;
 }
 
@@ -24670,7 +24962,7 @@ SWIGINTERN PyObject *_wrap_flux_connection_get_target__SWIG_0(PyObject *SWIGUNUS
   {
     if (!(result)) resultobj = SWIG_NewPointerObj(0,SWIGTYPE_p_std__tr1__shared_ptrT_cmf__water__flux_node_t, SWIG_POINTER_OWN);
     int dcast = 0;
-    /*@SWIG:C:\Program Files\pythonxy\swig\Lib\typemaps\swigmacros.swg,200,%formacro@*//*@SWIG:C:\Program Files\pythonxy\swig\Lib\typemaps\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf\cmf_core_src\cmf_swiglib.i,74,%_node_down_cast@*/
+    /*@SWIG:/usr/local/share/swig/2.0.4/typemaps/swigmacros.swg,200,%formacro@*//*@SWIG:/usr/local/share/swig/2.0.4/typemaps/swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf/cmf_core_src/cmf_swiglib.i,74,%_node_down_cast@*/
     if (dcast==0 && result) /*check for cmf::atmosphere::RainSource*/  {
       std::tr1::shared_ptr<cmf::atmosphere::RainSource> output = std::tr1::dynamic_pointer_cast<cmf::atmosphere::RainSource>(result);
       if (output) /*flux_node is cmf::atmosphere::RainSource */ {
@@ -24680,7 +24972,7 @@ SWIGINTERN PyObject *_wrap_flux_connection_get_target__SWIG_0(PyObject *SWIGUNUS
     }
     /*@SWIG@*/
     
-    /*@SWIG:C:\Program Files\pythonxy\swig\Lib\typemaps\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf\cmf_core_src\cmf_swiglib.i,74,%_node_down_cast@*/
+    /*@SWIG:/usr/local/share/swig/2.0.4/typemaps/swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf/cmf_core_src/cmf_swiglib.i,74,%_node_down_cast@*/
     if (dcast==0 && result) /*check for cmf::water::DirichletBoundary*/  {
       std::tr1::shared_ptr<cmf::water::DirichletBoundary> output = std::tr1::dynamic_pointer_cast<cmf::water::DirichletBoundary>(result);
       if (output) /*flux_node is cmf::water::DirichletBoundary */ {
@@ -24690,7 +24982,7 @@ SWIGINTERN PyObject *_wrap_flux_connection_get_target__SWIG_0(PyObject *SWIGUNUS
     }
     /*@SWIG@*/
     
-    /*@SWIG:C:\Program Files\pythonxy\swig\Lib\typemaps\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf\cmf_core_src\cmf_swiglib.i,74,%_node_down_cast@*/
+    /*@SWIG:/usr/local/share/swig/2.0.4/typemaps/swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf/cmf_core_src/cmf_swiglib.i,74,%_node_down_cast@*/
     if (dcast==0 && result) /*check for cmf::water::NeumannBoundary*/  {
       std::tr1::shared_ptr<cmf::water::NeumannBoundary> output = std::tr1::dynamic_pointer_cast<cmf::water::NeumannBoundary>(result);
       if (output) /*flux_node is cmf::water::NeumannBoundary */ {
@@ -24700,7 +24992,7 @@ SWIGINTERN PyObject *_wrap_flux_connection_get_target__SWIG_0(PyObject *SWIGUNUS
     }
     /*@SWIG@*/
     
-    /*@SWIG:C:\Program Files\pythonxy\swig\Lib\typemaps\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf\cmf_core_src\cmf_swiglib.i,74,%_node_down_cast@*/
+    /*@SWIG:/usr/local/share/swig/2.0.4/typemaps/swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf/cmf_core_src/cmf_swiglib.i,74,%_node_down_cast@*/
     if (dcast==0 && result) /*check for cmf::upslope::SoilLayer*/  {
       std::tr1::shared_ptr<cmf::upslope::SoilLayer> output = std::tr1::dynamic_pointer_cast<cmf::upslope::SoilLayer>(result);
       if (output) /*flux_node is cmf::upslope::SoilLayer */ {
@@ -24710,7 +25002,7 @@ SWIGINTERN PyObject *_wrap_flux_connection_get_target__SWIG_0(PyObject *SWIGUNUS
     }
     /*@SWIG@*/
     
-    /*@SWIG:C:\Program Files\pythonxy\swig\Lib\typemaps\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf\cmf_core_src\cmf_swiglib.i,74,%_node_down_cast@*/
+    /*@SWIG:/usr/local/share/swig/2.0.4/typemaps/swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf/cmf_core_src/cmf_swiglib.i,74,%_node_down_cast@*/
     if (dcast==0 && result) /*check for cmf::upslope::aquifer*/  {
       std::tr1::shared_ptr<cmf::upslope::aquifer> output = std::tr1::dynamic_pointer_cast<cmf::upslope::aquifer>(result);
       if (output) /*flux_node is cmf::upslope::aquifer */ {
@@ -24720,7 +25012,7 @@ SWIGINTERN PyObject *_wrap_flux_connection_get_target__SWIG_0(PyObject *SWIGUNUS
     }
     /*@SWIG@*/
     
-    /*@SWIG:C:\Program Files\pythonxy\swig\Lib\typemaps\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf\cmf_core_src\cmf_swiglib.i,74,%_node_down_cast@*/
+    /*@SWIG:/usr/local/share/swig/2.0.4/typemaps/swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf/cmf_core_src/cmf_swiglib.i,74,%_node_down_cast@*/
     if (dcast==0 && result) /*check for cmf::river::Reach*/  {
       std::tr1::shared_ptr<cmf::river::Reach> output = std::tr1::dynamic_pointer_cast<cmf::river::Reach>(result);
       if (output) /*flux_node is cmf::river::Reach */ {
@@ -24730,7 +25022,7 @@ SWIGINTERN PyObject *_wrap_flux_connection_get_target__SWIG_0(PyObject *SWIGUNUS
     }
     /*@SWIG@*/
     
-    /*@SWIG:C:\Program Files\pythonxy\swig\Lib\typemaps\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf\cmf_core_src\cmf_swiglib.i,74,%_node_down_cast@*/
+    /*@SWIG:/usr/local/share/swig/2.0.4/typemaps/swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf/cmf_core_src/cmf_swiglib.i,74,%_node_down_cast@*/
     if (dcast==0 && result) /*check for cmf::river::OpenWaterStorage*/  {
       std::tr1::shared_ptr<cmf::river::OpenWaterStorage> output = std::tr1::dynamic_pointer_cast<cmf::river::OpenWaterStorage>(result);
       if (output) /*flux_node is cmf::river::OpenWaterStorage */ {
@@ -24740,7 +25032,7 @@ SWIGINTERN PyObject *_wrap_flux_connection_get_target__SWIG_0(PyObject *SWIGUNUS
     }
     /*@SWIG@*/
     
-    /*@SWIG:C:\Program Files\pythonxy\swig\Lib\typemaps\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf\cmf_core_src\cmf_swiglib.i,74,%_node_down_cast@*/
+    /*@SWIG:/usr/local/share/swig/2.0.4/typemaps/swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf/cmf_core_src/cmf_swiglib.i,74,%_node_down_cast@*/
     if (dcast==0 && result) /*check for cmf::water::WaterStorage*/  {
       std::tr1::shared_ptr<cmf::water::WaterStorage> output = std::tr1::dynamic_pointer_cast<cmf::water::WaterStorage>(result);
       if (output) /*flux_node is cmf::water::WaterStorage */ {
@@ -24813,7 +25105,7 @@ SWIGINTERN PyObject *_wrap_flux_connection_get_target__SWIG_1(PyObject *SWIGUNUS
   {
     if (!(result)) resultobj = SWIG_NewPointerObj(0,SWIGTYPE_p_std__tr1__shared_ptrT_cmf__water__flux_node_t, SWIG_POINTER_OWN);
     int dcast = 0;
-    /*@SWIG:C:\Program Files\pythonxy\swig\Lib\typemaps\swigmacros.swg,200,%formacro@*//*@SWIG:C:\Program Files\pythonxy\swig\Lib\typemaps\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf\cmf_core_src\cmf_swiglib.i,74,%_node_down_cast@*/
+    /*@SWIG:/usr/local/share/swig/2.0.4/typemaps/swigmacros.swg,200,%formacro@*//*@SWIG:/usr/local/share/swig/2.0.4/typemaps/swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf/cmf_core_src/cmf_swiglib.i,74,%_node_down_cast@*/
     if (dcast==0 && result) /*check for cmf::atmosphere::RainSource*/  {
       std::tr1::shared_ptr<cmf::atmosphere::RainSource> output = std::tr1::dynamic_pointer_cast<cmf::atmosphere::RainSource>(result);
       if (output) /*flux_node is cmf::atmosphere::RainSource */ {
@@ -24823,7 +25115,7 @@ SWIGINTERN PyObject *_wrap_flux_connection_get_target__SWIG_1(PyObject *SWIGUNUS
     }
     /*@SWIG@*/
     
-    /*@SWIG:C:\Program Files\pythonxy\swig\Lib\typemaps\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf\cmf_core_src\cmf_swiglib.i,74,%_node_down_cast@*/
+    /*@SWIG:/usr/local/share/swig/2.0.4/typemaps/swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf/cmf_core_src/cmf_swiglib.i,74,%_node_down_cast@*/
     if (dcast==0 && result) /*check for cmf::water::DirichletBoundary*/  {
       std::tr1::shared_ptr<cmf::water::DirichletBoundary> output = std::tr1::dynamic_pointer_cast<cmf::water::DirichletBoundary>(result);
       if (output) /*flux_node is cmf::water::DirichletBoundary */ {
@@ -24833,7 +25125,7 @@ SWIGINTERN PyObject *_wrap_flux_connection_get_target__SWIG_1(PyObject *SWIGUNUS
     }
     /*@SWIG@*/
     
-    /*@SWIG:C:\Program Files\pythonxy\swig\Lib\typemaps\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf\cmf_core_src\cmf_swiglib.i,74,%_node_down_cast@*/
+    /*@SWIG:/usr/local/share/swig/2.0.4/typemaps/swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf/cmf_core_src/cmf_swiglib.i,74,%_node_down_cast@*/
     if (dcast==0 && result) /*check for cmf::water::NeumannBoundary*/  {
       std::tr1::shared_ptr<cmf::water::NeumannBoundary> output = std::tr1::dynamic_pointer_cast<cmf::water::NeumannBoundary>(result);
       if (output) /*flux_node is cmf::water::NeumannBoundary */ {
@@ -24843,7 +25135,7 @@ SWIGINTERN PyObject *_wrap_flux_connection_get_target__SWIG_1(PyObject *SWIGUNUS
     }
     /*@SWIG@*/
     
-    /*@SWIG:C:\Program Files\pythonxy\swig\Lib\typemaps\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf\cmf_core_src\cmf_swiglib.i,74,%_node_down_cast@*/
+    /*@SWIG:/usr/local/share/swig/2.0.4/typemaps/swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf/cmf_core_src/cmf_swiglib.i,74,%_node_down_cast@*/
     if (dcast==0 && result) /*check for cmf::upslope::SoilLayer*/  {
       std::tr1::shared_ptr<cmf::upslope::SoilLayer> output = std::tr1::dynamic_pointer_cast<cmf::upslope::SoilLayer>(result);
       if (output) /*flux_node is cmf::upslope::SoilLayer */ {
@@ -24853,7 +25145,7 @@ SWIGINTERN PyObject *_wrap_flux_connection_get_target__SWIG_1(PyObject *SWIGUNUS
     }
     /*@SWIG@*/
     
-    /*@SWIG:C:\Program Files\pythonxy\swig\Lib\typemaps\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf\cmf_core_src\cmf_swiglib.i,74,%_node_down_cast@*/
+    /*@SWIG:/usr/local/share/swig/2.0.4/typemaps/swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf/cmf_core_src/cmf_swiglib.i,74,%_node_down_cast@*/
     if (dcast==0 && result) /*check for cmf::upslope::aquifer*/  {
       std::tr1::shared_ptr<cmf::upslope::aquifer> output = std::tr1::dynamic_pointer_cast<cmf::upslope::aquifer>(result);
       if (output) /*flux_node is cmf::upslope::aquifer */ {
@@ -24863,7 +25155,7 @@ SWIGINTERN PyObject *_wrap_flux_connection_get_target__SWIG_1(PyObject *SWIGUNUS
     }
     /*@SWIG@*/
     
-    /*@SWIG:C:\Program Files\pythonxy\swig\Lib\typemaps\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf\cmf_core_src\cmf_swiglib.i,74,%_node_down_cast@*/
+    /*@SWIG:/usr/local/share/swig/2.0.4/typemaps/swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf/cmf_core_src/cmf_swiglib.i,74,%_node_down_cast@*/
     if (dcast==0 && result) /*check for cmf::river::Reach*/  {
       std::tr1::shared_ptr<cmf::river::Reach> output = std::tr1::dynamic_pointer_cast<cmf::river::Reach>(result);
       if (output) /*flux_node is cmf::river::Reach */ {
@@ -24873,7 +25165,7 @@ SWIGINTERN PyObject *_wrap_flux_connection_get_target__SWIG_1(PyObject *SWIGUNUS
     }
     /*@SWIG@*/
     
-    /*@SWIG:C:\Program Files\pythonxy\swig\Lib\typemaps\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf\cmf_core_src\cmf_swiglib.i,74,%_node_down_cast@*/
+    /*@SWIG:/usr/local/share/swig/2.0.4/typemaps/swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf/cmf_core_src/cmf_swiglib.i,74,%_node_down_cast@*/
     if (dcast==0 && result) /*check for cmf::river::OpenWaterStorage*/  {
       std::tr1::shared_ptr<cmf::river::OpenWaterStorage> output = std::tr1::dynamic_pointer_cast<cmf::river::OpenWaterStorage>(result);
       if (output) /*flux_node is cmf::river::OpenWaterStorage */ {
@@ -24883,7 +25175,7 @@ SWIGINTERN PyObject *_wrap_flux_connection_get_target__SWIG_1(PyObject *SWIGUNUS
     }
     /*@SWIG@*/
     
-    /*@SWIG:C:\Program Files\pythonxy\swig\Lib\typemaps\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf\cmf_core_src\cmf_swiglib.i,74,%_node_down_cast@*/
+    /*@SWIG:/usr/local/share/swig/2.0.4/typemaps/swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf/cmf_core_src/cmf_swiglib.i,74,%_node_down_cast@*/
     if (dcast==0 && result) /*check for cmf::water::WaterStorage*/  {
       std::tr1::shared_ptr<cmf::water::WaterStorage> output = std::tr1::dynamic_pointer_cast<cmf::water::WaterStorage>(result);
       if (output) /*flux_node is cmf::water::WaterStorage */ {
@@ -30124,10 +30416,14 @@ SWIGINTERN PyObject *_wrap_TechnicalFlux_FluxDecreaseTime_set(PyObject *SWIGUNUS
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "TechnicalFlux_FluxDecreaseTime_set" "', argument " "1"" of type '" "cmf::water::TechnicalFlux *""'"); 
   }
   arg1 = reinterpret_cast< cmf::water::TechnicalFlux * >(argp1);
-  // typemap Time*
-  int timeconvert=convert_datetime_to_cmftime(swig_obj[1], &arg2);
-  if (!SWIG_IsOK(timeconvert))  {
-    SWIG_exception_fail(SWIG_TypeError,"Can't convert input value to cmf.Time object");
+  {
+    // typemap Time*
+    int timeconvert=convert_datetime_to_cmftime(swig_obj[1], &arg2);
+    if (!SWIG_IsOK(timeconvert))  {
+      SWIG_exception_fail(SWIG_TypeError,"Can't convert input value to cmf.Time object");
+    } else if (!SWIG_IsOldObj(timeconvert)) {
+      arg2 = new cmf::math::Time(*arg2);
+    }
   }
   {
     SWIG_PYTHON_THREAD_BEGIN_ALLOW;
@@ -30136,11 +30432,11 @@ SWIGINTERN PyObject *_wrap_TechnicalFlux_FluxDecreaseTime_set(PyObject *SWIGUNUS
   }
   resultobj = SWIG_Py_Void();
   // %typemap(freearg) cmf::math::Time *
-  if (SWIG_IsNewObj(timeconvert))  delete arg2;
+  delete arg2;
   return resultobj;
 fail:
   // %typemap(freearg) cmf::math::Time *
-  if (SWIG_IsNewObj(timeconvert))  delete arg2;
+  delete arg2;
   return NULL;
 }
 
@@ -30323,10 +30619,14 @@ SWIGINTERN PyObject *_wrap_statecontrol_connection_reaction_time_set(PyObject *S
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "statecontrol_connection_reaction_time_set" "', argument " "1"" of type '" "cmf::water::statecontrol_connection *""'"); 
   }
   arg1 = reinterpret_cast< cmf::water::statecontrol_connection * >(argp1);
-  // typemap Time*
-  int timeconvert=convert_datetime_to_cmftime(swig_obj[1], &arg2);
-  if (!SWIG_IsOK(timeconvert))  {
-    SWIG_exception_fail(SWIG_TypeError,"Can't convert input value to cmf.Time object");
+  {
+    // typemap Time*
+    int timeconvert=convert_datetime_to_cmftime(swig_obj[1], &arg2);
+    if (!SWIG_IsOK(timeconvert))  {
+      SWIG_exception_fail(SWIG_TypeError,"Can't convert input value to cmf.Time object");
+    } else if (!SWIG_IsOldObj(timeconvert)) {
+      arg2 = new cmf::math::Time(*arg2);
+    }
   }
   {
     SWIG_PYTHON_THREAD_BEGIN_ALLOW;
@@ -30335,11 +30635,11 @@ SWIGINTERN PyObject *_wrap_statecontrol_connection_reaction_time_set(PyObject *S
   }
   resultobj = SWIG_Py_Void();
   // %typemap(freearg) cmf::math::Time *
-  if (SWIG_IsNewObj(timeconvert))  delete arg2;
+  delete arg2;
   return resultobj;
 fail:
   // %typemap(freearg) cmf::math::Time *
-  if (SWIG_IsNewObj(timeconvert))  delete arg2;
+  delete arg2;
   return NULL;
 }
 
@@ -30856,7 +31156,7 @@ SWIGINTERN PyObject *_wrap_node_list___get(PyObject *SWIGUNUSEDPARM(self), PyObj
   {
     if (!(result)) resultobj = SWIG_NewPointerObj(0,SWIGTYPE_p_std__tr1__shared_ptrT_cmf__water__flux_node_t, SWIG_POINTER_OWN);
     int dcast = 0;
-    /*@SWIG:C:\Program Files\pythonxy\swig\Lib\typemaps\swigmacros.swg,200,%formacro@*//*@SWIG:C:\Program Files\pythonxy\swig\Lib\typemaps\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf\cmf_core_src\cmf_swiglib.i,74,%_node_down_cast@*/
+    /*@SWIG:/usr/local/share/swig/2.0.4/typemaps/swigmacros.swg,200,%formacro@*//*@SWIG:/usr/local/share/swig/2.0.4/typemaps/swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf/cmf_core_src/cmf_swiglib.i,74,%_node_down_cast@*/
     if (dcast==0 && result) /*check for cmf::atmosphere::RainSource*/  {
       std::tr1::shared_ptr<cmf::atmosphere::RainSource> output = std::tr1::dynamic_pointer_cast<cmf::atmosphere::RainSource>(result);
       if (output) /*flux_node is cmf::atmosphere::RainSource */ {
@@ -30866,7 +31166,7 @@ SWIGINTERN PyObject *_wrap_node_list___get(PyObject *SWIGUNUSEDPARM(self), PyObj
     }
     /*@SWIG@*/
     
-    /*@SWIG:C:\Program Files\pythonxy\swig\Lib\typemaps\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf\cmf_core_src\cmf_swiglib.i,74,%_node_down_cast@*/
+    /*@SWIG:/usr/local/share/swig/2.0.4/typemaps/swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf/cmf_core_src/cmf_swiglib.i,74,%_node_down_cast@*/
     if (dcast==0 && result) /*check for cmf::water::DirichletBoundary*/  {
       std::tr1::shared_ptr<cmf::water::DirichletBoundary> output = std::tr1::dynamic_pointer_cast<cmf::water::DirichletBoundary>(result);
       if (output) /*flux_node is cmf::water::DirichletBoundary */ {
@@ -30876,7 +31176,7 @@ SWIGINTERN PyObject *_wrap_node_list___get(PyObject *SWIGUNUSEDPARM(self), PyObj
     }
     /*@SWIG@*/
     
-    /*@SWIG:C:\Program Files\pythonxy\swig\Lib\typemaps\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf\cmf_core_src\cmf_swiglib.i,74,%_node_down_cast@*/
+    /*@SWIG:/usr/local/share/swig/2.0.4/typemaps/swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf/cmf_core_src/cmf_swiglib.i,74,%_node_down_cast@*/
     if (dcast==0 && result) /*check for cmf::water::NeumannBoundary*/  {
       std::tr1::shared_ptr<cmf::water::NeumannBoundary> output = std::tr1::dynamic_pointer_cast<cmf::water::NeumannBoundary>(result);
       if (output) /*flux_node is cmf::water::NeumannBoundary */ {
@@ -30886,7 +31186,7 @@ SWIGINTERN PyObject *_wrap_node_list___get(PyObject *SWIGUNUSEDPARM(self), PyObj
     }
     /*@SWIG@*/
     
-    /*@SWIG:C:\Program Files\pythonxy\swig\Lib\typemaps\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf\cmf_core_src\cmf_swiglib.i,74,%_node_down_cast@*/
+    /*@SWIG:/usr/local/share/swig/2.0.4/typemaps/swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf/cmf_core_src/cmf_swiglib.i,74,%_node_down_cast@*/
     if (dcast==0 && result) /*check for cmf::upslope::SoilLayer*/  {
       std::tr1::shared_ptr<cmf::upslope::SoilLayer> output = std::tr1::dynamic_pointer_cast<cmf::upslope::SoilLayer>(result);
       if (output) /*flux_node is cmf::upslope::SoilLayer */ {
@@ -30896,7 +31196,7 @@ SWIGINTERN PyObject *_wrap_node_list___get(PyObject *SWIGUNUSEDPARM(self), PyObj
     }
     /*@SWIG@*/
     
-    /*@SWIG:C:\Program Files\pythonxy\swig\Lib\typemaps\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf\cmf_core_src\cmf_swiglib.i,74,%_node_down_cast@*/
+    /*@SWIG:/usr/local/share/swig/2.0.4/typemaps/swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf/cmf_core_src/cmf_swiglib.i,74,%_node_down_cast@*/
     if (dcast==0 && result) /*check for cmf::upslope::aquifer*/  {
       std::tr1::shared_ptr<cmf::upslope::aquifer> output = std::tr1::dynamic_pointer_cast<cmf::upslope::aquifer>(result);
       if (output) /*flux_node is cmf::upslope::aquifer */ {
@@ -30906,7 +31206,7 @@ SWIGINTERN PyObject *_wrap_node_list___get(PyObject *SWIGUNUSEDPARM(self), PyObj
     }
     /*@SWIG@*/
     
-    /*@SWIG:C:\Program Files\pythonxy\swig\Lib\typemaps\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf\cmf_core_src\cmf_swiglib.i,74,%_node_down_cast@*/
+    /*@SWIG:/usr/local/share/swig/2.0.4/typemaps/swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf/cmf_core_src/cmf_swiglib.i,74,%_node_down_cast@*/
     if (dcast==0 && result) /*check for cmf::river::Reach*/  {
       std::tr1::shared_ptr<cmf::river::Reach> output = std::tr1::dynamic_pointer_cast<cmf::river::Reach>(result);
       if (output) /*flux_node is cmf::river::Reach */ {
@@ -30916,7 +31216,7 @@ SWIGINTERN PyObject *_wrap_node_list___get(PyObject *SWIGUNUSEDPARM(self), PyObj
     }
     /*@SWIG@*/
     
-    /*@SWIG:C:\Program Files\pythonxy\swig\Lib\typemaps\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf\cmf_core_src\cmf_swiglib.i,74,%_node_down_cast@*/
+    /*@SWIG:/usr/local/share/swig/2.0.4/typemaps/swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf/cmf_core_src/cmf_swiglib.i,74,%_node_down_cast@*/
     if (dcast==0 && result) /*check for cmf::river::OpenWaterStorage*/  {
       std::tr1::shared_ptr<cmf::river::OpenWaterStorage> output = std::tr1::dynamic_pointer_cast<cmf::river::OpenWaterStorage>(result);
       if (output) /*flux_node is cmf::river::OpenWaterStorage */ {
@@ -30926,7 +31226,7 @@ SWIGINTERN PyObject *_wrap_node_list___get(PyObject *SWIGUNUSEDPARM(self), PyObj
     }
     /*@SWIG@*/
     
-    /*@SWIG:C:\Program Files\pythonxy\swig\Lib\typemaps\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf\cmf_core_src\cmf_swiglib.i,74,%_node_down_cast@*/
+    /*@SWIG:/usr/local/share/swig/2.0.4/typemaps/swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf/cmf_core_src/cmf_swiglib.i,74,%_node_down_cast@*/
     if (dcast==0 && result) /*check for cmf::water::WaterStorage*/  {
       std::tr1::shared_ptr<cmf::water::WaterStorage> output = std::tr1::dynamic_pointer_cast<cmf::water::WaterStorage>(result);
       if (output) /*flux_node is cmf::water::WaterStorage */ {
@@ -42284,7 +42584,7 @@ SWIGINTERN PyObject *_wrap_Cell___get_rain_source(PyObject *SWIGUNUSEDPARM(self)
   {
     if (!(result)) resultobj = SWIG_NewPointerObj(0,SWIGTYPE_p_std__tr1__shared_ptrT_cmf__water__flux_node_t, SWIG_POINTER_OWN);
     int dcast = 0;
-    /*@SWIG:C:\Program Files\pythonxy\swig\Lib\typemaps\swigmacros.swg,200,%formacro@*//*@SWIG:C:\Program Files\pythonxy\swig\Lib\typemaps\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf\cmf_core_src\cmf_swiglib.i,74,%_node_down_cast@*/
+    /*@SWIG:/usr/local/share/swig/2.0.4/typemaps/swigmacros.swg,200,%formacro@*//*@SWIG:/usr/local/share/swig/2.0.4/typemaps/swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf/cmf_core_src/cmf_swiglib.i,74,%_node_down_cast@*/
     if (dcast==0 && result) /*check for cmf::atmosphere::RainfallStationReference::ptr*/  {
       std::tr1::shared_ptr<cmf::atmosphere::RainfallStationReference::ptr> output = std::tr1::dynamic_pointer_cast<cmf::atmosphere::RainfallStationReference::ptr>(result);
       if (output) /*flux_node is cmf::atmosphere::RainfallStationReference::ptr */ {
@@ -42294,7 +42594,7 @@ SWIGINTERN PyObject *_wrap_Cell___get_rain_source(PyObject *SWIGUNUSEDPARM(self)
     }
     /*@SWIG@*/
     
-    /*@SWIG:C:\Program Files\pythonxy\swig\Lib\typemaps\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf\cmf_core_src\cmf_swiglib.i,74,%_node_down_cast@*/
+    /*@SWIG:/usr/local/share/swig/2.0.4/typemaps/swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf/cmf_core_src/cmf_swiglib.i,74,%_node_down_cast@*/
     if (dcast==0 && result) /*check for cmf::atmosphere::ConstantRainSource::ptr*/  {
       std::tr1::shared_ptr<cmf::atmosphere::ConstantRainSource::ptr> output = std::tr1::dynamic_pointer_cast<cmf::atmosphere::ConstantRainSource::ptr>(result);
       if (output) /*flux_node is cmf::atmosphere::ConstantRainSource::ptr */ {
@@ -42304,7 +42604,7 @@ SWIGINTERN PyObject *_wrap_Cell___get_rain_source(PyObject *SWIGUNUSEDPARM(self)
     }
     /*@SWIG@*/
     
-    /*@SWIG:C:\Program Files\pythonxy\swig\Lib\typemaps\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf\cmf_core_src\cmf_swiglib.i,74,%_node_down_cast@*/
+    /*@SWIG:/usr/local/share/swig/2.0.4/typemaps/swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf/cmf_core_src/cmf_swiglib.i,74,%_node_down_cast@*/
     if (dcast==0 && result) /*check for cmf::atmosphere::IDWRainfall*/  {
       std::tr1::shared_ptr<cmf::atmosphere::IDWRainfall> output = std::tr1::dynamic_pointer_cast<cmf::atmosphere::IDWRainfall>(result);
       if (output) /*flux_node is cmf::atmosphere::IDWRainfall */ {
@@ -42439,7 +42739,7 @@ SWIGINTERN PyObject *_wrap_Cell_get_surfacewater(PyObject *SWIGUNUSEDPARM(self),
   {
     if (!(result)) resultobj = SWIG_NewPointerObj(0,SWIGTYPE_p_std__tr1__shared_ptrT_cmf__water__flux_node_t, SWIG_POINTER_OWN);
     int dcast = 0;
-    /*@SWIG:C:\Program Files\pythonxy\swig\Lib\typemaps\swigmacros.swg,200,%formacro@*//*@SWIG:C:\Program Files\pythonxy\swig\Lib\typemaps\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf\cmf_core_src\cmf_swiglib.i,74,%_node_down_cast@*/
+    /*@SWIG:/usr/local/share/swig/2.0.4/typemaps/swigmacros.swg,200,%formacro@*//*@SWIG:/usr/local/share/swig/2.0.4/typemaps/swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf/cmf_core_src/cmf_swiglib.i,74,%_node_down_cast@*/
     if (dcast==0 && result) /*check for cmf::river::OpenWaterStorage*/  {
       std::tr1::shared_ptr<cmf::river::OpenWaterStorage> output = std::tr1::dynamic_pointer_cast<cmf::river::OpenWaterStorage>(result);
       if (output) /*flux_node is cmf::river::OpenWaterStorage */ {
@@ -42449,7 +42749,7 @@ SWIGINTERN PyObject *_wrap_Cell_get_surfacewater(PyObject *SWIGUNUSEDPARM(self),
     }
     /*@SWIG@*/
     
-    /*@SWIG:C:\Program Files\pythonxy\swig\Lib\typemaps\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf\cmf_core_src\cmf_swiglib.i,74,%_node_down_cast@*/
+    /*@SWIG:/usr/local/share/swig/2.0.4/typemaps/swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf/cmf_core_src/cmf_swiglib.i,74,%_node_down_cast@*/
     if (dcast==0 && result) /*check for cmf::water::DirichletBoundary*/  {
       std::tr1::shared_ptr<cmf::water::DirichletBoundary> output = std::tr1::dynamic_pointer_cast<cmf::water::DirichletBoundary>(result);
       if (output) /*flux_node is cmf::water::DirichletBoundary */ {
@@ -42710,7 +43010,7 @@ SWIGINTERN PyObject *_wrap_Cell_get_storage(PyObject *SWIGUNUSEDPARM(self), PyOb
   {
     if (!(result)) resultobj = SWIG_NewPointerObj(0,SWIGTYPE_p_std__tr1__shared_ptrT_cmf__water__flux_node_t, SWIG_POINTER_OWN);
     int dcast = 0;
-    /*@SWIG:C:\Program Files\pythonxy\swig\Lib\typemaps\swigmacros.swg,200,%formacro@*//*@SWIG:C:\Program Files\pythonxy\swig\Lib\typemaps\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf\cmf_core_src\cmf_swiglib.i,74,%_node_down_cast@*/
+    /*@SWIG:/usr/local/share/swig/2.0.4/typemaps/swigmacros.swg,200,%formacro@*//*@SWIG:/usr/local/share/swig/2.0.4/typemaps/swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf/cmf_core_src/cmf_swiglib.i,74,%_node_down_cast@*/
     if (dcast==0 && result) /*check for cmf::river::OpenWaterStorage*/  {
       std::tr1::shared_ptr<cmf::river::OpenWaterStorage> output = std::tr1::dynamic_pointer_cast<cmf::river::OpenWaterStorage>(result);
       if (output) /*flux_node is cmf::river::OpenWaterStorage */ {
@@ -42720,7 +43020,7 @@ SWIGINTERN PyObject *_wrap_Cell_get_storage(PyObject *SWIGUNUSEDPARM(self), PyOb
     }
     /*@SWIG@*/
     
-    /*@SWIG:C:\Program Files\pythonxy\swig\Lib\typemaps\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf\cmf_core_src\cmf_swiglib.i,74,%_node_down_cast@*/
+    /*@SWIG:/usr/local/share/swig/2.0.4/typemaps/swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf/cmf_core_src/cmf_swiglib.i,74,%_node_down_cast@*/
     if (dcast==0 && result) /*check for cmf::water::WaterStorage*/  {
       std::tr1::shared_ptr<cmf::water::WaterStorage> output = std::tr1::dynamic_pointer_cast<cmf::water::WaterStorage>(result);
       if (output) /*flux_node is cmf::water::WaterStorage */ {
@@ -50249,7 +50549,7 @@ SWIGINTERN PyObject *_wrap_SoilLayer_get_soil(PyObject *SWIGUNUSEDPARM(self), Py
   }
   {
     int dcast = 0;
-    /*@SWIG:C:\Program Files\pythonxy\swig\Lib\typemaps\swigmacros.swg,200,%formacro@*//*@SWIG:C:\Program Files\pythonxy\swig\Lib\typemaps\swigmacros.swg,192,%_formacro_1@*//*@SWIG:C:\Program Files\pythonxy\swig\Lib\typemaps\factory.swg,72,%_factory_dispatch@*/ 
+    /*@SWIG:/usr/local/share/swig/2.0.4/typemaps/swigmacros.swg,200,%formacro@*//*@SWIG:/usr/local/share/swig/2.0.4/typemaps/swigmacros.swg,192,%_formacro_1@*//*@SWIG:/usr/local/share/swig/2.0.4/typemaps/factory.swg,72,%_factory_dispatch@*/ 
     if (!dcast) {
       cmf::upslope::BrooksCoreyRetentionCurve *dobj = dynamic_cast<cmf::upslope::BrooksCoreyRetentionCurve *>(result);
       if (dobj) {
@@ -50258,7 +50558,7 @@ SWIGINTERN PyObject *_wrap_SoilLayer_get_soil(PyObject *SWIGUNUSEDPARM(self), Py
       }   
     }/*@SWIG@*/
     
-    /*@SWIG:C:\Program Files\pythonxy\swig\Lib\typemaps\swigmacros.swg,192,%_formacro_1@*//*@SWIG:C:\Program Files\pythonxy\swig\Lib\typemaps\factory.swg,72,%_factory_dispatch@*/ 
+    /*@SWIG:/usr/local/share/swig/2.0.4/typemaps/swigmacros.swg,192,%_formacro_1@*//*@SWIG:/usr/local/share/swig/2.0.4/typemaps/factory.swg,72,%_factory_dispatch@*/ 
     if (!dcast) {
       cmf::upslope::VanGenuchtenMualem *dobj = dynamic_cast<cmf::upslope::VanGenuchtenMualem *>(result);
       if (dobj) {

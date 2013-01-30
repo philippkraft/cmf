@@ -33,17 +33,26 @@ namespace cmf {
 		/// @ingroup manning
 		/// @brief Calculates the flux between two open water bodies, using Manning's equation
         ///
-		/// \f{eqnarray*}
+		///
+		/// This is the base class for a kinematic wave approach (topography driven)
+		/// and a diffusive wave approach (water table driven). The only difference
+		/// between both approaches is the calculation of the flux driving slope.
+		/// For the model, one of ManningKinematic or ManningDiffusive connection 
+		/// is selected
+		///
+        /// \f{eqnarray*}
 		/// q_{Manning}&=& A R^{\frac 2 3} \sqrt{\frac {\Delta_z} n} \\
 		/// A &=& \frac V l \mbox{, (Crosssectional area of the wetted crossection, Volume per length)} \\
 		/// R &=& \frac A {P(d)} \\
 		/// P(d) &=& \mbox{ the perimeter of the wetted crosssection, a function of reach depth} \\
 		/// d(V) &=& \mbox{ the depth of the reach, a function of the volume} \\
-		/// \Delta_z &=& \frac{|z_1 - z_2|}{l} \mbox{ Slope of the reach} \\
+		/// \Delta_z &=& \frac{\|z_1 - z_2\|}{l} \mbox{ Slope of the reach} \\
 		/// n&=&\mbox{Manning friction number}
 		/// \f}
-		/// For the kinematic wave the slope of the river bed is used as slope \f$\Delta_z = \frac{|z_1 - z_2\|}{l}\f$, while for
-		/// the diffusive wave the slope is calculated from the actual water head. \f$\Delta_z = \|\frac{h_1 - h_2}{l}\f$
+		///
+		/// For the kinematic wave the slope of the river bed is used as slope \f$\Delta_z = \frac{|z_1 - z_2\|}{l}\f$, 
+		///
+		/// while for the diffusive wave the slope is calculated from the actual water head. \f$\Delta_z = \|\frac{h_1 - h_2}{l}\f$
 		class Manning : public cmf::water::flux_connection
 		{
 		protected:
@@ -72,8 +81,9 @@ namespace cmf {
 		};
         
 		/// @ingroup manning
-		/// @brief Connecting surface water bodies using a diffusive wave. Not stable for deep water with small gradient
-        ///
+		/// Connecting surface water bodies using a diffusive wave. 
+		/// This approach might not be numerical stable for deep water with small gradient
+		/// cmf for experimental reasons
 		/// \f{eqnarray*}
 		/// q_{Manning}&=& A R^{\frac 2 3} \sqrt{\frac {\Delta_z} n} \\
 		/// A &=& \frac V l \mbox{, (Crosssectional area of the wetted crossection, Volume per length)} \\
@@ -99,8 +109,8 @@ namespace cmf {
 		};
 
 		/// @ingroup manning
-		/// @brief Connecting surface water bodies using a kinematic wave. Note the fixed gradient
-        ///
+		/// Connecting surface water bodies using a kinematic wave. 
+		/// Note the fixed gradient \f$\Delta_z\f$
 		/// \f{eqnarray*}
 		/// q_{Manning}&=& A R^{\frac 2 3} \sqrt{\frac {\Delta_z} n} \\
 		/// A &=& \frac V l \mbox{, (Crosssectional area of the wetted crossection, Volume per length)} \\

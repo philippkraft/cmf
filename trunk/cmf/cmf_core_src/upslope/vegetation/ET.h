@@ -194,6 +194,19 @@ namespace cmf {
 			/// @param vap_press_deficit Deficit of vapor pressure \f$ kPa \f$
 			real PenmanMonteith(real Rn,real ra,real rs,real T,real vap_press_deficit);
 			real PenmanMonteith(cmf::atmosphere::Weather A,const cmf::upslope::vegetation::Vegetation & veg,double h);
+			
+			/// @brief A function to calculate the actual transpiration for each soil layer using a Feddes like approach
+			///
+			/// This function is used to calculate the actual water uptake in m³/day from a single soillayer sw
+			/// according to root depth and the potential transpiration (or ETpot if there is no difference) in mm/day
+			/// The water flux is calculated as follows:
+			/// \f[q_{T_{pot}}[m^3/day]=T_{pot}[mm/day] 10{-3}[mm/m]A_{cell}[m^2] f_r\f]
+			/// where:
+			/// - \f$q_{T_{pot}}\f$: the potential transpiration flux from this layer
+			/// - \f$T_{pot}\f$: the potential transpiration for the cell
+			/// - \f$A_{cell}\f$: the area of the cell
+			/// - \f$f_r=\frac{R_{layer}}{\sum_{i=0}^{layers}{R_i}\f$: the root mass in this layer per total root mass at this cell.
+			/// This is calculated with the cmf::upslope::vegetation::Vegetation::RootFraction
 			real Tact(real Tpot,const cmf::upslope::SoilLayer & sw,const cmf::upslope::vegetation::Vegetation & veg);
 			/// @ingroup ET
 			/// A constant evapotranspiration
