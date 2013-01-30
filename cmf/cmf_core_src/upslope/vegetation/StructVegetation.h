@@ -39,11 +39,19 @@ namespace cmf {
 					CanopyPARExtinction, ///<  extinction coefficient for photosynthetically-active radiation in the canopy. Values usually range from 0.5 to 0.7. Values outside this range should be used very cautiously. 
 					LeafWidth;     ///< Average width of leaves in m (only for Shuttleworth-Wallace ET)
 				
-				/// Returns the average root length in m/m2
-				/// \f[ l_R \left[\frac{m}{m^2}\right]= \frac{ c_R \left[\frac{kg}{m^3}\right] z_R \left[m\right] } {0.5\left[\frac{kg}{m^3}\right] \pi \left(d_R/2\right)^2 \left[m^2\right]} \f]
+				/// @brief Returns the average root length in m/m2
+				///
+				// \f[ l_R \left[\frac{m}{m^2}\right]= \frac{ c_R \left[\frac{kg}{m^3}\right] z_R \left[m\right] } {0.5\left[\frac{kg}{m^3}\right] \pi \left(d_R/2\right)^2 \left[m^2\right]} \f]
 				double RootLength() const {
 					return RootContent /*kg/m3*/ * RootDepth /*m*/ / (0.5/*kg/m3*/ * Pi * (0.0035 * 0.0035) /*m2*/) ;
 				}
+				/// @brief Returns the fraction of root mass in a segment of the soil column per total root mass
+				///
+				/// @param upperBoundary, lowerBoundary Upper and lower depth below ground of the segment
+				/// The method to claculate the distribution of roots in the soil depends on the fraction_at_rootdepth \f$f_{r0}\f$ parameter.
+				/// If \f$f_{r0}=1\f$, a uniform distribution from the ground to the root depth is assumed. If \f$f_{r0}<1\f$, an exponential 
+				/// decline of root density with depth is assumed, that \f$f_{r0}\f$ of the roots are above the root depth r0. 
+				/// \f[f_{r}(z_u,z_l) = (\frac 1 {1-f_{r0}})^{z_l-r0} - (\frac 1 {1-f_{r0}})^{z_u-r0}\f]
 				virtual double RootFraction(double upperBoundary,double lowerBoundary) const
 				{
 					if (fraction_at_rootdepth>=1)
