@@ -127,6 +127,7 @@ class point(object):
         distanceTo(point p) const
 
         Returns the horizontal euclidian distance to another point p.
+
         $\\sqrt{(this.x-p.x)^2+(this.y-p.y)^2}$ 
         """
         return _cmf_core.point_distanceTo(self, *args, **kwargs)
@@ -139,6 +140,7 @@ class point(object):
 
         Returns the horizontal euclidian distance plus the absolute of the
         height difference times a factor.
+
         $\\sqrt{(this.x-p.x)^2+(this.y-p.y)^2}\\ +\\ w_{z}|this.z-p.z|$
 
         """
@@ -371,9 +373,9 @@ class point_vector(object):
 
         point_vector(int size)
 
-        Create a point vector of a specific size.
+        z coordinates
 
-        z coordinates 
+        Create a point vector of a specific size 
         """
         _cmf_core.point_vector_swiginit(self,_cmf_core.new_point_vector(*args, **kwargs))
     def get(self, *args, **kwargs):
@@ -508,41 +510,44 @@ def square(*args, **kwargs):
 JULIANDAY_0_1_1900 = _cmf_core.JULIANDAY_0_1_1900
 class Time(object):
     """
-    A time class, used to pass around current modelling times   Timespans
-    and dates in cmf are used with a special object, called Time. An extra
-    class has the advantage, that the user does not have to remember,
-    which    unit of time he or she uses or what time unit is accepted by
-    a specific function    of the model. Arithmetic and boolean operators
-    are supported by Time. Internally    the time classes stores the time
-    as integer milliseconds, therefore rounding issues    will only appear
-    at very small time ranges. Absolute time (like dates) are represented
-    as milliseconds gone by from Dec, 31st 1899. Microsoft Excel dates are
-    represented    as days from that time, using floating point numbers,
-    therefore it is very simple    to convert Excel time representations
-    to cmf time.     Another object is Date, which is doesn't provide the
-    operators, but has a nice printed version and some special date
-    functions, like day of year (DOY) and provides access    to the
-    current hour of day and so on, which only applyto dates and not to
-    time spans.    You can convert Time to Date an vice versa. The
-    printing is not culture aware and    uses the European representation.
-    If you use the Python standard library datetime,    conversion between
-    Python time and cmf time is possible
+    A time class, used to pass around current modelling times.
 
-    Creating absolute time values (dates) Creating time spansIn principle,
-    there are three ways to create time spans. One is to use one of the
-    static functions, another is to multiply an existing time span (like
-    one of the build in constants) or to substrate two absolute times.
-    Available constants  - @code cmf.sec * 4.1 @endcode : 4.1 seconds   -
-    @code cmf.min * 138 @endcode : 2.3 hours (138 min)  - @code cmf.h *
-    2.3 @endcode : 2.3 hours (138 min)  - @code cmf.day * 2.5 @endcode :
-    60 hours (2.5 days)  - @code cmf.week @endcode : 7 days - @code
-    cmf.month @endcode : 365/12 days (30.4167 days)  - @code cmf.year
-    @endcode : 365 days  Available operators:   - time + time = time, time
-    - time = time  - time * float = time ,time / float = time -
-    time/time=float  - &gt, &lt, ==, !=  Conversions  Converting to python
-    datetime    Converting to numbers       - t.AsMilliseconds()      -
-    t.AsSeconds()      - t.AsMinutes()      - t.AsHours()      -
-    t.AsDays()      - t.AsYears()      Creating time ranges
+    Timespans and dates in cmf are used with a special object, called
+    Time. An extra        class has the advantage, that the user does not
+    have to remember, which       unit of time he or she uses or what time
+    unit is accepted by a specific function       of the model. Arithmetic
+    and boolean operators are supported by Time. Internally the time
+    classes stores the time as integer milliseconds, therefore rounding
+    issues       will only appear at very small time ranges. Absolute time
+    (like dates) are represented       as milliseconds gone by from Dec,
+    31st 1899. Microsoft Excel dates are represented       as days from
+    that time, using floating point numbers, therefore it is very simple
+    to convert Excel time representations to cmf time. Another object is
+    Date, which is doesn't provide the operators, but has a nice printed
+    version and some special date functions, like day of year (DOY) and
+    provides access       to the current hour of day and so on, which only
+    applyto dates and not to time spans.       You can convert Time to
+    Date an vice versa. The printing is not culture aware and       uses
+    the European representation. If you use the Python standard library
+    datetime,       conversion between Python time and cmf time is
+    possible
+
+    Creating absolute time values (dates) Creating time spans In
+    principle, there are three ways to create time spans. One is to use
+    one of the  static functions, another is to multiply an existing time
+    span (like one of the  build in constants) or to substrate two
+    absolute times.   Available constants   - @code cmf.sec * 4.1 @endcode
+    : 4.1 seconds    - @code cmf.min * 138 @endcode : 2.3 hours (138 min)
+    - @code cmf.h * 2.3 @endcode : 2.3 hours (138 min)   - @code cmf.day *
+    2.5 @endcode : 60 hours (2.5 days)   - @code cmf.week @endcode : 7
+    days   - @code cmf.month @endcode : 365/12 days (30.4167 days)   -
+    @code cmf.year @endcode : 365 days   Available operators:    - time +
+    time = time, time - time = time   - time * float = time ,time / float
+    = time   - time/time=float   - &gt, &lt, ==, !=   Conversions
+    Converting to python datetime      Converting to numbers         -
+    t.AsMilliseconds()        - t.AsSeconds()        - t.AsMinutes()
+    - t.AsHours()        - t.AsDays()        - t.AsYears()        Creating
+    time ranges
 
     C++ includes: time.h 
     """
@@ -869,19 +874,18 @@ Date_swigregister(Date)
 
 class timeseries(object):
     """
-    A timeseries is a list of values, equally distributed over time. To
-    create one, one have to provide as start date and a step size. The end
-    time is calculated from the number of values. Values queried for times
-    before the start time are returned as the first item, values after the
-    end time equal the last item. A timeseries with only one item reacts
-    like a scalar value.
+    A timeseries is a list of values, equally distributed over time.
+
+    To create one, one have to provide as start date and a step size. The
+    end time is calculated from the number of values. Values queried for
+    times before the start time are returned as the first item, values
+    after the end time equal the last item. A timeseries with only one
+    item reacts like a scalar value.
 
     Creating a time series
 
     With this technique it is simple to read files or databases to fill
-    timeseries.
-
-    Using a timeseries
+    timeseries.<b> Using a timeseries</b>
 
     C++ includes: timeseries.h 
     """
@@ -1532,7 +1536,7 @@ integratable_swigregister(integratable)
 
 class integratable_list(object):
     """
-    A list of cmf::math::integratable objects
+    A list of cmf::math::integratable objects.
 
     Todo TODO: Complete collection interface (getitem with slicing etc.)
 
@@ -1651,8 +1655,9 @@ integratable_list_swigregister(integratable_list)
 
 class StateVariable(object):
     """
-    Abstract class state variableSimple exponential system class header
-    implementing a state variable:
+    Abstract class state variable.
+
+    Simple exponential system class header implementing a state variable:
 
     C++ includes: statevariable.h 
     """
@@ -1767,7 +1772,7 @@ StateVariableList_swigregister(StateVariableList)
 
 class Integrator(StateVariableOwner):
     """
-    Base class for any kind of integrator
+    Base class for any kind of integrator.
 
     Pure virtual functions: Integrate
 
@@ -1829,7 +1834,7 @@ class Integrator(StateVariableOwner):
         get_state(int position) const
 
         Returns the statevariable at position Simplifies the assessment of
-        state variables 
+        state variables. 
         """
         return _cmf_core.Integrator_get_state(self, *args, **kwargs)
 
@@ -1884,7 +1889,7 @@ class Integrator(StateVariableOwner):
         virtual int
         integrate(cmf::math::Time t_max, cmf::math::Time dt)=0
 
-        Integrates the vector of state variables
+        Integrates the vector of state variables.
 
         Parameters:
         -----------
@@ -1907,7 +1912,7 @@ class Integrator(StateVariableOwner):
         integrate_until(cmf::math::Time t_max, cmf::math::Time dt=Time(), bool
         reset=false)
 
-        Integrates the vector of state variables until t_max
+        Integrates the vector of state variables until t_max.
 
         Parameters:
         -----------
@@ -1960,7 +1965,7 @@ Integrator_swigregister(Integrator)
 class BDF2(Integrator):
     """
     An order 2 BDF-Method with fixed-point iteration and variable step
-    size
+    size.
 
     Recommended integrator for CMF (so far)
 
@@ -1998,7 +2003,7 @@ class BDF2(Integrator):
         BDF2(const Integrator
         &templ)
 
-        Constructs a new BDF2 integrator
+        Constructs a new BDF2 integrator.
 
         Parameters:
         -----------
@@ -2075,7 +2080,7 @@ class RKFIntegrator(Integrator):
         RKFIntegrator(real epsilon=1e-9, cmf::math::Time
         dt_min=cmf::math::timespan(1000))
 
-        Constructs a new RKFIntegrator
+        Constructs a new RKFIntegrator.
 
         Parameters:
         -----------
@@ -2091,7 +2096,7 @@ RKFIntegrator_swigregister(RKFIntegrator)
 
 class CVodeIntegrator(Integrator):
     """
-    A wrapper class for the CVODE integrator from the SUNDIALS library
+    A wrapper class for the CVODE integrator from the SUNDIALS library.
 
     https://computation.llnl.gov/casc/sundials/main.html
 
@@ -2226,7 +2231,7 @@ class MultiIntegrator(Integrator):
         MultiIntegrator(const cmf::math::Integrator &template_integrator, int
         count)
 
-        Creates a new MultiIntegrator
+        Creates a new MultiIntegrator.
 
         Parameters:
         -----------
@@ -2417,8 +2422,10 @@ SoluteTimeseries_swigregister(SoluteTimeseries)
 
 class SoluteStorage(StateVariable):
     """
-    A class for the storage of any tracer. The state is the amount (mol,
-    kg etc. see cmf::water) of the tracer in the storage.
+    A class for the storage of any tracer.
+
+    The state is the amount (mol, kg etc. see cmf::water) of the tracer in
+    the storage.
 
     The derivative function is given by: \\begin{eqnarray*}
     \\frac{dX}{dt}&=&\\sum_{f=1}^{F}\\left( q_f [X]_f\\right) +
@@ -2457,7 +2464,16 @@ SoluteStorage_swigregister = _cmf_core.SoluteStorage_swigregister
 SoluteStorage_swigregister(SoluteStorage)
 
 class flux_node(object):
-    """Proxy of C++ cmf::water::flux_node class"""
+    """
+    Base class for everything that can be connected by fluxes.
+
+    Flux nodes can be WaterStorages, flux end points, sinks, sources and
+    bridges to other model domains (e.g. Ponded water to river system).
+    The base class can be used where a simple routing, potentially with
+    mixing, is needed.
+
+    C++ includes: flux_node.h 
+    """
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
     __repr__ = _swig_repr
     node_id = _swig_property(_cmf_core.flux_node_node_id_get)
@@ -2495,8 +2511,10 @@ class flux_node(object):
         bool RecalcFluxes(cmf::math::Time t)
 
         Pure flux_nodes do not influence fluxes, therefore no recalculation of
-        fluxes is required by flux_node. WaterStorage overrides this, since
-        state changes require an update of the fluxes. 
+        fluxes is required by flux_node.
+
+        WaterStorage overrides this, since state changes require an update of
+        the fluxes 
         """
         return _cmf_core.flux_node_RecalcFluxes(self, *args, **kwargs)
 
@@ -2669,9 +2687,10 @@ def get_lower_node(*args, **kwargs):
 class waterbalance_integrator(integratable):
     """
     The waterbalance_integrator is an integratable for precise output of
-    the average water balance of a flux_node over time. It can be added to
-    a solver (any cmf::math::Integrator), which is than calling the
-    integrate method at each substep.
+    the average water balance of a flux_node over time.
+
+    It can be added to a solver (any cmf::math::Integrator), which is than
+    calling the integrate method at each substep.
 
     C++ includes: flux_node.h 
     """
@@ -2736,7 +2755,11 @@ waterbalance_integrator_swigregister(waterbalance_integrator)
 
 class flux_connection(object):
     """
-    Represents a connection between flux_nodes, where water fluxes occur.
+    The connections in cmf hold the processes for the calculation of
+    fluxes between water storages and model boundaries.
+
+    Todo Elaborate on this Represents a connection between flux_nodes,
+    where water fluxes occur.
 
     C++ includes: flux_connection.h 
     """
@@ -3134,8 +3157,10 @@ class DirichletBoundary(flux_node):
         virtual bool RecalcFluxes(cmf::math::Time t)
 
         Pure flux_nodes do not influence fluxes, therefore no recalculation of
-        fluxes is required by flux_node. WaterStorage overrides this, since
-        state changes require an update of the fluxes. 
+        fluxes is required by flux_node.
+
+        WaterStorage overrides this, since state changes require an update of
+        the fluxes 
         """
         return _cmf_core.DirichletBoundary_RecalcFluxes(self, *args, **kwargs)
 
@@ -3429,9 +3454,10 @@ class kinematic_wave(flux_connection):
         kinematic_wave(WaterStorage::ptr source, flux_node::ptr target, real
         residencetime, real exponent=1.0, real residual=0.0, real V0=1.0)
 
-        Creates a kinematic wave connection. \\[ q = \\frac
-        {\\left(\\frac{V}{V_0} - f_{residual}\\right)^\\beta}{t_r}
-        \\].
+        Creates a kinematic wave connection.
+
+        \\[ q = \\frac {\\left(\\frac{V}{V_0} -
+        f_{residual}\\right)^\\beta}{t_r} \\]
 
         Parameters:
         -----------
@@ -3695,8 +3721,9 @@ class node_list(StateVariableOwner):
         cmf::math::num_array get_fluxes_to(const cmf::water::node_list
         &targets, cmf::math::Time t) const
 
-        A fast method to perform flux queries as a batch. The node lists left
-        and right should have the same length.
+        A fast method to perform flux queries as a batch.
+
+        The node lists left and right should have the same length.
 
         The vector containing the flux from left to right at the same position
 
@@ -4024,8 +4051,9 @@ def system_bridge(*args, **kwargs):
     cmf::water::system_bridge(cmf::project &p, flux_node::ptr upper,
     flux_node::ptr lower)
 
-    Creates a SystemBridge object. This is an advanced feature for tuning
-    of the calculation time.
+    Creates a SystemBridge object.
+
+    This is an advanced feature for tuning of the calculation time.
 
     A SystemBridge can be used to replace an existing connection between
     nodes. After installation, the two nodes can more safely be added to
@@ -4075,6 +4103,10 @@ def vapour_pressure(*args, **kwargs):
 
     Returns the saturated vapor pressure in Pa for temperature T [degC].
 
+    The saturated vapor pressure $e_s$ is calculated follwing the
+    following formula \\[e_s = 0.6108 \\exp{\\frac{17.27
+    T}{T+237.3}}\\] The definition is
+    fromhttp://www.fao.org/docrep/X0490E/x0490e07.htm#concepts 
     """
   return _cmf_core.vapour_pressure(*args, **kwargs)
 
@@ -4086,7 +4118,23 @@ def vpd_from_rH(*args, **kwargs):
     cmf::atmosphere::vpd_from_rH(double T, double rH)
 
     Returns the vapor pressure deficit in Pa for temperature T [degC] and
-    rel. humidity rH [%]. 
+    rel.
+
+    humidity rH [%]
+
+    The vapor pressure deficit $e_s - e_a$ is calculated from rel.
+    humidity as: \\[e_s - e_a = (1-rH/100) * e_s(T)\\] The definition
+    is fromhttp://www.fao.org/docrep/X0490E/x0490e07.htm#concepts
+
+    Parameters:
+    -----------
+
+    T:  Air temperature in degC
+
+    rH:  Rel. humidity in %
+
+    $e_s(T)$ is calculated using cmf::atmosphere::vapor_pressure(double)
+
     """
   return _cmf_core.vpd_from_rH(*args, **kwargs)
 
@@ -4097,8 +4145,25 @@ def rH_from_vpd(*args, **kwargs):
     double
     cmf::atmosphere::rH_from_vpd(double T, double vpd)
 
-    Returns the rel. humidity in % for temperature T [degC] and vapor
-    pressure deficit vpd [Pa]. 
+    Returns the rel.
+
+    humidity in % for temperature T [degC] and vapor pressure deficit vpd
+    [Pa]
+
+    the rel. humidity is calculated from the vapor pressure deficit $vpd =
+    e_s - e_a$ as: \\[rH = 100 * \\frac{e_a}{e_s(T)}, e_a = e_s(T) -
+    vpd\\] The definition is
+    fromhttp://www.fao.org/docrep/X0490E/x0490e07.htm#concepts
+
+    Parameters:
+    -----------
+
+    T:  Air temperature in degC
+
+    vpd:  Vapor pressure deficit in Pa
+
+    $e_s(T)$ is calculated using cmf::atmosphere::vapor_pressure(double)
+
     """
   return _cmf_core.rH_from_vpd(*args, **kwargs)
 
@@ -4113,7 +4178,63 @@ def global_radiation(*args, **kwargs):
     double sunshine_fraction, double longitude=8, double latitude=51,
     double time_zone=1, bool daily=0)
 
-    Returns the global radiation in MJ/(m2 day) 
+    Calculates the global radiation in MJ/(m2 day) from the sun position
+    and the sunshine fraction.
+
+    Parameters:
+    -----------
+
+    t:  actual time step
+
+    height:  Height above sea level
+
+    sunshine_fraction:  Fraction of sunshine hours per potential sunshine
+    duration in h/h
+
+    longitude:  latitude:  Geographical position in degree. Latitude is
+    only taken into acount for subdaily calculation
+
+    time_zone:  Offset by timezone from GMT, eg. central Europe=1 US west
+    coast = -8
+
+    daily:  If true, the average radiation for the whole day is given
+    (therefore latitude and time zone ignored), otherwise the average of
+    the current hour is returned
+
+    The calculation of the global radiation
+    followshttp://www.fao.org/docrep/X0490E/x0490e07.htm#radiation.
+
+    The following formula is used: \\begin{eqnarray*} \\phi &=&
+    \\frac{(\\mbox{geogr. Latitude})^\\circ \\pi}{180^\\circ}
+    \\mbox{ Latitude in }rad \\\\ \\delta &=& 0.409
+    \\sin\\left(\\frac{2\\pi}{365}DOY - 1.39\\right) \\mbox{
+    Declination, DOY is day of year}\\\\ \\omega_s &=&
+    \\arccos(-\\tan\\phi\\tan\\delta) \\mbox{ Sunset angle}
+    \\\\ G_{sc} &=& 0.0802 \\frac{MJ}{m^2min} \\mbox{Solar
+    constant} \\\\ d_r &=& 1+0.033
+    \\cos\\left(\\frac{2\\pi}{365}DOY\\right) \\mbox{Inverse
+    relative distance Earth-Sun} \\\\ b &=&
+    \\frac{2\\pi(DOY-81)}{364}\\\\ S_c &=&
+    0.1645\\sin(2b)-0.1255\\cos(b)-0.025\\sin(b) \\mbox{ Seasonal
+    correction for solar time} \\\\ \\omega &=& \\frac {\\pi}
+    {12} \\left(t_h+\\frac{(\\mbox{geogr.
+    Longitude})^\\circ}{15}-\\mbox{Timezone}+S_c-12\\right)
+    \\mbox{ solar time in }rad \\\\ \\mbox{If daily} \\\\ R_a
+    &=& \\frac{24\\ 60}{\\pi}G_{sc}\\ d_r \\left(\\omega_s
+    \\sin\\phi \\sin\\delta + \\cos\\phi \\cos\\delta
+    \\sin\\omega_s\\right) \\mbox{Extraterrestrial radiation }
+    \\frac{MJ}{m^2 day} \\\\ \\mbox{If hourly} \\\\ R_a &=&
+    \\frac{12\\ 24\\ 60}{\\pi}G_{sc}\\ d_r
+    \\left(\\left(\\omega^+ -\\omega^-\\right) \\sin\\phi
+    \\sin\\delta + \\cos\\phi \\cos\\delta
+    \\left(\\sin\\omega^+ - \\sin\\omega^-\\right)\\right)
+    \\\\ && \\omega^+,\\omega^- = \\omega
+    \\pm\\frac{\\pi}{24} \\\\ \\frac n N &=&
+    \\mbox{Fractional sunshine duration} \\\\ R_s &=&
+    \\left(0.25+\\left(0.5+2\\
+    10^{-5}z\\right)\\frac{n}{N}\\right)R_a \\mbox{Global
+    radiation in }\\frac{MJ}{m^2 day} \\\\ && z=\\mbox{Height
+    a.s.l. in }m \\\\ \\end{eqnarray*} 
     """
   return _cmf_core.global_radiation(*args, **kwargs)
 
@@ -4154,7 +4275,8 @@ class Weather(object):
         double Rn(double
         albedo, bool daily=false) const
 
-        Calculates the net radiation flux \\form#30
+        Calculates the net radiation flux $R_n \\left[\\frac{MJ}{m^2
+        day}\\right]$.
 
         \\begin{eqnarray*} R_{n} &=& R_{ns} - R_{nl} \\\\ \\mbox{ Net
         short wave radiation: }R_{ns} &=& (1-\\alpha) R_s \\\\ \\mbox{
@@ -4190,7 +4312,7 @@ class Weather(object):
         rH=70.0, double wind=2.0, double sunshine=0.5, double Rs=15, double
         daylength=12)
 
-        Creates a "weather" from given data
+        Creates a "weather" from given data.
 
         Parameters:
         -----------
@@ -4314,8 +4436,9 @@ Meteorology_swigregister(Meteorology)
 
 class ConstantMeteorology(Meteorology):
     """
-    A primitive implementation of the Meteorology interface. Holds a
-    Weather record and returns it for any date
+    A primitive implementation of the Meteorology interface.
+
+    Holds a Weather record and returns it for any date
 
     C++ includes: meteorology.h 
     """
@@ -4460,41 +4583,6 @@ class MeteoStation(object):
         void
         SetSunshineFraction(cmf::math::timeseries sunshine_duration)
 
-        Returns the global radiation at a given time step \\form#0, see
-        http://www.fao.org/docrep/X0490E/x0490e07.htm#radiation
-        \\begin{eqnarray*} \\phi &=& \\frac{(\\mbox{geogr.
-        Latitude})^\\circ \\pi}{180^\\circ} \\mbox{ Latitude in }rad
-        \\\\ \\delta &=& 0.409 \\sin\\left(\\frac{2\\pi}{365}DOY
-        - 1.39\\right) \\mbox{ Declination, DOY is day of year}\\\\
-        \\omega_s &=& \\arccos(-\\tan\\phi\\tan\\delta) \\mbox{
-        Sunset angle} \\\\ G_{sc} &=& 0.0802 \\frac{MJ}{m^2min}
-        \\mbox{Solar constant} \\\\ d_r &=& 1+0.033
-        \\cos\\left(\\frac{2\\pi}{365}DOY\\right) \\mbox{Inverse
-        relative distance Earth-Sun} \\\\ b &=&
-        \\frac{2\\pi(DOY-81)}{364}\\\\ S_c &=&
-        0.1645\\sin(2b)-0.1255\\cos(b)-0.025\\sin(b) \\mbox{ Seasonal
-        correction for solar time} \\\\ \\omega &=& \\frac {\\pi}
-        {12} \\left(t_h+\\frac{(\\mbox{geogr.
-        Longitude})^\\circ}{15}-\\mbox{Timezone}+S_c-12\\right)
-        \\mbox{ solar time in }rad \\\\ \\mbox{If daily} \\\\ R_a
-        &=& \\frac{24\\ 60}{\\pi}G_{sc}\\ d_r \\left(\\omega_s
-        \\sin\\phi \\sin\\delta + \\cos\\phi \\cos\\delta
-        \\sin\\omega_s\\right) \\mbox{Extraterrestrial radiation }
-        \\frac{MJ}{m^2 day} \\\\ \\mbox{If hourly} \\\\ R_a &=&
-        \\frac{12\\ 24\\ 60}{\\pi}G_{sc}\\ d_r
-        \\left(\\left(\\omega^+ -\\omega^-\\right) \\sin\\phi
-        \\sin\\delta + \\cos\\phi \\cos\\delta
-        \\left(\\sin\\omega^+ - \\sin\\omega^-\\right)\\right)
-        \\\\ && \\omega^+,\\omega^- = \\omega
-        \\pm\\frac{\\pi}{24} \\\\ \\frac n N &=&
-        \\mbox{Fractional sunshine duration} \\\\ R_s &=&
-        \\left(0.25+\\left(0.5+2\\
-        10^{-5}z\\right)\\frac{n}{N}\\right)R_a \\mbox{Global
-        radiation in }\\frac{MJ}{m^2 day} \\\\ && z=\\mbox{Height
-        a.s.l. in }m \\\\ \\end{eqnarray*} double
-        get_global_radiation(cmf::math::Time t,double height,double
-        sunshine_fraction) const;
-
         Calculates a timeseries of the sunshine fraction (to put into
         Sunshine) from a timeseries of absolute sunshine duration, using the
         potential sunshine duration in hours,
@@ -4506,7 +4594,7 @@ class MeteoStation(object):
         \\omega_s &=& \\arccos(-\\tan\\phi\\tan\\delta) \\mbox{
         Sunset angle} \\\\ N &=& \\frac{24}{\\pi}\\omega_s \\mbox{
         potential duration of sunshine in }h \\\\ \\frac n N &&
-        n\\mbox{Absolute sunshine duration} \\end{eqnarray*} 
+        n\\mbox{Absolute sunshine duration} \\end{eqnarray*}. 
         """
         return _cmf_core.MeteoStation_SetSunshineFraction(self, *args, **kwargs)
 
@@ -4546,8 +4634,10 @@ MeteoStation_swigregister(MeteoStation)
 
 class MeteoStationReference(Meteorology):
     """
-    A reference to a meteorological station. Returns the weather at a
-    given time for its place using MeteoStation::T_lapse.
+    A reference to a meteorological station.
+
+    Returns the weather at a given time for its place using
+    MeteoStation::T_lapse
 
     C++ includes: meteorology.h 
     """
@@ -4656,7 +4746,7 @@ class MeteoStationList(object):
         timestep=cmf::math::day)
 
         Creates a meteorological station at a certain position and adds it to
-        the list
+        the list.
 
         Parameters:
         -----------
@@ -4710,7 +4800,7 @@ class MeteoStationList(object):
         &position, double z_weight=0) const
 
         Creates a MeteoStationReference from the nearest station to position
-        at position
+        at position.
 
         The distance is calculated as $ d=\\sqrt{(x_{s} - x_{l})^2 + (y_{s}
         - y_{l})^2} + \\lambda_z\\|z_{s} - z_{l}\\| $ Where $s$ is the
@@ -4746,7 +4836,9 @@ MeteoStationList_swigregister(MeteoStationList)
 class IDW_Meteorology(Meteorology):
     """
     Regionalizes meteorological measurements using a simple inverse
-    distance weighted (IDW) method See:  IDW
+    distance weighted (IDW) method.
+
+    See:  IDW
 
     C++ includes: meteorology.h 
     """
@@ -4808,7 +4900,7 @@ aerodynamic_resistance_swigregister(aerodynamic_resistance)
 
 class RainSource(flux_node):
     """
-    An abstract class for different types of rainfall sources
+    An abstract class for different types of rainfall sources.
 
     C++ includes: precipitation.h 
     """
@@ -4840,8 +4932,9 @@ RainSource_swigregister(RainSource)
 
 class ConstantRainSource(RainSource):
     """
-    A simple implementation of RainSource. Returns intensity for any time
-    step.
+    A simple implementation of RainSource.
+
+    Returns intensity for any time step.
 
     C++ includes: precipitation.h 
     """
@@ -4855,8 +4948,10 @@ class ConstantRainSource(RainSource):
         ConstantRainSource(cmf::project &_project, cmf::geometry::point
         location, real _intensity)
 
-        Creates a new ConstantRainSource. Consider using Cell::set_rainfall
-        for internal creation of a constant rain source, instead of direct use
+        Creates a new ConstantRainSource.
+
+        Consider using Cell::set_rainfall for internal creation of a constant
+        rain source, instead of direct use
 
         Parameters:
         -----------
@@ -4889,8 +4984,10 @@ ConstantRainSource_swigregister(ConstantRainSource)
 class RainfallStation(object):
     """
     RainfallStation describes a rainfall timeseries in mm/day at a certain
-    place. Use RainfallStationReference or IDWRainfall to distribute the
-    data into space
+    place.
+
+    Use RainfallStationReference or IDWRainfall to distribute the data
+    into space
 
     C++ includes: precipitation.h 
     """
@@ -4951,7 +5048,7 @@ def RainfallStation_create(*args, **kwargs):
 
 class RainfallStationList(object):
     """
-    A list of rainfall stations
+    A list of rainfall stations.
 
     C++ includes: precipitation.h 
     """
@@ -4981,9 +5078,10 @@ class RainfallStationList(object):
         RainfallStation::ptr add(std::string Name, cmf::math::timeseries Data,
         cmf::geometry::point Position)
 
-        Creates a new RainfallStation and adds it to the list. Usage: The
-        position of the rainfall station will be used as identifier A new
-        rainfall station
+        Creates a new RainfallStation and adds it to the list.
+
+        Usage: The position of the rainfall station will be used as identifier
+        A new rainfall station
 
         Parameters:
         -----------
@@ -5025,7 +5123,8 @@ RainfallStationList_swigregister(RainfallStationList)
 
 class RainfallStationReference(RainSource):
     """
-    References a single RainfallStation to provide rainfall intensity data
+    References a single RainfallStation to provide rainfall intensity
+    data.
 
     C++ includes: precipitation.h 
     """
@@ -5060,7 +5159,9 @@ def RainfallStationReference_from_station_id(*args, **kwargs):
 class IDWRainfall(RainSource):
     """
     A RainSource using an spatially interpolated rainfall intensity from
-    all stations. Interpolation method is inverse distance weighted (IDW)
+    all stations.
+
+    Interpolation method is inverse distance weighted (IDW)
 
     C++ includes: precipitation.h 
     """
@@ -5114,7 +5215,7 @@ class Vegetation(object):
         \\left[\\frac{m}{m^2}\\right]= \\frac{ c_R
         \\left[\\frac{kg}{m^3}\\right] z_R \\left[m\\right] }
         {0.5\\left[\\frac{kg}{m^3}\\right] \\pi
-        \\left(d_R/2\\right)^2 \\left[m^2\\right]} \\] 
+        \\left(d_R/2\\right)^2 \\left[m^2\\right]} \\]. 
         """
         return _cmf_core.Vegetation_RootLength(self, *args, **kwargs)
 
@@ -5192,9 +5293,11 @@ CellConnector_swigregister(CellConnector)
 
 class Cell(StateVariableOwner):
     """
-    This class is the basic landscape object. It is the owner of water
-    storages, and the upper and lower boundary conditions of the system
-    (rainfall, atmospheric vapor, deep groundwater)
+    This class is the basic landscape object.
+
+    It is the owner of water storages, and the upper and lower boundary
+    conditions of the system (rainfall, atmospheric vapor, deep
+    groundwater)
 
     C++ includes: cell.h 
     """
@@ -5445,7 +5548,7 @@ class Cell(StateVariableOwner):
         real
         heat_flux(cmf::math::Time t) const
 
-        Calculates the surface heat balance
+        Calculates the surface heat balance.
 
         Parameters:
         -----------
@@ -6002,7 +6105,7 @@ class subcatchment(object):
         subcatchment(cmf::upslope::Cell &pourpoint, double
         area_threshold=1e308)
 
-        Creates a subcatchment from a pourpoint cell
+        Creates a subcatchment from a pourpoint cell.
 
         Parameters:
         -----------
@@ -6036,7 +6139,7 @@ def waterhead_to_pF(*args, **kwargs):
   return _cmf_core.waterhead_to_pF(*args, **kwargs)
 class RetentionCurve(object):
     """
-    Abstract base class for different types of retention curves
+    Abstract base class for different types of retention curves.
 
     This class, and its children uses wetness instead of volumetric water
     content. The wetness of a soil is defined as water content per void
@@ -6064,7 +6167,7 @@ class RetentionCurve(object):
 
         Returns the effective wetness, using a residual pF value \\[w_{eff}
         =
-        \\frac{w_{act}-w\\left(pF_r\\right)}{1-w\\left(pF_r\\right)}\\]
+        \\frac{w_{act}-w\\left(pF_r\\right)}{1-w\\left(pF_r\\right)}\\].
 
         """
         return _cmf_core.RetentionCurve_Wetness_eff(self, *args, **kwargs)
@@ -6155,7 +6258,7 @@ rho_wg = cvar.rho_wg
 
 class BrooksCoreyRetentionCurve(RetentionCurve):
     """
-    Provides the use of the Brooks-Corey retention curve
+    Provides the use of the Brooks-Corey retention curve.
 
     \\begin{eqnarray*} W(\\theta) &=& \\frac{\\theta -
     \\theta_r}{\\theta_s - \\theta_r} \\\\ K(W) &=& K_{sat}
@@ -6219,7 +6322,7 @@ class BrooksCoreyRetentionCurve(RetentionCurve):
         real theta_x=0.2, real psi_x=pF_to_waterhead(2.5), real
         porosity_decay=0)
 
-        Creates a brooks corey retention curve
+        Creates a brooks corey retention curve.
 
         Parameters:
         -----------
@@ -6325,6 +6428,10 @@ class VanGenuchtenMualem(RetentionCurve):
         """
         return _cmf_core.VanGenuchtenMualem_Transmissivity(self, *args, **kwargs)
 
+    def fit_w0(self, *args, **kwargs):
+        """fit_w0(self, real w1 = 1.01, real Psi_p = 1.0, real tolerance = 0.05) -> real"""
+        return _cmf_core.VanGenuchtenMualem_fit_w0(self, *args, **kwargs)
+
     def copy(self, *args, **kwargs):
         """
         copy(self) -> VanGenuchtenMualem
@@ -6341,7 +6448,7 @@ class VanGenuchtenMualem(RetentionCurve):
         VanGenuchtenMualem(real Ksat=15, real phi=0.5, real alpha=0.2178, real
         n=1.211, real m=-1)
 
-        Creates a van Genuchten-Mualem retention curve
+        Creates a van Genuchten-Mualem retention curve.
 
         Parameters:
         -----------
@@ -6365,6 +6472,7 @@ class VanGenuchtenMualem(RetentionCurve):
 
     __swig_destroy__ = _cmf_core.delete_VanGenuchtenMualem
 VanGenuchtenMualem.Transmissivity = new_instancemethod(_cmf_core.VanGenuchtenMualem_Transmissivity,None,VanGenuchtenMualem)
+VanGenuchtenMualem.fit_w0 = new_instancemethod(_cmf_core.VanGenuchtenMualem_fit_w0,None,VanGenuchtenMualem)
 VanGenuchtenMualem.copy = new_instancemethod(_cmf_core.VanGenuchtenMualem_copy,None,VanGenuchtenMualem)
 VanGenuchtenMualem_swigregister = _cmf_core.VanGenuchtenMualem_swigregister
 VanGenuchtenMualem_swigregister(VanGenuchtenMualem)
@@ -6372,7 +6480,7 @@ VanGenuchtenMualem_swigregister(VanGenuchtenMualem)
 class LinearRetention(RetentionCurve):
     """
     The linear retention curve provides a simple linear relationship
-    between storage and head
+    between storage and head.
 
     Head function (head in m, calculated from upper side control volume)
     \\[ h(\\theta) = -\\Delta z \\left( 1 - \\frac{\\theta -
@@ -6423,7 +6531,7 @@ LinearRetention_swigregister(LinearRetention)
 
 class SoilLayer(WaterStorage):
     """
-    A representation of a SoilLayer
+    A representation of a SoilLayer.
 
     C++ includes: SoilLayer.h 
     """
@@ -6502,7 +6610,7 @@ class SoilLayer(WaterStorage):
 
         Returns the depth for saturation \\[ z_{sat,this} =
         \\left\\{z_{cell}-\\Psi_{tot} \\mbox{ if } W<1 \\\\
-        z_{sat,upper layer} \\right. \\] 
+        z_{sat,upper layer} \\right. \\]. 
         """
         return _cmf_core.SoilLayer_get_saturated_depth(self, *args, **kwargs)
 
@@ -6757,7 +6865,8 @@ class IVolumeHeightFunction(object):
     """
     Volume height relations are functional objects, which return a height
     and a crosssectional area of a volume for different geometric bodies.
-    This is the abstract base class, where the geometries derive from.
+
+    This is the abstract base class, where the geometries derive from
 
     C++ includes: ReachType.h 
     """
@@ -6975,10 +7084,11 @@ class IChannel(IVolumeHeightFunction):
         virtual double get_flux_crossection(double depth) const =0
 
         Calculates the wetted area from a given depth using the IChannel
-        geometry. In most cases use get_flux_crossection=V/l, where V is the
-        stored volume and l is the reach length.
+        geometry.
 
-        Wetted area of a river cross section [m2]
+        In most cases use get_flux_crossection=V/l, where V is the stored
+        volume and l is the reach length Wetted area of a river cross section
+        [m2]
 
         Parameters:
         -----------
@@ -7063,7 +7173,7 @@ class SWATReachType(IChannel):
 
         SWATReachType(double l, double BankWidth, double Depth)
 
-        Creates a new reach structure from a give width and depth
+        Creates a new reach structure from a give width and depth.
 
         Parameters:
         -----------
@@ -7206,10 +7316,10 @@ class Channel(IChannel):
         Channel(char
         typecode, double length, double width=1., double depth=0.25)
 
-        Creates a reachtype using a short cut character. Acceptes one of the
-        following characters:
+        Creates a reachtype using a short cut character.
 
-        'T' TriangularReach, width and depth are ignored.
+        Acceptes one of the following characters: 'T' TriangularReach, width
+        and depth are ignored.
 
         'R' RectangularReach, depth is ignored
 
@@ -7277,8 +7387,10 @@ MeanChannel_swigregister(MeanChannel)
 
 class OpenWaterStorage(WaterStorage):
     """
-    An open water body. The potential is calculated from the stored water
-    using a water table function.
+    An open water body.
+
+    The potential is calculated from the stored water using a water table
+    function
 
     C++ includes: OpenWaterStorage.h 
     """
@@ -7454,7 +7566,7 @@ class Reach(OpenWaterStorage):
         void connect_to_surfacewater(cmf::upslope::Cell *cell, real width,
         bool diffusive)
 
-        Connects the surfacewater of a cell with this reach
+        Connects the surfacewater of a cell with this reach.
 
         Parameters:
         -----------
@@ -7476,7 +7588,9 @@ class Reach(OpenWaterStorage):
         distance_to_cell(cmf::upslope::Cell *cell) const
 
         Returns the distance (d) for connections between this reach and a
-        cell. If the effective inner cell distance (defined as $ R_{Cell} =
+        cell.
+
+        If the effective inner cell distance (defined as $ R_{Cell} =
         0.5\\frac{\\sqrt{A}}{\\pi}$) is smaller than the distance
         between the center points, the cell radius is returned 
         """
@@ -7558,9 +7672,10 @@ def Reach_create(*args, **kwargs):
 
 class ReachIterator(object):
     """
-    An iterator over every upstream reach from a start reach. Implements
-    both the Python and the C++ iterator interface Usage C++: Usage
-    Python:
+    An iterator over every upstream reach from a start reach.
+
+    Implements both the Python and the C++ iterator interface Usage C++:
+    Usage Python:
 
     C++ includes: Reach.h 
     """
@@ -7631,9 +7746,10 @@ def make_river_gap(*args, **kwargs):
     double
     cmf::river::make_river_gap(Reach::ptr root_reach)
 
-    Ensures that rivers have a monotone downward flow direction. Reaches
-    with a bottom higher than any upstream reach are lowered to the
-    minimum height of any (possibly distant) upstream reach. 
+    Ensures that rivers have a monotone downward flow direction.
+
+    Reaches with a bottom higher than any upstream reach are lowered to
+    the minimum height of any (possibly distant) upstream reach. 
     """
   return _cmf_core.make_river_gap(*args, **kwargs)
 class aquifer(WaterStorage):
@@ -7672,9 +7788,10 @@ class aquifer(WaterStorage):
         virtual real
         get_K(cmf::geometry::point direction) const
 
-        Returns the conductivity in m/day for a specific direction. Takes
-        account for anisotropy \\[ \\|K\\|(d) = \\frac{d}{\\|d\\|}
-        \\bullet K\\] 
+        Returns the conductivity in m/day for a specific direction.
+
+        Takes account for anisotropy \\[ \\|K\\|(d) =
+        \\frac{d}{\\|d\\|} \\bullet K\\] 
         """
         return _cmf_core.aquifer_get_K(self, *args, **kwargs)
 
@@ -7696,7 +7813,7 @@ class aquifer(WaterStorage):
         aquifer(cmf::upslope::cell_vector &cells, real thickness, real
         porosity, real K=1e-4)
 
-        Creates an aquifer below a collection of cells
+        Creates an aquifer below a collection of cells.
 
         Parameters:
         -----------
@@ -7753,7 +7870,7 @@ class aquifer_Darcy(flux_connection):
         real width)
 
         Creates a new Darcy flow connection between two aquifers, or an
-        aquifer and another node acting as Dirichlet boundary condition
+        aquifer and another node acting as Dirichlet boundary condition.
 
         Parameters:
         -----------
@@ -7772,7 +7889,7 @@ aquifer_Darcy_swigregister(aquifer_Darcy)
 
 class lateral_sub_surface_flux(flux_connection):
     """
-    An abstract base class for lateral subsurface fluxes
+    An abstract base class for lateral subsurface fluxes.
 
     C++ includes: subsurfacefluxes.h 
     """
@@ -7786,7 +7903,7 @@ lateral_sub_surface_flux_swigregister(lateral_sub_surface_flux)
 class Darcy(lateral_sub_surface_flux):
     """
     Calculates the lateral flow using the gravitational potential gradient
-    only
+    only.
 
     \\[ q_{lat} = \\frac{\\Delta \\Psi_G}{\\|C_1-C_2\\|}
     \\frac 12 (T(C_1)+T(C_2)) w \\] where  $ \\Delta \\Psi_G $ is
@@ -7818,7 +7935,7 @@ Darcy.cell_connector = _cmf_core.cvar.Darcy_cell_connector
 
 class TopographicGradientDarcy(lateral_sub_surface_flux):
     """
-    Calculates the lateral flow using the topographic gradient
+    Calculates the lateral flow using the topographic gradient.
 
     \\[ q_{lat} = \\frac{z_1 - z_2}{\\|C_1-C_2\\|} \\frac 12
     (T(C_1)+T(C_2)) w \\] where  $ z_1 - z_2 $ is the topographic height
@@ -7872,7 +7989,7 @@ OHDISflow.cell_connector = _cmf_core.cvar.OHDISflow_cell_connector
 
 class DarcyKinematic(lateral_sub_surface_flux):
     """
-    A simple kinemtic wave model for subsurface flux
+    A simple kinemtic wave model for subsurface flux.
 
     \\[ q = \\frac{\\Delta z_{surface}}{d} K(\\theta)_{source}
     A_{cross} \\]
@@ -7898,7 +8015,9 @@ class Richards_lateral(lateral_sub_surface_flux):
     """
     Calculates the flux using Richard's equation for adjacent layers \\[
     q_{lat} = \\frac{\\Psi_1 - \\Psi_2}{\\|C_1-C_2\\|}
-    K(\\theta) A \\] where:  $q_{lat}$ the lateral flow in $m^3/day$
+    K(\\theta) A \\] where:
+
+    $q_{lat}$ the lateral flow in $m^3/day$
 
     $\\Psi_i$ the head of node i
 
@@ -7967,18 +8086,18 @@ Manning_swigregister(Manning)
 
 class Manning_Diffusive(Manning):
     """
-    Connecting surface water bodies using a diffusive wave. Not stable for
-    deep water with small gradient.
+    Connecting surface water bodies using a diffusive wave.
 
-    \\begin{eqnarray*} q_{Manning}&=& A R^{\\frac 2 3}
-    \\sqrt{\\frac {\\Delta_z} n} \\\\ A &=& \\frac V l
-    \\mbox{, (Crosssectional area of the wetted crossection, Volume per
-    length)} \\\\ R &=& \\frac A {P(d)} \\\\ P(d) &=& \\mbox{
-    the perimeter of the wetted crosssection, a function of reach depth}
-    \\\\ d(V) &=& \\mbox{ the depth of the reach a function of the
-    volume} \\\\ \\Delta_z = \\|\\frac{h_1 - h_2}{l} \\mbox{
-    Slope of the reach waterlevels} \\\\ n&=&\\mbox{Manning friction
-    number} \\end{eqnarray*}
+    Not stable for deep water with small gradient \\begin{eqnarray*}
+    q_{Manning}&=& A R^{\\frac 2 3} \\sqrt{\\frac {\\Delta_z} n}
+    \\\\ A &=& \\frac V l \\mbox{, (Crosssectional area of the
+    wetted crossection, Volume per length)} \\\\ R &=& \\frac A
+    {P(d)} \\\\ P(d) &=& \\mbox{ the perimeter of the wetted
+    crosssection, a function of reach depth} \\\\ d(V) &=& \\mbox{
+    the depth of the reach a function of the volume} \\\\ \\Delta_z
+    = \\|\\frac{h_1 - h_2}{l} \\mbox{ Slope of the reach
+    waterlevels} \\\\ n&=&\\mbox{Manning friction number}
+    \\end{eqnarray*}
 
     C++ includes: ManningConnection.h 
     """
@@ -7999,18 +8118,17 @@ Manning_Diffusive.cell_connector = _cmf_core.cvar.Manning_Diffusive_cell_connect
 
 class Manning_Kinematic(Manning):
     """
-    Connecting surface water bodies using a kinematic wave. Note the fixed
-    gradient.
+    Connecting surface water bodies using a kinematic wave.
 
-    \\begin{eqnarray*} q_{Manning}&=& A R^{\\frac 2 3}
-    \\sqrt{\\frac {\\Delta_z} n} \\\\ A &=& \\frac V l
-    \\mbox{, (Crosssectional area of the wetted crossection, Volume per
-    length)} \\\\ R &=& \\frac A {P(d)} \\\\ P(d) &=& \\mbox{
-    the perimeter of the wetted crosssection, a function of reach depth}
-    \\\\ d(V) &=& \\mbox{ the depth of the reach a function of the
-    volume} \\\\ \\Delta_z &=& \\frac{\\|z_1 - z_2\\|}{l}
-    \\mbox{ Slope of the reach} \\\\ n&=&\\mbox{Manning friction
-    number} \\end{eqnarray*}
+    Note the fixed gradient \\begin{eqnarray*} q_{Manning}&=& A
+    R^{\\frac 2 3} \\sqrt{\\frac {\\Delta_z} n} \\\\ A &=&
+    \\frac V l \\mbox{, (Crosssectional area of the wetted
+    crossection, Volume per length)} \\\\ R &=& \\frac A {P(d)}
+    \\\\ P(d) &=& \\mbox{ the perimeter of the wetted crosssection,
+    a function of reach depth} \\\\ d(V) &=& \\mbox{ the depth of
+    the reach a function of the volume} \\\\ \\Delta_z &=&
+    \\frac{\\|z_1 - z_2\\|}{l} \\mbox{ Slope of the reach}
+    \\\\ n&=&\\mbox{Manning friction number} \\end{eqnarray*}
 
     C++ includes: ManningConnection.h 
     """
@@ -8031,7 +8149,7 @@ Manning_Kinematic.cell_connector = _cmf_core.cvar.Manning_Kinematic_cell_connect
 
 class CanopyOverflow(flux_connection):
     """
-    Calculates the overflow of a canopy storage
+    Calculates the overflow of a canopy storage.
 
     C++ includes: surfacefluxes.h 
     """
@@ -8060,7 +8178,7 @@ def CanopyOverflow_use_for_cell(*args, **kwargs):
 
 class SimpleTindexSnowMelt(flux_connection):
     """
-    Calculates snow melt using a simple degree day method
+    Calculates snow melt using a simple degree day method.
 
     C++ includes: surfacefluxes.h 
     """
@@ -8090,7 +8208,7 @@ def SimpleTindexSnowMelt_use_for_cell(*args, **kwargs):
 
 class EnergyBudgetSnowMelt(flux_connection):
     """
-    Calculates snow melt using the surface energy budget method
+    Calculates snow melt using the surface energy budget method.
 
     C++ includes: surfacefluxes.h 
     """
@@ -8120,7 +8238,7 @@ def EnergyBudgetSnowMelt_use_for_cell(*args, **kwargs):
 class Rainfall(flux_connection):
     """
     A connection routing rainfall to surface water and to an eventually
-    existing canopy storage
+    existing canopy storage.
 
     C++ includes: AtmosphericFluxes.h 
     """
@@ -8144,7 +8262,7 @@ Rainfall_swigregister(Rainfall)
 class Snowfall(flux_connection):
     """
     A connection routing snowfall (precipitation below freezing Temp) to
-    the snow pack
+    the snow pack.
 
     C++ includes: AtmosphericFluxes.h 
     """
@@ -8258,7 +8376,7 @@ CompleteInfiltration_swigregister(CompleteInfiltration)
 
 class SWATPercolation(flux_connection):
     """
-    A tipping bucket percolation approach similar to the approach in SWAT
+    A tipping bucket percolation approach similar to the approach in SWAT.
 
     \\begin{eqnarray*} q_{perc} &=&
     V_{H_2O,drain}\\left(1-e^{-\\frac 1{-TT_{perc}}}\\right)
@@ -8293,7 +8411,7 @@ def SWATPercolation_use_for_cell(*args, **kwargs):
 
 class Richards(flux_connection):
     """
-    Calculates flow according to the Richards equation
+    Calculates flow according to the Richards equation.
 
     \\begin{eqnarray*} q_{Richards} &=&
     \\frac{\\Delta\\Psi_{tot}}{d} K(\\theta) A \\\\
@@ -8340,7 +8458,7 @@ def Richards_use_for_cell(*args, **kwargs):
 
 class SimplRichards(flux_connection):
     """
-    Calculates flow according to a simplified Richards equation
+    Calculates flow according to a simplified Richards equation.
 
     \\begin{eqnarray*} q_{Richards} &=& (K(\\theta) - K(\\theta_r))
     A \\\\ \\end{eqnarray*} where  $ d [m]$ is the distance between
@@ -8380,7 +8498,7 @@ class HBVparameters(RetentionCurve):
     """
     This class holds the properties for all HBV like connections
     Implements the RetentionCurve interface is only partly, therefore it
-    is not suitable for other connection types
+    is not suitable for other connection types.
 
     \\begin{eqnarray*} K(w,d) &=& PERC w \\\\ \\Psi_{M} &=& 10 -
     \\frac{10}{w}\\\\ w(\\Psi_{M}) &=& \\frac{10}{10 -
@@ -8440,7 +8558,7 @@ def HBVparameters_cast(*args, **kwargs):
 
 class HBVpercolation(flux_connection):
     """
-    Calculates the percolation as in the HBV model
+    Calculates the percolation as in the HBV model.
 
     \\[ Q = \\left\\{Q_{in}
     \\left(\\frac{V}{FC}\\right)^\\beta\\mbox{ if first layer}
@@ -8496,7 +8614,7 @@ def HBVinstall(*args, **kwargs):
     cmf::upslope::Cell &cell)
 
     Installs an HBV like model setup at a cell Reference: Bergstroem et al
-    1995, in Singh (1995): Computer models of watershed hydrology
+    1995, in Singh (1995): Computer models of watershed hydrology.
 
     Removes the layers of a cell and adds three layers with 1m thickness
     and the HBVparameters as retention curve. Installs HBVpercolation
@@ -8512,8 +8630,9 @@ def HBVinstall(*args, **kwargs):
   return _cmf_core.HBVinstall(*args, **kwargs)
 class log_wind_profile(aerodynamic_resistance):
     """
-    , A logarithmic wind profileTodo Cite literature for this windprofile
-    and insert equation
+    , A logarithmic wind profile
+
+    Todo Cite literature for this windprofile and insert equation
 
     C++ includes: ET.h 
     """
@@ -8781,7 +8900,7 @@ def Tact(*args, **kwargs):
   return _cmf_core.Tact(*args, **kwargs)
 class constantETpot(flux_connection):
     """
-    A constant evapotranspiration
+    A constant evapotranspiration.
 
     C++ includes: ET.h 
     """
@@ -8822,7 +8941,7 @@ def PenmanMonteith(*args):
 
 class timeseriesETpot(flux_connection):
     """
-    A ET connection for timeseries driven ETpot
+    A ET connection for timeseries driven ETpot.
 
     C++ includes: ET.h 
     """
@@ -8944,7 +9063,7 @@ def PenmanMonteithET_use_for_cell(*args, **kwargs):
 
 class HargreaveET(flux_connection):
     """
-    Calculates the Evapotranspiration using Hargreave's equation
+    Calculates the Evapotranspiration using Hargreave's equation.
 
     Todo document Hargreave
 
@@ -8975,7 +9094,7 @@ def HargreaveET_use_for_cell(*args, **kwargs):
 
 class CanopyStorageEvaporation(flux_connection):
     """
-    Calculates the evaporation from a canopy storage
+    Calculates the evaporation from a canopy storage.
 
     C++ includes: ET.h 
     """
@@ -8995,7 +9114,7 @@ CanopyStorageEvaporation_swigregister(CanopyStorageEvaporation)
 
 class PenmanEvaporation(flux_connection):
     """
-    Calculates evaporation from an open water body
+    Calculates evaporation from an open water body.
 
     C++ includes: ET.h 
     """
@@ -9376,7 +9495,9 @@ class project(StateVariableOwner):
         NewCell(double x, double y, double z, double area, bool
         with_surfacewater=false)
 
-        Creates a new cell A new cell, owned by the project
+        Creates a new cell.
+
+        A new cell, owned by the project
 
         Parameters:
         -----------
@@ -9399,7 +9520,7 @@ class project(StateVariableOwner):
 
         Creates a new Dirichlet boundary condition and adds it to the list of
         outlets The potential of the Dirichlet boundary equals z, but can be
-        changed
+        changed.
 
         Parameters:
         -----------
@@ -9418,8 +9539,10 @@ class project(StateVariableOwner):
         cmf::water::WaterStorage::ptr NewStorage(std::string name, double x,
         double y, double z)
 
-        Creates a new generic water storage at position x,y,z. The storage is
-        added to the project nodes A new water storage, owned by the project
+        Creates a new generic water storage at position x,y,z.
+
+        The storage is added to the project nodes A new water storage, owned
+        by the project
 
         Parameters:
         -----------
@@ -9438,9 +9561,10 @@ class project(StateVariableOwner):
         cmf::river::OpenWaterStorage::ptr NewOpenStorage(std::string name,
         double x, double y, double z, double area)
 
-        Creates a new open water storage with a prism geometry. The open water
-        storage is added to the project nodes A new open water storage, owned
-        by the project
+        Creates a new open water storage with a prism geometry.
+
+        The open water storage is added to the project nodes A new open water
+        storage, owned by the project
 
         Parameters:
         -----------
@@ -9463,7 +9587,9 @@ class project(StateVariableOwner):
         NewReach(double x, double y, double z, double length, char Type='T',
         double width=0.5, double depth=0.1, bool diffusive=false)
 
-        Creates a new reach A new reach, owned by the project
+        Creates a new reach.
+
+        A new reach, owned by the project
 
         Parameters:
         -----------
@@ -9581,9 +9707,10 @@ project_swigregister(project)
 class SoluteWaterIntegrator(Integrator):
     """
     A SoluteWaterIntegrator implements the cmf::math::Integrator
-    interface, but consists of two independent ODE-solvers. Added
-    statevariables are sorted by waterstorages and solute storages and
-    assigned to the correct solver.
+    interface, but consists of two independent ODE-solvers.
+
+    Added statevariables are sorted by waterstorages and solute storages
+    and assigned to the correct solver.
 
     C++ includes: WaterSoluteIntegrator.h 
     """
@@ -9609,7 +9736,7 @@ class SoluteWaterIntegrator(Integrator):
         const cmf::math::Integrator &solute_integrator,
         cmf::math::StateVariableOwner &states)
 
-        Creates a new SoluteWaterIntegrator
+        Creates a new SoluteWaterIntegrator.
 
         Parameters:
         -----------

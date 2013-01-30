@@ -190,7 +190,7 @@ namespace cmf {
 				return (m_SurfaceWaterStorage) && (m_SurfaceWaterStorage->get_state()>1e-6*get_area());
 			}
 			int Id;
-			cmf::project& cmf::upslope::Cell::get_project() const
+			cmf::project& get_project() const
 			{
 				return m_project;
 			}

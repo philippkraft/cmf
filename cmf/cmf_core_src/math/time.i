@@ -88,16 +88,18 @@ static int convert_datetime_to_cmftime(PyObject* dt, cmf::math::Time** pT)
     $1=SWIG_IsOK(res) || PyDateTime_Check($input) || PyDelta_Check($input) || PyDate_Check($input);
 }
 
-%typemap(in, noblock=1) cmf::math::Time * {
+%typemap(in) cmf::math::Time * {
     // typemap Time*
     int timeconvert=convert_datetime_to_cmftime($input, &$1);
     if (!SWIG_IsOK(timeconvert))  {
         SWIG_exception_fail(SWIG_TypeError,"Can't convert input value to cmf.Time object");
-    }
+    } else if (!SWIG_IsNewObj(timeconvert)) {
+    	$1 = new cmf::math::Time(*$1);
+   	}
 }
 %typemap(freearg, noblock=1) cmf::math::Time * {
     // %typemap(freearg) cmf::math::Time *
-    if (SWIG_IsNewObj(timeconvert))  delete $1;
+    delete $1;
 }
 
 %typemap(typecheck,precedence=100) cmf::math::Time *{
@@ -106,16 +108,18 @@ static int convert_datetime_to_cmftime(PyObject* dt, cmf::math::Time** pT)
     $1=SWIG_IsOK(res) || PyDateTime_Check($input) || PyDelta_Check($input) || PyDate_Check($input);
 }
 
-%typemap(in, noblock=1) cmf::math::Time & {
+%typemap(in) cmf::math::Time & {
     // typemap Time&
     int timeconvert_r=convert_datetime_to_cmftime($input, &$1);
     if (!SWIG_IsOK(timeconvert_r))  {
         SWIG_exception_fail(SWIG_TypeError,"Can't convert input value to cmf.Time object");
+    } else if (!SWIG_IsNewObj(timeconvert_r)) {
+    	$1 = new cmf::math::Time(*$1);
     }
 }
-%typemap(freearg, noblock=1) cmf::math::Time & {
-    // %typemap(freearg) cmf::math::Time *
-    if (SWIG_IsNewObj(timeconvert_r))  delete $1;
+%typemap(freearg) cmf::math::Time & {
+    // %typemap(freearg) cmf::math::Time &
+    delete $1;
 }
 %typemap(typecheck,precedence=100) cmf::math::Time &{
     void * pt;
