@@ -27,80 +27,80 @@
 namespace cmf {
 	namespace math {
 		struct Date;
-		/// A time class, used to pass around current modelling times
+		/// @brief A time class, used to pass around current modelling times
 		///
-		///		Timespans and dates in cmf are used with a special object, called Time. An extra 
-		///		class has the advantage, that the user does not have to remember, which
-		///		unit of time he or she uses or what time unit is accepted by a specific function
-		///		of the model. Arithmetic and boolean operators are supported by Time. Internally
-		///		the time classes stores the time as integer milliseconds, therefore rounding issues
-		///		will only appear at very small time ranges. Absolute time (like dates) are represented
-		///		as milliseconds gone by from Dec, 31st 1899. Microsoft Excel dates are represented
-		///		as days from that time, using floating point numbers, therefore it is very simple
-		///		to convert Excel time representations to cmf time.
+		/// Timespans and dates in cmf are used with a special object, called Time. An extra 
+		/// class has the advantage, that the user does not have to remember, which
+		/// unit of time he or she uses or what time unit is accepted by a specific function
+		/// of the model. Arithmetic and boolean operators are supported by Time. Internally
+		/// the time classes stores the time as integer milliseconds, therefore rounding issues
+		/// will only appear at very small time ranges. Absolute time (like dates) are represented
+		/// as milliseconds gone by from Dec, 31st 1899. Microsoft Excel dates are represented
+		/// as days from that time, using floating point numbers, therefore it is very simple
+		/// to convert Excel time representations to cmf time.
 		///	
-		///		Another object is Date, which is doesn't provide the operators, but has a nice printed
-		///		version and some special date functions, like day of year (DOY) and provides access
-		///		to the current hour of day and so on, which only applyto dates and not to time spans.
-		///		You can convert Time to Date an vice versa. The printing is not culture aware and
-		///		uses the European representation. If you use the Python standard library datetime,
-		///		conversion between Python time and cmf time is possible
+		/// Another object is Date, which is doesn't provide the operators, but has a nice printed
+		/// version and some special date functions, like day of year (DOY) and provides access
+		/// to the current hour of day and so on, which only applyto dates and not to time spans.
+		/// You can convert Time to Date an vice versa. The printing is not culture aware and
+		/// uses the European representation. If you use the Python standard library datetime,
+		/// conversion between Python time and cmf time is possible
 		///
 		/// Creating absolute time values (dates)
-		///\code
-		///import CMFlib as cmf
+		///@code{.py}
+		///import cmf
 		///# Create the time: Jan, 5th 2001, 2:30 pm, 20s, 412 ms
 		///t=cmf.Time(5,1,2001,14,30,20,412)
 		///print t # Prints: '36896d:14:30:20.412h'
 		///print t.AsDate() # Prints: '05.01.2001 14:30:20.412'
-		///\endcode
+		///@endcode
 		///	Creating time spans
 		///
-		///		In principle, there are three ways to create time spans. One is to use one of the
-		///		static functions, another is to multiply an existing time span (like one of the
-		///		build in constants) or to substrate two absolute times.
+		/// In principle, there are three ways to create time spans. One is to use one of the
+		/// static functions, another is to multiply an existing time span (like one of the
+		/// build in constants) or to substrate two absolute times.
 		///
-		///		Available constants
-		///		 - @code cmf.sec * 4.1 @endcode : 4.1 seconds 
-		///		 - @code cmf.min * 138 @endcode : 2.3 hours (138 min)
-		///		 - @code cmf.h * 2.3 @endcode : 2.3 hours (138 min)
-		///		 - @code cmf.day * 2.5 @endcode : 60 hours (2.5 days)
-		///		 - @code cmf.week @endcode : 7 days
-		///		 - @code cmf.month @endcode : 365/12 days (30.4167 days)
-		///		 - @code cmf.year @endcode : 365 days
+		/// Available constants
+		///  - @code cmf.sec * 4.1 @endcode : 4.1 seconds 
+		///  - @code cmf.min * 138 @endcode : 2.3 hours (138 min)
+		///  - @code cmf.h * 2.3 @endcode : 2.3 hours (138 min)
+		///  - @code cmf.day * 2.5 @endcode : 60 hours (2.5 days)
+		///  - @code cmf.week @endcode : 7 days
+		///  - @code cmf.month @endcode : 365/12 days (30.4167 days)
+		///  - @code cmf.year @endcode : 365 days
 		///	
-		///		Available operators:
+		/// Available operators:
 		///	
-		///		 - time + time = time, time - time = time
-		///		 - time * float = time ,time / float = time
-		///		 - time/time=float
-		///		 - &gt, &lt, ==, !=
+		///  - time + time = time, time - time = time
+		///  - time * float = time ,time / float = time
+		///  - time/time=float
+		///  - &gt;, &lt;, ==, !=
 		///	
 		///	
-		///		Conversions
+		/// Conversions
 		///	
-		///		Converting to python datetime
-		///@code
-		///import CMFlib as cmf
+		/// Converting to python datetime
+		///@code{.py}
+		///import cmf
 		///pythontime = cmf.year.AsPython()
 		///cmftime=cmf.AsCMFTime(pythontime)
-		///print type(pythontime) # '&lt;type 'datetime.datetime'&gt;'
-		///print type(cmftime)    # '&lt;class 'CMFLib.Time'&gt;'
+		///print type(pythontime) # type 'datetime.datetime'
+		///print type(cmftime)    # '<class 'cmf.Time'>
 		///@endcode
 		///	
-		///		Converting to numbers
+		/// Converting to numbers
 		///	
-		///		 - t.AsMilliseconds()
-		///		 - t.AsSeconds()
-		///		 - t.AsMinutes()
-		///		 - t.AsHours()
-		///		 - t.AsDays()
-		///		 - t.AsYears()
+		///  - t.AsMilliseconds()
+		///  - t.AsSeconds()
+		///  - t.AsMinutes()
+		///  - t.AsHours()
+		///  - t.AsDays()
+		///  - t.AsYears()
 		///	
 		///	
-		///		Creating time ranges
+		/// Creating time ranges
 		///	@code
-		///import CMFLib as cmf
+		///import cmf
 		///start=cmf.Time(5,1,2001)
 		///end=cmf.Time(6,1,2001)
 		///step=cmf.h * 6

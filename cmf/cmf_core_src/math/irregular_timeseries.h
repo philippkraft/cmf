@@ -36,7 +36,7 @@ namespace cmf {
 		///		Creating a time series</h3>
 		///	<div class="fragment">
 		///		<pre class="fragment">
-		///import CMFLib as cmf
+		///import cmf
 		///# Start date is the January 5th 2001 at 2:30 pm
 		///start=cmf.Time(5,1,2001,14,30)                      
 		///# time step of the timeseries is 20 minutes
