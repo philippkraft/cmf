@@ -33,7 +33,7 @@ namespace cmf {
 		///
 		/// <b>Creating a time series</b>
 		/// @code
-		///import CMFLib as cmf
+		///import cmf
 		///# Start date is the January 5th 2001 at 2:30 pm
 		///start=cmf.Time(5,1,2001,14,30)                      
 		///# time step of the timeseries is 20 minutes
@@ -45,7 +45,7 @@ namespace cmf {
 		///# 3 - Cubic, etc.
 		///interpolation=1                                     
 		///# Create timeseries
-		///timeseries=cmf.timeseries(start,step,interpolation) 
+		///timeseries=cmf.timeseries(begin=start,step=step,interpolation=interpolation) 
 		///# add data
 		///timeseries.add(0.1) # Value at 2001/5/1 2:30pm is 0.1
 		///timeseries.add(0.2) # Value at 2001/5/1 2:50pm is 0.2
