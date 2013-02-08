@@ -6,19 +6,17 @@
 #include <exception>
 #include <cmath>
 #include "../project.h"
-#include "../atmosphere/Meteorology.h"
-#include "../Upslope/Cell.h"
-#include "../Upslope/vegetation/ET.h"
-#include "../math/integrators/cvodeIntegrator.h"
-#include "../math/integrators/explicit_euler.h"
-#include "../Upslope/Soil/RetentionCurve.h"
-#include "../Upslope/connections/subsurfacefluxes.h"
-#include "../Upslope/connections/infiltration.h"
-#include "../Upslope/connections/percolation.h"
-#include "../Reach/ManningConnection.h"
+#include "../atmosphere/meteorology.h"
+#include "../upslope/cell.h"
+#include "../upslope/vegetation/ET.h"
+#include "../math/integrators/cvodeintegrator.h"
+#include "../upslope/Soil/RetentionCurve.h"
+#include "../upslope/connections/subsurfacefluxes.h"
+#include "../upslope/connections/infiltration.h"
+#include "../upslope/connections/Percolation.h"
+#include "../reach/ManningConnection.h"
 #include "../water/WaterStorage.h"
 #include "../water/simple_connections.h"
-#include "../math/spline.h"
 
 /// Main function of the program. Only for debugging and testing, the real CMF<sub>lib</sub> will be compiled as a DLL and the 
 /// main function will be replaced by Python code
@@ -92,7 +90,7 @@ void designcell(Cell& c) {
 	PenmanMonteithET::use_for_cell(c);
 	// Initialize water content of layers (hydrostatic equilibrium with 
 	// groundwater depth at 1m below ground
-	c.set_saturated_depth(c.z*.5);
+	c.set_saturated_depth(1);
 	return;
 }
 // Loads the meteorological data from binary saved timeseries
@@ -166,26 +164,37 @@ int create3d(std::string name) {
 	CVodeIntegrator integ(p,1e-6);
 	Time start(1,1,1980);
 	integ.set_t(start);
-
 	time_t walltime=time(0),walltimestart=time(0);
 	real overflow=0.0,perc=0.0;
 	int i=0;
 	cout.precision(3);
 	cout << endl << "run" << endl;
 	double area = p.get_cells().get_area();
+	// Make file for output (tab-delimited text)
+	ofstream fout;
+	fout.open((name + "_output.txt").c_str());
+	// write headers
+	fout << "Time\tq-out m3/day\tsat depth@out m\tRainfall mm/day\t[X]-out g/m3" << endl;
 	while (integ.get_t() < start + year)
 	{
 		Time t = integ.get_t();
-		integ.integrate_until(t+math::h);
+		double 
+			q=outletflow->q(*outlet,t),
+			sd_out=outcell.get_saturated_depth(),
+			concXout=0,
+			P=p.rainfall_stations[0]->data.get_t(t);
 		cout << integ.get_t().AsDate();
-		cout << " q=" << outletflow->q(*outlet,t)<< "m3/day";
+		cout << " q=" << q << "m3/day";
 #ifdef SOLUTE
-		cout << " [X]q="<< outletflow->conc(t,X);
+		concXout = outletflow->conc(t,X)
+		cout << " [X]q="<< concXout;
 #else
-		cout << " d_sat[out]=" << outcell.get_saturated_depth() << "m";
+		cout << " d_sat[out]=" << sd_out << "m";
 #endif
-		cout << " P=" << p.rainfall_stations[0]->data.get_t(t);
+		fout << t.AsDate() << "\t" << q << "\t" << sd_out << "\t" << P << "\t" << concXout << endl;
+		cout << " P=" << P;
 		cout << endl;
+		integ.integrate_until(t+math::h);
 	}
 	return 0;
 
@@ -221,25 +230,6 @@ int main(int argc,const char* argv[])
 {
 	if (argc>=2) {
 		string name=argv[1];
-		if (name=="spline") {
-			num_array x(6);
-			num_array y(6);
-			for (int i = 0; i < 6 ; ++i)
-			{
-				x[i] = i;
-				y[i] = i % 2;
-			}
-			cubicspline spline(x,y);
-			std::ofstream fout;
-			fout.open("spline.csv");
-			for (int i = 0; i < 50 ; ++i)
-			{
-				fout << i * .1 << "," << spline(i*.1) << endl;
-			}
-			fout.close();
-			
-
-		}
 		create3d(name);
 	} else {
 		createsimple();
