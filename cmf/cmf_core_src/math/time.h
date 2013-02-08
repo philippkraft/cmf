@@ -278,6 +278,7 @@ namespace cmf {
 		const Time week = 7 * day;	    ///< 1 week
 		const Time year = 365 * day;	///< 1 year  = 365*day
 		const Time month= year/12;		///< 1 month = 30*day+10*h
+		const Time never=Time(0,0,-9999); ///< A date long before our time to indicate 'never'
 	}
 }
 
