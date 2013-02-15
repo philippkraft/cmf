@@ -55,7 +55,11 @@ def fit_bc(pF,theta,count=20,verbose=False):
     return bc, 1-best_f/ns_denom
 
 def get_error_vgm(params,pF,theta):
-    vgm=cmf.VanGenuchtenMualem(1.0, *params)
+    try:
+        vgm=cmf.VanGenuchtenMualem(1.0, *params)
+    except RuntimeError:
+        return 2 # worst case would be 1.0 and 2.0 indicates a impossible parameterization (NaN causes errors during the optimization)
+    
     model_wetness=vgm.Wetness_pF(pF)
     err = np.sum((theta - params[0] * model_wetness )**2)
     return err
