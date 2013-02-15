@@ -166,7 +166,7 @@ cmf::upslope::BrooksCoreyRetentionCurve::BrooksCoreyRetentionCurve( real ksat/*=
 : Ksat(ksat),m_Porosity(porosity),m_b(_b),wetness_X(theta_x/porosity),Psi_X(psi_x),m_PorosityDecay(porosity_decay)
 {
 	std::stringstream msg;
-	msg << "Can't create VanGenuchten-Mualem-Retention curve with ";
+	msg << "Can't create Brooks-Corey-Retention curve with ";
 	bool error=false;
 	if (_b<=1.0 || _b>20.0) {
 		msg <<"b="<<_b << " outside [1.0..20-0]";error=true;

@@ -17,7 +17,13 @@
 #   You should have received a copy of the GNU General Public License
 #   along with cmf.  If not, see <http://www.gnu.org/licenses/>.
 #   
-import shapely.geometry as geometry
+has_shapely=True
+try:   
+    import shapely.geometry as geometry
+except ImportError:
+    has_shapely=False
+    create_reaches,cells_from_dem = None,None
+
 import math
 #import raster
 def distance(p1,p2):
@@ -111,36 +117,36 @@ class nearest_neighbor_map(Map):
         return nearest
     def __nonzero__(self):
         return len(self._objects)
-
-class polygon_map(Map):
-    """A map of polygons. Each object is referenced with a shapely polygon. 
-    Returns the object of the first polygon, within the query position lays. 
-    """
-    def __init__(self,quad_tree_raster_size=20):
-        Map.__init__(self)
-        self._objects={}
-        self.q_tree=simple_quad_tree(quad_tree_raster_size,quad_tree_raster_size)
-    def append(self,polygon,object):
-        self._objects[polygon]=object
-        self.q_tree.add_object(polygon, polygon.bounds)
-    def remove(self,polygon):
-        self._objects.pop(polygon)
-    def __iter__(self):
-        for p in self._objects:
-            yield (p,self._objects[p])
-    @property
-    def values(self):
-        for v in self._objects.itervalues():
-            yield v
-    def __call__(self,x,y,z=0):
-        loc=geometry.Point(x,y,z)
-        candidates=self.q_tree.get_objects((x,y,x,y))
-        for p in candidates:
-            if loc.within(p):
-                return self._objects[p]        
-        return self.default
-    def __nonzero__(self):
-        return len(self._objects)
+if has_shapely:
+    class polygon_map(Map):
+        """A map of polygons. Each object is referenced with a shapely polygon. 
+        Returns the object of the first polygon, within the query position lays. 
+        """
+        def __init__(self,quad_tree_raster_size=20):
+            Map.__init__(self)
+            self._objects={}
+            self.q_tree=simple_quad_tree(quad_tree_raster_size,quad_tree_raster_size)
+        def append(self,polygon,object):
+            self._objects[polygon]=object
+            self.q_tree.add_object(polygon, polygon.bounds)
+        def remove(self,polygon):
+            self._objects.pop(polygon)
+        def __iter__(self):
+            for p in self._objects:
+                yield (p,self._objects[p])
+        @property
+        def values(self):
+            for v in self._objects.itervalues():
+                yield v
+        def __call__(self,x,y,z=0):
+            loc=geometry.Point(x,y,z)
+            candidates=self.q_tree.get_objects((x,y,x,y))
+            for p in candidates:
+                if loc.within(p):
+                    return self._objects[p]        
+            return self.default
+        def __nonzero__(self):
+            return len(self._objects)
 
 class raster_map(Map):
     """A map based on an integer raster and a lookup dictionary referencing the map objects with the raster values 
