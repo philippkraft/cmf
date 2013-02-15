@@ -72,7 +72,7 @@ def fit_vgm(pF,theta,variable_m=False, count=20, fitlevel=None,verbose=False):
 
     best_f=1e120
     for i in range(count):
-        x0=[ random.uniform(0.01,1.0), random.uniform(0.0001,10),random.uniform(1.01,5)]
+        x0=[ random.uniform(0.01,0.99), random.uniform(0.0001,1.9),random.uniform(1.01,3.9)]
         if variable_m: x0.append(1-1/random.uniform(1.01,5))
         x_opt, f_opt,n_iter,n_eval, warn = opt.fmin(get_error_vgm, x0 = np.array(x0), args=(pF,theta),full_output=1, disp=0)
         if f_opt<best_f:

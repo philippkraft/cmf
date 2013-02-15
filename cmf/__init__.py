@@ -24,10 +24,11 @@ except ImportError:
     print "Could not found shapely. Creating cells from polygons is disabled"
     has_shapely= False
 from cmf_core import *
-from cell_factory import create_reaches,cells_from_dem
+
 from maps import Map,nearest_neighbor_map,raster_map
 
 if has_shapely:
+    from cell_factory import create_reaches,cells_from_dem
     from cell_factory import cells_from_polygons
     from geos_shapereader import shapefile
     from maps import polygon_map
@@ -49,4 +50,4 @@ except ImportError:
     __pylab_loaded=False
 if __pylab_loaded:
     import draw
-__version__ = '600'
+__version__ = '618'
