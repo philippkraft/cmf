@@ -195,6 +195,7 @@ namespace cmf {
 			real PenmanMonteith(real Rn,real ra,real rs,real T,real vap_press_deficit);
 			real PenmanMonteith(cmf::atmosphere::Weather A,const cmf::upslope::vegetation::Vegetation & veg,double h);
 			
+			/// @ingroup ET
 			/// @brief A function to calculate the actual transpiration for each soil layer using a Feddes like approach
 			///
 			/// This function is used to calculate the actual water uptake in m³/day from a single soillayer sw
@@ -205,11 +206,15 @@ namespace cmf {
 			/// - \f$q_{T_{pot}}\f$: the potential transpiration flux from this layer
 			/// - \f$T_{pot}\f$: the potential transpiration for the cell
 			/// - \f$A_{cell}\f$: the area of the cell
-			/// - \f$f_r=\frac{R_{layer}}{\sum_{i=0}^{layers}{R_i}\f$: the root mass in this layer per total root mass at this cell.
+			/// - \f$f_r=\frac{R_{layer}}{\sum_{i=0}^{layers}{R_i}}\f$: the root mass in this layer per total root mass at this cell.
 			/// This is calculated with the cmf::upslope::vegetation::Vegetation::RootFraction
 			real Tact(real Tpot,const cmf::upslope::SoilLayer & sw,const cmf::upslope::vegetation::Vegetation & veg);
 			/// @ingroup ET
-			/// A constant evapotranspiration
+			/// @brief A constant evapotranspiration
+			///
+			/// Uses a constant measured or elsewhere modelled ETpot. Actual Evapotranspiration is calculated
+			/// from rootdepth and actual matrix potential in the layers using Tact. The value of ETpot can be 
+			/// changed during runtime
 			class constantETpot : public cmf::water::flux_connection {
 			protected:
 				std::tr1::weak_ptr<cmf::upslope::SoilLayer> sw;
@@ -229,7 +234,11 @@ namespace cmf {
 				}
 			};
 			/// @ingroup ET
-			/// A ET connection for timeseries driven ETpot
+			/// @brief A timeseries driven evapotranspiration
+			///
+			/// Uses a timeseries of measured or elsewhere modelled ETpot. Actual Evapotranspiration is calculated
+			/// from rootdepth and actual matrix potential in the layers using Tact. The value of ETpot can be 
+			/// changed during runtime
 			class timeseriesETpot: public cmf::water::flux_connection {
 			protected:
 				std::tr1::weak_ptr<cmf::upslope::SoilLayer> sw;

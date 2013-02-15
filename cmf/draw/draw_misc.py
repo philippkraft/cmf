@@ -16,7 +16,6 @@
 #   You should have received a copy of the GNU General Public License
 #   along with cmf.  If not, see <http://www.gnu.org/licenses/>.
 #   
-from shapely.geometry import Polygon,MultiPolygon,Point,LineString,MultiLineString,MultiPoint,GeometryCollection
 import pylab
 import numpy
 from cmf.cell_factory import geometry as geoms
@@ -69,7 +68,7 @@ class cell_polygon_map(object):
                 geos.append((cell,s,value))
         if self.minvalue>=self.maxvalue: self.minvalue=self.maxvalue-1
         for cell,s,v in geos:
-            if isinstance(s, Polygon):
+            if hasattr(s, "exterior"):
                 s=s.exterior
             c=cmap(float(v-self.minvalue)/float(self.maxvalue-self.minvalue))
             a=pylab.asarray(s)
@@ -92,7 +91,7 @@ def drawobjects(objects,style=None,hold=1,**kwargs):
         else:
             shapes=[shape]
         for s in shapes:
-            if isinstance(s, Polygon):
+            if hasattr(s, "exterior"):
                 s=s.exterior
             a=pylab.array(s.coords)
             if style is None:
@@ -205,11 +204,11 @@ class quiver3d(object):
         self.zscale = zscale
         self.quiver = mlab.quiver3d(p.X,p.Y,p.Z,f.X,f.Y,f.Z*zscale,**kwargs)
     def __call__(self,t):
-        if isinstance(objects,cmf.node_list):
-            f=objects.get_fluxes3d(t)
-        elif isinstance(objects,cmf.project):
-            f=cmf.cell_fluxes(objects.cells,t)
-        elif isinstance(objects[0],cmf.Cell):
+        if isinstance(self.objects,cmf.node_list):
+            f=self.objects.get_fluxes3d(t)
+        elif isinstance(self.objects,cmf.project):
+            f=cmf.cell_fluxes(self.objects.cells,t)
+        elif isinstance(self.objects[0],cmf.Cell):
             f=cmf.cell_fluxes(objects,t)
         else:
             raise ValueError("Given objects are not a nodelist or a sequence of cells")

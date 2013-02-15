@@ -15,8 +15,7 @@
 #
 #   You should have received a copy of the GNU General Public License
 #   along with cmf.  If not, see <http://www.gnu.org/licenses/>.
-#   
-from shapely.geometry import Polygon,LineString,Point
+#
 import cmf_core as cmf
 import maps
 import time

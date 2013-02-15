@@ -1,4 +1,4 @@
-# Doxyfile 1.8.3
+# Doxyfile 1.8.3.1
 
 # This file describes the settings to be used by the documentation system
 # doxygen (www.doxygen.org) for a project
@@ -32,7 +32,7 @@ PROJECT_NAME           = cmf
 # This could be handy for archiving the generated documentation or 
 # if some version control system is used.
 
-PROJECT_NUMBER         = 600
+PROJECT_NUMBER         = 618
 
 # Using the PROJECT_BRIEF tag one can provide an optional one line description 
 # for a project that appears at the top of each page and should give viewer 
@@ -45,7 +45,7 @@ PROJECT_BRIEF          = "The Catchment Modelling Framework"
 # exceed 55 pixels and the maximum width should not exceed 200 pixels. 
 # Doxygen will copy the logo to the output directory.
 
-PROJECT_LOGO           = D:/Code/cmf/cmf/cmf_core_src/doc/cmf-logo-klein.png
+PROJECT_LOGO           = cmf/cmf_core_src/doc/cmf-logo-klein.png
 
 # The OUTPUT_DIRECTORY tag is used to specify the (relative or absolute) 
 # base path where the generated documentation will be put. 
@@ -1274,13 +1274,19 @@ SEARCHENGINE_URL       =
 
 SEARCHDATA_FILE        = searchdata.xml
 
-# The EXTRA_SEARCH_MAPPINGS tag can be used to enable searching through other 
-# doxygen projects that are not otherwise connected via tags files, but are 
-# all added to the same search index. Each project needs to have a tag file set 
-# via GENERATE_TAGFILE. The search mapping then maps the name of the tag file 
-# to a relative location where the documentation can be found,  similar to the 
-# TAGFILES option but without actually processing the tag file. 
-# The format is: EXTRA_SEARCH_MAPPINGS = tagname1=loc1 tagname2=loc2 ...
+# When SERVER_BASED_SEARCH AND EXTERNAL_SEARCH are both enabled the 
+# EXTERNAL_SEARCH_ID tag can be used as an identifier for the project. This is 
+# useful in combination with EXTRA_SEARCH_MAPPINGS to search through multiple 
+# projects and redirect the results back to the right project.
+
+EXTERNAL_SEARCH_ID     = 
+
+# The EXTRA_SEARCH_MAPPINGS tag can be used to enable searching through doxygen 
+# projects other than the one defined by this configuration file, but that are 
+# all added to the same external search index. Each project needs to have a 
+# unique id set via EXTERNAL_SEARCH_ID. The search mapping then maps the id 
+# of to a relative location where the documentation can be found. 
+# The format is: EXTRA_SEARCH_MAPPINGS = id1=loc1 id2=loc2 ...
 
 EXTRA_SEARCH_MAPPINGS  = 
 
