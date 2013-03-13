@@ -25,9 +25,9 @@ class hill_plot(object):
     def __get_snow_height(self):
         return [(c.z + c.snow.volume/(c.area*0.08) if c.snow else c.z) for c in self.cells]
     def __get_layer_shape(self,layer,c_this,c_left,c_right):
-        x_left=0.5*(self.__x(cell=c_this)+self.__x(cell=c_left))
-        x_right=0.5*(self.__x(cell=c_this)+self.__x(cell=c_right))
-        x_center=self.__x(cell=c_this)
+        x_left=0.5*(self.__x(c_this.x,c_this.y)+self.__x(c_left.x,c_left.y))
+        x_right=0.5*(self.__x(c_this.x,c_this.y)+self.__x(c_right.x,c_right.y))
+        x_center=self.__x(c_this.x,c_this.y)
         z_left=0.5*(c_this.z+c_left.z)
         z_center=c_this.z
         z_right=0.5*(c_this.z+c_right.z)
@@ -35,12 +35,8 @@ class hill_plot(object):
         ub,lb=layer.boundary
         z=(z_left-ub,z_center-ub,z_right-ub,z_right-lb,z_center-lb,z_left-lb)
         return x,z
-    def __x(self,x=0,y=0,cell=None):
-        c=self.cells[0]
-        if cell:
-            return cmf.distance(c,cell)
-        else:
-            return numpy.sqrt((x-c.x)**2.0 + (y-c.y)**2.0)
+    def __x(self,x=0,y=0):
+        return numpy.sqrt((x-c.x)**2.0 + (y-c.y)**2.0)
     def __init__(self,cells,t,solute=None,cmap=pyplot.cm.jet):
         was_interactive=pyplot.isinteractive()
         if was_interactive: pyplot.ioff()
