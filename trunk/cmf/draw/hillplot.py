@@ -36,6 +36,7 @@ class hill_plot(object):
         z=(z_left-ub,z_center-ub,z_right-ub,z_right-lb,z_center-lb,z_left-lb)
         return x,z
     def __x(self,x=0,y=0):
+        c=self.cells[0]
         return numpy.sqrt((x-c.x)**2.0 + (y-c.y)**2.0)
     def __init__(self,cells,t,solute=None,cmap=pyplot.cm.jet):
         was_interactive=pyplot.isinteractive()
