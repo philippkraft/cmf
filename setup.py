@@ -137,20 +137,21 @@ def get_revision():
         res=res.split(':')[0]
     return res.strip('M')
 def updateversion(revision):
-    module_code = file('cmf/__init__.py').readlines()
-    fout = file('cmf/__init__.py','w')
-    for line in module_code:
-        if line.startswith('__version__'):
-            fout.write("__version__ = '%s'\n" % revision)
-        else:
-            fout.write(line)
-    doxycode = file('Doxyfile').readlines()
-    fout = file('Doxyfile','w')
-    for line in doxycode:
-        if line.strip().startswith('PROJECT_NUMBER'):
-            fout.write("PROJECT_NUMBER         = %s\n" % revision)
-        else:
-            fout.write(line)
+    if revision:
+        module_code = file('cmf/__init__.py').readlines()
+        fout = file('cmf/__init__.py','w')
+        for line in module_code:
+            if line.startswith('__version__'):
+                fout.write("__version__ = '%s'\n" % revision)
+            else:
+                fout.write(line)
+        doxycode = file('Doxyfile').readlines()
+        fout = file('Doxyfile','w')
+        for line in doxycode:
+            if line.strip().startswith('PROJECT_NUMBER'):
+                fout.write("PROJECT_NUMBER         = %s\n" % revision)
+            else:
+                fout.write(line)
 if __name__=='__main__':
     
     ext = [make_raster(),make_cmf_core()]

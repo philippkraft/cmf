@@ -121,6 +121,34 @@ namespace cmf {
 				static void use_for_cell(cmf::upslope::Cell & cell,bool no_override=true);
 			};
 
+			///@ingroup perc
+			///
+			/// @brief Gradient based flux from macro pore to macro pore.
+			///
+			/// \f[
+			/// q = K(\theta) \frac{\Delta \Psi}{\Delta z}
+			/// \f]
+			class GradientMacroFlow : public cmf::water::flux_connection {
+			protected:
+				std::tr1::weak_ptr<cmf::upslope::MacroPore> mp1,mp2;
+				std::tr1::weak_ptr<cmf::upslope::conductable> c2;
+				void NewNodes()
+				{
+					mp1=cmf::upslope::MacroPore::cast(left_node());
+					mp2=cmf::upslope::MacroPore::cast(right_node());
+					c2=cmf::upslope::conductable::cast(right_node());
+				}
+
+				virtual real calc_q(cmf::math::Time t) ;
+			public:
+				GradientMacroFlow(cmf::upslope::MacroPore::ptr left,cmf::water::flux_node::ptr right)
+					: flux_connection(left,right,"Gradient based macro pore flow")
+				{
+					NewNodes();
+				}
+			};
+
+
 
 		}
 	}

@@ -167,8 +167,89 @@ void SoilLayer::set_wetness( real wetness )
 
 real SoilLayer::get_K( point direction ) const
 {
-	point 
-		dir = direction/direction.length(),
-		kf  = anisotropic_kf/anisotropic_kf.length();
-	return m_wet.K * fabs(dot(dir,kf));
+	if (direction.length()<=0.0) {
+		return m_wet.K;
+	} else {
+		point 
+			dir = direction/direction.length(),
+			kf  = anisotropic_kf/anisotropic_kf.length();
+		return m_wet.K * fabs(dot(dir,kf));
+	}
+}
+
+cmf::upslope::MacroPore::MacroPore( SoilLayer::ptr layer,real _porefraction, real _Ksat,real _density ) 
+	:	WaterStorage(layer->cell.get_project(),"Macro pores for " + layer->Name,0.0),
+		m_layer(layer),m_porefraction(_porefraction),density(_density), Ksat(_Ksat)
+{
+	position = layer->position;
+
+}
+
+real cmf::upslope::MacroPore::head_to_volume( real head ) const
+{
+	SoilLayer::ptr l = get_layer();
+	real fill = head - (l->get_gravitational_potential() - l->get_thickness());
+	if (fill>0) {
+		return fill * get_porefraction() * l->cell.get_area();
+	} else {
+		return 0.0;
+	}
+}
+
+real cmf::upslope::MacroPore::volume_to_head( real volume ) const
+{
+	SoilLayer::ptr l = get_layer();
+	real fill = volume/l->cell.get_area()/get_porefraction();
+	return (l->get_gravitational_potential()- l->get_thickness()) + fill;
+}
+
+real cmf::upslope::MacroPore::get_potential() const
+{
+	if (get_state_variable_content()=='h') {
+		return this->get_state();
+	} else {
+		return volume_to_head(this->get_state());
+	}
+}
+
+real cmf::upslope::MacroPore::get_volume() const
+{
+	if (get_state_variable_content()=='h') {
+		return head_to_volume(this->get_state());
+	} else {
+		return this->get_state();
+	}
+}
+
+void cmf::upslope::MacroPore::set_volume( real volume )
+{
+	if (get_state_variable_content()=='h') {
+		this->set_state(volume_to_head(volume));
+	} else {
+		this->set_state(volume);
+	}
+}
+
+void cmf::upslope::MacroPore::set_potential( real waterhead )
+{
+	if (get_state_variable_content()=='h') {
+		this->set_state(waterhead);
+	} else {
+		this->set_state(head_to_volume(waterhead));
+	}
+}
+
+real cmf::upslope::MacroPore::get_filled_fraction() const
+{
+	SoilLayer::ptr l=get_layer();
+	real capacity = get_porefraction() * l->get_thickness() * l->cell.get_area();
+	return get_volume()/capacity;
+}
+
+MacroPore::ptr cmf::upslope::MacroPore::create( SoilLayer::ptr layer,real porefraction/*=0.05*/, real Ksat/*=10*/,real density/*=0.05*/ )
+{
+	MacroPore* mpp= new MacroPore(layer,porefraction,Ksat,density);
+	MacroPore::ptr mp(mpp);
+	layer->cell.add_storage(mp);
+	return mp;
 }

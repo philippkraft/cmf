@@ -145,7 +145,49 @@ namespace cmf {
 			virtual void StateChangeAction();
 
 		};
+        class MacroPore : public cmf::water::WaterStorage //, public cmf::upslope::conductable 
+		{
+         public:
+			typedef std::tr1::shared_ptr<cmf::upslope::MacroPore> ptr;
+#ifndef SWIG
+			operator ptr() {return std::tr1::static_pointer_cast<MacroPore>(shared_from_this());}
+#endif
 
+		private:
+			std::tr1::weak_ptr<SoilLayer> m_layer;
+			real m_porefraction;
+		protected:
+			virtual real head_to_volume(real head) const;
+			virtual real volume_to_head(real volume) const;
+			MacroPore(SoilLayer::ptr layer,real porefraction=0.05, real Ksat=10,real density=0.05 );
+		public:
+			SoilLayer::ptr get_layer() const {
+				return m_layer.lock();
+			}
+			/// The fraction of the macro pores in m3/m3. This adds to the porosity of the layer
+			real get_porefraction() const {return m_porefraction;}
+			/// The mean distance between the macro pores
+			real density;
+			real Ksat;
+			virtual real get_K() {
+				return Ksat;
+			}
+			/// Returns the actual anisotropic conductivity along a direction \f$K = (k_f \cdot d) K\f$
+			virtual real get_K(cmf::geometry::point direction) const {
+				return Ksat;				
+			}
+
+			real get_potential() const;
+			real get_volume() const;
+			void set_volume(real volume);
+			void set_potential(real waterhead);
+			real get_filled_fraction() const;
+			static MacroPore::ptr create(SoilLayer::ptr layer,real porefraction=0.05, real Ksat=10,real density=0.05);
+			static MacroPore::ptr cast(cmf::water::flux_node::ptr node) {
+				return std::tr1::dynamic_pointer_cast<MacroPore>(node);
+			}
+
+        };
 	}
 }
 #endif // SoilLayer_h__
