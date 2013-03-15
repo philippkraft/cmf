@@ -17,6 +17,7 @@
 #include "../reach/ManningConnection.h"
 #include "../water/WaterStorage.h"
 #include "../water/simple_connections.h"
+#include "../math/integrators/explicit_euler.h"
 
 /// Main function of the program. Only for debugging and testing, the real CMF<sub>lib</sub> will be compiled as a DLL and the 
 /// main function will be replaced by Python code
@@ -213,7 +214,7 @@ int createsimple() {
 	w1->set_volume(1.0);
 	kinematic_wave* con1 = new kinematic_wave(w1,w2,1.0);
 	kinematic_wave* con2 = new kinematic_wave(w2,w3,1.0);
-	CVodeIntegrator integ(p);
+	PredictCorrectSimple integ(p);
 	Time t0 = Time(1,1,2000);
 	integ.set_t(t0);
 	cout << "Integrator created with " << integ.size() << " states" << endl;
@@ -224,7 +225,75 @@ int createsimple() {
 		
 	}
 	return 0;
+}
 
+
+
+int createmacro() {
+	project p;
+	Cell& c=*p.NewCell(0,0,0,1000,true);
+	Time t0 = Time(1,1,2000);
+	//c.set_rainfall(5.0);
+	//real rain = c.get_rain_source()->flux_to(*c.get_surfacewater(), t);
+	VanGenuchtenMualem rc;
+	//c.add_layer(1.0,rc,1.0);
+	//c.add_storage('Canopy','C');
+	//ShuttleworthWallace::use_for_cell(c);
+	
+	std::string name="MacroPoreTest";
+	std::vector<MacroPore::ptr> macropores;
+ 	for (real d=0.1;d<1.01;d+=0.1) {
+ 		c.add_layer(d,rc,1.0);
+ 		macropores.push_back(MacroPore::create(c.get_layer(-1)));
+		macropores[macropores.size()-1]->set_potential(-1.0);
+ 	}
+	macropores[0]->set_potential(0.0);
+	//c.add_layer(1.0,rc,1.0);
+	//macropores.push_back(MacroPore::create(c.get_layer(-1)));
+	Richards::use_for_cell(c);
+	for (int i=0;i<c.layer_count();++i)	{
+		if (i>0) {
+			new GradientMacroFlow(macropores[i-1],macropores[i]);
+		}
+		//new Richards_lateral(c.get_layer(i),macropores[i],1000,macropores[i]->density);
+	}
+	cout << endl << "make solver";
+
+	CVodeIntegrator integ(p,1e-6);
+	integ.set_t(t0);
+	time_t walltime=time(0),walltimestart=time(0);
+	real overflow=0.0,perc=0.0;
+	int i=0;
+	cout.precision(3);
+	cout << endl << "run" << endl;
+
+	ofstream fout;
+	fout.open((name + "_output.txt").c_str());
+	// write headers
+	//fout << "Time\tq-out m3/day\tsat depth@out m\tRainfall mm/day\t[X]-out g/m3" << endl;
+	try
+	{
+		cout << "Micropores: " << c.get_layer(0)->get_volume() << "mm" << endl;
+		cout << "Macropores: " << macropores[0]->get_volume() << "mm" << endl;
+		while (integ.get_t() < t0 + day)
+		{
+			Time t = integ.get_t();
+			cout << integ.get_t().AsDate();
+			cout <<" wpot:"<< c.get_layer(0)->get_potential() << " mp:" << macropores[0]->get_potential();
+			cout << "  macro->micro:" << macropores[0]->flux_to(*c.get_layer(0),t) << "m3/day" << endl;
+			cout << "  micro->micro:" << macropores[0]->flux_to(*macropores[1],t) << "m3/day" << endl;
+
+			integ.integrate_until(t+math::h);
+		}
+		cout << "Micropores: " << c.get_layer(0)->get_volume() << "mm" << endl;
+		cout << "Macropores: " << macropores[0]->get_volume() << "mm" << endl;
+	}
+	catch (std::exception& e)
+	{
+		cerr << e.what();
+	}
+
+	return 0;
 }
 int main(int argc,const char* argv[])
 {
@@ -232,7 +301,7 @@ int main(int argc,const char* argv[])
 		string name=argv[1];
 		create3d(name);
 	} else {
-		createsimple();
+		createmacro();
 	}
 	cin.get();
 }

@@ -81,3 +81,15 @@ real cmf::upslope::connections::EnergyBudgetSnowMelt::calc_q( cmf::math::Time t 
 	return melt_rate;
 	
 }
+
+real cmf::upslope::connections::RutterInterception::calc_q( cmf::math::Time t )
+{
+	cmf::water::WaterStorage::ptr canopy= m_Canopy.lock();
+	real 
+		Vmax=m_cell.vegetation.CanopyCapacityPerLAI * m_cell.vegetation.LAI,
+		Vact=canopy->get_volume() / m_cell.get_area() * 1e3;
+	cmf::water::flux_node::ptr rain = m_cell.get_rain_source();
+	real P_t = rain->flux_to(*canopy,t);
+	return P_t * Vact/Vmax;
+
+}

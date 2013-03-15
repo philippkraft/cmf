@@ -52,23 +52,26 @@ real connections::Richards_lateral::calc_q( cmf::math::Time t )
 		l2=sw2.lock();
 	conductable::ptr C2=c2.lock();
 	// Richards flux
+	point direction=left_node()->position - right_node()->position;
 	real
 		Psi_t1=l1->get_potential(),
 		Psi_t2=right_node()->get_potential(),
 		gradient=(Psi_t1-Psi_t2)/distance,
 		//K=gradient<0 && l2 ? l2->K() : l1->K();      
+		K1=l1->get_K(direction),K2=0.0,
 		K=0.0, Ksat =.0;
-	point direction=left_node()->position - right_node()->position;
 	if (l2) {
-		K= geo_mean(l1->get_K(direction),l2->get_K(direction));
+		K2=l2->get_K(direction);
+		K= geo_mean(K1,K2);
 		Ksat = geo_mean(l1->get_Ksat(),l2->get_Ksat());
 	}
 	else if (C2){
-		K= geo_mean(l1->get_K(direction),C2->get_K(direction));
+		K2=C2->get_K(direction);
+		K= geo_mean(K1,K2);
 		Ksat = geo_mean(l1->get_Ksat(),C2->get_K(direction));
 	}
 	else {
-		K=l1->get_K(direction);
+		K=K1;
 		Ksat = l1->get_Ksat();
 	}
 	real r_flow = K * gradient * flow_width * flow_thickness;
