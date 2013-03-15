@@ -78,7 +78,6 @@ namespace cmf {
 
 		};
 
-#ifdef EXPERIMENTAL
 		/// A simple predictor - corrector solver. Not tested and very experimentally
 		/// \f$ y^{n+1} = y^n + \alpha f(y^n + f(y^n)dt)dt + (1-\alpha)f(y^n)dt \f$
 		class PredictCorrectSimple : public Integrator
@@ -91,9 +90,9 @@ namespace cmf {
 			void add_states(cmf::math::StateVariableOwner& stateOwner)
 			{
 				Integrator::add_states(stateOwner);
-				dxdt0.resize(size());
-				dxdt1.resize(size());
-				old_states.resize(size());
+				dxdt0=num_array(size());
+				dxdt1=num_array(size());
+				old_states=num_array(size());
 			}
 			/// Alpha Weight factor \f$\alpha\f$ to weight \f$f(y^n)\f$ and \f$f(y^{n+1})\f$
 			real alpha;
@@ -101,7 +100,7 @@ namespace cmf {
 			/// @note The Integrator becomes the owner of states
 			/// @param states Statevariable owner of the system
 			/// @param Alpha Weight factor \f$\alpha\f$ to weight \f$f(y^n)\f$ and \f$f(y^{n+1})\f$
-			PredictCorrectSimple(StateVariableOwner& states, real Alpha)
+			PredictCorrectSimple(StateVariableOwner& states, real Alpha=0.5)
 				: Integrator(states,0.0),alpha(Alpha)
 			{}
 
@@ -113,9 +112,10 @@ namespace cmf {
 
 			/// copy constructor
 			PredictCorrectSimple(const Integrator& copy) : Integrator(copy) {}
+			virtual ~PredictCorrectSimple() {}
 			virtual Integrator * copy() const
 			{
-				return new ExplicitEuler_fixed(*this);
+				return new PredictCorrectSimple(*this);
 			}
 
 			///Integrates the vector of state variables
@@ -127,17 +127,17 @@ namespace cmf {
 				if (m_dt>MaxTime-get_t())
 					m_dt=MaxTime-get_t();
 				copy_states(old_states);
-				// get f(y^n)dt
+				// get f(y_i)dt
 				copy_dxdt(get_t(),dxdt0,m_dt.AsDays());
 				// Update time step with delta x
 				add_values_to_states(dxdt0);
 				if (alpha>0)
 				{
-					// get f(y^n+1)dt
+					// get f(y_i+1)dt
 					copy_dxdt(get_t(),dxdt1,m_dt.AsDays() * alpha);
-					// reset states to y^n
+					// reset states to y_i
 					set_states(old_states);
-					// update states to y^n+1
+					// update states to y_i+1
 					if (alpha<1) 
 					{
 						dxdt0 *= (1-alpha);
@@ -151,7 +151,7 @@ namespace cmf {
 			}
 
 		};
-#endif
+
 
 	}
 }

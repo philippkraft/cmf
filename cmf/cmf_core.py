@@ -2037,6 +2037,22 @@ class ExplicitEuler_fixed(Integrator):
 ExplicitEuler_fixed_swigregister = _cmf_core.ExplicitEuler_fixed_swigregister
 ExplicitEuler_fixed_swigregister(ExplicitEuler_fixed)
 
+class PredictCorrectSimple(Integrator):
+    """Proxy of C++ cmf::math::PredictCorrectSimple class"""
+    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __repr__ = _swig_repr
+    alpha = _swig_property(_cmf_core.PredictCorrectSimple_alpha_get, _cmf_core.PredictCorrectSimple_alpha_set)
+    def __init__(self, *args): 
+        """
+        __init__(cmf::math::PredictCorrectSimple self, StateVariableOwner states, real Alpha=0.5) -> PredictCorrectSimple
+        __init__(cmf::math::PredictCorrectSimple self, real Alpha=0.5) -> PredictCorrectSimple
+        __init__(cmf::math::PredictCorrectSimple self, Integrator copy) -> PredictCorrectSimple
+        """
+        _cmf_core.PredictCorrectSimple_swiginit(self,_cmf_core.new_PredictCorrectSimple(*args))
+    __swig_destroy__ = _cmf_core.delete_PredictCorrectSimple
+PredictCorrectSimple_swigregister = _cmf_core.PredictCorrectSimple_swigregister
+PredictCorrectSimple_swigregister(PredictCorrectSimple)
+
 class ImplicitEuler(Integrator):
     """
     An implicit (backward) Euler integrator using fixpoint iteration.
@@ -5446,14 +5462,15 @@ class Cell(StateVariableOwner):
         """
         return _cmf_core.Cell_surfacewater_as_storage(self, *args, **kwargs)
 
-    def add_storage(self, *args, **kwargs):
+    def add_storage(self, *args):
         """
         add_storage(Cell self, std::string Name, char storage_role='N', bool isopenwater=False) -> cmf::water::WaterStorage::ptr
+        add_storage(Cell self, cmf::water::WaterStorage::ptr storage) -> int
 
         cmf::water::WaterStorage::ptr add_storage(std::string Name, char
         storage_role='N', bool isopenwater=false) 
         """
-        return _cmf_core.Cell_add_storage(self, *args, **kwargs)
+        return _cmf_core.Cell_add_storage(self, *args)
 
     def remove_storage(self, *args, **kwargs):
         """
@@ -6669,6 +6686,60 @@ SoilLayer_swigregister(SoilLayer)
 def SoilLayer_cast(*args, **kwargs):
   """SoilLayer_cast(cmf::water::flux_node::ptr node) -> cmf::upslope::SoilLayer::ptr"""
   return _cmf_core.SoilLayer_cast(*args, **kwargs)
+
+class MacroPore(WaterStorage):
+    """Proxy of C++ cmf::upslope::MacroPore class"""
+    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    def __init__(self, *args, **kwargs): raise AttributeError("No constructor defined")
+    __repr__ = _swig_repr
+    def __get_layer(self, *args, **kwargs):
+        """__get_layer(MacroPore self) -> cmf::upslope::SoilLayer::ptr"""
+        return _cmf_core.MacroPore___get_layer(self, *args, **kwargs)
+
+    def get_porefraction(self, *args, **kwargs):
+        """get_porefraction(MacroPore self) -> real"""
+        return _cmf_core.MacroPore_get_porefraction(self, *args, **kwargs)
+
+    density = _swig_property(_cmf_core.MacroPore_density_get, _cmf_core.MacroPore_density_set)
+    Ksat = _swig_property(_cmf_core.MacroPore_Ksat_get, _cmf_core.MacroPore_Ksat_set)
+    def get_K(self, *args):
+        """
+        get_K(MacroPore self) -> real
+        get_K(MacroPore self, point direction) -> real
+        """
+        return _cmf_core.MacroPore_get_K(self, *args)
+
+    def get_filled_fraction(self, *args, **kwargs):
+        """get_filled_fraction(MacroPore self) -> real"""
+        return _cmf_core.MacroPore_get_filled_fraction(self, *args, **kwargs)
+
+    def create(*args, **kwargs):
+        """create(cmf::upslope::SoilLayer::ptr layer, real porefraction=0.05, real Ksat=10, real density=0.05) -> cmf::upslope::MacroPore::ptr"""
+        return _cmf_core.MacroPore_create(*args, **kwargs)
+
+    create = staticmethod(create)
+    def cast(*args, **kwargs):
+        """cast(cmf::water::flux_node::ptr node) -> cmf::upslope::MacroPore::ptr"""
+        return _cmf_core.MacroPore_cast(*args, **kwargs)
+
+    cast = staticmethod(cast)
+    layer = _swig_property(_cmf_core.SoilLayer___get_layer)
+
+    __swig_destroy__ = _cmf_core.delete_MacroPore
+MacroPore.__get_layer = new_instancemethod(_cmf_core.MacroPore___get_layer,None,MacroPore)
+MacroPore.get_porefraction = new_instancemethod(_cmf_core.MacroPore_get_porefraction,None,MacroPore)
+MacroPore.get_K = new_instancemethod(_cmf_core.MacroPore_get_K,None,MacroPore)
+MacroPore.get_filled_fraction = new_instancemethod(_cmf_core.MacroPore_get_filled_fraction,None,MacroPore)
+MacroPore_swigregister = _cmf_core.MacroPore_swigregister
+MacroPore_swigregister(MacroPore)
+
+def MacroPore_create(*args, **kwargs):
+  """MacroPore_create(cmf::upslope::SoilLayer::ptr layer, real porefraction=0.05, real Ksat=10, real density=0.05) -> cmf::upslope::MacroPore::ptr"""
+  return _cmf_core.MacroPore_create(*args, **kwargs)
+
+def MacroPore_cast(*args, **kwargs):
+  """MacroPore_cast(cmf::water::flux_node::ptr node) -> cmf::upslope::MacroPore::ptr"""
+  return _cmf_core.MacroPore_cast(*args, **kwargs)
 
 class layer_list(object):
     """
@@ -8168,6 +8239,26 @@ def CanopyOverflow_use_for_cell(*args, **kwargs):
   """CanopyOverflow_use_for_cell(Cell cell) -> CanopyOverflow"""
   return _cmf_core.CanopyOverflow_use_for_cell(*args, **kwargs)
 
+class RutterInterception(flux_connection):
+    """Proxy of C++ cmf::upslope::connections::RutterInterception class"""
+    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __repr__ = _swig_repr
+    def __init__(self, *args, **kwargs): 
+        """__init__(cmf::upslope::connections::RutterInterception self, cmf::water::WaterStorage::ptr Canopy, cmf::water::flux_node::ptr target, Cell cell) -> RutterInterception"""
+        _cmf_core.RutterInterception_swiginit(self,_cmf_core.new_RutterInterception(*args, **kwargs))
+    def use_for_cell(*args, **kwargs):
+        """use_for_cell(Cell cell) -> RutterInterception"""
+        return _cmf_core.RutterInterception_use_for_cell(*args, **kwargs)
+
+    use_for_cell = staticmethod(use_for_cell)
+    __swig_destroy__ = _cmf_core.delete_RutterInterception
+RutterInterception_swigregister = _cmf_core.RutterInterception_swigregister
+RutterInterception_swigregister(RutterInterception)
+
+def RutterInterception_use_for_cell(*args, **kwargs):
+  """RutterInterception_use_for_cell(Cell cell) -> RutterInterception"""
+  return _cmf_core.RutterInterception_use_for_cell(*args, **kwargs)
+
 class SimpleTindexSnowMelt(flux_connection):
     """
     Calculates snow melt using a simple degree day method.
@@ -8484,6 +8575,17 @@ SimplRichards_swigregister(SimplRichards)
 def SimplRichards_use_for_cell(*args, **kwargs):
   """SimplRichards_use_for_cell(Cell cell, bool no_override=True)"""
   return _cmf_core.SimplRichards_use_for_cell(*args, **kwargs)
+
+class GradientMacroFlow(flux_connection):
+    """Proxy of C++ cmf::upslope::connections::GradientMacroFlow class"""
+    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __repr__ = _swig_repr
+    def __init__(self, *args, **kwargs): 
+        """__init__(cmf::upslope::connections::GradientMacroFlow self, cmf::upslope::MacroPore::ptr left, cmf::water::flux_node::ptr right) -> GradientMacroFlow"""
+        _cmf_core.GradientMacroFlow_swiginit(self,_cmf_core.new_GradientMacroFlow(*args, **kwargs))
+    __swig_destroy__ = _cmf_core.delete_GradientMacroFlow
+GradientMacroFlow_swigregister = _cmf_core.GradientMacroFlow_swigregister
+GradientMacroFlow_swigregister(GradientMacroFlow)
 
 class HBVparameters(RetentionCurve):
     """

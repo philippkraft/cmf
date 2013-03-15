@@ -157,6 +157,11 @@ namespace cmf {
 			cmf::water::flux_node::ptr get_surfacewater();
 			void surfacewater_as_storage();
 			cmf::water::WaterStorage::ptr add_storage(std::string Name,char storage_role='N',  bool isopenwater=false);
+			int add_storage(cmf::water::WaterStorage::ptr storage) {
+				m_storages.push_back(storage);
+				return m_storages.size();
+			}
+
 			void remove_storage(cmf::water::WaterStorage::ptr storage);
 			int storage_count() const
 			{

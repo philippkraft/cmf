@@ -52,6 +52,7 @@ namespace cmf {
 			///  - \f$ D_0 \f$ vapor pressure deficit at effective source height, see function D0
 			///  - \f$ r_{ac}, r_{sc}, r_{as}, r_{ss} \f$ Resistances for the vapor pressure (see below)
 			///
+			/// @todo Include Interception
 			/// @todo Include surface water below canopy, eg. for rice paddies.
 
 			class ShuttleworthWallace 

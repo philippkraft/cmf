@@ -122,3 +122,39 @@ void cmf::upslope::connections::SWATPercolation::use_for_cell( cmf::upslope::Cel
 
 }
 
+
+real cmf::upslope::connections::GradientMacroFlow::calc_q( cmf::math::Time t )
+{
+	using namespace cmf::upslope;
+	using namespace cmf::geometry;
+	// Richards flux
+	MacroPore::ptr 
+		Mp1=mp1.lock(),
+		Mp2=mp2.lock();
+	conductable::ptr C2 = c2.lock();
+
+
+	real
+		distance = fabs(Mp1->get_layer()->position.z - right_node()->position.z),
+		Psi_t1=Mp1->get_potential(),
+		Psi_t2=right_node()->get_potential(),
+		gradient=(Psi_t1-Psi_t2)/distance,
+		K=0.0;
+	point direction =  Mp1->get_layer()->position - right_node()->position;
+	if (distance == 0.0) distance = Mp1->get_layer()->get_thickness();
+	//K=gradient<0 && l2 ? l2->K() : l1->K();      
+	if (Mp2)
+		K = geo_mean(Mp1->get_K(direction),Mp2->get_K(direction));
+	else if (C2)
+		K = geo_mean(Mp1->get_K(direction),C2->get_K(direction));
+	else if (right_node()->is_empty() || right_node()->get_potential() < Mp1->get_layer()->get_gravitational_potential())
+		K = Mp1->get_K(direction);
+	else
+		K = geo_mean(Mp1->get_K(direction),Mp1->Ksat);
+	//  	if (fabs(K*gradient)>l1->get_Ksat()) K=l1->get_Ksat()/fabs(gradient);
+	//  	if (l2 && fabs(K*gradient)>l2->get_Ksat()) K=l2->get_Ksat()/fabs(gradient);
+	real r_flow=K*gradient*Mp1->get_layer()->cell.get_area();
+	return prevent_negative_volume(r_flow);
+
+}
+
