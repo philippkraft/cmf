@@ -67,7 +67,7 @@
 
 
 %shared_ptr(cmf::upslope::MacroPore);
-%shared_attr(cmf::upslope::MacroPore, SoilLayer, layer,get_layer);
+%shared_attr(cmf::upslope::MacroPore, MacroPore, layer,get_layer);
 
 %include "upslope/SoilLayer.h"
 
