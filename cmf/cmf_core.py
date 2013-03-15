@@ -6723,7 +6723,7 @@ class MacroPore(WaterStorage):
         return _cmf_core.MacroPore_cast(*args, **kwargs)
 
     cast = staticmethod(cast)
-    layer = _swig_property(_cmf_core.SoilLayer___get_layer)
+    layer = _swig_property(_cmf_core.MacroPore___get_layer)
 
     __swig_destroy__ = _cmf_core.delete_MacroPore
 MacroPore.__get_layer = new_instancemethod(_cmf_core.MacroPore___get_layer,None,MacroPore)
