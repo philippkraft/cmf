@@ -3545,6 +3545,23 @@ class TechnicalFlux(flux_connection):
 TechnicalFlux_swigregister = _cmf_core.TechnicalFlux_swigregister
 TechnicalFlux_swigregister(TechnicalFlux)
 
+class generic_gradient_connection(flux_connection):
+    """Proxy of C++ cmf::water::generic_gradient_connection class"""
+    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __repr__ = _swig_repr
+    K = _swig_property(_cmf_core.generic_gradient_connection_K_get, _cmf_core.generic_gradient_connection_K_set)
+    A = _swig_property(_cmf_core.generic_gradient_connection_A_get, _cmf_core.generic_gradient_connection_A_set)
+    d = _swig_property(_cmf_core.generic_gradient_connection_d_get, _cmf_core.generic_gradient_connection_d_set)
+    def __init__(self, *args, **kwargs): 
+        """
+        __init__(cmf::water::generic_gradient_connection self, cmf::water::WaterStorage::ptr left, cmf::water::WaterStorage::ptr right, real K, 
+            real d=1.0, real A=1.0) -> generic_gradient_connection
+        """
+        _cmf_core.generic_gradient_connection_swiginit(self,_cmf_core.new_generic_gradient_connection(*args, **kwargs))
+    __swig_destroy__ = _cmf_core.delete_generic_gradient_connection
+generic_gradient_connection_swigregister = _cmf_core.generic_gradient_connection_swigregister
+generic_gradient_connection_swigregister(generic_gradient_connection)
+
 class statecontrol_connection(flux_connection):
     """
     Calculates a flux to or from a water storage to hold it's state at a
@@ -6724,6 +6741,9 @@ class MacroPore(WaterStorage):
 
     cast = staticmethod(cast)
     layer = _swig_property(_cmf_core.MacroPore___get_layer)
+
+    def __repr__(self): 
+        return self.to_string()
 
     __swig_destroy__ = _cmf_core.delete_MacroPore
 MacroPore.__get_layer = new_instancemethod(_cmf_core.MacroPore___get_layer,None,MacroPore)

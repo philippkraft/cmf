@@ -81,6 +81,7 @@
 }
 
 %extend__repr__(cmf::upslope::SoilLayer)
+%extend__repr__(cmf::upslope::MacroPore)
 
 
 %attribute(cmf::upslope::layer_list,cmf::math::num_array,gravitational_potential,get_gravitational_potential);

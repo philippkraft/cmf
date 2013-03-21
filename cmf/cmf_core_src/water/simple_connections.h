@@ -131,6 +131,42 @@ namespace cmf {
 			}
 		};
 
+		/// @brief A generic node-to-node gradient based connection. 
+		
+		/// This connection is similar to the Darcy-connection,
+		/// but there are no restrictions concerning the type of nodes. However, one side should be a water storage.h
+		/// \f[
+		/// q = K A \frac{\Psi_{l}-\Psi_{r}}{d}
+		/// \f]
+		/// where:
+		/// - \f$q\f$: the resulting flux in \f$m^3/day\f$
+		/// - \f$K\f$: the conductivity of the connection
+		/// - \f$A\f$: the area of the connection cross section
+		/// - \f$\Psi\f$: The hydraulic head of the (l)eft, resp. (r)ight node of the connection
+		/// - \f$d\f$: The topographic length of the connection in m
+		class generic_gradient_connection
+			: public flux_connection
+		{
+		protected:
+			virtual real calc_q(cmf::math::Time t);
+			virtual void NewNodes() {}
+		public:
+			/// Conductivity of the connection in m/day
+			real K;
+			/// Area of the connection cross section in m2
+			real A;
+			/// distance of the gradient
+			real d;
+			/// @brief Creates a generic gradient based flux, if enough water is present in the source
+			///
+			/// @param left The left node of the connection
+			/// @param right The right node of the connection
+			/// @param K the conductivity of the connection in m/day
+			/// @param d the topographic lenght of the connection in m
+			/// @param A the area of the connection cross section in m2
+			generic_gradient_connection(cmf::water::WaterStorage::ptr left,cmf::water::WaterStorage::ptr right, real K,real d=1.0, real A=1.0); 
+		};
+
 		/// @ingroup connections
 		/// @brief Calculates a flux to or from a water storage to hold it's state at a more or less constant level
 		///
