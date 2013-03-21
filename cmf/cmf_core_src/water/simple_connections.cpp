@@ -59,3 +59,21 @@ real cmf::water::statecontrol_connection::calc_q( cmf::math::Time t )
 	else // If the controlled storage is to be refilled
 		return (1-right_node()->is_empty()) * dV/reaction_time.AsDays();
 }
+
+real cmf::water::generic_gradient_connection::calc_q( cmf::math::Time t )
+{
+	flux_node::ptr 
+		left = left_node(),
+		right = right_node();
+
+	real gradient = (left->get_potential() - right->get_potential())/d;
+	real q = K*A*gradient;
+	return prevent_negative_volume(q);
+}
+
+cmf::water::generic_gradient_connection::generic_gradient_connection( cmf::water::WaterStorage::ptr left,
+	cmf::water::WaterStorage::ptr right, real _K,real _d/*=1.0*/, real _A/*=1.0*/ )
+	: flux_connection(left,right,"generic gradient connection")
+{
+	
+}

@@ -242,11 +242,13 @@ int createmacro() {
 	
 	std::string name="MacroPoreTest";
 	std::vector<MacroPore::ptr> macropores;
- 	for (real d=0.1;d<1.01;d+=0.1) {
- 		c.add_layer(d,rc,1.0);
+	real lowerboundary = 0.2;
+ 	for (real d=0.1;d<=lowerboundary;d+=0.1) {
+ 		c.add_layer(d,rc,lowerboundary);
  		macropores.push_back(MacroPore::create(c.get_layer(-1)));
-		macropores[macropores.size()-1]->set_potential(-1.0);
+		macropores[macropores.size()-1]->set_potential(-lowerboundary);
  	}
+	c.get_surfacewater()->set_potential(0.01);
 	macropores[0]->set_potential(0.0);
 	//c.add_layer(1.0,rc,1.0);
 	//macropores.push_back(MacroPore::create(c.get_layer(-1)));
@@ -255,7 +257,7 @@ int createmacro() {
 		if (i>0) {
 			new GradientMacroFlow(macropores[i-1],macropores[i]);
 		}
-		//new Richards_lateral(c.get_layer(i),macropores[i],1000,macropores[i]->density);
+		new Richards_lateral(c.get_layer(i),macropores[i],1000,macropores[i]->density);
 	}
 	cout << endl << "make solver";
 
@@ -267,26 +269,38 @@ int createmacro() {
 	cout.precision(3);
 	cout << endl << "run" << endl;
 
-	ofstream fout;
-	fout.open((name + "_output.txt").c_str());
+	//ofstream fout;
+	//fout.open((name + "_output.txt").c_str());
 	// write headers
 	//fout << "Time\tq-out m3/day\tsat depth@out m\tRainfall mm/day\t[X]-out g/m3" << endl;
 	try
 	{
-		cout << "Micropores: " << c.get_layer(0)->get_volume() << "mm" << endl;
-		cout << "Macropores: " << macropores[0]->get_volume() << "mm" << endl;
-		while (integ.get_t() < t0 + day)
+		for (int i=0;i<c.layer_count();++i)		
+			cout << i << " micro: " << c.get_layer(i)->get_volume() << "mm"
+				 << " macro: " << macropores[i]->get_volume() << "mm" << endl;
+		cout << "-----------------------------------------------------------" 
+			 << endl;
+
+
+		while (integ.get_t() < t0 + h * 6)
 		{
 			Time t = integ.get_t();
 			cout << integ.get_t().AsDate();
-			cout <<" wpot:"<< c.get_layer(0)->get_potential() << " mp:" << macropores[0]->get_potential();
-			cout << "  macro->micro:" << macropores[0]->flux_to(*c.get_layer(0),t) << "m3/day" << endl;
-			cout << "  micro->micro:" << macropores[0]->flux_to(*macropores[1],t) << "m3/day" << endl;
+			cout << endl;
+			cout << 0 <<" wpot:"<< c.get_layer(0)->get_potential() << " mp:" << macropores[0]->get_potential()
+				<< "  macro->micro:" << macropores[0]->flux_to(*c.get_layer(0),t) << "m3/day" 
+				<< "  macro->macro:" << macropores[0]->flux_to(*macropores[1],t) << "m3/day" << endl;
+			cout << 1 <<" wpot:"<< c.get_layer(1)->get_potential() << " mp:" << macropores[1]->get_potential()
+				<< "  macro->micro:" << macropores[1]->flux_to(*c.get_layer(1),t) << "m3/day" 
+				<< "  micro->micro:" << c.get_layer(0)->flux_to(*c.get_layer(1),t) << "m3/day" << endl;
 
-			integ.integrate_until(t+math::h);
+			integ.integrate_until(t+math::min*10);
 		}
-		cout << "Micropores: " << c.get_layer(0)->get_volume() << "mm" << endl;
-		cout << "Macropores: " << macropores[0]->get_volume() << "mm" << endl;
+		cout << "*************************************************" << endl;
+		for (int i=0;i<c.layer_count();++i)		
+			cout << i << " micro: " << c.get_layer(i)->get_volume() << "mm"
+				 << " macro: " << macropores[i]->get_volume() << "mm" << endl;
+
 	}
 	catch (std::exception& e)
 	{
