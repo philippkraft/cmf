@@ -9,7 +9,7 @@ del _cmf_core.pyd /s /q
 @move /Y cmf\cmf_core_src\cmf_core.py cmf
 @python setup.py build_py -c -O2 -f
 @if ERRORLEVEL 1 goto error
-@python setup.py install
+@python setup.py install --user
 @if ERRORLEVEL 1 goto error
 @goto end
 :clean

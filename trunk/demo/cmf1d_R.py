@@ -93,7 +93,7 @@ c.surfacewater_as_storage()
 c.install_connection(cmf.Richards)
 # Use matrix infiltration as connection between surface water and first layer
 c.install_connection(cmf.MatrixInfiltration)
-# Create a snow storage and use a simple Temperature index model as aconnection between snow and surfacewater
+# Create a snow storage and use a simple Temperature index model as a connection between snow and surfacewater
 c.install_connection(cmf.SimpleTindexSnowMelt)
 # Use Penman-Monteith for ET
 c.install_connection(cmf.ShuttleworthWallace)
