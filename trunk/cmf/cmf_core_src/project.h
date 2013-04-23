@@ -176,12 +176,18 @@ namespace cmf {
 		/// Creates a new reach
         /// @return A new reach, owned by the project
         /// @param x,y,z Position of the reach in project coordinates
-        /// @param length lenght of the reach in m
-        /// @param Type Geometry of the river crosssection. Possible values: T (Triangular), R (Rectangular), S (SWAT like trapzeoid), P (pipe)
+        /// @param length length of the reach in m
+        /// @param Type Geometry of the river cross section. Possible values: T (Triangular), R (Rectangular), S (SWAT like trapzeoid), P (pipe)
         /// @param width Width of the channel between banks in m
         /// @param depth Depth of the channel in m
         /// @param diffusive If true, this reach uses by default a diffusive wave connection
 		cmf::river::Reach::ptr NewReach(double x,double y, double z, double length, char Type='T',double width=0.5,double depth=0.1, bool diffusive=false);
+		/// Creates a new reach
+		/// @return A new reach, owned by the project
+		/// @param x,y,z Position of the reach in project coordinates
+		/// @param shape Crossectional geometry of the river. Any class inheriting from cmf::water::IChannel
+		/// @param diffusive If true, this reach uses by default a diffusive wave connection
+		cmf::river::Reach::ptr NewReach(double x,double y, double z, cmf::river::IChannel& shape, bool diffusive=false);
 
 		/// Returns the reach at index
 		cmf::river::Reach::ptr get_reach(int index);
