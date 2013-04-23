@@ -103,7 +103,7 @@ def make_cmf_core():
                             include_dirs=include_dirs,
                             extra_compile_args=compile_args,
                             extra_link_args=link_args,
-                            swig_opts=['-c++','-Wextra','-w512','-w511','-keyword','-castmode','-O','-threads']
+                            swig_opts=['-c++','-Wextra','-w512','-w511','-O','-keyword','-castmode'] #,'-threads'
                         )
     return cmf_core
 def make_raster():

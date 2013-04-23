@@ -9,7 +9,6 @@
  * ----------------------------------------------------------------------------- */
 
 #define SWIGPYTHON
-#define SWIG_PYTHON_THREADS
 #define SWIG_PYTHON_NO_BUILD_NONE
 #define SWIG_PYTHON_DIRECTOR_NO_VTABLE
 #define SWIG_CASTRANK_MODE
@@ -4298,11 +4297,7 @@ SWIGINTERN PyObject *_wrap_count_parallel_threads(PyObject *SWIGUNUSEDPARM(self)
   if (!SWIG_Python_UnpackTuple(args,"count_parallel_threads",0,0,0)) SWIG_fail;
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (int)cmf::math::count_parallel_threads();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (int)cmf::math::count_parallel_threads();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -4369,11 +4364,7 @@ SWIGINTERN PyObject *_wrap_point_x_set(PyObject *SWIGUNUSEDPARM(self), PyObject 
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "point_x_set" "', argument " "2"" of type '" "double""'");
   } 
   arg2 = static_cast< double >(val2);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->x = arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->x = arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -4413,11 +4404,7 @@ SWIGINTERN PyObject *_wrap_point_x_get(PyObject *SWIGUNUSEDPARM(self), PyObject 
       arg1 = &p1;
     }
   }
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (double) ((arg1)->x);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (double) ((arg1)->x);
   resultobj = SWIG_From_double(static_cast< double >(result));
   return resultobj;
 fail:
@@ -4463,11 +4450,7 @@ SWIGINTERN PyObject *_wrap_point_y_set(PyObject *SWIGUNUSEDPARM(self), PyObject 
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "point_y_set" "', argument " "2"" of type '" "double""'");
   } 
   arg2 = static_cast< double >(val2);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->y = arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->y = arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -4507,11 +4490,7 @@ SWIGINTERN PyObject *_wrap_point_y_get(PyObject *SWIGUNUSEDPARM(self), PyObject 
       arg1 = &p1;
     }
   }
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (double) ((arg1)->y);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (double) ((arg1)->y);
   resultobj = SWIG_From_double(static_cast< double >(result));
   return resultobj;
 fail:
@@ -4557,11 +4536,7 @@ SWIGINTERN PyObject *_wrap_point_z_set(PyObject *SWIGUNUSEDPARM(self), PyObject 
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "point_z_set" "', argument " "2"" of type '" "double""'");
   } 
   arg2 = static_cast< double >(val2);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->z = arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->z = arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -4601,11 +4576,7 @@ SWIGINTERN PyObject *_wrap_point_z_get(PyObject *SWIGUNUSEDPARM(self), PyObject 
       arg1 = &p1;
     }
   }
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (double) ((arg1)->z);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (double) ((arg1)->z);
   resultobj = SWIG_From_double(static_cast< double >(result));
   return resultobj;
 fail:
@@ -4620,11 +4591,7 @@ SWIGINTERN PyObject *_wrap_new_point__SWIG_0(PyObject *SWIGUNUSEDPARM(self), int
   if ((nobjs < 0) || (nobjs > 0)) SWIG_fail;
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::geometry::point *)new cmf::geometry::point();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::geometry::point *)new cmf::geometry::point();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -4671,11 +4638,7 @@ SWIGINTERN PyObject *_wrap_new_point__SWIG_1(PyObject *SWIGUNUSEDPARM(self), int
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::geometry::point *)new cmf::geometry::point((cmf::geometry::point const &)*arg1);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::geometry::point *)new cmf::geometry::point((cmf::geometry::point const &)*arg1);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -4723,11 +4686,7 @@ SWIGINTERN PyObject *_wrap_new_point__SWIG_2(PyObject *SWIGUNUSEDPARM(self), int
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::geometry::point *)new cmf::geometry::point(arg1,arg2,arg3);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::geometry::point *)new cmf::geometry::point(arg1,arg2,arg3);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -4904,11 +4863,7 @@ SWIGINTERN PyObject *_wrap_point_distanceTo(PyObject *SWIGUNUSEDPARM(self), PyOb
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (double)((cmf::geometry::point const *)arg1)->distanceTo(arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (double)((cmf::geometry::point const *)arg1)->distanceTo(arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -4990,11 +4945,7 @@ SWIGINTERN PyObject *_wrap_point_z_weight_distance(PyObject *SWIGUNUSEDPARM(self
   arg3 = static_cast< double >(val3);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (double)((cmf::geometry::point const *)arg1)->z_weight_distance(arg2,arg3);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (double)((cmf::geometry::point const *)arg1)->z_weight_distance(arg2,arg3);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -5067,11 +5018,7 @@ SWIGINTERN PyObject *_wrap_point_distance3DTo(PyObject *SWIGUNUSEDPARM(self), Py
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (double)((cmf::geometry::point const *)arg1)->distance3DTo(arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (double)((cmf::geometry::point const *)arg1)->distance3DTo(arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -5140,11 +5087,7 @@ SWIGINTERN PyObject *_wrap_point_distance(PyObject *SWIGUNUSEDPARM(self), PyObje
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (double)cmf::geometry::point::distance(arg1,arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (double)cmf::geometry::point::distance(arg1,arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -5217,11 +5160,7 @@ SWIGINTERN PyObject *_wrap_point_distance_max(PyObject *SWIGUNUSEDPARM(self), Py
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (double)((cmf::geometry::point const *)arg1)->distance_max(arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (double)((cmf::geometry::point const *)arg1)->distance_max(arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -5294,11 +5233,7 @@ SWIGINTERN PyObject *_wrap_point_azimuth(PyObject *SWIGUNUSEDPARM(self), PyObjec
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (double)((cmf::geometry::point const *)arg1)->azimuth(arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (double)((cmf::geometry::point const *)arg1)->azimuth(arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -5371,11 +5306,7 @@ SWIGINTERN PyObject *_wrap_point_angleToXAxis(PyObject *SWIGUNUSEDPARM(self), Py
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (double)((cmf::geometry::point const *)arg1)->angleToXAxis(arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (double)((cmf::geometry::point const *)arg1)->angleToXAxis(arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -5424,11 +5355,7 @@ SWIGINTERN PyObject *_wrap_point_sum(PyObject *SWIGUNUSEDPARM(self), PyObject *a
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (double)((cmf::geometry::point const *)arg1)->sum();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (double)((cmf::geometry::point const *)arg1)->sum();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -5477,11 +5404,7 @@ SWIGINTERN PyObject *_wrap_point_length(PyObject *SWIGUNUSEDPARM(self), PyObject
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (double)((cmf::geometry::point const *)arg1)->length();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (double)((cmf::geometry::point const *)arg1)->length();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -5558,11 +5481,7 @@ SWIGINTERN PyObject *_wrap_point___add__(PyObject *SWIGUNUSEDPARM(self), PyObjec
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = ((cmf::geometry::point const *)arg1)->operator +((cmf::geometry::point const &)*arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = ((cmf::geometry::point const *)arg1)->operator +((cmf::geometry::point const &)*arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -5639,11 +5558,7 @@ SWIGINTERN PyObject *_wrap_point___iadd__(PyObject *SWIGUNUSEDPARM(self), PyObje
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::geometry::point *) &(arg1)->operator +=((cmf::geometry::point const &)*arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::geometry::point *) &(arg1)->operator +=((cmf::geometry::point const &)*arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -5720,11 +5635,7 @@ SWIGINTERN PyObject *_wrap_point___sub__(PyObject *SWIGUNUSEDPARM(self), PyObjec
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = ((cmf::geometry::point const *)arg1)->operator -((cmf::geometry::point const &)*arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = ((cmf::geometry::point const *)arg1)->operator -((cmf::geometry::point const &)*arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -5801,11 +5712,7 @@ SWIGINTERN PyObject *_wrap_point___isub__(PyObject *SWIGUNUSEDPARM(self), PyObje
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::geometry::point *) &(arg1)->operator -=((cmf::geometry::point const &)*arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::geometry::point *) &(arg1)->operator -=((cmf::geometry::point const &)*arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -5860,11 +5767,7 @@ SWIGINTERN PyObject *_wrap_point___mul____SWIG_0(PyObject *SWIGUNUSEDPARM(self),
   arg2 = static_cast< double >(val2);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = ((cmf::geometry::point const *)arg1)->operator *(arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = ((cmf::geometry::point const *)arg1)->operator *(arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -5919,11 +5822,7 @@ SWIGINTERN PyObject *_wrap_point___imul____SWIG_0(PyObject *SWIGUNUSEDPARM(self)
   arg2 = static_cast< double >(val2);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::geometry::point *) &(arg1)->operator *=(arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::geometry::point *) &(arg1)->operator *=(arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -5978,11 +5877,7 @@ SWIGINTERN PyObject *_wrap_point___div____SWIG_0(PyObject *SWIGUNUSEDPARM(self),
   arg2 = static_cast< double >(val2);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = ((cmf::geometry::point const *)arg1)->operator /(arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = ((cmf::geometry::point const *)arg1)->operator /(arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -6037,11 +5932,7 @@ SWIGINTERN PyObject *_wrap_point___idiv____SWIG_0(PyObject *SWIGUNUSEDPARM(self)
   arg2 = static_cast< double >(val2);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::geometry::point *) &(arg1)->operator /=(arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::geometry::point *) &(arg1)->operator /=(arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -6113,11 +6004,7 @@ SWIGINTERN PyObject *_wrap_point___mul____SWIG_1(PyObject *SWIGUNUSEDPARM(self),
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = ((cmf::geometry::point const *)arg1)->operator *((cmf::geometry::point const &)*arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = ((cmf::geometry::point const *)arg1)->operator *((cmf::geometry::point const &)*arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -6277,11 +6164,7 @@ SWIGINTERN PyObject *_wrap_point___imul____SWIG_1(PyObject *SWIGUNUSEDPARM(self)
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::geometry::point *) &(arg1)->operator *=((cmf::geometry::point const &)*arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::geometry::point *) &(arg1)->operator *=((cmf::geometry::point const &)*arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -6444,11 +6327,7 @@ SWIGINTERN PyObject *_wrap_point___div____SWIG_1(PyObject *SWIGUNUSEDPARM(self),
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = ((cmf::geometry::point const *)arg1)->operator /((cmf::geometry::point const &)*arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = ((cmf::geometry::point const *)arg1)->operator /((cmf::geometry::point const &)*arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -6608,11 +6487,7 @@ SWIGINTERN PyObject *_wrap_point___idiv____SWIG_1(PyObject *SWIGUNUSEDPARM(self)
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::geometry::point *) &(arg1)->operator /=((cmf::geometry::point const &)*arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::geometry::point *) &(arg1)->operator /=((cmf::geometry::point const &)*arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -6780,11 +6655,7 @@ SWIGINTERN PyObject *_wrap_point___eq__(PyObject *SWIGUNUSEDPARM(self), PyObject
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (bool)((cmf::geometry::point const *)arg1)->operator ==((cmf::geometry::point const &)*arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (bool)((cmf::geometry::point const *)arg1)->operator ==((cmf::geometry::point const &)*arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -6861,11 +6732,7 @@ SWIGINTERN PyObject *_wrap_point___ne__(PyObject *SWIGUNUSEDPARM(self), PyObject
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (bool)((cmf::geometry::point const *)arg1)->operator !=((cmf::geometry::point const &)*arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (bool)((cmf::geometry::point const *)arg1)->operator !=((cmf::geometry::point const &)*arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -6914,11 +6781,7 @@ SWIGINTERN PyObject *_wrap_point___len__(PyObject *SWIGUNUSEDPARM(self), PyObjec
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (int)cmf_geometry_point___len__((cmf::geometry::point const *)arg1);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (int)cmf_geometry_point___len__((cmf::geometry::point const *)arg1);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -6978,11 +6841,7 @@ SWIGINTERN PyObject *_wrap_point___rmul__(PyObject *SWIGUNUSEDPARM(self), PyObje
   arg2 = static_cast< double >(val2);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = cmf_geometry_point___rmul__(arg1,arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = cmf_geometry_point___rmul__(arg1,arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -7042,11 +6901,7 @@ SWIGINTERN PyObject *_wrap_point___rdiv__(PyObject *SWIGUNUSEDPARM(self), PyObje
   arg2 = static_cast< double >(val2);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = cmf_geometry_point___rdiv__(arg1,arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = cmf_geometry_point___rdiv__(arg1,arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -7094,11 +6949,7 @@ SWIGINTERN PyObject *_wrap_delete_point(PyObject *SWIGUNUSEDPARM(self), PyObject
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        delete arg1;
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      delete arg1;
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -7186,11 +7037,7 @@ SWIGINTERN PyObject *_wrap_dot(PyObject *SWIGUNUSEDPARM(self), PyObject *args, P
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (double)cmf::geometry::dot((cmf::geometry::point const &)*arg1,(cmf::geometry::point const &)*arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (double)cmf::geometry::dot((cmf::geometry::point const &)*arg1,(cmf::geometry::point const &)*arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -7267,11 +7114,7 @@ SWIGINTERN PyObject *_wrap_distance(PyObject *SWIGUNUSEDPARM(self), PyObject *ar
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (double)cmf::geometry::distance((cmf::geometry::point const &)*arg1,(cmf::geometry::point const &)*arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (double)cmf::geometry::distance((cmf::geometry::point const &)*arg1,(cmf::geometry::point const &)*arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -7310,11 +7153,7 @@ SWIGINTERN PyObject *_wrap_point_vector_X_set(PyObject *SWIGUNUSEDPARM(self), Py
     }
     arg2 = cmf::math::num_array(data,size);
   }
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->X = arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->X = arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -7337,11 +7176,7 @@ SWIGINTERN PyObject *_wrap_point_vector_X_get(PyObject *SWIGUNUSEDPARM(self), Py
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "point_vector_X_get" "', argument " "1"" of type '" "cmf::geometry::point_vector *""'"); 
   }
   arg1 = reinterpret_cast< cmf::geometry::point_vector * >(argp1);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result =  ((arg1)->X);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result =  ((arg1)->X);
   {
     resultobj = as_npy_array(result);
   }
@@ -7375,11 +7210,7 @@ SWIGINTERN PyObject *_wrap_point_vector_Y_set(PyObject *SWIGUNUSEDPARM(self), Py
     }
     arg2 = cmf::math::num_array(data,size);
   }
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->Y = arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->Y = arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -7402,11 +7233,7 @@ SWIGINTERN PyObject *_wrap_point_vector_Y_get(PyObject *SWIGUNUSEDPARM(self), Py
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "point_vector_Y_get" "', argument " "1"" of type '" "cmf::geometry::point_vector *""'"); 
   }
   arg1 = reinterpret_cast< cmf::geometry::point_vector * >(argp1);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result =  ((arg1)->Y);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result =  ((arg1)->Y);
   {
     resultobj = as_npy_array(result);
   }
@@ -7440,11 +7267,7 @@ SWIGINTERN PyObject *_wrap_point_vector_Z_set(PyObject *SWIGUNUSEDPARM(self), Py
     }
     arg2 = cmf::math::num_array(data,size);
   }
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->Z = arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->Z = arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -7467,11 +7290,7 @@ SWIGINTERN PyObject *_wrap_point_vector_Z_get(PyObject *SWIGUNUSEDPARM(self), Py
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "point_vector_Z_get" "', argument " "1"" of type '" "cmf::geometry::point_vector *""'"); 
   }
   arg1 = reinterpret_cast< cmf::geometry::point_vector * >(argp1);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result =  ((arg1)->Z);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result =  ((arg1)->Z);
   {
     resultobj = as_npy_array(result);
   }
@@ -7500,11 +7319,7 @@ SWIGINTERN PyObject *_wrap_new_point_vector(PyObject *SWIGUNUSEDPARM(self), PyOb
   arg1 = static_cast< int >(val1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::geometry::point_vector *)new cmf::geometry::point_vector(arg1);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::geometry::point_vector *)new cmf::geometry::point_vector(arg1);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -7547,11 +7362,7 @@ SWIGINTERN PyObject *_wrap_point_vector_get(PyObject *SWIGUNUSEDPARM(self), PyOb
   arg2 = static_cast< int >(val2);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = ((cmf::geometry::point_vector const *)arg1)->get(arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = ((cmf::geometry::point_vector const *)arg1)->get(arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -7615,11 +7426,7 @@ SWIGINTERN PyObject *_wrap_point_vector_set(PyObject *SWIGUNUSEDPARM(self), PyOb
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        (arg1)->set(arg2,arg3);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      (arg1)->set(arg2,arg3);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -7651,11 +7458,7 @@ SWIGINTERN PyObject *_wrap_point_vector_size(PyObject *SWIGUNUSEDPARM(self), PyO
   arg1 = reinterpret_cast< cmf::geometry::point_vector * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (int)((cmf::geometry::point_vector const *)arg1)->size();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (int)((cmf::geometry::point_vector const *)arg1)->size();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -7686,11 +7489,7 @@ SWIGINTERN PyObject *_wrap_delete_point_vector(PyObject *SWIGUNUSEDPARM(self), P
   arg1 = reinterpret_cast< cmf::geometry::point_vector * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        delete arg1;
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      delete arg1;
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -7772,11 +7571,7 @@ SWIGINTERN PyObject *_wrap_minimum(PyObject *SWIGUNUSEDPARM(self), PyObject *arg
   arg2 = static_cast< real >(val2);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (real)minimum(arg1,arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (real)minimum(arg1,arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -7819,11 +7614,7 @@ SWIGINTERN PyObject *_wrap_maximum(PyObject *SWIGUNUSEDPARM(self), PyObject *arg
   arg2 = static_cast< real >(val2);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (real)maximum(arg1,arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (real)maximum(arg1,arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -7875,11 +7666,7 @@ SWIGINTERN PyObject *_wrap_minmax(PyObject *SWIGUNUSEDPARM(self), PyObject *args
   arg3 = static_cast< real >(val3);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (real)minmax(arg1,arg2,arg3);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (real)minmax(arg1,arg2,arg3);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -7922,11 +7709,7 @@ SWIGINTERN PyObject *_wrap_mean(PyObject *SWIGUNUSEDPARM(self), PyObject *args, 
   arg2 = static_cast< real >(val2);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (real)mean(arg1,arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (real)mean(arg1,arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -7969,11 +7752,7 @@ SWIGINTERN PyObject *_wrap_geo_mean(PyObject *SWIGUNUSEDPARM(self), PyObject *ar
   arg2 = static_cast< real >(val2);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (real)geo_mean(arg1,arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (real)geo_mean(arg1,arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -8016,11 +7795,7 @@ SWIGINTERN PyObject *_wrap_harmonic_mean(PyObject *SWIGUNUSEDPARM(self), PyObjec
   arg2 = static_cast< real >(val2);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (real)harmonic_mean(arg1,arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (real)harmonic_mean(arg1,arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -8094,11 +7869,7 @@ SWIGINTERN PyObject *_wrap_piecewise_linear(PyObject *SWIGUNUSEDPARM(self), PyOb
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (real)piecewise_linear(arg1,arg2,arg3,arg4,arg5);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (real)piecewise_linear(arg1,arg2,arg3,arg4,arg5);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -8150,11 +7921,7 @@ SWIGINTERN PyObject *_wrap_boltzmann(PyObject *SWIGUNUSEDPARM(self), PyObject *a
   arg3 = static_cast< real >(val3);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (real)boltzmann(arg1,arg2,arg3);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (real)boltzmann(arg1,arg2,arg3);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -8188,11 +7955,7 @@ SWIGINTERN PyObject *_wrap_sign(PyObject *SWIGUNUSEDPARM(self), PyObject *args, 
   arg1 = static_cast< real >(val1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (real)sign(arg1);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (real)sign(arg1);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -8226,11 +7989,7 @@ SWIGINTERN PyObject *_wrap_square(PyObject *SWIGUNUSEDPARM(self), PyObject *args
   arg1 = static_cast< real >(val1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (real)square(arg1);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (real)square(arg1);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -8330,11 +8089,7 @@ SWIGINTERN PyObject *_wrap_new_Time__SWIG_0(PyObject *SWIGUNUSEDPARM(self), int 
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::math::Time *)new cmf::math::Time(arg1,arg2,arg3,arg4,arg5,arg6,arg7);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::math::Time *)new cmf::math::Time(arg1,arg2,arg3,arg4,arg5,arg6,arg7);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -8372,11 +8127,7 @@ SWIGINTERN PyObject *_wrap_new_Time__SWIG_1(PyObject *SWIGUNUSEDPARM(self), int 
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::math::Time *)new cmf::math::Time(arg1);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::math::Time *)new cmf::math::Time(arg1);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -8409,11 +8160,7 @@ SWIGINTERN PyObject *_wrap_new_Time__SWIG_2(PyObject *SWIGUNUSEDPARM(self), int 
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::math::Time *)new cmf::math::Time((cmf::math::Time const &)*arg1);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::math::Time *)new cmf::math::Time((cmf::math::Time const &)*arg1);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -8435,11 +8182,7 @@ SWIGINTERN PyObject *_wrap_new_Time__SWIG_3(PyObject *SWIGUNUSEDPARM(self), int 
   if ((nobjs < 0) || (nobjs > 0)) SWIG_fail;
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::math::Time *)new cmf::math::Time();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::math::Time *)new cmf::math::Time();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -8646,11 +8389,7 @@ SWIGINTERN PyObject *_wrap_Time_AsDays(PyObject *SWIGUNUSEDPARM(self), PyObject 
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (double)((cmf::math::Time const *)arg1)->AsDays();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (double)((cmf::math::Time const *)arg1)->AsDays();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -8685,11 +8424,7 @@ SWIGINTERN PyObject *_wrap_Time_AsHours(PyObject *SWIGUNUSEDPARM(self), PyObject
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (double)((cmf::math::Time const *)arg1)->AsHours();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (double)((cmf::math::Time const *)arg1)->AsHours();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -8724,11 +8459,7 @@ SWIGINTERN PyObject *_wrap_Time_AsMinutes(PyObject *SWIGUNUSEDPARM(self), PyObje
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (double)((cmf::math::Time const *)arg1)->AsMinutes();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (double)((cmf::math::Time const *)arg1)->AsMinutes();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -8763,11 +8494,7 @@ SWIGINTERN PyObject *_wrap_Time_AsSeconds(PyObject *SWIGUNUSEDPARM(self), PyObje
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (double)((cmf::math::Time const *)arg1)->AsSeconds();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (double)((cmf::math::Time const *)arg1)->AsSeconds();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -8802,11 +8529,7 @@ SWIGINTERN PyObject *_wrap_Time_AsMilliseconds(PyObject *SWIGUNUSEDPARM(self), P
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (long long)((cmf::math::Time const *)arg1)->AsMilliseconds();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (long long)((cmf::math::Time const *)arg1)->AsMilliseconds();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -8841,11 +8564,7 @@ SWIGINTERN PyObject *_wrap_Time_AsDate(PyObject *SWIGUNUSEDPARM(self), PyObject 
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = ((cmf::math::Time const *)arg1)->AsDate();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = ((cmf::math::Time const *)arg1)->AsDate();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -8893,11 +8612,7 @@ SWIGINTERN PyObject *_wrap_Time_to_string(PyObject *SWIGUNUSEDPARM(self), PyObje
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (arg1)->to_string(arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (arg1)->to_string(arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -8932,11 +8647,7 @@ SWIGINTERN PyObject *_wrap_Time_is_not_0(PyObject *SWIGUNUSEDPARM(self), PyObjec
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (bool)((cmf::math::Time const *)arg1)->is_not_0();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (bool)((cmf::math::Time const *)arg1)->is_not_0();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -8971,11 +8682,7 @@ SWIGINTERN PyObject *_wrap_Time_DOY(PyObject *SWIGUNUSEDPARM(self), PyObject *ar
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (double)((cmf::math::Time const *)arg1)->DOY();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (double)((cmf::math::Time const *)arg1)->DOY();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -9024,11 +8731,7 @@ SWIGINTERN PyObject *_wrap_Time___add__(PyObject *SWIGUNUSEDPARM(self), PyObject
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = ((cmf::math::Time const *)arg1)->operator +((cmf::math::Time const &)*arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = ((cmf::math::Time const *)arg1)->operator +((cmf::math::Time const &)*arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -9077,11 +8780,7 @@ SWIGINTERN PyObject *_wrap_Time___sub__(PyObject *SWIGUNUSEDPARM(self), PyObject
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = ((cmf::math::Time const *)arg1)->operator -((cmf::math::Time const &)*arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = ((cmf::math::Time const *)arg1)->operator -((cmf::math::Time const &)*arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -9130,11 +8829,7 @@ SWIGINTERN PyObject *_wrap_Time___iadd__(PyObject *SWIGUNUSEDPARM(self), PyObjec
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (arg1)->operator +=((cmf::math::Time const &)*arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (arg1)->operator +=((cmf::math::Time const &)*arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -9183,11 +8878,7 @@ SWIGINTERN PyObject *_wrap_Time___isub__(PyObject *SWIGUNUSEDPARM(self), PyObjec
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (arg1)->operator -=((cmf::math::Time const &)*arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (arg1)->operator -=((cmf::math::Time const &)*arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -9228,11 +8919,7 @@ SWIGINTERN PyObject *_wrap_Time___mul____SWIG_0(PyObject *SWIGUNUSEDPARM(self), 
   arg2 = static_cast< double >(val2);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = ((cmf::math::Time const *)arg1)->operator *(arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = ((cmf::math::Time const *)arg1)->operator *(arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -9273,11 +8960,7 @@ SWIGINTERN PyObject *_wrap_Time___div____SWIG_0(PyObject *SWIGUNUSEDPARM(self), 
   arg2 = static_cast< double >(val2);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = ((cmf::math::Time const *)arg1)->operator /(arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = ((cmf::math::Time const *)arg1)->operator /(arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -9326,11 +9009,7 @@ SWIGINTERN PyObject *_wrap_Time___mod__(PyObject *SWIGUNUSEDPARM(self), PyObject
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = ((cmf::math::Time const *)arg1)->operator %((cmf::math::Time const &)*arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = ((cmf::math::Time const *)arg1)->operator %((cmf::math::Time const &)*arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -9371,11 +9050,7 @@ SWIGINTERN PyObject *_wrap_Time___imul____SWIG_0(PyObject *SWIGUNUSEDPARM(self),
   arg2 = static_cast< double >(val2);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::math::Time *) &(arg1)->operator *=(arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::math::Time *) &(arg1)->operator *=(arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -9416,11 +9091,7 @@ SWIGINTERN PyObject *_wrap_Time___idiv____SWIG_0(PyObject *SWIGUNUSEDPARM(self),
   arg2 = static_cast< double >(val2);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::math::Time *) &(arg1)->operator /=(arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::math::Time *) &(arg1)->operator /=(arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -9461,11 +9132,7 @@ SWIGINTERN PyObject *_wrap_Time___mul____SWIG_1(PyObject *SWIGUNUSEDPARM(self), 
   arg2 = static_cast< long long >(val2);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = ((cmf::math::Time const *)arg1)->operator *(arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = ((cmf::math::Time const *)arg1)->operator *(arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -9506,11 +9173,7 @@ SWIGINTERN PyObject *_wrap_Time___div____SWIG_1(PyObject *SWIGUNUSEDPARM(self), 
   arg2 = static_cast< long long >(val2);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = ((cmf::math::Time const *)arg1)->operator /(arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = ((cmf::math::Time const *)arg1)->operator /(arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -9551,11 +9214,7 @@ SWIGINTERN PyObject *_wrap_Time___imul____SWIG_1(PyObject *SWIGUNUSEDPARM(self),
   arg2 = static_cast< long long >(val2);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::math::Time *) &(arg1)->operator *=(arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::math::Time *) &(arg1)->operator *=(arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -9596,11 +9255,7 @@ SWIGINTERN PyObject *_wrap_Time___idiv____SWIG_1(PyObject *SWIGUNUSEDPARM(self),
   arg2 = static_cast< long long >(val2);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::math::Time *) &(arg1)->operator /=(arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::math::Time *) &(arg1)->operator /=(arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -9641,11 +9296,7 @@ SWIGINTERN PyObject *_wrap_Time___mul____SWIG_2(PyObject *SWIGUNUSEDPARM(self), 
   arg2 = static_cast< int >(val2);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = ((cmf::math::Time const *)arg1)->operator *(arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = ((cmf::math::Time const *)arg1)->operator *(arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -9805,11 +9456,7 @@ SWIGINTERN PyObject *_wrap_Time___div____SWIG_2(PyObject *SWIGUNUSEDPARM(self), 
   arg2 = static_cast< int >(val2);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = ((cmf::math::Time const *)arg1)->operator /(arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = ((cmf::math::Time const *)arg1)->operator /(arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -9850,11 +9497,7 @@ SWIGINTERN PyObject *_wrap_Time___imul____SWIG_2(PyObject *SWIGUNUSEDPARM(self),
   arg2 = static_cast< int >(val2);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::math::Time *) &(arg1)->operator *=(arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::math::Time *) &(arg1)->operator *=(arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -10018,11 +9661,7 @@ SWIGINTERN PyObject *_wrap_Time___idiv____SWIG_2(PyObject *SWIGUNUSEDPARM(self),
   arg2 = static_cast< int >(val2);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::math::Time *) &(arg1)->operator /=(arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::math::Time *) &(arg1)->operator /=(arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -10194,11 +9833,7 @@ SWIGINTERN PyObject *_wrap_Time___imod__(PyObject *SWIGUNUSEDPARM(self), PyObjec
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::math::Time *) &(arg1)->operator %=((cmf::math::Time const &)*arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::math::Time *) &(arg1)->operator %=((cmf::math::Time const &)*arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -10242,11 +9877,7 @@ SWIGINTERN PyObject *_wrap_Time___div____SWIG_3(PyObject *SWIGUNUSEDPARM(self), 
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (double)((cmf::math::Time const *)arg1)->operator /((cmf::math::Time const &)*arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (double)((cmf::math::Time const *)arg1)->operator /((cmf::math::Time const &)*arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -10446,11 +10077,7 @@ SWIGINTERN PyObject *_wrap_Time_times_in(PyObject *SWIGUNUSEDPARM(self), PyObjec
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (long long)((cmf::math::Time const *)arg1)->times_in((cmf::math::Time const &)*arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (long long)((cmf::math::Time const *)arg1)->times_in((cmf::math::Time const &)*arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -10499,11 +10126,7 @@ SWIGINTERN PyObject *_wrap_Time___lt__(PyObject *SWIGUNUSEDPARM(self), PyObject 
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (bool)((cmf::math::Time const *)arg1)->operator <((cmf::math::Time const &)*arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (bool)((cmf::math::Time const *)arg1)->operator <((cmf::math::Time const &)*arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -10552,11 +10175,7 @@ SWIGINTERN PyObject *_wrap_Time___gt__(PyObject *SWIGUNUSEDPARM(self), PyObject 
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (bool)((cmf::math::Time const *)arg1)->operator >((cmf::math::Time const &)*arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (bool)((cmf::math::Time const *)arg1)->operator >((cmf::math::Time const &)*arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -10605,11 +10224,7 @@ SWIGINTERN PyObject *_wrap_Time___le__(PyObject *SWIGUNUSEDPARM(self), PyObject 
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (bool)((cmf::math::Time const *)arg1)->operator <=((cmf::math::Time const &)*arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (bool)((cmf::math::Time const *)arg1)->operator <=((cmf::math::Time const &)*arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -10658,11 +10273,7 @@ SWIGINTERN PyObject *_wrap_Time___ge__(PyObject *SWIGUNUSEDPARM(self), PyObject 
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (bool)((cmf::math::Time const *)arg1)->operator >=((cmf::math::Time const &)*arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (bool)((cmf::math::Time const *)arg1)->operator >=((cmf::math::Time const &)*arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -10711,11 +10322,7 @@ SWIGINTERN PyObject *_wrap_Time___eq__(PyObject *SWIGUNUSEDPARM(self), PyObject 
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (bool)((cmf::math::Time const *)arg1)->operator ==((cmf::math::Time const &)*arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (bool)((cmf::math::Time const *)arg1)->operator ==((cmf::math::Time const &)*arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -10764,11 +10371,7 @@ SWIGINTERN PyObject *_wrap_Time___ne__(PyObject *SWIGUNUSEDPARM(self), PyObject 
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (bool)((cmf::math::Time const *)arg1)->operator !=((cmf::math::Time const &)*arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (bool)((cmf::math::Time const *)arg1)->operator !=((cmf::math::Time const &)*arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -10802,11 +10405,7 @@ SWIGINTERN PyObject *_wrap_delete_Time(PyObject *SWIGUNUSEDPARM(self), PyObject 
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        delete arg1;
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      delete arg1;
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -10853,11 +10452,7 @@ SWIGINTERN PyObject *_wrap_Date_year_set(PyObject *SWIGUNUSEDPARM(self), PyObjec
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Date_year_set" "', argument " "2"" of type '" "int""'");
   } 
   arg2 = static_cast< int >(val2);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->year = arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->year = arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -10880,11 +10475,7 @@ SWIGINTERN PyObject *_wrap_Date_year_get(PyObject *SWIGUNUSEDPARM(self), PyObjec
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Date_year_get" "', argument " "1"" of type '" "cmf::math::Date *""'"); 
   }
   arg1 = reinterpret_cast< cmf::math::Date * >(argp1);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (int) ((arg1)->year);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (int) ((arg1)->year);
   resultobj = SWIG_From_int(static_cast< int >(result));
   return resultobj;
 fail:
@@ -10913,11 +10504,7 @@ SWIGINTERN PyObject *_wrap_Date_month_set(PyObject *SWIGUNUSEDPARM(self), PyObje
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Date_month_set" "', argument " "2"" of type '" "int""'");
   } 
   arg2 = static_cast< int >(val2);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->month = arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->month = arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -10940,11 +10527,7 @@ SWIGINTERN PyObject *_wrap_Date_month_get(PyObject *SWIGUNUSEDPARM(self), PyObje
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Date_month_get" "', argument " "1"" of type '" "cmf::math::Date *""'"); 
   }
   arg1 = reinterpret_cast< cmf::math::Date * >(argp1);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (int) ((arg1)->month);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (int) ((arg1)->month);
   resultobj = SWIG_From_int(static_cast< int >(result));
   return resultobj;
 fail:
@@ -10973,11 +10556,7 @@ SWIGINTERN PyObject *_wrap_Date_day_set(PyObject *SWIGUNUSEDPARM(self), PyObject
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Date_day_set" "', argument " "2"" of type '" "int""'");
   } 
   arg2 = static_cast< int >(val2);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->day = arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->day = arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -11000,11 +10579,7 @@ SWIGINTERN PyObject *_wrap_Date_day_get(PyObject *SWIGUNUSEDPARM(self), PyObject
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Date_day_get" "', argument " "1"" of type '" "cmf::math::Date *""'"); 
   }
   arg1 = reinterpret_cast< cmf::math::Date * >(argp1);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (int) ((arg1)->day);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (int) ((arg1)->day);
   resultobj = SWIG_From_int(static_cast< int >(result));
   return resultobj;
 fail:
@@ -11033,11 +10608,7 @@ SWIGINTERN PyObject *_wrap_Date_hour_set(PyObject *SWIGUNUSEDPARM(self), PyObjec
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Date_hour_set" "', argument " "2"" of type '" "int""'");
   } 
   arg2 = static_cast< int >(val2);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->hour = arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->hour = arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -11060,11 +10631,7 @@ SWIGINTERN PyObject *_wrap_Date_hour_get(PyObject *SWIGUNUSEDPARM(self), PyObjec
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Date_hour_get" "', argument " "1"" of type '" "cmf::math::Date *""'"); 
   }
   arg1 = reinterpret_cast< cmf::math::Date * >(argp1);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (int) ((arg1)->hour);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (int) ((arg1)->hour);
   resultobj = SWIG_From_int(static_cast< int >(result));
   return resultobj;
 fail:
@@ -11093,11 +10660,7 @@ SWIGINTERN PyObject *_wrap_Date_minute_set(PyObject *SWIGUNUSEDPARM(self), PyObj
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Date_minute_set" "', argument " "2"" of type '" "int""'");
   } 
   arg2 = static_cast< int >(val2);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->minute = arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->minute = arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -11120,11 +10683,7 @@ SWIGINTERN PyObject *_wrap_Date_minute_get(PyObject *SWIGUNUSEDPARM(self), PyObj
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Date_minute_get" "', argument " "1"" of type '" "cmf::math::Date *""'"); 
   }
   arg1 = reinterpret_cast< cmf::math::Date * >(argp1);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (int) ((arg1)->minute);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (int) ((arg1)->minute);
   resultobj = SWIG_From_int(static_cast< int >(result));
   return resultobj;
 fail:
@@ -11153,11 +10712,7 @@ SWIGINTERN PyObject *_wrap_Date_second_set(PyObject *SWIGUNUSEDPARM(self), PyObj
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Date_second_set" "', argument " "2"" of type '" "int""'");
   } 
   arg2 = static_cast< int >(val2);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->second = arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->second = arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -11180,11 +10735,7 @@ SWIGINTERN PyObject *_wrap_Date_second_get(PyObject *SWIGUNUSEDPARM(self), PyObj
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Date_second_get" "', argument " "1"" of type '" "cmf::math::Date *""'"); 
   }
   arg1 = reinterpret_cast< cmf::math::Date * >(argp1);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (int) ((arg1)->second);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (int) ((arg1)->second);
   resultobj = SWIG_From_int(static_cast< int >(result));
   return resultobj;
 fail:
@@ -11213,11 +10764,7 @@ SWIGINTERN PyObject *_wrap_Date_ms_set(PyObject *SWIGUNUSEDPARM(self), PyObject 
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Date_ms_set" "', argument " "2"" of type '" "int""'");
   } 
   arg2 = static_cast< int >(val2);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->ms = arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->ms = arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -11240,11 +10787,7 @@ SWIGINTERN PyObject *_wrap_Date_ms_get(PyObject *SWIGUNUSEDPARM(self), PyObject 
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Date_ms_get" "', argument " "1"" of type '" "cmf::math::Date *""'"); 
   }
   arg1 = reinterpret_cast< cmf::math::Date * >(argp1);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (int) ((arg1)->ms);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (int) ((arg1)->ms);
   resultobj = SWIG_From_int(static_cast< int >(result));
   return resultobj;
 fail:
@@ -11323,11 +10866,7 @@ SWIGINTERN PyObject *_wrap_new_Date__SWIG_0(PyObject *SWIGUNUSEDPARM(self), int 
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::math::Date *)new cmf::math::Date(arg1,arg2,arg3,arg4,arg5,arg6,arg7);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::math::Date *)new cmf::math::Date(arg1,arg2,arg3,arg4,arg5,arg6,arg7);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -11360,11 +10899,7 @@ SWIGINTERN PyObject *_wrap_new_Date__SWIG_1(PyObject *SWIGUNUSEDPARM(self), int 
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::math::Date *)new cmf::math::Date((cmf::math::Time const &)*arg1);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::math::Date *)new cmf::math::Date((cmf::math::Time const &)*arg1);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -11534,11 +11069,7 @@ SWIGINTERN PyObject *_wrap_Date_ToTime(PyObject *SWIGUNUSEDPARM(self), PyObject 
   arg1 = reinterpret_cast< cmf::math::Date * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (arg1)->ToTime();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (arg1)->ToTime();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -11570,11 +11101,7 @@ SWIGINTERN PyObject *_wrap_Date_DOY(PyObject *SWIGUNUSEDPARM(self), PyObject *ar
   arg1 = reinterpret_cast< cmf::math::Date * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (double)(arg1)->DOY();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (double)(arg1)->DOY();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -11606,11 +11133,7 @@ SWIGINTERN PyObject *_wrap_Date_to_string(PyObject *SWIGUNUSEDPARM(self), PyObje
   arg1 = reinterpret_cast< cmf::math::Date * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (arg1)->to_string();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (arg1)->to_string();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -11641,11 +11164,7 @@ SWIGINTERN PyObject *_wrap_delete_Date(PyObject *SWIGUNUSEDPARM(self), PyObject 
   arg1 = reinterpret_cast< cmf::math::Date * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        delete arg1;
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      delete arg1;
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -11814,11 +11333,7 @@ SWIGINTERN PyObject *_wrap_timeseries_interpolationpower(PyObject *SWIGUNUSEDPAR
   arg1 = reinterpret_cast< cmf::math::timeseries * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (int)((cmf::math::timeseries const *)arg1)->interpolationpower();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (int)((cmf::math::timeseries const *)arg1)->interpolationpower();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -11860,11 +11375,7 @@ SWIGINTERN PyObject *_wrap_timeseries_add(PyObject *SWIGUNUSEDPARM(self), PyObje
   arg2 = static_cast< double >(val2);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        (arg1)->add(arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      (arg1)->add(arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -11896,11 +11407,7 @@ SWIGINTERN PyObject *_wrap_timeseries_is_empty(PyObject *SWIGUNUSEDPARM(self), P
   arg1 = reinterpret_cast< cmf::math::timeseries * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (bool)((cmf::math::timeseries const *)arg1)->is_empty();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (bool)((cmf::math::timeseries const *)arg1)->is_empty();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -11931,11 +11438,7 @@ SWIGINTERN PyObject *_wrap_timeseries_clear(PyObject *SWIGUNUSEDPARM(self), PyOb
   arg1 = reinterpret_cast< cmf::math::timeseries * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        (arg1)->clear();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      (arg1)->clear();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -11967,11 +11470,7 @@ SWIGINTERN PyObject *_wrap_timeseries_adress(PyObject *SWIGUNUSEDPARM(self), PyO
   arg1 = reinterpret_cast< cmf::math::timeseries * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = ((cmf::math::timeseries const *)arg1)->adress();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = ((cmf::math::timeseries const *)arg1)->adress();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -12003,11 +11502,7 @@ SWIGINTERN PyObject *_wrap_timeseries_copy(PyObject *SWIGUNUSEDPARM(self), PyObj
   arg1 = reinterpret_cast< cmf::math::timeseries * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = ((cmf::math::timeseries const *)arg1)->copy();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = ((cmf::math::timeseries const *)arg1)->copy();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -12039,11 +11534,7 @@ SWIGINTERN PyObject *_wrap_timeseries_size(PyObject *SWIGUNUSEDPARM(self), PyObj
   arg1 = reinterpret_cast< cmf::math::timeseries * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (int)((cmf::math::timeseries const *)arg1)->size();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (int)((cmf::math::timeseries const *)arg1)->size();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -12075,11 +11566,7 @@ SWIGINTERN PyObject *_wrap_timeseries_count_values(PyObject *SWIGUNUSEDPARM(self
   arg1 = reinterpret_cast< cmf::math::timeseries * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (int)((cmf::math::timeseries const *)arg1)->count_values();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (int)((cmf::math::timeseries const *)arg1)->count_values();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -12146,11 +11633,7 @@ SWIGINTERN PyObject *_wrap_new_timeseries(PyObject *SWIGUNUSEDPARM(self), PyObje
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::math::timeseries *)new cmf::math::timeseries(arg1,arg2,arg3,arg4);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::math::timeseries *)new cmf::math::timeseries(arg1,arg2,arg3,arg4);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -12203,11 +11686,7 @@ SWIGINTERN PyObject *_wrap_timeseries_from_array(PyObject *SWIGUNUSEDPARM(self),
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = cmf::math::timeseries::from_array(arg1,arg2,(cmf::math::num_array const &)*arg3);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = cmf::math::timeseries::from_array(arg1,arg2,(cmf::math::num_array const &)*arg3);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -12247,11 +11726,7 @@ SWIGINTERN PyObject *_wrap_timeseries_from_scalar(PyObject *SWIGUNUSEDPARM(self)
   arg1 = static_cast< double >(val1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = cmf::math::timeseries::from_scalar(arg1);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = cmf::math::timeseries::from_scalar(arg1);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -12287,11 +11762,7 @@ SWIGINTERN PyObject *_wrap_timeseries_from_file(PyObject *SWIGUNUSEDPARM(self), 
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = cmf::math::timeseries::from_file(arg1);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = cmf::math::timeseries::from_file(arg1);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -12333,11 +11804,7 @@ SWIGINTERN PyObject *_wrap_timeseries_get_t(PyObject *SWIGUNUSEDPARM(self), PyOb
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (double)((cmf::math::timeseries const *)arg1)->get_t(arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (double)((cmf::math::timeseries const *)arg1)->get_t(arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -12380,11 +11847,7 @@ SWIGINTERN PyObject *_wrap_timeseries_get_i(PyObject *SWIGUNUSEDPARM(self), PyOb
   arg2 = static_cast< int >(val2);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (double)((cmf::math::timeseries const *)arg1)->get_i(arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (double)((cmf::math::timeseries const *)arg1)->get_i(arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -12434,11 +11897,7 @@ SWIGINTERN PyObject *_wrap_timeseries_set_t(PyObject *SWIGUNUSEDPARM(self), PyOb
   arg3 = static_cast< double >(val3);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        (arg1)->set_t(arg2,arg3);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      (arg1)->set_t(arg2,arg3);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -12489,11 +11948,7 @@ SWIGINTERN PyObject *_wrap_timeseries_set_i(PyObject *SWIGUNUSEDPARM(self), PyOb
   arg3 = static_cast< double >(val3);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        (arg1)->set_i(arg2,arg3);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      (arg1)->set_i(arg2,arg3);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -12546,11 +12001,7 @@ SWIGINTERN PyObject *_wrap_timeseries_get_slice__SWIG_0(PyObject *SWIGUNUSEDPARM
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (arg1)->get_slice(arg2,arg3,arg4);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (arg1)->get_slice(arg2,arg3,arg4);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -12608,11 +12059,7 @@ SWIGINTERN PyObject *_wrap_timeseries_set_slice__SWIG_0(PyObject *SWIGUNUSEDPARM
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        (arg1)->set_slice(arg2,arg3,arg4);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      (arg1)->set_slice(arg2,arg3,arg4);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -12668,11 +12115,7 @@ SWIGINTERN PyObject *_wrap_timeseries_get_slice__SWIG_1(PyObject *SWIGUNUSEDPARM
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (arg1)->get_slice(arg2,arg3,arg4);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (arg1)->get_slice(arg2,arg3,arg4);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -12862,11 +12305,7 @@ SWIGINTERN PyObject *_wrap_timeseries_set_slice__SWIG_1(PyObject *SWIGUNUSEDPARM
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        (arg1)->set_slice(arg2,arg3,arg4);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      (arg1)->set_slice(arg2,arg3,arg4);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -13037,11 +12476,7 @@ SWIGINTERN PyObject *_wrap_timeseries_remove_nodata(PyObject *SWIGUNUSEDPARM(sel
   arg2 = static_cast< double >(val2);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        (arg1)->remove_nodata(arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      (arg1)->remove_nodata(arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -13086,11 +12521,7 @@ SWIGINTERN PyObject *_wrap_timeseries___iadd____SWIG_0(PyObject *SWIGUNUSEDPARM(
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::math::timeseries *) &(arg1)->operator +=(arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::math::timeseries *) &(arg1)->operator +=(arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -13128,11 +12559,7 @@ SWIGINTERN PyObject *_wrap_timeseries___iadd____SWIG_1(PyObject *SWIGUNUSEDPARM(
   arg2 = static_cast< double >(val2);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::math::timeseries *) &(arg1)->operator +=(arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::math::timeseries *) &(arg1)->operator +=(arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -13267,11 +12694,7 @@ SWIGINTERN PyObject *_wrap_timeseries___isub____SWIG_0(PyObject *SWIGUNUSEDPARM(
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::math::timeseries *) &(arg1)->operator -=(arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::math::timeseries *) &(arg1)->operator -=(arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -13309,11 +12732,7 @@ SWIGINTERN PyObject *_wrap_timeseries___isub____SWIG_1(PyObject *SWIGUNUSEDPARM(
   arg2 = static_cast< double >(val2);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::math::timeseries *) &(arg1)->operator -=(arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::math::timeseries *) &(arg1)->operator -=(arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -13448,11 +12867,7 @@ SWIGINTERN PyObject *_wrap_timeseries___imul____SWIG_0(PyObject *SWIGUNUSEDPARM(
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::math::timeseries *) &(arg1)->operator *=(arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::math::timeseries *) &(arg1)->operator *=(arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -13490,11 +12905,7 @@ SWIGINTERN PyObject *_wrap_timeseries___imul____SWIG_1(PyObject *SWIGUNUSEDPARM(
   arg2 = static_cast< double >(val2);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::math::timeseries *) &(arg1)->operator *=(arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::math::timeseries *) &(arg1)->operator *=(arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -13629,11 +13040,7 @@ SWIGINTERN PyObject *_wrap_timeseries___idiv____SWIG_0(PyObject *SWIGUNUSEDPARM(
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::math::timeseries *) &(arg1)->operator /=(arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::math::timeseries *) &(arg1)->operator /=(arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -13671,11 +13078,7 @@ SWIGINTERN PyObject *_wrap_timeseries___idiv____SWIG_1(PyObject *SWIGUNUSEDPARM(
   arg2 = static_cast< double >(val2);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::math::timeseries *) &(arg1)->operator /=(arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::math::timeseries *) &(arg1)->operator /=(arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -13810,11 +13213,7 @@ SWIGINTERN PyObject *_wrap_timeseries___add____SWIG_0(PyObject *SWIGUNUSEDPARM(s
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = ((cmf::math::timeseries const *)arg1)->operator +(arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = ((cmf::math::timeseries const *)arg1)->operator +(arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -13859,11 +13258,7 @@ SWIGINTERN PyObject *_wrap_timeseries___sub____SWIG_0(PyObject *SWIGUNUSEDPARM(s
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = ((cmf::math::timeseries const *)arg1)->operator -(arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = ((cmf::math::timeseries const *)arg1)->operator -(arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -13908,11 +13303,7 @@ SWIGINTERN PyObject *_wrap_timeseries___mul____SWIG_0(PyObject *SWIGUNUSEDPARM(s
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = ((cmf::math::timeseries const *)arg1)->operator *(arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = ((cmf::math::timeseries const *)arg1)->operator *(arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -13957,11 +13348,7 @@ SWIGINTERN PyObject *_wrap_timeseries___div____SWIG_0(PyObject *SWIGUNUSEDPARM(s
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = ((cmf::math::timeseries const *)arg1)->operator /(arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = ((cmf::math::timeseries const *)arg1)->operator /(arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -13999,11 +13386,7 @@ SWIGINTERN PyObject *_wrap_timeseries___add____SWIG_1(PyObject *SWIGUNUSEDPARM(s
   arg2 = static_cast< double >(val2);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = ((cmf::math::timeseries const *)arg1)->operator +(arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = ((cmf::math::timeseries const *)arg1)->operator +(arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -14128,11 +13511,7 @@ SWIGINTERN PyObject *_wrap_timeseries___sub____SWIG_1(PyObject *SWIGUNUSEDPARM(s
   arg2 = static_cast< double >(val2);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = ((cmf::math::timeseries const *)arg1)->operator -(arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = ((cmf::math::timeseries const *)arg1)->operator -(arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -14257,11 +13636,7 @@ SWIGINTERN PyObject *_wrap_timeseries___mul____SWIG_1(PyObject *SWIGUNUSEDPARM(s
   arg2 = static_cast< double >(val2);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = ((cmf::math::timeseries const *)arg1)->operator *(arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = ((cmf::math::timeseries const *)arg1)->operator *(arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -14386,11 +13761,7 @@ SWIGINTERN PyObject *_wrap_timeseries___div____SWIG_1(PyObject *SWIGUNUSEDPARM(s
   arg2 = static_cast< double >(val2);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = ((cmf::math::timeseries const *)arg1)->operator /(arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = ((cmf::math::timeseries const *)arg1)->operator /(arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -14509,11 +13880,7 @@ SWIGINTERN PyObject *_wrap_timeseries___neg__(PyObject *SWIGUNUSEDPARM(self), Py
   arg1 = reinterpret_cast< cmf::math::timeseries * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = ((cmf::math::timeseries const *)arg1)->operator -();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = ((cmf::math::timeseries const *)arg1)->operator -();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -14545,11 +13912,7 @@ SWIGINTERN PyObject *_wrap_timeseries_inv(PyObject *SWIGUNUSEDPARM(self), PyObje
   arg1 = reinterpret_cast< cmf::math::timeseries * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = ((cmf::math::timeseries const *)arg1)->inv();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = ((cmf::math::timeseries const *)arg1)->inv();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -14599,11 +13962,7 @@ SWIGINTERN PyObject *_wrap_timeseries_reduce_min(PyObject *SWIGUNUSEDPARM(self),
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = ((cmf::math::timeseries const *)arg1)->reduce_min(arg2,arg3);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = ((cmf::math::timeseries const *)arg1)->reduce_min(arg2,arg3);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -14653,11 +14012,7 @@ SWIGINTERN PyObject *_wrap_timeseries_reduce_max(PyObject *SWIGUNUSEDPARM(self),
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = ((cmf::math::timeseries const *)arg1)->reduce_max(arg2,arg3);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = ((cmf::math::timeseries const *)arg1)->reduce_max(arg2,arg3);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -14707,11 +14062,7 @@ SWIGINTERN PyObject *_wrap_timeseries_reduce_sum(PyObject *SWIGUNUSEDPARM(self),
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = ((cmf::math::timeseries const *)arg1)->reduce_sum(arg2,arg3);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = ((cmf::math::timeseries const *)arg1)->reduce_sum(arg2,arg3);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -14761,11 +14112,7 @@ SWIGINTERN PyObject *_wrap_timeseries_reduce_avg(PyObject *SWIGUNUSEDPARM(self),
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = ((cmf::math::timeseries const *)arg1)->reduce_avg(arg2,arg3);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = ((cmf::math::timeseries const *)arg1)->reduce_avg(arg2,arg3);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -14802,11 +14149,7 @@ SWIGINTERN PyObject *_wrap_timeseries_floating_avg__SWIG_0(PyObject *SWIGUNUSEDP
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = ((cmf::math::timeseries const *)arg1)->floating_avg(arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = ((cmf::math::timeseries const *)arg1)->floating_avg(arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -14844,11 +14187,7 @@ SWIGINTERN PyObject *_wrap_timeseries_floating_avg__SWIG_1(PyObject *SWIGUNUSEDP
   arg2 = static_cast< size_t >(val2);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = ((cmf::math::timeseries const *)arg1)->floating_avg(arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = ((cmf::math::timeseries const *)arg1)->floating_avg(arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -14978,11 +14317,7 @@ SWIGINTERN PyObject *_wrap_timeseries_floating_max(PyObject *SWIGUNUSEDPARM(self
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = ((cmf::math::timeseries const *)arg1)->floating_max(arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = ((cmf::math::timeseries const *)arg1)->floating_max(arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -15024,11 +14359,7 @@ SWIGINTERN PyObject *_wrap_timeseries_floating_min(PyObject *SWIGUNUSEDPARM(self
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = ((cmf::math::timeseries const *)arg1)->floating_min(arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = ((cmf::math::timeseries const *)arg1)->floating_min(arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -15060,11 +14391,7 @@ SWIGINTERN PyObject *_wrap_timeseries_mean(PyObject *SWIGUNUSEDPARM(self), PyObj
   arg1 = reinterpret_cast< cmf::math::timeseries * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (double)((cmf::math::timeseries const *)arg1)->mean();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (double)((cmf::math::timeseries const *)arg1)->mean();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -15096,11 +14423,7 @@ SWIGINTERN PyObject *_wrap_timeseries_min(PyObject *SWIGUNUSEDPARM(self), PyObje
   arg1 = reinterpret_cast< cmf::math::timeseries * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (double)((cmf::math::timeseries const *)arg1)->min();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (double)((cmf::math::timeseries const *)arg1)->min();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -15132,11 +14455,7 @@ SWIGINTERN PyObject *_wrap_timeseries_max(PyObject *SWIGUNUSEDPARM(self), PyObje
   arg1 = reinterpret_cast< cmf::math::timeseries * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (double)((cmf::math::timeseries const *)arg1)->max();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (double)((cmf::math::timeseries const *)arg1)->max();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -15168,11 +14487,7 @@ SWIGINTERN PyObject *_wrap_timeseries_log(PyObject *SWIGUNUSEDPARM(self), PyObje
   arg1 = reinterpret_cast< cmf::math::timeseries * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = ((cmf::math::timeseries const *)arg1)->log();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = ((cmf::math::timeseries const *)arg1)->log();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -15204,11 +14519,7 @@ SWIGINTERN PyObject *_wrap_timeseries_log10(PyObject *SWIGUNUSEDPARM(self), PyOb
   arg1 = reinterpret_cast< cmf::math::timeseries * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = ((cmf::math::timeseries const *)arg1)->log10();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = ((cmf::math::timeseries const *)arg1)->log10();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -15251,11 +14562,7 @@ SWIGINTERN PyObject *_wrap_timeseries_power(PyObject *SWIGUNUSEDPARM(self), PyOb
   arg2 = static_cast< double >(val2);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = ((cmf::math::timeseries const *)arg1)->power(arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = ((cmf::math::timeseries const *)arg1)->power(arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -15287,11 +14594,7 @@ SWIGINTERN PyObject *_wrap_timeseries_exp(PyObject *SWIGUNUSEDPARM(self), PyObje
   arg1 = reinterpret_cast< cmf::math::timeseries * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = ((cmf::math::timeseries const *)arg1)->exp();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = ((cmf::math::timeseries const *)arg1)->exp();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -15323,11 +14626,7 @@ SWIGINTERN PyObject *_wrap_timeseries_begin_get(PyObject *SWIGUNUSEDPARM(self), 
   arg1 = reinterpret_cast< cmf::math::timeseries * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::math::Time *)cmf_math_timeseries_begin_get(arg1);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::math::Time *)cmf_math_timeseries_begin_get(arg1);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -15359,11 +14658,7 @@ SWIGINTERN PyObject *_wrap_timeseries_step_get(PyObject *SWIGUNUSEDPARM(self), P
   arg1 = reinterpret_cast< cmf::math::timeseries * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::math::Time *)cmf_math_timeseries_step_get(arg1);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::math::Time *)cmf_math_timeseries_step_get(arg1);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -15395,11 +14690,7 @@ SWIGINTERN PyObject *_wrap_timeseries_end_get(PyObject *SWIGUNUSEDPARM(self), Py
   arg1 = reinterpret_cast< cmf::math::timeseries * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::math::Time *)cmf_math_timeseries_end_get(arg1);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::math::Time *)cmf_math_timeseries_end_get(arg1);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -15431,11 +14722,7 @@ SWIGINTERN PyObject *_wrap_timeseries___len__(PyObject *SWIGUNUSEDPARM(self), Py
   arg1 = reinterpret_cast< cmf::math::timeseries * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (double)cmf_math_timeseries___len__(arg1);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (double)cmf_math_timeseries___len__(arg1);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -15466,11 +14753,7 @@ SWIGINTERN PyObject *_wrap_delete_timeseries(PyObject *SWIGUNUSEDPARM(self), PyO
   arg1 = reinterpret_cast< cmf::math::timeseries * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        delete arg1;
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      delete arg1;
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -15530,11 +14813,7 @@ SWIGINTERN PyObject *_wrap_nash_sutcliff(PyObject *SWIGUNUSEDPARM(self), PyObjec
   arg2 = reinterpret_cast< cmf::math::timeseries * >(argp2);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (double)cmf::math::nash_sutcliff((cmf::math::timeseries const &)*arg1,(cmf::math::timeseries const &)*arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (double)cmf::math::nash_sutcliff((cmf::math::timeseries const &)*arg1,(cmf::math::timeseries const &)*arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -15587,11 +14866,7 @@ SWIGINTERN PyObject *_wrap_R2(PyObject *SWIGUNUSEDPARM(self), PyObject *args, Py
   arg2 = reinterpret_cast< cmf::math::timeseries * >(argp2);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (double)cmf::math::R2((cmf::math::timeseries const &)*arg1,(cmf::math::timeseries const &)*arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (double)cmf::math::R2((cmf::math::timeseries const &)*arg1,(cmf::math::timeseries const &)*arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -15648,11 +14923,7 @@ SWIGINTERN PyObject *_wrap_integratable_integrate(PyObject *SWIGUNUSEDPARM(self)
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        (arg1)->integrate(arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      (arg1)->integrate(arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -15705,11 +14976,7 @@ SWIGINTERN PyObject *_wrap_integratable_reset(PyObject *SWIGUNUSEDPARM(self), Py
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        (arg1)->reset(arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      (arg1)->reset(arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -15753,11 +15020,7 @@ SWIGINTERN PyObject *_wrap_integratable_sum(PyObject *SWIGUNUSEDPARM(self), PyOb
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (double)((cmf::math::integratable const *)arg1)->sum();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (double)((cmf::math::integratable const *)arg1)->sum();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -15801,11 +15064,7 @@ SWIGINTERN PyObject *_wrap_integratable_avg(PyObject *SWIGUNUSEDPARM(self), PyOb
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (double)((cmf::math::integratable const *)arg1)->avg();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (double)((cmf::math::integratable const *)arg1)->avg();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -15848,11 +15107,7 @@ SWIGINTERN PyObject *_wrap_delete_integratable(PyObject *SWIGUNUSEDPARM(self), P
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        (void)arg1; delete smartarg1;
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      (void)arg1; delete smartarg1;
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -15905,11 +15160,7 @@ SWIGINTERN PyObject *_wrap_integratable_list_append(PyObject *SWIGUNUSEDPARM(sel
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        (arg1)->append(arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      (arg1)->append(arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -15955,11 +15206,7 @@ SWIGINTERN PyObject *_wrap_integratable_list_remove(PyObject *SWIGUNUSEDPARM(sel
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        (arg1)->remove(arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      (arg1)->remove(arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -16002,11 +15249,7 @@ SWIGINTERN PyObject *_wrap_integratable_list___getitem(PyObject *SWIGUNUSEDPARM(
   arg2 = static_cast< int >(val2);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = ((cmf::math::integratable_list const *)arg1)->operator [](arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = ((cmf::math::integratable_list const *)arg1)->operator [](arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -16041,11 +15284,7 @@ SWIGINTERN PyObject *_wrap_integratable_list_size(PyObject *SWIGUNUSEDPARM(self)
   arg1 = reinterpret_cast< cmf::math::integratable_list * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = ((cmf::math::integratable_list const *)arg1)->size();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = ((cmf::math::integratable_list const *)arg1)->size();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -16077,11 +15316,7 @@ SWIGINTERN PyObject *_wrap_integratable_list_avg(PyObject *SWIGUNUSEDPARM(self),
   arg1 = reinterpret_cast< cmf::math::integratable_list * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = ((cmf::math::integratable_list const *)arg1)->avg();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = ((cmf::math::integratable_list const *)arg1)->avg();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -16115,11 +15350,7 @@ SWIGINTERN PyObject *_wrap_integratable_list_sum(PyObject *SWIGUNUSEDPARM(self),
   arg1 = reinterpret_cast< cmf::math::integratable_list * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = ((cmf::math::integratable_list const *)arg1)->sum();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = ((cmf::math::integratable_list const *)arg1)->sum();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -16162,11 +15393,7 @@ SWIGINTERN PyObject *_wrap_integratable_list_reset(PyObject *SWIGUNUSEDPARM(self
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        (arg1)->reset(arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      (arg1)->reset(arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -16207,11 +15434,7 @@ SWIGINTERN PyObject *_wrap_integratable_list_integrate(PyObject *SWIGUNUSEDPARM(
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        (arg1)->integrate(arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      (arg1)->integrate(arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -16233,11 +15456,7 @@ SWIGINTERN PyObject *_wrap_new_integratable_list__SWIG_0(PyObject *SWIGUNUSEDPAR
   if ((nobjs < 0) || (nobjs > 0)) SWIG_fail;
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::math::integratable_list *)new cmf::math::integratable_list();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::math::integratable_list *)new cmf::math::integratable_list();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -16271,11 +15490,7 @@ SWIGINTERN PyObject *_wrap_new_integratable_list__SWIG_1(PyObject *SWIGUNUSEDPAR
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::math::integratable_list *)new cmf::math::integratable_list((cmf::math::integratable_list const &)*arg1);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::math::integratable_list *)new cmf::math::integratable_list((cmf::math::integratable_list const &)*arg1);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -16363,11 +15578,7 @@ SWIGINTERN PyObject *_wrap_integratable_list___len__(PyObject *SWIGUNUSEDPARM(se
   arg1 = reinterpret_cast< cmf::math::integratable_list * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = cmf_math_integratable_list___len__((cmf::math::integratable_list const *)arg1);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = cmf_math_integratable_list___len__((cmf::math::integratable_list const *)arg1);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -16398,11 +15609,7 @@ SWIGINTERN PyObject *_wrap_delete_integratable_list(PyObject *SWIGUNUSEDPARM(sel
   arg1 = reinterpret_cast< cmf::math::integratable_list * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        delete arg1;
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      delete arg1;
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -16471,11 +15678,7 @@ SWIGINTERN PyObject *_wrap_StateVariable_dxdt(PyObject *SWIGUNUSEDPARM(self), Py
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (real)(arg1)->dxdt((cmf::math::Time const &)*arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (real)(arg1)->dxdt((cmf::math::Time const &)*arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -16530,11 +15733,7 @@ SWIGINTERN PyObject *_wrap_StateVariable_get_abs_errtol(PyObject *SWIGUNUSEDPARM
   arg2 = static_cast< real >(val2);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (real)((cmf::math::StateVariable const *)arg1)->get_abs_errtol(arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (real)((cmf::math::StateVariable const *)arg1)->get_abs_errtol(arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -16584,11 +15783,7 @@ SWIGINTERN PyObject *_wrap_StateVariable_state_set(PyObject *SWIGUNUSEDPARM(self
   arg2 = static_cast< real >(val2);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        cmf_math_StateVariable_state_set(arg1,arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      cmf_math_StateVariable_state_set(arg1,arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -16632,11 +15827,7 @@ SWIGINTERN PyObject *_wrap_StateVariable_state_get(PyObject *SWIGUNUSEDPARM(self
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (real)cmf_math_StateVariable_state_get(arg1);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (real)cmf_math_StateVariable_state_get(arg1);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -16679,11 +15870,7 @@ SWIGINTERN PyObject *_wrap_delete_StateVariable(PyObject *SWIGUNUSEDPARM(self), 
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        (void)arg1; delete smartarg1;
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      (void)arg1; delete smartarg1;
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -16722,11 +15909,7 @@ SWIGINTERN PyObject *_wrap_StateVariableOwner_get_states(PyObject *SWIGUNUSEDPAR
   arg1 = reinterpret_cast< cmf::math::StateVariableOwner * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (arg1)->get_states();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (arg1)->get_states();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -16757,11 +15940,7 @@ SWIGINTERN PyObject *_wrap_delete_StateVariableOwner(PyObject *SWIGUNUSEDPARM(se
   arg1 = reinterpret_cast< cmf::math::StateVariableOwner * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        delete arg1;
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      delete arg1;
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -16814,11 +15993,7 @@ SWIGINTERN PyObject *_wrap_StateVariableList_append(PyObject *SWIGUNUSEDPARM(sel
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        (arg1)->append(arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      (arg1)->append(arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -16863,11 +16038,7 @@ SWIGINTERN PyObject *_wrap_StateVariableList_extend(PyObject *SWIGUNUSEDPARM(sel
   arg2 = reinterpret_cast< cmf::math::StateVariableOwner * >(argp2);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        (arg1)->extend(*arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      (arg1)->extend(*arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -16899,11 +16070,7 @@ SWIGINTERN PyObject *_wrap_StateVariableList___nonzero__(PyObject *SWIGUNUSEDPAR
   arg1 = reinterpret_cast< cmf::math::StateVariableList * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (bool)((cmf::math::StateVariableList const *)arg1)->operator bool();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (bool)((cmf::math::StateVariableList const *)arg1)->operator bool();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -16945,11 +16112,7 @@ SWIGINTERN PyObject *_wrap_StateVariableList___iadd____SWIG_0(PyObject *SWIGUNUS
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::math::StateVariableList *) &(arg1)->operator +=((cmf::math::StateVariableList const &)*arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::math::StateVariableList *) &(arg1)->operator +=((cmf::math::StateVariableList const &)*arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -16990,11 +16153,7 @@ SWIGINTERN PyObject *_wrap_StateVariableList___iadd____SWIG_1(PyObject *SWIGUNUS
   arg2 = reinterpret_cast< cmf::math::StateVariableOwner * >(argp2);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::math::StateVariableList *) &(arg1)->operator +=(*arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::math::StateVariableList *) &(arg1)->operator +=(*arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -17113,11 +16272,7 @@ SWIGINTERN PyObject *_wrap_StateVariableList_size(PyObject *SWIGUNUSEDPARM(self)
   arg1 = reinterpret_cast< cmf::math::StateVariableList * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = ((cmf::math::StateVariableList const *)arg1)->size();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = ((cmf::math::StateVariableList const *)arg1)->size();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -17139,11 +16294,7 @@ SWIGINTERN PyObject *_wrap_new_StateVariableList(PyObject *SWIGUNUSEDPARM(self),
   if (!SWIG_Python_UnpackTuple(args,"new_StateVariableList",0,0,0)) SWIG_fail;
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::math::StateVariableList *)new cmf::math::StateVariableList();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::math::StateVariableList *)new cmf::math::StateVariableList();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -17174,11 +16325,7 @@ SWIGINTERN PyObject *_wrap_delete_StateVariableList(PyObject *SWIGUNUSEDPARM(sel
   arg1 = reinterpret_cast< cmf::math::StateVariableList * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        delete arg1;
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      delete arg1;
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -17231,11 +16378,7 @@ SWIGINTERN PyObject *_wrap_Integrator_get_dxdt(PyObject *SWIGUNUSEDPARM(self), P
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = ((cmf::math::Integrator const *)arg1)->get_dxdt(arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = ((cmf::math::Integrator const *)arg1)->get_dxdt(arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -17267,11 +16410,7 @@ SWIGINTERN PyObject *_wrap_Integrator_get_states__SWIG_0(PyObject *SWIGUNUSEDPAR
   arg1 = reinterpret_cast< cmf::math::Integrator * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = ((cmf::math::Integrator const *)arg1)->get_states();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = ((cmf::math::Integrator const *)arg1)->get_states();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -17318,11 +16457,7 @@ SWIGINTERN PyObject *_wrap_Integrator_add_states(PyObject *SWIGUNUSEDPARM(self),
   arg2 = reinterpret_cast< cmf::math::StateVariableOwner * >(argp2);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        (arg1)->add_states(*arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      (arg1)->add_states(*arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -17368,11 +16503,7 @@ SWIGINTERN PyObject *_wrap_Integrator_add_single_state(PyObject *SWIGUNUSEDPARM(
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        (arg1)->add_single_state(arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      (arg1)->add_single_state(arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -17408,11 +16539,7 @@ SWIGINTERN PyObject *_wrap_Integrator_integratables_set(PyObject *SWIGUNUSEDPARM
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Integrator_integratables_set" "', argument " "2"" of type '" "cmf::math::integratable_list *""'"); 
   }
   arg2 = reinterpret_cast< cmf::math::integratable_list * >(argp2);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->integratables = *arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->integratables = *arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -17435,11 +16562,7 @@ SWIGINTERN PyObject *_wrap_Integrator_integratables_get(PyObject *SWIGUNUSEDPARM
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Integrator_integratables_get" "', argument " "1"" of type '" "cmf::math::Integrator *""'"); 
   }
   arg1 = reinterpret_cast< cmf::math::Integrator * >(argp1);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (cmf::math::integratable_list *)& ((arg1)->integratables);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (cmf::math::integratable_list *)& ((arg1)->integratables);
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_cmf__math__integratable_list, 0 |  0 );
   return resultobj;
 fail:
@@ -17468,11 +16591,7 @@ SWIGINTERN PyObject *_wrap_Integrator_reset_integratables_set(PyObject *SWIGUNUS
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Integrator_reset_integratables_set" "', argument " "2"" of type '" "bool""'");
   } 
   arg2 = static_cast< bool >(val2);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->reset_integratables = arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->reset_integratables = arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -17495,11 +16614,7 @@ SWIGINTERN PyObject *_wrap_Integrator_reset_integratables_get(PyObject *SWIGUNUS
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Integrator_reset_integratables_get" "', argument " "1"" of type '" "cmf::math::Integrator *""'"); 
   }
   arg1 = reinterpret_cast< cmf::math::Integrator * >(argp1);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (bool) ((arg1)->reset_integratables);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (bool) ((arg1)->reset_integratables);
   resultobj = SWIG_From_bool(static_cast< bool >(result));
   return resultobj;
 fail:
@@ -17528,11 +16643,7 @@ SWIGINTERN PyObject *_wrap_Integrator_use_OpenMP_set(PyObject *SWIGUNUSEDPARM(se
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Integrator_use_OpenMP_set" "', argument " "2"" of type '" "bool""'");
   } 
   arg2 = static_cast< bool >(val2);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->use_OpenMP = arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->use_OpenMP = arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -17555,11 +16666,7 @@ SWIGINTERN PyObject *_wrap_Integrator_use_OpenMP_get(PyObject *SWIGUNUSEDPARM(se
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Integrator_use_OpenMP_get" "', argument " "1"" of type '" "cmf::math::Integrator *""'"); 
   }
   arg1 = reinterpret_cast< cmf::math::Integrator * >(argp1);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (bool) ((arg1)->use_OpenMP);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (bool) ((arg1)->use_OpenMP);
   resultobj = SWIG_From_bool(static_cast< bool >(result));
   return resultobj;
 fail:
@@ -17584,11 +16691,7 @@ SWIGINTERN PyObject *_wrap_Integrator_size(PyObject *SWIGUNUSEDPARM(self), PyObj
   arg1 = reinterpret_cast< cmf::math::Integrator * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (int)((cmf::math::Integrator const *)arg1)->size();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (int)((cmf::math::Integrator const *)arg1)->size();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -17631,11 +16734,7 @@ SWIGINTERN PyObject *_wrap_Integrator_get_state(PyObject *SWIGUNUSEDPARM(self), 
   arg2 = static_cast< int >(val2);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (real)((cmf::math::Integrator const *)arg1)->get_state(arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (real)((cmf::math::Integrator const *)arg1)->get_state(arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -17686,11 +16785,7 @@ SWIGINTERN PyObject *_wrap_Integrator_set_state(PyObject *SWIGUNUSEDPARM(self), 
   arg3 = static_cast< real >(val3);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        (arg1)->set_state(arg2,arg3);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      (arg1)->set_state(arg2,arg3);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -17720,11 +16815,7 @@ SWIGINTERN PyObject *_wrap_Integrator_get_states__SWIG_1(PyObject *SWIGUNUSEDPAR
   arg1 = reinterpret_cast< cmf::math::Integrator * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (arg1)->get_states();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (arg1)->get_states();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -17824,11 +16915,7 @@ SWIGINTERN PyObject *_wrap_Integrator_reset(PyObject *SWIGUNUSEDPARM(self), PyOb
   arg1 = reinterpret_cast< cmf::math::Integrator * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        (arg1)->reset();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      (arg1)->reset();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -17860,11 +16947,7 @@ SWIGINTERN PyObject *_wrap_Integrator_copy(PyObject *SWIGUNUSEDPARM(self), PyObj
   arg1 = reinterpret_cast< cmf::math::Integrator * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::math::Integrator *)((cmf::math::Integrator const *)arg1)->copy();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::math::Integrator *)((cmf::math::Integrator const *)arg1)->copy();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -17914,11 +16997,7 @@ SWIGINTERN PyObject *_wrap_Integrator_integrate(PyObject *SWIGUNUSEDPARM(self), 
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (int)(arg1)->integrate(arg2,arg3);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (int)(arg1)->integrate(arg2,arg3);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -17980,11 +17059,7 @@ SWIGINTERN PyObject *_wrap_Integrator_integrate_until(PyObject *SWIGUNUSEDPARM(s
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        (arg1)->integrate_until(arg2,arg3,arg4);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      (arg1)->integrate_until(arg2,arg3,arg4);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -18025,11 +17100,7 @@ SWIGINTERN PyObject *_wrap_Integrator_t_set(PyObject *SWIGUNUSEDPARM(self), PyOb
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        cmf_math_Integrator_t_set(arg1,arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      cmf_math_Integrator_t_set(arg1,arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -18061,11 +17132,7 @@ SWIGINTERN PyObject *_wrap_Integrator_t_get(PyObject *SWIGUNUSEDPARM(self), PyOb
   arg1 = reinterpret_cast< cmf::math::Integrator * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::math::Time *)cmf_math_Integrator_t_get(arg1);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::math::Time *)cmf_math_Integrator_t_get(arg1);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -18097,11 +17164,7 @@ SWIGINTERN PyObject *_wrap_Integrator_dt_get(PyObject *SWIGUNUSEDPARM(self), PyO
   arg1 = reinterpret_cast< cmf::math::Integrator * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::math::Time *)cmf_math_Integrator_dt_get(arg1);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::math::Time *)cmf_math_Integrator_dt_get(arg1);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -18144,11 +17207,7 @@ SWIGINTERN PyObject *_wrap_Integrator___getitem__(PyObject *SWIGUNUSEDPARM(self)
   arg2 = static_cast< int >(val2);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = cmf_math_Integrator___getitem__(arg1,arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = cmf_math_Integrator___getitem__(arg1,arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -18182,11 +17241,7 @@ SWIGINTERN PyObject *_wrap_delete_Integrator(PyObject *SWIGUNUSEDPARM(self), PyO
   arg1 = reinterpret_cast< cmf::math::Integrator * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        delete arg1;
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      delete arg1;
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -18225,11 +17280,7 @@ SWIGINTERN PyObject *_wrap_BDF2_get_error_position(PyObject *SWIGUNUSEDPARM(self
   arg1 = reinterpret_cast< cmf::math::BDF2 * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (int)((cmf::math::BDF2 const *)arg1)->get_error_position();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (int)((cmf::math::BDF2 const *)arg1)->get_error_position();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -18270,11 +17321,7 @@ SWIGINTERN PyObject *_wrap_new_BDF2__SWIG_0(PyObject *SWIGUNUSEDPARM(self), int 
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::math::BDF2 *)new cmf::math::BDF2(arg1,arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::math::BDF2 *)new cmf::math::BDF2(arg1,arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -18326,11 +17373,7 @@ SWIGINTERN PyObject *_wrap_new_BDF2__SWIG_1(PyObject *SWIGUNUSEDPARM(self), int 
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::math::BDF2 *)new cmf::math::BDF2(*arg1,arg2,arg3);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::math::BDF2 *)new cmf::math::BDF2(*arg1,arg2,arg3);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -18363,11 +17406,7 @@ SWIGINTERN PyObject *_wrap_new_BDF2__SWIG_2(PyObject *SWIGUNUSEDPARM(self), int 
   arg1 = reinterpret_cast< cmf::math::Integrator * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::math::BDF2 *)new cmf::math::BDF2((cmf::math::Integrator const &)*arg1);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::math::BDF2 *)new cmf::math::BDF2((cmf::math::Integrator const &)*arg1);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -18527,11 +17566,7 @@ SWIGINTERN PyObject *_wrap_delete_BDF2(PyObject *SWIGUNUSEDPARM(self), PyObject 
   arg1 = reinterpret_cast< cmf::math::BDF2 * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        delete arg1;
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      delete arg1;
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -18575,11 +17610,7 @@ SWIGINTERN PyObject *_wrap_new_ExplicitEuler_fixed__SWIG_0(PyObject *SWIGUNUSEDP
   arg1 = reinterpret_cast< cmf::math::StateVariableOwner * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::math::ExplicitEuler_fixed *)new cmf::math::ExplicitEuler_fixed(*arg1);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::math::ExplicitEuler_fixed *)new cmf::math::ExplicitEuler_fixed(*arg1);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -18601,11 +17632,7 @@ SWIGINTERN PyObject *_wrap_new_ExplicitEuler_fixed__SWIG_1(PyObject *SWIGUNUSEDP
   if ((nobjs < 0) || (nobjs > 0)) SWIG_fail;
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::math::ExplicitEuler_fixed *)new cmf::math::ExplicitEuler_fixed();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::math::ExplicitEuler_fixed *)new cmf::math::ExplicitEuler_fixed();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -18638,11 +17665,7 @@ SWIGINTERN PyObject *_wrap_new_ExplicitEuler_fixed__SWIG_2(PyObject *SWIGUNUSEDP
   arg1 = reinterpret_cast< cmf::math::Integrator * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::math::ExplicitEuler_fixed *)new cmf::math::ExplicitEuler_fixed((cmf::math::Integrator const &)*arg1);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::math::ExplicitEuler_fixed *)new cmf::math::ExplicitEuler_fixed((cmf::math::Integrator const &)*arg1);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -18752,11 +17775,7 @@ SWIGINTERN PyObject *_wrap_delete_ExplicitEuler_fixed(PyObject *SWIGUNUSEDPARM(s
   arg1 = reinterpret_cast< cmf::math::ExplicitEuler_fixed * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        delete arg1;
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      delete arg1;
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -18803,11 +17822,7 @@ SWIGINTERN PyObject *_wrap_PredictCorrectSimple_alpha_set(PyObject *SWIGUNUSEDPA
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "PredictCorrectSimple_alpha_set" "', argument " "2"" of type '" "real""'");
   } 
   arg2 = static_cast< real >(val2);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->alpha = arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->alpha = arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -18830,11 +17845,7 @@ SWIGINTERN PyObject *_wrap_PredictCorrectSimple_alpha_get(PyObject *SWIGUNUSEDPA
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "PredictCorrectSimple_alpha_get" "', argument " "1"" of type '" "cmf::math::PredictCorrectSimple *""'"); 
   }
   arg1 = reinterpret_cast< cmf::math::PredictCorrectSimple * >(argp1);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (real) ((arg1)->alpha);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (real) ((arg1)->alpha);
   resultobj = SWIG_From_double(static_cast< double >(result));
   return resultobj;
 fail:
@@ -18870,11 +17881,7 @@ SWIGINTERN PyObject *_wrap_new_PredictCorrectSimple__SWIG_0(PyObject *SWIGUNUSED
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::math::PredictCorrectSimple *)new cmf::math::PredictCorrectSimple(*arg1,arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::math::PredictCorrectSimple *)new cmf::math::PredictCorrectSimple(*arg1,arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -18906,11 +17913,7 @@ SWIGINTERN PyObject *_wrap_new_PredictCorrectSimple__SWIG_1(PyObject *SWIGUNUSED
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::math::PredictCorrectSimple *)new cmf::math::PredictCorrectSimple(arg1);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::math::PredictCorrectSimple *)new cmf::math::PredictCorrectSimple(arg1);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -18943,11 +17946,7 @@ SWIGINTERN PyObject *_wrap_new_PredictCorrectSimple__SWIG_2(PyObject *SWIGUNUSED
   arg1 = reinterpret_cast< cmf::math::Integrator * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::math::PredictCorrectSimple *)new cmf::math::PredictCorrectSimple((cmf::math::Integrator const &)*arg1);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::math::PredictCorrectSimple *)new cmf::math::PredictCorrectSimple((cmf::math::Integrator const &)*arg1);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -19085,11 +18084,7 @@ SWIGINTERN PyObject *_wrap_delete_PredictCorrectSimple(PyObject *SWIGUNUSEDPARM(
   arg1 = reinterpret_cast< cmf::math::PredictCorrectSimple * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        delete arg1;
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      delete arg1;
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -19139,11 +18134,7 @@ SWIGINTERN PyObject *_wrap_ImplicitEuler_dt_min_set(PyObject *SWIGUNUSEDPARM(sel
       arg2 = &T2;
     }
   }
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->dt_min = *arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->dt_min = *arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -19166,11 +18157,7 @@ SWIGINTERN PyObject *_wrap_ImplicitEuler_dt_min_get(PyObject *SWIGUNUSEDPARM(sel
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ImplicitEuler_dt_min_get" "', argument " "1"" of type '" "cmf::math::ImplicitEuler *""'"); 
   }
   arg1 = reinterpret_cast< cmf::math::ImplicitEuler * >(argp1);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (cmf::math::Time *)& ((arg1)->dt_min);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (cmf::math::Time *)& ((arg1)->dt_min);
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_cmf__math__Time, 0 |  0 );
   return resultobj;
 fail:
@@ -19215,11 +18202,7 @@ SWIGINTERN PyObject *_wrap_new_ImplicitEuler__SWIG_0(PyObject *SWIGUNUSEDPARM(se
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::math::ImplicitEuler *)new cmf::math::ImplicitEuler(*arg1,arg2,arg3);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::math::ImplicitEuler *)new cmf::math::ImplicitEuler(*arg1,arg2,arg3);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -19260,11 +18243,7 @@ SWIGINTERN PyObject *_wrap_new_ImplicitEuler__SWIG_1(PyObject *SWIGUNUSEDPARM(se
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::math::ImplicitEuler *)new cmf::math::ImplicitEuler(arg1,arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::math::ImplicitEuler *)new cmf::math::ImplicitEuler(arg1,arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -19297,11 +18276,7 @@ SWIGINTERN PyObject *_wrap_new_ImplicitEuler__SWIG_2(PyObject *SWIGUNUSEDPARM(se
   arg1 = reinterpret_cast< cmf::math::Integrator * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::math::ImplicitEuler *)new cmf::math::ImplicitEuler((cmf::math::Integrator const &)*arg1);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::math::ImplicitEuler *)new cmf::math::ImplicitEuler((cmf::math::Integrator const &)*arg1);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -19461,11 +18436,7 @@ SWIGINTERN PyObject *_wrap_delete_ImplicitEuler(PyObject *SWIGUNUSEDPARM(self), 
   arg1 = reinterpret_cast< cmf::math::ImplicitEuler * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        delete arg1;
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      delete arg1;
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -19528,11 +18499,7 @@ SWIGINTERN PyObject *_wrap_new_RKFIntegrator__SWIG_0(PyObject *SWIGUNUSEDPARM(se
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::math::RKFIntegrator *)new cmf::math::RKFIntegrator(*arg1,arg2,arg3);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::math::RKFIntegrator *)new cmf::math::RKFIntegrator(*arg1,arg2,arg3);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -19573,11 +18540,7 @@ SWIGINTERN PyObject *_wrap_new_RKFIntegrator__SWIG_1(PyObject *SWIGUNUSEDPARM(se
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::math::RKFIntegrator *)new cmf::math::RKFIntegrator(arg1,arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::math::RKFIntegrator *)new cmf::math::RKFIntegrator(arg1,arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -19714,11 +18677,7 @@ SWIGINTERN PyObject *_wrap_delete_RKFIntegrator(PyObject *SWIGUNUSEDPARM(self), 
   arg1 = reinterpret_cast< cmf::math::RKFIntegrator * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        delete arg1;
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      delete arg1;
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -19765,11 +18724,7 @@ SWIGINTERN PyObject *_wrap_CVodeIntegrator_preconditioner_set(PyObject *SWIGUNUS
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "CVodeIntegrator_preconditioner_set" "', argument " "2"" of type '" "char""'");
   } 
   arg2 = static_cast< char >(val2);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->preconditioner = arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->preconditioner = arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -19792,11 +18747,7 @@ SWIGINTERN PyObject *_wrap_CVodeIntegrator_preconditioner_get(PyObject *SWIGUNUS
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CVodeIntegrator_preconditioner_get" "', argument " "1"" of type '" "cmf::math::CVodeIntegrator *""'"); 
   }
   arg1 = reinterpret_cast< cmf::math::CVodeIntegrator * >(argp1);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (char) ((arg1)->preconditioner);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (char) ((arg1)->preconditioner);
   resultobj = SWIG_From_char(static_cast< char >(result));
   return resultobj;
 fail:
@@ -19825,11 +18776,7 @@ SWIGINTERN PyObject *_wrap_CVodeIntegrator_MaxNonLinearIterations_set(PyObject *
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "CVodeIntegrator_MaxNonLinearIterations_set" "', argument " "2"" of type '" "int""'");
   } 
   arg2 = static_cast< int >(val2);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->MaxNonLinearIterations = arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->MaxNonLinearIterations = arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -19852,11 +18799,7 @@ SWIGINTERN PyObject *_wrap_CVodeIntegrator_MaxNonLinearIterations_get(PyObject *
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CVodeIntegrator_MaxNonLinearIterations_get" "', argument " "1"" of type '" "cmf::math::CVodeIntegrator *""'"); 
   }
   arg1 = reinterpret_cast< cmf::math::CVodeIntegrator * >(argp1);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (int) ((arg1)->MaxNonLinearIterations);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (int) ((arg1)->MaxNonLinearIterations);
   resultobj = SWIG_From_int(static_cast< int >(result));
   return resultobj;
 fail:
@@ -19885,11 +18828,7 @@ SWIGINTERN PyObject *_wrap_CVodeIntegrator_MaxConvergenceFailures_set(PyObject *
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "CVodeIntegrator_MaxConvergenceFailures_set" "', argument " "2"" of type '" "int""'");
   } 
   arg2 = static_cast< int >(val2);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->MaxConvergenceFailures = arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->MaxConvergenceFailures = arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -19912,11 +18851,7 @@ SWIGINTERN PyObject *_wrap_CVodeIntegrator_MaxConvergenceFailures_get(PyObject *
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CVodeIntegrator_MaxConvergenceFailures_get" "', argument " "1"" of type '" "cmf::math::CVodeIntegrator *""'"); 
   }
   arg1 = reinterpret_cast< cmf::math::CVodeIntegrator * >(argp1);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (int) ((arg1)->MaxConvergenceFailures);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (int) ((arg1)->MaxConvergenceFailures);
   resultobj = SWIG_From_int(static_cast< int >(result));
   return resultobj;
 fail:
@@ -19945,11 +18880,7 @@ SWIGINTERN PyObject *_wrap_CVodeIntegrator_MaxErrorTestFailures_set(PyObject *SW
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "CVodeIntegrator_MaxErrorTestFailures_set" "', argument " "2"" of type '" "int""'");
   } 
   arg2 = static_cast< int >(val2);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->MaxErrorTestFailures = arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->MaxErrorTestFailures = arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -19972,11 +18903,7 @@ SWIGINTERN PyObject *_wrap_CVodeIntegrator_MaxErrorTestFailures_get(PyObject *SW
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CVodeIntegrator_MaxErrorTestFailures_get" "', argument " "1"" of type '" "cmf::math::CVodeIntegrator *""'"); 
   }
   arg1 = reinterpret_cast< cmf::math::CVodeIntegrator * >(argp1);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (int) ((arg1)->MaxErrorTestFailures);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (int) ((arg1)->MaxErrorTestFailures);
   resultobj = SWIG_From_int(static_cast< int >(result));
   return resultobj;
 fail:
@@ -20005,11 +18932,7 @@ SWIGINTERN PyObject *_wrap_CVodeIntegrator_maxl_set(PyObject *SWIGUNUSEDPARM(sel
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "CVodeIntegrator_maxl_set" "', argument " "2"" of type '" "int""'");
   } 
   arg2 = static_cast< int >(val2);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->maxl = arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->maxl = arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -20032,11 +18955,7 @@ SWIGINTERN PyObject *_wrap_CVodeIntegrator_maxl_get(PyObject *SWIGUNUSEDPARM(sel
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CVodeIntegrator_maxl_get" "', argument " "1"" of type '" "cmf::math::CVodeIntegrator *""'"); 
   }
   arg1 = reinterpret_cast< cmf::math::CVodeIntegrator * >(argp1);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (int) ((arg1)->maxl);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (int) ((arg1)->maxl);
   resultobj = SWIG_From_int(static_cast< int >(result));
   return resultobj;
 fail:
@@ -20065,11 +18984,7 @@ SWIGINTERN PyObject *_wrap_CVodeIntegrator_LinearSolver_set(PyObject *SWIGUNUSED
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "CVodeIntegrator_LinearSolver_set" "', argument " "2"" of type '" "int""'");
   } 
   arg2 = static_cast< int >(val2);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->LinearSolver = arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->LinearSolver = arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -20092,11 +19007,7 @@ SWIGINTERN PyObject *_wrap_CVodeIntegrator_LinearSolver_get(PyObject *SWIGUNUSED
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CVodeIntegrator_LinearSolver_get" "', argument " "1"" of type '" "cmf::math::CVodeIntegrator *""'"); 
   }
   arg1 = reinterpret_cast< cmf::math::CVodeIntegrator * >(argp1);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (int) ((arg1)->LinearSolver);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (int) ((arg1)->LinearSolver);
   resultobj = SWIG_From_int(static_cast< int >(result));
   return resultobj;
 fail:
@@ -20125,11 +19036,7 @@ SWIGINTERN PyObject *_wrap_CVodeIntegrator_MaxOrder_set(PyObject *SWIGUNUSEDPARM
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "CVodeIntegrator_MaxOrder_set" "', argument " "2"" of type '" "int""'");
   } 
   arg2 = static_cast< int >(val2);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->MaxOrder = arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->MaxOrder = arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -20152,11 +19059,7 @@ SWIGINTERN PyObject *_wrap_CVodeIntegrator_MaxOrder_get(PyObject *SWIGUNUSEDPARM
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CVodeIntegrator_MaxOrder_get" "', argument " "1"" of type '" "cmf::math::CVodeIntegrator *""'"); 
   }
   arg1 = reinterpret_cast< cmf::math::CVodeIntegrator * >(argp1);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (int) ((arg1)->MaxOrder);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (int) ((arg1)->MaxOrder);
   resultobj = SWIG_From_int(static_cast< int >(result));
   return resultobj;
 fail:
@@ -20188,11 +19091,7 @@ SWIGINTERN PyObject *_wrap_CVodeIntegrator_max_step_set(PyObject *SWIGUNUSEDPARM
       arg2 = &T2;
     }
   }
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->max_step = *arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->max_step = *arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -20215,11 +19114,7 @@ SWIGINTERN PyObject *_wrap_CVodeIntegrator_max_step_get(PyObject *SWIGUNUSEDPARM
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CVodeIntegrator_max_step_get" "', argument " "1"" of type '" "cmf::math::CVodeIntegrator *""'"); 
   }
   arg1 = reinterpret_cast< cmf::math::CVodeIntegrator * >(argp1);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (cmf::math::Time *)& ((arg1)->max_step);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (cmf::math::Time *)& ((arg1)->max_step);
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_cmf__math__Time, 0 |  0 );
   return resultobj;
 fail:
@@ -20243,11 +19138,7 @@ SWIGINTERN PyObject *_wrap_CVodeIntegrator_initialize(PyObject *SWIGUNUSEDPARM(s
   arg1 = reinterpret_cast< cmf::math::CVodeIntegrator * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        (arg1)->initialize();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      (arg1)->initialize();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -20278,11 +19169,7 @@ SWIGINTERN PyObject *_wrap_CVodeIntegrator_release(PyObject *SWIGUNUSEDPARM(self
   arg1 = reinterpret_cast< cmf::math::CVodeIntegrator * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        (arg1)->release();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      (arg1)->release();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -20324,11 +19211,7 @@ SWIGINTERN PyObject *_wrap_new_CVodeIntegrator__SWIG_0(PyObject *SWIGUNUSEDPARM(
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::math::CVodeIntegrator *)new cmf::math::CVodeIntegrator(arg1,arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::math::CVodeIntegrator *)new cmf::math::CVodeIntegrator(arg1,arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -20381,11 +19264,7 @@ SWIGINTERN PyObject *_wrap_new_CVodeIntegrator__SWIG_1(PyObject *SWIGUNUSEDPARM(
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::math::CVodeIntegrator *)new cmf::math::CVodeIntegrator(*arg1,arg2,arg3);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::math::CVodeIntegrator *)new cmf::math::CVodeIntegrator(*arg1,arg2,arg3);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -20418,11 +19297,7 @@ SWIGINTERN PyObject *_wrap_new_CVodeIntegrator__SWIG_2(PyObject *SWIGUNUSEDPARM(
   arg1 = reinterpret_cast< cmf::math::CVodeIntegrator * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::math::CVodeIntegrator *)new cmf::math::CVodeIntegrator((cmf::math::CVodeIntegrator const &)*arg1);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::math::CVodeIntegrator *)new cmf::math::CVodeIntegrator((cmf::math::CVodeIntegrator const &)*arg1);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -20585,11 +19460,7 @@ SWIGINTERN PyObject *_wrap_CVodeIntegrator_get_error(PyObject *SWIGUNUSEDPARM(se
   arg1 = reinterpret_cast< cmf::math::CVodeIntegrator * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = ((cmf::math::CVodeIntegrator const *)arg1)->get_error();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = ((cmf::math::CVodeIntegrator const *)arg1)->get_error();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -20623,11 +19494,7 @@ SWIGINTERN PyObject *_wrap_CVodeIntegrator_get_nonlinear_iterations(PyObject *SW
   arg1 = reinterpret_cast< cmf::math::CVodeIntegrator * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (int)((cmf::math::CVodeIntegrator const *)arg1)->get_nonlinear_iterations();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (int)((cmf::math::CVodeIntegrator const *)arg1)->get_nonlinear_iterations();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -20659,11 +19526,7 @@ SWIGINTERN PyObject *_wrap_CVodeIntegrator_copy(PyObject *SWIGUNUSEDPARM(self), 
   arg1 = reinterpret_cast< cmf::math::CVodeIntegrator * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::math::CVodeIntegrator *)((cmf::math::CVodeIntegrator const *)arg1)->copy();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::math::CVodeIntegrator *)((cmf::math::CVodeIntegrator const *)arg1)->copy();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -20694,11 +19557,7 @@ SWIGINTERN PyObject *_wrap_delete_CVodeIntegrator(PyObject *SWIGUNUSEDPARM(self)
   arg1 = reinterpret_cast< cmf::math::CVodeIntegrator * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        delete arg1;
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      delete arg1;
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -20730,11 +19589,7 @@ SWIGINTERN PyObject *_wrap_CVodeIntegrator_order_get(PyObject *SWIGUNUSEDPARM(se
   arg1 = reinterpret_cast< cmf::math::CVodeIntegrator * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (int)cmf_math_CVodeIntegrator_order_get(arg1);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (int)cmf_math_CVodeIntegrator_order_get(arg1);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -20777,11 +19632,7 @@ SWIGINTERN PyObject *_wrap_MultiIntegrator_copy(PyObject *SWIGUNUSEDPARM(self), 
   arg1 = reinterpret_cast< cmf::math::MultiIntegrator * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::math::MultiIntegrator *)((cmf::math::MultiIntegrator const *)arg1)->copy();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::math::MultiIntegrator *)((cmf::math::MultiIntegrator const *)arg1)->copy();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -20835,11 +19686,7 @@ SWIGINTERN PyObject *_wrap_MultiIntegrator_add_states_to_integrator(PyObject *SW
   arg3 = static_cast< int >(val3);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        (arg1)->add_states_to_integrator(*arg2,arg3);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      (arg1)->add_states_to_integrator(*arg2,arg3);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -20885,11 +19732,7 @@ SWIGINTERN PyObject *_wrap_new_MultiIntegrator(PyObject *SWIGUNUSEDPARM(self), P
   arg2 = static_cast< int >(val2);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::math::MultiIntegrator *)new cmf::math::MultiIntegrator((cmf::math::Integrator const &)*arg1,arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::math::MultiIntegrator *)new cmf::math::MultiIntegrator((cmf::math::Integrator const &)*arg1,arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -20920,11 +19763,7 @@ SWIGINTERN PyObject *_wrap_delete_MultiIntegrator(PyObject *SWIGUNUSEDPARM(self)
   arg1 = reinterpret_cast< cmf::math::MultiIntegrator * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        delete arg1;
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      delete arg1;
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -20972,11 +19811,7 @@ SWIGINTERN PyObject *_wrap_new_solute(PyObject *SWIGUNUSEDPARM(self), PyObject *
   arg1 = reinterpret_cast< cmf::water::solute * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::water::solute *)new cmf::water::solute((cmf::water::solute const &)*arg1);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::water::solute *)new cmf::water::solute((cmf::water::solute const &)*arg1);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -21022,11 +19857,7 @@ SWIGINTERN PyObject *_wrap_solute___eq__(PyObject *SWIGUNUSEDPARM(self), PyObjec
   arg2 = reinterpret_cast< cmf::water::solute * >(argp2);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (bool)((cmf::water::solute const *)arg1)->operator ==((cmf::water::solute const &)*arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (bool)((cmf::water::solute const *)arg1)->operator ==((cmf::water::solute const &)*arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -21072,11 +19903,7 @@ SWIGINTERN PyObject *_wrap_solute___lt__(PyObject *SWIGUNUSEDPARM(self), PyObjec
   arg2 = reinterpret_cast< cmf::water::solute * >(argp2);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (bool)((cmf::water::solute const *)arg1)->operator <((cmf::water::solute const &)*arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (bool)((cmf::water::solute const *)arg1)->operator <((cmf::water::solute const &)*arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -21122,11 +19949,7 @@ SWIGINTERN PyObject *_wrap_solute___gt__(PyObject *SWIGUNUSEDPARM(self), PyObjec
   arg2 = reinterpret_cast< cmf::water::solute * >(argp2);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (bool)((cmf::water::solute const *)arg1)->operator >((cmf::water::solute const &)*arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (bool)((cmf::water::solute const *)arg1)->operator >((cmf::water::solute const &)*arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -21172,11 +19995,7 @@ SWIGINTERN PyObject *_wrap_solute___le__(PyObject *SWIGUNUSEDPARM(self), PyObjec
   arg2 = reinterpret_cast< cmf::water::solute * >(argp2);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (bool)((cmf::water::solute const *)arg1)->operator <=((cmf::water::solute const &)*arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (bool)((cmf::water::solute const *)arg1)->operator <=((cmf::water::solute const &)*arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -21222,11 +20041,7 @@ SWIGINTERN PyObject *_wrap_solute___ge__(PyObject *SWIGUNUSEDPARM(self), PyObjec
   arg2 = reinterpret_cast< cmf::water::solute * >(argp2);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (bool)((cmf::water::solute const *)arg1)->operator >=((cmf::water::solute const &)*arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (bool)((cmf::water::solute const *)arg1)->operator >=((cmf::water::solute const &)*arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -21272,11 +20087,7 @@ SWIGINTERN PyObject *_wrap_solute___ne__(PyObject *SWIGUNUSEDPARM(self), PyObjec
   arg2 = reinterpret_cast< cmf::water::solute * >(argp2);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (bool)((cmf::water::solute const *)arg1)->operator !=((cmf::water::solute const &)*arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (bool)((cmf::water::solute const *)arg1)->operator !=((cmf::water::solute const &)*arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -21317,11 +20128,7 @@ SWIGINTERN PyObject *_wrap_solute_Name_set(PyObject *SWIGUNUSEDPARM(self), PyObj
     }
     arg2 = ptr;
   }
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->Name = *arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->Name = *arg2;
   resultobj = SWIG_Py_Void();
   if (SWIG_IsNewObj(res2)) delete arg2;
   return resultobj;
@@ -21346,11 +20153,7 @@ SWIGINTERN PyObject *_wrap_solute_Name_get(PyObject *SWIGUNUSEDPARM(self), PyObj
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "solute_Name_get" "', argument " "1"" of type '" "cmf::water::solute *""'"); 
   }
   arg1 = reinterpret_cast< cmf::water::solute * >(argp1);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (std::string *) & ((arg1)->Name);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (std::string *) & ((arg1)->Name);
   resultobj = SWIG_From_std_string(static_cast< std::string >(*result));
   return resultobj;
 fail:
@@ -21384,11 +20187,7 @@ SWIGINTERN PyObject *_wrap_solute_Unit_set(PyObject *SWIGUNUSEDPARM(self), PyObj
     }
     arg2 = ptr;
   }
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->Unit = *arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->Unit = *arg2;
   resultobj = SWIG_Py_Void();
   if (SWIG_IsNewObj(res2)) delete arg2;
   return resultobj;
@@ -21413,11 +20212,7 @@ SWIGINTERN PyObject *_wrap_solute_Unit_get(PyObject *SWIGUNUSEDPARM(self), PyObj
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "solute_Unit_get" "', argument " "1"" of type '" "cmf::water::solute *""'"); 
   }
   arg1 = reinterpret_cast< cmf::water::solute * >(argp1);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (std::string *) & ((arg1)->Unit);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (std::string *) & ((arg1)->Unit);
   resultobj = SWIG_From_std_string(static_cast< std::string >(*result));
   return resultobj;
 fail:
@@ -21446,11 +20241,7 @@ SWIGINTERN PyObject *_wrap_solute_Uptake_set(PyObject *SWIGUNUSEDPARM(self), PyO
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "solute_Uptake_set" "', argument " "2"" of type '" "double""'");
   } 
   arg2 = static_cast< double >(val2);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->Uptake = arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->Uptake = arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -21473,11 +20264,7 @@ SWIGINTERN PyObject *_wrap_solute_Uptake_get(PyObject *SWIGUNUSEDPARM(self), PyO
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "solute_Uptake_get" "', argument " "1"" of type '" "cmf::water::solute *""'"); 
   }
   arg1 = reinterpret_cast< cmf::water::solute * >(argp1);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (double) ((arg1)->Uptake);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (double) ((arg1)->Uptake);
   resultobj = SWIG_From_double(static_cast< double >(result));
   return resultobj;
 fail:
@@ -21500,11 +20287,7 @@ SWIGINTERN PyObject *_wrap_solute_Id_get(PyObject *SWIGUNUSEDPARM(self), PyObjec
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "solute_Id_get" "', argument " "1"" of type '" "cmf::water::solute *""'"); 
   }
   arg1 = reinterpret_cast< cmf::water::solute * >(argp1);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (size_t) ((arg1)->Id);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (size_t) ((arg1)->Id);
   resultobj = SWIG_From_size_t(static_cast< size_t >(result));
   return resultobj;
 fail:
@@ -21529,11 +20312,7 @@ SWIGINTERN PyObject *_wrap_solute___repr__(PyObject *SWIGUNUSEDPARM(self), PyObj
   arg1 = reinterpret_cast< cmf::water::solute * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = cmf_water_solute___repr__(arg1);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = cmf_water_solute___repr__(arg1);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -21564,11 +20343,7 @@ SWIGINTERN PyObject *_wrap_delete_solute(PyObject *SWIGUNUSEDPARM(self), PyObjec
   arg1 = reinterpret_cast< cmf::water::solute * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        delete arg1;
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      delete arg1;
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -21611,11 +20386,7 @@ SWIGINTERN PyObject *_wrap_solute_vector_size(PyObject *SWIGUNUSEDPARM(self), Py
   arg1 = reinterpret_cast< cmf::water::solute_vector * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = ((cmf::water::solute_vector const *)arg1)->size();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = ((cmf::water::solute_vector const *)arg1)->size();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -21651,11 +20422,7 @@ SWIGINTERN PyObject *_wrap_new_solute_vector(PyObject *SWIGUNUSEDPARM(self), PyO
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::water::solute_vector *)new cmf::water::solute_vector(arg1);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::water::solute_vector *)new cmf::water::solute_vector(arg1);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -21698,11 +20465,7 @@ SWIGINTERN PyObject *_wrap_solute_vector_get_solute(PyObject *SWIGUNUSEDPARM(sel
   arg2 = static_cast< int >(val2);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::water::solute *)(arg1)->get_solute(arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::water::solute *)(arg1)->get_solute(arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -21745,11 +20508,7 @@ SWIGINTERN PyObject *_wrap_solute_vector___getitem__(PyObject *SWIGUNUSEDPARM(se
   arg2 = static_cast< int >(val2);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::water::solute *)cmf_water_solute_vector___getitem__(arg1,arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::water::solute *)cmf_water_solute_vector___getitem__(arg1,arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -21781,11 +20540,7 @@ SWIGINTERN PyObject *_wrap_solute_vector___len__(PyObject *SWIGUNUSEDPARM(self),
   arg1 = reinterpret_cast< cmf::water::solute_vector * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = cmf_water_solute_vector___len__(arg1);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = cmf_water_solute_vector___len__(arg1);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -21816,11 +20571,7 @@ SWIGINTERN PyObject *_wrap_delete_solute_vector(PyObject *SWIGUNUSEDPARM(self), 
   arg1 = reinterpret_cast< cmf::water::solute_vector * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        delete arg1;
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      delete arg1;
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -21885,11 +20636,7 @@ SWIGINTERN PyObject *_wrap_SoluteTimeseries_conc(PyObject *SWIGUNUSEDPARM(self),
   arg3 = reinterpret_cast< cmf::water::solute * >(argp3);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (real)((cmf::water::SoluteTimeseries const *)arg1)->conc(arg2,(cmf::water::solute const &)*arg3);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (real)((cmf::water::SoluteTimeseries const *)arg1)->conc(arg2,(cmf::water::solute const &)*arg3);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -21921,11 +20668,7 @@ SWIGINTERN PyObject *_wrap_SoluteTimeseries_size(PyObject *SWIGUNUSEDPARM(self),
   arg1 = reinterpret_cast< cmf::water::SoluteTimeseries * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = ((cmf::water::SoluteTimeseries const *)arg1)->size();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = ((cmf::water::SoluteTimeseries const *)arg1)->size();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -21947,11 +20690,7 @@ SWIGINTERN PyObject *_wrap_new_SoluteTimeseries__SWIG_0(PyObject *SWIGUNUSEDPARM
   if ((nobjs < 0) || (nobjs > 0)) SWIG_fail;
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::water::SoluteTimeseries *)new cmf::water::SoluteTimeseries();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::water::SoluteTimeseries *)new cmf::water::SoluteTimeseries();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -21998,11 +20737,7 @@ SWIGINTERN PyObject *_wrap_new_SoluteTimeseries__SWIG_1(PyObject *SWIGUNUSEDPARM
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::water::SoluteTimeseries *)new cmf::water::SoluteTimeseries((cmf::water::solute_vector const &)*arg1,arg2,arg3);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::water::SoluteTimeseries *)new cmf::water::SoluteTimeseries((cmf::water::solute_vector const &)*arg1,arg2,arg3);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -22035,11 +20770,7 @@ SWIGINTERN PyObject *_wrap_new_SoluteTimeseries__SWIG_2(PyObject *SWIGUNUSEDPARM
   arg1 = reinterpret_cast< cmf::water::SoluteTimeseries * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::water::SoluteTimeseries *)new cmf::water::SoluteTimeseries((cmf::water::SoluteTimeseries const &)*arg1);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::water::SoluteTimeseries *)new cmf::water::SoluteTimeseries((cmf::water::SoluteTimeseries const &)*arg1);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -22181,11 +20912,7 @@ SWIGINTERN PyObject *_wrap_SoluteTimeseries___getitem__(PyObject *SWIGUNUSEDPARM
   arg2 = reinterpret_cast< cmf::water::solute * >(argp2);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::math::timeseries *) &cmf_water_SoluteTimeseries___getitem__(arg1,(cmf::water::solute const &)*arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::math::timeseries *) &cmf_water_SoluteTimeseries___getitem__(arg1,(cmf::water::solute const &)*arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -22246,11 +20973,7 @@ SWIGINTERN PyObject *_wrap_SoluteTimeseries___setitem__(PyObject *SWIGUNUSEDPARM
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        cmf_water_SoluteTimeseries___setitem__(arg1,(cmf::water::solute const &)*arg2,arg3);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      cmf_water_SoluteTimeseries___setitem__(arg1,(cmf::water::solute const &)*arg2,arg3);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -22282,11 +21005,7 @@ SWIGINTERN PyObject *_wrap_SoluteTimeseries___len__(PyObject *SWIGUNUSEDPARM(sel
   arg1 = reinterpret_cast< cmf::water::SoluteTimeseries * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = cmf_water_SoluteTimeseries___len__((cmf::water::SoluteTimeseries const *)arg1);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = cmf_water_SoluteTimeseries___len__((cmf::water::SoluteTimeseries const *)arg1);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -22317,11 +21036,7 @@ SWIGINTERN PyObject *_wrap_delete_SoluteTimeseries(PyObject *SWIGUNUSEDPARM(self
   arg1 = reinterpret_cast< cmf::water::SoluteTimeseries * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        delete arg1;
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      delete arg1;
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -22380,11 +21095,7 @@ SWIGINTERN PyObject *_wrap_SoluteStorage_decay_set(PyObject *SWIGUNUSEDPARM(self
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "SoluteStorage_decay_set" "', argument " "2"" of type '" "real""'");
   } 
   arg2 = static_cast< real >(val2);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->decay = arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->decay = arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -22419,11 +21130,7 @@ SWIGINTERN PyObject *_wrap_SoluteStorage_decay_get(PyObject *SWIGUNUSEDPARM(self
       arg1 = const_cast< cmf::water::SoluteStorage * >((smartarg1 ? smartarg1->get() : 0));
     }
   }
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (real) ((arg1)->decay);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (real) ((arg1)->decay);
   resultobj = SWIG_From_double(static_cast< double >(result));
   return resultobj;
 fail:
@@ -22464,11 +21171,7 @@ SWIGINTERN PyObject *_wrap_SoluteStorage_source_set(PyObject *SWIGUNUSEDPARM(sel
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "SoluteStorage_source_set" "', argument " "2"" of type '" "real""'");
   } 
   arg2 = static_cast< real >(val2);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->source = arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->source = arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -22503,11 +21206,7 @@ SWIGINTERN PyObject *_wrap_SoluteStorage_source_get(PyObject *SWIGUNUSEDPARM(sel
       arg1 = const_cast< cmf::water::SoluteStorage * >((smartarg1 ? smartarg1->get() : 0));
     }
   }
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (real) ((arg1)->source);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (real) ((arg1)->source);
   resultobj = SWIG_From_double(static_cast< double >(result));
   return resultobj;
 fail:
@@ -22542,11 +21241,7 @@ SWIGINTERN PyObject *_wrap_SoluteStorage_Solute_get(PyObject *SWIGUNUSEDPARM(sel
       arg1 = const_cast< cmf::water::SoluteStorage * >((smartarg1 ? smartarg1->get() : 0));
     }
   }
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (cmf::water::solute *) &(cmf::water::solute const &) ((arg1)->Solute);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (cmf::water::solute *) &(cmf::water::solute const &) ((arg1)->Solute);
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_cmf__water__solute, 0 |  0 );
   return resultobj;
 fail:
@@ -22583,11 +21278,7 @@ SWIGINTERN PyObject *_wrap_SoluteStorage_conc(PyObject *SWIGUNUSEDPARM(self), Py
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (real)((cmf::water::SoluteStorage const *)arg1)->conc();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (real)((cmf::water::SoluteStorage const *)arg1)->conc();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -22630,11 +21321,7 @@ SWIGINTERN PyObject *_wrap_delete_SoluteStorage(PyObject *SWIGUNUSEDPARM(self), 
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        (void)arg1; delete smartarg1;
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      (void)arg1; delete smartarg1;
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -22683,11 +21370,7 @@ SWIGINTERN PyObject *_wrap_flux_node_node_id_get(PyObject *SWIGUNUSEDPARM(self),
       arg1 = const_cast< cmf::water::flux_node * >((smartarg1 ? smartarg1->get() : 0));
     }
   }
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (int)(int) ((arg1)->node_id);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (int)(int) ((arg1)->node_id);
   resultobj = SWIG_From_int(static_cast< int >(result));
   return resultobj;
 fail:
@@ -22724,11 +21407,7 @@ SWIGINTERN PyObject *_wrap_flux_node_is_storage(PyObject *SWIGUNUSEDPARM(self), 
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (bool)((cmf::water::flux_node const *)arg1)->is_storage();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (bool)((cmf::water::flux_node const *)arg1)->is_storage();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -22781,11 +21460,7 @@ SWIGINTERN PyObject *_wrap_flux_node_Name_set(PyObject *SWIGUNUSEDPARM(self), Py
     }
     arg2 = ptr;
   }
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->Name = *arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->Name = *arg2;
   resultobj = SWIG_Py_Void();
   if (SWIG_IsNewObj(res2)) delete arg2;
   return resultobj;
@@ -22822,11 +21497,7 @@ SWIGINTERN PyObject *_wrap_flux_node_Name_get(PyObject *SWIGUNUSEDPARM(self), Py
       arg1 = const_cast< cmf::water::flux_node * >((smartarg1 ? smartarg1->get() : 0));
     }
   }
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (std::string *) & ((arg1)->Name);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (std::string *) & ((arg1)->Name);
   resultobj = SWIG_From_std_string(static_cast< std::string >(*result));
   return resultobj;
 fail:
@@ -22863,11 +21534,7 @@ SWIGINTERN PyObject *_wrap_flux_node_to_string(PyObject *SWIGUNUSEDPARM(self), P
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = ((cmf::water::flux_node const *)arg1)->to_string();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = ((cmf::water::flux_node const *)arg1)->to_string();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -22910,11 +21577,7 @@ SWIGINTERN PyObject *_wrap_delete_flux_node(PyObject *SWIGUNUSEDPARM(self), PyOb
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        (void)arg1; delete smartarg1;
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      (void)arg1; delete smartarg1;
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -22982,11 +21645,7 @@ SWIGINTERN PyObject *_wrap_flux_node___eq__(PyObject *SWIGUNUSEDPARM(self), PyOb
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (bool)((cmf::water::flux_node const *)arg1)->operator ==((cmf::water::flux_node const &)*arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (bool)((cmf::water::flux_node const *)arg1)->operator ==((cmf::water::flux_node const &)*arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -23040,11 +21699,7 @@ SWIGINTERN PyObject *_wrap_flux_node_RecalcFluxes(PyObject *SWIGUNUSEDPARM(self)
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (bool)(arg1)->RecalcFluxes(arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (bool)(arg1)->RecalcFluxes(arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -23112,11 +21767,7 @@ SWIGINTERN PyObject *_wrap_flux_node_connection_to(PyObject *SWIGUNUSEDPARM(self
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::water::flux_connection *)(arg1)->connection_to((cmf::water::flux_node const &)*arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::water::flux_connection *)(arg1)->connection_to((cmf::water::flux_node const &)*arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -23175,11 +21826,7 @@ SWIGINTERN PyObject *_wrap_flux_node_remove_connection(PyObject *SWIGUNUSEDPARM(
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (bool)(arg1)->remove_connection(arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (bool)(arg1)->remove_connection(arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -23255,11 +21902,7 @@ SWIGINTERN PyObject *_wrap_flux_node_flux_to(PyObject *SWIGUNUSEDPARM(self), PyO
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (real)(arg1)->flux_to((cmf::water::flux_node const &)*arg2,arg3);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (real)(arg1)->flux_to((cmf::water::flux_node const &)*arg2,arg3);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -23335,11 +21978,7 @@ SWIGINTERN PyObject *_wrap_flux_node_flux3d_to(PyObject *SWIGUNUSEDPARM(self), P
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (arg1)->flux3d_to((cmf::water::flux_node const &)*arg2,arg3);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (arg1)->flux3d_to((cmf::water::flux_node const &)*arg2,arg3);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -23393,11 +22032,7 @@ SWIGINTERN PyObject *_wrap_flux_node_get_3d_flux(PyObject *SWIGUNUSEDPARM(self),
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (arg1)->get_3d_flux(arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (arg1)->get_3d_flux(arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -23462,11 +22097,7 @@ SWIGINTERN PyObject *_wrap_flux_node_waterbalance(PyObject *SWIGUNUSEDPARM(self)
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (real)((cmf::water::flux_node const *)arg1)->waterbalance(arg2,(cmf::water::flux_connection const *)arg3);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (real)((cmf::water::flux_node const *)arg1)->waterbalance(arg2,(cmf::water::flux_connection const *)arg3);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -23520,11 +22151,7 @@ SWIGINTERN PyObject *_wrap_flux_node___call__(PyObject *SWIGUNUSEDPARM(self), Py
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (real)((cmf::water::flux_node const *)arg1)->operator ()(arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (real)((cmf::water::flux_node const *)arg1)->operator ()(arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -23590,11 +22217,7 @@ SWIGINTERN PyObject *_wrap_flux_node_conc(PyObject *SWIGUNUSEDPARM(self), PyObje
   arg3 = reinterpret_cast< cmf::water::solute * >(argp3);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (real)((cmf::water::flux_node const *)arg1)->conc(arg2,(cmf::water::solute const &)*arg3);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (real)((cmf::water::flux_node const *)arg1)->conc(arg2,(cmf::water::solute const &)*arg3);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -23659,11 +22282,7 @@ SWIGINTERN PyObject *_wrap_flux_node_position_set(PyObject *SWIGUNUSEDPARM(self)
       arg2 = &p2;
     }
   }
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->position = *arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->position = *arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -23698,11 +22317,7 @@ SWIGINTERN PyObject *_wrap_flux_node_position_get(PyObject *SWIGUNUSEDPARM(self)
       arg1 = const_cast< cmf::water::flux_node * >((smartarg1 ? smartarg1->get() : 0));
     }
   }
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (cmf::geometry::point *)& ((arg1)->position);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (cmf::geometry::point *)& ((arg1)->position);
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_cmf__geometry__point, 0 |  0 );
   return resultobj;
 fail:
@@ -23739,11 +22354,7 @@ SWIGINTERN PyObject *_wrap_flux_node_is_empty(PyObject *SWIGUNUSEDPARM(self), Py
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (double)((cmf::water::flux_node const *)arg1)->is_empty();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (double)((cmf::water::flux_node const *)arg1)->is_empty();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -23804,11 +22415,7 @@ SWIGINTERN PyObject *_wrap_new_flux_node(PyObject *SWIGUNUSEDPARM(self), PyObjec
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::water::flux_node *)new cmf::water::flux_node(*arg1,arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::water::flux_node *)new cmf::water::flux_node(*arg1,arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -23855,11 +22462,7 @@ SWIGINTERN PyObject *_wrap_flux_node_project_get(PyObject *SWIGUNUSEDPARM(self),
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::project *)cmf_water_flux_node_project_get(arg1);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::project *)cmf_water_flux_node_project_get(arg1);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -23909,11 +22512,7 @@ SWIGINTERN PyObject *_wrap_flux_node_potential_set(PyObject *SWIGUNUSEDPARM(self
   arg2 = static_cast< real >(val2);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        cmf_water_flux_node_potential_set(arg1,arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      cmf_water_flux_node_potential_set(arg1,arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -23957,11 +22556,7 @@ SWIGINTERN PyObject *_wrap_flux_node_potential_get(PyObject *SWIGUNUSEDPARM(self
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (real)cmf_water_flux_node_potential_get(arg1);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (real)cmf_water_flux_node_potential_get(arg1);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -24005,11 +22600,7 @@ SWIGINTERN PyObject *_wrap_flux_node_connections_get(PyObject *SWIGUNUSEDPARM(se
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::water::connection_list *)cmf_water_flux_node_connections_get(arg1);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::water::connection_list *)cmf_water_flux_node_connections_get(arg1);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -24067,11 +22658,7 @@ SWIGINTERN PyObject *_wrap_count_node_references(PyObject *SWIGUNUSEDPARM(self),
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (int)cmf::water::count_node_references(arg1);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (int)cmf::water::count_node_references(arg1);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -24122,11 +22709,7 @@ SWIGINTERN PyObject *_wrap_get_higher_node(PyObject *SWIGUNUSEDPARM(self), PyObj
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = cmf::water::get_higher_node(arg1,arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = cmf::water::get_higher_node(arg1,arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -24180,11 +22763,7 @@ SWIGINTERN PyObject *_wrap_get_lower_node(PyObject *SWIGUNUSEDPARM(self), PyObje
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = cmf::water::get_lower_node(arg1,arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = cmf::water::get_lower_node(arg1,arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -24231,11 +22810,7 @@ SWIGINTERN PyObject *_wrap_waterbalance_integrator_integration_t(PyObject *SWIGU
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = ((cmf::water::waterbalance_integrator const *)arg1)->integration_t();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = ((cmf::water::waterbalance_integrator const *)arg1)->integration_t();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -24279,11 +22854,7 @@ SWIGINTERN PyObject *_wrap_waterbalance_integrator_t0(PyObject *SWIGUNUSEDPARM(s
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = ((cmf::water::waterbalance_integrator const *)arg1)->t0();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = ((cmf::water::waterbalance_integrator const *)arg1)->t0();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -24327,11 +22898,7 @@ SWIGINTERN PyObject *_wrap_waterbalance_integrator___get_node(PyObject *SWIGUNUS
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = ((cmf::water::waterbalance_integrator const *)arg1)->get_node();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = ((cmf::water::waterbalance_integrator const *)arg1)->get_node();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -24392,11 +22959,7 @@ SWIGINTERN PyObject *_wrap_waterbalance_integrator___set_node(PyObject *SWIGUNUS
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        (arg1)->set_node(arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      (arg1)->set_node(arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -24434,11 +22997,7 @@ SWIGINTERN PyObject *_wrap_new_waterbalance_integrator(PyObject *SWIGUNUSEDPARM(
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::water::waterbalance_integrator *)new cmf::water::waterbalance_integrator(arg1);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::water::waterbalance_integrator *)new cmf::water::waterbalance_integrator(arg1);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -24484,11 +23043,7 @@ SWIGINTERN PyObject *_wrap_delete_waterbalance_integrator(PyObject *SWIGUNUSEDPA
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        (void)arg1; delete smartarg1;
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      (void)arg1; delete smartarg1;
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -24531,11 +23086,7 @@ SWIGINTERN PyObject *_wrap_flux_connection_left_node(PyObject *SWIGUNUSEDPARM(se
   arg1 = reinterpret_cast< cmf::water::flux_connection * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = ((cmf::water::flux_connection const *)arg1)->left_node();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = ((cmf::water::flux_connection const *)arg1)->left_node();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -24570,11 +23121,7 @@ SWIGINTERN PyObject *_wrap_flux_connection_right_node(PyObject *SWIGUNUSEDPARM(s
   arg1 = reinterpret_cast< cmf::water::flux_connection * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = ((cmf::water::flux_connection const *)arg1)->right_node();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = ((cmf::water::flux_connection const *)arg1)->right_node();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -24609,11 +23156,7 @@ SWIGINTERN PyObject *_wrap_flux_connection_kill_me(PyObject *SWIGUNUSEDPARM(self
   arg1 = reinterpret_cast< cmf::water::flux_connection * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (bool)(arg1)->kill_me();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (bool)(arg1)->kill_me();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -24654,11 +23197,7 @@ SWIGINTERN PyObject *_wrap_flux_connection_refresh(PyObject *SWIGUNUSEDPARM(self
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        (arg1)->refresh(arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      (arg1)->refresh(arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -24688,11 +23227,7 @@ SWIGINTERN PyObject *_wrap_flux_connection_connection_id_get(PyObject *SWIGUNUSE
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "flux_connection_connection_id_get" "', argument " "1"" of type '" "cmf::water::flux_connection *""'"); 
   }
   arg1 = reinterpret_cast< cmf::water::flux_connection * >(argp1);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (int)(int) ((arg1)->connection_id);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (int)(int) ((arg1)->connection_id);
   resultobj = SWIG_From_int(static_cast< int >(result));
   return resultobj;
 fail:
@@ -24731,11 +23266,7 @@ SWIGINTERN PyObject *_wrap_flux_connection___eq__(PyObject *SWIGUNUSEDPARM(self)
   arg2 = reinterpret_cast< cmf::water::flux_connection * >(argp2);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (bool)(arg1)->operator ==((cmf::water::flux_connection const &)*arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (bool)(arg1)->operator ==((cmf::water::flux_connection const &)*arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -24786,11 +23317,7 @@ SWIGINTERN PyObject *_wrap_flux_connection_get_target__SWIG_0(PyObject *SWIGUNUS
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (arg1)->get_target((cmf::water::flux_node const &)*arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (arg1)->get_target((cmf::water::flux_node const &)*arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -24941,11 +23468,7 @@ SWIGINTERN PyObject *_wrap_flux_connection_get_target__SWIG_1(PyObject *SWIGUNUS
   arg2 = static_cast< int >(val2);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = ((cmf::water::flux_connection const *)arg1)->get_target(arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = ((cmf::water::flux_connection const *)arg1)->get_target(arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -25204,11 +23727,7 @@ SWIGINTERN PyObject *_wrap_flux_connection_exchange_target(PyObject *SWIGUNUSEDP
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        (arg1)->exchange_target(arg2,arg3);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      (arg1)->exchange_target(arg2,arg3);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -25272,11 +23791,7 @@ SWIGINTERN PyObject *_wrap_flux_connection_q(PyObject *SWIGUNUSEDPARM(self), PyO
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (real)(arg1)->q((cmf::water::flux_node const &)*arg2,arg3);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (real)(arg1)->q((cmf::water::flux_node const &)*arg2,arg3);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -25330,11 +23845,7 @@ SWIGINTERN PyObject *_wrap_flux_connection_conc(PyObject *SWIGUNUSEDPARM(self), 
   arg3 = reinterpret_cast< cmf::water::solute * >(argp3);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (real)(arg1)->conc(arg2,(cmf::water::solute const &)*arg3);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (real)(arg1)->conc(arg2,(cmf::water::solute const &)*arg3);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -25364,11 +23875,7 @@ SWIGINTERN PyObject *_wrap_flux_connection_type_get(PyObject *SWIGUNUSEDPARM(sel
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "flux_connection_type_get" "', argument " "1"" of type '" "cmf::water::flux_connection *""'"); 
   }
   arg1 = reinterpret_cast< cmf::water::flux_connection * >(argp1);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (std::string *) & ((arg1)->type);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (std::string *) & ((arg1)->type);
   resultobj = SWIG_From_std_string(static_cast< std::string >(*result));
   return resultobj;
 fail:
@@ -25393,11 +23900,7 @@ SWIGINTERN PyObject *_wrap_flux_connection_to_string(PyObject *SWIGUNUSEDPARM(se
   arg1 = reinterpret_cast< cmf::water::flux_connection * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = ((cmf::water::flux_connection const *)arg1)->to_string();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = ((cmf::water::flux_connection const *)arg1)->to_string();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -25429,11 +23932,7 @@ SWIGINTERN PyObject *_wrap_flux_connection_short_string(PyObject *SWIGUNUSEDPARM
   arg1 = reinterpret_cast< cmf::water::flux_connection * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = ((cmf::water::flux_connection const *)arg1)->short_string();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = ((cmf::water::flux_connection const *)arg1)->short_string();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -25464,11 +23963,7 @@ SWIGINTERN PyObject *_wrap_delete_flux_connection(PyObject *SWIGUNUSEDPARM(self)
   arg1 = reinterpret_cast< cmf::water::flux_connection * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -25506,11 +24001,7 @@ SWIGINTERN PyObject *_wrap_flux_connection_tracer_filter_set(PyObject *SWIGUNUSE
   arg2 = static_cast< real >(val2);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        cmf_water_flux_connection_tracer_filter_set(arg1,arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      cmf_water_flux_connection_tracer_filter_set(arg1,arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -25542,11 +24033,7 @@ SWIGINTERN PyObject *_wrap_flux_connection_tracer_filter_get(PyObject *SWIGUNUSE
   arg1 = reinterpret_cast< cmf::water::flux_connection * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (real)cmf_water_flux_connection_tracer_filter_get(arg1);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (real)cmf_water_flux_connection_tracer_filter_get(arg1);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -25604,11 +24091,7 @@ SWIGINTERN PyObject *_wrap_replace_node(PyObject *SWIGUNUSEDPARM(self), PyObject
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (int)cmf::water::replace_node(arg1,arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (int)cmf::water::replace_node(arg1,arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -25659,11 +24142,7 @@ SWIGINTERN PyObject *_wrap_connection_list_append(PyObject *SWIGUNUSEDPARM(self)
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (bool)(arg1)->append(arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (bool)(arg1)->append(arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -25709,11 +24188,7 @@ SWIGINTERN PyObject *_wrap_connection_list_extend(PyObject *SWIGUNUSEDPARM(self)
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        (arg1)->extend((cmf::water::connection_list const &)*arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      (arg1)->extend((cmf::water::connection_list const &)*arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -25764,11 +24239,7 @@ SWIGINTERN PyObject *_wrap_connection_list_contains(PyObject *SWIGUNUSEDPARM(sel
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (bool)((cmf::water::connection_list const *)arg1)->contains(arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (bool)((cmf::water::connection_list const *)arg1)->contains(arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -25819,11 +24290,7 @@ SWIGINTERN PyObject *_wrap_connection_list_remove(PyObject *SWIGUNUSEDPARM(self)
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (bool)(arg1)->remove(arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (bool)(arg1)->remove(arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -25875,11 +24342,7 @@ SWIGINTERN PyObject *_wrap_connection_list_do_action(PyObject *SWIGUNUSEDPARM(se
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        (arg1)->do_action(arg2,arg3);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      (arg1)->do_action(arg2,arg3);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -25911,11 +24374,7 @@ SWIGINTERN PyObject *_wrap_connection_list_size(PyObject *SWIGUNUSEDPARM(self), 
   arg1 = reinterpret_cast< cmf::water::connection_list * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = ((cmf::water::connection_list const *)arg1)->size();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = ((cmf::water::connection_list const *)arg1)->size();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -25958,11 +24417,7 @@ SWIGINTERN PyObject *_wrap_connection_list_at(PyObject *SWIGUNUSEDPARM(self), Py
   arg2 = static_cast< size_t >(val2);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = ((cmf::water::connection_list const *)arg1)->at(arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = ((cmf::water::connection_list const *)arg1)->at(arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -25992,11 +24447,7 @@ SWIGINTERN PyObject *_wrap_connection_list_begin__SWIG_0(PyObject *SWIGUNUSEDPAR
   arg1 = reinterpret_cast< cmf::water::connection_list * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (arg1)->begin();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (arg1)->begin();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -26026,11 +24477,7 @@ SWIGINTERN PyObject *_wrap_connection_list_end__SWIG_0(PyObject *SWIGUNUSEDPARM(
   arg1 = reinterpret_cast< cmf::water::connection_list * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (arg1)->end();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (arg1)->end();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -26060,11 +24507,7 @@ SWIGINTERN PyObject *_wrap_connection_list_begin__SWIG_1(PyObject *SWIGUNUSEDPAR
   arg1 = reinterpret_cast< cmf::water::connection_list * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = ((cmf::water::connection_list const *)arg1)->begin();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = ((cmf::water::connection_list const *)arg1)->begin();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -26163,11 +24606,7 @@ SWIGINTERN PyObject *_wrap_connection_list_end__SWIG_1(PyObject *SWIGUNUSEDPARM(
   arg1 = reinterpret_cast< cmf::water::connection_list * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = ((cmf::water::connection_list const *)arg1)->end();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = ((cmf::water::connection_list const *)arg1)->end();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -26268,11 +24707,7 @@ SWIGINTERN PyObject *_wrap_connection_list___len__(PyObject *SWIGUNUSEDPARM(self
   arg1 = reinterpret_cast< cmf::water::connection_list * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = cmf_water_connection_list___len__((cmf::water::connection_list const *)arg1);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = cmf_water_connection_list___len__((cmf::water::connection_list const *)arg1);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -26318,11 +24753,7 @@ SWIGINTERN PyObject *_wrap_connection_list___contains__(PyObject *SWIGUNUSEDPARM
   arg2 = reinterpret_cast< cmf::water::flux_connection::ptr * >(argp2);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (bool)cmf_water_connection_list___contains__((cmf::water::connection_list const *)arg1,(std::tr1::shared_ptr< cmf::water::flux_connection > const &)*arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (bool)cmf_water_connection_list___contains__((cmf::water::connection_list const *)arg1,(std::tr1::shared_ptr< cmf::water::flux_connection > const &)*arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -26344,11 +24775,7 @@ SWIGINTERN PyObject *_wrap_new_connection_list(PyObject *SWIGUNUSEDPARM(self), P
   if (!SWIG_Python_UnpackTuple(args,"new_connection_list",0,0,0)) SWIG_fail;
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::water::connection_list *)new cmf::water::connection_list();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::water::connection_list *)new cmf::water::connection_list();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -26388,11 +24815,7 @@ SWIGINTERN PyObject *_wrap_delete_connection_list(PyObject *SWIGUNUSEDPARM(self)
   arg1 = reinterpret_cast< cmf::water::connection_list * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        delete arg1;
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      delete arg1;
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -26447,11 +24870,7 @@ SWIGINTERN PyObject *_wrap_flux_integrator_integration_t(PyObject *SWIGUNUSEDPAR
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = ((cmf::water::flux_integrator const *)arg1)->integration_t();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = ((cmf::water::flux_integrator const *)arg1)->integration_t();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -26495,11 +24914,7 @@ SWIGINTERN PyObject *_wrap_flux_integrator_t0(PyObject *SWIGUNUSEDPARM(self), Py
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = ((cmf::water::flux_integrator const *)arg1)->t0();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = ((cmf::water::flux_integrator const *)arg1)->t0();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -26547,11 +24962,7 @@ SWIGINTERN PyObject *_wrap_flux_integrator_invert_set(PyObject *SWIGUNUSEDPARM(s
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "flux_integrator_invert_set" "', argument " "2"" of type '" "bool""'");
   } 
   arg2 = static_cast< bool >(val2);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->invert = arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->invert = arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -26586,11 +24997,7 @@ SWIGINTERN PyObject *_wrap_flux_integrator_invert_get(PyObject *SWIGUNUSEDPARM(s
       arg1 = const_cast< cmf::water::flux_integrator * >((smartarg1 ? smartarg1->get() : 0));
     }
   }
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (bool) ((arg1)->invert);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (bool) ((arg1)->invert);
   resultobj = SWIG_From_bool(static_cast< bool >(result));
   return resultobj;
 fail:
@@ -26627,11 +25034,7 @@ SWIGINTERN PyObject *_wrap_flux_integrator_connection(PyObject *SWIGUNUSEDPARM(s
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = ((cmf::water::flux_integrator const *)arg1)->connection();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = ((cmf::water::flux_integrator const *)arg1)->connection();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -26664,11 +25067,7 @@ SWIGINTERN PyObject *_wrap_new_flux_integrator__SWIG_0(PyObject *SWIGUNUSEDPARM(
   arg1 = reinterpret_cast< cmf::water::flux_connection * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::water::flux_integrator *)new cmf::water::flux_integrator(*arg1);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::water::flux_integrator *)new cmf::water::flux_integrator(*arg1);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -26717,11 +25116,7 @@ SWIGINTERN PyObject *_wrap_new_flux_integrator__SWIG_1(PyObject *SWIGUNUSEDPARM(
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::water::flux_integrator *)new cmf::water::flux_integrator(arg1,arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::water::flux_integrator *)new cmf::water::flux_integrator(arg1,arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -26843,11 +25238,7 @@ SWIGINTERN PyObject *_wrap_delete_flux_integrator(PyObject *SWIGUNUSEDPARM(self)
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        (void)arg1; delete smartarg1;
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      (void)arg1; delete smartarg1;
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -26894,11 +25285,7 @@ SWIGINTERN PyObject *_wrap_linear_scale_displacement_set(PyObject *SWIGUNUSEDPAR
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "linear_scale_displacement_set" "', argument " "2"" of type '" "real""'");
   } 
   arg2 = static_cast< real >(val2);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->displacement = arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->displacement = arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -26921,11 +25308,7 @@ SWIGINTERN PyObject *_wrap_linear_scale_displacement_get(PyObject *SWIGUNUSEDPAR
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "linear_scale_displacement_get" "', argument " "1"" of type '" "cmf::water::linear_scale *""'"); 
   }
   arg1 = reinterpret_cast< cmf::water::linear_scale * >(argp1);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (real) ((arg1)->displacement);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (real) ((arg1)->displacement);
   resultobj = SWIG_From_double(static_cast< double >(result));
   return resultobj;
 fail:
@@ -26954,11 +25337,7 @@ SWIGINTERN PyObject *_wrap_linear_scale_slope_set(PyObject *SWIGUNUSEDPARM(self)
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "linear_scale_slope_set" "', argument " "2"" of type '" "real""'");
   } 
   arg2 = static_cast< real >(val2);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->slope = arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->slope = arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -26981,11 +25360,7 @@ SWIGINTERN PyObject *_wrap_linear_scale_slope_get(PyObject *SWIGUNUSEDPARM(self)
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "linear_scale_slope_get" "', argument " "1"" of type '" "cmf::water::linear_scale *""'"); 
   }
   arg1 = reinterpret_cast< cmf::water::linear_scale * >(argp1);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (real) ((arg1)->slope);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (real) ((arg1)->slope);
   resultobj = SWIG_From_double(static_cast< double >(result));
   return resultobj;
 fail:
@@ -27021,11 +25396,7 @@ SWIGINTERN PyObject *_wrap_linear_scale___call__(PyObject *SWIGUNUSEDPARM(self),
   arg2 = static_cast< real >(val2);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (real)((cmf::water::linear_scale const *)arg1)->operator ()(arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (real)((cmf::water::linear_scale const *)arg1)->operator ()(arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -27072,11 +25443,7 @@ SWIGINTERN PyObject *_wrap_new_linear_scale(PyObject *SWIGUNUSEDPARM(self), PyOb
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::water::linear_scale *)new cmf::water::linear_scale(arg1,arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::water::linear_scale *)new cmf::water::linear_scale(arg1,arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -27107,11 +25474,7 @@ SWIGINTERN PyObject *_wrap_delete_linear_scale(PyObject *SWIGUNUSEDPARM(self), P
   arg1 = reinterpret_cast< cmf::water::linear_scale * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        delete arg1;
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      delete arg1;
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -27188,11 +25551,7 @@ SWIGINTERN PyObject *_wrap_DirichletBoundary_set_conc(PyObject *SWIGUNUSEDPARM(s
   arg3 = static_cast< double >(val3);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        (arg1)->set_conc((cmf::water::solute const &)*arg2,arg3);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      (arg1)->set_conc((cmf::water::solute const &)*arg2,arg3);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -27240,11 +25599,7 @@ SWIGINTERN PyObject *_wrap_DirichletBoundary_is_source_set(PyObject *SWIGUNUSEDP
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "DirichletBoundary_is_source_set" "', argument " "2"" of type '" "bool""'");
   } 
   arg2 = static_cast< bool >(val2);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->is_source = arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->is_source = arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -27279,11 +25634,7 @@ SWIGINTERN PyObject *_wrap_DirichletBoundary_is_source_get(PyObject *SWIGUNUSEDP
       arg1 = const_cast< cmf::water::DirichletBoundary * >((smartarg1 ? smartarg1->get() : 0));
     }
   }
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (bool) ((arg1)->is_source);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (bool) ((arg1)->is_source);
   resultobj = SWIG_From_bool(static_cast< bool >(result));
   return resultobj;
 fail:
@@ -27330,11 +25681,7 @@ SWIGINTERN PyObject *_wrap_DirichletBoundary_RecalcFluxes(PyObject *SWIGUNUSEDPA
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (bool)((cmf::water::DirichletBoundary const *)arg1)->RecalcFluxes(arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (bool)((cmf::water::DirichletBoundary const *)arg1)->RecalcFluxes(arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -27404,11 +25751,7 @@ SWIGINTERN PyObject *_wrap_new_DirichletBoundary(PyObject *SWIGUNUSEDPARM(self),
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::water::DirichletBoundary *)new cmf::water::DirichletBoundary(*arg1,arg2,arg3);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::water::DirichletBoundary *)new cmf::water::DirichletBoundary(*arg1,arg2,arg3);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -27454,11 +25797,7 @@ SWIGINTERN PyObject *_wrap_delete_DirichletBoundary(PyObject *SWIGUNUSEDPARM(sel
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        (void)arg1; delete smartarg1;
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      (void)arg1; delete smartarg1;
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -27517,11 +25856,7 @@ SWIGINTERN PyObject *_wrap_NeumannBoundary_flux_set(PyObject *SWIGUNUSEDPARM(sel
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "NeumannBoundary_flux_set" "', argument " "2"" of type '" "cmf::math::timeseries *""'"); 
   }
   arg2 = reinterpret_cast< cmf::math::timeseries * >(argp2);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->flux = *arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->flux = *arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -27556,11 +25891,7 @@ SWIGINTERN PyObject *_wrap_NeumannBoundary_flux_get(PyObject *SWIGUNUSEDPARM(sel
       arg1 = const_cast< cmf::water::NeumannBoundary * >((smartarg1 ? smartarg1->get() : 0));
     }
   }
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (cmf::math::timeseries *)& ((arg1)->flux);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (cmf::math::timeseries *)& ((arg1)->flux);
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_cmf__math__timeseries, 0 |  0 );
   return resultobj;
 fail:
@@ -27601,11 +25932,7 @@ SWIGINTERN PyObject *_wrap_NeumannBoundary_flux_scale_set(PyObject *SWIGUNUSEDPA
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "NeumannBoundary_flux_scale_set" "', argument " "2"" of type '" "cmf::water::linear_scale *""'"); 
   }
   arg2 = reinterpret_cast< cmf::water::linear_scale * >(argp2);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->flux_scale = *arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->flux_scale = *arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -27640,11 +25967,7 @@ SWIGINTERN PyObject *_wrap_NeumannBoundary_flux_scale_get(PyObject *SWIGUNUSEDPA
       arg1 = const_cast< cmf::water::NeumannBoundary * >((smartarg1 ? smartarg1->get() : 0));
     }
   }
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (cmf::water::linear_scale *)& ((arg1)->flux_scale);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (cmf::water::linear_scale *)& ((arg1)->flux_scale);
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_cmf__water__linear_scale, 0 |  0 );
   return resultobj;
 fail:
@@ -27685,11 +26008,7 @@ SWIGINTERN PyObject *_wrap_NeumannBoundary_concentration_set(PyObject *SWIGUNUSE
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "NeumannBoundary_concentration_set" "', argument " "2"" of type '" "cmf::water::SoluteTimeseries *""'"); 
   }
   arg2 = reinterpret_cast< cmf::water::SoluteTimeseries * >(argp2);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->concentration = *arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->concentration = *arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -27724,11 +26043,7 @@ SWIGINTERN PyObject *_wrap_NeumannBoundary_concentration_get(PyObject *SWIGUNUSE
       arg1 = const_cast< cmf::water::NeumannBoundary * >((smartarg1 ? smartarg1->get() : 0));
     }
   }
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (cmf::water::SoluteTimeseries *)& ((arg1)->concentration);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (cmf::water::SoluteTimeseries *)& ((arg1)->concentration);
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_cmf__water__SoluteTimeseries, 0 |  0 );
   return resultobj;
 fail:
@@ -27775,11 +26090,7 @@ SWIGINTERN PyObject *_wrap_NeumannBoundary___call__(PyObject *SWIGUNUSEDPARM(sel
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (real)((cmf::water::NeumannBoundary const *)arg1)->operator ()(arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (real)((cmf::water::NeumannBoundary const *)arg1)->operator ()(arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -27837,11 +26148,7 @@ SWIGINTERN PyObject *_wrap_NeumannBoundary_connect_to(PyObject *SWIGUNUSEDPARM(s
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        (arg1)->connect_to(arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      (arg1)->connect_to(arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -27930,11 +26237,7 @@ SWIGINTERN PyObject *_wrap_new_NeumannBoundary__SWIG_0(PyObject *SWIGUNUSEDPARM(
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::water::NeumannBoundary *)new cmf::water::NeumannBoundary(*arg1,arg2,arg3,arg4);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::water::NeumannBoundary *)new cmf::water::NeumannBoundary(*arg1,arg2,arg3,arg4);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -27993,11 +26296,7 @@ SWIGINTERN PyObject *_wrap_new_NeumannBoundary__SWIG_1(PyObject *SWIGUNUSEDPARM(
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::water::NeumannBoundary *)new cmf::water::NeumannBoundary(*arg1,arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::water::NeumannBoundary *)new cmf::water::NeumannBoundary(*arg1,arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -28152,11 +26451,7 @@ SWIGINTERN PyObject *_wrap_NeumannBoundary_create(PyObject *SWIGUNUSEDPARM(self)
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = cmf::water::NeumannBoundary::create(arg1);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = cmf::water::NeumannBoundary::create(arg1);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -28202,11 +26497,7 @@ SWIGINTERN PyObject *_wrap_delete_NeumannBoundary(PyObject *SWIGUNUSEDPARM(self)
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        (void)arg1; delete smartarg1;
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      (void)arg1; delete smartarg1;
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -28268,11 +26559,7 @@ SWIGINTERN PyObject *_wrap_new_NeumannFlux(PyObject *SWIGUNUSEDPARM(self), PyObj
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::water::NeumannFlux *)new cmf::water::NeumannFlux(arg1,arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::water::NeumannFlux *)new cmf::water::NeumannFlux(arg1,arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -28304,11 +26591,7 @@ SWIGINTERN PyObject *_wrap_delete_NeumannFlux(PyObject *SWIGUNUSEDPARM(self), Py
   arg1 = reinterpret_cast< cmf::water::NeumannFlux * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -28384,11 +26667,7 @@ SWIGINTERN PyObject *_wrap_new_WaterStorage(PyObject *SWIGUNUSEDPARM(self), PyOb
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::water::WaterStorage *)new cmf::water::WaterStorage(*arg1,(std::string const &)*arg2,arg3);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::water::WaterStorage *)new cmf::water::WaterStorage(*arg1,(std::string const &)*arg2,arg3);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -28431,11 +26710,7 @@ SWIGINTERN PyObject *_wrap_WaterStorage_from_node(PyObject *SWIGUNUSEDPARM(self)
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = cmf::water::WaterStorage::from_node(arg1);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = cmf::water::WaterStorage::from_node(arg1);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -28491,11 +26766,7 @@ SWIGINTERN PyObject *_wrap_WaterStorage_Solute__SWIG_0(PyObject *SWIGUNUSEDPARM(
   arg2 = reinterpret_cast< cmf::water::solute * >(argp2);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::water::SoluteStorage *) &(arg1)->Solute((cmf::water::solute const &)*arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::water::SoluteStorage *) &(arg1)->Solute((cmf::water::solute const &)*arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -28551,11 +26822,7 @@ SWIGINTERN PyObject *_wrap_WaterStorage_Solute__SWIG_1(PyObject *SWIGUNUSEDPARM(
   arg2 = reinterpret_cast< cmf::water::solute * >(argp2);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::water::SoluteStorage *) &((cmf::water::WaterStorage const *)arg1)->Solute((cmf::water::solute const &)*arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::water::SoluteStorage *) &((cmf::water::WaterStorage const *)arg1)->Solute((cmf::water::solute const &)*arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -28694,11 +26961,7 @@ SWIGINTERN PyObject *_wrap_WaterStorage_conc__SWIG_0(PyObject *SWIGUNUSEDPARM(se
   arg2 = reinterpret_cast< cmf::water::solute * >(argp2);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (real)((cmf::water::WaterStorage const *)arg1)->conc((cmf::water::solute const &)*arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (real)((cmf::water::WaterStorage const *)arg1)->conc((cmf::water::solute const &)*arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -28758,11 +27021,7 @@ SWIGINTERN PyObject *_wrap_WaterStorage_conc__SWIG_1(PyObject *SWIGUNUSEDPARM(se
   arg3 = reinterpret_cast< cmf::water::solute * >(argp3);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (real)((cmf::water::WaterStorage const *)arg1)->conc(arg2,(cmf::water::solute const &)*arg3);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (real)((cmf::water::WaterStorage const *)arg1)->conc(arg2,(cmf::water::solute const &)*arg3);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -28822,11 +27081,7 @@ SWIGINTERN PyObject *_wrap_WaterStorage_conc__SWIG_2(PyObject *SWIGUNUSEDPARM(se
   arg3 = static_cast< real >(val3);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        (arg1)->conc((cmf::water::solute const &)*arg2,arg3);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      (arg1)->conc((cmf::water::solute const &)*arg2,arg3);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -28997,11 +27252,7 @@ SWIGINTERN PyObject *_wrap_WaterStorage_cast(PyObject *SWIGUNUSEDPARM(self), PyO
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = cmf::water::WaterStorage::cast(arg1);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = cmf::water::WaterStorage::cast(arg1);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -29052,11 +27303,7 @@ SWIGINTERN PyObject *_wrap_WaterStorage_create(PyObject *SWIGUNUSEDPARM(self), P
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = cmf::water::WaterStorage::create(*arg1,arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = cmf::water::WaterStorage::create(*arg1,arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -29109,11 +27356,7 @@ SWIGINTERN PyObject *_wrap_WaterStorage_volume_set(PyObject *SWIGUNUSEDPARM(self
   arg2 = static_cast< real >(val2);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        cmf_water_WaterStorage_volume_set(arg1,arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      cmf_water_WaterStorage_volume_set(arg1,arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -29157,11 +27400,7 @@ SWIGINTERN PyObject *_wrap_WaterStorage_volume_get(PyObject *SWIGUNUSEDPARM(self
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (real)cmf_water_WaterStorage_volume_get(arg1);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (real)cmf_water_WaterStorage_volume_get(arg1);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -29211,11 +27450,7 @@ SWIGINTERN PyObject *_wrap_WaterStorage_statevariable_set(PyObject *SWIGUNUSEDPA
   arg2 = static_cast< char >(val2);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        cmf_water_WaterStorage_statevariable_set(arg1,arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      cmf_water_WaterStorage_statevariable_set(arg1,arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -29259,11 +27494,7 @@ SWIGINTERN PyObject *_wrap_WaterStorage_statevariable_get(PyObject *SWIGUNUSEDPA
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (char)cmf_water_WaterStorage_statevariable_get(arg1);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (char)cmf_water_WaterStorage_statevariable_get(arg1);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -29306,11 +27537,7 @@ SWIGINTERN PyObject *_wrap_delete_WaterStorage(PyObject *SWIGUNUSEDPARM(self), P
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        (void)arg1; delete smartarg1;
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      (void)arg1; delete smartarg1;
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -29372,11 +27599,7 @@ SWIGINTERN PyObject *_wrap_new_waterbalance_connection(PyObject *SWIGUNUSEDPARM(
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::water::waterbalance_connection *)new cmf::water::waterbalance_connection(arg1,arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::water::waterbalance_connection *)new cmf::water::waterbalance_connection(arg1,arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -29408,11 +27631,7 @@ SWIGINTERN PyObject *_wrap_delete_waterbalance_connection(PyObject *SWIGUNUSEDPA
   arg1 = reinterpret_cast< cmf::water::waterbalance_connection * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -29459,11 +27678,7 @@ SWIGINTERN PyObject *_wrap_external_control_connection_flux_set(PyObject *SWIGUN
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "external_control_connection_flux_set" "', argument " "2"" of type '" "real""'");
   } 
   arg2 = static_cast< real >(val2);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->flux = arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->flux = arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -29486,11 +27701,7 @@ SWIGINTERN PyObject *_wrap_external_control_connection_flux_get(PyObject *SWIGUN
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "external_control_connection_flux_get" "', argument " "1"" of type '" "cmf::water::external_control_connection *""'"); 
   }
   arg1 = reinterpret_cast< cmf::water::external_control_connection * >(argp1);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (real) ((arg1)->flux);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (real) ((arg1)->flux);
   resultobj = SWIG_From_double(static_cast< double >(result));
   return resultobj;
 fail:
@@ -29545,11 +27756,7 @@ SWIGINTERN PyObject *_wrap_new_external_control_connection(PyObject *SWIGUNUSEDP
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::water::external_control_connection *)new cmf::water::external_control_connection(arg1,arg2,arg3);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::water::external_control_connection *)new cmf::water::external_control_connection(arg1,arg2,arg3);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -29581,11 +27788,7 @@ SWIGINTERN PyObject *_wrap_delete_external_control_connection(PyObject *SWIGUNUS
   arg1 = reinterpret_cast< cmf::water::external_control_connection * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -29655,11 +27858,7 @@ SWIGINTERN PyObject *_wrap_set_flux(PyObject *SWIGUNUSEDPARM(self), PyObject *ar
   arg3 = static_cast< real >(val3);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        cmf::water::set_flux(arg1,arg2,arg3);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      cmf::water::set_flux(arg1,arg2,arg3);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -29710,11 +27909,7 @@ SWIGINTERN PyObject *_wrap_can_set_flux(PyObject *SWIGUNUSEDPARM(self), PyObject
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (bool)cmf::water::can_set_flux(arg1,arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (bool)cmf::water::can_set_flux(arg1,arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -29750,11 +27945,7 @@ SWIGINTERN PyObject *_wrap_kinematic_wave_residencetime_set(PyObject *SWIGUNUSED
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "kinematic_wave_residencetime_set" "', argument " "2"" of type '" "real""'");
   } 
   arg2 = static_cast< real >(val2);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->residencetime = arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->residencetime = arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -29777,11 +27968,7 @@ SWIGINTERN PyObject *_wrap_kinematic_wave_residencetime_get(PyObject *SWIGUNUSED
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "kinematic_wave_residencetime_get" "', argument " "1"" of type '" "cmf::water::kinematic_wave *""'"); 
   }
   arg1 = reinterpret_cast< cmf::water::kinematic_wave * >(argp1);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (real) ((arg1)->residencetime);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (real) ((arg1)->residencetime);
   resultobj = SWIG_From_double(static_cast< double >(result));
   return resultobj;
 fail:
@@ -29810,11 +27997,7 @@ SWIGINTERN PyObject *_wrap_kinematic_wave_exponent_set(PyObject *SWIGUNUSEDPARM(
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "kinematic_wave_exponent_set" "', argument " "2"" of type '" "real""'");
   } 
   arg2 = static_cast< real >(val2);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->exponent = arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->exponent = arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -29837,11 +28020,7 @@ SWIGINTERN PyObject *_wrap_kinematic_wave_exponent_get(PyObject *SWIGUNUSEDPARM(
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "kinematic_wave_exponent_get" "', argument " "1"" of type '" "cmf::water::kinematic_wave *""'"); 
   }
   arg1 = reinterpret_cast< cmf::water::kinematic_wave * >(argp1);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (real) ((arg1)->exponent);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (real) ((arg1)->exponent);
   resultobj = SWIG_From_double(static_cast< double >(result));
   return resultobj;
 fail:
@@ -29870,11 +28049,7 @@ SWIGINTERN PyObject *_wrap_kinematic_wave_residual_set(PyObject *SWIGUNUSEDPARM(
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "kinematic_wave_residual_set" "', argument " "2"" of type '" "real""'");
   } 
   arg2 = static_cast< real >(val2);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->residual = arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->residual = arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -29897,11 +28072,7 @@ SWIGINTERN PyObject *_wrap_kinematic_wave_residual_get(PyObject *SWIGUNUSEDPARM(
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "kinematic_wave_residual_get" "', argument " "1"" of type '" "cmf::water::kinematic_wave *""'"); 
   }
   arg1 = reinterpret_cast< cmf::water::kinematic_wave * >(argp1);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (real) ((arg1)->residual);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (real) ((arg1)->residual);
   resultobj = SWIG_From_double(static_cast< double >(result));
   return resultobj;
 fail:
@@ -29930,11 +28101,7 @@ SWIGINTERN PyObject *_wrap_kinematic_wave_V0_set(PyObject *SWIGUNUSEDPARM(self),
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "kinematic_wave_V0_set" "', argument " "2"" of type '" "real""'");
   } 
   arg2 = static_cast< real >(val2);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->V0 = arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->V0 = arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -29957,11 +28124,7 @@ SWIGINTERN PyObject *_wrap_kinematic_wave_V0_get(PyObject *SWIGUNUSEDPARM(self),
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "kinematic_wave_V0_get" "', argument " "1"" of type '" "cmf::water::kinematic_wave *""'"); 
   }
   arg1 = reinterpret_cast< cmf::water::kinematic_wave * >(argp1);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (real) ((arg1)->V0);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (real) ((arg1)->V0);
   resultobj = SWIG_From_double(static_cast< double >(result));
   return resultobj;
 fail:
@@ -30047,11 +28210,7 @@ SWIGINTERN PyObject *_wrap_new_kinematic_wave(PyObject *SWIGUNUSEDPARM(self), Py
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::water::kinematic_wave *)new cmf::water::kinematic_wave(arg1,arg2,arg3,arg4,arg5,arg6);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::water::kinematic_wave *)new cmf::water::kinematic_wave(arg1,arg2,arg3,arg4,arg5,arg6);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -30083,11 +28242,7 @@ SWIGINTERN PyObject *_wrap_delete_kinematic_wave(PyObject *SWIGUNUSEDPARM(self),
   arg1 = reinterpret_cast< cmf::water::kinematic_wave * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -30134,11 +28289,7 @@ SWIGINTERN PyObject *_wrap_TechnicalFlux_MaxFlux_set(PyObject *SWIGUNUSEDPARM(se
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "TechnicalFlux_MaxFlux_set" "', argument " "2"" of type '" "real""'");
   } 
   arg2 = static_cast< real >(val2);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->MaxFlux = arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->MaxFlux = arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -30161,11 +28312,7 @@ SWIGINTERN PyObject *_wrap_TechnicalFlux_MaxFlux_get(PyObject *SWIGUNUSEDPARM(se
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "TechnicalFlux_MaxFlux_get" "', argument " "1"" of type '" "cmf::water::TechnicalFlux *""'"); 
   }
   arg1 = reinterpret_cast< cmf::water::TechnicalFlux * >(argp1);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (real) ((arg1)->MaxFlux);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (real) ((arg1)->MaxFlux);
   resultobj = SWIG_From_double(static_cast< double >(result));
   return resultobj;
 fail:
@@ -30194,11 +28341,7 @@ SWIGINTERN PyObject *_wrap_TechnicalFlux_MinState_set(PyObject *SWIGUNUSEDPARM(s
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "TechnicalFlux_MinState_set" "', argument " "2"" of type '" "real""'");
   } 
   arg2 = static_cast< real >(val2);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->MinState = arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->MinState = arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -30221,11 +28364,7 @@ SWIGINTERN PyObject *_wrap_TechnicalFlux_MinState_get(PyObject *SWIGUNUSEDPARM(s
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "TechnicalFlux_MinState_get" "', argument " "1"" of type '" "cmf::water::TechnicalFlux *""'"); 
   }
   arg1 = reinterpret_cast< cmf::water::TechnicalFlux * >(argp1);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (real) ((arg1)->MinState);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (real) ((arg1)->MinState);
   resultobj = SWIG_From_double(static_cast< double >(result));
   return resultobj;
 fail:
@@ -30257,11 +28396,7 @@ SWIGINTERN PyObject *_wrap_TechnicalFlux_FluxDecreaseTime_set(PyObject *SWIGUNUS
       arg2 = &T2;
     }
   }
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->FluxDecreaseTime = *arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->FluxDecreaseTime = *arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -30284,11 +28419,7 @@ SWIGINTERN PyObject *_wrap_TechnicalFlux_FluxDecreaseTime_get(PyObject *SWIGUNUS
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "TechnicalFlux_FluxDecreaseTime_get" "', argument " "1"" of type '" "cmf::water::TechnicalFlux *""'"); 
   }
   arg1 = reinterpret_cast< cmf::water::TechnicalFlux * >(argp1);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (cmf::math::Time *)& ((arg1)->FluxDecreaseTime);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (cmf::math::Time *)& ((arg1)->FluxDecreaseTime);
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_cmf__math__Time, 0 |  0 );
   return resultobj;
 fail:
@@ -30362,11 +28493,7 @@ SWIGINTERN PyObject *_wrap_new_TechnicalFlux(PyObject *SWIGUNUSEDPARM(self), PyO
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::water::TechnicalFlux *)new cmf::water::TechnicalFlux(arg1,arg2,arg3,arg4,arg5);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::water::TechnicalFlux *)new cmf::water::TechnicalFlux(arg1,arg2,arg3,arg4,arg5);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -30398,11 +28525,7 @@ SWIGINTERN PyObject *_wrap_delete_TechnicalFlux(PyObject *SWIGUNUSEDPARM(self), 
   arg1 = reinterpret_cast< cmf::water::TechnicalFlux * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -30449,11 +28572,7 @@ SWIGINTERN PyObject *_wrap_generic_gradient_connection_K_set(PyObject *SWIGUNUSE
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "generic_gradient_connection_K_set" "', argument " "2"" of type '" "real""'");
   } 
   arg2 = static_cast< real >(val2);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->K = arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->K = arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -30476,11 +28595,7 @@ SWIGINTERN PyObject *_wrap_generic_gradient_connection_K_get(PyObject *SWIGUNUSE
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "generic_gradient_connection_K_get" "', argument " "1"" of type '" "cmf::water::generic_gradient_connection *""'"); 
   }
   arg1 = reinterpret_cast< cmf::water::generic_gradient_connection * >(argp1);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (real) ((arg1)->K);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (real) ((arg1)->K);
   resultobj = SWIG_From_double(static_cast< double >(result));
   return resultobj;
 fail:
@@ -30509,11 +28624,7 @@ SWIGINTERN PyObject *_wrap_generic_gradient_connection_A_set(PyObject *SWIGUNUSE
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "generic_gradient_connection_A_set" "', argument " "2"" of type '" "real""'");
   } 
   arg2 = static_cast< real >(val2);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->A = arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->A = arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -30536,11 +28647,7 @@ SWIGINTERN PyObject *_wrap_generic_gradient_connection_A_get(PyObject *SWIGUNUSE
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "generic_gradient_connection_A_get" "', argument " "1"" of type '" "cmf::water::generic_gradient_connection *""'"); 
   }
   arg1 = reinterpret_cast< cmf::water::generic_gradient_connection * >(argp1);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (real) ((arg1)->A);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (real) ((arg1)->A);
   resultobj = SWIG_From_double(static_cast< double >(result));
   return resultobj;
 fail:
@@ -30569,11 +28676,7 @@ SWIGINTERN PyObject *_wrap_generic_gradient_connection_d_set(PyObject *SWIGUNUSE
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "generic_gradient_connection_d_set" "', argument " "2"" of type '" "real""'");
   } 
   arg2 = static_cast< real >(val2);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->d = arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->d = arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -30596,11 +28699,7 @@ SWIGINTERN PyObject *_wrap_generic_gradient_connection_d_get(PyObject *SWIGUNUSE
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "generic_gradient_connection_d_get" "', argument " "1"" of type '" "cmf::water::generic_gradient_connection *""'"); 
   }
   arg1 = reinterpret_cast< cmf::water::generic_gradient_connection * >(argp1);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (real) ((arg1)->d);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (real) ((arg1)->d);
   resultobj = SWIG_From_double(static_cast< double >(result));
   return resultobj;
 fail:
@@ -30675,11 +28774,7 @@ SWIGINTERN PyObject *_wrap_new_generic_gradient_connection(PyObject *SWIGUNUSEDP
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::water::generic_gradient_connection *)new cmf::water::generic_gradient_connection(arg1,arg2,arg3,arg4,arg5);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::water::generic_gradient_connection *)new cmf::water::generic_gradient_connection(arg1,arg2,arg3,arg4,arg5);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -30711,11 +28806,7 @@ SWIGINTERN PyObject *_wrap_delete_generic_gradient_connection(PyObject *SWIGUNUS
   arg1 = reinterpret_cast< cmf::water::generic_gradient_connection * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -30765,11 +28856,7 @@ SWIGINTERN PyObject *_wrap_statecontrol_connection_reaction_time_set(PyObject *S
       arg2 = &T2;
     }
   }
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->reaction_time = *arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->reaction_time = *arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -30792,11 +28879,7 @@ SWIGINTERN PyObject *_wrap_statecontrol_connection_reaction_time_get(PyObject *S
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "statecontrol_connection_reaction_time_get" "', argument " "1"" of type '" "cmf::water::statecontrol_connection *""'"); 
   }
   arg1 = reinterpret_cast< cmf::water::statecontrol_connection * >(argp1);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (cmf::math::Time *)& ((arg1)->reaction_time);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (cmf::math::Time *)& ((arg1)->reaction_time);
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_cmf__math__Time, 0 |  0 );
   return resultobj;
 fail:
@@ -30825,11 +28908,7 @@ SWIGINTERN PyObject *_wrap_statecontrol_connection_target_state_set(PyObject *SW
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "statecontrol_connection_target_state_set" "', argument " "2"" of type '" "real""'");
   } 
   arg2 = static_cast< real >(val2);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->target_state = arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->target_state = arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -30852,11 +28931,7 @@ SWIGINTERN PyObject *_wrap_statecontrol_connection_target_state_get(PyObject *SW
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "statecontrol_connection_target_state_get" "', argument " "1"" of type '" "cmf::water::statecontrol_connection *""'"); 
   }
   arg1 = reinterpret_cast< cmf::water::statecontrol_connection * >(argp1);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (real) ((arg1)->target_state);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (real) ((arg1)->target_state);
   resultobj = SWIG_From_double(static_cast< double >(result));
   return resultobj;
 fail:
@@ -30917,11 +28992,7 @@ SWIGINTERN PyObject *_wrap_new_statecontrol_connection(PyObject *SWIGUNUSEDPARM(
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::water::statecontrol_connection *)new cmf::water::statecontrol_connection(arg1,arg2,arg3,arg4);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::water::statecontrol_connection *)new cmf::water::statecontrol_connection(arg1,arg2,arg3,arg4);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -30953,11 +29024,7 @@ SWIGINTERN PyObject *_wrap_delete_statecontrol_connection(PyObject *SWIGUNUSEDPA
   arg1 = reinterpret_cast< cmf::water::statecontrol_connection * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -31000,11 +29067,7 @@ SWIGINTERN PyObject *_wrap_node_list_size(PyObject *SWIGUNUSEDPARM(self), PyObje
   arg1 = reinterpret_cast< cmf::water::node_list * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (int)((cmf::water::node_list const *)arg1)->size();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (int)((cmf::water::node_list const *)arg1)->size();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -31026,11 +29089,7 @@ SWIGINTERN PyObject *_wrap_new_node_list__SWIG_0(PyObject *SWIGUNUSEDPARM(self),
   if ((nobjs < 0) || (nobjs > 0)) SWIG_fail;
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::water::node_list *)new cmf::water::node_list();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::water::node_list *)new cmf::water::node_list();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -31064,11 +29123,7 @@ SWIGINTERN PyObject *_wrap_new_node_list__SWIG_1(PyObject *SWIGUNUSEDPARM(self),
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::water::node_list *)new cmf::water::node_list((cmf::water::node_list const &)*arg1);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::water::node_list *)new cmf::water::node_list((cmf::water::node_list const &)*arg1);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -31171,11 +29226,7 @@ SWIGINTERN PyObject *_wrap_node_list___iadd__(PyObject *SWIGUNUSEDPARM(self), Py
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::water::node_list *) &(arg1)->operator +=((cmf::water::node_list const &)*arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::water::node_list *) &(arg1)->operator +=((cmf::water::node_list const &)*arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -31222,11 +29273,7 @@ SWIGINTERN PyObject *_wrap_node_list___add__(PyObject *SWIGUNUSEDPARM(self), PyO
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = ((cmf::water::node_list const *)arg1)->operator +((cmf::water::node_list const &)*arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = ((cmf::water::node_list const *)arg1)->operator +((cmf::water::node_list const &)*arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -31269,11 +29316,7 @@ SWIGINTERN PyObject *_wrap_node_list___get(PyObject *SWIGUNUSEDPARM(self), PyObj
   arg2 = static_cast< int >(val2);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = ((cmf::water::node_list const *)arg1)->get(arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = ((cmf::water::node_list const *)arg1)->get(arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -31449,11 +29492,7 @@ SWIGINTERN PyObject *_wrap_node_list___getslice(PyObject *SWIGUNUSEDPARM(self), 
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = ((cmf::water::node_list const *)arg1)->getslice(arg2,arg3,arg4);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = ((cmf::water::node_list const *)arg1)->getslice(arg2,arg3,arg4);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -31499,11 +29538,7 @@ SWIGINTERN PyObject *_wrap_node_list_append(PyObject *SWIGUNUSEDPARM(self), PyOb
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        (arg1)->append(arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      (arg1)->append(arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -31550,11 +29585,7 @@ SWIGINTERN PyObject *_wrap_node_list_remove(PyObject *SWIGUNUSEDPARM(self), PyOb
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (bool)(arg1)->remove(arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (bool)(arg1)->remove(arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -31596,11 +29627,7 @@ SWIGINTERN PyObject *_wrap_node_list_global_water_balance(PyObject *SWIGUNUSEDPA
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (real)((cmf::water::node_list const *)arg1)->global_water_balance(arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (real)((cmf::water::node_list const *)arg1)->global_water_balance(arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -31642,11 +29669,7 @@ SWIGINTERN PyObject *_wrap_node_list_water_balance(PyObject *SWIGUNUSEDPARM(self
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = ((cmf::water::node_list const *)arg1)->water_balance(arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = ((cmf::water::node_list const *)arg1)->water_balance(arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -31702,11 +29725,7 @@ SWIGINTERN PyObject *_wrap_node_list_conc(PyObject *SWIGUNUSEDPARM(self), PyObje
   arg3 = reinterpret_cast< cmf::water::solute * >(argp3);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = ((cmf::water::node_list const *)arg1)->conc(arg2,(cmf::water::solute const &)*arg3);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = ((cmf::water::node_list const *)arg1)->conc(arg2,(cmf::water::solute const &)*arg3);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -31766,11 +29785,7 @@ SWIGINTERN PyObject *_wrap_node_list_set_solute_source(PyObject *SWIGUNUSEDPARM(
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (int)(arg1)->set_solute_source((cmf::water::solute const &)*arg2,arg3);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (int)(arg1)->set_solute_source((cmf::water::solute const &)*arg2,arg3);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -31825,11 +29840,7 @@ SWIGINTERN PyObject *_wrap_node_list_get_fluxes_to(PyObject *SWIGUNUSEDPARM(self
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = ((cmf::water::node_list const *)arg1)->get_fluxes_to((cmf::water::node_list const &)*arg2,arg3);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = ((cmf::water::node_list const *)arg1)->get_fluxes_to((cmf::water::node_list const &)*arg2,arg3);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -31886,11 +29897,7 @@ SWIGINTERN PyObject *_wrap_node_list_get_fluxes3d_to(PyObject *SWIGUNUSEDPARM(se
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = ((cmf::water::node_list const *)arg1)->get_fluxes3d_to((cmf::water::node_list const &)*arg2,arg3);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = ((cmf::water::node_list const *)arg1)->get_fluxes3d_to((cmf::water::node_list const &)*arg2,arg3);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -31932,11 +29939,7 @@ SWIGINTERN PyObject *_wrap_node_list_get_fluxes3d(PyObject *SWIGUNUSEDPARM(self)
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = ((cmf::water::node_list const *)arg1)->get_fluxes3d(arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = ((cmf::water::node_list const *)arg1)->get_fluxes3d(arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -31968,11 +29971,7 @@ SWIGINTERN PyObject *_wrap_node_list_get_positions(PyObject *SWIGUNUSEDPARM(self
   arg1 = reinterpret_cast< cmf::water::node_list * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = ((cmf::water::node_list const *)arg1)->get_positions();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = ((cmf::water::node_list const *)arg1)->get_positions();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -32013,11 +30012,7 @@ SWIGINTERN PyObject *_wrap_node_list_potentials_set(PyObject *SWIGUNUSEDPARM(sel
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        cmf_water_node_list_potentials_set(arg1,arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      cmf_water_node_list_potentials_set(arg1,arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -32049,11 +30044,7 @@ SWIGINTERN PyObject *_wrap_node_list_potentials_get(PyObject *SWIGUNUSEDPARM(sel
   arg1 = reinterpret_cast< cmf::water::node_list * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = cmf_water_node_list_potentials_get(arg1);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = cmf_water_node_list_potentials_get(arg1);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -32086,11 +30077,7 @@ SWIGINTERN PyObject *_wrap_delete_node_list(PyObject *SWIGUNUSEDPARM(self), PyOb
   arg1 = reinterpret_cast< cmf::water::node_list * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        delete arg1;
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      delete arg1;
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -32144,11 +30131,7 @@ SWIGINTERN PyObject *_wrap_NeumannBoundary_list_get(PyObject *SWIGUNUSEDPARM(sel
   arg2 = static_cast< int >(val2);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = ((cmf::water::NeumannBoundary_list const *)arg1)->get(arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = ((cmf::water::NeumannBoundary_list const *)arg1)->get(arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -32195,11 +30178,7 @@ SWIGINTERN PyObject *_wrap_NeumannBoundary_list_get_fluxes(PyObject *SWIGUNUSEDP
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = ((cmf::water::NeumannBoundary_list const *)arg1)->get_fluxes(arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = ((cmf::water::NeumannBoundary_list const *)arg1)->get_fluxes(arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -32247,11 +30226,7 @@ SWIGINTERN PyObject *_wrap_NeumannBoundary_list_append(PyObject *SWIGUNUSEDPARM(
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        (arg1)->append(arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      (arg1)->append(arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -32283,11 +30258,7 @@ SWIGINTERN PyObject *_wrap_NeumannBoundary_list_size(PyObject *SWIGUNUSEDPARM(se
   arg1 = reinterpret_cast< cmf::water::NeumannBoundary_list * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = ((cmf::water::NeumannBoundary_list const *)arg1)->size();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = ((cmf::water::NeumannBoundary_list const *)arg1)->size();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -32309,11 +30280,7 @@ SWIGINTERN PyObject *_wrap_new_NeumannBoundary_list__SWIG_0(PyObject *SWIGUNUSED
   if ((nobjs < 0) || (nobjs > 0)) SWIG_fail;
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::water::NeumannBoundary_list *)new cmf::water::NeumannBoundary_list();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::water::NeumannBoundary_list *)new cmf::water::NeumannBoundary_list();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -32347,11 +30314,7 @@ SWIGINTERN PyObject *_wrap_new_NeumannBoundary_list__SWIG_1(PyObject *SWIGUNUSED
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::water::NeumannBoundary_list *)new cmf::water::NeumannBoundary_list((cmf::water::node_list const &)*arg1);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::water::NeumannBoundary_list *)new cmf::water::NeumannBoundary_list((cmf::water::node_list const &)*arg1);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -32385,11 +30348,7 @@ SWIGINTERN PyObject *_wrap_new_NeumannBoundary_list__SWIG_2(PyObject *SWIGUNUSED
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::water::NeumannBoundary_list *)new cmf::water::NeumannBoundary_list((cmf::water::NeumannBoundary_list const &)*arg1);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::water::NeumannBoundary_list *)new cmf::water::NeumannBoundary_list((cmf::water::NeumannBoundary_list const &)*arg1);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -32501,11 +30460,7 @@ SWIGINTERN PyObject *_wrap_NeumannBoundary_list_to_node_list(PyObject *SWIGUNUSE
   arg1 = reinterpret_cast< cmf::water::NeumannBoundary_list * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = ((cmf::water::NeumannBoundary_list const *)arg1)->to_node_list();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = ((cmf::water::NeumannBoundary_list const *)arg1)->to_node_list();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -32547,11 +30502,7 @@ SWIGINTERN PyObject *_wrap_NeumannBoundary_list_global_water_balance(PyObject *S
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (real)((cmf::water::NeumannBoundary_list const *)arg1)->global_water_balance(arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (real)((cmf::water::NeumannBoundary_list const *)arg1)->global_water_balance(arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -32593,11 +30544,7 @@ SWIGINTERN PyObject *_wrap_NeumannBoundary_list_water_balance(PyObject *SWIGUNUS
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = ((cmf::water::NeumannBoundary_list const *)arg1)->water_balance(arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = ((cmf::water::NeumannBoundary_list const *)arg1)->water_balance(arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -32640,11 +30587,7 @@ SWIGINTERN PyObject *_wrap_NeumannBoundary_list_fluxes_set(PyObject *SWIGUNUSEDP
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        cmf_water_NeumannBoundary_list_fluxes_set(arg1,arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      cmf_water_NeumannBoundary_list_fluxes_set(arg1,arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -32676,11 +30619,7 @@ SWIGINTERN PyObject *_wrap_NeumannBoundary_list_fluxes_get(PyObject *SWIGUNUSEDP
   arg1 = reinterpret_cast< cmf::water::NeumannBoundary_list * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = cmf_water_NeumannBoundary_list_fluxes_get(arg1);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = cmf_water_NeumannBoundary_list_fluxes_get(arg1);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -32713,11 +30652,7 @@ SWIGINTERN PyObject *_wrap_delete_NeumannBoundary_list(PyObject *SWIGUNUSEDPARM(
   arg1 = reinterpret_cast< cmf::water::NeumannBoundary_list * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        delete arg1;
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      delete arg1;
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -32772,11 +30707,7 @@ SWIGINTERN PyObject *_wrap_SystemBridge_get_upper_node(PyObject *SWIGUNUSEDPARM(
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = ((cmf::water::SystemBridge const *)arg1)->get_upper_node();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = ((cmf::water::SystemBridge const *)arg1)->get_upper_node();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -32823,11 +30754,7 @@ SWIGINTERN PyObject *_wrap_SystemBridge_get_lower_node(PyObject *SWIGUNUSEDPARM(
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = ((cmf::water::SystemBridge const *)arg1)->get_lower_node();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = ((cmf::water::SystemBridge const *)arg1)->get_lower_node();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -32874,11 +30801,7 @@ SWIGINTERN PyObject *_wrap_SystemBridge_get_down_flux(PyObject *SWIGUNUSEDPARM(s
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (double)((cmf::water::SystemBridge const *)arg1)->get_down_flux();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (double)((cmf::water::SystemBridge const *)arg1)->get_down_flux();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -32922,11 +30845,7 @@ SWIGINTERN PyObject *_wrap_SystemBridge_down_flux_integrator(PyObject *SWIGUNUSE
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = ((cmf::water::SystemBridge const *)arg1)->down_flux_integrator();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = ((cmf::water::SystemBridge const *)arg1)->down_flux_integrator();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -32972,11 +30891,7 @@ SWIGINTERN PyObject *_wrap_delete_SystemBridge(PyObject *SWIGUNUSEDPARM(self), P
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        (void)arg1; delete smartarg1;
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      (void)arg1; delete smartarg1;
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -33014,11 +30929,7 @@ SWIGINTERN PyObject *_wrap_delete_SystemBridgeConnection(PyObject *SWIGUNUSEDPAR
   arg1 = reinterpret_cast< cmf::water::SystemBridgeConnection * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -33088,11 +30999,7 @@ SWIGINTERN PyObject *_wrap_system_bridge(PyObject *SWIGUNUSEDPARM(self), PyObjec
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = cmf::water::system_bridge(*arg1,arg2,arg3);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = cmf::water::system_bridge(*arg1,arg2,arg3);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -33129,11 +31036,7 @@ SWIGINTERN PyObject *_wrap_vapour_pressure(PyObject *SWIGUNUSEDPARM(self), PyObj
   arg1 = static_cast< double >(val1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (double)cmf::atmosphere::vapour_pressure(arg1);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (double)cmf::atmosphere::vapour_pressure(arg1);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -33176,11 +31079,7 @@ SWIGINTERN PyObject *_wrap_vpd_from_rH(PyObject *SWIGUNUSEDPARM(self), PyObject 
   arg2 = static_cast< double >(val2);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (double)cmf::atmosphere::vpd_from_rH(arg1,arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (double)cmf::atmosphere::vpd_from_rH(arg1,arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -33223,11 +31122,7 @@ SWIGINTERN PyObject *_wrap_rH_from_vpd(PyObject *SWIGUNUSEDPARM(self), PyObject 
   arg2 = static_cast< double >(val2);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (double)cmf::atmosphere::rH_from_vpd(arg1,arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (double)cmf::atmosphere::rH_from_vpd(arg1,arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -33322,11 +31217,7 @@ SWIGINTERN PyObject *_wrap_global_radiation(PyObject *SWIGUNUSEDPARM(self), PyOb
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (double)cmf::atmosphere::global_radiation(arg1,arg2,arg3,arg4,arg5,arg6,arg7);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (double)cmf::atmosphere::global_radiation(arg1,arg2,arg3,arg4,arg5,arg6,arg7);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -33360,11 +31251,7 @@ SWIGINTERN PyObject *_wrap_Pressure(PyObject *SWIGUNUSEDPARM(self), PyObject *ar
   arg1 = static_cast< double >(val1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (double)cmf::atmosphere::Pressure(arg1);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (double)cmf::atmosphere::Pressure(arg1);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -33400,11 +31287,7 @@ SWIGINTERN PyObject *_wrap_Weather_T_set(PyObject *SWIGUNUSEDPARM(self), PyObjec
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Weather_T_set" "', argument " "2"" of type '" "double""'");
   } 
   arg2 = static_cast< double >(val2);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->T = arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->T = arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -33427,11 +31310,7 @@ SWIGINTERN PyObject *_wrap_Weather_T_get(PyObject *SWIGUNUSEDPARM(self), PyObjec
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Weather_T_get" "', argument " "1"" of type '" "cmf::atmosphere::Weather *""'"); 
   }
   arg1 = reinterpret_cast< cmf::atmosphere::Weather * >(argp1);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (double) ((arg1)->T);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (double) ((arg1)->T);
   resultobj = SWIG_From_double(static_cast< double >(result));
   return resultobj;
 fail:
@@ -33460,11 +31339,7 @@ SWIGINTERN PyObject *_wrap_Weather_Tmax_set(PyObject *SWIGUNUSEDPARM(self), PyOb
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Weather_Tmax_set" "', argument " "2"" of type '" "double""'");
   } 
   arg2 = static_cast< double >(val2);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->Tmax = arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->Tmax = arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -33487,11 +31362,7 @@ SWIGINTERN PyObject *_wrap_Weather_Tmax_get(PyObject *SWIGUNUSEDPARM(self), PyOb
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Weather_Tmax_get" "', argument " "1"" of type '" "cmf::atmosphere::Weather *""'"); 
   }
   arg1 = reinterpret_cast< cmf::atmosphere::Weather * >(argp1);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (double) ((arg1)->Tmax);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (double) ((arg1)->Tmax);
   resultobj = SWIG_From_double(static_cast< double >(result));
   return resultobj;
 fail:
@@ -33520,11 +31391,7 @@ SWIGINTERN PyObject *_wrap_Weather_Tmin_set(PyObject *SWIGUNUSEDPARM(self), PyOb
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Weather_Tmin_set" "', argument " "2"" of type '" "double""'");
   } 
   arg2 = static_cast< double >(val2);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->Tmin = arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->Tmin = arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -33547,11 +31414,7 @@ SWIGINTERN PyObject *_wrap_Weather_Tmin_get(PyObject *SWIGUNUSEDPARM(self), PyOb
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Weather_Tmin_get" "', argument " "1"" of type '" "cmf::atmosphere::Weather *""'"); 
   }
   arg1 = reinterpret_cast< cmf::atmosphere::Weather * >(argp1);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (double) ((arg1)->Tmin);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (double) ((arg1)->Tmin);
   resultobj = SWIG_From_double(static_cast< double >(result));
   return resultobj;
 fail:
@@ -33580,11 +31443,7 @@ SWIGINTERN PyObject *_wrap_Weather_Tground_set(PyObject *SWIGUNUSEDPARM(self), P
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Weather_Tground_set" "', argument " "2"" of type '" "double""'");
   } 
   arg2 = static_cast< double >(val2);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->Tground = arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->Tground = arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -33607,11 +31466,7 @@ SWIGINTERN PyObject *_wrap_Weather_Tground_get(PyObject *SWIGUNUSEDPARM(self), P
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Weather_Tground_get" "', argument " "1"" of type '" "cmf::atmosphere::Weather *""'"); 
   }
   arg1 = reinterpret_cast< cmf::atmosphere::Weather * >(argp1);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (double) ((arg1)->Tground);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (double) ((arg1)->Tground);
   resultobj = SWIG_From_double(static_cast< double >(result));
   return resultobj;
 fail:
@@ -33640,11 +31495,7 @@ SWIGINTERN PyObject *_wrap_Weather_Windspeed_set(PyObject *SWIGUNUSEDPARM(self),
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Weather_Windspeed_set" "', argument " "2"" of type '" "double""'");
   } 
   arg2 = static_cast< double >(val2);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->Windspeed = arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->Windspeed = arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -33667,11 +31518,7 @@ SWIGINTERN PyObject *_wrap_Weather_Windspeed_get(PyObject *SWIGUNUSEDPARM(self),
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Weather_Windspeed_get" "', argument " "1"" of type '" "cmf::atmosphere::Weather *""'"); 
   }
   arg1 = reinterpret_cast< cmf::atmosphere::Weather * >(argp1);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (double) ((arg1)->Windspeed);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (double) ((arg1)->Windspeed);
   resultobj = SWIG_From_double(static_cast< double >(result));
   return resultobj;
 fail:
@@ -33700,11 +31547,7 @@ SWIGINTERN PyObject *_wrap_Weather_e_a_set(PyObject *SWIGUNUSEDPARM(self), PyObj
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Weather_e_a_set" "', argument " "2"" of type '" "double""'");
   } 
   arg2 = static_cast< double >(val2);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->e_a = arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->e_a = arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -33727,11 +31570,7 @@ SWIGINTERN PyObject *_wrap_Weather_e_a_get(PyObject *SWIGUNUSEDPARM(self), PyObj
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Weather_e_a_get" "', argument " "1"" of type '" "cmf::atmosphere::Weather *""'"); 
   }
   arg1 = reinterpret_cast< cmf::atmosphere::Weather * >(argp1);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (double) ((arg1)->e_a);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (double) ((arg1)->e_a);
   resultobj = SWIG_From_double(static_cast< double >(result));
   return resultobj;
 fail:
@@ -33760,11 +31599,7 @@ SWIGINTERN PyObject *_wrap_Weather_e_s_set(PyObject *SWIGUNUSEDPARM(self), PyObj
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Weather_e_s_set" "', argument " "2"" of type '" "double""'");
   } 
   arg2 = static_cast< double >(val2);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->e_s = arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->e_s = arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -33787,11 +31622,7 @@ SWIGINTERN PyObject *_wrap_Weather_e_s_get(PyObject *SWIGUNUSEDPARM(self), PyObj
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Weather_e_s_get" "', argument " "1"" of type '" "cmf::atmosphere::Weather *""'"); 
   }
   arg1 = reinterpret_cast< cmf::atmosphere::Weather * >(argp1);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (double) ((arg1)->e_s);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (double) ((arg1)->e_s);
   resultobj = SWIG_From_double(static_cast< double >(result));
   return resultobj;
 fail:
@@ -33820,11 +31651,7 @@ SWIGINTERN PyObject *_wrap_Weather_sunshine_set(PyObject *SWIGUNUSEDPARM(self), 
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Weather_sunshine_set" "', argument " "2"" of type '" "double""'");
   } 
   arg2 = static_cast< double >(val2);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->sunshine = arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->sunshine = arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -33847,11 +31674,7 @@ SWIGINTERN PyObject *_wrap_Weather_sunshine_get(PyObject *SWIGUNUSEDPARM(self), 
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Weather_sunshine_get" "', argument " "1"" of type '" "cmf::atmosphere::Weather *""'"); 
   }
   arg1 = reinterpret_cast< cmf::atmosphere::Weather * >(argp1);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (double) ((arg1)->sunshine);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (double) ((arg1)->sunshine);
   resultobj = SWIG_From_double(static_cast< double >(result));
   return resultobj;
 fail:
@@ -33880,11 +31703,7 @@ SWIGINTERN PyObject *_wrap_Weather_Rs_set(PyObject *SWIGUNUSEDPARM(self), PyObje
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Weather_Rs_set" "', argument " "2"" of type '" "double""'");
   } 
   arg2 = static_cast< double >(val2);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->Rs = arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->Rs = arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -33907,11 +31726,7 @@ SWIGINTERN PyObject *_wrap_Weather_Rs_get(PyObject *SWIGUNUSEDPARM(self), PyObje
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Weather_Rs_get" "', argument " "1"" of type '" "cmf::atmosphere::Weather *""'"); 
   }
   arg1 = reinterpret_cast< cmf::atmosphere::Weather * >(argp1);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (double) ((arg1)->Rs);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (double) ((arg1)->Rs);
   resultobj = SWIG_From_double(static_cast< double >(result));
   return resultobj;
 fail:
@@ -33940,11 +31755,7 @@ SWIGINTERN PyObject *_wrap_Weather_daylength_set(PyObject *SWIGUNUSEDPARM(self),
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Weather_daylength_set" "', argument " "2"" of type '" "double""'");
   } 
   arg2 = static_cast< double >(val2);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->daylength = arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->daylength = arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -33967,11 +31778,7 @@ SWIGINTERN PyObject *_wrap_Weather_daylength_get(PyObject *SWIGUNUSEDPARM(self),
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Weather_daylength_get" "', argument " "1"" of type '" "cmf::atmosphere::Weather *""'"); 
   }
   arg1 = reinterpret_cast< cmf::atmosphere::Weather * >(argp1);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (double) ((arg1)->daylength);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (double) ((arg1)->daylength);
   resultobj = SWIG_From_double(static_cast< double >(result));
   return resultobj;
 fail:
@@ -34000,11 +31807,7 @@ SWIGINTERN PyObject *_wrap_Weather_instrument_height_set(PyObject *SWIGUNUSEDPAR
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Weather_instrument_height_set" "', argument " "2"" of type '" "double""'");
   } 
   arg2 = static_cast< double >(val2);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->instrument_height = arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->instrument_height = arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -34027,11 +31830,7 @@ SWIGINTERN PyObject *_wrap_Weather_instrument_height_get(PyObject *SWIGUNUSEDPAR
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Weather_instrument_height_get" "', argument " "1"" of type '" "cmf::atmosphere::Weather *""'"); 
   }
   arg1 = reinterpret_cast< cmf::atmosphere::Weather * >(argp1);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (double) ((arg1)->instrument_height);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (double) ((arg1)->instrument_height);
   resultobj = SWIG_From_double(static_cast< double >(result));
   return resultobj;
 fail:
@@ -34078,11 +31877,7 @@ SWIGINTERN PyObject *_wrap_Weather_Rn(PyObject *SWIGUNUSEDPARM(self), PyObject *
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (double)((cmf::atmosphere::Weather const *)arg1)->Rn(arg2,arg3);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (double)((cmf::atmosphere::Weather const *)arg1)->Rn(arg2,arg3);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -34195,11 +31990,7 @@ SWIGINTERN PyObject *_wrap_new_Weather(PyObject *SWIGUNUSEDPARM(self), PyObject 
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::atmosphere::Weather *)new cmf::atmosphere::Weather(arg1,arg2,arg3,arg4,arg5,arg6,arg7,arg8);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::atmosphere::Weather *)new cmf::atmosphere::Weather(arg1,arg2,arg3,arg4,arg5,arg6,arg7,arg8);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -34231,11 +32022,7 @@ SWIGINTERN PyObject *_wrap_Weather_to_string(PyObject *SWIGUNUSEDPARM(self), PyO
   arg1 = reinterpret_cast< cmf::atmosphere::Weather * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = ((cmf::atmosphere::Weather const *)arg1)->to_string();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = ((cmf::atmosphere::Weather const *)arg1)->to_string();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -34317,11 +32104,7 @@ SWIGINTERN PyObject *_wrap_Weather___iadd__(PyObject *SWIGUNUSEDPARM(self), PyOb
   arg2 = reinterpret_cast< cmf::atmosphere::Weather * >(argp2);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::atmosphere::Weather *) &(arg1)->operator +=((cmf::atmosphere::Weather const &)*arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::atmosphere::Weather *) &(arg1)->operator +=((cmf::atmosphere::Weather const &)*arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -34364,11 +32147,7 @@ SWIGINTERN PyObject *_wrap_Weather___imul__(PyObject *SWIGUNUSEDPARM(self), PyOb
   arg2 = static_cast< double >(val2);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::atmosphere::Weather *) &(arg1)->operator *=(arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::atmosphere::Weather *) &(arg1)->operator *=(arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -34414,11 +32193,7 @@ SWIGINTERN PyObject *_wrap_Weather___add__(PyObject *SWIGUNUSEDPARM(self), PyObj
   arg2 = reinterpret_cast< cmf::atmosphere::Weather * >(argp2);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (arg1)->operator +((cmf::atmosphere::Weather const &)*arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (arg1)->operator +((cmf::atmosphere::Weather const &)*arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -34461,11 +32236,7 @@ SWIGINTERN PyObject *_wrap_Weather___mul__(PyObject *SWIGUNUSEDPARM(self), PyObj
   arg2 = static_cast< double >(val2);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (arg1)->operator *(arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (arg1)->operator *(arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -34496,11 +32267,7 @@ SWIGINTERN PyObject *_wrap_delete_Weather(PyObject *SWIGUNUSEDPARM(self), PyObje
   arg1 = reinterpret_cast< cmf::atmosphere::Weather * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        delete arg1;
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      delete arg1;
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -34553,11 +32320,7 @@ SWIGINTERN PyObject *_wrap_Meteorology___call__(PyObject *SWIGUNUSEDPARM(self), 
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (arg1)->operator ()(arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (arg1)->operator ()(arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -34599,11 +32362,7 @@ SWIGINTERN PyObject *_wrap_Meteorology_get_weather(PyObject *SWIGUNUSEDPARM(self
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = ((cmf::atmosphere::Meteorology const *)arg1)->get_weather(arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = ((cmf::atmosphere::Meteorology const *)arg1)->get_weather(arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -34635,11 +32394,7 @@ SWIGINTERN PyObject *_wrap_Meteorology_copy(PyObject *SWIGUNUSEDPARM(self), PyOb
   arg1 = reinterpret_cast< cmf::atmosphere::Meteorology * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::atmosphere::Meteorology *)((cmf::atmosphere::Meteorology const *)arg1)->copy();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::atmosphere::Meteorology *)((cmf::atmosphere::Meteorology const *)arg1)->copy();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -34671,11 +32426,7 @@ SWIGINTERN PyObject *_wrap_Meteorology_get_instrument_height(PyObject *SWIGUNUSE
   arg1 = reinterpret_cast< cmf::atmosphere::Meteorology * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (real)((cmf::atmosphere::Meteorology const *)arg1)->get_instrument_height();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (real)((cmf::atmosphere::Meteorology const *)arg1)->get_instrument_height();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -34706,11 +32457,7 @@ SWIGINTERN PyObject *_wrap_delete_Meteorology(PyObject *SWIGUNUSEDPARM(self), Py
   arg1 = reinterpret_cast< cmf::atmosphere::Meteorology * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        delete arg1;
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      delete arg1;
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -34753,11 +32500,7 @@ SWIGINTERN PyObject *_wrap_ConstantMeteorology_weather_set(PyObject *SWIGUNUSEDP
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ConstantMeteorology_weather_set" "', argument " "2"" of type '" "cmf::atmosphere::Weather *""'"); 
   }
   arg2 = reinterpret_cast< cmf::atmosphere::Weather * >(argp2);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->weather = *arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->weather = *arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -34780,11 +32523,7 @@ SWIGINTERN PyObject *_wrap_ConstantMeteorology_weather_get(PyObject *SWIGUNUSEDP
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ConstantMeteorology_weather_get" "', argument " "1"" of type '" "cmf::atmosphere::ConstantMeteorology *""'"); 
   }
   arg1 = reinterpret_cast< cmf::atmosphere::ConstantMeteorology * >(argp1);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (cmf::atmosphere::Weather *)& ((arg1)->weather);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (cmf::atmosphere::Weather *)& ((arg1)->weather);
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_cmf__atmosphere__Weather, 0 |  0 );
   return resultobj;
 fail:
@@ -34799,11 +32538,7 @@ SWIGINTERN PyObject *_wrap_new_ConstantMeteorology__SWIG_0(PyObject *SWIGUNUSEDP
   if ((nobjs < 0) || (nobjs > 0)) SWIG_fail;
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::atmosphere::ConstantMeteorology *)new cmf::atmosphere::ConstantMeteorology();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::atmosphere::ConstantMeteorology *)new cmf::atmosphere::ConstantMeteorology();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -34836,11 +32571,7 @@ SWIGINTERN PyObject *_wrap_new_ConstantMeteorology__SWIG_1(PyObject *SWIGUNUSEDP
   arg1 = reinterpret_cast< cmf::atmosphere::Weather * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::atmosphere::ConstantMeteorology *)new cmf::atmosphere::ConstantMeteorology((cmf::atmosphere::Weather const &)*arg1);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::atmosphere::ConstantMeteorology *)new cmf::atmosphere::ConstantMeteorology((cmf::atmosphere::Weather const &)*arg1);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -34873,11 +32604,7 @@ SWIGINTERN PyObject *_wrap_new_ConstantMeteorology__SWIG_2(PyObject *SWIGUNUSEDP
   arg1 = reinterpret_cast< cmf::atmosphere::ConstantMeteorology * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::atmosphere::ConstantMeteorology *)new cmf::atmosphere::ConstantMeteorology((cmf::atmosphere::ConstantMeteorology const &)*arg1);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::atmosphere::ConstantMeteorology *)new cmf::atmosphere::ConstantMeteorology((cmf::atmosphere::ConstantMeteorology const &)*arg1);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -34987,11 +32714,7 @@ SWIGINTERN PyObject *_wrap_ConstantMeteorology_copy(PyObject *SWIGUNUSEDPARM(sel
   arg1 = reinterpret_cast< cmf::atmosphere::ConstantMeteorology * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::atmosphere::ConstantMeteorology *)((cmf::atmosphere::ConstantMeteorology const *)arg1)->copy();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::atmosphere::ConstantMeteorology *)((cmf::atmosphere::ConstantMeteorology const *)arg1)->copy();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -35022,11 +32745,7 @@ SWIGINTERN PyObject *_wrap_delete_ConstantMeteorology(PyObject *SWIGUNUSEDPARM(s
   arg1 = reinterpret_cast< cmf::atmosphere::ConstantMeteorology * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        delete arg1;
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      delete arg1;
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -35085,11 +32804,7 @@ SWIGINTERN PyObject *_wrap_MeteoStation_Latitude_set(PyObject *SWIGUNUSEDPARM(se
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "MeteoStation_Latitude_set" "', argument " "2"" of type '" "double""'");
   } 
   arg2 = static_cast< double >(val2);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->Latitude = arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->Latitude = arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -35124,11 +32839,7 @@ SWIGINTERN PyObject *_wrap_MeteoStation_Latitude_get(PyObject *SWIGUNUSEDPARM(se
       arg1 = const_cast< cmf::atmosphere::MeteoStation * >((smartarg1 ? smartarg1->get() : 0));
     }
   }
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (double) ((arg1)->Latitude);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (double) ((arg1)->Latitude);
   resultobj = SWIG_From_double(static_cast< double >(result));
   return resultobj;
 fail:
@@ -35169,11 +32880,7 @@ SWIGINTERN PyObject *_wrap_MeteoStation_Longitude_set(PyObject *SWIGUNUSEDPARM(s
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "MeteoStation_Longitude_set" "', argument " "2"" of type '" "double""'");
   } 
   arg2 = static_cast< double >(val2);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->Longitude = arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->Longitude = arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -35208,11 +32915,7 @@ SWIGINTERN PyObject *_wrap_MeteoStation_Longitude_get(PyObject *SWIGUNUSEDPARM(s
       arg1 = const_cast< cmf::atmosphere::MeteoStation * >((smartarg1 ? smartarg1->get() : 0));
     }
   }
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (double) ((arg1)->Longitude);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (double) ((arg1)->Longitude);
   resultobj = SWIG_From_double(static_cast< double >(result));
   return resultobj;
 fail:
@@ -35253,11 +32956,7 @@ SWIGINTERN PyObject *_wrap_MeteoStation_Timezone_set(PyObject *SWIGUNUSEDPARM(se
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "MeteoStation_Timezone_set" "', argument " "2"" of type '" "double""'");
   } 
   arg2 = static_cast< double >(val2);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->Timezone = arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->Timezone = arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -35292,11 +32991,7 @@ SWIGINTERN PyObject *_wrap_MeteoStation_Timezone_get(PyObject *SWIGUNUSEDPARM(se
       arg1 = const_cast< cmf::atmosphere::MeteoStation * >((smartarg1 ? smartarg1->get() : 0));
     }
   }
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (double) ((arg1)->Timezone);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (double) ((arg1)->Timezone);
   resultobj = SWIG_From_double(static_cast< double >(result));
   return resultobj;
 fail:
@@ -35337,11 +33032,7 @@ SWIGINTERN PyObject *_wrap_MeteoStation_x_set(PyObject *SWIGUNUSEDPARM(self), Py
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "MeteoStation_x_set" "', argument " "2"" of type '" "double""'");
   } 
   arg2 = static_cast< double >(val2);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->x = arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->x = arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -35376,11 +33067,7 @@ SWIGINTERN PyObject *_wrap_MeteoStation_x_get(PyObject *SWIGUNUSEDPARM(self), Py
       arg1 = const_cast< cmf::atmosphere::MeteoStation * >((smartarg1 ? smartarg1->get() : 0));
     }
   }
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (double) ((arg1)->x);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (double) ((arg1)->x);
   resultobj = SWIG_From_double(static_cast< double >(result));
   return resultobj;
 fail:
@@ -35421,11 +33108,7 @@ SWIGINTERN PyObject *_wrap_MeteoStation_y_set(PyObject *SWIGUNUSEDPARM(self), Py
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "MeteoStation_y_set" "', argument " "2"" of type '" "double""'");
   } 
   arg2 = static_cast< double >(val2);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->y = arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->y = arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -35460,11 +33143,7 @@ SWIGINTERN PyObject *_wrap_MeteoStation_y_get(PyObject *SWIGUNUSEDPARM(self), Py
       arg1 = const_cast< cmf::atmosphere::MeteoStation * >((smartarg1 ? smartarg1->get() : 0));
     }
   }
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (double) ((arg1)->y);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (double) ((arg1)->y);
   resultobj = SWIG_From_double(static_cast< double >(result));
   return resultobj;
 fail:
@@ -35505,11 +33184,7 @@ SWIGINTERN PyObject *_wrap_MeteoStation_z_set(PyObject *SWIGUNUSEDPARM(self), Py
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "MeteoStation_z_set" "', argument " "2"" of type '" "double""'");
   } 
   arg2 = static_cast< double >(val2);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->z = arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->z = arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -35544,11 +33219,7 @@ SWIGINTERN PyObject *_wrap_MeteoStation_z_get(PyObject *SWIGUNUSEDPARM(self), Py
       arg1 = const_cast< cmf::atmosphere::MeteoStation * >((smartarg1 ? smartarg1->get() : 0));
     }
   }
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (double) ((arg1)->z);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (double) ((arg1)->z);
   resultobj = SWIG_From_double(static_cast< double >(result));
   return resultobj;
 fail:
@@ -35594,11 +33265,7 @@ SWIGINTERN PyObject *_wrap_MeteoStation_Name_set(PyObject *SWIGUNUSEDPARM(self),
     }
     arg2 = ptr;
   }
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->Name = *arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->Name = *arg2;
   resultobj = SWIG_Py_Void();
   if (SWIG_IsNewObj(res2)) delete arg2;
   return resultobj;
@@ -35635,11 +33302,7 @@ SWIGINTERN PyObject *_wrap_MeteoStation_Name_get(PyObject *SWIGUNUSEDPARM(self),
       arg1 = const_cast< cmf::atmosphere::MeteoStation * >((smartarg1 ? smartarg1->get() : 0));
     }
   }
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (std::string *) & ((arg1)->Name);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (std::string *) & ((arg1)->Name);
   resultobj = SWIG_From_std_string(static_cast< std::string >(*result));
   return resultobj;
 fail:
@@ -35676,11 +33339,7 @@ SWIGINTERN PyObject *_wrap_MeteoStation_get_position(PyObject *SWIGUNUSEDPARM(se
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = ((cmf::atmosphere::MeteoStation const *)arg1)->get_position();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = ((cmf::atmosphere::MeteoStation const *)arg1)->get_position();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -35728,11 +33387,7 @@ SWIGINTERN PyObject *_wrap_MeteoStation_daily_set(PyObject *SWIGUNUSEDPARM(self)
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "MeteoStation_daily_set" "', argument " "2"" of type '" "bool""'");
   } 
   arg2 = static_cast< bool >(val2);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->daily = arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->daily = arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -35767,11 +33422,7 @@ SWIGINTERN PyObject *_wrap_MeteoStation_daily_get(PyObject *SWIGUNUSEDPARM(self)
       arg1 = const_cast< cmf::atmosphere::MeteoStation * >((smartarg1 ? smartarg1->get() : 0));
     }
   }
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (bool) ((arg1)->daily);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (bool) ((arg1)->daily);
   resultobj = SWIG_From_bool(static_cast< bool >(result));
   return resultobj;
 fail:
@@ -35812,11 +33463,7 @@ SWIGINTERN PyObject *_wrap_MeteoStation_InstrumentHeight_set(PyObject *SWIGUNUSE
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "MeteoStation_InstrumentHeight_set" "', argument " "2"" of type '" "real""'");
   } 
   arg2 = static_cast< real >(val2);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->InstrumentHeight = arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->InstrumentHeight = arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -35851,11 +33498,7 @@ SWIGINTERN PyObject *_wrap_MeteoStation_InstrumentHeight_get(PyObject *SWIGUNUSE
       arg1 = const_cast< cmf::atmosphere::MeteoStation * >((smartarg1 ? smartarg1->get() : 0));
     }
   }
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (real) ((arg1)->InstrumentHeight);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (real) ((arg1)->InstrumentHeight);
   resultobj = SWIG_From_double(static_cast< double >(result));
   return resultobj;
 fail:
@@ -35895,11 +33538,7 @@ SWIGINTERN PyObject *_wrap_new_MeteoStation(PyObject *SWIGUNUSEDPARM(self), PyOb
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::atmosphere::MeteoStation *)new cmf::atmosphere::MeteoStation((cmf::atmosphere::MeteoStation const &)*arg1);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::atmosphere::MeteoStation *)new cmf::atmosphere::MeteoStation((cmf::atmosphere::MeteoStation const &)*arg1);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -35965,11 +33604,7 @@ SWIGINTERN PyObject *_wrap_MeteoStation_get_data(PyObject *SWIGUNUSEDPARM(self),
   arg3 = static_cast< double >(val3);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = ((cmf::atmosphere::MeteoStation const *)arg1)->get_data(arg2,arg3);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = ((cmf::atmosphere::MeteoStation const *)arg1)->get_data(arg2,arg3);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -36026,11 +33661,7 @@ SWIGINTERN PyObject *_wrap_MeteoStation_use_for_cell(PyObject *SWIGUNUSEDPARM(se
   arg2 = reinterpret_cast< cmf::upslope::Cell * >(argp2);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        (arg1)->use_for_cell(*arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      (arg1)->use_for_cell(*arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -36091,11 +33722,7 @@ SWIGINTERN PyObject *_wrap_MeteoStation_SetSunshineFraction(PyObject *SWIGUNUSED
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        (arg1)->SetSunshineFraction(arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      (arg1)->SetSunshineFraction(arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -36143,11 +33770,7 @@ SWIGINTERN PyObject *_wrap_MeteoStation_T_set(PyObject *SWIGUNUSEDPARM(self), Py
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "MeteoStation_T_set" "', argument " "2"" of type '" "cmf::math::timeseries *""'"); 
   }
   arg2 = reinterpret_cast< cmf::math::timeseries * >(argp2);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->T = *arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->T = *arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -36182,11 +33805,7 @@ SWIGINTERN PyObject *_wrap_MeteoStation_T_get(PyObject *SWIGUNUSEDPARM(self), Py
       arg1 = const_cast< cmf::atmosphere::MeteoStation * >((smartarg1 ? smartarg1->get() : 0));
     }
   }
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (cmf::math::timeseries *)& ((arg1)->T);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (cmf::math::timeseries *)& ((arg1)->T);
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_cmf__math__timeseries, 0 |  0 );
   return resultobj;
 fail:
@@ -36227,11 +33846,7 @@ SWIGINTERN PyObject *_wrap_MeteoStation_Tmax_set(PyObject *SWIGUNUSEDPARM(self),
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "MeteoStation_Tmax_set" "', argument " "2"" of type '" "cmf::math::timeseries *""'"); 
   }
   arg2 = reinterpret_cast< cmf::math::timeseries * >(argp2);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->Tmax = *arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->Tmax = *arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -36266,11 +33881,7 @@ SWIGINTERN PyObject *_wrap_MeteoStation_Tmax_get(PyObject *SWIGUNUSEDPARM(self),
       arg1 = const_cast< cmf::atmosphere::MeteoStation * >((smartarg1 ? smartarg1->get() : 0));
     }
   }
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (cmf::math::timeseries *)& ((arg1)->Tmax);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (cmf::math::timeseries *)& ((arg1)->Tmax);
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_cmf__math__timeseries, 0 |  0 );
   return resultobj;
 fail:
@@ -36311,11 +33922,7 @@ SWIGINTERN PyObject *_wrap_MeteoStation_Tmin_set(PyObject *SWIGUNUSEDPARM(self),
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "MeteoStation_Tmin_set" "', argument " "2"" of type '" "cmf::math::timeseries *""'"); 
   }
   arg2 = reinterpret_cast< cmf::math::timeseries * >(argp2);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->Tmin = *arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->Tmin = *arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -36350,11 +33957,7 @@ SWIGINTERN PyObject *_wrap_MeteoStation_Tmin_get(PyObject *SWIGUNUSEDPARM(self),
       arg1 = const_cast< cmf::atmosphere::MeteoStation * >((smartarg1 ? smartarg1->get() : 0));
     }
   }
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (cmf::math::timeseries *)& ((arg1)->Tmin);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (cmf::math::timeseries *)& ((arg1)->Tmin);
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_cmf__math__timeseries, 0 |  0 );
   return resultobj;
 fail:
@@ -36395,11 +33998,7 @@ SWIGINTERN PyObject *_wrap_MeteoStation_Tground_set(PyObject *SWIGUNUSEDPARM(sel
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "MeteoStation_Tground_set" "', argument " "2"" of type '" "cmf::math::timeseries *""'"); 
   }
   arg2 = reinterpret_cast< cmf::math::timeseries * >(argp2);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->Tground = *arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->Tground = *arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -36434,11 +34033,7 @@ SWIGINTERN PyObject *_wrap_MeteoStation_Tground_get(PyObject *SWIGUNUSEDPARM(sel
       arg1 = const_cast< cmf::atmosphere::MeteoStation * >((smartarg1 ? smartarg1->get() : 0));
     }
   }
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (cmf::math::timeseries *)& ((arg1)->Tground);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (cmf::math::timeseries *)& ((arg1)->Tground);
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_cmf__math__timeseries, 0 |  0 );
   return resultobj;
 fail:
@@ -36479,11 +34074,7 @@ SWIGINTERN PyObject *_wrap_MeteoStation_Windspeed_set(PyObject *SWIGUNUSEDPARM(s
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "MeteoStation_Windspeed_set" "', argument " "2"" of type '" "cmf::math::timeseries *""'"); 
   }
   arg2 = reinterpret_cast< cmf::math::timeseries * >(argp2);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->Windspeed = *arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->Windspeed = *arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -36518,11 +34109,7 @@ SWIGINTERN PyObject *_wrap_MeteoStation_Windspeed_get(PyObject *SWIGUNUSEDPARM(s
       arg1 = const_cast< cmf::atmosphere::MeteoStation * >((smartarg1 ? smartarg1->get() : 0));
     }
   }
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (cmf::math::timeseries *)& ((arg1)->Windspeed);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (cmf::math::timeseries *)& ((arg1)->Windspeed);
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_cmf__math__timeseries, 0 |  0 );
   return resultobj;
 fail:
@@ -36563,11 +34150,7 @@ SWIGINTERN PyObject *_wrap_MeteoStation_rHmean_set(PyObject *SWIGUNUSEDPARM(self
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "MeteoStation_rHmean_set" "', argument " "2"" of type '" "cmf::math::timeseries *""'"); 
   }
   arg2 = reinterpret_cast< cmf::math::timeseries * >(argp2);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->rHmean = *arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->rHmean = *arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -36602,11 +34185,7 @@ SWIGINTERN PyObject *_wrap_MeteoStation_rHmean_get(PyObject *SWIGUNUSEDPARM(self
       arg1 = const_cast< cmf::atmosphere::MeteoStation * >((smartarg1 ? smartarg1->get() : 0));
     }
   }
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (cmf::math::timeseries *)& ((arg1)->rHmean);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (cmf::math::timeseries *)& ((arg1)->rHmean);
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_cmf__math__timeseries, 0 |  0 );
   return resultobj;
 fail:
@@ -36647,11 +34226,7 @@ SWIGINTERN PyObject *_wrap_MeteoStation_rHmin_set(PyObject *SWIGUNUSEDPARM(self)
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "MeteoStation_rHmin_set" "', argument " "2"" of type '" "cmf::math::timeseries *""'"); 
   }
   arg2 = reinterpret_cast< cmf::math::timeseries * >(argp2);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->rHmin = *arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->rHmin = *arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -36686,11 +34261,7 @@ SWIGINTERN PyObject *_wrap_MeteoStation_rHmin_get(PyObject *SWIGUNUSEDPARM(self)
       arg1 = const_cast< cmf::atmosphere::MeteoStation * >((smartarg1 ? smartarg1->get() : 0));
     }
   }
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (cmf::math::timeseries *)& ((arg1)->rHmin);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (cmf::math::timeseries *)& ((arg1)->rHmin);
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_cmf__math__timeseries, 0 |  0 );
   return resultobj;
 fail:
@@ -36731,11 +34302,7 @@ SWIGINTERN PyObject *_wrap_MeteoStation_rHmax_set(PyObject *SWIGUNUSEDPARM(self)
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "MeteoStation_rHmax_set" "', argument " "2"" of type '" "cmf::math::timeseries *""'"); 
   }
   arg2 = reinterpret_cast< cmf::math::timeseries * >(argp2);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->rHmax = *arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->rHmax = *arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -36770,11 +34337,7 @@ SWIGINTERN PyObject *_wrap_MeteoStation_rHmax_get(PyObject *SWIGUNUSEDPARM(self)
       arg1 = const_cast< cmf::atmosphere::MeteoStation * >((smartarg1 ? smartarg1->get() : 0));
     }
   }
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (cmf::math::timeseries *)& ((arg1)->rHmax);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (cmf::math::timeseries *)& ((arg1)->rHmax);
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_cmf__math__timeseries, 0 |  0 );
   return resultobj;
 fail:
@@ -36815,11 +34378,7 @@ SWIGINTERN PyObject *_wrap_MeteoStation_Tdew_set(PyObject *SWIGUNUSEDPARM(self),
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "MeteoStation_Tdew_set" "', argument " "2"" of type '" "cmf::math::timeseries *""'"); 
   }
   arg2 = reinterpret_cast< cmf::math::timeseries * >(argp2);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->Tdew = *arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->Tdew = *arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -36854,11 +34413,7 @@ SWIGINTERN PyObject *_wrap_MeteoStation_Tdew_get(PyObject *SWIGUNUSEDPARM(self),
       arg1 = const_cast< cmf::atmosphere::MeteoStation * >((smartarg1 ? smartarg1->get() : 0));
     }
   }
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (cmf::math::timeseries *)& ((arg1)->Tdew);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (cmf::math::timeseries *)& ((arg1)->Tdew);
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_cmf__math__timeseries, 0 |  0 );
   return resultobj;
 fail:
@@ -36899,11 +34454,7 @@ SWIGINTERN PyObject *_wrap_MeteoStation_Sunshine_set(PyObject *SWIGUNUSEDPARM(se
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "MeteoStation_Sunshine_set" "', argument " "2"" of type '" "cmf::math::timeseries *""'"); 
   }
   arg2 = reinterpret_cast< cmf::math::timeseries * >(argp2);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->Sunshine = *arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->Sunshine = *arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -36938,11 +34489,7 @@ SWIGINTERN PyObject *_wrap_MeteoStation_Sunshine_get(PyObject *SWIGUNUSEDPARM(se
       arg1 = const_cast< cmf::atmosphere::MeteoStation * >((smartarg1 ? smartarg1->get() : 0));
     }
   }
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (cmf::math::timeseries *)& ((arg1)->Sunshine);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (cmf::math::timeseries *)& ((arg1)->Sunshine);
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_cmf__math__timeseries, 0 |  0 );
   return resultobj;
 fail:
@@ -36983,11 +34530,7 @@ SWIGINTERN PyObject *_wrap_MeteoStation_Rs_set(PyObject *SWIGUNUSEDPARM(self), P
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "MeteoStation_Rs_set" "', argument " "2"" of type '" "cmf::math::timeseries *""'"); 
   }
   arg2 = reinterpret_cast< cmf::math::timeseries * >(argp2);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->Rs = *arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->Rs = *arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -37022,11 +34565,7 @@ SWIGINTERN PyObject *_wrap_MeteoStation_Rs_get(PyObject *SWIGUNUSEDPARM(self), P
       arg1 = const_cast< cmf::atmosphere::MeteoStation * >((smartarg1 ? smartarg1->get() : 0));
     }
   }
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (cmf::math::timeseries *)& ((arg1)->Rs);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (cmf::math::timeseries *)& ((arg1)->Rs);
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_cmf__math__timeseries, 0 |  0 );
   return resultobj;
 fail:
@@ -37067,11 +34606,7 @@ SWIGINTERN PyObject *_wrap_MeteoStation_T_lapse_set(PyObject *SWIGUNUSEDPARM(sel
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "MeteoStation_T_lapse_set" "', argument " "2"" of type '" "cmf::math::timeseries *""'"); 
   }
   arg2 = reinterpret_cast< cmf::math::timeseries * >(argp2);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->T_lapse = *arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->T_lapse = *arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -37106,11 +34641,7 @@ SWIGINTERN PyObject *_wrap_MeteoStation_T_lapse_get(PyObject *SWIGUNUSEDPARM(sel
       arg1 = const_cast< cmf::atmosphere::MeteoStation * >((smartarg1 ? smartarg1->get() : 0));
     }
   }
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (cmf::math::timeseries *)& ((arg1)->T_lapse);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (cmf::math::timeseries *)& ((arg1)->T_lapse);
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_cmf__math__timeseries, 0 |  0 );
   return resultobj;
 fail:
@@ -37146,11 +34677,7 @@ SWIGINTERN PyObject *_wrap_delete_MeteoStation(PyObject *SWIGUNUSEDPARM(self), P
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        (void)arg1; delete smartarg1;
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      (void)arg1; delete smartarg1;
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -37193,11 +34720,7 @@ SWIGINTERN PyObject *_wrap_MeteoStationReference_get_station(PyObject *SWIGUNUSE
   arg1 = reinterpret_cast< cmf::atmosphere::MeteoStationReference * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = ((cmf::atmosphere::MeteoStationReference const *)arg1)->get_station();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = ((cmf::atmosphere::MeteoStationReference const *)arg1)->get_station();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -37232,11 +34755,7 @@ SWIGINTERN PyObject *_wrap_MeteoStationReference_get_position(PyObject *SWIGUNUS
   arg1 = reinterpret_cast< cmf::atmosphere::MeteoStationReference * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = ((cmf::atmosphere::MeteoStationReference const *)arg1)->get_position();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = ((cmf::atmosphere::MeteoStationReference const *)arg1)->get_position();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -37291,11 +34810,7 @@ SWIGINTERN PyObject *_wrap_new_MeteoStationReference__SWIG_0(PyObject *SWIGUNUSE
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::atmosphere::MeteoStationReference *)new cmf::atmosphere::MeteoStationReference(arg1,arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::atmosphere::MeteoStationReference *)new cmf::atmosphere::MeteoStationReference(arg1,arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -37328,11 +34843,7 @@ SWIGINTERN PyObject *_wrap_new_MeteoStationReference__SWIG_1(PyObject *SWIGUNUSE
   arg1 = reinterpret_cast< cmf::atmosphere::MeteoStationReference * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::atmosphere::MeteoStationReference *)new cmf::atmosphere::MeteoStationReference((cmf::atmosphere::MeteoStationReference const &)*arg1);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::atmosphere::MeteoStationReference *)new cmf::atmosphere::MeteoStationReference((cmf::atmosphere::MeteoStationReference const &)*arg1);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -37441,11 +34952,7 @@ SWIGINTERN PyObject *_wrap_MeteoStationReference_copy(PyObject *SWIGUNUSEDPARM(s
   arg1 = reinterpret_cast< cmf::atmosphere::MeteoStationReference * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::atmosphere::MeteoStationReference *)((cmf::atmosphere::MeteoStationReference const *)arg1)->copy();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::atmosphere::MeteoStationReference *)((cmf::atmosphere::MeteoStationReference const *)arg1)->copy();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -37476,11 +34983,7 @@ SWIGINTERN PyObject *_wrap_delete_MeteoStationReference(PyObject *SWIGUNUSEDPARM
   arg1 = reinterpret_cast< cmf::atmosphere::MeteoStationReference * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        delete arg1;
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      delete arg1;
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -37523,11 +35026,7 @@ SWIGINTERN PyObject *_wrap_MeteoStationList___len__(PyObject *SWIGUNUSEDPARM(sel
   arg1 = reinterpret_cast< cmf::atmosphere::MeteoStationList * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (int)((cmf::atmosphere::MeteoStationList const *)arg1)->size();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (int)((cmf::atmosphere::MeteoStationList const *)arg1)->size();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -37565,11 +35064,7 @@ SWIGINTERN PyObject *_wrap_MeteoStationList___getitem____SWIG_0(PyObject *SWIGUN
   arg2 = static_cast< int >(val2);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = ((cmf::atmosphere::MeteoStationList const *)arg1)->operator [](arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = ((cmf::atmosphere::MeteoStationList const *)arg1)->operator [](arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -37615,11 +35110,7 @@ SWIGINTERN PyObject *_wrap_MeteoStationList___getitem____SWIG_1(PyObject *SWIGUN
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = ((cmf::atmosphere::MeteoStationList const *)arg1)->operator []((std::string const &)*arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = ((cmf::atmosphere::MeteoStationList const *)arg1)->operator []((std::string const &)*arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -37769,11 +35260,7 @@ SWIGINTERN PyObject *_wrap_MeteoStationList_calculate_Temp_lapse(PyObject *SWIGU
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (double)(arg1)->calculate_Temp_lapse(arg2,arg3,arg4);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (double)(arg1)->calculate_Temp_lapse(arg2,arg3,arg4);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -37893,11 +35380,7 @@ SWIGINTERN PyObject *_wrap_MeteoStationList_add_station(PyObject *SWIGUNUSEDPARM
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (arg1)->add_station(arg2,arg3,arg4,arg5,arg6,arg7,arg8);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (arg1)->add_station(arg2,arg3,arg4,arg5,arg6,arg7,arg8);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -37943,11 +35426,7 @@ SWIGINTERN PyObject *_wrap_MeteoStationList_remove_station(PyObject *SWIGUNUSEDP
   arg2 = static_cast< int >(val2);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (int)(arg1)->remove_station(arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (int)(arg1)->remove_station(arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -37969,11 +35448,7 @@ SWIGINTERN PyObject *_wrap_new_MeteoStationList__SWIG_0(PyObject *SWIGUNUSEDPARM
   if ((nobjs < 0) || (nobjs > 0)) SWIG_fail;
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::atmosphere::MeteoStationList *)new cmf::atmosphere::MeteoStationList();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::atmosphere::MeteoStationList *)new cmf::atmosphere::MeteoStationList();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -38006,11 +35481,7 @@ SWIGINTERN PyObject *_wrap_new_MeteoStationList__SWIG_1(PyObject *SWIGUNUSEDPARM
   arg1 = reinterpret_cast< cmf::atmosphere::MeteoStationList * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::atmosphere::MeteoStationList *)new cmf::atmosphere::MeteoStationList((cmf::atmosphere::MeteoStationList const &)*arg1);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::atmosphere::MeteoStationList *)new cmf::atmosphere::MeteoStationList((cmf::atmosphere::MeteoStationList const &)*arg1);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -38136,11 +35607,7 @@ SWIGINTERN PyObject *_wrap_MeteoStationList_reference_to_nearest(PyObject *SWIGU
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = ((cmf::atmosphere::MeteoStationList const *)arg1)->reference_to_nearest((cmf::geometry::point const &)*arg2,arg3);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = ((cmf::atmosphere::MeteoStationList const *)arg1)->reference_to_nearest((cmf::geometry::point const &)*arg2,arg3);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -38171,11 +35638,7 @@ SWIGINTERN PyObject *_wrap_delete_MeteoStationList(PyObject *SWIGUNUSEDPARM(self
   arg1 = reinterpret_cast< cmf::atmosphere::MeteoStationList * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        delete arg1;
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      delete arg1;
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -38260,11 +35723,7 @@ SWIGINTERN PyObject *_wrap_new_IDW_Meteorology__SWIG_0(PyObject *SWIGUNUSEDPARM(
   arg4 = static_cast< double >(val4);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::atmosphere::IDW_Meteorology *)new cmf::atmosphere::IDW_Meteorology((cmf::geometry::point const &)*arg1,(cmf::atmosphere::MeteoStationList const &)*arg2,arg3,arg4);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::atmosphere::IDW_Meteorology *)new cmf::atmosphere::IDW_Meteorology((cmf::geometry::point const &)*arg1,(cmf::atmosphere::MeteoStationList const &)*arg2,arg3,arg4);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -38297,11 +35756,7 @@ SWIGINTERN PyObject *_wrap_new_IDW_Meteorology__SWIG_1(PyObject *SWIGUNUSEDPARM(
   arg1 = reinterpret_cast< cmf::atmosphere::IDW_Meteorology * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::atmosphere::IDW_Meteorology *)new cmf::atmosphere::IDW_Meteorology((cmf::atmosphere::IDW_Meteorology const &)*arg1);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::atmosphere::IDW_Meteorology *)new cmf::atmosphere::IDW_Meteorology((cmf::atmosphere::IDW_Meteorology const &)*arg1);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -38430,11 +35885,7 @@ SWIGINTERN PyObject *_wrap_IDW_Meteorology_copy(PyObject *SWIGUNUSEDPARM(self), 
   arg1 = reinterpret_cast< cmf::atmosphere::IDW_Meteorology * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::atmosphere::IDW_Meteorology *)((cmf::atmosphere::IDW_Meteorology const *)arg1)->copy();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::atmosphere::IDW_Meteorology *)((cmf::atmosphere::IDW_Meteorology const *)arg1)->copy();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -38465,11 +35916,7 @@ SWIGINTERN PyObject *_wrap_delete_IDW_Meteorology(PyObject *SWIGUNUSEDPARM(self)
   arg1 = reinterpret_cast< cmf::atmosphere::IDW_Meteorology * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        delete arg1;
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      delete arg1;
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -38545,11 +35992,7 @@ SWIGINTERN PyObject *_wrap_aerodynamic_resistance_get_aerodynamic_resistance(PyO
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        ((cmf::atmosphere::aerodynamic_resistance const *)arg1)->get_aerodynamic_resistance(*arg2,*arg3,arg4);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      ((cmf::atmosphere::aerodynamic_resistance const *)arg1)->get_aerodynamic_resistance(*arg2,*arg3,arg4);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -38580,11 +36023,7 @@ SWIGINTERN PyObject *_wrap_delete_aerodynamic_resistance(PyObject *SWIGUNUSEDPAR
   arg1 = reinterpret_cast< cmf::atmosphere::aerodynamic_resistance * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        delete arg1;
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      delete arg1;
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -38645,11 +36084,7 @@ SWIGINTERN PyObject *_wrap_RainSource___call__(PyObject *SWIGUNUSEDPARM(self), P
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (real)((cmf::atmosphere::RainSource const *)arg1)->operator ()(arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (real)((cmf::atmosphere::RainSource const *)arg1)->operator ()(arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -38703,11 +36138,7 @@ SWIGINTERN PyObject *_wrap_RainSource_get_intensity(PyObject *SWIGUNUSEDPARM(sel
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (real)((cmf::atmosphere::RainSource const *)arg1)->get_intensity(arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (real)((cmf::atmosphere::RainSource const *)arg1)->get_intensity(arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -38750,11 +36181,7 @@ SWIGINTERN PyObject *_wrap_delete_RainSource(PyObject *SWIGUNUSEDPARM(self), PyO
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        (void)arg1; delete smartarg1;
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      (void)arg1; delete smartarg1;
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -38809,11 +36236,7 @@ SWIGINTERN PyObject *_wrap_ConstantRainSource_intensity_set(PyObject *SWIGUNUSED
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "ConstantRainSource_intensity_set" "', argument " "2"" of type '" "real""'");
   } 
   arg2 = static_cast< real >(val2);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->intensity = arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->intensity = arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -38848,11 +36271,7 @@ SWIGINTERN PyObject *_wrap_ConstantRainSource_intensity_get(PyObject *SWIGUNUSED
       arg1 = const_cast< cmf::atmosphere::ConstantRainSource * >((smartarg1 ? smartarg1->get() : 0));
     }
   }
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (real) ((arg1)->intensity);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (real) ((arg1)->intensity);
   resultobj = SWIG_From_double(static_cast< double >(result));
   return resultobj;
 fail:
@@ -38913,11 +36332,7 @@ SWIGINTERN PyObject *_wrap_new_ConstantRainSource(PyObject *SWIGUNUSEDPARM(self)
   arg3 = static_cast< real >(val3);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::atmosphere::ConstantRainSource *)new cmf::atmosphere::ConstantRainSource(*arg1,arg2,arg3);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::atmosphere::ConstantRainSource *)new cmf::atmosphere::ConstantRainSource(*arg1,arg2,arg3);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -38986,11 +36401,7 @@ SWIGINTERN PyObject *_wrap_ConstantRainSource_set_conc(PyObject *SWIGUNUSEDPARM(
   arg3 = static_cast< real >(val3);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        (arg1)->set_conc((cmf::water::solute const &)*arg2,arg3);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      (arg1)->set_conc((cmf::water::solute const &)*arg2,arg3);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -39033,11 +36444,7 @@ SWIGINTERN PyObject *_wrap_delete_ConstantRainSource(PyObject *SWIGUNUSEDPARM(se
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        (void)arg1; delete smartarg1;
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      (void)arg1; delete smartarg1;
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -39113,11 +36520,7 @@ SWIGINTERN PyObject *_wrap_RainfallStation_Location_set(PyObject *SWIGUNUSEDPARM
       arg2 = &p2;
     }
   }
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->Location = *arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->Location = *arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -39152,11 +36555,7 @@ SWIGINTERN PyObject *_wrap_RainfallStation_Location_get(PyObject *SWIGUNUSEDPARM
       arg1 = const_cast< cmf::atmosphere::RainfallStation * >((smartarg1 ? smartarg1->get() : 0));
     }
   }
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (cmf::geometry::point *)& ((arg1)->Location);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (cmf::geometry::point *)& ((arg1)->Location);
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_cmf__geometry__point, 0 |  0 );
   return resultobj;
 fail:
@@ -39232,11 +36631,7 @@ SWIGINTERN PyObject *_wrap_RainfallStation_create(PyObject *SWIGUNUSEDPARM(self)
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = cmf::atmosphere::RainfallStation::create(arg1,arg2,arg3,arg4);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = cmf::atmosphere::RainfallStation::create(arg1,arg2,arg3,arg4);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -39281,11 +36676,7 @@ SWIGINTERN PyObject *_wrap_RainfallStation_id_get(PyObject *SWIGUNUSEDPARM(self)
       arg1 = const_cast< cmf::atmosphere::RainfallStation * >((smartarg1 ? smartarg1->get() : 0));
     }
   }
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (size_t) ((arg1)->id);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (size_t) ((arg1)->id);
   resultobj = SWIG_From_size_t(static_cast< size_t >(result));
   return resultobj;
 fail:
@@ -39320,11 +36711,7 @@ SWIGINTERN PyObject *_wrap_RainfallStation_name_get(PyObject *SWIGUNUSEDPARM(sel
       arg1 = const_cast< cmf::atmosphere::RainfallStation * >((smartarg1 ? smartarg1->get() : 0));
     }
   }
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (std::string *) & ((arg1)->name);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (std::string *) & ((arg1)->name);
   resultobj = SWIG_From_std_string(static_cast< std::string >(*result));
   return resultobj;
 fail:
@@ -39365,11 +36752,7 @@ SWIGINTERN PyObject *_wrap_RainfallStation_data_set(PyObject *SWIGUNUSEDPARM(sel
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "RainfallStation_data_set" "', argument " "2"" of type '" "cmf::math::timeseries *""'"); 
   }
   arg2 = reinterpret_cast< cmf::math::timeseries * >(argp2);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->data = *arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->data = *arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -39404,11 +36787,7 @@ SWIGINTERN PyObject *_wrap_RainfallStation_data_get(PyObject *SWIGUNUSEDPARM(sel
       arg1 = const_cast< cmf::atmosphere::RainfallStation * >((smartarg1 ? smartarg1->get() : 0));
     }
   }
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (cmf::math::timeseries *)& ((arg1)->data);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (cmf::math::timeseries *)& ((arg1)->data);
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_cmf__math__timeseries, 0 |  0 );
   return resultobj;
 fail:
@@ -39445,11 +36824,7 @@ SWIGINTERN PyObject *_wrap_RainfallStation___repr__(PyObject *SWIGUNUSEDPARM(sel
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = ((cmf::atmosphere::RainfallStation const *)arg1)->tostring();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = ((cmf::atmosphere::RainfallStation const *)arg1)->tostring();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -39497,11 +36872,7 @@ SWIGINTERN PyObject *_wrap_RainfallStation_concentration_set(PyObject *SWIGUNUSE
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "RainfallStation_concentration_set" "', argument " "2"" of type '" "cmf::water::SoluteTimeseries *""'"); 
   }
   arg2 = reinterpret_cast< cmf::water::SoluteTimeseries * >(argp2);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->concentration = *arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->concentration = *arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -39536,11 +36907,7 @@ SWIGINTERN PyObject *_wrap_RainfallStation_concentration_get(PyObject *SWIGUNUSE
       arg1 = const_cast< cmf::atmosphere::RainfallStation * >((smartarg1 ? smartarg1->get() : 0));
     }
   }
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (cmf::water::SoluteTimeseries *)& ((arg1)->concentration);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (cmf::water::SoluteTimeseries *)& ((arg1)->concentration);
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_cmf__water__SoluteTimeseries, 0 |  0 );
   return resultobj;
 fail:
@@ -39590,11 +36957,7 @@ SWIGINTERN PyObject *_wrap_RainfallStation_use_for_cell(PyObject *SWIGUNUSEDPARM
   arg2 = reinterpret_cast< cmf::upslope::Cell * >(argp2);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        (arg1)->use_for_cell(*arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      (arg1)->use_for_cell(*arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -39641,11 +37004,7 @@ SWIGINTERN PyObject *_wrap_new_RainfallStation(PyObject *SWIGUNUSEDPARM(self), P
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::atmosphere::RainfallStation *)new cmf::atmosphere::RainfallStation((cmf::atmosphere::RainfallStation const &)*arg1);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::atmosphere::RainfallStation *)new cmf::atmosphere::RainfallStation((cmf::atmosphere::RainfallStation const &)*arg1);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -39702,11 +37061,7 @@ SWIGINTERN PyObject *_wrap_RainfallStation___call__(PyObject *SWIGUNUSEDPARM(sel
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (double)cmf_atmosphere_RainfallStation___call__((cmf::atmosphere::RainfallStation const *)arg1,arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (double)cmf_atmosphere_RainfallStation___call__((cmf::atmosphere::RainfallStation const *)arg1,arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -39749,11 +37104,7 @@ SWIGINTERN PyObject *_wrap_delete_RainfallStation(PyObject *SWIGUNUSEDPARM(self)
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        (void)arg1; delete smartarg1;
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      (void)arg1; delete smartarg1;
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -39796,11 +37147,7 @@ SWIGINTERN PyObject *_wrap_RainfallStationList___len__(PyObject *SWIGUNUSEDPARM(
   arg1 = reinterpret_cast< cmf::atmosphere::RainfallStationList * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = ((cmf::atmosphere::RainfallStationList const *)arg1)->size();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = ((cmf::atmosphere::RainfallStationList const *)arg1)->size();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -39838,11 +37185,7 @@ SWIGINTERN PyObject *_wrap_RainfallStationList___getitem____SWIG_0(PyObject *SWI
   arg2 = static_cast< int >(val2);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (arg1)->operator [](arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (arg1)->operator [](arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -39883,11 +37226,7 @@ SWIGINTERN PyObject *_wrap_RainfallStationList___getitem____SWIG_1(PyObject *SWI
   arg2 = static_cast< int >(val2);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = ((cmf::atmosphere::RainfallStationList const *)arg1)->operator [](arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = ((cmf::atmosphere::RainfallStationList const *)arg1)->operator [](arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -40062,11 +37401,7 @@ SWIGINTERN PyObject *_wrap_RainfallStationList_add(PyObject *SWIGUNUSEDPARM(self
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (arg1)->add(arg2,arg3,arg4);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (arg1)->add(arg2,arg3,arg4);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -40111,11 +37446,7 @@ SWIGINTERN PyObject *_wrap_RainfallStationList_remove(PyObject *SWIGUNUSEDPARM(s
   arg2 = static_cast< int >(val2);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        (arg1)->remove(arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      (arg1)->remove(arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -40137,11 +37468,7 @@ SWIGINTERN PyObject *_wrap_new_RainfallStationList(PyObject *SWIGUNUSEDPARM(self
   if (!SWIG_Python_UnpackTuple(args,"new_RainfallStationList",0,0,0)) SWIG_fail;
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::atmosphere::RainfallStationList *)new cmf::atmosphere::RainfallStationList();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::atmosphere::RainfallStationList *)new cmf::atmosphere::RainfallStationList();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -40172,11 +37499,7 @@ SWIGINTERN PyObject *_wrap_delete_RainfallStationList(PyObject *SWIGUNUSEDPARM(s
   arg1 = reinterpret_cast< cmf::atmosphere::RainfallStationList * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        delete arg1;
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      delete arg1;
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -40255,11 +37578,7 @@ SWIGINTERN PyObject *_wrap_RainfallStationReference_from_nearest_station(PyObjec
   arg3 = static_cast< double >(val3);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = cmf::atmosphere::RainfallStationReference::from_nearest_station(*arg1,arg2,arg3);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = cmf::atmosphere::RainfallStationReference::from_nearest_station(*arg1,arg2,arg3);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -40330,11 +37649,7 @@ SWIGINTERN PyObject *_wrap_RainfallStationReference_from_station_id(PyObject *SW
   arg3 = static_cast< size_t >(val3);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = cmf::atmosphere::RainfallStationReference::from_station_id(*arg1,arg2,arg3);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = cmf::atmosphere::RainfallStationReference::from_station_id(*arg1,arg2,arg3);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -40380,11 +37695,7 @@ SWIGINTERN PyObject *_wrap_delete_RainfallStationReference(PyObject *SWIGUNUSEDP
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        (void)arg1; delete smartarg1;
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      (void)arg1; delete smartarg1;
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -40468,11 +37779,7 @@ SWIGINTERN PyObject *_wrap_IDWRainfall_create(PyObject *SWIGUNUSEDPARM(self), Py
   arg4 = static_cast< double >(val4);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = cmf::atmosphere::IDWRainfall::create(*arg1,arg2,arg3,arg4);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = cmf::atmosphere::IDWRainfall::create(*arg1,arg2,arg3,arg4);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -40518,11 +37825,7 @@ SWIGINTERN PyObject *_wrap_delete_IDWRainfall(PyObject *SWIGUNUSEDPARM(self), Py
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        (void)arg1; delete smartarg1;
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      (void)arg1; delete smartarg1;
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -40565,11 +37868,7 @@ SWIGINTERN PyObject *_wrap_Vegetation_LAI_set(PyObject *SWIGUNUSEDPARM(self), Py
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Vegetation_LAI_set" "', argument " "2"" of type '" "double""'");
   } 
   arg2 = static_cast< double >(val2);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->LAI = arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->LAI = arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -40592,11 +37891,7 @@ SWIGINTERN PyObject *_wrap_Vegetation_LAI_get(PyObject *SWIGUNUSEDPARM(self), Py
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Vegetation_LAI_get" "', argument " "1"" of type '" "cmf::upslope::vegetation::Vegetation *""'"); 
   }
   arg1 = reinterpret_cast< cmf::upslope::vegetation::Vegetation * >(argp1);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (double) ((arg1)->LAI);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (double) ((arg1)->LAI);
   resultobj = SWIG_From_double(static_cast< double >(result));
   return resultobj;
 fail:
@@ -40625,11 +37920,7 @@ SWIGINTERN PyObject *_wrap_Vegetation_Height_set(PyObject *SWIGUNUSEDPARM(self),
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Vegetation_Height_set" "', argument " "2"" of type '" "double""'");
   } 
   arg2 = static_cast< double >(val2);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->Height = arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->Height = arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -40652,11 +37943,7 @@ SWIGINTERN PyObject *_wrap_Vegetation_Height_get(PyObject *SWIGUNUSEDPARM(self),
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Vegetation_Height_get" "', argument " "1"" of type '" "cmf::upslope::vegetation::Vegetation *""'"); 
   }
   arg1 = reinterpret_cast< cmf::upslope::vegetation::Vegetation * >(argp1);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (double) ((arg1)->Height);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (double) ((arg1)->Height);
   resultobj = SWIG_From_double(static_cast< double >(result));
   return resultobj;
 fail:
@@ -40685,11 +37972,7 @@ SWIGINTERN PyObject *_wrap_Vegetation_albedo_set(PyObject *SWIGUNUSEDPARM(self),
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Vegetation_albedo_set" "', argument " "2"" of type '" "double""'");
   } 
   arg2 = static_cast< double >(val2);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->albedo = arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->albedo = arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -40712,11 +37995,7 @@ SWIGINTERN PyObject *_wrap_Vegetation_albedo_get(PyObject *SWIGUNUSEDPARM(self),
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Vegetation_albedo_get" "', argument " "1"" of type '" "cmf::upslope::vegetation::Vegetation *""'"); 
   }
   arg1 = reinterpret_cast< cmf::upslope::vegetation::Vegetation * >(argp1);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (double) ((arg1)->albedo);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (double) ((arg1)->albedo);
   resultobj = SWIG_From_double(static_cast< double >(result));
   return resultobj;
 fail:
@@ -40745,11 +38024,7 @@ SWIGINTERN PyObject *_wrap_Vegetation_snow_albedo_set(PyObject *SWIGUNUSEDPARM(s
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Vegetation_snow_albedo_set" "', argument " "2"" of type '" "double""'");
   } 
   arg2 = static_cast< double >(val2);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->snow_albedo = arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->snow_albedo = arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -40772,11 +38047,7 @@ SWIGINTERN PyObject *_wrap_Vegetation_snow_albedo_get(PyObject *SWIGUNUSEDPARM(s
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Vegetation_snow_albedo_get" "', argument " "1"" of type '" "cmf::upslope::vegetation::Vegetation *""'"); 
   }
   arg1 = reinterpret_cast< cmf::upslope::vegetation::Vegetation * >(argp1);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (double) ((arg1)->snow_albedo);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (double) ((arg1)->snow_albedo);
   resultobj = SWIG_From_double(static_cast< double >(result));
   return resultobj;
 fail:
@@ -40805,11 +38076,7 @@ SWIGINTERN PyObject *_wrap_Vegetation_CanopyCapacityPerLAI_set(PyObject *SWIGUNU
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Vegetation_CanopyCapacityPerLAI_set" "', argument " "2"" of type '" "double""'");
   } 
   arg2 = static_cast< double >(val2);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->CanopyCapacityPerLAI = arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->CanopyCapacityPerLAI = arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -40832,11 +38099,7 @@ SWIGINTERN PyObject *_wrap_Vegetation_CanopyCapacityPerLAI_get(PyObject *SWIGUNU
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Vegetation_CanopyCapacityPerLAI_get" "', argument " "1"" of type '" "cmf::upslope::vegetation::Vegetation *""'"); 
   }
   arg1 = reinterpret_cast< cmf::upslope::vegetation::Vegetation * >(argp1);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (double) ((arg1)->CanopyCapacityPerLAI);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (double) ((arg1)->CanopyCapacityPerLAI);
   resultobj = SWIG_From_double(static_cast< double >(result));
   return resultobj;
 fail:
@@ -40865,11 +38128,7 @@ SWIGINTERN PyObject *_wrap_Vegetation_RootDepth_set(PyObject *SWIGUNUSEDPARM(sel
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Vegetation_RootDepth_set" "', argument " "2"" of type '" "double""'");
   } 
   arg2 = static_cast< double >(val2);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->RootDepth = arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->RootDepth = arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -40892,11 +38151,7 @@ SWIGINTERN PyObject *_wrap_Vegetation_RootDepth_get(PyObject *SWIGUNUSEDPARM(sel
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Vegetation_RootDepth_get" "', argument " "1"" of type '" "cmf::upslope::vegetation::Vegetation *""'"); 
   }
   arg1 = reinterpret_cast< cmf::upslope::vegetation::Vegetation * >(argp1);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (double) ((arg1)->RootDepth);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (double) ((arg1)->RootDepth);
   resultobj = SWIG_From_double(static_cast< double >(result));
   return resultobj;
 fail:
@@ -40925,11 +38180,7 @@ SWIGINTERN PyObject *_wrap_Vegetation_RootContent_set(PyObject *SWIGUNUSEDPARM(s
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Vegetation_RootContent_set" "', argument " "2"" of type '" "double""'");
   } 
   arg2 = static_cast< double >(val2);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->RootContent = arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->RootContent = arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -40952,11 +38203,7 @@ SWIGINTERN PyObject *_wrap_Vegetation_RootContent_get(PyObject *SWIGUNUSEDPARM(s
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Vegetation_RootContent_get" "', argument " "1"" of type '" "cmf::upslope::vegetation::Vegetation *""'"); 
   }
   arg1 = reinterpret_cast< cmf::upslope::vegetation::Vegetation * >(argp1);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (double) ((arg1)->RootContent);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (double) ((arg1)->RootContent);
   resultobj = SWIG_From_double(static_cast< double >(result));
   return resultobj;
 fail:
@@ -40985,11 +38232,7 @@ SWIGINTERN PyObject *_wrap_Vegetation_fraction_at_rootdepth_set(PyObject *SWIGUN
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Vegetation_fraction_at_rootdepth_set" "', argument " "2"" of type '" "double""'");
   } 
   arg2 = static_cast< double >(val2);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->fraction_at_rootdepth = arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->fraction_at_rootdepth = arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -41012,11 +38255,7 @@ SWIGINTERN PyObject *_wrap_Vegetation_fraction_at_rootdepth_get(PyObject *SWIGUN
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Vegetation_fraction_at_rootdepth_get" "', argument " "1"" of type '" "cmf::upslope::vegetation::Vegetation *""'"); 
   }
   arg1 = reinterpret_cast< cmf::upslope::vegetation::Vegetation * >(argp1);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (double) ((arg1)->fraction_at_rootdepth);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (double) ((arg1)->fraction_at_rootdepth);
   resultobj = SWIG_From_double(static_cast< double >(result));
   return resultobj;
 fail:
@@ -41045,11 +38284,7 @@ SWIGINTERN PyObject *_wrap_Vegetation_StomatalResistance_set(PyObject *SWIGUNUSE
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Vegetation_StomatalResistance_set" "', argument " "2"" of type '" "double""'");
   } 
   arg2 = static_cast< double >(val2);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->StomatalResistance = arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->StomatalResistance = arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -41072,11 +38307,7 @@ SWIGINTERN PyObject *_wrap_Vegetation_StomatalResistance_get(PyObject *SWIGUNUSE
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Vegetation_StomatalResistance_get" "', argument " "1"" of type '" "cmf::upslope::vegetation::Vegetation *""'"); 
   }
   arg1 = reinterpret_cast< cmf::upslope::vegetation::Vegetation * >(argp1);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (double) ((arg1)->StomatalResistance);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (double) ((arg1)->StomatalResistance);
   resultobj = SWIG_From_double(static_cast< double >(result));
   return resultobj;
 fail:
@@ -41105,11 +38336,7 @@ SWIGINTERN PyObject *_wrap_Vegetation_CanopyClosure_set(PyObject *SWIGUNUSEDPARM
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Vegetation_CanopyClosure_set" "', argument " "2"" of type '" "double""'");
   } 
   arg2 = static_cast< double >(val2);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->CanopyClosure = arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->CanopyClosure = arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -41132,11 +38359,7 @@ SWIGINTERN PyObject *_wrap_Vegetation_CanopyClosure_get(PyObject *SWIGUNUSEDPARM
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Vegetation_CanopyClosure_get" "', argument " "1"" of type '" "cmf::upslope::vegetation::Vegetation *""'"); 
   }
   arg1 = reinterpret_cast< cmf::upslope::vegetation::Vegetation * >(argp1);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (double) ((arg1)->CanopyClosure);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (double) ((arg1)->CanopyClosure);
   resultobj = SWIG_From_double(static_cast< double >(result));
   return resultobj;
 fail:
@@ -41165,11 +38388,7 @@ SWIGINTERN PyObject *_wrap_Vegetation_CanopyPARExtinction_set(PyObject *SWIGUNUS
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Vegetation_CanopyPARExtinction_set" "', argument " "2"" of type '" "double""'");
   } 
   arg2 = static_cast< double >(val2);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->CanopyPARExtinction = arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->CanopyPARExtinction = arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -41192,11 +38411,7 @@ SWIGINTERN PyObject *_wrap_Vegetation_CanopyPARExtinction_get(PyObject *SWIGUNUS
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Vegetation_CanopyPARExtinction_get" "', argument " "1"" of type '" "cmf::upslope::vegetation::Vegetation *""'"); 
   }
   arg1 = reinterpret_cast< cmf::upslope::vegetation::Vegetation * >(argp1);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (double) ((arg1)->CanopyPARExtinction);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (double) ((arg1)->CanopyPARExtinction);
   resultobj = SWIG_From_double(static_cast< double >(result));
   return resultobj;
 fail:
@@ -41225,11 +38440,7 @@ SWIGINTERN PyObject *_wrap_Vegetation_LeafWidth_set(PyObject *SWIGUNUSEDPARM(sel
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Vegetation_LeafWidth_set" "', argument " "2"" of type '" "double""'");
   } 
   arg2 = static_cast< double >(val2);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->LeafWidth = arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->LeafWidth = arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -41252,11 +38463,7 @@ SWIGINTERN PyObject *_wrap_Vegetation_LeafWidth_get(PyObject *SWIGUNUSEDPARM(sel
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Vegetation_LeafWidth_get" "', argument " "1"" of type '" "cmf::upslope::vegetation::Vegetation *""'"); 
   }
   arg1 = reinterpret_cast< cmf::upslope::vegetation::Vegetation * >(argp1);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (double) ((arg1)->LeafWidth);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (double) ((arg1)->LeafWidth);
   resultobj = SWIG_From_double(static_cast< double >(result));
   return resultobj;
 fail:
@@ -41281,11 +38488,7 @@ SWIGINTERN PyObject *_wrap_Vegetation_RootLength(PyObject *SWIGUNUSEDPARM(self),
   arg1 = reinterpret_cast< cmf::upslope::vegetation::Vegetation * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (double)((cmf::upslope::vegetation::Vegetation const *)arg1)->RootLength();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (double)((cmf::upslope::vegetation::Vegetation const *)arg1)->RootLength();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -41331,11 +38534,7 @@ SWIGINTERN PyObject *_wrap_Vegetation_RootFraction__SWIG_0(PyObject *SWIGUNUSEDP
   arg3 = static_cast< double >(val3);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (double)((cmf::upslope::vegetation::Vegetation const *)arg1)->RootFraction(arg2,arg3);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (double)((cmf::upslope::vegetation::Vegetation const *)arg1)->RootFraction(arg2,arg3);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -41376,11 +38575,7 @@ SWIGINTERN PyObject *_wrap_Vegetation_RootFraction__SWIG_1(PyObject *SWIGUNUSEDP
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = ((cmf::upslope::vegetation::Vegetation const *)arg1)->RootFraction((cmf::math::num_array const &)*arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = ((cmf::upslope::vegetation::Vegetation const *)arg1)->RootFraction((cmf::math::num_array const &)*arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -41599,11 +38794,7 @@ SWIGINTERN PyObject *_wrap_new_Vegetation(PyObject *SWIGUNUSEDPARM(self), PyObje
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::upslope::vegetation::Vegetation *)new cmf::upslope::vegetation::Vegetation(arg1,arg2,arg3,arg4,arg5,arg6,arg7,arg8);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::upslope::vegetation::Vegetation *)new cmf::upslope::vegetation::Vegetation(arg1,arg2,arg3,arg4,arg5,arg6,arg7,arg8);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -41635,11 +38826,7 @@ SWIGINTERN PyObject *_wrap_Vegetation___repr__(PyObject *SWIGUNUSEDPARM(self), P
   arg1 = reinterpret_cast< cmf::upslope::vegetation::Vegetation * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = cmf_upslope_vegetation_Vegetation___repr__(arg1);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = cmf_upslope_vegetation_Vegetation___repr__(arg1);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -41670,11 +38857,7 @@ SWIGINTERN PyObject *_wrap_delete_Vegetation(PyObject *SWIGUNUSEDPARM(self), PyO
   arg1 = reinterpret_cast< cmf::upslope::vegetation::Vegetation * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        delete arg1;
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      delete arg1;
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -41718,11 +38901,7 @@ SWIGINTERN PyObject *_wrap_new_CellConnector(PyObject *SWIGUNUSEDPARM(self), PyO
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::upslope::CellConnector *)new cmf::upslope::CellConnector(arg1);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::upslope::CellConnector *)new cmf::upslope::CellConnector(arg1);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -41790,11 +38969,7 @@ SWIGINTERN PyObject *_wrap_CellConnector___call__(PyObject *SWIGUNUSEDPARM(self)
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        ((cmf::upslope::CellConnector const *)arg1)->operator ()(*arg2,*arg3,arg4);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      ((cmf::upslope::CellConnector const *)arg1)->operator ()(*arg2,*arg3,arg4);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -41862,11 +39037,7 @@ SWIGINTERN PyObject *_wrap_CellConnector_connect(PyObject *SWIGUNUSEDPARM(self),
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        ((cmf::upslope::CellConnector const *)arg1)->connect(*arg2,*arg3,arg4);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      ((cmf::upslope::CellConnector const *)arg1)->connect(*arg2,*arg3,arg4);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -41897,11 +39068,7 @@ SWIGINTERN PyObject *_wrap_delete_CellConnector(PyObject *SWIGUNUSEDPARM(self), 
   arg1 = reinterpret_cast< cmf::upslope::CellConnector * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        delete arg1;
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      delete arg1;
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -41948,11 +39115,7 @@ SWIGINTERN PyObject *_wrap_Cell_x_set(PyObject *SWIGUNUSEDPARM(self), PyObject *
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Cell_x_set" "', argument " "2"" of type '" "double""'");
   } 
   arg2 = static_cast< double >(val2);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->x = arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->x = arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -41975,11 +39138,7 @@ SWIGINTERN PyObject *_wrap_Cell_x_get(PyObject *SWIGUNUSEDPARM(self), PyObject *
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Cell_x_get" "', argument " "1"" of type '" "cmf::upslope::Cell *""'"); 
   }
   arg1 = reinterpret_cast< cmf::upslope::Cell * >(argp1);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (double) ((arg1)->x);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (double) ((arg1)->x);
   resultobj = SWIG_From_double(static_cast< double >(result));
   return resultobj;
 fail:
@@ -42008,11 +39167,7 @@ SWIGINTERN PyObject *_wrap_Cell_y_set(PyObject *SWIGUNUSEDPARM(self), PyObject *
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Cell_y_set" "', argument " "2"" of type '" "double""'");
   } 
   arg2 = static_cast< double >(val2);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->y = arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->y = arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -42035,11 +39190,7 @@ SWIGINTERN PyObject *_wrap_Cell_y_get(PyObject *SWIGUNUSEDPARM(self), PyObject *
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Cell_y_get" "', argument " "1"" of type '" "cmf::upslope::Cell *""'"); 
   }
   arg1 = reinterpret_cast< cmf::upslope::Cell * >(argp1);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (double) ((arg1)->y);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (double) ((arg1)->y);
   resultobj = SWIG_From_double(static_cast< double >(result));
   return resultobj;
 fail:
@@ -42068,11 +39219,7 @@ SWIGINTERN PyObject *_wrap_Cell_z_set(PyObject *SWIGUNUSEDPARM(self), PyObject *
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Cell_z_set" "', argument " "2"" of type '" "double""'");
   } 
   arg2 = static_cast< double >(val2);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->z = arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->z = arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -42095,11 +39242,7 @@ SWIGINTERN PyObject *_wrap_Cell_z_get(PyObject *SWIGUNUSEDPARM(self), PyObject *
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Cell_z_get" "', argument " "1"" of type '" "cmf::upslope::Cell *""'"); 
   }
   arg1 = reinterpret_cast< cmf::upslope::Cell * >(argp1);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (double) ((arg1)->z);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (double) ((arg1)->z);
   resultobj = SWIG_From_double(static_cast< double >(result));
   return resultobj;
 fail:
@@ -42124,11 +39267,7 @@ SWIGINTERN PyObject *_wrap_Cell_get_position(PyObject *SWIGUNUSEDPARM(self), PyO
   arg1 = reinterpret_cast< cmf::upslope::Cell * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = ((cmf::upslope::Cell const *)arg1)->get_position();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = ((cmf::upslope::Cell const *)arg1)->get_position();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -42171,11 +39310,7 @@ SWIGINTERN PyObject *_wrap_Cell_m3_to_mm(PyObject *SWIGUNUSEDPARM(self), PyObjec
   arg2 = static_cast< double >(val2);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (double)((cmf::upslope::Cell const *)arg1)->m3_to_mm(arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (double)((cmf::upslope::Cell const *)arg1)->m3_to_mm(arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -42218,11 +39353,7 @@ SWIGINTERN PyObject *_wrap_Cell_mm_to_m3(PyObject *SWIGUNUSEDPARM(self), PyObjec
   arg2 = static_cast< double >(val2);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (double)((cmf::upslope::Cell const *)arg1)->mm_to_m3(arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (double)((cmf::upslope::Cell const *)arg1)->mm_to_m3(arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -42253,11 +39384,7 @@ SWIGINTERN PyObject *_wrap_Cell_InvalidateSatDepth(PyObject *SWIGUNUSEDPARM(self
   arg1 = reinterpret_cast< cmf::upslope::Cell * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        ((cmf::upslope::Cell const *)arg1)->InvalidateSatDepth();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      ((cmf::upslope::Cell const *)arg1)->InvalidateSatDepth();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -42293,11 +39420,7 @@ SWIGINTERN PyObject *_wrap_Cell_vegetation_set(PyObject *SWIGUNUSEDPARM(self), P
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Cell_vegetation_set" "', argument " "2"" of type '" "cmf::upslope::vegetation::Vegetation *""'"); 
   }
   arg2 = reinterpret_cast< cmf::upslope::vegetation::Vegetation * >(argp2);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->vegetation = *arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->vegetation = *arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -42320,11 +39443,7 @@ SWIGINTERN PyObject *_wrap_Cell_vegetation_get(PyObject *SWIGUNUSEDPARM(self), P
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Cell_vegetation_get" "', argument " "1"" of type '" "cmf::upslope::Cell *""'"); 
   }
   arg1 = reinterpret_cast< cmf::upslope::Cell * >(argp1);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (cmf::upslope::vegetation::Vegetation *)& ((arg1)->vegetation);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (cmf::upslope::vegetation::Vegetation *)& ((arg1)->vegetation);
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_cmf__upslope__vegetation__Vegetation, 0 |  0 );
   return resultobj;
 fail:
@@ -42367,11 +39486,7 @@ SWIGINTERN PyObject *_wrap_Cell_set_aerodynamic_resistance(PyObject *SWIGUNUSEDP
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        (arg1)->set_aerodynamic_resistance(arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      (arg1)->set_aerodynamic_resistance(arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -42416,11 +39531,7 @@ SWIGINTERN PyObject *_wrap_Cell_set_weather(PyObject *SWIGUNUSEDPARM(self), PyOb
   arg2 = reinterpret_cast< cmf::atmosphere::Weather * >(argp2);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        (arg1)->set_weather((cmf::atmosphere::Weather const &)*arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      (arg1)->set_weather((cmf::atmosphere::Weather const &)*arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -42462,11 +39573,7 @@ SWIGINTERN PyObject *_wrap_Cell_set_rainfall(PyObject *SWIGUNUSEDPARM(self), PyO
   arg2 = static_cast< double >(val2);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        (arg1)->set_rainfall(arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      (arg1)->set_rainfall(arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -42508,11 +39615,7 @@ SWIGINTERN PyObject *_wrap_Cell_get_rainfall(PyObject *SWIGUNUSEDPARM(self), PyO
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (double)((cmf::upslope::Cell const *)arg1)->get_rainfall(arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (double)((cmf::upslope::Cell const *)arg1)->get_rainfall(arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -42558,11 +39661,7 @@ SWIGINTERN PyObject *_wrap_Cell___set_rain_source(PyObject *SWIGUNUSEDPARM(self)
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        (arg1)->set_rain_source(arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      (arg1)->set_rain_source(arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -42594,11 +39693,7 @@ SWIGINTERN PyObject *_wrap_Cell___get_rain_source(PyObject *SWIGUNUSEDPARM(self)
   arg1 = reinterpret_cast< cmf::upslope::Cell * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (arg1)->get_rain_source();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (arg1)->get_rain_source();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -42671,11 +39766,7 @@ SWIGINTERN PyObject *_wrap_Cell___get_evaporation(PyObject *SWIGUNUSEDPARM(self)
   arg1 = reinterpret_cast< cmf::upslope::Cell * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (arg1)->get_evaporation();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (arg1)->get_evaporation();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -42710,11 +39801,7 @@ SWIGINTERN PyObject *_wrap_Cell___get_transpiration(PyObject *SWIGUNUSEDPARM(sel
   arg1 = reinterpret_cast< cmf::upslope::Cell * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (arg1)->get_transpiration();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (arg1)->get_transpiration();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -42749,11 +39836,7 @@ SWIGINTERN PyObject *_wrap_Cell_get_surfacewater(PyObject *SWIGUNUSEDPARM(self),
   arg1 = reinterpret_cast< cmf::upslope::Cell * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (arg1)->get_surfacewater();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (arg1)->get_surfacewater();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -42813,11 +39896,7 @@ SWIGINTERN PyObject *_wrap_Cell_surfacewater_as_storage(PyObject *SWIGUNUSEDPARM
   arg1 = reinterpret_cast< cmf::upslope::Cell * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        (arg1)->surfacewater_as_storage();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      (arg1)->surfacewater_as_storage();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -42877,11 +39956,7 @@ SWIGINTERN PyObject *_wrap_Cell_add_storage__SWIG_0(PyObject *SWIGUNUSEDPARM(sel
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (arg1)->add_storage(arg2,arg3,arg4);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (arg1)->add_storage(arg2,arg3,arg4);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -42926,11 +40001,7 @@ SWIGINTERN PyObject *_wrap_Cell_add_storage__SWIG_1(PyObject *SWIGUNUSEDPARM(sel
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (int)(arg1)->add_storage(arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (int)(arg1)->add_storage(arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -43085,11 +40156,7 @@ SWIGINTERN PyObject *_wrap_Cell_remove_storage(PyObject *SWIGUNUSEDPARM(self), P
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        (arg1)->remove_storage(arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      (arg1)->remove_storage(arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -43121,11 +40188,7 @@ SWIGINTERN PyObject *_wrap_Cell_storage_count(PyObject *SWIGUNUSEDPARM(self), Py
   arg1 = reinterpret_cast< cmf::upslope::Cell * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (int)((cmf::upslope::Cell const *)arg1)->storage_count();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (int)((cmf::upslope::Cell const *)arg1)->storage_count();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -43168,11 +40231,7 @@ SWIGINTERN PyObject *_wrap_Cell_get_storage(PyObject *SWIGUNUSEDPARM(self), PyOb
   arg2 = static_cast< int >(val2);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = ((cmf::upslope::Cell const *)arg1)->get_storage(arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = ((cmf::upslope::Cell const *)arg1)->get_storage(arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -43233,11 +40292,7 @@ SWIGINTERN PyObject *_wrap_Cell_get_canopy(PyObject *SWIGUNUSEDPARM(self), PyObj
   arg1 = reinterpret_cast< cmf::upslope::Cell * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = ((cmf::upslope::Cell const *)arg1)->get_canopy();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = ((cmf::upslope::Cell const *)arg1)->get_canopy();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -43272,11 +40327,7 @@ SWIGINTERN PyObject *_wrap_Cell_get_snow(PyObject *SWIGUNUSEDPARM(self), PyObjec
   arg1 = reinterpret_cast< cmf::upslope::Cell * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = ((cmf::upslope::Cell const *)arg1)->get_snow();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = ((cmf::upslope::Cell const *)arg1)->get_snow();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -43311,11 +40362,7 @@ SWIGINTERN PyObject *_wrap_Cell_snow_coverage(PyObject *SWIGUNUSEDPARM(self), Py
   arg1 = reinterpret_cast< cmf::upslope::Cell * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (real)((cmf::upslope::Cell const *)arg1)->snow_coverage();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (real)((cmf::upslope::Cell const *)arg1)->snow_coverage();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -43347,11 +40394,7 @@ SWIGINTERN PyObject *_wrap_Cell_albedo(PyObject *SWIGUNUSEDPARM(self), PyObject 
   arg1 = reinterpret_cast< cmf::upslope::Cell * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (real)((cmf::upslope::Cell const *)arg1)->albedo();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (real)((cmf::upslope::Cell const *)arg1)->albedo();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -43387,11 +40430,7 @@ SWIGINTERN PyObject *_wrap_Cell_surface_amplitude_set(PyObject *SWIGUNUSEDPARM(s
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Cell_surface_amplitude_set" "', argument " "2"" of type '" "real""'");
   } 
   arg2 = static_cast< real >(val2);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->surface_amplitude = arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->surface_amplitude = arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -43414,11 +40453,7 @@ SWIGINTERN PyObject *_wrap_Cell_surface_amplitude_get(PyObject *SWIGUNUSEDPARM(s
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Cell_surface_amplitude_get" "', argument " "1"" of type '" "cmf::upslope::Cell *""'"); 
   }
   arg1 = reinterpret_cast< cmf::upslope::Cell * >(argp1);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (real) ((arg1)->surface_amplitude);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (real) ((arg1)->surface_amplitude);
   resultobj = SWIG_From_double(static_cast< double >(result));
   return resultobj;
 fail:
@@ -43443,11 +40478,7 @@ SWIGINTERN PyObject *_wrap_Cell_surface_water_coverage(PyObject *SWIGUNUSEDPARM(
   arg1 = reinterpret_cast< cmf::upslope::Cell * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (real)((cmf::upslope::Cell const *)arg1)->surface_water_coverage();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (real)((cmf::upslope::Cell const *)arg1)->surface_water_coverage();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -43489,11 +40520,7 @@ SWIGINTERN PyObject *_wrap_Cell_heat_flux(PyObject *SWIGUNUSEDPARM(self), PyObje
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (real)((cmf::upslope::Cell const *)arg1)->heat_flux(arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (real)((cmf::upslope::Cell const *)arg1)->heat_flux(arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -43529,11 +40556,7 @@ SWIGINTERN PyObject *_wrap_Cell_Tground_set(PyObject *SWIGUNUSEDPARM(self), PyOb
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Cell_Tground_set" "', argument " "2"" of type '" "real""'");
   } 
   arg2 = static_cast< real >(val2);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->Tground = arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->Tground = arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -43556,11 +40579,7 @@ SWIGINTERN PyObject *_wrap_Cell_Tground_get(PyObject *SWIGUNUSEDPARM(self), PyOb
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Cell_Tground_get" "', argument " "1"" of type '" "cmf::upslope::Cell *""'"); 
   }
   arg1 = reinterpret_cast< cmf::upslope::Cell * >(argp1);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (real) ((arg1)->Tground);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (real) ((arg1)->Tground);
   resultobj = SWIG_From_double(static_cast< double >(result));
   return resultobj;
 fail:
@@ -43585,11 +40604,7 @@ SWIGINTERN PyObject *_wrap_Cell_has_wet_leaves(PyObject *SWIGUNUSEDPARM(self), P
   arg1 = reinterpret_cast< cmf::upslope::Cell * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (bool)((cmf::upslope::Cell const *)arg1)->has_wet_leaves();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (bool)((cmf::upslope::Cell const *)arg1)->has_wet_leaves();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -43621,11 +40636,7 @@ SWIGINTERN PyObject *_wrap_Cell_has_surface_water(PyObject *SWIGUNUSEDPARM(self)
   arg1 = reinterpret_cast< cmf::upslope::Cell * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (bool)((cmf::upslope::Cell const *)arg1)->has_surface_water();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (bool)((cmf::upslope::Cell const *)arg1)->has_surface_water();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -43661,11 +40672,7 @@ SWIGINTERN PyObject *_wrap_Cell_Id_set(PyObject *SWIGUNUSEDPARM(self), PyObject 
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Cell_Id_set" "', argument " "2"" of type '" "int""'");
   } 
   arg2 = static_cast< int >(val2);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->Id = arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->Id = arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -43688,11 +40695,7 @@ SWIGINTERN PyObject *_wrap_Cell_Id_get(PyObject *SWIGUNUSEDPARM(self), PyObject 
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Cell_Id_get" "', argument " "1"" of type '" "cmf::upslope::Cell *""'"); 
   }
   arg1 = reinterpret_cast< cmf::upslope::Cell * >(argp1);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (int) ((arg1)->Id);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (int) ((arg1)->Id);
   resultobj = SWIG_From_int(static_cast< int >(result));
   return resultobj;
 fail:
@@ -43727,11 +40730,7 @@ SWIGINTERN PyObject *_wrap_Cell_get_weather(PyObject *SWIGUNUSEDPARM(self), PyOb
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = ((cmf::upslope::Cell const *)arg1)->get_weather(arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = ((cmf::upslope::Cell const *)arg1)->get_weather(arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -43763,11 +40762,7 @@ SWIGINTERN PyObject *_wrap_Cell_layer_count(PyObject *SWIGUNUSEDPARM(self), PyOb
   arg1 = reinterpret_cast< cmf::upslope::Cell * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (int)((cmf::upslope::Cell const *)arg1)->layer_count();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (int)((cmf::upslope::Cell const *)arg1)->layer_count();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -43810,11 +40805,7 @@ SWIGINTERN PyObject *_wrap_Cell_get_layer(PyObject *SWIGUNUSEDPARM(self), PyObje
   arg2 = static_cast< int >(val2);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = ((cmf::upslope::Cell const *)arg1)->get_layer(arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = ((cmf::upslope::Cell const *)arg1)->get_layer(arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -43879,11 +40870,7 @@ SWIGINTERN PyObject *_wrap_Cell_add_layer(PyObject *SWIGUNUSEDPARM(self), PyObje
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        (arg1)->add_layer(arg2,(cmf::upslope::RetentionCurve const &)*arg3,arg4);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      (arg1)->add_layer(arg2,(cmf::upslope::RetentionCurve const &)*arg3,arg4);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -43914,11 +40901,7 @@ SWIGINTERN PyObject *_wrap_Cell_remove_last_layer(PyObject *SWIGUNUSEDPARM(self)
   arg1 = reinterpret_cast< cmf::upslope::Cell * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        (arg1)->remove_last_layer();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      (arg1)->remove_last_layer();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -43949,11 +40932,7 @@ SWIGINTERN PyObject *_wrap_Cell_remove_layers(PyObject *SWIGUNUSEDPARM(self), Py
   arg1 = reinterpret_cast< cmf::upslope::Cell * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        (arg1)->remove_layers();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      (arg1)->remove_layers();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -43995,11 +40974,7 @@ SWIGINTERN PyObject *_wrap_Cell_get_percolation(PyObject *SWIGUNUSEDPARM(self), 
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = ((cmf::upslope::Cell const *)arg1)->get_percolation(arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = ((cmf::upslope::Cell const *)arg1)->get_percolation(arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -44032,11 +41007,7 @@ SWIGINTERN PyObject *_wrap_delete_Cell(PyObject *SWIGUNUSEDPARM(self), PyObject 
   arg1 = reinterpret_cast< cmf::upslope::Cell * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        delete arg1;
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      delete arg1;
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -44109,11 +41080,7 @@ SWIGINTERN PyObject *_wrap_new_Cell(PyObject *SWIGUNUSEDPARM(self), PyObject *ar
   arg5 = reinterpret_cast< cmf::project * >(argp5);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::upslope::Cell *)new cmf::upslope::Cell(arg1,arg2,arg3,arg4,*arg5);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::upslope::Cell *)new cmf::upslope::Cell(arg1,arg2,arg3,arg4,*arg5);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -44145,11 +41112,7 @@ SWIGINTERN PyObject *_wrap_Cell_to_string(PyObject *SWIGUNUSEDPARM(self), PyObje
   arg1 = reinterpret_cast< cmf::upslope::Cell * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = ((cmf::upslope::Cell const *)arg1)->to_string();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = ((cmf::upslope::Cell const *)arg1)->to_string();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -44181,11 +41144,7 @@ SWIGINTERN PyObject *_wrap_Cell_topology_get(PyObject *SWIGUNUSEDPARM(self), PyO
   arg1 = reinterpret_cast< cmf::upslope::Cell * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::upslope::Topology *)cmf_upslope_Cell_topology_get(arg1);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::upslope::Topology *)cmf_upslope_Cell_topology_get(arg1);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -44223,11 +41182,7 @@ SWIGINTERN PyObject *_wrap_Cell_meteorology_set(PyObject *SWIGUNUSEDPARM(self), 
   arg2 = reinterpret_cast< cmf::atmosphere::Meteorology * >(argp2);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        cmf_upslope_Cell_meteorology_set(arg1,arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      cmf_upslope_Cell_meteorology_set(arg1,arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -44259,11 +41214,7 @@ SWIGINTERN PyObject *_wrap_Cell_meteorology_get(PyObject *SWIGUNUSEDPARM(self), 
   arg1 = reinterpret_cast< cmf::upslope::Cell * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::atmosphere::Meteorology *)cmf_upslope_Cell_meteorology_get(arg1);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::atmosphere::Meteorology *)cmf_upslope_Cell_meteorology_get(arg1);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -44295,11 +41246,7 @@ SWIGINTERN PyObject *_wrap_Cell_layers_get(PyObject *SWIGUNUSEDPARM(self), PyObj
   arg1 = reinterpret_cast< cmf::upslope::Cell * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::upslope::layer_list *)cmf_upslope_Cell_layers_get(arg1);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::upslope::layer_list *)cmf_upslope_Cell_layers_get(arg1);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -44331,11 +41278,7 @@ SWIGINTERN PyObject *_wrap_Cell_project_get(PyObject *SWIGUNUSEDPARM(self), PyOb
   arg1 = reinterpret_cast< cmf::upslope::Cell * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::project *)cmf_upslope_Cell_project_get(arg1);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::project *)cmf_upslope_Cell_project_get(arg1);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -44373,11 +41316,7 @@ SWIGINTERN PyObject *_wrap_Cell_saturated_depth_set(PyObject *SWIGUNUSEDPARM(sel
   arg2 = static_cast< real >(val2);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        cmf_upslope_Cell_saturated_depth_set(arg1,arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      cmf_upslope_Cell_saturated_depth_set(arg1,arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -44409,11 +41348,7 @@ SWIGINTERN PyObject *_wrap_Cell_saturated_depth_get(PyObject *SWIGUNUSEDPARM(sel
   arg1 = reinterpret_cast< cmf::upslope::Cell * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (real)cmf_upslope_Cell_saturated_depth_get(arg1);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (real)cmf_upslope_Cell_saturated_depth_get(arg1);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -44445,11 +41380,7 @@ SWIGINTERN PyObject *_wrap_Cell_area_get(PyObject *SWIGUNUSEDPARM(self), PyObjec
   arg1 = reinterpret_cast< cmf::upslope::Cell * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (real)cmf_upslope_Cell_area_get(arg1);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (real)cmf_upslope_Cell_area_get(arg1);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -44481,11 +41412,7 @@ SWIGINTERN PyObject *_wrap_Cell_soildepth_get(PyObject *SWIGUNUSEDPARM(self), Py
   arg1 = reinterpret_cast< cmf::upslope::Cell * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (real)cmf_upslope_Cell_soildepth_get(arg1);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (real)cmf_upslope_Cell_soildepth_get(arg1);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -44526,11 +41453,7 @@ SWIGINTERN PyObject *_wrap_Topology_cell_get(PyObject *SWIGUNUSEDPARM(self), PyO
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Topology_cell_get" "', argument " "1"" of type '" "cmf::upslope::Topology *""'"); 
   }
   arg1 = reinterpret_cast< cmf::upslope::Topology * >(argp1);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (cmf::upslope::Cell *)(cmf::upslope::Cell *) ((arg1)->cell);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (cmf::upslope::Cell *)(cmf::upslope::Cell *) ((arg1)->cell);
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_cmf__upslope__Cell, 0 |  0 );
   return resultobj;
 fail:
@@ -44562,11 +41485,7 @@ SWIGINTERN PyObject *_wrap_Topology_x_set(PyObject *SWIGUNUSEDPARM(self), PyObje
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Topology_x_set" "', argument " "2"" of type '" "double &""'"); 
   }
   arg2 = reinterpret_cast< double * >(argp2);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->x = *arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->x = *arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -44589,11 +41508,7 @@ SWIGINTERN PyObject *_wrap_Topology_x_get(PyObject *SWIGUNUSEDPARM(self), PyObje
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Topology_x_get" "', argument " "1"" of type '" "cmf::upslope::Topology *""'"); 
   }
   arg1 = reinterpret_cast< cmf::upslope::Topology * >(argp1);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (double *) &(double &) ((arg1)->x);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (double *) &(double &) ((arg1)->x);
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_double, 0 |  0 );
   return resultobj;
 fail:
@@ -44625,11 +41540,7 @@ SWIGINTERN PyObject *_wrap_Topology_y_set(PyObject *SWIGUNUSEDPARM(self), PyObje
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Topology_y_set" "', argument " "2"" of type '" "double &""'"); 
   }
   arg2 = reinterpret_cast< double * >(argp2);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->y = *arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->y = *arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -44652,11 +41563,7 @@ SWIGINTERN PyObject *_wrap_Topology_y_get(PyObject *SWIGUNUSEDPARM(self), PyObje
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Topology_y_get" "', argument " "1"" of type '" "cmf::upslope::Topology *""'"); 
   }
   arg1 = reinterpret_cast< cmf::upslope::Topology * >(argp1);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (double *) &(double &) ((arg1)->y);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (double *) &(double &) ((arg1)->y);
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_double, 0 |  0 );
   return resultobj;
 fail:
@@ -44688,11 +41595,7 @@ SWIGINTERN PyObject *_wrap_Topology_z_set(PyObject *SWIGUNUSEDPARM(self), PyObje
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Topology_z_set" "', argument " "2"" of type '" "double &""'"); 
   }
   arg2 = reinterpret_cast< double * >(argp2);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->z = *arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->z = *arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -44715,11 +41618,7 @@ SWIGINTERN PyObject *_wrap_Topology_z_get(PyObject *SWIGUNUSEDPARM(self), PyObje
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Topology_z_get" "', argument " "1"" of type '" "cmf::upslope::Topology *""'"); 
   }
   arg1 = reinterpret_cast< cmf::upslope::Topology * >(argp1);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (double *) &(double &) ((arg1)->z);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (double *) &(double &) ((arg1)->z);
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_double, 0 |  0 );
   return resultobj;
 fail:
@@ -44744,11 +41643,7 @@ SWIGINTERN PyObject *_wrap_Topology_get_position(PyObject *SWIGUNUSEDPARM(self),
   arg1 = reinterpret_cast< cmf::upslope::Topology * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = ((cmf::upslope::Topology const *)arg1)->get_position();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = ((cmf::upslope::Topology const *)arg1)->get_position();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -44789,11 +41684,7 @@ SWIGINTERN PyObject *_wrap_Topology_flowwidth__SWIG_0(PyObject *SWIGUNUSEDPARM(s
   arg2 = reinterpret_cast< cmf::upslope::Cell * >(argp2);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (double)(arg1)->flowwidth(*arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (double)(arg1)->flowwidth(*arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -44834,11 +41725,7 @@ SWIGINTERN PyObject *_wrap_Topology_flowwidth__SWIG_1(PyObject *SWIGUNUSEDPARM(s
   arg2 = reinterpret_cast< cmf::upslope::Topology * >(argp2);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (double)(arg1)->flowwidth(*arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (double)(arg1)->flowwidth(*arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -44973,11 +41860,7 @@ SWIGINTERN PyObject *_wrap_Topology_AddNeighbor__SWIG_0(PyObject *SWIGUNUSEDPARM
   arg3 = static_cast< double >(val3);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        (arg1)->AddNeighbor(*arg2,arg3);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      (arg1)->AddNeighbor(*arg2,arg3);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -45025,11 +41908,7 @@ SWIGINTERN PyObject *_wrap_Topology_AddNeighbor__SWIG_1(PyObject *SWIGUNUSEDPARM
   arg3 = static_cast< double >(val3);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        (arg1)->AddNeighbor(*arg2,arg3);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      (arg1)->AddNeighbor(*arg2,arg3);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -45181,11 +42060,7 @@ SWIGINTERN PyObject *_wrap_Topology_RemoveNeighbor(PyObject *SWIGUNUSEDPARM(self
   arg2 = reinterpret_cast< cmf::upslope::Topology * >(argp2);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        (arg1)->RemoveNeighbor(*arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      (arg1)->RemoveNeighbor(*arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -45217,11 +42092,7 @@ SWIGINTERN PyObject *_wrap_Topology_neighbor_count(PyObject *SWIGUNUSEDPARM(self
   arg1 = reinterpret_cast< cmf::upslope::Topology * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = ((cmf::upslope::Topology const *)arg1)->neighbor_count();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = ((cmf::upslope::Topology const *)arg1)->neighbor_count();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -45266,11 +42137,7 @@ SWIGINTERN PyObject *_wrap_Topology_MainOutlet(PyObject *SWIGUNUSEDPARM(self), P
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::upslope::Cell *)(arg1)->MainOutlet(arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::upslope::Cell *)(arg1)->MainOutlet(arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -45302,11 +42169,7 @@ SWIGINTERN PyObject *_wrap_Topology_ContributingArea(PyObject *SWIGUNUSEDPARM(se
   arg1 = reinterpret_cast< cmf::upslope::Topology * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (double)((cmf::upslope::Topology const *)arg1)->ContributingArea();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (double)((cmf::upslope::Topology const *)arg1)->ContributingArea();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -45342,11 +42205,7 @@ SWIGINTERN PyObject *_wrap_Topology_calculate_contributing_area(PyObject *SWIGUN
   arg1 = reinterpret_cast< cmf::upslope::cell_vector * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        cmf::upslope::Topology::calculate_contributing_area((cmf::upslope::cell_vector const &)*arg1);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      cmf::upslope::Topology::calculate_contributing_area((cmf::upslope::cell_vector const &)*arg1);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -45392,11 +42251,7 @@ SWIGINTERN PyObject *_wrap_Topology___eq__(PyObject *SWIGUNUSEDPARM(self), PyObj
   arg2 = reinterpret_cast< cmf::upslope::Topology * >(argp2);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (bool)(arg1)->operator ==((cmf::upslope::Topology const &)*arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (bool)(arg1)->operator ==((cmf::upslope::Topology const &)*arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -45427,11 +42282,7 @@ SWIGINTERN PyObject *_wrap_delete_Topology(PyObject *SWIGUNUSEDPARM(self), PyObj
   arg1 = reinterpret_cast< cmf::upslope::Topology * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        delete arg1;
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      delete arg1;
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -45472,11 +42323,7 @@ SWIGINTERN PyObject *_wrap_new_neighbor_iterator(PyObject *SWIGUNUSEDPARM(self),
   arg1 = reinterpret_cast< cmf::upslope::Cell * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::upslope::neighbor_iterator *)new cmf::upslope::neighbor_iterator(arg1);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::upslope::neighbor_iterator *)new cmf::upslope::neighbor_iterator(arg1);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -45508,11 +42355,7 @@ SWIGINTERN PyObject *_wrap_neighbor_iterator_cell(PyObject *SWIGUNUSEDPARM(self)
   arg1 = reinterpret_cast< cmf::upslope::neighbor_iterator * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::upslope::Cell *) &(arg1)->cell();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::upslope::Cell *) &(arg1)->cell();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -45544,11 +42387,7 @@ SWIGINTERN PyObject *_wrap_neighbor_iterator_flowwidth(PyObject *SWIGUNUSEDPARM(
   arg1 = reinterpret_cast< cmf::upslope::neighbor_iterator * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (double)(arg1)->flowwidth();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (double)(arg1)->flowwidth();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -45580,11 +42419,7 @@ SWIGINTERN PyObject *_wrap_neighbor_iterator_valid(PyObject *SWIGUNUSEDPARM(self
   arg1 = reinterpret_cast< cmf::upslope::neighbor_iterator * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (bool)((cmf::upslope::neighbor_iterator const *)arg1)->valid();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (bool)((cmf::upslope::neighbor_iterator const *)arg1)->valid();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -45616,11 +42451,7 @@ SWIGINTERN PyObject *_wrap_neighbor_iterator_next(PyObject *SWIGUNUSEDPARM(self)
   arg1 = reinterpret_cast< cmf::upslope::neighbor_iterator * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::upslope::neighbor_iterator *) &(arg1)->next();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::upslope::neighbor_iterator *) &(arg1)->next();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -45666,11 +42497,7 @@ SWIGINTERN PyObject *_wrap_neighbor_iterator___eq__(PyObject *SWIGUNUSEDPARM(sel
   arg2 = reinterpret_cast< cmf::upslope::neighbor_iterator * >(argp2);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (bool)cmf_upslope_neighbor_iterator___eq__(arg1,(cmf::upslope::neighbor_iterator const &)*arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (bool)cmf_upslope_neighbor_iterator___eq__(arg1,(cmf::upslope::neighbor_iterator const &)*arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -45716,11 +42543,7 @@ SWIGINTERN PyObject *_wrap_neighbor_iterator___neq__(PyObject *SWIGUNUSEDPARM(se
   arg2 = reinterpret_cast< cmf::upslope::neighbor_iterator * >(argp2);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (bool)cmf_upslope_neighbor_iterator___neq__(arg1,(cmf::upslope::neighbor_iterator const &)*arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (bool)cmf_upslope_neighbor_iterator___neq__(arg1,(cmf::upslope::neighbor_iterator const &)*arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -45751,11 +42574,7 @@ SWIGINTERN PyObject *_wrap_delete_neighbor_iterator(PyObject *SWIGUNUSEDPARM(sel
   arg1 = reinterpret_cast< cmf::upslope::neighbor_iterator * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        delete arg1;
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      delete arg1;
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -45804,11 +42623,7 @@ SWIGINTERN PyObject *_wrap_cell_vector___getitem____SWIG_0(PyObject *SWIGUNUSEDP
   arg2 = static_cast< int >(val2);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::upslope::Cell *) &((cmf::upslope::cell_vector const *)arg1)->operator [](arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::upslope::Cell *) &((cmf::upslope::cell_vector const *)arg1)->operator [](arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -45830,11 +42645,7 @@ SWIGINTERN PyObject *_wrap_new_cell_vector__SWIG_0(PyObject *SWIGUNUSEDPARM(self
   if ((nobjs < 0) || (nobjs > 0)) SWIG_fail;
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::upslope::cell_vector *)new cmf::upslope::cell_vector();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::upslope::cell_vector *)new cmf::upslope::cell_vector();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -45868,11 +42679,7 @@ SWIGINTERN PyObject *_wrap_new_cell_vector__SWIG_1(PyObject *SWIGUNUSEDPARM(self
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::upslope::cell_vector *)new cmf::upslope::cell_vector((cmf::upslope::cell_vector const &)*arg1);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::upslope::cell_vector *)new cmf::upslope::cell_vector((cmf::upslope::cell_vector const &)*arg1);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -45966,11 +42773,7 @@ SWIGINTERN PyObject *_wrap_cell_vector___getitem____SWIG_1(PyObject *SWIGUNUSEDP
   arg2 = static_cast< int >(val2);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::upslope::Cell *) &(arg1)->operator [](arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::upslope::Cell *) &(arg1)->operator [](arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -46104,11 +42907,7 @@ SWIGINTERN PyObject *_wrap_cell_vector_append(PyObject *SWIGUNUSEDPARM(self), Py
   arg2 = reinterpret_cast< cmf::upslope::Cell * >(argp2);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        (arg1)->append(*arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      (arg1)->append(*arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -46145,11 +42944,7 @@ SWIGINTERN PyObject *_wrap_cell_vector_remove__SWIG_0(PyObject *SWIGUNUSEDPARM(s
   arg2 = static_cast< int >(val2);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        (arg1)->remove(arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      (arg1)->remove(arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -46189,11 +42984,7 @@ SWIGINTERN PyObject *_wrap_cell_vector_remove__SWIG_1(PyObject *SWIGUNUSEDPARM(s
   arg2 = reinterpret_cast< cmf::upslope::Cell * >(argp2);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        (arg1)->remove((cmf::upslope::Cell const &)*arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      (arg1)->remove((cmf::upslope::Cell const &)*arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -46312,11 +43103,7 @@ SWIGINTERN PyObject *_wrap_cell_vector_pop(PyObject *SWIGUNUSEDPARM(self), PyObj
   arg1 = reinterpret_cast< cmf::upslope::cell_vector * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::upslope::Cell *) &(arg1)->pop();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::upslope::Cell *) &(arg1)->pop();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -46348,11 +43135,7 @@ SWIGINTERN PyObject *_wrap_cell_vector___len__(PyObject *SWIGUNUSEDPARM(self), P
   arg1 = reinterpret_cast< cmf::upslope::cell_vector * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = ((cmf::upslope::cell_vector const *)arg1)->size();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = ((cmf::upslope::cell_vector const *)arg1)->size();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -46415,11 +43198,7 @@ SWIGINTERN PyObject *_wrap_cell_vector___getslice__(PyObject *SWIGUNUSEDPARM(sel
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (arg1)->get_slice(arg2,arg3,arg4);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (arg1)->get_slice(arg2,arg3,arg4);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -46451,11 +43230,7 @@ SWIGINTERN PyObject *_wrap_cell_vector_get_area(PyObject *SWIGUNUSEDPARM(self), 
   arg1 = reinterpret_cast< cmf::upslope::cell_vector * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (double)((cmf::upslope::cell_vector const *)arg1)->get_area();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (double)((cmf::upslope::cell_vector const *)arg1)->get_area();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -46501,11 +43276,7 @@ SWIGINTERN PyObject *_wrap_cell_vector___contains__(PyObject *SWIGUNUSEDPARM(sel
   arg2 = reinterpret_cast< cmf::upslope::Cell * >(argp2);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (bool)((cmf::upslope::cell_vector const *)arg1)->contains((cmf::upslope::Cell const &)*arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (bool)((cmf::upslope::cell_vector const *)arg1)->contains((cmf::upslope::Cell const &)*arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -46537,11 +43308,7 @@ SWIGINTERN PyObject *_wrap_cell_vector_lowest_get(PyObject *SWIGUNUSEDPARM(self)
   arg1 = reinterpret_cast< cmf::upslope::cell_vector * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::upslope::Cell *)cmf_upslope_cell_vector_lowest_get(arg1);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::upslope::Cell *)cmf_upslope_cell_vector_lowest_get(arg1);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -46573,11 +43340,7 @@ SWIGINTERN PyObject *_wrap_cell_vector_highest_get(PyObject *SWIGUNUSEDPARM(self
   arg1 = reinterpret_cast< cmf::upslope::cell_vector * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::upslope::Cell *)cmf_upslope_cell_vector_highest_get(arg1);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::upslope::Cell *)cmf_upslope_cell_vector_highest_get(arg1);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -46608,11 +43371,7 @@ SWIGINTERN PyObject *_wrap_delete_cell_vector(PyObject *SWIGUNUSEDPARM(self), Py
   arg1 = reinterpret_cast< cmf::upslope::cell_vector * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        delete arg1;
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      delete arg1;
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -46694,11 +43453,7 @@ SWIGINTERN PyObject *_wrap_find_cell(PyObject *SWIGUNUSEDPARM(self), PyObject *a
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::upslope::Cell *)cmf::upslope::find_cell(*arg1,arg2,arg3);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::upslope::Cell *)cmf::upslope::find_cell(*arg1,arg2,arg3);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -46736,11 +43491,7 @@ SWIGINTERN PyObject *_wrap_get_boundary_cells(PyObject *SWIGUNUSEDPARM(self), Py
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = cmf::upslope::get_boundary_cells(*arg1);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = cmf::upslope::get_boundary_cells(*arg1);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -46778,11 +43529,7 @@ SWIGINTERN PyObject *_wrap_get_connections(PyObject *SWIGUNUSEDPARM(self), PyObj
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = cmf::upslope::get_connections(*arg1);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = cmf::upslope::get_connections(*arg1);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -46842,11 +43589,7 @@ SWIGINTERN PyObject *_wrap_connect_cells_with_flux(PyObject *SWIGUNUSEDPARM(self
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        cmf::upslope::connect_cells_with_flux(*arg1,(cmf::upslope::CellConnector const &)*arg2,arg3);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      cmf::upslope::connect_cells_with_flux(*arg1,(cmf::upslope::CellConnector const &)*arg2,arg3);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -46895,11 +43638,7 @@ SWIGINTERN PyObject *_wrap_fill_sinks(PyObject *SWIGUNUSEDPARM(self), PyObject *
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (int)cmf::upslope::fill_sinks(*arg1,arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (int)cmf::upslope::fill_sinks(*arg1,arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -46937,11 +43676,7 @@ SWIGINTERN PyObject *_wrap_get_area(PyObject *SWIGUNUSEDPARM(self), PyObject *ar
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (double)cmf::upslope::get_area(*arg1);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (double)cmf::upslope::get_area(*arg1);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -46979,11 +43714,7 @@ SWIGINTERN PyObject *_wrap_get_center(PyObject *SWIGUNUSEDPARM(self), PyObject *
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = cmf::upslope::get_center(*arg1);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = cmf::upslope::get_center(*arg1);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -47021,11 +43752,7 @@ SWIGINTERN PyObject *_wrap_cell_positions(PyObject *SWIGUNUSEDPARM(self), PyObje
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = cmf::upslope::cell_positions(*arg1);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = cmf::upslope::cell_positions(*arg1);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -47071,11 +43798,7 @@ SWIGINTERN PyObject *_wrap_cell_flux_directions(PyObject *SWIGUNUSEDPARM(self), 
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = cmf::upslope::cell_flux_directions(*arg1,arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = cmf::upslope::cell_flux_directions(*arg1,arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -47124,11 +43847,7 @@ SWIGINTERN PyObject *_wrap_cell_distance(PyObject *SWIGUNUSEDPARM(self), PyObjec
   arg2 = reinterpret_cast< cmf::upslope::Cell * >(argp2);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (double)cmf::upslope::cell_distance(*arg1,*arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (double)cmf::upslope::cell_distance(*arg1,*arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -47158,11 +43877,7 @@ SWIGINTERN PyObject *_wrap_subcatchment_pourpoint_get(PyObject *SWIGUNUSEDPARM(s
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "subcatchment_pourpoint_get" "', argument " "1"" of type '" "cmf::upslope::subcatchment *""'"); 
   }
   arg1 = reinterpret_cast< cmf::upslope::subcatchment * >(argp1);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (cmf::upslope::Cell *) &(cmf::upslope::Cell const &) ((arg1)->pourpoint);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (cmf::upslope::Cell *) &(cmf::upslope::Cell const &) ((arg1)->pourpoint);
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_cmf__upslope__Cell, 0 |  0 );
   return resultobj;
 fail:
@@ -47191,11 +43906,7 @@ SWIGINTERN PyObject *_wrap_subcatchment_inflowcells_set(PyObject *SWIGUNUSEDPARM
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "subcatchment_inflowcells_set" "', argument " "2"" of type '" "cmf::upslope::cell_vector *""'"); 
   }
   arg2 = reinterpret_cast< cmf::upslope::cell_vector * >(argp2);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->inflowcells = *arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->inflowcells = *arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -47218,11 +43929,7 @@ SWIGINTERN PyObject *_wrap_subcatchment_inflowcells_get(PyObject *SWIGUNUSEDPARM
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "subcatchment_inflowcells_get" "', argument " "1"" of type '" "cmf::upslope::subcatchment *""'"); 
   }
   arg1 = reinterpret_cast< cmf::upslope::subcatchment * >(argp1);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (cmf::upslope::cell_vector *)& ((arg1)->inflowcells);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (cmf::upslope::cell_vector *)& ((arg1)->inflowcells);
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_cmf__upslope__cell_vector, 0 |  0 );
   return resultobj;
 fail:
@@ -47251,11 +43958,7 @@ SWIGINTERN PyObject *_wrap_subcatchment_cells_set(PyObject *SWIGUNUSEDPARM(self)
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "subcatchment_cells_set" "', argument " "2"" of type '" "cmf::upslope::cell_vector *""'"); 
   }
   arg2 = reinterpret_cast< cmf::upslope::cell_vector * >(argp2);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->cells = *arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->cells = *arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -47278,11 +43981,7 @@ SWIGINTERN PyObject *_wrap_subcatchment_cells_get(PyObject *SWIGUNUSEDPARM(self)
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "subcatchment_cells_get" "', argument " "1"" of type '" "cmf::upslope::subcatchment *""'"); 
   }
   arg1 = reinterpret_cast< cmf::upslope::subcatchment * >(argp1);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (cmf::upslope::cell_vector *)& ((arg1)->cells);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (cmf::upslope::cell_vector *)& ((arg1)->cells);
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_cmf__upslope__cell_vector, 0 |  0 );
   return resultobj;
 fail:
@@ -47323,11 +44022,7 @@ SWIGINTERN PyObject *_wrap_new_subcatchment(PyObject *SWIGUNUSEDPARM(self), PyOb
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::upslope::subcatchment *)new cmf::upslope::subcatchment(*arg1,arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::upslope::subcatchment *)new cmf::upslope::subcatchment(*arg1,arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -47358,11 +44053,7 @@ SWIGINTERN PyObject *_wrap_delete_subcatchment(PyObject *SWIGUNUSEDPARM(self), P
   arg1 = reinterpret_cast< cmf::upslope::subcatchment * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        delete arg1;
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      delete arg1;
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -47421,11 +44112,7 @@ SWIGINTERN PyObject *_wrap_pressure_to_waterhead(PyObject *SWIGUNUSEDPARM(self),
   arg1 = static_cast< double >(val1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (double)cmf::upslope::pressure_to_waterhead(arg1);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (double)cmf::upslope::pressure_to_waterhead(arg1);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -47459,11 +44146,7 @@ SWIGINTERN PyObject *_wrap_waterhead_to_pressure(PyObject *SWIGUNUSEDPARM(self),
   arg1 = static_cast< double >(val1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (double)cmf::upslope::waterhead_to_pressure(arg1);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (double)cmf::upslope::waterhead_to_pressure(arg1);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -47497,11 +44180,7 @@ SWIGINTERN PyObject *_wrap_pF_to_waterhead(PyObject *SWIGUNUSEDPARM(self), PyObj
   arg1 = static_cast< double >(val1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (double)cmf::upslope::pF_to_waterhead(arg1);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (double)cmf::upslope::pF_to_waterhead(arg1);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -47535,11 +44214,7 @@ SWIGINTERN PyObject *_wrap_waterhead_to_pF(PyObject *SWIGUNUSEDPARM(self), PyObj
   arg1 = static_cast< double >(val1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (double)cmf::upslope::waterhead_to_pF(arg1);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (double)cmf::upslope::waterhead_to_pF(arg1);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -47577,11 +44252,7 @@ SWIGINTERN PyObject *_wrap_RetentionCurve_K__SWIG_0(PyObject *SWIGUNUSEDPARM(sel
   arg2 = static_cast< real >(val2);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (real)((cmf::upslope::RetentionCurve const *)arg1)->K(arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (real)((cmf::upslope::RetentionCurve const *)arg1)->K(arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -47622,11 +44293,7 @@ SWIGINTERN PyObject *_wrap_RetentionCurve_K__SWIG_1(PyObject *SWIGUNUSEDPARM(sel
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = ((cmf::upslope::RetentionCurve const *)arg1)->K((cmf::math::num_array const &)*arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = ((cmf::upslope::RetentionCurve const *)arg1)->K((cmf::math::num_array const &)*arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -47776,11 +44443,7 @@ SWIGINTERN PyObject *_wrap_RetentionCurve_Wetness_eff(PyObject *SWIGUNUSEDPARM(s
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (real)((cmf::upslope::RetentionCurve const *)arg1)->Wetness_eff(arg2,arg3);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (real)((cmf::upslope::RetentionCurve const *)arg1)->Wetness_eff(arg2,arg3);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -47823,11 +44486,7 @@ SWIGINTERN PyObject *_wrap_RetentionCurve_Porosity(PyObject *SWIGUNUSEDPARM(self
   arg2 = static_cast< real >(val2);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (real)((cmf::upslope::RetentionCurve const *)arg1)->Porosity(arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (real)((cmf::upslope::RetentionCurve const *)arg1)->Porosity(arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -47888,11 +44547,7 @@ SWIGINTERN PyObject *_wrap_RetentionCurve_VoidVolume(PyObject *SWIGUNUSEDPARM(se
   arg4 = static_cast< real >(val4);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (real)((cmf::upslope::RetentionCurve const *)arg1)->VoidVolume(arg2,arg3,arg4);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (real)((cmf::upslope::RetentionCurve const *)arg1)->VoidVolume(arg2,arg3,arg4);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -47953,11 +44608,7 @@ SWIGINTERN PyObject *_wrap_RetentionCurve_FillHeight(PyObject *SWIGUNUSEDPARM(se
   arg4 = static_cast< real >(val4);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (real)((cmf::upslope::RetentionCurve const *)arg1)->FillHeight(arg2,arg3,arg4);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (real)((cmf::upslope::RetentionCurve const *)arg1)->FillHeight(arg2,arg3,arg4);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -47995,11 +44646,7 @@ SWIGINTERN PyObject *_wrap_RetentionCurve_Wetness__SWIG_0(PyObject *SWIGUNUSEDPA
   arg2 = static_cast< real >(val2);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (real)((cmf::upslope::RetentionCurve const *)arg1)->Wetness(arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (real)((cmf::upslope::RetentionCurve const *)arg1)->Wetness(arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -48040,11 +44687,7 @@ SWIGINTERN PyObject *_wrap_RetentionCurve_Wetness__SWIG_1(PyObject *SWIGUNUSEDPA
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = ((cmf::upslope::RetentionCurve const *)arg1)->Wetness((cmf::math::num_array const &)*arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = ((cmf::upslope::RetentionCurve const *)arg1)->Wetness((cmf::math::num_array const &)*arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -48178,11 +44821,7 @@ SWIGINTERN PyObject *_wrap_RetentionCurve_Wetness_pF__SWIG_0(PyObject *SWIGUNUSE
   arg2 = static_cast< real >(val2);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (real)((cmf::upslope::RetentionCurve const *)arg1)->Wetness_pF(arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (real)((cmf::upslope::RetentionCurve const *)arg1)->Wetness_pF(arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -48223,11 +44862,7 @@ SWIGINTERN PyObject *_wrap_RetentionCurve_Wetness_pF__SWIG_1(PyObject *SWIGUNUSE
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = ((cmf::upslope::RetentionCurve const *)arg1)->Wetness_pF((cmf::math::num_array const &)*arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = ((cmf::upslope::RetentionCurve const *)arg1)->Wetness_pF((cmf::math::num_array const &)*arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -48361,11 +44996,7 @@ SWIGINTERN PyObject *_wrap_RetentionCurve_MatricPotential__SWIG_0(PyObject *SWIG
   arg2 = static_cast< real >(val2);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (real)((cmf::upslope::RetentionCurve const *)arg1)->MatricPotential(arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (real)((cmf::upslope::RetentionCurve const *)arg1)->MatricPotential(arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -48406,11 +45037,7 @@ SWIGINTERN PyObject *_wrap_RetentionCurve_MatricPotential__SWIG_1(PyObject *SWIG
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = ((cmf::upslope::RetentionCurve const *)arg1)->MatricPotential((cmf::math::num_array const &)*arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = ((cmf::upslope::RetentionCurve const *)arg1)->MatricPotential((cmf::math::num_array const &)*arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -48538,11 +45165,7 @@ SWIGINTERN PyObject *_wrap_RetentionCurve_copy(PyObject *SWIGUNUSEDPARM(self), P
   arg1 = reinterpret_cast< cmf::upslope::RetentionCurve * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::upslope::RetentionCurve *)((cmf::upslope::RetentionCurve const *)arg1)->copy();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::upslope::RetentionCurve *)((cmf::upslope::RetentionCurve const *)arg1)->copy();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -48573,11 +45196,7 @@ SWIGINTERN PyObject *_wrap_delete_RetentionCurve(PyObject *SWIGUNUSEDPARM(self),
   arg1 = reinterpret_cast< cmf::upslope::RetentionCurve * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        delete arg1;
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      delete arg1;
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -48620,11 +45239,7 @@ SWIGINTERN PyObject *_wrap_BrooksCoreyRetentionCurve_Ksat_set(PyObject *SWIGUNUS
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "BrooksCoreyRetentionCurve_Ksat_set" "', argument " "2"" of type '" "real""'");
   } 
   arg2 = static_cast< real >(val2);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->Ksat = arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->Ksat = arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -48647,11 +45262,7 @@ SWIGINTERN PyObject *_wrap_BrooksCoreyRetentionCurve_Ksat_get(PyObject *SWIGUNUS
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BrooksCoreyRetentionCurve_Ksat_get" "', argument " "1"" of type '" "cmf::upslope::BrooksCoreyRetentionCurve *""'"); 
   }
   arg1 = reinterpret_cast< cmf::upslope::BrooksCoreyRetentionCurve * >(argp1);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (real) ((arg1)->Ksat);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (real) ((arg1)->Ksat);
   resultobj = SWIG_From_double(static_cast< double >(result));
   return resultobj;
 fail:
@@ -48697,11 +45308,7 @@ SWIGINTERN PyObject *_wrap_BrooksCoreyRetentionCurve_SetPorosity(PyObject *SWIGU
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        (arg1)->SetPorosity(arg2,arg3);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      (arg1)->SetPorosity(arg2,arg3);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -48762,11 +45369,7 @@ SWIGINTERN PyObject *_wrap_BrooksCoreyRetentionCurve_Transmissivity(PyObject *SW
   arg4 = static_cast< real >(val4);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (real)((cmf::upslope::BrooksCoreyRetentionCurve const *)arg1)->Transmissivity(arg2,arg3,arg4);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (real)((cmf::upslope::BrooksCoreyRetentionCurve const *)arg1)->Transmissivity(arg2,arg3,arg4);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -48802,11 +45405,7 @@ SWIGINTERN PyObject *_wrap_BrooksCoreyRetentionCurve_wetness_X_set(PyObject *SWI
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "BrooksCoreyRetentionCurve_wetness_X_set" "', argument " "2"" of type '" "real""'");
   } 
   arg2 = static_cast< real >(val2);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->wetness_X = arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->wetness_X = arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -48829,11 +45428,7 @@ SWIGINTERN PyObject *_wrap_BrooksCoreyRetentionCurve_wetness_X_get(PyObject *SWI
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BrooksCoreyRetentionCurve_wetness_X_get" "', argument " "1"" of type '" "cmf::upslope::BrooksCoreyRetentionCurve *""'"); 
   }
   arg1 = reinterpret_cast< cmf::upslope::BrooksCoreyRetentionCurve * >(argp1);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (real) ((arg1)->wetness_X);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (real) ((arg1)->wetness_X);
   resultobj = SWIG_From_double(static_cast< double >(result));
   return resultobj;
 fail:
@@ -48862,11 +45457,7 @@ SWIGINTERN PyObject *_wrap_BrooksCoreyRetentionCurve_Psi_X_set(PyObject *SWIGUNU
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "BrooksCoreyRetentionCurve_Psi_X_set" "', argument " "2"" of type '" "real""'");
   } 
   arg2 = static_cast< real >(val2);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->Psi_X = arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->Psi_X = arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -48889,11 +45480,7 @@ SWIGINTERN PyObject *_wrap_BrooksCoreyRetentionCurve_Psi_X_get(PyObject *SWIGUNU
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BrooksCoreyRetentionCurve_Psi_X_get" "', argument " "1"" of type '" "cmf::upslope::BrooksCoreyRetentionCurve *""'"); 
   }
   arg1 = reinterpret_cast< cmf::upslope::BrooksCoreyRetentionCurve * >(argp1);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (real) ((arg1)->Psi_X);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (real) ((arg1)->Psi_X);
   resultobj = SWIG_From_double(static_cast< double >(result));
   return resultobj;
 fail:
@@ -48977,11 +45564,7 @@ SWIGINTERN PyObject *_wrap_new_BrooksCoreyRetentionCurve(PyObject *SWIGUNUSEDPAR
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::upslope::BrooksCoreyRetentionCurve *)new cmf::upslope::BrooksCoreyRetentionCurve(arg1,arg2,arg3,arg4,arg5,arg6);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::upslope::BrooksCoreyRetentionCurve *)new cmf::upslope::BrooksCoreyRetentionCurve(arg1,arg2,arg3,arg4,arg5,arg6);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -49064,11 +45647,7 @@ SWIGINTERN PyObject *_wrap_BrooksCoreyRetentionCurve_CreateFrom2Points(PyObject 
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = cmf::upslope::BrooksCoreyRetentionCurve::CreateFrom2Points(arg1,arg2,arg3,arg4,arg5,arg6);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = cmf::upslope::BrooksCoreyRetentionCurve::CreateFrom2Points(arg1,arg2,arg3,arg4,arg5,arg6);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -49100,11 +45679,7 @@ SWIGINTERN PyObject *_wrap_BrooksCoreyRetentionCurve_copy(PyObject *SWIGUNUSEDPA
   arg1 = reinterpret_cast< cmf::upslope::BrooksCoreyRetentionCurve * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::upslope::BrooksCoreyRetentionCurve *)((cmf::upslope::BrooksCoreyRetentionCurve const *)arg1)->copy();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::upslope::BrooksCoreyRetentionCurve *)((cmf::upslope::BrooksCoreyRetentionCurve const *)arg1)->copy();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -49142,11 +45717,7 @@ SWIGINTERN PyObject *_wrap_BrooksCoreyRetentionCurve_b_set(PyObject *SWIGUNUSEDP
   arg2 = static_cast< real >(val2);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        cmf_upslope_BrooksCoreyRetentionCurve_b_set(arg1,arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      cmf_upslope_BrooksCoreyRetentionCurve_b_set(arg1,arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -49178,11 +45749,7 @@ SWIGINTERN PyObject *_wrap_BrooksCoreyRetentionCurve_b_get(PyObject *SWIGUNUSEDP
   arg1 = reinterpret_cast< cmf::upslope::BrooksCoreyRetentionCurve * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (real)cmf_upslope_BrooksCoreyRetentionCurve_b_get(arg1);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (real)cmf_upslope_BrooksCoreyRetentionCurve_b_get(arg1);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -49213,11 +45780,7 @@ SWIGINTERN PyObject *_wrap_delete_BrooksCoreyRetentionCurve(PyObject *SWIGUNUSED
   arg1 = reinterpret_cast< cmf::upslope::BrooksCoreyRetentionCurve * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        delete arg1;
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      delete arg1;
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -49264,11 +45827,7 @@ SWIGINTERN PyObject *_wrap_VanGenuchtenMualem_alpha_set(PyObject *SWIGUNUSEDPARM
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "VanGenuchtenMualem_alpha_set" "', argument " "2"" of type '" "real""'");
   } 
   arg2 = static_cast< real >(val2);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->alpha = arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->alpha = arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -49291,11 +45850,7 @@ SWIGINTERN PyObject *_wrap_VanGenuchtenMualem_alpha_get(PyObject *SWIGUNUSEDPARM
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "VanGenuchtenMualem_alpha_get" "', argument " "1"" of type '" "cmf::upslope::VanGenuchtenMualem *""'"); 
   }
   arg1 = reinterpret_cast< cmf::upslope::VanGenuchtenMualem * >(argp1);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (real) ((arg1)->alpha);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (real) ((arg1)->alpha);
   resultobj = SWIG_From_double(static_cast< double >(result));
   return resultobj;
 fail:
@@ -49324,11 +45879,7 @@ SWIGINTERN PyObject *_wrap_VanGenuchtenMualem_n_set(PyObject *SWIGUNUSEDPARM(sel
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "VanGenuchtenMualem_n_set" "', argument " "2"" of type '" "real""'");
   } 
   arg2 = static_cast< real >(val2);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->n = arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->n = arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -49351,11 +45902,7 @@ SWIGINTERN PyObject *_wrap_VanGenuchtenMualem_n_get(PyObject *SWIGUNUSEDPARM(sel
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "VanGenuchtenMualem_n_get" "', argument " "1"" of type '" "cmf::upslope::VanGenuchtenMualem *""'"); 
   }
   arg1 = reinterpret_cast< cmf::upslope::VanGenuchtenMualem * >(argp1);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (real) ((arg1)->n);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (real) ((arg1)->n);
   resultobj = SWIG_From_double(static_cast< double >(result));
   return resultobj;
 fail:
@@ -49384,11 +45931,7 @@ SWIGINTERN PyObject *_wrap_VanGenuchtenMualem_Ksat_set(PyObject *SWIGUNUSEDPARM(
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "VanGenuchtenMualem_Ksat_set" "', argument " "2"" of type '" "real""'");
   } 
   arg2 = static_cast< real >(val2);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->Ksat = arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->Ksat = arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -49411,11 +45954,7 @@ SWIGINTERN PyObject *_wrap_VanGenuchtenMualem_Ksat_get(PyObject *SWIGUNUSEDPARM(
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "VanGenuchtenMualem_Ksat_get" "', argument " "1"" of type '" "cmf::upslope::VanGenuchtenMualem *""'"); 
   }
   arg1 = reinterpret_cast< cmf::upslope::VanGenuchtenMualem * >(argp1);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (real) ((arg1)->Ksat);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (real) ((arg1)->Ksat);
   resultobj = SWIG_From_double(static_cast< double >(result));
   return resultobj;
 fail:
@@ -49444,11 +45983,7 @@ SWIGINTERN PyObject *_wrap_VanGenuchtenMualem_Phi_set(PyObject *SWIGUNUSEDPARM(s
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "VanGenuchtenMualem_Phi_set" "', argument " "2"" of type '" "real""'");
   } 
   arg2 = static_cast< real >(val2);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->Phi = arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->Phi = arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -49471,11 +46006,7 @@ SWIGINTERN PyObject *_wrap_VanGenuchtenMualem_Phi_get(PyObject *SWIGUNUSEDPARM(s
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "VanGenuchtenMualem_Phi_get" "', argument " "1"" of type '" "cmf::upslope::VanGenuchtenMualem *""'"); 
   }
   arg1 = reinterpret_cast< cmf::upslope::VanGenuchtenMualem * >(argp1);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (real) ((arg1)->Phi);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (real) ((arg1)->Phi);
   resultobj = SWIG_From_double(static_cast< double >(result));
   return resultobj;
 fail:
@@ -49504,11 +46035,7 @@ SWIGINTERN PyObject *_wrap_VanGenuchtenMualem_m_set(PyObject *SWIGUNUSEDPARM(sel
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "VanGenuchtenMualem_m_set" "', argument " "2"" of type '" "real""'");
   } 
   arg2 = static_cast< real >(val2);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->m = arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->m = arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -49531,11 +46058,7 @@ SWIGINTERN PyObject *_wrap_VanGenuchtenMualem_m_get(PyObject *SWIGUNUSEDPARM(sel
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "VanGenuchtenMualem_m_get" "', argument " "1"" of type '" "cmf::upslope::VanGenuchtenMualem *""'"); 
   }
   arg1 = reinterpret_cast< cmf::upslope::VanGenuchtenMualem * >(argp1);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (real) ((arg1)->m);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (real) ((arg1)->m);
   resultobj = SWIG_From_double(static_cast< double >(result));
   return resultobj;
 fail:
@@ -49564,11 +46087,7 @@ SWIGINTERN PyObject *_wrap_VanGenuchtenMualem_w0_set(PyObject *SWIGUNUSEDPARM(se
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "VanGenuchtenMualem_w0_set" "', argument " "2"" of type '" "real""'");
   } 
   arg2 = static_cast< real >(val2);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->w0 = arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->w0 = arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -49591,11 +46110,7 @@ SWIGINTERN PyObject *_wrap_VanGenuchtenMualem_w0_get(PyObject *SWIGUNUSEDPARM(se
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "VanGenuchtenMualem_w0_get" "', argument " "1"" of type '" "cmf::upslope::VanGenuchtenMualem *""'"); 
   }
   arg1 = reinterpret_cast< cmf::upslope::VanGenuchtenMualem * >(argp1);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (real) ((arg1)->w0);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (real) ((arg1)->w0);
   resultobj = SWIG_From_double(static_cast< double >(result));
   return resultobj;
 fail:
@@ -49649,11 +46164,7 @@ SWIGINTERN PyObject *_wrap_VanGenuchtenMualem_Transmissivity(PyObject *SWIGUNUSE
   arg4 = static_cast< real >(val4);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (real)((cmf::upslope::VanGenuchtenMualem const *)arg1)->Transmissivity(arg2,arg3,arg4);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (real)((cmf::upslope::VanGenuchtenMualem const *)arg1)->Transmissivity(arg2,arg3,arg4);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -49720,11 +46231,7 @@ SWIGINTERN PyObject *_wrap_VanGenuchtenMualem_fit_w0(PyObject *SWIGUNUSEDPARM(se
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (real)(arg1)->fit_w0(arg2,arg3,arg4);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (real)(arg1)->fit_w0(arg2,arg3,arg4);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -49756,11 +46263,7 @@ SWIGINTERN PyObject *_wrap_VanGenuchtenMualem_copy(PyObject *SWIGUNUSEDPARM(self
   arg1 = reinterpret_cast< cmf::upslope::VanGenuchtenMualem * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::upslope::VanGenuchtenMualem *)((cmf::upslope::VanGenuchtenMualem const *)arg1)->copy();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::upslope::VanGenuchtenMualem *)((cmf::upslope::VanGenuchtenMualem const *)arg1)->copy();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -49840,11 +46343,7 @@ SWIGINTERN PyObject *_wrap_new_VanGenuchtenMualem(PyObject *SWIGUNUSEDPARM(self)
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::upslope::VanGenuchtenMualem *)new cmf::upslope::VanGenuchtenMualem(arg1,arg2,arg3,arg4,arg5);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::upslope::VanGenuchtenMualem *)new cmf::upslope::VanGenuchtenMualem(arg1,arg2,arg3,arg4,arg5);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -49875,11 +46374,7 @@ SWIGINTERN PyObject *_wrap_delete_VanGenuchtenMualem(PyObject *SWIGUNUSEDPARM(se
   arg1 = reinterpret_cast< cmf::upslope::VanGenuchtenMualem * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        delete arg1;
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      delete arg1;
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -49926,11 +46421,7 @@ SWIGINTERN PyObject *_wrap_LinearRetention_Ksat_set(PyObject *SWIGUNUSEDPARM(sel
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "LinearRetention_Ksat_set" "', argument " "2"" of type '" "real""'");
   } 
   arg2 = static_cast< real >(val2);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->Ksat = arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->Ksat = arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -49953,11 +46444,7 @@ SWIGINTERN PyObject *_wrap_LinearRetention_Ksat_get(PyObject *SWIGUNUSEDPARM(sel
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "LinearRetention_Ksat_get" "', argument " "1"" of type '" "cmf::upslope::LinearRetention *""'"); 
   }
   arg1 = reinterpret_cast< cmf::upslope::LinearRetention * >(argp1);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (real) ((arg1)->Ksat);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (real) ((arg1)->Ksat);
   resultobj = SWIG_From_double(static_cast< double >(result));
   return resultobj;
 fail:
@@ -49986,11 +46473,7 @@ SWIGINTERN PyObject *_wrap_LinearRetention_porosity_set(PyObject *SWIGUNUSEDPARM
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "LinearRetention_porosity_set" "', argument " "2"" of type '" "real""'");
   } 
   arg2 = static_cast< real >(val2);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->porosity = arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->porosity = arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -50013,11 +46496,7 @@ SWIGINTERN PyObject *_wrap_LinearRetention_porosity_get(PyObject *SWIGUNUSEDPARM
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "LinearRetention_porosity_get" "', argument " "1"" of type '" "cmf::upslope::LinearRetention *""'"); 
   }
   arg1 = reinterpret_cast< cmf::upslope::LinearRetention * >(argp1);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (real) ((arg1)->porosity);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (real) ((arg1)->porosity);
   resultobj = SWIG_From_double(static_cast< double >(result));
   return resultobj;
 fail:
@@ -50046,11 +46525,7 @@ SWIGINTERN PyObject *_wrap_LinearRetention_thickness_set(PyObject *SWIGUNUSEDPAR
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "LinearRetention_thickness_set" "', argument " "2"" of type '" "real""'");
   } 
   arg2 = static_cast< real >(val2);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->thickness = arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->thickness = arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -50073,11 +46548,7 @@ SWIGINTERN PyObject *_wrap_LinearRetention_thickness_get(PyObject *SWIGUNUSEDPAR
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "LinearRetention_thickness_get" "', argument " "1"" of type '" "cmf::upslope::LinearRetention *""'"); 
   }
   arg1 = reinterpret_cast< cmf::upslope::LinearRetention * >(argp1);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (real) ((arg1)->thickness);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (real) ((arg1)->thickness);
   resultobj = SWIG_From_double(static_cast< double >(result));
   return resultobj;
 fail:
@@ -50106,11 +46577,7 @@ SWIGINTERN PyObject *_wrap_LinearRetention_residual_wetness_set(PyObject *SWIGUN
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "LinearRetention_residual_wetness_set" "', argument " "2"" of type '" "real""'");
   } 
   arg2 = static_cast< real >(val2);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->residual_wetness = arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->residual_wetness = arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -50133,11 +46600,7 @@ SWIGINTERN PyObject *_wrap_LinearRetention_residual_wetness_get(PyObject *SWIGUN
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "LinearRetention_residual_wetness_get" "', argument " "1"" of type '" "cmf::upslope::LinearRetention *""'"); 
   }
   arg1 = reinterpret_cast< cmf::upslope::LinearRetention * >(argp1);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (real) ((arg1)->residual_wetness);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (real) ((arg1)->residual_wetness);
   resultobj = SWIG_From_double(static_cast< double >(result));
   return resultobj;
 fail:
@@ -50166,11 +46629,7 @@ SWIGINTERN PyObject *_wrap_LinearRetention_porosity_decay_set(PyObject *SWIGUNUS
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "LinearRetention_porosity_decay_set" "', argument " "2"" of type '" "real""'");
   } 
   arg2 = static_cast< real >(val2);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->porosity_decay = arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->porosity_decay = arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -50193,11 +46652,7 @@ SWIGINTERN PyObject *_wrap_LinearRetention_porosity_decay_get(PyObject *SWIGUNUS
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "LinearRetention_porosity_decay_get" "', argument " "1"" of type '" "cmf::upslope::LinearRetention *""'"); 
   }
   arg1 = reinterpret_cast< cmf::upslope::LinearRetention * >(argp1);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (real) ((arg1)->porosity_decay);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (real) ((arg1)->porosity_decay);
   resultobj = SWIG_From_double(static_cast< double >(result));
   return resultobj;
 fail:
@@ -50226,11 +46681,7 @@ SWIGINTERN PyObject *_wrap_LinearRetention_beta_set(PyObject *SWIGUNUSEDPARM(sel
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "LinearRetention_beta_set" "', argument " "2"" of type '" "real""'");
   } 
   arg2 = static_cast< real >(val2);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->beta = arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->beta = arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -50253,11 +46704,7 @@ SWIGINTERN PyObject *_wrap_LinearRetention_beta_get(PyObject *SWIGUNUSEDPARM(sel
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "LinearRetention_beta_get" "', argument " "1"" of type '" "cmf::upslope::LinearRetention *""'"); 
   }
   arg1 = reinterpret_cast< cmf::upslope::LinearRetention * >(argp1);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (real) ((arg1)->beta);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (real) ((arg1)->beta);
   resultobj = SWIG_From_double(static_cast< double >(result));
   return resultobj;
 fail:
@@ -50311,11 +46758,7 @@ SWIGINTERN PyObject *_wrap_LinearRetention_Transmissivity(PyObject *SWIGUNUSEDPA
   arg4 = static_cast< real >(val4);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (real)((cmf::upslope::LinearRetention const *)arg1)->Transmissivity(arg2,arg3,arg4);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (real)((cmf::upslope::LinearRetention const *)arg1)->Transmissivity(arg2,arg3,arg4);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -50347,11 +46790,7 @@ SWIGINTERN PyObject *_wrap_LinearRetention_copy(PyObject *SWIGUNUSEDPARM(self), 
   arg1 = reinterpret_cast< cmf::upslope::LinearRetention * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::upslope::LinearRetention *)((cmf::upslope::LinearRetention const *)arg1)->copy();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::upslope::LinearRetention *)((cmf::upslope::LinearRetention const *)arg1)->copy();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -50414,11 +46853,7 @@ SWIGINTERN PyObject *_wrap_new_LinearRetention(PyObject *SWIGUNUSEDPARM(self), P
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::upslope::LinearRetention *)new cmf::upslope::LinearRetention(arg1,arg2,arg3,arg4);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::upslope::LinearRetention *)new cmf::upslope::LinearRetention(arg1,arg2,arg3,arg4);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -50449,11 +46884,7 @@ SWIGINTERN PyObject *_wrap_delete_LinearRetention(PyObject *SWIGUNUSEDPARM(self)
   arg1 = reinterpret_cast< cmf::upslope::LinearRetention * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        delete arg1;
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      delete arg1;
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -50506,11 +46937,7 @@ SWIGINTERN PyObject *_wrap_SoilLayer_Position_get(PyObject *SWIGUNUSEDPARM(self)
       arg1 = const_cast< cmf::upslope::SoilLayer * >((smartarg1 ? smartarg1->get() : 0));
     }
   }
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (int)(int) ((arg1)->Position);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (int)(int) ((arg1)->Position);
   resultobj = SWIG_From_int(static_cast< int >(result));
   return resultobj;
 fail:
@@ -50545,11 +46972,7 @@ SWIGINTERN PyObject *_wrap_SoilLayer_cell_get(PyObject *SWIGUNUSEDPARM(self), Py
       arg1 = const_cast< cmf::upslope::SoilLayer * >((smartarg1 ? smartarg1->get() : 0));
     }
   }
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (cmf::upslope::Cell *) &(cmf::upslope::Cell &) ((arg1)->cell);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (cmf::upslope::Cell *) &(cmf::upslope::Cell &) ((arg1)->cell);
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_cmf__upslope__Cell, 0 |  0 );
   return resultobj;
 fail:
@@ -50586,11 +47009,7 @@ SWIGINTERN PyObject *_wrap_SoilLayer___get_upper(PyObject *SWIGUNUSEDPARM(self),
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = ((cmf::upslope::SoilLayer const *)arg1)->get_upper();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = ((cmf::upslope::SoilLayer const *)arg1)->get_upper();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -50637,11 +47056,7 @@ SWIGINTERN PyObject *_wrap_SoilLayer___get_lower(PyObject *SWIGUNUSEDPARM(self),
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = ((cmf::upslope::SoilLayer const *)arg1)->get_lower();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = ((cmf::upslope::SoilLayer const *)arg1)->get_lower();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -50688,11 +47103,7 @@ SWIGINTERN PyObject *_wrap_SoilLayer_get_soil(PyObject *SWIGUNUSEDPARM(self), Py
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::upslope::RetentionCurve *) &((cmf::upslope::SoilLayer const *)arg1)->get_soil();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::upslope::RetentionCurve *) &((cmf::upslope::SoilLayer const *)arg1)->get_soil();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -50777,11 +47188,7 @@ SWIGINTERN PyObject *_wrap_SoilLayer_set_soil(PyObject *SWIGUNUSEDPARM(self), Py
   arg2 = reinterpret_cast< cmf::upslope::RetentionCurve * >(argp2);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        (arg1)->set_soil((cmf::upslope::RetentionCurve const &)*arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      (arg1)->set_soil((cmf::upslope::RetentionCurve const &)*arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -50849,11 +47256,7 @@ SWIGINTERN PyObject *_wrap_SoilLayer_get_K(PyObject *SWIGUNUSEDPARM(self), PyObj
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (real)((cmf::upslope::SoilLayer const *)arg1)->get_K(arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (real)((cmf::upslope::SoilLayer const *)arg1)->get_K(arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -50918,11 +47321,7 @@ SWIGINTERN PyObject *_wrap_SoilLayer_anisotropic_kf_set(PyObject *SWIGUNUSEDPARM
       arg2 = &p2;
     }
   }
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->anisotropic_kf = *arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->anisotropic_kf = *arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -50957,11 +47356,7 @@ SWIGINTERN PyObject *_wrap_SoilLayer_anisotropic_kf_get(PyObject *SWIGUNUSEDPARM
       arg1 = const_cast< cmf::upslope::SoilLayer * >((smartarg1 ? smartarg1->get() : 0));
     }
   }
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (cmf::geometry::point *)& ((arg1)->anisotropic_kf);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (cmf::geometry::point *)& ((arg1)->anisotropic_kf);
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_cmf__geometry__point, 0 |  0 );
   return resultobj;
 fail:
@@ -50998,11 +47393,7 @@ SWIGINTERN PyObject *_wrap_SoilLayer_get_capacity(PyObject *SWIGUNUSEDPARM(self)
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (real)((cmf::upslope::SoilLayer const *)arg1)->get_capacity();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (real)((cmf::upslope::SoilLayer const *)arg1)->get_capacity();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -51046,11 +47437,7 @@ SWIGINTERN PyObject *_wrap_SoilLayer_get_saturated_depth(PyObject *SWIGUNUSEDPAR
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (real)((cmf::upslope::SoilLayer const *)arg1)->get_saturated_depth();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (real)((cmf::upslope::SoilLayer const *)arg1)->get_saturated_depth();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -51129,11 +47516,7 @@ SWIGINTERN PyObject *_wrap_SoilLayer_get_flow_crosssection(PyObject *SWIGUNUSEDP
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (real)((cmf::upslope::SoilLayer const *)arg1)->get_flow_crosssection((cmf::upslope::SoilLayer const &)*arg2,arg3);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (real)((cmf::upslope::SoilLayer const *)arg1)->get_flow_crosssection((cmf::upslope::SoilLayer const &)*arg2,arg3);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -51171,11 +47554,7 @@ SWIGINTERN PyObject *_wrap_SoilLayer_cast(PyObject *SWIGUNUSEDPARM(self), PyObje
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = cmf::upslope::SoilLayer::cast(arg1);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = cmf::upslope::SoilLayer::cast(arg1);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -51222,11 +47601,7 @@ SWIGINTERN PyObject *_wrap_SoilLayer_gravitational_potential_get(PyObject *SWIGU
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (real)cmf_upslope_SoilLayer_gravitational_potential_get(arg1);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (real)cmf_upslope_SoilLayer_gravitational_potential_get(arg1);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -51270,11 +47645,7 @@ SWIGINTERN PyObject *_wrap_SoilLayer_matrix_potential_get(PyObject *SWIGUNUSEDPA
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (real)cmf_upslope_SoilLayer_matrix_potential_get(arg1);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (real)cmf_upslope_SoilLayer_matrix_potential_get(arg1);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -51324,11 +47695,7 @@ SWIGINTERN PyObject *_wrap_SoilLayer_wetness_set(PyObject *SWIGUNUSEDPARM(self),
   arg2 = static_cast< real >(val2);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        cmf_upslope_SoilLayer_wetness_set(arg1,arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      cmf_upslope_SoilLayer_wetness_set(arg1,arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -51372,11 +47739,7 @@ SWIGINTERN PyObject *_wrap_SoilLayer_wetness_get(PyObject *SWIGUNUSEDPARM(self),
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (real)cmf_upslope_SoilLayer_wetness_get(arg1);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (real)cmf_upslope_SoilLayer_wetness_get(arg1);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -51426,11 +47789,7 @@ SWIGINTERN PyObject *_wrap_SoilLayer_theta_set(PyObject *SWIGUNUSEDPARM(self), P
   arg2 = static_cast< real >(val2);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        cmf_upslope_SoilLayer_theta_set(arg1,arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      cmf_upslope_SoilLayer_theta_set(arg1,arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -51474,11 +47833,7 @@ SWIGINTERN PyObject *_wrap_SoilLayer_theta_get(PyObject *SWIGUNUSEDPARM(self), P
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (real)cmf_upslope_SoilLayer_theta_get(arg1);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (real)cmf_upslope_SoilLayer_theta_get(arg1);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -51522,11 +47877,7 @@ SWIGINTERN PyObject *_wrap_SoilLayer_K_get(PyObject *SWIGUNUSEDPARM(self), PyObj
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (real)cmf_upslope_SoilLayer_K_get(arg1);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (real)cmf_upslope_SoilLayer_K_get(arg1);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -51570,11 +47921,7 @@ SWIGINTERN PyObject *_wrap_SoilLayer_Ksat_get(PyObject *SWIGUNUSEDPARM(self), Py
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (real)cmf_upslope_SoilLayer_Ksat_get(arg1);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (real)cmf_upslope_SoilLayer_Ksat_get(arg1);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -51618,11 +47965,7 @@ SWIGINTERN PyObject *_wrap_SoilLayer_thickness_get(PyObject *SWIGUNUSEDPARM(self
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (real)cmf_upslope_SoilLayer_thickness_get(arg1);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (real)cmf_upslope_SoilLayer_thickness_get(arg1);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -51666,11 +48009,7 @@ SWIGINTERN PyObject *_wrap_SoilLayer_lower_boundary_get(PyObject *SWIGUNUSEDPARM
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (real)cmf_upslope_SoilLayer_lower_boundary_get(arg1);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (real)cmf_upslope_SoilLayer_lower_boundary_get(arg1);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -51714,11 +48053,7 @@ SWIGINTERN PyObject *_wrap_SoilLayer_upper_boundary_get(PyObject *SWIGUNUSEDPARM
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (real)cmf_upslope_SoilLayer_upper_boundary_get(arg1);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (real)cmf_upslope_SoilLayer_upper_boundary_get(arg1);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -51762,11 +48097,7 @@ SWIGINTERN PyObject *_wrap_SoilLayer_porosity_get(PyObject *SWIGUNUSEDPARM(self)
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (real)cmf_upslope_SoilLayer_porosity_get(arg1);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (real)cmf_upslope_SoilLayer_porosity_get(arg1);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -51816,11 +48147,7 @@ SWIGINTERN PyObject *_wrap_SoilLayer_ice_fraction_set(PyObject *SWIGUNUSEDPARM(s
   arg2 = static_cast< real >(val2);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        cmf_upslope_SoilLayer_ice_fraction_set(arg1,arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      cmf_upslope_SoilLayer_ice_fraction_set(arg1,arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -51864,11 +48191,7 @@ SWIGINTERN PyObject *_wrap_SoilLayer_ice_fraction_get(PyObject *SWIGUNUSEDPARM(s
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (real)cmf_upslope_SoilLayer_ice_fraction_get(arg1);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (real)cmf_upslope_SoilLayer_ice_fraction_get(arg1);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -51911,11 +48234,7 @@ SWIGINTERN PyObject *_wrap_delete_SoilLayer(PyObject *SWIGUNUSEDPARM(self), PyOb
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        (void)arg1; delete smartarg1;
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      (void)arg1; delete smartarg1;
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -51966,11 +48285,7 @@ SWIGINTERN PyObject *_wrap_MacroPore___get_layer(PyObject *SWIGUNUSEDPARM(self),
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = ((cmf::upslope::MacroPore const *)arg1)->get_layer();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = ((cmf::upslope::MacroPore const *)arg1)->get_layer();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -52017,11 +48332,7 @@ SWIGINTERN PyObject *_wrap_MacroPore_get_porefraction(PyObject *SWIGUNUSEDPARM(s
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (real)((cmf::upslope::MacroPore const *)arg1)->get_porefraction();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (real)((cmf::upslope::MacroPore const *)arg1)->get_porefraction();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -52069,11 +48380,7 @@ SWIGINTERN PyObject *_wrap_MacroPore_density_set(PyObject *SWIGUNUSEDPARM(self),
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "MacroPore_density_set" "', argument " "2"" of type '" "real""'");
   } 
   arg2 = static_cast< real >(val2);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->density = arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->density = arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -52108,11 +48415,7 @@ SWIGINTERN PyObject *_wrap_MacroPore_density_get(PyObject *SWIGUNUSEDPARM(self),
       arg1 = const_cast< cmf::upslope::MacroPore * >((smartarg1 ? smartarg1->get() : 0));
     }
   }
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (real) ((arg1)->density);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (real) ((arg1)->density);
   resultobj = SWIG_From_double(static_cast< double >(result));
   return resultobj;
 fail:
@@ -52153,11 +48456,7 @@ SWIGINTERN PyObject *_wrap_MacroPore_Ksat_set(PyObject *SWIGUNUSEDPARM(self), Py
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "MacroPore_Ksat_set" "', argument " "2"" of type '" "real""'");
   } 
   arg2 = static_cast< real >(val2);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->Ksat = arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->Ksat = arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -52192,11 +48491,7 @@ SWIGINTERN PyObject *_wrap_MacroPore_Ksat_get(PyObject *SWIGUNUSEDPARM(self), Py
       arg1 = const_cast< cmf::upslope::MacroPore * >((smartarg1 ? smartarg1->get() : 0));
     }
   }
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (real) ((arg1)->Ksat);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (real) ((arg1)->Ksat);
   resultobj = SWIG_From_double(static_cast< double >(result));
   return resultobj;
 fail:
@@ -52231,11 +48526,7 @@ SWIGINTERN PyObject *_wrap_MacroPore_get_K__SWIG_0(PyObject *SWIGUNUSEDPARM(self
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (real)(arg1)->get_K();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (real)(arg1)->get_K();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -52298,11 +48589,7 @@ SWIGINTERN PyObject *_wrap_MacroPore_get_K__SWIG_1(PyObject *SWIGUNUSEDPARM(self
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (real)((cmf::upslope::MacroPore const *)arg1)->get_K(arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (real)((cmf::upslope::MacroPore const *)arg1)->get_K(arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -52423,11 +48710,7 @@ SWIGINTERN PyObject *_wrap_MacroPore_get_filled_fraction(PyObject *SWIGUNUSEDPAR
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (real)((cmf::upslope::MacroPore const *)arg1)->get_filled_fraction();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (real)((cmf::upslope::MacroPore const *)arg1)->get_filled_fraction();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -52498,11 +48781,7 @@ SWIGINTERN PyObject *_wrap_MacroPore_create(PyObject *SWIGUNUSEDPARM(self), PyOb
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = cmf::upslope::MacroPore::create(arg1,arg2,arg3,arg4);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = cmf::upslope::MacroPore::create(arg1,arg2,arg3,arg4);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -52543,11 +48822,7 @@ SWIGINTERN PyObject *_wrap_MacroPore_cast(PyObject *SWIGUNUSEDPARM(self), PyObje
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = cmf::upslope::MacroPore::cast(arg1);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = cmf::upslope::MacroPore::cast(arg1);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -52593,11 +48868,7 @@ SWIGINTERN PyObject *_wrap_delete_MacroPore(PyObject *SWIGUNUSEDPARM(self), PyOb
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        (void)arg1; delete smartarg1;
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      (void)arg1; delete smartarg1;
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -52638,11 +48909,7 @@ SWIGINTERN PyObject *_wrap_new_layer_list__SWIG_0(PyObject *SWIGUNUSEDPARM(self)
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::upslope::layer_list *)new cmf::upslope::layer_list((cmf::upslope::layer_list const &)*arg1);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::upslope::layer_list *)new cmf::upslope::layer_list((cmf::upslope::layer_list const &)*arg1);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -52664,11 +48931,7 @@ SWIGINTERN PyObject *_wrap_new_layer_list__SWIG_1(PyObject *SWIGUNUSEDPARM(self)
   if ((nobjs < 0) || (nobjs > 0)) SWIG_fail;
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::upslope::layer_list *)new cmf::upslope::layer_list();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::upslope::layer_list *)new cmf::upslope::layer_list();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -52702,11 +48965,7 @@ SWIGINTERN PyObject *_wrap_new_layer_list__SWIG_2(PyObject *SWIGUNUSEDPARM(self)
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::upslope::layer_list *)new cmf::upslope::layer_list((cmf::water::node_list const &)*arg1);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::upslope::layer_list *)new cmf::upslope::layer_list((cmf::water::node_list const &)*arg1);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -52818,11 +49077,7 @@ SWIGINTERN PyObject *_wrap_layer_list_pop(PyObject *SWIGUNUSEDPARM(self), PyObje
   arg1 = reinterpret_cast< cmf::upslope::layer_list * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (arg1)->pop();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (arg1)->pop();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -52872,11 +49127,7 @@ SWIGINTERN PyObject *_wrap_layer_list_append(PyObject *SWIGUNUSEDPARM(self), PyO
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::upslope::layer_list *) &(arg1)->append(arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::upslope::layer_list *) &(arg1)->append(arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -52918,11 +49169,7 @@ SWIGINTERN PyObject *_wrap_layer_list_extend__SWIG_0(PyObject *SWIGUNUSEDPARM(se
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::upslope::layer_list *) &(arg1)->extend((cmf::upslope::layer_list const &)*arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::upslope::layer_list *) &(arg1)->extend((cmf::upslope::layer_list const &)*arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -52964,11 +49211,7 @@ SWIGINTERN PyObject *_wrap_layer_list_extend__SWIG_1(PyObject *SWIGUNUSEDPARM(se
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::upslope::layer_list *) &(arg1)->extend((cmf::water::node_list const &)*arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::upslope::layer_list *) &(arg1)->extend((cmf::water::node_list const &)*arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -53122,11 +49365,7 @@ SWIGINTERN PyObject *_wrap_layer_list_get_slice(PyObject *SWIGUNUSEDPARM(self), 
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (arg1)->get_slice(arg2,arg3,arg4);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (arg1)->get_slice(arg2,arg3,arg4);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -53157,11 +49396,7 @@ SWIGINTERN PyObject *_wrap_layer_list_clear(PyObject *SWIGUNUSEDPARM(self), PyOb
   arg1 = reinterpret_cast< cmf::upslope::layer_list * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        (arg1)->clear();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      (arg1)->clear();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -53193,11 +49428,7 @@ SWIGINTERN PyObject *_wrap_layer_list_size(PyObject *SWIGUNUSEDPARM(self), PyObj
   arg1 = reinterpret_cast< cmf::upslope::layer_list * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = ((cmf::upslope::layer_list const *)arg1)->size();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = ((cmf::upslope::layer_list const *)arg1)->size();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -53253,11 +49484,7 @@ SWIGINTERN PyObject *_wrap_layer_list_set_wetness(PyObject *SWIGUNUSEDPARM(self)
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        (arg1)->set_wetness((cmf::math::num_array const &)*arg2,arg3);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      (arg1)->set_wetness((cmf::math::num_array const &)*arg2,arg3);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -53319,11 +49546,7 @@ SWIGINTERN PyObject *_wrap_layer_list_set_potential(PyObject *SWIGUNUSEDPARM(sel
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        (arg1)->set_potential((cmf::math::num_array const &)*arg2,arg3);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      (arg1)->set_potential((cmf::math::num_array const &)*arg2,arg3);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -53385,11 +49608,7 @@ SWIGINTERN PyObject *_wrap_layer_list_set_volume(PyObject *SWIGUNUSEDPARM(self),
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        (arg1)->set_volume((cmf::math::num_array const &)*arg2,arg3);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      (arg1)->set_volume((cmf::math::num_array const &)*arg2,arg3);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -53451,11 +49670,7 @@ SWIGINTERN PyObject *_wrap_layer_list_set_ice_fraction(PyObject *SWIGUNUSEDPARM(
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        (arg1)->set_ice_fraction((cmf::math::num_array const &)*arg2,arg3);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      (arg1)->set_ice_fraction((cmf::math::num_array const &)*arg2,arg3);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -53493,11 +49708,7 @@ SWIGINTERN PyObject *_wrap_layer_list_gravitational_potential_get(PyObject *SWIG
   arg1 = reinterpret_cast< cmf::upslope::layer_list * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = cmf_upslope_layer_list_gravitational_potential_get(arg1);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = cmf_upslope_layer_list_gravitational_potential_get(arg1);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -53531,11 +49742,7 @@ SWIGINTERN PyObject *_wrap_layer_list_matrix_potential_get(PyObject *SWIGUNUSEDP
   arg1 = reinterpret_cast< cmf::upslope::layer_list * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = cmf_upslope_layer_list_matrix_potential_get(arg1);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = cmf_upslope_layer_list_matrix_potential_get(arg1);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -53569,11 +49776,7 @@ SWIGINTERN PyObject *_wrap_layer_list_wetness_get(PyObject *SWIGUNUSEDPARM(self)
   arg1 = reinterpret_cast< cmf::upslope::layer_list * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = cmf_upslope_layer_list_wetness_get(arg1);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = cmf_upslope_layer_list_wetness_get(arg1);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -53607,11 +49810,7 @@ SWIGINTERN PyObject *_wrap_layer_list_volume_get(PyObject *SWIGUNUSEDPARM(self),
   arg1 = reinterpret_cast< cmf::upslope::layer_list * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = cmf_upslope_layer_list_volume_get(arg1);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = cmf_upslope_layer_list_volume_get(arg1);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -53645,11 +49844,7 @@ SWIGINTERN PyObject *_wrap_layer_list_potential_get(PyObject *SWIGUNUSEDPARM(sel
   arg1 = reinterpret_cast< cmf::upslope::layer_list * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = cmf_upslope_layer_list_potential_get(arg1);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = cmf_upslope_layer_list_potential_get(arg1);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -53683,11 +49878,7 @@ SWIGINTERN PyObject *_wrap_layer_list_K_get(PyObject *SWIGUNUSEDPARM(self), PyOb
   arg1 = reinterpret_cast< cmf::upslope::layer_list * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = cmf_upslope_layer_list_K_get(arg1);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = cmf_upslope_layer_list_K_get(arg1);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -53721,11 +49912,7 @@ SWIGINTERN PyObject *_wrap_layer_list_Ksat_get(PyObject *SWIGUNUSEDPARM(self), P
   arg1 = reinterpret_cast< cmf::upslope::layer_list * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = cmf_upslope_layer_list_Ksat_get(arg1);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = cmf_upslope_layer_list_Ksat_get(arg1);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -53759,11 +49946,7 @@ SWIGINTERN PyObject *_wrap_layer_list_thickness_get(PyObject *SWIGUNUSEDPARM(sel
   arg1 = reinterpret_cast< cmf::upslope::layer_list * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = cmf_upslope_layer_list_thickness_get(arg1);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = cmf_upslope_layer_list_thickness_get(arg1);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -53797,11 +49980,7 @@ SWIGINTERN PyObject *_wrap_layer_list_lower_boundary_get(PyObject *SWIGUNUSEDPAR
   arg1 = reinterpret_cast< cmf::upslope::layer_list * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = cmf_upslope_layer_list_lower_boundary_get(arg1);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = cmf_upslope_layer_list_lower_boundary_get(arg1);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -53835,11 +50014,7 @@ SWIGINTERN PyObject *_wrap_layer_list_upper_boundary_get(PyObject *SWIGUNUSEDPAR
   arg1 = reinterpret_cast< cmf::upslope::layer_list * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = cmf_upslope_layer_list_upper_boundary_get(arg1);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = cmf_upslope_layer_list_upper_boundary_get(arg1);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -53873,11 +50048,7 @@ SWIGINTERN PyObject *_wrap_layer_list_porosity_get(PyObject *SWIGUNUSEDPARM(self
   arg1 = reinterpret_cast< cmf::upslope::layer_list * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = cmf_upslope_layer_list_porosity_get(arg1);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = cmf_upslope_layer_list_porosity_get(arg1);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -53911,11 +50082,7 @@ SWIGINTERN PyObject *_wrap_layer_list_ice_fraction_get(PyObject *SWIGUNUSEDPARM(
   arg1 = reinterpret_cast< cmf::upslope::layer_list * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = cmf_upslope_layer_list_ice_fraction_get(arg1);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = cmf_upslope_layer_list_ice_fraction_get(arg1);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -53960,11 +50127,7 @@ SWIGINTERN PyObject *_wrap_layer_list___get(PyObject *SWIGUNUSEDPARM(self), PyOb
   arg2 = static_cast< int >(val2);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = cmf_upslope_layer_list___get(arg1,arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = cmf_upslope_layer_list___get(arg1,arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -53998,11 +50161,7 @@ SWIGINTERN PyObject *_wrap_delete_layer_list(PyObject *SWIGUNUSEDPARM(self), PyO
   arg1 = reinterpret_cast< cmf::upslope::layer_list * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        delete arg1;
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      delete arg1;
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -54056,11 +50215,7 @@ SWIGINTERN PyObject *_wrap_IVolumeHeightFunction_h(PyObject *SWIGUNUSEDPARM(self
   arg2 = static_cast< double >(val2);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (double)((cmf::river::IVolumeHeightFunction const *)arg1)->h(arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (double)((cmf::river::IVolumeHeightFunction const *)arg1)->h(arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -54103,11 +50258,7 @@ SWIGINTERN PyObject *_wrap_IVolumeHeightFunction_A(PyObject *SWIGUNUSEDPARM(self
   arg2 = static_cast< double >(val2);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (double)((cmf::river::IVolumeHeightFunction const *)arg1)->A(arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (double)((cmf::river::IVolumeHeightFunction const *)arg1)->A(arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -54150,11 +50301,7 @@ SWIGINTERN PyObject *_wrap_IVolumeHeightFunction_V(PyObject *SWIGUNUSEDPARM(self
   arg2 = static_cast< double >(val2);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (double)((cmf::river::IVolumeHeightFunction const *)arg1)->V(arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (double)((cmf::river::IVolumeHeightFunction const *)arg1)->V(arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -54186,11 +50333,7 @@ SWIGINTERN PyObject *_wrap_IVolumeHeightFunction_copy(PyObject *SWIGUNUSEDPARM(s
   arg1 = reinterpret_cast< cmf::river::IVolumeHeightFunction * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::river::IVolumeHeightFunction *)((cmf::river::IVolumeHeightFunction const *)arg1)->copy();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::river::IVolumeHeightFunction *)((cmf::river::IVolumeHeightFunction const *)arg1)->copy();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -54233,11 +50376,7 @@ SWIGINTERN PyObject *_wrap_IVolumeHeightFunction___call__(PyObject *SWIGUNUSEDPA
   arg2 = static_cast< double >(val2);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (double)(arg1)->operator ()(arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (double)(arg1)->operator ()(arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -54268,11 +50407,7 @@ SWIGINTERN PyObject *_wrap_delete_IVolumeHeightFunction(PyObject *SWIGUNUSEDPARM
   arg1 = reinterpret_cast< cmf::river::IVolumeHeightFunction * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        delete arg1;
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      delete arg1;
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -54315,11 +50450,7 @@ SWIGINTERN PyObject *_wrap_Prism_Area_set(PyObject *SWIGUNUSEDPARM(self), PyObje
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Prism_Area_set" "', argument " "2"" of type '" "double""'");
   } 
   arg2 = static_cast< double >(val2);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->Area = arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->Area = arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -54342,11 +50473,7 @@ SWIGINTERN PyObject *_wrap_Prism_Area_get(PyObject *SWIGUNUSEDPARM(self), PyObje
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Prism_Area_get" "', argument " "1"" of type '" "cmf::river::Prism *""'"); 
   }
   arg1 = reinterpret_cast< cmf::river::Prism * >(argp1);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (double) ((arg1)->Area);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (double) ((arg1)->Area);
   resultobj = SWIG_From_double(static_cast< double >(result));
   return resultobj;
 fail:
@@ -54375,11 +50502,7 @@ SWIGINTERN PyObject *_wrap_Prism_RoughThickness_set(PyObject *SWIGUNUSEDPARM(sel
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Prism_RoughThickness_set" "', argument " "2"" of type '" "double""'");
   } 
   arg2 = static_cast< double >(val2);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->RoughThickness = arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->RoughThickness = arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -54402,11 +50525,7 @@ SWIGINTERN PyObject *_wrap_Prism_RoughThickness_get(PyObject *SWIGUNUSEDPARM(sel
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Prism_RoughThickness_get" "', argument " "1"" of type '" "cmf::river::Prism *""'"); 
   }
   arg1 = reinterpret_cast< cmf::river::Prism * >(argp1);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (double) ((arg1)->RoughThickness);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (double) ((arg1)->RoughThickness);
   resultobj = SWIG_From_double(static_cast< double >(result));
   return resultobj;
 fail:
@@ -54444,11 +50563,7 @@ SWIGINTERN PyObject *_wrap_new_Prism(PyObject *SWIGUNUSEDPARM(self), PyObject *a
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::river::Prism *)new cmf::river::Prism(arg1,arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::river::Prism *)new cmf::river::Prism(arg1,arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -54480,11 +50595,7 @@ SWIGINTERN PyObject *_wrap_Prism_copy(PyObject *SWIGUNUSEDPARM(self), PyObject *
   arg1 = reinterpret_cast< cmf::river::Prism * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::river::Prism *)((cmf::river::Prism const *)arg1)->copy();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::river::Prism *)((cmf::river::Prism const *)arg1)->copy();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -54515,11 +50626,7 @@ SWIGINTERN PyObject *_wrap_delete_Prism(PyObject *SWIGUNUSEDPARM(self), PyObject
   arg1 = reinterpret_cast< cmf::river::Prism * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        delete arg1;
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      delete arg1;
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -54563,11 +50670,7 @@ SWIGINTERN PyObject *_wrap_new_volume_height_function__SWIG_0(PyObject *SWIGUNUS
   arg1 = reinterpret_cast< cmf::river::volume_height_function * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::river::volume_height_function *)new cmf::river::volume_height_function((cmf::river::volume_height_function const &)*arg1);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::river::volume_height_function *)new cmf::river::volume_height_function((cmf::river::volume_height_function const &)*arg1);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -54600,11 +50703,7 @@ SWIGINTERN PyObject *_wrap_new_volume_height_function__SWIG_1(PyObject *SWIGUNUS
   arg1 = reinterpret_cast< cmf::river::IVolumeHeightFunction * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::river::volume_height_function *)new cmf::river::volume_height_function((cmf::river::IVolumeHeightFunction const &)*arg1);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::river::volume_height_function *)new cmf::river::volume_height_function((cmf::river::IVolumeHeightFunction const &)*arg1);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -54703,11 +50802,7 @@ SWIGINTERN PyObject *_wrap_volume_height_function_copy(PyObject *SWIGUNUSEDPARM(
   arg1 = reinterpret_cast< cmf::river::volume_height_function * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::river::volume_height_function *)((cmf::river::volume_height_function const *)arg1)->copy();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::river::volume_height_function *)((cmf::river::volume_height_function const *)arg1)->copy();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -54738,11 +50833,7 @@ SWIGINTERN PyObject *_wrap_delete_volume_height_function(PyObject *SWIGUNUSEDPAR
   arg1 = reinterpret_cast< cmf::river::volume_height_function * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        delete arg1;
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      delete arg1;
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -54785,11 +50876,7 @@ SWIGINTERN PyObject *_wrap_IChannel_get_nManning(PyObject *SWIGUNUSEDPARM(self),
   arg1 = reinterpret_cast< cmf::river::IChannel * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (double)((cmf::river::IChannel const *)arg1)->get_nManning();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (double)((cmf::river::IChannel const *)arg1)->get_nManning();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -54831,11 +50918,7 @@ SWIGINTERN PyObject *_wrap_IChannel_set_nManning(PyObject *SWIGUNUSEDPARM(self),
   arg2 = static_cast< double >(val2);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        (arg1)->set_nManning(arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      (arg1)->set_nManning(arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -54867,11 +50950,7 @@ SWIGINTERN PyObject *_wrap_IChannel_get_length(PyObject *SWIGUNUSEDPARM(self), P
   arg1 = reinterpret_cast< cmf::river::IChannel * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (double)((cmf::river::IChannel const *)arg1)->get_length();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (double)((cmf::river::IChannel const *)arg1)->get_length();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -54903,11 +50982,7 @@ SWIGINTERN PyObject *_wrap_IChannel_typecode(PyObject *SWIGUNUSEDPARM(self), PyO
   arg1 = reinterpret_cast< cmf::river::IChannel * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (char)((cmf::river::IChannel const *)arg1)->typecode();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (char)((cmf::river::IChannel const *)arg1)->typecode();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -54950,11 +51025,7 @@ SWIGINTERN PyObject *_wrap_IChannel_get_channel_width(PyObject *SWIGUNUSEDPARM(s
   arg2 = static_cast< double >(val2);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (double)((cmf::river::IChannel const *)arg1)->get_channel_width(arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (double)((cmf::river::IChannel const *)arg1)->get_channel_width(arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -54997,11 +51068,7 @@ SWIGINTERN PyObject *_wrap_IChannel_get_wetted_perimeter(PyObject *SWIGUNUSEDPAR
   arg2 = static_cast< double >(val2);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (double)((cmf::river::IChannel const *)arg1)->get_wetted_perimeter(arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (double)((cmf::river::IChannel const *)arg1)->get_wetted_perimeter(arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -55044,11 +51111,7 @@ SWIGINTERN PyObject *_wrap_IChannel_get_depth(PyObject *SWIGUNUSEDPARM(self), Py
   arg2 = static_cast< double >(val2);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (double)((cmf::river::IChannel const *)arg1)->get_depth(arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (double)((cmf::river::IChannel const *)arg1)->get_depth(arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -55091,11 +51154,7 @@ SWIGINTERN PyObject *_wrap_IChannel_get_flux_crossection(PyObject *SWIGUNUSEDPAR
   arg2 = static_cast< double >(val2);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (double)((cmf::river::IChannel const *)arg1)->get_flux_crossection(arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (double)((cmf::river::IChannel const *)arg1)->get_flux_crossection(arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -55127,11 +51186,7 @@ SWIGINTERN PyObject *_wrap_IChannel_copy(PyObject *SWIGUNUSEDPARM(self), PyObjec
   arg1 = reinterpret_cast< cmf::river::IChannel * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::river::IChannel *)((cmf::river::IChannel const *)arg1)->copy();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::river::IChannel *)((cmf::river::IChannel const *)arg1)->copy();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -55183,11 +51238,7 @@ SWIGINTERN PyObject *_wrap_IChannel_qManning(PyObject *SWIGUNUSEDPARM(self), PyO
   arg3 = static_cast< double >(val3);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (double)((cmf::river::IChannel const *)arg1)->qManning(arg2,arg3);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (double)((cmf::river::IChannel const *)arg1)->qManning(arg2,arg3);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -55218,11 +51269,7 @@ SWIGINTERN PyObject *_wrap_delete_IChannel(PyObject *SWIGUNUSEDPARM(self), PyObj
   arg1 = reinterpret_cast< cmf::river::IChannel * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        delete arg1;
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      delete arg1;
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -55265,11 +51312,7 @@ SWIGINTERN PyObject *_wrap_SWATReachType_BottomWidth_set(PyObject *SWIGUNUSEDPAR
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "SWATReachType_BottomWidth_set" "', argument " "2"" of type '" "double""'");
   } 
   arg2 = static_cast< double >(val2);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->BottomWidth = arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->BottomWidth = arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -55292,11 +51335,7 @@ SWIGINTERN PyObject *_wrap_SWATReachType_BottomWidth_get(PyObject *SWIGUNUSEDPAR
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SWATReachType_BottomWidth_get" "', argument " "1"" of type '" "cmf::river::SWATReachType *""'"); 
   }
   arg1 = reinterpret_cast< cmf::river::SWATReachType * >(argp1);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (double) ((arg1)->BottomWidth);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (double) ((arg1)->BottomWidth);
   resultobj = SWIG_From_double(static_cast< double >(result));
   return resultobj;
 fail:
@@ -55325,11 +51364,7 @@ SWIGINTERN PyObject *_wrap_SWATReachType_ChannelDepth_set(PyObject *SWIGUNUSEDPA
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "SWATReachType_ChannelDepth_set" "', argument " "2"" of type '" "double""'");
   } 
   arg2 = static_cast< double >(val2);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->ChannelDepth = arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->ChannelDepth = arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -55352,11 +51387,7 @@ SWIGINTERN PyObject *_wrap_SWATReachType_ChannelDepth_get(PyObject *SWIGUNUSEDPA
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SWATReachType_ChannelDepth_get" "', argument " "1"" of type '" "cmf::river::SWATReachType *""'"); 
   }
   arg1 = reinterpret_cast< cmf::river::SWATReachType * >(argp1);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (double) ((arg1)->ChannelDepth);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (double) ((arg1)->ChannelDepth);
   resultobj = SWIG_From_double(static_cast< double >(result));
   return resultobj;
 fail:
@@ -55385,11 +51416,7 @@ SWIGINTERN PyObject *_wrap_SWATReachType_BankSlope_set(PyObject *SWIGUNUSEDPARM(
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "SWATReachType_BankSlope_set" "', argument " "2"" of type '" "double""'");
   } 
   arg2 = static_cast< double >(val2);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->BankSlope = arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->BankSlope = arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -55412,11 +51439,7 @@ SWIGINTERN PyObject *_wrap_SWATReachType_BankSlope_get(PyObject *SWIGUNUSEDPARM(
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SWATReachType_BankSlope_get" "', argument " "1"" of type '" "cmf::river::SWATReachType *""'"); 
   }
   arg1 = reinterpret_cast< cmf::river::SWATReachType * >(argp1);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (double) ((arg1)->BankSlope);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (double) ((arg1)->BankSlope);
   resultobj = SWIG_From_double(static_cast< double >(result));
   return resultobj;
 fail:
@@ -55445,11 +51468,7 @@ SWIGINTERN PyObject *_wrap_SWATReachType_FloodPlainSlope_set(PyObject *SWIGUNUSE
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "SWATReachType_FloodPlainSlope_set" "', argument " "2"" of type '" "double""'");
   } 
   arg2 = static_cast< double >(val2);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->FloodPlainSlope = arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->FloodPlainSlope = arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -55472,11 +51491,7 @@ SWIGINTERN PyObject *_wrap_SWATReachType_FloodPlainSlope_get(PyObject *SWIGUNUSE
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SWATReachType_FloodPlainSlope_get" "', argument " "1"" of type '" "cmf::river::SWATReachType *""'"); 
   }
   arg1 = reinterpret_cast< cmf::river::SWATReachType * >(argp1);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (double) ((arg1)->FloodPlainSlope);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (double) ((arg1)->FloodPlainSlope);
   resultobj = SWIG_From_double(static_cast< double >(result));
   return resultobj;
 fail:
@@ -55499,11 +51514,7 @@ SWIGINTERN PyObject *_wrap_new_SWATReachType__SWIG_0(PyObject *SWIGUNUSEDPARM(se
   arg1 = static_cast< double >(val1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::river::SWATReachType *)new cmf::river::SWATReachType(arg1);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::river::SWATReachType *)new cmf::river::SWATReachType(arg1);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -55549,11 +51560,7 @@ SWIGINTERN PyObject *_wrap_new_SWATReachType__SWIG_1(PyObject *SWIGUNUSEDPARM(se
   arg3 = static_cast< double >(val3);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::river::SWATReachType *)new cmf::river::SWATReachType(arg1,arg2,arg3);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::river::SWATReachType *)new cmf::river::SWATReachType(arg1,arg2,arg3);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -55676,11 +51683,7 @@ SWIGINTERN PyObject *_wrap_SWATReachType_copy(PyObject *SWIGUNUSEDPARM(self), Py
   arg1 = reinterpret_cast< cmf::river::SWATReachType * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::river::SWATReachType *)((cmf::river::SWATReachType const *)arg1)->copy();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::river::SWATReachType *)((cmf::river::SWATReachType const *)arg1)->copy();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -55711,11 +51714,7 @@ SWIGINTERN PyObject *_wrap_delete_SWATReachType(PyObject *SWIGUNUSEDPARM(self), 
   arg1 = reinterpret_cast< cmf::river::SWATReachType * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        delete arg1;
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      delete arg1;
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -55762,11 +51761,7 @@ SWIGINTERN PyObject *_wrap_TriangularReach_BankSlope_set(PyObject *SWIGUNUSEDPAR
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "TriangularReach_BankSlope_set" "', argument " "2"" of type '" "double""'");
   } 
   arg2 = static_cast< double >(val2);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->BankSlope = arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->BankSlope = arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -55789,11 +51784,7 @@ SWIGINTERN PyObject *_wrap_TriangularReach_BankSlope_get(PyObject *SWIGUNUSEDPAR
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "TriangularReach_BankSlope_get" "', argument " "1"" of type '" "cmf::river::TriangularReach *""'"); 
   }
   arg1 = reinterpret_cast< cmf::river::TriangularReach * >(argp1);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (double) ((arg1)->BankSlope);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (double) ((arg1)->BankSlope);
   resultobj = SWIG_From_double(static_cast< double >(result));
   return resultobj;
 fail:
@@ -55831,11 +51822,7 @@ SWIGINTERN PyObject *_wrap_new_TriangularReach(PyObject *SWIGUNUSEDPARM(self), P
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::river::TriangularReach *)new cmf::river::TriangularReach(arg1,arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::river::TriangularReach *)new cmf::river::TriangularReach(arg1,arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -55867,11 +51854,7 @@ SWIGINTERN PyObject *_wrap_TriangularReach_copy(PyObject *SWIGUNUSEDPARM(self), 
   arg1 = reinterpret_cast< cmf::river::TriangularReach * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::river::TriangularReach *)((cmf::river::TriangularReach const *)arg1)->copy();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::river::TriangularReach *)((cmf::river::TriangularReach const *)arg1)->copy();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -55902,11 +51885,7 @@ SWIGINTERN PyObject *_wrap_delete_TriangularReach(PyObject *SWIGUNUSEDPARM(self)
   arg1 = reinterpret_cast< cmf::river::TriangularReach * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        delete arg1;
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      delete arg1;
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -55960,11 +51939,7 @@ SWIGINTERN PyObject *_wrap_new_RectangularReach(PyObject *SWIGUNUSEDPARM(self), 
   arg2 = static_cast< double >(val2);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::river::RectangularReach *)new cmf::river::RectangularReach(arg1,arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::river::RectangularReach *)new cmf::river::RectangularReach(arg1,arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -55996,11 +51971,7 @@ SWIGINTERN PyObject *_wrap_RectangularReach_copy(PyObject *SWIGUNUSEDPARM(self),
   arg1 = reinterpret_cast< cmf::river::RectangularReach * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::river::RectangularReach *)((cmf::river::RectangularReach const *)arg1)->copy();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::river::RectangularReach *)((cmf::river::RectangularReach const *)arg1)->copy();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -56031,11 +52002,7 @@ SWIGINTERN PyObject *_wrap_delete_RectangularReach(PyObject *SWIGUNUSEDPARM(self
   arg1 = reinterpret_cast< cmf::river::RectangularReach * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        delete arg1;
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      delete arg1;
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -56082,11 +52049,7 @@ SWIGINTERN PyObject *_wrap_PipeReach_radius_set(PyObject *SWIGUNUSEDPARM(self), 
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "PipeReach_radius_set" "', argument " "2"" of type '" "double""'");
   } 
   arg2 = static_cast< double >(val2);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->radius = arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->radius = arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -56109,11 +52072,7 @@ SWIGINTERN PyObject *_wrap_PipeReach_radius_get(PyObject *SWIGUNUSEDPARM(self), 
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "PipeReach_radius_get" "', argument " "1"" of type '" "cmf::river::PipeReach *""'"); 
   }
   arg1 = reinterpret_cast< cmf::river::PipeReach * >(argp1);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (double) ((arg1)->radius);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (double) ((arg1)->radius);
   resultobj = SWIG_From_double(static_cast< double >(result));
   return resultobj;
 fail:
@@ -56149,11 +52108,7 @@ SWIGINTERN PyObject *_wrap_new_PipeReach(PyObject *SWIGUNUSEDPARM(self), PyObjec
   arg2 = static_cast< double >(val2);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::river::PipeReach *)new cmf::river::PipeReach(arg1,arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::river::PipeReach *)new cmf::river::PipeReach(arg1,arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -56185,11 +52140,7 @@ SWIGINTERN PyObject *_wrap_PipeReach_copy(PyObject *SWIGUNUSEDPARM(self), PyObje
   arg1 = reinterpret_cast< cmf::river::PipeReach * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::river::PipeReach *)((cmf::river::PipeReach const *)arg1)->copy();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::river::PipeReach *)((cmf::river::PipeReach const *)arg1)->copy();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -56220,11 +52171,7 @@ SWIGINTERN PyObject *_wrap_delete_PipeReach(PyObject *SWIGUNUSEDPARM(self), PyOb
   arg1 = reinterpret_cast< cmf::river::PipeReach * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        delete arg1;
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      delete arg1;
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -56257,11 +52204,7 @@ SWIGINTERN PyObject *_wrap_new_Channel__SWIG_0(PyObject *SWIGUNUSEDPARM(self), i
   if ((nobjs < 0) || (nobjs > 0)) SWIG_fail;
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::river::Channel *)new cmf::river::Channel();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::river::Channel *)new cmf::river::Channel();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -56291,11 +52234,7 @@ SWIGINTERN PyObject *_wrap_new_Channel__SWIG_1(PyObject *SWIGUNUSEDPARM(self), i
   arg1 = static_cast< double >(val1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::river::Channel *)new cmf::river::Channel(arg1);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::river::Channel *)new cmf::river::Channel(arg1);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -56328,11 +52267,7 @@ SWIGINTERN PyObject *_wrap_new_Channel__SWIG_2(PyObject *SWIGUNUSEDPARM(self), i
   arg1 = reinterpret_cast< cmf::river::IChannel * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::river::Channel *)new cmf::river::Channel((cmf::river::IChannel const &)*arg1);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::river::Channel *)new cmf::river::Channel((cmf::river::IChannel const &)*arg1);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -56365,11 +52300,7 @@ SWIGINTERN PyObject *_wrap_new_Channel__SWIG_3(PyObject *SWIGUNUSEDPARM(self), i
   arg1 = reinterpret_cast< cmf::river::IVolumeHeightFunction * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::river::Channel *)new cmf::river::Channel((cmf::river::IVolumeHeightFunction const &)*arg1);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::river::Channel *)new cmf::river::Channel((cmf::river::IVolumeHeightFunction const &)*arg1);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -56402,11 +52333,7 @@ SWIGINTERN PyObject *_wrap_new_Channel__SWIG_4(PyObject *SWIGUNUSEDPARM(self), i
   arg1 = reinterpret_cast< cmf::river::Channel * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::river::Channel *)new cmf::river::Channel((cmf::river::Channel const &)*arg1);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::river::Channel *)new cmf::river::Channel((cmf::river::Channel const &)*arg1);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -56464,11 +52391,7 @@ SWIGINTERN PyObject *_wrap_new_Channel__SWIG_5(PyObject *SWIGUNUSEDPARM(self), i
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::river::Channel *)new cmf::river::Channel(arg1,arg2,arg3,arg4);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::river::Channel *)new cmf::river::Channel(arg1,arg2,arg3,arg4);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -56685,11 +52608,7 @@ SWIGINTERN PyObject *_wrap_Channel_copy(PyObject *SWIGUNUSEDPARM(self), PyObject
   arg1 = reinterpret_cast< cmf::river::Channel * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::river::Channel *)((cmf::river::Channel const *)arg1)->copy();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::river::Channel *)((cmf::river::Channel const *)arg1)->copy();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -56720,11 +52639,7 @@ SWIGINTERN PyObject *_wrap_delete_Channel(PyObject *SWIGUNUSEDPARM(self), PyObje
   arg1 = reinterpret_cast< cmf::river::Channel * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        delete arg1;
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      delete arg1;
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -56779,11 +52694,7 @@ SWIGINTERN PyObject *_wrap_new_MeanChannel__SWIG_0(PyObject *SWIGUNUSEDPARM(self
   arg2 = reinterpret_cast< cmf::river::IChannel * >(argp2);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::river::MeanChannel *)new cmf::river::MeanChannel((cmf::river::IChannel const &)*arg1,(cmf::river::IChannel const &)*arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::river::MeanChannel *)new cmf::river::MeanChannel((cmf::river::IChannel const &)*arg1,(cmf::river::IChannel const &)*arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -56816,11 +52727,7 @@ SWIGINTERN PyObject *_wrap_new_MeanChannel__SWIG_1(PyObject *SWIGUNUSEDPARM(self
   arg1 = reinterpret_cast< cmf::river::MeanChannel * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::river::MeanChannel *)new cmf::river::MeanChannel((cmf::river::MeanChannel const &)*arg1);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::river::MeanChannel *)new cmf::river::MeanChannel((cmf::river::MeanChannel const &)*arg1);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -56927,11 +52834,7 @@ SWIGINTERN PyObject *_wrap_MeanChannel_copy(PyObject *SWIGUNUSEDPARM(self), PyOb
   arg1 = reinterpret_cast< cmf::river::MeanChannel * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::river::MeanChannel *)((cmf::river::MeanChannel const *)arg1)->copy();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::river::MeanChannel *)((cmf::river::MeanChannel const *)arg1)->copy();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -56962,11 +52865,7 @@ SWIGINTERN PyObject *_wrap_delete_MeanChannel(PyObject *SWIGUNUSEDPARM(self), Py
   arg1 = reinterpret_cast< cmf::river::MeanChannel * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        delete arg1;
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      delete arg1;
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -57021,11 +52920,7 @@ SWIGINTERN PyObject *_wrap_OpenWaterStorage_get_height_function(PyObject *SWIGUN
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::river::IVolumeHeightFunction *) &((cmf::river::OpenWaterStorage const *)arg1)->get_height_function();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::river::IVolumeHeightFunction *) &((cmf::river::OpenWaterStorage const *)arg1)->get_height_function();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -57082,11 +52977,7 @@ SWIGINTERN PyObject *_wrap_OpenWaterStorage_set_height_function(PyObject *SWIGUN
   arg2 = reinterpret_cast< cmf::river::IVolumeHeightFunction * >(argp2);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        (arg1)->set_height_function((cmf::river::IVolumeHeightFunction const &)*arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      (arg1)->set_height_function((cmf::river::IVolumeHeightFunction const &)*arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -57130,11 +53021,7 @@ SWIGINTERN PyObject *_wrap_OpenWaterStorage_wet_area(PyObject *SWIGUNUSEDPARM(se
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (real)((cmf::river::OpenWaterStorage const *)arg1)->wet_area();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (real)((cmf::river::OpenWaterStorage const *)arg1)->wet_area();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -57175,11 +53062,7 @@ SWIGINTERN PyObject *_wrap_OpenWaterStorage_create__SWIG_0(PyObject *SWIGUNUSEDP
   arg2 = static_cast< real >(val2);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = cmf::river::OpenWaterStorage::create(*arg1,arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = cmf::river::OpenWaterStorage::create(*arg1,arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -57226,11 +53109,7 @@ SWIGINTERN PyObject *_wrap_OpenWaterStorage_create__SWIG_1(PyObject *SWIGUNUSEDP
   arg2 = reinterpret_cast< cmf::river::IVolumeHeightFunction * >(argp2);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = cmf::river::OpenWaterStorage::create(*arg1,(cmf::river::IVolumeHeightFunction const &)*arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = cmf::river::OpenWaterStorage::create(*arg1,(cmf::river::IVolumeHeightFunction const &)*arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -57367,11 +53246,7 @@ SWIGINTERN PyObject *_wrap_OpenWaterStorage_from_node(PyObject *SWIGUNUSEDPARM(s
   arg2 = static_cast< real >(val2);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = cmf::river::OpenWaterStorage::from_node(arg1,arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = cmf::river::OpenWaterStorage::from_node(arg1,arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -57412,11 +53287,7 @@ SWIGINTERN PyObject *_wrap_OpenWaterStorage_cast(PyObject *SWIGUNUSEDPARM(self),
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = cmf::river::OpenWaterStorage::cast(arg1);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = cmf::river::OpenWaterStorage::cast(arg1);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -57469,11 +53340,7 @@ SWIGINTERN PyObject *_wrap_OpenWaterStorage_depth_set(PyObject *SWIGUNUSEDPARM(s
   arg2 = static_cast< real >(val2);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        cmf_river_OpenWaterStorage_depth_set(arg1,arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      cmf_river_OpenWaterStorage_depth_set(arg1,arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -57517,11 +53384,7 @@ SWIGINTERN PyObject *_wrap_OpenWaterStorage_depth_get(PyObject *SWIGUNUSEDPARM(s
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (real)cmf_river_OpenWaterStorage_depth_get(arg1);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (real)cmf_river_OpenWaterStorage_depth_get(arg1);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -57564,11 +53427,7 @@ SWIGINTERN PyObject *_wrap_delete_OpenWaterStorage(PyObject *SWIGUNUSEDPARM(self
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        (void)arg1; delete smartarg1;
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      (void)arg1; delete smartarg1;
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -57619,11 +53478,7 @@ SWIGINTERN PyObject *_wrap_Reach_get_reachtype(PyObject *SWIGUNUSEDPARM(self), P
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = ((cmf::river::Reach const *)arg1)->get_reachtype();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = ((cmf::river::Reach const *)arg1)->get_reachtype();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -57680,11 +53535,7 @@ SWIGINTERN PyObject *_wrap_Reach_set_height_function(PyObject *SWIGUNUSEDPARM(se
   arg2 = reinterpret_cast< cmf::river::IChannel * >(argp2);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        (arg1)->set_height_function((cmf::river::IChannel const &)*arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      (arg1)->set_height_function((cmf::river::IChannel const &)*arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -57742,11 +53593,7 @@ SWIGINTERN PyObject *_wrap_Reach_set_outlet(PyObject *SWIGUNUSEDPARM(self), PyOb
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        (arg1)->set_outlet(arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      (arg1)->set_outlet(arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -57789,11 +53636,7 @@ SWIGINTERN PyObject *_wrap_Reach_set_dead_end(PyObject *SWIGUNUSEDPARM(self), Py
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        (arg1)->set_dead_end();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      (arg1)->set_dead_end();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -57851,11 +53694,7 @@ SWIGINTERN PyObject *_wrap_Reach_set_downstream(PyObject *SWIGUNUSEDPARM(self), 
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        (arg1)->set_downstream(arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      (arg1)->set_downstream(arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -57899,11 +53738,7 @@ SWIGINTERN PyObject *_wrap_Reach___get_downstream(PyObject *SWIGUNUSEDPARM(self)
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = ((cmf::river::Reach const *)arg1)->get_downstream();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = ((cmf::river::Reach const *)arg1)->get_downstream();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -57961,11 +53796,7 @@ SWIGINTERN PyObject *_wrap_Reach_get_upstream(PyObject *SWIGUNUSEDPARM(self), Py
   arg2 = static_cast< int >(val2);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = ((cmf::river::Reach const *)arg1)->get_upstream(arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = ((cmf::river::Reach const *)arg1)->get_upstream(arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -58040,11 +53871,7 @@ SWIGINTERN PyObject *_wrap_Reach_connect_to_surfacewater(PyObject *SWIGUNUSEDPAR
   arg4 = static_cast< bool >(val4);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        (arg1)->connect_to_surfacewater(arg2,arg3,arg4);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      (arg1)->connect_to_surfacewater(arg2,arg3,arg4);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -58099,11 +53926,7 @@ SWIGINTERN PyObject *_wrap_Reach_distance_to_cell(PyObject *SWIGUNUSEDPARM(self)
   arg2 = reinterpret_cast< cmf::upslope::Cell * >(argp2);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (double)((cmf::river::Reach const *)arg1)->distance_to_cell(arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (double)((cmf::river::Reach const *)arg1)->distance_to_cell(arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -58147,11 +53970,7 @@ SWIGINTERN PyObject *_wrap_Reach___get_root(PyObject *SWIGUNUSEDPARM(self), PyOb
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (arg1)->get_root();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (arg1)->get_root();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -58197,11 +54016,7 @@ SWIGINTERN PyObject *_wrap_delete_Reach(PyObject *SWIGUNUSEDPARM(self), PyObject
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        (void)arg1; delete smartarg1;
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      (void)arg1; delete smartarg1;
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -58261,11 +54076,7 @@ SWIGINTERN PyObject *_wrap_Reach_create(PyObject *SWIGUNUSEDPARM(self), PyObject
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = cmf::river::Reach::create(*arg1,(cmf::river::IChannel const &)*arg2,arg3);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = cmf::river::Reach::create(*arg1,(cmf::river::IChannel const &)*arg2,arg3);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -58312,11 +54123,7 @@ SWIGINTERN PyObject *_wrap_Reach_length_get(PyObject *SWIGUNUSEDPARM(self), PyOb
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (real)cmf_river_Reach_length_get(arg1);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (real)cmf_river_Reach_length_get(arg1);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -58360,11 +54167,7 @@ SWIGINTERN PyObject *_wrap_Reach_width_get(PyObject *SWIGUNUSEDPARM(self), PyObj
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (real)cmf_river_Reach_width_get(arg1);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (real)cmf_river_Reach_width_get(arg1);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -58408,11 +54211,7 @@ SWIGINTERN PyObject *_wrap_Reach_channel_get(PyObject *SWIGUNUSEDPARM(self), PyO
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::river::IChannel *)cmf_river_Reach_channel_get(arg1);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::river::IChannel *)cmf_river_Reach_channel_get(arg1);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -58456,11 +54255,7 @@ SWIGINTERN PyObject *_wrap_Reach_upstream_count_get(PyObject *SWIGUNUSEDPARM(sel
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (int)cmf_river_Reach_upstream_count_get(arg1);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (int)cmf_river_Reach_upstream_count_get(arg1);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -58510,11 +54305,7 @@ SWIGINTERN PyObject *_wrap_Reach_diffusive_set(PyObject *SWIGUNUSEDPARM(self), P
   arg2 = static_cast< bool >(val2);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        cmf_river_Reach_diffusive_set(arg1,arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      cmf_river_Reach_diffusive_set(arg1,arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -58558,11 +54349,7 @@ SWIGINTERN PyObject *_wrap_Reach_diffusive_get(PyObject *SWIGUNUSEDPARM(self), P
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (bool)cmf_river_Reach_diffusive_get(arg1);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (bool)cmf_river_Reach_diffusive_get(arg1);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -58601,11 +54388,7 @@ SWIGINTERN PyObject *_wrap_ReachIterator_next(PyObject *SWIGUNUSEDPARM(self), Py
   arg1 = reinterpret_cast< cmf::river::ReachIterator * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (arg1)->next();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (arg1)->next();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -58640,11 +54423,7 @@ SWIGINTERN PyObject *_wrap_ReachIterator_valid(PyObject *SWIGUNUSEDPARM(self), P
   arg1 = reinterpret_cast< cmf::river::ReachIterator * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (bool)((cmf::river::ReachIterator const *)arg1)->valid();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (bool)((cmf::river::ReachIterator const *)arg1)->valid();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -58682,11 +54461,7 @@ SWIGINTERN PyObject *_wrap_new_ReachIterator(PyObject *SWIGUNUSEDPARM(self), PyO
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::river::ReachIterator *)new cmf::river::ReachIterator(arg1);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::river::ReachIterator *)new cmf::river::ReachIterator(arg1);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -58718,11 +54493,7 @@ SWIGINTERN PyObject *_wrap_ReachIterator___reach(PyObject *SWIGUNUSEDPARM(self),
   arg1 = reinterpret_cast< cmf::river::ReachIterator * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = ((cmf::river::ReachIterator const *)arg1)->reach();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = ((cmf::river::ReachIterator const *)arg1)->reach();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -58757,11 +54528,7 @@ SWIGINTERN PyObject *_wrap_ReachIterator_position_get(PyObject *SWIGUNUSEDPARM(s
   arg1 = reinterpret_cast< cmf::river::ReachIterator * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (double)cmf_river_ReachIterator_position_get(arg1);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (double)cmf_river_ReachIterator_position_get(arg1);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -58792,11 +54559,7 @@ SWIGINTERN PyObject *_wrap_delete_ReachIterator(PyObject *SWIGUNUSEDPARM(self), 
   arg1 = reinterpret_cast< cmf::river::ReachIterator * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        delete arg1;
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      delete arg1;
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -58845,11 +54608,7 @@ SWIGINTERN PyObject *_wrap_make_river_gap(PyObject *SWIGUNUSEDPARM(self), PyObje
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (double)cmf::river::make_river_gap(arg1);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (double)cmf::river::make_river_gap(arg1);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -58897,11 +54656,7 @@ SWIGINTERN PyObject *_wrap_aquifer_area_set(PyObject *SWIGUNUSEDPARM(self), PyOb
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "aquifer_area_set" "', argument " "2"" of type '" "real""'");
   } 
   arg2 = static_cast< real >(val2);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->area = arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->area = arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -58936,11 +54691,7 @@ SWIGINTERN PyObject *_wrap_aquifer_area_get(PyObject *SWIGUNUSEDPARM(self), PyOb
       arg1 = const_cast< cmf::upslope::aquifer * >((smartarg1 ? smartarg1->get() : 0));
     }
   }
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (real) ((arg1)->area);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (real) ((arg1)->area);
   resultobj = SWIG_From_double(static_cast< double >(result));
   return resultobj;
 fail:
@@ -58981,11 +54732,7 @@ SWIGINTERN PyObject *_wrap_aquifer_thickness_set(PyObject *SWIGUNUSEDPARM(self),
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "aquifer_thickness_set" "', argument " "2"" of type '" "real""'");
   } 
   arg2 = static_cast< real >(val2);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->thickness = arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->thickness = arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -59020,11 +54767,7 @@ SWIGINTERN PyObject *_wrap_aquifer_thickness_get(PyObject *SWIGUNUSEDPARM(self),
       arg1 = const_cast< cmf::upslope::aquifer * >((smartarg1 ? smartarg1->get() : 0));
     }
   }
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (real) ((arg1)->thickness);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (real) ((arg1)->thickness);
   resultobj = SWIG_From_double(static_cast< double >(result));
   return resultobj;
 fail:
@@ -59065,11 +54808,7 @@ SWIGINTERN PyObject *_wrap_aquifer_porosity_set(PyObject *SWIGUNUSEDPARM(self), 
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "aquifer_porosity_set" "', argument " "2"" of type '" "real""'");
   } 
   arg2 = static_cast< real >(val2);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->porosity = arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->porosity = arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -59104,11 +54843,7 @@ SWIGINTERN PyObject *_wrap_aquifer_porosity_get(PyObject *SWIGUNUSEDPARM(self), 
       arg1 = const_cast< cmf::upslope::aquifer * >((smartarg1 ? smartarg1->get() : 0));
     }
   }
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (real) ((arg1)->porosity);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (real) ((arg1)->porosity);
   resultobj = SWIG_From_double(static_cast< double >(result));
   return resultobj;
 fail:
@@ -59166,11 +54901,7 @@ SWIGINTERN PyObject *_wrap_aquifer_K_set(PyObject *SWIGUNUSEDPARM(self), PyObjec
       arg2 = &p2;
     }
   }
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->K = *arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->K = *arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -59205,11 +54936,7 @@ SWIGINTERN PyObject *_wrap_aquifer_K_get(PyObject *SWIGUNUSEDPARM(self), PyObjec
       arg1 = const_cast< cmf::upslope::aquifer * >((smartarg1 ? smartarg1->get() : 0));
     }
   }
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (cmf::geometry::point *)& ((arg1)->K);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (cmf::geometry::point *)& ((arg1)->K);
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_cmf__geometry__point, 0 |  0 );
   return resultobj;
 fail:
@@ -59270,11 +54997,7 @@ SWIGINTERN PyObject *_wrap_aquifer_get_K(PyObject *SWIGUNUSEDPARM(self), PyObjec
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (real)((cmf::upslope::aquifer const *)arg1)->get_K(arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (real)((cmf::upslope::aquifer const *)arg1)->get_K(arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -59329,11 +55052,7 @@ SWIGINTERN PyObject *_wrap_aquifer_get_abs_errtol(PyObject *SWIGUNUSEDPARM(self)
   arg2 = static_cast< real >(val2);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (real)(arg1)->get_abs_errtol(arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (real)(arg1)->get_abs_errtol(arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -59421,11 +55140,7 @@ SWIGINTERN PyObject *_wrap_new_aquifer__SWIG_0(PyObject *SWIGUNUSEDPARM(self), i
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::upslope::aquifer *)new cmf::upslope::aquifer(*arg1,arg2,arg3,arg4,arg5,arg6);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::upslope::aquifer *)new cmf::upslope::aquifer(*arg1,arg2,arg3,arg4,arg5,arg6);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -59488,11 +55203,7 @@ SWIGINTERN PyObject *_wrap_new_aquifer__SWIG_1(PyObject *SWIGUNUSEDPARM(self), i
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::upslope::aquifer *)new cmf::upslope::aquifer(*arg1,arg2,arg3,arg4);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::upslope::aquifer *)new cmf::upslope::aquifer(*arg1,arg2,arg3,arg4);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -59686,11 +55397,7 @@ SWIGINTERN PyObject *_wrap_aquifer_cast(PyObject *SWIGUNUSEDPARM(self), PyObject
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = cmf::upslope::aquifer::cast(arg1);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = cmf::upslope::aquifer::cast(arg1);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -59737,11 +55444,7 @@ SWIGINTERN PyObject *_wrap_aquifer_base_height_get(PyObject *SWIGUNUSEDPARM(self
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (double)cmf_upslope_aquifer_base_height_get(arg1);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (double)cmf_upslope_aquifer_base_height_get(arg1);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -59785,11 +55488,7 @@ SWIGINTERN PyObject *_wrap_aquifer_top_height_get(PyObject *SWIGUNUSEDPARM(self)
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (double)cmf_upslope_aquifer_top_height_get(arg1);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (double)cmf_upslope_aquifer_top_height_get(arg1);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -59832,11 +55531,7 @@ SWIGINTERN PyObject *_wrap_delete_aquifer(PyObject *SWIGUNUSEDPARM(self), PyObje
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        (void)arg1; delete smartarg1;
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      (void)arg1; delete smartarg1;
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -59883,11 +55578,7 @@ SWIGINTERN PyObject *_wrap_aquifer_Darcy_flux_width_set(PyObject *SWIGUNUSEDPARM
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "aquifer_Darcy_flux_width_set" "', argument " "2"" of type '" "real""'");
   } 
   arg2 = static_cast< real >(val2);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->flux_width = arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->flux_width = arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -59910,11 +55601,7 @@ SWIGINTERN PyObject *_wrap_aquifer_Darcy_flux_width_get(PyObject *SWIGUNUSEDPARM
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "aquifer_Darcy_flux_width_get" "', argument " "1"" of type '" "cmf::upslope::aquifer_Darcy *""'"); 
   }
   arg1 = reinterpret_cast< cmf::upslope::aquifer_Darcy * >(argp1);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (real) ((arg1)->flux_width);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (real) ((arg1)->flux_width);
   resultobj = SWIG_From_double(static_cast< double >(result));
   return resultobj;
 fail:
@@ -59967,11 +55654,7 @@ SWIGINTERN PyObject *_wrap_new_aquifer_Darcy(PyObject *SWIGUNUSEDPARM(self), PyO
   arg3 = static_cast< real >(val3);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::upslope::aquifer_Darcy *)new cmf::upslope::aquifer_Darcy(arg1,arg2,arg3);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::upslope::aquifer_Darcy *)new cmf::upslope::aquifer_Darcy(arg1,arg2,arg3);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -60003,11 +55686,7 @@ SWIGINTERN PyObject *_wrap_delete_aquifer_Darcy(PyObject *SWIGUNUSEDPARM(self), 
   arg1 = reinterpret_cast< cmf::upslope::aquifer_Darcy * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -60049,11 +55728,7 @@ SWIGINTERN PyObject *_wrap_delete_lateral_sub_surface_flux(PyObject *SWIGUNUSEDP
   arg1 = reinterpret_cast< cmf::upslope::connections::lateral_sub_surface_flux * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -60145,11 +55820,7 @@ SWIGINTERN PyObject *_wrap_new_Darcy(PyObject *SWIGUNUSEDPARM(self), PyObject *a
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::upslope::connections::Darcy *)new cmf::upslope::connections::Darcy(arg1,arg2,arg3,arg4);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::upslope::connections::Darcy *)new cmf::upslope::connections::Darcy(arg1,arg2,arg3,arg4);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -60181,11 +55852,7 @@ SWIGINTERN PyObject *_wrap_delete_Darcy(PyObject *SWIGUNUSEDPARM(self), PyObject
   arg1 = reinterpret_cast< cmf::upslope::connections::Darcy * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -60281,11 +55948,7 @@ SWIGINTERN PyObject *_wrap_new_TopographicGradientDarcy(PyObject *SWIGUNUSEDPARM
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::upslope::connections::TopographicGradientDarcy *)new cmf::upslope::connections::TopographicGradientDarcy(arg1,arg2,arg3,arg4);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::upslope::connections::TopographicGradientDarcy *)new cmf::upslope::connections::TopographicGradientDarcy(arg1,arg2,arg3,arg4);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -60317,11 +55980,7 @@ SWIGINTERN PyObject *_wrap_delete_TopographicGradientDarcy(PyObject *SWIGUNUSEDP
   arg1 = reinterpret_cast< cmf::upslope::connections::TopographicGradientDarcy * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -60403,11 +56062,7 @@ SWIGINTERN PyObject *_wrap_new_OHDISflow(PyObject *SWIGUNUSEDPARM(self), PyObjec
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::upslope::connections::OHDISflow *)new cmf::upslope::connections::OHDISflow(arg1,arg2,arg3,arg4);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::upslope::connections::OHDISflow *)new cmf::upslope::connections::OHDISflow(arg1,arg2,arg3,arg4);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -60453,11 +56108,7 @@ SWIGINTERN PyObject *_wrap_delete_OHDISflow(PyObject *SWIGUNUSEDPARM(self), PyOb
   arg1 = reinterpret_cast< cmf::upslope::connections::OHDISflow * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -60539,11 +56190,7 @@ SWIGINTERN PyObject *_wrap_new_DarcyKinematic(PyObject *SWIGUNUSEDPARM(self), Py
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::upslope::connections::DarcyKinematic *)new cmf::upslope::connections::DarcyKinematic(arg1,arg2,arg3,arg4);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::upslope::connections::DarcyKinematic *)new cmf::upslope::connections::DarcyKinematic(arg1,arg2,arg3,arg4);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -60589,11 +56236,7 @@ SWIGINTERN PyObject *_wrap_delete_DarcyKinematic(PyObject *SWIGUNUSEDPARM(self),
   arg1 = reinterpret_cast< cmf::upslope::connections::DarcyKinematic * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -60640,11 +56283,7 @@ SWIGINTERN PyObject *_wrap_Richards_lateral_flow_thickness_set(PyObject *SWIGUNU
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Richards_lateral_flow_thickness_set" "', argument " "2"" of type '" "real""'");
   } 
   arg2 = static_cast< real >(val2);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->flow_thickness = arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->flow_thickness = arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -60667,11 +56306,7 @@ SWIGINTERN PyObject *_wrap_Richards_lateral_flow_thickness_get(PyObject *SWIGUNU
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Richards_lateral_flow_thickness_get" "', argument " "1"" of type '" "cmf::upslope::connections::Richards_lateral *""'"); 
   }
   arg1 = reinterpret_cast< cmf::upslope::connections::Richards_lateral * >(argp1);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (real) ((arg1)->flow_thickness);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (real) ((arg1)->flow_thickness);
   resultobj = SWIG_From_double(static_cast< double >(result));
   return resultobj;
 fail:
@@ -60737,11 +56372,7 @@ SWIGINTERN PyObject *_wrap_new_Richards_lateral(PyObject *SWIGUNUSEDPARM(self), 
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::upslope::connections::Richards_lateral *)new cmf::upslope::connections::Richards_lateral(arg1,arg2,arg3,arg4);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::upslope::connections::Richards_lateral *)new cmf::upslope::connections::Richards_lateral(arg1,arg2,arg3,arg4);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -60775,11 +56406,7 @@ SWIGINTERN PyObject *_wrap_Richards_lateral_usebaseflow(PyObject *SWIGUNUSEDPARM
   arg1 = static_cast< bool >(val1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        cmf::upslope::connections::Richards_lateral::usebaseflow(arg1);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      cmf::upslope::connections::Richards_lateral::usebaseflow(arg1);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -60824,11 +56451,7 @@ SWIGINTERN PyObject *_wrap_delete_Richards_lateral(PyObject *SWIGUNUSEDPARM(self
   arg1 = reinterpret_cast< cmf::upslope::connections::Richards_lateral * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -60875,11 +56498,7 @@ SWIGINTERN PyObject *_wrap_Manning_is_diffusive_wave_set(PyObject *SWIGUNUSEDPAR
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Manning_is_diffusive_wave_set" "', argument " "2"" of type '" "bool""'");
   } 
   arg2 = static_cast< bool >(val2);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->is_diffusive_wave = arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->is_diffusive_wave = arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -60902,11 +56521,7 @@ SWIGINTERN PyObject *_wrap_Manning_is_diffusive_wave_get(PyObject *SWIGUNUSEDPAR
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Manning_is_diffusive_wave_get" "', argument " "1"" of type '" "cmf::river::Manning *""'"); 
   }
   arg1 = reinterpret_cast< cmf::river::Manning * >(argp1);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (bool) ((arg1)->is_diffusive_wave);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (bool) ((arg1)->is_diffusive_wave);
   resultobj = SWIG_From_bool(static_cast< bool >(result));
   return resultobj;
 fail:
@@ -60935,11 +56550,7 @@ SWIGINTERN PyObject *_wrap_Manning_flux_geometry_set(PyObject *SWIGUNUSEDPARM(se
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Manning_flux_geometry_set" "', argument " "2"" of type '" "cmf::river::Channel *""'"); 
   }
   arg2 = reinterpret_cast< cmf::river::Channel * >(argp2);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->flux_geometry = *arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->flux_geometry = *arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -60962,11 +56573,7 @@ SWIGINTERN PyObject *_wrap_Manning_flux_geometry_get(PyObject *SWIGUNUSEDPARM(se
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Manning_flux_geometry_get" "', argument " "1"" of type '" "cmf::river::Manning *""'"); 
   }
   arg1 = reinterpret_cast< cmf::river::Manning * >(argp1);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (cmf::river::Channel *)& ((arg1)->flux_geometry);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (cmf::river::Channel *)& ((arg1)->flux_geometry);
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_cmf__river__Channel, 0 |  0 );
   return resultobj;
 fail:
@@ -60990,11 +56597,7 @@ SWIGINTERN PyObject *_wrap_delete_Manning(PyObject *SWIGUNUSEDPARM(self), PyObje
   arg1 = reinterpret_cast< cmf::river::Manning * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -61083,11 +56686,7 @@ SWIGINTERN PyObject *_wrap_new_Manning_Diffusive(PyObject *SWIGUNUSEDPARM(self),
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::river::Manning_Diffusive *)new cmf::river::Manning_Diffusive(arg1,arg2,arg3);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::river::Manning_Diffusive *)new cmf::river::Manning_Diffusive(arg1,arg2,arg3);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -61119,11 +56718,7 @@ SWIGINTERN PyObject *_wrap_delete_Manning_Diffusive(PyObject *SWIGUNUSEDPARM(sel
   arg1 = reinterpret_cast< cmf::river::Manning_Diffusive * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -61216,11 +56811,7 @@ SWIGINTERN PyObject *_wrap_new_Manning_Kinematic(PyObject *SWIGUNUSEDPARM(self),
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::river::Manning_Kinematic *)new cmf::river::Manning_Kinematic(arg1,arg2,arg3);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::river::Manning_Kinematic *)new cmf::river::Manning_Kinematic(arg1,arg2,arg3);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -61252,11 +56843,7 @@ SWIGINTERN PyObject *_wrap_delete_Manning_Kinematic(PyObject *SWIGUNUSEDPARM(sel
   arg1 = reinterpret_cast< cmf::river::Manning_Kinematic * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -61330,11 +56917,7 @@ SWIGINTERN PyObject *_wrap_new_CanopyOverflow(PyObject *SWIGUNUSEDPARM(self), Py
   arg3 = reinterpret_cast< cmf::upslope::Cell * >(argp3);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::upslope::connections::CanopyOverflow *)new cmf::upslope::connections::CanopyOverflow(arg1,arg2,*arg3);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::upslope::connections::CanopyOverflow *)new cmf::upslope::connections::CanopyOverflow(arg1,arg2,*arg3);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -61372,11 +56955,7 @@ SWIGINTERN PyObject *_wrap_CanopyOverflow_use_for_cell(PyObject *SWIGUNUSEDPARM(
   arg1 = reinterpret_cast< cmf::upslope::Cell * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::upslope::connections::CanopyOverflow *)cmf::upslope::connections::CanopyOverflow::use_for_cell(*arg1);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::upslope::connections::CanopyOverflow *)cmf::upslope::connections::CanopyOverflow::use_for_cell(*arg1);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -61407,11 +56986,7 @@ SWIGINTERN PyObject *_wrap_delete_CanopyOverflow(PyObject *SWIGUNUSEDPARM(self),
   arg1 = reinterpret_cast< cmf::upslope::connections::CanopyOverflow * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -61485,11 +57060,7 @@ SWIGINTERN PyObject *_wrap_new_RutterInterception(PyObject *SWIGUNUSEDPARM(self)
   arg3 = reinterpret_cast< cmf::upslope::Cell * >(argp3);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::upslope::connections::RutterInterception *)new cmf::upslope::connections::RutterInterception(arg1,arg2,*arg3);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::upslope::connections::RutterInterception *)new cmf::upslope::connections::RutterInterception(arg1,arg2,*arg3);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -61527,11 +57098,7 @@ SWIGINTERN PyObject *_wrap_RutterInterception_use_for_cell(PyObject *SWIGUNUSEDP
   arg1 = reinterpret_cast< cmf::upslope::Cell * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::upslope::connections::RutterInterception *)cmf::upslope::connections::RutterInterception::use_for_cell(*arg1);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::upslope::connections::RutterInterception *)cmf::upslope::connections::RutterInterception::use_for_cell(*arg1);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -61562,11 +57129,7 @@ SWIGINTERN PyObject *_wrap_delete_RutterInterception(PyObject *SWIGUNUSEDPARM(se
   arg1 = reinterpret_cast< cmf::upslope::connections::RutterInterception * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -61613,11 +57176,7 @@ SWIGINTERN PyObject *_wrap_SimpleTindexSnowMelt_SnowMeltRate_set(PyObject *SWIGU
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "SimpleTindexSnowMelt_SnowMeltRate_set" "', argument " "2"" of type '" "real""'");
   } 
   arg2 = static_cast< real >(val2);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->SnowMeltRate = arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->SnowMeltRate = arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -61640,11 +57199,7 @@ SWIGINTERN PyObject *_wrap_SimpleTindexSnowMelt_SnowMeltRate_get(PyObject *SWIGU
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SimpleTindexSnowMelt_SnowMeltRate_get" "', argument " "1"" of type '" "cmf::upslope::connections::SimpleTindexSnowMelt *""'"); 
   }
   arg1 = reinterpret_cast< cmf::upslope::connections::SimpleTindexSnowMelt * >(argp1);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (real) ((arg1)->SnowMeltRate);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (real) ((arg1)->SnowMeltRate);
   resultobj = SWIG_From_double(static_cast< double >(result));
   return resultobj;
 fail:
@@ -61700,11 +57255,7 @@ SWIGINTERN PyObject *_wrap_new_SimpleTindexSnowMelt(PyObject *SWIGUNUSEDPARM(sel
   arg3 = reinterpret_cast< cmf::upslope::Cell * >(argp3);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::upslope::connections::SimpleTindexSnowMelt *)new cmf::upslope::connections::SimpleTindexSnowMelt(arg1,arg2,*arg3);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::upslope::connections::SimpleTindexSnowMelt *)new cmf::upslope::connections::SimpleTindexSnowMelt(arg1,arg2,*arg3);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -61741,11 +57292,7 @@ SWIGINTERN PyObject *_wrap_SimpleTindexSnowMelt_use_for_cell(PyObject *SWIGUNUSE
   arg1 = reinterpret_cast< cmf::upslope::Cell * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        cmf::upslope::connections::SimpleTindexSnowMelt::use_for_cell(*arg1);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      cmf::upslope::connections::SimpleTindexSnowMelt::use_for_cell(*arg1);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -61776,11 +57323,7 @@ SWIGINTERN PyObject *_wrap_delete_SimpleTindexSnowMelt(PyObject *SWIGUNUSEDPARM(
   arg1 = reinterpret_cast< cmf::upslope::connections::SimpleTindexSnowMelt * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -61854,11 +57397,7 @@ SWIGINTERN PyObject *_wrap_new_EnergyBudgetSnowMelt(PyObject *SWIGUNUSEDPARM(sel
   arg3 = reinterpret_cast< cmf::upslope::Cell * >(argp3);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::upslope::connections::EnergyBudgetSnowMelt *)new cmf::upslope::connections::EnergyBudgetSnowMelt(arg1,arg2,*arg3);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::upslope::connections::EnergyBudgetSnowMelt *)new cmf::upslope::connections::EnergyBudgetSnowMelt(arg1,arg2,*arg3);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -61895,11 +57434,7 @@ SWIGINTERN PyObject *_wrap_EnergyBudgetSnowMelt_use_for_cell(PyObject *SWIGUNUSE
   arg1 = reinterpret_cast< cmf::upslope::Cell * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        cmf::upslope::connections::EnergyBudgetSnowMelt::use_for_cell(*arg1);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      cmf::upslope::connections::EnergyBudgetSnowMelt::use_for_cell(*arg1);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -61930,11 +57465,7 @@ SWIGINTERN PyObject *_wrap_delete_EnergyBudgetSnowMelt(PyObject *SWIGUNUSEDPARM(
   arg1 = reinterpret_cast< cmf::upslope::connections::EnergyBudgetSnowMelt * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -61981,11 +57512,7 @@ SWIGINTERN PyObject *_wrap_Rainfall_Throughfall_set(PyObject *SWIGUNUSEDPARM(sel
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Rainfall_Throughfall_set" "', argument " "2"" of type '" "bool""'");
   } 
   arg2 = static_cast< bool >(val2);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->Throughfall = arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->Throughfall = arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -62008,11 +57535,7 @@ SWIGINTERN PyObject *_wrap_Rainfall_Throughfall_get(PyObject *SWIGUNUSEDPARM(sel
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Rainfall_Throughfall_get" "', argument " "1"" of type '" "cmf::upslope::connections::Rainfall *""'"); 
   }
   arg1 = reinterpret_cast< cmf::upslope::connections::Rainfall * >(argp1);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (bool) ((arg1)->Throughfall);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (bool) ((arg1)->Throughfall);
   resultobj = SWIG_From_bool(static_cast< bool >(result));
   return resultobj;
 fail:
@@ -62041,11 +57564,7 @@ SWIGINTERN PyObject *_wrap_Rainfall_InterceptedRainfall_set(PyObject *SWIGUNUSED
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Rainfall_InterceptedRainfall_set" "', argument " "2"" of type '" "bool""'");
   } 
   arg2 = static_cast< bool >(val2);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->InterceptedRainfall = arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->InterceptedRainfall = arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -62068,11 +57587,7 @@ SWIGINTERN PyObject *_wrap_Rainfall_InterceptedRainfall_get(PyObject *SWIGUNUSED
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Rainfall_InterceptedRainfall_get" "', argument " "1"" of type '" "cmf::upslope::connections::Rainfall *""'"); 
   }
   arg1 = reinterpret_cast< cmf::upslope::connections::Rainfall * >(argp1);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (bool) ((arg1)->InterceptedRainfall);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (bool) ((arg1)->InterceptedRainfall);
   resultobj = SWIG_From_bool(static_cast< bool >(result));
   return resultobj;
 fail:
@@ -62137,11 +57652,7 @@ SWIGINTERN PyObject *_wrap_new_Rainfall(PyObject *SWIGUNUSEDPARM(self), PyObject
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::upslope::connections::Rainfall *)new cmf::upslope::connections::Rainfall(arg1,*arg2,arg3,arg4);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::upslope::connections::Rainfall *)new cmf::upslope::connections::Rainfall(arg1,*arg2,arg3,arg4);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -62173,11 +57684,7 @@ SWIGINTERN PyObject *_wrap_delete_Rainfall(PyObject *SWIGUNUSEDPARM(self), PyObj
   arg1 = reinterpret_cast< cmf::upslope::connections::Rainfall * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -62238,11 +57745,7 @@ SWIGINTERN PyObject *_wrap_new_Snowfall(PyObject *SWIGUNUSEDPARM(self), PyObject
   arg2 = reinterpret_cast< cmf::upslope::Cell * >(argp2);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::upslope::connections::Snowfall *)new cmf::upslope::connections::Snowfall(arg1,*arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::upslope::connections::Snowfall *)new cmf::upslope::connections::Snowfall(arg1,*arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -62274,11 +57777,7 @@ SWIGINTERN PyObject *_wrap_delete_Snowfall(PyObject *SWIGUNUSEDPARM(self), PyObj
   arg1 = reinterpret_cast< cmf::upslope::connections::Snowfall * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -62340,11 +57839,7 @@ SWIGINTERN PyObject *_wrap_new_MatrixInfiltration(PyObject *SWIGUNUSEDPARM(self)
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::upslope::connections::MatrixInfiltration *)new cmf::upslope::connections::MatrixInfiltration(arg1,arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::upslope::connections::MatrixInfiltration *)new cmf::upslope::connections::MatrixInfiltration(arg1,arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -62381,11 +57876,7 @@ SWIGINTERN PyObject *_wrap_MatrixInfiltration_use_for_cell(PyObject *SWIGUNUSEDP
   arg1 = reinterpret_cast< cmf::upslope::Cell * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        cmf::upslope::connections::MatrixInfiltration::use_for_cell(*arg1);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      cmf::upslope::connections::MatrixInfiltration::use_for_cell(*arg1);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -62416,11 +57907,7 @@ SWIGINTERN PyObject *_wrap_delete_MatrixInfiltration(PyObject *SWIGUNUSEDPARM(se
   arg1 = reinterpret_cast< cmf::upslope::connections::MatrixInfiltration * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -62482,11 +57969,7 @@ SWIGINTERN PyObject *_wrap_new_CompleteInfiltration(PyObject *SWIGUNUSEDPARM(sel
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::upslope::connections::CompleteInfiltration *)new cmf::upslope::connections::CompleteInfiltration(arg1,arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::upslope::connections::CompleteInfiltration *)new cmf::upslope::connections::CompleteInfiltration(arg1,arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -62518,11 +58001,7 @@ SWIGINTERN PyObject *_wrap_delete_CompleteInfiltration(PyObject *SWIGUNUSEDPARM(
   arg1 = reinterpret_cast< cmf::upslope::connections::CompleteInfiltration * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -62580,11 +58059,7 @@ SWIGINTERN PyObject *_wrap_SWATPercolation_use_for_cell(PyObject *SWIGUNUSEDPARM
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        cmf::upslope::connections::SWATPercolation::use_for_cell(*arg1,arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      cmf::upslope::connections::SWATPercolation::use_for_cell(*arg1,arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -62635,11 +58110,7 @@ SWIGINTERN PyObject *_wrap_new_SWATPercolation(PyObject *SWIGUNUSEDPARM(self), P
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::upslope::connections::SWATPercolation *)new cmf::upslope::connections::SWATPercolation(arg1,arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::upslope::connections::SWATPercolation *)new cmf::upslope::connections::SWATPercolation(arg1,arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -62671,11 +58142,7 @@ SWIGINTERN PyObject *_wrap_delete_SWATPercolation(PyObject *SWIGUNUSEDPARM(self)
   arg1 = reinterpret_cast< cmf::upslope::connections::SWATPercolation * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -62737,11 +58204,7 @@ SWIGINTERN PyObject *_wrap_new_Richards(PyObject *SWIGUNUSEDPARM(self), PyObject
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::upslope::connections::Richards *)new cmf::upslope::connections::Richards(arg1,arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::upslope::connections::Richards *)new cmf::upslope::connections::Richards(arg1,arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -62789,11 +58252,7 @@ SWIGINTERN PyObject *_wrap_Richards_use_for_cell(PyObject *SWIGUNUSEDPARM(self),
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        cmf::upslope::connections::Richards::use_for_cell(*arg1,arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      cmf::upslope::connections::Richards::use_for_cell(*arg1,arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -62824,11 +58283,7 @@ SWIGINTERN PyObject *_wrap_delete_Richards(PyObject *SWIGUNUSEDPARM(self), PyObj
   arg1 = reinterpret_cast< cmf::upslope::connections::Richards * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -62890,11 +58345,7 @@ SWIGINTERN PyObject *_wrap_new_SimplRichards(PyObject *SWIGUNUSEDPARM(self), PyO
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::upslope::connections::SimplRichards *)new cmf::upslope::connections::SimplRichards(arg1,arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::upslope::connections::SimplRichards *)new cmf::upslope::connections::SimplRichards(arg1,arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -62942,11 +58393,7 @@ SWIGINTERN PyObject *_wrap_SimplRichards_use_for_cell(PyObject *SWIGUNUSEDPARM(s
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        cmf::upslope::connections::SimplRichards::use_for_cell(*arg1,arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      cmf::upslope::connections::SimplRichards::use_for_cell(*arg1,arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -62977,11 +58424,7 @@ SWIGINTERN PyObject *_wrap_delete_SimplRichards(PyObject *SWIGUNUSEDPARM(self), 
   arg1 = reinterpret_cast< cmf::upslope::connections::SimplRichards * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -63043,11 +58486,7 @@ SWIGINTERN PyObject *_wrap_new_GradientMacroFlow(PyObject *SWIGUNUSEDPARM(self),
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::upslope::connections::GradientMacroFlow *)new cmf::upslope::connections::GradientMacroFlow(arg1,arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::upslope::connections::GradientMacroFlow *)new cmf::upslope::connections::GradientMacroFlow(arg1,arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -63079,11 +58518,7 @@ SWIGINTERN PyObject *_wrap_delete_GradientMacroFlow(PyObject *SWIGUNUSEDPARM(sel
   arg1 = reinterpret_cast< cmf::upslope::connections::GradientMacroFlow * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -63130,11 +58565,7 @@ SWIGINTERN PyObject *_wrap_HBVparameters_cfmax_set(PyObject *SWIGUNUSEDPARM(self
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "HBVparameters_cfmax_set" "', argument " "2"" of type '" "double""'");
   } 
   arg2 = static_cast< double >(val2);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->cfmax = arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->cfmax = arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -63157,11 +58588,7 @@ SWIGINTERN PyObject *_wrap_HBVparameters_cfmax_get(PyObject *SWIGUNUSEDPARM(self
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "HBVparameters_cfmax_get" "', argument " "1"" of type '" "cmf::upslope::connections::HBVparameters *""'"); 
   }
   arg1 = reinterpret_cast< cmf::upslope::connections::HBVparameters * >(argp1);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (double) ((arg1)->cfmax);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (double) ((arg1)->cfmax);
   resultobj = SWIG_From_double(static_cast< double >(result));
   return resultobj;
 fail:
@@ -63190,11 +58617,7 @@ SWIGINTERN PyObject *_wrap_HBVparameters_sfcf_set(PyObject *SWIGUNUSEDPARM(self)
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "HBVparameters_sfcf_set" "', argument " "2"" of type '" "double""'");
   } 
   arg2 = static_cast< double >(val2);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->sfcf = arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->sfcf = arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -63217,11 +58640,7 @@ SWIGINTERN PyObject *_wrap_HBVparameters_sfcf_get(PyObject *SWIGUNUSEDPARM(self)
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "HBVparameters_sfcf_get" "', argument " "1"" of type '" "cmf::upslope::connections::HBVparameters *""'"); 
   }
   arg1 = reinterpret_cast< cmf::upslope::connections::HBVparameters * >(argp1);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (double) ((arg1)->sfcf);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (double) ((arg1)->sfcf);
   resultobj = SWIG_From_double(static_cast< double >(result));
   return resultobj;
 fail:
@@ -63250,11 +58669,7 @@ SWIGINTERN PyObject *_wrap_HBVparameters_cfr_set(PyObject *SWIGUNUSEDPARM(self),
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "HBVparameters_cfr_set" "', argument " "2"" of type '" "double""'");
   } 
   arg2 = static_cast< double >(val2);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->cfr = arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->cfr = arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -63277,11 +58692,7 @@ SWIGINTERN PyObject *_wrap_HBVparameters_cfr_get(PyObject *SWIGUNUSEDPARM(self),
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "HBVparameters_cfr_get" "', argument " "1"" of type '" "cmf::upslope::connections::HBVparameters *""'"); 
   }
   arg1 = reinterpret_cast< cmf::upslope::connections::HBVparameters * >(argp1);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (double) ((arg1)->cfr);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (double) ((arg1)->cfr);
   resultobj = SWIG_From_double(static_cast< double >(result));
   return resultobj;
 fail:
@@ -63310,11 +58721,7 @@ SWIGINTERN PyObject *_wrap_HBVparameters_cwh_set(PyObject *SWIGUNUSEDPARM(self),
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "HBVparameters_cwh_set" "', argument " "2"" of type '" "double""'");
   } 
   arg2 = static_cast< double >(val2);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->cwh = arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->cwh = arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -63337,11 +58744,7 @@ SWIGINTERN PyObject *_wrap_HBVparameters_cwh_get(PyObject *SWIGUNUSEDPARM(self),
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "HBVparameters_cwh_get" "', argument " "1"" of type '" "cmf::upslope::connections::HBVparameters *""'"); 
   }
   arg1 = reinterpret_cast< cmf::upslope::connections::HBVparameters * >(argp1);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (double) ((arg1)->cwh);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (double) ((arg1)->cwh);
   resultobj = SWIG_From_double(static_cast< double >(result));
   return resultobj;
 fail:
@@ -63370,11 +58773,7 @@ SWIGINTERN PyObject *_wrap_HBVparameters_k0_set(PyObject *SWIGUNUSEDPARM(self), 
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "HBVparameters_k0_set" "', argument " "2"" of type '" "double""'");
   } 
   arg2 = static_cast< double >(val2);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->k0 = arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->k0 = arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -63397,11 +58796,7 @@ SWIGINTERN PyObject *_wrap_HBVparameters_k0_get(PyObject *SWIGUNUSEDPARM(self), 
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "HBVparameters_k0_get" "', argument " "1"" of type '" "cmf::upslope::connections::HBVparameters *""'"); 
   }
   arg1 = reinterpret_cast< cmf::upslope::connections::HBVparameters * >(argp1);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (double) ((arg1)->k0);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (double) ((arg1)->k0);
   resultobj = SWIG_From_double(static_cast< double >(result));
   return resultobj;
 fail:
@@ -63430,11 +58825,7 @@ SWIGINTERN PyObject *_wrap_HBVparameters_k1_set(PyObject *SWIGUNUSEDPARM(self), 
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "HBVparameters_k1_set" "', argument " "2"" of type '" "double""'");
   } 
   arg2 = static_cast< double >(val2);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->k1 = arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->k1 = arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -63457,11 +58848,7 @@ SWIGINTERN PyObject *_wrap_HBVparameters_k1_get(PyObject *SWIGUNUSEDPARM(self), 
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "HBVparameters_k1_get" "', argument " "1"" of type '" "cmf::upslope::connections::HBVparameters *""'"); 
   }
   arg1 = reinterpret_cast< cmf::upslope::connections::HBVparameters * >(argp1);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (double) ((arg1)->k1);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (double) ((arg1)->k1);
   resultobj = SWIG_From_double(static_cast< double >(result));
   return resultobj;
 fail:
@@ -63490,11 +58877,7 @@ SWIGINTERN PyObject *_wrap_HBVparameters_k2_set(PyObject *SWIGUNUSEDPARM(self), 
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "HBVparameters_k2_set" "', argument " "2"" of type '" "double""'");
   } 
   arg2 = static_cast< double >(val2);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->k2 = arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->k2 = arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -63517,11 +58900,7 @@ SWIGINTERN PyObject *_wrap_HBVparameters_k2_get(PyObject *SWIGUNUSEDPARM(self), 
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "HBVparameters_k2_get" "', argument " "1"" of type '" "cmf::upslope::connections::HBVparameters *""'"); 
   }
   arg1 = reinterpret_cast< cmf::upslope::connections::HBVparameters * >(argp1);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (double) ((arg1)->k2);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (double) ((arg1)->k2);
   resultobj = SWIG_From_double(static_cast< double >(result));
   return resultobj;
 fail:
@@ -63550,11 +58929,7 @@ SWIGINTERN PyObject *_wrap_HBVparameters_perc_set(PyObject *SWIGUNUSEDPARM(self)
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "HBVparameters_perc_set" "', argument " "2"" of type '" "double""'");
   } 
   arg2 = static_cast< double >(val2);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->perc = arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->perc = arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -63577,11 +58952,7 @@ SWIGINTERN PyObject *_wrap_HBVparameters_perc_get(PyObject *SWIGUNUSEDPARM(self)
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "HBVparameters_perc_get" "', argument " "1"" of type '" "cmf::upslope::connections::HBVparameters *""'"); 
   }
   arg1 = reinterpret_cast< cmf::upslope::connections::HBVparameters * >(argp1);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (double) ((arg1)->perc);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (double) ((arg1)->perc);
   resultobj = SWIG_From_double(static_cast< double >(result));
   return resultobj;
 fail:
@@ -63610,11 +58981,7 @@ SWIGINTERN PyObject *_wrap_HBVparameters_fc_set(PyObject *SWIGUNUSEDPARM(self), 
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "HBVparameters_fc_set" "', argument " "2"" of type '" "double""'");
   } 
   arg2 = static_cast< double >(val2);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->fc = arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->fc = arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -63637,11 +59004,7 @@ SWIGINTERN PyObject *_wrap_HBVparameters_fc_get(PyObject *SWIGUNUSEDPARM(self), 
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "HBVparameters_fc_get" "', argument " "1"" of type '" "cmf::upslope::connections::HBVparameters *""'"); 
   }
   arg1 = reinterpret_cast< cmf::upslope::connections::HBVparameters * >(argp1);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (double) ((arg1)->fc);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (double) ((arg1)->fc);
   resultobj = SWIG_From_double(static_cast< double >(result));
   return resultobj;
 fail:
@@ -63670,11 +59033,7 @@ SWIGINTERN PyObject *_wrap_HBVparameters_uplim_set(PyObject *SWIGUNUSEDPARM(self
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "HBVparameters_uplim_set" "', argument " "2"" of type '" "double""'");
   } 
   arg2 = static_cast< double >(val2);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->uplim = arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->uplim = arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -63697,11 +59056,7 @@ SWIGINTERN PyObject *_wrap_HBVparameters_uplim_get(PyObject *SWIGUNUSEDPARM(self
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "HBVparameters_uplim_get" "', argument " "1"" of type '" "cmf::upslope::connections::HBVparameters *""'"); 
   }
   arg1 = reinterpret_cast< cmf::upslope::connections::HBVparameters * >(argp1);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (double) ((arg1)->uplim);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (double) ((arg1)->uplim);
   resultobj = SWIG_From_double(static_cast< double >(result));
   return resultobj;
 fail:
@@ -63730,11 +59085,7 @@ SWIGINTERN PyObject *_wrap_HBVparameters_lowlim_set(PyObject *SWIGUNUSEDPARM(sel
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "HBVparameters_lowlim_set" "', argument " "2"" of type '" "double""'");
   } 
   arg2 = static_cast< double >(val2);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->lowlim = arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->lowlim = arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -63757,11 +59108,7 @@ SWIGINTERN PyObject *_wrap_HBVparameters_lowlim_get(PyObject *SWIGUNUSEDPARM(sel
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "HBVparameters_lowlim_get" "', argument " "1"" of type '" "cmf::upslope::connections::HBVparameters *""'"); 
   }
   arg1 = reinterpret_cast< cmf::upslope::connections::HBVparameters * >(argp1);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (double) ((arg1)->lowlim);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (double) ((arg1)->lowlim);
   resultobj = SWIG_From_double(static_cast< double >(result));
   return resultobj;
 fail:
@@ -63790,11 +59137,7 @@ SWIGINTERN PyObject *_wrap_HBVparameters_beta_set(PyObject *SWIGUNUSEDPARM(self)
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "HBVparameters_beta_set" "', argument " "2"" of type '" "double""'");
   } 
   arg2 = static_cast< double >(val2);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->beta = arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->beta = arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -63817,11 +59160,7 @@ SWIGINTERN PyObject *_wrap_HBVparameters_beta_get(PyObject *SWIGUNUSEDPARM(self)
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "HBVparameters_beta_get" "', argument " "1"" of type '" "cmf::upslope::connections::HBVparameters *""'"); 
   }
   arg1 = reinterpret_cast< cmf::upslope::connections::HBVparameters * >(argp1);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (double) ((arg1)->beta);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (double) ((arg1)->beta);
   resultobj = SWIG_From_double(static_cast< double >(result));
   return resultobj;
 fail:
@@ -63971,11 +59310,7 @@ SWIGINTERN PyObject *_wrap_new_HBVparameters(PyObject *SWIGUNUSEDPARM(self), PyO
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::upslope::connections::HBVparameters *)new cmf::upslope::connections::HBVparameters(arg1,arg2,arg3,arg4,arg5,arg6,arg7,arg8,arg9,arg10,arg11,arg12);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::upslope::connections::HBVparameters *)new cmf::upslope::connections::HBVparameters(arg1,arg2,arg3,arg4,arg5,arg6,arg7,arg8,arg9,arg10,arg11,arg12);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -64007,11 +59342,7 @@ SWIGINTERN PyObject *_wrap_HBVparameters_copy(PyObject *SWIGUNUSEDPARM(self), Py
   arg1 = reinterpret_cast< cmf::upslope::connections::HBVparameters * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::upslope::connections::HBVparameters *)((cmf::upslope::connections::HBVparameters const *)arg1)->copy();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::upslope::connections::HBVparameters *)((cmf::upslope::connections::HBVparameters const *)arg1)->copy();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -64048,11 +59379,7 @@ SWIGINTERN PyObject *_wrap_HBVparameters_cast(PyObject *SWIGUNUSEDPARM(self), Py
   arg1 = reinterpret_cast< cmf::upslope::RetentionCurve * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::upslope::connections::HBVparameters *)cmf::upslope::connections::HBVparameters::cast(*arg1);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::upslope::connections::HBVparameters *)cmf::upslope::connections::HBVparameters::cast(*arg1);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -64083,11 +59410,7 @@ SWIGINTERN PyObject *_wrap_delete_HBVparameters(PyObject *SWIGUNUSEDPARM(self), 
   arg1 = reinterpret_cast< cmf::upslope::connections::HBVparameters * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        delete arg1;
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      delete arg1;
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -64149,11 +59472,7 @@ SWIGINTERN PyObject *_wrap_new_HBVpercolation(PyObject *SWIGUNUSEDPARM(self), Py
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::upslope::connections::HBVpercolation *)new cmf::upslope::connections::HBVpercolation(arg1,arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::upslope::connections::HBVpercolation *)new cmf::upslope::connections::HBVpercolation(arg1,arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -64185,11 +59504,7 @@ SWIGINTERN PyObject *_wrap_delete_HBVpercolation(PyObject *SWIGUNUSEDPARM(self),
   arg1 = reinterpret_cast< cmf::upslope::connections::HBVpercolation * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -64283,11 +59598,7 @@ SWIGINTERN PyObject *_wrap_new_HBVlateral(PyObject *SWIGUNUSEDPARM(self), PyObje
   arg4 = static_cast< real >(val4);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::upslope::connections::HBVlateral *)new cmf::upslope::connections::HBVlateral(arg1,arg2,arg3,arg4);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::upslope::connections::HBVlateral *)new cmf::upslope::connections::HBVlateral(arg1,arg2,arg3,arg4);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -64319,11 +59630,7 @@ SWIGINTERN PyObject *_wrap_delete_HBVlateral(PyObject *SWIGUNUSEDPARM(self), PyO
   arg1 = reinterpret_cast< cmf::upslope::connections::HBVlateral * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -64387,11 +59694,7 @@ SWIGINTERN PyObject *_wrap_HBVinstall(PyObject *SWIGUNUSEDPARM(self), PyObject *
   arg2 = reinterpret_cast< cmf::upslope::Cell * >(argp2);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        cmf::upslope::connections::HBVinstall(arg1,*arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      cmf::upslope::connections::HBVinstall(arg1,*arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -64428,11 +59731,7 @@ SWIGINTERN PyObject *_wrap_new_log_wind_profile(PyObject *SWIGUNUSEDPARM(self), 
   arg1 = reinterpret_cast< cmf::upslope::Cell * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::atmosphere::log_wind_profile *)new cmf::atmosphere::log_wind_profile(*arg1);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::atmosphere::log_wind_profile *)new cmf::atmosphere::log_wind_profile(*arg1);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -64463,11 +59762,7 @@ SWIGINTERN PyObject *_wrap_delete_log_wind_profile(PyObject *SWIGUNUSEDPARM(self
   arg1 = reinterpret_cast< cmf::atmosphere::log_wind_profile * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        delete arg1;
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      delete arg1;
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -64533,11 +59828,7 @@ SWIGINTERN PyObject *_wrap_transpiration_method_transp_from_layer(PyObject *SWIG
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (double)(arg1)->transp_from_layer(arg2,arg3);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (double)(arg1)->transp_from_layer(arg2,arg3);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -64568,11 +59859,7 @@ SWIGINTERN PyObject *_wrap_delete_transpiration_method(PyObject *SWIGUNUSEDPARM(
   arg1 = reinterpret_cast< cmf::upslope::ET::transpiration_method * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        delete arg1;
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      delete arg1;
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -64634,11 +59921,7 @@ SWIGINTERN PyObject *_wrap_soil_evaporation_method_evap_from_layer(PyObject *SWI
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (double)(arg1)->evap_from_layer(arg2,arg3);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (double)(arg1)->evap_from_layer(arg2,arg3);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -64669,11 +59952,7 @@ SWIGINTERN PyObject *_wrap_delete_soil_evaporation_method(PyObject *SWIGUNUSEDPA
   arg1 = reinterpret_cast< cmf::upslope::ET::soil_evaporation_method * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        delete arg1;
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      delete arg1;
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -64735,11 +60014,7 @@ SWIGINTERN PyObject *_wrap_surface_water_evaporation_method_evap_from_openwater(
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (double)(arg1)->evap_from_openwater(arg2,arg3);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (double)(arg1)->evap_from_openwater(arg2,arg3);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -64770,11 +60045,7 @@ SWIGINTERN PyObject *_wrap_delete_surface_water_evaporation_method(PyObject *SWI
   arg1 = reinterpret_cast< cmf::upslope::ET::surface_water_evaporation_method * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        delete arg1;
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      delete arg1;
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -64836,11 +60107,7 @@ SWIGINTERN PyObject *_wrap_canopy_evaporation_method_evap_from_canopy(PyObject *
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (double)(arg1)->evap_from_canopy(arg2,arg3);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (double)(arg1)->evap_from_canopy(arg2,arg3);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -64871,11 +60138,7 @@ SWIGINTERN PyObject *_wrap_delete_canopy_evaporation_method(PyObject *SWIGUNUSED
   arg1 = reinterpret_cast< cmf::upslope::ET::canopy_evaporation_method * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        delete arg1;
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      delete arg1;
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -64937,11 +60200,7 @@ SWIGINTERN PyObject *_wrap_snow_evaporation_method_evap_from_snow(PyObject *SWIG
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (double)(arg1)->evap_from_snow(arg2,arg3);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (double)(arg1)->evap_from_snow(arg2,arg3);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -64972,11 +60231,7 @@ SWIGINTERN PyObject *_wrap_delete_snow_evaporation_method(PyObject *SWIGUNUSEDPA
   arg1 = reinterpret_cast< cmf::upslope::ET::snow_evaporation_method * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        delete arg1;
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      delete arg1;
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -65062,11 +60317,7 @@ SWIGINTERN PyObject *_wrap_new_transpiration(PyObject *SWIGUNUSEDPARM(self), PyO
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::upslope::ET::transpiration *)new cmf::upslope::ET::transpiration(arg1,arg2,arg3,arg4);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::upslope::ET::transpiration *)new cmf::upslope::ET::transpiration(arg1,arg2,arg3,arg4);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -65098,11 +60349,7 @@ SWIGINTERN PyObject *_wrap_delete_transpiration(PyObject *SWIGUNUSEDPARM(self), 
   arg1 = reinterpret_cast< cmf::upslope::ET::transpiration * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -65192,11 +60439,7 @@ SWIGINTERN PyObject *_wrap_new_soil_evaporation(PyObject *SWIGUNUSEDPARM(self), 
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::upslope::ET::soil_evaporation *)new cmf::upslope::ET::soil_evaporation(arg1,arg2,arg3,arg4);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::upslope::ET::soil_evaporation *)new cmf::upslope::ET::soil_evaporation(arg1,arg2,arg3,arg4);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -65228,11 +60471,7 @@ SWIGINTERN PyObject *_wrap_delete_soil_evaporation(PyObject *SWIGUNUSEDPARM(self
   arg1 = reinterpret_cast< cmf::upslope::ET::soil_evaporation * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -65322,11 +60561,7 @@ SWIGINTERN PyObject *_wrap_new_canopy_evaporation(PyObject *SWIGUNUSEDPARM(self)
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::upslope::ET::canopy_evaporation *)new cmf::upslope::ET::canopy_evaporation(arg1,arg2,arg3,arg4);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::upslope::ET::canopy_evaporation *)new cmf::upslope::ET::canopy_evaporation(arg1,arg2,arg3,arg4);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -65358,11 +60593,7 @@ SWIGINTERN PyObject *_wrap_delete_canopy_evaporation(PyObject *SWIGUNUSEDPARM(se
   arg1 = reinterpret_cast< cmf::upslope::ET::canopy_evaporation * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -65452,11 +60683,7 @@ SWIGINTERN PyObject *_wrap_new_snow_evaporation(PyObject *SWIGUNUSEDPARM(self), 
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::upslope::ET::snow_evaporation *)new cmf::upslope::ET::snow_evaporation(arg1,arg2,arg3,arg4);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::upslope::ET::snow_evaporation *)new cmf::upslope::ET::snow_evaporation(arg1,arg2,arg3,arg4);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -65488,11 +60715,7 @@ SWIGINTERN PyObject *_wrap_delete_snow_evaporation(PyObject *SWIGUNUSEDPARM(self
   arg1 = reinterpret_cast< cmf::upslope::ET::snow_evaporation * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -65582,11 +60805,7 @@ SWIGINTERN PyObject *_wrap_new_surface_water_evaporation(PyObject *SWIGUNUSEDPAR
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::upslope::ET::surface_water_evaporation *)new cmf::upslope::ET::surface_water_evaporation(arg1,arg2,arg3,arg4);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::upslope::ET::surface_water_evaporation *)new cmf::upslope::ET::surface_water_evaporation(arg1,arg2,arg3,arg4);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -65618,11 +60837,7 @@ SWIGINTERN PyObject *_wrap_delete_surface_water_evaporation(PyObject *SWIGUNUSED
   arg1 = reinterpret_cast< cmf::upslope::ET::surface_water_evaporation * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -65695,11 +60910,7 @@ SWIGINTERN PyObject *_wrap_PenmanMonteith__SWIG_0(PyObject *SWIGUNUSEDPARM(self)
   arg5 = static_cast< real >(val5);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (real)cmf::upslope::ET::PenmanMonteith(arg1,arg2,arg3,arg4,arg5);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (real)cmf::upslope::ET::PenmanMonteith(arg1,arg2,arg3,arg4,arg5);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -65756,11 +60967,7 @@ SWIGINTERN PyObject *_wrap_PenmanMonteith__SWIG_1(PyObject *SWIGUNUSEDPARM(self)
   arg3 = static_cast< double >(val3);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (real)cmf::upslope::ET::PenmanMonteith(arg1,(cmf::upslope::vegetation::Vegetation const &)*arg2,arg3);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (real)cmf::upslope::ET::PenmanMonteith(arg1,(cmf::upslope::vegetation::Vegetation const &)*arg2,arg3);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -65955,11 +61162,7 @@ SWIGINTERN PyObject *_wrap_Tact(PyObject *SWIGUNUSEDPARM(self), PyObject *args, 
   arg3 = reinterpret_cast< cmf::upslope::vegetation::Vegetation * >(argp3);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (real)cmf::upslope::ET::Tact(arg1,(cmf::upslope::SoilLayer const &)*arg2,(cmf::upslope::vegetation::Vegetation const &)*arg3);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (real)cmf::upslope::ET::Tact(arg1,(cmf::upslope::SoilLayer const &)*arg2,(cmf::upslope::vegetation::Vegetation const &)*arg3);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -65995,11 +61198,7 @@ SWIGINTERN PyObject *_wrap_constantETpot_ETpot_value_set(PyObject *SWIGUNUSEDPAR
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "constantETpot_ETpot_value_set" "', argument " "2"" of type '" "real""'");
   } 
   arg2 = static_cast< real >(val2);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->ETpot_value = arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->ETpot_value = arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -66022,11 +61221,7 @@ SWIGINTERN PyObject *_wrap_constantETpot_ETpot_value_get(PyObject *SWIGUNUSEDPAR
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "constantETpot_ETpot_value_get" "', argument " "1"" of type '" "cmf::upslope::ET::constantETpot *""'"); 
   }
   arg1 = reinterpret_cast< cmf::upslope::ET::constantETpot * >(argp1);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (real) ((arg1)->ETpot_value);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (real) ((arg1)->ETpot_value);
   resultobj = SWIG_From_double(static_cast< double >(result));
   return resultobj;
 fail:
@@ -66061,11 +61256,7 @@ SWIGINTERN PyObject *_wrap_constantETpot_GetETpot(PyObject *SWIGUNUSEDPARM(self)
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (real)((cmf::upslope::ET::constantETpot const *)arg1)->GetETpot(arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (real)((cmf::upslope::ET::constantETpot const *)arg1)->GetETpot(arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -66125,11 +61316,7 @@ SWIGINTERN PyObject *_wrap_new_constantETpot(PyObject *SWIGUNUSEDPARM(self), PyO
   arg3 = static_cast< double >(val3);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::upslope::ET::constantETpot *)new cmf::upslope::ET::constantETpot(arg1,arg2,arg3);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::upslope::ET::constantETpot *)new cmf::upslope::ET::constantETpot(arg1,arg2,arg3);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -66161,11 +61348,7 @@ SWIGINTERN PyObject *_wrap_delete_constantETpot(PyObject *SWIGUNUSEDPARM(self), 
   arg1 = reinterpret_cast< cmf::upslope::ET::constantETpot * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -66212,11 +61395,7 @@ SWIGINTERN PyObject *_wrap_timeseriesETpot_ETpot_set(PyObject *SWIGUNUSEDPARM(se
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "timeseriesETpot_ETpot_set" "', argument " "2"" of type '" "cmf::math::timeseries *""'"); 
   }
   arg2 = reinterpret_cast< cmf::math::timeseries * >(argp2);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->ETpot = *arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->ETpot = *arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -66239,11 +61418,7 @@ SWIGINTERN PyObject *_wrap_timeseriesETpot_ETpot_get(PyObject *SWIGUNUSEDPARM(se
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "timeseriesETpot_ETpot_get" "', argument " "1"" of type '" "cmf::upslope::ET::timeseriesETpot *""'"); 
   }
   arg1 = reinterpret_cast< cmf::upslope::ET::timeseriesETpot * >(argp1);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (cmf::math::timeseries *)& ((arg1)->ETpot);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (cmf::math::timeseries *)& ((arg1)->ETpot);
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_cmf__math__timeseries, 0 |  0 );
   return resultobj;
 fail:
@@ -66278,11 +61453,7 @@ SWIGINTERN PyObject *_wrap_timeseriesETpot_GetETpot(PyObject *SWIGUNUSEDPARM(sel
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (real)((cmf::upslope::ET::timeseriesETpot const *)arg1)->GetETpot(arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (real)((cmf::upslope::ET::timeseriesETpot const *)arg1)->GetETpot(arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -66349,11 +61520,7 @@ SWIGINTERN PyObject *_wrap_new_timeseriesETpot(PyObject *SWIGUNUSEDPARM(self), P
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::upslope::ET::timeseriesETpot *)new cmf::upslope::ET::timeseriesETpot(arg1,arg2,arg3);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::upslope::ET::timeseriesETpot *)new cmf::upslope::ET::timeseriesETpot(arg1,arg2,arg3);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -66390,11 +61557,7 @@ SWIGINTERN PyObject *_wrap_timeseriesETpot_use_for_cell(PyObject *SWIGUNUSEDPARM
   arg1 = reinterpret_cast< cmf::upslope::Cell * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        cmf::upslope::ET::timeseriesETpot::use_for_cell(*arg1);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      cmf::upslope::ET::timeseriesETpot::use_for_cell(*arg1);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -66425,11 +61588,7 @@ SWIGINTERN PyObject *_wrap_delete_timeseriesETpot(PyObject *SWIGUNUSEDPARM(self)
   arg1 = reinterpret_cast< cmf::upslope::ET::timeseriesETpot * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -66476,11 +61635,7 @@ SWIGINTERN PyObject *_wrap_PenmanMonteithET_daily_set(PyObject *SWIGUNUSEDPARM(s
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "PenmanMonteithET_daily_set" "', argument " "2"" of type '" "bool""'");
   } 
   arg2 = static_cast< bool >(val2);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->daily = arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->daily = arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -66503,11 +61658,7 @@ SWIGINTERN PyObject *_wrap_PenmanMonteithET_daily_get(PyObject *SWIGUNUSEDPARM(s
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "PenmanMonteithET_daily_get" "', argument " "1"" of type '" "cmf::upslope::ET::PenmanMonteithET *""'"); 
   }
   arg1 = reinterpret_cast< cmf::upslope::ET::PenmanMonteithET * >(argp1);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (bool) ((arg1)->daily);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (bool) ((arg1)->daily);
   resultobj = SWIG_From_bool(static_cast< bool >(result));
   return resultobj;
 fail:
@@ -66551,11 +61702,7 @@ SWIGINTERN PyObject *_wrap_new_PenmanMonteithET(PyObject *SWIGUNUSEDPARM(self), 
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::upslope::ET::PenmanMonteithET *)new cmf::upslope::ET::PenmanMonteithET(arg1,arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::upslope::ET::PenmanMonteithET *)new cmf::upslope::ET::PenmanMonteithET(arg1,arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -66593,11 +61740,7 @@ SWIGINTERN PyObject *_wrap_PenmanMonteithET_r_s(PyObject *SWIGUNUSEDPARM(self), 
   arg1 = reinterpret_cast< cmf::upslope::vegetation::Vegetation * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (real)cmf::upslope::ET::PenmanMonteithET::r_s((cmf::upslope::vegetation::Vegetation const &)*arg1);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (real)cmf::upslope::ET::PenmanMonteithET::r_s((cmf::upslope::vegetation::Vegetation const &)*arg1);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -66648,11 +61791,7 @@ SWIGINTERN PyObject *_wrap_PenmanMonteithET_r_a(PyObject *SWIGUNUSEDPARM(self), 
   arg2 = static_cast< real >(val2);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (real)cmf::upslope::ET::PenmanMonteithET::r_a(arg1,arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (real)cmf::upslope::ET::PenmanMonteithET::r_a(arg1,arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -66688,11 +61827,7 @@ SWIGINTERN PyObject *_wrap_PenmanMonteithET_use_for_cell(PyObject *SWIGUNUSEDPAR
   arg1 = reinterpret_cast< cmf::upslope::Cell * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        cmf::upslope::ET::PenmanMonteithET::use_for_cell(*arg1);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      cmf::upslope::ET::PenmanMonteithET::use_for_cell(*arg1);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -66723,11 +61858,7 @@ SWIGINTERN PyObject *_wrap_delete_PenmanMonteithET(PyObject *SWIGUNUSEDPARM(self
   arg1 = reinterpret_cast< cmf::upslope::ET::PenmanMonteithET * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -66789,11 +61920,7 @@ SWIGINTERN PyObject *_wrap_new_HargreaveET(PyObject *SWIGUNUSEDPARM(self), PyObj
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::upslope::ET::HargreaveET *)new cmf::upslope::ET::HargreaveET(arg1,arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::upslope::ET::HargreaveET *)new cmf::upslope::ET::HargreaveET(arg1,arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -66830,11 +61957,7 @@ SWIGINTERN PyObject *_wrap_HargreaveET_use_for_cell(PyObject *SWIGUNUSEDPARM(sel
   arg1 = reinterpret_cast< cmf::upslope::Cell * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        cmf::upslope::ET::HargreaveET::use_for_cell(*arg1);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      cmf::upslope::ET::HargreaveET::use_for_cell(*arg1);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -66865,11 +61988,7 @@ SWIGINTERN PyObject *_wrap_delete_HargreaveET(PyObject *SWIGUNUSEDPARM(self), Py
   arg1 = reinterpret_cast< cmf::upslope::ET::HargreaveET * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -66943,11 +62062,7 @@ SWIGINTERN PyObject *_wrap_new_CanopyStorageEvaporation(PyObject *SWIGUNUSEDPARM
   arg3 = reinterpret_cast< cmf::upslope::Cell * >(argp3);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::upslope::ET::CanopyStorageEvaporation *)new cmf::upslope::ET::CanopyStorageEvaporation(arg1,arg2,*arg3);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::upslope::ET::CanopyStorageEvaporation *)new cmf::upslope::ET::CanopyStorageEvaporation(arg1,arg2,*arg3);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -66979,11 +62094,7 @@ SWIGINTERN PyObject *_wrap_delete_CanopyStorageEvaporation(PyObject *SWIGUNUSEDP
   arg1 = reinterpret_cast< cmf::upslope::ET::CanopyStorageEvaporation * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -67057,11 +62168,7 @@ SWIGINTERN PyObject *_wrap_new_PenmanEvaporation(PyObject *SWIGUNUSEDPARM(self),
   arg3 = reinterpret_cast< cmf::atmosphere::Meteorology * >(argp3);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::upslope::ET::PenmanEvaporation *)new cmf::upslope::ET::PenmanEvaporation(arg1,arg2,(cmf::atmosphere::Meteorology const &)*arg3);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::upslope::ET::PenmanEvaporation *)new cmf::upslope::ET::PenmanEvaporation(arg1,arg2,(cmf::atmosphere::Meteorology const &)*arg3);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -67093,11 +62200,7 @@ SWIGINTERN PyObject *_wrap_delete_PenmanEvaporation(PyObject *SWIGUNUSEDPARM(sel
   arg1 = reinterpret_cast< cmf::upslope::ET::PenmanEvaporation * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -67144,11 +62247,7 @@ SWIGINTERN PyObject *_wrap_ShuttleworthWallace_RAA_set(PyObject *SWIGUNUSEDPARM(
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "ShuttleworthWallace_RAA_set" "', argument " "2"" of type '" "double""'");
   } 
   arg2 = static_cast< double >(val2);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->RAA = arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->RAA = arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -67171,11 +62270,7 @@ SWIGINTERN PyObject *_wrap_ShuttleworthWallace_RAA_get(PyObject *SWIGUNUSEDPARM(
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ShuttleworthWallace_RAA_get" "', argument " "1"" of type '" "cmf::upslope::ET::ShuttleworthWallace *""'"); 
   }
   arg1 = reinterpret_cast< cmf::upslope::ET::ShuttleworthWallace * >(argp1);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (double) ((arg1)->RAA);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (double) ((arg1)->RAA);
   resultobj = SWIG_From_double(static_cast< double >(result));
   return resultobj;
 fail:
@@ -67204,11 +62299,7 @@ SWIGINTERN PyObject *_wrap_ShuttleworthWallace_RAC_set(PyObject *SWIGUNUSEDPARM(
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "ShuttleworthWallace_RAC_set" "', argument " "2"" of type '" "double""'");
   } 
   arg2 = static_cast< double >(val2);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->RAC = arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->RAC = arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -67231,11 +62322,7 @@ SWIGINTERN PyObject *_wrap_ShuttleworthWallace_RAC_get(PyObject *SWIGUNUSEDPARM(
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ShuttleworthWallace_RAC_get" "', argument " "1"" of type '" "cmf::upslope::ET::ShuttleworthWallace *""'"); 
   }
   arg1 = reinterpret_cast< cmf::upslope::ET::ShuttleworthWallace * >(argp1);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (double) ((arg1)->RAC);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (double) ((arg1)->RAC);
   resultobj = SWIG_From_double(static_cast< double >(result));
   return resultobj;
 fail:
@@ -67264,11 +62351,7 @@ SWIGINTERN PyObject *_wrap_ShuttleworthWallace_RAS_set(PyObject *SWIGUNUSEDPARM(
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "ShuttleworthWallace_RAS_set" "', argument " "2"" of type '" "double""'");
   } 
   arg2 = static_cast< double >(val2);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->RAS = arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->RAS = arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -67291,11 +62374,7 @@ SWIGINTERN PyObject *_wrap_ShuttleworthWallace_RAS_get(PyObject *SWIGUNUSEDPARM(
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ShuttleworthWallace_RAS_get" "', argument " "1"" of type '" "cmf::upslope::ET::ShuttleworthWallace *""'"); 
   }
   arg1 = reinterpret_cast< cmf::upslope::ET::ShuttleworthWallace * >(argp1);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (double) ((arg1)->RAS);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (double) ((arg1)->RAS);
   resultobj = SWIG_From_double(static_cast< double >(result));
   return resultobj;
 fail:
@@ -67324,11 +62403,7 @@ SWIGINTERN PyObject *_wrap_ShuttleworthWallace_RSS_set(PyObject *SWIGUNUSEDPARM(
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "ShuttleworthWallace_RSS_set" "', argument " "2"" of type '" "double""'");
   } 
   arg2 = static_cast< double >(val2);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->RSS = arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->RSS = arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -67351,11 +62426,7 @@ SWIGINTERN PyObject *_wrap_ShuttleworthWallace_RSS_get(PyObject *SWIGUNUSEDPARM(
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ShuttleworthWallace_RSS_get" "', argument " "1"" of type '" "cmf::upslope::ET::ShuttleworthWallace *""'"); 
   }
   arg1 = reinterpret_cast< cmf::upslope::ET::ShuttleworthWallace * >(argp1);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (double) ((arg1)->RSS);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (double) ((arg1)->RSS);
   resultobj = SWIG_From_double(static_cast< double >(result));
   return resultobj;
 fail:
@@ -67384,11 +62455,7 @@ SWIGINTERN PyObject *_wrap_ShuttleworthWallace_RSC_set(PyObject *SWIGUNUSEDPARM(
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "ShuttleworthWallace_RSC_set" "', argument " "2"" of type '" "double""'");
   } 
   arg2 = static_cast< double >(val2);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->RSC = arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->RSC = arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -67411,11 +62478,7 @@ SWIGINTERN PyObject *_wrap_ShuttleworthWallace_RSC_get(PyObject *SWIGUNUSEDPARM(
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ShuttleworthWallace_RSC_get" "', argument " "1"" of type '" "cmf::upslope::ET::ShuttleworthWallace *""'"); 
   }
   arg1 = reinterpret_cast< cmf::upslope::ET::ShuttleworthWallace * >(argp1);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (double) ((arg1)->RSC);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (double) ((arg1)->RSC);
   resultobj = SWIG_From_double(static_cast< double >(result));
   return resultobj;
 fail:
@@ -67444,11 +62507,7 @@ SWIGINTERN PyObject *_wrap_ShuttleworthWallace_refresh_counter_set(PyObject *SWI
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "ShuttleworthWallace_refresh_counter_set" "', argument " "2"" of type '" "int""'");
   } 
   arg2 = static_cast< int >(val2);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->refresh_counter = arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->refresh_counter = arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -67471,11 +62530,7 @@ SWIGINTERN PyObject *_wrap_ShuttleworthWallace_refresh_counter_get(PyObject *SWI
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ShuttleworthWallace_refresh_counter_get" "', argument " "1"" of type '" "cmf::upslope::ET::ShuttleworthWallace *""'"); 
   }
   arg1 = reinterpret_cast< cmf::upslope::ET::ShuttleworthWallace * >(argp1);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (int) ((arg1)->refresh_counter);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (int) ((arg1)->refresh_counter);
   resultobj = SWIG_From_int(static_cast< int >(result));
   return resultobj;
 fail:
@@ -67504,11 +62559,7 @@ SWIGINTERN PyObject *_wrap_ShuttleworthWallace_refresh__SWIG_0(PyObject *SWIGUNU
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        (arg1)->refresh(arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      (arg1)->refresh(arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -67537,11 +62588,7 @@ SWIGINTERN PyObject *_wrap_ShuttleworthWallace_refresh__SWIG_1(PyObject *SWIGUNU
   arg1 = reinterpret_cast< cmf::upslope::ET::ShuttleworthWallace * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        (arg1)->refresh();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      (arg1)->refresh();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -67655,11 +62702,7 @@ SWIGINTERN PyObject *_wrap_ShuttleworthWallace_PTR_set(PyObject *SWIGUNUSEDPARM(
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "ShuttleworthWallace_PTR_set" "', argument " "2"" of type '" "double""'");
   } 
   arg2 = static_cast< double >(val2);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->PTR = arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->PTR = arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -67682,11 +62725,7 @@ SWIGINTERN PyObject *_wrap_ShuttleworthWallace_PTR_get(PyObject *SWIGUNUSEDPARM(
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ShuttleworthWallace_PTR_get" "', argument " "1"" of type '" "cmf::upslope::ET::ShuttleworthWallace *""'"); 
   }
   arg1 = reinterpret_cast< cmf::upslope::ET::ShuttleworthWallace * >(argp1);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (double) ((arg1)->PTR);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (double) ((arg1)->PTR);
   resultobj = SWIG_From_double(static_cast< double >(result));
   return resultobj;
 fail:
@@ -67715,11 +62754,7 @@ SWIGINTERN PyObject *_wrap_ShuttleworthWallace_PSNVP_set(PyObject *SWIGUNUSEDPAR
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "ShuttleworthWallace_PSNVP_set" "', argument " "2"" of type '" "double""'");
   } 
   arg2 = static_cast< double >(val2);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->PSNVP = arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->PSNVP = arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -67742,11 +62777,7 @@ SWIGINTERN PyObject *_wrap_ShuttleworthWallace_PSNVP_get(PyObject *SWIGUNUSEDPAR
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ShuttleworthWallace_PSNVP_get" "', argument " "1"" of type '" "cmf::upslope::ET::ShuttleworthWallace *""'"); 
   }
   arg1 = reinterpret_cast< cmf::upslope::ET::ShuttleworthWallace * >(argp1);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (double) ((arg1)->PSNVP);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (double) ((arg1)->PSNVP);
   resultobj = SWIG_From_double(static_cast< double >(result));
   return resultobj;
 fail:
@@ -67775,11 +62806,7 @@ SWIGINTERN PyObject *_wrap_ShuttleworthWallace_ASNVP_set(PyObject *SWIGUNUSEDPAR
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "ShuttleworthWallace_ASNVP_set" "', argument " "2"" of type '" "double""'");
   } 
   arg2 = static_cast< double >(val2);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->ASNVP = arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->ASNVP = arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -67802,11 +62829,7 @@ SWIGINTERN PyObject *_wrap_ShuttleworthWallace_ASNVP_get(PyObject *SWIGUNUSEDPAR
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ShuttleworthWallace_ASNVP_get" "', argument " "1"" of type '" "cmf::upslope::ET::ShuttleworthWallace *""'"); 
   }
   arg1 = reinterpret_cast< cmf::upslope::ET::ShuttleworthWallace * >(argp1);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (double) ((arg1)->ASNVP);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (double) ((arg1)->ASNVP);
   resultobj = SWIG_From_double(static_cast< double >(result));
   return resultobj;
 fail:
@@ -67835,11 +62858,7 @@ SWIGINTERN PyObject *_wrap_ShuttleworthWallace_GER_set(PyObject *SWIGUNUSEDPARM(
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "ShuttleworthWallace_GER_set" "', argument " "2"" of type '" "double""'");
   } 
   arg2 = static_cast< double >(val2);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->GER = arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->GER = arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -67862,11 +62881,7 @@ SWIGINTERN PyObject *_wrap_ShuttleworthWallace_GER_get(PyObject *SWIGUNUSEDPARM(
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ShuttleworthWallace_GER_get" "', argument " "1"" of type '" "cmf::upslope::ET::ShuttleworthWallace *""'"); 
   }
   arg1 = reinterpret_cast< cmf::upslope::ET::ShuttleworthWallace * >(argp1);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (double) ((arg1)->GER);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (double) ((arg1)->GER);
   resultobj = SWIG_From_double(static_cast< double >(result));
   return resultobj;
 fail:
@@ -67895,11 +62910,7 @@ SWIGINTERN PyObject *_wrap_ShuttleworthWallace_PIR_set(PyObject *SWIGUNUSEDPARM(
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "ShuttleworthWallace_PIR_set" "', argument " "2"" of type '" "double""'");
   } 
   arg2 = static_cast< double >(val2);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->PIR = arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->PIR = arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -67922,11 +62933,7 @@ SWIGINTERN PyObject *_wrap_ShuttleworthWallace_PIR_get(PyObject *SWIGUNUSEDPARM(
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ShuttleworthWallace_PIR_get" "', argument " "1"" of type '" "cmf::upslope::ET::ShuttleworthWallace *""'"); 
   }
   arg1 = reinterpret_cast< cmf::upslope::ET::ShuttleworthWallace * >(argp1);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (double) ((arg1)->PIR);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (double) ((arg1)->PIR);
   resultobj = SWIG_From_double(static_cast< double >(result));
   return resultobj;
 fail:
@@ -67955,11 +62962,7 @@ SWIGINTERN PyObject *_wrap_ShuttleworthWallace_AIR_set(PyObject *SWIGUNUSEDPARM(
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "ShuttleworthWallace_AIR_set" "', argument " "2"" of type '" "double""'");
   } 
   arg2 = static_cast< double >(val2);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->AIR = arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->AIR = arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -67982,11 +62985,7 @@ SWIGINTERN PyObject *_wrap_ShuttleworthWallace_AIR_get(PyObject *SWIGUNUSEDPARM(
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ShuttleworthWallace_AIR_get" "', argument " "1"" of type '" "cmf::upslope::ET::ShuttleworthWallace *""'"); 
   }
   arg1 = reinterpret_cast< cmf::upslope::ET::ShuttleworthWallace * >(argp1);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (double) ((arg1)->AIR);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (double) ((arg1)->AIR);
   resultobj = SWIG_From_double(static_cast< double >(result));
   return resultobj;
 fail:
@@ -68015,11 +63014,7 @@ SWIGINTERN PyObject *_wrap_ShuttleworthWallace_GIR_set(PyObject *SWIGUNUSEDPARM(
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "ShuttleworthWallace_GIR_set" "', argument " "2"" of type '" "double""'");
   } 
   arg2 = static_cast< double >(val2);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->GIR = arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->GIR = arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -68042,11 +63037,7 @@ SWIGINTERN PyObject *_wrap_ShuttleworthWallace_GIR_get(PyObject *SWIGUNUSEDPARM(
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ShuttleworthWallace_GIR_get" "', argument " "1"" of type '" "cmf::upslope::ET::ShuttleworthWallace *""'"); 
   }
   arg1 = reinterpret_cast< cmf::upslope::ET::ShuttleworthWallace * >(argp1);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (double) ((arg1)->GIR);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (double) ((arg1)->GIR);
   resultobj = SWIG_From_double(static_cast< double >(result));
   return resultobj;
 fail:
@@ -68075,11 +63066,7 @@ SWIGINTERN PyObject *_wrap_ShuttleworthWallace_ATR_sum_set(PyObject *SWIGUNUSEDP
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "ShuttleworthWallace_ATR_sum_set" "', argument " "2"" of type '" "double""'");
   } 
   arg2 = static_cast< double >(val2);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->ATR_sum = arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->ATR_sum = arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -68102,11 +63089,7 @@ SWIGINTERN PyObject *_wrap_ShuttleworthWallace_ATR_sum_get(PyObject *SWIGUNUSEDP
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ShuttleworthWallace_ATR_sum_get" "', argument " "1"" of type '" "cmf::upslope::ET::ShuttleworthWallace *""'"); 
   }
   arg1 = reinterpret_cast< cmf::upslope::ET::ShuttleworthWallace * >(argp1);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (double) ((arg1)->ATR_sum);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (double) ((arg1)->ATR_sum);
   resultobj = SWIG_From_double(static_cast< double >(result));
   return resultobj;
 fail:
@@ -68138,11 +63121,7 @@ SWIGINTERN PyObject *_wrap_ShuttleworthWallace_ATR_set(PyObject *SWIGUNUSEDPARM(
     }
     arg2 = cmf::math::num_array(data,size);
   }
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->ATR = arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->ATR = arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -68165,11 +63144,7 @@ SWIGINTERN PyObject *_wrap_ShuttleworthWallace_ATR_get(PyObject *SWIGUNUSEDPARM(
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ShuttleworthWallace_ATR_get" "', argument " "1"" of type '" "cmf::upslope::ET::ShuttleworthWallace *""'"); 
   }
   arg1 = reinterpret_cast< cmf::upslope::ET::ShuttleworthWallace * >(argp1);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result =  ((arg1)->ATR);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result =  ((arg1)->ATR);
   {
     resultobj = as_npy_array(result);
   }
@@ -68200,11 +63175,7 @@ SWIGINTERN PyObject *_wrap_ShuttleworthWallace_KSNVP_set(PyObject *SWIGUNUSEDPAR
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "ShuttleworthWallace_KSNVP_set" "', argument " "2"" of type '" "double""'");
   } 
   arg2 = static_cast< double >(val2);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->KSNVP = arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->KSNVP = arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -68227,11 +63198,7 @@ SWIGINTERN PyObject *_wrap_ShuttleworthWallace_KSNVP_get(PyObject *SWIGUNUSEDPAR
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ShuttleworthWallace_KSNVP_get" "', argument " "1"" of type '" "cmf::upslope::ET::ShuttleworthWallace *""'"); 
   }
   arg1 = reinterpret_cast< cmf::upslope::ET::ShuttleworthWallace * >(argp1);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (double) ((arg1)->KSNVP);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (double) ((arg1)->KSNVP);
   resultobj = SWIG_From_double(static_cast< double >(result));
   return resultobj;
 fail:
@@ -68281,11 +63248,7 @@ SWIGINTERN PyObject *_wrap_ShuttleworthWallace_set_RSS_parameters(PyObject *SWIG
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        cmf::upslope::ET::ShuttleworthWallace::set_RSS_parameters(arg1,arg2,arg3);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      cmf::upslope::ET::ShuttleworthWallace::set_RSS_parameters(arg1,arg2,arg3);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -68322,11 +63285,7 @@ SWIGINTERN PyObject *_wrap_new_ShuttleworthWallace(PyObject *SWIGUNUSEDPARM(self
   arg1 = reinterpret_cast< cmf::upslope::Cell * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::upslope::ET::ShuttleworthWallace *)new cmf::upslope::ET::ShuttleworthWallace(*arg1);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::upslope::ET::ShuttleworthWallace *)new cmf::upslope::ET::ShuttleworthWallace(*arg1);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -68363,11 +63322,7 @@ SWIGINTERN PyObject *_wrap_ShuttleworthWallace_use_for_cell(PyObject *SWIGUNUSED
   arg1 = reinterpret_cast< cmf::upslope::Cell * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::upslope::ET::ShuttleworthWallace *)cmf::upslope::ET::ShuttleworthWallace::use_for_cell(*arg1);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::upslope::ET::ShuttleworthWallace *)cmf::upslope::ET::ShuttleworthWallace::use_for_cell(*arg1);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -68398,11 +63353,7 @@ SWIGINTERN PyObject *_wrap_delete_ShuttleworthWallace(PyObject *SWIGUNUSEDPARM(s
   arg1 = reinterpret_cast< cmf::upslope::ET::ShuttleworthWallace * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        delete arg1;
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      delete arg1;
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -68460,11 +63411,7 @@ SWIGINTERN PyObject *_wrap_project_remove_node(PyObject *SWIGUNUSEDPARM(self), P
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (int)(arg1)->remove_node(arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (int)(arg1)->remove_node(arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -68494,11 +63441,7 @@ SWIGINTERN PyObject *_wrap_project_solutes_get(PyObject *SWIGUNUSEDPARM(self), P
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "project_solutes_get" "', argument " "1"" of type '" "cmf::project *""'"); 
   }
   arg1 = reinterpret_cast< cmf::project * >(argp1);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (cmf::water::solute_vector *)& ((arg1)->solutes);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (cmf::water::solute_vector *)& ((arg1)->solutes);
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_cmf__water__solute_vector, 0 |  0 );
   return resultobj;
 fail:
@@ -68527,11 +63470,7 @@ SWIGINTERN PyObject *_wrap_project_meteo_stations_set(PyObject *SWIGUNUSEDPARM(s
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "project_meteo_stations_set" "', argument " "2"" of type '" "cmf::atmosphere::MeteoStationList *""'"); 
   }
   arg2 = reinterpret_cast< cmf::atmosphere::MeteoStationList * >(argp2);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->meteo_stations = *arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->meteo_stations = *arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -68554,11 +63493,7 @@ SWIGINTERN PyObject *_wrap_project_meteo_stations_get(PyObject *SWIGUNUSEDPARM(s
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "project_meteo_stations_get" "', argument " "1"" of type '" "cmf::project *""'"); 
   }
   arg1 = reinterpret_cast< cmf::project * >(argp1);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (cmf::atmosphere::MeteoStationList *)& ((arg1)->meteo_stations);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (cmf::atmosphere::MeteoStationList *)& ((arg1)->meteo_stations);
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_cmf__atmosphere__MeteoStationList, 0 |  0 );
   return resultobj;
 fail:
@@ -68587,11 +63522,7 @@ SWIGINTERN PyObject *_wrap_project_rainfall_stations_set(PyObject *SWIGUNUSEDPAR
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "project_rainfall_stations_set" "', argument " "2"" of type '" "cmf::atmosphere::RainfallStationList *""'"); 
   }
   arg2 = reinterpret_cast< cmf::atmosphere::RainfallStationList * >(argp2);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->rainfall_stations = *arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->rainfall_stations = *arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -68614,11 +63545,7 @@ SWIGINTERN PyObject *_wrap_project_rainfall_stations_get(PyObject *SWIGUNUSEDPAR
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "project_rainfall_stations_get" "', argument " "1"" of type '" "cmf::project *""'"); 
   }
   arg1 = reinterpret_cast< cmf::project * >(argp1);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (cmf::atmosphere::RainfallStationList *)& ((arg1)->rainfall_stations);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (cmf::atmosphere::RainfallStationList *)& ((arg1)->rainfall_stations);
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_cmf__atmosphere__RainfallStationList, 0 |  0 );
   return resultobj;
 fail:
@@ -68666,11 +63593,7 @@ SWIGINTERN PyObject *_wrap_project_use_IDW_meteo(PyObject *SWIGUNUSEDPARM(self),
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        (arg1)->use_IDW_meteo(arg2,arg3);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      (arg1)->use_IDW_meteo(arg2,arg3);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -68714,11 +63637,7 @@ SWIGINTERN PyObject *_wrap_project_use_nearest_meteo(PyObject *SWIGUNUSEDPARM(se
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        (arg1)->use_nearest_meteo(arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      (arg1)->use_nearest_meteo(arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -68773,11 +63692,7 @@ SWIGINTERN PyObject *_wrap_project_use_IDW_rainfall(PyObject *SWIGUNUSEDPARM(sel
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        (arg1)->use_IDW_rainfall(arg2,arg3);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      (arg1)->use_IDW_rainfall(arg2,arg3);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -68821,11 +63736,7 @@ SWIGINTERN PyObject *_wrap_project_use_nearest_rainfall(PyObject *SWIGUNUSEDPARM
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        (arg1)->use_nearest_rainfall(arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      (arg1)->use_nearest_rainfall(arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -68868,11 +63779,7 @@ SWIGINTERN PyObject *_wrap_project_get_cell(PyObject *SWIGUNUSEDPARM(self), PyOb
   arg2 = static_cast< int >(val2);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::upslope::Cell *) &(arg1)->get_cell(arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::upslope::Cell *) &(arg1)->get_cell(arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -68904,11 +63811,7 @@ SWIGINTERN PyObject *_wrap_project_size(PyObject *SWIGUNUSEDPARM(self), PyObject
   arg1 = reinterpret_cast< cmf::project * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (int)((cmf::project const *)arg1)->size();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (int)((cmf::project const *)arg1)->size();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -68944,11 +63847,7 @@ SWIGINTERN PyObject *_wrap_project_debug_set(PyObject *SWIGUNUSEDPARM(self), PyO
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "project_debug_set" "', argument " "2"" of type '" "bool""'");
   } 
   arg2 = static_cast< bool >(val2);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    if (arg1) (arg1)->debug = arg2;
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  if (arg1) (arg1)->debug = arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -68971,11 +63870,7 @@ SWIGINTERN PyObject *_wrap_project_debug_get(PyObject *SWIGUNUSEDPARM(self), PyO
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "project_debug_get" "', argument " "1"" of type '" "cmf::project *""'"); 
   }
   arg1 = reinterpret_cast< cmf::project * >(argp1);
-  {
-    SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-    result = (bool) ((arg1)->debug);
-    SWIG_PYTHON_THREAD_END_ALLOW;
-  }
+  result = (bool) ((arg1)->debug);
   resultobj = SWIG_From_bool(static_cast< bool >(result));
   return resultobj;
 fail:
@@ -69006,11 +63901,7 @@ SWIGINTERN PyObject *_wrap_new_project(PyObject *SWIGUNUSEDPARM(self), PyObject 
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::project *)new cmf::project(arg1);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::project *)new cmf::project(arg1);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -69041,11 +63932,7 @@ SWIGINTERN PyObject *_wrap_delete_project(PyObject *SWIGUNUSEDPARM(self), PyObje
   arg1 = reinterpret_cast< cmf::project * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        delete arg1;
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      delete arg1;
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -69126,11 +64013,7 @@ SWIGINTERN PyObject *_wrap_project_NewCell(PyObject *SWIGUNUSEDPARM(self), PyObj
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::upslope::Cell *)(arg1)->NewCell(arg2,arg3,arg4,arg5,arg6);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::upslope::Cell *)(arg1)->NewCell(arg2,arg3,arg4,arg5,arg6);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -69202,11 +64085,7 @@ SWIGINTERN PyObject *_wrap_project_NewOutlet(PyObject *SWIGUNUSEDPARM(self), PyO
   arg5 = static_cast< double >(val5);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (arg1)->NewOutlet(arg2,arg3,arg4,arg5);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (arg1)->NewOutlet(arg2,arg3,arg4,arg5);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -69281,11 +64160,7 @@ SWIGINTERN PyObject *_wrap_project_NewStorage(PyObject *SWIGUNUSEDPARM(self), Py
   arg5 = static_cast< double >(val5);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (arg1)->NewStorage(arg2,arg3,arg4,arg5);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (arg1)->NewStorage(arg2,arg3,arg4,arg5);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -69369,11 +64244,7 @@ SWIGINTERN PyObject *_wrap_project_NewOpenStorage(PyObject *SWIGUNUSEDPARM(self)
   arg6 = static_cast< double >(val6);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (arg1)->NewOpenStorage(arg2,arg3,arg4,arg5,arg6);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (arg1)->NewOpenStorage(arg2,arg3,arg4,arg5,arg6);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -69391,7 +64262,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_project_NewReach(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+SWIGINTERN PyObject *_wrap_project_NewReach__SWIG_0(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   cmf::project *arg1 = (cmf::project *) 0 ;
   double arg2 ;
@@ -69420,69 +64291,57 @@ SWIGINTERN PyObject *_wrap_project_NewReach(PyObject *SWIGUNUSEDPARM(self), PyOb
   int ecode8 = 0 ;
   bool val9 ;
   int ecode9 = 0 ;
-  PyObject * obj0 = 0 ;
-  PyObject * obj1 = 0 ;
-  PyObject * obj2 = 0 ;
-  PyObject * obj3 = 0 ;
-  PyObject * obj4 = 0 ;
-  PyObject * obj5 = 0 ;
-  PyObject * obj6 = 0 ;
-  PyObject * obj7 = 0 ;
-  PyObject * obj8 = 0 ;
-  char *  kwnames[] = {
-    (char *) "self",(char *) "x",(char *) "y",(char *) "z",(char *) "length",(char *) "Type",(char *) "width",(char *) "depth",(char *) "diffusive", NULL 
-  };
   cmf::river::Reach::ptr result;
   
-  if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"OOOOO|OOOO:project_NewReach",kwnames,&obj0,&obj1,&obj2,&obj3,&obj4,&obj5,&obj6,&obj7,&obj8)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_cmf__project, 0 |  0 );
+  if ((nobjs < 5) || (nobjs > 9)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__project, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "project_NewReach" "', argument " "1"" of type '" "cmf::project *""'"); 
   }
   arg1 = reinterpret_cast< cmf::project * >(argp1);
-  ecode2 = SWIG_AsVal_double(obj1, &val2);
+  ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
   if (!SWIG_IsOK(ecode2)) {
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "project_NewReach" "', argument " "2"" of type '" "double""'");
   } 
   arg2 = static_cast< double >(val2);
-  ecode3 = SWIG_AsVal_double(obj2, &val3);
+  ecode3 = SWIG_AsVal_double(swig_obj[2], &val3);
   if (!SWIG_IsOK(ecode3)) {
     SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "project_NewReach" "', argument " "3"" of type '" "double""'");
   } 
   arg3 = static_cast< double >(val3);
-  ecode4 = SWIG_AsVal_double(obj3, &val4);
+  ecode4 = SWIG_AsVal_double(swig_obj[3], &val4);
   if (!SWIG_IsOK(ecode4)) {
     SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "project_NewReach" "', argument " "4"" of type '" "double""'");
   } 
   arg4 = static_cast< double >(val4);
-  ecode5 = SWIG_AsVal_double(obj4, &val5);
+  ecode5 = SWIG_AsVal_double(swig_obj[4], &val5);
   if (!SWIG_IsOK(ecode5)) {
     SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "project_NewReach" "', argument " "5"" of type '" "double""'");
   } 
   arg5 = static_cast< double >(val5);
-  if (obj5) {
-    ecode6 = SWIG_AsVal_char(obj5, &val6);
+  if (swig_obj[5]) {
+    ecode6 = SWIG_AsVal_char(swig_obj[5], &val6);
     if (!SWIG_IsOK(ecode6)) {
       SWIG_exception_fail(SWIG_ArgError(ecode6), "in method '" "project_NewReach" "', argument " "6"" of type '" "char""'");
     } 
     arg6 = static_cast< char >(val6);
   }
-  if (obj6) {
-    ecode7 = SWIG_AsVal_double(obj6, &val7);
+  if (swig_obj[6]) {
+    ecode7 = SWIG_AsVal_double(swig_obj[6], &val7);
     if (!SWIG_IsOK(ecode7)) {
       SWIG_exception_fail(SWIG_ArgError(ecode7), "in method '" "project_NewReach" "', argument " "7"" of type '" "double""'");
     } 
     arg7 = static_cast< double >(val7);
   }
-  if (obj7) {
-    ecode8 = SWIG_AsVal_double(obj7, &val8);
+  if (swig_obj[7]) {
+    ecode8 = SWIG_AsVal_double(swig_obj[7], &val8);
     if (!SWIG_IsOK(ecode8)) {
       SWIG_exception_fail(SWIG_ArgError(ecode8), "in method '" "project_NewReach" "', argument " "8"" of type '" "double""'");
     } 
     arg8 = static_cast< double >(val8);
   }
-  if (obj8) {
-    ecode9 = SWIG_AsVal_bool(obj8, &val9);
+  if (swig_obj[8]) {
+    ecode9 = SWIG_AsVal_bool(swig_obj[8], &val9);
     if (!SWIG_IsOK(ecode9)) {
       SWIG_exception_fail(SWIG_ArgError(ecode9), "in method '" "project_NewReach" "', argument " "9"" of type '" "bool""'");
     } 
@@ -69490,11 +64349,7 @@ SWIGINTERN PyObject *_wrap_project_NewReach(PyObject *SWIGUNUSEDPARM(self), PyOb
   }
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (arg1)->NewReach(arg2,arg3,arg4,arg5,arg6,arg7,arg8,arg9);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (arg1)->NewReach(arg2,arg3,arg4,arg5,arg6,arg7,arg8,arg9);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -69509,6 +64364,292 @@ SWIGINTERN PyObject *_wrap_project_NewReach(PyObject *SWIGUNUSEDPARM(self), PyOb
   return resultobj;
 fail:
   return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_project_NewReach__SWIG_1(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  cmf::project *arg1 = (cmf::project *) 0 ;
+  double arg2 ;
+  double arg3 ;
+  double arg4 ;
+  cmf::river::IChannel *arg5 = 0 ;
+  bool arg6 = (bool) false ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  double val2 ;
+  int ecode2 = 0 ;
+  double val3 ;
+  int ecode3 = 0 ;
+  double val4 ;
+  int ecode4 = 0 ;
+  void *argp5 = 0 ;
+  int res5 = 0 ;
+  bool val6 ;
+  int ecode6 = 0 ;
+  cmf::river::Reach::ptr result;
+  
+  if ((nobjs < 5) || (nobjs > 6)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__project, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "project_NewReach" "', argument " "1"" of type '" "cmf::project *""'"); 
+  }
+  arg1 = reinterpret_cast< cmf::project * >(argp1);
+  ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "project_NewReach" "', argument " "2"" of type '" "double""'");
+  } 
+  arg2 = static_cast< double >(val2);
+  ecode3 = SWIG_AsVal_double(swig_obj[2], &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "project_NewReach" "', argument " "3"" of type '" "double""'");
+  } 
+  arg3 = static_cast< double >(val3);
+  ecode4 = SWIG_AsVal_double(swig_obj[3], &val4);
+  if (!SWIG_IsOK(ecode4)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "project_NewReach" "', argument " "4"" of type '" "double""'");
+  } 
+  arg4 = static_cast< double >(val4);
+  res5 = SWIG_ConvertPtr(swig_obj[4], &argp5, SWIGTYPE_p_cmf__river__IChannel,  0 );
+  if (!SWIG_IsOK(res5)) {
+    SWIG_exception_fail(SWIG_ArgError(res5), "in method '" "project_NewReach" "', argument " "5"" of type '" "cmf::river::IChannel &""'"); 
+  }
+  if (!argp5) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "project_NewReach" "', argument " "5"" of type '" "cmf::river::IChannel &""'"); 
+  }
+  arg5 = reinterpret_cast< cmf::river::IChannel * >(argp5);
+  if (swig_obj[5]) {
+    ecode6 = SWIG_AsVal_bool(swig_obj[5], &val6);
+    if (!SWIG_IsOK(ecode6)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode6), "in method '" "project_NewReach" "', argument " "6"" of type '" "bool""'");
+    } 
+    arg6 = static_cast< bool >(val6);
+  }
+  {
+    try {
+      result = (arg1)->NewReach(arg2,arg3,arg4,*arg5,arg6);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+    
+  }
+  {
+    std::tr1::shared_ptr<  cmf::river::Reach > *smartresult = result ? new std::tr1::shared_ptr<  cmf::river::Reach >(result) : 0;
+    resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(smartresult), SWIGTYPE_p_std__tr1__shared_ptrT_cmf__river__Reach_t, SWIG_POINTER_OWN);
+  }
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_project_NewReach(PyObject *self, PyObject *args) {
+  int argc;
+  PyObject *argv[10];
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args,"project_NewReach",0,9,argv))) SWIG_fail;
+  --argc;
+  {
+    unsigned long _index = 0;
+    SWIG_TypeRank _rank = 0; 
+    if ((argc >= 5) && (argc <= 6)) {
+      SWIG_TypeRank _ranki = 0;
+      SWIG_TypeRank _rankm = 0;
+      SWIG_TypeRank _pi = 1;
+      int _v = 0;
+      {
+        void *vptr = 0;
+        int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_cmf__project, 0);
+        _v = SWIG_CheckState(res);
+      }
+      if (!_v) goto check_1;
+      _ranki += _v*_pi;
+      _rankm += _pi;
+      _pi *= SWIG_MAXCASTRANK;
+      {
+        {
+          int res = SWIG_AsVal_double(argv[1], NULL);
+          _v = SWIG_CheckState(res);
+        }
+      }
+      if (!_v) goto check_1;
+      _ranki += _v*_pi;
+      _rankm += _pi;
+      _pi *= SWIG_MAXCASTRANK;
+      {
+        {
+          int res = SWIG_AsVal_double(argv[2], NULL);
+          _v = SWIG_CheckState(res);
+        }
+      }
+      if (!_v) goto check_1;
+      _ranki += _v*_pi;
+      _rankm += _pi;
+      _pi *= SWIG_MAXCASTRANK;
+      {
+        {
+          int res = SWIG_AsVal_double(argv[3], NULL);
+          _v = SWIG_CheckState(res);
+        }
+      }
+      if (!_v) goto check_1;
+      _ranki += _v*_pi;
+      _rankm += _pi;
+      _pi *= SWIG_MAXCASTRANK;
+      {
+        void *vptr = 0;
+        int res = SWIG_ConvertPtr(argv[4], &vptr, SWIGTYPE_p_cmf__river__IChannel, 0);
+        _v = SWIG_CheckState(res);
+      }
+      if (!_v) goto check_1;
+      _ranki += _v*_pi;
+      _rankm += _pi;
+      _pi *= SWIG_MAXCASTRANK;
+      if (argc > 5) {
+        {
+          {
+            int res = SWIG_AsVal_bool(argv[5], NULL);
+            _v = SWIG_CheckState(res);
+          }
+        }
+        if (!_v) goto check_1;
+        _ranki += _v*_pi;
+        _rankm += _pi;
+        _pi *= SWIG_MAXCASTRANK;
+      }
+      if (!_index || (_ranki < _rank)) {
+        _rank = _ranki; _index = 1;
+        if (_rank == _rankm) goto dispatch;
+      }
+    }
+  check_1:
+    
+    if ((argc >= 5) && (argc <= 9)) {
+      SWIG_TypeRank _ranki = 0;
+      SWIG_TypeRank _rankm = 0;
+      SWIG_TypeRank _pi = 1;
+      int _v = 0;
+      {
+        void *vptr = 0;
+        int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_cmf__project, 0);
+        _v = SWIG_CheckState(res);
+      }
+      if (!_v) goto check_2;
+      _ranki += _v*_pi;
+      _rankm += _pi;
+      _pi *= SWIG_MAXCASTRANK;
+      {
+        {
+          int res = SWIG_AsVal_double(argv[1], NULL);
+          _v = SWIG_CheckState(res);
+        }
+      }
+      if (!_v) goto check_2;
+      _ranki += _v*_pi;
+      _rankm += _pi;
+      _pi *= SWIG_MAXCASTRANK;
+      {
+        {
+          int res = SWIG_AsVal_double(argv[2], NULL);
+          _v = SWIG_CheckState(res);
+        }
+      }
+      if (!_v) goto check_2;
+      _ranki += _v*_pi;
+      _rankm += _pi;
+      _pi *= SWIG_MAXCASTRANK;
+      {
+        {
+          int res = SWIG_AsVal_double(argv[3], NULL);
+          _v = SWIG_CheckState(res);
+        }
+      }
+      if (!_v) goto check_2;
+      _ranki += _v*_pi;
+      _rankm += _pi;
+      _pi *= SWIG_MAXCASTRANK;
+      {
+        {
+          int res = SWIG_AsVal_double(argv[4], NULL);
+          _v = SWIG_CheckState(res);
+        }
+      }
+      if (!_v) goto check_2;
+      _ranki += _v*_pi;
+      _rankm += _pi;
+      _pi *= SWIG_MAXCASTRANK;
+      if (argc > 5) {
+        {
+          {
+            int res = SWIG_AsVal_char(argv[5], NULL);
+            _v = SWIG_CheckState(res);
+          }
+        }
+        if (!_v) goto check_2;
+        _ranki += _v*_pi;
+        _rankm += _pi;
+        _pi *= SWIG_MAXCASTRANK;
+        if (argc > 6) {
+          {
+            {
+              int res = SWIG_AsVal_double(argv[6], NULL);
+              _v = SWIG_CheckState(res);
+            }
+          }
+          if (!_v) goto check_2;
+          _ranki += _v*_pi;
+          _rankm += _pi;
+          _pi *= SWIG_MAXCASTRANK;
+          if (argc > 7) {
+            {
+              {
+                int res = SWIG_AsVal_double(argv[7], NULL);
+                _v = SWIG_CheckState(res);
+              }
+            }
+            if (!_v) goto check_2;
+            _ranki += _v*_pi;
+            _rankm += _pi;
+            _pi *= SWIG_MAXCASTRANK;
+            if (argc > 8) {
+              {
+                {
+                  int res = SWIG_AsVal_bool(argv[8], NULL);
+                  _v = SWIG_CheckState(res);
+                }
+              }
+              if (!_v) goto check_2;
+              _ranki += _v*_pi;
+              _rankm += _pi;
+              _pi *= SWIG_MAXCASTRANK;
+            }
+          }
+        }
+      }
+      if (!_index || (_ranki < _rank)) {
+        _rank = _ranki; _index = 2;
+        if (_rank == _rankm) goto dispatch;
+      }
+    }
+  check_2:
+    
+  dispatch:
+    switch(_index) {
+    case 1:
+      return _wrap_project_NewReach__SWIG_1(self, argc, argv);
+    case 2:
+      return _wrap_project_NewReach__SWIG_0(self, argc, argv);
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'project_NewReach'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    cmf::project::NewReach(double,double,double,double,char,double,double,bool)\n"
+    "    cmf::project::NewReach(double,double,double,cmf::river::IChannel &,bool)\n");
+  return 0;
 }
 
 
@@ -69540,11 +64681,7 @@ SWIGINTERN PyObject *_wrap_project_get_reach(PyObject *SWIGUNUSEDPARM(self), PyO
   arg2 = static_cast< int >(val2);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (arg1)->get_reach(arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (arg1)->get_reach(arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -69579,11 +64716,7 @@ SWIGINTERN PyObject *_wrap_project_reach_count(PyObject *SWIGUNUSEDPARM(self), P
   arg1 = reinterpret_cast< cmf::project * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (int)((cmf::project const *)arg1)->reach_count();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (int)((cmf::project const *)arg1)->reach_count();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -69626,11 +64759,7 @@ SWIGINTERN PyObject *_wrap_project_get_node(PyObject *SWIGUNUSEDPARM(self), PyOb
   arg2 = static_cast< int >(val2);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (arg1)->get_node(arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (arg1)->get_node(arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -69665,11 +64794,7 @@ SWIGINTERN PyObject *_wrap_project_node_count(PyObject *SWIGUNUSEDPARM(self), Py
   arg1 = reinterpret_cast< cmf::project * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (int)((cmf::project const *)arg1)->node_count();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (int)((cmf::project const *)arg1)->node_count();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -69701,11 +64826,7 @@ SWIGINTERN PyObject *_wrap_project_get_storages(PyObject *SWIGUNUSEDPARM(self), 
   arg1 = reinterpret_cast< cmf::project * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (arg1)->get_storages();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (arg1)->get_storages();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -69737,11 +64858,7 @@ SWIGINTERN PyObject *_wrap_project_cells_get(PyObject *SWIGUNUSEDPARM(self), PyO
   arg1 = reinterpret_cast< cmf::project * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::upslope::cell_vector *)cmf_project_cells_get(arg1);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::upslope::cell_vector *)cmf_project_cells_get(arg1);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -69784,11 +64901,7 @@ SWIGINTERN PyObject *_wrap_SoluteWaterIntegrator_copy(PyObject *SWIGUNUSEDPARM(s
   arg1 = reinterpret_cast< cmf::math::SoluteWaterIntegrator * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::math::SoluteWaterIntegrator *)((cmf::math::SoluteWaterIntegrator const *)arg1)->copy();
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::math::SoluteWaterIntegrator *)((cmf::math::SoluteWaterIntegrator const *)arg1)->copy();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -69832,11 +64945,7 @@ SWIGINTERN PyObject *_wrap_new_SoluteWaterIntegrator__SWIG_0(PyObject *SWIGUNUSE
   arg2 = reinterpret_cast< cmf::math::Integrator * >(argp2);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::math::SoluteWaterIntegrator *)new cmf::math::SoluteWaterIntegrator((cmf::math::Integrator const &)*arg1,(cmf::math::Integrator const &)*arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::math::SoluteWaterIntegrator *)new cmf::math::SoluteWaterIntegrator((cmf::math::Integrator const &)*arg1,(cmf::math::Integrator const &)*arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -69891,11 +65000,7 @@ SWIGINTERN PyObject *_wrap_new_SoluteWaterIntegrator__SWIG_1(PyObject *SWIGUNUSE
   arg3 = reinterpret_cast< cmf::math::StateVariableOwner * >(argp3);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::math::SoluteWaterIntegrator *)new cmf::math::SoluteWaterIntegrator((cmf::math::Integrator const &)*arg1,(cmf::math::Integrator const &)*arg2,*arg3);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::math::SoluteWaterIntegrator *)new cmf::math::SoluteWaterIntegrator((cmf::math::Integrator const &)*arg1,(cmf::math::Integrator const &)*arg2,*arg3);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -70025,11 +65130,7 @@ SWIGINTERN PyObject *_wrap_SoluteWaterIntegrator_solute_integrator_set(PyObject 
   arg2 = reinterpret_cast< cmf::math::Integrator * >(argp2);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        cmf_math_SoluteWaterIntegrator_solute_integrator_set(arg1,arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      cmf_math_SoluteWaterIntegrator_solute_integrator_set(arg1,arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -70061,11 +65162,7 @@ SWIGINTERN PyObject *_wrap_SoluteWaterIntegrator_solute_integrator_get(PyObject 
   arg1 = reinterpret_cast< cmf::math::SoluteWaterIntegrator * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::math::Integrator *)cmf_math_SoluteWaterIntegrator_solute_integrator_get(arg1);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::math::Integrator *)cmf_math_SoluteWaterIntegrator_solute_integrator_get(arg1);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -70103,11 +65200,7 @@ SWIGINTERN PyObject *_wrap_SoluteWaterIntegrator_water_integrator_set(PyObject *
   arg2 = reinterpret_cast< cmf::math::Integrator * >(argp2);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        cmf_math_SoluteWaterIntegrator_water_integrator_set(arg1,arg2);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      cmf_math_SoluteWaterIntegrator_water_integrator_set(arg1,arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -70139,11 +65232,7 @@ SWIGINTERN PyObject *_wrap_SoluteWaterIntegrator_water_integrator_get(PyObject *
   arg1 = reinterpret_cast< cmf::math::SoluteWaterIntegrator * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        result = (cmf::math::Integrator *)cmf_math_SoluteWaterIntegrator_water_integrator_get(arg1);
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      result = (cmf::math::Integrator *)cmf_math_SoluteWaterIntegrator_water_integrator_get(arg1);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -70174,11 +65263,7 @@ SWIGINTERN PyObject *_wrap_delete_SoluteWaterIntegrator(PyObject *SWIGUNUSEDPARM
   arg1 = reinterpret_cast< cmf::math::SoluteWaterIntegrator * >(argp1);
   {
     try {
-      {
-        SWIG_PYTHON_THREAD_BEGIN_ALLOW;
-        delete arg1;
-        SWIG_PYTHON_THREAD_END_ALLOW;
-      }
+      delete arg1;
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -75362,9 +70447,10 @@ static PyMethodDef SwigMethods[] = {
 		"\n"
 		"area:  Surface area of the open water storage \n"
 		""},
-	 { (char *)"project_NewReach", (PyCFunction) _wrap_project_NewReach, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
-		"project_NewReach(project self, double x, double y, double z, double length, char Type='T', double width=0.5, \n"
-		"    double depth=0.1, bool diffusive=False) -> cmf::river::Reach::ptr\n"
+	 { (char *)"project_NewReach", _wrap_project_NewReach, METH_VARARGS, (char *)"\n"
+		"NewReach(double x, double y, double z, double length, char Type='T', double width=0.5, double depth=0.1, \n"
+		"    bool diffusive=False) -> cmf::river::Reach::ptr\n"
+		"project_NewReach(project self, double x, double y, double z, IChannel shape, bool diffusive=False) -> cmf::river::Reach::ptr\n"
 		"\n"
 		"cmf::river::Reach::ptr\n"
 		"NewReach(double x, double y, double z, double length, char Type='T',\n"
@@ -77411,9 +72497,6 @@ SWIG_init(void) {
   SWIG_addvarlink(SWIG_globals(),(char*)"Manning_Diffusive_cell_connector",Swig_var_Manning_Diffusive_cell_connector_get, Swig_var_Manning_Diffusive_cell_connector_set);
   SWIG_addvarlink(SWIG_globals(),(char*)"Manning_Kinematic_cell_connector",Swig_var_Manning_Kinematic_cell_connector_get, Swig_var_Manning_Kinematic_cell_connector_set);
   SWIG_addvarlink(SWIG_globals(),(char*)"HBVlateral_cell_connector",Swig_var_HBVlateral_cell_connector_get, Swig_var_HBVlateral_cell_connector_set);
-  
-  /* Initialize threading */
-  SWIG_PYTHON_INITIALIZE_THREADS;
 #if PY_VERSION_HEX >= 0x03000000
   return m;
 #else

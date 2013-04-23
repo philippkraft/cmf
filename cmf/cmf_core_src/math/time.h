@@ -38,14 +38,14 @@ namespace cmf {
 		/// as milliseconds gone by from Dec, 31st 1899. Microsoft Excel dates are represented
 		/// as days from that time, using floating point numbers, therefore it is very simple
 		/// to convert Excel time representations to cmf time.
-		///	
+		/// 
 		/// Another object is Date, which is doesn't provide the operators, but has a nice printed
 		/// version and some special date functions, like day of year (DOY) and provides access
 		/// to the current hour of day and so on, which only applyto dates and not to time spans.
 		/// You can convert Time to Date an vice versa. The printing is not culture aware and
 		/// uses the European representation. If you use the Python standard library datetime,
 		/// conversion between Python time and cmf time is possible
-		///
+		/// 
 		/// Creating absolute time values (dates)
 		///@code{.py}
 		///import cmf
@@ -167,37 +167,37 @@ namespace cmf {
 			/// Time = Time - Time
 			Time operator-(const Time& t1) const	{return Time(m_time_in_ms-t1.AsMilliseconds());}
 			/// Time += Time
-			Time operator+=(const Time& t1)				{m_time_in_ms+=t1.AsMilliseconds(); return *this;}
+			Time operator+=(const Time& t1)			{m_time_in_ms+=t1.AsMilliseconds(); return *this;}
 			/// Time -= Time
-			Time operator-=(const Time& t1)				{m_time_in_ms-=t1.AsMilliseconds(); return *this;}
+			Time operator-=(const Time& t1)			{m_time_in_ms-=t1.AsMilliseconds(); return *this;}
 			/// Time = Time * double
-			Time operator*(double x) const				{return Time((long long)(m_time_in_ms*x));}
+			Time operator*(double x) const			{return Time((long long)(m_time_in_ms*x));}
 			/// Time = Time / double
-			Time operator/(double x) const				{return Time((long long)(m_time_in_ms/x));}
+			Time operator/(double x) const			{return Time((long long)(m_time_in_ms/x));}
 			/// Time = Time % Time
-			Time operator%(const Time& t1) const {return Time(m_time_in_ms % t1.AsMilliseconds());}
+			Time operator%(const Time& t1) const 	{return Time(m_time_in_ms % t1.AsMilliseconds());}
 			/// Time *= double
-			Time& operator*=(double x)							{m_time_in_ms= (long long)(m_time_in_ms * x); return *this;}
+			Time& operator*=(double x)				{m_time_in_ms= (long long)(m_time_in_ms * x); return *this;}
 			/// Time /= double
-			Time& operator/=(double x)							{m_time_in_ms= (long long)(m_time_in_ms / x); return *this;}
+			Time& operator/=(double x)				{m_time_in_ms= (long long)(m_time_in_ms / x); return *this;}
 			/// Time = Time * int
-			Time operator*(long long x) const           {return Time((long long)(m_time_in_ms*x));}
+			Time operator*(long long x) const		{return Time((long long)(m_time_in_ms*x));}
 			/// Time = Time / int
-			Time operator/(long long x) const           {return Time((long long)(m_time_in_ms/x));}
+			Time operator/(long long x) const		{return Time((long long)(m_time_in_ms/x));}
 			/// Time *= int
-			Time& operator*=(long long x)						  	{m_time_in_ms*= x; return *this;}
+			Time& operator*=(long long x)			{m_time_in_ms*= x; return *this;}
 			/// Time /= int
-			Time& operator/=(long long x)						  	{m_time_in_ms/= x; return *this;}
+			Time& operator/=(long long x)			{m_time_in_ms/= x; return *this;}
 			/// Time = Time * int
-			Time operator*(int x) const           {return Time((long long)(m_time_in_ms*x));}
+			Time operator*(int x) const				{return Time((long long)(m_time_in_ms*x));}
 			/// Time = Time / int
-			Time operator/(int x) const           {return Time((long long)(m_time_in_ms/x));}
+			Time operator/(int x) const				{return Time((long long)(m_time_in_ms/x));}
 			/// Time *= int
-			Time& operator*=(int x)						  	{m_time_in_ms*= x; return *this;}
+			Time& operator*=(int x)					{m_time_in_ms*= x; return *this;}
 			/// Time /= int
-			Time& operator/=(int x)						  	{m_time_in_ms/= x; return *this;}
+			Time& operator/=(int x)					{m_time_in_ms/= x; return *this;}
 			/// Time %= Time
-			Time& operator%=(const Time& t1)			{m_time_in_ms%= t1.AsMilliseconds(); return *this; }
+			Time& operator%=(const Time& t1)		{m_time_in_ms%= t1.AsMilliseconds(); return *this; }
 			/// double = Time / Time
 			double operator/(const Time& t1) const  {return ((double)m_time_in_ms)/((double)t1.AsMilliseconds());}
 			/// Returns the number of times this is included in t1
@@ -270,12 +270,12 @@ namespace cmf {
 			/// Returns a string representing the date
 			std::string to_string();
 		};
-		const Time ms   = timespan(1);  ///< 1 milli second
-		const Time sec  = 1000 * ms;    ///< 1 second
-		const Time min  = 60 * sec;	    ///< 1 minute
-		const Time h    = 60 * min;     ///< 1 hour
+		const Time ms   = timespan(1);	///< 1 milli second
+		const Time sec  = 1000 * ms;	///< 1 second
+		const Time min  = 60 * sec;		///< 1 minute
+		const Time h    = 60 * min;		///< 1 hour
 		const Time day  = 24 * h;		///< 1 day
-		const Time week = 7 * day;	    ///< 1 week
+		const Time week = 7 * day;		///< 1 week
 		const Time year = 365 * day;	///< 1 year  = 365*day
 		const Time month= year/12;		///< 1 month = 30*day+10*h
 		const Time never=Time(0,0,-9999); ///< A date long before our time to indicate 'never'
