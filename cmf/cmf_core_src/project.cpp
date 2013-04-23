@@ -172,6 +172,16 @@ cmf::river::Reach::ptr cmf::project::NewReach( double x,double y, double z, doub
 	return m_reaches.back();
 }
 
+cmf::river::Reach::ptr cmf::project::NewReach( double x,double y, double z, cmf::river::IChannel& shape, bool diffusive/*=false*/ )
+{
+	cmf::river::Reach::ptr R = cmf::river::Reach::create(*this,shape,diffusive);
+	R->position=cmf::geometry::point(x,y,z);
+	if (this->debug) std::cout << "Create " << R->to_string() << std::endl;
+	m_reaches.push_back(R);
+	return m_reaches.back();
+
+}
+
 cmf::water::DirichletBoundary::ptr cmf::project::NewOutlet( std::string name,double x, double y, double z)
 {
 	cmf::water::DirichletBoundary::ptr res(new cmf::water::DirichletBoundary(*this,z,cmf::geometry::point(x,y,z) ));

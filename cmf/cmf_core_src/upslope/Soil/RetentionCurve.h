@@ -105,7 +105,7 @@ namespace cmf {
 		///
 		/// \f{eqnarray*}
 		/// W(\theta) &=& \frac{\theta - \theta_r}{\theta_s - \theta_r} \\
-		/// K(W) &=& K_{sat} W^{2+3b} \\
+		/// K(W) &=& K_{sat} W^{2b+3} \\
 		/// \Psi(W) &=& \Psi_X \left(\frac{W}{W_X}\right)^{-b} \\
 		/// W(\Psi) &=& {\left( \frac{\Psi_X}{\Psi}\right) }^{\frac{1}{b}}\ W_X
 		/// \f}	
