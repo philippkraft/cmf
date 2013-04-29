@@ -83,6 +83,7 @@ namespace cmf {
 		///Abstract base class for different IChannel geometries
 		class IChannel : public cmf::river::IVolumeHeightFunction
 		{
+		protected:
 			double nManning; ///<Manning's n (roughness coefficient)
 		public:
 			virtual double get_nManning() const {return nManning;}
@@ -187,7 +188,7 @@ namespace cmf {
 			/// @param depth Depth of the reach [m]
 			virtual double get_flux_crossection(double depth) const;
 
-
+			SWATReachType(const SWATReachType& copy);
 
 			///@brief Creates a new reach structure with standard values (small natural river)
 			///BottomWidth = 3m, ChannelDepth = 0.5m, BankSlope = 2, nManning = 0.0035, FloodPlainSlope = 200
@@ -197,7 +198,7 @@ namespace cmf {
 			/// @param BankWidth get_channel_width of the reach from bank to bank [m]
 			/// @param Depth Depth of the reach [m]
 			SWATReachType(double l,double BankWidth,double Depth);
-			SWATReachType* copy() const { return new SWATReachType(get_length(), BottomWidth+2*BankSlope*ChannelDepth,ChannelDepth);}
+			SWATReachType* copy() const;
 
 		};
 		/// @brief Structure for the description of reaches with a triangular cross section
@@ -236,6 +237,7 @@ namespace cmf {
 			virtual double get_flux_crossection(double depth) const;
 			/// @brief Creates a new triangular reach type
 			TriangularReach(double l,double bankSlope=2);
+			TriangularReach(const TriangularReach& copy);
 			TriangularReach* copy() const;
 
 		};
@@ -270,6 +272,7 @@ namespace cmf {
 			virtual double get_flux_crossection(double depth) const;
 			/// Creates a new rectangular reach type with width [m]
 			RectangularReach(double l,double width);
+			RectangularReach(const RectangularReach& copy);
 			RectangularReach* copy() const;
 
 		};
@@ -292,6 +295,7 @@ namespace cmf {
 			virtual double get_flux_crossection(double depth) const;
 			/// Creates a tube IChannel with diameter [m]
 			PipeReach(double l,double diameter);
+			PipeReach(const PipeReach& copy);
 			PipeReach* copy() const;
 		};
 
@@ -370,7 +374,21 @@ namespace cmf {
 			MeanChannel* copy() const;
 
 		};
+		
+		///@brief A channel with a piecewise linear shape
+		///
+		/// The geometry of this reach is defined by a discrete
+		/// depth/width pairs with linear interpolation between the depth and width
+		///
+		/// \f$ i \f$ is the highest depth/width pair below a given depth \f$d\f$
+		/// \f[w(d,i) = w_i + (d-d_i) \frac{w_{i+1}-w_i}{d_{i+1} - d_i}\f]
+		/// \f[ A(d,i) =A(d_i,i-1)+ \frac12 (d-d_i)(w(d)+w_i)  \f]
+		/// \f[P(d,i) = P(d_i,i-1) + 2\sqrt{\left(\frac{w-w_i}{2}\right)^2+\left(d-d_i\right)^2} \f]
+		/// \f[P(0,0)=w_0 \f]
+		class PiecewiseRach: public IChannel
+		{
 
+		};
 
 	}
 }

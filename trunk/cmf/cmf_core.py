@@ -7247,6 +7247,7 @@ class SWATReachType(IChannel):
     FloodPlainSlope = _swig_property(_cmf_core.SWATReachType_FloodPlainSlope_get, _cmf_core.SWATReachType_FloodPlainSlope_set)
     def __init__(self, *args): 
         """
+        __init__(cmf::river::SWATReachType self, SWATReachType copy) -> SWATReachType
         __init__(cmf::river::SWATReachType self, double l) -> SWATReachType
         __init__(cmf::river::SWATReachType self, double l, double BankWidth, double Depth) -> SWATReachType
 
@@ -7291,15 +7292,16 @@ class TriangularReach(IChannel):
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
     __repr__ = _swig_repr
     BankSlope = _swig_property(_cmf_core.TriangularReach_BankSlope_get, _cmf_core.TriangularReach_BankSlope_set)
-    def __init__(self, *args, **kwargs): 
+    def __init__(self, *args): 
         """
         __init__(cmf::river::TriangularReach self, double l, double bankSlope=2) -> TriangularReach
+        __init__(cmf::river::TriangularReach self, TriangularReach copy) -> TriangularReach
 
         TriangularReach(double l, double bankSlope=2)
 
         Creates a new triangular reach type. 
         """
-        _cmf_core.TriangularReach_swiginit(self,_cmf_core.new_TriangularReach(*args, **kwargs))
+        _cmf_core.TriangularReach_swiginit(self,_cmf_core.new_TriangularReach(*args))
     def copy(self, *args, **kwargs):
         """
         copy(TriangularReach self) -> TriangularReach
@@ -7321,15 +7323,16 @@ class RectangularReach(IChannel):
     """
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
     __repr__ = _swig_repr
-    def __init__(self, *args, **kwargs): 
+    def __init__(self, *args): 
         """
         __init__(cmf::river::RectangularReach self, double l, double width) -> RectangularReach
+        __init__(cmf::river::RectangularReach self, RectangularReach copy) -> RectangularReach
 
         RectangularReach(double l, double width)
 
         Creates a new rectangular reach type with width [m]. 
         """
-        _cmf_core.RectangularReach_swiginit(self,_cmf_core.new_RectangularReach(*args, **kwargs))
+        _cmf_core.RectangularReach_swiginit(self,_cmf_core.new_RectangularReach(*args))
     def copy(self, *args, **kwargs):
         """
         copy(RectangularReach self) -> RectangularReach
@@ -7352,15 +7355,16 @@ class PipeReach(IChannel):
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
     __repr__ = _swig_repr
     radius = _swig_property(_cmf_core.PipeReach_radius_get, _cmf_core.PipeReach_radius_set)
-    def __init__(self, *args, **kwargs): 
+    def __init__(self, *args): 
         """
         __init__(cmf::river::PipeReach self, double l, double diameter) -> PipeReach
+        __init__(cmf::river::PipeReach self, PipeReach copy) -> PipeReach
 
         PipeReach(double l, double diameter)
 
         Creates a tube IChannel with diameter [m]. 
         """
-        _cmf_core.PipeReach_swiginit(self,_cmf_core.new_PipeReach(*args, **kwargs))
+        _cmf_core.PipeReach_swiginit(self,_cmf_core.new_PipeReach(*args))
     def copy(self, *args, **kwargs):
         """
         copy(PipeReach self) -> PipeReach
@@ -7463,6 +7467,15 @@ class MeanChannel(IChannel):
 MeanChannel.copy = new_instancemethod(_cmf_core.MeanChannel_copy,None,MeanChannel)
 MeanChannel_swigregister = _cmf_core.MeanChannel_swigregister
 MeanChannel_swigregister(MeanChannel)
+
+class PiecewiseRach(IChannel):
+    """Proxy of C++ cmf::river::PiecewiseRach class"""
+    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    def __init__(self, *args, **kwargs): raise AttributeError("No constructor defined - class is abstract")
+    __repr__ = _swig_repr
+    __swig_destroy__ = _cmf_core.delete_PiecewiseRach
+PiecewiseRach_swigregister = _cmf_core.PiecewiseRach_swigregister
+PiecewiseRach_swigregister(PiecewiseRach)
 
 class OpenWaterStorage(WaterStorage):
     """
@@ -7607,7 +7620,7 @@ class Reach(OpenWaterStorage):
 
     def set_downstream(self, *args, **kwargs):
         """
-        set_downstream(Reach self, cmf::river::Reach::ptr new_downstream)
+        set_downstream(Reach self, cmf::river::Reach::ptr new_downstream, bool use_meanchannel=False)
 
         void
         set_downstream(ptr new_downstream)
@@ -8188,7 +8201,7 @@ class Manning_Diffusive(Manning):
     __repr__ = _swig_repr
     def __init__(self, *args, **kwargs): 
         """
-        __init__(cmf::river::Manning_Diffusive self, cmf::river::OpenWaterStorage::ptr left, cmf::water::flux_node::ptr right, Channel reachtype) -> Manning_Diffusive
+        __init__(cmf::river::Manning_Diffusive self, cmf::river::OpenWaterStorage::ptr left, cmf::water::flux_node::ptr right, IChannel reachtype) -> Manning_Diffusive
 
         Manning_Diffusive(cmf::river::OpenWaterStorage::ptr left,
         cmf::water::flux_node::ptr right, cmf::river::Channel reachtype) 
@@ -8219,7 +8232,7 @@ class Manning_Kinematic(Manning):
     __repr__ = _swig_repr
     def __init__(self, *args, **kwargs): 
         """
-        __init__(cmf::river::Manning_Kinematic self, cmf::river::OpenWaterStorage::ptr left, cmf::water::flux_node::ptr right, Channel reachtype) -> Manning_Kinematic
+        __init__(cmf::river::Manning_Kinematic self, cmf::river::OpenWaterStorage::ptr left, cmf::water::flux_node::ptr right, IChannel reachtype) -> Manning_Kinematic
 
         Manning_Kinematic(cmf::river::OpenWaterStorage::ptr left,
         cmf::water::flux_node::ptr right, cmf::river::Channel reachtype) 

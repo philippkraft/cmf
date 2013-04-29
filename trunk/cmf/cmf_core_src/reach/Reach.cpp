@@ -31,7 +31,7 @@ double cmf::river::make_river_gap( Reach::ptr reach )
 }
 
 
-void Reach::set_downstream(Reach::ptr new_downstream)
+void Reach::set_downstream(Reach::ptr new_downstream,bool use_meanchannel/*=false*/)
 {
 	// aquire reference to downstream
 	Reach::ptr downstream=m_downstream.lock();
@@ -49,15 +49,20 @@ void Reach::set_downstream(Reach::ptr new_downstream)
 	{
 		// add this to the list of upstream reaches of the downstream
 		new_downstream->add_upstream(weak_this.lock());	
-		Channel 
-			this_ch=this->get_height_function(), 
-			down_ch=new_downstream->get_height_function();
-		MeanChannel channel_between(this_ch,down_ch);
+		std::auto_ptr<IChannel> channel;
+		if (use_meanchannel) {
+			Channel 
+				this_ch=this->get_height_function(), 
+				down_ch=new_downstream->get_height_function();
+			channel.reset(new MeanChannel(this_ch,down_ch));
+		} else {
+			channel.reset(new Channel(this->get_height_function()));
+		}
 		// Connect this with Manning eq. to the down stream
 		if (m_diffusive)
-			new Manning_Diffusive(weak_this.lock(),new_downstream,channel_between);		
+			new Manning_Diffusive(weak_this.lock(),new_downstream,*channel);		
 		else
-			new Manning_Kinematic(weak_this.lock(),new_downstream,channel_between);		
+			new Manning_Kinematic(weak_this.lock(),new_downstream,*channel);		
 	}
 
 }
@@ -112,12 +117,14 @@ Reach::ptr Reach::get_root()
 void Reach::set_outlet(cmf::water::flux_node::ptr outlet )
 {
 	set_downstream(Reach::ptr());
-	if (outlet)
+	if (outlet) {
 		m_outlet = outlet;
+		Channel channel=get_height_function();
 		if (m_diffusive)
-			new Manning_Diffusive(weak_this.lock(),outlet, get_height_function());
+			new Manning_Diffusive(weak_this.lock(),outlet, channel);
 		else
-			new Manning_Kinematic(weak_this.lock(),outlet, get_height_function());
+			new Manning_Kinematic(weak_this.lock(),outlet, channel);
+	}
 }
 
 

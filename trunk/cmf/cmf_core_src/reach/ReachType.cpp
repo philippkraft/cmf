@@ -116,6 +116,21 @@ SWATReachType::SWATReachType(double l, double BankWidth,double depth )
 		BankSlope=(BankWidth-BottomWidth)/(2*depth);
 	}
 }
+SWATReachType* cmf::river::SWATReachType::copy() const
+{
+	SWATReachType* res = new SWATReachType(*this);
+	return res;
+}
+
+cmf::river::SWATReachType::SWATReachType( const SWATReachType& copy )
+	: BankSlope(copy.BankSlope),
+	BottomWidth(copy.BottomWidth),
+	ChannelDepth(copy.ChannelDepth),
+	FloodPlainSlope(copy.FloodPlainSlope),
+	m_l(copy.m_l)
+{
+	nManning = copy.nManning;
+}
 
 /************************************************************************/
 /* Triangular shape                                                                     */
@@ -159,8 +174,12 @@ TriangularReach::TriangularReach(double l, double bankSlope/*=2*/ )
 
 TriangularReach* TriangularReach::copy() const
 {
-	return new TriangularReach(get_length(),BankSlope);
+	return new TriangularReach(*this);
 }
+cmf::river::TriangularReach::TriangularReach( const TriangularReach& copy )
+	: IChannel(copy.nManning), BankSlope(copy.BankSlope), m_l(copy.m_l)
+{}
+
 /************************************************************************/
 /* Rectangular Reach                                                                     */
 /************************************************************************/
@@ -189,6 +208,9 @@ RectangularReach* RectangularReach::copy() const
 {
 	return new RectangularReach(get_length(), m_width);
 }
+
+RectangularReach::RectangularReach( const RectangularReach& copy )
+	: IChannel(copy.nManning), m_l(copy.m_l), m_width(copy.m_width) {}
 
 RectangularReach::RectangularReach( double l,double width ) 
 : IChannel(),m_l(l), m_width(width)
@@ -239,7 +261,8 @@ PipeReach* PipeReach::copy() const
 { 
 	return new PipeReach(get_length(),2*radius);
 }
-
+PipeReach::PipeReach(const PipeReach& copy)
+	: IChannel(copy.nManning), radius(copy.radius), m_l(copy.m_l) {}
 PipeReach::PipeReach( double l,double diameter ) 
 : IChannel(),m_l(l), radius(diameter * 0.5)
 {
@@ -277,15 +300,11 @@ Channel::Channel( char typecode, double length, double width/*=1.*/,double depth
 
 Channel::Channel( const Channel& for_copy ) 
 : IChannel(), m_channel(for_copy.m_channel->copy())
-{
-
-}
+{}
 
 Channel::Channel( const IChannel& for_wrapping ) 
 : IChannel(), m_channel(for_wrapping.copy())
-{
-
-}
+{}
 
 Channel::Channel( const IVolumeHeightFunction& for_casting ) 
 : IChannel()
@@ -356,6 +375,7 @@ cmf::river::Channel::Channel()
 	double a=0;
 }
 
+
 double cmf::river::Prism::A( double V ) const
 {
 	return Area * piecewise_linear(V/Area,0,RoughThickness);
@@ -365,3 +385,4 @@ cmf::river::Prism::Prism( double base_area, double thickness_of_rough_ground/*=0
 {
 	if (Area<=0) throw std::runtime_error("Cannot construct prism volume to height relation with a base area of zero");
 }
+
