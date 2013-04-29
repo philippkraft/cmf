@@ -85,7 +85,7 @@ namespace cmf {
 			/// Deletes any downstream connection
             void set_dead_end();
 			/// Connects the reach to another one downstream
-			void set_downstream(ptr new_downstream);
+			void set_downstream(ptr new_downstream,bool use_meanchannel=false);
 			/// Returns the reach downstream of this (or null if there is no reach downstream)
 			cmf::water::flux_node::ptr get_downstream() const;
 
