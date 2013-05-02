@@ -86,7 +86,7 @@ static bool check_time(PyObject* dt) {
     $1 = check_time($input);
 }
 
-%typemap(in) cmf::math::Time * (cmf::math::Time T) {
+/**%typemap(in) cmf::math::Time * (cmf::math::Time T) {
     // typemap Time*
     T = convert_datetime_to_cmftime($input);
     if (T == cmf::math::never)  {
@@ -97,7 +97,7 @@ static bool check_time(PyObject* dt) {
 }
 %typemap(typecheck,precedence=100) cmf::math::Time *{
     $1 = check_time($input); // typecheck cmf::math::Time *
-}
+}**/
 %typemap(in) cmf::math::Time & (cmf::math::Time T){
     // typemape Time&
     T = convert_datetime_to_cmftime($input);
@@ -108,7 +108,19 @@ static bool check_time(PyObject* dt) {
     }
 }
 %typemap(typecheck,precedence=100) cmf::math::Time &{
-    $1 = check_time($input); // typecheck cmf::math::Time *
+    $1 = check_time($input); // typecheck cmf::math::Time &
+}
+%typemap(in) const cmf::math::Time & (cmf::math::Time T){
+    // typemape const Time&
+    T = convert_datetime_to_cmftime($input);
+    if (T == cmf::math::never) {
+        SWIG_exception_fail(SWIG_TypeError,"Can't convert input value to cmf.Time object");
+    } else {
+        $1 = &T;
+    }
+}
+%typemap(typecheck,precedence=100) const cmf::math::Time &{
+    $1 = check_time($input); // typecheck const cmf::math::Time &
 }
 
 %implicitconv cmf::math::Time;
