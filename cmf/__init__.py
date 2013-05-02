@@ -50,4 +50,4 @@ except ImportError:
     __pylab_loaded=False
 if __pylab_loaded:
     import draw
-__version__ = '654'
+__version__ = '659'

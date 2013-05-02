@@ -57,8 +57,8 @@
     }
 }    
 
-%attributeval(cmf::math::Integrator,cmf::math::Time,t,get_t,set_t);
-%attributeval(cmf::math::Integrator,cmf::math::Time,dt,get_dt);
+//%attributeval(cmf::math::Integrator,cmf::math::Time,t,get_t,set_t);
+//%attributeval(cmf::math::Integrator,cmf::math::Time,dt,get_dt);
 %attribute(cmf::math::CVodeIntegrator,int,order,get_order);
 
 %include "math/integrators/integrator.h"
@@ -81,6 +81,8 @@
         else:
             self.integrate_until(t,reset=reset)
         return self.t
+    t = property(get_t,set_t,doc="Sets the actual time of the solution")
+    dt = property(get_dt,doc="Get the current time step of the solver")
     def run(self,start=None,end=None,step=day*1):
         if not start is None:
             self.t=start
