@@ -29,7 +29,7 @@ double IChannel::qManning( double A,double slope ) const
 		d=get_depth(A),
 		P=get_wetted_perimeter(d)+0.001, // a mm extra to prevent divide by zero
 		R=A/P+0.001;          // a mm extra to prevent pow failure
-	return A*pow(R,2./3.)*sqrt(slope)/nManning;
+	return A*pow(R,2./3.)*sqrt(slope)/get_nManning();
 }
 
 
@@ -123,14 +123,13 @@ SWATReachType* cmf::river::SWATReachType::copy() const
 }
 
 cmf::river::SWATReachType::SWATReachType( const SWATReachType& copy )
-	: BankSlope(copy.BankSlope),
+	: m_nManning(copy.m_nManning),
+	BankSlope(copy.BankSlope),
 	BottomWidth(copy.BottomWidth),
 	ChannelDepth(copy.ChannelDepth),
 	FloodPlainSlope(copy.FloodPlainSlope),
 	m_l(copy.m_l)
-{
-	nManning = copy.nManning;
-}
+{}
 
 /************************************************************************/
 /* Triangular shape                                                                     */
@@ -177,7 +176,7 @@ TriangularReach* TriangularReach::copy() const
 	return new TriangularReach(*this);
 }
 cmf::river::TriangularReach::TriangularReach( const TriangularReach& copy )
-	: IChannel(copy.nManning), BankSlope(copy.BankSlope), m_l(copy.m_l)
+	: m_nManning(copy.m_nManning), BankSlope(copy.BankSlope), m_l(copy.m_l)
 {}
 
 /************************************************************************/
@@ -206,11 +205,11 @@ double RectangularReach::get_flux_crossection( double depth ) const
 
 RectangularReach* RectangularReach::copy() const
 {
-	return new RectangularReach(get_length(), m_width);
+	return new RectangularReach(*this);
 }
 
 RectangularReach::RectangularReach( const RectangularReach& copy )
-	: IChannel(copy.nManning), m_l(copy.m_l), m_width(copy.m_width) {}
+	: m_nManning(copy.m_nManning), m_l(copy.m_l), m_width(copy.m_width) {}
 
 RectangularReach::RectangularReach( double l,double width ) 
 : IChannel(),m_l(l), m_width(width)
@@ -259,10 +258,10 @@ double PipeReach::get_flux_crossection( double depth ) const
 }
 PipeReach* PipeReach::copy() const 
 { 
-	return new PipeReach(get_length(),2*radius);
+	return new PipeReach(*this);
 }
 PipeReach::PipeReach(const PipeReach& copy)
-	: IChannel(copy.nManning), radius(copy.radius), m_l(copy.m_l) {}
+	: m_nManning(copy.m_nManning), radius(copy.radius), m_l(copy.m_l) {}
 PipeReach::PipeReach( double l,double diameter ) 
 : IChannel(),m_l(l), radius(diameter * 0.5)
 {
@@ -386,3 +385,47 @@ cmf::river::Prism::Prism( double base_area, double thickness_of_rough_ground/*=0
 	if (Area<=0) throw std::runtime_error("Cannot construct prism volume to height relation with a base area of zero");
 }
 
+
+
+cmf::river::FlowSurface::FlowSurface( double length, double width,
+	double _d_puddle/*=0.0*/,double _d_rill/*=0.0*/, 
+	double nManning/*=0.035*/, double _e_m/*=0.6666667*/ )
+	: m_nManning(nManning), m_length(length), m_width(width), d_puddle(_d_puddle),d_rill(_d_rill), e_m(_e_m)
+{}
+
+cmf::river::FlowSurface::FlowSurface( const FlowSurface& other )
+ 	: m_nManning(other.m_nManning), m_length(other.m_length), m_width(other.m_width), 
+	d_puddle(other.d_puddle),d_rill(other.d_rill), e_m(other.e_m)
+
+{}
+
+double cmf::river::FlowSurface::get_depth( double area ) const
+{
+	double dmin = area/m_width;
+	if (dmin>(d_puddle + d_rill)) {
+		return dmin;
+	} else {
+		return sqrt((d_rill+d_puddle)*area/m_width);
+	}
+}
+
+double cmf::river::FlowSurface::get_channel_width( double depth ) const
+{
+	if (depth>d_puddle + d_rill) {
+		return m_width;
+	} else {
+		return depth/(d_puddle+d_rill) * m_width;
+	}
+}
+
+double cmf::river::FlowSurface::qManning( double A,double slope ) const
+{
+	double h = A/m_width - d_puddle;
+	if (h<=0) return 0.0;
+	return sqrt(slope)/get_nManning()* pow(h,e_m) * A;
+}
+
+void cmf::river::MeanChannel::set_nManning( double nManning )
+{
+	throw std::runtime_error("Cannot set Manning n for a mean channel. Set value for the parts of the channel");
+}
