@@ -387,11 +387,6 @@ def cells_from_dem(project,dem,direction_count=8):
     # Create the cells
     for x,y,z,area,c,r in dem.cells:
         cell=project.NewCell(x,y,z,area)
-        geometry[cell]=Polygon(((x-dem.cellsize[0]*0.5,y-dem.cellsize[1]*0.5),
-                            (x-dem.cellsize[0]*0.5,y+dem.cellsize[1]*0.5),
-                            (x+dem.cellsize[0]*0.5,y+dem.cellsize[1]*0.5),
-                            (x+dem.cellsize[0]*0.5,y-dem.cellsize[1]*0.5),
-                            (x-dem.cellsize[0]*0.5,y-dem.cellsize[1]*0.5)))
         cells_dict[c,r]=cell
     cellsize = 0.5 * (dem.cellsize[0] + dem.cellsize[1])
     for c,r in cells_dict:
