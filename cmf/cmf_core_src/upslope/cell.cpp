@@ -227,9 +227,10 @@ cmf::water::flux_node::ptr cmf::upslope::Cell::get_transpiration()
 
 void cmf::upslope::Cell::surfacewater_as_storage()
 {
+	using namespace cmf::river;
 	if (m_SurfaceWaterStorage==0) 
 	{
-		m_SurfaceWaterStorage =cmf::river::OpenWaterStorage::from_node(m_SurfaceWater,get_area());
+		m_SurfaceWaterStorage = OpenWaterStorage::from_node(m_SurfaceWater,get_area());
 		m_storages.push_back(m_SurfaceWaterStorage);
 		m_SurfaceWater.reset();
 	}

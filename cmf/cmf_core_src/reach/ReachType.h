@@ -22,6 +22,7 @@
 
 namespace cmf {
 	namespace river {
+
 		/// @brief Volume height relations are functional objects, which return a height and a crosssectional area of a volume for different geometric bodies.
 		/// This is the abstract base class, where the geometries derive from
 		class IVolumeHeightFunction
@@ -33,9 +34,14 @@ namespace cmf {
 			virtual double A(double V) const=0;
 			virtual double V(double h) const=0;
 			virtual IVolumeHeightFunction* copy() const=0;
+/*
 			double operator ()(double V)
 			{
 				return h(V);
+			}
+*/
+			virtual double q(double h,double slope) const{
+				return 0.0;
 			}
 		};
 		/// @brief the height of a volume in a Prism with a defined base area
@@ -77,17 +83,16 @@ namespace cmf {
 			double h(double V) const {return vhf->h(V);}
 			double A(double V) const {return vhf->A(V);}
 			double V(double h) const {return vhf->V(h);}
+			double q(double h,double slope) const {return vhf->q(h,slope);}
 		};
 
 		///@brief Structure for the description of structural parameters of a reach
 		///Abstract base class for different IChannel geometries
 		class IChannel : public cmf::river::IVolumeHeightFunction
 		{
-		protected:
-			double nManning; ///<Manning's n (roughness coefficient)
 		public:
-			virtual double get_nManning() const {return nManning;}
-			virtual void set_nManning(double val) {nManning=val;}
+			virtual double get_nManning() const=0;
+			virtual void set_nManning(double val)=0;
 
 			virtual double get_length() const=0; ///< Length of the reach
 
@@ -110,6 +115,7 @@ namespace cmf {
 			virtual double h(double V) const {return get_depth(V/get_length());}
 			virtual double A(double V) const {return get_channel_width(h(V))*get_length();}
 			virtual double V(double h) const {return get_flux_crossection(h)*get_length();}
+			virtual double q(double h,double slope) const {return qManning(get_flux_crossection(h),slope);}
 			virtual IChannel* copy() const=0;
 
 			/// @brief Calculates the flow rate from a given water volume in the reach
@@ -124,9 +130,59 @@ namespace cmf {
 			/// @returns  Flow rate [m<sup>3</sup>/s]
 			/// @param A The area of the cross section [m<sup>2</sup>]
 			/// @param slope The slope of the reach [m/m]
-			double qManning(double A,double slope) const;
-			IChannel(double manning_n=0.035) : nManning(manning_n) {}
-	};
+			virtual double qManning(double A,double slope) const;
+		};
+
+		/// Calculates flow on a rough surface
+		///
+		/// - d_puddle is the average depth of the water table when run off starts
+		/// - d_rill is the average depth of rills (multiple triangular structure)
+		/// 
+		/// Structural behaviour:
+		///
+		/// \f[w(h) = \min(1,\frac{h}{h_0 + h_r})w_{max}\f]
+		/// \f[A(h) = w(h) h\f]
+		/// \f[q_{Manning} = A\frac{S^{1/2}}{n}(h-h_0)^{e_m}\f]
+		///  - \f$q_{Manning}\f$ is the flow in m3/s
+		///  - \f$S\f$ is the max. slope of the element
+		///  - \f$n\f$ is Manning roughness
+		///  - \f$h\f$ is the avg. depth of water above the ground
+		///  - \f$h_0\f$ is the minimum avg. water depth to generate flow (PuddleDepth)
+		///  - \f$e_m\f$ is the kinematic wave exponent. For surface flow it is typically 2/3 - 5/3
+		class FlowSurface: public IChannel {
+		protected:
+			double m_width;
+			double m_length;
+			double m_nManning;
+		public:
+			double d_puddle;
+			double d_rill;
+			double e_m;
+			virtual double get_nManning() const {return m_nManning;}
+			virtual void set_nManning(double nManning) {m_nManning=nManning;}
+			virtual double qManning(double A,double slope) const;
+			virtual double get_length() const {return m_length;} ///< Length of the reach
+			virtual char typecode() const {return 'A';}
+			virtual double get_channel_width(double depth) const;
+			/// @brief Calculates the wetted area from a given depth using the IChannel geometry. 
+			/// In most cases use get_flux_crossection=V/l, where V is the stored volume and l is the reach length
+			/// @returns Wetted area of a river cross section [m<sup>2</sup>]
+			/// @param depth depth of the reach [m]
+			virtual double get_flux_crossection(double depth) const {
+				return get_channel_width(depth) * depth;
+			}
+			virtual double get_wetted_perimeter(double depth) const{
+				return get_channel_width(depth);
+			}
+			virtual double get_depth(double area) const;
+			FlowSurface(double length, double width,double d_puddle=0.0,double d_rill=0.0,
+				double nManning=0.035, double e_m=0.6666667);
+			FlowSurface(const FlowSurface& other);
+			FlowSurface* copy() const {
+				return new FlowSurface(*this);
+			}
+
+		};
 
 
 		///@brief Structure for the description of structural parameters of a reach
@@ -137,6 +193,7 @@ namespace cmf {
 		{
 		private:
 			double m_l;	
+			double m_nManning;
 		public:
 			double get_length() const {return m_l;}
 			char typecode() const{return 'S';}
@@ -146,6 +203,9 @@ namespace cmf {
 				ChannelDepth, ///<get_depth of the IChannel  \f$ d_{IChannel} [m] \f$
 				BankSlope, ///<Inverse slope of the river bank \f$ \Delta_{bank} \left[\frac m m\right] \f$
 				FloodPlainSlope; ///<Inverse slope of the flood plain \f$ \Delta_{flood\ plain} \left[\frac m m\right] \f$
+
+			virtual double get_nManning() const {return m_nManning;}
+			virtual void set_nManning(double nManning) {m_nManning=nManning;}
 
 			///@brief Calculates the flow width from a given actual depth [m] using the actual IChannel geometry
 			/// \f{eqnarray*}
@@ -208,7 +268,11 @@ namespace cmf {
 		{
 		private:
 			double m_l;	
+			double m_nManning;
 		public:
+			virtual double get_nManning() const {return m_nManning;}
+			virtual void set_nManning(double nManning) {m_nManning=nManning;}
+
 			double get_length() const {
 				return m_l;
 			}
@@ -247,7 +311,10 @@ namespace cmf {
 		private:
 			double m_width;
 			double m_l;	
+			double m_nManning;
 		public:
+			virtual double get_nManning() const {return m_nManning;}
+			virtual void set_nManning(double nManning) {m_nManning=nManning;}
 			double get_length() const {return m_l;}
 			char typecode() const{return 'R';}
 			/// Returns the width of the  stream at a given depth
@@ -281,7 +348,10 @@ namespace cmf {
 		{
 		private:
 			double m_l;	
+			double m_nManning;
 		public:
+			virtual double get_nManning() const {return m_nManning;}
+			virtual void set_nManning(double nManning) {m_nManning=nManning;}
 			double get_length() const {return m_l;}
 			char typecode() const{return 'P';}
 			double radius;
@@ -371,6 +441,9 @@ namespace cmf {
 			double get_depth(double area)  const;
 			double get_flux_crossection(double depth) const;
 			double get_wetted_perimeter(double depth) const;
+			virtual double get_nManning() const {return .5*(m_channel1.get_nManning()+m_channel2.get_nManning());}
+			virtual void set_nManning(double nManning);
+
 			MeanChannel* copy() const;
 
 		};

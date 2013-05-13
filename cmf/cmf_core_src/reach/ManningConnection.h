@@ -65,14 +65,14 @@ namespace cmf {
 				w2=cmf::river::OpenWaterStorage::cast(right_node());
 			}
 			Manning(cmf::river::OpenWaterStorage::ptr left,cmf::water::flux_node::ptr right,
-							const cmf::river::IChannel& reachtype,bool diffusive_wave)
+							const cmf::river::IVolumeHeightFunction& reachtype,bool diffusive_wave)
 				: flux_connection(left,right,diffusive_wave ? "Manning (diff. wave)" : "Manning (kin. wave)"),	flux_geometry(reachtype), is_diffusive_wave(diffusive_wave) {
 					NewNodes();
 			}
 
 		public:
 			bool is_diffusive_wave;
-			cmf::river::Channel flux_geometry;
+			cmf::river::volume_height_function flux_geometry;
 			
 			typedef std::tr1::shared_ptr<Manning> ptr;
 			

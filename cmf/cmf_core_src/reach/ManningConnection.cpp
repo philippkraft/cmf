@@ -19,16 +19,21 @@
 #include "ManningConnection.h"
 #include "../upslope/cell.h"
 #include "../upslope/Topology.h"
+using namespace cmf::river;
+using namespace cmf::water;
 real cmf::river::Manning::calc_q( cmf::math::Time t )
 { 
+	flux_node::ptr lnode = left_node(), rnode=right_node();
 	OpenWaterStorage::ptr ows1=w1.lock(),ows2=w2.lock();
+	real d=lnode->position.distanceTo(rnode->position);
+	const IChannel *cast = dynamic_cast<const IChannel *>(&flux_geometry);
+	if (cast) 
+		d=cast->get_length();
 	real 
-		// Distance between source and target
-		d=flux_geometry.get_length(),
 		// Gradient of the reach
 		slope = is_diffusive_wave ?  
-		/*diffusive slope*/	        (left_node()->get_potential()-right_node()->get_potential())/d
-		/*kinematic slope*/	      : (left_node()->position.z - right_node()->position.z)/d,		
+		/*diffusive slope*/	        (lnode->get_potential()-rnode->get_potential())/d
+		/*kinematic slope*/	      : (lnode->position.z - rnode->position.z)/d,		
 		abs_slope=fabs(slope);
 	// No slope, no flux
 	if (abs_slope<=0) return 0.0;
@@ -42,14 +47,9 @@ real cmf::river::Manning::calc_q( cmf::math::Time t )
 		h=minimum(source->get_depth(),ows2 ? mean(ows1->get_depth(),ows2->get_depth()) : ows1->get_depth());
 	else 
 		h = source->get_depth();
-	real
-		// Depth of the reach
-		A=flux_geometry.get_flux_crossection(h),
-		// Wetted perimeter of the reach
-		P=flux_geometry.get_wetted_perimeter(h);
-	if (A<=0 || P<=0) return 0.0;
+	if (h<=0) return 0.0;
 	// Absolute flux in m3/s
-	real qManning = A * pow((A/P),2./3.)*sqrt(abs_slope)/flux_geometry.get_nManning();
+	real qManning = flux_geometry.q(h,abs_slope);
 	// Return flux with correct sign in m3/day
 	return prevent_negative_volume(qManning * sign(slope) * (24*60*60));
 }
@@ -60,8 +60,8 @@ void cmf::river::Manning::connect_cells( cmf::upslope::Cell& c1,cmf::upslope::Ce
 	real d=c1.get_position().distanceTo(c2.get_position());
 	if (w<=0) return;
 	RectangularReach r_type(d,w);
-	cmf::river::OpenWaterStorage::ptr sows1= OpenWaterStorage::cast(c1.get_surfacewater());
-	cmf::river::OpenWaterStorage::ptr sows2= OpenWaterStorage::cast(c2.get_surfacewater());
+	OpenWaterStorage::ptr sows1= OpenWaterStorage::cast(c1.get_surfacewater());
+	OpenWaterStorage::ptr sows2= OpenWaterStorage::cast(c2.get_surfacewater());
 	if (sows1)
 		new Manning(sows1,c2.get_surfacewater(),r_type,diffusive);
 	else if (sows2)

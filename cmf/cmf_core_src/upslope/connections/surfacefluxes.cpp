@@ -84,12 +84,17 @@ real cmf::upslope::connections::EnergyBudgetSnowMelt::calc_q( cmf::math::Time t 
 
 real cmf::upslope::connections::RutterInterception::calc_q( cmf::math::Time t )
 {
+	// Get canopy storage and rainfall boundary condition
 	cmf::water::WaterStorage::ptr canopy= m_Canopy.lock();
-	real 
-		Vmax=m_cell.vegetation.CanopyCapacityPerLAI * m_cell.vegetation.LAI,
-		Vact=canopy->get_volume() / m_cell.get_area() * 1e3;
 	cmf::water::flux_node::ptr rain = m_cell.get_rain_source();
-	real P_t = rain->flux_to(*canopy,t);
+	real 
+		// Maximum storage capacity in mm
+		Vmax=m_cell.vegetation.CanopyCapacityPerLAI * m_cell.vegetation.LAI,
+		// Actual storage capacity in mm
+		Vact=canopy->get_volume() / m_cell.get_area() * 1e3,
+		// Actual rainfall in m3/day
+		P_t = rain->flux_to(*canopy,t);
+	// Return fraction of Vact/Vmax of actual rainfall
 	return P_t * Vact/Vmax;
 
 }
