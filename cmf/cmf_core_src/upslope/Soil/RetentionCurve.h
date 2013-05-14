@@ -185,7 +185,7 @@ namespace cmf {
 		/// Head - moisture relationship:
 		/// \f{eqnarray*}
 		/// W(\theta) &=& \frac{\theta - \theta_r}{\theta_s - \theta_r} \\
-		/// K(W) &=& K_{sat} \sqrt{W} \left(\left(1-w^{1/m}\right)^m\right)^2 \\
+		/// K(W) &=& K_{sat} \sqrt{W} \left(1-\left(1-W^{1/m}\right)^m\right)^2 \\
 		/// m &=& 1-\frac 1 n \\
 		/// \Psi(W) &=& 0.01 \frac{m}{cm} \frac{{\left(1-{W}^{\frac{1}{m}}\right) }^{\frac{1}{n}}}{\alpha\,{W}^{\frac{1}{m\,n}}} \\
 		/// W(\Psi) &=& \left(1+\left(\alpha\,100\frac{cm}{m}\Psi\right)^n\right)^{-m}
@@ -210,7 +210,7 @@ namespace cmf {
 			virtual real Wetness(real suction) const;
 			/// \f[\Psi(W) = 0.01 \frac{m}{cm} \frac{{\left(1-{W}^{\frac{1}{m}}\right) }^{\frac{1}{n}}}{\alpha\,{W}^{\frac{1}{m\,n}}}  \f]
 			virtual real MatricPotential(real wetness) const;
-			/// \f[K(W) = K_{sat} \sqrt{W} \left(\left(1-w^{1/m}\right)^m\right)^2 \f]
+			/// \f[K(W) = K_{sat} \sqrt{W} \left(1-\left(1-W^{1/m}\right)^m\right)^2 \f]
 			virtual real K(real wetness) const;
 			/// \f[V_{void}=A\,\left(d_{lower}-d_{upper}\right)\f]
 			virtual real VoidVolume(real upperDepth,real lowerDepth,real Area) const;

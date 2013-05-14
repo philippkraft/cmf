@@ -7011,6 +7011,10 @@ class layer_list(object):
         """
         return _cmf_core.layer_list_set_volume(self, *args, **kwargs)
 
+    def set_theta(self, *args, **kwargs):
+        """set_theta(layer_list self, cmf::math::num_array const & Value, size_t offset=0)"""
+        return _cmf_core.layer_list_set_theta(self, *args, **kwargs)
+
     def set_ice_fraction(self, *args, **kwargs):
         """
         set_ice_fraction(layer_list self, cmf::math::num_array const & Value, size_t offset=0)
@@ -7032,6 +7036,7 @@ class layer_list(object):
     upper_boundary = _swig_property(_cmf_core.layer_list_upper_boundary_get)
     porosity = _swig_property(_cmf_core.layer_list_porosity_get)
     ice_fraction = _swig_property(_cmf_core.layer_list_ice_fraction_get)
+    theta = _swig_property(_cmf_core.layer_list_theta_get)
     def __get(self, *args, **kwargs):
         """__get(layer_list self, int index) -> cmf::upslope::SoilLayer::ptr"""
         return _cmf_core.layer_list___get(self, *args, **kwargs)
@@ -7068,6 +7073,7 @@ layer_list.size = new_instancemethod(_cmf_core.layer_list_size,None,layer_list)
 layer_list.set_wetness = new_instancemethod(_cmf_core.layer_list_set_wetness,None,layer_list)
 layer_list.set_potential = new_instancemethod(_cmf_core.layer_list_set_potential,None,layer_list)
 layer_list.set_volume = new_instancemethod(_cmf_core.layer_list_set_volume,None,layer_list)
+layer_list.set_theta = new_instancemethod(_cmf_core.layer_list_set_theta,None,layer_list)
 layer_list.set_ice_fraction = new_instancemethod(_cmf_core.layer_list_set_ice_fraction,None,layer_list)
 layer_list.__get = new_instancemethod(_cmf_core.layer_list___get,None,layer_list)
 layer_list_swigregister = _cmf_core.layer_list_swigregister

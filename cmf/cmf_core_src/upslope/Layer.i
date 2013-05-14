@@ -96,6 +96,7 @@
 %attribute(cmf::upslope::layer_list,cmf::math::num_array,upper_boundary,get_upper_boundary);
 %attribute(cmf::upslope::layer_list,cmf::math::num_array,porosity,get_porosity);
 %attribute(cmf::upslope::layer_list,cmf::math::num_array,ice_fraction,get_ice_fraction);
+%attribute(cmf::upslope::layer_list,cmf::math::num_array,theta,get_theta);
 
 %iterable_to_list(cmf::upslope::layer_list,cmf::upslope::SoilLayer::ptr)
 %include "upslope/layer_list.h"
