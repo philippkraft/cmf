@@ -385,3 +385,11 @@ cmf::upslope::LinearRetention::LinearRetention( real _Ksat,real _Phi, real _thic
 {
 
 }
+
+real cmf::upslope::VGM_BC_RetentionCurve_Windhorst::K(real wetness) const {
+	return Ksat * pow(wetness,eta);
+}
+
+cmf::upslope::VGM_BC_RetentionCurve_Windhorst::VGM_BC_RetentionCurve_Windhorst(real _Ksat, real _phi,real _alpha, real _n, real _m, real _eta)
+: VanGenuchtenMualem(_Ksat,_phi,_alpha,_n,_m), eta(_eta)
+{}
