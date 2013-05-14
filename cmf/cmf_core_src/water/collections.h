@@ -166,16 +166,25 @@ namespace cmf {
 			{ return *m_boundaries.at(index<0 ? m_boundaries.size()+index : index );	}
 #endif
 			/// @brief Returns the Neumann boundary condition at position index
+			///
+			/// From Python you can use []
 			NeumannBoundary::ptr get(int index) const
 			{ return m_boundaries.at(index<0 ? m_boundaries.size()+index : index );	}
 
 			/// @brief Returns the fluxes of the items as an array
+			///
+			/// get_fluxes and set_fluxes are wrapped with the Python property fluxes
 			cmf::math::num_array get_fluxes(cmf::math::Time t=cmf::math::Time()) const;
+			/// @brief Sets the fluxes of the items from an array. 
+			///
+			/// get_fluxes and set_fluxes are wrapped with the Python property fluxes
 			void set_fluxes(cmf::math::num_array values);
+			///@brief Appends a neumann boundary to this list
 			void append(NeumannBoundary::ptr nbc)
 			{
 				m_boundaries.push_back(nbc);
 			}
+			///@brief returns the number of stored boundary conditions
 			size_t size() const
 			{
 				return m_boundaries.size();

@@ -513,41 +513,75 @@ class Time(object):
     A time class, used to pass around current modelling times.
 
     Timespans and dates in cmf are used with a special object, called
-    Time. An extra        class has the advantage, that the user does not
-    have to remember, which       unit of time he or she uses or what time
-    unit is accepted by a specific function       of the model. Arithmetic
-    and boolean operators are supported by Time. Internally the time
-    classes stores the time as integer milliseconds, therefore rounding
-    issues       will only appear at very small time ranges. Absolute time
-    (like dates) are represented       as milliseconds gone by from Dec,
-    31st 1899. Microsoft Excel dates are represented       as days from
-    that time, using floating point numbers, therefore it is very simple
-    to convert Excel time representations to cmf time. Another object is
-    Date, which is doesn't provide the operators, but has a nice printed
-    version and some special date functions, like day of year (DOY) and
-    provides access       to the current hour of day and so on, which only
-    applyto dates and not to time spans.       You can convert Time to
-    Date an vice versa. The printing is not culture aware and       uses
-    the European representation. If you use the Python standard library
-    datetime,       conversion between Python time and cmf time is
-    possible
+    Time. An extra class has the advantage, that the user does not have to
+    remember, which unit of time he or she uses or what time unit is
+    accepted by a specific function of the model. Arithmetic and boolean
+    operators are supported by Time. Internally the time classes stores
+    the time as integer milliseconds, therefore rounding issues will only
+    appear at very small time ranges. Absolute time (like dates) are
+    represented as milliseconds gone by from Dec, 31st 1899. Microsoft
+    Excel dates are represented as days from that time, using floating
+    point numbers, therefore it is very simple to convert Excel time
+    representations to cmf time.
 
-    Creating absolute time values (dates) Creating time spans In
-    principle, there are three ways to create time spans. One is to use
-    one of the  static functions, another is to multiply an existing time
-    span (like one of the  build in constants) or to substrate two
-    absolute times.   Available constants   - @code cmf.sec * 4.1 @endcode
-    : 4.1 seconds    - @code cmf.min * 138 @endcode : 2.3 hours (138 min)
-    - @code cmf.h * 2.3 @endcode : 2.3 hours (138 min)   - @code cmf.day *
-    2.5 @endcode : 60 hours (2.5 days)   - @code cmf.week @endcode : 7
-    days   - @code cmf.month @endcode : 365/12 days (30.4167 days)   -
-    @code cmf.year @endcode : 365 days   Available operators:    - time +
-    time = time, time - time = time   - time * float = time ,time / float
-    = time   - time/time=float   - &gt, &lt, ==, !=   Conversions
-    Converting to python datetime      Converting to numbers         -
-    t.AsMilliseconds()        - t.AsSeconds()        - t.AsMinutes()
-    - t.AsHours()        - t.AsDays()        - t.AsYears()        Creating
-    time ranges
+    Another object is Date, which is doesn't provide the operators, but
+    has a nice printed version and some special date functions, like day
+    of year (DOY) and provides access to the current hour of day and so
+    on, which only applyto dates and not to time spans. You can convert
+    Time to Date an vice versa. The printing is not culture aware and uses
+    the European representation. If you use the Python standard library
+    datetime, conversion between Python time and cmf time is possible
+
+    Creating absolute time values (dates) Creating time spans
+
+    In principle, there are three ways to create time spans. One is to use
+    one of the static functions, another is to multiply an existing time
+    span (like one of the build in constants) or to substrate two absolute
+    times.
+
+    Available constants  : 4.1 seconds
+
+    : 2.3 hours (138 min)
+
+    : 2.3 hours (138 min)
+
+    : 60 hours (2.5 days)
+
+    : 7 days
+
+    : 365/12 days (30.4167 days)
+
+    : 365 days
+
+    Available operators:
+
+    time + time = time, time - time = time
+
+    time * float = time ,time / float = time
+
+    time/time=float
+
+    >, <, ==, !=
+
+    Conversions
+
+    Converting to python datetime
+
+    Converting to numbers
+
+    t.AsMilliseconds()
+
+    t.AsSeconds()
+
+    t.AsMinutes()
+
+    t.AsHours()
+
+    t.AsDays()
+
+    t.AsYears()
+
+    Creating time ranges
 
     C++ includes: time.h 
     """
@@ -2074,7 +2108,14 @@ ExplicitEuler_fixed_swigregister = _cmf_core.ExplicitEuler_fixed_swigregister
 ExplicitEuler_fixed_swigregister(ExplicitEuler_fixed)
 
 class PredictCorrectSimple(Integrator):
-    """Proxy of C++ cmf::math::PredictCorrectSimple class"""
+    """
+    A simple predictor - corrector solver.
+
+    Not tested and very experimentally $ y^{n+1} = y^n + \\alpha f(y^n +
+    f(y^n)dt)dt + (1-\\alpha)f(y^n)dt $
+
+    C++ includes: explicit_euler.h 
+    """
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
     __repr__ = _swig_repr
     alpha = _swig_property(_cmf_core.PredictCorrectSimple_alpha_get, _cmf_core.PredictCorrectSimple_alpha_set)
@@ -2083,6 +2124,10 @@ class PredictCorrectSimple(Integrator):
         __init__(cmf::math::PredictCorrectSimple self, StateVariableOwner states, real Alpha=0.5) -> PredictCorrectSimple
         __init__(cmf::math::PredictCorrectSimple self, real Alpha=0.5) -> PredictCorrectSimple
         __init__(cmf::math::PredictCorrectSimple self, Integrator copy) -> PredictCorrectSimple
+
+        PredictCorrectSimple(const Integrator &copy)
+
+        copy constructor 
         """
         _cmf_core.PredictCorrectSimple_swiginit(self,_cmf_core.new_PredictCorrectSimple(*args))
     __swig_destroy__ = _cmf_core.delete_PredictCorrectSimple
@@ -3243,7 +3288,17 @@ class NeumannBoundary(flux_node):
     """
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
     __repr__ = _swig_repr
-    flux = _swig_property(_cmf_core.NeumannBoundary_flux_get, _cmf_core.NeumannBoundary_flux_set)
+    def get_flux(self, *args, **kwargs):
+        """get_flux(NeumannBoundary self) -> timeseries"""
+        return _cmf_core.NeumannBoundary_get_flux(self, *args, **kwargs)
+
+    def set_flux(self, *args):
+        """
+        set_flux(NeumannBoundary self, timeseries new_flux)
+        set_flux(NeumannBoundary self, double new_flux)
+        """
+        return _cmf_core.NeumannBoundary_set_flux(self, *args)
+
     flux_scale = _swig_property(_cmf_core.NeumannBoundary_flux_scale_get, _cmf_core.NeumannBoundary_flux_scale_set)
     concentration = _swig_property(_cmf_core.NeumannBoundary_concentration_get, _cmf_core.NeumannBoundary_concentration_set)
     def __call__(self, *args, **kwargs):
@@ -3277,7 +3332,11 @@ class NeumannBoundary(flux_node):
     def __repr__(self): 
         return self.to_string()
 
+    flux = property(get_flux,set_flux,"The flux over the boundary condition")
+
     __swig_destroy__ = _cmf_core.delete_NeumannBoundary
+NeumannBoundary.get_flux = new_instancemethod(_cmf_core.NeumannBoundary_get_flux,None,NeumannBoundary)
+NeumannBoundary.set_flux = new_instancemethod(_cmf_core.NeumannBoundary_set_flux,None,NeumannBoundary)
 NeumannBoundary.__call__ = new_instancemethod(_cmf_core.NeumannBoundary___call__,None,NeumannBoundary)
 NeumannBoundary.connect_to = new_instancemethod(_cmf_core.NeumannBoundary_connect_to,None,NeumannBoundary)
 NeumannBoundary_swigregister = _cmf_core.NeumannBoundary_swigregister
@@ -3582,7 +3641,25 @@ TechnicalFlux_swigregister = _cmf_core.TechnicalFlux_swigregister
 TechnicalFlux_swigregister(TechnicalFlux)
 
 class generic_gradient_connection(flux_connection):
-    """Proxy of C++ cmf::water::generic_gradient_connection class"""
+    """
+    A generic node-to-node gradient based connection.
+
+    This connection is similar to the Darcy-connection, but there are no
+    restrictions concerning the type of nodes. However, one side should be
+    a water storage.h \\[ q = K A \\frac{\\Psi_{l}-\\Psi_{r}}{d}
+    \\] where:  $q$: the resulting flux in $m^3/day$
+
+    $K$: the conductivity of the connection
+
+    $A$: the area of the connection cross section
+
+    $\\Psi$: The hydraulic head of the (l)eft, resp. (r)ight node of the
+    connection
+
+    $d$: The topographic length of the connection in m
+
+    C++ includes: simple_connections.h 
+    """
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
     __repr__ = _swig_repr
     K = _swig_property(_cmf_core.generic_gradient_connection_K_get, _cmf_core.generic_gradient_connection_K_set)
@@ -3592,6 +3669,25 @@ class generic_gradient_connection(flux_connection):
         """
         __init__(cmf::water::generic_gradient_connection self, cmf::water::WaterStorage::ptr left, cmf::water::WaterStorage::ptr right, real K, 
             real d=1.0, real A=1.0) -> generic_gradient_connection
+
+        generic_gradient_connection(cmf::water::WaterStorage::ptr left,
+        cmf::water::WaterStorage::ptr right, real K, real d=1.0, real A=1.0)
+
+        Creates a generic gradient based flux, if enough water is present in
+        the source.
+
+        Parameters:
+        -----------
+
+        left:  The left node of the connection
+
+        right:  The right node of the connection
+
+        K:  the conductivity of the connection in m/day
+
+        d:  the topographic lenght of the connection in m
+
+        A:  the area of the connection cross section in m2 
         """
         _cmf_core.generic_gradient_connection_swiginit(self,_cmf_core.new_generic_gradient_connection(*args, **kwargs))
     __swig_destroy__ = _cmf_core.delete_generic_gradient_connection
@@ -4550,46 +4646,14 @@ class MeteoStation(object):
     inserted), the position of meteorological station in geographic
     coordinates has to be set.
 
+    A meteorological station is created by
+    cmf::atmosphere::MeteoStationList::add_station . Usage from python:
+
     There are two modes for the meteorology: daily=true and daily=false.
     If daily=true, Radiation is given as a daily mean value. If
     daily=false, Radiation is given as an hourly mean value, which shows
     the dial ETpot variation but results in erronous results if the
     timestep is daily.
-
-    In the following, we will assume a meteorological station with given
-    Tmin, Tmax, precipitation and daily mean relative humidity. To use
-    other meteorological data, please consult the description of the
-    MeteoStation class in the API documentationCreating a meteorological
-    station
-
-    import CMFlib as cmf latitude=51.2 # Latitude of station in decimal
-    degrees longitude=8.1 # Longitude of station in decimal degrees (only
-    needed for daily=false) timezone=1    # Timezone, pos. values mean
-    east of GMT, negative west (Germany=1, Pacific time=-8, only needed
-    for daily=false) start=cmf.Time(1,1,2001) # Creates all timeseries
-    with this start time, one can change them later step=cmf.day # s.
-    start name="Giessen"           # A name for the station (optional)
-    meteo=cmf.MeteoStation(latitude,longitude,timezone,start,step,name)
-
-    The daily flag is automatically set to true, since the step width is
-    &ge cmf.dayLoading data into the meteorological station
-
-    MeteoData.txt is tab seperated file containing
-
-    Tmin [deg C],Tmax [deg C],rHmean [%] and precipitation [mm/day] values
-    for every day
-
-    f=file('MeteoData.txt') for line in file:
-    meteo.Tmin.Add(float(line.split('\\t')[0]))
-    meteo.Tmax.Add(float(line.split('\\t')[1]))
-    meteo.rHmean.Add(float(line.split('\\t')[2]))
-    meteo.Prec.Add(float(line.split('\\t')[3]))Using a meteorological
-    station
-
-    weather=meteo.get_data(cmf.Time(3,2,2009,14)) # Weather at Feb. 3rd,
-    2009, 2pm print 'Global Radiation: ',weather.Rs # Daily mean Rs, since
-    daily=true print 'Temperature:',weather.T # Daily mean T, since
-    nothing else in known
 
     C++ includes: meteorology.h 
     """
@@ -4649,17 +4713,17 @@ class MeteoStation(object):
         SetSunshineFraction(cmf::math::timeseries sunshine_duration)
 
         Calculates a timeseries of the sunshine fraction (to put into
-        Sunshine) from a timeseries of absolute sunshine duration, using the
-        potential sunshine duration in hours,
+        Sunshine) from a timeseries of absolute sunshine duration.
+
         seehttp://www.fao.org/docrep/X0490E/x0490e07.htm#radiation
         \\begin{eqnarray*} \\phi &=& \\frac{(\\mbox{geogr.
         Latitude})^\\circ \\pi}{180^\\circ} \\mbox{ Latitude in }rad
         \\\\ \\delta &=& 0.409 \\sin\\left(\\frac{2\\pi}{365}DOY
         - 1.39\\right) \\mbox{ Declination, DOY is day of year}\\\\
         \\omega_s &=& \\arccos(-\\tan\\phi\\tan\\delta) \\mbox{
-        Sunset angle} \\\\ N &=& \\frac{24}{\\pi}\\omega_s \\mbox{
-        potential duration of sunshine in }h \\\\ \\frac n N &&
-        n\\mbox{Absolute sunshine duration} \\end{eqnarray*}. 
+        Sunset angle in }rad \\\\ N &=& \\frac{24}{\\pi}\\omega_s
+        \\mbox{ potential duration of sunshine in }h \\\\ \\frac n N
+        &=& n\\mbox{ absolute sunshine duration in }h \\end{eqnarray*} 
         """
         return _cmf_core.MeteoStation_SetSunshineFraction(self, *args, **kwargs)
 
@@ -4733,9 +4797,7 @@ class MeteoStationReference(Meteorology):
         __init__(cmf::atmosphere::MeteoStationReference self, cmf::atmosphere::MeteoStation::ptr station, point location) -> MeteoStationReference
         __init__(cmf::atmosphere::MeteoStationReference self, MeteoStationReference copy) -> MeteoStationReference
 
-        MeteoStationReference(const MeteoStationReference &copy)
-
-        Copy c'tor. 
+        MeteoStationReference(const MeteoStationReference &copy) 
         """
         _cmf_core.MeteoStationReference_swiginit(self,_cmf_core.new_MeteoStationReference(*args))
     def copy(self, *args, **kwargs):
@@ -4744,7 +4806,8 @@ class MeteoStationReference(Meteorology):
 
         MeteoStationReference* copy() const
 
-        Creates a new copy of the reference. 
+        Returns a copy of the meteorology object. Pure virtual function, needs
+        to be implemented. 
         """
         return _cmf_core.MeteoStationReference_copy(self, *args, **kwargs)
 
@@ -5221,7 +5284,7 @@ def RainfallStationReference_from_station_id(*args, **kwargs):
 
 class IDWRainfall(RainSource):
     """
-    A RainSource using an spatially interpolated rainfall intensity from
+    A RainSource using a spatially interpolated rainfall intensity from
     all stations.
 
     Interpolation method is inverse distance weighted (IDW)
@@ -5274,11 +5337,7 @@ class Vegetation(object):
         double RootLength()
         const
 
-        Returns the average root length in m/m2 \\[ l_R
-        \\left[\\frac{m}{m^2}\\right]= \\frac{ c_R
-        \\left[\\frac{kg}{m^3}\\right] z_R \\left[m\\right] }
-        {0.5\\left[\\frac{kg}{m^3}\\right] \\pi
-        \\left(d_R/2\\right)^2 \\left[m^2\\right]} \\]. 
+        Returns the average root length in m/m2. 
         """
         return _cmf_core.Vegetation_RootLength(self, *args, **kwargs)
 
@@ -5520,8 +5579,8 @@ class Cell(StateVariableOwner):
         add_storage(Cell self, std::string Name, char storage_role='N', bool isopenwater=False) -> cmf::water::WaterStorage::ptr
         add_storage(Cell self, cmf::water::WaterStorage::ptr storage) -> int
 
-        cmf::water::WaterStorage::ptr add_storage(std::string Name, char
-        storage_role='N', bool isopenwater=false) 
+        int
+        add_storage(cmf::water::WaterStorage::ptr storage) 
         """
         return _cmf_core.Cell_add_storage(self, *args)
 
@@ -6324,7 +6383,7 @@ class BrooksCoreyRetentionCurve(RetentionCurve):
 
     \\begin{eqnarray*} W(\\theta) &=& \\frac{\\theta -
     \\theta_r}{\\theta_s - \\theta_r} \\\\ K(W) &=& K_{sat}
-    W^{2+3b} \\\\ \\Psi(W) &=& \\Psi_X
+    W^{2b+3} \\\\ \\Psi(W) &=& \\Psi_X
     \\left(\\frac{W}{W_X}\\right)^{-b} \\\\ W(\\Psi) &=&
     {\\left( \\frac{\\Psi_X}{\\Psi}\\right)
     }^{\\frac{1}{b}}\\ W_X \\end{eqnarray*} where:  $K$ is the
@@ -6488,7 +6547,24 @@ class VanGenuchtenMualem(RetentionCurve):
         return _cmf_core.VanGenuchtenMualem_Transmissivity(self, *args, **kwargs)
 
     def fit_w0(self, *args, **kwargs):
-        """fit_w0(VanGenuchtenMualem self, real w1=1.01, real Psi_p=1.0, real tolerance=0.05) -> real"""
+        """
+        fit_w0(VanGenuchtenMualem self, real w1=1.01, real Psi_p=1.0, real tolerance=0.05) -> real
+
+        real
+        fit_w0(real w1=1.01, real Psi_p=1.0, real tolerance=0.05)
+
+        Fits the break point wetness w0, to ensure a specific oversaturation
+        at a given hydrostatic potential.
+
+        Parameters:
+        -----------
+
+        w1:  The oversaturation wetness to archieve (>1), default = 1.01
+
+        Psi_p:  the hydrostatic potential for w1, default = +1.0 m
+
+        tolerance:  
+        """
         return _cmf_core.VanGenuchtenMualem_fit_w0(self, *args, **kwargs)
 
     def copy(self, *args, **kwargs):
@@ -6746,11 +6822,22 @@ class MacroPore(WaterStorage):
     def __init__(self, *args, **kwargs): raise AttributeError("No constructor defined")
     __repr__ = _swig_repr
     def __get_layer(self, *args, **kwargs):
-        """__get_layer(MacroPore self) -> cmf::upslope::SoilLayer::ptr"""
+        """
+        __get_layer(MacroPore self) -> cmf::upslope::SoilLayer::ptr
+
+        SoilLayer::ptr get_layer() const 
+        """
         return _cmf_core.MacroPore___get_layer(self, *args, **kwargs)
 
     def get_porefraction(self, *args, **kwargs):
-        """get_porefraction(MacroPore self) -> real"""
+        """
+        get_porefraction(MacroPore self) -> real
+
+        real get_porefraction() const
+
+        The fraction of the macro pores in m3/m3. This adds to the porosity of
+        the layer. 
+        """
         return _cmf_core.MacroPore_get_porefraction(self, *args, **kwargs)
 
     density = _swig_property(_cmf_core.MacroPore_density_get, _cmf_core.MacroPore_density_set)
@@ -6759,11 +6846,21 @@ class MacroPore(WaterStorage):
         """
         get_K(MacroPore self) -> real
         get_K(MacroPore self, point direction) -> real
+
+        virtual real
+        get_K(cmf::geometry::point direction) const
+
+        Returns the actual anisotropic conductivity along a direction $K =
+        (k_f \\cdot d) K$. 
         """
         return _cmf_core.MacroPore_get_K(self, *args)
 
     def get_filled_fraction(self, *args, **kwargs):
-        """get_filled_fraction(MacroPore self) -> real"""
+        """
+        get_filled_fraction(MacroPore self) -> real
+
+        real get_filled_fraction() const 
+        """
         return _cmf_core.MacroPore_get_filled_fraction(self, *args, **kwargs)
 
     def create(*args, **kwargs):
@@ -7028,7 +7125,12 @@ class IVolumeHeightFunction(object):
         return _cmf_core.IVolumeHeightFunction_copy(self, *args, **kwargs)
 
     def q(self, *args, **kwargs):
-        """q(IVolumeHeightFunction self, double h, double slope) -> double"""
+        """
+        q(IVolumeHeightFunction self, double h, double slope) -> double
+
+        virtual
+        double q(double h, double slope) const 
+        """
         return _cmf_core.IVolumeHeightFunction_q(self, *args, **kwargs)
 
     __swig_destroy__ = _cmf_core.delete_IVolumeHeightFunction
@@ -7118,7 +7220,7 @@ class IChannel(IVolumeHeightFunction):
         get_nManning(IChannel self) -> double
 
         virtual
-        double get_nManning() const 
+        double get_nManning() const =0 
         """
         return _cmf_core.IChannel_get_nManning(self, *args, **kwargs)
 
@@ -7127,7 +7229,7 @@ class IChannel(IVolumeHeightFunction):
         set_nManning(IChannel self, double val)
 
         virtual
-        void set_nManning(double val) 
+        void set_nManning(double val)=0 
         """
         return _cmf_core.IChannel_set_nManning(self, *args, **kwargs)
 
@@ -7225,7 +7327,7 @@ class IChannel(IVolumeHeightFunction):
         """
         qManning(IChannel self, double A, double slope) -> double
 
-        double
+        virtual double
         qManning(double A, double slope) const
 
         Calculates the flow rate from a given water volume in the reach
@@ -7264,7 +7366,32 @@ IChannel_swigregister = _cmf_core.IChannel_swigregister
 IChannel_swigregister(IChannel)
 
 class FlowSurface(IChannel):
-    """Proxy of C++ cmf::river::FlowSurface class"""
+    """
+    Calculates flow on a rough surface.
+
+    d_puddle is the average depth of the water table when run off starts
+
+    d_rill is the average depth of rills (multiple triangular structure)
+
+    Structural behaviour:
+
+    \\[w(h) = \\min(1,\\frac{h}{h_0 + h_r})w_{max}\\] \\[A(h) =
+    w(h) h\\] \\[q_{Manning} = A\\frac{S^{1/2}}{n}(h-h_0)^{e_m}\\]
+    $q_{Manning}$ is the flow in m3/s
+
+    $S$ is the max. slope of the element
+
+    $n$ is Manning roughness
+
+    $h$ is the avg. depth of water above the ground
+
+    $h_0$ is the minimum avg. water depth to generate flow (PuddleDepth)
+
+    $e_m$ is the kinematic wave exponent. For surface flow it is typically
+    2/3 - 5/3
+
+    C++ includes: ReachType.h 
+    """
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
     __repr__ = _swig_repr
     d_puddle = _swig_property(_cmf_core.FlowSurface_d_puddle_get, _cmf_core.FlowSurface_d_puddle_set)
@@ -7275,14 +7402,16 @@ class FlowSurface(IChannel):
         __init__(cmf::river::FlowSurface self, double length, double width, double d_puddle=0.0, double d_rill=0.0, double nManning=0.035, 
             double e_m=0.6666667) -> FlowSurface
         __init__(cmf::river::FlowSurface self, FlowSurface other) -> FlowSurface
+
+        FlowSurface(const FlowSurface &other) 
         """
         _cmf_core.FlowSurface_swiginit(self,_cmf_core.new_FlowSurface(*args))
     def copy(self, *args, **kwargs):
         """
         copy(FlowSurface self) -> FlowSurface
 
-        virtual IChannel*
-        copy() const =0 
+        FlowSurface*
+        copy() const 
         """
         return _cmf_core.FlowSurface_copy(self, *args, **kwargs)
 
@@ -7361,9 +7490,7 @@ class TriangularReach(IChannel):
         __init__(cmf::river::TriangularReach self, double l, double bankSlope=2) -> TriangularReach
         __init__(cmf::river::TriangularReach self, TriangularReach copy) -> TriangularReach
 
-        TriangularReach(double l, double bankSlope=2)
-
-        Creates a new triangular reach type. 
+        TriangularReach(const TriangularReach &copy) 
         """
         _cmf_core.TriangularReach_swiginit(self,_cmf_core.new_TriangularReach(*args))
     def copy(self, *args, **kwargs):
@@ -7392,9 +7519,7 @@ class RectangularReach(IChannel):
         __init__(cmf::river::RectangularReach self, double l, double width) -> RectangularReach
         __init__(cmf::river::RectangularReach self, RectangularReach copy) -> RectangularReach
 
-        RectangularReach(double l, double width)
-
-        Creates a new rectangular reach type with width [m]. 
+        RectangularReach(const RectangularReach &copy) 
         """
         _cmf_core.RectangularReach_swiginit(self,_cmf_core.new_RectangularReach(*args))
     def copy(self, *args, **kwargs):
@@ -7424,9 +7549,7 @@ class PipeReach(IChannel):
         __init__(cmf::river::PipeReach self, double l, double diameter) -> PipeReach
         __init__(cmf::river::PipeReach self, PipeReach copy) -> PipeReach
 
-        PipeReach(double l, double diameter)
-
-        Creates a tube IChannel with diameter [m]. 
+        PipeReach(const PipeReach &copy) 
         """
         _cmf_core.PipeReach_swiginit(self,_cmf_core.new_PipeReach(*args))
     def copy(self, *args, **kwargs):
@@ -7533,7 +7656,21 @@ MeanChannel_swigregister = _cmf_core.MeanChannel_swigregister
 MeanChannel_swigregister(MeanChannel)
 
 class PiecewiseRach(IChannel):
-    """Proxy of C++ cmf::river::PiecewiseRach class"""
+    """
+    A channel with a piecewise linear shape.
+
+    The geometry of this reach is defined by a discrete depth/width pairs
+    with linear interpolation between the depth and width
+
+    $ i $ is the highest depth/width pair below a given depth $d$
+    \\[w(d,i) = w_i + (d-d_i) \\frac{w_{i+1}-w_i}{d_{i+1} - d_i}\\]
+    \\[ A(d,i) =A(d_i,i-1)+ \\frac12 (d-d_i)(w(d)+w_i) \\]
+    \\[P(d,i) = P(d_i,i-1) +
+    2\\sqrt{\\left(\\frac{w-w_i}{2}\\right)^2+\\left(d-d_i\\right)^2}
+    \\] \\[P(0,0)=w_0 \\]
+
+    C++ includes: ReachType.h 
+    """
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
     def __init__(self, *args, **kwargs): raise AttributeError("No constructor defined - class is abstract")
     __repr__ = _swig_repr
@@ -7656,7 +7793,10 @@ class Reach(OpenWaterStorage):
         """
         set_height_function(Reach self, IChannel val)
 
-        virtual void set_height_function(const IVolumeHeightFunction &val) 
+        void
+        set_height_function(const IChannel &val)
+
+        Sets the channel shape. 
         """
         return _cmf_core.Reach_set_height_function(self, *args, **kwargs)
 
@@ -7687,7 +7827,7 @@ class Reach(OpenWaterStorage):
         set_downstream(Reach self, cmf::river::Reach::ptr new_downstream, bool use_meanchannel=False)
 
         void
-        set_downstream(ptr new_downstream)
+        set_downstream(ptr new_downstream, bool use_meanchannel=false)
 
         Connects the reach to another one downstream. 
         """
@@ -8220,18 +8360,24 @@ class Manning(flux_connection):
     Calculates the flux between two open water bodies, using Manning's
     equation.
 
-    \\begin{eqnarray*} q_{Manning}&=& A R^{\\frac 2 3}
-    \\sqrt{\\frac {\\Delta_z} n} \\\\ A &=& \\frac V l
-    \\mbox{, (Crosssectional area of the wetted crossection, Volume per
-    length)} \\\\ R &=& \\frac A {P(d)} \\\\ P(d) &=& \\mbox{
-    the perimeter of the wetted crosssection, a function of reach depth}
-    \\\\ d(V) &=& \\mbox{ the depth of the reach, a function of the
-    volume} \\\\ \\Delta_z &=& \\frac{|z_1 - z_2|}{l} \\mbox{
-    Slope of the reach} \\\\ n&=&\\mbox{Manning friction number}
-    \\end{eqnarray*} For the kinematic wave the slope of the river bed
-    is used as slope $\\Delta_z = \\frac{|z_1 - z_2\\|}{l}$, while
-    for the diffusive wave the slope is calculated from the actual water
-    head. $\\Delta_z = \\|\\frac{h_1 - h_2}{l}$
+    This is the base class for a kinematic wave approach (topography
+    driven) and a diffusive wave approach (water table driven). The only
+    difference between both approaches is the calculation of the flux
+    driving slope. For the model, one of ManningKinematic or
+    ManningDiffusive connection is selected \\begin{eqnarray*}
+    q_{Manning}&=& A R^{\\frac 2 3} \\sqrt{\\frac {\\Delta_z} n}
+    \\\\ A &=& \\frac V l \\mbox{, (Crosssectional area of the
+    wetted crossection, Volume per length)} \\\\ R &=& \\frac A
+    {P(d)} \\\\ P(d) &=& \\mbox{ the perimeter of the wetted
+    crosssection, a function of reach depth} \\\\ d(V) &=& \\mbox{
+    the depth of the reach, a function of the volume} \\\\ \\Delta_z
+    &=& \\frac{\\|z_1 - z_2\\|}{l} \\mbox{ Slope of the reach}
+    \\\\ n&=&\\mbox{Manning friction number} \\end{eqnarray*} For
+    the kinematic wave the slope of the river bed is used as slope
+    $\\Delta_z = \\frac{|z_1 - z_2\\|}{l}$,
+
+    while for the diffusive wave the slope is calculated from the actual
+    water head. $\\Delta_z = \\|\\frac{h_1 - h_2}{l}$
 
     C++ includes: ManningConnection.h 
     """
@@ -8248,7 +8394,8 @@ class Manning_Diffusive(Manning):
     """
     Connecting surface water bodies using a diffusive wave.
 
-    Not stable for deep water with small gradient \\begin{eqnarray*}
+    This approach might not be numerical stable for deep water with small
+    gradient cmf for experimental reasons \\begin{eqnarray*}
     q_{Manning}&=& A R^{\\frac 2 3} \\sqrt{\\frac {\\Delta_z} n}
     \\\\ A &=& \\frac V l \\mbox{, (Crosssectional area of the
     wetted crossection, Volume per length)} \\\\ R &=& \\frac A
@@ -8268,7 +8415,18 @@ class Manning_Diffusive(Manning):
         __init__(cmf::river::Manning_Diffusive self, cmf::river::OpenWaterStorage::ptr left, cmf::water::flux_node::ptr right, IChannel reachtype) -> Manning_Diffusive
 
         Manning_Diffusive(cmf::river::OpenWaterStorage::ptr left,
-        cmf::water::flux_node::ptr right, cmf::river::Channel reachtype) 
+        cmf::water::flux_node::ptr right, const cmf::river::IChannel
+        &reachtype)
+
+        Creates a diffusive wave connection between to open water storages.
+
+        Parameters:
+        -----------
+
+        left:  right:  The nodes to be connected by the diffusive wave. Left
+        needs to be an open water storage
+
+        reachtype:  The channel geometry 
         """
         _cmf_core.Manning_Diffusive_swiginit(self,_cmf_core.new_Manning_Diffusive(*args, **kwargs))
     __swig_destroy__ = _cmf_core.delete_Manning_Diffusive
@@ -8280,14 +8438,14 @@ class Manning_Kinematic(Manning):
     """
     Connecting surface water bodies using a kinematic wave.
 
-    Note the fixed gradient \\begin{eqnarray*} q_{Manning}&=& A
-    R^{\\frac 2 3} \\sqrt{\\frac {\\Delta_z} n} \\\\ A &=&
-    \\frac V l \\mbox{, (Crosssectional area of the wetted
-    crossection, Volume per length)} \\\\ R &=& \\frac A {P(d)}
-    \\\\ P(d) &=& \\mbox{ the perimeter of the wetted crosssection,
-    a function of reach depth} \\\\ d(V) &=& \\mbox{ the depth of
-    the reach a function of the volume} \\\\ \\Delta_z &=&
-    \\frac{\\|z_1 - z_2\\|}{l} \\mbox{ Slope of the reach}
+    Note the fixed gradient $\\Delta_z$ \\begin{eqnarray*}
+    q_{Manning}&=& A R^{\\frac 2 3} \\sqrt{\\frac {\\Delta_z} n}
+    \\\\ A &=& \\frac V l \\mbox{, (Crosssectional area of the
+    wetted crossection, Volume per length)} \\\\ R &=& \\frac A
+    {P(d)} \\\\ P(d) &=& \\mbox{ the perimeter of the wetted
+    crosssection, a function of reach depth} \\\\ d(V) &=& \\mbox{
+    the depth of the reach a function of the volume} \\\\ \\Delta_z
+    &=& \\frac{\\|z_1 - z_2\\|}{l} \\mbox{ Slope of the reach}
     \\\\ n&=&\\mbox{Manning friction number} \\end{eqnarray*}
 
     C++ includes: ManningConnection.h 
@@ -8299,7 +8457,18 @@ class Manning_Kinematic(Manning):
         __init__(cmf::river::Manning_Kinematic self, cmf::river::OpenWaterStorage::ptr left, cmf::water::flux_node::ptr right, IChannel reachtype) -> Manning_Kinematic
 
         Manning_Kinematic(cmf::river::OpenWaterStorage::ptr left,
-        cmf::water::flux_node::ptr right, cmf::river::Channel reachtype) 
+        cmf::water::flux_node::ptr right, const cmf::river::IChannel
+        &reachtype)
+
+        Creates a kinematic wave connection between to open water storages.
+
+        Parameters:
+        -----------
+
+        left:  right:  The nodes to be connected by the kinematic wave. Left
+        needs to be an open water storage
+
+        reachtype:  The channel geometry 
         """
         _cmf_core.Manning_Kinematic_swiginit(self,_cmf_core.new_Manning_Kinematic(*args, **kwargs))
     __swig_destroy__ = _cmf_core.delete_Manning_Kinematic
@@ -8309,7 +8478,21 @@ Manning_Kinematic.cell_connector = _cmf_core.cvar.Manning_Kinematic_cell_connect
 
 class CanopyOverflow(flux_connection):
     """
-    Calculates the overflow of a canopy storage.
+    Calculates the overflow of a canopy storage using a kinematic wave
+    approach.
+
+    This model routes only water that exceeds the canopy capacity to the
+    ground with an ad hoc estimated function: \\[q_{CO} =
+    \\left(\\frac{V_{act}-V_{max}}{V_{max}}\\right) ^2 \\cdot 2400
+    \\frac{A_{cell}}{1000}\\] With:  $q_{CO}(t)[\\frac{m^3}{day}]$:
+    The flux from canopy to the ground
+
+    $V_{act}[mm]=1000 [mm/m] \\frac{V_{canopy}[m^3]}{A_{cell} [m^2]}$
+    The stored water of the canopy in mm
+
+    $V_{max}[mm]=c_{LAI}[mm] LAI$ The capacity of the canopy in mm,
+    defined by the factor CanopyCapacityPerLAI [mm/LAI], and the leaf area
+    index LAI. (see: cmf::upslope::Vegetation)
 
     C++ includes: surfacefluxes.h 
     """
@@ -8337,11 +8520,44 @@ def CanopyOverflow_use_for_cell(*args, **kwargs):
   return _cmf_core.CanopyOverflow_use_for_cell(*args, **kwargs)
 
 class RutterInterception(flux_connection):
-    """Proxy of C++ cmf::upslope::connections::RutterInterception class"""
+    """
+    Interception storage overflow according to the Rutter and Morton
+    (1977) model.
+
+    Calculates the interception overflow as a storage depending fraction
+    of incoming rainfall The Rutter model of interception reads as follows
+    after Meuser, A., 1990. Effects of afforestation on run-off
+    characteristics. Agric. For. Meteorol. 50: 125-138.:
+    \\[\\frac{dI_C(t)}{dt}=P(t)(1-p_F-p_S)-P(t)(1-p_F-
+    p_S)\\frac{I_C(t)}{I_CMAX}-f_I(E-e)(t)\\] With $I_C$ the current
+    canopy storage and $P(t)$ the current rainfall.
+
+    The second term of the equation denotes the flux from the canopy to
+    the ground. The implemented formula for canopy storage overflow reads
+    then as: \\[q_{CO}(t) =
+    P_{net}(t)\\frac{V_{act}[mm]}{V_{max}[mm]}\\] With:
+    $q_{CO}(t)[\\frac{m^3}{day}]$: The flux from canopy to the ground
+
+    $P_{net}(t)[\\frac{m^3}{day}]$: The flux from the rain to the canopy
+
+    $V_{act}[mm]=1000 [mm/m] \\frac{V_{canopy}[m^3]}{A_{cell} [m^2]}$
+    The stored water of the canopy in mm
+
+    $V_{max}[mm]=c_{LAI}[mm]\\cdot LAI$ The capacity of the canopy in
+    mm, defined by the factor CanopyCapacityPerLAI [mm/LAI], and the leaf
+    area index LAI. (see: cmf::upslope::Vegetation)
+
+    C++ includes: surfacefluxes.h 
+    """
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
     __repr__ = _swig_repr
     def __init__(self, *args, **kwargs): 
-        """__init__(cmf::upslope::connections::RutterInterception self, cmf::water::WaterStorage::ptr Canopy, cmf::water::flux_node::ptr target, Cell cell) -> RutterInterception"""
+        """
+        __init__(cmf::upslope::connections::RutterInterception self, cmf::water::WaterStorage::ptr Canopy, cmf::water::flux_node::ptr target, Cell cell) -> RutterInterception
+
+        RutterInterception(cmf::water::WaterStorage::ptr Canopy,
+        cmf::water::flux_node::ptr target, cmf::upslope::Cell &cell) 
+        """
         _cmf_core.RutterInterception_swiginit(self,_cmf_core.new_RutterInterception(*args, **kwargs))
     def use_for_cell(*args, **kwargs):
         """use_for_cell(Cell cell) -> RutterInterception"""
@@ -8674,11 +8890,22 @@ def SimplRichards_use_for_cell(*args, **kwargs):
   return _cmf_core.SimplRichards_use_for_cell(*args, **kwargs)
 
 class GradientMacroFlow(flux_connection):
-    """Proxy of C++ cmf::upslope::connections::GradientMacroFlow class"""
+    """
+    Gradient based flux from macro pore to macro pore.
+
+    \\[ q = K(\\theta) \\frac{\\Delta \\Psi}{\\Delta z} \\]
+
+    C++ includes: Percolation.h 
+    """
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
     __repr__ = _swig_repr
     def __init__(self, *args, **kwargs): 
-        """__init__(cmf::upslope::connections::GradientMacroFlow self, cmf::upslope::MacroPore::ptr left, cmf::water::flux_node::ptr right) -> GradientMacroFlow"""
+        """
+        __init__(cmf::upslope::connections::GradientMacroFlow self, cmf::upslope::MacroPore::ptr left, cmf::water::flux_node::ptr right) -> GradientMacroFlow
+
+        GradientMacroFlow(cmf::upslope::MacroPore::ptr left,
+        cmf::water::flux_node::ptr right) 
+        """
         _cmf_core.GradientMacroFlow_swiginit(self,_cmf_core.new_GradientMacroFlow(*args, **kwargs))
     __swig_destroy__ = _cmf_core.delete_GradientMacroFlow
 GradientMacroFlow_swigregister = _cmf_core.GradientMacroFlow_swigregister
@@ -9095,12 +9322,36 @@ def Tact(*args, **kwargs):
 
     real
     cmf::upslope::ET::Tact(real Tpot, const cmf::upslope::SoilLayer &sw,
-    const cmf::upslope::vegetation::Vegetation &veg) 
+    const cmf::upslope::vegetation::Vegetation &veg)
+
+    A function to calculate the actual transpiration for each soil layer
+    using a Feddes like approach.
+
+    This function is used to calculate the actual water uptake in m³/day
+    from a single soillayer sw according to root depth and the potential
+    transpiration (or ETpot if there is no difference) in mm/day The water
+    flux is calculated as follows:
+    \\[q_{T_{pot}}[m^3/day]=T_{pot}[mm/day] 10^{-3}[mm/m]A_{cell}[m^2]
+    f_r\\] where:  $q_{T_{pot}}$: the potential transpiration flux from
+    this layer
+
+    $T_{pot}$: the potential transpiration for the cell
+
+    $A_{cell}$: the area of the cell
+
+    $f_r=\\frac{R_{layer}}{\\sum_{i=0}^{layers}{R_i}}$: the root mass
+    in this layer per total root mass at this cell. This is calculated
+    with the cmf::upslope::vegetation::Vegetation::RootFraction 
     """
   return _cmf_core.Tact(*args, **kwargs)
 class constantETpot(flux_connection):
     """
     A constant evapotranspiration.
+
+    Uses a constant measured or elsewhere modelled ETpot. Actual
+    Evapotranspiration is calculated from rootdepth and actual matrix
+    potential in the layers using Tact. The value of ETpot can be changed
+    during runtime
 
     C++ includes: ET.h 
     """
@@ -9130,7 +9381,12 @@ constantETpot_swigregister(constantETpot)
 
 class timeseriesETpot(flux_connection):
     """
-    A ET connection for timeseries driven ETpot.
+    A timeseries driven evapotranspiration.
+
+    Uses a timeseries of measured or elsewhere modelled ETpot. Actual
+    Evapotranspiration is calculated from rootdepth and actual matrix
+    potential in the layers using Tact. The value of ETpot can be changed
+    during runtime
 
     C++ includes: ET.h 
     """
@@ -9366,6 +9622,10 @@ class ShuttleworthWallace(transpiration_method,soil_evaporation_method,surface_w
 
     $ r_{ac}, r_{sc}, r_{as}, r_{ss} $ Resistances for the vapor pressure
     (see below)
+
+    Todo Include Interception
+
+    Include surface water below canopy, eg. for rice paddies.
 
     C++ includes: ShuttleworthWallace.h 
     """
@@ -9775,8 +10035,8 @@ class project(StateVariableOwner):
         NewReach(project self, double x, double y, double z, IChannel shape, bool diffusive=False) -> cmf::river::Reach::ptr
 
         cmf::river::Reach::ptr
-        NewReach(double x, double y, double z, double length, char Type='T',
-        double width=0.5, double depth=0.1, bool diffusive=false)
+        NewReach(double x, double y, double z, cmf::river::IChannel &shape,
+        bool diffusive=false)
 
         Creates a new reach.
 
@@ -9787,14 +10047,8 @@ class project(StateVariableOwner):
 
         x:  y:  z:  Position of the reach in project coordinates
 
-        length:  lenght of the reach in m
-
-        Type:  Geometry of the river crosssection. Possible values: T
-        (Triangular), R (Rectangular), S (SWAT like trapzeoid), P (pipe)
-
-        width:  Width of the channel between banks in m
-
-        depth:  Depth of the channel in m
+        shape:  Crossectional geometry of the river. Any class inheriting from
+        cmf::water::IChannel
 
         diffusive:  If true, this reach uses by default a diffusive wave
         connection 

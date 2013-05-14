@@ -25,18 +25,18 @@ void cmf::water::NeumannBoundary::connect_to( cmf::water::flux_node::ptr target 
 
 real cmf::water::NeumannBoundary::operator()( cmf::math::Time t ) const
 {
-	if (flux.is_empty())
+	if (_flux.is_empty())
 		return 0.0;
 	else
-		return scale_function(flux[t]);
+		return scale_function(_flux[t]);
 }
 
 cmf::water::NeumannBoundary::NeumannBoundary(cmf::project& _project, 
-											 cmf::math::timeseries _flux,
+											 cmf::math::timeseries flux,
 											 cmf::water::SoluteTimeseries _concentration/*=cmf::water::SoluteTimeseries()*/,
 											 cmf::geometry::point loc/*=cmf::geometry::point()*/
 																						) 
-: cmf::water::flux_node(_project,loc), flux(_flux),concentration(_concentration)
+: cmf::water::flux_node(_project,loc), _flux(_flux),concentration(_concentration)
 {
 
 }
