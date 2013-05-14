@@ -80,7 +80,10 @@ namespace cmf {
 			cmf::math::num_array get_upper_boundary() const;
 
 			cmf::math::num_array get_ice_fraction() const;
-
+			cmf::math::num_array get_theta() const;
+			/// Sets the volumetric water content of the soil
+			void set_theta(const cmf::math::num_array& Value, size_t offset=0);
+			/// Sets the fraction of the ice content of the soil water
 			void set_ice_fraction(const cmf::math::num_array& Value, size_t offset=0);
 
 

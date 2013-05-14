@@ -59,7 +59,8 @@ def load_meteo(project):
    
 
 cellcount = 20 # numbers of cells
-celllength= 10 # length of cells in m
+celllength = 10 # length of cells in m
+cellwidth = 10 # width of the cells in m
 # A function to shape the hillslope (e.g. "lambda x: 0.05*x" would make linear slope)
 def z(x): return 10/(1+np.exp((x-100)/30))
 
@@ -77,11 +78,11 @@ p=cmf.project()
 # Create a cells at position x
 for i in range(cellcount):
     x = i * celllength
-    c = p.NewCell(x, 0, z(x), celllength * celllength)
+    c = p.NewCell(x, 0, z(x), celllength * cellwidth)
 
 # Make cell topology
 for i,c in enumerate(p[:-1]):
-    c.topology.AddNeighbor(p[i+1],celllength)
+    c.topology.AddNeighbor(p[i+1],cellwidth)
 
 # Customize cells
 for c in p:    
