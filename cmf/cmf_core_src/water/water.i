@@ -166,6 +166,10 @@ namespace cmf{namespace water {class flux_connection;}}
 
 %extend__repr__(cmf::water::DirichletBoundary)
 %extend__repr__(cmf::water::NeumannBoundary)
+%extend cmf::water::NeumannBoundary {
+%pythoncode {
+    flux = property(get_flux,set_flux,"The flux over the boundary condition")
+}}
 %extend__repr__(cmf::water::WaterStorage)
 
 %include "water/simple_connections.h"

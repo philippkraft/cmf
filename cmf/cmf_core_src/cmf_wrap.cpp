@@ -25702,48 +25702,7 @@ SWIGINTERN PyObject *DirichletBoundary_swiginit(PyObject *SWIGUNUSEDPARM(self), 
   return SWIG_Python_InitShadowInstance(args);
 }
 
-SWIGINTERN PyObject *_wrap_NeumannBoundary_flux_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  cmf::water::NeumannBoundary *arg1 = (cmf::water::NeumannBoundary *) 0 ;
-  cmf::math::timeseries *arg2 = (cmf::math::timeseries *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  std::tr1::shared_ptr< cmf::water::NeumannBoundary > tempshared1 ;
-  std::tr1::shared_ptr< cmf::water::NeumannBoundary > *smartarg1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
-  PyObject *swig_obj[2] ;
-  
-  if (!SWIG_Python_UnpackTuple(args,"NeumannBoundary_flux_set",2,2,swig_obj)) SWIG_fail;
-  {
-    int newmem = 0;
-    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_std__tr1__shared_ptrT_cmf__water__NeumannBoundary_t, 0 |  0 , &newmem);
-    if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "NeumannBoundary_flux_set" "', argument " "1"" of type '" "cmf::water::NeumannBoundary *""'"); 
-    }
-    if (newmem & SWIG_CAST_NEW_MEMORY) {
-      tempshared1 = *reinterpret_cast< std::tr1::shared_ptr<  cmf::water::NeumannBoundary > * >(argp1);
-      delete reinterpret_cast< std::tr1::shared_ptr<  cmf::water::NeumannBoundary > * >(argp1);
-      arg1 = const_cast< cmf::water::NeumannBoundary * >(tempshared1.get());
-    } else {
-      smartarg1 = reinterpret_cast< std::tr1::shared_ptr<  cmf::water::NeumannBoundary > * >(argp1);
-      arg1 = const_cast< cmf::water::NeumannBoundary * >((smartarg1 ? smartarg1->get() : 0));
-    }
-  }
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_cmf__math__timeseries, 0 |  0 );
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "NeumannBoundary_flux_set" "', argument " "2"" of type '" "cmf::math::timeseries *""'"); 
-  }
-  arg2 = reinterpret_cast< cmf::math::timeseries * >(argp2);
-  if (arg1) (arg1)->flux = *arg2;
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_NeumannBoundary_flux_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_NeumannBoundary_get_flux(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   cmf::water::NeumannBoundary *arg1 = (cmf::water::NeumannBoundary *) 0 ;
   void *argp1 = 0 ;
@@ -25751,7 +25710,7 @@ SWIGINTERN PyObject *_wrap_NeumannBoundary_flux_get(PyObject *SWIGUNUSEDPARM(sel
   std::tr1::shared_ptr< cmf::water::NeumannBoundary > tempshared1 ;
   std::tr1::shared_ptr< cmf::water::NeumannBoundary > *smartarg1 = 0 ;
   PyObject *swig_obj[1] ;
-  cmf::math::timeseries *result = 0 ;
+  cmf::math::timeseries result;
   
   if (!args) SWIG_fail;
   swig_obj[0] = args;
@@ -25759,7 +25718,7 @@ SWIGINTERN PyObject *_wrap_NeumannBoundary_flux_get(PyObject *SWIGUNUSEDPARM(sel
     int newmem = 0;
     res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_std__tr1__shared_ptrT_cmf__water__NeumannBoundary_t, 0 |  0 , &newmem);
     if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "NeumannBoundary_flux_get" "', argument " "1"" of type '" "cmf::water::NeumannBoundary *""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "NeumannBoundary_get_flux" "', argument " "1"" of type '" "cmf::water::NeumannBoundary *""'"); 
     }
     if (newmem & SWIG_CAST_NEW_MEMORY) {
       tempshared1 = *reinterpret_cast< std::tr1::shared_ptr<  cmf::water::NeumannBoundary > * >(argp1);
@@ -25770,11 +25729,213 @@ SWIGINTERN PyObject *_wrap_NeumannBoundary_flux_get(PyObject *SWIGUNUSEDPARM(sel
       arg1 = const_cast< cmf::water::NeumannBoundary * >((smartarg1 ? smartarg1->get() : 0));
     }
   }
-  result = (cmf::math::timeseries *)& ((arg1)->flux);
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_cmf__math__timeseries, 0 |  0 );
+  {
+    try {
+      result = (arg1)->get_flux();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+    
+  }
+  resultobj = SWIG_NewPointerObj((new cmf::math::timeseries(static_cast< const cmf::math::timeseries& >(result))), SWIGTYPE_p_cmf__math__timeseries, SWIG_POINTER_OWN |  0 );
   return resultobj;
 fail:
   return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_NeumannBoundary_set_flux__SWIG_0(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  cmf::water::NeumannBoundary *arg1 = (cmf::water::NeumannBoundary *) 0 ;
+  cmf::math::timeseries arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  std::tr1::shared_ptr< cmf::water::NeumannBoundary > tempshared1 ;
+  std::tr1::shared_ptr< cmf::water::NeumannBoundary > *smartarg1 = 0 ;
+  
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_std__tr1__shared_ptrT_cmf__water__NeumannBoundary_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "NeumannBoundary_set_flux" "', argument " "1"" of type '" "cmf::water::NeumannBoundary *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< std::tr1::shared_ptr<  cmf::water::NeumannBoundary > * >(argp1);
+      delete reinterpret_cast< std::tr1::shared_ptr<  cmf::water::NeumannBoundary > * >(argp1);
+      arg1 = const_cast< cmf::water::NeumannBoundary * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< std::tr1::shared_ptr<  cmf::water::NeumannBoundary > * >(argp1);
+      arg1 = const_cast< cmf::water::NeumannBoundary * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  {
+    cmf::math::timeseries *p_ts = &arg2;
+    int res=SWIG_ConvertPtr(swig_obj[1],(void**)(&p_ts),SWIGTYPE_p_cmf__math__timeseries,0);
+    if (!(SWIG_IsOK(res)) || p_ts==0) {
+      if (PyNumber_Check(swig_obj[1])) {
+        double scalar = PyFloat_AsDouble(swig_obj[1]);
+        arg2 = cmf::math::timeseries::from_scalar(scalar);
+      } else {
+        SWIG_exception_fail(SWIG_TypeError,"Can't convert input value to cmf.timeseries object");
+      }   
+    } else {
+      arg2 = *p_ts;
+    }      
+  }
+  {
+    try {
+      (arg1)->set_flux(arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_NeumannBoundary_set_flux__SWIG_1(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  cmf::water::NeumannBoundary *arg1 = (cmf::water::NeumannBoundary *) 0 ;
+  double arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  std::tr1::shared_ptr< cmf::water::NeumannBoundary > tempshared1 ;
+  std::tr1::shared_ptr< cmf::water::NeumannBoundary > *smartarg1 = 0 ;
+  double val2 ;
+  int ecode2 = 0 ;
+  
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_std__tr1__shared_ptrT_cmf__water__NeumannBoundary_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "NeumannBoundary_set_flux" "', argument " "1"" of type '" "cmf::water::NeumannBoundary *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< std::tr1::shared_ptr<  cmf::water::NeumannBoundary > * >(argp1);
+      delete reinterpret_cast< std::tr1::shared_ptr<  cmf::water::NeumannBoundary > * >(argp1);
+      arg1 = const_cast< cmf::water::NeumannBoundary * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< std::tr1::shared_ptr<  cmf::water::NeumannBoundary > * >(argp1);
+      arg1 = const_cast< cmf::water::NeumannBoundary * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "NeumannBoundary_set_flux" "', argument " "2"" of type '" "double""'");
+  } 
+  arg2 = static_cast< double >(val2);
+  {
+    try {
+      (arg1)->set_flux(arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_NeumannBoundary_set_flux(PyObject *self, PyObject *args) {
+  int argc;
+  PyObject *argv[3];
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args,"NeumannBoundary_set_flux",0,2,argv))) SWIG_fail;
+  --argc;
+  {
+    unsigned long _index = 0;
+    SWIG_TypeRank _rank = 0; 
+    if (argc == 2) {
+      SWIG_TypeRank _ranki = 0;
+      SWIG_TypeRank _rankm = 0;
+      SWIG_TypeRank _pi = 1;
+      int _v = 0;
+      {
+        int res = SWIG_ConvertPtr(argv[0], 0, SWIGTYPE_p_std__tr1__shared_ptrT_cmf__water__NeumannBoundary_t, 0);
+        _v = SWIG_CheckState(res);
+      }
+      if (!_v) goto check_1;
+      _ranki += _v*_pi;
+      _rankm += _pi;
+      _pi *= SWIG_MAXCASTRANK;
+      {
+        {
+          int res = SWIG_AsVal_double(argv[1], NULL);
+          _v = SWIG_CheckState(res);
+        }
+      }
+      if (!_v) goto check_1;
+      _ranki += _v*_pi;
+      _rankm += _pi;
+      _pi *= SWIG_MAXCASTRANK;
+      if (!_index || (_ranki < _rank)) {
+        _rank = _ranki; _index = 1;
+        if (_rank == _rankm) goto dispatch;
+      }
+    }
+  check_1:
+    
+    if (argc == 2) {
+      SWIG_TypeRank _ranki = 0;
+      SWIG_TypeRank _rankm = 0;
+      SWIG_TypeRank _pi = 1;
+      int _v = 0;
+      {
+        int res = SWIG_ConvertPtr(argv[0], 0, SWIGTYPE_p_std__tr1__shared_ptrT_cmf__water__NeumannBoundary_t, 0);
+        _v = SWIG_CheckState(res);
+      }
+      if (!_v) goto check_2;
+      _ranki += _v*_pi;
+      _rankm += _pi;
+      _pi *= SWIG_MAXCASTRANK;
+      {
+        {
+          void * pt;    
+          int res=SWIG_ConvertPtr(argv[1],&pt,SWIGTYPE_p_cmf__math__timeseries,0);
+          _v=SWIG_IsOK(res) || PyNumber_Check(argv[1]);
+        }
+      }
+      if (!_v) goto check_2;
+      _ranki += _v*_pi;
+      _rankm += _pi;
+      _pi *= SWIG_MAXCASTRANK;
+      if (!_index || (_ranki < _rank)) {
+        _rank = _ranki; _index = 2;
+        if (_rank == _rankm) goto dispatch;
+      }
+    }
+  check_2:
+    
+  dispatch:
+    switch(_index) {
+    case 1:
+      return _wrap_NeumannBoundary_set_flux__SWIG_1(self, argc, argv);
+    case 2:
+      return _wrap_NeumannBoundary_set_flux__SWIG_0(self, argc, argv);
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'NeumannBoundary_set_flux'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    cmf::water::NeumannBoundary::set_flux(cmf::math::timeseries)\n"
+    "    cmf::water::NeumannBoundary::set_flux(double)\n");
+  return 0;
 }
 
 
@@ -67060,8 +67221,17 @@ static PyMethodDef SwigMethods[] = {
 		"PredictCorrectSimple(StateVariableOwner states, real Alpha=0.5)\n"
 		"PredictCorrectSimple(real Alpha=0.5)\n"
 		"new_PredictCorrectSimple(Integrator copy) -> PredictCorrectSimple\n"
+		"\n"
+		"PredictCorrectSimple(const Integrator &copy)\n"
+		"\n"
+		"copy constructor \n"
 		""},
-	 { (char *)"delete_PredictCorrectSimple", (PyCFunction)_wrap_delete_PredictCorrectSimple, METH_O, (char *)"delete_PredictCorrectSimple(PredictCorrectSimple self)"},
+	 { (char *)"delete_PredictCorrectSimple", (PyCFunction)_wrap_delete_PredictCorrectSimple, METH_O, (char *)"\n"
+		"delete_PredictCorrectSimple(PredictCorrectSimple self)\n"
+		"\n"
+		"virtual\n"
+		"~PredictCorrectSimple() \n"
+		""},
 	 { (char *)"PredictCorrectSimple_swigregister", PredictCorrectSimple_swigregister, METH_VARARGS, NULL},
 	 { (char *)"PredictCorrectSimple_swiginit", PredictCorrectSimple_swiginit, METH_VARARGS, NULL},
 	 { (char *)"ImplicitEuler_dt_min_set", _wrap_ImplicitEuler_dt_min_set, METH_VARARGS, (char *)"ImplicitEuler_dt_min_set(ImplicitEuler self, Time dt_min)"},
@@ -67711,8 +67881,11 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"delete_DirichletBoundary", (PyCFunction)_wrap_delete_DirichletBoundary, METH_O, (char *)"delete_DirichletBoundary(DirichletBoundary self)"},
 	 { (char *)"DirichletBoundary_swigregister", DirichletBoundary_swigregister, METH_VARARGS, NULL},
 	 { (char *)"DirichletBoundary_swiginit", DirichletBoundary_swiginit, METH_VARARGS, NULL},
-	 { (char *)"NeumannBoundary_flux_set", _wrap_NeumannBoundary_flux_set, METH_VARARGS, (char *)"NeumannBoundary_flux_set(NeumannBoundary self, timeseries flux)"},
-	 { (char *)"NeumannBoundary_flux_get", (PyCFunction)_wrap_NeumannBoundary_flux_get, METH_O, (char *)"NeumannBoundary_flux_get(NeumannBoundary self) -> timeseries"},
+	 { (char *)"NeumannBoundary_get_flux", (PyCFunction)_wrap_NeumannBoundary_get_flux, METH_O, (char *)"NeumannBoundary_get_flux(NeumannBoundary self) -> timeseries"},
+	 { (char *)"NeumannBoundary_set_flux", _wrap_NeumannBoundary_set_flux, METH_VARARGS, (char *)"\n"
+		"set_flux(timeseries new_flux)\n"
+		"NeumannBoundary_set_flux(NeumannBoundary self, double new_flux)\n"
+		""},
 	 { (char *)"NeumannBoundary_flux_scale_set", _wrap_NeumannBoundary_flux_scale_set, METH_VARARGS, (char *)"NeumannBoundary_flux_scale_set(NeumannBoundary self, linear_scale flux_scale)"},
 	 { (char *)"NeumannBoundary_flux_scale_get", (PyCFunction)_wrap_NeumannBoundary_flux_scale_get, METH_O, (char *)"NeumannBoundary_flux_scale_get(NeumannBoundary self) -> linear_scale"},
 	 { (char *)"NeumannBoundary_concentration_set", _wrap_NeumannBoundary_concentration_set, METH_VARARGS, (char *)"NeumannBoundary_concentration_set(NeumannBoundary self, SoluteTimeseries concentration)"},
@@ -67915,6 +68088,25 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"new_generic_gradient_connection", (PyCFunction) _wrap_new_generic_gradient_connection, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
 		"new_generic_gradient_connection(cmf::water::WaterStorage::ptr left, cmf::water::WaterStorage::ptr right, real K, \n"
 		"    real d=1.0, real A=1.0) -> generic_gradient_connection\n"
+		"\n"
+		"generic_gradient_connection(cmf::water::WaterStorage::ptr left,\n"
+		"cmf::water::WaterStorage::ptr right, real K, real d=1.0, real A=1.0)\n"
+		"\n"
+		"Creates a generic gradient based flux, if enough water is present in\n"
+		"the source.\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"left:  The left node of the connection\n"
+		"\n"
+		"right:  The right node of the connection\n"
+		"\n"
+		"K:  the conductivity of the connection in m/day\n"
+		"\n"
+		"d:  the topographic lenght of the connection in m\n"
+		"\n"
+		"A:  the area of the connection cross section in m2 \n"
 		""},
 	 { (char *)"delete_generic_gradient_connection", (PyCFunction)_wrap_delete_generic_gradient_connection, METH_O, (char *)"delete_generic_gradient_connection(generic_gradient_connection self)"},
 	 { (char *)"generic_gradient_connection_swigregister", generic_gradient_connection_swigregister, METH_VARARGS, NULL},
@@ -68549,17 +68741,17 @@ static PyMethodDef SwigMethods[] = {
 		"SetSunshineFraction(cmf::math::timeseries sunshine_duration)\n"
 		"\n"
 		"Calculates a timeseries of the sunshine fraction (to put into\n"
-		"Sunshine) from a timeseries of absolute sunshine duration, using the\n"
-		"potential sunshine duration in hours,\n"
+		"Sunshine) from a timeseries of absolute sunshine duration.\n"
+		"\n"
 		"seehttp://www.fao.org/docrep/X0490E/x0490e07.htm#radiation\n"
 		"\\\\begin{eqnarray*} \\\\phi &=& \\\\frac{(\\\\mbox{geogr.\n"
 		"Latitude})^\\\\circ \\\\pi}{180^\\\\circ} \\\\mbox{ Latitude in }rad\n"
 		"\\\\\\\\ \\\\delta &=& 0.409 \\\\sin\\\\left(\\\\frac{2\\\\pi}{365}DOY\n"
 		"- 1.39\\\\right) \\\\mbox{ Declination, DOY is day of year}\\\\\\\\\n"
 		"\\\\omega_s &=& \\\\arccos(-\\\\tan\\\\phi\\\\tan\\\\delta) \\\\mbox{\n"
-		"Sunset angle} \\\\\\\\ N &=& \\\\frac{24}{\\\\pi}\\\\omega_s \\\\mbox{\n"
-		"potential duration of sunshine in }h \\\\\\\\ \\\\frac n N &&\n"
-		"n\\\\mbox{Absolute sunshine duration} \\\\end{eqnarray*}. \n"
+		"Sunset angle in }rad \\\\\\\\ N &=& \\\\frac{24}{\\\\pi}\\\\omega_s\n"
+		"\\\\mbox{ potential duration of sunshine in }h \\\\\\\\ \\\\frac n N\n"
+		"&=& n\\\\mbox{ absolute sunshine duration in }h \\\\end{eqnarray*} \n"
 		""},
 	 { (char *)"MeteoStation_T_set", _wrap_MeteoStation_T_set, METH_VARARGS, (char *)"MeteoStation_T_set(MeteoStation self, timeseries T)"},
 	 { (char *)"MeteoStation_T_get", (PyCFunction)_wrap_MeteoStation_T_get, METH_O, (char *)"MeteoStation_T_get(MeteoStation self) -> timeseries"},
@@ -68606,16 +68798,15 @@ static PyMethodDef SwigMethods[] = {
 		"MeteoStationReference(cmf::atmosphere::MeteoStation::ptr station, point location)\n"
 		"new_MeteoStationReference(MeteoStationReference copy) -> MeteoStationReference\n"
 		"\n"
-		"MeteoStationReference(const MeteoStationReference &copy)\n"
-		"\n"
-		"Copy c'tor. \n"
+		"MeteoStationReference(const MeteoStationReference &copy) \n"
 		""},
 	 { (char *)"MeteoStationReference_copy", (PyCFunction)_wrap_MeteoStationReference_copy, METH_O, (char *)"\n"
 		"MeteoStationReference_copy(MeteoStationReference self) -> MeteoStationReference\n"
 		"\n"
 		"MeteoStationReference* copy() const\n"
 		"\n"
-		"Creates a new copy of the reference. \n"
+		"Returns a copy of the meteorology object. Pure virtual function, needs\n"
+		"to be implemented. \n"
 		""},
 	 { (char *)"delete_MeteoStationReference", (PyCFunction)_wrap_delete_MeteoStationReference, METH_O, (char *)"delete_MeteoStationReference(MeteoStationReference self)"},
 	 { (char *)"MeteoStationReference_swigregister", MeteoStationReference_swigregister, METH_VARARGS, NULL},
@@ -68904,11 +69095,7 @@ static PyMethodDef SwigMethods[] = {
 		"double RootLength()\n"
 		"const\n"
 		"\n"
-		"Returns the average root length in m/m2 \\\\[ l_R\n"
-		"\\\\left[\\\\frac{m}{m^2}\\\\right]= \\\\frac{ c_R\n"
-		"\\\\left[\\\\frac{kg}{m^3}\\\\right] z_R \\\\left[m\\\\right] }\n"
-		"{0.5\\\\left[\\\\frac{kg}{m^3}\\\\right] \\\\pi\n"
-		"\\\\left(d_R/2\\\\right)^2 \\\\left[m^2\\\\right]} \\\\]. \n"
+		"Returns the average root length in m/m2. \n"
 		""},
 	 { (char *)"Vegetation_RootFraction", _wrap_Vegetation_RootFraction, METH_VARARGS, (char *)"\n"
 		"RootFraction(double upperBoundary, double lowerBoundary) -> double\n"
@@ -69065,8 +69252,8 @@ static PyMethodDef SwigMethods[] = {
 		"add_storage(std::string Name, char storage_role='N', bool isopenwater=False) -> cmf::water::WaterStorage::ptr\n"
 		"Cell_add_storage(Cell self, cmf::water::WaterStorage::ptr storage) -> int\n"
 		"\n"
-		"cmf::water::WaterStorage::ptr add_storage(std::string Name, char\n"
-		"storage_role='N', bool isopenwater=false) \n"
+		"int\n"
+		"add_storage(cmf::water::WaterStorage::ptr storage) \n"
 		""},
 	 { (char *)"Cell_remove_storage", (PyCFunction) _wrap_Cell_remove_storage, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
 		"Cell_remove_storage(Cell self, cmf::water::WaterStorage::ptr storage)\n"
@@ -69562,7 +69749,24 @@ static PyMethodDef SwigMethods[] = {
 		"\n"
 		"\\\\[T=K(W)\\\\,\\\\left(d_{lower}-d_{upper}\\\\right)\\\\] \n"
 		""},
-	 { (char *)"VanGenuchtenMualem_fit_w0", (PyCFunction) _wrap_VanGenuchtenMualem_fit_w0, METH_VARARGS | METH_KEYWORDS, (char *)"VanGenuchtenMualem_fit_w0(VanGenuchtenMualem self, real w1=1.01, real Psi_p=1.0, real tolerance=0.05) -> real"},
+	 { (char *)"VanGenuchtenMualem_fit_w0", (PyCFunction) _wrap_VanGenuchtenMualem_fit_w0, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
+		"VanGenuchtenMualem_fit_w0(VanGenuchtenMualem self, real w1=1.01, real Psi_p=1.0, real tolerance=0.05) -> real\n"
+		"\n"
+		"real\n"
+		"fit_w0(real w1=1.01, real Psi_p=1.0, real tolerance=0.05)\n"
+		"\n"
+		"Fits the break point wetness w0, to ensure a specific oversaturation\n"
+		"at a given hydrostatic potential.\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"w1:  The oversaturation wetness to archieve (>1), default = 1.01\n"
+		"\n"
+		"Psi_p:  the hydrostatic potential for w1, default = +1.0 m\n"
+		"\n"
+		"tolerance:  \n"
+		""},
 	 { (char *)"VanGenuchtenMualem_copy", (PyCFunction)_wrap_VanGenuchtenMualem_copy, METH_O, (char *)"\n"
 		"VanGenuchtenMualem_copy(VanGenuchtenMualem self) -> VanGenuchtenMualem\n"
 		"\n"
@@ -69720,8 +69924,19 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"SoilLayer_ice_fraction_get", (PyCFunction)_wrap_SoilLayer_ice_fraction_get, METH_O, (char *)"SoilLayer_ice_fraction_get(SoilLayer self) -> real"},
 	 { (char *)"delete_SoilLayer", (PyCFunction)_wrap_delete_SoilLayer, METH_O, (char *)"delete_SoilLayer(SoilLayer self)"},
 	 { (char *)"SoilLayer_swigregister", SoilLayer_swigregister, METH_VARARGS, NULL},
-	 { (char *)"MacroPore___get_layer", (PyCFunction)_wrap_MacroPore___get_layer, METH_O, (char *)"MacroPore___get_layer(MacroPore self) -> cmf::upslope::SoilLayer::ptr"},
-	 { (char *)"MacroPore_get_porefraction", (PyCFunction)_wrap_MacroPore_get_porefraction, METH_O, (char *)"MacroPore_get_porefraction(MacroPore self) -> real"},
+	 { (char *)"MacroPore___get_layer", (PyCFunction)_wrap_MacroPore___get_layer, METH_O, (char *)"\n"
+		"MacroPore___get_layer(MacroPore self) -> cmf::upslope::SoilLayer::ptr\n"
+		"\n"
+		"SoilLayer::ptr get_layer() const \n"
+		""},
+	 { (char *)"MacroPore_get_porefraction", (PyCFunction)_wrap_MacroPore_get_porefraction, METH_O, (char *)"\n"
+		"MacroPore_get_porefraction(MacroPore self) -> real\n"
+		"\n"
+		"real get_porefraction() const\n"
+		"\n"
+		"The fraction of the macro pores in m3/m3. This adds to the porosity of\n"
+		"the layer. \n"
+		""},
 	 { (char *)"MacroPore_density_set", _wrap_MacroPore_density_set, METH_VARARGS, (char *)"MacroPore_density_set(MacroPore self, real density)"},
 	 { (char *)"MacroPore_density_get", (PyCFunction)_wrap_MacroPore_density_get, METH_O, (char *)"MacroPore_density_get(MacroPore self) -> real"},
 	 { (char *)"MacroPore_Ksat_set", _wrap_MacroPore_Ksat_set, METH_VARARGS, (char *)"MacroPore_Ksat_set(MacroPore self, real Ksat)"},
@@ -69729,8 +69944,18 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"MacroPore_get_K", _wrap_MacroPore_get_K, METH_VARARGS, (char *)"\n"
 		"get_K() -> real\n"
 		"MacroPore_get_K(MacroPore self, point direction) -> real\n"
+		"\n"
+		"virtual real\n"
+		"get_K(cmf::geometry::point direction) const\n"
+		"\n"
+		"Returns the actual anisotropic conductivity along a direction $K =\n"
+		"(k_f \\\\cdot d) K$. \n"
 		""},
-	 { (char *)"MacroPore_get_filled_fraction", (PyCFunction)_wrap_MacroPore_get_filled_fraction, METH_O, (char *)"MacroPore_get_filled_fraction(MacroPore self) -> real"},
+	 { (char *)"MacroPore_get_filled_fraction", (PyCFunction)_wrap_MacroPore_get_filled_fraction, METH_O, (char *)"\n"
+		"MacroPore_get_filled_fraction(MacroPore self) -> real\n"
+		"\n"
+		"real get_filled_fraction() const \n"
+		""},
 	 { (char *)"MacroPore_create", (PyCFunction) _wrap_MacroPore_create, METH_VARARGS | METH_KEYWORDS, (char *)"MacroPore_create(cmf::upslope::SoilLayer::ptr layer, real porefraction=0.05, real Ksat=10, real density=0.05) -> cmf::upslope::MacroPore::ptr"},
 	 { (char *)"MacroPore_cast", (PyCFunction) _wrap_MacroPore_cast, METH_VARARGS | METH_KEYWORDS, (char *)"MacroPore_cast(cmf::water::flux_node::ptr node) -> cmf::upslope::MacroPore::ptr"},
 	 { (char *)"delete_MacroPore", (PyCFunction)_wrap_delete_MacroPore, METH_O, (char *)"delete_MacroPore(MacroPore self)"},
@@ -69863,7 +70088,12 @@ static PyMethodDef SwigMethods[] = {
 		"\n"
 		"virtual IVolumeHeightFunction* copy() const =0 \n"
 		""},
-	 { (char *)"IVolumeHeightFunction_q", (PyCFunction) _wrap_IVolumeHeightFunction_q, METH_VARARGS | METH_KEYWORDS, (char *)"IVolumeHeightFunction_q(IVolumeHeightFunction self, double h, double slope) -> double"},
+	 { (char *)"IVolumeHeightFunction_q", (PyCFunction) _wrap_IVolumeHeightFunction_q, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
+		"IVolumeHeightFunction_q(IVolumeHeightFunction self, double h, double slope) -> double\n"
+		"\n"
+		"virtual\n"
+		"double q(double h, double slope) const \n"
+		""},
 	 { (char *)"delete_IVolumeHeightFunction", (PyCFunction)_wrap_delete_IVolumeHeightFunction, METH_O, (char *)"delete_IVolumeHeightFunction(IVolumeHeightFunction self)"},
 	 { (char *)"IVolumeHeightFunction_swigregister", IVolumeHeightFunction_swigregister, METH_VARARGS, NULL},
 	 { (char *)"Prism_Area_set", _wrap_Prism_Area_set, METH_VARARGS, (char *)"Prism_Area_set(Prism self, double Area)"},
@@ -69905,13 +70135,13 @@ static PyMethodDef SwigMethods[] = {
 		"IChannel_get_nManning(IChannel self) -> double\n"
 		"\n"
 		"virtual\n"
-		"double get_nManning() const \n"
+		"double get_nManning() const =0 \n"
 		""},
 	 { (char *)"IChannel_set_nManning", (PyCFunction) _wrap_IChannel_set_nManning, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
 		"IChannel_set_nManning(IChannel self, double val)\n"
 		"\n"
 		"virtual\n"
-		"void set_nManning(double val) \n"
+		"void set_nManning(double val)=0 \n"
 		""},
 	 { (char *)"IChannel_get_length", (PyCFunction)_wrap_IChannel_get_length, METH_O, (char *)"\n"
 		"IChannel_get_length(IChannel self) -> double\n"
@@ -69985,7 +70215,7 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"IChannel_qManning", (PyCFunction) _wrap_IChannel_qManning, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
 		"IChannel_qManning(IChannel self, double A, double slope) -> double\n"
 		"\n"
-		"double\n"
+		"virtual double\n"
 		"qManning(double A, double slope) const\n"
 		"\n"
 		"Calculates the flow rate from a given water volume in the reach\n"
@@ -70019,12 +70249,14 @@ static PyMethodDef SwigMethods[] = {
 		"FlowSurface(double length, double width, double d_puddle=0.0, double d_rill=0.0, double nManning=0.035, \n"
 		"    double e_m=0.6666667)\n"
 		"new_FlowSurface(FlowSurface other) -> FlowSurface\n"
+		"\n"
+		"FlowSurface(const FlowSurface &other) \n"
 		""},
 	 { (char *)"FlowSurface_copy", (PyCFunction)_wrap_FlowSurface_copy, METH_O, (char *)"\n"
 		"FlowSurface_copy(FlowSurface self) -> FlowSurface\n"
 		"\n"
-		"virtual IChannel*\n"
-		"copy() const =0 \n"
+		"FlowSurface*\n"
+		"copy() const \n"
 		""},
 	 { (char *)"delete_FlowSurface", (PyCFunction)_wrap_delete_FlowSurface, METH_O, (char *)"delete_FlowSurface(FlowSurface self)"},
 	 { (char *)"FlowSurface_swigregister", FlowSurface_swigregister, METH_VARARGS, NULL},
@@ -70069,9 +70301,7 @@ static PyMethodDef SwigMethods[] = {
 		"TriangularReach(double l, double bankSlope=2)\n"
 		"new_TriangularReach(TriangularReach copy) -> TriangularReach\n"
 		"\n"
-		"TriangularReach(double l, double bankSlope=2)\n"
-		"\n"
-		"Creates a new triangular reach type. \n"
+		"TriangularReach(const TriangularReach &copy) \n"
 		""},
 	 { (char *)"TriangularReach_copy", (PyCFunction)_wrap_TriangularReach_copy, METH_O, (char *)"\n"
 		"TriangularReach_copy(TriangularReach self) -> TriangularReach\n"
@@ -70085,9 +70315,7 @@ static PyMethodDef SwigMethods[] = {
 		"RectangularReach(double l, double width)\n"
 		"new_RectangularReach(RectangularReach copy) -> RectangularReach\n"
 		"\n"
-		"RectangularReach(double l, double width)\n"
-		"\n"
-		"Creates a new rectangular reach type with width [m]. \n"
+		"RectangularReach(const RectangularReach &copy) \n"
 		""},
 	 { (char *)"RectangularReach_copy", (PyCFunction)_wrap_RectangularReach_copy, METH_O, (char *)"\n"
 		"RectangularReach_copy(RectangularReach self) -> RectangularReach\n"
@@ -70103,9 +70331,7 @@ static PyMethodDef SwigMethods[] = {
 		"PipeReach(double l, double diameter)\n"
 		"new_PipeReach(PipeReach copy) -> PipeReach\n"
 		"\n"
-		"PipeReach(double l, double diameter)\n"
-		"\n"
-		"Creates a tube IChannel with diameter [m]. \n"
+		"PipeReach(const PipeReach &copy) \n"
 		""},
 	 { (char *)"PipeReach_copy", (PyCFunction)_wrap_PipeReach_copy, METH_O, (char *)"\n"
 		"PipeReach_copy(PipeReach self) -> PipeReach\n"
@@ -70220,7 +70446,10 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"Reach_set_height_function", (PyCFunction) _wrap_Reach_set_height_function, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
 		"Reach_set_height_function(Reach self, IChannel val)\n"
 		"\n"
-		"virtual void set_height_function(const IVolumeHeightFunction &val) \n"
+		"void\n"
+		"set_height_function(const IChannel &val)\n"
+		"\n"
+		"Sets the channel shape. \n"
 		""},
 	 { (char *)"Reach_set_outlet", (PyCFunction) _wrap_Reach_set_outlet, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
 		"Reach_set_outlet(Reach self, cmf::water::flux_node::ptr outlet)\n"
@@ -70242,7 +70471,7 @@ static PyMethodDef SwigMethods[] = {
 		"Reach_set_downstream(Reach self, cmf::river::Reach::ptr new_downstream, bool use_meanchannel=False)\n"
 		"\n"
 		"void\n"
-		"set_downstream(ptr new_downstream)\n"
+		"set_downstream(ptr new_downstream, bool use_meanchannel=false)\n"
 		"\n"
 		"Connects the reach to another one downstream. \n"
 		""},
@@ -70517,7 +70746,18 @@ static PyMethodDef SwigMethods[] = {
 		"new_Manning_Diffusive(cmf::river::OpenWaterStorage::ptr left, cmf::water::flux_node::ptr right, IChannel reachtype) -> Manning_Diffusive\n"
 		"\n"
 		"Manning_Diffusive(cmf::river::OpenWaterStorage::ptr left,\n"
-		"cmf::water::flux_node::ptr right, cmf::river::Channel reachtype) \n"
+		"cmf::water::flux_node::ptr right, const cmf::river::IChannel\n"
+		"&reachtype)\n"
+		"\n"
+		"Creates a diffusive wave connection between to open water storages.\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"left:  right:  The nodes to be connected by the diffusive wave. Left\n"
+		"needs to be an open water storage\n"
+		"\n"
+		"reachtype:  The channel geometry \n"
 		""},
 	 { (char *)"delete_Manning_Diffusive", (PyCFunction)_wrap_delete_Manning_Diffusive, METH_O, (char *)"delete_Manning_Diffusive(Manning_Diffusive self)"},
 	 { (char *)"Manning_Diffusive_swigregister", Manning_Diffusive_swigregister, METH_VARARGS, NULL},
@@ -70526,7 +70766,18 @@ static PyMethodDef SwigMethods[] = {
 		"new_Manning_Kinematic(cmf::river::OpenWaterStorage::ptr left, cmf::water::flux_node::ptr right, IChannel reachtype) -> Manning_Kinematic\n"
 		"\n"
 		"Manning_Kinematic(cmf::river::OpenWaterStorage::ptr left,\n"
-		"cmf::water::flux_node::ptr right, cmf::river::Channel reachtype) \n"
+		"cmf::water::flux_node::ptr right, const cmf::river::IChannel\n"
+		"&reachtype)\n"
+		"\n"
+		"Creates a kinematic wave connection between to open water storages.\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"left:  right:  The nodes to be connected by the kinematic wave. Left\n"
+		"needs to be an open water storage\n"
+		"\n"
+		"reachtype:  The channel geometry \n"
 		""},
 	 { (char *)"delete_Manning_Kinematic", (PyCFunction)_wrap_delete_Manning_Kinematic, METH_O, (char *)"delete_Manning_Kinematic(Manning_Kinematic self)"},
 	 { (char *)"Manning_Kinematic_swigregister", Manning_Kinematic_swigregister, METH_VARARGS, NULL},
@@ -70541,7 +70792,12 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"delete_CanopyOverflow", (PyCFunction)_wrap_delete_CanopyOverflow, METH_O, (char *)"delete_CanopyOverflow(CanopyOverflow self)"},
 	 { (char *)"CanopyOverflow_swigregister", CanopyOverflow_swigregister, METH_VARARGS, NULL},
 	 { (char *)"CanopyOverflow_swiginit", CanopyOverflow_swiginit, METH_VARARGS, NULL},
-	 { (char *)"new_RutterInterception", (PyCFunction) _wrap_new_RutterInterception, METH_VARARGS | METH_KEYWORDS, (char *)"new_RutterInterception(cmf::water::WaterStorage::ptr Canopy, cmf::water::flux_node::ptr target, Cell cell) -> RutterInterception"},
+	 { (char *)"new_RutterInterception", (PyCFunction) _wrap_new_RutterInterception, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
+		"new_RutterInterception(cmf::water::WaterStorage::ptr Canopy, cmf::water::flux_node::ptr target, Cell cell) -> RutterInterception\n"
+		"\n"
+		"RutterInterception(cmf::water::WaterStorage::ptr Canopy,\n"
+		"cmf::water::flux_node::ptr target, cmf::upslope::Cell &cell) \n"
+		""},
 	 { (char *)"RutterInterception_use_for_cell", (PyCFunction) _wrap_RutterInterception_use_for_cell, METH_VARARGS | METH_KEYWORDS, (char *)"RutterInterception_use_for_cell(Cell cell) -> RutterInterception"},
 	 { (char *)"delete_RutterInterception", (PyCFunction)_wrap_delete_RutterInterception, METH_O, (char *)"delete_RutterInterception(RutterInterception self)"},
 	 { (char *)"RutterInterception_swigregister", RutterInterception_swigregister, METH_VARARGS, NULL},
@@ -70639,7 +70895,12 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"delete_SimplRichards", (PyCFunction)_wrap_delete_SimplRichards, METH_O, (char *)"delete_SimplRichards(SimplRichards self)"},
 	 { (char *)"SimplRichards_swigregister", SimplRichards_swigregister, METH_VARARGS, NULL},
 	 { (char *)"SimplRichards_swiginit", SimplRichards_swiginit, METH_VARARGS, NULL},
-	 { (char *)"new_GradientMacroFlow", (PyCFunction) _wrap_new_GradientMacroFlow, METH_VARARGS | METH_KEYWORDS, (char *)"new_GradientMacroFlow(cmf::upslope::MacroPore::ptr left, cmf::water::flux_node::ptr right) -> GradientMacroFlow"},
+	 { (char *)"new_GradientMacroFlow", (PyCFunction) _wrap_new_GradientMacroFlow, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
+		"new_GradientMacroFlow(cmf::upslope::MacroPore::ptr left, cmf::water::flux_node::ptr right) -> GradientMacroFlow\n"
+		"\n"
+		"GradientMacroFlow(cmf::upslope::MacroPore::ptr left,\n"
+		"cmf::water::flux_node::ptr right) \n"
+		""},
 	 { (char *)"delete_GradientMacroFlow", (PyCFunction)_wrap_delete_GradientMacroFlow, METH_O, (char *)"delete_GradientMacroFlow(GradientMacroFlow self)"},
 	 { (char *)"GradientMacroFlow_swigregister", GradientMacroFlow_swigregister, METH_VARARGS, NULL},
 	 { (char *)"GradientMacroFlow_swiginit", GradientMacroFlow_swiginit, METH_VARARGS, NULL},
@@ -70851,7 +71112,26 @@ static PyMethodDef SwigMethods[] = {
 		"\n"
 		"real\n"
 		"cmf::upslope::ET::Tact(real Tpot, const cmf::upslope::SoilLayer &sw,\n"
-		"const cmf::upslope::vegetation::Vegetation &veg) \n"
+		"const cmf::upslope::vegetation::Vegetation &veg)\n"
+		"\n"
+		"A function to calculate the actual transpiration for each soil layer\n"
+		"using a Feddes like approach.\n"
+		"\n"
+		"This function is used to calculate the actual water uptake in m³/day\n"
+		"from a single soillayer sw according to root depth and the potential\n"
+		"transpiration (or ETpot if there is no difference) in mm/day The water\n"
+		"flux is calculated as follows:\n"
+		"\\\\[q_{T_{pot}}[m^3/day]=T_{pot}[mm/day] 10^{-3}[mm/m]A_{cell}[m^2]\n"
+		"f_r\\\\] where:  $q_{T_{pot}}$: the potential transpiration flux from\n"
+		"this layer\n"
+		"\n"
+		"$T_{pot}$: the potential transpiration for the cell\n"
+		"\n"
+		"$A_{cell}$: the area of the cell\n"
+		"\n"
+		"$f_r=\\\\frac{R_{layer}}{\\\\sum_{i=0}^{layers}{R_i}}$: the root mass\n"
+		"in this layer per total root mass at this cell. This is calculated\n"
+		"with the cmf::upslope::vegetation::Vegetation::RootFraction \n"
 		""},
 	 { (char *)"constantETpot_ETpot_value_set", _wrap_constantETpot_ETpot_value_set, METH_VARARGS, (char *)"constantETpot_ETpot_value_set(constantETpot self, real ETpot_value)"},
 	 { (char *)"constantETpot_ETpot_value_get", (PyCFunction)_wrap_constantETpot_ETpot_value_get, METH_O, (char *)"constantETpot_ETpot_value_get(constantETpot self) -> real"},
@@ -71268,8 +71548,8 @@ static PyMethodDef SwigMethods[] = {
 		"project_NewReach(project self, double x, double y, double z, IChannel shape, bool diffusive=False) -> cmf::river::Reach::ptr\n"
 		"\n"
 		"cmf::river::Reach::ptr\n"
-		"NewReach(double x, double y, double z, double length, char Type='T',\n"
-		"double width=0.5, double depth=0.1, bool diffusive=false)\n"
+		"NewReach(double x, double y, double z, cmf::river::IChannel &shape,\n"
+		"bool diffusive=false)\n"
 		"\n"
 		"Creates a new reach.\n"
 		"\n"
@@ -71280,14 +71560,8 @@ static PyMethodDef SwigMethods[] = {
 		"\n"
 		"x:  y:  z:  Position of the reach in project coordinates\n"
 		"\n"
-		"length:  lenght of the reach in m\n"
-		"\n"
-		"Type:  Geometry of the river crosssection. Possible values: T\n"
-		"(Triangular), R (Rectangular), S (SWAT like trapzeoid), P (pipe)\n"
-		"\n"
-		"width:  Width of the channel between banks in m\n"
-		"\n"
-		"depth:  Depth of the channel in m\n"
+		"shape:  Crossectional geometry of the river. Any class inheriting from\n"
+		"cmf::water::IChannel\n"
 		"\n"
 		"diffusive:  If true, this reach uses by default a diffusive wave\n"
 		"connection \n"

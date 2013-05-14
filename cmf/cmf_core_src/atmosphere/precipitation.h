@@ -184,7 +184,7 @@ namespace cmf {
 			real get_intensity(cmf::math::Time t) const {
 				return m_station->data[t];
 			}
-			/// Returns the concentration of a solute in [solute unit]/m³ at time t in rainfall
+			/// Returns the concentration of a solute in [solute unit]/m3 at time t in rainfall
 			real conc(cmf::math::Time t, const cmf::water::solute& Solute) const{
 				return m_station->concentration.conc(t,Solute);
 			}

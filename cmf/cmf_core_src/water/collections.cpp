@@ -234,7 +234,7 @@ cmf::math::num_array cmf::water::NeumannBoundary_list::get_fluxes( cmf::math::Ti
 	cmf::math::num_array res(m_boundaries.size());
 	for (int i = 0; i < int(m_boundaries.size()) ; ++i)
 	{
-		res[i]=m_boundaries[i]->flux[t];
+		res[i]=m_boundaries[i]->get_flux()[t];
 	}
 	return res;
 }
@@ -247,7 +247,7 @@ void cmf::water::NeumannBoundary_list::set_fluxes( cmf::math::num_array values )
 	{
 		for (int i = 0; i < values.size() ; ++i)
 		{
-			m_boundaries[i]->flux= cmf::math::timeseries::from_scalar(values[i]);
+			m_boundaries[i]->set_flux(values[i]);
 		}
 	}
 }
