@@ -4216,6 +4216,9 @@ SWIGINTERN bool cmf_upslope_neighbor_iterator___neq__(cmf::upslope::neighbor_ite
 
 #define cmf_upslope_layer_list_ice_fraction_get(self_) self_->get_ice_fraction()
   
+
+#define cmf_upslope_layer_list_theta_get(self_) self_->get_theta()
+  
 SWIGINTERN cmf::upslope::SoilLayer::ptr cmf_upslope_layer_list___get(cmf::upslope::layer_list *self,int index){ return (*self)[index];}
 
 	#include "reach/ReachType.h"
@@ -49663,6 +49666,68 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_layer_list_set_theta(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  cmf::upslope::layer_list *arg1 = (cmf::upslope::layer_list *) 0 ;
+  cmf::math::num_array *arg2 = 0 ;
+  size_t arg3 = (size_t) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  size_t val3 ;
+  int ecode3 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char *  kwnames[] = {
+    (char *) "self",(char *) "Value",(char *) "offset", NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"OO|O:layer_list_set_theta",kwnames,&obj0,&obj1,&obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_cmf__upslope__layer_list, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "layer_list_set_theta" "', argument " "1"" of type '" "cmf::upslope::layer_list *""'"); 
+  }
+  arg1 = reinterpret_cast< cmf::upslope::layer_list * >(argp1);
+  {
+    // Convert a array_wrapper from numpy array
+    double * data=0;
+    size_t size = from_npy_array(obj1,&data); 
+    if (!data) {
+      SWIG_exception_fail(SWIG_TypeError,"Input data is not 'array-like' (in the sense of numpy arrays)");
+      return NULL;
+    }
+    arg2 = new cmf::math::num_array(data,size);
+  }
+  if (obj2) {
+    ecode3 = SWIG_AsVal_size_t(obj2, &val3);
+    if (!SWIG_IsOK(ecode3)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "layer_list_set_theta" "', argument " "3"" of type '" "size_t""'");
+    } 
+    arg3 = static_cast< size_t >(val3);
+  }
+  {
+    try {
+      (arg1)->set_theta((cmf::math::num_array const &)*arg2,arg3);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+    
+  }
+  resultobj = SWIG_Py_Void();
+  {
+    delete arg2;
+  }
+  return resultobj;
+fail:
+  {
+    delete arg2;
+  }
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_layer_list_set_ice_fraction(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   cmf::upslope::layer_list *arg1 = (cmf::upslope::layer_list *) 0 ;
@@ -50117,6 +50182,40 @@ SWIGINTERN PyObject *_wrap_layer_list_ice_fraction_get(PyObject *SWIGUNUSEDPARM(
   {
     try {
       result = cmf_upslope_layer_list_ice_fraction_get(arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+    
+  }
+  {
+    resultobj = as_npy_array(result);
+  }
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_layer_list_theta_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  cmf::upslope::layer_list *arg1 = (cmf::upslope::layer_list *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  cmf::math::num_array result;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__upslope__layer_list, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "layer_list_theta_get" "', argument " "1"" of type '" "cmf::upslope::layer_list *""'"); 
+  }
+  arg1 = reinterpret_cast< cmf::upslope::layer_list * >(argp1);
+  {
+    try {
+      result = cmf_upslope_layer_list_theta_get(arg1);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -70039,6 +70138,7 @@ static PyMethodDef SwigMethods[] = {
 		"\n"
 		"Sets the Volume in m3 of layers [offset : arraysize]. \n"
 		""},
+	 { (char *)"layer_list_set_theta", (PyCFunction) _wrap_layer_list_set_theta, METH_VARARGS | METH_KEYWORDS, (char *)"layer_list_set_theta(layer_list self, cmf::math::num_array const & Value, size_t offset=0)"},
 	 { (char *)"layer_list_set_ice_fraction", (PyCFunction) _wrap_layer_list_set_ice_fraction, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
 		"layer_list_set_ice_fraction(layer_list self, cmf::math::num_array const & Value, size_t offset=0)\n"
 		"\n"
@@ -70057,6 +70157,7 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"layer_list_upper_boundary_get", (PyCFunction)_wrap_layer_list_upper_boundary_get, METH_O, (char *)"layer_list_upper_boundary_get(layer_list self) -> cmf::math::num_array"},
 	 { (char *)"layer_list_porosity_get", (PyCFunction)_wrap_layer_list_porosity_get, METH_O, (char *)"layer_list_porosity_get(layer_list self) -> cmf::math::num_array"},
 	 { (char *)"layer_list_ice_fraction_get", (PyCFunction)_wrap_layer_list_ice_fraction_get, METH_O, (char *)"layer_list_ice_fraction_get(layer_list self) -> cmf::math::num_array"},
+	 { (char *)"layer_list_theta_get", (PyCFunction)_wrap_layer_list_theta_get, METH_O, (char *)"layer_list_theta_get(layer_list self) -> cmf::math::num_array"},
 	 { (char *)"layer_list___get", (PyCFunction) _wrap_layer_list___get, METH_VARARGS | METH_KEYWORDS, (char *)"layer_list___get(layer_list self, int index) -> cmf::upslope::SoilLayer::ptr"},
 	 { (char *)"delete_layer_list", (PyCFunction)_wrap_delete_layer_list, METH_O, (char *)"delete_layer_list(layer_list self)"},
 	 { (char *)"layer_list_swigregister", layer_list_swigregister, METH_VARARGS, NULL},
