@@ -105,9 +105,21 @@ namespace cmf {
 			{
 				return flux_scale(value);
 			}
+			cmf::math::timeseries _flux;
 		public:
 			/// The timeseries of the boundary flux
-			cmf::math::timeseries flux;
+			cmf::math::timeseries get_flux() {
+				return _flux;
+			}
+			/// Set a timeseries as the boundary flux
+			void set_flux(cmf::math::timeseries new_flux) {
+				_flux = new_flux;
+			}
+			/// Set a constant as the boundary flux
+			void set_flux(double new_flux) {
+				_flux = cmf::math::timeseries::from_scalar(new_flux);
+			}
+
 			/// The scaling of the flux timeseries
 			linear_scale flux_scale;
 			/// The concentration timeseries of the flux
@@ -121,7 +133,7 @@ namespace cmf {
 			real operator()(cmf::math::Time t) const;
 			double is_empty() const
 			{
-				return flux.is_empty() ? 1 : 0;
+				return _flux.is_empty() ? 1 : 0;
 			}
 			bool RecalcFluxes(cmf::math::Time t) 
 			{
