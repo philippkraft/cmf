@@ -3334,93 +3334,6 @@ cmf::water::generic_gradient_connection::to_string "std::string
 to_string() const ";
 
 
-// File: classcmf_1_1upslope_1_1connections_1_1_gradient_macro_flow.xml
-%feature("docstring") cmf::upslope::connections::GradientMacroFlow "
-
-Gradient based flux from macro pore to macro pore.
-
-\\\\[ q = K(\\\\theta) \\\\frac{\\\\Delta \\\\Psi}{\\\\Delta z} \\\\]
-
-C++ includes: Percolation.h ";
-
-%feature("docstring")
-cmf::upslope::connections::GradientMacroFlow::GradientMacroFlow "GradientMacroFlow(cmf::upslope::MacroPore::ptr left,
-cmf::water::flux_node::ptr right) ";
-
-%feature("docstring")
-cmf::upslope::connections::GradientMacroFlow::conc "real
-conc(cmf::math::Time t, const cmf::water::solute &_Solute)
-
-Returns the concentration of the flux.
-
-If not overridden, it returns the concentration of the source of the
-flux (direction depending) ";
-
-%feature("docstring")
-cmf::upslope::connections::GradientMacroFlow::exchange_target "void
-exchange_target(flux_node::ptr oldtarget, flux_node::ptr newTarget) ";
-
-%feature("docstring")
-cmf::upslope::connections::GradientMacroFlow::get_ptr "ptr get_ptr()
-const ";
-
-%feature("docstring")
-cmf::upslope::connections::GradientMacroFlow::get_target "flux_node::ptr get_target(const flux_node &inquirer)
-
-Returns the other end of a connection than the asking end. ";
-
-%feature("docstring")
-cmf::upslope::connections::GradientMacroFlow::get_target "flux_node::ptr get_target(int index) const
-
-With index 0, the left node is returned, with index 1 the right node
-of the connection. ";
-
-%feature("docstring")
-cmf::upslope::connections::GradientMacroFlow::get_tracer_filter "real
-get_tracer_filter()
-
-A value ranging from 0 to 1. ";
-
-%feature("docstring")
-cmf::upslope::connections::GradientMacroFlow::kill_me "bool kill_me()
-
-Deregisters this connection from its nodes. Returns true if only one
-reference is left. ";
-
-%feature("docstring")
-cmf::upslope::connections::GradientMacroFlow::left_node "flux_node::ptr left_node() const
-
-Returns the left node of this connection. ";
-
-%feature("docstring")  cmf::upslope::connections::GradientMacroFlow::q
-"real q(const flux_node &inquirer, cmf::math::Time t)
-
-Returns the current flux through a connection. Negative signs mean out
-of the inquirer, positive are inflows to the inquirer. ";
-
-%feature("docstring")
-cmf::upslope::connections::GradientMacroFlow::refresh "void
-refresh(cmf::math::Time t)
-
-Performes a new calculation of the flux. ";
-
-%feature("docstring")
-cmf::upslope::connections::GradientMacroFlow::right_node "flux_node::ptr right_node() const
-
-returns the right node of this connection ";
-
-%feature("docstring")
-cmf::upslope::connections::GradientMacroFlow::set_tracer_filter "void
-set_tracer_filter(real value) ";
-
-%feature("docstring")
-cmf::upslope::connections::GradientMacroFlow::short_string "std::string short_string() const ";
-
-%feature("docstring")
-cmf::upslope::connections::GradientMacroFlow::to_string "std::string
-to_string() const ";
-
-
 // File: classcmf_1_1upslope_1_1_e_t_1_1_hargreave_e_t.xml
 %feature("docstring") cmf::upslope::ET::HargreaveET "
 
@@ -3499,6 +3412,9 @@ set_tracer_filter(real value) ";
 
 // File: classcmf_1_1upslope_1_1connections_1_1_h_b_vlateral.xml
 %feature("docstring") cmf::upslope::connections::HBVlateral "
+
+Deprecated This code is experimental and might be deleted in the near
+future
 
 Lateral flow using a simple linear storage, can be directed to another
 cell (HBV D like) or to a reach (HBV like)
@@ -3589,9 +3505,11 @@ to_string() const ";
 // File: structcmf_1_1upslope_1_1connections_1_1_h_b_vparameters.xml
 %feature("docstring") cmf::upslope::connections::HBVparameters "
 
-This class holds the properties for all HBV like connections
+Deprecated This code is experimental and might be deleted in the near
+future
+
 Implements the RetentionCurve interface is only partly, therefore it
-is not suitable for other connection types.
+is not suitable for other connection types
 
 \\\\begin{eqnarray*} K(w,d) &=& PERC w \\\\\\\\ \\\\Psi_{M} &=& 10 -
 \\\\frac{10}{w}\\\\\\\\ w(\\\\Psi_{M}) &=& \\\\frac{10}{10 -
@@ -3677,7 +3595,10 @@ cmf::upslope::connections::HBVparameters::Wetness_pF "cmf::math::num_array Wetne
 // File: classcmf_1_1upslope_1_1connections_1_1_h_b_vpercolation.xml
 %feature("docstring") cmf::upslope::connections::HBVpercolation "
 
-Calculates the percolation as in the HBV model.
+Deprecated This code is experimental and might be deleted in the near
+future
+
+Calculates the percolation as in the HBV model
 
 \\\\[ Q = \\\\left\\\\{Q_{in}
 \\\\left(\\\\frac{V}{FC}\\\\right)^\\\\beta\\\\mbox{ if first layer}
@@ -4482,10 +4403,11 @@ double V(double h) const =0 ";
 Calculates flux out of a storage as a linear function of its volume to
 a power.
 
-\\\\[ q = \\\\frac {V_{mobile}^\\\\beta}{t_r} \\\\] where:
-$V_{mobile} [m^3] = V - V_{residual}$ the stored mobile volume
+\\\\[ q = \\\\frac 1 {t_r} {\\\\left(\\\\frac{V}{V_0} -
+f_{residual}\\\\right)^\\\\beta} \\\\] where:  $V_{residual} [m^3]$
+The volume of water not flowing out (default = 0)
 
-$\\\\beta [-]$ An empirical exponent to shape the flux function
+$V_0$ The reference volume to scale the exponent
 
 $t_r [days]$ The residence time of the water in this storage in days
 
@@ -4576,6 +4498,77 @@ returns the right node of this connection ";
 %feature("docstring")  cmf::water::kinematic_wave::short_string "std::string short_string() const ";
 
 %feature("docstring")  cmf::water::kinematic_wave::to_string "std::string to_string() const ";
+
+
+// File: classcmf_1_1river_1_1_kinematic_sheet_flow.xml
+%feature("docstring") cmf::river::KinematicSheetFlow "";
+
+%feature("docstring")
+cmf::river::KinematicSheetFlow::KinematicSheetFlow "KinematicSheetFlow(cmf::river::OpenWaterStorage::ptr left,
+cmf::water::flux_node::ptr right) ";
+
+%feature("docstring")  cmf::river::KinematicSheetFlow::conc "real
+conc(cmf::math::Time t, const cmf::water::solute &_Solute)
+
+Returns the concentration of the flux.
+
+If not overridden, it returns the concentration of the source of the
+flux (direction depending) ";
+
+%feature("docstring")  cmf::river::KinematicSheetFlow::exchange_target
+"void exchange_target(flux_node::ptr oldtarget, flux_node::ptr
+newTarget) ";
+
+%feature("docstring")  cmf::river::KinematicSheetFlow::get_ptr "ptr
+get_ptr() const ";
+
+%feature("docstring")  cmf::river::KinematicSheetFlow::get_target "flux_node::ptr get_target(const flux_node &inquirer)
+
+Returns the other end of a connection than the asking end. ";
+
+%feature("docstring")  cmf::river::KinematicSheetFlow::get_target "flux_node::ptr get_target(int index) const
+
+With index 0, the left node is returned, with index 1 the right node
+of the connection. ";
+
+%feature("docstring")
+cmf::river::KinematicSheetFlow::get_tracer_filter "real
+get_tracer_filter()
+
+A value ranging from 0 to 1. ";
+
+%feature("docstring")  cmf::river::KinematicSheetFlow::kill_me "bool
+kill_me()
+
+Deregisters this connection from its nodes. Returns true if only one
+reference is left. ";
+
+%feature("docstring")  cmf::river::KinematicSheetFlow::left_node "flux_node::ptr left_node() const
+
+Returns the left node of this connection. ";
+
+%feature("docstring")  cmf::river::KinematicSheetFlow::q "real
+q(const flux_node &inquirer, cmf::math::Time t)
+
+Returns the current flux through a connection. Negative signs mean out
+of the inquirer, positive are inflows to the inquirer. ";
+
+%feature("docstring")  cmf::river::KinematicSheetFlow::refresh "void
+refresh(cmf::math::Time t)
+
+Performes a new calculation of the flux. ";
+
+%feature("docstring")  cmf::river::KinematicSheetFlow::right_node "flux_node::ptr right_node() const
+
+returns the right node of this connection ";
+
+%feature("docstring")
+cmf::river::KinematicSheetFlow::set_tracer_filter "void
+set_tracer_filter(real value) ";
+
+%feature("docstring")  cmf::river::KinematicSheetFlow::short_string "std::string short_string() const ";
+
+%feature("docstring")  cmf::river::KinematicSheetFlow::to_string "std::string to_string() const ";
 
 
 // File: classcmf_1_1upslope_1_1connections_1_1lateral__sub__surface__flux.xml
@@ -4753,6 +4746,8 @@ Returns an array containing the potentials of all layers in the list.
 %feature("docstring")  cmf::upslope::layer_list::get_slice "layer_list get_slice(size_t first=0, size_t last=1000000, size_t
 step=1) ";
 
+%feature("docstring")  cmf::upslope::layer_list::get_theta "cmf::math::num_array get_theta() const ";
+
 %feature("docstring")  cmf::upslope::layer_list::get_thickness "cmf::math::num_array get_thickness() const
 
 Returns an array containing the thickness in m of all layers in the
@@ -4779,12 +4774,19 @@ pop()
 Deletes the last layer from the list and returns it. ";
 
 %feature("docstring")  cmf::upslope::layer_list::set_ice_fraction "void set_ice_fraction(const cmf::math::num_array &Value, size_t
-offset=0) ";
+offset=0)
+
+Sets the fraction of the ice content of the soil water. ";
 
 %feature("docstring")  cmf::upslope::layer_list::set_potential "void
 set_potential(const cmf::math::num_array &Value, size_t offset=0)
 
 Sets the potential (head) in m of layers [offset : arraysize]. ";
+
+%feature("docstring")  cmf::upslope::layer_list::set_theta "void
+set_theta(const cmf::math::num_array &Value, size_t offset=0)
+
+Sets the volumetric water content of the soil. ";
 
 %feature("docstring")  cmf::upslope::layer_list::set_volume "void
 set_volume(const cmf::math::num_array &Value, size_t offset=0)
@@ -6067,6 +6069,10 @@ Returns the sum of all flux vectors. ";
 
 %feature("docstring")  cmf::water::NeumannBoundary::get_connections "cmf::water::connection_list get_connections() const ";
 
+%feature("docstring")  cmf::water::NeumannBoundary::get_flux "cmf::math::timeseries get_flux()
+
+The timeseries of the boundary flux. ";
+
 %feature("docstring")  cmf::water::NeumannBoundary::get_potential "virtual real get_potential() const
 
 Returns the water potential of the node in m waterhead.
@@ -6099,6 +6105,16 @@ the fluxes ";
 "bool remove_connection(cmf::water::flux_node::ptr To)
 
 Remove the connection. ";
+
+%feature("docstring")  cmf::water::NeumannBoundary::set_flux "void
+set_flux(cmf::math::timeseries new_flux)
+
+Set a timeseries as the boundary flux. ";
+
+%feature("docstring")  cmf::water::NeumannBoundary::set_flux "void
+set_flux(double new_flux)
+
+Set a constant as the boundary flux. ";
 
 %feature("docstring")  cmf::water::NeumannBoundary::set_potential "virtual void set_potential(real new_potential)
 
@@ -6150,16 +6166,23 @@ cmf::water::NeumannBoundary_list::NeumannBoundary_list "NeumannBoundary_list(con
 cmf::water::NeumannBoundary_list::NeumannBoundary_list "NeumannBoundary_list(const NeumannBoundary_list &copy) ";
 
 %feature("docstring")  cmf::water::NeumannBoundary_list::append "void
-append(NeumannBoundary::ptr nbc) ";
+append(NeumannBoundary::ptr nbc)
+
+Appends a neumann boundary to this list. ";
 
 %feature("docstring")  cmf::water::NeumannBoundary_list::get "NeumannBoundary::ptr get(int index) const
 
-Returns the Neumann boundary condition at position index. ";
+Returns the Neumann boundary condition at position index.
+
+From Python you can use [] ";
 
 %feature("docstring")  cmf::water::NeumannBoundary_list::get_fluxes "cmf::math::num_array get_fluxes(cmf::math::Time t=cmf::math::Time())
 const
 
-Returns the fluxes of the items as an array. ";
+Returns the fluxes of the items as an array.
+
+get_fluxes and set_fluxes are wrapped with the Python property fluxes
+";
 
 %feature("docstring")
 cmf::water::NeumannBoundary_list::global_water_balance "real
@@ -6171,10 +6194,17 @@ Returns the sum of the water balances of the nodes
 
 Replaces slow Python code like: ";
 
-%feature("docstring")  cmf::water::NeumannBoundary_list::set_fluxes "void set_fluxes(cmf::math::num_array values) ";
+%feature("docstring")  cmf::water::NeumannBoundary_list::set_fluxes "void set_fluxes(cmf::math::num_array values)
+
+Sets the fluxes of the items from an array.
+
+get_fluxes and set_fluxes are wrapped with the Python property fluxes
+";
 
 %feature("docstring")  cmf::water::NeumannBoundary_list::size "size_t
-size() const ";
+size() const
+
+returns the number of stored boundary conditions ";
 
 %feature("docstring")  cmf::water::NeumannBoundary_list::to_node_list
 "cmf::water::node_list to_node_list() const
@@ -8623,101 +8653,6 @@ returns the volumetric water content at a given pF value ";
 ";
 
 
-// File: classcmf_1_1upslope_1_1connections_1_1_richards.xml
-%feature("docstring") cmf::upslope::connections::Richards "
-
-Calculates flow according to the Richards equation.
-
-\\\\begin{eqnarray*} q_{Richards} &=&
-\\\\frac{\\\\Delta\\\\Psi_{tot}}{d} K(\\\\theta) A \\\\\\\\
-\\\\Psi_{tot} &= &\\\\Psi_{M}(\\\\theta) + h \\\\end{eqnarray*} where
-$ \\\\Delta\\\\Psi_{tot} [m]$ is the difference of the total water
-potentials of the two soil layers
-
-$ d [m]$ is the distance between the two soil layers
-
-$ K(\\\\theta)\\\\left[\\\\frac m{day}\\\\right]$ is the geometric
-mean conductivity (see SoilType::Kunsat)
-
-$ A [m^2]$ is the crosssectional area of the flux
-
-$ \\\\Psi_M(\\\\theta) [m]$ is the matrix potential (see
-SoilType::MatrixPotential)
-
-$ h [m]$ is the height of a soil layer above sea level
-
-C++ includes: Percolation.h ";
-
-%feature("docstring")  cmf::upslope::connections::Richards::Richards "Richards(cmf::upslope::SoilLayer::ptr left, cmf::water::flux_node::ptr
-right) ";
-
-%feature("docstring")  cmf::upslope::connections::Richards::conc "real conc(cmf::math::Time t, const cmf::water::solute &_Solute)
-
-Returns the concentration of the flux.
-
-If not overridden, it returns the concentration of the source of the
-flux (direction depending) ";
-
-%feature("docstring")
-cmf::upslope::connections::Richards::exchange_target "void
-exchange_target(flux_node::ptr oldtarget, flux_node::ptr newTarget) ";
-
-%feature("docstring")  cmf::upslope::connections::Richards::get_ptr "ptr get_ptr() const ";
-
-%feature("docstring")  cmf::upslope::connections::Richards::get_target
-"flux_node::ptr get_target(const flux_node &inquirer)
-
-Returns the other end of a connection than the asking end. ";
-
-%feature("docstring")  cmf::upslope::connections::Richards::get_target
-"flux_node::ptr get_target(int index) const
-
-With index 0, the left node is returned, with index 1 the right node
-of the connection. ";
-
-%feature("docstring")
-cmf::upslope::connections::Richards::get_tracer_filter "real
-get_tracer_filter()
-
-A value ranging from 0 to 1. ";
-
-%feature("docstring")  cmf::upslope::connections::Richards::kill_me "bool kill_me()
-
-Deregisters this connection from its nodes. Returns true if only one
-reference is left. ";
-
-%feature("docstring")  cmf::upslope::connections::Richards::left_node
-"flux_node::ptr left_node() const
-
-Returns the left node of this connection. ";
-
-%feature("docstring")  cmf::upslope::connections::Richards::q "real
-q(const flux_node &inquirer, cmf::math::Time t)
-
-Returns the current flux through a connection. Negative signs mean out
-of the inquirer, positive are inflows to the inquirer. ";
-
-%feature("docstring")  cmf::upslope::connections::Richards::refresh "void refresh(cmf::math::Time t)
-
-Performes a new calculation of the flux. ";
-
-%feature("docstring")  cmf::upslope::connections::Richards::right_node
-"flux_node::ptr right_node() const
-
-returns the right node of this connection ";
-
-%feature("docstring")
-cmf::upslope::connections::Richards::set_tracer_filter "void
-set_tracer_filter(real value) ";
-
-%feature("docstring")
-cmf::upslope::connections::Richards::short_string "std::string
-short_string() const ";
-
-%feature("docstring")  cmf::upslope::connections::Richards::to_string
-"std::string to_string() const ";
-
-
 // File: classcmf_1_1upslope_1_1connections_1_1_richards__lateral.xml
 %feature("docstring") cmf::upslope::connections::Richards_lateral "
 
@@ -9296,103 +9231,6 @@ cmf::upslope::connections::SimpleTindexSnowMelt::short_string "std::string short
 
 %feature("docstring")
 cmf::upslope::connections::SimpleTindexSnowMelt::to_string "std::string to_string() const ";
-
-
-// File: classcmf_1_1upslope_1_1connections_1_1_simpl_richards.xml
-%feature("docstring") cmf::upslope::connections::SimplRichards "
-
-Calculates flow according to a simplified Richards equation.
-
-\\\\begin{eqnarray*} q_{Richards} &=& (K(\\\\theta) - K(\\\\theta_r))
-A \\\\\\\\ \\\\end{eqnarray*} where  $ d [m]$ is the distance between
-the two soil layers
-
-$ K(\\\\theta)\\\\left[\\\\frac m{day}\\\\right]$ is the geometric
-mean conductivity (see SoilType::Kunsat)
-
-$ A [m^2]$ is the crosssectional area of the flux
-
-C++ includes: Percolation.h ";
-
-%feature("docstring")
-cmf::upslope::connections::SimplRichards::SimplRichards "SimplRichards(cmf::upslope::SoilLayer::ptr left,
-cmf::water::flux_node::ptr right) ";
-
-%feature("docstring")  cmf::upslope::connections::SimplRichards::conc
-"real conc(cmf::math::Time t, const cmf::water::solute &_Solute)
-
-Returns the concentration of the flux.
-
-If not overridden, it returns the concentration of the source of the
-flux (direction depending) ";
-
-%feature("docstring")
-cmf::upslope::connections::SimplRichards::exchange_target "void
-exchange_target(flux_node::ptr oldtarget, flux_node::ptr newTarget) ";
-
-%feature("docstring")
-cmf::upslope::connections::SimplRichards::get_ptr "ptr get_ptr()
-const ";
-
-%feature("docstring")
-cmf::upslope::connections::SimplRichards::get_target "flux_node::ptr
-get_target(const flux_node &inquirer)
-
-Returns the other end of a connection than the asking end. ";
-
-%feature("docstring")
-cmf::upslope::connections::SimplRichards::get_target "flux_node::ptr
-get_target(int index) const
-
-With index 0, the left node is returned, with index 1 the right node
-of the connection. ";
-
-%feature("docstring")
-cmf::upslope::connections::SimplRichards::get_tracer_filter "real
-get_tracer_filter()
-
-A value ranging from 0 to 1. ";
-
-%feature("docstring")
-cmf::upslope::connections::SimplRichards::kill_me "bool kill_me()
-
-Deregisters this connection from its nodes. Returns true if only one
-reference is left. ";
-
-%feature("docstring")
-cmf::upslope::connections::SimplRichards::left_node "flux_node::ptr
-left_node() const
-
-Returns the left node of this connection. ";
-
-%feature("docstring")  cmf::upslope::connections::SimplRichards::q "real q(const flux_node &inquirer, cmf::math::Time t)
-
-Returns the current flux through a connection. Negative signs mean out
-of the inquirer, positive are inflows to the inquirer. ";
-
-%feature("docstring")
-cmf::upslope::connections::SimplRichards::refresh "void
-refresh(cmf::math::Time t)
-
-Performes a new calculation of the flux. ";
-
-%feature("docstring")
-cmf::upslope::connections::SimplRichards::right_node "flux_node::ptr
-right_node() const
-
-returns the right node of this connection ";
-
-%feature("docstring")
-cmf::upslope::connections::SimplRichards::set_tracer_filter "void
-set_tracer_filter(real value) ";
-
-%feature("docstring")
-cmf::upslope::connections::SimplRichards::short_string "std::string
-short_string() const ";
-
-%feature("docstring")
-cmf::upslope::connections::SimplRichards::to_string "std::string
-to_string() const ";
 
 
 // File: classcmf_1_1upslope_1_1_e_t_1_1snow__evaporation.xml
@@ -10547,96 +10385,191 @@ evap_from_openwater(cmf::river::OpenWaterStorage::ptr,
 cmf::math::Time)=0 ";
 
 
-// File: classcmf_1_1upslope_1_1connections_1_1_s_w_a_t_percolation.xml
-%feature("docstring") cmf::upslope::connections::SWATPercolation "
+// File: classcmf_1_1upslope_1_1_surface_water.xml
+%feature("docstring") cmf::upslope::SurfaceWater "";
 
-A tipping bucket percolation approach similar to the approach in SWAT.
+/*  Overrides of flux_node  */
 
-\\\\begin{eqnarray*} q_{perc} &=&
-V_{H_2O,drain}\\\\left(1-e^{-\\\\frac 1{-TT_{perc}}}\\\\right)
-\\\\\\\\ TT_{perc} &=& \\\\frac{V_{pores,drain} - V_{field
-cap.}}{K_{sat}} \\\\\\\\ V_{x,drain} &=& V_{x,drain} - V_{field cap.}
-\\\\end{eqnarray*}
+%feature("docstring")  cmf::upslope::SurfaceWater::RecalcFluxes "virtual bool RecalcFluxes(cmf::math::Time t)
 
-C++ includes: Percolation.h ";
+Pure flux_nodes do not influence fluxes, therefore no recalculation of
+fluxes is required by flux_node.
+
+WaterStorage overrides this, since state changes require an update of
+the fluxes ";
+
+%feature("docstring")  cmf::upslope::SurfaceWater::is_empty "virtual
+double is_empty() const
+
+Returns true if the node has no water. ";
+
+%feature("docstring")  cmf::upslope::SurfaceWater::conc "real
+conc(cmf::math::Time t, const cmf::water::solute &solute) const
+
+Returns the water quality of the flux_node, if it is not overridden
+this is the mix of the incoming fluxes. ";
+
+%feature("docstring")  cmf::upslope::SurfaceWater::conc "real
+conc(const cmf::water::solute &_Solute) const
+
+Returns the concentration of the given solute. ";
+
+%feature("docstring")  cmf::upslope::SurfaceWater::conc "void
+conc(const cmf::water::solute &_Solute, real NewConcetration)
+
+Sets a new concentration. ";
+
+%feature("docstring")  cmf::upslope::SurfaceWater::connection_to "cmf::water::flux_connection* connection_to(const cmf::water::flux_node
+&target)
+
+Returns the connection between this and target. ";
+
+%feature("docstring")  cmf::upslope::SurfaceWater::dxdt "virtual real
+dxdt(const cmf::math::Time &time)
+
+Returns the derivate of the state variable at time time. ";
+
+%feature("docstring")  cmf::upslope::SurfaceWater::flux3d_to "cmf::geometry::point flux3d_to(const cmf::water::flux_node &target,
+cmf::math::Time t) ";
+
+%feature("docstring")  cmf::upslope::SurfaceWater::flux_to "real
+flux_to(const cmf::water::flux_node &target, cmf::math::Time t)
+
+Returns the actual flux between this and target (positive sign means
+\"from target into this\") ";
+
+%feature("docstring")  cmf::upslope::SurfaceWater::get_3d_flux "cmf::geometry::point get_3d_flux(cmf::math::Time t)
+
+Returns the sum of all flux vectors. ";
+
+%feature("docstring")  cmf::upslope::SurfaceWater::get_abs_errtol "real get_abs_errtol(real rel_errtol) const ";
+
+%feature("docstring")  cmf::upslope::SurfaceWater::get_cell "Cell&
+get_cell() const ";
+
+%feature("docstring")  cmf::upslope::SurfaceWater::get_connections "cmf::water::connection_list get_connections() const ";
+
+%feature("docstring")  cmf::upslope::SurfaceWater::get_depth "real
+get_depth() const
+
+Returns the water table depth. ";
+
+%feature("docstring")  cmf::upslope::SurfaceWater::get_height_function
+"virtual const cmf::river::FlowSurface& get_height_function() const
+
+The functional relation between volume, depth and exposed area. ";
+
+%feature("docstring")  cmf::upslope::SurfaceWater::get_nManning "real
+get_nManning() const ";
+
+%feature("docstring")  cmf::upslope::SurfaceWater::get_potential "virtual real get_potential() const
+
+Returns the water potential of the node in m waterhead.
+
+The base class water storage always returns the height of the location
+";
+
+%feature("docstring")  cmf::upslope::SurfaceWater::get_project "cmf::project& get_project() const
+
+Returns the project, this node is part of. ";
+
+%feature("docstring")  cmf::upslope::SurfaceWater::get_puddle_depth "real get_puddle_depth() const ";
+
+%feature("docstring")  cmf::upslope::SurfaceWater::get_rill_azimuth "real get_rill_azimuth() const ";
+
+%feature("docstring")  cmf::upslope::SurfaceWater::get_rill_depth "real get_rill_depth() const ";
+
+%feature("docstring")  cmf::upslope::SurfaceWater::get_state "real
+get_state() const ";
 
 %feature("docstring")
-cmf::upslope::connections::SWATPercolation::SWATPercolation "SWATPercolation(cmf::upslope::SoilLayer::ptr upperLayer,
-cmf::upslope::SoilLayer::ptr lowerLayer) ";
+cmf::upslope::SurfaceWater::get_state_variable_content "char
+get_state_variable_content() const
+
+A character indicating the integrated variable (either 'V' for Volume
+or 'h' for head) ";
+
+%feature("docstring")  cmf::upslope::SurfaceWater::get_states "cmf::math::StateVariableList get_states()
+
+Add the state variables, owned by an object derived from
+StateVariableOwner, to the given vector. ";
+
+%feature("docstring")  cmf::upslope::SurfaceWater::get_volume "virtual real get_volume() const
+
+Returns the volume of water in this storage in m3 ";
+
+%feature("docstring")  cmf::upslope::SurfaceWater::is_storage "virtual bool is_storage() const
+
+Returns true, since this is a storage. ";
+
+%feature("docstring")  cmf::upslope::SurfaceWater::remove_connection "bool remove_connection(cmf::water::flux_node::ptr To)
+
+Remove the connection. ";
+
+%feature("docstring")  cmf::upslope::SurfaceWater::set_depth "void
+set_depth(real new_depth) ";
+
+%feature("docstring")  cmf::upslope::SurfaceWater::set_height_function
+"virtual void set_height_function(const
+cmf::river::IVolumeHeightFunction &val) ";
+
+%feature("docstring")  cmf::upslope::SurfaceWater::set_nManning "void
+set_nManning(real nManning) ";
+
+%feature("docstring")  cmf::upslope::SurfaceWater::set_potential "virtual void set_potential(real newpotential)
+
+Sets the potential of this flux node. ";
+
+%feature("docstring")  cmf::upslope::SurfaceWater::set_puddle_depth "void set_puddle_depth(real d_puddle) ";
+
+%feature("docstring")  cmf::upslope::SurfaceWater::set_rill_azimuth "void set_rill_azimuth(real val) ";
+
+%feature("docstring")  cmf::upslope::SurfaceWater::set_rill_depth "void set_rill_depth(real d_rill) ";
+
+%feature("docstring")  cmf::upslope::SurfaceWater::set_state "void
+set_state(real newState) ";
 
 %feature("docstring")
-cmf::upslope::connections::SWATPercolation::conc "real
-conc(cmf::math::Time t, const cmf::water::solute &_Solute)
+cmf::upslope::SurfaceWater::set_state_variable_content "void
+set_state_variable_content(char content)
 
-Returns the concentration of the flux.
+A character indicating the integrated variable (either 'V' for Volume
+or 'h' for head) ";
 
-If not overridden, it returns the concentration of the source of the
-flux (direction depending) ";
+%feature("docstring")  cmf::upslope::SurfaceWater::set_volume "virtual void set_volume(real newwatercontent)
 
-%feature("docstring")
-cmf::upslope::connections::SWATPercolation::exchange_target "void
-exchange_target(flux_node::ptr oldtarget, flux_node::ptr newTarget) ";
+Sets the volume of water in this storage in m3 ";
 
-%feature("docstring")
-cmf::upslope::connections::SWATPercolation::get_ptr "ptr get_ptr()
-const ";
+%feature("docstring")  cmf::upslope::SurfaceWater::Solute "SoluteStorage& Solute(const cmf::water::solute &_Solute)
 
-%feature("docstring")
-cmf::upslope::connections::SWATPercolation::get_target "flux_node::ptr get_target(const flux_node &inquirer)
+Returns the water quality of the water storage. ";
 
-Returns the other end of a connection than the asking end. ";
+%feature("docstring")  cmf::upslope::SurfaceWater::Solute "const
+SoluteStorage& Solute(const cmf::water::solute &_Solute) const ";
 
-%feature("docstring")
-cmf::upslope::connections::SWATPercolation::get_target "flux_node::ptr get_target(int index) const
+%feature("docstring")  cmf::upslope::SurfaceWater::to_string "virtual
+std::string to_string() const ";
 
-With index 0, the left node is returned, with index 1 the right node
-of the connection. ";
+%feature("docstring")  cmf::upslope::SurfaceWater::waterbalance "real
+waterbalance(cmf::math::Time t, const flux_connection *Without=0)
+const
 
-%feature("docstring")
-cmf::upslope::connections::SWATPercolation::get_tracer_filter "real
-get_tracer_filter()
+Returns the sum of all fluxes (positive and negative) at time t.
 
-A value ranging from 0 to 1. ";
+Single fluxes can be excluded from the calculation
 
-%feature("docstring")
-cmf::upslope::connections::SWATPercolation::kill_me "bool kill_me()
+Parameters:
+-----------
 
-Deregisters this connection from its nodes. Returns true if only one
-reference is left. ";
+t:  Time of the query
 
-%feature("docstring")
-cmf::upslope::connections::SWATPercolation::left_node "flux_node::ptr
-left_node() const
+Without:  A flux_connection that is excluded from the waterbalance
+(e.g. to prevent closed circuits) ";
 
-Returns the left node of this connection. ";
+%feature("docstring")  cmf::upslope::SurfaceWater::wet_area "real
+wet_area() const
 
-%feature("docstring")  cmf::upslope::connections::SWATPercolation::q "real q(const flux_node &inquirer, cmf::math::Time t)
-
-Returns the current flux through a connection. Negative signs mean out
-of the inquirer, positive are inflows to the inquirer. ";
-
-%feature("docstring")
-cmf::upslope::connections::SWATPercolation::refresh "void
-refresh(cmf::math::Time t)
-
-Performes a new calculation of the flux. ";
-
-%feature("docstring")
-cmf::upslope::connections::SWATPercolation::right_node "flux_node::ptr right_node() const
-
-returns the right node of this connection ";
-
-%feature("docstring")
-cmf::upslope::connections::SWATPercolation::set_tracer_filter "void
-set_tracer_filter(real value) ";
-
-%feature("docstring")
-cmf::upslope::connections::SWATPercolation::short_string "std::string
-short_string() const ";
-
-%feature("docstring")
-cmf::upslope::connections::SWATPercolation::to_string "std::string
-to_string() const ";
+Returns the exposed surface area in m2. ";
 
 
 // File: classcmf_1_1river_1_1_s_w_a_t_reach_type.xml
@@ -11835,7 +11768,7 @@ Genuchten 1980)
 Head - moisture relationship: \\\\begin{eqnarray*} W(\\\\theta) &=&
 \\\\frac{\\\\theta - \\\\theta_r}{\\\\theta_s - \\\\theta_r} \\\\\\\\
 K(W) &=& K_{sat} \\\\sqrt{W}
-\\\\left(\\\\left(1-w^{1/m}\\\\right)^m\\\\right)^2 \\\\\\\\ m &=&
+\\\\left(1-\\\\left(1-W^{1/m}\\\\right)^m\\\\right)^2 \\\\\\\\ m &=&
 1-\\\\frac 1 n \\\\\\\\ \\\\Psi(W) &=& 0.01 \\\\frac{m}{cm}
 \\\\frac{{\\\\left(1-{W}^{\\\\frac{1}{m}}\\\\right)
 }^{\\\\frac{1}{n}}}{\\\\alpha\\\\,{W}^{\\\\frac{1}{m\\\\,n}}} \\\\\\\\
@@ -11901,7 +11834,7 @@ tolerance:  ";
 real K(real wetness) const
 
 \\\\[K(W) = K_{sat} \\\\sqrt{W}
-\\\\left(\\\\left(1-w^{1/m}\\\\right)^m\\\\right)^2 \\\\] ";
+\\\\left(1-\\\\left(1-W^{1/m}\\\\right)^m\\\\right)^2 \\\\] ";
 
 %feature("docstring")
 cmf::upslope::VanGenuchtenMualem::MatricPotential "cmf::math::num_array MatricPotential(const cmf::math::num_array
@@ -12641,8 +12574,11 @@ Converts a height of a water column in m to a pressure in Pa. ";
 cmf::upslope::connections::HBVinstall(HBVparameters parameters,
 cmf::upslope::Cell &cell)
 
+Deprecated This code is experimental and might be deleted in the near
+future
+
 Installs an HBV like model setup at a cell Reference: Bergstroem et al
-1995, in Singh (1995): Computer models of watershed hydrology.
+1995, in Singh (1995): Computer models of watershed hydrology
 
 Removes the layers of a cell and adds three layers with 1m thickness
 and the HBVparameters as retention curve. Installs HBVpercolation
@@ -13844,6 +13780,9 @@ x, real xmin, real xmax, real ymin=0, real ymax=1) ";
 // File: _soil_layer_8h.xml
 
 
+// File: surfacewater_8h.xml
+
+
 // File: _topology_8h.xml
 
 
@@ -13904,9 +13843,6 @@ x, real xmin, real xmax, real ymin=0, real ymax=1) ";
 // File: group__meteo.xml
 
 
-// File: group__perc.xml
-
-
 // File: group__storages.xml
 
 
@@ -13920,6 +13856,9 @@ x, real xmin, real xmax, real ymin=0, real ymax=1) ";
 
 
 // File: todo.xml
+
+
+// File: deprecated.xml
 
 
 // File: dir_9a42c93f70334fa927fb80cf04ad379b.xml

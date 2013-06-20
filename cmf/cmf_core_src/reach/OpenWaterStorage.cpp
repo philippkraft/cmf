@@ -44,11 +44,11 @@ cmf::river::OpenWaterStorage::OpenWaterStorage(cmf::project& _project, const cmf
 
 inline real cmf::river::OpenWaterStorage::head_to_volume(real head) const
 {
-	return height_function->V(head - this->position.z);
+	return get_height_function().V(head - this->position.z);
 }
 inline real cmf::river::OpenWaterStorage::volume_to_head(real volume) const
 {
-	return height_function->h(volume) + this->position.z;
+	return get_height_function().h(volume) + this->position.z;
 }
 
 real cmf::river::OpenWaterStorage::get_depth() const
@@ -56,7 +56,7 @@ real cmf::river::OpenWaterStorage::get_depth() const
 	if (get_state_variable_content()=='h') 
 		return std::max(get_state() - position.z,0.0);
 	else
-		return height_function->h(std::max(0.0,get_state()));
+		return get_height_function().h(std::max(0.0,get_state()));
 }
 
 
@@ -79,5 +79,5 @@ cmf::river::OpenWaterStorage::ptr cmf::river::OpenWaterStorage::create(cmf::proj
 
 real cmf::river::OpenWaterStorage::get_abs_errtol( real rel_errtol ) const
 {
-	return rel_errtol * height_function->V(1);
+	return rel_errtol * get_height_function().V(1);
 }

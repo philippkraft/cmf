@@ -143,6 +143,28 @@ namespace cmf {
 				: Manning(left,right,reachtype,false)
 			{			}
 		};
+
+		class KinematicSheetFlow: public cmf::water::flux_connection {
+		protected:
+			static void connect_cells(cmf::upslope::Cell& c1,cmf::upslope::Cell& c2, int i);
+			std::tr1::weak_ptr<cmf::river::OpenWaterStorage> w1,w2;
+			virtual real calc_q(cmf::math::Time t);
+			void NewNodes()
+			{
+				w1=cmf::river::OpenWaterStorage::cast(left_node());
+				w2=cmf::river::OpenWaterStorage::cast(right_node());
+			}
+
+		public:
+			typedef std::tr1::shared_ptr<Manning> ptr;
+			static const cmf::upslope::CellConnector cell_connector;
+			KinematicSheetFlow(cmf::river::OpenWaterStorage::ptr left,cmf::water::flux_node::ptr right)
+				: flux_connection(left,right,"Kinematic sheet overland flow")
+			{
+				NewNodes();
+			}
+
+		};
 	}
 }
 #endif // ManningConnection_h__
