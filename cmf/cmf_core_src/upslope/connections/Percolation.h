@@ -149,6 +149,50 @@ namespace cmf {
 			};
 
 
+			///@ingroup perc
+			///
+			/// @brief A simplification of macro pore flux for swelling soils
+			/// 
+			/// Connects the surfacewater of the cell with deeper layers, assuming the presence of cracks.
+			/// At saturation level of the target layer, the cracks are closed
+			/// \f[q_{crack} = K_{max,crack} \left(1-\left(\frac{w-w_0}{1-w_0}\right)^\beta\right) A\f]
+			/// where:
+			///  - \f$q_{crack}\f$ is the flux from the surface water to the target layer in m3/day
+			///  - \f$K_{max,crack}\f$ is the maximum conductivity of the cracks in m/day
+			///  - \f$w\f$ is the actual wetness of the target layer
+			///  - \f$w_0\f$ is saturation, where the shrinkage of the cracks starts
+			///  - \f$\beta\f$ is an empirical shape parameter of the crack size/wetness relation
+			///  - \f$A\f$ is the area of the cell
+			class LayerBypass: public cmf::water::flux_connection {
+			protected:
+				std::tr1::weak_ptr<cmf::upslope::SoilLayer> Sl;
+				void NewNodes() {
+					Sl = cmf::upslope::SoilLayer::cast(right_node());
+				}
+				virtual real calc_q(cmf::math::Time t);
+			public:
+				/// maximum conductivity of the cracks in m/day
+				real Kmax;
+				/// is the actual wetness of the target layer
+				real w0;
+				/// is an empirical shape parameter of the crack size/wetness relation
+				real beta;
+				
+				/// @returns the actual crack conductivity
+				/// @param w the wetness of the target layer
+				real K(real w);
+
+				/// @brief Creates a layer bypass connection
+				///
+				/// @param left The source of the flux, usually the surfacewater of the cell
+				/// @param right The target soil layer
+				/// @param Kmax maximum conductivity of the cracks in m/day
+				/// @param w0 is the actual wetness of the target layer
+				/// @param beta is an empirical shape parameter of the crack size/wetness relation
+LayerBypass(cmf::water::flux_node::ptr left,cmf::upslope::SoilLayer::ptr right, real Kmax=100.,real w0=0.0,real beta=1.0);
+			};
+
+
 
 		}
 	}

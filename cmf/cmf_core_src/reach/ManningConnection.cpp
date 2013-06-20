@@ -74,4 +74,39 @@ const cmf::upslope::CellConnector
 	cmf::river::Manning_Kinematic::cell_connector
 				= cmf::upslope::CellConnector(&connect_cells),
 	cmf::river::Manning_Diffusive::cell_connector
-				= cmf::upslope::CellConnector(&connect_cells);
+				= cmf::upslope::CellConnector(&connect_cells),
+	cmf::river::KinematicSheetFlow::cell_connector
+				= cmf::upslope::CellConnector(&KinematicSheetFlow::connect_cells);
+	
+
+real cmf::river::KinematicSheetFlow::calc_q( cmf::math::Time t )
+{
+	flux_node::ptr lnode = left_node(), rnode=right_node();
+	OpenWaterStorage::ptr ows1=w1.lock(),ows2=w2.lock();
+	real d=lnode->position.distanceTo(rnode->position);
+	const FlowSurface *cast = dynamic_cast<const FlowSurface *>(&ows1->get_height_function());
+	if (cast) 
+		d=cast->get_length();
+	real 
+		// Gradient of the reach
+		slope = (lnode->position.z - rnode->position.z)/d,		
+		abs_slope=fabs(slope);
+	// No slope, no flux
+	if (abs_slope<=0) return 0.0;
+	// Get the source of the flow
+	OpenWaterStorage::ptr source=slope > 0 ? ows1 : ows2;
+	if (source==0) return 0; // Never generate flow from a flux node
+	// Wetted crossectional area, use mean volume of the water storages if both sides are water storages
+	real h = source->get_depth();
+	if (h<=0) return 0.0;
+	// Absolute flux in m3/s
+	real qManning = 0.0; //flux_geometry.q(h,abs_slope);
+	// Return flux with correct sign in m3/day
+	return prevent_negative_volume(qManning * sign(slope) * (24*60*60));
+
+}
+
+void cmf::river::KinematicSheetFlow::connect_cells( cmf::upslope::Cell& c1,cmf::upslope::Cell& c2, int i )
+{
+
+}

@@ -59,10 +59,10 @@ namespace cmf {
 		/// @ingroup connections
 		/// @brief Calculates flux out of a storage as a linear function of its volume to a power.
 		///
-		/// \f[ q = \frac {V_{mobile}^\beta}{t_r} \f]
+		/// \f[ q = \frac 1 {t_r} {\left(\frac{V}{V_0} - f_{residual}\right)^\beta} \f]
 		/// where:
-		/// - \f$V_{mobile} [m^3] = V - V_{residual}\f$ the stored mobile volume
-		/// - \f$\beta [-]\f$ An empirical exponent to shape the flux function
+		/// - \f$V_{residual} [m^3]\f$ The volume of water not flowing out (default = 0)
+		/// - \f$V_0\f$ The reference volume to scale the exponent
 		/// - \f$t_r [days]\f$ The residence time of the water in this storage in days
 		class kinematic_wave : public flux_connection {
 		protected:

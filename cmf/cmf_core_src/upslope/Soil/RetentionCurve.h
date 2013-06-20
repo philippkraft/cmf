@@ -144,6 +144,7 @@ namespace cmf {
 			real wetness_X;
 			/// Matric potential at the wetness X in m
 			real Psi_X;
+			real residual_theta;
 			/// Retention curve shape parameter
 			real get_b() const { return m_b;}
 			void set_b(real new_b) {
