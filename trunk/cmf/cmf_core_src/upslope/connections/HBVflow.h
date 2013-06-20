@@ -31,10 +31,13 @@ namespace cmf {
 		namespace connections {
 			/// @defgroup HBV HBV like connections
 			/// @ingroup connections
-			/// These connections represent the governing equations of the HBV model
+			/// @deprecated This code is experimental and might be deleted in the near future
+			///
+			/// These connections represent the governing equations of the HBV model. 
 
 			/// @ingroup HBV
-			/// This class holds the properties for all HBV like connections
+			/// @deprecated This code is experimental and might be deleted in the near future
+			///
 			/// Implements the RetentionCurve interface is only partly, therefore it is not suitable for other connection types
 			///
 			/// \f{eqnarray*} 
@@ -87,6 +90,8 @@ namespace cmf {
 				}
 			};
 			/// @ingroup HBV
+			/// @deprecated This code is experimental and might be deleted in the near future
+			///
 			/// Calculates the percolation as in the HBV model
 			///
 			/// \f[ Q = \left\{Q_{in} \left(\frac{V}{FC}\right)^\beta\mbox{ if first layer} \\
@@ -105,6 +110,8 @@ namespace cmf {
 				}
 			};
 			/// @ingroup HBV
+			/// @deprecated This code is experimental and might be deleted in the near future
+			///
 			/// Lateral flow using a simple linear storage, can be directed to another cell (HBV D like) or to a reach (HBV like)
 			///
 			/// \f[ q = kV \f]
@@ -126,6 +133,8 @@ namespace cmf {
 			};
 
 
+			/// @deprecated This code is experimental and might be deleted in the near future
+			///
 			/// Installs an HBV like model setup at a cell
 			/// Reference: Bergstroem et al 1995, in Singh (1995): Computer models of watershed hydrology
 			///

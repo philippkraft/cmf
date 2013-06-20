@@ -3289,13 +3289,24 @@ class NeumannBoundary(flux_node):
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
     __repr__ = _swig_repr
     def get_flux(self, *args, **kwargs):
-        """get_flux(NeumannBoundary self) -> timeseries"""
+        """
+        get_flux(NeumannBoundary self) -> timeseries
+
+        cmf::math::timeseries get_flux()
+
+        The timeseries of the boundary flux. 
+        """
         return _cmf_core.NeumannBoundary_get_flux(self, *args, **kwargs)
 
     def set_flux(self, *args):
         """
         set_flux(NeumannBoundary self, timeseries new_flux)
         set_flux(NeumannBoundary self, double new_flux)
+
+        void
+        set_flux(double new_flux)
+
+        Set a constant as the boundary flux. 
         """
         return _cmf_core.NeumannBoundary_set_flux(self, *args)
 
@@ -3540,10 +3551,11 @@ class kinematic_wave(flux_connection):
     Calculates flux out of a storage as a linear function of its volume to
     a power.
 
-    \\[ q = \\frac {V_{mobile}^\\beta}{t_r} \\] where:
-    $V_{mobile} [m^3] = V - V_{residual}$ the stored mobile volume
+    \\[ q = \\frac 1 {t_r} {\\left(\\frac{V}{V_0} -
+    f_{residual}\\right)^\\beta} \\] where:  $V_{residual} [m^3]$
+    The volume of water not flowing out (default = 0)
 
-    $\\beta [-]$ An empirical exponent to shape the flux function
+    $V_0$ The reference volume to scale the exponent
 
     $t_r [days]$ The residence time of the water in this storage in days
 
@@ -4006,7 +4018,9 @@ class NeumannBoundary_list(object):
 
         NeumannBoundary::ptr get(int index) const
 
-        Returns the Neumann boundary condition at position index. 
+        Returns the Neumann boundary condition at position index.
+
+        From Python you can use [] 
         """
         return _cmf_core.NeumannBoundary_list_get(self, *args, **kwargs)
 
@@ -4017,7 +4031,10 @@ class NeumannBoundary_list(object):
         cmf::math::num_array get_fluxes(cmf::math::Time t=cmf::math::Time())
         const
 
-        Returns the fluxes of the items as an array. 
+        Returns the fluxes of the items as an array.
+
+        get_fluxes and set_fluxes are wrapped with the Python property fluxes
+
         """
         return _cmf_core.NeumannBoundary_list_get_fluxes(self, *args, **kwargs)
 
@@ -4026,7 +4043,9 @@ class NeumannBoundary_list(object):
         append(NeumannBoundary_list self, cmf::water::NeumannBoundary::ptr nbc)
 
         void
-        append(NeumannBoundary::ptr nbc) 
+        append(NeumannBoundary::ptr nbc)
+
+        Appends a neumann boundary to this list. 
         """
         return _cmf_core.NeumannBoundary_list_append(self, *args, **kwargs)
 
@@ -4035,7 +4054,9 @@ class NeumannBoundary_list(object):
         size(NeumannBoundary_list self) -> size_t
 
         size_t
-        size() const 
+        size() const
+
+        returns the number of stored boundary conditions 
         """
         return _cmf_core.NeumannBoundary_list_size(self, *args, **kwargs)
 
@@ -6433,6 +6454,7 @@ class BrooksCoreyRetentionCurve(RetentionCurve):
 
     wetness_X = _swig_property(_cmf_core.BrooksCoreyRetentionCurve_wetness_X_get, _cmf_core.BrooksCoreyRetentionCurve_wetness_X_set)
     Psi_X = _swig_property(_cmf_core.BrooksCoreyRetentionCurve_Psi_X_get, _cmf_core.BrooksCoreyRetentionCurve_Psi_X_set)
+    residual_theta = _swig_property(_cmf_core.BrooksCoreyRetentionCurve_residual_theta_get, _cmf_core.BrooksCoreyRetentionCurve_residual_theta_set)
     def __init__(self, *args, **kwargs): 
         """
         __init__(cmf::upslope::BrooksCoreyRetentionCurve self, real ksat=15, real porosity=0.5, real _b=5, real theta_x=0.2, real psi_x=cmf::upslope::pF_to_waterhead(2.5), 
@@ -6508,7 +6530,7 @@ class VanGenuchtenMualem(RetentionCurve):
     Head - moisture relationship: \\begin{eqnarray*} W(\\theta) &=&
     \\frac{\\theta - \\theta_r}{\\theta_s - \\theta_r} \\\\
     K(W) &=& K_{sat} \\sqrt{W}
-    \\left(\\left(1-w^{1/m}\\right)^m\\right)^2 \\\\ m &=&
+    \\left(1-\\left(1-W^{1/m}\\right)^m\\right)^2 \\\\ m &=&
     1-\\frac 1 n \\\\ \\Psi(W) &=& 0.01 \\frac{m}{cm}
     \\frac{{\\left(1-{W}^{\\frac{1}{m}}\\right)
     }^{\\frac{1}{n}}}{\\alpha\\,{W}^{\\frac{1}{m\\,n}}} \\\\
@@ -7012,7 +7034,14 @@ class layer_list(object):
         return _cmf_core.layer_list_set_volume(self, *args, **kwargs)
 
     def set_theta(self, *args, **kwargs):
-        """set_theta(layer_list self, cmf::math::num_array const & Value, size_t offset=0)"""
+        """
+        set_theta(layer_list self, cmf::math::num_array const & Value, size_t offset=0)
+
+        void
+        set_theta(const cmf::math::num_array &Value, size_t offset=0)
+
+        Sets the volumetric water content of the soil. 
+        """
         return _cmf_core.layer_list_set_theta(self, *args, **kwargs)
 
     def set_ice_fraction(self, *args, **kwargs):
@@ -7020,7 +7049,9 @@ class layer_list(object):
         set_ice_fraction(layer_list self, cmf::math::num_array const & Value, size_t offset=0)
 
         void set_ice_fraction(const cmf::math::num_array &Value, size_t
-        offset=0) 
+        offset=0)
+
+        Sets the fraction of the ice content of the soil water. 
         """
         return _cmf_core.layer_list_set_ice_fraction(self, *args, **kwargs)
 
@@ -7661,28 +7692,14 @@ MeanChannel.copy = new_instancemethod(_cmf_core.MeanChannel_copy,None,MeanChanne
 MeanChannel_swigregister = _cmf_core.MeanChannel_swigregister
 MeanChannel_swigregister(MeanChannel)
 
-class PiecewiseRach(IChannel):
-    """
-    A channel with a piecewise linear shape.
-
-    The geometry of this reach is defined by a discrete depth/width pairs
-    with linear interpolation between the depth and width
-
-    $ i $ is the highest depth/width pair below a given depth $d$
-    \\[w(d,i) = w_i + (d-d_i) \\frac{w_{i+1}-w_i}{d_{i+1} - d_i}\\]
-    \\[ A(d,i) =A(d_i,i-1)+ \\frac12 (d-d_i)(w(d)+w_i) \\]
-    \\[P(d,i) = P(d_i,i-1) +
-    2\\sqrt{\\left(\\frac{w-w_i}{2}\\right)^2+\\left(d-d_i\\right)^2}
-    \\] \\[P(0,0)=w_0 \\]
-
-    C++ includes: ReachType.h 
-    """
+class PiecewiseReach(IChannel):
+    """Proxy of C++ cmf::river::PiecewiseReach class"""
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
     def __init__(self, *args, **kwargs): raise AttributeError("No constructor defined - class is abstract")
     __repr__ = _swig_repr
-    __swig_destroy__ = _cmf_core.delete_PiecewiseRach
-PiecewiseRach_swigregister = _cmf_core.PiecewiseRach_swigregister
-PiecewiseRach_swigregister(PiecewiseRach)
+    __swig_destroy__ = _cmf_core.delete_PiecewiseReach
+PiecewiseReach_swigregister = _cmf_core.PiecewiseReach_swigregister
+PiecewiseReach_swigregister(PiecewiseReach)
 
 class OpenWaterStorage(WaterStorage):
     """
@@ -8482,6 +8499,23 @@ Manning_Kinematic_swigregister = _cmf_core.Manning_Kinematic_swigregister
 Manning_Kinematic_swigregister(Manning_Kinematic)
 Manning_Kinematic.cell_connector = _cmf_core.cvar.Manning_Kinematic_cell_connector
 
+class KinematicSheetFlow(flux_connection):
+    """Proxy of C++ cmf::river::KinematicSheetFlow class"""
+    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __repr__ = _swig_repr
+    def __init__(self, *args, **kwargs): 
+        """
+        __init__(cmf::river::KinematicSheetFlow self, cmf::river::OpenWaterStorage::ptr left, cmf::water::flux_node::ptr right) -> KinematicSheetFlow
+
+        KinematicSheetFlow(cmf::river::OpenWaterStorage::ptr left,
+        cmf::water::flux_node::ptr right) 
+        """
+        _cmf_core.KinematicSheetFlow_swiginit(self,_cmf_core.new_KinematicSheetFlow(*args, **kwargs))
+    __swig_destroy__ = _cmf_core.delete_KinematicSheetFlow
+KinematicSheetFlow_swigregister = _cmf_core.KinematicSheetFlow_swigregister
+KinematicSheetFlow_swigregister(KinematicSheetFlow)
+KinematicSheetFlow.cell_connector = _cmf_core.cvar.KinematicSheetFlow_cell_connector
+
 class CanopyOverflow(flux_connection):
     """
     Calculates the overflow of a canopy storage using a kinematic wave
@@ -8776,17 +8810,7 @@ CompleteInfiltration_swigregister = _cmf_core.CompleteInfiltration_swigregister
 CompleteInfiltration_swigregister(CompleteInfiltration)
 
 class SWATPercolation(flux_connection):
-    """
-    A tipping bucket percolation approach similar to the approach in SWAT.
-
-    \\begin{eqnarray*} q_{perc} &=&
-    V_{H_2O,drain}\\left(1-e^{-\\frac 1{-TT_{perc}}}\\right)
-    \\\\ TT_{perc} &=& \\frac{V_{pores,drain} - V_{field
-    cap.}}{K_{sat}} \\\\ V_{x,drain} &=& V_{x,drain} - V_{field cap.}
-    \\end{eqnarray*}
-
-    C++ includes: Percolation.h 
-    """
+    """Proxy of C++ cmf::upslope::connections::SWATPercolation class"""
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
     __repr__ = _swig_repr
     def use_for_cell(*args, **kwargs):
@@ -8795,12 +8819,7 @@ class SWATPercolation(flux_connection):
 
     use_for_cell = staticmethod(use_for_cell)
     def __init__(self, *args, **kwargs): 
-        """
-        __init__(cmf::upslope::connections::SWATPercolation self, cmf::upslope::SoilLayer::ptr upperLayer, cmf::upslope::SoilLayer::ptr lowerLayer) -> SWATPercolation
-
-        SWATPercolation(cmf::upslope::SoilLayer::ptr upperLayer,
-        cmf::upslope::SoilLayer::ptr lowerLayer) 
-        """
+        """__init__(cmf::upslope::connections::SWATPercolation self, cmf::upslope::SoilLayer::ptr upperLayer, cmf::upslope::SoilLayer::ptr lowerLayer) -> SWATPercolation"""
         _cmf_core.SWATPercolation_swiginit(self,_cmf_core.new_SWATPercolation(*args, **kwargs))
     __swig_destroy__ = _cmf_core.delete_SWATPercolation
 SWATPercolation_swigregister = _cmf_core.SWATPercolation_swigregister
@@ -8811,38 +8830,11 @@ def SWATPercolation_use_for_cell(*args, **kwargs):
   return _cmf_core.SWATPercolation_use_for_cell(*args, **kwargs)
 
 class Richards(flux_connection):
-    """
-    Calculates flow according to the Richards equation.
-
-    \\begin{eqnarray*} q_{Richards} &=&
-    \\frac{\\Delta\\Psi_{tot}}{d} K(\\theta) A \\\\
-    \\Psi_{tot} &= &\\Psi_{M}(\\theta) + h \\end{eqnarray*} where
-    $ \\Delta\\Psi_{tot} [m]$ is the difference of the total water
-    potentials of the two soil layers
-
-    $ d [m]$ is the distance between the two soil layers
-
-    $ K(\\theta)\\left[\\frac m{day}\\right]$ is the geometric
-    mean conductivity (see SoilType::Kunsat)
-
-    $ A [m^2]$ is the crosssectional area of the flux
-
-    $ \\Psi_M(\\theta) [m]$ is the matrix potential (see
-    SoilType::MatrixPotential)
-
-    $ h [m]$ is the height of a soil layer above sea level
-
-    C++ includes: Percolation.h 
-    """
+    """Proxy of C++ cmf::upslope::connections::Richards class"""
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
     __repr__ = _swig_repr
     def __init__(self, *args, **kwargs): 
-        """
-        __init__(cmf::upslope::connections::Richards self, cmf::upslope::SoilLayer::ptr left, cmf::water::flux_node::ptr right) -> Richards
-
-        Richards(cmf::upslope::SoilLayer::ptr left, cmf::water::flux_node::ptr
-        right) 
-        """
+        """__init__(cmf::upslope::connections::Richards self, cmf::upslope::SoilLayer::ptr left, cmf::water::flux_node::ptr right) -> Richards"""
         _cmf_core.Richards_swiginit(self,_cmf_core.new_Richards(*args, **kwargs))
     def use_for_cell(*args, **kwargs):
         """use_for_cell(Cell cell, bool no_override=True)"""
@@ -8858,29 +8850,11 @@ def Richards_use_for_cell(*args, **kwargs):
   return _cmf_core.Richards_use_for_cell(*args, **kwargs)
 
 class SimplRichards(flux_connection):
-    """
-    Calculates flow according to a simplified Richards equation.
-
-    \\begin{eqnarray*} q_{Richards} &=& (K(\\theta) - K(\\theta_r))
-    A \\\\ \\end{eqnarray*} where  $ d [m]$ is the distance between
-    the two soil layers
-
-    $ K(\\theta)\\left[\\frac m{day}\\right]$ is the geometric
-    mean conductivity (see SoilType::Kunsat)
-
-    $ A [m^2]$ is the crosssectional area of the flux
-
-    C++ includes: Percolation.h 
-    """
+    """Proxy of C++ cmf::upslope::connections::SimplRichards class"""
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
     __repr__ = _swig_repr
     def __init__(self, *args, **kwargs): 
-        """
-        __init__(cmf::upslope::connections::SimplRichards self, cmf::upslope::SoilLayer::ptr left, cmf::water::flux_node::ptr right) -> SimplRichards
-
-        SimplRichards(cmf::upslope::SoilLayer::ptr left,
-        cmf::water::flux_node::ptr right) 
-        """
+        """__init__(cmf::upslope::connections::SimplRichards self, cmf::upslope::SoilLayer::ptr left, cmf::water::flux_node::ptr right) -> SimplRichards"""
         _cmf_core.SimplRichards_swiginit(self,_cmf_core.new_SimplRichards(*args, **kwargs))
     def use_for_cell(*args, **kwargs):
         """use_for_cell(Cell cell, bool no_override=True)"""
@@ -8896,32 +8870,45 @@ def SimplRichards_use_for_cell(*args, **kwargs):
   return _cmf_core.SimplRichards_use_for_cell(*args, **kwargs)
 
 class GradientMacroFlow(flux_connection):
-    """
-    Gradient based flux from macro pore to macro pore.
-
-    \\[ q = K(\\theta) \\frac{\\Delta \\Psi}{\\Delta z} \\]
-
-    C++ includes: Percolation.h 
-    """
+    """Proxy of C++ cmf::upslope::connections::GradientMacroFlow class"""
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
     __repr__ = _swig_repr
     def __init__(self, *args, **kwargs): 
-        """
-        __init__(cmf::upslope::connections::GradientMacroFlow self, cmf::upslope::MacroPore::ptr left, cmf::water::flux_node::ptr right) -> GradientMacroFlow
-
-        GradientMacroFlow(cmf::upslope::MacroPore::ptr left,
-        cmf::water::flux_node::ptr right) 
-        """
+        """__init__(cmf::upslope::connections::GradientMacroFlow self, cmf::upslope::MacroPore::ptr left, cmf::water::flux_node::ptr right) -> GradientMacroFlow"""
         _cmf_core.GradientMacroFlow_swiginit(self,_cmf_core.new_GradientMacroFlow(*args, **kwargs))
     __swig_destroy__ = _cmf_core.delete_GradientMacroFlow
 GradientMacroFlow_swigregister = _cmf_core.GradientMacroFlow_swigregister
 GradientMacroFlow_swigregister(GradientMacroFlow)
 
+class LayerBypass(flux_connection):
+    """Proxy of C++ cmf::upslope::connections::LayerBypass class"""
+    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __repr__ = _swig_repr
+    Kmax = _swig_property(_cmf_core.LayerBypass_Kmax_get, _cmf_core.LayerBypass_Kmax_set)
+    w0 = _swig_property(_cmf_core.LayerBypass_w0_get, _cmf_core.LayerBypass_w0_set)
+    beta = _swig_property(_cmf_core.LayerBypass_beta_get, _cmf_core.LayerBypass_beta_set)
+    def K(self, *args, **kwargs):
+        """K(LayerBypass self, real w) -> real"""
+        return _cmf_core.LayerBypass_K(self, *args, **kwargs)
+
+    def __init__(self, *args, **kwargs): 
+        """
+        __init__(cmf::upslope::connections::LayerBypass self, cmf::water::flux_node::ptr left, cmf::upslope::SoilLayer::ptr right, real Kmax=100., 
+            real w0=0.0, real beta=1.0) -> LayerBypass
+        """
+        _cmf_core.LayerBypass_swiginit(self,_cmf_core.new_LayerBypass(*args, **kwargs))
+    __swig_destroy__ = _cmf_core.delete_LayerBypass
+LayerBypass.K = new_instancemethod(_cmf_core.LayerBypass_K,None,LayerBypass)
+LayerBypass_swigregister = _cmf_core.LayerBypass_swigregister
+LayerBypass_swigregister(LayerBypass)
+
 class HBVparameters(RetentionCurve):
     """
-    This class holds the properties for all HBV like connections
+    Deprecated This code is experimental and might be deleted in the near
+    future
+
     Implements the RetentionCurve interface is only partly, therefore it
-    is not suitable for other connection types.
+    is not suitable for other connection types
 
     \\begin{eqnarray*} K(w,d) &=& PERC w \\\\ \\Psi_{M} &=& 10 -
     \\frac{10}{w}\\\\ w(\\Psi_{M}) &=& \\frac{10}{10 -
@@ -8979,7 +8966,10 @@ def HBVparameters_cast(*args, **kwargs):
 
 class HBVpercolation(flux_connection):
     """
-    Calculates the percolation as in the HBV model.
+    Deprecated This code is experimental and might be deleted in the near
+    future
+
+    Calculates the percolation as in the HBV model
 
     \\[ Q = \\left\\{Q_{in}
     \\left(\\frac{V}{FC}\\right)^\\beta\\mbox{ if first layer}
@@ -9003,6 +8993,9 @@ HBVpercolation_swigregister(HBVpercolation)
 
 class HBVlateral(lateral_sub_surface_flux):
     """
+    Deprecated This code is experimental and might be deleted in the near
+    future
+
     Lateral flow using a simple linear storage, can be directed to another
     cell (HBV D like) or to a reach (HBV like)
 
@@ -9035,8 +9028,11 @@ def HBVinstall(*args, **kwargs):
     cmf::upslope::connections::HBVinstall(HBVparameters parameters,
     cmf::upslope::Cell &cell)
 
+    Deprecated This code is experimental and might be deleted in the near
+    future
+
     Installs an HBV like model setup at a cell Reference: Bergstroem et al
-    1995, in Singh (1995): Computer models of watershed hydrology.
+    1995, in Singh (1995): Computer models of watershed hydrology
 
     Removes the layers of a cell and adds three layers with 1m thickness
     and the HBVparameters as retention curve. Installs HBVpercolation

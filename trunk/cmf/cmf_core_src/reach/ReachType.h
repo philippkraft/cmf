@@ -458,7 +458,7 @@ namespace cmf {
 		/// \f[ A(d,i) =A(d_i,i-1)+ \frac12 (d-d_i)(w(d)+w_i)  \f]
 		/// \f[P(d,i) = P(d_i,i-1) + 2\sqrt{\left(\frac{w-w_i}{2}\right)^2+\left(d-d_i\right)^2} \f]
 		/// \f[P(0,0)=w_0 \f]
-		class PiecewiseRach: public IChannel
+		class PiecewiseReach: public IChannel
 		{
 
 		};

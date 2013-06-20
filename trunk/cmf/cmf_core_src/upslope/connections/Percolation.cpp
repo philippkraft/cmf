@@ -151,3 +151,30 @@ real cmf::upslope::connections::GradientMacroFlow::calc_q( cmf::math::Time t )
 
 }
 
+
+real cmf::upslope::connections::LayerBypass::calc_q( cmf::math::Time t )
+{
+	SoilLayer::ptr sl = Sl.lock();
+	flux_node::ptr source = left_node();
+	
+	real 
+		w = sl->get_wetness(),
+		d = source->position.z - sl->position.z,
+		// dPsi_dz = (source->get_potential() - sl->get_potential())/d;
+		dPsi_dz = 1.0,
+		q = K(w) * dPsi_dz,
+		A = sl->cell.get_area();
+
+	return prevent_negative_volume(q * A);
+}
+
+cmf::upslope::connections::LayerBypass::LayerBypass( cmf::water::flux_node::ptr left,cmf::upslope::SoilLayer::ptr right, real _Kmax/*=100.*/,real _maxflowwetness, real _beta ) 
+	: flux_connection(left,right,"A connection for by passing layers"),w0(_maxflowwetness),Kmax(_Kmax),beta(_beta)
+{
+	NewNodes();
+}
+
+real cmf::upslope::connections::LayerBypass::K(real w)
+{
+	return Kmax * minmax(1-pow((w - w0)/(1-w0),beta),0,1);
+}
