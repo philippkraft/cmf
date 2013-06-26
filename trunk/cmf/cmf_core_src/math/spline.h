@@ -10,13 +10,12 @@ namespace cmf {
 			num_array h,s,x,f,F;
 			bool _valid;
 		public:
-			cubicspline(const num_array& x,const num_array& y);
+			cubicspline(const cmf::math::num_array& x,const cmf::math::num_array& y);
 			void generate();
 			size_t size() const {
 				return x.size();
 			}
 			real operator()(real x);
-
 		};
 		
 	}

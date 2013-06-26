@@ -198,7 +198,7 @@ namespace cmf {
 			/// @ingroup ET
 			/// @brief A function to calculate the actual transpiration for each soil layer using a Feddes like approach
 			///
-			/// This function is used to calculate the actual water uptake in m³/day from a single soillayer sw
+			/// This function is used to calculate the actual water uptake in m3/day from a single soillayer sw
 			/// according to root depth and the potential transpiration (or ETpot if there is no difference) in mm/day
 			/// The water flux is calculated as follows:
 			/// \f[q_{T_{pot}}[m^3/day]=T_{pot}[mm/day] 10^{-3}[mm/m]A_{cell}[m^2] f_r\f]
