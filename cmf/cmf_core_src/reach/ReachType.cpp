@@ -28,8 +28,10 @@ double IChannel::qManning( double A,double slope ) const
 	double 
 		d=get_depth(A),
 		P=get_wetted_perimeter(d)+0.001, // a mm extra to prevent divide by zero
-		R=A/P+0.001;          // a mm extra to prevent pow failure
-	return A*pow(R,2./3.)*sqrt(slope)/get_nManning();
+		R=A/P+0.001,          // a mm extra to prevent pow failure
+		nManning = get_nManning();
+
+	return A*pow(R,2./3.)*sqrt(slope)/nManning;
 }
 
 
@@ -99,12 +101,12 @@ double SWATReachType::get_flux_crossection( double depth ) const
 }
 
 SWATReachType::SWATReachType(double l) 
-: IChannel(), m_l(l), BottomWidth(3.0),ChannelDepth(0.5),BankSlope(2.0),FloodPlainSlope(200.0) {
+: IChannel(), m_l(l), BottomWidth(3.0),ChannelDepth(0.5),BankSlope(2.0),FloodPlainSlope(200.0), m_nManning(0.035) {
 	if (m_l<=0.0) throw std::runtime_error("Length of a channel needs to be >0.0");
 }
 
 SWATReachType::SWATReachType(double l, double BankWidth,double depth ) 
-: IChannel(), m_l(l), BottomWidth(3.0),ChannelDepth(0.5),BankSlope(2.0),FloodPlainSlope(100.0)
+: IChannel(), m_l(l), BottomWidth(3.0),ChannelDepth(0.5),BankSlope(2.0),FloodPlainSlope(100.0), m_nManning(0.035)
 {
 	if (m_l<=0.0) throw std::runtime_error("Length of a channel needs to be >0.0");
 	ChannelDepth=depth;
@@ -166,7 +168,7 @@ double TriangularReach::get_flux_crossection( double depth ) const
 }
 
 TriangularReach::TriangularReach(double l, double bankSlope/*=2*/ ) 
-: IChannel(),m_l(l),BankSlope(bankSlope)
+: IChannel(),m_l(l),BankSlope(bankSlope), m_nManning(0.035)
 {
 	if (m_l<=0.0) throw std::runtime_error("Length of a channel needs to be >0.0m");
 }
@@ -212,7 +214,7 @@ RectangularReach::RectangularReach( const RectangularReach& copy )
 	: m_nManning(copy.m_nManning), m_l(copy.m_l), m_width(copy.m_width) {}
 
 RectangularReach::RectangularReach( double l,double width ) 
-: IChannel(),m_l(l), m_width(width)
+: IChannel(),m_l(l), m_width(width), m_nManning(0.035)
 {
 	if (m_l<=0.0) throw std::runtime_error("Length of a channel needs to be >0.0m");
 }
@@ -263,7 +265,7 @@ PipeReach* PipeReach::copy() const
 PipeReach::PipeReach(const PipeReach& copy)
 	: m_nManning(copy.m_nManning), radius(copy.radius), m_l(copy.m_l) {}
 PipeReach::PipeReach( double l,double diameter ) 
-: IChannel(),m_l(l), radius(diameter * 0.5)
+: IChannel(),m_l(l), radius(diameter * 0.5), m_nManning(0.035)
 {
 	if (m_l<=0.0) throw std::runtime_error("Length of a channel needs to be >0.0m");
 }

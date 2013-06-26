@@ -3334,6 +3334,93 @@ cmf::water::generic_gradient_connection::to_string "std::string
 to_string() const ";
 
 
+// File: classcmf_1_1upslope_1_1connections_1_1_gradient_macro_flow.xml
+%feature("docstring") cmf::upslope::connections::GradientMacroFlow "
+
+Gradient based flux from macro pore to macro pore.
+
+\\\\[ q = K(\\\\theta) \\\\frac{\\\\Delta \\\\Psi}{\\\\Delta z} \\\\]
+
+C++ includes: Percolation.h ";
+
+%feature("docstring")
+cmf::upslope::connections::GradientMacroFlow::GradientMacroFlow "GradientMacroFlow(cmf::upslope::MacroPore::ptr left,
+cmf::water::flux_node::ptr right) ";
+
+%feature("docstring")
+cmf::upslope::connections::GradientMacroFlow::conc "real
+conc(cmf::math::Time t, const cmf::water::solute &_Solute)
+
+Returns the concentration of the flux.
+
+If not overridden, it returns the concentration of the source of the
+flux (direction depending) ";
+
+%feature("docstring")
+cmf::upslope::connections::GradientMacroFlow::exchange_target "void
+exchange_target(flux_node::ptr oldtarget, flux_node::ptr newTarget) ";
+
+%feature("docstring")
+cmf::upslope::connections::GradientMacroFlow::get_ptr "ptr get_ptr()
+const ";
+
+%feature("docstring")
+cmf::upslope::connections::GradientMacroFlow::get_target "flux_node::ptr get_target(const flux_node &inquirer)
+
+Returns the other end of a connection than the asking end. ";
+
+%feature("docstring")
+cmf::upslope::connections::GradientMacroFlow::get_target "flux_node::ptr get_target(int index) const
+
+With index 0, the left node is returned, with index 1 the right node
+of the connection. ";
+
+%feature("docstring")
+cmf::upslope::connections::GradientMacroFlow::get_tracer_filter "real
+get_tracer_filter()
+
+A value ranging from 0 to 1. ";
+
+%feature("docstring")
+cmf::upslope::connections::GradientMacroFlow::kill_me "bool kill_me()
+
+Deregisters this connection from its nodes. Returns true if only one
+reference is left. ";
+
+%feature("docstring")
+cmf::upslope::connections::GradientMacroFlow::left_node "flux_node::ptr left_node() const
+
+Returns the left node of this connection. ";
+
+%feature("docstring")  cmf::upslope::connections::GradientMacroFlow::q
+"real q(const flux_node &inquirer, cmf::math::Time t)
+
+Returns the current flux through a connection. Negative signs mean out
+of the inquirer, positive are inflows to the inquirer. ";
+
+%feature("docstring")
+cmf::upslope::connections::GradientMacroFlow::refresh "void
+refresh(cmf::math::Time t)
+
+Performes a new calculation of the flux. ";
+
+%feature("docstring")
+cmf::upslope::connections::GradientMacroFlow::right_node "flux_node::ptr right_node() const
+
+returns the right node of this connection ";
+
+%feature("docstring")
+cmf::upslope::connections::GradientMacroFlow::set_tracer_filter "void
+set_tracer_filter(real value) ";
+
+%feature("docstring")
+cmf::upslope::connections::GradientMacroFlow::short_string "std::string short_string() const ";
+
+%feature("docstring")
+cmf::upslope::connections::GradientMacroFlow::to_string "std::string
+to_string() const ";
+
+
 // File: classcmf_1_1upslope_1_1_e_t_1_1_hargreave_e_t.xml
 %feature("docstring") cmf::upslope::ET::HargreaveET "
 
@@ -4802,6 +4889,135 @@ Sets the wetness in m3/m3 of layers [offset : arraysize]. ";
 const
 
 Number of layers in the list. ";
+
+
+// File: classcmf_1_1upslope_1_1connections_1_1_layer_bypass.xml
+%feature("docstring") cmf::upslope::connections::LayerBypass "
+
+A simplification of macro pore flux for swelling soils.
+
+Connects the surfacewater of the cell with deeper layers, assuming the
+presence of cracks. At saturation level of the target layer, the
+cracks are closed \\\\[q_{crack} = K_{max,crack}
+\\\\left(1-\\\\left(\\\\frac{w-w_0}{1-w_0}\\\\right)^\\\\beta\\\\right)
+A\\\\] where:  $q_{crack}$ is the flux from the surface water to the
+target layer in m3/day
+
+$K_{max,crack}$ is the maximum conductivity of the cracks in m/day
+
+$w$ is the actual wetness of the target layer
+
+$w_0$ is saturation, where the shrinkage of the cracks starts
+
+$\\\\beta$ is an empirical shape parameter of the crack size/wetness
+relation
+
+$A$ is the area of the cell
+
+C++ includes: Percolation.h ";
+
+%feature("docstring")
+cmf::upslope::connections::LayerBypass::LayerBypass "LayerBypass(cmf::water::flux_node::ptr left,
+cmf::upslope::SoilLayer::ptr right, real Kmax=100., real w0=0.0, real
+beta=1.0)
+
+Creates a layer bypass connection.
+
+Parameters:
+-----------
+
+left:  The source of the flux, usually the surfacewater of the cell
+
+right:  The target soil layer
+
+Kmax:  maximum conductivity of the cracks in m/day
+
+w0:  is the actual wetness of the target layer
+
+beta:  is an empirical shape parameter of the crack size/wetness
+relation ";
+
+%feature("docstring")  cmf::upslope::connections::LayerBypass::conc "real conc(cmf::math::Time t, const cmf::water::solute &_Solute)
+
+Returns the concentration of the flux.
+
+If not overridden, it returns the concentration of the source of the
+flux (direction depending) ";
+
+%feature("docstring")
+cmf::upslope::connections::LayerBypass::exchange_target "void
+exchange_target(flux_node::ptr oldtarget, flux_node::ptr newTarget) ";
+
+%feature("docstring")  cmf::upslope::connections::LayerBypass::get_ptr
+"ptr get_ptr() const ";
+
+%feature("docstring")
+cmf::upslope::connections::LayerBypass::get_target "flux_node::ptr
+get_target(const flux_node &inquirer)
+
+Returns the other end of a connection than the asking end. ";
+
+%feature("docstring")
+cmf::upslope::connections::LayerBypass::get_target "flux_node::ptr
+get_target(int index) const
+
+With index 0, the left node is returned, with index 1 the right node
+of the connection. ";
+
+%feature("docstring")
+cmf::upslope::connections::LayerBypass::get_tracer_filter "real
+get_tracer_filter()
+
+A value ranging from 0 to 1. ";
+
+%feature("docstring")  cmf::upslope::connections::LayerBypass::K "real K(real w)
+
+the actual crack conductivity
+
+Parameters:
+-----------
+
+w:  the wetness of the target layer ";
+
+%feature("docstring")  cmf::upslope::connections::LayerBypass::kill_me
+"bool kill_me()
+
+Deregisters this connection from its nodes. Returns true if only one
+reference is left. ";
+
+%feature("docstring")
+cmf::upslope::connections::LayerBypass::left_node "flux_node::ptr
+left_node() const
+
+Returns the left node of this connection. ";
+
+%feature("docstring")  cmf::upslope::connections::LayerBypass::q "real q(const flux_node &inquirer, cmf::math::Time t)
+
+Returns the current flux through a connection. Negative signs mean out
+of the inquirer, positive are inflows to the inquirer. ";
+
+%feature("docstring")  cmf::upslope::connections::LayerBypass::refresh
+"void refresh(cmf::math::Time t)
+
+Performes a new calculation of the flux. ";
+
+%feature("docstring")
+cmf::upslope::connections::LayerBypass::right_node "flux_node::ptr
+right_node() const
+
+returns the right node of this connection ";
+
+%feature("docstring")
+cmf::upslope::connections::LayerBypass::set_tracer_filter "void
+set_tracer_filter(real value) ";
+
+%feature("docstring")
+cmf::upslope::connections::LayerBypass::short_string "std::string
+short_string() const ";
+
+%feature("docstring")
+cmf::upslope::connections::LayerBypass::to_string "std::string
+to_string() const ";
 
 
 // File: classcmf_1_1water_1_1linear__scale.xml
@@ -7010,8 +7226,8 @@ short_string() const ";
 %feature("docstring")  cmf::upslope::ET::PenmanMonteithET::to_string "std::string to_string() const ";
 
 
-// File: classcmf_1_1river_1_1_piecewise_rach.xml
-%feature("docstring") cmf::river::PiecewiseRach "
+// File: classcmf_1_1river_1_1_piecewise_reach.xml
+%feature("docstring") cmf::river::PiecewiseReach "
 
 A channel with a piecewise linear shape.
 
@@ -7027,20 +7243,20 @@ $ i $ is the highest depth/width pair below a given depth $d$
 
 C++ includes: ReachType.h ";
 
-%feature("docstring")  cmf::river::PiecewiseRach::A "virtual double
+%feature("docstring")  cmf::river::PiecewiseReach::A "virtual double
 A(double V) const
 
 Returns the area of the surface for a given volume. ";
 
-%feature("docstring")  cmf::river::PiecewiseRach::copy "virtual
+%feature("docstring")  cmf::river::PiecewiseReach::copy "virtual
 IChannel* copy() const =0 ";
 
-%feature("docstring")  cmf::river::PiecewiseRach::get_channel_width "virtual double get_channel_width(double depth) const =0
+%feature("docstring")  cmf::river::PiecewiseReach::get_channel_width "virtual double get_channel_width(double depth) const =0
 
 Calculates the flow width from a given actual depth [m] using the
 actual IChannel geometry. ";
 
-%feature("docstring")  cmf::river::PiecewiseRach::get_depth "virtual
+%feature("docstring")  cmf::river::PiecewiseReach::get_depth "virtual
 double get_depth(double area) const =0
 
 Calculates the actual depth of the reach using the IChannel geometry.
@@ -7053,8 +7269,9 @@ Parameters:
 area:  Wetted area of a river cross section [m2], can be obtained by
 V/l, where V is the stored volume and l is the reach length ";
 
-%feature("docstring")  cmf::river::PiecewiseRach::get_flux_crossection
-"virtual double get_flux_crossection(double depth) const =0
+%feature("docstring")
+cmf::river::PiecewiseReach::get_flux_crossection "virtual double
+get_flux_crossection(double depth) const =0
 
 Calculates the wetted area from a given depth using the IChannel
 geometry.
@@ -7068,28 +7285,28 @@ Parameters:
 
 depth:  depth of the reach [m] ";
 
-%feature("docstring")  cmf::river::PiecewiseRach::get_length "virtual
-double get_length() const =0
+%feature("docstring")  cmf::river::PiecewiseReach::get_length "virtual double get_length() const =0
 
 Length of the reach. ";
 
-%feature("docstring")  cmf::river::PiecewiseRach::get_nManning "virtual double get_nManning() const =0 ";
+%feature("docstring")  cmf::river::PiecewiseReach::get_nManning "virtual double get_nManning() const =0 ";
 
-%feature("docstring")  cmf::river::PiecewiseRach::get_wetted_perimeter
-"virtual double get_wetted_perimeter(double depth) const =0
+%feature("docstring")
+cmf::river::PiecewiseReach::get_wetted_perimeter "virtual double
+get_wetted_perimeter(double depth) const =0
 
 Calculates the wetted perimeter from a given actual depth [m] using
 the actual IChannel geometry. ";
 
-%feature("docstring")  cmf::river::PiecewiseRach::h "virtual double
+%feature("docstring")  cmf::river::PiecewiseReach::h "virtual double
 h(double V) const
 
 Returns the depth of a given volume. ";
 
-%feature("docstring")  cmf::river::PiecewiseRach::q "virtual double
+%feature("docstring")  cmf::river::PiecewiseReach::q "virtual double
 q(double h, double slope) const ";
 
-%feature("docstring")  cmf::river::PiecewiseRach::qManning "virtual
+%feature("docstring")  cmf::river::PiecewiseReach::qManning "virtual
 double qManning(double A, double slope) const
 
 Calculates the flow rate from a given water volume in the reach
@@ -7111,12 +7328,12 @@ A:  The area of the cross section [m2]
 
 slope:  The slope of the reach [m/m] ";
 
-%feature("docstring")  cmf::river::PiecewiseRach::set_nManning "virtual void set_nManning(double val)=0 ";
+%feature("docstring")  cmf::river::PiecewiseReach::set_nManning "virtual void set_nManning(double val)=0 ";
 
-%feature("docstring")  cmf::river::PiecewiseRach::typecode "virtual
+%feature("docstring")  cmf::river::PiecewiseReach::typecode "virtual
 char typecode() const =0 ";
 
-%feature("docstring")  cmf::river::PiecewiseRach::V "virtual double
+%feature("docstring")  cmf::river::PiecewiseReach::V "virtual double
 V(double h) const ";
 
 
@@ -8653,6 +8870,101 @@ returns the volumetric water content at a given pF value ";
 ";
 
 
+// File: classcmf_1_1upslope_1_1connections_1_1_richards.xml
+%feature("docstring") cmf::upslope::connections::Richards "
+
+Calculates flow according to the Richards equation.
+
+\\\\begin{eqnarray*} q_{Richards} &=&
+\\\\frac{\\\\Delta\\\\Psi_{tot}}{d} K(\\\\theta) A \\\\\\\\
+\\\\Psi_{tot} &= &\\\\Psi_{M}(\\\\theta) + h \\\\end{eqnarray*} where
+$ \\\\Delta\\\\Psi_{tot} [m]$ is the difference of the total water
+potentials of the two soil layers
+
+$ d [m]$ is the distance between the two soil layers
+
+$ K(\\\\theta)\\\\left[\\\\frac m{day}\\\\right]$ is the geometric
+mean conductivity (see SoilType::Kunsat)
+
+$ A [m^2]$ is the crosssectional area of the flux
+
+$ \\\\Psi_M(\\\\theta) [m]$ is the matrix potential (see
+SoilType::MatrixPotential)
+
+$ h [m]$ is the height of a soil layer above sea level
+
+C++ includes: Percolation.h ";
+
+%feature("docstring")  cmf::upslope::connections::Richards::Richards "Richards(cmf::upslope::SoilLayer::ptr left, cmf::water::flux_node::ptr
+right) ";
+
+%feature("docstring")  cmf::upslope::connections::Richards::conc "real conc(cmf::math::Time t, const cmf::water::solute &_Solute)
+
+Returns the concentration of the flux.
+
+If not overridden, it returns the concentration of the source of the
+flux (direction depending) ";
+
+%feature("docstring")
+cmf::upslope::connections::Richards::exchange_target "void
+exchange_target(flux_node::ptr oldtarget, flux_node::ptr newTarget) ";
+
+%feature("docstring")  cmf::upslope::connections::Richards::get_ptr "ptr get_ptr() const ";
+
+%feature("docstring")  cmf::upslope::connections::Richards::get_target
+"flux_node::ptr get_target(const flux_node &inquirer)
+
+Returns the other end of a connection than the asking end. ";
+
+%feature("docstring")  cmf::upslope::connections::Richards::get_target
+"flux_node::ptr get_target(int index) const
+
+With index 0, the left node is returned, with index 1 the right node
+of the connection. ";
+
+%feature("docstring")
+cmf::upslope::connections::Richards::get_tracer_filter "real
+get_tracer_filter()
+
+A value ranging from 0 to 1. ";
+
+%feature("docstring")  cmf::upslope::connections::Richards::kill_me "bool kill_me()
+
+Deregisters this connection from its nodes. Returns true if only one
+reference is left. ";
+
+%feature("docstring")  cmf::upslope::connections::Richards::left_node
+"flux_node::ptr left_node() const
+
+Returns the left node of this connection. ";
+
+%feature("docstring")  cmf::upslope::connections::Richards::q "real
+q(const flux_node &inquirer, cmf::math::Time t)
+
+Returns the current flux through a connection. Negative signs mean out
+of the inquirer, positive are inflows to the inquirer. ";
+
+%feature("docstring")  cmf::upslope::connections::Richards::refresh "void refresh(cmf::math::Time t)
+
+Performes a new calculation of the flux. ";
+
+%feature("docstring")  cmf::upslope::connections::Richards::right_node
+"flux_node::ptr right_node() const
+
+returns the right node of this connection ";
+
+%feature("docstring")
+cmf::upslope::connections::Richards::set_tracer_filter "void
+set_tracer_filter(real value) ";
+
+%feature("docstring")
+cmf::upslope::connections::Richards::short_string "std::string
+short_string() const ";
+
+%feature("docstring")  cmf::upslope::connections::Richards::to_string
+"std::string to_string() const ";
+
+
 // File: classcmf_1_1upslope_1_1connections_1_1_richards__lateral.xml
 %feature("docstring") cmf::upslope::connections::Richards_lateral "
 
@@ -9231,6 +9543,103 @@ cmf::upslope::connections::SimpleTindexSnowMelt::short_string "std::string short
 
 %feature("docstring")
 cmf::upslope::connections::SimpleTindexSnowMelt::to_string "std::string to_string() const ";
+
+
+// File: classcmf_1_1upslope_1_1connections_1_1_simpl_richards.xml
+%feature("docstring") cmf::upslope::connections::SimplRichards "
+
+Calculates flow according to a simplified Richards equation.
+
+\\\\begin{eqnarray*} q_{Richards} &=& (K(\\\\theta) - K(\\\\theta_r))
+A \\\\\\\\ \\\\end{eqnarray*} where  $ d [m]$ is the distance between
+the two soil layers
+
+$ K(\\\\theta)\\\\left[\\\\frac m{day}\\\\right]$ is the geometric
+mean conductivity (see SoilType::Kunsat)
+
+$ A [m^2]$ is the crosssectional area of the flux
+
+C++ includes: Percolation.h ";
+
+%feature("docstring")
+cmf::upslope::connections::SimplRichards::SimplRichards "SimplRichards(cmf::upslope::SoilLayer::ptr left,
+cmf::water::flux_node::ptr right) ";
+
+%feature("docstring")  cmf::upslope::connections::SimplRichards::conc
+"real conc(cmf::math::Time t, const cmf::water::solute &_Solute)
+
+Returns the concentration of the flux.
+
+If not overridden, it returns the concentration of the source of the
+flux (direction depending) ";
+
+%feature("docstring")
+cmf::upslope::connections::SimplRichards::exchange_target "void
+exchange_target(flux_node::ptr oldtarget, flux_node::ptr newTarget) ";
+
+%feature("docstring")
+cmf::upslope::connections::SimplRichards::get_ptr "ptr get_ptr()
+const ";
+
+%feature("docstring")
+cmf::upslope::connections::SimplRichards::get_target "flux_node::ptr
+get_target(const flux_node &inquirer)
+
+Returns the other end of a connection than the asking end. ";
+
+%feature("docstring")
+cmf::upslope::connections::SimplRichards::get_target "flux_node::ptr
+get_target(int index) const
+
+With index 0, the left node is returned, with index 1 the right node
+of the connection. ";
+
+%feature("docstring")
+cmf::upslope::connections::SimplRichards::get_tracer_filter "real
+get_tracer_filter()
+
+A value ranging from 0 to 1. ";
+
+%feature("docstring")
+cmf::upslope::connections::SimplRichards::kill_me "bool kill_me()
+
+Deregisters this connection from its nodes. Returns true if only one
+reference is left. ";
+
+%feature("docstring")
+cmf::upslope::connections::SimplRichards::left_node "flux_node::ptr
+left_node() const
+
+Returns the left node of this connection. ";
+
+%feature("docstring")  cmf::upslope::connections::SimplRichards::q "real q(const flux_node &inquirer, cmf::math::Time t)
+
+Returns the current flux through a connection. Negative signs mean out
+of the inquirer, positive are inflows to the inquirer. ";
+
+%feature("docstring")
+cmf::upslope::connections::SimplRichards::refresh "void
+refresh(cmf::math::Time t)
+
+Performes a new calculation of the flux. ";
+
+%feature("docstring")
+cmf::upslope::connections::SimplRichards::right_node "flux_node::ptr
+right_node() const
+
+returns the right node of this connection ";
+
+%feature("docstring")
+cmf::upslope::connections::SimplRichards::set_tracer_filter "void
+set_tracer_filter(real value) ";
+
+%feature("docstring")
+cmf::upslope::connections::SimplRichards::short_string "std::string
+short_string() const ";
+
+%feature("docstring")
+cmf::upslope::connections::SimplRichards::to_string "std::string
+to_string() const ";
 
 
 // File: classcmf_1_1upslope_1_1_e_t_1_1snow__evaporation.xml
@@ -10570,6 +10979,98 @@ Without:  A flux_connection that is excluded from the waterbalance
 wet_area() const
 
 Returns the exposed surface area in m2. ";
+
+
+// File: classcmf_1_1upslope_1_1connections_1_1_s_w_a_t_percolation.xml
+%feature("docstring") cmf::upslope::connections::SWATPercolation "
+
+A tipping bucket percolation approach similar to the approach in SWAT.
+
+\\\\begin{eqnarray*} q_{perc} &=&
+V_{H_2O,drain}\\\\left(1-e^{-\\\\frac 1{-TT_{perc}}}\\\\right)
+\\\\\\\\ TT_{perc} &=& \\\\frac{V_{pores,drain} - V_{field
+cap.}}{K_{sat}} \\\\\\\\ V_{x,drain} &=& V_{x,drain} - V_{field cap.}
+\\\\end{eqnarray*}
+
+C++ includes: Percolation.h ";
+
+%feature("docstring")
+cmf::upslope::connections::SWATPercolation::SWATPercolation "SWATPercolation(cmf::upslope::SoilLayer::ptr upperLayer,
+cmf::upslope::SoilLayer::ptr lowerLayer) ";
+
+%feature("docstring")
+cmf::upslope::connections::SWATPercolation::conc "real
+conc(cmf::math::Time t, const cmf::water::solute &_Solute)
+
+Returns the concentration of the flux.
+
+If not overridden, it returns the concentration of the source of the
+flux (direction depending) ";
+
+%feature("docstring")
+cmf::upslope::connections::SWATPercolation::exchange_target "void
+exchange_target(flux_node::ptr oldtarget, flux_node::ptr newTarget) ";
+
+%feature("docstring")
+cmf::upslope::connections::SWATPercolation::get_ptr "ptr get_ptr()
+const ";
+
+%feature("docstring")
+cmf::upslope::connections::SWATPercolation::get_target "flux_node::ptr get_target(const flux_node &inquirer)
+
+Returns the other end of a connection than the asking end. ";
+
+%feature("docstring")
+cmf::upslope::connections::SWATPercolation::get_target "flux_node::ptr get_target(int index) const
+
+With index 0, the left node is returned, with index 1 the right node
+of the connection. ";
+
+%feature("docstring")
+cmf::upslope::connections::SWATPercolation::get_tracer_filter "real
+get_tracer_filter()
+
+A value ranging from 0 to 1. ";
+
+%feature("docstring")
+cmf::upslope::connections::SWATPercolation::kill_me "bool kill_me()
+
+Deregisters this connection from its nodes. Returns true if only one
+reference is left. ";
+
+%feature("docstring")
+cmf::upslope::connections::SWATPercolation::left_node "flux_node::ptr
+left_node() const
+
+Returns the left node of this connection. ";
+
+%feature("docstring")  cmf::upslope::connections::SWATPercolation::q "real q(const flux_node &inquirer, cmf::math::Time t)
+
+Returns the current flux through a connection. Negative signs mean out
+of the inquirer, positive are inflows to the inquirer. ";
+
+%feature("docstring")
+cmf::upslope::connections::SWATPercolation::refresh "void
+refresh(cmf::math::Time t)
+
+Performes a new calculation of the flux. ";
+
+%feature("docstring")
+cmf::upslope::connections::SWATPercolation::right_node "flux_node::ptr right_node() const
+
+returns the right node of this connection ";
+
+%feature("docstring")
+cmf::upslope::connections::SWATPercolation::set_tracer_filter "void
+set_tracer_filter(real value) ";
+
+%feature("docstring")
+cmf::upslope::connections::SWATPercolation::short_string "std::string
+short_string() const ";
+
+%feature("docstring")
+cmf::upslope::connections::SWATPercolation::to_string "std::string
+to_string() const ";
 
 
 // File: classcmf_1_1river_1_1_s_w_a_t_reach_type.xml
@@ -11932,6 +12433,133 @@ const
 Returns the average root length in m/m2. ";
 
 
+// File: classcmf_1_1upslope_1_1_v_g_m___b_c___retention_curve___windhorst.xml
+%feature("docstring") cmf::upslope::VGM_BC_RetentionCurve_Windhorst "
+
+The VGM_BC_RetentionCurve_Windhorst retention curve. Mixture between
+the van Genuchten-Mualem retention curve for the actual retention
+curve and the conductivity at a certain wetness is computed like in
+BrooksCorey.
+
+C++ includes: RetentionCurve.h ";
+
+%feature("docstring")
+cmf::upslope::VGM_BC_RetentionCurve_Windhorst::VGM_BC_RetentionCurve_Windhorst
+"VGM_BC_RetentionCurve_Windhorst(real Ksat=15, real phi=0.5, real
+alpha=0.2178, real n=1.211, real m=-1, real eta=9.14)
+
+Parameters:
+-----------
+
+Ksat:  Saturated conductivity in $\\\\frac m{day}$
+
+phi:  Porosity in $\\\\frac{m^3 Pores}{m^3 Soil}$
+
+alpha:  Van Genuchten $\\\\alpha$ in $\\\\frac 1{cm}$
+
+n:  Van Genuchten n
+
+m:  Van Genuchten m parameter, if negative m is calculated as $
+1-\\\\frac 1 n$
+
+eta:  Shape parameter of the conductivity curve ";
+
+%feature("docstring")
+cmf::upslope::VGM_BC_RetentionCurve_Windhorst::copy "VGM_BC_RetentionCurve_Windhorst* copy() const ";
+
+%feature("docstring")
+cmf::upslope::VGM_BC_RetentionCurve_Windhorst::FillHeight "virtual
+real FillHeight(real lowerDepth, real Area, real Volume) const
+
+Returns the thickness of a soil column with a certain pore volume. ";
+
+%feature("docstring")
+cmf::upslope::VGM_BC_RetentionCurve_Windhorst::fit_w0 "real
+fit_w0(real w1=1.01, real Psi_p=1.0, real tolerance=0.05)
+
+Fits the break point wetness w0, to ensure a specific oversaturation
+at a given hydrostatic potential.
+
+Parameters:
+-----------
+
+w1:  The oversaturation wetness to archieve (>1), default = 1.01
+
+Psi_p:  the hydrostatic potential for w1, default = +1.0 m
+
+tolerance:  ";
+
+%feature("docstring")
+cmf::upslope::VGM_BC_RetentionCurve_Windhorst::K "cmf::math::num_array K(const cmf::math::num_array &wetness) const ";
+
+%feature("docstring")
+cmf::upslope::VGM_BC_RetentionCurve_Windhorst::K "virtual real K(real
+wetness) const
+
+\\\\[K(W) = K_{sat} \\\\sqrt{W}
+\\\\left(1-\\\\left(1-W^{1/m}\\\\right)^m\\\\right)^2 \\\\] ";
+
+%feature("docstring")
+cmf::upslope::VGM_BC_RetentionCurve_Windhorst::MatricPotential "cmf::math::num_array MatricPotential(const cmf::math::num_array
+&wetness) const ";
+
+%feature("docstring")
+cmf::upslope::VGM_BC_RetentionCurve_Windhorst::MatricPotential "virtual real MatricPotential(real wetness) const
+
+\\\\[\\\\Psi(W) = 0.01 \\\\frac{m}{cm}
+\\\\frac{{\\\\left(1-{W}^{\\\\frac{1}{m}}\\\\right)
+}^{\\\\frac{1}{n}}}{\\\\alpha\\\\,{W}^{\\\\frac{1}{m\\\\,n}}} \\\\] ";
+
+%feature("docstring")
+cmf::upslope::VGM_BC_RetentionCurve_Windhorst::Porosity "virtual real
+Porosity(real depth) const
+
+\\\\[\\\\Phi(d)=const\\\\] ";
+
+%feature("docstring")
+cmf::upslope::VGM_BC_RetentionCurve_Windhorst::Transmissivity "virtual real Transmissivity(real upperDepth, real lowerDepth, real
+wetness) const
+
+\\\\[T=K(W)\\\\,\\\\left(d_{lower}-d_{upper}\\\\right)\\\\] ";
+
+%feature("docstring")
+cmf::upslope::VGM_BC_RetentionCurve_Windhorst::VoidVolume "virtual
+real VoidVolume(real upperDepth, real lowerDepth, real Area) const
+
+\\\\[V_{void}=A\\\\,\\\\left(d_{lower}-d_{upper}\\\\right)\\\\] ";
+
+%feature("docstring")
+cmf::upslope::VGM_BC_RetentionCurve_Windhorst::Wetness "cmf::math::num_array Wetness(const cmf::math::num_array &suction)
+const ";
+
+%feature("docstring")
+cmf::upslope::VGM_BC_RetentionCurve_Windhorst::Wetness "virtual real
+Wetness(real suction) const
+
+\\\\[ W(\\\\Psi) =
+\\\\left(1+\\\\left(\\\\alpha\\\\,100\\\\frac{cm}{m}\\\\Psi\\\\right)^n\\\\right)^{-m}
+\\\\] ";
+
+%feature("docstring")
+cmf::upslope::VGM_BC_RetentionCurve_Windhorst::Wetness_eff "virtual
+real Wetness_eff(real wetness, real pF_r=4.2) const
+
+Returns the effective wetness, using a residual pF value \\\\[w_{eff}
+=
+\\\\frac{w_{act}-w\\\\left(pF_r\\\\right)}{1-w\\\\left(pF_r\\\\right)}\\\\].
+";
+
+%feature("docstring")
+cmf::upslope::VGM_BC_RetentionCurve_Windhorst::Wetness_pF "real
+Wetness_pF(real pF) const
+
+returns the volumetric water content at a given pF value ";
+
+%feature("docstring")
+cmf::upslope::VGM_BC_RetentionCurve_Windhorst::Wetness_pF "cmf::math::num_array Wetness_pF(const cmf::math::num_array &pF) const
+";
+
+
 // File: classcmf_1_1river_1_1volume__height__function.xml
 %feature("docstring") cmf::river::volume_height_function "
 
@@ -12647,7 +13275,7 @@ const cmf::upslope::vegetation::Vegetation &veg)
 A function to calculate the actual transpiration for each soil layer
 using a Feddes like approach.
 
-This function is used to calculate the actual water uptake in m³/day
+This function is used to calculate the actual water uptake in m3/day
 from a single soillayer sw according to root depth and the potential
 transpiration (or ETpot if there is no difference) in mm/day The water
 flux is calculated as follows:
@@ -13841,6 +14469,9 @@ x, real xmin, real xmax, real ymin=0, real ymax=1) ";
 
 
 // File: group__meteo.xml
+
+
+// File: group__perc.xml
 
 
 // File: group__storages.xml
