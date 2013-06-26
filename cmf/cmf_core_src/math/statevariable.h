@@ -38,10 +38,11 @@ namespace cmf {
 #endif
 
 
-	  /// integration_variable is a functionality for different classes for integrating values over time.
+	  /// integratable is a functionality for different classes for integrating values over time.
 	  ///
-	  /// Main usage of an integration_variable is the calculation of average fluxes over time e.g.
+	  /// Main usage of an integratable is the calculation of average fluxes over time e.g.
 	  /// \f[ \int_{t_0}^{t_{end}}q\left(t,V_i,V_j\right)dt \f]
+	  /// 
 	  class integratable {
 	  public:
 		  typedef std::tr1::shared_ptr<integratable> ptr;
@@ -49,7 +50,9 @@ namespace cmf {
 		  virtual void integrate(Time t)=0;
 		  /// Sets the start time of the integral
 		  virtual void reset(Time t)=0;
+		  /// Get the integral from the last reset until the last call of integrate. 
 		  virtual double sum() const =0;
+		  /// Returns average of the integrated variable (eg. flux) from the last reset until the last call of integrate
 		  virtual double avg() const =0;
 	  };
 	  /// A list of cmf::math::integratable objects

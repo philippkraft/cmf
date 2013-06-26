@@ -137,5 +137,9 @@ size_t from_npy_array(PyObject* op,double ** data) {
 namespace cmf { namespace math {
 int count_parallel_threads();
 }}
-
+%{
+#include "math/spline.h"
+%}
+%rename(__call__) cmf::math::cubicspline::operator();
+%include "spline.h"
 
