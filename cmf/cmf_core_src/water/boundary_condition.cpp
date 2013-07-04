@@ -36,7 +36,7 @@ cmf::water::NeumannBoundary::NeumannBoundary(cmf::project& _project,
 											 cmf::water::SoluteTimeseries _concentration/*=cmf::water::SoluteTimeseries()*/,
 											 cmf::geometry::point loc/*=cmf::geometry::point()*/
 																						) 
-: cmf::water::flux_node(_project,loc), _flux(_flux),concentration(_concentration)
+: cmf::water::flux_node(_project,loc), _flux(flux),concentration(_concentration)
 {
 
 }
