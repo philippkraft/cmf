@@ -78,9 +78,9 @@ namespace cmf {
 			}
 			int integrate(cmf::math::Time t_max,cmf::math::Time dt)
 			{
-				WaterIntegrator->integrate_until(t_max,dt);
-				SoluteIntegrator->integrate_until(t_max,dt);
-				m_t=t_max;
+				WaterIntegrator->integrate(t_max,dt);
+				SoluteIntegrator->integrate_until(WaterIntegrator->get_t(),dt);
+				m_t=WaterIntegrator->get_t();
 				m_dt=WaterIntegrator->get_dt();
 				return 1;
 			}
