@@ -16,6 +16,7 @@
 //   You should have received a copy of the GNU General Public License
 //   along with cmf.  If not, see <http://www.gnu.org/licenses/>.
 //   
+
 #ifndef geometry_h__
 #define geometry_h__
 
@@ -83,36 +84,35 @@ namespace cmf {
 				}
 				double length() const;
 #ifndef SWIG
-				/// Assignment op
+				
 				point& operator=(const point& p) {this->x=p.x;this->y=p.y;this->z=p.z; return *this;}
 #endif
-				point operator+(const point& p) const; ///< plus
-				point& operator+=(const point& left) { x+=left.x;y+=left.y;z+=left.z; return *this;} ///< scalar multiply
+				point operator+(const point& p) const;
+				point& operator+=(const point& left) { x+=left.x;y+=left.y;z+=left.z; return *this;} 
 
-				point operator-(const point& p) const; ///< minus
-				point& operator-=(const point& left) { x-=left.x;y-=left.y;z-=left.z; return *this;} ///< scalar multiply
+				point operator-(const point& p) const;
+				point& operator-=(const point& left) { x-=left.x;y-=left.y;z-=left.z; return *this;} 
 
-				point operator*(double left) const { return point(x*left,y*left,z*left);} ///< scalar multiply
-				point& operator*=(double left) { x*=left;y*=left;z*=left; return *this;} ///< scalar multiply
-				point operator/(double left) const { return point(x/left,y/left,z/left);} ///< scalar div
-				point& operator/=(double left) { x/=left;y/=left;z/=left; return *this;} ///< scalar multiply
+				point operator*(double left) const { return point(x*left,y*left,z*left);}
+				point& operator*=(double left) { x*=left;y*=left;z*=left; return *this;} 
+				point operator/(double left) const { return point(x/left,y/left,z/left);}
+				point& operator/=(double left) { x/=left;y/=left;z/=left; return *this;} 
 
-				point operator*(const point& p) const { return point(x*p.x,y*p.y,z*p.z);} ///< mult
-				point& operator*=(const point& left) { x*=left.x;y*=left.y;z*=left.z; return *this;} ///< scalar multiply
+				point operator*(const point& p) const { return point(x*p.x,y*p.y,z*p.z);} 
+				point& operator*=(const point& left) { x*=left.x;y*=left.y;z*=left.z; return *this;}
 
-				point operator/(const point& p) const { return point(x/p.x,y/p.y,z/p.z);} ///< div
-				point& operator/=(const point& left) { x/=left.x;y/=left.y;z/=left.z; return *this;} ///< scalar multiply
+				point operator/(const point& p) const { return point(x/p.x,y/p.y,z/p.z);} 
+				point& operator/=(const point& left) { x/=left.x;y/=left.y;z/=left.z; return *this;}
 
-				bool operator ==(const point &p) const; ///< equal
-				bool operator !=(const point &p) const {return !(*this == p);} ///< not equal
+				bool operator ==(const point &p) const; 
+				bool operator !=(const point &p) const {return !(*this == p);} 
 		};
 		double dot(const point &p1, const point &p2);
 		double distance(const point & p1, const point & p2);
 #ifndef SWIG
-		point operator*(double d,const point &p);	///< scalar mult
-		point operator/(double d,const point &p);///< scalar div
+		point operator*(double d,const point &p);	
+		point operator/(double d,const point &p);
 #endif
-
 		/// Holds three arrays x,y and z for fast access of point coordinates
 		class point_vector
 		{
@@ -125,9 +125,10 @@ namespace cmf {
 			}
 #endif
 			cmf::math::num_array 
-				X, /// x coordinates
-				Y, /// y coordinates
-				Z; /// z coordinates
+				X, ///< x coordinates
+				Y, ///< y coordinates
+				Z; ///< z coordinates
+			
 			/// Create a point vector of a specific size
 			point_vector(int size) : X(size),Y(size),Z(size)
 			{
@@ -150,4 +151,4 @@ namespace cmf {
 
 
 
-#endif // geometry_h__
+#endif /* geometry_h__*/

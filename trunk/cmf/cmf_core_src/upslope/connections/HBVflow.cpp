@@ -17,7 +17,7 @@
 //   along with cmf.  If not, see <http://www.gnu.org/licenses/>.
 //   
 #include "HBVflow.h"
-
+#include "../../water/simple_connections.h"
 real cmf::upslope::connections::HBVpercolation::calc_q(cmf::math::Time t)
 {
 	cmf::upslope::SoilLayer::ptr 
@@ -116,10 +116,18 @@ void cmf::upslope::connections::HBVinstall( HBVparameters parameters,cmf::upslop
 	cell.add_layer(1.0,parameters);
 	cell.add_layer(2.0,parameters);
 	cell.add_layer(3.0,parameters);
+	new cmf::water::waterbalance_connection(cell.get_surfacewater(),cell.get_layer(0));
 	cmf::upslope::SoilLayer::ptr 
 		l_unsat=cell.get_layer(0),
 		l_up=cell.get_layer(1),
 		l_low=cell.get_layer(2);
 	new HBVpercolation(l_unsat,l_up);
 	new HBVpercolation(l_up,l_low);
+}
+
+cmf::upslope::connections::HBVparameters::HBVparameters( double _k0/*=1*/, double _k1/*=0.25*/, double _k2/*=0.005*/, double _perc /*= 0.05*/, double _fc/*=0.3*/, double _beta /*= 4.0*/, double _uplim /*= .35*/, double _lowlim /*= 1.0*/, double _cfmax/*=2 */,double _sfcf/*=0.6*/, double _cwh/*=0.1*/, double _cfr /*= 0.05*/ ) : k0(_k0),k1(_k1),k2(_k2),
+	perc(_perc),fc(_fc),uplim(_uplim),lowlim(_lowlim),beta(_beta),
+	cfmax(_cfmax),sfcf(_sfcf),cfr(_cfr),cwh(_cwh)
+{
+
 }

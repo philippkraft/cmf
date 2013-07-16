@@ -61,13 +61,23 @@ namespace cmf {
 					lowlim, ///< lower box capacity in m3 water/m3 soil
 					beta;   ///< Percolation curve shape parameter
 
-				HBVparameters(double _k0=1, double _k1=0.25, double _k2=0.005, double _perc = 0.05, 
-											double _fc=0.3, double _beta = 4.0, double _uplim = .35, double _lowlim = 1.0, 
-											double _cfmax=2 ,double _sfcf=0.6, double _cwh=0.1, double _cfr = 0.05)
-				: k0(_k0),k1(_k1),k2(_k2),
-					perc(_perc),fc(_fc),uplim(_uplim),lowlim(_lowlim),beta(_beta),
-					cfmax(_cfmax),sfcf(_sfcf),cfr(_cfr),cwh(_cwh)
-				{}
+				/// @brief Creates a HBVparameters object.
+				///
+				/// @param k0 runoff velocity of unsaturated layer in 1/day
+				/// @param k1 runoff velocity of upper box in 1/day
+				/// @param k2 runoff velocity of lower box in 1/day
+				/// @param perc percolation velocity in mm/day
+				/// @param fc field capacity in m3 water/m3 soil
+				/// @param beta Percolation curve shape parameter
+				/// @param uplim upper box capacity in m3 water/m3 soil
+				/// @param lowlim lower box capacity in m3 water/m3 soil
+				/// @param cfmax Degree-Day factor
+				/// @param sfcf Snowfall correction factor
+				/// @param cfr refreezing coefficient
+				/// @param cwh Water holding capacity (of snow)
+				HBVparameters(double k0=1, double k1=0.25, double k2=0.005, double perc = 0.05, 
+											double fc=0.3, double beta = 4.0, double uplim = .35, double lowlim = 1.0, 
+											double cfmax=2 ,double sfcf=0.6, double cwh=0.1, double cfr = 0.05);
 				virtual real K(real wetness) const {return perc * wetness;}
 				virtual real Porosity(real depth) const { return fc;}
 				virtual real VoidVolume(real upperDepth,real lowerDepth,real Area) const {return fc * Area * (lowerDepth-upperDepth);}
@@ -94,8 +104,8 @@ namespace cmf {
 			///
 			/// Calculates the percolation as in the HBV model
 			///
-			/// \f[ Q = \left\{Q_{in} \left(\frac{V}{FC}\right)^\beta\mbox{ if first layer} \\
-			///                min(PERC, V_{lower} - V_{lower,max}) \right. \f]
+			/// \f[ Q = \begin{cases}Q_{in} \left(\frac{V}{FC}\right)^\beta\mbox{ if first layer} \\
+			///                min(PERC, V_{lower} - V_{lower,max}) \end{cases} \f]
 			class HBVpercolation : public cmf::water::flux_connection	{
 			protected:
 				std::tr1::weak_ptr<cmf::upslope::SoilLayer> sw1,sw2;

@@ -26,7 +26,6 @@ namespace cmf {
 
 		/// An order 2 BDF-Method with fixed-point iteration and variable step size
 		///
-		/// Recommended integrator for CMF (so far)
 		///
 		/// Derived from 
 		///  - Roussel C. and Roussel M. (2003) "Generic Object-Oriented Differential Equation Integrators", 

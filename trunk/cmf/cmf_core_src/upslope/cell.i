@@ -20,9 +20,11 @@
 
 %{
 	#include "upslope/vegetation/StructVegetation.h"
+	#include "upslope/surfacewater.h"
 	#include "upslope/cell.h"
 	#include "upslope/Topology.h"
 	#include "upslope/algorithm.h"
+
 %}
 
 %include "upslope/vegetation/StructVegetation.h"
@@ -44,10 +46,16 @@
         return sstr.str();
     }
 }
+
+
+
+//////////////////////////////
+// Cell
+///////////////////////////////
 %nodefaultctor cmf::upslope::NeighborIterator;
 
 
-%node_downcast(cmf::water::flux_node::ptr cmf::upslope::Cell::get_surfacewater,cmf::river::OpenWaterStorage, cmf::water::DirichletBoundary)
+%node_downcast(cmf::water::flux_node::ptr cmf::upslope::Cell::get_surfacewater,cmf::upslope::SurfaceWater, cmf::water::DirichletBoundary)
 %node_downcast(cmf::water::WaterStorage::ptr cmf::upslope::Cell::get_storage,cmf::river::OpenWaterStorage, cmf::water::WaterStorage)
 %node_downcast(cmf::atmosphere::RainSource::ptr cmf::upslope::Cell::get_rain_source,cmf::atmosphere::RainfallStationReference::ptr,cmf::atmosphere::ConstantRainSource::ptr, cmf::atmosphere::IDWRainfall)
 
@@ -107,7 +115,7 @@
                      if     l.boundary[0]<lower_boundary 
                         and l.boundary[1]>upper_boundary 
                     ]
-        
+   
     def install_connection(self,connection_type):
         if hasattr(connection_type,"use_for_cell"):
             connection_type.use_for_cell(self)

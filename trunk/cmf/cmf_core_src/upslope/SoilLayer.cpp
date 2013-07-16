@@ -189,7 +189,9 @@ real cmf::upslope::MacroPore::head_to_volume( real head ) const
 {
 	SoilLayer::ptr l = get_layer();
 	real fill = head - (l->get_gravitational_potential() - l->get_thickness());
-	if (fill>0) {
+	if (fill > l->get_thickness()) {
+		return get_capacity() + (fill - l->get_thickness())/100.;
+	} else if (fill>0) {
 		return fill * get_porefraction() * l->cell.get_area();
 	} else {
 		return 0.0;
@@ -200,6 +202,8 @@ real cmf::upslope::MacroPore::volume_to_head( real volume ) const
 {
 	SoilLayer::ptr l = get_layer();
 	real fill = volume/l->cell.get_area()/get_porefraction();
+	if (volume>get_capacity())
+		fill = l->get_thickness() + 100 * (fill - l->get_thickness());
 	return (l->get_gravitational_potential()- l->get_thickness()) + fill;
 }
 
@@ -252,4 +256,15 @@ MacroPore::ptr cmf::upslope::MacroPore::create( SoilLayer::ptr layer,real porefr
 	MacroPore::ptr mp(mpp);
 	layer->cell.add_storage(mp);
 	return mp;
+}
+
+real cmf::upslope::MacroPore::get_capacity() const
+{
+	SoilLayer::ptr l=get_layer();
+	return get_porefraction() * l->get_thickness() * l->cell.get_area();
+}
+
+real cmf::upslope::MacroPore::get_flowwidth() const
+{
+	return 2/density * get_cell().get_area();
 }

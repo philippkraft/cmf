@@ -69,6 +69,9 @@
 %shared_ptr(cmf::upslope::MacroPore);
 %shared_attr(cmf::upslope::MacroPore, MacroPore, layer,get_layer);
 
+
+
+
 %include "upslope/SoilLayer.h"
 
 
@@ -99,6 +102,8 @@
 %attribute(cmf::upslope::layer_list,cmf::math::num_array,theta,get_theta);
 
 %iterable_to_list(cmf::upslope::layer_list,cmf::upslope::SoilLayer::ptr)
+
+
 %include "upslope/layer_list.h"
 
 %extend cmf::upslope::layer_list {
