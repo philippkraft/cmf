@@ -81,6 +81,11 @@ namespace cmf {
 
 			cmf::math::num_array get_ice_fraction() const;
 			cmf::math::num_array get_theta() const;
+
+			/// Returns the flux to each layer from the upper layer, or, in case of the first layer from the surface water 
+			cmf::math::num_array get_percolation(cmf::math::Time t) const;
+
+
 			/// Sets the volumetric water content of the soil
 			void set_theta(const cmf::math::num_array& Value, size_t offset=0);
 			/// Sets the fraction of the ice content of the soil water

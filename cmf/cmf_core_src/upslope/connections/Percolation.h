@@ -124,6 +124,7 @@ namespace cmf {
 			///@ingroup perc
 			///
 			/// @brief Gradient based flux from macro pore to macro pore.
+			/// @deprecated The MacroPore model is still very experimental and not stable. Only for tryouts!
 			///
 			/// \f[
 			/// q = K(\theta) \frac{\Delta \Psi}{\Delta z}
@@ -147,7 +148,35 @@ namespace cmf {
 					NewNodes();
 				}
 			};
-
+			///@ingroup perc
+			///
+			/// @brief Linear storage based flux from macro pore to macro pore.
+			/// @deprecated The MacroPore model is still very experimental and not stable. Only for tryouts!
+			///
+			/// \f[
+			/// q = K_{macro} \frac{V_{upper}}{C_{upper}} \left(1-\frac{V_{lower}}{C_{lower}}\right)
+			/// \f]
+			/// where:
+			/// - \f$K_{macro}\f$ is the conductivity of the macro pore storage
+			/// - \f$V\f$ is the actual stored water volume in the upper resp. lower macro pore storage
+			/// - \f$C\f$ is the capacity of the upper resp. lower macro pore storage
+			class KinematicMacroFlow : public cmf::water::flux_connection {
+			protected:
+				std::tr1::weak_ptr<cmf::upslope::MacroPore> mp1,mp2;
+				std::tr1::weak_ptr<cmf::upslope::conductable> c2;
+				void NewNodes();
+				virtual real calc_q(cmf::math::Time t) ;
+			public:
+				/// Creates the connection
+				///
+				/// @param left,right the nodes between the connection should be created.
+				/// @note Either left or right needs to be a MacroPore, left needs to be a water storage
+				KinematicMacroFlow(cmf::water::WaterStorage::ptr left,cmf::water::flux_node::ptr right)
+					: flux_connection(left,right,"Kinematic based macro pore flow")
+				{
+					NewNodes();
+				}
+			};
 
 			///@ingroup perc
 			///
@@ -189,8 +218,8 @@ namespace cmf {
 				/// @param Kmax maximum conductivity of the cracks in m/day
 				/// @param w0 is the actual wetness of the target layer
 				/// @param beta is an empirical shape parameter of the crack size/wetness relation
-LayerBypass(cmf::water::flux_node::ptr left,cmf::upslope::SoilLayer::ptr right, real Kmax=100.,real w0=0.0,real beta=1.0);
-			};
+				LayerBypass(cmf::water::flux_node::ptr left,cmf::upslope::SoilLayer::ptr right, real Kmax=100.,real w0=0.0,real beta=1.0);
+				};
 
 
 

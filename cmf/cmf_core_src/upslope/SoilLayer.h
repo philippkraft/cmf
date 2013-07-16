@@ -145,6 +145,34 @@ namespace cmf {
 			virtual void StateChangeAction();
 
 		};
+
+		/// @brief An additional water storage for a soil layer to model matrix water and macro pore water seperately. 
+		/// @deprecated The MacroPore model is still very experimental and not stable. Only for tryouts!
+		///
+		/// If present, the soil layer water storage holds the matrix water and the MacroPore holds the 
+		/// water in the macro pore. Use cmf::upslope::Macropore::create to create a macropore storage.
+		///
+		/// Use cmf::upslope::connections::GradientMacroFlow or cmf::upslope::connections::KinematicMacroFlow
+		/// to model water flow between macro pores and a lateral connection (\ref latflux) like cmf::upslope::connections::Richards_lateral 
+		/// to connect the macro pore with the matrix.
+		///
+		/// @code{.py}
+		/// import cmf
+		/// p=cmf.project()
+		/// c=p.NewCell(0,0,0,1000,True)
+		/// # Add two layers
+		/// c.add_layer(0.1, cmf.VanGenuchtenMualem())
+		/// c.add_layer(0.2, cmf.VanGenuchtenMualem())
+		/// # Create Macropore storages
+		/// macropores = [cmf.MacroPore.create(l,porefraction=0.05,Ksat=10.,density=0.05) for l in c.layers]
+		/// # Macro pore infiltration
+		/// cmf.KinematicMacroFlow(c.surfacewater, macropores[0])
+		/// # Macro pore percolation
+		/// cmf.KinematicMacroFlow(macropores[0], macropores[1])
+		/// # Macro / Micro exchange
+		/// for mp in macropores:
+		///     cmf.Richards_lateral(mp.layer, mp, FlowWidth = mp.get_flowwidth(), Distance = mp.density/2)
+		/// @endcode
         class MacroPore : public cmf::water::WaterStorage //, public cmf::upslope::conductable 
 		{
          public:
@@ -161,27 +189,62 @@ namespace cmf {
 			virtual real volume_to_head(real volume) const;
 			MacroPore(SoilLayer::ptr layer,real porefraction=0.05, real Ksat=10,real density=0.05 );
 		public:
+			/// Gets the soil layer (matrix water storage) for this macropore storage
 			SoilLayer::ptr get_layer() const {
 				return m_layer.lock();
 			}
 			/// The fraction of the macro pores in m3/m3. This adds to the porosity of the layer
 			real get_porefraction() const {return m_porefraction;}
-			/// The mean distance between the macro pores
+			/// The mean distance between the macro pores in m
 			real density;
+			/// The saturated conductivity of the macropores in m/day
 			real Ksat;
-			virtual real get_K() {
+			/// Returns the actual conductivity (until now just Ksat)
+			virtual real get_K() const{
 				return Ksat;
 			}
 			/// Returns the actual anisotropic conductivity along a direction \f$K = (k_f \cdot d) K\f$
 			virtual real get_K(cmf::geometry::point direction) const {
-				return Ksat;				
+				return get_K();				
 			}
-
+			/// The cell of this macropore
+			cmf::upslope::Cell& get_cell() const {
+				return get_layer()->cell;
+			}
+			/// Returns the actual water level in the macropore in m above reference
 			real get_potential() const;
+			/// Returns the actual stored volume in this macropore in m3
 			real get_volume() const;
+			/// Returns the capacity of the macropores in m3
+			///
+			/// \f[V_{max} = \Phi_{macro} A \Delta z\f]
+			/// where:
+			///  - \f$V_{max}\f$ is the water capacity of the macropore
+			///  - \f$\Phi_{macro}\f$ is the fraction of macro pores in the soil in \f$m^3 macro pores/m^3 soil\f$
+			///  - \f$A \Delta z\f$ is the total volume of the soil layer (including all pores) in \f$m^3\f$
+			real get_capacity() const;
+			/// Sets the volume of stored water in m3
 			void set_volume(real volume);
+			/// Sets the water level in the macropore. Be aware of not setting it below the lower boundary
 			void set_potential(real waterhead);
+			/// Get the relative water content in the macro pore \f$\theta_{macro} = V_{macro}/V_{max}\f$
 			real get_filled_fraction() const;
+			/// The approximate length of the aggregate boundaries.
+			///
+			/// \f[l = \frac{2}{d_{macro}} A\f]
+			/// where:
+			/// - \f$l\f$ is the length of the aggregate boundaries (in m)
+			/// - \f$2\f$ is the number of directions
+			/// - \f$d_{macro}\f$ is the mean distance between macropores (density) in m
+			/// - \f$A\f$ is the area of the cell
+			real get_flowwidth() const;
+			/// Creates a macropore water storage for a soil layer.
+			///
+			/// @returns a MacroPore water storage
+			/// @param layer The soil layer holding the macro pore
+			/// @param porefraction The relative macro pore content of the soil layer
+			/// @param Ksat The saturated conductivity of the macro pores
+			/// @param density The mean distance between macropores or mean aggregate size
 			static MacroPore::ptr create(SoilLayer::ptr layer,real porefraction=0.05, real Ksat=10,real density=0.05);
 			static MacroPore::ptr cast(cmf::water::flux_node::ptr node) {
 				return std::tr1::dynamic_pointer_cast<MacroPore>(node);

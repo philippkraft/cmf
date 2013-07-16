@@ -22,7 +22,9 @@
 #include "../../water/flux_connection.h"
 #include "../cell.h"
 #include "../SoilLayer.h"
-#include "../../reach/ManningConnection.h"
+#include "../surfacewater.h"
+#include "../../math/time.h"
+
 namespace cmf {
 	namespace upslope {
 		namespace connections {
@@ -75,17 +77,28 @@ namespace cmf {
 				}
 			};
 			/// @ingroup infiltration
-			/// Connects the surfacewater and the most upper layer using a Richards equation like infiltration
-			/// model but assuming saturated conductivity as the potential infiltration rate into the first layer.
+			/// Connects the surfacewater and the most upper layer using a Green-Ampt equation like infiltration
 			///
-			/// The potential infiltration is calculated according to the Richards equation.
-			/// The gradient is from the cell surface to the center of the first layer and the
-			/// conductivity is \f$K_{sat}\f$
-			/// \f{eqnarray*}
-			/// q_{max} &=& \frac{\Psi_{surface} - \Psi_{soil}}{\Delta z} K A_{cell} \\
-			/// K &=& \sqrt{K\left(\theta_{layer}\right)K_{sat}} \\
-			/// \Delta z &=& z_{cell} - z_{layer center}
-			/// \f}
+			/// The Green-Ampt formula is given as:
+			/// \f[q(t) = -K_s \frac{dh}{dz} A\f]
+			/// where:
+			/// - \f$q(t)\f$ is the infiltration rate in m3/day
+			/// - \f$K_s\f$ is the saturated conductivity in m/day
+			/// - \f$\frac{dh}{dz}\f$ is the hydraulic gradient in the wetting front
+			/// - \f$A\f$ is the surface area of the cell
+			///
+			/// The gradient in the wetting front is calculated as:
+			/// \f[\frac{dh}{dz} = \frac{h_f - h_0}{Z_f} = \frac{|\Psi_f| + Z_f}{Z_f}\f]
+			/// where:
+			/// - \f$h_f\f$ is the hydraulic head at the bottom of the wetting front in m
+			/// - \f$h_0\f$ is the hydraulic head at the surface in m
+			/// - \f$Z_f\f$ is the length of the wetting front in m
+			///
+			/// Since \f$Z_f\f$ is unknown, the depth of the wetting front can be approximated by:
+			/// \f[Z_f = \frac{F}{\theta_s - \theta_i}\f]
+			/// with:
+			/// - \f$F\f$ the accumulated volume per area of infiltrated water
+			/// - \f$\theta_s, \theta_i\f$ the volumetric water content at saturation resp. at start of the infiltration
 			///
 			/// If the surface water is modeled by a distinct water storage, the actual infiltration is
 			/// given as the product of the potential infiltration with the coverage of the surface water
@@ -96,24 +109,24 @@ namespace cmf {
 			/// the actual infiltration is the minimum of the potential infiltration and the current
 			/// inflow (rain, snow melt) to the surface
 			/// \f[q_{act} = \min\left(q_{max}, \sum{q_{in,surfacewater}}\right)\f]
-
-
-			class CompleteInfiltration : public cmf::water::flux_connection {
+			class GreenAmptInfiltration : public cmf::water::flux_connection {
 			protected:
 				std::tr1::weak_ptr<cmf::upslope::SoilLayer> m_soilwater;
-				std::tr1::weak_ptr<cmf::river::OpenWaterStorage> m_surfacewaterstorage;
+				std::tr1::weak_ptr<cmf::upslope::SurfaceWater> m_surfacewaterstorage;
 				virtual real calc_q(cmf::math::Time t);
 				void NewNodes()
 				{
 					m_soilwater=cmf::upslope::SoilLayer::cast(right_node());
-					m_surfacewaterstorage=cmf::river::OpenWaterStorage::cast(left_node());
+					m_surfacewaterstorage=cmf::upslope::SurfaceWater::cast(left_node());
 				}
 			public:
-				CompleteInfiltration(cmf::upslope::SoilLayer::ptr soilwater,cmf::water::flux_node::ptr surfacewater) 
-					: flux_connection(surfacewater,soilwater,"Complete infiltration"){
+				GreenAmptInfiltration(cmf::upslope::SoilLayer::ptr soilwater,cmf::water::flux_node::ptr surfacewater) 
+					: flux_connection(surfacewater,soilwater,"Green Ampt infiltration"){
 						NewNodes();
 				}
-
+				static void use_for_cell(cmf::upslope::Cell& c) {
+					new cmf::upslope::connections::GreenAmptInfiltration(c.get_layer(0),c.get_surfacewater());
+				}
 			};
 		}
 	}

@@ -70,3 +70,15 @@ cmf::upslope::layer_list cmf::upslope::layer_list::get_slice( size_t first/*=0*/
 	return res;
 }
 
+cmf::math::num_array cmf::upslope::layer_list::get_percolation( cmf::math::Time t ) const
+{
+	cmf::math::num_array res(size());
+	if (size()) {
+		res[0] = (*this)[0]->cell.get_surfacewater()->flux_to(*(*this)[0],t);
+		for (size_t i = 1; i < size(); ++i)
+			res[i] = (*this)[i-1]->flux_to(*(*this)[i],t);
+	} 
+	return res;
+
+}
+
