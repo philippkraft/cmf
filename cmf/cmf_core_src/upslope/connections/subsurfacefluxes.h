@@ -82,6 +82,12 @@ namespace cmf {
 				static void connect_cells(cmf::upslope::Cell & cell1,cmf::upslope::Cell & cell2,int start_at_layer=0);
 			public:
 				static const cmf::upslope::CellConnector cell_connector;
+				/// @brief Creates the connection
+				///
+				/// @param left Left node of the connection (needs to be soil water storage)
+				/// @param right Right node of the connection (can be any node)
+				/// @param FlowWidth the width of the connection - is multiplied by layer thickness to get the interface area
+				/// @param Distance the length of the connection. If 0, the distance is calculated from the position of the nodes
 				TopographicGradientDarcy(cmf::upslope::SoilLayer::ptr left,cmf::water::flux_node::ptr right,real FlowWidth,real Distance=0)
 					: lateral_sub_surface_flux(left,right,"Topographic gradient",FlowWidth,Distance)
 				{ }
@@ -90,23 +96,6 @@ namespace cmf {
 			};
 
 
-			/// @ingroup latflux
-			/// A connection similar to OHDIS-KWMSS (OHymos-based DIStributed model - with Kinematic Wave Method for Surface and Subsurface runoff) 
-			///
-			class OHDISflow : public lateral_sub_surface_flux
-			{
-			protected:
-				virtual real calc_q(cmf::math::Time t) ;
-
-				static void connect_cells(cmf::upslope::Cell & cell1,cmf::upslope::Cell & cell2,int start_at_layer=0);
-			public:
-				OHDISflow(cmf::upslope::SoilLayer::ptr left,cmf::water::flux_node::ptr right,real FlowWidth, real Distance=0)
-					: lateral_sub_surface_flux(left,right,"OHDIS like connection",FlowWidth,Distance)
-				{			}
-
-				static const CellConnector cell_connector;
-
-			};
 			/// @ingroup latflux
 			/// A simple kinemtic wave model for subsurface flux
 			///
@@ -118,6 +107,12 @@ namespace cmf {
 
 				static void connect_cells(cmf::upslope::Cell & cell1,cmf::upslope::Cell & cell2,int start_at_layer=0);
 			public:
+				/// @brief Creates the connection
+				///
+				/// @param left Left node of the connection (needs to be soil water storage)
+				/// @param right Right node of the connection (can be any node)
+				/// @param FlowWidth the width of the connection - is multiplied by layer thickness to get the interface area
+				/// @param Distance the length of the connection. If 0, the distance is calculated from the position of the nodes
 				DarcyKinematic(cmf::upslope::SoilLayer::ptr left,cmf::water::flux_node::ptr right,real FlowWidth, real Distance=0)
 					: lateral_sub_surface_flux(left,right,"A Darcian kinematic wave approach",FlowWidth,Distance)
 				{			}
@@ -146,6 +141,12 @@ namespace cmf {
 
 			public:
 				real flow_thickness;
+				/// @brief Creates the connection
+				///
+				/// @param left Left node of the connection (needs to be soil water storage)
+				/// @param right Right node of the connection (can be any node)
+				/// @param FlowWidth the width of the connection - is multiplied by layer thickness to get the interface area
+				/// @param Distance the length of the connection. If 0, the distance is calculated from the position of the nodes
 				Richards_lateral(cmf::upslope::SoilLayer::ptr left,cmf::water::flux_node::ptr right,real FlowWidth=0,real Distance=0)
 					: lateral_sub_surface_flux(left,right,"Richards eq. (lat)",FlowWidth,Distance)
 				{

@@ -10,6 +10,11 @@ namespace cmf {
 	namespace water {
 		/// @ingroup connections
 		/// @brief Routes the sum of all other fluxes to a target
+		///
+		/// \f[ q_{1,0} = \sum_{i=2}^N{q_{1,i}(V_1,V_i,t)}\f]
+		/// where:
+		/// - \f$q_{i,j}\f$ is the flux between the two node i and j. Subscript 0 is the right node,
+		/// subscript 1 is the left node and 2..N are the nodes connected to the left node, except for the right node
 		class waterbalance_connection : public flux_connection
 		{
 		protected:
@@ -31,6 +36,10 @@ namespace cmf {
 		/// @ingroup connections
 		/// @brief Flux from one node to another, controlled by the user or an external program, 
 		/// by changing the flux constant
+		///
+		/// @note It is easy to create negative volumes in water storages with this connection, 
+		/// which can be hazard to the solver, since most connections rely on a positive volume in a storage.
+		/// Handle with care!
 		class external_control_connection : public flux_connection {
 		protected:
 			real calc_q(cmf::math::Time t)	{
@@ -59,10 +68,12 @@ namespace cmf {
 		/// @ingroup connections
 		/// @brief Calculates flux out of a storage as a linear function of its volume to a power.
 		///
-		/// \f[ q = \frac 1 {t_r} {\left(\frac{V}{V_0} - f_{residual}\right)^\beta} \f]
+		/// \f[ q = \frac 1 {t_r} {\left(\frac{V - V_{residual}}{V_0} \right)^\beta} \f]
 		/// where:
 		/// - \f$V_{residual} [m^3]\f$ The volume of water not flowing out (default = 0)
-		/// - \f$V_0\f$ The reference volume to scale the exponent
+		/// - \f$V_0\f$ The reference volume to scale the exponent (default = 1m3/day)
+		/// - \f$\beta\f$ A parameter to shape the response curve. In case of \f$\beta \neq 1\f$, 
+		///   \f$t_r\f$ is not a residence time, but just a parameter.
 		/// - \f$t_r [days]\f$ The residence time of the water in this storage in days
 		class kinematic_wave : public flux_connection {
 		protected:
@@ -82,7 +93,7 @@ namespace cmf {
 			real V0;
 
 			/// @brief Creates a kinematic wave connection.
-			/// \f[ q = \frac {\left(\frac{V}{V_0} - f_{residual}\right)^\beta}{t_r} \f]
+			/// \f[ q = \frac 1 {t_r} {\left(\frac{V - V_{residual}}{V_0} \right)^\beta} \f]
 			/// @param source Water storage from which the water flows out. Flux is a function of source.volume
 			/// @param target Target node (boundary condition or storage). Does not influence the strength of the flow
 			/// @param residencetime \f$t_r [days]\f$ The residence time of the water in this storage
@@ -96,17 +107,17 @@ namespace cmf {
 		/// @ingroup connections
 		/// @brief Produces a constant but changeable flux from a source to a target, if enough water is present in the source
 		///
-		/// \f$ q=\left\{0 \mbox{ if }V_{source}\le V_{min}\\ \frac{V_{source} - V_{min}}{t_{decr} q_{0} - V_{min}}\mbox{ if } V_{source} t_{decr} q_{0}\\ q_{0} \mbox{ else}\le \right. \f$
+		/// \f[ q=\begin{cases}0 & V_{source}\le V_{min}\\ q_0 \frac{V_{source} - V_{min}}{t_{decr} q_{0} - V_{min}} & V_{source} \le t_{decr} q_{0}\\ q_{0} &  \end{cases}\f]
+		///
+		/// This is similar to a neumann boundary, however this is not a boundary condition, but water is taken from the source (left) water storage and limited by that water storage.
 		class TechnicalFlux : public cmf::water::flux_connection
 		{
 		protected:
 			std::tr1::weak_ptr<cmf::water::WaterStorage> source;
-			virtual real calc_q(cmf::math::Time t)
-			{
+			virtual real calc_q(cmf::math::Time t)	{
 				return piecewise_linear(source.lock()->get_state(),MinState,MinState+FluxDecreaseTime.AsDays()*MaxFlux,0,MaxFlux);
 			}
-			void NewNodes()
-			{
+			void NewNodes()	{
 				source = cmf::water::WaterStorage::cast(left_node());
 			}
 
@@ -134,7 +145,7 @@ namespace cmf {
 		/// @brief A generic node-to-node gradient based connection. 
 		
 		/// This connection is similar to the Darcy-connection,
-		/// but there are no restrictions concerning the type of nodes. However, one side should be a water storage.h
+		/// but there are no restrictions concerning the type of nodes. However, the left side needs to be a water storage
 		/// \f[
 		/// q = K A \frac{\Psi_{l}-\Psi_{r}}{d}
 		/// \f]
@@ -171,6 +182,11 @@ namespace cmf {
 		/// @brief Calculates a flux to or from a water storage to hold it's state at a more or less constant level
 		///
         /// \f[ q=\frac{h_1 - h_{target}}{t_c [days]} \f]
+		/// where:
+		/// - \f$q\f$ the resulting flux in m3/day
+		/// - \f$h_1\f$ the reference state
+		/// - \f$h_{target}\f$ the state of the target (right) node
+		/// - \f$t_c\f$ the time to reach the target state
 		class statecontrol_connection 
 			: public flux_connection 
 		{
@@ -182,6 +198,7 @@ namespace cmf {
 			cmf::math::Time reaction_time;
 			real target_state;
 			/// @brief Creates a flux connection to control the state of a storage
+			///
 			/// @param controlled_storage Water storage, to be controlled
 			/// @param other_end source of missing water or target of excessive water
 			/// @param target_state State the controlled storage should hold (\f$h_{target}\f$)

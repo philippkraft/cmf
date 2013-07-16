@@ -91,10 +91,15 @@ namespace cmf {
 			double mm_to_m3(double depth) const { return depth * m_Area * 1e-3;}
 			/// @name Saturation
 			//@{
-			/// Marks the saturated depth as unvalid
+			/// Marks the saturated depth as unvalid. This is done automatically, when the state of a layer changes
 			void InvalidateSatDepth() const {m_SatDepth=-1e20;}
-			/// 
+			/// Returns the potential \f$\Psi_{total}\f$ of the deepest unsaturated layer as distance from the surface.
+			///
+			/// This function is wrapped as the property `saturated_depth` in Python
 			real get_saturated_depth() const;
+			/// Sets the potential \f$\Psi_{total}\f$ of each layer as distance from the surface
+			///
+			/// This function is wrapped as the property `saturated_depth` in Python
 			void set_saturated_depth(real depth);
 			//@}
 		private:
@@ -118,6 +123,7 @@ namespace cmf {
 
 			
 		public:
+			/// The vegetation object of the cell
 			cmf::upslope::vegetation::Vegetation vegetation;
 			/// Returns the meteorological data source
 			cmf::atmosphere::Meteorology& get_meteorology() const 
@@ -145,18 +151,33 @@ namespace cmf {
 			double get_rainfall(cmf::math::Time t) const {return m_rainfall->get_intensity(t) * 1e-3 * m_Area;}
 			/// Changes the current source of rainfall
 			void set_rain_source(cmf::atmosphere::RainSource::ptr new_source);
+			
 			/// Returns the current source for rainfall
 			cmf::atmosphere::RainSource::ptr get_rain_source() {
 				return m_rainfall;
 			}
-			/// Returns the end point of all evaporation of this cell
+			/// Returns the end point of all evaporation of this cell (a cmf::water::flux_node)
  			cmf::water::flux_node::ptr get_evaporation();
- 			/// Returns the end point of all transpiration of this cell
+ 			/// Returns the end point of all transpiration of this cell (a cmf::water::flux_node)
  			cmf::water::flux_node::ptr get_transpiration();
-			/// returns the surface water of this cell
+
+			/// returns the surface water of this cell. This is either a flux node or a cmf::upslope::SurfaceWater
 			cmf::water::flux_node::ptr get_surfacewater();
+			
+			/// Makes the surfacewater of this cell a cmf::upslope::SurfaceWater storage.
 			void surfacewater_as_storage();
+
+			/// Adds a new storage to the cell
+			///
+			/// @param Name The name of the storage
+			/// @param storage_role A shortcut to describe the functional role of the storage new storage. Possible Values:
+			/// - 'C' denotes a canopy storage
+			/// - 'S' denotes a snow storage
+			/// - any other value denotes a storage with an undefined function
+			/// @param isopenwater If true, an open water storage with a cmf::river::Prism height function is created
 			cmf::water::WaterStorage::ptr add_storage(std::string Name,char storage_role='N',  bool isopenwater=false);
+
+			/// Bounds an existing storage to the cell
 			int add_storage(cmf::water::WaterStorage::ptr storage) {
 				m_storages.push_back(storage);
 				return m_storages.size();
@@ -186,19 +207,16 @@ namespace cmf {
 			/// @param t Time step
 			real heat_flux(cmf::math::Time t) const;
 			real Tground;
-			bool has_wet_leaves() const
-			{
+			bool has_wet_leaves() const	{
 				return (m_Canopy) && (m_Canopy->get_state()>1e-6*get_area());
-			}
-			bool has_surface_water() const
-			{
-				return (m_SurfaceWaterStorage) && (m_SurfaceWaterStorage->get_state()>1e-6*get_area());
 			}
 			int Id;
 			cmf::project& get_project() const
 			{
 				return m_project;
 			}
+
+			/// Returns the current meteorological conditions of the cell at time t.
 			cmf::atmosphere::Weather get_weather(cmf::math::Time t) const;
 
 		public:
@@ -206,22 +224,43 @@ namespace cmf {
 			///@name Layers
 			//@{
 		private:
-			//typedef std::vector<layer_ptr> layer_vector;
 			layer_list m_Layers;
 		public:
+			/// Returns the number of layers of the cell
 			int layer_count() const
 			{
 				return int(m_Layers.size());
 			}
+			/// Returns the layer at position ndx.
+			///
+			/// From python this function is masked as a sequence:
+			/// @code{.py}
+			/// l = cell.layers[ndx]
+			/// @endcode
 			cmf::upslope::SoilLayer::ptr get_layer(int ndx) const;
+
+			/// Returns the list of layers.
+			///
+			/// From python this function is masked as a property:
+			/// @code{.py}
+			/// layers = cell.layers
+			/// @endcode
 			const layer_list& get_layers() const {return m_Layers;}
+
+			/// Adds a layer to the cell. Layers are created using this function
+			///
+			/// @returns None
+			/// @param lowerboundary The maximum depth of the layer in m. If lowerboundary is smaller or equal than the lowerboundary of thelowest layer, an error is raised
+			/// @param r_curve A retention curve. [See here](/wiki/CmfTutRetentioncurve) for a discussion on retention curves in cmf.
+			/// @param saturateddepth The initial potential of the new layer in m below surface. Default = 10m (=quite dry)
 			void add_layer(real lowerboundary,const cmf::upslope::RetentionCurve& r_curve,real saturateddepth=10);
+			/// Remove the lowest layer from this cell
 			void remove_last_layer();
+			/// Removes all layers from this cell
 			void remove_layers();
+			/// Returns the lower boundary of the lowest layer in m
 			double get_soildepth() const;
 
-			/// Returns the flux to each layer from the upperlayer, or, in case of the first layer from the surface water 
-			cmf::math::num_array get_percolation(cmf::math::Time t) const;
 
 
 			virtual ~Cell();

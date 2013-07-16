@@ -74,7 +74,8 @@ const cmf::upslope::CellConnector
 	cmf::river::Manning_Kinematic::cell_connector
 				= cmf::upslope::CellConnector(&connect_cells),
 	cmf::river::Manning_Diffusive::cell_connector
-				= cmf::upslope::CellConnector(&connect_cells),
+				= cmf::upslope::CellConnector(&connect_cells);
+/*
 	cmf::river::KinematicSheetFlow::cell_connector
 				= cmf::upslope::CellConnector(&KinematicSheetFlow::connect_cells);
 	
@@ -110,3 +111,4 @@ void cmf::river::KinematicSheetFlow::connect_cells( cmf::upslope::Cell& c1,cmf::
 {
 
 }
+*/

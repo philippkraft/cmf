@@ -59,6 +59,18 @@
 %include "upslope/Layer.i"
 %include "reach/Reach.i"
 
+///////////////////////////
+// Surfacewater
+//////////////////////////
+
+%shared_ptr(cmf::upslope::SurfaceWater);
+%attribute(cmf::upslope::SurfaceWater,real,puddledepth,get_puddledepth,set_puddledepth);
+%attribute(cmf::upslope::SurfaceWater,real,nManning,get_nManning,set_nManning);
+
+%include "upslope/surfacewater.h"
+%extend__repr__(cmf::upslope::SurfaceWater)
+
+/////////////////////////////
 %{
 	#include "upslope/groundwater.h"
 	#include "upslope/connections/subsurfacefluxes.h"

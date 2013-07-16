@@ -70,10 +70,12 @@ namespace cmf {
 			}
 
 			double prevent_negative_volume(double flow) {
+				real empty = 1.0;
 				if (flow>0)
-					return flow * (1 - left_node()->is_empty());
+					empty=left_node()->is_empty();
 				else
-					return flow * (1 - right_node()->is_empty());
+					empty=right_node()->is_empty();
+				return flow * (1 - empty);
 			}
 
 

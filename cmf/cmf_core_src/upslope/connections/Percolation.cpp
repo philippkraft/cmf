@@ -178,3 +178,38 @@ real cmf::upslope::connections::LayerBypass::K(real w)
 {
 	return Kmax * minmax(1-pow((w - w0)/(1-w0),beta),0,1);
 }
+
+real cmf::upslope::connections::KinematicMacroFlow::calc_q( cmf::math::Time t )
+{
+	using namespace cmf::upslope;
+	using namespace cmf::geometry;
+	// Richards flux
+	MacroPore::ptr 
+		Mp1=mp1.lock(),
+		Mp2=mp2.lock();
+	real linear_gradient = 0.0;
+	if (Mp1) {
+		linear_gradient = Mp1->get_K() * Mp1->get_filled_fraction();
+	} else {
+		cmf::water::WaterStorage::ptr ws2 = cmf::water::WaterStorage::cast(left_node());
+		// Use a virtual filled fraction, using the capacity of Mp2
+		linear_gradient = Mp2->get_K() * ws2->get_volume() / Mp2->get_capacity();
+	}
+
+	real overflow = Mp2 ? std::max( 1 - Mp2->get_filled_fraction(),0.0) : 1;			
+	real area = (Mp1 ? Mp1 : Mp2)->get_cell().get_area();
+	real k_flow = linear_gradient * overflow * area;
+	return prevent_negative_volume(k_flow);
+
+}
+
+void cmf::upslope::connections::KinematicMacroFlow::NewNodes()
+{
+	MacroPore::ptr 
+		Mp1=cmf::upslope::MacroPore::cast(left_node()),
+		Mp2=cmf::upslope::MacroPore::cast(right_node());
+	if (!(Mp1) && !(Mp2)) 
+		throw std::runtime_error("One of the end points for KinematicMacroFlow needs to be a MacroPore");
+	mp1 = Mp1;
+	mp2= Mp2;
+}

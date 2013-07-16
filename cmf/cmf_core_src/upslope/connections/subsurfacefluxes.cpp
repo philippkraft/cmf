@@ -228,69 +228,6 @@ const CellConnector connections::DarcyKinematic::cell_connector(connections::Dar
 
 
 
-
-real connections::OHDISflow::calc_q( cmf::math::Time t )
-{
-	SoilLayer::ptr 
-		l1=sw1.lock(),
-		l2=sw2.lock();
-	// The resulting flux
-	real q=0;
-
-	// The equivalent of capillary pores as length
-	real dm1=l1->get_thickness()*l1->get_soil().Wetness_pF(1)*l1->get_soil().Porosity(l1->get_upper_boundary());
-	real dm2=l2 ? l2->get_thickness()*l2->get_soil().Wetness_pF(1)*l2->get_soil().Porosity(l2->get_upper_boundary()) : dm1;
-	// the equivalent filling depth
-	real h1=l1->get_thickness()*l1->get_theta();
-	real h2=l2 ? l2->get_thickness()*l2->get_theta() : h1;
-
-	// the unsaturated conductivity
-	real k1=l1->get_K();
-	real k2=l2 ? l2->get_K() : k1;
-
-	// topographic slope
-	real z1=l1->cell.z;
-	real z2=l2 ? l2->cell.z : right_node()->get_potential();
-	real slope=(z1-z2)/distance;
-
-	// Values a cell boundary
-	real h_avg=mean(h1,h2);
-	real dm_avg=mean(dm1,dm2);
-	// soil depth
-	real t1=l1->get_thickness();
-	real t2=l2 ? l2->get_thickness() : t1;
-	real da_avg=mean(t1,t2);
-	// capillary lateral flux
-	q+=dm_avg*geo_mean(k1,k2)*slope;
-
-	// macropore lateral flux
-	if (h_avg>dm_avg)
-		q+=(h_avg-dm_avg)*l1->get_Ksat()*slope;
-	// overbound (Manning) flux
-	if (h_avg>da_avg)
-		q+=sign(slope) * sqrt(fabs(slope))/(0.035)*pow(h_avg-da_avg,2./3.);
-	return q*flow_width;
-
-
-}
-const CellConnector connections::OHDISflow::cell_connector(connections::OHDISflow::connect_cells);
-void connections::OHDISflow::connect_cells( Cell & cell1,Cell & cell2,int start_at_layer/*=0*/ )
-{
-	real w=cell1.get_topology().flowwidth(cell2);
-	if (w>0)
-	{
-		for (int i = start_at_layer; i < (start_at_layer>=0 ? cell1.layer_count() : 0) ; ++i)	{
-			for (int j = start_at_layer; j < (start_at_layer>=0 ? cell2.layer_count() : 0) ; ++j)	{
-				real ca=cell1.get_layer(i)->get_flow_crosssection(*cell2.get_layer(j));
-				if (ca>0)	{
-					real d=cell1.get_layer(i)->position.distanceTo(cell2.get_layer(j)->position);
-					new OHDISflow(cell1.get_layer(i),cell2.get_layer(j),w,d);
-				}	}	}
-	}
-
-}
-
-
 void connections::lateral_sub_surface_flux::NewNodes()
 {
 	SoilLayer::ptr l1,l2;

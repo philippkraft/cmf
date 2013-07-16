@@ -26,12 +26,14 @@ using namespace cmf::river;
 double IChannel::qManning( double A,double slope ) const
 {
 	double 
+		nManning = get_nManning(),
 		d=get_depth(A),
-		P=get_wetted_perimeter(d)+0.001, // a mm extra to prevent divide by zero
-		R=A/P+0.001,          // a mm extra to prevent pow failure
-		nManning = get_nManning();
-
-	return A*pow(R,2./3.)*sqrt(slope)/nManning;
+		P=get_wetted_perimeter(d); 
+	if (A<=0.0 || P<=0.0) {
+		return 0.0;
+	} else {
+		return A*pow(A/P,2./3.)*sqrt(slope)/nManning;
+	}
 }
 
 
@@ -389,45 +391,45 @@ cmf::river::Prism::Prism( double base_area, double thickness_of_rough_ground/*=0
 
 
 
-cmf::river::FlowSurface::FlowSurface( double length, double width,
-	double _d_puddle/*=0.0*/,double _d_rill/*=0.0*/, 
-	double nManning/*=0.035*/, double _e_m/*=0.6666667*/ )
-	: m_nManning(nManning), m_length(length), m_width(width), d_puddle(_d_puddle),d_rill(_d_rill), e_m(_e_m)
-{}
-
-cmf::river::FlowSurface::FlowSurface( const FlowSurface& other )
- 	: m_nManning(other.m_nManning), m_length(other.m_length), m_width(other.m_width), 
-	d_puddle(other.d_puddle),d_rill(other.d_rill), e_m(other.e_m)
-
-{}
-
-double cmf::river::FlowSurface::get_depth( double area ) const
-{
-	double dmin = area/m_width;
-	if (dmin>(d_puddle + d_rill)) {
-		return dmin;
-	} else {
-		return sqrt((d_rill+d_puddle)*area/m_width);
-	}
-}
-
-double cmf::river::FlowSurface::get_channel_width( double depth ) const
-{
-	if (depth>d_puddle + d_rill) {
-		return m_width;
-	} else {
-		return depth/(d_puddle+d_rill) * m_width;
-	}
-}
-
-double cmf::river::FlowSurface::qManning( double A,double slope ) const
-{
-	double h = A/m_width - d_puddle;
-	if (h<=0) return 0.0;
-	return sqrt(slope)/get_nManning()* pow(h,e_m) * A;
-}
-
+// cmf::river::FlowSurface::FlowSurface( double length, double width,
+// 	double _d_puddle/*=0.0*/,double _d_rill/*=0.0*/, 
+// 	double nManning/*=0.035*/, double _e_m/*=0.6666667*/ )
+// 	: m_nManning(nManning), m_length(length), m_width(width), d_puddle(_d_puddle),d_rill(_d_rill), e_m(_e_m)
+// {}
+// 
+// cmf::river::FlowSurface::FlowSurface( const FlowSurface& other )
+//  	: m_nManning(other.m_nManning), m_length(other.m_length), m_width(other.m_width), 
+// 	d_puddle(other.d_puddle),d_rill(other.d_rill), e_m(other.e_m)
+// 
+// {}
+// 
+// double cmf::river::FlowSurface::get_depth( double area ) const
+// {
+// 	double dmin = area/m_width;
+// 	if (dmin>(d_puddle + d_rill)) {
+// 		return dmin;
+// 	} else {
+// 		return sqrt((d_rill+d_puddle)*area/m_width);
+// 	}
+// }
+// 
+// double cmf::river::FlowSurface::get_channel_width( double depth ) const
+// {
+// 	if (depth>d_puddle + d_rill) {
+// 		return m_width;
+// 	} else {
+// 		return depth/(d_puddle+d_rill) * m_width;
+// 	}
+// }
+// 
+// double cmf::river::FlowSurface::qManning( double A,double slope ) const
+// {
+// 	double h = A/m_width - d_puddle;
+// 	if (h<=0) return 0.0;
+// 	return sqrt(slope)/get_nManning()* pow(h,e_m) * A;
+// }
+// 
 void cmf::river::MeanChannel::set_nManning( double nManning )
 {
-	throw std::runtime_error("Cannot set Manning n for a mean channel. Set value for the parts of the channel");
+ 	throw std::runtime_error("Cannot set Manning n for a mean channel. Set value for the parts of the channel");
 }

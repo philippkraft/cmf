@@ -18,12 +18,12 @@
 //   
 #include "OpenWaterStorage.h"
 
-cmf::river::OpenWaterStorage::ptr cmf::river::OpenWaterStorage::from_node( cmf::water::flux_node::ptr node,real Area )
-{
-	cmf::river::OpenWaterStorage::ptr ows=cmf::river::OpenWaterStorage::create(node->get_project(),Area);
-	cmf::water::replace_node(node,ows);
-	return ows;
-}
+// cmf::river::OpenWaterStorage::ptr cmf::river::OpenWaterStorage::from_node( cmf::water::flux_node::ptr node,real Area )
+// {
+// 	cmf::river::OpenWaterStorage::ptr ows=cmf::river::OpenWaterStorage::create(node->get_project(),Area);
+// 	cmf::water::replace_node(node,ows);
+// 	return ows;
+// }
 
 cmf::river::OpenWaterStorage::ptr cmf::river::OpenWaterStorage::cast( cmf::water::flux_node::ptr node )
 {

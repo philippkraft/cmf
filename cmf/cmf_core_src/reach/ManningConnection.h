@@ -65,7 +65,7 @@ namespace cmf {
 				w2=cmf::river::OpenWaterStorage::cast(right_node());
 			}
 			Manning(cmf::river::OpenWaterStorage::ptr left,cmf::water::flux_node::ptr right,
-							const cmf::river::IVolumeHeightFunction& reachtype,bool diffusive_wave)
+				const cmf::river::IVolumeHeightFunction& reachtype,bool diffusive_wave)
 				: flux_connection(left,right,diffusive_wave ? "Manning (diff. wave)" : "Manning (kin. wave)"),	flux_geometry(reachtype), is_diffusive_wave(diffusive_wave) {
 					NewNodes();
 			}
@@ -73,11 +73,11 @@ namespace cmf {
 		public:
 			bool is_diffusive_wave;
 			cmf::river::volume_height_function flux_geometry;
-			
-			typedef std::tr1::shared_ptr<Manning> ptr;
-			
 
-			
+			typedef std::tr1::shared_ptr<Manning> ptr;
+
+
+
 		};
         
 		/// @ingroup manning
@@ -143,7 +143,8 @@ namespace cmf {
 				: Manning(left,right,reachtype,false)
 			{			}
 		};
-
+		/*
+		// Just a try is in concurrence with KinematicSurfaceRunoff
 		class KinematicSheetFlow: public cmf::water::flux_connection {
 		protected:
 			static void connect_cells(cmf::upslope::Cell& c1,cmf::upslope::Cell& c2, int i);
@@ -165,6 +166,7 @@ namespace cmf {
 			}
 
 		};
+		*/
 	}
 }
 #endif // ManningConnection_h__
