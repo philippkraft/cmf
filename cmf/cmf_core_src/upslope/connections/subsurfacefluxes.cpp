@@ -57,20 +57,21 @@ real connections::Richards_lateral::calc_q( cmf::math::Time t )
 		Psi_t1=l1->get_potential(),
 		Psi_t2=right_node()->get_potential(),
 		gradient=(Psi_t1-Psi_t2)/distance,
-		//K=gradient<0 && l2 ? l2->K() : l1->K();      
 		K1=l1->get_K(direction),K2=0.0,
 		K=0.0, Ksat =.0;
 	if (l2) {
 		K2=l2->get_K(direction);
 		K= geo_mean(K1,K2);
 		Ksat = geo_mean(l1->get_Ksat(),l2->get_Ksat());
-	}
-	else if (C2){
+	} else if (C2){
 		K2=C2->get_K(direction);
 		K= geo_mean(K1,K2);
 		Ksat = geo_mean(l1->get_Ksat(),C2->get_K(direction));
-	}
-	else {
+	} else if (wet_right_node) {
+		K2 = Psi_t1>Psi_t2 ? K1 : l1->get_Ksat();
+		K = geo_mean(K1,K2);
+		Ksat = l1->get_Ksat();
+	} else {
 		K=K1;
 		Ksat = l1->get_Ksat();
 	}

@@ -66,8 +66,6 @@
 %shared_attr(cmf::upslope::SoilLayer,SoilLayer, lower, get_lower);
 
 
-%shared_ptr(cmf::upslope::MacroPore);
-%shared_attr(cmf::upslope::MacroPore, MacroPore, layer,get_layer);
 
 
 
@@ -131,3 +129,12 @@
         except TypeError:
              return self.__get(index)      
 }}
+
+%{
+#include "upslope/macropore.h"
+%}
+
+%shared_ptr(cmf::upslope::MacroPore);
+%shared_attr(cmf::upslope::MacroPore, MacroPore, layer,get_layer);
+%include "upslope/macropore.h"
+

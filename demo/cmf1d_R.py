@@ -90,7 +90,8 @@ c.saturated_depth=5.
 c.surfacewater_as_storage()
 
 # use Richards connection
-c.install_connection(cmf.Richards)
+for lup, ldown in zip(c.layers[:-1],c.layers[1:]):
+    cmf.Richards(lup,ldown)
 # Use matrix infiltration as connection between surface water and first layer
 c.install_connection(cmf.MatrixInfiltration)
 # Create a snow storage and use a simple Temperature index model as a connection between snow and surfacewater
