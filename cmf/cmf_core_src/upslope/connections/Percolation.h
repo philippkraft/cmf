@@ -120,64 +120,6 @@ namespace cmf {
 				}
 				static void use_for_cell(cmf::upslope::Cell & cell,bool no_override=true);
 			};
-
-			///@ingroup perc
-			///
-			/// @brief Gradient based flux from macro pore to macro pore.
-			/// @deprecated The MacroPore model is still very experimental and not stable. Only for tryouts!
-			///
-			/// \f[
-			/// q = K(\theta) \frac{\Delta \Psi}{\Delta z}
-			/// \f]
-			class GradientMacroFlow : public cmf::water::flux_connection {
-			protected:
-				std::tr1::weak_ptr<cmf::upslope::MacroPore> mp1,mp2;
-				std::tr1::weak_ptr<cmf::upslope::conductable> c2;
-				void NewNodes()
-				{
-					mp1=cmf::upslope::MacroPore::cast(left_node());
-					mp2=cmf::upslope::MacroPore::cast(right_node());
-					c2=cmf::upslope::conductable::cast(right_node());
-				}
-
-				virtual real calc_q(cmf::math::Time t) ;
-			public:
-				GradientMacroFlow(cmf::upslope::MacroPore::ptr left,cmf::water::flux_node::ptr right)
-					: flux_connection(left,right,"Gradient based macro pore flow")
-				{
-					NewNodes();
-				}
-			};
-			///@ingroup perc
-			///
-			/// @brief Linear storage based flux from macro pore to macro pore.
-			/// @deprecated The MacroPore model is still very experimental and not stable. Only for tryouts!
-			///
-			/// \f[
-			/// q = K_{macro} \frac{V_{upper}}{C_{upper}} \left(1-\frac{V_{lower}}{C_{lower}}\right)
-			/// \f]
-			/// where:
-			/// - \f$K_{macro}\f$ is the conductivity of the macro pore storage
-			/// - \f$V\f$ is the actual stored water volume in the upper resp. lower macro pore storage
-			/// - \f$C\f$ is the capacity of the upper resp. lower macro pore storage
-			class KinematicMacroFlow : public cmf::water::flux_connection {
-			protected:
-				std::tr1::weak_ptr<cmf::upslope::MacroPore> mp1,mp2;
-				std::tr1::weak_ptr<cmf::upslope::conductable> c2;
-				void NewNodes();
-				virtual real calc_q(cmf::math::Time t) ;
-			public:
-				/// Creates the connection
-				///
-				/// @param left,right the nodes between the connection should be created.
-				/// @note Either left or right needs to be a MacroPore, left needs to be a water storage
-				KinematicMacroFlow(cmf::water::WaterStorage::ptr left,cmf::water::flux_node::ptr right)
-					: flux_connection(left,right,"Kinematic based macro pore flow")
-				{
-					NewNodes();
-				}
-			};
-
 			///@ingroup perc
 			///
 			/// @brief A simplification of macro pore flux for swelling soils

@@ -6981,158 +6981,6 @@ def SoilLayer_cast(*args, **kwargs):
   """SoilLayer_cast(cmf::water::flux_node::ptr node) -> cmf::upslope::SoilLayer::ptr"""
   return _cmf_core.SoilLayer_cast(*args, **kwargs)
 
-class MacroPore(WaterStorage):
-    """
-    An additional water storage for a soil layer to model matrix water and
-    macro pore water seperately.
-
-    If present, the soil layer water storage holds the matrix water and
-    the MacroPore holds the water in the macro pore. Use
-    cmf::upslope::Macropore::create to create a macropore storage.
-
-    Use cmf::upslope::connections::GradientMacroFlow or
-    cmf::upslope::connections::KinematicMacroFlow to model water flow
-    between macro pores and a lateral connection ( lateral subsurface
-    fluxes) like cmf::upslope::connections::Richards_lateral to connect
-    the macro pore with the matrix.
-
-    C++ includes: SoilLayer.h 
-    """
-    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
-    def __init__(self, *args, **kwargs): raise AttributeError("No constructor defined")
-    __repr__ = _swig_repr
-    def __get_layer(self, *args, **kwargs):
-        """
-        __get_layer(MacroPore self) -> cmf::upslope::SoilLayer::ptr
-
-        SoilLayer::ptr get_layer() const
-
-        Gets the soil layer (matrix water storage) for this macropore storage.
-
-        """
-        return _cmf_core.MacroPore___get_layer(self, *args, **kwargs)
-
-    def get_porefraction(self, *args, **kwargs):
-        """
-        get_porefraction(MacroPore self) -> real
-
-        real get_porefraction() const
-
-        The fraction of the macro pores in m3/m3. This adds to the porosity of
-        the layer. 
-        """
-        return _cmf_core.MacroPore_get_porefraction(self, *args, **kwargs)
-
-    density = _swig_property(_cmf_core.MacroPore_density_get, _cmf_core.MacroPore_density_set)
-    Ksat = _swig_property(_cmf_core.MacroPore_Ksat_get, _cmf_core.MacroPore_Ksat_set)
-    def get_K(self, *args):
-        """
-        get_K(MacroPore self) -> real
-        get_K(MacroPore self, point direction) -> real
-
-        virtual real
-        get_K(cmf::geometry::point direction) const
-
-        Returns the actual anisotropic conductivity along a direction $K =
-        (k_f \\cdot d) K$. 
-        """
-        return _cmf_core.MacroPore_get_K(self, *args)
-
-    def get_cell(self, *args, **kwargs):
-        """
-        get_cell(MacroPore self) -> Cell
-
-        cmf::upslope::Cell& get_cell() const
-
-        The cell of this macropore. 
-        """
-        return _cmf_core.MacroPore_get_cell(self, *args, **kwargs)
-
-    def get_capacity(self, *args, **kwargs):
-        """
-        get_capacity(MacroPore self) -> real
-
-        real
-        get_capacity() const
-
-        Returns the capacity of the macropores in m3.
-
-        \\[V_{max} = \\Phi_{macro} A \\Delta z\\] where:  $V_{max}$ is
-        the water capacity of the macropore
-
-        $\\Phi_{macro}$ is the fraction of macro pores in the soil in $m^3
-        macro pores/m^3 soil$
-
-        $A \\Delta z$ is the total volume of the soil layer (including all
-        pores) in $m^3$ 
-        """
-        return _cmf_core.MacroPore_get_capacity(self, *args, **kwargs)
-
-    def get_filled_fraction(self, *args, **kwargs):
-        """
-        get_filled_fraction(MacroPore self) -> real
-
-        real get_filled_fraction() const
-
-        Get the relative water content in the macro pore $\\theta_{macro} =
-        V_{macro}/V_{max}$. 
-        """
-        return _cmf_core.MacroPore_get_filled_fraction(self, *args, **kwargs)
-
-    def get_flowwidth(self, *args, **kwargs):
-        """
-        get_flowwidth(MacroPore self) -> real
-
-        real
-        get_flowwidth() const
-
-        The approximate length of the aggregate boundaries.
-
-        \\[l = \\frac{2}{d_{macro}} A\\] where:  $l$ is the length of
-        the aggregate boundaries (in m)
-
-        $2$ is the number of directions
-
-        $d_{macro}$ is the mean distance between macropores (density) in m
-
-        $A$ is the area of the cell 
-        """
-        return _cmf_core.MacroPore_get_flowwidth(self, *args, **kwargs)
-
-    def create(*args, **kwargs):
-        """create(cmf::upslope::SoilLayer::ptr layer, real porefraction=0.05, real Ksat=10, real density=0.05) -> cmf::upslope::MacroPore::ptr"""
-        return _cmf_core.MacroPore_create(*args, **kwargs)
-
-    create = staticmethod(create)
-    def cast(*args, **kwargs):
-        """cast(cmf::water::flux_node::ptr node) -> cmf::upslope::MacroPore::ptr"""
-        return _cmf_core.MacroPore_cast(*args, **kwargs)
-
-    cast = staticmethod(cast)
-    layer = _swig_property(_cmf_core.MacroPore___get_layer)
-
-    def __repr__(self): 
-        return self.to_string()
-
-    __swig_destroy__ = _cmf_core.delete_MacroPore
-MacroPore.__get_layer = new_instancemethod(_cmf_core.MacroPore___get_layer,None,MacroPore)
-MacroPore.get_porefraction = new_instancemethod(_cmf_core.MacroPore_get_porefraction,None,MacroPore)
-MacroPore.get_K = new_instancemethod(_cmf_core.MacroPore_get_K,None,MacroPore)
-MacroPore.get_cell = new_instancemethod(_cmf_core.MacroPore_get_cell,None,MacroPore)
-MacroPore.get_capacity = new_instancemethod(_cmf_core.MacroPore_get_capacity,None,MacroPore)
-MacroPore.get_filled_fraction = new_instancemethod(_cmf_core.MacroPore_get_filled_fraction,None,MacroPore)
-MacroPore.get_flowwidth = new_instancemethod(_cmf_core.MacroPore_get_flowwidth,None,MacroPore)
-MacroPore_swigregister = _cmf_core.MacroPore_swigregister
-MacroPore_swigregister(MacroPore)
-
-def MacroPore_create(*args, **kwargs):
-  """MacroPore_create(cmf::upslope::SoilLayer::ptr layer, real porefraction=0.05, real Ksat=10, real density=0.05) -> cmf::upslope::MacroPore::ptr"""
-  return _cmf_core.MacroPore_create(*args, **kwargs)
-
-def MacroPore_cast(*args, **kwargs):
-  """MacroPore_cast(cmf::water::flux_node::ptr node) -> cmf::upslope::MacroPore::ptr"""
-  return _cmf_core.MacroPore_cast(*args, **kwargs)
-
 class layer_list(object):
     """
     A vector of layers, with array access to the properties of the layers,
@@ -7338,6 +7186,268 @@ layer_list.set_ice_fraction = new_instancemethod(_cmf_core.layer_list_set_ice_fr
 layer_list.__get = new_instancemethod(_cmf_core.layer_list___get,None,layer_list)
 layer_list_swigregister = _cmf_core.layer_list_swigregister
 layer_list_swigregister(layer_list)
+
+class MacroPore(WaterStorage):
+    """
+    An additional water storage for a soil layer to model matrix water and
+    macro pore water seperately.
+
+    Deprecated The MacroPore model is still very experimental and not
+    stable. Only for tryouts!
+
+    If present, the soil layer water storage holds the matrix water and
+    the MacroPore holds the water in the macro pore. Use
+    cmf::upslope::Macropore::create to create a macropore storage.
+
+    Use cmf::upslope::connections::GradientMacroFlow or
+    cmf::upslope::connections::KinematicMacroFlow to model water flow
+    between macro pores and a lateral connection ( lateral subsurface
+    fluxes) like cmf::upslope::connections::Richards_lateral to connect
+    the macro pore with the matrix.
+
+    C++ includes: macropore.h 
+    """
+    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    def __init__(self, *args, **kwargs): raise AttributeError("No constructor defined")
+    __repr__ = _swig_repr
+    def __get_layer(self, *args, **kwargs):
+        """
+        __get_layer(MacroPore self) -> cmf::upslope::SoilLayer::ptr
+
+        SoilLayer::ptr get_layer() const
+
+        Gets the soil layer (matrix water storage) for this macropore storage.
+
+        """
+        return _cmf_core.MacroPore___get_layer(self, *args, **kwargs)
+
+    def get_porefraction(self, *args, **kwargs):
+        """
+        get_porefraction(MacroPore self) -> real
+
+        real get_porefraction() const
+
+        The fraction of the macro pores in m3/m3. This adds to the porosity of
+        the layer. 
+        """
+        return _cmf_core.MacroPore_get_porefraction(self, *args, **kwargs)
+
+    density = _swig_property(_cmf_core.MacroPore_density_get, _cmf_core.MacroPore_density_set)
+    Ksat = _swig_property(_cmf_core.MacroPore_Ksat_get, _cmf_core.MacroPore_Ksat_set)
+    def get_K(self, *args):
+        """
+        get_K(MacroPore self) -> real
+        get_K(MacroPore self, point direction) -> real
+
+        virtual real
+        get_K(cmf::geometry::point direction) const
+
+        Returns the actual anisotropic conductivity along a direction $K =
+        (k_f \\cdot d) K$. 
+        """
+        return _cmf_core.MacroPore_get_K(self, *args)
+
+    def get_cell(self, *args, **kwargs):
+        """
+        get_cell(MacroPore self) -> Cell
+
+        cmf::upslope::Cell& get_cell() const
+
+        The cell of this macropore. 
+        """
+        return _cmf_core.MacroPore_get_cell(self, *args, **kwargs)
+
+    def get_capacity(self, *args, **kwargs):
+        """
+        get_capacity(MacroPore self) -> real
+
+        real
+        get_capacity() const
+
+        Returns the capacity of the macropores in m3.
+
+        \\[V_{max} = \\Phi_{macro} A \\Delta z\\] where:  $V_{max}$ is
+        the water capacity of the macropore
+
+        $\\Phi_{macro}$ is the fraction of macro pores in the soil in $m^3
+        macro pores/m^3 soil$
+
+        $A \\Delta z$ is the total volume of the soil layer (including all
+        pores) in $m^3$ 
+        """
+        return _cmf_core.MacroPore_get_capacity(self, *args, **kwargs)
+
+    def get_filled_fraction(self, *args, **kwargs):
+        """
+        get_filled_fraction(MacroPore self) -> real
+
+        real get_filled_fraction() const
+
+        Get the relative water content in the macro pore $\\theta_{macro} =
+        V_{macro}/V_{max}$. 
+        """
+        return _cmf_core.MacroPore_get_filled_fraction(self, *args, **kwargs)
+
+    def get_flowwidth(self, *args, **kwargs):
+        """
+        get_flowwidth(MacroPore self) -> real
+
+        real
+        get_flowwidth() const
+
+        The approximate length of the aggregate boundaries.
+
+        \\[l = \\frac{2}{d_{macro}} A\\] where:  $l$ is the length of
+        the aggregate boundaries (in m)
+
+        $2$ is the number of directions
+
+        $d_{macro}$ is the mean distance between macropores (density) in m
+
+        $A$ is the area of the cell 
+        """
+        return _cmf_core.MacroPore_get_flowwidth(self, *args, **kwargs)
+
+    K_shape = _swig_property(_cmf_core.MacroPore_K_shape_get, _cmf_core.MacroPore_K_shape_set)
+    def create(*args, **kwargs):
+        """
+        create(cmf::upslope::SoilLayer::ptr layer, real porefraction=0.05, real Ksat=10, real density=0.05, 
+            real porefraction_wilt=-1., real K_shape=0.0) -> cmf::upslope::MacroPore::ptr
+        """
+        return _cmf_core.MacroPore_create(*args, **kwargs)
+
+    create = staticmethod(create)
+    def cast(*args, **kwargs):
+        """cast(cmf::water::flux_node::ptr node) -> cmf::upslope::MacroPore::ptr"""
+        return _cmf_core.MacroPore_cast(*args, **kwargs)
+
+    cast = staticmethod(cast)
+    def __repr__(self): 
+        return self.to_string()
+
+    layer = _swig_property(_cmf_core.MacroPore___get_layer)
+
+    __swig_destroy__ = _cmf_core.delete_MacroPore
+MacroPore.__get_layer = new_instancemethod(_cmf_core.MacroPore___get_layer,None,MacroPore)
+MacroPore.get_porefraction = new_instancemethod(_cmf_core.MacroPore_get_porefraction,None,MacroPore)
+MacroPore.get_K = new_instancemethod(_cmf_core.MacroPore_get_K,None,MacroPore)
+MacroPore.get_cell = new_instancemethod(_cmf_core.MacroPore_get_cell,None,MacroPore)
+MacroPore.get_capacity = new_instancemethod(_cmf_core.MacroPore_get_capacity,None,MacroPore)
+MacroPore.get_filled_fraction = new_instancemethod(_cmf_core.MacroPore_get_filled_fraction,None,MacroPore)
+MacroPore.get_flowwidth = new_instancemethod(_cmf_core.MacroPore_get_flowwidth,None,MacroPore)
+MacroPore_swigregister = _cmf_core.MacroPore_swigregister
+MacroPore_swigregister(MacroPore)
+
+def MacroPore_create(*args, **kwargs):
+  """
+    MacroPore_create(cmf::upslope::SoilLayer::ptr layer, real porefraction=0.05, real Ksat=10, real density=0.05, 
+        real porefraction_wilt=-1., real K_shape=0.0) -> cmf::upslope::MacroPore::ptr
+    """
+  return _cmf_core.MacroPore_create(*args, **kwargs)
+
+def MacroPore_cast(*args, **kwargs):
+  """MacroPore_cast(cmf::water::flux_node::ptr node) -> cmf::upslope::MacroPore::ptr"""
+  return _cmf_core.MacroPore_cast(*args, **kwargs)
+
+class GradientMacroFlow(flux_connection):
+    """
+    Gradient based flux from macro pore to macro pore.
+
+    Deprecated The MacroPore model is still very experimental and not
+    stable. Only for tryouts!
+
+    \\[ q = K(\\theta) \\frac{\\Delta \\Psi}{\\Delta z} \\]
+
+    C++ includes: macropore.h 
+    """
+    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __repr__ = _swig_repr
+    def __init__(self, *args, **kwargs): 
+        """
+        __init__(cmf::upslope::connections::GradientMacroFlow self, cmf::upslope::MacroPore::ptr left, cmf::water::flux_node::ptr right) -> GradientMacroFlow
+
+        GradientMacroFlow(cmf::upslope::MacroPore::ptr left,
+        cmf::water::flux_node::ptr right) 
+        """
+        _cmf_core.GradientMacroFlow_swiginit(self,_cmf_core.new_GradientMacroFlow(*args, **kwargs))
+    __swig_destroy__ = _cmf_core.delete_GradientMacroFlow
+GradientMacroFlow_swigregister = _cmf_core.GradientMacroFlow_swigregister
+GradientMacroFlow_swigregister(GradientMacroFlow)
+
+class KinematicMacroFlow(flux_connection):
+    """
+    Linear storage based flux from macro pore to macro pore.
+
+    Deprecated The MacroPore model is still very experimental and not
+    stable. Only for tryouts!
+
+    \\[ q = K_{macro} \\frac{V_{upper}}{C_{upper}}
+    \\left(1-\\frac{V_{lower}}{C_{lower}}\\right) \\] where:
+    $K_{macro}$ is the conductivity of the macro pore storage
+
+    $V$ is the actual stored water volume in the upper resp. lower macro
+    pore storage
+
+    $C$ is the capacity of the upper resp. lower macro pore storage
+
+    C++ includes: macropore.h 
+    """
+    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __repr__ = _swig_repr
+    def __init__(self, *args, **kwargs): 
+        """
+        __init__(cmf::upslope::connections::KinematicMacroFlow self, cmf::water::WaterStorage::ptr left, cmf::water::flux_node::ptr right) -> KinematicMacroFlow
+
+        KinematicMacroFlow(cmf::water::WaterStorage::ptr left,
+        cmf::water::flux_node::ptr right)
+
+        Creates the connection.
+
+        Parameters:
+        -----------
+
+        left:  right:  the nodes between the connection should be created.
+
+        Either left or right needs to be a MacroPore, left needs to be a water
+        storage 
+        """
+        _cmf_core.KinematicMacroFlow_swiginit(self,_cmf_core.new_KinematicMacroFlow(*args, **kwargs))
+    __swig_destroy__ = _cmf_core.delete_KinematicMacroFlow
+KinematicMacroFlow_swigregister = _cmf_core.KinematicMacroFlow_swigregister
+KinematicMacroFlow_swigregister(KinematicMacroFlow)
+
+class DiffusiveMacroMicroExchange(flux_connection):
+    """
+    A gradient based exchange term between macropores and micropores,
+    using a fixed potential for macropores.
+
+    \\[q = K \\frac{\\Delta\\Psi}{d/2} * A \\] where:  $K$ The
+    conductivity of the aggregate boundary
+
+    $\\Delta\\Psi$ The potential difference. Using the air potential
+    as the constant potential for the macro pores, you get:
+    $\\Delta\\Psi = \\Psi_M(\\theta_{micro})$
+
+    $d$ the mean aggregate size in m
+
+    $A$ the crosssection area, given as the flow width (
+    cmf::upslope::MacroPore::get_flowwidth) times layer thickness
+
+    C++ includes: macropore.h 
+    """
+    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __repr__ = _swig_repr
+    def __init__(self, *args, **kwargs): 
+        """
+        __init__(cmf::upslope::connections::DiffusiveMacroMicroExchange self, cmf::upslope::SoilLayer::ptr left, cmf::upslope::MacroPore::ptr right) -> DiffusiveMacroMicroExchange
+
+        DiffusiveMacroMicroExchange(cmf::upslope::SoilLayer::ptr left,
+        cmf::upslope::MacroPore::ptr right) 
+        """
+        _cmf_core.DiffusiveMacroMicroExchange_swiginit(self,_cmf_core.new_DiffusiveMacroMicroExchange(*args, **kwargs))
+    __swig_destroy__ = _cmf_core.delete_DiffusiveMacroMicroExchange
+DiffusiveMacroMicroExchange_swigregister = _cmf_core.DiffusiveMacroMicroExchange_swigregister
+DiffusiveMacroMicroExchange_swigregister(DiffusiveMacroMicroExchange)
 
 class IVolumeHeightFunction(object):
     """
@@ -8682,6 +8792,7 @@ class Richards_lateral(lateral_sub_surface_flux):
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
     __repr__ = _swig_repr
     flow_thickness = _swig_property(_cmf_core.Richards_lateral_flow_thickness_get, _cmf_core.Richards_lateral_flow_thickness_set)
+    wet_right_node = _swig_property(_cmf_core.Richards_lateral_wet_right_node_get, _cmf_core.Richards_lateral_wet_right_node_set)
     def __init__(self, *args, **kwargs): 
         """
         __init__(cmf::upslope::connections::Richards_lateral self, cmf::upslope::SoilLayer::ptr left, cmf::water::flux_node::ptr right, real FlowWidth=0, 
@@ -9279,67 +9390,6 @@ SimplRichards_swigregister(SimplRichards)
 def SimplRichards_use_for_cell(*args, **kwargs):
   """SimplRichards_use_for_cell(Cell cell, bool no_override=True)"""
   return _cmf_core.SimplRichards_use_for_cell(*args, **kwargs)
-
-class GradientMacroFlow(flux_connection):
-    """
-    Gradient based flux from macro pore to macro pore.
-
-    \\[ q = K(\\theta) \\frac{\\Delta \\Psi}{\\Delta z} \\]
-
-    C++ includes: Percolation.h 
-    """
-    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
-    __repr__ = _swig_repr
-    def __init__(self, *args, **kwargs): 
-        """
-        __init__(cmf::upslope::connections::GradientMacroFlow self, cmf::upslope::MacroPore::ptr left, cmf::water::flux_node::ptr right) -> GradientMacroFlow
-
-        GradientMacroFlow(cmf::upslope::MacroPore::ptr left,
-        cmf::water::flux_node::ptr right) 
-        """
-        _cmf_core.GradientMacroFlow_swiginit(self,_cmf_core.new_GradientMacroFlow(*args, **kwargs))
-    __swig_destroy__ = _cmf_core.delete_GradientMacroFlow
-GradientMacroFlow_swigregister = _cmf_core.GradientMacroFlow_swigregister
-GradientMacroFlow_swigregister(GradientMacroFlow)
-
-class KinematicMacroFlow(flux_connection):
-    """
-    Linear storage based flux from macro pore to macro pore.
-
-    \\[ q = K_{macro} \\frac{V_{upper}}{C_{upper}}
-    \\left(1-\\frac{V_{lower}}{C_{lower}}\\right) \\] where:
-    $K_{macro}$ is the conductivity of the macro pore storage
-
-    $V$ is the actual stored water volume in the upper resp. lower macro
-    pore storage
-
-    $C$ is the capacity of the upper resp. lower macro pore storage
-
-    C++ includes: Percolation.h 
-    """
-    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
-    __repr__ = _swig_repr
-    def __init__(self, *args, **kwargs): 
-        """
-        __init__(cmf::upslope::connections::KinematicMacroFlow self, cmf::water::WaterStorage::ptr left, cmf::water::flux_node::ptr right) -> KinematicMacroFlow
-
-        KinematicMacroFlow(cmf::water::WaterStorage::ptr left,
-        cmf::water::flux_node::ptr right)
-
-        Creates the connection.
-
-        Parameters:
-        -----------
-
-        left:  right:  the nodes between the connection should be created.
-
-        Either left or right needs to be a MacroPore, left needs to be a water
-        storage 
-        """
-        _cmf_core.KinematicMacroFlow_swiginit(self,_cmf_core.new_KinematicMacroFlow(*args, **kwargs))
-    __swig_destroy__ = _cmf_core.delete_KinematicMacroFlow
-KinematicMacroFlow_swigregister = _cmf_core.KinematicMacroFlow_swigregister
-KinematicMacroFlow_swigregister(KinematicMacroFlow)
 
 class LayerBypass(flux_connection):
     """

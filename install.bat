@@ -1,9 +1,12 @@
 @if not "x%1x"=="xdoxyx" goto build
+@echo doxygen
 @doxygen Doxyfile
 @python doxy2swig.py doxy\xml\index.xml cmf\cmf_core_src\docstrings.i
 :build
 @if "x%1x"=="xcleanx" goto clean
+@echo delete old .pyd
 del _cmf_core.pyd /s /q
+@echo build
 @python setup.py build_ext swig
 @if ERRORLEVEL 1 goto error
 @move /Y cmf\cmf_core_src\cmf_core.py cmf

@@ -141,6 +141,7 @@ namespace cmf {
 
 			public:
 				real flow_thickness;
+				bool wet_right_node;
 				/// @brief Creates the connection
 				///
 				/// @param left Left node of the connection (needs to be soil water storage)
@@ -148,7 +149,7 @@ namespace cmf {
 				/// @param FlowWidth the width of the connection - is multiplied by layer thickness to get the interface area
 				/// @param Distance the length of the connection. If 0, the distance is calculated from the position of the nodes
 				Richards_lateral(cmf::upslope::SoilLayer::ptr left,cmf::water::flux_node::ptr right,real FlowWidth=0,real Distance=0)
-					: lateral_sub_surface_flux(left,right,"Richards eq. (lat)",FlowWidth,Distance)
+					: lateral_sub_surface_flux(left,right,"Richards eq. (lat)",FlowWidth,Distance), wet_right_node(false)
 				{
 					flow_thickness=left->get_thickness();
 					if (!sw2.expired())

@@ -134,7 +134,7 @@ def get_revision():
     pipe = os.popen('svnversion')
     res=pipe.read().strip()
     if ':' in res:
-        res=res.split(':')[0]
+        res=res.split(':')[-1]
     return res.strip('M')
 def updateversion(revision):
     if revision:

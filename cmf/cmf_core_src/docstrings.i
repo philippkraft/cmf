@@ -2358,6 +2358,108 @@ Returns a string representing the date. ";
 Converts a date to Time (based on the 31.12.1899, like in Excel(TM) ";
 
 
+// File: classcmf_1_1upslope_1_1connections_1_1_diffusive_macro_micro_exchange.xml
+%feature("docstring")
+cmf::upslope::connections::DiffusiveMacroMicroExchange "
+
+A gradient based exchange term between macropores and micropores,
+using a fixed potential for macropores.
+
+\\\\[q = K \\\\frac{\\\\Delta\\\\Psi}{d/2} * A \\\\] where:  $K$ The
+conductivity of the aggregate boundary
+
+$\\\\Delta\\\\Psi$ The potential difference. Using the air potential
+as the constant potential for the macro pores, you get:
+$\\\\Delta\\\\Psi = \\\\Psi_M(\\\\theta_{micro})$
+
+$d$ the mean aggregate size in m
+
+$A$ the crosssection area, given as the flow width (
+cmf::upslope::MacroPore::get_flowwidth) times layer thickness
+
+C++ includes: macropore.h ";
+
+%feature("docstring")
+cmf::upslope::connections::DiffusiveMacroMicroExchange::DiffusiveMacroMicroExchange
+"DiffusiveMacroMicroExchange(cmf::upslope::SoilLayer::ptr left,
+cmf::upslope::MacroPore::ptr right) ";
+
+%feature("docstring")
+cmf::upslope::connections::DiffusiveMacroMicroExchange::conc "real
+conc(cmf::math::Time t, const cmf::water::solute &_Solute)
+
+Returns the concentration of the flux.
+
+If not overridden, it returns the concentration of the source of the
+flux (direction depending) ";
+
+%feature("docstring")
+cmf::upslope::connections::DiffusiveMacroMicroExchange::exchange_target
+"void exchange_target(flux_node::ptr oldtarget, flux_node::ptr
+newTarget) ";
+
+%feature("docstring")
+cmf::upslope::connections::DiffusiveMacroMicroExchange::get_ptr "ptr
+get_ptr() const ";
+
+%feature("docstring")
+cmf::upslope::connections::DiffusiveMacroMicroExchange::get_target "flux_node::ptr get_target(const flux_node &inquirer)
+
+Returns the other end of a connection than the asking end. ";
+
+%feature("docstring")
+cmf::upslope::connections::DiffusiveMacroMicroExchange::get_target "flux_node::ptr get_target(int index) const
+
+With index 0, the left node is returned, with index 1 the right node
+of the connection. ";
+
+%feature("docstring")
+cmf::upslope::connections::DiffusiveMacroMicroExchange::get_tracer_filter
+"real get_tracer_filter()
+
+A value ranging from 0 to 1. ";
+
+%feature("docstring")
+cmf::upslope::connections::DiffusiveMacroMicroExchange::kill_me "bool
+kill_me()
+
+Deregisters this connection from its nodes. Returns true if only one
+reference is left. ";
+
+%feature("docstring")
+cmf::upslope::connections::DiffusiveMacroMicroExchange::left_node "flux_node::ptr left_node() const
+
+Returns the left node of this connection. ";
+
+%feature("docstring")
+cmf::upslope::connections::DiffusiveMacroMicroExchange::q "real
+q(const flux_node &inquirer, cmf::math::Time t)
+
+Returns the current flux through a connection. Negative signs mean out
+of the inquirer, positive are inflows to the inquirer. ";
+
+%feature("docstring")
+cmf::upslope::connections::DiffusiveMacroMicroExchange::refresh "void
+refresh(cmf::math::Time t)
+
+Performes a new calculation of the flux. ";
+
+%feature("docstring")
+cmf::upslope::connections::DiffusiveMacroMicroExchange::right_node "flux_node::ptr right_node() const
+
+returns the right node of this connection ";
+
+%feature("docstring")
+cmf::upslope::connections::DiffusiveMacroMicroExchange::set_tracer_filter
+"void set_tracer_filter(real value) ";
+
+%feature("docstring")
+cmf::upslope::connections::DiffusiveMacroMicroExchange::short_string "std::string short_string() const ";
+
+%feature("docstring")
+cmf::upslope::connections::DiffusiveMacroMicroExchange::to_string "std::string to_string() const ";
+
+
 // File: classcmf_1_1upslope_1_1connections_1_1_diffusive_surface_runoff.xml
 %feature("docstring")
 cmf::upslope::connections::DiffusiveSurfaceRunoff "";
@@ -3272,9 +3374,12 @@ to_string() const ";
 
 Gradient based flux from macro pore to macro pore.
 
+Deprecated The MacroPore model is still very experimental and not
+stable. Only for tryouts!
+
 \\\\[ q = K(\\\\theta) \\\\frac{\\\\Delta \\\\Psi}{\\\\Delta z} \\\\]
 
-C++ includes: Percolation.h ";
+C++ includes: macropore.h ";
 
 %feature("docstring")
 cmf::upslope::connections::GradientMacroFlow::GradientMacroFlow "GradientMacroFlow(cmf::upslope::MacroPore::ptr left,
@@ -4689,6 +4794,9 @@ returns the right node of this connection ";
 
 Linear storage based flux from macro pore to macro pore.
 
+Deprecated The MacroPore model is still very experimental and not
+stable. Only for tryouts!
+
 \\\\[ q = K_{macro} \\\\frac{V_{upper}}{C_{upper}}
 \\\\left(1-\\\\frac{V_{lower}}{C_{lower}}\\\\right) \\\\] where:
 $K_{macro}$ is the conductivity of the macro pore storage
@@ -4698,7 +4806,7 @@ pore storage
 
 $C$ is the capacity of the upper resp. lower macro pore storage
 
-C++ includes: Percolation.h ";
+C++ includes: macropore.h ";
 
 %feature("docstring")
 cmf::upslope::connections::KinematicMacroFlow::KinematicMacroFlow "KinematicMacroFlow(cmf::water::WaterStorage::ptr left,
@@ -5403,6 +5511,9 @@ canopy to atmosphere (r_ac) ";
 An additional water storage for a soil layer to model matrix water and
 macro pore water seperately.
 
+Deprecated The MacroPore model is still very experimental and not
+stable. Only for tryouts!
+
 If present, the soil layer water storage holds the matrix water and
 the MacroPore holds the water in the macro pore. Use
 cmf::upslope::Macropore::create to create a macropore storage.
@@ -5413,7 +5524,7 @@ between macro pores and a lateral connection ( lateral subsurface
 fluxes) like cmf::upslope::connections::Richards_lateral to connect
 the macro pore with the matrix.
 
-C++ includes: SoilLayer.h ";
+C++ includes: macropore.h ";
 
 /*  Overrides of flux_node  */
 
@@ -14715,6 +14826,9 @@ x, real xmin, real xmax, real ymin=0, real ymax=1) ";
 
 
 // File: layer__list_8h.xml
+
+
+// File: macropore_8h.xml
 
 
 // File: _retention_curve_8h.xml
