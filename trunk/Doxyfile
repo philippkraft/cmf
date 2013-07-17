@@ -32,7 +32,7 @@ PROJECT_NAME           = cmf
 # This could be handy for archiving the generated documentation or 
 # if some version control system is used.
 
-PROJECT_NUMBER         = 720
+PROJECT_NUMBER         = 732
 
 # Using the PROJECT_BRIEF tag one can provide an optional one line description 
 # for a project that appears at the top of each page and should give viewer 
@@ -1142,7 +1142,7 @@ GENERATE_ECLIPSEHELP   = YES
 # the directory name containing the HTML and XML files should also have 
 # this name.
 
-ECLIPSE_DOC_ID         = org.doxygen.Project
+ECLIPSE_DOC_ID         = de.uni-giessen.cmf
 
 # The DISABLE_INDEX tag can be used to turn on/off the condensed index (tabs) 
 # at top of each HTML page. The value NO (the default) enables the index and 
@@ -1212,7 +1212,7 @@ USE_MATHJAX            = YES
 # SVG. The default value is HTML-CSS, which is slower, but has the best 
 # compatibility.
 
-MATHJAX_FORMAT         = NativeMML
+MATHJAX_FORMAT         = HTML-CSS
 
 # When MathJax is enabled you need to specify the location relative to the 
 # HTML output directory using the MATHJAX_RELPATH option. The destination 
@@ -1223,7 +1223,7 @@ MATHJAX_FORMAT         = NativeMML
 # installing MathJax.  However, it is strongly recommended to install a local 
 # copy of MathJax from http://www.mathjax.org before deployment.
 
-MATHJAX_RELPATH        = http://www.mathjax.org/mathjax
+MATHJAX_RELPATH        = http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML
 
 # The MATHJAX_EXTENSIONS tag can be used to specify one or MathJax extension 
 # names that should be enabled during MathJax rendering.
