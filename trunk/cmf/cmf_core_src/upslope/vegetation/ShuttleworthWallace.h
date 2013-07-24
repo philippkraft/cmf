@@ -104,7 +104,7 @@ namespace cmf {
 
 				virtual double transp_from_layer(cmf::upslope::SoilLayer::ptr sl,cmf::math::Time t) {
 					if (sl->RecalcFluxes(t)) refresh(t);
-					if (sl->Position>ATR.size()) return 0.0;
+					if (sl->Position>int(ATR.size())) return 0.0;
 					return ATR[sl->Position] * 1e-3 * cell.get_area();
 				}
 				virtual double evap_from_layer(cmf::upslope::SoilLayer::ptr sl,cmf::math::Time t) {

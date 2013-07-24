@@ -7421,7 +7421,7 @@ class DiffusiveMacroMicroExchange(flux_connection):
     A gradient based exchange term between macropores and micropores,
     using a fixed potential for macropores.
 
-    \\[q = K \\frac{\\Delta\\Psi}{d/2} * A \\] where:  $K$ The
+    \\[q = K \\frac{\\Delta\\Psi}{d/2} A \\] where:  $K$ The
     conductivity of the aggregate boundary
 
     $\\Delta\\Psi$ The potential difference. Using the air potential
@@ -9907,7 +9907,21 @@ def PenmanMonteith(*args):
 
     real
     cmf::upslope::ET::PenmanMonteith(cmf::atmosphere::Weather A, const
-    cmf::upslope::vegetation::Vegetation &veg, double h) 
+    cmf::upslope::vegetation::Vegetation &veg, double h)
+
+    Returns the potential ET after Penman-Monteith using some
+    simplifications for a weather and a vegetation object.
+
+    aerodynamic and surface resistances, and a vapor pressure deficit
+
+    Parameters:
+    -----------
+
+    A:  Current weather
+
+    veg:  Vegetation data
+
+    h:  Height above sea level in m (for pressure extimation) 
     """
   return _cmf_core.PenmanMonteith(*args)
 
@@ -10105,7 +10119,39 @@ class HargreaveET(flux_connection):
     """
     Calculates the Evapotranspiration using Hargreave's equation.
 
-    Todo document Hargreave
+    \\[ET_{rc} = 0.0135 K_T\\ s_0 \\sqrt{\\Delta T} (T +
+    17.8)\\] where:  $ ET_{rc} $ the reference crop evapotranspiration
+    in mm/day
+
+    $ K_T = 0.00185 {\\Delta T}^2 - 0.0433 \\Delta T + 0.4023$
+    Continentality factor as given in the reference
+
+    $ \\Delta T = |T_{max} - T_{min}|[K]$ Daily temperature range
+
+    $ T [^\\circ C]$ daily mean temperature
+
+    $ s_0 = 15.392 d_r \\left(\\omega_s\\sin(\\Phi)
+    \\sin{\\gamma} + \\cos{\\Phi}\\cos{\\gamma} *
+    \\sin(\\omega_s)\\right)$ the extraterrestrial solar radiation
+    in mm/day
+
+    $ d_r = 1 + 0.0033 \\cos(DOY\\frac{2 \\pi}{365})$ relative
+    distance between earth and sun
+
+    $ \\omega_s = \\arccos(-\\tan{\\Phi} \\tan{\\gamma}) $
+    sunset hour angle (radians)
+
+    $ \\gamma = 0.4039 \\sin(DOY\\frac{2 \\pi}{365} - 1.405) $
+    solar declination (radians)
+
+    $ \\Phi$ geographic latitude (radians)
+
+    See:  SAMANI, Zohrab.Estimating solar radiation and evapotranspiration
+    using minimum climatological data. Journal of Irrigation and Drainage
+    Engineering, 2000, 126. Jg., Nr. 4, S. 265-267.  Crop specific
+    potential evapotranspiration is scaled by LAI: $ ET_{pot} = ET_{rc}
+    \\frac{LAI}{2.88}$. Actual evapotranspiration is calculated using
+    cmf::upslope::ET::Tact
 
     C++ includes: ET.h 
     """
