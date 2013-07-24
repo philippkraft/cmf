@@ -193,6 +193,14 @@ namespace cmf {
 			/// @param T Actual Temperature in \f$ ^\circ C \f$
 			/// @param vap_press_deficit Deficit of vapor pressure \f$ kPa \f$
 			real PenmanMonteith(real Rn,real ra,real rs,real T,real vap_press_deficit);
+			
+			
+			/// Returns the potential ET after Penman-Monteith using some simplifications for a weather and a vegetation object. 
+			/// aerodynamic and surface resistances, and a vapor pressure deficit
+			///
+			/// @param A Current weather
+			/// @param veg Vegetation data
+			/// @param h Height above sea level in m (for pressure extimation)
 			real PenmanMonteith(cmf::atmosphere::Weather A,const cmf::upslope::vegetation::Vegetation & veg,double h);
 			
 			/// @ingroup ET
@@ -310,7 +318,27 @@ namespace cmf {
 			/// @ingroup ET
 			/// Calculates the Evapotranspiration using Hargreave's equation
 			///
-			/// @todo document Hargreave
+			/// \f[ET_{rc} = 0.0135 K_T\ s_0 \sqrt{\Delta T} (T + 17.8)\f]
+			/// where:
+			/// - \f$ ET_{rc} \f$ the reference crop evapotranspiration in mm/day
+			/// - \f$ K_T = 0.00185 {\Delta T}^2 - 0.0433 \Delta T + 0.4023\f$ Continentality factor as given in the reference
+			/// - \f$ \Delta T = |T_{max} - T_{min}|[K]\f$ Daily temperature range
+			/// - \f$ T [^\circ C]\f$ daily mean temperature
+			/// - \f$ s_0 = 15.392  d_r  \left(\omega_s\sin(\Phi)  \sin{\gamma} + \cos{\Phi}\cos{\gamma} * \sin(\omega_s)\right)\f$ the extraterrestrial solar radiation in mm/day
+			/// - \f$ d_r = 1 + 0.0033 \cos(DOY\frac{2 \pi}{365})\f$ relative distance between earth and sun
+			/// - \f$ \omega_s = \arccos(-\tan{\Phi} \tan{\gamma}) \f$ sunset hour angle (radians)
+			/// - \f$ \gamma = 0.4039 \sin(DOY\frac{2 \pi}{365}  - 1.405) \f$ solar declination (radians)
+			/// - \f$ \Phi\f$ geographic latitude (radians)
+			///
+			/// @see SAMANI, Zohrab. [Estimating solar radiation and evapotranspiration using minimum climatological data.][1] 
+			/// _Journal of Irrigation and Drainage Engineering,_ 2000, 126. Jg., Nr. 4, S. 265-267.
+			///
+			/// Crop specific potential evapotranspiration is scaled by LAI: \f$ ET_{pot} = ET_{rc} \frac{LAI}{2.88}\f$.
+			/// Actual evapotranspiration is calculated using cmf::upslope::ET::Tact
+			///
+			/// [1]: http://cagesun.nmsu.edu/~zsamani/research_material/files/Hargreaves-samani.pdf
+
+	
 			class HargreaveET : public cmf::water::flux_connection {
 			protected:
 				std::tr1::weak_ptr<cmf::upslope::SoilLayer> sw;
