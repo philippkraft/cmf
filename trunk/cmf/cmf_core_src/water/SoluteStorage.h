@@ -62,6 +62,7 @@ namespace cmf {
 			real conc() const;
 
 			virtual real dxdt(const cmf::math::Time& time);
+			virtual std::string to_string();
 		};
 	}
 }

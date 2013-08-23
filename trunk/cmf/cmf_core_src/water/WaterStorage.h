@@ -145,6 +145,9 @@ namespace cmf {
 			virtual double is_empty() const {
 				return 1-piecewise_linear(get_volume(),0,get_abs_errtol(1e-4));
 			}
+			virtual std::string to_string() {
+				return cmf::water::flux_node::to_string();
+			}
 			//@}
 			static std::tr1::shared_ptr<cmf::water::WaterStorage> cast(std::tr1::shared_ptr<cmf::water::flux_node> node)
 			{		

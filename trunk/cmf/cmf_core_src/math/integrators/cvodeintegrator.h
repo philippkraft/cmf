@@ -34,6 +34,7 @@ namespace cmf {
 			void * cvode_mem, * precond_mem;
 			/// The right handside function f in eq. \f$\frac{dy}{dt}=f(t,y)\f$
 			static int f(realtype t, N_Vector u, N_Vector udot, void *f_data);
+			std::string error_msg;
 		public:
 			/// Type of Krylov preconditioning. Must have one of the following values:
 			/// - 'N' No Krylov preconditioner
@@ -89,7 +90,7 @@ namespace cmf {
 			/// @param _preconditioner [R]ight, [L]eft, [B]oth side Krylov preconditioner or [N]o preconditioner
 			CVodeIntegrator(cmf::math::StateVariableOwner& states, real epsilon=1e-9,char _preconditioner='R') 
 				: Integrator(states,epsilon), m_y(0),cvode_mem(0),precond_mem(0),preconditioner(_preconditioner),maxl(5),LinearSolver(3),
-				MaxOrder(5),MaxNonLinearIterations(3),MaxErrorTestFailures(10),MaxConvergenceFailures(7)
+				MaxOrder(5),MaxNonLinearIterations(3),MaxErrorTestFailures(10),MaxConvergenceFailures(7), error_msg("")
 			{
 				if (epsilon<=0.0 || epsilon>1e-3) {
 					throw std::runtime_error("CVodeIntegrator: 0.0 < epsilon < 1e-3 not fullfilled");
@@ -101,7 +102,7 @@ namespace cmf {
 			CVodeIntegrator(const CVodeIntegrator & templ) 
 				: Integrator(templ),preconditioner(templ.preconditioner),maxl(templ.maxl),m_y(0),cvode_mem(0),precond_mem(0),LinearSolver(templ.LinearSolver),
 				MaxOrder(templ.MaxOrder),MaxNonLinearIterations(templ.MaxNonLinearIterations),MaxErrorTestFailures(templ.MaxErrorTestFailures),
-				MaxConvergenceFailures(templ.MaxConvergenceFailures),max_step(templ.max_step)
+				MaxConvergenceFailures(templ.MaxConvergenceFailures),max_step(templ.max_step),error_msg("")
 			{
 				cvode_mem=0;
 			}

@@ -31,7 +31,6 @@ namespace cmf {
 		/// - Integrate
 		/// - copy
 		/// Please provide a custom copy constructor
-		/// @todo Put the methods of StateVariableVector here, and delete StateVariableVector
 		class Integrator : public StateVariableOwner
 		{
 		protected:
@@ -56,8 +55,8 @@ namespace cmf {
 			/// @param destination Allocated c array
 			/// @param factor A factor that is multiplied to the derivate (e.g. unit conversion or integration length)
 			void copy_dxdt(Time time,real * destination,real factor=1) const;
-			/// Returns the states in a numeric vector using :CopyStates, but is slower because of additional memory allocation
-			/// Returns the derivatives at time step "time" in a numeric vector using :CopyDerivs, but is slower because of additional memory allocation
+			
+			/// Adds the values in operands to the current states
 			void add_values_to_states(const num_array& operands);
 			StateVariable::ptr operator[](int position) {
 				return m_States[position];

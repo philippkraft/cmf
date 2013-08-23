@@ -1768,10 +1768,18 @@ class StateVariable(object):
         """
         return _cmf_core.StateVariable_get_abs_errtol(self, *args, **kwargs)
 
+    def to_string(self, *args, **kwargs):
+        """to_string(StateVariable self) -> std::string"""
+        return _cmf_core.StateVariable_to_string(self, *args, **kwargs)
+
     state = _swig_property(_cmf_core.StateVariable_state_get, _cmf_core.StateVariable_state_set)
+    def __repr__(self): 
+        return self.to_string()
+
     __swig_destroy__ = _cmf_core.delete_StateVariable
 StateVariable.dxdt = new_instancemethod(_cmf_core.StateVariable_dxdt,None,StateVariable)
 StateVariable.get_abs_errtol = new_instancemethod(_cmf_core.StateVariable_get_abs_errtol,None,StateVariable)
+StateVariable.to_string = new_instancemethod(_cmf_core.StateVariable_to_string,None,StateVariable)
 StateVariable_swigregister = _cmf_core.StateVariable_swigregister
 StateVariable_swigregister(StateVariable)
 

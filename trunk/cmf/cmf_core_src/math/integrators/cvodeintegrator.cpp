@@ -41,13 +41,24 @@ int cmf::math::CVodeIntegrator::f( realtype t, N_Vector u, N_Vector udot, void *
 	// Get size of the problem
 	int nsize=int(integ->size());
 	// Update the states from the state vector
-	integ->set_states(udata);
+	try {
+		integ->set_states(udata);
+	}	catch (std::exception& e) {
+		std::cerr << e.what() << std::endl;
+		integ->error_msg=e.what();
+		return -8;
+	}
 	Time T=cmf::math::day * t;
 	Time T_model = integ->get_t();
 	real sec_local = (T - T_model)/sec;
 	// Get the derivatives at time T
-	integ->copy_dxdt(T,dudata);
-
+	try {
+		integ->copy_dxdt(T,dudata);
+	} catch (std::exception& e) {
+		std::cerr << e.what() << std::endl;
+		integ->error_msg=e.what();
+		return -8;
+	}
 	return 0;
 }
 
@@ -146,10 +157,14 @@ int cmf::math::CVodeIntegrator::integrate( cmf::math::Time MaxTime,cmf::math::Ti
 	// Time step, needed as return value
 	realtype t_ret,t_step;
 	CVodeSetStopTime(cvode_mem,MaxTime.AsDays());
+	error_msg="";
 	int res = CVode(cvode_mem,MaxTime.AsDays(),m_y, &t_ret, CV_ONE_STEP);
 	if (res<0) {
 		set_states(y_data);
-		throw std::runtime_error("CVode could not integrate due to failure (see message above) at t=" + (day*t_ret).AsDate().to_string());
+		if (error_msg!="")
+			throw std::runtime_error(error_msg + " - " + (day*t_ret).AsDate().to_string());
+		else
+			throw std::runtime_error("CVode could not integrate due to failure (see message above) at t=" + (day*t_ret).AsDate().to_string());
 	}
 	long iterations;
 	CVodeGetNumRhsEvals(cvode_mem,&iterations);

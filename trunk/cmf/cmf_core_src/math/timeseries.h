@@ -105,7 +105,7 @@ namespace cmf {
 			/// Appends a measurement
 			void add(double Value);
 			/// returns true if no values are added to the timeseries
-			bool is_empty() const {return m_data->values.size()==0;}
+			bool is_empty() const {return (!m_data) || (m_data->values.size()==0);}
 			void clear();
 			size_t adress() const
 			{
