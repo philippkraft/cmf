@@ -36,7 +36,7 @@ cmf::atmosphere::Weather cmf::atmosphere::MeteoStation::get_data( cmf::math::Tim
 {
 	Weather A;
 	if (Tmax.is_empty())
-		throw std::runtime_error("Minimal dataset is to have values for Tmax, however Tmin should be provided too");
+		throw std::runtime_error("MeteoStation: Minimal dataset is to have values for Tmax, however Tmin should be provided too");
 	double height_correction= T_lapse.is_empty() ? 0.0 : T_lapse[t]*(height-z);
 	
 	A.Tmax=Tmax[t]+height_correction;

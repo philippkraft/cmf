@@ -49,26 +49,50 @@ void cmf::math::Integrator::copy_dxdt( Time time,num_array & destination,real fa
 {
 	if (destination.size()!=(int)size())
 		destination.resize(size());
+	std::string err_msg;
+	bool err=false;
 	if (use_OpenMP)
 	{
-		if (factor==1)
-		{
-#pragma omp parallel for schedule(guided)
-			for (int i = 0; i < (int)size() ; ++i)
-				destination[i]=m_States[i]->dxdt(time);
-		}
-		else
-		{
-#pragma omp parallel for schedule(guided)
+		if (factor==1)	{
+			#pragma omp parallel for schedule(guided)
+			for (int i = 0; i < (int)size() ; ++i) {
+				if (!err)  
+				{
+					try {
+						#pragma omp flush(err)
+						destination[i]=m_States[i]->dxdt(time);
+					} catch(std::exception& e) {
+						#pragma omp critical 
+						{
+							err_msg = e.what();
+							err = true;
+							#pragma omp flush(err)
+						}
+					}
+				}
+			}
+		} else {
+			#pragma omp parallel for schedule(guided)
 			for (int i = 0; i < (int)size() ; i++)
 			{
-				destination[i]=m_States[i]->dxdt(time);
-				destination[i]*=factor;
+				#pragma omp flush(err)
+				if (!err)  {
+					try {
+						destination[i]  = m_States[i]->dxdt(time);
+						destination[i] *= factor;
+					} catch(std::exception& e) {
+						#pragma omp critical
+						err_msg = e.what();
+						err = true;
+						#pragma omp flush(err)
+					}
+				}
 			}
 		}
-	}
-	else
-	{
+		if (err) {
+			throw std::runtime_error(err_msg);
+		}
+	} else {
 		if (factor==1)
 		{
 			for (int i = 0; i < (int)size() ; ++i)
@@ -87,41 +111,59 @@ void cmf::math::Integrator::copy_dxdt( Time time,num_array & destination,real fa
 
 void cmf::math::Integrator::copy_dxdt( Time time,real * destination,real factor/*=1*/ ) const
 {
-	if (use_OpenMP)
-	{
-		if (factor==1)
-		{
-#pragma omp parallel for schedule(guided)
-			for (int i = 0; i < (int)size() ; ++i)
-				destination[i]=m_States[i]->dxdt(time);
-		}
-		else
-		{
-#pragma omp parallel for schedule(guided)
+	std::string err_msg;
+	bool err=false;
+	if (use_OpenMP)		{
+		if (factor==1)	{
+			#pragma omp parallel for schedule(guided)
+			for (int i = 0; i < (int)size() ; ++i) {
+				if (!err)  
+				{
+					try {
+						#pragma omp flush(err)
+						destination[i]=m_States[i]->dxdt(time);
+					} catch(std::exception& e) {
+						#pragma omp critical 
+						{
+							err_msg = e.what();
+							err = true;
+							#pragma omp flush(err)
+						}
+					}
+				}
+			}
+		} else {
+			#pragma omp parallel for schedule(guided)
 			for (int i = 0; i < (int)size() ; i++)
 			{
+				#pragma omp flush(err)
+				if (!err)  {
+					try {
+						destination[i]  = m_States[i]->dxdt(time);
+						destination[i] *= factor;
+					} catch(std::exception& e) {
+						#pragma omp critical
+						err_msg = e.what();
+						err = true;
+						#pragma omp flush(err)
+					}
+				}
+			}
+		}
+		if (err) {
+			throw std::runtime_error(err_msg);
+		}
+	}	else	{ // use_OpenMP=false
+		if (factor==1)	{
+			for (int i = 0; i < (int)size() ; ++i)
+				destination[i]=m_States[i]->dxdt(time);
+		} else {
+			for (int i = 0; i < (int)size() ; i++)	{
 				destination[i]=m_States[i]->dxdt(time);
 				destination[i]*=factor;
 			}
 		}
 	}
-	else
-	{
-		if (factor==1)
-		{
-			for (int i = 0; i < (int)size() ; ++i)
-				destination[i]=m_States[i]->dxdt(time);
-		}
-		else
-		{
-			for (int i = 0; i < (int)size() ; i++)
-			{
-				destination[i]=m_States[i]->dxdt(time);
-				destination[i]*=factor;
-			}
-		}
-	}
-
 }
 void cmf::math::Integrator::set_states(const num_array & newStates )
 {
