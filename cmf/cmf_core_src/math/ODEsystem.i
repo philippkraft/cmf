@@ -37,6 +37,7 @@
 %rename(__getitem) cmf::math::integratable_list::operator[];
 
 %include "math/statevariable.h"
+%extend__repr__(cmf::math::StateVariable)
 %extend cmf::math::integratable_list {
     size_t __len__() const {
         return $self->size();

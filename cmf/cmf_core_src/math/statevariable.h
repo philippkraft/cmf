@@ -124,6 +124,7 @@ namespace cmf {
 			virtual real get_abs_errtol(real rel_errtol) const{
 				return rel_errtol;
 			}
+			virtual std::string to_string()=0;
 			/// ctor
 			StateVariable(real InitialState=0) : m_State(InitialState),m_StateIsNew(true) {}
 		};

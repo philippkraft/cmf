@@ -15868,6 +15868,50 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_StateVariable_to_string(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  cmf::math::StateVariable *arg1 = (cmf::math::StateVariable *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  std::tr1::shared_ptr< cmf::math::StateVariable > tempshared1 ;
+  std::tr1::shared_ptr< cmf::math::StateVariable > *smartarg1 = 0 ;
+  PyObject *swig_obj[1] ;
+  std::string result;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_std__tr1__shared_ptrT_cmf__math__StateVariable_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "StateVariable_to_string" "', argument " "1"" of type '" "cmf::math::StateVariable *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< std::tr1::shared_ptr<  cmf::math::StateVariable > * >(argp1);
+      delete reinterpret_cast< std::tr1::shared_ptr<  cmf::math::StateVariable > * >(argp1);
+      arg1 = const_cast< cmf::math::StateVariable * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< std::tr1::shared_ptr<  cmf::math::StateVariable > * >(argp1);
+      arg1 = const_cast< cmf::math::StateVariable * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  {
+    try {
+      result = (arg1)->to_string();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+    
+  }
+  resultobj = SWIG_From_std_string(static_cast< std::string >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_StateVariable_state_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   cmf::math::StateVariable *arg1 = (cmf::math::StateVariable *) 0 ;
@@ -68432,6 +68476,7 @@ static PyMethodDef SwigMethods[] = {
 		"\n"
 		"virtual real get_abs_errtol(real rel_errtol) const \n"
 		""},
+	 { (char *)"StateVariable_to_string", (PyCFunction)_wrap_StateVariable_to_string, METH_O, (char *)"StateVariable_to_string(StateVariable self) -> std::string"},
 	 { (char *)"StateVariable_state_set", _wrap_StateVariable_state_set, METH_VARARGS, (char *)"StateVariable_state_set(StateVariable self, real state)"},
 	 { (char *)"StateVariable_state_get", (PyCFunction)_wrap_StateVariable_state_get, METH_O, (char *)"StateVariable_state_get(StateVariable self) -> real"},
 	 { (char *)"delete_StateVariable", (PyCFunction)_wrap_delete_StateVariable, METH_O, (char *)"delete_StateVariable(StateVariable self)"},
