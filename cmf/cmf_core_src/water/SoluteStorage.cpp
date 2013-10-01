@@ -51,7 +51,7 @@ real cmf::water::SoluteStorage::conc() const
 		return 0.0;
 }
 
-std::string cmf::water::SoluteStorage::to_string()
+std::string cmf::water::SoluteStorage::to_string() const
 {
 	return m_water->to_string() + "[" + Solute.Name + "]";
 }

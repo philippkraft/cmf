@@ -223,8 +223,17 @@ namespace cmf {
 
 
 		};
-		double nash_sutcliff(const cmf::math::timeseries& model,const cmf::math::timeseries& observation);
-		double R2(const cmf::math::timeseries& model,const cmf::math::timeseries& observation);
+		/// @brief Calculates the Nash-Sutcliffe efficiency of a modeled timeseries in comparison with an observed timeseries
+		///
+		/// The Nash-Sutcliffe efficiancy is defined as:
+		/// \f[ E = 1 - \frac{\sum_{t=1}^{T}(M_t - O_t)^2}{\sum_{t=1}^{T}(O_t - \overline{O})^2}\f]
+		/// where
+		/// - \f$T\f$ is the number of observation time steps
+		/// - \f$M\f$ is the timeseries of model results matchinig O
+		/// - \f$O\f$ is the timeseries containing observations
+		/// - \f$\overline{O}\f$ is the arithmetic mean of observations
+		double nash_sutcliffe(const cmf::math::timeseries& model,const cmf::math::timeseries& observation);
+		
 
 	}
 }

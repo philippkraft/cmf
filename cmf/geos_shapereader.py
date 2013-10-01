@@ -59,7 +59,7 @@ if has_shapely:
             self.boundingbox=bbox # cmf.BoundingBox(bbox[0],bbox[1],bbox[2],bbox[3]) 
             self.zRange=self.__readfmt('<2d',f)
             self.mRange=self.__readfmt('<2d',f)
-        def readRecord(self,f):
+        def readRecord(self,f,coordinatedigits):
             """ Reads a record from the shapefile see: http://www.esri.com/library/whitepapers/pdfs/shapefile.pdf """
             # get Id and Length
             number,length=self.__readfmt('>ii', f)
@@ -67,18 +67,23 @@ if has_shapely:
             type=self.__readfmt('<i', f)[0]
             # Initialize output object
             obj=None
+            def roundxy(x,y):
+                return round(x,coordinatedigits),round(y,coordinatedigits)
+            def roundxyz(x,y,z):
+                return round(x,coordinatedigits),round(y,coordinatedigits),round(z,coordinatedigits)
+
             if type==0: # Null shape
                 pass
             elif type==1: # Point 
                 x,y=self.__readfmt('<dd', f)
-                obj=shapely.geometry.Point(x,y)
+                obj=shapely.geometry.Point(*roundxy(x,y))
             elif type==8: # Multipoint
                 bbox=self.__readfmt('<4d', f)
                 count=self.__readfmt('<i', f)
                 coords=[]
                 for i in range(count):
                     x,y=self.__readfmt('<dd', f)
-                    coords.append((x,y))
+                    coords.append(roundxy(x,y))
                 obj=shapely.geometry.MultiPoint(coords)
                 
                 obj=shapely.geometry.MultiPoint()
@@ -91,7 +96,7 @@ if has_shapely:
                     if i in partpositions:
                         coords.append([])
                     x,y=self.__readfmt('<dd', f)
-                    coords[-1].append((x,y))
+                    coords[-1].append(roundxy(x,y))
                 obj=shapely.geometry.MultiLineString(coords)
             elif type==5: # Polygon
                 bbox=self.__readfmt('<4d', f)
@@ -102,21 +107,21 @@ if has_shapely:
                     if i in partpositions:
                         coords.append([])
                     x,y=self.__readfmt('<dd', f)
-                    coords[-1].append((x,y))
+                    coords[-1].append(roundxy(x,y))
                 if len(coords)>1 :
                     obj=shapely.geometry.Polygon(coords[0],coords[1:])
                 else:
                     obj=shapely.geometry.Polygon(coords[0])
             elif type==11: # PointZ
                 x,y,z,m=self.__readfmt('<dddd',f)
-                obj=shapely.geometry.Point(x,y,z)
+                obj=shapely.geometry.Point(*roundxyz(x,y,z))
             elif type==18 : #MultiPointZ
                 bbox=self.__readfmt('<4d', f)
                 count=self.__readfmt('<i', f)
                 coords=[]
                 for i in range(count):
                     x,y,z,m=self.__readfmt('<dddd', f)
-                    coords.append((x,y,z))
+                    coords.append(roundxyz(x,y,z))
                 obj=shapely.geometry.MultiPoint(coords)
             elif type==13: # PolylineZ
                 bbox=self.__readfmt('<4d', f)
@@ -125,7 +130,7 @@ if has_shapely:
                 points=[]
                 for i in range(numpoints):
                     x,y=self.__readfmt('<dd', f)
-                    points.append((x,y,0.0))
+                    points.append(roundxy(x,y)+(0.0,))
                 zrange=self.__readfmt('<dd', f)
                 z_s=self.__readfmt('<%id' % numpoints, f)
                 m_range=self.__readfmt('<dd', f)
@@ -143,7 +148,7 @@ if has_shapely:
                 points=[]
                 for i in range(numpoints):
                     x,y=self.__readfmt('<dd', f)
-                    points.append((x,y,0.0))
+                    points.append(roundxy(x,y)+(0.0,))
                 zrange=self.__readfmt('<dd', f)
                 z_s=self.__readfmt('<%id' % numpoints, f)
                 m_range=self.__readfmt('<dd', f)
@@ -161,7 +166,7 @@ if has_shapely:
                 raise ValueError( "Shape file object #%i: shape type %i not implemented!" % (number,type))
                    
             return number,obj 
-        def __init__(self,filename):
+        def __init__(self,filename,coordinatedigits=12):
             """ Loads a shapefile from a filename"""
             if os.path.exists(filename):
                 f=file(filename,'rb')
@@ -178,7 +183,7 @@ if has_shapely:
             TYPE = namedtuple(shpname,['shape','OID'] + self.fields)
             while f.tell()<self.file_size :
                 try:
-                    number,obj=self.readRecord(f)
+                    number,obj=self.readRecord(f,coordinatedigits)
                     self.__data.append(TYPE(obj,number,*data[number-1]))
                 except ValueError,e:
                     print e

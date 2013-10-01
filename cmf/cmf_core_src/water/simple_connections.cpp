@@ -77,3 +77,19 @@ cmf::water::generic_gradient_connection::generic_gradient_connection( cmf::water
 {
 	
 }
+
+cmf::water::constraint_kinematic_wave::constraint_kinematic_wave( WaterStorage::ptr source,WaterStorage::ptr target,real _residencetime/*=1.0*/, 
+																  real _beta/*=1.0*/,real _residual/*=0.0*/,real _V0 /*= 1.0*/, 
+																  real _Vrmax /*= 1.0*/, real _gamma/*=1.0*/ )
+	: flux_connection(source,target,"kinematic wave"),residencetime(_residencetime),
+	beta(_beta), residual(_residual), V0(_V0), Vrmax(_Vrmax),gamma(_gamma)
+{
+	NewNodes();
+}
+
+real cmf::water::constraint_kinematic_wave::calc_q( cmf::math::Time t )
+{
+	real V= std::max(0.0,source->get_volume()-residual);
+	real C= std::max(0.0,Vrmax - target->get_volume());
+	return pow(V/V0,beta)/residencetime * pow(C/Vrmax,gamma);
+}

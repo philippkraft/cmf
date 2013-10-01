@@ -75,6 +75,7 @@ void cmf::upslope::Topology::AddNeighbor( Topology & target,double flowwidth )
 	{
 		m_Neighbors[&target]=flowwidth;
 		target.m_Neighbors[this]=flowwidth;
+		m_MainOutlet = 0;
 	}
 
 }
@@ -85,6 +86,7 @@ void cmf::upslope::Topology::RemoveNeighbor( Topology & target )
 	{
 		m_Neighbors.erase(&target);
 		target.RemoveNeighbor(*this);
+		m_MainOutlet = 0;
 	}
 }
 
