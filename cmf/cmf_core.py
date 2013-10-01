@@ -1769,7 +1769,12 @@ class StateVariable(object):
         return _cmf_core.StateVariable_get_abs_errtol(self, *args, **kwargs)
 
     def to_string(self, *args, **kwargs):
-        """to_string(StateVariable self) -> std::string"""
+        """
+        to_string(StateVariable self) -> std::string
+
+        virtual
+        std::string to_string() const =0 
+        """
         return _cmf_core.StateVariable_to_string(self, *args, **kwargs)
 
     state = _swig_property(_cmf_core.StateVariable_state_get, _cmf_core.StateVariable_state_set)
@@ -1869,8 +1874,7 @@ class Integrator(StateVariableOwner):
 
     Pure virtual functions: Integrate
 
-    copy Please provide a custom copy constructorTodo Put the methods of
-    StateVariableVector here, and delete StateVariableVector
+    copy Please provide a custom copy constructor
 
     C++ includes: integrator.h 
     """
@@ -3676,6 +3680,86 @@ class kinematic_wave(flux_connection):
     __swig_destroy__ = _cmf_core.delete_kinematic_wave
 kinematic_wave_swigregister = _cmf_core.kinematic_wave_swigregister
 kinematic_wave_swigregister(kinematic_wave)
+
+class constraint_kinematic_wave(flux_connection):
+    """
+    Calculates flux out of a storage as a linear function of its volume to
+    a power, constraint by the volume stored in the target storage.
+
+    \\[ q = \\frac 1 {t_r} {\\left(\\frac{V_{l} -
+    V_{residual}}{V_0} \\right)^\\beta}
+    \\left(\\frac{V_{r,max}-V_{r}}{V_{r,max}\\right)^\\gamma\\]
+    where:  $V_l$ The actual volume stored by the left water storage
+
+    $V_{residual} [m^3]$ The volume of water not flowing out (default = 0)
+
+    $V_0$ The reference volume to scale the exponent (default = 1m3/day)
+
+    $\\beta$ A parameter to shape the response curve. In case of
+    $\\beta \\neq 1$, $t_r$ is not a residence time, but just a
+    parameter.
+
+    $t_r [days]$ The residence time of the water in this storage in days
+
+    $V_{r,max}$ The capacity of the right water storage in m3
+
+    $V_{r}$ The actual volume of the right water storage
+
+    $\\gamma$ A shape parameter for the target capacity constriction
+
+    C++ includes: simple_connections.h 
+    """
+    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __repr__ = _swig_repr
+    residencetime = _swig_property(_cmf_core.constraint_kinematic_wave_residencetime_get, _cmf_core.constraint_kinematic_wave_residencetime_set)
+    beta = _swig_property(_cmf_core.constraint_kinematic_wave_beta_get, _cmf_core.constraint_kinematic_wave_beta_set)
+    residual = _swig_property(_cmf_core.constraint_kinematic_wave_residual_get, _cmf_core.constraint_kinematic_wave_residual_set)
+    V0 = _swig_property(_cmf_core.constraint_kinematic_wave_V0_get, _cmf_core.constraint_kinematic_wave_V0_set)
+    Vrmax = _swig_property(_cmf_core.constraint_kinematic_wave_Vrmax_get, _cmf_core.constraint_kinematic_wave_Vrmax_set)
+    gamma = _swig_property(_cmf_core.constraint_kinematic_wave_gamma_get, _cmf_core.constraint_kinematic_wave_gamma_set)
+    def __init__(self, *args, **kwargs): 
+        """
+        __init__(cmf::water::constraint_kinematic_wave self, cmf::water::WaterStorage::ptr source, cmf::water::WaterStorage::ptr target, real residencetime=1.0, 
+            real exponent=1.0, real residual=0.0, real V0=1.0, real Vrmax=1.0, 
+            real gamma=1.0) -> constraint_kinematic_wave
+
+        constraint_kinematic_wave(WaterStorage::ptr source, WaterStorage::ptr
+        target, real residencetime=1.0, real exponent=1.0, real residual=0.0,
+        real V0=1.0, real Vrmax=1.0, real gamma=1.0)
+
+        Creates a kinematic wave connection.
+
+        \\[ q = \\frac 1 {t_r} {\\left(\\frac{V - V_{residual}}{V_0}
+        \\right)^\\beta} \\]
+
+        Parameters:
+        -----------
+
+        source:  Water storage from which the water flows out. Flux is a
+        function of source.volume
+
+        target:  Target node (boundary condition or storage). Does not
+        influence the strength of the flow
+
+        residencetime:   $t_r [days]$ The residence time of the water in this
+        storage
+
+        exponent:   $\\beta [-]$ An empirical exponent to shape the flux
+        function (default = 1 (linear function))
+
+        residual:   $V_{residual} [m^3]$ The volume of water not flowing out
+        (default = 0)
+
+        V0:   $V_0$ The reference volume to scale the exponent
+
+        Vrmax:   $V_{r,max}$ Capacity of the target water storage in m3
+
+        gamma:   $\\gamma$ Target capacity constriction curve shape 
+        """
+        _cmf_core.constraint_kinematic_wave_swiginit(self,_cmf_core.new_constraint_kinematic_wave(*args, **kwargs))
+    __swig_destroy__ = _cmf_core.delete_constraint_kinematic_wave
+constraint_kinematic_wave_swigregister = _cmf_core.constraint_kinematic_wave_swigregister
+constraint_kinematic_wave_swigregister(constraint_kinematic_wave)
 
 class TechnicalFlux(flux_connection):
     """

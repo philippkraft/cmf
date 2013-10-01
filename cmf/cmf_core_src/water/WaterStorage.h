@@ -145,7 +145,7 @@ namespace cmf {
 			virtual double is_empty() const {
 				return 1-piecewise_linear(get_volume(),0,get_abs_errtol(1e-4));
 			}
-			virtual std::string to_string() {
+			virtual std::string to_string() const {
 				return cmf::water::flux_node::to_string();
 			}
 			//@}

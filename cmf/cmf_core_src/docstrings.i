@@ -81,6 +81,9 @@ double is_empty() const
 
 Returns true if the node has no water. ";
 
+%feature("docstring")  cmf::upslope::aquifer::to_string "virtual
+std::string to_string() const ";
+
 %feature("docstring")  cmf::upslope::aquifer::aquifer "aquifer(cmf::project &p, cmf::geometry::point position, real area,
 real thickness, real porosity, real K=1e-4)
 
@@ -255,9 +258,6 @@ Returns the water quality of the water storage. ";
 
 %feature("docstring")  cmf::upslope::aquifer::Solute "const
 SoluteStorage& Solute(const cmf::water::solute &_Solute) const ";
-
-%feature("docstring")  cmf::upslope::aquifer::to_string "virtual
-std::string to_string() const ";
 
 %feature("docstring")  cmf::upslope::aquifer::waterbalance "real
 waterbalance(cmf::math::Time t, const flux_connection *Without=0)
@@ -475,10 +475,7 @@ Add state variables from a StateVariableOwner. ";
 %feature("docstring")  cmf::math::BDF2::add_values_to_states "void
 add_values_to_states(const num_array &operands)
 
-Returns the states in a numeric vector using :CopyStates, but is
-slower because of additional memory allocation Returns the derivatives
-at time step \"time\" in a numeric vector using :CopyDerivs, but is
-slower because of additional memory allocation. ";
+Adds the values in operands to the current states. ";
 
 %feature("docstring")  cmf::math::BDF2::copy "virtual Integrator*
 copy() const
@@ -1865,6 +1862,144 @@ Without:  A flux_connection that is excluded from the waterbalance
 (e.g. to prevent closed circuits) ";
 
 
+// File: classcmf_1_1water_1_1constraint__kinematic__wave.xml
+%feature("docstring") cmf::water::constraint_kinematic_wave "
+
+Calculates flux out of a storage as a linear function of its volume to
+a power, constraint by the volume stored in the target storage.
+
+\\\\[ q = \\\\frac 1 {t_r} {\\\\left(\\\\frac{V_{l} -
+V_{residual}}{V_0} \\\\right)^\\\\beta}
+\\\\left(\\\\frac{V_{r,max}-V_{r}}{V_{r,max}\\\\right)^\\\\gamma\\\\]
+where:  $V_l$ The actual volume stored by the left water storage
+
+$V_{residual} [m^3]$ The volume of water not flowing out (default = 0)
+
+$V_0$ The reference volume to scale the exponent (default = 1m3/day)
+
+$\\\\beta$ A parameter to shape the response curve. In case of
+$\\\\beta \\\\neq 1$, $t_r$ is not a residence time, but just a
+parameter.
+
+$t_r [days]$ The residence time of the water in this storage in days
+
+$V_{r,max}$ The capacity of the right water storage in m3
+
+$V_{r}$ The actual volume of the right water storage
+
+$\\\\gamma$ A shape parameter for the target capacity constriction
+
+C++ includes: simple_connections.h ";
+
+%feature("docstring")
+cmf::water::constraint_kinematic_wave::constraint_kinematic_wave "constraint_kinematic_wave(WaterStorage::ptr source, WaterStorage::ptr
+target, real residencetime=1.0, real exponent=1.0, real residual=0.0,
+real V0=1.0, real Vrmax=1.0, real gamma=1.0)
+
+Creates a kinematic wave connection.
+
+\\\\[ q = \\\\frac 1 {t_r} {\\\\left(\\\\frac{V - V_{residual}}{V_0}
+\\\\right)^\\\\beta} \\\\]
+
+Parameters:
+-----------
+
+source:  Water storage from which the water flows out. Flux is a
+function of source.volume
+
+target:  Target node (boundary condition or storage). Does not
+influence the strength of the flow
+
+residencetime:   $t_r [days]$ The residence time of the water in this
+storage
+
+exponent:   $\\\\beta [-]$ An empirical exponent to shape the flux
+function (default = 1 (linear function))
+
+residual:   $V_{residual} [m^3]$ The volume of water not flowing out
+(default = 0)
+
+V0:   $V_0$ The reference volume to scale the exponent
+
+Vrmax:   $V_{r,max}$ Capacity of the target water storage in m3
+
+gamma:   $\\\\gamma$ Target capacity constriction curve shape ";
+
+%feature("docstring")  cmf::water::constraint_kinematic_wave::conc "real conc(cmf::math::Time t, const cmf::water::solute &_Solute)
+
+Returns the concentration of the flux.
+
+If not overridden, it returns the concentration of the source of the
+flux (direction depending) ";
+
+%feature("docstring")
+cmf::water::constraint_kinematic_wave::exchange_target "void
+exchange_target(flux_node::ptr oldtarget, flux_node::ptr newTarget) ";
+
+%feature("docstring")  cmf::water::constraint_kinematic_wave::get_ptr
+"ptr get_ptr() const ";
+
+%feature("docstring")
+cmf::water::constraint_kinematic_wave::get_target "flux_node::ptr
+get_target(const flux_node &inquirer)
+
+Returns the other end of a connection than the asking end. ";
+
+%feature("docstring")
+cmf::water::constraint_kinematic_wave::get_target "flux_node::ptr
+get_target(int index) const
+
+With index 0, the left node is returned, with index 1 the right node
+of the connection. ";
+
+%feature("docstring")
+cmf::water::constraint_kinematic_wave::get_tracer_filter "real
+get_tracer_filter()
+
+A value ranging from 0 to 1. ";
+
+%feature("docstring")  cmf::water::constraint_kinematic_wave::kill_me
+"bool kill_me()
+
+Deregisters this connection from its nodes. Returns true if only one
+reference is left. ";
+
+%feature("docstring")
+cmf::water::constraint_kinematic_wave::left_node "flux_node::ptr
+left_node() const
+
+Returns the left node of this connection. ";
+
+%feature("docstring")  cmf::water::constraint_kinematic_wave::q "real
+q(const flux_node &inquirer, cmf::math::Time t)
+
+Returns the current flux through a connection. Negative signs mean out
+of the inquirer, positive are inflows to the inquirer. ";
+
+%feature("docstring")  cmf::water::constraint_kinematic_wave::refresh
+"void refresh(cmf::math::Time t)
+
+Performes a new calculation of the flux. ";
+
+%feature("docstring")
+cmf::water::constraint_kinematic_wave::right_node "flux_node::ptr
+right_node() const
+
+returns the right node of this connection ";
+
+%feature("docstring")
+cmf::water::constraint_kinematic_wave::set_tracer_filter "void
+set_tracer_filter(real value) ";
+
+%feature("docstring")
+cmf::water::constraint_kinematic_wave::short_string "std::string
+short_string() const ";
+
+%feature("docstring")
+cmf::water::constraint_kinematic_wave::to_string "std::string
+to_string() const ";
+
+
 // File: classcmf_1_1math_1_1cubicspline.xml
 %feature("docstring") cmf::math::cubicspline "
 
@@ -1990,10 +2125,7 @@ Add state variables from a StateVariableOwner. ";
 cmf::math::CVodeIntegrator::add_values_to_states "void
 add_values_to_states(const num_array &operands)
 
-Returns the states in a numeric vector using :CopyStates, but is
-slower because of additional memory allocation Returns the derivatives
-at time step \"time\" in a numeric vector using :CopyDerivs, but is
-slower because of additional memory allocation. ";
+Adds the values in operands to the current states. ";
 
 %feature("docstring")  cmf::math::CVodeIntegrator::copy "CVodeIntegrator* copy() const
 
@@ -2819,10 +2951,7 @@ Add state variables from a StateVariableOwner. ";
 cmf::math::ExplicitEuler_fixed::add_values_to_states "void
 add_values_to_states(const num_array &operands)
 
-Returns the states in a numeric vector using :CopyStates, but is
-slower because of additional memory allocation Returns the derivatives
-at time step \"time\" in a numeric vector using :CopyDerivs, but is
-slower because of additional memory allocation. ";
+Adds the values in operands to the current states. ";
 
 %feature("docstring")  cmf::math::ExplicitEuler_fixed::copy "virtual
 Integrator* copy() const
@@ -4334,10 +4463,7 @@ Add state variables from a StateVariableOwner. ";
 %feature("docstring")  cmf::math::ImplicitEuler::add_values_to_states
 "void add_values_to_states(const num_array &operands)
 
-Returns the states in a numeric vector using :CopyStates, but is
-slower because of additional memory allocation Returns the derivatives
-at time step \"time\" in a numeric vector using :CopyDerivs, but is
-slower because of additional memory allocation. ";
+Adds the values in operands to the current states. ";
 
 %feature("docstring")  cmf::math::ImplicitEuler::copy "virtual
 Integrator* copy() const
@@ -4516,8 +4642,7 @@ Base class for any kind of integrator.
 
 Pure virtual functions: Integrate
 
-copy Please provide a custom copy constructorTodo Put the methods of
-StateVariableVector here, and delete StateVariableVector
+copy Please provide a custom copy constructor
 
 C++ includes: integrator.h ";
 
@@ -4608,10 +4733,7 @@ Add state variables from a StateVariableOwner. ";
 
 %feature("docstring")  cmf::math::Integrator::add_values_to_states "void add_values_to_states(const num_array &operands)
 
-Returns the states in a numeric vector using :CopyStates, but is
-slower because of additional memory allocation Returns the derivatives
-at time step \"time\" in a numeric vector using :CopyDerivs, but is
-slower because of additional memory allocation. ";
+Adds the values in operands to the current states. ";
 
 %feature("docstring")  cmf::math::Integrator::copy_dxdt "void
 copy_dxdt(Time time, num_array &destination, real factor=1) const
@@ -5574,6 +5696,9 @@ double is_empty() const
 
 Returns true if the node has no water. ";
 
+%feature("docstring")  cmf::upslope::MacroPore::to_string "virtual
+std::string to_string() const ";
+
 %feature("docstring")  cmf::upslope::MacroPore::conc "real conc(const
 cmf::water::solute &_Solute) const
 
@@ -5741,9 +5866,6 @@ Returns the water quality of the water storage. ";
 
 %feature("docstring")  cmf::upslope::MacroPore::Solute "const
 SoluteStorage& Solute(const cmf::water::solute &_Solute) const ";
-
-%feature("docstring")  cmf::upslope::MacroPore::to_string "virtual
-std::string to_string() const ";
 
 %feature("docstring")  cmf::upslope::MacroPore::waterbalance "real
 waterbalance(cmf::math::Time t, const flux_connection *Without=0)
@@ -6570,10 +6692,7 @@ Add state variables from a StateVariableOwner. ";
 cmf::math::MultiIntegrator::add_values_to_states "void
 add_values_to_states(const num_array &operands)
 
-Returns the states in a numeric vector using :CopyStates, but is
-slower because of additional memory allocation Returns the derivatives
-at time step \"time\" in a numeric vector using :CopyDerivs, but is
-slower because of additional memory allocation. ";
+Adds the values in operands to the current states. ";
 
 %feature("docstring")  cmf::math::MultiIntegrator::copy "virtual
 cmf::math::MultiIntegrator* copy() const
@@ -7283,6 +7402,8 @@ the fluxes ";
 
 Returns true if the node has no water. ";
 
+%feature("docstring")  cmf::river::OpenWaterStorage::to_string "virtual std::string to_string() const ";
+
 %feature("docstring")  cmf::river::OpenWaterStorage::conc "real
 conc(cmf::math::Time t, const cmf::water::solute &solute) const
 
@@ -7407,8 +7528,6 @@ Returns the water quality of the water storage. ";
 
 %feature("docstring")  cmf::river::OpenWaterStorage::Solute "const
 SoluteStorage& Solute(const cmf::water::solute &_Solute) const ";
-
-%feature("docstring")  cmf::river::OpenWaterStorage::to_string "virtual std::string to_string() const ";
 
 %feature("docstring")  cmf::river::OpenWaterStorage::waterbalance "real waterbalance(cmf::math::Time t, const flux_connection *Without=0)
 const
@@ -8022,10 +8141,7 @@ Add state variables from a StateVariableOwner. ";
 cmf::math::PredictCorrectSimple::add_values_to_states "void
 add_values_to_states(const num_array &operands)
 
-Returns the states in a numeric vector using :CopyStates, but is
-slower because of additional memory allocation Returns the derivatives
-at time step \"time\" in a numeric vector using :CopyDerivs, but is
-slower because of additional memory allocation. ";
+Adds the values in operands to the current states. ";
 
 %feature("docstring")  cmf::math::PredictCorrectSimple::copy "virtual
 Integrator* copy() const
@@ -8829,6 +8945,9 @@ is_empty() const
 
 Returns true if the node has no water. ";
 
+%feature("docstring")  cmf::river::Reach::to_string "virtual
+std::string to_string() const ";
+
 %feature("docstring")  cmf::river::Reach::~Reach "virtual ~Reach() ";
 
 %feature("docstring")  cmf::river::Reach::conc "real
@@ -9039,9 +9158,6 @@ Returns the water quality of the water storage. ";
 
 %feature("docstring")  cmf::river::Reach::Solute "const
 SoluteStorage& Solute(const cmf::water::solute &_Solute) const ";
-
-%feature("docstring")  cmf::river::Reach::to_string "virtual
-std::string to_string() const ";
 
 %feature("docstring")  cmf::river::Reach::upstream_count "int
 upstream_count() const
@@ -9557,10 +9673,7 @@ Adds states from an StateVariableOwner. ";
 %feature("docstring")  cmf::math::RKFIntegrator::add_values_to_states
 "void add_values_to_states(const num_array &operands)
 
-Returns the states in a numeric vector using :CopyStates, but is
-slower because of additional memory allocation Returns the derivatives
-at time step \"time\" in a numeric vector using :CopyDerivs, but is
-slower because of additional memory allocation. ";
+Adds the values in operands to the current states. ";
 
 %feature("docstring")  cmf::math::RKFIntegrator::copy "virtual
 Integrator* copy() const
@@ -10336,6 +10449,9 @@ double is_empty() const
 
 Returns true if the node has no water. ";
 
+%feature("docstring")  cmf::upslope::SoilLayer::to_string "virtual
+std::string to_string() const ";
+
 %feature("docstring")  cmf::upslope::SoilLayer::conc "real conc(const
 cmf::water::solute &_Solute) const
 
@@ -10560,9 +10676,6 @@ Returns the water quality of the water storage. ";
 %feature("docstring")  cmf::upslope::SoilLayer::Solute "const
 SoluteStorage& Solute(const cmf::water::solute &_Solute) const ";
 
-%feature("docstring")  cmf::upslope::SoilLayer::to_string "virtual
-std::string to_string() const ";
-
 %feature("docstring")  cmf::upslope::SoilLayer::waterbalance "real
 waterbalance(cmf::math::Time t, const flux_connection *Without=0)
 const
@@ -10657,6 +10770,9 @@ Returns the current state of the variable. ";
 set_state(real newState)
 
 Gives access to the state variable. ";
+
+%feature("docstring")  cmf::water::SoluteStorage::to_string "virtual
+std::string to_string() const ";
 
 
 // File: classcmf_1_1water_1_1_solute_timeseries.xml
@@ -10788,10 +10904,7 @@ Add state variables from a StateVariableOwner. ";
 cmf::math::SoluteWaterIntegrator::add_values_to_states "void
 add_values_to_states(const num_array &operands)
 
-Returns the states in a numeric vector using :CopyStates, but is
-slower because of additional memory allocation Returns the derivatives
-at time step \"time\" in a numeric vector using :CopyDerivs, but is
-slower because of additional memory allocation. ";
+Adds the values in operands to the current states. ";
 
 %feature("docstring")  cmf::math::SoluteWaterIntegrator::copy "virtual cmf::math::SoluteWaterIntegrator* copy() const
 
@@ -11044,6 +11157,9 @@ set_state(real newState)
 
 Gives access to the state variable. ";
 
+%feature("docstring")  cmf::math::StateVariable::to_string "virtual
+std::string to_string() const =0 ";
+
 
 // File: classcmf_1_1math_1_1_state_variable_list.xml
 %feature("docstring") cmf::math::StateVariableList "";
@@ -11233,6 +11349,9 @@ double is_empty() const
 
 Returns true if the node has no water. ";
 
+%feature("docstring")  cmf::upslope::SurfaceWater::to_string "virtual
+std::string to_string() const ";
+
 %feature("docstring")  cmf::upslope::SurfaceWater::conc "real
 conc(cmf::math::Time t, const cmf::water::solute &solute) const
 
@@ -11390,9 +11509,6 @@ Returns the water quality of the water storage. ";
 
 %feature("docstring")  cmf::upslope::SurfaceWater::Solute "const
 SoluteStorage& Solute(const cmf::water::solute &_Solute) const ";
-
-%feature("docstring")  cmf::upslope::SurfaceWater::to_string "virtual
-std::string to_string() const ";
 
 %feature("docstring")  cmf::upslope::SurfaceWater::waterbalance "real
 waterbalance(cmf::math::Time t, const flux_connection *Without=0)
@@ -13213,6 +13329,9 @@ double is_empty() const
 
 Returns true if the node has no water. ";
 
+%feature("docstring")  cmf::water::WaterStorage::to_string "virtual
+std::string to_string() const ";
+
 %feature("docstring")  cmf::water::WaterStorage::WaterStorage "WaterStorage(cmf::project &project, const std::string &Name=\"\",
 double InitialState=0)
 
@@ -13335,9 +13454,6 @@ Returns the water quality of the water storage. ";
 
 %feature("docstring")  cmf::water::WaterStorage::Solute "const
 SoluteStorage& Solute(const cmf::water::solute &_Solute) const ";
-
-%feature("docstring")  cmf::water::WaterStorage::to_string "virtual
-std::string to_string() const ";
 
 %feature("docstring")  cmf::water::WaterStorage::waterbalance "real
 waterbalance(cmf::math::Time t, const flux_connection *Without=0)
