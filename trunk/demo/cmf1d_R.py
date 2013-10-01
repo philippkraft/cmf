@@ -47,13 +47,14 @@ def load_meteo(project):
     for line in csvfile:
         # split the line in to columns using commas
         columns = line.split(',')
-        # Get the values, but ignore the date, we have begin and steo
+        # Get the values, but ignore the date, we have begin and step
         # of the data file hardcoded
-        # If you don't get this line - it is standard Python, I would recommend the official Python.org tutorial
-        for timeseries,value in zip([rain,meteo.Tmax,meteo.Tmin,meteo.rHmean,meteo.Windspeed,meteo.Sunshine],
-                                    [float(col) for col in columns[1:]]):
-            # Add the value from the file to the timeseries
-            timeseries.add(value)
+        rain.add(float(columns[1]))
+        meteo.Tmax.add(float(columns[2]))
+        meteo.Tmin.add(float(columns[3]))
+        meteo.rHmean.add(float(columns[4]))
+        meteo.Windspeed.add(float(columns[5]))
+        meteo.Sunshine.add(float(columns[6]))
 
     meteo.T         = (meteo.Tmax + meteo.Tmin) * 0.5
              

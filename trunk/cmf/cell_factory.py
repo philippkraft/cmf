@@ -317,7 +317,14 @@ def cell_neighbors(features,shape_callable=lambda feat:feat.shape):
                     res[s_cmp].append((s,intersect))
     return res
             
-def cells_from_polygons(project,features,shape_callable=lambda feat:feat.shape,id_callable=lambda f:0,center_callable=lambda feat:tuple(feat.shape.centroid),area_callable=lambda feat:feat.shape.area,no_connect=False,report=1):
+def cells_from_polygons(project,features,
+                        shape_callable=lambda feat:feat.shape,
+                        id_callable=lambda f:0,
+                        center_callable=lambda feat:tuple(feat.shape.centroid),
+                        area_callable=lambda feat:feat.shape.area,
+                        no_connect=False,
+                        report=1,
+                        minintersectlength=0.0):
     """ Adds cells from shapely features to project, and connects them topological
     project: a cmf project
     features: a sequence holding or referencing the shapely features
@@ -361,7 +368,7 @@ def cells_from_polygons(project,features,shape_callable=lambda feat:feat.shape,i
                         cell_dict[s].topology.AddNeighbor(cell_dict[c],intersect)
                         con_count+=1
         print len(features),' %0.2f sec. %i comparisons' % (time.clock()-start,cmp_count)
-    cmf.Topology.calculate_contributing_area()
+    #cmf.Topology.calculate_contributing_area(project)
     return cell_dict  
 def cells_from_dem(project,dem,direction_count=8):
     """ Adds square cells from a dem to the project, and meshes them.

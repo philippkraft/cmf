@@ -63,6 +63,7 @@ namespace cmf {
 			double & z;
 			/// Returns the center of the cell
 			cmf::geometry::point get_position() const {return cmf::geometry::point(x,y,z);}
+			/// @brief returns the flow width between this cell and the target cell. Returns 0 if no topology is defined
 			double flowwidth(Cell & target)
 			{
 				return flowwidth(target.get_topology());
@@ -75,16 +76,27 @@ namespace cmf {
 				else
 					return it_n->second;
 			}
+
+			/// @brief Adds a neighbor cell to the topology with flowwidth
 			void AddNeighbor(Cell & target,double flowwidth)
 			{
 				AddNeighbor(target.get_topology(),flowwidth);
 			}
 			void AddNeighbor(Topology & target,double flowwidth);
+
+			/// Removes the topological relation to the given cell
 			void RemoveNeighbor(Topology & target);
+
+			/// Returns the number of neighbors
 			size_t neighbor_count() const { return m_Neighbors.size();}
+
+			/// Returns the mainoutlet (steepest lower neighbor)
 			Cell * MainOutlet(bool forceRecalc=false);
 
+			/// Get the contributing area (steepest path upwards)
 			double ContributingArea() const;
+
+			/// Calculates the contributing area for a bunch of cells
 			static void calculate_contributing_area(const cmf::upslope::cell_vector&);
 			bool operator==(const Topology& cmp)
 			{
