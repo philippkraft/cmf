@@ -136,5 +136,12 @@
 
 %shared_ptr(cmf::upslope::MacroPore);
 %shared_attr(cmf::upslope::MacroPore, MacroPore, layer,get_layer);
+
+%attribute(cmf::upslope::MacroPore,real,filled_fraction,get_filled_fraction);
+%attribute(cmf::upslope::MacroPore,real,K,get_K);
+%attribute(cmf::upslope::MacroPore,real,capacity,get_capacity);
+%attribute(cmf::upslope::MacroPore,cmf::upslope::Cell&,cell,get_cell);
+
+
 %include "upslope/macropore.h"
 

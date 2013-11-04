@@ -243,7 +243,7 @@ real cmf::upslope::VanGenuchtenMualem::K( real wetness) const
 {
 	real _m = m<0 ? 1-1/n : m;
 	if (wetness>=1) return Ksat;
-	return Ksat*minimum(sqrt(wetness)*square(1-pow(1-pow(wetness,1/_m),_m)),1);
+	return Ksat*minimum(pow(wetness,l)*square(1-pow(1-pow(wetness,1/_m),_m)),1);
 }
 
 real cmf::upslope::VanGenuchtenMualem::VoidVolume( real upperDepth,real lowerDepth,real Area ) const
@@ -272,7 +272,7 @@ cmf::upslope::VanGenuchtenMualem* cmf::upslope::VanGenuchtenMualem::copy() const
 }
 
 cmf::upslope::VanGenuchtenMualem::VanGenuchtenMualem( real _Ksat, real _phi,real _alpha, real _n, real _m/*=-1*/ ) 
-: n(_n),alpha(_alpha),Phi(_phi),Ksat(_Ksat), m(_m), w0(.99)
+: n(_n),alpha(_alpha),Phi(_phi),Ksat(_Ksat), m(_m), w0(.99),l(0.5)
 {
 	std::stringstream msg;
 	msg << "Can't create VanGenuchten-Mualem-Retention curve with ";
@@ -312,6 +312,20 @@ real cmf::upslope::VanGenuchtenMualem::fit_w0( real w1/*=1.01*/,real Psi_p/*=1.0
 			break;
 	}
 	return w0;
+}
+
+real cmf::upslope::VanGenuchtenMualem::Diffusivity( real wetness ) const
+{
+	// Get VanGenuchten m (either Mualem Theory or user set)
+	real _m = m<0 ? 1-1/n : m;
+	// Fill in here eq. 41 from MACRO_5 user manual
+
+	// eq 41. first brackets
+	real term1 = ((1-_m)*Ksat)/(alpha*_m*Phi);
+	// eq 41, 2nd part
+	real term2 = pow(wetness,l-1/_m);
+	real term3 = pow(1-pow(wetness,1/_m),-_m) + pow(1-pow(wetness,1/_m),_m)-2;
+	return term1*term2*term3;
 }
 
 /************************************************************************/

@@ -139,7 +139,6 @@ real cmf::upslope::connections::KinematicMacroFlow::calc_q( cmf::math::Time t )
 {
 	using namespace cmf::upslope;
 	using namespace cmf::geometry;
-	// Richards flux
 	MacroPore::ptr 
 		Mp1=mp1.lock(),
 		Mp2=mp2.lock();
@@ -167,16 +166,16 @@ void cmf::upslope::connections::KinematicMacroFlow::NewNodes()
 	if (!(Mp1) && !(Mp2)) 
 		throw std::runtime_error("One of the end points for KinematicMacroFlow needs to be a MacroPore");
 	mp1 = Mp1;
-	mp2= Mp2;
+	mp2 = Mp2;
 }
 
-void cmf::upslope::connections::DiffusiveMacroMicroExchange::NewNodes()
+void cmf::upslope::connections::GradientMacroMicroExchange::NewNodes()
 {
 	sl = SoilLayer::cast(left_node());
 	mp = MacroPore::cast(right_node());
 }
 
-real cmf::upslope::connections::DiffusiveMacroMicroExchange::calc_q( cmf::math::Time t )
+real cmf::upslope::connections::GradientMacroMicroExchange::calc_q( cmf::math::Time t )
 {
 	MacroPore::ptr MP = mp.lock();
 	SoilLayer::ptr SL = sl.lock();
@@ -192,4 +191,45 @@ real cmf::upslope::connections::DiffusiveMacroMicroExchange::calc_q( cmf::math::
 		q = K * pot / (d*0.5) * A;
 	return prevent_negative_volume(q);
 
+}
+void cmf::upslope::connections::DiffusiveMacroMicroExchange::NewNodes()
+{
+	sl = SoilLayer::cast(left_node());
+	mp = MacroPore::cast(right_node());
+}
+
+cmf::upslope::connections::DiffusiveMacroMicroExchange::DiffusiveMacroMicroExchange( cmf::upslope::SoilLayer::ptr left, cmf::upslope::MacroPore::ptr right,real _omega ) 
+	: flux_connection(left,right,"Macro to micro pores exchange"),omega(_omega)
+{
+	NewNodes();
+}
+
+real cmf::upslope::connections::DiffusiveMacroMicroExchange::calc_q( cmf::math::Time t )
+{
+	MacroPore::ptr MP = mp.lock();
+	SoilLayer::ptr SL = sl.lock();
+	real
+		q = omega * (MP->get_volume()/MP->get_capacity() - SL->get_wetness());
+	return prevent_negative_volume(q);
+
+}
+
+
+real cmf::upslope::connections::MACROlikeMacroMicroExchange::calc_q( cmf::math::Time t )
+{
+	MacroPore::ptr MP = mp.lock();
+	SoilLayer::ptr SL = sl.lock();
+	const RetentionCurve& rt = SL->get_soil();
+	// Check if this fits to MACRO theory
+	real theta_b = rt.Porosity();
+	real theta_mi = SL->get_theta();
+	real D_theta_mi = rt.Diffusivity(SL->get_wetness());
+	// TODO: find the correct translation of MACRO theta_b in cmf. As a first try we assume
+	// theta_b is saturation in cmf.
+	real D_theta_b = rt.Diffusivity(theta_b/rt.Porosity());
+	real Sma = MP->get_volume()/MP->get_capacity();
+	real Dw = (D_theta_b + D_theta_mi)/2 * Sma;
+
+	real Sw = (Gf * Dw * gamma_w)/square(MP->density) * (theta_b - theta_mi);
+	return prevent_negative_volume(Sw * SL->get_thickness() * SL->cell.get_area());
 }

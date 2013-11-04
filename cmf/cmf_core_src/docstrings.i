@@ -651,6 +651,18 @@ conductivity gets 10% smaller per meter ";
 %feature("docstring")  cmf::upslope::BrooksCoreyRetentionCurve::copy "virtual BrooksCoreyRetentionCurve* copy() const ";
 
 %feature("docstring")
+cmf::upslope::BrooksCoreyRetentionCurve::Diffusivity "virtual real
+Diffusivity(real wetness) const
+
+Returns the Diffusivity of the soil.
+
+Not implemented for all Retentioncurves. Diffusivity is used by
+MACROlikeMacroMicroExchange ";
+
+%feature("docstring")
+cmf::upslope::BrooksCoreyRetentionCurve::Diffusivity "cmf::math::num_array Diffusivity(cmf::math::num_array &wetness) ";
+
+%feature("docstring")
 cmf::upslope::BrooksCoreyRetentionCurve::FillHeight "real
 FillHeight(real lowerDepth, real Area, real Volume) const
 
@@ -1870,7 +1882,7 @@ a power, constraint by the volume stored in the target storage.
 
 \\\\[ q = \\\\frac 1 {t_r} {\\\\left(\\\\frac{V_{l} -
 V_{residual}}{V_0} \\\\right)^\\\\beta}
-\\\\left(\\\\frac{V_{r,max}-V_{r}}{V_{r,max}\\\\right)^\\\\gamma\\\\]
+\\\\left(\\\\frac{V_{r,max}-V_{r}}{V_{r,max}}\\\\right)^\\\\gamma\\\\]
 where:  $V_l$ The actual volume stored by the left water storage
 
 $V_{residual} [m^3]$ The volume of water not flowing out (default = 0)
@@ -2494,27 +2506,18 @@ Converts a date to Time (based on the 31.12.1899, like in Excel(TM) ";
 %feature("docstring")
 cmf::upslope::connections::DiffusiveMacroMicroExchange "
 
-A gradient based exchange term between macropores and micropores,
-using a fixed potential for macropores.
+A simple first order diffusive water exchange between MacroPore and
+matrix ( SoilLayer)
 
-\\\\[q = K \\\\frac{\\\\Delta\\\\Psi}{d/2} A \\\\] where:  $K$ The
-conductivity of the aggregate boundary
-
-$\\\\Delta\\\\Psi$ The potential difference. Using the air potential
-as the constant potential for the macro pores, you get:
-$\\\\Delta\\\\Psi = \\\\Psi_M(\\\\theta_{micro})$
-
-$d$ the mean aggregate size in m
-
-$A$ the crosssection area, given as the flow width (
-cmf::upslope::MacroPore::get_flowwidth) times layer thickness
+\\\\[ q = \\\\omega (W_{ma} - W_{mi})\\\\] cf. Simunek et al J. of
+Hydr. 2003
 
 C++ includes: macropore.h ";
 
 %feature("docstring")
 cmf::upslope::connections::DiffusiveMacroMicroExchange::DiffusiveMacroMicroExchange
 "DiffusiveMacroMicroExchange(cmf::upslope::SoilLayer::ptr left,
-cmf::upslope::MacroPore::ptr right) ";
+cmf::upslope::MacroPore::ptr right, real omega) ";
 
 %feature("docstring")
 cmf::upslope::connections::DiffusiveMacroMicroExchange::conc "real
@@ -3588,6 +3591,108 @@ cmf::upslope::connections::GradientMacroFlow::to_string "std::string
 to_string() const ";
 
 
+// File: classcmf_1_1upslope_1_1connections_1_1_gradient_macro_micro_exchange.xml
+%feature("docstring")
+cmf::upslope::connections::GradientMacroMicroExchange "
+
+A gradient based exchange term between macropores and micropores,
+using a fixed potential for macropores.
+
+\\\\[q = K \\\\frac{\\\\Delta\\\\Psi}{d/2} A \\\\] where:  $K$ The
+conductivity of the aggregate boundary
+
+$\\\\Delta\\\\Psi$ The potential difference. Using the air potential
+as the constant potential for the macro pores, you get:
+$\\\\Delta\\\\Psi = \\\\Psi_M(\\\\theta_{micro})$
+
+$d$ the mean aggregate size in m
+
+$A$ the crosssection area, given as the flow width (
+cmf::upslope::MacroPore::get_flowwidth) times layer thickness
+
+C++ includes: macropore.h ";
+
+%feature("docstring")
+cmf::upslope::connections::GradientMacroMicroExchange::GradientMacroMicroExchange
+"GradientMacroMicroExchange(cmf::upslope::SoilLayer::ptr left,
+cmf::upslope::MacroPore::ptr right) ";
+
+%feature("docstring")
+cmf::upslope::connections::GradientMacroMicroExchange::conc "real
+conc(cmf::math::Time t, const cmf::water::solute &_Solute)
+
+Returns the concentration of the flux.
+
+If not overridden, it returns the concentration of the source of the
+flux (direction depending) ";
+
+%feature("docstring")
+cmf::upslope::connections::GradientMacroMicroExchange::exchange_target
+"void exchange_target(flux_node::ptr oldtarget, flux_node::ptr
+newTarget) ";
+
+%feature("docstring")
+cmf::upslope::connections::GradientMacroMicroExchange::get_ptr "ptr
+get_ptr() const ";
+
+%feature("docstring")
+cmf::upslope::connections::GradientMacroMicroExchange::get_target "flux_node::ptr get_target(const flux_node &inquirer)
+
+Returns the other end of a connection than the asking end. ";
+
+%feature("docstring")
+cmf::upslope::connections::GradientMacroMicroExchange::get_target "flux_node::ptr get_target(int index) const
+
+With index 0, the left node is returned, with index 1 the right node
+of the connection. ";
+
+%feature("docstring")
+cmf::upslope::connections::GradientMacroMicroExchange::get_tracer_filter
+"real get_tracer_filter()
+
+A value ranging from 0 to 1. ";
+
+%feature("docstring")
+cmf::upslope::connections::GradientMacroMicroExchange::kill_me "bool
+kill_me()
+
+Deregisters this connection from its nodes. Returns true if only one
+reference is left. ";
+
+%feature("docstring")
+cmf::upslope::connections::GradientMacroMicroExchange::left_node "flux_node::ptr left_node() const
+
+Returns the left node of this connection. ";
+
+%feature("docstring")
+cmf::upslope::connections::GradientMacroMicroExchange::q "real
+q(const flux_node &inquirer, cmf::math::Time t)
+
+Returns the current flux through a connection. Negative signs mean out
+of the inquirer, positive are inflows to the inquirer. ";
+
+%feature("docstring")
+cmf::upslope::connections::GradientMacroMicroExchange::refresh "void
+refresh(cmf::math::Time t)
+
+Performes a new calculation of the flux. ";
+
+%feature("docstring")
+cmf::upslope::connections::GradientMacroMicroExchange::right_node "flux_node::ptr right_node() const
+
+returns the right node of this connection ";
+
+%feature("docstring")
+cmf::upslope::connections::GradientMacroMicroExchange::set_tracer_filter
+"void set_tracer_filter(real value) ";
+
+%feature("docstring")
+cmf::upslope::connections::GradientMacroMicroExchange::short_string "std::string short_string() const ";
+
+%feature("docstring")
+cmf::upslope::connections::GradientMacroMicroExchange::to_string "std::string to_string() const ";
+
+
 // File: classcmf_1_1upslope_1_1connections_1_1_green_ampt_infiltration.xml
 %feature("docstring") cmf::upslope::connections::GreenAmptInfiltration
 "
@@ -3967,6 +4072,18 @@ cwh:  Water holding capacity (of snow) ";
 "virtual HBVparameters* copy() const ";
 
 %feature("docstring")
+cmf::upslope::connections::HBVparameters::Diffusivity "virtual real
+Diffusivity(real wetness) const
+
+Returns the Diffusivity of the soil.
+
+Not implemented for all Retentioncurves. Diffusivity is used by
+MACROlikeMacroMicroExchange ";
+
+%feature("docstring")
+cmf::upslope::connections::HBVparameters::Diffusivity "cmf::math::num_array Diffusivity(cmf::math::num_array &wetness) ";
+
+%feature("docstring")
 cmf::upslope::connections::HBVparameters::FillHeight "virtual real
 FillHeight(real lowerDepth, real Area, real Volume) const
 
@@ -4002,15 +4119,15 @@ VoidVolume(real upperDepth, real lowerDepth, real Area) const
 Returns the void volume of a soil column. ";
 
 %feature("docstring")
-cmf::upslope::connections::HBVparameters::Wetness "cmf::math::num_array Wetness(const cmf::math::num_array &suction)
-const ";
-
-%feature("docstring")
 cmf::upslope::connections::HBVparameters::Wetness "virtual real
 Wetness(real suction) const
 
 returns the wetness (volumetric water content per pore space) at a
 given suction pressure ";
+
+%feature("docstring")
+cmf::upslope::connections::HBVparameters::Wetness "cmf::math::num_array Wetness(const cmf::math::num_array &suction)
+const ";
 
 %feature("docstring")
 cmf::upslope::connections::HBVparameters::Wetness_eff "virtual real
@@ -5583,6 +5700,15 @@ residual_wetness=0.1) ";
 
 %feature("docstring")  cmf::upslope::LinearRetention::copy "LinearRetention* copy() const ";
 
+%feature("docstring")  cmf::upslope::LinearRetention::Diffusivity "virtual real Diffusivity(real wetness) const
+
+Returns the Diffusivity of the soil.
+
+Not implemented for all Retentioncurves. Diffusivity is used by
+MACROlikeMacroMicroExchange ";
+
+%feature("docstring")  cmf::upslope::LinearRetention::Diffusivity "cmf::math::num_array Diffusivity(cmf::math::num_array &wetness) ";
+
 %feature("docstring")  cmf::upslope::LinearRetention::FillHeight "virtual real FillHeight(real lowerDepth, real Area, real Volume) const
 
 Returns the thickness of a soil column with a certain pore volume. ";
@@ -5657,6 +5783,123 @@ cmf::math::Time t) const
 
 aerodynamic resistance from ground to atmosphere (r_ag) and from
 canopy to atmosphere (r_ac) ";
+
+
+// File: classcmf_1_1upslope_1_1connections_1_1_m_a_c_r_olike_macro_micro_exchange.xml
+%feature("docstring")
+cmf::upslope::connections::MACROlikeMacroMicroExchange "
+
+This connection models the water exchange between macropores and
+micropores as in the MACRO Model (Larsbo & Jarvis, 2003), which
+follows Gerke & van Genuchten 1996.
+
+WARNING:  Deprecated This connection uses the diffusivity of a soil
+given by its retention curve. Since no retention curve provides a
+valid value for Diffusivity in case of saturation this connection will
+blow up the numerical solution for sure.
+
+The exchange between Macropore and matrix is defined as follows:
+(MACRO 5 Tech report, Larsbo & Jarvis 2003)
+
+\\\\[q = \\\\frac{G_f D_w \\\\gamma_w}{d^2}(\\\\theta_b -
+\\\\theta_{mi}) V_{layer}\\\\] where:  $G_f$ is the geometry factor.
+Use 3 for a rectangular slab geometry
+
+$gamma_w$ A scaling factor to fit analytical and numerical solution
+(0.4)
+
+$d$ is an effective diffusive path length related to aggregate size
+and the influence of coatings on the aggregate surfaces in m
+
+$\\\\theta_b$ the saturated water content of the matrix
+
+$\\\\theta_{mi}$ the actual water content of the matrix
+
+$D_w = \\\\frac12(D(\\\\theta_b)+D(\\\\theta_{mi})W_{ma})$ is the
+effective water diffusivity in m2/day, as defined below  $W_{ma}$ is
+the saturation of the macropores
+
+C++ includes: macropore.h ";
+
+%feature("docstring")
+cmf::upslope::connections::MACROlikeMacroMicroExchange::MACROlikeMacroMicroExchange
+"MACROlikeMacroMicroExchange(cmf::upslope::SoilLayer::ptr left,
+cmf::upslope::MacroPore::ptr right, real _gamma_w=0.4, real _Gf=3) ";
+
+%feature("docstring")
+cmf::upslope::connections::MACROlikeMacroMicroExchange::conc "real
+conc(cmf::math::Time t, const cmf::water::solute &_Solute)
+
+Returns the concentration of the flux.
+
+If not overridden, it returns the concentration of the source of the
+flux (direction depending) ";
+
+%feature("docstring")
+cmf::upslope::connections::MACROlikeMacroMicroExchange::exchange_target
+"void exchange_target(flux_node::ptr oldtarget, flux_node::ptr
+newTarget) ";
+
+%feature("docstring")
+cmf::upslope::connections::MACROlikeMacroMicroExchange::get_ptr "ptr
+get_ptr() const ";
+
+%feature("docstring")
+cmf::upslope::connections::MACROlikeMacroMicroExchange::get_target "flux_node::ptr get_target(const flux_node &inquirer)
+
+Returns the other end of a connection than the asking end. ";
+
+%feature("docstring")
+cmf::upslope::connections::MACROlikeMacroMicroExchange::get_target "flux_node::ptr get_target(int index) const
+
+With index 0, the left node is returned, with index 1 the right node
+of the connection. ";
+
+%feature("docstring")
+cmf::upslope::connections::MACROlikeMacroMicroExchange::get_tracer_filter
+"real get_tracer_filter()
+
+A value ranging from 0 to 1. ";
+
+%feature("docstring")
+cmf::upslope::connections::MACROlikeMacroMicroExchange::kill_me "bool
+kill_me()
+
+Deregisters this connection from its nodes. Returns true if only one
+reference is left. ";
+
+%feature("docstring")
+cmf::upslope::connections::MACROlikeMacroMicroExchange::left_node "flux_node::ptr left_node() const
+
+Returns the left node of this connection. ";
+
+%feature("docstring")
+cmf::upslope::connections::MACROlikeMacroMicroExchange::q "real
+q(const flux_node &inquirer, cmf::math::Time t)
+
+Returns the current flux through a connection. Negative signs mean out
+of the inquirer, positive are inflows to the inquirer. ";
+
+%feature("docstring")
+cmf::upslope::connections::MACROlikeMacroMicroExchange::refresh "void
+refresh(cmf::math::Time t)
+
+Performes a new calculation of the flux. ";
+
+%feature("docstring")
+cmf::upslope::connections::MACROlikeMacroMicroExchange::right_node "flux_node::ptr right_node() const
+
+returns the right node of this connection ";
+
+%feature("docstring")
+cmf::upslope::connections::MACROlikeMacroMicroExchange::set_tracer_filter
+"void set_tracer_filter(real value) ";
+
+%feature("docstring")
+cmf::upslope::connections::MACROlikeMacroMicroExchange::short_string "std::string short_string() const ";
+
+%feature("docstring")
+cmf::upslope::connections::MACROlikeMacroMicroExchange::to_string "std::string to_string() const ";
 
 
 // File: classcmf_1_1upslope_1_1_macro_pore.xml
@@ -9326,6 +9569,15 @@ C++ includes: RetentionCurve.h ";
 %feature("docstring")  cmf::upslope::RetentionCurve::copy "virtual
 RetentionCurve* copy() const =0 ";
 
+%feature("docstring")  cmf::upslope::RetentionCurve::Diffusivity "virtual real Diffusivity(real wetness) const
+
+Returns the Diffusivity of the soil.
+
+Not implemented for all Retentioncurves. Diffusivity is used by
+MACROlikeMacroMicroExchange ";
+
+%feature("docstring")  cmf::upslope::RetentionCurve::Diffusivity "cmf::math::num_array Diffusivity(cmf::math::num_array &wetness) ";
+
 %feature("docstring")  cmf::upslope::RetentionCurve::FillHeight "virtual real FillHeight(real lowerDepth, real Area, real Volume) const
 
 Returns the thickness of a soil column with a certain pore volume. ";
@@ -9345,7 +9597,7 @@ returns the wetness of the soil at given water content ";
 %feature("docstring")  cmf::upslope::RetentionCurve::MatricPotential "cmf::math::num_array MatricPotential(const cmf::math::num_array
 &wetness) const ";
 
-%feature("docstring")  cmf::upslope::RetentionCurve::Porosity "virtual real Porosity(real depth) const =0
+%feature("docstring")  cmf::upslope::RetentionCurve::Porosity "virtual real Porosity(real depth=0.0) const =0
 
 Returns the porosity at a certain depth. ";
 
@@ -12615,15 +12867,22 @@ represents the connectivity of cells to each other
 C++ includes: Topology.h ";
 
 %feature("docstring")  cmf::upslope::Topology::AddNeighbor "void
-AddNeighbor(Cell &target, double flowwidth) ";
+AddNeighbor(Cell &target, double flowwidth)
+
+Adds a neighbor cell to the topology with flowwidth. ";
 
 %feature("docstring")  cmf::upslope::Topology::AddNeighbor "void
 AddNeighbor(Topology &target, double flowwidth) ";
 
-%feature("docstring")  cmf::upslope::Topology::ContributingArea "double ContributingArea() const ";
+%feature("docstring")  cmf::upslope::Topology::ContributingArea "double ContributingArea() const
+
+Get the contributing area (steepest path upwards) ";
 
 %feature("docstring")  cmf::upslope::Topology::flowwidth "double
-flowwidth(Cell &target) ";
+flowwidth(Cell &target)
+
+returns the flow width between this cell and the target cell. Returns
+0 if no topology is defined ";
 
 %feature("docstring")  cmf::upslope::Topology::flowwidth "double
 flowwidth(Topology &target) ";
@@ -12633,13 +12892,19 @@ flowwidth(Topology &target) ";
 Returns the center of the cell. ";
 
 %feature("docstring")  cmf::upslope::Topology::MainOutlet "Cell*
-MainOutlet(bool forceRecalc=false) ";
+MainOutlet(bool forceRecalc=false)
+
+Returns the mainoutlet (steepest lower neighbor) ";
 
 %feature("docstring")  cmf::upslope::Topology::neighbor_count "size_t
-neighbor_count() const ";
+neighbor_count() const
+
+Returns the number of neighbors. ";
 
 %feature("docstring")  cmf::upslope::Topology::RemoveNeighbor "void
-RemoveNeighbor(Topology &target) ";
+RemoveNeighbor(Topology &target)
+
+Removes the topological relation to the given cell. ";
 
 
 // File: classcmf_1_1upslope_1_1_e_t_1_1transpiration.xml
@@ -12879,6 +13144,22 @@ m:  Van Genuchten m parameter, if negative m is calculated as $
 
 %feature("docstring")  cmf::upslope::VanGenuchtenMualem::copy "VanGenuchtenMualem* copy() const ";
 
+%feature("docstring")  cmf::upslope::VanGenuchtenMualem::Diffusivity "cmf::math::num_array Diffusivity(cmf::math::num_array &wetness) ";
+
+%feature("docstring")  cmf::upslope::VanGenuchtenMualem::Diffusivity "virtual real Diffusivity(real wetness) const
+
+Returns the diffusivity of the soil according to its wetness as given
+by VanGenuchten 1980.
+
+Deprecated The current implementation goes to infinity at saturation,
+as noted by VanGenuchten. Diffusivity is therefore currently not
+usable in any model.
+
+\\\\[D(W) = K(W)\\\\|\\\\frac{d\\\\Psi}{dW}\\\\| \\\\eq. 10\\\\]
+\\\\[D(W) = \\\\frac{(1-m)K_{sat}{\\\\alpha m \\\\Phi}
+W^{l-1/m}\\\\left(\\\\left(1-W^{1/m}\\\\right)^{-m} +
+\\\\left(1-W^{1/m}\\\\right)^{m} -2\\\\right)\\\\] ";
+
 %feature("docstring")  cmf::upslope::VanGenuchtenMualem::FillHeight "virtual real FillHeight(real lowerDepth, real Area, real Volume) const
 
 Returns the thickness of a soil column with a certain pore volume. ";
@@ -13035,6 +13316,25 @@ eta:  Shape parameter of the conductivity curve ";
 
 %feature("docstring")
 cmf::upslope::VGM_BC_RetentionCurve_Windhorst::copy "VGM_BC_RetentionCurve_Windhorst* copy() const ";
+
+%feature("docstring")
+cmf::upslope::VGM_BC_RetentionCurve_Windhorst::Diffusivity "cmf::math::num_array Diffusivity(cmf::math::num_array &wetness) ";
+
+%feature("docstring")
+cmf::upslope::VGM_BC_RetentionCurve_Windhorst::Diffusivity "virtual
+real Diffusivity(real wetness) const
+
+Returns the diffusivity of the soil according to its wetness as given
+by VanGenuchten 1980.
+
+Deprecated The current implementation goes to infinity at saturation,
+as noted by VanGenuchten. Diffusivity is therefore currently not
+usable in any model.
+
+\\\\[D(W) = K(W)\\\\|\\\\frac{d\\\\Psi}{dW}\\\\| \\\\eq. 10\\\\]
+\\\\[D(W) = \\\\frac{(1-m)K_{sat}{\\\\alpha m \\\\Phi}
+W^{l-1/m}\\\\left(\\\\left(1-W^{1/m}\\\\right)^{-m} +
+\\\\left(1-W^{1/m}\\\\right)^{m} -2\\\\right)\\\\] ";
 
 %feature("docstring")
 cmf::upslope::VGM_BC_RetentionCurve_Windhorst::FillHeight "virtual
@@ -13682,13 +13982,23 @@ cmf::geometry::dot(const point &p1, const point &p2) ";
 %feature("docstring")  cmf::math::count_parallel_threads "int
 cmf::math::count_parallel_threads() ";
 
-%feature("docstring")  cmf::math::nash_sutcliff "double
-cmf::math::nash_sutcliff(const cmf::math::timeseries &model, const
-cmf::math::timeseries &observation) ";
+%feature("docstring")  cmf::math::nash_sutcliffe "double
+cmf::math::nash_sutcliffe(const cmf::math::timeseries &model, const
+cmf::math::timeseries &observation)
 
-%feature("docstring")  cmf::math::R2 "double cmf::math::R2(const
-cmf::math::timeseries &model, const cmf::math::timeseries
-&observation) ";
+Calculates the Nash-Sutcliffe efficiency of a modeled timeseries in
+comparison with an observed timeseries.
+
+The Nash-Sutcliffe efficiancy is defined as: \\\\[ E = 1 -
+\\\\frac{\\\\sum_{t=1}^{T}(M_t - O_t)^2}{\\\\sum_{t=1}^{T}(O_t -
+\\\\overline{O})^2}\\\\] where  $T$ is the number of observation time
+steps
+
+$M$ is the timeseries of model results matchinig O
+
+$O$ is the timeseries containing observations
+
+$\\\\overline{O}$ is the arithmetic mean of observations ";
 
 %feature("docstring")  cmf::math::timespan "Time
 cmf::math::timespan(long long ms) ";
@@ -15057,6 +15367,9 @@ x, real xmin, real xmax, real ymin=0, real ymax=1) ";
 
 
 // File: group__infiltration.xml
+
+
+// File: group___macro_pore.xml
 
 
 // File: group__meteo.xml

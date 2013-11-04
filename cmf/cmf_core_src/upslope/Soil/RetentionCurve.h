@@ -61,7 +61,7 @@ namespace cmf {
 				return (wetness-w_r)/(1-w_r);
 			}
 			/// Returns the porosity at a certain depth
-			virtual real Porosity(real depth) const = 0;
+			virtual real Porosity(real depth=0.0) const = 0;
 			/// Returns the void volume of a soil column
 			virtual real VoidVolume(real upperDepth,real lowerDepth,real Area) const {
 				throw std::runtime_error("This retention curve type can't calculate the VoidVolume, choose another type");
@@ -74,6 +74,19 @@ namespace cmf {
 			virtual real Wetness(real suction) const {
 				throw std::runtime_error("This retention curve type can't calculate the Wetness from a suction pressure, choose another type");
 			};
+			/// Returns the Diffusivity of the soil. 
+			///
+			/// Not implemented for all Retentioncurves. Diffusivity is used by
+			/// MACROlikeMacroMicroExchange
+			virtual real Diffusivity(real wetness) const {
+				throw std::runtime_error("This retention curve type can't calculate the Diffusivity, choose another type");
+			}
+			cmf::math::num_array Diffusivity(cmf::math::num_array& wetness) {
+				cmf::math::num_array res(wetness.size());
+				for (int i = 0; i < wetness.size() ; ++i)
+					res[i] = Diffusivity(wetness[i]);
+				return res;
+			}
 			cmf::math::num_array Wetness(const cmf::math::num_array& suction) const {
 				cmf::math::num_array res(suction.size());
 				for (int i = 0; i < suction.size() ; ++i)
@@ -206,7 +219,9 @@ namespace cmf {
 				Ksat, ///< Saturated conductivity in m/day
 				Phi, ///< Porosity in m3/m3
 				m, ///< VanGenuchten m (if negative, 1-1/n is used)
+				l, ///< VanGenuchten - Mualem tortoisivity, defined in Van Genuchten 1980 as 0.5 (default here)
 				w0; ///< Breakpoint wetness. If W>w0, a parabolic extrapolation is used
+
 			///\f[ W(\Psi) = \left(1+\left(\alpha\,100\frac{cm}{m}\Psi\right)^n\right)^{-m} \f]
 			virtual real Wetness(real suction) const;
 			/// \f[\Psi(W) = 0.01 \frac{m}{cm} \frac{{\left(1-{W}^{\frac{1}{m}}\right) }^{\frac{1}{n}}}{\alpha\,{W}^{\frac{1}{m\,n}}}  \f]
@@ -219,6 +234,14 @@ namespace cmf {
 			virtual real Transmissivity(real upperDepth,real lowerDepth,real wetness) const;
 			/// \f[\Phi(d)=const\f]
 			virtual real Porosity(real depth) const;
+			/// Returns the diffusivity of the soil according to its wetness as given by VanGenuchten 1980
+			///
+			/// @deprecated The current implementation goes to infinity at saturation, as noted by VanGenuchten. 
+			/// Diffusivity is therefore currently not usable in any model.
+			///
+			/// \f[D(W) = K(W)\|\frac{d\Psi}{dW}\| \eq. 10\f]
+			/// \f[D(W) = \frac{(1-m)K_{sat}{\alpha m \Phi} W^{l-1/m}\left(\left(1-W^{1/m}\right)^{-m} + \left(1-W^{1/m}\right)^{m} -2\right)\f]
+			virtual real Diffusivity(real wetness) const;
 			/// Fits the break point wetness w0, to ensure a specific oversaturation
 			/// at a given hydrostatic potential
 			/// @param w1 The oversaturation wetness to archieve (>1), default = 1.01
