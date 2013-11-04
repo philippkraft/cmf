@@ -141,7 +141,7 @@ def plot_locatables(locatables,style='kx',**kwargs):
     pylab.plot(pylab.amap(get_x,locatables),pylab.amap(get_y,locatables),style,**kwargs)
 
 def connector_matrix(allstates,size=(500,500)):
-    """Returns a matrixx
+    """Returns a matrix
     """
     posdict={}
     jac=numpy.zeros(size,dtype=int)

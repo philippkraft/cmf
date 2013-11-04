@@ -30,7 +30,18 @@ namespace cmf {
 	namespace upslope {
 		class Cell;
 		class SoilLayer;
+		/// @defgroup MacroPore Macro pore water storage and its fluxes for a dual porosity system
 		/// @ingroup storages
+		/// For certain applications, modelling the soil solution in one soil layer as a homogeneous mixed
+		/// solution is not sufficient. In the presence of macropores and other preferential flow paths
+		/// at least an dual porosity model is needed. To use dual porosity setups in cmf, existing soil layers
+		/// are extended by a MacroPore storage. This group contains the macropore water storage and serveral
+		/// connections to calculate the flux between macropores and between macropores and the soil matrix.
+		///
+		/// @note The macropore part of cmf is still under development. Use it only if you are willing to 
+		/// check the model behaviour down to the C++ source. Suggestions, patches and test cases are more than welcome
+
+		/// @ingroup MacroPore
 		/// @brief An additional water storage for a soil layer to model matrix water and macro pore water seperately. 
 		/// @deprecated The MacroPore model is still very experimental and not stable. Only for tryouts!
 		///
@@ -149,7 +160,7 @@ namespace cmf {
 
 		};
 		namespace connections {
-			///@ingroup perc
+			///@ingroup MacroPore
 			///
 			/// @brief Gradient based flux from macro pore to macro pore.
 			/// @deprecated The MacroPore model is still very experimental and not stable. Only for tryouts!
@@ -176,7 +187,7 @@ namespace cmf {
 					NewNodes();
 				}
 			};
-			///@ingroup perc
+			/// @ingroup MacroPore
 			///
 			/// @brief Linear storage based flux from macro pore to macro pore.
 			/// @deprecated The MacroPore model is still very experimental and not stable. Only for tryouts!
@@ -206,7 +217,9 @@ namespace cmf {
 				}
 			};
 
-			/// A gradient based exchange term between macropores and micropores, using a fixed potential for macropores
+			/// @ingroup MacroPore
+			/// @brief A gradient based exchange term between macropores and micropores, 
+			/// using a fixed potential for macropores
 			///
 			/// \f[q = K \frac{\Delta\Psi}{d/2}  A \f]
 			/// where:
@@ -215,6 +228,25 @@ namespace cmf {
 			///   you get: \f$\Delta\Psi = \Psi_M(\theta_{micro})\f$ 
 			/// - \f$d\f$ the mean aggregate size in m
 			/// - \f$A\f$ the crosssection area, given as the flow width (cmf::upslope::MacroPore::get_flowwidth) times layer thickness
+			class GradientMacroMicroExchange : public cmf::water::flux_connection {
+			protected:
+				std::tr1::weak_ptr<cmf::upslope::MacroPore> mp;
+				std::tr1::weak_ptr<cmf::upslope::SoilLayer> sl;
+				void NewNodes();
+				virtual real calc_q(cmf::math::Time t);
+			public:
+				GradientMacroMicroExchange(cmf::upslope::SoilLayer::ptr left, cmf::upslope::MacroPore::ptr right) 
+					: flux_connection(left,right,"Macro to micro pores exchange")
+				{
+					NewNodes();
+				}
+			};
+
+			/// @brief A simple first order diffusive water exchange 
+			/// between MacroPore and matrix (SoilLayer)
+			///
+			/// \f[ q = \omega (W_{ma} - W_{mi})\f]
+			/// cf. Simunek et al J. of Hydr. 2003
 			class DiffusiveMacroMicroExchange : public cmf::water::flux_connection {
 			protected:
 				std::tr1::weak_ptr<cmf::upslope::MacroPore> mp;
@@ -222,12 +254,50 @@ namespace cmf {
 				void NewNodes();
 				virtual real calc_q(cmf::math::Time t);
 			public:
-				DiffusiveMacroMicroExchange(cmf::upslope::SoilLayer::ptr left, cmf::upslope::MacroPore::ptr right) 
-					: flux_connection(left,right,"Macro to micro pores exchange")
+				real omega;
+				DiffusiveMacroMicroExchange(cmf::upslope::SoilLayer::ptr left, cmf::upslope::MacroPore::ptr right,real omega);
+			};
+			/// @ingroup MacroPore
+			///
+			/// @brief This connection models the water exchange between macropores and micropores
+			/// as in the MACRO Model (Larsbo & Jarvis, 2003), which follows Gerke & van Genuchten 1996.
+			///
+			/// @warning @deprecated This connection uses the diffusivity of a soil given by its retention curve.
+			/// Since no retention curve provides a valid value for Diffusivity in case of saturation
+			/// this connection will blow up the numerical solution for sure.
+			///
+			/// The exchange between Macropore and matrix is defined as follows: (MACRO 5 Tech report, Larsbo & Jarvis 2003)
+			///
+			/// \f[q = \frac{G_f D_w \gamma_w}{d^2}(\theta_b - \theta_{mi}) V_{layer}\f]
+			/// where:
+			/// - \f$G_f\f$ is the geometry factor. Use 3 for a rectangular slab geometry 
+			/// - \f$gamma_w\f$ A scaling factor to fit analytical and numerical solution (0.4)
+			/// - \f$d\f$ is an effective diffusive path length related to aggregate size and 
+			///    the influence of coatings on the aggregate surfaces in m
+			/// - \f$\theta_b\f$ the saturated water content of the matrix
+			/// - \f$\theta_{mi}\f$ the actual water content of the matrix
+			/// - \f$D_w = \frac12(D(\theta_b)+D(\theta_{mi})W_{ma})\f$ is the effective water diffusivity in m2/day, as defined below
+			///    - \f$W_{ma}\f$ is the saturation of the macropores
+			class MACROlikeMacroMicroExchange : public cmf::water::flux_connection {
+			protected:
+				std::tr1::weak_ptr<cmf::upslope::MacroPore> mp;
+				std::tr1::weak_ptr<cmf::upslope::SoilLayer> sl;
+				void NewNodes() {
+					mp = cmf::upslope::MacroPore::cast(left_node());
+					sl = cmf::upslope::SoilLayer::cast(right_node());
+				}
+				virtual real calc_q(cmf::math::Time t);
+			public:
+				/// Geometry factor. 3 means a rectangular slab geometry (see MACRO 5 tech report)
+				/// Other values may be obtained from Gerke & van Genuchten 1996
+				real Gf;
+				/// \f$\gamma_w\f$ scaling factor set to 0.4. See Gerke & van Genuchten 1993 and van Genuchten 1985 for reference
+				real gamma_w;
+				MACROlikeMacroMicroExchange(cmf::upslope::SoilLayer::ptr left, cmf::upslope::MacroPore::ptr right, real _gamma_w = 0.4, real _Gf = 3) 
+					: flux_connection(left,right,"Macro to micro pores exchange similar to MACRO"), gamma_w(_gamma_w), Gf(_Gf)
 				{
 					NewNodes();
 				}
-
 
 			};
 		}
