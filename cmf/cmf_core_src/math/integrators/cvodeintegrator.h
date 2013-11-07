@@ -43,7 +43,7 @@ namespace cmf {
 			char preconditioner;
 			/// Specifies the maximum number of nonlinear solver iterations at one step
 			int MaxNonLinearIterations;
-			// Specifies the maximum number of nonlinear solver convergence failures at one step
+			/// Specifies the maximum number of nonlinear solver convergence failures at one step
 			int MaxConvergenceFailures;
 			/// the maximum number of error test failures in attempting one step
 			int MaxErrorTestFailures;

@@ -76,7 +76,7 @@ namespace cmf {
 			};
 			/// Returns the Diffusivity of the soil. 
 			///
-			/// Not implemented for all Retentioncurves. Diffusivity is used by
+			/// Not implemented for all retention curves. Diffusivity is used by
 			/// MACROlikeMacroMicroExchange
 			virtual real Diffusivity(real wetness) const {
 				throw std::runtime_error("This retention curve type can't calculate the Diffusivity, choose another type");
@@ -168,6 +168,7 @@ namespace cmf {
 			/// Returns the suction pressure in m, use conversion functions waterhead_to_pressure and waterhead_to_pF fro conversions
 			real MatricPotential(real wetness) const;
 			real Wetness(real suction) const;
+
 			/// Creates a brooks corey retention curve
 			/// @param ksat Saturated conductivity \f$\frac{m}{day}\f$
 			/// @param porosity \f$\frac {m^3 Pores}{m^3 Soil}\f$
@@ -222,25 +223,41 @@ namespace cmf {
 				l, ///< VanGenuchten - Mualem tortoisivity, defined in Van Genuchten 1980 as 0.5 (default here)
 				w0; ///< Breakpoint wetness. If W>w0, a parabolic extrapolation is used
 
+			///@brief returns the saturation at a given suction (matrix potential).
+			///
 			///\f[ W(\Psi) = \left(1+\left(\alpha\,100\frac{cm}{m}\Psi\right)^n\right)^{-m} \f]
 			virtual real Wetness(real suction) const;
+			/// @brief returns the matrix potential at a given saturation
+			///
 			/// \f[\Psi(W) = 0.01 \frac{m}{cm} \frac{{\left(1-{W}^{\frac{1}{m}}\right) }^{\frac{1}{n}}}{\alpha\,{W}^{\frac{1}{m\,n}}}  \f]
 			virtual real MatricPotential(real wetness) const;
+			/// @brief returns the conductivity of the soil at a given saturation
+			///
 			/// \f[K(W) = K_{sat} \sqrt{W} \left(1-\left(1-W^{1/m}\right)^m\right)^2 \f]
 			virtual real K(real wetness) const;
-			/// \f[V_{void}=A\,\left(d_{lower}-d_{upper}\right)\f]
 			virtual real VoidVolume(real upperDepth,real lowerDepth,real Area) const;
-			/// \f[T=K(W)\,\left(d_{lower}-d_{upper}\right)\f]
 			virtual real Transmissivity(real upperDepth,real lowerDepth,real wetness) const;
-			/// \f[\Phi(d)=const\f]
 			virtual real Porosity(real depth) const;
 			/// Returns the diffusivity of the soil according to its wetness as given by VanGenuchten 1980
 			///
 			/// @deprecated The current implementation goes to infinity at saturation, as noted by VanGenuchten. 
 			/// Diffusivity is therefore currently not usable in any model.
 			///
-			/// \f[D(W) = K(W)\|\frac{d\Psi}{dW}\| \eq. 10\f]
-			/// \f[D(W) = \frac{(1-m)K_{sat}{\alpha m \Phi} W^{l-1/m}\left(\left(1-W^{1/m}\right)^{-m} + \left(1-W^{1/m}\right)^{m} -2\right)\f]
+			/// \f[D(W) = K(W)\left|\frac{d\Psi}{d\theta}\right|\ eq. 10\f]
+			/// where:
+			/// - \f$D(W)\f$ Diffusivity in \f$m^2/day\f$
+			/// - \f$K(W)\f$ Conductivity as a function of saturation W in m/day
+			/// - \f$\Psi\f$ Pressure head
+			/// - \f$\theta\f$ water content of the soil
+			///
+			/// Applying Van Genuchten theory (Van Genuchten 1980) yields to:
+			/// \f[D(W) = \frac{(1-m)K_{sat}}{\alpha m \Phi} W^{l-1/m}\left(\left(1-W^{1/m}\right)^{-m} + \left(1-W^{1/m}\right)^{m} -2\right)\f]
+			/// where:
+			///  - \f$m = 1 - \frac 1 n\f$ acc. Mualem theory
+			///  - \f$K_{sat}\f$ saturated conductivity in m/day
+			///  - \f$\alpha\f$ inverse water entry potential in 1/m. **Note** \f$\alpha\f$ is given in cmf in 1/cm
+			///  - \f$\Phi\f$ porosity
+			///  - \f$W = \frac{\theta - \theta_r}{\Phi - \theta_r}\f$ saturation of the soil
 			virtual real Diffusivity(real wetness) const;
 			/// Fits the break point wetness w0, to ensure a specific oversaturation
 			/// at a given hydrostatic potential
