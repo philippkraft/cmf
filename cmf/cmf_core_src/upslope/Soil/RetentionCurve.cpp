@@ -318,10 +318,9 @@ real cmf::upslope::VanGenuchtenMualem::Diffusivity( real wetness ) const
 {
 	// Get VanGenuchten m (either Mualem Theory or user set)
 	real _m = m<0 ? 1-1/n : m;
-	// Fill in here eq. 41 from MACRO_5 user manual
-
+	// eq. 41 from MACRO_5 user manual
 	// eq 41. first brackets
-	real term1 = ((1-_m)*Ksat)/(alpha*_m*Phi);
+	real term1 = ((1-_m)*Ksat)/(alpha*100*_m*Phi);
 	// eq 41, 2nd part
 	real term2 = pow(wetness,l-1/_m);
 	real term3 = pow(1-pow(wetness,1/_m),-_m) + pow(1-pow(wetness,1/_m),_m)-2;

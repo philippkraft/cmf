@@ -20,7 +20,7 @@ try:
     import shapely
     from shapely.geometry import Polygon,MultiPolygon,Point,LineString,MultiLineString,MultiPoint,GeometryCollection
     has_shapely = True
-except ImportError:
+except Exception:
     print "Could not found shapely. Creating cells from polygons is disabled"
     has_shapely= False
 from cmf_core import *
@@ -50,4 +50,4 @@ except ImportError:
     __pylab_loaded=False
 if __pylab_loaded:
     import draw
-__version__ = '753'
+__version__ = '771'
