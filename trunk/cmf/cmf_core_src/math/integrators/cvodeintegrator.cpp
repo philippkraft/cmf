@@ -102,6 +102,8 @@ void cmf::math::CVodeIntegrator::initialize()
 	flag=CVodeSetMaxConvFails(cvode_mem,MaxConvergenceFailures);
 	flag=CVodeSetMaxNumSteps(cvode_mem,10000);
 	flag=CVodeSetMaxStep(cvode_mem,max_step.AsDays());
+	// Disable warnings about 0-length timesteps (they are all right)
+	flag=CVodeSetMaxHnilWarns(cvode_mem,-1);
 	int PREC = preconditioner=='L' ? PREC_LEFT : preconditioner=='R' ? PREC_RIGHT : PREC_NONE;
 	switch(LinearSolver)
 	{
