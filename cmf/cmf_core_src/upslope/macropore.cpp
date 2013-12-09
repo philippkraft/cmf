@@ -142,7 +142,9 @@ real cmf::upslope::connections::KinematicMacroFlow::calc_q( cmf::math::Time t )
 	MacroPore::ptr 
 		Mp1=mp1.lock(),
 		Mp2=mp2.lock();
-	real linear_gradient = 0.0;
+	real 
+		linear_gradient = 0.0;
+	
 	if (Mp1) {
 		linear_gradient = Mp1->get_K() * Mp1->get_filled_fraction();
 	} else {

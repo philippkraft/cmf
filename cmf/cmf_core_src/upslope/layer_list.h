@@ -78,6 +78,8 @@ namespace cmf {
 			cmf::math::num_array get_lower_boundary() const;
 			///  Returns an array containing the upper boundary in m below surface of all layers in the list
 			cmf::math::num_array get_upper_boundary() const;
+			/// Returns an array containing the rootfraction of each layer
+			cmf::math::num_array get_rootfraction() const;
 
 			cmf::math::num_array get_ice_fraction() const;
 			cmf::math::num_array get_theta() const;
@@ -90,7 +92,8 @@ namespace cmf {
 			void set_theta(const cmf::math::num_array& Value, size_t offset=0);
 			/// Sets the fraction of the ice content of the soil water
 			void set_ice_fraction(const cmf::math::num_array& Value, size_t offset=0);
-
+			/// Sets the fraction of roots in each layer
+			void set_rootfraction(const cmf::math::num_array& Value, size_t offset=0);
 
 		};
 		

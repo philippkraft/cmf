@@ -105,8 +105,7 @@
 %include "upslope/vegetation/ShuttleworthWallace.h"
 
 %include "project.i"
-%attribute(cmf::math::SoluteWaterIntegrator,cmf::math::Integrator*,solute_integrator,get_solute_integrator,set_solute_integrator);
-%attribute(cmf::math::SoluteWaterIntegrator,cmf::math::Integrator*,water_integrator,get_water_integrator,set_water_integrator);
+
 %include "math/integrators/WaterSoluteIntegrator.h"
 
 

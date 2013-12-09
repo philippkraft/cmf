@@ -48,7 +48,7 @@ real SoilLayer::get_gravitational_potential() const
 
 // public ctor
 SoilLayer::SoilLayer( Cell & _cell,real lowerboundary,const RetentionCurve& r_curve,real saturateddepth/*=10*/ ) 
-:	cmf::water::WaterStorage(_cell.get_project()),cell(_cell),	Position(_cell.layer_count()), anisotropic_kf(1,1,1)
+:	cmf::water::WaterStorage(_cell.get_project()),cell(_cell),	Position(_cell.layer_count()), anisotropic_kf(1,1,1), m_rootfraction(-1)
 {
 	m_retentioncurve=std::auto_ptr<RetentionCurve>(r_curve.copy());
 	m_lowerboundary=lowerboundary;
@@ -68,7 +68,7 @@ SoilLayer::SoilLayer( Cell & _cell,real lowerboundary,const RetentionCurve& r_cu
 // protected constructor
 SoilLayer::SoilLayer( Cell & _cell,real upperBoundary,real lowerboundary,const RetentionCurve& r_curve,int _Position ) 
 : cmf::water::WaterStorage(_cell.get_project()),cell(_cell),m_retentioncurve(r_curve.copy()),
-m_lowerboundary(lowerboundary),m_upperboundary(upperBoundary),Position(_Position), 	m_ice_fraction(0.0), anisotropic_kf(1,1,1)
+m_lowerboundary(lowerboundary),m_upperboundary(upperBoundary),Position(_Position), 	m_ice_fraction(0.0), anisotropic_kf(1,1,1), m_rootfraction(-1)
 {
 	position=cmf::geometry::point(_cell.x,_cell.y,_cell.z - lowerboundary);
 	if (m_lowerboundary-m_upperboundary<=0)
@@ -174,5 +174,14 @@ real SoilLayer::get_K( point direction ) const
 			dir = direction/direction.length(),
 			kf  = anisotropic_kf/anisotropic_kf.length();
 		return m_wet.K * fabs(dot(dir,kf));
+	}
+}
+
+real cmf::upslope::SoilLayer::get_rootfraction() const
+{
+	if (m_rootfraction<0) {
+		return cell.vegetation.RootFraction(get_upper_boundary(),get_lower_boundary());
+	} else {
+		return m_rootfraction;
 	}
 }

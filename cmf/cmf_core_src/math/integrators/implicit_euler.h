@@ -43,7 +43,7 @@ namespace cmf {
 			//@}
 
 			real error_exceedance( const num_array& compare,int * biggest_error_position=0 );
-
+			void Gear1newState(real h);
 
 
 		public:

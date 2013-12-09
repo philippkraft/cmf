@@ -28,7 +28,7 @@
 
 // Creates a new Integrator w/o states
 cmf::math::BDF2::BDF2( real epsilon/*=1e-9*/,cmf::math::Time tStepMin/*=Time::Seconds(10)*/) 
-: Integrator(epsilon),	order(1),stepNo(0), dt_min(tStepMin), error_position(-1)
+: Integrator(epsilon),	order(1),stepNo(0), dt_min(tStepMin), error_position(-1),max_order(2)
 { 
 	// Assessing multistep functions
 	calc_newState[0] = &cmf::math::BDF2::Gear1newState; // impl. Euler
@@ -36,7 +36,7 @@ cmf::math::BDF2::BDF2( real epsilon/*=1e-9*/,cmf::math::Time tStepMin/*=Time::Se
 }
 
 cmf::math::BDF2::BDF2( const Integrator& templ) :
-cmf::math::Integrator(templ),order(1),stepNo(0), error_position(-1)
+cmf::math::Integrator(templ),order(1),stepNo(0), error_position(-1),max_order(2)
 {
 
 	// Assessing multistep functions
@@ -45,7 +45,7 @@ cmf::math::Integrator(templ),order(1),stepNo(0), error_position(-1)
 }
 
 cmf::math::BDF2::BDF2( cmf::math::StateVariableOwner& states, real epsilon/*=1e-9*/,cmf::math::Time tStepMin/*=Time::Milliseconds(10)*/ )
- : Integrator(states,epsilon), order(1),stepNo(0), dt_min(tStepMin), error_position(-1)
+ : Integrator(states,epsilon), order(1),stepNo(0), dt_min(tStepMin), error_position(-1),max_order(2)
 {
 	// Assessing multistep functions
 	calc_newState[0] = &cmf::math::BDF2::Gear1newState; // impl. Euler
@@ -231,7 +231,7 @@ int cmf::math::BDF2::integrate( cmf::math::Time MaxTime,cmf::math::Time timestep
 	// If we're just using this integrator to bootstrap a
 	// higher-order method, arrange to transfer control to 
 	// the next order method.
-	if (order<2) ++order;
+	if (order<max_order) ++order;
 	// Raise the number of steps
 	++stepNo;
 	set_t(get_t() + h);
