@@ -38,6 +38,7 @@ import datetime
 import shutil
 from distutils.core import setup,Extension
 from distutils.version import LooseVersion as Version
+from distutils import log
 try:
     # Import a function to get a path to the include directories of numpy
     from numpy import get_include as get_numpy_include
@@ -176,6 +177,7 @@ if __name__=='__main__':
     if 'build' in sys.argv or 'build_py' in sys.argv:
         updateversion(revision)
     now = datetime.datetime.now()
+    log.set_verbosity(5)
     setup(name='cmf',
           version='0.' + revision,
           license='GPL',

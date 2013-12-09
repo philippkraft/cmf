@@ -40,20 +40,14 @@ real cmf::upslope::connections::CanopyOverflow::calc_q( cmf::math::Time t )
 real cmf::upslope::connections::SimpleTindexSnowMelt::calc_q( cmf::math::Time t )
 {
 	cmf::water::WaterStorage::ptr Snow=m_Snow.lock();
-	if (Snow->is_empty()>=1.0)
-		return 0.0;
-	else 
+	real T=m_cell.get_weather(t).T;
+	real ThresholdTemp=cmf::atmosphere::Weather::snow_threshold;
+	if (T>ThresholdTemp)
 	{
-		real T=m_cell.get_weather(t).T;
-		real ThresholdTemp=cmf::atmosphere::Weather::snow_threshold;
-		if (T>ThresholdTemp)
-		{
-			real f=piecewise_linear(Snow->get_state()/m_cell.get_area(),0,0.001);
-			return f*SnowMeltRate*(T-ThresholdTemp)*m_cell.get_area()*0.001;
-		}
-		else
-			return 0.0;
+		return (1-Snow->is_empty())*SnowMeltRate*(T-ThresholdTemp)*m_cell.get_area()*0.001;
 	}
+	else
+		return 0.0;
 }
 
 real cmf::upslope::connections::EnergyBudgetSnowMelt::calc_q( cmf::math::Time t )

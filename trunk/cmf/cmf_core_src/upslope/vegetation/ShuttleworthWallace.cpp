@@ -814,6 +814,7 @@ void cmf::upslope::ET::ShuttleworthWallace::refresh( cmf::math::Time t )
 	double RXYLEM;
 	num_array RROOTI(lc), ALPHA(lc);
 	num_array THICK(cell.get_layers().get_thickness());
+	num_array ROOTF(cell.get_layers().get_rootfraction());
 	num_array STONEF(lc);
 	num_array RELDEN(lc);
 	num_array KK = cell.get_layers().get_K();
@@ -823,7 +824,7 @@ void cmf::upslope::ET::ShuttleworthWallace::refresh( cmf::math::Time t )
 	PSITI *= RHOWG * 1e3; // convert m->kPa
 
 	int i=0;
-	PLNTRES(lc,THICK,STONEF,v.RootLength(),v.RootFraction(THICK),3.5,RPLANT,piecewise_linear(v.Height,0,25,0,0.5),RXYLEM,RROOTI,ALPHA);
+	PLNTRES(lc,THICK,STONEF,v.RootLength(),ROOTF,3.5,RPLANT,piecewise_linear(v.Height,0,25,0,0.5),RXYLEM,RROOTI,ALPHA);
 	double UA = w.Windspeed * WNDADJ(ZA,DISP,Z0,5000.,10.,0.005);
 
 	if (snow>0.01) {

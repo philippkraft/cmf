@@ -103,10 +103,9 @@ int cmf::math::ImplicitEuler::integrate(cmf::math::Time MaxTime,cmf::math::Time 
 		// Remember the current state for convergence criterion
 		copy_states(compareStates);
 		// Get derivatives at t(n+1) * h[d]
-		copy_dxdt(this->get_t() + h,dxdt,h.AsDays());
-		//// Updates the state variables with the new states, according to the current order
-		set_states(oldStates);
-		add_values_to_states(dxdt);
+		copy_dxdt(this->get_t() + h,dxdt);
+		// Updates the state variables with the new states, according to the current order
+		Gear1newState(h.AsDays());
 
 		old_err_ex=err_ex;
 		err_ex=error_exceedance(compareStates);
@@ -143,4 +142,36 @@ int cmf::math::ImplicitEuler::integrate(cmf::math::Time MaxTime,cmf::math::Time 
 
 	set_t(get_t() + h);
 	return iter;
+}
+
+void cmf::math::ImplicitEuler::Gear1newState( real h )
+{
+	real state_i;
+	if (use_OpenMP)
+	{
+#pragma omp parallel for private(state_i)
+		for (int i = 0; i < size() ; i++)
+		{
+			// The formula is written so ugly to avoid internal memory allocation
+			// x_n+1 = x_(n) + h dxdt
+			state_i  =       dxdt[i]; 
+			state_i *= h; 
+			state_i +=       oldStates[i];
+			set_state(i, state_i);
+		}
+	}
+	else
+	{
+		for (int i = 0; i < size() ; i++)
+		{
+			// The formula is written so ugly to avoid internal memory allocation
+			// x_n+1 = x_(n) + h dxdt
+			state_i  =       dxdt[i]; 
+			state_i *= h; 
+			state_i +=       oldStates[i];
+			set_state(i, state_i);
+		}
+
+	}
+
 }

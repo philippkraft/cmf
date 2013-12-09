@@ -36,12 +36,14 @@ CMF_LAYERLIST_ARRAY_GET( get_lower_boundary)
 CMF_LAYERLIST_ARRAY_GET( get_upper_boundary)
 CMF_LAYERLIST_ARRAY_GET( get_ice_fraction)
 CMF_LAYERLIST_ARRAY_GET( get_theta)
+CMF_LAYERLIST_ARRAY_GET( get_rootfraction)
 
 CMF_LAYERLIST_ARRAY_SET( set_potential)
 CMF_LAYERLIST_ARRAY_SET( set_volume)
 CMF_LAYERLIST_ARRAY_SET( set_wetness)
 CMF_LAYERLIST_ARRAY_SET( set_ice_fraction)
 CMF_LAYERLIST_ARRAY_SET( set_theta)
+CMF_LAYERLIST_ARRAY_SET( set_rootfraction)
 
 
 layer_list::layer_list(const cmf::water::node_list& for_copy) 

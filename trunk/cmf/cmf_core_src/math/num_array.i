@@ -28,6 +28,9 @@
 #ifndef SIZEOF_LONG_DOUBLE
 #define SIZEOF_LONG_DOUBLE sizeof(long double) 
 #endif
+#ifndef NPY_NO_DEPRECATED_API
+#define NPY_NO_DEPRECATED_API NPY_1_7_API_VERSION
+#endif
 
 // including numpy array definition
 #include <numpy/arrayobject.h>
@@ -52,10 +55,10 @@ PyObject* as_npy_array(cmf::math::num_array& a)
 	// pointer to the data of the 1d array
 	cmf::math::num_array::iterator start = a.release();
 	// Creates the numpy array using size, place and type information
-	PyArrayObject* pyA =(PyArrayObject*)PyArray_SimpleNewFromData(1,dims,NPY_DOUBLE,(void *)start);
-	// Make the NumPy array own the data
-	pyA->flags |= NPY_OWNDATA;
-	return (PyObject*)(pyA);
+	int flags = NPY_ARRAY_CARRAY | NPY_ARRAY_OWNDATA;
+	return PyArray_New(
+				&PyArray_Type,1,dims,NPY_DOUBLE,0,
+				(void *)start,0,flags,0);
 }
 // This function creates a new array<T> from any object providing the array interface or from a sequence.
 // First a numpy array is created to ensure right ordering, secondly an array<T> is created by copying the given data.
@@ -65,7 +68,7 @@ size_t from_npy_array(PyObject* op,double ** data) {
 	// Returns NULL if:
 	// - given object was not a sequence of numbers or an object exposing the array interface or
 	// - array had more dimensions
-	PyObject* ao = PyArray_ContiguousFromAny(op,NPY_DOUBLE,1,1);
+	PyArrayObject* ao = (PyArrayObject*)PyArray_ContiguousFromAny(op,NPY_DOUBLE,1,1);
 	if (!ao) {// If given object was not convertable into an array (no sequence of numbers or implementation of the array interface)	
 		return 0;
 	} else	{
@@ -135,7 +138,8 @@ size_t from_npy_array(PyObject* op,double ** data) {
     $result = as_npy_array($1);
 }
 namespace cmf { namespace math {
-int count_parallel_threads();
+	int get_parallel_threads();
+	int set_parallel_threads(int numthreads);
 }}
 %{
 #include "math/spline.h"

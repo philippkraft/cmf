@@ -46,6 +46,7 @@ namespace cmf {
 			weak_ptr m_upper;
 			weak_ptr m_lower;
 			real m_ice_fraction;
+			real m_rootfraction;
 		public:
 			/// real (Ice_fraction)
 			real get_ice_fraction() const { return m_ice_fraction; }
@@ -124,6 +125,14 @@ namespace cmf {
 			/// Returns the depth for saturation
 			/// \f[ z_{sat,this} = \left\{z_{cell}-\Psi_{tot} \mbox{ if } W<1 \\ z_{sat,upper layer} \right. \f]
 			virtual real get_saturated_depth() const;
+
+			/// Returns the root fraction of the layer. If it is not explicitly set, it uses the parameters of the vegetation object of the cell
+			real get_rootfraction() const;
+			/// Sets the root fraction in this layer explicitly
+			void set_rootfraction(real rootfraction) {
+				m_rootfraction = rootfraction;
+			}
+			
 			/// Calculates the shared crosssectional area of this and another soil water storage.
 			///
 			/// If both layers belong to the same cell, the area of the cell is returned, if they belong to different cells the area of the vertical shared boundary is returned

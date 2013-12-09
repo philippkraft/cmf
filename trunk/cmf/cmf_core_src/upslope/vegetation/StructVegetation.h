@@ -31,14 +31,14 @@ namespace cmf {
 					albedo, ///< Fraction of reflected radiation
 					snow_albedo, ///< Fraction of reflected radiation at snow cover
 					CanopyCapacityPerLAI, ///< Capacity of interception storage per LAI unit in mm
-					RootDepth, ///< Depth of rooting zone in m, see fraction_at_rootdepth
+					RootDepth, ///< Depth of rooting zone in m, see fraction_at_rootdepth. Only used if root_distribution and root_distribution_depth are not set
 					RootContent, ///< average fine root content in kg/m3 (default 2 kg/m3) in root depth.
 					fraction_at_rootdepth, ///< Fraction of roots in the rooting zone. If 1 (default), a uniform root distribution is used, otherwise an exponential decay of the root density with depth is used.
 					StomatalResistance, ///< optimal stomatal resistence of the plant tissue for vapor, in s/m
 					CanopyClosure, ///< Fraction of bare soil to the surface, influences the routing of rainfall
 					CanopyPARExtinction, ///<  extinction coefficient for photosynthetically-active radiation in the canopy. Values usually range from 0.5 to 0.7. Values outside this range should be used very cautiously. 
 					LeafWidth;     ///< Average width of leaves in m (only for Shuttleworth-Wallace ET)
-				
+
 				/// @brief Returns the average root length in m/m2
 				///
 				// \f[ l_R \left[\frac{m}{m^2}\right]= \frac{ c_R \left[\frac{kg}{m^3}\right] z_R \left[m\right] } {0.5\left[\frac{kg}{m^3}\right] \pi \left(d_R/2\right)^2 \left[m^2\right]} \f]

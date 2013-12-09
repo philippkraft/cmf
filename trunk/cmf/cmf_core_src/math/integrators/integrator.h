@@ -175,6 +175,10 @@ namespace cmf {
 				StateVariableList sq = states.get_states();
 				m_States.insert(m_States.end(),sq.begin(),sq.end());
 			}
+			Integrator(const cmf::math::Integrator& other) 
+				: m_States(), Epsilon(other.Epsilon), m_dt(other.m_dt), m_t(other.m_t), 
+				  reset_integratables(other.reset_integratables), use_OpenMP(other.use_OpenMP)
+			{}
 			/// Polymorphic copy constructor
 			virtual Integrator * copy() const=0;
 			//@}
