@@ -85,6 +85,13 @@ namespace cmf {
 			{
 				return error_position;
 			}
+			/// Maximum order, can be 1 (implicit euler) or 2 (BDF2)
+			int max_order;
+			virtual void reset() {
+				order=1;
+				stepNo = 0;
+			}
+
 			/// Constructs a new BDF2 integrator
 			/// @param epsilon relative error tolerance per time step (default=1e-9)
 			/// @param tStepMin minimum time step (default=10s)
@@ -100,7 +107,9 @@ namespace cmf {
 			BDF2(const Integrator & templ);
 			virtual Integrator * copy() const
 			{
-				return new BDF2(*this);
+				BDF2* newBDF2 = new BDF2(*this);
+				newBDF2->max_order = max_order;
+				return newBDF2;
 			}
 
 

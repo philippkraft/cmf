@@ -61,6 +61,7 @@
 %attribute(cmf::upslope::SoilLayer,real,upper_boundary,get_upper_boundary);
 %attribute(cmf::upslope::SoilLayer,real,porosity,get_porosity);
 %attribute(cmf::upslope::SoilLayer,real,ice_fraction,get_ice_fraction,set_ice_fraction);
+%attribute(cmf::upslope::SoilLayer,real,rootfraction,get_rootfraction,set_rootfraction);
 
 %shared_attr(cmf::upslope::SoilLayer,SoilLayer, upper, get_upper);
 %shared_attr(cmf::upslope::SoilLayer,SoilLayer, lower, get_lower);
@@ -98,6 +99,7 @@
 %attribute(cmf::upslope::layer_list,cmf::math::num_array,porosity,get_porosity);
 %attribute(cmf::upslope::layer_list,cmf::math::num_array,ice_fraction,get_ice_fraction);
 %attribute(cmf::upslope::layer_list,cmf::math::num_array,theta,get_theta);
+%attribute(cmf::upslope::layer_list,cmf::math::num_array,root,get_rootfraction);
 
 %iterable_to_list(cmf::upslope::layer_list,cmf::upslope::SoilLayer::ptr)
 

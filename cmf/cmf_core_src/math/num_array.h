@@ -133,7 +133,7 @@
 			num_array operator*(real _Right);
 			num_array operator/(real _Right);
 
-	
+
 		};
 
 
@@ -142,8 +142,10 @@
 		num_array operator*(real _Left,const num_array& _Right);
 		num_array operator/(real _Left,const num_array& _Right);
 
-		int count_parallel_threads();
-
+		/// Returns the max number of threads used by OpenMP in parallel sections of the code
+		int get_parallel_threads();
+		/// Set the number of threads used by OpenMP in parallel sections of the code
+		int set_parallel_threads(int numthreads);
 	}
 }
 

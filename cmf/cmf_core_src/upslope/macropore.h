@@ -193,9 +193,10 @@ namespace cmf {
 			/// @deprecated The MacroPore model is still very experimental and not stable. Only for tryouts!
 			///
 			/// \f[
-			/// q = K_{macro} \frac{V_{upper}}{C_{upper}} \left(1-\frac{V_{lower}}{C_{lower}}\right)
+			/// q = A_{cell} K_{macro} \frac{V_{upper}}{C_{upper}} \left(1-\frac{V_{lower}}{C_{lower}}\right)
 			/// \f]
 			/// where:
+			/// - \f$A_{cell}\f$ is the area of the owning cell in m2
 			/// - \f$K_{macro}\f$ is the conductivity of the macro pore storage
 			/// - \f$V\f$ is the actual stored water volume in the upper resp. lower macro pore storage
 			/// - \f$C\f$ is the capacity of the upper resp. lower macro pore storage

@@ -85,14 +85,21 @@ def _swig_setattr_nondynamic_method(set):
 
 SHARED_PTR_DISOWN = _cmf_core.SHARED_PTR_DISOWN
 
-def count_parallel_threads(*args):
+def get_parallel_threads(*args):
+  """get_parallel_threads() -> int"""
+  return _cmf_core.get_parallel_threads(*args)
+
+def set_parallel_threads(*args, **kwargs):
   """
-    count_parallel_threads() -> int
+    set_parallel_threads(int numthreads) -> int
 
     int
-    cmf::math::count_parallel_threads() 
+    cmf::math::set_parallel_threads(int numthreads)
+
+    Set the number of threads used by OpenMP in parallel sections of the
+    code. 
     """
-  return _cmf_core.count_parallel_threads(*args)
+  return _cmf_core.set_parallel_threads(*args, **kwargs)
 class cubicspline(object):
     """
     Interpolates points with a cubic spline interpolation.
@@ -2131,6 +2138,7 @@ class BDF2(Integrator):
         """
         return _cmf_core.BDF2_get_error_position(self, *args, **kwargs)
 
+    max_order = _swig_property(_cmf_core.BDF2_max_order_get, _cmf_core.BDF2_max_order_set)
     def __init__(self, *args): 
         """
         __init__(cmf::math::BDF2 self, real epsilon=1e-9, Time tStepMin=cmf::math::timespan(10)) -> BDF2
@@ -6518,7 +6526,7 @@ class RetentionCurve(object):
         """
         Porosity(RetentionCurve self, real depth=0.0) -> real
 
-        virtual real Porosity(real depth) const =0
+        virtual real Porosity(real depth=0.0) const =0
 
         Returns the porosity at a certain depth. 
         """
@@ -6549,6 +6557,8 @@ class RetentionCurve(object):
         """
         Diffusivity(RetentionCurve self, real wetness) -> real
         Diffusivity(RetentionCurve self, cmf::math::num_array & wetness) -> cmf::math::num_array
+
+        cmf::math::num_array Diffusivity(cmf::math::num_array &wetness) 
         """
         return _cmf_core.RetentionCurve_Diffusivity(self, *args)
 
@@ -6773,7 +6783,6 @@ class VanGenuchtenMualem(RetentionCurve):
         virtual real
         Transmissivity(real upperDepth, real lowerDepth, real wetness) const
 
-        \\[T=K(W)\\,\\left(d_{lower}-d_{upper}\\right)\\] 
         """
         return _cmf_core.VanGenuchtenMualem_Transmissivity(self, *args, **kwargs)
 
@@ -7069,6 +7078,7 @@ class SoilLayer(WaterStorage):
     upper_boundary = _swig_property(_cmf_core.SoilLayer_upper_boundary_get)
     porosity = _swig_property(_cmf_core.SoilLayer_porosity_get)
     ice_fraction = _swig_property(_cmf_core.SoilLayer_ice_fraction_get, _cmf_core.SoilLayer_ice_fraction_set)
+    rootfraction = _swig_property(_cmf_core.SoilLayer_rootfraction_get, _cmf_core.SoilLayer_rootfraction_set)
     upper = _swig_property(_cmf_core.SoilLayer___get_upper)
 
     lower = _swig_property(_cmf_core.SoilLayer___get_lower)
@@ -7246,6 +7256,17 @@ class layer_list(object):
         """
         return _cmf_core.layer_list_set_ice_fraction(self, *args, **kwargs)
 
+    def set_rootfraction(self, *args, **kwargs):
+        """
+        set_rootfraction(layer_list self, cmf::math::num_array const & Value, size_t offset=0)
+
+        void set_rootfraction(const cmf::math::num_array &Value, size_t
+        offset=0)
+
+        Sets the fraction of roots in each layer. 
+        """
+        return _cmf_core.layer_list_set_rootfraction(self, *args, **kwargs)
+
     gravitational_potential = _swig_property(_cmf_core.layer_list_gravitational_potential_get)
     matrix_potential = _swig_property(_cmf_core.layer_list_matrix_potential_get)
     wetness = _swig_property(_cmf_core.layer_list_wetness_get)
@@ -7259,6 +7280,7 @@ class layer_list(object):
     porosity = _swig_property(_cmf_core.layer_list_porosity_get)
     ice_fraction = _swig_property(_cmf_core.layer_list_ice_fraction_get)
     theta = _swig_property(_cmf_core.layer_list_theta_get)
+    root = _swig_property(_cmf_core.layer_list_root_get)
     def __get(self, *args, **kwargs):
         """__get(layer_list self, int index) -> cmf::upslope::SoilLayer::ptr"""
         return _cmf_core.layer_list___get(self, *args, **kwargs)
@@ -7298,6 +7320,7 @@ layer_list.set_volume = new_instancemethod(_cmf_core.layer_list_set_volume,None,
 layer_list.get_percolation = new_instancemethod(_cmf_core.layer_list_get_percolation,None,layer_list)
 layer_list.set_theta = new_instancemethod(_cmf_core.layer_list_set_theta,None,layer_list)
 layer_list.set_ice_fraction = new_instancemethod(_cmf_core.layer_list_set_ice_fraction,None,layer_list)
+layer_list.set_rootfraction = new_instancemethod(_cmf_core.layer_list_set_rootfraction,None,layer_list)
 layer_list.__get = new_instancemethod(_cmf_core.layer_list___get,None,layer_list)
 layer_list_swigregister = _cmf_core.layer_list_swigregister
 layer_list_swigregister(layer_list)
@@ -7455,8 +7478,10 @@ class KinematicMacroFlow(flux_connection):
     Deprecated The MacroPore model is still very experimental and not
     stable. Only for tryouts!
 
-    \\[ q = K_{macro} \\frac{V_{upper}}{C_{upper}}
+    \\[ q = A_{cell} K_{macro} \\frac{V_{upper}}{C_{upper}}
     \\left(1-\\frac{V_{lower}}{C_{lower}}\\right) \\] where:
+    $A_{cell}$ is the area of the owning cell in m2
+
     $K_{macro}$ is the conductivity of the macro pore storage
 
     $V$ is the actual stored water volume in the upper resp. lower macro
@@ -7491,17 +7516,6 @@ KinematicMacroFlow_swigregister = _cmf_core.KinematicMacroFlow_swigregister
 KinematicMacroFlow_swigregister(KinematicMacroFlow)
 
 class GradientMacroMicroExchange(flux_connection):
-    """Proxy of C++ cmf::upslope::connections::GradientMacroMicroExchange class"""
-    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
-    __repr__ = _swig_repr
-    def __init__(self, *args, **kwargs): 
-        """__init__(cmf::upslope::connections::GradientMacroMicroExchange self, cmf::upslope::SoilLayer::ptr left, cmf::upslope::MacroPore::ptr right) -> GradientMacroMicroExchange"""
-        _cmf_core.GradientMacroMicroExchange_swiginit(self,_cmf_core.new_GradientMacroMicroExchange(*args, **kwargs))
-    __swig_destroy__ = _cmf_core.delete_GradientMacroMicroExchange
-GradientMacroMicroExchange_swigregister = _cmf_core.GradientMacroMicroExchange_swigregister
-GradientMacroMicroExchange_swigregister(GradientMacroMicroExchange)
-
-class DiffusiveMacroMicroExchange(flux_connection):
     """
     A gradient based exchange term between macropores and micropores,
     using a fixed potential for macropores.
@@ -7522,13 +7536,37 @@ class DiffusiveMacroMicroExchange(flux_connection):
     """
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
     __repr__ = _swig_repr
+    def __init__(self, *args, **kwargs): 
+        """
+        __init__(cmf::upslope::connections::GradientMacroMicroExchange self, cmf::upslope::SoilLayer::ptr left, cmf::upslope::MacroPore::ptr right) -> GradientMacroMicroExchange
+
+        GradientMacroMicroExchange(cmf::upslope::SoilLayer::ptr left,
+        cmf::upslope::MacroPore::ptr right) 
+        """
+        _cmf_core.GradientMacroMicroExchange_swiginit(self,_cmf_core.new_GradientMacroMicroExchange(*args, **kwargs))
+    __swig_destroy__ = _cmf_core.delete_GradientMacroMicroExchange
+GradientMacroMicroExchange_swigregister = _cmf_core.GradientMacroMicroExchange_swigregister
+GradientMacroMicroExchange_swigregister(GradientMacroMicroExchange)
+
+class DiffusiveMacroMicroExchange(flux_connection):
+    """
+    A simple first order diffusive water exchange between MacroPore and
+    matrix ( SoilLayer)
+
+    \\[ q = \\omega (W_{ma} - W_{mi})\\] cf. Simunek et al J. of
+    Hydr. 2003
+
+    C++ includes: macropore.h 
+    """
+    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __repr__ = _swig_repr
     omega = _swig_property(_cmf_core.DiffusiveMacroMicroExchange_omega_get, _cmf_core.DiffusiveMacroMicroExchange_omega_set)
     def __init__(self, *args, **kwargs): 
         """
         __init__(cmf::upslope::connections::DiffusiveMacroMicroExchange self, cmf::upslope::SoilLayer::ptr left, cmf::upslope::MacroPore::ptr right, real omega) -> DiffusiveMacroMicroExchange
 
         DiffusiveMacroMicroExchange(cmf::upslope::SoilLayer::ptr left,
-        cmf::upslope::MacroPore::ptr right) 
+        cmf::upslope::MacroPore::ptr right, real omega) 
         """
         _cmf_core.DiffusiveMacroMicroExchange_swiginit(self,_cmf_core.new_DiffusiveMacroMicroExchange(*args, **kwargs))
     __swig_destroy__ = _cmf_core.delete_DiffusiveMacroMicroExchange
@@ -7536,7 +7574,39 @@ DiffusiveMacroMicroExchange_swigregister = _cmf_core.DiffusiveMacroMicroExchange
 DiffusiveMacroMicroExchange_swigregister(DiffusiveMacroMicroExchange)
 
 class MACROlikeMacroMicroExchange(flux_connection):
-    """Proxy of C++ cmf::upslope::connections::MACROlikeMacroMicroExchange class"""
+    """
+    This connection models the water exchange between macropores and
+    micropores as in the MACRO Model (Larsbo & Jarvis, 2003), which
+    follows Gerke & van Genuchten 1996.
+
+    WARNING:  Deprecated This connection uses the diffusivity of a soil
+    given by its retention curve. Since no retention curve provides a
+    valid value for Diffusivity in case of saturation this connection will
+    blow up the numerical solution for sure.
+
+    The exchange between Macropore and matrix is defined as follows:
+    (MACRO 5 Tech report, Larsbo & Jarvis 2003)
+
+    \\[q = \\frac{G_f D_w \\gamma_w}{d^2}(\\theta_b -
+    \\theta_{mi}) V_{layer}\\] where:  $G_f$ is the geometry factor.
+    Use 3 for a rectangular slab geometry
+
+    $gamma_w$ A scaling factor to fit analytical and numerical solution
+    (0.4)
+
+    $d$ is an effective diffusive path length related to aggregate size
+    and the influence of coatings on the aggregate surfaces in m
+
+    $\\theta_b$ the saturated water content of the matrix
+
+    $\\theta_{mi}$ the actual water content of the matrix
+
+    $D_w = \\frac12(D(\\theta_b)+D(\\theta_{mi})W_{ma})$ is the
+    effective water diffusivity in m2/day, as defined below  $W_{ma}$ is
+    the saturation of the macropores
+
+    C++ includes: macropore.h 
+    """
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
     __repr__ = _swig_repr
     Gf = _swig_property(_cmf_core.MACROlikeMacroMicroExchange_Gf_get, _cmf_core.MACROlikeMacroMicroExchange_Gf_set)
@@ -7545,6 +7615,9 @@ class MACROlikeMacroMicroExchange(flux_connection):
         """
         __init__(cmf::upslope::connections::MACROlikeMacroMicroExchange self, cmf::upslope::SoilLayer::ptr left, cmf::upslope::MacroPore::ptr right, real _gamma_w=0.4, 
             real _Gf=3) -> MACROlikeMacroMicroExchange
+
+        MACROlikeMacroMicroExchange(cmf::upslope::SoilLayer::ptr left,
+        cmf::upslope::MacroPore::ptr right, real _gamma_w=0.4, real _Gf=3) 
         """
         _cmf_core.MACROlikeMacroMicroExchange_swiginit(self,_cmf_core.new_MACROlikeMacroMicroExchange(*args, **kwargs))
     __swig_destroy__ = _cmf_core.delete_MACROlikeMacroMicroExchange
@@ -10916,8 +10989,8 @@ class SoluteWaterIntegrator(Integrator):
 
     def __init__(self, *args): 
         """
-        __init__(cmf::math::SoluteWaterIntegrator self, Integrator water_integrator, Integrator solute_integrator) -> SoluteWaterIntegrator
-        __init__(cmf::math::SoluteWaterIntegrator self, Integrator water_integrator, Integrator solute_integrator, StateVariableOwner states) -> SoluteWaterIntegrator
+        __init__(cmf::math::SoluteWaterIntegrator self, solute_vector solutes, Integrator water_integrator, Integrator solute_integrator) -> SoluteWaterIntegrator
+        __init__(cmf::math::SoluteWaterIntegrator self, solute_vector arg2, Integrator water_integrator, Integrator solute_integrator, StateVariableOwner states) -> SoluteWaterIntegrator
 
         SoluteWaterIntegrator(const cmf::math::Integrator &water_integrator,
         const cmf::math::Integrator &solute_integrator,
@@ -10937,10 +11010,13 @@ class SoluteWaterIntegrator(Integrator):
         states:  States to be added to the integrators 
         """
         _cmf_core.SoluteWaterIntegrator_swiginit(self,_cmf_core.new_SoluteWaterIntegrator(*args))
-    solute_integrator = _swig_property(_cmf_core.SoluteWaterIntegrator_solute_integrator_get, _cmf_core.SoluteWaterIntegrator_solute_integrator_set)
-    water_integrator = _swig_property(_cmf_core.SoluteWaterIntegrator_water_integrator_get, _cmf_core.SoluteWaterIntegrator_water_integrator_set)
     __swig_destroy__ = _cmf_core.delete_SoluteWaterIntegrator
+    def to_string(self, *args, **kwargs):
+        """to_string(SoluteWaterIntegrator self) -> std::string"""
+        return _cmf_core.SoluteWaterIntegrator_to_string(self, *args, **kwargs)
+
 SoluteWaterIntegrator.copy = new_instancemethod(_cmf_core.SoluteWaterIntegrator_copy,None,SoluteWaterIntegrator)
+SoluteWaterIntegrator.to_string = new_instancemethod(_cmf_core.SoluteWaterIntegrator_to_string,None,SoluteWaterIntegrator)
 SoluteWaterIntegrator_swigregister = _cmf_core.SoluteWaterIntegrator_swigregister
 SoluteWaterIntegrator_swigregister(SoluteWaterIntegrator)
 

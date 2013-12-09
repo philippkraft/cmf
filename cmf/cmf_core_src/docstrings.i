@@ -656,7 +656,7 @@ Diffusivity(real wetness) const
 
 Returns the Diffusivity of the soil.
 
-Not implemented for all Retentioncurves. Diffusivity is used by
+Not implemented for all retention curves. Diffusivity is used by
 MACROlikeMacroMicroExchange ";
 
 %feature("docstring")
@@ -4077,7 +4077,7 @@ Diffusivity(real wetness) const
 
 Returns the Diffusivity of the soil.
 
-Not implemented for all Retentioncurves. Diffusivity is used by
+Not implemented for all retention curves. Diffusivity is used by
 MACROlikeMacroMicroExchange ";
 
 %feature("docstring")
@@ -5068,8 +5068,10 @@ Linear storage based flux from macro pore to macro pore.
 Deprecated The MacroPore model is still very experimental and not
 stable. Only for tryouts!
 
-\\\\[ q = K_{macro} \\\\frac{V_{upper}}{C_{upper}}
+\\\\[ q = A_{cell} K_{macro} \\\\frac{V_{upper}}{C_{upper}}
 \\\\left(1-\\\\frac{V_{lower}}{C_{lower}}\\\\right) \\\\] where:
+$A_{cell}$ is the area of the owning cell in m2
+
 $K_{macro}$ is the conductivity of the macro pore storage
 
 $V$ is the actual stored water volume in the upper resp. lower macro
@@ -5478,6 +5480,10 @@ list. ";
 Returns an array containing the potentials of all layers in the list.
 ";
 
+%feature("docstring")  cmf::upslope::layer_list::get_rootfraction "cmf::math::num_array get_rootfraction() const
+
+Returns an array containing the rootfraction of each layer. ";
+
 %feature("docstring")  cmf::upslope::layer_list::get_slice "layer_list get_slice(size_t first=0, size_t last=1000000, size_t
 step=1) ";
 
@@ -5517,6 +5523,11 @@ Sets the fraction of the ice content of the soil water. ";
 set_potential(const cmf::math::num_array &Value, size_t offset=0)
 
 Sets the potential (head) in m of layers [offset : arraysize]. ";
+
+%feature("docstring")  cmf::upslope::layer_list::set_rootfraction "void set_rootfraction(const cmf::math::num_array &Value, size_t
+offset=0)
+
+Sets the fraction of roots in each layer. ";
 
 %feature("docstring")  cmf::upslope::layer_list::set_theta "void
 set_theta(const cmf::math::num_array &Value, size_t offset=0)
@@ -5704,7 +5715,7 @@ residual_wetness=0.1) ";
 
 Returns the Diffusivity of the soil.
 
-Not implemented for all Retentioncurves. Diffusivity is used by
+Not implemented for all retention curves. Diffusivity is used by
 MACROlikeMacroMicroExchange ";
 
 %feature("docstring")  cmf::upslope::LinearRetention::Diffusivity "cmf::math::num_array Diffusivity(cmf::math::num_array &wetness) ";
@@ -9573,7 +9584,7 @@ RetentionCurve* copy() const =0 ";
 
 Returns the Diffusivity of the soil.
 
-Not implemented for all Retentioncurves. Diffusivity is used by
+Not implemented for all retention curves. Diffusivity is used by
 MACROlikeMacroMicroExchange ";
 
 %feature("docstring")  cmf::upslope::RetentionCurve::Diffusivity "cmf::math::num_array Diffusivity(cmf::math::num_array &wetness) ";
@@ -10826,6 +10837,11 @@ Returns the total potential in m \\\\[ \\\\Psi = \\\\Psi_M + \\\\Psi_G
 
 Returns the project, this node is part of. ";
 
+%feature("docstring")  cmf::upslope::SoilLayer::get_rootfraction "real get_rootfraction() const
+
+Returns the root fraction of the layer. If it is not explicitly set,
+it uses the parameters of the vegetation object of the cell. ";
+
 %feature("docstring")  cmf::upslope::SoilLayer::get_saturated_depth "virtual real get_saturated_depth() const
 
 Returns the depth for saturation \\\\[ z_{sat,this} =
@@ -10896,6 +10912,10 @@ val:  Ice_fraction (real) ";
 %feature("docstring")  cmf::upslope::SoilLayer::set_potential "virtual void set_potential(real waterhead)
 
 Sets the potential of this soil water storage. ";
+
+%feature("docstring")  cmf::upslope::SoilLayer::set_rootfraction "void set_rootfraction(real rootfraction)
+
+Sets the root fraction in this layer explicitly. ";
 
 %feature("docstring")  cmf::upslope::SoilLayer::set_soil "virtual
 void set_soil(const cmf::upslope::RetentionCurve &r_curve) ";
@@ -13155,10 +13175,30 @@ Deprecated The current implementation goes to infinity at saturation,
 as noted by VanGenuchten. Diffusivity is therefore currently not
 usable in any model.
 
-\\\\[D(W) = K(W)\\\\|\\\\frac{d\\\\Psi}{dW}\\\\| \\\\eq. 10\\\\]
-\\\\[D(W) = \\\\frac{(1-m)K_{sat}{\\\\alpha m \\\\Phi}
+\\\\[D(W) = K(W)\\\\left|\\\\frac{d\\\\Psi}{d\\\\theta}\\\\right|\\\\
+eq. 10\\\\] where:  $D(W)$ Diffusivity in $m^2/day$
+
+$K(W)$ Conductivity as a function of saturation W in m/day
+
+$\\\\Psi$ Pressure head
+
+$\\\\theta$ water content of the soil
+
+Applying Van Genuchten theory (Van Genuchten 1980) yields to:
+\\\\[D(W) = \\\\frac{(1-m)K_{sat}}{\\\\alpha m \\\\Phi}
 W^{l-1/m}\\\\left(\\\\left(1-W^{1/m}\\\\right)^{-m} +
-\\\\left(1-W^{1/m}\\\\right)^{m} -2\\\\right)\\\\] ";
+\\\\left(1-W^{1/m}\\\\right)^{m} -2\\\\right)\\\\] where:  $m = 1 -
+\\\\frac 1 n$ acc. Mualem theory
+
+$K_{sat}$ saturated conductivity in m/day
+
+$\\\\alpha$ inverse water entry potential in 1/m. Note $\\\\alpha$ is
+given in cmf in 1/cm
+
+$\\\\Phi$ porosity
+
+$W = \\\\frac{\\\\theta - \\\\theta_r}{\\\\Phi - \\\\theta_r}$
+saturation of the soil ";
 
 %feature("docstring")  cmf::upslope::VanGenuchtenMualem::FillHeight "virtual real FillHeight(real lowerDepth, real Area, real Volume) const
 
@@ -13184,6 +13224,8 @@ tolerance:  ";
 %feature("docstring")  cmf::upslope::VanGenuchtenMualem::K "virtual
 real K(real wetness) const
 
+returns the conductivity of the soil at a given saturation
+
 \\\\[K(W) = K_{sat} \\\\sqrt{W}
 \\\\left(1-\\\\left(1-W^{1/m}\\\\right)^m\\\\right)^2 \\\\] ";
 
@@ -13195,29 +13237,32 @@ cmf::upslope::VanGenuchtenMualem::MatricPotential "cmf::math::num_array MatricPo
 cmf::upslope::VanGenuchtenMualem::MatricPotential "virtual real
 MatricPotential(real wetness) const
 
+returns the matrix potential at a given saturation
+
 \\\\[\\\\Psi(W) = 0.01 \\\\frac{m}{cm}
 \\\\frac{{\\\\left(1-{W}^{\\\\frac{1}{m}}\\\\right)
 }^{\\\\frac{1}{n}}}{\\\\alpha\\\\,{W}^{\\\\frac{1}{m\\\\,n}}} \\\\] ";
 
 %feature("docstring")  cmf::upslope::VanGenuchtenMualem::Porosity "virtual real Porosity(real depth) const
 
-\\\\[\\\\Phi(d)=const\\\\] ";
+Returns the porosity at a certain depth. ";
 
 %feature("docstring")
 cmf::upslope::VanGenuchtenMualem::Transmissivity "virtual real
 Transmissivity(real upperDepth, real lowerDepth, real wetness) const
-
-\\\\[T=K(W)\\\\,\\\\left(d_{lower}-d_{upper}\\\\right)\\\\] ";
+";
 
 %feature("docstring")  cmf::upslope::VanGenuchtenMualem::VoidVolume "virtual real VoidVolume(real upperDepth, real lowerDepth, real Area)
 const
 
-\\\\[V_{void}=A\\\\,\\\\left(d_{lower}-d_{upper}\\\\right)\\\\] ";
+Returns the void volume of a soil column. ";
 
 %feature("docstring")  cmf::upslope::VanGenuchtenMualem::Wetness "cmf::math::num_array Wetness(const cmf::math::num_array &suction)
 const ";
 
 %feature("docstring")  cmf::upslope::VanGenuchtenMualem::Wetness "virtual real Wetness(real suction) const
+
+returns the saturation at a given suction (matrix potential).
 
 \\\\[ W(\\\\Psi) =
 \\\\left(1+\\\\left(\\\\alpha\\\\,100\\\\frac{cm}{m}\\\\Psi\\\\right)^n\\\\right)^{-m}
@@ -13331,10 +13376,30 @@ Deprecated The current implementation goes to infinity at saturation,
 as noted by VanGenuchten. Diffusivity is therefore currently not
 usable in any model.
 
-\\\\[D(W) = K(W)\\\\|\\\\frac{d\\\\Psi}{dW}\\\\| \\\\eq. 10\\\\]
-\\\\[D(W) = \\\\frac{(1-m)K_{sat}{\\\\alpha m \\\\Phi}
+\\\\[D(W) = K(W)\\\\left|\\\\frac{d\\\\Psi}{d\\\\theta}\\\\right|\\\\
+eq. 10\\\\] where:  $D(W)$ Diffusivity in $m^2/day$
+
+$K(W)$ Conductivity as a function of saturation W in m/day
+
+$\\\\Psi$ Pressure head
+
+$\\\\theta$ water content of the soil
+
+Applying Van Genuchten theory (Van Genuchten 1980) yields to:
+\\\\[D(W) = \\\\frac{(1-m)K_{sat}}{\\\\alpha m \\\\Phi}
 W^{l-1/m}\\\\left(\\\\left(1-W^{1/m}\\\\right)^{-m} +
-\\\\left(1-W^{1/m}\\\\right)^{m} -2\\\\right)\\\\] ";
+\\\\left(1-W^{1/m}\\\\right)^{m} -2\\\\right)\\\\] where:  $m = 1 -
+\\\\frac 1 n$ acc. Mualem theory
+
+$K_{sat}$ saturated conductivity in m/day
+
+$\\\\alpha$ inverse water entry potential in 1/m. Note $\\\\alpha$ is
+given in cmf in 1/cm
+
+$\\\\Phi$ porosity
+
+$W = \\\\frac{\\\\theta - \\\\theta_r}{\\\\Phi - \\\\theta_r}$
+saturation of the soil ";
 
 %feature("docstring")
 cmf::upslope::VGM_BC_RetentionCurve_Windhorst::FillHeight "virtual
@@ -13365,6 +13430,8 @@ cmf::upslope::VGM_BC_RetentionCurve_Windhorst::K "cmf::math::num_array K(const c
 cmf::upslope::VGM_BC_RetentionCurve_Windhorst::K "virtual real K(real
 wetness) const
 
+returns the conductivity of the soil at a given saturation
+
 \\\\[K(W) = K_{sat} \\\\sqrt{W}
 \\\\left(1-\\\\left(1-W^{1/m}\\\\right)^m\\\\right)^2 \\\\] ";
 
@@ -13375,6 +13442,8 @@ cmf::upslope::VGM_BC_RetentionCurve_Windhorst::MatricPotential "cmf::math::num_a
 %feature("docstring")
 cmf::upslope::VGM_BC_RetentionCurve_Windhorst::MatricPotential "virtual real MatricPotential(real wetness) const
 
+returns the matrix potential at a given saturation
+
 \\\\[\\\\Psi(W) = 0.01 \\\\frac{m}{cm}
 \\\\frac{{\\\\left(1-{W}^{\\\\frac{1}{m}}\\\\right)
 }^{\\\\frac{1}{n}}}{\\\\alpha\\\\,{W}^{\\\\frac{1}{m\\\\,n}}} \\\\] ";
@@ -13383,19 +13452,17 @@ cmf::upslope::VGM_BC_RetentionCurve_Windhorst::MatricPotential "virtual real Mat
 cmf::upslope::VGM_BC_RetentionCurve_Windhorst::Porosity "virtual real
 Porosity(real depth) const
 
-\\\\[\\\\Phi(d)=const\\\\] ";
+Returns the porosity at a certain depth. ";
 
 %feature("docstring")
 cmf::upslope::VGM_BC_RetentionCurve_Windhorst::Transmissivity "virtual real Transmissivity(real upperDepth, real lowerDepth, real
-wetness) const
-
-\\\\[T=K(W)\\\\,\\\\left(d_{lower}-d_{upper}\\\\right)\\\\] ";
+wetness) const ";
 
 %feature("docstring")
 cmf::upslope::VGM_BC_RetentionCurve_Windhorst::VoidVolume "virtual
 real VoidVolume(real upperDepth, real lowerDepth, real Area) const
 
-\\\\[V_{void}=A\\\\,\\\\left(d_{lower}-d_{upper}\\\\right)\\\\] ";
+Returns the void volume of a soil column. ";
 
 %feature("docstring")
 cmf::upslope::VGM_BC_RetentionCurve_Windhorst::Wetness "cmf::math::num_array Wetness(const cmf::math::num_array &suction)
@@ -13404,6 +13471,8 @@ const ";
 %feature("docstring")
 cmf::upslope::VGM_BC_RetentionCurve_Windhorst::Wetness "virtual real
 Wetness(real suction) const
+
+returns the saturation at a given suction (matrix potential).
 
 \\\\[ W(\\\\Psi) =
 \\\\left(1+\\\\left(\\\\alpha\\\\,100\\\\frac{cm}{m}\\\\Psi\\\\right)^n\\\\right)^{-m}
@@ -13980,7 +14049,10 @@ cmf::geometry::dot(const point &p1, const point &p2) ";
 
 // File: namespacecmf_1_1math.xml
 %feature("docstring")  cmf::math::count_parallel_threads "int
-cmf::math::count_parallel_threads() ";
+cmf::math::count_parallel_threads()
+
+Returns the max number of threads used by OpenMP in parallel sections
+of the code. ";
 
 %feature("docstring")  cmf::math::nash_sutcliffe "double
 cmf::math::nash_sutcliffe(const cmf::math::timeseries &model, const
@@ -13999,6 +14071,12 @@ $M$ is the timeseries of model results matchinig O
 $O$ is the timeseries containing observations
 
 $\\\\overline{O}$ is the arithmetic mean of observations ";
+
+%feature("docstring")  cmf::math::set_parallel_threads "int
+cmf::math::set_parallel_threads(int numthreads)
+
+Set the number of threads used by OpenMP in parallel sections of the
+code. ";
 
 %feature("docstring")  cmf::math::timespan "Time
 cmf::math::timespan(long long ms) ";

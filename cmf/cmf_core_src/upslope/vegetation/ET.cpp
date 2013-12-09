@@ -82,7 +82,7 @@ namespace cmf {
 			real Tact(real Tpot,const cmf::upslope::SoilLayer & sw,const cmf::upslope::vegetation::Vegetation & veg)
 			{
 				real
-					rootfraction=veg.RootFraction(sw.get_upper_boundary(),sw.get_lower_boundary()),
+					rootfraction=sw.get_rootfraction(),
 					Tpot_vol=Tpot*sw.cell.get_area() * 0.001 * rootfraction;
 			
 				return piecewise_linear(sw.get_matrix_potential(),-160,-5,0,Tpot_vol);
