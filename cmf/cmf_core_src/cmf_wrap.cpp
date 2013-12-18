@@ -9518,10 +9518,10 @@ fail:
 SWIGINTERN PyObject *_wrap_Time___mul____SWIG_2(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   cmf::math::Time *arg1 = (cmf::math::Time *) 0 ;
-  int arg2 ;
+  ptrdiff_t arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  int val2 ;
+  ptrdiff_t val2 ;
   int ecode2 = 0 ;
   cmf::math::Time result;
   
@@ -9531,11 +9531,11 @@ SWIGINTERN PyObject *_wrap_Time___mul____SWIG_2(PyObject *SWIGUNUSEDPARM(self), 
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Time___mul__" "', argument " "1"" of type '" "cmf::math::Time const *""'"); 
   }
   arg1 = reinterpret_cast< cmf::math::Time * >(argp1);
-  ecode2 = SWIG_AsVal_int(swig_obj[1], &val2);
+  ecode2 = SWIG_AsVal_ptrdiff_t(swig_obj[1], &val2);
   if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Time___mul__" "', argument " "2"" of type '" "int""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Time___mul__" "', argument " "2"" of type '" "ptrdiff_t""'");
   } 
-  arg2 = static_cast< int >(val2);
+  arg2 = static_cast< ptrdiff_t >(val2);
   {
     try {
       result = ((cmf::math::Time const *)arg1)->operator *(arg2);
@@ -9578,7 +9578,7 @@ SWIGINTERN PyObject *_wrap_Time___mul__(PyObject *self, PyObject *args) {
       _pi *= SWIG_MAXCASTRANK;
       {
         {
-          int res = SWIG_AsVal_int(argv[1], NULL);
+          int res = SWIG_AsVal_ptrdiff_t(argv[1], NULL);
           _v = SWIG_CheckState(res);
         }
       }
@@ -9675,10 +9675,10 @@ fail:
 SWIGINTERN PyObject *_wrap_Time___div____SWIG_2(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   cmf::math::Time *arg1 = (cmf::math::Time *) 0 ;
-  int arg2 ;
+  ptrdiff_t arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  int val2 ;
+  ptrdiff_t val2 ;
   int ecode2 = 0 ;
   cmf::math::Time result;
   
@@ -9688,11 +9688,11 @@ SWIGINTERN PyObject *_wrap_Time___div____SWIG_2(PyObject *SWIGUNUSEDPARM(self), 
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Time___div__" "', argument " "1"" of type '" "cmf::math::Time const *""'"); 
   }
   arg1 = reinterpret_cast< cmf::math::Time * >(argp1);
-  ecode2 = SWIG_AsVal_int(swig_obj[1], &val2);
+  ecode2 = SWIG_AsVal_ptrdiff_t(swig_obj[1], &val2);
   if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Time___div__" "', argument " "2"" of type '" "int""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Time___div__" "', argument " "2"" of type '" "ptrdiff_t""'");
   } 
-  arg2 = static_cast< int >(val2);
+  arg2 = static_cast< ptrdiff_t >(val2);
   {
     try {
       result = ((cmf::math::Time const *)arg1)->operator /(arg2);
@@ -9713,10 +9713,10 @@ fail:
 SWIGINTERN PyObject *_wrap_Time___imul____SWIG_2(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   cmf::math::Time *arg1 = (cmf::math::Time *) 0 ;
-  int arg2 ;
+  ptrdiff_t arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  int val2 ;
+  ptrdiff_t val2 ;
   int ecode2 = 0 ;
   cmf::math::Time *result = 0 ;
   
@@ -9726,11 +9726,11 @@ SWIGINTERN PyObject *_wrap_Time___imul____SWIG_2(PyObject *SWIGUNUSEDPARM(self),
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Time___imul__" "', argument " "1"" of type '" "cmf::math::Time *""'"); 
   }
   arg1 = reinterpret_cast< cmf::math::Time * >(argp1);
-  ecode2 = SWIG_AsVal_int(swig_obj[1], &val2);
+  ecode2 = SWIG_AsVal_ptrdiff_t(swig_obj[1], &val2);
   if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Time___imul__" "', argument " "2"" of type '" "int""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Time___imul__" "', argument " "2"" of type '" "ptrdiff_t""'");
   } 
-  arg2 = static_cast< int >(val2);
+  arg2 = static_cast< ptrdiff_t >(val2);
   {
     try {
       result = (cmf::math::Time *) &(arg1)->operator *=(arg2);
@@ -9773,7 +9773,7 @@ SWIGINTERN PyObject *_wrap_Time___imul__(PyObject *self, PyObject *args) {
       _pi *= SWIG_MAXCASTRANK;
       {
         {
-          int res = SWIG_AsVal_int(argv[1], NULL);
+          int res = SWIG_AsVal_ptrdiff_t(argv[1], NULL);
           _v = SWIG_CheckState(res);
         }
       }
@@ -9866,7 +9866,7 @@ fail:
     "  Possible C/C++ prototypes are:\n"
     "    cmf::math::Time::operator *=(double)\n"
     "    cmf::math::Time::operator *=(long long)\n"
-    "    cmf::math::Time::operator *=(int)\n");
+    "    cmf::math::Time::operator *=(ptrdiff_t)\n");
   return 0;
 }
 
@@ -9874,10 +9874,10 @@ fail:
 SWIGINTERN PyObject *_wrap_Time___idiv____SWIG_2(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   cmf::math::Time *arg1 = (cmf::math::Time *) 0 ;
-  int arg2 ;
+  ptrdiff_t arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  int val2 ;
+  ptrdiff_t val2 ;
   int ecode2 = 0 ;
   cmf::math::Time *result = 0 ;
   
@@ -9887,11 +9887,11 @@ SWIGINTERN PyObject *_wrap_Time___idiv____SWIG_2(PyObject *SWIGUNUSEDPARM(self),
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Time___idiv__" "', argument " "1"" of type '" "cmf::math::Time *""'"); 
   }
   arg1 = reinterpret_cast< cmf::math::Time * >(argp1);
-  ecode2 = SWIG_AsVal_int(swig_obj[1], &val2);
+  ecode2 = SWIG_AsVal_ptrdiff_t(swig_obj[1], &val2);
   if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Time___idiv__" "', argument " "2"" of type '" "int""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Time___idiv__" "', argument " "2"" of type '" "ptrdiff_t""'");
   } 
-  arg2 = static_cast< int >(val2);
+  arg2 = static_cast< ptrdiff_t >(val2);
   {
     try {
       result = (cmf::math::Time *) &(arg1)->operator /=(arg2);
@@ -9934,7 +9934,7 @@ SWIGINTERN PyObject *_wrap_Time___idiv__(PyObject *self, PyObject *args) {
       _pi *= SWIG_MAXCASTRANK;
       {
         {
-          int res = SWIG_AsVal_int(argv[1], NULL);
+          int res = SWIG_AsVal_ptrdiff_t(argv[1], NULL);
           _v = SWIG_CheckState(res);
         }
       }
@@ -10027,7 +10027,7 @@ fail:
     "  Possible C/C++ prototypes are:\n"
     "    cmf::math::Time::operator /=(double)\n"
     "    cmf::math::Time::operator /=(long long)\n"
-    "    cmf::math::Time::operator /=(int)\n");
+    "    cmf::math::Time::operator /=(ptrdiff_t)\n");
   return 0;
 }
 
@@ -10144,7 +10144,7 @@ SWIGINTERN PyObject *_wrap_Time___div__(PyObject *self, PyObject *args) {
       _pi *= SWIG_MAXCASTRANK;
       {
         {
-          int res = SWIG_AsVal_int(argv[1], NULL);
+          int res = SWIG_AsVal_ptrdiff_t(argv[1], NULL);
           _v = SWIG_CheckState(res);
         }
       }
@@ -68910,7 +68910,7 @@ static PyMethodDef SwigMethods[] = {
 		"\n"
 		"Returns the horizontal euclidian distance to another point p.\n"
 		"\n"
-		"$\\\\sqrt{(this.x-p.x)^2+(this.y-p.y)^2}$ \n"
+		":math:`$\\\\sqrt{(this.x-p.x)^2+(this.y-p.y)^2}$` \n"
 		""},
 	 { (char *)"point_z_weight_distance", (PyCFunction) _wrap_point_z_weight_distance, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
 		"point_z_weight_distance(point self, point p, double z_weight) -> double\n"
@@ -68920,7 +68920,7 @@ static PyMethodDef SwigMethods[] = {
 		"Returns the horizontal euclidian distance plus the absolute of the\n"
 		"height difference times a factor.\n"
 		"\n"
-		"$\\\\sqrt{(this.x-p.x)^2+(this.y-p.y)^2}\\\\ +\\\\ w_{z}|this.z-p.z|$\n"
+		":math:`$\\\\sqrt{(this.x-p.x)^2+(this.y-p.y)^2}\\\\ +\\\\ w_{z}|this.z-p.z|$`\n"
 		"\n"
 		""},
 	 { (char *)"point_distance3DTo", (PyCFunction) _wrap_point_distance3DTo, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
@@ -68946,7 +68946,7 @@ static PyMethodDef SwigMethods[] = {
 		"double\n"
 		"azimuth(point p) const\n"
 		"\n"
-		"Returns the azimuth angle of the line $ \\\\overline{this,p} $ to the\n"
+		"Returns the azimuth angle of the line :math:`$ \\\\overline{this,p} $` to the\n"
 		"Azimuth in degrees. \n"
 		""},
 	 { (char *)"point_angleToXAxis", (PyCFunction) _wrap_point_angleToXAxis, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
@@ -68955,7 +68955,7 @@ static PyMethodDef SwigMethods[] = {
 		"double\n"
 		"angleToXAxis(point p) const\n"
 		"\n"
-		"Returns the angle between the line $ \\\\overline{this,p} $ to the\n"
+		"Returns the angle between the line :math:`$ \\\\overline{this,p} $` to the\n"
 		"x-Axis in degrees. \n"
 		""},
 	 { (char *)"point_sum", (PyCFunction)_wrap_point_sum, METH_O, (char *)"\n"
@@ -69185,23 +69185,23 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"Time___mul__", _wrap_Time___mul__, METH_VARARGS, (char *)"\n"
 		"__mul__(double x) -> Time\n"
 		"__mul__(long long x) -> Time\n"
-		"Time___mul__(Time self, int x) -> Time\n"
+		"Time___mul__(Time self, ptrdiff_t x) -> Time\n"
 		""},
 	 { (char *)"Time___imul__", _wrap_Time___imul__, METH_VARARGS, (char *)"\n"
 		"__imul__(double x) -> Time\n"
 		"__imul__(long long x) -> Time\n"
-		"Time___imul__(Time self, int x) -> Time\n"
+		"Time___imul__(Time self, ptrdiff_t x) -> Time\n"
 		""},
 	 { (char *)"Time___idiv__", _wrap_Time___idiv__, METH_VARARGS, (char *)"\n"
 		"__idiv__(double x) -> Time\n"
 		"__idiv__(long long x) -> Time\n"
-		"Time___idiv__(Time self, int x) -> Time\n"
+		"Time___idiv__(Time self, ptrdiff_t x) -> Time\n"
 		""},
 	 { (char *)"Time___imod__", (PyCFunction) _wrap_Time___imod__, METH_VARARGS | METH_KEYWORDS, (char *)"Time___imod__(Time self, Time t1) -> Time"},
 	 { (char *)"Time___div__", _wrap_Time___div__, METH_VARARGS, (char *)"\n"
 		"__div__(double x) -> Time\n"
 		"__div__(long long x) -> Time\n"
-		"__div__(int x) -> Time\n"
+		"__div__(ptrdiff_t x) -> Time\n"
 		"Time___div__(Time self, Time t1) -> double\n"
 		""},
 	 { (char *)"Time_times_in", (PyCFunction) _wrap_Time_times_in, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
@@ -69550,16 +69550,20 @@ static PyMethodDef SwigMethods[] = {
 		"Calculates the Nash-Sutcliffe efficiency of a modeled timeseries in\n"
 		"comparison with an observed timeseries.\n"
 		"\n"
-		"The Nash-Sutcliffe efficiancy is defined as: \\\\[ E = 1 -\n"
-		"\\\\frac{\\\\sum_{t=1}^{T}(M_t - O_t)^2}{\\\\sum_{t=1}^{T}(O_t -\n"
-		"\\\\overline{O})^2}\\\\] where  $T$ is the number of observation time\n"
+		"The Nash-Sutcliffe efficiancy is defined as: \n"
+		".. math::\n"
+		"     E = 1 -\n"
+		"    \\\\frac{\\\\sum_{t=1}^{T}(M_t - O_t)^2}{\\\\sum_{t=1}^{T}(O_t -\n"
+		"    \\\\overline{O})^2}\n"
+		"\n"
+		" where  :math:`$T$` is the number of observation time\n"
 		"steps\n"
 		"\n"
-		"$M$ is the timeseries of model results matchinig O\n"
+		":math:`$M$` is the timeseries of model results matchinig O\n"
 		"\n"
-		"$O$ is the timeseries containing observations\n"
+		":math:`$O$` is the timeseries containing observations\n"
 		"\n"
-		"$\\\\overline{O}$ is the arithmetic mean of observations \n"
+		":math:`$\\\\overline{O}$` is the arithmetic mean of observations \n"
 		""},
 	 { (char *)"integratable_integrate", (PyCFunction) _wrap_integratable_integrate, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
 		"integratable_integrate(integratable self, Time t)\n"
@@ -70530,7 +70534,7 @@ static PyMethodDef SwigMethods[] = {
 		"\n"
 		"linear_scale(real _slope=1, real _displacement=0)\n"
 		"\n"
-		"Creates a linear scale (by default it is a unity scale, $a=1; b=0$) \n"
+		"Creates a linear scale (by default it is a unity scale, :math:`$a=1; b=0$`) \n"
 		""},
 	 { (char *)"delete_linear_scale", (PyCFunction)_wrap_delete_linear_scale, METH_O, (char *)"delete_linear_scale(linear_scale self)"},
 	 { (char *)"linear_scale_swigregister", linear_scale_swigregister, METH_VARARGS, NULL},
@@ -70713,8 +70717,12 @@ static PyMethodDef SwigMethods[] = {
 		"\n"
 		"Creates a kinematic wave connection.\n"
 		"\n"
-		"\\\\[ q = \\\\frac 1 {t_r} {\\\\left(\\\\frac{V - V_{residual}}{V_0}\n"
-		"\\\\right)^\\\\beta} \\\\]\n"
+		"\n"
+		".. math::\n"
+		"     q = \\\\frac 1 {t_r} {\\\\left(\\\\frac{V - V_{residual}}{V_0}\n"
+		"    \\\\right)^\\\\beta} \n"
+		"\n"
+		"\n"
 		"\n"
 		"Parameters:\n"
 		"-----------\n"
@@ -70725,16 +70733,16 @@ static PyMethodDef SwigMethods[] = {
 		"target:  Target node (boundary condition or storage). Does not\n"
 		"influence the strength of the flow\n"
 		"\n"
-		"residencetime:   $t_r [days]$ The residence time of the water in this\n"
+		"residencetime:   :math:`$t_r [days]$` The residence time of the water in this\n"
 		"storage\n"
 		"\n"
-		"exponent:   $\\\\beta [-]$ An empirical exponent to shape the flux\n"
+		"exponent:   :math:`$\\\\beta [-]$` An empirical exponent to shape the flux\n"
 		"function (default = 1 (linear function))\n"
 		"\n"
-		"residual:   $V_{residual} [m^3]$ The volume of water not flowing out\n"
+		"residual:   :math:`$V_{residual} [m^3]$` The volume of water not flowing out\n"
 		"(default = 0)\n"
 		"\n"
-		"V0:   $V_0$ The reference volume to scale the exponent \n"
+		"V0:   :math:`$V_0$` The reference volume to scale the exponent \n"
 		""},
 	 { (char *)"delete_kinematic_wave", (PyCFunction)_wrap_delete_kinematic_wave, METH_O, (char *)"delete_kinematic_wave(kinematic_wave self)"},
 	 { (char *)"kinematic_wave_swigregister", kinematic_wave_swigregister, METH_VARARGS, NULL},
@@ -70762,8 +70770,12 @@ static PyMethodDef SwigMethods[] = {
 		"\n"
 		"Creates a kinematic wave connection.\n"
 		"\n"
-		"\\\\[ q = \\\\frac 1 {t_r} {\\\\left(\\\\frac{V - V_{residual}}{V_0}\n"
-		"\\\\right)^\\\\beta} \\\\]\n"
+		"\n"
+		".. math::\n"
+		"     q = \\\\frac 1 {t_r} {\\\\left(\\\\frac{V - V_{residual}}{V_0}\n"
+		"    \\\\right)^\\\\beta} \n"
+		"\n"
+		"\n"
 		"\n"
 		"Parameters:\n"
 		"-----------\n"
@@ -70774,20 +70786,20 @@ static PyMethodDef SwigMethods[] = {
 		"target:  Target node (boundary condition or storage). Does not\n"
 		"influence the strength of the flow\n"
 		"\n"
-		"residencetime:   $t_r [days]$ The residence time of the water in this\n"
+		"residencetime:   :math:`$t_r [days]$` The residence time of the water in this\n"
 		"storage\n"
 		"\n"
-		"exponent:   $\\\\beta [-]$ An empirical exponent to shape the flux\n"
+		"exponent:   :math:`$\\\\beta [-]$` An empirical exponent to shape the flux\n"
 		"function (default = 1 (linear function))\n"
 		"\n"
-		"residual:   $V_{residual} [m^3]$ The volume of water not flowing out\n"
+		"residual:   :math:`$V_{residual} [m^3]$` The volume of water not flowing out\n"
 		"(default = 0)\n"
 		"\n"
-		"V0:   $V_0$ The reference volume to scale the exponent\n"
+		"V0:   :math:`$V_0$` The reference volume to scale the exponent\n"
 		"\n"
-		"Vrmax:   $V_{r,max}$ Capacity of the target water storage in m3\n"
+		"Vrmax:   :math:`$V_{r,max}$` Capacity of the target water storage in m3\n"
 		"\n"
-		"gamma:   $\\\\gamma$ Target capacity constriction curve shape \n"
+		"gamma:   :math:`$\\\\gamma$` Target capacity constriction curve shape \n"
 		""},
 	 { (char *)"delete_constraint_kinematic_wave", (PyCFunction)_wrap_delete_constraint_kinematic_wave, METH_O, (char *)"delete_constraint_kinematic_wave(constraint_kinematic_wave self)"},
 	 { (char *)"constraint_kinematic_wave_swigregister", constraint_kinematic_wave_swigregister, METH_VARARGS, NULL},
@@ -70816,7 +70828,7 @@ static PyMethodDef SwigMethods[] = {
 		"\n"
 		"target:  The target of the water\n"
 		"\n"
-		"maximum_flux:  The requested flux $q_{0}$\n"
+		"maximum_flux:  The requested flux :math:`$q_{0}$`\n"
 		"\n"
 		"minimal_state:  Minimal volume of stored water in source\n"
 		"\n"
@@ -70879,9 +70891,9 @@ static PyMethodDef SwigMethods[] = {
 		"other_end:  source of missing water or target of excessive water\n"
 		"\n"
 		"target_state:  State the controlled storage should hold (\n"
-		"$h_{target}$)\n"
+		":math:`$h_{target}$`)\n"
 		"\n"
-		"reaction_time:  Time to reach state ( $t_c$) \n"
+		"reaction_time:  Time to reach state ( :math:`$t_c$`) \n"
 		""},
 	 { (char *)"delete_statecontrol_connection", (PyCFunction)_wrap_delete_statecontrol_connection, METH_O, (char *)"delete_statecontrol_connection(statecontrol_connection self)"},
 	 { (char *)"statecontrol_connection_swigregister", statecontrol_connection_swigregister, METH_VARARGS, NULL},
@@ -70943,8 +70955,12 @@ static PyMethodDef SwigMethods[] = {
 		"\n"
 		"Returns the sum of the water balances of the nodes.\n"
 		"\n"
-		"\\\\[\\\\sigma_{global} =\n"
-		"\\\\sum_{i=0}^N{\\\\sum_{j=0}^{C_i}{q_{ij}(t)}} \\\\]\n"
+		"\n"
+		".. math::\n"
+		"    \\\\sigma_{global} =\n"
+		"    \\\\sum_{i=0}^N{\\\\sum_{j=0}^{C_i}{q_{ij}(t)}} \n"
+		"\n"
+		"\n"
 		"\n"
 		"Replaces slow Python code like: \n"
 		""},
@@ -70955,7 +70971,11 @@ static PyMethodDef SwigMethods[] = {
 		"\n"
 		"Returns the water balance of each vector as a vector.\n"
 		"\n"
-		"\\\\[ \\\\sigma_i = \\\\sum_{j=0}^{C_i}{q_{ij}(t)} \\\\]\n"
+		"\n"
+		".. math::\n"
+		"     \\\\sigma_i = \\\\sum_{j=0}^{C_i}{q_{ij}(t)} \n"
+		"\n"
+		"\n"
 		"\n"
 		"Replaces slow Python code like: \n"
 		""},
@@ -71082,8 +71102,12 @@ static PyMethodDef SwigMethods[] = {
 		"global_water_balance(cmf::math::Time t) const\n"
 		"\n"
 		"Returns the sum of the water balances of the nodes\n"
-		"\\\\[\\\\sigma_{global} =\n"
-		"\\\\sum_{i=0}^N{\\\\sum_{j=0}^{C_i}{q_{ij}(t)}} \\\\].\n"
+		"\n"
+		".. math::\n"
+		"    \\\\sigma_{global} =\n"
+		"    \\\\sum_{i=0}^N{\\\\sum_{j=0}^{C_i}{q_{ij}(t)}} \n"
+		"\n"
+		".\n"
 		"\n"
 		"Replaces slow Python code like: \n"
 		""},
@@ -71092,8 +71116,12 @@ static PyMethodDef SwigMethods[] = {
 		"\n"
 		"cmf::math::num_array water_balance(cmf::math::Time t) const\n"
 		"\n"
-		"Returns the water balance of each vector as a vector \\\\[ \\\\sigma_i\n"
-		"= \\\\sum_{j=0}^{C_i}{q_{ij}(t)} \\\\].\n"
+		"Returns the water balance of each vector as a vector \n"
+		".. math::\n"
+		"     \\\\sigma_i\n"
+		"    = \\\\sum_{j=0}^{C_i}{q_{ij}(t)} \n"
+		"\n"
+		".\n"
 		"\n"
 		"Replaces slow Python code like: \n"
 		""},
@@ -71164,9 +71192,13 @@ static PyMethodDef SwigMethods[] = {
 		"\n"
 		"Returns the saturated vapor pressure in Pa for temperature T [degC].\n"
 		"\n"
-		"The saturated vapor pressure $e_s$ is calculated follwing the\n"
-		"following formula \\\\[e_s = 0.6108 \\\\exp{\\\\frac{17.27\n"
-		"T}{T+237.3}}\\\\] The definition is\n"
+		"The saturated vapor pressure :math:`$e_s$` is calculated follwing the\n"
+		"following formula \n"
+		".. math::\n"
+		"    e_s = 0.6108 \\\\exp{\\\\frac{17.27\n"
+		"    T}{T+237.3}}\n"
+		"\n"
+		" The definition is\n"
 		"fromhttp://www.fao.org/docrep/X0490E/x0490e07.htm#concepts \n"
 		""},
 	 { (char *)"vpd_from_rH", (PyCFunction) _wrap_vpd_from_rH, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
@@ -71180,8 +71212,12 @@ static PyMethodDef SwigMethods[] = {
 		"\n"
 		"humidity rH [%]\n"
 		"\n"
-		"The vapor pressure deficit $e_s - e_a$ is calculated from rel.\n"
-		"humidity as: \\\\[e_s - e_a = (1-rH/100) * e_s(T)\\\\] The definition\n"
+		"The vapor pressure deficit :math:`$e_s - e_a$` is calculated from rel.\n"
+		"humidity as: \n"
+		".. math::\n"
+		"    e_s - e_a = (1-rH/100) * e_s(T)\n"
+		"\n"
+		" The definition\n"
 		"is fromhttp://www.fao.org/docrep/X0490E/x0490e07.htm#concepts\n"
 		"\n"
 		"Parameters:\n"
@@ -71191,7 +71227,7 @@ static PyMethodDef SwigMethods[] = {
 		"\n"
 		"rH:  Rel. humidity in %\n"
 		"\n"
-		"$e_s(T)$ is calculated using cmf::atmosphere::vapor_pressure(double)\n"
+		":math:`$e_s(T)$` is calculated using cmf::atmosphere::vapor_pressure(double)\n"
 		"\n"
 		""},
 	 { (char *)"rH_from_vpd", (PyCFunction) _wrap_rH_from_vpd, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
@@ -71206,8 +71242,12 @@ static PyMethodDef SwigMethods[] = {
 		"[Pa]\n"
 		"\n"
 		"the rel. humidity is calculated from the vapor pressure deficit $vpd =\n"
-		"e_s - e_a$ as: \\\\[rH = 100 * \\\\frac{e_a}{e_s(T)}, e_a = e_s(T) -\n"
-		"vpd\\\\] The definition is\n"
+		"e_s - e_a$ as: \n"
+		".. math::\n"
+		"    rH = 100 * \\\\frac{e_a}{e_s(T)}, e_a = e_s(T) -\n"
+		"    vpd\n"
+		"\n"
+		" The definition is\n"
 		"fromhttp://www.fao.org/docrep/X0490E/x0490e07.htm#concepts\n"
 		"\n"
 		"Parameters:\n"
@@ -71217,7 +71257,7 @@ static PyMethodDef SwigMethods[] = {
 		"\n"
 		"vpd:  Vapor pressure deficit in Pa\n"
 		"\n"
-		"$e_s(T)$ is calculated using cmf::atmosphere::vapor_pressure(double)\n"
+		":math:`$e_s(T)$` is calculated using cmf::atmosphere::vapor_pressure(double)\n"
 		"\n"
 		""},
 	 { (char *)"global_radiation", (PyCFunction) _wrap_global_radiation, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
@@ -71343,7 +71383,7 @@ static PyMethodDef SwigMethods[] = {
 		"Parameters:\n"
 		"-----------\n"
 		"\n"
-		"albedo:  the albedo $\\\\alpha$ of the surface\n"
+		"albedo:  the albedo :math:`$\\\\alpha$` of the surface\n"
 		"\n"
 		"daily:  If true, the net radiation for daily averages will be\n"
 		"calculated \n"
@@ -71649,8 +71689,8 @@ static PyMethodDef SwigMethods[] = {
 		"at position.\n"
 		"\n"
 		"The distance is calculated as $ d=\\\\sqrt{(x_{s} - x_{l})^2 + (y_{s}\n"
-		"- y_{l})^2} + \\\\lambda_z\\\\|z_{s} - z_{l}\\\\| $ Where $s$ is the\n"
-		"station and $l$ is the locatable A Meteorology using the data of the\n"
+		"- y_{l})^2} + \\\\lambda_z\\\\|z_{s} - z_{l}\\\\| :math:`$ Where $`s$ is the\n"
+		"station and :math:`$l$` is the locatable A Meteorology using the data of the\n"
 		"nearest station to position\n"
 		"\n"
 		"Parameters:\n"
@@ -71659,7 +71699,7 @@ static PyMethodDef SwigMethods[] = {
 		"position:  The position (any locatable, like e.g. Cell possible) to\n"
 		"look for the station. The reference should be owned by the locatable\n"
 		"\n"
-		"z_weight:  The weight of the height difference $\\\\lambda_z$ \n"
+		"z_weight:  The weight of the height difference :math:`$\\\\lambda_z$` \n"
 		""},
 	 { (char *)"delete_MeteoStationList", (PyCFunction)_wrap_delete_MeteoStationList, METH_O, (char *)"delete_MeteoStationList(MeteoStationList self)"},
 	 { (char *)"MeteoStationList_swigregister", MeteoStationList_swigregister, METH_VARARGS, NULL},
@@ -72068,9 +72108,13 @@ static PyMethodDef SwigMethods[] = {
 		"\n"
 		"The covered fraction (0..1) is simply modelled as a piecewise linear\n"
 		"function of the surface water depth. If the depth is above the\n"
-		"aggregate height, the coverage is 1, below it is given as \\\\[ c =\n"
-		"\\\\frac{h_{water}}{\\\\Delta h_{surface}}\\\\] with c the coverage,\n"
-		"$h_{water}$ the depth of the surface water and $\\\\Delta h_{surface}$\n"
+		"aggregate height, the coverage is 1, below it is given as \n"
+		".. math::\n"
+		"     c =\n"
+		"    \\\\frac{h_{water}}{\\\\Delta h_{surface}}\n"
+		"\n"
+		" with c the coverage,\n"
+		":math:`$h_{water}$` the depth of the surface water and :math:`$\\\\Delta h_{surface}$`\n"
 		"the amplitude of the surface roughness \n"
 		""},
 	 { (char *)"Cell_heat_flux", (PyCFunction) _wrap_Cell_heat_flux, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
@@ -72399,9 +72443,13 @@ static PyMethodDef SwigMethods[] = {
 		"\n"
 		"virtual real Wetness_eff(real wetness, real pF_r=4.2) const\n"
 		"\n"
-		"Returns the effective wetness, using a residual pF value \\\\[w_{eff}\n"
-		"=\n"
-		"\\\\frac{w_{act}-w\\\\left(pF_r\\\\right)}{1-w\\\\left(pF_r\\\\right)}\\\\].\n"
+		"Returns the effective wetness, using a residual pF value \n"
+		".. math::\n"
+		"    w_{eff}\n"
+		"    =\n"
+		"    \\\\frac{w_{act}-w\\\\left(pF_r\\\\right)}{1-w\\\\left(pF_r\\\\right)}\n"
+		"\n"
+		".\n"
 		"\n"
 		""},
 	 { (char *)"RetentionCurve_Porosity", (PyCFunction) _wrap_RetentionCurve_Porosity, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
@@ -72497,16 +72545,16 @@ static PyMethodDef SwigMethods[] = {
 		"Parameters:\n"
 		"-----------\n"
 		"\n"
-		"ksat:  Saturated conductivity $\\\\frac{m}{day}$\n"
+		"ksat:  Saturated conductivity :math:`$\\\\frac{m}{day}$`\n"
 		"\n"
-		"porosity:   $\\\\frac {m^3 Pores}{m^3 Soil}$\n"
+		"porosity:   :math:`$\\\\frac {m^3 Pores}{m^3 Soil}$`\n"
 		"\n"
 		"_b:  Shape of the retention curve (if you do not know how to\n"
 		"parameterize this, take a look at the other constructor)\n"
 		"\n"
-		"theta_x:   $\\\\theta_X$ Water content at a specific suction pressure\n"
+		"theta_x:   :math:`$\\\\theta_X$` Water content at a specific suction pressure\n"
 		"\n"
-		"psi_x:  Suction pressure for $\\\\theta_X$ in m water column, use the\n"
+		"psi_x:  Suction pressure for :math:`$\\\\theta_X$` in m water column, use the\n"
 		"conversion functions pF_to_waterhead, pressure_to_waterhead to convert\n"
 		"pressure in to waterhead height (default pF=2.5)\n"
 		"\n"
@@ -72582,11 +72630,11 @@ static PyMethodDef SwigMethods[] = {
 		"Parameters:\n"
 		"-----------\n"
 		"\n"
-		"Ksat:  Saturated conductivity in $\\\\frac m{day}$\n"
+		"Ksat:  Saturated conductivity in :math:`$\\\\frac m{day}$`\n"
 		"\n"
-		"phi:  Porosity in $\\\\frac{m^3 Pores}{m^3 Soil}$\n"
+		"phi:  Porosity in :math:`$\\\\frac{m^3 Pores}{m^3 Soil}$`\n"
 		"\n"
-		"alpha:  Van Genuchten $\\\\alpha$ in $\\\\frac 1{cm}$\n"
+		"alpha:  Van Genuchten :math:`$\\\\alpha$` in :math:`$\\\\frac 1{cm}$`\n"
 		"\n"
 		"n:  Van Genuchten n\n"
 		"\n"
@@ -72644,11 +72692,11 @@ static PyMethodDef SwigMethods[] = {
 		"Parameters:\n"
 		"-----------\n"
 		"\n"
-		"Ksat:  Saturated conductivity in $\\\\frac m{day}$\n"
+		"Ksat:  Saturated conductivity in :math:`$\\\\frac m{day}$`\n"
 		"\n"
-		"phi:  Porosity in $\\\\frac{m^3 Pores}{m^3 Soil}$\n"
+		"phi:  Porosity in :math:`$\\\\frac{m^3 Pores}{m^3 Soil}$`\n"
 		"\n"
-		"alpha:  Van Genuchten $\\\\alpha$ in $\\\\frac 1{cm}$\n"
+		"alpha:  Van Genuchten :math:`$\\\\alpha$` in :math:`$\\\\frac 1{cm}$`\n"
 		"\n"
 		"n:  Van Genuchten n\n"
 		"\n"
@@ -72712,9 +72760,13 @@ static PyMethodDef SwigMethods[] = {
 		"\n"
 		"virtual real get_saturated_depth() const\n"
 		"\n"
-		"Returns the depth for saturation \\\\[ z_{sat,this} =\n"
-		"\\\\left\\\\{z_{cell}-\\\\Psi_{tot} \\\\mbox{ if } W<1 \\\\\\\\\n"
-		"z_{sat,upper layer} \\\\right. \\\\]. \n"
+		"Returns the depth for saturation \n"
+		".. math::\n"
+		"     z_{sat,this} =\n"
+		"    \\\\left\\\\{z_{cell}-\\\\Psi_{tot} \\\\mbox{ if } W<1 \\\\\\\\\n"
+		"    z_{sat,upper layer} \\\\right. \n"
+		"\n"
+		". \n"
 		""},
 	 { (char *)"SoilLayer_get_flow_crosssection", (PyCFunction) _wrap_SoilLayer_get_flow_crosssection, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
 		"SoilLayer_get_flow_crosssection(SoilLayer self, SoilLayer target, bool HorizontalLayers=False) -> real\n"
@@ -72923,14 +72975,18 @@ static PyMethodDef SwigMethods[] = {
 		"\n"
 		"The approximate length of the aggregate boundaries.\n"
 		"\n"
-		"\\\\[l = \\\\frac{2}{d_{macro}} A\\\\] where:  $l$ is the length of\n"
+		"\n"
+		".. math::\n"
+		"    l = \\\\frac{2}{d_{macro}} A\n"
+		"\n"
+		" where:  :math:`$l$` is the length of\n"
 		"the aggregate boundaries (in m)\n"
 		"\n"
-		"$2$ is the number of directions\n"
+		":math:`$2$` is the number of directions\n"
 		"\n"
-		"$d_{macro}$ is the mean distance between macropores (density) in m\n"
+		":math:`$d_{macro}$` is the mean distance between macropores (density) in m\n"
 		"\n"
-		"$A$ is the area of the cell \n"
+		":math:`$A$` is the area of the cell \n"
 		""},
 	 { (char *)"MacroPore_K_shape_set", _wrap_MacroPore_K_shape_set, METH_VARARGS, (char *)"MacroPore_K_shape_set(MacroPore self, real K_shape)"},
 	 { (char *)"MacroPore_K_shape_get", (PyCFunction)_wrap_MacroPore_K_shape_get, METH_O, (char *)"MacroPore_K_shape_get(MacroPore self) -> real"},
@@ -73598,8 +73654,12 @@ static PyMethodDef SwigMethods[] = {
 		"\n"
 		"Returns the conductivity in m/day for a specific direction.\n"
 		"\n"
-		"Takes account for anisotropy \\\\[ \\\\|K\\\\|(d) =\n"
-		"\\\\frac{d}{\\\\|d\\\\|} \\\\bullet K\\\\] \n"
+		"Takes account for anisotropy \n"
+		".. math::\n"
+		"     \\\\|K\\\\|(d) =\n"
+		"    \\\\frac{d}{\\\\|d\\\\|} \\\\bullet K\n"
+		"\n"
+		" \n"
 		""},
 	 { (char *)"aquifer_get_abs_errtol", (PyCFunction) _wrap_aquifer_get_abs_errtol, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
 		"aquifer_get_abs_errtol(aquifer self, real rel_errtol) -> real\n"
@@ -74220,15 +74280,19 @@ static PyMethodDef SwigMethods[] = {
 		"from a single soillayer sw according to root depth and the potential\n"
 		"transpiration (or ETpot if there is no difference) in mm/day The water\n"
 		"flux is calculated as follows:\n"
-		"\\\\[q_{T_{pot}}[m^3/day]=T_{pot}[mm/day] 10^{-3}[mm/m]A_{cell}[m^2]\n"
-		"f_r\\\\] where:  $q_{T_{pot}}$: the potential transpiration flux from\n"
+		"\n"
+		".. math::\n"
+		"    q_{T_{pot}}[m^3/day]=T_{pot}[mm/day] 10^{-3}[mm/m]A_{cell}[m^2]\n"
+		"    f_r\n"
+		"\n"
+		" where:  :math:`$q_{T_{pot}}$`: the potential transpiration flux from\n"
 		"this layer\n"
 		"\n"
-		"$T_{pot}$: the potential transpiration for the cell\n"
+		":math:`$T_{pot}$`: the potential transpiration for the cell\n"
 		"\n"
-		"$A_{cell}$: the area of the cell\n"
+		":math:`$A_{cell}$`: the area of the cell\n"
 		"\n"
-		"$f_r=\\\\frac{R_{layer}}{\\\\sum_{i=0}^{layers}{R_i}}$: the root mass\n"
+		":math:`$f_r=\\\\frac{R_{layer}}{\\\\sum_{i=0}^{layers}{R_i}}$`: the root mass\n"
 		"in this layer per total root mass at this cell. This is calculated\n"
 		"with the cmf::upslope::vegetation::Vegetation::RootFraction \n"
 		""},
@@ -74398,28 +74462,28 @@ static PyMethodDef SwigMethods[] = {
 		"\\\\frac{d_i(x,y,z)^{-p}}{\\\\sum^N_{j=0}{d_j(x,y,z)^{-p}}} \\\\\\\\\n"
 		"d_i(x,y,z) &=& w_z \\\\left|z-z_i\\\\right| +\n"
 		"\\\\sqrt{\\\\left(x-x_i\\\\right)^2 + \\\\left(y-y_i\\\\right)^2}\n"
-		"\\\\end{eqnarray*}  $N$ is the number of stations\n"
+		"\\\\end{eqnarray*}  :math:`$N$` is the number of stations\n"
 		"\n"
-		"$f_i(t)$ the meteorological value at time t, eg. Temperature, Humidity\n"
+		":math:`$f_i(t)$` the meteorological value at time t, eg. Temperature, Humidity\n"
 		"\n"
-		"$w_i$ is the weight of station i\n"
+		":math:`$w_i$` is the weight of station i\n"
 		"\n"
-		"$d_i$ is the distance from x,y,z to station i\n"
+		":math:`$d_i$` is the distance from x,y,z to station i\n"
 		"\n"
-		"$p$ the power of the weighting function, usually 2.\n"
+		":math:`$p$` the power of the weighting function, usually 2.\n"
 		"\n"
-		"$x_i,y_i,z_i$ is the position of station i in space\n"
+		":math:`$x_i,y_i,z_i$` is the position of station i in space\n"
 		"\n"
-		"$w_z$ is a factor to weight the vertical distance between stations and\n"
+		":math:`$w_z$` is a factor to weight the vertical distance between stations and\n"
 		"the cell. 0 results in a pure horizontal interpolation (normal IDW).\n"
-		"If $w_z=1$, height difference is as important as horizontal distance,\n"
-		"and with $w_z>1$ the height difference is weighted more important than\n"
+		"If :math:`$w_z=1$`, height difference is as important as horizontal distance,\n"
+		"and with :math:`$w_z>1$` the height difference is weighted more important than\n"
 		"horizontal distance See:  IDW_Meteorology\n"
 		"\n"
 		"Parameters:\n"
 		"-----------\n"
 		"\n"
-		"z_weight:   $w_z$ the weight of height difference between cell and\n"
+		"z_weight:   :math:`$w_z$` the weight of height difference between cell and\n"
 		"station\n"
 		"\n"
 		"power:  the power of the distance weight \n"
@@ -74433,25 +74497,29 @@ static PyMethodDef SwigMethods[] = {
 		"Connects all cells of the project with its nearest meteorological\n"
 		"station.\n"
 		"\n"
-		"Distance is calculated as follows: \\\\[d_i(x,y,z) = w_z\n"
-		"\\\\left|z-z_i\\\\right| + \\\\sqrt{\\\\left(x-x_i\\\\right)^2 +\n"
-		"\\\\left(y-y_i\\\\right)^2} \\\\]  $d_i$ is the distance from x,y,z to\n"
+		"Distance is calculated as follows: \n"
+		".. math::\n"
+		"    d_i(x,y,z) = w_z\n"
+		"    \\\\left|z-z_i\\\\right| + \\\\sqrt{\\\\left(x-x_i\\\\right)^2 +\n"
+		"    \\\\left(y-y_i\\\\right)^2} \n"
+		"\n"
+		"  :math:`$d_i$` is the distance from x,y,z to\n"
 		"station i\n"
 		"\n"
-		"$p$ the power of the weighting function, usually 2.\n"
+		":math:`$p$` the power of the weighting function, usually 2.\n"
 		"\n"
-		"$x_i,y_i,z_i$ is the position of station i in space\n"
+		":math:`$x_i,y_i,z_i$` is the position of station i in space\n"
 		"\n"
-		"$w_z$ is a factor to weight the vertical distance between stations and\n"
+		":math:`$w_z$` is a factor to weight the vertical distance between stations and\n"
 		"the cell. 0 results in a pure horizontal interpolation (normal IDW).\n"
-		"If $w_z=1$, height difference is as important as horizontal distance,\n"
-		"and with $w_z>1$ the height difference is weighted more important than\n"
+		"If :math:`$w_z=1$`, height difference is as important as horizontal distance,\n"
+		"and with :math:`$w_z>1$` the height difference is weighted more important than\n"
 		"horizontal distance\n"
 		"\n"
 		"Parameters:\n"
 		"-----------\n"
 		"\n"
-		"z_weight:   $w_z$ the weight of height difference between cell and\n"
+		"z_weight:   :math:`$w_z$` the weight of height difference between cell and\n"
 		"station \n"
 		""},
 	 { (char *)"project_use_IDW_rainfall", (PyCFunction) _wrap_project_use_IDW_rainfall, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
@@ -74472,28 +74540,28 @@ static PyMethodDef SwigMethods[] = {
 		"\\\\frac{d_i(x,y,z)^{-p}}{\\\\sum^N_{j=0}{d_j(x,y,z)^{-p}}} \\\\\\\\\n"
 		"d_i(x,y,z) &=& w_z \\\\left|z-z_i\\\\right| +\n"
 		"\\\\sqrt{\\\\left(x-x_i\\\\right)^2 + \\\\left(y-y_i\\\\right)^2}\n"
-		"\\\\end{eqnarray*}  $N$ is the number of stations\n"
+		"\\\\end{eqnarray*}  :math:`$N$` is the number of stations\n"
 		"\n"
-		"$P_i(t)$ the meteorological value at time t, eg. Temperature, Humidity\n"
+		":math:`$P_i(t)$` the meteorological value at time t, eg. Temperature, Humidity\n"
 		"\n"
-		"$w_i$ is the weight of station i\n"
+		":math:`$w_i$` is the weight of station i\n"
 		"\n"
-		"$d_i$ is the distance from x,y,z to station i\n"
+		":math:`$d_i$` is the distance from x,y,z to station i\n"
 		"\n"
-		"$p$ the power of the weighting function, usually 2.\n"
+		":math:`$p$` the power of the weighting function, usually 2.\n"
 		"\n"
-		"$x_i,y_i,z_i$ is the position of station i in space\n"
+		":math:`$x_i,y_i,z_i$` is the position of station i in space\n"
 		"\n"
-		"$w_z$ is a factor to weight the vertical distance between stations and\n"
+		":math:`$w_z$` is a factor to weight the vertical distance between stations and\n"
 		"the cell. 0 results in a pure horizontal interpolation (normal IDW).\n"
-		"If $w_z=1$, height difference is as important as horizontal distance,\n"
-		"and with $w_z>1$ the height difference is weighted more important than\n"
+		"If :math:`$w_z=1$`, height difference is as important as horizontal distance,\n"
+		"and with :math:`$w_z>1$` the height difference is weighted more important than\n"
 		"horizontal distance See:  IDW_Meteorology\n"
 		"\n"
 		"Parameters:\n"
 		"-----------\n"
 		"\n"
-		"z_weight:   $w_z$ the weight of height difference between cell and\n"
+		"z_weight:   :math:`$w_z$` the weight of height difference between cell and\n"
 		"station\n"
 		"\n"
 		"power:  the power of the distance weight \n"
@@ -74506,25 +74574,29 @@ static PyMethodDef SwigMethods[] = {
 		"\n"
 		"Connects all cells of the project with its nearest rainfall station.\n"
 		"\n"
-		"Distance is calculated as follows: \\\\[d_i(x,y,z) = w_z\n"
-		"\\\\left|z-z_i\\\\right| + \\\\sqrt{\\\\left(x-x_i\\\\right)^2 +\n"
-		"\\\\left(y-y_i\\\\right)^2} \\\\]  $d_i$ is the distance from x,y,z to\n"
+		"Distance is calculated as follows: \n"
+		".. math::\n"
+		"    d_i(x,y,z) = w_z\n"
+		"    \\\\left|z-z_i\\\\right| + \\\\sqrt{\\\\left(x-x_i\\\\right)^2 +\n"
+		"    \\\\left(y-y_i\\\\right)^2} \n"
+		"\n"
+		"  :math:`$d_i$` is the distance from x,y,z to\n"
 		"station i\n"
 		"\n"
-		"$p$ the power of the weighting function, usually 2.\n"
+		":math:`$p$` the power of the weighting function, usually 2.\n"
 		"\n"
-		"$x_i,y_i,z_i$ is the position of station i in space\n"
+		":math:`$x_i,y_i,z_i$` is the position of station i in space\n"
 		"\n"
-		"$w_z$ is a factor to weight the vertical distance between stations and\n"
+		":math:`$w_z$` is a factor to weight the vertical distance between stations and\n"
 		"the cell. 0 results in a pure horizontal interpolation (normal IDW).\n"
-		"If $w_z=1$, height difference is as important as horizontal distance,\n"
-		"and with $w_z>1$ the height difference is weighted more important than\n"
+		"If :math:`$w_z=1$`, height difference is as important as horizontal distance,\n"
+		"and with :math:`$w_z>1$` the height difference is weighted more important than\n"
 		"horizontal distance\n"
 		"\n"
 		"Parameters:\n"
 		"-----------\n"
 		"\n"
-		"z_weight:   $w_z$ the weight of height difference between cell and\n"
+		"z_weight:   :math:`$w_z$` the weight of height difference between cell and\n"
 		"station \n"
 		""},
 	 { (char *)"project_get_cell", (PyCFunction) _wrap_project_get_cell, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
