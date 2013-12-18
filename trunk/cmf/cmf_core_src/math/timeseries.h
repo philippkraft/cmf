@@ -90,7 +90,7 @@ namespace cmf {
 			}
 			cmf::math::Time time_at_position(ptrdiff_t pos) const
 			{
-				return begin()+step()*(pos<0 ? size()+pos : pos);
+				return begin()+step()*(long long)(pos<0 ? size()+pos : pos);
 			}
 		protected:
 		public:
