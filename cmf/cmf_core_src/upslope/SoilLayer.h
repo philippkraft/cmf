@@ -70,7 +70,7 @@ namespace cmf {
 
 		public:
 
-			const int Position;
+			const ptrdiff_t Position;
 			cmf::upslope::Cell & cell;
 			/// Returns the upper boundary of the water storage below ground in m
 			virtual real get_upper_boundary() const {return m_upperboundary;}
@@ -149,7 +149,7 @@ namespace cmf {
 			SoilLayer(cmf::upslope::Cell & _cell,real lowerboundary,
 				const RetentionCurve& r_curve,real saturateddepth=10);
 			SoilLayer(cmf::upslope::Cell & _cell,real upperBoundary,real lowerboundary,
-												const RetentionCurve& r_curve,int _Position);
+												const RetentionCurve& r_curve,ptrdiff_t _Position);
 			/// Invalidates the saturated depth of the cell
 			virtual void StateChangeAction();
 

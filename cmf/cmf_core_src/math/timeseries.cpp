@@ -37,7 +37,7 @@ double cmf::math::timeseries::position( Time t ) const
 	if (pos<0)
 		return 0;
 	else if (pos>m_data->values.size()-1)
-		return m_data->values.size()-1;
+		return double(m_data->values.size()-1);
 	else
 		return pos;
 }
@@ -54,12 +54,12 @@ double cmf::math::timeseries::interpolate( cmf::math::Time t,double n ) const
 		return m_data->values[size_t(pos+.5)];
 	}
 	//If the position is very near to a saved point, return the saved point
-	if (pos-int(pos)<0.0001)
+	if (pos-ptrdiff_t(pos)<0.0001)
 		return m_data->values[size_t(pos)];
 	else
 	{
-		int ipos=int(pos);
-		if (ipos>=int(m_data->values.size())-1) 
+		ptrdiff_t ipos=ptrdiff_t(pos);
+		if (ipos>=ptrdiff_t(m_data->values.size())-1) 
 			return m_data->values[ipos];
 		else
 		{
@@ -80,35 +80,35 @@ double cmf::math::timeseries::interpolate( cmf::math::Time t,double n ) const
 cmf::math::timeseries& cmf::math::timeseries::operator-=( double _Right )
 {
 #pragma omp parallel for
-	for (int i = 0; i < size(); ++i)
+	for (ptrdiff_t i = 0; i < size(); ++i)
 		m_data->values[i] -= _Right;
 	return (*this);
 }
 cmf::math::timeseries& cmf::math::timeseries::operator+=( double _Right )
 {
 #pragma omp parallel for
-	for (int i = 0; i < size(); ++i)
+	for (ptrdiff_t i = 0; i < size(); ++i)
 		m_data->values[i] += _Right;
 	return (*this);
 }
 cmf::math::timeseries& cmf::math::timeseries::operator*=( double _Right )
 {
 #pragma omp parallel for
-	for (int i = 0; i < size(); ++i)
+	for (ptrdiff_t i = 0; i < size(); ++i)
 		m_data->values[i] *= _Right;
 	return (*this);
 }
 cmf::math::timeseries& cmf::math::timeseries::operator/=( double _Right )
 {
 #pragma omp parallel for
-	for (int i = 0; i < size(); ++i)
+	for (ptrdiff_t i = 0; i < size(); ++i)
 		m_data->values[i] /= _Right;
 	return (*this);
 }
 cmf::math::timeseries& cmf::math::timeseries::operator+=(timeseries _Right )
 {
 #pragma omp parallel for
-	for (int i = 0; i < size(); ++i) {
+	for (ptrdiff_t i = 0; i < size(); ++i) {
 		Time t = time_at_position(i);
 		m_data->values[i] += _Right[t];
 	}
@@ -117,21 +117,21 @@ cmf::math::timeseries& cmf::math::timeseries::operator+=(timeseries _Right )
 cmf::math::timeseries& cmf::math::timeseries::operator-=(timeseries _Right )
 {
 #pragma omp parallel for
-	for (int i = 0; i < size(); ++i)
+	for (ptrdiff_t i = 0; i < size(); ++i)
 		m_data->values[i] -= _Right[time_at_position(i)];
 	return (*this);
 }
 cmf::math::timeseries& cmf::math::timeseries::operator*=(timeseries _Right )
 {
 #pragma omp parallel for
-	for (int i = 0; i < size(); ++i)
+	for (ptrdiff_t i = 0; i < size(); ++i)
 		m_data->values[i] *= _Right[time_at_position(i)];
 	return (*this);
 }
 cmf::math::timeseries& cmf::math::timeseries::operator/=(timeseries _Right )
 {
 #pragma omp parallel for
-	for (int i = 0; i < size(); ++i)
+	for (ptrdiff_t i = 0; i < size(); ++i)
 		m_data->values[i] /= _Right[time_at_position(i)];
 	return (*this);
 }
@@ -146,7 +146,7 @@ cmf::math::timeseries cmf::math::timeseries::reduce_min( cmf::math::Time begin,c
 	}
 	cmf::math::timeseries res(begin,step);
 	cmf::math::Time t=begin;
-  int pos=0;
+  ptrdiff_t pos=0;
 	res.add(org[t]);
 	while (t<org.end())
 	{
@@ -168,7 +168,7 @@ cmf::math::timeseries cmf::math::timeseries::reduce_max( cmf::math::Time begin,c
 	}
 	cmf::math::timeseries res(begin,step);
 	cmf::math::Time t=begin;
-	int pos=0;
+	ptrdiff_t pos=0;
 	while (t<org.end())
 	{
 		double v=org[t];
@@ -189,7 +189,7 @@ cmf::math::timeseries cmf::math::timeseries::reduce_sum( cmf::math::Time begin,c
 	}
 	cmf::math::timeseries res(begin,step);
 	cmf::math::Time t=begin;
-	int pos=0;
+	ptrdiff_t pos=0;
 	while (t<org.end())
 	{
 		double v=0;
@@ -210,10 +210,10 @@ cmf::math::timeseries cmf::math::timeseries::reduce_avg( cmf::math::Time begin,c
 	}
 	cmf::math::timeseries res(begin,step);
 	cmf::math::Time t=begin;
-	int pos=0;
+	ptrdiff_t pos=0;
 	while (t<org.end())
 	{
-		double v=0;int count=0;
+		double v=0;ptrdiff_t count=0;
 		for (cmf::math::Time t2=t;t2<t+step;t2+=org.step())
 		{
 			v+=org[t2];
@@ -243,10 +243,10 @@ cmf::math::timeseries cmf::math::timeseries::get_slice( cmf::math::Time _begin,c
 	return res;
 }
 
-cmf::math::timeseries cmf::math::timeseries::get_slice( int _begin,int _end,int _step/*=1*/ )
+cmf::math::timeseries cmf::math::timeseries::get_slice( ptrdiff_t _begin,ptrdiff_t _end,ptrdiff_t _step/*=1*/ )
 {
 	timeseries res(time_at_position(_begin),step()*_step);
-	for (int i = (_begin<0?_begin+size():_begin); i < (_end > size() ? size() : _end); i+=_step)
+	for (ptrdiff_t i = (_begin<0?_begin+size():_begin); i < (_end > size() ? size() : _end); i+=_step)
 	{
 		res.add(this->get_i(i));
 	}
@@ -258,9 +258,9 @@ void cmf::math::timeseries::set_slice( cmf::math::Time _begin,cmf::math::Time _e
 		set_t(t,_values.get_t(t));
 }
 
-void cmf::math::timeseries::set_slice( int _begin,int _end,cmf::math::timeseries _values )
+void cmf::math::timeseries::set_slice( ptrdiff_t _begin,ptrdiff_t _end,cmf::math::timeseries _values )
 {
-	for (int i = (_begin<0?_begin+size():_begin); i < (_end > size() ? size() : _end); ++i)
+	for (ptrdiff_t i = (_begin<0?_begin+size():_begin); i < (_end > size() ? size() : _end); ++i)
 	{
 		set_i(i,_values.get_t(time_at_position(i)));
 	}
@@ -321,7 +321,7 @@ cmf::math::timeseries cmf::math::timeseries::operator -() const {
 cmf::math::timeseries cmf::math::timeseries::inv() const
 {
 	timeseries res(begin(),step());																									
-	for (int i = 0; i < size() ; ++i)
+	for (ptrdiff_t i = 0; i < size() ; ++i)
 	{
 		res.add(1/get_i(i));
 	}
@@ -357,7 +357,7 @@ cmf::math::timeseries cmf::math::timeseries::floating_avg( size_t window_size ) 
 	cmf::math::timeseries res(begin(),step(),interpolationpower(),size());
 	std::vector<double> window_content(window_size, get_i(0));
 	size_t half_size=window_size/2;
-	for (int i = 0; i < size(); ++i)
+	for (ptrdiff_t i = 0; i < size(); ++i)
 	{
 		window_content[i % window_size] = get_i(i);
 		res.set_i(i,array_mean(window_content.begin(),window_size));
@@ -410,9 +410,9 @@ void cmf::math::timeseries::clear()
 double cmf::math::timeseries::mean() const
 {
 	double sum=0;
-	int count=size();
+	ptrdiff_t count=size();
 	double v=0;
-	for (int i = 0; i < size() ; ++i)
+	for (ptrdiff_t i = 0; i < size() ; ++i)
 	{
 		v = m_data->values[i];
 		if (isfinite(v))
@@ -426,7 +426,7 @@ double cmf::math::timeseries::mean() const
 double cmf::math::timeseries::min() const
 {
 	double _min=get_i(0);
-	for (int i = 0; i < size() ; ++i)
+	for (ptrdiff_t i = 0; i < size() ; ++i)
 	{
 		if (_min>m_data->values[i] && isfinite(m_data->values[i]))
 			_min=m_data->values[i];
@@ -437,7 +437,7 @@ double cmf::math::timeseries::min() const
 double cmf::math::timeseries::max() const
 {
 	double _max=get_i(0);
-	for (int i = 0; i < size() ; ++i)
+	for (ptrdiff_t i = 0; i < size() ; ++i)
 	{
 		if (_max<m_data->values[i] && isfinite(m_data->values[i]))
 			_max=m_data->values[i];
@@ -457,41 +457,41 @@ cmf::math::timeseries cmf::math::timeseries::copy() const
 cmf::math::timeseries cmf::math::timeseries::log() const
 {
 	timeseries res(begin(),step());
-	for (int i = 0; i < (int)size() ; ++i)
+	for (ptrdiff_t i = 0; i < (ptrdiff_t)size() ; ++i)
 		res.add(std::log(get_i(i)));
 	return res;
 }
 cmf::math::timeseries cmf::math::timeseries::log10() const
 {
 	timeseries res(begin(),step());
-	for (int i = 0; i < (int)size() ; ++i)
+	for (ptrdiff_t i = 0; i < (ptrdiff_t)size() ; ++i)
 		res.add(std::log10(get_i(i)));
 	return res;
 }
 cmf::math::timeseries cmf::math::timeseries::exp() const
 {
 	timeseries res(begin(),step());
-	for (int i = 0; i < (int)size() ; ++i)
+	for (ptrdiff_t i = 0; i < (ptrdiff_t)size() ; ++i)
 		res.add(std::exp(get_i(i)));
 	return res;
 }
 cmf::math::timeseries cmf::math::timeseries::power(double exponent) const
 {
 	timeseries res(begin(),step());
-	for (int i = 0; i < (int)size() ; ++i)
+	for (ptrdiff_t i = 0; i < (ptrdiff_t)size() ; ++i)
 		res.add(pow(get_i(i),exponent));
 	return res;
 }
 inline bool is_nodata(double value,double nodata_value) { return fabs(value-nodata_value)<1e-15;}
 void cmf::math::timeseries::remove_nodata( double nodata_value )
 {
-	int i =0;
+	ptrdiff_t i =0;
 	while (i<size())	{
 		double current_value = this->get_i(i);
 		double next_value=nodata_value;
 		double first_value=nodata_value;
 		if (is_nodata(current_value,nodata_value))	{
-			int j=i;
+			ptrdiff_t j=i;
 			while (j<size() && is_nodata(get_i(j),nodata_value)) ++j;
 			if (j<size()) 
 				next_value = get_i(j);
@@ -505,7 +505,7 @@ void cmf::math::timeseries::remove_nodata( double nodata_value )
 			else // use constant right value for interpolation
 				first_value = next_value;
 			// interpolate linear
-			for (int k = i; k < j; ++k) {
+			for (ptrdiff_t k = i; k < j; ++k) {
 				double f_next = double(k-(i-1))/double(j-(i-1));
 				set_i(k, f_next * next_value + (1-f_next) * first_value);
 			}
@@ -517,9 +517,9 @@ void cmf::math::timeseries::remove_nodata( double nodata_value )
 	}
 }
 
-void cmf::math::timeseries::set_i( int i,double value )
+void cmf::math::timeseries::set_i( ptrdiff_t i,double value )
 {
-	int ndx = i;
+	ptrdiff_t ndx = i;
 	if (ndx<0) ndx = size() + i;
 	if (ndx>=size()) throw std::out_of_range("Index is out of range of the timeseries");
 	double & d=m_data->values[ndx];
@@ -528,7 +528,7 @@ void cmf::math::timeseries::set_i( int i,double value )
 
 void cmf::math::timeseries::set_t( cmf::math::Time t,double value )
 {
-	int pos=int(position(t)+0.5);
+	ptrdiff_t pos=ptrdiff_t(position(t)+0.5);
 	set_i(pos,value);
 }
 
@@ -546,10 +546,10 @@ cmf::math::timeseries cmf::math::timeseries::from_array( cmf::math::Time _begin,
 	return result;
 }
 
-int cmf::math::timeseries::count_values() const
+ptrdiff_t cmf::math::timeseries::count_values() const
 {
-	int count=0;
-	for (int i = 0; i <  size(); ++i)
+	ptrdiff_t count=0;
+	for (ptrdiff_t i = 0; i <  size(); ++i)
 		if (isfinite(m_data->values[i])) ++count;
 	return count;
 }
@@ -565,10 +565,10 @@ cmf::math::timeseries cmf::math::timeseries::from_file( std::string filename )
 	// Create timeseries from meta data
 	timeseries ts(ms*metadata[1], // begin
 		ms*metadata[2], // step
-		size_t(metadata[3]), // interpolation shape 
-		size_t(metadata[0])); // size
+		int(metadata[3]), // interpolation shape 
+		ptrdiff_t(metadata[0])); // size
 	// Read the data from file
-	for (int i = 0; i < metadata[0] ; ++i)
+	for (ptrdiff_t i = 0; i < metadata[0] ; ++i)
 	{
 		file.read((char*)(&buf),8);
 		ts[i] = buf;

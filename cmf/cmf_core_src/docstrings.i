@@ -405,10 +405,6 @@ get_dt() const
 
 Returns the last time step. ";
 
-%feature("docstring")  cmf::math::BDF2::reset "virtual void reset()
-
-Resets any saved history (for multistep methods) ";
-
 /*  Integrate  */
 
 %feature("docstring")  cmf::math::BDF2::integrate_until "void
@@ -529,8 +525,8 @@ get_error_position() const
 
 Returns the position of the biggest error. ";
 
-%feature("docstring")  cmf::math::BDF2::get_state "real get_state(int
-position) const
+%feature("docstring")  cmf::math::BDF2::get_state "real
+get_state(ptrdiff_t position) const
 
 Returns the statevariable at position Simplifies the assessment of
 state variables. ";
@@ -573,8 +569,12 @@ can be given
 
 TimeStep:  Takes the proposed timestep, ignored by this solver ";
 
-%feature("docstring")  cmf::math::BDF2::set_state "void set_state(int
-position, real newState)
+%feature("docstring")  cmf::math::BDF2::reset "virtual void reset()
+
+Resets any saved history (for multistep methods) ";
+
+%feature("docstring")  cmf::math::BDF2::set_state "void
+set_state(ptrdiff_t position, real newState)
 
 Simplifies the assessment of state variables. ";
 
@@ -586,7 +586,7 @@ Copies the new states to the actual states. ";
 %feature("docstring")  cmf::math::BDF2::set_states "void
 set_states(real *newStates) ";
 
-%feature("docstring")  cmf::math::BDF2::size "int size() const
+%feature("docstring")  cmf::math::BDF2::size "ptrdiff_t size() const
 
 returns the number of state variables ";
 
@@ -1174,7 +1174,7 @@ any other value denotes a storage with an undefined function
 isopenwater:  If true, an open water storage with a cmf::river::Prism
 height function is created ";
 
-%feature("docstring")  cmf::upslope::Cell::add_storage "int
+%feature("docstring")  cmf::upslope::Cell::add_storage "ptrdiff_t
 add_storage(cmf::water::WaterStorage::ptr storage)
 
 Bounds an existing storage to the cell. ";
@@ -1182,10 +1182,10 @@ Bounds an existing storage to the cell. ";
 %feature("docstring")  cmf::upslope::Cell::remove_storage "void
 remove_storage(cmf::water::WaterStorage::ptr storage) ";
 
-%feature("docstring")  cmf::upslope::Cell::storage_count "int
+%feature("docstring")  cmf::upslope::Cell::storage_count "ptrdiff_t
 storage_count() const ";
 
-%feature("docstring")  cmf::upslope::Cell::get_storage "cmf::water::WaterStorage::ptr get_storage(int index) const ";
+%feature("docstring")  cmf::upslope::Cell::get_storage "cmf::water::WaterStorage::ptr get_storage(ptrdiff_t index) const ";
 
 %feature("docstring")  cmf::upslope::Cell::get_canopy "cmf::water::WaterStorage::ptr get_canopy() const ";
 
@@ -1231,12 +1231,12 @@ Returns the current meteorological conditions of the cell at time t.
 
 /*  Layers  */
 
-%feature("docstring")  cmf::upslope::Cell::layer_count "int
+%feature("docstring")  cmf::upslope::Cell::layer_count "ptrdiff_t
 layer_count() const
 
 Returns the number of layers of the cell. ";
 
-%feature("docstring")  cmf::upslope::Cell::get_layer "cmf::upslope::SoilLayer::ptr get_layer(int ndx) const
+%feature("docstring")  cmf::upslope::Cell::get_layer "cmf::upslope::SoilLayer::ptr get_layer(ptrdiff_t ndx) const
 
 Returns the layer at position ndx.
 
@@ -1374,7 +1374,8 @@ get_lowest() const
 
 Returns the cell with the lowest height. ";
 
-%feature("docstring")  cmf::upslope::cell_vector::get_slice "cell_vector get_slice(int start, int end, int step=1) ";
+%feature("docstring")  cmf::upslope::cell_vector::get_slice "cell_vector get_slice(ptrdiff_t start, ptrdiff_t end, ptrdiff_t
+step=1) ";
 
 %feature("docstring")  cmf::upslope::cell_vector::get_states "cmf::math::StateVariableList get_states()
 
@@ -1390,7 +1391,7 @@ Returns and removes the last cell. ";
 %feature("docstring")  cmf::upslope::cell_vector::ptr_end "cellvec::iterator ptr_end() ";
 
 %feature("docstring")  cmf::upslope::cell_vector::remove "void
-remove(int index) ";
+remove(ptrdiff_t index) ";
 
 %feature("docstring")  cmf::upslope::cell_vector::remove "void
 remove(const cmf::upslope::Cell &cell) ";
@@ -1410,8 +1411,8 @@ C++ includes: cell.h ";
 %feature("docstring")  cmf::upslope::CellConnector::CellConnector "CellConnector(connectorfunction connector) ";
 
 %feature("docstring")  cmf::upslope::CellConnector::connect "void
-connect(cmf::upslope::Cell &cell1, cmf::upslope::Cell &cell2, int
-start_at_layer=0) const ";
+connect(cmf::upslope::Cell &cell1, cmf::upslope::Cell &cell2,
+ptrdiff_t start_at_layer=0) const ";
 
 
 // File: classcmf_1_1river_1_1_channel.xml
@@ -2204,7 +2205,7 @@ MaxOrder due to the number of steps already taken or to fullfill
 stability limit. ";
 
 %feature("docstring")  cmf::math::CVodeIntegrator::get_state "real
-get_state(int position) const
+get_state(ptrdiff_t position) const
 
 Returns the statevariable at position Simplifies the assessment of
 state variables. ";
@@ -2252,7 +2253,7 @@ variables get recognized by the solver. Parameter changes of solver
 are ignored. ";
 
 %feature("docstring")  cmf::math::CVodeIntegrator::set_state "void
-set_state(int position, real newState)
+set_state(ptrdiff_t position, real newState)
 
 Simplifies the assessment of state variables. ";
 
@@ -2264,8 +2265,8 @@ Copies the new states to the actual states. ";
 %feature("docstring")  cmf::math::CVodeIntegrator::set_states "void
 set_states(real *newStates) ";
 
-%feature("docstring")  cmf::math::CVodeIntegrator::size "int size()
-const
+%feature("docstring")  cmf::math::CVodeIntegrator::size "ptrdiff_t
+size() const
 
 returns the number of state variables ";
 
@@ -2999,7 +3000,7 @@ Copies the states to a numeric vector using use_OpenMP. ";
 
 %feature("docstring")  cmf::math::ExplicitEuler_fixed::get_dxdt "cmf::math::num_array get_dxdt(Time time) const ";
 
-%feature("docstring")  cmf::math::ExplicitEuler_fixed::get_state "real get_state(int position) const
+%feature("docstring")  cmf::math::ExplicitEuler_fixed::get_state "real get_state(ptrdiff_t position) const
 
 Returns the statevariable at position Simplifies the assessment of
 state variables. ";
@@ -3024,7 +3025,7 @@ value exchange time can be given
 
 TimeStep:  Takes the proposed time step ";
 
-%feature("docstring")  cmf::math::ExplicitEuler_fixed::set_state "void set_state(int position, real newState)
+%feature("docstring")  cmf::math::ExplicitEuler_fixed::set_state "void set_state(ptrdiff_t position, real newState)
 
 Simplifies the assessment of state variables. ";
 
@@ -3034,8 +3035,7 @@ Copies the new states to the actual states. ";
 
 %feature("docstring")  cmf::math::ExplicitEuler_fixed::set_states "void set_states(real *newStates) ";
 
-%feature("docstring")  cmf::math::ExplicitEuler_fixed::size "int
-size() const
+%feature("docstring")  cmf::math::ExplicitEuler_fixed::size "ptrdiff_t size() const
 
 returns the number of state variables ";
 
@@ -4244,6 +4244,191 @@ cmf::upslope::connections::HBVpercolation::to_string "std::string
 to_string() const ";
 
 
+// File: classcmf_1_1math_1_1_heun_integrator.xml
+%feature("docstring") cmf::math::HeunIntegrator "
+
+A simple predictor - corrector solver.
+
+Not tested and very experimentally $ y^{n+1} = y^n + \\\\alpha f(y^n +
+f(y^n)dt)dt + (1-\\\\alpha)f(y^n)dt $
+
+C++ includes: explicit_euler.h ";
+
+/*  Accuracy parameters  */
+
+/*  model time  */
+
+%feature("docstring")  cmf::math::HeunIntegrator::get_t "cmf::math::Time get_t() const
+
+Returns the current model time. ";
+
+%feature("docstring")  cmf::math::HeunIntegrator::set_t "void
+set_t(cmf::math::Time val)
+
+Sets the current model time. ";
+
+%feature("docstring")  cmf::math::HeunIntegrator::get_dt "cmf::math::Time get_dt() const
+
+Returns the last time step. ";
+
+%feature("docstring")  cmf::math::HeunIntegrator::reset "virtual void
+reset()
+
+Resets any saved history (for multistep methods) ";
+
+/*  Integrate  */
+
+%feature("docstring")  cmf::math::HeunIntegrator::integrate_until "void integrate_until(cmf::math::Time t_max, cmf::math::Time dt=Time(),
+bool reset=false)
+
+Integrates the vector of state variables until t_max.
+
+Parameters:
+-----------
+
+t_max:   Time, the solver should run to
+
+dt:   Time step (may be omitted)
+
+reset:  If true, solver is reseted before integration starts ";
+
+%feature("docstring")  cmf::math::HeunIntegrator::HeunIntegrator "HeunIntegrator(StateVariableOwner &states, real Alpha=0.5)
+
+Constructs a new PredictCorrectSimple from a pointer to a vector of
+state variables.
+
+The Integrator becomes the owner of states
+
+Parameters:
+-----------
+
+states:  Statevariable owner of the system
+
+Alpha:  Weight factor $\\\\alpha$ to weight $f(y^n)$ and $f(y^{n+1})$
+";
+
+%feature("docstring")  cmf::math::HeunIntegrator::HeunIntegrator "HeunIntegrator(real Alpha=0.5)
+
+Constructs a new PredictCorrectSimple.
+
+Parameters:
+-----------
+
+Alpha:  Weight factor $\\\\alpha$ to weight $f(y^n)$ and $f(y^{n+1})$
+";
+
+%feature("docstring")  cmf::math::HeunIntegrator::HeunIntegrator "HeunIntegrator(const Integrator &copy)
+
+copy constructor ";
+
+%feature("docstring")  cmf::math::HeunIntegrator::~HeunIntegrator "virtual ~HeunIntegrator() ";
+
+%feature("docstring")  cmf::math::HeunIntegrator::add_single_state "virtual void add_single_state(cmf::math::StateVariable::ptr state)
+
+Adds a single state variable to the integrator. ";
+
+%feature("docstring")  cmf::math::HeunIntegrator::add_states "void
+add_states(cmf::math::StateVariableOwner &stateOwner)
+
+Add state variables from a StateVariableOwner. ";
+
+%feature("docstring")  cmf::math::HeunIntegrator::add_values_to_states
+"void add_values_to_states(const num_array &operands)
+
+Adds the values in operands to the current states. ";
+
+%feature("docstring")  cmf::math::HeunIntegrator::copy "virtual
+Integrator* copy() const
+
+Polymorphic copy constructor. ";
+
+%feature("docstring")  cmf::math::HeunIntegrator::copy_dxdt "void
+copy_dxdt(Time time, num_array &destination, real factor=1) const
+
+Copies the derivatives at time step \"time\" to a numeric vector using
+use_OpenMP.
+
+Parameters:
+-----------
+
+time:   Time at which the derivatives should be calculated
+
+destination:  Vector to be overwritten by the results
+
+factor:  A factor that is multiplied to the derivate (e.g. unit
+conversion or integration length) ";
+
+%feature("docstring")  cmf::math::HeunIntegrator::copy_dxdt "void
+copy_dxdt(Time time, real *destination, real factor=1) const
+
+Copies the derivatives at time step \"time\" to an preallocated c
+array.
+
+Parameters:
+-----------
+
+time:   Time at which the derivatives should be calculated
+
+destination:  Allocated c array
+
+factor:  A factor that is multiplied to the derivate (e.g. unit
+conversion or integration length) ";
+
+%feature("docstring")  cmf::math::HeunIntegrator::copy_states "void
+copy_states(num_array &destination) const
+
+Copies the states to a numeric vector using use_OpenMP. ";
+
+%feature("docstring")  cmf::math::HeunIntegrator::copy_states "void
+copy_states(real *destination) const ";
+
+%feature("docstring")  cmf::math::HeunIntegrator::get_dxdt "cmf::math::num_array get_dxdt(Time time) const ";
+
+%feature("docstring")  cmf::math::HeunIntegrator::get_state "real
+get_state(ptrdiff_t position) const
+
+Returns the statevariable at position Simplifies the assessment of
+state variables. ";
+
+%feature("docstring")  cmf::math::HeunIntegrator::get_states "cmf::math::num_array get_states() const ";
+
+%feature("docstring")  cmf::math::HeunIntegrator::get_states "StateVariableList get_states()
+
+gets the state variables of the integrator ";
+
+%feature("docstring")  cmf::math::HeunIntegrator::integrate "int
+integrate(cmf::math::Time MaxTime, cmf::math::Time TimeStep)
+
+Integrates the vector of state variables.
+
+Parameters:
+-----------
+
+MaxTime:  (ignored) To stop the model (if running in a model
+framework) at time steps of value exchange e.g. full hours, the next
+value exchange time can be given
+
+TimeStep:  Takes the proposed time step ";
+
+%feature("docstring")  cmf::math::HeunIntegrator::set_state "void
+set_state(ptrdiff_t position, real newState)
+
+Simplifies the assessment of state variables. ";
+
+%feature("docstring")  cmf::math::HeunIntegrator::set_states "void
+set_states(const num_array &newStates)
+
+Copies the new states to the actual states. ";
+
+%feature("docstring")  cmf::math::HeunIntegrator::set_states "void
+set_states(real *newStates) ";
+
+%feature("docstring")  cmf::math::HeunIntegrator::size "ptrdiff_t
+size() const
+
+returns the number of state variables ";
+
+
 // File: classcmf_1_1river_1_1_i_channel.xml
 %feature("docstring") cmf::river::IChannel "
 
@@ -4630,7 +4815,7 @@ copy_states(real *destination) const ";
 %feature("docstring")  cmf::math::ImplicitEuler::get_dxdt "cmf::math::num_array get_dxdt(Time time) const ";
 
 %feature("docstring")  cmf::math::ImplicitEuler::get_state "real
-get_state(int position) const
+get_state(ptrdiff_t position) const
 
 Returns the statevariable at position Simplifies the assessment of
 state variables. ";
@@ -4658,7 +4843,7 @@ effictivly used timestep according to the local stiffness of the
 problem and MaxTime ";
 
 %feature("docstring")  cmf::math::ImplicitEuler::set_state "void
-set_state(int position, real newState)
+set_state(ptrdiff_t position, real newState)
 
 Simplifies the assessment of state variables. ";
 
@@ -4670,8 +4855,8 @@ Copies the new states to the actual states. ";
 %feature("docstring")  cmf::math::ImplicitEuler::set_states "void
 set_states(real *newStates) ";
 
-%feature("docstring")  cmf::math::ImplicitEuler::size "int size()
-const
+%feature("docstring")  cmf::math::ImplicitEuler::size "ptrdiff_t
+size() const
 
 returns the number of state variables ";
 
@@ -4801,6 +4986,8 @@ epsilon:  relative error tolerance per time step (default=1e-9) ";
 %feature("docstring")  cmf::math::Integrator::Integrator "Integrator(cmf::math::StateVariableOwner &states, real epsilon=1e-9)
 ";
 
+%feature("docstring")  cmf::math::Integrator::Integrator "Integrator(const cmf::math::Integrator &other) ";
+
 %feature("docstring")  cmf::math::Integrator::copy "virtual
 Integrator* copy() const =0
 
@@ -4895,7 +5082,7 @@ copy_states(real *destination) const ";
 %feature("docstring")  cmf::math::Integrator::get_dxdt "cmf::math::num_array get_dxdt(Time time) const ";
 
 %feature("docstring")  cmf::math::Integrator::get_state "real
-get_state(int position) const
+get_state(ptrdiff_t position) const
 
 Returns the statevariable at position Simplifies the assessment of
 state variables. ";
@@ -4907,7 +5094,7 @@ state variables. ";
 gets the state variables of the integrator ";
 
 %feature("docstring")  cmf::math::Integrator::set_state "void
-set_state(int position, real newState)
+set_state(ptrdiff_t position, real newState)
 
 Simplifies the assessment of state variables. ";
 
@@ -4919,7 +5106,8 @@ Copies the new states to the actual states. ";
 %feature("docstring")  cmf::math::Integrator::set_states "void
 set_states(real *newStates) ";
 
-%feature("docstring")  cmf::math::Integrator::size "int size() const
+%feature("docstring")  cmf::math::Integrator::size "ptrdiff_t size()
+const
 
 returns the number of state variables ";
 
@@ -6806,14 +6994,13 @@ look for the station. The reference should be owned by the locatable
 z_weight:  The weight of the height difference $\\\\lambda_z$ ";
 
 %feature("docstring")
-cmf::atmosphere::MeteoStationList::remove_station "int
-remove_station(int index)
+cmf::atmosphere::MeteoStationList::remove_station "ptrdiff_t
+remove_station(ptrdiff_t index)
 
 Removes a station and returns the number of remaining references to
 the removed station. If the station is deleted, 0 is returned. ";
 
-%feature("docstring")  cmf::atmosphere::MeteoStationList::size "int
-size() const
+%feature("docstring")  cmf::atmosphere::MeteoStationList::size "ptrdiff_t size() const
 
 Returns the number of stations. ";
 
@@ -6996,7 +7183,7 @@ copy_states(real *destination) const ";
 %feature("docstring")  cmf::math::MultiIntegrator::get_dxdt "cmf::math::num_array get_dxdt(Time time) const ";
 
 %feature("docstring")  cmf::math::MultiIntegrator::get_state "real
-get_state(int position) const
+get_state(ptrdiff_t position) const
 
 Returns the statevariable at position Simplifies the assessment of
 state variables. ";
@@ -7029,7 +7216,7 @@ void reset()
 Resets the integrator. ";
 
 %feature("docstring")  cmf::math::MultiIntegrator::set_state "void
-set_state(int position, real newState)
+set_state(ptrdiff_t position, real newState)
 
 Simplifies the assessment of state variables. ";
 
@@ -7041,8 +7228,8 @@ Copies the new states to the actual states. ";
 %feature("docstring")  cmf::math::MultiIntegrator::set_states "void
 set_states(real *newStates) ";
 
-%feature("docstring")  cmf::math::MultiIntegrator::size "int size()
-const
+%feature("docstring")  cmf::math::MultiIntegrator::size "ptrdiff_t
+size() const
 
 returns the number of state variables ";
 
@@ -7236,7 +7423,7 @@ append(NeumannBoundary::ptr nbc)
 
 Appends a neumann boundary to this list. ";
 
-%feature("docstring")  cmf::water::NeumannBoundary_list::get "NeumannBoundary::ptr get(int index) const
+%feature("docstring")  cmf::water::NeumannBoundary_list::get "NeumannBoundary::ptr get(ptrdiff_t index) const
 
 Returns the Neumann boundary condition at position index.
 
@@ -7401,7 +7588,7 @@ the given solute. ";
 %feature("docstring")  cmf::water::node_list::end "node_vector::const_iterator end() const ";
 
 %feature("docstring")  cmf::water::node_list::get "flux_node::ptr
-get(int index) const
+get(ptrdiff_t index) const
 
 Returns a node in the node_list. ";
 
@@ -7445,7 +7632,7 @@ Returns the potential of the nodes. ";
 Implements StateVariableOwner. ";
 
 %feature("docstring")  cmf::water::node_list::getslice "node_list
-getslice(int begin, int end, int step=1) const
+getslice(ptrdiff_t begin, ptrdiff_t end, ptrdiff_t step=1) const
 
 Returns a slice of the node_list. ";
 
@@ -7463,22 +7650,21 @@ remove(flux_node::ptr node)
 
 Removes a flux node from the list, returns true if successful. ";
 
-%feature("docstring")  cmf::water::node_list::set_potentials "int
-set_potentials(const cmf::math::num_array &potentials)
+%feature("docstring")  cmf::water::node_list::set_potentials "ptrdiff_t set_potentials(const cmf::math::num_array &potentials)
 
 Sets the potentials of the node_list.
 
 If nodes do not have changeable potentials, they are skipped silently
 The number of nodes with changed potential ";
 
-%feature("docstring")  cmf::water::node_list::set_solute_source "int
-set_solute_source(const cmf::water::solute &_Solute,
+%feature("docstring")  cmf::water::node_list::set_solute_source "ptrdiff_t set_solute_source(const cmf::water::solute &_Solute,
 cmf::math::num_array source_fluxes)
 
 Sets the source flux of a solute storage associated with a node (node
 has to be a water storage) ";
 
-%feature("docstring")  cmf::water::node_list::size "int size() const
+%feature("docstring")  cmf::water::node_list::size "ptrdiff_t size()
+const
 
 The number of nodes. ";
 
@@ -7500,8 +7686,7 @@ C++ includes: num_array.h ";
 
 /*  Constructors & Destructors  */
 
-%feature("docstring")  cmf::math::num_array::num_array "num_array(int
-count, real Value=0)
+%feature("docstring")  cmf::math::num_array::num_array "num_array(ptrdiff_t count, real Value=0)
 
 Creates a new vector with size count.
 
@@ -7511,8 +7696,6 @@ Parameters:
 count:  size of new vector
 
 Value:  Value of each element (default=0) ";
-
-%feature("docstring")  cmf::math::num_array::num_array "num_array(size_t count, real Value=0) ";
 
 %feature("docstring")  cmf::math::num_array::num_array "num_array()
 
@@ -7619,15 +7802,16 @@ Prevents deletion of the stored data.
 
 Use with care, and only if you know what you are doing. ";
 
-%feature("docstring")  cmf::math::num_array::resize "void resize(int
-count)
+%feature("docstring")  cmf::math::num_array::resize "void
+resize(ptrdiff_t count)
 
 Changes the size of the vector. ";
 
 %feature("docstring")  cmf::math::num_array::resize "void
 resize(size_t count) ";
 
-%feature("docstring")  cmf::math::num_array::size "int size() const
+%feature("docstring")  cmf::math::num_array::size "ptrdiff_t size()
+const
 
 Size of the vector. ";
 
@@ -7994,117 +8178,6 @@ short_string() const ";
 %feature("docstring")  cmf::upslope::ET::PenmanMonteithET::to_string "std::string to_string() const ";
 
 
-// File: classcmf_1_1river_1_1_piecewise_reach.xml
-%feature("docstring") cmf::river::PiecewiseReach "
-
-A channel with a piecewise linear shape.
-
-The geometry of this reach is defined by a discrete depth/width pairs
-with linear interpolation between the depth and width
-
-$ i $ is the highest depth/width pair below a given depth $d$
-\\\\[w(d,i) = w_i + (d-d_i) \\\\frac{w_{i+1}-w_i}{d_{i+1} - d_i}\\\\]
-\\\\[ A(d,i) =A(d_i,i-1)+ \\\\frac12 (d-d_i)(w(d)+w_i) \\\\]
-\\\\[P(d,i) = P(d_i,i-1) +
-2\\\\sqrt{\\\\left(\\\\frac{w-w_i}{2}\\\\right)^2+\\\\left(d-d_i\\\\right)^2}
-\\\\] \\\\[P(0,0)=w_0 \\\\]
-
-C++ includes: ReachType.h ";
-
-%feature("docstring")  cmf::river::PiecewiseReach::A "virtual double
-A(double V) const
-
-Returns the area of the surface for a given volume. ";
-
-%feature("docstring")  cmf::river::PiecewiseReach::copy "virtual
-IChannel* copy() const =0 ";
-
-%feature("docstring")  cmf::river::PiecewiseReach::get_channel_width "virtual double get_channel_width(double depth) const =0
-
-Calculates the flow width from a given actual depth [m] using the
-actual IChannel geometry. ";
-
-%feature("docstring")  cmf::river::PiecewiseReach::get_depth "virtual
-double get_depth(double area) const =0
-
-Calculates the actual depth of the reach using the IChannel geometry.
-
-get_depth of the reach [m]
-
-Parameters:
------------
-
-area:  Wetted area of a river cross section [m2], can be obtained by
-V/l, where V is the stored volume and l is the reach length ";
-
-%feature("docstring")
-cmf::river::PiecewiseReach::get_flux_crossection "virtual double
-get_flux_crossection(double depth) const =0
-
-Calculates the wetted area from a given depth using the IChannel
-geometry.
-
-In most cases use get_flux_crossection=V/l, where V is the stored
-volume and l is the reach length Wetted area of a river cross section
-[m2]
-
-Parameters:
------------
-
-depth:  depth of the reach [m] ";
-
-%feature("docstring")  cmf::river::PiecewiseReach::get_length "virtual double get_length() const =0
-
-Length of the reach. ";
-
-%feature("docstring")  cmf::river::PiecewiseReach::get_nManning "virtual double get_nManning() const =0 ";
-
-%feature("docstring")
-cmf::river::PiecewiseReach::get_wetted_perimeter "virtual double
-get_wetted_perimeter(double depth) const =0
-
-Calculates the wetted perimeter from a given actual depth [m] using
-the actual IChannel geometry. ";
-
-%feature("docstring")  cmf::river::PiecewiseReach::h "virtual double
-h(double V) const
-
-Returns the depth of a given volume. ";
-
-%feature("docstring")  cmf::river::PiecewiseReach::q "virtual double
-q(double h, double slope) const ";
-
-%feature("docstring")  cmf::river::PiecewiseReach::qManning "virtual
-double qManning(double A, double slope) const
-
-Calculates the flow rate from a given water volume in the reach
-\\\\begin{eqnarray*} q_{Manning}&=& A R^{\\\\frac 2 3}
-\\\\sqrt{\\\\frac {\\\\Delta_z} n} \\\\\\\\ A &=& \\\\frac V l
-\\\\mbox{, (Crosssectional area of the wetted crossection, Volume per
-length)} \\\\\\\\ R &=& \\\\frac A {P(d)} \\\\\\\\ P(d) &=& \\\\mbox{
-the perimeter of the wetted crosssection, a function of reach depth}
-\\\\\\\\ d(V) &=& \\\\mbox{ the depth of the reach a function of the
-volume} \\\\\\\\ \\\\Delta_z &=& \\\\frac{z_{max} - z_{min}}{l}
-\\\\mbox{ Slope of the reach} \\\\end{eqnarray*}.
-
-Flow rate [m3/s]
-
-Parameters:
------------
-
-A:  The area of the cross section [m2]
-
-slope:  The slope of the reach [m/m] ";
-
-%feature("docstring")  cmf::river::PiecewiseReach::set_nManning "virtual void set_nManning(double val)=0 ";
-
-%feature("docstring")  cmf::river::PiecewiseReach::typecode "virtual
-char typecode() const =0 ";
-
-%feature("docstring")  cmf::river::PiecewiseReach::V "virtual double
-V(double h) const ";
-
-
 // File: classcmf_1_1river_1_1_pipe_reach.xml
 %feature("docstring") cmf::river::PipeReach "
 
@@ -8269,22 +8342,22 @@ Holds three arrays x,y and z for fast access of point coordinates.
 
 C++ includes: geometry.h ";
 
-%feature("docstring")  cmf::geometry::point_vector::point_vector "point_vector(int size)
+%feature("docstring")  cmf::geometry::point_vector::point_vector "point_vector(ptrdiff_t size)
 
 Create a point vector of a specific size. ";
 
 %feature("docstring")  cmf::geometry::point_vector::get "point
-get(int index) const
+get(ptrdiff_t index) const
 
 Return a point at index. ";
 
-%feature("docstring")  cmf::geometry::point_vector::set "void set(int
-index, cmf::geometry::point p)
+%feature("docstring")  cmf::geometry::point_vector::set "void
+set(ptrdiff_t index, cmf::geometry::point p)
 
 Change the point at index. ";
 
-%feature("docstring")  cmf::geometry::point_vector::size "int size()
-const
+%feature("docstring")  cmf::geometry::point_vector::size "ptrdiff_t
+size() const
 
 Return the number of points in the point_vector. ";
 
@@ -8294,190 +8367,6 @@ Return the number of points in the point_vector. ";
 
 %feature("docstring")  cmf::math::precalculatable::do_action "virtual
 void do_action(Time t, bool use_OpenMP=true)=0 ";
-
-
-// File: classcmf_1_1math_1_1_predict_correct_simple.xml
-%feature("docstring") cmf::math::PredictCorrectSimple "
-
-A simple predictor - corrector solver.
-
-Not tested and very experimentally $ y^{n+1} = y^n + \\\\alpha f(y^n +
-f(y^n)dt)dt + (1-\\\\alpha)f(y^n)dt $
-
-C++ includes: explicit_euler.h ";
-
-/*  Accuracy parameters  */
-
-/*  model time  */
-
-%feature("docstring")  cmf::math::PredictCorrectSimple::get_t "cmf::math::Time get_t() const
-
-Returns the current model time. ";
-
-%feature("docstring")  cmf::math::PredictCorrectSimple::set_t "void
-set_t(cmf::math::Time val)
-
-Sets the current model time. ";
-
-%feature("docstring")  cmf::math::PredictCorrectSimple::get_dt "cmf::math::Time get_dt() const
-
-Returns the last time step. ";
-
-%feature("docstring")  cmf::math::PredictCorrectSimple::reset "virtual void reset()
-
-Resets any saved history (for multistep methods) ";
-
-/*  Integrate  */
-
-%feature("docstring")
-cmf::math::PredictCorrectSimple::integrate_until "void
-integrate_until(cmf::math::Time t_max, cmf::math::Time dt=Time(), bool
-reset=false)
-
-Integrates the vector of state variables until t_max.
-
-Parameters:
------------
-
-t_max:   Time, the solver should run to
-
-dt:   Time step (may be omitted)
-
-reset:  If true, solver is reseted before integration starts ";
-
-%feature("docstring")
-cmf::math::PredictCorrectSimple::PredictCorrectSimple "PredictCorrectSimple(StateVariableOwner &states, real Alpha=0.5)
-
-Constructs a new PredictCorrectSimple from a pointer to a vector of
-state variables.
-
-The Integrator becomes the owner of states
-
-Parameters:
------------
-
-states:  Statevariable owner of the system
-
-Alpha:  Weight factor $\\\\alpha$ to weight $f(y^n)$ and $f(y^{n+1})$
-";
-
-%feature("docstring")
-cmf::math::PredictCorrectSimple::PredictCorrectSimple "PredictCorrectSimple(real Alpha=0.5)
-
-Constructs a new PredictCorrectSimple.
-
-Parameters:
------------
-
-Alpha:  Weight factor $\\\\alpha$ to weight $f(y^n)$ and $f(y^{n+1})$
-";
-
-%feature("docstring")
-cmf::math::PredictCorrectSimple::PredictCorrectSimple "PredictCorrectSimple(const Integrator &copy)
-
-copy constructor ";
-
-%feature("docstring")
-cmf::math::PredictCorrectSimple::~PredictCorrectSimple "virtual
-~PredictCorrectSimple() ";
-
-%feature("docstring")
-cmf::math::PredictCorrectSimple::add_single_state "virtual void
-add_single_state(cmf::math::StateVariable::ptr state)
-
-Adds a single state variable to the integrator. ";
-
-%feature("docstring")  cmf::math::PredictCorrectSimple::add_states "void add_states(cmf::math::StateVariableOwner &stateOwner)
-
-Add state variables from a StateVariableOwner. ";
-
-%feature("docstring")
-cmf::math::PredictCorrectSimple::add_values_to_states "void
-add_values_to_states(const num_array &operands)
-
-Adds the values in operands to the current states. ";
-
-%feature("docstring")  cmf::math::PredictCorrectSimple::copy "virtual
-Integrator* copy() const
-
-Polymorphic copy constructor. ";
-
-%feature("docstring")  cmf::math::PredictCorrectSimple::copy_dxdt "void copy_dxdt(Time time, num_array &destination, real factor=1) const
-
-Copies the derivatives at time step \"time\" to a numeric vector using
-use_OpenMP.
-
-Parameters:
------------
-
-time:   Time at which the derivatives should be calculated
-
-destination:  Vector to be overwritten by the results
-
-factor:  A factor that is multiplied to the derivate (e.g. unit
-conversion or integration length) ";
-
-%feature("docstring")  cmf::math::PredictCorrectSimple::copy_dxdt "void copy_dxdt(Time time, real *destination, real factor=1) const
-
-Copies the derivatives at time step \"time\" to an preallocated c
-array.
-
-Parameters:
------------
-
-time:   Time at which the derivatives should be calculated
-
-destination:  Allocated c array
-
-factor:  A factor that is multiplied to the derivate (e.g. unit
-conversion or integration length) ";
-
-%feature("docstring")  cmf::math::PredictCorrectSimple::copy_states "void copy_states(num_array &destination) const
-
-Copies the states to a numeric vector using use_OpenMP. ";
-
-%feature("docstring")  cmf::math::PredictCorrectSimple::copy_states "void copy_states(real *destination) const ";
-
-%feature("docstring")  cmf::math::PredictCorrectSimple::get_dxdt "cmf::math::num_array get_dxdt(Time time) const ";
-
-%feature("docstring")  cmf::math::PredictCorrectSimple::get_state "real get_state(int position) const
-
-Returns the statevariable at position Simplifies the assessment of
-state variables. ";
-
-%feature("docstring")  cmf::math::PredictCorrectSimple::get_states "cmf::math::num_array get_states() const ";
-
-%feature("docstring")  cmf::math::PredictCorrectSimple::get_states "StateVariableList get_states()
-
-gets the state variables of the integrator ";
-
-%feature("docstring")  cmf::math::PredictCorrectSimple::integrate "int integrate(cmf::math::Time MaxTime, cmf::math::Time TimeStep)
-
-Integrates the vector of state variables.
-
-Parameters:
------------
-
-MaxTime:  (ignored) To stop the model (if running in a model
-framework) at time steps of value exchange e.g. full hours, the next
-value exchange time can be given
-
-TimeStep:  Takes the proposed time step ";
-
-%feature("docstring")  cmf::math::PredictCorrectSimple::set_state "void set_state(int position, real newState)
-
-Simplifies the assessment of state variables. ";
-
-%feature("docstring")  cmf::math::PredictCorrectSimple::set_states "void set_states(const num_array &newStates)
-
-Copies the new states to the actual states. ";
-
-%feature("docstring")  cmf::math::PredictCorrectSimple::set_states "void set_states(real *newStates) ";
-
-%feature("docstring")  cmf::math::PredictCorrectSimple::size "int
-size() const
-
-returns the number of state variables ";
 
 
 // File: classcmf_1_1river_1_1_prism.xml
@@ -8531,7 +8420,7 @@ used in the project. Sepereate solute names with space. ";
 %feature("docstring")  cmf::project::~project "~project() ";
 
 %feature("docstring")  cmf::project::get_cell "upslope::Cell&
-get_cell(int index)
+get_cell(ptrdiff_t index)
 
 Returns the reference to the cell at index in the project. ";
 
@@ -8540,11 +8429,11 @@ upslope::cell_vector& get_cells() const
 
 Returns the cells in the project. ";
 
-%feature("docstring")  cmf::project::get_node "cmf::water::flux_node::ptr get_node(int index)
+%feature("docstring")  cmf::project::get_node "cmf::water::flux_node::ptr get_node(ptrdiff_t index)
 
 Returns the node from the project nodes at index. ";
 
-%feature("docstring")  cmf::project::get_reach "cmf::river::Reach::ptr get_reach(int index)
+%feature("docstring")  cmf::project::get_reach "cmf::river::Reach::ptr get_reach(ptrdiff_t index)
 
 Returns the reach at index. ";
 
@@ -8667,17 +8556,17 @@ name:  Name of the generic water storage for output
 x:  y:  z:  Position of the generic water storage condition in project
 coordinates ";
 
-%feature("docstring")  cmf::project::node_count "int node_count()
-const
+%feature("docstring")  cmf::project::node_count "ptrdiff_t
+node_count() const
 
 Returns the number of nodes saved with this project. ";
 
-%feature("docstring")  cmf::project::reach_count "int reach_count()
-const
+%feature("docstring")  cmf::project::reach_count "ptrdiff_t
+reach_count() const
 
 Returns the number of reaches in this project. ";
 
-%feature("docstring")  cmf::project::remove_node "int
+%feature("docstring")  cmf::project::remove_node "ptrdiff_t
 remove_node(cmf::water::flux_node::ptr node)
 
 Removes a node from the repository.
@@ -8687,7 +8576,7 @@ repository of the project. NOTE: If you have other references to this
 node, the node is not deleted. If you are creating a new solver, the
 node will not be part of the solver. ";
 
-%feature("docstring")  cmf::project::size "int size() const
+%feature("docstring")  cmf::project::size "ptrdiff_t size() const
 
 The number of cells in the project. ";
 
@@ -8955,7 +8844,7 @@ Data:  Rainfall timeseries
 
 Position:  Spatial position of the new station ";
 
-%feature("docstring")  cmf::atmosphere::RainfallStationList::remove "void remove(int index)
+%feature("docstring")  cmf::atmosphere::RainfallStationList::remove "void remove(ptrdiff_t index)
 
 Removes the station at index from this list. ";
 
@@ -9986,7 +9875,7 @@ copy_states(real *destination) const ";
 %feature("docstring")  cmf::math::RKFIntegrator::get_dxdt "cmf::math::num_array get_dxdt(Time time) const ";
 
 %feature("docstring")  cmf::math::RKFIntegrator::get_state "real
-get_state(int position) const
+get_state(ptrdiff_t position) const
 
 Returns the statevariable at position Simplifies the assessment of
 state variables. ";
@@ -10014,7 +9903,7 @@ effictivly used timestep according to the local stiffness of the
 problem and MaxTime ";
 
 %feature("docstring")  cmf::math::RKFIntegrator::set_state "void
-set_state(int position, real newState)
+set_state(ptrdiff_t position, real newState)
 
 Simplifies the assessment of state variables. ";
 
@@ -10026,8 +9915,8 @@ Copies the new states to the actual states. ";
 %feature("docstring")  cmf::math::RKFIntegrator::set_states "void
 set_states(real *newStates) ";
 
-%feature("docstring")  cmf::math::RKFIntegrator::size "int size()
-const
+%feature("docstring")  cmf::math::RKFIntegrator::size "ptrdiff_t
+size() const
 
 returns the number of state variables ";
 
@@ -11130,8 +11019,9 @@ dt:   Time step (may be omitted)
 reset:  If true, solver is reseted before integration starts ";
 
 %feature("docstring")
-cmf::math::SoluteWaterIntegrator::SoluteWaterIntegrator "SoluteWaterIntegrator(const cmf::math::Integrator &water_integrator,
-const cmf::math::Integrator &solute_integrator)
+cmf::math::SoluteWaterIntegrator::SoluteWaterIntegrator "SoluteWaterIntegrator(const cmf::water::solute_vector &solutes, const
+cmf::math::Integrator &water_integrator, const cmf::math::Integrator
+&solute_integrator)
 
 Creates a new SoluteWaterIntegrator.
 
@@ -11145,9 +11035,9 @@ solute_integrator:  Template for the integrator of soluteStorage state
 varaiables ";
 
 %feature("docstring")
-cmf::math::SoluteWaterIntegrator::SoluteWaterIntegrator "SoluteWaterIntegrator(const cmf::math::Integrator &water_integrator,
-const cmf::math::Integrator &solute_integrator,
-cmf::math::StateVariableOwner &states)
+cmf::math::SoluteWaterIntegrator::SoluteWaterIntegrator "SoluteWaterIntegrator(cmf::water::solute_vector, const
+cmf::math::Integrator &water_integrator, const cmf::math::Integrator
+&solute_integrator, cmf::math::StateVariableOwner &states)
 
 Creates a new SoluteWaterIntegrator.
 
@@ -11161,6 +11051,9 @@ solute_integrator:  Template for the integrator of soluteStorage state
 varaiables
 
 states:  States to be added to the integrators ";
+
+%feature("docstring")
+cmf::math::SoluteWaterIntegrator::~SoluteWaterIntegrator "~SoluteWaterIntegrator() ";
 
 %feature("docstring")
 cmf::math::SoluteWaterIntegrator::add_single_state "virtual void
@@ -11220,12 +11113,7 @@ Copies the states to a numeric vector using use_OpenMP. ";
 
 %feature("docstring")  cmf::math::SoluteWaterIntegrator::get_dxdt "cmf::math::num_array get_dxdt(Time time) const ";
 
-%feature("docstring")
-cmf::math::SoluteWaterIntegrator::get_solute_integrator "cmf::math::Integrator* get_solute_integrator() const
-
-Returns the integrator for SoluteStorage state variables. ";
-
-%feature("docstring")  cmf::math::SoluteWaterIntegrator::get_state "real get_state(int position) const
+%feature("docstring")  cmf::math::SoluteWaterIntegrator::get_state "real get_state(ptrdiff_t position) const
 
 Returns the statevariable at position Simplifies the assessment of
 state variables. ";
@@ -11235,11 +11123,6 @@ state variables. ";
 %feature("docstring")  cmf::math::SoluteWaterIntegrator::get_states "StateVariableList get_states()
 
 gets the state variables of the integrator ";
-
-%feature("docstring")
-cmf::math::SoluteWaterIntegrator::get_water_integrator "cmf::math::Integrator* get_water_integrator() const
-
-Returns the integrator for WaterStorage state variables. ";
 
 %feature("docstring")  cmf::math::SoluteWaterIntegrator::integrate "int integrate(cmf::math::Time t_max, cmf::math::Time dt)
 
@@ -11260,13 +11143,7 @@ MaxTime ";
 
 Resets the integrators (only needed for multistep methods) ";
 
-%feature("docstring")
-cmf::math::SoluteWaterIntegrator::set_solute_integrator "void
-set_solute_integrator(cmf::math::Integrator *templ)
-
-Changes the integrator for SoluteStorage state variables. ";
-
-%feature("docstring")  cmf::math::SoluteWaterIntegrator::set_state "void set_state(int position, real newState)
+%feature("docstring")  cmf::math::SoluteWaterIntegrator::set_state "void set_state(ptrdiff_t position, real newState)
 
 Simplifies the assessment of state variables. ";
 
@@ -11276,16 +11153,11 @@ Copies the new states to the actual states. ";
 
 %feature("docstring")  cmf::math::SoluteWaterIntegrator::set_states "void set_states(real *newStates) ";
 
-%feature("docstring")
-cmf::math::SoluteWaterIntegrator::set_water_integrator "void
-set_water_integrator(cmf::math::Integrator *templ)
-
-Changes the integrator for WaterStorage state variables. ";
-
-%feature("docstring")  cmf::math::SoluteWaterIntegrator::size "int
-size() const
+%feature("docstring")  cmf::math::SoluteWaterIntegrator::size "ptrdiff_t size() const
 
 returns the number of state variables ";
+
+%feature("docstring")  cmf::math::SoluteWaterIntegrator::to_string "std::string to_string() const ";
 
 
 // File: struct_spbcg_mem_rec.xml
@@ -12623,7 +12495,7 @@ First date of measurement. ";
 %feature("docstring")  cmf::math::timeseries::copy "timeseries copy()
 const ";
 
-%feature("docstring")  cmf::math::timeseries::count_values "int
+%feature("docstring")  cmf::math::timeseries::count_values "ptrdiff_t
 count_values() const
 
 Number of valid values (=size - # of NaN's) ";
@@ -12633,13 +12505,14 @@ end() const
 
 Last date of measurements. ";
 
-%feature("docstring")  cmf::math::timeseries::get_i "double get_i(int
-i) const ";
+%feature("docstring")  cmf::math::timeseries::get_i "double
+get_i(ptrdiff_t i) const ";
 
 %feature("docstring")  cmf::math::timeseries::get_slice "cmf::math::timeseries get_slice(cmf::math::Time _begin,
 cmf::math::Time _end, cmf::math::Time _step=cmf::math::Time()) ";
 
-%feature("docstring")  cmf::math::timeseries::get_slice "cmf::math::timeseries get_slice(int _begin, int _end, int step=1) ";
+%feature("docstring")  cmf::math::timeseries::get_slice "cmf::math::timeseries get_slice(ptrdiff_t _begin, ptrdiff_t _end,
+ptrdiff_t step=1) ";
 
 %feature("docstring")  cmf::math::timeseries::get_t "double
 get_t(cmf::math::Time t) const ";
@@ -12658,20 +12531,22 @@ returns true if no values are added to the timeseries ";
 %feature("docstring")  cmf::math::timeseries::remove_nodata "void
 remove_nodata(double nodata_value) ";
 
-%feature("docstring")  cmf::math::timeseries::set_i "void set_i(int
-i, double value) ";
+%feature("docstring")  cmf::math::timeseries::set_i "void
+set_i(ptrdiff_t i, double value) ";
 
 %feature("docstring")  cmf::math::timeseries::set_slice "void
 set_slice(cmf::math::Time _begin, cmf::math::Time _end,
 cmf::math::timeseries values) ";
 
 %feature("docstring")  cmf::math::timeseries::set_slice "void
-set_slice(int _begin, int _end, cmf::math::timeseries _values) ";
+set_slice(ptrdiff_t _begin, ptrdiff_t _end, cmf::math::timeseries
+_values) ";
 
 %feature("docstring")  cmf::math::timeseries::set_t "void
 set_t(cmf::math::Time t, double value) ";
 
-%feature("docstring")  cmf::math::timeseries::size "int size() const
+%feature("docstring")  cmf::math::timeseries::size "ptrdiff_t size()
+const
 
 Number of items in the timeseries. ";
 
@@ -14048,8 +13923,8 @@ cmf::geometry::dot(const point &p1, const point &p2) ";
 
 
 // File: namespacecmf_1_1math.xml
-%feature("docstring")  cmf::math::count_parallel_threads "int
-cmf::math::count_parallel_threads()
+%feature("docstring")  cmf::math::get_parallel_threads "int
+cmf::math::get_parallel_threads()
 
 Returns the max number of threads used by OpenMP in parallel sections
 of the code. ";

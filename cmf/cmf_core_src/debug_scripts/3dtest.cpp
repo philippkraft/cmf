@@ -214,7 +214,7 @@ int createsimple() {
 	w1->set_volume(1.0);
 	kinematic_wave* con1 = new kinematic_wave(w1,w2,1.0);
 	kinematic_wave* con2 = new kinematic_wave(w2,w3,1.0);
-	PredictCorrectSimple integ(p);
+	HeunIntegrator integ(p);
 	Time t0 = Time(1,1,2000);
 	integ.set_t(t0);
 	cout << "Integrator created with " << integ.size() << " states" << endl;

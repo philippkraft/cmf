@@ -42,7 +42,7 @@ namespace cmf {
 		cmf::upslope::cell_vector m_cells;
 		std::vector<cmf::river::Reach::ptr> m_reaches;
 		cmf::water::node_list m_nodes;
-		int add_node(cmf::water::flux_node::ptr node);
+		ptrdiff_t add_node(cmf::water::flux_node::ptr node);
 
 	public:
         /// @brief Returns all state variables of the project. Mostly for internal use.
@@ -53,7 +53,7 @@ namespace cmf {
 		/// of the project. NOTE: If you have other references to this node, the node is not
 		/// deleted. If you are creating a new solver, the node will not be part of the
 		/// solver.
-		int remove_node(cmf::water::flux_node::ptr node);
+		ptrdiff_t remove_node(cmf::water::flux_node::ptr node);
 
 		/// The solutes transported by the model
 		const cmf::water::solute_vector solutes;
@@ -138,12 +138,12 @@ namespace cmf {
 		/// Returns the cells in the project
 		const upslope::cell_vector& get_cells() const {return m_cells;}
 		/// Returns the reference to the cell at index in the project
-		upslope::Cell& get_cell(int index)
+		upslope::Cell& get_cell(ptrdiff_t index)
 		{
 			return m_cells[index];
 		}
 		/// The number of cells in the project
-		int size() const { return int(m_cells.size());}
+		ptrdiff_t size() const { return ptrdiff_t(m_cells.size());}
 		/// @brief debug (true/false) If set to true, creation and deletion of objects is logged
 		bool debug;
 		/// @brief Creates a new project
@@ -190,21 +190,21 @@ namespace cmf {
 		cmf::river::Reach::ptr NewReach(double x,double y, double z, cmf::river::IChannel& shape, bool diffusive=false);
 
 		/// Returns the reach at index
-		cmf::river::Reach::ptr get_reach(int index);
+		cmf::river::Reach::ptr get_reach(ptrdiff_t index);
 		/// Returns the number of reaches in this project
-		int reach_count() const {return int(m_reaches.size());}
+		ptrdiff_t reach_count() const {return ptrdiff_t(m_reaches.size());}
 		
 		/// Returns the node from the project nodes at index
-		cmf::water::flux_node::ptr get_node(int index) {
+		cmf::water::flux_node::ptr get_node(ptrdiff_t index) {
 			return m_nodes[index];
 		}
 		/// Returns the number of nodes saved with this project
-		int node_count() const {return int(m_nodes.size());}
+		ptrdiff_t node_count() const {return ptrdiff_t(m_nodes.size());}
 		
 		/// Returns a list of all storages of this project
 		cmf::water::node_list get_storages();
 #ifndef SWIG
-		cmf::upslope::Cell& operator[](int index) {
+		cmf::upslope::Cell& operator[](ptrdiff_t index) {
 			return this->get_cell(index);
 		}
 #endif

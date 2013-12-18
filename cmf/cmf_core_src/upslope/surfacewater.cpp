@@ -21,7 +21,7 @@ SurfaceWater::ptr SurfaceWater::cast( flux_node::ptr node )
 
 const CellConnector KinematicSurfaceRunoff::cell_connector=CellConnector(KinematicSurfaceRunoff::connect_cells);
 
-void KinematicSurfaceRunoff::connect_cells( cmf::upslope::Cell& cell1,cmf::upslope::Cell& cell2, int dummy )
+void KinematicSurfaceRunoff::connect_cells( cmf::upslope::Cell& cell1,cmf::upslope::Cell& cell2, ptrdiff_t dummy )
 {
 	Cell& upper = cell1.z>cell2.z ? cell1 : cell2;
 	Cell& lower = cell1.z>cell2.z ? cell2 : cell1;
@@ -55,7 +55,7 @@ void KinematicSurfaceRunoff::NewNodes()
 
 const CellConnector DiffusiveSurfaceRunoff::cell_connector=CellConnector(DiffusiveSurfaceRunoff::connect_cells);
 
-void DiffusiveSurfaceRunoff::connect_cells( cmf::upslope::Cell& cell1,cmf::upslope::Cell& cell2, int dummy )
+void DiffusiveSurfaceRunoff::connect_cells( cmf::upslope::Cell& cell1,cmf::upslope::Cell& cell2, ptrdiff_t dummy )
 {
 	Cell& upper = cell1.z>cell2.z ? cell1 : cell2;
 	Cell& lower = cell1.z>cell2.z ? cell2 : cell1;

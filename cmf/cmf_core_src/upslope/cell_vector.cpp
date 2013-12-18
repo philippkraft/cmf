@@ -37,10 +37,10 @@ cmf::upslope::cell_vector::cell_vector( cell_const_iterator first,cell_const_ite
 {	
 }
 
-cmf::upslope::cell_vector cmf::upslope::cell_vector::get_slice( int start,int end,int step ) 
+cmf::upslope::cell_vector cmf::upslope::cell_vector::get_slice( ptrdiff_t start,ptrdiff_t end,ptrdiff_t step ) 
 {
 	cell_vector res;
-	for (int i = start; i < end && i<int(size())  ; i+=step)
+	for (ptrdiff_t i = start; i < end && i<ptrdiff_t(size())  ; i+=step)
 		res.append(operator[](i));
 	return res;
 }

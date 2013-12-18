@@ -6,19 +6,19 @@
 
 void cmf::math::Integrator::copy_states( num_array & destination ) const
 {
-	if (destination.size()!=(int)size())
+	if (destination.size()!=(ptrdiff_t)size())
 		destination.resize(size());
 	if (use_OpenMP)
 	{
 #pragma omp parallel for
-		for (int i = 0; i < (int)size() ; i++)
+		for (ptrdiff_t i = 0; i < (ptrdiff_t)size() ; i++)
 		{
 			destination[i]=get_state(i);
 		}
 	}
 	else
 	{
-		for (int i = 0; i < (int)size() ; i++)
+		for (ptrdiff_t i = 0; i < (ptrdiff_t)size() ; i++)
 		{
 			destination[i]=get_state(i);
 		}
@@ -31,14 +31,14 @@ void cmf::math::Integrator::copy_states( real * destination ) const
 	if (use_OpenMP)
 	{
 #pragma omp parallel for
-		for (int i = 0; i < (int)size() ; ++i)
+		for (ptrdiff_t i = 0; i < (ptrdiff_t)size() ; ++i)
 		{
 			destination[i]=get_state(i);
 		}
 	}
 	else
 	{
-		for (int i = 0; i < (int)size() ; ++i)
+		for (ptrdiff_t i = 0; i < (ptrdiff_t)size() ; ++i)
 		{
 			destination[i]=get_state(i);
 		}
@@ -47,7 +47,7 @@ void cmf::math::Integrator::copy_states( real * destination ) const
 }
 void cmf::math::Integrator::copy_dxdt( Time time,num_array & destination,real factor ) const
 {
-	if (destination.size()!=(int)size())
+	if (destination.size()!=(ptrdiff_t)size())
 		destination.resize(size());
 	std::string err_msg;
 	bool err=false;
@@ -55,7 +55,7 @@ void cmf::math::Integrator::copy_dxdt( Time time,num_array & destination,real fa
 	{
 		if (factor==1)	{
 			#pragma omp parallel for schedule(guided)
-			for (int i = 0; i < (int)size() ; ++i) {
+			for (ptrdiff_t i = 0; i < (ptrdiff_t)size() ; ++i) {
 				if (!err)  
 				{
 					try {
@@ -73,7 +73,7 @@ void cmf::math::Integrator::copy_dxdt( Time time,num_array & destination,real fa
 			}
 		} else {
 			#pragma omp parallel for schedule(guided)
-			for (int i = 0; i < (int)size() ; i++)
+			for (ptrdiff_t i = 0; i < (ptrdiff_t)size() ; i++)
 			{
 				#pragma omp flush(err)
 				if (!err)  {
@@ -95,12 +95,12 @@ void cmf::math::Integrator::copy_dxdt( Time time,num_array & destination,real fa
 	} else {
 		if (factor==1)
 		{
-			for (int i = 0; i < (int)size() ; ++i)
+			for (ptrdiff_t i = 0; i < (ptrdiff_t)size() ; ++i)
 				destination[i]=m_States[i]->dxdt(time);
 		}
 		else
 		{
-			for (int i = 0; i < (int)size() ; i++)
+			for (ptrdiff_t i = 0; i < (ptrdiff_t)size() ; i++)
 			{
 				destination[i]=m_States[i]->dxdt(time);
 				destination[i]*=factor;
@@ -116,7 +116,7 @@ void cmf::math::Integrator::copy_dxdt( Time time,real * destination,real factor/
 	if (use_OpenMP)		{
 		if (factor==1)	{
 			#pragma omp parallel for schedule(guided)
-			for (int i = 0; i < (int)size() ; ++i) {
+			for (ptrdiff_t i = 0; i < (ptrdiff_t)size() ; ++i) {
 				if (!err)  
 				{
 					try {
@@ -134,7 +134,7 @@ void cmf::math::Integrator::copy_dxdt( Time time,real * destination,real factor/
 			}
 		} else {
 			#pragma omp parallel for schedule(guided)
-			for (int i = 0; i < (int)size() ; i++)
+			for (ptrdiff_t i = 0; i < (ptrdiff_t)size() ; i++)
 			{
 				#pragma omp flush(err)
 				if (!err)  {
@@ -155,10 +155,10 @@ void cmf::math::Integrator::copy_dxdt( Time time,real * destination,real factor/
 		}
 	}	else	{ // use_OpenMP=false
 		if (factor==1)	{
-			for (int i = 0; i < (int)size() ; ++i)
+			for (ptrdiff_t i = 0; i < (ptrdiff_t)size() ; ++i)
 				destination[i]=m_States[i]->dxdt(time);
 		} else {
-			for (int i = 0; i < (int)size() ; i++)	{
+			for (ptrdiff_t i = 0; i < (ptrdiff_t)size() ; i++)	{
 				destination[i]=m_States[i]->dxdt(time);
 				destination[i]*=factor;
 			}
@@ -170,14 +170,14 @@ void cmf::math::Integrator::set_states(const num_array & newStates )
 	if (use_OpenMP)
 	{
 #pragma omp parallel for
-		for (int i = 0; i < (int)size() ; i++)
+		for (ptrdiff_t i = 0; i < (ptrdiff_t)size() ; i++)
 		{
 			m_States[i]->set_state(newStates[i]);
 		}
 	}
 	else
 	{
-		for (int i = 0; i < (int)size() ; i++)
+		for (ptrdiff_t i = 0; i < (ptrdiff_t)size() ; i++)
 		{
 			m_States[i]->set_state(newStates[i]);
 		}
@@ -190,14 +190,14 @@ void cmf::math::Integrator::set_states( real * newStates )
 	if (use_OpenMP)
 	{
 #pragma omp parallel for
-		for (int i = 0; i < (int)size() ; ++i)
+		for (ptrdiff_t i = 0; i < (ptrdiff_t)size() ; ++i)
 		{
 			m_States[i]->set_state(newStates[i]);
 		}
 	}
 	else
 	{
-		for (int i = 0; i < (int)size() ; ++i)
+		for (ptrdiff_t i = 0; i < (ptrdiff_t)size() ; ++i)
 		{
 			m_States[i]->set_state(newStates[i]);
 		}
@@ -209,14 +209,14 @@ void cmf::math::Integrator::add_values_to_states(const num_array& operands)
 	if (use_OpenMP)
 	{
 #pragma omp parallel for
-		for (int i = 0; i < (int)size() ; i++)
+		for (ptrdiff_t i = 0; i < (ptrdiff_t)size() ; i++)
 		{
 			m_States[i]->set_state(m_States[i]->get_state() + operands[i]);		
 		}
 	}
 	else
 	{
-		for (int i = 0; i < (int)size() ; i++)
+		for (ptrdiff_t i = 0; i < (ptrdiff_t)size() ; i++)
 		{
 			m_States[i]->set_state(m_States[i]->get_state() + operands[i]);		
 		}
@@ -226,7 +226,7 @@ void cmf::math::Integrator::add_values_to_states(const num_array& operands)
 void cmf::math::Integrator::integrate_until( cmf::math::Time t_max,cmf::math::Time dt/*=Time()*/,bool reset_solver/*=false*/ )
 {
 	m_Iterations=0;
-	int i=0;
+	ptrdiff_t i=0;
 	Time start = m_t;
 	if (reset_solver) reset();
 	if (!dt) dt=m_dt;
