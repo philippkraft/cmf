@@ -88,7 +88,7 @@ namespace cmf {
 			{
 				return begin()+step()*(pos<0 ? size()+pos : pos);
 			}
-			cmf::math::Time time_at_position(int pos) const
+			cmf::math::Time time_at_position(ptrdiff_t pos) const
 			{
 				return begin()+step()*(pos<0 ? size()+pos : pos);
 			}
@@ -113,9 +113,9 @@ namespace cmf {
 			}
 			timeseries copy() const;
 			/// Number of items in the timeseries
-			int size() const {return int(m_data->values.size());}
+			ptrdiff_t size() const {return ptrdiff_t(m_data->values.size());}
 			/// Number of valid values (=size - # of NaN's)
-			int count_values() const;
+			ptrdiff_t count_values() const;
 			/// Constructor of a time series
 			/// @param begin First date of measurement
 			/// @param step Time between measurements
@@ -143,24 +143,24 @@ namespace cmf {
 			double operator[](cmf::math::Time t) const {return get_t(t);}
 			double operator[](cmf::math::Time t) {return get_t(t);}
 			/// Returns a reference to the value at position i
-			double& operator[](int i){
+			double& operator[](ptrdiff_t i){
 				return m_data->values.at(i<0 ? size()+i :i);
 			}
-			const double& operator[](int i) const			{
+			const double& operator[](ptrdiff_t i) const			{
 				return m_data->values.at(i<0 ? size()+i :i);
 			}
 #endif
 			double get_t(cmf::math::Time t) const {return interpolate(t,interpolationpower());}
-			double get_i(int i) const
+			double get_i(ptrdiff_t i) const
 			{
 				return m_data->values.at(i<0 ? size()+i :i);
 			}
 			void set_t(cmf::math::Time t,double value);
-			void set_i(int i,double value);
+			void set_i(ptrdiff_t i,double value);
 			cmf::math::timeseries get_slice(cmf::math::Time _begin,cmf::math::Time _end,cmf::math::Time _step=cmf::math::Time());
 			void set_slice(cmf::math::Time _begin,cmf::math::Time _end, cmf::math::timeseries values);
-			cmf::math::timeseries get_slice(int _begin,int _end,int step=1);
-			void set_slice(int _begin,int _end,cmf::math::timeseries _values);
+			cmf::math::timeseries get_slice(ptrdiff_t _begin,ptrdiff_t _end,ptrdiff_t step=1);
+			void set_slice(ptrdiff_t _begin,ptrdiff_t _end,cmf::math::timeseries _values);
 
 			void remove_nodata(double nodata_value);
 

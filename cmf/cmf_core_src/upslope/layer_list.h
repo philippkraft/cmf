@@ -28,7 +28,7 @@ namespace cmf {
 			iterator end() {return m_layers.end();}
 			const_iterator end() const {return m_layers.end();}
 			/// Returns a layer from the list
-			SoilLayer::ptr operator[](int index) const {
+			SoilLayer::ptr operator[](ptrdiff_t index) const {
 				return m_layers.at(index>=0 ? index : size() + index);
 			}
 #endif

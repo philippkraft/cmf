@@ -59,7 +59,7 @@ namespace cmf {
 			class Darcy : public lateral_sub_surface_flux {
 			protected:
 				virtual real calc_q(cmf::math::Time t) ;
-				static void connect_cells(cmf::upslope::Cell & cell1,cmf::upslope::Cell & cell2,int start_at_layer=0);
+				static void connect_cells(cmf::upslope::Cell & cell1,cmf::upslope::Cell & cell2,ptrdiff_t start_at_layer=0);
 			public:
 				static const CellConnector cell_connector;
 				Darcy(cmf::upslope::SoilLayer::ptr left,cmf::water::flux_node::ptr right,real FlowWidth,real Distance=0)
@@ -79,7 +79,7 @@ namespace cmf {
 			class TopographicGradientDarcy : public lateral_sub_surface_flux {
 			protected:
 				virtual real calc_q(cmf::math::Time t) ;
-				static void connect_cells(cmf::upslope::Cell & cell1,cmf::upslope::Cell & cell2,int start_at_layer=0);
+				static void connect_cells(cmf::upslope::Cell & cell1,cmf::upslope::Cell & cell2,ptrdiff_t start_at_layer=0);
 			public:
 				static const cmf::upslope::CellConnector cell_connector;
 				/// @brief Creates the connection
@@ -105,7 +105,7 @@ namespace cmf {
 			protected:
 				virtual real calc_q(cmf::math::Time t) ;
 
-				static void connect_cells(cmf::upslope::Cell & cell1,cmf::upslope::Cell & cell2,int start_at_layer=0);
+				static void connect_cells(cmf::upslope::Cell & cell1,cmf::upslope::Cell & cell2,ptrdiff_t start_at_layer=0);
 			public:
 				/// @brief Creates the connection
 				///
@@ -136,7 +136,7 @@ namespace cmf {
 			class Richards_lateral: public lateral_sub_surface_flux
 			{
 			protected:
-				static void connect_cells(cmf::upslope::Cell & cell1,cmf::upslope::Cell & cell2,int start_at_layer=0);
+				static void connect_cells(cmf::upslope::Cell & cell1,cmf::upslope::Cell & cell2,ptrdiff_t start_at_layer=0);
 				virtual real calc_q(cmf::math::Time t) ;
 
 			public:

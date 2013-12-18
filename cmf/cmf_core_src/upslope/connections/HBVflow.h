@@ -131,7 +131,7 @@ namespace cmf {
 				std::tr1::weak_ptr<cmf::upslope::SoilLayer> sw1;
 				void NewNodes();
 				virtual real calc_q(cmf::math::Time t);
-				static void connect_cells(cmf::upslope::Cell & cell1,cmf::upslope::Cell & cell2,int start_at_layer=0);
+				static void connect_cells(cmf::upslope::Cell & cell1,cmf::upslope::Cell & cell2,ptrdiff_t start_at_layer=0);
 			public:
 				static const CellConnector cell_connector;
 				HBVlateral(cmf::upslope::SoilLayer::ptr left,cmf::water::flux_node::ptr right, real width, real dist)

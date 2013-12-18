@@ -547,7 +547,7 @@ void INTER24(double RFAL, double PINT, double LAI, double SAI, double FRINTL, do
 ///   RROOTI()root resistance for layer, MPa d/mm, 1E20 if no roots
 ///   ALPHA() modified Cowan alpha, MPa
 ///local
-void PLNTRES(int NLAYER, const num_array& THICK, const num_array& STONEF, double RTLEN, const num_array& RELDEN, double RTRAD, double RPLANT, 
+void PLNTRES(ptrdiff_t NLAYER, const num_array& THICK, const num_array& STONEF, double RTLEN, const num_array& RELDEN, double RTRAD, double RPLANT, 
 			 double FXYLEM, double & RXYLEM, num_array& RROOTI, num_array& ALPHA)
 {
 	num_array D(50);
@@ -559,12 +559,12 @@ void PLNTRES(int NLAYER, const num_array& THICK, const num_array& STONEF, double
 	///xylem resistance
 	RXYLEM = FXYLEM * RPLANT;
 	SUM = 0.;
-	for (int I = 0; I < NLAYER ; ++I)
+	for (ptrdiff_t I = 0; I < NLAYER ; ++I)
 	{
 		D[I] = THICK[I] * (1. - STONEF[I]);
 		SUM = SUM + RELDEN[I] * D[I];
 	}
-	for (int I = 0; I < NLAYER ; ++I)
+	for (ptrdiff_t I = 0; I < NLAYER ; ++I)
 	{
 		if (RELDEN[I] < 0.00001 || RTLEN < 0.1) {
 			///     no roots in layer
@@ -603,11 +603,11 @@ void PLNTRES(int NLAYER, const num_array& THICK, const num_array& STONEF, double
 ///   ATR            actual transpiration rate over time period, mm/d
 ///   ATRANI()       actual transpiration rate from layer over time period, mm/d
 
-void TBYLAYER(int J,double PTR, double DISPC, 
+void TBYLAYER(ptrdiff_t J,double PTR, double DISPC, 
 			  const num_array& ALPHA, const num_array& KK, 
 			  const num_array& RROOTI, double RXYLEM, 
-			  const num_array& PSITI,int NLAYER, double PSICR, 
-			  int NOOUTF, 
+			  const num_array& PSITI,ptrdiff_t NLAYER, double PSICR, 
+			  ptrdiff_t NOOUTF, 
 			  double& ATR,num_array& ATRANI)
 {
 	if (ATRANI.size() != NLAYER) throw std::runtime_error("Shuttleworth Wallace: Not correctly initialized ATR array");
@@ -618,13 +618,13 @@ void TBYLAYER(int J,double PTR, double DISPC,
 	double PSIT;           ///weighted average total soil water potential for unflagged layers, kPa
 	double R;              ///(2/pi)(SUPPLY/PTR)
 	double SUPPLY;         ///soil water supply rate, mm/d
-	int IDEL;          ///subscript of flagged layer
+	ptrdiff_t IDEL;          ///subscript of flagged layer
 	std::vector<bool>FLAG(RROOTI.size()); ///1 if layer has no transpiration uptake, otherwise 0
-	int NEGFLAG;       ///1 if second iteration is needed
+	ptrdiff_t NEGFLAG;       ///1 if second iteration is needed
 	
 	///flag layers with no roots, indicated by RROOTI = 1E20
 	///if outflow from roots is prevented, flag layers with PSITI <= PSICR
-	for (int I = 0; I < NLAYER ; ++I)
+	for (ptrdiff_t I = 0; I < NLAYER ; ++I)
 	{
 		if (RROOTI[I] > 1E+15) {
 			FLAG[I] = 1;
@@ -639,7 +639,7 @@ void TBYLAYER(int J,double PTR, double DISPC,
 	do {
 		NEGFLAG = 0;
 		SUM = 0.;
-		for (int I = 0; I < NLAYER ; ++I) {
+		for (ptrdiff_t I = 0; I < NLAYER ; ++I) {
 			if (FLAG[I] == 0) {
 				RI[I] = RROOTI[I] + ALPHA[I] / KK[I];
 				SUM = SUM + 1. / RI[I];
@@ -658,7 +658,7 @@ void TBYLAYER(int J,double PTR, double DISPC,
 		}
 		///  weighted mean soil water potential
 		PSIT = 0.;
-		for (int I = 0; I < NLAYER ; ++I) {
+		for (ptrdiff_t I = 0; I < NLAYER ; ++I) {
 			if (FLAG[I] == 0) {
 				PSIT = PSIT + RT * PSITI[I] / RI[I];
 			}
@@ -685,7 +685,7 @@ void TBYLAYER(int J,double PTR, double DISPC,
 			}
 		}
 		///  distribute total transpiration rate to layers
-		for (int I = 0; I < NLAYER ; ++I)	{
+		for (ptrdiff_t I = 0; I < NLAYER ; ++I)	{
 			if (FLAG[I] ==1) {
 				ATRANI[I] = 0.;
 			} else {
@@ -698,7 +698,7 @@ void TBYLAYER(int J,double PTR, double DISPC,
 			///     find layer with most negative transpiration and omit it
 			IDEL = 0;
 			TRMIN = 0.;
-			for (int I = 0; I < NLAYER ; ++I)
+			for (ptrdiff_t I = 0; I < NLAYER ; ++I)
 			{
 				if (ATRANI[I] < TRMIN) {
 					TRMIN = ATRANI[I];
@@ -771,7 +771,7 @@ void cmf::upslope::ET::ShuttleworthWallace::refresh( cmf::math::Time t )
 	cmf::atmosphere::Weather w = cell.get_weather(t);
 
 
-	const int lc = cell.layer_count(); 
+	const ptrdiff_t lc = cell.layer_count(); 
 	const double GLMIN = 1e-6; // min stomatal conductivity (night times)
 	const double GLMAX = 1. / v.StomatalResistance; // max stomatal conductivity m/s
 	
@@ -823,7 +823,7 @@ void cmf::upslope::ET::ShuttleworthWallace::refresh( cmf::math::Time t )
 	PSITI -= cell.z; 
 	PSITI *= RHOWG * 1e3; // convert m->kPa
 
-	int i=0;
+	ptrdiff_t i=0;
 	PLNTRES(lc,THICK,STONEF,v.RootLength(),ROOTF,3.5,RPLANT,piecewise_linear(v.Height,0,25,0,0.5),RXYLEM,RROOTI,ALPHA);
 	double UA = w.Windspeed * WNDADJ(ZA,DISP,Z0,5000.,10.,0.005);
 

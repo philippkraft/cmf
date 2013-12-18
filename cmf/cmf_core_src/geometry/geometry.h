@@ -119,7 +119,7 @@ namespace cmf {
 		public:
 #ifndef SWIG
 			/// Return point at index
-			point operator[](int index) const
+			point operator[](ptrdiff_t index) const
 			{
 				return cmf::geometry::point(X[index],Y[index],Z[index]);
 			}
@@ -130,16 +130,16 @@ namespace cmf {
 				Z; ///< z coordinates
 			
 			/// Create a point vector of a specific size
-			point_vector(int size) : X(size),Y(size),Z(size)
+			point_vector(ptrdiff_t size) : X(size),Y(size),Z(size)
 			{
 
 			}
 			/// Return a point at index
-			point get(int index) const { return cmf::geometry::point(X[index],Y[index],Z[index]);}
+			point get(ptrdiff_t index) const { return cmf::geometry::point(X[index],Y[index],Z[index]);}
 			/// Change the point at index
-			void set(int index,cmf::geometry::point p) {X[index]=p.x;Y[index]=p.y;Z[index]=p.z;}
+			void set(ptrdiff_t index,cmf::geometry::point p) {X[index]=p.x;Y[index]=p.y;Z[index]=p.z;}
 			/// Return the number of points in the point_vector
-			int size() const
+			ptrdiff_t size() const
 			{
 				return X.size();
 			}

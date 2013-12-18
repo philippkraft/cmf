@@ -40,7 +40,7 @@ namespace cmf {
 			cmf::upslope::Cell& m_cell;
 			real m_nManning;
 			cmf::river::Prism* m_height_function;
-			static void connect_cells(cmf::upslope::Cell & cell1,cmf::upslope::Cell & cell2,int start_at_layer=0);
+			static void connect_cells(cmf::upslope::Cell & cell1,cmf::upslope::Cell & cell2,ptrdiff_t start_at_layer=0);
 		protected:
 			SurfaceWater(cmf::upslope::Cell& cell);
 
@@ -126,7 +126,7 @@ namespace cmf {
 			/// This results in a connection of the surfacewater storage of each cell with the surface water storages of its neighbors [see](/wiki/CmfTutCell)
 			class KinematicSurfaceRunoff : public cmf::water::flux_connection {
 			private:
-				static void connect_cells(cmf::upslope::Cell& c1,cmf::upslope::Cell& c2,int dummy);
+				static void connect_cells(cmf::upslope::Cell& c1,cmf::upslope::Cell& c2,ptrdiff_t dummy);
 				std::tr1::weak_ptr<cmf::upslope::SurfaceWater> wleft;
 				virtual real calc_q(cmf::math::Time t);
 				void NewNodes();
@@ -152,7 +152,7 @@ namespace cmf {
 			};
 			class DiffusiveSurfaceRunoff : public cmf::water::flux_connection {
 			private:
-				static void connect_cells(cmf::upslope::Cell& c1,cmf::upslope::Cell& c2,int dummy);
+				static void connect_cells(cmf::upslope::Cell& c1,cmf::upslope::Cell& c2,ptrdiff_t dummy);
 				std::tr1::weak_ptr<cmf::upslope::SurfaceWater> wleft;
 				virtual real calc_q(cmf::math::Time t);
 				void NewNodes();

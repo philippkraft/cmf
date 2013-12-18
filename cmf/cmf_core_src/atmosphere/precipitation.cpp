@@ -110,12 +110,12 @@ void cmf::atmosphere::RainfallStation::use_for_cell( cmf::upslope::Cell& c )
 {
 	c.set_rain_source(RainfallStationReference::from_station_id(c.get_project(), c.get_position(), this->id));
 }
-RainfallStation::ptr cmf::atmosphere::RainfallStationList::operator[]( int index )
+RainfallStation::ptr cmf::atmosphere::RainfallStationList::operator[]( ptrdiff_t index )
 {
-	return m_stations.at(size_t(index >= 0 ? index : int(size()) + index));
+	return m_stations.at(size_t(index >= 0 ? index : ptrdiff_t(size()) + index));
 }
 
-const RainfallStation::ptr cmf::atmosphere::RainfallStationList::operator[]( int index ) const
+const RainfallStation::ptr cmf::atmosphere::RainfallStationList::operator[]( ptrdiff_t index ) const
 {
-	return m_stations.at(size_t(index >= 0 ? index : int(size()) + index));
+	return m_stations.at(size_t(index >= 0 ? index : ptrdiff_t(size()) + index));
 }

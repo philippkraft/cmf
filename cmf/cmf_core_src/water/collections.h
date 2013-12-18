@@ -39,10 +39,10 @@ namespace cmf {
 			node_vector m_nodes;
 		public:
 			/// @brief The number of nodes
-			int size() const {return int(m_nodes.size());}
+			ptrdiff_t size() const {return ptrdiff_t(m_nodes.size());}
 
 #ifndef SWIG
-			flux_node::ptr operator[](int index) const
+			flux_node::ptr operator[](ptrdiff_t index) const
 			{
 				return m_nodes.at(index<0 ? size()+index : index);
 			}
@@ -67,10 +67,10 @@ namespace cmf {
 			cmf::water::node_list operator+(const cmf::water::node_list & right) const;
 			
 			/// @brief Returns a node in the node_list
-			flux_node::ptr get(int index) const;
+			flux_node::ptr get(ptrdiff_t index) const;
 			
 			/// @brief Returns a slice of the node_list
-			node_list getslice(int begin,int end,int step=1) const;
+			node_list getslice(ptrdiff_t begin,ptrdiff_t end,ptrdiff_t step=1) const;
 
 			/// @brief Implements StateVariableOwner
 			cmf::math::StateVariableList get_states();
@@ -83,7 +83,7 @@ namespace cmf {
 			///
 			/// If nodes do not have changeable potentials, they are skipped silently
 			/// @returns The number of nodes with changed potential
-			int set_potentials(const cmf::math::num_array& potentials);
+			ptrdiff_t set_potentials(const cmf::math::num_array& potentials);
 			
 			/// @brief Returns the potential of the nodes
 			cmf::math::num_array get_potentials();
@@ -115,7 +115,7 @@ namespace cmf {
 			cmf::math::num_array conc(cmf::math::Time t, const cmf::water::solute& _Solute) const;
 			
 			/// @brief Sets the source flux of a solute storage associated  with a node (node has to be a water storage)
-			int set_solute_source(const cmf::water::solute& _Solute, cmf::math::num_array source_fluxes);
+			ptrdiff_t set_solute_source(const cmf::water::solute& _Solute, cmf::math::num_array source_fluxes);
 
 			/// @brief A fast method to perform flux queries as a batch. The node lists left and right should have the same length.
 			///
@@ -162,13 +162,13 @@ namespace cmf {
 			vector m_boundaries;
 		public:
 #ifndef SWIG
-			NeumannBoundary& operator[](int index) const
+			NeumannBoundary& operator[](ptrdiff_t index) const
 			{ return *m_boundaries.at(index<0 ? m_boundaries.size()+index : index );	}
 #endif
 			/// @brief Returns the Neumann boundary condition at position index
 			///
 			/// From Python you can use []
-			NeumannBoundary::ptr get(int index) const
+			NeumannBoundary::ptr get(ptrdiff_t index) const
 			{ return m_boundaries.at(index<0 ? m_boundaries.size()+index : index );	}
 
 			/// @brief Returns the fluxes of the items as an array

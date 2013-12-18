@@ -42,7 +42,7 @@ namespace cmf {
 			num_array dxdt;
 			//@}
 
-			real error_exceedance( const num_array& compare,int * biggest_error_position=0 );
+			real error_exceedance( const num_array& compare,ptrdiff_t * biggest_error_position=0 );
 			void Gear1newState(real h);
 
 

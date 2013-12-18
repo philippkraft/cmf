@@ -66,7 +66,7 @@ SoilLayer::SoilLayer( Cell & _cell,real lowerboundary,const RetentionCurve& r_cu
 	Name=sstr.str();
 }
 // protected constructor
-SoilLayer::SoilLayer( Cell & _cell,real upperBoundary,real lowerboundary,const RetentionCurve& r_curve,int _Position ) 
+SoilLayer::SoilLayer( Cell & _cell,real upperBoundary,real lowerboundary,const RetentionCurve& r_curve,ptrdiff_t _Position ) 
 : cmf::water::WaterStorage(_cell.get_project()),cell(_cell),m_retentioncurve(r_curve.copy()),
 m_lowerboundary(lowerboundary),m_upperboundary(upperBoundary),Position(_Position), 	m_ice_fraction(0.0), anisotropic_kf(1,1,1), m_rootfraction(-1)
 {

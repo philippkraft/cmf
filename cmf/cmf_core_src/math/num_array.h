@@ -28,15 +28,14 @@
 		{
 		private:
 			real* m_data;
-			int m_size;
+			ptrdiff_t m_size;
 		public:
 			/// @name Constructors & Destructors
 			// @{
 			/// Creates a new vector with size count
 			/// @param count size of new vector
 			/// @param Value Value of each element (default=0)
-			num_array(int count,real Value=0);
-			num_array(size_t count,real Value=0);
+			num_array(ptrdiff_t count,real Value=0);
 			/// Creates a vector of size 1 with value {0}
 			num_array();
 			/// Copy constructor
@@ -61,10 +60,10 @@
 			iterator begin() const {return m_data;}
 			iterator end()  const {return m_data + size();}
 			/// Size of the vector
-			int size() const { return m_size;}
+			ptrdiff_t size() const { return m_size;}
 			/// Changes the size of the vector
-			void resize(int count);
-			void resize(size_t count) {resize(int(count));}
+			void resize(ptrdiff_t count);
+			void resize(size_t count) {resize(ptrdiff_t(count));}
 			/// Prevents deletion of the stored data. 
 			/// Use with care, and only if you know what you are doing.
 			iterator release() {
@@ -73,9 +72,9 @@
 				return res;
 			}
 			/// returns the element at position pos (immutable vector)
-			const real& operator[](int pos) const { return m_data[pos];}
+			const real& operator[](ptrdiff_t pos) const { return m_data[pos];}
 			/// returns the element at position pos (mutable vector)
-			real& operator[](int pos) { return m_data[pos];}
+			real& operator[](ptrdiff_t pos) { return m_data[pos];}
 			/// @name Operators
 			/// Binary operators defined as free operators:
 			///

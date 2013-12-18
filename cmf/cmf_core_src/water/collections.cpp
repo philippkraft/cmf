@@ -26,7 +26,7 @@ real cmf::water::node_list::global_water_balance( cmf::math::Time t )	const
 {
 	real sum=0;
 #pragma omp parallel for reduction(+ : sum)
-	for (int i = 0; i < (int)size() ; ++i)
+	for (ptrdiff_t i = 0; i < (ptrdiff_t)size() ; ++i)
 	{
 		sum+=m_nodes[i]->waterbalance(t);					
 	}
@@ -37,7 +37,7 @@ cmf::math::num_array cmf::water::node_list::water_balance( cmf::math::Time t ) c
 {
 	cmf::math::num_array res(size());
 #pragma omp parallel for
-	for (int i = 0; i < (int)size() ; ++i)
+	for (ptrdiff_t i = 0; i < (ptrdiff_t)size() ; ++i)
 	{
 		res[i]=m_nodes[i]->waterbalance(t);
 	}
@@ -50,7 +50,7 @@ cmf::math::num_array cmf::water::node_list::get_fluxes_to( const cmf::water::nod
 		throw std::invalid_argument("The list for the target nodes need to have the same length as this node_list");
 	cmf::math::num_array res(size());
 #pragma omp parallel for
-	for (int i = 0; i < (int)res.size() ; ++i)
+	for (ptrdiff_t i = 0; i < (ptrdiff_t)res.size() ; ++i)
 	{
 		res[i]=m_nodes[i]->flux_to(*targets.m_nodes[i],t);
 	}
@@ -64,7 +64,7 @@ cmf::geometry::point_vector cmf::water::node_list::get_fluxes3d_to( const cmf::w
 		throw std::invalid_argument("The list for the target nodes need to have the same length as this node_list");
 	cmf::geometry::point_vector res(size());
 #pragma omp parallel for
-	for (int i = 0; i < (int)res.size() ; ++i)
+	for (ptrdiff_t i = 0; i < (ptrdiff_t)res.size() ; ++i)
 	{
 		res.set(i,m_nodes[i]->flux3d_to(*targets.m_nodes[i],t));
 	}
@@ -77,7 +77,7 @@ cmf::geometry::point_vector cmf::water::node_list::get_fluxes3d( cmf::math::Time
 {
 	cmf::geometry::point_vector res(size());
 #pragma omp parallel for
-	for (int i = 0; i < (int)res.size() ; ++i)
+	for (ptrdiff_t i = 0; i < (ptrdiff_t)res.size() ; ++i)
 	{
 		res.set(i,m_nodes[i]->get_3d_flux(t));
 	}
@@ -90,7 +90,7 @@ cmf::geometry::point_vector cmf::water::node_list::get_positions() const
 {
 	cmf::geometry::point_vector res(size());
 #pragma omp parallel for
-	for (int i = 0; i < (int)res.size() ; ++i)
+	for (ptrdiff_t i = 0; i < (ptrdiff_t)res.size() ; ++i)
 	{
 		res.set(i,m_nodes[i]->position);
 	}
@@ -98,12 +98,12 @@ cmf::geometry::point_vector cmf::water::node_list::get_positions() const
 
 }
 
-int cmf::water::node_list::set_potentials( const cmf::math::num_array& potentials )
+ptrdiff_t cmf::water::node_list::set_potentials( const cmf::math::num_array& potentials )
 {
 	if (size()!=potentials.size())
 		throw std::out_of_range("Size of potential array does not fit the size of the node_list");
-	int ok_count=size();
-	for (int i = 0; i < size() ; ++i)
+	ptrdiff_t ok_count=size();
+	for (ptrdiff_t i = 0; i < size() ; ++i)
 	{
 		try
 		{
@@ -121,7 +121,7 @@ cmf::math::num_array cmf::water::node_list::get_potentials()
 {
 	cmf::math::num_array res(size());
 	#pragma omp parallel for
-	for (int i = 0; i < (int)size() ; ++i)
+	for (ptrdiff_t i = 0; i < (ptrdiff_t)size() ; ++i)
 	{
 		res[i]=m_nodes[i]->get_potential();		
 	}
@@ -132,20 +132,20 @@ cmf::math::num_array cmf::water::node_list::conc( cmf::math::Time t, const cmf::
 {
 	cmf::math::num_array res(size());
 #pragma omp parallel for
-	for (int i = 0; i < (int)size() ; ++i)
+	for (ptrdiff_t i = 0; i < (ptrdiff_t)size() ; ++i)
 	{
 		res[i]=m_nodes[i]->conc(t,_Solute);
 	}
 	return res;
 }
 
-int cmf::water::node_list::set_solute_source( const cmf::water::solute& _Solute, cmf::math::num_array source_fluxes)
+ptrdiff_t cmf::water::node_list::set_solute_source( const cmf::water::solute& _Solute, cmf::math::num_array source_fluxes)
 {
 	if (size()!=source_fluxes.size())
 		throw std::out_of_range("Size of solute source array does not fit the size of the node_list");
-	int ok_count=size();
+	ptrdiff_t ok_count=size();
 #pragma omp parallel for
-	for (int i = 0; i < (int)size() ; ++i)
+	for (ptrdiff_t i = 0; i < (ptrdiff_t)size() ; ++i)
 	{
 		cmf::water::WaterStorage* storage=dynamic_cast<cmf::water::WaterStorage*>(m_nodes[i].get());
 		if (storage)
@@ -183,7 +183,7 @@ cmf::math::StateVariableList cmf::water::node_list::get_states()
 
 cmf::water::node_list& cmf::water::node_list::operator+=( const cmf::water::node_list& right )
 {
-	for (int i = 0; i < right.size() ; ++i)
+	for (ptrdiff_t i = 0; i < right.size() ; ++i)
 	{
 		append(right[i]);
 	}
@@ -197,15 +197,15 @@ cmf::water::node_list cmf::water::node_list::operator+( const cmf::water::node_l
 	return res;
 }
 
-cmf::water::flux_node::ptr cmf::water::node_list::get( int index ) const
+cmf::water::flux_node::ptr cmf::water::node_list::get( ptrdiff_t index ) const
 {
 	return m_nodes.at(index<0 ? size()+index : index);
 }
 
-cmf::water::node_list cmf::water::node_list::getslice( int begin,int end,int step/*=1*/ ) const
+cmf::water::node_list cmf::water::node_list::getslice( ptrdiff_t begin,ptrdiff_t end,ptrdiff_t step/*=1*/ ) const
 {
 	node_list res;
-	for (int i = begin; i <end  ; i+=step)
+	for (ptrdiff_t i = begin; i <end  ; i+=step)
 	{
 		res.append(get(i));
 	}
@@ -232,7 +232,7 @@ bool cmf::water::node_list::remove( flux_node::ptr node )
 cmf::math::num_array cmf::water::NeumannBoundary_list::get_fluxes( cmf::math::Time t ) const
 {
 	cmf::math::num_array res(m_boundaries.size());
-	for (int i = 0; i < int(m_boundaries.size()) ; ++i)
+	for (ptrdiff_t i = 0; i < ptrdiff_t(m_boundaries.size()) ; ++i)
 	{
 		res[i]=m_boundaries[i]->get_flux()[t];
 	}
@@ -245,7 +245,7 @@ void cmf::water::NeumannBoundary_list::set_fluxes( cmf::math::num_array values )
 		throw std::runtime_error("The input array with fluxes need to have the same size as this list");
 	else
 	{
-		for (int i = 0; i < values.size() ; ++i)
+		for (ptrdiff_t i = 0; i < values.size() ; ++i)
 		{
 			m_boundaries[i]->set_flux(values[i]);
 		}
@@ -256,7 +256,7 @@ real cmf::water::NeumannBoundary_list::global_water_balance( cmf::math::Time t )
 {
 	real sum=0;
 #pragma omp parallel for reduction(+ : sum)
-	for (int i = 0; i < (int)size() ; ++i)
+	for (ptrdiff_t i = 0; i < (ptrdiff_t)size() ; ++i)
 	{
 		sum+=m_boundaries[i]->waterbalance(t);					
 	}
@@ -267,7 +267,7 @@ cmf::math::num_array cmf::water::NeumannBoundary_list::water_balance( cmf::math:
 {
 	cmf::math::num_array res(size());
 #pragma omp parallel for
-	for (int i = 0; i < (int)size() ; ++i)
+	for (ptrdiff_t i = 0; i < (ptrdiff_t)size() ; ++i)
 	{
 		res[i]=m_boundaries[i]->waterbalance(t);
 	}
@@ -276,7 +276,7 @@ cmf::math::num_array cmf::water::NeumannBoundary_list::water_balance( cmf::math:
 
 cmf::water::NeumannBoundary_list::NeumannBoundary_list( const cmf::water::node_list& copy )
 {
-	for (int i = 0; i < copy.size() ; ++i)
+	for (ptrdiff_t i = 0; i < copy.size() ; ++i)
 	{
 		NeumannBoundary::ptr nbc=std::tr1::dynamic_pointer_cast<cmf::water::NeumannBoundary>(copy[i]);
 		if (nbc)
@@ -293,7 +293,7 @@ cmf::water::NeumannBoundary_list::NeumannBoundary_list( const NeumannBoundary_li
 cmf::water::node_list cmf::water::NeumannBoundary_list::to_node_list() const
 {
 	cmf::water::node_list res;
-	for (int i = 0; i < int(size()) ; ++i)
+	for (ptrdiff_t i = 0; i < ptrdiff_t(size()) ; ++i)
 	{
 		res.append(get(i));
 	}

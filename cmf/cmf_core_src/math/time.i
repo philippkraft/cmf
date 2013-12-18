@@ -205,7 +205,7 @@ static bool check_time(PyObject* dt) {
 
 %extend cmf::math::timeseries
 {
-	double __len__()
+	ptrdiff_t __len__()
 	{
 		return $self->size();
 	}
