@@ -27,9 +27,9 @@ cmf::math::ImplicitEuler::ImplicitEuler(StateVariableOwner& states,
 										cmf::math::Time tStepMin/*=10.0/(3600.0*24.0)*/ ) 
 : Integrator(states,epsilon),dt_min(tStepMin)
 {
-	oldStates      = num_array(int(m_States.size()),0);
-	compareStates  = num_array(int(m_States.size()),0);
-	dxdt           = num_array(int(m_States.size()),0);
+	oldStates      = num_array(ptrdiff_t(m_States.size()),0);
+	compareStates  = num_array(ptrdiff_t(m_States.size()),0);
+	dxdt           = num_array(ptrdiff_t(m_States.size()),0);
 }
 cmf::math::ImplicitEuler::ImplicitEuler( real epsilon/*=1e-9*/,cmf::math::Time tStepMin/*=10.0/(3600.0*24.0)*/ ) : 
 Integrator(epsilon), dt_min(tStepMin)
@@ -42,11 +42,11 @@ cmf::math::ImplicitEuler::ImplicitEuler( const cmf::math::Integrator& forCopy)
 
 }
 
-real cmf::math::ImplicitEuler::error_exceedance( const num_array& compare,int * biggest_error_position/*=0 */ )
+real cmf::math::ImplicitEuler::error_exceedance( const num_array& compare,ptrdiff_t * biggest_error_position/*=0 */ )
 {
 	real res=0;
 #pragma omp parallel for shared(res)
-	for (int i = 0; i < size() ; i++)
+	for (ptrdiff_t i = 0; i < size() ; i++)
 	{
 		real error=fabs(compare[i]-get_state(i));
 		// Calculate absolute error tolerance as: epsilon + |(x_p+x_(n+1))/2|*epsilon
@@ -68,9 +68,9 @@ real cmf::math::ImplicitEuler::error_exceedance( const num_array& compare,int * 
 void cmf::math::ImplicitEuler::add_states( cmf::math::StateVariableOwner& stateOwner ) 
 {
 	Integrator::add_states(stateOwner);
-	oldStates.resize(int(m_States.size()));
-	compareStates.resize(int(m_States.size()));
-	dxdt.resize(int(m_States.size()));
+	oldStates.resize(ptrdiff_t(m_States.size()));
+	compareStates.resize(ptrdiff_t(m_States.size()));
+	dxdt.resize(ptrdiff_t(m_States.size()));
 }
 
 
@@ -91,7 +91,7 @@ int cmf::math::ImplicitEuler::integrate(cmf::math::Time MaxTime,cmf::math::Time 
 	// Copies the actual states to the history as x_(n)
 	copy_states(oldStates);
 	// Count the iterations
-	int iter=0;
+	ptrdiff_t iter=0;
 	
 	// Remember the last errors
 	
@@ -141,7 +141,7 @@ int cmf::math::ImplicitEuler::integrate(cmf::math::Time MaxTime,cmf::math::Time 
 	m_dt=h;
 
 	set_t(get_t() + h);
-	return iter;
+	return int(iter);
 }
 
 void cmf::math::ImplicitEuler::Gear1newState( real h )
@@ -150,7 +150,7 @@ void cmf::math::ImplicitEuler::Gear1newState( real h )
 	if (use_OpenMP)
 	{
 #pragma omp parallel for private(state_i)
-		for (int i = 0; i < size() ; i++)
+		for (ptrdiff_t i = 0; i < size() ; i++)
 		{
 			// The formula is written so ugly to avoid internal memory allocation
 			// x_n+1 = x_(n) + h dxdt
@@ -162,7 +162,7 @@ void cmf::math::ImplicitEuler::Gear1newState( real h )
 	}
 	else
 	{
-		for (int i = 0; i < size() ; i++)
+		for (ptrdiff_t i = 0; i < size() ; i++)
 		{
 			// The formula is written so ugly to avoid internal memory allocation
 			// x_n+1 = x_(n) + h dxdt

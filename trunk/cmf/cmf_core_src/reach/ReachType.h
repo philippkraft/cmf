@@ -442,7 +442,7 @@ namespace cmf {
 			MeanChannel* copy() const;
 
 		};
-		
+		/*
 		///@brief A channel with a piecewise linear shape
 		///
 		/// The geometry of this reach is defined by a discrete
@@ -457,7 +457,7 @@ namespace cmf {
 		{
 
 		};
-
+		*/
 	}
 }
 #endif // ReachType_h__

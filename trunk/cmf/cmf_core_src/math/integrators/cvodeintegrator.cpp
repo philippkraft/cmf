@@ -210,11 +210,11 @@ int cmf::math::CVodeIntegrator::get_order() const
 
 cmf::math::num_array cmf::math::CVodeIntegrator::get_error() const
 {
-	N_Vector ele = N_VNew_Serial(size());
-	N_Vector eweight = N_VNew_Serial(size());
+	N_Vector ele = N_VNew_Serial(long(size()));
+	N_Vector eweight = N_VNew_Serial(long(size()));
 	CVodeGetEstLocalErrors(cvode_mem,ele);
 	CVodeGetErrWeights(cvode_mem,eweight);
-	N_Vector result = N_VNew_Serial(size());
+	N_Vector result = N_VNew_Serial(long(size()));
 	N_VProd(ele,eweight,result);
 	num_array res(NV_DATA_S(result),NV_DATA_S(result)+size());
 	N_VDestroy_Serial(ele);

@@ -33,7 +33,7 @@
 
 using namespace cmf::upslope;
 
-int Cell::cell_count=0;
+ptrdiff_t Cell::cell_count=0;
 Cell::~Cell()
 {
 	m_Layers.clear();
@@ -104,7 +104,7 @@ void Cell::add_layer(real lowerboundary,const RetentionCurve& r_curve,real satur
 	} // Add the new layer to the layer vector
 	m_Layers.append(layer);
 }
-SoilLayer::ptr Cell::get_layer(int index) const {
+SoilLayer::ptr Cell::get_layer(ptrdiff_t index) const {
 	return m_Layers[index];
 }
 
@@ -160,7 +160,7 @@ cmf::water::WaterStorage::ptr Cell::add_storage( std::string Name,char storage_r
 	
 }
 
-cmf::water::WaterStorage::ptr Cell::get_storage( int index ) const
+cmf::water::WaterStorage::ptr Cell::get_storage( ptrdiff_t index ) const
 {
 	return m_storages.at(index<0 ? m_storages.size()+index : index);
 }
@@ -168,7 +168,7 @@ cmf::water::WaterStorage::ptr Cell::get_storage( int index ) const
 
 void Cell::set_saturated_depth( real depth )
 {
-	for (int i = 0; i < layer_count() ; ++i)
+	for (ptrdiff_t i = 0; i < layer_count() ; ++i)
 	{
 		get_layer(i)->set_potential(z-depth);
 	}
@@ -280,9 +280,9 @@ void Cell::set_rain_source( cmf::atmosphere::RainSource::ptr new_source )
 cmf::math::StateVariableList Cell::get_states()
 {
 	cmf::math::StateVariableList q;
-	for (int i = 0; i < storage_count() ; ++i)
+	for (ptrdiff_t i = 0; i < storage_count() ; ++i)
 		q.extend(*get_storage(i));
-	for (int i = 0; i < layer_count() ; ++i)
+	for (ptrdiff_t i = 0; i < layer_count() ; ++i)
 		q.extend(*get_layer(i));
 	return q;
 }
@@ -340,7 +340,7 @@ real Cell::surface_water_coverage() const
 
 double Cell::get_soildepth() const
 {
-	int lc=layer_count();
+	ptrdiff_t lc=layer_count();
 	if (lc) 
 		return get_layer(lc-1)->get_lower_boundary();
 	else

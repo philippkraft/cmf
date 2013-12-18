@@ -17,22 +17,22 @@ namespace cmf {
 			friend class cell_iterator;
 			friend class cell_const_iterator;
 		public:
-			const cmf::upslope::Cell& operator[](int index) const {
+			const cmf::upslope::Cell& operator[](ptrdiff_t index) const {
 				return *m_cells.at(index >=0 ? index : m_cells.size() + index);
 			}
 			cell_vector() {}
 			cell_vector(const cell_vector& copy)
 				: m_cells(copy.m_cells) {}
 			
-			cmf::upslope::Cell& operator[](int index) {
+			cmf::upslope::Cell& operator[](ptrdiff_t index) {
 				return *m_cells.at(index >=0 ? index : m_cells.size() + index);
 			}
 						cmf::math::StateVariableList get_states();
 			void append(cmf::upslope::Cell& cell) {
 				m_cells.push_back(&cell);
 			}
-			void remove(int index) {
-				int ndx = index<0 ? size()+index : index;
+			void remove(ptrdiff_t index) {
+				ptrdiff_t ndx = index<0 ? size()+index : index;
 				m_cells.erase(m_cells.begin() + ndx);
 			}
 			void remove(const cmf::upslope::Cell& cell);
@@ -41,7 +41,7 @@ namespace cmf {
 
 			size_t size() const {return m_cells.size();}
 
-			cell_vector get_slice(int start,int end,int step=1) ;
+			cell_vector get_slice(ptrdiff_t start,ptrdiff_t end,ptrdiff_t step=1) ;
 
 			/// Returns the cell with the lowest height
 			Cell& get_lowest() const;
@@ -108,11 +108,11 @@ namespace cmf {
 				return res;
 			}
 
-			cell_iterator& operator+=(int pos) {
+			cell_iterator& operator+=(ptrdiff_t pos) {
 				current+=pos;
 				return *this;
 			}
-			cell_iterator operator+(int pos) {
+			cell_iterator operator+(ptrdiff_t pos) {
 				cell_iterator res=*this;
 				res+=pos;
 				return res;
@@ -126,17 +126,17 @@ namespace cmf {
 				return res;
 			}
 
-			cell_iterator& operator-=(int pos) {
+			cell_iterator& operator-=(ptrdiff_t pos) {
 				current-=pos;
 				return *this;
 			}
 
-			cell_iterator operator-(int pos) {
+			cell_iterator operator-(ptrdiff_t pos) {
 				cell_iterator res=*this;
 				res-=pos;
 				return res;
 			}
-			int operator-(cell_iterator b) {
+			ptrdiff_t operator-(cell_iterator b) {
 				return current - b.current;
 			}
 
@@ -183,11 +183,11 @@ namespace cmf {
 				return res;
 			}
 
-			cell_const_iterator& operator+=(int pos) {
+			cell_const_iterator& operator+=(ptrdiff_t pos) {
 				current+=pos;
 				return *this;
 			}
-			cell_const_iterator operator+(int pos) {
+			cell_const_iterator operator+(ptrdiff_t pos) {
 				cell_const_iterator res=*this;
 				res+=pos;
 				return res;
@@ -201,17 +201,17 @@ namespace cmf {
 				return res;
 			}
 
-			cell_const_iterator& operator-=(int pos) {
+			cell_const_iterator& operator-=(ptrdiff_t pos) {
 				current-=pos;
 				return *this;
 			}
 
-			cell_const_iterator operator-(int pos) {
+			cell_const_iterator operator-(ptrdiff_t pos) {
 				cell_const_iterator res=*this;
 				res-=pos;
 				return res;
 			}
-			int operator-(cell_const_iterator b) {
+			ptrdiff_t operator-(cell_const_iterator b) {
 				return current - b.current;
 			}
 

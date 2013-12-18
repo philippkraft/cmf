@@ -135,11 +135,11 @@ namespace cmf {
 			size_t size() const { return m_stations.size();}
 			
 			/// Returns the station at index
-			RainfallStation::ptr operator[](int index);
+			RainfallStation::ptr operator[](ptrdiff_t index);
 			
 
 			/// Returns the station at index
-			const RainfallStation::ptr operator[](int index) const;
+			const RainfallStation::ptr operator[](ptrdiff_t index) const;
 			
 			
 			/// @brief Creates a new RainfallStation and adds it to the list. 
@@ -157,8 +157,8 @@ namespace cmf {
 				return rfs;
 			}
 			/// Removes the station at index from this list
-			void remove(int index) {
-				m_stations.erase(m_stations.begin() + (index > 0 ? index : int(size()) + index));
+			void remove(ptrdiff_t index) {
+				m_stations.erase(m_stations.begin() + (index > 0 ? index : ptrdiff_t(size()) + index));
 			}
 		};
 		

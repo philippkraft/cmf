@@ -99,18 +99,18 @@ namespace cmf {
 			bool use_OpenMP;
 
 			/// returns the number of state variables
-			int size() const
+			ptrdiff_t size() const
 			{
-				return (int)m_States.size();
+				return (ptrdiff_t)m_States.size();
 			}
 			/// Returns the statevariable at position
 			/// Simplifies the assessment of state variables
-			real get_state(int position) const
+			real get_state(ptrdiff_t position) const
 			{
 				return m_States[position]->get_state();
 			}
 			/// Simplifies the assessment of state variables
-			void set_state(int position,real newState)
+			void set_state(ptrdiff_t position,real newState)
 			{
 				m_States[position]->set_state(newState);
 			}

@@ -86,7 +86,15 @@ def _swig_setattr_nondynamic_method(set):
 SHARED_PTR_DISOWN = _cmf_core.SHARED_PTR_DISOWN
 
 def get_parallel_threads(*args):
-  """get_parallel_threads() -> int"""
+  """
+    get_parallel_threads() -> int
+
+    int
+    cmf::math::get_parallel_threads()
+
+    Returns the max number of threads used by OpenMP in parallel sections
+    of the code. 
+    """
   return _cmf_core.get_parallel_threads(*args)
 
 def set_parallel_threads(*args, **kwargs):
@@ -427,19 +435,19 @@ class point_vector(object):
     Z = _swig_property(_cmf_core.point_vector_Z_get, _cmf_core.point_vector_Z_set)
     def __init__(self, *args, **kwargs): 
         """
-        __init__(cmf::geometry::point_vector self, int size) -> point_vector
+        __init__(cmf::geometry::point_vector self, ptrdiff_t size) -> point_vector
 
-        point_vector(int size)
+        point_vector(ptrdiff_t size)
 
         Create a point vector of a specific size. 
         """
         _cmf_core.point_vector_swiginit(self,_cmf_core.new_point_vector(*args, **kwargs))
     def get(self, *args, **kwargs):
         """
-        get(point_vector self, int index) -> point
+        get(point_vector self, ptrdiff_t index) -> point
 
         point
-        get(int index) const
+        get(ptrdiff_t index) const
 
         Return a point at index. 
         """
@@ -447,10 +455,10 @@ class point_vector(object):
 
     def set(self, *args, **kwargs):
         """
-        set(point_vector self, int index, point p)
+        set(point_vector self, ptrdiff_t index, point p)
 
-        void set(int
-        index, cmf::geometry::point p)
+        void
+        set(ptrdiff_t index, cmf::geometry::point p)
 
         Change the point at index. 
         """
@@ -458,10 +466,10 @@ class point_vector(object):
 
     def size(self, *args, **kwargs):
         """
-        size(point_vector self) -> int
+        size(point_vector self) -> ptrdiff_t
 
-        int size()
-        const
+        ptrdiff_t
+        size() const
 
         Return the number of points in the point_vector. 
         """
@@ -1041,9 +1049,10 @@ class timeseries(object):
 
     def size(self, *args, **kwargs):
         """
-        size(timeseries self) -> int
+        size(timeseries self) -> ptrdiff_t
 
-        int size() const
+        ptrdiff_t size()
+        const
 
         Number of items in the timeseries. 
         """
@@ -1051,9 +1060,9 @@ class timeseries(object):
 
     def count_values(self, *args, **kwargs):
         """
-        count_values(timeseries self) -> int
+        count_values(timeseries self) -> ptrdiff_t
 
-        int
+        ptrdiff_t
         count_values() const
 
         Number of valid values (=size - # of NaN's) 
@@ -1093,10 +1102,10 @@ class timeseries(object):
 
     def get_i(self, *args, **kwargs):
         """
-        get_i(timeseries self, int i) -> double
+        get_i(timeseries self, ptrdiff_t i) -> double
 
-        double get_i(int
-        i) const 
+        double
+        get_i(ptrdiff_t i) const 
         """
         return _cmf_core.timeseries_get_i(self, *args, **kwargs)
 
@@ -1111,29 +1120,31 @@ class timeseries(object):
 
     def set_i(self, *args, **kwargs):
         """
-        set_i(timeseries self, int i, double value)
+        set_i(timeseries self, ptrdiff_t i, double value)
 
-        void set_i(int
-        i, double value) 
+        void
+        set_i(ptrdiff_t i, double value) 
         """
         return _cmf_core.timeseries_set_i(self, *args, **kwargs)
 
     def get_slice(self, *args):
         """
         get_slice(timeseries self, Time _begin, Time _end, Time _step=cmf::math::Time()) -> timeseries
-        get_slice(timeseries self, int _begin, int _end, int step=1) -> timeseries
+        get_slice(timeseries self, ptrdiff_t _begin, ptrdiff_t _end, ptrdiff_t step=1) -> timeseries
 
-        cmf::math::timeseries get_slice(int _begin, int _end, int step=1) 
+        cmf::math::timeseries get_slice(ptrdiff_t _begin, ptrdiff_t _end,
+        ptrdiff_t step=1) 
         """
         return _cmf_core.timeseries_get_slice(self, *args)
 
     def set_slice(self, *args):
         """
         set_slice(timeseries self, Time _begin, Time _end, timeseries values)
-        set_slice(timeseries self, int _begin, int _end, timeseries _values)
+        set_slice(timeseries self, ptrdiff_t _begin, ptrdiff_t _end, timeseries _values)
 
         void
-        set_slice(int _begin, int _end, cmf::math::timeseries _values) 
+        set_slice(ptrdiff_t _begin, ptrdiff_t _end, cmf::math::timeseries
+        _values) 
         """
         return _cmf_core.timeseries_set_slice(self, *args)
 
@@ -1354,7 +1365,7 @@ class timeseries(object):
     step = _swig_property(_cmf_core.timeseries_step_get)
     end = _swig_property(_cmf_core.timeseries_end_get)
     def __len__(self, *args, **kwargs):
-        """__len__(timeseries self) -> double"""
+        """__len__(timeseries self) -> ptrdiff_t"""
         return _cmf_core.timeseries___len__(self, *args, **kwargs)
 
     def __repr__(self):
@@ -1928,9 +1939,10 @@ class Integrator(StateVariableOwner):
     use_OpenMP = _swig_property(_cmf_core.Integrator_use_OpenMP_get, _cmf_core.Integrator_use_OpenMP_set)
     def size(self, *args, **kwargs):
         """
-        size(Integrator self) -> int
+        size(Integrator self) -> ptrdiff_t
 
-        int size() const
+        ptrdiff_t size()
+        const
 
         returns the number of state variables 
         """
@@ -1938,10 +1950,10 @@ class Integrator(StateVariableOwner):
 
     def get_state(self, *args, **kwargs):
         """
-        get_state(Integrator self, int position) -> real
+        get_state(Integrator self, ptrdiff_t position) -> real
 
         real
-        get_state(int position) const
+        get_state(ptrdiff_t position) const
 
         Returns the statevariable at position Simplifies the assessment of
         state variables. 
@@ -1950,10 +1962,10 @@ class Integrator(StateVariableOwner):
 
     def set_state(self, *args, **kwargs):
         """
-        set_state(Integrator self, int position, real newState)
+        set_state(Integrator self, ptrdiff_t position, real newState)
 
         void
-        set_state(int position, real newState)
+        set_state(ptrdiff_t position, real newState)
 
         Simplifies the assessment of state variables. 
         """
@@ -2184,7 +2196,7 @@ class ExplicitEuler_fixed(Integrator):
 ExplicitEuler_fixed_swigregister = _cmf_core.ExplicitEuler_fixed_swigregister
 ExplicitEuler_fixed_swigregister(ExplicitEuler_fixed)
 
-class PredictCorrectSimple(Integrator):
+class HeunIntegrator(Integrator):
     """
     A simple predictor - corrector solver.
 
@@ -2195,21 +2207,21 @@ class PredictCorrectSimple(Integrator):
     """
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
     __repr__ = _swig_repr
-    alpha = _swig_property(_cmf_core.PredictCorrectSimple_alpha_get, _cmf_core.PredictCorrectSimple_alpha_set)
+    alpha = _swig_property(_cmf_core.HeunIntegrator_alpha_get, _cmf_core.HeunIntegrator_alpha_set)
     def __init__(self, *args): 
         """
-        __init__(cmf::math::PredictCorrectSimple self, StateVariableOwner states, real Alpha=0.5) -> PredictCorrectSimple
-        __init__(cmf::math::PredictCorrectSimple self, real Alpha=0.5) -> PredictCorrectSimple
-        __init__(cmf::math::PredictCorrectSimple self, Integrator copy) -> PredictCorrectSimple
+        __init__(cmf::math::HeunIntegrator self, StateVariableOwner states, real Alpha=0.5) -> HeunIntegrator
+        __init__(cmf::math::HeunIntegrator self, real Alpha=0.5) -> HeunIntegrator
+        __init__(cmf::math::HeunIntegrator self, Integrator copy) -> HeunIntegrator
 
-        PredictCorrectSimple(const Integrator &copy)
+        HeunIntegrator(const Integrator &copy)
 
         copy constructor 
         """
-        _cmf_core.PredictCorrectSimple_swiginit(self,_cmf_core.new_PredictCorrectSimple(*args))
-    __swig_destroy__ = _cmf_core.delete_PredictCorrectSimple
-PredictCorrectSimple_swigregister = _cmf_core.PredictCorrectSimple_swigregister
-PredictCorrectSimple_swigregister(PredictCorrectSimple)
+        _cmf_core.HeunIntegrator_swiginit(self,_cmf_core.new_HeunIntegrator(*args))
+    __swig_destroy__ = _cmf_core.delete_HeunIntegrator
+HeunIntegrator_swigregister = _cmf_core.HeunIntegrator_swigregister
+HeunIntegrator_swigregister(HeunIntegrator)
 
 class ImplicitEuler(Integrator):
     """
@@ -3946,9 +3958,10 @@ class node_list(StateVariableOwner):
     __repr__ = _swig_repr
     def size(self, *args, **kwargs):
         """
-        size(node_list self) -> int
+        size(node_list self) -> ptrdiff_t
 
-        int size() const
+        ptrdiff_t size()
+        const
 
         The number of nodes. 
         """
@@ -3974,10 +3987,10 @@ class node_list(StateVariableOwner):
 
     def __get(self, *args, **kwargs):
         """
-        __get(node_list self, int index) -> cmf::water::flux_node::ptr
+        __get(node_list self, ptrdiff_t index) -> cmf::water::flux_node::ptr
 
         flux_node::ptr
-        get(int index) const
+        get(ptrdiff_t index) const
 
         Returns a node in the node_list. 
         """
@@ -3985,10 +3998,10 @@ class node_list(StateVariableOwner):
 
     def __getslice(self, *args, **kwargs):
         """
-        __getslice(node_list self, int begin, int end, int step=1) -> node_list
+        __getslice(node_list self, ptrdiff_t begin, ptrdiff_t end, ptrdiff_t step=1) -> node_list
 
         node_list
-        getslice(int begin, int end, int step=1) const
+        getslice(ptrdiff_t begin, ptrdiff_t end, ptrdiff_t step=1) const
 
         Returns a slice of the node_list. 
         """
@@ -4059,10 +4072,9 @@ class node_list(StateVariableOwner):
 
     def set_solute_source(self, *args, **kwargs):
         """
-        set_solute_source(node_list self, solute _Solute, cmf::math::num_array source_fluxes) -> int
+        set_solute_source(node_list self, solute _Solute, cmf::math::num_array source_fluxes) -> ptrdiff_t
 
-        int
-        set_solute_source(const cmf::water::solute &_Solute,
+        ptrdiff_t set_solute_source(const cmf::water::solute &_Solute,
         cmf::math::num_array source_fluxes)
 
         Sets the source flux of a solute storage associated with a node (node
@@ -4195,9 +4207,9 @@ class NeumannBoundary_list(object):
     __repr__ = _swig_repr
     def get(self, *args, **kwargs):
         """
-        get(NeumannBoundary_list self, int index) -> cmf::water::NeumannBoundary::ptr
+        get(NeumannBoundary_list self, ptrdiff_t index) -> cmf::water::NeumannBoundary::ptr
 
-        NeumannBoundary::ptr get(int index) const
+        NeumannBoundary::ptr get(ptrdiff_t index) const
 
         Returns the Neumann boundary condition at position index.
 
@@ -5033,10 +5045,9 @@ class MeteoStationList(object):
     __repr__ = _swig_repr
     def __len__(self, *args, **kwargs):
         """
-        __len__(MeteoStationList self) -> int
+        __len__(MeteoStationList self) -> ptrdiff_t
 
-        int
-        size() const
+        ptrdiff_t size() const
 
         Returns the number of stations. 
         """
@@ -5044,7 +5055,7 @@ class MeteoStationList(object):
 
     def __getitem__(self, *args):
         """
-        __getitem__(MeteoStationList self, int index) -> cmf::atmosphere::MeteoStation::ptr
+        __getitem__(MeteoStationList self, ptrdiff_t index) -> cmf::atmosphere::MeteoStation::ptr
         __getitem__(MeteoStationList self, std::string const & Name) -> cmf::atmosphere::MeteoStation::ptr
         """
         return _cmf_core.MeteoStationList___getitem__(self, *args)
@@ -5101,10 +5112,10 @@ class MeteoStationList(object):
 
     def remove_station(self, *args, **kwargs):
         """
-        remove_station(MeteoStationList self, int index) -> int
+        remove_station(MeteoStationList self, ptrdiff_t index) -> ptrdiff_t
 
-        int
-        remove_station(int index)
+        ptrdiff_t
+        remove_station(ptrdiff_t index)
 
         Removes a station and returns the number of remaining references to
         the removed station. If the station is deleted, 0 is returned. 
@@ -5394,8 +5405,8 @@ class RainfallStationList(object):
 
     def __getitem__(self, *args):
         """
-        __getitem__(RainfallStationList self, int index) -> cmf::atmosphere::RainfallStation::ptr
-        __getitem__(RainfallStationList self, int index) -> cmf::atmosphere::RainfallStation::ptr const
+        __getitem__(RainfallStationList self, ptrdiff_t index) -> cmf::atmosphere::RainfallStation::ptr
+        __getitem__(RainfallStationList self, ptrdiff_t index) -> cmf::atmosphere::RainfallStation::ptr const
         """
         return _cmf_core.RainfallStationList___getitem__(self, *args)
 
@@ -5424,9 +5435,9 @@ class RainfallStationList(object):
 
     def remove(self, *args, **kwargs):
         """
-        remove(RainfallStationList self, int index)
+        remove(RainfallStationList self, ptrdiff_t index)
 
-        void remove(int index)
+        void remove(ptrdiff_t index)
 
         Removes the station at index from this list. 
         """
@@ -5594,16 +5605,16 @@ class CellConnector(object):
         """
         _cmf_core.CellConnector_swiginit(self,_cmf_core.new_CellConnector(*args, **kwargs))
     def __call__(self, *args, **kwargs):
-        """__call__(CellConnector self, Cell cell1, Cell cell2, int start_at_layer=0)"""
+        """__call__(CellConnector self, Cell cell1, Cell cell2, ptrdiff_t start_at_layer=0)"""
         return _cmf_core.CellConnector___call__(self, *args, **kwargs)
 
     def connect(self, *args, **kwargs):
         """
-        connect(CellConnector self, Cell cell1, Cell cell2, int start_at_layer=0)
+        connect(CellConnector self, Cell cell1, Cell cell2, ptrdiff_t start_at_layer=0)
 
         void
-        connect(cmf::upslope::Cell &cell1, cmf::upslope::Cell &cell2, int
-        start_at_layer=0) const 
+        connect(cmf::upslope::Cell &cell1, cmf::upslope::Cell &cell2,
+        ptrdiff_t start_at_layer=0) const 
         """
         return _cmf_core.CellConnector_connect(self, *args, **kwargs)
 
@@ -5786,9 +5797,9 @@ class Cell(StateVariableOwner):
     def add_storage(self, *args):
         """
         add_storage(Cell self, std::string Name, char storage_role='N', bool isopenwater=False) -> cmf::water::WaterStorage::ptr
-        add_storage(Cell self, cmf::water::WaterStorage::ptr storage) -> int
+        add_storage(Cell self, cmf::water::WaterStorage::ptr storage) -> ptrdiff_t
 
-        int
+        ptrdiff_t
         add_storage(cmf::water::WaterStorage::ptr storage)
 
         Bounds an existing storage to the cell. 
@@ -5806,18 +5817,18 @@ class Cell(StateVariableOwner):
 
     def storage_count(self, *args, **kwargs):
         """
-        storage_count(Cell self) -> int
+        storage_count(Cell self) -> ptrdiff_t
 
-        int
+        ptrdiff_t
         storage_count() const 
         """
         return _cmf_core.Cell_storage_count(self, *args, **kwargs)
 
     def get_storage(self, *args, **kwargs):
         """
-        get_storage(Cell self, int index) -> cmf::water::WaterStorage::ptr
+        get_storage(Cell self, ptrdiff_t index) -> cmf::water::WaterStorage::ptr
 
-        cmf::water::WaterStorage::ptr get_storage(int index) const 
+        cmf::water::WaterStorage::ptr get_storage(ptrdiff_t index) const 
         """
         return _cmf_core.Cell_get_storage(self, *args, **kwargs)
 
@@ -5913,9 +5924,9 @@ class Cell(StateVariableOwner):
 
     def layer_count(self, *args, **kwargs):
         """
-        layer_count(Cell self) -> int
+        layer_count(Cell self) -> ptrdiff_t
 
-        int
+        ptrdiff_t
         layer_count() const
 
         Returns the number of layers of the cell. 
@@ -5924,9 +5935,9 @@ class Cell(StateVariableOwner):
 
     def get_layer(self, *args, **kwargs):
         """
-        get_layer(Cell self, int ndx) -> cmf::upslope::SoilLayer::ptr
+        get_layer(Cell self, ptrdiff_t ndx) -> cmf::upslope::SoilLayer::ptr
 
-        cmf::upslope::SoilLayer::ptr get_layer(int ndx) const
+        cmf::upslope::SoilLayer::ptr get_layer(ptrdiff_t ndx) const
 
         Returns the layer at position ndx.
 
@@ -6303,8 +6314,8 @@ class cell_vector(StateVariableOwner):
         _cmf_core.cell_vector_swiginit(self,_cmf_core.new_cell_vector(*args))
     def __getitem__(self, *args):
         """
-        __getitem__(cell_vector self, int index) -> Cell
-        __getitem__(cell_vector self, int index) -> Cell
+        __getitem__(cell_vector self, ptrdiff_t index) -> Cell
+        __getitem__(cell_vector self, ptrdiff_t index) -> Cell
         """
         return _cmf_core.cell_vector___getitem__(self, *args)
 
@@ -6319,7 +6330,7 @@ class cell_vector(StateVariableOwner):
 
     def remove(self, *args):
         """
-        remove(cell_vector self, int index)
+        remove(cell_vector self, ptrdiff_t index)
         remove(cell_vector self, Cell cell)
 
         void
@@ -6348,9 +6359,10 @@ class cell_vector(StateVariableOwner):
 
     def __getslice__(self, *args, **kwargs):
         """
-        __getslice__(cell_vector self, int start, int end, int step=1) -> cell_vector
+        __getslice__(cell_vector self, ptrdiff_t start, ptrdiff_t end, ptrdiff_t step=1) -> cell_vector
 
-        cell_vector get_slice(int start, int end, int step=1) 
+        cell_vector get_slice(ptrdiff_t start, ptrdiff_t end, ptrdiff_t
+        step=1) 
         """
         return _cmf_core.cell_vector___getslice__(self, *args, **kwargs)
 
@@ -8150,29 +8162,6 @@ class MeanChannel(IChannel):
 MeanChannel.copy = new_instancemethod(_cmf_core.MeanChannel_copy,None,MeanChannel)
 MeanChannel_swigregister = _cmf_core.MeanChannel_swigregister
 MeanChannel_swigregister(MeanChannel)
-
-class PiecewiseReach(IChannel):
-    """
-    A channel with a piecewise linear shape.
-
-    The geometry of this reach is defined by a discrete depth/width pairs
-    with linear interpolation between the depth and width
-
-    $ i $ is the highest depth/width pair below a given depth $d$
-    \\[w(d,i) = w_i + (d-d_i) \\frac{w_{i+1}-w_i}{d_{i+1} - d_i}\\]
-    \\[ A(d,i) =A(d_i,i-1)+ \\frac12 (d-d_i)(w(d)+w_i) \\]
-    \\[P(d,i) = P(d_i,i-1) +
-    2\\sqrt{\\left(\\frac{w-w_i}{2}\\right)^2+\\left(d-d_i\\right)^2}
-    \\] \\[P(0,0)=w_0 \\]
-
-    C++ includes: ReachType.h 
-    """
-    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
-    def __init__(self, *args, **kwargs): raise AttributeError("No constructor defined - class is abstract")
-    __repr__ = _swig_repr
-    __swig_destroy__ = _cmf_core.delete_PiecewiseReach
-PiecewiseReach_swigregister = _cmf_core.PiecewiseReach_swigregister
-PiecewiseReach_swigregister(PiecewiseReach)
 
 class OpenWaterStorage(WaterStorage):
     """
@@ -10539,9 +10528,9 @@ class project(StateVariableOwner):
     __repr__ = _swig_repr
     def remove_node(self, *args, **kwargs):
         """
-        remove_node(project self, cmf::water::flux_node::ptr node) -> int
+        remove_node(project self, cmf::water::flux_node::ptr node) -> ptrdiff_t
 
-        int
+        ptrdiff_t
         remove_node(cmf::water::flux_node::ptr node)
 
         Removes a node from the repository.
@@ -10717,10 +10706,10 @@ class project(StateVariableOwner):
 
     def get_cell(self, *args, **kwargs):
         """
-        get_cell(project self, int index) -> Cell
+        get_cell(project self, ptrdiff_t index) -> Cell
 
         upslope::Cell&
-        get_cell(int index)
+        get_cell(ptrdiff_t index)
 
         Returns the reference to the cell at index in the project. 
         """
@@ -10728,9 +10717,9 @@ class project(StateVariableOwner):
 
     def size(self, *args, **kwargs):
         """
-        size(project self) -> int
+        size(project self) -> ptrdiff_t
 
-        int size() const
+        ptrdiff_t size() const
 
         The number of cells in the project. 
         """
@@ -10873,9 +10862,9 @@ class project(StateVariableOwner):
 
     def get_reach(self, *args, **kwargs):
         """
-        get_reach(project self, int index) -> cmf::river::Reach::ptr
+        get_reach(project self, ptrdiff_t index) -> cmf::river::Reach::ptr
 
-        cmf::river::Reach::ptr get_reach(int index)
+        cmf::river::Reach::ptr get_reach(ptrdiff_t index)
 
         Returns the reach at index. 
         """
@@ -10883,10 +10872,10 @@ class project(StateVariableOwner):
 
     def reach_count(self, *args, **kwargs):
         """
-        reach_count(project self) -> int
+        reach_count(project self) -> ptrdiff_t
 
-        int reach_count()
-        const
+        ptrdiff_t
+        reach_count() const
 
         Returns the number of reaches in this project. 
         """
@@ -10894,9 +10883,9 @@ class project(StateVariableOwner):
 
     def get_node(self, *args, **kwargs):
         """
-        get_node(project self, int index) -> cmf::water::flux_node::ptr
+        get_node(project self, ptrdiff_t index) -> cmf::water::flux_node::ptr
 
-        cmf::water::flux_node::ptr get_node(int index)
+        cmf::water::flux_node::ptr get_node(ptrdiff_t index)
 
         Returns the node from the project nodes at index. 
         """
@@ -10904,10 +10893,10 @@ class project(StateVariableOwner):
 
     def node_count(self, *args, **kwargs):
         """
-        node_count(project self) -> int
+        node_count(project self) -> ptrdiff_t
 
-        int node_count()
-        const
+        ptrdiff_t
+        node_count() const
 
         Returns the number of nodes saved with this project. 
         """
@@ -10992,9 +10981,9 @@ class SoluteWaterIntegrator(Integrator):
         __init__(cmf::math::SoluteWaterIntegrator self, solute_vector solutes, Integrator water_integrator, Integrator solute_integrator) -> SoluteWaterIntegrator
         __init__(cmf::math::SoluteWaterIntegrator self, solute_vector arg2, Integrator water_integrator, Integrator solute_integrator, StateVariableOwner states) -> SoluteWaterIntegrator
 
-        SoluteWaterIntegrator(const cmf::math::Integrator &water_integrator,
-        const cmf::math::Integrator &solute_integrator,
-        cmf::math::StateVariableOwner &states)
+        SoluteWaterIntegrator(cmf::water::solute_vector, const
+        cmf::math::Integrator &water_integrator, const cmf::math::Integrator
+        &solute_integrator, cmf::math::StateVariableOwner &states)
 
         Creates a new SoluteWaterIntegrator.
 
@@ -11012,7 +11001,11 @@ class SoluteWaterIntegrator(Integrator):
         _cmf_core.SoluteWaterIntegrator_swiginit(self,_cmf_core.new_SoluteWaterIntegrator(*args))
     __swig_destroy__ = _cmf_core.delete_SoluteWaterIntegrator
     def to_string(self, *args, **kwargs):
-        """to_string(SoluteWaterIntegrator self) -> std::string"""
+        """
+        to_string(SoluteWaterIntegrator self) -> std::string
+
+        std::string to_string() const 
+        """
         return _cmf_core.SoluteWaterIntegrator_to_string(self, *args, **kwargs)
 
 SoluteWaterIntegrator.copy = new_instancemethod(_cmf_core.SoluteWaterIntegrator_copy,None,SoluteWaterIntegrator)

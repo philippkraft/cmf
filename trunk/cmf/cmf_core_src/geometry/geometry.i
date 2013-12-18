@@ -31,7 +31,7 @@ static bool check_seq_point(PyObject* input) {
 static std::string convert_seq_to_point(PyObject* input,cmf::geometry::point& p)
 {
   double temp[3];
-  int len=PyObject_Length(input);
+  ptrdiff_t len=PyObject_Length(input);
   if (len<2) {
     std::string res = "Sequence <";
     res+=PyObject_REPR(input);

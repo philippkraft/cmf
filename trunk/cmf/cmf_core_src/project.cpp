@@ -38,7 +38,7 @@ cmf::project::~project()
 
 
 
-cmf::river::Reach::ptr cmf::project::get_reach( int index )
+cmf::river::Reach::ptr cmf::project::get_reach( ptrdiff_t index )
 {
 	return m_reaches.at(index<0 ? index + m_reaches.size() : index);
 }
@@ -60,9 +60,9 @@ cmf::water::node_list cmf::project::get_storages()
 
 	for(cell_vector::iterator it = m_cells.begin(); it != m_cells.end(); ++it)
 	{
-		for (int i = 0; i < it->storage_count() ; ++i)
+		for (ptrdiff_t i = 0; i < it->storage_count() ; ++i)
 			res.append(it->get_storage(i));
-		for (int i = 0; i < it->layer_count() ; ++i)
+		for (ptrdiff_t i = 0; i < it->layer_count() ; ++i)
 			res.append(it->get_layer(i));
 	}
 	for(node_list::iterator it = m_nodes.begin(); it != m_nodes.end(); ++it)
@@ -127,7 +127,7 @@ cmf::math::StateVariableList cmf::project::get_states()
 
 }
 
-int cmf::project::add_node( cmf::water::flux_node::ptr node )
+ptrdiff_t cmf::project::add_node( cmf::water::flux_node::ptr node )
 {
 	m_nodes.append(node);
 	return m_nodes.size();
@@ -136,7 +136,7 @@ int cmf::project::add_node( cmf::water::flux_node::ptr node )
 	}
 }
 
-int cmf::project::remove_node( cmf::water::flux_node::ptr node )
+ptrdiff_t cmf::project::remove_node( cmf::water::flux_node::ptr node )
 {
 	m_nodes.remove(node);
 	return m_nodes.size();

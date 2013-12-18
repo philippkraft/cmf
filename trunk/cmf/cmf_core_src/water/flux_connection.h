@@ -144,7 +144,11 @@ namespace cmf {
 		int replace_node(cmf::water::flux_node::ptr oldnode,cmf::water::flux_node::ptr newnode);
 		
 		/// A self sorting list of connections
-		class connection_list : public cmf::math::precalculatable {
+		class connection_list  
+#ifndef SWIG
+			: public cmf::math::precalculatable 
+#endif
+		{
 		private:
 			typedef std::vector<flux_connection::ptr> _list;
 			_list m_con;

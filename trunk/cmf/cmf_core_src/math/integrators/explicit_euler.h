@@ -80,7 +80,7 @@ namespace cmf {
 
 		/// A simple predictor - corrector solver. Not tested and very experimentally
 		/// \f$ y^{n+1} = y^n + \alpha f(y^n + f(y^n)dt)dt + (1-\alpha)f(y^n)dt \f$
-		class PredictCorrectSimple : public Integrator
+		class HeunIntegrator : public Integrator
 		{
 		private:
 			num_array 
@@ -100,22 +100,22 @@ namespace cmf {
 			/// @note The Integrator becomes the owner of states
 			/// @param states Statevariable owner of the system
 			/// @param Alpha Weight factor \f$\alpha\f$ to weight \f$f(y^n)\f$ and \f$f(y^{n+1})\f$
-			PredictCorrectSimple(StateVariableOwner& states, real Alpha=0.5)
+			HeunIntegrator(StateVariableOwner& states, real Alpha=0.5)
 				: Integrator(states,0.0),alpha(Alpha)
 			{}
 
 			/// Constructs a new PredictCorrectSimple
 			/// @param Alpha Weight factor \f$\alpha\f$ to weight \f$f(y^n)\f$ and \f$f(y^{n+1})\f$
-			PredictCorrectSimple(real Alpha=0.5)
+			HeunIntegrator(real Alpha=0.5)
 				: Integrator(),alpha(Alpha)
 			{	}
 
 			/// copy constructor
-			PredictCorrectSimple(const Integrator& copy) : Integrator(copy) {}
-			virtual ~PredictCorrectSimple() {}
+			HeunIntegrator(const Integrator& copy) : Integrator(copy) {}
+			virtual ~HeunIntegrator() {}
 			virtual Integrator * copy() const
 			{
-				return new PredictCorrectSimple(*this);
+				return new HeunIntegrator(*this);
 			}
 
 			///Integrates the vector of state variables

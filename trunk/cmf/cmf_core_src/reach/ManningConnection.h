@@ -97,7 +97,7 @@ namespace cmf {
 		class Manning_Diffusive: public Manning
 		{
 		private:
-			static void connect_cells(cmf::upslope::Cell& c1,cmf::upslope::Cell& c2,int dummy)
+			static void connect_cells(cmf::upslope::Cell& c1,cmf::upslope::Cell& c2,ptrdiff_t dummy)
 			{		cmf::river::Manning::connect_cells(c1,c2,true);		}
 
 		public:
@@ -129,7 +129,7 @@ namespace cmf {
 		class Manning_Kinematic: public Manning
 		{
 		private:
-			static void connect_cells(cmf::upslope::Cell& c1,cmf::upslope::Cell& c2,int dummy)
+			static void connect_cells(cmf::upslope::Cell& c1,cmf::upslope::Cell& c2,ptrdiff_t dummy)
 			{		cmf::river::Manning::connect_cells(c1,c2,false);		}
 
 		public:

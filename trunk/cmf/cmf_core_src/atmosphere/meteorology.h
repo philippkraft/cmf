@@ -262,13 +262,13 @@ namespace cmf {
 		private:
 			typedef std::vector<MeteoStation::ptr> vector;
 			vector m_stations;
-			typedef std::map<std::string,int> name_map;
+			typedef std::map<std::string,ptrdiff_t> name_map;
 			name_map m_name_map;
 		public:
 			/// Returns the number of stations
-			int size() const {return int(m_stations.size());}
+			ptrdiff_t size() const {return ptrdiff_t(m_stations.size());}
 			/// Gets the station at index
-			MeteoStation::ptr operator[](int index) const
+			MeteoStation::ptr operator[](ptrdiff_t index) const
 			{
 				return m_stations.at(index<0 ? size()+index : index);
 			}
@@ -300,11 +300,11 @@ namespace cmf {
 				cmf::math::Time startTime=cmf::math::Time(1,1,2001),cmf::math::Time timestep=cmf::math::day);
 
 			/// Removes a station and returns the number of remaining references to the removed station. If the station is deleted, 0 is returned
-			int remove_station(int index)
+			ptrdiff_t remove_station(ptrdiff_t index)
 			{
 				
 				const MeteoStation::ptr& ms=(*this)[index];
-				int res=ms.use_count()-1;
+				ptrdiff_t res=ms.use_count()-1;
 				name_map::iterator name_it=m_name_map.find(ms->Name);
 				if (name_it!=m_name_map.end()) m_name_map.erase(name_it);
 				m_stations.erase(m_stations.begin()+ (index<0 ? size()+index : index));
