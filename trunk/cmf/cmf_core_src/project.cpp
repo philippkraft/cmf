@@ -130,10 +130,10 @@ cmf::math::StateVariableList cmf::project::get_states()
 ptrdiff_t cmf::project::add_node( cmf::water::flux_node::ptr node )
 {
 	m_nodes.append(node);
-	return m_nodes.size();
 	if (debug) {
 		std::cout << "project<-" << node->to_string() << std::endl;
 	}
+	return m_nodes.size();
 }
 
 ptrdiff_t cmf::project::remove_node( cmf::water::flux_node::ptr node )
@@ -186,7 +186,7 @@ cmf::water::DirichletBoundary::ptr cmf::project::NewOutlet( std::string name,dou
 {
 	cmf::water::DirichletBoundary::ptr res(new cmf::water::DirichletBoundary(*this,z,cmf::geometry::point(x,y,z) ));
 	res->Name = name;
-	add_node(res);
+	this->add_node(res);
 	if (this->debug) std::cout << "Create " << res->to_string() << std::endl;
 	return res;
 }
