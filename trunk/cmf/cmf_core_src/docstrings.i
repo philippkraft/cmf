@@ -41,6 +41,12 @@ aerodynamic resistance from ground to atmosphere (r_ag) and from
 canopy to atmosphere (r_ac) ";
 
 
+// File: classstd_1_1allocator.xml
+%feature("docstring") std::allocator "
+
+STL class. ";
+
+
 // File: classcmf_1_1upslope_1_1aquifer.xml
 %feature("docstring") cmf::upslope::aquifer "
 
@@ -197,7 +203,9 @@ The base class water storage always returns the height of the location
 Returns the project, this node is part of. ";
 
 %feature("docstring")  cmf::upslope::aquifer::get_state "real
-get_state() const ";
+get_state() const
+
+Returns the current state of the variable. ";
 
 %feature("docstring")
 cmf::upslope::aquifer::get_state_variable_content "char
@@ -237,7 +245,9 @@ void set_potential(real new_potential)
 Sets the potential of this flux node. ";
 
 %feature("docstring")  cmf::upslope::aquifer::set_state "void
-set_state(real newState) ";
+set_state(real newState)
+
+Gives access to the state variable. ";
 
 %feature("docstring")
 cmf::upslope::aquifer::set_state_variable_content "void
@@ -361,6 +371,102 @@ returns the right node of this connection ";
 %feature("docstring")  cmf::upslope::aquifer_Darcy::short_string "std::string short_string() const ";
 
 %feature("docstring")  cmf::upslope::aquifer_Darcy::to_string "std::string to_string() const ";
+
+
+// File: classstd_1_1auto__ptr.xml
+%feature("docstring") std::auto_ptr "
+
+STL class. ";
+
+
+// File: classstd_1_1bad__alloc.xml
+%feature("docstring") std::bad_alloc "
+
+STL class. ";
+
+
+// File: classstd_1_1bad__cast.xml
+%feature("docstring") std::bad_cast "
+
+STL class. ";
+
+
+// File: classstd_1_1bad__exception.xml
+%feature("docstring") std::bad_exception "
+
+STL class. ";
+
+
+// File: classstd_1_1bad__typeid.xml
+%feature("docstring") std::bad_typeid "
+
+STL class. ";
+
+
+// File: classstd_1_1basic__fstream.xml
+%feature("docstring") std::basic_fstream "
+
+STL class. ";
+
+
+// File: classstd_1_1basic__ifstream.xml
+%feature("docstring") std::basic_ifstream "
+
+STL class. ";
+
+
+// File: classstd_1_1basic__ios.xml
+%feature("docstring") std::basic_ios "
+
+STL class. ";
+
+
+// File: classstd_1_1basic__iostream.xml
+%feature("docstring") std::basic_iostream "
+
+STL class. ";
+
+
+// File: classstd_1_1basic__istream.xml
+%feature("docstring") std::basic_istream "
+
+STL class. ";
+
+
+// File: classstd_1_1basic__istringstream.xml
+%feature("docstring") std::basic_istringstream "
+
+STL class. ";
+
+
+// File: classstd_1_1basic__ofstream.xml
+%feature("docstring") std::basic_ofstream "
+
+STL class. ";
+
+
+// File: classstd_1_1basic__ostream.xml
+%feature("docstring") std::basic_ostream "
+
+STL class. ";
+
+
+// File: classstd_1_1basic__ostringstream.xml
+%feature("docstring") std::basic_ostringstream "
+
+STL class. ";
+
+
+// File: classstd_1_1basic__string.xml
+%feature("docstring") std::basic_string "
+
+STL class. ";
+
+
+// File: classstd_1_1basic__stringstream.xml
+%feature("docstring") std::basic_stringstream "
+
+STL class. ";
 
 
 // File: classcmf_1_1math_1_1_b_d_f2.xml
@@ -589,6 +695,12 @@ set_states(real *newStates) ";
 %feature("docstring")  cmf::math::BDF2::size "ptrdiff_t size() const
 
 returns the number of state variables ";
+
+
+// File: classstd_1_1bitset.xml
+%feature("docstring") std::bitset "
+
+STL class. ";
 
 
 // File: classcmf_1_1upslope_1_1_brooks_corey_retention_curve.xml
@@ -1080,7 +1192,8 @@ get_saturated_depth() const
 Returns the potential $\\\\Psi_{total}$ of the deepest unsaturated
 layer as distance from the surface.
 
-This function is wrapped as the property saturated_depth in Python ";
+This function is wrapped as the property `saturated_depth` in Python
+";
 
 %feature("docstring")  cmf::upslope::Cell::set_saturated_depth "void
 set_saturated_depth(real depth)
@@ -1088,7 +1201,8 @@ set_saturated_depth(real depth)
 Sets the potential $\\\\Psi_{total}$ of each layer as distance from
 the surface.
 
-This function is wrapped as the property saturated_depth in Python ";
+This function is wrapped as the property `saturated_depth` in Python
+";
 
 /*  Flux nodes of the cell  */
 
@@ -1266,8 +1380,8 @@ lowerboundary:  The maximum depth of the layer in m. If lowerboundary
 is smaller or equal than the lowerboundary of thelowest layer, an
 error is raised
 
-r_curve:  A retention curve.See here for a discussion on retention
-curves in cmf.
+r_curve:  A retention curve. [See here](/wiki/CmfTutRetentioncurve)
+for a discussion on retention curves in cmf.
 
 saturateddepth:  The initial potential of the new layer in m below
 surface. Default = 10m (=quite dry) ";
@@ -1563,6 +1677,12 @@ const ";
 V(double h) const ";
 
 
+// File: classstd_1_1complex.xml
+%feature("docstring") std::complex "
+
+STL class. ";
+
+
 // File: classcmf_1_1upslope_1_1conductable.xml
 %feature("docstring") cmf::upslope::conductable "
 
@@ -1617,6 +1737,126 @@ remove(cmf::water::flux_connection::ptr connection) ";
 
 %feature("docstring")  cmf::water::connection_list::size "size_t
 size() const ";
+
+
+// File: classstd_1_1map_1_1const__iterator.xml
+%feature("docstring") std::map::const_iterator "
+
+STL iterator class. ";
+
+
+// File: classstd_1_1multimap_1_1const__iterator.xml
+%feature("docstring") std::multimap::const_iterator "
+
+STL iterator class. ";
+
+
+// File: classstd_1_1basic__string_1_1const__iterator.xml
+%feature("docstring") std::basic_string::const_iterator "
+
+STL iterator class. ";
+
+
+// File: classstd_1_1set_1_1const__iterator.xml
+%feature("docstring") std::set::const_iterator "
+
+STL iterator class. ";
+
+
+// File: classstd_1_1multiset_1_1const__iterator.xml
+%feature("docstring") std::multiset::const_iterator "
+
+STL iterator class. ";
+
+
+// File: classstd_1_1string_1_1const__iterator.xml
+%feature("docstring") std::string::const_iterator "
+
+STL iterator class. ";
+
+
+// File: classstd_1_1vector_1_1const__iterator.xml
+%feature("docstring") std::vector::const_iterator "
+
+STL iterator class. ";
+
+
+// File: classstd_1_1wstring_1_1const__iterator.xml
+%feature("docstring") std::wstring::const_iterator "
+
+STL iterator class. ";
+
+
+// File: classstd_1_1deque_1_1const__iterator.xml
+%feature("docstring") std::deque::const_iterator "
+
+STL iterator class. ";
+
+
+// File: classstd_1_1list_1_1const__iterator.xml
+%feature("docstring") std::list::const_iterator "
+
+STL iterator class. ";
+
+
+// File: classstd_1_1map_1_1const__reverse__iterator.xml
+%feature("docstring") std::map::const_reverse_iterator "
+
+STL iterator class. ";
+
+
+// File: classstd_1_1multimap_1_1const__reverse__iterator.xml
+%feature("docstring") std::multimap::const_reverse_iterator "
+
+STL iterator class. ";
+
+
+// File: classstd_1_1set_1_1const__reverse__iterator.xml
+%feature("docstring") std::set::const_reverse_iterator "
+
+STL iterator class. ";
+
+
+// File: classstd_1_1basic__string_1_1const__reverse__iterator.xml
+%feature("docstring") std::basic_string::const_reverse_iterator "
+
+STL iterator class. ";
+
+
+// File: classstd_1_1multiset_1_1const__reverse__iterator.xml
+%feature("docstring") std::multiset::const_reverse_iterator "
+
+STL iterator class. ";
+
+
+// File: classstd_1_1vector_1_1const__reverse__iterator.xml
+%feature("docstring") std::vector::const_reverse_iterator "
+
+STL iterator class. ";
+
+
+// File: classstd_1_1string_1_1const__reverse__iterator.xml
+%feature("docstring") std::string::const_reverse_iterator "
+
+STL iterator class. ";
+
+
+// File: classstd_1_1wstring_1_1const__reverse__iterator.xml
+%feature("docstring") std::wstring::const_reverse_iterator "
+
+STL iterator class. ";
+
+
+// File: classstd_1_1deque_1_1const__reverse__iterator.xml
+%feature("docstring") std::deque::const_reverse_iterator "
+
+STL iterator class. ";
+
+
+// File: classstd_1_1list_1_1const__reverse__iterator.xml
+%feature("docstring") std::list::const_reverse_iterator "
+
+STL iterator class. ";
 
 
 // File: classcmf_1_1upslope_1_1_e_t_1_1constant_e_tpot.xml
@@ -2503,6 +2743,12 @@ Returns a string representing the date. ";
 Converts a date to Time (based on the 31.12.1899, like in Excel(TM) ";
 
 
+// File: classstd_1_1deque.xml
+%feature("docstring") std::deque "
+
+STL class. ";
+
+
 // File: classcmf_1_1upslope_1_1connections_1_1_diffusive_macro_micro_exchange.xml
 %feature("docstring")
 cmf::upslope::connections::DiffusiveMacroMicroExchange "
@@ -2782,6 +3028,12 @@ Without:  A flux_connection that is excluded from the waterbalance
 (e.g. to prevent closed circuits) ";
 
 
+// File: classstd_1_1domain__error.xml
+%feature("docstring") std::domain_error "
+
+STL class. ";
+
+
 // File: classcmf_1_1upslope_1_1connections_1_1_energy_budget_snow_melt.xml
 %feature("docstring") cmf::upslope::connections::EnergyBudgetSnowMelt
 "
@@ -2866,6 +3118,12 @@ cmf::upslope::connections::EnergyBudgetSnowMelt::short_string "std::string short
 
 %feature("docstring")
 cmf::upslope::connections::EnergyBudgetSnowMelt::to_string "std::string to_string() const ";
+
+
+// File: classstd_1_1exception.xml
+%feature("docstring") std::exception "
+
+STL class. ";
 
 
 // File: classcmf_1_1math_1_1_explicit_euler__fixed.xml
@@ -3132,6 +3390,12 @@ cmf::water::external_control_connection::to_string "std::string
 to_string() const ";
 
 
+// File: classstd_1_1ios__base_1_1failure.xml
+%feature("docstring") std::ios_base::failure "
+
+STL class. ";
+
+
 // File: classcmf_1_1water_1_1flux__connection.xml
 %feature("docstring") cmf::water::flux_connection "
 
@@ -3381,6 +3645,12 @@ t:  Time of the query
 
 Without:  A flux_connection that is excluded from the waterbalance
 (e.g. to prevent closed circuits) ";
+
+
+// File: classstd_1_1fstream.xml
+%feature("docstring") std::fstream "
+
+STL class. ";
 
 
 // File: classcmf_1_1water_1_1generic__gradient__connection.xml
@@ -3850,12 +4120,15 @@ solar declination (radians)
 
 $ \\\\Phi$ geographic latitude (radians)
 
-See:  SAMANI, Zohrab.Estimating solar radiation and evapotranspiration
-using minimum climatological data. Journal of Irrigation and Drainage
-Engineering, 2000, 126. Jg., Nr. 4, S. 265-267.  Crop specific
-potential evapotranspiration is scaled by LAI: $ ET_{pot} = ET_{rc}
-\\\\frac{LAI}{2.88}$. Actual evapotranspiration is calculated using
-cmf::upslope::ET::Tact
+See:  SAMANI, Zohrab. [Estimating solar radiation and
+evapotranspiration using minimum climatological data.][1] _Journal of
+Irrigation and Drainage Engineering,_ 2000, 126. Jg., Nr. 4, S.
+265-267.  Crop specific potential evapotranspiration is scaled by LAI:
+$ ET_{pot} = ET_{rc} \\\\frac{LAI}{2.88}$. Actual evapotranspiration
+is calculated using cmf::upslope::ET::Tact
+
+[1]:http://cagesun.nmsu.edu/~zsamani/research_material/files/Hargreaves-
+samani.pdf
 
 C++ includes: ET.h ";
 
@@ -4673,6 +4946,12 @@ Without:  A flux_connection that is excluded from the waterbalance
 (e.g. to prevent closed circuits) ";
 
 
+// File: classstd_1_1ifstream.xml
+%feature("docstring") std::ifstream "
+
+STL class. ";
+
+
 // File: classcmf_1_1math_1_1_implicit_euler.xml
 %feature("docstring") cmf::math::ImplicitEuler "
 
@@ -5112,6 +5391,96 @@ const
 returns the number of state variables ";
 
 
+// File: classstd_1_1invalid__argument.xml
+%feature("docstring") std::invalid_argument "
+
+STL class. ";
+
+
+// File: classstd_1_1ios.xml
+%feature("docstring") std::ios "
+
+STL class. ";
+
+
+// File: classstd_1_1ios__base.xml
+%feature("docstring") std::ios_base "
+
+STL class. ";
+
+
+// File: classstd_1_1istream.xml
+%feature("docstring") std::istream "
+
+STL class. ";
+
+
+// File: classstd_1_1istringstream.xml
+%feature("docstring") std::istringstream "
+
+STL class. ";
+
+
+// File: classstd_1_1multimap_1_1iterator.xml
+%feature("docstring") std::multimap::iterator "
+
+STL iterator class. ";
+
+
+// File: classstd_1_1set_1_1iterator.xml
+%feature("docstring") std::set::iterator "
+
+STL iterator class. ";
+
+
+// File: classstd_1_1basic__string_1_1iterator.xml
+%feature("docstring") std::basic_string::iterator "
+
+STL iterator class. ";
+
+
+// File: classstd_1_1multiset_1_1iterator.xml
+%feature("docstring") std::multiset::iterator "
+
+STL iterator class. ";
+
+
+// File: classstd_1_1vector_1_1iterator.xml
+%feature("docstring") std::vector::iterator "
+
+STL iterator class. ";
+
+
+// File: classstd_1_1string_1_1iterator.xml
+%feature("docstring") std::string::iterator "
+
+STL iterator class. ";
+
+
+// File: classstd_1_1wstring_1_1iterator.xml
+%feature("docstring") std::wstring::iterator "
+
+STL iterator class. ";
+
+
+// File: classstd_1_1map_1_1iterator.xml
+%feature("docstring") std::map::iterator "
+
+STL iterator class. ";
+
+
+// File: classstd_1_1deque_1_1iterator.xml
+%feature("docstring") std::deque::iterator "
+
+STL iterator class. ";
+
+
+// File: classstd_1_1list_1_1iterator.xml
+%feature("docstring") std::list::iterator "
+
+STL iterator class. ";
+
+
 // File: classcmf_1_1river_1_1_i_volume_height_function.xml
 %feature("docstring") cmf::river::IVolumeHeightFunction "
 
@@ -5393,7 +5762,8 @@ $n$ the manning roughness
 
 The KinematicSurfaceRunoff can be used as a cell connecting flux as
 in: This results in a connection of the surfacewater storage of each
-cell with the surface water storages of its neighborssee
+cell with the surface water storages of its neighbors
+[see](/wiki/CmfTutCell)
 
 C++ includes: surfacewater.h ";
 
@@ -5416,7 +5786,8 @@ flowwidth:  the length of the shared boundary between left and right
 in m
 
 distance:  the distance between left and right in m. If d<=0m, the
-distance is calculated according to the position of left and right ";
+distance is calculated according to the position of _left_ and _right_
+";
 
 %feature("docstring")
 cmf::upslope::connections::KinematicSurfaceRunoff::conc "real
@@ -5867,6 +6238,12 @@ cmf::upslope::connections::LayerBypass::to_string "std::string
 to_string() const ";
 
 
+// File: classstd_1_1length__error.xml
+%feature("docstring") std::length_error "
+
+STL class. ";
+
+
 // File: classcmf_1_1water_1_1linear__scale.xml
 %feature("docstring") cmf::water::linear_scale "
 
@@ -5964,6 +6341,12 @@ returns the volumetric water content at a given pF value ";
 ";
 
 
+// File: classstd_1_1list.xml
+%feature("docstring") std::list "
+
+STL class. ";
+
+
 // File: classcmf_1_1atmosphere_1_1log__wind__profile.xml
 %feature("docstring") cmf::atmosphere::log_wind_profile "
 
@@ -5982,6 +6365,12 @@ cmf::math::Time t) const
 
 aerodynamic resistance from ground to atmosphere (r_ag) and from
 canopy to atmosphere (r_ac) ";
+
+
+// File: classstd_1_1logic__error.xml
+%feature("docstring") std::logic_error "
+
+STL class. ";
 
 
 // File: classcmf_1_1upslope_1_1connections_1_1_m_a_c_r_olike_macro_micro_exchange.xml
@@ -6253,7 +6642,9 @@ Returns the actual water level in the macropore in m above reference.
 Returns the project, this node is part of. ";
 
 %feature("docstring")  cmf::upslope::MacroPore::get_state "real
-get_state() const ";
+get_state() const
+
+Returns the current state of the variable. ";
 
 %feature("docstring")
 cmf::upslope::MacroPore::get_state_variable_content "char
@@ -6288,7 +6679,9 @@ Sets the water level in the macropore. Be aware of not setting it
 below the lower boundary. ";
 
 %feature("docstring")  cmf::upslope::MacroPore::set_state "void
-set_state(real newState) ";
+set_state(real newState)
+
+Gives access to the state variable. ";
 
 %feature("docstring")
 cmf::upslope::MacroPore::set_state_variable_content "void
@@ -6336,7 +6729,7 @@ This is the base class for a kinematic wave approach (topography
 driven) and a diffusive wave approach (water table driven). The only
 difference between both approaches is the calculation of the flux
 driving slope. For the model, one of ManningKinematic or
-ManningDiffusive connection is selected \\\\begin{eqnarray*}
+ManningDiffusive connection is selected \\\\begin{eqnarray*} */ /**
 q_{Manning}&=& A R^{\\\\frac 2 3} \\\\sqrt{\\\\frac {\\\\Delta_z} n}
 \\\\\\\\ A &=& \\\\frac V l \\\\mbox{, (Crosssectional area of the
 wetted crossection, Volume per length)} \\\\\\\\ R &=& \\\\frac A
@@ -6344,8 +6737,9 @@ wetted crossection, Volume per length)} \\\\\\\\ R &=& \\\\frac A
 crosssection, a function of reach depth} \\\\\\\\ d(V) &=& \\\\mbox{
 the depth of the reach, a function of the volume} \\\\\\\\ \\\\Delta_z
 &=& \\\\frac{\\\\|z_1 - z_2\\\\|}{l} \\\\mbox{ Slope of the reach}
-\\\\\\\\ n&=&\\\\mbox{Manning friction number} \\\\end{eqnarray*} For
-the kinematic wave the slope of the river bed is used as slope
+\\\\\\\\ n&=&\\\\mbox{Manning friction number} \\\\end{eqnarray*}
+
+For the kinematic wave the slope of the river bed is used as slope
 $\\\\Delta_z = \\\\frac{|z_1 - z_2\\\\|}{l}$,
 
 while for the diffusive wave the slope is calculated from the actual
@@ -6608,6 +7002,12 @@ set_tracer_filter(real value) ";
 %feature("docstring")  cmf::river::Manning_Kinematic::short_string "std::string short_string() const ";
 
 %feature("docstring")  cmf::river::Manning_Kinematic::to_string "std::string to_string() const ";
+
+
+// File: classstd_1_1map.xml
+%feature("docstring") std::map "
+
+STL class. ";
 
 
 // File: classcmf_1_1upslope_1_1connections_1_1_matrix_infiltration.xml
@@ -7234,6 +7634,18 @@ size() const
 returns the number of state variables ";
 
 
+// File: classstd_1_1multimap.xml
+%feature("docstring") std::multimap "
+
+STL class. ";
+
+
+// File: classstd_1_1multiset.xml
+%feature("docstring") std::multiset "
+
+STL class. ";
+
+
 // File: classcmf_1_1upslope_1_1neighbor__iterator.xml
 %feature("docstring") cmf::upslope::neighbor_iterator "
 
@@ -7816,6 +8228,12 @@ const
 Size of the vector. ";
 
 
+// File: classstd_1_1ofstream.xml
+%feature("docstring") std::ofstream "
+
+STL class. ";
+
+
 // File: classcmf_1_1river_1_1_open_water_storage.xml
 %feature("docstring") cmf::river::OpenWaterStorage "
 
@@ -7845,8 +8263,7 @@ Returns true if the node has no water. ";
 %feature("docstring")  cmf::river::OpenWaterStorage::conc "real
 conc(cmf::math::Time t, const cmf::water::solute &solute) const
 
-Returns the water quality of the flux_node, if it is not overridden
-this is the mix of the incoming fluxes. ";
+Returns the current WaterQuality (concentration of all solutes) ";
 
 %feature("docstring")  cmf::river::OpenWaterStorage::conc "real
 conc(const cmf::water::solute &_Solute) const
@@ -7908,7 +8325,9 @@ The base class water storage always returns the height of the location
 Returns the project, this node is part of. ";
 
 %feature("docstring")  cmf::river::OpenWaterStorage::get_state "real
-get_state() const ";
+get_state() const
+
+Returns the current state of the variable. ";
 
 %feature("docstring")
 cmf::river::OpenWaterStorage::get_state_variable_content "char
@@ -7947,7 +8366,9 @@ set_height_function(const IVolumeHeightFunction &val) ";
 Sets the potential of this flux node. ";
 
 %feature("docstring")  cmf::river::OpenWaterStorage::set_state "void
-set_state(real newState) ";
+set_state(real newState)
+
+Gives access to the state variable. ";
 
 %feature("docstring")
 cmf::river::OpenWaterStorage::set_state_variable_content "void
@@ -7986,6 +8407,30 @@ Without:  A flux_connection that is excluded from the waterbalance
 wet_area() const
 
 Returns the exposed surface area in m2. ";
+
+
+// File: classstd_1_1ostream.xml
+%feature("docstring") std::ostream "
+
+STL class. ";
+
+
+// File: classstd_1_1ostringstream.xml
+%feature("docstring") std::ostringstream "
+
+STL class. ";
+
+
+// File: classstd_1_1out__of__range.xml
+%feature("docstring") std::out_of_range "
+
+STL class. ";
+
+
+// File: classstd_1_1overflow__error.xml
+%feature("docstring") std::overflow_error "
+
+STL class. ";
 
 
 // File: classcmf_1_1upslope_1_1_e_t_1_1_penman_evaporation.xml
@@ -8369,6 +8814,12 @@ Return the number of points in the point_vector. ";
 void do_action(Time t, bool use_OpenMP=true)=0 ";
 
 
+// File: classstd_1_1priority__queue.xml
+%feature("docstring") std::priority_queue "
+
+STL class. ";
+
+
 // File: classcmf_1_1river_1_1_prism.xml
 %feature("docstring") cmf::river::Prism "
 
@@ -8716,6 +9167,12 @@ z_weight:   $w_z$ the weight of height difference between cell and
 station ";
 
 
+// File: classstd_1_1queue.xml
+%feature("docstring") std::queue "
+
+STL class. ";
+
+
 // File: classcmf_1_1upslope_1_1connections_1_1_rainfall.xml
 %feature("docstring") cmf::upslope::connections::Rainfall "
 
@@ -9061,6 +9518,12 @@ Without:  A flux_connection that is excluded from the waterbalance
 (e.g. to prevent closed circuits) ";
 
 
+// File: classstd_1_1range__error.xml
+%feature("docstring") std::range_error "
+
+STL class. ";
+
+
 // File: classcmf_1_1river_1_1_reach.xml
 %feature("docstring") cmf::river::Reach "
 
@@ -9096,8 +9559,7 @@ std::string to_string() const ";
 %feature("docstring")  cmf::river::Reach::conc "real
 conc(cmf::math::Time t, const cmf::water::solute &solute) const
 
-Returns the water quality of the flux_node, if it is not overridden
-this is the mix of the incoming fluxes. ";
+Returns the current WaterQuality (concentration of all solutes) ";
 
 %feature("docstring")  cmf::river::Reach::conc "real conc(const
 cmf::water::solute &_Solute) const
@@ -9209,7 +9671,9 @@ Returns the channel shape. ";
 Returns the reach most downstream from this reach. ";
 
 %feature("docstring")  cmf::river::Reach::get_state "real get_state()
-const ";
+const
+
+Returns the current state of the variable. ";
 
 %feature("docstring")  cmf::river::Reach::get_state_variable_content "char get_state_variable_content() const
 
@@ -9282,7 +9746,9 @@ set_potential(real newpotential)
 Sets the potential of this flux node. ";
 
 %feature("docstring")  cmf::river::Reach::set_state "void
-set_state(real newState) ";
+set_state(real newState)
+
+Gives access to the state variable. ";
 
 %feature("docstring")  cmf::river::Reach::set_state_variable_content "void set_state_variable_content(char content)
 
@@ -9529,6 +9995,66 @@ returns the volumetric water content at a given pF value ";
 
 %feature("docstring")  cmf::upslope::RetentionCurve::Wetness_pF "cmf::math::num_array Wetness_pF(const cmf::math::num_array &pF) const
 ";
+
+
+// File: classstd_1_1map_1_1reverse__iterator.xml
+%feature("docstring") std::map::reverse_iterator "
+
+STL iterator class. ";
+
+
+// File: classstd_1_1deque_1_1reverse__iterator.xml
+%feature("docstring") std::deque::reverse_iterator "
+
+STL iterator class. ";
+
+
+// File: classstd_1_1basic__string_1_1reverse__iterator.xml
+%feature("docstring") std::basic_string::reverse_iterator "
+
+STL iterator class. ";
+
+
+// File: classstd_1_1set_1_1reverse__iterator.xml
+%feature("docstring") std::set::reverse_iterator "
+
+STL iterator class. ";
+
+
+// File: classstd_1_1multimap_1_1reverse__iterator.xml
+%feature("docstring") std::multimap::reverse_iterator "
+
+STL iterator class. ";
+
+
+// File: classstd_1_1string_1_1reverse__iterator.xml
+%feature("docstring") std::string::reverse_iterator "
+
+STL iterator class. ";
+
+
+// File: classstd_1_1multiset_1_1reverse__iterator.xml
+%feature("docstring") std::multiset::reverse_iterator "
+
+STL iterator class. ";
+
+
+// File: classstd_1_1list_1_1reverse__iterator.xml
+%feature("docstring") std::list::reverse_iterator "
+
+STL iterator class. ";
+
+
+// File: classstd_1_1wstring_1_1reverse__iterator.xml
+%feature("docstring") std::wstring::reverse_iterator "
+
+STL iterator class. ";
+
+
+// File: classstd_1_1vector_1_1reverse__iterator.xml
+%feature("docstring") std::vector::reverse_iterator "
+
+STL iterator class. ";
 
 
 // File: classcmf_1_1upslope_1_1connections_1_1_richards.xml
@@ -9921,6 +10447,12 @@ size() const
 returns the number of state variables ";
 
 
+// File: classstd_1_1runtime__error.xml
+%feature("docstring") std::runtime_error "
+
+STL class. ";
+
+
 // File: classcmf_1_1upslope_1_1connections_1_1_rutter_interception.xml
 %feature("docstring") cmf::upslope::connections::RutterInterception "
 
@@ -10028,6 +10560,12 @@ cmf::upslope::connections::RutterInterception::short_string "std::string short_s
 %feature("docstring")
 cmf::upslope::connections::RutterInterception::to_string "std::string
 to_string() const ";
+
+
+// File: classstd_1_1set.xml
+%feature("docstring") std::set "
+
+STL class. ";
 
 
 // File: classcmf_1_1upslope_1_1_e_t_1_1_shuttleworth_wallace.xml
@@ -10312,6 +10850,12 @@ short_string() const ";
 %feature("docstring")
 cmf::upslope::connections::SimplRichards::to_string "std::string
 to_string() const ";
+
+
+// File: classstd_1_1smart__ptr.xml
+%feature("docstring") std::smart_ptr "
+
+STL class. ";
 
 
 // File: classcmf_1_1upslope_1_1_e_t_1_1snow__evaporation.xml
@@ -10743,7 +11287,9 @@ cmf::upslope::RetentionCurve& get_soil() const
 Returns the soil properties of the water storage. ";
 
 %feature("docstring")  cmf::upslope::SoilLayer::get_state "real
-get_state() const ";
+get_state() const
+
+Returns the current state of the variable. ";
 
 %feature("docstring")
 cmf::upslope::SoilLayer::get_state_variable_content "char
@@ -10810,7 +11356,9 @@ Sets the root fraction in this layer explicitly. ";
 void set_soil(const cmf::upslope::RetentionCurve &r_curve) ";
 
 %feature("docstring")  cmf::upslope::SoilLayer::set_state "void
-set_state(real newState) ";
+set_state(real newState)
+
+Gives access to the state variable. ";
 
 %feature("docstring")
 cmf::upslope::SoilLayer::set_state_variable_content "void
@@ -11168,6 +11716,12 @@ returns the number of state variables ";
 %feature("docstring") SptfqmrMemRec "";
 
 
+// File: classstd_1_1stack.xml
+%feature("docstring") std::stack "
+
+STL class. ";
+
+
 // File: classcmf_1_1water_1_1statecontrol__connection.xml
 %feature("docstring") cmf::water::statecontrol_connection "
 
@@ -11342,6 +11896,18 @@ Add the state variables, owned by an object derived from
 StateVariableOwner, to the given vector. ";
 
 
+// File: classstd_1_1string.xml
+%feature("docstring") std::string "
+
+STL class. ";
+
+
+// File: classstd_1_1stringstream.xml
+%feature("docstring") std::stringstream "
+
+STL class. ";
+
+
 // File: classcmf_1_1upslope_1_1subcatchment.xml
 %feature("docstring") cmf::upslope::subcatchment "
 
@@ -11499,8 +12065,7 @@ std::string to_string() const ";
 %feature("docstring")  cmf::upslope::SurfaceWater::conc "real
 conc(cmf::math::Time t, const cmf::water::solute &solute) const
 
-Returns the water quality of the flux_node, if it is not overridden
-this is the mix of the incoming fluxes. ";
+Returns the current WaterQuality (concentration of all solutes) ";
 
 %feature("docstring")  cmf::upslope::SurfaceWater::conc "real
 conc(const cmf::water::solute &_Solute) const
@@ -11580,7 +12145,9 @@ Get water depth at which runoff starts.
 From Python use this as a property: ";
 
 %feature("docstring")  cmf::upslope::SurfaceWater::get_state "real
-get_state() const ";
+get_state() const
+
+Returns the current state of the variable. ";
 
 %feature("docstring")
 cmf::upslope::SurfaceWater::get_state_variable_content "char
@@ -11634,7 +12201,9 @@ Set water depth at which runoff starts.
 From Python use this as a property: ";
 
 %feature("docstring")  cmf::upslope::SurfaceWater::set_state "void
-set_state(real newState) ";
+set_state(real newState)
+
+Gives access to the state variable. ";
 
 %feature("docstring")
 cmf::upslope::SurfaceWater::set_state_variable_content "void
@@ -12384,7 +12953,9 @@ item reacts like a scalar value.
 Creating a time series
 
 With this technique it is simple to read files or databases to fill
-timeseries.<b> Using a timeseries</b>
+timeseries.
+
+Using a timeseries
 
 C++ includes: timeseries.h ";
 
@@ -12989,6 +13560,24 @@ typecode() const ";
 V(double h) const ";
 
 
+// File: classstd_1_1underflow__error.xml
+%feature("docstring") std::underflow_error "
+
+STL class. ";
+
+
+// File: classstd_1_1unique__ptr.xml
+%feature("docstring") std::unique_ptr "
+
+STL class. ";
+
+
+// File: classstd_1_1valarray.xml
+%feature("docstring") std::valarray "
+
+STL class. ";
+
+
 // File: classcmf_1_1upslope_1_1_van_genuchten_mualem.xml
 %feature("docstring") cmf::upslope::VanGenuchtenMualem "
 
@@ -13067,8 +13656,8 @@ W^{l-1/m}\\\\left(\\\\left(1-W^{1/m}\\\\right)^{-m} +
 
 $K_{sat}$ saturated conductivity in m/day
 
-$\\\\alpha$ inverse water entry potential in 1/m. Note $\\\\alpha$ is
-given in cmf in 1/cm
+$\\\\alpha$ inverse water entry potential in 1/m. **Note** $\\\\alpha$
+is given in cmf in 1/cm
 
 $\\\\Phi$ porosity
 
@@ -13156,6 +13745,12 @@ returns the volumetric water content at a given pF value ";
 
 %feature("docstring")  cmf::upslope::VanGenuchtenMualem::Wetness_pF "cmf::math::num_array Wetness_pF(const cmf::math::num_array &pF) const
 ";
+
+
+// File: classstd_1_1vector.xml
+%feature("docstring") std::vector "
+
+STL class. ";
 
 
 // File: structcmf_1_1upslope_1_1vegetation_1_1_vegetation.xml
@@ -13268,8 +13863,8 @@ W^{l-1/m}\\\\left(\\\\left(1-W^{1/m}\\\\right)^{-m} +
 
 $K_{sat}$ saturated conductivity in m/day
 
-$\\\\alpha$ inverse water entry potential in 1/m. Note $\\\\alpha$ is
-given in cmf in 1/cm
+$\\\\alpha$ inverse water entry potential in 1/m. **Note** $\\\\alpha$
+is given in cmf in 1/cm
 
 $\\\\Phi$ porosity
 
@@ -13645,7 +14240,9 @@ The base class water storage always returns the height of the location
 Returns the project, this node is part of. ";
 
 %feature("docstring")  cmf::water::WaterStorage::get_state "real
-get_state() const ";
+get_state() const
+
+Returns the current state of the variable. ";
 
 %feature("docstring")
 cmf::water::WaterStorage::get_state_variable_content "char
@@ -13678,7 +14275,9 @@ Remove the connection. ";
 Sets the potential of this flux node. ";
 
 %feature("docstring")  cmf::water::WaterStorage::set_state "void
-set_state(real newState) ";
+set_state(real newState)
+
+Gives access to the state variable. ";
 
 %feature("docstring")
 cmf::water::WaterStorage::set_state_variable_content "void
@@ -13714,6 +14313,12 @@ t:  Time of the query
 
 Without:  A flux_connection that is excluded from the waterbalance
 (e.g. to prevent closed circuits) ";
+
+
+// File: classstd_1_1weak__ptr.xml
+%feature("docstring") std::weak_ptr "
+
+STL class. ";
 
 
 // File: structcmf_1_1atmosphere_1_1_weather.xml
@@ -13784,6 +14389,66 @@ Returns a string representation. ";
 
 
 // File: structcmf_1_1upslope_1_1_soil_layer_1_1wet.xml
+
+
+// File: classstd_1_1wfstream.xml
+%feature("docstring") std::wfstream "
+
+STL class. ";
+
+
+// File: classstd_1_1wifstream.xml
+%feature("docstring") std::wifstream "
+
+STL class. ";
+
+
+// File: classstd_1_1wios.xml
+%feature("docstring") std::wios "
+
+STL class. ";
+
+
+// File: classstd_1_1wistream.xml
+%feature("docstring") std::wistream "
+
+STL class. ";
+
+
+// File: classstd_1_1wistringstream.xml
+%feature("docstring") std::wistringstream "
+
+STL class. ";
+
+
+// File: classstd_1_1wofstream.xml
+%feature("docstring") std::wofstream "
+
+STL class. ";
+
+
+// File: classstd_1_1wostream.xml
+%feature("docstring") std::wostream "
+
+STL class. ";
+
+
+// File: classstd_1_1wostringstream.xml
+%feature("docstring") std::wostringstream "
+
+STL class. ";
+
+
+// File: classstd_1_1wstring.xml
+%feature("docstring") std::wstring "
+
+STL class. ";
+
+
+// File: classstd_1_1wstringstream.xml
+%feature("docstring") std::wstringstream "
+
+STL class. ";
 
 
 // File: namespacecmf.xml
@@ -15349,56 +16014,56 @@ x, real xmin, real xmax, real ymin=0, real ymax=1) ";
 // File: deprecated.xml
 
 
-// File: dir_9a42c93f70334fa927fb80cf04ad379b.xml
+// File: dir_a34c0a3a997751912cbeeb3f6a2018d4.xml
 
 
-// File: dir_97bdfb638aee8a42e8a11821a8f83a80.xml
+// File: dir_e44d263e82e73e5cd45e66a9d5484f0e.xml
 
 
-// File: dir_22a6d0aec0a7b997eeb8f2d6d9d27aaa.xml
+// File: dir_1c689e9749401ee508c4e3b2747d036e.xml
 
 
-// File: dir_224ca0b6492fdd6c02341339ca9485e2.xml
+// File: dir_35473c2924978da3332cfde17d1d6b99.xml
 
 
-// File: dir_61fdc3e80949d9aa5318257d5583f40e.xml
+// File: dir_af937d60eb69dba91a5be756eec0a3ea.xml
 
 
-// File: dir_a675f3828f125bb0f4084832d258ef5d.xml
+// File: dir_074680f4811abdc846d4a1ca8117269b.xml
 
 
-// File: dir_af51ad5a6fbb4974d4df397e9840cea4.xml
+// File: dir_6914091710f015cd771e4c69991e0321.xml
 
 
-// File: dir_3c696abeef43907dfad9b9d68e906397.xml
+// File: dir_9ba2403456dedd4364a1ad5ef46b0674.xml
 
 
-// File: dir_3609a1b14917dfc48c3b319cc77c234f.xml
+// File: dir_881a4b4145393ba5aa926042f2b0ab4d.xml
 
 
-// File: dir_3f5ca09b942775376a4896867eb2628a.xml
+// File: dir_5ee593482e72b5c4adf127b682cc064b.xml
 
 
-// File: dir_f0dc007ab0663fb611ca19f49d6cfe00.xml
+// File: dir_6729183fec5c38381d2b4a165ab87aab.xml
 
 
-// File: dir_ca327effffb24896a02d7a0f544646f1.xml
+// File: dir_da4bfa092f42b4972ab12dc096d9b871.xml
 
 
-// File: dir_1c4b7e2fa1992a037ceef8bf41f0661d.xml
+// File: dir_28ca05f8518a347825525f957ad42f18.xml
 
 
-// File: dir_ee867a5bba9cac42198f5a3909d1c0b3.xml
+// File: dir_4f5dd0ddca36aa533ebaad82a6c4b0e2.xml
 
 
-// File: dir_4f77fa937b43bd1483d069dfd7fd85b7.xml
+// File: dir_bbd991016cf40466555088dc9588afdf.xml
 
 
-// File: dir_dbd81f6c15fef41247188aca56f45712.xml
+// File: dir_7ec89ba203c4709e08ce3f8fa76928c4.xml
 
 
-// File: dir_ff2b37a95e8747386c30f505d5e535f0.xml
+// File: dir_18152b86c6724725c4b0fa1db5a5b7b6.xml
 
 
-// File: dir_bc616c2111175d89ae7d84859141c261.xml
+// File: dir_8b4109f3d59abed5ff481179ab00febc.xml
 

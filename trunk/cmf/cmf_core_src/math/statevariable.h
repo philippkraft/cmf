@@ -159,7 +159,9 @@ namespace cmf {
 			StateVariableList get_states() {
 				return *this;
 			}
+#ifndef SWIG
 			operator bool() const {return m_vector.size()>0;}
+#endif
 			StateVariableList& operator +=(const StateVariableList& food) {
 				m_vector.insert(m_vector.end(),food.m_vector.begin(),food.m_vector.end());
 				return *this;

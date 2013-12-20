@@ -18,6 +18,5 @@
 #   
 from draw_misc import *
 from hillplot import hill_plot
-if cmf.has_shapely:
-    from shapemap import shape_map
-    
+from shapemap import shape_map
+

@@ -31,6 +31,10 @@
 #ifndef NPY_NO_DEPRECATED_API
 #define NPY_NO_DEPRECATED_API NPY_1_7_API_VERSION
 #endif
+#ifndef NPY_1_7_API_VERSION
+#define NPY_ARRAY_CARRAY NPY_CARRAY
+#define NPY_ARRAY_OWNDATA NPY_OWNDATA
+#endif
 
 // including numpy array definition
 #include <numpy/arrayobject.h>

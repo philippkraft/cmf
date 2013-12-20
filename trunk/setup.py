@@ -20,7 +20,13 @@
 # This file can build and install cmf
 import sys
 import os
-
+try:
+   from distutils.command.build_py import build_py_2to3 as build_py
+   extraswig = []#'-py3']
+except ImportError:
+   from distutils.command.build_py import build_py
+   extraswig = []
+   
 # Change these variables to match your compiler. (gcc or 
 # For Visual Studio 2008 no action is needed
 msvc = sys.platform == 'win32'
@@ -60,7 +66,7 @@ def count_lines(files):
     lcount=0
     for fn in files:
         if not fn.endswith('.c'):
-            lines = file(fn).readlines()
+            lines = open(fn).readlines()
             lcount+=len(lines)
     return lcount
 def is_source_file(fn,include_headerfiles=False):
@@ -92,19 +98,19 @@ def make_cmf_core():
         if os.path.basename(root)!='debug_scripts':
             cmf_files.extend(os.path.join(root,f) for f in files if is_source_file(f) and f!='cmf_wrap.cpp')
             cmf_headers.extend(os.path.join(root,f) for f in files if f.endswith('.h'))
-    print "Compiling %i source files" % (len(cmf_files)+1)
+    print("Compiling %i source files" % (len(cmf_files)+1))
     if swig:
         cmf_files.append("cmf/cmf_core_src/cmf.i")
     else:
         cmf_files.append("cmf/cmf_core_src/cmf_wrap.cpp")
-    print "Total number of C++ loc:", count_lines(cmf_files + cmf_headers)
+    #print("Total number of C++ loc:", count_lines(cmf_files + cmf_headers))
     cmf_core = Extension('cmf._cmf_core',
                             sources=cmf_files,
                             libraries = libraries,
                             include_dirs=include_dirs,
                             extra_compile_args=compile_args,
                             extra_link_args=link_args,
-                            swig_opts=['-c++','-Wextra','-w512','-w511','-O','-keyword','-castmode'] #,'-threads'
+                            swig_opts=['-c++','-Wextra','-w512','-w511','-O','-keyword','-castmode']+extraswig
                         )
     return cmf_core
 def make_raster():
@@ -139,15 +145,15 @@ def get_revision():
     return res.strip('M')
 def updateversion(revision):
     if revision:
-        module_code = file('cmf/__init__.py').readlines()
-        fout = file('cmf/__init__.py','w')
+        module_code = open('cmf/__init__.py').readlines()
+        fout = open('cmf/__init__.py','w')
         for line in module_code:
             if line.startswith('__version__'):
                 fout.write("__version__ = '%s'\n" % revision)
             else:
                 fout.write(line)
-        doxycode = file('Doxyfile').readlines()
-        fout = file('Doxyfile','w')
+        doxycode = open('Doxyfile').readlines()
+        fout = open('Doxyfile','w')
         for line in doxycode:
             if line.strip().startswith('PROJECT_NUMBER'):
                 fout.write("PROJECT_NUMBER         = %s\n" % revision)
@@ -171,7 +177,7 @@ if __name__=='__main__':
                 dirs.remove(d)
         py_found=[os.path.join(root,f[:-3]).replace('\\','.') for f in files if f.endswith('.py')]
         if py_found:
-            print 'In %s %i modules found' % (root,len(py_found))
+            print('In %s %i modules found' % (root,len(py_found)))
         py.extend(py_found)
     revision = get_revision()
     if 'build' in sys.argv or 'build_py' in sys.argv:
@@ -183,12 +189,14 @@ if __name__=='__main__':
           license='GPL',
           ext_modules=ext,
           py_modules=py, 
-          requires=['shapely (>=1.0)'],
+          requires=['numpy (>=1.3)'],
           author=author,
           url=url,
           description=description,
-          author_email=author_email)
+          author_email=author_email,
+          cmdclass={'build_py':build_py},
+          )
     #if msvc: shutil.copy('build/lib.win32-2.7/cmf/raster/_raster.pyd','cmf/raster/')
     #setup(name='cmf_setups',version='0.1',license='GPL',
     #      py_modules=['cmf_setups.'+f[:-3] for f in os.listdir('cmf_setups') if f.endswith('.py')])
-    print "build ok"
+    print("build ok")
