@@ -22,7 +22,6 @@ try:
     import shapely.geometry as geometry
 except ImportError:
     has_shapely=False
-    create_reaches,cells_from_dem = None,None
 
 import math
 #import raster

@@ -38,6 +38,11 @@
 
 %include "math/statevariable.h"
 %extend__repr__(cmf::math::StateVariable)
+%extend (cmf::math::StateVariableList) {
+    ptrdiff_t __len__() const {
+        return $self->size();
+    }
+}
 %extend cmf::math::integratable_list {
     size_t __len__() const {
         return $self->size();

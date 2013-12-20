@@ -16,22 +16,10 @@
 #   You should have received a copy of the GNU General Public License
 #   along with cmf.  If not, see <http://www.gnu.org/licenses/>.
 #   
-try:
-    import shapely
-    from shapely.geometry import Polygon,MultiPolygon,Point,LineString,MultiLineString,MultiPoint,GeometryCollection
-    has_shapely = True
-except Exception:
-    print "Could not found shapely. Creating cells from polygons is disabled"
-    has_shapely= False
 from cmf_core import *
 
 from maps import Map,nearest_neighbor_map,raster_map
 
-if has_shapely:
-    from cell_factory import create_reaches,cells_from_dem
-    from cell_factory import cells_from_polygons
-    from geos_shapereader import shapefile
-    from maps import polygon_map
 
 from cell_factory import project_from_dem,create_reaches_for_cells
 
@@ -42,12 +30,4 @@ from extend_project import change_vegetation,connect_cells_with_flux
 from extend_project import profile
 from stopwatch import StopWatch
 
-try:
-    import pylab as __pylab
-    __pylab_loaded=True
-except ImportError:
-    print "Matplotlib is not installed. cmf.draw is disabled"
-    __pylab_loaded=False
-if __pylab_loaded:
-    import draw
-__version__ = '794'
+__version__ = '795'
