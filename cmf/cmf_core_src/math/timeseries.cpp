@@ -245,7 +245,7 @@ cmf::math::timeseries cmf::math::timeseries::get_slice( cmf::math::Time _begin,c
 
 cmf::math::timeseries cmf::math::timeseries::get_slice( ptrdiff_t _begin,ptrdiff_t _end,ptrdiff_t _step/*=1*/ )
 {
-	timeseries res(time_at_position(_begin),step()*_step);
+	timeseries res(time_at_position(_begin),step()*(long long)(_step));
 	for (ptrdiff_t i = (_begin<0?_begin+size():_begin); i < (_end > size() ? size() : _end); i+=_step)
 	{
 		res.add(this->get_i(i));

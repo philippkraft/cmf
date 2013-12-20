@@ -19,6 +19,7 @@
 #ifndef real_h__
 #define real_h__
 #include <cfloat>
+#include <cstddef>
 #include <string>
 #ifndef REAL32
 	typedef double real;

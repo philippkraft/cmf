@@ -226,7 +226,7 @@ void cmf::math::Integrator::add_values_to_states(const num_array& operands)
 void cmf::math::Integrator::integrate_until( cmf::math::Time t_max,cmf::math::Time dt/*=Time()*/,bool reset_solver/*=false*/ )
 {
 	m_Iterations=0;
-	ptrdiff_t i=0;
+	int i=0;
 	Time start = m_t;
 	if (reset_solver) reset();
 	if (!dt) dt=m_dt;
