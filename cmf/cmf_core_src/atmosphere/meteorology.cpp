@@ -113,7 +113,7 @@ void cmf::atmosphere::MeteoStation::SetSunshineFraction(cmf::math::timeseries su
 {
 	Sunshine=cmf::math::timeseries(sunshine_duration.begin(),sunshine_duration.step(),sunshine_duration.interpolationpower());
 	cmf::math::Time t=sunshine_duration.begin();
-	for (ptrdiff_t i = 0; i < sunshine_duration.size() ; i++)
+	for (size_t i = 0; i < sunshine_duration.size() ; i++)
 	{
 		double
 			DOY=t.AsDate().DOY()+t.AsDays()-ptrdiff_t(t.AsDays()),
@@ -153,7 +153,7 @@ void cmf::atmosphere::MeteoStation::use_for_cell( cmf::upslope::Cell& c )
 {
 	MeteoStation::ptr sh_this;
 	const MeteoStationList& msl =  c.get_project().meteo_stations;
-	for (ptrdiff_t i = 0; i < msl.size() ; ++i)
+	for (size_t i = 0; i < msl.size() ; ++i)
 	{
 		if (msl[i].get() == this) {
 			MeteoStationReference mref(msl[i],c.get_position());
@@ -237,7 +237,7 @@ cmf::atmosphere::IDW_Meteorology::IDW_Meteorology( const cmf::geometry::point& p
 	point p=position;
 	// Create a vector of distances to the stations
 	num_array dist(stations.size());
-	for (ptrdiff_t i = 0; i < stations.size() ; ++i)
+	for (size_t i = 0; i < stations.size() ; ++i)
 		dist[i] = p.distanceTo(point(stations[i]->x,stations[i]->y))+z_weight*abs(p.z-stations[i]->z);
 	
 	// Calculate the weight of each station using IDW
@@ -245,7 +245,7 @@ cmf::atmosphere::IDW_Meteorology::IDW_Meteorology( const cmf::geometry::point& p
 	double weightsum = weights_.sum();
 	weights_/=weightsum; // normalize the weights
 	// Create a weight map
-	for (ptrdiff_t i = 0; i < stations.size() ; ++i)
+	for (size_t i = 0; i < stations.size() ; ++i)
 		weights[stations[i]] = weights_[i];
 }
 

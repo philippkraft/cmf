@@ -168,7 +168,7 @@ cmf::water::WaterStorage::ptr Cell::get_storage( ptrdiff_t index ) const
 
 void Cell::set_saturated_depth( real depth )
 {
-	for (ptrdiff_t i = 0; i < layer_count() ; ++i)
+	for (size_t i = 0; i < layer_count() ; ++i)
 	{
 		get_layer(i)->set_potential(z-depth);
 	}
@@ -280,9 +280,9 @@ void Cell::set_rain_source( cmf::atmosphere::RainSource::ptr new_source )
 cmf::math::StateVariableList Cell::get_states()
 {
 	cmf::math::StateVariableList q;
-	for (ptrdiff_t i = 0; i < storage_count() ; ++i)
+	for (size_t i = 0; i < storage_count() ; ++i)
 		q.extend(*get_storage(i));
-	for (ptrdiff_t i = 0; i < layer_count() ; ++i)
+	for (size_t i = 0; i < layer_count() ; ++i)
 		q.extend(*get_layer(i));
 	return q;
 }

@@ -99,9 +99,9 @@ namespace cmf {
 			bool use_OpenMP;
 
 			/// returns the number of state variables
-			ptrdiff_t size() const
+			size_t size() const
 			{
-				return (ptrdiff_t)m_States.size();
+				return m_States.size();
 			}
 			/// Returns the statevariable at position
 			/// Simplifies the assessment of state variables

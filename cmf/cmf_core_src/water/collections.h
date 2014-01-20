@@ -39,7 +39,7 @@ namespace cmf {
 			node_vector m_nodes;
 		public:
 			/// @brief The number of nodes
-			ptrdiff_t size() const {return ptrdiff_t(m_nodes.size());}
+			size_t size() const {return m_nodes.size();}
 
 #ifndef SWIG
 			flux_node::ptr operator[](ptrdiff_t index) const

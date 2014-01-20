@@ -102,8 +102,8 @@ ptrdiff_t cmf::water::node_list::set_potentials( const cmf::math::num_array& pot
 {
 	if (size()!=potentials.size())
 		throw std::out_of_range("Size of potential array does not fit the size of the node_list");
-	ptrdiff_t ok_count=size();
-	for (ptrdiff_t i = 0; i < size() ; ++i)
+	size_t ok_count=size();
+	for (size_t i = 0; i < size() ; ++i)
 	{
 		try
 		{
@@ -183,7 +183,7 @@ cmf::math::StateVariableList cmf::water::node_list::get_states()
 
 cmf::water::node_list& cmf::water::node_list::operator+=( const cmf::water::node_list& right )
 {
-	for (ptrdiff_t i = 0; i < right.size() ; ++i)
+	for (size_t i = 0; i < right.size() ; ++i)
 	{
 		append(right[i]);
 	}
@@ -245,7 +245,7 @@ void cmf::water::NeumannBoundary_list::set_fluxes( cmf::math::num_array values )
 		throw std::runtime_error("The input array with fluxes need to have the same size as this list");
 	else
 	{
-		for (ptrdiff_t i = 0; i < values.size() ; ++i)
+		for (size_t i = 0; i < values.size() ; ++i)
 		{
 			m_boundaries[i]->set_flux(values[i]);
 		}
@@ -276,7 +276,7 @@ cmf::math::num_array cmf::water::NeumannBoundary_list::water_balance( cmf::math:
 
 cmf::water::NeumannBoundary_list::NeumannBoundary_list( const cmf::water::node_list& copy )
 {
-	for (ptrdiff_t i = 0; i < copy.size() ; ++i)
+	for (size_t i = 0; i < copy.size() ; ++i)
 	{
 		NeumannBoundary::ptr nbc=std::tr1::dynamic_pointer_cast<cmf::water::NeumannBoundary>(copy[i]);
 		if (nbc)

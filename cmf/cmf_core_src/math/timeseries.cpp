@@ -80,35 +80,35 @@ double cmf::math::timeseries::interpolate( cmf::math::Time t,double n ) const
 cmf::math::timeseries& cmf::math::timeseries::operator-=( double _Right )
 {
 #pragma omp parallel for
-	for (ptrdiff_t i = 0; i < size(); ++i)
+	for (ptrdiff_t i = 0; i < ptrdiff_t(size()); ++i)
 		m_data->values[i] -= _Right;
 	return (*this);
 }
 cmf::math::timeseries& cmf::math::timeseries::operator+=( double _Right )
 {
 #pragma omp parallel for
-	for (ptrdiff_t i = 0; i < size(); ++i)
+	for (ptrdiff_t i = 0; i < ptrdiff_t(size()); ++i)
 		m_data->values[i] += _Right;
 	return (*this);
 }
 cmf::math::timeseries& cmf::math::timeseries::operator*=( double _Right )
 {
 #pragma omp parallel for
-	for (ptrdiff_t i = 0; i < size(); ++i)
+	for (ptrdiff_t i = 0; i < ptrdiff_t(size()); ++i)
 		m_data->values[i] *= _Right;
 	return (*this);
 }
 cmf::math::timeseries& cmf::math::timeseries::operator/=( double _Right )
 {
 #pragma omp parallel for
-	for (ptrdiff_t i = 0; i < size(); ++i)
+	for (ptrdiff_t i = 0; i < ptrdiff_t(size()); ++i)
 		m_data->values[i] /= _Right;
 	return (*this);
 }
 cmf::math::timeseries& cmf::math::timeseries::operator+=(timeseries _Right )
 {
 #pragma omp parallel for
-	for (ptrdiff_t i = 0; i < size(); ++i) {
+	for (ptrdiff_t i = 0; i < ptrdiff_t(size()); ++i) {
 		Time t = time_at_position(i);
 		m_data->values[i] += _Right[t];
 	}
@@ -117,21 +117,21 @@ cmf::math::timeseries& cmf::math::timeseries::operator+=(timeseries _Right )
 cmf::math::timeseries& cmf::math::timeseries::operator-=(timeseries _Right )
 {
 #pragma omp parallel for
-	for (ptrdiff_t i = 0; i < size(); ++i)
+	for (ptrdiff_t i = 0; i < ptrdiff_t(size()); ++i)
 		m_data->values[i] -= _Right[time_at_position(i)];
 	return (*this);
 }
 cmf::math::timeseries& cmf::math::timeseries::operator*=(timeseries _Right )
 {
 #pragma omp parallel for
-	for (ptrdiff_t i = 0; i < size(); ++i)
+	for (ptrdiff_t i = 0; i < ptrdiff_t(size()); ++i)
 		m_data->values[i] *= _Right[time_at_position(i)];
 	return (*this);
 }
 cmf::math::timeseries& cmf::math::timeseries::operator/=(timeseries _Right )
 {
 #pragma omp parallel for
-	for (ptrdiff_t i = 0; i < size(); ++i)
+	for (ptrdiff_t i = 0; i < ptrdiff_t(size()); ++i)
 		m_data->values[i] /= _Right[time_at_position(i)];
 	return (*this);
 }
@@ -246,7 +246,7 @@ cmf::math::timeseries cmf::math::timeseries::get_slice( cmf::math::Time _begin,c
 cmf::math::timeseries cmf::math::timeseries::get_slice( ptrdiff_t _begin,ptrdiff_t _end,ptrdiff_t _step/*=1*/ )
 {
 	timeseries res(time_at_position(_begin),step()*(long long)(_step));
-	for (ptrdiff_t i = (_begin<0?_begin+size():_begin); i < (_end > size() ? size() : _end); i+=_step)
+	for (ptrdiff_t i = (_begin<0?_begin+ptrdiff_t(size()):_begin); i < (_end > ptrdiff_t(size()) ? ptrdiff_t(size()) : _end); i+=_step)
 	{
 		res.add(this->get_i(i));
 	}
@@ -260,7 +260,7 @@ void cmf::math::timeseries::set_slice( cmf::math::Time _begin,cmf::math::Time _e
 
 void cmf::math::timeseries::set_slice( ptrdiff_t _begin,ptrdiff_t _end,cmf::math::timeseries _values )
 {
-	for (ptrdiff_t i = (_begin<0?_begin+size():_begin); i < (_end > size() ? size() : _end); ++i)
+	for (ptrdiff_t i = (_begin<0?_begin+ptrdiff_t(size()):_begin); i < (_end > ptrdiff_t(size()) ? ptrdiff_t(size()) : _end); ++i)
 	{
 		set_i(i,_values.get_t(time_at_position(i)));
 	}
@@ -321,7 +321,7 @@ cmf::math::timeseries cmf::math::timeseries::operator -() const {
 cmf::math::timeseries cmf::math::timeseries::inv() const
 {
 	timeseries res(begin(),step());																									
-	for (ptrdiff_t i = 0; i < size() ; ++i)
+	for (ptrdiff_t i = 0; i < ptrdiff_t(size()) ; ++i)
 	{
 		res.add(1/get_i(i));
 	}
@@ -357,7 +357,7 @@ cmf::math::timeseries cmf::math::timeseries::floating_avg( size_t window_size ) 
 	cmf::math::timeseries res(begin(),step(),interpolationpower(),size());
 	std::vector<double> window_content(window_size, get_i(0));
 	size_t half_size=window_size/2;
-	for (ptrdiff_t i = 0; i < size(); ++i)
+	for (ptrdiff_t i = 0; i < ptrdiff_t(size()); ++i)
 	{
 		window_content[i % window_size] = get_i(i);
 		res.set_i(i,array_mean(window_content.begin(),window_size));
@@ -412,7 +412,7 @@ double cmf::math::timeseries::mean() const
 	double sum=0;
 	ptrdiff_t count=size();
 	double v=0;
-	for (ptrdiff_t i = 0; i < size() ; ++i)
+	for (ptrdiff_t i = 0; i < ptrdiff_t(size()) ; ++i)
 	{
 		v = m_data->values[i];
 		if (isfinite(v))
@@ -426,7 +426,7 @@ double cmf::math::timeseries::mean() const
 double cmf::math::timeseries::min() const
 {
 	double _min=get_i(0);
-	for (ptrdiff_t i = 0; i < size() ; ++i)
+	for (ptrdiff_t i = 0; i < ptrdiff_t(size()) ; ++i)
 	{
 		if (_min>m_data->values[i] && isfinite(m_data->values[i]))
 			_min=m_data->values[i];
@@ -437,7 +437,7 @@ double cmf::math::timeseries::min() const
 double cmf::math::timeseries::max() const
 {
 	double _max=get_i(0);
-	for (ptrdiff_t i = 0; i < size() ; ++i)
+	for (ptrdiff_t i = 0; i < ptrdiff_t(size()) ; ++i)
 	{
 		if (_max<m_data->values[i] && isfinite(m_data->values[i]))
 			_max=m_data->values[i];
@@ -485,13 +485,13 @@ cmf::math::timeseries cmf::math::timeseries::power(double exponent) const
 inline bool is_nodata(double value,double nodata_value) { return fabs(value-nodata_value)<1e-15;}
 void cmf::math::timeseries::remove_nodata( double nodata_value )
 {
-	ptrdiff_t i =0;
+	size_t i =0;
 	while (i<size())	{
 		double current_value = this->get_i(i);
 		double next_value=nodata_value;
 		double first_value=nodata_value;
 		if (is_nodata(current_value,nodata_value))	{
-			ptrdiff_t j=i;
+			size_t j=i;
 			while (j<size() && is_nodata(get_i(j),nodata_value)) ++j;
 			if (j<size()) 
 				next_value = get_i(j);
@@ -505,7 +505,7 @@ void cmf::math::timeseries::remove_nodata( double nodata_value )
 			else // use constant right value for interpolation
 				first_value = next_value;
 			// interpolate linear
-			for (ptrdiff_t k = i; k < j; ++k) {
+			for (size_t k = i; k < j; ++k) {
 				double f_next = double(k-(i-1))/double(j-(i-1));
 				set_i(k, f_next * next_value + (1-f_next) * first_value);
 			}
@@ -521,7 +521,7 @@ void cmf::math::timeseries::set_i( ptrdiff_t i,double value )
 {
 	ptrdiff_t ndx = i;
 	if (ndx<0) ndx = size() + i;
-	if (ndx>=size()) throw std::out_of_range("Index is out of range of the timeseries");
+	if (ndx>=ptrdiff_t(size())) throw std::out_of_range("Index is out of range of the timeseries");
 	double & d=m_data->values[ndx];
 	d=value;
 }
@@ -546,10 +546,10 @@ cmf::math::timeseries cmf::math::timeseries::from_array( cmf::math::Time _begin,
 	return result;
 }
 
-ptrdiff_t cmf::math::timeseries::count_values() const
+size_t cmf::math::timeseries::count_values() const
 {
-	ptrdiff_t count=0;
-	for (ptrdiff_t i = 0; i <  size(); ++i)
+	size_t count=0;
+	for (size_t i = 0; i <  size(); ++i)
 		if (isfinite(m_data->values[i])) ++count;
 	return count;
 }

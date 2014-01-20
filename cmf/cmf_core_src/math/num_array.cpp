@@ -38,7 +38,7 @@ cmf::math::num_array::num_array( ptrdiff_t count,real Value/*=0*/ ) : m_size(cou
 cmf::math::num_array::num_array( const num_array& Vector ) 
 : m_size(Vector.size()), m_data(new double[Vector.size()])
 {
-	for (ptrdiff_t i = 0; i < size() ; ++i)
+	for (size_t i = 0; i < size() ; ++i)
 		m_data[i] = Vector[i];
 }
 
@@ -73,13 +73,13 @@ cmf::math::num_array& cmf::math::num_array::operator=( const num_array& vector )
 		;	// do nothing
 	else if (size() == vector.size())
 #pragma omp parallel for
-		for (ptrdiff_t i = 0; i < size(); ++i)
+		for (ptrdiff_t i = 0; i < ptrdiff_t(size()); ++i)
 			m_data[i] = vector[i];
 	else
 	{	// resize and copy
 		resize(vector.size());
 #pragma omp parallel for
-		for (ptrdiff_t i = 0; i < size(); ++i)
+		for (ptrdiff_t i = 0; i < ptrdiff_t(size()); ++i)
 			m_data[i] = vector[i];
 	}
 	return (*this);
@@ -88,7 +88,7 @@ cmf::math::num_array& cmf::math::num_array::operator=( const num_array& vector )
 
 cmf::math::num_array& cmf::math::num_array::operator=( real scalar )
 {
-	for (ptrdiff_t i = 0; i < size(); ++i)
+	for (ptrdiff_t i = 0; i < ptrdiff_t(size()); ++i)
 		m_data[i] = scalar;
 	return (*this);
 }
@@ -107,56 +107,56 @@ cmf::math::num_array& cmf::math::num_array::operator=( const std::vector<double>
 cmf::math::num_array& cmf::math::num_array::operator-=( real _Right )
 {
 #pragma omp parallel for
-	for (ptrdiff_t i = 0; i < size(); ++i)
+	for (ptrdiff_t i = 0; i < ptrdiff_t(size()); ++i)
 		m_data[i] -= _Right;
 	return (*this);
 }
 cmf::math::num_array& cmf::math::num_array::operator+=( real _Right )
 {
 #pragma omp parallel for
-	for (ptrdiff_t i = 0; i < size(); ++i)
+	for (ptrdiff_t i = 0; i < ptrdiff_t(size()); ++i)
 		m_data[i] += _Right;
 	return (*this);
 }
 cmf::math::num_array& cmf::math::num_array::operator*=( real _Right )
 {
 #pragma omp parallel for
-	for (ptrdiff_t i = 0; i < size(); ++i)
+	for (ptrdiff_t i = 0; i < ptrdiff_t(size()); ++i)
 		m_data[i] *= _Right;
 	return (*this);
 }
 cmf::math::num_array& cmf::math::num_array::operator/=( real _Right )
 {
 #pragma omp parallel for
-	for (ptrdiff_t i = 0; i < size(); ++i)
+	for (ptrdiff_t i = 0; i < ptrdiff_t(size()); ++i)
 		m_data[i] /= _Right;
 	return (*this);
 }
 cmf::math::num_array& cmf::math::num_array::operator+=(const num_array& _Right )
 {
 #pragma omp parallel for
-	for (ptrdiff_t i = 0; i < size(); ++i)
+	for (ptrdiff_t i = 0; i < ptrdiff_t(size()); ++i)
 		m_data[i] += _Right[i];
 	return (*this);
 }
 cmf::math::num_array& cmf::math::num_array::operator-=(const num_array& _Right )
 {
 #pragma omp parallel for
-	for (ptrdiff_t i = 0; i < size(); ++i)
+	for (ptrdiff_t i = 0; i < ptrdiff_t(size()); ++i)
 		m_data[i] -= _Right[i];
 	return (*this);
 }
 cmf::math::num_array& cmf::math::num_array::operator*=(const num_array& _Right )
 {
 #pragma omp parallel for
-	for (ptrdiff_t i = 0; i < size(); ++i)
+	for (ptrdiff_t i = 0; i < ptrdiff_t(size()); ++i)
 		m_data[i] *= _Right[i];
 	return (*this);
 }
 cmf::math::num_array& cmf::math::num_array::operator/=(const num_array& _Right )
 {
 #pragma omp parallel for
-	for (ptrdiff_t i = 0; i < size(); ++i)
+	for (ptrdiff_t i = 0; i < ptrdiff_t(size()); ++i)
 		m_data[i] /= _Right[i];
 	return (*this);
 }
@@ -165,17 +165,17 @@ cmf::math::num_array& cmf::math::num_array::operator/=(const num_array& _Right )
  {
  	cmf::math::num_array result(size());
  #pragma omp parallel for
- 	for (ptrdiff_t i = 0; i < size(); ++i)
+ 	for (ptrdiff_t i = 0; i < ptrdiff_t(size()); ++i)
  		result[i] = -m_data[i];
  	return result;
  }
 
 void cmf::math::num_array::resize( ptrdiff_t count )
 {
-	if (count==size()) return;
+	if (count==ptrdiff_t(size())) return;
 	real* ptr_new=new real[count];
 #pragma omp parallel for
-	for (ptrdiff_t i = 0; i < size(); ++i)
+	for (ptrdiff_t i = 0; i < ptrdiff_t(size()); ++i)
 		ptr_new[i] = m_data[i];
 	delete[] m_data;
 	m_data=ptr_new;
@@ -186,7 +186,7 @@ cmf::math::num_array cmf::math::num_array::apply( real funct(real) ) const
 {
 	cmf::math::num_array result(size());
 #pragma omp parallel for
-	for (ptrdiff_t i = 0; i < size(); ++i)
+	for (ptrdiff_t i = 0; i < ptrdiff_t(size()); ++i)
 		result[i] = funct(m_data[i]);
 	return result;
 }
@@ -196,7 +196,7 @@ real cmf::math::num_array::dot( const num_array& _Right) const
 {
 	real res=0;
 #pragma omp parallel for reduction(+ : res)
-	for (ptrdiff_t i = 0; i < size(); ++i)
+	for (ptrdiff_t i = 0; i < ptrdiff_t(size()); ++i)
 		res += m_data[i] * _Right[i];
 	return res;
 
@@ -206,7 +206,7 @@ cmf::math::num_array cmf::math::num_array::power( real exponent ) const
 {
 	cmf::math::num_array result(size());
 #pragma omp parallel for
-	for (ptrdiff_t i = 0; i < size(); ++i)
+	for (ptrdiff_t i = 0; i < ptrdiff_t(size()); ++i)
 		result[i] = pow(m_data[i],exponent);
 	return result;
 }
@@ -215,7 +215,7 @@ cmf::math::num_array cmf::math::num_array::power( const num_array& exponent) con
 {
 	cmf::math::num_array result(size());
 #pragma omp parallel for
-	for (ptrdiff_t i = 0; i < size(); ++i)
+	for (ptrdiff_t i = 0; i < ptrdiff_t(size()); ++i)
 		result[i] = pow(m_data[i],exponent[i]);
 	return result;
 }
@@ -223,7 +223,7 @@ real cmf::math::num_array::sum() const
 {
   real result=0;
 #pragma omp parallel for reduction(+ : result)
-	for (ptrdiff_t i = 0; i < size() ; ++i)
+	for (ptrdiff_t i = 0; i < ptrdiff_t(size()) ; ++i)
 		result += m_data[i];
 	return result;
 }
@@ -232,7 +232,7 @@ real cmf::math::num_array::max() const
 {
 	real result=0;
 #pragma omp parallel for shared(result)
-	for (ptrdiff_t i = 0; i < size() ; ++i)
+	for (ptrdiff_t i = 0; i < ptrdiff_t(size()) ; ++i)
 	{
 		if (m_data[i]>result)
 		{
@@ -250,7 +250,7 @@ real cmf::math::num_array::min() const
 {
 	real result=0;
 #pragma omp parallel for shared(result)
-	for (ptrdiff_t i = 0; i < size() ; ++i)
+	for (ptrdiff_t i = 0; i < ptrdiff_t(size()) ; ++i)
 	{
 		if (m_data[i]<result)
 		{
@@ -270,7 +270,7 @@ real cmf::math::num_array::norm( int normtype ) const
 	{
 		real result=0;
 #pragma omp parallel for reduction(+ : result)
-		for (ptrdiff_t i = 0; i < size() ; ++i)
+		for (ptrdiff_t i = 0; i < ptrdiff_t(size()) ; ++i)
 			result += abs(m_data[i]);
 		return result;
 	}
@@ -278,7 +278,7 @@ real cmf::math::num_array::norm( int normtype ) const
 	{
 		real result=0;
 #pragma omp parallel for reduction(+ : result)
-		for (ptrdiff_t i = 0; i < size() ; ++i)
+		for (ptrdiff_t i = 0; i < ptrdiff_t(size()) ; ++i)
 			result += m_data[i]*m_data[i];
 		return sqrt(result);
 	}
@@ -286,7 +286,7 @@ real cmf::math::num_array::norm( int normtype ) const
 	{
 		real result=0;
 #pragma omp parallel for shared(result)
-		for (ptrdiff_t i = 0; i < size() ; ++i)
+		for (ptrdiff_t i = 0; i < ptrdiff_t(size()) ; ++i)
 		{
 			if (abs(m_data[i])>result)
 			{
@@ -307,64 +307,64 @@ cmf::math::num_array cmf::math::num_array::operator+(const num_array& _Right )
 {
 	cmf::math::num_array result(size());
 #pragma omp parallel for
-	for (ptrdiff_t i = 0; i < size(); ++i)
+	for (ptrdiff_t i = 0; i < ptrdiff_t(size()); ++i)
 		result[i] = (*this)[i] + _Right[i];
 	return result;
 }
 cmf::math::num_array cmf::math::num_array::operator-(const num_array& _Right )
 {
-	cmf::math::num_array result((*this).size());
+	cmf::math::num_array result(size());
 #pragma omp parallel for
-	for (ptrdiff_t i = 0; i < (*this).size(); ++i)
+	for (ptrdiff_t i = 0; i < ptrdiff_t(size()); ++i)
 		result[i] = (*this)[i] - _Right[i];
 	return result;
 }
 cmf::math::num_array cmf::math::num_array::operator*(const num_array& _Right )
 {
-	cmf::math::num_array result((*this).size());
+	cmf::math::num_array result(size());
 #pragma omp parallel for
-	for (ptrdiff_t i = 0; i < (*this).size(); ++i)
+	for (ptrdiff_t i = 0; i < ptrdiff_t(size()); ++i)
 		result[i] = (*this)[i] * _Right[i];
 	return result;
 }
 cmf::math::num_array cmf::math::num_array::operator/(const num_array& _Right )
 {
-	cmf::math::num_array result((*this).size());
+	cmf::math::num_array result(size());
 #pragma omp parallel for
-	for (ptrdiff_t i = 0; i < (*this).size(); ++i)
+	for (ptrdiff_t i = 0; i < ptrdiff_t(size()); ++i)
 		result[i] = (*this)[i] / _Right[i];
 	return result;
 }
 
 cmf::math::num_array cmf::math::num_array::operator+(real _Right )
 {
-	cmf::math::num_array result((*this).size());
+	cmf::math::num_array result(size());
 #pragma omp parallel for
-	for (ptrdiff_t i = 0; i < (*this).size(); ++i)
+	for (ptrdiff_t i = 0; i < ptrdiff_t(size()); ++i)
 		result[i] = (*this)[i] + _Right;
 	return result;
 }
 cmf::math::num_array cmf::math::num_array::operator-(real _Right )
 {
-	cmf::math::num_array result((*this).size());
+	cmf::math::num_array result(size());
 #pragma omp parallel for
-	for (ptrdiff_t i = 0; i < (*this).size(); ++i)
+	for (ptrdiff_t i = 0; i < ptrdiff_t(size()); ++i)
 		result[i] = (*this)[i] - _Right;
 	return result;
 }
 cmf::math::num_array cmf::math::num_array::operator*(real _Right )
 {
-	cmf::math::num_array result((*this).size());
+	cmf::math::num_array result(size());
 #pragma omp parallel for
-	for (ptrdiff_t i = 0; i < (*this).size(); ++i)
+	for (ptrdiff_t i = 0; i < ptrdiff_t(size()); ++i)
 		result[i] = (*this)[i] * _Right;
 	return result;
 }
 cmf::math::num_array cmf::math::num_array::operator/(real _Right )
 {
-	cmf::math::num_array result((*this).size());
+	cmf::math::num_array result(size());
 #pragma omp parallel for
-	for (ptrdiff_t i = 0; i < (*this).size(); ++i)
+	for (ptrdiff_t i = 0; i < ptrdiff_t(size()); ++i)
 		result[i] = (*this)[i] / _Right;
 	return result;
 }
@@ -373,7 +373,7 @@ cmf::math::num_array cmf::math::operator+( real _Left,const num_array& _Right )
 {
 	cmf::math::num_array result(_Right.size());
 #pragma omp parallel for
-	for (ptrdiff_t i = 0; i < _Right.size(); ++i)
+	for (ptrdiff_t i = 0; i < ptrdiff_t(_Right.size()); ++i)
 		result[i] = _Left + _Right[i];
 	return result;
 }
@@ -381,7 +381,7 @@ cmf::math::num_array cmf::math::operator-( real _Left,const num_array& _Right )
 {
 	cmf::math::num_array result(_Right.size());
 #pragma omp parallel for
-	for (ptrdiff_t i = 0; i < _Right.size(); ++i)
+	for (ptrdiff_t i = 0; i < ptrdiff_t(_Right.size()); ++i)
 		result[i] = _Left - _Right[i];
 	return result;
 }
@@ -389,7 +389,7 @@ cmf::math::num_array cmf::math::operator*( real _Left,const num_array& _Right )
 {
 	cmf::math::num_array result(_Right.size());
 #pragma omp parallel for
-	for (ptrdiff_t i = 0; i < _Right.size(); ++i)
+	for (ptrdiff_t i = 0; i < ptrdiff_t(_Right.size()); ++i)
 		result[i] = _Left * _Right[i];
 	return result;
 }
@@ -397,7 +397,7 @@ cmf::math::num_array cmf::math::operator/( real _Left,const num_array& _Right )
 {
 	cmf::math::num_array result(_Right.size());
 #pragma omp parallel for
-	for (ptrdiff_t i = 0; i < _Right.size(); ++i)
+	for (ptrdiff_t i = 0; i < ptrdiff_t(_Right.size()); ++i)
 		result[i] = _Left / _Right[i];
 	return result;
 }

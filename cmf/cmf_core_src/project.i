@@ -30,7 +30,7 @@
             self.__len = getlen
             self.name = name
         def __len__(self):
-            return self.__len()
+            return int(self.__len())
         def __getitem__(self,index):
             if (type(index)==slice):
                  return [self.__get(i) for i in range(*index.indices(len(self)))]
