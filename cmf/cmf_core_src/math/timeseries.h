@@ -113,9 +113,9 @@ namespace cmf {
 			}
 			timeseries copy() const;
 			/// Number of items in the timeseries
-			ptrdiff_t size() const {return ptrdiff_t(m_data->values.size());}
+			size_t size() const {return ptrdiff_t(m_data->values.size());}
 			/// Number of valid values (=size - # of NaN's)
-			ptrdiff_t count_values() const;
+			size_t count_values() const;
 			/// Constructor of a time series
 			/// @param begin First date of measurement
 			/// @param step Time between measurements

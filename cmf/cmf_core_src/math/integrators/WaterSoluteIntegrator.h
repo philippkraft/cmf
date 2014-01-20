@@ -50,15 +50,17 @@ namespace cmf {
 			virtual cmf::math::SoluteWaterIntegrator* copy() const;
 		
 			/// Creates a new SoluteWaterIntegrator
-			/// @param water_integrator Template for the integrator of WaterStorage state varaiables
-			/// @param solute_integrator Template for the integrator of soluteStorage state varaiables
+			/// @param solutes Solutes of the project
+			/// @param water_integrator Template for the integrator of WaterStorage state variables
+			/// @param solute_integrator Template for the integrator of soluteStorage state variables
 			SoluteWaterIntegrator(const cmf::water::solute_vector& solutes, const cmf::math::Integrator& water_integrator, const cmf::math::Integrator& solute_integrator);
 
 			/// Creates a new SoluteWaterIntegrator
-			/// @param water_integrator Template for the integrator of WaterStorage state varaiables
-			/// @param solute_integrator Template for the integrator of soluteStorage state varaiables
+			/// @param solutes Solutes of the project
+			/// @param water_integrator Template for the integrator of WaterStorage state variables
+			/// @param solute_integrator Template for the integrator of soluteStorage state variables
 			/// @param states States to be added to the integrators
-			SoluteWaterIntegrator(cmf::water::solute_vector, const cmf::math::Integrator& water_integrator, const cmf::math::Integrator& solute_integrator, cmf::math::StateVariableOwner& states);
+			SoluteWaterIntegrator(cmf::water::solute_vector solutes, const cmf::math::Integrator& water_integrator, const cmf::math::Integrator& solute_integrator, cmf::math::StateVariableOwner& states);
 
 			/// Resets the integrators (only needed for multistep methods)
 			virtual void reset();

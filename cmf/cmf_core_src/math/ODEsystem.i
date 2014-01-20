@@ -37,16 +37,16 @@
 %rename(__getitem) cmf::math::integratable_list::operator[];
 
 %include "math/statevariable.h"
-%extend__repr__(cmf::math::StateVariable)
-%extend (cmf::math::StateVariableList) {
-    ptrdiff_t __len__() const {
+%extend__repr__(cmf::math::StateVariable);
+%extend cmf::math::StateVariableList {
+    size_t __len__() const {
         return $self->size();
     }
 }
 %extend cmf::math::integratable_list {
-    size_t __len__() const {
-        return $self->size();
-    }
+     size_t __len__() const {
+         return $self->size();
+     }
     %pythoncode {
     def __iter__(self):
         for i in xrange(len(self)):
@@ -63,8 +63,6 @@
     }
 }    
 
-//%attributeval(cmf::math::Integrator,cmf::math::Time,t,get_t,set_t);
-//%attributeval(cmf::math::Integrator,cmf::math::Time,dt,get_dt);
 %attribute(cmf::math::CVodeIntegrator,int,order,get_order);
 
 %include "math/integrators/integrator.h"

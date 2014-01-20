@@ -60,9 +60,9 @@ cmf::water::node_list cmf::project::get_storages()
 
 	for(cell_vector::iterator it = m_cells.begin(); it != m_cells.end(); ++it)
 	{
-		for (ptrdiff_t i = 0; i < it->storage_count() ; ++i)
+		for (size_t i = 0; i < it->storage_count() ; ++i)
 			res.append(it->get_storage(i));
-		for (ptrdiff_t i = 0; i < it->layer_count() ; ++i)
+		for (size_t i = 0; i < it->layer_count() ; ++i)
 			res.append(it->get_layer(i));
 	}
 	for(node_list::iterator it = m_nodes.begin(); it != m_nodes.end(); ++it)
@@ -127,7 +127,7 @@ cmf::math::StateVariableList cmf::project::get_states()
 
 }
 
-ptrdiff_t cmf::project::add_node( cmf::water::flux_node::ptr node )
+size_t cmf::project::add_node( cmf::water::flux_node::ptr node )
 {
 	m_nodes.append(node);
 	if (debug) {
@@ -136,7 +136,7 @@ ptrdiff_t cmf::project::add_node( cmf::water::flux_node::ptr node )
 	return m_nodes.size();
 }
 
-ptrdiff_t cmf::project::remove_node( cmf::water::flux_node::ptr node )
+size_t cmf::project::remove_node( cmf::water::flux_node::ptr node )
 {
 	m_nodes.remove(node);
 	return m_nodes.size();

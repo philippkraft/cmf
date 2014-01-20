@@ -28,35 +28,24 @@ namespace cmf {
 
 		namespace connections {
 			/// @ingroup connections
+			
+			/// A function to calculate the snow fraction of the precipitation according to the air temperature.
+			real snowfraction(real T);
+
 			/// A connection routing rainfall to surface water and to an eventually existing canopy storage
 			class Rainfall : public cmf::water::flux_connection
 			{
 			protected:
 				cmf::upslope::Cell & m_cell;
-				virtual real calc_q(cmf::math::Time t)
-				{
-					bool snow=(m_cell.get_snow()!=0) && m_cell.get_weather(t).T<cmf::atmosphere::Weather::snow_threshold;
-					if (snow)
-						return 0.0;
-					else
-					{
-						const cmf::upslope::vegetation::Vegetation& veg=m_cell.vegetation;
-						real f=0; // Fraction of rainfall to use
-						if (Throughfall) f+=1-veg.CanopyClosure;
-						if (InterceptedRainfall) f+=veg.CanopyClosure;
-						return f * m_cell.get_rainfall(t); 
-					}
-				}
+				virtual real calc_q(cmf::math::Time t);
 				void NewNodes() {}
 			public:
+				/// Is true, if this connection routes throughfall
 				bool Throughfall;
+				/// Is true, if this connection routes interception
 				bool InterceptedRainfall;
-				Rainfall(cmf::water::flux_node::ptr target,cmf::upslope::Cell & cell,bool getthroughfall=true,bool getintercepted=true) 
-					: cmf::water::flux_connection(cell.get_rain_source(),target,
-					getthroughfall && getintercepted ? "Rainfall" : getthroughfall ? "Throughfall" : getintercepted ? "Intercepted rain" : "No rain"),
-					m_cell(cell),Throughfall(getthroughfall),InterceptedRainfall(getintercepted) {
-						NewNodes();
-				}
+				/// Creates a new Rainfall connection
+				Rainfall(cmf::water::flux_node::ptr target,cmf::upslope::Cell & cell,bool getthroughfall=true,bool getintercepted=true);
 			};
 			/// @ingroup connections
 			/// A connection routing snowfall (precipitation below freezing Temp) to the snow pack
@@ -64,14 +53,7 @@ namespace cmf {
 			{
 			protected:
 				cmf::upslope::Cell & m_cell;
-				virtual real calc_q(cmf::math::Time t)
-				{
-					bool snow=(m_cell.get_snow()!=0) && m_cell.get_weather(t).T<cmf::atmosphere::Weather::snow_threshold;
-					if (snow)
-						return m_cell.get_rainfall(t); // Convert mm/day to m3/day
-					else
-						return 0.0;
-				}
+				virtual real calc_q(cmf::math::Time t);
 				void NewNodes() {}
 
 			public:

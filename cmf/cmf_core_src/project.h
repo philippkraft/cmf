@@ -42,7 +42,7 @@ namespace cmf {
 		cmf::upslope::cell_vector m_cells;
 		std::vector<cmf::river::Reach::ptr> m_reaches;
 		cmf::water::node_list m_nodes;
-		ptrdiff_t add_node(cmf::water::flux_node::ptr node);
+		size_t add_node(cmf::water::flux_node::ptr node);
 
 	public:
         /// @brief Returns all state variables of the project. Mostly for internal use.
@@ -53,7 +53,7 @@ namespace cmf {
 		/// of the project. NOTE: If you have other references to this node, the node is not
 		/// deleted. If you are creating a new solver, the node will not be part of the
 		/// solver.
-		ptrdiff_t remove_node(cmf::water::flux_node::ptr node);
+		size_t remove_node(cmf::water::flux_node::ptr node);
 
 		/// The solutes transported by the model
 		const cmf::water::solute_vector solutes;
@@ -143,7 +143,7 @@ namespace cmf {
 			return m_cells[index];
 		}
 		/// The number of cells in the project
-		ptrdiff_t size() const { return ptrdiff_t(m_cells.size());}
+		size_t size() const { return m_cells.size();}
 		/// @brief debug (true/false) If set to true, creation and deletion of objects is logged
 		bool debug;
 		/// @brief Creates a new project
@@ -153,7 +153,7 @@ namespace cmf {
 		~project();
 		/// Creates a new cell
         /// @return A new cell, owned by the project
-        /// @param x,y,z Position of the cell center in project coordiantes (m)
+        /// @param x,y,z Position of the cell center in project coordinates (m)
         /// @param area Area of the cell in m^2
         /// @param with_surfacewater If true, the cell will own a surfacewater storage upon creation
 		cmf::upslope::Cell* NewCell(double x,double y,double z, double area,bool with_surfacewater = false);
@@ -192,14 +192,14 @@ namespace cmf {
 		/// Returns the reach at index
 		cmf::river::Reach::ptr get_reach(ptrdiff_t index);
 		/// Returns the number of reaches in this project
-		ptrdiff_t reach_count() const {return ptrdiff_t(m_reaches.size());}
+		size_t reach_count() const {return ptrdiff_t(m_reaches.size());}
 		
 		/// Returns the node from the project nodes at index
 		cmf::water::flux_node::ptr get_node(ptrdiff_t index) {
 			return m_nodes[index];
 		}
 		/// Returns the number of nodes saved with this project
-		ptrdiff_t node_count() const {return ptrdiff_t(m_nodes.size());}
+		size_t node_count() const {return m_nodes.size();}
 		
 		/// Returns a list of all storages of this project
 		cmf::water::node_list get_storages();
