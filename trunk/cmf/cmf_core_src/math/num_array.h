@@ -60,7 +60,7 @@
 			iterator begin() const {return m_data;}
 			iterator end()  const {return m_data + size();}
 			/// Size of the vector
-			ptrdiff_t size() const { return m_size;}
+			size_t size() const { return m_size;}
 			/// Changes the size of the vector
 			void resize(ptrdiff_t count);
 			void resize(size_t count) {resize(ptrdiff_t(count));}

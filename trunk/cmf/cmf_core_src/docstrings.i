@@ -58,16 +58,22 @@ connections. As a boundary condition for a cell based soil water
 system, aquifers are used as a right hand side node of percolation
 connections.
 
-Basic head ( $\\\\Psi$) / volume ( $V$) relation: \\\\[ \\\\Psi =
-z_{base} + \\\\frac {V}{A \\\\Phi} \\\\]  $\\\\Psi$ water head in m
+Basic head ( :math:`\\\\Psi`) / volume ( :math:`V`) relation: 
 
-$z_{base}$ base height of the aquifer
+.. math::
 
-$V$ volume of stored water in m3
+   \\\\Psi =
+  z_{base} + \\\\frac {V}{A \\\\Phi} 
+.
+  :math:`\\\\Psi` water head in m
 
-$A$ Base area of the aquifer in m2
+:math:`z_{base}` base height of the aquifer
 
-$\\\\Phi$ Porosity, or more general, $\\\\frac {dV_{bulk}}{dV_{H_2O}}$
+:math:`V` volume of stored water in m3
+
+:math:`A` Base area of the aquifer in m2
+
+:math:`\\\\Phi` Porosity, or more general, :math:`\\\\frac {dV_{bulk}}{dV_{H_2O}}`
 
 C++ includes: groundwater.h ";
 
@@ -187,8 +193,14 @@ get_K(cmf::geometry::point direction) const
 
 Returns the conductivity in m/day for a specific direction.
 
-Takes account for anisotropy \\\\[ \\\\|K\\\\|(d) =
-\\\\frac{d}{\\\\|d\\\\|} \\\\bullet K\\\\] ";
+Takes account for anisotropy 
+
+.. math::
+
+   \\\\|K\\\\|(d) =
+  \\\\frac{d}{\\\\|d\\\\|} \\\\bullet K
+.
+ ";
 
 %feature("docstring")  cmf::upslope::aquifer::get_potential "virtual
 real get_potential() const
@@ -291,8 +303,20 @@ Without:  A flux_connection that is excluded from the waterbalance
 
 Lateral darcy flow between aquifer objects.
 
-\\\\[v_{Darcy}=K_{1,2}\\\\nabla\\\\Psi \\\\] \\\\[q = v_{Darcy} w
-\\\\Delta z\\\\]
+
+
+.. math::
+
+  v_{Darcy}=K_{1,2}\\\\nabla\\\\Psi 
+.
+ 
+
+.. math::
+
+  q = v_{Darcy} w
+  \\\\Delta z
+.
+
 
 C++ includes: groundwater.h ";
 
@@ -649,22 +673,22 @@ integrate(cmf::math::Time MaxTime, cmf::math::Time TimeStep)
 
 Integrates the vector of state variables.
 
-if $ t_{max}-t_{now}\\\\leq 2h_n $ then $ h_{n+1}= t_{max}-t_{now} $
-else $ h_{n+1}= 2h_n $
+if :math:` t_{max}-t_{now}\\\\leq 2h_n ` then :math:` h_{n+1}= t_{max}-t_{now} `
+else :math:` h_{n+1}= 2h_n `
 
-Uses pastStatesArray to store $ y_n,y_{n-1} $
+Uses pastStatesArray to store :math:` y_n,y_{n-1} `
 
 if more than one step is taken start iterating:  $
 y_{n+1}^i=\\\\frac{1}{1+2\\\\rho }\\\\left( (\\\\rho
 +1)^{2}y_{n}-\\\\rho ^{2}y_{n-1}+(\\\\rho
 +1)h\\\\frac{dy}{dt}(y_{n+1}^{i-1},t_{n+1} \\\\right), y_{n+1}^0=y_n $
-with $ \\\\rho = \\\\frac{h_{n+1}}{h_n} $
+with :math:` \\\\rho = \\\\frac{h_{n+1}}{h_n} `
 
 until $ y_{n+1}^{i} - y_{n+1}^{i-1} \\\\leq \\\\ \\\\|\\\\epsilon +
 \\\\epsilon y_{n+1}\\\\|_{\\\\infty} $
 
 If too many iterations are needed, or the error is rising, repeat
-iteration with $ h_{n+1} = \\\\frac{h_{n+1}}{2} $
+iteration with :math:` h_{n+1} = \\\\frac{h_{n+1}}{2} `
 
 Parameters:
 -----------
@@ -708,27 +732,33 @@ STL class. ";
 
 Provides the use of the Brooks-Corey retention curve.
 
-\\\\begin{eqnarray*} W(\\\\theta) &=& \\\\frac{\\\\theta -
-\\\\theta_r}{\\\\theta_s - \\\\theta_r} \\\\\\\\ K(W) &=& K_{sat}
-W^{2b+3} \\\\\\\\ \\\\Psi(W) &=& \\\\Psi_X
-\\\\left(\\\\frac{W}{W_X}\\\\right)^{-b} \\\\\\\\ W(\\\\Psi) &=&
-{\\\\left( \\\\frac{\\\\Psi_X}{\\\\Psi}\\\\right)
-}^{\\\\frac{1}{b}}\\\\ W_X \\\\end{eqnarray*} where:  $K$ is the
-conductivity in $\\\\frac m {day}$
 
-$W$ is the wetness (Volume of soil water per volume of pores)
 
-$b$ is the shape of the retention curve (usually between 4 (sand) and
+.. math::
+
+   W(\\\\theta) &=& \\\\frac{\\\\theta -
+  \\\\theta_r}{\\\\theta_s - \\\\theta_r} \\\\\\\\ K(W) &=& K_{sat}
+  W^{2b+3} \\\\\\\\ \\\\Psi(W) &=& \\\\Psi_X
+  \\\\left(\\\\frac{W}{W_X}\\\\right)^{-b} \\\\\\\\ W(\\\\Psi) &=&
+  {\\\\left( \\\\frac{\\\\Psi_X}{\\\\Psi}\\\\right)
+  }^{\\\\frac{1}{b}}\\\\ W_X 
+.
+ where:  :math:`K` is the
+conductivity in :math:`\\\\frac m {day}`
+
+:math:`W` is the wetness (Volume of soil water per volume of pores)
+
+:math:`b` is the shape of the retention curve (usually between 4 (sand) and
 14 (clay))
 
-$\\\\Psi(W)$ is the matric potential in $m H_2O$ at wetness W
+:math:`\\\\Psi(W)` is the matric potential in :math:`m H_2O` at wetness W
 
-$\\\\Psi_X$ is a matric potential at a known wetness in $m H_2O$
+:math:`\\\\Psi_X` is a matric potential at a known wetness in :math:`m H_2O`
 
-$W_X$ is the wetness with a known matric potential for dynamic changes
+:math:`W_X` is the wetness with a known matric potential for dynamic changes
 with depth, exponential decays of porosity and saturated conductivity
-are used The decay function is: $ v(d)=v(0) (1+a)^{-d} $, where v is
-the value ( $ K_{sat},\\\\Phi$), d is the depth in m and a is the
+are used The decay function is: :math:` v(d)=v(0) (1+a)^{-d} `, where v is
+the value ( :math:` K_{sat},\\\\Phi`), d is the depth in m and a is the
 fractional decay per m. E.g. 0.1 means the value has in 1 m depth 90%
 of the value at the surface
 
@@ -744,16 +774,16 @@ Creates a brooks corey retention curve.
 Parameters:
 -----------
 
-ksat:  Saturated conductivity $\\\\frac{m}{day}$
+ksat:  Saturated conductivity :math:`\\\\frac{m}{day}`
 
-porosity:   $\\\\frac {m^3 Pores}{m^3 Soil}$
+porosity:   :math:`\\\\frac {m^3 Pores}{m^3 Soil}`
 
 _b:  Shape of the retention curve (if you do not know how to
 parameterize this, take a look at the other constructor)
 
-theta_x:   $\\\\theta_X$ Water content at a specific suction pressure
+theta_x:   :math:`\\\\theta_X` Water content at a specific suction pressure
 
-psi_x:  Suction pressure for $\\\\theta_X$ in m water column, use the
+psi_x:  Suction pressure for :math:`\\\\theta_X` in m water column, use the
 conversion functions pF_to_waterhead, pressure_to_waterhead to convert
 pressure in to waterhead height (default pF=2.5)
 
@@ -847,9 +877,15 @@ given suction pressure ";
 cmf::upslope::BrooksCoreyRetentionCurve::Wetness_eff "virtual real
 Wetness_eff(real wetness, real pF_r=4.2) const
 
-Returns the effective wetness, using a residual pF value \\\\[w_{eff}
-=
-\\\\frac{w_{act}-w\\\\left(pF_r\\\\right)}{1-w\\\\left(pF_r\\\\right)}\\\\].
+Returns the effective wetness, using a residual pF value 
+
+.. math::
+
+  w_{eff}
+  =
+  \\\\frac{w_{act}-w\\\\left(pF_r\\\\right)}{1-w\\\\left(pF_r\\\\right)}
+.
+.
 ";
 
 %feature("docstring")
@@ -965,15 +1001,21 @@ Calculates the overflow of a canopy storage using a kinematic wave
 approach.
 
 This model routes only water that exceeds the canopy capacity to the
-ground with an ad hoc estimated function: \\\\[q_{CO} =
-\\\\left(\\\\frac{V_{act}-V_{max}}{V_{max}}\\\\right) ^2 \\\\cdot 2400
-\\\\frac{A_{cell}}{1000}\\\\] With:  $q_{CO}(t)[\\\\frac{m^3}{day}]$:
+ground with an ad hoc estimated function: 
+
+.. math::
+
+  q_{CO} =
+  \\\\left(\\\\frac{V_{act}-V_{max}}{V_{max}}\\\\right) ^2 \\\\cdot 2400
+  \\\\frac{A_{cell}}{1000}
+.
+ With:  :math:`q_{CO}(t)[\\\\frac{m^3}{day}]`:
 The flux from canopy to the ground
 
-$V_{act}[mm]=1000 [mm/m] \\\\frac{V_{canopy}[m^3]}{A_{cell} [m^2]}$
+:math:`V_{act}[mm]=1000 [mm/m] \\\\frac{V_{canopy}[m^3]}{A_{cell} [m^2]}`
 The stored water of the canopy in mm
 
-$V_{max}[mm]=c_{LAI}[mm] LAI$ The capacity of the canopy in mm,
+:math:`V_{max}[mm]=c_{LAI}[mm] LAI` The capacity of the canopy in mm,
 defined by the factor CanopyCapacityPerLAI [mm/LAI], and the leaf area
 index LAI. (see: cmf::upslope::Vegetation)
 
@@ -1189,7 +1231,7 @@ the state of a layer changes. ";
 %feature("docstring")  cmf::upslope::Cell::get_saturated_depth "real
 get_saturated_depth() const
 
-Returns the potential $\\\\Psi_{total}$ of the deepest unsaturated
+Returns the potential :math:`\\\\Psi_{total}` of the deepest unsaturated
 layer as distance from the surface.
 
 This function is wrapped as the property `saturated_depth` in Python
@@ -1198,7 +1240,7 @@ This function is wrapped as the property `saturated_depth` in Python
 %feature("docstring")  cmf::upslope::Cell::set_saturated_depth "void
 set_saturated_depth(real depth)
 
-Sets the potential $\\\\Psi_{total}$ of each layer as distance from
+Sets the potential :math:`\\\\Psi_{total}` of each layer as distance from
 the surface.
 
 This function is wrapped as the property `saturated_depth` in Python
@@ -1317,9 +1359,15 @@ Returns the coverage of the surface water.
 
 The covered fraction (0..1) is simply modelled as a piecewise linear
 function of the surface water depth. If the depth is above the
-aggregate height, the coverage is 1, below it is given as \\\\[ c =
-\\\\frac{h_{water}}{\\\\Delta h_{surface}}\\\\] with c the coverage,
-$h_{water}$ the depth of the surface water and $\\\\Delta h_{surface}$
+aggregate height, the coverage is 1, below it is given as 
+
+.. math::
+
+   c =
+  \\\\frac{h_{water}}{\\\\Delta h_{surface}}
+.
+ with c the coverage,
+:math:`h_{water}` the depth of the surface water and :math:`\\\\Delta h_{surface}`
 the amplitude of the surface roughness ";
 
 %feature("docstring")  cmf::upslope::Cell::heat_flux "real
@@ -1649,14 +1697,20 @@ q(double h, double slope) const ";
 qManning(double A, double slope) const
 
 Calculates the flow rate from a given water volume in the reach
-\\\\begin{eqnarray*} q_{Manning}&=& A R^{\\\\frac 2 3}
-\\\\sqrt{\\\\frac {\\\\Delta_z} n} \\\\\\\\ A &=& \\\\frac V l
-\\\\mbox{, (Crosssectional area of the wetted crossection, Volume per
-length)} \\\\\\\\ R &=& \\\\frac A {P(d)} \\\\\\\\ P(d) &=& \\\\mbox{
-the perimeter of the wetted crosssection, a function of reach depth}
-\\\\\\\\ d(V) &=& \\\\mbox{ the depth of the reach a function of the
-volume} \\\\\\\\ \\\\Delta_z &=& \\\\frac{z_{max} - z_{min}}{l}
-\\\\mbox{ Slope of the reach} \\\\end{eqnarray*}.
+
+
+.. math::
+
+   q_{Manning}&=& A R^{\\\\frac 2 3}
+  \\\\sqrt{\\\\frac {\\\\Delta_z} n} \\\\\\\\ A &=& \\\\frac V l
+  \\\\mbox{, (Crosssectional area of the wetted crossection, Volume per
+  length)} \\\\\\\\ R &=& \\\\frac A {P(d)} \\\\\\\\ P(d) &=& \\\\mbox{
+  the perimeter of the wetted crosssection, a function of reach depth}
+  \\\\\\\\ d(V) &=& \\\\mbox{ the depth of the reach a function of the
+  volume} \\\\\\\\ \\\\Delta_z &=& \\\\frac{z_{max} - z_{min}}{l}
+  \\\\mbox{ Slope of the reach} 
+.
+.
 
 Flow rate [m3/s]
 
@@ -2121,26 +2175,32 @@ Without:  A flux_connection that is excluded from the waterbalance
 Calculates flux out of a storage as a linear function of its volume to
 a power, constraint by the volume stored in the target storage.
 
-\\\\[ q = \\\\frac 1 {t_r} {\\\\left(\\\\frac{V_{l} -
-V_{residual}}{V_0} \\\\right)^\\\\beta}
-\\\\left(\\\\frac{V_{r,max}-V_{r}}{V_{r,max}}\\\\right)^\\\\gamma\\\\]
-where:  $V_l$ The actual volume stored by the left water storage
 
-$V_{residual} [m^3]$ The volume of water not flowing out (default = 0)
 
-$V_0$ The reference volume to scale the exponent (default = 1m3/day)
+.. math::
 
-$\\\\beta$ A parameter to shape the response curve. In case of
-$\\\\beta \\\\neq 1$, $t_r$ is not a residence time, but just a
+   q = \\\\frac 1 {t_r} {\\\\left(\\\\frac{V_{l} -
+  V_{residual}}{V_0} \\\\right)^\\\\beta}
+  \\\\left(\\\\frac{V_{r,max}-V_{r}}{V_{r,max}}\\\\right)^\\\\gamma
+.
+
+where:  :math:`V_l` The actual volume stored by the left water storage
+
+:math:`V_{residual} [m^3]` The volume of water not flowing out (default = 0)
+
+:math:`V_0` The reference volume to scale the exponent (default = 1m3/day)
+
+:math:`\\\\beta` A parameter to shape the response curve. In case of
+:math:`\\\\beta \\\\neq 1`, :math:`t_r` is not a residence time, but just a
 parameter.
 
-$t_r [days]$ The residence time of the water in this storage in days
+:math:`t_r [days]` The residence time of the water in this storage in days
 
-$V_{r,max}$ The capacity of the right water storage in m3
+:math:`V_{r,max}` The capacity of the right water storage in m3
 
-$V_{r}$ The actual volume of the right water storage
+:math:`V_{r}` The actual volume of the right water storage
 
-$\\\\gamma$ A shape parameter for the target capacity constriction
+:math:`\\\\gamma` A shape parameter for the target capacity constriction
 
 C++ includes: simple_connections.h ";
 
@@ -2151,8 +2211,14 @@ real V0=1.0, real Vrmax=1.0, real gamma=1.0)
 
 Creates a kinematic wave connection.
 
-\\\\[ q = \\\\frac 1 {t_r} {\\\\left(\\\\frac{V - V_{residual}}{V_0}
-\\\\right)^\\\\beta} \\\\]
+
+
+.. math::
+
+   q = \\\\frac 1 {t_r} {\\\\left(\\\\frac{V - V_{residual}}{V_0}
+  \\\\right)^\\\\beta} 
+.
+
 
 Parameters:
 -----------
@@ -2163,20 +2229,20 @@ function of source.volume
 target:  Target node (boundary condition or storage). Does not
 influence the strength of the flow
 
-residencetime:   $t_r [days]$ The residence time of the water in this
+residencetime:   :math:`t_r [days]` The residence time of the water in this
 storage
 
-exponent:   $\\\\beta [-]$ An empirical exponent to shape the flux
+exponent:   :math:`\\\\beta [-]` An empirical exponent to shape the flux
 function (default = 1 (linear function))
 
-residual:   $V_{residual} [m^3]$ The volume of water not flowing out
+residual:   :math:`V_{residual} [m^3]` The volume of water not flowing out
 (default = 0)
 
-V0:   $V_0$ The reference volume to scale the exponent
+V0:   :math:`V_0` The reference volume to scale the exponent
 
-Vrmax:   $V_{r,max}$ Capacity of the target water storage in m3
+Vrmax:   :math:`V_{r,max}` Capacity of the target water storage in m3
 
-gamma:   $\\\\gamma$ Target capacity constriction curve shape ";
+gamma:   :math:`\\\\gamma` Target capacity constriction curve shape ";
 
 %feature("docstring")  cmf::water::constraint_kinematic_wave::conc "real conc(cmf::math::Time t, const cmf::water::solute &_Solute)
 
@@ -2525,16 +2591,22 @@ returns the number of state variables ";
 Calculates the lateral flow using the gravitational potential gradient
 only.
 
-\\\\[ q_{lat} = \\\\frac{\\\\Delta \\\\Psi_G}{\\\\|C_1-C_2\\\\|}
-\\\\frac 12 (T(C_1)+T(C_2)) w \\\\] where  $ \\\\Delta \\\\Psi_G $ is
+
+
+.. math::
+
+   q_{lat} = \\\\frac{\\\\Delta \\\\Psi_G}{\\\\|C_1-C_2\\\\|}
+  \\\\frac 12 (T(C_1)+T(C_2)) w 
+.
+ where  :math:` \\\\Delta \\\\Psi_G ` is
 the gravitational potential difference
 
-$ \\\\|C_1-C_2\\\\| $ is the distance from Cell 1 to Cell 2
+:math:` \\\\|C_1-C_2\\\\| ` is the distance from Cell 1 to Cell 2
 
-$ T(C) $ is the transmissivity of cell C, calculated by
+:math:` T(C) ` is the transmissivity of cell C, calculated by
 SoilType::Transmissivity
 
-$ w $ is the width of the connection of the cells
+:math:` w ` is the width of the connection of the cells
 
 C++ includes: subsurfacefluxes.h ";
 
@@ -2609,8 +2681,14 @@ set_tracer_filter(real value) ";
 
 A simple kinemtic wave model for subsurface flux.
 
-\\\\[ q = \\\\frac{\\\\Delta z_{surface}}{d} K(\\\\theta)_{source}
-A_{cross} \\\\]
+
+
+.. math::
+
+   q = \\\\frac{\\\\Delta z_{surface}}{d} K(\\\\theta)_{source}
+  A_{cross} 
+.
+
 
 C++ includes: subsurfacefluxes.h ";
 
@@ -2756,7 +2834,13 @@ cmf::upslope::connections::DiffusiveMacroMicroExchange "
 A simple first order diffusive water exchange between MacroPore and
 matrix ( SoilLayer)
 
-\\\\[ q = \\\\omega (W_{ma} - W_{mi})\\\\] cf. Simunek et al J. of
+
+
+.. math::
+
+   q = \\\\omega (W_{ma} - W_{mi})
+.
+ cf. Simunek et al J. of
 Hydr. 2003
 
 C++ includes: macropore.h ";
@@ -3660,18 +3744,24 @@ A generic node-to-node gradient based connection.
 
 This connection is similar to the Darcy-connection, but there are no
 restrictions concerning the type of nodes. However, the left side
-needs to be a water storage \\\\[ q = K A
-\\\\frac{\\\\Psi_{l}-\\\\Psi_{r}}{d} \\\\] where:  $q$: the resulting
-flux in $m^3/day$
+needs to be a water storage 
 
-$K$: the conductivity of the connection
+.. math::
 
-$A$: the area of the connection cross section
+   q = K A
+  \\\\frac{\\\\Psi_{l}-\\\\Psi_{r}}{d} 
+.
+ where:  :math:`q`: the resulting
+flux in :math:`m^3/day`
 
-$\\\\Psi$: The hydraulic head of the (l)eft, resp. (r)ight node of the
+:math:`K`: the conductivity of the connection
+
+:math:`A`: the area of the connection cross section
+
+:math:`\\\\Psi`: The hydraulic head of the (l)eft, resp. (r)ight node of the
 connection
 
-$d$: The topographic length of the connection in m
+:math:`d`: The topographic length of the connection in m
 
 C++ includes: simple_connections.h ";
 
@@ -3779,7 +3869,13 @@ Gradient based flux from macro pore to macro pore.
 Deprecated The MacroPore model is still very experimental and not
 stable. Only for tryouts!
 
-\\\\[ q = K(\\\\theta) \\\\frac{\\\\Delta \\\\Psi}{\\\\Delta z} \\\\]
+
+
+.. math::
+
+   q = K(\\\\theta) \\\\frac{\\\\Delta \\\\Psi}{\\\\Delta z} 
+.
+
 
 C++ includes: macropore.h ";
 
@@ -3868,16 +3964,22 @@ cmf::upslope::connections::GradientMacroMicroExchange "
 A gradient based exchange term between macropores and micropores,
 using a fixed potential for macropores.
 
-\\\\[q = K \\\\frac{\\\\Delta\\\\Psi}{d/2} A \\\\] where:  $K$ The
+
+
+.. math::
+
+  q = K \\\\frac{\\\\Delta\\\\Psi}{d/2} A 
+.
+ where:  :math:`K` The
 conductivity of the aggregate boundary
 
-$\\\\Delta\\\\Psi$ The potential difference. Using the air potential
+:math:`\\\\Delta\\\\Psi` The potential difference. Using the air potential
 as the constant potential for the macro pores, you get:
-$\\\\Delta\\\\Psi = \\\\Psi_M(\\\\theta_{micro})$
+:math:`\\\\Delta\\\\Psi = \\\\Psi_M(\\\\theta_{micro})`
 
-$d$ the mean aggregate size in m
+:math:`d` the mean aggregate size in m
 
-$A$ the crosssection area, given as the flow width (
+:math:`A` the crosssection area, given as the flow width (
 cmf::upslope::MacroPore::get_flowwidth) times layer thickness
 
 C++ includes: macropore.h ";
@@ -3970,43 +4072,73 @@ cmf::upslope::connections::GradientMacroMicroExchange::to_string "std::string to
 Connects the surfacewater and the most upper layer using a Green-Ampt
 equation like infiltration.
 
-The Green-Ampt formula is given as: \\\\[q(t) = -K_s \\\\frac{dh}{dz}
-A\\\\] where:  $q(t)$ is the infiltration rate in m3/day
+The Green-Ampt formula is given as: 
 
-$K_s$ is the saturated conductivity in m/day
+.. math::
 
-$\\\\frac{dh}{dz}$ is the hydraulic gradient in the wetting front
+  q(t) = -K_s \\\\frac{dh}{dz}
+  A
+.
+ where:  :math:`q(t)` is the infiltration rate in m3/day
 
-$A$ is the surface area of the cell
+:math:`K_s` is the saturated conductivity in m/day
+
+:math:`\\\\frac{dh}{dz}` is the hydraulic gradient in the wetting front
+
+:math:`A` is the surface area of the cell
 
 The gradient in the wetting front is calculated as:
-\\\\[\\\\frac{dh}{dz} = \\\\frac{h_f - h_0}{Z_f} =
-\\\\frac{|\\\\Psi_f| + Z_f}{Z_f}\\\\] where:  $h_f$ is the hydraulic
+
+
+.. math::
+
+  \\\\frac{dh}{dz} = \\\\frac{h_f - h_0}{Z_f} =
+  \\\\frac{|\\\\Psi_f| + Z_f}{Z_f}
+.
+ where:  :math:`h_f` is the hydraulic
 head at the bottom of the wetting front in m
 
-$h_0$ is the hydraulic head at the surface in m
+:math:`h_0` is the hydraulic head at the surface in m
 
-$Z_f$ is the length of the wetting front in m
+:math:`Z_f` is the length of the wetting front in m
 
-Since $Z_f$ is unknown, the depth of the wetting front can be
-approximated by: \\\\[Z_f = \\\\frac{F}{\\\\theta_s -
-\\\\theta_i}\\\\] with:  $F$ the accumulated volume per area of
+Since :math:`Z_f` is unknown, the depth of the wetting front can be
+approximated by: 
+
+.. math::
+
+  Z_f = \\\\frac{F}{\\\\theta_s -
+  \\\\theta_i}
+.
+ with:  :math:`F` the accumulated volume per area of
 infiltrated water
 
-$\\\\theta_s, \\\\theta_i$ the volumetric water content at saturation
+:math:`\\\\theta_s, \\\\theta_i` the volumetric water content at saturation
 resp. at start of the infiltration
 
 If the surface water is modeled by a distinct water storage, the
 actual infiltration is given as the product of the potential
 infiltration with the coverage of the surface water
-cmf::upslope::Cell::surface_water_coverage \\\\[q_{act} = q_{max}
-\\\\frac{A_{water}}{A_{cell}}\\\\]
+cmf::upslope::Cell::surface_water_coverage 
+
+.. math::
+
+  q_{act} = q_{max}
+  \\\\frac{A_{water}}{A_{cell}}
+.
+
 
 If the surface water is no storage on its own, but just a water
 distribution node, the actual infiltration is the minimum of the
 potential infiltration and the current inflow (rain, snow melt) to the
-surface \\\\[q_{act} = \\\\min\\\\left(q_{max},
-\\\\sum{q_{in,surfacewater}}\\\\right)\\\\]
+surface 
+
+.. math::
+
+  q_{act} = \\\\min\\\\left(q_{max},
+  \\\\sum{q_{in,surfacewater}}\\\\right)
+.
+
 
 C++ includes: infiltration.h ";
 
@@ -4093,32 +4225,38 @@ cmf::upslope::connections::GreenAmptInfiltration::to_string "std::string to_stri
 
 Calculates the Evapotranspiration using Hargreave's equation.
 
-\\\\[ET_{rc} = 0.0135 K_T\\\\ s_0 \\\\sqrt{\\\\Delta T} (T +
-17.8)\\\\] where:  $ ET_{rc} $ the reference crop evapotranspiration
+
+
+.. math::
+
+  ET_{rc} = 0.0135 K_T\\\\ s_0 \\\\sqrt{\\\\Delta T} (T +
+  17.8)
+.
+ where:  :math:` ET_{rc} ` the reference crop evapotranspiration
 in mm/day
 
-$ K_T = 0.00185 {\\\\Delta T}^2 - 0.0433 \\\\Delta T + 0.4023$
+:math:` K_T = 0.00185 {\\\\Delta T}^2 - 0.0433 \\\\Delta T + 0.4023`
 Continentality factor as given in the reference
 
-$ \\\\Delta T = |T_{max} - T_{min}|[K]$ Daily temperature range
+:math:` \\\\Delta T = |T_{max} - T_{min}|[K]` Daily temperature range
 
-$ T [^\\\\circ C]$ daily mean temperature
+:math:` T [^\\\\circ C]` daily mean temperature
 
 $ s_0 = 15.392 d_r \\\\left(\\\\omega_s\\\\sin(\\\\Phi)
 \\\\sin{\\\\gamma} + \\\\cos{\\\\Phi}\\\\cos{\\\\gamma} *
 \\\\sin(\\\\omega_s)\\\\right)$ the extraterrestrial solar radiation
 in mm/day
 
-$ d_r = 1 + 0.0033 \\\\cos(DOY\\\\frac{2 \\\\pi}{365})$ relative
+:math:` d_r = 1 + 0.0033 \\\\cos(DOY\\\\frac{2 \\\\pi}{365})` relative
 distance between earth and sun
 
-$ \\\\omega_s = \\\\arccos(-\\\\tan{\\\\Phi} \\\\tan{\\\\gamma}) $
+:math:` \\\\omega_s = \\\\arccos(-\\\\tan{\\\\Phi} \\\\tan{\\\\gamma}) `
 sunset hour angle (radians)
 
-$ \\\\gamma = 0.4039 \\\\sin(DOY\\\\frac{2 \\\\pi}{365} - 1.405) $
+:math:` \\\\gamma = 0.4039 \\\\sin(DOY\\\\frac{2 \\\\pi}{365} - 1.405) `
 solar declination (radians)
 
-$ \\\\Phi$ geographic latitude (radians)
+:math:` \\\\Phi` geographic latitude (radians)
 
 See:  SAMANI, Zohrab. [Estimating solar radiation and
 evapotranspiration using minimum climatological data.][1] _Journal of
@@ -4208,7 +4346,13 @@ future
 Lateral flow using a simple linear storage, can be directed to another
 cell (HBV D like) or to a reach (HBV like)
 
-\\\\[ q = kV \\\\]
+
+
+.. math::
+
+   q = kV 
+.
+
 
 C++ includes: HBVflow.h ";
 
@@ -4300,9 +4444,15 @@ future
 Implements the RetentionCurve interface is only partly, therefore it
 is not suitable for other connection types
 
-\\\\begin{eqnarray*} K(w,d) &=& PERC w \\\\\\\\ \\\\Psi_{M} &=& 10 -
-\\\\frac{10}{w}\\\\\\\\ w(\\\\Psi_{M}) &=& \\\\frac{10}{10 -
-\\\\Psi_M} \\\\end{eqnarray*}
+
+
+.. math::
+
+   K(w,d) &=& PERC w \\\\\\\\ \\\\Psi_{M} &=& 10 -
+  \\\\frac{10}{w}\\\\\\\\ w(\\\\Psi_{M}) &=& \\\\frac{10}{10 -
+  \\\\Psi_M} 
+.
+
 
 C++ includes: HBVflow.h ";
 
@@ -4406,9 +4556,15 @@ const ";
 cmf::upslope::connections::HBVparameters::Wetness_eff "virtual real
 Wetness_eff(real wetness, real pF_r=4.2) const
 
-Returns the effective wetness, using a residual pF value \\\\[w_{eff}
-=
-\\\\frac{w_{act}-w\\\\left(pF_r\\\\right)}{1-w\\\\left(pF_r\\\\right)}\\\\].
+Returns the effective wetness, using a residual pF value 
+
+.. math::
+
+  w_{eff}
+  =
+  \\\\frac{w_{act}-w\\\\left(pF_r\\\\right)}{1-w\\\\left(pF_r\\\\right)}
+.
+.
 ";
 
 %feature("docstring")
@@ -4430,9 +4586,15 @@ future
 
 Calculates the percolation as in the HBV model
 
-\\\\[ Q = \\\\begin{cases}Q_{in}
-\\\\left(\\\\frac{V}{FC}\\\\right)^\\\\beta\\\\mbox{ if first layer}
-\\\\\\\\ min(PERC, V_{lower} - V_{lower,max}) \\\\end{cases} \\\\]
+
+
+.. math::
+
+   Q = \\\\begin{cases}Q_{in}
+  \\\\left(\\\\frac{V}{FC}\\\\right)^\\\\beta\\\\mbox{ if first layer}
+  \\\\\\\\ min(PERC, V_{lower} - V_{lower,max}) \\\\end{cases} 
+.
+
 
 C++ includes: HBVflow.h ";
 
@@ -4577,7 +4739,7 @@ Parameters:
 
 states:  Statevariable owner of the system
 
-Alpha:  Weight factor $\\\\alpha$ to weight $f(y^n)$ and $f(y^{n+1})$
+Alpha:  Weight factor :math:`\\\\alpha` to weight :math:`f(y^n)` and :math:`f(y^{n+1})`
 ";
 
 %feature("docstring")  cmf::math::HeunIntegrator::HeunIntegrator "HeunIntegrator(real Alpha=0.5)
@@ -4587,7 +4749,7 @@ Constructs a new PredictCorrectSimple.
 Parameters:
 -----------
 
-Alpha:  Weight factor $\\\\alpha$ to weight $f(y^n)$ and $f(y^{n+1})$
+Alpha:  Weight factor :math:`\\\\alpha` to weight :math:`f(y^n)` and :math:`f(y^{n+1})`
 ";
 
 %feature("docstring")  cmf::math::HeunIntegrator::HeunIntegrator "HeunIntegrator(const Integrator &copy)
@@ -4775,14 +4937,20 @@ q(double h, double slope) const ";
 qManning(double A, double slope) const
 
 Calculates the flow rate from a given water volume in the reach
-\\\\begin{eqnarray*} q_{Manning}&=& A R^{\\\\frac 2 3}
-\\\\sqrt{\\\\frac {\\\\Delta_z} n} \\\\\\\\ A &=& \\\\frac V l
-\\\\mbox{, (Crosssectional area of the wetted crossection, Volume per
-length)} \\\\\\\\ R &=& \\\\frac A {P(d)} \\\\\\\\ P(d) &=& \\\\mbox{
-the perimeter of the wetted crosssection, a function of reach depth}
-\\\\\\\\ d(V) &=& \\\\mbox{ the depth of the reach a function of the
-volume} \\\\\\\\ \\\\Delta_z &=& \\\\frac{z_{max} - z_{min}}{l}
-\\\\mbox{ Slope of the reach} \\\\end{eqnarray*}.
+
+
+.. math::
+
+   q_{Manning}&=& A R^{\\\\frac 2 3}
+  \\\\sqrt{\\\\frac {\\\\Delta_z} n} \\\\\\\\ A &=& \\\\frac V l
+  \\\\mbox{, (Crosssectional area of the wetted crossection, Volume per
+  length)} \\\\\\\\ R &=& \\\\frac A {P(d)} \\\\\\\\ P(d) &=& \\\\mbox{
+  the perimeter of the wetted crosssection, a function of reach depth}
+  \\\\\\\\ d(V) &=& \\\\mbox{ the depth of the reach a function of the
+  volume} \\\\\\\\ \\\\Delta_z &=& \\\\frac{z_{max} - z_{min}}{l}
+  \\\\mbox{ Slope of the reach} 
+.
+.
 
 Flow rate [m3/s]
 
@@ -5147,8 +5315,14 @@ integratable is a functionality for different classes for integrating
 values over time.
 
 Main usage of an integratable is the calculation of average fluxes
-over time e.g. \\\\[
-\\\\int_{t_0}^{t_{end}}q\\\\left(t,V_i,V_j\\\\right)dt \\\\]
+over time e.g. 
+
+.. math::
+
+  
+  \\\\int_{t_0}^{t_{end}}q\\\\left(t,V_i,V_j\\\\right)dt 
+.
+
 
 C++ includes: statevariable.h ";
 
@@ -5516,17 +5690,23 @@ double V(double h) const =0 ";
 Calculates flux out of a storage as a linear function of its volume to
 a power.
 
-\\\\[ q = \\\\frac 1 {t_r} {\\\\left(\\\\frac{V - V_{residual}}{V_0}
-\\\\right)^\\\\beta} \\\\] where:  $V_{residual} [m^3]$ The volume of
+
+
+.. math::
+
+   q = \\\\frac 1 {t_r} {\\\\left(\\\\frac{V - V_{residual}}{V_0}
+  \\\\right)^\\\\beta} 
+.
+ where:  :math:`V_{residual} [m^3]` The volume of
 water not flowing out (default = 0)
 
-$V_0$ The reference volume to scale the exponent (default = 1m3/day)
+:math:`V_0` The reference volume to scale the exponent (default = 1m3/day)
 
-$\\\\beta$ A parameter to shape the response curve. In case of
-$\\\\beta \\\\neq 1$, $t_r$ is not a residence time, but just a
+:math:`\\\\beta` A parameter to shape the response curve. In case of
+:math:`\\\\beta \\\\neq 1`, :math:`t_r` is not a residence time, but just a
 parameter.
 
-$t_r [days]$ The residence time of the water in this storage in days
+:math:`t_r [days]` The residence time of the water in this storage in days
 
 C++ includes: simple_connections.h ";
 
@@ -5535,8 +5715,14 @@ residencetime, real exponent=1.0, real residual=0.0, real V0=1.0)
 
 Creates a kinematic wave connection.
 
-\\\\[ q = \\\\frac 1 {t_r} {\\\\left(\\\\frac{V - V_{residual}}{V_0}
-\\\\right)^\\\\beta} \\\\]
+
+
+.. math::
+
+   q = \\\\frac 1 {t_r} {\\\\left(\\\\frac{V - V_{residual}}{V_0}
+  \\\\right)^\\\\beta} 
+.
+
 
 Parameters:
 -----------
@@ -5547,16 +5733,16 @@ function of source.volume
 target:  Target node (boundary condition or storage). Does not
 influence the strength of the flow
 
-residencetime:   $t_r [days]$ The residence time of the water in this
+residencetime:   :math:`t_r [days]` The residence time of the water in this
 storage
 
-exponent:   $\\\\beta [-]$ An empirical exponent to shape the flux
+exponent:   :math:`\\\\beta [-]` An empirical exponent to shape the flux
 function (default = 1 (linear function))
 
-residual:   $V_{residual} [m^3]$ The volume of water not flowing out
+residual:   :math:`V_{residual} [m^3]` The volume of water not flowing out
 (default = 0)
 
-V0:   $V_0$ The reference volume to scale the exponent ";
+V0:   :math:`V_0` The reference volume to scale the exponent ";
 
 %feature("docstring")  cmf::water::kinematic_wave::conc "real
 conc(cmf::math::Time t, const cmf::water::solute &_Solute)
@@ -5625,16 +5811,22 @@ Linear storage based flux from macro pore to macro pore.
 Deprecated The MacroPore model is still very experimental and not
 stable. Only for tryouts!
 
-\\\\[ q = A_{cell} K_{macro} \\\\frac{V_{upper}}{C_{upper}}
-\\\\left(1-\\\\frac{V_{lower}}{C_{lower}}\\\\right) \\\\] where:
-$A_{cell}$ is the area of the owning cell in m2
 
-$K_{macro}$ is the conductivity of the macro pore storage
 
-$V$ is the actual stored water volume in the upper resp. lower macro
+.. math::
+
+   q = A_{cell} K_{macro} \\\\frac{V_{upper}}{C_{upper}}
+  \\\\left(1-\\\\frac{V_{lower}}{C_{lower}}\\\\right) 
+.
+ where:
+:math:`A_{cell}` is the area of the owning cell in m2
+
+:math:`K_{macro}` is the conductivity of the macro pore storage
+
+:math:`V` is the actual stored water volume in the upper resp. lower macro
 pore storage
 
-$C$ is the capacity of the upper resp. lower macro pore storage
+:math:`C` is the capacity of the upper resp. lower macro pore storage
 
 C++ includes: macropore.h ";
 
@@ -5733,32 +5925,44 @@ cmf::upslope::connections::KinematicSurfaceRunoff "
 A connection to route water from a SurfaceWater storage to another
 node.
 
-\\\\[q_{runoff} = A_{cross} d_{eff}^{2/3}
-\\\\frac{\\\\sqrt{S}}{n}\\\\] where:  $q_{runoff}$ is the surface
+
+
+.. math::
+
+  q_{runoff} = A_{cross} d_{eff}^{2/3}
+  \\\\frac{\\\\sqrt{S}}{n}
+.
+ where:  :math:`q_{runoff}` is the surface
 runoff
 
-$A_{cross}$ is the wetted crossectional flux area, given as $d_{eff}
+:math:`A_{cross}` is the wetted crossectional flux area, given as $d_{eff}
 \\\\cdot w$
 
-$w$ is the width of the shared boundary between the surface water
+:math:`w` is the width of the shared boundary between the surface water
 storage and the target node
 
-$d_{eff}$ is the effective flow depth of the surface water.The
-effective flow depth is defined as \\\\[d_{eff} = \\\\begin{cases}
-V/A-d_{puddle}\\\\ & V/A>d_{puddle} \\\\\\\\ 0.0 & V/A<=d_{puddle}
-\\\\end{cases}\\\\]
+:math:`d_{eff}` is the effective flow depth of the surface water.The
+effective flow depth is defined as 
 
-$V$ the volume of stored water in the surface in $m^3$
+.. math::
 
-$A$ the area of the cell in $m^2$
+  d_{eff} = \\\\begin{cases}
+  V/A-d_{puddle}\\\\ & V/A>d_{puddle} \\\\\\\\ 0.0 & V/A<=d_{puddle}
+  \\\\end{cases}
+.
 
-$d_{puddle}=V_{puddle}/A$ the average depth of water in the surface
+
+:math:`V` the volume of stored water in the surface in :math:`m^3`
+
+:math:`A` the area of the cell in :math:`m^2`
+
+:math:`d_{puddle}=V_{puddle}/A` the average depth of water in the surface
 water needed to start run off
 
-$S = \\\\|\\\\frac{\\\\Delta z\\\\|}{d}$ the slope between
+:math:`S = \\\\|\\\\frac{\\\\Delta z\\\\|}{d}` the slope between
 surfacewater center and the target node
 
-$n$ the manning roughness
+:math:`n` the manning roughness
 
 The KinematicSurfaceRunoff can be used as a cell connecting flux as
 in: This results in a connection of the surfacewater storage of each
@@ -6116,21 +6320,27 @@ A simplification of macro pore flux for swelling soils.
 
 Connects the surfacewater of the cell with deeper layers, assuming the
 presence of cracks. At saturation level of the target layer, the
-cracks are closed \\\\[q_{crack} = K_{max,crack}
-\\\\left(1-\\\\left(\\\\frac{w-w_0}{1-w_0}\\\\right)^\\\\beta\\\\right)
-A\\\\] where:  $q_{crack}$ is the flux from the surface water to the
+cracks are closed 
+
+.. math::
+
+  q_{crack} = K_{max,crack}
+  \\\\left(1-\\\\left(\\\\frac{w-w_0}{1-w_0}\\\\right)^\\\\beta\\\\right)
+  A
+.
+ where:  :math:`q_{crack}` is the flux from the surface water to the
 target layer in m3/day
 
-$K_{max,crack}$ is the maximum conductivity of the cracks in m/day
+:math:`K_{max,crack}` is the maximum conductivity of the cracks in m/day
 
-$w$ is the actual wetness of the target layer
+:math:`w` is the actual wetness of the target layer
 
-$w_0$ is saturation, where the shrinkage of the cracks starts
+:math:`w_0` is saturation, where the shrinkage of the cracks starts
 
-$\\\\beta$ is an empirical shape parameter of the crack size/wetness
+:math:`\\\\beta` is an empirical shape parameter of the crack size/wetness
 relation
 
-$A$ is the area of the cell
+:math:`A` is the area of the cell
 
 C++ includes: Percolation.h ";
 
@@ -6253,7 +6463,7 @@ C++ includes: boundary_condition.h ";
 
 %feature("docstring")  cmf::water::linear_scale::linear_scale "linear_scale(real _slope=1, real _displacement=0)
 
-Creates a linear scale (by default it is a unity scale, $a=1; b=0$) ";
+Creates a linear scale (by default it is a unity scale, :math:`a=1; b=0`) ";
 
 
 // File: classcmf_1_1upslope_1_1_linear_retention.xml
@@ -6263,10 +6473,22 @@ The linear retention curve provides a simple linear relationship
 between storage and head.
 
 Head function (head in m, calculated from upper side control volume)
-\\\\[ h(\\\\theta) = -\\\\Delta z \\\\left( 1 - \\\\frac{\\\\theta -
-\\\\theta_r}{\\\\theta_s - \\\\theta_r} \\\\right) \\\\] Conductivity
-function \\\\[ K(\\\\theta) = K_{sat} \\\\left(\\\\frac{\\\\theta -
-\\\\theta_r}{\\\\theta_s - \\\\theta_r}\\\\right)^\\\\beta \\\\]
+
+
+.. math::
+
+   h(\\\\theta) = -\\\\Delta z \\\\left( 1 - \\\\frac{\\\\theta -
+  \\\\theta_r}{\\\\theta_s - \\\\theta_r} \\\\right) 
+.
+ Conductivity
+function 
+
+.. math::
+
+   K(\\\\theta) = K_{sat} \\\\left(\\\\frac{\\\\theta -
+  \\\\theta_r}{\\\\theta_s - \\\\theta_r}\\\\right)^\\\\beta 
+.
+
 
 C++ includes: RetentionCurve.h ";
 
@@ -6328,9 +6550,15 @@ Returns the wetness (water content per pore volume) at a given head.
 
 %feature("docstring")  cmf::upslope::LinearRetention::Wetness_eff "virtual real Wetness_eff(real wetness, real pF_r=4.2) const
 
-Returns the effective wetness, using a residual pF value \\\\[w_{eff}
-=
-\\\\frac{w_{act}-w\\\\left(pF_r\\\\right)}{1-w\\\\left(pF_r\\\\right)}\\\\].
+Returns the effective wetness, using a residual pF value 
+
+.. math::
+
+  w_{eff}
+  =
+  \\\\frac{w_{act}-w\\\\left(pF_r\\\\right)}{1-w\\\\left(pF_r\\\\right)}
+.
+.
 ";
 
 %feature("docstring")  cmf::upslope::LinearRetention::Wetness_pF "real Wetness_pF(real pF) const
@@ -6389,22 +6617,28 @@ blow up the numerical solution for sure.
 The exchange between Macropore and matrix is defined as follows:
 (MACRO 5 Tech report, Larsbo & Jarvis 2003)
 
-\\\\[q = \\\\frac{G_f D_w \\\\gamma_w}{d^2}(\\\\theta_b -
-\\\\theta_{mi}) V_{layer}\\\\] where:  $G_f$ is the geometry factor.
+
+
+.. math::
+
+  q = \\\\frac{G_f D_w \\\\gamma_w}{d^2}(\\\\theta_b -
+  \\\\theta_{mi}) V_{layer}
+.
+ where:  :math:`G_f` is the geometry factor.
 Use 3 for a rectangular slab geometry
 
-$gamma_w$ A scaling factor to fit analytical and numerical solution
+:math:`gamma_w` A scaling factor to fit analytical and numerical solution
 (0.4)
 
-$d$ is an effective diffusive path length related to aggregate size
+:math:`d` is an effective diffusive path length related to aggregate size
 and the influence of coatings on the aggregate surfaces in m
 
-$\\\\theta_b$ the saturated water content of the matrix
+:math:`\\\\theta_b` the saturated water content of the matrix
 
-$\\\\theta_{mi}$ the actual water content of the matrix
+:math:`\\\\theta_{mi}` the actual water content of the matrix
 
-$D_w = \\\\frac12(D(\\\\theta_b)+D(\\\\theta_{mi})W_{ma})$ is the
-effective water diffusivity in m2/day, as defined below  $W_{ma}$ is
+:math:`D_w = \\\\frac12(D(\\\\theta_b)+D(\\\\theta_{mi})W_{ma})` is the
+effective water diffusivity in m2/day, as defined below  :math:`W_{ma}` is
 the saturation of the macropores
 
 C++ includes: macropore.h ";
@@ -6576,14 +6810,20 @@ get_capacity() const
 
 Returns the capacity of the macropores in m3.
 
-\\\\[V_{max} = \\\\Phi_{macro} A \\\\Delta z\\\\] where:  $V_{max}$ is
+
+
+.. math::
+
+  V_{max} = \\\\Phi_{macro} A \\\\Delta z
+.
+ where:  :math:`V_{max}` is
 the water capacity of the macropore
 
-$\\\\Phi_{macro}$ is the fraction of macro pores in the soil in $m^3
+:math:`\\\\Phi_{macro}` is the fraction of macro pores in the soil in $m^3
 macro pores/m^3 soil$
 
-$A \\\\Delta z$ is the total volume of the soil layer (including all
-pores) in $m^3$ ";
+:math:`A \\\\Delta z` is the total volume of the soil layer (including all
+pores) in :math:`m^3` ";
 
 %feature("docstring")  cmf::upslope::MacroPore::get_cell "cmf::upslope::Cell& get_cell() const
 
@@ -6601,14 +6841,20 @@ get_flowwidth() const
 
 The approximate length of the aggregate boundaries.
 
-\\\\[l = \\\\frac{2}{d_{macro}} A\\\\] where:  $l$ is the length of
+
+
+.. math::
+
+  l = \\\\frac{2}{d_{macro}} A
+.
+ where:  :math:`l` is the length of
 the aggregate boundaries (in m)
 
-$2$ is the number of directions
+:math:`2` is the number of directions
 
-$d_{macro}$ is the mean distance between macropores (density) in m
+:math:`d_{macro}` is the mean distance between macropores (density) in m
 
-$A$ is the area of the cell ";
+:math:`A` is the area of the cell ";
 
 %feature("docstring")  cmf::upslope::MacroPore::get_K "virtual real
 get_K() const
@@ -6729,21 +6975,26 @@ This is the base class for a kinematic wave approach (topography
 driven) and a diffusive wave approach (water table driven). The only
 difference between both approaches is the calculation of the flux
 driving slope. For the model, one of ManningKinematic or
-ManningDiffusive connection is selected \\\\begin{eqnarray*} */ /**
-q_{Manning}&=& A R^{\\\\frac 2 3} \\\\sqrt{\\\\frac {\\\\Delta_z} n}
-\\\\\\\\ A &=& \\\\frac V l \\\\mbox{, (Crosssectional area of the
-wetted crossection, Volume per length)} \\\\\\\\ R &=& \\\\frac A
-{P(d)} \\\\\\\\ P(d) &=& \\\\mbox{ the perimeter of the wetted
-crosssection, a function of reach depth} \\\\\\\\ d(V) &=& \\\\mbox{
-the depth of the reach, a function of the volume} \\\\\\\\ \\\\Delta_z
-&=& \\\\frac{\\\\|z_1 - z_2\\\\|}{l} \\\\mbox{ Slope of the reach}
-\\\\\\\\ n&=&\\\\mbox{Manning friction number} \\\\end{eqnarray*}
+ManningDiffusive connection is selected 
 
-For the kinematic wave the slope of the river bed is used as slope
-$\\\\Delta_z = \\\\frac{|z_1 - z_2\\\\|}{l}$,
+.. math::
+
+  
+  q_{Manning}&=& A R^{\\\\frac 2 3} \\\\sqrt{\\\\frac {\\\\Delta_z} n}
+  \\\\\\\\ A &=& \\\\frac V l \\\\mbox{, (Crosssectional area of the
+  wetted crossection, Volume per length)} \\\\\\\\ R &=& \\\\frac A
+  {P(d)} \\\\\\\\ P(d) &=& \\\\mbox{ the perimeter of the wetted
+  crosssection, a function of reach depth} \\\\\\\\ d(V) &=& \\\\mbox{
+  the depth of the reach, a function of the volume} \\\\\\\\ \\\\Delta_z
+  &=& \\\\frac{\\\\|z_1 - z_2\\\\|}{l} \\\\mbox{ Slope of the reach}
+  \\\\\\\\ n&=&\\\\mbox{Manning friction number} 
+.
+ For
+the kinematic wave the slope of the river bed is used as slope
+:math:`\\\\Delta_z = \\\\frac{|z_1 - z_2\\\\|}{l}`,
 
 while for the diffusive wave the slope is calculated from the actual
-water head. $\\\\Delta_z = \\\\|\\\\frac{h_1 - h_2}{l}$
+water head. :math:`\\\\Delta_z = \\\\|\\\\frac{h_1 - h_2}{l}`
 
 C++ includes: ManningConnection.h ";
 
@@ -6816,16 +7067,22 @@ to_string() const ";
 Connecting surface water bodies using a diffusive wave.
 
 This approach might not be numerical stable for deep water with small
-gradient cmf for experimental reasons \\\\begin{eqnarray*}
-q_{Manning}&=& A R^{\\\\frac 2 3} \\\\sqrt{\\\\frac {\\\\Delta_z} n}
-\\\\\\\\ A &=& \\\\frac V l \\\\mbox{, (Crosssectional area of the
-wetted crossection, Volume per length)} \\\\\\\\ R &=& \\\\frac A
-{P(d)} \\\\\\\\ P(d) &=& \\\\mbox{ the perimeter of the wetted
-crosssection, a function of reach depth} \\\\\\\\ d(V) &=& \\\\mbox{
-the depth of the reach a function of the volume} \\\\\\\\ \\\\Delta_z
-= \\\\|\\\\frac{h_1 - h_2}{l} \\\\mbox{ Slope of the reach
-waterlevels} \\\\\\\\ n&=&\\\\mbox{Manning friction number}
-\\\\end{eqnarray*}
+gradient cmf for experimental reasons 
+
+.. math::
+
+  
+  q_{Manning}&=& A R^{\\\\frac 2 3} \\\\sqrt{\\\\frac {\\\\Delta_z} n}
+  \\\\\\\\ A &=& \\\\frac V l \\\\mbox{, (Crosssectional area of the
+  wetted crossection, Volume per length)} \\\\\\\\ R &=& \\\\frac A
+  {P(d)} \\\\\\\\ P(d) &=& \\\\mbox{ the perimeter of the wetted
+  crosssection, a function of reach depth} \\\\\\\\ d(V) &=& \\\\mbox{
+  the depth of the reach a function of the volume} \\\\\\\\ \\\\Delta_z
+  = \\\\|\\\\frac{h_1 - h_2}{l} \\\\mbox{ Slope of the reach
+  waterlevels} \\\\\\\\ n&=&\\\\mbox{Manning friction number}
+  
+.
+
 
 C++ includes: ManningConnection.h ";
 
@@ -6913,15 +7170,21 @@ set_tracer_filter(real value) ";
 
 Connecting surface water bodies using a kinematic wave.
 
-Note the fixed gradient $\\\\Delta_z$ \\\\begin{eqnarray*}
-q_{Manning}&=& A R^{\\\\frac 2 3} \\\\sqrt{\\\\frac {\\\\Delta_z} n}
-\\\\\\\\ A &=& \\\\frac V l \\\\mbox{, (Crosssectional area of the
-wetted crossection, Volume per length)} \\\\\\\\ R &=& \\\\frac A
-{P(d)} \\\\\\\\ P(d) &=& \\\\mbox{ the perimeter of the wetted
-crosssection, a function of reach depth} \\\\\\\\ d(V) &=& \\\\mbox{
-the depth of the reach a function of the volume} \\\\\\\\ \\\\Delta_z
-&=& \\\\frac{\\\\|z_1 - z_2\\\\|}{l} \\\\mbox{ Slope of the reach}
-\\\\\\\\ n&=&\\\\mbox{Manning friction number} \\\\end{eqnarray*}
+Note the fixed gradient :math:`\\\\Delta_z` 
+
+.. math::
+
+  
+  q_{Manning}&=& A R^{\\\\frac 2 3} \\\\sqrt{\\\\frac {\\\\Delta_z} n}
+  \\\\\\\\ A &=& \\\\frac V l \\\\mbox{, (Crosssectional area of the
+  wetted crossection, Volume per length)} \\\\\\\\ R &=& \\\\frac A
+  {P(d)} \\\\\\\\ P(d) &=& \\\\mbox{ the perimeter of the wetted
+  crosssection, a function of reach depth} \\\\\\\\ d(V) &=& \\\\mbox{
+  the depth of the reach a function of the volume} \\\\\\\\ \\\\Delta_z
+  &=& \\\\frac{\\\\|z_1 - z_2\\\\|}{l} \\\\mbox{ Slope of the reach}
+  \\\\\\\\ n&=&\\\\mbox{Manning friction number} 
+.
+
 
 C++ includes: ManningConnection.h ";
 
@@ -7019,24 +7282,42 @@ equation like infiltration model.
 The potential infiltration is calculated according to the Richards
 equation. The gradient is from the cell surface to the center of the
 first layer and the conductivity is the geometric mean of the wetted
-surface ( $K_{sat}$) and the conductivity of the layer center (
-$K(\\\\theta_{layer})$ \\\\begin{eqnarray*} q_{max} &=&
-\\\\frac{\\\\Psi_{surface} - \\\\Psi_{soil}}{\\\\Delta z} K A_{cell}
-\\\\\\\\ K &=& \\\\sqrt{K\\\\left(\\\\theta_{layer}\\\\right)K_{sat}}
-\\\\\\\\ \\\\Delta z &=& z_{cell} - z_{layer center}
-\\\\end{eqnarray*}
+surface ( :math:`K_{sat}`) and the conductivity of the layer center (
+:math:`K(\\\\theta_{layer})` 
+
+.. math::
+
+   q_{max} &=&
+  \\\\frac{\\\\Psi_{surface} - \\\\Psi_{soil}}{\\\\Delta z} K A_{cell}
+  \\\\\\\\ K &=& \\\\sqrt{K\\\\left(\\\\theta_{layer}\\\\right)K_{sat}}
+  \\\\\\\\ \\\\Delta z &=& z_{cell} - z_{layer center}
+  
+.
+
 
 If the surface water is modeled by a distinct water storage, the
 actual infiltration is given as the product of the potential
 infiltration with the coverage of the surface water
-cmf::upslope::Cell::surface_water_coverage \\\\[q_{act} = q_{max}
-\\\\frac{A_{water}}{A_{cell}}\\\\]
+cmf::upslope::Cell::surface_water_coverage 
+
+.. math::
+
+  q_{act} = q_{max}
+  \\\\frac{A_{water}}{A_{cell}}
+.
+
 
 If the surface water is no storage on its own, but just a water
 distribution node, the actual infiltration is the minimum of the
 potential infiltration and the current inflow (rain, snow melt) to the
-surface \\\\[q_{act} = \\\\min\\\\left(q_{max},
-\\\\sum{q_{in,surfacewater}}\\\\right)\\\\]
+surface 
+
+.. math::
+
+  q_{act} = \\\\min\\\\left(q_{max},
+  \\\\sum{q_{in,surfacewater}}\\\\right)
+.
+
 
 C++ includes: infiltration.h ";
 
@@ -7196,14 +7477,20 @@ q(double h, double slope) const ";
 double qManning(double A, double slope) const
 
 Calculates the flow rate from a given water volume in the reach
-\\\\begin{eqnarray*} q_{Manning}&=& A R^{\\\\frac 2 3}
-\\\\sqrt{\\\\frac {\\\\Delta_z} n} \\\\\\\\ A &=& \\\\frac V l
-\\\\mbox{, (Crosssectional area of the wetted crossection, Volume per
-length)} \\\\\\\\ R &=& \\\\frac A {P(d)} \\\\\\\\ P(d) &=& \\\\mbox{
-the perimeter of the wetted crosssection, a function of reach depth}
-\\\\\\\\ d(V) &=& \\\\mbox{ the depth of the reach a function of the
-volume} \\\\\\\\ \\\\Delta_z &=& \\\\frac{z_{max} - z_{min}}{l}
-\\\\mbox{ Slope of the reach} \\\\end{eqnarray*}.
+
+
+.. math::
+
+   q_{Manning}&=& A R^{\\\\frac 2 3}
+  \\\\sqrt{\\\\frac {\\\\Delta_z} n} \\\\\\\\ A &=& \\\\frac V l
+  \\\\mbox{, (Crosssectional area of the wetted crossection, Volume per
+  length)} \\\\\\\\ R &=& \\\\frac A {P(d)} \\\\\\\\ P(d) &=& \\\\mbox{
+  the perimeter of the wetted crosssection, a function of reach depth}
+  \\\\\\\\ d(V) &=& \\\\mbox{ the depth of the reach a function of the
+  volume} \\\\\\\\ \\\\Delta_z &=& \\\\frac{z_{max} - z_{min}}{l}
+  \\\\mbox{ Slope of the reach} 
+.
+.
 
 Flow rate [m3/s]
 
@@ -7298,14 +7585,20 @@ Calculates a timeseries of the sunshine fraction (to put into
 Sunshine) from a timeseries of absolute sunshine duration.
 
 seehttp://www.fao.org/docrep/X0490E/x0490e07.htm#radiation
-\\\\begin{eqnarray*} \\\\phi &=& \\\\frac{(\\\\mbox{geogr.
-Latitude})^\\\\circ \\\\pi}{180^\\\\circ} \\\\mbox{ Latitude in }rad
-\\\\\\\\ \\\\delta &=& 0.409 \\\\sin\\\\left(\\\\frac{2\\\\pi}{365}DOY
-- 1.39\\\\right) \\\\mbox{ Declination, DOY is day of year}\\\\\\\\
-\\\\omega_s &=& \\\\arccos(-\\\\tan\\\\phi\\\\tan\\\\delta) \\\\mbox{
-Sunset angle in }rad \\\\\\\\ N &=& \\\\frac{24}{\\\\pi}\\\\omega_s
-\\\\mbox{ potential duration of sunshine in }h \\\\\\\\ \\\\frac n N
-&=& n\\\\mbox{ absolute sunshine duration in }h \\\\end{eqnarray*} ";
+
+
+.. math::
+
+   \\\\phi &=& \\\\frac{(\\\\mbox{geogr.
+  Latitude})^\\\\circ \\\\pi}{180^\\\\circ} \\\\mbox{ Latitude in }rad
+  \\\\\\\\ \\\\delta &=& 0.409 \\\\sin\\\\left(\\\\frac{2\\\\pi}{365}DOY
+  - 1.39\\\\right) \\\\mbox{ Declination, DOY is day of year}\\\\\\\\
+  \\\\omega_s &=& \\\\arccos(-\\\\tan\\\\phi\\\\tan\\\\delta) \\\\mbox{
+  Sunset angle in }rad \\\\\\\\ N &=& \\\\frac{24}{\\\\pi}\\\\omega_s
+  \\\\mbox{ potential duration of sunshine in }h \\\\\\\\ \\\\frac n N
+  &=& n\\\\mbox{ absolute sunshine duration in }h 
+.
+ ";
 
 /*  Timeseries of meteorological data  */
 
@@ -7381,8 +7674,8 @@ Creates a MeteoStationReference from the nearest station to position
 at position.
 
 The distance is calculated as $ d=\\\\sqrt{(x_{s} - x_{l})^2 + (y_{s}
-- y_{l})^2} + \\\\lambda_z\\\\|z_{s} - z_{l}\\\\| $ Where $s$ is the
-station and $l$ is the locatable A Meteorology using the data of the
+- y_{l})^2} + \\\\lambda_z\\\\|z_{s} - z_{l}\\\\| :math:` Where `s$ is the
+station and :math:`l` is the locatable A Meteorology using the data of the
 nearest station to position
 
 Parameters:
@@ -7391,7 +7684,7 @@ Parameters:
 position:  The position (any locatable, like e.g. Cell possible) to
 look for the station. The reference should be owned by the locatable
 
-z_weight:  The weight of the height difference $\\\\lambda_z$ ";
+z_weight:  The weight of the height difference :math:`\\\\lambda_z` ";
 
 %feature("docstring")
 cmf::atmosphere::MeteoStationList::remove_station "ptrdiff_t
@@ -7854,8 +8147,14 @@ cmf::water::NeumannBoundary_list::global_water_balance "real
 global_water_balance(cmf::math::Time t) const
 
 Returns the sum of the water balances of the nodes
-\\\\[\\\\sigma_{global} =
-\\\\sum_{i=0}^N{\\\\sum_{j=0}^{C_i}{q_{ij}(t)}} \\\\].
+
+
+.. math::
+
+  \\\\sigma_{global} =
+  \\\\sum_{i=0}^N{\\\\sum_{j=0}^{C_i}{q_{ij}(t)}} 
+.
+.
 
 Replaces slow Python code like: ";
 
@@ -7879,8 +8178,14 @@ Creates a node_list from this NeumannBoundary_list. ";
 %feature("docstring")  cmf::water::NeumannBoundary_list::water_balance
 "cmf::math::num_array water_balance(cmf::math::Time t) const
 
-Returns the water balance of each vector as a vector \\\\[ \\\\sigma_i
-= \\\\sum_{j=0}^{C_i}{q_{ij}(t)} \\\\].
+Returns the water balance of each vector as a vector 
+
+.. math::
+
+   \\\\sigma_i
+  = \\\\sum_{j=0}^{C_i}{q_{ij}(t)} 
+.
+.
 
 Replaces slow Python code like: ";
 
@@ -8052,8 +8357,14 @@ Returns a slice of the node_list. ";
 
 Returns the sum of the water balances of the nodes.
 
-\\\\[\\\\sigma_{global} =
-\\\\sum_{i=0}^N{\\\\sum_{j=0}^{C_i}{q_{ij}(t)}} \\\\]
+
+
+.. math::
+
+  \\\\sigma_{global} =
+  \\\\sum_{i=0}^N{\\\\sum_{j=0}^{C_i}{q_{ij}(t)}} 
+.
+
 
 Replaces slow Python code like: ";
 
@@ -8084,7 +8395,13 @@ The number of nodes. ";
 
 Returns the water balance of each vector as a vector.
 
-\\\\[ \\\\sigma_i = \\\\sum_{j=0}^{C_i}{q_{ij}(t)} \\\\]
+
+
+.. math::
+
+   \\\\sigma_i = \\\\sum_{j=0}^{C_i}{q_{ij}(t)} 
+.
+
 
 Replaces slow Python code like: ";
 
@@ -8517,39 +8834,45 @@ short_string() const ";
 
 Calculates the potential evapotranspiration according to FAO(1998)
 
-Governing equations: \\\\begin{eqnarray*} \\\\lambda ET &=&
-\\\\frac{\\\\Delta\\\\left(R_n - G\\\\right)+\\\\rho_a c_p
-\\\\frac{e_s - e_a}{r_a}}{\\\\Delta +
-\\\\gamma\\\\left(1+\\\\frac{r_s}{r_a}\\\\right)} \\\\mbox{ FAO 1998,
-Eq. 3} \\\\\\\\ \\\\mbox{With:} \\\\\\\\ \\\\Delta &=& 4098
-\\\\frac{0.6108 e^{17.27 T}}{(T+237.3)^2} \\\\frac{kPa}{^\\\\circ C}
-\\\\mbox{ (FAO 1998, Eq. 13)} \\\\\\\\ T &=& \\\\mbox{Actual
-Temperature in } ^\\\\circ C \\\\\\\\ R_n &=& \\\\mbox{net Radiation
-(see Atmosphere) in } \\\\frac{MJ}{m^2day} \\\\\\\\ G &=& 0 \\\\
-\\\\frac{MJ}{m^2day} \\\\mbox{ if daily average (FAO 1998, Eq. 42)}
-\\\\\\\\ && 0.1 R_n \\\\ \\\\mbox{ if day time (FAO 1998, Eq. 45)}
-\\\\\\\\ && 0.5 R_n \\\\ \\\\mbox{ if night time (FAO 1998, Eq. 46)}
-\\\\\\\\ \\\\gamma &=& \\\\frac{c_p P}{\\\\epsilon \\\\lambda}
-\\\\mbox{ (FAO 1998,Eq. 8): Psychrometric constant }
-\\\\frac{kPa}{^\\\\circ C} \\\\\\\\ c_p &=& 0.001013
-\\\\frac{MJ}{kg\\\\ ^\\\\circ C}\\\\mbox{ specific heat at constant
-pressure } \\\\\\\\ P &=& 101.3
-\\\\left(\\\\frac{293-0.0065z}{293}\\\\right)^{5.26} \\\\mbox{ (FAO
-1998,Eq. 7)} \\\\\\\\ \\\\epsilon &=& 0.622 \\\\frac{mol/g \\\\mbox{
-vapor}}{mol/g \\\\mbox{ liquid water}} \\\\\\\\ \\\\lambda &=& 2.45
-\\\\frac{MJ}{kg} \\\\mbox{ (FAO 1998,Eq. 8)} \\\\\\\\ R &=& 0.287
-\\\\frac{kJ}{kg\\\\ k}\\\\mbox{ Spec. gas const.} \\\\\\\\ \\\\rho_a
-&=& \\\\frac{P}{1.01(T+273)R} \\\\mbox{ (FAO 1998,Box. 6)} \\\\\\\\
-e_s &=& \\\\mbox{ Sat. vapor press. } [kPa] \\\\\\\\ e_a &=& \\\\mbox{
-Act. vapor press. } [kPa] \\\\\\\\ r_a &=&
-\\\\frac{\\\\ln\\\\left(\\\\frac{2-d}{z_{om}}\\\\right)\\\\ln\\\\left(\\\\frac{2-d}{z_{oh}}\\\\right)}{k^2
-u_2} \\\\mbox{ (FAO 1998, Eq. 4/Box 4} \\\\frac s m \\\\\\\\ &&
-d=\\\\frac 2 3 h,z_{om}=0.123 h,z_{oh}=0.1 z_{om}, k=0.41 \\\\\\\\ h
-&=& \\\\mbox{ Vegetation height in }m \\\\\\\\ u_2 &=& \\\\mbox{
-Windspeed in 2m above canopy } \\\\frac m s \\\\\\\\ r_s &=&
-\\\\frac{r_l}{LAI_{Active}} \\\\mbox{ (FAO 1998, Eq. 5/Box 5)}
-\\\\frac s m \\\\\\\\ && r_l=100 \\\\frac s m, LAI_{Active}=0.5 LAI
-\\\\end{eqnarray*}
+Governing equations: 
+
+.. math::
+
+   \\\\lambda ET &=&
+  \\\\frac{\\\\Delta\\\\left(R_n - G\\\\right)+\\\\rho_a c_p
+  \\\\frac{e_s - e_a}{r_a}}{\\\\Delta +
+  \\\\gamma\\\\left(1+\\\\frac{r_s}{r_a}\\\\right)} \\\\mbox{ FAO 1998,
+  Eq. 3} \\\\\\\\ \\\\mbox{With:} \\\\\\\\ \\\\Delta &=& 4098
+  \\\\frac{0.6108 e^{17.27 T}}{(T+237.3)^2} \\\\frac{kPa}{^\\\\circ C}
+  \\\\mbox{ (FAO 1998, Eq. 13)} \\\\\\\\ T &=& \\\\mbox{Actual
+  Temperature in } ^\\\\circ C \\\\\\\\ R_n &=& \\\\mbox{net Radiation
+  (see Atmosphere) in } \\\\frac{MJ}{m^2day} \\\\\\\\ G &=& 0 \\\\
+  \\\\frac{MJ}{m^2day} \\\\mbox{ if daily average (FAO 1998, Eq. 42)}
+  \\\\\\\\ && 0.1 R_n \\\\ \\\\mbox{ if day time (FAO 1998, Eq. 45)}
+  \\\\\\\\ && 0.5 R_n \\\\ \\\\mbox{ if night time (FAO 1998, Eq. 46)}
+  \\\\\\\\ \\\\gamma &=& \\\\frac{c_p P}{\\\\epsilon \\\\lambda}
+  \\\\mbox{ (FAO 1998,Eq. 8): Psychrometric constant }
+  \\\\frac{kPa}{^\\\\circ C} \\\\\\\\ c_p &=& 0.001013
+  \\\\frac{MJ}{kg\\\\ ^\\\\circ C}\\\\mbox{ specific heat at constant
+  pressure } \\\\\\\\ P &=& 101.3
+  \\\\left(\\\\frac{293-0.0065z}{293}\\\\right)^{5.26} \\\\mbox{ (FAO
+  1998,Eq. 7)} \\\\\\\\ \\\\epsilon &=& 0.622 \\\\frac{mol/g \\\\mbox{
+  vapor}}{mol/g \\\\mbox{ liquid water}} \\\\\\\\ \\\\lambda &=& 2.45
+  \\\\frac{MJ}{kg} \\\\mbox{ (FAO 1998,Eq. 8)} \\\\\\\\ R &=& 0.287
+  \\\\frac{kJ}{kg\\\\ k}\\\\mbox{ Spec. gas const.} \\\\\\\\ \\\\rho_a
+  &=& \\\\frac{P}{1.01(T+273)R} \\\\mbox{ (FAO 1998,Box. 6)} \\\\\\\\
+  e_s &=& \\\\mbox{ Sat. vapor press. } [kPa] \\\\\\\\ e_a &=& \\\\mbox{
+  Act. vapor press. } [kPa] \\\\\\\\ r_a &=&
+  \\\\frac{\\\\ln\\\\left(\\\\frac{2-d}{z_{om}}\\\\right)\\\\ln\\\\left(\\\\frac{2-d}{z_{oh}}\\\\right)}{k^2
+  u_2} \\\\mbox{ (FAO 1998, Eq. 4/Box 4} \\\\frac s m \\\\\\\\ &&
+  d=\\\\frac 2 3 h,z_{om}=0.123 h,z_{oh}=0.1 z_{om}, k=0.41 \\\\\\\\ h
+  &=& \\\\mbox{ Vegetation height in }m \\\\\\\\ u_2 &=& \\\\mbox{
+  Windspeed in 2m above canopy } \\\\frac m s \\\\\\\\ r_s &=&
+  \\\\frac{r_l}{LAI_{Active}} \\\\mbox{ (FAO 1998, Eq. 5/Box 5)}
+  \\\\frac s m \\\\\\\\ && r_l=100 \\\\frac s m, LAI_{Active}=0.5 LAI
+  
+.
+
 
 C++ includes: ET.h ";
 
@@ -8646,16 +8969,34 @@ const ";
 
 %feature("docstring")  cmf::river::PipeReach::get_channel_width "virtual double get_channel_width(double depth) const
 
-\\\\[w=2\\\\sqrt{\\\\left|r^2-(r-d)^2\\\\right|} \\\\] ";
+
+
+.. math::
+
+  w=2\\\\sqrt{\\\\left|r^2-(r-d)^2\\\\right|} 
+.
+ ";
 
 %feature("docstring")  cmf::river::PipeReach::get_depth "virtual
 double get_depth(double area) const
 
-\\\\[d=r\\\\left(1-\\\\cos{\\\\frac{A}{r^2}}\\\\right) \\\\] ";
+
+
+.. math::
+
+  d=r\\\\left(1-\\\\cos{\\\\frac{A}{r^2}}\\\\right) 
+.
+ ";
 
 %feature("docstring")  cmf::river::PipeReach::get_flux_crossection "virtual double get_flux_crossection(double depth) const
 
-\\\\[A=r^2\\\\arccos{\\\\frac{r-d}{r}{r}} \\\\] ";
+
+
+.. math::
+
+  A=r^2\\\\arccos{\\\\frac{r-d}{r}{r}} 
+.
+ ";
 
 %feature("docstring")  cmf::river::PipeReach::get_length "double
 get_length() const
@@ -8667,7 +9008,13 @@ double get_nManning() const ";
 
 %feature("docstring")  cmf::river::PipeReach::get_wetted_perimeter "virtual double get_wetted_perimeter(double depth) const
 
-\\\\[P=r\\\\arccos{\\\\frac{r-d}{r}} \\\\] ";
+
+
+.. math::
+
+  P=r\\\\arccos{\\\\frac{r-d}{r}} 
+.
+ ";
 
 %feature("docstring")  cmf::river::PipeReach::h "virtual double
 h(double V) const
@@ -8681,14 +9028,20 @@ q(double h, double slope) const ";
 double qManning(double A, double slope) const
 
 Calculates the flow rate from a given water volume in the reach
-\\\\begin{eqnarray*} q_{Manning}&=& A R^{\\\\frac 2 3}
-\\\\sqrt{\\\\frac {\\\\Delta_z} n} \\\\\\\\ A &=& \\\\frac V l
-\\\\mbox{, (Crosssectional area of the wetted crossection, Volume per
-length)} \\\\\\\\ R &=& \\\\frac A {P(d)} \\\\\\\\ P(d) &=& \\\\mbox{
-the perimeter of the wetted crosssection, a function of reach depth}
-\\\\\\\\ d(V) &=& \\\\mbox{ the depth of the reach a function of the
-volume} \\\\\\\\ \\\\Delta_z &=& \\\\frac{z_{max} - z_{min}}{l}
-\\\\mbox{ Slope of the reach} \\\\end{eqnarray*}.
+
+
+.. math::
+
+   q_{Manning}&=& A R^{\\\\frac 2 3}
+  \\\\sqrt{\\\\frac {\\\\Delta_z} n} \\\\\\\\ A &=& \\\\frac V l
+  \\\\mbox{, (Crosssectional area of the wetted crossection, Volume per
+  length)} \\\\\\\\ R &=& \\\\frac A {P(d)} \\\\\\\\ P(d) &=& \\\\mbox{
+  the perimeter of the wetted crosssection, a function of reach depth}
+  \\\\\\\\ d(V) &=& \\\\mbox{ the depth of the reach a function of the
+  volume} \\\\\\\\ \\\\Delta_z &=& \\\\frac{z_{max} - z_{min}}{l}
+  \\\\mbox{ Slope of the reach} 
+.
+.
 
 Flow rate [m3/s]
 
@@ -8738,13 +9091,13 @@ Creates a point from two doubles. ";
 %feature("docstring")  cmf::geometry::point::angleToXAxis "double
 angleToXAxis(point p) const
 
-Returns the angle between the line $ \\\\overline{this,p} $ to the
+Returns the angle between the line :math:` \\\\overline{this,p} ` to the
 x-Axis in degrees. ";
 
 %feature("docstring")  cmf::geometry::point::azimuth "double
 azimuth(point p) const
 
-Returns the azimuth angle of the line $ \\\\overline{this,p} $ to the
+Returns the azimuth angle of the line :math:` \\\\overline{this,p} ` to the
 Azimuth in degrees. ";
 
 %feature("docstring")  cmf::geometry::point::distance3DTo "double
@@ -8762,7 +9115,7 @@ distanceTo(point p) const
 
 Returns the horizontal euclidian distance to another point p.
 
-$\\\\sqrt{(this.x-p.x)^2+(this.y-p.y)^2}$ ";
+:math:`\\\\sqrt{(this.x-p.x)^2+(this.y-p.y)^2}` ";
 
 %feature("docstring")  cmf::geometry::point::length "double length()
 const ";
@@ -8776,7 +9129,7 @@ Returns x+y+z. ";
 Returns the horizontal euclidian distance plus the absolute of the
 height difference times a factor.
 
-$\\\\sqrt{(this.x-p.x)^2+(this.y-p.y)^2}\\\\ +\\\\ w_{z}|this.z-p.z|$
+:math:`\\\\sqrt{(this.x-p.x)^2+(this.y-p.y)^2}\\\\ +\\\\ w_{z}|this.z-p.z|`
 ";
 
 
@@ -8832,14 +9185,14 @@ base_area, double thickness_of_rough_ground=0.01) ";
 
 %feature("docstring")  cmf::river::Prism::A "double A(double V) const
 
-$ A(V) = A_{base} $ ";
+:math:` A(V) = A_{base} ` ";
 
 %feature("docstring")  cmf::river::Prism::copy "Prism* copy() const
 ";
 
 %feature("docstring")  cmf::river::Prism::h "double h(double V) const
 
-$ h(V) = \\\\frac V A_{base} $ ";
+:math:` h(V) = \\\\frac V A_{base} ` ";
 
 %feature("docstring")  cmf::river::Prism::q "virtual double q(double
 h, double slope) const ";
@@ -9041,33 +9394,39 @@ Creates a meteo-data source for each cell, using spatial interpolated
 data from all meteorological stations of the project using Inverse
 Distance Weighted (IDW) interpolation. The meteorolgical value f is
 calculated with IDW for position x,y,z and time t as follows:
-\\\\begin{eqnarray*} f(x,y,z,t) &=& \\\\sum^N_{i=1}{f_i(t) w_i(x,y,z)}
-\\\\\\\\ w_i(x,y,z) &=&
-\\\\frac{d_i(x,y,z)^{-p}}{\\\\sum^N_{j=0}{d_j(x,y,z)^{-p}}} \\\\\\\\
-d_i(x,y,z) &=& w_z \\\\left|z-z_i\\\\right| +
-\\\\sqrt{\\\\left(x-x_i\\\\right)^2 + \\\\left(y-y_i\\\\right)^2}
-\\\\end{eqnarray*}  $N$ is the number of stations
 
-$f_i(t)$ the meteorological value at time t, eg. Temperature, Humidity
 
-$w_i$ is the weight of station i
+.. math::
 
-$d_i$ is the distance from x,y,z to station i
+   f(x,y,z,t) &=& \\\\sum^N_{i=1}{f_i(t) w_i(x,y,z)}
+  \\\\\\\\ w_i(x,y,z) &=&
+  \\\\frac{d_i(x,y,z)^{-p}}{\\\\sum^N_{j=0}{d_j(x,y,z)^{-p}}} \\\\\\\\
+  d_i(x,y,z) &=& w_z \\\\left|z-z_i\\\\right| +
+  \\\\sqrt{\\\\left(x-x_i\\\\right)^2 + \\\\left(y-y_i\\\\right)^2}
+  
+.
+  :math:`N` is the number of stations
 
-$p$ the power of the weighting function, usually 2.
+:math:`f_i(t)` the meteorological value at time t, eg. Temperature, Humidity
 
-$x_i,y_i,z_i$ is the position of station i in space
+:math:`w_i` is the weight of station i
 
-$w_z$ is a factor to weight the vertical distance between stations and
+:math:`d_i` is the distance from x,y,z to station i
+
+:math:`p` the power of the weighting function, usually 2.
+
+:math:`x_i,y_i,z_i` is the position of station i in space
+
+:math:`w_z` is a factor to weight the vertical distance between stations and
 the cell. 0 results in a pure horizontal interpolation (normal IDW).
-If $w_z=1$, height difference is as important as horizontal distance,
-and with $w_z>1$ the height difference is weighted more important than
+If :math:`w_z=1`, height difference is as important as horizontal distance,
+and with :math:`w_z>1` the height difference is weighted more important than
 horizontal distance See:  IDW_Meteorology
 
 Parameters:
 -----------
 
-z_weight:   $w_z$ the weight of height difference between cell and
+z_weight:   :math:`w_z` the weight of height difference between cell and
 station
 
 power:  the power of the distance weight ";
@@ -9082,33 +9441,39 @@ Creates a rainfall-data source for each cell, using spatial
 interpolated data from all meteorological stations of the project
 using Inverse Distance Weighted (IDW) interpolation. The rainfall
 intensity P is calculated with IDW for position x,y,z and time t as
-follows: \\\\begin{eqnarray*} P(x,y,z,t) &=& \\\\sum^N_{i=1}{P_i(t)
-w_i(x,y,z)} \\\\\\\\ w_i(x,y,z) &=&
-\\\\frac{d_i(x,y,z)^{-p}}{\\\\sum^N_{j=0}{d_j(x,y,z)^{-p}}} \\\\\\\\
-d_i(x,y,z) &=& w_z \\\\left|z-z_i\\\\right| +
-\\\\sqrt{\\\\left(x-x_i\\\\right)^2 + \\\\left(y-y_i\\\\right)^2}
-\\\\end{eqnarray*}  $N$ is the number of stations
+follows: 
 
-$P_i(t)$ the meteorological value at time t, eg. Temperature, Humidity
+.. math::
 
-$w_i$ is the weight of station i
+   P(x,y,z,t) &=& \\\\sum^N_{i=1}{P_i(t)
+  w_i(x,y,z)} \\\\\\\\ w_i(x,y,z) &=&
+  \\\\frac{d_i(x,y,z)^{-p}}{\\\\sum^N_{j=0}{d_j(x,y,z)^{-p}}} \\\\\\\\
+  d_i(x,y,z) &=& w_z \\\\left|z-z_i\\\\right| +
+  \\\\sqrt{\\\\left(x-x_i\\\\right)^2 + \\\\left(y-y_i\\\\right)^2}
+  
+.
+  :math:`N` is the number of stations
 
-$d_i$ is the distance from x,y,z to station i
+:math:`P_i(t)` the meteorological value at time t, eg. Temperature, Humidity
 
-$p$ the power of the weighting function, usually 2.
+:math:`w_i` is the weight of station i
 
-$x_i,y_i,z_i$ is the position of station i in space
+:math:`d_i` is the distance from x,y,z to station i
 
-$w_z$ is a factor to weight the vertical distance between stations and
+:math:`p` the power of the weighting function, usually 2.
+
+:math:`x_i,y_i,z_i` is the position of station i in space
+
+:math:`w_z` is a factor to weight the vertical distance between stations and
 the cell. 0 results in a pure horizontal interpolation (normal IDW).
-If $w_z=1$, height difference is as important as horizontal distance,
-and with $w_z>1$ the height difference is weighted more important than
+If :math:`w_z=1`, height difference is as important as horizontal distance,
+and with :math:`w_z>1` the height difference is weighted more important than
 horizontal distance See:  IDW_Meteorology
 
 Parameters:
 -----------
 
-z_weight:   $w_z$ the weight of height difference between cell and
+z_weight:   :math:`w_z` the weight of height difference between cell and
 station
 
 power:  the power of the distance weight ";
@@ -9119,25 +9484,31 @@ use_nearest_meteo(double z_weight=0)
 Connects all cells of the project with its nearest meteorological
 station.
 
-Distance is calculated as follows: \\\\[d_i(x,y,z) = w_z
-\\\\left|z-z_i\\\\right| + \\\\sqrt{\\\\left(x-x_i\\\\right)^2 +
-\\\\left(y-y_i\\\\right)^2} \\\\]  $d_i$ is the distance from x,y,z to
+Distance is calculated as follows: 
+
+.. math::
+
+  d_i(x,y,z) = w_z
+  \\\\left|z-z_i\\\\right| + \\\\sqrt{\\\\left(x-x_i\\\\right)^2 +
+  \\\\left(y-y_i\\\\right)^2} 
+.
+  :math:`d_i` is the distance from x,y,z to
 station i
 
-$p$ the power of the weighting function, usually 2.
+:math:`p` the power of the weighting function, usually 2.
 
-$x_i,y_i,z_i$ is the position of station i in space
+:math:`x_i,y_i,z_i` is the position of station i in space
 
-$w_z$ is a factor to weight the vertical distance between stations and
+:math:`w_z` is a factor to weight the vertical distance between stations and
 the cell. 0 results in a pure horizontal interpolation (normal IDW).
-If $w_z=1$, height difference is as important as horizontal distance,
-and with $w_z>1$ the height difference is weighted more important than
+If :math:`w_z=1`, height difference is as important as horizontal distance,
+and with :math:`w_z>1` the height difference is weighted more important than
 horizontal distance
 
 Parameters:
 -----------
 
-z_weight:   $w_z$ the weight of height difference between cell and
+z_weight:   :math:`w_z` the weight of height difference between cell and
 station ";
 
 %feature("docstring")  cmf::project::use_nearest_rainfall "void
@@ -9145,25 +9516,31 @@ use_nearest_rainfall(double z_weight=0)
 
 Connects all cells of the project with its nearest rainfall station.
 
-Distance is calculated as follows: \\\\[d_i(x,y,z) = w_z
-\\\\left|z-z_i\\\\right| + \\\\sqrt{\\\\left(x-x_i\\\\right)^2 +
-\\\\left(y-y_i\\\\right)^2} \\\\]  $d_i$ is the distance from x,y,z to
+Distance is calculated as follows: 
+
+.. math::
+
+  d_i(x,y,z) = w_z
+  \\\\left|z-z_i\\\\right| + \\\\sqrt{\\\\left(x-x_i\\\\right)^2 +
+  \\\\left(y-y_i\\\\right)^2} 
+.
+  :math:`d_i` is the distance from x,y,z to
 station i
 
-$p$ the power of the weighting function, usually 2.
+:math:`p` the power of the weighting function, usually 2.
 
-$x_i,y_i,z_i$ is the position of station i in space
+:math:`x_i,y_i,z_i` is the position of station i in space
 
-$w_z$ is a factor to weight the vertical distance between stations and
+:math:`w_z` is a factor to weight the vertical distance between stations and
 the cell. 0 results in a pure horizontal interpolation (normal IDW).
-If $w_z=1$, height difference is as important as horizontal distance,
-and with $w_z>1$ the height difference is weighted more important than
+If :math:`w_z=1`, height difference is as important as horizontal distance,
+and with :math:`w_z>1` the height difference is weighted more important than
 horizontal distance
 
 Parameters:
 -----------
 
-z_weight:   $w_z$ the weight of height difference between cell and
+z_weight:   :math:`w_z` the weight of height difference between cell and
 station ";
 
 
@@ -9855,20 +10232,38 @@ Returns the area of the surface for a given volume. ";
 %feature("docstring")  cmf::river::RectangularReach::get_channel_width
 "virtual double get_channel_width(double depth) const
 
-Returns the width of the stream at a given depth \\\\begin{eqnarray*}
-w &=& const \\\\end{eqnarray*}. ";
+Returns the width of the stream at a given depth 
+
+.. math::
+
+  
+  w &=& const 
+.
+. ";
 
 %feature("docstring")  cmf::river::RectangularReach::get_depth "virtual double get_depth(double area) const
 
-Returns the depth at a given crossection area \\\\begin{eqnarray*} d
-&=& \\\\frac A w \\\\end{eqnarray*}. ";
+Returns the depth at a given crossection area 
+
+.. math::
+
+   d
+  &=& \\\\frac A w 
+.
+. ";
 
 %feature("docstring")
 cmf::river::RectangularReach::get_flux_crossection "virtual double
 get_flux_crossection(double depth) const
 
-Returns the crossection area at a given depth \\\\begin{eqnarray*} A
-&=& d w \\\\end{eqnarray*}. ";
+Returns the crossection area at a given depth 
+
+.. math::
+
+   A
+  &=& d w 
+.
+. ";
 
 %feature("docstring")  cmf::river::RectangularReach::get_length "double get_length() const
 
@@ -9880,8 +10275,14 @@ Length of the reach. ";
 cmf::river::RectangularReach::get_wetted_perimeter "virtual double
 get_wetted_perimeter(double depth) const
 
-Returns the wetted perimeter at a given depth \\\\begin{eqnarray*} P
-&=& 2 d + w \\\\end{eqnarray*}. ";
+Returns the wetted perimeter at a given depth 
+
+.. math::
+
+   P
+  &=& 2 d + w 
+.
+. ";
 
 %feature("docstring")  cmf::river::RectangularReach::h "virtual
 double h(double V) const
@@ -9894,14 +10295,20 @@ double q(double h, double slope) const ";
 %feature("docstring")  cmf::river::RectangularReach::qManning "virtual double qManning(double A, double slope) const
 
 Calculates the flow rate from a given water volume in the reach
-\\\\begin{eqnarray*} q_{Manning}&=& A R^{\\\\frac 2 3}
-\\\\sqrt{\\\\frac {\\\\Delta_z} n} \\\\\\\\ A &=& \\\\frac V l
-\\\\mbox{, (Crosssectional area of the wetted crossection, Volume per
-length)} \\\\\\\\ R &=& \\\\frac A {P(d)} \\\\\\\\ P(d) &=& \\\\mbox{
-the perimeter of the wetted crosssection, a function of reach depth}
-\\\\\\\\ d(V) &=& \\\\mbox{ the depth of the reach a function of the
-volume} \\\\\\\\ \\\\Delta_z &=& \\\\frac{z_{max} - z_{min}}{l}
-\\\\mbox{ Slope of the reach} \\\\end{eqnarray*}.
+
+
+.. math::
+
+   q_{Manning}&=& A R^{\\\\frac 2 3}
+  \\\\sqrt{\\\\frac {\\\\Delta_z} n} \\\\\\\\ A &=& \\\\frac V l
+  \\\\mbox{, (Crosssectional area of the wetted crossection, Volume per
+  length)} \\\\\\\\ R &=& \\\\frac A {P(d)} \\\\\\\\ P(d) &=& \\\\mbox{
+  the perimeter of the wetted crosssection, a function of reach depth}
+  \\\\\\\\ d(V) &=& \\\\mbox{ the depth of the reach a function of the
+  volume} \\\\\\\\ \\\\Delta_z &=& \\\\frac{z_{max} - z_{min}}{l}
+  \\\\mbox{ Slope of the reach} 
+.
+.
 
 Flow rate [m3/s]
 
@@ -9983,9 +10390,15 @@ const ";
 
 %feature("docstring")  cmf::upslope::RetentionCurve::Wetness_eff "virtual real Wetness_eff(real wetness, real pF_r=4.2) const
 
-Returns the effective wetness, using a residual pF value \\\\[w_{eff}
-=
-\\\\frac{w_{act}-w\\\\left(pF_r\\\\right)}{1-w\\\\left(pF_r\\\\right)}\\\\].
+Returns the effective wetness, using a residual pF value 
+
+.. math::
+
+  w_{eff}
+  =
+  \\\\frac{w_{act}-w\\\\left(pF_r\\\\right)}{1-w\\\\left(pF_r\\\\right)}
+.
+.
 ";
 
 %feature("docstring")  cmf::upslope::RetentionCurve::Wetness_pF "real
@@ -10062,23 +10475,29 @@ STL iterator class. ";
 
 Calculates flow according to the Richards equation.
 
-\\\\begin{eqnarray*} q_{Richards} &=&
-\\\\frac{\\\\Delta\\\\Psi_{tot}}{d} K(\\\\theta) A \\\\\\\\
-\\\\Psi_{tot} &= &\\\\Psi_{M}(\\\\theta) + h \\\\end{eqnarray*} where
-$ \\\\Delta\\\\Psi_{tot} [m]$ is the difference of the total water
+
+
+.. math::
+
+   q_{Richards} &=&
+  \\\\frac{\\\\Delta\\\\Psi_{tot}}{d} K(\\\\theta) A \\\\\\\\
+  \\\\Psi_{tot} &= &\\\\Psi_{M}(\\\\theta) + h 
+.
+ where
+:math:` \\\\Delta\\\\Psi_{tot} [m]` is the difference of the total water
 potentials of the two soil layers
 
-$ d [m]$ is the distance between the two soil layers
+:math:` d [m]` is the distance between the two soil layers
 
-$ K(\\\\theta)\\\\left[\\\\frac m{day}\\\\right]$ is the geometric
+:math:` K(\\\\theta)\\\\left[\\\\frac m{day}\\\\right]` is the geometric
 mean conductivity (see SoilType::Kunsat)
 
-$ A [m^2]$ is the crosssectional area of the flux
+:math:` A [m^2]` is the crosssectional area of the flux
 
-$ \\\\Psi_M(\\\\theta) [m]$ is the matrix potential (see
+:math:` \\\\Psi_M(\\\\theta) [m]` is the matrix potential (see
 SoilType::MatrixPotential)
 
-$ h [m]$ is the height of a soil layer above sea level
+:math:` h [m]` is the height of a soil layer above sea level
 
 C++ includes: Percolation.h ";
 
@@ -10155,19 +10574,25 @@ short_string() const ";
 // File: classcmf_1_1upslope_1_1connections_1_1_richards__lateral.xml
 %feature("docstring") cmf::upslope::connections::Richards_lateral "
 
-Calculates the flux using Richard's equation for adjacent layers \\\\[
-q_{lat} = \\\\frac{\\\\Psi_1 - \\\\Psi_2}{\\\\|C_1-C_2\\\\|}
-K(\\\\theta) A \\\\] where:
+Calculates the flux using Richard's equation for adjacent layers 
 
-$q_{lat}$ the lateral flow in $m^3/day$
+.. math::
 
-$\\\\Psi_i$ the head of node i
+  
+  q_{lat} = \\\\frac{\\\\Psi_1 - \\\\Psi_2}{\\\\|C_1-C_2\\\\|}
+  K(\\\\theta) A 
+.
+ where:
 
-$ \\\\|C_1-C_2\\\\| $ is the distance from Cell 1 to Cell 2
+:math:`q_{lat}` the lateral flow in :math:`m^3/day`
 
-$K(\\\\theta_{1,2}) = \\\\sqrt{K(\\\\theta_1) K(\\\\theta_2)}$
+:math:`\\\\Psi_i` the head of node i
 
-$A$ the crosssectional area of the interface between storages 1 and 2
+:math:` \\\\|C_1-C_2\\\\| ` is the distance from Cell 1 to Cell 2
+
+:math:`K(\\\\theta_{1,2}) = \\\\sqrt{K(\\\\theta_1) K(\\\\theta_2)}`
+
+:math:`A` the crosssectional area of the interface between storages 1 and 2
 
 C++ includes: subsurfacefluxes.h ";
 
@@ -10463,22 +10888,34 @@ Calculates the interception overflow as a storage depending fraction
 of incoming rainfall The Rutter model of interception reads as follows
 after Meuser, A., 1990. Effects of afforestation on run-off
 characteristics. Agric. For. Meteorol. 50: 125-138.:
-\\\\[\\\\frac{dI_C(t)}{dt}=P(t)(1-p_F-p_S)-P(t)(1-p_F-
-p_S)\\\\frac{I_C(t)}{I_CMAX}-f_I(E-e)(t)\\\\] With $I_C$ the current
-canopy storage and $P(t)$ the current rainfall.
+
+
+.. math::
+
+  \\\\frac{dI_C(t)}{dt}=P(t)(1-p_F-p_S)-P(t)(1-p_F-
+  p_S)\\\\frac{I_C(t)}{I_CMAX}-f_I(E-e)(t)
+.
+ With :math:`I_C` the current
+canopy storage and :math:`P(t)` the current rainfall.
 
 The second term of the equation denotes the flux from the canopy to
 the ground. The implemented formula for canopy storage overflow reads
-then as: \\\\[q_{CO}(t) =
-P_{net}(t)\\\\frac{V_{act}[mm]}{V_{max}[mm]}\\\\] With:
-$q_{CO}(t)[\\\\frac{m^3}{day}]$: The flux from canopy to the ground
+then as: 
 
-$P_{net}(t)[\\\\frac{m^3}{day}]$: The flux from the rain to the canopy
+.. math::
 
-$V_{act}[mm]=1000 [mm/m] \\\\frac{V_{canopy}[m^3]}{A_{cell} [m^2]}$
+  q_{CO}(t) =
+  P_{net}(t)\\\\frac{V_{act}[mm]}{V_{max}[mm]}
+.
+ With:
+:math:`q_{CO}(t)[\\\\frac{m^3}{day}]`: The flux from canopy to the ground
+
+:math:`P_{net}(t)[\\\\frac{m^3}{day}]`: The flux from the rain to the canopy
+
+:math:`V_{act}[mm]=1000 [mm/m] \\\\frac{V_{canopy}[m^3]}{A_{cell} [m^2]}`
 The stored water of the canopy in mm
 
-$V_{max}[mm]=c_{LAI}[mm]\\\\cdot LAI$ The capacity of the canopy in
+:math:`V_{max}[mm]=c_{LAI}[mm]\\\\cdot LAI` The capacity of the canopy in
 mm, defined by the factor CanopyCapacityPerLAI [mm/LAI], and the leaf
 area index LAI. (see: cmf::upslope::Vegetation)
 
@@ -10577,11 +11014,17 @@ Shuttleworth & Wallace 1985, as implemented in BROOK 90 (Federer 1990)
 The difference to BROOK90 is, that the actual transpiration is not
 calculated by plant resitance and potential gradient between plant and
 soil, but by an piecewise linear function of the pF value $ pF =
-\\\\log_{10}\\\\left(-\\\\Psi [hPa]\\\\right) $: \\\\[
-\\\\frac{T_{act}}{T_{pot}} = \\\\left\\\\{\\\\begin{array}{cl} 1 &
-\\\\mbox{if $pF \\\\le 3.35$} \\\\\\\\ \\\\frac{pF - 4.2}{3.35 - 4.2}
-& \\\\mbox{if $pF \\\\in [3.35 .. 4.2] $} \\\\\\\\ 0 & \\\\mbox{if $pF
-\\\\ge 4.2$} \\\\end{array}\\\\right. \\\\]
+\\\\log_{10}\\\\left(-\\\\Psi [hPa]\\\\right) $: 
+
+.. math::
+
+  
+  \\\\frac{T_{act}}{T_{pot}} = \\\\left\\\\{\\\\begin{array}{cl} 1 &
+  \\\\mbox{if :math:`pF \\\\le 3.35`} \\\\\\\\ \\\\frac{pF - 4.2}{3.35 - 4.2}
+  & \\\\mbox{if :math:`pF \\\\in [3.35 .. 4.2] `} \\\\\\\\ 0 & \\\\mbox{if $pF
+  \\\\ge 4.2$} \\\\end{array}\\\\right. 
+.
+
 
 Calculation procedure, as in BROOK 90:
 
@@ -10597,19 +11040,19 @@ with  $ \\\\Delta = \\\\frac{de_s}{dT} = 4098\\\\ 0.6108
 \\\\exp\\\\left(\\\\frac{17.27 T}{T+237.3}\\\\right)(T+237.3)^{-2} $,
 the slope of the sat. vap. press. T function
 
-$ R_{n,ground} = R_n \\\\exp(-C_R LAI) $, the net radiation flux in
+:math:` R_{n,ground} = R_n \\\\exp(-C_R LAI) `, the net radiation flux in
 the ground
 
-$ R_{n_canopy} = R_n - R_{n,ground} $, the net radiation flux in the
+:math:` R_{n_canopy} = R_n - R_{n,ground} `, the net radiation flux in the
 canopy
 
-$ \\\\lambda,c_p\\\\rho,\\\\gamma,C_R $ constants lambda, c_p_rho,
+:math:` \\\\lambda,c_p\\\\rho,\\\\gamma,C_R ` constants lambda, c_p_rho,
 gamma, C_R
 
-$ D_0 $ vapor pressure deficit at effective source height, see
+:math:` D_0 ` vapor pressure deficit at effective source height, see
 function D0
 
-$ r_{ac}, r_{sc}, r_{as}, r_{ss} $ Resistances for the vapor pressure
+:math:` r_{ac}, r_{sc}, r_{as}, r_{ss} ` Resistances for the vapor pressure
 (see below)
 
 Todo Include Interception
@@ -10760,14 +11203,20 @@ cmf::upslope::connections::SimpleTindexSnowMelt::to_string "std::string to_strin
 
 Calculates flow according to a simplified Richards equation.
 
-\\\\begin{eqnarray*} q_{Richards} &=& (K(\\\\theta) - K(\\\\theta_r))
-A \\\\\\\\ \\\\end{eqnarray*} where  $ d [m]$ is the distance between
+
+
+.. math::
+
+   q_{Richards} &=& (K(\\\\theta) - K(\\\\theta_r))
+  A \\\\\\\\ 
+.
+ where  :math:` d [m]` is the distance between
 the two soil layers
 
-$ K(\\\\theta)\\\\left[\\\\frac m{day}\\\\right]$ is the geometric
+:math:` K(\\\\theta)\\\\left[\\\\frac m{day}\\\\right]` is the geometric
 mean conductivity (see SoilType::Kunsat)
 
-$ A [m^2]$ is the crosssectional area of the flux
+:math:` A [m^2]` is the crosssectional area of the flux
 
 C++ includes: Percolation.h ";
 
@@ -11223,8 +11672,14 @@ get_gravitational_potential() const
 Gravitational get_potential in m, reference height is sea level.
 
 If the layer is saturated, it returns the saturated depth above sea
-level, otherwise it returns the upperboundary of the layer \\\\[
-\\\\Psi_G=h \\\\] ";
+level, otherwise it returns the upperboundary of the layer 
+
+.. math::
+
+  
+  \\\\Psi_G=h 
+.
+ ";
 
 %feature("docstring")  cmf::upslope::SoilLayer::get_ice_fraction "real get_ice_fraction() const
 
@@ -11234,7 +11689,7 @@ real (Ice_fraction) ";
 const
 
 Returns the actual isotropic conductivity using the function from soil
-$\\\\frac{m}{day}$. ";
+:math:`\\\\frac{m}{day}`. ";
 
 %feature("docstring")  cmf::upslope::SoilLayer::get_K "virtual real
 get_K(cmf::geometry::point direction) const
@@ -11263,8 +11718,14 @@ Returns the mean porosity in the layer. ";
 
 %feature("docstring")  cmf::upslope::SoilLayer::get_potential "virtual real get_potential() const
 
-Returns the total potential in m \\\\[ \\\\Psi = \\\\Psi_M + \\\\Psi_G
-\\\\]. ";
+Returns the total potential in m 
+
+.. math::
+
+   \\\\Psi = \\\\Psi_M + \\\\Psi_G
+  
+.
+. ";
 
 %feature("docstring")  cmf::upslope::SoilLayer::get_project "cmf::project& get_project() const
 
@@ -11277,9 +11738,15 @@ it uses the parameters of the vegetation object of the cell. ";
 
 %feature("docstring")  cmf::upslope::SoilLayer::get_saturated_depth "virtual real get_saturated_depth() const
 
-Returns the depth for saturation \\\\[ z_{sat,this} =
-\\\\left\\\\{z_{cell}-\\\\Psi_{tot} \\\\mbox{ if } W<1 \\\\\\\\
-z_{sat,upper layer} \\\\right. \\\\]. ";
+Returns the depth for saturation 
+
+.. math::
+
+   z_{sat,this} =
+  \\\\left\\\\{z_{cell}-\\\\Psi_{tot} \\\\mbox{ if } W<1 \\\\\\\\
+  z_{sat,upper layer} \\\\right. 
+.
+. ";
 
 %feature("docstring")  cmf::upslope::SoilLayer::get_soil "virtual
 cmf::upslope::RetentionCurve& get_soil() const
@@ -11326,7 +11793,7 @@ Returns the volume of water in this storage in m3 ";
 %feature("docstring")  cmf::upslope::SoilLayer::get_wetness "virtual
 real get_wetness() const
 
-Returns the wetness of the soil $ \\\\frac{V_{H_2O}}{V_{pores}} $. ";
+Returns the wetness of the soil :math:` \\\\frac{V_{H_2O}}{V_{pores}} `. ";
 
 %feature("docstring")  cmf::upslope::SoilLayer::is_storage "virtual
 bool is_storage() const
@@ -11444,17 +11911,23 @@ A class for the storage of any tracer.
 The state is the amount (mol, kg etc. see cmf::water) of the tracer in
 the storage.
 
-The derivative function is given by: \\\\begin{eqnarray*}
-\\\\frac{dX}{dt}&=&\\\\sum_{f=1}^{F}\\\\left( q_f [X]_f\\\\right) +
-X_{in} - r^-X \\\\left[\\\\frac{mol}{day}\\\\right]\\\\\\\\ F&=&
-\\\\mbox{Number of fluxes in water storage} \\\\\\\\ q_f&=&
-\\\\mbox{Water flux in } \\\\frac{m^3}{day} \\\\\\\\
-\\\\left[X\\\\right]_f &=& \\\\mbox{Concentration of solute X in flux
-}q_f \\\\mbox{ in } \\\\frac{mol}{m^3} \\\\\\\\ X_{in} &=&
-\\\\mbox{Absolute source or sink term} \\\\frac{mol}{day} \\\\\\\\ r^-
-&=& \\\\mbox{Decay rate} \\\\frac 1{day} \\\\\\\\ V &=&
-\\\\mbox{Volume of water in water storage }\\\\left[m^3\\\\right]
-\\\\end{eqnarray*}
+The derivative function is given by: 
+
+.. math::
+
+  
+  \\\\frac{dX}{dt}&=&\\\\sum_{f=1}^{F}\\\\left( q_f [X]_f\\\\right) +
+  X_{in} - r^-X \\\\left[\\\\frac{mol}{day}\\\\right]\\\\\\\\ F&=&
+  \\\\mbox{Number of fluxes in water storage} \\\\\\\\ q_f&=&
+  \\\\mbox{Water flux in } \\\\frac{m^3}{day} \\\\\\\\
+  \\\\left[X\\\\right]_f &=& \\\\mbox{Concentration of solute X in flux
+  }q_f \\\\mbox{ in } \\\\frac{mol}{m^3} \\\\\\\\ X_{in} &=&
+  \\\\mbox{Absolute source or sink term} \\\\frac{mol}{day} \\\\\\\\ r^-
+  &=& \\\\mbox{Decay rate} \\\\frac 1{day} \\\\\\\\ V &=&
+  \\\\mbox{Volume of water in water storage }\\\\left[m^3\\\\right]
+  
+.
+
 
 C++ includes: SoluteStorage.h ";
 
@@ -11576,14 +12049,16 @@ Creates a new SoluteWaterIntegrator.
 Parameters:
 -----------
 
+solutes:  Solutes of the project
+
 water_integrator:  Template for the integrator of WaterStorage state
-varaiables
+variables
 
 solute_integrator:  Template for the integrator of soluteStorage state
-varaiables ";
+variables ";
 
 %feature("docstring")
-cmf::math::SoluteWaterIntegrator::SoluteWaterIntegrator "SoluteWaterIntegrator(cmf::water::solute_vector, const
+cmf::math::SoluteWaterIntegrator::SoluteWaterIntegrator "SoluteWaterIntegrator(cmf::water::solute_vector solutes, const
 cmf::math::Integrator &water_integrator, const cmf::math::Integrator
 &solute_integrator, cmf::math::StateVariableOwner &states)
 
@@ -11592,11 +12067,13 @@ Creates a new SoluteWaterIntegrator.
 Parameters:
 -----------
 
+solutes:  Solutes of the project
+
 water_integrator:  Template for the integrator of WaterStorage state
-varaiables
+variables
 
 solute_integrator:  Template for the integrator of soluteStorage state
-varaiables
+variables
 
 states:  States to be added to the integrators ";
 
@@ -11728,14 +12205,20 @@ STL class. ";
 Calculates a flux to or from a water storage to hold it's state at a
 more or less constant level.
 
-\\\\[ q=\\\\frac{h_1 - h_{target}}{t_c [days]} \\\\] where:  $q$ the
+
+
+.. math::
+
+   q=\\\\frac{h_1 - h_{target}}{t_c [days]} 
+.
+ where:  :math:`q` the
 resulting flux in m3/day
 
-$h_1$ the reference state
+:math:`h_1` the reference state
 
-$h_{target}$ the state of the target (right) node
+:math:`h_{target}` the state of the target (right) node
 
-$t_c$ the time to reach the target state
+:math:`t_c` the time to reach the target state
 
 C++ includes: simple_connections.h ";
 
@@ -11754,9 +12237,9 @@ controlled_storage:  Water storage, to be controlled
 other_end:  source of missing water or target of excessive water
 
 target_state:  State the controlled storage should hold (
-$h_{target}$)
+:math:`h_{target}`)
 
-reaction_time:  Time to reach state ( $t_c$) ";
+reaction_time:  Time to reach state ( :math:`t_c`) ";
 
 %feature("docstring")  cmf::water::statecontrol_connection::conc "real conc(cmf::math::Time t, const cmf::water::solute &_Solute)
 
@@ -12250,11 +12733,17 @@ Returns the exposed surface area in m2. ";
 
 A tipping bucket percolation approach similar to the approach in SWAT.
 
-\\\\begin{eqnarray*} q_{perc} &=&
-V_{H_2O,drain}\\\\left(1-e^{-\\\\frac 1{-TT_{perc}}}\\\\right)
-\\\\\\\\ TT_{perc} &=& \\\\frac{V_{pores,drain} - V_{field
-cap.}}{K_{sat}} \\\\\\\\ V_{x,drain} &=& V_{x,drain} - V_{field cap.}
-\\\\end{eqnarray*}
+
+
+.. math::
+
+   q_{perc} &=&
+  V_{H_2O,drain}\\\\left(1-e^{-\\\\frac 1{-TT_{perc}}}\\\\right)
+  \\\\\\\\ TT_{perc} &=& \\\\frac{V_{pores,drain} - V_{field
+  cap.}}{K_{sat}} \\\\\\\\ V_{x,drain} &=& V_{x,drain} - V_{field cap.}
+  
+.
+
 
 C++ includes: Percolation.h ";
 
@@ -12381,11 +12870,17 @@ Returns the area of the surface for a given volume. ";
 %feature("docstring")  cmf::river::SWATReachType::get_channel_width "virtual double get_channel_width(double depth) const
 
 Calculates the flow width from a given actual depth [m] using the
-actual IChannel geometry \\\\begin{eqnarray*} \\\\mbox{If } d\\\\le
-d_{IChannel} && \\\\\\\\ w &=& w_{bottom} + 2 \\\\Delta_{bank} d
-\\\\\\\\ \\\\mbox{else, } && \\\\mbox{if the river floods the flood
-plain} \\\\\\\\ w &=& w_{bank} + 2 \\\\Delta_{Floodplain}
-(d-d_{IChannel} \\\\\\\\ \\\\end{eqnarray*}.
+actual IChannel geometry 
+
+.. math::
+
+   \\\\mbox{If } d\\\\le
+  d_{IChannel} && \\\\\\\\ w &=& w_{bottom} + 2 \\\\Delta_{bank} d
+  \\\\\\\\ \\\\mbox{else, } && \\\\mbox{if the river floods the flood
+  plain} \\\\\\\\ w &=& w_{bank} + 2 \\\\Delta_{Floodplain}
+  (d-d_{IChannel} \\\\\\\\ 
+.
+.
 
 See:  SWATtheoDoc eq. 7:1.1.3 ";
 
@@ -12393,14 +12888,20 @@ See:  SWATtheoDoc eq. 7:1.1.3 ";
 double get_depth(double area) const
 
 Calculates the actual depth of the reach using the IChannel geometry
-\\\\begin{eqnarray*} d &=& \\\\sqrt{\\\\frac{A}{\\\\Delta_{bank}} +
-\\\\frac{{w_{bottom}}^2}{4 {\\\\Delta_{bank}}^2}} -
-\\\\frac{w_{bottom}}{2 \\\\Delta_{bank}} \\\\\\\\ \\\\mbox{If }
-d>d_{IChannel} &&\\\\\\\\
-d&=&d_{IChannel}+\\\\sqrt{\\\\frac{A-A(d_{IChannel})}{\\\\Delta_{flood\\\\
-plain}} + \\\\frac{{w(d_{IChannel})}^2}{4 {\\\\Delta_{flood\\\\
-plain}}^2}} - \\\\frac{w(d_{IChannel})}{2 \\\\Delta_{flood\\\\ plain}}
-\\\\\\\\ \\\\end{eqnarray*}.
+
+
+.. math::
+
+   d &=& \\\\sqrt{\\\\frac{A}{\\\\Delta_{bank}} +
+  \\\\frac{{w_{bottom}}^2}{4 {\\\\Delta_{bank}}^2}} -
+  \\\\frac{w_{bottom}}{2 \\\\Delta_{bank}} \\\\\\\\ \\\\mbox{If }
+  d>d_{IChannel} &&\\\\\\\\
+  d&=&d_{IChannel}+\\\\sqrt{\\\\frac{A-A(d_{IChannel})}{\\\\Delta_{flood\\\\
+  plain}} + \\\\frac{{w(d_{IChannel})}^2}{4 {\\\\Delta_{flood\\\\
+  plain}}^2}} - \\\\frac{w(d_{IChannel})}{2 \\\\Delta_{flood\\\\ plain}}
+  \\\\\\\\ 
+.
+.
 
 See:  SWATtheoDoc eq. 7:1.2.4
 
@@ -12419,13 +12920,19 @@ Calculates the wetted area from a given depth using the IChannel
 geometry.
 
 In most cases use get_flux_crossection=V/l, where V is the stored
-volume and l is the reach length \\\\begin{eqnarray*} \\\\mbox{If }
-d>d_{IChannel} &&\\\\\\\\ A &=& \\\\left(w_{bottom} + \\\\Delta_{bank}
-d\\\\right) d \\\\\\\\ \\\\mbox{else, } && \\\\mbox{if the river
-floods the flood plain} \\\\\\\\ A &=& A(d_{IChannel}) +
-\\\\left(w(d_{IChannel} + \\\\Delta_{flood\\\\ plain}
-\\\\left(d-d_{IChannel}\\\\right)\\\\right) (d-d_{IChannel}) \\\\\\\\
-\\\\end{eqnarray*} See:  SWATtheoDoc eq. 7:1.1.4
+volume and l is the reach length 
+
+.. math::
+
+   \\\\mbox{If }
+  d>d_{IChannel} &&\\\\\\\\ A &=& \\\\left(w_{bottom} + \\\\Delta_{bank}
+  d\\\\right) d \\\\\\\\ \\\\mbox{else, } && \\\\mbox{if the river
+  floods the flood plain} \\\\\\\\ A &=& A(d_{IChannel}) +
+  \\\\left(w(d_{IChannel} + \\\\Delta_{flood\\\\ plain}
+  \\\\left(d-d_{IChannel}\\\\right)\\\\right) (d-d_{IChannel}) \\\\\\\\
+  
+.
+ See:  SWATtheoDoc eq. 7:1.1.4
 
 Wetted area of a river cross section [m2]
 
@@ -12445,12 +12952,18 @@ Length of the reach. ";
 "virtual double get_wetted_perimeter(double depth) const
 
 Calculates the wetted perimeter from a given actual depth [m] using
-the actual IChannel geometry \\\\begin{eqnarray*} \\\\mbox{If }
-d\\\\le d_{IChannel} && \\\\\\\\ P &=& w_{bottom} + 2 \\\\sqrt{1+
-{\\\\Delta_{bank}}^2} d \\\\\\\\ \\\\mbox{else, } && \\\\mbox{if the
-river floods the flood plain} \\\\\\\\ P &=& P(d_{IChannel} + 2
-\\\\sqrt{1+ {\\\\Delta_{flood\\\\ plain}}^2} (d-d_{IChannel}) \\\\\\\\
-\\\\end{eqnarray*}.
+the actual IChannel geometry 
+
+.. math::
+
+   \\\\mbox{If }
+  d\\\\le d_{IChannel} && \\\\\\\\ P &=& w_{bottom} + 2 \\\\sqrt{1+
+  {\\\\Delta_{bank}}^2} d \\\\\\\\ \\\\mbox{else, } && \\\\mbox{if the
+  river floods the flood plain} \\\\\\\\ P &=& P(d_{IChannel} + 2
+  \\\\sqrt{1+ {\\\\Delta_{flood\\\\ plain}}^2} (d-d_{IChannel}) \\\\\\\\
+  
+.
+.
 
 See:  SWATtheoDoc eq. 7:1.1.5
 
@@ -12471,14 +12984,20 @@ q(double h, double slope) const ";
 double qManning(double A, double slope) const
 
 Calculates the flow rate from a given water volume in the reach
-\\\\begin{eqnarray*} q_{Manning}&=& A R^{\\\\frac 2 3}
-\\\\sqrt{\\\\frac {\\\\Delta_z} n} \\\\\\\\ A &=& \\\\frac V l
-\\\\mbox{, (Crosssectional area of the wetted crossection, Volume per
-length)} \\\\\\\\ R &=& \\\\frac A {P(d)} \\\\\\\\ P(d) &=& \\\\mbox{
-the perimeter of the wetted crosssection, a function of reach depth}
-\\\\\\\\ d(V) &=& \\\\mbox{ the depth of the reach a function of the
-volume} \\\\\\\\ \\\\Delta_z &=& \\\\frac{z_{max} - z_{min}}{l}
-\\\\mbox{ Slope of the reach} \\\\end{eqnarray*}.
+
+
+.. math::
+
+   q_{Manning}&=& A R^{\\\\frac 2 3}
+  \\\\sqrt{\\\\frac {\\\\Delta_z} n} \\\\\\\\ A &=& \\\\frac V l
+  \\\\mbox{, (Crosssectional area of the wetted crossection, Volume per
+  length)} \\\\\\\\ R &=& \\\\frac A {P(d)} \\\\\\\\ P(d) &=& \\\\mbox{
+  the perimeter of the wetted crosssection, a function of reach depth}
+  \\\\\\\\ d(V) &=& \\\\mbox{ the depth of the reach a function of the
+  volume} \\\\\\\\ \\\\Delta_z &=& \\\\frac{z_{max} - z_{min}}{l}
+  \\\\mbox{ Slope of the reach} 
+.
+.
 
 Flow rate [m3/s]
 
@@ -12703,9 +13222,15 @@ short_string() const ";
 Produces a constant but changeable flux from a source to a target, if
 enough water is present in the source.
 
-\\\\[ q=\\\\begin{cases}0 & V_{source}\\\\le V_{min}\\\\\\\\ q_0
-\\\\frac{V_{source} - V_{min}}{t_{decr} q_{0} - V_{min}} & V_{source}
-\\\\le t_{decr} q_{0}\\\\\\\\ q_{0} & \\\\end{cases}\\\\]
+
+
+.. math::
+
+   q=\\\\begin{cases}0 & V_{source}\\\\le V_{min}\\\\\\\\ q_0
+  \\\\frac{V_{source} - V_{min}}{t_{decr} q_{0} - V_{min}} & V_{source}
+  \\\\le t_{decr} q_{0}\\\\\\\\ q_{0} & \\\\end{cases}
+.
+
 
 This is similar to a neumann boundary, however this is not a boundary
 condition, but water is taken from the source (left) water storage and
@@ -12727,7 +13252,7 @@ source:  The source of the water
 
 target:  The target of the water
 
-maximum_flux:  The requested flux $q_{0}$
+maximum_flux:  The requested flux :math:`q_{0}`
 
 minimal_state:  Minimal volume of stored water in source
 
@@ -13217,16 +13742,22 @@ cmf::upslope::connections::TopographicGradientDarcy "
 
 Calculates the lateral flow using the topographic gradient.
 
-\\\\[ q_{lat} = \\\\frac{z_1 - z_2}{\\\\|C_1-C_2\\\\|} \\\\frac 12
-(T(C_1)+T(C_2)) w \\\\] where  $ z_1 - z_2 $ is the topographic height
+
+
+.. math::
+
+   q_{lat} = \\\\frac{z_1 - z_2}{\\\\|C_1-C_2\\\\|} \\\\frac 12
+  (T(C_1)+T(C_2)) w 
+.
+ where  :math:` z_1 - z_2 ` is the topographic height
 difference
 
-$ \\\\|C_1-C_2\\\\| $ is the distance from Cell 1 to Cell 2
+:math:` \\\\|C_1-C_2\\\\| ` is the distance from Cell 1 to Cell 2
 
-$ T(C) $ is the transmissivity of cell C, calculated by
+:math:` T(C) ` is the transmissivity of cell C, calculated by
 SoilType::Transmissivity
 
-$ w $ is the width of the connection of the cells
+:math:` w ` is the width of the connection of the cells
 
 C++ includes: subsurfacefluxes.h ";
 
@@ -13493,20 +14024,38 @@ Returns the area of the surface for a given volume. ";
 %feature("docstring")  cmf::river::TriangularReach::get_channel_width
 "virtual double get_channel_width(double depth) const
 
-Returns the width of the stream at a given depth \\\\begin{eqnarray*}
-w &=& 2 \\\\Delta\\\\ d \\\\end{eqnarray*}. ";
+Returns the width of the stream at a given depth 
+
+.. math::
+
+  
+  w &=& 2 \\\\Delta\\\\ d 
+.
+. ";
 
 %feature("docstring")  cmf::river::TriangularReach::get_depth "virtual double get_depth(double area) const
 
-Returns the depth at a given crossection area \\\\begin{eqnarray*} d
-&=& \\\\sqrt{\\\\frac{A}{\\\\Delta}} \\\\end{eqnarray*}. ";
+Returns the depth at a given crossection area 
+
+.. math::
+
+   d
+  &=& \\\\sqrt{\\\\frac{A}{\\\\Delta}} 
+.
+. ";
 
 %feature("docstring")
 cmf::river::TriangularReach::get_flux_crossection "virtual double
 get_flux_crossection(double depth) const
 
-Returns the crossection area at a given depth \\\\begin{eqnarray*} A
-&=& d^2 \\\\Delta \\\\end{eqnarray*}. ";
+Returns the crossection area at a given depth 
+
+.. math::
+
+   A
+  &=& d^2 \\\\Delta 
+.
+. ";
 
 %feature("docstring")  cmf::river::TriangularReach::get_length "double get_length() const
 
@@ -13518,8 +14067,14 @@ Length of the reach. ";
 cmf::river::TriangularReach::get_wetted_perimeter "virtual double
 get_wetted_perimeter(double depth) const
 
-Returns the wetted perimeter at a given depth \\\\begin{eqnarray*} P
-&=& 2 d \\\\sqrt{1+\\\\Delta^2} \\\\end{eqnarray*}. ";
+Returns the wetted perimeter at a given depth 
+
+.. math::
+
+   P
+  &=& 2 d \\\\sqrt{1+\\\\Delta^2} 
+.
+. ";
 
 %feature("docstring")  cmf::river::TriangularReach::h "virtual double
 h(double V) const
@@ -13533,14 +14088,20 @@ q(double h, double slope) const ";
 double qManning(double A, double slope) const
 
 Calculates the flow rate from a given water volume in the reach
-\\\\begin{eqnarray*} q_{Manning}&=& A R^{\\\\frac 2 3}
-\\\\sqrt{\\\\frac {\\\\Delta_z} n} \\\\\\\\ A &=& \\\\frac V l
-\\\\mbox{, (Crosssectional area of the wetted crossection, Volume per
-length)} \\\\\\\\ R &=& \\\\frac A {P(d)} \\\\\\\\ P(d) &=& \\\\mbox{
-the perimeter of the wetted crosssection, a function of reach depth}
-\\\\\\\\ d(V) &=& \\\\mbox{ the depth of the reach a function of the
-volume} \\\\\\\\ \\\\Delta_z &=& \\\\frac{z_{max} - z_{min}}{l}
-\\\\mbox{ Slope of the reach} \\\\end{eqnarray*}.
+
+
+.. math::
+
+   q_{Manning}&=& A R^{\\\\frac 2 3}
+  \\\\sqrt{\\\\frac {\\\\Delta_z} n} \\\\\\\\ A &=& \\\\frac V l
+  \\\\mbox{, (Crosssectional area of the wetted crossection, Volume per
+  length)} \\\\\\\\ R &=& \\\\frac A {P(d)} \\\\\\\\ P(d) &=& \\\\mbox{
+  the perimeter of the wetted crosssection, a function of reach depth}
+  \\\\\\\\ d(V) &=& \\\\mbox{ the depth of the reach a function of the
+  volume} \\\\\\\\ \\\\Delta_z &=& \\\\frac{z_{max} - z_{min}}{l}
+  \\\\mbox{ Slope of the reach} 
+.
+.
 
 Flow rate [m3/s]
 
@@ -13584,25 +14145,31 @@ STL class. ";
 Provides the use of the Van Genuchten - Mualem retention curve (Van
 Genuchten 1980)
 
-Head - moisture relationship: \\\\begin{eqnarray*} W(\\\\theta) &=&
-\\\\frac{\\\\theta - \\\\theta_r}{\\\\theta_s - \\\\theta_r} \\\\\\\\
-K(W) &=& K_{sat} \\\\sqrt{W}
-\\\\left(1-\\\\left(1-W^{1/m}\\\\right)^m\\\\right)^2 \\\\\\\\ m &=&
-1-\\\\frac 1 n \\\\\\\\ \\\\Psi(W) &=& 0.01 \\\\frac{m}{cm}
-\\\\frac{{\\\\left(1-{W}^{\\\\frac{1}{m}}\\\\right)
-}^{\\\\frac{1}{n}}}{\\\\alpha\\\\,{W}^{\\\\frac{1}{m\\\\,n}}} \\\\\\\\
-W(\\\\Psi) &=&
-\\\\left(1+\\\\left(\\\\alpha\\\\,100\\\\frac{cm}{m}\\\\Psi\\\\right)^n\\\\right)^{-m}
-\\\\end{eqnarray*} where:  $K$ is the conductivity in $\\\\frac m
+Head - moisture relationship: 
+
+.. math::
+
+   W(\\\\theta) &=&
+  \\\\frac{\\\\theta - \\\\theta_r}{\\\\theta_s - \\\\theta_r} \\\\\\\\
+  K(W) &=& K_{sat} \\\\sqrt{W}
+  \\\\left(1-\\\\left(1-W^{1/m}\\\\right)^m\\\\right)^2 \\\\\\\\ m &=&
+  1-\\\\frac 1 n \\\\\\\\ \\\\Psi(W) &=& 0.01 \\\\frac{m}{cm}
+  \\\\frac{{\\\\left(1-{W}^{\\\\frac{1}{m}}\\\\right)
+  }^{\\\\frac{1}{n}}}{\\\\alpha\\\\,{W}^{\\\\frac{1}{m\\\\,n}}} \\\\\\\\
+  W(\\\\Psi) &=&
+  \\\\left(1+\\\\left(\\\\alpha\\\\,100\\\\frac{cm}{m}\\\\Psi\\\\right)^n\\\\right)^{-m}
+  
+.
+ where:  :math:`K` is the conductivity in $\\\\frac m
 {day}$
 
-$W$ is the wetness (Volume of soil water per volume of pores)
+:math:`W` is the wetness (Volume of soil water per volume of pores)
 
-$n$ is a shape parameter of the retention curve
+:math:`n` is a shape parameter of the retention curve
 
-$\\\\alpha$ is inverse of the air entry potential in $cm^{-1}$
+:math:`\\\\alpha` is inverse of the air entry potential in :math:`cm^{-1}`
 
-$\\\\Psi(W)$ is the matric potential in $m H_2O$ at wetness W
+:math:`\\\\Psi(W)` is the matric potential in :math:`m H_2O` at wetness W
 
 C++ includes: RetentionCurve.h ";
 
@@ -13615,11 +14182,11 @@ Creates a van Genuchten-Mualem retention curve.
 Parameters:
 -----------
 
-Ksat:  Saturated conductivity in $\\\\frac m{day}$
+Ksat:  Saturated conductivity in :math:`\\\\frac m{day}`
 
-phi:  Porosity in $\\\\frac{m^3 Pores}{m^3 Soil}$
+phi:  Porosity in :math:`\\\\frac{m^3 Pores}{m^3 Soil}`
 
-alpha:  Van Genuchten $\\\\alpha$ in $\\\\frac 1{cm}$
+alpha:  Van Genuchten :math:`\\\\alpha` in :math:`\\\\frac 1{cm}`
 
 n:  Van Genuchten n
 
@@ -13639,29 +14206,41 @@ Deprecated The current implementation goes to infinity at saturation,
 as noted by VanGenuchten. Diffusivity is therefore currently not
 usable in any model.
 
-\\\\[D(W) = K(W)\\\\left|\\\\frac{d\\\\Psi}{d\\\\theta}\\\\right|\\\\
-eq. 10\\\\] where:  $D(W)$ Diffusivity in $m^2/day$
 
-$K(W)$ Conductivity as a function of saturation W in m/day
 
-$\\\\Psi$ Pressure head
+.. math::
 
-$\\\\theta$ water content of the soil
+  D(W) = K(W)\\\\left|\\\\frac{d\\\\Psi}{d\\\\theta}\\\\right|\\\\
+  eq. 10
+.
+ where:  :math:`D(W)` Diffusivity in :math:`m^2/day`
+
+:math:`K(W)` Conductivity as a function of saturation W in m/day
+
+:math:`\\\\Psi` Pressure head
+
+:math:`\\\\theta` water content of the soil
 
 Applying Van Genuchten theory (Van Genuchten 1980) yields to:
-\\\\[D(W) = \\\\frac{(1-m)K_{sat}}{\\\\alpha m \\\\Phi}
-W^{l-1/m}\\\\left(\\\\left(1-W^{1/m}\\\\right)^{-m} +
-\\\\left(1-W^{1/m}\\\\right)^{m} -2\\\\right)\\\\] where:  $m = 1 -
+
+
+.. math::
+
+  D(W) = \\\\frac{(1-m)K_{sat}}{\\\\alpha m \\\\Phi}
+  W^{l-1/m}\\\\left(\\\\left(1-W^{1/m}\\\\right)^{-m} +
+  \\\\left(1-W^{1/m}\\\\right)^{m} -2\\\\right)
+.
+ where:  $m = 1 -
 \\\\frac 1 n$ acc. Mualem theory
 
-$K_{sat}$ saturated conductivity in m/day
+:math:`K_{sat}` saturated conductivity in m/day
 
-$\\\\alpha$ inverse water entry potential in 1/m. **Note** $\\\\alpha$
-is given in cmf in 1/cm
+:math:`\\\\alpha` inverse water entry potential in 1/m. Note :math:`\\\\alpha` is
+given in cmf in 1/cm
 
-$\\\\Phi$ porosity
+:math:`\\\\Phi` porosity
 
-$W = \\\\frac{\\\\theta - \\\\theta_r}{\\\\Phi - \\\\theta_r}$
+:math:`W = \\\\frac{\\\\theta - \\\\theta_r}{\\\\Phi - \\\\theta_r}`
 saturation of the soil ";
 
 %feature("docstring")  cmf::upslope::VanGenuchtenMualem::FillHeight "virtual real FillHeight(real lowerDepth, real Area, real Volume) const
@@ -13690,8 +14269,14 @@ real K(real wetness) const
 
 returns the conductivity of the soil at a given saturation
 
-\\\\[K(W) = K_{sat} \\\\sqrt{W}
-\\\\left(1-\\\\left(1-W^{1/m}\\\\right)^m\\\\right)^2 \\\\] ";
+
+
+.. math::
+
+  K(W) = K_{sat} \\\\sqrt{W}
+  \\\\left(1-\\\\left(1-W^{1/m}\\\\right)^m\\\\right)^2 
+.
+ ";
 
 %feature("docstring")
 cmf::upslope::VanGenuchtenMualem::MatricPotential "cmf::math::num_array MatricPotential(const cmf::math::num_array
@@ -13703,9 +14288,15 @@ MatricPotential(real wetness) const
 
 returns the matrix potential at a given saturation
 
-\\\\[\\\\Psi(W) = 0.01 \\\\frac{m}{cm}
-\\\\frac{{\\\\left(1-{W}^{\\\\frac{1}{m}}\\\\right)
-}^{\\\\frac{1}{n}}}{\\\\alpha\\\\,{W}^{\\\\frac{1}{m\\\\,n}}} \\\\] ";
+
+
+.. math::
+
+  \\\\Psi(W) = 0.01 \\\\frac{m}{cm}
+  \\\\frac{{\\\\left(1-{W}^{\\\\frac{1}{m}}\\\\right)
+  }^{\\\\frac{1}{n}}}{\\\\alpha\\\\,{W}^{\\\\frac{1}{m\\\\,n}}} 
+.
+ ";
 
 %feature("docstring")  cmf::upslope::VanGenuchtenMualem::Porosity "virtual real Porosity(real depth) const
 
@@ -13728,15 +14319,27 @@ const ";
 
 returns the saturation at a given suction (matrix potential).
 
-\\\\[ W(\\\\Psi) =
-\\\\left(1+\\\\left(\\\\alpha\\\\,100\\\\frac{cm}{m}\\\\Psi\\\\right)^n\\\\right)^{-m}
-\\\\] ";
+
+
+.. math::
+
+   W(\\\\Psi) =
+  \\\\left(1+\\\\left(\\\\alpha\\\\,100\\\\frac{cm}{m}\\\\Psi\\\\right)^n\\\\right)^{-m}
+  
+.
+ ";
 
 %feature("docstring")  cmf::upslope::VanGenuchtenMualem::Wetness_eff "virtual real Wetness_eff(real wetness, real pF_r=4.2) const
 
-Returns the effective wetness, using a residual pF value \\\\[w_{eff}
-=
-\\\\frac{w_{act}-w\\\\left(pF_r\\\\right)}{1-w\\\\left(pF_r\\\\right)}\\\\].
+Returns the effective wetness, using a residual pF value 
+
+.. math::
+
+  w_{eff}
+  =
+  \\\\frac{w_{act}-w\\\\left(pF_r\\\\right)}{1-w\\\\left(pF_r\\\\right)}
+.
+.
 ";
 
 %feature("docstring")  cmf::upslope::VanGenuchtenMualem::Wetness_pF "real Wetness_pF(real pF) const
@@ -13780,12 +14383,18 @@ Parameters:
 
 upperBoundary:  lowerBoundary:  Upper and lower depth below ground of
 the segment The method to claculate the distribution of roots in the
-soil depends on the fraction_at_rootdepth $f_{r0}$ parameter. If
-$f_{r0}=1$, a uniform distribution from the ground to the root depth
-is assumed. If $f_{r0}<1$, an exponential decline of root density with
-depth is assumed, that $f_{r0}$ of the roots are above the root depth
-r0. \\\\[f_{r}(z_u,z_l) = (\\\\frac 1 {1-f_{r0}})^{z_l-r0} - (\\\\frac
-1 {1-f_{r0}})^{z_u-r0}\\\\] ";
+soil depends on the fraction_at_rootdepth :math:`f_{r0}` parameter. If
+:math:`f_{r0}=1`, a uniform distribution from the ground to the root depth
+is assumed. If :math:`f_{r0}<1`, an exponential decline of root density with
+depth is assumed, that :math:`f_{r0}` of the roots are above the root depth
+r0. 
+
+.. math::
+
+  f_{r}(z_u,z_l) = (\\\\frac 1 {1-f_{r0}})^{z_l-r0} - (\\\\frac
+  1 {1-f_{r0}})^{z_u-r0}
+.
+ ";
 
 %feature("docstring")
 cmf::upslope::vegetation::Vegetation::RootFraction "cmf::math::num_array RootFraction(const cmf::math::num_array
@@ -13816,11 +14425,11 @@ alpha=0.2178, real n=1.211, real m=-1, real eta=9.14)
 Parameters:
 -----------
 
-Ksat:  Saturated conductivity in $\\\\frac m{day}$
+Ksat:  Saturated conductivity in :math:`\\\\frac m{day}`
 
-phi:  Porosity in $\\\\frac{m^3 Pores}{m^3 Soil}$
+phi:  Porosity in :math:`\\\\frac{m^3 Pores}{m^3 Soil}`
 
-alpha:  Van Genuchten $\\\\alpha$ in $\\\\frac 1{cm}$
+alpha:  Van Genuchten :math:`\\\\alpha` in :math:`\\\\frac 1{cm}`
 
 n:  Van Genuchten n
 
@@ -13846,29 +14455,41 @@ Deprecated The current implementation goes to infinity at saturation,
 as noted by VanGenuchten. Diffusivity is therefore currently not
 usable in any model.
 
-\\\\[D(W) = K(W)\\\\left|\\\\frac{d\\\\Psi}{d\\\\theta}\\\\right|\\\\
-eq. 10\\\\] where:  $D(W)$ Diffusivity in $m^2/day$
 
-$K(W)$ Conductivity as a function of saturation W in m/day
 
-$\\\\Psi$ Pressure head
+.. math::
 
-$\\\\theta$ water content of the soil
+  D(W) = K(W)\\\\left|\\\\frac{d\\\\Psi}{d\\\\theta}\\\\right|\\\\
+  eq. 10
+.
+ where:  :math:`D(W)` Diffusivity in :math:`m^2/day`
+
+:math:`K(W)` Conductivity as a function of saturation W in m/day
+
+:math:`\\\\Psi` Pressure head
+
+:math:`\\\\theta` water content of the soil
 
 Applying Van Genuchten theory (Van Genuchten 1980) yields to:
-\\\\[D(W) = \\\\frac{(1-m)K_{sat}}{\\\\alpha m \\\\Phi}
-W^{l-1/m}\\\\left(\\\\left(1-W^{1/m}\\\\right)^{-m} +
-\\\\left(1-W^{1/m}\\\\right)^{m} -2\\\\right)\\\\] where:  $m = 1 -
+
+
+.. math::
+
+  D(W) = \\\\frac{(1-m)K_{sat}}{\\\\alpha m \\\\Phi}
+  W^{l-1/m}\\\\left(\\\\left(1-W^{1/m}\\\\right)^{-m} +
+  \\\\left(1-W^{1/m}\\\\right)^{m} -2\\\\right)
+.
+ where:  $m = 1 -
 \\\\frac 1 n$ acc. Mualem theory
 
-$K_{sat}$ saturated conductivity in m/day
+:math:`K_{sat}` saturated conductivity in m/day
 
-$\\\\alpha$ inverse water entry potential in 1/m. **Note** $\\\\alpha$
-is given in cmf in 1/cm
+:math:`\\\\alpha` inverse water entry potential in 1/m. Note :math:`\\\\alpha` is
+given in cmf in 1/cm
 
-$\\\\Phi$ porosity
+:math:`\\\\Phi` porosity
 
-$W = \\\\frac{\\\\theta - \\\\theta_r}{\\\\Phi - \\\\theta_r}$
+:math:`W = \\\\frac{\\\\theta - \\\\theta_r}{\\\\Phi - \\\\theta_r}`
 saturation of the soil ";
 
 %feature("docstring")
@@ -13902,8 +14523,14 @@ wetness) const
 
 returns the conductivity of the soil at a given saturation
 
-\\\\[K(W) = K_{sat} \\\\sqrt{W}
-\\\\left(1-\\\\left(1-W^{1/m}\\\\right)^m\\\\right)^2 \\\\] ";
+
+
+.. math::
+
+  K(W) = K_{sat} \\\\sqrt{W}
+  \\\\left(1-\\\\left(1-W^{1/m}\\\\right)^m\\\\right)^2 
+.
+ ";
 
 %feature("docstring")
 cmf::upslope::VGM_BC_RetentionCurve_Windhorst::MatricPotential "cmf::math::num_array MatricPotential(const cmf::math::num_array
@@ -13914,9 +14541,15 @@ cmf::upslope::VGM_BC_RetentionCurve_Windhorst::MatricPotential "virtual real Mat
 
 returns the matrix potential at a given saturation
 
-\\\\[\\\\Psi(W) = 0.01 \\\\frac{m}{cm}
-\\\\frac{{\\\\left(1-{W}^{\\\\frac{1}{m}}\\\\right)
-}^{\\\\frac{1}{n}}}{\\\\alpha\\\\,{W}^{\\\\frac{1}{m\\\\,n}}} \\\\] ";
+
+
+.. math::
+
+  \\\\Psi(W) = 0.01 \\\\frac{m}{cm}
+  \\\\frac{{\\\\left(1-{W}^{\\\\frac{1}{m}}\\\\right)
+  }^{\\\\frac{1}{n}}}{\\\\alpha\\\\,{W}^{\\\\frac{1}{m\\\\,n}}} 
+.
+ ";
 
 %feature("docstring")
 cmf::upslope::VGM_BC_RetentionCurve_Windhorst::Porosity "virtual real
@@ -13944,17 +14577,29 @@ Wetness(real suction) const
 
 returns the saturation at a given suction (matrix potential).
 
-\\\\[ W(\\\\Psi) =
-\\\\left(1+\\\\left(\\\\alpha\\\\,100\\\\frac{cm}{m}\\\\Psi\\\\right)^n\\\\right)^{-m}
-\\\\] ";
+
+
+.. math::
+
+   W(\\\\Psi) =
+  \\\\left(1+\\\\left(\\\\alpha\\\\,100\\\\frac{cm}{m}\\\\Psi\\\\right)^n\\\\right)^{-m}
+  
+.
+ ";
 
 %feature("docstring")
 cmf::upslope::VGM_BC_RetentionCurve_Windhorst::Wetness_eff "virtual
 real Wetness_eff(real wetness, real pF_r=4.2) const
 
-Returns the effective wetness, using a residual pF value \\\\[w_{eff}
-=
-\\\\frac{w_{act}-w\\\\left(pF_r\\\\right)}{1-w\\\\left(pF_r\\\\right)}\\\\].
+Returns the effective wetness, using a residual pF value 
+
+.. math::
+
+  w_{eff}
+  =
+  \\\\frac{w_{act}-w\\\\left(pF_r\\\\right)}{1-w\\\\left(pF_r\\\\right)}
+.
+.
 ";
 
 %feature("docstring")
@@ -14009,8 +14654,14 @@ V(double h) const ";
 
 Routes the sum of all other fluxes to a target.
 
-\\\\[ q_{1,0} = \\\\sum_{i=2}^N{q_{1,i}(V_1,V_i,t)}\\\\] where:
-$q_{i,j}$ is the flux between the two node i and j. Subscript 0 is the
+
+
+.. math::
+
+   q_{1,0} = \\\\sum_{i=2}^N{q_{1,i}(V_1,V_i,t)}
+.
+ where:
+:math:`q_{i,j}` is the flux between the two node i and j. Subscript 0 is the
 right node, subscript 1 is the left node and 2..N are the nodes
 connected to the left node, except for the right node
 
@@ -14143,11 +14794,17 @@ Returns the start time of the integration. ";
 A state variable for the storage of water.
 
 A class for the storage of water. The state is the volume of water
-stored in $m^3$ The derivative function is given by:
-\\\\begin{eqnarray*} \\\\frac{dV}{dt}&=&\\\\sum_{f=1}^{F} q_f \\\\\\\\
-F&=& \\\\mbox{Number of fluxes in water storage} \\\\\\\\ q_f&=&
-\\\\mbox{Water flux in } \\\\frac{m^3}{day} \\\\\\\\
-\\\\end{eqnarray*}
+stored in :math:`m^3` The derivative function is given by:
+
+
+.. math::
+
+   \\\\frac{dV}{dt}&=&\\\\sum_{f=1}^{F} q_f \\\\\\\\
+  F&=& \\\\mbox{Number of fluxes in water storage} \\\\\\\\ q_f&=&
+  \\\\mbox{Water flux in } \\\\frac{m^3}{day} \\\\\\\\
+  
+.
+
 
 Todo Check the head based state mode
 
@@ -14361,24 +15018,30 @@ albedo, bool daily=false) const
 Calculates the net radiation flux $R_n \\\\left[\\\\frac{MJ}{m^2
 day}\\\\right]$.
 
-\\\\begin{eqnarray*} R_{n} &=& R_{ns} - R_{nl} \\\\\\\\ \\\\mbox{ Net
-short wave radiation: }R_{ns} &=& (1-\\\\alpha) R_s \\\\\\\\ \\\\mbox{
-Net long wave radiation: }R_{nl} &=& R_{black}\\\\ \\\\beta_{v}\\\\
-\\\\beta_{c} \\\\\\\\ \\\\mbox{Black body radiation: } R_{black} &=&
-\\\\left\\\\{\\\\begin{array}{cl} \\\\sigma T^4 & \\\\mbox{for less
-than daily time steps} \\\\\\\\ \\\\sigma \\\\frac {T_{max}^4 +
-T_{min}^4} 2 & \\\\mbox{for daily time steps} \\\\end{array}
-\\\\right. \\\\\\\\ T &=& \\\\mbox{Temperature }[K] \\\\\\\\ \\\\sigma
-&=& 4.903\\\\ 10^{-9} \\\\frac{MJ}{K^4 m^2 day} \\\\mbox{ Stefan-
-Boltzmann constant } \\\\\\\\ \\\\mbox{Long wave reflectance: }
-\\\\\\\\ \\\\mbox{by water vapor: }\\\\beta_{v} &=& 0.34 - 0.14
-\\\\sqrt{e_a} \\\\\\\\ \\\\mbox{ by clouds: }\\\\beta_{c} &=& 0.1 +
-0.9 \\\\frac n N \\\\end{eqnarray*}
+
+
+.. math::
+
+   R_{n} &=& R_{ns} - R_{nl} \\\\\\\\ \\\\mbox{ Net
+  short wave radiation: }R_{ns} &=& (1-\\\\alpha) R_s \\\\\\\\ \\\\mbox{
+  Net long wave radiation: }R_{nl} &=& R_{black}\\\\ \\\\beta_{v}\\\\
+  \\\\beta_{c} \\\\\\\\ \\\\mbox{Black body radiation: } R_{black} &=&
+  \\\\left\\\\{\\\\begin{array}{cl} \\\\sigma T^4 & \\\\mbox{for less
+  than daily time steps} \\\\\\\\ \\\\sigma \\\\frac {T_{max}^4 +
+  T_{min}^4} 2 & \\\\mbox{for daily time steps} \\\\end{array}
+  \\\\right. \\\\\\\\ T &=& \\\\mbox{Temperature }[K] \\\\\\\\ \\\\sigma
+  &=& 4.903\\\\ 10^{-9} \\\\frac{MJ}{K^4 m^2 day} \\\\mbox{ Stefan-
+  Boltzmann constant } \\\\\\\\ \\\\mbox{Long wave reflectance: }
+  \\\\\\\\ \\\\mbox{by water vapor: }\\\\beta_{v} &=& 0.34 - 0.14
+  \\\\sqrt{e_a} \\\\\\\\ \\\\mbox{ by clouds: }\\\\beta_{c} &=& 0.1 +
+  0.9 \\\\frac n N 
+.
+
 
 Parameters:
 -----------
 
-albedo:  the albedo $\\\\alpha$ of the surface
+albedo:  the albedo :math:`\\\\alpha` of the surface
 
 daily:  If true, the net radiation for daily averages will be
 calculated ";
@@ -14486,37 +15149,43 @@ the current hour is returned
 The calculation of the global radiation
 followshttp://www.fao.org/docrep/X0490E/x0490e07.htm#radiation.
 
-The following formula is used: \\\\begin{eqnarray*} \\\\phi &=&
-\\\\frac{(\\\\mbox{geogr. Latitude})^\\\\circ \\\\pi}{180^\\\\circ}
-\\\\mbox{ Latitude in }rad \\\\\\\\ \\\\delta &=& 0.409
-\\\\sin\\\\left(\\\\frac{2\\\\pi}{365}DOY - 1.39\\\\right) \\\\mbox{
-Declination, DOY is day of year}\\\\\\\\ \\\\omega_s &=&
-\\\\arccos(-\\\\tan\\\\phi\\\\tan\\\\delta) \\\\mbox{ Sunset angle}
-\\\\\\\\ G_{sc} &=& 0.0802 \\\\frac{MJ}{m^2min} \\\\mbox{Solar
-constant} \\\\\\\\ d_r &=& 1+0.033
-\\\\cos\\\\left(\\\\frac{2\\\\pi}{365}DOY\\\\right) \\\\mbox{Inverse
-relative distance Earth-Sun} \\\\\\\\ b &=&
-\\\\frac{2\\\\pi(DOY-81)}{364}\\\\\\\\ S_c &=&
-0.1645\\\\sin(2b)-0.1255\\\\cos(b)-0.025\\\\sin(b) \\\\mbox{ Seasonal
-correction for solar time} \\\\\\\\ \\\\omega &=& \\\\frac {\\\\pi}
-{12} \\\\left(t_h+\\\\frac{(\\\\mbox{geogr.
-Longitude})^\\\\circ}{15}-\\\\mbox{Timezone}+S_c-12\\\\right)
-\\\\mbox{ solar time in }rad \\\\\\\\ \\\\mbox{If daily} \\\\\\\\ R_a
-&=& \\\\frac{24\\\\ 60}{\\\\pi}G_{sc}\\\\ d_r \\\\left(\\\\omega_s
-\\\\sin\\\\phi \\\\sin\\\\delta + \\\\cos\\\\phi \\\\cos\\\\delta
-\\\\sin\\\\omega_s\\\\right) \\\\mbox{Extraterrestrial radiation }
-\\\\frac{MJ}{m^2 day} \\\\\\\\ \\\\mbox{If hourly} \\\\\\\\ R_a &=&
-\\\\frac{12\\\\ 24\\\\ 60}{\\\\pi}G_{sc}\\\\ d_r
-\\\\left(\\\\left(\\\\omega^+ -\\\\omega^-\\\\right) \\\\sin\\\\phi
-\\\\sin\\\\delta + \\\\cos\\\\phi \\\\cos\\\\delta
-\\\\left(\\\\sin\\\\omega^+ - \\\\sin\\\\omega^-\\\\right)\\\\right)
-\\\\\\\\ && \\\\omega^+,\\\\omega^- = \\\\omega
-\\\\pm\\\\frac{\\\\pi}{24} \\\\\\\\ \\\\frac n N &=&
-\\\\mbox{Fractional sunshine duration} \\\\\\\\ R_s &=&
-\\\\left(0.25+\\\\left(0.5+2\\\\
-10^{-5}z\\\\right)\\\\frac{n}{N}\\\\right)R_a \\\\mbox{Global
-radiation in }\\\\frac{MJ}{m^2 day} \\\\\\\\ && z=\\\\mbox{Height
-a.s.l. in }m \\\\\\\\ \\\\end{eqnarray*} ";
+The following formula is used: 
+
+.. math::
+
+   \\\\phi &=&
+  \\\\frac{(\\\\mbox{geogr. Latitude})^\\\\circ \\\\pi}{180^\\\\circ}
+  \\\\mbox{ Latitude in }rad \\\\\\\\ \\\\delta &=& 0.409
+  \\\\sin\\\\left(\\\\frac{2\\\\pi}{365}DOY - 1.39\\\\right) \\\\mbox{
+  Declination, DOY is day of year}\\\\\\\\ \\\\omega_s &=&
+  \\\\arccos(-\\\\tan\\\\phi\\\\tan\\\\delta) \\\\mbox{ Sunset angle}
+  \\\\\\\\ G_{sc} &=& 0.0802 \\\\frac{MJ}{m^2min} \\\\mbox{Solar
+  constant} \\\\\\\\ d_r &=& 1+0.033
+  \\\\cos\\\\left(\\\\frac{2\\\\pi}{365}DOY\\\\right) \\\\mbox{Inverse
+  relative distance Earth-Sun} \\\\\\\\ b &=&
+  \\\\frac{2\\\\pi(DOY-81)}{364}\\\\\\\\ S_c &=&
+  0.1645\\\\sin(2b)-0.1255\\\\cos(b)-0.025\\\\sin(b) \\\\mbox{ Seasonal
+  correction for solar time} \\\\\\\\ \\\\omega &=& \\\\frac {\\\\pi}
+  {12} \\\\left(t_h+\\\\frac{(\\\\mbox{geogr.
+  Longitude})^\\\\circ}{15}-\\\\mbox{Timezone}+S_c-12\\\\right)
+  \\\\mbox{ solar time in }rad \\\\\\\\ \\\\mbox{If daily} \\\\\\\\ R_a
+  &=& \\\\frac{24\\\\ 60}{\\\\pi}G_{sc}\\\\ d_r \\\\left(\\\\omega_s
+  \\\\sin\\\\phi \\\\sin\\\\delta + \\\\cos\\\\phi \\\\cos\\\\delta
+  \\\\sin\\\\omega_s\\\\right) \\\\mbox{Extraterrestrial radiation }
+  \\\\frac{MJ}{m^2 day} \\\\\\\\ \\\\mbox{If hourly} \\\\\\\\ R_a &=&
+  \\\\frac{12\\\\ 24\\\\ 60}{\\\\pi}G_{sc}\\\\ d_r
+  \\\\left(\\\\left(\\\\omega^+ -\\\\omega^-\\\\right) \\\\sin\\\\phi
+  \\\\sin\\\\delta + \\\\cos\\\\phi \\\\cos\\\\delta
+  \\\\left(\\\\sin\\\\omega^+ - \\\\sin\\\\omega^-\\\\right)\\\\right)
+  \\\\\\\\ && \\\\omega^+,\\\\omega^- = \\\\omega
+  \\\\pm\\\\frac{\\\\pi}{24} \\\\\\\\ \\\\frac n N &=&
+  \\\\mbox{Fractional sunshine duration} \\\\\\\\ R_s &=&
+  \\\\left(0.25+\\\\left(0.5+2\\\\
+  10^{-5}z\\\\right)\\\\frac{n}{N}\\\\right)R_a \\\\mbox{Global
+  radiation in }\\\\frac{MJ}{m^2 day} \\\\\\\\ && z=\\\\mbox{Height
+  a.s.l. in }m \\\\\\\\ 
+.
+ ";
 
 %feature("docstring")  cmf::atmosphere::Pressure "double
 cmf::atmosphere::Pressure(double height)
@@ -14532,8 +15201,14 @@ humidity in % for temperature T [degC] and vapor pressure deficit vpd
 [Pa]
 
 the rel. humidity is calculated from the vapor pressure deficit $vpd =
-e_s - e_a$ as: \\\\[rH = 100 * \\\\frac{e_a}{e_s(T)}, e_a = e_s(T) -
-vpd\\\\] The definition is
+e_s - e_a$ as: 
+
+.. math::
+
+  rH = 100 * \\\\frac{e_a}{e_s(T)}, e_a = e_s(T) -
+  vpd
+.
+ The definition is
 fromhttp://www.fao.org/docrep/X0490E/x0490e07.htm#concepts
 
 Parameters:
@@ -14543,7 +15218,7 @@ T:  Air temperature in degC
 
 vpd:  Vapor pressure deficit in Pa
 
-$e_s(T)$ is calculated using cmf::atmosphere::vapor_pressure(double)
+:math:`e_s(T)` is calculated using cmf::atmosphere::vapor_pressure(double)
 ";
 
 %feature("docstring")  cmf::atmosphere::vapour_pressure "double
@@ -14551,9 +15226,15 @@ cmf::atmosphere::vapour_pressure(double T)
 
 Returns the saturated vapor pressure in Pa for temperature T [degC].
 
-The saturated vapor pressure $e_s$ is calculated follwing the
-following formula \\\\[e_s = 0.6108 \\\\exp{\\\\frac{17.27
-T}{T+237.3}}\\\\] The definition is
+The saturated vapor pressure :math:`e_s` is calculated follwing the
+following formula 
+
+.. math::
+
+  e_s = 0.6108 \\\\exp{\\\\frac{17.27
+  T}{T+237.3}}
+.
+ The definition is
 fromhttp://www.fao.org/docrep/X0490E/x0490e07.htm#concepts ";
 
 %feature("docstring")  cmf::atmosphere::vpd_from_rH "double
@@ -14564,8 +15245,14 @@ rel.
 
 humidity rH [%]
 
-The vapor pressure deficit $e_s - e_a$ is calculated from rel.
-humidity as: \\\\[e_s - e_a = (1-rH/100) * e_s(T)\\\\] The definition
+The vapor pressure deficit :math:`e_s - e_a` is calculated from rel.
+humidity as: 
+
+.. math::
+
+  e_s - e_a = (1-rH/100) * e_s(T)
+.
+ The definition
 is fromhttp://www.fao.org/docrep/X0490E/x0490e07.htm#concepts
 
 Parameters:
@@ -14575,7 +15262,7 @@ T:  Air temperature in degC
 
 rH:  Rel. humidity in %
 
-$e_s(T)$ is calculated using cmf::atmosphere::vapor_pressure(double)
+:math:`e_s(T)` is calculated using cmf::atmosphere::vapor_pressure(double)
 ";
 
 
@@ -14601,16 +15288,22 @@ cmf::math::timeseries &observation)
 Calculates the Nash-Sutcliffe efficiency of a modeled timeseries in
 comparison with an observed timeseries.
 
-The Nash-Sutcliffe efficiancy is defined as: \\\\[ E = 1 -
-\\\\frac{\\\\sum_{t=1}^{T}(M_t - O_t)^2}{\\\\sum_{t=1}^{T}(O_t -
-\\\\overline{O})^2}\\\\] where  $T$ is the number of observation time
+The Nash-Sutcliffe efficiancy is defined as: 
+
+.. math::
+
+   E = 1 -
+  \\\\frac{\\\\sum_{t=1}^{T}(M_t - O_t)^2}{\\\\sum_{t=1}^{T}(O_t -
+  \\\\overline{O})^2}
+.
+ where  :math:`T` is the number of observation time
 steps
 
-$M$ is the timeseries of model results matchinig O
+:math:`M` is the timeseries of model results matchinig O
 
-$O$ is the timeseries containing observations
+:math:`O` is the timeseries containing observations
 
-$\\\\overline{O}$ is the arithmetic mean of observations ";
+:math:`\\\\overline{O}` is the arithmetic mean of observations ";
 
 %feature("docstring")  cmf::math::set_parallel_threads "int
 cmf::math::set_parallel_threads(int numthreads)
@@ -14731,40 +15424,46 @@ Returns the potential ET after Penman-Monteith using some
 simplifications for a given Radiation balance, aerodynamic and surface
 resistances, and a vapor pressure deficit.
 
-\\\\[ ET = \\\\frac{\\\\Delta R_n}{\\\\lambda \\\\Delta + \\\\gamma +
-\\\\gamma \\\\frac{r_s}{r_a}} + \\\\frac{c_p\\\\rho_a}{\\\\Delta +
-\\\\gamma + \\\\gamma \\\\frac{r_s}{r_a}} \\\\frac{e_s - e_a}{r_a}
-\\\\] where  $ ET $ is the evapotranspiration in $\\\\frac{kg}{m^2
+
+
+.. math::
+
+   ET = \\\\frac{\\\\Delta R_n}{\\\\lambda \\\\Delta + \\\\gamma +
+  \\\\gamma \\\\frac{r_s}{r_a}} + \\\\frac{c_p\\\\rho_a}{\\\\Delta +
+  \\\\gamma + \\\\gamma \\\\frac{r_s}{r_a}} \\\\frac{e_s - e_a}{r_a}
+  
+.
+ where  :math:` ET ` is the evapotranspiration in $\\\\frac{kg}{m^2
 day}\\\\approx \\\\frac{mm}{day}$
 
 $ \\\\Delta \\\\left[\\\\frac{kPa}{k}\\\\right]= 4098\\\\ 0.618
 \\\\exp\\\\left(\\\\frac{17.27 T}{T+237.3}\\\\right (T+237.3)^{-2} $
 is the slope of vapor pressure
 
-$ R_n \\\\left[\\\\frac{MJ}{m^2 day}\\\\right]$ is the radiation
+:math:` R_n \\\\left[\\\\frac{MJ}{m^2 day}\\\\right]` is the radiation
 balance
 
-$ r_s \\\\left[\\\\frac s m\\\\right] $ is the surface resistance
+:math:` r_s \\\\left[\\\\frac s m\\\\right] ` is the surface resistance
 
-$ r_a \\\\left[\\\\frac s m\\\\right] $ is the aerodynamic resistance
+:math:` r_a \\\\left[\\\\frac s m\\\\right] ` is the aerodynamic resistance
 
-$ \\\\gamma = 0.067 \\\\left[\\\\frac{kPa}{k}\\\\right] $ is the
+:math:` \\\\gamma = 0.067 \\\\left[\\\\frac{kPa}{k}\\\\right] ` is the
 psychrometer constant
 
-$ e_s - e_a \\\\left[kPa\\\\right]$ is the vapor pressure deficit
+:math:` e_s - e_a \\\\left[kPa\\\\right]` is the vapor pressure deficit
 
 Parameters:
 -----------
 
-Rn:  Radiation balance in $ \\\\frac{MJ}{m^2 day} $
+Rn:  Radiation balance in :math:` \\\\frac{MJ}{m^2 day} `
 
-ra:  Aerodynamic resistance in $ \\\\frac s m $
+ra:  Aerodynamic resistance in :math:` \\\\frac s m `
 
-rs:  Surface resistance in $ \\\\frac s m $, is 0 for free water
+rs:  Surface resistance in :math:` \\\\frac s m `, is 0 for free water
 
-T:  Actual Temperature in $ ^\\\\circ C $
+T:  Actual Temperature in :math:` ^\\\\circ C `
 
-vap_press_deficit:  Deficit of vapor pressure $ kPa $ ";
+vap_press_deficit:  Deficit of vapor pressure :math:` kPa ` ";
 
 %feature("docstring")  cmf::upslope::ET::PenmanMonteith "real
 cmf::upslope::ET::PenmanMonteith(cmf::atmosphere::Weather A, const
@@ -14795,15 +15494,21 @@ This function is used to calculate the actual water uptake in m3/day
 from a single soillayer sw according to root depth and the potential
 transpiration (or ETpot if there is no difference) in mm/day The water
 flux is calculated as follows:
-\\\\[q_{T_{pot}}[m^3/day]=T_{pot}[mm/day] 10^{-3}[mm/m]A_{cell}[m^2]
-f_r\\\\] where:  $q_{T_{pot}}$: the potential transpiration flux from
+
+
+.. math::
+
+  q_{T_{pot}}[m^3/day]=T_{pot}[mm/day] 10^{-3}[mm/m]A_{cell}[m^2]
+  f_r
+.
+ where:  :math:`q_{T_{pot}}`: the potential transpiration flux from
 this layer
 
-$T_{pot}$: the potential transpiration for the cell
+:math:`T_{pot}`: the potential transpiration for the cell
 
-$A_{cell}$: the area of the cell
+:math:`A_{cell}`: the area of the cell
 
-$f_r=\\\\frac{R_{layer}}{\\\\sum_{i=0}^{layers}{R_i}}$: the root mass
+:math:`f_r=\\\\frac{R_{layer}}{\\\\sum_{i=0}^{layers}{R_i}}`: the root mass
 in this layer per total root mass at this cell. This is calculated
 with the cmf::upslope::vegetation::Vegetation::RootFraction ";
 
@@ -16066,4 +16771,5 @@ x, real xmin, real xmax, real ymin=0, real ymax=1) ";
 
 
 // File: dir_8b4109f3d59abed5ff481179ab00febc.xml
+
 

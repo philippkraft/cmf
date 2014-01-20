@@ -46,7 +46,7 @@ real cmf::math::ImplicitEuler::error_exceedance( const num_array& compare,ptrdif
 {
 	real res=0;
 #pragma omp parallel for shared(res)
-	for (ptrdiff_t i = 0; i < size() ; i++)
+	for (ptrdiff_t i = 0; i < ptrdiff_t(size()) ; i++)
 	{
 		real error=fabs(compare[i]-get_state(i));
 		// Calculate absolute error tolerance as: epsilon + |(x_p+x_(n+1))/2|*epsilon
@@ -150,7 +150,7 @@ void cmf::math::ImplicitEuler::Gear1newState( real h )
 	if (use_OpenMP)
 	{
 #pragma omp parallel for private(state_i)
-		for (ptrdiff_t i = 0; i < size() ; i++)
+		for (ptrdiff_t i = 0; i < ptrdiff_t(size()) ; i++)
 		{
 			// The formula is written so ugly to avoid internal memory allocation
 			// x_n+1 = x_(n) + h dxdt
@@ -162,7 +162,7 @@ void cmf::math::ImplicitEuler::Gear1newState( real h )
 	}
 	else
 	{
-		for (ptrdiff_t i = 0; i < size() ; i++)
+		for (ptrdiff_t i = 0; i < ptrdiff_t(size()) ; i++)
 		{
 			// The formula is written so ugly to avoid internal memory allocation
 			// x_n+1 = x_(n) + h dxdt

@@ -266,7 +266,7 @@ namespace cmf {
 			name_map m_name_map;
 		public:
 			/// Returns the number of stations
-			ptrdiff_t size() const {return ptrdiff_t(m_stations.size());}
+			size_t size() const {return m_stations.size();}
 			/// Gets the station at index
 			MeteoStation::ptr operator[](ptrdiff_t index) const
 			{

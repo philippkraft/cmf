@@ -184,9 +184,9 @@ namespace cmf {
 			}
 
 			void remove_storage(cmf::water::WaterStorage::ptr storage);
-			ptrdiff_t storage_count() const
+			size_t storage_count() const
 			{
-				return ptrdiff_t(m_storages.size());
+				return size_t(m_storages.size());
 			}
 			cmf::water::WaterStorage::ptr get_storage(ptrdiff_t index) const;
 			cmf::water::WaterStorage::ptr get_canopy() const;
@@ -227,9 +227,9 @@ namespace cmf {
 			layer_list m_Layers;
 		public:
 			/// Returns the number of layers of the cell
-			ptrdiff_t layer_count() const
+			size_t layer_count() const
 			{
-				return ptrdiff_t(m_Layers.size());
+				return size_t(m_Layers.size());
 			}
 			/// Returns the layer at position ndx.
 			///

@@ -139,7 +139,7 @@ namespace cmf {
 			/// Change the point at index
 			void set(ptrdiff_t index,cmf::geometry::point p) {X[index]=p.x;Y[index]=p.y;Z[index]=p.z;}
 			/// Return the number of points in the point_vector
-			ptrdiff_t size() const
+			size_t size() const
 			{
 				return X.size();
 			}
