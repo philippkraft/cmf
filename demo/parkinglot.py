@@ -1,0 +1,98 @@
+# -*- coding: utf-8 -*-
+#%%
+import cmf
+import numpy as np
+import matplotlib.pyplot as plt
+import matplotlib.animation as animation
+
+# Create a project
+p = cmf.project()
+cells={}
+slope = 0.0001
+size=(20,20)
+length = 1.
+# Create a 20x20 grid of cells with constant slope
+
+for j in range(size[1]):
+    for i in range(size[0]):
+        x,y = i*length,j*length
+        # Create cells with slope in x+y direction
+        #offset = np.random.uniform(0,.05) if not is_border else -0.05
+        c = p.NewCell(x,y,(x+y)*slope, length**2)
+        # Store cells with position in dictionary        
+        cells[i,j] = c
+        # Set up topology (4 Neighbors)
+        if i:
+            c.topology.AddNeighbor(cells[i-1,j],length*.75)
+        if j:
+            c.topology.AddNeighbor(cells[i,j-1],length*.75)
+        if i and j:
+            c.topology.AddNeighbor(cells[i,j-1],length*.5)
+            
+            
+for c in p:
+    c.surfacewater_as_storage()
+    # 1mm puddle depth
+    c.surfacewater.puddledepth = np.random.uniform(0.0,0.0001)
+    #c.surfacewater.depth = 0.002
+    # Asphalt        
+    c.surfacewater.nManning = 0.015 
+    c.add_layer(0.1, cmf.VanGenuchtenMualem(Ksat=0.005))
+    c.install_connection(cmf.GreenAmptInfiltration)
+
+cmf.connect_cells_with_flux(p, cmf.KinematicSurfaceRunoff)
+outlet = p.NewOutlet('outlet',-length,0,-slope*length)
+#for j in range(size[1]):
+#    for i in range(size[0]):
+#        is_border = i in [0,size[0]-1] or j in [0, size[1]-1]
+#        if is_border:
+#            cmf.waterbalance_connection(cells[i,j].surfacewater,outlet)
+cmf.KinematicSurfaceRunoff(cells[0,0].surfacewater, outlet,length)
+
+def setrain(rainfall):
+    for c in p:
+        c.set_rainfall(rainfall)
+#    cells[size[0]//2,size[1]//2].set_rainfall(rainfall*20)
+
+solver = cmf.CVodeIntegrator(p,1e-8)
+setrain(10.*24.)
+def getdepth():
+    return np.array([[cells[i,j].surfacewater.depth for i in range(size[0])] for j in range(size[1])])
+#%%
+fig,ax = plt.subplots()
+img = ax.imshow(getdepth(),cmap=plt.cm.Blues,aspect='equal',
+                vmin=0.0,vmax=0.01,origin='bottom',interpolation='nearest',
+                extent=(-length/2,(size[0]-.5)*length,-length/2,length*(size[1]-.5)))
+fluxdir = cmf.cell_flux_directions(p,solver.t)
+pos = cmf.cell_positions(p.cells)
+a=np.array
+quiver = ax.quiver(pos.X,pos.Y,
+                   fluxdir.X,fluxdir.Y,
+                   scale=1000,zorder=10, pivot='center')
+title = ax.text(length,(size[1]-2)*length,solver.t, size=16)
+ax.set_xlim(-length,length*size[0])
+ax.set_ylim(-length,length*size[1])
+dt=cmf.sec * 60
+#%%
+qout = cmf.timeseries(solver.t,dt)
+def run(data):
+    solver(solver.t+dt)
+    t = solver.t
+    if t>cmf.h:
+        setrain(0.0)
+    img.set_array(getdepth())
+    fluxdir = cmf.cell_flux_directions(p,t)
+    quiver.set_UVC(fluxdir.X,fluxdir.Y)
+    title.set_text('%s/%s %g mm' % (t,solver.dt, np.mean(c.surfacewater.depth)* 1000))
+    qout.add(outlet(t))
+    return img,quiver,title
+#%%
+ani = animation.FuncAnimation(fig,run,frames=int(2*cmf.h/dt),blit=False,interval=20,repeat=False)
+
+plt.show()
+#%%
+fig2,ax2 = plt.subplots()
+plt.sca(ax2)
+plt.plot(qout)
+plt.show()
+#%%
