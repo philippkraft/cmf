@@ -468,7 +468,7 @@ class point_vector(object):
         """
         size(point_vector self) -> size_t
 
-        ptrdiff_t
+        size_t
         size() const
 
         Return the number of points in the point_vector. 
@@ -981,9 +981,7 @@ class timeseries(object):
     Creating a time series
 
     With this technique it is simple to read files or databases to fill
-    timeseries.
-
-    Using a timeseries
+    timeseries.<b> Using a timeseries</b>
 
     C++ includes: timeseries.h 
     """
@@ -1053,7 +1051,7 @@ class timeseries(object):
         """
         size(timeseries self) -> size_t
 
-        ptrdiff_t size()
+        size_t size()
         const
 
         Number of items in the timeseries. 
@@ -1064,7 +1062,7 @@ class timeseries(object):
         """
         count_values(timeseries self) -> size_t
 
-        ptrdiff_t
+        size_t
         count_values() const
 
         Number of valid values (=size - # of NaN's) 
@@ -1955,7 +1953,7 @@ class Integrator(StateVariableOwner):
         """
         size(Integrator self) -> size_t
 
-        ptrdiff_t size()
+        size_t size()
         const
 
         returns the number of state variables 
@@ -4034,7 +4032,7 @@ class node_list(StateVariableOwner):
         """
         size(node_list self) -> size_t
 
-        ptrdiff_t size()
+        size_t size()
         const
 
         The number of nodes. 
@@ -5181,7 +5179,7 @@ class MeteoStationList(object):
         """
         __len__(MeteoStationList self) -> size_t
 
-        ptrdiff_t size() const
+        size_t size() const
 
         Returns the number of stations. 
         """
@@ -5953,7 +5951,7 @@ class Cell(StateVariableOwner):
         """
         storage_count(Cell self) -> size_t
 
-        ptrdiff_t
+        size_t
         storage_count() const 
         """
         return _cmf_core.Cell_storage_count(self, *args, **kwargs)
@@ -6066,7 +6064,7 @@ class Cell(StateVariableOwner):
         """
         layer_count(Cell self) -> size_t
 
-        ptrdiff_t
+        size_t
         layer_count() const
 
         Returns the number of layers of the cell. 
@@ -6106,8 +6104,8 @@ class Cell(StateVariableOwner):
         is smaller or equal than the lowerboundary of thelowest layer, an
         error is raised
 
-        r_curve:  A retention curve. [See here](/wiki/CmfTutRetentioncurve)
-        for a discussion on retention curves in cmf.
+        r_curve:  A retention curve.See here for a discussion on retention
+        curves in cmf.
 
         saturateddepth:  The initial potential of the new layer in m below
         surface. Default = 10m (=quite dry) 
@@ -8842,8 +8840,7 @@ class KinematicSurfaceRunoff(flux_connection):
 
     The KinematicSurfaceRunoff can be used as a cell connecting flux as
     in: This results in a connection of the surfacewater storage of each
-    cell with the surface water storages of its neighbors
-    [see](/wiki/CmfTutCell)
+    cell with the surface water storages of its neighborssee
 
     C++ includes: surfacewater.h 
     """
@@ -8871,8 +8868,7 @@ class KinematicSurfaceRunoff(flux_connection):
         in m
 
         distance:  the distance between left and right in m. If d<=0m, the
-        distance is calculated according to the position of _left_ and _right_
-
+        distance is calculated according to the position of left and right 
         """
         _cmf_core.KinematicSurfaceRunoff_swiginit(self,_cmf_core.new_KinematicSurfaceRunoff(*args, **kwargs))
     __swig_destroy__ = _cmf_core.delete_KinematicSurfaceRunoff
@@ -9589,7 +9585,18 @@ def EnergyBudgetSnowMelt_use_for_cell(*args, **kwargs):
 
 
 def snowfraction(*args, **kwargs):
-  """snowfraction(real T) -> real"""
+  """
+    snowfraction(real T) -> real
+
+    real
+    cmf::upslope::connections::snowfraction(real T)
+
+    A function to calculate the snow fraction of the precipitation
+    according to the air temperature.
+
+    Returns 0.0 for T>+1 degC, 1.0 for T<-1degC and interpolates linear
+    between. Values between 0 and 1 can be interpreted as sleet 
+    """
   return _cmf_core.snowfraction(*args, **kwargs)
 class Rainfall(flux_connection):
     """
@@ -9607,7 +9614,9 @@ class Rainfall(flux_connection):
         __init__(cmf::upslope::connections::Rainfall self, cmf::water::flux_node::ptr target, Cell cell, bool getthroughfall=True, bool getintercepted=True) -> Rainfall
 
         Rainfall(cmf::water::flux_node::ptr target, cmf::upslope::Cell &cell,
-        bool getthroughfall=true, bool getintercepted=true) 
+        bool getthroughfall=true, bool getintercepted=true)
+
+        Creates a new Rainfall connection. 
         """
         _cmf_core.Rainfall_swiginit(self,_cmf_core.new_Rainfall(*args, **kwargs))
     __swig_destroy__ = _cmf_core.delete_Rainfall
@@ -10738,15 +10747,12 @@ class HargreaveET(flux_connection):
 
     :math:` \\Phi` geographic latitude (radians)
 
-    See:  SAMANI, Zohrab. [Estimating solar radiation and
-    evapotranspiration using minimum climatological data.][1] _Journal of
-    Irrigation and Drainage Engineering,_ 2000, 126. Jg., Nr. 4, S.
-    265-267.  Crop specific potential evapotranspiration is scaled by LAI:
-    $ ET_{pot} = ET_{rc} \\frac{LAI}{2.88}$. Actual evapotranspiration
-    is calculated using cmf::upslope::ET::Tact
-
-    [1]:http://cagesun.nmsu.edu/~zsamani/research_material/files/Hargreaves-
-    samani.pdf
+    See:  SAMANI, Zohrab.Estimating solar radiation and evapotranspiration
+    using minimum climatological data. Journal of Irrigation and Drainage
+    Engineering, 2000, 126. Jg., Nr. 4, S. 265-267.  Crop specific
+    potential evapotranspiration is scaled by LAI: $ ET_{pot} = ET_{rc}
+    \\frac{LAI}{2.88}$. Actual evapotranspiration is calculated using
+    cmf::upslope::ET::Tact
 
     C++ includes: ET.h 
     """
@@ -10967,7 +10973,7 @@ class project(StateVariableOwner):
         """
         remove_node(project self, cmf::water::flux_node::ptr node) -> size_t
 
-        ptrdiff_t
+        size_t
         remove_node(cmf::water::flux_node::ptr node)
 
         Removes a node from the repository.
@@ -11180,7 +11186,7 @@ class project(StateVariableOwner):
         """
         size(project self) -> size_t
 
-        ptrdiff_t size() const
+        size_t size() const
 
         The number of cells in the project. 
         """
@@ -11219,7 +11225,7 @@ class project(StateVariableOwner):
         Parameters:
         -----------
 
-        x:  y:  z:  Position of the cell center in project coordiantes (m)
+        x:  y:  z:  Position of the cell center in project coordinates (m)
 
         area:  Area of the cell in m^2
 
@@ -11335,7 +11341,7 @@ class project(StateVariableOwner):
         """
         reach_count(project self) -> size_t
 
-        ptrdiff_t
+        size_t
         reach_count() const
 
         Returns the number of reaches in this project. 
@@ -11356,8 +11362,8 @@ class project(StateVariableOwner):
         """
         node_count(project self) -> size_t
 
-        ptrdiff_t
-        node_count() const
+        size_t node_count()
+        const
 
         Returns the number of nodes saved with this project. 
         """
