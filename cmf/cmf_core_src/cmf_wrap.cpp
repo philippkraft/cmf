@@ -69084,7 +69084,7 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"point_vector_size", (PyCFunction)_wrap_point_vector_size, METH_O, (char *)"\n"
 		"point_vector_size(point_vector self) -> size_t\n"
 		"\n"
-		"ptrdiff_t\n"
+		"size_t\n"
 		"size() const\n"
 		"\n"
 		"Return the number of points in the point_vector. \n"
@@ -69355,7 +69355,7 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"timeseries_size", (PyCFunction)_wrap_timeseries_size, METH_O, (char *)"\n"
 		"timeseries_size(timeseries self) -> size_t\n"
 		"\n"
-		"ptrdiff_t size()\n"
+		"size_t size()\n"
 		"const\n"
 		"\n"
 		"Number of items in the timeseries. \n"
@@ -69363,7 +69363,7 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"timeseries_count_values", (PyCFunction)_wrap_timeseries_count_values, METH_O, (char *)"\n"
 		"timeseries_count_values(timeseries self) -> size_t\n"
 		"\n"
-		"ptrdiff_t\n"
+		"size_t\n"
 		"count_values() const\n"
 		"\n"
 		"Number of valid values (=size - # of NaN's) \n"
@@ -69790,7 +69790,7 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"Integrator_size", (PyCFunction)_wrap_Integrator_size, METH_O, (char *)"\n"
 		"Integrator_size(Integrator self) -> size_t\n"
 		"\n"
-		"ptrdiff_t size()\n"
+		"size_t size()\n"
 		"const\n"
 		"\n"
 		"returns the number of state variables \n"
@@ -70948,7 +70948,7 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"node_list_size", (PyCFunction)_wrap_node_list_size, METH_O, (char *)"\n"
 		"node_list_size(node_list self) -> size_t\n"
 		"\n"
-		"ptrdiff_t size()\n"
+		"size_t size()\n"
 		"const\n"
 		"\n"
 		"The number of nodes. \n"
@@ -71688,7 +71688,7 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"MeteoStationList___len__", (PyCFunction)_wrap_MeteoStationList___len__, METH_O, (char *)"\n"
 		"MeteoStationList___len__(MeteoStationList self) -> size_t\n"
 		"\n"
-		"ptrdiff_t size() const\n"
+		"size_t size() const\n"
 		"\n"
 		"Returns the number of stations. \n"
 		""},
@@ -72146,7 +72146,7 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"Cell_storage_count", (PyCFunction)_wrap_Cell_storage_count, METH_O, (char *)"\n"
 		"Cell_storage_count(Cell self) -> size_t\n"
 		"\n"
-		"ptrdiff_t\n"
+		"size_t\n"
 		"storage_count() const \n"
 		""},
 	 { (char *)"Cell_get_storage", (PyCFunction) _wrap_Cell_get_storage, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
@@ -72232,7 +72232,7 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"Cell_layer_count", (PyCFunction)_wrap_Cell_layer_count, METH_O, (char *)"\n"
 		"Cell_layer_count(Cell self) -> size_t\n"
 		"\n"
-		"ptrdiff_t\n"
+		"size_t\n"
 		"layer_count() const\n"
 		"\n"
 		"Returns the number of layers of the cell. \n"
@@ -72266,8 +72266,8 @@ static PyMethodDef SwigMethods[] = {
 		"is smaller or equal than the lowerboundary of thelowest layer, an\n"
 		"error is raised\n"
 		"\n"
-		"r_curve:  A retention curve. [See here](/wiki/CmfTutRetentioncurve)\n"
-		"for a discussion on retention curves in cmf.\n"
+		"r_curve:  A retention curve.See here for a discussion on retention\n"
+		"curves in cmf.\n"
 		"\n"
 		"saturateddepth:  The initial potential of the new layer in m below\n"
 		"surface. Default = 10m (=quite dry) \n"
@@ -73716,8 +73716,7 @@ static PyMethodDef SwigMethods[] = {
 		"in m\n"
 		"\n"
 		"distance:  the distance between left and right in m. If d<=0m, the\n"
-		"distance is calculated according to the position of _left_ and _right_\n"
-		"\n"
+		"distance is calculated according to the position of left and right \n"
 		""},
 	 { (char *)"delete_KinematicSurfaceRunoff", (PyCFunction)_wrap_delete_KinematicSurfaceRunoff, METH_O, (char *)"delete_KinematicSurfaceRunoff(KinematicSurfaceRunoff self)"},
 	 { (char *)"KinematicSurfaceRunoff_swigregister", KinematicSurfaceRunoff_swigregister, METH_VARARGS, NULL},
@@ -73996,7 +73995,18 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"delete_EnergyBudgetSnowMelt", (PyCFunction)_wrap_delete_EnergyBudgetSnowMelt, METH_O, (char *)"delete_EnergyBudgetSnowMelt(EnergyBudgetSnowMelt self)"},
 	 { (char *)"EnergyBudgetSnowMelt_swigregister", EnergyBudgetSnowMelt_swigregister, METH_VARARGS, NULL},
 	 { (char *)"EnergyBudgetSnowMelt_swiginit", EnergyBudgetSnowMelt_swiginit, METH_VARARGS, NULL},
-	 { (char *)"snowfraction", (PyCFunction) _wrap_snowfraction, METH_VARARGS | METH_KEYWORDS, (char *)"snowfraction(real T) -> real"},
+	 { (char *)"snowfraction", (PyCFunction) _wrap_snowfraction, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
+		"snowfraction(real T) -> real\n"
+		"\n"
+		"real\n"
+		"cmf::upslope::connections::snowfraction(real T)\n"
+		"\n"
+		"A function to calculate the snow fraction of the precipitation\n"
+		"according to the air temperature.\n"
+		"\n"
+		"Returns 0.0 for T>+1 degC, 1.0 for T<-1degC and interpolates linear\n"
+		"between. Values between 0 and 1 can be interpreted as sleet \n"
+		""},
 	 { (char *)"Rainfall_Throughfall_set", _wrap_Rainfall_Throughfall_set, METH_VARARGS, (char *)"Rainfall_Throughfall_set(Rainfall self, bool Throughfall)"},
 	 { (char *)"Rainfall_Throughfall_get", (PyCFunction)_wrap_Rainfall_Throughfall_get, METH_O, (char *)"Rainfall_Throughfall_get(Rainfall self) -> bool"},
 	 { (char *)"Rainfall_InterceptedRainfall_set", _wrap_Rainfall_InterceptedRainfall_set, METH_VARARGS, (char *)"Rainfall_InterceptedRainfall_set(Rainfall self, bool InterceptedRainfall)"},
@@ -74005,7 +74015,9 @@ static PyMethodDef SwigMethods[] = {
 		"new_Rainfall(cmf::water::flux_node::ptr target, Cell cell, bool getthroughfall=True, bool getintercepted=True) -> Rainfall\n"
 		"\n"
 		"Rainfall(cmf::water::flux_node::ptr target, cmf::upslope::Cell &cell,\n"
-		"bool getthroughfall=true, bool getintercepted=true) \n"
+		"bool getthroughfall=true, bool getintercepted=true)\n"
+		"\n"
+		"Creates a new Rainfall connection. \n"
 		""},
 	 { (char *)"delete_Rainfall", (PyCFunction)_wrap_delete_Rainfall, METH_O, (char *)"delete_Rainfall(Rainfall self)"},
 	 { (char *)"Rainfall_swigregister", Rainfall_swigregister, METH_VARARGS, NULL},
@@ -74528,7 +74540,7 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"project_remove_node", (PyCFunction) _wrap_project_remove_node, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
 		"project_remove_node(project self, cmf::water::flux_node::ptr node) -> size_t\n"
 		"\n"
-		"ptrdiff_t\n"
+		"size_t\n"
 		"remove_node(cmf::water::flux_node::ptr node)\n"
 		"\n"
 		"Removes a node from the repository.\n"
@@ -74725,7 +74737,7 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"project_size", (PyCFunction)_wrap_project_size, METH_O, (char *)"\n"
 		"project_size(project self) -> size_t\n"
 		"\n"
-		"ptrdiff_t size() const\n"
+		"size_t size() const\n"
 		"\n"
 		"The number of cells in the project. \n"
 		""},
@@ -74764,7 +74776,7 @@ static PyMethodDef SwigMethods[] = {
 		"Parameters:\n"
 		"-----------\n"
 		"\n"
-		"x:  y:  z:  Position of the cell center in project coordiantes (m)\n"
+		"x:  y:  z:  Position of the cell center in project coordinates (m)\n"
 		"\n"
 		"area:  Area of the cell in m^2\n"
 		"\n"
@@ -74862,7 +74874,7 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"project_reach_count", (PyCFunction)_wrap_project_reach_count, METH_O, (char *)"\n"
 		"project_reach_count(project self) -> size_t\n"
 		"\n"
-		"ptrdiff_t\n"
+		"size_t\n"
 		"reach_count() const\n"
 		"\n"
 		"Returns the number of reaches in this project. \n"
@@ -74877,8 +74889,8 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"project_node_count", (PyCFunction)_wrap_project_node_count, METH_O, (char *)"\n"
 		"project_node_count(project self) -> size_t\n"
 		"\n"
-		"ptrdiff_t\n"
-		"node_count() const\n"
+		"size_t node_count()\n"
+		"const\n"
 		"\n"
 		"Returns the number of nodes saved with this project. \n"
 		""},

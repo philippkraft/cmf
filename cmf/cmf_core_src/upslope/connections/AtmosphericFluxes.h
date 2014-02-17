@@ -30,6 +30,9 @@ namespace cmf {
 			/// @ingroup connections
 			
 			/// A function to calculate the snow fraction of the precipitation according to the air temperature.
+			///
+			/// Returns 0.0 for T>+1 degC, 1.0 for T<-1degC and interpolates linear between. 
+			/// Values between 0 and 1 can be interpreted as sleet
 			real snowfraction(real T);
 
 			/// A connection routing rainfall to surface water and to an eventually existing canopy storage
