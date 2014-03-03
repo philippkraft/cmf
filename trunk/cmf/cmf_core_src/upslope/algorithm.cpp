@@ -20,12 +20,16 @@
 #include "algorithm.h"
 #include "Topology.h"
 #include "SoilLayer.h"
+#include "../water/flux_node.h"
+#include "../water/flux_connection.h"
 #include "../atmosphere/precipitation.h"
 #include <queue>
 #include <set>
 
 using namespace cmf::upslope;
+using namespace cmf::water;
 using namespace cmf::geometry;
+using namespace cmf::math;
 
 Cell* cmf::upslope::find_cell(cells_ref cells,cmf::geometry::point p,double max_dist )
 {
@@ -266,6 +270,27 @@ double cmf::upslope::cell_distance( Cell& c1, Cell& c2)
 	point p1(c1.x,c1.y,c1.z), 
 		  p2(c2.x,c2.y,c2.z);
 	return p1.distanceTo(p2);
+}
+
+cmf::math::num_array cmf::upslope::cell2cellflux( Cell& source,Cell& target,cmf::math::Time t,bool subsurface_only/*=false*/ )
+{
+	size_t offset=subsurface_only ? 0 : 1;
+	num_array res(source.layer_count() + offset,0.0);
+	if (!subsurface_only)
+		res[0] = source.get_surfacewater()->flux_to(*target.get_surfacewater(),t);
+	for(size_t i=0;i<source.layer_count();++i) {
+		SoilLayer::ptr l = source.get_layer(i);
+		connection_list& connections = l->get_connections();
+		for(connection_list::const_iterator it=connections.begin();it!=connections.end();++it) {
+			flux_connection& conn = **it;
+			SoilLayer::ptr l2 = SoilLayer::cast(conn.get_target(*l));
+			if (l2) {
+				res[offset+i] += l->flux_to(*l2,t);
+			}
+		}
+	}
+	return res;
+
 }
 
 

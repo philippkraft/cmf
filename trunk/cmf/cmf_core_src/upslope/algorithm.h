@@ -48,6 +48,15 @@ namespace cmf {
 		cmf::geometry::point_vector cell_positions(cmf::upslope::cells_ref cells);
 		cmf::geometry::point_vector cell_flux_directions(cmf::upslope::cells_ref cells,cmf::math::Time);
 		
+		/// Calculates the flux in m3/day that flows from a source cell to a target cell
+		///
+		/// @param source the cell to investigate
+		/// @param target - the cell where the water is flowing
+		/// @param t Time of query
+		/// @param subsurface_only if true, fluxes from the surfacewater to the surfacewater are ignored. Default is false
+		/// @return A num_array of size source.layer_count() containing all fluxes from the layers of source to the layers of target. If subsurface_only is false
+		///         the array has the size source.layer_count()+1 and contains the surfacewater flux in position 0
+		cmf::math::num_array cell2cellflux(cmf::upslope::Cell& source,cmf::upslope::Cell& target, cmf::math::Time t,bool subsurface_only=false);
 		
 		double cell_distance(cmf::upslope::Cell& c1, cmf::upslope::Cell& c2);
 		

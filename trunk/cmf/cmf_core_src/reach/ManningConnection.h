@@ -56,6 +56,8 @@ namespace cmf {
 		class Manning : public cmf::water::flux_connection
 		{
 		protected:
+
+			virtual real get_slope(cmf::water::flux_node::ptr lnode, cmf::water::flux_node::ptr rnode, real d)=0;
 			static void connect_cells(cmf::upslope::Cell& c1,cmf::upslope::Cell& c2,bool is_diffusive_wave);
 			std::tr1::weak_ptr<cmf::river::OpenWaterStorage> w1,w2;
 			virtual real calc_q(cmf::math::Time t);
@@ -75,7 +77,8 @@ namespace cmf {
 			cmf::river::volume_height_function flux_geometry;
 
 			typedef std::tr1::shared_ptr<Manning> ptr;
-
+			static Manning::ptr create(cmf::river::OpenWaterStorage::ptr left,cmf::water::flux_node::ptr right,
+				const cmf::river::IChannel& reachtype,bool diffusive_wave);
 
 
 		};
@@ -99,16 +102,19 @@ namespace cmf {
 		private:
 			static void connect_cells(cmf::upslope::Cell& c1,cmf::upslope::Cell& c2,ptrdiff_t dummy)
 			{		cmf::river::Manning::connect_cells(c1,c2,true);		}
-
+		protected:
+			virtual real get_slope(cmf::water::flux_node::ptr lnode, cmf::water::flux_node::ptr rnode, real d);
 		public:
 			typedef std::tr1::shared_ptr<Manning_Diffusive> ptr;
 			static const cmf::upslope::CellConnector cell_connector;
+			/// A parameter to linearize the dependency of q on slope during levelling out
+			real linear_slope_width;
 			/// Creates a diffusive wave connection between to open water storages.
 			///
 			/// @param left,right The nodes to be connected by the diffusive wave. Left needs to be an open water storage
 			/// @param reachtype The channel geometry
 			Manning_Diffusive(cmf::river::OpenWaterStorage::ptr left,cmf::water::flux_node::ptr right,const cmf::river::IChannel& reachtype)
-				: Manning(left,right,reachtype,true)
+				: Manning(left,right,reachtype,true), linear_slope_width(0.0)
 			{			}
 		};
 
@@ -131,7 +137,8 @@ namespace cmf {
 		private:
 			static void connect_cells(cmf::upslope::Cell& c1,cmf::upslope::Cell& c2,ptrdiff_t dummy)
 			{		cmf::river::Manning::connect_cells(c1,c2,false);		}
-
+		protected:
+			virtual real get_slope(cmf::water::flux_node::ptr lnode, cmf::water::flux_node::ptr rnode, real d);
 		public:
 			typedef std::tr1::shared_ptr<Manning_Kinematic> ptr;
 			static const cmf::upslope::CellConnector cell_connector;
