@@ -6584,6 +6584,10 @@ def cell_flux_directions(*args, **kwargs):
   """cell_flux_directions(cell_vector cells, Time arg2) -> point_vector"""
   return _cmf_core.cell_flux_directions(*args, **kwargs)
 
+def cell2cellflux(*args, **kwargs):
+  """cell2cellflux(Cell source, Cell target, Time t, bool subsurface_only=False) -> cmf::math::num_array"""
+  return _cmf_core.cell2cellflux(*args, **kwargs)
+
 def cell_distance(*args, **kwargs):
   """cell_distance(Cell c1, Cell c2) -> double"""
   return _cmf_core.cell_distance(*args, **kwargs)
@@ -8880,6 +8884,7 @@ class DiffusiveSurfaceRunoff(flux_connection):
     """Proxy of C++ cmf::upslope::connections::DiffusiveSurfaceRunoff class"""
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
     __repr__ = _swig_repr
+    linear_slope_width = _swig_property(_cmf_core.DiffusiveSurfaceRunoff_linear_slope_width_get, _cmf_core.DiffusiveSurfaceRunoff_linear_slope_width_set)
     def __init__(self, *args, **kwargs): 
         """
         __init__(cmf::upslope::connections::DiffusiveSurfaceRunoff self, cmf::upslope::SurfaceWater::ptr left, cmf::water::flux_node::ptr right, real flowwidth, 
@@ -9304,13 +9309,28 @@ class Manning(flux_connection):
     C++ includes: ManningConnection.h 
     """
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
-    def __init__(self, *args, **kwargs): raise AttributeError("No constructor defined")
+    def __init__(self, *args, **kwargs): raise AttributeError("No constructor defined - class is abstract")
     __repr__ = _swig_repr
     is_diffusive_wave = _swig_property(_cmf_core.Manning_is_diffusive_wave_get, _cmf_core.Manning_is_diffusive_wave_set)
     flux_geometry = _swig_property(_cmf_core.Manning_flux_geometry_get, _cmf_core.Manning_flux_geometry_set)
+    def create(*args, **kwargs):
+        """
+        create(cmf::river::OpenWaterStorage::ptr left, cmf::water::flux_node::ptr right, IChannel reachtype, 
+            bool diffusive_wave) -> cmf::river::Manning::ptr
+        """
+        return _cmf_core.Manning_create(*args, **kwargs)
+
+    create = staticmethod(create)
     __swig_destroy__ = _cmf_core.delete_Manning
 Manning_swigregister = _cmf_core.Manning_swigregister
 Manning_swigregister(Manning)
+
+def Manning_create(*args, **kwargs):
+  """
+    Manning_create(cmf::river::OpenWaterStorage::ptr left, cmf::water::flux_node::ptr right, IChannel reachtype, 
+        bool diffusive_wave) -> cmf::river::Manning::ptr
+    """
+  return _cmf_core.Manning_create(*args, **kwargs)
 
 class Manning_Diffusive(Manning):
     """
@@ -9338,6 +9358,7 @@ class Manning_Diffusive(Manning):
     """
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
     __repr__ = _swig_repr
+    linear_slope_width = _swig_property(_cmf_core.Manning_Diffusive_linear_slope_width_get, _cmf_core.Manning_Diffusive_linear_slope_width_set)
     def __init__(self, *args, **kwargs): 
         """
         __init__(cmf::river::Manning_Diffusive self, cmf::river::OpenWaterStorage::ptr left, cmf::water::flux_node::ptr right, IChannel reachtype) -> Manning_Diffusive

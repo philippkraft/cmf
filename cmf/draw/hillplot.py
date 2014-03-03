@@ -21,7 +21,23 @@ import numpy
 from matplotlib import pyplot
 from itertools import chain
 import cmf
-class hill_plot(object):
+class hill_plot(object):    
+    """
+    Plots a hillslope using colored sheared rectangles for each layer and
+    arrows (matplotlib.quiver) to show fluxes.
+    
+    Properties:
+    
+     - evalfunction: a function returning the value of a layer to plot. 
+       The value should be a float between 0..1 for scaling. 
+       The default is: lambda l: l.wetness
+     - q_sub:  The matplotlib.Quiver object for subsurface fluxes
+     - q_surf: The matplotlib.Quiver object for subsurface fluxes
+     - title:  Title of the plot
+     - scale:  The scale of q_sub and q_surf
+        
+    """
+
     def __get_snow_height(self):
         return [(c.z + c.snow.volume/(c.area*0.08) if c.snow else c.z) for c in self.cells]
     def __get_layer_shape(self,layer,c_this,c_left,c_right):
@@ -39,6 +55,15 @@ class hill_plot(object):
         c=self.cells[0]
         return numpy.sqrt((x-c.x)**2.0 + (y-c.y)**2.0)
     def __init__(self,cells,t,solute=None,cmap=pyplot.cm.jet):
+        """
+        Creates a new hill_plot on the active figure, showing the state of each layer
+         - cells: The a sequence of cmf cells to use in this hill_plot. You can
+                  use the whole project if you like
+         - t:     Current time step. Needed to retrieve the fluxes
+         - solute:The solute concentration to show. If None, the wetness of the 
+                  layer will be shown
+         - cmap:  a matplotlib colormap (see module cm) for coloring
+        """
         was_interactive=pyplot.isinteractive()
         if was_interactive: pyplot.ioff()
         self.cells=cells
@@ -76,6 +101,10 @@ class hill_plot(object):
             pyplot.draw() 
             pyplot.ion()
     def __call__(self,t,text=''):
+        """
+        Updates the hill_plot at time t. You can provide a title for the figure.
+        If bool(title)==False, t is shown.
+        """
         layer_f=self.layers.get_fluxes3d(t)
         surf_f=self.surfacewater.get_fluxes3d(t)
         self.q_sub.set_UVC(numpy.asarray(layer_f.X),numpy.asarray(layer_f.Z))

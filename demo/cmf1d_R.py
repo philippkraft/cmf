@@ -14,7 +14,7 @@ with large chapters about graphic user interfaces.
 
 # loads cmf as a library
 import cmf
-
+import numpy as np
 from datetime import datetime, timedelta
 from math import exp
 def load_meteo(project):
@@ -128,7 +128,7 @@ def run(until=cmf.year,dt=cmf.day):
         # store the actual wetness
         wetness.append(c.layers.wetness)
         # Print, at which time step you are
-        print "%s - %6.2fm3/day" % (t,groundwater(t))
+        #print "%s - %6.2fm3/day" % (t,groundwater(t))
     return outflow,wetness
 
 def plotresult(outflow,wetness):
@@ -137,6 +137,7 @@ def plotresult(outflow,wetness):
     # import some matplotlib functionality
     import pylab
     import numpy
+    import cmf.draw
     # Make the upper plot
     pylab.subplot(211)
     # Draw the timeseries. cmf.draw.plot_timeseries is a thin wrapper over pylab.plot_date
@@ -163,9 +164,12 @@ def plotresult(outflow,wetness):
 # If this file is started as a script and not imported as a library
 if __name__ == '__main__': 
     # Run the model for 5 years
-    
-    outflow,wetness=run(5*cmf.year)
-    print c.vegetation
+    import time
+    tstart=time.time()
+    cmf.set_parallel_threads(1)
+    outflow,wetness=run(cmf.year*5)
+    print '%g s' % (time.time()-tstart)
+    #print c.vegetation
     # Try to plot the results
     try:
         plotresult(outflow,wetness)
