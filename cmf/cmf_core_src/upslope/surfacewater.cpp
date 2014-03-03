@@ -72,10 +72,29 @@ real DiffusiveSurfaceRunoff::calc_q( cmf::math::Time t )
 {
 	SurfaceWater::ptr left = wleft.lock();
 	flux_node::ptr right = right_node();
+	real d = left->get_depth() - left->get_puddledepth();
+	if (d<=0.0) {
+		return 0.0;
+	}
 	real dz = left->get_potential() - right->get_potential();
 	real slope = dz/m_distance;
-	real d = left->get_depth() - left->get_puddledepth();
-	return m_flowwidth * pow(d,5/3.) * sqrt(slope)/left->get_nManning() * 86400.;
+	real s_sqrt = sign(slope) * sqrt(abs(slope));
+
+	// linear slope width is a value in wihcih slope range the slope should be altered
+	// to prevent a singularity in dq/ds
+	if (this->linear_slope_width) {
+		real
+			// Only a shortcut for faster writing
+			s0 = this->linear_slope_width,
+			// Weight of linear part
+			w_lin = exp(-square((slope/s0))),
+			// linear part using the slope at s0/4 
+			s_lin = slope/(2.*sqrt(s0/4));
+			// Weighted sum of sqrt(s) and a*s
+		s_sqrt = w_lin * s_lin + (1-w_lin) * s_sqrt;
+	}
+
+	return prevent_negative_volume(m_flowwidth * pow(d,5/3.) * s_sqrt/left->get_nManning() * 86400.);
 }
 
 void DiffusiveSurfaceRunoff::NewNodes()

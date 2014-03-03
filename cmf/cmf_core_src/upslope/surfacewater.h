@@ -158,8 +158,9 @@ namespace cmf {
 				void NewNodes();
 				real m_distance, m_flowwidth;
 			public:
+				real linear_slope_width;
 				DiffusiveSurfaceRunoff(cmf::upslope::SurfaceWater::ptr left,cmf::water::flux_node::ptr right,real flowwidth,real distance=-1)
-					: flux_connection(left,right,"Diffusive surface runoff"), m_distance(distance), m_flowwidth(flowwidth) {
+					: flux_connection(left,right,"Diffusive surface runoff"), m_distance(distance), m_flowwidth(flowwidth),linear_slope_width(0.0) {
 
 						NewNodes();
 						if (m_distance<=0) {

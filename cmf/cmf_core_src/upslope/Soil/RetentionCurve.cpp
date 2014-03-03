@@ -27,9 +27,8 @@ namespace cmf {
 	namespace upslope {
 		class parabolic_extrapolation
 		{
-		private:
-			real a,b,c,w0,psi0;
 		public:
+			real a,b,c,w0,psi0;
 			// Calculates the parabola parameters a,b,c using the starting point of the wetness / potential curve (w0,pot0) and the slope of the curve
 			parabolic_extrapolation(real wet0,real pot0,real slope0) 
 				: w0(wet0),psi0(pot0)
@@ -318,13 +317,20 @@ real cmf::upslope::VanGenuchtenMualem::Diffusivity( real wetness ) const
 {
 	// Get VanGenuchten m (either Mualem Theory or user set)
 	real _m = m<0 ? 1-1/n : m;
-	// eq. 41 from MACRO_5 user manual
-	// eq 41. first brackets
-	real term1 = ((1-_m)*Ksat)/(alpha*100*_m*Phi);
-	// eq 41, 2nd part
-	real term2 = pow(wetness,l-1/_m);
-	real term3 = pow(1-pow(wetness,1/_m),-_m) + pow(1-pow(wetness,1/_m),_m)-2;
-	return term1*term2*term3;
+	if (wetness<=w0) {
+		// eq. 41 from MACRO_5 user manual
+		// eq 41. first brackets
+		real term1 = ((1-_m)*Ksat)/(alpha*100*_m*Phi);
+		// eq 41, 2nd part
+		real term2 = pow(wetness,l-1/_m);
+		real term3 = pow(1-pow(wetness,1/_m),-_m) + pow(1-pow(wetness,1/_m),_m)-2;
+		return term1*term2*term3;
+	} else {
+		real p0=MatricPotential(w0);
+		real dp0=1e6*(p0-MatricPotential(w0-1e-6));
+		cmf::upslope::parabolic_extrapolation p(w0,p0,dp0);
+		return K(wetness) *  2*p.a*wetness + p.b;
+	}
 }
 
 /************************************************************************/
