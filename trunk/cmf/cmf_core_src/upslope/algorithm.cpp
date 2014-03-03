@@ -280,7 +280,7 @@ cmf::math::num_array cmf::upslope::cell2cellflux( Cell& source,Cell& target,cmf:
 		res[0] = source.get_surfacewater()->flux_to(*target.get_surfacewater(),t);
 	for(size_t i=0;i<source.layer_count();++i) {
 		SoilLayer::ptr l = source.get_layer(i);
-		connection_list& connections = l->get_connections();
+		connection_list connections = l->get_connections();
 		for(connection_list::const_iterator it=connections.begin();it!=connections.end();++it) {
 			flux_connection& conn = **it;
 			SoilLayer::ptr l2 = SoilLayer::cast(conn.get_target(*l));
