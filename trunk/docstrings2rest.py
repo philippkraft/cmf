@@ -13,19 +13,22 @@ if len(sys.argv)<2:
     exit(1)
 
 # Regular expression to find inline math
-patterninline =re.compile( r'\$(.*?)\$')
+patterninline =re.compile( r'\$(.*?)\$',flags=re.DOTALL)
 # Regular expression to find block math
 patternblock = re.compile(r'\\\\\\\\\[(.*?)\\\\\\\\\]',flags=re.DOTALL)
 # Regular expression to find eqnarray math
 patternblock2 = re.compile(r'\\\\\\\\begin\{eqnarray\*\}(.*?)\\\\\\\\end\{eqnarray\*\}',flags=re.DOTALL)
 
 # function to replace inline math with reSt syntax
-def replinline(matchobj):                                                            
-    return ':math:`' + matchobj.group(1) + '`'
+def replinline(matchobj):
+    # Convert all white space in inline to single space, remove outer white space
+    # and remove whitespace before {. Otherwise reSt cannot handle the math.    
+    res = (' '.join(matchobj.group(1).split())).strip().replace(' {','{')
+    return ' :math:`' + res + '` '
     
 # function to replace block math with reSt syntax
 def replblock(matchobj):                                                             
-    return '\n\n.. math::\n\n  ' + '\n  '.join(matchobj.group(1).split('\n')) + '\n.\n'       
+    return '\n\n.. math::\n\n    ' + '\n    '.join(matchobj.group(1).split('\n')) + '\n\n'       
 
 # Read text from file
 text = file(sys.argv[1]).read()

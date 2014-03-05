@@ -44,7 +44,7 @@ namespace cmf {
 			}
 			// returns the wetness for a potential. The user is responsible to ensure the potential is higher than the starting point
 			real get_wetness(real potential) {
-				return 0.5*sqrt(-4*c/a+4*potential/a+(b*b)/(a*a))-b/(2*a);
+				return (sqrt(4*a*potential-4*a*c+square(b))-b)/(2*a);
 			}
 		};
 	}
@@ -212,12 +212,29 @@ real cmf::upslope::VanGenuchtenMualem::Wetness( real suction) const
 		return pow(1+pow(alpha*h,n),-_m);
 	else
 	{
-		real dp0=1e6*(p0-MatricPotential(w0-1e-9));
+		real dp0= dPsiM_dW(w0);
 		cmf::upslope::parabolic_extrapolation p(w0,p0,dp0);
 		return p.get_wetness(suction);
 	}
 }
-	
+real cmf::upslope::VanGenuchtenMualem::dPsiM_dW(real w) const{
+	real _m = m<0 ? 1-1/n : m;
+	if (w<=w0) {
+		return 
+			0.01*pow(w, 1.0/_m)*pow(w, -1/(_m*n))*pow(-pow(w, 1.0/_m) + 1, 1.0/n)
+				/
+				(alpha*_m*n*w*(-pow(w, 1.0/_m) + 1)) 
+		  + 0.01*pow(w, -1/(m*n))*pow(-pow(w, 1.0/_m) + 1, 1.0/n)
+				/
+				(alpha*_m*n*w);
+	} else {
+		real p0 = MatricPotential(w0);
+		real dp0 = dPsiM_dW(w0);
+		parabolic_extrapolation p(w0,p0,dp0);
+		return 2 * p.a * w + p.b;
+	}
+			
+}	
 
 real cmf::upslope::VanGenuchtenMualem::MatricPotential( real w ) const
 {
@@ -232,7 +249,7 @@ real cmf::upslope::VanGenuchtenMualem::MatricPotential( real w ) const
 	else
 	{
 		real p0=MatricPotential(w0);
-		real dp0=1e6*(p0-MatricPotential(w0-1e-6));
+		real dp0 = dPsiM_dW(w0);
 		cmf::upslope::parabolic_extrapolation p(w0,p0,dp0);
 		return p.get_potential(w);
 	}
