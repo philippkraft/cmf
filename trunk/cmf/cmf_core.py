@@ -9313,24 +9313,9 @@ class Manning(flux_connection):
     __repr__ = _swig_repr
     is_diffusive_wave = _swig_property(_cmf_core.Manning_is_diffusive_wave_get, _cmf_core.Manning_is_diffusive_wave_set)
     flux_geometry = _swig_property(_cmf_core.Manning_flux_geometry_get, _cmf_core.Manning_flux_geometry_set)
-    def create(*args, **kwargs):
-        """
-        create(cmf::river::OpenWaterStorage::ptr left, cmf::water::flux_node::ptr right, IChannel reachtype, 
-            bool diffusive_wave) -> cmf::river::Manning::ptr
-        """
-        return _cmf_core.Manning_create(*args, **kwargs)
-
-    create = staticmethod(create)
     __swig_destroy__ = _cmf_core.delete_Manning
 Manning_swigregister = _cmf_core.Manning_swigregister
 Manning_swigregister(Manning)
-
-def Manning_create(*args, **kwargs):
-  """
-    Manning_create(cmf::river::OpenWaterStorage::ptr left, cmf::water::flux_node::ptr right, IChannel reachtype, 
-        bool diffusive_wave) -> cmf::river::Manning::ptr
-    """
-  return _cmf_core.Manning_create(*args, **kwargs)
 
 class Manning_Diffusive(Manning):
     """
@@ -11203,7 +11188,6 @@ class project(StateVariableOwner):
         """
         return _cmf_core.project_size(self, *args, **kwargs)
 
-    debug = _swig_property(_cmf_core.project_debug_get, _cmf_core.project_debug_set)
     def __init__(self, *args, **kwargs): 
         """
         __init__(cmf::project self, std::string solute_names="") -> project

@@ -73,7 +73,7 @@ namespace cmf {
 				cmf::math::num_array RootFraction(const cmf::math::num_array& thickness) const {
 					cmf::math::num_array res(thickness.size());
 					double ub=0,lb=0;
-					for (int i = 0; i < thickness.size() ; ++i)
+					for (size_t i = 0; i < thickness.size() ; ++i)
 					{
 						lb+=thickness[i];
 						res[i] = RootFraction(ub,lb);

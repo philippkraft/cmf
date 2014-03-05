@@ -53,9 +53,26 @@ real cmf::river::Manning::calc_q( cmf::math::Time t )
 	// Return flux with correct sign in m3/day
 	return prevent_negative_volume(qManning * sign(slope) * (24*60*60));
 }
+Manning* create_manning( cmf::river::OpenWaterStorage::ptr left,cmf::water::flux_node::ptr right, const cmf::river::IChannel& reachtype,bool diffusive_wave )
+{
+	if (diffusive_wave) {
+		return new Manning_Diffusive(left,right,reachtype);
+	} else {
+		return new Manning_Kinematic(left,right,reachtype);
+	}
+}
 
 void cmf::river::Manning::connect_cells( cmf::upslope::Cell& c1,cmf::upslope::Cell& c2,bool diffusive)
 {
+	static bool DeprecatedWarning = true;
+	if (DeprecatedWarning) {
+		std::cerr << "Depreciation Warning: connect_cells_with_flux(cmf.Manning_Kinematic)" << std::endl << std::endl
+				  << "Manning_Kinematic and Manning_Diffusive are designed for channel runoff. " << std::endl
+				  << "Automatic connection of surface water storages using 'connect_cells_with_flux' " << std::endl
+				  << "is depreciated and will be removed in the future. Use KinematicSurfaceRunoff or" << std::endl 
+				  << "DiffusiveSurfaceRunoff instead." << std::endl;
+		DeprecatedWarning = false;
+	}
 	real w=c1.get_topology().flowwidth(c2);
 	real d=c1.get_position().distanceTo(c2.get_position());
 	if (w<=0) return;
@@ -63,21 +80,13 @@ void cmf::river::Manning::connect_cells( cmf::upslope::Cell& c1,cmf::upslope::Ce
 	OpenWaterStorage::ptr sows1= OpenWaterStorage::cast(c1.get_surfacewater());
 	OpenWaterStorage::ptr sows2= OpenWaterStorage::cast(c2.get_surfacewater());
 	if (sows1)
-		Manning::create(sows1,c2.get_surfacewater(),r_type,diffusive);
+		create_manning(sows1,c2.get_surfacewater(),r_type,diffusive);
 	else if (sows2)
-		Manning::create(sows2,c1.get_surfacewater(),r_type,diffusive);
+		create_manning(sows2,c1.get_surfacewater(),r_type,diffusive);
 	else
 		throw std::runtime_error("Surface water of " + c1.to_string() + " and " + c2.to_string() + " were not connected with Manning's equation. Missing storages.");
 }
 
-Manning::ptr cmf::river::Manning::create( cmf::river::OpenWaterStorage::ptr left,cmf::water::flux_node::ptr right, const cmf::river::IChannel& reachtype,bool diffusive_wave )
-{
-	if (diffusive_wave) {
-		return Manning::ptr(new Manning_Diffusive(left,right,reachtype));
-	} else {
-		return Manning::ptr(new Manning_Kinematic(left,right,reachtype));
-	}
-}
 
 const cmf::upslope::CellConnector
 	cmf::river::Manning_Kinematic::cell_connector

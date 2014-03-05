@@ -110,8 +110,6 @@ cmf::water::flux_node::~flux_node()
 		m_Connections.erase(m_Connections.begin());
 		con->kill_me();
 	}
-	if (get_project().debug)
-		std::cout << "Deleted " << Name << std::endl;
 }
 
 
