@@ -73,7 +73,7 @@ void cmf::math::BDF2::Gear1newState( real h )
 	if (use_OpenMP)
 	{
 #pragma omp parallel for private(state_i)
-		for (int i = 0; i < size() ; i++)
+		for (ptrdiff_t i = 0; i < size() ; i++)
 		{
 			// The formula is written so ugly to avoid internal memory allocation
 			// x_n+1 = x_(n) + h dxdt
@@ -85,7 +85,7 @@ void cmf::math::BDF2::Gear1newState( real h )
 	}
 	else
 	{
-		for (int i = 0; i < size() ; i++)
+		for (ptrdiff_t i = 0; i < size() ; i++)
 		{
 			// The formula is written so ugly to avoid internal memory allocation
 			// x_n+1 = x_(n) + h dxdt
@@ -112,7 +112,7 @@ void cmf::math::BDF2::Gear2newState(real h)
 	if (use_OpenMP)
 	{
 	#pragma omp parallel for private(state_i)
-		for (int i = 0; i < size() ; i++)
+		for (ptrdiff_t i = 0; i < size() ; i++)
 		{
 			// The formula is written so ugly to avoid internal memory allocation
 			// x_(n+1) = (p+1)�x_(n) - p�x_(n-1) + h (p+1) dxdt
@@ -126,7 +126,7 @@ void cmf::math::BDF2::Gear2newState(real h)
 	}
 	else
 	{
-		for (int i = 0; i < size() ; i++)
+		for (ptrdiff_t i = 0; i < size() ; i++)
 		{
 			// The formula is written so ugly to avoid internal memory allocation
 			// x_(n+1) = (p+1)�x_(n) - p�x_(n-1) + h (p+1) dxdt
@@ -145,7 +145,7 @@ real cmf::math::BDF2::error_exceedance( const num_array& compare,int * biggest_e
 {
 	real res=0;
 #pragma omp parallel for shared(res)
-	for (int i = 0; i < size() ; i++)
+	for (ptrdiff_t i = 0; i < size() ; i++)
 	{
 		real error=fabs(compare[i]-get_state(i));
 		// Calculate absolute error tolerance as: epsilon + |(x_p+x_(n+1))/2|*epsilon

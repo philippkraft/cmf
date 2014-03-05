@@ -3098,32 +3098,31 @@ SWIG_Python_NonDynamicSetAttr(PyObject *obj, PyObject *name, PyObject *value) {
 #define SWIGTYPE_p_std__tr1__shared_ptrT_cmf__atmosphere__aerodynamic_resistance_t swig_types[155]
 #define SWIGTYPE_p_std__tr1__shared_ptrT_cmf__math__StateVariable_t swig_types[156]
 #define SWIGTYPE_p_std__tr1__shared_ptrT_cmf__math__integratable_t swig_types[157]
-#define SWIGTYPE_p_std__tr1__shared_ptrT_cmf__river__Manning_t swig_types[158]
-#define SWIGTYPE_p_std__tr1__shared_ptrT_cmf__river__OpenWaterStorage_t swig_types[159]
-#define SWIGTYPE_p_std__tr1__shared_ptrT_cmf__river__Reach_t swig_types[160]
-#define SWIGTYPE_p_std__tr1__shared_ptrT_cmf__upslope__ET__canopy_evaporation_method_t swig_types[161]
-#define SWIGTYPE_p_std__tr1__shared_ptrT_cmf__upslope__ET__snow_evaporation_method_t swig_types[162]
-#define SWIGTYPE_p_std__tr1__shared_ptrT_cmf__upslope__ET__soil_evaporation_method_t swig_types[163]
-#define SWIGTYPE_p_std__tr1__shared_ptrT_cmf__upslope__ET__surface_water_evaporation_method_t swig_types[164]
-#define SWIGTYPE_p_std__tr1__shared_ptrT_cmf__upslope__ET__transpiration_method_t swig_types[165]
-#define SWIGTYPE_p_std__tr1__shared_ptrT_cmf__upslope__MacroPore_t swig_types[166]
-#define SWIGTYPE_p_std__tr1__shared_ptrT_cmf__upslope__SoilLayer_t swig_types[167]
-#define SWIGTYPE_p_std__tr1__shared_ptrT_cmf__upslope__SurfaceWater_t swig_types[168]
-#define SWIGTYPE_p_std__tr1__shared_ptrT_cmf__upslope__aquifer_t swig_types[169]
-#define SWIGTYPE_p_std__tr1__shared_ptrT_cmf__water__DirichletBoundary_t swig_types[170]
-#define SWIGTYPE_p_std__tr1__shared_ptrT_cmf__water__NeumannBoundary_t swig_types[171]
-#define SWIGTYPE_p_std__tr1__shared_ptrT_cmf__water__SoluteStorage_t swig_types[172]
-#define SWIGTYPE_p_std__tr1__shared_ptrT_cmf__water__SystemBridge_t swig_types[173]
-#define SWIGTYPE_p_std__tr1__shared_ptrT_cmf__water__WaterStorage_t swig_types[174]
-#define SWIGTYPE_p_std__tr1__shared_ptrT_cmf__water__flux_connection_t swig_types[175]
-#define SWIGTYPE_p_std__tr1__shared_ptrT_cmf__water__flux_integrator_t swig_types[176]
-#define SWIGTYPE_p_std__tr1__shared_ptrT_cmf__water__flux_node_t swig_types[177]
-#define SWIGTYPE_p_std__tr1__shared_ptrT_cmf__water__waterbalance_integrator_t swig_types[178]
-#define SWIGTYPE_p_std__tr1__shared_ptrT_std__tr1__shared_ptrT_cmf__atmosphere__ConstantRainSource_t_t swig_types[179]
-#define SWIGTYPE_p_std__tr1__shared_ptrT_std__tr1__shared_ptrT_cmf__atmosphere__RainfallStationReference_t_t swig_types[180]
-#define SWIGTYPE_p_std__vectorT_std__tr1__shared_ptrT_cmf__water__WaterStorage_t_t swig_types[181]
-static swig_type_info *swig_types[183];
-static swig_module_info swig_module = {swig_types, 182, 0, 0, 0, 0};
+#define SWIGTYPE_p_std__tr1__shared_ptrT_cmf__river__OpenWaterStorage_t swig_types[158]
+#define SWIGTYPE_p_std__tr1__shared_ptrT_cmf__river__Reach_t swig_types[159]
+#define SWIGTYPE_p_std__tr1__shared_ptrT_cmf__upslope__ET__canopy_evaporation_method_t swig_types[160]
+#define SWIGTYPE_p_std__tr1__shared_ptrT_cmf__upslope__ET__snow_evaporation_method_t swig_types[161]
+#define SWIGTYPE_p_std__tr1__shared_ptrT_cmf__upslope__ET__soil_evaporation_method_t swig_types[162]
+#define SWIGTYPE_p_std__tr1__shared_ptrT_cmf__upslope__ET__surface_water_evaporation_method_t swig_types[163]
+#define SWIGTYPE_p_std__tr1__shared_ptrT_cmf__upslope__ET__transpiration_method_t swig_types[164]
+#define SWIGTYPE_p_std__tr1__shared_ptrT_cmf__upslope__MacroPore_t swig_types[165]
+#define SWIGTYPE_p_std__tr1__shared_ptrT_cmf__upslope__SoilLayer_t swig_types[166]
+#define SWIGTYPE_p_std__tr1__shared_ptrT_cmf__upslope__SurfaceWater_t swig_types[167]
+#define SWIGTYPE_p_std__tr1__shared_ptrT_cmf__upslope__aquifer_t swig_types[168]
+#define SWIGTYPE_p_std__tr1__shared_ptrT_cmf__water__DirichletBoundary_t swig_types[169]
+#define SWIGTYPE_p_std__tr1__shared_ptrT_cmf__water__NeumannBoundary_t swig_types[170]
+#define SWIGTYPE_p_std__tr1__shared_ptrT_cmf__water__SoluteStorage_t swig_types[171]
+#define SWIGTYPE_p_std__tr1__shared_ptrT_cmf__water__SystemBridge_t swig_types[172]
+#define SWIGTYPE_p_std__tr1__shared_ptrT_cmf__water__WaterStorage_t swig_types[173]
+#define SWIGTYPE_p_std__tr1__shared_ptrT_cmf__water__flux_connection_t swig_types[174]
+#define SWIGTYPE_p_std__tr1__shared_ptrT_cmf__water__flux_integrator_t swig_types[175]
+#define SWIGTYPE_p_std__tr1__shared_ptrT_cmf__water__flux_node_t swig_types[176]
+#define SWIGTYPE_p_std__tr1__shared_ptrT_cmf__water__waterbalance_integrator_t swig_types[177]
+#define SWIGTYPE_p_std__tr1__shared_ptrT_std__tr1__shared_ptrT_cmf__atmosphere__ConstantRainSource_t_t swig_types[178]
+#define SWIGTYPE_p_std__tr1__shared_ptrT_std__tr1__shared_ptrT_cmf__atmosphere__RainfallStationReference_t_t swig_types[179]
+#define SWIGTYPE_p_std__vectorT_std__tr1__shared_ptrT_cmf__water__WaterStorage_t_t swig_types[180]
+static swig_type_info *swig_types[182];
+static swig_module_info swig_module = {swig_types, 181, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -60248,78 +60247,6 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Manning_create(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
-  PyObject *resultobj = 0;
-  cmf::river::OpenWaterStorage::ptr arg1 ;
-  cmf::water::flux_node::ptr arg2 ;
-  cmf::river::IChannel *arg3 = 0 ;
-  bool arg4 ;
-  void *argp1 ;
-  int res1 = 0 ;
-  void *argp2 ;
-  int res2 = 0 ;
-  void *argp3 = 0 ;
-  int res3 = 0 ;
-  bool val4 ;
-  int ecode4 = 0 ;
-  PyObject * obj0 = 0 ;
-  PyObject * obj1 = 0 ;
-  PyObject * obj2 = 0 ;
-  PyObject * obj3 = 0 ;
-  char *  kwnames[] = {
-    (char *) "left",(char *) "right",(char *) "reachtype",(char *) "diffusive_wave", NULL 
-  };
-  SwigValueWrapper< std::tr1::shared_ptr< cmf::river::Manning > > result;
-  
-  if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"OOOO:Manning_create",kwnames,&obj0,&obj1,&obj2,&obj3)) SWIG_fail;
-  {
-    int newmem = 0;
-    res1 = SWIG_ConvertPtrAndOwn(obj0, &argp1, SWIGTYPE_p_std__tr1__shared_ptrT_cmf__river__OpenWaterStorage_t,  0 , &newmem);
-    if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Manning_create" "', argument " "1"" of type '" "cmf::river::OpenWaterStorage::ptr""'"); 
-    }
-    if (argp1) arg1 = *(reinterpret_cast< cmf::river::OpenWaterStorage::ptr * >(argp1));
-    if (newmem & SWIG_CAST_NEW_MEMORY) delete reinterpret_cast< cmf::river::OpenWaterStorage::ptr * >(argp1);
-  }
-  {
-    int newmem = 0;
-    res2 = SWIG_ConvertPtrAndOwn(obj1, &argp2, SWIGTYPE_p_std__tr1__shared_ptrT_cmf__water__flux_node_t,  0 , &newmem);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Manning_create" "', argument " "2"" of type '" "cmf::water::flux_node::ptr""'"); 
-    }
-    if (argp2) arg2 = *(reinterpret_cast< cmf::water::flux_node::ptr * >(argp2));
-    if (newmem & SWIG_CAST_NEW_MEMORY) delete reinterpret_cast< cmf::water::flux_node::ptr * >(argp2);
-  }
-  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_cmf__river__IChannel,  0  | 0);
-  if (!SWIG_IsOK(res3)) {
-    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "Manning_create" "', argument " "3"" of type '" "cmf::river::IChannel const &""'"); 
-  }
-  if (!argp3) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Manning_create" "', argument " "3"" of type '" "cmf::river::IChannel const &""'"); 
-  }
-  arg3 = reinterpret_cast< cmf::river::IChannel * >(argp3);
-  ecode4 = SWIG_AsVal_bool(obj3, &val4);
-  if (!SWIG_IsOK(ecode4)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "Manning_create" "', argument " "4"" of type '" "bool""'");
-  } 
-  arg4 = static_cast< bool >(val4);
-  {
-    try {
-      result = cmf::river::Manning::create(arg1,arg2,(cmf::river::IChannel const &)*arg3,arg4);
-    } catch (const std::out_of_range& e) {
-      SWIG_exception(SWIG_IndexError, e.what());    
-    } catch (const std::exception& e) {
-      SWIG_exception(SWIG_RuntimeError, e.what());
-    }
-    
-  }
-  resultobj = SWIG_NewPointerObj((new cmf::river::Manning::ptr(static_cast< const cmf::river::Manning::ptr& >(result))), SWIGTYPE_p_std__tr1__shared_ptrT_cmf__river__Manning_t, SWIG_POINTER_OWN |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
 SWIGINTERN PyObject *_wrap_delete_Manning(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   cmf::river::Manning *arg1 = (cmf::river::Manning *) 0 ;
@@ -67909,58 +67836,6 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_project_debug_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  cmf::project *arg1 = (cmf::project *) 0 ;
-  bool arg2 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  bool val2 ;
-  int ecode2 = 0 ;
-  PyObject *swig_obj[2] ;
-  
-  if (!SWIG_Python_UnpackTuple(args,"project_debug_set",2,2,swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__project, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "project_debug_set" "', argument " "1"" of type '" "cmf::project *""'"); 
-  }
-  arg1 = reinterpret_cast< cmf::project * >(argp1);
-  ecode2 = SWIG_AsVal_bool(swig_obj[1], &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "project_debug_set" "', argument " "2"" of type '" "bool""'");
-  } 
-  arg2 = static_cast< bool >(val2);
-  if (arg1) (arg1)->debug = arg2;
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_project_debug_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  cmf::project *arg1 = (cmf::project *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject *swig_obj[1] ;
-  bool result;
-  
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__project, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "project_debug_get" "', argument " "1"" of type '" "cmf::project *""'"); 
-  }
-  arg1 = reinterpret_cast< cmf::project * >(argp1);
-  result = (bool) ((arg1)->debug);
-  resultobj = SWIG_From_bool(static_cast< bool >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
 SWIGINTERN PyObject *_wrap_new_project(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   std::string arg1 = (std::string) "" ;
@@ -74335,10 +74210,6 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"Manning_is_diffusive_wave_get", (PyCFunction)_wrap_Manning_is_diffusive_wave_get, METH_O, (char *)"Manning_is_diffusive_wave_get(Manning self) -> bool"},
 	 { (char *)"Manning_flux_geometry_set", _wrap_Manning_flux_geometry_set, METH_VARARGS, (char *)"Manning_flux_geometry_set(Manning self, volume_height_function flux_geometry)"},
 	 { (char *)"Manning_flux_geometry_get", (PyCFunction)_wrap_Manning_flux_geometry_get, METH_O, (char *)"Manning_flux_geometry_get(Manning self) -> volume_height_function"},
-	 { (char *)"Manning_create", (PyCFunction) _wrap_Manning_create, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
-		"Manning_create(cmf::river::OpenWaterStorage::ptr left, cmf::water::flux_node::ptr right, IChannel reachtype, \n"
-		"    bool diffusive_wave) -> cmf::river::Manning::ptr\n"
-		""},
 	 { (char *)"delete_Manning", (PyCFunction)_wrap_delete_Manning, METH_O, (char *)"delete_Manning(Manning self)"},
 	 { (char *)"Manning_swigregister", Manning_swigregister, METH_VARARGS, NULL},
 	 { (char *)"Manning_Diffusive_linear_slope_width_set", _wrap_Manning_Diffusive_linear_slope_width_set, METH_VARARGS, (char *)"Manning_Diffusive_linear_slope_width_set(Manning_Diffusive self, real linear_slope_width)"},
@@ -75171,8 +75042,6 @@ static PyMethodDef SwigMethods[] = {
 		"\n"
 		"The number of cells in the project. \n"
 		""},
-	 { (char *)"project_debug_set", _wrap_project_debug_set, METH_VARARGS, (char *)"project_debug_set(project self, bool debug)"},
-	 { (char *)"project_debug_get", (PyCFunction)_wrap_project_debug_get, METH_O, (char *)"project_debug_get(project self) -> bool"},
 	 { (char *)"new_project", (PyCFunction) _wrap_new_project, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
 		"new_project(std::string solute_names=\"\") -> project\n"
 		"\n"
@@ -76137,7 +76006,6 @@ static swig_type_info _swigt__p_std__tr1__shared_ptrT_cmf__atmosphere__RainfallS
 static swig_type_info _swigt__p_std__tr1__shared_ptrT_cmf__atmosphere__aerodynamic_resistance_t = {"_p_std__tr1__shared_ptrT_cmf__atmosphere__aerodynamic_resistance_t", "cmf::atmosphere::aerodynamic_resistance::ptr *|std::tr1::shared_ptr< cmf::atmosphere::aerodynamic_resistance > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__tr1__shared_ptrT_cmf__math__StateVariable_t = {"_p_std__tr1__shared_ptrT_cmf__math__StateVariable_t", "cmf::math::StateVariable::ptr *|std::tr1::shared_ptr< cmf::math::StateVariable > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__tr1__shared_ptrT_cmf__math__integratable_t = {"_p_std__tr1__shared_ptrT_cmf__math__integratable_t", "cmf::math::integratable::ptr *|std::tr1::shared_ptr< cmf::math::integratable > *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_std__tr1__shared_ptrT_cmf__river__Manning_t = {"_p_std__tr1__shared_ptrT_cmf__river__Manning_t", "cmf::river::Manning::ptr *|std::tr1::shared_ptr< cmf::river::Manning > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__tr1__shared_ptrT_cmf__river__OpenWaterStorage_t = {"_p_std__tr1__shared_ptrT_cmf__river__OpenWaterStorage_t", "std::tr1::shared_ptr< cmf::river::OpenWaterStorage > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__tr1__shared_ptrT_cmf__river__Reach_t = {"_p_std__tr1__shared_ptrT_cmf__river__Reach_t", "std::tr1::shared_ptr< cmf::river::Reach > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__tr1__shared_ptrT_cmf__upslope__ET__canopy_evaporation_method_t = {"_p_std__tr1__shared_ptrT_cmf__upslope__ET__canopy_evaporation_method_t", "std::tr1::shared_ptr< cmf::upslope::ET::canopy_evaporation_method > *", 0, 0, (void*)0, 0};
@@ -76321,7 +76189,6 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_std__tr1__shared_ptrT_cmf__atmosphere__aerodynamic_resistance_t,
   &_swigt__p_std__tr1__shared_ptrT_cmf__math__StateVariable_t,
   &_swigt__p_std__tr1__shared_ptrT_cmf__math__integratable_t,
-  &_swigt__p_std__tr1__shared_ptrT_cmf__river__Manning_t,
   &_swigt__p_std__tr1__shared_ptrT_cmf__river__OpenWaterStorage_t,
   &_swigt__p_std__tr1__shared_ptrT_cmf__river__Reach_t,
   &_swigt__p_std__tr1__shared_ptrT_cmf__upslope__ET__canopy_evaporation_method_t,
@@ -76505,7 +76372,6 @@ static swig_cast_info _swigc__p_std__tr1__shared_ptrT_cmf__atmosphere__RainfallS
 static swig_cast_info _swigc__p_std__tr1__shared_ptrT_cmf__atmosphere__aerodynamic_resistance_t[] = {  {&_swigt__p_std__tr1__shared_ptrT_cmf__atmosphere__aerodynamic_resistance_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__tr1__shared_ptrT_cmf__math__StateVariable_t[] = {  {&_swigt__p_std__tr1__shared_ptrT_cmf__water__WaterStorage_t, _p_std__tr1__shared_ptrT_cmf__water__WaterStorage_tTo_p_std__tr1__shared_ptrT_cmf__math__StateVariable_t, 0, 0},  {&_swigt__p_std__tr1__shared_ptrT_cmf__upslope__MacroPore_t, _p_std__tr1__shared_ptrT_cmf__upslope__MacroPore_tTo_p_std__tr1__shared_ptrT_cmf__math__StateVariable_t, 0, 0},  {&_swigt__p_std__tr1__shared_ptrT_cmf__math__StateVariable_t, 0, 0, 0},  {&_swigt__p_std__tr1__shared_ptrT_cmf__river__OpenWaterStorage_t, _p_std__tr1__shared_ptrT_cmf__river__OpenWaterStorage_tTo_p_std__tr1__shared_ptrT_cmf__math__StateVariable_t, 0, 0},  {&_swigt__p_std__tr1__shared_ptrT_cmf__upslope__SurfaceWater_t, _p_std__tr1__shared_ptrT_cmf__upslope__SurfaceWater_tTo_p_std__tr1__shared_ptrT_cmf__math__StateVariable_t, 0, 0},  {&_swigt__p_std__tr1__shared_ptrT_cmf__upslope__SoilLayer_t, _p_std__tr1__shared_ptrT_cmf__upslope__SoilLayer_tTo_p_std__tr1__shared_ptrT_cmf__math__StateVariable_t, 0, 0},  {&_swigt__p_std__tr1__shared_ptrT_cmf__water__SoluteStorage_t, _p_std__tr1__shared_ptrT_cmf__water__SoluteStorage_tTo_p_std__tr1__shared_ptrT_cmf__math__StateVariable_t, 0, 0},  {&_swigt__p_std__tr1__shared_ptrT_cmf__river__Reach_t, _p_std__tr1__shared_ptrT_cmf__river__Reach_tTo_p_std__tr1__shared_ptrT_cmf__math__StateVariable_t, 0, 0},  {&_swigt__p_std__tr1__shared_ptrT_cmf__upslope__aquifer_t, _p_std__tr1__shared_ptrT_cmf__upslope__aquifer_tTo_p_std__tr1__shared_ptrT_cmf__math__StateVariable_t, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__tr1__shared_ptrT_cmf__math__integratable_t[] = {  {&_swigt__p_std__tr1__shared_ptrT_cmf__water__waterbalance_integrator_t, _p_std__tr1__shared_ptrT_cmf__water__waterbalance_integrator_tTo_p_std__tr1__shared_ptrT_cmf__math__integratable_t, 0, 0},  {&_swigt__p_std__tr1__shared_ptrT_cmf__math__integratable_t, 0, 0, 0},  {&_swigt__p_std__tr1__shared_ptrT_cmf__water__flux_integrator_t, _p_std__tr1__shared_ptrT_cmf__water__flux_integrator_tTo_p_std__tr1__shared_ptrT_cmf__math__integratable_t, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_std__tr1__shared_ptrT_cmf__river__Manning_t[] = {  {&_swigt__p_std__tr1__shared_ptrT_cmf__river__Manning_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__tr1__shared_ptrT_cmf__river__OpenWaterStorage_t[] = {  {&_swigt__p_std__tr1__shared_ptrT_cmf__river__OpenWaterStorage_t, 0, 0, 0},  {&_swigt__p_std__tr1__shared_ptrT_cmf__upslope__SurfaceWater_t, _p_std__tr1__shared_ptrT_cmf__upslope__SurfaceWater_tTo_p_std__tr1__shared_ptrT_cmf__river__OpenWaterStorage_t, 0, 0},  {&_swigt__p_std__tr1__shared_ptrT_cmf__river__Reach_t, _p_std__tr1__shared_ptrT_cmf__river__Reach_tTo_p_std__tr1__shared_ptrT_cmf__river__OpenWaterStorage_t, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__tr1__shared_ptrT_cmf__river__Reach_t[] = {  {&_swigt__p_std__tr1__shared_ptrT_cmf__river__Reach_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__tr1__shared_ptrT_cmf__upslope__ET__canopy_evaporation_method_t[] = {  {&_swigt__p_std__tr1__shared_ptrT_cmf__upslope__ET__canopy_evaporation_method_t, 0, 0, 0},{0, 0, 0, 0}};
@@ -76689,7 +76555,6 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_std__tr1__shared_ptrT_cmf__atmosphere__aerodynamic_resistance_t,
   _swigc__p_std__tr1__shared_ptrT_cmf__math__StateVariable_t,
   _swigc__p_std__tr1__shared_ptrT_cmf__math__integratable_t,
-  _swigc__p_std__tr1__shared_ptrT_cmf__river__Manning_t,
   _swigc__p_std__tr1__shared_ptrT_cmf__river__OpenWaterStorage_t,
   _swigc__p_std__tr1__shared_ptrT_cmf__river__Reach_t,
   _swigc__p_std__tr1__shared_ptrT_cmf__upslope__ET__canopy_evaporation_method_t,

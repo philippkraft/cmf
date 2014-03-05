@@ -152,10 +152,6 @@ cmf::water::WaterStorage::ptr Cell::add_storage( std::string Name,char storage_r
 		m_Snow = ws;
 	}
 	m_storages.push_back(ws);
-	if (get_project().debug) 
-		std::cout << " Add storage " << ws->Name << " to " << this->to_string() 
-		<< " as " << (storage_role=='W' ? "surface water" : storage_role=='C' ? "canopy" : storage_role=='S' ? "snow" : "anything")
-		<< std::endl;
 	return m_storages.back();
 	
 }

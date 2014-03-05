@@ -25,7 +25,7 @@
 #include <omp.h>
 #endif
 #include <algorithm>
-cmf::project::project(std::string solutenames) :	debug(false), solutes(solutenames)
+cmf::project::project(std::string solutenames) :	solutes(solutenames)
 {
 }
 
@@ -130,9 +130,6 @@ cmf::math::StateVariableList cmf::project::get_states()
 size_t cmf::project::add_node( cmf::water::flux_node::ptr node )
 {
 	m_nodes.append(node);
-	if (debug) {
-		std::cout << "project<-" << node->to_string() << std::endl;
-	}
 	return m_nodes.size();
 }
 
@@ -148,7 +145,6 @@ cmf::water::WaterStorage::ptr cmf::project::NewStorage( std::string Name,double 
 	s->position = cmf::geometry::point(x,y,z);
 	s->Name = Name;
 	add_node(s);
-	if (this->debug) std::cout << "Create " << s->to_string() << std::endl;
 	return s;
 }
 
@@ -158,7 +154,6 @@ cmf::river::OpenWaterStorage::ptr cmf::project::NewOpenStorage( std::string Name
 	os->position = cmf::geometry::point(x,y,z);
 	os->Name = Name;
 	add_node(os);
-	if (this->debug) std::cout << "Create " << os->to_string() << std::endl;
 	return os;
 }
 
@@ -167,7 +162,6 @@ cmf::river::Reach::ptr cmf::project::NewReach( double x,double y, double z, doub
 	cmf::river::Channel ch(Type,length,width,depth);
 	cmf::river::Reach::ptr R = cmf::river::Reach::create(*this,ch,diffusive);
 	R->position=cmf::geometry::point(x,y,z);
-	if (this->debug) std::cout << "Create " << R->to_string() << std::endl;
 	m_reaches.push_back(R);
 	return m_reaches.back();
 }
@@ -176,7 +170,6 @@ cmf::river::Reach::ptr cmf::project::NewReach( double x,double y, double z, cmf:
 {
 	cmf::river::Reach::ptr R = cmf::river::Reach::create(*this,shape,diffusive);
 	R->position=cmf::geometry::point(x,y,z);
-	if (this->debug) std::cout << "Create " << R->to_string() << std::endl;
 	m_reaches.push_back(R);
 	return m_reaches.back();
 
@@ -187,7 +180,6 @@ cmf::water::DirichletBoundary::ptr cmf::project::NewOutlet( std::string name,dou
 	cmf::water::DirichletBoundary::ptr res(new cmf::water::DirichletBoundary(*this,z,cmf::geometry::point(x,y,z) ));
 	res->Name = name;
 	this->add_node(res);
-	if (this->debug) std::cout << "Create " << res->to_string() << std::endl;
 	return res;
 }
 

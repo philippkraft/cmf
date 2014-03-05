@@ -144,8 +144,7 @@ namespace cmf {
 		}
 		/// The number of cells in the project
 		size_t size() const { return m_cells.size();}
-		/// @brief debug (true/false) If set to true, creation and deletion of objects is logged
-		bool debug;
+
 		/// @brief Creates a new project
         ///
         /// @param solute_names A string representing the names of the solutes to be used in the project. Sepereate solute names with space.
