@@ -93,6 +93,15 @@ namespace cmf {
 					res[i] = Wetness(suction[i]);
 				return res;
 			}
+			virtual real dPsiM_dW(real wetness) const {
+				throw std::runtime_error("This retention curve type can't calculate dPsi_M/dW analytically, choose another type");
+			}
+			cmf::math::num_array dPsiM_dW(const cmf::math::num_array& wetness) const {
+				cmf::math::num_array res(wetness.size());
+				for (int i = 0; i < wetness.size() ; ++i)
+					res[i] = dPsiM_dW(wetness[i]);
+				return res;				
+			}
 			/// returns the volumetric water content at a given pF value
 			real Wetness_pF(real pF) const {return Wetness(pF_to_waterhead(pF));}
 			cmf::math::num_array Wetness_pF(const cmf::math::num_array& pF) const {
@@ -231,6 +240,11 @@ namespace cmf {
 			///
 			/// \f[\Psi(W) = 0.01 \frac{m}{cm} \frac{{\left(1-{W}^{\frac{1}{m}}\right) }^{\frac{1}{n}}}{\alpha\,{W}^{\frac{1}{m\,n}}}  \f]
 			virtual real MatricPotential(real wetness) const;
+			
+			/// returns \f$\tfrac{d\Psi_M}{dW}\f$
+			///
+			/// \f[\frac{0.01 w^{\frac{1}{m}} w^{- \frac{1}{m n}} \left(- w^{\frac{1}{m}} + 1\right)^{\frac{1}{n}}}{\alpha m n w \left(- w^{\frac{1}{m}} + 1\right)} + \frac{0.01 w^{- \frac{1}{m n}} \left(- w^{\frac{1}{m}} + 1\right)^{\frac{1}{n}}}{\alpha m n w}\f]
+			virtual real dPsiM_dW(real wetness) const;
 			/// @brief returns the conductivity of the soil at a given saturation
 			///
 			/// \f[K(W) = K_{sat} \sqrt{W} \left(1-\left(1-W^{1/m}\right)^m\right)^2 \f]

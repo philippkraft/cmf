@@ -31,10 +31,9 @@ namespace cmf {
 			///
 			/// The difference to BROOK90 is, that the actual transpiration is not calculated by plant resitance and potential gradient between plant and soil,
 			/// but by an piecewise linear function of the pF value \f$ pF = \log_{10}\left(-\Psi [hPa]\right) \f$:
-			/// \f[ \frac{T_{act}}{T_{pot}} = \left\{\begin{array}{cl}
-			/// 1 & \mbox{if $pF \le 3.35$} \\ 
-			/// \frac{pF - 4.2}{3.35 - 4.2} & \mbox{if $pF \in [3.35 .. 4.2] $} \\
-			/// 0 & \mbox{if $pF \ge 4.2$} \end{array}\right. \f]
+			/// \f[ \frac{T_{act}}{T_{pot}} = \begin{cases}1 & pF \le 3.35 \\ 
+			/// \frac{pF - 4.2}{3.35 - 4.2} & pF \in [3.35 .. 4.2] \\
+			/// 0 & pF \ge 4.2\end{cases} \f]
 			///
 			/// Calculation procedure, as in BROOK 90:
 			///
