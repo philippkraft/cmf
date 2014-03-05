@@ -77,8 +77,6 @@ namespace cmf {
 			cmf::river::volume_height_function flux_geometry;
 
 			typedef std::tr1::shared_ptr<Manning> ptr;
-			static Manning::ptr create(cmf::river::OpenWaterStorage::ptr left,cmf::water::flux_node::ptr right,
-				const cmf::river::IChannel& reachtype,bool diffusive_wave);
 
 
 		};

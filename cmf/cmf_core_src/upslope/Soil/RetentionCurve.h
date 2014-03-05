@@ -48,7 +48,7 @@ namespace cmf {
 			}
 			cmf::math::num_array K(const cmf::math::num_array& wetness) const {
 				cmf::math::num_array res(wetness.size());
-				for (int i = 0; i < wetness.size() ; ++i)
+				for (size_t i = 0; i < wetness.size() ; ++i)
 					res[i] = K(wetness[i]);
 				return res;
 			}
@@ -83,13 +83,13 @@ namespace cmf {
 			}
 			cmf::math::num_array Diffusivity(cmf::math::num_array& wetness) {
 				cmf::math::num_array res(wetness.size());
-				for (int i = 0; i < wetness.size() ; ++i)
+				for (size_t i = 0; i < wetness.size() ; ++i)
 					res[i] = Diffusivity(wetness[i]);
 				return res;
 			}
 			cmf::math::num_array Wetness(const cmf::math::num_array& suction) const {
 				cmf::math::num_array res(suction.size());
-				for (int i = 0; i < suction.size() ; ++i)
+				for (size_t i = 0; i < suction.size() ; ++i)
 					res[i] = Wetness(suction[i]);
 				return res;
 			}
@@ -98,7 +98,7 @@ namespace cmf {
 			}
 			cmf::math::num_array dPsiM_dW(const cmf::math::num_array& wetness) const {
 				cmf::math::num_array res(wetness.size());
-				for (int i = 0; i < wetness.size() ; ++i)
+				for (size_t i = 0; i < wetness.size() ; ++i)
 					res[i] = dPsiM_dW(wetness[i]);
 				return res;				
 			}
@@ -106,7 +106,7 @@ namespace cmf {
 			real Wetness_pF(real pF) const {return Wetness(pF_to_waterhead(pF));}
 			cmf::math::num_array Wetness_pF(const cmf::math::num_array& pF) const {
 				cmf::math::num_array res(pF.size());
-				for (int i = 0; i < pF.size() ; ++i)
+				for (size_t i = 0; i < pF.size() ; ++i)
 					res[i] = Wetness_pF(pF[i]);
 				return res;
 			}
@@ -116,7 +116,7 @@ namespace cmf {
 			};
 			cmf::math::num_array MatricPotential(const cmf::math::num_array& wetness) const {
 				cmf::math::num_array res(wetness.size());
-				for (int i = 0; i < wetness.size() ; ++i)
+				for (size_t i = 0; i < wetness.size() ; ++i)
 					res[i] = MatricPotential(wetness[i]);
 				return res;
 			

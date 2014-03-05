@@ -132,11 +132,11 @@ cmf::water::connection_list cmf::upslope::get_connections(cells_ref cells)
 	{
 		//insert_connections_in_set(cset,&it->Evaporation());
 		insert_connections_in_set(cset,it->get_surfacewater());
-		for (int i = 0; i < it->storage_count(); ++i)
+		for (size_t i = 0; i < it->storage_count(); ++i)
 		{
 			insert_connections_in_set(cset,it->get_storage(i));
 		}
-		for (int i = 0; i < it->layer_count() ; ++i)
+		for (size_t i = 0; i < it->layer_count() ; ++i)
 		{
 			insert_connections_in_set(cset,it->get_layer(i));
 		}		 
@@ -221,7 +221,7 @@ cmf::geometry::point_vector cmf::upslope::cell_positions( cells_ref cells )
 {
 	cmf::geometry::point_vector res(int(cells.size()));
 #pragma omp parallel for
-	for (int i = 0; i < (int)cells.size() ; ++i)
+	for (ptrdiff_t i = 0; i < (int)cells.size() ; ++i)
 	{
 		res.set(i,cells[i].get_position());
 	}
@@ -232,13 +232,13 @@ cmf::geometry::point_vector cmf::upslope::cell_flux_directions( cells_ref cells,
 {
 	cmf::geometry::point_vector res(int(cells.size()));
 #pragma omp parallel for
-	for (int i = 0; i < (int)cells.size() ; ++i)
+	for (ptrdiff_t i = 0; i < (int)cells.size() ; ++i)
 	{
 		cmf::geometry::point p;
 		Cell & c = cells[i];
-		for (int j = 0; j < c.storage_count() ; ++j)
+		for (ptrdiff_t j = 0; j < c.storage_count() ; ++j)
 			p+=c.get_storage(j)->get_3d_flux(t);
-		for (int j = 0; j < c.layer_count() ; ++j)
+		for (ptrdiff_t j = 0; j < c.layer_count() ; ++j)
 				p+=c.get_layer(j)->get_3d_flux(t);
 		res.set(i,p);
 	}

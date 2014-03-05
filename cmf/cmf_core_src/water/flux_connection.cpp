@@ -38,8 +38,6 @@ flux_connection::flux_connection( flux_node::ptr left,flux_node::ptr right,std::
 	if ((!left) || (!right)) 
 		throw std::runtime_error("Can't create " + this->type + " if a node is null");
 	const project& p=left->get_project();
-	if (p.debug)
-		std::cout << "Create " << to_string() << std::endl;
 	left->RegisterConnection(this);
 	right->RegisterConnection(this);
 }
@@ -60,10 +58,6 @@ void flux_connection::exchange_target( flux_node::ptr oldtarget,flux_node::ptr n
 	left_node()->RegisterConnection(this);
 	right_node()->RegisterConnection(this);
 	NewNodes();
-	if (newTarget->get_project().debug)
-	{
-		std::cout << "Replaced " << oldtarget->Name << " with " << newTarget->Name << " in " << this->to_string() << std::endl;
-	}
 
 }
 
