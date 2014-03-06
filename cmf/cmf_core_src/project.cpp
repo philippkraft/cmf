@@ -157,14 +157,6 @@ cmf::river::OpenWaterStorage::ptr cmf::project::NewOpenStorage( std::string Name
 	return os;
 }
 
-cmf::river::Reach::ptr cmf::project::NewReach( double x,double y, double z, double length, char Type/*='T'*/,double width/*=0.5*/,double depth/*=0.1*/, bool diffusive/*=false*/ )
-{
-	cmf::river::Channel ch(Type,length,width,depth);
-	cmf::river::Reach::ptr R = cmf::river::Reach::create(*this,ch,diffusive);
-	R->position=cmf::geometry::point(x,y,z);
-	m_reaches.push_back(R);
-	return m_reaches.back();
-}
 
 cmf::river::Reach::ptr cmf::project::NewReach( double x,double y, double z, cmf::river::IChannel& shape, bool diffusive/*=false*/ )
 {
