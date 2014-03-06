@@ -68220,112 +68220,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_project_NewReach__SWIG_0(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  cmf::project *arg1 = (cmf::project *) 0 ;
-  double arg2 ;
-  double arg3 ;
-  double arg4 ;
-  double arg5 ;
-  char arg6 = (char) 'T' ;
-  double arg7 = (double) 0.5 ;
-  double arg8 = (double) 0.1 ;
-  bool arg9 = (bool) false ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  double val2 ;
-  int ecode2 = 0 ;
-  double val3 ;
-  int ecode3 = 0 ;
-  double val4 ;
-  int ecode4 = 0 ;
-  double val5 ;
-  int ecode5 = 0 ;
-  char val6 ;
-  int ecode6 = 0 ;
-  double val7 ;
-  int ecode7 = 0 ;
-  double val8 ;
-  int ecode8 = 0 ;
-  bool val9 ;
-  int ecode9 = 0 ;
-  cmf::river::Reach::ptr result;
-  
-  if ((nobjs < 5) || (nobjs > 9)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__project, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "project_NewReach" "', argument " "1"" of type '" "cmf::project *""'"); 
-  }
-  arg1 = reinterpret_cast< cmf::project * >(argp1);
-  ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "project_NewReach" "', argument " "2"" of type '" "double""'");
-  } 
-  arg2 = static_cast< double >(val2);
-  ecode3 = SWIG_AsVal_double(swig_obj[2], &val3);
-  if (!SWIG_IsOK(ecode3)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "project_NewReach" "', argument " "3"" of type '" "double""'");
-  } 
-  arg3 = static_cast< double >(val3);
-  ecode4 = SWIG_AsVal_double(swig_obj[3], &val4);
-  if (!SWIG_IsOK(ecode4)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "project_NewReach" "', argument " "4"" of type '" "double""'");
-  } 
-  arg4 = static_cast< double >(val4);
-  ecode5 = SWIG_AsVal_double(swig_obj[4], &val5);
-  if (!SWIG_IsOK(ecode5)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "project_NewReach" "', argument " "5"" of type '" "double""'");
-  } 
-  arg5 = static_cast< double >(val5);
-  if (swig_obj[5]) {
-    ecode6 = SWIG_AsVal_char(swig_obj[5], &val6);
-    if (!SWIG_IsOK(ecode6)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode6), "in method '" "project_NewReach" "', argument " "6"" of type '" "char""'");
-    } 
-    arg6 = static_cast< char >(val6);
-  }
-  if (swig_obj[6]) {
-    ecode7 = SWIG_AsVal_double(swig_obj[6], &val7);
-    if (!SWIG_IsOK(ecode7)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode7), "in method '" "project_NewReach" "', argument " "7"" of type '" "double""'");
-    } 
-    arg7 = static_cast< double >(val7);
-  }
-  if (swig_obj[7]) {
-    ecode8 = SWIG_AsVal_double(swig_obj[7], &val8);
-    if (!SWIG_IsOK(ecode8)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode8), "in method '" "project_NewReach" "', argument " "8"" of type '" "double""'");
-    } 
-    arg8 = static_cast< double >(val8);
-  }
-  if (swig_obj[8]) {
-    ecode9 = SWIG_AsVal_bool(swig_obj[8], &val9);
-    if (!SWIG_IsOK(ecode9)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode9), "in method '" "project_NewReach" "', argument " "9"" of type '" "bool""'");
-    } 
-    arg9 = static_cast< bool >(val9);
-  }
-  {
-    try {
-      result = (arg1)->NewReach(arg2,arg3,arg4,arg5,arg6,arg7,arg8,arg9);
-    } catch (const std::out_of_range& e) {
-      SWIG_exception(SWIG_IndexError, e.what());    
-    } catch (const std::exception& e) {
-      SWIG_exception(SWIG_RuntimeError, e.what());
-    }
-    
-  }
-  {
-    std::tr1::shared_ptr<  cmf::river::Reach > *smartresult = result ? new std::tr1::shared_ptr<  cmf::river::Reach >(result) : 0;
-    resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(smartresult), SWIGTYPE_p_std__tr1__shared_ptrT_cmf__river__Reach_t, SWIG_POINTER_OWN);
-  }
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_project_NewReach__SWIG_1(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_project_NewReach(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   cmf::project *arg1 = (cmf::project *) 0 ;
   double arg2 ;
@@ -68345,30 +68240,39 @@ SWIGINTERN PyObject *_wrap_project_NewReach__SWIG_1(PyObject *SWIGUNUSEDPARM(sel
   int res5 = 0 ;
   bool val6 ;
   int ecode6 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  PyObject * obj4 = 0 ;
+  PyObject * obj5 = 0 ;
+  char *  kwnames[] = {
+    (char *) "self",(char *) "x",(char *) "y",(char *) "z",(char *) "shape",(char *) "diffusive", NULL 
+  };
   cmf::river::Reach::ptr result;
   
-  if ((nobjs < 5) || (nobjs > 6)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__project, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"OOOOO|O:project_NewReach",kwnames,&obj0,&obj1,&obj2,&obj3,&obj4,&obj5)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_cmf__project, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "project_NewReach" "', argument " "1"" of type '" "cmf::project *""'"); 
   }
   arg1 = reinterpret_cast< cmf::project * >(argp1);
-  ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
+  ecode2 = SWIG_AsVal_double(obj1, &val2);
   if (!SWIG_IsOK(ecode2)) {
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "project_NewReach" "', argument " "2"" of type '" "double""'");
   } 
   arg2 = static_cast< double >(val2);
-  ecode3 = SWIG_AsVal_double(swig_obj[2], &val3);
+  ecode3 = SWIG_AsVal_double(obj2, &val3);
   if (!SWIG_IsOK(ecode3)) {
     SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "project_NewReach" "', argument " "3"" of type '" "double""'");
   } 
   arg3 = static_cast< double >(val3);
-  ecode4 = SWIG_AsVal_double(swig_obj[3], &val4);
+  ecode4 = SWIG_AsVal_double(obj3, &val4);
   if (!SWIG_IsOK(ecode4)) {
     SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "project_NewReach" "', argument " "4"" of type '" "double""'");
   } 
   arg4 = static_cast< double >(val4);
-  res5 = SWIG_ConvertPtr(swig_obj[4], &argp5, SWIGTYPE_p_cmf__river__IChannel,  0 );
+  res5 = SWIG_ConvertPtr(obj4, &argp5, SWIGTYPE_p_cmf__river__IChannel,  0 );
   if (!SWIG_IsOK(res5)) {
     SWIG_exception_fail(SWIG_ArgError(res5), "in method '" "project_NewReach" "', argument " "5"" of type '" "cmf::river::IChannel &""'"); 
   }
@@ -68376,8 +68280,8 @@ SWIGINTERN PyObject *_wrap_project_NewReach__SWIG_1(PyObject *SWIGUNUSEDPARM(sel
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "project_NewReach" "', argument " "5"" of type '" "cmf::river::IChannel &""'"); 
   }
   arg5 = reinterpret_cast< cmf::river::IChannel * >(argp5);
-  if (swig_obj[5]) {
-    ecode6 = SWIG_AsVal_bool(swig_obj[5], &val6);
+  if (obj5) {
+    ecode6 = SWIG_AsVal_bool(obj5, &val6);
     if (!SWIG_IsOK(ecode6)) {
       SWIG_exception_fail(SWIG_ArgError(ecode6), "in method '" "project_NewReach" "', argument " "6"" of type '" "bool""'");
     } 
@@ -68400,214 +68304,6 @@ SWIGINTERN PyObject *_wrap_project_NewReach__SWIG_1(PyObject *SWIGUNUSEDPARM(sel
   return resultobj;
 fail:
   return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_project_NewReach(PyObject *self, PyObject *args) {
-  int argc;
-  PyObject *argv[10];
-  
-  if (!(argc = SWIG_Python_UnpackTuple(args,"project_NewReach",0,9,argv))) SWIG_fail;
-  --argc;
-  {
-    unsigned long _index = 0;
-    SWIG_TypeRank _rank = 0; 
-    if ((argc >= 5) && (argc <= 6)) {
-      SWIG_TypeRank _ranki = 0;
-      SWIG_TypeRank _rankm = 0;
-      SWIG_TypeRank _pi = 1;
-      int _v = 0;
-      {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_cmf__project, 0);
-        _v = SWIG_CheckState(res);
-      }
-      if (!_v) goto check_1;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      {
-        {
-          int res = SWIG_AsVal_double(argv[1], NULL);
-          _v = SWIG_CheckState(res);
-        }
-      }
-      if (!_v) goto check_1;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      {
-        {
-          int res = SWIG_AsVal_double(argv[2], NULL);
-          _v = SWIG_CheckState(res);
-        }
-      }
-      if (!_v) goto check_1;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      {
-        {
-          int res = SWIG_AsVal_double(argv[3], NULL);
-          _v = SWIG_CheckState(res);
-        }
-      }
-      if (!_v) goto check_1;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[4], &vptr, SWIGTYPE_p_cmf__river__IChannel, 0);
-        _v = SWIG_CheckState(res);
-      }
-      if (!_v) goto check_1;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      if (argc > 5) {
-        {
-          {
-            int res = SWIG_AsVal_bool(argv[5], NULL);
-            _v = SWIG_CheckState(res);
-          }
-        }
-        if (!_v) goto check_1;
-        _ranki += _v*_pi;
-        _rankm += _pi;
-        _pi *= SWIG_MAXCASTRANK;
-      }
-      if (!_index || (_ranki < _rank)) {
-        _rank = _ranki; _index = 1;
-        if (_rank == _rankm) goto dispatch;
-      }
-    }
-  check_1:
-    
-    if ((argc >= 5) && (argc <= 9)) {
-      SWIG_TypeRank _ranki = 0;
-      SWIG_TypeRank _rankm = 0;
-      SWIG_TypeRank _pi = 1;
-      int _v = 0;
-      {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_cmf__project, 0);
-        _v = SWIG_CheckState(res);
-      }
-      if (!_v) goto check_2;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      {
-        {
-          int res = SWIG_AsVal_double(argv[1], NULL);
-          _v = SWIG_CheckState(res);
-        }
-      }
-      if (!_v) goto check_2;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      {
-        {
-          int res = SWIG_AsVal_double(argv[2], NULL);
-          _v = SWIG_CheckState(res);
-        }
-      }
-      if (!_v) goto check_2;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      {
-        {
-          int res = SWIG_AsVal_double(argv[3], NULL);
-          _v = SWIG_CheckState(res);
-        }
-      }
-      if (!_v) goto check_2;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      {
-        {
-          int res = SWIG_AsVal_double(argv[4], NULL);
-          _v = SWIG_CheckState(res);
-        }
-      }
-      if (!_v) goto check_2;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      if (argc > 5) {
-        {
-          {
-            int res = SWIG_AsVal_char(argv[5], NULL);
-            _v = SWIG_CheckState(res);
-          }
-        }
-        if (!_v) goto check_2;
-        _ranki += _v*_pi;
-        _rankm += _pi;
-        _pi *= SWIG_MAXCASTRANK;
-        if (argc > 6) {
-          {
-            {
-              int res = SWIG_AsVal_double(argv[6], NULL);
-              _v = SWIG_CheckState(res);
-            }
-          }
-          if (!_v) goto check_2;
-          _ranki += _v*_pi;
-          _rankm += _pi;
-          _pi *= SWIG_MAXCASTRANK;
-          if (argc > 7) {
-            {
-              {
-                int res = SWIG_AsVal_double(argv[7], NULL);
-                _v = SWIG_CheckState(res);
-              }
-            }
-            if (!_v) goto check_2;
-            _ranki += _v*_pi;
-            _rankm += _pi;
-            _pi *= SWIG_MAXCASTRANK;
-            if (argc > 8) {
-              {
-                {
-                  int res = SWIG_AsVal_bool(argv[8], NULL);
-                  _v = SWIG_CheckState(res);
-                }
-              }
-              if (!_v) goto check_2;
-              _ranki += _v*_pi;
-              _rankm += _pi;
-              _pi *= SWIG_MAXCASTRANK;
-            }
-          }
-        }
-      }
-      if (!_index || (_ranki < _rank)) {
-        _rank = _ranki; _index = 2;
-        if (_rank == _rankm) goto dispatch;
-      }
-    }
-  check_2:
-    
-  dispatch:
-    switch(_index) {
-    case 1:
-      return _wrap_project_NewReach__SWIG_1(self, argc, argv);
-    case 2:
-      return _wrap_project_NewReach__SWIG_0(self, argc, argv);
-    }
-  }
-  
-fail:
-  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'project_NewReach'.\n"
-    "  Possible C/C++ prototypes are:\n"
-    "    cmf::project::NewReach(double,double,double,double,char,double,double,bool)\n"
-    "    cmf::project::NewReach(double,double,double,cmf::river::IChannel &,bool)\n");
-  return 0;
 }
 
 
@@ -75139,9 +74835,7 @@ static PyMethodDef SwigMethods[] = {
 		"\n"
 		"area:  Surface area of the open water storage \n"
 		""},
-	 { (char *)"project_NewReach", _wrap_project_NewReach, METH_VARARGS, (char *)"\n"
-		"NewReach(double x, double y, double z, double length, char Type='T', double width=0.5, double depth=0.1, \n"
-		"    bool diffusive=False) -> cmf::river::Reach::ptr\n"
+	 { (char *)"project_NewReach", (PyCFunction) _wrap_project_NewReach, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
 		"project_NewReach(project self, double x, double y, double z, IChannel shape, bool diffusive=False) -> cmf::river::Reach::ptr\n"
 		"\n"
 		"cmf::river::Reach::ptr\n"
