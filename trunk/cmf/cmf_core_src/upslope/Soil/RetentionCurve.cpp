@@ -219,14 +219,15 @@ real cmf::upslope::VanGenuchtenMualem::Wetness( real suction) const
 }
 real cmf::upslope::VanGenuchtenMualem::dPsiM_dW(real w) const{
 	real _m = m<0 ? 1-1/n : m;
+	real mi = 1.0/_m, ni = 1.0/n;
 	if (w<=w0) {
 		return 
-			0.01*pow(w, 1.0/_m)*pow(w, -1/(_m*n))*pow(-pow(w, 1.0/_m) + 1, 1.0/n)
-				/
-				(alpha*_m*n*w*(-pow(w, 1.0/_m) + 1)) 
-		  + 0.01*pow(w, -1/(m*n))*pow(-pow(w, 1.0/_m) + 1, 1.0/n)
-				/
-				(alpha*_m*n*w);
+			  pow(w, mi)*pow(w, -(mi*ni))*pow(-pow(w, mi) + 1, ni)
+			  /
+			 (100*alpha*_m*n*w*(-pow(w, mi) + 1)) 
+		   + pow(w, -(mi*ni))*pow(-pow(w, mi) + 1, ni)
+			 /
+			 (100 * alpha*_m*n*w);
 	} else {
 		real p0 = MatricPotential(w0);
 		real dp0 = dPsiM_dW(w0);

@@ -11295,10 +11295,8 @@ class project(StateVariableOwner):
         """
         return _cmf_core.project_NewOpenStorage(self, *args, **kwargs)
 
-    def NewReach(self, *args):
+    def NewReach(self, *args, **kwargs):
         """
-        NewReach(project self, double x, double y, double z, double length, char Type='T', double width=0.5, double depth=0.1, 
-            bool diffusive=False) -> cmf::river::Reach::ptr
         NewReach(project self, double x, double y, double z, IChannel shape, bool diffusive=False) -> cmf::river::Reach::ptr
 
         cmf::river::Reach::ptr
@@ -11320,7 +11318,7 @@ class project(StateVariableOwner):
         diffusive:  If true, this reach uses by default a diffusive wave
         connection 
         """
-        return _cmf_core.project_NewReach(self, *args)
+        return _cmf_core.project_NewReach(self, *args, **kwargs)
 
     def get_reach(self, *args, **kwargs):
         """
