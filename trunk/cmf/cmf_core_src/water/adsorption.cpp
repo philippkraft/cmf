@@ -82,7 +82,7 @@ real LangmuirAdsorption::freesolute( real xt,real V ) const
 			- K*m
 			+ K*xt 
 			- V 
-			- /* + */ sqrt(   square(K)*square(m)
+			+ /*-*/ sqrt(   square(K)*square(m)
 					- 2*square(K)*m*xt 
 					+ pow(K, 2)*pow(xt, 2) 
 					+ 2*K*V*m 
