@@ -22,13 +22,12 @@
 #include "Solute.h"
 #include "../math/statevariable.h"
 #include "../math/real.h"
+#include "adsorption.h"
 
 //#include "Reaction.h"
 namespace cmf {
 	namespace water {
 		class WaterStorage;
-		//class SoluteStorageMap;
-		
 		/// @brief A class for the storage of any tracer. The state is the amount (mol, kg etc. see cmf::water) 
 		/// of the tracer in the storage.
 		///
@@ -45,12 +44,17 @@ namespace cmf {
 		class SoluteStorage : public cmf::math::StateVariable
 		{
 			SoluteStorage(WaterStorage* _water,const cmf::water::solute& _Solute, double InitialState=0) 
-				: cmf::math::StateVariable(InitialState),m_water(_water), Solute(_Solute),decay(0),source(0)
+				: cmf::math::StateVariable(InitialState),m_water(_water), Solute(_Solute),decay(0),source(0),
+				  adsorption(new NullAdsorption)
 			{}
 			
 			WaterStorage* m_water;
+			std::auto_ptr<Adsorption> adsorption;
 			
 		public:
+			void set_adsorption(const Adsorption& newadsorption,real m=-1) {
+				adsorption.reset(newadsorption.copy(m));
+			}
 			friend class WaterStorage;
 			/// @brief Rate of decay of the solute (in 1/day)
 			real decay;
