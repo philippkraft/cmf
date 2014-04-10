@@ -25,6 +25,40 @@
 %feature("docstring") _SpgmrMemRec "";
 
 
+// File: classcmf_1_1water_1_1_adsorption.xml
+%feature("docstring") cmf::water::Adsorption "
+
+Abstract class to use adsorption process for tracers on surfaces.
+
+Use the derived classes to use a certain isotherm
+
+C++ includes: adsorption.h ";
+
+%feature("docstring")  cmf::water::Adsorption::copy "virtual
+Adsorption* copy(real m=-1) const =0
+
+returns a copy of the Adsorption object.
+
+If the adsorption is depending on the sorbent mass, you can give a
+positive value for the sorbent mass m. If the value is not given or
+negative, m is used from the original object. ";
+
+%feature("docstring")  cmf::water::Adsorption::freesolute "virtual
+real freesolute(real xt, real V) const =0
+
+Returns the mass of dissolved tracer as a function of the total tracer
+mass in the solute storage and the water volume.
+
+Parameters:
+-----------
+
+xt:    :math:`x_t`  the total tracer mass in the storage
+
+V:    :math:`V m^3`  the water volume in the storage
+
+ :math:`x_f`  the dissolved mass of the tracer ";
+
+
 // File: classcmf_1_1atmosphere_1_1aerodynamic__resistance.xml
 %feature("docstring") cmf::atmosphere::aerodynamic_resistance "
 
@@ -3472,6 +3506,90 @@ Without:  A flux_connection that is excluded from the waterbalance
 (e.g. to prevent closed circuits) ";
 
 
+// File: classcmf_1_1water_1_1_freundlich_adsorbtion.xml
+%feature("docstring") cmf::water::FreundlichAdsorbtion "
+
+This class calculates the adsorption equilibrium between sorbat and
+sorbent using the Freundlich isotherme.
+
+Freundlich isotherme:
+
+
+
+.. math::
+
+    \\\\frac{x_{ad}}{m} = K c^n
+
+ where   :math:`x_{ad} = x_{tot} - x_{free}`  is the adsorbed tracer mass   :math:`x_{tot}`  is the total tracer
+mass
+
+ :math:`x_{free}`  is the dissolved tracer mass
+
+ :math:`m`  is the mass of the sorbent in the same unit as the tracer mass
+
+ :math:`K`  is the Henry sorption coefficient
+
+ :math:`c = \\\\frac{x_{free}}{V}`  is the concentration of the tracer in
+tracer mass per m3
+
+ :math:`n`  is the Freundlich exponent
+
+CMF stores in a solute storage the total mass of a tracer and needs to
+calculate the free tracer mass. The eq. above can not be rearanged to
+get  :math:`x_{free}`  from  :math:`x_{tot}` . Instead, the value is iterated using
+Newton's method with the solution of the LinearAdsorption as an
+initial guess. If n is near to 1, using LinearAdsorption will speed up
+your calculations. The simplest physically based adsorption model by
+Langmuir ( LangmuirAdsorption) has also a anylitical solution and is
+calculated faster then Freundlich.
+
+C++ includes: adsorption.h ";
+
+%feature("docstring")
+cmf::water::FreundlichAdsorbtion::FreundlichAdsorbtion "FreundlichAdsorbtion(real K, real n, real m, real epsilon=1e-12, int
+maxiter=100, bool strict=true)
+
+Parameters:
+-----------
+
+K:  n:  Freundlich coefficents
+
+m:  Mass of sorbent in units of tracer
+
+epsilon:  Tolerance of New iteration for the calculation of dissolved
+tracer from total trace, default = 1e-12
+
+maxiter:  Maximum number of iterations, default = 100
+
+strict:  If strict is true, the iteration will throw a runtime error,
+if the method does not converge ";
+
+%feature("docstring")
+cmf::water::FreundlichAdsorbtion::FreundlichAdsorbtion "FreundlichAdsorbtion(const FreundlichAdsorbtion &other) ";
+
+%feature("docstring")  cmf::water::FreundlichAdsorbtion::copy "FreundlichAdsorbtion* copy(real m=-1) const
+
+returns a copy of the Adsorption object.
+
+If the adsorption is depending on the sorbent mass, you can give a
+positive value for the sorbent mass m. If the value is not given or
+negative, m is used from the original object. ";
+
+%feature("docstring")  cmf::water::FreundlichAdsorbtion::freesolute "real freesolute(real xt, real V) const
+
+Returns the mass of dissolved tracer as a function of the total tracer
+mass in the solute storage and the water volume.
+
+Parameters:
+-----------
+
+xt:    :math:`x_t`  the total tracer mass in the storage
+
+V:    :math:`V m^3`  the water volume in the storage
+
+ :math:`x_f`  the dissolved mass of the tracer ";
+
+
 // File: classcmf_1_1water_1_1generic__gradient__connection.xml
 %feature("docstring") cmf::water::generic_gradient_connection "
 
@@ -5703,6 +5821,45 @@ cmf::upslope::connections::KinematicSurfaceRunoff::short_string "std::string sho
 cmf::upslope::connections::KinematicSurfaceRunoff::to_string "std::string to_string() const ";
 
 
+// File: classcmf_1_1water_1_1_langmuir_adsorption.xml
+%feature("docstring") cmf::water::LangmuirAdsorption "
+
+Langmuir Adsorption.
+
+: Check correctness of
+eq.http://en.wikipedia.org/wiki/Langmuir_equation
+
+C++ includes: adsorption.h ";
+
+%feature("docstring")
+cmf::water::LangmuirAdsorption::LangmuirAdsorption "LangmuirAdsorption(real K, real m) ";
+
+%feature("docstring")
+cmf::water::LangmuirAdsorption::LangmuirAdsorption "LangmuirAdsorption(const LangmuirAdsorption &other) ";
+
+%feature("docstring")  cmf::water::LangmuirAdsorption::copy "LangmuirAdsorption* copy(real m=-1) const
+
+returns a copy of the Adsorption object.
+
+If the adsorption is depending on the sorbent mass, you can give a
+positive value for the sorbent mass m. If the value is not given or
+negative, m is used from the original object. ";
+
+%feature("docstring")  cmf::water::LangmuirAdsorption::freesolute "real freesolute(real xt, real V) const
+
+Returns the mass of dissolved tracer as a function of the total tracer
+mass in the solute storage and the water volume.
+
+Parameters:
+-----------
+
+xt:    :math:`x_t`  the total tracer mass in the storage
+
+V:    :math:`V m^3`  the water volume in the storage
+
+ :math:`x_f`  the dissolved mass of the tracer ";
+
+
 // File: classcmf_1_1upslope_1_1connections_1_1lateral__sub__surface__flux.xml
 %feature("docstring")
 cmf::upslope::connections::lateral_sub_surface_flux "
@@ -6095,6 +6252,75 @@ C++ includes: boundary_condition.h ";
 %feature("docstring")  cmf::water::linear_scale::linear_scale "linear_scale(real _slope=1, real _displacement=0)
 
 Creates a linear scale (by default it is a unity scale,  :math:`a=1; b=0` ) ";
+
+
+// File: classcmf_1_1water_1_1_linear_adsorption.xml
+%feature("docstring") cmf::water::LinearAdsorption "
+
+This class calculates the adsorption equilibrium between sorbat and
+sorbent using the linear (Henry) isotherme.
+
+Henry isotherme:
+
+
+
+.. math::
+
+    \\\\frac{x_{ad}}{m} = K c
+
+ where   :math:`x_{ad} = x_{tot} - x_{free}`  is the adsorbed tracer mass   :math:`x_{tot}`  is the total tracer
+mass
+
+ :math:`x_{free}`  is the dissolved tracer mass
+
+ :math:`m`  is the mass of the sorbent in the same unit as the tracer mass
+
+ :math:`K`  is the Henry sorption coefficient
+
+ :math:`c = \\\\frac{x_{free}}{V}`  is the concentration of the tracer in
+tracer mass per m3
+
+CMF stores in a solute storage the total mass of a tracer and needs to
+calculate the free tracer mass. Calculating  :math:`x_{free}`  from  :math:`x_{tot}` 
+gives from the eq. above: 
+
+.. math::
+
+    x_{free} = x_{tot} \\\\frac{V}{K m +
+    V}
+
+
+
+C++ includes: adsorption.h ";
+
+%feature("docstring")  cmf::water::LinearAdsorption::LinearAdsorption
+"LinearAdsorption(real K, real m) ";
+
+%feature("docstring")  cmf::water::LinearAdsorption::LinearAdsorption
+"LinearAdsorption(const LinearAdsorption &other) ";
+
+%feature("docstring")  cmf::water::LinearAdsorption::copy "LinearAdsorption* copy(real m=-1) const
+
+returns a copy of the Adsorption object.
+
+If the adsorption is depending on the sorbent mass, you can give a
+positive value for the sorbent mass m. If the value is not given or
+negative, m is used from the original object. ";
+
+%feature("docstring")  cmf::water::LinearAdsorption::freesolute "real
+freesolute(real xt, real V) const
+
+Returns the mass of dissolved tracer as a function of the total tracer
+mass in the solute storage and the water volume.
+
+Parameters:
+-----------
+
+xt:    :math:`x_t`  the total tracer mass in the storage
+
+V:    :math:`V m^3`  the water volume in the storage
+
+ :math:`x_f`  the dissolved mass of the tracer ";
 
 
 // File: classcmf_1_1upslope_1_1_linear_retention.xml
@@ -8004,6 +8230,38 @@ Returns the water balance of each vector as a vector.
 Replaces slow Python code like: ";
 
 
+// File: classcmf_1_1water_1_1_null_adsorption.xml
+%feature("docstring") cmf::water::NullAdsorption "
+
+A class for tracers without interaction with the storage container.
+freesolute returns xt.
+
+C++ includes: adsorption.h ";
+
+%feature("docstring")  cmf::water::NullAdsorption::copy "virtual
+NullAdsorption* copy(real m=-1) const
+
+returns a copy of the Adsorption object.
+
+If the adsorption is depending on the sorbent mass, you can give a
+positive value for the sorbent mass m. If the value is not given or
+negative, m is used from the original object. ";
+
+%feature("docstring")  cmf::water::NullAdsorption::freesolute "virtual real freesolute(real xt, real V) const
+
+Returns the mass of dissolved tracer as a function of the total tracer
+mass in the solute storage and the water volume.
+
+Parameters:
+-----------
+
+xt:    :math:`x_t`  the total tracer mass in the storage
+
+V:    :math:`V m^3`  the water volume in the storage
+
+ :math:`x_f`  the dissolved mass of the tracer ";
+
+
 // File: classcmf_1_1math_1_1num__array.xml
 %feature("docstring") cmf::math::num_array "
 
@@ -8858,31 +9116,6 @@ name:  Name of the boundary condition for output
 
 x:  y:  z:  Position of the boundary condition in project coordinates
 ";
-
-%feature("docstring")  cmf::project::NewReach "cmf::river::Reach::ptr
-NewReach(double x, double y, double z, double length, char Type='T',
-double width=0.5, double depth=0.1, bool diffusive=false)
-
-Creates a new reach.
-
-A new reach, owned by the project
-
-Parameters:
------------
-
-x:  y:  z:  Position of the reach in project coordinates
-
-length:  length of the reach in m
-
-Type:  Geometry of the river cross section. Possible values: T
-(Triangular), R (Rectangular), S (SWAT like trapzeoid), P (pipe)
-
-width:  Width of the channel between banks in m
-
-depth:  Depth of the channel in m
-
-diffusive:  If true, this reach uses by default a diffusive wave
-connection ";
 
 %feature("docstring")  cmf::project::NewReach "cmf::river::Reach::ptr
 NewReach(double x, double y, double z, cmf::river::IChannel &shape,
@@ -11407,6 +11640,8 @@ Returns the derivate of the state variable at time time. ";
 get_state() const
 
 Returns the current state of the variable. ";
+
+%feature("docstring")  cmf::water::SoluteStorage::set_adsorption "void set_adsorption(const Adsorption &newadsorption, real m=-1) ";
 
 %feature("docstring")  cmf::water::SoluteStorage::set_state "void
 set_state(real newState)
@@ -16056,6 +16291,9 @@ x, real xmin, real xmax, real ymin=0, real ymax=1) ";
 
 
 // File: _struct_vegetation_8h.xml
+
+
+// File: adsorption_8h.xml
 
 
 // File: boundary__condition_8h.xml

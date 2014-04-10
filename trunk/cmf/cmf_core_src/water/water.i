@@ -40,6 +40,7 @@
     #include "water/system_bridge.h"
 %}
 // Include Water
+%include "water/adsorption.h"
 %include "water/Solute.h"
 %extend cmf::water::solute { 
     std::string __repr__() { return "[" + $self->Name + "]"; }

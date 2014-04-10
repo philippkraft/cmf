@@ -2442,6 +2442,273 @@ MultiIntegrator.add_states_to_integrator = new_instancemethod(_cmf_core.MultiInt
 MultiIntegrator_swigregister = _cmf_core.MultiIntegrator_swigregister
 MultiIntegrator_swigregister(MultiIntegrator)
 
+class Adsorption(object):
+    """
+    Abstract class to use adsorption process for tracers on surfaces.
+
+    Use the derived classes to use a certain isotherm
+
+    C++ includes: adsorption.h 
+    """
+    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    def __init__(self, *args, **kwargs): raise AttributeError("No constructor defined - class is abstract")
+    __repr__ = _swig_repr
+    def freesolute(self, *args, **kwargs):
+        """
+        freesolute(Adsorption self, real xt, real V) -> real
+
+        virtual
+        real freesolute(real xt, real V) const =0
+
+        Returns the mass of dissolved tracer as a function of the total tracer
+        mass in the solute storage and the water volume.
+
+        Parameters:
+        -----------
+
+        xt:    :math:`x_t`  the total tracer mass in the storage
+
+        V:    :math:`V m^3`  the water volume in the storage
+
+         :math:`x_f`  the dissolved mass of the tracer 
+        """
+        return _cmf_core.Adsorption_freesolute(self, *args, **kwargs)
+
+    def copy(self, *args, **kwargs):
+        """
+        copy(Adsorption self, real m=-1) -> Adsorption
+
+        virtual
+        Adsorption* copy(real m=-1) const =0
+
+        returns a copy of the Adsorption object.
+
+        If the adsorption is depending on the sorbent mass, you can give a
+        positive value for the sorbent mass m. If the value is not given or
+        negative, m is used from the original object. 
+        """
+        return _cmf_core.Adsorption_copy(self, *args, **kwargs)
+
+    __swig_destroy__ = _cmf_core.delete_Adsorption
+Adsorption.freesolute = new_instancemethod(_cmf_core.Adsorption_freesolute,None,Adsorption)
+Adsorption.copy = new_instancemethod(_cmf_core.Adsorption_copy,None,Adsorption)
+Adsorption_swigregister = _cmf_core.Adsorption_swigregister
+Adsorption_swigregister(Adsorption)
+
+class NullAdsorption(Adsorption):
+    """
+    A class for tracers without interaction with the storage container.
+    freesolute returns xt.
+
+    C++ includes: adsorption.h 
+    """
+    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __repr__ = _swig_repr
+    def copy(self, *args, **kwargs):
+        """
+        copy(NullAdsorption self, real m=-1) -> NullAdsorption
+
+        virtual
+        NullAdsorption* copy(real m=-1) const
+
+        returns a copy of the Adsorption object.
+
+        If the adsorption is depending on the sorbent mass, you can give a
+        positive value for the sorbent mass m. If the value is not given or
+        negative, m is used from the original object. 
+        """
+        return _cmf_core.NullAdsorption_copy(self, *args, **kwargs)
+
+    def __init__(self, *args, **kwargs): 
+        """__init__(cmf::water::NullAdsorption self) -> NullAdsorption"""
+        _cmf_core.NullAdsorption_swiginit(self,_cmf_core.new_NullAdsorption(*args, **kwargs))
+    __swig_destroy__ = _cmf_core.delete_NullAdsorption
+NullAdsorption.copy = new_instancemethod(_cmf_core.NullAdsorption_copy,None,NullAdsorption)
+NullAdsorption_swigregister = _cmf_core.NullAdsorption_swigregister
+NullAdsorption_swigregister(NullAdsorption)
+
+class LinearAdsorption(Adsorption):
+    """
+    This class calculates the adsorption equilibrium between sorbat and
+    sorbent using the linear (Henry) isotherme.
+
+    Henry isotherme:
+
+
+
+    .. math::
+
+        \\frac{x_{ad}}{m} = K c
+
+     where   :math:`x_{ad} = x_{tot} - x_{free}`  is the adsorbed tracer mass   :math:`x_{tot}`  is the total tracer
+    mass
+
+     :math:`x_{free}`  is the dissolved tracer mass
+
+     :math:`m`  is the mass of the sorbent in the same unit as the tracer mass
+
+     :math:`K`  is the Henry sorption coefficient
+
+     :math:`c = \\frac{x_{free}}{V}`  is the concentration of the tracer in
+    tracer mass per m3
+
+    CMF stores in a solute storage the total mass of a tracer and needs to
+    calculate the free tracer mass. Calculating  :math:`x_{free}`  from  :math:`x_{tot}` 
+    gives from the eq. above: 
+
+    .. math::
+
+        x_{free} = x_{tot} \\frac{V}{K m +
+        V}
+
+
+
+    C++ includes: adsorption.h 
+    """
+    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __repr__ = _swig_repr
+    K = _swig_property(_cmf_core.LinearAdsorption_K_get, _cmf_core.LinearAdsorption_K_set)
+    m = _swig_property(_cmf_core.LinearAdsorption_m_get, _cmf_core.LinearAdsorption_m_set)
+    def __init__(self, *args): 
+        """
+        __init__(cmf::water::LinearAdsorption self, real K, real m) -> LinearAdsorption
+        __init__(cmf::water::LinearAdsorption self, LinearAdsorption other) -> LinearAdsorption
+
+        LinearAdsorption(const LinearAdsorption &other) 
+        """
+        _cmf_core.LinearAdsorption_swiginit(self,_cmf_core.new_LinearAdsorption(*args))
+    def copy(self, *args, **kwargs):
+        """
+        copy(LinearAdsorption self, real m=-1) -> LinearAdsorption
+
+        LinearAdsorption* copy(real m=-1) const
+
+        returns a copy of the Adsorption object.
+
+        If the adsorption is depending on the sorbent mass, you can give a
+        positive value for the sorbent mass m. If the value is not given or
+        negative, m is used from the original object. 
+        """
+        return _cmf_core.LinearAdsorption_copy(self, *args, **kwargs)
+
+    __swig_destroy__ = _cmf_core.delete_LinearAdsorption
+LinearAdsorption.copy = new_instancemethod(_cmf_core.LinearAdsorption_copy,None,LinearAdsorption)
+LinearAdsorption_swigregister = _cmf_core.LinearAdsorption_swigregister
+LinearAdsorption_swigregister(LinearAdsorption)
+
+class FreundlichAdsorbtion(Adsorption):
+    """
+    This class calculates the adsorption equilibrium between sorbat and
+    sorbent using the Freundlich isotherme.
+
+    Freundlich isotherme:
+
+
+
+    .. math::
+
+        \\frac{x_{ad}}{m} = K c^n
+
+     where   :math:`x_{ad} = x_{tot} - x_{free}`  is the adsorbed tracer mass   :math:`x_{tot}`  is the total tracer
+    mass
+
+     :math:`x_{free}`  is the dissolved tracer mass
+
+     :math:`m`  is the mass of the sorbent in the same unit as the tracer mass
+
+     :math:`K`  is the Henry sorption coefficient
+
+     :math:`c = \\frac{x_{free}}{V}`  is the concentration of the tracer in
+    tracer mass per m3
+
+     :math:`n`  is the Freundlich exponent
+
+    CMF stores in a solute storage the total mass of a tracer and needs to
+    calculate the free tracer mass. The eq. above can not be rearanged to
+    get  :math:`x_{free}`  from  :math:`x_{tot}` . Instead, the value is iterated using
+    Newton's method with the solution of the LinearAdsorption as an
+    initial guess. If n is near to 1, using LinearAdsorption will speed up
+    your calculations. The simplest physically based adsorption model by
+    Langmuir ( LangmuirAdsorption) has also a anylitical solution and is
+    calculated faster then Freundlich.
+
+    C++ includes: adsorption.h 
+    """
+    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __repr__ = _swig_repr
+    K = _swig_property(_cmf_core.FreundlichAdsorbtion_K_get, _cmf_core.FreundlichAdsorbtion_K_set)
+    n = _swig_property(_cmf_core.FreundlichAdsorbtion_n_get, _cmf_core.FreundlichAdsorbtion_n_set)
+    m = _swig_property(_cmf_core.FreundlichAdsorbtion_m_get, _cmf_core.FreundlichAdsorbtion_m_set)
+    epsilon = _swig_property(_cmf_core.FreundlichAdsorbtion_epsilon_get, _cmf_core.FreundlichAdsorbtion_epsilon_set)
+    maxiter = _swig_property(_cmf_core.FreundlichAdsorbtion_maxiter_get, _cmf_core.FreundlichAdsorbtion_maxiter_set)
+    strict = _swig_property(_cmf_core.FreundlichAdsorbtion_strict_get, _cmf_core.FreundlichAdsorbtion_strict_set)
+    def __init__(self, *args): 
+        """
+        __init__(cmf::water::FreundlichAdsorbtion self, real K, real n, real m, real epsilon=1e-12, int maxiter=100, bool strict=True) -> FreundlichAdsorbtion
+        __init__(cmf::water::FreundlichAdsorbtion self, FreundlichAdsorbtion other) -> FreundlichAdsorbtion
+
+        FreundlichAdsorbtion(const FreundlichAdsorbtion &other) 
+        """
+        _cmf_core.FreundlichAdsorbtion_swiginit(self,_cmf_core.new_FreundlichAdsorbtion(*args))
+    def copy(self, *args, **kwargs):
+        """
+        copy(FreundlichAdsorbtion self, real m=-1) -> FreundlichAdsorbtion
+
+        FreundlichAdsorbtion* copy(real m=-1) const
+
+        returns a copy of the Adsorption object.
+
+        If the adsorption is depending on the sorbent mass, you can give a
+        positive value for the sorbent mass m. If the value is not given or
+        negative, m is used from the original object. 
+        """
+        return _cmf_core.FreundlichAdsorbtion_copy(self, *args, **kwargs)
+
+    __swig_destroy__ = _cmf_core.delete_FreundlichAdsorbtion
+FreundlichAdsorbtion.copy = new_instancemethod(_cmf_core.FreundlichAdsorbtion_copy,None,FreundlichAdsorbtion)
+FreundlichAdsorbtion_swigregister = _cmf_core.FreundlichAdsorbtion_swigregister
+FreundlichAdsorbtion_swigregister(FreundlichAdsorbtion)
+
+class LangmuirAdsorption(Adsorption):
+    """
+    Langmuir Adsorption.
+
+    : Check correctness of
+    eq.http://en.wikipedia.org/wiki/Langmuir_equation
+
+    C++ includes: adsorption.h 
+    """
+    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __repr__ = _swig_repr
+    K = _swig_property(_cmf_core.LangmuirAdsorption_K_get, _cmf_core.LangmuirAdsorption_K_set)
+    m = _swig_property(_cmf_core.LangmuirAdsorption_m_get, _cmf_core.LangmuirAdsorption_m_set)
+    def __init__(self, *args): 
+        """
+        __init__(cmf::water::LangmuirAdsorption self, real K, real m) -> LangmuirAdsorption
+        __init__(cmf::water::LangmuirAdsorption self, LangmuirAdsorption other) -> LangmuirAdsorption
+
+        LangmuirAdsorption(const LangmuirAdsorption &other) 
+        """
+        _cmf_core.LangmuirAdsorption_swiginit(self,_cmf_core.new_LangmuirAdsorption(*args))
+    def copy(self, *args, **kwargs):
+        """
+        copy(LangmuirAdsorption self, real m=-1) -> LangmuirAdsorption
+
+        LangmuirAdsorption* copy(real m=-1) const
+
+        returns a copy of the Adsorption object.
+
+        If the adsorption is depending on the sorbent mass, you can give a
+        positive value for the sorbent mass m. If the value is not given or
+        negative, m is used from the original object. 
+        """
+        return _cmf_core.LangmuirAdsorption_copy(self, *args, **kwargs)
+
+    __swig_destroy__ = _cmf_core.delete_LangmuirAdsorption
+LangmuirAdsorption.copy = new_instancemethod(_cmf_core.LangmuirAdsorption_copy,None,LangmuirAdsorption)
+LangmuirAdsorption_swigregister = _cmf_core.LangmuirAdsorption_swigregister
+LangmuirAdsorption_swigregister(LangmuirAdsorption)
+
 class solute(object):
     """
     A structure to identify a solute.
@@ -2645,6 +2912,14 @@ class SoluteStorage(StateVariable):
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
     def __init__(self, *args, **kwargs): raise AttributeError("No constructor defined")
     __repr__ = _swig_repr
+    def set_adsorption(self, *args, **kwargs):
+        """
+        set_adsorption(SoluteStorage self, Adsorption newadsorption, real m=-1)
+
+        void set_adsorption(const Adsorption &newadsorption, real m=-1) 
+        """
+        return _cmf_core.SoluteStorage_set_adsorption(self, *args, **kwargs)
+
     decay = _swig_property(_cmf_core.SoluteStorage_decay_get, _cmf_core.SoluteStorage_decay_set)
     source = _swig_property(_cmf_core.SoluteStorage_source_get, _cmf_core.SoluteStorage_source_set)
     Solute = _swig_property(_cmf_core.SoluteStorage_Solute_get)
@@ -2660,6 +2935,7 @@ class SoluteStorage(StateVariable):
         return _cmf_core.SoluteStorage_conc(self, *args, **kwargs)
 
     __swig_destroy__ = _cmf_core.delete_SoluteStorage
+SoluteStorage.set_adsorption = new_instancemethod(_cmf_core.SoluteStorage_set_adsorption,None,SoluteStorage)
 SoluteStorage.conc = new_instancemethod(_cmf_core.SoluteStorage_conc,None,SoluteStorage)
 SoluteStorage_swigregister = _cmf_core.SoluteStorage_swigregister
 SoluteStorage_swigregister(SoluteStorage)
