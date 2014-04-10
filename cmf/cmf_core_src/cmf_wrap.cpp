@@ -3056,73 +3056,78 @@ SWIG_Python_NonDynamicSetAttr(PyObject *obj, PyObject *name, PyObject *value) {
 #define SWIGTYPE_p_cmf__upslope__neighbor_iterator swig_types[113]
 #define SWIGTYPE_p_cmf__upslope__subcatchment swig_types[114]
 #define SWIGTYPE_p_cmf__upslope__vegetation__Vegetation swig_types[115]
-#define SWIGTYPE_p_cmf__water__DirichletBoundary swig_types[116]
-#define SWIGTYPE_p_cmf__water__NeumannBoundary swig_types[117]
-#define SWIGTYPE_p_cmf__water__NeumannBoundary_list swig_types[118]
-#define SWIGTYPE_p_cmf__water__NeumannFlux swig_types[119]
-#define SWIGTYPE_p_cmf__water__SoluteStorage swig_types[120]
-#define SWIGTYPE_p_cmf__water__SoluteTimeseries swig_types[121]
-#define SWIGTYPE_p_cmf__water__SystemBridge swig_types[122]
-#define SWIGTYPE_p_cmf__water__SystemBridgeConnection swig_types[123]
-#define SWIGTYPE_p_cmf__water__TechnicalFlux swig_types[124]
-#define SWIGTYPE_p_cmf__water__WaterStorage swig_types[125]
-#define SWIGTYPE_p_cmf__water__connection_list swig_types[126]
-#define SWIGTYPE_p_cmf__water__connection_list___list__const_iterator swig_types[127]
-#define SWIGTYPE_p_cmf__water__connection_list___list__iterator swig_types[128]
-#define SWIGTYPE_p_cmf__water__constraint_kinematic_wave swig_types[129]
-#define SWIGTYPE_p_cmf__water__external_control_connection swig_types[130]
-#define SWIGTYPE_p_cmf__water__flux_connection swig_types[131]
-#define SWIGTYPE_p_cmf__water__flux_integrator swig_types[132]
-#define SWIGTYPE_p_cmf__water__flux_node swig_types[133]
-#define SWIGTYPE_p_cmf__water__generic_gradient_connection swig_types[134]
-#define SWIGTYPE_p_cmf__water__kinematic_wave swig_types[135]
-#define SWIGTYPE_p_cmf__water__linear_scale swig_types[136]
-#define SWIGTYPE_p_cmf__water__node_list swig_types[137]
-#define SWIGTYPE_p_cmf__water__solute swig_types[138]
-#define SWIGTYPE_p_cmf__water__solute_vector swig_types[139]
-#define SWIGTYPE_p_cmf__water__statecontrol_connection swig_types[140]
-#define SWIGTYPE_p_cmf__water__waterbalance_connection swig_types[141]
-#define SWIGTYPE_p_cmf__water__waterbalance_integrator swig_types[142]
-#define SWIGTYPE_p_const_iterator swig_types[143]
-#define SWIGTYPE_p_double swig_types[144]
-#define SWIGTYPE_p_f_r_cmf__upslope__Cell_r_cmf__upslope__Cell_ptrdiff_t__void swig_types[145]
-#define SWIGTYPE_p_iterator swig_types[146]
-#define SWIGTYPE_p_ptr swig_types[147]
-#define SWIGTYPE_p_std__tr1__shared_ptrT_SoilLayer_t swig_types[148]
-#define SWIGTYPE_p_std__tr1__shared_ptrT_cmf__atmosphere__ConstantRainSource_t swig_types[149]
-#define SWIGTYPE_p_std__tr1__shared_ptrT_cmf__atmosphere__IDWRainfall_t swig_types[150]
-#define SWIGTYPE_p_std__tr1__shared_ptrT_cmf__atmosphere__MeteoStation_t swig_types[151]
-#define SWIGTYPE_p_std__tr1__shared_ptrT_cmf__atmosphere__RainSource_t swig_types[152]
-#define SWIGTYPE_p_std__tr1__shared_ptrT_cmf__atmosphere__RainfallStationReference_t swig_types[153]
-#define SWIGTYPE_p_std__tr1__shared_ptrT_cmf__atmosphere__RainfallStation_t swig_types[154]
-#define SWIGTYPE_p_std__tr1__shared_ptrT_cmf__atmosphere__aerodynamic_resistance_t swig_types[155]
-#define SWIGTYPE_p_std__tr1__shared_ptrT_cmf__math__StateVariable_t swig_types[156]
-#define SWIGTYPE_p_std__tr1__shared_ptrT_cmf__math__integratable_t swig_types[157]
-#define SWIGTYPE_p_std__tr1__shared_ptrT_cmf__river__OpenWaterStorage_t swig_types[158]
-#define SWIGTYPE_p_std__tr1__shared_ptrT_cmf__river__Reach_t swig_types[159]
-#define SWIGTYPE_p_std__tr1__shared_ptrT_cmf__upslope__ET__canopy_evaporation_method_t swig_types[160]
-#define SWIGTYPE_p_std__tr1__shared_ptrT_cmf__upslope__ET__snow_evaporation_method_t swig_types[161]
-#define SWIGTYPE_p_std__tr1__shared_ptrT_cmf__upslope__ET__soil_evaporation_method_t swig_types[162]
-#define SWIGTYPE_p_std__tr1__shared_ptrT_cmf__upslope__ET__surface_water_evaporation_method_t swig_types[163]
-#define SWIGTYPE_p_std__tr1__shared_ptrT_cmf__upslope__ET__transpiration_method_t swig_types[164]
-#define SWIGTYPE_p_std__tr1__shared_ptrT_cmf__upslope__MacroPore_t swig_types[165]
-#define SWIGTYPE_p_std__tr1__shared_ptrT_cmf__upslope__SoilLayer_t swig_types[166]
-#define SWIGTYPE_p_std__tr1__shared_ptrT_cmf__upslope__SurfaceWater_t swig_types[167]
-#define SWIGTYPE_p_std__tr1__shared_ptrT_cmf__upslope__aquifer_t swig_types[168]
-#define SWIGTYPE_p_std__tr1__shared_ptrT_cmf__water__DirichletBoundary_t swig_types[169]
-#define SWIGTYPE_p_std__tr1__shared_ptrT_cmf__water__NeumannBoundary_t swig_types[170]
-#define SWIGTYPE_p_std__tr1__shared_ptrT_cmf__water__SoluteStorage_t swig_types[171]
-#define SWIGTYPE_p_std__tr1__shared_ptrT_cmf__water__SystemBridge_t swig_types[172]
-#define SWIGTYPE_p_std__tr1__shared_ptrT_cmf__water__WaterStorage_t swig_types[173]
-#define SWIGTYPE_p_std__tr1__shared_ptrT_cmf__water__flux_connection_t swig_types[174]
-#define SWIGTYPE_p_std__tr1__shared_ptrT_cmf__water__flux_integrator_t swig_types[175]
-#define SWIGTYPE_p_std__tr1__shared_ptrT_cmf__water__flux_node_t swig_types[176]
-#define SWIGTYPE_p_std__tr1__shared_ptrT_cmf__water__waterbalance_integrator_t swig_types[177]
-#define SWIGTYPE_p_std__tr1__shared_ptrT_std__tr1__shared_ptrT_cmf__atmosphere__ConstantRainSource_t_t swig_types[178]
-#define SWIGTYPE_p_std__tr1__shared_ptrT_std__tr1__shared_ptrT_cmf__atmosphere__RainfallStationReference_t_t swig_types[179]
-#define SWIGTYPE_p_std__vectorT_std__tr1__shared_ptrT_cmf__water__WaterStorage_t_t swig_types[180]
-static swig_type_info *swig_types[182];
-static swig_module_info swig_module = {swig_types, 181, 0, 0, 0, 0};
+#define SWIGTYPE_p_cmf__water__Adsorption swig_types[116]
+#define SWIGTYPE_p_cmf__water__DirichletBoundary swig_types[117]
+#define SWIGTYPE_p_cmf__water__FreundlichAdsorbtion swig_types[118]
+#define SWIGTYPE_p_cmf__water__LangmuirAdsorption swig_types[119]
+#define SWIGTYPE_p_cmf__water__LinearAdsorption swig_types[120]
+#define SWIGTYPE_p_cmf__water__NeumannBoundary swig_types[121]
+#define SWIGTYPE_p_cmf__water__NeumannBoundary_list swig_types[122]
+#define SWIGTYPE_p_cmf__water__NeumannFlux swig_types[123]
+#define SWIGTYPE_p_cmf__water__NullAdsorption swig_types[124]
+#define SWIGTYPE_p_cmf__water__SoluteStorage swig_types[125]
+#define SWIGTYPE_p_cmf__water__SoluteTimeseries swig_types[126]
+#define SWIGTYPE_p_cmf__water__SystemBridge swig_types[127]
+#define SWIGTYPE_p_cmf__water__SystemBridgeConnection swig_types[128]
+#define SWIGTYPE_p_cmf__water__TechnicalFlux swig_types[129]
+#define SWIGTYPE_p_cmf__water__WaterStorage swig_types[130]
+#define SWIGTYPE_p_cmf__water__connection_list swig_types[131]
+#define SWIGTYPE_p_cmf__water__connection_list___list__const_iterator swig_types[132]
+#define SWIGTYPE_p_cmf__water__connection_list___list__iterator swig_types[133]
+#define SWIGTYPE_p_cmf__water__constraint_kinematic_wave swig_types[134]
+#define SWIGTYPE_p_cmf__water__external_control_connection swig_types[135]
+#define SWIGTYPE_p_cmf__water__flux_connection swig_types[136]
+#define SWIGTYPE_p_cmf__water__flux_integrator swig_types[137]
+#define SWIGTYPE_p_cmf__water__flux_node swig_types[138]
+#define SWIGTYPE_p_cmf__water__generic_gradient_connection swig_types[139]
+#define SWIGTYPE_p_cmf__water__kinematic_wave swig_types[140]
+#define SWIGTYPE_p_cmf__water__linear_scale swig_types[141]
+#define SWIGTYPE_p_cmf__water__node_list swig_types[142]
+#define SWIGTYPE_p_cmf__water__solute swig_types[143]
+#define SWIGTYPE_p_cmf__water__solute_vector swig_types[144]
+#define SWIGTYPE_p_cmf__water__statecontrol_connection swig_types[145]
+#define SWIGTYPE_p_cmf__water__waterbalance_connection swig_types[146]
+#define SWIGTYPE_p_cmf__water__waterbalance_integrator swig_types[147]
+#define SWIGTYPE_p_const_iterator swig_types[148]
+#define SWIGTYPE_p_double swig_types[149]
+#define SWIGTYPE_p_f_r_cmf__upslope__Cell_r_cmf__upslope__Cell_ptrdiff_t__void swig_types[150]
+#define SWIGTYPE_p_iterator swig_types[151]
+#define SWIGTYPE_p_ptr swig_types[152]
+#define SWIGTYPE_p_std__tr1__shared_ptrT_SoilLayer_t swig_types[153]
+#define SWIGTYPE_p_std__tr1__shared_ptrT_cmf__atmosphere__ConstantRainSource_t swig_types[154]
+#define SWIGTYPE_p_std__tr1__shared_ptrT_cmf__atmosphere__IDWRainfall_t swig_types[155]
+#define SWIGTYPE_p_std__tr1__shared_ptrT_cmf__atmosphere__MeteoStation_t swig_types[156]
+#define SWIGTYPE_p_std__tr1__shared_ptrT_cmf__atmosphere__RainSource_t swig_types[157]
+#define SWIGTYPE_p_std__tr1__shared_ptrT_cmf__atmosphere__RainfallStationReference_t swig_types[158]
+#define SWIGTYPE_p_std__tr1__shared_ptrT_cmf__atmosphere__RainfallStation_t swig_types[159]
+#define SWIGTYPE_p_std__tr1__shared_ptrT_cmf__atmosphere__aerodynamic_resistance_t swig_types[160]
+#define SWIGTYPE_p_std__tr1__shared_ptrT_cmf__math__StateVariable_t swig_types[161]
+#define SWIGTYPE_p_std__tr1__shared_ptrT_cmf__math__integratable_t swig_types[162]
+#define SWIGTYPE_p_std__tr1__shared_ptrT_cmf__river__OpenWaterStorage_t swig_types[163]
+#define SWIGTYPE_p_std__tr1__shared_ptrT_cmf__river__Reach_t swig_types[164]
+#define SWIGTYPE_p_std__tr1__shared_ptrT_cmf__upslope__ET__canopy_evaporation_method_t swig_types[165]
+#define SWIGTYPE_p_std__tr1__shared_ptrT_cmf__upslope__ET__snow_evaporation_method_t swig_types[166]
+#define SWIGTYPE_p_std__tr1__shared_ptrT_cmf__upslope__ET__soil_evaporation_method_t swig_types[167]
+#define SWIGTYPE_p_std__tr1__shared_ptrT_cmf__upslope__ET__surface_water_evaporation_method_t swig_types[168]
+#define SWIGTYPE_p_std__tr1__shared_ptrT_cmf__upslope__ET__transpiration_method_t swig_types[169]
+#define SWIGTYPE_p_std__tr1__shared_ptrT_cmf__upslope__MacroPore_t swig_types[170]
+#define SWIGTYPE_p_std__tr1__shared_ptrT_cmf__upslope__SoilLayer_t swig_types[171]
+#define SWIGTYPE_p_std__tr1__shared_ptrT_cmf__upslope__SurfaceWater_t swig_types[172]
+#define SWIGTYPE_p_std__tr1__shared_ptrT_cmf__upslope__aquifer_t swig_types[173]
+#define SWIGTYPE_p_std__tr1__shared_ptrT_cmf__water__DirichletBoundary_t swig_types[174]
+#define SWIGTYPE_p_std__tr1__shared_ptrT_cmf__water__NeumannBoundary_t swig_types[175]
+#define SWIGTYPE_p_std__tr1__shared_ptrT_cmf__water__SoluteStorage_t swig_types[176]
+#define SWIGTYPE_p_std__tr1__shared_ptrT_cmf__water__SystemBridge_t swig_types[177]
+#define SWIGTYPE_p_std__tr1__shared_ptrT_cmf__water__WaterStorage_t swig_types[178]
+#define SWIGTYPE_p_std__tr1__shared_ptrT_cmf__water__flux_connection_t swig_types[179]
+#define SWIGTYPE_p_std__tr1__shared_ptrT_cmf__water__flux_integrator_t swig_types[180]
+#define SWIGTYPE_p_std__tr1__shared_ptrT_cmf__water__flux_node_t swig_types[181]
+#define SWIGTYPE_p_std__tr1__shared_ptrT_cmf__water__waterbalance_integrator_t swig_types[182]
+#define SWIGTYPE_p_std__tr1__shared_ptrT_std__tr1__shared_ptrT_cmf__atmosphere__ConstantRainSource_t_t swig_types[183]
+#define SWIGTYPE_p_std__tr1__shared_ptrT_std__tr1__shared_ptrT_cmf__atmosphere__RainfallStationReference_t_t swig_types[184]
+#define SWIGTYPE_p_std__vectorT_std__tr1__shared_ptrT_cmf__water__WaterStorage_t_t swig_types[185]
+static swig_type_info *swig_types[187];
+static swig_module_info swig_module = {swig_types, 186, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -20036,6 +20041,1565 @@ SWIGINTERN PyObject *MultiIntegrator_swiginit(PyObject *SWIGUNUSEDPARM(self), Py
   return SWIG_Python_InitShadowInstance(args);
 }
 
+SWIGINTERN PyObject *_wrap_Adsorption_freesolute(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  cmf::water::Adsorption *arg1 = (cmf::water::Adsorption *) 0 ;
+  real arg2 ;
+  real arg3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  double val2 ;
+  int ecode2 = 0 ;
+  double val3 ;
+  int ecode3 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char *  kwnames[] = {
+    (char *) "self",(char *) "xt",(char *) "V", NULL 
+  };
+  real result;
+  
+  if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"OOO:Adsorption_freesolute",kwnames,&obj0,&obj1,&obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_cmf__water__Adsorption, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Adsorption_freesolute" "', argument " "1"" of type '" "cmf::water::Adsorption const *""'"); 
+  }
+  arg1 = reinterpret_cast< cmf::water::Adsorption * >(argp1);
+  ecode2 = SWIG_AsVal_double(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Adsorption_freesolute" "', argument " "2"" of type '" "real""'");
+  } 
+  arg2 = static_cast< real >(val2);
+  ecode3 = SWIG_AsVal_double(obj2, &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "Adsorption_freesolute" "', argument " "3"" of type '" "real""'");
+  } 
+  arg3 = static_cast< real >(val3);
+  {
+    try {
+      result = (real)((cmf::water::Adsorption const *)arg1)->freesolute(arg2,arg3);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+    
+  }
+  resultobj = SWIG_From_double(static_cast< double >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Adsorption_copy(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  cmf::water::Adsorption *arg1 = (cmf::water::Adsorption *) 0 ;
+  real arg2 = (real) -1 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  double val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char *  kwnames[] = {
+    (char *) "self",(char *) "m", NULL 
+  };
+  cmf::water::Adsorption *result = 0 ;
+  
+  if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"O|O:Adsorption_copy",kwnames,&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_cmf__water__Adsorption, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Adsorption_copy" "', argument " "1"" of type '" "cmf::water::Adsorption const *""'"); 
+  }
+  arg1 = reinterpret_cast< cmf::water::Adsorption * >(argp1);
+  if (obj1) {
+    ecode2 = SWIG_AsVal_double(obj1, &val2);
+    if (!SWIG_IsOK(ecode2)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Adsorption_copy" "', argument " "2"" of type '" "real""'");
+    } 
+    arg2 = static_cast< real >(val2);
+  }
+  {
+    try {
+      result = (cmf::water::Adsorption *)((cmf::water::Adsorption const *)arg1)->copy(arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_cmf__water__Adsorption, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_Adsorption(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  cmf::water::Adsorption *arg1 = (cmf::water::Adsorption *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__water__Adsorption, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_Adsorption" "', argument " "1"" of type '" "cmf::water::Adsorption *""'"); 
+  }
+  arg1 = reinterpret_cast< cmf::water::Adsorption * >(argp1);
+  {
+    try {
+      delete arg1;
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *Adsorption_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *obj;
+  if (!SWIG_Python_UnpackTuple(args,(char*)"swigregister", 1, 1,&obj)) return NULL;
+  SWIG_TypeNewClientData(SWIGTYPE_p_cmf__water__Adsorption, SWIG_NewClientData(obj));
+  return SWIG_Py_Void();
+}
+
+SWIGINTERN PyObject *_wrap_NullAdsorption_copy(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  cmf::water::NullAdsorption *arg1 = (cmf::water::NullAdsorption *) 0 ;
+  real arg2 = (real) -1 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  double val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char *  kwnames[] = {
+    (char *) "self",(char *) "m", NULL 
+  };
+  cmf::water::NullAdsorption *result = 0 ;
+  
+  if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"O|O:NullAdsorption_copy",kwnames,&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_cmf__water__NullAdsorption, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "NullAdsorption_copy" "', argument " "1"" of type '" "cmf::water::NullAdsorption const *""'"); 
+  }
+  arg1 = reinterpret_cast< cmf::water::NullAdsorption * >(argp1);
+  if (obj1) {
+    ecode2 = SWIG_AsVal_double(obj1, &val2);
+    if (!SWIG_IsOK(ecode2)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "NullAdsorption_copy" "', argument " "2"" of type '" "real""'");
+    } 
+    arg2 = static_cast< real >(val2);
+  }
+  {
+    try {
+      result = (cmf::water::NullAdsorption *)((cmf::water::NullAdsorption const *)arg1)->copy(arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_cmf__water__NullAdsorption, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_NullAdsorption(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  cmf::water::NullAdsorption *result = 0 ;
+  
+  if (!SWIG_Python_UnpackTuple(args,"new_NullAdsorption",0,0,0)) SWIG_fail;
+  {
+    try {
+      result = (cmf::water::NullAdsorption *)new cmf::water::NullAdsorption();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_cmf__water__NullAdsorption, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_NullAdsorption(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  cmf::water::NullAdsorption *arg1 = (cmf::water::NullAdsorption *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__water__NullAdsorption, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_NullAdsorption" "', argument " "1"" of type '" "cmf::water::NullAdsorption *""'"); 
+  }
+  arg1 = reinterpret_cast< cmf::water::NullAdsorption * >(argp1);
+  {
+    try {
+      delete arg1;
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *NullAdsorption_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *obj;
+  if (!SWIG_Python_UnpackTuple(args,(char*)"swigregister", 1, 1,&obj)) return NULL;
+  SWIG_TypeNewClientData(SWIGTYPE_p_cmf__water__NullAdsorption, SWIG_NewClientData(obj));
+  return SWIG_Py_Void();
+}
+
+SWIGINTERN PyObject *NullAdsorption_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  return SWIG_Python_InitShadowInstance(args);
+}
+
+SWIGINTERN PyObject *_wrap_LinearAdsorption_K_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  cmf::water::LinearAdsorption *arg1 = (cmf::water::LinearAdsorption *) 0 ;
+  real arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  double val2 ;
+  int ecode2 = 0 ;
+  PyObject *swig_obj[2] ;
+  
+  if (!SWIG_Python_UnpackTuple(args,"LinearAdsorption_K_set",2,2,swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__water__LinearAdsorption, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "LinearAdsorption_K_set" "', argument " "1"" of type '" "cmf::water::LinearAdsorption *""'"); 
+  }
+  arg1 = reinterpret_cast< cmf::water::LinearAdsorption * >(argp1);
+  ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "LinearAdsorption_K_set" "', argument " "2"" of type '" "real""'");
+  } 
+  arg2 = static_cast< real >(val2);
+  if (arg1) (arg1)->K = arg2;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_LinearAdsorption_K_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  cmf::water::LinearAdsorption *arg1 = (cmf::water::LinearAdsorption *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  real result;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__water__LinearAdsorption, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "LinearAdsorption_K_get" "', argument " "1"" of type '" "cmf::water::LinearAdsorption *""'"); 
+  }
+  arg1 = reinterpret_cast< cmf::water::LinearAdsorption * >(argp1);
+  result = (real) ((arg1)->K);
+  resultobj = SWIG_From_double(static_cast< double >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_LinearAdsorption_m_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  cmf::water::LinearAdsorption *arg1 = (cmf::water::LinearAdsorption *) 0 ;
+  real arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  double val2 ;
+  int ecode2 = 0 ;
+  PyObject *swig_obj[2] ;
+  
+  if (!SWIG_Python_UnpackTuple(args,"LinearAdsorption_m_set",2,2,swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__water__LinearAdsorption, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "LinearAdsorption_m_set" "', argument " "1"" of type '" "cmf::water::LinearAdsorption *""'"); 
+  }
+  arg1 = reinterpret_cast< cmf::water::LinearAdsorption * >(argp1);
+  ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "LinearAdsorption_m_set" "', argument " "2"" of type '" "real""'");
+  } 
+  arg2 = static_cast< real >(val2);
+  if (arg1) (arg1)->m = arg2;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_LinearAdsorption_m_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  cmf::water::LinearAdsorption *arg1 = (cmf::water::LinearAdsorption *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  real result;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__water__LinearAdsorption, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "LinearAdsorption_m_get" "', argument " "1"" of type '" "cmf::water::LinearAdsorption *""'"); 
+  }
+  arg1 = reinterpret_cast< cmf::water::LinearAdsorption * >(argp1);
+  result = (real) ((arg1)->m);
+  resultobj = SWIG_From_double(static_cast< double >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_LinearAdsorption__SWIG_0(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  real arg1 ;
+  real arg2 ;
+  double val1 ;
+  int ecode1 = 0 ;
+  double val2 ;
+  int ecode2 = 0 ;
+  cmf::water::LinearAdsorption *result = 0 ;
+  
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  ecode1 = SWIG_AsVal_double(swig_obj[0], &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "new_LinearAdsorption" "', argument " "1"" of type '" "real""'");
+  } 
+  arg1 = static_cast< real >(val1);
+  ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "new_LinearAdsorption" "', argument " "2"" of type '" "real""'");
+  } 
+  arg2 = static_cast< real >(val2);
+  {
+    try {
+      result = (cmf::water::LinearAdsorption *)new cmf::water::LinearAdsorption(arg1,arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_cmf__water__LinearAdsorption, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_LinearAdsorption__SWIG_1(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  cmf::water::LinearAdsorption *arg1 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  cmf::water::LinearAdsorption *result = 0 ;
+  
+  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_cmf__water__LinearAdsorption,  0  | 0);
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_LinearAdsorption" "', argument " "1"" of type '" "cmf::water::LinearAdsorption const &""'"); 
+  }
+  if (!argp1) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_LinearAdsorption" "', argument " "1"" of type '" "cmf::water::LinearAdsorption const &""'"); 
+  }
+  arg1 = reinterpret_cast< cmf::water::LinearAdsorption * >(argp1);
+  {
+    try {
+      result = (cmf::water::LinearAdsorption *)new cmf::water::LinearAdsorption((cmf::water::LinearAdsorption const &)*arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_cmf__water__LinearAdsorption, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_LinearAdsorption(PyObject *self, PyObject *args) {
+  int argc;
+  PyObject *argv[3];
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args,"new_LinearAdsorption",0,2,argv))) SWIG_fail;
+  --argc;
+  {
+    unsigned long _index = 0;
+    SWIG_TypeRank _rank = 0; 
+    if (argc == 1) {
+      SWIG_TypeRank _ranki = 0;
+      SWIG_TypeRank _rankm = 0;
+      SWIG_TypeRank _pi = 1;
+      int _v = 0;
+      {
+        int res = SWIG_ConvertPtr(argv[0], 0, SWIGTYPE_p_cmf__water__LinearAdsorption, 0);
+        _v = SWIG_CheckState(res);
+      }
+      if (!_v) goto check_1;
+      _ranki += _v*_pi;
+      _rankm += _pi;
+      _pi *= SWIG_MAXCASTRANK;
+      if (!_index || (_ranki < _rank)) {
+        _rank = _ranki; _index = 1;
+        if (_rank == _rankm) goto dispatch;
+      }
+    }
+  check_1:
+    
+    if (argc == 2) {
+      SWIG_TypeRank _ranki = 0;
+      SWIG_TypeRank _rankm = 0;
+      SWIG_TypeRank _pi = 1;
+      int _v = 0;
+      {
+        {
+          int res = SWIG_AsVal_double(argv[0], NULL);
+          _v = SWIG_CheckState(res);
+        }
+      }
+      if (!_v) goto check_2;
+      _ranki += _v*_pi;
+      _rankm += _pi;
+      _pi *= SWIG_MAXCASTRANK;
+      {
+        {
+          int res = SWIG_AsVal_double(argv[1], NULL);
+          _v = SWIG_CheckState(res);
+        }
+      }
+      if (!_v) goto check_2;
+      _ranki += _v*_pi;
+      _rankm += _pi;
+      _pi *= SWIG_MAXCASTRANK;
+      if (!_index || (_ranki < _rank)) {
+        _rank = _ranki; _index = 2;
+        if (_rank == _rankm) goto dispatch;
+      }
+    }
+  check_2:
+    
+  dispatch:
+    switch(_index) {
+    case 1:
+      return _wrap_new_LinearAdsorption__SWIG_1(self, argc, argv);
+    case 2:
+      return _wrap_new_LinearAdsorption__SWIG_0(self, argc, argv);
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'new_LinearAdsorption'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    cmf::water::LinearAdsorption::LinearAdsorption(real,real)\n"
+    "    cmf::water::LinearAdsorption::LinearAdsorption(cmf::water::LinearAdsorption const &)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_LinearAdsorption_copy(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  cmf::water::LinearAdsorption *arg1 = (cmf::water::LinearAdsorption *) 0 ;
+  real arg2 = (real) -1 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  double val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char *  kwnames[] = {
+    (char *) "self",(char *) "m", NULL 
+  };
+  cmf::water::LinearAdsorption *result = 0 ;
+  
+  if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"O|O:LinearAdsorption_copy",kwnames,&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_cmf__water__LinearAdsorption, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "LinearAdsorption_copy" "', argument " "1"" of type '" "cmf::water::LinearAdsorption const *""'"); 
+  }
+  arg1 = reinterpret_cast< cmf::water::LinearAdsorption * >(argp1);
+  if (obj1) {
+    ecode2 = SWIG_AsVal_double(obj1, &val2);
+    if (!SWIG_IsOK(ecode2)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "LinearAdsorption_copy" "', argument " "2"" of type '" "real""'");
+    } 
+    arg2 = static_cast< real >(val2);
+  }
+  {
+    try {
+      result = (cmf::water::LinearAdsorption *)((cmf::water::LinearAdsorption const *)arg1)->copy(arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_cmf__water__LinearAdsorption, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_LinearAdsorption(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  cmf::water::LinearAdsorption *arg1 = (cmf::water::LinearAdsorption *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__water__LinearAdsorption, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_LinearAdsorption" "', argument " "1"" of type '" "cmf::water::LinearAdsorption *""'"); 
+  }
+  arg1 = reinterpret_cast< cmf::water::LinearAdsorption * >(argp1);
+  {
+    try {
+      delete arg1;
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *LinearAdsorption_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *obj;
+  if (!SWIG_Python_UnpackTuple(args,(char*)"swigregister", 1, 1,&obj)) return NULL;
+  SWIG_TypeNewClientData(SWIGTYPE_p_cmf__water__LinearAdsorption, SWIG_NewClientData(obj));
+  return SWIG_Py_Void();
+}
+
+SWIGINTERN PyObject *LinearAdsorption_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  return SWIG_Python_InitShadowInstance(args);
+}
+
+SWIGINTERN PyObject *_wrap_FreundlichAdsorbtion_K_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  cmf::water::FreundlichAdsorbtion *arg1 = (cmf::water::FreundlichAdsorbtion *) 0 ;
+  real arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  double val2 ;
+  int ecode2 = 0 ;
+  PyObject *swig_obj[2] ;
+  
+  if (!SWIG_Python_UnpackTuple(args,"FreundlichAdsorbtion_K_set",2,2,swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__water__FreundlichAdsorbtion, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "FreundlichAdsorbtion_K_set" "', argument " "1"" of type '" "cmf::water::FreundlichAdsorbtion *""'"); 
+  }
+  arg1 = reinterpret_cast< cmf::water::FreundlichAdsorbtion * >(argp1);
+  ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "FreundlichAdsorbtion_K_set" "', argument " "2"" of type '" "real""'");
+  } 
+  arg2 = static_cast< real >(val2);
+  if (arg1) (arg1)->K = arg2;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_FreundlichAdsorbtion_K_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  cmf::water::FreundlichAdsorbtion *arg1 = (cmf::water::FreundlichAdsorbtion *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  real result;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__water__FreundlichAdsorbtion, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "FreundlichAdsorbtion_K_get" "', argument " "1"" of type '" "cmf::water::FreundlichAdsorbtion *""'"); 
+  }
+  arg1 = reinterpret_cast< cmf::water::FreundlichAdsorbtion * >(argp1);
+  result = (real) ((arg1)->K);
+  resultobj = SWIG_From_double(static_cast< double >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_FreundlichAdsorbtion_n_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  cmf::water::FreundlichAdsorbtion *arg1 = (cmf::water::FreundlichAdsorbtion *) 0 ;
+  real arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  double val2 ;
+  int ecode2 = 0 ;
+  PyObject *swig_obj[2] ;
+  
+  if (!SWIG_Python_UnpackTuple(args,"FreundlichAdsorbtion_n_set",2,2,swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__water__FreundlichAdsorbtion, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "FreundlichAdsorbtion_n_set" "', argument " "1"" of type '" "cmf::water::FreundlichAdsorbtion *""'"); 
+  }
+  arg1 = reinterpret_cast< cmf::water::FreundlichAdsorbtion * >(argp1);
+  ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "FreundlichAdsorbtion_n_set" "', argument " "2"" of type '" "real""'");
+  } 
+  arg2 = static_cast< real >(val2);
+  if (arg1) (arg1)->n = arg2;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_FreundlichAdsorbtion_n_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  cmf::water::FreundlichAdsorbtion *arg1 = (cmf::water::FreundlichAdsorbtion *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  real result;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__water__FreundlichAdsorbtion, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "FreundlichAdsorbtion_n_get" "', argument " "1"" of type '" "cmf::water::FreundlichAdsorbtion *""'"); 
+  }
+  arg1 = reinterpret_cast< cmf::water::FreundlichAdsorbtion * >(argp1);
+  result = (real) ((arg1)->n);
+  resultobj = SWIG_From_double(static_cast< double >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_FreundlichAdsorbtion_m_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  cmf::water::FreundlichAdsorbtion *arg1 = (cmf::water::FreundlichAdsorbtion *) 0 ;
+  real arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  double val2 ;
+  int ecode2 = 0 ;
+  PyObject *swig_obj[2] ;
+  
+  if (!SWIG_Python_UnpackTuple(args,"FreundlichAdsorbtion_m_set",2,2,swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__water__FreundlichAdsorbtion, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "FreundlichAdsorbtion_m_set" "', argument " "1"" of type '" "cmf::water::FreundlichAdsorbtion *""'"); 
+  }
+  arg1 = reinterpret_cast< cmf::water::FreundlichAdsorbtion * >(argp1);
+  ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "FreundlichAdsorbtion_m_set" "', argument " "2"" of type '" "real""'");
+  } 
+  arg2 = static_cast< real >(val2);
+  if (arg1) (arg1)->m = arg2;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_FreundlichAdsorbtion_m_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  cmf::water::FreundlichAdsorbtion *arg1 = (cmf::water::FreundlichAdsorbtion *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  real result;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__water__FreundlichAdsorbtion, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "FreundlichAdsorbtion_m_get" "', argument " "1"" of type '" "cmf::water::FreundlichAdsorbtion *""'"); 
+  }
+  arg1 = reinterpret_cast< cmf::water::FreundlichAdsorbtion * >(argp1);
+  result = (real) ((arg1)->m);
+  resultobj = SWIG_From_double(static_cast< double >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_FreundlichAdsorbtion_epsilon_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  cmf::water::FreundlichAdsorbtion *arg1 = (cmf::water::FreundlichAdsorbtion *) 0 ;
+  real arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  double val2 ;
+  int ecode2 = 0 ;
+  PyObject *swig_obj[2] ;
+  
+  if (!SWIG_Python_UnpackTuple(args,"FreundlichAdsorbtion_epsilon_set",2,2,swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__water__FreundlichAdsorbtion, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "FreundlichAdsorbtion_epsilon_set" "', argument " "1"" of type '" "cmf::water::FreundlichAdsorbtion *""'"); 
+  }
+  arg1 = reinterpret_cast< cmf::water::FreundlichAdsorbtion * >(argp1);
+  ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "FreundlichAdsorbtion_epsilon_set" "', argument " "2"" of type '" "real""'");
+  } 
+  arg2 = static_cast< real >(val2);
+  if (arg1) (arg1)->epsilon = arg2;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_FreundlichAdsorbtion_epsilon_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  cmf::water::FreundlichAdsorbtion *arg1 = (cmf::water::FreundlichAdsorbtion *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  real result;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__water__FreundlichAdsorbtion, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "FreundlichAdsorbtion_epsilon_get" "', argument " "1"" of type '" "cmf::water::FreundlichAdsorbtion *""'"); 
+  }
+  arg1 = reinterpret_cast< cmf::water::FreundlichAdsorbtion * >(argp1);
+  result = (real) ((arg1)->epsilon);
+  resultobj = SWIG_From_double(static_cast< double >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_FreundlichAdsorbtion_maxiter_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  cmf::water::FreundlichAdsorbtion *arg1 = (cmf::water::FreundlichAdsorbtion *) 0 ;
+  int arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int val2 ;
+  int ecode2 = 0 ;
+  PyObject *swig_obj[2] ;
+  
+  if (!SWIG_Python_UnpackTuple(args,"FreundlichAdsorbtion_maxiter_set",2,2,swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__water__FreundlichAdsorbtion, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "FreundlichAdsorbtion_maxiter_set" "', argument " "1"" of type '" "cmf::water::FreundlichAdsorbtion *""'"); 
+  }
+  arg1 = reinterpret_cast< cmf::water::FreundlichAdsorbtion * >(argp1);
+  ecode2 = SWIG_AsVal_int(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "FreundlichAdsorbtion_maxiter_set" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
+  if (arg1) (arg1)->maxiter = arg2;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_FreundlichAdsorbtion_maxiter_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  cmf::water::FreundlichAdsorbtion *arg1 = (cmf::water::FreundlichAdsorbtion *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  int result;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__water__FreundlichAdsorbtion, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "FreundlichAdsorbtion_maxiter_get" "', argument " "1"" of type '" "cmf::water::FreundlichAdsorbtion *""'"); 
+  }
+  arg1 = reinterpret_cast< cmf::water::FreundlichAdsorbtion * >(argp1);
+  result = (int) ((arg1)->maxiter);
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_FreundlichAdsorbtion_strict_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  cmf::water::FreundlichAdsorbtion *arg1 = (cmf::water::FreundlichAdsorbtion *) 0 ;
+  bool arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  bool val2 ;
+  int ecode2 = 0 ;
+  PyObject *swig_obj[2] ;
+  
+  if (!SWIG_Python_UnpackTuple(args,"FreundlichAdsorbtion_strict_set",2,2,swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__water__FreundlichAdsorbtion, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "FreundlichAdsorbtion_strict_set" "', argument " "1"" of type '" "cmf::water::FreundlichAdsorbtion *""'"); 
+  }
+  arg1 = reinterpret_cast< cmf::water::FreundlichAdsorbtion * >(argp1);
+  ecode2 = SWIG_AsVal_bool(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "FreundlichAdsorbtion_strict_set" "', argument " "2"" of type '" "bool""'");
+  } 
+  arg2 = static_cast< bool >(val2);
+  if (arg1) (arg1)->strict = arg2;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_FreundlichAdsorbtion_strict_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  cmf::water::FreundlichAdsorbtion *arg1 = (cmf::water::FreundlichAdsorbtion *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  bool result;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__water__FreundlichAdsorbtion, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "FreundlichAdsorbtion_strict_get" "', argument " "1"" of type '" "cmf::water::FreundlichAdsorbtion *""'"); 
+  }
+  arg1 = reinterpret_cast< cmf::water::FreundlichAdsorbtion * >(argp1);
+  result = (bool) ((arg1)->strict);
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_FreundlichAdsorbtion__SWIG_0(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  real arg1 ;
+  real arg2 ;
+  real arg3 ;
+  real arg4 = (real) 1e-12 ;
+  int arg5 = (int) 100 ;
+  bool arg6 = (bool) true ;
+  double val1 ;
+  int ecode1 = 0 ;
+  double val2 ;
+  int ecode2 = 0 ;
+  double val3 ;
+  int ecode3 = 0 ;
+  double val4 ;
+  int ecode4 = 0 ;
+  int val5 ;
+  int ecode5 = 0 ;
+  bool val6 ;
+  int ecode6 = 0 ;
+  cmf::water::FreundlichAdsorbtion *result = 0 ;
+  
+  if ((nobjs < 3) || (nobjs > 6)) SWIG_fail;
+  ecode1 = SWIG_AsVal_double(swig_obj[0], &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "new_FreundlichAdsorbtion" "', argument " "1"" of type '" "real""'");
+  } 
+  arg1 = static_cast< real >(val1);
+  ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "new_FreundlichAdsorbtion" "', argument " "2"" of type '" "real""'");
+  } 
+  arg2 = static_cast< real >(val2);
+  ecode3 = SWIG_AsVal_double(swig_obj[2], &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "new_FreundlichAdsorbtion" "', argument " "3"" of type '" "real""'");
+  } 
+  arg3 = static_cast< real >(val3);
+  if (swig_obj[3]) {
+    ecode4 = SWIG_AsVal_double(swig_obj[3], &val4);
+    if (!SWIG_IsOK(ecode4)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "new_FreundlichAdsorbtion" "', argument " "4"" of type '" "real""'");
+    } 
+    arg4 = static_cast< real >(val4);
+  }
+  if (swig_obj[4]) {
+    ecode5 = SWIG_AsVal_int(swig_obj[4], &val5);
+    if (!SWIG_IsOK(ecode5)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "new_FreundlichAdsorbtion" "', argument " "5"" of type '" "int""'");
+    } 
+    arg5 = static_cast< int >(val5);
+  }
+  if (swig_obj[5]) {
+    ecode6 = SWIG_AsVal_bool(swig_obj[5], &val6);
+    if (!SWIG_IsOK(ecode6)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode6), "in method '" "new_FreundlichAdsorbtion" "', argument " "6"" of type '" "bool""'");
+    } 
+    arg6 = static_cast< bool >(val6);
+  }
+  {
+    try {
+      result = (cmf::water::FreundlichAdsorbtion *)new cmf::water::FreundlichAdsorbtion(arg1,arg2,arg3,arg4,arg5,arg6);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_cmf__water__FreundlichAdsorbtion, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_FreundlichAdsorbtion__SWIG_1(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  cmf::water::FreundlichAdsorbtion *arg1 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  cmf::water::FreundlichAdsorbtion *result = 0 ;
+  
+  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_cmf__water__FreundlichAdsorbtion,  0  | 0);
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_FreundlichAdsorbtion" "', argument " "1"" of type '" "cmf::water::FreundlichAdsorbtion const &""'"); 
+  }
+  if (!argp1) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_FreundlichAdsorbtion" "', argument " "1"" of type '" "cmf::water::FreundlichAdsorbtion const &""'"); 
+  }
+  arg1 = reinterpret_cast< cmf::water::FreundlichAdsorbtion * >(argp1);
+  {
+    try {
+      result = (cmf::water::FreundlichAdsorbtion *)new cmf::water::FreundlichAdsorbtion((cmf::water::FreundlichAdsorbtion const &)*arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_cmf__water__FreundlichAdsorbtion, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_FreundlichAdsorbtion(PyObject *self, PyObject *args) {
+  int argc;
+  PyObject *argv[7];
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args,"new_FreundlichAdsorbtion",0,6,argv))) SWIG_fail;
+  --argc;
+  {
+    unsigned long _index = 0;
+    SWIG_TypeRank _rank = 0; 
+    if (argc == 1) {
+      SWIG_TypeRank _ranki = 0;
+      SWIG_TypeRank _rankm = 0;
+      SWIG_TypeRank _pi = 1;
+      int _v = 0;
+      {
+        int res = SWIG_ConvertPtr(argv[0], 0, SWIGTYPE_p_cmf__water__FreundlichAdsorbtion, 0);
+        _v = SWIG_CheckState(res);
+      }
+      if (!_v) goto check_1;
+      _ranki += _v*_pi;
+      _rankm += _pi;
+      _pi *= SWIG_MAXCASTRANK;
+      if (!_index || (_ranki < _rank)) {
+        _rank = _ranki; _index = 1;
+        if (_rank == _rankm) goto dispatch;
+      }
+    }
+  check_1:
+    
+    if ((argc >= 3) && (argc <= 6)) {
+      SWIG_TypeRank _ranki = 0;
+      SWIG_TypeRank _rankm = 0;
+      SWIG_TypeRank _pi = 1;
+      int _v = 0;
+      {
+        {
+          int res = SWIG_AsVal_double(argv[0], NULL);
+          _v = SWIG_CheckState(res);
+        }
+      }
+      if (!_v) goto check_2;
+      _ranki += _v*_pi;
+      _rankm += _pi;
+      _pi *= SWIG_MAXCASTRANK;
+      {
+        {
+          int res = SWIG_AsVal_double(argv[1], NULL);
+          _v = SWIG_CheckState(res);
+        }
+      }
+      if (!_v) goto check_2;
+      _ranki += _v*_pi;
+      _rankm += _pi;
+      _pi *= SWIG_MAXCASTRANK;
+      {
+        {
+          int res = SWIG_AsVal_double(argv[2], NULL);
+          _v = SWIG_CheckState(res);
+        }
+      }
+      if (!_v) goto check_2;
+      _ranki += _v*_pi;
+      _rankm += _pi;
+      _pi *= SWIG_MAXCASTRANK;
+      if (argc > 3) {
+        {
+          {
+            int res = SWIG_AsVal_double(argv[3], NULL);
+            _v = SWIG_CheckState(res);
+          }
+        }
+        if (!_v) goto check_2;
+        _ranki += _v*_pi;
+        _rankm += _pi;
+        _pi *= SWIG_MAXCASTRANK;
+        if (argc > 4) {
+          {
+            {
+              int res = SWIG_AsVal_int(argv[4], NULL);
+              _v = SWIG_CheckState(res);
+            }
+          }
+          if (!_v) goto check_2;
+          _ranki += _v*_pi;
+          _rankm += _pi;
+          _pi *= SWIG_MAXCASTRANK;
+          if (argc > 5) {
+            {
+              {
+                int res = SWIG_AsVal_bool(argv[5], NULL);
+                _v = SWIG_CheckState(res);
+              }
+            }
+            if (!_v) goto check_2;
+            _ranki += _v*_pi;
+            _rankm += _pi;
+            _pi *= SWIG_MAXCASTRANK;
+          }
+        }
+      }
+      if (!_index || (_ranki < _rank)) {
+        _rank = _ranki; _index = 2;
+        if (_rank == _rankm) goto dispatch;
+      }
+    }
+  check_2:
+    
+  dispatch:
+    switch(_index) {
+    case 1:
+      return _wrap_new_FreundlichAdsorbtion__SWIG_1(self, argc, argv);
+    case 2:
+      return _wrap_new_FreundlichAdsorbtion__SWIG_0(self, argc, argv);
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'new_FreundlichAdsorbtion'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    cmf::water::FreundlichAdsorbtion::FreundlichAdsorbtion(real,real,real,real,int,bool)\n"
+    "    cmf::water::FreundlichAdsorbtion::FreundlichAdsorbtion(cmf::water::FreundlichAdsorbtion const &)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_FreundlichAdsorbtion_copy(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  cmf::water::FreundlichAdsorbtion *arg1 = (cmf::water::FreundlichAdsorbtion *) 0 ;
+  real arg2 = (real) -1 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  double val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char *  kwnames[] = {
+    (char *) "self",(char *) "m", NULL 
+  };
+  cmf::water::FreundlichAdsorbtion *result = 0 ;
+  
+  if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"O|O:FreundlichAdsorbtion_copy",kwnames,&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_cmf__water__FreundlichAdsorbtion, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "FreundlichAdsorbtion_copy" "', argument " "1"" of type '" "cmf::water::FreundlichAdsorbtion const *""'"); 
+  }
+  arg1 = reinterpret_cast< cmf::water::FreundlichAdsorbtion * >(argp1);
+  if (obj1) {
+    ecode2 = SWIG_AsVal_double(obj1, &val2);
+    if (!SWIG_IsOK(ecode2)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "FreundlichAdsorbtion_copy" "', argument " "2"" of type '" "real""'");
+    } 
+    arg2 = static_cast< real >(val2);
+  }
+  {
+    try {
+      result = (cmf::water::FreundlichAdsorbtion *)((cmf::water::FreundlichAdsorbtion const *)arg1)->copy(arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_cmf__water__FreundlichAdsorbtion, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_FreundlichAdsorbtion(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  cmf::water::FreundlichAdsorbtion *arg1 = (cmf::water::FreundlichAdsorbtion *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__water__FreundlichAdsorbtion, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_FreundlichAdsorbtion" "', argument " "1"" of type '" "cmf::water::FreundlichAdsorbtion *""'"); 
+  }
+  arg1 = reinterpret_cast< cmf::water::FreundlichAdsorbtion * >(argp1);
+  {
+    try {
+      delete arg1;
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *FreundlichAdsorbtion_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *obj;
+  if (!SWIG_Python_UnpackTuple(args,(char*)"swigregister", 1, 1,&obj)) return NULL;
+  SWIG_TypeNewClientData(SWIGTYPE_p_cmf__water__FreundlichAdsorbtion, SWIG_NewClientData(obj));
+  return SWIG_Py_Void();
+}
+
+SWIGINTERN PyObject *FreundlichAdsorbtion_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  return SWIG_Python_InitShadowInstance(args);
+}
+
+SWIGINTERN PyObject *_wrap_LangmuirAdsorption_K_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  cmf::water::LangmuirAdsorption *arg1 = (cmf::water::LangmuirAdsorption *) 0 ;
+  real arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  double val2 ;
+  int ecode2 = 0 ;
+  PyObject *swig_obj[2] ;
+  
+  if (!SWIG_Python_UnpackTuple(args,"LangmuirAdsorption_K_set",2,2,swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__water__LangmuirAdsorption, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "LangmuirAdsorption_K_set" "', argument " "1"" of type '" "cmf::water::LangmuirAdsorption *""'"); 
+  }
+  arg1 = reinterpret_cast< cmf::water::LangmuirAdsorption * >(argp1);
+  ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "LangmuirAdsorption_K_set" "', argument " "2"" of type '" "real""'");
+  } 
+  arg2 = static_cast< real >(val2);
+  if (arg1) (arg1)->K = arg2;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_LangmuirAdsorption_K_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  cmf::water::LangmuirAdsorption *arg1 = (cmf::water::LangmuirAdsorption *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  real result;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__water__LangmuirAdsorption, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "LangmuirAdsorption_K_get" "', argument " "1"" of type '" "cmf::water::LangmuirAdsorption *""'"); 
+  }
+  arg1 = reinterpret_cast< cmf::water::LangmuirAdsorption * >(argp1);
+  result = (real) ((arg1)->K);
+  resultobj = SWIG_From_double(static_cast< double >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_LangmuirAdsorption_m_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  cmf::water::LangmuirAdsorption *arg1 = (cmf::water::LangmuirAdsorption *) 0 ;
+  real arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  double val2 ;
+  int ecode2 = 0 ;
+  PyObject *swig_obj[2] ;
+  
+  if (!SWIG_Python_UnpackTuple(args,"LangmuirAdsorption_m_set",2,2,swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__water__LangmuirAdsorption, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "LangmuirAdsorption_m_set" "', argument " "1"" of type '" "cmf::water::LangmuirAdsorption *""'"); 
+  }
+  arg1 = reinterpret_cast< cmf::water::LangmuirAdsorption * >(argp1);
+  ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "LangmuirAdsorption_m_set" "', argument " "2"" of type '" "real""'");
+  } 
+  arg2 = static_cast< real >(val2);
+  if (arg1) (arg1)->m = arg2;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_LangmuirAdsorption_m_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  cmf::water::LangmuirAdsorption *arg1 = (cmf::water::LangmuirAdsorption *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  real result;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__water__LangmuirAdsorption, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "LangmuirAdsorption_m_get" "', argument " "1"" of type '" "cmf::water::LangmuirAdsorption *""'"); 
+  }
+  arg1 = reinterpret_cast< cmf::water::LangmuirAdsorption * >(argp1);
+  result = (real) ((arg1)->m);
+  resultobj = SWIG_From_double(static_cast< double >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_LangmuirAdsorption__SWIG_0(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  real arg1 ;
+  real arg2 ;
+  double val1 ;
+  int ecode1 = 0 ;
+  double val2 ;
+  int ecode2 = 0 ;
+  cmf::water::LangmuirAdsorption *result = 0 ;
+  
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  ecode1 = SWIG_AsVal_double(swig_obj[0], &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "new_LangmuirAdsorption" "', argument " "1"" of type '" "real""'");
+  } 
+  arg1 = static_cast< real >(val1);
+  ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "new_LangmuirAdsorption" "', argument " "2"" of type '" "real""'");
+  } 
+  arg2 = static_cast< real >(val2);
+  {
+    try {
+      result = (cmf::water::LangmuirAdsorption *)new cmf::water::LangmuirAdsorption(arg1,arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_cmf__water__LangmuirAdsorption, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_LangmuirAdsorption__SWIG_1(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  cmf::water::LangmuirAdsorption *arg1 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  cmf::water::LangmuirAdsorption *result = 0 ;
+  
+  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_cmf__water__LangmuirAdsorption,  0  | 0);
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_LangmuirAdsorption" "', argument " "1"" of type '" "cmf::water::LangmuirAdsorption const &""'"); 
+  }
+  if (!argp1) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_LangmuirAdsorption" "', argument " "1"" of type '" "cmf::water::LangmuirAdsorption const &""'"); 
+  }
+  arg1 = reinterpret_cast< cmf::water::LangmuirAdsorption * >(argp1);
+  {
+    try {
+      result = (cmf::water::LangmuirAdsorption *)new cmf::water::LangmuirAdsorption((cmf::water::LangmuirAdsorption const &)*arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_cmf__water__LangmuirAdsorption, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_LangmuirAdsorption(PyObject *self, PyObject *args) {
+  int argc;
+  PyObject *argv[3];
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args,"new_LangmuirAdsorption",0,2,argv))) SWIG_fail;
+  --argc;
+  {
+    unsigned long _index = 0;
+    SWIG_TypeRank _rank = 0; 
+    if (argc == 1) {
+      SWIG_TypeRank _ranki = 0;
+      SWIG_TypeRank _rankm = 0;
+      SWIG_TypeRank _pi = 1;
+      int _v = 0;
+      {
+        int res = SWIG_ConvertPtr(argv[0], 0, SWIGTYPE_p_cmf__water__LangmuirAdsorption, 0);
+        _v = SWIG_CheckState(res);
+      }
+      if (!_v) goto check_1;
+      _ranki += _v*_pi;
+      _rankm += _pi;
+      _pi *= SWIG_MAXCASTRANK;
+      if (!_index || (_ranki < _rank)) {
+        _rank = _ranki; _index = 1;
+        if (_rank == _rankm) goto dispatch;
+      }
+    }
+  check_1:
+    
+    if (argc == 2) {
+      SWIG_TypeRank _ranki = 0;
+      SWIG_TypeRank _rankm = 0;
+      SWIG_TypeRank _pi = 1;
+      int _v = 0;
+      {
+        {
+          int res = SWIG_AsVal_double(argv[0], NULL);
+          _v = SWIG_CheckState(res);
+        }
+      }
+      if (!_v) goto check_2;
+      _ranki += _v*_pi;
+      _rankm += _pi;
+      _pi *= SWIG_MAXCASTRANK;
+      {
+        {
+          int res = SWIG_AsVal_double(argv[1], NULL);
+          _v = SWIG_CheckState(res);
+        }
+      }
+      if (!_v) goto check_2;
+      _ranki += _v*_pi;
+      _rankm += _pi;
+      _pi *= SWIG_MAXCASTRANK;
+      if (!_index || (_ranki < _rank)) {
+        _rank = _ranki; _index = 2;
+        if (_rank == _rankm) goto dispatch;
+      }
+    }
+  check_2:
+    
+  dispatch:
+    switch(_index) {
+    case 1:
+      return _wrap_new_LangmuirAdsorption__SWIG_1(self, argc, argv);
+    case 2:
+      return _wrap_new_LangmuirAdsorption__SWIG_0(self, argc, argv);
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'new_LangmuirAdsorption'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    cmf::water::LangmuirAdsorption::LangmuirAdsorption(real,real)\n"
+    "    cmf::water::LangmuirAdsorption::LangmuirAdsorption(cmf::water::LangmuirAdsorption const &)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_LangmuirAdsorption_copy(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  cmf::water::LangmuirAdsorption *arg1 = (cmf::water::LangmuirAdsorption *) 0 ;
+  real arg2 = (real) -1 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  double val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char *  kwnames[] = {
+    (char *) "self",(char *) "m", NULL 
+  };
+  cmf::water::LangmuirAdsorption *result = 0 ;
+  
+  if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"O|O:LangmuirAdsorption_copy",kwnames,&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_cmf__water__LangmuirAdsorption, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "LangmuirAdsorption_copy" "', argument " "1"" of type '" "cmf::water::LangmuirAdsorption const *""'"); 
+  }
+  arg1 = reinterpret_cast< cmf::water::LangmuirAdsorption * >(argp1);
+  if (obj1) {
+    ecode2 = SWIG_AsVal_double(obj1, &val2);
+    if (!SWIG_IsOK(ecode2)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "LangmuirAdsorption_copy" "', argument " "2"" of type '" "real""'");
+    } 
+    arg2 = static_cast< real >(val2);
+  }
+  {
+    try {
+      result = (cmf::water::LangmuirAdsorption *)((cmf::water::LangmuirAdsorption const *)arg1)->copy(arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_cmf__water__LangmuirAdsorption, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_LangmuirAdsorption(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  cmf::water::LangmuirAdsorption *arg1 = (cmf::water::LangmuirAdsorption *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__water__LangmuirAdsorption, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_LangmuirAdsorption" "', argument " "1"" of type '" "cmf::water::LangmuirAdsorption *""'"); 
+  }
+  arg1 = reinterpret_cast< cmf::water::LangmuirAdsorption * >(argp1);
+  {
+    try {
+      delete arg1;
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *LangmuirAdsorption_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *obj;
+  if (!SWIG_Python_UnpackTuple(args,(char*)"swigregister", 1, 1,&obj)) return NULL;
+  SWIG_TypeNewClientData(SWIGTYPE_p_cmf__water__LangmuirAdsorption, SWIG_NewClientData(obj));
+  return SWIG_Py_Void();
+}
+
+SWIGINTERN PyObject *LangmuirAdsorption_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  return SWIG_Python_InitShadowInstance(args);
+}
+
 SWIGINTERN PyObject *_wrap_new_solute(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   cmf::water::solute *arg1 = 0 ;
@@ -21308,6 +22872,74 @@ SWIGINTERN PyObject *SoluteTimeseries_swigregister(PyObject *SWIGUNUSEDPARM(self
 SWIGINTERN PyObject *SoluteTimeseries_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   return SWIG_Python_InitShadowInstance(args);
 }
+
+SWIGINTERN PyObject *_wrap_SoluteStorage_set_adsorption(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  cmf::water::SoluteStorage *arg1 = (cmf::water::SoluteStorage *) 0 ;
+  cmf::water::Adsorption *arg2 = 0 ;
+  real arg3 = (real) -1 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  std::tr1::shared_ptr< cmf::water::SoluteStorage > tempshared1 ;
+  std::tr1::shared_ptr< cmf::water::SoluteStorage > *smartarg1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  double val3 ;
+  int ecode3 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char *  kwnames[] = {
+    (char *) "self",(char *) "newadsorption",(char *) "m", NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"OO|O:SoluteStorage_set_adsorption",kwnames,&obj0,&obj1,&obj2)) SWIG_fail;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(obj0, &argp1, SWIGTYPE_p_std__tr1__shared_ptrT_cmf__water__SoluteStorage_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SoluteStorage_set_adsorption" "', argument " "1"" of type '" "cmf::water::SoluteStorage *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< std::tr1::shared_ptr<  cmf::water::SoluteStorage > * >(argp1);
+      delete reinterpret_cast< std::tr1::shared_ptr<  cmf::water::SoluteStorage > * >(argp1);
+      arg1 = const_cast< cmf::water::SoluteStorage * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< std::tr1::shared_ptr<  cmf::water::SoluteStorage > * >(argp1);
+      arg1 = const_cast< cmf::water::SoluteStorage * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_cmf__water__Adsorption,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "SoluteStorage_set_adsorption" "', argument " "2"" of type '" "cmf::water::Adsorption const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "SoluteStorage_set_adsorption" "', argument " "2"" of type '" "cmf::water::Adsorption const &""'"); 
+  }
+  arg2 = reinterpret_cast< cmf::water::Adsorption * >(argp2);
+  if (obj2) {
+    ecode3 = SWIG_AsVal_double(obj2, &val3);
+    if (!SWIG_IsOK(ecode3)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "SoluteStorage_set_adsorption" "', argument " "3"" of type '" "real""'");
+    } 
+    arg3 = static_cast< real >(val3);
+  }
+  {
+    try {
+      (arg1)->set_adsorption((cmf::water::Adsorption const &)*arg2,arg3);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
 
 SWIGINTERN PyObject *_wrap_SoluteStorage_decay_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
@@ -70100,6 +71732,134 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"delete_MultiIntegrator", (PyCFunction)_wrap_delete_MultiIntegrator, METH_O, (char *)"delete_MultiIntegrator(MultiIntegrator self)"},
 	 { (char *)"MultiIntegrator_swigregister", MultiIntegrator_swigregister, METH_VARARGS, NULL},
 	 { (char *)"MultiIntegrator_swiginit", MultiIntegrator_swiginit, METH_VARARGS, NULL},
+	 { (char *)"Adsorption_freesolute", (PyCFunction) _wrap_Adsorption_freesolute, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
+		"Adsorption_freesolute(Adsorption self, real xt, real V) -> real\n"
+		"\n"
+		"virtual\n"
+		"real freesolute(real xt, real V) const =0\n"
+		"\n"
+		"Returns the mass of dissolved tracer as a function of the total tracer\n"
+		"mass in the solute storage and the water volume.\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"xt:    :math:`x_t`  the total tracer mass in the storage\n"
+		"\n"
+		"V:    :math:`V m^3`  the water volume in the storage\n"
+		"\n"
+		" :math:`x_f`  the dissolved mass of the tracer \n"
+		""},
+	 { (char *)"Adsorption_copy", (PyCFunction) _wrap_Adsorption_copy, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
+		"Adsorption_copy(Adsorption self, real m=-1) -> Adsorption\n"
+		"\n"
+		"virtual\n"
+		"Adsorption* copy(real m=-1) const =0\n"
+		"\n"
+		"returns a copy of the Adsorption object.\n"
+		"\n"
+		"If the adsorption is depending on the sorbent mass, you can give a\n"
+		"positive value for the sorbent mass m. If the value is not given or\n"
+		"negative, m is used from the original object. \n"
+		""},
+	 { (char *)"delete_Adsorption", (PyCFunction)_wrap_delete_Adsorption, METH_O, (char *)"delete_Adsorption(Adsorption self)"},
+	 { (char *)"Adsorption_swigregister", Adsorption_swigregister, METH_VARARGS, NULL},
+	 { (char *)"NullAdsorption_copy", (PyCFunction) _wrap_NullAdsorption_copy, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
+		"NullAdsorption_copy(NullAdsorption self, real m=-1) -> NullAdsorption\n"
+		"\n"
+		"virtual\n"
+		"NullAdsorption* copy(real m=-1) const\n"
+		"\n"
+		"returns a copy of the Adsorption object.\n"
+		"\n"
+		"If the adsorption is depending on the sorbent mass, you can give a\n"
+		"positive value for the sorbent mass m. If the value is not given or\n"
+		"negative, m is used from the original object. \n"
+		""},
+	 { (char *)"new_NullAdsorption", (PyCFunction)_wrap_new_NullAdsorption, METH_NOARGS, (char *)"new_NullAdsorption() -> NullAdsorption"},
+	 { (char *)"delete_NullAdsorption", (PyCFunction)_wrap_delete_NullAdsorption, METH_O, (char *)"delete_NullAdsorption(NullAdsorption self)"},
+	 { (char *)"NullAdsorption_swigregister", NullAdsorption_swigregister, METH_VARARGS, NULL},
+	 { (char *)"NullAdsorption_swiginit", NullAdsorption_swiginit, METH_VARARGS, NULL},
+	 { (char *)"LinearAdsorption_K_set", _wrap_LinearAdsorption_K_set, METH_VARARGS, (char *)"LinearAdsorption_K_set(LinearAdsorption self, real K)"},
+	 { (char *)"LinearAdsorption_K_get", (PyCFunction)_wrap_LinearAdsorption_K_get, METH_O, (char *)"LinearAdsorption_K_get(LinearAdsorption self) -> real"},
+	 { (char *)"LinearAdsorption_m_set", _wrap_LinearAdsorption_m_set, METH_VARARGS, (char *)"LinearAdsorption_m_set(LinearAdsorption self, real m)"},
+	 { (char *)"LinearAdsorption_m_get", (PyCFunction)_wrap_LinearAdsorption_m_get, METH_O, (char *)"LinearAdsorption_m_get(LinearAdsorption self) -> real"},
+	 { (char *)"new_LinearAdsorption", _wrap_new_LinearAdsorption, METH_VARARGS, (char *)"\n"
+		"LinearAdsorption(real K, real m)\n"
+		"new_LinearAdsorption(LinearAdsorption other) -> LinearAdsorption\n"
+		"\n"
+		"LinearAdsorption(const LinearAdsorption &other) \n"
+		""},
+	 { (char *)"LinearAdsorption_copy", (PyCFunction) _wrap_LinearAdsorption_copy, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
+		"LinearAdsorption_copy(LinearAdsorption self, real m=-1) -> LinearAdsorption\n"
+		"\n"
+		"LinearAdsorption* copy(real m=-1) const\n"
+		"\n"
+		"returns a copy of the Adsorption object.\n"
+		"\n"
+		"If the adsorption is depending on the sorbent mass, you can give a\n"
+		"positive value for the sorbent mass m. If the value is not given or\n"
+		"negative, m is used from the original object. \n"
+		""},
+	 { (char *)"delete_LinearAdsorption", (PyCFunction)_wrap_delete_LinearAdsorption, METH_O, (char *)"delete_LinearAdsorption(LinearAdsorption self)"},
+	 { (char *)"LinearAdsorption_swigregister", LinearAdsorption_swigregister, METH_VARARGS, NULL},
+	 { (char *)"LinearAdsorption_swiginit", LinearAdsorption_swiginit, METH_VARARGS, NULL},
+	 { (char *)"FreundlichAdsorbtion_K_set", _wrap_FreundlichAdsorbtion_K_set, METH_VARARGS, (char *)"FreundlichAdsorbtion_K_set(FreundlichAdsorbtion self, real K)"},
+	 { (char *)"FreundlichAdsorbtion_K_get", (PyCFunction)_wrap_FreundlichAdsorbtion_K_get, METH_O, (char *)"FreundlichAdsorbtion_K_get(FreundlichAdsorbtion self) -> real"},
+	 { (char *)"FreundlichAdsorbtion_n_set", _wrap_FreundlichAdsorbtion_n_set, METH_VARARGS, (char *)"FreundlichAdsorbtion_n_set(FreundlichAdsorbtion self, real n)"},
+	 { (char *)"FreundlichAdsorbtion_n_get", (PyCFunction)_wrap_FreundlichAdsorbtion_n_get, METH_O, (char *)"FreundlichAdsorbtion_n_get(FreundlichAdsorbtion self) -> real"},
+	 { (char *)"FreundlichAdsorbtion_m_set", _wrap_FreundlichAdsorbtion_m_set, METH_VARARGS, (char *)"FreundlichAdsorbtion_m_set(FreundlichAdsorbtion self, real m)"},
+	 { (char *)"FreundlichAdsorbtion_m_get", (PyCFunction)_wrap_FreundlichAdsorbtion_m_get, METH_O, (char *)"FreundlichAdsorbtion_m_get(FreundlichAdsorbtion self) -> real"},
+	 { (char *)"FreundlichAdsorbtion_epsilon_set", _wrap_FreundlichAdsorbtion_epsilon_set, METH_VARARGS, (char *)"FreundlichAdsorbtion_epsilon_set(FreundlichAdsorbtion self, real epsilon)"},
+	 { (char *)"FreundlichAdsorbtion_epsilon_get", (PyCFunction)_wrap_FreundlichAdsorbtion_epsilon_get, METH_O, (char *)"FreundlichAdsorbtion_epsilon_get(FreundlichAdsorbtion self) -> real"},
+	 { (char *)"FreundlichAdsorbtion_maxiter_set", _wrap_FreundlichAdsorbtion_maxiter_set, METH_VARARGS, (char *)"FreundlichAdsorbtion_maxiter_set(FreundlichAdsorbtion self, int maxiter)"},
+	 { (char *)"FreundlichAdsorbtion_maxiter_get", (PyCFunction)_wrap_FreundlichAdsorbtion_maxiter_get, METH_O, (char *)"FreundlichAdsorbtion_maxiter_get(FreundlichAdsorbtion self) -> int"},
+	 { (char *)"FreundlichAdsorbtion_strict_set", _wrap_FreundlichAdsorbtion_strict_set, METH_VARARGS, (char *)"FreundlichAdsorbtion_strict_set(FreundlichAdsorbtion self, bool strict)"},
+	 { (char *)"FreundlichAdsorbtion_strict_get", (PyCFunction)_wrap_FreundlichAdsorbtion_strict_get, METH_O, (char *)"FreundlichAdsorbtion_strict_get(FreundlichAdsorbtion self) -> bool"},
+	 { (char *)"new_FreundlichAdsorbtion", _wrap_new_FreundlichAdsorbtion, METH_VARARGS, (char *)"\n"
+		"FreundlichAdsorbtion(real K, real n, real m, real epsilon=1e-12, int maxiter=100, bool strict=True)\n"
+		"new_FreundlichAdsorbtion(FreundlichAdsorbtion other) -> FreundlichAdsorbtion\n"
+		"\n"
+		"FreundlichAdsorbtion(const FreundlichAdsorbtion &other) \n"
+		""},
+	 { (char *)"FreundlichAdsorbtion_copy", (PyCFunction) _wrap_FreundlichAdsorbtion_copy, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
+		"FreundlichAdsorbtion_copy(FreundlichAdsorbtion self, real m=-1) -> FreundlichAdsorbtion\n"
+		"\n"
+		"FreundlichAdsorbtion* copy(real m=-1) const\n"
+		"\n"
+		"returns a copy of the Adsorption object.\n"
+		"\n"
+		"If the adsorption is depending on the sorbent mass, you can give a\n"
+		"positive value for the sorbent mass m. If the value is not given or\n"
+		"negative, m is used from the original object. \n"
+		""},
+	 { (char *)"delete_FreundlichAdsorbtion", (PyCFunction)_wrap_delete_FreundlichAdsorbtion, METH_O, (char *)"delete_FreundlichAdsorbtion(FreundlichAdsorbtion self)"},
+	 { (char *)"FreundlichAdsorbtion_swigregister", FreundlichAdsorbtion_swigregister, METH_VARARGS, NULL},
+	 { (char *)"FreundlichAdsorbtion_swiginit", FreundlichAdsorbtion_swiginit, METH_VARARGS, NULL},
+	 { (char *)"LangmuirAdsorption_K_set", _wrap_LangmuirAdsorption_K_set, METH_VARARGS, (char *)"LangmuirAdsorption_K_set(LangmuirAdsorption self, real K)"},
+	 { (char *)"LangmuirAdsorption_K_get", (PyCFunction)_wrap_LangmuirAdsorption_K_get, METH_O, (char *)"LangmuirAdsorption_K_get(LangmuirAdsorption self) -> real"},
+	 { (char *)"LangmuirAdsorption_m_set", _wrap_LangmuirAdsorption_m_set, METH_VARARGS, (char *)"LangmuirAdsorption_m_set(LangmuirAdsorption self, real m)"},
+	 { (char *)"LangmuirAdsorption_m_get", (PyCFunction)_wrap_LangmuirAdsorption_m_get, METH_O, (char *)"LangmuirAdsorption_m_get(LangmuirAdsorption self) -> real"},
+	 { (char *)"new_LangmuirAdsorption", _wrap_new_LangmuirAdsorption, METH_VARARGS, (char *)"\n"
+		"LangmuirAdsorption(real K, real m)\n"
+		"new_LangmuirAdsorption(LangmuirAdsorption other) -> LangmuirAdsorption\n"
+		"\n"
+		"LangmuirAdsorption(const LangmuirAdsorption &other) \n"
+		""},
+	 { (char *)"LangmuirAdsorption_copy", (PyCFunction) _wrap_LangmuirAdsorption_copy, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
+		"LangmuirAdsorption_copy(LangmuirAdsorption self, real m=-1) -> LangmuirAdsorption\n"
+		"\n"
+		"LangmuirAdsorption* copy(real m=-1) const\n"
+		"\n"
+		"returns a copy of the Adsorption object.\n"
+		"\n"
+		"If the adsorption is depending on the sorbent mass, you can give a\n"
+		"positive value for the sorbent mass m. If the value is not given or\n"
+		"negative, m is used from the original object. \n"
+		""},
+	 { (char *)"delete_LangmuirAdsorption", (PyCFunction)_wrap_delete_LangmuirAdsorption, METH_O, (char *)"delete_LangmuirAdsorption(LangmuirAdsorption self)"},
+	 { (char *)"LangmuirAdsorption_swigregister", LangmuirAdsorption_swigregister, METH_VARARGS, NULL},
+	 { (char *)"LangmuirAdsorption_swiginit", LangmuirAdsorption_swiginit, METH_VARARGS, NULL},
 	 { (char *)"new_solute", (PyCFunction) _wrap_new_solute, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
 		"new_solute(solute copy) -> solute\n"
 		"\n"
@@ -70174,6 +71934,11 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"delete_SoluteTimeseries", (PyCFunction)_wrap_delete_SoluteTimeseries, METH_O, (char *)"delete_SoluteTimeseries(SoluteTimeseries self)"},
 	 { (char *)"SoluteTimeseries_swigregister", SoluteTimeseries_swigregister, METH_VARARGS, NULL},
 	 { (char *)"SoluteTimeseries_swiginit", SoluteTimeseries_swiginit, METH_VARARGS, NULL},
+	 { (char *)"SoluteStorage_set_adsorption", (PyCFunction) _wrap_SoluteStorage_set_adsorption, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
+		"SoluteStorage_set_adsorption(SoluteStorage self, Adsorption newadsorption, real m=-1)\n"
+		"\n"
+		"void set_adsorption(const Adsorption &newadsorption, real m=-1) \n"
+		""},
 	 { (char *)"SoluteStorage_decay_set", _wrap_SoluteStorage_decay_set, METH_VARARGS, (char *)"SoluteStorage_decay_set(SoluteStorage self, real decay)"},
 	 { (char *)"SoluteStorage_decay_get", (PyCFunction)_wrap_SoluteStorage_decay_get, METH_O, (char *)"SoluteStorage_decay_get(SoluteStorage self) -> real"},
 	 { (char *)"SoluteStorage_source_set", _wrap_SoluteStorage_source_set, METH_VARARGS, (char *)"SoluteStorage_source_set(SoluteStorage self, real source)"},
@@ -75398,6 +77163,12 @@ static void *_p_cmf__water__waterbalance_integratorTo_p_cmf__math__integratable(
 static void *_p_cmf__water__flux_integratorTo_p_cmf__math__integratable(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((cmf::math::integratable *)  ((cmf::water::flux_integrator *) x));
 }
+static void *_p_cmf__river__ReachTo_p_cmf__river__OpenWaterStorage(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((cmf::river::OpenWaterStorage *)  ((cmf::river::Reach *) x));
+}
+static void *_p_cmf__upslope__SurfaceWaterTo_p_cmf__river__OpenWaterStorage(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((cmf::river::OpenWaterStorage *)  ((cmf::upslope::SurfaceWater *) x));
+}
 static void *_p_cmf__river__ReachTo_p_cmf__water__WaterStorage(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((cmf::water::WaterStorage *) (cmf::river::OpenWaterStorage *) ((cmf::river::Reach *) x));
 }
@@ -75415,12 +77186,6 @@ static void *_p_cmf__river__OpenWaterStorageTo_p_cmf__water__WaterStorage(void *
 }
 static void *_p_cmf__upslope__aquiferTo_p_cmf__water__WaterStorage(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((cmf::water::WaterStorage *)  ((cmf::upslope::aquifer *) x));
-}
-static void *_p_cmf__river__ReachTo_p_cmf__river__OpenWaterStorage(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((cmf::river::OpenWaterStorage *)  ((cmf::river::Reach *) x));
-}
-static void *_p_cmf__upslope__SurfaceWaterTo_p_cmf__river__OpenWaterStorage(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((cmf::river::OpenWaterStorage *)  ((cmf::upslope::SurfaceWater *) x));
 }
 static void *_p_cmf__river__ReachTo_p_cmf__math__StateVariable(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((cmf::math::StateVariable *) (cmf::water::WaterStorage *)(cmf::river::OpenWaterStorage *) ((cmf::river::Reach *) x));
@@ -75542,6 +77307,18 @@ static void *_p_cmf__math__MultiIntegratorTo_p_cmf__math__Integrator(void *x, in
 static void *_p_cmf__math__SoluteWaterIntegratorTo_p_cmf__math__Integrator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((cmf::math::Integrator *)  ((cmf::math::SoluteWaterIntegrator *) x));
 }
+static void *_p_cmf__water__NullAdsorptionTo_p_cmf__water__Adsorption(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((cmf::water::Adsorption *)  ((cmf::water::NullAdsorption *) x));
+}
+static void *_p_cmf__water__LinearAdsorptionTo_p_cmf__water__Adsorption(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((cmf::water::Adsorption *)  ((cmf::water::LinearAdsorption *) x));
+}
+static void *_p_cmf__water__FreundlichAdsorbtionTo_p_cmf__water__Adsorption(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((cmf::water::Adsorption *)  ((cmf::water::FreundlichAdsorbtion *) x));
+}
+static void *_p_cmf__water__LangmuirAdsorptionTo_p_cmf__water__Adsorption(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((cmf::water::Adsorption *)  ((cmf::water::LangmuirAdsorption *) x));
+}
 static swig_type_info _swigt__p_char = {"_p_char", "char *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_cmf__atmosphere__ConstantMeteorology = {"_p_cmf__atmosphere__ConstantMeteorology", "cmf::atmosphere::ConstantMeteorology *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_cmf__atmosphere__ConstantRainSource = {"_p_cmf__atmosphere__ConstantRainSource", "cmf::atmosphere::ConstantRainSource *", 0, 0, (void*)0, 0};
@@ -75658,10 +77435,15 @@ static swig_type_info _swigt__p_cmf__upslope__layer_list = {"_p_cmf__upslope__la
 static swig_type_info _swigt__p_cmf__upslope__neighbor_iterator = {"_p_cmf__upslope__neighbor_iterator", "cmf::upslope::neighbor_iterator *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_cmf__upslope__subcatchment = {"_p_cmf__upslope__subcatchment", "cmf::upslope::subcatchment *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_cmf__upslope__vegetation__Vegetation = {"_p_cmf__upslope__vegetation__Vegetation", "cmf::upslope::vegetation::Vegetation *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_cmf__water__Adsorption = {"_p_cmf__water__Adsorption", "cmf::water::Adsorption *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_cmf__water__DirichletBoundary = {"_p_cmf__water__DirichletBoundary", "cmf::water::DirichletBoundary *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_cmf__water__FreundlichAdsorbtion = {"_p_cmf__water__FreundlichAdsorbtion", "cmf::water::FreundlichAdsorbtion *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_cmf__water__LangmuirAdsorption = {"_p_cmf__water__LangmuirAdsorption", "cmf::water::LangmuirAdsorption *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_cmf__water__LinearAdsorption = {"_p_cmf__water__LinearAdsorption", "cmf::water::LinearAdsorption *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_cmf__water__NeumannBoundary = {"_p_cmf__water__NeumannBoundary", "cmf::water::NeumannBoundary *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_cmf__water__NeumannBoundary_list = {"_p_cmf__water__NeumannBoundary_list", "cmf::water::NeumannBoundary_list *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_cmf__water__NeumannFlux = {"_p_cmf__water__NeumannFlux", "cmf::water::NeumannFlux *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_cmf__water__NullAdsorption = {"_p_cmf__water__NullAdsorption", "cmf::water::NullAdsorption *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_cmf__water__SoluteStorage = {"_p_cmf__water__SoluteStorage", "cmf::water::SoluteStorage *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_cmf__water__SoluteTimeseries = {"_p_cmf__water__SoluteTimeseries", "cmf::water::SoluteTimeseries *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_cmf__water__SystemBridge = {"_p_cmf__water__SystemBridge", "cmf::water::SystemBridge *", 0, 0, (void*)0, 0};
@@ -75841,10 +77623,15 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_cmf__upslope__neighbor_iterator,
   &_swigt__p_cmf__upslope__subcatchment,
   &_swigt__p_cmf__upslope__vegetation__Vegetation,
+  &_swigt__p_cmf__water__Adsorption,
   &_swigt__p_cmf__water__DirichletBoundary,
+  &_swigt__p_cmf__water__FreundlichAdsorbtion,
+  &_swigt__p_cmf__water__LangmuirAdsorption,
+  &_swigt__p_cmf__water__LinearAdsorption,
   &_swigt__p_cmf__water__NeumannBoundary,
   &_swigt__p_cmf__water__NeumannBoundary_list,
   &_swigt__p_cmf__water__NeumannFlux,
+  &_swigt__p_cmf__water__NullAdsorption,
   &_swigt__p_cmf__water__SoluteStorage,
   &_swigt__p_cmf__water__SoluteTimeseries,
   &_swigt__p_cmf__water__SystemBridge,
@@ -76024,10 +77811,15 @@ static swig_cast_info _swigc__p_cmf__upslope__layer_list[] = {  {&_swigt__p_cmf_
 static swig_cast_info _swigc__p_cmf__upslope__neighbor_iterator[] = {  {&_swigt__p_cmf__upslope__neighbor_iterator, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_cmf__upslope__subcatchment[] = {  {&_swigt__p_cmf__upslope__subcatchment, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_cmf__upslope__vegetation__Vegetation[] = {  {&_swigt__p_cmf__upslope__vegetation__Vegetation, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_cmf__water__Adsorption[] = {  {&_swigt__p_cmf__water__Adsorption, 0, 0, 0},  {&_swigt__p_cmf__water__NullAdsorption, _p_cmf__water__NullAdsorptionTo_p_cmf__water__Adsorption, 0, 0},  {&_swigt__p_cmf__water__LinearAdsorption, _p_cmf__water__LinearAdsorptionTo_p_cmf__water__Adsorption, 0, 0},  {&_swigt__p_cmf__water__FreundlichAdsorbtion, _p_cmf__water__FreundlichAdsorbtionTo_p_cmf__water__Adsorption, 0, 0},  {&_swigt__p_cmf__water__LangmuirAdsorption, _p_cmf__water__LangmuirAdsorptionTo_p_cmf__water__Adsorption, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_cmf__water__DirichletBoundary[] = {  {&_swigt__p_cmf__water__DirichletBoundary, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_cmf__water__FreundlichAdsorbtion[] = {  {&_swigt__p_cmf__water__FreundlichAdsorbtion, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_cmf__water__LangmuirAdsorption[] = {  {&_swigt__p_cmf__water__LangmuirAdsorption, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_cmf__water__LinearAdsorption[] = {  {&_swigt__p_cmf__water__LinearAdsorption, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_cmf__water__NeumannBoundary[] = {  {&_swigt__p_cmf__water__NeumannBoundary, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_cmf__water__NeumannBoundary_list[] = {  {&_swigt__p_cmf__water__NeumannBoundary_list, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_cmf__water__NeumannFlux[] = {  {&_swigt__p_cmf__water__NeumannFlux, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_cmf__water__NullAdsorption[] = {  {&_swigt__p_cmf__water__NullAdsorption, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_cmf__water__SoluteStorage[] = {  {&_swigt__p_cmf__water__SoluteStorage, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_cmf__water__SoluteTimeseries[] = {  {&_swigt__p_cmf__water__SoluteTimeseries, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_cmf__water__SystemBridge[] = {  {&_swigt__p_cmf__water__SystemBridge, 0, 0, 0},{0, 0, 0, 0}};
@@ -76207,10 +77999,15 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_cmf__upslope__neighbor_iterator,
   _swigc__p_cmf__upslope__subcatchment,
   _swigc__p_cmf__upslope__vegetation__Vegetation,
+  _swigc__p_cmf__water__Adsorption,
   _swigc__p_cmf__water__DirichletBoundary,
+  _swigc__p_cmf__water__FreundlichAdsorbtion,
+  _swigc__p_cmf__water__LangmuirAdsorption,
+  _swigc__p_cmf__water__LinearAdsorption,
   _swigc__p_cmf__water__NeumannBoundary,
   _swigc__p_cmf__water__NeumannBoundary_list,
   _swigc__p_cmf__water__NeumannFlux,
+  _swigc__p_cmf__water__NullAdsorption,
   _swigc__p_cmf__water__SoluteStorage,
   _swigc__p_cmf__water__SoluteTimeseries,
   _swigc__p_cmf__water__SystemBridge,

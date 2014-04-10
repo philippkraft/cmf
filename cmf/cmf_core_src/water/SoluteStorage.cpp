@@ -19,15 +19,16 @@
 #include "SoluteStorage.h"
 #include "WaterStorage.h"
 #include "flux_connection.h"
-real cmf::water::SoluteStorage::dxdt( const cmf::math::Time& time )
+using namespace cmf::water;
+real SoluteStorage::dxdt( const cmf::math::Time& time )
 {
  	// Sums up the fluxes as water fluxes (mol/day)
 	
-	cmf::water::connection_list connections=m_water->get_connections();
+	connection_list connections=m_water->get_connections();
 	real inflow=0, outflow=0;
-	for (cmf::water::connection_list::iterator it = connections.begin();it!=connections.end();++it)
+	for (connection_list::iterator it = connections.begin();it!=connections.end();++it)
 	{
-		cmf::water::flux_connection& con=**it;
+		flux_connection& con=**it;
 		real q=con.q(*m_water,time);
 		if (q>0)
 		{
@@ -43,18 +44,20 @@ real cmf::water::SoluteStorage::dxdt( const cmf::math::Time& time )
 	return inflow + outflow + source_term - decay_term;
 }
 
-real cmf::water::SoluteStorage::conc() const
+real SoluteStorage::conc() const
 {
-	if (m_water->get_state()>0)
-		return get_state()/m_water->get_state();
+	real V = m_water->get_volume();
+	if (V>0)
+		return this->adsorption->freesolute(get_state(),V) /V;
 	else
 		return 0.0;
 }
 
-std::string cmf::water::SoluteStorage::to_string() const
+std::string SoluteStorage::to_string() const
 {
 	return m_water->to_string() + "[" + Solute.Name + "]";
 }
+
 
 
 
