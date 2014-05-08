@@ -64,7 +64,7 @@ void cmf::upslope::aquifer::set_potential( real new_potential )
 
 real cmf::upslope::aquifer::get_K( cmf::geometry::point direction ) const
 {
-	return fabs(cmf::geometry::dot(direction/direction.length(),K));
+	return fabs(cmf::geometry::dot(direction/(direction.x+direction.y+direction.z),K));
 }
 real cmf::upslope::aquifer_Darcy::calc_q( cmf::math::Time t )
 {

@@ -20093,6 +20093,58 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_Adsorption_totalsolute(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  cmf::water::Adsorption *arg1 = (cmf::water::Adsorption *) 0 ;
+  real arg2 ;
+  real arg3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  double val2 ;
+  int ecode2 = 0 ;
+  double val3 ;
+  int ecode3 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char *  kwnames[] = {
+    (char *) "self",(char *) "xf",(char *) "V", NULL 
+  };
+  real result;
+  
+  if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"OOO:Adsorption_totalsolute",kwnames,&obj0,&obj1,&obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_cmf__water__Adsorption, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Adsorption_totalsolute" "', argument " "1"" of type '" "cmf::water::Adsorption const *""'"); 
+  }
+  arg1 = reinterpret_cast< cmf::water::Adsorption * >(argp1);
+  ecode2 = SWIG_AsVal_double(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Adsorption_totalsolute" "', argument " "2"" of type '" "real""'");
+  } 
+  arg2 = static_cast< real >(val2);
+  ecode3 = SWIG_AsVal_double(obj2, &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "Adsorption_totalsolute" "', argument " "3"" of type '" "real""'");
+  } 
+  arg3 = static_cast< real >(val3);
+  {
+    try {
+      result = (real)((cmf::water::Adsorption const *)arg1)->totalsolute(arg2,arg3);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+    
+  }
+  resultobj = SWIG_From_double(static_cast< double >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_Adsorption_copy(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   cmf::water::Adsorption *arg1 = (cmf::water::Adsorption *) 0 ;
@@ -20886,58 +20938,6 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_FreundlichAdsorbtion_strict_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  cmf::water::FreundlichAdsorbtion *arg1 = (cmf::water::FreundlichAdsorbtion *) 0 ;
-  bool arg2 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  bool val2 ;
-  int ecode2 = 0 ;
-  PyObject *swig_obj[2] ;
-  
-  if (!SWIG_Python_UnpackTuple(args,"FreundlichAdsorbtion_strict_set",2,2,swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__water__FreundlichAdsorbtion, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "FreundlichAdsorbtion_strict_set" "', argument " "1"" of type '" "cmf::water::FreundlichAdsorbtion *""'"); 
-  }
-  arg1 = reinterpret_cast< cmf::water::FreundlichAdsorbtion * >(argp1);
-  ecode2 = SWIG_AsVal_bool(swig_obj[1], &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "FreundlichAdsorbtion_strict_set" "', argument " "2"" of type '" "bool""'");
-  } 
-  arg2 = static_cast< bool >(val2);
-  if (arg1) (arg1)->strict = arg2;
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_FreundlichAdsorbtion_strict_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  cmf::water::FreundlichAdsorbtion *arg1 = (cmf::water::FreundlichAdsorbtion *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject *swig_obj[1] ;
-  bool result;
-  
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__water__FreundlichAdsorbtion, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "FreundlichAdsorbtion_strict_get" "', argument " "1"" of type '" "cmf::water::FreundlichAdsorbtion *""'"); 
-  }
-  arg1 = reinterpret_cast< cmf::water::FreundlichAdsorbtion * >(argp1);
-  result = (bool) ((arg1)->strict);
-  resultobj = SWIG_From_bool(static_cast< bool >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
 SWIGINTERN PyObject *_wrap_new_FreundlichAdsorbtion__SWIG_0(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   real arg1 ;
@@ -20945,7 +20945,6 @@ SWIGINTERN PyObject *_wrap_new_FreundlichAdsorbtion__SWIG_0(PyObject *SWIGUNUSED
   real arg3 ;
   real arg4 = (real) 1e-12 ;
   int arg5 = (int) 100 ;
-  bool arg6 = (bool) true ;
   double val1 ;
   int ecode1 = 0 ;
   double val2 ;
@@ -20956,11 +20955,9 @@ SWIGINTERN PyObject *_wrap_new_FreundlichAdsorbtion__SWIG_0(PyObject *SWIGUNUSED
   int ecode4 = 0 ;
   int val5 ;
   int ecode5 = 0 ;
-  bool val6 ;
-  int ecode6 = 0 ;
   cmf::water::FreundlichAdsorbtion *result = 0 ;
   
-  if ((nobjs < 3) || (nobjs > 6)) SWIG_fail;
+  if ((nobjs < 3) || (nobjs > 5)) SWIG_fail;
   ecode1 = SWIG_AsVal_double(swig_obj[0], &val1);
   if (!SWIG_IsOK(ecode1)) {
     SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "new_FreundlichAdsorbtion" "', argument " "1"" of type '" "real""'");
@@ -20990,16 +20987,9 @@ SWIGINTERN PyObject *_wrap_new_FreundlichAdsorbtion__SWIG_0(PyObject *SWIGUNUSED
     } 
     arg5 = static_cast< int >(val5);
   }
-  if (swig_obj[5]) {
-    ecode6 = SWIG_AsVal_bool(swig_obj[5], &val6);
-    if (!SWIG_IsOK(ecode6)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode6), "in method '" "new_FreundlichAdsorbtion" "', argument " "6"" of type '" "bool""'");
-    } 
-    arg6 = static_cast< bool >(val6);
-  }
   {
     try {
-      result = (cmf::water::FreundlichAdsorbtion *)new cmf::water::FreundlichAdsorbtion(arg1,arg2,arg3,arg4,arg5,arg6);
+      result = (cmf::water::FreundlichAdsorbtion *)new cmf::water::FreundlichAdsorbtion(arg1,arg2,arg3,arg4,arg5);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -21049,9 +21039,9 @@ fail:
 
 SWIGINTERN PyObject *_wrap_new_FreundlichAdsorbtion(PyObject *self, PyObject *args) {
   int argc;
-  PyObject *argv[7];
+  PyObject *argv[6];
   
-  if (!(argc = SWIG_Python_UnpackTuple(args,"new_FreundlichAdsorbtion",0,6,argv))) SWIG_fail;
+  if (!(argc = SWIG_Python_UnpackTuple(args,"new_FreundlichAdsorbtion",0,5,argv))) SWIG_fail;
   --argc;
   {
     unsigned long _index = 0;
@@ -21076,7 +21066,7 @@ SWIGINTERN PyObject *_wrap_new_FreundlichAdsorbtion(PyObject *self, PyObject *ar
     }
   check_1:
     
-    if ((argc >= 3) && (argc <= 6)) {
+    if ((argc >= 3) && (argc <= 5)) {
       SWIG_TypeRank _ranki = 0;
       SWIG_TypeRank _rankm = 0;
       SWIG_TypeRank _pi = 1;
@@ -21133,18 +21123,6 @@ SWIGINTERN PyObject *_wrap_new_FreundlichAdsorbtion(PyObject *self, PyObject *ar
           _ranki += _v*_pi;
           _rankm += _pi;
           _pi *= SWIG_MAXCASTRANK;
-          if (argc > 5) {
-            {
-              {
-                int res = SWIG_AsVal_bool(argv[5], NULL);
-                _v = SWIG_CheckState(res);
-              }
-            }
-            if (!_v) goto check_2;
-            _ranki += _v*_pi;
-            _rankm += _pi;
-            _pi *= SWIG_MAXCASTRANK;
-          }
         }
       }
       if (!_index || (_ranki < _rank)) {
@@ -21166,7 +21144,7 @@ SWIGINTERN PyObject *_wrap_new_FreundlichAdsorbtion(PyObject *self, PyObject *ar
 fail:
   SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'new_FreundlichAdsorbtion'.\n"
     "  Possible C/C++ prototypes are:\n"
-    "    cmf::water::FreundlichAdsorbtion::FreundlichAdsorbtion(real,real,real,real,int,bool)\n"
+    "    cmf::water::FreundlichAdsorbtion::FreundlichAdsorbtion(real,real,real,real,int)\n"
     "    cmf::water::FreundlichAdsorbtion::FreundlichAdsorbtion(cmf::water::FreundlichAdsorbtion const &)\n");
   return 0;
 }
@@ -23166,6 +23144,60 @@ SWIGINTERN PyObject *_wrap_SoluteStorage_conc(PyObject *SWIGUNUSEDPARM(self), Py
     
   }
   resultobj = SWIG_From_double(static_cast< double >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_SoluteStorage_set_conc(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  cmf::water::SoluteStorage *arg1 = (cmf::water::SoluteStorage *) 0 ;
+  real arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  std::tr1::shared_ptr< cmf::water::SoluteStorage > tempshared1 ;
+  std::tr1::shared_ptr< cmf::water::SoluteStorage > *smartarg1 = 0 ;
+  double val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char *  kwnames[] = {
+    (char *) "self",(char *) "NewConcentration", NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"OO:SoluteStorage_set_conc",kwnames,&obj0,&obj1)) SWIG_fail;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(obj0, &argp1, SWIGTYPE_p_std__tr1__shared_ptrT_cmf__water__SoluteStorage_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SoluteStorage_set_conc" "', argument " "1"" of type '" "cmf::water::SoluteStorage *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< std::tr1::shared_ptr<  cmf::water::SoluteStorage > * >(argp1);
+      delete reinterpret_cast< std::tr1::shared_ptr<  cmf::water::SoluteStorage > * >(argp1);
+      arg1 = const_cast< cmf::water::SoluteStorage * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< std::tr1::shared_ptr<  cmf::water::SoluteStorage > * >(argp1);
+      arg1 = const_cast< cmf::water::SoluteStorage * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  ecode2 = SWIG_AsVal_double(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "SoluteStorage_set_conc" "', argument " "2"" of type '" "real""'");
+  } 
+  arg2 = static_cast< real >(val2);
+  {
+    try {
+      (arg1)->set_conc(arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+    
+  }
+  resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
   return NULL;
@@ -71750,6 +71782,7 @@ static PyMethodDef SwigMethods[] = {
 		"\n"
 		" :math:`x_f`  the dissolved mass of the tracer \n"
 		""},
+	 { (char *)"Adsorption_totalsolute", (PyCFunction) _wrap_Adsorption_totalsolute, METH_VARARGS | METH_KEYWORDS, (char *)"Adsorption_totalsolute(Adsorption self, real xf, real V) -> real"},
 	 { (char *)"Adsorption_copy", (PyCFunction) _wrap_Adsorption_copy, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
 		"Adsorption_copy(Adsorption self, real m=-1) -> Adsorption\n"
 		"\n"
@@ -71814,10 +71847,8 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"FreundlichAdsorbtion_epsilon_get", (PyCFunction)_wrap_FreundlichAdsorbtion_epsilon_get, METH_O, (char *)"FreundlichAdsorbtion_epsilon_get(FreundlichAdsorbtion self) -> real"},
 	 { (char *)"FreundlichAdsorbtion_maxiter_set", _wrap_FreundlichAdsorbtion_maxiter_set, METH_VARARGS, (char *)"FreundlichAdsorbtion_maxiter_set(FreundlichAdsorbtion self, int maxiter)"},
 	 { (char *)"FreundlichAdsorbtion_maxiter_get", (PyCFunction)_wrap_FreundlichAdsorbtion_maxiter_get, METH_O, (char *)"FreundlichAdsorbtion_maxiter_get(FreundlichAdsorbtion self) -> int"},
-	 { (char *)"FreundlichAdsorbtion_strict_set", _wrap_FreundlichAdsorbtion_strict_set, METH_VARARGS, (char *)"FreundlichAdsorbtion_strict_set(FreundlichAdsorbtion self, bool strict)"},
-	 { (char *)"FreundlichAdsorbtion_strict_get", (PyCFunction)_wrap_FreundlichAdsorbtion_strict_get, METH_O, (char *)"FreundlichAdsorbtion_strict_get(FreundlichAdsorbtion self) -> bool"},
 	 { (char *)"new_FreundlichAdsorbtion", _wrap_new_FreundlichAdsorbtion, METH_VARARGS, (char *)"\n"
-		"FreundlichAdsorbtion(real K, real n, real m, real epsilon=1e-12, int maxiter=100, bool strict=True)\n"
+		"FreundlichAdsorbtion(real K, real n, real m, real epsilon=1e-12, int maxiter=100)\n"
 		"new_FreundlichAdsorbtion(FreundlichAdsorbtion other) -> FreundlichAdsorbtion\n"
 		"\n"
 		"FreundlichAdsorbtion(const FreundlichAdsorbtion &other) \n"
@@ -71952,6 +71983,7 @@ static PyMethodDef SwigMethods[] = {
 		"\n"
 		"Returns the concentration of the solute. \n"
 		""},
+	 { (char *)"SoluteStorage_set_conc", (PyCFunction) _wrap_SoluteStorage_set_conc, METH_VARARGS | METH_KEYWORDS, (char *)"SoluteStorage_set_conc(SoluteStorage self, real NewConcentration)"},
 	 { (char *)"delete_SoluteStorage", (PyCFunction)_wrap_delete_SoluteStorage, METH_O, (char *)"delete_SoluteStorage(SoluteStorage self)"},
 	 { (char *)"SoluteStorage_swigregister", SoluteStorage_swigregister, METH_VARARGS, NULL},
 	 { (char *)"flux_node_node_id_get", (PyCFunction)_wrap_flux_node_node_id_get, METH_O, (char *)"flux_node_node_id_get(flux_node self) -> int const"},

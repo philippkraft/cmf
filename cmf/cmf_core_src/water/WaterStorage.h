@@ -98,7 +98,7 @@ namespace cmf {
 			/// @brief Sets a new concentration
 			void conc(const cmf::water::solute& _Solute,real NewConcetration)
 			{
-				Solute(_Solute).set_state(NewConcetration*this->get_state());
+				Solute(_Solute).set_conc(NewConcetration);
 			}
 			/// @brief Returns the volume of water in this storage in m<sup>3</sup>
 			virtual real get_volume() const {
