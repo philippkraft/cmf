@@ -31,6 +31,13 @@ namespace cmf {
 			/// @param V \f$V m^3\f$ the water volume in the storage
 			/// @returns \f$x_f\f$ the dissolved mass of the tracer
 			virtual real freesolute(real xt,real V) const=0;
+
+			/// Returns the total mass of the tracer from the dissolved concetration in tracer unit/m3
+			///
+			/// @param xf \f$x_f\f$ the dissolved tracer mass in the storage
+			/// @param V \f$V m^3\f$ the water volume in the storage
+			/// @returns \f$x_t\f$ the total mass of the tracer
+			virtual real totalsolute(real xf,real V) const=0;
 			/// returns a copy of the Adsorption object. If the adsorption is depending on the sorbent mass, you can give a positive value for
 			/// the sorbent mass m. If the value is not given or negative, m is used from the original object.
 			virtual Adsorption* copy(real m=-1) const=0;
@@ -43,13 +50,16 @@ namespace cmf {
 			virtual real freesolute(real xt,real V) const {
 				return xt;
 			}
+			virtual real totalsolute(real xf,real V) const {
+				return xf;
+			}
 			virtual NullAdsorption* copy(real m=-1) const {
 				return new NullAdsorption();
 			}
 		};
 		/// @brief This class calculates the adsorption equilibrium between sorbat and sorbent using the linear (Henry) isotherme.
 		///
-		/// Henry isotherme:
+		/// Linear (Henry) isotherme:
 		///
 		/// \f[\frac{x_{ad}}{m} = K c\f]
 		/// where
@@ -65,21 +75,16 @@ namespace cmf {
 		/// \f[x_{free} = x_{tot} \frac{V}{K m + V}\f]
 		class LinearAdsorption : public Adsorption {
 		public:
-			/// Herny sorption coefficient
+			/// Henry sorption coefficient
 			real K;
 			/// Mass of sorbent in storage (CEC, clay mass etc.) in unit of tracer
 			real m;
-			real freesolute(real xt,real V) const {
-				return V*xt/(K*m + V);
-			}
+			real freesolute(real xt,real V) const;
+			real totalsolute(real xf,real V) const;
 			LinearAdsorption(real K,real m);
 			LinearAdsorption(const LinearAdsorption& other)
 				: K(other.K), m(other.m) {}
-			LinearAdsorption* copy(real m=-1) const {
-				LinearAdsorption* res = new LinearAdsorption(*this);
-				if (m>=0) res->m = m;
-				return res;
-			}
+			LinearAdsorption* copy(real m=-1) const;
 		};
 		/// @brief This class calculates the adsorption equilibrium between sorbat and sorbent using the Freundlich isotherme.
 		///
@@ -91,15 +96,16 @@ namespace cmf {
 		///     - \f$x_{tot}\f$ is the total tracer mass
 		///     - \f$x_{free}\f$ is the dissolved tracer mass
 		///  - \f$m\f$ is the mass of the sorbent in the same unit as the tracer mass
-		///  - \f$K\f$ is the Henry sorption coefficient
+		///  - \f$K\f$ is the Freundlich sorption coefficient
 		///  - \f$c = \frac{x_{free}}{V}\f$ is the concentration of the tracer in tracer mass per m3
 		///  - \f$n\f$ is the Freundlich exponent
 		///
 		/// CMF stores in a solute storage the total mass of a tracer and needs to calculate the free tracer mass.
 		/// The eq. above can not be rearanged to get \f$x_{free}\f$ from \f$x_{tot}\f$. Instead, the value is iterated
-		/// using Newton's method with the solution of the LinearAdsorption as an initial guess. If n is near to 1, using
-		/// LinearAdsorption will speed up your calculations. The simplest physically based adsorption model by Langmuir 
-		/// (LangmuirAdsorption) has also a anylitical solution and is calculated faster then Freundlich.
+		/// using [regula falsi](http://en.wikipedia.org/wiki/False_position_method). If n is near to 1, 
+		/// using LinearAdsorption will speed up your calculations. 
+		/// The simplest physically based adsorption model by Langmuir (LangmuirAdsorption) has also a analytical solution 
+		/// and is hence calculated faster then Freundlich.
 		class FreundlichAdsorbtion: public Adsorption {
 		public:
 			/// Freundlich half saturation
@@ -112,27 +118,40 @@ namespace cmf {
 			real epsilon;
 			/// Maximum number of iterations
 			int maxiter;
-			/// If true, the Newton iteration will throw an error, if the error condition epsilon is not fullfilled after maxiter iterations
-			bool strict;
 			real freesolute(real xt,real V) const;
+			real totalsolute(real xf, real V) const;
 
 			/// @param K,n Freundlich coefficents
 			/// @param m Mass of sorbent in units of tracer
-			/// @param epsilon Tolerance of New iteration for the calculation of dissolved tracer from total trace, default = 1e-12
+			/// @param epsilon Tolerance of regula falsi iteration for the calculation of dissolved tracer from total trace, default = 1e-12
 			/// @param maxiter Maximum number of iterations, default = 100
-			/// @param strict If strict is true, the iteration will throw a runtime error, if the method does not converge
-			FreundlichAdsorbtion(real K,real n, real m, real epsilon=1e-12, int maxiter=100, bool strict=true);
+			FreundlichAdsorbtion(real K,real n, real m, real epsilon=1e-12, int maxiter=100);
 			FreundlichAdsorbtion(const FreundlichAdsorbtion& other);
 			FreundlichAdsorbtion* copy(real m=-1) const;
 		};
-
-		/// Langmuir Adsorption
+		/// @brief This class calculates the adsorption equilibrium between sorbat and sorbent using the Langmuir isotherme.
 		///
-		/// @TODO: Check correctness of eq.
+		/// Langmuir Adsorption:
+		///
+		/// \f[\frac{x_{ad}}{m} = q = \frac{K c}{1 + K c}\f]
+		/// where
+		///  - \f$x_{ad} = x_{tot} - x_{free}\f$ is the adsorbed tracer mass
+		///     - \f$x_{tot}\f$ is the total tracer mass
+		///     - \f$x_{free}\f$ is the dissolved tracer mass
+		///  - \f$m\f$ is the mass of the sorbent in the same unit as the tracer mass
+		///  - \f$K\f$ is the Langmuir sorption coefficient
+		///  - \f$c = \frac{x_{free}}{V}\f$ is the concentration of the tracer in tracer mass per m3
+		///
+		/// CMF stores in a solute storage the total mass of a tracer and needs to calculate the free tracer mass.
+		/// The analytical solution for \f$x_{free}\f$ from \f$x_{tot}\f$ is implemented in freesolute and derived 
+		/// using [sympy](http://sympy.org). If you really want to see it, look in the code.
+		///
 		/// http://en.wikipedia.org/wiki/Langmuir_equation
+		///
 		class LangmuirAdsorption : public Adsorption {
 		public:
 			real freesolute(real xt,real V) const;
+			real totalsolute(real xf,real V) const;
 			real K;
 			real m;
 			LangmuirAdsorption(real K,real m);

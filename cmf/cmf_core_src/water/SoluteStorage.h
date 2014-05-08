@@ -64,6 +64,11 @@ namespace cmf {
 			const cmf::water::solute& Solute;
 			/// @brief Returns the concentration of the solute
 			real conc() const;
+			/// @brief set a new concentration of dissolved tracers. 
+			///
+			/// In case of adsorption functions, the isotherm is used
+
+			void set_conc(real NewConcentration);
 
 			virtual real dxdt(const cmf::math::Time& time);
 			virtual std::string to_string() const;
