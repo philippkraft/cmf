@@ -61,3 +61,14 @@ std::string SoluteStorage::to_string() const
 
 
 
+
+void cmf::water::SoluteStorage::set_conc( real NewConcentration )
+{
+	real
+		V = m_water->get_volume(),
+		xf = NewConcentration * V,
+		xt = this->adsorption->totalsolute(xf,V);
+	this->set_state(xt);
+	
+
+}

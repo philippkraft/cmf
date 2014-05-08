@@ -17,14 +17,14 @@ ws.state = 1.0
 
 # The storage should contain 1 unit of every tracer for the beginning
 for s in p.solutes:
-    ws.conc(s,1.)
+    ws.conc(s,1.0)
 
 # Tracer N does not adsorb, nothing to change
 # Tracer X has a linear isotherm xa/m=Kc, with K = 1 and sorbent mass m = 1
 ws.Solute(X).set_adsorption(cmf.LinearAdsorption(1,1))
 # Tracer Y has a Freundlich isotherm xa/m=Kc^n, 
 # with K = 1 and n=0.5 and sorbent mass m = 1
-ws.Solute(Y).set_adsorption(cmf.FreundlichAdsorbtion(1.,.5,1.0))
+ws.Solute(Y).set_adsorption(cmf.FreundlichAdsorbtion(2.,.55,1.0))
 # Tracer Y has a Langmuir isotherm xa/m=Kc/(1+Kc), 
 # with K = 1 and sorbent mass m = 1
 ws.Solute(Z).set_adsorption(cmf.LangmuirAdsorption(1.,1.))
@@ -39,7 +39,7 @@ outlet = p.NewOutlet('out',0,0,0)
 cmf.kinematic_wave(ws,outlet,1.)
 
 # Create a solver
-solver = cmf.ImplicitEuler(p,1e-9)
+solver = cmf.ExplicitEuler_fixed(p)
 
 # Rinse the storage for 1 week and get the outlet concentration at every hour
 # and the remaining tracer in the storage

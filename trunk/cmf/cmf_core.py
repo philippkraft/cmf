@@ -2474,6 +2474,10 @@ class Adsorption(object):
         """
         return _cmf_core.Adsorption_freesolute(self, *args, **kwargs)
 
+    def totalsolute(self, *args, **kwargs):
+        """totalsolute(Adsorption self, real xf, real V) -> real"""
+        return _cmf_core.Adsorption_totalsolute(self, *args, **kwargs)
+
     def copy(self, *args, **kwargs):
         """
         copy(Adsorption self, real m=-1) -> Adsorption
@@ -2491,6 +2495,7 @@ class Adsorption(object):
 
     __swig_destroy__ = _cmf_core.delete_Adsorption
 Adsorption.freesolute = new_instancemethod(_cmf_core.Adsorption_freesolute,None,Adsorption)
+Adsorption.totalsolute = new_instancemethod(_cmf_core.Adsorption_totalsolute,None,Adsorption)
 Adsorption.copy = new_instancemethod(_cmf_core.Adsorption_copy,None,Adsorption)
 Adsorption_swigregister = _cmf_core.Adsorption_swigregister
 Adsorption_swigregister(Adsorption)
@@ -2532,7 +2537,7 @@ class LinearAdsorption(Adsorption):
     This class calculates the adsorption equilibrium between sorbat and
     sorbent using the linear (Henry) isotherme.
 
-    Henry isotherme:
+    Linear (Henry) isotherme:
 
 
 
@@ -2616,7 +2621,7 @@ class FreundlichAdsorbtion(Adsorption):
 
      :math:`m`  is the mass of the sorbent in the same unit as the tracer mass
 
-     :math:`K`  is the Henry sorption coefficient
+     :math:`K`  is the Freundlich sorption coefficient
 
      :math:`c = \\frac{x_{free}}{V}`  is the concentration of the tracer in
     tracer mass per m3
@@ -2625,12 +2630,11 @@ class FreundlichAdsorbtion(Adsorption):
 
     CMF stores in a solute storage the total mass of a tracer and needs to
     calculate the free tracer mass. The eq. above can not be rearanged to
-    get  :math:`x_{free}`  from  :math:`x_{tot}` . Instead, the value is iterated using
-    Newton's method with the solution of the LinearAdsorption as an
-    initial guess. If n is near to 1, using LinearAdsorption will speed up
-    your calculations. The simplest physically based adsorption model by
-    Langmuir ( LangmuirAdsorption) has also a anylitical solution and is
-    calculated faster then Freundlich.
+    get  :math:`x_{free}`  from  :math:`x_{tot}` . Instead, the value is iterated
+    usingregula falsi. If n is near to 1, using LinearAdsorption will
+    speed up your calculations. The simplest physically based adsorption
+    model by Langmuir ( LangmuirAdsorption) has also a analytical solution
+    and is hence calculated faster then Freundlich.
 
     C++ includes: adsorption.h 
     """
@@ -2641,10 +2645,9 @@ class FreundlichAdsorbtion(Adsorption):
     m = _swig_property(_cmf_core.FreundlichAdsorbtion_m_get, _cmf_core.FreundlichAdsorbtion_m_set)
     epsilon = _swig_property(_cmf_core.FreundlichAdsorbtion_epsilon_get, _cmf_core.FreundlichAdsorbtion_epsilon_set)
     maxiter = _swig_property(_cmf_core.FreundlichAdsorbtion_maxiter_get, _cmf_core.FreundlichAdsorbtion_maxiter_set)
-    strict = _swig_property(_cmf_core.FreundlichAdsorbtion_strict_get, _cmf_core.FreundlichAdsorbtion_strict_set)
     def __init__(self, *args): 
         """
-        __init__(cmf::water::FreundlichAdsorbtion self, real K, real n, real m, real epsilon=1e-12, int maxiter=100, bool strict=True) -> FreundlichAdsorbtion
+        __init__(cmf::water::FreundlichAdsorbtion self, real K, real n, real m, real epsilon=1e-12, int maxiter=100) -> FreundlichAdsorbtion
         __init__(cmf::water::FreundlichAdsorbtion self, FreundlichAdsorbtion other) -> FreundlichAdsorbtion
 
         FreundlichAdsorbtion(const FreundlichAdsorbtion &other) 
@@ -2671,10 +2674,36 @@ FreundlichAdsorbtion_swigregister(FreundlichAdsorbtion)
 
 class LangmuirAdsorption(Adsorption):
     """
-    Langmuir Adsorption.
+    This class calculates the adsorption equilibrium between sorbat and
+    sorbent using the Langmuir isotherme.
 
-    : Check correctness of
-    eq.http://en.wikipedia.org/wiki/Langmuir_equation
+    Langmuir Adsorption:
+
+
+
+    .. math::
+
+        \\frac{x_{ad}}{m} = q = \\frac{K c}{1 + K c}
+
+     where
+     :math:`x_{ad} = x_{tot} - x_{free}`  is the adsorbed tracer mass   :math:`x_{tot}` 
+    is the total tracer mass
+
+     :math:`x_{free}`  is the dissolved tracer mass
+
+     :math:`m`  is the mass of the sorbent in the same unit as the tracer mass
+
+     :math:`K`  is the Langmuir sorption coefficient
+
+     :math:`c = \\frac{x_{free}}{V}`  is the concentration of the tracer in
+    tracer mass per m3
+
+    CMF stores in a solute storage the total mass of a tracer and needs to
+    calculate the free tracer mass. The analytical solution for  :math:`x_{free}` 
+    from  :math:`x_{tot}`  is implemented in freesolute and derived usingsympy. If
+    you really want to see it, look in the code.
+
+    http://en.wikipedia.org/wiki/Langmuir_equation
 
     C++ includes: adsorption.h 
     """
@@ -2934,9 +2963,14 @@ class SoluteStorage(StateVariable):
         """
         return _cmf_core.SoluteStorage_conc(self, *args, **kwargs)
 
+    def set_conc(self, *args, **kwargs):
+        """set_conc(SoluteStorage self, real NewConcentration)"""
+        return _cmf_core.SoluteStorage_set_conc(self, *args, **kwargs)
+
     __swig_destroy__ = _cmf_core.delete_SoluteStorage
 SoluteStorage.set_adsorption = new_instancemethod(_cmf_core.SoluteStorage_set_adsorption,None,SoluteStorage)
 SoluteStorage.conc = new_instancemethod(_cmf_core.SoluteStorage_conc,None,SoluteStorage)
+SoluteStorage.set_conc = new_instancemethod(_cmf_core.SoluteStorage_set_conc,None,SoluteStorage)
 SoluteStorage_swigregister = _cmf_core.SoluteStorage_swigregister
 SoluteStorage_swigregister(SoluteStorage)
 

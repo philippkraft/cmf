@@ -171,9 +171,8 @@ real SoilLayer::get_K( point direction ) const
 		return m_wet.K;
 	} else {
 		point 
-			dir = direction/direction.length(),
-			kf  = anisotropic_kf/anisotropic_kf.length();
-		return m_wet.K * fabs(dot(dir,kf));
+			dir = direction/(direction.x+direction.y+direction.z);
+		return m_wet.K * fabs(dot(dir,anisotropic_kf));
 	}
 }
 

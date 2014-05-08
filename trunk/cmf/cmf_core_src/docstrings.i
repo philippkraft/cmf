@@ -3527,7 +3527,7 @@ mass
 
  :math:`m`  is the mass of the sorbent in the same unit as the tracer mass
 
- :math:`K`  is the Henry sorption coefficient
+ :math:`K`  is the Freundlich sorption coefficient
 
  :math:`c = \\\\frac{x_{free}}{V}`  is the concentration of the tracer in
 tracer mass per m3
@@ -3536,18 +3536,17 @@ tracer mass per m3
 
 CMF stores in a solute storage the total mass of a tracer and needs to
 calculate the free tracer mass. The eq. above can not be rearanged to
-get  :math:`x_{free}`  from  :math:`x_{tot}` . Instead, the value is iterated using
-Newton's method with the solution of the LinearAdsorption as an
-initial guess. If n is near to 1, using LinearAdsorption will speed up
-your calculations. The simplest physically based adsorption model by
-Langmuir ( LangmuirAdsorption) has also a anylitical solution and is
-calculated faster then Freundlich.
+get  :math:`x_{free}`  from  :math:`x_{tot}` . Instead, the value is iterated
+usingregula falsi. If n is near to 1, using LinearAdsorption will
+speed up your calculations. The simplest physically based adsorption
+model by Langmuir ( LangmuirAdsorption) has also a analytical solution
+and is hence calculated faster then Freundlich.
 
 C++ includes: adsorption.h ";
 
 %feature("docstring")
 cmf::water::FreundlichAdsorbtion::FreundlichAdsorbtion "FreundlichAdsorbtion(real K, real n, real m, real epsilon=1e-12, int
-maxiter=100, bool strict=true)
+maxiter=100)
 
 Parameters:
 -----------
@@ -3556,13 +3555,10 @@ K:  n:  Freundlich coefficents
 
 m:  Mass of sorbent in units of tracer
 
-epsilon:  Tolerance of New iteration for the calculation of dissolved
-tracer from total trace, default = 1e-12
+epsilon:  Tolerance of regula falsi iteration for the calculation of
+dissolved tracer from total trace, default = 1e-12
 
-maxiter:  Maximum number of iterations, default = 100
-
-strict:  If strict is true, the iteration will throw a runtime error,
-if the method does not converge ";
+maxiter:  Maximum number of iterations, default = 100 ";
 
 %feature("docstring")
 cmf::water::FreundlichAdsorbtion::FreundlichAdsorbtion "FreundlichAdsorbtion(const FreundlichAdsorbtion &other) ";
@@ -3588,6 +3584,8 @@ xt:    :math:`x_t`  the total tracer mass in the storage
 V:    :math:`V m^3`  the water volume in the storage
 
  :math:`x_f`  the dissolved mass of the tracer ";
+
+%feature("docstring")  cmf::water::FreundlichAdsorbtion::totalsolute "real totalsolute(real xf, real V) const ";
 
 
 // File: classcmf_1_1water_1_1generic__gradient__connection.xml
@@ -5824,10 +5822,36 @@ cmf::upslope::connections::KinematicSurfaceRunoff::to_string "std::string to_str
 // File: classcmf_1_1water_1_1_langmuir_adsorption.xml
 %feature("docstring") cmf::water::LangmuirAdsorption "
 
-Langmuir Adsorption.
+This class calculates the adsorption equilibrium between sorbat and
+sorbent using the Langmuir isotherme.
 
-: Check correctness of
-eq.http://en.wikipedia.org/wiki/Langmuir_equation
+Langmuir Adsorption:
+
+
+
+.. math::
+
+    \\\\frac{x_{ad}}{m} = q = \\\\frac{K c}{1 + K c}
+
+ where
+ :math:`x_{ad} = x_{tot} - x_{free}`  is the adsorbed tracer mass   :math:`x_{tot}` 
+is the total tracer mass
+
+ :math:`x_{free}`  is the dissolved tracer mass
+
+ :math:`m`  is the mass of the sorbent in the same unit as the tracer mass
+
+ :math:`K`  is the Langmuir sorption coefficient
+
+ :math:`c = \\\\frac{x_{free}}{V}`  is the concentration of the tracer in
+tracer mass per m3
+
+CMF stores in a solute storage the total mass of a tracer and needs to
+calculate the free tracer mass. The analytical solution for  :math:`x_{free}` 
+from  :math:`x_{tot}`  is implemented in freesolute and derived usingsympy. If
+you really want to see it, look in the code.
+
+http://en.wikipedia.org/wiki/Langmuir_equation
 
 C++ includes: adsorption.h ";
 
@@ -6260,7 +6284,7 @@ Creates a linear scale (by default it is a unity scale,  :math:`a=1; b=0` ) ";
 This class calculates the adsorption equilibrium between sorbat and
 sorbent using the linear (Henry) isotherme.
 
-Henry isotherme:
+Linear (Henry) isotherme:
 
 
 
