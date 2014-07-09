@@ -147,6 +147,8 @@ namespace cmf {
 			//@{
 			/// Returns the current Atmosphere state. Uses default values for missing timeseries
 			cmf::atmosphere::Weather get_data(cmf::math::Time t,double height) const;
+			
+			/// Connects this meteostation as a meteo data provider with the cell. 
 			void use_for_cell(cmf::upslope::Cell& c);
 
 			

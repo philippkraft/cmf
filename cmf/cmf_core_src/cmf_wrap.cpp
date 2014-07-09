@@ -71782,7 +71782,24 @@ static PyMethodDef SwigMethods[] = {
 		"\n"
 		" :math:`x_f`  the dissolved mass of the tracer \n"
 		""},
-	 { (char *)"Adsorption_totalsolute", (PyCFunction) _wrap_Adsorption_totalsolute, METH_VARARGS | METH_KEYWORDS, (char *)"Adsorption_totalsolute(Adsorption self, real xf, real V) -> real"},
+	 { (char *)"Adsorption_totalsolute", (PyCFunction) _wrap_Adsorption_totalsolute, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
+		"Adsorption_totalsolute(Adsorption self, real xf, real V) -> real\n"
+		"\n"
+		"virtual\n"
+		"real totalsolute(real xf, real V) const =0\n"
+		"\n"
+		"Returns the total mass of the tracer from the dissolved concetration\n"
+		"in tracer unit/m3.\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"xf:    :math:`x_f`  the dissolved tracer mass in the storage\n"
+		"\n"
+		"V:    :math:`V m^3`  the water volume in the storage\n"
+		"\n"
+		" :math:`x_t`  the total mass of the tracer \n"
+		""},
 	 { (char *)"Adsorption_copy", (PyCFunction) _wrap_Adsorption_copy, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
 		"Adsorption_copy(Adsorption self, real m=-1) -> Adsorption\n"
 		"\n"
@@ -71983,7 +72000,16 @@ static PyMethodDef SwigMethods[] = {
 		"\n"
 		"Returns the concentration of the solute. \n"
 		""},
-	 { (char *)"SoluteStorage_set_conc", (PyCFunction) _wrap_SoluteStorage_set_conc, METH_VARARGS | METH_KEYWORDS, (char *)"SoluteStorage_set_conc(SoluteStorage self, real NewConcentration)"},
+	 { (char *)"SoluteStorage_set_conc", (PyCFunction) _wrap_SoluteStorage_set_conc, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
+		"SoluteStorage_set_conc(SoluteStorage self, real NewConcentration)\n"
+		"\n"
+		"void\n"
+		"set_conc(real NewConcentration)\n"
+		"\n"
+		"set a new concentration of dissolved tracers.\n"
+		"\n"
+		"In case of adsorption functions, the isotherm is used \n"
+		""},
 	 { (char *)"delete_SoluteStorage", (PyCFunction)_wrap_delete_SoluteStorage, METH_O, (char *)"delete_SoluteStorage(SoluteStorage self)"},
 	 { (char *)"SoluteStorage_swigregister", SoluteStorage_swigregister, METH_VARARGS, NULL},
 	 { (char *)"flux_node_node_id_get", (PyCFunction)_wrap_flux_node_node_id_get, METH_O, (char *)"flux_node_node_id_get(flux_node self) -> int const"},
@@ -73388,7 +73414,9 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"MeteoStation_use_for_cell", (PyCFunction) _wrap_MeteoStation_use_for_cell, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
 		"MeteoStation_use_for_cell(MeteoStation self, Cell c)\n"
 		"\n"
-		"void use_for_cell(cmf::upslope::Cell &c) \n"
+		"void use_for_cell(cmf::upslope::Cell &c)\n"
+		"\n"
+		"Connects this meteostation as a meteo data provider with the cell. \n"
 		""},
 	 { (char *)"MeteoStation_SetSunshineFraction", (PyCFunction) _wrap_MeteoStation_SetSunshineFraction, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
 		"MeteoStation_SetSunshineFraction(MeteoStation self, timeseries sunshine_duration)\n"
@@ -75859,7 +75887,10 @@ static PyMethodDef SwigMethods[] = {
 		"new_Richards(cmf::upslope::SoilLayer::ptr left, cmf::water::flux_node::ptr right) -> Richards\n"
 		"\n"
 		"Richards(cmf::upslope::SoilLayer::ptr left, cmf::water::flux_node::ptr\n"
-		"right) \n"
+		"right)\n"
+		"\n"
+		"Creates a Richards equation connection between two soil layers (left\n"
+		"and right, rather top and bottom) of the same cell. \n"
 		""},
 	 { (char *)"Richards_use_for_cell", (PyCFunction) _wrap_Richards_use_for_cell, METH_VARARGS | METH_KEYWORDS, (char *)"Richards_use_for_cell(Cell cell, bool no_override=True)"},
 	 { (char *)"delete_Richards", (PyCFunction)_wrap_delete_Richards, METH_O, (char *)"delete_Richards(Richards self)"},

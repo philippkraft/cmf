@@ -262,6 +262,7 @@ namespace cmf {
 				{
 					NewNodes();
 				}
+				/// @brief Connects all soil layers with the transpiration node of the cell
 				static void use_for_cell(cmf::upslope::Cell & cell);
 
 			};
@@ -312,6 +313,7 @@ namespace cmf {
 				}
 				static real r_s(const cmf::upslope::vegetation::Vegetation & veg) ;
 				static real r_a(cmf::atmosphere::Weather A,real  veg_height) ;
+				/// @brief Connects all soil layers with the transpiration node of the cell
 				static void use_for_cell(cmf::upslope::Cell & cell);
 			};
 
@@ -352,6 +354,7 @@ namespace cmf {
 					: flux_connection(source,ET_target,"Hargreave get_evaporation"),sw(source) {
 						NewNodes();
 				}
+				/// @brief Connects all soil layers with the transpiration node of the cell
 				static void use_for_cell(cmf::upslope::Cell & cell);
 
 			};
