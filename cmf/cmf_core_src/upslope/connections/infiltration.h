@@ -71,6 +71,7 @@ namespace cmf {
 					: flux_connection(surfacewater,soilwater,"Richards eq. infiltration") {
 						NewNodes();
 				}
+				/// Creates the connection between surfacewater and first soil layer
 				static void use_for_cell(cmf::upslope::Cell& c)
 				{
 					new MatrixInfiltration(c.get_layer(0),c.get_surfacewater());
@@ -124,6 +125,7 @@ namespace cmf {
 					: flux_connection(surfacewater,soilwater,"Green Ampt infiltration"){
 						NewNodes();
 				}
+				/// Creates the connection between surfacewater and first soil layer
 				static void use_for_cell(cmf::upslope::Cell& c) {
 					new cmf::upslope::connections::GreenAmptInfiltration(c.get_layer(0),c.get_surfacewater());
 				}

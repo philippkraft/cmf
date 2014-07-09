@@ -50,6 +50,7 @@ namespace cmf {
 				virtual real calc_q(cmf::math::Time t);
 
 			public:
+				/// Uses this connection for a layers of the cell
 				static void use_for_cell(cmf::upslope::Cell & cell,bool no_override=true);
 				SWATPercolation(cmf::upslope::SoilLayer::ptr upperLayer,cmf::upslope::SoilLayer::ptr lowerLayer)
 					: flux_connection(upperLayer,lowerLayer,"SWAT percolation") {
@@ -84,11 +85,16 @@ namespace cmf {
 
 				virtual real calc_q(cmf::math::Time t) ;
 			public:
+				/// Creates a Richards equation connection between two soil layers (left and right, rather top and bottom) of the same cell
 				Richards(cmf::upslope::SoilLayer::ptr left,cmf::water::flux_node::ptr right)
 					: flux_connection(left,right,"Richards eq.")
 				{
 					NewNodes();
 				}
+				/// @brief Connects all layers of the cell with the Richards equation. 
+				/// 
+				/// Connects all layers of the cell with the Richards equation. If no_override=true (default), then only unconnected 
+				/// layers will be connected. Existing connections will be replaced by Richards otherwise
 				static void use_for_cell(cmf::upslope::Cell & cell,bool no_override=true);
 			};
 
@@ -113,11 +119,16 @@ namespace cmf {
 
 				virtual real calc_q(cmf::math::Time t) ;
 			public:
+
 				SimplRichards(cmf::upslope::SoilLayer::ptr left,cmf::water::flux_node::ptr right)
 					: flux_connection(left,right,"Richards eq.")
 				{
 					NewNodes();
 				}
+				/// @brief Connects all layers of the cell with the SimplRichards equation. 
+				/// 
+				/// Connects all layers of the cell with the SimplRichards equation. If no_override=true (default), then only unconnected 
+				/// layers will be connected. Existing connections will be replaced by SimplRichards otherwise
 				static void use_for_cell(cmf::upslope::Cell & cell,bool no_override=true);
 			};
 			///@ingroup perc

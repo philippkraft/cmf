@@ -55,6 +55,11 @@ namespace cmf {
 					: cmf::water::flux_connection(Canopy,target,"Canopy overflow"),m_cell(cell) {
 						NewNodes();
 				}
+				/// Creates a new connection between canopy and surfacewater and does a bunch of other things. 
+				/// 
+				/// * If no canopy storage is available, it is created
+				/// * The precipitation is split up between throughfall and intercepted rain
+				/// * CanopyStorageEvaporation connects the canopy with cell.evaporation
 				static CanopyOverflow* use_for_cell(cmf::upslope::Cell & cell)
 				{
 					// If the canopy of this cell is not a storage, create a canopy storage
@@ -102,6 +107,11 @@ namespace cmf {
 					: cmf::water::flux_connection(Canopy,target,"Rutter interception"),m_cell(cell) {
 						NewNodes();
 				}
+				/// Creates a new connection between canopy and surfacewater and does a bunch of other things. 
+				/// 
+				/// * If no canopy storage is available, it is created
+				/// * The precipitation is split up between throughfall and intercepted rain
+				/// * CanopyStorageEvaporation connects the canopy with cell.evaporation
 				static RutterInterception* use_for_cell(cmf::upslope::Cell & cell)
 				{
 					// If the canopy of this cell is not a storage, create a canopy storage
@@ -137,6 +147,8 @@ namespace cmf {
 				{
 					NewNodes();
 				}
+				/// Creates the connection between snow and surface water. 
+				/// If no snow storage exists, it is created and precipitation is split up in Snow and Rain.
 				static void use_for_cell(cmf::upslope::Cell& cell)
 				{
 					cmf::water::WaterStorage::ptr snow=cell.add_storage("Snow",'S');
@@ -166,6 +178,8 @@ namespace cmf {
 				{
 					NewNodes();
 				}
+				/// Creates the connection between snow and surface water. 
+				/// If no snow storage exists, it is created and precipitation is split up in Snow and Rain.
 				static void use_for_cell(cmf::upslope::Cell& cell)
 				{
 					cmf::water::WaterStorage::ptr snow=cell.add_storage("Snow",'S');

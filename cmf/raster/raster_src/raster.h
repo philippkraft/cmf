@@ -743,7 +743,7 @@ public:
 			throw std::ofstream::failure("Raster file: " + hdrfilename + " could not be created");
 		}
 		m_Header.WriteToStream(hdrfile);
-		hdrfile << "BYTEORDER MSBFIRST" << std::endl;
+		hdrfile << "BYTEORDER LSBFIRST" << std::endl;
 		hdrfile.close();
 		std::ofstream binfile;
 		binfile.open(filename.c_str(),std::ios_base::binary | std::ios_base::out);
@@ -1092,7 +1092,6 @@ public:
 		Raster<double> result=Raster<double>(m_Header.ncols,m_Header.nrows,m_Header.xllcorner,m_Header.yllcorner,
 			m_Header.Xcellsize,m_Header.Ycellsize,NoData());
 		int A=0,B=1,C=2,D=3,E=4,F=5,G=6,H=7,I=8;
-		double a[9];
 #pragma omp parallel for
 		for (int r = 0; r < (int)result.RowCount(); ++r) {
 			for(int c = 0; c < (int)result.ColumnCount(); ++c) {
@@ -1162,10 +1161,11 @@ public:
 		hdrfile.close();
 		std::ifstream binfile;
 		binfile.open(filename.c_str(),std::ios_base::binary | std::ios_base::in);
-		for(typename Raster<_T>::data::const_iterator it = result.m_data.begin(); it != result.m_data.end(); ++it)
-		{
-			binfile.read((char*)&(*it),sizeof(_T));
-		}
+		size_t itemcount = hdr.ncols * hdr.nrows;
+		size_t datasize = itemcount * sizeof(_T);
+		typename data::iterator pdata=result.m_data.begin();
+		char * memblock = (char *)&pdata;
+		binfile.read(memblock, datasize);
 		binfile.close();
 		return result;
 

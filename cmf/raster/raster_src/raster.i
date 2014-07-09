@@ -98,10 +98,6 @@ from math import *
         import numpy
     except ImportError:
         numpy=None
-    try:
-        import matplotlib.pyplot as pyplot
-    except ImportError:
-        pyplot=None
     class Raster:
         def __init__(self,filename=None,dtype="f",shape=None,corner=(0,0),cellsize=(1,1),NoData=-9999,raster=None):
             """ Creates a raster
@@ -308,7 +304,7 @@ from math import *
             return Raster(dtype=self.dtype,raster=res)
         def to_single(self):
             """ Creates a new raster of type single (floating point 32) from self """
-            res=self.raster.ToSingle()
+            res=self.raster.ToFloat()
             return Raster(dtype=self.dtype,raster=res)
         def fill(self,min_diff=0.01,max_iter=100,debug=False):
             return self.raster.fill(min_diff,max_iter,debug)

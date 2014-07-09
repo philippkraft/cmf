@@ -58,6 +58,21 @@ V:    :math:`V m^3`  the water volume in the storage
 
  :math:`x_f`  the dissolved mass of the tracer ";
 
+%feature("docstring")  cmf::water::Adsorption::totalsolute "virtual
+real totalsolute(real xf, real V) const =0
+
+Returns the total mass of the tracer from the dissolved concetration
+in tracer unit/m3.
+
+Parameters:
+-----------
+
+xf:    :math:`x_f`  the dissolved tracer mass in the storage
+
+V:    :math:`V m^3`  the water volume in the storage
+
+ :math:`x_t`  the total mass of the tracer ";
+
 
 // File: classcmf_1_1atmosphere_1_1aerodynamic__resistance.xml
 %feature("docstring") cmf::atmosphere::aerodynamic_resistance "
@@ -3585,7 +3600,19 @@ V:    :math:`V m^3`  the water volume in the storage
 
  :math:`x_f`  the dissolved mass of the tracer ";
 
-%feature("docstring")  cmf::water::FreundlichAdsorbtion::totalsolute "real totalsolute(real xf, real V) const ";
+%feature("docstring")  cmf::water::FreundlichAdsorbtion::totalsolute "real totalsolute(real xf, real V) const
+
+Returns the total mass of the tracer from the dissolved concetration
+in tracer unit/m3.
+
+Parameters:
+-----------
+
+xf:    :math:`x_f`  the dissolved tracer mass in the storage
+
+V:    :math:`V m^3`  the water volume in the storage
+
+ :math:`x_t`  the total mass of the tracer ";
 
 
 // File: classcmf_1_1water_1_1generic__gradient__connection.xml
@@ -5883,6 +5910,20 @@ V:    :math:`V m^3`  the water volume in the storage
 
  :math:`x_f`  the dissolved mass of the tracer ";
 
+%feature("docstring")  cmf::water::LangmuirAdsorption::totalsolute "real totalsolute(real xf, real V) const
+
+Returns the total mass of the tracer from the dissolved concetration
+in tracer unit/m3.
+
+Parameters:
+-----------
+
+xf:    :math:`x_f`  the dissolved tracer mass in the storage
+
+V:    :math:`V m^3`  the water volume in the storage
+
+ :math:`x_t`  the total mass of the tracer ";
+
 
 // File: classcmf_1_1upslope_1_1connections_1_1lateral__sub__surface__flux.xml
 %feature("docstring")
@@ -6345,6 +6386,20 @@ xt:    :math:`x_t`  the total tracer mass in the storage
 V:    :math:`V m^3`  the water volume in the storage
 
  :math:`x_f`  the dissolved mass of the tracer ";
+
+%feature("docstring")  cmf::water::LinearAdsorption::totalsolute "real totalsolute(real xf, real V) const
+
+Returns the total mass of the tracer from the dissolved concetration
+in tracer unit/m3.
+
+Parameters:
+-----------
+
+xf:    :math:`x_f`  the dissolved tracer mass in the storage
+
+V:    :math:`V m^3`  the water volume in the storage
+
+ :math:`x_t`  the total mass of the tracer ";
 
 
 // File: classcmf_1_1upslope_1_1_linear_retention.xml
@@ -7436,7 +7491,9 @@ const
 Returns the current Atmosphere state. Uses default values for missing
 timeseries. ";
 
-%feature("docstring")  cmf::atmosphere::MeteoStation::use_for_cell "void use_for_cell(cmf::upslope::Cell &c) ";
+%feature("docstring")  cmf::atmosphere::MeteoStation::use_for_cell "void use_for_cell(cmf::upslope::Cell &c)
+
+Connects this meteostation as a meteo data provider with the cell. ";
 
 %feature("docstring")
 cmf::atmosphere::MeteoStation::SetSunshineFraction "void
@@ -8284,6 +8341,20 @@ xt:    :math:`x_t`  the total tracer mass in the storage
 V:    :math:`V m^3`  the water volume in the storage
 
  :math:`x_f`  the dissolved mass of the tracer ";
+
+%feature("docstring")  cmf::water::NullAdsorption::totalsolute "virtual real totalsolute(real xf, real V) const
+
+Returns the total mass of the tracer from the dissolved concetration
+in tracer unit/m3.
+
+Parameters:
+-----------
+
+xf:    :math:`x_f`  the dissolved tracer mass in the storage
+
+V:    :math:`V m^3`  the water volume in the storage
+
+ :math:`x_t`  the total mass of the tracer ";
 
 
 // File: classcmf_1_1math_1_1num__array.xml
@@ -10249,7 +10320,10 @@ SoilType::MatrixPotential)
 C++ includes: Percolation.h ";
 
 %feature("docstring")  cmf::upslope::connections::Richards::Richards "Richards(cmf::upslope::SoilLayer::ptr left, cmf::water::flux_node::ptr
-right) ";
+right)
+
+Creates a Richards equation connection between two soil layers (left
+and right, rather top and bottom) of the same cell. ";
 
 %feature("docstring")  cmf::upslope::connections::Richards::conc "real conc(cmf::math::Time t, const cmf::water::solute &_Solute)
 
@@ -11666,6 +11740,13 @@ get_state() const
 Returns the current state of the variable. ";
 
 %feature("docstring")  cmf::water::SoluteStorage::set_adsorption "void set_adsorption(const Adsorption &newadsorption, real m=-1) ";
+
+%feature("docstring")  cmf::water::SoluteStorage::set_conc "void
+set_conc(real NewConcentration)
+
+set a new concentration of dissolved tracers.
+
+In case of adsorption functions, the isotherm is used ";
 
 %feature("docstring")  cmf::water::SoluteStorage::set_state "void
 set_state(real newState)
