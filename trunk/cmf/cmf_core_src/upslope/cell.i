@@ -117,6 +117,10 @@
                     ]
    
     def install_connection(self,connection_type):
+		"""Calls the static use_for_cell method of the connection_type, if present.
+		The use_for_cell method might do quite a lot of stuff, please consult the docs for the connection.
+		Eg. >>>help(Richards.use_for_cell) 
+		"""
         if hasattr(connection_type,"use_for_cell"):
             connection_type.use_for_cell(self)
         else:

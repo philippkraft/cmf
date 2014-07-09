@@ -25,6 +25,7 @@ output will be written (the file will be clobbered).
 # Thanks:
 #   Johan Hake:  the include_function_definition feature
 #   Bill Spotz:  bug reports and testing.
+#   Sebastian Henschel:   Misc. enhancements.
 #
 ######################################################################
 
@@ -379,9 +380,9 @@ class Doxy2SWIG:
     def write(self, fname):
         o = my_open_write(fname)
         if self.multi:
-            o.write("".join(unicode(p).encode('utf-8') for p in self.pieces))
+            o.write("".join(self.pieces))
         else:
-            o.write("".join(unicode(p).encode('utf-8') for p in self.clean_pieces(self.pieces)))
+            o.write("".join(self.clean_pieces(self.pieces)))
         o.close()
 
     def clean_pieces(self, pieces):
@@ -435,22 +436,14 @@ def main():
                       help='do not include doxygen function definitions')
     parser.add_option("-q", '--quiet',
                       action='store_true',
-                      default=True,
-                      dest='quiet',
-                      help='be quiet and minimise output')
-    parser.add_option("-v", '--verbose',
-                      action='store_true',
                       default=False,
-                      dest='verbose',
-                      help='be verbose and give output')
+                      dest='quiet',
+                      help='be quiet and minimize output')
     
     options, args = parser.parse_args()
-    options.quiet = not options.verbose
-    if len(args)==0:
-        args=['doxy/xml/index.xml','cmf/cmf_core_src/docstrings.i']
-    elif len(args) != 2:
+    if len(args) != 2:
         parser.error("error: no input and output specified")
-    print "Using %s to generate %s" % tuple(args)
+
     convert(args[0], args[1], not options.func_def, options.quiet)
     
 

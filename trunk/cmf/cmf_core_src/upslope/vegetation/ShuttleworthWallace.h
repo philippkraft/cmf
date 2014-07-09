@@ -150,6 +150,15 @@ namespace cmf {
 				/// Calculates the transpiration and the soil evaporation from dry surfaces
 				ShuttleworthWallace(cmf::upslope::Cell& cell);
 
+				/// @brief Uses ShuttleworthWallace for the complete ET system of the cell.
+				///
+				/// The installation includes the following:
+				/// * Create a new ShuttleworthWallace instance (SW) as central calculation unit
+				/// * Connect each soil layer with cell.transpiration using the generic "transpiration" connection, controlled by SW
+				/// * Connect the top soil layer with cell.evaporation using the generic "soilevaporation" connection, controlled by SW
+				/// * If a canopy water storage exists, use SW for Canopy evaporation
+				/// * If a snow storage exist, use SW for snow evaporation
+				/// * if a surface water storage exist, create a connection between it and evaporation (open water transpiration)
 				static ShuttleworthWallace* use_for_cell(cmf::upslope::Cell& cell);
 			};
 		}		
