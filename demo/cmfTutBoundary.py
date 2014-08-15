@@ -16,7 +16,7 @@ Out = p.NewOutlet(name="Outlet",x=20,y=0,z=0)
 q2 = cmf.kinematic_wave(source=W1,target=Out,residencetime=1.0)
 qout = cmf.kinematic_wave(source=W2,target=Out,residencetime=.5)
 # Create a Neumann Boundary condition connected to W1
-In = cmf.NeumannBoundary.create(W1)
+In = p.NewNeumannBoundary('In', W1)
 # Create a timeseries with daily alternating values.
 In.flux = cmf.timeseries(begin = datetime.datetime(2012,1,1), 
                          step = datetime.timedelta(days=1), 

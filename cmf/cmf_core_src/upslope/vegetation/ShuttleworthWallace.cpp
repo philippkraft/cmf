@@ -332,7 +332,9 @@ void SWGRA(double UA, double ZA, double HEIGHT, double Z0, double DISP, double Z
 ///output
 ///   PRATE   potential transpiration rate, mm/d
 ///   ERATE   ground evaporation rate, mm/d
-void SWPE(double AA, double ASUBS, double VPD, double RAA, double RAC, double RAS, double RSC, double RSS, double DELTA, double& PRATE, double& ERATE)
+void SWPE(double AA, double ASUBS, double VPD, double RAA, 
+		  double RAC, double RAS, double RSC, double RSS, 
+		  double DELTA, double& PRATE, double& ERATE)
 {
 	double RS = (DELTA + GAMMA) * RAS + GAMMA * RSS;
 	double RC = (DELTA + GAMMA) * RAC + GAMMA * RSC;
@@ -689,7 +691,7 @@ void TBYLAYER(ptrdiff_t J,double PTR, double DISPC,
 			} else {
 				ATRANI[I] = ((PSITI[I] - PSIT) / 1000. + RT * ATR) / RI[I];
 				///        check for any negative transpiration losses
-				if (ATRANI[I] < -0.000001)  NEGFLAG = 1;
+				if (ATRANI[I] < 0)  NEGFLAG = 1;
 			}
 		}
 		if (NOOUTF == 1 && NEGFLAG == 1) {

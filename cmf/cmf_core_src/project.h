@@ -150,29 +150,40 @@ namespace cmf {
         /// @param solute_names A string representing the names of the solutes to be used in the project. Sepereate solute names with space.
 		project(std::string solute_names="");
 		~project();
+		
 		/// Creates a new cell
         /// @return A new cell, owned by the project
         /// @param x,y,z Position of the cell center in project coordinates (m)
         /// @param area Area of the cell in m^2
         /// @param with_surfacewater If true, the cell will own a surfacewater storage upon creation
 		cmf::upslope::Cell* NewCell(double x,double y,double z, double area,bool with_surfacewater = false);
+		
 		/// Creates a new Dirichlet boundary condition and adds it to the list of outlets
 		/// The potential of the Dirichlet boundary equals z, but can be changed
         /// @param name Name of the boundary condition for output
         /// @param x,y,z Position of the boundary condition in project coordinates
 		cmf::water::DirichletBoundary::ptr NewOutlet(std::string name,double x, double y, double z);
+		
 		/// Creates a new generic water storage at position x,y,z. The storage is added to the project nodes
         /// @return A new water storage, owned by the project
         /// @param name Name of the generic water storage for output
         /// @param x,y,z Position of the generic water storage condition in project coordinates
 		cmf::water::WaterStorage::ptr NewStorage(std::string name,double x, double y, double z);
+		
 		/// Creates a new open water storage with a prism geometry. The open water storage is added to the project nodes
         /// @return A new open water storage, owned by the project
         /// @param name  Name of the open water storage for output
         /// @param x,y,z Position of the open water storage in project coordinates
         /// @param area Surface area of the open water storage
 		cmf::river::OpenWaterStorage::ptr NewOpenStorage(std::string name,double x, double y, double z,double area);
-
+		
+		/// @brief Creates a new Neumann boundary for a target water storage
+		///
+		/// The boundary is stored with the project
+		/// @return A new Neumann boundary
+		/// @param name The name of the boundary condition
+		/// @param target The water storage to which the Neumann boundary is bound
+		cmf::water::NeumannBoundary::ptr NewNeumannBoundary(std::string name, cmf::water::WaterStorage::ptr target);
 		/// Creates a new reach
 		/// @return A new reach, owned by the project
 		/// @param x,y,z Position of the reach in project coordinates
