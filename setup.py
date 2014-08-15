@@ -88,9 +88,10 @@ def make_cmf_core():
         if openmp: compile_args.append("/openmp")
         link_args=["/DEBUG"]
     if gcc: 
-        compile_args=['-Wno-comment','-Wno-reorder','-Wno-unused','-Wno-sign-compare']
+        compile_args=['-Wno-comment','-Wno-reorder','-Wno-unused','-Wno-sign-compare','-ggdb']
         if openmp: compile_args.append('-fopenmp')
-        link_args=["-fopenmp"] if openmp else None
+        link_args=["-fopenmp"] if openmp else []
+        link_args.append('-ggdb')
         libraries = ['gomp'] if openmp else None
     cmf_files=[]
     cmf_headers=[]

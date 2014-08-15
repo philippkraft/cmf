@@ -550,7 +550,6 @@ void INTER24(double RFAL, double PINT, double LAI, double SAI, double FRINTL, do
 void PLNTRES(ptrdiff_t NLAYER, const num_array& THICK, const num_array& STONEF, double RTLEN, const num_array& RELDEN, double RTRAD, double RPLANT, 
 			 double FXYLEM, double & RXYLEM, num_array& RROOTI, num_array& ALPHA)
 {
-	num_array D(50);
 	double SUM;     //total relative length, mm
 	double RTFRAC;  //fraction of total root length in layer
 	double RTDENI;  //root density for layer, mm/mm3
@@ -561,8 +560,7 @@ void PLNTRES(ptrdiff_t NLAYER, const num_array& THICK, const num_array& STONEF, 
 	SUM = 0.;
 	for (ptrdiff_t I = 0; I < NLAYER ; ++I)
 	{
-		D[I] = THICK[I] * (1. - STONEF[I]);
-		SUM = SUM + RELDEN[I] * D[I];
+		SUM = SUM + RELDEN[I] * THICK[I] * (1. - STONEF[I]);
 	}
 	for (ptrdiff_t I = 0; I < NLAYER ; ++I)
 	{
@@ -571,15 +569,15 @@ void PLNTRES(ptrdiff_t NLAYER, const num_array& THICK, const num_array& STONEF, 
 			RROOTI[I] = 1E+20;
 			ALPHA[I] = 1E+20;
 		} else {
-			RTFRAC = RELDEN[I] * D[I] / SUM;
+			RTFRAC = RELDEN[I] * THICK[I] * (1. - STONEF[I]) / SUM;
 			///     root resistance for layer
 			RROOTI[I] = (RPLANT - RXYLEM) / RTFRAC;
 			///     rhizosphere resistance for layer
-			RTDENI = RTFRAC * 0.001 * RTLEN / D[I];
+			RTDENI = RTFRAC * 0.001 * RTLEN / (THICK[I] * (1. - STONEF[I]));
 			///                       .001 is (mm/mm2)/(m/m2) conversion
 			DELT = PI * sqr(RTRAD) * RTDENI;
 			ALPHA[I] = (1. / (8. * PI * RTDENI)) * (DELT - 3. - 2. * (log(DELT)) / (1. - DELT));
-			ALPHA[I] = ALPHA[I] * 0.001 * RHOWG / D[I];
+			ALPHA[I] = ALPHA[I] * 0.001 * RHOWG / (THICK[I] * (1. - STONEF[I]));
 			///                           .001 is MPa/kPa conversion
 		}
 	}
