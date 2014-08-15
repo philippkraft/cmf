@@ -19,11 +19,11 @@
 //SWIG_SHARED_PTR(Cell,cmf::upslope::Cell);
 
 %{
-	#include "upslope/vegetation/StructVegetation.h"
-	#include "upslope/surfacewater.h"
-	#include "upslope/cell.h"
-	#include "upslope/Topology.h"
-	#include "upslope/algorithm.h"
+    #include "upslope/vegetation/StructVegetation.h"
+    #include "upslope/surfacewater.h"
+    #include "upslope/cell.h"
+    #include "upslope/Topology.h"
+    #include "upslope/algorithm.h"
 
 %}
 
@@ -117,10 +117,10 @@
                     ]
    
     def install_connection(self,connection_type):
-		"""Calls the static use_for_cell method of the connection_type, if present.
-		The use_for_cell method might do quite a lot of stuff, please consult the docs for the connection.
-		Eg. >>>help(Richards.use_for_cell) 
-		"""
+        """Calls the static use_for_cell method of the connection_type, if present.
+        The use_for_cell method might do quite a lot of stuff, please consult the docs for the connection.
+        Eg. >>>help(Richards.use_for_cell) 
+        """
         if hasattr(connection_type,"use_for_cell"):
             connection_type.use_for_cell(self)
         else:
@@ -136,8 +136,8 @@
 %include "upslope/Topology.h"
 %extend cmf::upslope::neighbor_iterator
 {
-	bool __eq__(const cmf::upslope::neighbor_iterator& cmp) {return (*$self)==cmp;}
-	bool __neq__(const cmf::upslope::neighbor_iterator& cmp) {return (*$self)!=cmp;}
+    bool __eq__(const cmf::upslope::neighbor_iterator& cmp) {return (*$self)==cmp;}
+    bool __neq__(const cmf::upslope::neighbor_iterator& cmp) {return (*$self)!=cmp;}
 }
 
 %iterable_to_list(cmf::upslope::cell_vector,cmf::upslope::Cell);

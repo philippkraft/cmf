@@ -5,3 +5,4 @@ mv cmf/cmf_core_src/cmf_core.py cmf/cmf_core.py
 mv cmf/raster/raster_src/raster.py cmf/raster/raster.py
 python setup.py build_py
 python setup.py install --user
+
