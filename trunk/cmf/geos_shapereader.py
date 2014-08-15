@@ -178,7 +178,7 @@ if has_shapely:
             self.readHeader(f)
             
             self.__data=[]
-            self.fields,types,data=dbf.dbflist(filename.lower().replace('.shp','.dbf'))
+            self.fields,types,data=dbf.dbflist(filename.replace('.shp','.dbf'))
             shpname=os.path.basename(filename).replace('.','_')
             TYPE = namedtuple(shpname,['shape','OID'] + self.fields)
             while f.tell()<self.file_size :
