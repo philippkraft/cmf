@@ -18,11 +18,14 @@ cmf::upslope::MacroPore::MacroPore( SoilLayer::ptr layer,real _porefraction, rea
 real cmf::upslope::MacroPore::head_to_volume( real head ) const
 {
 	SoilLayer::ptr l = get_layer();
-	real fill = head - (l->get_gravitational_potential() - l->get_thickness());
+	real C = get_capacity(),
+		 d = l->get_thickness(),
+		 z = l->get_gravitational_potential(),
+		 fill = head - (z - d);
 	if (fill > l->get_thickness()) {
-		return get_capacity() + (fill - l->get_thickness())/100.;
+		return C + (fill - d)/100.;
 	} else if (fill>0) {
-		return fill * get_porefraction() * l->cell.get_area();
+		return C * fill/d;
 	} else {
 		return 0.0;
 	}
@@ -31,7 +34,10 @@ real cmf::upslope::MacroPore::head_to_volume( real head ) const
 real cmf::upslope::MacroPore::volume_to_head( real volume ) const
 {
 	SoilLayer::ptr l = get_layer();
-	real fill = volume/l->cell.get_area()/get_porefraction();
+	real C = get_capacity(), // macropore capacity in m3
+		d = l->get_thickness(), // layer thickness in m
+		z = l->get_gravitational_potential(), // upper layer boundary in m a.s.l
+		fill = volume / C * d; // fill height in m
 	if (volume>get_capacity())
 		fill = l->get_thickness() + 100 * (fill - l->get_thickness());
 	return (l->get_gravitational_potential()- l->get_thickness()) + fill;
@@ -210,8 +216,9 @@ real cmf::upslope::connections::DiffusiveMacroMicroExchange::calc_q( cmf::math::
 {
 	MacroPore::ptr MP = mp.lock();
 	SoilLayer::ptr SL = sl.lock();
-	real
-		q = omega * (MP->get_volume()/MP->get_capacity() - SL->get_wetness());
+	real q = omega
+		   *   (MP->get_volume()/MP->get_capacity() - SL->get_wetness()) 
+		   *	SL->get_thickness() * SL->cell.get_area();
 	return prevent_negative_volume(q);
 
 }
@@ -223,7 +230,7 @@ real cmf::upslope::connections::MACROlikeMacroMicroExchange::calc_q( cmf::math::
 	SoilLayer::ptr SL = sl.lock();
 	const RetentionCurve& rt = SL->get_soil();
 	// Check if this fits to MACRO theory
-	real theta_b = rt.Porosity();
+	real theta_b = rt.Porosity() * rt.Wetness(.01);
 	real theta_mi = SL->get_theta();
 	real D_theta_mi = rt.Diffusivity(SL->get_wetness());
 	// TODO: find the correct translation of MACRO theta_b in cmf. As a first try we assume
@@ -231,7 +238,6 @@ real cmf::upslope::connections::MACROlikeMacroMicroExchange::calc_q( cmf::math::
 	real D_theta_b = rt.Diffusivity(theta_b/rt.Porosity());
 	real Sma = MP->get_volume()/MP->get_capacity();
 	real Dw = (D_theta_b + D_theta_mi)/2 * Sma;
-
 	real Sw = (Gf * Dw * gamma_w)/square(MP->density) * (theta_b - theta_mi);
 	return prevent_negative_volume(Sw * SL->get_thickness() * SL->cell.get_area());
 }

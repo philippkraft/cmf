@@ -220,7 +220,7 @@ namespace cmf {
 
 			/// @ingroup MacroPore
 			/// @brief A gradient based exchange term between macropores and micropores, 
-			/// using a fixed potential for macropores
+			/// using a fixed (air-) potential for macropores
 			///
 			/// \f[q = K \frac{\Delta\Psi}{d/2}  A \f]
 			/// where:
@@ -246,7 +246,7 @@ namespace cmf {
 			/// @brief A simple first order diffusive water exchange 
 			/// between MacroPore and matrix (SoilLayer)
 			///
-			/// \f[ q = \omega (W_{ma} - W_{mi})\f]
+			/// \f[ q = \omega (W_{ma} - W_{mi}) \f]
 			/// cf. Simunek et al J. of Hydr. 2003
 			class DiffusiveMacroMicroExchange : public cmf::water::flux_connection {
 			protected:
@@ -284,8 +284,8 @@ namespace cmf {
 				std::tr1::weak_ptr<cmf::upslope::MacroPore> mp;
 				std::tr1::weak_ptr<cmf::upslope::SoilLayer> sl;
 				void NewNodes() {
-					mp = cmf::upslope::MacroPore::cast(left_node());
-					sl = cmf::upslope::SoilLayer::cast(right_node());
+					mp = cmf::upslope::MacroPore::cast(right_node());
+					sl = cmf::upslope::SoilLayer::cast(left_node());
 				}
 				virtual real calc_q(cmf::math::Time t);
 			public:
@@ -301,7 +301,12 @@ namespace cmf {
 				}
 
 			};
-		}
-	}
-}
+
+		} // namespace connections
+
+
+
+		};
+	} // namespace upslope
+} // 
 #endif
