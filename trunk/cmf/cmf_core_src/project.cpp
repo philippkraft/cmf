@@ -183,3 +183,11 @@ cmf::upslope::Cell* cmf::project::NewCell( double x,double y,double z, double ar
 	m_cells.append(*new_cell);
 	return new_cell;
 }
+
+cmf::water::NeumannBoundary::ptr cmf::project::NewNeumannBoundary( std::string name, cmf::water::WaterStorage::ptr target )
+{
+	cmf::water::NeumannBoundary::ptr new_nb= cmf::water::NeumannBoundary::create(target);
+	new_nb->Name = name;
+	this->add_node(new_nb);
+	return new_nb;
+}

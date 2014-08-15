@@ -1,4 +1,5 @@
 @echo off
+python newversionnumber.py
 if not "x%1x"=="xdoxyx" goto build
 echo doxygen
 doxygen Doxyfile

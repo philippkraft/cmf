@@ -9180,6 +9180,20 @@ area:  Area of the cell in m^2
 with_surfacewater:  If true, the cell will own a surfacewater storage
 upon creation ";
 
+%feature("docstring")  cmf::project::NewNeumannBoundary "cmf::water::NeumannBoundary::ptr NewNeumannBoundary(std::string name,
+cmf::water::WaterStorage::ptr target)
+
+Creates a new Neumann boundary for a target water storage.
+
+The boundary is stored with the project A new Neumann boundary
+
+Parameters:
+-----------
+
+name:  The name of the boundary condition
+
+target:  The water storage to which the Neumann boundary is bound ";
+
 %feature("docstring")  cmf::project::NewOpenStorage "cmf::river::OpenWaterStorage::ptr NewOpenStorage(std::string name,
 double x, double y, double z, double area)
 
