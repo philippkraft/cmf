@@ -304,9 +304,7 @@ namespace cmf {
 
 		} // namespace connections
 
-
-
-		};
 	} // namespace upslope
-} // 
+} // namespace cmf
 #endif
+
