@@ -54462,7 +54462,7 @@ fail:
 
 SWIGINTERN PyObject *_wrap_new_JarvisMacroFlow(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
-  cmf::upslope::MacroPore::ptr arg1 ;
+  cmf::water::WaterStorage::ptr arg1 ;
   cmf::water::flux_node::ptr arg2 ;
   real arg3 = (real) 1. ;
   real arg4 = (real) 0.0 ;
@@ -54486,12 +54486,12 @@ SWIGINTERN PyObject *_wrap_new_JarvisMacroFlow(PyObject *SWIGUNUSEDPARM(self), P
   if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"OO|OO:new_JarvisMacroFlow",kwnames,&obj0,&obj1,&obj2,&obj3)) SWIG_fail;
   {
     int newmem = 0;
-    res1 = SWIG_ConvertPtrAndOwn(obj0, &argp1, SWIGTYPE_p_std__tr1__shared_ptrT_cmf__upslope__MacroPore_t,  0 , &newmem);
+    res1 = SWIG_ConvertPtrAndOwn(obj0, &argp1, SWIGTYPE_p_std__tr1__shared_ptrT_cmf__water__WaterStorage_t,  0 , &newmem);
     if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_JarvisMacroFlow" "', argument " "1"" of type '" "cmf::upslope::MacroPore::ptr""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_JarvisMacroFlow" "', argument " "1"" of type '" "cmf::water::WaterStorage::ptr""'"); 
     }
-    if (argp1) arg1 = *(reinterpret_cast< cmf::upslope::MacroPore::ptr * >(argp1));
-    if (newmem & SWIG_CAST_NEW_MEMORY) delete reinterpret_cast< cmf::upslope::MacroPore::ptr * >(argp1);
+    if (argp1) arg1 = *(reinterpret_cast< cmf::water::WaterStorage::ptr * >(argp1));
+    if (newmem & SWIG_CAST_NEW_MEMORY) delete reinterpret_cast< cmf::water::WaterStorage::ptr * >(argp1);
   }
   {
     int newmem = 0;
@@ -75583,11 +75583,12 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"JarvisMacroFlow_porefraction_r_set", _wrap_JarvisMacroFlow_porefraction_r_set, METH_VARARGS, (char *)"JarvisMacroFlow_porefraction_r_set(JarvisMacroFlow self, real porefraction_r)"},
 	 { (char *)"JarvisMacroFlow_porefraction_r_get", (PyCFunction)_wrap_JarvisMacroFlow_porefraction_r_get, METH_O, (char *)"JarvisMacroFlow_porefraction_r_get(JarvisMacroFlow self) -> real"},
 	 { (char *)"new_JarvisMacroFlow", (PyCFunction) _wrap_new_JarvisMacroFlow, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
-		"new_JarvisMacroFlow(cmf::upslope::MacroPore::ptr left, cmf::water::flux_node::ptr right, real beta=1., \n"
+		"new_JarvisMacroFlow(cmf::water::WaterStorage::ptr left, cmf::water::flux_node::ptr right, real beta=1., \n"
 		"    real porefraction_r=0.0) -> JarvisMacroFlow\n"
 		"\n"
 		"JarvisMacroFlow(cmf::upslope::MacroPore::ptr left,\n"
-		"cmf::water::flux_node::ptr right, real beta=1.)\n"
+		"cmf::water::flux_node::ptr right, real beta=1., real\n"
+		"porefraction_r=0.0)\n"
 		"\n"
 		"Constructs the connection.\n"
 		"\n"
@@ -75596,7 +75597,10 @@ static PyMethodDef SwigMethods[] = {
 		"\n"
 		"left:  right:  the connected macropores\n"
 		"\n"
-		"beta:  User defined parameter for the swelling reaction \n"
+		"beta:  User defined parameter for the swelling reaction\n"
+		"\n"
+		"porefraction_r:  Porefraction at which flow starts. For swelling soils\n"
+		"that are closing completely th \n"
 		""},
 	 { (char *)"delete_JarvisMacroFlow", (PyCFunction)_wrap_delete_JarvisMacroFlow, METH_O, (char *)"delete_JarvisMacroFlow(JarvisMacroFlow self)"},
 	 { (char *)"JarvisMacroFlow_swigregister", JarvisMacroFlow_swigregister, METH_VARARGS, NULL},
