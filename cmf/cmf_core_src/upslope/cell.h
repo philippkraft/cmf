@@ -253,7 +253,7 @@ namespace cmf {
 			/// @param lowerboundary The maximum depth of the layer in m. If lowerboundary is smaller or equal than the lowerboundary of thelowest layer, an error is raised
 			/// @param r_curve A retention curve. [See here](/wiki/CmfTutRetentioncurve) for a discussion on retention curves in cmf.
 			/// @param saturateddepth The initial potential of the new layer in m below surface. Default = 10m (=quite dry)
-			void add_layer(real lowerboundary,const cmf::upslope::RetentionCurve& r_curve,real saturateddepth=10);
+			cmf::upslope::SoilLayer::ptr add_layer(real lowerboundary,const cmf::upslope::RetentionCurve& r_curve,real saturateddepth=10);
 			/// Remove the lowest layer from this cell
 			void remove_last_layer();
 			/// Removes all layers from this cell

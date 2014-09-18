@@ -79,24 +79,22 @@ namespace cmf {
 
 		private:
 			std::tr1::weak_ptr<SoilLayer> m_layer;
-			real m_porefraction_min;
-			real m_porefraction_max;
 		protected:
 			virtual real head_to_volume(real head) const;
 			virtual real volume_to_head(real volume) const;
-			MacroPore(SoilLayer::ptr layer,real porefraction=0.05, real Ksat=10,real density=0.05,real porefraction_wilt = -1., real K_shape=0.0 );
+			MacroPore(SoilLayer::ptr layer,real porefraction_min=0.05, real Ksat=10,real density=0.05,real porefraction_max = -1., real K_shape=0.0 );
 			real exp_of_matrixpotential(real factor=1.) const {
 				return exp(minimum(get_layer()->get_matrix_potential(),0.0) * factor);
 			}
 		public:
+			real porefraction_min;
+			real porefraction_max;
 			/// Gets the soil layer (matrix water storage) for this macropore storage
 			SoilLayer::ptr get_layer() const {
 				return m_layer.lock();
 			}
 			/// The fraction of the macro pores in m3/m3. This adds to the porosity of the layer
-			real get_porefraction() const {
-				return m_porefraction_min + (1-exp_of_matrixpotential()) * (m_porefraction_max-m_porefraction_min);
-			}
+			real get_porefraction() const;
 			/// The mean distance between the macro pores in m
 			real density;
 			/// The saturated conductivity of the macropores in m/day
@@ -107,6 +105,21 @@ namespace cmf {
 			virtual real get_K(cmf::geometry::point direction) const {
 				return get_K();				
 			}
+
+			/// Returns the crack width for a prismatic crackstructure
+			///
+			/// For a prismatic crack structure, the porefraction in m3/m3 equals the vertical crack area in m2/m2.
+			/// The length of equally spaced cracks is in one direction the inverse of the density and twice the
+			/// length for two directions.
+			/// \f[ l_{crack} [m/m^2]= 2 \frac {1}{d[m]}\f]
+			/// If we again ignore the fact that the spacing of the cracking crossings is counted double, the crack width is:
+			/// \f[ w_{crack}[m] = \frac{A_{crack}[m^2/m^2]}{l_{crack}[m/m^2]} \f]
+			/// Combining both eq. above:
+			/// \f[ w_{crack}[m] = A_{crack}[m^2/m^2]\frac{d[m]}{2} \f]
+			virtual real get_crackwidth() const {
+				return get_porefraction() * density / 2.;
+			}
+
 			/// The cell of this macropore
 			cmf::upslope::Cell& get_cell() const {
 				return get_layer()->cell;
@@ -160,6 +173,17 @@ namespace cmf {
 
 		};
 		namespace connections {
+			class BaseMacroFlow  : public cmf::water::flux_connection {
+			protected:
+				std::tr1::weak_ptr<cmf::upslope::MacroPore> mp1,mp2;
+				std::tr1::weak_ptr<cmf::upslope::conductable> c2;
+				void NewNodes();
+				BaseMacroFlow(cmf::water::WaterStorage::ptr left,cmf::water::flux_node::ptr right,std::string connectionname)
+					: flux_connection(left,right,connectionname)
+				{
+					NewNodes();
+				}
+			};
 			///@ingroup MacroPore
 			///
 			/// @brief Gradient based flux from macro pore to macro pore.
@@ -168,23 +192,12 @@ namespace cmf {
 			/// \f[
 			/// q = K(\theta) \frac{\Delta \Psi}{\Delta z}
 			/// \f]
-			class GradientMacroFlow : public cmf::water::flux_connection {
-			protected:
-				std::tr1::weak_ptr<cmf::upslope::MacroPore> mp1,mp2;
-				std::tr1::weak_ptr<cmf::upslope::conductable> c2;
-				void NewNodes()
-				{
-					mp1=cmf::upslope::MacroPore::cast(left_node());
-					mp2=cmf::upslope::MacroPore::cast(right_node());
-					c2=cmf::upslope::conductable::cast(right_node());
-				}
-
+			class GradientMacroFlow : public BaseMacroFlow {
 				virtual real calc_q(cmf::math::Time t) ;
 			public:
 				GradientMacroFlow(cmf::upslope::MacroPore::ptr left,cmf::water::flux_node::ptr right)
-					: flux_connection(left,right,"Gradient based macro pore flow")
+					: BaseMacroFlow(left,right,"Gradient based macro pore flow")
 				{
-					NewNodes();
 				}
 			};
 			/// @ingroup MacroPore
@@ -193,31 +206,57 @@ namespace cmf {
 			/// @deprecated The MacroPore model is still very experimental and not stable. Only for tryouts!
 			///
 			/// \f[
-			/// q = A_{cell} K_{macro} \frac{V_{upper}}{C_{upper}} \left(1-\frac{V_{lower}}{C_{lower}}\right)
+			/// q = A_{cell} K_{macro} \left(\frac{V_{upper}}{C_{upper}}\right)^\beta \left(1-\frac{V_{lower}}{C_{lower}}\right)
 			/// \f]
 			/// where:
 			/// - \f$A_{cell}\f$ is the area of the owning cell in m2
 			/// - \f$K_{macro}\f$ is the conductivity of the macro pore storage
 			/// - \f$V\f$ is the actual stored water volume in the upper resp. lower macro pore storage
 			/// - \f$C\f$ is the capacity of the upper resp. lower macro pore storage
-			class KinematicMacroFlow : public cmf::water::flux_connection {
+			class KinematicMacroFlow : public BaseMacroFlow {
 			protected:
 				std::tr1::weak_ptr<cmf::upslope::MacroPore> mp1,mp2;
 				std::tr1::weak_ptr<cmf::upslope::conductable> c2;
-				void NewNodes();
 				virtual real calc_q(cmf::math::Time t) ;
 			public:
+				///
 				/// Creates the connection
 				///
 				/// @param left,right the nodes between the connection should be created.
+				/// @param beta a conceptional curve shape parameter for the relation between storage and outflow
 				/// @note Either left or right needs to be a MacroPore, left needs to be a water storage
-				KinematicMacroFlow(cmf::water::WaterStorage::ptr left,cmf::water::flux_node::ptr right)
-					: flux_connection(left,right,"Kinematic based macro pore flow")
-				{
-					NewNodes();
-				}
+				KinematicMacroFlow(cmf::water::WaterStorage::ptr left,cmf::water::flux_node::ptr right, real beta=1.)
+					: BaseMacroFlow(left,right,"Kinematic based macro pore flow")
+				{}
 			};
 
+			/// @ingroup MacroPore
+			/// @brief A physically based macropore to macropore connection according to Jarvis & Leeds-Harrison 1987, JSS
+			///
+			/// \f[q_{i->j} [m/s]= \rho \frac G {12\eta} w^2 \frac{e_v-e_r}{1-e_r} S_{c,i}^\beta\ (1-S_{c,j})\f]
+			/// where:
+			/// - \f$q_{i->j}\f$ the flow from macro pore layer i to macropore layer j
+			/// - \f$\rho=10^{-3} kg/m^3\f$ - the density of water
+			/// - \f$G=9.81 m/s^2\f$ the earth acceleration
+			/// - \f$\eta=1.0 kg/(m s)\f$ the viscosity of water (at 20 degC)
+			/// - \f$w [m]\f$ the crack width, a function of water content and crack distance
+			/// - \f$e_v [-]\f$ the crack porosity
+			/// - \f$e_r [-]\f$ crack por
+			/// - \f$S_c [-]\f$ the crack saturation of layer i resp. j
+			/// - \f$\beta [-]\f$ a conceptional exponent to shape the flow reaction
+			class JarvisMacroFlow : public BaseMacroFlow {
+			protected:
+				virtual real calc_q(cmf::math::Time t) ;
+			public:
+				real beta;
+				real porefraction_r;
+				/// @brief Constructs the connection
+				///
+				/// @param left,right the connected macropores
+				/// @param beta User defined parameter for the swelling reaction
+				/// @param porefraction_r Porefraction at which flow starts. For swelling soils that are closing completely th
+				JarvisMacroFlow(cmf::upslope::MacroPore::ptr left,cmf::water::flux_node::ptr right, real beta=1., real porefraction_r=0.0);
+			};
 			/// @ingroup MacroPore
 			/// @brief A gradient based exchange term between macropores and micropores, 
 			/// using a fixed (air-) potential for macropores
@@ -246,7 +285,18 @@ namespace cmf {
 			/// @brief A simple first order diffusive water exchange 
 			/// between MacroPore and matrix (SoilLayer)
 			///
-			/// \f[ q = \omega (W_{ma} - W_{mi}) \f]
+			/// \f[ q = \omega (W_{ma} - W_{mi,eff}) V_{soil}\f]
+			/// where:
+			///  - \f$\omega\f$ is the exchange rate in \f$day^{-1}\f$
+			///  - \f$W_{ma}\f$ is the filled fraction of the macropore system [-]
+			///  - \f$W_{mi,eff}\f$ is the water filled pore space of the micropores above the residual pF value [-], default 4.2
+			///  - \f$V_{soil} = A_{cell} d_{layer}\f$ is the total volume of the soil layer [\f$m^3\f$]
+			///
+			/// The residual micropore pF is used to determine a residual water content of the micropores. Residual in this case means, that above this pF value, 
+			/// water is not draining to the macro pores, even if they are empty. Although the default value is at wilting point, lower pF values are much more sensible,
+			/// and should be rather lower than field capacity (pF=1.8 - 2.5). However, since this equation is rather conceptual than physical, this value can only be estimated or
+			/// calibrated.
+			///
 			/// cf. Simunek et al J. of Hydr. 2003
 			class DiffusiveMacroMicroExchange : public cmf::water::flux_connection {
 			protected:
@@ -255,8 +305,11 @@ namespace cmf {
 				void NewNodes();
 				virtual real calc_q(cmf::math::Time t);
 			public:
+				/// \f$\omega\f$ is the exchange rate in \f$day^{-1}\f$
 				real omega;
-				DiffusiveMacroMicroExchange(cmf::upslope::SoilLayer::ptr left, cmf::upslope::MacroPore::ptr right,real omega);
+				/// 
+				real pFrmi;
+				DiffusiveMacroMicroExchange(cmf::upslope::MacroPore::ptr left,cmf::upslope::SoilLayer::ptr right, real omega,real pFrmi=4.2);
 			};
 			/// @ingroup MacroPore
 			///
