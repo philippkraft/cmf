@@ -291,7 +291,11 @@ namespace cmf {
 			VanGenuchtenMualem(real Ksat=15, real phi=0.5,real alpha=0.2178, real n=1.211, real m=-1);
 
 		};
+		/**
+		class VogelCislerovaRetention : public VanGenuchtenMualem {
 
+		};
+		**/
 		/// The linear retention curve provides a simple linear relationship between storage and head
 		/// 
 		/// Head function (head in m, calculated from upper side control volume)

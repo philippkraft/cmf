@@ -436,6 +436,86 @@ returns the right node of this connection ";
 %feature("docstring")  cmf::upslope::aquifer_Darcy::to_string "std::string to_string() const ";
 
 
+// File: classcmf_1_1upslope_1_1connections_1_1_base_macro_flow.xml
+%feature("docstring") cmf::upslope::connections::BaseMacroFlow "";
+
+%feature("docstring")  cmf::upslope::connections::BaseMacroFlow::conc
+"real conc(cmf::math::Time t, const cmf::water::solute &_Solute)
+
+Returns the concentration of the flux.
+
+If not overridden, it returns the concentration of the source of the
+flux (direction depending) ";
+
+%feature("docstring")
+cmf::upslope::connections::BaseMacroFlow::exchange_target "void
+exchange_target(flux_node::ptr oldtarget, flux_node::ptr newTarget) ";
+
+%feature("docstring")
+cmf::upslope::connections::BaseMacroFlow::get_ptr "ptr get_ptr()
+const ";
+
+%feature("docstring")
+cmf::upslope::connections::BaseMacroFlow::get_target "flux_node::ptr
+get_target(const flux_node &inquirer)
+
+Returns the other end of a connection than the asking end. ";
+
+%feature("docstring")
+cmf::upslope::connections::BaseMacroFlow::get_target "flux_node::ptr
+get_target(int index) const
+
+With index 0, the left node is returned, with index 1 the right node
+of the connection. ";
+
+%feature("docstring")
+cmf::upslope::connections::BaseMacroFlow::get_tracer_filter "real
+get_tracer_filter()
+
+A value ranging from 0 to 1. ";
+
+%feature("docstring")
+cmf::upslope::connections::BaseMacroFlow::kill_me "bool kill_me()
+
+Deregisters this connection from its nodes. Returns true if only one
+reference is left. ";
+
+%feature("docstring")
+cmf::upslope::connections::BaseMacroFlow::left_node "flux_node::ptr
+left_node() const
+
+Returns the left node of this connection. ";
+
+%feature("docstring")  cmf::upslope::connections::BaseMacroFlow::q "real q(const flux_node &inquirer, cmf::math::Time t)
+
+Returns the current flux through a connection. Negative signs mean out
+of the inquirer, positive are inflows to the inquirer. ";
+
+%feature("docstring")
+cmf::upslope::connections::BaseMacroFlow::refresh "void
+refresh(cmf::math::Time t)
+
+Performes a new calculation of the flux. ";
+
+%feature("docstring")
+cmf::upslope::connections::BaseMacroFlow::right_node "flux_node::ptr
+right_node() const
+
+returns the right node of this connection ";
+
+%feature("docstring")
+cmf::upslope::connections::BaseMacroFlow::set_tracer_filter "void
+set_tracer_filter(real value) ";
+
+%feature("docstring")
+cmf::upslope::connections::BaseMacroFlow::short_string "std::string
+short_string() const ";
+
+%feature("docstring")
+cmf::upslope::connections::BaseMacroFlow::to_string "std::string
+to_string() const ";
+
+
 // File: classcmf_1_1math_1_1_b_d_f2.xml
 %feature("docstring") cmf::math::BDF2 "
 
@@ -1350,9 +1430,8 @@ Returns the list of layers.
 
 From python this function is masked as a property: ";
 
-%feature("docstring")  cmf::upslope::Cell::add_layer "void
-add_layer(real lowerboundary, const cmf::upslope::RetentionCurve
-&r_curve, real saturateddepth=10)
+%feature("docstring")  cmf::upslope::Cell::add_layer "cmf::upslope::SoilLayer::ptr add_layer(real lowerboundary, const
+cmf::upslope::RetentionCurve &r_curve, real saturateddepth=10)
 
 Adds a layer to the cell.
 
@@ -2645,17 +2724,36 @@ matrix ( SoilLayer)
 
 .. math::
 
-     q = \\\\omega (W_{ma} - W_{mi})
+     q = \\\\omega (W_{ma} - W_{mi,eff}) V_{soil}
 
- cf. Simunek et al J. of
-Hydr. 2003
+ where:
+ :math:`\\\\omega`  is the exchange rate in  :math:`day^{-1}` 
+
+ :math:`W_{ma}`  is the filled fraction of the macropore system [-]
+
+ :math:`W_{mi,eff}`  is the water filled pore space of the micropores above
+the residual pF value [-], default 4.2
+
+ :math:`V_{soil} = A_{cell} d_{layer}`  is the total volume of the soil layer
+[  :math:`m^3` ]
+
+The residual micropore pF is used to determine a residual water
+content of the micropores. Residual in this case means, that above
+this pF value, water is not draining to the macro pores, even if they
+are empty. Although the default value is at wilting point, lower pF
+values are much more sensible, and should be rather lower than field
+capacity (pF=1.8 - 2.5). However, since this equation is rather
+conceptual than physical, this value can only be estimated or
+calibrated.
+
+cf. Simunek et al J. of Hydr. 2003
 
 C++ includes: macropore.h ";
 
 %feature("docstring")
 cmf::upslope::connections::DiffusiveMacroMicroExchange::DiffusiveMacroMicroExchange
-"DiffusiveMacroMicroExchange(cmf::upslope::SoilLayer::ptr left,
-cmf::upslope::MacroPore::ptr right, real omega) ";
+"DiffusiveMacroMicroExchange(cmf::upslope::MacroPore::ptr left,
+cmf::upslope::SoilLayer::ptr right, real omega, real pFrmi=4.2) ";
 
 %feature("docstring")
 cmf::upslope::connections::DiffusiveMacroMicroExchange::conc "real
@@ -3840,7 +3938,7 @@ to_string() const ";
 cmf::upslope::connections::GradientMacroMicroExchange "
 
 A gradient based exchange term between macropores and micropores,
-using a fixed potential for macropores.
+using a fixed (air-) potential for macropores.
 
 
 
@@ -5467,6 +5565,133 @@ double q(double h, double slope) const ";
 double V(double h) const =0 ";
 
 
+// File: classcmf_1_1upslope_1_1connections_1_1_jarvis_macro_flow.xml
+%feature("docstring") cmf::upslope::connections::JarvisMacroFlow "
+
+A physically based macropore to macropore connection according to
+Jarvis & Leeds-Harrison 1987, JSS.
+
+
+
+.. math::
+
+    q_{i->j} [m/s]= \\\\rho \\\\frac G {12\\\\eta} w^2 \\\\frac{e_v-
+    e_r}{1-e_r} S_{c,i}^\\\\beta\\\\ (1-S_{c,j})
+
+ where:   :math:`q_{i->j}` 
+the flow from macro pore layer i to macropore layer j
+
+ :math:`\\\\rho=10^{-3} kg/m^3`  - the density of water
+
+ :math:`G=9.81 m/s^2`  the earth acceleration
+
+ :math:`\\\\eta=1.0 kg/(m s)`  the viscosity of water (at 20 degC)
+
+ :math:`w [m]`  the crack width, a function of water content and crack
+distance
+
+ :math:`e_v [-]`  the crack porosity
+
+ :math:`e_r [-]`  crack por
+
+ :math:`S_c [-]`  the crack saturation of layer i resp. j
+
+ :math:`\\\\beta [-]`  a conceptional exponent to shape the flow reaction
+
+C++ includes: macropore.h ";
+
+%feature("docstring")
+cmf::upslope::connections::JarvisMacroFlow::JarvisMacroFlow "JarvisMacroFlow(cmf::upslope::MacroPore::ptr left,
+cmf::water::flux_node::ptr right, real beta=1., real
+porefraction_r=0.0)
+
+Constructs the connection.
+
+Parameters:
+-----------
+
+left:  right:  the connected macropores
+
+beta:  User defined parameter for the swelling reaction
+
+porefraction_r:  Porefraction at which flow starts. For swelling soils
+that are closing completely th ";
+
+%feature("docstring")
+cmf::upslope::connections::JarvisMacroFlow::conc "real
+conc(cmf::math::Time t, const cmf::water::solute &_Solute)
+
+Returns the concentration of the flux.
+
+If not overridden, it returns the concentration of the source of the
+flux (direction depending) ";
+
+%feature("docstring")
+cmf::upslope::connections::JarvisMacroFlow::exchange_target "void
+exchange_target(flux_node::ptr oldtarget, flux_node::ptr newTarget) ";
+
+%feature("docstring")
+cmf::upslope::connections::JarvisMacroFlow::get_ptr "ptr get_ptr()
+const ";
+
+%feature("docstring")
+cmf::upslope::connections::JarvisMacroFlow::get_target "flux_node::ptr get_target(const flux_node &inquirer)
+
+Returns the other end of a connection than the asking end. ";
+
+%feature("docstring")
+cmf::upslope::connections::JarvisMacroFlow::get_target "flux_node::ptr get_target(int index) const
+
+With index 0, the left node is returned, with index 1 the right node
+of the connection. ";
+
+%feature("docstring")
+cmf::upslope::connections::JarvisMacroFlow::get_tracer_filter "real
+get_tracer_filter()
+
+A value ranging from 0 to 1. ";
+
+%feature("docstring")
+cmf::upslope::connections::JarvisMacroFlow::kill_me "bool kill_me()
+
+Deregisters this connection from its nodes. Returns true if only one
+reference is left. ";
+
+%feature("docstring")
+cmf::upslope::connections::JarvisMacroFlow::left_node "flux_node::ptr
+left_node() const
+
+Returns the left node of this connection. ";
+
+%feature("docstring")  cmf::upslope::connections::JarvisMacroFlow::q "real q(const flux_node &inquirer, cmf::math::Time t)
+
+Returns the current flux through a connection. Negative signs mean out
+of the inquirer, positive are inflows to the inquirer. ";
+
+%feature("docstring")
+cmf::upslope::connections::JarvisMacroFlow::refresh "void
+refresh(cmf::math::Time t)
+
+Performes a new calculation of the flux. ";
+
+%feature("docstring")
+cmf::upslope::connections::JarvisMacroFlow::right_node "flux_node::ptr right_node() const
+
+returns the right node of this connection ";
+
+%feature("docstring")
+cmf::upslope::connections::JarvisMacroFlow::set_tracer_filter "void
+set_tracer_filter(real value) ";
+
+%feature("docstring")
+cmf::upslope::connections::JarvisMacroFlow::short_string "std::string
+short_string() const ";
+
+%feature("docstring")
+cmf::upslope::connections::JarvisMacroFlow::to_string "std::string
+to_string() const ";
+
+
 // File: classcmf_1_1water_1_1kinematic__wave.xml
 %feature("docstring") cmf::water::kinematic_wave "
 
@@ -5598,7 +5823,8 @@ stable. Only for tryouts!
 
 .. math::
 
-     q = A_{cell} K_{macro} \\\\frac{V_{upper}}{C_{upper}}
+     q = A_{cell} K_{macro}
+    \\\\left(\\\\frac{V_{upper}}{C_{upper}}\\\\right)^\\\\beta
     \\\\left(1-\\\\frac{V_{lower}}{C_{lower}}\\\\right) 
 
  where:
@@ -5615,7 +5841,7 @@ C++ includes: macropore.h ";
 
 %feature("docstring")
 cmf::upslope::connections::KinematicMacroFlow::KinematicMacroFlow "KinematicMacroFlow(cmf::water::WaterStorage::ptr left,
-cmf::water::flux_node::ptr right)
+cmf::water::flux_node::ptr right, real beta=1.)
 
 Creates the connection.
 
@@ -5623,6 +5849,9 @@ Parameters:
 -----------
 
 left:  right:  the nodes between the connection should be created.
+
+beta:  a conceptional curve shape parameter for the relation between
+storage and outflow
 
 Either left or right needs to be a MacroPore, left needs to be a water
 storage ";
@@ -6405,8 +6634,10 @@ V:    :math:`V m^3`  the water volume in the storage
 // File: classcmf_1_1upslope_1_1_linear_retention.xml
 %feature("docstring") cmf::upslope::LinearRetention "
 
-The linear retention curve provides a simple linear relationship
-between storage and head.
+class VogelCislerovaRetention : public VanGenuchtenMualem {
+
+};The linear retention curve provides a simple linear relationship
+between storage and head
 
 Head function (head in m, calculated from upper side control volume)
 
@@ -6758,6 +6989,38 @@ pores) in  :math:`m^3`  ";
 The cell of this macropore. ";
 
 %feature("docstring")  cmf::upslope::MacroPore::get_connections "cmf::water::connection_list get_connections() const ";
+
+%feature("docstring")  cmf::upslope::MacroPore::get_crackwidth "virtual real get_crackwidth() const
+
+Returns the crack width for a prismatic crackstructure.
+
+For a prismatic crack structure, the porefraction in m3/m3 equals the
+vertical crack area in m2/m2. The length of equally spaced cracks is
+in one direction the inverse of the density and twice the length for
+two directions. 
+
+.. math::
+
+     l_{crack} [m/m^2]= 2 \\\\frac {1}{d[m]}
+
+ If
+we again ignore the fact that the spacing of the cracking crossings is
+counted double, the crack width is: 
+
+.. math::
+
+     w_{crack}[m] =
+    \\\\frac{A_{crack}[m^2/m^2]}{l_{crack}[m/m^2]} 
+
+ Combining both
+eq. above: 
+
+.. math::
+
+     w_{crack}[m] = A_{crack}[m^2/m^2]\\\\frac{d[m]}{2}
+    
+
+ ";
 
 %feature("docstring")  cmf::upslope::MacroPore::get_filled_fraction "real get_filled_fraction() const
 
