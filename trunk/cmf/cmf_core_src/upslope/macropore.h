@@ -255,7 +255,7 @@ namespace cmf {
 				/// @param left,right the connected macropores
 				/// @param beta User defined parameter for the swelling reaction
 				/// @param porefraction_r Porefraction at which flow starts. For swelling soils that are closing completely th
-				JarvisMacroFlow(cmf::upslope::MacroPore::ptr left,cmf::water::flux_node::ptr right, real beta=1., real porefraction_r=0.0);
+				JarvisMacroFlow(cmf::water::WaterStorage::ptr left,cmf::water::flux_node::ptr right, real beta=1., real porefraction_r=0.0);
 			};
 			/// @ingroup MacroPore
 			/// @brief A gradient based exchange term between macropores and micropores, 
