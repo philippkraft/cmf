@@ -38,7 +38,9 @@ gcc = not msvc
 # Change this path to your boost installation (not needed for gcc)
 
 boost_path = os.environ.get('BOOSTDIR',r"..\boost_1_41_0")
-
+# Parallel compilation
+# http://stackoverflow.com/a/13176803/3032680
+# monkey-patch for parallel compilation
 
 # No user action required beyond this point
 import datetime
@@ -62,7 +64,8 @@ if "noopenmp" in sys.argv:
     sys.argv.remove("noopenmp")
 else:
     openmp=True
-
+pcompile="pcompile" in sys.argv
+if pcompile: sys.argv.remove('pcompile')
 def count_lines(files):
     lcount=0
     for fn in files:
@@ -140,7 +143,18 @@ def make_raster():
                     )
     return raster
 if __name__=='__main__':
-    
+    if pcompile:
+        import parallelcompile
+        if msvc:
+            import distutils.msvccompiler
+            import distutils.msvc9compiler
+        
+            distutils.msvccompiler.MSVCCompiler.compile = windows_parallel_cpp_compile
+            distutils.msvc9compiler.MSVCCompiler.compile = windows_parallel_cpp_compile
+        else:
+            import distutils.ccompiler
+            distutils.ccompiler.CCompiler.compile = linux_parallel_cpp_compile
+     
     ext = [make_raster(),make_cmf_core()]
     author = "Philipp Kraft"
     author_email = "philipp.kraft@umwelt.uni-giessen.de"

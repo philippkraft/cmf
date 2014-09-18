@@ -15,7 +15,8 @@
 //
 //   You should have received a copy of the GNU General Public License
 //   along with cmf.  If not, see <http://www.gnu.org/licenses/>.
-//   
+//  
+#include <limits>
 #include "SoluteStorage.h"
 #include "WaterStorage.h"
 #include "flux_connection.h"
@@ -47,8 +48,9 @@ real SoluteStorage::dxdt( const cmf::math::Time& time )
 real SoluteStorage::conc() const
 {
 	real V = m_water->get_volume();
-	if (V>0)
-		return this->adsorption->freesolute(get_state(),V) /V;
+	real c = this->adsorption->freesolute(get_state(),V) /V;
+	if (c > std::numeric_limits<real>::min() && c < std::numeric_limits<real>::max())
+		return c;
 	else
 		return 0.0;
 }

@@ -87,4 +87,60 @@ def fit_vgm(pF,theta,variable_m=False, count=20, fitlevel=None,verbose=False):
                 break
     theta_mean=np.mean(theta)
     return vgm, 1-best_f/ns_denom
+
+def narrowparameters_vgm(pF,theta,phi,alpha,n,count=10000,perc=10.):
+    """
+    Narrows the parameter space down to the best perc (default=10) percent of the results
+    pF: A sequence of pF values matching theta
+    theta: A sequence of water content values for the corresponding pF values
+    phi: A distribution of porosity values, only the range is used
+    alpha: A distribution of VanGenuchten alpha values, only the range is used
+    n: A distribution of VanGenuchten n values, only the range is used
+    count: Number of random values to be drawn in the range of the parameters
+    perc: percentile of best fitting parameters
     
+    Returns:
+    phi,alpha,n,vgm_err: New distribution of phi, alpha, n and the corrseponding errors
+                         for the best perc% of the results
+                         
+    Usage:
+        # Create a priori range
+        phi, n, alpha = 
+    """
+    phi,alpha,n = [np.random.uniform(arg.min(),arg.max(),count) for arg in [phi,alpha,n]]
+    vgm_err = np.array([get_error_vgm((phi_,alpha_,n_),pF,theta) for phi_,alpha_,n_ in zip(phi,alpha,n)]) 
+    res_perc = np.percentile(vgm_err[np.isfinite(vgm_err)],perc)
+    take = vgm_err<res_perc
+    minmax = lambda x: (x.min(),x.max())
+    print "Best %g%% has an error value < %g" % (perc,res_perc)
+    for arg,narg in zip([phi,alpha,n,vgm_err],'phi alpha n vgm_error'.split()):
+        print narg, ': %g - %g' % minmax(arg[take])
+    print "Error for mean value: %g" % get_error_vgm((phi.mean(),alpha.mean(),n.mean()),pF,theta)
+    return [arg[take] for arg in [phi,alpha,n,vgm_err]]
+    
+def narrowparameters_bc(pF,theta,phi,b,w_x,count=10000,perc=10.):
+    """
+    Narrows the parameter space down to the best perc (default=10) percent of the results
+    pF: A sequence of pF values matching theta
+    theta: A sequence of water content values for the corresponding pF values
+    phi: A distribution of porosity values, only the range is used
+    alpha: A distribution of VanGenuchten alpha values, only the range is used
+    n: A distribution of VanGenuchten n values, only the range is used
+    count: Number of random values to be drawn in the range of the parameters
+    perc: percentile of best fitting parameters
+    
+    Returns:
+    phi,alpha,n,vgm_err: New distribution of phi, alpha, n and the corrseponding errors
+                         for the best perc% of the results
+    """
+    phi,b,w_x= [np.random.uniform(arg.min(),arg.max(),count) for arg in [phi,b,w_x]]
+    vgm_err = np.array([get_error_bc((phi_,b_,w_x_ * phi_),pF,theta) for phi_,b_,w_x_ in zip(phi,b,w_x)]) 
+    res_perc = np.percentile(vgm_err[np.isfinite(vgm_err)],perc)
+    take = vgm_err<res_perc
+    minmax = lambda x: (x.min(),x.max())
+    print "Best %g%% has an error value < %g" % (perc,res_perc)
+    for arg,narg in zip([phi,b,w_x,vgm_err],'phi b w_x vgm_error'.split()):
+        print narg, ': %g - %g' % minmax(arg[take])
+    print "Error for mean value: %g" % get_error_bc((phi.mean(),b.mean(),(w_x*phi).mean()),pF,theta)
+    return [arg[take] for arg in [phi,b,w_x,vgm_err]]
+      

@@ -92,7 +92,7 @@ real Cell::get_saturated_depth() const
 
 
 
-void Cell::add_layer(real lowerboundary,const RetentionCurve& r_curve,real saturateddepth/*=-10*/ )
+SoilLayer::ptr Cell::add_layer(real lowerboundary,const RetentionCurve& r_curve,real saturateddepth/*=-10*/ )
 {
 	// Create new soil layer
 	SoilLayer::ptr layer(new SoilLayer(*this,lowerboundary,r_curve,saturateddepth));
@@ -103,6 +103,7 @@ void Cell::add_layer(real lowerboundary,const RetentionCurve& r_curve,real satur
 		layer->m_upper = SoilLayer::weak_ptr(m_Layers[-1]);
 	} // Add the new layer to the layer vector
 	m_Layers.append(layer);
+	return layer;
 }
 SoilLayer::ptr Cell::get_layer(ptrdiff_t index) const {
 	return m_Layers[index];

@@ -7,12 +7,12 @@ using namespace cmf::upslope;
 
 
 
-cmf::upslope::MacroPore::MacroPore( SoilLayer::ptr layer,real _porefraction, real _Ksat,real _density, real _porefraction_max, real _K_shape) 
+cmf::upslope::MacroPore::MacroPore( SoilLayer::ptr layer,real _porefraction_min, real _Ksat,real _density, real _porefraction_max, real _K_shape) 
 	:	WaterStorage(layer->cell.get_project(),"Macro pores for " + layer->Name,0.0),
-	m_layer(layer),m_porefraction_min(_porefraction),density(_density), Ksat(_Ksat), m_porefraction_max(_porefraction_max), K_shape(_K_shape)
+	m_layer(layer),porefraction_min(_porefraction_min),density(_density), Ksat(_Ksat), porefraction_max(_porefraction_max), K_shape(_K_shape)
 {
 	position = layer->position;
-	if (m_porefraction_max<0) m_porefraction_max = m_porefraction_min;
+	if (porefraction_max<0) porefraction_max = porefraction_min;
 }
 
 real cmf::upslope::MacroPore::head_to_volume( real head ) const
@@ -114,6 +114,24 @@ real cmf::upslope::MacroPore::get_K() const
 	}
 }
 
+real cmf::upslope::MacroPore::get_porefraction() const
+{
+	real w = get_layer()->get_wetness();
+	real w_eff = minmax(get_layer()->get_soil().Wetness_eff(w),0,1);
+	return porefraction_min + (1-w_eff) * (porefraction_max-porefraction_min);
+}
+void cmf::upslope::connections::BaseMacroFlow::NewNodes()
+{
+	MacroPore::ptr 
+		Mp1=cmf::upslope::MacroPore::cast(left_node()),
+		Mp2=cmf::upslope::MacroPore::cast(right_node());
+	if (!(Mp1) && !(Mp2)) 
+		throw std::runtime_error("One of the end points for " + this->type + " needs to be a MacroPore");
+	mp1 = Mp1;
+	mp2 = Mp2;
+	c2=cmf::upslope::conductable::cast(right_node());
+}
+
 real cmf::upslope::connections::GradientMacroFlow::calc_q( cmf::math::Time t )
 {
 	using namespace cmf::upslope;
@@ -147,7 +165,8 @@ real cmf::upslope::connections::KinematicMacroFlow::calc_q( cmf::math::Time t )
 	using namespace cmf::geometry;
 	MacroPore::ptr 
 		Mp1=mp1.lock(),
-		Mp2=mp2.lock();
+		Mp2=mp2.lock(),
+		Mp =Mp1 ? Mp1 : Mp2;
 	real 
 		linear_gradient = 0.0;
 	
@@ -166,16 +185,39 @@ real cmf::upslope::connections::KinematicMacroFlow::calc_q( cmf::math::Time t )
 
 }
 
-void cmf::upslope::connections::KinematicMacroFlow::NewNodes()
-{
+real cmf::upslope::connections::JarvisMacroFlow::calc_q(cmf::math::Time t) {
+
+	using namespace cmf::upslope;
+	using namespace cmf::geometry;
 	MacroPore::ptr 
-		Mp1=cmf::upslope::MacroPore::cast(left_node()),
-		Mp2=cmf::upslope::MacroPore::cast(right_node());
-	if (!(Mp1) && !(Mp2)) 
-		throw std::runtime_error("One of the end points for KinematicMacroFlow needs to be a MacroPore");
-	mp1 = Mp1;
-	mp2 = Mp2;
+		Mp1=mp1.lock(),
+		Mp2=mp2.lock(),
+		Mp = Mp1 ? Mp1 : Mp2;
+	// cmf::water::WaterStorage::ptr ws1 = cmf::water::WaterStorage::cast(left_node());
+	real 
+		w = Mp->get_crackwidth(), // m
+		rho = 1000.,  // kg m-3, density of water at 20degC
+		G = 9.81, // m s-2, earth accell.
+		nu = 1.0, // kg m-1 s-1, viscosity of water at 20 degC
+		pf_r = porefraction_r>=0 ? porefraction_r : Mp1->porefraction_min,
+		e_v = (Mp->get_porefraction() - pf_r)/(1-pf_r), 
+		Sc = Mp1 ? Mp1->get_filled_fraction() : 1 - left_node()->is_empty();
+
+	// Jarvis and Harrison, 1987, JSS p. 491, eq 11
+	// Potential flow in m/s
+
+	//    m/s    kg m-3   m/s2  kg/(m*s)   m*m
+	real q_pot_ms = rho   *   G /  (12*nu)  * w*w  * e_v * pow(Sc,beta);
+	real overflow = Mp2 ? std::max( 1 - Mp2->get_filled_fraction(),0.0) : 1;			
+	real area = Mp->get_cell().get_area();
+	real q = q_pot_ms * overflow * area * 86400;
+	return prevent_negative_volume(q);
+
 }
+
+cmf::upslope::connections::JarvisMacroFlow::JarvisMacroFlow( cmf::upslope::MacroPore::ptr left,cmf::water::flux_node::ptr right, real _beta/*=1.*/, real _porefraction_r )
+	: BaseMacroFlow(left,right,"Jarvis & Leeds-Harrison 1987 clay crack flow"), beta(_beta),porefraction_r(_porefraction_r)
+{}
 
 void cmf::upslope::connections::GradientMacroMicroExchange::NewNodes()
 {
@@ -202,12 +244,12 @@ real cmf::upslope::connections::GradientMacroMicroExchange::calc_q( cmf::math::T
 }
 void cmf::upslope::connections::DiffusiveMacroMicroExchange::NewNodes()
 {
-	sl = SoilLayer::cast(left_node());
-	mp = MacroPore::cast(right_node());
+	sl = SoilLayer::cast(right_node());
+	mp = MacroPore::cast(left_node());
 }
 
-cmf::upslope::connections::DiffusiveMacroMicroExchange::DiffusiveMacroMicroExchange( cmf::upslope::SoilLayer::ptr left, cmf::upslope::MacroPore::ptr right,real _omega ) 
-	: flux_connection(left,right,"Macro to micro pores exchange"),omega(_omega)
+cmf::upslope::connections::DiffusiveMacroMicroExchange::DiffusiveMacroMicroExchange(cmf::upslope::MacroPore::ptr left,cmf::upslope::SoilLayer::ptr right, real _omega,real _pFrmi)
+	: flux_connection(left,right,"Macro to micro pores exchange"),omega(_omega),pFrmi(_pFrmi)
 {
 	NewNodes();
 }
@@ -216,8 +258,16 @@ real cmf::upslope::connections::DiffusiveMacroMicroExchange::calc_q( cmf::math::
 {
 	MacroPore::ptr MP = mp.lock();
 	SoilLayer::ptr SL = sl.lock();
-	real q = omega
-		   *   (MP->get_volume()/MP->get_capacity() - SL->get_wetness()) 
+	const RetentionCurve& rt = SL->get_soil();
+	real 
+		// Macropore filled fraction
+		Wma = MP->get_volume()/MP->get_capacity(),
+		// Micropore filled fraction
+		Wmi = SL->get_wetness(),
+		Wmi_eff = rt.Wetness_eff(Wmi,pFrmi),
+
+		q = omega
+		   *   (Wma - Wmi_eff) 
 		   *	SL->get_thickness() * SL->cell.get_area();
 	return prevent_negative_volume(q);
 
@@ -241,3 +291,4 @@ real cmf::upslope::connections::MACROlikeMacroMicroExchange::calc_q( cmf::math::
 	real Sw = (Gf * Dw * gamma_w)/square(MP->density) * (theta_b - theta_mi);
 	return prevent_negative_volume(Sw * SL->get_thickness() * SL->cell.get_area());
 }
+
