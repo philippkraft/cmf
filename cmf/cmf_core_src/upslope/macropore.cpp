@@ -9,7 +9,7 @@ using namespace cmf::upslope;
 
 cmf::upslope::MacroPore::MacroPore( SoilLayer::ptr layer,real _porefraction_min, real _Ksat,real _density, real _porefraction_max, real _K_shape) 
 	:	WaterStorage(layer->cell.get_project(),"Macro pores for " + layer->Name,0.0),
-	m_layer(layer),porefraction_min(_porefraction_min),density(_density), Ksat(_Ksat), porefraction_max(_porefraction_max), K_shape(_K_shape)
+	m_layer(layer),porefraction_min(_porefraction_min),density(_density), Ksat(_Ksat), porefraction_max(_porefraction_max), K_shape(_K_shape), crack_wetness(1.0)
 {
 	position = layer->position;
 	if (porefraction_max<0) porefraction_max = porefraction_min;
@@ -116,9 +116,12 @@ real cmf::upslope::MacroPore::get_K() const
 
 real cmf::upslope::MacroPore::get_porefraction() const
 {
-	real w = get_layer()->get_wetness();
-	real w_eff = minmax(get_layer()->get_soil().Wetness_eff(w),0,1);
-	return porefraction_min + (1-w_eff) * (porefraction_max-porefraction_min);
+	real 
+		w = get_layer()->get_wetness(),
+		wwilt = get_layer()->get_soil().Wetness_pF(4.2),
+		open = minmax(1-(w-wwilt)/(crack_wetness - wwilt),0.,1.);
+	// real w_eff = minmax(get_layer()->get_soil().Wetness_eff(w),0,1);
+	return porefraction_min + open * (porefraction_max-porefraction_min);
 }
 void cmf::upslope::connections::BaseMacroFlow::NewNodes()
 {
@@ -172,14 +175,16 @@ real cmf::upslope::connections::KinematicMacroFlow::calc_q( cmf::math::Time t )
 	
 	if (Mp1) {
 		linear_gradient = Mp1->get_K() * Mp1->get_filled_fraction();
-	} else {
+	} else if (Mp2) {
 		cmf::water::WaterStorage::ptr ws2 = cmf::water::WaterStorage::cast(left_node());
 		// Use a virtual filled fraction, using the capacity of Mp2
 		linear_gradient = Mp2->get_K() * ws2->get_volume() / Mp2->get_capacity();
+	} else {
+		throw std::runtime_error("Could not lock Mp1 and Mp2 in KinamticMacroFlow");
 	}
 
 	real overflow = Mp2 ? std::max( 1 - Mp2->get_filled_fraction(),0.0) : 1;			
-	real area = (Mp1 ? Mp1 : Mp2)->get_cell().get_area();
+	real area = Mp->get_cell().get_area();
 	real k_flow = linear_gradient * overflow * area;
 	return prevent_negative_volume(k_flow);
 
@@ -199,8 +204,8 @@ real cmf::upslope::connections::JarvisMacroFlow::calc_q(cmf::math::Time t) {
 		rho = 1000.,  // kg m-3, density of water at 20degC
 		G = 9.81, // m s-2, earth accell.
 		nu = 1.0, // kg m-1 s-1, viscosity of water at 20 degC
-		pf_r = porefraction_r>=0 ? porefraction_r : Mp1->porefraction_min,
-		e_v = (Mp->get_porefraction() - pf_r)/(1-pf_r), 
+		pf_r = porefraction_r>=0 ? porefraction_r : Mp->porefraction_min,
+		e_v = std::max((Mp->get_porefraction() - pf_r)/(1-pf_r),0.0), 
 		Sc = Mp1 ? Mp1->get_filled_fraction() : 1 - left_node()->is_empty();
 
 	// Jarvis and Harrison, 1987, JSS p. 491, eq 11
@@ -215,7 +220,7 @@ real cmf::upslope::connections::JarvisMacroFlow::calc_q(cmf::math::Time t) {
 
 }
 
-cmf::upslope::connections::JarvisMacroFlow::JarvisMacroFlow( cmf::upslope::MacroPore::ptr left,cmf::water::flux_node::ptr right, real _beta/*=1.*/, real _porefraction_r )
+cmf::upslope::connections::JarvisMacroFlow::JarvisMacroFlow( cmf::water::WaterStorage::ptr left,cmf::water::flux_node::ptr right, real _beta/*=1.*/, real _porefraction_r )
 	: BaseMacroFlow(left,right,"Jarvis & Leeds-Harrison 1987 clay crack flow"), beta(_beta),porefraction_r(_porefraction_r)
 {}
 

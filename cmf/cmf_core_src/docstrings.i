@@ -870,6 +870,15 @@ SetPorosity(real porosity, real porosity_decay=0)
 Sets the porosity (Volume of pores per volume of soil) and the
 exponential porosity decline with depth. ";
 
+%feature("docstring")  cmf::upslope::BrooksCoreyRetentionCurve::theta
+"virtual real theta(real wetness) const
+
+returns the water content  :math:`theta`  for a given wetness ";
+
+%feature("docstring")  cmf::upslope::BrooksCoreyRetentionCurve::theta
+"cmf::math::num_array theta(const cmf::math::num_array &wetness)
+const ";
+
 %feature("docstring")
 cmf::upslope::BrooksCoreyRetentionCurve::Transmissivity "real
 Transmissivity(real upperDepth, real lowerDepth, real theta) const ";
@@ -4513,6 +4522,15 @@ Porosity(real depth) const
 
 Returns the porosity at a certain depth. ";
 
+%feature("docstring")  cmf::upslope::connections::HBVparameters::theta
+"virtual real theta(real wetness) const
+
+returns the water content  :math:`theta`  for a given wetness ";
+
+%feature("docstring")  cmf::upslope::connections::HBVparameters::theta
+"cmf::math::num_array theta(const cmf::math::num_array &wetness)
+const ";
+
 %feature("docstring")
 cmf::upslope::connections::HBVparameters::VoidVolume "virtual real
 VoidVolume(real upperDepth, real lowerDepth, real Area) const
@@ -5601,7 +5619,7 @@ distance
 C++ includes: macropore.h ";
 
 %feature("docstring")
-cmf::upslope::connections::JarvisMacroFlow::JarvisMacroFlow "JarvisMacroFlow(cmf::upslope::MacroPore::ptr left,
+cmf::upslope::connections::JarvisMacroFlow::JarvisMacroFlow "JarvisMacroFlow(cmf::water::WaterStorage::ptr left,
 cmf::water::flux_node::ptr right, real beta=1., real
 porefraction_r=0.0)
 
@@ -6703,6 +6721,14 @@ Returns the potential below upper side of the control volume in m. ";
 %feature("docstring")  cmf::upslope::LinearRetention::Porosity "virtual real Porosity(real depth) const
 
 Returns the porosity at a certain depth. ";
+
+%feature("docstring")  cmf::upslope::LinearRetention::theta "virtual
+real theta(real wetness) const
+
+returns the water content  :math:`theta`  for a given wetness ";
+
+%feature("docstring")  cmf::upslope::LinearRetention::theta "cmf::math::num_array theta(const cmf::math::num_array &wetness) const
+";
 
 %feature("docstring")  cmf::upslope::LinearRetention::Transmissivity "virtual real Transmissivity(real upperDepth, real lowerDepth, real
 wetness) const ";
@@ -10528,6 +10554,14 @@ returns the wetness of the soil at given water content ";
 %feature("docstring")  cmf::upslope::RetentionCurve::Porosity "virtual real Porosity(real depth=0.0) const =0
 
 Returns the porosity at a certain depth. ";
+
+%feature("docstring")  cmf::upslope::RetentionCurve::theta "virtual
+real theta(real wetness) const
+
+returns the water content  :math:`theta`  for a given wetness ";
+
+%feature("docstring")  cmf::upslope::RetentionCurve::theta "cmf::math::num_array theta(const cmf::math::num_array &wetness) const
+";
 
 %feature("docstring")  cmf::upslope::RetentionCurve::VoidVolume "virtual real VoidVolume(real upperDepth, real lowerDepth, real Area)
 const
@@ -14356,6 +14390,13 @@ returns the matrix potential at a given saturation
 
 Returns the porosity at a certain depth. ";
 
+%feature("docstring")  cmf::upslope::VanGenuchtenMualem::theta "cmf::math::num_array theta(const cmf::math::num_array &wetness) const
+";
+
+%feature("docstring")  cmf::upslope::VanGenuchtenMualem::theta "virtual real theta(real wetness) const
+
+returns the water content  :math:`theta`  for a given wetness ";
+
 %feature("docstring")
 cmf::upslope::VanGenuchtenMualem::Transmissivity "virtual real
 Transmissivity(real upperDepth, real lowerDepth, real wetness) const
@@ -14625,6 +14666,16 @@ cmf::upslope::VGM_BC_RetentionCurve_Windhorst::Porosity "virtual real
 Porosity(real depth) const
 
 Returns the porosity at a certain depth. ";
+
+%feature("docstring")
+cmf::upslope::VGM_BC_RetentionCurve_Windhorst::theta "cmf::math::num_array theta(const cmf::math::num_array &wetness) const
+";
+
+%feature("docstring")
+cmf::upslope::VGM_BC_RetentionCurve_Windhorst::theta "virtual real
+theta(real wetness) const
+
+returns the water content  :math:`theta`  for a given wetness ";
 
 %feature("docstring")
 cmf::upslope::VGM_BC_RetentionCurve_Windhorst::Transmissivity "virtual real Transmissivity(real upperDepth, real lowerDepth, real

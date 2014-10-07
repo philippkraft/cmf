@@ -7069,6 +7069,16 @@ class RetentionCurve(object):
         """
         return _cmf_core.RetentionCurve_Wetness(self, *args)
 
+    def theta(self, *args):
+        """
+        theta(RetentionCurve self, real wetness) -> real
+        theta(RetentionCurve self, cmf::math::num_array const & wetness) -> cmf::math::num_array
+
+        cmf::math::num_array theta(const cmf::math::num_array &wetness) const
+
+        """
+        return _cmf_core.RetentionCurve_theta(self, *args)
+
     def dPsiM_dW(self, *args):
         """
         dPsiM_dW(RetentionCurve self, real wetness) -> real
@@ -7116,6 +7126,7 @@ RetentionCurve.VoidVolume = new_instancemethod(_cmf_core.RetentionCurve_VoidVolu
 RetentionCurve.FillHeight = new_instancemethod(_cmf_core.RetentionCurve_FillHeight,None,RetentionCurve)
 RetentionCurve.Diffusivity = new_instancemethod(_cmf_core.RetentionCurve_Diffusivity,None,RetentionCurve)
 RetentionCurve.Wetness = new_instancemethod(_cmf_core.RetentionCurve_Wetness,None,RetentionCurve)
+RetentionCurve.theta = new_instancemethod(_cmf_core.RetentionCurve_theta,None,RetentionCurve)
 RetentionCurve.dPsiM_dW = new_instancemethod(_cmf_core.RetentionCurve_dPsiM_dW,None,RetentionCurve)
 RetentionCurve.Wetness_pF = new_instancemethod(_cmf_core.RetentionCurve_Wetness_pF,None,RetentionCurve)
 RetentionCurve.MatricPotential = new_instancemethod(_cmf_core.RetentionCurve_MatricPotential,None,RetentionCurve)
@@ -7294,6 +7305,7 @@ class VanGenuchtenMualem(RetentionCurve):
     Phi = _swig_property(_cmf_core.VanGenuchtenMualem_Phi_get, _cmf_core.VanGenuchtenMualem_Phi_set)
     m = _swig_property(_cmf_core.VanGenuchtenMualem_m_get, _cmf_core.VanGenuchtenMualem_m_set)
     l = _swig_property(_cmf_core.VanGenuchtenMualem_l_get, _cmf_core.VanGenuchtenMualem_l_set)
+    theta_r = _swig_property(_cmf_core.VanGenuchtenMualem_theta_r_get, _cmf_core.VanGenuchtenMualem_theta_r_set)
     w0 = _swig_property(_cmf_core.VanGenuchtenMualem_w0_get, _cmf_core.VanGenuchtenMualem_w0_set)
     def Transmissivity(self, *args, **kwargs):
         """
@@ -7910,6 +7922,7 @@ class MacroPore(WaterStorage):
 
     density = _swig_property(_cmf_core.MacroPore_density_get, _cmf_core.MacroPore_density_set)
     Ksat = _swig_property(_cmf_core.MacroPore_Ksat_get, _cmf_core.MacroPore_Ksat_set)
+    crack_wetness = _swig_property(_cmf_core.MacroPore_crack_wetness_get, _cmf_core.MacroPore_crack_wetness_set)
     def get_K(self, *args, **kwargs):
         """
         get_K(MacroPore self, point direction) -> real
@@ -8131,20 +8144,28 @@ class JarvisMacroFlow(BaseMacroFlow):
 
     .. math::
 
-        q_{i->j} = \\rho \\frac G {12\\eta} w^2 e_v
-        S_{c,i}^\\beta\\ (1-S_{c,j})
+        q_{i->j} [m/s]= \\rho \\frac G {12\\eta} w^2 \\frac{e_v-
+        e_r}{1-e_r} S_{c,i}^\\beta\\ (1-S_{c,j})
 
-     where:   :math:`q_{i->j}`  the flow from
-    macro pore layer i to macropore layer j
+     where:   :math:`q_{i->j}` 
+    the flow from macro pore layer i to macropore layer j
 
-    f :math:`=10^{-3} kg/m^3`  - the density of water - f :math:`G=9.81 m/s^2`  the earth
-    acceleration
+     :math:`\\rho=10^{-3} kg/m^3`  - the density of water
 
-    f :math:`=1.0 kg/(m s)`  the viscosity of water (at 20 degC) - f :math:`w [m]`  the
-    crack width, a function of water content and crack distance
+     :math:`G=9.81 m/s^2`  the earth acceleration
 
-    f :math:`e_v [-]`  the crack porosity - f :math:`S_c [-]`  the crack saturation of
-    layer i resp. j
+     :math:`\\eta=1.0 kg/(m s)`  the viscosity of water (at 20 degC)
+
+     :math:`w [m]`  the crack width, a function of water content and crack
+    distance
+
+     :math:`e_v [-]`  the crack porosity
+
+     :math:`e_r [-]`  crack por
+
+     :math:`S_c [-]`  the crack saturation of layer i resp. j
+
+     :math:`\\beta [-]`  a conceptional exponent to shape the flow reaction
 
     C++ includes: macropore.h 
     """
@@ -8154,11 +8175,12 @@ class JarvisMacroFlow(BaseMacroFlow):
     porefraction_r = _swig_property(_cmf_core.JarvisMacroFlow_porefraction_r_get, _cmf_core.JarvisMacroFlow_porefraction_r_set)
     def __init__(self, *args, **kwargs): 
         """
-        __init__(cmf::upslope::connections::JarvisMacroFlow self, cmf::upslope::MacroPore::ptr left, cmf::water::flux_node::ptr right, real beta=1., 
+        __init__(cmf::upslope::connections::JarvisMacroFlow self, cmf::water::WaterStorage::ptr left, cmf::water::flux_node::ptr right, real beta=1., 
             real porefraction_r=0.0) -> JarvisMacroFlow
 
-        JarvisMacroFlow(cmf::upslope::MacroPore::ptr left,
-        cmf::water::flux_node::ptr right, real beta=1.)
+        JarvisMacroFlow(cmf::water::WaterStorage::ptr left,
+        cmf::water::flux_node::ptr right, real beta=1., real
+        porefraction_r=0.0)
 
         Constructs the connection.
 
@@ -8167,7 +8189,10 @@ class JarvisMacroFlow(BaseMacroFlow):
 
         left:  right:  the connected macropores
 
-        beta:  User defined parameter for the swelling reaction 
+        beta:  User defined parameter for the swelling reaction
+
+        porefraction_r:  Porefraction at which flow starts. For swelling soils
+        that are closing completely th 
         """
         _cmf_core.JarvisMacroFlow_swiginit(self,_cmf_core.new_JarvisMacroFlow(*args, **kwargs))
     __swig_destroy__ = _cmf_core.delete_JarvisMacroFlow

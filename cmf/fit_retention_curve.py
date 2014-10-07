@@ -54,16 +54,28 @@ def fit_bc(pF,theta,count=20,verbose=False):
 
     return bc, 1-best_f/ns_denom
 
-def get_error_vgm(params,pF,theta):
+def make_vgm(params):
     try:
-        vgm=cmf.VanGenuchtenMualem(1.0, *params)
+        vgm=cmf.VanGenuchtenMualem(1.0)
+        vgm.Phi = params[0]
+        vgm.alpha = params[1]
+        vgm.n = params[2]
+        if len(params)>3:
+            vgm.theta_r = params[3]
+        return vgm
     except RuntimeError:
-        return 2 # worst case would be 1.0 and 2.0 indicates a impossible parameterization (NaN causes errors during the optimization)
+        return None
     
-    model_wetness=vgm.Wetness_pF(pF)
-    err = np.sum((theta - params[0] * model_wetness )**2)
-    return err
-    
+
+def get_error_vgm(params,pF,theta):
+    vgm=make_vgm(params)
+    if vgm:
+        model_theta=vgm.theta(vgm.Wetness_pF(pF))
+        err = np.sum((theta - model_theta)**2)
+        var = np.sum((theta - np.mean(theta))**2)
+        return err/var
+    else:
+        return 100.0 # return a really bad error for illegal cases
 def fit_vgm(pF,theta,variable_m=False, count=20, fitlevel=None,verbose=False):
     """Fits a Van Genuchten / Mualem retention curve into data
     pF: a sequence of pF values
@@ -76,19 +88,20 @@ def fit_vgm(pF,theta,variable_m=False, count=20, fitlevel=None,verbose=False):
 
     best_f=1e120
     for i in range(count):
-        x0=[ random.uniform(0.01,0.99), random.uniform(0.0001,1.9),random.uniform(1.01,3.9)]
+        x0=[ random.uniform(0.01,0.99), random.uniform(0.0001,1.9),random.uniform(1.01,3.9),random.uniform()]
+        x0[-1]*=x0[0]
         if variable_m: x0.append(1-1/random.uniform(1.01,5))
         x_opt, f_opt,n_iter,n_eval, warn = opt.fmin(get_error_vgm, x0 = np.array(x0), args=(pF,theta),full_output=1, disp=0)
         if f_opt<best_f:
-            if verbose: print "%i: x=%s f=%0.12g iter=%i, eval=%i" % (i,x_opt,1-f_opt/ns_denom,n_iter,n_eval) 
+            if verbose: print "%i: x=%s f=%0.12g iter=%i, eval=%i" % (i,x_opt,f_opt,n_iter,n_eval) 
             vgm=cmf.VanGenuchtenMualem(1,*x_opt)
             best_f=f_opt
-            if 1-best_f/ns_denom>=fitlevel:
+            if fitlevel and best_f<fitlevel:
                 break
     theta_mean=np.mean(theta)
-    return vgm, 1-best_f/ns_denom
+    return vgm,best_f
 
-def narrowparameters_vgm(pF,theta,phi,alpha,n,count=10000,perc=10.):
+def narrowparameters_vgm(pF,theta,phi,alpha,n,theta_r=[0.0,0.0],count=10000,perc=10.):
     """
     Narrows the parameter space down to the best perc (default=10) percent of the results
     pF: A sequence of pF values matching theta
@@ -107,16 +120,16 @@ def narrowparameters_vgm(pF,theta,phi,alpha,n,count=10000,perc=10.):
         # Create a priori range
         phi, n, alpha = 
     """
-    phi,alpha,n = [np.random.uniform(arg.min(),arg.max(),count) for arg in [phi,alpha,n]]
+    phi,alpha,n,theta_r = [np.random.uniform(np.amin(arg),np.amax(arg),count) for arg in [phi,alpha,n,theta_r]]
     vgm_err = np.array([get_error_vgm((phi_,alpha_,n_),pF,theta) for phi_,alpha_,n_ in zip(phi,alpha,n)]) 
     res_perc = np.percentile(vgm_err[np.isfinite(vgm_err)],perc)
     take = vgm_err<res_perc
     minmax = lambda x: (x.min(),x.max())
     print "Best %g%% has an error value < %g" % (perc,res_perc)
-    for arg,narg in zip([phi,alpha,n,vgm_err],'phi alpha n vgm_error'.split()):
+    for arg,narg in zip([phi,alpha,n,theta_r,vgm_err],'phi alpha n theta_r vgm_error'.split()):
         print narg, ': %g - %g' % minmax(arg[take])
     print "Error for mean value: %g" % get_error_vgm((phi.mean(),alpha.mean(),n.mean()),pF,theta)
-    return [arg[take] for arg in [phi,alpha,n,vgm_err]]
+    return [arg[take] for arg in [phi,alpha,n,theta_r,vgm_err]]
     
 def narrowparameters_bc(pF,theta,phi,b,w_x,count=10000,perc=10.):
     """
@@ -144,3 +157,27 @@ def narrowparameters_bc(pF,theta,phi,b,w_x,count=10000,perc=10.):
     print "Error for mean value: %g" % get_error_bc((phi.mean(),b.mean(),(w_x*phi).mean()),pF,theta)
     return [arg[take] for arg in [phi,b,w_x,vgm_err]]
       
+if __name__=='__main__':
+    theta5 = [0.324615604527165,0.4482,0.4708,0.4801,0.4806,0.4864,0.582851086403064]
+    theta15 = [0.342471569196674,0.4394,0.4676,0.4826,0.4856,0.4907,0.566714937861957]
+    theta25 = [0.364151497261831,0.4624,0.4945,0.5089,0.5101,0.512,0.539286123841295]
+
+    pF = [4.2,3,2.5,2,1.8,1.4,-1]
+    phi=[0.4,0.6]
+    alpha=[0.0001,1.0]
+    n=[1.001,3]
+    theta_r=[0.0,0.3]
+#%%    
+def plot_vgms(pF,theta,phi,alpha,n,theta_r):
+    from pylab import plot,ioff,ion,draw
+    ioff()
+    pF_dense= np.arange(-1,7,0.01)
+    for params in zip(phi,alpha,n,theta_r):
+        vgm = make_vgm(params)
+        plot(pF_dense,vgm.theta(vgm.Wetness_pF(pF_dense)),'k-',alpha=0.1)
+    plot(pF,theta,'ro')
+    ion()
+    draw()
+    
+    
+    
