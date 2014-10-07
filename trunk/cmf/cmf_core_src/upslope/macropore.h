@@ -99,6 +99,8 @@ namespace cmf {
 			real density;
 			/// The saturated conductivity of the macropores in m/day
 			real Ksat;
+			/// The layer's cracking wetness, crack dynamic starts below this value. The value is ignored if porefraction_min = porefraction_max
+			real crack_wetness;
 			/// Returns the actual conductivity
 			virtual real get_K() const;
 			/// Returns the actual anisotropic conductivity along a direction \f$K = (k_f \cdot d) K\f$

@@ -117,10 +117,10 @@ void SoilLayer::StateChangeAction()
 		m_wet.V = this->get_state();
 		m_wet.h = volume_to_head(this->get_state());
 	}
-	// Calc water content/soil
-	m_wet.theta=std::max(m_wet.V,0.)/(cell.get_area()*get_thickness()) * (1 - m_ice_fraction);
 	// Calc water content/pores
 	m_wet.W=std::max(m_wet.V,0.)/m_wet.C;
+	// Calc water content/soil
+	m_wet.theta=s.theta(m_wet.W) * (1 - m_ice_fraction);
 	// Calc matrix potential
 	m_wet.Psi_m = m_wet.h - get_gravitational_potential();
 	// calc Ksat using ice content
