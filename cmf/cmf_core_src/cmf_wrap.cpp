@@ -47242,6 +47242,44 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_RetentionCurve_theta__SWIG_0(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  cmf::upslope::RetentionCurve *arg1 = (cmf::upslope::RetentionCurve *) 0 ;
+  real arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  double val2 ;
+  int ecode2 = 0 ;
+  real result;
+  
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__upslope__RetentionCurve, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RetentionCurve_theta" "', argument " "1"" of type '" "cmf::upslope::RetentionCurve const *""'"); 
+  }
+  arg1 = reinterpret_cast< cmf::upslope::RetentionCurve * >(argp1);
+  ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "RetentionCurve_theta" "', argument " "2"" of type '" "real""'");
+  } 
+  arg2 = static_cast< real >(val2);
+  {
+    try {
+      result = (real)((cmf::upslope::RetentionCurve const *)arg1)->theta(arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+    
+  }
+  resultobj = SWIG_From_double(static_cast< double >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_RetentionCurve_Diffusivity__SWIG_0(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   cmf::upslope::RetentionCurve *arg1 = (cmf::upslope::RetentionCurve *) 0 ;
@@ -47544,6 +47582,143 @@ fail:
     "  Possible C/C++ prototypes are:\n"
     "    cmf::upslope::RetentionCurve::Wetness(real) const\n"
     "    cmf::upslope::RetentionCurve::Wetness(cmf::math::num_array const &) const\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_RetentionCurve_theta__SWIG_1(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  cmf::upslope::RetentionCurve *arg1 = (cmf::upslope::RetentionCurve *) 0 ;
+  cmf::math::num_array *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  cmf::math::num_array result;
+  
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__upslope__RetentionCurve, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RetentionCurve_theta" "', argument " "1"" of type '" "cmf::upslope::RetentionCurve const *""'"); 
+  }
+  arg1 = reinterpret_cast< cmf::upslope::RetentionCurve * >(argp1);
+  {
+    // Convert a array_wrapper from numpy array
+    double * data=0;
+    size_t size = from_npy_array(swig_obj[1],&data); 
+    if (!data) {
+      SWIG_exception_fail(SWIG_TypeError,"Input data is not 'array-like' (in the sense of numpy arrays)");
+      return NULL;
+    }
+    arg2 = new cmf::math::num_array(data,size);
+  }
+  {
+    try {
+      result = ((cmf::upslope::RetentionCurve const *)arg1)->theta((cmf::math::num_array const &)*arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+    
+  }
+  {
+    resultobj = as_npy_array(result);
+  }
+  {
+    delete arg2;
+  }
+  return resultobj;
+fail:
+  {
+    delete arg2;
+  }
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_RetentionCurve_theta(PyObject *self, PyObject *args) {
+  int argc;
+  PyObject *argv[3];
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args,"RetentionCurve_theta",0,2,argv))) SWIG_fail;
+  --argc;
+  {
+    unsigned long _index = 0;
+    SWIG_TypeRank _rank = 0; 
+    if (argc == 2) {
+      SWIG_TypeRank _ranki = 0;
+      SWIG_TypeRank _rankm = 0;
+      SWIG_TypeRank _pi = 1;
+      int _v = 0;
+      {
+        void *vptr = 0;
+        int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_cmf__upslope__RetentionCurve, 0);
+        _v = SWIG_CheckState(res);
+      }
+      if (!_v) goto check_1;
+      _ranki += _v*_pi;
+      _rankm += _pi;
+      _pi *= SWIG_MAXCASTRANK;
+      {
+        {
+          _v = test_npy_array(argv[1]);
+        }
+      }
+      if (!_v) goto check_1;
+      _ranki += _v*_pi;
+      _rankm += _pi;
+      _pi *= SWIG_MAXCASTRANK;
+      if (!_index || (_ranki < _rank)) {
+        _rank = _ranki; _index = 1;
+        if (_rank == _rankm) goto dispatch;
+      }
+    }
+  check_1:
+    
+    if (argc == 2) {
+      SWIG_TypeRank _ranki = 0;
+      SWIG_TypeRank _rankm = 0;
+      SWIG_TypeRank _pi = 1;
+      int _v = 0;
+      {
+        void *vptr = 0;
+        int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_cmf__upslope__RetentionCurve, 0);
+        _v = SWIG_CheckState(res);
+      }
+      if (!_v) goto check_2;
+      _ranki += _v*_pi;
+      _rankm += _pi;
+      _pi *= SWIG_MAXCASTRANK;
+      {
+        {
+          int res = SWIG_AsVal_double(argv[1], NULL);
+          _v = SWIG_CheckState(res);
+        }
+      }
+      if (!_v) goto check_2;
+      _ranki += _v*_pi;
+      _rankm += _pi;
+      _pi *= SWIG_MAXCASTRANK;
+      if (!_index || (_ranki < _rank)) {
+        _rank = _ranki; _index = 2;
+        if (_rank == _rankm) goto dispatch;
+      }
+    }
+  check_2:
+    
+  dispatch:
+    switch(_index) {
+    case 1:
+      return _wrap_RetentionCurve_theta__SWIG_1(self, argc, argv);
+    case 2:
+      return _wrap_RetentionCurve_theta__SWIG_0(self, argc, argv);
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'RetentionCurve_theta'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    cmf::upslope::RetentionCurve::theta(real) const\n"
+    "    cmf::upslope::RetentionCurve::theta(cmf::math::num_array const &) const\n");
   return 0;
 }
 
@@ -49088,6 +49263,58 @@ SWIGINTERN PyObject *_wrap_VanGenuchtenMualem_l_get(PyObject *SWIGUNUSEDPARM(sel
   }
   arg1 = reinterpret_cast< cmf::upslope::VanGenuchtenMualem * >(argp1);
   result = (real) ((arg1)->l);
+  resultobj = SWIG_From_double(static_cast< double >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_VanGenuchtenMualem_theta_r_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  cmf::upslope::VanGenuchtenMualem *arg1 = (cmf::upslope::VanGenuchtenMualem *) 0 ;
+  real arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  double val2 ;
+  int ecode2 = 0 ;
+  PyObject *swig_obj[2] ;
+  
+  if (!SWIG_Python_UnpackTuple(args,"VanGenuchtenMualem_theta_r_set",2,2,swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__upslope__VanGenuchtenMualem, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "VanGenuchtenMualem_theta_r_set" "', argument " "1"" of type '" "cmf::upslope::VanGenuchtenMualem *""'"); 
+  }
+  arg1 = reinterpret_cast< cmf::upslope::VanGenuchtenMualem * >(argp1);
+  ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "VanGenuchtenMualem_theta_r_set" "', argument " "2"" of type '" "real""'");
+  } 
+  arg2 = static_cast< real >(val2);
+  if (arg1) (arg1)->theta_r = arg2;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_VanGenuchtenMualem_theta_r_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  cmf::upslope::VanGenuchtenMualem *arg1 = (cmf::upslope::VanGenuchtenMualem *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  real result;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__upslope__VanGenuchtenMualem, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "VanGenuchtenMualem_theta_r_get" "', argument " "1"" of type '" "cmf::upslope::VanGenuchtenMualem *""'"); 
+  }
+  arg1 = reinterpret_cast< cmf::upslope::VanGenuchtenMualem * >(argp1);
+  result = (real) ((arg1)->theta_r);
   resultobj = SWIG_From_double(static_cast< double >(result));
   return resultobj;
 fail:
@@ -53517,6 +53744,82 @@ SWIGINTERN PyObject *_wrap_MacroPore_Ksat_get(PyObject *SWIGUNUSEDPARM(self), Py
     }
   }
   result = (real) ((arg1)->Ksat);
+  resultobj = SWIG_From_double(static_cast< double >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_MacroPore_crack_wetness_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  cmf::upslope::MacroPore *arg1 = (cmf::upslope::MacroPore *) 0 ;
+  real arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  std::tr1::shared_ptr< cmf::upslope::MacroPore > tempshared1 ;
+  std::tr1::shared_ptr< cmf::upslope::MacroPore > *smartarg1 = 0 ;
+  double val2 ;
+  int ecode2 = 0 ;
+  PyObject *swig_obj[2] ;
+  
+  if (!SWIG_Python_UnpackTuple(args,"MacroPore_crack_wetness_set",2,2,swig_obj)) SWIG_fail;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_std__tr1__shared_ptrT_cmf__upslope__MacroPore_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MacroPore_crack_wetness_set" "', argument " "1"" of type '" "cmf::upslope::MacroPore *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< std::tr1::shared_ptr<  cmf::upslope::MacroPore > * >(argp1);
+      delete reinterpret_cast< std::tr1::shared_ptr<  cmf::upslope::MacroPore > * >(argp1);
+      arg1 = const_cast< cmf::upslope::MacroPore * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< std::tr1::shared_ptr<  cmf::upslope::MacroPore > * >(argp1);
+      arg1 = const_cast< cmf::upslope::MacroPore * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "MacroPore_crack_wetness_set" "', argument " "2"" of type '" "real""'");
+  } 
+  arg2 = static_cast< real >(val2);
+  if (arg1) (arg1)->crack_wetness = arg2;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_MacroPore_crack_wetness_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  cmf::upslope::MacroPore *arg1 = (cmf::upslope::MacroPore *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  std::tr1::shared_ptr< cmf::upslope::MacroPore > tempshared1 ;
+  std::tr1::shared_ptr< cmf::upslope::MacroPore > *smartarg1 = 0 ;
+  PyObject *swig_obj[1] ;
+  real result;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_std__tr1__shared_ptrT_cmf__upslope__MacroPore_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MacroPore_crack_wetness_get" "', argument " "1"" of type '" "cmf::upslope::MacroPore *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< std::tr1::shared_ptr<  cmf::upslope::MacroPore > * >(argp1);
+      delete reinterpret_cast< std::tr1::shared_ptr<  cmf::upslope::MacroPore > * >(argp1);
+      arg1 = const_cast< cmf::upslope::MacroPore * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< std::tr1::shared_ptr<  cmf::upslope::MacroPore > * >(argp1);
+      arg1 = const_cast< cmf::upslope::MacroPore * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  result = (real) ((arg1)->crack_wetness);
   resultobj = SWIG_From_double(static_cast< double >(result));
   return resultobj;
 fail:
@@ -74985,6 +75288,13 @@ static PyMethodDef SwigMethods[] = {
 		"cmf::math::num_array Wetness(const cmf::math::num_array &suction)\n"
 		"const \n"
 		""},
+	 { (char *)"RetentionCurve_theta", _wrap_RetentionCurve_theta, METH_VARARGS, (char *)"\n"
+		"theta(real wetness) -> real\n"
+		"RetentionCurve_theta(RetentionCurve self, cmf::math::num_array const & wetness) -> cmf::math::num_array\n"
+		"\n"
+		"cmf::math::num_array theta(const cmf::math::num_array &wetness) const\n"
+		"\n"
+		""},
 	 { (char *)"RetentionCurve_dPsiM_dW", _wrap_RetentionCurve_dPsiM_dW, METH_VARARGS, (char *)"\n"
 		"dPsiM_dW(real wetness) -> real\n"
 		"RetentionCurve_dPsiM_dW(RetentionCurve self, cmf::math::num_array const & wetness) -> cmf::math::num_array\n"
@@ -75092,6 +75402,8 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"VanGenuchtenMualem_m_get", (PyCFunction)_wrap_VanGenuchtenMualem_m_get, METH_O, (char *)"VanGenuchtenMualem_m_get(VanGenuchtenMualem self) -> real"},
 	 { (char *)"VanGenuchtenMualem_l_set", _wrap_VanGenuchtenMualem_l_set, METH_VARARGS, (char *)"VanGenuchtenMualem_l_set(VanGenuchtenMualem self, real l)"},
 	 { (char *)"VanGenuchtenMualem_l_get", (PyCFunction)_wrap_VanGenuchtenMualem_l_get, METH_O, (char *)"VanGenuchtenMualem_l_get(VanGenuchtenMualem self) -> real"},
+	 { (char *)"VanGenuchtenMualem_theta_r_set", _wrap_VanGenuchtenMualem_theta_r_set, METH_VARARGS, (char *)"VanGenuchtenMualem_theta_r_set(VanGenuchtenMualem self, real theta_r)"},
+	 { (char *)"VanGenuchtenMualem_theta_r_get", (PyCFunction)_wrap_VanGenuchtenMualem_theta_r_get, METH_O, (char *)"VanGenuchtenMualem_theta_r_get(VanGenuchtenMualem self) -> real"},
 	 { (char *)"VanGenuchtenMualem_w0_set", _wrap_VanGenuchtenMualem_w0_set, METH_VARARGS, (char *)"VanGenuchtenMualem_w0_set(VanGenuchtenMualem self, real w0)"},
 	 { (char *)"VanGenuchtenMualem_w0_get", (PyCFunction)_wrap_VanGenuchtenMualem_w0_get, METH_O, (char *)"VanGenuchtenMualem_w0_get(VanGenuchtenMualem self) -> real"},
 	 { (char *)"VanGenuchtenMualem_Transmissivity", (PyCFunction) _wrap_VanGenuchtenMualem_Transmissivity, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
@@ -75466,6 +75778,8 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"MacroPore_density_get", (PyCFunction)_wrap_MacroPore_density_get, METH_O, (char *)"MacroPore_density_get(MacroPore self) -> real"},
 	 { (char *)"MacroPore_Ksat_set", _wrap_MacroPore_Ksat_set, METH_VARARGS, (char *)"MacroPore_Ksat_set(MacroPore self, real Ksat)"},
 	 { (char *)"MacroPore_Ksat_get", (PyCFunction)_wrap_MacroPore_Ksat_get, METH_O, (char *)"MacroPore_Ksat_get(MacroPore self) -> real"},
+	 { (char *)"MacroPore_crack_wetness_set", _wrap_MacroPore_crack_wetness_set, METH_VARARGS, (char *)"MacroPore_crack_wetness_set(MacroPore self, real crack_wetness)"},
+	 { (char *)"MacroPore_crack_wetness_get", (PyCFunction)_wrap_MacroPore_crack_wetness_get, METH_O, (char *)"MacroPore_crack_wetness_get(MacroPore self) -> real"},
 	 { (char *)"MacroPore_get_K", (PyCFunction) _wrap_MacroPore_get_K, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
 		"MacroPore_get_K(MacroPore self, point direction) -> real\n"
 		"\n"
@@ -75586,7 +75900,7 @@ static PyMethodDef SwigMethods[] = {
 		"new_JarvisMacroFlow(cmf::water::WaterStorage::ptr left, cmf::water::flux_node::ptr right, real beta=1., \n"
 		"    real porefraction_r=0.0) -> JarvisMacroFlow\n"
 		"\n"
-		"JarvisMacroFlow(cmf::upslope::MacroPore::ptr left,\n"
+		"JarvisMacroFlow(cmf::water::WaterStorage::ptr left,\n"
 		"cmf::water::flux_node::ptr right, real beta=1., real\n"
 		"porefraction_r=0.0)\n"
 		"\n"

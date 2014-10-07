@@ -74,6 +74,10 @@ namespace cmf {
 			virtual real Wetness(real suction) const {
 				throw std::runtime_error("This retention curve type can't calculate the Wetness from a suction pressure, choose another type");
 			};
+			/// returns the water content \f$theta\f$ for a given wetness
+			virtual real theta(real wetness) const {
+				return Porosity(0.0) * wetness;
+			}
 			/// Returns the Diffusivity of the soil. 
 			///
 			/// Not implemented for all retention curves. Diffusivity is used by
@@ -91,6 +95,12 @@ namespace cmf {
 				cmf::math::num_array res(suction.size());
 				for (size_t i = 0; i < suction.size() ; ++i)
 					res[i] = Wetness(suction[i]);
+				return res;
+			}
+			cmf::math::num_array theta(const cmf::math::num_array& wetness) const {
+				cmf::math::num_array res(wetness.size());
+				for (size_t i=0;i<wetness.size(); ++i) 
+					res[i] = theta(wetness[i]);
 				return res;
 			}
 			virtual real dPsiM_dW(real wetness) const {
@@ -230,12 +240,14 @@ namespace cmf {
 				Phi, ///< Porosity in m3/m3
 				m, ///< VanGenuchten m (if negative, 1-1/n is used)
 				l, ///< VanGenuchten - Mualem tortoisivity, defined in Van Genuchten 1980 as 0.5 (default here)
+				theta_r, ///< residual water content in m3 Water/ m3 soil (default=0.0)
 				w0; ///< Breakpoint wetness. If W>w0, a parabolic extrapolation is used
 
 			///@brief returns the saturation at a given suction (matrix potential).
 			///
 			///\f[ W(\Psi) = \left(1+\left(\alpha\,100\frac{cm}{m}\Psi\right)^n\right)^{-m} \f]
 			virtual real Wetness(real suction) const;
+			virtual real theta(real wetness) const;
 			/// @brief returns the matrix potential at a given saturation
 			///
 			/// \f[\Psi(W) = 0.01 \frac{m}{cm} \frac{{\left(1-{W}^{\frac{1}{m}}\right) }^{\frac{1}{n}}}{\alpha\,{W}^{\frac{1}{m\,n}}}  \f]

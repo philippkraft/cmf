@@ -289,7 +289,7 @@ cmf::upslope::VanGenuchtenMualem* cmf::upslope::VanGenuchtenMualem::copy() const
 }
 
 cmf::upslope::VanGenuchtenMualem::VanGenuchtenMualem( real _Ksat, real _phi,real _alpha, real _n, real _m/*=-1*/ ) 
-: n(_n),alpha(_alpha),Phi(_phi),Ksat(_Ksat), m(_m), w0(.99),l(0.5)
+: n(_n),alpha(_alpha),Phi(_phi),Ksat(_Ksat), m(_m), w0(.99),l(0.5),theta_r(0.0)
 {
 	std::stringstream msg;
 	msg << "Can't create VanGenuchten-Mualem-Retention curve with ";
@@ -349,6 +349,11 @@ real cmf::upslope::VanGenuchtenMualem::Diffusivity( real wetness ) const
 		cmf::upslope::parabolic_extrapolation p(w0,p0,dp0);
 		return K(wetness) *  2*p.a*wetness + p.b;
 	}
+}
+
+real cmf::upslope::VanGenuchtenMualem::theta( real wetness ) const
+{
+	return wetness * (Phi-theta_r) + theta_r;
 }
 
 /************************************************************************/
