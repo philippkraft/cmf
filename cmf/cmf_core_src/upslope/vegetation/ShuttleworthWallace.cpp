@@ -18,7 +18,7 @@
 //   
 #include "ShuttleworthWallace.h"
 #include "../Soil/RetentionCurve.h"
-
+#include "../connections/AtmosphericFluxes.h"
 using namespace cmf::math;
 using namespace cmf::upslope;
 using namespace cmf::upslope::vegetation;
@@ -767,8 +767,8 @@ void cmf::upslope::ET::ShuttleworthWallace::refresh( cmf::math::Time t )
 	if (t == refresh_time) return;
 	refresh_time=t;
 	++refresh_counter;
-	vegetation::Vegetation& v = cell.vegetation;
-	cmf::atmosphere::Weather w = cell.get_weather(t);
+	v = cell.vegetation;
+	w = cell.get_weather(t);
 
 
 	const ptrdiff_t lc = cell.layer_count(); 
@@ -895,6 +895,63 @@ cmf::upslope::ET::ShuttleworthWallace* cmf::upslope::ET::ShuttleworthWallace::us
 	sw->ATR = 0.0;
 	cell.set_aerodynamic_resistance(sw);
 	return sw.get();
+}
+
+double cmf::upslope::ET::ShuttleworthWallace::evap_from_openwater( cmf::river::OpenWaterStorage::ptr ows,cmf::math::Time t )
+{
+	// If open water is empty return zero
+	if (ows->RecalcFluxes(t)) refresh(t);
+	// Account for dew (but not white frost)
+	real res = 0.0;
+	if (GER<0.0) {
+		res += (1-cmf::upslope::connections::snowfraction(w.T)) * GER * 1e-3 * cell.get_area();
+	} 
+	// Get evaporation from open water, if open water is not empty
+	res += GIR * ows->get_height_function().A(ows->get_volume()) * 1e-3 * (1-ows->is_empty());
+	return res;
+}
+
+double cmf::upslope::ET::ShuttleworthWallace::evap_from_snow( cmf::water::WaterStorage::ptr snow,cmf::math::Time t )
+{
+	if (snow->RecalcFluxes(t)) refresh(t);
+	real res = 0.0;
+	// If GER<0 and it is cold, route rime to snow
+	if (GER<0) {
+		res += cmf::upslope::connections::snowfraction(w.T) * GER * 1e-3 * cell.get_area();
+	}
+	// If there is snow, evaporate it with ASNVP
+	res += ASNVP * 1e-3 * cell.get_area() * (1-snow->is_empty());
+	return res;
+}
+
+double cmf::upslope::ET::ShuttleworthWallace::evap_from_canopy( cmf::water::WaterStorage::ptr canopy,cmf::math::Time t )
+{
+	if (canopy->RecalcFluxes(t)) refresh(t);
+	return AIR * 1e-3 * cell.get_area() * (1-canopy->is_empty());
+}
+
+double cmf::upslope::ET::ShuttleworthWallace::evap_from_layer( cmf::upslope::SoilLayer::ptr sl,cmf::math::Time t )
+{
+	// Evaporation only from the first layer
+	if (sl->Position != 0) return 0.0;
+	// Recalculate fluxes if needed	
+	if (sl->RecalcFluxes(t)) refresh(t);
+	// Return soil evap. for snow free area
+	// neg. GER is rerouted to surfacewater (dew) or snow (rime)
+	return std::max(GER,0.0) * std::max(0.0,1 - cell.snow_coverage() - cell.surface_water_coverage())   * 1e-3 * cell.get_area();
+}
+
+double cmf::upslope::ET::ShuttleworthWallace::transp_from_layer( cmf::upslope::SoilLayer::ptr sl,cmf::math::Time t )
+{
+	if (sl->RecalcFluxes(t)) refresh(t);
+	if (sl->Position>int(ATR.size())) return 0.0;
+	return ATR[sl->Position] * 1e-3 * cell.get_area();
+}
+
+void cmf::upslope::ET::ShuttleworthWallace::get_aerodynamic_resistance( double & r_ag,double & r_ac, cmf::math::Time t ) const
+{
+	r_ag = RAA + RAS;
+	r_ac = RAA + RAC;
 }
 
 

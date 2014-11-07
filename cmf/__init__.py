@@ -30,4 +30,4 @@ from extend_project import change_vegetation,connect_cells_with_flux
 from extend_project import profile
 from stopwatch import StopWatch
 
-__version__ = '889'
+__version__ = '892'
