@@ -87,8 +87,15 @@ real cmf::upslope::connections::RutterInterception::calc_q( cmf::math::Time t )
 		// Actual storage capacity in mm
 		Vact=canopy->get_volume() / m_cell.get_area() * 1e3,
 		// Actual rainfall in m3/day
-		P_t = rain->flux_to(*canopy,t);
-	// Return fraction of Vact/Vmax of actual rainfall
-	return P_t * Vact/Vmax;
-
+		P_t = rain->flux_to(*canopy,t),
+		// When the Capacity is exceeded (which can happen due to numerical errors and at harvest (LAI=0), 
+		// remove exceeding water with a linear storage with k=1/h
+		overflow = Vact > Vmax? (Vact - Vmax) * 24. : 0.0;
+	if (Vmax <= 0.0) // Prevent nan through 0-division
+		return P_t ;//+ overflow;
+	else 
+		// Return fraction of Vact/Vmax of actual rainfall
+		// for very small Vmax, Vact can be easily magnitudes higher then Vmax, 
+		// however the flux is bounded to not exceed P_t to prevent extreme fluxes for small values
+		return P_t * minmax(Vact/Vmax,0,2);// + overflow;
 }

@@ -124,8 +124,13 @@ namespace cmf {
 			real conc(cmf::math::Time t, const cmf::water::solute& _Solute);
 			/// @brief A string describing the type of the connection
 			const std::string type;
-			/// A value ranging from 0 to 1 
+			/// A value ranging from 0 to 1 to filter tracers out of the water flux. 
+			///
+			/// 1.0 is no filter and 0.0 means no solute is crossing this connection
 			real get_tracer_filter() { return m_tracer_filter;}
+			/// A value ranging from 0 to 1 to filter tracers out of the water flux
+			///
+			/// 1.0 is no filter and 0.0 means no solute is crossing this connection
 			void set_tracer_filter(real value) { 
 				if (value<0 || value>1) throw std::runtime_error("Tracer filter must be between 0 and 1");
 				m_tracer_filter = value;
