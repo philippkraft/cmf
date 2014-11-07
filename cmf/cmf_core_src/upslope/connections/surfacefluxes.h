@@ -92,7 +92,7 @@ namespace cmf {
 			/// - \f$P_{net}(t)[\frac{m^3}{day}]\f$: The flux from the rain to the canopy
 			/// - \f$V_{act}[mm]=1000 [mm/m] \frac{V_{canopy}[m^3]}{A_{cell} [m^2]}\f$ The stored water of the canopy in mm
 			/// - \f$V_{max}[mm]=c_{LAI}[mm]\cdot LAI\f$ The capacity of the canopy in mm, defined by the factor CanopyCapacityPerLAI [mm/LAI], and 
-			///   the leaf area index LAI. (see: cmf::upslope::Vegetation)
+			///   the leaf area index LAI. (see: cmf::upslope::vegetation::Vegetation)
 			class RutterInterception : public cmf::water::flux_connection {
 			protected:
 				cmf::upslope::Cell & m_cell;

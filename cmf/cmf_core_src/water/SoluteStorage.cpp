@@ -33,11 +33,11 @@ real SoluteStorage::dxdt( const cmf::math::Time& time )
 		real q=con.q(*m_water,time);
 		if (q>0)
 		{
-			inflow += q * con.conc(time,Solute) * con.get_tracer_filter();
+			inflow += q * con.conc(time,Solute);
 		}
 		else if (q<0)
 		{
-			outflow += q * con.conc(time,Solute) * con.get_tracer_filter();
+			outflow += q * con.conc(time,Solute);
 		}
 	}
 	real source_term = source;

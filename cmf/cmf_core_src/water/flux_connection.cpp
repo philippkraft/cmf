@@ -90,8 +90,8 @@ flux_node::ptr flux_connection::get_target(const flux_node& inquirer )
 real flux_connection::conc( cmf::math::Time t, const solute& _Solute )
 {
 	real _q=q(t);
-	if (_q>0) return left_node()->conc(t,_Solute);
-	else if (_q<0) return right_node()->conc(t,_Solute);
+	if (_q>0) return left_node()->conc(t,_Solute) * m_tracer_filter;
+	else if (_q<0) return right_node()->conc(t,_Solute) * m_tracer_filter;
 	else return 0.0;
 }
 

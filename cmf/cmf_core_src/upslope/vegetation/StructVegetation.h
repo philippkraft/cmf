@@ -24,7 +24,8 @@ namespace cmf {
 	namespace upslope{
 		namespace vegetation {
 			/// Holds the vegetation parameters for the calculation of ET and fractionating rainfall. Not every ET method uses all parameters
-			struct Vegetation{
+			class Vegetation{
+			public:
 				double 
 					LAI, ///< Leaf area index
 					Height, ///< Height of the vegetation in m
