@@ -101,6 +101,7 @@
 %include "upslope/connections/infiltration.h"
 %include "upslope/connections/Percolation.h"
 %include "upslope/connections/HBVflow.h"
+%include "upslope/vegetation/waterstress.h"
 %include "upslope/vegetation/ET.h"
 %include "upslope/vegetation/ShuttleworthWallace.h"
 

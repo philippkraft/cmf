@@ -87,8 +87,8 @@ void cmf::upslope::connections::HBVlateral::connect_cells( cmf::upslope::Cell & 
 	real w=cell1.get_topology().flowwidth(cell2);
 	if (w>0)
 	{
-		for (ptrdiff_t i = start_at_layer; i < (start_at_layer>=0 ? cell1.layer_count() : 0) ; ++i)	{
-			for (ptrdiff_t j = start_at_layer; j < (start_at_layer>=0 ? cell2.layer_count() : 0) ; ++j)	{
+		for (ptrdiff_t i = start_at_layer; i < (start_at_layer>=0 ? ptrdiff_t(cell1.layer_count()) : 0) ; ++i)	{
+			for (ptrdiff_t j = start_at_layer; j < (start_at_layer>=0 ? ptrdiff_t(cell2.layer_count()) : 0) ; ++j)	{
 				real ca=cell1.get_layer(i)->get_flow_crosssection(*cell2.get_layer(j));
 				if (ca>0)	{
 					real d=cell1.get_layer(i)->position.distanceTo(cell2.get_layer(j)->position);

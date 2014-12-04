@@ -43,6 +43,9 @@ namespace cmf {
 	namespace upslope {
 		class Topology;
 		class Cell;
+		namespace ET {
+			class RootUptakeStessFunction;
+		}
 		typedef void (*connectorfunction)(cmf::upslope::Cell&,cmf::upslope::Cell&,ptrdiff_t);
 		typedef void (*internal_connector)(cmf::upslope::Cell&);
 		typedef std::tr1::shared_ptr<SoilLayer> layer_ptr;
@@ -109,6 +112,9 @@ namespace cmf {
 			typedef std::vector<cmf::water::WaterStorage::ptr> storage_vector;
 			typedef std::auto_ptr<cmf::atmosphere::Meteorology> meteo_pointer;
 			storage_vector m_storages;
+
+			typedef std::map<std::string, cmf::water::flux_node::ptr> nodemap;
+			nodemap m_cellboundaries;
 			cmf::water::WaterStorage::ptr
 				m_Canopy,
 				m_Snow,
@@ -156,6 +162,41 @@ namespace cmf {
 			cmf::atmosphere::RainSource::ptr get_rain_source() {
 				return m_rainfall;
 			}
+			/// Uses the given WaterStressFunction for all stressedET like connections to the transpiration target
+			void set_uptakestress(const ET::RootUptakeStessFunction& stressfunction);
+			/*
+			/// Experimental feature: Gets a cell owned boundary node, eg. groundwater, or Neumannboundary
+			/// This should replace get_evaporation, get_transpiration etc.
+			cmf::water::flux_node::ptr get_boundarynode(std::string name);
+			/// Experimental feature: Adds a cell owned boundary node, eg. groundwater
+			/// This should replace get_evaporation, get_transpiration etc.
+			///
+			/// @param z: Vertical displacement of the boundary to the cell position
+			cmf::water::DirichletBoundary::ptr add_dirichletboundary(std::string name,real z);
+			/// Experimental feature: Adds a cell owned boundary node, eg. groundwater
+			/// This should replace get_evaporation, get_transpiration etc.
+			///
+			/// @param x,y,z: Displacement of the boundary to the cell position
+			cmf::water::DirichletBoundary::ptr add_dirichletboundary(std::string name,real x,real y,real z);
+			/// Experimental feature: Adds a cell owned boundary node, eg. groundwater
+			/// This should replace get_evaporation, get_transpiration etc.
+			///
+			/// @param target: Target water storage of the Neumann boundary condition
+			cmf::water::NeumannBoundary::ptr add_neumannboundary(std::string name,cmf::water::WaterStorage::ptr target);
+			/// Experimental feature: Adds a cell owned boundary node, eg. irrigation
+			/// This should replace get_evaporation, get_transpiration etc.
+			///
+			/// @param z: Vertical displacement of the boundary to the cell position
+			cmf::water::flux_node::ptr add_fluxnode(std::string name,real z);
+			/// Experimental feature: Adds a cell owned boundary node, eg. groundwater
+			/// This should replace get_evaporation, get_transpiration etc.
+			///
+			/// @param z: Vertical displacement of the boundary to the cell position
+			cmf::water::flux_node::ptr add_fluxnode(std::string name,real x,real y, real z);
+			*/
+
+
+
 			/// Returns the end point of all evaporation of this cell (a cmf::water::flux_node)
  			cmf::water::flux_node::ptr get_evaporation();
  			/// Returns the end point of all transpiration of this cell (a cmf::water::flux_node)

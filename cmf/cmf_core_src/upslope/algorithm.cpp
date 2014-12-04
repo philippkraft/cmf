@@ -236,9 +236,9 @@ cmf::geometry::point_vector cmf::upslope::cell_flux_directions( cells_ref cells,
 	{
 		cmf::geometry::point p;
 		Cell & c = cells[i];
-		for (ptrdiff_t j = 0; j < c.storage_count() ; ++j)
+		for (ptrdiff_t j = 0; j < ptrdiff_t(c.storage_count()) ; ++j)
 			p+=c.get_storage(j)->get_3d_flux(t);
-		for (ptrdiff_t j = 0; j < c.layer_count() ; ++j)
+		for (ptrdiff_t j = 0; j < ptrdiff_t(c.layer_count()) ; ++j)
 				p+=c.get_layer(j)->get_3d_flux(t);
 		res.set(i,p);
 	}

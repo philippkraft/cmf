@@ -135,8 +135,8 @@ namespace cmf {
 				if (value<0 || value>1) throw std::runtime_error("Tracer filter must be between 0 and 1");
 				m_tracer_filter = value;
 			}
-			std::string to_string() const;
-			std::string short_string() const;
+			virtual std::string to_string() const;
+			virtual std::string short_string() const;
 			/// @brief Creates a flux connection between the flux_node left and right
 			/// @param left flux_node on the one side of the connection
 			/// @param right flux_node on the other side of the connection

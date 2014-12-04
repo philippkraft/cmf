@@ -401,7 +401,10 @@ of the connection. ";
 %feature("docstring")  cmf::upslope::aquifer_Darcy::get_tracer_filter
 "real get_tracer_filter()
 
-A value ranging from 0 to 1. ";
+A value ranging from 0 to 1 to filter tracers out of the water flux.
+
+1.0 is no filter and 0.0 means no solute is crossing this connection
+";
 
 %feature("docstring")  cmf::upslope::aquifer_Darcy::kill_me "bool
 kill_me()
@@ -429,7 +432,12 @@ Performes a new calculation of the flux. ";
 returns the right node of this connection ";
 
 %feature("docstring")  cmf::upslope::aquifer_Darcy::set_tracer_filter
-"void set_tracer_filter(real value) ";
+"void set_tracer_filter(real value)
+
+A value ranging from 0 to 1 to filter tracers out of the water flux.
+
+1.0 is no filter and 0.0 means no solute is crossing this connection
+";
 
 %feature("docstring")  cmf::upslope::aquifer_Darcy::short_string "std::string short_string() const ";
 
@@ -472,7 +480,10 @@ of the connection. ";
 cmf::upslope::connections::BaseMacroFlow::get_tracer_filter "real
 get_tracer_filter()
 
-A value ranging from 0 to 1. ";
+A value ranging from 0 to 1 to filter tracers out of the water flux.
+
+1.0 is no filter and 0.0 means no solute is crossing this connection
+";
 
 %feature("docstring")
 cmf::upslope::connections::BaseMacroFlow::kill_me "bool kill_me()
@@ -505,7 +516,12 @@ returns the right node of this connection ";
 
 %feature("docstring")
 cmf::upslope::connections::BaseMacroFlow::set_tracer_filter "void
-set_tracer_filter(real value) ";
+set_tracer_filter(real value)
+
+A value ranging from 0 to 1 to filter tracers out of the water flux.
+
+1.0 is no filter and 0.0 means no solute is crossing this connection
+";
 
 %feature("docstring")
 cmf::upslope::connections::BaseMacroFlow::short_string "std::string
@@ -971,7 +987,10 @@ of the connection. ";
 cmf::upslope::ET::canopy_evaporation::get_tracer_filter "real
 get_tracer_filter()
 
-A value ranging from 0 to 1. ";
+A value ranging from 0 to 1 to filter tracers out of the water flux.
+
+1.0 is no filter and 0.0 means no solute is crossing this connection
+";
 
 %feature("docstring")  cmf::upslope::ET::canopy_evaporation::kill_me "bool kill_me()
 
@@ -1001,7 +1020,12 @@ returns the right node of this connection ";
 
 %feature("docstring")
 cmf::upslope::ET::canopy_evaporation::set_tracer_filter "void
-set_tracer_filter(real value) ";
+set_tracer_filter(real value)
+
+A value ranging from 0 to 1 to filter tracers out of the water flux.
+
+1.0 is no filter and 0.0 means no solute is crossing this connection
+";
 
 %feature("docstring")
 cmf::upslope::ET::canopy_evaporation::short_string "std::string
@@ -1088,7 +1112,10 @@ of the connection. ";
 cmf::upslope::connections::CanopyOverflow::get_tracer_filter "real
 get_tracer_filter()
 
-A value ranging from 0 to 1. ";
+A value ranging from 0 to 1 to filter tracers out of the water flux.
+
+1.0 is no filter and 0.0 means no solute is crossing this connection
+";
 
 %feature("docstring")
 cmf::upslope::connections::CanopyOverflow::kill_me "bool kill_me()
@@ -1121,7 +1148,12 @@ returns the right node of this connection ";
 
 %feature("docstring")
 cmf::upslope::connections::CanopyOverflow::set_tracer_filter "void
-set_tracer_filter(real value) ";
+set_tracer_filter(real value)
+
+A value ranging from 0 to 1 to filter tracers out of the water flux.
+
+1.0 is no filter and 0.0 means no solute is crossing this connection
+";
 
 %feature("docstring")
 cmf::upslope::connections::CanopyOverflow::short_string "std::string
@@ -1175,7 +1207,10 @@ of the connection. ";
 cmf::upslope::ET::CanopyStorageEvaporation::get_tracer_filter "real
 get_tracer_filter()
 
-A value ranging from 0 to 1. ";
+A value ranging from 0 to 1 to filter tracers out of the water flux.
+
+1.0 is no filter and 0.0 means no solute is crossing this connection
+";
 
 %feature("docstring")
 cmf::upslope::ET::CanopyStorageEvaporation::kill_me "bool kill_me()
@@ -1207,7 +1242,12 @@ returns the right node of this connection ";
 
 %feature("docstring")
 cmf::upslope::ET::CanopyStorageEvaporation::set_tracer_filter "void
-set_tracer_filter(real value) ";
+set_tracer_filter(real value)
+
+A value ranging from 0 to 1 to filter tracers out of the water flux.
+
+1.0 is no filter and 0.0 means no solute is crossing this connection
+";
 
 %feature("docstring")
 cmf::upslope::ET::CanopyStorageEvaporation::short_string "std::string
@@ -1317,6 +1357,12 @@ Changes the current source of rainfall. ";
 %feature("docstring")  cmf::upslope::Cell::get_rain_source "cmf::atmosphere::RainSource::ptr get_rain_source()
 
 Returns the current source for rainfall. ";
+
+%feature("docstring")  cmf::upslope::Cell::set_uptakestress "void
+set_uptakestress(const ET::RootUptakeStessFunction &stressfunction)
+
+Uses the given WaterStressFunction for all stressedET like connections
+to the transpiration target. ";
 
 %feature("docstring")  cmf::upslope::Cell::get_evaporation "cmf::water::flux_node::ptr get_evaporation()
 
@@ -1842,6 +1888,8 @@ flux (direction depending) ";
 cmf::upslope::ET::constantETpot::exchange_target "void
 exchange_target(flux_node::ptr oldtarget, flux_node::ptr newTarget) ";
 
+%feature("docstring")  cmf::upslope::ET::constantETpot::get_layer "SoilLayer::ptr get_layer() const ";
+
 %feature("docstring")  cmf::upslope::ET::constantETpot::get_ptr "ptr
 get_ptr() const ";
 
@@ -1858,7 +1906,10 @@ of the connection. ";
 cmf::upslope::ET::constantETpot::get_tracer_filter "real
 get_tracer_filter()
 
-A value ranging from 0 to 1. ";
+A value ranging from 0 to 1 to filter tracers out of the water flux.
+
+1.0 is no filter and 0.0 means no solute is crossing this connection
+";
 
 %feature("docstring")  cmf::upslope::ET::constantETpot::GetETpot "real GetETpot(cmf::math::Time t) const ";
 
@@ -1888,8 +1939,19 @@ Performes a new calculation of the flux. ";
 returns the right node of this connection ";
 
 %feature("docstring")
+cmf::upslope::ET::constantETpot::set_stressfunction "void
+set_stressfunction(const RootUptakeStessFunction &stressfunction)
+
+Sets the stress function to limit water uptake. ";
+
+%feature("docstring")
 cmf::upslope::ET::constantETpot::set_tracer_filter "void
-set_tracer_filter(real value) ";
+set_tracer_filter(real value)
+
+A value ranging from 0 to 1 to filter tracers out of the water flux.
+
+1.0 is no filter and 0.0 means no solute is crossing this connection
+";
 
 %feature("docstring")  cmf::upslope::ET::constantETpot::short_string "std::string short_string() const ";
 
@@ -2176,7 +2238,10 @@ of the connection. ";
 cmf::water::constraint_kinematic_wave::get_tracer_filter "real
 get_tracer_filter()
 
-A value ranging from 0 to 1. ";
+A value ranging from 0 to 1 to filter tracers out of the water flux.
+
+1.0 is no filter and 0.0 means no solute is crossing this connection
+";
 
 %feature("docstring")  cmf::water::constraint_kinematic_wave::kill_me
 "bool kill_me()
@@ -2209,7 +2274,12 @@ returns the right node of this connection ";
 
 %feature("docstring")
 cmf::water::constraint_kinematic_wave::set_tracer_filter "void
-set_tracer_filter(real value) ";
+set_tracer_filter(real value)
+
+A value ranging from 0 to 1 to filter tracers out of the water flux.
+
+1.0 is no filter and 0.0 means no solute is crossing this connection
+";
 
 %feature("docstring")
 cmf::water::constraint_kinematic_wave::short_string "std::string
@@ -2218,6 +2288,46 @@ short_string() const ";
 %feature("docstring")
 cmf::water::constraint_kinematic_wave::to_string "std::string
 to_string() const ";
+
+
+// File: classcmf_1_1upslope_1_1_e_t_1_1_content_stress.xml
+%feature("docstring") cmf::upslope::ET::ContentStress "
+
+A simple water content based stress model based on Feddes (1978)
+
+stress a is piecewise linear function based on water content
+
+if  :math:`\\\\theta>\\\\theta_d \\\\rightarrow ET = ET_{pot}` 
+
+if  :math:`\\\\theta_d>\\\\theta > \\\\theta_{wilt} \\\\rightarrow ET = \\\\frac{\\\\theta_d - \\\\theta}{\\\\theta_d - \\\\theta_{wilt}} ET_{pot}` 
+
+if  :math:`\\\\theta_{wilt}>\\\\theta \\\\rightarrow ET = 0.0` 
+
+The critical water content (where stress starts) is defined as the
+center between field capacity (  :math:`\\\\theta_{fc}` ) and the wilting
+point (  :math:`\\\\theta_{wp}` ).
+
+ :math:`\\\\theta_d = 1/2(\\\\theta_{fc} + \\\\theta_{wp})` 
+
+C++ includes: waterstress.h ";
+
+%feature("docstring")  cmf::upslope::ET::ContentStress::copy "cmf::upslope::ET::ContentStress* copy() const
+
+Creates a new copy of this wetness. ";
+
+%feature("docstring")  cmf::upslope::ET::ContentStress::Tact "real
+Tact(const stressedET *connection, real Tpot) const
+
+Calculates the water stress for a layer.
+
+Parameters:
+-----------
+
+connection:  The stressedET connection this stress function belongs to
+
+Tpot:  Potential Transpiration in mm/day (for the full profile)
+
+Actual flux from layer in m3/day ";
 
 
 // File: classcmf_1_1math_1_1cubicspline.xml
@@ -2542,7 +2652,10 @@ of the connection. ";
 cmf::upslope::connections::Darcy::get_tracer_filter "real
 get_tracer_filter()
 
-A value ranging from 0 to 1. ";
+A value ranging from 0 to 1 to filter tracers out of the water flux.
+
+1.0 is no filter and 0.0 means no solute is crossing this connection
+";
 
 %feature("docstring")  cmf::upslope::connections::Darcy::kill_me "bool kill_me()
 
@@ -2569,7 +2682,12 @@ returns the right node of this connection ";
 
 %feature("docstring")
 cmf::upslope::connections::Darcy::set_tracer_filter "void
-set_tracer_filter(real value) ";
+set_tracer_filter(real value)
+
+A value ranging from 0 to 1 to filter tracers out of the water flux.
+
+1.0 is no filter and 0.0 means no solute is crossing this connection
+";
 
 %feature("docstring")  cmf::upslope::connections::Darcy::short_string
 "std::string short_string() const ";
@@ -2645,7 +2763,10 @@ of the connection. ";
 cmf::upslope::connections::DarcyKinematic::get_tracer_filter "real
 get_tracer_filter()
 
-A value ranging from 0 to 1. ";
+A value ranging from 0 to 1 to filter tracers out of the water flux.
+
+1.0 is no filter and 0.0 means no solute is crossing this connection
+";
 
 %feature("docstring")
 cmf::upslope::connections::DarcyKinematic::kill_me "bool kill_me()
@@ -2678,7 +2799,12 @@ returns the right node of this connection ";
 
 %feature("docstring")
 cmf::upslope::connections::DarcyKinematic::set_tracer_filter "void
-set_tracer_filter(real value) ";
+set_tracer_filter(real value)
+
+A value ranging from 0 to 1 to filter tracers out of the water flux.
+
+1.0 is no filter and 0.0 means no solute is crossing this connection
+";
 
 %feature("docstring")
 cmf::upslope::connections::DarcyKinematic::short_string "std::string
@@ -2797,7 +2923,10 @@ of the connection. ";
 cmf::upslope::connections::DiffusiveMacroMicroExchange::get_tracer_filter
 "real get_tracer_filter()
 
-A value ranging from 0 to 1. ";
+A value ranging from 0 to 1 to filter tracers out of the water flux.
+
+1.0 is no filter and 0.0 means no solute is crossing this connection
+";
 
 %feature("docstring")
 cmf::upslope::connections::DiffusiveMacroMicroExchange::kill_me "bool
@@ -2831,7 +2960,12 @@ returns the right node of this connection ";
 
 %feature("docstring")
 cmf::upslope::connections::DiffusiveMacroMicroExchange::set_tracer_filter
-"void set_tracer_filter(real value) ";
+"void set_tracer_filter(real value)
+
+A value ranging from 0 to 1 to filter tracers out of the water flux.
+
+1.0 is no filter and 0.0 means no solute is crossing this connection
+";
 
 %feature("docstring")
 cmf::upslope::connections::DiffusiveMacroMicroExchange::short_string "std::string short_string() const ";
@@ -2880,7 +3014,10 @@ of the connection. ";
 %feature("docstring")
 cmf::upslope::connections::DiffusiveSurfaceRunoff::get_tracer_filter "real get_tracer_filter()
 
-A value ranging from 0 to 1. ";
+A value ranging from 0 to 1 to filter tracers out of the water flux.
+
+1.0 is no filter and 0.0 means no solute is crossing this connection
+";
 
 %feature("docstring")
 cmf::upslope::connections::DiffusiveSurfaceRunoff::kill_me "bool
@@ -2913,7 +3050,12 @@ cmf::upslope::connections::DiffusiveSurfaceRunoff::right_node "flux_node::ptr ri
 returns the right node of this connection ";
 
 %feature("docstring")
-cmf::upslope::connections::DiffusiveSurfaceRunoff::set_tracer_filter "void set_tracer_filter(real value) ";
+cmf::upslope::connections::DiffusiveSurfaceRunoff::set_tracer_filter "void set_tracer_filter(real value)
+
+A value ranging from 0 to 1 to filter tracers out of the water flux.
+
+1.0 is no filter and 0.0 means no solute is crossing this connection
+";
 
 %feature("docstring")
 cmf::upslope::connections::DiffusiveSurfaceRunoff::short_string "std::string short_string() const ";
@@ -3070,7 +3212,10 @@ of the connection. ";
 %feature("docstring")
 cmf::upslope::connections::EnergyBudgetSnowMelt::get_tracer_filter "real get_tracer_filter()
 
-A value ranging from 0 to 1. ";
+A value ranging from 0 to 1 to filter tracers out of the water flux.
+
+1.0 is no filter and 0.0 means no solute is crossing this connection
+";
 
 %feature("docstring")
 cmf::upslope::connections::EnergyBudgetSnowMelt::kill_me "bool
@@ -3103,7 +3248,12 @@ cmf::upslope::connections::EnergyBudgetSnowMelt::right_node "flux_node::ptr righ
 returns the right node of this connection ";
 
 %feature("docstring")
-cmf::upslope::connections::EnergyBudgetSnowMelt::set_tracer_filter "void set_tracer_filter(real value) ";
+cmf::upslope::connections::EnergyBudgetSnowMelt::set_tracer_filter "void set_tracer_filter(real value)
+
+A value ranging from 0 to 1 to filter tracers out of the water flux.
+
+1.0 is no filter and 0.0 means no solute is crossing this connection
+";
 
 %feature("docstring")
 cmf::upslope::connections::EnergyBudgetSnowMelt::short_string "std::string short_string() const ";
@@ -3333,7 +3483,10 @@ of the connection. ";
 cmf::water::external_control_connection::get_tracer_filter "real
 get_tracer_filter()
 
-A value ranging from 0 to 1. ";
+A value ranging from 0 to 1 to filter tracers out of the water flux.
+
+1.0 is no filter and 0.0 means no solute is crossing this connection
+";
 
 %feature("docstring")
 cmf::water::external_control_connection::kill_me "bool kill_me()
@@ -3366,7 +3519,12 @@ returns the right node of this connection ";
 
 %feature("docstring")
 cmf::water::external_control_connection::set_tracer_filter "void
-set_tracer_filter(real value) ";
+set_tracer_filter(real value)
+
+A value ranging from 0 to 1 to filter tracers out of the water flux.
+
+1.0 is no filter and 0.0 means no solute is crossing this connection
+";
 
 %feature("docstring")
 cmf::water::external_control_connection::short_string "std::string
@@ -3430,7 +3588,10 @@ of the connection. ";
 %feature("docstring")  cmf::water::flux_connection::get_tracer_filter
 "real get_tracer_filter()
 
-A value ranging from 0 to 1. ";
+A value ranging from 0 to 1 to filter tracers out of the water flux.
+
+1.0 is no filter and 0.0 means no solute is crossing this connection
+";
 
 %feature("docstring")  cmf::water::flux_connection::kill_me "bool
 kill_me()
@@ -3458,7 +3619,12 @@ Performes a new calculation of the flux. ";
 returns the right node of this connection ";
 
 %feature("docstring")  cmf::water::flux_connection::set_tracer_filter
-"void set_tracer_filter(real value) ";
+"void set_tracer_filter(real value)
+
+A value ranging from 0 to 1 to filter tracers out of the water flux.
+
+1.0 is no filter and 0.0 means no solute is crossing this connection
+";
 
 %feature("docstring")  cmf::water::flux_connection::short_string "std::string short_string() const ";
 
@@ -3802,7 +3968,10 @@ of the connection. ";
 cmf::water::generic_gradient_connection::get_tracer_filter "real
 get_tracer_filter()
 
-A value ranging from 0 to 1. ";
+A value ranging from 0 to 1 to filter tracers out of the water flux.
+
+1.0 is no filter and 0.0 means no solute is crossing this connection
+";
 
 %feature("docstring")
 cmf::water::generic_gradient_connection::kill_me "bool kill_me()
@@ -3835,7 +4004,12 @@ returns the right node of this connection ";
 
 %feature("docstring")
 cmf::water::generic_gradient_connection::set_tracer_filter "void
-set_tracer_filter(real value) ";
+set_tracer_filter(real value)
+
+A value ranging from 0 to 1 to filter tracers out of the water flux.
+
+1.0 is no filter and 0.0 means no solute is crossing this connection
+";
 
 %feature("docstring")
 cmf::water::generic_gradient_connection::short_string "std::string
@@ -3900,7 +4074,10 @@ of the connection. ";
 cmf::upslope::connections::GradientMacroFlow::get_tracer_filter "real
 get_tracer_filter()
 
-A value ranging from 0 to 1. ";
+A value ranging from 0 to 1 to filter tracers out of the water flux.
+
+1.0 is no filter and 0.0 means no solute is crossing this connection
+";
 
 %feature("docstring")
 cmf::upslope::connections::GradientMacroFlow::kill_me "bool kill_me()
@@ -3932,7 +4109,12 @@ returns the right node of this connection ";
 
 %feature("docstring")
 cmf::upslope::connections::GradientMacroFlow::set_tracer_filter "void
-set_tracer_filter(real value) ";
+set_tracer_filter(real value)
+
+A value ranging from 0 to 1 to filter tracers out of the water flux.
+
+1.0 is no filter and 0.0 means no solute is crossing this connection
+";
 
 %feature("docstring")
 cmf::upslope::connections::GradientMacroFlow::short_string "std::string short_string() const ";
@@ -4007,7 +4189,10 @@ of the connection. ";
 cmf::upslope::connections::GradientMacroMicroExchange::get_tracer_filter
 "real get_tracer_filter()
 
-A value ranging from 0 to 1. ";
+A value ranging from 0 to 1 to filter tracers out of the water flux.
+
+1.0 is no filter and 0.0 means no solute is crossing this connection
+";
 
 %feature("docstring")
 cmf::upslope::connections::GradientMacroMicroExchange::kill_me "bool
@@ -4041,7 +4226,12 @@ returns the right node of this connection ";
 
 %feature("docstring")
 cmf::upslope::connections::GradientMacroMicroExchange::set_tracer_filter
-"void set_tracer_filter(real value) ";
+"void set_tracer_filter(real value)
+
+A value ranging from 0 to 1 to filter tracers out of the water flux.
+
+1.0 is no filter and 0.0 means no solute is crossing this connection
+";
 
 %feature("docstring")
 cmf::upslope::connections::GradientMacroMicroExchange::short_string "std::string short_string() const ";
@@ -4163,7 +4353,10 @@ of the connection. ";
 %feature("docstring")
 cmf::upslope::connections::GreenAmptInfiltration::get_tracer_filter "real get_tracer_filter()
 
-A value ranging from 0 to 1. ";
+A value ranging from 0 to 1 to filter tracers out of the water flux.
+
+1.0 is no filter and 0.0 means no solute is crossing this connection
+";
 
 %feature("docstring")
 cmf::upslope::connections::GreenAmptInfiltration::kill_me "bool
@@ -4196,7 +4389,12 @@ cmf::upslope::connections::GreenAmptInfiltration::right_node "flux_node::ptr rig
 returns the right node of this connection ";
 
 %feature("docstring")
-cmf::upslope::connections::GreenAmptInfiltration::set_tracer_filter "void set_tracer_filter(real value) ";
+cmf::upslope::connections::GreenAmptInfiltration::set_tracer_filter "void set_tracer_filter(real value)
+
+A value ranging from 0 to 1 to filter tracers out of the water flux.
+
+1.0 is no filter and 0.0 means no solute is crossing this connection
+";
 
 %feature("docstring")
 cmf::upslope::connections::GreenAmptInfiltration::short_string "std::string short_string() const ";
@@ -4244,8 +4442,7 @@ solar declination (radians)
 See:  SAMANI, Zohrab.Estimating solar radiation and evapotranspiration
 using minimum climatological data. Journal of Irrigation and Drainage
 Engineering, 2000, 126. Jg., Nr. 4, S. 265-267.  Crop specific
-potential evapotranspiration is scaled by LAI:  :math:`ET_{pot} = ET_{rc} \\\\frac{LAI}{2.88}` . Actual evapotranspiration is calculated using
-cmf::upslope::ET::Tact
+potential evapotranspiration is scaled by LAI:  :math:`ET_{pot} = ET_{rc} \\\\frac{LAI}{2.88}` .
 
 C++ includes: ET.h ";
 
@@ -4264,6 +4461,8 @@ flux (direction depending) ";
 "void exchange_target(flux_node::ptr oldtarget, flux_node::ptr
 newTarget) ";
 
+%feature("docstring")  cmf::upslope::ET::HargreaveET::get_layer "SoilLayer::ptr get_layer() const ";
+
 %feature("docstring")  cmf::upslope::ET::HargreaveET::get_ptr "ptr
 get_ptr() const ";
 
@@ -4280,7 +4479,10 @@ of the connection. ";
 cmf::upslope::ET::HargreaveET::get_tracer_filter "real
 get_tracer_filter()
 
-A value ranging from 0 to 1. ";
+A value ranging from 0 to 1 to filter tracers out of the water flux.
+
+1.0 is no filter and 0.0 means no solute is crossing this connection
+";
 
 %feature("docstring")  cmf::upslope::ET::HargreaveET::kill_me "bool
 kill_me()
@@ -4308,8 +4510,19 @@ Performes a new calculation of the flux. ";
 returns the right node of this connection ";
 
 %feature("docstring")
+cmf::upslope::ET::HargreaveET::set_stressfunction "void
+set_stressfunction(const RootUptakeStessFunction &stressfunction)
+
+Sets the stress function to limit water uptake. ";
+
+%feature("docstring")
 cmf::upslope::ET::HargreaveET::set_tracer_filter "void
-set_tracer_filter(real value) ";
+set_tracer_filter(real value)
+
+A value ranging from 0 to 1 to filter tracers out of the water flux.
+
+1.0 is no filter and 0.0 means no solute is crossing this connection
+";
 
 %feature("docstring")  cmf::upslope::ET::HargreaveET::short_string "std::string short_string() const ";
 
@@ -4370,7 +4583,10 @@ of the connection. ";
 cmf::upslope::connections::HBVlateral::get_tracer_filter "real
 get_tracer_filter()
 
-A value ranging from 0 to 1. ";
+A value ranging from 0 to 1 to filter tracers out of the water flux.
+
+1.0 is no filter and 0.0 means no solute is crossing this connection
+";
 
 %feature("docstring")  cmf::upslope::connections::HBVlateral::kill_me
 "bool kill_me()
@@ -4403,7 +4619,12 @@ returns the right node of this connection ";
 
 %feature("docstring")
 cmf::upslope::connections::HBVlateral::set_tracer_filter "void
-set_tracer_filter(real value) ";
+set_tracer_filter(real value)
+
+A value ranging from 0 to 1 to filter tracers out of the water flux.
+
+1.0 is no filter and 0.0 means no solute is crossing this connection
+";
 
 %feature("docstring")
 cmf::upslope::connections::HBVlateral::short_string "std::string
@@ -4631,7 +4852,10 @@ of the connection. ";
 cmf::upslope::connections::HBVpercolation::get_tracer_filter "real
 get_tracer_filter()
 
-A value ranging from 0 to 1. ";
+A value ranging from 0 to 1 to filter tracers out of the water flux.
+
+1.0 is no filter and 0.0 means no solute is crossing this connection
+";
 
 %feature("docstring")
 cmf::upslope::connections::HBVpercolation::kill_me "bool kill_me()
@@ -4664,7 +4888,12 @@ returns the right node of this connection ";
 
 %feature("docstring")
 cmf::upslope::connections::HBVpercolation::set_tracer_filter "void
-set_tracer_filter(real value) ";
+set_tracer_filter(real value)
+
+A value ranging from 0 to 1 to filter tracers out of the water flux.
+
+1.0 is no filter and 0.0 means no solute is crossing this connection
+";
 
 %feature("docstring")
 cmf::upslope::connections::HBVpercolation::short_string "std::string
@@ -5667,7 +5896,10 @@ of the connection. ";
 cmf::upslope::connections::JarvisMacroFlow::get_tracer_filter "real
 get_tracer_filter()
 
-A value ranging from 0 to 1. ";
+A value ranging from 0 to 1 to filter tracers out of the water flux.
+
+1.0 is no filter and 0.0 means no solute is crossing this connection
+";
 
 %feature("docstring")
 cmf::upslope::connections::JarvisMacroFlow::kill_me "bool kill_me()
@@ -5699,7 +5931,12 @@ returns the right node of this connection ";
 
 %feature("docstring")
 cmf::upslope::connections::JarvisMacroFlow::set_tracer_filter "void
-set_tracer_filter(real value) ";
+set_tracer_filter(real value)
+
+A value ranging from 0 to 1 to filter tracers out of the water flux.
+
+1.0 is no filter and 0.0 means no solute is crossing this connection
+";
 
 %feature("docstring")
 cmf::upslope::connections::JarvisMacroFlow::short_string "std::string
@@ -5795,7 +6032,10 @@ of the connection. ";
 
 %feature("docstring")  cmf::water::kinematic_wave::get_tracer_filter "real get_tracer_filter()
 
-A value ranging from 0 to 1. ";
+A value ranging from 0 to 1 to filter tracers out of the water flux.
+
+1.0 is no filter and 0.0 means no solute is crossing this connection
+";
 
 %feature("docstring")  cmf::water::kinematic_wave::kill_me "bool
 kill_me()
@@ -5822,7 +6062,12 @@ Performes a new calculation of the flux. ";
 
 returns the right node of this connection ";
 
-%feature("docstring")  cmf::water::kinematic_wave::set_tracer_filter "void set_tracer_filter(real value) ";
+%feature("docstring")  cmf::water::kinematic_wave::set_tracer_filter "void set_tracer_filter(real value)
+
+A value ranging from 0 to 1 to filter tracers out of the water flux.
+
+1.0 is no filter and 0.0 means no solute is crossing this connection
+";
 
 %feature("docstring")  cmf::water::kinematic_wave::short_string "std::string short_string() const ";
 
@@ -5905,7 +6150,10 @@ of the connection. ";
 %feature("docstring")
 cmf::upslope::connections::KinematicMacroFlow::get_tracer_filter "real get_tracer_filter()
 
-A value ranging from 0 to 1. ";
+A value ranging from 0 to 1 to filter tracers out of the water flux.
+
+1.0 is no filter and 0.0 means no solute is crossing this connection
+";
 
 %feature("docstring")
 cmf::upslope::connections::KinematicMacroFlow::kill_me "bool
@@ -5938,7 +6186,12 @@ cmf::upslope::connections::KinematicMacroFlow::right_node "flux_node::ptr right_
 returns the right node of this connection ";
 
 %feature("docstring")
-cmf::upslope::connections::KinematicMacroFlow::set_tracer_filter "void set_tracer_filter(real value) ";
+cmf::upslope::connections::KinematicMacroFlow::set_tracer_filter "void set_tracer_filter(real value)
+
+A value ranging from 0 to 1 to filter tracers out of the water flux.
+
+1.0 is no filter and 0.0 means no solute is crossing this connection
+";
 
 %feature("docstring")
 cmf::upslope::connections::KinematicMacroFlow::short_string "std::string short_string() const ";
@@ -6051,7 +6304,10 @@ of the connection. ";
 %feature("docstring")
 cmf::upslope::connections::KinematicSurfaceRunoff::get_tracer_filter "real get_tracer_filter()
 
-A value ranging from 0 to 1. ";
+A value ranging from 0 to 1 to filter tracers out of the water flux.
+
+1.0 is no filter and 0.0 means no solute is crossing this connection
+";
 
 %feature("docstring")
 cmf::upslope::connections::KinematicSurfaceRunoff::kill_me "bool
@@ -6084,7 +6340,12 @@ cmf::upslope::connections::KinematicSurfaceRunoff::right_node "flux_node::ptr ri
 returns the right node of this connection ";
 
 %feature("docstring")
-cmf::upslope::connections::KinematicSurfaceRunoff::set_tracer_filter "void set_tracer_filter(real value) ";
+cmf::upslope::connections::KinematicSurfaceRunoff::set_tracer_filter "void set_tracer_filter(real value)
+
+A value ranging from 0 to 1 to filter tracers out of the water flux.
+
+1.0 is no filter and 0.0 means no solute is crossing this connection
+";
 
 %feature("docstring")
 cmf::upslope::connections::KinematicSurfaceRunoff::short_string "std::string short_string() const ";
@@ -6212,7 +6473,10 @@ of the connection. ";
 cmf::upslope::connections::lateral_sub_surface_flux::get_tracer_filter
 "real get_tracer_filter()
 
-A value ranging from 0 to 1. ";
+A value ranging from 0 to 1 to filter tracers out of the water flux.
+
+1.0 is no filter and 0.0 means no solute is crossing this connection
+";
 
 %feature("docstring")
 cmf::upslope::connections::lateral_sub_surface_flux::kill_me "bool
@@ -6246,7 +6510,12 @@ returns the right node of this connection ";
 
 %feature("docstring")
 cmf::upslope::connections::lateral_sub_surface_flux::set_tracer_filter
-"void set_tracer_filter(real value) ";
+"void set_tracer_filter(real value)
+
+A value ranging from 0 to 1 to filter tracers out of the water flux.
+
+1.0 is no filter and 0.0 means no solute is crossing this connection
+";
 
 %feature("docstring")
 cmf::upslope::connections::lateral_sub_surface_flux::short_string "std::string short_string() const ";
@@ -6502,7 +6771,10 @@ of the connection. ";
 cmf::upslope::connections::LayerBypass::get_tracer_filter "real
 get_tracer_filter()
 
-A value ranging from 0 to 1. ";
+A value ranging from 0 to 1 to filter tracers out of the water flux.
+
+1.0 is no filter and 0.0 means no solute is crossing this connection
+";
 
 %feature("docstring")  cmf::upslope::connections::LayerBypass::K "real K(real w)
 
@@ -6543,7 +6815,12 @@ returns the right node of this connection ";
 
 %feature("docstring")
 cmf::upslope::connections::LayerBypass::set_tracer_filter "void
-set_tracer_filter(real value) ";
+set_tracer_filter(real value)
+
+A value ranging from 0 to 1 to filter tracers out of the water flux.
+
+1.0 is no filter and 0.0 means no solute is crossing this connection
+";
 
 %feature("docstring")
 cmf::upslope::connections::LayerBypass::short_string "std::string
@@ -6867,7 +7144,10 @@ of the connection. ";
 cmf::upslope::connections::MACROlikeMacroMicroExchange::get_tracer_filter
 "real get_tracer_filter()
 
-A value ranging from 0 to 1. ";
+A value ranging from 0 to 1 to filter tracers out of the water flux.
+
+1.0 is no filter and 0.0 means no solute is crossing this connection
+";
 
 %feature("docstring")
 cmf::upslope::connections::MACROlikeMacroMicroExchange::kill_me "bool
@@ -6901,7 +7181,12 @@ returns the right node of this connection ";
 
 %feature("docstring")
 cmf::upslope::connections::MACROlikeMacroMicroExchange::set_tracer_filter
-"void set_tracer_filter(real value) ";
+"void set_tracer_filter(real value)
+
+A value ranging from 0 to 1 to filter tracers out of the water flux.
+
+1.0 is no filter and 0.0 means no solute is crossing this connection
+";
 
 %feature("docstring")
 cmf::upslope::connections::MACROlikeMacroMicroExchange::short_string "std::string short_string() const ";
@@ -7235,7 +7520,10 @@ of the connection. ";
 %feature("docstring")  cmf::river::Manning::get_tracer_filter "real
 get_tracer_filter()
 
-A value ranging from 0 to 1. ";
+A value ranging from 0 to 1 to filter tracers out of the water flux.
+
+1.0 is no filter and 0.0 means no solute is crossing this connection
+";
 
 %feature("docstring")  cmf::river::Manning::kill_me "bool kill_me()
 
@@ -7263,7 +7551,12 @@ Performes a new calculation of the flux. ";
 returns the right node of this connection ";
 
 %feature("docstring")  cmf::river::Manning::set_tracer_filter "void
-set_tracer_filter(real value) ";
+set_tracer_filter(real value)
+
+A value ranging from 0 to 1 to filter tracers out of the water flux.
+
+1.0 is no filter and 0.0 means no solute is crossing this connection
+";
 
 %feature("docstring")  cmf::river::Manning::short_string "std::string
 short_string() const ";
@@ -7340,7 +7633,10 @@ of the connection. ";
 cmf::river::Manning_Diffusive::get_tracer_filter "real
 get_tracer_filter()
 
-A value ranging from 0 to 1. ";
+A value ranging from 0 to 1 to filter tracers out of the water flux.
+
+1.0 is no filter and 0.0 means no solute is crossing this connection
+";
 
 %feature("docstring")  cmf::river::Manning_Diffusive::kill_me "bool
 kill_me()
@@ -7369,7 +7665,12 @@ returns the right node of this connection ";
 
 %feature("docstring")
 cmf::river::Manning_Diffusive::set_tracer_filter "void
-set_tracer_filter(real value) ";
+set_tracer_filter(real value)
+
+A value ranging from 0 to 1 to filter tracers out of the water flux.
+
+1.0 is no filter and 0.0 means no solute is crossing this connection
+";
 
 %feature("docstring")  cmf::river::Manning_Diffusive::short_string "std::string short_string() const ";
 
@@ -7442,7 +7743,10 @@ of the connection. ";
 cmf::river::Manning_Kinematic::get_tracer_filter "real
 get_tracer_filter()
 
-A value ranging from 0 to 1. ";
+A value ranging from 0 to 1 to filter tracers out of the water flux.
+
+1.0 is no filter and 0.0 means no solute is crossing this connection
+";
 
 %feature("docstring")  cmf::river::Manning_Kinematic::kill_me "bool
 kill_me()
@@ -7471,7 +7775,12 @@ returns the right node of this connection ";
 
 %feature("docstring")
 cmf::river::Manning_Kinematic::set_tracer_filter "void
-set_tracer_filter(real value) ";
+set_tracer_filter(real value)
+
+A value ranging from 0 to 1 to filter tracers out of the water flux.
+
+1.0 is no filter and 0.0 means no solute is crossing this connection
+";
 
 %feature("docstring")  cmf::river::Manning_Kinematic::short_string "std::string short_string() const ";
 
@@ -7561,7 +7870,10 @@ of the connection. ";
 %feature("docstring")
 cmf::upslope::connections::MatrixInfiltration::get_tracer_filter "real get_tracer_filter()
 
-A value ranging from 0 to 1. ";
+A value ranging from 0 to 1 to filter tracers out of the water flux.
+
+1.0 is no filter and 0.0 means no solute is crossing this connection
+";
 
 %feature("docstring")
 cmf::upslope::connections::MatrixInfiltration::kill_me "bool
@@ -7594,7 +7906,12 @@ cmf::upslope::connections::MatrixInfiltration::right_node "flux_node::ptr right_
 returns the right node of this connection ";
 
 %feature("docstring")
-cmf::upslope::connections::MatrixInfiltration::set_tracer_filter "void set_tracer_filter(real value) ";
+cmf::upslope::connections::MatrixInfiltration::set_tracer_filter "void set_tracer_filter(real value)
+
+A value ranging from 0 to 1 to filter tracers out of the water flux.
+
+1.0 is no filter and 0.0 means no solute is crossing this connection
+";
 
 %feature("docstring")
 cmf::upslope::connections::MatrixInfiltration::short_string "std::string short_string() const ";
@@ -8422,7 +8739,10 @@ of the connection. ";
 
 %feature("docstring")  cmf::water::NeumannFlux::get_tracer_filter "real get_tracer_filter()
 
-A value ranging from 0 to 1. ";
+A value ranging from 0 to 1 to filter tracers out of the water flux.
+
+1.0 is no filter and 0.0 means no solute is crossing this connection
+";
 
 %feature("docstring")  cmf::water::NeumannFlux::kill_me "bool
 kill_me()
@@ -8449,7 +8769,12 @@ Performes a new calculation of the flux. ";
 
 returns the right node of this connection ";
 
-%feature("docstring")  cmf::water::NeumannFlux::set_tracer_filter "void set_tracer_filter(real value) ";
+%feature("docstring")  cmf::water::NeumannFlux::set_tracer_filter "void set_tracer_filter(real value)
+
+A value ranging from 0 to 1 to filter tracers out of the water flux.
+
+1.0 is no filter and 0.0 means no solute is crossing this connection
+";
 
 %feature("docstring")  cmf::water::NeumannFlux::short_string "std::string short_string() const ";
 
@@ -8653,136 +8978,84 @@ A valarray kind of vector implementation with OpenMP capabilities.
 
 C++ includes: num_array.h ";
 
-/*  Constructors & Destructors  */
-
-%feature("docstring")  cmf::math::num_array::num_array "num_array(ptrdiff_t count, real Value=0)
-
-Creates a new vector with size count.
-
-Parameters:
------------
-
-count:  size of new vector
-
-Value:  Value of each element (default=0) ";
-
 %feature("docstring")  cmf::math::num_array::num_array "num_array()
 
-Creates a vector of size 1 with value {0}. ";
+constructors ";
 
-%feature("docstring")  cmf::math::num_array::num_array "num_array(const num_array &Vector)
+%feature("docstring")  cmf::math::num_array::num_array "num_array(const num_array &Vector) ";
 
-Copy constructor. ";
+%feature("docstring")  cmf::math::num_array::num_array "num_array(const_iterator begin, const_iterator end) ";
 
-%feature("docstring")  cmf::math::num_array::num_array "num_array(double *data, size_t count)
+%feature("docstring")  cmf::math::num_array::num_array "num_array(ptrdiff_t count, real Value=0.0) ";
 
-Creates a vector from data. After creation is vector the owner of
-data. ";
+%feature("docstring")  cmf::math::num_array::num_array "num_array(size_t count, real Value=0.0) ";
 
-%feature("docstring")  cmf::math::num_array::num_array "num_array(const_iterator begin, const_iterator end)
-
-Create a vector from an iterator range. Copies the data. ";
+%feature("docstring")  cmf::math::num_array::num_array "num_array(size_t count, real *data) ";
 
 %feature("docstring")  cmf::math::num_array::~num_array "~num_array()
 
-Destructor. ";
-
-/*  Operators  */
-
-/* Binary operators defined as free operators:
-
-x = {+,-,*,/}
-
-Defined for (x is one of the operators above): vector = vector x
-vector
-
-vector = real x vector
-
-vector = vector x real
-
-*/
-
-%feature("docstring")  cmf::math::num_array::power "num_array
-power(const num_array &) const
-
-Return each element to the power of each element of vector. ";
-
-%feature("docstring")  cmf::math::num_array::power "num_array
-power(real exponent) const
-
-Return each element to the power \"exponent\". ";
+destructor ";
 
 %feature("docstring")  cmf::math::num_array::apply "num_array
-apply(real funct(real)) const
+apply(real funct(real)) const ";
 
-Return funct(this)
-
-Parameters:
------------
-
-funct:  a function of signature real funct(real)
-
-Example: Return the sinus of each element of vector x ";
-
-/*  Summarizing functions  */
-
-%feature("docstring")  cmf::math::num_array::dot "real dot(const
-num_array &) const
-
-Return dot product of this and vector. ";
-
-%feature("docstring")  cmf::math::num_array::sum "real sum() const
-
-Return sum of vector. ";
-
-%feature("docstring")  cmf::math::num_array::max "real max() const
-
-Return max of vector. ";
-
-%feature("docstring")  cmf::math::num_array::min "real min() const
-
-Return min of vector. ";
-
-%feature("docstring")  cmf::math::num_array::mean "real mean() const
-
-< Return mean of vector ";
-
-%feature("docstring")  cmf::math::num_array::norm "real norm(int
-normtype=0) const
-
-Returns a norm of the vector, implemented norms: 1 - sum of abs, 2 -
-Euclidean distance, 0 Maximum of abs.
-
-Parameters:
------------
-
-normtype:  An integer indicating the type of norm ";
+%feature("docstring")  cmf::math::num_array::axpy "void axpy(const
+real fac, const num_array &other) ";
 
 %feature("docstring")  cmf::math::num_array::begin "iterator begin()
 const ";
 
+%feature("docstring")  cmf::math::num_array::dot "real dot(const
+num_array &) const ";
+
 %feature("docstring")  cmf::math::num_array::end "iterator end()
 const ";
 
+%feature("docstring")  cmf::math::num_array::is_nan "bool is_nan()
+const ";
+
+%feature("docstring")  cmf::math::num_array::max "real max() const ";
+
+%feature("docstring")  cmf::math::num_array::mean "real mean() const
+";
+
+%feature("docstring")  cmf::math::num_array::min "real min() const ";
+
+%feature("docstring")  cmf::math::num_array::norm "real norm(int
+normtype=0) const ";
+
+%feature("docstring")  cmf::math::num_array::power "num_array
+power(const num_array &) const ";
+
+%feature("docstring")  cmf::math::num_array::power "num_array
+power(real exponent) const ";
+
 %feature("docstring")  cmf::math::num_array::release "iterator
-release()
+release() ";
+
+%feature("docstring")  cmf::math::num_array::resize "void
+resize(ptrdiff_t count) ";
+
+%feature("docstring")  cmf::math::num_array::scale "void scale(const
+real fac) ";
+
+%feature("docstring")  cmf::math::num_array::scale_add "void
+scale_add(const real fac, const num_array &other) ";
+
+%feature("docstring")  cmf::math::num_array::set "void set(const
+num_array &other)
 
 Prevents deletion of the stored data.
 
 Use with care, and only if you know what you are doing. ";
 
-%feature("docstring")  cmf::math::num_array::resize "void
-resize(ptrdiff_t count)
+%feature("docstring")  cmf::math::num_array::set "void set(const real
+fac, const num_array &other) ";
 
-Changes the size of the vector. ";
+%feature("docstring")  cmf::math::num_array::size "ptrdiff_t size()
+const ";
 
-%feature("docstring")  cmf::math::num_array::resize "void
-resize(size_t count) ";
-
-%feature("docstring")  cmf::math::num_array::size "size_t size()
-const
-
-Size of the vector. ";
+%feature("docstring")  cmf::math::num_array::sum "real sum() const ";
 
 
 // File: classcmf_1_1river_1_1_open_water_storage.xml
@@ -8997,7 +9270,10 @@ of the connection. ";
 cmf::upslope::ET::PenmanEvaporation::get_tracer_filter "real
 get_tracer_filter()
 
-A value ranging from 0 to 1. ";
+A value ranging from 0 to 1 to filter tracers out of the water flux.
+
+1.0 is no filter and 0.0 means no solute is crossing this connection
+";
 
 %feature("docstring")  cmf::upslope::ET::PenmanEvaporation::kill_me "bool kill_me()
 
@@ -9026,7 +9302,12 @@ returns the right node of this connection ";
 
 %feature("docstring")
 cmf::upslope::ET::PenmanEvaporation::set_tracer_filter "void
-set_tracer_filter(real value) ";
+set_tracer_filter(real value)
+
+A value ranging from 0 to 1 to filter tracers out of the water flux.
+
+1.0 is no filter and 0.0 means no solute is crossing this connection
+";
 
 %feature("docstring")
 cmf::upslope::ET::PenmanEvaporation::short_string "std::string
@@ -9099,6 +9380,8 @@ flux (direction depending) ";
 cmf::upslope::ET::PenmanMonteithET::exchange_target "void
 exchange_target(flux_node::ptr oldtarget, flux_node::ptr newTarget) ";
 
+%feature("docstring")  cmf::upslope::ET::PenmanMonteithET::get_layer "SoilLayer::ptr get_layer() const ";
+
 %feature("docstring")  cmf::upslope::ET::PenmanMonteithET::get_ptr "ptr get_ptr() const ";
 
 %feature("docstring")  cmf::upslope::ET::PenmanMonteithET::get_target
@@ -9116,7 +9399,10 @@ of the connection. ";
 cmf::upslope::ET::PenmanMonteithET::get_tracer_filter "real
 get_tracer_filter()
 
-A value ranging from 0 to 1. ";
+A value ranging from 0 to 1 to filter tracers out of the water flux.
+
+1.0 is no filter and 0.0 means no solute is crossing this connection
+";
 
 %feature("docstring")  cmf::upslope::ET::PenmanMonteithET::kill_me "bool kill_me()
 
@@ -9143,8 +9429,19 @@ Performes a new calculation of the flux. ";
 returns the right node of this connection ";
 
 %feature("docstring")
+cmf::upslope::ET::PenmanMonteithET::set_stressfunction "void
+set_stressfunction(const RootUptakeStessFunction &stressfunction)
+
+Sets the stress function to limit water uptake. ";
+
+%feature("docstring")
 cmf::upslope::ET::PenmanMonteithET::set_tracer_filter "void
-set_tracer_filter(real value) ";
+set_tracer_filter(real value)
+
+A value ranging from 0 to 1 to filter tracers out of the water flux.
+
+1.0 is no filter and 0.0 means no solute is crossing this connection
+";
 
 %feature("docstring")
 cmf::upslope::ET::PenmanMonteithET::short_string "std::string
@@ -9775,7 +10072,10 @@ of the connection. ";
 cmf::upslope::connections::Rainfall::get_tracer_filter "real
 get_tracer_filter()
 
-A value ranging from 0 to 1. ";
+A value ranging from 0 to 1 to filter tracers out of the water flux.
+
+1.0 is no filter and 0.0 means no solute is crossing this connection
+";
 
 %feature("docstring")  cmf::upslope::connections::Rainfall::kill_me "bool kill_me()
 
@@ -9804,7 +10104,12 @@ returns the right node of this connection ";
 
 %feature("docstring")
 cmf::upslope::connections::Rainfall::set_tracer_filter "void
-set_tracer_filter(real value) ";
+set_tracer_filter(real value)
+
+A value ranging from 0 to 1 to filter tracers out of the water flux.
+
+1.0 is no filter and 0.0 means no solute is crossing this connection
+";
 
 %feature("docstring")
 cmf::upslope::connections::Rainfall::short_string "std::string
@@ -10664,7 +10969,10 @@ of the connection. ";
 cmf::upslope::connections::Richards::get_tracer_filter "real
 get_tracer_filter()
 
-A value ranging from 0 to 1. ";
+A value ranging from 0 to 1 to filter tracers out of the water flux.
+
+1.0 is no filter and 0.0 means no solute is crossing this connection
+";
 
 %feature("docstring")  cmf::upslope::connections::Richards::kill_me "bool kill_me()
 
@@ -10693,7 +11001,12 @@ returns the right node of this connection ";
 
 %feature("docstring")
 cmf::upslope::connections::Richards::set_tracer_filter "void
-set_tracer_filter(real value) ";
+set_tracer_filter(real value)
+
+A value ranging from 0 to 1 to filter tracers out of the water flux.
+
+1.0 is no filter and 0.0 means no solute is crossing this connection
+";
 
 %feature("docstring")
 cmf::upslope::connections::Richards::short_string "std::string
@@ -10779,7 +11092,10 @@ of the connection. ";
 cmf::upslope::connections::Richards_lateral::get_tracer_filter "real
 get_tracer_filter()
 
-A value ranging from 0 to 1. ";
+A value ranging from 0 to 1 to filter tracers out of the water flux.
+
+1.0 is no filter and 0.0 means no solute is crossing this connection
+";
 
 %feature("docstring")
 cmf::upslope::connections::Richards_lateral::kill_me "bool kill_me()
@@ -10811,7 +11127,12 @@ returns the right node of this connection ";
 
 %feature("docstring")
 cmf::upslope::connections::Richards_lateral::set_tracer_filter "void
-set_tracer_filter(real value) ";
+set_tracer_filter(real value)
+
+A value ranging from 0 to 1 to filter tracers out of the water flux.
+
+1.0 is no filter and 0.0 means no solute is crossing this connection
+";
 
 %feature("docstring")
 cmf::upslope::connections::Richards_lateral::short_string "std::string short_string() const ";
@@ -10819,6 +11140,183 @@ cmf::upslope::connections::Richards_lateral::short_string "std::string short_str
 %feature("docstring")
 cmf::upslope::connections::Richards_lateral::to_string "std::string
 to_string() const ";
+
+
+// File: classcmf_1_1math_1_1_r_k23_integrator.xml
+%feature("docstring") cmf::math::RK23Integrator "
+
+An embedded explicit Runge Kutta integrator of order 3(2), known as
+the Bogacki-Shampine method, with automatic step size control that
+supports MPI.
+
+Does not use Integrator's m_dt variable for its step size, but rather
+an internal variable tau, so that no external changes to m_dt (e.g. by
+integrate_until) mess up the automatic step size control.
+
+C++ includes: RK23integrator.h ";
+
+/*  Accuracy parameters  */
+
+/*  model time  */
+
+%feature("docstring")  cmf::math::RK23Integrator::get_t "cmf::math::Time get_t() const
+
+Returns the current model time. ";
+
+%feature("docstring")  cmf::math::RK23Integrator::set_t "void
+set_t(cmf::math::Time val)
+
+Sets the current model time. ";
+
+%feature("docstring")  cmf::math::RK23Integrator::get_dt "cmf::math::Time get_dt() const
+
+Returns the last time step. ";
+
+/*  Integrate  */
+
+%feature("docstring")  cmf::math::RK23Integrator::integrate_until "void integrate_until(cmf::math::Time t_max, cmf::math::Time dt=Time(),
+bool reset=false)
+
+Integrates the vector of state variables until t_max.
+
+Parameters:
+-----------
+
+t_max:   Time, the solver should run to
+
+dt:   Time step (may be omitted)
+
+reset:  If true, solver is reseted before integration starts ";
+
+%feature("docstring")  cmf::math::RK23Integrator::RK23Integrator "RK23Integrator(cmf::math::StateVariableOwner &states, double
+abstol=1e-6, double reltol=1e-6, Time dt_min=cmf::math::sec)
+
+Create a new RK23MPI integrator.
+
+Parameters:
+-----------
+
+states:  State variables to be added to the integrator.
+
+abstol:  Absolute tolerance for error estimator and step size control.
+
+reltol:  Relative tolerance for error estimator and step size control.
+
+dt_min:  Minimum step size. ";
+
+%feature("docstring")  cmf::math::RK23Integrator::RK23Integrator "RK23Integrator(const cmf::math::RK23Integrator &other) ";
+
+%feature("docstring")  cmf::math::RK23Integrator::~RK23Integrator "virtual ~RK23Integrator()
+
+Destructor. ";
+
+%feature("docstring")  cmf::math::RK23Integrator::add_single_state "virtual void add_single_state(cmf::math::StateVariable::ptr state)
+
+Adds a single state variable to the integrator. ";
+
+%feature("docstring")  cmf::math::RK23Integrator::add_states "void
+add_states(cmf::math::StateVariableOwner &stateOwner)
+
+Add state variables from a StateVariableOwner. ";
+
+%feature("docstring")  cmf::math::RK23Integrator::add_values_to_states
+"void add_values_to_states(const num_array &operands)
+
+Adds the values in operands to the current states. ";
+
+%feature("docstring")  cmf::math::RK23Integrator::copy "virtual
+Integrator* copy() const
+
+Do not use this method. It is not implemented. ";
+
+%feature("docstring")  cmf::math::RK23Integrator::copy_dxdt "void
+copy_dxdt(Time time, num_array &destination, real factor=1) const
+
+Copies the derivatives at time step \"time\" to a numeric vector using
+use_OpenMP.
+
+Parameters:
+-----------
+
+time:   Time at which the derivatives should be calculated
+
+destination:  Vector to be overwritten by the results
+
+factor:  A factor that is multiplied to the derivate (e.g. unit
+conversion or integration length) ";
+
+%feature("docstring")  cmf::math::RK23Integrator::copy_dxdt "void
+copy_dxdt(Time time, real *destination, real factor=1) const
+
+Copies the derivatives at time step \"time\" to an preallocated c
+array.
+
+Parameters:
+-----------
+
+time:   Time at which the derivatives should be calculated
+
+destination:  Allocated c array
+
+factor:  A factor that is multiplied to the derivate (e.g. unit
+conversion or integration length) ";
+
+%feature("docstring")  cmf::math::RK23Integrator::copy_states "void
+copy_states(num_array &destination) const
+
+Copies the states to a numeric vector using use_OpenMP. ";
+
+%feature("docstring")  cmf::math::RK23Integrator::copy_states "void
+copy_states(real *destination) const ";
+
+%feature("docstring")  cmf::math::RK23Integrator::get_dxdt "cmf::math::num_array get_dxdt(Time time) const ";
+
+%feature("docstring")  cmf::math::RK23Integrator::get_state "real
+get_state(ptrdiff_t position) const
+
+Returns the statevariable at position Simplifies the assessment of
+state variables. ";
+
+%feature("docstring")  cmf::math::RK23Integrator::get_states "cmf::math::num_array get_states() const ";
+
+%feature("docstring")  cmf::math::RK23Integrator::get_states "StateVariableList get_states()
+
+gets the state variables of the integrator ";
+
+%feature("docstring")  cmf::math::RK23Integrator::integrate "int
+integrate(cmf::math::Time t_max, cmf::math::Time dt)
+
+Integrates the vector of state variables, either till time t_max or a
+point of time before that, if a small step size is required.
+
+Parameters:
+-----------
+
+t_max:  Upper boundary for integration interval.
+
+dt:  Ignored. ";
+
+%feature("docstring")  cmf::math::RK23Integrator::reset "void reset()
+
+Resets any saved history (for multistep methods) ";
+
+%feature("docstring")  cmf::math::RK23Integrator::set_state "void
+set_state(ptrdiff_t position, real newState)
+
+Simplifies the assessment of state variables. ";
+
+%feature("docstring")  cmf::math::RK23Integrator::set_states "void
+set_states(const num_array &newStates)
+
+Copies the new states to the actual states. ";
+
+%feature("docstring")  cmf::math::RK23Integrator::set_states "void
+set_states(real *newStates) ";
+
+%feature("docstring")  cmf::math::RK23Integrator::size "size_t size()
+const
+
+returns the number of state variables ";
 
 
 // File: classcmf_1_1math_1_1_r_k_f_integrator.xml
@@ -11004,6 +11502,37 @@ const
 returns the number of state variables ";
 
 
+// File: classcmf_1_1upslope_1_1_e_t_1_1_root_uptake_stess_function.xml
+%feature("docstring") cmf::upslope::ET::RootUptakeStessFunction "
+
+An abstract class to calculate the actual transpiration from potential
+transpiration.
+
+Implementations of WaterStressFunction are used by ET connections
+derived from cmf::upslope::ET::stressedET
+
+C++ includes: waterstress.h ";
+
+%feature("docstring")  cmf::upslope::ET::RootUptakeStessFunction::copy
+"virtual cmf::upslope::ET::RootUptakeStessFunction* copy() const =0
+
+Creates a new copy of this wetness. ";
+
+%feature("docstring")  cmf::upslope::ET::RootUptakeStessFunction::Tact
+"virtual real Tact(const stressedET *connection, real Tpot) const =0
+
+Calculates the water stress for a layer.
+
+Parameters:
+-----------
+
+connection:  The stressedET connection this stress function belongs to
+
+Tpot:  Potential Transpiration in mm/day (for the full profile)
+
+Actual flux from layer in m3/day ";
+
+
 // File: classcmf_1_1upslope_1_1connections_1_1_rutter_interception.xml
 %feature("docstring") cmf::upslope::connections::RutterInterception "
 
@@ -11043,7 +11572,7 @@ The stored water of the canopy in mm
 
  :math:`V_{max}[mm]=c_{LAI}[mm]\\\\cdot LAI`  The capacity of the canopy in
 mm, defined by the factor CanopyCapacityPerLAI [mm/LAI], and the leaf
-area index LAI. (see: cmf::upslope::Vegetation)
+area index LAI. (see: cmf::upslope::vegetation::Vegetation)
 
 C++ includes: surfacefluxes.h ";
 
@@ -11082,7 +11611,10 @@ of the connection. ";
 %feature("docstring")
 cmf::upslope::connections::RutterInterception::get_tracer_filter "real get_tracer_filter()
 
-A value ranging from 0 to 1. ";
+A value ranging from 0 to 1 to filter tracers out of the water flux.
+
+1.0 is no filter and 0.0 means no solute is crossing this connection
+";
 
 %feature("docstring")
 cmf::upslope::connections::RutterInterception::kill_me "bool
@@ -11115,7 +11647,12 @@ cmf::upslope::connections::RutterInterception::right_node "flux_node::ptr right_
 returns the right node of this connection ";
 
 %feature("docstring")
-cmf::upslope::connections::RutterInterception::set_tracer_filter "void set_tracer_filter(real value) ";
+cmf::upslope::connections::RutterInterception::set_tracer_filter "void set_tracer_filter(real value)
+
+A value ranging from 0 to 1 to filter tracers out of the water flux.
+
+1.0 is no filter and 0.0 means no solute is crossing this connection
+";
 
 %feature("docstring")
 cmf::upslope::connections::RutterInterception::short_string "std::string short_string() const ";
@@ -11269,7 +11806,10 @@ of the connection. ";
 %feature("docstring")
 cmf::upslope::connections::SimpleTindexSnowMelt::get_tracer_filter "real get_tracer_filter()
 
-A value ranging from 0 to 1. ";
+A value ranging from 0 to 1 to filter tracers out of the water flux.
+
+1.0 is no filter and 0.0 means no solute is crossing this connection
+";
 
 %feature("docstring")
 cmf::upslope::connections::SimpleTindexSnowMelt::kill_me "bool
@@ -11302,7 +11842,12 @@ cmf::upslope::connections::SimpleTindexSnowMelt::right_node "flux_node::ptr righ
 returns the right node of this connection ";
 
 %feature("docstring")
-cmf::upslope::connections::SimpleTindexSnowMelt::set_tracer_filter "void set_tracer_filter(real value) ";
+cmf::upslope::connections::SimpleTindexSnowMelt::set_tracer_filter "void set_tracer_filter(real value)
+
+A value ranging from 0 to 1 to filter tracers out of the water flux.
+
+1.0 is no filter and 0.0 means no solute is crossing this connection
+";
 
 %feature("docstring")
 cmf::upslope::connections::SimpleTindexSnowMelt::short_string "std::string short_string() const ";
@@ -11370,7 +11915,10 @@ of the connection. ";
 cmf::upslope::connections::SimplRichards::get_tracer_filter "real
 get_tracer_filter()
 
-A value ranging from 0 to 1. ";
+A value ranging from 0 to 1 to filter tracers out of the water flux.
+
+1.0 is no filter and 0.0 means no solute is crossing this connection
+";
 
 %feature("docstring")
 cmf::upslope::connections::SimplRichards::kill_me "bool kill_me()
@@ -11403,7 +11951,12 @@ returns the right node of this connection ";
 
 %feature("docstring")
 cmf::upslope::connections::SimplRichards::set_tracer_filter "void
-set_tracer_filter(real value) ";
+set_tracer_filter(real value)
+
+A value ranging from 0 to 1 to filter tracers out of the water flux.
+
+1.0 is no filter and 0.0 means no solute is crossing this connection
+";
 
 %feature("docstring")
 cmf::upslope::connections::SimplRichards::short_string "std::string
@@ -11455,7 +12008,10 @@ of the connection. ";
 cmf::upslope::ET::snow_evaporation::get_tracer_filter "real
 get_tracer_filter()
 
-A value ranging from 0 to 1. ";
+A value ranging from 0 to 1 to filter tracers out of the water flux.
+
+1.0 is no filter and 0.0 means no solute is crossing this connection
+";
 
 %feature("docstring")  cmf::upslope::ET::snow_evaporation::kill_me "bool kill_me()
 
@@ -11483,7 +12039,12 @@ returns the right node of this connection ";
 
 %feature("docstring")
 cmf::upslope::ET::snow_evaporation::set_tracer_filter "void
-set_tracer_filter(real value) ";
+set_tracer_filter(real value)
+
+A value ranging from 0 to 1 to filter tracers out of the water flux.
+
+1.0 is no filter and 0.0 means no solute is crossing this connection
+";
 
 %feature("docstring")
 cmf::upslope::ET::snow_evaporation::short_string "std::string
@@ -11545,7 +12106,10 @@ of the connection. ";
 cmf::upslope::connections::Snowfall::get_tracer_filter "real
 get_tracer_filter()
 
-A value ranging from 0 to 1. ";
+A value ranging from 0 to 1 to filter tracers out of the water flux.
+
+1.0 is no filter and 0.0 means no solute is crossing this connection
+";
 
 %feature("docstring")  cmf::upslope::connections::Snowfall::kill_me "bool kill_me()
 
@@ -11574,7 +12138,12 @@ returns the right node of this connection ";
 
 %feature("docstring")
 cmf::upslope::connections::Snowfall::set_tracer_filter "void
-set_tracer_filter(real value) ";
+set_tracer_filter(real value)
+
+A value ranging from 0 to 1 to filter tracers out of the water flux.
+
+1.0 is no filter and 0.0 means no solute is crossing this connection
+";
 
 %feature("docstring")
 cmf::upslope::connections::Snowfall::short_string "std::string
@@ -11625,7 +12194,10 @@ of the connection. ";
 cmf::upslope::ET::soil_evaporation::get_tracer_filter "real
 get_tracer_filter()
 
-A value ranging from 0 to 1. ";
+A value ranging from 0 to 1 to filter tracers out of the water flux.
+
+1.0 is no filter and 0.0 means no solute is crossing this connection
+";
 
 %feature("docstring")  cmf::upslope::ET::soil_evaporation::kill_me "bool kill_me()
 
@@ -11653,7 +12225,12 @@ returns the right node of this connection ";
 
 %feature("docstring")
 cmf::upslope::ET::soil_evaporation::set_tracer_filter "void
-set_tracer_filter(real value) ";
+set_tracer_filter(real value)
+
+A value ranging from 0 to 1 to filter tracers out of the water flux.
+
+1.0 is no filter and 0.0 means no solute is crossing this connection
+";
 
 %feature("docstring")
 cmf::upslope::ET::soil_evaporation::short_string "std::string
@@ -12375,7 +12952,10 @@ of the connection. ";
 cmf::water::statecontrol_connection::get_tracer_filter "real
 get_tracer_filter()
 
-A value ranging from 0 to 1. ";
+A value ranging from 0 to 1 to filter tracers out of the water flux.
+
+1.0 is no filter and 0.0 means no solute is crossing this connection
+";
 
 %feature("docstring")  cmf::water::statecontrol_connection::kill_me "bool kill_me()
 
@@ -12404,7 +12984,12 @@ returns the right node of this connection ";
 
 %feature("docstring")
 cmf::water::statecontrol_connection::set_tracer_filter "void
-set_tracer_filter(real value) ";
+set_tracer_filter(real value)
+
+A value ranging from 0 to 1 to filter tracers out of the water flux.
+
+1.0 is no filter and 0.0 means no solute is crossing this connection
+";
 
 %feature("docstring")
 cmf::water::statecontrol_connection::short_string "std::string
@@ -12485,6 +13070,90 @@ Add the state variables, owned by an object derived from
 StateVariableOwner, to the given vector. ";
 
 
+// File: classcmf_1_1upslope_1_1_e_t_1_1stressed_e_t.xml
+%feature("docstring") cmf::upslope::ET::stressedET "
+
+An abstract base class for ET Methods with a WaterStressFunction.
+
+C++ includes: ET.h ";
+
+%feature("docstring")  cmf::upslope::ET::stressedET::conc "real
+conc(cmf::math::Time t, const cmf::water::solute &_Solute)
+
+Returns the concentration of the flux.
+
+If not overridden, it returns the concentration of the source of the
+flux (direction depending) ";
+
+%feature("docstring")  cmf::upslope::ET::stressedET::exchange_target "void exchange_target(flux_node::ptr oldtarget, flux_node::ptr
+newTarget) ";
+
+%feature("docstring")  cmf::upslope::ET::stressedET::get_layer "SoilLayer::ptr get_layer() const ";
+
+%feature("docstring")  cmf::upslope::ET::stressedET::get_ptr "ptr
+get_ptr() const ";
+
+%feature("docstring")  cmf::upslope::ET::stressedET::get_target "flux_node::ptr get_target(const flux_node &inquirer)
+
+Returns the other end of a connection than the asking end. ";
+
+%feature("docstring")  cmf::upslope::ET::stressedET::get_target "flux_node::ptr get_target(int index) const
+
+With index 0, the left node is returned, with index 1 the right node
+of the connection. ";
+
+%feature("docstring")  cmf::upslope::ET::stressedET::get_tracer_filter
+"real get_tracer_filter()
+
+A value ranging from 0 to 1 to filter tracers out of the water flux.
+
+1.0 is no filter and 0.0 means no solute is crossing this connection
+";
+
+%feature("docstring")  cmf::upslope::ET::stressedET::kill_me "bool
+kill_me()
+
+Deregisters this connection from its nodes. Returns true if only one
+reference is left. ";
+
+%feature("docstring")  cmf::upslope::ET::stressedET::left_node "flux_node::ptr left_node() const
+
+Returns the left node of this connection. ";
+
+%feature("docstring")  cmf::upslope::ET::stressedET::q "real q(const
+flux_node &inquirer, cmf::math::Time t)
+
+Returns the current flux through a connection. Negative signs mean out
+of the inquirer, positive are inflows to the inquirer. ";
+
+%feature("docstring")  cmf::upslope::ET::stressedET::refresh "void
+refresh(cmf::math::Time t)
+
+Performes a new calculation of the flux. ";
+
+%feature("docstring")  cmf::upslope::ET::stressedET::right_node "flux_node::ptr right_node() const
+
+returns the right node of this connection ";
+
+%feature("docstring")
+cmf::upslope::ET::stressedET::set_stressfunction "void
+set_stressfunction(const RootUptakeStessFunction &stressfunction)
+
+Sets the stress function to limit water uptake. ";
+
+%feature("docstring")  cmf::upslope::ET::stressedET::set_tracer_filter
+"void set_tracer_filter(real value)
+
+A value ranging from 0 to 1 to filter tracers out of the water flux.
+
+1.0 is no filter and 0.0 means no solute is crossing this connection
+";
+
+%feature("docstring")  cmf::upslope::ET::stressedET::short_string "std::string short_string() const ";
+
+%feature("docstring")  cmf::upslope::ET::stressedET::to_string "std::string to_string() const ";
+
+
 // File: classcmf_1_1upslope_1_1subcatchment.xml
 %feature("docstring") cmf::upslope::subcatchment "
 
@@ -12505,6 +13174,59 @@ pourpoint:  The pourpoint (outlet of the subcatchment)
 area_threshold:  Minimum contributing area size to form a
 subcatchment. When area_threshold > area(cells), all upslope cells of
 pourpoint are used. ";
+
+
+// File: classcmf_1_1upslope_1_1_e_t_1_1_suction_stress.xml
+%feature("docstring") cmf::upslope::ET::SuctionStress "
+
+The classical suction depending transpiration Stress curve after
+Feddes.
+
+The ability of roots to take water from the soil up is limited by the
+suction pressure (matrix potential) of the soil. The stress is defined
+using a trapezoid function, with P0 being the pressure, where water
+uptake is prohibited by saturation. Between P0 and P1 the saturation
+stress gets lower. Between P1 and P2, no stress occurs ( ET=ETpot) and
+with a pressure below P2, water uptake is limited by drought. P3
+indicates the highest suction (lowest pressure) to which plants can
+extract water (wilting point).
+
+Default values:  :math:`P_0 = \\\\infty, P_1=\\\\infty, P_2=-5m, P_3=-160m` ,
+resulting in no saturation stress and draught stress starting at -5m
+and a wilting point of -160m.
+
+If one would like to include saturation stress, typical values for P0
+and P1 are 0.0m and 0.1m. By changing P2 and P3, you can account for
+different drought sensibility for different plant types.
+
+C++ includes: waterstress.h ";
+
+%feature("docstring")  cmf::upslope::ET::SuctionStress::SuctionStress
+"SuctionStress(real P0=1e308, real P1=1e307, real P2=-5, real
+P3=-160)
+
+Creates a new suction stress function. ";
+
+%feature("docstring")  cmf::upslope::ET::SuctionStress::SuctionStress
+"SuctionStress(const SuctionStress &other) ";
+
+%feature("docstring")  cmf::upslope::ET::SuctionStress::copy "cmf::upslope::ET::SuctionStress* copy() const
+
+Creates a new copy of this wetness. ";
+
+%feature("docstring")  cmf::upslope::ET::SuctionStress::Tact "real
+Tact(const stressedET *connection, real Tpot) const
+
+Calculates the water stress for a layer.
+
+Parameters:
+-----------
+
+connection:  The stressedET connection this stress function belongs to
+
+Tpot:  Potential Transpiration in mm/day (for the full profile)
+
+Actual flux from layer in m3/day ";
 
 
 // File: classcmf_1_1upslope_1_1_e_t_1_1surface__water__evaporation.xml
@@ -12553,7 +13275,10 @@ of the connection. ";
 cmf::upslope::ET::surface_water_evaporation::get_tracer_filter "real
 get_tracer_filter()
 
-A value ranging from 0 to 1. ";
+A value ranging from 0 to 1 to filter tracers out of the water flux.
+
+1.0 is no filter and 0.0 means no solute is crossing this connection
+";
 
 %feature("docstring")
 cmf::upslope::ET::surface_water_evaporation::kill_me "bool kill_me()
@@ -12585,7 +13310,12 @@ returns the right node of this connection ";
 
 %feature("docstring")
 cmf::upslope::ET::surface_water_evaporation::set_tracer_filter "void
-set_tracer_filter(real value) ";
+set_tracer_filter(real value)
+
+A value ranging from 0 to 1 to filter tracers out of the water flux.
+
+1.0 is no filter and 0.0 means no solute is crossing this connection
+";
 
 %feature("docstring")
 cmf::upslope::ET::surface_water_evaporation::short_string "std::string short_string() const ";
@@ -12874,7 +13604,10 @@ of the connection. ";
 cmf::upslope::connections::SWATPercolation::get_tracer_filter "real
 get_tracer_filter()
 
-A value ranging from 0 to 1. ";
+A value ranging from 0 to 1 to filter tracers out of the water flux.
+
+1.0 is no filter and 0.0 means no solute is crossing this connection
+";
 
 %feature("docstring")
 cmf::upslope::connections::SWATPercolation::kill_me "bool kill_me()
@@ -12906,7 +13639,12 @@ returns the right node of this connection ";
 
 %feature("docstring")
 cmf::upslope::connections::SWATPercolation::set_tracer_filter "void
-set_tracer_filter(real value) ";
+set_tracer_filter(real value)
+
+A value ranging from 0 to 1 to filter tracers out of the water flux.
+
+1.0 is no filter and 0.0 means no solute is crossing this connection
+";
 
 %feature("docstring")
 cmf::upslope::connections::SWATPercolation::short_string "std::string
@@ -13270,7 +14008,10 @@ of the connection. ";
 cmf::water::SystemBridgeConnection::get_tracer_filter "real
 get_tracer_filter()
 
-A value ranging from 0 to 1. ";
+A value ranging from 0 to 1 to filter tracers out of the water flux.
+
+1.0 is no filter and 0.0 means no solute is crossing this connection
+";
 
 %feature("docstring")  cmf::water::SystemBridgeConnection::kill_me "bool kill_me()
 
@@ -13298,7 +14039,12 @@ returns the right node of this connection ";
 
 %feature("docstring")
 cmf::water::SystemBridgeConnection::set_tracer_filter "void
-set_tracer_filter(real value) ";
+set_tracer_filter(real value)
+
+A value ranging from 0 to 1 to filter tracers out of the water flux.
+
+1.0 is no filter and 0.0 means no solute is crossing this connection
+";
 
 %feature("docstring")
 cmf::water::SystemBridgeConnection::short_string "std::string
@@ -13374,7 +14120,10 @@ of the connection. ";
 
 %feature("docstring")  cmf::water::TechnicalFlux::get_tracer_filter "real get_tracer_filter()
 
-A value ranging from 0 to 1. ";
+A value ranging from 0 to 1 to filter tracers out of the water flux.
+
+1.0 is no filter and 0.0 means no solute is crossing this connection
+";
 
 %feature("docstring")  cmf::water::TechnicalFlux::kill_me "bool
 kill_me()
@@ -13401,7 +14150,12 @@ Performes a new calculation of the flux. ";
 
 returns the right node of this connection ";
 
-%feature("docstring")  cmf::water::TechnicalFlux::set_tracer_filter "void set_tracer_filter(real value) ";
+%feature("docstring")  cmf::water::TechnicalFlux::set_tracer_filter "void set_tracer_filter(real value)
+
+A value ranging from 0 to 1 to filter tracers out of the water flux.
+
+1.0 is no filter and 0.0 means no solute is crossing this connection
+";
 
 %feature("docstring")  cmf::water::TechnicalFlux::short_string "std::string short_string() const ";
 
@@ -13773,6 +14527,8 @@ flux (direction depending) ";
 cmf::upslope::ET::timeseriesETpot::exchange_target "void
 exchange_target(flux_node::ptr oldtarget, flux_node::ptr newTarget) ";
 
+%feature("docstring")  cmf::upslope::ET::timeseriesETpot::get_layer "SoilLayer::ptr get_layer() const ";
+
 %feature("docstring")  cmf::upslope::ET::timeseriesETpot::get_ptr "ptr get_ptr() const ";
 
 %feature("docstring")  cmf::upslope::ET::timeseriesETpot::get_target "flux_node::ptr get_target(const flux_node &inquirer)
@@ -13788,7 +14544,10 @@ of the connection. ";
 cmf::upslope::ET::timeseriesETpot::get_tracer_filter "real
 get_tracer_filter()
 
-A value ranging from 0 to 1. ";
+A value ranging from 0 to 1 to filter tracers out of the water flux.
+
+1.0 is no filter and 0.0 means no solute is crossing this connection
+";
 
 %feature("docstring")  cmf::upslope::ET::timeseriesETpot::GetETpot "real GetETpot(cmf::math::Time t) const ";
 
@@ -13816,8 +14575,19 @@ Performes a new calculation of the flux. ";
 returns the right node of this connection ";
 
 %feature("docstring")
+cmf::upslope::ET::timeseriesETpot::set_stressfunction "void
+set_stressfunction(const RootUptakeStessFunction &stressfunction)
+
+Sets the stress function to limit water uptake. ";
+
+%feature("docstring")
 cmf::upslope::ET::timeseriesETpot::set_tracer_filter "void
-set_tracer_filter(real value) ";
+set_tracer_filter(real value)
+
+A value ranging from 0 to 1 to filter tracers out of the water flux.
+
+1.0 is no filter and 0.0 means no solute is crossing this connection
+";
 
 %feature("docstring")  cmf::upslope::ET::timeseriesETpot::short_string
 "std::string short_string() const ";
@@ -13902,7 +14672,10 @@ of the connection. ";
 cmf::upslope::connections::TopographicGradientDarcy::get_tracer_filter
 "real get_tracer_filter()
 
-A value ranging from 0 to 1. ";
+A value ranging from 0 to 1 to filter tracers out of the water flux.
+
+1.0 is no filter and 0.0 means no solute is crossing this connection
+";
 
 %feature("docstring")
 cmf::upslope::connections::TopographicGradientDarcy::kill_me "bool
@@ -13936,7 +14709,12 @@ returns the right node of this connection ";
 
 %feature("docstring")
 cmf::upslope::connections::TopographicGradientDarcy::set_tracer_filter
-"void set_tracer_filter(real value) ";
+"void set_tracer_filter(real value)
+
+A value ranging from 0 to 1 to filter tracers out of the water flux.
+
+1.0 is no filter and 0.0 means no solute is crossing this connection
+";
 
 %feature("docstring")
 cmf::upslope::connections::TopographicGradientDarcy::short_string "std::string short_string() const ";
@@ -14033,7 +14811,10 @@ of the connection. ";
 cmf::upslope::ET::transpiration::get_tracer_filter "real
 get_tracer_filter()
 
-A value ranging from 0 to 1. ";
+A value ranging from 0 to 1 to filter tracers out of the water flux.
+
+1.0 is no filter and 0.0 means no solute is crossing this connection
+";
 
 %feature("docstring")  cmf::upslope::ET::transpiration::kill_me "bool
 kill_me()
@@ -14062,7 +14843,12 @@ returns the right node of this connection ";
 
 %feature("docstring")
 cmf::upslope::ET::transpiration::set_tracer_filter "void
-set_tracer_filter(real value) ";
+set_tracer_filter(real value)
+
+A value ranging from 0 to 1 to filter tracers out of the water flux.
+
+1.0 is no filter and 0.0 means no solute is crossing this connection
+";
 
 %feature("docstring")  cmf::upslope::ET::transpiration::short_string "std::string short_string() const ";
 
@@ -14208,6 +14994,93 @@ typecode() const ";
 
 %feature("docstring")  cmf::river::TriangularReach::V "virtual double
 V(double h) const ";
+
+
+// File: classcmf_1_1upslope_1_1_e_t_1_1_turc_e_t.xml
+%feature("docstring") cmf::upslope::ET::TurcET "
+
+Calculates ETpot after Turc (DVWK).
+
+ETact is calculated using a WaterStressFunction
+
+ :math:`ET_{pot,Turc} = 0.0031 C (R_G + 209) \\\\frac{T}{T + 15}` 
+
+C++ includes: ET.h ";
+
+%feature("docstring")  cmf::upslope::ET::TurcET::TurcET "TurcET(cmf::upslope::SoilLayer::ptr source, cmf::water::flux_node::ptr
+ET_target) ";
+
+%feature("docstring")  cmf::upslope::ET::TurcET::conc "real
+conc(cmf::math::Time t, const cmf::water::solute &_Solute)
+
+Returns the concentration of the flux.
+
+If not overridden, it returns the concentration of the source of the
+flux (direction depending) ";
+
+%feature("docstring")  cmf::upslope::ET::TurcET::exchange_target "void exchange_target(flux_node::ptr oldtarget, flux_node::ptr
+newTarget) ";
+
+%feature("docstring")  cmf::upslope::ET::TurcET::get_layer "SoilLayer::ptr get_layer() const ";
+
+%feature("docstring")  cmf::upslope::ET::TurcET::get_ptr "ptr
+get_ptr() const ";
+
+%feature("docstring")  cmf::upslope::ET::TurcET::get_target "flux_node::ptr get_target(const flux_node &inquirer)
+
+Returns the other end of a connection than the asking end. ";
+
+%feature("docstring")  cmf::upslope::ET::TurcET::get_target "flux_node::ptr get_target(int index) const
+
+With index 0, the left node is returned, with index 1 the right node
+of the connection. ";
+
+%feature("docstring")  cmf::upslope::ET::TurcET::get_tracer_filter "real get_tracer_filter()
+
+A value ranging from 0 to 1 to filter tracers out of the water flux.
+
+1.0 is no filter and 0.0 means no solute is crossing this connection
+";
+
+%feature("docstring")  cmf::upslope::ET::TurcET::kill_me "bool
+kill_me()
+
+Deregisters this connection from its nodes. Returns true if only one
+reference is left. ";
+
+%feature("docstring")  cmf::upslope::ET::TurcET::left_node "flux_node::ptr left_node() const
+
+Returns the left node of this connection. ";
+
+%feature("docstring")  cmf::upslope::ET::TurcET::q "real q(const
+flux_node &inquirer, cmf::math::Time t)
+
+Returns the current flux through a connection. Negative signs mean out
+of the inquirer, positive are inflows to the inquirer. ";
+
+%feature("docstring")  cmf::upslope::ET::TurcET::refresh "void
+refresh(cmf::math::Time t)
+
+Performes a new calculation of the flux. ";
+
+%feature("docstring")  cmf::upslope::ET::TurcET::right_node "flux_node::ptr right_node() const
+
+returns the right node of this connection ";
+
+%feature("docstring")  cmf::upslope::ET::TurcET::set_stressfunction "void set_stressfunction(const RootUptakeStessFunction &stressfunction)
+
+Sets the stress function to limit water uptake. ";
+
+%feature("docstring")  cmf::upslope::ET::TurcET::set_tracer_filter "void set_tracer_filter(real value)
+
+A value ranging from 0 to 1 to filter tracers out of the water flux.
+
+1.0 is no filter and 0.0 means no solute is crossing this connection
+";
+
+%feature("docstring")  cmf::upslope::ET::TurcET::short_string "std::string short_string() const ";
+
+%feature("docstring")  cmf::upslope::ET::TurcET::to_string "std::string to_string() const ";
 
 
 // File: classcmf_1_1upslope_1_1_van_genuchten_mualem.xml
@@ -14445,7 +15318,7 @@ returns the volumetric water content at a given pF value ";
 ";
 
 
-// File: structcmf_1_1upslope_1_1vegetation_1_1_vegetation.xml
+// File: classcmf_1_1upslope_1_1vegetation_1_1_vegetation.xml
 %feature("docstring") cmf::upslope::vegetation::Vegetation "
 
 Holds the vegetation parameters for the calculation of ET and
@@ -14769,6 +15642,48 @@ q(double h, double slope) const ";
 V(double h) const ";
 
 
+// File: classcmf_1_1upslope_1_1_e_t_1_1_volume_stress.xml
+%feature("docstring") cmf::upslope::ET::VolumeStress "
+
+A WaterStressFunction based on the stored water volume of a layer.
+
+If the layer contains more water than V1, ET is not limited (
+ET=ETpot). Below V1 ET goes linear to 0.0 at V0
+
+C++ includes: waterstress.h ";
+
+%feature("docstring")  cmf::upslope::ET::VolumeStress::VolumeStress "VolumeStress(real V1, real V0)
+
+Creates a new water stress function for water volume.
+
+Parameters:
+-----------
+
+V1:  Water content in  :math:`m^3`  without stress ( ET=ETpot)
+
+V0:  Water content in  :math:`m^3`  with full stress ( ET=0.0) ";
+
+%feature("docstring")  cmf::upslope::ET::VolumeStress::VolumeStress "VolumeStress(const VolumeStress &other) ";
+
+%feature("docstring")  cmf::upslope::ET::VolumeStress::copy "cmf::upslope::ET::VolumeStress* copy() const
+
+Creates a new copy of this wetness. ";
+
+%feature("docstring")  cmf::upslope::ET::VolumeStress::Tact "real
+Tact(const stressedET *connection, real Tpot) const
+
+Calculates the water stress for a layer.
+
+Parameters:
+-----------
+
+connection:  The stressedET connection this stress function belongs to
+
+Tpot:  Potential Transpiration in mm/day (for the full profile)
+
+Actual flux from layer in m3/day ";
+
+
 // File: classcmf_1_1water_1_1waterbalance__connection.xml
 %feature("docstring") cmf::water::waterbalance_connection "
 
@@ -14819,7 +15734,10 @@ of the connection. ";
 cmf::water::waterbalance_connection::get_tracer_filter "real
 get_tracer_filter()
 
-A value ranging from 0 to 1. ";
+A value ranging from 0 to 1 to filter tracers out of the water flux.
+
+1.0 is no filter and 0.0 means no solute is crossing this connection
+";
 
 %feature("docstring")  cmf::water::waterbalance_connection::kill_me "bool kill_me()
 
@@ -14848,7 +15766,12 @@ returns the right node of this connection ";
 
 %feature("docstring")
 cmf::water::waterbalance_connection::set_tracer_filter "void
-set_tracer_filter(real value) ";
+set_tracer_filter(real value)
+
+A value ranging from 0 to 1 to filter tracers out of the water flux.
+
+1.0 is no filter and 0.0 means no solute is crossing this connection
+";
 
 %feature("docstring")
 cmf::water::waterbalance_connection::short_string "std::string
@@ -15560,36 +16483,7 @@ A:  Current weather
 
 veg:  Vegetation data
 
-h:  Height above sea level in m (for pressure extimation) ";
-
-%feature("docstring")  cmf::upslope::ET::Tact "real
-cmf::upslope::ET::Tact(real Tpot, const cmf::upslope::SoilLayer &sw,
-const cmf::upslope::vegetation::Vegetation &veg)
-
-A function to calculate the actual transpiration for each soil layer
-using a Feddes like approach.
-
-This function is used to calculate the actual water uptake in m3/day
-from a single soillayer sw according to root depth and the potential
-transpiration (or ETpot if there is no difference) in mm/day The water
-flux is calculated as follows:
-
-
-.. math::
-
-    q_{T_{pot}}[m^3/day]=T_{pot}[mm/day] 10^{-3}[mm/m]A_{cell}[m^2]
-    f_r
-
- where:   :math:`q_{T_{pot}}` : the potential transpiration flux from
-this layer
-
- :math:`T_{pot}` : the potential transpiration for the cell
-
- :math:`A_{cell}` : the area of the cell
-
- :math:`f_r=\\\\frac{R_{layer}}{\\\\sum_{i=0}^{layers}{R_i}}` : the root mass
-in this layer per total root mass at this cell. This is calculated
-with the cmf::upslope::vegetation::Vegetation::RootFraction ";
+h:  Height above sea level in m (for air pressure estimation) ";
 
 
 // File: namespacecmf_1_1upslope_1_1vegetation.xml
@@ -15679,6 +16573,9 @@ boundary condition, providing the potential of the lower node. ";
 
 
 // File: multiintegrator_8h.xml
+
+
+// File: _r_k23integrator_8h.xml
 
 
 // File: _r_k_fintegrator_8h.xml
@@ -16724,6 +17621,9 @@ x, real xmin, real xmax, real ymin=0, real ymax=1) ";
 
 
 // File: _struct_vegetation_8h.xml
+
+
+// File: waterstress_8h.xml
 
 
 // File: adsorption_8h.xml

@@ -30,6 +30,7 @@
 #include "../atmosphere/precipitation.h"
 #include "../atmosphere/meteorology.h"
 #include "surfacewater.h"
+#include "vegetation/ET.h"
 
 using namespace cmf::upslope;
 
@@ -344,4 +345,97 @@ double Cell::get_soildepth() const
 		return 0.0;
 
 }
+
+void cmf::upslope::Cell::set_uptakestress( const ET::RootUptakeStessFunction& stressfunction )
+{
+	using namespace cmf::water;
+	flux_node::ptr T = this->get_transpiration();
+	connection_list Tcon = T->get_connections();
+	// Traverse all connection of transpiration
+	for(connection_list::iterator it=Tcon.begin();it!=Tcon.end();++it) {
+		// try to convert to stressedET
+		cmf::upslope::ET::stressedET* sTcon = dynamic_cast<cmf::upslope::ET::stressedET*>(it->get());
+		if (sTcon) {
+			// set stressfunction of ET-model
+			sTcon->set_stressfunction(stressfunction);
+		}
+	}
+}
+
+
+/*
+bool checkname(std::string name) {
+	for (std::string::const_iterator it=name.begin();it!=name.end();++it) {
+		if (!((*it>='A' && *it<='Z') ||
+			(*it>='a' && *it<='z') ||
+			(it==name.begin() && *it>='0' && *it<='9') ||
+			(*it=='_')
+			))
+			return false;
+	}
+	return true;
+}
+
+cmf::water::flux_node::ptr cmf::upslope::Cell::get_boundarynode( std::string name )
+{
+	return m_cellboundaries.at(name);
+}
+
+cmf::water::DirichletBoundary::ptr cmf::upslope::Cell::add_dirichletboundary( std::string name,real _z )
+{
+	if (!checkname(name)) throw std::runtime_error("The name of a boundary may only contain letters and underscore and numbers (but not as a first character)");
+	cmf::water::DirichletBoundary::ptr res = 
+		cmf::water::DirichletBoundary::ptr(
+			new cmf::water::DirichletBoundary(m_project,this->z + _z,cmf::geometry::point(this->x,this->y,this->z + _z))
+		);
+	m_cellboundaries[name] = res;
+	return res;
+
+}
+
+cmf::water::DirichletBoundary::ptr cmf::upslope::Cell::add_dirichletboundary( std::string name,real _x,real _y,real _z )
+{
+	if (!checkname(name)) throw std::runtime_error("The name of a boundary may only contain letters and underscore and numbers (but not as a first character)");
+	cmf::water::DirichletBoundary::ptr res = 
+		cmf::water::DirichletBoundary::ptr(
+		new cmf::water::DirichletBoundary(m_project,this->z + _z,cmf::geometry::point(this->x + _x,this->y + _y,this->z + _z))
+		);
+	res->Name = name;
+	m_cellboundaries[name] = res;
+	return res;
+
+}
+
+cmf::water::NeumannBoundary::ptr cmf::upslope::Cell::add_neumannboundary( std::string name,cmf::water::WaterStorage::ptr target )
+{
+	if (!checkname(name)) throw std::runtime_error("The name of a boundary may only contain letters and underscore and numbers (but not as a first character)");
+	cmf::water::NeumannBoundary::ptr res = cmf::water::NeumannBoundary::create(target);
+	res->Name = name;
+	m_cellboundaries[name] = res;
+	return res;
+}
+
+cmf::water::flux_node::ptr cmf::upslope::Cell::add_fluxnode( std::string name,real _z )
+{
+	if (!checkname(name)) throw std::runtime_error("The name of a boundary may only contain letters and underscore and numbers (but not as a first character)");
+	cmf::water::flux_node::ptr res= cmf::water::flux_node::ptr(
+		new cmf::water::flux_node(get_project(),cmf::geometry::point(this->x,this->y,this->z + _z))
+	);
+	res->Name = name;
+	m_cellboundaries[name] = res;
+	return res;
+}
+
+cmf::water::flux_node::ptr cmf::upslope::Cell::add_fluxnode( std::string name,real _x,real _y, real _z )
+{
+	if (!checkname(name)) throw std::runtime_error("The name of a boundary may only contain letters and underscore and numbers (but not as a first character)");
+	cmf::water::flux_node::ptr res= cmf::water::flux_node::ptr(
+		new cmf::water::flux_node(get_project(),cmf::geometry::point(this->x + _x,this->y + _y,this->z + _z))
+		);
+	res->Name = name;
+	m_cellboundaries[name] = res;
+	return res;
+
+}
+*/
 
