@@ -88,10 +88,10 @@ namespace cmf {
 		};
 		/// A rainsource with a timeseries. Simpler to use than a rainfall station if there are only few
 		/// cells in the project
-		class TimeseriesRainsource : public RainSource {
+		class TimeseriesRainSource : public RainSource {
 		public:
 			/// shared pointer
-			typedef std::tr1::shared_ptr<TimeseriesRainsource> ptr;
+			typedef std::tr1::shared_ptr<TimeseriesRainSource> ptr;
 			/// The rainfall intensity in mm/day
 			cmf::math::timeseries data;
 

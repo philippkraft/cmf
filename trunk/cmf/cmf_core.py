@@ -5812,6 +5812,17 @@ ConstantRainSource.set_conc = new_instancemethod(_cmf_core.ConstantRainSource_se
 ConstantRainSource_swigregister = _cmf_core.ConstantRainSource_swigregister
 ConstantRainSource_swigregister(ConstantRainSource)
 
+class TimeseriesRainSource(RainSource):
+    """Proxy of C++ cmf::atmosphere::TimeseriesRainSource class"""
+    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    def __init__(self, *args, **kwargs): raise AttributeError("No constructor defined")
+    __repr__ = _swig_repr
+    data = _swig_property(_cmf_core.TimeseriesRainSource_data_get, _cmf_core.TimeseriesRainSource_data_set)
+    concentrations = _swig_property(_cmf_core.TimeseriesRainSource_concentrations_get, _cmf_core.TimeseriesRainSource_concentrations_set)
+    __swig_destroy__ = _cmf_core.delete_TimeseriesRainSource
+TimeseriesRainSource_swigregister = _cmf_core.TimeseriesRainSource_swigregister
+TimeseriesRainSource_swigregister(TimeseriesRainSource)
+
 class RainfallStation(object):
     """
     RainfallStation describes a rainfall timeseries in mm/day at a certain
@@ -6455,9 +6466,10 @@ class Cell(StateVariableOwner):
         """
         return _cmf_core.Cell_get_layer(self, *args, **kwargs)
 
-    def add_layer(self, *args, **kwargs):
+    def add_layer(self, *args):
         """
         add_layer(Cell self, real lowerboundary, RetentionCurve r_curve, real saturateddepth=10) -> cmf::upslope::SoilLayer::ptr
+        add_layer(Cell self, real lowerboundary) -> cmf::upslope::SoilLayer::ptr
 
         cmf::upslope::SoilLayer::ptr add_layer(real lowerboundary, const
         cmf::upslope::RetentionCurve &r_curve, real saturateddepth=10)
@@ -6481,7 +6493,7 @@ class Cell(StateVariableOwner):
         saturateddepth:  The initial potential of the new layer in m below
         surface. Default = 10m (=quite dry) 
         """
-        return _cmf_core.Cell_add_layer(self, *args, **kwargs)
+        return _cmf_core.Cell_add_layer(self, *args)
 
     def remove_last_layer(self, *args, **kwargs):
         """
@@ -11332,19 +11344,10 @@ class timeseriesETpot(stressedET):
         ETpot_values) 
         """
         _cmf_core.timeseriesETpot_swiginit(self,_cmf_core.new_timeseriesETpot(*args, **kwargs))
-    def use_for_cell(*args, **kwargs):
-        """use_for_cell(Cell cell)"""
-        return _cmf_core.timeseriesETpot_use_for_cell(*args, **kwargs)
-
-    use_for_cell = staticmethod(use_for_cell)
     __swig_destroy__ = _cmf_core.delete_timeseriesETpot
 timeseriesETpot.GetETpot = new_instancemethod(_cmf_core.timeseriesETpot_GetETpot,None,timeseriesETpot)
 timeseriesETpot_swigregister = _cmf_core.timeseriesETpot_swigregister
 timeseriesETpot_swigregister(timeseriesETpot)
-
-def timeseriesETpot_use_for_cell(*args, **kwargs):
-  """timeseriesETpot_use_for_cell(Cell cell)"""
-  return _cmf_core.timeseriesETpot_use_for_cell(*args, **kwargs)
 
 class PenmanMonteithET(stressedET):
     """
