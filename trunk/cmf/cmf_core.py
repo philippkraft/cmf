@@ -2442,6 +2442,32 @@ MultiIntegrator.add_states_to_integrator = new_instancemethod(_cmf_core.MultiInt
 MultiIntegrator_swigregister = _cmf_core.MultiIntegrator_swigregister
 MultiIntegrator_swigregister(MultiIntegrator)
 
+class RK23Integrator(Integrator):
+    """
+    An embedded explicit Runge Kutta integrator of order 3(2), known as
+    the Bogacki-Shampine method, with automatic step size control that
+    supports MPI.
+
+    Does not use Integrator's m_dt variable for its step size, but rather
+    an internal variable tau, so that no external changes to m_dt (e.g. by
+    integrate_until) mess up the automatic step size control.
+
+    C++ includes: RK23integrator.h 
+    """
+    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __repr__ = _swig_repr
+    def __init__(self, *args): 
+        """
+        __init__(cmf::math::RK23Integrator self, StateVariableOwner states, double abstol=1e-6, double reltol=1e-6, Time dt_min=sec) -> RK23Integrator
+        __init__(cmf::math::RK23Integrator self, RK23Integrator other) -> RK23Integrator
+
+        RK23Integrator(const cmf::math::RK23Integrator &other) 
+        """
+        _cmf_core.RK23Integrator_swiginit(self,_cmf_core.new_RK23Integrator(*args))
+    __swig_destroy__ = _cmf_core.delete_RK23Integrator
+RK23Integrator_swigregister = _cmf_core.RK23Integrator_swigregister
+RK23Integrator_swigregister(RK23Integrator)
+
 class Adsorption(object):
     """
     Abstract class to use adsorption process for tracers on surfaces.
@@ -6216,6 +6242,18 @@ class Cell(StateVariableOwner):
         """
         return _cmf_core.Cell___get_rain_source(self, *args, **kwargs)
 
+    def set_uptakestress(self, *args, **kwargs):
+        """
+        set_uptakestress(Cell self, RootUptakeStessFunction stressfunction)
+
+        void
+        set_uptakestress(const ET::RootUptakeStessFunction &stressfunction)
+
+        Uses the given WaterStressFunction for all stressedET like connections
+        to the transpiration target. 
+        """
+        return _cmf_core.Cell_set_uptakestress(self, *args, **kwargs)
+
     def __get_evaporation(self, *args, **kwargs):
         """
         __get_evaporation(Cell self) -> cmf::water::flux_node::ptr
@@ -6565,6 +6603,7 @@ Cell.set_rainfall = new_instancemethod(_cmf_core.Cell_set_rainfall,None,Cell)
 Cell.get_rainfall = new_instancemethod(_cmf_core.Cell_get_rainfall,None,Cell)
 Cell.__set_rain_source = new_instancemethod(_cmf_core.Cell___set_rain_source,None,Cell)
 Cell.__get_rain_source = new_instancemethod(_cmf_core.Cell___get_rain_source,None,Cell)
+Cell.set_uptakestress = new_instancemethod(_cmf_core.Cell_set_uptakestress,None,Cell)
 Cell.__get_evaporation = new_instancemethod(_cmf_core.Cell___get_evaporation,None,Cell)
 Cell.__get_transpiration = new_instancemethod(_cmf_core.Cell___get_transpiration,None,Cell)
 Cell.get_surfacewater = new_instancemethod(_cmf_core.Cell_get_surfacewater,None,Cell)
@@ -9998,7 +10037,7 @@ class RutterInterception(flux_connection):
 
      :math:`V_{max}[mm]=c_{LAI}[mm]\\cdot LAI`  The capacity of the canopy in
     mm, defined by the factor CanopyCapacityPerLAI [mm/LAI], and the leaf
-    area index LAI. (see: cmf::upslope::Vegetation)
+    area index LAI. (see: cmf::upslope::vegetation::Vegetation)
 
     C++ includes: surfacefluxes.h 
     """
@@ -10726,6 +10765,188 @@ def HBVinstall(*args, **kwargs):
     cell:   Cell where HBV like percolation is to be calculated 
     """
   return _cmf_core.HBVinstall(*args, **kwargs)
+class RootUptakeStessFunction(object):
+    """
+    An abstract class to calculate the actual transpiration from potential
+    transpiration.
+
+    Implementations of WaterStressFunction are used by ET connections
+    derived from cmf::upslope::ET::stressedET
+
+    C++ includes: waterstress.h 
+    """
+    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    def __init__(self, *args, **kwargs): raise AttributeError("No constructor defined - class is abstract")
+    __repr__ = _swig_repr
+    def Tact(self, *args, **kwargs):
+        """
+        Tact(RootUptakeStessFunction self, stressedET connection, real Tpot) -> real
+
+        virtual real Tact(const stressedET *connection, real Tpot) const =0
+
+        Calculates the water stress for a layer.
+
+        Parameters:
+        -----------
+
+        connection:  The stressedET connection this stress function belongs to
+
+        Tpot:  Potential Transpiration in mm/day (for the full profile)
+
+        Actual flux from layer in m3/day 
+        """
+        return _cmf_core.RootUptakeStessFunction_Tact(self, *args, **kwargs)
+
+    def copy(self, *args, **kwargs):
+        """
+        copy(RootUptakeStessFunction self) -> RootUptakeStessFunction
+
+        virtual cmf::upslope::ET::RootUptakeStessFunction* copy() const =0
+
+        Creates a new copy of this wetness. 
+        """
+        return _cmf_core.RootUptakeStessFunction_copy(self, *args, **kwargs)
+
+    def to_string(self, *args, **kwargs):
+        """to_string(RootUptakeStessFunction self) -> std::string"""
+        return _cmf_core.RootUptakeStessFunction_to_string(self, *args, **kwargs)
+
+    __swig_destroy__ = _cmf_core.delete_RootUptakeStessFunction
+RootUptakeStessFunction.Tact = new_instancemethod(_cmf_core.RootUptakeStessFunction_Tact,None,RootUptakeStessFunction)
+RootUptakeStessFunction.copy = new_instancemethod(_cmf_core.RootUptakeStessFunction_copy,None,RootUptakeStessFunction)
+RootUptakeStessFunction.to_string = new_instancemethod(_cmf_core.RootUptakeStessFunction_to_string,None,RootUptakeStessFunction)
+RootUptakeStessFunction_swigregister = _cmf_core.RootUptakeStessFunction_swigregister
+RootUptakeStessFunction_swigregister(RootUptakeStessFunction)
+
+class SuctionStress(RootUptakeStessFunction):
+    """
+    The classical suction depending transpiration Stress curve after
+    Feddes.
+
+    The ability of roots to take water from the soil up is limited by the
+    suction pressure (matrix potential) of the soil. The stress is defined
+    using a trapezoid function, with P0 being the pressure, where water
+    uptake is prohibited by saturation. Between P0 and P1 the saturation
+    stress gets lower. Between P1 and P2, no stress occurs ( ET=ETpot) and
+    with a pressure below P2, water uptake is limited by drought. P3
+    indicates the highest suction (lowest pressure) to which plants can
+    extract water (wilting point).
+
+    Default values:  :math:`P_0 = \\infty, P_1=\\infty, P_2=-5m, P_3=-160m` ,
+    resulting in no saturation stress and draught stress starting at -5m
+    and a wilting point of -160m.
+
+    If one would like to include saturation stress, typical values for P0
+    and P1 are 0.0m and 0.1m. By changing P2 and P3, you can account for
+    different drought sensibility for different plant types.
+
+    C++ includes: waterstress.h 
+    """
+    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __repr__ = _swig_repr
+    P0 = _swig_property(_cmf_core.SuctionStress_P0_get, _cmf_core.SuctionStress_P0_set)
+    P1 = _swig_property(_cmf_core.SuctionStress_P1_get, _cmf_core.SuctionStress_P1_set)
+    P2 = _swig_property(_cmf_core.SuctionStress_P2_get, _cmf_core.SuctionStress_P2_set)
+    P3 = _swig_property(_cmf_core.SuctionStress_P3_get, _cmf_core.SuctionStress_P3_set)
+    def __init__(self, *args): 
+        """
+        __init__(cmf::upslope::ET::SuctionStress self, real P0=1e308, real P1=1e307, real P2=-5, real P3=-160) -> SuctionStress
+        __init__(cmf::upslope::ET::SuctionStress self, SuctionStress other) -> SuctionStress
+
+        SuctionStress(const SuctionStress &other) 
+        """
+        _cmf_core.SuctionStress_swiginit(self,_cmf_core.new_SuctionStress(*args))
+    def copy(self, *args, **kwargs):
+        """
+        copy(SuctionStress self) -> SuctionStress
+
+        cmf::upslope::ET::SuctionStress* copy() const
+
+        Creates a new copy of this wetness. 
+        """
+        return _cmf_core.SuctionStress_copy(self, *args, **kwargs)
+
+    __swig_destroy__ = _cmf_core.delete_SuctionStress
+SuctionStress.copy = new_instancemethod(_cmf_core.SuctionStress_copy,None,SuctionStress)
+SuctionStress_swigregister = _cmf_core.SuctionStress_swigregister
+SuctionStress_swigregister(SuctionStress)
+
+class ContentStress(RootUptakeStessFunction):
+    """
+    A simple water content based stress model based on Feddes (1978)
+
+    stress a is piecewise linear function based on water content
+
+    if  :math:`\\theta>\\theta_d \\rightarrow ET = ET_{pot}` 
+
+    if  :math:`\\theta_d>\\theta > \\theta_{wilt} \\rightarrow ET = \\frac{\\theta_d - \\theta}{\\theta_d - \\theta_{wilt}} ET_{pot}` 
+
+    if  :math:`\\theta_{wilt}>\\theta \\rightarrow ET = 0.0` 
+
+    The critical water content (where stress starts) is defined as the
+    center between field capacity (  :math:`\\theta_{fc}` ) and the wilting
+    point (  :math:`\\theta_{wp}` ).
+
+     :math:`\\theta_d = 1/2(\\theta_{fc} + \\theta_{wp})` 
+
+    C++ includes: waterstress.h 
+    """
+    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __repr__ = _swig_repr
+    def copy(self, *args, **kwargs):
+        """
+        copy(ContentStress self) -> ContentStress
+
+        cmf::upslope::ET::ContentStress* copy() const
+
+        Creates a new copy of this wetness. 
+        """
+        return _cmf_core.ContentStress_copy(self, *args, **kwargs)
+
+    def __init__(self, *args, **kwargs): 
+        """__init__(cmf::upslope::ET::ContentStress self) -> ContentStress"""
+        _cmf_core.ContentStress_swiginit(self,_cmf_core.new_ContentStress(*args, **kwargs))
+    __swig_destroy__ = _cmf_core.delete_ContentStress
+ContentStress.copy = new_instancemethod(_cmf_core.ContentStress_copy,None,ContentStress)
+ContentStress_swigregister = _cmf_core.ContentStress_swigregister
+ContentStress_swigregister(ContentStress)
+
+class VolumeStress(RootUptakeStessFunction):
+    """
+    A WaterStressFunction based on the stored water volume of a layer.
+
+    If the layer contains more water than V1, ET is not limited (
+    ET=ETpot). Below V1 ET goes linear to 0.0 at V0
+
+    C++ includes: waterstress.h 
+    """
+    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __repr__ = _swig_repr
+    V1 = _swig_property(_cmf_core.VolumeStress_V1_get, _cmf_core.VolumeStress_V1_set)
+    V0 = _swig_property(_cmf_core.VolumeStress_V0_get, _cmf_core.VolumeStress_V0_set)
+    def __init__(self, *args): 
+        """
+        __init__(cmf::upslope::ET::VolumeStress self, real V1, real V0) -> VolumeStress
+        __init__(cmf::upslope::ET::VolumeStress self, VolumeStress other) -> VolumeStress
+
+        VolumeStress(const VolumeStress &other) 
+        """
+        _cmf_core.VolumeStress_swiginit(self,_cmf_core.new_VolumeStress(*args))
+    def copy(self, *args, **kwargs):
+        """
+        copy(VolumeStress self) -> VolumeStress
+
+        cmf::upslope::ET::VolumeStress* copy() const
+
+        Creates a new copy of this wetness. 
+        """
+        return _cmf_core.VolumeStress_copy(self, *args, **kwargs)
+
+    __swig_destroy__ = _cmf_core.delete_VolumeStress
+VolumeStress.copy = new_instancemethod(_cmf_core.VolumeStress_copy,None,VolumeStress)
+VolumeStress_swigregister = _cmf_core.VolumeStress_swigregister
+VolumeStress_swigregister(VolumeStress)
+
 class log_wind_profile(aerodynamic_resistance):
     """
     , A logarithmic wind profile
@@ -11008,45 +11229,44 @@ def PenmanMonteith(*args):
 
     veg:  Vegetation data
 
-    h:  Height above sea level in m (for pressure extimation) 
+    h:  Height above sea level in m (for air pressure estimation) 
     """
   return _cmf_core.PenmanMonteith(*args)
-
-def Tact(*args, **kwargs):
-  """
-    Tact(real Tpot, SoilLayer sw, Vegetation veg) -> real
-
-    real
-    cmf::upslope::ET::Tact(real Tpot, const cmf::upslope::SoilLayer &sw,
-    const cmf::upslope::vegetation::Vegetation &veg)
-
-    A function to calculate the actual transpiration for each soil layer
-    using a Feddes like approach.
-
-    This function is used to calculate the actual water uptake in m3/day
-    from a single soillayer sw according to root depth and the potential
-    transpiration (or ETpot if there is no difference) in mm/day The water
-    flux is calculated as follows:
-
-
-    .. math::
-
-        q_{T_{pot}}[m^3/day]=T_{pot}[mm/day] 10^{-3}[mm/m]A_{cell}[m^2]
-        f_r
-
-     where:   :math:`q_{T_{pot}}` : the potential transpiration flux from
-    this layer
-
-     :math:`T_{pot}` : the potential transpiration for the cell
-
-     :math:`A_{cell}` : the area of the cell
-
-     :math:`f_r=\\frac{R_{layer}}{\\sum_{i=0}^{layers}{R_i}}` : the root mass
-    in this layer per total root mass at this cell. This is calculated
-    with the cmf::upslope::vegetation::Vegetation::RootFraction 
+class stressedET(flux_connection):
     """
-  return _cmf_core.Tact(*args, **kwargs)
-class constantETpot(flux_connection):
+    An abstract base class for ET Methods with a WaterStressFunction.
+
+    C++ includes: ET.h 
+    """
+    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    def __init__(self, *args, **kwargs): raise AttributeError("No constructor defined - class is abstract")
+    __repr__ = _swig_repr
+    def set_stressfunction(self, *args, **kwargs):
+        """
+        set_stressfunction(stressedET self, RootUptakeStessFunction stressfunction)
+
+        void
+        set_stressfunction(const RootUptakeStessFunction &stressfunction)
+
+        Sets the stress function to limit water uptake. 
+        """
+        return _cmf_core.stressedET_set_stressfunction(self, *args, **kwargs)
+
+    def get_layer(self, *args, **kwargs):
+        """
+        get_layer(stressedET self) -> cmf::upslope::SoilLayer::ptr
+
+        SoilLayer::ptr get_layer() const 
+        """
+        return _cmf_core.stressedET_get_layer(self, *args, **kwargs)
+
+    __swig_destroy__ = _cmf_core.delete_stressedET
+stressedET.set_stressfunction = new_instancemethod(_cmf_core.stressedET_set_stressfunction,None,stressedET)
+stressedET.get_layer = new_instancemethod(_cmf_core.stressedET_get_layer,None,stressedET)
+stressedET_swigregister = _cmf_core.stressedET_swigregister
+stressedET_swigregister(stressedET)
+
+class constantETpot(stressedET):
     """
     A constant evapotranspiration.
 
@@ -11081,7 +11301,7 @@ constantETpot.GetETpot = new_instancemethod(_cmf_core.constantETpot_GetETpot,Non
 constantETpot_swigregister = _cmf_core.constantETpot_swigregister
 constantETpot_swigregister(constantETpot)
 
-class timeseriesETpot(flux_connection):
+class timeseriesETpot(stressedET):
     """
     A timeseries driven evapotranspiration.
 
@@ -11126,7 +11346,7 @@ def timeseriesETpot_use_for_cell(*args, **kwargs):
   """timeseriesETpot_use_for_cell(Cell cell)"""
   return _cmf_core.timeseriesETpot_use_for_cell(*args, **kwargs)
 
-class PenmanMonteithET(flux_connection):
+class PenmanMonteithET(stressedET):
     """
     Calculates the potential evapotranspiration according to FAO(1998)
 
@@ -11214,7 +11434,7 @@ def PenmanMonteithET_use_for_cell(*args, **kwargs):
   """PenmanMonteithET_use_for_cell(Cell cell)"""
   return _cmf_core.PenmanMonteithET_use_for_cell(*args, **kwargs)
 
-class HargreaveET(flux_connection):
+class HargreaveET(stressedET):
     """
     Calculates the Evapotranspiration using Hargreave's equation.
 
@@ -11252,8 +11472,7 @@ class HargreaveET(flux_connection):
     See:  SAMANI, Zohrab.Estimating solar radiation and evapotranspiration
     using minimum climatological data. Journal of Irrigation and Drainage
     Engineering, 2000, 126. Jg., Nr. 4, S. 265-267.  Crop specific
-    potential evapotranspiration is scaled by LAI:  :math:`ET_{pot} = ET_{rc} \\frac{LAI}{2.88}` . Actual evapotranspiration is calculated using
-    cmf::upslope::ET::Tact
+    potential evapotranspiration is scaled by LAI:  :math:`ET_{pot} = ET_{rc} \\frac{LAI}{2.88}` .
 
     C++ includes: ET.h 
     """
@@ -11279,6 +11498,39 @@ HargreaveET_swigregister(HargreaveET)
 def HargreaveET_use_for_cell(*args, **kwargs):
   """HargreaveET_use_for_cell(Cell cell)"""
   return _cmf_core.HargreaveET_use_for_cell(*args, **kwargs)
+
+class TurcET(stressedET):
+    """
+    Calculates ETpot after Turc (DVWK).
+
+    ETact is calculated using a WaterStressFunction
+
+     :math:`ET_{pot,Turc} = 0.0031 C (R_G + 209) \\frac{T}{T + 15}` 
+
+    C++ includes: ET.h 
+    """
+    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __repr__ = _swig_repr
+    def __init__(self, *args, **kwargs): 
+        """
+        __init__(cmf::upslope::ET::TurcET self, cmf::upslope::SoilLayer::ptr source, cmf::water::flux_node::ptr ET_target) -> TurcET
+
+        TurcET(cmf::upslope::SoilLayer::ptr source, cmf::water::flux_node::ptr
+        ET_target) 
+        """
+        _cmf_core.TurcET_swiginit(self,_cmf_core.new_TurcET(*args, **kwargs))
+    def use_for_cell(*args, **kwargs):
+        """use_for_cell(Cell cell)"""
+        return _cmf_core.TurcET_use_for_cell(*args, **kwargs)
+
+    use_for_cell = staticmethod(use_for_cell)
+    __swig_destroy__ = _cmf_core.delete_TurcET
+TurcET_swigregister = _cmf_core.TurcET_swigregister
+TurcET_swigregister(TurcET)
+
+def TurcET_use_for_cell(*args, **kwargs):
+  """TurcET_use_for_cell(Cell cell)"""
+  return _cmf_core.TurcET_use_for_cell(*args, **kwargs)
 
 class CanopyStorageEvaporation(flux_connection):
     """

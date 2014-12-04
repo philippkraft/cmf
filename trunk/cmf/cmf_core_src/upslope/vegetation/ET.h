@@ -24,6 +24,7 @@
 #include "../SoilLayer.h"
 #include "../Soil/RetentionCurve.h"
 #include "../cell.h"
+#include "waterstress.h"
 /// @defgroup ET Evapotranspiration
 /// @ingroup connections
 
@@ -200,45 +201,50 @@ namespace cmf {
 			///
 			/// @param A Current weather
 			/// @param veg Vegetation data
-			/// @param h Height above sea level in m (for pressure extimation)
+			/// @param h Height above sea level in m (for air pressure estimation)
 			real PenmanMonteith(cmf::atmosphere::Weather A,const cmf::upslope::vegetation::Vegetation & veg,double h);
 			
+			
 			/// @ingroup ET
-			/// @brief A function to calculate the actual transpiration for each soil layer using a Feddes like approach
-			///
-			/// This function is used to calculate the actual water uptake in m3/day from a single soillayer sw
-			/// according to root depth and the potential transpiration (or ETpot if there is no difference) in mm/day
-			/// The water flux is calculated as follows:
-			/// \f[q_{T_{pot}}[m^3/day]=T_{pot}[mm/day] 10^{-3}[mm/m]A_{cell}[m^2] f_r\f]
-			/// where:
-			/// - \f$q_{T_{pot}}\f$: the potential transpiration flux from this layer
-			/// - \f$T_{pot}\f$: the potential transpiration for the cell
-			/// - \f$A_{cell}\f$: the area of the cell
-			/// - \f$f_r=\frac{R_{layer}}{\sum_{i=0}^{layers}{R_i}}\f$: the root mass in this layer per total root mass at this cell.
-			/// This is calculated with the cmf::upslope::vegetation::Vegetation::RootFraction
-			real Tact(real Tpot,const cmf::upslope::SoilLayer & sw,const cmf::upslope::vegetation::Vegetation & veg);
+			/// @brief An abstract base class for ET Methods with a WaterStressFunction
+			class stressedET : public cmf::water::flux_connection {
+			protected:
+				std::tr1::weak_ptr<cmf::upslope::SoilLayer> sw;
+				std::auto_ptr<cmf::upslope::ET::RootUptakeStessFunction> m_stressfunction;
+				void NewNodes()	{
+					sw=std::tr1::dynamic_pointer_cast<cmf::upslope::SoilLayer>(left_node());
+				}
+				stressedET(cmf::upslope::SoilLayer::ptr source,cmf::water::flux_node::ptr ET_target,std::string _type);
+				real Tact(real Tpot) const;
+			public:
+				/// Sets the stress function to limit water uptake
+				void set_stressfunction(const RootUptakeStessFunction& stressfunction) {
+					m_stressfunction.reset(stressfunction.copy());
+				}
+				SoilLayer::ptr get_layer() const {
+					return sw.lock();
+				}
+				std::string to_string() const {
+					return cmf::water::flux_connection::to_string() + " - " + m_stressfunction->to_string();
+				}
+
+			};
+			
 			/// @ingroup ET
 			/// @brief A constant evapotranspiration
 			///
 			/// Uses a constant measured or elsewhere modelled ETpot. Actual Evapotranspiration is calculated
 			/// from rootdepth and actual matrix potential in the layers using Tact. The value of ETpot can be 
 			/// changed during runtime
-			class constantETpot : public cmf::water::flux_connection {
+			class constantETpot : public stressedET {
 			protected:
-				std::tr1::weak_ptr<cmf::upslope::SoilLayer> sw;
-				
 				virtual real calc_q(cmf::math::Time t);
-				void NewNodes()
-				{
-					sw=std::tr1::dynamic_pointer_cast<cmf::upslope::SoilLayer>( left_node());
-				}
 			public:
 				real ETpot_value;
 				real GetETpot(cmf::math::Time t) const {return ETpot_value;}
 				constantETpot(cmf::upslope::SoilLayer::ptr source,cmf::water::flux_node::ptr ET_target,double constantETpot_value) 
-					: flux_connection(source,ET_target,"Constant get_evaporation"),ETpot_value(constantETpot_value)	
+					: stressedET(source,ET_target,"Constant get_evaporation"),ETpot_value(constantETpot_value)	
 				{
-					NewNodes();
 				}
 			};
 			/// @ingroup ET
@@ -247,23 +253,16 @@ namespace cmf {
 			/// Uses a timeseries of measured or elsewhere modelled ETpot. Actual Evapotranspiration is calculated
 			/// from rootdepth and actual matrix potential in the layers using Tact. The value of ETpot can be 
 			/// changed during runtime
-			class timeseriesETpot: public cmf::water::flux_connection {
+			class timeseriesETpot: public stressedET {
 			protected:
-				std::tr1::weak_ptr<cmf::upslope::SoilLayer> sw;
 				virtual real calc_q(cmf::math::Time t);
-				void NewNodes() {
-					sw=cmf::upslope::SoilLayer::cast(left_node());
-				}
 			public:
 				cmf::math::timeseries ETpot;
 				real GetETpot(cmf::math::Time t) const {return ETpot.get_t(t);}
 				timeseriesETpot(cmf::upslope::SoilLayer::ptr source,cmf::water::flux_node::ptr ET_target,cmf::math::timeseries ETpot_values)
-					: flux_connection(source,ET_target,"Timeseries based ET connection"), ETpot(ETpot_values)
+					: stressedET (source,ET_target,"Timeseries based ET connection"), ETpot(ETpot_values)
 				{
-					NewNodes();
 				}
-				/// @brief Connects all soil layers with the transpiration node of the cell
-				static void use_for_cell(cmf::upslope::Cell & cell);
 
 			};
 			/// @ingroup ET
@@ -295,21 +294,15 @@ namespace cmf {
 			/// r_s &=& \frac{r_l}{LAI_{Active}} \mbox{ (FAO 1998, Eq. 5/Box 5)} \frac s m \\
 			/// && r_l=100 \frac s m, LAI_{Active}=0.5 LAI
 			/// \f}
-			class PenmanMonteithET : public cmf::water::flux_connection {
+			class PenmanMonteithET : public stressedET {
 
 			protected:
-				std::tr1::weak_ptr<cmf::upslope::SoilLayer> sw;
 				real calc_q(cmf::math::Time t);
-				void NewNodes()
-				{
-					sw=cmf::upslope::SoilLayer::cast(left_node());
-				}
 			public:
 
 				bool daily;
 				PenmanMonteithET(cmf::upslope::SoilLayer::ptr source,cmf::water::flux_node::ptr ET_target) 
-					: flux_connection(source,ET_target,"Penman Monteith transpiration"),sw(source) {
-						NewNodes();
+					: stressedET(source,ET_target,"Penman Monteith transpiration") {
 				}
 				static real r_s(const cmf::upslope::vegetation::Vegetation & veg) ;
 				static real r_a(cmf::atmosphere::Weather A,real  veg_height) ;
@@ -336,23 +329,29 @@ namespace cmf {
 			/// _Journal of Irrigation and Drainage Engineering,_ 2000, 126. Jg., Nr. 4, S. 265-267.
 			///
 			/// Crop specific potential evapotranspiration is scaled by LAI: \f$ ET_{pot} = ET_{rc} \frac{LAI}{2.88}\f$.
-			/// Actual evapotranspiration is calculated using cmf::upslope::ET::Tact
 			///
 			/// [1]: http://cagesun.nmsu.edu/~zsamani/research_material/files/Hargreaves-samani.pdf
-
-	
-			class HargreaveET : public cmf::water::flux_connection {
+			class HargreaveET : public stressedET {
 			protected:
-				std::tr1::weak_ptr<cmf::upslope::SoilLayer> sw;
 				real calc_q(cmf::math::Time t);
-				void NewNodes()
-				{
-					sw=cmf::upslope::SoilLayer::cast(left_node());
-				}
 			public:
 				HargreaveET(cmf::upslope::SoilLayer::ptr source,cmf::water::flux_node::ptr ET_target) 
-					: flux_connection(source,ET_target,"Hargreave get_evaporation"),sw(source) {
-						NewNodes();
+					: stressedET(source,ET_target,"HargreaveET") {
+				}
+				/// @brief Connects all soil layers with the transpiration node of the cell
+				static void use_for_cell(cmf::upslope::Cell & cell);
+
+			};
+			/// @ingroup ET
+			/// Calculates ETpot after Turc (DVWK). ETact is calculated using a WaterStressFunction
+			///
+			/// \f$ET_{pot,Turc} = 0.0031 C (R_G + 209) \frac{T}{T + 15}\f$
+			class TurcET : public stressedET {
+			protected:
+				real calc_q(cmf::math::Time t);
+			public:
+				TurcET(cmf::upslope::SoilLayer::ptr source,cmf::water::flux_node::ptr ET_target) 
+					: stressedET(source,ET_target,"TurcET") {
 				}
 				/// @brief Connects all soil layers with the transpiration node of the cell
 				static void use_for_cell(cmf::upslope::Cell & cell);

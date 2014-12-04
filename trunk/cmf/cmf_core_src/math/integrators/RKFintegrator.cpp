@@ -25,7 +25,7 @@ cmf::math::RKFIntegrator::RKFIntegrator(StateVariableOwner& states, real epsilon
 Integrator(states,epsilon),oldStates(m_States.size()),dt_min(_dt_min)
 {	
 	for (int i = 0; i < 6 ; i++)
-		kValues[i]= num_array(size(),0);
+		kValues[i]= num_array(size());
 }
 cmf::math::RKFIntegrator::RKFIntegrator( real epsilon/*=1e-9*/,cmf::math::Time _dt_min/*=10.0/(3600.0*24.0)*/ ) : 
 Integrator(epsilon), dt_min(_dt_min)

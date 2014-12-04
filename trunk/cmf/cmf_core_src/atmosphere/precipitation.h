@@ -86,7 +86,25 @@ namespace cmf {
 			}
 
 		};
-		
+		/// A rainsource with a timeseries. Simpler to use than a rainfall station if there are only few
+		/// cells in the project
+		class TimeseriesRainsource : public RainSource {
+		public:
+			/// shared pointer
+			typedef std::tr1::shared_ptr<TimeseriesRainsource> ptr;
+			/// The rainfall intensity in mm/day
+			cmf::math::timeseries data;
+
+			/// The concentration timeseries
+			cmf::water::SoluteTimeseries concentrations;
+			real get_intensity(cmf::math::Time t) const {
+				return data[t];
+			}
+			virtual real conc(cmf::math::Time t, const cmf::water::solute& Solute) const {
+				return concentrations[Solute][t];
+			}
+
+		};
 		class RainfallStationList;
 		/// @ingroup meteo
 		/// RainfallStation describes a rainfall timeseries in mm/day at a certain place. 

@@ -40,6 +40,7 @@ namespace cmf {
 					CanopyPARExtinction, ///<  extinction coefficient for photosynthetically-active radiation in the canopy. Values usually range from 0.5 to 0.7. Values outside this range should be used very cautiously. 
 					LeafWidth;     ///< Average width of leaves in m (only for Shuttleworth-Wallace ET)
 
+
 				/// @brief Returns the average root length in m/m2
 				///
 				// \f[ l_R \left[\frac{m}{m^2}\right]= \frac{ c_R \left[\frac{kg}{m^3}\right] z_R \left[m\right] } {0.5\left[\frac{kg}{m^3}\right] \pi \left(d_R/2\right)^2 \left[m^2\right]} \f]
@@ -74,7 +75,7 @@ namespace cmf {
 				cmf::math::num_array RootFraction(const cmf::math::num_array& thickness) const {
 					cmf::math::num_array res(thickness.size());
 					double ub=0,lb=0;
-					for (size_t i = 0; i < thickness.size() ; ++i)
+					for (ptrdiff_t i = 0; i < thickness.size() ; ++i)
 					{
 						lb+=thickness[i];
 						res[i] = RootFraction(ub,lb);
@@ -87,7 +88,8 @@ namespace cmf {
 					: LAI(_LAI),Height(_Height),albedo(_albedo), RootContent(2.0),
 					  CanopyCapacityPerLAI(_CanopyCapacityPerLAI),CanopyPARExtinction(0.6),
 					  RootDepth(_RootDepth),StomatalResistance(_StomatalResistance),
-					  CanopyClosure(_CanopyClosure), LeafWidth(0.05),fraction_at_rootdepth(_fraction_at_rootdepth), snow_albedo(0.85)
+					  CanopyClosure(_CanopyClosure), LeafWidth(0.05),
+					  fraction_at_rootdepth(_fraction_at_rootdepth), snow_albedo(0.85)
 				{
 				}
 			};			

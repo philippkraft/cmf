@@ -15,402 +15,733 @@
 //
 //   You should have received a copy of the GNU General Public License
 //   along with cmf.  If not, see <http://www.gnu.org/licenses/>.
-//   
-#include "num_array.h"
+//
 
 #include <cmath>
-
 #include <iostream>
 
-#ifdef _OPENMP
-#include <omp.h>
+#include "num_array.h"
+#include <cassert>
+/// constructors
+
+cmf::math::num_array::num_array()
+: m_size(1)
+{
+  this->m_data = new real[1];
+  this->m_data[0] = 0.0;
+}
+
+cmf::math::num_array::num_array(const num_array& Vector )
+: m_size(Vector.size()), m_data(new real[Vector.size()])
+{
+#ifdef USE_ADOLC
+#pragma omp ADOLC_OPENMP parallel for
+#else
+#pragma omp parallel for
+#endif
+  for (ptrdiff_t i = 0; i < m_size ; ++i)
+    this->m_data[i] = Vector[i];
+}
+
+cmf::math::num_array::num_array(const_iterator begin, const_iterator end)
+{
+  this->m_size = end - begin;
+
+  this->m_data = new real[this->m_size];
+#ifdef USE_ADOLC
+#pragma omp ADOLC_OPENMP parallel for
+#else
+#pragma omp parallel for
+#endif
+  for (ptrdiff_t i = 0; i < this->m_size; i++)
+    this->m_data[i] = begin[i];
+}
+
+#ifdef USE_ADOLC
+cmf::math::num_array::num_array(const real *begin, const real *end)
+{
+  this->m_size = end - begin;
+  assert(this->m_size >= 0);
+
+  this->m_data = new real[this->m_size];
+#ifdef USE_ADOLC
+#pragma omp ADOLC_OPENMP parallel for
+#else
+#pragma omp parallel for
+#endif
+  for (ptrdiff_t i = 0; i < this->m_size; i++)
+    this->m_data[i] = begin[i];
+}
 #endif
 
-cmf::math::num_array::num_array( ptrdiff_t count,real Value/*=0*/ ) : m_size(count)
+cmf::math::num_array::num_array(ptrdiff_t count, real Value)
+: m_size(count)
 {
 
-	m_data=new real[m_size];
+  this->m_data = new real[this->m_size];
+#ifdef USE_ADOLC
+#pragma omp ADOLC_OPENMP parallel for
+#else
 #pragma omp parallel for
-	for (ptrdiff_t i = 0; i < m_size ; ++i)
-		m_data[i]=Value;
+#endif
+  for (ptrdiff_t i = 0; i < this->m_size ; ++i)
+    this->m_data[i] = Value;
 }
 
-cmf::math::num_array::num_array( const num_array& Vector ) 
-: m_size(Vector.size()), m_data(new double[Vector.size()])
+cmf::math::num_array::num_array(size_t count, real Value)
+: m_size(ptrdiff_t(count))
 {
-	for (size_t i = 0; i < size() ; ++i)
-		m_data[i] = Vector[i];
+
+  this->m_data = new real[this->m_size];
+#ifdef USE_ADOLC
+#pragma omp ADOLC_OPENMP parallel for
+#else
+#pragma omp parallel for
+#endif
+  for (ptrdiff_t i = 0; i < this->m_size ; ++i)
+    this->m_data[i] = Value;
 }
 
-cmf::math::num_array::num_array() : m_size(1)
+cmf::math::num_array::num_array(size_t count, real *data)
 {
-	m_data=new real[1];
-	m_data[0]=0;
+  this->m_size = count;
+
+  this->m_data = data;
 }
 
+/// END constructors
 
-cmf::math::num_array::num_array( double * data,size_t count )
-{
-	m_data=data;
-	m_size=count;
-}
-
-cmf::math::num_array::num_array( const_iterator begin,const_iterator end )
-{
-	m_size = end - begin;
-	m_data = new double[m_size];
-	std::copy(begin,end,m_data);
-}
+/// destructor
 cmf::math::num_array::~num_array()
 {
-	if (m_size)
-		delete[] m_data;
+  if (this->m_size)
+    delete[] this->m_data;
 }
 
-cmf::math::num_array& cmf::math::num_array::operator=( const num_array& vector )
+void cmf::math::num_array::resize(const ptrdiff_t count)
 {
-	if (this == &vector)
-		;	// do nothing
-	else if (size() == vector.size())
-#pragma omp parallel for
-		for (ptrdiff_t i = 0; i < ptrdiff_t(size()); ++i)
-			m_data[i] = vector[i];
-	else
-	{	// resize and copy
-		resize(vector.size());
-#pragma omp parallel for
-		for (ptrdiff_t i = 0; i < ptrdiff_t(size()); ++i)
-			m_data[i] = vector[i];
-	}
-	return (*this);
 
-}
+  if (count == this->m_size) return;
 
-cmf::math::num_array& cmf::math::num_array::operator=( real scalar )
-{
-	for (ptrdiff_t i = 0; i < ptrdiff_t(size()); ++i)
-		m_data[i] = scalar;
-	return (*this);
+  ptrdiff_t min = count < this->m_size ? count : this->m_size;
+  real* ptr_new = new real[count];
+#ifdef USE_ADOLC
+#pragma omp ADOLC_OPENMP parallel for
+#else
+#pragma omp parallel for
+#endif
+  for (ptrdiff_t i = 0; i < min; ++i)
+    ptr_new[i] = this->m_data[i];
+
+  delete[] this->m_data;
+  this->m_data = ptr_new;
+  this->m_size = count;
 }
 
-cmf::math::num_array& cmf::math::num_array::operator=( const std::vector<double>& vector )
+// this = other
+void cmf::math::num_array::set(const num_array& other)
 {
-	resize(vector.size());
+  assert(this->m_size == other.size());
+#ifdef USE_ADOLC
+#pragma omp ADOLC_OPENMP parallel for
+#else
 #pragma omp parallel for
-	for (ptrdiff_t i = 0; i < (ptrdiff_t)size() ; ++i)
-	{
-		m_data[i]=vector[i];
-	}
-	return *this;
+#endif
+  for (ptrdiff_t i = 0; i < this->m_size; ++i)
+    this->m_data[i] = other[i];
 }
 
-cmf::math::num_array& cmf::math::num_array::operator-=( real _Right )
+// this = fac * other
+void cmf::math::num_array::set(const real fac, const num_array& other)
 {
+  assert(this->m_size == other.size());
+#ifdef USE_ADOLC
+#pragma omp ADOLC_OPENMP parallel for
+#else
 #pragma omp parallel for
-	for (ptrdiff_t i = 0; i < ptrdiff_t(size()); ++i)
-		m_data[i] -= _Right;
-	return (*this);
-}
-cmf::math::num_array& cmf::math::num_array::operator+=( real _Right )
-{
-#pragma omp parallel for
-	for (ptrdiff_t i = 0; i < ptrdiff_t(size()); ++i)
-		m_data[i] += _Right;
-	return (*this);
-}
-cmf::math::num_array& cmf::math::num_array::operator*=( real _Right )
-{
-#pragma omp parallel for
-	for (ptrdiff_t i = 0; i < ptrdiff_t(size()); ++i)
-		m_data[i] *= _Right;
-	return (*this);
-}
-cmf::math::num_array& cmf::math::num_array::operator/=( real _Right )
-{
-#pragma omp parallel for
-	for (ptrdiff_t i = 0; i < ptrdiff_t(size()); ++i)
-		m_data[i] /= _Right;
-	return (*this);
-}
-cmf::math::num_array& cmf::math::num_array::operator+=(const num_array& _Right )
-{
-#pragma omp parallel for
-	for (ptrdiff_t i = 0; i < ptrdiff_t(size()); ++i)
-		m_data[i] += _Right[i];
-	return (*this);
-}
-cmf::math::num_array& cmf::math::num_array::operator-=(const num_array& _Right )
-{
-#pragma omp parallel for
-	for (ptrdiff_t i = 0; i < ptrdiff_t(size()); ++i)
-		m_data[i] -= _Right[i];
-	return (*this);
-}
-cmf::math::num_array& cmf::math::num_array::operator*=(const num_array& _Right )
-{
-#pragma omp parallel for
-	for (ptrdiff_t i = 0; i < ptrdiff_t(size()); ++i)
-		m_data[i] *= _Right[i];
-	return (*this);
-}
-cmf::math::num_array& cmf::math::num_array::operator/=(const num_array& _Right )
-{
-#pragma omp parallel for
-	for (ptrdiff_t i = 0; i < ptrdiff_t(size()); ++i)
-		m_data[i] /= _Right[i];
-	return (*this);
+#endif
+  for (ptrdiff_t i = 0; i < this->m_size; ++i)
+    this->m_data[i] = fac * other[i];
 }
 
- cmf::math::num_array cmf::math::num_array::operator-() const
- {
- 	cmf::math::num_array result(size());
- #pragma omp parallel for
- 	for (ptrdiff_t i = 0; i < ptrdiff_t(size()); ++i)
- 		result[i] = -m_data[i];
- 	return result;
- }
-
-void cmf::math::num_array::resize( ptrdiff_t count )
+// this = fac * this
+void cmf::math::num_array::scale(const real fac)
 {
-	if (count==ptrdiff_t(size())) return;
-	real* ptr_new=new real[count];
+#ifdef USE_ADOLC
+#pragma omp ADOLC_OPENMP parallel for
+#else
 #pragma omp parallel for
-	for (ptrdiff_t i = 0; i < ptrdiff_t(size()); ++i)
-		ptr_new[i] = m_data[i];
-	delete[] m_data;
-	m_data=ptr_new;
-	m_size=count;
+#endif
+  for (ptrdiff_t i = 0; i < this->m_size; ++i)
+    this->m_data[i] *= fac;
 }
 
-cmf::math::num_array cmf::math::num_array::apply( real funct(real) ) const
+// this = fac * this + other
+void cmf::math::num_array::scale_add(const real fac, const num_array& other)
 {
-	cmf::math::num_array result(size());
+  assert(this->m_size == other.size());
+#ifdef USE_ADOLC
+#pragma omp ADOLC_OPENMP parallel for
+#else
 #pragma omp parallel for
-	for (ptrdiff_t i = 0; i < ptrdiff_t(size()); ++i)
-		result[i] = funct(m_data[i]);
-	return result;
+#endif
+  for (ptrdiff_t i = 0; i < this->m_size; ++i)
+    this->m_data[i] = fac * (this->m_data[i]) + other[i];
+}
+
+// this = this + fac * other
+void cmf::math::num_array::axpy(const real fac, const num_array& other)
+{
+  assert(this->m_size == other.size());
+#ifdef USE_ADOLC
+#pragma omp ADOLC_OPENMP parallel for
+#else
+#pragma omp parallel for
+#endif
+  for (ptrdiff_t i = 0; i < this->m_size; ++i)
+    this->m_data[i] += (fac * other[i]);
+}
+
+bool cmf::math::num_array::is_nan() const
+{
+  bool is_nan = false;
+  double data_val;
+#ifdef USE_ADOLC
+#pragma omp ADOLC_OPENMP parallel for reduction(.or.:is_nan)
+#else
+#pragma omp parallel for reduction(|| : is_nan)
+#endif
+  for (ptrdiff_t i = 0; i < this->m_size; ++i){
+#ifdef USE_ADOLC
+    data_val = this->m_data[i].getValue();
+#else
+    data_val = this->m_data[i];
+#endif
+    is_nan = is_nan || (data_val!=data_val);
+  }
+
+  return is_nan;
 }
 
 
-real cmf::math::num_array::dot( const num_array& _Right) const
+cmf::math::num_array cmf::math::num_array::operator-() const
 {
-	real res=0;
+  cmf::math::num_array result(this->m_size);
+#ifdef USE_ADOLC
+#pragma omp ADOLC_OPENMP parallel for
+#else
+#pragma omp parallel for
+#endif
+  for (ptrdiff_t i = 0; i < this->m_size; ++i)
+    result[i] = -this->m_data[i];
+  return result;
+}
+
+cmf::math::num_array& cmf::math::num_array::operator=(const num_array& vector)
+{
+  if (this == &vector)
+    ; // do nothing
+  else if (this->m_size == vector.size())
+#ifdef USE_ADOLC
+#pragma omp ADOLC_OPENMP parallel for
+#else
+#pragma omp parallel for
+#endif
+    for (ptrdiff_t i = 0; i < this->m_size; ++i)
+      this->m_data[i] = vector[i];
+  else
+  { // resize and copy
+    resize(vector.size());
+#ifdef USE_ADOLC
+#pragma omp ADOLC_OPENMP parallel for
+#else
+#pragma omp parallel for
+#endif
+    for (ptrdiff_t i = 0; i < this->m_size; ++i)
+      this->m_data[i] = vector[i];
+  }
+  return (*this);
+}
+
+cmf::math::num_array cmf::math::num_array::operator+(const num_array& _Right)
+{
+  cmf::math::num_array result(this->m_size);
+#ifdef USE_ADOLC
+#pragma omp ADOLC_OPENMP parallel for
+#else
+#pragma omp parallel for
+#endif
+  for (ptrdiff_t i = 0; i < size(); ++i)
+    result[i] = (*this)[i] + _Right[i];
+  return result;
+}
+
+cmf::math::num_array cmf::math::num_array::operator-(const num_array& _Right)
+{
+  cmf::math::num_array result(this->m_size);
+#ifdef USE_ADOLC
+#pragma omp ADOLC_OPENMP parallel for
+#else
+#pragma omp parallel for
+#endif
+  for (ptrdiff_t i = 0; i < this->m_size; ++i)
+    result[i] = (*this)[i] - _Right[i];
+  return result;
+}
+
+cmf::math::num_array cmf::math::num_array::operator*(const num_array& _Right)
+{
+  cmf::math::num_array result(this->m_size);
+#ifdef USE_ADOLC
+#pragma omp ADOLC_OPENMP parallel for
+#else
+#pragma omp parallel for
+#endif
+  for (ptrdiff_t i = 0; i < this->m_size; ++i)
+    result[i] = (*this)[i] * _Right[i];
+  return result;
+}
+
+cmf::math::num_array cmf::math::num_array::operator/(const num_array& _Right)
+{
+  cmf::math::num_array result(this->m_size);
+#ifdef USE_ADOLC
+#pragma omp ADOLC_OPENMP parallel for
+#else
+#pragma omp parallel for
+#endif
+  for (ptrdiff_t i = 0; i < this->m_size; ++i)
+    result[i] = (*this)[i] / _Right[i];
+  return result;
+}
+
+
+cmf::math::num_array& cmf::math::num_array::operator+=(const num_array& _Right)
+{
+#ifdef USE_ADOLC
+#pragma omp ADOLC_OPENMP parallel for
+#else
+#pragma omp parallel for
+#endif
+  for (ptrdiff_t i = 0; i < this->m_size; ++i)
+    this->m_data[i] += _Right[i];
+  return (*this);
+}
+
+cmf::math::num_array& cmf::math::num_array::operator-=(const num_array& _Right)
+{
+#ifdef USE_ADOLC
+#pragma omp ADOLC_OPENMP parallel for
+#else
+#pragma omp parallel for
+#endif
+  for (ptrdiff_t i = 0; i < this->m_size; ++i)
+    this->m_data[i] -= _Right[i];
+  return (*this);
+}
+
+cmf::math::num_array& cmf::math::num_array::operator*=(const num_array& _Right)
+{
+#ifdef USE_ADOLC
+#pragma omp ADOLC_OPENMP parallel for
+#else
+#pragma omp parallel for
+#endif
+  for (ptrdiff_t i = 0; i < this->m_size; ++i)
+    this->m_data[i] *= _Right[i];
+  return (*this);
+}
+
+cmf::math::num_array& cmf::math::num_array::operator/=(const num_array& _Right)
+{
+#ifdef USE_ADOLC
+#pragma omp ADOLC_OPENMP parallel for
+#else
+#pragma omp parallel for
+#endif
+  for (ptrdiff_t i = 0; i < this->m_size; ++i)
+    this->m_data[i] /= _Right[i];
+  return (*this);
+}
+
+cmf::math::num_array cmf::math::num_array::power(const num_array& exponent) const
+{
+  cmf::math::num_array result(this->m_size);
+#ifdef USE_ADOLC
+#pragma omp ADOLC_OPENMP parallel for
+#else
+#pragma omp parallel for
+#endif
+  for (ptrdiff_t i = 0; i < this->m_size; ++i)
+    result[i] = pow(this->m_data[i],exponent[i]);
+  return result;
+}
+
+cmf::math::num_array& cmf::math::num_array::operator=(const std::vector<real>& vector)
+{
+  resize(vector.size());
+#ifdef USE_ADOLC
+#pragma omp ADOLC_OPENMP parallel for
+#else
+#pragma omp parallel for
+#endif
+  for (ptrdiff_t i = 0; i < this->size() ; ++i)
+    this->m_data[i] = vector[i];
+
+  return (*this);
+}
+
+cmf::math::num_array& cmf::math::num_array::operator=(const real scalar)
+{
+#ifdef USE_ADOLC
+#pragma omp ADOLC_OPENMP parallel for
+#else
+#pragma omp parallel for
+#endif
+  for (ptrdiff_t i = 0; i < this->size(); ++i)
+    this->m_data[i] = scalar;
+
+  return (*this);
+}
+
+cmf::math::num_array cmf::math::num_array::operator+(const real _Right)
+{
+  cmf::math::num_array result(this->size());
+#ifdef USE_ADOLC
+#pragma omp ADOLC_OPENMP parallel for
+#else
+#pragma omp parallel for
+#endif
+  for (ptrdiff_t i = 0; i < this->size(); ++i)
+    result[i] = (*this)[i] + _Right;
+
+  return result;
+}
+
+cmf::math::num_array cmf::math::num_array::operator-(const real _Right)
+{
+  cmf::math::num_array result(this->size());
+#ifdef USE_ADOLC
+#pragma omp ADOLC_OPENMP parallel for
+#else
+#pragma omp parallel for
+#endif
+  for (ptrdiff_t i = 0; i < this->size(); ++i)
+    result[i] = (*this)[i] - _Right;
+
+  return result;
+}
+
+cmf::math::num_array cmf::math::num_array::operator*(const real _Right)
+{
+  cmf::math::num_array result(this->size());
+#ifdef USE_ADOLC
+#pragma omp ADOLC_OPENMP parallel for
+#else
+#pragma omp parallel for
+#endif
+  for (ptrdiff_t i = 0; i < this->size(); ++i)
+    result[i] = (*this)[i] * _Right;
+
+  return result;
+}
+
+cmf::math::num_array cmf::math::num_array::operator/(const real _Right)
+{
+  cmf::math::num_array result(this->size());
+#ifdef USE_ADOLC
+#pragma omp ADOLC_OPENMP parallel for
+#else
+#pragma omp parallel for
+#endif
+  for (ptrdiff_t i = 0; i < this->size(); ++i)
+    result[i] = (*this)[i] / _Right;
+
+  return result;
+}
+
+cmf::math::num_array& cmf::math::num_array::operator+=(const real _Right)
+{
+#ifdef USE_ADOLC
+#pragma omp ADOLC_OPENMP parallel for
+#else
+#pragma omp parallel for
+#endif
+  for (ptrdiff_t i = 0; i < this->size(); ++i)
+    this->m_data[i] += _Right;
+
+  return (*this);
+}
+
+cmf::math::num_array& cmf::math::num_array::operator-=(const real _Right)
+{
+#ifdef USE_ADOLC
+#pragma omp ADOLC_OPENMP parallel for
+#else
+#pragma omp parallel for
+#endif
+  for (ptrdiff_t i = 0; i < this->size(); ++i)
+    this->m_data[i] -= _Right;
+
+  return (*this);
+}
+
+#ifdef USE_ADOLC
+cmf::math::num_array& cmf::math::num_array::operator*=(const adouble _Right)
+{
+#pragma omp ADOLC_OPENMP parallel for
+  for (ptrdiff_t i = 0; i < this->size(); ++i)
+    this->m_data[i] *= _Right;
+
+  return (*this);
+}
+#endif
+
+cmf::math::num_array& cmf::math::num_array::operator*=(const real _Right)
+{
+#ifdef USE_ADOLC
+#pragma omp ADOLC_OPENMP parallel for
+#else
+#pragma omp parallel for
+#endif
+  for (ptrdiff_t i = 0; i < this->size(); ++i)
+    this->m_data[i] *= _Right;
+
+  return (*this);
+}
+
+cmf::math::num_array& cmf::math::num_array::operator/=(const real _Right)
+{
+#ifdef USE_ADOLC
+#pragma omp ADOLC_OPENMP parallel for
+#else
+#pragma omp parallel for
+#endif
+  for (ptrdiff_t i = 0; i < this->size(); ++i)
+    this->m_data[i] /= _Right;
+
+  return (*this);
+}
+
+cmf::math::num_array cmf::math::num_array::power(real exponent) const
+{
+  cmf::math::num_array result(this->size());
+#ifdef USE_ADOLC
+#pragma omp ADOLC_OPENMP parallel for
+#else
+#pragma omp parallel for
+#endif
+  for (ptrdiff_t i = 0; i < this->size(); ++i)
+    result[i] = pow(this->m_data[i],exponent);
+
+  return result;
+}
+
+cmf::math::num_array cmf::math::num_array::apply(real funct(real)) const
+{
+  cmf::math::num_array result(this->size());
+#ifdef USE_ADOLC
+#pragma omp ADOLC_OPENMP parallel for
+#else
+#pragma omp parallel for
+#endif
+  for (ptrdiff_t i = 0; i < this->size(); ++i)
+    result[i] = funct(this->m_data[i]);
+
+  return result;
+}
+
+real cmf::math::num_array::dot(const num_array& _Right) const
+{
+  real res(0.0);
+#ifdef USE_ADOLC
+#pragma omp ADOLC_OPENMP parallel for reduction(+ : res)
+#else
 #pragma omp parallel for reduction(+ : res)
-	for (ptrdiff_t i = 0; i < ptrdiff_t(size()); ++i)
-		res += m_data[i] * _Right[i];
-	return res;
+#endif
+  for (ptrdiff_t i = 0; i < this->size(); ++i)
+    res += this->m_data[i] * _Right[i];
+
+  return res;
 
 }
 
-cmf::math::num_array cmf::math::num_array::power( real exponent ) const
-{
-	cmf::math::num_array result(size());
-#pragma omp parallel for
-	for (ptrdiff_t i = 0; i < ptrdiff_t(size()); ++i)
-		result[i] = pow(m_data[i],exponent);
-	return result;
-}
-
-cmf::math::num_array cmf::math::num_array::power( const num_array& exponent) const
-{
-	cmf::math::num_array result(size());
-#pragma omp parallel for
-	for (ptrdiff_t i = 0; i < ptrdiff_t(size()); ++i)
-		result[i] = pow(m_data[i],exponent[i]);
-	return result;
-}
 real cmf::math::num_array::sum() const
 {
-  real result=0;
-#pragma omp parallel for reduction(+ : result)
-	for (ptrdiff_t i = 0; i < ptrdiff_t(size()) ; ++i)
-		result += m_data[i];
-	return result;
+  real res(0.0);
+#ifdef USE_ADOLC
+#pragma omp ADOLC_OPENMP parallel for reduction(+ : res)
+#else
+#pragma omp parallel for reduction(+ : res)
+#endif
+  for (ptrdiff_t i = 0; i < this->size() ; ++i)
+    res += this->m_data[i];
+  return res;
 }
 
 real cmf::math::num_array::max() const
 {
-	real result=0;
+  real result(0.0);
+#ifdef USE_ADOLC
+  for (ptrdiff_t i = 0; i < this->size(); ++i)
+    result = fmax(result, this->m_data[i]);
+#else
 #pragma omp parallel for shared(result)
-	for (ptrdiff_t i = 0; i < ptrdiff_t(size()) ; ++i)
-	{
-		if (m_data[i]>result)
-		{
+  for (ptrdiff_t i = 0; i < this->size() ; ++i)
+  {
+    if (this->m_data[i] > result)
+    {
 #pragma omp critical
-			{
-				if (m_data[i]>result) result=m_data[i];
-			}
-		}
-	}
-	return result;
-
+       if (this->m_data[i] > result)
+         result=this->m_data[i];
+    }
+  }
+#endif
+  return result;
 }
 
 real cmf::math::num_array::min() const
 {
-	real result=0;
+  real result(0.0);
+#ifdef USE_ADOLC
+  for (ptrdiff_t i = 0; i < this->size(); i++)
+    result = fmin(result, this->m_data[i]);
+#else
 #pragma omp parallel for shared(result)
-	for (ptrdiff_t i = 0; i < ptrdiff_t(size()) ; ++i)
-	{
-		if (m_data[i]<result)
-		{
+  for (ptrdiff_t i = 0; i < this->size() ; ++i)
+  {
+    if (this->m_data[i] < result)
+    {
 #pragma omp critical
-			{
-				if (m_data[i]<result) result=m_data[i];
-			}
-		}
-	}
-	return result;
-
+      if (this->m_data[i] < result)
+        result = this->m_data[i];
+    }
+  }
+#endif
+  return result;
 }
 
-real cmf::math::num_array::norm( int normtype ) const
+real cmf::math::num_array::norm(int normtype) const
 {
-  if (normtype==1) // Sum of absolute
-	{
-		real result=0;
+  real result(0.0);
+
+  if (normtype == 1) // Sum of absolute
+  {
+#ifdef USE_ADOLC
+#pragma omp ADOLC_OPENMP parallel for reduction(+ : result)
+#else
 #pragma omp parallel for reduction(+ : result)
-		for (ptrdiff_t i = 0; i < ptrdiff_t(size()) ; ++i)
-			result += abs(m_data[i]);
-		return result;
-	}
-	else if (normtype==2) // Euclidean length
-	{
-		real result=0;
+#endif
+    for (ptrdiff_t i = 0; i < this->size() ; ++i)
+      result += fabs(this->m_data[i]);
+
+    return result;
+  }
+  else if (normtype == 2) // Euclidean length
+  {
+#ifdef USE_ADOLC
+#pragma omp ADOLC_OPENMP parallel for reduction(+ : result)
+#else
 #pragma omp parallel for reduction(+ : result)
-		for (ptrdiff_t i = 0; i < ptrdiff_t(size()) ; ++i)
-			result += m_data[i]*m_data[i];
-		return sqrt(result);
-	}
-	else // Maximum of absolute
-	{
-		real result=0;
+#endif
+    for (ptrdiff_t i = 0; i < this->size() ; ++i)
+      result += this->m_data[i] * this->m_data[i];
+
+    return sqrt(result);
+  }
+  else // Maximum of absolute
+  {
+#ifdef USE_ADOLC
+#pragma omp ADOLC_OPENMP parallel for shared(result)
+    for (ptrdiff_t i = 0; i < this->size() ; ++i)
+    {
+      if (fabs(this->m_data[i]) > result.getValue())
+      {
+#pragma omp ADOLC_OPENMP critical
+        if (fabs(this->m_data[i]) > result.getValue())
+          result = fabs(this->m_data[i]);
+      }
+    }
+#else
 #pragma omp parallel for shared(result)
-		for (ptrdiff_t i = 0; i < ptrdiff_t(size()) ; ++i)
-		{
-			if (abs(m_data[i])>result)
-			{
+    for (ptrdiff_t i = 0; i < this->size() ; ++i)
+    {
+      if (fabs(this->m_data[i]) > result)
+      {
 #pragma omp critical
-				{
-					if (abs(m_data[i])>result) result=abs(m_data[i]);
-				}
-			}
-		}
-		return result;
-	}
+        if (fabs(this->m_data[i]) > result)
+          result = fabs(this->m_data[i]);
+      }
+    }
+#endif
+    return result;
+  }
 }
 
-//
-// Binary Operators
-//
-cmf::math::num_array cmf::math::num_array::operator+(const num_array& _Right )
+cmf::math::num_array cmf::math::operator+(real _Left, const num_array& _Right)
 {
-	cmf::math::num_array result(size());
+  cmf::math::num_array result(_Right.size());
+#ifdef USE_ADOLC
+#pragma omp ADOLC_OPENMP parallel for
+#else
 #pragma omp parallel for
-	for (ptrdiff_t i = 0; i < ptrdiff_t(size()); ++i)
-		result[i] = (*this)[i] + _Right[i];
-	return result;
-}
-cmf::math::num_array cmf::math::num_array::operator-(const num_array& _Right )
-{
-	cmf::math::num_array result(size());
-#pragma omp parallel for
-	for (ptrdiff_t i = 0; i < ptrdiff_t(size()); ++i)
-		result[i] = (*this)[i] - _Right[i];
-	return result;
-}
-cmf::math::num_array cmf::math::num_array::operator*(const num_array& _Right )
-{
-	cmf::math::num_array result(size());
-#pragma omp parallel for
-	for (ptrdiff_t i = 0; i < ptrdiff_t(size()); ++i)
-		result[i] = (*this)[i] * _Right[i];
-	return result;
-}
-cmf::math::num_array cmf::math::num_array::operator/(const num_array& _Right )
-{
-	cmf::math::num_array result(size());
-#pragma omp parallel for
-	for (ptrdiff_t i = 0; i < ptrdiff_t(size()); ++i)
-		result[i] = (*this)[i] / _Right[i];
-	return result;
+#endif
+  for (ptrdiff_t i = 0; i < _Right.size(); ++i)
+    result[i] = _Left + _Right[i];
+
+  return result;
 }
 
-cmf::math::num_array cmf::math::num_array::operator+(real _Right )
+cmf::math::num_array cmf::math::operator-(real _Left, const num_array& _Right)
 {
-	cmf::math::num_array result(size());
+  cmf::math::num_array result(_Right.size());
+#ifdef USE_ADOLC
+#pragma omp ADOLC_OPENMP parallel for
+#else
 #pragma omp parallel for
-	for (ptrdiff_t i = 0; i < ptrdiff_t(size()); ++i)
-		result[i] = (*this)[i] + _Right;
-	return result;
-}
-cmf::math::num_array cmf::math::num_array::operator-(real _Right )
-{
-	cmf::math::num_array result(size());
-#pragma omp parallel for
-	for (ptrdiff_t i = 0; i < ptrdiff_t(size()); ++i)
-		result[i] = (*this)[i] - _Right;
-	return result;
-}
-cmf::math::num_array cmf::math::num_array::operator*(real _Right )
-{
-	cmf::math::num_array result(size());
-#pragma omp parallel for
-	for (ptrdiff_t i = 0; i < ptrdiff_t(size()); ++i)
-		result[i] = (*this)[i] * _Right;
-	return result;
-}
-cmf::math::num_array cmf::math::num_array::operator/(real _Right )
-{
-	cmf::math::num_array result(size());
-#pragma omp parallel for
-	for (ptrdiff_t i = 0; i < ptrdiff_t(size()); ++i)
-		result[i] = (*this)[i] / _Right;
-	return result;
+#endif
+  for (ptrdiff_t i = 0; i < _Right.size(); ++i)
+    result[i] = _Left - _Right[i];
+
+  return result;
 }
 
-cmf::math::num_array cmf::math::operator+( real _Left,const num_array& _Right )
+cmf::math::num_array cmf::math::operator*(real _Left, const num_array& _Right)
 {
-	cmf::math::num_array result(_Right.size());
+  cmf::math::num_array result(_Right.size());
+#ifdef USE_ADOLC
+#pragma omp ADOLC_OPENMP parallel for
+#else
 #pragma omp parallel for
-	for (ptrdiff_t i = 0; i < ptrdiff_t(_Right.size()); ++i)
-		result[i] = _Left + _Right[i];
-	return result;
+#endif
+  for (ptrdiff_t i = 0; i < _Right.size(); ++i)
+    result[i] = _Left * _Right[i];
+
+  return result;
 }
-cmf::math::num_array cmf::math::operator-( real _Left,const num_array& _Right )
+
+cmf::math::num_array cmf::math::operator/(real _Left, const num_array& _Right)
 {
-	cmf::math::num_array result(_Right.size());
+  cmf::math::num_array result(_Right.size());
+#ifdef USE_ADOLC
+#pragma omp ADOLC_OPENMP parallel for
+#else
 #pragma omp parallel for
-	for (ptrdiff_t i = 0; i < ptrdiff_t(_Right.size()); ++i)
-		result[i] = _Left - _Right[i];
-	return result;
-}
-cmf::math::num_array cmf::math::operator*( real _Left,const num_array& _Right )
-{
-	cmf::math::num_array result(_Right.size());
-#pragma omp parallel for
-	for (ptrdiff_t i = 0; i < ptrdiff_t(_Right.size()); ++i)
-		result[i] = _Left * _Right[i];
-	return result;
-}
-cmf::math::num_array cmf::math::operator/( real _Left,const num_array& _Right )
-{
-	cmf::math::num_array result(_Right.size());
-#pragma omp parallel for
-	for (ptrdiff_t i = 0; i < ptrdiff_t(_Right.size()); ++i)
-		result[i] = _Left / _Right[i];
-	return result;
+#endif
+  for (ptrdiff_t i = 0; i < _Right.size(); ++i)
+    result[i] = _Left / _Right[i];
+
+  return result;
 }
 
 int cmf::math::get_parallel_threads()
 {
 #ifdef _OPENMP
-	return omp_get_max_threads();
+  return omp_get_max_threads();
 #else
-	return 1;
+  return 1;
 #endif
 }
-
 int cmf::math::set_parallel_threads( int numthreads )
 {
 #ifdef _OPENMP
