@@ -42,6 +42,7 @@
 %shared_ptr(cmf::atmosphere::RainfallStationReference);
 %shared_ptr(cmf::atmosphere::IDWRainfall);
 %shared_ptr(cmf::atmosphere::ConstantRainSource);
+%shared_ptr(cmf::atmosphere::TimeseriesRainSource);
 
 
 %rename(__getitem__) cmf::atmosphere::MeteoStationList::operator[];

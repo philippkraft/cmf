@@ -133,6 +133,7 @@ namespace cmf {
 			}
 			virtual RetentionCurve* copy() const=0;
 		};
+
 		/// Provides the use of the Brooks-Corey retention curve
 		///
 		/// \f{eqnarray*}
