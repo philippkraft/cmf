@@ -106,6 +106,24 @@ SoilLayer::ptr Cell::add_layer(real lowerboundary,const RetentionCurve& r_curve,
 	m_Layers.append(layer);
 	return layer;
 }
+SoilLayer::ptr Cell::add_layer(real lowerboundary)
+{
+	real upperbound = 0.0;
+	if (m_Layers.size()) {
+		upperbound = m_Layers[-1]->get_lower_boundary();
+	}
+	LinearRetention lr(1.,1.,lowerboundary-upperbound,0.0);
+	SoilLayer::ptr layer(new SoilLayer(*this,lowerboundary,lr,lowerboundary));
+	if (m_Layers.size() == 0) {// if this is the first layer, create a connection to surfacewater
+		new cmf::water::waterbalance_connection(get_surfacewater(),layer);
+	} else  { // if it is not the first layer, make a double ended list of the layers
+		m_Layers[-1]->m_lower = SoilLayer::weak_ptr(layer);
+		layer->m_upper = SoilLayer::weak_ptr(m_Layers[-1]);
+	} // Add the new layer to the layer vector
+	m_Layers.append(layer);
+	return layer;
+
+}
 SoilLayer::ptr Cell::get_layer(ptrdiff_t index) const {
 	return m_Layers[index];
 }

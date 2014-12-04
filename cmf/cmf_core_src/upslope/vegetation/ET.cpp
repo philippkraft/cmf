@@ -113,14 +113,6 @@ namespace cmf {
 				return Tact(GetETpot(t));
 			}
 			
-			void timeseriesETpot::use_for_cell(cmf::upslope::Cell & cell)
-			{
-				for (int i = 0; i < cell.layer_count() ; ++i)
-				{
-					new PenmanMonteithET(cell.get_layer(i),cell.get_transpiration());
-				}
-
-			}
 
 			real PenmanMonteithET::r_s( const cmf::upslope::vegetation::Vegetation & veg ) 
 			{
