@@ -756,8 +756,8 @@ void SNOVAP (double TSNOW, double TA, double EA, double UA, double ZA, double HE
 	PSNVP = KSNVP * PSNVP;
 }
 cmf::upslope::ET::ShuttleworthWallace::ShuttleworthWallace( cmf::upslope::Cell& _cell) 
-:	PTR(0), ATR_sum(0), ATR(0), GER(0),PIR(0),GIR(0), PSNVP(0), ASNVP(0), cell(_cell),KSNVP(1.0),
-	RAA(0),RAC(0),RAS(0),RSS(0),RSC(0), refresh_counter(0)
+:	PTR(0.0), ATR_sum(0.0), ATR(), GER(0.0),PIR(0.0),GIR(0.0), PSNVP(0.0), ASNVP(0.0), cell(_cell),KSNVP(1.0),
+	RAA(0.0),RAC(0.0),RAS(0.0),RSS(0.0),RSC(0.0), refresh_counter(0)
 {
 	KSNVP = piecewise_linear(cell.vegetation.Height,1,5,1.0,0.3);
 }

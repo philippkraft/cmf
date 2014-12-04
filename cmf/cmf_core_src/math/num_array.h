@@ -15,136 +15,135 @@
 //
 //   You should have received a copy of the GNU General Public License
 //   along with cmf.  If not, see <http://www.gnu.org/licenses/>.
-//   
+//
 #ifndef num_array_h__
 #define num_array_h__
+
 #include <valarray>
 #include <vector>
+#include <omp.h>
+
 #include "real.h"
  namespace cmf {
  	namespace math {
 		/// A valarray kind of vector implementation with OpenMP capabilities
 		class num_array
 		{
-		private:
-			real* m_data;
-			ptrdiff_t m_size;
-		public:
-			/// @name Constructors & Destructors
-			// @{
-			/// Creates a new vector with size count
-			/// @param count size of new vector
-			/// @param Value Value of each element (default=0)
-			num_array(ptrdiff_t count,real Value=0);
-			/// Creates a vector of size 1 with value {0}
-			num_array();
-			/// Copy constructor
-			num_array(const num_array& Vector);
-		
-			/// Creates a vector from data. After creation is vector the owner of data
-			num_array(double * data, size_t count);
-			typedef double* iterator;
-			typedef const double * const_iterator;
+    private:
 
-			/// Create a vector from an iterator range. Copies the data
-			num_array(const_iterator begin,const_iterator end);
+      ptrdiff_t m_size;
+      real *m_data;
 
-			/// Destructor
-			~num_array();
-			//@}
-			/// Assigns the given vector to this. If the sizes differ, the size of this gets adjusted
-			num_array& operator=(const num_array& vector);
-			num_array& operator=(const std::vector<double>& vector);
-			/// Sets each element of this to scalar
-			num_array& operator=(real scalar);
-			iterator begin() const {return m_data;}
-			iterator end()  const {return m_data + size();}
-			/// Size of the vector
-			size_t size() const { return m_size;}
-			/// Changes the size of the vector
-			void resize(ptrdiff_t count);
-			void resize(size_t count) {resize(ptrdiff_t(count));}
-			/// Prevents deletion of the stored data. 
-			/// Use with care, and only if you know what you are doing.
-			iterator release() {
-				iterator res = m_data;
-				m_size=0;m_data=0;
-				return res;
-			}
-			/// returns the element at position pos (immutable vector)
-			const real& operator[](ptrdiff_t pos) const { return m_data[pos];}
-			/// returns the element at position pos (mutable vector)
-			real& operator[](ptrdiff_t pos) { return m_data[pos];}
-			/// @name Operators
-			/// Binary operators defined as free operators:
-			///
-			/// x = {+,-,*,/}
-			///
-			/// Defined for (x is one of the operators above):
-			/// - vector = vector x vector 
-			/// - vector = real x vector
-			/// - vector = vector x real
-			//@{
-			num_array operator-() const;                  ///< Return sign toggled vector
-			num_array power(const num_array&) const;      ///< Return each element to the power of each element of vector
-			num_array power(real exponent) const;       ///< Return each element to the power "exponent"
-			num_array& operator+=(const num_array&);      ///< Add vector to this
-			num_array& operator+=(real);                ///< Add scalar to this
-			num_array& operator-=(const num_array&);      ///< Subtract vector from this
-			num_array& operator-=(real);                ///< Subtract scalar from this
-			num_array& operator*=(const num_array&);      ///< Multiply each element of vector with each element of this
-			num_array& operator*=(real);                ///< Multiply each element of vector with scalar
-			num_array& operator/=(const num_array&);      ///< Divide each element of this by each element of vector
-			num_array& operator/=(real);                ///< Divide each element of this by scalar
-			
+    public:
 
-			/// Return funct(this)
-			/// @param funct a function of signature real funct(real)
-			///
-			/// Example: Return the sinus of each element of vector x
-			/// @code
-			/// num_array sin_x = x.apply(sin);
-			/// @endcode
-			num_array apply(real funct(real)) const; 
-			//@}
+      typedef real* iterator;
+      typedef const real* const_iterator;
 
-			/// @name Summarizing functions
-			//@{
-			real dot(const num_array&) const;           ///< Return dot product of this and vector
-			real sum() const;                           ///< Return sum of vector
-			real max() const;														///< Return max of vector
-			real min() const;                           ///< Return min of vector
-			real mean() const														///< Return mean of vector
-			{
-				return sum()/size();
-			}
-			/// Returns a norm of the vector, implemented norms:  1 - sum of abs, 2 - Euclidean distance, 0 Maximum of abs
-			/// @param normtype An integer indicating the type of norm
-			real norm(int normtype=0) const;              
-			//@}
-			num_array operator+(const num_array& _Right);
-			num_array operator-(const num_array& _Right);
-			num_array operator*(const num_array& _Right);
-			num_array operator/(const num_array& _Right);
+      /// constructors
+      num_array();
+      num_array(const num_array& Vector);
+      num_array(const_iterator begin, const_iterator end);
+#ifdef USE_ADOLC
+      num_array(const real    *begin, const real    *end);
+#endif
+      num_array(ptrdiff_t    count, real Value = 0.0);
+      num_array(size_t count, real Value = 0.0);
+      num_array(size_t count, real *data);
 
-			num_array operator+(real _Right);
-			num_array operator-(real _Right);
-			num_array operator*(real _Right);
-			num_array operator/(real _Right);
+      /// destructor
+      ~num_array();
+
+      ptrdiff_t size()  const { return this->m_size; }
+      iterator begin() const { return this->m_data; }
+      iterator end()   const { return this->m_data + this->m_size; }
+	  iterator release() {
+		  iterator res = m_data;
+		  m_size=0;m_data=0;
+		  return res;
+	  }
+
+      // void resize(size_t    count) { this->resize(ptrdiff_t(count)); }
+      void resize(ptrdiff_t count);
+
+      /// Prevents deletion of the stored data.
+      /// Use with care, and only if you know what you are doing.
+      /*iterator release() {
+        iterator res = m_data;
+        m_size=0;m_data=0;
+        return res;
+      }*/
+
+      // this = other
+      void set(const num_array& other);
+
+      // this = fac * other
+      void set(const real fac, const num_array& other);
+
+      // this = fac * this
+      void scale(const real fac);
+
+      // this = fac * this + other
+      void scale_add(const real fac, const num_array& other);
+
+      // this = this + fac * other
+      void axpy(const real fac, const num_array& other);
+
+      bool is_nan() const;
+
+      num_array  operator- () const;
+      num_array& operator= (const num_array&);
+      num_array  operator+ (const num_array&);
+      num_array  operator- (const num_array&);
+      num_array  operator* (const num_array&);
+      num_array  operator/ (const num_array&);
+      num_array& operator+=(const num_array&);
+      num_array& operator-=(const num_array&);
+      num_array& operator*=(const num_array&);
+      num_array& operator/=(const num_array&);
+
+      num_array power(const num_array&) const;
+
+      num_array& operator=(const std::vector<real>& vector);
+      num_array& operator=(const real scalar);
+
+      const real& operator[](const ptrdiff_t pos) const { return this->m_data[pos]; }
+            real& operator[](const ptrdiff_t pos)       { return this->m_data[pos]; }
+
+      num_array  operator+ (const real);
+      num_array  operator- (const real);
+      num_array  operator* (const real);
+      num_array  operator/ (const real);
+      num_array& operator+=(const real);
+      num_array& operator-=(const real);
+#ifdef USE_ADOLC
+      num_array& operator*=(const adouble);
+#endif
+      num_array& operator*=(const real);
+      num_array& operator/=(const real);
+
+      num_array power(real exponent) const;
+      num_array apply(real funct(real)) const;
+
+      real dot(const num_array&) const;
+      real sum()  const;
+      real max()  const;
+      real min()  const;
+      real mean() const { return this->sum() / (real)(this->m_size); }
+
+      real norm(int normtype = 0) const;
+    };
 
 
-		};
+    num_array operator+(real _Left, const num_array& _Right);
+    num_array operator-(real _Left, const num_array& _Right);
+    num_array operator*(real _Left, const num_array& _Right);
+    num_array operator/(real _Left, const num_array& _Right);
 
+	/// Returns the max number of threads used by OpenMP in parallel sections of the code
+	int get_parallel_threads();
+	/// Set the number of threads used by OpenMP in parallel sections of the code
+	int set_parallel_threads(int numthreads);
 
-		num_array operator+(real _Left,const num_array& _Right);
-		num_array operator-(real _Left,const num_array& _Right);
-		num_array operator*(real _Left,const num_array& _Right);
-		num_array operator/(real _Left,const num_array& _Right);
-
-		/// Returns the max number of threads used by OpenMP in parallel sections of the code
-		int get_parallel_threads();
-		/// Set the number of threads used by OpenMP in parallel sections of the code
-		int set_parallel_threads(int numthreads);
 	}
 }
 

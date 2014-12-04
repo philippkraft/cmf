@@ -87,18 +87,30 @@ namespace cmf {
 			
 				return piecewise_linear(sw.get_matrix_potential(),-160,-5,0,Tpot_vol);
 			}
+			real stressedET::Tact( real Tpot ) const
+			{
+				return m_stressfunction->Tact(this,Tpot) ;
+
+			}
+
+			stressedET::stressedET( cmf::upslope::SoilLayer::ptr source,cmf::water::flux_node::ptr ET_target,std::string _type ) 
+				: flux_connection(source,ET_target,_type),  m_stressfunction(new SuctionStress())
+			{
+				NewNodes();
+			}
+
 
 			real constantETpot::calc_q( cmf::math::Time t ) 
 			{
 				cmf::upslope::SoilLayer::ptr layer=sw.lock();
 				const cmf::upslope::vegetation::Vegetation& veg=layer->cell.vegetation; 
-				return Tact(ETpot_value,*layer,veg);
+				return Tact(ETpot_value);
 			}
 			real timeseriesETpot::calc_q( cmf::math::Time t )
 			{
 				cmf::upslope::SoilLayer::ptr layer=sw.lock();
 				const cmf::upslope::vegetation::Vegetation & veg=layer->cell.vegetation;
-				return Tact(GetETpot(t),*layer,veg);
+				return Tact(GetETpot(t));
 			}
 			
 			void timeseriesETpot::use_for_cell(cmf::upslope::Cell & cell)
@@ -145,7 +157,7 @@ namespace cmf {
 						G = daily ? 0									// If calculation takes place on daily basis, the soil heat flux is 0 (FAO 1998,Eq. 42)
 						: Rn>0 ? 0.1*Rn : 0.5 * Rn,	           // On a shorter basis, it is proportional to Rn, different for day and night (FAO 1998,Eq. 45f)
 						PM=PenmanMonteith(Rn-G,r_a(A,veg.Height),r_s(veg),A.T,A.e_s-A.e_a);
-					return Tact(PM,*layer,veg);
+					return Tact(PM);
 				}
 				else
 					return 0.0;
@@ -170,8 +182,8 @@ namespace cmf {
 
 			real HargreaveET::calc_q( cmf::math::Time t )
 			{
-				cmf::upslope::SoilLayer::ptr layer=sw.lock();
 				double pi=cmf::geometry::PI;
+				cmf::upslope::SoilLayer::ptr layer = get_layer();
 				cmf::atmosphere::Weather A=layer->cell.get_weather(t);
 				cmf::upslope::vegetation::Vegetation veg=layer->cell.vegetation;
 				double 
@@ -194,8 +206,7 @@ namespace cmf {
 					etrc = 0.0135 * KT * s0 * sqrt(TD) * ( A.T + 17.8 );
 
 				
-
-				return Tact(etrc*veg.LAI/2.88,*layer,veg);
+				return Tact(etrc*veg.LAI/2.88);
 
 			}
 
@@ -203,7 +214,7 @@ namespace cmf {
 			{
 				for (int i = 0; i < cell.layer_count() ; ++i)
 				{
-					new HargreaveET(cell.get_layer(i),cell.get_evaporation());
+					new HargreaveET(cell.get_layer(i),cell.get_transpiration());
 				}
 			}
 			real PenmanEvaporation::calc_q( cmf::math::Time t )
@@ -218,6 +229,31 @@ namespace cmf {
 			PenmanEvaporation::PenmanEvaporation( cmf::river::OpenWaterStorage::ptr source,cmf::water::flux_node::ptr Evap_target,const cmf::atmosphere::Meteorology& meteo ) : cmf::water::flux_connection(source,Evap_target,"Penman evaporation from open water"), m_meteo(meteo.copy())
 			{
 				NewNodes();
+			}
+
+
+
+			real TurcET::calc_q( cmf::math::Time t )
+			{
+				cmf::upslope::SoilLayer::ptr layer = get_layer();
+				cmf::atmosphere::Weather A=layer->cell.get_weather(t);
+				cmf::upslope::vegetation::Vegetation veg=layer->cell.vegetation;
+				real 
+					T = A.T,
+					RG=A.Rs * 100,
+					rH = 100 * A.e_a/A.e_s,
+					C=rH<50 ? 1+((50-rH)/70) : 1.0,
+					ETp = 0.0031 * C * (RG + 209) * (T/(T+15));
+				return Tact(ETp * veg.LAI/2.88);
+			}
+
+			void TurcET::use_for_cell( cmf::upslope::Cell & cell )
+			{
+				for (int i = 0; i < cell.layer_count() ; ++i)
+				{
+					new TurcET(cell.get_layer(i),cell.get_transpiration());
+				}
+
 			}
 
 		}

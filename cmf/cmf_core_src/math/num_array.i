@@ -31,15 +31,20 @@
 #ifndef NPY_NO_DEPRECATED_API
 #define NPY_NO_DEPRECATED_API NPY_1_7_API_VERSION
 #endif
-#ifndef NPY_1_7_API_VERSION
-#define NPY_ARRAY_CARRAY NPY_CARRAY
-#define NPY_ARRAY_OWNDATA NPY_OWNDATA
-#endif
 
 // including numpy array definition
 #include <numpy/arrayobject.h>
 // including my array header
 #include "math/num_array.h"
+
+
+#ifndef NPY_ARRAY_CARRAY
+#define NPY_ARRAY_CARRAY NPY_CARRAY
+#endif
+
+#ifndef NPY_ARRAY_OWNDATA
+#define NPY_ARRAY_OWNDATA NPY_OWNDATA
+#endif
 
 bool test_npy_array(PyObject* op) {
 	PyObject* ao = PyArray_ContiguousFromAny(op,NPY_DOUBLE,1,1);
@@ -66,7 +71,7 @@ PyObject* as_npy_array(cmf::math::num_array& a)
 }
 // This function creates a new array<T> from any object providing the array interface or from a sequence.
 // First a numpy array is created to ensure right ordering, secondly an array<T> is created by copying the given data.
-size_t from_npy_array(PyObject* op,double ** data) {
+ptrdiff_t from_npy_array(PyObject* op,double ** data) {
 	// Create a contiguous and behaved numpy array from the given object
 	// May include a copy of the data
 	// Returns NULL if:
@@ -79,9 +84,9 @@ size_t from_npy_array(PyObject* op,double ** data) {
 		// Get pointer to data
 		double * p_array=(double*)PyArray_DATA(ao);
 		// Get size
-		size_t size = (size_t)PyArray_DIM(ao,0);
+		ptrdiff_t size = (ptrdiff_t)PyArray_DIM(ao,0);
 		double * res=new double[size];
-		for (size_t i=0;i<size;++i) 
+		for (ptrdiff_t i=0;i<size;++i) 
 		    res[i] = p_array[i];
 		Py_DECREF(ao);
 		*data = res;
@@ -94,23 +99,23 @@ size_t from_npy_array(PyObject* op,double ** data) {
 %typemap(in) cmf::math::num_array {
     // Convert a array_wrapper from numpy array
     double * data=0;
-    size_t size = from_npy_array($input,&data); 
+    ptrdiff_t size = from_npy_array($input,&data); 
     if (!data) {
         SWIG_exception_fail(SWIG_TypeError,"Input data is not 'array-like' (in the sense of numpy arrays)");
         return NULL;
     }
-    $1 = cmf::math::num_array(data,size);
+    $1 = cmf::math::num_array(size,data);
 }
 // The actual typemaps have to be defined for each specialization
 %typemap(in) const cmf::math::num_array& {
     // Convert a array_wrapper from numpy array
     double * data=0;
-    size_t size = from_npy_array($input,&data); 
+    ptrdiff_t size = from_npy_array($input,&data); 
     if (!data) {
         SWIG_exception_fail(SWIG_TypeError,"Input data is not 'array-like' (in the sense of numpy arrays)");
         return NULL;
     }
-    $1 = new cmf::math::num_array(data,size);
+    $1 = new cmf::math::num_array(size,data);
 }
 %typemap(freearg) const cmf::math::num_array& {
     delete $1;

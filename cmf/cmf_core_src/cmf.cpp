@@ -103,7 +103,7 @@ int main(int argc, char* argv[])
 		//p.get_cell(-1).get_rainfall().concentration[Y]=10.0;
 		connect_cells_with_flux(p.get_cells(),Richards_lateral::cell_connector);
 		//nbc.connect_to(p.get_cell(-1).get_layer(0));
- 		CVodeIntegrator water_integ(1e-6);// water_integ.LinearSolver=0;
+ 		CVodeIntegrator water_integ(p,1e-6);// water_integ.LinearSolver=0;
 		water_integ.preconditioner='R';
 		ImplicitEuler solute_integ(1e-6);
 		SoluteWaterIntegrator integ(water_integ,solute_integ,p);

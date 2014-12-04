@@ -234,7 +234,6 @@ namespace cmf {
 		/// - \f$\overline{O}\f$ is the arithmetic mean of observations
 		double nash_sutcliffe(const cmf::math::timeseries& model,const cmf::math::timeseries& observation);
 		
-
 	}
 }
 #endif // timeseries_h__
