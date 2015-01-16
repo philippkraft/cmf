@@ -161,9 +161,43 @@ namespace cmf {
 				static const CellConnector cell_connector;
 			};
 
-		}
+			/// @ingroup latflux
+			/// Calculates a flux from a soil layer using TOPMODELs (Beven & Kirkby 1979) exponential transmissivity concept
+			///
+			/// \f[ T = T_0 \exp(-D_i/m) \f]
+			/// where:
+			/// - \f$T\f$ is the actual transmissivity of the profile in \f$m^2/day\f$
+			/// - \f$T0\f$ is the transmissivity of the profile at saturation
+			/// - \f$D_i\f$ is the drained depth in m, calculated as \f$(C-V)/A\f$, the capacity of the layer - volume per area
+			/// - \f$m\f$ a scaling factor in m
+			///
+			/// By using the transmissivity in Darcy's law and assuming the GW gradient to be parallel to the topographic slope
+			/// we get for the flow:
+			/// \f[ q = T_0 \exp(-D_i/m) w s\f]
+			/// where:
+			/// - \f$q\f$ is the flux in \f$m^3/day\f$
+			/// - \f$w\f$ is the flow width (unit contour length)
+			/// - \f$s\f$ is the topographic slope between layer and outlet
+			///
+			/// @note TOPMODEL is based on the concept of drained depth, not, as cmf on the concept of stored volume.
+			/// Hence, the drained depth in TOPMODEL is not limited to certain maximum, but can, for a sufficient long
+			/// time without rainfall
+			class TOPModelFlow : public cmf::water::flux_connection {
+			protected:
+				virtual real calc_q(cmf::math::Time t);
+				std::tr1::weak_ptr<cmf::upslope::SoilLayer> sw1;
+				virtual void NewNodes() {
+					sw1 = cmf::upslope::SoilLayer::cast(this->left_node());
+				}
+			public:
+				real 
+					flow_width, distance,T0,m;
+				TOPModelFlow(cmf::upslope::SoilLayer::ptr left,cmf::water::flux_node::ptr right,real T0,real m,real flowwidth, real distance=0);
+		};
+
 
 	}
+  }
 }
 
 #endif // subsurfacefluxes_h__

@@ -2452,7 +2452,7 @@ class RK23Integrator(Integrator):
     an internal variable tau, so that no external changes to m_dt (e.g. by
     integrate_until) mess up the automatic step size control.
 
-    C++ includes: RK23integrator.h 
+    C++ includes: RK23_MPI.h 
     """
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
     __repr__ = _swig_repr
@@ -2465,6 +2465,18 @@ class RK23Integrator(Integrator):
         """
         _cmf_core.RK23Integrator_swiginit(self,_cmf_core.new_RK23Integrator(*args))
     __swig_destroy__ = _cmf_core.delete_RK23Integrator
+    def get_tau(self, *args, **kwargs):
+        """
+        get_tau(RK23Integrator self) -> real
+
+        real
+        get_tau() const
+
+        Return current internal step size. 
+        """
+        return _cmf_core.RK23Integrator_get_tau(self, *args, **kwargs)
+
+RK23Integrator.get_tau = new_instancemethod(_cmf_core.RK23Integrator_get_tau,None,RK23Integrator)
 RK23Integrator_swigregister = _cmf_core.RK23Integrator_swigregister
 RK23Integrator_swigregister(RK23Integrator)
 
@@ -3429,7 +3441,7 @@ class flux_connection(object):
         """
         to_string(flux_connection self) -> std::string
 
-        std::string to_string() const 
+        virtual std::string to_string() const 
         """
         return _cmf_core.flux_connection_to_string(self, *args, **kwargs)
 
@@ -3437,7 +3449,7 @@ class flux_connection(object):
         """
         short_string(flux_connection self) -> std::string
 
-        std::string short_string() const 
+        virtual std::string short_string() const 
         """
         return _cmf_core.flux_connection_short_string(self, *args, **kwargs)
 
@@ -5813,7 +5825,14 @@ ConstantRainSource_swigregister = _cmf_core.ConstantRainSource_swigregister
 ConstantRainSource_swigregister(ConstantRainSource)
 
 class TimeseriesRainSource(RainSource):
-    """Proxy of C++ cmf::atmosphere::TimeseriesRainSource class"""
+    """
+    A rainsource with a timeseries.
+
+    Simpler to use than a rainfall station if there are only few cells in
+    the project
+
+    C++ includes: precipitation.h 
+    """
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
     def __init__(self, *args, **kwargs): raise AttributeError("No constructor defined")
     __repr__ = _swig_repr
@@ -6471,27 +6490,10 @@ class Cell(StateVariableOwner):
         add_layer(Cell self, real lowerboundary, RetentionCurve r_curve, real saturateddepth=10) -> cmf::upslope::SoilLayer::ptr
         add_layer(Cell self, real lowerboundary) -> cmf::upslope::SoilLayer::ptr
 
-        cmf::upslope::SoilLayer::ptr add_layer(real lowerboundary, const
-        cmf::upslope::RetentionCurve &r_curve, real saturateddepth=10)
+        cmf::upslope::SoilLayer::ptr add_layer(real lowerboundary)
 
-        Adds a layer to the cell.
-
-        Layers are created using this function
-
-        None
-
-        Parameters:
-        -----------
-
-        lowerboundary:  The maximum depth of the layer in m. If lowerboundary
-        is smaller or equal than the lowerboundary of thelowest layer, an
-        error is raised
-
-        r_curve:  A retention curve.See here for a discussion on retention
-        curves in cmf.
-
-        saturateddepth:  The initial potential of the new layer in m below
-        surface. Default = 10m (=quite dry) 
+        Adds a rather conceptual layer to the cell. Use this version for
+        conceptual models. The retention curve resambles an empty bucket. 
         """
         return _cmf_core.Cell_add_layer(self, *args)
 
@@ -9822,6 +9824,69 @@ def Richards_lateral_usebaseflow(*args, **kwargs):
   return _cmf_core.Richards_lateral_usebaseflow(*args, **kwargs)
 Richards_lateral.cell_connector = _cmf_core.cvar.Richards_lateral_cell_connector
 
+class TOPModelFlow(flux_connection):
+    """
+    Calculates a flux from a soil layer using TOPMODELs (Beven & Kirkby
+    1979) exponential transmissivity concept.
+
+
+
+    .. math::
+
+         T = T_0 \\exp(-D_i/m) 
+
+     where:   :math:`T`  is the actual
+    transmissivity of the profile in  :math:`m^2/day` 
+
+     :math:`T0`  is the transmissivity of the profile at saturation
+
+     :math:`D_i`  is the drained depth in m, calculated as  :math:`(C-V)/A` , the capacity
+    of the layer - volume per area
+
+     :math:`m`  a scaling factor in m
+
+    By using the transmissivity in Darcy's law and assuming the GW
+    gradient to be parallel to the topographic slope we get for the flow:
+
+
+    .. math::
+
+         q = T_0 \\exp(-D_i/m) w s
+
+     where:   :math:`q`  is the flux in
+     :math:`m^3/day` 
+
+     :math:`w`  is the flow width (unit contour length)
+
+     :math:`s`  is the topographic slope between layer and outlet
+
+    TOPMODEL is based on the concept of drained depth, not, as cmf on the
+    concept of stored volume. Hence, the drained depth in TOPMODEL is not
+    limited to certain maximum, but can, for a sufficient long time
+    without rainfall
+
+    C++ includes: subsurfacefluxes.h 
+    """
+    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __repr__ = _swig_repr
+    flow_width = _swig_property(_cmf_core.TOPModelFlow_flow_width_get, _cmf_core.TOPModelFlow_flow_width_set)
+    distance = _swig_property(_cmf_core.TOPModelFlow_distance_get, _cmf_core.TOPModelFlow_distance_set)
+    T0 = _swig_property(_cmf_core.TOPModelFlow_T0_get, _cmf_core.TOPModelFlow_T0_set)
+    m = _swig_property(_cmf_core.TOPModelFlow_m_get, _cmf_core.TOPModelFlow_m_set)
+    def __init__(self, *args, **kwargs): 
+        """
+        __init__(cmf::upslope::connections::TOPModelFlow self, cmf::upslope::SoilLayer::ptr left, cmf::water::flux_node::ptr right, real T0, real m, 
+            real flowwidth, real distance=0) -> TOPModelFlow
+
+        TOPModelFlow(cmf::upslope::SoilLayer::ptr left,
+        cmf::water::flux_node::ptr right, real T0, real m, real flowwidth,
+        real distance=0) 
+        """
+        _cmf_core.TOPModelFlow_swiginit(self,_cmf_core.new_TOPModelFlow(*args, **kwargs))
+    __swig_destroy__ = _cmf_core.delete_TOPModelFlow
+TOPModelFlow_swigregister = _cmf_core.TOPModelFlow_swigregister
+TOPModelFlow_swigregister(TOPModelFlow)
+
 class Manning(flux_connection):
     """
     Calculates the flux between two open water bodies, using Manning's
@@ -10505,6 +10570,41 @@ def SimplRichards_use_for_cell(*args, **kwargs):
   """SimplRichards_use_for_cell(Cell cell, bool no_override=True)"""
   return _cmf_core.SimplRichards_use_for_cell(*args, **kwargs)
 
+class FreeDrainagePercolation(flux_connection):
+    """
+    Calculates a free drainage (unit gradient) from a layer to somewhere
+    else.
+
+
+
+    .. math::
+
+         q = K(\\theta) A
+
+     where:   :math:`q`  Flux from the layer to the
+    other side of the connection in  :math:`m^3/day` 
+
+     :math:`K(\\theta)`  Actual conductivity in  :math:`m/day`  depending on the water
+    content of the layer  :math:`\\theta` 
+
+     :math:`A`  Cell area in  :math:`m^2` 
+
+    C++ includes: Percolation.h 
+    """
+    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __repr__ = _swig_repr
+    def __init__(self, *args, **kwargs): 
+        """
+        __init__(cmf::upslope::connections::FreeDrainagePercolation self, cmf::upslope::SoilLayer::ptr left, cmf::water::flux_node::ptr right) -> FreeDrainagePercolation
+
+        FreeDrainagePercolation(cmf::upslope::SoilLayer::ptr left,
+        cmf::water::flux_node::ptr right) 
+        """
+        _cmf_core.FreeDrainagePercolation_swiginit(self,_cmf_core.new_FreeDrainagePercolation(*args, **kwargs))
+    __swig_destroy__ = _cmf_core.delete_FreeDrainagePercolation
+FreeDrainagePercolation_swigregister = _cmf_core.FreeDrainagePercolation_swigregister
+FreeDrainagePercolation_swigregister(FreeDrainagePercolation)
+
 class LayerBypass(flux_connection):
     """
     A simplification of macro pore flux for swelling soils.
@@ -10820,7 +10920,12 @@ class RootUptakeStessFunction(object):
         return _cmf_core.RootUptakeStessFunction_copy(self, *args, **kwargs)
 
     def to_string(self, *args, **kwargs):
-        """to_string(RootUptakeStessFunction self) -> std::string"""
+        """
+        to_string(RootUptakeStessFunction self) -> std::string
+
+        virtual
+        std::string to_string() const =0 
+        """
         return _cmf_core.RootUptakeStessFunction_to_string(self, *args, **kwargs)
 
     __swig_destroy__ = _cmf_core.delete_RootUptakeStessFunction
@@ -11619,10 +11724,6 @@ class ShuttleworthWallace(transpiration_method,soil_evaporation_method,surface_w
 
      :math:`r_{ac}, r_{sc}, r_{as}, r_{ss}`  Resistances for the vapor pressure
     (see below)
-
-    Todo Include Interception
-
-    Include surface water below canopy, eg. for rice paddies.
 
     C++ includes: ShuttleworthWallace.h 
     """

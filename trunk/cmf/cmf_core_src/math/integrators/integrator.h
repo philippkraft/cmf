@@ -172,8 +172,7 @@ namespace cmf {
 				: m_States(),Epsilon(epsilon),m_dt(day),m_t(day*0),
 				  use_OpenMP(true), reset_integratables(true)
 			{
-				StateVariableList sq = states.get_states();
-				m_States.insert(m_States.end(),sq.begin(),sq.end());
+				this->add_states(states);
 			}
 			Integrator(const cmf::math::Integrator& other) 
 				: m_States(), Epsilon(other.Epsilon), m_dt(other.m_dt), m_t(other.m_t), 

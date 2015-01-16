@@ -152,3 +152,11 @@ real cmf::upslope::connections::LayerBypass::K(real w)
 	return Kmax * minmax(1-pow((w - w0)/(1-w0),beta),0,1);
 }
 
+
+real cmf::upslope::connections::FreeDrainagePercolation::calc_q( cmf::math::Time t )
+{
+	cmf::upslope::SoilLayer::ptr layer = sw1.lock();
+	real K = layer->get_K(cmf::geometry::point(0,0,-1));
+	real A = layer->cell.get_area();
+	return A * K;
+}
