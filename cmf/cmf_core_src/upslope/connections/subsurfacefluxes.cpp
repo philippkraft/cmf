@@ -249,3 +249,21 @@ connections::lateral_sub_surface_flux::lateral_sub_surface_flux( SoilLayer::ptr 
 	if (Distance<=0)
 		distance=left->position.distanceTo(right->position);
 }
+
+cmf::upslope::connections::TOPModelFlow::TOPModelFlow( cmf::upslope::SoilLayer::ptr left,cmf::water::flux_node::ptr right,
+			real _T0,real _m,real _flowwidth, real _distance ) 
+	: cmf::water::flux_connection(left,right,"TOPModelFlow"),flow_width(_flowwidth),distance(_distance),m(_m),T0(_T0)
+{
+	NewNodes();
+}
+
+real cmf::upslope::connections::TOPModelFlow::calc_q( cmf::math::Time t )
+{
+	cmf::upslope::SoilLayer::ptr layer=this->sw1.lock();
+	cmf::water::flux_node::ptr out=this->right_node();
+	real d = this->distance<=0.0 ? layer->position.distanceTo(out->position) : this->distance;
+	real slope = (layer->position.z - out->position.z) / d;
+	real Di = (layer->get_capacity() - layer->get_volume())/layer->cell.get_area();
+	real T = T0 * exp(-Di/m);
+	return flow_width * T * slope;
+}

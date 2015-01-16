@@ -439,9 +439,9 @@ A value ranging from 0 to 1 to filter tracers out of the water flux.
 1.0 is no filter and 0.0 means no solute is crossing this connection
 ";
 
-%feature("docstring")  cmf::upslope::aquifer_Darcy::short_string "std::string short_string() const ";
+%feature("docstring")  cmf::upslope::aquifer_Darcy::short_string "virtual std::string short_string() const ";
 
-%feature("docstring")  cmf::upslope::aquifer_Darcy::to_string "std::string to_string() const ";
+%feature("docstring")  cmf::upslope::aquifer_Darcy::to_string "virtual std::string to_string() const ";
 
 
 // File: classcmf_1_1upslope_1_1connections_1_1_base_macro_flow.xml
@@ -524,12 +524,12 @@ A value ranging from 0 to 1 to filter tracers out of the water flux.
 ";
 
 %feature("docstring")
-cmf::upslope::connections::BaseMacroFlow::short_string "std::string
-short_string() const ";
+cmf::upslope::connections::BaseMacroFlow::short_string "virtual
+std::string short_string() const ";
 
 %feature("docstring")
-cmf::upslope::connections::BaseMacroFlow::to_string "std::string
-to_string() const ";
+cmf::upslope::connections::BaseMacroFlow::to_string "virtual
+std::string to_string() const ";
 
 
 // File: classcmf_1_1math_1_1_b_d_f2.xml
@@ -1028,11 +1028,11 @@ A value ranging from 0 to 1 to filter tracers out of the water flux.
 ";
 
 %feature("docstring")
-cmf::upslope::ET::canopy_evaporation::short_string "std::string
-short_string() const ";
+cmf::upslope::ET::canopy_evaporation::short_string "virtual
+std::string short_string() const ";
 
 %feature("docstring")  cmf::upslope::ET::canopy_evaporation::to_string
-"std::string to_string() const ";
+"virtual std::string to_string() const ";
 
 
 // File: classcmf_1_1upslope_1_1_e_t_1_1canopy__evaporation__method.xml
@@ -1156,12 +1156,12 @@ A value ranging from 0 to 1 to filter tracers out of the water flux.
 ";
 
 %feature("docstring")
-cmf::upslope::connections::CanopyOverflow::short_string "std::string
-short_string() const ";
+cmf::upslope::connections::CanopyOverflow::short_string "virtual
+std::string short_string() const ";
 
 %feature("docstring")
-cmf::upslope::connections::CanopyOverflow::to_string "std::string
-to_string() const ";
+cmf::upslope::connections::CanopyOverflow::to_string "virtual
+std::string to_string() const ";
 
 
 // File: classcmf_1_1upslope_1_1_e_t_1_1_canopy_storage_evaporation.xml
@@ -1250,12 +1250,12 @@ A value ranging from 0 to 1 to filter tracers out of the water flux.
 ";
 
 %feature("docstring")
-cmf::upslope::ET::CanopyStorageEvaporation::short_string "std::string
-short_string() const ";
+cmf::upslope::ET::CanopyStorageEvaporation::short_string "virtual
+std::string short_string() const ";
 
 %feature("docstring")
-cmf::upslope::ET::CanopyStorageEvaporation::to_string "std::string
-to_string() const ";
+cmf::upslope::ET::CanopyStorageEvaporation::to_string "virtual
+std::string to_string() const ";
 
 
 // File: classcmf_1_1upslope_1_1_cell.xml
@@ -1492,7 +1492,7 @@ Adds a layer to the cell.
 
 Layers are created using this function
 
-None
+the new layer
 
 Parameters:
 -----------
@@ -1506,6 +1506,11 @@ curves in cmf.
 
 saturateddepth:  The initial potential of the new layer in m below
 surface. Default = 10m (=quite dry) ";
+
+%feature("docstring")  cmf::upslope::Cell::add_layer "cmf::upslope::SoilLayer::ptr add_layer(real lowerboundary)
+
+Adds a rather conceptual layer to the cell. Use this version for
+conceptual models. The retention curve resambles an empty bucket. ";
 
 %feature("docstring")  cmf::upslope::Cell::remove_last_layer "void
 remove_last_layer()
@@ -1953,7 +1958,7 @@ A value ranging from 0 to 1 to filter tracers out of the water flux.
 1.0 is no filter and 0.0 means no solute is crossing this connection
 ";
 
-%feature("docstring")  cmf::upslope::ET::constantETpot::short_string "std::string short_string() const ";
+%feature("docstring")  cmf::upslope::ET::constantETpot::short_string "virtual std::string short_string() const ";
 
 %feature("docstring")  cmf::upslope::ET::constantETpot::to_string "std::string to_string() const ";
 
@@ -2282,11 +2287,11 @@ A value ranging from 0 to 1 to filter tracers out of the water flux.
 ";
 
 %feature("docstring")
-cmf::water::constraint_kinematic_wave::short_string "std::string
-short_string() const ";
+cmf::water::constraint_kinematic_wave::short_string "virtual
+std::string short_string() const ";
 
 %feature("docstring")
-cmf::water::constraint_kinematic_wave::to_string "std::string
+cmf::water::constraint_kinematic_wave::to_string "virtual std::string
 to_string() const ";
 
 
@@ -2328,6 +2333,8 @@ connection:  The stressedET connection this stress function belongs to
 Tpot:  Potential Transpiration in mm/day (for the full profile)
 
 Actual flux from layer in m3/day ";
+
+%feature("docstring")  cmf::upslope::ET::ContentStress::to_string "std::string to_string() const ";
 
 
 // File: classcmf_1_1math_1_1cubicspline.xml
@@ -2690,9 +2697,9 @@ A value ranging from 0 to 1 to filter tracers out of the water flux.
 ";
 
 %feature("docstring")  cmf::upslope::connections::Darcy::short_string
-"std::string short_string() const ";
+"virtual std::string short_string() const ";
 
-%feature("docstring")  cmf::upslope::connections::Darcy::to_string "std::string to_string() const ";
+%feature("docstring")  cmf::upslope::connections::Darcy::to_string "virtual std::string to_string() const ";
 
 
 // File: classcmf_1_1upslope_1_1connections_1_1_darcy_kinematic.xml
@@ -2807,12 +2814,12 @@ A value ranging from 0 to 1 to filter tracers out of the water flux.
 ";
 
 %feature("docstring")
-cmf::upslope::connections::DarcyKinematic::short_string "std::string
-short_string() const ";
+cmf::upslope::connections::DarcyKinematic::short_string "virtual
+std::string short_string() const ";
 
 %feature("docstring")
-cmf::upslope::connections::DarcyKinematic::to_string "std::string
-to_string() const ";
+cmf::upslope::connections::DarcyKinematic::to_string "virtual
+std::string to_string() const ";
 
 
 // File: structcmf_1_1math_1_1_date.xml
@@ -2968,10 +2975,10 @@ A value ranging from 0 to 1 to filter tracers out of the water flux.
 ";
 
 %feature("docstring")
-cmf::upslope::connections::DiffusiveMacroMicroExchange::short_string "std::string short_string() const ";
+cmf::upslope::connections::DiffusiveMacroMicroExchange::short_string "virtual std::string short_string() const ";
 
 %feature("docstring")
-cmf::upslope::connections::DiffusiveMacroMicroExchange::to_string "std::string to_string() const ";
+cmf::upslope::connections::DiffusiveMacroMicroExchange::to_string "virtual std::string to_string() const ";
 
 
 // File: classcmf_1_1upslope_1_1connections_1_1_diffusive_surface_runoff.xml
@@ -3058,10 +3065,11 @@ A value ranging from 0 to 1 to filter tracers out of the water flux.
 ";
 
 %feature("docstring")
-cmf::upslope::connections::DiffusiveSurfaceRunoff::short_string "std::string short_string() const ";
+cmf::upslope::connections::DiffusiveSurfaceRunoff::short_string "virtual std::string short_string() const ";
 
 %feature("docstring")
-cmf::upslope::connections::DiffusiveSurfaceRunoff::to_string "std::string to_string() const ";
+cmf::upslope::connections::DiffusiveSurfaceRunoff::to_string "virtual
+std::string to_string() const ";
 
 
 // File: classcmf_1_1water_1_1_dirichlet_boundary.xml
@@ -3256,10 +3264,11 @@ A value ranging from 0 to 1 to filter tracers out of the water flux.
 ";
 
 %feature("docstring")
-cmf::upslope::connections::EnergyBudgetSnowMelt::short_string "std::string short_string() const ";
+cmf::upslope::connections::EnergyBudgetSnowMelt::short_string "virtual std::string short_string() const ";
 
 %feature("docstring")
-cmf::upslope::connections::EnergyBudgetSnowMelt::to_string "std::string to_string() const ";
+cmf::upslope::connections::EnergyBudgetSnowMelt::to_string "virtual
+std::string to_string() const ";
 
 
 // File: classcmf_1_1math_1_1_explicit_euler__fixed.xml
@@ -3527,12 +3536,12 @@ A value ranging from 0 to 1 to filter tracers out of the water flux.
 ";
 
 %feature("docstring")
-cmf::water::external_control_connection::short_string "std::string
-short_string() const ";
+cmf::water::external_control_connection::short_string "virtual
+std::string short_string() const ";
 
 %feature("docstring")
-cmf::water::external_control_connection::to_string "std::string
-to_string() const ";
+cmf::water::external_control_connection::to_string "virtual
+std::string to_string() const ";
 
 
 // File: classcmf_1_1water_1_1flux__connection.xml
@@ -3626,9 +3635,9 @@ A value ranging from 0 to 1 to filter tracers out of the water flux.
 1.0 is no filter and 0.0 means no solute is crossing this connection
 ";
 
-%feature("docstring")  cmf::water::flux_connection::short_string "std::string short_string() const ";
+%feature("docstring")  cmf::water::flux_connection::short_string "virtual std::string short_string() const ";
 
-%feature("docstring")  cmf::water::flux_connection::to_string "std::string to_string() const ";
+%feature("docstring")  cmf::water::flux_connection::to_string "virtual std::string to_string() const ";
 
 
 // File: classcmf_1_1water_1_1flux__integrator.xml
@@ -3792,6 +3801,117 @@ t:  Time of the query
 
 Without:  A flux_connection that is excluded from the waterbalance
 (e.g. to prevent closed circuits) ";
+
+
+// File: classcmf_1_1upslope_1_1connections_1_1_free_drainage_percolation.xml
+%feature("docstring")
+cmf::upslope::connections::FreeDrainagePercolation "
+
+Calculates a free drainage (unit gradient) from a layer to somewhere
+else.
+
+
+
+.. math::
+
+     q = K(\\\\theta) A
+
+ where:   :math:`q`  Flux from the layer to the
+other side of the connection in  :math:`m^3/day` 
+
+ :math:`K(\\\\theta)`  Actual conductivity in  :math:`m/day`  depending on the water
+content of the layer  :math:`\\\\theta` 
+
+ :math:`A`  Cell area in  :math:`m^2` 
+
+C++ includes: Percolation.h ";
+
+%feature("docstring")
+cmf::upslope::connections::FreeDrainagePercolation::FreeDrainagePercolation
+"FreeDrainagePercolation(cmf::upslope::SoilLayer::ptr left,
+cmf::water::flux_node::ptr right) ";
+
+%feature("docstring")
+cmf::upslope::connections::FreeDrainagePercolation::conc "real
+conc(cmf::math::Time t, const cmf::water::solute &_Solute)
+
+Returns the concentration of the flux.
+
+If not overridden, it returns the concentration of the source of the
+flux (direction depending) ";
+
+%feature("docstring")
+cmf::upslope::connections::FreeDrainagePercolation::exchange_target "void exchange_target(flux_node::ptr oldtarget, flux_node::ptr
+newTarget) ";
+
+%feature("docstring")
+cmf::upslope::connections::FreeDrainagePercolation::get_ptr "ptr
+get_ptr() const ";
+
+%feature("docstring")
+cmf::upslope::connections::FreeDrainagePercolation::get_target "flux_node::ptr get_target(const flux_node &inquirer)
+
+Returns the other end of a connection than the asking end. ";
+
+%feature("docstring")
+cmf::upslope::connections::FreeDrainagePercolation::get_target "flux_node::ptr get_target(int index) const
+
+With index 0, the left node is returned, with index 1 the right node
+of the connection. ";
+
+%feature("docstring")
+cmf::upslope::connections::FreeDrainagePercolation::get_tracer_filter
+"real get_tracer_filter()
+
+A value ranging from 0 to 1 to filter tracers out of the water flux.
+
+1.0 is no filter and 0.0 means no solute is crossing this connection
+";
+
+%feature("docstring")
+cmf::upslope::connections::FreeDrainagePercolation::kill_me "bool
+kill_me()
+
+Deregisters this connection from its nodes. Returns true if only one
+reference is left. ";
+
+%feature("docstring")
+cmf::upslope::connections::FreeDrainagePercolation::left_node "flux_node::ptr left_node() const
+
+Returns the left node of this connection. ";
+
+%feature("docstring")
+cmf::upslope::connections::FreeDrainagePercolation::q "real q(const
+flux_node &inquirer, cmf::math::Time t)
+
+Returns the current flux through a connection. Negative signs mean out
+of the inquirer, positive are inflows to the inquirer. ";
+
+%feature("docstring")
+cmf::upslope::connections::FreeDrainagePercolation::refresh "void
+refresh(cmf::math::Time t)
+
+Performes a new calculation of the flux. ";
+
+%feature("docstring")
+cmf::upslope::connections::FreeDrainagePercolation::right_node "flux_node::ptr right_node() const
+
+returns the right node of this connection ";
+
+%feature("docstring")
+cmf::upslope::connections::FreeDrainagePercolation::set_tracer_filter
+"void set_tracer_filter(real value)
+
+A value ranging from 0 to 1 to filter tracers out of the water flux.
+
+1.0 is no filter and 0.0 means no solute is crossing this connection
+";
+
+%feature("docstring")
+cmf::upslope::connections::FreeDrainagePercolation::short_string "virtual std::string short_string() const ";
+
+%feature("docstring")
+cmf::upslope::connections::FreeDrainagePercolation::to_string "virtual std::string to_string() const ";
 
 
 // File: classcmf_1_1water_1_1_freundlich_adsorbtion.xml
@@ -4012,12 +4132,12 @@ A value ranging from 0 to 1 to filter tracers out of the water flux.
 ";
 
 %feature("docstring")
-cmf::water::generic_gradient_connection::short_string "std::string
-short_string() const ";
+cmf::water::generic_gradient_connection::short_string "virtual
+std::string short_string() const ";
 
 %feature("docstring")
-cmf::water::generic_gradient_connection::to_string "std::string
-to_string() const ";
+cmf::water::generic_gradient_connection::to_string "virtual
+std::string to_string() const ";
 
 
 // File: classcmf_1_1upslope_1_1connections_1_1_gradient_macro_flow.xml
@@ -4117,11 +4237,12 @@ A value ranging from 0 to 1 to filter tracers out of the water flux.
 ";
 
 %feature("docstring")
-cmf::upslope::connections::GradientMacroFlow::short_string "std::string short_string() const ";
+cmf::upslope::connections::GradientMacroFlow::short_string "virtual
+std::string short_string() const ";
 
 %feature("docstring")
-cmf::upslope::connections::GradientMacroFlow::to_string "std::string
-to_string() const ";
+cmf::upslope::connections::GradientMacroFlow::to_string "virtual
+std::string to_string() const ";
 
 
 // File: classcmf_1_1upslope_1_1connections_1_1_gradient_macro_micro_exchange.xml
@@ -4234,10 +4355,10 @@ A value ranging from 0 to 1 to filter tracers out of the water flux.
 ";
 
 %feature("docstring")
-cmf::upslope::connections::GradientMacroMicroExchange::short_string "std::string short_string() const ";
+cmf::upslope::connections::GradientMacroMicroExchange::short_string "virtual std::string short_string() const ";
 
 %feature("docstring")
-cmf::upslope::connections::GradientMacroMicroExchange::to_string "std::string to_string() const ";
+cmf::upslope::connections::GradientMacroMicroExchange::to_string "virtual std::string to_string() const ";
 
 
 // File: classcmf_1_1upslope_1_1connections_1_1_green_ampt_infiltration.xml
@@ -4397,10 +4518,11 @@ A value ranging from 0 to 1 to filter tracers out of the water flux.
 ";
 
 %feature("docstring")
-cmf::upslope::connections::GreenAmptInfiltration::short_string "std::string short_string() const ";
+cmf::upslope::connections::GreenAmptInfiltration::short_string "virtual std::string short_string() const ";
 
 %feature("docstring")
-cmf::upslope::connections::GreenAmptInfiltration::to_string "std::string to_string() const ";
+cmf::upslope::connections::GreenAmptInfiltration::to_string "virtual
+std::string to_string() const ";
 
 
 // File: classcmf_1_1upslope_1_1_e_t_1_1_hargreave_e_t.xml
@@ -4524,7 +4646,7 @@ A value ranging from 0 to 1 to filter tracers out of the water flux.
 1.0 is no filter and 0.0 means no solute is crossing this connection
 ";
 
-%feature("docstring")  cmf::upslope::ET::HargreaveET::short_string "std::string short_string() const ";
+%feature("docstring")  cmf::upslope::ET::HargreaveET::short_string "virtual std::string short_string() const ";
 
 %feature("docstring")  cmf::upslope::ET::HargreaveET::to_string "std::string to_string() const ";
 
@@ -4627,11 +4749,11 @@ A value ranging from 0 to 1 to filter tracers out of the water flux.
 ";
 
 %feature("docstring")
-cmf::upslope::connections::HBVlateral::short_string "std::string
-short_string() const ";
+cmf::upslope::connections::HBVlateral::short_string "virtual
+std::string short_string() const ";
 
 %feature("docstring")
-cmf::upslope::connections::HBVlateral::to_string "std::string
+cmf::upslope::connections::HBVlateral::to_string "virtual std::string
 to_string() const ";
 
 
@@ -4896,12 +5018,12 @@ A value ranging from 0 to 1 to filter tracers out of the water flux.
 ";
 
 %feature("docstring")
-cmf::upslope::connections::HBVpercolation::short_string "std::string
-short_string() const ";
+cmf::upslope::connections::HBVpercolation::short_string "virtual
+std::string short_string() const ";
 
 %feature("docstring")
-cmf::upslope::connections::HBVpercolation::to_string "std::string
-to_string() const ";
+cmf::upslope::connections::HBVpercolation::to_string "virtual
+std::string to_string() const ";
 
 
 // File: classcmf_1_1math_1_1_heun_integrator.xml
@@ -5939,12 +6061,12 @@ A value ranging from 0 to 1 to filter tracers out of the water flux.
 ";
 
 %feature("docstring")
-cmf::upslope::connections::JarvisMacroFlow::short_string "std::string
-short_string() const ";
+cmf::upslope::connections::JarvisMacroFlow::short_string "virtual
+std::string short_string() const ";
 
 %feature("docstring")
-cmf::upslope::connections::JarvisMacroFlow::to_string "std::string
-to_string() const ";
+cmf::upslope::connections::JarvisMacroFlow::to_string "virtual
+std::string to_string() const ";
 
 
 // File: classcmf_1_1water_1_1kinematic__wave.xml
@@ -6069,9 +6191,10 @@ A value ranging from 0 to 1 to filter tracers out of the water flux.
 1.0 is no filter and 0.0 means no solute is crossing this connection
 ";
 
-%feature("docstring")  cmf::water::kinematic_wave::short_string "std::string short_string() const ";
+%feature("docstring")  cmf::water::kinematic_wave::short_string "virtual std::string short_string() const ";
 
-%feature("docstring")  cmf::water::kinematic_wave::to_string "std::string to_string() const ";
+%feature("docstring")  cmf::water::kinematic_wave::to_string "virtual
+std::string to_string() const ";
 
 
 // File: classcmf_1_1upslope_1_1connections_1_1_kinematic_macro_flow.xml
@@ -6194,11 +6317,12 @@ A value ranging from 0 to 1 to filter tracers out of the water flux.
 ";
 
 %feature("docstring")
-cmf::upslope::connections::KinematicMacroFlow::short_string "std::string short_string() const ";
+cmf::upslope::connections::KinematicMacroFlow::short_string "virtual
+std::string short_string() const ";
 
 %feature("docstring")
-cmf::upslope::connections::KinematicMacroFlow::to_string "std::string
-to_string() const ";
+cmf::upslope::connections::KinematicMacroFlow::to_string "virtual
+std::string to_string() const ";
 
 
 // File: classcmf_1_1upslope_1_1connections_1_1_kinematic_surface_runoff.xml
@@ -6348,10 +6472,11 @@ A value ranging from 0 to 1 to filter tracers out of the water flux.
 ";
 
 %feature("docstring")
-cmf::upslope::connections::KinematicSurfaceRunoff::short_string "std::string short_string() const ";
+cmf::upslope::connections::KinematicSurfaceRunoff::short_string "virtual std::string short_string() const ";
 
 %feature("docstring")
-cmf::upslope::connections::KinematicSurfaceRunoff::to_string "std::string to_string() const ";
+cmf::upslope::connections::KinematicSurfaceRunoff::to_string "virtual
+std::string to_string() const ";
 
 
 // File: classcmf_1_1water_1_1_langmuir_adsorption.xml
@@ -6518,10 +6643,10 @@ A value ranging from 0 to 1 to filter tracers out of the water flux.
 ";
 
 %feature("docstring")
-cmf::upslope::connections::lateral_sub_surface_flux::short_string "std::string short_string() const ";
+cmf::upslope::connections::lateral_sub_surface_flux::short_string "virtual std::string short_string() const ";
 
 %feature("docstring")
-cmf::upslope::connections::lateral_sub_surface_flux::to_string "std::string to_string() const ";
+cmf::upslope::connections::lateral_sub_surface_flux::to_string "virtual std::string to_string() const ";
 
 
 // File: classcmf_1_1upslope_1_1layer__list.xml
@@ -6823,12 +6948,12 @@ A value ranging from 0 to 1 to filter tracers out of the water flux.
 ";
 
 %feature("docstring")
-cmf::upslope::connections::LayerBypass::short_string "std::string
-short_string() const ";
+cmf::upslope::connections::LayerBypass::short_string "virtual
+std::string short_string() const ";
 
 %feature("docstring")
-cmf::upslope::connections::LayerBypass::to_string "std::string
-to_string() const ";
+cmf::upslope::connections::LayerBypass::to_string "virtual
+std::string to_string() const ";
 
 
 // File: classcmf_1_1water_1_1linear__scale.xml
@@ -7189,10 +7314,10 @@ A value ranging from 0 to 1 to filter tracers out of the water flux.
 ";
 
 %feature("docstring")
-cmf::upslope::connections::MACROlikeMacroMicroExchange::short_string "std::string short_string() const ";
+cmf::upslope::connections::MACROlikeMacroMicroExchange::short_string "virtual std::string short_string() const ";
 
 %feature("docstring")
-cmf::upslope::connections::MACROlikeMacroMicroExchange::to_string "std::string to_string() const ";
+cmf::upslope::connections::MACROlikeMacroMicroExchange::to_string "virtual std::string to_string() const ";
 
 
 // File: classcmf_1_1upslope_1_1_macro_pore.xml
@@ -7558,11 +7683,11 @@ A value ranging from 0 to 1 to filter tracers out of the water flux.
 1.0 is no filter and 0.0 means no solute is crossing this connection
 ";
 
-%feature("docstring")  cmf::river::Manning::short_string "std::string
-short_string() const ";
+%feature("docstring")  cmf::river::Manning::short_string "virtual
+std::string short_string() const ";
 
-%feature("docstring")  cmf::river::Manning::to_string "std::string
-to_string() const ";
+%feature("docstring")  cmf::river::Manning::to_string "virtual
+std::string to_string() const ";
 
 
 // File: classcmf_1_1river_1_1_manning___diffusive.xml
@@ -7672,9 +7797,9 @@ A value ranging from 0 to 1 to filter tracers out of the water flux.
 1.0 is no filter and 0.0 means no solute is crossing this connection
 ";
 
-%feature("docstring")  cmf::river::Manning_Diffusive::short_string "std::string short_string() const ";
+%feature("docstring")  cmf::river::Manning_Diffusive::short_string "virtual std::string short_string() const ";
 
-%feature("docstring")  cmf::river::Manning_Diffusive::to_string "std::string to_string() const ";
+%feature("docstring")  cmf::river::Manning_Diffusive::to_string "virtual std::string to_string() const ";
 
 
 // File: classcmf_1_1river_1_1_manning___kinematic.xml
@@ -7782,9 +7907,9 @@ A value ranging from 0 to 1 to filter tracers out of the water flux.
 1.0 is no filter and 0.0 means no solute is crossing this connection
 ";
 
-%feature("docstring")  cmf::river::Manning_Kinematic::short_string "std::string short_string() const ";
+%feature("docstring")  cmf::river::Manning_Kinematic::short_string "virtual std::string short_string() const ";
 
-%feature("docstring")  cmf::river::Manning_Kinematic::to_string "std::string to_string() const ";
+%feature("docstring")  cmf::river::Manning_Kinematic::to_string "virtual std::string to_string() const ";
 
 
 // File: classcmf_1_1upslope_1_1connections_1_1_matrix_infiltration.xml
@@ -7914,11 +8039,12 @@ A value ranging from 0 to 1 to filter tracers out of the water flux.
 ";
 
 %feature("docstring")
-cmf::upslope::connections::MatrixInfiltration::short_string "std::string short_string() const ";
+cmf::upslope::connections::MatrixInfiltration::short_string "virtual
+std::string short_string() const ";
 
 %feature("docstring")
-cmf::upslope::connections::MatrixInfiltration::to_string "std::string
-to_string() const ";
+cmf::upslope::connections::MatrixInfiltration::to_string "virtual
+std::string to_string() const ";
 
 
 // File: classcmf_1_1river_1_1_mean_channel.xml
@@ -8776,9 +8902,11 @@ A value ranging from 0 to 1 to filter tracers out of the water flux.
 1.0 is no filter and 0.0 means no solute is crossing this connection
 ";
 
-%feature("docstring")  cmf::water::NeumannFlux::short_string "std::string short_string() const ";
+%feature("docstring")  cmf::water::NeumannFlux::short_string "virtual
+std::string short_string() const ";
 
-%feature("docstring")  cmf::water::NeumannFlux::to_string "std::string to_string() const ";
+%feature("docstring")  cmf::water::NeumannFlux::to_string "virtual
+std::string to_string() const ";
 
 
 // File: classcmf_1_1water_1_1node__list.xml
@@ -9310,11 +9438,11 @@ A value ranging from 0 to 1 to filter tracers out of the water flux.
 ";
 
 %feature("docstring")
-cmf::upslope::ET::PenmanEvaporation::short_string "std::string
-short_string() const ";
+cmf::upslope::ET::PenmanEvaporation::short_string "virtual
+std::string short_string() const ";
 
 %feature("docstring")  cmf::upslope::ET::PenmanEvaporation::to_string
-"std::string to_string() const ";
+"virtual std::string to_string() const ";
 
 
 // File: classcmf_1_1upslope_1_1_e_t_1_1_penman_monteith_e_t.xml
@@ -9444,7 +9572,7 @@ A value ranging from 0 to 1 to filter tracers out of the water flux.
 ";
 
 %feature("docstring")
-cmf::upslope::ET::PenmanMonteithET::short_string "std::string
+cmf::upslope::ET::PenmanMonteithET::short_string "virtual std::string
 short_string() const ";
 
 %feature("docstring")  cmf::upslope::ET::PenmanMonteithET::to_string "std::string to_string() const ";
@@ -10112,11 +10240,11 @@ A value ranging from 0 to 1 to filter tracers out of the water flux.
 ";
 
 %feature("docstring")
-cmf::upslope::connections::Rainfall::short_string "std::string
-short_string() const ";
+cmf::upslope::connections::Rainfall::short_string "virtual
+std::string short_string() const ";
 
 %feature("docstring")  cmf::upslope::connections::Rainfall::to_string
-"std::string to_string() const ";
+"virtual std::string to_string() const ";
 
 
 // File: classcmf_1_1atmosphere_1_1_rainfall_station.xml
@@ -11009,11 +11137,11 @@ A value ranging from 0 to 1 to filter tracers out of the water flux.
 ";
 
 %feature("docstring")
-cmf::upslope::connections::Richards::short_string "std::string
-short_string() const ";
+cmf::upslope::connections::Richards::short_string "virtual
+std::string short_string() const ";
 
 %feature("docstring")  cmf::upslope::connections::Richards::to_string
-"std::string to_string() const ";
+"virtual std::string to_string() const ";
 
 
 // File: classcmf_1_1upslope_1_1connections_1_1_richards__lateral.xml
@@ -11135,11 +11263,12 @@ A value ranging from 0 to 1 to filter tracers out of the water flux.
 ";
 
 %feature("docstring")
-cmf::upslope::connections::Richards_lateral::short_string "std::string short_string() const ";
+cmf::upslope::connections::Richards_lateral::short_string "virtual
+std::string short_string() const ";
 
 %feature("docstring")
-cmf::upslope::connections::Richards_lateral::to_string "std::string
-to_string() const ";
+cmf::upslope::connections::Richards_lateral::to_string "virtual
+std::string to_string() const ";
 
 
 // File: classcmf_1_1math_1_1_r_k23_integrator.xml
@@ -11153,7 +11282,7 @@ Does not use Integrator's m_dt variable for its step size, but rather
 an internal variable tau, so that no external changes to m_dt (e.g. by
 integrate_until) mess up the automatic step size control.
 
-C++ includes: RK23integrator.h ";
+C++ includes: RK23_MPI.h ";
 
 /*  Accuracy parameters  */
 
@@ -11171,6 +11300,11 @@ Sets the current model time. ";
 %feature("docstring")  cmf::math::RK23Integrator::get_dt "cmf::math::Time get_dt() const
 
 Returns the last time step. ";
+
+%feature("docstring")  cmf::math::RK23Integrator::reset "virtual void
+reset()
+
+Resets any saved history (for multistep methods) ";
 
 /*  Integrate  */
 
@@ -11191,12 +11325,12 @@ reset:  If true, solver is reseted before integration starts ";
 %feature("docstring")  cmf::math::RK23Integrator::RK23Integrator "RK23Integrator(cmf::math::StateVariableOwner &states, double
 abstol=1e-6, double reltol=1e-6, Time dt_min=cmf::math::sec)
 
-Create a new RK23MPI integrator.
+Create a new RK23Integrator integrator.
 
 Parameters:
 -----------
 
-states:  State variables to be added to the integrator.
+project:  Project
 
 abstol:  Absolute tolerance for error estimator and step size control.
 
@@ -11206,7 +11340,7 @@ dt_min:  Minimum step size. ";
 
 %feature("docstring")  cmf::math::RK23Integrator::RK23Integrator "RK23Integrator(const cmf::math::RK23Integrator &other) ";
 
-%feature("docstring")  cmf::math::RK23Integrator::~RK23Integrator "virtual ~RK23Integrator()
+%feature("docstring")  cmf::math::RK23Integrator::~RK23Integrator "~RK23Integrator()
 
 Destructor. ";
 
@@ -11227,7 +11361,7 @@ Adds the values in operands to the current states. ";
 %feature("docstring")  cmf::math::RK23Integrator::copy "virtual
 Integrator* copy() const
 
-Do not use this method. It is not implemented. ";
+Polymorphic copy constructor. ";
 
 %feature("docstring")  cmf::math::RK23Integrator::copy_dxdt "void
 copy_dxdt(Time time, num_array &destination, real factor=1) const
@@ -11283,8 +11417,13 @@ state variables. ";
 
 gets the state variables of the integrator ";
 
+%feature("docstring")  cmf::math::RK23Integrator::get_tau "real
+get_tau() const
+
+Return current internal step size. ";
+
 %feature("docstring")  cmf::math::RK23Integrator::integrate "int
-integrate(cmf::math::Time t_max, cmf::math::Time dt)
+integrate(Time t_max, Time dt)
 
 Integrates the vector of state variables, either till time t_max or a
 point of time before that, if a small step size is required.
@@ -11295,10 +11434,6 @@ Parameters:
 t_max:  Upper boundary for integration interval.
 
 dt:  Ignored. ";
-
-%feature("docstring")  cmf::math::RK23Integrator::reset "void reset()
-
-Resets any saved history (for multistep methods) ";
 
 %feature("docstring")  cmf::math::RK23Integrator::set_state "void
 set_state(ptrdiff_t position, real newState)
@@ -11532,6 +11667,10 @@ Tpot:  Potential Transpiration in mm/day (for the full profile)
 
 Actual flux from layer in m3/day ";
 
+%feature("docstring")
+cmf::upslope::ET::RootUptakeStessFunction::to_string "virtual
+std::string to_string() const =0 ";
+
 
 // File: classcmf_1_1upslope_1_1connections_1_1_rutter_interception.xml
 %feature("docstring") cmf::upslope::connections::RutterInterception "
@@ -11655,11 +11794,12 @@ A value ranging from 0 to 1 to filter tracers out of the water flux.
 ";
 
 %feature("docstring")
-cmf::upslope::connections::RutterInterception::short_string "std::string short_string() const ";
+cmf::upslope::connections::RutterInterception::short_string "virtual
+std::string short_string() const ";
 
 %feature("docstring")
-cmf::upslope::connections::RutterInterception::to_string "std::string
-to_string() const ";
+cmf::upslope::connections::RutterInterception::to_string "virtual
+std::string to_string() const ";
 
 
 // File: classcmf_1_1upslope_1_1_e_t_1_1_shuttleworth_wallace.xml
@@ -11704,10 +11844,6 @@ function D0
 
  :math:`r_{ac}, r_{sc}, r_{as}, r_{ss}`  Resistances for the vapor pressure
 (see below)
-
-Todo Include Interception
-
-Include surface water below canopy, eg. for rice paddies.
 
 C++ includes: ShuttleworthWallace.h ";
 
@@ -11850,10 +11986,11 @@ A value ranging from 0 to 1 to filter tracers out of the water flux.
 ";
 
 %feature("docstring")
-cmf::upslope::connections::SimpleTindexSnowMelt::short_string "std::string short_string() const ";
+cmf::upslope::connections::SimpleTindexSnowMelt::short_string "virtual std::string short_string() const ";
 
 %feature("docstring")
-cmf::upslope::connections::SimpleTindexSnowMelt::to_string "std::string to_string() const ";
+cmf::upslope::connections::SimpleTindexSnowMelt::to_string "virtual
+std::string to_string() const ";
 
 
 // File: classcmf_1_1upslope_1_1connections_1_1_simpl_richards.xml
@@ -11959,12 +12096,12 @@ A value ranging from 0 to 1 to filter tracers out of the water flux.
 ";
 
 %feature("docstring")
-cmf::upslope::connections::SimplRichards::short_string "std::string
-short_string() const ";
+cmf::upslope::connections::SimplRichards::short_string "virtual
+std::string short_string() const ";
 
 %feature("docstring")
-cmf::upslope::connections::SimplRichards::to_string "std::string
-to_string() const ";
+cmf::upslope::connections::SimplRichards::to_string "virtual
+std::string to_string() const ";
 
 
 // File: classcmf_1_1upslope_1_1_e_t_1_1snow__evaporation.xml
@@ -12047,10 +12184,10 @@ A value ranging from 0 to 1 to filter tracers out of the water flux.
 ";
 
 %feature("docstring")
-cmf::upslope::ET::snow_evaporation::short_string "std::string
+cmf::upslope::ET::snow_evaporation::short_string "virtual std::string
 short_string() const ";
 
-%feature("docstring")  cmf::upslope::ET::snow_evaporation::to_string "std::string to_string() const ";
+%feature("docstring")  cmf::upslope::ET::snow_evaporation::to_string "virtual std::string to_string() const ";
 
 
 // File: classcmf_1_1upslope_1_1_e_t_1_1snow__evaporation__method.xml
@@ -12146,11 +12283,11 @@ A value ranging from 0 to 1 to filter tracers out of the water flux.
 ";
 
 %feature("docstring")
-cmf::upslope::connections::Snowfall::short_string "std::string
-short_string() const ";
+cmf::upslope::connections::Snowfall::short_string "virtual
+std::string short_string() const ";
 
 %feature("docstring")  cmf::upslope::connections::Snowfall::to_string
-"std::string to_string() const ";
+"virtual std::string to_string() const ";
 
 
 // File: classcmf_1_1upslope_1_1_e_t_1_1soil__evaporation.xml
@@ -12233,10 +12370,10 @@ A value ranging from 0 to 1 to filter tracers out of the water flux.
 ";
 
 %feature("docstring")
-cmf::upslope::ET::soil_evaporation::short_string "std::string
+cmf::upslope::ET::soil_evaporation::short_string "virtual std::string
 short_string() const ";
 
-%feature("docstring")  cmf::upslope::ET::soil_evaporation::to_string "std::string to_string() const ";
+%feature("docstring")  cmf::upslope::ET::soil_evaporation::to_string "virtual std::string to_string() const ";
 
 
 // File: classcmf_1_1upslope_1_1_e_t_1_1soil__evaporation__method.xml
@@ -12992,11 +13129,11 @@ A value ranging from 0 to 1 to filter tracers out of the water flux.
 ";
 
 %feature("docstring")
-cmf::water::statecontrol_connection::short_string "std::string
-short_string() const ";
+cmf::water::statecontrol_connection::short_string "virtual
+std::string short_string() const ";
 
 %feature("docstring")  cmf::water::statecontrol_connection::to_string
-"std::string to_string() const ";
+"virtual std::string to_string() const ";
 
 
 // File: classcmf_1_1math_1_1_state_variable.xml
@@ -13149,7 +13286,7 @@ A value ranging from 0 to 1 to filter tracers out of the water flux.
 1.0 is no filter and 0.0 means no solute is crossing this connection
 ";
 
-%feature("docstring")  cmf::upslope::ET::stressedET::short_string "std::string short_string() const ";
+%feature("docstring")  cmf::upslope::ET::stressedET::short_string "virtual std::string short_string() const ";
 
 %feature("docstring")  cmf::upslope::ET::stressedET::to_string "std::string to_string() const ";
 
@@ -13227,6 +13364,8 @@ connection:  The stressedET connection this stress function belongs to
 Tpot:  Potential Transpiration in mm/day (for the full profile)
 
 Actual flux from layer in m3/day ";
+
+%feature("docstring")  cmf::upslope::ET::SuctionStress::to_string "std::string to_string() const ";
 
 
 // File: classcmf_1_1upslope_1_1_e_t_1_1surface__water__evaporation.xml
@@ -13318,11 +13457,12 @@ A value ranging from 0 to 1 to filter tracers out of the water flux.
 ";
 
 %feature("docstring")
-cmf::upslope::ET::surface_water_evaporation::short_string "std::string short_string() const ";
+cmf::upslope::ET::surface_water_evaporation::short_string "virtual
+std::string short_string() const ";
 
 %feature("docstring")
-cmf::upslope::ET::surface_water_evaporation::to_string "std::string
-to_string() const ";
+cmf::upslope::ET::surface_water_evaporation::to_string "virtual
+std::string to_string() const ";
 
 
 // File: classcmf_1_1upslope_1_1_e_t_1_1surface__water__evaporation__method.xml
@@ -13647,12 +13787,12 @@ A value ranging from 0 to 1 to filter tracers out of the water flux.
 ";
 
 %feature("docstring")
-cmf::upslope::connections::SWATPercolation::short_string "std::string
-short_string() const ";
+cmf::upslope::connections::SWATPercolation::short_string "virtual
+std::string short_string() const ";
 
 %feature("docstring")
-cmf::upslope::connections::SWATPercolation::to_string "std::string
-to_string() const ";
+cmf::upslope::connections::SWATPercolation::to_string "virtual
+std::string to_string() const ";
 
 
 // File: classcmf_1_1river_1_1_s_w_a_t_reach_type.xml
@@ -14047,10 +14187,10 @@ A value ranging from 0 to 1 to filter tracers out of the water flux.
 ";
 
 %feature("docstring")
-cmf::water::SystemBridgeConnection::short_string "std::string
+cmf::water::SystemBridgeConnection::short_string "virtual std::string
 short_string() const ";
 
-%feature("docstring")  cmf::water::SystemBridgeConnection::to_string "std::string to_string() const ";
+%feature("docstring")  cmf::water::SystemBridgeConnection::to_string "virtual std::string to_string() const ";
 
 
 // File: classcmf_1_1water_1_1_technical_flux.xml
@@ -14157,9 +14297,10 @@ A value ranging from 0 to 1 to filter tracers out of the water flux.
 1.0 is no filter and 0.0 means no solute is crossing this connection
 ";
 
-%feature("docstring")  cmf::water::TechnicalFlux::short_string "std::string short_string() const ";
+%feature("docstring")  cmf::water::TechnicalFlux::short_string "virtual std::string short_string() const ";
 
-%feature("docstring")  cmf::water::TechnicalFlux::to_string "std::string to_string() const ";
+%feature("docstring")  cmf::water::TechnicalFlux::to_string "virtual
+std::string to_string() const ";
 
 
 // File: classcmf_1_1math_1_1_time.xml
@@ -14590,9 +14731,257 @@ A value ranging from 0 to 1 to filter tracers out of the water flux.
 ";
 
 %feature("docstring")  cmf::upslope::ET::timeseriesETpot::short_string
-"std::string short_string() const ";
+"virtual std::string short_string() const ";
 
 %feature("docstring")  cmf::upslope::ET::timeseriesETpot::to_string "std::string to_string() const ";
+
+
+// File: classcmf_1_1atmosphere_1_1_timeseries_rain_source.xml
+%feature("docstring") cmf::atmosphere::TimeseriesRainSource "
+
+A rainsource with a timeseries.
+
+Simpler to use than a rainfall station if there are only few cells in
+the project
+
+C++ includes: precipitation.h ";
+
+%feature("docstring")  cmf::atmosphere::TimeseriesRainSource::conc "virtual real conc(cmf::math::Time t, const cmf::water::solute &Solute)
+const
+
+Returns the concentration of a solute in the rainfall at time t. ";
+
+%feature("docstring")
+cmf::atmosphere::TimeseriesRainSource::connection_to "cmf::water::flux_connection* connection_to(const cmf::water::flux_node
+&target)
+
+Returns the connection between this and target. ";
+
+%feature("docstring")
+cmf::atmosphere::TimeseriesRainSource::flux3d_to "cmf::geometry::point flux3d_to(const cmf::water::flux_node &target,
+cmf::math::Time t) ";
+
+%feature("docstring")  cmf::atmosphere::TimeseriesRainSource::flux_to
+"real flux_to(const cmf::water::flux_node &target, cmf::math::Time t)
+
+Returns the actual flux between this and target (positive sign means
+\"from target into this\") ";
+
+%feature("docstring")
+cmf::atmosphere::TimeseriesRainSource::get_3d_flux "cmf::geometry::point get_3d_flux(cmf::math::Time t)
+
+Returns the sum of all flux vectors. ";
+
+%feature("docstring")
+cmf::atmosphere::TimeseriesRainSource::get_connections "cmf::water::connection_list get_connections() const ";
+
+%feature("docstring")
+cmf::atmosphere::TimeseriesRainSource::get_intensity "real
+get_intensity(cmf::math::Time t) const
+
+Returns the actual rainfall intensity in mm/day. ";
+
+%feature("docstring")
+cmf::atmosphere::TimeseriesRainSource::get_potential "virtual real
+get_potential() const
+
+Returns the water potential of the node in m waterhead.
+
+The base class water storage always returns the height of the location
+";
+
+%feature("docstring")
+cmf::atmosphere::TimeseriesRainSource::get_project "cmf::project&
+get_project() const
+
+Returns the project, this node is part of. ";
+
+%feature("docstring")  cmf::atmosphere::TimeseriesRainSource::is_empty
+"virtual double is_empty() const
+
+Returns false. ";
+
+%feature("docstring")
+cmf::atmosphere::TimeseriesRainSource::is_storage "virtual bool
+is_storage() const
+
+true, if this is a waterstorage ";
+
+%feature("docstring")
+cmf::atmosphere::TimeseriesRainSource::RecalcFluxes "virtual bool
+RecalcFluxes(cmf::math::Time t)
+
+Pure flux_nodes do not influence fluxes, therefore no recalculation of
+fluxes is required by flux_node.
+
+WaterStorage overrides this, since state changes require an update of
+the fluxes ";
+
+%feature("docstring")
+cmf::atmosphere::TimeseriesRainSource::remove_connection "bool
+remove_connection(cmf::water::flux_node::ptr To)
+
+Remove the connection. ";
+
+%feature("docstring")
+cmf::atmosphere::TimeseriesRainSource::set_potential "virtual void
+set_potential(real new_potential)
+
+Sets the potential of this flux node. ";
+
+%feature("docstring")
+cmf::atmosphere::TimeseriesRainSource::to_string "virtual std::string
+to_string() const ";
+
+%feature("docstring")
+cmf::atmosphere::TimeseriesRainSource::waterbalance "real
+waterbalance(cmf::math::Time t, const flux_connection *Without=0)
+const
+
+Returns the sum of all fluxes (positive and negative) at time t.
+
+Single fluxes can be excluded from the calculation
+
+Parameters:
+-----------
+
+t:  Time of the query
+
+Without:  A flux_connection that is excluded from the waterbalance
+(e.g. to prevent closed circuits) ";
+
+
+// File: classcmf_1_1upslope_1_1connections_1_1_t_o_p_model_flow.xml
+%feature("docstring") cmf::upslope::connections::TOPModelFlow "
+
+Calculates a flux from a soil layer using TOPMODELs (Beven & Kirkby
+1979) exponential transmissivity concept.
+
+
+
+.. math::
+
+     T = T_0 \\\\exp(-D_i/m) 
+
+ where:   :math:`T`  is the actual
+transmissivity of the profile in  :math:`m^2/day` 
+
+ :math:`T0`  is the transmissivity of the profile at saturation
+
+ :math:`D_i`  is the drained depth in m, calculated as  :math:`(C-V)/A` , the capacity
+of the layer - volume per area
+
+ :math:`m`  a scaling factor in m
+
+By using the transmissivity in Darcy's law and assuming the GW
+gradient to be parallel to the topographic slope we get for the flow:
+
+
+.. math::
+
+     q = T_0 \\\\exp(-D_i/m) w s
+
+ where:   :math:`q`  is the flux in
+ :math:`m^3/day` 
+
+ :math:`w`  is the flow width (unit contour length)
+
+ :math:`s`  is the topographic slope between layer and outlet
+
+TOPMODEL is based on the concept of drained depth, not, as cmf on the
+concept of stored volume. Hence, the drained depth in TOPMODEL is not
+limited to certain maximum, but can, for a sufficient long time
+without rainfall
+
+C++ includes: subsurfacefluxes.h ";
+
+%feature("docstring")
+cmf::upslope::connections::TOPModelFlow::TOPModelFlow "TOPModelFlow(cmf::upslope::SoilLayer::ptr left,
+cmf::water::flux_node::ptr right, real T0, real m, real flowwidth,
+real distance=0) ";
+
+%feature("docstring")  cmf::upslope::connections::TOPModelFlow::conc "real conc(cmf::math::Time t, const cmf::water::solute &_Solute)
+
+Returns the concentration of the flux.
+
+If not overridden, it returns the concentration of the source of the
+flux (direction depending) ";
+
+%feature("docstring")
+cmf::upslope::connections::TOPModelFlow::exchange_target "void
+exchange_target(flux_node::ptr oldtarget, flux_node::ptr newTarget) ";
+
+%feature("docstring")
+cmf::upslope::connections::TOPModelFlow::get_ptr "ptr get_ptr() const
+";
+
+%feature("docstring")
+cmf::upslope::connections::TOPModelFlow::get_target "flux_node::ptr
+get_target(const flux_node &inquirer)
+
+Returns the other end of a connection than the asking end. ";
+
+%feature("docstring")
+cmf::upslope::connections::TOPModelFlow::get_target "flux_node::ptr
+get_target(int index) const
+
+With index 0, the left node is returned, with index 1 the right node
+of the connection. ";
+
+%feature("docstring")
+cmf::upslope::connections::TOPModelFlow::get_tracer_filter "real
+get_tracer_filter()
+
+A value ranging from 0 to 1 to filter tracers out of the water flux.
+
+1.0 is no filter and 0.0 means no solute is crossing this connection
+";
+
+%feature("docstring")
+cmf::upslope::connections::TOPModelFlow::kill_me "bool kill_me()
+
+Deregisters this connection from its nodes. Returns true if only one
+reference is left. ";
+
+%feature("docstring")
+cmf::upslope::connections::TOPModelFlow::left_node "flux_node::ptr
+left_node() const
+
+Returns the left node of this connection. ";
+
+%feature("docstring")  cmf::upslope::connections::TOPModelFlow::q "real q(const flux_node &inquirer, cmf::math::Time t)
+
+Returns the current flux through a connection. Negative signs mean out
+of the inquirer, positive are inflows to the inquirer. ";
+
+%feature("docstring")
+cmf::upslope::connections::TOPModelFlow::refresh "void
+refresh(cmf::math::Time t)
+
+Performes a new calculation of the flux. ";
+
+%feature("docstring")
+cmf::upslope::connections::TOPModelFlow::right_node "flux_node::ptr
+right_node() const
+
+returns the right node of this connection ";
+
+%feature("docstring")
+cmf::upslope::connections::TOPModelFlow::set_tracer_filter "void
+set_tracer_filter(real value)
+
+A value ranging from 0 to 1 to filter tracers out of the water flux.
+
+1.0 is no filter and 0.0 means no solute is crossing this connection
+";
+
+%feature("docstring")
+cmf::upslope::connections::TOPModelFlow::short_string "virtual
+std::string short_string() const ";
+
+%feature("docstring")
+cmf::upslope::connections::TOPModelFlow::to_string "virtual
+std::string to_string() const ";
 
 
 // File: classcmf_1_1upslope_1_1connections_1_1_topographic_gradient_darcy.xml
@@ -14717,10 +15106,10 @@ A value ranging from 0 to 1 to filter tracers out of the water flux.
 ";
 
 %feature("docstring")
-cmf::upslope::connections::TopographicGradientDarcy::short_string "std::string short_string() const ";
+cmf::upslope::connections::TopographicGradientDarcy::short_string "virtual std::string short_string() const ";
 
 %feature("docstring")
-cmf::upslope::connections::TopographicGradientDarcy::to_string "std::string to_string() const ";
+cmf::upslope::connections::TopographicGradientDarcy::to_string "virtual std::string to_string() const ";
 
 
 // File: classcmf_1_1upslope_1_1_topology.xml
@@ -14850,9 +15239,9 @@ A value ranging from 0 to 1 to filter tracers out of the water flux.
 1.0 is no filter and 0.0 means no solute is crossing this connection
 ";
 
-%feature("docstring")  cmf::upslope::ET::transpiration::short_string "std::string short_string() const ";
+%feature("docstring")  cmf::upslope::ET::transpiration::short_string "virtual std::string short_string() const ";
 
-%feature("docstring")  cmf::upslope::ET::transpiration::to_string "std::string to_string() const ";
+%feature("docstring")  cmf::upslope::ET::transpiration::to_string "virtual std::string to_string() const ";
 
 
 // File: classcmf_1_1upslope_1_1_e_t_1_1transpiration__method.xml
@@ -15078,7 +15467,7 @@ A value ranging from 0 to 1 to filter tracers out of the water flux.
 1.0 is no filter and 0.0 means no solute is crossing this connection
 ";
 
-%feature("docstring")  cmf::upslope::ET::TurcET::short_string "std::string short_string() const ";
+%feature("docstring")  cmf::upslope::ET::TurcET::short_string "virtual std::string short_string() const ";
 
 %feature("docstring")  cmf::upslope::ET::TurcET::to_string "std::string to_string() const ";
 
@@ -15683,6 +16072,8 @@ Tpot:  Potential Transpiration in mm/day (for the full profile)
 
 Actual flux from layer in m3/day ";
 
+%feature("docstring")  cmf::upslope::ET::VolumeStress::to_string "std::string to_string() const ";
+
 
 // File: classcmf_1_1water_1_1waterbalance__connection.xml
 %feature("docstring") cmf::water::waterbalance_connection "
@@ -15774,11 +16165,11 @@ A value ranging from 0 to 1 to filter tracers out of the water flux.
 ";
 
 %feature("docstring")
-cmf::water::waterbalance_connection::short_string "std::string
-short_string() const ";
+cmf::water::waterbalance_connection::short_string "virtual
+std::string short_string() const ";
 
 %feature("docstring")  cmf::water::waterbalance_connection::to_string
-"std::string to_string() const ";
+"virtual std::string to_string() const ";
 
 
 // File: classcmf_1_1water_1_1waterbalance__integrator.xml
@@ -16575,7 +16966,7 @@ boundary condition, providing the potential of the lower node. ";
 // File: multiintegrator_8h.xml
 
 
-// File: _r_k23integrator_8h.xml
+// File: _r_k23___m_p_i_8h.xml
 
 
 // File: _r_k_fintegrator_8h.xml

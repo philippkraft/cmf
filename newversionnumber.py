@@ -1,4 +1,5 @@
 #!/usr/bin/python
+from __future__ import print_function
 import os
 import sys
 def get_revision():
@@ -26,5 +27,5 @@ def updateversion(revision):
 
 if __name__=='__main__':
     rev = get_revision()
-    print "cmf.__version__ =",rev
+    print("cmf.__version__ =",rev)
     updateversion(rev)
