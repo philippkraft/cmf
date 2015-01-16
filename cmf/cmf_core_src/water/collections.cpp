@@ -245,7 +245,7 @@ void cmf::water::NeumannBoundary_list::set_fluxes( cmf::math::num_array values )
 		throw std::runtime_error("The input array with fluxes need to have the same size as this list");
 	else
 	{
-		for (size_t i = 0; i < values.size() ; ++i)
+		for (ptrdiff_t i = 0; i < values.size() ; ++i)
 		{
 			m_boundaries[i]->set_flux(values[i]);
 		}
