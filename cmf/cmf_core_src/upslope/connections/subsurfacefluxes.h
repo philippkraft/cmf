@@ -180,8 +180,7 @@ namespace cmf {
 			/// - \f$s\f$ is the topographic slope between layer and outlet
 			///
 			/// @note TOPMODEL is based on the concept of drained depth, not, as cmf on the concept of stored volume.
-			/// Hence, the drained depth in TOPMODEL is not limited to certain maximum, but can, for a sufficient long
-			/// time without rainfall
+			/// Hence, negative volumes can occur if
 			class TOPModelFlow : public cmf::water::flux_connection {
 			protected:
 				virtual real calc_q(cmf::math::Time t);

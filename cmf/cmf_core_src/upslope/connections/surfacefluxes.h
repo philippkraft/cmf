@@ -129,6 +129,18 @@ namespace cmf {
 			};
 			/// @ingroup surfacefluxes
 			/// Calculates snow melt using a simple degree day method
+			///
+			/// \f[ q_{melt} [mm/day] = (T-T_{thres}) * r \f]
+			///
+			/// Usage:
+			/// @code{.py}
+			/// # Create a new snow water storage
+			/// snow = cell.add_storage('Snow','S')
+			/// # Split Rainfall and snow fall according to the current temperature
+			/// snowfall = cmf.Snowfall(snow,cell)
+			/// # Create a snowfall connection between snow and surfacewater)
+			/// snowmelt = cmf.SimpleTindexSnowMelt(snow,cell.surfacewater,cell,rate=7.0)
+			/// @endcode
 			class SimpleTindexSnowMelt : public cmf::water::flux_connection {
 			protected:
 				std::tr1::weak_ptr<cmf::water::WaterStorage> m_Snow;
@@ -141,9 +153,16 @@ namespace cmf {
 					m_Surfacewater=right_node();
 				}
 			public:
+				/// Rate of snow melt in mm/(degC day), default = 7.0
 				real SnowMeltRate;
-				SimpleTindexSnowMelt(cmf::water::WaterStorage::ptr snow,cmf::water::flux_node::ptr surface_water,cmf::upslope::Cell& cell)
-					: flux_connection(snow,surface_water,"Simple T-Index snow melt"),m_cell(cell),SnowMeltRate(7.0)
+				/// Creates a new snow melt connection
+				///
+				/// @param snow Snow storage, usually cel.snow
+				/// @param surface_water target of the melted water (usually cell.surfacewater)
+				/// @param cell The cell, needed to get weather and area
+				/// @param rate The rate of snow melt, given in mm/(degC day), default = 7.0
+				SimpleTindexSnowMelt(cmf::water::WaterStorage::ptr snow,cmf::water::flux_node::ptr surface_water,cmf::upslope::Cell& cell,real rate=7.0)
+					: flux_connection(snow,surface_water,"Simple T-Index snow melt"),m_cell(cell),SnowMeltRate(rate)
 				{
 					NewNodes();
 				}
