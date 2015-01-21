@@ -25,7 +25,7 @@
 #include "math/integrators/RKFintegrator.h"
 #include "math/integrators/cvodeintegrator.h"
 #include "math/integrators/multiintegrator.h"
-#include "math/integrators/RK23integrator.h"
+#include "math/integrators/RK23_MPI.h"
 %}
 
 %shared_ptr(cmf::math::StateVariable);
@@ -73,7 +73,7 @@
 %include "math/integrators/RKFintegrator.h"
 %include "math/integrators/cvodeintegrator.h"
 %include "math/integrators/multiintegrator.h"
-%include "math/integrators/RK23integrator.h"
+%include "math/integrators/RK23_MPI.h"
 
 
 %extend cmf::math::Integrator { 

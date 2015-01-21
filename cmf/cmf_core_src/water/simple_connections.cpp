@@ -25,7 +25,8 @@ bool cmf::water::can_set_flux( flux_node::ptr source,flux_node::ptr target )
 
 real cmf::water::kinematic_wave::calc_q( cmf::math::Time t )
 {
-	real V= std::max(0.0,source->get_volume()-residual);
+	cmf::water::WaterStorage::ptr S = source.lock();
+	real V= std::max(0.0,S->get_volume()-residual);
 	return pow(V/V0,exponent)/residencetime;
 }
 
@@ -92,4 +93,29 @@ real cmf::water::constraint_kinematic_wave::calc_q( cmf::math::Time t )
 	real V= std::max(0.0,source->get_volume()-residual);
 	real C= std::max(0.0,Vrmax - target->get_volume());
 	return pow(V/V0,beta)/residencetime * pow(C/Vrmax,gamma);
+}
+
+real cmf::water::bidirectional_kinematic_exchange::calc_q( cmf::math::Time t )
+{
+	cmf::water::WaterStorage::ptr S = source.lock();
+	real V = S->get_volume();
+	real D = Vmaxsuc-V;
+	real U = V - Vminspill;
+	real qsuc_a = D>0 ? qsuc * pow(D/Vmaxsuc,beta_suc) : 0;
+	real qspill_a = U>0 ? qspill * pow(U/Vminspill,beta_spill) : 0;
+
+	return qspill_a - qsuc_a;
+	
+}
+
+cmf::water::bidirectional_kinematic_exchange::bidirectional_kinematic_exchange( 
+	WaterStorage::ptr source,flux_node::ptr target, 
+	real _Vminspill,real _Vmaxsuc, 
+	real _qspill,real _qsuc, real _beta_spill,real _beta_suc )
+	  :	flux_connection(source,target,"Bidirectional exchange"),
+		Vminspill(_Vminspill),Vmaxsuc(_Vmaxsuc),
+		qspill(_qspill),qsuc(_qsuc),
+		beta_spill(_beta_spill),beta_suc(_beta_suc)
+{
+	NewNodes();
 }
