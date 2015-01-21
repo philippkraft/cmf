@@ -77,7 +77,7 @@ namespace cmf {
 		/// - \f$t_r [days]\f$ The residence time of the water in this storage in days
 		class kinematic_wave : public flux_connection {
 		protected:
-			WaterStorage::ptr source;
+			std::tr1::weak_ptr<WaterStorage> source;
 			real calc_q(cmf::math::Time t);
 			void NewNodes() {
 				source = WaterStorage::cast(left_node());
@@ -102,6 +102,54 @@ namespace cmf {
 			/// @param V0 \f$V_0\f$ The reference volume to scale the exponent
 			kinematic_wave(WaterStorage::ptr source,flux_node::ptr target,real residencetime,
 				real exponent=1.0,real residual=0.0,real V0 = 1.0);
+		};
+		/// @ingroup connections
+		/// @brief A conceptual flux between two storages that can be positive as well as negative
+		/// @note The state of the right node is not monitored, hence negative volumes of the right node can occur!
+		///
+		/// \f[ q = q_{spill}^*-q_{suc}^* \\
+		/// q_{spill}^* = q_{spill} \left(\frac{V-V_{spill,min}}{V_{spill,min}}\right)^{\beta_{spill}} \\
+		/// q_{suc}^* = q_{suc} \left(\frac{V_{suc,max}-V}{V_{suc,max}}\right)^{\beta_{suc}} \f]
+		///
+		/// where:
+		///  - \f$q\f$ is the flow to the target
+		///  - \f$q_{spill}^*\f$ is the actual spill flow to the target 
+		///  - \f$q_{spill}\f$ is the spill flow at \f$V = 2V_{spill}\f$
+		///  - \f$q_{suc}^*\f$ is the actual suction flow from the target
+		///  - \f$q_{suc}\f$ is the sucked flow from the target when \f$V=0.0\f$
+		///  - \f$\beta\f$ is a shape forming exponent for spill and suction flow.
+		class bidirectional_kinematic_exchange : public flux_connection {
+		protected:
+			std::tr1::weak_ptr<WaterStorage> source;
+			real calc_q(cmf::math::Time t);
+			void NewNodes() {
+				source = WaterStorage::cast(left_node());
+			}
+		public:
+			/// @brief Suction starts below this threshold volume of source 
+			real Vmaxsuc;
+			/// @brief Spilling starts above this threshold volume of source 
+			real Vminspill;
+			/// @brief Spill flow at 2*Vminspill in m3/day
+			real qspill;
+			/// @brief Suction flow at V=0 m3
+			real qsuc;
+			/// @brief Exponent for suction
+			real beta_suc;
+			/// @brief Exponent for spilling
+			real beta_spill;
+			/// @brief Creates a kinematic wave connection.
+			/// @param source Water storage from which the water flows out. Flux is a function of source.volume
+			/// @param target Target node (boundary condition or storage). Does not influence the strength of the flow
+			/// @param Vmaxsuc Suction starts below this threshold volume of source 
+			/// @param Vminspill Spilling starts above this threshold volume of source 
+			/// @param qspill Spill flow at 2*Vminspill in m3/day
+			/// @param qsuc Suction flow at V=0 m3
+			/// @param beta_suc,beta_spill Exponent for spill / suction flow
+			bidirectional_kinematic_exchange(WaterStorage::ptr source,flux_node::ptr target,
+											real Vminspill,real Vmaxsuc,
+											real qspill,real qsuc,
+											real beta_spill,real beta_suc);
 		};
 		/// @ingroup connections
 		/// @brief Calculates flux out of a storage as a linear function of its volume to a power, constraint by the volume stored in the target storage.

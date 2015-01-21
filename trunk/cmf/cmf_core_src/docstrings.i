@@ -756,6 +756,134 @@ set_states(real *newStates) ";
 returns the number of state variables ";
 
 
+// File: classcmf_1_1water_1_1bidirectional__kinematic__exchange.xml
+%feature("docstring") cmf::water::bidirectional_kinematic_exchange "
+
+A conceptual flux between two storages that can be positive as well as
+negative.
+
+The state of the right node is not monitored, hence negative volumes
+of the right node can occur!  
+
+.. math::
+
+     q = \\\\frac 1 {t_r}
+    {\\\\left(\\\\frac{V - V_{residual}}{V_0} \\\\right)^\\\\beta} 
+
+
+
+C++ includes: simple_connections.h ";
+
+%feature("docstring")
+cmf::water::bidirectional_kinematic_exchange::bidirectional_kinematic_exchange
+"bidirectional_kinematic_exchange(WaterStorage::ptr source,
+flux_node::ptr target, real Vminspill, real Vmaxsuc, real qspill, real
+qsuc, real beta_spill, real beta_suc)
+
+Creates a kinematic wave connection.
+
+Parameters:
+-----------
+
+source:  Water storage from which the water flows out. Flux is a
+function of source.volume
+
+target:  Target node (boundary condition or storage). Does not
+influence the strength of the flow
+
+Vmaxsuc:  Suction starts below this threshold volume of source
+
+Vminspill:  Spilling starts above this threshold volume of source
+
+qspill:  Spill flow at 2*Vminspill in m3/day
+
+qsuc:  Suction flow at V=0 m3
+
+beta_suc:  beta_spill:  Exponent for spill / suction flow ";
+
+%feature("docstring")
+cmf::water::bidirectional_kinematic_exchange::conc "real
+conc(cmf::math::Time t, const cmf::water::solute &_Solute)
+
+Returns the concentration of the flux.
+
+If not overridden, it returns the concentration of the source of the
+flux (direction depending) ";
+
+%feature("docstring")
+cmf::water::bidirectional_kinematic_exchange::exchange_target "void
+exchange_target(flux_node::ptr oldtarget, flux_node::ptr newTarget) ";
+
+%feature("docstring")
+cmf::water::bidirectional_kinematic_exchange::get_ptr "ptr get_ptr()
+const ";
+
+%feature("docstring")
+cmf::water::bidirectional_kinematic_exchange::get_target "flux_node::ptr get_target(const flux_node &inquirer)
+
+Returns the other end of a connection than the asking end. ";
+
+%feature("docstring")
+cmf::water::bidirectional_kinematic_exchange::get_target "flux_node::ptr get_target(int index) const
+
+With index 0, the left node is returned, with index 1 the right node
+of the connection. ";
+
+%feature("docstring")
+cmf::water::bidirectional_kinematic_exchange::get_tracer_filter "real
+get_tracer_filter()
+
+A value ranging from 0 to 1 to filter tracers out of the water flux.
+
+1.0 is no filter and 0.0 means no solute is crossing this connection
+";
+
+%feature("docstring")
+cmf::water::bidirectional_kinematic_exchange::kill_me "bool kill_me()
+
+Deregisters this connection from its nodes. Returns true if only one
+reference is left. ";
+
+%feature("docstring")
+cmf::water::bidirectional_kinematic_exchange::left_node "flux_node::ptr left_node() const
+
+Returns the left node of this connection. ";
+
+%feature("docstring")  cmf::water::bidirectional_kinematic_exchange::q
+"real q(const flux_node &inquirer, cmf::math::Time t)
+
+Returns the current flux through a connection. Negative signs mean out
+of the inquirer, positive are inflows to the inquirer. ";
+
+%feature("docstring")
+cmf::water::bidirectional_kinematic_exchange::refresh "void
+refresh(cmf::math::Time t)
+
+Performes a new calculation of the flux. ";
+
+%feature("docstring")
+cmf::water::bidirectional_kinematic_exchange::right_node "flux_node::ptr right_node() const
+
+returns the right node of this connection ";
+
+%feature("docstring")
+cmf::water::bidirectional_kinematic_exchange::set_tracer_filter "void
+set_tracer_filter(real value)
+
+A value ranging from 0 to 1 to filter tracers out of the water flux.
+
+1.0 is no filter and 0.0 means no solute is crossing this connection
+";
+
+%feature("docstring")
+cmf::water::bidirectional_kinematic_exchange::short_string "virtual
+std::string short_string() const ";
+
+%feature("docstring")
+cmf::water::bidirectional_kinematic_exchange::to_string "virtual
+std::string to_string() const ";
+
+
 // File: classcmf_1_1upslope_1_1_brooks_corey_retention_curve.xml
 %feature("docstring") cmf::upslope::BrooksCoreyRetentionCurve "
 
@@ -11904,12 +12032,36 @@ returns the transpiration rate from one layer in m3/day ";
 
 Calculates snow melt using a simple degree day method.
 
+
+
+.. math::
+
+     q_{melt} [mm/day] = (T-T_{thres}) * r 
+
+
+
+Usage:
+
 C++ includes: surfacefluxes.h ";
 
 %feature("docstring")
 cmf::upslope::connections::SimpleTindexSnowMelt::SimpleTindexSnowMelt
 "SimpleTindexSnowMelt(cmf::water::WaterStorage::ptr snow,
-cmf::water::flux_node::ptr surface_water, cmf::upslope::Cell &cell) ";
+cmf::water::flux_node::ptr surface_water, cmf::upslope::Cell &cell,
+real rate=7.0)
+
+Creates a new snow melt connection.
+
+Parameters:
+-----------
+
+snow:  Snow storage, usually cel.snow
+
+surface_water:  target of the melted water (usually cell.surfacewater)
+
+cell:  The cell, needed to get weather and area
+
+rate:  The rate of snow melt, given in mm/(degC day), default = 7.0 ";
 
 %feature("docstring")
 cmf::upslope::connections::SimpleTindexSnowMelt::conc "real
@@ -14889,9 +15041,7 @@ gradient to be parallel to the topographic slope we get for the flow:
  :math:`s`  is the topographic slope between layer and outlet
 
 TOPMODEL is based on the concept of drained depth, not, as cmf on the
-concept of stored volume. Hence, the drained depth in TOPMODEL is not
-limited to certain maximum, but can, for a sufficient long time
-without rainfall
+concept of stored volume. Hence, negative volumes can occur if
 
 C++ includes: subsurfacefluxes.h ";
 

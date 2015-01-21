@@ -4122,6 +4122,66 @@ class kinematic_wave(flux_connection):
 kinematic_wave_swigregister = _cmf_core.kinematic_wave_swigregister
 kinematic_wave_swigregister(kinematic_wave)
 
+class bidirectional_kinematic_exchange(flux_connection):
+    """
+    A conceptual flux between two storages that can be positive as well as
+    negative.
+
+    The state of the right node is not monitored, hence negative volumes
+    of the right node can occur!  
+
+    .. math::
+
+         q = \\frac 1 {t_r}
+        {\\left(\\frac{V - V_{residual}}{V_0} \\right)^\\beta} 
+
+
+
+    C++ includes: simple_connections.h 
+    """
+    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __repr__ = _swig_repr
+    Vmaxsuc = _swig_property(_cmf_core.bidirectional_kinematic_exchange_Vmaxsuc_get, _cmf_core.bidirectional_kinematic_exchange_Vmaxsuc_set)
+    Vminspill = _swig_property(_cmf_core.bidirectional_kinematic_exchange_Vminspill_get, _cmf_core.bidirectional_kinematic_exchange_Vminspill_set)
+    qspill = _swig_property(_cmf_core.bidirectional_kinematic_exchange_qspill_get, _cmf_core.bidirectional_kinematic_exchange_qspill_set)
+    qsuc = _swig_property(_cmf_core.bidirectional_kinematic_exchange_qsuc_get, _cmf_core.bidirectional_kinematic_exchange_qsuc_set)
+    beta_suc = _swig_property(_cmf_core.bidirectional_kinematic_exchange_beta_suc_get, _cmf_core.bidirectional_kinematic_exchange_beta_suc_set)
+    beta_spill = _swig_property(_cmf_core.bidirectional_kinematic_exchange_beta_spill_get, _cmf_core.bidirectional_kinematic_exchange_beta_spill_set)
+    def __init__(self, *args, **kwargs): 
+        """
+        __init__(cmf::water::bidirectional_kinematic_exchange self, cmf::water::WaterStorage::ptr source, cmf::water::flux_node::ptr target, real Vminspill, 
+            real Vmaxsuc, real qspill, real qsuc, real beta_spill, real beta_suc) -> bidirectional_kinematic_exchange
+
+        bidirectional_kinematic_exchange(WaterStorage::ptr source,
+        flux_node::ptr target, real Vminspill, real Vmaxsuc, real qspill, real
+        qsuc, real beta_spill, real beta_suc)
+
+        Creates a kinematic wave connection.
+
+        Parameters:
+        -----------
+
+        source:  Water storage from which the water flows out. Flux is a
+        function of source.volume
+
+        target:  Target node (boundary condition or storage). Does not
+        influence the strength of the flow
+
+        Vmaxsuc:  Suction starts below this threshold volume of source
+
+        Vminspill:  Spilling starts above this threshold volume of source
+
+        qspill:  Spill flow at 2*Vminspill in m3/day
+
+        qsuc:  Suction flow at V=0 m3
+
+        beta_suc:  beta_spill:  Exponent for spill / suction flow 
+        """
+        _cmf_core.bidirectional_kinematic_exchange_swiginit(self,_cmf_core.new_bidirectional_kinematic_exchange(*args, **kwargs))
+    __swig_destroy__ = _cmf_core.delete_bidirectional_kinematic_exchange
+bidirectional_kinematic_exchange_swigregister = _cmf_core.bidirectional_kinematic_exchange_swigregister
+bidirectional_kinematic_exchange_swigregister(bidirectional_kinematic_exchange)
+
 class constraint_kinematic_wave(flux_connection):
     """
     Calculates flux out of a storage as a linear function of its volume to
@@ -9861,9 +9921,7 @@ class TOPModelFlow(flux_connection):
      :math:`s`  is the topographic slope between layer and outlet
 
     TOPMODEL is based on the concept of drained depth, not, as cmf on the
-    concept of stored volume. Hence, the drained depth in TOPMODEL is not
-    limited to certain maximum, but can, for a sufficient long time
-    without rainfall
+    concept of stored volume. Hence, negative volumes can occur if
 
     C++ includes: subsurfacefluxes.h 
     """
@@ -10145,6 +10203,16 @@ class SimpleTindexSnowMelt(flux_connection):
     """
     Calculates snow melt using a simple degree day method.
 
+
+
+    .. math::
+
+         q_{melt} [mm/day] = (T-T_{thres}) * r 
+
+
+
+    Usage:
+
     C++ includes: surfacefluxes.h 
     """
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
@@ -10152,10 +10220,25 @@ class SimpleTindexSnowMelt(flux_connection):
     SnowMeltRate = _swig_property(_cmf_core.SimpleTindexSnowMelt_SnowMeltRate_get, _cmf_core.SimpleTindexSnowMelt_SnowMeltRate_set)
     def __init__(self, *args, **kwargs): 
         """
-        __init__(cmf::upslope::connections::SimpleTindexSnowMelt self, cmf::water::WaterStorage::ptr snow, cmf::water::flux_node::ptr surface_water, Cell cell) -> SimpleTindexSnowMelt
+        __init__(cmf::upslope::connections::SimpleTindexSnowMelt self, cmf::water::WaterStorage::ptr snow, cmf::water::flux_node::ptr surface_water, Cell cell, 
+            real rate=7.0) -> SimpleTindexSnowMelt
 
         SimpleTindexSnowMelt(cmf::water::WaterStorage::ptr snow,
-        cmf::water::flux_node::ptr surface_water, cmf::upslope::Cell &cell) 
+        cmf::water::flux_node::ptr surface_water, cmf::upslope::Cell &cell,
+        real rate=7.0)
+
+        Creates a new snow melt connection.
+
+        Parameters:
+        -----------
+
+        snow:  Snow storage, usually cel.snow
+
+        surface_water:  target of the melted water (usually cell.surfacewater)
+
+        cell:  The cell, needed to get weather and area
+
+        rate:  The rate of snow melt, given in mm/(degC day), default = 7.0 
         """
         _cmf_core.SimpleTindexSnowMelt_swiginit(self,_cmf_core.new_SimpleTindexSnowMelt(*args, **kwargs))
     def use_for_cell(*args, **kwargs):
