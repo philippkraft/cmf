@@ -755,9 +755,9 @@ void SNOVAP (double TSNOW, double TA, double EA, double UA, double ZA, double HE
 	///  fix for PSNVP overestimate
 	PSNVP = KSNVP * PSNVP;
 }
-cmf::upslope::ET::ShuttleworthWallace::ShuttleworthWallace( cmf::upslope::Cell& _cell) 
+cmf::upslope::ET::ShuttleworthWallace::ShuttleworthWallace( cmf::upslope::Cell& _cell, bool _allow_dew) 
 :	PTR(0.0), ATR_sum(0.0), ATR(), GER(0.0),PIR(0.0),GIR(0.0), PSNVP(0.0), ASNVP(0.0), cell(_cell),KSNVP(1.0),
-	RAA(0.0),RAC(0.0),RAS(0.0),RSS(0.0),RSC(0.0), refresh_counter(0)
+	RAA(0.0),RAC(0.0),RAS(0.0),RSS(0.0),RSC(0.0), refresh_counter(0), allow_dew(_allow_dew)
 {
 	KSNVP = piecewise_linear(cell.vegetation.Height,1,5,1.0,0.3);
 }
@@ -829,6 +829,9 @@ void cmf::upslope::ET::ShuttleworthWallace::refresh( cmf::math::Time t )
 
 	if (snow>0.01) {
 		SNOVAP(w.Tground,w.T,w.e_a,UA,ZA,h,Z0,DISP,Z0C,DISPC,Z0GS,v.LeafWidth,RHOTP,NN,LAI,SAI,KSNVP,PSNVP);
+		if (!allow_dew) {
+			PSNVP = maximum(PSNVP,0.0);
+		}
 	}
 	ASNVP = PSNVP * piecewise_linear(snow,0,1);
 
@@ -869,6 +872,13 @@ void cmf::upslope::ET::ShuttleworthWallace::refresh( cmf::math::Time t )
 		ATR = 0.0;	
 		SWGE(RN,RNground,w.e_s-w.e_a,RAA,RAS,RSS,DELTA,ATR_sum + AIR,GER);
 	}
+	if (!allow_dew) {
+		PTR = maximum(PTR,0.0);
+		GER = maximum(GER,0.0);
+		PIR = maximum(PIR,0.0);
+		GIR = maximum(GIR,0.0);
+	}
+
 }
 
 cmf::upslope::ET::ShuttleworthWallace* cmf::upslope::ET::ShuttleworthWallace::use_for_cell( cmf::upslope::Cell& cell )
