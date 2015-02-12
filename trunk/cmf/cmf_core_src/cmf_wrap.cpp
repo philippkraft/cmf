@@ -72510,6 +72510,58 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_ShuttleworthWallace_allow_dew_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  cmf::upslope::ET::ShuttleworthWallace *arg1 = (cmf::upslope::ET::ShuttleworthWallace *) 0 ;
+  bool arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  bool val2 ;
+  int ecode2 = 0 ;
+  PyObject *swig_obj[2] ;
+  
+  if (!SWIG_Python_UnpackTuple(args,"ShuttleworthWallace_allow_dew_set",2,2,swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__upslope__ET__ShuttleworthWallace, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ShuttleworthWallace_allow_dew_set" "', argument " "1"" of type '" "cmf::upslope::ET::ShuttleworthWallace *""'"); 
+  }
+  arg1 = reinterpret_cast< cmf::upslope::ET::ShuttleworthWallace * >(argp1);
+  ecode2 = SWIG_AsVal_bool(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "ShuttleworthWallace_allow_dew_set" "', argument " "2"" of type '" "bool""'");
+  } 
+  arg2 = static_cast< bool >(val2);
+  if (arg1) (arg1)->allow_dew = arg2;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ShuttleworthWallace_allow_dew_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  cmf::upslope::ET::ShuttleworthWallace *arg1 = (cmf::upslope::ET::ShuttleworthWallace *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  bool result;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__upslope__ET__ShuttleworthWallace, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ShuttleworthWallace_allow_dew_get" "', argument " "1"" of type '" "cmf::upslope::ET::ShuttleworthWallace *""'"); 
+  }
+  arg1 = reinterpret_cast< cmf::upslope::ET::ShuttleworthWallace * >(argp1);
+  result = (bool) ((arg1)->allow_dew);
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_ShuttleworthWallace_set_RSS_parameters(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   double arg1 = (double) 500. ;
@@ -72570,15 +72622,19 @@ fail:
 SWIGINTERN PyObject *_wrap_new_ShuttleworthWallace(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   cmf::upslope::Cell *arg1 = 0 ;
+  bool arg2 = (bool) true ;
   void *argp1 = 0 ;
   int res1 = 0 ;
+  bool val2 ;
+  int ecode2 = 0 ;
   PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
   char *  kwnames[] = {
-    (char *) "cell", NULL 
+    (char *) "cell",(char *) "allow_dew", NULL 
   };
   cmf::upslope::ET::ShuttleworthWallace *result = 0 ;
   
-  if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"O:new_ShuttleworthWallace",kwnames,&obj0)) SWIG_fail;
+  if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"O|O:new_ShuttleworthWallace",kwnames,&obj0,&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_cmf__upslope__Cell,  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_ShuttleworthWallace" "', argument " "1"" of type '" "cmf::upslope::Cell &""'"); 
@@ -72587,9 +72643,16 @@ SWIGINTERN PyObject *_wrap_new_ShuttleworthWallace(PyObject *SWIGUNUSEDPARM(self
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_ShuttleworthWallace" "', argument " "1"" of type '" "cmf::upslope::Cell &""'"); 
   }
   arg1 = reinterpret_cast< cmf::upslope::Cell * >(argp1);
+  if (obj1) {
+    ecode2 = SWIG_AsVal_bool(obj1, &val2);
+    if (!SWIG_IsOK(ecode2)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "new_ShuttleworthWallace" "', argument " "2"" of type '" "bool""'");
+    } 
+    arg2 = static_cast< bool >(val2);
+  }
   {
     try {
-      result = (cmf::upslope::ET::ShuttleworthWallace *)new cmf::upslope::ET::ShuttleworthWallace(*arg1);
+      result = (cmf::upslope::ET::ShuttleworthWallace *)new cmf::upslope::ET::ShuttleworthWallace(*arg1,arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -80311,11 +80374,13 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"ShuttleworthWallace_ATR_get", (PyCFunction)_wrap_ShuttleworthWallace_ATR_get, METH_O, (char *)"ShuttleworthWallace_ATR_get(ShuttleworthWallace self) -> cmf::math::num_array"},
 	 { (char *)"ShuttleworthWallace_KSNVP_set", _wrap_ShuttleworthWallace_KSNVP_set, METH_VARARGS, (char *)"ShuttleworthWallace_KSNVP_set(ShuttleworthWallace self, double KSNVP)"},
 	 { (char *)"ShuttleworthWallace_KSNVP_get", (PyCFunction)_wrap_ShuttleworthWallace_KSNVP_get, METH_O, (char *)"ShuttleworthWallace_KSNVP_get(ShuttleworthWallace self) -> double"},
+	 { (char *)"ShuttleworthWallace_allow_dew_set", _wrap_ShuttleworthWallace_allow_dew_set, METH_VARARGS, (char *)"ShuttleworthWallace_allow_dew_set(ShuttleworthWallace self, bool allow_dew)"},
+	 { (char *)"ShuttleworthWallace_allow_dew_get", (PyCFunction)_wrap_ShuttleworthWallace_allow_dew_get, METH_O, (char *)"ShuttleworthWallace_allow_dew_get(ShuttleworthWallace self) -> bool"},
 	 { (char *)"ShuttleworthWallace_set_RSS_parameters", (PyCFunction) _wrap_ShuttleworthWallace_set_RSS_parameters, METH_VARARGS | METH_KEYWORDS, (char *)"ShuttleworthWallace_set_RSS_parameters(double _RSSa=500., double _RSSb=1.0, double _RSSa_pot=-3.22)"},
 	 { (char *)"new_ShuttleworthWallace", (PyCFunction) _wrap_new_ShuttleworthWallace, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
-		"new_ShuttleworthWallace(Cell cell) -> ShuttleworthWallace\n"
+		"new_ShuttleworthWallace(Cell cell, bool allow_dew=True) -> ShuttleworthWallace\n"
 		"\n"
-		"ShuttleworthWallace(cmf::upslope::Cell &cell)\n"
+		"ShuttleworthWallace(cmf::upslope::Cell &cell, bool allow_dew=true)\n"
 		"\n"
 		"Calculates the transpiration and the soil evaporation from dry\n"
 		"surfaces. \n"
