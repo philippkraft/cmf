@@ -767,10 +767,26 @@ of the right node can occur!
 
 .. math::
 
-     q = \\\\frac 1 {t_r}
-    {\\\\left(\\\\frac{V - V_{residual}}{V_0} \\\\right)^\\\\beta} 
+     q = q_{spill}^*-q_{suc}^* \\\\\\\\
+    q_{spill}^* = q_{spill}
+    \\\\left(\\\\frac{V-V_{spill,min}}{V_{spill,min}}\\\\right)^{\\\\beta_{spill}}
+    \\\\\\\\ q_{suc}^* = q_{suc}
+    \\\\left(\\\\frac{V_{suc,max}-V}{V_{suc,max}}\\\\right)^{\\\\beta_{suc}}
+    
 
 
+
+where:   :math:`q`  is the flow to the target
+
+ :math:`q_{spill}^*`  is the actual spill flow to the target
+
+ :math:`q_{spill}`  is the spill flow at  :math:`V = 2V_{spill}` 
+
+ :math:`q_{suc}^*`  is the actual suction flow from the target
+
+ :math:`q_{suc}`  is the sucked flow from the target when  :math:`V=0.0` 
+
+ :math:`\\\\beta`  is a shape forming exponent for spill and suction flow.
 
 C++ includes: simple_connections.h ";
 
@@ -11976,7 +11992,7 @@ function D0
 C++ includes: ShuttleworthWallace.h ";
 
 %feature("docstring")
-cmf::upslope::ET::ShuttleworthWallace::ShuttleworthWallace "ShuttleworthWallace(cmf::upslope::Cell &cell)
+cmf::upslope::ET::ShuttleworthWallace::ShuttleworthWallace "ShuttleworthWallace(cmf::upslope::Cell &cell, bool allow_dew=true)
 
 Calculates the transpiration and the soil evaporation from dry
 surfaces. ";

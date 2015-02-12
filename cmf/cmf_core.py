@@ -4132,10 +4132,26 @@ class bidirectional_kinematic_exchange(flux_connection):
 
     .. math::
 
-         q = \\frac 1 {t_r}
-        {\\left(\\frac{V - V_{residual}}{V_0} \\right)^\\beta} 
+         q = q_{spill}^*-q_{suc}^* \\\\
+        q_{spill}^* = q_{spill}
+        \\left(\\frac{V-V_{spill,min}}{V_{spill,min}}\\right)^{\\beta_{spill}}
+        \\\\ q_{suc}^* = q_{suc}
+        \\left(\\frac{V_{suc,max}-V}{V_{suc,max}}\\right)^{\\beta_{suc}}
+        
 
 
+
+    where:   :math:`q`  is the flow to the target
+
+     :math:`q_{spill}^*`  is the actual spill flow to the target
+
+     :math:`q_{spill}`  is the spill flow at  :math:`V = 2V_{spill}` 
+
+     :math:`q_{suc}^*`  is the actual suction flow from the target
+
+     :math:`q_{suc}`  is the sucked flow from the target when  :math:`V=0.0` 
+
+     :math:`\\beta`  is a shape forming exponent for spill and suction flow.
 
     C++ includes: simple_connections.h 
     """
@@ -11837,6 +11853,7 @@ class ShuttleworthWallace(transpiration_method,soil_evaporation_method,surface_w
     ATR_sum = _swig_property(_cmf_core.ShuttleworthWallace_ATR_sum_get, _cmf_core.ShuttleworthWallace_ATR_sum_set)
     ATR = _swig_property(_cmf_core.ShuttleworthWallace_ATR_get, _cmf_core.ShuttleworthWallace_ATR_set)
     KSNVP = _swig_property(_cmf_core.ShuttleworthWallace_KSNVP_get, _cmf_core.ShuttleworthWallace_KSNVP_set)
+    allow_dew = _swig_property(_cmf_core.ShuttleworthWallace_allow_dew_get, _cmf_core.ShuttleworthWallace_allow_dew_set)
     def set_RSS_parameters(*args, **kwargs):
         """set_RSS_parameters(double _RSSa=500., double _RSSb=1.0, double _RSSa_pot=-3.22)"""
         return _cmf_core.ShuttleworthWallace_set_RSS_parameters(*args, **kwargs)
@@ -11844,9 +11861,9 @@ class ShuttleworthWallace(transpiration_method,soil_evaporation_method,surface_w
     set_RSS_parameters = staticmethod(set_RSS_parameters)
     def __init__(self, *args, **kwargs): 
         """
-        __init__(cmf::upslope::ET::ShuttleworthWallace self, Cell cell) -> ShuttleworthWallace
+        __init__(cmf::upslope::ET::ShuttleworthWallace self, Cell cell, bool allow_dew=True) -> ShuttleworthWallace
 
-        ShuttleworthWallace(cmf::upslope::Cell &cell)
+        ShuttleworthWallace(cmf::upslope::Cell &cell, bool allow_dew=true)
 
         Calculates the transpiration and the soil evaporation from dry
         surfaces. 

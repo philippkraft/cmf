@@ -101,6 +101,11 @@ namespace cmf {
 				/// are much too low to give reasonable snow evaporation from forests
 				double KSNVP;
 
+				/// If allow_dew is true (default), negative net radiation can lead to the formation of dew 
+				/// and rime. Setting it to false, checks each evapotranspiration term to be negative and turns
+				/// it then to zero.
+				bool allow_dew;
+
 				// Overwrites for methods
 				virtual double transp_from_layer(cmf::upslope::SoilLayer::ptr sl,cmf::math::Time t);
 				virtual double evap_from_layer(cmf::upslope::SoilLayer::ptr sl,cmf::math::Time t);
@@ -125,7 +130,7 @@ namespace cmf {
 
 
 				/// Calculates the transpiration and the soil evaporation from dry surfaces
-				ShuttleworthWallace(cmf::upslope::Cell& cell);
+				ShuttleworthWallace(cmf::upslope::Cell& cell, bool allow_dew=true);
 
 				/// @brief Uses ShuttleworthWallace for the complete ET system of the cell.
 				///
