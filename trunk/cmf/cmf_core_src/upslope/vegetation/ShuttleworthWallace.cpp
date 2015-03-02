@@ -756,7 +756,7 @@ void SNOVAP (double TSNOW, double TA, double EA, double UA, double ZA, double HE
 	PSNVP = KSNVP * PSNVP;
 }
 cmf::upslope::ET::ShuttleworthWallace::ShuttleworthWallace( cmf::upslope::Cell& _cell, bool _allow_dew) 
-:	PTR(0.0), ATR_sum(0.0), ATR(), GER(0.0),PIR(0.0),GIR(0.0), PSNVP(0.0), ASNVP(0.0), cell(_cell),KSNVP(1.0),
+:	PTR(0.0), ATR_sum(0.0), ATR(), GER(0.0),PIR(0.0),GIR(0.0), PSNVP(0.0), ASNVP(0.0), cell(_cell),KSNVP(1.0),AIR(0.0),
 	RAA(0.0),RAC(0.0),RAS(0.0),RSS(0.0),RSC(0.0), refresh_counter(0), allow_dew(_allow_dew)
 {
 	KSNVP = piecewise_linear(cell.vegetation.Height,1,5,1.0,0.3);
@@ -825,7 +825,11 @@ void cmf::upslope::ET::ShuttleworthWallace::refresh( cmf::math::Time t )
 
 	ptrdiff_t i=0;
 	PLNTRES(lc,THICK,STONEF,v.RootLength(),ROOTF,3.5,RPLANT,piecewise_linear(v.Height,0,25,0,0.5),RXYLEM,RROOTI,ALPHA);
-	double UA = w.Windspeed * WNDADJ(ZA,DISP,Z0,5000.,10.,0.005);
+
+	// if wind < 0.2 m/s, set to 0.2 to prevent zero divide (taken from WEATHER in BROOK90)
+	double UW = std::max(w.Windspeed,0.2);
+	
+	double UA = UW * WNDADJ(ZA,DISP,Z0,5000.,10.,0.005);
 
 	if (snow>0.01) {
 		SNOVAP(w.Tground,w.T,w.e_a,UA,ZA,h,Z0,DISP,Z0C,DISPC,Z0GS,v.LeafWidth,RHOTP,NN,LAI,SAI,KSNVP,PSNVP);

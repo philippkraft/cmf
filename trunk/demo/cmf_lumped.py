@@ -20,9 +20,10 @@ con3 = cmf.kinematic_wave(w3,w2,2.)
 w1.volume=1
 
 solver = cmf.RKFIntegrator(p,1e-9)
-
-res = [(w1.volume,w2.volume,w3.volume) for t in solver.run(solver.t,solver.t+cmf.day*10,cmf.h)]
+res = [(w1.volume,w2.volume,w3.volume)]
+res += [(w1.volume,w2.volume,w3.volume) for t in solver.run(solver.t,solver.t+cmf.day*10,cmf.min)]
 
 from pylab import *
 plot(res)
 legend(p.get_storages())
+show()
