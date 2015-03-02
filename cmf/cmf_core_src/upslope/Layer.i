@@ -48,7 +48,7 @@
 
 %immutable cmf::upslope::SoilLayer::cell;
 
-%factory(cmf::upslope::RetentionCurve& cmf::upslope::SoilLayer::get_soil,cmf::upslope::BrooksCoreyRetentionCurve, cmf::upslope::VanGenuchtenMualem);
+%factory(cmf::upslope::RetentionCurve& cmf::upslope::SoilLayer::get_soil,cmf::upslope::BrooksCoreyRetentionCurve, cmf::upslope::VanGenuchtenMualem, cmf::upslope::LinearRetention);
 
 %attribute(cmf::upslope::SoilLayer,real,gravitational_potential,get_gravitational_potential);
 %attribute(cmf::upslope::SoilLayer,real,matrix_potential,get_matrix_potential);

@@ -104,7 +104,7 @@ namespace cmf {
 			cmf::water::flux_connection* connection_to(const cmf::water::flux_node& target);
 			/// @brief Remove the connection
 			bool remove_connection(cmf::water::flux_node::ptr To);
-			/// @brief Returns the actual flux between this and target	(positive sign means "from target into this")
+			/// @brief Returns the actual flux between this and target	(positive sign means "from this into target")
 			real flux_to( const cmf::water::flux_node& target,cmf::math::Time t );
 			cmf::geometry::point flux3d_to(const cmf::water::flux_node& target,cmf::math::Time t );
 			/// @brief Returns the sum of all flux vectors

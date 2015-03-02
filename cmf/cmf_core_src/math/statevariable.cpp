@@ -20,7 +20,7 @@ cmf::math::num_array cmf::math::integratable_list::sum() const
 {
 	num_array res(size());
 	for (size_t i = 0; i < size() ; ++i)
-		res[i] = m_items[i]->avg();
+		res[i] = m_items[i]->sum();
 	return res;
 
 }

@@ -51741,7 +51741,18 @@ SWIGINTERN PyObject *_wrap_SoilLayer_get_soil(PyObject *SWIGUNUSEDPARM(self), Py
       }   
     }/*@SWIG@*/
     
+    /*@SWIG:C:\Program Files (x86)\pythonxy\swig\Lib\typemaps\swigmacros.swg,192,%_formacro_1@*//*@SWIG:C:\Program Files (x86)\pythonxy\swig\Lib\typemaps\factory.swg,72,%_factory_dispatch@*/ 
+    if (!dcast) {
+      cmf::upslope::LinearRetention *dobj = dynamic_cast<cmf::upslope::LinearRetention *>(result);
+      if (dobj) {
+        dcast = 1;
+        resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(dobj),SWIGTYPE_p_cmf__upslope__LinearRetention, 0 |  0 );
+      }   
+    }/*@SWIG@*/
     
+    
+    
+    /*@SWIG@*/
     
     /*@SWIG@*/
     
