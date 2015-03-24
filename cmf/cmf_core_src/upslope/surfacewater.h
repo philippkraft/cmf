@@ -104,7 +104,7 @@ namespace cmf {
 		};
 
 		namespace connections {
-			/// A connection to route water from a SurfaceWater storage to another node
+			/// A connection to route water from a SurfaceWater storage to another node following a topographic gradient
 			///
 			/// \f[q_{runoff} = A_{cross} d_{eff}^{2/3} \frac{\sqrt{S}}{n}\f]
 			/// where:
@@ -150,10 +150,32 @@ namespace cmf {
 				typedef std::tr1::shared_ptr<KinematicSurfaceRunoff> ptr;
 
 			};
+			/// A connection to route water from a SurfaceWater storage to another node following the gradient of the water level
+			///
+			/// \f[q_{runoff} = A_{cross} d_{eff}^{2/3} \frac{\sqrt{S}}{n}\f]
+			/// where:
+			/// - \f$q_{runoff}\f$ is the surface runoff
+			/// - \f$A_{cross}\f$ is the wetted crossectional flux area, given as \f$d_{eff} \cdot w\f$
+			/// - \f$w\f$ is the width of the shared boundary between the surface water storage and the target node
+			/// - \f$d_{eff}\f$ is the effective flow depth of the surface water.The effective flow depth is defined as
+			///   \f[d_{eff} = \begin{cases} V/A-d_{puddle}\ & V/A>d_{puddle} \\ 0.0 & V/A<=d_{puddle} \end{cases}\f]
+			/// - \f$V\f$ the volume of stored water in the surface in \f$m^3\f$
+			/// - \f$A\f$ the area of the cell in \f$m^2\f$
+			/// - \f$d_{puddle}=V_{puddle}/A\f$ the average depth of water in the surface water needed to start run off
+			/// - \f$S = \|\frac{\Delta h\|}{d}\f$ the slope between surfacewater center potential and the target node potential
+			/// - \f$n\f$ the manning roughness
+			///
+			/// The DiffusiveSurfaceRunoff can be used as a cell connecting flux as in:
+			/// @code{.py}
+			/// cmf.connect_cells_with_flux(p, cmf.DiffusiveSurfaceRunoff)
+			/// @endcode
+			/// This results in a connection of the surfacewater storage of each cell with the surface water storages of its neighbors [see](/wiki/CmfTutCell)
 			class DiffusiveSurfaceRunoff : public cmf::water::flux_connection {
 			private:
 				static void connect_cells(cmf::upslope::Cell& c1,cmf::upslope::Cell& c2,ptrdiff_t dummy);
 				std::tr1::weak_ptr<cmf::upslope::SurfaceWater> wleft;
+				std::tr1::weak_ptr<cmf::river::OpenWaterStorage> owright;
+				std::tr1::weak_ptr<cmf::upslope::SurfaceWater> wright;
 				virtual real calc_q(cmf::math::Time t);
 				void NewNodes();
 				real m_distance, m_flowwidth;

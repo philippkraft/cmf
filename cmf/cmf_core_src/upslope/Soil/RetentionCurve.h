@@ -344,27 +344,29 @@ namespace cmf {
 			}
 			LinearRetention(real ksat,real phi, real thickness,real residual_wetness=0.1);
 		};
+#ifdef EXPERIMENTAL
 		/// The VGM_BC_RetentionCurve_Windhorst retention curve. Mixture between the van Genuchten-Mualem retention curve for the actual retention curve and the conductivity at a certain wetness is computed like in BrooksCorey
 		class VGM_BC_RetentionCurve_Windhorst : public VanGenuchtenMualem
-				{
-				public:
-					real
-						eta; ///< Shape parameter of the conductivity curve
+		{
+		public:
+			real
+				eta; ///< Shape parameter of the conductivity curve
 
-					virtual real K(real wetness) const;
+			virtual real K(real wetness) const;
 
-					VGM_BC_RetentionCurve_Windhorst* copy() const
-					{
-						 return new VGM_BC_RetentionCurve_Windhorst(*this);
-					}
-					/// @param Ksat Saturated conductivity in \f$\frac m{day}\f$
-					/// @param phi Porosity in \f$\frac{m^3 Pores}{m^3 Soil}\f$
-					/// @param alpha Van Genuchten \f$\alpha\f$ in \f$\frac 1{cm}\f$
-					/// @param n Van Genuchten n
-					/// @param m Van Genuchten m parameter, if negative m is calculated as \f$ 1-\frac 1 n\f$
-					/// @param eta Shape parameter of the conductivity curve
-					VGM_BC_RetentionCurve_Windhorst(real Ksat=15, real phi=0.5,real alpha=0.2178, real n=1.211, real m=-1,real eta = 9.14);
-				};
+			VGM_BC_RetentionCurve_Windhorst* copy() const
+			{
+					return new VGM_BC_RetentionCurve_Windhorst(*this);
+			}
+			/// @param Ksat Saturated conductivity in \f$\frac m{day}\f$
+			/// @param phi Porosity in \f$\frac{m^3 Pores}{m^3 Soil}\f$
+			/// @param alpha Van Genuchten \f$\alpha\f$ in \f$\frac 1{cm}\f$
+			/// @param n Van Genuchten n
+			/// @param m Van Genuchten m parameter, if negative m is calculated as \f$ 1-\frac 1 n\f$
+			/// @param eta Shape parameter of the conductivity curve
+			VGM_BC_RetentionCurve_Windhorst(real Ksat=15, real phi=0.5,real alpha=0.2178, real n=1.211, real m=-1,real eta = 9.14);
+		};
+#endif
 
 	}
 }
