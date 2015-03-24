@@ -71,16 +71,32 @@ void DiffusiveSurfaceRunoff::connect_cells( cmf::upslope::Cell& cell1,cmf::upslo
 real DiffusiveSurfaceRunoff::calc_q( cmf::math::Time t )
 {
 	SurfaceWater::ptr left = wleft.lock();
-	flux_node::ptr right = right_node();
-	real d = left->get_depth() - left->get_puddledepth();
-	if (d<=0.0) {
-		return 0.0;
-	}
-	real dz = left->get_potential() - right->get_potential();
+	SurfaceWater::ptr sright = wright.lock();
+	cmf::river::OpenWaterStorage::ptr oright = owright.lock();
+	flux_node::ptr nright = right_node();
+	
+	// Depth of left surface water storage
+	real dl = std::max(left->get_depth() - left->get_puddledepth(),0.0);
+
+	// Depth of right node. Discard negative values
+	real dr = std::max(0.0,
+						// For surfacewater: Use depth over puddledepth 
+					   sright ? sright->get_depth()- sright->get_puddledepth() 
+					   // For other openwaterstorage: Use depth
+					:  oright ? oright->get_depth() 
+					// For other node: Use left depth
+					:  dl);
+	// Use mean of left and right depth as intermediate flow depth
+	real d = mean(dl,dr);
+	real dz = left->get_potential() - nright->get_potential();
+	
+	// Get slope
 	real slope = dz/m_distance;
+
+	// Get signed square root for 
 	real s_sqrt = sign(slope) * sqrt(abs(slope));
 
-	// linear slope width is a value in wihcih slope range the slope should be altered
+	// linear slope width is a value in which slope range the slope should be altered
 	// to prevent a singularity in dq/ds
 	if (this->linear_slope_width) {
 		real
@@ -100,4 +116,6 @@ real DiffusiveSurfaceRunoff::calc_q( cmf::math::Time t )
 void DiffusiveSurfaceRunoff::NewNodes()
 {
 	wleft=SurfaceWater::cast(left_node());
+	wright = SurfaceWater::cast(right_node());
+	owright=OpenWaterStorage::cast(right_node());
 }

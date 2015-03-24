@@ -78,3 +78,37 @@ real cmf::upslope::connections::GreenAmptInfiltration::calc_q( cmf::math::Time t
 
 }
 
+
+real cmf::upslope::connections::SimpleInfiltration::calc_q( cmf::math::Time t )
+{
+	using namespace cmf::water;
+	using namespace cmf::upslope;
+	SoilLayer::ptr soilwater=m_soilwater.lock();
+	SurfaceWater::ptr surfacewaterstorage=m_surfacewaterstorage.lock();
+	flux_node::ptr surfacewater=left_node();
+	
+	// Sum the incoming fluxes to the surfacewater
+	real influxes = 0.0;
+	connection_list swcons = surfacewater->get_connections();
+	// Loop through each connection of surface water
+	for(connection_list::const_iterator it = swcons.begin();it!=swcons.end();++it) {
+		flux_connection::ptr con = *it;
+		// Include only non-waterbalance connections and not this
+		if (con->type!="waterbalance connection" && con.get()!=this) {
+			// Sum only incoming fluxes
+			influxes += std::max(0.0, con->q(*surfacewater,t));
+		}
+	}
+	// Potential infiltration (if soil layer is not full)
+	real potinf = std::min(soilwater->get_Ksat() * soilwater->cell.get_area(), influxes);
+	// Get wetness of target
+	real W = soilwater->get_wetness();
+	// Do piecewise linear function
+	real f_full = 1-boltzmann(W,W0,(1-W0)*0.2);
+	return potinf * f_full;
+}
+
+cmf::upslope::connections::SimpleInfiltration::SimpleInfiltration( cmf::upslope::SoilLayer::ptr soilwater,cmf::water::flux_node::ptr surfacewater,real Wfull/*=0.9*/ ) : flux_connection(surfacewater,soilwater,"simple infiltration"),W0(Wfull)
+{
+	NewNodes();
+}

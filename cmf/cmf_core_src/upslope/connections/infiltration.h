@@ -130,6 +130,38 @@ namespace cmf {
 					new cmf::upslope::connections::GreenAmptInfiltration(c.get_layer(0),c.get_surfacewater());
 				}
 			};
+
+			/// @ingroup infiltration
+			/// Connects the surfacewater and the most upper layer using a simplified infiltration model
+			/// suitable for conceptional models. 
+			///
+			/// \f[ q_{inf} = f_{full} \max(q_{in},K_{sat}A) \f]
+			/// where:
+			///   - \f$q_{inf}\f$
+			///   - \f$f_{full} = 1-f(W,W_0,(1-W_0)/5)\f$, where 
+			///        - \f$f(x,x_{1/2},\tau)=\left(1+e^{-(x-x_{1/2})\tau^{-1}}\right)^{-1}\f$ is the Boltzmann function
+			///   - \f$q_{in}\f$ Sum of incoming fluxes to the surfacewater in \f$m^3/day\f$
+			///   - \f$K_{sat}\f$ Saturated conductivity in \f$m/day\f$
+			///   - \f$A\f$ Cell area in \f$m^2\f$
+			class SimpleInfiltration : public cmf::water::flux_connection {
+			protected:
+				std::tr1::weak_ptr<cmf::upslope::SoilLayer> m_soilwater;
+				std::tr1::weak_ptr<cmf::upslope::SurfaceWater> m_surfacewaterstorage;
+				virtual real calc_q(cmf::math::Time t);
+				void NewNodes()
+				{
+					m_soilwater=cmf::upslope::SoilLayer::cast(right_node());
+					m_surfacewaterstorage=cmf::upslope::SurfaceWater::cast(left_node());
+				}
+			public:
+				real W0;
+				SimpleInfiltration(cmf::upslope::SoilLayer::ptr soilwater,cmf::water::flux_node::ptr surfacewater,real W0=0.9);
+				/// Creates the connection between surfacewater and first soil layer
+				static void use_for_cell(cmf::upslope::Cell& c) {
+					new cmf::upslope::connections::SimpleInfiltration(c.get_layer(0),c.get_surfacewater());
+				}
+
+			};
 		}
 	}
 }
