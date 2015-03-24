@@ -212,7 +212,7 @@ cmf::math::Time t) ";
 flux_to(const cmf::water::flux_node &target, cmf::math::Time t)
 
 Returns the actual flux between this and target (positive sign means
-\"from target into this\") ";
+\"from this into target\") ";
 
 %feature("docstring")  cmf::upslope::aquifer::get_3d_flux "cmf::geometry::point get_3d_flux(cmf::math::Time t)
 
@@ -2194,7 +2194,7 @@ cmf::math::Time t) ";
 %feature("docstring")  cmf::atmosphere::ConstantRainSource::flux_to "real flux_to(const cmf::water::flux_node &target, cmf::math::Time t)
 
 Returns the actual flux between this and target (positive sign means
-\"from target into this\") ";
+\"from this into target\") ";
 
 %feature("docstring")
 cmf::atmosphere::ConstantRainSource::get_3d_flux "cmf::geometry::point get_3d_flux(cmf::math::Time t)
@@ -3251,7 +3251,7 @@ cmf::math::Time t) ";
 flux_to(const cmf::water::flux_node &target, cmf::math::Time t)
 
 Returns the actual flux between this and target (positive sign means
-\"from target into this\") ";
+\"from this into target\") ";
 
 %feature("docstring")  cmf::water::DirichletBoundary::get_3d_flux "cmf::geometry::point get_3d_flux(cmf::math::Time t)
 
@@ -3878,7 +3878,7 @@ cmf::math::Time t) ";
 flux_to(const cmf::water::flux_node &target, cmf::math::Time t)
 
 Returns the actual flux between this and target (positive sign means
-\"from target into this\") ";
+\"from this into target\") ";
 
 %feature("docstring")  cmf::water::flux_node::get_3d_flux "cmf::geometry::point get_3d_flux(cmf::math::Time t)
 
@@ -5538,7 +5538,7 @@ cmf::math::Time t) ";
 flux_to(const cmf::water::flux_node &target, cmf::math::Time t)
 
 Returns the actual flux between this and target (positive sign means
-\"from target into this\") ";
+\"from this into target\") ";
 
 %feature("docstring")  cmf::atmosphere::IDWRainfall::get_3d_flux "cmf::geometry::point get_3d_flux(cmf::math::Time t)
 
@@ -7536,7 +7536,7 @@ cmf::math::Time t) ";
 flux_to(const cmf::water::flux_node &target, cmf::math::Time t)
 
 Returns the actual flux between this and target (positive sign means
-\"from target into this\") ";
+\"from this into target\") ";
 
 %feature("docstring")  cmf::upslope::MacroPore::get_3d_flux "cmf::geometry::point get_3d_flux(cmf::math::Time t)
 
@@ -8800,7 +8800,7 @@ cmf::math::Time t) ";
 flux_to(const cmf::water::flux_node &target, cmf::math::Time t)
 
 Returns the actual flux between this and target (positive sign means
-\"from target into this\") ";
+\"from this into target\") ";
 
 %feature("docstring")  cmf::water::NeumannBoundary::get_3d_flux "cmf::geometry::point get_3d_flux(cmf::math::Time t)
 
@@ -9389,7 +9389,7 @@ cmf::math::Time t) ";
 flux_to(const cmf::water::flux_node &target, cmf::math::Time t)
 
 Returns the actual flux between this and target (positive sign means
-\"from target into this\") ";
+\"from this into target\") ";
 
 %feature("docstring")  cmf::river::OpenWaterStorage::get_3d_flux "cmf::geometry::point get_3d_flux(cmf::math::Time t)
 
@@ -10479,7 +10479,7 @@ cmf::atmosphere::RainfallStationReference::flux_to "real
 flux_to(const cmf::water::flux_node &target, cmf::math::Time t)
 
 Returns the actual flux between this and target (positive sign means
-\"from target into this\") ";
+\"from this into target\") ";
 
 %feature("docstring")
 cmf::atmosphere::RainfallStationReference::get_3d_flux "cmf::geometry::point get_3d_flux(cmf::math::Time t)
@@ -10591,7 +10591,7 @@ cmf::math::Time t) ";
 flux_to(const cmf::water::flux_node &target, cmf::math::Time t)
 
 Returns the actual flux between this and target (positive sign means
-\"from target into this\") ";
+\"from this into target\") ";
 
 %feature("docstring")  cmf::atmosphere::RainSource::get_3d_flux "cmf::geometry::point get_3d_flux(cmf::math::Time t)
 
@@ -10747,7 +10747,7 @@ cmf::math::Time t) ";
 cmf::water::flux_node &target, cmf::math::Time t)
 
 Returns the actual flux between this and target (positive sign means
-\"from target into this\") ";
+\"from this into target\") ";
 
 %feature("docstring")  cmf::river::Reach::get_3d_flux "cmf::geometry::point get_3d_flux(cmf::math::Time t)
 
@@ -12042,6 +12042,120 @@ cmf::math::Time t)
 returns the transpiration rate from one layer in m3/day ";
 
 
+// File: classcmf_1_1upslope_1_1connections_1_1_simple_infiltration.xml
+%feature("docstring") cmf::upslope::connections::SimpleInfiltration "
+
+Connects the surfacewater and the most upper layer using a simplified
+infiltration model suitable for conceptional models.
+
+
+
+.. math::
+
+     q_{inf} = f_{full} \\\\max(q_{in},K_{sat}A) 
+
+ where:
+ :math:`q_{inf}` 
+
+ :math:`f_{full} = 1-f(W,W_0,(1-W_0)/5)` , where
+ :math:`f(x,x_{1/2},\\\\tau)=\\\\left(1+e^{-(x-x_{1/2})\\\\tau^{-1}}\\\\right)^{-1}` 
+is the Boltzmann function
+
+ :math:`q_{in}`  Sum of incoming fluxes to the surfacewater in  :math:`m^3/day` 
+
+ :math:`K_{sat}`  Saturated conductivity in  :math:`m/day` 
+
+ :math:`A`  Cell area in  :math:`m^2` 
+
+C++ includes: infiltration.h ";
+
+%feature("docstring")
+cmf::upslope::connections::SimpleInfiltration::SimpleInfiltration "SimpleInfiltration(cmf::upslope::SoilLayer::ptr soilwater,
+cmf::water::flux_node::ptr surfacewater, real W0=0.9) ";
+
+%feature("docstring")
+cmf::upslope::connections::SimpleInfiltration::conc "real
+conc(cmf::math::Time t, const cmf::water::solute &_Solute)
+
+Returns the concentration of the flux.
+
+If not overridden, it returns the concentration of the source of the
+flux (direction depending) ";
+
+%feature("docstring")
+cmf::upslope::connections::SimpleInfiltration::exchange_target "void
+exchange_target(flux_node::ptr oldtarget, flux_node::ptr newTarget) ";
+
+%feature("docstring")
+cmf::upslope::connections::SimpleInfiltration::get_ptr "ptr get_ptr()
+const ";
+
+%feature("docstring")
+cmf::upslope::connections::SimpleInfiltration::get_target "flux_node::ptr get_target(const flux_node &inquirer)
+
+Returns the other end of a connection than the asking end. ";
+
+%feature("docstring")
+cmf::upslope::connections::SimpleInfiltration::get_target "flux_node::ptr get_target(int index) const
+
+With index 0, the left node is returned, with index 1 the right node
+of the connection. ";
+
+%feature("docstring")
+cmf::upslope::connections::SimpleInfiltration::get_tracer_filter "real get_tracer_filter()
+
+A value ranging from 0 to 1 to filter tracers out of the water flux.
+
+1.0 is no filter and 0.0 means no solute is crossing this connection
+";
+
+%feature("docstring")
+cmf::upslope::connections::SimpleInfiltration::kill_me "bool
+kill_me()
+
+Deregisters this connection from its nodes. Returns true if only one
+reference is left. ";
+
+%feature("docstring")
+cmf::upslope::connections::SimpleInfiltration::left_node "flux_node::ptr left_node() const
+
+Returns the left node of this connection. ";
+
+%feature("docstring")
+cmf::upslope::connections::SimpleInfiltration::q "real q(const
+flux_node &inquirer, cmf::math::Time t)
+
+Returns the current flux through a connection. Negative signs mean out
+of the inquirer, positive are inflows to the inquirer. ";
+
+%feature("docstring")
+cmf::upslope::connections::SimpleInfiltration::refresh "void
+refresh(cmf::math::Time t)
+
+Performes a new calculation of the flux. ";
+
+%feature("docstring")
+cmf::upslope::connections::SimpleInfiltration::right_node "flux_node::ptr right_node() const
+
+returns the right node of this connection ";
+
+%feature("docstring")
+cmf::upslope::connections::SimpleInfiltration::set_tracer_filter "void set_tracer_filter(real value)
+
+A value ranging from 0 to 1 to filter tracers out of the water flux.
+
+1.0 is no filter and 0.0 means no solute is crossing this connection
+";
+
+%feature("docstring")
+cmf::upslope::connections::SimpleInfiltration::short_string "virtual
+std::string short_string() const ";
+
+%feature("docstring")
+cmf::upslope::connections::SimpleInfiltration::to_string "virtual
+std::string to_string() const ";
+
+
 // File: classcmf_1_1upslope_1_1connections_1_1_simple_tindex_snow_melt.xml
 %feature("docstring") cmf::upslope::connections::SimpleTindexSnowMelt
 "
@@ -12618,7 +12732,7 @@ cmf::math::Time t) ";
 flux_to(const cmf::water::flux_node &target, cmf::math::Time t)
 
 Returns the actual flux between this and target (positive sign means
-\"from target into this\") ";
+\"from this into target\") ";
 
 %feature("docstring")  cmf::upslope::SoilLayer::get_3d_flux "cmf::geometry::point get_3d_flux(cmf::math::Time t)
 
@@ -13710,7 +13824,7 @@ cmf::math::Time t) ";
 flux_to(const cmf::water::flux_node &target, cmf::math::Time t)
 
 Returns the actual flux between this and target (positive sign means
-\"from target into this\") ";
+\"from this into target\") ";
 
 %feature("docstring")  cmf::upslope::SurfaceWater::get_3d_flux "cmf::geometry::point get_3d_flux(cmf::math::Time t)
 
@@ -14202,7 +14316,7 @@ cmf::math::Time t) ";
 flux_to(const cmf::water::flux_node &target, cmf::math::Time t)
 
 Returns the actual flux between this and target (positive sign means
-\"from target into this\") ";
+\"from this into target\") ";
 
 %feature("docstring")  cmf::water::SystemBridge::get_3d_flux "cmf::geometry::point get_3d_flux(cmf::math::Time t)
 
@@ -14933,7 +15047,7 @@ cmf::math::Time t) ";
 "real flux_to(const cmf::water::flux_node &target, cmf::math::Time t)
 
 Returns the actual flux between this and target (positive sign means
-\"from target into this\") ";
+\"from this into target\") ";
 
 %feature("docstring")
 cmf::atmosphere::TimeseriesRainSource::get_3d_flux "cmf::geometry::point get_3d_flux(cmf::math::Time t)
@@ -15924,243 +16038,6 @@ const
 Returns the average root length in m/m2. ";
 
 
-// File: classcmf_1_1upslope_1_1_v_g_m___b_c___retention_curve___windhorst.xml
-%feature("docstring") cmf::upslope::VGM_BC_RetentionCurve_Windhorst "
-
-The VGM_BC_RetentionCurve_Windhorst retention curve. Mixture between
-the van Genuchten-Mualem retention curve for the actual retention
-curve and the conductivity at a certain wetness is computed like in
-BrooksCorey.
-
-C++ includes: RetentionCurve.h ";
-
-%feature("docstring")
-cmf::upslope::VGM_BC_RetentionCurve_Windhorst::VGM_BC_RetentionCurve_Windhorst
-"VGM_BC_RetentionCurve_Windhorst(real Ksat=15, real phi=0.5, real
-alpha=0.2178, real n=1.211, real m=-1, real eta=9.14)
-
-Parameters:
------------
-
-Ksat:  Saturated conductivity in  :math:`\\\\frac m{day}` 
-
-phi:  Porosity in  :math:`\\\\frac{m^3 Pores}{m^3 Soil}` 
-
-alpha:  Van Genuchten  :math:`\\\\alpha`  in  :math:`\\\\frac 1{cm}` 
-
-n:  Van Genuchten n
-
-m:  Van Genuchten m parameter, if negative m is calculated as  :math:`1-\\\\frac 1 n` 
-
-eta:  Shape parameter of the conductivity curve ";
-
-%feature("docstring")
-cmf::upslope::VGM_BC_RetentionCurve_Windhorst::copy "VGM_BC_RetentionCurve_Windhorst* copy() const ";
-
-%feature("docstring")
-cmf::upslope::VGM_BC_RetentionCurve_Windhorst::Diffusivity "cmf::math::num_array Diffusivity(cmf::math::num_array &wetness) ";
-
-%feature("docstring")
-cmf::upslope::VGM_BC_RetentionCurve_Windhorst::Diffusivity "virtual
-real Diffusivity(real wetness) const
-
-Returns the diffusivity of the soil according to its wetness as given
-by VanGenuchten 1980.
-
-Deprecated The current implementation goes to infinity at saturation,
-as noted by VanGenuchten. Diffusivity is therefore currently not
-usable in any model.
-
-
-
-.. math::
-
-    D(W) = K(W)\\\\left|\\\\frac{d\\\\Psi}{d\\\\theta}\\\\right|\\\\
-    eq. 10
-
- where:   :math:`D(W)`  Diffusivity in  :math:`m^2/day` 
-
- :math:`K(W)`  Conductivity as a function of saturation W in m/day
-
- :math:`\\\\Psi`  Pressure head
-
- :math:`\\\\theta`  water content of the soil
-
-Applying Van Genuchten theory (Van Genuchten 1980) yields to:
-
-
-.. math::
-
-    D(W) = \\\\frac{(1-m)K_{sat}}{\\\\alpha m \\\\Phi}
-    W^{l-1/m}\\\\left(\\\\left(1-W^{1/m}\\\\right)^{-m} +
-    \\\\left(1-W^{1/m}\\\\right)^{m} -2\\\\right)
-
- where:   :math:`m = 1 - \\\\frac 1 n`  acc. Mualem theory
-
- :math:`K_{sat}`  saturated conductivity in m/day
-
- :math:`\\\\alpha`  inverse water entry potential in 1/m. Note  :math:`\\\\alpha`  is
-given in cmf in 1/cm
-
- :math:`\\\\Phi`  porosity
-
- :math:`W = \\\\frac{\\\\theta - \\\\theta_r}{\\\\Phi - \\\\theta_r}` 
-saturation of the soil ";
-
-%feature("docstring")
-cmf::upslope::VGM_BC_RetentionCurve_Windhorst::dPsiM_dW "cmf::math::num_array dPsiM_dW(const cmf::math::num_array &wetness)
-const ";
-
-%feature("docstring")
-cmf::upslope::VGM_BC_RetentionCurve_Windhorst::dPsiM_dW "virtual real
-dPsiM_dW(real wetness) const
-
-returns  :math:`\\\\tfrac{d\\\\Psi_M}{dW}` 
-
-
-
-.. math::
-
-    \\\\frac{0.01 w^{\\\\frac{1}{m}} w^{- \\\\frac{1}{m n}}
-    \\\\left(- w^{\\\\frac{1}{m}} +
-    1\\\\right)^{\\\\frac{1}{n}}}{\\\\alpha m n w \\\\left(-
-    w^{\\\\frac{1}{m}} + 1\\\\right)} + \\\\frac{0.01 w^{- \\\\frac{1}{m
-    n}} \\\\left(- w^{\\\\frac{1}{m}} +
-    1\\\\right)^{\\\\frac{1}{n}}}{\\\\alpha m n w}
-
- ";
-
-%feature("docstring")
-cmf::upslope::VGM_BC_RetentionCurve_Windhorst::FillHeight "virtual
-real FillHeight(real lowerDepth, real Area, real Volume) const
-
-Returns the thickness of a soil column with a certain pore volume. ";
-
-%feature("docstring")
-cmf::upslope::VGM_BC_RetentionCurve_Windhorst::fit_w0 "real
-fit_w0(real w1=1.01, real Psi_p=1.0, real tolerance=0.05)
-
-Fits the break point wetness w0, to ensure a specific oversaturation
-at a given hydrostatic potential.
-
-Parameters:
------------
-
-w1:  The oversaturation wetness to archieve (>1), default = 1.01
-
-Psi_p:  the hydrostatic potential for w1, default = +1.0 m
-
-tolerance:  ";
-
-%feature("docstring")
-cmf::upslope::VGM_BC_RetentionCurve_Windhorst::K "cmf::math::num_array K(const cmf::math::num_array &wetness) const ";
-
-%feature("docstring")
-cmf::upslope::VGM_BC_RetentionCurve_Windhorst::K "virtual real K(real
-wetness) const
-
-returns the conductivity of the soil at a given saturation
-
-
-
-.. math::
-
-    K(W) = K_{sat} \\\\sqrt{W}
-    \\\\left(1-\\\\left(1-W^{1/m}\\\\right)^m\\\\right)^2 
-
- ";
-
-%feature("docstring")
-cmf::upslope::VGM_BC_RetentionCurve_Windhorst::MatricPotential "cmf::math::num_array MatricPotential(const cmf::math::num_array
-&wetness) const ";
-
-%feature("docstring")
-cmf::upslope::VGM_BC_RetentionCurve_Windhorst::MatricPotential "virtual real MatricPotential(real wetness) const
-
-returns the matrix potential at a given saturation
-
-
-
-.. math::
-
-    \\\\Psi(W) = 0.01 \\\\frac{m}{cm}
-    \\\\frac{{\\\\left(1-{W}^{\\\\frac{1}{m}}\\\\right)
-    }^{\\\\frac{1}{n}}}{\\\\alpha\\\\,{W}^{\\\\frac{1}{m\\\\,n}}} 
-
- ";
-
-%feature("docstring")
-cmf::upslope::VGM_BC_RetentionCurve_Windhorst::Porosity "virtual real
-Porosity(real depth) const
-
-Returns the porosity at a certain depth. ";
-
-%feature("docstring")
-cmf::upslope::VGM_BC_RetentionCurve_Windhorst::theta "cmf::math::num_array theta(const cmf::math::num_array &wetness) const
-";
-
-%feature("docstring")
-cmf::upslope::VGM_BC_RetentionCurve_Windhorst::theta "virtual real
-theta(real wetness) const
-
-returns the water content  :math:`theta`  for a given wetness ";
-
-%feature("docstring")
-cmf::upslope::VGM_BC_RetentionCurve_Windhorst::Transmissivity "virtual real Transmissivity(real upperDepth, real lowerDepth, real
-wetness) const ";
-
-%feature("docstring")
-cmf::upslope::VGM_BC_RetentionCurve_Windhorst::VoidVolume "virtual
-real VoidVolume(real upperDepth, real lowerDepth, real Area) const
-
-Returns the void volume of a soil column. ";
-
-%feature("docstring")
-cmf::upslope::VGM_BC_RetentionCurve_Windhorst::Wetness "cmf::math::num_array Wetness(const cmf::math::num_array &suction)
-const ";
-
-%feature("docstring")
-cmf::upslope::VGM_BC_RetentionCurve_Windhorst::Wetness "virtual real
-Wetness(real suction) const
-
-returns the saturation at a given suction (matrix potential).
-
-
-
-.. math::
-
-     W(\\\\Psi) =
-    \\\\left(1+\\\\left(\\\\alpha\\\\,100\\\\frac{cm}{m}\\\\Psi\\\\right)^n\\\\right)^{-m}
-    
-
- ";
-
-%feature("docstring")
-cmf::upslope::VGM_BC_RetentionCurve_Windhorst::Wetness_eff "virtual
-real Wetness_eff(real wetness, real pF_r=4.2) const
-
-Returns the effective wetness, using a residual pF value 
-
-.. math::
-
-    w_{eff}
-    =
-    \\\\frac{w_{act}-w\\\\left(pF_r\\\\right)}{1-w\\\\left(pF_r\\\\right)}
-
-.
-";
-
-%feature("docstring")
-cmf::upslope::VGM_BC_RetentionCurve_Windhorst::Wetness_pF "real
-Wetness_pF(real pF) const
-
-returns the volumetric water content at a given pF value ";
-
-%feature("docstring")
-cmf::upslope::VGM_BC_RetentionCurve_Windhorst::Wetness_pF "cmf::math::num_array Wetness_pF(const cmf::math::num_array &pF) const
-";
-
-
 // File: classcmf_1_1river_1_1volume__height__function.xml
 %feature("docstring") cmf::river::volume_height_function "
 
@@ -16474,7 +16351,7 @@ cmf::math::Time t) ";
 flux_to(const cmf::water::flux_node &target, cmf::math::Time t)
 
 Returns the actual flux between this and target (positive sign means
-\"from target into this\") ";
+\"from this into target\") ";
 
 %feature("docstring")  cmf::water::WaterStorage::get_3d_flux "cmf::geometry::point get_3d_flux(cmf::math::Time t)
 
@@ -18067,7 +17944,19 @@ N_Vector r, N_Vector z, int lr) ";
 
 // File: real_8h.xml
 %feature("docstring")  boltzmann "real boltzmann(real x, real x_half,
-real tau) ";
+real tau)
+
+The boltzmann function, used in cmf at several places where a s-shaped
+curve is needed.
+
+
+
+.. math::
+
+    f(x,x_{1/2},\\\\tau)=\\\\frac{1}{1+e^{-\\\\frac{x-x_{1/2}}{tau}}}
+
+
+";
 
 %feature("docstring")  geo_mean "real geo_mean(real a, real b) ";
 

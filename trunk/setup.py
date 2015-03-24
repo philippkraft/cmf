@@ -44,9 +44,7 @@ boost_path = os.environ.get('BOOSTDIR',r"..\boost_1_41_0")
 
 # No user action required beyond this point
 import datetime
-import shutil
-from distutils.core import setup,Extension
-from distutils.version import LooseVersion as Version
+from setuptools import setup,Extension
 from distutils import log
 try:
     # Import a function to get a path to the include directories of numpy
@@ -64,8 +62,7 @@ if "noopenmp" in sys.argv:
     sys.argv.remove("noopenmp")
 else:
     openmp=True
-pcompile="pcompile" in sys.argv
-if pcompile: sys.argv.remove('pcompile')
+
 def count_lines(files):
     lcount=0
     for fn in files:
@@ -103,7 +100,7 @@ def make_cmf_core():
         if os.path.basename(root)!='debug_scripts':
             cmf_files.extend(os.path.join(root,f) for f in files if is_source_file(f) and f!='cmf_wrap.cpp')
             cmf_headers.extend(os.path.join(root,f) for f in files if f.endswith('.h'))
-    print("Compiling %i source files" % (len(cmf_files)+1))
+    # print("Compiling %i source files" % (len(cmf_files)+1))
     if swig:
         cmf_files.append("cmf/cmf_core_src/cmf.i")
     else:
@@ -118,47 +115,9 @@ def make_cmf_core():
                             swig_opts=['-c++','-Wextra','-w512','-w511','-O','-keyword','-castmode']+extraswig
                         )
     return cmf_core
-def make_raster():
-    if swig:
-        files=['cmf/raster/raster_src/raster.i']
-    else:
-        files=['cmf/raster/raster_src/raster_wrap.cpp']
- 
-    if msvc: 
-        compile_args = ["/EHsc",r'/Fd"build\vc90.pdb"',"/MP"]
-        if openmp: compile_args.append("/openmp")
-        link_args=["/DEBUG"]
-        libraries=None
-    if gcc: 
-        compile_args=['-Wno-comment','-Wno-reorder','-Wno-unused','-Wno-sign-compare']
-        if openmp: compile_args.append('-fopenmp')
-        link_args=["-fopenmp"] if openmp else None
-        libraries = ['gomp'] if openmp else None
-    raster = Extension('cmf.raster._raster',
-                        sources=files,
-                        libraries = libraries,
-                        extra_compile_args=compile_args,
-                        extra_link_args=link_args,
-                        swig_opts=['-c++','-Wextra','-w512','-w511','-keyword','-castmode','-O','-threads']
-                    )
-    return raster
 if __name__=='__main__':
-    if pcompile:
-        import parallelcompile
-        if msvc:
-            import distutils.msvccompiler
-            import distutils.msvc9compiler
-        
-            distutils.msvccompiler.MSVCCompiler.compile = windows_parallel_cpp_compile
-            distutils.msvc9compiler.MSVCCompiler.compile = windows_parallel_cpp_compile
-        else:
-            import distutils.ccompiler
-            distutils.ccompiler.CCompiler.compile = linux_parallel_cpp_compile
      
-    ext = [make_raster(),make_cmf_core()]
-    author = "Philipp Kraft"
-    author_email = "philipp.kraft@umwelt.uni-giessen.de"
-    url = "www.uni-giessen.de/ilr/frede/cmf"
+    ext = [make_cmf_core()]
     description="""
     cmf extends Python by hydrological objects. The objects of the framework, allows the user to create a wide range
     of hydrological models using Python.
@@ -170,8 +129,6 @@ if __name__=='__main__':
             if d.endswith('_src'):
                 dirs.remove(d)
         py_found=[os.path.join(root,f[:-3]).replace('\\','.') for f in files if f.endswith('.py')]
-        if py_found:
-            print('In %s %i modules found' % (root,len(py_found)))
         py.extend(py_found)
     revision = get_revision()
     if 'build' in sys.argv or 'build_py' in sys.argv:
@@ -184,10 +141,10 @@ if __name__=='__main__':
           ext_modules=ext,
           py_modules=py, 
           requires=['numpy (>=1.3)'],
-          author=author,
-          url=url,
+            author = "Philipp Kraft",
+            author_email = "philipp.kraft@umwelt.uni-giessen.de",
+            url = "www.uni-giessen.de/ilr/frede/cmf",
           description=description,
-          author_email=author_email,
           cmdclass={'build_py':build_py},
           )
     #if msvc: shutil.copy('build/lib.win32-2.7/cmf/raster/_raster.pyd','cmf/raster/')

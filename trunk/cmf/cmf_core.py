@@ -552,7 +552,19 @@ def boltzmann(*args, **kwargs):
     boltzmann(real x, real x_half, real tau) -> real
 
     real boltzmann(real x, real x_half,
-    real tau) 
+    real tau)
+
+    The boltzmann function, used in cmf at several places where a s-shaped
+    curve is needed.
+
+
+
+    .. math::
+
+        f(x,x_{1/2},\\tau)=\\frac{1}{1+e^{-\\frac{x-x_{1/2}}{tau}}}
+
+
+
     """
   return _cmf_core.boltzmann(*args, **kwargs)
 
@@ -2442,44 +2454,6 @@ MultiIntegrator.add_states_to_integrator = new_instancemethod(_cmf_core.MultiInt
 MultiIntegrator_swigregister = _cmf_core.MultiIntegrator_swigregister
 MultiIntegrator_swigregister(MultiIntegrator)
 
-class RK23Integrator(Integrator):
-    """
-    An embedded explicit Runge Kutta integrator of order 3(2), known as
-    the Bogacki-Shampine method, with automatic step size control that
-    supports MPI.
-
-    Does not use Integrator's m_dt variable for its step size, but rather
-    an internal variable tau, so that no external changes to m_dt (e.g. by
-    integrate_until) mess up the automatic step size control.
-
-    C++ includes: RK23_MPI.h 
-    """
-    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
-    __repr__ = _swig_repr
-    def __init__(self, *args): 
-        """
-        __init__(cmf::math::RK23Integrator self, StateVariableOwner states, double abstol=1e-6, double reltol=1e-6, Time dt_min=sec) -> RK23Integrator
-        __init__(cmf::math::RK23Integrator self, RK23Integrator other) -> RK23Integrator
-
-        RK23Integrator(const cmf::math::RK23Integrator &other) 
-        """
-        _cmf_core.RK23Integrator_swiginit(self,_cmf_core.new_RK23Integrator(*args))
-    __swig_destroy__ = _cmf_core.delete_RK23Integrator
-    def get_tau(self, *args, **kwargs):
-        """
-        get_tau(RK23Integrator self) -> real
-
-        real
-        get_tau() const
-
-        Return current internal step size. 
-        """
-        return _cmf_core.RK23Integrator_get_tau(self, *args, **kwargs)
-
-RK23Integrator.get_tau = new_instancemethod(_cmf_core.RK23Integrator_get_tau,None,RK23Integrator)
-RK23Integrator_swigregister = _cmf_core.RK23Integrator_swigregister
-RK23Integrator_swigregister(RK23Integrator)
-
 class Adsorption(object):
     """
     Abstract class to use adsorption process for tracers on surfaces.
@@ -3123,7 +3097,7 @@ class flux_node(object):
         flux_to(const cmf::water::flux_node &target, cmf::math::Time t)
 
         Returns the actual flux between this and target (positive sign means
-        "from target into this") 
+        "from this into target") 
         """
         return _cmf_core.flux_node_flux_to(self, *args, **kwargs)
 
@@ -7576,54 +7550,6 @@ LinearRetention.copy = new_instancemethod(_cmf_core.LinearRetention_copy,None,Li
 LinearRetention_swigregister = _cmf_core.LinearRetention_swigregister
 LinearRetention_swigregister(LinearRetention)
 
-class VGM_BC_RetentionCurve_Windhorst(VanGenuchtenMualem):
-    """
-    The VGM_BC_RetentionCurve_Windhorst retention curve. Mixture between
-    the van Genuchten-Mualem retention curve for the actual retention
-    curve and the conductivity at a certain wetness is computed like in
-    BrooksCorey.
-
-    C++ includes: RetentionCurve.h 
-    """
-    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
-    __repr__ = _swig_repr
-    eta = _swig_property(_cmf_core.VGM_BC_RetentionCurve_Windhorst_eta_get, _cmf_core.VGM_BC_RetentionCurve_Windhorst_eta_set)
-    def copy(self, *args, **kwargs):
-        """
-        copy(VGM_BC_RetentionCurve_Windhorst self) -> VGM_BC_RetentionCurve_Windhorst
-
-        VGM_BC_RetentionCurve_Windhorst* copy() const 
-        """
-        return _cmf_core.VGM_BC_RetentionCurve_Windhorst_copy(self, *args, **kwargs)
-
-    def __init__(self, *args, **kwargs): 
-        """
-        __init__(cmf::upslope::VGM_BC_RetentionCurve_Windhorst self, real Ksat=15, real phi=0.5, real alpha=0.2178, real n=1.211, real m=-1, real eta=9.14) -> VGM_BC_RetentionCurve_Windhorst
-
-        VGM_BC_RetentionCurve_Windhorst(real Ksat=15, real phi=0.5, real
-        alpha=0.2178, real n=1.211, real m=-1, real eta=9.14)
-
-        Parameters:
-        -----------
-
-        Ksat:  Saturated conductivity in  :math:`\\frac m{day}` 
-
-        phi:  Porosity in  :math:`\\frac{m^3 Pores}{m^3 Soil}` 
-
-        alpha:  Van Genuchten  :math:`\\alpha`  in  :math:`\\frac 1{cm}` 
-
-        n:  Van Genuchten n
-
-        m:  Van Genuchten m parameter, if negative m is calculated as  :math:`1-\\frac 1 n` 
-
-        eta:  Shape parameter of the conductivity curve 
-        """
-        _cmf_core.VGM_BC_RetentionCurve_Windhorst_swiginit(self,_cmf_core.new_VGM_BC_RetentionCurve_Windhorst(*args, **kwargs))
-    __swig_destroy__ = _cmf_core.delete_VGM_BC_RetentionCurve_Windhorst
-VGM_BC_RetentionCurve_Windhorst.copy = new_instancemethod(_cmf_core.VGM_BC_RetentionCurve_Windhorst_copy,None,VGM_BC_RetentionCurve_Windhorst)
-VGM_BC_RetentionCurve_Windhorst_swigregister = _cmf_core.VGM_BC_RetentionCurve_Windhorst_swigregister
-VGM_BC_RetentionCurve_Windhorst_swigregister(VGM_BC_RetentionCurve_Windhorst)
-
 class SoilLayer(WaterStorage):
     """
     A representation of a SoilLayer.
@@ -10527,6 +10453,57 @@ GreenAmptInfiltration_swigregister(GreenAmptInfiltration)
 def GreenAmptInfiltration_use_for_cell(*args, **kwargs):
   """GreenAmptInfiltration_use_for_cell(Cell c)"""
   return _cmf_core.GreenAmptInfiltration_use_for_cell(*args, **kwargs)
+
+class SimpleInfiltration(flux_connection):
+    """
+    Connects the surfacewater and the most upper layer using a simplified
+    infiltration model suitable for conceptional models.
+
+
+
+    .. math::
+
+         q_{inf} = f_{full} \\max(q_{in},K_{sat}A) 
+
+     where:
+     :math:`q_{inf}` 
+
+     :math:`f_{full} = 1-f(W,W_0,(1-W_0)/5)` , where
+     :math:`f(x,x_{1/2},\\tau)=\\left(1+e^{-(x-x_{1/2})\\tau^{-1}}\\right)^{-1}` 
+    is the Boltzmann function
+
+     :math:`q_{in}`  Sum of incoming fluxes to the surfacewater in  :math:`m^3/day` 
+
+     :math:`K_{sat}`  Saturated conductivity in  :math:`m/day` 
+
+     :math:`A`  Cell area in  :math:`m^2` 
+
+    C++ includes: infiltration.h 
+    """
+    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __repr__ = _swig_repr
+    W0 = _swig_property(_cmf_core.SimpleInfiltration_W0_get, _cmf_core.SimpleInfiltration_W0_set)
+    def __init__(self, *args, **kwargs): 
+        """
+        __init__(cmf::upslope::connections::SimpleInfiltration self, cmf::upslope::SoilLayer::ptr soilwater, cmf::water::flux_node::ptr surfacewater, 
+            real W0=0.9) -> SimpleInfiltration
+
+        SimpleInfiltration(cmf::upslope::SoilLayer::ptr soilwater,
+        cmf::water::flux_node::ptr surfacewater, real W0=0.9) 
+        """
+        _cmf_core.SimpleInfiltration_swiginit(self,_cmf_core.new_SimpleInfiltration(*args, **kwargs))
+    def use_for_cell(*args, **kwargs):
+        """use_for_cell(Cell c)"""
+        return _cmf_core.SimpleInfiltration_use_for_cell(*args, **kwargs)
+
+    use_for_cell = staticmethod(use_for_cell)
+    __swig_destroy__ = _cmf_core.delete_SimpleInfiltration
+SimpleInfiltration_swigregister = _cmf_core.SimpleInfiltration_swigregister
+SimpleInfiltration_swigregister(SimpleInfiltration)
+
+def SimpleInfiltration_use_for_cell(*args, **kwargs):
+  """SimpleInfiltration_use_for_cell(Cell c)"""
+  return _cmf_core.SimpleInfiltration_use_for_cell(*args, **kwargs)
 
 class SWATPercolation(flux_connection):
     """
