@@ -67,7 +67,14 @@ void DiffusiveSurfaceRunoff::connect_cells( cmf::upslope::Cell& cell1,cmf::upslo
 	}
 
 }
-
+real linear_slope_width = 0.0;
+void DiffusiveSurfaceRunoff::set_linear_slope(real width) {
+	if (width>=0.0)
+		linear_slope_width = width;
+}
+real DiffusiveSurfaceRunoff::get_linear_slope() {
+	return linear_slope_width;
+}
 real DiffusiveSurfaceRunoff::calc_q( cmf::math::Time t )
 {
 	SurfaceWater::ptr left = wleft.lock();
@@ -78,34 +85,36 @@ real DiffusiveSurfaceRunoff::calc_q( cmf::math::Time t )
 	// Depth of left surface water storage
 	real dl = std::max(left->get_depth() - left->get_puddledepth(),0.0);
 
-	// Depth of right node. Discard negative values
-	real dr = std::max(0.0,
+	// Depth of right node. 
+	real dr = std::max(0.0, // Discard negative values
 						// For surfacewater: Use depth over puddledepth 
 					   sright ? sright->get_depth()- sright->get_puddledepth() 
-					   // For other openwaterstorage: Use depth
-					:  oright ? oright->get_depth() 
+					// For other openwaterstorage: Use depth over surface of left node
+					:  oright ? oright->get_potential() - left->position.z 
 					// For other node: Use left depth
 					:  dl);
 	// Use mean of left and right depth as intermediate flow depth
 	real d = mean(dl,dr);
-	real dz = left->get_potential() - nright->get_potential();
+	
+	//  Get potential difference
+	real dPsi = left->get_potential() - nright->get_potential();
 	
 	// Get slope
-	real slope = dz/m_distance;
+	real grad = dPsi/m_distance;
 
 	// Get signed square root for 
-	real s_sqrt = sign(slope) * sqrt(abs(slope));
+	real s_sqrt = sign(grad) * sqrt(abs(grad));
 
 	// linear slope width is a value in which slope range the slope should be altered
 	// to prevent a singularity in dq/ds
-	if (this->linear_slope_width) {
+	if (linear_slope_width>0.0) {
 		real
 			// Only a shortcut for faster writing
-			s0 = this->linear_slope_width,
+			s0 = linear_slope_width,
 			// Weight of linear part
-			w_lin = exp(-square((slope/s0))),
+			w_lin = exp(-square((grad/s0))),
 			// linear part using the slope at s0/4 
-			s_lin = slope/(2.*sqrt(s0/4));
+			s_lin =grad/(2.*sqrt(s0/4));
 			// Weighted sum of sqrt(s) and a*s
 		s_sqrt = w_lin * s_lin + (1-w_lin) * s_sqrt;
 	}

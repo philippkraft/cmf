@@ -158,7 +158,13 @@ namespace cmf {
 			/// - \f$A_{cross}\f$ is the wetted crossectional flux area, given as \f$d_{eff} \cdot w\f$
 			/// - \f$w\f$ is the width of the shared boundary between the surface water storage and the target node
 			/// - \f$d_{eff}\f$ is the effective flow depth of the surface water.The effective flow depth is defined as
-			///   \f[d_{eff} = \begin{cases} V/A-d_{puddle}\ & V/A>d_{puddle} \\ 0.0 & V/A<=d_{puddle} \end{cases}\f]
+			///    either the mean of the effective depth of the left and the right node (when use_depthmax=false) or the maximum of 
+			///    the efficitve depth. The effective depth for a surfacewater is always defined as:
+			///    \f[d_{eff} = \begin{cases} V/A-d_{puddle}\ & V/A>d_{puddle} \\ 0.0 & V/A<=d_{puddle} \end{cases}\f]
+			///    The right node might be not a surfacewater. If the right node is an OpenWaterStorage, then the effective depth is 
+			///    the depth of the OWS above the cell height of the left surfacewater, given by:
+			///    \f[d_{eff,ows} = \Psi_{ows} - z_{cell}\f]
+			///    In case of another node, the right node depth equals the effective depth of the left node.
 			/// - \f$V\f$ the volume of stored water in the surface in \f$m^3\f$
 			/// - \f$A\f$ the area of the cell in \f$m^2\f$
 			/// - \f$d_{puddle}=V_{puddle}/A\f$ the average depth of water in the surface water needed to start run off
@@ -180,9 +186,10 @@ namespace cmf {
 				void NewNodes();
 				real m_distance, m_flowwidth;
 			public:
-				real linear_slope_width;
+				static void set_linear_slope(real width);
+				static real get_linear_slope();
 				DiffusiveSurfaceRunoff(cmf::upslope::SurfaceWater::ptr left,cmf::water::flux_node::ptr right,real flowwidth,real distance=-1)
-					: flux_connection(left,right,"Diffusive surface runoff"), m_distance(distance), m_flowwidth(flowwidth),linear_slope_width(0.0) {
+					: flux_connection(left,right,"Diffusive surface runoff"), m_distance(distance), m_flowwidth(flowwidth) {
 
 						NewNodes();
 						if (m_distance<=0) {

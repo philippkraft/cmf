@@ -9352,7 +9352,7 @@ def SurfaceWater_cast(*args, **kwargs):
 class KinematicSurfaceRunoff(flux_connection):
     """
     A connection to route water from a SurfaceWater storage to another
-    node.
+    node following a topographic gradient.
 
 
 
@@ -9431,10 +9431,81 @@ KinematicSurfaceRunoff_swigregister(KinematicSurfaceRunoff)
 KinematicSurfaceRunoff.cell_connector = _cmf_core.cvar.KinematicSurfaceRunoff_cell_connector
 
 class DiffusiveSurfaceRunoff(flux_connection):
-    """Proxy of C++ cmf::upslope::connections::DiffusiveSurfaceRunoff class"""
+    """
+    A connection to route water from a SurfaceWater storage to another
+    node following the gradient of the water level.
+
+
+
+    .. math::
+
+        q_{runoff} = A_{cross} d_{eff}^{2/3}
+        \\frac{\\sqrt{S}}{n}
+
+     where:   :math:`q_{runoff}`  is the surface
+    runoff
+
+     :math:`A_{cross}`  is the wetted crossectional flux area, given as  :math:`d_{eff} \\cdot w` 
+
+     :math:`w`  is the width of the shared boundary between the surface water
+    storage and the target node
+
+     :math:`d_{eff}`  is the effective flow depth of the surface water.The
+    effective flow depth is defined as either the mean of the effective
+    depth of the left and the right node (when use_depthmax=false) or the
+    maximum of the efficitve depth. The effective depth for a surfacewater
+    is always defined as: 
+
+    .. math::
+
+        d_{eff} = \\begin{cases}
+        V/A-d_{puddle}\\ & V/A>d_{puddle} \\\\ 0.0 & V/A<=d_{puddle}
+        \\end{cases}
+
+     The right node might be not a surfacewater. If the
+    right node is an OpenWaterStorage, then the effective depth is the
+    depth of the OWS above the cell height of the left surfacewater, given
+    by: 
+
+    .. math::
+
+        d_{eff,ows} = \\Psi_{ows} - z_{cell}
+
+     In case of
+    another node, the right node depth equals the effective depth of the
+    left node.
+
+     :math:`V`  the volume of stored water in the surface in  :math:`m^3` 
+
+     :math:`A`  the area of the cell in  :math:`m^2` 
+
+     :math:`d_{puddle}=V_{puddle}/A`  the average depth of water in the surface
+    water needed to start run off
+
+     :math:`S = \\|\\frac{\\Delta h\\|}{d}`  the slope between
+    surfacewater center potential and the target node potential
+
+     :math:`n`  the manning roughness
+
+    The DiffusiveSurfaceRunoff can be used as a cell connecting flux as
+    in: This results in a connection of the surfacewater storage of each
+    cell with the surface water storages of its neighborssee
+
+    C++ includes: surfacewater.h 
+    """
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
     __repr__ = _swig_repr
-    linear_slope_width = _swig_property(_cmf_core.DiffusiveSurfaceRunoff_linear_slope_width_get, _cmf_core.DiffusiveSurfaceRunoff_linear_slope_width_set)
+    def set_linear_slope(*args, **kwargs):
+        """set_linear_slope(real width)"""
+        return _cmf_core.DiffusiveSurfaceRunoff_set_linear_slope(*args, **kwargs)
+
+    set_linear_slope = staticmethod(set_linear_slope)
+    def get_linear_slope(*args, **kwargs):
+        """get_linear_slope() -> real"""
+        return _cmf_core.DiffusiveSurfaceRunoff_get_linear_slope(*args, **kwargs)
+
+    get_linear_slope = staticmethod(get_linear_slope)
+    use_depthmax = _swig_property(_cmf_core.DiffusiveSurfaceRunoff_use_depthmax_get, _cmf_core.DiffusiveSurfaceRunoff_use_depthmax_set)
     def __init__(self, *args, **kwargs): 
         """
         __init__(cmf::upslope::connections::DiffusiveSurfaceRunoff self, cmf::upslope::SurfaceWater::ptr left, cmf::water::flux_node::ptr right, real flowwidth, 
@@ -9447,6 +9518,14 @@ class DiffusiveSurfaceRunoff(flux_connection):
     __swig_destroy__ = _cmf_core.delete_DiffusiveSurfaceRunoff
 DiffusiveSurfaceRunoff_swigregister = _cmf_core.DiffusiveSurfaceRunoff_swigregister
 DiffusiveSurfaceRunoff_swigregister(DiffusiveSurfaceRunoff)
+
+def DiffusiveSurfaceRunoff_set_linear_slope(*args, **kwargs):
+  """DiffusiveSurfaceRunoff_set_linear_slope(real width)"""
+  return _cmf_core.DiffusiveSurfaceRunoff_set_linear_slope(*args, **kwargs)
+
+def DiffusiveSurfaceRunoff_get_linear_slope(*args):
+  """DiffusiveSurfaceRunoff_get_linear_slope() -> real"""
+  return _cmf_core.DiffusiveSurfaceRunoff_get_linear_slope(*args)
 DiffusiveSurfaceRunoff.cell_connector = _cmf_core.cvar.DiffusiveSurfaceRunoff_cell_connector
 
 class aquifer(WaterStorage):
