@@ -4030,7 +4030,6 @@ SWIG_From_ptrdiff_t  (ptrdiff_t value)
 #include "math/integrators/RKFintegrator.h"
 #include "math/integrators/cvodeintegrator.h"
 #include "math/integrators/multiintegrator.h"
-//#include "math/integrators/RK23_MPI.h"
 
 
 #define cmf_math_StateVariable_state_get(self_) self_->get_state()
@@ -61349,28 +61348,32 @@ SWIGINTERN PyObject *KinematicSurfaceRunoff_swiginit(PyObject *SWIGUNUSEDPARM(se
   return SWIG_Python_InitShadowInstance(args);
 }
 
-SWIGINTERN PyObject *_wrap_DiffusiveSurfaceRunoff_linear_slope_width_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_DiffusiveSurfaceRunoff_set_linear_slope(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
-  cmf::upslope::connections::DiffusiveSurfaceRunoff *arg1 = (cmf::upslope::connections::DiffusiveSurfaceRunoff *) 0 ;
-  real arg2 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  double val2 ;
-  int ecode2 = 0 ;
-  PyObject *swig_obj[2] ;
+  real arg1 ;
+  double val1 ;
+  int ecode1 = 0 ;
+  PyObject * obj0 = 0 ;
+  char *  kwnames[] = {
+    (char *) "width", NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args,"DiffusiveSurfaceRunoff_linear_slope_width_set",2,2,swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__upslope__connections__DiffusiveSurfaceRunoff, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DiffusiveSurfaceRunoff_linear_slope_width_set" "', argument " "1"" of type '" "cmf::upslope::connections::DiffusiveSurfaceRunoff *""'"); 
-  }
-  arg1 = reinterpret_cast< cmf::upslope::connections::DiffusiveSurfaceRunoff * >(argp1);
-  ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "DiffusiveSurfaceRunoff_linear_slope_width_set" "', argument " "2"" of type '" "real""'");
+  if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"O:DiffusiveSurfaceRunoff_set_linear_slope",kwnames,&obj0)) SWIG_fail;
+  ecode1 = SWIG_AsVal_double(obj0, &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "DiffusiveSurfaceRunoff_set_linear_slope" "', argument " "1"" of type '" "real""'");
   } 
-  arg2 = static_cast< real >(val2);
-  if (arg1) (arg1)->linear_slope_width = arg2;
+  arg1 = static_cast< real >(val1);
+  {
+    try {
+      cmf::upslope::connections::DiffusiveSurfaceRunoff::set_linear_slope(arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+    
+  }
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -61378,26 +61381,61 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_DiffusiveSurfaceRunoff_linear_slope_width_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_DiffusiveSurfaceRunoff_get_linear_slope(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  cmf::upslope::connections::DiffusiveSurfaceRunoff *arg1 = (cmf::upslope::connections::DiffusiveSurfaceRunoff *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject *swig_obj[1] ;
   real result;
   
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__upslope__connections__DiffusiveSurfaceRunoff, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DiffusiveSurfaceRunoff_linear_slope_width_get" "', argument " "1"" of type '" "cmf::upslope::connections::DiffusiveSurfaceRunoff *""'"); 
+  if (!SWIG_Python_UnpackTuple(args,"DiffusiveSurfaceRunoff_get_linear_slope",0,0,0)) SWIG_fail;
+  {
+    try {
+      result = (real)cmf::upslope::connections::DiffusiveSurfaceRunoff::get_linear_slope();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+    
   }
-  arg1 = reinterpret_cast< cmf::upslope::connections::DiffusiveSurfaceRunoff * >(argp1);
-  result = (real) ((arg1)->linear_slope_width);
   resultobj = SWIG_From_double(static_cast< double >(result));
   return resultobj;
 fail:
   return NULL;
+}
+
+
+SWIGINTERN int Swig_var_DiffusiveSurfaceRunoff_use_depthmax_set(PyObject *_val) {
+  {
+    bool val;
+    int res = SWIG_AsVal_bool(_val, &val);
+    if (!SWIG_IsOK(res)) {
+      SWIG_exception_fail(SWIG_ArgError(res), "in variable '""cmf::upslope::connections::DiffusiveSurfaceRunoff::use_depthmax""' of type '""bool""'");
+    }
+    cmf::upslope::connections::DiffusiveSurfaceRunoff::use_depthmax = static_cast< bool >(val);
+  }
+  return 0;
+fail:
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_DiffusiveSurfaceRunoff_use_depthmax_get(void) {
+  PyObject *pyobj = 0;
+  
+  pyobj = SWIG_From_bool(static_cast< bool >(cmf::upslope::connections::DiffusiveSurfaceRunoff::use_depthmax));
+  return pyobj;
+}
+
+
+SWIGINTERN PyObject *_wrap_DiffusiveSurfaceRunoff_use_depthmax_get(PyObject *SWIGUNUSEDPARM(self), PyObject *SWIGUNUSEDPARM(args)) {
+  return Swig_var_DiffusiveSurfaceRunoff_use_depthmax_get();
+}
+
+
+SWIGINTERN PyObject *_wrap_DiffusiveSurfaceRunoff_use_depthmax_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  int res;
+  
+  res = Swig_var_DiffusiveSurfaceRunoff_use_depthmax_set(args);
+  return !res ? SWIG_Py_Void() : NULL;
 }
 
 
@@ -79115,8 +79153,10 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"delete_KinematicSurfaceRunoff", (PyCFunction)_wrap_delete_KinematicSurfaceRunoff, METH_O, (char *)"delete_KinematicSurfaceRunoff(KinematicSurfaceRunoff self)"},
 	 { (char *)"KinematicSurfaceRunoff_swigregister", KinematicSurfaceRunoff_swigregister, METH_VARARGS, NULL},
 	 { (char *)"KinematicSurfaceRunoff_swiginit", KinematicSurfaceRunoff_swiginit, METH_VARARGS, NULL},
-	 { (char *)"DiffusiveSurfaceRunoff_linear_slope_width_set", _wrap_DiffusiveSurfaceRunoff_linear_slope_width_set, METH_VARARGS, (char *)"DiffusiveSurfaceRunoff_linear_slope_width_set(DiffusiveSurfaceRunoff self, real linear_slope_width)"},
-	 { (char *)"DiffusiveSurfaceRunoff_linear_slope_width_get", (PyCFunction)_wrap_DiffusiveSurfaceRunoff_linear_slope_width_get, METH_O, (char *)"DiffusiveSurfaceRunoff_linear_slope_width_get(DiffusiveSurfaceRunoff self) -> real"},
+	 { (char *)"DiffusiveSurfaceRunoff_set_linear_slope", (PyCFunction) _wrap_DiffusiveSurfaceRunoff_set_linear_slope, METH_VARARGS | METH_KEYWORDS, (char *)"DiffusiveSurfaceRunoff_set_linear_slope(real width)"},
+	 { (char *)"DiffusiveSurfaceRunoff_get_linear_slope", (PyCFunction)_wrap_DiffusiveSurfaceRunoff_get_linear_slope, METH_NOARGS, (char *)"DiffusiveSurfaceRunoff_get_linear_slope() -> real"},
+	 { (char *)"DiffusiveSurfaceRunoff_use_depthmax_get", _wrap_DiffusiveSurfaceRunoff_use_depthmax_get, METH_VARARGS, NULL},
+	 { (char *)"DiffusiveSurfaceRunoff_use_depthmax_set", _wrap_DiffusiveSurfaceRunoff_use_depthmax_set, METH_VARARGS, NULL},
 	 { (char *)"new_DiffusiveSurfaceRunoff", (PyCFunction) _wrap_new_DiffusiveSurfaceRunoff, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
 		"new_DiffusiveSurfaceRunoff(cmf::upslope::SurfaceWater::ptr left, cmf::water::flux_node::ptr right, real flowwidth, \n"
 		"    real distance=-1) -> DiffusiveSurfaceRunoff\n"
@@ -82686,6 +82726,7 @@ SWIG_init(void) {
   SWIG_addvarlink(SWIG_globals(),(char*)"Weather_snow_threshold",Swig_var_Weather_snow_threshold_get, Swig_var_Weather_snow_threshold_set);
   SWIG_addvarlink(SWIG_globals(),(char*)"rho_wg",Swig_var_rho_wg_get, Swig_var_rho_wg_set);
   SWIG_addvarlink(SWIG_globals(),(char*)"KinematicSurfaceRunoff_cell_connector",Swig_var_KinematicSurfaceRunoff_cell_connector_get, Swig_var_KinematicSurfaceRunoff_cell_connector_set);
+  SWIG_addvarlink(SWIG_globals(),(char*)"DiffusiveSurfaceRunoff_use_depthmax",Swig_var_DiffusiveSurfaceRunoff_use_depthmax_get, Swig_var_DiffusiveSurfaceRunoff_use_depthmax_set);
   SWIG_addvarlink(SWIG_globals(),(char*)"DiffusiveSurfaceRunoff_cell_connector",Swig_var_DiffusiveSurfaceRunoff_cell_connector_get, Swig_var_DiffusiveSurfaceRunoff_cell_connector_set);
   SWIG_addvarlink(SWIG_globals(),(char*)"Darcy_cell_connector",Swig_var_Darcy_cell_connector_get, Swig_var_Darcy_cell_connector_set);
   SWIG_addvarlink(SWIG_globals(),(char*)"TopographicGradientDarcy_cell_connector",Swig_var_TopographicGradientDarcy_cell_connector_get, Swig_var_TopographicGradientDarcy_cell_connector_set);
