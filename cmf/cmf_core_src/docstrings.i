@@ -3127,7 +3127,68 @@ cmf::upslope::connections::DiffusiveMacroMicroExchange::to_string "virtual std::
 
 // File: classcmf_1_1upslope_1_1connections_1_1_diffusive_surface_runoff.xml
 %feature("docstring")
-cmf::upslope::connections::DiffusiveSurfaceRunoff "";
+cmf::upslope::connections::DiffusiveSurfaceRunoff "
+
+A connection to route water from a SurfaceWater storage to another
+node following the gradient of the water level.
+
+
+
+.. math::
+
+    q_{runoff} = A_{cross} d_{eff}^{2/3}
+    \\\\frac{\\\\sqrt{S}}{n}
+
+ where:   :math:`q_{runoff}`  is the surface
+runoff
+
+ :math:`A_{cross}`  is the wetted crossectional flux area, given as  :math:`d_{eff} \\\\cdot w` 
+
+ :math:`w`  is the width of the shared boundary between the surface water
+storage and the target node
+
+ :math:`d_{eff}`  is the effective flow depth of the surface water.The
+effective flow depth is defined as either the mean of the effective
+depth of the left and the right node (when use_depthmax=false) or the
+maximum of the efficitve depth. The effective depth for a surfacewater
+is always defined as: 
+
+.. math::
+
+    d_{eff} = \\\\begin{cases}
+    V/A-d_{puddle}\\\\ & V/A>d_{puddle} \\\\\\\\ 0.0 & V/A<=d_{puddle}
+    \\\\end{cases}
+
+ The right node might be not a surfacewater. If the
+right node is an OpenWaterStorage, then the effective depth is the
+depth of the OWS above the cell height of the left surfacewater, given
+by: 
+
+.. math::
+
+    d_{eff,ows} = \\\\Psi_{ows} - z_{cell}
+
+ In case of
+another node, the right node depth equals the effective depth of the
+left node.
+
+ :math:`V`  the volume of stored water in the surface in  :math:`m^3` 
+
+ :math:`A`  the area of the cell in  :math:`m^2` 
+
+ :math:`d_{puddle}=V_{puddle}/A`  the average depth of water in the surface
+water needed to start run off
+
+ :math:`S = \\\\|\\\\frac{\\\\Delta h\\\\|}{d}`  the slope between
+surfacewater center potential and the target node potential
+
+ :math:`n`  the manning roughness
+
+The DiffusiveSurfaceRunoff can be used as a cell connecting flux as
+in: This results in a connection of the surfacewater storage of each
+cell with the surface water storages of its neighborssee
+
+C++ includes: surfacewater.h ";
 
 %feature("docstring")
 cmf::upslope::connections::DiffusiveSurfaceRunoff::DiffusiveSurfaceRunoff
@@ -6474,7 +6535,7 @@ std::string to_string() const ";
 cmf::upslope::connections::KinematicSurfaceRunoff "
 
 A connection to route water from a SurfaceWater storage to another
-node.
+node following a topographic gradient.
 
 
 
@@ -11413,189 +11474,6 @@ std::string short_string() const ";
 %feature("docstring")
 cmf::upslope::connections::Richards_lateral::to_string "virtual
 std::string to_string() const ";
-
-
-// File: classcmf_1_1math_1_1_r_k23_integrator.xml
-%feature("docstring") cmf::math::RK23Integrator "
-
-An embedded explicit Runge Kutta integrator of order 3(2), known as
-the Bogacki-Shampine method, with automatic step size control that
-supports MPI.
-
-Does not use Integrator's m_dt variable for its step size, but rather
-an internal variable tau, so that no external changes to m_dt (e.g. by
-integrate_until) mess up the automatic step size control.
-
-C++ includes: RK23_MPI.h ";
-
-/*  Accuracy parameters  */
-
-/*  model time  */
-
-%feature("docstring")  cmf::math::RK23Integrator::get_t "cmf::math::Time get_t() const
-
-Returns the current model time. ";
-
-%feature("docstring")  cmf::math::RK23Integrator::set_t "void
-set_t(cmf::math::Time val)
-
-Sets the current model time. ";
-
-%feature("docstring")  cmf::math::RK23Integrator::get_dt "cmf::math::Time get_dt() const
-
-Returns the last time step. ";
-
-%feature("docstring")  cmf::math::RK23Integrator::reset "virtual void
-reset()
-
-Resets any saved history (for multistep methods) ";
-
-/*  Integrate  */
-
-%feature("docstring")  cmf::math::RK23Integrator::integrate_until "void integrate_until(cmf::math::Time t_max, cmf::math::Time dt=Time(),
-bool reset=false)
-
-Integrates the vector of state variables until t_max.
-
-Parameters:
------------
-
-t_max:   Time, the solver should run to
-
-dt:   Time step (may be omitted)
-
-reset:  If true, solver is reseted before integration starts ";
-
-%feature("docstring")  cmf::math::RK23Integrator::RK23Integrator "RK23Integrator(cmf::math::StateVariableOwner &states, double
-abstol=1e-6, double reltol=1e-6, Time dt_min=cmf::math::sec)
-
-Create a new RK23Integrator integrator.
-
-Parameters:
------------
-
-project:  Project
-
-abstol:  Absolute tolerance for error estimator and step size control.
-
-reltol:  Relative tolerance for error estimator and step size control.
-
-dt_min:  Minimum step size. ";
-
-%feature("docstring")  cmf::math::RK23Integrator::RK23Integrator "RK23Integrator(const cmf::math::RK23Integrator &other) ";
-
-%feature("docstring")  cmf::math::RK23Integrator::~RK23Integrator "~RK23Integrator()
-
-Destructor. ";
-
-%feature("docstring")  cmf::math::RK23Integrator::add_single_state "virtual void add_single_state(cmf::math::StateVariable::ptr state)
-
-Adds a single state variable to the integrator. ";
-
-%feature("docstring")  cmf::math::RK23Integrator::add_states "void
-add_states(cmf::math::StateVariableOwner &stateOwner)
-
-Add state variables from a StateVariableOwner. ";
-
-%feature("docstring")  cmf::math::RK23Integrator::add_values_to_states
-"void add_values_to_states(const num_array &operands)
-
-Adds the values in operands to the current states. ";
-
-%feature("docstring")  cmf::math::RK23Integrator::copy "virtual
-Integrator* copy() const
-
-Polymorphic copy constructor. ";
-
-%feature("docstring")  cmf::math::RK23Integrator::copy_dxdt "void
-copy_dxdt(Time time, num_array &destination, real factor=1) const
-
-Copies the derivatives at time step \"time\" to a numeric vector using
-use_OpenMP.
-
-Parameters:
------------
-
-time:   Time at which the derivatives should be calculated
-
-destination:  Vector to be overwritten by the results
-
-factor:  A factor that is multiplied to the derivate (e.g. unit
-conversion or integration length) ";
-
-%feature("docstring")  cmf::math::RK23Integrator::copy_dxdt "void
-copy_dxdt(Time time, real *destination, real factor=1) const
-
-Copies the derivatives at time step \"time\" to an preallocated c
-array.
-
-Parameters:
------------
-
-time:   Time at which the derivatives should be calculated
-
-destination:  Allocated c array
-
-factor:  A factor that is multiplied to the derivate (e.g. unit
-conversion or integration length) ";
-
-%feature("docstring")  cmf::math::RK23Integrator::copy_states "void
-copy_states(num_array &destination) const
-
-Copies the states to a numeric vector using use_OpenMP. ";
-
-%feature("docstring")  cmf::math::RK23Integrator::copy_states "void
-copy_states(real *destination) const ";
-
-%feature("docstring")  cmf::math::RK23Integrator::get_dxdt "cmf::math::num_array get_dxdt(Time time) const ";
-
-%feature("docstring")  cmf::math::RK23Integrator::get_state "real
-get_state(ptrdiff_t position) const
-
-Returns the statevariable at position Simplifies the assessment of
-state variables. ";
-
-%feature("docstring")  cmf::math::RK23Integrator::get_states "cmf::math::num_array get_states() const ";
-
-%feature("docstring")  cmf::math::RK23Integrator::get_states "StateVariableList get_states()
-
-gets the state variables of the integrator ";
-
-%feature("docstring")  cmf::math::RK23Integrator::get_tau "real
-get_tau() const
-
-Return current internal step size. ";
-
-%feature("docstring")  cmf::math::RK23Integrator::integrate "int
-integrate(Time t_max, Time dt)
-
-Integrates the vector of state variables, either till time t_max or a
-point of time before that, if a small step size is required.
-
-Parameters:
------------
-
-t_max:  Upper boundary for integration interval.
-
-dt:  Ignored. ";
-
-%feature("docstring")  cmf::math::RK23Integrator::set_state "void
-set_state(ptrdiff_t position, real newState)
-
-Simplifies the assessment of state variables. ";
-
-%feature("docstring")  cmf::math::RK23Integrator::set_states "void
-set_states(const num_array &newStates)
-
-Copies the new states to the actual states. ";
-
-%feature("docstring")  cmf::math::RK23Integrator::set_states "void
-set_states(real *newStates) ";
-
-%feature("docstring")  cmf::math::RK23Integrator::size "size_t size()
-const
-
-returns the number of state variables ";
 
 
 // File: classcmf_1_1math_1_1_r_k_f_integrator.xml
@@ -17007,9 +16885,6 @@ boundary condition, providing the potential of the lower node. ";
 
 
 // File: multiintegrator_8h.xml
-
-
-// File: _r_k23___m_p_i_8h.xml
 
 
 // File: _r_k_fintegrator_8h.xml
