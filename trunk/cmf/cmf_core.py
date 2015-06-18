@@ -9505,7 +9505,6 @@ class DiffusiveSurfaceRunoff(flux_connection):
         return _cmf_core.DiffusiveSurfaceRunoff_get_linear_slope(*args, **kwargs)
 
     get_linear_slope = staticmethod(get_linear_slope)
-    use_depthmax = _swig_property(_cmf_core.DiffusiveSurfaceRunoff_use_depthmax_get, _cmf_core.DiffusiveSurfaceRunoff_use_depthmax_set)
     def __init__(self, *args, **kwargs): 
         """
         __init__(cmf::upslope::connections::DiffusiveSurfaceRunoff self, cmf::upslope::SurfaceWater::ptr left, cmf::water::flux_node::ptr right, real flowwidth, 
