@@ -95,13 +95,12 @@ real DiffusiveSurfaceRunoff::calc_q( cmf::math::Time t )
 		dr = oright->get_potential() - left->position.z;
 	} else {	
 		// For other node: Use left depth
-		dr = dr;
+		dr = dl;
 	}
 	dr = std::max(0.0,dr); // Discard negative values
 
 	// Use mean of left and right depth as intermediate flow depth
 	real d = mean(dl,dr);
-	
 	//  Get potential difference
 	real dPsi = left->get_potential() - nright->get_potential();
 	
@@ -109,7 +108,7 @@ real DiffusiveSurfaceRunoff::calc_q( cmf::math::Time t )
 	real grad = dPsi/m_distance;
 
 	// Get signed square root for 
-	real s_sqrt = sign(grad) * sqrt(abs(grad));
+	real s_sqrt = sign(grad) * sqrt(std::abs(grad));
 
 	// linear slope width is a value in which slope range the slope should be altered
 	// to prevent a singularity in dq/ds
