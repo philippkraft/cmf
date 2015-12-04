@@ -233,3 +233,14 @@ int cmf::math::CVodeIntegrator::get_nonlinear_iterations() const
 		throw std::runtime_error("CVode solver is not initialized");
 	}
 }
+
+int cmf::math::CVodeIntegrator::get_rhsevals() const
+{
+	if (cvode_mem) {
+		long result;
+		CVodeGetNumRhsEvals(cvode_mem,&result);
+		return result;
+	} else {
+		throw std::runtime_error("CVode solver is not initialized");
+	}
+}

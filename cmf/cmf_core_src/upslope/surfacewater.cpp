@@ -86,13 +86,19 @@ real DiffusiveSurfaceRunoff::calc_q( cmf::math::Time t )
 	real dl = std::max(left->get_depth() - left->get_puddledepth(),0.0);
 
 	// Depth of right node. 
-	real dr = std::max(0.0, // Discard negative values
-						// For surfacewater: Use depth over puddledepth 
-					   sright ? sright->get_depth()- sright->get_puddledepth() 
-					// For other openwaterstorage: Use depth over surface of left node
-					:  oright ? oright->get_potential() - left->position.z 
-					// For other node: Use left depth
-					:  dl);
+	real dr = 0.0;
+	if (sright.get()) { 
+		// For surfacewater: Use depth over puddledepth 
+		dr = sright->get_depth() - sright->get_puddledepth();
+	} else if (oright.get()) { 
+		// For other openwaterstorage: Use depth over surface of left node
+		dr = oright->get_potential() - left->position.z;
+	} else {	
+		// For other node: Use left depth
+		dr = dr;
+	}
+	dr = std::max(0.0,dr); // Discard negative values
+
 	// Use mean of left and right depth as intermediate flow depth
 	real d = mean(dl,dr);
 	
