@@ -111,6 +111,8 @@ namespace cmf {
 
 			/// Returns the number of non-linear iterations performed. Calls CVodeGetNumNonlinSolvIters
 			int get_nonlinear_iterations() const;
+			/// Returns the number of evaluations of the right hand side of the ODE. Calls CVodeGetNumRhsEvals
+			int get_rhsevals() const;
 
 			CVodeIntegrator * copy() const
 			{
