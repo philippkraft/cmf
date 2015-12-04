@@ -29,7 +29,10 @@ class cell_polygon_map(object):
             self.minvalue=min((self.f(c) for c in self.polygons.iterkeys()))
         for cell,poly in self.polygons.iteritems():
             v=self.f(cell)
-            c=self.cmap((v-self.minvalue)/(self.maxvalue-self.minvalue))
+            if numpy.isfinite(v):
+                c=self.cmap((v-self.minvalue)/(self.maxvalue-self.minvalue))
+            else:
+                c='none'
             poly.set_fc(c)
         if pylab.isinteractive():
             pylab.draw()   

@@ -2378,6 +2378,10 @@ class CVodeIntegrator(Integrator):
         """
         return _cmf_core.CVodeIntegrator_get_nonlinear_iterations(self, *args, **kwargs)
 
+    def get_rhsevals(self, *args, **kwargs):
+        """get_rhsevals(CVodeIntegrator self) -> int"""
+        return _cmf_core.CVodeIntegrator_get_rhsevals(self, *args, **kwargs)
+
     def copy(self, *args, **kwargs):
         """
         copy(CVodeIntegrator self) -> CVodeIntegrator
@@ -2394,6 +2398,7 @@ CVodeIntegrator.initialize = new_instancemethod(_cmf_core.CVodeIntegrator_initia
 CVodeIntegrator.release = new_instancemethod(_cmf_core.CVodeIntegrator_release,None,CVodeIntegrator)
 CVodeIntegrator.get_error = new_instancemethod(_cmf_core.CVodeIntegrator_get_error,None,CVodeIntegrator)
 CVodeIntegrator.get_nonlinear_iterations = new_instancemethod(_cmf_core.CVodeIntegrator_get_nonlinear_iterations,None,CVodeIntegrator)
+CVodeIntegrator.get_rhsevals = new_instancemethod(_cmf_core.CVodeIntegrator_get_rhsevals,None,CVodeIntegrator)
 CVodeIntegrator.copy = new_instancemethod(_cmf_core.CVodeIntegrator_copy,None,CVodeIntegrator)
 CVodeIntegrator_swigregister = _cmf_core.CVodeIntegrator_swigregister
 CVodeIntegrator_swigregister(CVodeIntegrator)
