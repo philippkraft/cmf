@@ -338,7 +338,7 @@ def cells_from_polygons(project,features,
     cells=[]
     cell_dict={}
     q_tree=maps.simple_quad_tree()
-    for f in features:
+    for i,f in enumerate(features):
         center=center_callable(f)
         assert len(center)>2
         area=area_callable(f)
@@ -346,8 +346,8 @@ def cells_from_polygons(project,features,
         c.Id=id_callable(f)
         cells.append(c)
         geometry[c]=shape_callable(f)
-        cell_dict[f]=c
-        q_tree.add_object(f,f.shape.bounds)
+        cell_dict[i]=c
+        q_tree.add_object(i,f.shape.bounds)
     print "No. of connected cells:",
     report_at=[100,500,1000,5000,10000,50000,100000,500000]
     start=time.clock()
@@ -359,17 +359,19 @@ def cells_from_polygons(project,features,
                 print i,
             candidates=q_tree.get_objects(shape_callable(s).bounds)
             cmp_count+=len(candidates)
-            for c in candidates:
+            for ic in candidates:
+                c = features[ic]
                 if not s is c and pred(s,c):
                     shp_s=shape_callable(s)
                     shp_cmp=shape_callable(c)
                     intersect=shp_s.intersection(shp_cmp).length
                     if intersect:
-                        cell_dict[s].topology.AddNeighbor(cell_dict[c],intersect)
+                        cell_dict[i].topology.AddNeighbor(cell_dict[ic],intersect)
                         con_count+=1
         print len(features),' %0.2f sec. %i comparisons' % (time.clock()-start,cmp_count)
     #cmf.Topology.calculate_contributing_area(project)
     return cell_dict  
+    
 def cells_from_dem(project,dem,direction_count=8):
     """ Adds square cells from a dem to the project, and meshes them.
     project         : cmf.project, where the cells should be added to
