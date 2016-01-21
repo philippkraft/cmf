@@ -4440,6 +4440,34 @@ class statecontrol_connection(flux_connection):
 statecontrol_connection_swigregister = _cmf_core.statecontrol_connection_swigregister
 statecontrol_connection_swigregister(statecontrol_connection)
 
+class intensity_control_connection(flux_connection):
+    """Proxy of C++ cmf::water::intensity_control_connection class"""
+    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __repr__ = _swig_repr
+    def influx(self, *args, **kwargs):
+        """influx(intensity_control_connection self, Time t) -> real"""
+        return _cmf_core.intensity_control_connection_influx(self, *args, **kwargs)
+
+    I_min = _swig_property(_cmf_core.intensity_control_connection_I_min_get, _cmf_core.intensity_control_connection_I_min_set)
+    fI_min = _swig_property(_cmf_core.intensity_control_connection_fI_min_get, _cmf_core.intensity_control_connection_fI_min_set)
+    I_max = _swig_property(_cmf_core.intensity_control_connection_I_max_get, _cmf_core.intensity_control_connection_I_max_set)
+    fI_max = _swig_property(_cmf_core.intensity_control_connection_fI_max_get, _cmf_core.intensity_control_connection_fI_max_set)
+    def __init__(self, *args, **kwargs): 
+        """
+        __init__(cmf::water::intensity_control_connection self, cmf::water::flux_node::ptr left, cmf::water::flux_node::ptr right, real I_min=0.0, 
+            real fI_min=0.0, real I_max=1.0, real fI_max=1.0) -> intensity_control_connection
+        """
+        _cmf_core.intensity_control_connection_swiginit(self,_cmf_core.new_intensity_control_connection(*args, **kwargs))
+    def create_mirror(self, *args, **kwargs):
+        """create_mirror(intensity_control_connection self, cmf::water::flux_node::ptr newrightnode) -> intensity_control_connection"""
+        return _cmf_core.intensity_control_connection_create_mirror(self, *args, **kwargs)
+
+    __swig_destroy__ = _cmf_core.delete_intensity_control_connection
+intensity_control_connection.influx = new_instancemethod(_cmf_core.intensity_control_connection_influx,None,intensity_control_connection)
+intensity_control_connection.create_mirror = new_instancemethod(_cmf_core.intensity_control_connection_create_mirror,None,intensity_control_connection)
+intensity_control_connection_swigregister = _cmf_core.intensity_control_connection_swigregister
+intensity_control_connection_swigregister(intensity_control_connection)
+
 class node_list(StateVariableOwner):
     """
     A collection of nodes for fast access of the waterbalance.
