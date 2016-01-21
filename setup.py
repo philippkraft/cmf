@@ -57,6 +57,11 @@ if "swig" in sys.argv:
     sys.argv.remove("swig")
 else:
     swig=False
+if "raster" in sys.argv:
+    makeraster=True
+    sys.argv.remove('raster')
+else:
+    makeraster=False
 if "noopenmp" in sys.argv:
     openmp=False
     sys.argv.remove("noopenmp")
@@ -115,9 +120,38 @@ def make_cmf_core():
                             swig_opts=['-c++','-Wextra','-w512','-w511','-O','-keyword','-castmode']+extraswig
                         )
     return cmf_core
+def make_raster():
+    print '*' * 50
+    print 'Make raster extension'
+    print '*' * 50
+    if swig:
+        files=['cmf/raster/raster_src/raster.i']
+    else:
+        files=['cmf/raster/raster_src/raster_wrap.cpp']
+ 
+    if msvc: 
+        compile_args = ["/EHsc",r'/Fd"build\vc90.pdb"',"/MP"]
+        if openmp: compile_args.append("/openmp")
+        link_args=["/DEBUG"]
+        libraries=None
+    if gcc: 
+        compile_args=['-Wno-comment','-Wno-reorder','-Wno-unused','-Wno-sign-compare']
+        if openmp: compile_args.append('-fopenmp')
+        link_args=["-fopenmp"] if openmp else None
+        libraries = ['gomp'] if openmp else None
+    raster = Extension('cmf.raster._raster',
+                        sources=files,
+                        libraries = libraries,
+                        extra_compile_args=compile_args,
+                        extra_link_args=link_args,
+                        swig_opts=['-c++','-Wextra','-w512','-w511','-keyword','-castmode','-O','-threads']
+                    )
+    return raster
 if __name__=='__main__':
-     
-    ext = [make_cmf_core()]
+    if makeraster:
+        ext = [make_raster(),make_cmf_core()]
+    else:
+        ext = [make_cmf_core()]
     description="""
     cmf extends Python by hydrological objects. The objects of the framework, allows the user to create a wide range
     of hydrological models using Python.

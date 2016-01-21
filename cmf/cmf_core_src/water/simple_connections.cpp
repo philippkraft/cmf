@@ -119,3 +119,55 @@ cmf::water::bidirectional_kinematic_exchange::bidirectional_kinematic_exchange(
 {
 	NewNodes();
 }
+
+cmf::water::intensity_control_connection::intensity_control_connection( flux_node::ptr left,flux_node::ptr right, 
+	real _I_min/*=0.0*/, real _fI_min/*=0.0*/, 
+	real _I_max/*=1.0*/, real _fI_max/*=1.0*/ )
+	: flux_connection(left,right,"Influx intensity controlled connection"),
+		I_min(_I_min), I_max(_I_max), fI_min(_fI_min), fI_max(_fI_max)
+{
+	NewNodes();
+}
+
+real cmf::water::intensity_control_connection::calc_q( cmf::math::Time t )
+{
+
+	real waterbalance = this->influx(t);
+
+	if (waterbalance>=this->I_max) {
+		return waterbalance * this->fI_max;
+	} else if (waterbalance<=this->I_min) {
+		return waterbalance * this->fI_min;
+	} else {
+		real rI = (waterbalance-this->I_min)/(this->I_max-this->I_min);
+		real fI = rI * (this->fI_max-this->fI_min) + this->fI_min;
+		return waterbalance * fI;
+	}
+
+
+}
+
+cmf::water::intensity_control_connection* cmf::water::intensity_control_connection::create_mirror( flux_node::ptr newrightnode )
+{
+	return new intensity_control_connection(
+		this->left_node(),newrightnode,
+		this->I_min, 1. - this->fI_min, 
+		this->I_max, 1. - this->fI_max);
+
+}
+
+real cmf::water::intensity_control_connection::influx( cmf::math::Time t )
+{
+	flux_node::ptr left = this->left_node();
+	connection_list connections = left->get_connections();
+	// Calculate the water balance of the left node (waterbalance), but without any intensity_control_connection object.
+	real waterbalance=0;
+	for (connection_list::const_iterator it = connections.begin(); it!=connections.end();++it) {
+		flux_connection* conn = it->get();
+		if (dynamic_cast<intensity_control_connection*>(conn) == 0) {
+			waterbalance+=conn->q((*left),t);
+		}
+	}
+	return waterbalance;
+
+}

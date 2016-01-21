@@ -303,7 +303,36 @@ namespace cmf {
 		};
 
 
+		class intensity_control_connection
+			: public flux_connection
+		{
+		protected:
+			virtual real calc_q(cmf::math::Time t);
+			void NewNodes() {
 
+			}
+		public:
+			real influx(cmf::math::Time t);
+			/// Minimum in-flux to left node resulting in flux fraction fI_min
+			real I_min;
+			/// Fraction of in-flux leaving to this connection at I_min
+			real fI_min;
+			/// Maximum in-flux to left node resulting in a flux of \f$I
+			real I_max;
+			/// Fraction of in-flux leaving to this connection at I_min
+			real fI_max;
+			/// @brief Creates a flux connection to control the state of a storage
+			///
+			/// @param controlled_storage Water storage, to be controlled
+			/// @param other_end source of missing water or target of excessive water
+			/// @param target_state State the controlled storage should hold (\f$h_{target}\f$)
+			/// @param reaction_time Time to reach state (\f$t_c\f$)
+			intensity_control_connection(flux_node::ptr left,flux_node::ptr right, real I_min=0.0, real fI_min=0.0, real I_max=1.0, real fI_max=1.0);
+
+			/// Returns a new intensity_control_connection providing the mirror parameters (adds up to the influx)
+			/// of this connection
+			intensity_control_connection* create_mirror(flux_node::ptr newrightnode);
+		};
 
 	}
 	
