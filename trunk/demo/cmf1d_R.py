@@ -70,10 +70,11 @@ def load_meteo(project):
 # A function to create a retention curve (used for the whole profile) 
 # for a specific depth, using an exponential decline function for Ksat with depth
 def soiltype(depth):
-    return cmf.BrooksCoreyRetentionCurve(ksat=15*exp(-d),
-                                         porosity=0.5,
-                                         _b=5.5,
-                                         theta_x=0.35)
+    return cmf.VanGenuchtenMualem(Ksat=15*exp(-d),
+                                         phi=0.5,
+                                         n=1.5,
+                                         alpha=0.3
+                                         )
 
 # Create a project with one solute X
 p=cmf.project()
@@ -107,7 +108,7 @@ cmf.Richards(c.layers[-1],groundwater)
 # load meteorological data
 load_meteo(p)
 # Make solver
-solver=cmf.CVodeIntegrator(p,1e-6)
+solver=cmf.CVodeIntegrator(p,1e-12)
 solver.t=cmf.Time(1,11,1980)
 
 def run(until=cmf.year,dt=cmf.day):
@@ -128,7 +129,7 @@ def run(until=cmf.year,dt=cmf.day):
         # store the actual wetness
         wetness.append(c.layers.wetness)
         # Print, at which time step you are
-        #print "%s - %6.2fm3/day" % (t,groundwater(t))
+        print ("\r%s - %6.2fm3/day, %i rhs-eval" % (t,groundwater(t), solver.get_nonlinear_iterations())),
     return outflow,wetness
 
 def plotresult(outflow,wetness):

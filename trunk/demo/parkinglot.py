@@ -42,11 +42,8 @@ for c in p:
     c.add_layer(0.1, cmf.VanGenuchtenMualem(Ksat=0.005))
     c.install_connection(cmf.GreenAmptInfiltration)
 
-for c in p:
-    for n,w in c.neighbors:
-        dw=cmf.DiffusiveSurfaceRunoff(c.surfacewater,n.surfacewater,w)
-        dw.linear_slope_width = 0.001
-#cmf.connect_cells_with_flux(p, cmf.DiffusiveSurfaceRunoff)
+cmf.DiffusiveSurfaceRunoff.set_linear_slope(1e-8)
+cmf.connect_cells_with_flux(p, cmf.DiffusiveSurfaceRunoff)
 outlet = p.NewOutlet('outlet',-length,0,-slope*length)
 #for j in range(size[1]):
 #    for i in range(size[0]):
@@ -63,6 +60,8 @@ def setrain(rainfall):
 solver = cmf.CVodeIntegrator(p,1e-9)
 setrain(10.*24.)
 def getdepth():
+    return np.array([[cells[i,j].surfacewater.depth for i in range(size[0])] for j in range(size[1])])
+def getpot():
     return np.array([[cells[i,j].surfacewater.depth for i in range(size[0])] for j in range(size[1])])
 #%%
 fig,ax = plt.subplots()
