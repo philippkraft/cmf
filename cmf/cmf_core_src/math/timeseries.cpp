@@ -23,6 +23,7 @@
 #include <limits>
 #include <iostream>
 #include <fstream>
+#include <algorithm>
 inline bool isfinite(real v)
 {
 	typedef  std::numeric_limits<real> limit;

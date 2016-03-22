@@ -49,11 +49,11 @@ void flux_connection::exchange_target( flux_node::ptr oldtarget,flux_node::ptr n
 	right_node()->DeregisterConnection(this);
 	if (oldtarget==left_node())
 	{
-		m_left = std::tr1::weak_ptr<flux_node>(newTarget);
+		m_left = std::weak_ptr<flux_node>(newTarget);
 	}
 	else if (oldtarget==right_node())
 	{
-		m_right = std::tr1::weak_ptr<flux_node>(newTarget);
+		m_right = std::weak_ptr<flux_node>(newTarget);
 	}
 	left_node()->RegisterConnection(this);
 	right_node()->RegisterConnection(this);

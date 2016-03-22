@@ -28,7 +28,7 @@
 #include <set>
 #include <string>
 #include <stdexcept>
-#include <tr1/memory>
+#include "../cmfmemory.h"
 #include <algorithm>
 
 #include "../math/num_array.h"
@@ -54,15 +54,15 @@ namespace cmf {
 		/// is needed.
 		class flux_node 
 #ifndef SWIG
-			: public std::tr1::enable_shared_from_this<flux_node> 
+			: public std::enable_shared_from_this<flux_node> 
 #endif
 		{
 		public:
 			/// Shortcut to the shared pointer
-			typedef std::tr1::shared_ptr<cmf::water::flux_node> ptr;
+			typedef std::shared_ptr<cmf::water::flux_node> ptr;
 		private:
 			// Pointer for a connection
-			typedef std::tr1::shared_ptr<flux_connection> con_ptr;
+			typedef std::shared_ptr<flux_connection> con_ptr;
 			// Registers a newly build connection
 			void RegisterConnection(flux_connection* newConnection);
 			// Deregisters a connection, and kills it
@@ -160,7 +160,7 @@ namespace cmf {
 			double _sum;
 			cmf::math::Time _start_time;
 			cmf::math::Time _t;
-			std::tr1::weak_ptr<flux_node> _node;
+			std::weak_ptr<flux_node> _node;
 			std::string _name;
 
 		public:
@@ -207,7 +207,7 @@ namespace cmf {
 				flux_node* fn;
 				node_ref_inner(flux_node* node) : fn(node) {}
 			};
-			typedef std::tr1::shared_ptr<node_ref_inner> inner_ptr;
+			typedef std::shared_ptr<node_ref_inner> inner_ptr;
 			inner_ptr m_ref;
 			node_ref(flux_node* fn) : m_ref(inner_ptr(new node_ref_inner(fn))) {}
 			void kill_node() {

@@ -888,7 +888,7 @@ void cmf::upslope::ET::ShuttleworthWallace::refresh( cmf::math::Time t )
 cmf::upslope::ET::ShuttleworthWallace* cmf::upslope::ET::ShuttleworthWallace::use_for_cell( cmf::upslope::Cell& cell )
 {
 	// Create a shared ptr of a Shuttlewroth Wallace semantic
-	std::tr1::shared_ptr<ShuttleworthWallace> sw(new ShuttleworthWallace(cell));
+	std::shared_ptr<ShuttleworthWallace> sw(new ShuttleworthWallace(cell));
 	// Create a connection between cell.transpiration and each soil layer
 	for(layer_list::const_iterator it = cell.get_layers().begin(); it != cell.get_layers().end(); ++it)	{
 		new transpiration(*it,cell.get_transpiration(),sw,"Shuttleworth - Wallace");

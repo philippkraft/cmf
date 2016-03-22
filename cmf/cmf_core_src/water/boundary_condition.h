@@ -61,9 +61,9 @@ namespace cmf {
 			typedef std::map<solute,real> conc_map;
 			conc_map m_concentration;
 		public:
-			typedef std::tr1::shared_ptr<cmf::water::DirichletBoundary> ptr;
+			typedef std::shared_ptr<cmf::water::DirichletBoundary> ptr;
 #ifndef SWIG
-			operator ptr() {return std::tr1::static_pointer_cast<DirichletBoundary>(shared_from_this());}
+			operator ptr() {return std::static_pointer_cast<DirichletBoundary>(shared_from_this());}
 #endif
 			real get_potential() const
 			{
@@ -95,9 +95,9 @@ namespace cmf {
 		class NeumannBoundary : public cmf::water::flux_node
 		{
 		public:
-			typedef std::tr1::shared_ptr<cmf::water::NeumannBoundary> ptr;
+			typedef std::shared_ptr<cmf::water::NeumannBoundary> ptr;
 #ifndef SWIG
-			operator ptr() {return std::tr1::static_pointer_cast<NeumannBoundary>(shared_from_this());}
+			operator ptr() {return std::static_pointer_cast<NeumannBoundary>(shared_from_this());}
 		#endif
 		protected:
 
@@ -162,14 +162,14 @@ namespace cmf {
 		class NeumannFlux : public cmf::water::flux_connection
 		{
 		protected:
-			std::tr1::weak_ptr<NeumannBoundary> m_bc;
+			std::weak_ptr<NeumannBoundary> m_bc;
 			void NewNodes()
 			{
-				m_bc=std::tr1::static_pointer_cast<NeumannBoundary> (left_node());
+				m_bc=std::static_pointer_cast<NeumannBoundary> (left_node());
 			}
 			real calc_q(cmf::math::Time t);
 		public:
-			NeumannFlux(std::tr1::shared_ptr<NeumannBoundary> left,cmf::water::flux_node::ptr right)
+			NeumannFlux(std::shared_ptr<NeumannBoundary> left,cmf::water::flux_node::ptr right)
 				: flux_connection(left,right,"Neumann boundary flux")
 			{
 				NewNodes();

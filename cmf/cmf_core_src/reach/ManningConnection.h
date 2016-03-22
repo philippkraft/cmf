@@ -59,7 +59,7 @@ namespace cmf {
 
 			virtual real get_slope(cmf::water::flux_node::ptr lnode, cmf::water::flux_node::ptr rnode, real d)=0;
 			static void connect_cells(cmf::upslope::Cell& c1,cmf::upslope::Cell& c2,bool is_diffusive_wave);
-			std::tr1::weak_ptr<cmf::river::OpenWaterStorage> w1,w2;
+			std::weak_ptr<cmf::river::OpenWaterStorage> w1,w2;
 			virtual real calc_q(cmf::math::Time t);
 			void NewNodes()
 			{
@@ -76,7 +76,7 @@ namespace cmf {
 			bool is_diffusive_wave;
 			cmf::river::volume_height_function flux_geometry;
 
-			typedef std::tr1::shared_ptr<Manning> ptr;
+			typedef std::shared_ptr<Manning> ptr;
 
 
 		};
@@ -103,7 +103,7 @@ namespace cmf {
 		protected:
 			virtual real get_slope(cmf::water::flux_node::ptr lnode, cmf::water::flux_node::ptr rnode, real d);
 		public:
-			typedef std::tr1::shared_ptr<Manning_Diffusive> ptr;
+			typedef std::shared_ptr<Manning_Diffusive> ptr;
 			static const cmf::upslope::CellConnector cell_connector;
 			/// A parameter to linearize the dependency of q on slope during levelling out
 			real linear_slope_width;
@@ -138,7 +138,7 @@ namespace cmf {
 		protected:
 			virtual real get_slope(cmf::water::flux_node::ptr lnode, cmf::water::flux_node::ptr rnode, real d);
 		public:
-			typedef std::tr1::shared_ptr<Manning_Kinematic> ptr;
+			typedef std::shared_ptr<Manning_Kinematic> ptr;
 			static const cmf::upslope::CellConnector cell_connector;
 			/// Creates a kinematic wave connection between to open water storages.
 			///
@@ -153,7 +153,7 @@ namespace cmf {
 		class KinematicSheetFlow: public cmf::water::flux_connection {
 		protected:
 			static void connect_cells(cmf::upslope::Cell& c1,cmf::upslope::Cell& c2, int i);
-			std::tr1::weak_ptr<cmf::river::OpenWaterStorage> w1,w2;
+			std::weak_ptr<cmf::river::OpenWaterStorage> w1,w2;
 			virtual real calc_q(cmf::math::Time t);
 			void NewNodes()
 			{
@@ -162,7 +162,7 @@ namespace cmf {
 			}
 
 		public:
-			typedef std::tr1::shared_ptr<Manning> ptr;
+			typedef std::shared_ptr<Manning> ptr;
 			static const cmf::upslope::CellConnector cell_connector;
 			KinematicSheetFlow(cmf::river::OpenWaterStorage::ptr left,cmf::water::flux_node::ptr right)
 				: flux_connection(left,right,"Kinematic sheet overland flow")

@@ -35,8 +35,8 @@ namespace cmf {
 			/// An abstract base class for lateral subsurface fluxes
 			class lateral_sub_surface_flux : public cmf::water::flux_connection {
 			protected:
-				std::tr1::weak_ptr<cmf::upslope::SoilLayer> sw1,sw2;
-				std::tr1::weak_ptr<cmf::upslope::conductable> c2;
+				std::weak_ptr<cmf::upslope::SoilLayer> sw1,sw2;
+				std::weak_ptr<cmf::upslope::conductable> c2;
 				real 
 					flow_width, distance;
 
@@ -184,7 +184,7 @@ namespace cmf {
 			class TOPModelFlow : public cmf::water::flux_connection {
 			protected:
 				virtual real calc_q(cmf::math::Time t);
-				std::tr1::weak_ptr<cmf::upslope::SoilLayer> sw1;
+				std::weak_ptr<cmf::upslope::SoilLayer> sw1;
 				virtual void NewNodes() {
 					sw1 = cmf::upslope::SoilLayer::cast(this->left_node());
 				}

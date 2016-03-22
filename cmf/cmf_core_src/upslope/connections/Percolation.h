@@ -41,7 +41,7 @@ namespace cmf {
 			/// 
 			class SWATPercolation : public cmf::water::flux_connection {
 			protected:
-				std::tr1::weak_ptr<cmf::upslope::SoilLayer> sw1,sw2;
+				std::weak_ptr<cmf::upslope::SoilLayer> sw1,sw2;
 				void NewNodes()
 				{
 					sw1=cmf::upslope::SoilLayer::cast(left_node());
@@ -74,8 +74,8 @@ namespace cmf {
 			/// - \f$ h [m]\f$ is the height of a soil layer above sea level
 			class Richards : public cmf::water::flux_connection {
 			protected:
-				std::tr1::weak_ptr<cmf::upslope::SoilLayer> sw1,sw2;
-				std::tr1::weak_ptr<cmf::upslope::conductable> c2;
+				std::weak_ptr<cmf::upslope::SoilLayer> sw1,sw2;
+				std::weak_ptr<cmf::upslope::conductable> c2;
 				void NewNodes()
 				{
 					sw1=cmf::upslope::SoilLayer::cast(left_node());
@@ -110,7 +110,7 @@ namespace cmf {
 			/// - \f$ A [m^2]\f$ is the crosssectional area of the flux
 			class SimplRichards : public cmf::water::flux_connection {
 			protected:
-				std::tr1::weak_ptr<cmf::upslope::SoilLayer> sw1,sw2;
+				std::weak_ptr<cmf::upslope::SoilLayer> sw1,sw2;
 				void NewNodes()
 				{
 					sw1=cmf::upslope::SoilLayer::cast(left_node());
@@ -143,7 +143,7 @@ namespace cmf {
 			/// - \f$A\f$ Cell area in \f$m^2\f$
 			class FreeDrainagePercolation : public cmf::water::flux_connection {
 			protected:
-				std::tr1::weak_ptr<cmf::upslope::SoilLayer> sw1;
+				std::weak_ptr<cmf::upslope::SoilLayer> sw1;
 				void NewNodes()
 				{
 					sw1=cmf::upslope::SoilLayer::cast(left_node());
@@ -174,7 +174,7 @@ namespace cmf {
 			///  - \f$A\f$ is the area of the cell
 			class LayerBypass: public cmf::water::flux_connection {
 			protected:
-				std::tr1::weak_ptr<cmf::upslope::SoilLayer> Sl;
+				std::weak_ptr<cmf::upslope::SoilLayer> Sl;
 				void NewNodes() {
 					Sl = cmf::upslope::SoilLayer::cast(right_node());
 				}

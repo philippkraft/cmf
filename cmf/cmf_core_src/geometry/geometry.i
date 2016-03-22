@@ -17,6 +17,7 @@
 //   along with cmf.  If not, see <http://www.gnu.org/licenses/>.
 //   
 
+
 %{
 // Include geometry
 #include "geometry/geometry.h"
@@ -34,12 +35,12 @@ static std::string convert_seq_to_point(PyObject* input,cmf::geometry::point& p)
   ptrdiff_t len=PyObject_Length(input);
   if (len<2) {
     std::string res = "Sequence <";
-    res+=PyObject_REPR(input);
+    res += pyrepr(input);
     res+="> has to few items to convert to cmf.point. At least to items are needed";
     return res;
   } else if (len>3) {
     std::string res = "Sequence <";
-    res+=PyObject_REPR(input);
+    res+=pyrepr(input);
     res+="> has to many items (more than 3) to convert to cmf.point.";
     return res;
   }
@@ -48,7 +49,7 @@ static std::string convert_seq_to_point(PyObject* input,cmf::geometry::point& p)
     PyObject *o = PySequence_GetItem(input,i);
     if (!PyNumber_Check(o)) {
       std::string res="Can't convert <";
-      res+=PyObject_REPR(o);
+      res+=pyrepr(o);
       res+="> to point coordinate";
       Py_XDECREF(o);
       return res;
@@ -79,9 +80,9 @@ static std::string convert_xyz_to_point(PyObject* input,cmf::geometry::point& p)
     p.z=0.0;
   } else {
     std::string res="Can't convert <";
-    res += PyObject_REPR(x);
+    res += pyrepr(x);
     res += "> to x coordinate or <";
-    res += PyObject_REPR(y);
+    res += pyrepr(y);
     res += "> to y coordinate";
     Py_DECREF(x);Py_DECREF(y);Py_XDECREF(z);
     return res;
@@ -111,7 +112,7 @@ static std::string convert_xyz_to_point(PyObject* input,cmf::geometry::point& p)
       }
     } else {
       std::string res="<";
-      res+=PyObject_REPR($input);
+      res+=pyrepr($input);
       res+="> has to be a cmf.point, a sequence, or any object with x and y (optional z) attributes";
       SWIG_exception_fail(SWIG_ValueError,res.c_str());
     }
@@ -138,7 +139,7 @@ static std::string convert_xyz_to_point(PyObject* input,cmf::geometry::point& p)
       }
     } else {
       std::string res="<";
-      res+=PyObject_REPR($input);
+      res+=pyrepr($input);
       res+="> has to be a cmf.point, a sequence, or any object with x and y (optional z) attributes";
       SWIG_exception_fail(SWIG_ValueError,res.c_str());
     }

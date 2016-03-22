@@ -18,7 +18,7 @@
 //   
 #ifndef project_h__
 #define project_h__
-#include <tr1/memory>
+#include "cmfmemory.h"
 #include <vector>
 #include <set>
 #include "atmosphere/meteorology.h"

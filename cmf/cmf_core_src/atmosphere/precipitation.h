@@ -21,7 +21,7 @@
 #include "../water/flux_node.h"
 #include "../water/boundary_condition.h"
 #include "../water/Solute.h"
-#include <tr1/memory>
+#include "../cmfmemory.h"
 
 namespace cmf { 
 	class project;
@@ -39,7 +39,7 @@ namespace cmf {
 				: flux_node(_project,location) {}
 		public:
 			/// shared pointer
-			typedef std::tr1::shared_ptr<RainSource> ptr;
+			typedef std::shared_ptr<RainSource> ptr;
 			/// Functor declaration RainSource(t) = RainSource.get_intensity(t)
 			real operator()(cmf::math::Time t) const { return get_intensity(t);}
 			/// Returns the actual rainfall intensity in mm/day
@@ -63,7 +63,7 @@ namespace cmf {
 			cmf::math::num_array concentrations;
 		public:
 			/// shared pointer
-			typedef std::tr1::shared_ptr<ConstantRainSource> ptr;
+			typedef std::shared_ptr<ConstantRainSource> ptr;
 
 			/// The rain fall intensity in mm/day. This value is returned by 
 			real intensity;
@@ -91,7 +91,7 @@ namespace cmf {
 		class TimeseriesRainSource : public RainSource {
 		public:
 			/// shared pointer
-			typedef std::tr1::shared_ptr<TimeseriesRainSource> ptr;
+			typedef std::shared_ptr<TimeseriesRainSource> ptr;
 			/// The rainfall intensity in mm/day
 			cmf::math::timeseries data;
 
@@ -113,7 +113,7 @@ namespace cmf {
 			RainfallStation(size_t Id,std::string Name, cmf::math::timeseries Data, cmf::geometry::point position)
 				: name(Name),data(Data.copy()),Location(position), id(Id) {}
 		public:
-			typedef std::tr1::shared_ptr<RainfallStation> ptr;
+			typedef std::shared_ptr<RainfallStation> ptr;
 			/// Location of the station
 			cmf::geometry::point Location;
 
@@ -186,7 +186,7 @@ namespace cmf {
 			RainfallStation::ptr m_station;
 			RainfallStationReference(cmf::project& project, cmf::geometry::point position, RainfallStation::ptr station);
 		public:
-			typedef std::tr1::shared_ptr<cmf::atmosphere::RainfallStationReference > ptr;
+			typedef std::shared_ptr<cmf::atmosphere::RainfallStationReference > ptr;
 			
 			/// Finds the nearest RainfallStation to position using z_weight for cmf::geometry::point::z_weight_distance
 			/// This method is used by cmf::project::use_nearest_rainfall. 

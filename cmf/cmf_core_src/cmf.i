@@ -40,12 +40,25 @@
 }
 %include "attribute.i"
 
-#define SWIG_SHARED_PTR_SUBNAMESPACE tr1
+/* #define SWIG_SHARED_PTR_SUBNAMESPACE */
 %include <std_shared_ptr.i>
-
+%{
+	#include "cmfmemory.h"
+%}
 %include "cmf_swiglib.i"
 
-
+%{
+std::string pyrepr(PyObject* o) {
+	PyObject* s = PyObject_Repr(o);
+	#if PY_MAJOR_VERSION < 3
+		std::string res = PyString_AsString(s);
+	#else
+		std::string res = PyUnicode_AsUTF8(s);
+	#endif
+	Py_XDECREF(s);
+	return res;
+}
+%}
 
 // Start my Module
 %module cmf_core

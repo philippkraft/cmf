@@ -72,7 +72,7 @@ namespace cmf {
 
 			virtual real dxdt(const cmf::math::Time& time);
 			virtual std::string to_string() const;
-			typedef std::tr1::shared_ptr<SoluteStorage> ptr;
+			typedef std::shared_ptr<SoluteStorage> ptr;
 		};
 	}
 }

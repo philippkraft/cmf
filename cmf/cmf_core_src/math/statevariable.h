@@ -22,7 +22,7 @@
 #include <string>
 #include <deque>
 #include <vector>
-#include <tr1/memory>
+#include "../cmfmemory.h"
 #include <cmath>
 #include "num_array.h"
 #include "real.h"
@@ -45,7 +45,7 @@ namespace cmf {
 	  /// 
 	  class integratable {
 	  public:
-		  typedef std::tr1::shared_ptr<integratable> ptr;
+		  typedef std::shared_ptr<integratable> ptr;
 		  /// Integrates the variable until time t
 		  virtual void integrate(Time t)=0;
 		  /// Sets the start time of the integral
@@ -109,7 +109,7 @@ namespace cmf {
 			/// Returns if the state was currently updated
 			bool StateIsChanged() {return m_StateIsNew;}
 		public:
-			typedef std::tr1::shared_ptr<StateVariable> ptr;
+			typedef std::shared_ptr<StateVariable> ptr;
 			/// Returns the derivate of the state variable at time @c time
 			virtual real dxdt(const cmf::math::Time& time)=0;
 			/// Returns the current state of the variable

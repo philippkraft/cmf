@@ -19,13 +19,13 @@
 #ifndef MultiIntegrator_h__
 #define MultiIntegrator_h__
 #include "integrator.h"
-#include <tr1/memory>
+#include "../../cmfmemory.h"
 namespace cmf {
 	namespace math {
 		/// The MultiIntegrator is a wrapper for a bunch integrators. The states of the integrators should not have direct connections over integrator boundaries
 		class MultiIntegrator : public cmf::math::Integrator
 		{
-			typedef std::tr1::shared_ptr<cmf::math::Integrator> integ_ptr;
+			typedef std::shared_ptr<cmf::math::Integrator> integ_ptr;
 			typedef std::vector<integ_ptr> integ_vector;
 			integ_vector m_integrators;
 			std::auto_ptr<cmf::math::Integrator> m_template;

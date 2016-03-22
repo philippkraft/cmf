@@ -25,7 +25,7 @@ using namespace cmf::water;
 void WaterStorage::initializeSoluteStorages(const solute_vector& solutes) {
 	for (solute_vector::const_iterator it=solutes.begin();it!=solutes.end();++it)
 	{
-		std::tr1::shared_ptr<SoluteStorage> s(new SoluteStorage(this,*it));
+		std::shared_ptr<SoluteStorage> s(new SoluteStorage(this,*it));
 		m_Concentrations.push_back(s);
 	}
 }
@@ -50,7 +50,7 @@ real WaterStorage::conc(const solute& _Solute) const
 	return Solute(_Solute).conc();
 }
 
-std::tr1::shared_ptr<WaterStorage> WaterStorage::from_node( flux_node::ptr node )
+std::shared_ptr<WaterStorage> WaterStorage::from_node( flux_node::ptr node )
 {
 	WaterStorage* ws=new WaterStorage(node->get_project(), node->Name);
 	WaterStorage::ptr result(ws);

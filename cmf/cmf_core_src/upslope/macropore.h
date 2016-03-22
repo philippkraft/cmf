@@ -23,7 +23,7 @@
 #include "../water/flux_connection.h"
 #include "../geometry/geometry.h"
 #include "conductable.h"
-#include <memory>
+#include "../cmfmemory.h"
 #include "../water/flux_connection.h"
 
 namespace cmf {
@@ -72,13 +72,13 @@ namespace cmf {
 		class MacroPore : public cmf::water::WaterStorage //, public cmf::upslope::conductable 
 		{
 		public:
-			typedef std::tr1::shared_ptr<cmf::upslope::MacroPore> ptr;
+			typedef std::shared_ptr<cmf::upslope::MacroPore> ptr;
 #ifndef SWIG
-			operator ptr() {return std::tr1::static_pointer_cast<MacroPore>(shared_from_this());}
+			operator ptr() {return std::static_pointer_cast<MacroPore>(shared_from_this());}
 #endif
 
 		private:
-			std::tr1::weak_ptr<SoilLayer> m_layer;
+			std::weak_ptr<SoilLayer> m_layer;
 		protected:
 			virtual real head_to_volume(real head) const;
 			virtual real volume_to_head(real volume) const;
@@ -170,15 +170,15 @@ namespace cmf {
 			/// @param K_shape A parameter to change the conductivity of the macropore with the matrix potential
 			static MacroPore::ptr create(SoilLayer::ptr layer,real porefraction=0.05, real Ksat=10,real density=0.05,real porefraction_wilt = -1., real K_shape=0.0 );
 			static MacroPore::ptr cast(cmf::water::flux_node::ptr node) {
-				return std::tr1::dynamic_pointer_cast<MacroPore>(node);
+				return std::dynamic_pointer_cast<MacroPore>(node);
 			}
 
 		};
 		namespace connections {
 			class BaseMacroFlow  : public cmf::water::flux_connection {
 			protected:
-				std::tr1::weak_ptr<cmf::upslope::MacroPore> mp1,mp2;
-				std::tr1::weak_ptr<cmf::upslope::conductable> c2;
+				std::weak_ptr<cmf::upslope::MacroPore> mp1,mp2;
+				std::weak_ptr<cmf::upslope::conductable> c2;
 				void NewNodes();
 				BaseMacroFlow(cmf::water::WaterStorage::ptr left,cmf::water::flux_node::ptr right,std::string connectionname)
 					: flux_connection(left,right,connectionname)
@@ -217,8 +217,8 @@ namespace cmf {
 			/// - \f$C\f$ is the capacity of the upper resp. lower macro pore storage
 			class KinematicMacroFlow : public BaseMacroFlow {
 			protected:
-				std::tr1::weak_ptr<cmf::upslope::MacroPore> mp1,mp2;
-				std::tr1::weak_ptr<cmf::upslope::conductable> c2;
+				std::weak_ptr<cmf::upslope::MacroPore> mp1,mp2;
+				std::weak_ptr<cmf::upslope::conductable> c2;
 				virtual real calc_q(cmf::math::Time t) ;
 			public:
 				///
@@ -272,8 +272,8 @@ namespace cmf {
 			/// - \f$A\f$ the crosssection area, given as the flow width (cmf::upslope::MacroPore::get_flowwidth) times layer thickness
 			class GradientMacroMicroExchange : public cmf::water::flux_connection {
 			protected:
-				std::tr1::weak_ptr<cmf::upslope::MacroPore> mp;
-				std::tr1::weak_ptr<cmf::upslope::SoilLayer> sl;
+				std::weak_ptr<cmf::upslope::MacroPore> mp;
+				std::weak_ptr<cmf::upslope::SoilLayer> sl;
 				void NewNodes();
 				virtual real calc_q(cmf::math::Time t);
 			public:
@@ -302,8 +302,8 @@ namespace cmf {
 			/// cf. Simunek et al J. of Hydr. 2003
 			class DiffusiveMacroMicroExchange : public cmf::water::flux_connection {
 			protected:
-				std::tr1::weak_ptr<cmf::upslope::MacroPore> mp;
-				std::tr1::weak_ptr<cmf::upslope::SoilLayer> sl;
+				std::weak_ptr<cmf::upslope::MacroPore> mp;
+				std::weak_ptr<cmf::upslope::SoilLayer> sl;
 				void NewNodes();
 				virtual real calc_q(cmf::math::Time t);
 			public:
@@ -336,8 +336,8 @@ namespace cmf {
 			///    - \f$W_{ma}\f$ is the saturation of the macropores
 			class MACROlikeMacroMicroExchange : public cmf::water::flux_connection {
 			protected:
-				std::tr1::weak_ptr<cmf::upslope::MacroPore> mp;
-				std::tr1::weak_ptr<cmf::upslope::SoilLayer> sl;
+				std::weak_ptr<cmf::upslope::MacroPore> mp;
+				std::weak_ptr<cmf::upslope::SoilLayer> sl;
 				void NewNodes() {
 					mp = cmf::upslope::MacroPore::cast(right_node());
 					sl = cmf::upslope::SoilLayer::cast(left_node());
