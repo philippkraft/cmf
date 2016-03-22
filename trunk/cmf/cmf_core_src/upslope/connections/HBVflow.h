@@ -108,7 +108,7 @@ namespace cmf {
 			///                min(PERC, V_{lower} - V_{lower,max}) \end{cases} \f]
 			class HBVpercolation : public cmf::water::flux_connection	{
 			protected:
-				std::tr1::weak_ptr<cmf::upslope::SoilLayer> sw1,sw2;
+				std::weak_ptr<cmf::upslope::SoilLayer> sw1,sw2;
 				void NewNodes();
 				virtual real calc_q(cmf::math::Time t);
 				//std::auto_ptr<HBVparameters> params;
@@ -128,7 +128,7 @@ namespace cmf {
 			class HBVlateral : public cmf::upslope::connections::lateral_sub_surface_flux
 			{
 			protected:
-				std::tr1::weak_ptr<cmf::upslope::SoilLayer> sw1;
+				std::weak_ptr<cmf::upslope::SoilLayer> sw1;
 				void NewNodes();
 				virtual real calc_q(cmf::math::Time t);
 				static void connect_cells(cmf::upslope::Cell & cell1,cmf::upslope::Cell & cell2,ptrdiff_t start_at_layer=0);

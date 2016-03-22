@@ -77,7 +77,7 @@ namespace cmf {
 		/// - \f$t_r [days]\f$ The residence time of the water in this storage in days
 		class kinematic_wave : public flux_connection {
 		protected:
-			std::tr1::weak_ptr<WaterStorage> source;
+			std::weak_ptr<WaterStorage> source;
 			real calc_q(cmf::math::Time t);
 			void NewNodes() {
 				source = WaterStorage::cast(left_node());
@@ -120,7 +120,7 @@ namespace cmf {
 		///  - \f$\beta\f$ is a shape forming exponent for spill and suction flow.
 		class bidirectional_kinematic_exchange : public flux_connection {
 		protected:
-			std::tr1::weak_ptr<WaterStorage> source;
+			std::weak_ptr<WaterStorage> source;
 			real calc_q(cmf::math::Time t);
 			void NewNodes() {
 				source = WaterStorage::cast(left_node());
@@ -209,7 +209,7 @@ namespace cmf {
 		class TechnicalFlux : public cmf::water::flux_connection
 		{
 		protected:
-			std::tr1::weak_ptr<cmf::water::WaterStorage> source;
+			std::weak_ptr<cmf::water::WaterStorage> source;
 			virtual real calc_q(cmf::math::Time t)	{
 				return piecewise_linear(source.lock()->get_state(),MinState,MinState+FluxDecreaseTime.AsDays()*MaxFlux,0,MaxFlux);
 			}
@@ -287,7 +287,7 @@ namespace cmf {
 			: public flux_connection 
 		{
 		protected:
-			std::tr1::weak_ptr<cmf::water::WaterStorage> source;
+			std::weak_ptr<cmf::water::WaterStorage> source;
 			virtual real calc_q(cmf::math::Time t);
 			void NewNodes();
 		public:

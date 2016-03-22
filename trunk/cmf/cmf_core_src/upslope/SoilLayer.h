@@ -24,7 +24,7 @@
 #include "../geometry/geometry.h"
 #include "Soil/RetentionCurve.h"
 #include "conductable.h"
-#include <memory>
+#include "../cmfmemory.h"
 namespace cmf {
 	namespace upslope {
 		class Cell;
@@ -33,16 +33,16 @@ namespace cmf {
 		class SoilLayer: public cmf::water::WaterStorage, public cmf::upslope::conductable
 		{
 		public:
-			typedef std::tr1::shared_ptr<cmf::upslope::SoilLayer> ptr;
+			typedef std::shared_ptr<cmf::upslope::SoilLayer> ptr;
 #ifndef SWIG
-			operator ptr() {return std::tr1::static_pointer_cast<SoilLayer>(shared_from_this());}
+			operator ptr() {return std::static_pointer_cast<SoilLayer>(shared_from_this());}
 #endif
 
 		private:
 			friend class Cell;
 			struct wet {real	W,Psi_m,h,V,theta,C,K,Ksat, ice_fraction;	};
 			wet m_wet;
-			typedef std::tr1::weak_ptr<cmf::upslope::SoilLayer> weak_ptr;
+			typedef std::weak_ptr<cmf::upslope::SoilLayer> weak_ptr;
 			weak_ptr m_upper;
 			weak_ptr m_lower;
 			real m_ice_fraction;
@@ -143,7 +143,7 @@ namespace cmf {
 			
 			static SoilLayer::ptr cast(cmf::water::flux_node::ptr node)
 			{
-				return std::tr1::dynamic_pointer_cast<SoilLayer>(node);
+				return std::dynamic_pointer_cast<SoilLayer>(node);
 			}
 		protected:
 			SoilLayer(cmf::upslope::Cell & _cell,real lowerboundary,

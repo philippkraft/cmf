@@ -21,7 +21,7 @@
 
 #include "cell.h"
 #include "algorithm.h"
-#include <memory>
+#include "../cmfmemory.h"
 #include <map>
 #include <vector>
 #include <set>

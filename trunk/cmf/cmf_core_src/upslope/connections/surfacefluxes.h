@@ -44,7 +44,7 @@ namespace cmf {
 			class CanopyOverflow : public cmf::water::flux_connection {
 			protected:
 				cmf::upslope::Cell & m_cell;
-				std::tr1::weak_ptr<cmf::water::WaterStorage> m_Canopy;
+				std::weak_ptr<cmf::water::WaterStorage> m_Canopy;
 				virtual real calc_q(cmf::math::Time t) ;
 				virtual void NewNodes()
 				{
@@ -96,7 +96,7 @@ namespace cmf {
 			class RutterInterception : public cmf::water::flux_connection {
 			protected:
 				cmf::upslope::Cell & m_cell;
-				std::tr1::weak_ptr<cmf::water::WaterStorage> m_Canopy;
+				std::weak_ptr<cmf::water::WaterStorage> m_Canopy;
 				virtual real calc_q(cmf::math::Time t) ;
 				virtual void NewNodes()
 				{
@@ -143,8 +143,8 @@ namespace cmf {
 			/// @endcode
 			class SimpleTindexSnowMelt : public cmf::water::flux_connection {
 			protected:
-				std::tr1::weak_ptr<cmf::water::WaterStorage> m_Snow;
-				std::tr1::weak_ptr<cmf::water::flux_node> m_Surfacewater;
+				std::weak_ptr<cmf::water::WaterStorage> m_Snow;
+				std::weak_ptr<cmf::water::flux_node> m_Surfacewater;
 				cmf::upslope::Cell & m_cell;
 				virtual real calc_q(cmf::math::Time t);
 				virtual void NewNodes()
@@ -182,8 +182,8 @@ namespace cmf {
 			/// Calculates snow melt using the surface energy budget method
 			class EnergyBudgetSnowMelt : public cmf::water::flux_connection {
 			protected:
-				std::tr1::weak_ptr<cmf::water::WaterStorage> m_Snow;
-				std::tr1::weak_ptr<cmf::water::flux_node> m_Surfacewater;
+				std::weak_ptr<cmf::water::WaterStorage> m_Snow;
+				std::weak_ptr<cmf::water::flux_node> m_Surfacewater;
 				cmf::upslope::Cell & m_cell;
 				virtual real calc_q(cmf::math::Time t);
 				virtual void NewNodes()

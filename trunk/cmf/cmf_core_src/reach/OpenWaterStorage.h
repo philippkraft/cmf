@@ -30,9 +30,9 @@ namespace cmf {
 		class OpenWaterStorage : public cmf::water::WaterStorage
 		{
 		public:
-			typedef std::tr1::shared_ptr<cmf::river::OpenWaterStorage > ptr;
+			typedef std::shared_ptr<cmf::river::OpenWaterStorage > ptr;
 #ifndef SWIG
-			operator ptr() {return std::tr1::static_pointer_cast<OpenWaterStorage >(shared_from_this());}
+			operator ptr() {return std::static_pointer_cast<OpenWaterStorage >(shared_from_this());}
 #endif
 		protected:
 			std::auto_ptr<IVolumeHeightFunction> height_function;

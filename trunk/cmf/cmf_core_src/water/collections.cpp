@@ -172,7 +172,7 @@ cmf::math::StateVariableList cmf::water::node_list::get_states()
 	for(node_vector::const_iterator it = m_nodes.begin(); it != m_nodes.end(); ++it)
 	{
 		cmf::math::StateVariableOwner *state_owner = dynamic_cast<cmf::math::StateVariableOwner *>(it->get());
-		cmf::math::StateVariable::ptr state = std::tr1::dynamic_pointer_cast<cmf::math::StateVariable>(*it);
+		cmf::math::StateVariable::ptr state = std::dynamic_pointer_cast<cmf::math::StateVariable>(*it);
 		if(state_owner) 
 			q.extend(*state_owner);
 		else if (state) 
@@ -278,7 +278,7 @@ cmf::water::NeumannBoundary_list::NeumannBoundary_list( const cmf::water::node_l
 {
 	for (size_t i = 0; i < copy.size() ; ++i)
 	{
-		NeumannBoundary::ptr nbc=std::tr1::dynamic_pointer_cast<cmf::water::NeumannBoundary>(copy[i]);
+		NeumannBoundary::ptr nbc=std::dynamic_pointer_cast<cmf::water::NeumannBoundary>(copy[i]);
 		if (nbc)
 			m_boundaries.push_back(nbc);
 	}

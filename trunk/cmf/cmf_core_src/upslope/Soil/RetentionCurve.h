@@ -21,7 +21,7 @@
 #include "../../math/real.h"
 #include <vector>
 #include <stdexcept>
-#include <tr1/memory>
+#include "../../cmfmemory.h"
 #include "../../math/num_array.h"
 namespace cmf {
 	namespace upslope {

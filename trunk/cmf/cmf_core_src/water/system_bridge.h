@@ -31,7 +31,7 @@ namespace cmf {
 			flux_node::ptr lower_node,upper_node;
 			SystemBridge(cmf::project& p, flux_connection& con);
 		public:
-			typedef std::tr1::shared_ptr<SystemBridge> ptr;
+			typedef std::shared_ptr<SystemBridge> ptr;
 #ifndef SWIG
 			friend SystemBridge::ptr system_bridge(cmf::project&, flux_node::ptr,flux_node::ptr);
 #endif
@@ -64,13 +64,13 @@ namespace cmf {
 #ifndef SWIG
 			friend SystemBridge::ptr system_bridge(cmf::project&, flux_node::ptr,flux_node::ptr);
 #endif
-			std::tr1::weak_ptr<SystemBridge> sb;
+			std::weak_ptr<SystemBridge> sb;
 			virtual real calc_q(cmf::math::Time t) {
 
 				return sb.lock()->get_down_flux();
 			}
 			virtual void NewNodes() {
-				sb=std::tr1::dynamic_pointer_cast<SystemBridge>(left_node());
+				sb=std::dynamic_pointer_cast<SystemBridge>(left_node());
 			}
 		private:
 			SystemBridgeConnection(SystemBridge::ptr left,flux_node::ptr right)
