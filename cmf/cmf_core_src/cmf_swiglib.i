@@ -45,11 +45,11 @@ Included macros:
 
 
 // **********************************************************************************************
-// %ptr(TYPE) -> std::tr1::shared_ptr<TYPE> (or boost::shared_ptr<TYPE> or std::shared_ptr<TYPE>)
-// %dynptrcast(TYPE,INPUT) -> std::tr1::dynamic_pointer_cast<TYPE>(INPUT)
+// %ptr(TYPE) -> std::shared_ptr<TYPE> (or boost::shared_ptr<TYPE> or std::shared_ptr<TYPE>)
+// %dynptrcast(TYPE,INPUT) -> std::dynamic_pointer_cast<TYPE>(INPUT)
 
-#define %ptr(Type) SWIG_SHARED_PTR_QNAMESPACE::shared_ptr<Type>
-#define %dynptrcast(Type,input) SWIG_SHARED_PTR_QNAMESPACE::dynamic_pointer_cast<Type>(input) 
+#define %ptr(Type) std::shared_ptr<Type>
+#define %dynptrcast(Type,input) std::dynamic_pointer_cast<Type>(input) 
 
 %define %shared_attr(owner, owner_short, name, getter, setter...)
     %rename(__ ## getter) owner::getter;

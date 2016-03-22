@@ -27,7 +27,7 @@
 
 cmf::river::OpenWaterStorage::ptr cmf::river::OpenWaterStorage::cast( cmf::water::flux_node::ptr node )
 {
-	return std::tr1::dynamic_pointer_cast<OpenWaterStorage>(node);
+	return std::dynamic_pointer_cast<OpenWaterStorage>(node);
 }
 
 cmf::river::OpenWaterStorage::OpenWaterStorage(cmf::project& _project,real Area ) 

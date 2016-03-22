@@ -180,7 +180,7 @@ namespace cmf {
 				cmf::upslope::vegetation::Vegetation veg=layer->cell.vegetation;
 				double 
 					// Latitude in radians
-					phi = pi * 51 / 180.0,
+					phi = pi * lat / 180.0,
 					//solar declination (radians)
 					gamma = 0.4039f * sin((2*pi / 365 * t.AsDate().DOY()) - 1.405),
 					//sunset hour angle (radians)
@@ -248,6 +248,49 @@ namespace cmf {
 
 			}
 
+
+			PriestleyTaylorET::PriestleyTaylorET( cmf::upslope::SoilLayer::ptr source, cmf::water::flux_node::ptr ET_target,real _alpha/*=1.26*/ )
+				: stressedET(source,ET_target,"Priestley-Taylor ET"), alpha(_alpha) {
+			}
+
+			void PriestleyTaylorET::use_for_cell( cmf::upslope::Cell & cell )
+			{
+				for (int i = 0; i < cell.layer_count() ; ++i)
+				{
+					new PriestleyTaylorET(cell.get_layer(i),cell.get_transpiration());
+				}
+
+			}
+
+			real PriestleyTaylorET::calc_q( cmf::math::Time t )
+			{
+				cmf::upslope::SoilLayer::ptr layer=sw.lock();
+				cmf::upslope::Cell & cell=layer->cell;
+				if (!cell.has_wet_leaves())
+				{
+					cmf::atmosphere::Weather A=cell.get_weather(t);
+					cmf::upslope::vegetation::Vegetation veg=cell.vegetation;
+					real 
+						Rn = A.Rn(veg.albedo,daily), // Net radiation flux 
+						G = daily ? 0									// If calculation takes place on daily basis, the soil heat flux is 0 (FAO 1998,Eq. 42)
+						: Rn>0 ? 0.1*Rn : 0.5 * Rn,	           // On a shorter basis, it is proportional to Rn, different for day and night (FAO 1998,Eq. 45f)
+						c_p_rho  = 1.240e-3, // volumetric heat capacity (MJ/(m3 k))
+						lambda  = 2.45,	    // latent heat of vaporization (MJ/kg)
+						// Slope of vapor pressure (kPa/degC) (FAO 1998, Eq. 13)
+						Delta = 4098*0.6108 * exp(17.27 * A.T / (A.T+237.3)) / ((A.T+237.3)*(A.T+237.3)), 
+						gamma         = 0.067,	// psychrometric constant [kPa/k] 
+						radTerm       = alpha * Delta /(Delta + gamma) * (Rn - G),
+
+						PT = radTerm / lambda;
+					return Tact(PT * veg.LAI/2.88);
+				} else {
+					return 0.0;
+				}
+
+	
+			}
+
+		
 		}
 	}
 

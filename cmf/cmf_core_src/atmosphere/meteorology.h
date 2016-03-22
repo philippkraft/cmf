@@ -115,12 +115,12 @@ namespace cmf {
 		{
 		private:
 			friend class MeteoStationList;
-			MeteoStation(double latitude=51,double longitude=8,double timezone=1,double elevation=0,
+			MeteoStation(double latitude=51.0,double longitude=8.0,double tz=1,double elevation=0.0,
 				cmf::math::Time startTime=cmf::math::Time(1,1,2001),cmf::math::Time timestep=cmf::math::day,std::string name="");
 
 		public:
 			/// shared pointer
-			typedef std::tr1::shared_ptr<MeteoStation> ptr;
+			typedef std::shared_ptr<MeteoStation> ptr;
 			///@name Location and behaviour properties
 			//@{
 			double 
@@ -298,7 +298,7 @@ namespace cmf {
 			/// @param timezone Time zone of the study area (e.g Germany +1,U.S. Pacific time -8
 			/// @param startTime Date of the beginning of the climatic data (may be changed for each time series later)
 			/// @param timestep Frequency of climatic data (may be changed for each time series later)
-			MeteoStation::ptr add_station(std::string name,cmf::geometry::point position,double latitude=51,double longitude=8,double timezone=1,
+			MeteoStation::ptr add_station(std::string name,cmf::geometry::point position,double latitude=51.0,double longitude=8.0,double tz=1.0,
 				cmf::math::Time startTime=cmf::math::Time(1,1,2001),cmf::math::Time timestep=cmf::math::day);
 
 			/// Removes a station and returns the number of remaining references to the removed station. If the station is deleted, 0 is returned
@@ -368,7 +368,7 @@ namespace cmf {
 			/// aerodynamic resistance from ground to atmosphere (r_ag) and from canopy to atmosphere (r_ac)
 			virtual void get_aerodynamic_resistance(double & r_ag,double & r_ac, cmf::math::Time t) const=0;
 			/// shared pointer
-			typedef std::tr1::shared_ptr<aerodynamic_resistance> ptr;
+			typedef std::shared_ptr<aerodynamic_resistance> ptr;
 		};
 
 

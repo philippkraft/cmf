@@ -32,9 +32,9 @@ namespace cmf {
 		class SurfaceWater : public cmf::river::OpenWaterStorage {
 		public:
 			friend class Cell;
-			typedef std::tr1::shared_ptr<cmf::upslope::SurfaceWater> ptr;
+			typedef std::shared_ptr<cmf::upslope::SurfaceWater> ptr;
 #ifndef SWIG
-			operator ptr() {return std::tr1::static_pointer_cast<SurfaceWater>(shared_from_this());}
+			operator ptr() {return std::static_pointer_cast<SurfaceWater>(shared_from_this());}
 #endif
 		private:
 			cmf::upslope::Cell& m_cell;
@@ -127,7 +127,7 @@ namespace cmf {
 			class KinematicSurfaceRunoff : public cmf::water::flux_connection {
 			private:
 				static void connect_cells(cmf::upslope::Cell& c1,cmf::upslope::Cell& c2,ptrdiff_t dummy);
-				std::tr1::weak_ptr<cmf::upslope::SurfaceWater> wleft;
+				std::weak_ptr<cmf::upslope::SurfaceWater> wleft;
 				virtual real calc_q(cmf::math::Time t);
 				void NewNodes();
 				real m_distance, m_flowwidth;
@@ -147,7 +147,7 @@ namespace cmf {
 						}
 				}
 				static const CellConnector cell_connector;
-				typedef std::tr1::shared_ptr<KinematicSurfaceRunoff> ptr;
+				typedef std::shared_ptr<KinematicSurfaceRunoff> ptr;
 
 			};
 			/// A connection to route water from a SurfaceWater storage to another node following the gradient of the water level
@@ -179,9 +179,9 @@ namespace cmf {
 			class DiffusiveSurfaceRunoff : public cmf::water::flux_connection {
 			private:
 				static void connect_cells(cmf::upslope::Cell& c1,cmf::upslope::Cell& c2,ptrdiff_t dummy);
-				std::tr1::weak_ptr<cmf::upslope::SurfaceWater> wleft;
-				std::tr1::weak_ptr<cmf::river::OpenWaterStorage> owright;
-				std::tr1::weak_ptr<cmf::upslope::SurfaceWater> wright;
+				std::weak_ptr<cmf::upslope::SurfaceWater> wleft;
+				std::weak_ptr<cmf::river::OpenWaterStorage> owright;
+				std::weak_ptr<cmf::upslope::SurfaceWater> wright;
 				virtual real calc_q(cmf::math::Time t);
 				void NewNodes();
 				real m_distance, m_flowwidth;
@@ -197,7 +197,7 @@ namespace cmf {
 						}
 				}
 				static const CellConnector cell_connector;
-				typedef std::tr1::shared_ptr<DiffusiveSurfaceRunoff> ptr;
+				typedef std::shared_ptr<DiffusiveSurfaceRunoff> ptr;
 
 			};
 		}

@@ -16,7 +16,7 @@ SurfaceWater::SurfaceWater( Cell& cell )
 
 SurfaceWater::ptr SurfaceWater::cast( flux_node::ptr node )
 {
-	return std::tr1::dynamic_pointer_cast<SurfaceWater>(node);
+	return std::dynamic_pointer_cast<SurfaceWater>(node);
 }
 
 const CellConnector KinematicSurfaceRunoff::cell_connector=CellConnector(KinematicSurfaceRunoff::connect_cells);

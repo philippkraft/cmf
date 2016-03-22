@@ -1,7 +1,7 @@
 #ifndef conductable_h__
 #define conductable_h__
 
-#include <tr1/memory>
+#include "../cmfmemory.h"
 #include "../geometry/geometry.h"
 #include "../water/flux_node.h"
 namespace cmf {
@@ -13,9 +13,9 @@ namespace cmf {
 		class conductable {
 		public:
 			virtual real get_K(cmf::geometry::point direction) const=0;
-			typedef std::tr1::shared_ptr<conductable> ptr;
+			typedef std::shared_ptr<conductable> ptr;
 			static ptr cast(cmf::water::flux_node::ptr node) {
-				return std::tr1::dynamic_pointer_cast<conductable>(node);
+				return std::dynamic_pointer_cast<conductable>(node);
 			}
 		};
 	}

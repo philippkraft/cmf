@@ -18,15 +18,16 @@
 #   
 
 # This file can build and install cmf
+from __future__ import print_function, division
 import sys
 import os
 from newversionnumber import get_revision, updateversion
 try:
-   from distutils.command.build_py import build_py_2to3 as build_py
-   extraswig = []#'-py3']
+    from distutils.command.build_py import build_py_2to3 as build_py
+    extraswig = []#'-py3']
 except ImportError:
-   from distutils.command.build_py import build_py
-   extraswig = []
+    from distutils.command.build_py import build_py
+    extraswig = []
    
 # Change these variables to match your compiler. (gcc or 
 # For Visual Studio 2008 no action is needed
@@ -101,7 +102,7 @@ def make_cmf_core():
         libraries = ['gomp'] if openmp else None
     cmf_files=[]
     cmf_headers=[]
-    for root,dirs,files in os.walk('cmf/cmf_core_src'):
+    for root, _dirs, files in os.walk('cmf/cmf_core_src'):
         if os.path.basename(root)!='debug_scripts':
             cmf_files.extend(os.path.join(root,f) for f in files if is_source_file(f) and f!='cmf_wrap.cpp')
             cmf_headers.extend(os.path.join(root,f) for f in files if f.endswith('.h'))
@@ -121,9 +122,9 @@ def make_cmf_core():
                         )
     return cmf_core
 def make_raster():
-    print '*' * 50
-    print 'Make raster extension'
-    print '*' * 50
+    print('*' * 50)
+    print('Make raster extension')
+    print('*' * 50)
     if swig:
         files=['cmf/raster/raster_src/raster.i']
     else:

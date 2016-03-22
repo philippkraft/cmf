@@ -41,8 +41,8 @@ void SoluteWaterIntegrator::distribute_states()
 {
 	for(state_vector::iterator it = m_States.begin(); it != m_States.end(); ++it)
 	{
-		WaterStorage::ptr ws = std::tr1::dynamic_pointer_cast<WaterStorage>(*it);
-		SoluteStorage::ptr ss = std::tr1::dynamic_pointer_cast<SoluteStorage>(*it);
+		WaterStorage::ptr ws = std::dynamic_pointer_cast<WaterStorage>(*it);
+		SoluteStorage::ptr ss = std::dynamic_pointer_cast<SoluteStorage>(*it);
 		if(ws)	m_waterintegrator->add_single_state(ws);
 		else if (ss) m_soluteintegrators[ss->Solute.Id]->add_single_state(ss);
 		else throw std::runtime_error("SoluteWaterIntegrator: Got unknown state" + (**it).to_string());

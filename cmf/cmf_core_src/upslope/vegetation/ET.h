@@ -84,8 +84,8 @@ namespace cmf {
 			/// Flux connection using a transpiration_method
 			class transpiration : public cmf::water::flux_connection {
 			protected:
-				std::tr1::weak_ptr<cmf::upslope::SoilLayer> sw;
-				std::tr1::shared_ptr<transpiration_method> Method;
+				std::weak_ptr<cmf::upslope::SoilLayer> sw;
+				std::shared_ptr<transpiration_method> Method;
 				real calc_q(cmf::math::Time t) {
 					return Method->transp_from_layer(sw.lock(),t);
 				}
@@ -94,7 +94,7 @@ namespace cmf {
 					sw=cmf::upslope::SoilLayer::cast(left_node());
 				}
 			public:
-				transpiration(cmf::upslope::SoilLayer::ptr source,cmf::water::flux_node::ptr ET_target, std::tr1::shared_ptr<transpiration_method> _method, std::string method_name) 
+				transpiration(cmf::upslope::SoilLayer::ptr source,cmf::water::flux_node::ptr ET_target, std::shared_ptr<transpiration_method> _method, std::string method_name) 
 					: flux_connection(source,ET_target,"Transpiration using " + method_name),sw(source), Method(_method) {
 						NewNodes();
 				}
@@ -102,8 +102,8 @@ namespace cmf {
 			/// Flux_connection using a soil_evaporation_method
 			class soil_evaporation : public cmf::water::flux_connection {
 			protected:
-				std::tr1::weak_ptr<cmf::upslope::SoilLayer> sw;
-				std::tr1::shared_ptr<soil_evaporation_method> Method;
+				std::weak_ptr<cmf::upslope::SoilLayer> sw;
+				std::shared_ptr<soil_evaporation_method> Method;
 				real calc_q(cmf::math::Time t) {
 					return Method->evap_from_layer(sw.lock(),t);
 				}
@@ -112,7 +112,7 @@ namespace cmf {
 					sw=cmf::upslope::SoilLayer::cast(left_node());
 				}
 			public:
-				soil_evaporation(cmf::upslope::SoilLayer::ptr source,cmf::water::flux_node::ptr ET_target, std::tr1::shared_ptr<soil_evaporation_method> _method, std::string method_name) 
+				soil_evaporation(cmf::upslope::SoilLayer::ptr source,cmf::water::flux_node::ptr ET_target, std::shared_ptr<soil_evaporation_method> _method, std::string method_name) 
 					: flux_connection(source,ET_target,"Soil evaporation using " + method_name),sw(source), Method(_method) {
 						NewNodes();
 				}
@@ -120,8 +120,8 @@ namespace cmf {
 			/// Flux connection using a canopy_evaporation_method
 			class canopy_evaporation : public cmf::water::flux_connection {
 			protected:
-				std::tr1::weak_ptr<cmf::water::WaterStorage> canopy;
-				std::tr1::shared_ptr<canopy_evaporation_method> Method;
+				std::weak_ptr<cmf::water::WaterStorage> canopy;
+				std::shared_ptr<canopy_evaporation_method> Method;
 				real calc_q(cmf::math::Time t) {
 					return Method->evap_from_canopy(canopy.lock(),t);
 				}
@@ -130,7 +130,7 @@ namespace cmf {
 					canopy=cmf::water::WaterStorage::cast(left_node());
 				}
 			public:
-				canopy_evaporation(cmf::water::WaterStorage::ptr source,cmf::water::flux_node::ptr ET_target, std::tr1::shared_ptr<canopy_evaporation_method> _method, std::string method_name) 
+				canopy_evaporation(cmf::water::WaterStorage::ptr source,cmf::water::flux_node::ptr ET_target, std::shared_ptr<canopy_evaporation_method> _method, std::string method_name) 
 					: flux_connection(source,ET_target,"Canopy evaporation using " + method_name),canopy(source), Method(_method) {
 						NewNodes();
 				}
@@ -139,8 +139,8 @@ namespace cmf {
 			/// Flux connection using a snow_evaporation_method
 			class snow_evaporation : public cmf::water::flux_connection {
 			protected:
-				std::tr1::weak_ptr<cmf::water::WaterStorage> snow;
-				std::tr1::shared_ptr<snow_evaporation_method> Method;
+				std::weak_ptr<cmf::water::WaterStorage> snow;
+				std::shared_ptr<snow_evaporation_method> Method;
 				real calc_q(cmf::math::Time t) {
 					return Method->evap_from_snow(snow.lock(),t);
 				}
@@ -149,7 +149,7 @@ namespace cmf {
 					snow=cmf::water::WaterStorage::cast(left_node());
 				}
 			public:
-				snow_evaporation(cmf::water::WaterStorage::ptr source,cmf::water::flux_node::ptr ET_target, std::tr1::shared_ptr<snow_evaporation_method> _method, std::string method_name) 
+				snow_evaporation(cmf::water::WaterStorage::ptr source,cmf::water::flux_node::ptr ET_target, std::shared_ptr<snow_evaporation_method> _method, std::string method_name) 
 					: flux_connection(source,ET_target,"Snow evaporation using " + method_name),snow(source), Method(_method) {
 						NewNodes();
 				}
@@ -157,8 +157,8 @@ namespace cmf {
 			/// Flux connection using an surface_water_evaporation_method
 			class surface_water_evaporation : public cmf::water::flux_connection {
 			protected:
-				std::tr1::weak_ptr<cmf::river::OpenWaterStorage> surface_water;
-				std::tr1::shared_ptr<surface_water_evaporation_method> Method;
+				std::weak_ptr<cmf::river::OpenWaterStorage> surface_water;
+				std::shared_ptr<surface_water_evaporation_method> Method;
 				real calc_q(cmf::math::Time t) {
 					return Method->evap_from_openwater(surface_water.lock(),t);
 				}
@@ -167,7 +167,7 @@ namespace cmf {
 					surface_water=cmf::river::OpenWaterStorage::cast(left_node());
 				}
 			public:
-				surface_water_evaporation(cmf::river::OpenWaterStorage::ptr source,cmf::water::flux_node::ptr ET_target, std::tr1::shared_ptr<surface_water_evaporation_method> _method, std::string method_name) 
+				surface_water_evaporation(cmf::river::OpenWaterStorage::ptr source,cmf::water::flux_node::ptr ET_target, std::shared_ptr<surface_water_evaporation_method> _method, std::string method_name) 
 					: flux_connection(source,ET_target,"surface_water evaporation using " + method_name),surface_water(source), Method(_method) {
 						NewNodes();
 				}
@@ -209,10 +209,10 @@ namespace cmf {
 			/// @brief An abstract base class for ET Methods with a WaterStressFunction
 			class stressedET : public cmf::water::flux_connection {
 			protected:
-				std::tr1::weak_ptr<cmf::upslope::SoilLayer> sw;
+				std::weak_ptr<cmf::upslope::SoilLayer> sw;
 				std::auto_ptr<cmf::upslope::ET::RootUptakeStessFunction> m_stressfunction;
 				void NewNodes()	{
-					sw=std::tr1::dynamic_pointer_cast<cmf::upslope::SoilLayer>(left_node());
+					sw=std::dynamic_pointer_cast<cmf::upslope::SoilLayer>(left_node());
 				}
 				stressedET(cmf::upslope::SoilLayer::ptr source,cmf::water::flux_node::ptr ET_target,std::string _type);
 				real Tact(real Tpot) const;
@@ -310,6 +310,30 @@ namespace cmf {
 				static void use_for_cell(cmf::upslope::Cell & cell);
 			};
 
+			///@ingroup ET
+			/// Calculates the Evapotranspiration using Priestley-Taylor equation
+			///
+			/// \f[lambda ET &=& \alpha \frac{\Delta}{\Delta + \gamma} \left(R_n - G\right)\f]
+			/// where:
+			///  - \f$\Delta = 4098 \frac{0.6108 e^{17.27 T}}{(T+237.3)^2} \frac{kPa}{^\circ C}\f$, the slope of the vapor pressure/ temperature curve
+			///  - \f$\gamma = \frac{c_p P}{\epsilon \lambda} \frac{kPa}{^\circ C}\f$  Psychrometric constant
+			///  - \f$\lambda = 2.45 \frac{MJ}{kg}\f$ the latent heat of vaporization
+			///  - \f$R_n \frac{MJ}{m^2day}\f$ net Radiation (see Atmosphere)
+			///  - \f$G\f$ Ground heat flux
+			///  - \f$\alpha\f$ the Priestley-Taylor constant (default 1.26 for humid climates)
+			class PriestleyTaylorET : public stressedET {
+			protected:
+				real calc_q(cmf::math::Time t);
+			public:
+
+				bool daily;
+				real alpha;
+				PriestleyTaylorET(cmf::upslope::SoilLayer::ptr source, cmf::water::flux_node::ptr ET_target,real alpha=1.26);
+				/// @brief Connects all soil layers with the transpiration node of the cell
+				static void use_for_cell(cmf::upslope::Cell & cell);
+
+			};
+
 			/// @ingroup ET
 			/// Calculates the Evapotranspiration using Hargreave's equation
 			///
@@ -335,9 +359,10 @@ namespace cmf {
 			protected:
 				real calc_q(cmf::math::Time t);
 			public:
-				HargreaveET(cmf::upslope::SoilLayer::ptr source,cmf::water::flux_node::ptr ET_target) 
-					: stressedET(source,ET_target,"HargreaveET") {
-				}
+				HargreaveET(cmf::upslope::SoilLayer::ptr source,cmf::water::flux_node::ptr ET_target, real latitude=51.0) 
+					: stressedET(source,ET_target,"HargreaveET") , lat(latitude)
+				{}
+				real lat;
 				/// @brief Connects all soil layers with the transpiration node of the cell
 				static void use_for_cell(cmf::upslope::Cell & cell);
 
@@ -362,7 +387,7 @@ namespace cmf {
 			class CanopyStorageEvaporation : public cmf::water::flux_connection {
 			protected:
 				cmf::upslope::Cell & m_cell;
-				std::tr1::weak_ptr<cmf::water::WaterStorage> c_stor;
+				std::weak_ptr<cmf::water::WaterStorage> c_stor;
 				virtual real calc_q(cmf::math::Time t);
 				void NewNodes()
 				{
@@ -379,7 +404,7 @@ namespace cmf {
 			class PenmanEvaporation : public cmf::water::flux_connection
 			{
 			protected:
-				std::tr1::weak_ptr<cmf::river::OpenWaterStorage> m_source;
+				std::weak_ptr<cmf::river::OpenWaterStorage> m_source;
 				std::auto_ptr<cmf::atmosphere::Meteorology> m_meteo;
 				virtual real calc_q(cmf::math::Time t);
 				void NewNodes()

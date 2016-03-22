@@ -2672,6 +2672,12 @@ Returns the last order of the solver used, may be smaller than
 MaxOrder due to the number of steps already taken or to fullfill
 stability limit. ";
 
+%feature("docstring")  cmf::math::CVodeIntegrator::get_rhsevals "int
+get_rhsevals() const
+
+Returns the number of evaluations of the right hand side of the ODE.
+Calls CVodeGetNumRhsEvals. ";
+
 %feature("docstring")  cmf::math::CVodeIntegrator::get_state "real
 get_state(ptrdiff_t position) const
 
@@ -4774,7 +4780,7 @@ potential evapotranspiration is scaled by LAI:  :math:`ET_{pot} = ET_{rc} \\\\fr
 C++ includes: ET.h ";
 
 %feature("docstring")  cmf::upslope::ET::HargreaveET::HargreaveET "HargreaveET(cmf::upslope::SoilLayer::ptr source,
-cmf::water::flux_node::ptr ET_target) ";
+cmf::water::flux_node::ptr ET_target, real latitude=51.0) ";
 
 %feature("docstring")  cmf::upslope::ET::HargreaveET::conc "real
 conc(cmf::math::Time t, const cmf::water::solute &_Solute)
@@ -6108,6 +6114,98 @@ set_states(real *newStates) ";
 const
 
 returns the number of state variables ";
+
+
+// File: classcmf_1_1water_1_1intensity__control__connection.xml
+%feature("docstring") cmf::water::intensity_control_connection "";
+
+%feature("docstring")  cmf::water::intensity_control_connection::conc
+"real conc(cmf::math::Time t, const cmf::water::solute &_Solute)
+
+Returns the concentration of the flux.
+
+If not overridden, it returns the concentration of the source of the
+flux (direction depending) ";
+
+%feature("docstring")
+cmf::water::intensity_control_connection::exchange_target "void
+exchange_target(flux_node::ptr oldtarget, flux_node::ptr newTarget) ";
+
+%feature("docstring")
+cmf::water::intensity_control_connection::get_ptr "ptr get_ptr()
+const ";
+
+%feature("docstring")
+cmf::water::intensity_control_connection::get_target "flux_node::ptr
+get_target(const flux_node &inquirer)
+
+Returns the other end of a connection than the asking end. ";
+
+%feature("docstring")
+cmf::water::intensity_control_connection::get_target "flux_node::ptr
+get_target(int index) const
+
+With index 0, the left node is returned, with index 1 the right node
+of the connection. ";
+
+%feature("docstring")
+cmf::water::intensity_control_connection::get_tracer_filter "real
+get_tracer_filter()
+
+A value ranging from 0 to 1 to filter tracers out of the water flux.
+
+1.0 is no filter and 0.0 means no solute is crossing this connection
+";
+
+%feature("docstring")
+cmf::water::intensity_control_connection::influx "real
+influx(cmf::math::Time t) ";
+
+%feature("docstring")
+cmf::water::intensity_control_connection::kill_me "bool kill_me()
+
+Deregisters this connection from its nodes. Returns true if only one
+reference is left. ";
+
+%feature("docstring")
+cmf::water::intensity_control_connection::left_node "flux_node::ptr
+left_node() const
+
+Returns the left node of this connection. ";
+
+%feature("docstring")  cmf::water::intensity_control_connection::q "real q(const flux_node &inquirer, cmf::math::Time t)
+
+Returns the current flux through a connection. Negative signs mean out
+of the inquirer, positive are inflows to the inquirer. ";
+
+%feature("docstring")
+cmf::water::intensity_control_connection::refresh "void
+refresh(cmf::math::Time t)
+
+Performes a new calculation of the flux. ";
+
+%feature("docstring")
+cmf::water::intensity_control_connection::right_node "flux_node::ptr
+right_node() const
+
+returns the right node of this connection ";
+
+%feature("docstring")
+cmf::water::intensity_control_connection::set_tracer_filter "void
+set_tracer_filter(real value)
+
+A value ranging from 0 to 1 to filter tracers out of the water flux.
+
+1.0 is no filter and 0.0 means no solute is crossing this connection
+";
+
+%feature("docstring")
+cmf::water::intensity_control_connection::short_string "virtual
+std::string short_string() const ";
+
+%feature("docstring")
+cmf::water::intensity_control_connection::to_string "virtual
+std::string to_string() const ";
 
 
 // File: classcmf_1_1river_1_1_i_volume_height_function.xml
@@ -10002,6 +10100,122 @@ Return the number of points in the point_vector. ";
 
 %feature("docstring")  cmf::math::precalculatable::do_action "virtual
 void do_action(Time t, bool use_OpenMP=true)=0 ";
+
+
+// File: classcmf_1_1upslope_1_1_e_t_1_1_priestley_taylor_e_t.xml
+%feature("docstring") cmf::upslope::ET::PriestleyTaylorET "
+
+Calculates the Evapotranspiration using Priestley-Taylor equation.
+
+
+
+.. math::
+
+    lambda ET &=& \\\\alpha \\\\frac{\\\\Delta}{\\\\Delta +
+    \\\\gamma} \\\\left(R_n - G\\\\right)
+
+ where:   :math:`\\\\Delta = 4098 \\\\frac{0.6108 e^{17.27 T}}{(T+237.3)^2} \\\\frac{kPa}{^\\\\circ C}` ,
+the slope of the vapor pressure/ temperature curve
+
+ :math:`\\\\gamma = \\\\frac{c_p P}{\\\\epsilon \\\\lambda} \\\\frac{kPa}{^\\\\circ C}`  Psychrometric constant
+
+ :math:`\\\\lambda = 2.45 \\\\frac{MJ}{kg}`  the latent heat of vaporization
+
+ :math:`R_n \\\\frac{MJ}{m^2day}`  net Radiation (see Atmosphere)
+
+ :math:`G`  Ground heat flux
+
+ :math:`\\\\alpha`  the Priestley-Taylor constant (default 1.26 for humid
+climates)
+
+C++ includes: ET.h ";
+
+%feature("docstring")
+cmf::upslope::ET::PriestleyTaylorET::PriestleyTaylorET "PriestleyTaylorET(cmf::upslope::SoilLayer::ptr source,
+cmf::water::flux_node::ptr ET_target, real alpha=1.26) ";
+
+%feature("docstring")  cmf::upslope::ET::PriestleyTaylorET::conc "real conc(cmf::math::Time t, const cmf::water::solute &_Solute)
+
+Returns the concentration of the flux.
+
+If not overridden, it returns the concentration of the source of the
+flux (direction depending) ";
+
+%feature("docstring")
+cmf::upslope::ET::PriestleyTaylorET::exchange_target "void
+exchange_target(flux_node::ptr oldtarget, flux_node::ptr newTarget) ";
+
+%feature("docstring")  cmf::upslope::ET::PriestleyTaylorET::get_layer
+"SoilLayer::ptr get_layer() const ";
+
+%feature("docstring")  cmf::upslope::ET::PriestleyTaylorET::get_ptr "ptr get_ptr() const ";
+
+%feature("docstring")  cmf::upslope::ET::PriestleyTaylorET::get_target
+"flux_node::ptr get_target(const flux_node &inquirer)
+
+Returns the other end of a connection than the asking end. ";
+
+%feature("docstring")  cmf::upslope::ET::PriestleyTaylorET::get_target
+"flux_node::ptr get_target(int index) const
+
+With index 0, the left node is returned, with index 1 the right node
+of the connection. ";
+
+%feature("docstring")
+cmf::upslope::ET::PriestleyTaylorET::get_tracer_filter "real
+get_tracer_filter()
+
+A value ranging from 0 to 1 to filter tracers out of the water flux.
+
+1.0 is no filter and 0.0 means no solute is crossing this connection
+";
+
+%feature("docstring")  cmf::upslope::ET::PriestleyTaylorET::kill_me "bool kill_me()
+
+Deregisters this connection from its nodes. Returns true if only one
+reference is left. ";
+
+%feature("docstring")  cmf::upslope::ET::PriestleyTaylorET::left_node
+"flux_node::ptr left_node() const
+
+Returns the left node of this connection. ";
+
+%feature("docstring")  cmf::upslope::ET::PriestleyTaylorET::q "real
+q(const flux_node &inquirer, cmf::math::Time t)
+
+Returns the current flux through a connection. Negative signs mean out
+of the inquirer, positive are inflows to the inquirer. ";
+
+%feature("docstring")  cmf::upslope::ET::PriestleyTaylorET::refresh "void refresh(cmf::math::Time t)
+
+Performes a new calculation of the flux. ";
+
+%feature("docstring")  cmf::upslope::ET::PriestleyTaylorET::right_node
+"flux_node::ptr right_node() const
+
+returns the right node of this connection ";
+
+%feature("docstring")
+cmf::upslope::ET::PriestleyTaylorET::set_stressfunction "void
+set_stressfunction(const RootUptakeStessFunction &stressfunction)
+
+Sets the stress function to limit water uptake. ";
+
+%feature("docstring")
+cmf::upslope::ET::PriestleyTaylorET::set_tracer_filter "void
+set_tracer_filter(real value)
+
+A value ranging from 0 to 1 to filter tracers out of the water flux.
+
+1.0 is no filter and 0.0 means no solute is crossing this connection
+";
+
+%feature("docstring")
+cmf::upslope::ET::PriestleyTaylorET::short_string "virtual
+std::string short_string() const ";
+
+%feature("docstring")  cmf::upslope::ET::PriestleyTaylorET::to_string
+"std::string to_string() const ";
 
 
 // File: classcmf_1_1river_1_1_prism.xml

@@ -58,8 +58,8 @@ namespace cmf {
 
 			class MatrixInfiltration : public cmf::water::flux_connection {
 			protected:
-				std::tr1::weak_ptr<cmf::upslope::SoilLayer> m_soilwater;
-				std::tr1::weak_ptr<cmf::river::OpenWaterStorage> m_surfacewaterstorage;
+				std::weak_ptr<cmf::upslope::SoilLayer> m_soilwater;
+				std::weak_ptr<cmf::river::OpenWaterStorage> m_surfacewaterstorage;
 				virtual real calc_q(cmf::math::Time t);
 				void NewNodes()
 				{
@@ -112,8 +112,8 @@ namespace cmf {
 			/// \f[q_{act} = \min\left(q_{max}, \sum{q_{in,surfacewater}}\right)\f]
 			class GreenAmptInfiltration : public cmf::water::flux_connection {
 			protected:
-				std::tr1::weak_ptr<cmf::upslope::SoilLayer> m_soilwater;
-				std::tr1::weak_ptr<cmf::upslope::SurfaceWater> m_surfacewaterstorage;
+				std::weak_ptr<cmf::upslope::SoilLayer> m_soilwater;
+				std::weak_ptr<cmf::upslope::SurfaceWater> m_surfacewaterstorage;
 				virtual real calc_q(cmf::math::Time t);
 				void NewNodes()
 				{
@@ -145,8 +145,8 @@ namespace cmf {
 			///   - \f$A\f$ Cell area in \f$m^2\f$
 			class SimpleInfiltration : public cmf::water::flux_connection {
 			protected:
-				std::tr1::weak_ptr<cmf::upslope::SoilLayer> m_soilwater;
-				std::tr1::weak_ptr<cmf::upslope::SurfaceWater> m_surfacewaterstorage;
+				std::weak_ptr<cmf::upslope::SoilLayer> m_soilwater;
+				std::weak_ptr<cmf::upslope::SurfaceWater> m_surfacewaterstorage;
 				virtual real calc_q(cmf::math::Time t);
 				void NewNodes()
 				{

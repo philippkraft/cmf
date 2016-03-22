@@ -161,7 +161,7 @@ void Reach::set_diffusive( bool use_diffusive_wave )
 	for(cmf::water::connection_list::iterator it = cv.begin(); it != cv.end(); ++it)
 	{
 		// Get the connection as a manning connection
-		std::tr1::shared_ptr<cmf::river::Manning> mc = std::tr1::dynamic_pointer_cast<cmf::river::Manning>(*it);
+		std::shared_ptr<cmf::river::Manning> mc = std::dynamic_pointer_cast<cmf::river::Manning>(*it);
 		// Set the is_diffusive attribute to the given paramter
 		if (mc)
 			mc->is_diffusive_wave=use_diffusive_wave;

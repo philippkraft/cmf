@@ -158,7 +158,7 @@ namespace cmf {
 		class NeumannBoundary_list
 		{
 		private:
-			typedef std::vector<std::tr1::shared_ptr<NeumannBoundary> > vector;
+			typedef std::vector<std::shared_ptr<NeumannBoundary> > vector;
 			vector m_boundaries;
 		public:
 #ifndef SWIG

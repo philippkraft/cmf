@@ -27,7 +27,7 @@
 #include <string>
 #include "flux_node.h"
 #include <stdexcept>
-#include <tr1/memory>
+#include "../cmfmemory.h"
 namespace cmf {
 	class project;
 	namespace water {
@@ -44,7 +44,7 @@ namespace cmf {
 		class flux_connection 
 		{
 		protected:
-			typedef std::tr1::weak_ptr<flux_node> weak_flux_node_ptr;
+			typedef std::weak_ptr<flux_node> weak_flux_node_ptr;
 		private:
 			friend class flux_node;
 			friend class flux_integrator;
@@ -52,7 +52,7 @@ namespace cmf {
 			flux_connection(const flux_connection& copy):connection_id(nextconnectionid) {
 				throw std::runtime_error("Never copy construct a flux_connection");
 			}
-			std::tr1::weak_ptr<flux_connection> weak_this;
+			std::weak_ptr<flux_connection> weak_this;
 			weak_flux_node_ptr m_left;
 			weak_flux_node_ptr m_right;
 			real m_tracer_filter;
@@ -80,7 +80,7 @@ namespace cmf {
 
 
 		public:
-			typedef std::tr1::shared_ptr<flux_connection> ptr;
+			typedef std::shared_ptr<flux_connection> ptr;
 #ifndef SWIG
 			ptr get_ptr() const {
 				return weak_this.lock();
@@ -196,7 +196,7 @@ namespace cmf {
 			double _sum;
 			cmf::math::Time _start_time;
 			cmf::math::Time _t;
-			std::tr1::weak_ptr<flux_connection> _connection;
+			std::weak_ptr<flux_connection> _connection;
 			std::string _name;
 
 		public:

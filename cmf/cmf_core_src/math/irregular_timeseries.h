@@ -24,7 +24,7 @@
 #include <algorithm>
 #include <iostream>
 #include "time.h"
-#include <tr1/memory>
+#include "../cmfmemory.h"
 namespace cmf {
 	namespace math {
 		///	A timeseries is a list of values, equally distributed over time. To create one,
@@ -140,7 +140,7 @@ namespace cmf {
 				}
 				size_t size() const {return values.size();}
 			};
-			typedef std::tr1::shared_ptr<data> data_pointer;
+			typedef std::shared_ptr<data> data_pointer;
 			data_pointer m_data;
 			static data_pointer make_data() {
 				data* new_data = new data;

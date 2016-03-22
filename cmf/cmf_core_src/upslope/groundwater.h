@@ -30,7 +30,7 @@ namespace cmf {
 			virtual real volume_to_head(real volume) const;
 
 		public:
-			typedef std::tr1::shared_ptr<aquifer> ptr;
+			typedef std::shared_ptr<aquifer> ptr;
 			/// The horizontal area of the aquifer
 			real area;
 			/// The thickness of the aquifer in m
@@ -76,7 +76,7 @@ namespace cmf {
 			aquifer(cmf::upslope::cell_vector& cells,real thickness,real porosity, real K=1e-4);
 			/// Casts a flux_node to an aquifer, if the flux_node is an aquifer
 			static aquifer::ptr cast(cmf::water::flux_node::ptr for_cast) {
-				return std::tr1::dynamic_pointer_cast<aquifer>(for_cast);
+				return std::dynamic_pointer_cast<aquifer>(for_cast);
 			}
 		};
 

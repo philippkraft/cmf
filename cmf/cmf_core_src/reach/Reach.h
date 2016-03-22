@@ -39,9 +39,9 @@ namespace cmf {
 		class Reach : public OpenWaterStorage
 		{
 		public:
-			typedef std::tr1::shared_ptr<Reach> ptr;
+			typedef std::shared_ptr<Reach> ptr;
 #ifndef SWIG
-			operator ptr() {return std::tr1::static_pointer_cast<Reach>(shared_from_this());}
+			operator ptr() {return std::static_pointer_cast<Reach>(shared_from_this());}
 #endif
 		private:
 
@@ -49,7 +49,7 @@ namespace cmf {
 			Reach(cmf::project& _project,const IChannel& shape, bool diffusive=false);
 
 			// Typedefs using weak pointers
-			typedef std::tr1::weak_ptr<Reach> weak_reach_ptr;
+			typedef std::weak_ptr<Reach> weak_reach_ptr;
 			typedef std::vector<weak_reach_ptr> reach_vector;
 
 			weak_reach_ptr weak_this;
@@ -58,7 +58,7 @@ namespace cmf {
 
 			// The downstream reach
 			weak_reach_ptr m_downstream;
-			typedef std::tr1::weak_ptr<cmf::water::flux_node> weak_node_ptr;
+			typedef std::weak_ptr<cmf::water::flux_node> weak_node_ptr;
 			weak_node_ptr m_outlet;
 
 			// adds an upstream reach (only called by set_downstream)
