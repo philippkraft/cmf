@@ -30,9 +30,9 @@
 %extend cmf::atmosphere::Weather {
     %pythoncode {
     def __repr__(self):
-        return "cmf.Weather()"
+        return "cmf.Weather(Tmin=%0.2f,Tmax=%0.2f)" % (self.Tmin,self.Tmax)
     def __str__(self):
-        return "Weather: T(max/min)=%6.2f(%3.0f/%3.0f), Rs=%7.2f, rH=%3.0f%%" % (self.T,self.Tmin,self.Tmax,self.Rs,100*self.e_a/self.e_s)
+        return self.to_string()
 }}
 
 
