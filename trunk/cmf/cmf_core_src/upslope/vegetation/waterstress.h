@@ -64,6 +64,7 @@ namespace cmf {
 				}
 
 			};
+
 			/// A simple water content based stress model based on Feddes (1978)
 			///
 			/// stress a is piecewise linear function based on water content
@@ -72,17 +73,22 @@ namespace cmf {
 			///  - if \f$\theta_d>\theta > \theta_{wilt} \rightarrow ET = \frac{\theta_d - \theta}{\theta_d - \theta_{wilt}} ET_{pot}\f$
 			///  - if \f$\theta_{wilt}>\theta \rightarrow ET = 0.0 \f$
 			///
-			/// The critical water content (where stress starts) is defined as the center between field capacity (\f$\theta_{fc}\f$) and the
-			/// wilting point (\f$\theta_{wp}\f$).
-			///
-			///  \f$ \theta_d = 1/2(\theta_{fc} + \theta_{wp}) \f$ 
+			/// The parameters \f$\theta_{d,w}\f$ can be omitted (or set to a negative value) to use default values derived from the layer
+			/// properties. The critical water content (where stress starts) is then defined (conf. Feddes 1978) as the center between 
+			/// field capacity (\f$\theta_{fc}\f$) and the wilting point (\f$\theta_{wp}\f$).
+			///   - \f$\theta_w = \theta(pF=4.2)\f$: Water content at pF=4.2
+			///   - \f$\theta_d = 1/2 (\theta(pF=1.8) + \theta(pF=4.2))\f$
 			class ContentStress : public RootUptakeStessFunction {
 			public:
+				real theta_d;
+				real theta_w;
 				real Tact(const stressedET* connection,real Tpot) const;
 				cmf::upslope::ET::ContentStress* copy() const;
 				std::string to_string() const {
 					return "water content based stress (Feddes 1978)";
 				}
+				/// Creates a new ContentStress for critical water content theta_d in m³ Water/m³ Soil and wilting point theta_w.
+				ContentStress(real theta_d = -1, real theta_w = -1);
 				
 			};
 			/// A WaterStressFunction based on the stored water volume of a layer
