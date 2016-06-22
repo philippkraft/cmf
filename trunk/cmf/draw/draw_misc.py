@@ -22,17 +22,14 @@ from cmf.cell_factory import geometry as geoms
 import cmf.cell_factory
 import os
 
-class cell_polygon_map(object):
+class cell_polygon_map(pylab.matplotlib.cm.ScalarMappable):
     def __call__(self,recalc_range=False):
         if recalc_range:
             self.maxvalue=max((self.f(c) for c in self.polygons.iterkeys()))
             self.minvalue=min((self.f(c) for c in self.polygons.iterkeys()))
         for cell,poly in self.polygons.iteritems():
             v=self.f(cell)
-            if numpy.isfinite(v):
-                c=self.cmap((v-self.minvalue)/(self.maxvalue-self.minvalue))
-            else:
-                c='none'
+            c=self.cmap((v-self.minvalue)/(self.maxvalue-self.minvalue))
             poly.set_fc(c)
         if pylab.isinteractive():
             pylab.draw()   
@@ -49,13 +46,14 @@ class cell_polygon_map(object):
     def __init__(self,cells,value_function, cmap=pylab.cm.jet,hold=True,vmin=None,vmax=None,**kwargs):
         self.cells=cells
         self.__f = value_function
-        self.cmap=cmap
         was_interactive=pylab.isinteractive()
         if was_interactive: pylab.ioff()
         geos=[]
         self.maxvalue=-1e300 if vmax is None else vmax
         self.minvalue=1e300 if vmin is None else vmin
         self.polygons={}
+        # Generate image array, which is filled with generated values from self.f
+        self._A = []
         for cell in cells:
             shape=geoms[cell]
             if hasattr(shape, "geoms"):
@@ -63,6 +61,7 @@ class cell_polygon_map(object):
             else:
                 shapes=[shape]
             value=self.f(cell)
+            self._A.append(value)
             if vmax is None:
                 self.maxvalue=max(value,self.maxvalue)
             if vmin is None:
@@ -78,11 +77,25 @@ class cell_polygon_map(object):
             self.polygons[cell]=pylab.fill(a[:,0],a[:,1],fc=c,hold=hold,**kwargs)[0]
             hold=1
         pylab.axis('equal')
+        norm = pylab.matplotlib.colors.Normalize(self.minvalue, self.maxvalue)
+        pylab.matplotlib.cm.ScalarMappable.__init__(self, norm, cmap)
         if was_interactive:
             pylab.draw() 
             pylab.ion()
-        
-        
+
+    def autoscale_None(self):
+        """
+        Overwrite base class of maplotlib.cm.ScalarMappable to prevent missuse
+        """
+        pass
+    def autoscale(self):
+        """
+        Overwrite base class of maplotlib.cm.ScalarMappable to prevent missuse
+        """
+        pass
+#    def callbacksSM(self):
+#        pass
+
         
 def drawobjects(objects,style=None,hold=1,**kwargs):
     was_interactive=pylab.isinteractive()
