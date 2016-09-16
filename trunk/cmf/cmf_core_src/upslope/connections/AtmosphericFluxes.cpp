@@ -20,7 +20,7 @@
 
 real cmf::upslope::connections::snowfraction( real T )
 {
-	return 1-piecewise_linear(T,cmf::atmosphere::Weather::snow_threshold-1,cmf::atmosphere::Weather::snow_threshold+1);
+	return 1-piecewise_linear(T,cmf::atmosphere::Weather::get_snow_threshold()-1,cmf::atmosphere::Weather::get_snow_threshold()+1);
 }
 
 real cmf::upslope::connections::Rainfall::calc_q( cmf::math::Time t )

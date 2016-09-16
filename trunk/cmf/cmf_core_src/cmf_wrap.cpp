@@ -35792,39 +35792,58 @@ fail:
 }
 
 
-SWIGINTERN int Swig_var_Weather_snow_threshold_set(PyObject *_val) {
+SWIGINTERN PyObject *_wrap_Weather_set_snow_threshold(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  double arg1 ;
+  double val1 ;
+  int ecode1 = 0 ;
+  PyObject * obj0 = 0 ;
+  char *  kwnames[] = {
+    (char *) "new_threshold", NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"O:Weather_set_snow_threshold",kwnames,&obj0)) SWIG_fail;
+  ecode1 = SWIG_AsVal_double(obj0, &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "Weather_set_snow_threshold" "', argument " "1"" of type '" "double""'");
+  } 
+  arg1 = static_cast< double >(val1);
   {
-    double val;
-    int res = SWIG_AsVal_double(_val, &val);
-    if (!SWIG_IsOK(res)) {
-      SWIG_exception_fail(SWIG_ArgError(res), "in variable '""cmf::atmosphere::Weather::snow_threshold""' of type '""double""'");
+    try {
+      cmf::atmosphere::Weather::set_snow_threshold(arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
     }
-    cmf::atmosphere::Weather::snow_threshold = static_cast< double >(val);
+    
   }
-  return 0;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
 fail:
-  return 1;
+  return NULL;
 }
 
 
-SWIGINTERN PyObject *Swig_var_Weather_snow_threshold_get(void) {
-  PyObject *pyobj = 0;
+SWIGINTERN PyObject *_wrap_Weather_get_snow_threshold(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  double result;
   
-  pyobj = SWIG_From_double(static_cast< double >(cmf::atmosphere::Weather::snow_threshold));
-  return pyobj;
-}
-
-
-SWIGINTERN PyObject *_wrap_Weather_snow_threshold_get(PyObject *SWIGUNUSEDPARM(self), PyObject *SWIGUNUSEDPARM(args)) {
-  return Swig_var_Weather_snow_threshold_get();
-}
-
-
-SWIGINTERN PyObject *_wrap_Weather_snow_threshold_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  int res;
-  
-  res = Swig_var_Weather_snow_threshold_set(args);
-  return !res ? SWIG_Py_Void() : NULL;
+  if (!SWIG_Python_UnpackTuple(args,"Weather_get_snow_threshold",0,0,0)) SWIG_fail;
+  {
+    try {
+      result = (double)cmf::atmosphere::Weather::get_snow_threshold();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+    
+  }
+  resultobj = SWIG_From_double(static_cast< double >(result));
+  return resultobj;
+fail:
+  return NULL;
 }
 
 
@@ -44605,24 +44624,24 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Cell_has_wet_leaves(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_Cell_leave_wetness(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   cmf::upslope::Cell *arg1 = (cmf::upslope::Cell *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   PyObject *swig_obj[1] ;
-  bool result;
+  real result;
   
   if (!args) SWIG_fail;
   swig_obj[0] = args;
   res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__upslope__Cell, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Cell_has_wet_leaves" "', argument " "1"" of type '" "cmf::upslope::Cell const *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Cell_leave_wetness" "', argument " "1"" of type '" "cmf::upslope::Cell const *""'"); 
   }
   arg1 = reinterpret_cast< cmf::upslope::Cell * >(argp1);
   {
     try {
-      result = (bool)((cmf::upslope::Cell const *)arg1)->has_wet_leaves();
+      result = (real)((cmf::upslope::Cell const *)arg1)->leave_wetness();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -44630,7 +44649,7 @@ SWIGINTERN PyObject *_wrap_Cell_has_wet_leaves(PyObject *SWIGUNUSEDPARM(self), P
     }
     
   }
-  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  resultobj = SWIG_From_double(static_cast< double >(result));
   return resultobj;
 fail:
   return NULL;
@@ -78064,8 +78083,8 @@ static PyMethodDef SwigMethods[] = {
 		"\n"
 		"Returns a string representation. \n"
 		""},
-	 { (char *)"Weather_snow_threshold_get", _wrap_Weather_snow_threshold_get, METH_VARARGS, NULL},
-	 { (char *)"Weather_snow_threshold_set", _wrap_Weather_snow_threshold_set, METH_VARARGS, NULL},
+	 { (char *)"Weather_set_snow_threshold", (PyCFunction) _wrap_Weather_set_snow_threshold, METH_VARARGS | METH_KEYWORDS, (char *)"Weather_set_snow_threshold(double new_threshold)"},
+	 { (char *)"Weather_get_snow_threshold", (PyCFunction)_wrap_Weather_get_snow_threshold, METH_NOARGS, (char *)"Weather_get_snow_threshold() -> double"},
 	 { (char *)"Weather___iadd__", (PyCFunction) _wrap_Weather___iadd__, METH_VARARGS | METH_KEYWORDS, (char *)"Weather___iadd__(Weather self, Weather w) -> Weather"},
 	 { (char *)"Weather___imul__", (PyCFunction) _wrap_Weather___imul__, METH_VARARGS | METH_KEYWORDS, (char *)"Weather___imul__(Weather self, double factor) -> Weather"},
 	 { (char *)"Weather___add__", (PyCFunction) _wrap_Weather___add__, METH_VARARGS | METH_KEYWORDS, (char *)"Weather___add__(Weather self, Weather w) -> Weather"},
@@ -78791,12 +78810,7 @@ static PyMethodDef SwigMethods[] = {
 		""},
 	 { (char *)"Cell_Tground_set", _wrap_Cell_Tground_set, METH_VARARGS, (char *)"Cell_Tground_set(Cell self, real Tground)"},
 	 { (char *)"Cell_Tground_get", (PyCFunction)_wrap_Cell_Tground_get, METH_O, (char *)"Cell_Tground_get(Cell self) -> real"},
-	 { (char *)"Cell_has_wet_leaves", (PyCFunction)_wrap_Cell_has_wet_leaves, METH_O, (char *)"\n"
-		"Cell_has_wet_leaves(Cell self) -> bool\n"
-		"\n"
-		"bool\n"
-		"has_wet_leaves() const \n"
-		""},
+	 { (char *)"Cell_leave_wetness", (PyCFunction)_wrap_Cell_leave_wetness, METH_O, (char *)"Cell_leave_wetness(Cell self) -> real"},
 	 { (char *)"Cell_Id_set", _wrap_Cell_Id_set, METH_VARARGS, (char *)"Cell_Id_set(Cell self, ptrdiff_t Id)"},
 	 { (char *)"Cell_Id_get", (PyCFunction)_wrap_Cell_Id_get, METH_O, (char *)"Cell_Id_get(Cell self) -> ptrdiff_t"},
 	 { (char *)"Cell_get_weather", (PyCFunction) _wrap_Cell_get_weather, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
@@ -83921,7 +83935,6 @@ SWIG_init(void) {
   SWIG_addvarlink(SWIG_globals(),(char*)"year",Swig_var_year_get, Swig_var_year_set);
   SWIG_addvarlink(SWIG_globals(),(char*)"month",Swig_var_month_get, Swig_var_month_set);
   SWIG_addvarlink(SWIG_globals(),(char*)"never",Swig_var_never_get, Swig_var_never_set);
-  SWIG_addvarlink(SWIG_globals(),(char*)"Weather_snow_threshold",Swig_var_Weather_snow_threshold_get, Swig_var_Weather_snow_threshold_set);
   SWIG_addvarlink(SWIG_globals(),(char*)"rho_wg",Swig_var_rho_wg_get, Swig_var_rho_wg_set);
   SWIG_addvarlink(SWIG_globals(),(char*)"KinematicSurfaceRunoff_cell_connector",Swig_var_KinematicSurfaceRunoff_cell_connector_get, Swig_var_KinematicSurfaceRunoff_cell_connector_set);
   SWIG_addvarlink(SWIG_globals(),(char*)"DiffusiveSurfaceRunoff_cell_connector",Swig_var_DiffusiveSurfaceRunoff_cell_connector_get, Swig_var_DiffusiveSurfaceRunoff_cell_connector_set);

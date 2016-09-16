@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from __future__ import division
+from __future__ import division, print_function
 """
 This file creates a single cell to calculate a soil column using a 1D Richards equation
 
@@ -42,7 +42,7 @@ def load_meteo(project):
 
     # Load climate data from csv file
     # could be simplified with numpy's 
-    csvfile =  file('climate.csv') 
+    csvfile =  open('climate.csv') 
     csvfile.readline() # Read the headers, and ignore them
     for line in csvfile:
         # split the line in to columns using commas
@@ -129,7 +129,7 @@ def run(until=cmf.year,dt=cmf.day):
         # store the actual wetness
         wetness.append(c.layers.wetness)
         # Print, at which time step you are
-        print ("\r%s - %6.2fm3/day, %i rhs-eval" % (t,groundwater(t), solver.get_nonlinear_iterations())),
+        print("{} - {:6.2f}m3/day, {} rhs-eval".format(t,groundwater(t), solver.get_nonlinear_iterations()))
     return outflow,wetness
 
 def plotresult(outflow,wetness):
@@ -169,12 +169,12 @@ if __name__ == '__main__':
     tstart=time.time()
     cmf.set_parallel_threads(1)
     outflow,wetness=run(cmf.year*5)
-    print '%g s' % (time.time()-tstart)
+    print('{:g} s'.format(time.time()-tstart))
     #print c.vegetation
     # Try to plot the results
     try:
         plotresult(outflow,wetness)
     except ImportError:
-        print "Matplotlib is not installed or has a failure. No plotting possible"
+        print("Matplotlib is not installed or has a failure. No plotting possible")
     
 

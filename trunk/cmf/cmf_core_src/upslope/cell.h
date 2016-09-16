@@ -248,8 +248,20 @@ namespace cmf {
 			/// @param t Time step
 			real heat_flux(cmf::math::Time t) const;
 			real Tground;
-			bool has_wet_leaves() const	{
-				return (m_Canopy) && (m_Canopy->get_state()>1e-6*get_area());
+
+			/// Return the fraction of wet leaves in the canopy if a canopy water storage exists.
+			/// If no canopy storage is present, it returns 0.0 (=empty). 
+			/// The fraction of wet leaves are calculated as the linear filling of the canopy storage.
+			real leave_wetness() const {
+
+				if (m_Canopy) {
+					// calculate canopy capacity in m3
+					real canopy_capacity = vegetation.LAI * vegetation.CanopyCapacityPerLAI * m_Area * 1e-3;
+					return minmax(m_Canopy->get_volume() / canopy_capacity, 0.0, 1.0);
+				}
+				else {
+					return 0.0;
+				}
 			}
 			ptrdiff_t Id;
 			cmf::project& get_project() const

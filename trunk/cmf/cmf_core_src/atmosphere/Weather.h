@@ -70,6 +70,10 @@ namespace cmf {
 	    /// A structure holding meteorological information, excluding precipitation
 		struct Weather
 		{
+		private:
+			/// A model parameter, below which T in degC precipitation falls as snow
+			static double snow_threshold;
+		public:
 			double
 				T,					///< actual Temperature \f$T \left[^\circ C\right]\f$
 				Tmax,				///< Maximum daily Temperature \f$T_{max} \left[^\circ C\right]\f$
@@ -129,8 +133,13 @@ namespace cmf {
 					<< " Wind=" << Windspeed << " m/s";
 				return sstr.str();
 			}
-			/// A model parameter, below which T in degC precipitation falls as snow
-			static double snow_threshold;
+			/// Sets the snow threshold globally for cmf
+			static void set_snow_threshold(double new_threshold);
+			/// Returns the actual snow threshold value in degC
+			static double get_snow_threshold() {
+				return snow_threshold;
+			}
+
 			/// inplace add
 			Weather& operator+=(const Weather& w);
 			/// inplace multiplication

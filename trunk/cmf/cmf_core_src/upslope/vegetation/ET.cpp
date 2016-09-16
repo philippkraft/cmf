@@ -79,14 +79,6 @@ namespace cmf {
 				return et_pot<0 ? 0 : et_pot;
 			}
 
-			real Tact(real Tpot,const cmf::upslope::SoilLayer & sw,const cmf::upslope::vegetation::Vegetation & veg)
-			{
-				real
-					rootfraction=sw.get_rootfraction(),
-					Tpot_vol=Tpot*sw.cell.get_area() * 0.001 * rootfraction;
-			
-				return piecewise_linear(sw.get_matrix_potential(),-160,-5,0,Tpot_vol);
-			}
 			real stressedET::Tact( real Tpot ) const
 			{
 				return m_stressfunction->Tact(this,Tpot) ;
@@ -140,19 +132,14 @@ namespace cmf {
 			{
 				cmf::upslope::SoilLayer::ptr layer=sw.lock();
 				cmf::upslope::Cell & cell=layer->cell;
-				if (!cell.has_wet_leaves())
-				{
-					cmf::atmosphere::Weather A=cell.get_weather(t);
-					cmf::upslope::vegetation::Vegetation veg=cell.vegetation;
-					real 
-						Rn = A.Rn(veg.albedo,daily), // Net radiation flux 
-						G = daily ? 0									// If calculation takes place on daily basis, the soil heat flux is 0 (FAO 1998,Eq. 42)
-						: Rn>0 ? 0.1*Rn : 0.5 * Rn,	           // On a shorter basis, it is proportional to Rn, different for day and night (FAO 1998,Eq. 45f)
-						PM=PenmanMonteith(Rn-G,r_a(A,veg.Height),r_s(veg),A.T,A.e_s-A.e_a);
-					return Tact(PM);
-				}
-				else
-					return 0.0;
+				cmf::atmosphere::Weather A=cell.get_weather(t);
+				cmf::upslope::vegetation::Vegetation veg=cell.vegetation;
+				real 
+					Rn = A.Rn(veg.albedo,daily), // Net radiation flux 
+					G = daily ? 0									// If calculation takes place on daily basis, the soil heat flux is 0 (FAO 1998,Eq. 42)
+					: Rn>0 ? 0.1*Rn : 0.5 * Rn,	           // On a shorter basis, it is proportional to Rn, different for day and night (FAO 1998,Eq. 45f)
+					PM=PenmanMonteith(Rn-G,r_a(A,veg.Height),r_s(veg),A.T,A.e_s-A.e_a);
+				return Tact(PM) * (1 - cell.leave_wetness());
 			}
 
 			void PenmanMonteithET::use_for_cell( cmf::upslope::Cell & cell )
@@ -169,7 +156,7 @@ namespace cmf {
 				cmf::atmosphere::Weather w=m_cell.get_weather(t);
 				cmf::upslope::vegetation::Vegetation veg=m_cell.vegetation;
 				real PM=PenmanMonteith(w,veg,m_cell.z)*0.001*m_cell.get_area();
-				return minimum(canopy->get_state()*2/cmf::math::h.AsDays(),PM);
+				return PM * m_cell.leave_wetness();
 			}
 
 			real HargreaveET::calc_q( cmf::math::Time t )
@@ -266,26 +253,21 @@ namespace cmf {
 			{
 				cmf::upslope::SoilLayer::ptr layer=sw.lock();
 				cmf::upslope::Cell & cell=layer->cell;
-				if (!cell.has_wet_leaves())
-				{
-					cmf::atmosphere::Weather A=cell.get_weather(t);
-					cmf::upslope::vegetation::Vegetation veg=cell.vegetation;
-					real 
-						Rn = A.Rn(veg.albedo,daily), // Net radiation flux 
-						G = daily ? 0									// If calculation takes place on daily basis, the soil heat flux is 0 (FAO 1998,Eq. 42)
-						: Rn>0 ? 0.1*Rn : 0.5 * Rn,	           // On a shorter basis, it is proportional to Rn, different for day and night (FAO 1998,Eq. 45f)
-						c_p_rho  = 1.240e-3, // volumetric heat capacity (MJ/(m3 k))
-						lambda  = 2.45,	    // latent heat of vaporization (MJ/kg)
-						// Slope of vapor pressure (kPa/degC) (FAO 1998, Eq. 13)
-						Delta = 4098*0.6108 * exp(17.27 * A.T / (A.T+237.3)) / ((A.T+237.3)*(A.T+237.3)), 
-						gamma         = 0.067,	// psychrometric constant [kPa/k] 
-						radTerm       = alpha * Delta /(Delta + gamma) * (Rn - G),
+				cmf::atmosphere::Weather A=cell.get_weather(t);
+				cmf::upslope::vegetation::Vegetation veg=cell.vegetation;
+				real 
+					Rn = A.Rn(veg.albedo,daily), // Net radiation flux 
+					G = daily ? 0									// If calculation takes place on daily basis, the soil heat flux is 0 (FAO 1998,Eq. 42)
+					: Rn>0 ? 0.1*Rn : 0.5 * Rn,	           // On a shorter basis, it is proportional to Rn, different for day and night (FAO 1998,Eq. 45f)
+					c_p_rho  = 1.240e-3, // volumetric heat capacity (MJ/(m3 k))
+					lambda  = 2.45,	    // latent heat of vaporization (MJ/kg)
+					// Slope of vapor pressure (kPa/degC) (FAO 1998, Eq. 13)
+					Delta = 4098*0.6108 * exp(17.27 * A.T / (A.T+237.3)) / ((A.T+237.3)*(A.T+237.3)), 
+					gamma         = 0.067,	// psychrometric constant [kPa/k] 
+					radTerm       = alpha * Delta /(Delta + gamma) * (Rn - G),
 
-						PT = radTerm / lambda;
-					return Tact(PT * veg.LAI/2.88);
-				} else {
-					return 0.0;
-				}
+					PT = radTerm / lambda;
+				return Tact(PT * veg.LAI/2.88) * (1-cell.leave_wetness());
 
 	
 			}
