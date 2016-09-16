@@ -28,6 +28,12 @@ double cmf::atmosphere::Weather::Rn( double albedo,bool daily/*=false*/ ) const
 	return Rns+Rnl;
 }
 
+
+void cmf::atmosphere::Weather::set_snow_threshold(double new_threshold)
+{
+	cmf::atmosphere::Weather::snow_threshold = new_threshold;
+}
+
 cmf::atmosphere::Weather& cmf::atmosphere::Weather::operator+=( const Weather& w )
 {
 	T+=w.T;

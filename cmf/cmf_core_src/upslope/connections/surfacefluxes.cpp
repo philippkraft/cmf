@@ -41,7 +41,7 @@ real cmf::upslope::connections::SimpleTindexSnowMelt::calc_q( cmf::math::Time t 
 {
 	cmf::water::WaterStorage::ptr Snow=m_Snow.lock();
 	real T=m_cell.get_weather(t).T;
-	real ThresholdTemp=cmf::atmosphere::Weather::snow_threshold;
+	real ThresholdTemp=cmf::atmosphere::Weather::get_snow_threshold();
 	if (T>ThresholdTemp)
 	{
 		return (1-Snow->is_empty())*SnowMeltRate*(T-ThresholdTemp)*m_cell.get_area()*0.001;
