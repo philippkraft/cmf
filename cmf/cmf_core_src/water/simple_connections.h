@@ -317,7 +317,7 @@ namespace cmf {
 			real I_min;
 			/// Fraction of in-flux leaving to this connection at I_min
 			real fI_min;
-			/// Maximum in-flux to left node resulting in a flux of \f$I
+			/// Maximum in-flux to left node resulting in a flux of \f$I\f$
 			real I_max;
 			/// Fraction of in-flux leaving to this connection at I_min
 			real fI_max;

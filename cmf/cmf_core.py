@@ -5815,7 +5815,18 @@ class Weather(object):
         """
         return _cmf_core.Weather_to_string(self, *args, **kwargs)
 
-    snow_threshold = _swig_property(_cmf_core.Weather_snow_threshold_get, _cmf_core.Weather_snow_threshold_set)
+
+    def set_snow_threshold(*args, **kwargs):
+        """set_snow_threshold(double new_threshold)"""
+        return _cmf_core.Weather_set_snow_threshold(*args, **kwargs)
+
+    set_snow_threshold = staticmethod(set_snow_threshold)
+
+    def get_snow_threshold(*args, **kwargs):
+        """get_snow_threshold() -> double"""
+        return _cmf_core.Weather_get_snow_threshold(*args, **kwargs)
+
+    get_snow_threshold = staticmethod(get_snow_threshold)
 
     def __iadd__(self, *args, **kwargs):
         """__iadd__(Weather self, Weather w) -> Weather"""
@@ -5851,6 +5862,14 @@ Weather.__add__ = new_instancemethod(_cmf_core.Weather___add__, None, Weather)
 Weather.__mul__ = new_instancemethod(_cmf_core.Weather___mul__, None, Weather)
 Weather_swigregister = _cmf_core.Weather_swigregister
 Weather_swigregister(Weather)
+
+def Weather_set_snow_threshold(*args, **kwargs):
+    """Weather_set_snow_threshold(double new_threshold)"""
+    return _cmf_core.Weather_set_snow_threshold(*args, **kwargs)
+
+def Weather_get_snow_threshold(*args):
+    """Weather_get_snow_threshold() -> double"""
+    return _cmf_core.Weather_get_snow_threshold(*args)
 
 class Meteorology(object):
     """
@@ -7186,14 +7205,9 @@ class Cell(StateVariableOwner):
 
     Tground = _swig_property(_cmf_core.Cell_Tground_get, _cmf_core.Cell_Tground_set)
 
-    def has_wet_leaves(self, *args, **kwargs):
-        """
-        has_wet_leaves(Cell self) -> bool
-
-        bool
-        has_wet_leaves() const 
-        """
-        return _cmf_core.Cell_has_wet_leaves(self, *args, **kwargs)
+    def leave_wetness(self, *args, **kwargs):
+        """leave_wetness(Cell self) -> real"""
+        return _cmf_core.Cell_leave_wetness(self, *args, **kwargs)
 
     Id = _swig_property(_cmf_core.Cell_Id_get, _cmf_core.Cell_Id_set)
 
@@ -7389,7 +7403,7 @@ Cell.snow_coverage = new_instancemethod(_cmf_core.Cell_snow_coverage, None, Cell
 Cell.albedo = new_instancemethod(_cmf_core.Cell_albedo, None, Cell)
 Cell.surface_water_coverage = new_instancemethod(_cmf_core.Cell_surface_water_coverage, None, Cell)
 Cell.heat_flux = new_instancemethod(_cmf_core.Cell_heat_flux, None, Cell)
-Cell.has_wet_leaves = new_instancemethod(_cmf_core.Cell_has_wet_leaves, None, Cell)
+Cell.leave_wetness = new_instancemethod(_cmf_core.Cell_leave_wetness, None, Cell)
 Cell.get_weather = new_instancemethod(_cmf_core.Cell_get_weather, None, Cell)
 Cell.layer_count = new_instancemethod(_cmf_core.Cell_layer_count, None, Cell)
 Cell.get_layer = new_instancemethod(_cmf_core.Cell_get_layer, None, Cell)
