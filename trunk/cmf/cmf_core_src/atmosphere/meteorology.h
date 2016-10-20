@@ -56,6 +56,7 @@ namespace cmf {
 			virtual Meteorology* copy() const=0;
 			/// Returns the height of the instruments above canopy
 			virtual real get_instrument_height() const=0;
+			virtual ~Meteorology() {}
 		};
 		/// @ingroup meteo
 		/// A primitive implementation of the Meteorology interface. 
