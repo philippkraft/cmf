@@ -123,6 +123,7 @@ namespace cmf {
 				}
 				return q;
 			}
+			virtual ~Integrator() {}
 			
 
 		protected:

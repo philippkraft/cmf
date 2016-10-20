@@ -280,7 +280,7 @@ static bool check_time(PyObject* dt) {
         the interpolation power and the number of values. The following 64 bit floats, are the values of the timeseries
         """
         if isinstance(f,str):
-            f=file(f,'wb')
+            f=open(f,'wb')
         elif not hasattr(f,'write'):
             raise TypeError("The file f must be either an object providing a write method, like a file, or a valid file name")
         f.write(struct.pack('qqqq%id' % self.size(),  self.size(), self.begin.AsMilliseconds(),self.step.AsMilliseconds(),self.interpolationpower(), *self))
@@ -310,7 +310,7 @@ static bool check_time(PyObject* dt) {
         32  First value of timeseries (float64)
         """
         if isinstance(f,str):
-            f=file(f,'rb')
+            f=open(f,'rb')
         elif not hasattr(f,'read'):
             raise TypeError("The file f must either implement a 'read' method, like a file, or must be a vild file name")
         header_length=struct.calcsize('qqqq') 
