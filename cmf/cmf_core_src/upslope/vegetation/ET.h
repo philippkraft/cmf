@@ -227,6 +227,9 @@ namespace cmf {
 				std::string to_string() const {
 					return cmf::water::flux_connection::to_string() + " - " + m_stressfunction->to_string();
 				}
+				virtual real ETpot(cmf::math::Time t) const  {
+					return 0.0;
+				}
 
 			};
 			
@@ -246,6 +249,9 @@ namespace cmf {
 					: stressedET(source,ET_target,"Constant get_evaporation"),ETpot_value(constantETpot_value)	
 				{
 				}
+				virtual real ETpot(cmf::math::Time t) const {
+					return ETpot_value;
+				}
 			};
 			/// @ingroup ET
 			/// @brief A timeseries driven evapotranspiration
@@ -257,10 +263,10 @@ namespace cmf {
 			protected:
 				virtual real calc_q(cmf::math::Time t);
 			public:
-				cmf::math::timeseries ETpot;
-				real GetETpot(cmf::math::Time t) const {return ETpot.get_t(t);}
+				cmf::math::timeseries ETpot_data;
+				virtual real ETpot(cmf::math::Time t) const {return ETpot_data.get_t(t);}
 				timeseriesETpot(cmf::upslope::SoilLayer::ptr source,cmf::water::flux_node::ptr ET_target,cmf::math::timeseries ETpot_values)
-					: stressedET (source,ET_target,"Timeseries based ET connection"), ETpot(ETpot_values)
+					: stressedET (source,ET_target,"Timeseries based ET connection"), ETpot_data(ETpot_values)
 				{
 				}
 
@@ -308,6 +314,7 @@ namespace cmf {
 				static real r_a(cmf::atmosphere::Weather A,real  veg_height) ;
 				/// @brief Connects all soil layers with the transpiration node of the cell
 				static void use_for_cell(cmf::upslope::Cell & cell);
+				virtual real ETpot(cmf::math::Time t) const;
 			};
 
 			///@ingroup ET
@@ -331,6 +338,7 @@ namespace cmf {
 				PriestleyTaylorET(cmf::upslope::SoilLayer::ptr source, cmf::water::flux_node::ptr ET_target,real alpha=1.26);
 				/// @brief Connects all soil layers with the transpiration node of the cell
 				static void use_for_cell(cmf::upslope::Cell & cell);
+				real ETpot(cmf::math::Time t) const;
 
 			};
 
@@ -365,6 +373,7 @@ namespace cmf {
 				real lat;
 				/// @brief Connects all soil layers with the transpiration node of the cell
 				static void use_for_cell(cmf::upslope::Cell & cell);
+				real ETpot(cmf::math::Time t) const;
 
 			};
 			/// @ingroup ET
@@ -380,6 +389,7 @@ namespace cmf {
 				}
 				/// @brief Connects all soil layers with the transpiration node of the cell
 				static void use_for_cell(cmf::upslope::Cell & cell);
+				real ETpot(cmf::math::Time t) const;
 
 			};
 			/// @ingroup ET
@@ -398,6 +408,7 @@ namespace cmf {
 					: cmf::water::flux_connection(CanopyStorage,ET_target,"Penman Monteith (canopy) get_evaporation"),m_cell(cell) {
 						NewNodes();
 				}
+
 			};
 			/// @ingroup ET
 			/// Calculates evaporation from an open water body

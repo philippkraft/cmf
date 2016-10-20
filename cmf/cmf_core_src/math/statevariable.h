@@ -127,6 +127,7 @@ namespace cmf {
 			virtual std::string to_string() const=0;
 			/// ctor
 			StateVariable(real InitialState=0) : m_State(InitialState),m_StateIsNew(true) {}
+			virtual ~StateVariable() {}
 		};
 
 		class StateVariableList;
