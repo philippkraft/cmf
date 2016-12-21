@@ -24,7 +24,7 @@ import os
 from newversionnumber import get_revision, updateversion
 try:
     from distutils.command.build_py import build_py_2to3 as build_py
-    extraswig = []#'-py3']
+    extraswig = ['-py3']
 except ImportError:
     from distutils.command.build_py import build_py
     extraswig = []
