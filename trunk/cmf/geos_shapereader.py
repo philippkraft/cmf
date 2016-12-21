@@ -192,12 +192,17 @@ if has_shapely:
             
             if os.path.exists(filename + '.shp'):
                 filename += '.shp'
+
+            dbffile = filename.replace('.shp','.dbf')
+            # read encoding from .cpg file
+            cpgfile = filename.replace('.shp','.cpg')
+            encoding = open(cpgfile).read().strip() if os.path.exists(cpgfile) else 'latin-1'
+            
             with open(filename, 'rb') as f:
                 self.readheader(f)
                 self.__data=[]
-
                 shpname = os.path.basename(filename).replace('.', '_')
-                dbf = DBF(filename.replace('.shp','.dbf'), encoding='latin-1')
+                dbf = DBF(dbffile, encoding=encoding)
                 self.fields = [field.name for field in dbf.fields]
                 TYPE = namedtuple(shpname,['shape','OID'] + self.fields)
                 for dbfrecord in dbf:
