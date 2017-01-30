@@ -135,7 +135,7 @@ namespace cmf {
 			/// Connects the surfacewater and the most upper layer using a simplified infiltration model
 			/// suitable for conceptional models. 
 			///
-			/// \f[ q_{inf} = f_{full} \max(q_{in},K_{sat}A) \f]
+			/// \f[ q_{inf} = f_{full} \min(q_{in},K_{sat}A) \f]
 			/// where:
 			///   - \f$q_{inf}\f$
 			///   - \f$f_{full} = 1-f(W,W_0,(1-W_0)/5)\f$, where 
