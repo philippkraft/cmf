@@ -26,11 +26,7 @@ namespace cmf {
 			}
 			void NewNodes() {}
 		public:
-			waterbalance_connection(flux_node::ptr source,flux_node::ptr target) 
-				: flux_connection(source,target,"waterbalance connection")
-			{
-				RecalcAlways=true;
-			}
+			waterbalance_connection(flux_node::ptr source, flux_node::ptr target);
 		};
 
 		/// @ingroup connections

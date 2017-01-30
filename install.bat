@@ -9,7 +9,7 @@ echo Created rest complient docstrings in docstrings.i
 :build
 if "x%1x"=="xcleanx" goto clean
 echo delete old .pyd
-del _cmf_core.pyd /s /q
+del _cmf_core*.pyd /s /q
 echo build
 python setup.py build_ext swig
 if ERRORLEVEL 1 goto error
@@ -18,6 +18,9 @@ python setup.py build_py -c -O2 -f
 if ERRORLEVEL 1 goto error
 python setup.py install
 if ERRORLEVEL 1 goto error
+python setup.py bdist_wheel
+python setup.py bdist_wininst
+python setup.py sdist --formats=zip
 goto end
 :clean
 del build /s /q

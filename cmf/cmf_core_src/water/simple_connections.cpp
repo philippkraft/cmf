@@ -171,3 +171,21 @@ real cmf::water::intensity_control_connection::influx( cmf::math::Time t )
 	return waterbalance;
 
 }
+
+cmf::water::waterbalance_connection::waterbalance_connection(flux_node::ptr source, flux_node::ptr target)
+	: flux_connection(source, target, "waterbalance connection")
+{
+	/*
+	// Check if this is the first waterbalance connection
+	cmf::water::connection_list source_cons = source->get_connections();
+	for (cmf::water::connection_list::const_iterator it = source_cons.begin(); it != source_cons.end(); ++it)
+	{
+		if ((**it).type == "waterbalance connection") {
+			throw std::runtime_error(source->to_string() + 
+				" has already a waterbalance connection: " + 
+				(**it).to_string());
+		}
+	}
+	*/
+	RecalcAlways = true;
+}
