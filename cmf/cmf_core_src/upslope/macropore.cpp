@@ -175,12 +175,10 @@ real cmf::upslope::connections::KinematicMacroFlow::calc_q( cmf::math::Time t )
 	
 	if (Mp1) {
 		linear_gradient = Mp1->get_K() * Mp1->get_filled_fraction();
-	} else if (Mp2) {
+	} else {
 		cmf::water::WaterStorage::ptr ws2 = cmf::water::WaterStorage::cast(left_node());
 		// Use a virtual filled fraction, using the capacity of Mp2
 		linear_gradient = Mp2->get_K() * ws2->get_volume() / Mp2->get_capacity();
-	} else {
-		throw std::runtime_error("Could not lock Mp1 and Mp2 in KinamticMacroFlow");
 	}
 
 	real overflow = Mp2 ? std::max( 1 - Mp2->get_filled_fraction(),0.0) : 1;			
