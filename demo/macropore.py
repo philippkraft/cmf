@@ -1,3 +1,4 @@
+from __future__ import print_function, division
 import cmf
 import numpy as np
 import sys
@@ -61,15 +62,15 @@ macropores = MacroPoreList(cmf.MacroPore.create(l,
                                    Ksat=Ksat_mp,density=0.1) 
                            for l in c.layers)
 # Macro pore infiltration
-cmf.KinematicMacroFlow(c.surfacewater, macropores[0])
+cmf.JarvisMacroFlow(c.surfacewater, macropores[0])
 # Macro pore percolation
 for upper,lower in zip(macropores[:-1],macropores[1:]):
     cmf.KinematicMacroFlow(upper, lower)
 # Macro / Micro exchange
 for mp,layer in zip(macropores,c.layers):
     #cmf.GradientMacroMicroExchange(layer,mp)
-    cmf.DiffusiveMacroMicroExchange(mp,layer,1.)
-
+    mme = cmf.DiffusiveMacroMicroExchange(mp,layer,1.)
+    
 # Inital / boundary conditions
 c.saturated_depth = 1.0
 # Add constant rainfall 
@@ -87,9 +88,10 @@ solver = cmf.CVodeIntegrator(p,1e-9)
 # some lists to save data during runtime
 wetness_mx = [] # Saturation of the matrix
 wetness_mp = [] # Saturation of the macropores
-if X:
-    conc_mx=[]
-    conc_mp = []
+
+conc_mx=[]
+conc_mp = []
+
 perc_mx=[] # percolation through the matrix
 perc_mp=[] # percolation through the macropores
 ex_mp_mx=[] # flux from macropores to micropores
@@ -108,51 +110,51 @@ for t in solver.run(t0,tend,dt):
     perc_mp.append(macropores.percolation(t))
     perc_mx.append(c.layers.get_percolation(t))
     ex_mp_mx.append([mp.flux_to(mp.layer,t) for mp in macropores])
-    print t
+    print(t)
 
 # plot results
-from pylab import *
-figure(figsize=(16,9))
-ax1=subplot(3,2,1)
-imshow(transpose(perc_mx),cmap=cm.Blues,aspect='auto',interpolation='nearest',vmin=0.0,vmax=rainfall)
-xticks(arange(0,10 * 24 * 12,24*12),arange(0,10))
-xlabel('days')
-colorbar()
-title('Matrix percolation')
-subplot(3,2,2,sharex=ax1)
-imshow(transpose(perc_mp),cmap=cm.Blues,aspect='auto',interpolation='nearest',vmin=0.0,vmax=rainfall)
-xticks(arange(0,10 * 24 * 12,24*12),arange(0,10))
-xlabel('days')
-colorbar()
-title('Macropore percolation')
-ax1=subplot(3,2,3,sharex=ax1)
-imshow(transpose(wetness_mx),cmap=cm.jet_r,aspect='auto',interpolation='nearest')
-xticks(arange(0,10 * 24 * 12,24*12),arange(0,10))
-xlabel('days')
-colorbar()
-title('Matrix saturation')
-subplot(3,2,4,sharex=ax1)
-imshow(transpose(wetness_mp),cmap=cm.jet_r,aspect='auto',interpolation='nearest')
-xticks(arange(0,10 * 24 * 12,24*12),arange(0,10))
-xlabel('days')
-colorbar()
-title('Macropore saturation')
-subplot(3,2,5,sharex=ax1)
-imshow(transpose(conc_mx),cmap=cm.jet,aspect='auto',interpolation='nearest',vmin=0.0,vmax=1.0)
-xticks(arange(0,10 * 24 * 12,24*12),arange(0,10))
-xlabel('days')
-colorbar()
-title('Matrix concentration')
-subplot(3,2,6,sharex=ax1)
-imshow(transpose(conc_mp),cmap=cm.jet,aspect='auto',interpolation='nearest',vmin=0.0,vmax=1.0)
-xticks(arange(0,10 * 24 * 12,24*12),arange(0,10))
-xlabel('days')
-colorbar()
-title('Macropore concentration')
+import pylab as plt
+plt.figure(figsize=(16,9))
+ax1=plt.subplot(3,2,1)
+plt.imshow(plt.transpose(perc_mx),cmap=plt.plt.cm.Blues,aspect='auto',interpolation='nearest',vmin=0.0,vmax=rainfall)
+plt.xticks(plt.arange(0,10 * 24 * 12,24*12),plt.arange(0,10))
+plt.xlabel('days')
+plt.colorbar()
+plt.title('Matrix percolation')
+plt.subplot(3,2,2,sharex=ax1)
+plt.imshow(plt.transpose(perc_mp),cmap=plt.plt.cm.Blues,aspect='auto',interpolation='nearest',vmin=0.0,vmax=rainfall)
+plt.xticks(plt.arange(0,10 * 24 * 12,24*12),plt.arange(0,10))
+plt.xlabel('days')
+plt.colorbar()
+plt.title('Macropore percolation')
+ax1=plt.subplot(3,2,3,sharex=ax1)
+plt.imshow(plt.transpose(wetness_mx),cmap=plt.cm.jet_r,aspect='auto',interpolation='nearest')
+plt.xticks(plt.arange(0,10 * 24 * 12,24*12),plt.arange(0,10))
+plt.xlabel('days')
+plt.colorbar()
+plt.title('Matrix saturation')
+plt.subplot(3,2,4,sharex=ax1)
+plt.imshow(plt.transpose(wetness_mp),cmap=plt.cm.jet_r,aspect='auto',interpolation='nearest')
+plt.xticks(plt.arange(0,10 * 24 * 12,24*12),plt.arange(0,10))
+plt.xlabel('days')
+plt.colorbar()
+plt.title('Macropore saturation')
+plt.subplot(3,2,5,sharex=ax1)
+plt.imshow(plt.transpose(conc_mx),cmap=plt.cm.jet,aspect='auto',interpolation='nearest',vmin=0.0,vmax=1.0)
+plt.xticks(plt.arange(0,10 * 24 * 12,24*12),plt.arange(0,10))
+plt.xlabel('days')
+plt.colorbar()
+plt.title('Matrix concentration')
+plt.subplot(3,2,6,sharex=ax1)
+plt.imshow(plt.transpose(conc_mp),cmap=plt.cm.jet,aspect='auto',interpolation='nearest',vmin=0.0,vmax=1.0)
+plt.xticks(plt.arange(0,10 * 24 * 12,24*12),plt.arange(0,10))
+plt.xlabel('days')
+plt.colorbar()
+plt.title('Macropore concentration')
 
-subplots_adjust(0.05,0.05,0.95,0.9,0.02,0.3)
+plt.subplots_adjust(0.05,0.05,0.95,0.9,0.02,0.3)
 
 
-suptitle('$K_{sat}^{mx}=%g m/day, K_{sat}^{mp}=%g m/day, \Phi_{mp}=%g$' % (c.layers[0].Ksat,macropores[0].Ksat,porefraction),size=20)
-savefig('Ksmx-%g-Ksmp-%g-MP%g.png' % (c.layers[0].Ksat,macropores[0].Ksat,porefraction))
-show()
+plt.suptitle('$K_{sat}^{mx}=%g m/day, K_{sat}^{mp}=%g m/day, \Phi_{mp}=%g$' % (c.layers[0].Ksat,macropores[0].Ksat,porefraction),size=20)
+plt.savefig('Ksmx-%g-Ksmp-%g-MP%g.png' % (c.layers[0].Ksat,macropores[0].Ksat,porefraction))
+plt.show()
