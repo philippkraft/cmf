@@ -4,7 +4,7 @@
 #if __cplusplus > 199711L || _MSC_VER > 1800 || SWIG
 #pragma message("using std::shared_ptr")
 #include <memory>
-#elif __GNUG__ >= 4 && __GNUC_MINOR__ >=3
+#elif __GNUG__ >= 4 && __GNUC_MINOR__ >=3 && __GNUC_MINOR__ < 8
 #pragma message("using std::tr1::shared_ptr")
 #include <tr1/memory>
 

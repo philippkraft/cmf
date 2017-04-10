@@ -217,8 +217,6 @@ namespace cmf {
 			/// - \f$C\f$ is the capacity of the upper resp. lower macro pore storage
 			class KinematicMacroFlow : public BaseMacroFlow {
 			protected:
-				std::weak_ptr<cmf::upslope::MacroPore> mp1,mp2;
-				std::weak_ptr<cmf::upslope::conductable> c2;
 				virtual real calc_q(cmf::math::Time t) ;
 			public:
 				///
@@ -284,6 +282,7 @@ namespace cmf {
 				}
 			};
 
+			/// @ingroup MacroPore
 			/// @brief A simple first order diffusive water exchange 
 			/// between MacroPore and matrix (SoilLayer)
 			///
