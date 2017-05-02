@@ -21,7 +21,6 @@
 from __future__ import print_function, division
 import sys
 import os
-from newversionnumber import get_revision, updateversion
 try:
     from distutils.command.build_py import build_py_2to3 as build_py
     extraswig = ['-py3']
@@ -34,7 +33,29 @@ except ImportError:
 msvc = sys.platform == 'win32'
 gcc = not msvc
 
-# Change these pathes to your sundials 2.4+ installation
+def get_revision():
+    pipe = os.popen('svnversion')
+    res=pipe.read().strip()
+    if ':' in res:
+        res=res.split(':')[-1]
+    return res.strip('M')
+def updateversion(revision):
+    if revision:
+        module_code = open('cmf/__init__.py').readlines()
+        fout = open('cmf/__init__.py','w')
+        for line in module_code:
+            if line.startswith('__version__'):
+                fout.write("__version__ = '%s'\n" % revision)
+            else:
+                fout.write(line)
+        doxycode = open('Doxyfile').readlines()
+        fout = open('Doxyfile','w')
+        for line in doxycode:
+            if line.strip().startswith('PROJECT_NUMBER'):
+                fout.write("PROJECT_NUMBER         = %s\n" % revision)
+            else:
+                fout.write(line)
+
 
 # Change this path to your boost installation (not needed for gcc)
 

@@ -2193,6 +2193,22 @@ class flux_connection(object):
 
     type = _swig_property(_cmf_core.flux_connection_type_get)
 
+    def get_tracer_filter(self, *args) -> "real":
+        """
+        get_tracer_filter(flux_connection self) -> real
+        get_tracer_filter(flux_connection self, solute S) -> real
+        """
+        return _cmf_core.flux_connection_get_tracer_filter(self, *args)
+
+
+    def set_tracer_filter(self, *args) -> "void":
+        """
+        set_tracer_filter(flux_connection self, real value)
+        set_tracer_filter(flux_connection self, solute S, real value)
+        """
+        return _cmf_core.flux_connection_set_tracer_filter(self, *args)
+
+
     def to_string(self, *args, **kwargs) -> "std::string":
         """to_string(flux_connection self) -> std::string"""
         return _cmf_core.flux_connection_to_string(self, *args, **kwargs)
@@ -2203,7 +2219,6 @@ class flux_connection(object):
         return _cmf_core.flux_connection_short_string(self, *args, **kwargs)
 
     __swig_destroy__ = _cmf_core.delete_flux_connection
-    tracer_filter = _swig_property(_cmf_core.flux_connection_tracer_filter_get, _cmf_core.flux_connection_tracer_filter_set)
 
     def __repr__(self):
         return self.to_string()
@@ -2224,6 +2239,8 @@ flux_connection.get_target = new_instancemethod(_cmf_core.flux_connection_get_ta
 flux_connection.exchange_target = new_instancemethod(_cmf_core.flux_connection_exchange_target, None, flux_connection)
 flux_connection.q = new_instancemethod(_cmf_core.flux_connection_q, None, flux_connection)
 flux_connection.conc = new_instancemethod(_cmf_core.flux_connection_conc, None, flux_connection)
+flux_connection.get_tracer_filter = new_instancemethod(_cmf_core.flux_connection_get_tracer_filter, None, flux_connection)
+flux_connection.set_tracer_filter = new_instancemethod(_cmf_core.flux_connection_set_tracer_filter, None, flux_connection)
 flux_connection.to_string = new_instancemethod(_cmf_core.flux_connection_to_string, None, flux_connection)
 flux_connection.short_string = new_instancemethod(_cmf_core.flux_connection_short_string, None, flux_connection)
 flux_connection_swigregister = _cmf_core.flux_connection_swigregister

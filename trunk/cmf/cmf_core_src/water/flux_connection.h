@@ -56,6 +56,7 @@ namespace cmf {
 			weak_flux_node_ptr m_left;
 			weak_flux_node_ptr m_right;
 			real m_tracer_filter;
+			std::map < cmf::water::solute, real > m_tracer_filter_map;
 		protected:
 			virtual void NewNodes()=0;
 			bool RecalcAlways;
@@ -128,12 +129,17 @@ namespace cmf {
 			///
 			/// 1.0 is no filter and 0.0 means no solute is crossing this connection
 			real get_tracer_filter() { return m_tracer_filter;}
+			real get_tracer_filter(solute S);
 			/// A value ranging from 0 to 1 to filter tracers out of the water flux
 			///
 			/// 1.0 is no filter and 0.0 means no solute is crossing this connection
 			void set_tracer_filter(real value) { 
 				if (value<0 || value>1) throw std::runtime_error("Tracer filter must be between 0 and 1");
 				m_tracer_filter = value;
+			}
+			void set_tracer_filter(solute S, real value) {
+				if (value<0 || value>1) throw std::runtime_error("Tracer filter must be between 0 and 1");
+				m_tracer_filter_map[S] = value;
 			}
 			virtual std::string to_string() const;
 			virtual std::string short_string() const;
