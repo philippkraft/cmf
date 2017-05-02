@@ -4333,10 +4333,6 @@ SWIGINTERN size_t cmf_water_SoluteTimeseries___len__(cmf::water::SoluteTimeserie
 #define cmf_water_flux_node_connections_get(self_) new cmf::water::connection_list(self_->get_connections())
   
 
-#define cmf_water_flux_connection_tracer_filter_get(self_) self_->get_tracer_filter()
-#define cmf_water_flux_connection_tracer_filter_set(self_, val_) self_->set_tracer_filter(val_)
-  
-
 struct SWIG_null_deleter {
   void operator() (void const *) const {
   }
@@ -26178,6 +26174,350 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_flux_connection_get_tracer_filter__SWIG_0(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  cmf::water::flux_connection *arg1 = (cmf::water::flux_connection *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  real result;
+  
+  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__water__flux_connection, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "flux_connection_get_tracer_filter" "', argument " "1"" of type '" "cmf::water::flux_connection *""'"); 
+  }
+  arg1 = reinterpret_cast< cmf::water::flux_connection * >(argp1);
+  {
+    try {
+      result = (real)(arg1)->get_tracer_filter();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+    
+  }
+  resultobj = SWIG_From_double(static_cast< double >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_flux_connection_get_tracer_filter__SWIG_1(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  cmf::water::flux_connection *arg1 = (cmf::water::flux_connection *) 0 ;
+  SwigValueWrapper< cmf::water::solute > arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 ;
+  int res2 = 0 ;
+  real result;
+  
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__water__flux_connection, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "flux_connection_get_tracer_filter" "', argument " "1"" of type '" "cmf::water::flux_connection *""'"); 
+  }
+  arg1 = reinterpret_cast< cmf::water::flux_connection * >(argp1);
+  {
+    res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_cmf__water__solute,  0  | 0);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "flux_connection_get_tracer_filter" "', argument " "2"" of type '" "cmf::water::solute""'"); 
+    }  
+    if (!argp2) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "flux_connection_get_tracer_filter" "', argument " "2"" of type '" "cmf::water::solute""'");
+    } else {
+      cmf::water::solute * temp = reinterpret_cast< cmf::water::solute * >(argp2);
+      arg2 = *temp;
+      if (SWIG_IsNewObj(res2)) delete temp;
+    }
+  }
+  {
+    try {
+      result = (real)(arg1)->get_tracer_filter(arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+    
+  }
+  resultobj = SWIG_From_double(static_cast< double >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_flux_connection_get_tracer_filter(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[3] = {
+    0
+  };
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args,"flux_connection_get_tracer_filter",0,2,argv))) SWIG_fail;
+  --argc;
+  {
+    unsigned long _index = 0;
+    SWIG_TypeRank _rank = 0; 
+    if (argc == 1) {
+      SWIG_TypeRank _ranki = 0;
+      SWIG_TypeRank _rankm = 0;
+      SWIG_TypeRank _pi = 1;
+      int _v = 0;
+      {
+        void *vptr = 0;
+        int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_cmf__water__flux_connection, 0);
+        _v = SWIG_CheckState(res);
+      }
+      if (!_v) goto check_1;
+      _ranki += _v*_pi;
+      _rankm += _pi;
+      _pi *= SWIG_MAXCASTRANK;
+      if (!_index || (_ranki < _rank)) {
+        _rank = _ranki; _index = 1;
+        if (_rank == _rankm) goto dispatch;
+      }
+    }
+  check_1:
+    
+    if (argc == 2) {
+      SWIG_TypeRank _ranki = 0;
+      SWIG_TypeRank _rankm = 0;
+      SWIG_TypeRank _pi = 1;
+      int _v = 0;
+      {
+        void *vptr = 0;
+        int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_cmf__water__flux_connection, 0);
+        _v = SWIG_CheckState(res);
+      }
+      if (!_v) goto check_2;
+      _ranki += _v*_pi;
+      _rankm += _pi;
+      _pi *= SWIG_MAXCASTRANK;
+      {
+        int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_cmf__water__solute, 0);
+        _v = SWIG_CheckState(res);
+      }
+      if (!_v) goto check_2;
+      _ranki += _v*_pi;
+      _rankm += _pi;
+      _pi *= SWIG_MAXCASTRANK;
+      if (!_index || (_ranki < _rank)) {
+        _rank = _ranki; _index = 2;
+        if (_rank == _rankm) goto dispatch;
+      }
+    }
+  check_2:
+    
+  dispatch:
+    switch(_index) {
+    case 1:
+      return _wrap_flux_connection_get_tracer_filter__SWIG_0(self, argc, argv);
+    case 2:
+      return _wrap_flux_connection_get_tracer_filter__SWIG_1(self, argc, argv);
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'flux_connection_get_tracer_filter'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    cmf::water::flux_connection::get_tracer_filter()\n"
+    "    cmf::water::flux_connection::get_tracer_filter(cmf::water::solute)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_flux_connection_set_tracer_filter__SWIG_0(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  cmf::water::flux_connection *arg1 = (cmf::water::flux_connection *) 0 ;
+  real arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  double val2 ;
+  int ecode2 = 0 ;
+  
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__water__flux_connection, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "flux_connection_set_tracer_filter" "', argument " "1"" of type '" "cmf::water::flux_connection *""'"); 
+  }
+  arg1 = reinterpret_cast< cmf::water::flux_connection * >(argp1);
+  ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "flux_connection_set_tracer_filter" "', argument " "2"" of type '" "real""'");
+  } 
+  arg2 = static_cast< real >(val2);
+  {
+    try {
+      (arg1)->set_tracer_filter(arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_flux_connection_set_tracer_filter__SWIG_1(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  cmf::water::flux_connection *arg1 = (cmf::water::flux_connection *) 0 ;
+  SwigValueWrapper< cmf::water::solute > arg2 ;
+  real arg3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 ;
+  int res2 = 0 ;
+  double val3 ;
+  int ecode3 = 0 ;
+  
+  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__water__flux_connection, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "flux_connection_set_tracer_filter" "', argument " "1"" of type '" "cmf::water::flux_connection *""'"); 
+  }
+  arg1 = reinterpret_cast< cmf::water::flux_connection * >(argp1);
+  {
+    res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_cmf__water__solute,  0  | 0);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "flux_connection_set_tracer_filter" "', argument " "2"" of type '" "cmf::water::solute""'"); 
+    }  
+    if (!argp2) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "flux_connection_set_tracer_filter" "', argument " "2"" of type '" "cmf::water::solute""'");
+    } else {
+      cmf::water::solute * temp = reinterpret_cast< cmf::water::solute * >(argp2);
+      arg2 = *temp;
+      if (SWIG_IsNewObj(res2)) delete temp;
+    }
+  }
+  ecode3 = SWIG_AsVal_double(swig_obj[2], &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "flux_connection_set_tracer_filter" "', argument " "3"" of type '" "real""'");
+  } 
+  arg3 = static_cast< real >(val3);
+  {
+    try {
+      (arg1)->set_tracer_filter(arg2,arg3);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_flux_connection_set_tracer_filter(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[4] = {
+    0
+  };
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args,"flux_connection_set_tracer_filter",0,3,argv))) SWIG_fail;
+  --argc;
+  {
+    unsigned long _index = 0;
+    SWIG_TypeRank _rank = 0; 
+    if (argc == 2) {
+      SWIG_TypeRank _ranki = 0;
+      SWIG_TypeRank _rankm = 0;
+      SWIG_TypeRank _pi = 1;
+      int _v = 0;
+      {
+        void *vptr = 0;
+        int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_cmf__water__flux_connection, 0);
+        _v = SWIG_CheckState(res);
+      }
+      if (!_v) goto check_1;
+      _ranki += _v*_pi;
+      _rankm += _pi;
+      _pi *= SWIG_MAXCASTRANK;
+      {
+        {
+          int res = SWIG_AsVal_double(argv[1], NULL);
+          _v = SWIG_CheckState(res);
+        }
+      }
+      if (!_v) goto check_1;
+      _ranki += _v*_pi;
+      _rankm += _pi;
+      _pi *= SWIG_MAXCASTRANK;
+      if (!_index || (_ranki < _rank)) {
+        _rank = _ranki; _index = 1;
+        if (_rank == _rankm) goto dispatch;
+      }
+    }
+  check_1:
+    
+    if (argc == 3) {
+      SWIG_TypeRank _ranki = 0;
+      SWIG_TypeRank _rankm = 0;
+      SWIG_TypeRank _pi = 1;
+      int _v = 0;
+      {
+        void *vptr = 0;
+        int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_cmf__water__flux_connection, 0);
+        _v = SWIG_CheckState(res);
+      }
+      if (!_v) goto check_2;
+      _ranki += _v*_pi;
+      _rankm += _pi;
+      _pi *= SWIG_MAXCASTRANK;
+      {
+        int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_cmf__water__solute, 0);
+        _v = SWIG_CheckState(res);
+      }
+      if (!_v) goto check_2;
+      _ranki += _v*_pi;
+      _rankm += _pi;
+      _pi *= SWIG_MAXCASTRANK;
+      {
+        {
+          int res = SWIG_AsVal_double(argv[2], NULL);
+          _v = SWIG_CheckState(res);
+        }
+      }
+      if (!_v) goto check_2;
+      _ranki += _v*_pi;
+      _rankm += _pi;
+      _pi *= SWIG_MAXCASTRANK;
+      if (!_index || (_ranki < _rank)) {
+        _rank = _ranki; _index = 2;
+        if (_rank == _rankm) goto dispatch;
+      }
+    }
+  check_2:
+    
+  dispatch:
+    switch(_index) {
+    case 1:
+      return _wrap_flux_connection_set_tracer_filter__SWIG_0(self, argc, argv);
+    case 2:
+      return _wrap_flux_connection_set_tracer_filter__SWIG_1(self, argc, argv);
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'flux_connection_set_tracer_filter'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    cmf::water::flux_connection::set_tracer_filter(real)\n"
+    "    cmf::water::flux_connection::set_tracer_filter(cmf::water::solute,real)\n");
+  return 0;
+}
+
+
 SWIGINTERN PyObject *_wrap_flux_connection_to_string(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   cmf::water::flux_connection *arg1 = (cmf::water::flux_connection *) 0 ;
@@ -26267,76 +26607,6 @@ SWIGINTERN PyObject *_wrap_delete_flux_connection(PyObject *SWIGUNUSEDPARM(self)
     
   }
   resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_flux_connection_tracer_filter_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  cmf::water::flux_connection *arg1 = (cmf::water::flux_connection *) 0 ;
-  real arg2 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  double val2 ;
-  int ecode2 = 0 ;
-  PyObject *swig_obj[2] ;
-  
-  if (!SWIG_Python_UnpackTuple(args,"flux_connection_tracer_filter_set",2,2,swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__water__flux_connection, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "flux_connection_tracer_filter_set" "', argument " "1"" of type '" "cmf::water::flux_connection *""'"); 
-  }
-  arg1 = reinterpret_cast< cmf::water::flux_connection * >(argp1);
-  ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "flux_connection_tracer_filter_set" "', argument " "2"" of type '" "real""'");
-  } 
-  arg2 = static_cast< real >(val2);
-  {
-    try {
-      cmf_water_flux_connection_tracer_filter_set(arg1,arg2);
-    } catch (const std::out_of_range& e) {
-      SWIG_exception(SWIG_IndexError, e.what());    
-    } catch (const std::exception& e) {
-      SWIG_exception(SWIG_RuntimeError, e.what());
-    }
-    
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_flux_connection_tracer_filter_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  cmf::water::flux_connection *arg1 = (cmf::water::flux_connection *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject *swig_obj[1] ;
-  real result;
-  
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__water__flux_connection, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "flux_connection_tracer_filter_get" "', argument " "1"" of type '" "cmf::water::flux_connection *""'"); 
-  }
-  arg1 = reinterpret_cast< cmf::water::flux_connection * >(argp1);
-  {
-    try {
-      result = (real)cmf_water_flux_connection_tracer_filter_get(arg1);
-    } catch (const std::out_of_range& e) {
-      SWIG_exception(SWIG_IndexError, e.what());    
-    } catch (const std::exception& e) {
-      SWIG_exception(SWIG_RuntimeError, e.what());
-    }
-    
-  }
-  resultobj = SWIG_From_double(static_cast< double >(result));
   return resultobj;
 fail:
   return NULL;
@@ -75878,11 +76148,17 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"flux_connection_q", (PyCFunction) _wrap_flux_connection_q, METH_VARARGS | METH_KEYWORDS, (char *)"flux_connection_q(flux_connection self, flux_node inquirer, Time t) -> real"},
 	 { (char *)"flux_connection_conc", (PyCFunction) _wrap_flux_connection_conc, METH_VARARGS | METH_KEYWORDS, (char *)"flux_connection_conc(flux_connection self, Time t, solute _Solute) -> real"},
 	 { (char *)"flux_connection_type_get", (PyCFunction)_wrap_flux_connection_type_get, METH_O, (char *)"flux_connection_type_get(flux_connection self) -> std::string const &"},
+	 { (char *)"flux_connection_get_tracer_filter", _wrap_flux_connection_get_tracer_filter, METH_VARARGS, (char *)"\n"
+		"get_tracer_filter() -> real\n"
+		"flux_connection_get_tracer_filter(flux_connection self, solute S) -> real\n"
+		""},
+	 { (char *)"flux_connection_set_tracer_filter", _wrap_flux_connection_set_tracer_filter, METH_VARARGS, (char *)"\n"
+		"set_tracer_filter(real value)\n"
+		"flux_connection_set_tracer_filter(flux_connection self, solute S, real value)\n"
+		""},
 	 { (char *)"flux_connection_to_string", (PyCFunction)_wrap_flux_connection_to_string, METH_O, (char *)"flux_connection_to_string(flux_connection self) -> std::string"},
 	 { (char *)"flux_connection_short_string", (PyCFunction)_wrap_flux_connection_short_string, METH_O, (char *)"flux_connection_short_string(flux_connection self) -> std::string"},
 	 { (char *)"delete_flux_connection", (PyCFunction)_wrap_delete_flux_connection, METH_O, (char *)"delete_flux_connection(flux_connection self)"},
-	 { (char *)"flux_connection_tracer_filter_set", _wrap_flux_connection_tracer_filter_set, METH_VARARGS, (char *)"flux_connection_tracer_filter_set(flux_connection self, real tracer_filter)"},
-	 { (char *)"flux_connection_tracer_filter_get", (PyCFunction)_wrap_flux_connection_tracer_filter_get, METH_O, (char *)"flux_connection_tracer_filter_get(flux_connection self) -> real"},
 	 { (char *)"flux_connection_swigregister", flux_connection_swigregister, METH_VARARGS, NULL},
 	 { (char *)"replace_node", (PyCFunction) _wrap_replace_node, METH_VARARGS | METH_KEYWORDS, (char *)"replace_node(cmf::water::flux_node::ptr oldnode, cmf::water::flux_node::ptr newnode) -> int"},
 	 { (char *)"connection_list_append", (PyCFunction) _wrap_connection_list_append, METH_VARARGS | METH_KEYWORDS, (char *)"connection_list_append(connection_list self, cmf::water::flux_connection::ptr connection) -> bool"},
