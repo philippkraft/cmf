@@ -90,8 +90,8 @@ flux_node::ptr flux_connection::get_target(const flux_node& inquirer )
 real flux_connection::conc( cmf::math::Time t, const solute& _Solute )
 {
 	real _q=q(t);
-	if (_q>0) return left_node()->conc(t,_Solute) * m_tracer_filter;
-	else if (_q<0) return right_node()->conc(t,_Solute) * m_tracer_filter;
+	if (_q>0) return left_node()->conc(t, _Solute) * this->get_tracer_filter(_Solute);
+	else if (_q<0) return right_node()->conc(t, _Solute) * this->get_tracer_filter(_Solute);
 	else return 0.0;
 }
 
@@ -115,6 +115,16 @@ bool flux_connection::kill_me()
 		right->DeregisterConnection(this);
 	return weak_this.use_count() <= 1;
 }
+
+real flux_connection::get_tracer_filter(solute S) {
+	// find entry in the specific tracer filter map
+	std::map< solute, real>::const_iterator  it = m_tracer_filter_map.find(S);
+	// Use that entry for the specific filter, else 1.0 as a default
+	real specific_filter = (it == m_tracer_filter_map.end()) ? 1.0 : it->second;
+	return specific_filter * m_tracer_filter;
+}
+
+
 // returns the average flux over the timestep
 double cmf::water::flux_integrator::avg() const
 {
