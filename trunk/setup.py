@@ -27,7 +27,12 @@ try:
 except ImportError:
     from distutils.command.build_py import build_py
     extraswig = []
-   
+
+if os.sys.platform == 'darwin':
+    os.environ["CC"] = "gcc-7"
+    os.environ["CXX"] = "g++-7"
+    os.environ["ARCHFLAGS"]="-arch x86_64"
+
 # Change these variables to match your compiler. (gcc or 
 # For Visual Studio 2008 no action is needed
 msvc = sys.platform == 'win32'
@@ -60,6 +65,7 @@ def updateversion(revision):
 # Change this path to your boost installation (not needed for gcc)
 
 boost_path = os.environ.get('BOOSTDIR',r"..\boost_1_41_0")
+
 # Parallel compilation
 # http://stackoverflow.com/a/13176803/3032680
 # monkey-patch for parallel compilation
@@ -109,6 +115,11 @@ def is_source_file(fn,include_headerfiles=False):
 def make_cmf_core():
     include_dirs=[os.path.join(*'cmf/cmf_core_src/math/integrators/sundials_cvode/include'.split('/'))]
     include_dirs += [get_numpy_include()]
+    if os.sys.platform == 'darwin':
+        include_dirs += ["/usr/local/Cellar/gcc/7.1.0/include/c++/7.1.0/"]
+        include_dirs += ["/usr/include/"]
+
+
     libraries=None
     if msvc:
         include_dirs += [boost_path,boost_path+r"\boost\tr1"]
