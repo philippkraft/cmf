@@ -115,12 +115,8 @@ namespace cmf {
 			/// Returns the current state of the variable
 			real get_state() const {return m_State;}
 			/// Gives access to the state variable
-			void set_state(real newState) {
-				//m_StateIsNew=m_State!=newState;
-				m_State=newState;
-				m_StateIsNew=true;
-				if (m_StateIsNew) StateChangeAction();
-			}
+			void set_state(real newState);
+
 			virtual real get_abs_errtol(real rel_errtol) const{
 				return rel_errtol;
 			}
