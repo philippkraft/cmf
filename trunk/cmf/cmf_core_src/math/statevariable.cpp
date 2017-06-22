@@ -47,3 +47,12 @@ void cmf::math::integratable_list::remove( cmf::math::integratable::ptr rm )
 		throw std::out_of_range("Can't remove item. Integratable not in list");
 
 }
+void cmf::math::StateVariable::set_state(real newState) {
+	//m_StateIsNew=m_State!=newState;
+	if (!std::isfinite(newState)) {
+		throw std::runtime_error("New state of " + this->to_string() + " is not finite");
+	}
+	m_State = newState;
+	m_StateIsNew = true;
+	if (m_StateIsNew) StateChangeAction();
+}

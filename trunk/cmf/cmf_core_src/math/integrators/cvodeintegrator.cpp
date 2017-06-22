@@ -157,7 +157,8 @@ int cmf::math::CVodeIntegrator::integrate( cmf::math::Time MaxTime,cmf::math::Ti
 	// Get data of y
 	realtype * y_data=NV_DATA_S(m_y);
 	// Time step, needed as return value
-	realtype t_ret,t_step;
+	realtype t_ret=this->get_t().AsDays(),
+		t_step=0;
 	CVodeSetStopTime(cvode_mem,MaxTime.AsDays());
 	error_msg="";
 	int res = CVode(cvode_mem,MaxTime.AsDays(),m_y, &t_ret, CV_ONE_STEP);
