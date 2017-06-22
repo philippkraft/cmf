@@ -62,14 +62,7 @@ namespace cmf {
 			bool RecalcAlways;
 			virtual real calc_q(cmf::math::Time t) = 0;
 			real m_q; // Positive q means flux left to right
-			real q(cmf::math::Time t) {
-            #ifndef NOQCACHE
-				if (RecalcAlways || m_left.lock()->RecalcFluxes(t) || m_right.lock()->RecalcFluxes(t))
-            #endif
-					m_q=calc_q(t);
-				return m_q;
-			}
-
+			real q(cmf::math::Time t);
 			double prevent_negative_volume(double flow) {
 				real empty = 1.0;
 				if (flow>0)

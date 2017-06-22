@@ -27,6 +27,22 @@ using namespace cmf::water;
 using namespace cmf::math;
 
 int flux_connection::nextconnectionid=0;
+
+real flux_connection::q(cmf::math::Time t) {
+#ifndef NOQCACHE
+	if (RecalcAlways || m_left.lock()->RecalcFluxes(t) || m_right.lock()->RecalcFluxes(t))
+#endif
+	{
+		m_q = calc_q(t);
+		if (!std::isfinite(m_q)) {
+			throw std::runtime_error("Flux of " + this->to_string() + " at " + t.AsDate().to_string() + " is not finite");
+		}
+	}
+	return m_q;
+}
+
+
+
 flux_connection::~flux_connection()
 {
 	
