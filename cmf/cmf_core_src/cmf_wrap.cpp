@@ -4233,8 +4233,8 @@ SWIG_AsPtr_std_string (PyObject * obj, std::string **val)
 }
 
 SWIGINTERN ptrdiff_t cmf_math_timeseries___len__(cmf::math::timeseries *self){
-		return self->size();
-	}
+        return self->size();
+    }
 
 SWIGINTERNINLINE PyObject *
 SWIG_From_ptrdiff_t  (ptrdiff_t value)
