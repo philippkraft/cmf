@@ -319,6 +319,21 @@ static bool check_time(PyObject* dt) {
         res.extend(struct.unpack('%id' % header[0],f.read(-1)))
         return res
     }
+	
+def to_pandas(self):
+    """
+
+    :param ts: 
+    :return:
+    """
+    import pandas as pd
+    import numpy as np
+
+    df = pd.Series(data=np.array(ts),index=[t.AsPython() for t in ts.iter_time()])
+
+
+    return df
+
 }
         
 
