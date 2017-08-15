@@ -134,15 +134,15 @@ static bool check_time(PyObject* dt) {
     cmf::math::timeseries *p_ts = &$1;
     int res=SWIG_ConvertPtr($input,(void**)(&p_ts),$descriptor(cmf::math::timeseries*),0);
     if (!(SWIG_IsOK(res)) || p_ts==0) {
-	    if (PyNumber_Check($input)) {
-		    double scalar = PyFloat_AsDouble($input);
-		    $1 = cmf::math::timeseries::from_scalar(scalar);
-	    } else {
-	        SWIG_exception_fail(SWIG_TypeError,"Can't convert input value to cmf.timeseries object");
-	    }   
-	} else {
-	    $1 = *p_ts;
-	}      
+        if (PyNumber_Check($input)) {
+            double scalar = PyFloat_AsDouble($input);
+            $1 = cmf::math::timeseries::from_scalar(scalar);
+        } else {
+            SWIG_exception_fail(SWIG_TypeError,"Can't convert input value to cmf.timeseries object");
+        }   
+    } else {
+        $1 = *p_ts;
+    }      
 }
 %typemap(typecheck,precedence=200) cmf::math::timeseries {
     void * pt;    
@@ -205,11 +205,11 @@ static bool check_time(PyObject* dt) {
 
 %extend cmf::math::timeseries
 {
-	ptrdiff_t __len__()
-	{
-		return $self->size();
-	}
-	%pythoncode
+    ptrdiff_t __len__()
+    {
+        return $self->size();
+    }
+    %pythoncode
     {
     def __repr__(self):
        return "cmf.timeseries(%s:%s:%s,count=%i)" % (self.begin,self.end,self.step,self.size())
@@ -284,6 +284,15 @@ static bool check_time(PyObject* dt) {
         elif not hasattr(f,'write'):
             raise TypeError("The file f must be either an object providing a write method, like a file, or a valid file name")
         f.write(struct.pack('qqqq%id' % self.size(),  self.size(), self.begin.AsMilliseconds(),self.step.AsMilliseconds(),self.interpolationpower(), *self))
+    def to_pandas(self):
+        """
+        Returns the timeseries as a pandas Series object
+        :return: A pandas.Series object with the timesteps as index
+        """
+        import pandas as pd
+        import numpy as np
+
+        return pd.Series(data=np.array(self),index=(t.AsPython() for t in self.iter_time()))
         
     @classmethod
     def from_sequence(cls,begin,step,sequence=[],interpolation_mode=1):
@@ -319,20 +328,7 @@ static bool check_time(PyObject* dt) {
         res.extend(struct.unpack('%id' % header[0],f.read(-1)))
         return res
     }
-	
-def to_pandas(self):
-    """
-
-    :param ts: 
-    :return:
-    """
-    import pandas as pd
-    import numpy as np
-
-    df = pd.Series(data=np.array(ts),index=[t.AsPython() for t in ts.iter_time()])
-
-
-    return df
+    
 
 }
         

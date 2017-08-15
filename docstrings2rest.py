@@ -3,7 +3,7 @@ Converts the math in the docstrings created with doxy2swig in reSt math
 
 philipp kraft
 '''
-
+from __future__ import division, print_function
 import re
 import sys
 from traceback import format_exc as traceback
@@ -37,4 +37,4 @@ text = re.sub(patternblock2, replblock, text)
 text = re.sub(patternblock, replblock, text)
 text = re.sub(patterninline, replinline, text)
 
-print text
+print(text)
