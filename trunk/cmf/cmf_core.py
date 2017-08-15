@@ -1030,6 +1030,15 @@ class timeseries(object):
         elif not hasattr(f,'write'):
             raise TypeError("The file f must be either an object providing a write method, like a file, or a valid file name")
         f.write(struct.pack('qqqq%id' % self.size(),  self.size(), self.begin.AsMilliseconds(),self.step.AsMilliseconds(),self.interpolationpower(), *self))
+    def to_pandas(self):
+        """
+        Returns the timeseries as a pandas Series object
+        :return: A pandas.Series object with the timesteps as index
+        """
+        import pandas as pd
+        import numpy as np
+
+        return pd.Series(data=np.array(self),index=(t.AsPython() for t in self.iter_time()))
 
     @classmethod
     def from_sequence(cls,begin,step,sequence=[],interpolation_mode=1):
