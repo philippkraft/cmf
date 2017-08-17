@@ -127,7 +127,7 @@ def make_cmf_core():
         if openmp: compile_args.append("/openmp")
         link_args=["/DEBUG"]
     if gcc: 
-        compile_args=['-Wno-comment','-Wno-reorder','-Wno-unused','-Wno-sign-compare','-ggdb']
+        compile_args=['-Wno-comment','-Wno-reorder','-Wno-unused','-Wno-sign-compare','-ggdb','-std=c++11']
         if openmp: compile_args.append('-fopenmp')
         link_args=["-fopenmp"] if openmp else []
         link_args.append('-ggdb')
