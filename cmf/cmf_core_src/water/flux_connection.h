@@ -122,6 +122,9 @@ namespace cmf {
 			///
 			/// 1.0 is no filter and 0.0 means no solute is crossing this connection
 			real get_tracer_filter() { return m_tracer_filter;}
+			
+			/// A value ranging from 0 to 1 to filter tracers out of the water flux. 
+			///
 			real get_tracer_filter(solute S);
 			/// A value ranging from 0 to 1 to filter tracers out of the water flux
 			///
