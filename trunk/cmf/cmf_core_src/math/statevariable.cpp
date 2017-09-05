@@ -48,7 +48,6 @@ void cmf::math::integratable_list::remove( cmf::math::integratable::ptr rm )
 
 }
 void cmf::math::StateVariable::set_state(real newState) {
-	//m_StateIsNew=m_State!=newState;
 	if (!std::isfinite(newState)) {
 		throw std::runtime_error("New state of " + this->to_string() + " is not finite");
 	}
