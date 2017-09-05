@@ -36,7 +36,7 @@ static std::string convert_seq_to_point(PyObject* input,cmf::geometry::point& p)
   if (len<2) {
     std::string res = "Sequence <";
     res += pyrepr(input);
-    res+="> has to few items to convert to cmf.point. At least to items are needed";
+    res+="> has to few items to convert to cmf.point. At least two items are needed";
     return res;
   } else if (len>3) {
     std::string res = "Sequence <";

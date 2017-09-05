@@ -93,7 +93,6 @@ std::string pyrepr(PyObject* o) {
 	#include "upslope/connections/Percolation.h"
 	#include "upslope/vegetation/ET.h"
 	#include "upslope/vegetation/ShuttleworthWallace.h"
-    #include "upslope/connections/HBVflow.h"
 	// Include river model
 	#include "reach/ManningConnection.h"
 	// Include the combined solver
@@ -113,7 +112,6 @@ std::string pyrepr(PyObject* o) {
 %include "upslope/connections/AtmosphericFluxes.h"
 %include "upslope/connections/infiltration.h"
 %include "upslope/connections/Percolation.h"
-%include "upslope/connections/HBVflow.h"
 %include "upslope/vegetation/waterstress.h"
 %include "upslope/vegetation/ET.h"
 %include "upslope/vegetation/ShuttleworthWallace.h"
