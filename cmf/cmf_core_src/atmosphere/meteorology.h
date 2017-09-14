@@ -296,7 +296,7 @@ namespace cmf {
 			/// @param position The location of the station in map coordinates
 			/// @param latitude Latitude of the study area (for solar radiation)
 			/// @param longitude Longitude of the study area (for solar time)
-			/// @param timezone Time zone of the study area (e.g Germany +1,U.S. Pacific time -8
+			/// @param tz Time zone of the study area (e.g Germany +1,U.S. Pacific time -8
 			/// @param startTime Date of the beginning of the climatic data (may be changed for each time series later)
 			/// @param timestep Frequency of climatic data (may be changed for each time series later)
 			MeteoStation::ptr add_station(std::string name,cmf::geometry::point position,double latitude=51.0,double longitude=8.0,double tz=1.0,

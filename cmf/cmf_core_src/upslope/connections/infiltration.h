@@ -135,14 +135,18 @@ namespace cmf {
 			/// Connects the surfacewater and the most upper layer using a simplified infiltration model
 			/// suitable for conceptional models. 
 			///
-			/// \f[ q_{inf} = f_{full} \min(q_{in},K_{sat}A) \f]
+			/// \f[ q_{inf} = \left(1-e_{sat}\left(W, W_0\right)\right)  q_{inf,pot} \f]
 			/// where:
-			///   - \f$q_{inf}\f$
-			///   - \f$f_{full} = 1-f(W,W_0,(1-W_0)/5)\f$, where 
-			///        - \f$f(x,x_{1/2},\tau)=\left(1+e^{-(x-x_{1/2})\tau^{-1}}\right)^{-1}\f$ is the Boltzmann function
-			///   - \f$q_{in}\f$ Sum of incoming fluxes to the surfacewater in \f$m^3/day\f$
-			///   - \f$K_{sat}\f$ Saturated conductivity in \f$m/day\f$
-			///   - \f$A\f$ Cell area in \f$m^2\f$
+			///   - \f$q_{inf}\f$ Effective infiltration from surface to first layer (soil)
+			///   - \f$e_{sat}(W, W_0)\f$ Saturation excess, ranging from 0 (nowhere saturated soil layer) to 1 (fully saturated).
+			///      \f$W\f$ is the average wetness calculated from the soil layer, \f$W_0\f$ is a parameter denoting the wetness, where
+			///      50% of the layer is saturated using a sigmoidal function:
+			///        - \f$e_{sat}(W_{soil}, W_0) = \left(1+e^{-(W-W_0)0.2(1-W_0)}\right)^{-1}\f$ 
+			///   - \f$q_{inf,pot}\f$ is the potential infiltration, given by the incoming fluxes limited by the saturated conductivity:
+			///        - \f$q_{inf,pot} = \min(q_{in}, K_{sat} A)\f$
+			///		   - \f$q_{in}\f$ Sum of incoming fluxes to the surfacewater in \f$m^3/day\f$
+			///        - \f$K_{sat}\f$ Saturated conductivity in \f$m/day\f$
+			///        - \f$A\f$ Cell area in \f$m^2\f$
 			class SimpleInfiltration : public cmf::water::flux_connection {
 			protected:
 				std::weak_ptr<cmf::upslope::SoilLayer> m_soilwater;
@@ -154,9 +158,14 @@ namespace cmf {
 					m_surfacewaterstorage=cmf::upslope::SurfaceWater::cast(left_node());
 				}
 			public:
+				/// Wetness at which only 50% of the potential infiltration \f$p_{inf,pot}\f$
 				real W0;
-				SimpleInfiltration(cmf::upslope::SoilLayer::ptr soilwater,cmf::water::flux_node::ptr surfacewater,real W0=0.9);
 				/// Creates the connection between surfacewater and first soil layer
+				/// @param soilwater the infiltration target
+				/// @param surfacewater the infiltration source
+				/// @param W0 the 50% saturation value
+				SimpleInfiltration(cmf::upslope::SoilLayer::ptr soilwater,cmf::water::flux_node::ptr surfacewater,real W0=0.9);
+				
 				static void use_for_cell(cmf::upslope::Cell& c) {
 					new cmf::upslope::connections::SimpleInfiltration(c.get_layer(0),c.get_surfacewater());
 				}
