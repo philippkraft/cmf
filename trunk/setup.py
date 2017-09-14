@@ -39,18 +39,27 @@ msvc = sys.platform == 'win32'
 gcc = not msvc
 
 def get_revision():
+    """
+    Gets the actual revision from subversion
+    """
     pipe = os.popen('svnversion')
     res=pipe.read().strip()
     if ':' in res:
         res=res.split(':')[-1]
     return res.strip('M')
+
 def updateversion(revision):
+    """
+    Writes the actual revision number into the relevant files:
+        cmf/__init__.py: set __version__ constant
+        Doxyfile: set PROJECT_NUMBER
+    """
     if revision:
         module_code = open('cmf/__init__.py').readlines()
         fout = open('cmf/__init__.py','w')
         for line in module_code:
             if line.startswith('__version__'):
-                fout.write("__version__ = '%s'\n" % revision)
+                fout.write("__version__ = '0.%s'\n" % revision)
             else:
                 fout.write(line)
         doxycode = open('Doxyfile').readlines()
@@ -66,13 +75,10 @@ def updateversion(revision):
 
 boost_path = os.environ.get('BOOSTDIR',r"..\boost_1_41_0")
 
-# Parallel compilation
-# http://stackoverflow.com/a/13176803/3032680
-# monkey-patch for parallel compilation
 
 # No user action required beyond this point
 import datetime
-from setuptools import setup,Extension
+from setuptools import setup, Extension
 from distutils import log
 try:
     # Import a function to get a path to the include directories of numpy
@@ -85,11 +91,7 @@ if "swig" in sys.argv:
     sys.argv.remove("swig")
 else:
     swig=False
-if "raster" in sys.argv:
-    makeraster=True
-    sys.argv.remove('raster')
-else:
-    makeraster=False
+
 if "noopenmp" in sys.argv:
     openmp=False
     sys.argv.remove("noopenmp")
@@ -103,6 +105,7 @@ def count_lines(files):
             lines = open(fn).readlines()
             lcount+=len(lines)
     return lcount
+
 def is_source_file(fn,include_headerfiles=False):
     fn=fn.lower()
     res = False
@@ -112,6 +115,7 @@ def is_source_file(fn,include_headerfiles=False):
     res = res or (include_headerfiles and fn.endswith('.h'))
     res = res or (include_headerfiles and fn.endswith('.hpp'))
     return res
+
 def make_cmf_core():
     include_dirs=[os.path.join(*'cmf/cmf_core_src/math/integrators/sundials_cvode/include'.split('/'))]
     include_dirs += [get_numpy_include()]
@@ -119,10 +123,9 @@ def make_cmf_core():
         include_dirs += ["/usr/local/Cellar/gcc/7.1.0/include/c++/7.1.0/"]
         include_dirs += ["/usr/include/"]
 
-
     libraries=None
     if msvc:
-        include_dirs += [boost_path,boost_path+r"\boost\tr1"]
+        include_dirs += [boost_path,boost_path+"\boost\tr1"]
         compile_args = ["/EHsc",r'/Fd"build\vc90.pdb"',"/D_SCL_SECURE_NO_WARNINGS", "/D_CRT_SECURE_NO_WARNINGS","/MP"]
         if openmp: compile_args.append("/openmp")
         link_args=["/DEBUG"]
@@ -153,38 +156,8 @@ def make_cmf_core():
                             swig_opts=['-c++','-Wextra','-w512','-w511','-O','-keyword','-castmode']+extraswig
                         )
     return cmf_core
-def make_raster():
-    print('*' * 50)
-    print('Make raster extension')
-    print('*' * 50)
-    if swig:
-        files=['cmf/raster/raster_src/raster.i']
-    else:
-        files=['cmf/raster/raster_src/raster_wrap.cpp']
- 
-    if msvc: 
-        compile_args = ["/EHsc",r'/Fd"build\vc90.pdb"',"/MP"]
-        if openmp: compile_args.append("/openmp")
-        link_args=["/DEBUG"]
-        libraries=None
-    if gcc: 
-        compile_args=['-Wno-comment','-Wno-reorder','-Wno-unused','-Wno-sign-compare']
-        if openmp: compile_args.append('-fopenmp')
-        link_args=["-fopenmp"] if openmp else None
-        libraries = ['gomp'] if openmp else None
-    raster = Extension('cmf.raster._raster',
-                        sources=files,
-                        libraries = libraries,
-                        extra_compile_args=compile_args,
-                        extra_link_args=link_args,
-                        swig_opts=['-c++','-Wextra','-w512','-w511','-keyword','-castmode','-O','-threads']
-                    )
-    return raster
 if __name__=='__main__':
-    if makeraster:
-        ext = [make_raster(),make_cmf_core()]
-    else:
-        ext = [make_cmf_core()]
+    ext = [make_cmf_core()]
     description="""
     cmf extends Python by hydrological objects. The objects of the framework, allows the user to create a wide range
     of hydrological models using Python.
@@ -207,7 +180,7 @@ if __name__=='__main__':
           license='GPL',
           ext_modules=ext,
           py_modules=py, 
-          requires=['numpy (>=1.3)'],
+          install_requires=['numpy>=1.3'],
             author = "Philipp Kraft",
             author_email = "philipp.kraft@umwelt.uni-giessen.de",
             url = "www.uni-giessen.de/ilr/frede/cmf",
