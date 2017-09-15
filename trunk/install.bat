@@ -1,5 +1,4 @@
 @echo off
-python newversionnumber.py
 if not "x%1x"=="xdoxyx" goto build
 echo doxygen
 doxygen Doxyfile
@@ -19,7 +18,6 @@ if ERRORLEVEL 1 goto error
 python setup.py install
 if ERRORLEVEL 1 goto error
 python setup.py bdist_wheel
-python setup.py bdist_wininst
 python setup.py sdist --formats=zip
 python setup.py sdist
 

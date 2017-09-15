@@ -21,6 +21,7 @@
 from __future__ import print_function, division
 import sys
 import os
+import io
 import datetime
 
 # Try to import numpy, if it fails we have a problem 
@@ -92,7 +93,7 @@ def count_lines(files):
     lcount=0
     for fn in files:
         if not fn.endswith('.c'):
-            lines = open(fn).readlines()
+            lines = open(fn, encoding='utf-8').readlines()
             lcount+=len(lines)
     return lcount
 
@@ -178,7 +179,7 @@ if __name__=='__main__':
 
     ext = [make_cmf_core(swig=pop_arg('swig'), openmp=not pop_arg('noopenmp'))]
     description = 'Catchment Modelling Framework - A hydrological modelling toolkit'
-    long_description = open('README.rst').read()
+    long_description = io.open('README.rst', encoding='utf-8').read()
     classifiers = [
         'Development Status :: 4 - Beta',
         'Intended Audience :: Science/Research',
