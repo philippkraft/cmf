@@ -1,3 +1,4 @@
+__version__ = '1.0.1'
 #!/usr/bin/env python
 
 # Copyright 2010 by Philipp Kraft
@@ -64,14 +65,16 @@ def updateversion(revision):
         fout = open('cmf/__init__.py','w')
         for line in module_code:
             if line.startswith('__version__'):
-                fout.write("__version__ = '0.%s'\n" % revision)
+                fout.write("__version__ = '{}'\n".format(version)
+            elif line.startswith('__revision__'):
+                fout.write("__revision__ = '{}'\n".format(version)
             else:
                 fout.write(line)
         doxycode = open('Doxyfile').readlines()
         fout = open('Doxyfile','w')
         for line in doxycode:
             if line.strip().startswith('PROJECT_NUMBER'):
-                fout.write("PROJECT_NUMBER         = %s\n" % revision)
+                fout.write("PROJECT_NUMBER         = {} (rev. {})\n".format(version, revision)
             else:
                 fout.write(line)
 
@@ -175,7 +178,12 @@ def make_cmf_core(swig, openmp):
     
     
 if __name__=='__main__':
-    
+    revision = get_revision()
+    if pop_arg('revision'):
+        updateversion(revision)
+        exit()
+    if 'build' in sys.argv or 'build_py' in sys.argv:
+        updateversion(revision)
 
     ext = [make_cmf_core(swig=pop_arg('swig'), openmp=not pop_arg('noopenmp'))]
     description = 'Catchment Modelling Framework - A hydrological modelling toolkit'
@@ -190,13 +198,10 @@ if __name__=='__main__':
         'Topic :: Scientific/Engineering',
         'Topic :: Software Development :: Libraries :: Python Modules',
     ]
-    revision = get_revision()
-    if 'build' in sys.argv or 'build_py' in sys.argv:
-        updateversion(revision)
     now = datetime.datetime.now()
     # log.set_verbosity(5)
     setup(name='cmf',
-          version='0.' + revision,
+          version=version,
           license='GPL',
           ext_modules=ext,
           packages=['cmf'],

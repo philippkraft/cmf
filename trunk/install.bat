@@ -7,19 +7,10 @@ python docstrings2rest.py cmf\cmf_core_src\docstrings-doxy.i >cmf\cmf_core_src\d
 echo Created rest complient docstrings in docstrings.i 
 :build
 if "x%1x"=="xcleanx" goto clean
-echo delete old .pyd
-del _cmf_core*.pyd /s /q
-echo build
-python setup.py build_ext swig
-if ERRORLEVEL 1 goto error
-move /Y cmf\cmf_core_src\cmf_core.py cmf
-python setup.py build_py -c -O2 -f
+call build.bat
 if ERRORLEVEL 1 goto error
 python setup.py install
 if ERRORLEVEL 1 goto error
-python setup.py bdist_wheel
-python setup.py sdist --formats=zip
-python setup.py sdist
 
 goto end
 :clean
@@ -29,5 +20,6 @@ goto end
 echo ************************
 echo Installation had error !
 echo ************************
+EXIT /B 1
 :end
 echo .
