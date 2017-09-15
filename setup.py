@@ -21,22 +21,26 @@
 from __future__ import print_function, division
 import sys
 import os
+import datetime
+
+# Try to import numpy, if it fails we have a problem 
+try:
+    # Import a function to get a path to the include directories of numpy
+    from numpy import get_include as get_numpy_include
+except ImportError:
+    raise RuntimeError("For building and running of cmf an installation of numpy is needed")
+
+
+# Try to import build_py_2to3 as "Python builder", if this fails, we are on Python 2
+# and the automatic translation is not necessary
 try:
     from distutils.command.build_py import build_py_2to3 as build_py
-    extraswig = ['-py3']
 except ImportError:
     from distutils.command.build_py import build_py
-    extraswig = []
 
-if os.sys.platform == 'darwin':
-    os.environ["CC"] = "gcc-7"
-    os.environ["CXX"] = "g++-7"
-    os.environ["ARCHFLAGS"]="-arch x86_64"
+from setuptools import setup, Extension
 
-# Change these variables to match your compiler. (gcc or 
-# For Visual Studio 2008 no action is needed
-msvc = sys.platform == 'win32'
-gcc = not msvc
+
 
 def get_revision():
     """
@@ -70,35 +74,21 @@ def updateversion(revision):
             else:
                 fout.write(line)
 
-
-# Change this path to your boost installation (not needed for gcc)
-
-boost_path = os.environ.get('BOOSTDIR',r"..\boost_1_41_0")
-
-
-# No user action required beyond this point
-import datetime
-from setuptools import setup, Extension
-from distutils import log
-try:
-    # Import a function to get a path to the include directories of numpy
-    from numpy import get_include as get_numpy_include
-except ImportError:
-    raise RuntimeError("For building and running of cmf an installation of numpy is needed")
-
-if "swig" in sys.argv:
-    swig=True
-    sys.argv.remove("swig")
-else:
-    swig=False
-
-if "noopenmp" in sys.argv:
-    openmp=False
-    sys.argv.remove("noopenmp")
-else:
-    openmp=True
-
+def pop_arg(arg):
+    """
+    Looks for a commandline argument and removes it from syws.argv
+    returns: True if the argument is present, False when it is missing
+    """
+    try:
+        sys.argv.remove(arg)
+        return True
+    except ValueError:
+        return False
+        
 def count_lines(files):
+    """
+    Python version of the bash command wc -l
+    """
     lcount=0
     for fn in files:
         if not fn.endswith('.c'):
@@ -107,6 +97,9 @@ def count_lines(files):
     return lcount
 
 def is_source_file(fn,include_headerfiles=False):
+    """
+    Returns True if fn is the path of a source file
+    """
     fn=fn.lower()
     res = False
     res = res or fn.endswith('.cpp')
@@ -116,78 +109,108 @@ def is_source_file(fn,include_headerfiles=False):
     res = res or (include_headerfiles and fn.endswith('.hpp'))
     return res
 
-def make_cmf_core():
-    include_dirs=[os.path.join(*'cmf/cmf_core_src/math/integrators/sundials_cvode/include'.split('/'))]
-    include_dirs += [get_numpy_include()]
-    if os.sys.platform == 'darwin':
-        include_dirs += ["/usr/local/Cellar/gcc/7.1.0/include/c++/7.1.0/"]
-        include_dirs += ["/usr/include/"]
 
+    
+def make_cmf_core(swig, openmp):
+    """
+    Puts all information needed for the Python extension object together
+     - source files
+     - include dirs
+     - extra compiler flags
+    """
     libraries=None
-    if msvc:
-        include_dirs += [boost_path,boost_path+"\boost\tr1"]
+    # Include CVODE
+    include_dirs=[os.path.join(*'cmf/cmf_core_src/math/integrators/sundials_cvode/include'.split('/'))]
+    # Include numpy
+    include_dirs += [get_numpy_include()]
+    
+    # Platform specific stuff, alternative is to subclass build_ext command as in:
+    # https://stackoverflow.com/a/5192738/3032680
+    if sys.platform == 'win32':
+        # Only include boost if VS2008 compiler is used, else we use C++ 11
+        if sys.version_info.major == 2:
+            boost_path = os.environ.get('BOOSTDIR',r"..\boost_1_41_0")
+            include_dirs += [boost_path,boost_path+r"\boost\tr1"]
         compile_args = ["/EHsc",r'/Fd"build\vc90.pdb"',"/D_SCL_SECURE_NO_WARNINGS", "/D_CRT_SECURE_NO_WARNINGS","/MP"]
         if openmp: compile_args.append("/openmp")
         link_args=["/DEBUG"]
-    if gcc: 
+    else: 
+        if os.sys.platform == 'darwin':
+            # TODO: Benjamin, this is to specific!
+            os.environ["CC"] = "gcc-7"
+            os.environ["CXX"] = "g++-7"
+            os.environ["ARCHFLAGS"]="-arch x86_64"
+
+            include_dirs += ["/usr/local/Cellar/gcc/7.1.0/include/c++/7.1.0/"]
+            include_dirs += ["/usr/include/"]
         compile_args=['-Wno-comment','-Wno-reorder','-Wno-unused','-Wno-sign-compare','-ggdb','-std=c++11']
         if openmp: compile_args.append('-fopenmp')
         link_args=["-fopenmp"] if openmp else []
         link_args.append('-ggdb')
         libraries = ['gomp'] if openmp else None
+    
+    # Get the source files
     cmf_files=[]
-    cmf_headers=[]
-    for root, _dirs, files in os.walk('cmf/cmf_core_src'):
+    for root, _dirs, files in os.walk(os.path.join('cmf','cmf_core_src')):
         if os.path.basename(root)!='debug_scripts':
             cmf_files.extend(os.path.join(root,f) for f in files if is_source_file(f) and f!='cmf_wrap.cpp')
-            cmf_headers.extend(os.path.join(root,f) for f in files if f.endswith('.h'))
-    # print("Compiling %i source files" % (len(cmf_files)+1))
+            
     if swig:
+        # Adding cmf.i when build_ext should perform the swig call
         cmf_files.append("cmf/cmf_core_src/cmf.i")
     else:
+        # Else use what we have there
         cmf_files.append("cmf/cmf_core_src/cmf_wrap.cpp")
-    #print("Total number of C++ loc:", count_lines(cmf_files + cmf_headers))
+
     cmf_core = Extension('cmf._cmf_core',
                             sources=cmf_files,
                             libraries = libraries,
                             include_dirs=include_dirs,
                             extra_compile_args=compile_args,
                             extra_link_args=link_args,
-                            swig_opts=['-c++','-Wextra','-w512','-w511','-O','-keyword','-castmode']+extraswig
+                            swig_opts=['-c++','-Wextra','-w512','-w511','-O','-keyword','-castmode'] # +extraswig
                         )
     return cmf_core
+    
+    
 if __name__=='__main__':
-    ext = [make_cmf_core()]
-    description="""
+    
+
+    ext = [make_cmf_core(swig=pop_arg('swig'), openmp=not pop_arg('noopenmp'))]
+    description = 'Catchment Modelling Framework - A hydrological modelling toolkit'
+    long_description = """
     cmf extends Python by hydrological objects. The objects of the framework, allows the user to create a wide range
     of hydrological models using Python.
     This version was compiled on %s
     """ % datetime.datetime.now().strftime('%d. %b %Y (%H:%M)')
-    py=[]
-    for root,dirs,files in os.walk('cmf'):
-        for d in dirs:
-            if d.endswith('_src'):
-                dirs.remove(d)
-        py_found=[os.path.join(root,f[:-3]).replace('\\','.') for f in files if f.endswith('.py')]
-        py.extend(py_found)
+    classifiers = [
+        'Development Status :: 4 - Beta',
+        'Intended Audience :: Science/Research',
+        'License :: OSI Approved :: GNU General Public License v2 or later (GPLv2+)',
+        'Programming Language :: C++',
+        'Programming Language :: C',
+        'Programming Language :: Python',
+        'Topic :: Scientific/Engineering',
+        'Topic :: Software Development :: Libraries :: Python Modules',
+    ]
     revision = get_revision()
     if 'build' in sys.argv or 'build_py' in sys.argv:
         updateversion(revision)
     now = datetime.datetime.now()
-    log.set_verbosity(5)
+    # log.set_verbosity(5)
     setup(name='cmf',
           version='0.' + revision,
           license='GPL',
           ext_modules=ext,
-          py_modules=py, 
-          install_requires=['numpy>=1.3'],
-            author = "Philipp Kraft",
-            author_email = "philipp.kraft@umwelt.uni-giessen.de",
-            url = "www.uni-giessen.de/ilr/frede/cmf",
+          packages=['cmf'],
+          install_requires=['numpy>=1.8'],
+          python_requires='>=2.7',
+          author = 'Philipp Kraft',
+          author_email = "philipp.kraft@umwelt.uni-giessen.de",
+          url = "https://www.uni-giessen.de/hydro/download/cmf",
           description=description,
+          long_description=long_description,
+          classifiers=classifiers,
           cmdclass={'build_py':build_py},
           )
-    #if msvc: shutil.copy('build/lib.win32-2.7/cmf/raster/_raster.pyd','cmf/raster/')
-    #setup(name='cmf_setups',version='0.1',license='GPL',
-    #      py_modules=['cmf_setups.'+f[:-3] for f in os.listdir('cmf_setups') if f.endswith('.py')])
     print("build ok")
