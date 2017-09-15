@@ -21,6 +21,8 @@ if ERRORLEVEL 1 goto error
 python setup.py bdist_wheel
 python setup.py bdist_wininst
 python setup.py sdist --formats=zip
+python setup.py sdist
+
 goto end
 :clean
 del build /s /q

@@ -178,11 +178,7 @@ if __name__=='__main__':
 
     ext = [make_cmf_core(swig=pop_arg('swig'), openmp=not pop_arg('noopenmp'))]
     description = 'Catchment Modelling Framework - A hydrological modelling toolkit'
-    long_description = """
-    cmf extends Python by hydrological objects. The objects of the framework, allows the user to create a wide range
-    of hydrological models using Python.
-    This version was compiled on %s
-    """ % datetime.datetime.now().strftime('%d. %b %Y (%H:%M)')
+    long_description = open('README.rst').read()
     classifiers = [
         'Development Status :: 4 - Beta',
         'Intended Audience :: Science/Research',
@@ -205,6 +201,7 @@ if __name__=='__main__':
           packages=['cmf'],
           install_requires=['numpy>=1.8'],
           python_requires='>=2.7',
+          keywords='hydrology catchment simulation toolbox',
           author = 'Philipp Kraft',
           author_email = "philipp.kraft@umwelt.uni-giessen.de",
           url = "https://www.uni-giessen.de/hydro/download/cmf",
