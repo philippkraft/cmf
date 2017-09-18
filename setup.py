@@ -1,4 +1,3 @@
-__version__ = '1.0.1'
 #!/usr/bin/env python
 
 # Copyright 2010 by Philipp Kraft
@@ -24,6 +23,8 @@ import sys
 import os
 import io
 import datetime
+
+version = '1.0.1'
 
 # Try to import numpy, if it fails we have a problem 
 try:
@@ -65,16 +66,16 @@ def updateversion(revision):
         fout = open('cmf/__init__.py','w')
         for line in module_code:
             if line.startswith('__version__'):
-                fout.write("__version__ = '{}'\n".format(version)
+                fout.write("__version__ = '{}'\n".format(version))
             elif line.startswith('__revision__'):
-                fout.write("__revision__ = '{}'\n".format(version)
+                fout.write("__revision__ = {}\n".format(revision))
             else:
                 fout.write(line)
         doxycode = open('Doxyfile').readlines()
         fout = open('Doxyfile','w')
         for line in doxycode:
             if line.strip().startswith('PROJECT_NUMBER'):
-                fout.write("PROJECT_NUMBER         = {} (rev. {})\n".format(version, revision)
+                fout.write("PROJECT_NUMBER         = {}\n".format(version))
             else:
                 fout.write(line)
 
@@ -210,7 +211,7 @@ if __name__=='__main__':
           keywords='hydrology catchment simulation toolbox',
           author = 'Philipp Kraft',
           author_email = "philipp.kraft@umwelt.uni-giessen.de",
-          url = "https://www.uni-giessen.de/hydro/download/cmf",
+          url = "https://www.uni-giessen.de/hydro/download",
           description=description,
           long_description=long_description,
           classifiers=classifiers,
