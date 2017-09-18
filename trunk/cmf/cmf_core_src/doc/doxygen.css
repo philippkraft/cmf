@@ -6,15 +6,6 @@ body, table, div, p, dl {
 }
 
 /* @group Heading Levels */
-#titlearea {
-    background:#1f6992;
-    color: #fff;
-    vertical-align: bottom;
-    font-weight: bold;
-}
-#projectlogo {
-    text-align: left;
-}
 h1 {
  background-color: #1f6992;
  color: #fff;
