@@ -24,7 +24,7 @@ import os
 import io
 import datetime
 
-version = '1.0.1'
+version = '1.0.2'
 
 # Try to import numpy, if it fails we have a problem 
 try:
@@ -42,7 +42,7 @@ except ImportError:
     from distutils.command.build_py import build_py
 
 from setuptools import setup, Extension
-
+from distutils.sysconfig import get_config_var
 
 
 def get_revision():
@@ -148,6 +148,12 @@ def make_cmf_core(swig, openmp):
 
             include_dirs += ["/usr/local/Cellar/gcc/7.1.0/include/c++/7.1.0/"]
             include_dirs += ["/usr/include/"]
+        # Remove the annoying warning because of "-Wstrict-prototypes" deprecated
+        # by https://stackoverflow.com/a/9740721/5885054
+        opt = get_config_var('OPT')
+        os.environ['OPT'] = " ".join(
+                                     flag for flag in opt.split() if flag != '-Wstrict-prototypes'
+        )
         compile_args=['-Wno-comment','-Wno-reorder','-Wno-unused','-Wno-sign-compare','-ggdb','-std=c++11']
         if openmp: compile_args.append('-fopenmp')
         link_args=["-fopenmp"] if openmp else []
@@ -205,7 +211,7 @@ if __name__=='__main__':
           version=version,
           license='GPL',
           ext_modules=ext,
-          packages=['cmf'],
+          packages=['cmf', 'cmf.draw'],
           install_requires=['numpy>=1.8'],
           python_requires='>=2.7',
           keywords='hydrology catchment simulation toolbox',

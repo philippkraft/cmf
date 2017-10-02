@@ -1,14 +1,22 @@
 # -*- coding: utf-8 -*-
-from __future__ import division
+from __future__ import division, print_function
 """
 This file creates a hillslope to calculate a transsect using a 2D Richards equation
 """
+import time
 import cmf
 import sys
 import numpy as np
 from optparse import OptionParser
-
 from datetime import datetime, timedelta
+
+try:
+    import pylab
+    import cmf.draw
+except:
+    pylab = None
+
+
 def load_meteo(project):
     """Loads the meteorology from a csv file.
     This is just one example for access your meteo data.
@@ -35,7 +43,7 @@ def load_meteo(project):
 
     # Load climate data from csv file
     # could be simplified with numpy's 
-    csvfile =  file('climate.csv') 
+    csvfile =  open('climate.csv') 
     csvfile.readline() # Read the headers, and ignore them
     for line in csvfile:
         # split the line in to columns using commas
@@ -99,7 +107,7 @@ for c in p:
 
 # This connects the layers of all adjacent cells laterally
 cmf.connect_cells_with_flux(p,cmf.Richards_lateral)
-cmf.connect_cells_with_flux(p,cmf.Manning_Kinematic)
+cmf.connect_cells_with_flux(p,cmf.KinematicSurfaceRunoff)
 
 # Make an outlet (ditch, 30cm deep)
 outlet=p.NewOutlet('outlet',-celllength, 0, -.3)
@@ -108,8 +116,7 @@ outlet=p.NewOutlet('outlet',-celllength, 0, -.3)
 p[0].connect_soil_with_node(outlet,cmf.Richards_lateral,10.0,5.0)
 
 # Connect outlet to surfacewater (overbank flow)
-cmf.Manning_Kinematic(p[0].surfacewater, outlet, 
-                      cmf.Channel('R',celllength,celllength))
+cmf.KinematicSurfaceRunoff(p[0].surfacewater, outlet, 10.0, 5.0)
 load_meteo(p)
 
 # Make solver
@@ -121,13 +128,15 @@ def run(until,dt=cmf.day):
     outflow = cmf.timeseries(solver.t,dt)
     for t in solver.run(solver.t,solver.t+until,dt):
         outflow.add(outlet(t))
-        print "%20s - %6.1f l/s" % (t,outlet(t)*1e3)
+        print("%20s - %6.1f l/s" % (t,outlet(t)*1e3))
     return outflow
 
 if __name__=='__main__':
+    tstart = time.time()
     outflow=run(cmf.year,cmf.day)
-    cmf.draw.plot_timeseries(outflow)
-    from pylab import show
-    show()
+    print('{:g} s, {} rhs evaluations'.format(time.time()-tstart, solver.get_rhsevals()))
+    if pylab:
+        cmf.draw.plot_timeseries(outflow)
+        pylab.show()
 
         

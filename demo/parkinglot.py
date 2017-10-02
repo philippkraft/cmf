@@ -73,7 +73,7 @@ pos = cmf.cell_positions(p.cells)
 a=np.array
 quiver = ax.quiver(pos.X,pos.Y,
                    fluxdir.X,fluxdir.Y,
-                   scale=1000,zorder=10, pivot='center')
+                   scale=1000,zorder=10, pivot='middle')
 title = ax.text(length,(size[1]-2)*length,solver.t, size=16)
 ax.set_xlim(-length,length*size[0])
 ax.set_ylim(-length,length*size[1])

@@ -108,7 +108,7 @@ cmf.Richards(c.layers[-1],groundwater)
 # load meteorological data
 load_meteo(p)
 # Make solver
-solver=cmf.CVodeIntegrator(p,1e-12)
+solver=cmf.CVodeIntegrator(p,1e-9)
 solver.t=cmf.Time(1,11,1980)
 
 def run(until=cmf.year,dt=cmf.day):
@@ -123,13 +123,16 @@ def run(until=cmf.year,dt=cmf.day):
     
     # The run time loop. Iterates over the outer timestep of the model
     # Internally, the model may take shorter timesteps
-    for t in solver.run(solver.t,until,dt):
-        # store the actual groundwater recharge      
-        outflow.add(c.layers[-1].flux_to(groundwater,t))
-        # store the actual wetness
-        wetness.append(c.layers.wetness)
-        # Print, at which time step you are
-        print("{} - {:6.2f}m3/day, {} rhs-eval".format(t,groundwater(t), solver.get_nonlinear_iterations()))
+    try:
+        for t in solver.run(solver.t,until,dt):
+            # store the actual groundwater recharge      
+            outflow.add(c.layers[-1].flux_to(groundwater,t))
+            # store the actual wetness
+            wetness.append(c.layers.wetness)
+            # Print, at which time step you are
+            print("{} - {:6.2f}m3/day, {} rhs-eval".format(t,groundwater(t), solver.get_rhsevals()))
+    except RuntimeError as e:
+        print(e)
     return outflow,wetness
 
 def plotresult(outflow,wetness):
@@ -169,7 +172,7 @@ if __name__ == '__main__':
     tstart=time.time()
     cmf.set_parallel_threads(1)
     outflow,wetness=run(cmf.year*5)
-    print('{:g} s'.format(time.time()-tstart))
+    print('{:g} s, {} rhs evaluations'.format(time.time()-tstart, solver.get_rhsevals()))
     #print c.vegetation
     # Try to plot the results
     try:
