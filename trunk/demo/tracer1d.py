@@ -26,12 +26,12 @@ gw = p.NewOutlet('gw',0,0,-1.5)
 cmf.Richards(c.layers[-1],gw)
 
 # Template for the water solver
-wsolver = cmf.CVodeIntegrator(1e-9)
+#wsolver = cmf.CVodeIntegrator(1e-9)
 # Template for the solute solver
-ssolver = cmf.ImplicitEuler(1e-9)
+#ssolver = cmf.ImplicitEuler(1e-9)
 # Creating the SWI, the storage objects of the project are internally assigned to the correct solver
-solver = cmf.SoluteWaterIntegrator(p.solutes, wsolver,ssolver,p)
-
+#solver = cmf.SoluteWaterIntegrator(p.solutes, wsolver,ssolver,p)
+solver = cmf.CVodeIntegrator(p, 1e-9)
 c.saturated_depth = 1.5
 #c.surfacewater.depth = 0.5
 c.layers[0].conc(X,1.)
@@ -53,6 +53,7 @@ for t in solver.run(solver.t,solver.t + cmf.week,cmf.h):
     # Get water balance of groundwater
     recharge.append(gw.waterbalance(t))
     crecharge.append([gw.conc(t,T) for T in p.solutes])
+    print("{} - {:6.2f}m3/day, {} rhs-eval".format(t,gw(t), solver.get_nonlinear_iterations()))
 
 # Plot the result
 import numpy as np
