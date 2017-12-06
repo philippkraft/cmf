@@ -16,7 +16,9 @@ c = p.NewCell(0,0,0,1000,with_surfacewater = True)
 # Create 50 layers with 2cm thickness
 for i in range(50):
     # Add a layer. Each layer will reference 3 solute storages
-    c.add_layer((i+1)*0.02, cmf.VanGenuchtenMualem())
+    l = c.add_layer((i+1)*0.02, cmf.VanGenuchtenMualem())
+    # Add a 10% decay per day for Tracer z
+    l.Solute(Z).decay = 0.25
 # Use Richards equation
 c.install_connection(cmf.Richards)
 # Use a constant rainfall of 50 mm
@@ -33,10 +35,9 @@ cmf.Richards(c.layers[-1],gw)
 #solver = cmf.SoluteWaterIntegrator(p.solutes, wsolver,ssolver,p)
 solver = cmf.CVodeIntegrator(p, 1e-9)
 c.saturated_depth = 1.5
-#c.surfacewater.depth = 0.5
 c.layers[0].conc(X,1.)
 c.layers[15].conc(Y,1.)
-c.layers[30].conc(Z,1.)
+c.layers[0].conc(Z,1.)
 
 # Save wetness and concentration of all layers
 conc = []

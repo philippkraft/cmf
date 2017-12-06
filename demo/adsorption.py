@@ -24,7 +24,7 @@ for s in p.solutes:
 ws.Solute(X).set_adsorption(cmf.LinearAdsorption(1,1))
 # Tracer Y has a Freundlich isotherm xa/m=Kc^n, 
 # with K = 1 and n=0.5 and sorbent mass m = 1
-ws.Solute(Y).set_adsorption(cmf.FreundlichAdsorbtion(2.,.55,1.0))
+ws.Solute(Y).set_adsorption(cmf.FreundlichAdsorbtion(1.,1.,1.0))
 # Tracer Y has a Langmuir isotherm xa/m=Kc/(1+Kc), 
 # with K = 1 and sorbent mass m = 1
 ws.Solute(Z).set_adsorption(cmf.LangmuirAdsorption(1.,1.))
