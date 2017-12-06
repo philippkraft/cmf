@@ -24,7 +24,7 @@ import os
 import io
 import datetime
 
-version = '1.0.2'
+version = '1.0.3'
 
 # Try to import numpy, if it fails we have a problem 
 try:
@@ -132,14 +132,24 @@ def make_cmf_core(swig, openmp):
     # Platform specific stuff, alternative is to subclass build_ext command as in:
     # https://stackoverflow.com/a/5192738/3032680
     if sys.platform == 'win32':
+
         # Only include boost if VS2008 compiler is used, else we use C++ 11
         if sys.version_info.major == 2:
             boost_path = os.environ.get('BOOSTDIR',r"..\boost_1_41_0")
-            include_dirs += [boost_path,boost_path+r"\boost\tr1"]
-        compile_args = ["/EHsc",r'/Fd"build\vc90.pdb"',"/D_SCL_SECURE_NO_WARNINGS", "/D_CRT_SECURE_NO_WARNINGS","/MP"]
-        if openmp: compile_args.append("/openmp")
+            include_dirs += [boost_path, boost_path+r"\boost\tr1"]
+
+        compile_args = ["/EHsc",
+                        r'/Fd"build\vc90.pdb"',
+                        "/D_SCL_SECURE_NO_WARNINGS",
+                        "/D_CRT_SECURE_NO_WARNINGS",
+                        "/MP"
+                        ]
+        if openmp:
+            compile_args.append("/openmp")
         link_args=["/DEBUG"]
-    else: 
+
+    else:
+
         if os.sys.platform == 'darwin':
             # TODO: Benjamin, this is to specific!
             os.environ["CC"] = "gcc-7"

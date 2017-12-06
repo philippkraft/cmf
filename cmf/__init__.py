@@ -18,18 +18,18 @@
 #   
 from __future__ import print_function, division, absolute_import
 from .cmf_core import *
+from .describe import describe
 
-from .maps import Map,nearest_neighbor_map,raster_map
-
-
-from .cell_factory import project_from_dem,create_reaches_for_cells
+from .maps import Map, nearest_neighbor_map, raster_map
 
 
-#from raster import Raster
+from .cell_factory import project_from_dem, create_reaches_for_cells
+
+
 from .extend_project import add_layers_to_cells
-from .extend_project import change_vegetation,connect_cells_with_flux
+from .extend_project import change_vegetation, connect_cells_with_flux
 from .extend_project import profile
 from .stopwatch import StopWatch
 
-__version__ = '1.0.2'
-__revision__ = 1506
+__version__ = '1.0.3'
+__revision__ = 1581
