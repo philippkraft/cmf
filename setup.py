@@ -222,7 +222,6 @@ if __name__=='__main__':
           license='GPL',
           ext_modules=ext,
           packages=['cmf', 'cmf.draw'],
-          install_requires=['numpy>=1.8'],
           python_requires='>=2.7',
           keywords='hydrology catchment simulation toolbox',
           author = 'Philipp Kraft',
