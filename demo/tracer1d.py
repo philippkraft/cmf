@@ -19,6 +19,7 @@ for i in range(50):
     l = c.add_layer((i+1)*0.02, cmf.VanGenuchtenMualem())
     # Add a 10% decay per day for Tracer z
     l.Solute(Z).decay = 0.25
+
 # Use Richards equation
 c.install_connection(cmf.Richards)
 # Use a constant rainfall of 50 mm
