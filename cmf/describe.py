@@ -157,3 +157,4 @@ def _describe_meteo(meteo, write):
 def _describe_rain(rainstation, write):
     write(1, '- {} ({:0.2f}mm/year)'.format(rainstation.name,
                                             rainstation.data.mean() * 365))
+    write(2, '{}'.format(_describe_timeseries(rainstation.data)))
