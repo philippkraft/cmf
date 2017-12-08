@@ -150,10 +150,13 @@ class Doxy2SWIG:
 
     def add_text(self, value):
         """Adds text corresponding to `value` into `self.pieces`."""
-        if type(value) in (types.ListType, types.TupleType):
-            self.pieces.extend(value)
-        else:
+        if value == str(value):
             self.pieces.append(value)
+        else:
+            try:
+                self.pieces.extend(value)
+            except TypeError:
+                self.pieces.append(value)
 
     def get_specific_nodes(self, node, names):
         """Given a node and a sequence of strings in `names`, return a
@@ -216,7 +219,7 @@ class Doxy2SWIG:
                      'detaileddescription', 'includes')
             first = self.get_specific_nodes(node, names)
             for n in names:
-                if first.has_key(n):
+                if n in first:
                     self.parse(first[n])
             self.add_text(['";','\n'])
             for n in node.childNodes:
@@ -280,7 +283,7 @@ class Doxy2SWIG:
             if name[:8] == 'operator': # Don't handle operators yet.
                 return
 
-            if not first.has_key('definition') or \
+            if 'definition' not in first or \
                    kind in ['variable', 'typedef']:
                 return
 

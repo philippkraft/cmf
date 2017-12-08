@@ -2610,6 +2610,38 @@ class kinematic_wave(flux_connection):
 kinematic_wave_swigregister = _cmf_core.kinematic_wave_swigregister
 kinematic_wave_swigregister(kinematic_wave)
 
+class LinearStorageConnection(flux_connection):
+    """Proxy of C++ cmf::water::LinearStorageConnection class."""
+
+    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __repr__ = _swig_repr
+    residencetime = _swig_property(_cmf_core.LinearStorageConnection_residencetime_get, _cmf_core.LinearStorageConnection_residencetime_set)
+    residual = _swig_property(_cmf_core.LinearStorageConnection_residual_get, _cmf_core.LinearStorageConnection_residual_set)
+
+    def __init__(self, *args, **kwargs):
+        """__init__(cmf::water::LinearStorageConnection self, cmf::water::WaterStorage::ptr source, cmf::water::flux_node::ptr target, real residencetime, real residual=0.0) -> LinearStorageConnection"""
+        _cmf_core.LinearStorageConnection_swiginit(self, _cmf_core.new_LinearStorageConnection(*args, **kwargs))
+    __swig_destroy__ = _cmf_core.delete_LinearStorageConnection
+LinearStorageConnection_swigregister = _cmf_core.LinearStorageConnection_swigregister
+LinearStorageConnection_swigregister(LinearStorageConnection)
+
+class PowerLawConnection(flux_connection):
+    """Proxy of C++ cmf::water::PowerLawConnection class."""
+
+    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __repr__ = _swig_repr
+    Q0 = _swig_property(_cmf_core.PowerLawConnection_Q0_get, _cmf_core.PowerLawConnection_Q0_set)
+    beta = _swig_property(_cmf_core.PowerLawConnection_beta_get, _cmf_core.PowerLawConnection_beta_set)
+    residual = _swig_property(_cmf_core.PowerLawConnection_residual_get, _cmf_core.PowerLawConnection_residual_set)
+    V0 = _swig_property(_cmf_core.PowerLawConnection_V0_get, _cmf_core.PowerLawConnection_V0_set)
+
+    def __init__(self, *args, **kwargs):
+        """__init__(cmf::water::PowerLawConnection self, cmf::water::WaterStorage::ptr source, cmf::water::flux_node::ptr target, real Q0, real V0, real beta=1.0, real residual=0.0) -> PowerLawConnection"""
+        _cmf_core.PowerLawConnection_swiginit(self, _cmf_core.new_PowerLawConnection(*args, **kwargs))
+    __swig_destroy__ = _cmf_core.delete_PowerLawConnection
+PowerLawConnection_swigregister = _cmf_core.PowerLawConnection_swigregister
+PowerLawConnection_swigregister(PowerLawConnection)
+
 class bidirectional_kinematic_exchange(flux_connection):
     """Proxy of C++ cmf::water::bidirectional_kinematic_exchange class."""
 
@@ -6629,12 +6661,12 @@ class project(StateVariableOwner):
 
 
     def NewOutlet(self, *args, **kwargs):
-        """NewOutlet(project self, std::string name, double x, double y, double z) -> cmf::water::DirichletBoundary::ptr"""
+        """NewOutlet(project self, std::string name, double x=0, double y=0, double z=0) -> cmf::water::DirichletBoundary::ptr"""
         return _cmf_core.project_NewOutlet(self, *args, **kwargs)
 
 
     def NewStorage(self, *args, **kwargs):
-        """NewStorage(project self, std::string name, double x, double y, double z) -> cmf::water::WaterStorage::ptr"""
+        """NewStorage(project self, std::string name, double x=0, double y=0, double z=0) -> cmf::water::WaterStorage::ptr"""
         return _cmf_core.project_NewStorage(self, *args, **kwargs)
 
 

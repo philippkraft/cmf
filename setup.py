@@ -24,7 +24,7 @@ import os
 import io
 import datetime
 
-version = '1.0.3'
+version = '1.0.4a'
 
 # Try to import numpy, if it fails we have a problem 
 try:
