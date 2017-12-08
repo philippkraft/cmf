@@ -162,13 +162,13 @@ namespace cmf {
 		/// The potential of the Dirichlet boundary equals z, but can be changed
         /// @param name Name of the boundary condition for output
         /// @param x,y,z Position of the boundary condition in project coordinates
-		cmf::water::DirichletBoundary::ptr NewOutlet(std::string name,double x, double y, double z);
+		cmf::water::DirichletBoundary::ptr NewOutlet(std::string name,double x=0, double y=0, double z=0);
 		
 		/// Creates a new generic water storage at position x,y,z. The storage is added to the project nodes
         /// @return A new water storage, owned by the project
         /// @param name Name of the generic water storage for output
         /// @param x,y,z Position of the generic water storage condition in project coordinates
-		cmf::water::WaterStorage::ptr NewStorage(std::string name,double x, double y, double z);
+		cmf::water::WaterStorage::ptr NewStorage(std::string name,double x=0, double y=0, double z=0);
 		
 		/// Creates a new open water storage with a prism geometry. The open water storage is added to the project nodes
         /// @return A new open water storage, owned by the project
