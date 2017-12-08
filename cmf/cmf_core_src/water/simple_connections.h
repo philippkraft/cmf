@@ -169,8 +169,8 @@ namespace cmf {
 			/// \f[ q(V) = \frac Q_0 {\left(\frac{V - V_{residual}}{V_0} \right)^\beta} \f]
 			/// @param source Water storage from which the water flows out. Flux is a function of source.volume
 			/// @param target Target node (boundary condition or storage). Does not influence the strength of the flow
-			/// @param Reference flow \f$Q_0 = q(V_0)\f$ Outflow when the source storage equals the reference volume
-			/// @param Reference volume \f$V_0\f$ The reference volume to scale the exponent
+			/// @param Q0 Reference flow \f$Q_0 = q(V_0)\f$ Outflow when the source storage equals the reference volume
+			/// @param V0 Reference volume \f$V_0\f$ The reference volume to scale the exponent
 			/// @param beta \f$\beta [-]\f$ An empirical exponent to shape the flux function (default = 1 (linear function))
 			/// @param residual \f$V_{residual} [m^3]\f$ The volume of water not flowing out (default = 0)
 			PowerLawConnection(WaterStorage::ptr source, flux_node::ptr target, real Q0, real V0,
