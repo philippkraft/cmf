@@ -1,0 +1,489 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="distutil|Win32">
+      <Configuration>distutil</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="distutil|x64">
+      <Configuration>distutil</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release_exe|Win32">
+      <Configuration>Release_exe</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release_exe|x64">
+      <Configuration>Release_exe</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{16A0D5F0-F9D9-4E6D-8747-80D3CFDC980A}</ProjectGuid>
+    <RootNamespace>cmf</RootNamespace>
+    <Keyword>Win32Proj</Keyword>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_exe|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_exe|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='distutil|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='distutil|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release_exe|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release_exe|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='distutil|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='distutil|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.30319.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Debug\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Debug\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Debug\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Debug\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</LinkIncremental>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</LinkIncremental>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Release\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Release\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Release\Temp\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Release\Temp\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkIncremental>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkIncremental>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='distutil|Win32'">$(SolutionDir)$(Configuration)\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='distutil|x64'">$(SolutionDir)$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='distutil|Win32'">$(Configuration)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='distutil|x64'">$(Configuration)\</IntDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release_exe|Win32'">$(Configuration)\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release_exe|x64'">$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release_exe|Win32'">$(Configuration)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release_exe|x64'">$(Configuration)\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release_exe|Win32'">false</LinkIncremental>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release_exe|x64'">false</LinkIncremental>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.pyd</TargetExt>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.pyd</TargetExt>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">_cmf_core</TargetName>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">_cmf_core</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <CodeAnalysisRuleSet>C:\Program Files (x86)\Microsoft Visual Studio 14.0\Team Tools\Static Analysis Tools\Rule Sets\NativeRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>$(SolutionDir)math\integrators\sundials_cvode\include;$(BOOSTDIR)\boost\tr1;$(BOOSTDIR);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;CMF_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <OutputFile>$(OutDir)$(ProjectName).exe</OutputFile>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Console</SubSystem>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>$(SolutionDir)math\integrators\sundials_cvode\include;$(BOOSTDIR)\boost\tr1;$(BOOSTDIR);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;CMF_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <OutputFile>$(OutDir)$(ProjectName).exe</OutputFile>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Console</SubSystem>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <AdditionalOptions>/MP %(AdditionalOptions)</AdditionalOptions>
+      <Optimization>Disabled</Optimization>
+      <InlineFunctionExpansion>Default</InlineFunctionExpansion>
+      <FavorSizeOrSpeed>Neither</FavorSizeOrSpeed>
+      <WholeProgramOptimization>false</WholeProgramOptimization>
+      <AdditionalIncludeDirectories>C:\Python27\lib\site-packages\numpy-1.7.1-py2.7-win32.egg\numpy\core\include;C:\Python27\include;$(ProjectDir)math\integrators\sundials_cvode\include;$(BOOSTDIR)\boost\tr1;$(BOOSTDIR);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;CMF_EXPORTS;_SCL_SECURE_NO_WARNINGS;_CRT_SECURE_NO_WARNINGS;CMF_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <DisableLanguageExtensions>false</DisableLanguageExtensions>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DisableSpecificWarnings>4800;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <PrecompiledHeaderFile>
+      </PrecompiledHeaderFile>
+    </ClCompile>
+    <Link>
+      <AdditionalOptions>/ignore:4099 %(AdditionalOptions)</AdditionalOptions>
+      <OutputFile>$(OutDir)_cmf_core.pyd</OutputFile>
+      <AdditionalLibraryDirectories>c:\Python27\libs;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <TargetMachine>MachineX86</TargetMachine>
+      <AssemblyDebug>true</AssemblyDebug>
+    </Link>
+    <PostBuildEvent>
+      <Command>
+      </Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <AdditionalOptions>/MP %(AdditionalOptions)</AdditionalOptions>
+      <Optimization>Disabled</Optimization>
+      <InlineFunctionExpansion>Default</InlineFunctionExpansion>
+      <FavorSizeOrSpeed>Neither</FavorSizeOrSpeed>
+      <WholeProgramOptimization>false</WholeProgramOptimization>
+      <AdditionalIncludeDirectories>C:\Apps\WinPython-64bit-3.5.2\python-3.5.2.amd64\Lib\site-packages\numpy\core\include;C:\Apps\WinPython-64bit-3.5.2\python-3.5.2.amd64\include;$(ProjectDir)math\integrators\sundials_cvode\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;CMF_EXPORTS;_SCL_SECURE_NO_WARNINGS;_CRT_SECURE_NO_WARNINGS;CMF_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <DisableLanguageExtensions>false</DisableLanguageExtensions>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DisableSpecificWarnings>4800;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <PrecompiledHeaderFile>
+      </PrecompiledHeaderFile>
+      <BufferSecurityCheck>false</BufferSecurityCheck>
+      <OpenMPSupport>false</OpenMPSupport>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Link>
+      <AdditionalOptions>/ignore:4099 %(AdditionalOptions)</AdditionalOptions>
+      <OutputFile>$(OutDir)_cmf_core.pyd</OutputFile>
+      <AdditionalLibraryDirectories>C:\Apps\WinPython-64bit-3.5.2\python-3.5.2.amd64\libs;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <AssemblyDebug>true</AssemblyDebug>
+    </Link>
+    <PostBuildEvent>
+      <Command>
+      </Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release_exe|Win32'">
+    <ClCompile>
+      <Optimization>Full</Optimization>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <AdditionalIncludeDirectories>D:\Code\cmf\cmf\cmf_core_src\math\integrators\sundials_cvode\include;d:\Code\boost_1_41_0\boost\tr1;d:\Code\boost_1_41_0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;CMF_EXPORTS;SOLUTE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DisableSpecificWarnings>4996;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+    </ClCompile>
+    <Link>
+      <OutputFile>$(OutDir)$(ProjectName).exe</OutputFile>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Console</SubSystem>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release_exe|x64'">
+    <ClCompile>
+      <Optimization>Full</Optimization>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <AdditionalIncludeDirectories>D:\Code\cmf\cmf\cmf_core_src\math\integrators\sundials_cvode\include;d:\Code\boost_1_41_0\boost\tr1;d:\Code\boost_1_41_0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;CMF_EXPORTS;SOLUTE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DisableSpecificWarnings>4996;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+    </ClCompile>
+    <Link>
+      <OutputFile>$(OutDir)$(ProjectName).exe</OutputFile>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Console</SubSystem>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="cmfmemory.h" />
+    <ClInclude Include="math\integrators\RK23_MPI.h" />
+    <ClInclude Include="math\num_array.h" />
+    <ClInclude Include="upslope\vegetation\waterstress.h" />
+    <ClInclude Include="water\adsorption.h" />
+    <ClInclude Include="upslope\algorithm.h" />
+    <ClInclude Include="upslope\connections\AtmosphericFluxes.h" />
+    <ClInclude Include="math\integrators\BDF2.h" />
+    <ClInclude Include="upslope\macropore.h" />
+    <ClInclude Include="upslope\surfacewater.h" />
+    <ClInclude Include="water\boundary_condition.h" />
+    <ClInclude Include="upslope\cell.h" />
+    <ClInclude Include="upslope\cell_vector.h" />
+    <ClInclude Include="water\collections.h" />
+    <ClInclude Include="upslope\conductable.h" />
+    <ClInclude Include="math\integrators\sundials_cvode\include\cvode\cvode.h" />
+    <ClInclude Include="math\integrators\sundials_cvode\include\cvode\cvode_band.h" />
+    <ClInclude Include="math\integrators\sundials_cvode\include\cvode\cvode_bandpre.h" />
+    <ClInclude Include="math\integrators\sundials_cvode\src\cvode_bandpre_impl.h" />
+    <ClInclude Include="math\integrators\sundials_cvode\include\cvode\cvode_bbdpre.h" />
+    <ClInclude Include="math\integrators\sundials_cvode\src\cvode_bbdpre_impl.h" />
+    <ClInclude Include="math\integrators\sundials_cvode\include\cvode\cvode_dense.h" />
+    <ClInclude Include="math\integrators\sundials_cvode\include\cvode\cvode_diag.h" />
+    <ClInclude Include="math\integrators\sundials_cvode\src\cvode_diag_impl.h" />
+    <ClInclude Include="math\integrators\sundials_cvode\include\cvode\cvode_direct.h" />
+    <ClInclude Include="math\integrators\sundials_cvode\src\cvode_direct_impl.h" />
+    <ClInclude Include="math\integrators\sundials_cvode\src\cvode_impl.h" />
+    <ClInclude Include="math\integrators\sundials_cvode\include\cvode\cvode_spbcgs.h" />
+    <ClInclude Include="math\integrators\sundials_cvode\include\cvode\cvode_spgmr.h" />
+    <ClInclude Include="math\integrators\sundials_cvode\include\cvode\cvode_spils.h" />
+    <ClInclude Include="math\integrators\sundials_cvode\src\cvode_spils_impl.h" />
+    <ClInclude Include="math\integrators\sundials_cvode\include\cvode\cvode_sptfqmr.h" />
+    <ClInclude Include="math\integrators\cvodeIntegrator.h" />
+    <ClInclude Include="upslope\vegetation\ET.h" />
+    <ClInclude Include="math\integrators\explicit_euler.h" />
+    <ClInclude Include="math\integrators\ExplicitEuler_fixed.h" />
+    <ClInclude Include="water\flux_connection.h" />
+    <ClInclude Include="water\flux_node.h" />
+    <ClInclude Include="geometry\geometry.h" />
+    <ClInclude Include="upslope\groundwater.h" />
+    <ClInclude Include="math\integrators\implicit_euler.h" />
+    <ClInclude Include="upslope\connections\infiltration.h" />
+    <ClInclude Include="math\integrators\Integrator.h" />
+    <ClInclude Include="math\irregular_timeseries.h" />
+    <ClInclude Include="Upslope\layer_list.h" />
+    <ClInclude Include="reach\ManningConnection.h" />
+    <ClInclude Include="atmosphere\Meteorology.h" />
+    <ClInclude Include="math\integrators\MultiIntegrator.h" />
+    <ClInclude Include="math\integrators\sundials_cvode\include\nvector\nvector_parallel.h" />
+    <ClInclude Include="math\integrators\sundials_cvode\include\nvector\nvector_serial.h" />
+    <ClInclude Include="reach\OpenWaterStorage.h" />
+    <ClInclude Include="upslope\connections\Percolation.h" />
+    <ClInclude Include="atmosphere\Precipitation.h" />
+    <ClInclude Include="project.h" />
+    <ClInclude Include="reach\reach.h" />
+    <ClInclude Include="reach\ReachType.h" />
+    <ClInclude Include="math\real.h" />
+    <ClInclude Include="upslope\soil\RetentionCurve.h" />
+    <ClInclude Include="math\integrators\RKFIntegrator.h" />
+    <ClInclude Include="upslope\vegetation\ShuttleworthWallace.h" />
+    <ClInclude Include="water\simple_connections.h" />
+    <ClInclude Include="upslope\SoilLayer.h" />
+    <ClInclude Include="water\Solute.h" />
+    <ClInclude Include="water\SoluteStorage.h" />
+    <ClInclude Include="math\spline.h" />
+    <ClInclude Include="math\StateVariable.h" />
+    <ClInclude Include="upslope\vegetation\StructVegetation.h" />
+    <ClInclude Include="upslope\connections\subsurfacefluxes.h" />
+    <ClInclude Include="math\integrators\sundials_cvode\include\sundials\sundials_band.h" />
+    <ClInclude Include="math\integrators\sundials_cvode\include\sundials\sundials_config.h" />
+    <ClInclude Include="math\integrators\sundials_cvode\include\sundials\sundials_dense.h" />
+    <ClInclude Include="math\integrators\sundials_cvode\include\sundials\sundials_direct.h" />
+    <ClInclude Include="math\integrators\sundials_cvode\include\sundials\sundials_fnvector.h" />
+    <ClInclude Include="math\integrators\sundials_cvode\include\sundials\sundials_iterative.h" />
+    <ClInclude Include="math\integrators\sundials_cvode\include\sundials\sundials_lapack.h" />
+    <ClInclude Include="math\integrators\sundials_cvode\include\sundials\sundials_math.h" />
+    <ClInclude Include="math\integrators\sundials_cvode\include\sundials\sundials_nvector.h" />
+    <ClInclude Include="math\integrators\sundials_cvode\include\sundials\sundials_spbcgs.h" />
+    <ClInclude Include="math\integrators\sundials_cvode\include\sundials\sundials_spgmr.h" />
+    <ClInclude Include="math\integrators\sundials_cvode\include\sundials\sundials_sptfqmr.h" />
+    <ClInclude Include="math\integrators\sundials_cvode\include\sundials\sundials_types.h" />
+    <ClInclude Include="upslope\connections\surfacefluxes.h" />
+    <ClInclude Include="water\system_bridge.h" />
+    <ClInclude Include="math\Time.h" />
+    <ClInclude Include="math\timeseries.h" />
+    <ClInclude Include="upslope\Topology.h" />
+    <ClInclude Include="math\integrators\WaterSoluteIntegrator.h" />
+    <ClInclude Include="water\WaterStorage.h" />
+    <ClInclude Include="atmosphere\Weather.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="cmf_wrap.cpp" />
+    <ClCompile Include="math\num_array.cpp" />
+    <ClCompile Include="upslope\vegetation\waterstress.cpp" />
+    <ClCompile Include="water\adsorption.cpp" />
+    <ClCompile Include="math\integrators\WaterSoluteIntegrator.cpp" />
+    <ClCompile Include="upslope\algorithm.cpp" />
+    <ClCompile Include="math\integrators\BDF2.cpp" />
+    <ClCompile Include="upslope\connections\AtmosphericFluxes.cpp" />
+    <ClCompile Include="upslope\macropore.cpp" />
+    <ClCompile Include="upslope\surfacewater.cpp" />
+    <ClCompile Include="water\boundary_condition.cpp" />
+    <ClCompile Include="upslope\cell.cpp" />
+    <ClCompile Include="upslope\cell_vector.cpp" />
+    <ClCompile Include="water\collections.cpp" />
+    <ClCompile Include="math\integrators\sundials_cvode\src\cvode.c" />
+    <ClCompile Include="math\integrators\sundials_cvode\src\cvode_band.c" />
+    <ClCompile Include="math\integrators\sundials_cvode\src\cvode_bandpre.c" />
+    <ClCompile Include="math\integrators\sundials_cvode\src\cvode_bbdpre.c" />
+    <ClCompile Include="math\integrators\sundials_cvode\src\cvode_dense.c" />
+    <ClCompile Include="math\integrators\sundials_cvode\src\cvode_diag.c" />
+    <ClCompile Include="math\integrators\sundials_cvode\src\cvode_direct.c" />
+    <ClCompile Include="math\integrators\sundials_cvode\src\cvode_io.c" />
+    <ClCompile Include="math\integrators\sundials_cvode\src\cvode_spbcgs.c" />
+    <ClCompile Include="math\integrators\sundials_cvode\src\cvode_spgmr.c" />
+    <ClCompile Include="math\integrators\sundials_cvode\src\cvode_spils.c" />
+    <ClCompile Include="math\integrators\sundials_cvode\src\cvode_sptfqmr.c" />
+    <ClCompile Include="math\integrators\cvodeIntegrator.cpp" />
+    <ClCompile Include="upslope\vegetation\ET.cpp" />
+    <ClCompile Include="water\flux_connection.cpp" />
+    <ClCompile Include="water\flux_node.cpp" />
+    <ClCompile Include="geometry\geometry.cpp" />
+    <ClCompile Include="upslope\groundwater.cpp" />
+    <ClCompile Include="math\integrators\implicit_euler.cpp" />
+    <ClCompile Include="upslope\connections\infiltration.cpp" />
+    <ClCompile Include="math\integrators\Integrator.cpp" />
+    <ClCompile Include="Upslope\layer_list.cpp" />
+    <ClCompile Include="reach\ManningConnection.cpp" />
+    <ClCompile Include="atmosphere\Meteorology.cpp" />
+    <ClCompile Include="math\integrators\MultiIntegrator.cpp" />
+    <ClCompile Include="math\integrators\sundials_cvode\src\nvector_serial.c" />
+    <ClCompile Include="reach\OpenWaterStorage.cpp" />
+    <ClCompile Include="upslope\connections\Percolation.cpp" />
+    <ClCompile Include="atmosphere\Precipitation.cpp" />
+    <ClCompile Include="project.cpp" />
+    <ClCompile Include="reach\reach.cpp" />
+    <ClCompile Include="reach\ReachType.cpp" />
+    <ClCompile Include="math\real.cpp" />
+    <ClCompile Include="upslope\soil\RetentionCurve.cpp" />
+    <ClCompile Include="math\integrators\RKFIntegrator.cpp" />
+    <ClCompile Include="upslope\vegetation\ShuttleworthWallace.cpp" />
+    <ClCompile Include="water\simple_connections.cpp" />
+    <ClCompile Include="upslope\SoilLayer.cpp" />
+    <ClCompile Include="water\Solute.cpp" />
+    <ClCompile Include="water\SoluteStorage.cpp" />
+    <ClCompile Include="math\spline.cpp" />
+    <ClCompile Include="math\StateVariable.cpp" />
+    <ClCompile Include="upslope\connections\subsurfacefluxes.cpp" />
+    <ClCompile Include="math\integrators\sundials_cvode\src\sundials_band.c" />
+    <ClCompile Include="math\integrators\sundials_cvode\src\sundials_dense.c" />
+    <ClCompile Include="math\integrators\sundials_cvode\src\sundials_direct.c" />
+    <ClCompile Include="math\integrators\sundials_cvode\src\sundials_iterative.c" />
+    <ClCompile Include="math\integrators\sundials_cvode\src\sundials_math.c" />
+    <ClCompile Include="math\integrators\sundials_cvode\src\sundials_nvector.c" />
+    <ClCompile Include="math\integrators\sundials_cvode\src\sundials_spbcgs.c" />
+    <ClCompile Include="math\integrators\sundials_cvode\src\sundials_spgmr.c" />
+    <ClCompile Include="math\integrators\sundials_cvode\src\sundials_sptfqmr.c" />
+    <ClCompile Include="upslope\connections\surfacefluxes.cpp" />
+    <ClCompile Include="water\system_bridge.cpp" />
+    <ClCompile Include="math\Time.cpp" />
+    <ClCompile Include="math\timeseries.cpp" />
+    <ClCompile Include="upslope\Topology.cpp" />
+    <ClCompile Include="water\WaterStorage.cpp" />
+    <ClCompile Include="atmosphere\Weather.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram.cd" />
+    <None Include="math\array.i" />
+    <None Include="upslope\cell.i" />
+    <CustomBuild Include="cmf.i">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">swigging cmf.i -&gt; cmf_wrap.cpp</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">swigging cmf.i -&gt; cmf_wrap.cpp</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">swig.exe -python -c++ -Wextra -w512 -w511 -keyword -castmode -O -c++ -o %(RootDir)%(Directory)cmf_wrap.cpp -threads -outdir %(RootDir)%(Directory).. %(RootDir)%(Directory)cmf.i
+</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">swig.exe -python -c++ -Wextra -w512 -w511 -keyword -castmode -O -c++ -o %(RootDir)%(Directory)cmf_wrap.cpp -threads -outdir %(RootDir)%(Directory).. %(RootDir)%(Directory)cmf.i
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">cmf_wrap.cpp;%(Outputs)</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">cmf_wrap.cpp;%(Outputs)</Outputs>
+    </CustomBuild>
+    <None Include="cmf_swiglib.i" />
+    <None Include="water\collections.i" />
+    <None Include="geometry\geometry.i" />
+    <None Include="debug_scripts\integrate_head.py" />
+    <None Include="upslope\Layer.i" />
+    <None Include="atmosphere\meteorology.i" />
+    <None Include="math\num_array.i" />
+    <None Include="math\ODEsystem.i" />
+    <None Include="project.i" />
+    <None Include="reach\Reach.i" />
+    <None Include="math\test_array.i" />
+    <None Include="math\time.i" />
+    <None Include="water\water.i" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
