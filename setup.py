@@ -45,16 +45,6 @@ from setuptools import setup, Extension
 from distutils.sysconfig import get_config_var
 
 
-def get_revision():
-    """
-    Gets the actual revision from subversion
-    """
-    pipe = os.popen('svnversion')
-    res=pipe.read().strip()
-    if ':' in res:
-        res=res.split(':')[-1]
-    return res.strip('M')
-
 def updateversion(revision):
     """
     Writes the actual revision number into the relevant files:
@@ -67,8 +57,6 @@ def updateversion(revision):
         for line in module_code:
             if line.startswith('__version__'):
                 fout.write("__version__ = '{}'\n".format(version))
-            elif line.startswith('__revision__'):
-                fout.write("__revision__ = {}\n".format(revision))
             else:
                 fout.write(line)
         doxycode = open('Doxyfile').readlines()
@@ -195,12 +183,6 @@ def make_cmf_core(swig, openmp):
     
     
 if __name__=='__main__':
-    revision = get_revision()
-    if pop_arg('revision'):
-        updateversion(revision)
-        exit()
-    if 'build' in sys.argv or 'build_py' in sys.argv:
-        updateversion(revision)
 
     ext = [make_cmf_core(swig=pop_arg('swig'), openmp=not pop_arg('noopenmp'))]
     description = 'Catchment Modelling Framework - A hydrological modelling toolkit'

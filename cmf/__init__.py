@@ -32,4 +32,3 @@ from .extend_project import profile
 from .stopwatch import StopWatch
 
 __version__ = '1.0.4a'
-__revision__ = Unversioned directory
