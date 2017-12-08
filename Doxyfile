@@ -38,7 +38,7 @@ PROJECT_NAME           = cmf
 # could be handy for archiving the generated documentation or if some version
 # control system is used.
 
-PROJECT_NUMBER         = 1.0.4a
+PROJECT_NUMBER         = 1.0.3
 
 # Using the PROJECT_BRIEF tag one can provide an optional one line description
 # for a project that appears at the top of each page and should give viewer a
@@ -51,7 +51,7 @@ PROJECT_BRIEF          = "The Catchment Modelling Framework"
 # pixels and the maximum width should not exceed 200 pixels. Doxygen will copy
 # the logo to the output directory.
 
-PROJECT_LOGO           = C:/Users/kraft-p.UNI-GIESSEN/Documents/Code/cmf/cmf/cmf_core_src/doc/cmf-logo-klein.png
+PROJECT_LOGO           = cmf/cmf_core_src/doc/cmf-logo-klein.png
 
 # The OUTPUT_DIRECTORY tag is used to specify the (relative or absolute) path
 # into which the generated documentation will be written. If a relative path is
@@ -1296,7 +1296,7 @@ CHM_FILE               =
 # The file has to be specified with full path.
 # This tag requires that the tag GENERATE_HTMLHELP is set to YES.
 
-HHC_LOCATION           = "\"C:\Program Files\HTML Help Workshop\hhc.exe\""
+HHC_LOCATION           = ""
 
 # The GENERATE_CHI flag controls if a separate .chi index file is generated
 # (YES) or that it should be included in the master .chm file (NO).
@@ -2349,7 +2349,7 @@ INTERACTIVE_SVG        = NO
 # found. If left blank, it is assumed the dot tool can be found in the path.
 # This tag requires that the tag HAVE_DOT is set to YES.
 
-DOT_PATH               = "c:\Program Files (x86)\Graphviz2.38\bin"
+DOT_PATH               = ""
 
 # The DOTFILE_DIRS tag can be used to specify one or more directories that
 # contain dot files that are included in the documentation (see the \dotfile
