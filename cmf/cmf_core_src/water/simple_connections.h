@@ -63,6 +63,7 @@ namespace cmf {
 
 		/// @ingroup connections
 		/// @brief Calculates flux out of a storage as a linear function of its volume to a power.
+		/// @deprecated kinematic_wave is superseeded by LinearStorageConnection and PowerLawConnection
 		///
 		/// \f[ q = \frac 1 {t_r} {\left(\frac{V - V_{residual}}{V_0} \right)^\beta} \f]
 		/// where:

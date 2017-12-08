@@ -87,7 +87,7 @@ namespace cmf {
 				std::string to_string() const {
 					return "water content based stress (Feddes 1978)";
 				}
-				/// Creates a new ContentStress for critical water content theta_d in m³ Water/m³ Soil and wilting point theta_w.
+				/// Creates a new ContentStress for critical water content theta_d in vol Water/vol Soil and wilting point theta_w.
 				ContentStress(real theta_d = -1, real theta_w = -1);
 				
 			};
