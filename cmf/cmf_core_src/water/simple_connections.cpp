@@ -23,22 +23,56 @@ bool cmf::water::can_set_flux( flux_node::ptr source,flux_node::ptr target )
 
 
 
-real cmf::water::kinematic_wave::calc_q( cmf::math::Time t )
+real cmf::water::kinematic_wave::calc_q(cmf::math::Time t)
 {
 	cmf::water::WaterStorage::ptr S = source.lock();
-	real V= std::max(0.0,S->get_volume()-residual);
-	return pow(V/V0,exponent)/residencetime;
+	real V = std::max(0.0, S->get_volume() - residual);
+	return pow(V / V0, exponent) / residencetime;
 }
 
 
-cmf::water::kinematic_wave::kinematic_wave( WaterStorage::ptr source,flux_node::ptr target,
-											real _traveltime, real _exponent/*=1.0*/,
-											real _residual/*=0.0*/, real _V0 )
-: flux_connection(source,target,"kinematic wave"),residencetime(_traveltime),
-  exponent(_exponent), residual(_residual), V0(_V0)
+cmf::water::kinematic_wave::kinematic_wave(WaterStorage::ptr source, flux_node::ptr target,
+	real _traveltime, real _exponent/*=1.0*/,
+	real _residual/*=0.0*/, real _V0)
+	: flux_connection(source, target, "kinematic wave"), residencetime(_traveltime),
+	exponent(_exponent), residual(_residual), V0(_V0)
 {
 	NewNodes();
 }
+
+real cmf::water::LinearStorageConnection::calc_q(cmf::math::Time t)
+{
+	cmf::water::WaterStorage::ptr S = source.lock();
+	real V = std::max(0.0, S->get_volume() - residual);
+	return V / residencetime;
+}
+
+cmf::water::LinearStorageConnection::LinearStorageConnection(
+	WaterStorage::ptr source, flux_node::ptr target,
+	real _residencetime, real _residual /* = 0.0 */)
+	: flux_connection(source, target, "LinearStorageConnection"),
+	residencetime(_residencetime), residual(_residual) 
+{
+	NewNodes();
+}
+
+real cmf::water::PowerLawConnection::calc_q(cmf::math::Time t)
+{
+	cmf::water::WaterStorage::ptr S = source.lock();
+	real V = std::max(0.0, S->get_volume() - residual);
+	return Q0 * pow(V / V0, beta);
+}
+
+
+cmf::water::PowerLawConnection::PowerLawConnection(WaterStorage::ptr source, flux_node::ptr target,
+	real _Q0, real _V0, real _beta/*=1.0*/,
+	real _residual/*=0.0*/)
+	: flux_connection(source, target, "kinematic wave"), Q0(_Q0),
+	beta(_beta), residual(_residual), V0(_V0)
+{
+	NewNodes();
+}
+
 
 cmf::water::statecontrol_connection::statecontrol_connection( cmf::water::WaterStorage::ptr controlled_storage, cmf::water::flux_node::ptr other_end, 
 															 real _target_state, cmf::math::Time _reaction_time ) 

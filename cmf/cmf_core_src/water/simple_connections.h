@@ -1,7 +1,7 @@
 #ifndef simple_connections_h__
 #define simple_connections_h__
 
-
+#include "../math/real.h"
 #include "flux_connection.h"
 #include "flux_node.h"
 #include "WaterStorage.h"
@@ -53,7 +53,7 @@ namespace cmf {
 		/// @ingroup connections
 		/// @brief Sets a constant flux between two nodes, if an external_control_connection exists. 
 		// Otherwise an error is thrown
-		void set_flux(flux_node::ptr source,flux_node::ptr target,real flux_value);
+		void set_flux(flux_node::ptr source,flux_node::ptr target, real flux_value);
 
 		/// @ingroup connections
 		/// @brief Checks if a constant flux between two nodes can be set. 
@@ -99,6 +99,84 @@ namespace cmf {
 			kinematic_wave(WaterStorage::ptr source,flux_node::ptr target,real residencetime,
 				real exponent=1.0,real residual=0.0,real V0 = 1.0);
 		};
+
+		/// @ingroup connections
+		/// @brief Calculates flux out of a storage as a linear function of its volume.
+		///
+		/// This connection serves the same purpose as the old kinematic_wave connection, but the parameters
+		/// are easier to explain
+		///
+		/// \f[ q = \frac{V - V_{residual}}{t_r}} \f]
+		/// where:
+		/// - \f$V\f$ The actual volume of water stored in source
+		/// - \f$V_{residual} [m^3]\f$ The volume of water not flowing out (default = 0)
+		///   \f$t_r\f$ is the residence time in the source. 
+		class LinearStorageConnection : public flux_connection {
+		protected:
+			std::weak_ptr<WaterStorage> source;
+			real calc_q(cmf::math::Time t);
+			void NewNodes() {
+				source = WaterStorage::cast(left_node());
+			}
+		public:
+			/// @brief Linear flow parameter traveltime in days
+			real residencetime;
+			/// @brief residual volume of source
+			real residual;
+
+			/// @brief Creates a linear storage connection or Nash-box.
+			/// \f[ q = \frac{V - V_{residual}}{t_r}} \f]
+			/// @param source Water storage from which the water flows out. Flux is a function of source.volume
+			/// @param target Target node (boundary condition or storage). Does not influence the strength of the flow
+			/// @param residencetime \f$t_r [days]\f$ The residence time of the water in this storage
+			/// @param residual \f$V_{residual} [m^3]\f$ The volume of water not flowing out (default = 0)
+			LinearStorageConnection(WaterStorage::ptr source, flux_node::ptr target, real residencetime, real residual = 0.0);
+		};
+
+
+		/// @ingroup connections
+		/// @brief Calculates flux out of a storage as a linear function of its volume to a power.
+		///
+		/// This connection serves the same purpose as the old kinematic_wave connection, but the parameters
+		/// are easier to explain
+		///
+		/// \f[ q = Q_0 {\left(\frac{V - V_{residual}}{V_0} \right)^\beta} \f]
+		/// where:
+		/// - \f$V\f$ The actual volume of water stored in source
+		/// - \f$V_{residual} [m^3]\f$ The volume of water not flowing out (default = 0)
+		/// - \f$V_0\f$ A reference volume to scale the outflux. One can see \f$V_0\f$ as the inflection point of the outflow curve
+		/// - \f$\beta\f$ A parameter to shape the response curve. 
+		///   \f$Q_0\f$ is the outflow from the source in \f$\frac{m^3}{day}\f$, when \f$V = V_0\f$. 
+		class PowerLawConnection : public flux_connection {
+		protected:
+			std::weak_ptr<WaterStorage> source;
+			real calc_q(cmf::math::Time t);
+			void NewNodes() {
+				source = WaterStorage::cast(left_node());
+			}
+		public:
+			/// @brief outflow from the source in \f$\frac{m^3}{day}\f$, when \f$V = V_0\f$. 
+			real Q0;
+			/// @brief Shape parameter of the curve, \f$\beta\f$
+			real beta;
+			/// @brief residual volume of source
+			real residual;
+			/// @brief Reference volume \f$V_0\f$
+			real V0;
+
+			/// @brief Creates a kinematic wave connection.
+			/// \f[ q(V) = \frac Q_0 {\left(\frac{V - V_{residual}}{V_0} \right)^\beta} \f]
+			/// @param source Water storage from which the water flows out. Flux is a function of source.volume
+			/// @param target Target node (boundary condition or storage). Does not influence the strength of the flow
+			/// @param Reference flow \f$Q_0 = q(V_0)\f$ Outflow when the source storage equals the reference volume
+			/// @param Reference volume \f$V_0\f$ The reference volume to scale the exponent
+			/// @param beta \f$\beta [-]\f$ An empirical exponent to shape the flux function (default = 1 (linear function))
+			/// @param residual \f$V_{residual} [m^3]\f$ The volume of water not flowing out (default = 0)
+			PowerLawConnection(WaterStorage::ptr source, flux_node::ptr target, real Q0, real V0,
+						 real beta = 1.0, real residual = 0.0);
+		};
+
+
 		/// @ingroup connections
 		/// @brief A conceptual flux between two storages that can be positive as well as negative
 		/// @note The state of the right node is not monitored, hence negative volumes of the right node can occur!
