@@ -40,11 +40,16 @@ real cmf::upslope::connections::CanopyOverflow::calc_q( cmf::math::Time t )
 real cmf::upslope::connections::SimpleTindexSnowMelt::calc_q( cmf::math::Time t )
 {
 	cmf::water::WaterStorage::ptr Snow=m_Snow.lock();
-	real T=m_cell.get_weather(t).T;
+	// Get current temperature
+	real T = m_cell.get_weather(t).T;
+	// Get snowmelt threshold temperature
 	real ThresholdTemp=cmf::atmosphere::Weather::get_snow_threshold();
+	// If we have snowmelt...
 	if (T>ThresholdTemp)
 	{
-		return (1-Snow->is_empty())*SnowMeltRate*(T-ThresholdTemp)*m_cell.get_area()*0.001;
+		real potential_meltrate_m3 = SnowMeltRate * (T - ThresholdTemp) * m_cell.get_area() * 0.001;
+		// limit snow meltrate to current snow/(10 min)
+		return std::min(Snow->get_volume() * 24 * 6, potential_meltrate_m3);
 	}
 	else
 		return 0.0;
