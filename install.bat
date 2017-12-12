@@ -12,6 +12,10 @@ if ERRORLEVEL 1 goto error
 python setup.py install
 if ERRORLEVEL 1 goto error
 
+if not "x%1x"=="xdistx" goto end
+python setup.py bdist_wheel
+if ERRORLEVEL 1 goto error
+
 goto end
 :clean
 del build /s /q
