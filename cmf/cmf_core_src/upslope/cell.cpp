@@ -159,7 +159,9 @@ cmf::water::WaterStorage::ptr Cell::add_storage( std::string Name,char storage_r
 	if (isopenwater)
 		ws = cmf::river::OpenWaterStorage::create(get_project(),get_area());
 	else
-		ws = WaterStorage::create(get_project());
+		// Create a water storage with a "standard storage" of 1mm for tolerances
+		ws = WaterStorage::create(get_project(), 0.0, /*scale=*/ get_area()/1000.);
+	
 	ws->position=get_position();
 	ws->Name=Name;
 	if (storage_role=='C')

@@ -51,7 +51,7 @@ real cmf::upslope::connections::SimpleTindexSnowMelt::calc_q( cmf::math::Time t 
 		// limit snow meltrate to current snow/(10 min)
 		return std::min(Snow->get_volume() * 24 * 6, potential_meltrate_m3);
 	}
-	else
+	else // too cold, no melting
 		return 0.0;
 }
 

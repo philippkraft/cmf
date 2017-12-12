@@ -31,8 +31,9 @@ void WaterStorage::initializeSoluteStorages(const solute_vector& solutes) {
 }
 
 
-WaterStorage::WaterStorage(cmf::project& _project, const std::string& _Name,double InitialState/*=0*/ ) 
-: cmf::math::StateVariable(InitialState),flux_node(_project) ,m_Concentrations(), m_state_variable_content('V')
+WaterStorage::WaterStorage(cmf::project& _project, const std::string& _Name,
+	double InitialState/*=0*/, double scale/*=1*/ ) 
+: cmf::math::StateVariable(InitialState, scale),flux_node(_project) ,m_Concentrations(), m_state_variable_content('V')
 {
 	initializeSoluteStorages(_project.solutes);
 	this->Name = _Name;

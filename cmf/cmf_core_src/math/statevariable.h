@@ -102,12 +102,17 @@ namespace cmf {
 			bool m_StateIsNew;
 			/// Holds the value of the Statevariable
 			real m_State;
+
 		protected:
 			virtual void StateChangeAction() {}
 			/// Sets the updated flag (m_StateIsNew) to false
 			void MarkStateChangeHandled() {m_StateIsNew=false;}
 			/// Returns if the state was currently updated
 			bool StateIsChanged() {return m_StateIsNew;}
+			// A scale to handle abstol issues with the CVode Solver and with the is_empty function
+			// By default, the scale is 1. Absolute tolerance is scale times rel tolerance
+			real m_Scale;
+
 		public:
 			typedef std::shared_ptr<StateVariable> ptr;
 			/// Returns the derivate of the state variable at time @c time
@@ -118,11 +123,14 @@ namespace cmf {
 			void set_state(real newState);
 
 			virtual real get_abs_errtol(real rel_errtol) const{
-				return rel_errtol;
+				return rel_errtol * m_Scale;
 			}
 			virtual std::string to_string() const=0;
 			/// ctor
-			StateVariable(real InitialState=0) : m_State(InitialState),m_StateIsNew(true) {}
+			StateVariable(real InitialState=0, real scale=1) 
+				: m_State(InitialState),m_StateIsNew(true), m_Scale(scale)
+			{}
+
 			virtual ~StateVariable() {}
 		};
 

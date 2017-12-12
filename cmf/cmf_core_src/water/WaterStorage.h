@@ -68,9 +68,6 @@ namespace cmf {
 			virtual real volume_to_head(real volume) const;
 	
 		public:
-			real get_abs_errtol(real rel_errtol) const {
-				return rel_errtol;
-			}
 			/// @brief A character indicating the integrated variable (either 'V' for Volume or 'h' for head)
 			inline char get_state_variable_content() const {return m_state_variable_content;}
 			/// @brief A character indicating the integrated variable (either 'V' for Volume or 'h' for head)
@@ -82,7 +79,9 @@ namespace cmf {
 			/// @param project The project the waterstorage belongs to
 			/// @param Name Name of the water storage
 			/// @param InitialState Initial water content in m<sup>3</sup>
-			WaterStorage(cmf::project& project,const std::string & Name="", double InitialState=0);
+			/// @param A kind of "standard size" in m3 of the water storage to scale tolerances, default 1m3
+			WaterStorage(cmf::project& project,const std::string & Name="", 
+				double InitialState=0, double scale=1);
 			
 			static std::shared_ptr<WaterStorage> from_node(cmf::water::flux_node::ptr node);
 			/// @brief Returns the water quality of the water storage.
@@ -153,9 +152,9 @@ namespace cmf {
 			{		
 				return std::dynamic_pointer_cast<cmf::water::WaterStorage>(node);
 			}
-			static std::shared_ptr<cmf::water::WaterStorage> create(cmf::project& _project, real initial_state=0.0)
+			static std::shared_ptr<cmf::water::WaterStorage> create(cmf::project& _project, real initial_state=0.0, real scale=1.0)
 			{
-				return std::shared_ptr<cmf::water::WaterStorage>(new WaterStorage(_project,"unknown",initial_state));
+				return std::shared_ptr<cmf::water::WaterStorage>(new WaterStorage(_project,"unknown",initial_state, scale));
 			}
 
 		};
