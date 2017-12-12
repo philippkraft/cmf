@@ -60,7 +60,12 @@ namespace cmf {
 				int pos = (stepNo-toBack) % 2;
 				return pastStatesArray[pos];
 			}
-			
+			/// Absolute error tolerance
+			num_array abstol;
+
+			// Refreshes the absolute tolerance vector
+			void set_abstol();
+
 			//@}
 
 

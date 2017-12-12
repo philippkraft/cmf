@@ -40,12 +40,15 @@ namespace cmf {
 			num_array oldStates;
 			///Vector of derivatives
 			num_array dxdt;
+			/// Absolute error tolerance
+			num_array abstol;
+
 			//@}
 
 			real error_exceedance( const num_array& compare,ptrdiff_t * biggest_error_position=0 );
 			void Gear1newState(real h);
-
-
+			// Refreshes the absolute tolerance vector
+			void set_abstol();
 		public:
 			/// The shortest allowed timestep
 			Time dt_min;
@@ -73,6 +76,7 @@ namespace cmf {
 			/// @param MaxTime To stop the model (if running in a model framework) at time steps of value exchange e.g. full hours, the next value exchange time can be given
 			/// @param TimeStep Takes the proposed timestep, and changes it into the effictivly used timestep according to the local stiffness of the problem and MaxTime
 			int integrate(cmf::math::Time MaxTime,cmf::math::Time TimeStep);
+
 		};
 	}
 }

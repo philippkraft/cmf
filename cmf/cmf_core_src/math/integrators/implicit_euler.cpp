@@ -44,13 +44,13 @@ cmf::math::ImplicitEuler::ImplicitEuler( const cmf::math::Integrator& forCopy)
 
 real cmf::math::ImplicitEuler::error_exceedance( const num_array& compare,ptrdiff_t * biggest_error_position/*=0 */ )
 {
-	real res=0;
+	real res=1;
 #pragma omp parallel for shared(res)
 	for (ptrdiff_t i = 0; i < ptrdiff_t(size()) ; i++)
 	{
 		real error=fabs(compare[i]-get_state(i));
-		// Calculate absolute error tolerance as: epsilon + |(x_p+x_(n+1))/2|*epsilon
-		real errortol=Epsilon + fabs(get_state(i))*Epsilon;
+		// Calculate absolute error tolerance as: abstol + |(x_p+x_(n+1))/2|*epsilon
+		real errortol=abstol[i] + fabs(get_state(i))*Epsilon;
 		if (error/errortol>res)
 #pragma omp critical
 		{
@@ -73,7 +73,13 @@ void cmf::math::ImplicitEuler::add_states( cmf::math::StateVariableOwner& stateO
 	dxdt.resize(ptrdiff_t(m_States.size()));
 }
 
+void cmf::math::ImplicitEuler::set_abstol()
+{
+	abstol.resize(ptrdiff_t(m_States.size()));
+	for (ptrdiff_t i = 0; i < m_States.size(); ++i)
+		abstol[i] = m_States[i]->get_abs_errtol(Epsilon * 1e-3);
 
+}
 
 int cmf::math::ImplicitEuler::integrate(cmf::math::Time MaxTime,cmf::math::Time TimeStep)
 {

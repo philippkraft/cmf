@@ -140,6 +140,13 @@ void cmf::math::BDF2::Gear2newState(real h)
 	}
 
 }
+void cmf::math::BDF2::set_abstol()
+{
+	abstol.resize(ptrdiff_t(m_States.size()));
+	for (ptrdiff_t i = 0; i < m_States.size(); ++i)
+		abstol[i] = m_States[i]->get_abs_errtol(Epsilon * 1e-3);
+
+}
 
 real cmf::math::BDF2::error_exceedance( const num_array& compare,int * biggest_error_position/*=0 */ )
 {
