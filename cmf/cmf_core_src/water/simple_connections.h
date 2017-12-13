@@ -72,6 +72,8 @@ namespace cmf {
 		/// - \f$\beta\f$ A parameter to shape the response curve. In case of \f$\beta \neq 1\f$, 
 		///   \f$t_r\f$ is not a residence time, but just a parameter.
 		/// - \f$t_r [days]\f$ The residence time of the water in this storage in days
+		///
+		/// @warning \f$\beta < 0.5\f$ may lead to numerical troubles and have a dubious hydrological meaning. Please avoid.
 		class kinematic_wave : public flux_connection {
 		protected:
 			std::weak_ptr<WaterStorage> source;
@@ -139,7 +141,7 @@ namespace cmf {
 		/// @brief Calculates flux out of a storage as a linear function of its volume to a power.
 		///
 		/// This connection serves the same purpose as the old kinematic_wave connection, but the parameters
-		/// are easier to explain
+		/// are easier to explain.
 		///
 		/// \f[ q = Q_0 {\left(\frac{V - V_{residual}}{V_0} \right)^\beta} \f]
 		/// where:
@@ -148,6 +150,8 @@ namespace cmf {
 		/// - \f$V_0\f$ A reference volume to scale the outflux. One can see \f$V_0\f$ as the inflection point of the outflow curve
 		/// - \f$\beta\f$ A parameter to shape the response curve. 
 		///   \f$Q_0\f$ is the outflow from the source in \f$\frac{m^3}{day}\f$, when \f$V = V_0\f$. 
+		///
+		/// @warning \f$\beta < 0.5\f$ may lead to numerical troubles and have a dubious hydrological meaning. Please avoid.
 		class PowerLawConnection : public flux_connection {
 		protected:
 			std::weak_ptr<WaterStorage> source;

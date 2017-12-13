@@ -4294,7 +4294,7 @@ class WaterStorage(StateVariable, StateVariableOwner, flux_node):
         __init__(cmf::water::WaterStorage self, project project, std::string const & Name, double InitialState=0, double scale=1) -> WaterStorage
 
         WaterStorage(cmf::project &project, const std::string &Name="",
-        double InitialState=0)
+        double InitialState=0, double scale=1)
 
         creates a water storage (abstract class)
 
@@ -4305,7 +4305,10 @@ class WaterStorage(StateVariable, StateVariableOwner, flux_node):
 
         Name:  Name of the water storage
 
-        InitialState:  Initial water content in m3 
+        InitialState:  Initial water content in m3
+
+        scale:  A kind of "standard size" in m3 of the water storage to
+        scale tolerances, default 1m3 
         """
         _cmf_core.WaterStorage_swiginit(self, _cmf_core.new_WaterStorage(*args, **kwargs))
 
@@ -10679,8 +10682,8 @@ class aquifer(WaterStorage):
         """
         get_abs_errtol(aquifer self, real rel_errtol) -> real
 
-        real
-        get_abs_errtol(real rel_errtol) const 
+        virtual
+        real get_abs_errtol(real rel_errtol) const 
         """
         return _cmf_core.aquifer_get_abs_errtol(self, *args, **kwargs)
 

@@ -76570,7 +76570,7 @@ static PyMethodDef SwigMethods[] = {
 		"new_WaterStorage(project project, std::string const & Name, double InitialState=0, double scale=1) -> WaterStorage\n"
 		"\n"
 		"WaterStorage(cmf::project &project, const std::string &Name=\"\",\n"
-		"double InitialState=0)\n"
+		"double InitialState=0, double scale=1)\n"
 		"\n"
 		"creates a water storage (abstract class)\n"
 		"\n"
@@ -76581,7 +76581,10 @@ static PyMethodDef SwigMethods[] = {
 		"\n"
 		"Name:  Name of the water storage\n"
 		"\n"
-		"InitialState:  Initial water content in m3 \n"
+		"InitialState:  Initial water content in m3\n"
+		"\n"
+		"scale:  A kind of \"standard size\" in m3 of the water storage to\n"
+		"scale tolerances, default 1m3 \n"
 		""},
 	 { (char *)"WaterStorage_from_node", (PyCFunction) _wrap_WaterStorage_from_node, METH_VARARGS | METH_KEYWORDS, (char *)"WaterStorage_from_node(cmf::water::flux_node::ptr node) -> std::shared_ptr< cmf::water::WaterStorage >"},
 	 { (char *)"WaterStorage_Solute", _wrap_WaterStorage_Solute, METH_VARARGS, (char *)"\n"
@@ -79826,8 +79829,8 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"aquifer_get_abs_errtol", (PyCFunction) _wrap_aquifer_get_abs_errtol, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
 		"aquifer_get_abs_errtol(aquifer self, real rel_errtol) -> real\n"
 		"\n"
-		"real\n"
-		"get_abs_errtol(real rel_errtol) const \n"
+		"virtual\n"
+		"real get_abs_errtol(real rel_errtol) const \n"
 		""},
 	 { (char *)"new_aquifer", _wrap_new_aquifer, METH_VARARGS, (char *)"\n"
 		"aquifer(project p, point position, real area, real thickness, real porosity, real K=1e-4)\n"
