@@ -7295,10 +7295,10 @@ connection, but the parameters are easier to explain
 
 .. math::
 
-     q = \\\\frac{V - V_{residual}}{t_r}} 
+     q = \\\\frac{V - V_{residual}}{t_r} 
 
-where:  :math:`V` The
-actual volume of water stored in source
+where:  :math:`V` The actual
+volume of water stored in source
 
 :math:`V_{residual} [m^3]` The volume of water not flowing out (default = 0)
 :math:`t_r` is the residence time in the source.

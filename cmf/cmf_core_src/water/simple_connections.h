@@ -109,7 +109,7 @@ namespace cmf {
 		/// This connection serves the same purpose as the old kinematic_wave connection, but the parameters
 		/// are easier to explain
 		///
-		/// \f[ q = \frac{V - V_{residual}}{t_r}} \f]
+		/// \f[ q = \frac{V - V_{residual}}{t_r} \f]
 		/// where:
 		/// - \f$V\f$ The actual volume of water stored in source
 		/// - \f$V_{residual} [m^3]\f$ The volume of water not flowing out (default = 0)
