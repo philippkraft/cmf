@@ -1,9 +1,9 @@
 .. image:: https://img.shields.io/travis/philippkraft/cmf/master.png
-	:target: https://travis-ci.org/philippkraft/cmf
+    :target: https://travis-ci.org/philippkraft/cmf
 .. image:: https://img.shields.io/pypi/v/cmf.png
-	:target: https://img.shields.io/pypi/v/cmf.png
+    :target: https://img.shields.io/pypi/v/cmf.png
 .. image:: https://img.shields.io/badge/license-GPL-green.png
-	:target: https://opensource.org/licenses/GPL-2.0
+    :target: https://opensource.org/licenses/GPL-2.0
 
 Modelling water and solute fluxes
 ===================================
