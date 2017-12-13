@@ -79,7 +79,7 @@ namespace cmf {
 			/// @param project The project the waterstorage belongs to
 			/// @param Name Name of the water storage
 			/// @param InitialState Initial water content in m<sup>3</sup>
-			/// @param A kind of "standard size" in m3 of the water storage to scale tolerances, default 1m3
+			/// @param scale A kind of "standard size" in m3 of the water storage to scale tolerances, default 1m3
 			WaterStorage(cmf::project& project,const std::string & Name="", 
 				double InitialState=0, double scale=1);
 			

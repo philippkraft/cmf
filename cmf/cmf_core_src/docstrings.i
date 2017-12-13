@@ -221,8 +221,8 @@ Returns the sum of all flux vectors. ";
 %feature("docstring")  cmf::upslope::aquifer::get_abs_errtol "virtual
 real get_abs_errtol(real rel_errtol) ";
 
-%feature("docstring")  cmf::upslope::aquifer::get_abs_errtol "real
-get_abs_errtol(real rel_errtol) const ";
+%feature("docstring")  cmf::upslope::aquifer::get_abs_errtol "virtual
+real get_abs_errtol(real rel_errtol) const ";
 
 %feature("docstring")  cmf::upslope::aquifer::get_base_height "real
 get_base_height() const
@@ -7658,8 +7658,7 @@ Returns the actual flux between this and target (positive sign means
 
 Returns the sum of all flux vectors. ";
 
-%feature("docstring")  cmf::upslope::MacroPore::get_abs_errtol "real
-get_abs_errtol(real rel_errtol) const ";
+%feature("docstring")  cmf::upslope::MacroPore::get_abs_errtol "virtual real get_abs_errtol(real rel_errtol) const ";
 
 %feature("docstring")  cmf::upslope::MacroPore::get_capacity "real
 get_capacity() const
@@ -13825,7 +13824,7 @@ Simple exponential system class header implementing a state variable:
 
 C++ includes: statevariable.h ";
 
-%feature("docstring")  cmf::math::StateVariable::StateVariable "StateVariable(real InitialState=0)
+%feature("docstring")  cmf::math::StateVariable::StateVariable "StateVariable(real InitialState=0, real scale=1)
 
 ctor ";
 
@@ -16821,7 +16820,7 @@ Returns true if the node has no water. ";
 std::string to_string() const ";
 
 %feature("docstring")  cmf::water::WaterStorage::WaterStorage "WaterStorage(cmf::project &project, const std::string &Name=\"\",
-double InitialState=0)
+double InitialState=0, double scale=1)
 
 creates a water storage (abstract class)
 
@@ -16832,7 +16831,10 @@ project:  The project the waterstorage belongs to
 
 Name:  Name of the water storage
 
-InitialState:  Initial water content in m3 ";
+InitialState:  Initial water content in m3
+
+scale:  A kind of \"standard size\" in m3 of the water storage to
+scale tolerances, default 1m3 ";
 
 %feature("docstring")  cmf::water::WaterStorage::conc "real
 conc(const cmf::water::solute &_Solute) const
@@ -16872,8 +16874,7 @@ Returns the actual flux between this and target (positive sign means
 
 Returns the sum of all flux vectors. ";
 
-%feature("docstring")  cmf::water::WaterStorage::get_abs_errtol "real
-get_abs_errtol(real rel_errtol) const ";
+%feature("docstring")  cmf::water::WaterStorage::get_abs_errtol "virtual real get_abs_errtol(real rel_errtol) const ";
 
 %feature("docstring")  cmf::water::WaterStorage::get_connections "cmf::water::connection_list get_connections() const ";
 
