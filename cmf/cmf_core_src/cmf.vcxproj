@@ -355,7 +355,7 @@
     <ClInclude Include="water\Solute.h" />
     <ClInclude Include="water\SoluteStorage.h" />
     <ClInclude Include="math\spline.h" />
-    <ClInclude Include="math\StateVariable.h" />
+    <ClInclude Include="math\statevariable.h" />
     <ClInclude Include="upslope\vegetation\StructVegetation.h" />
     <ClInclude Include="upslope\connections\subsurfacefluxes.h" />
     <ClInclude Include="math\integrators\sundials_cvode\include\sundials\sundials_band.h" />
@@ -436,7 +436,7 @@
     <ClCompile Include="water\Solute.cpp" />
     <ClCompile Include="water\SoluteStorage.cpp" />
     <ClCompile Include="math\spline.cpp" />
-    <ClCompile Include="math\StateVariable.cpp" />
+    <ClCompile Include="math\statevariable.cpp" />
     <ClCompile Include="upslope\connections\subsurfacefluxes.cpp" />
     <ClCompile Include="math\integrators\sundials_cvode\src\sundials_band.c" />
     <ClCompile Include="math\integrators\sundials_cvode\src\sundials_dense.c" />
