@@ -24,7 +24,7 @@ import os
 import io
 import datetime
 
-version = '1.0.5a1'
+version = '1.0.5'
 
 # Try to import numpy, if it fails we have a problem 
 try:
@@ -149,10 +149,8 @@ def make_cmf_core(swig, openmp):
         # Remove the annoying warning because of "-Wstrict-prototypes" deprecated
         # by https://stackoverflow.com/a/9740721/5885054
         opt = get_config_var('OPT')
-        os.environ['OPT'] = " ".join(
-                                     flag for flag in opt.split() if flag != '-Wstrict-prototypes'
-        )
-        compile_args=['-Wno-comment','-Wno-reorder','-Wno-unused','-Wno-sign-compare','-ggdb','-std=c++11']
+        os.environ['OPT'] = " ".join(flag for flag in opt.split() if flag != '-Wstrict-prototypes')
+        compile_args=['-Wno-comment','-Wno-reorder', '-Wno-deprecated' ,'-Wno-unused','-Wno-sign-compare','-ggdb','-std=c++11']
         if openmp: compile_args.append('-fopenmp')
         link_args=["-fopenmp"] if openmp else []
         link_args.append('-ggdb')
