@@ -181,7 +181,7 @@ def make_cmf_core(swig, openmp):
     
     
 if __name__=='__main__':
-
+    updateversion(version)
     ext = [make_cmf_core(swig=pop_arg('swig'), openmp=not pop_arg('noopenmp'))]
     description = 'Catchment Modelling Framework - A hydrological modelling toolkit'
     long_description = io.open('README.rst', encoding='utf-8').read()
