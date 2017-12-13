@@ -1,0 +1,18 @@
+language: python
+sudo: required
+dist: xenial
+
+python:
+  - "2.7"
+  - "3.5"
+  - "3.6"
+
+
+# command to install dependencies
+install:
+  - pip install numpy matplotlib
+  - installcmf
+
+# command to run tests
+script:
+  - python demo/CmfTutBoundary.py
