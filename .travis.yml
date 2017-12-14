@@ -5,10 +5,10 @@ dist: trusty
 python:
   - "2.7"
   - "3.5"
-  - "3.6"
 
 # command to install dependencies
 install:
+  - ls -aFlh
   - pip install numpy matplotlib
   - python setup.py build_ext
   - python setup.py build_py
@@ -16,4 +16,5 @@ install:
 
 # command to run tests
 script:
+  - ls -aFlh
   - python demo/CmfTutBoundary.py
