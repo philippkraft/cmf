@@ -8,8 +8,7 @@ python:
 
 # command to install dependencies
 install:
-  - ls -aFlh
-  - pip install numpy matplotlib
+  - pip install numpy
   - python setup.py build_ext
   - python setup.py build_py
   - python setup.py install

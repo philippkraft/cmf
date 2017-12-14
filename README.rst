@@ -1,8 +1,12 @@
-.. image:: https://img.shields.io/travis/philippkraft/cmf/master.png
+.. image:: https://img.shields.io/pypi/v/cmf.svg
+    :target: https://pypi.python.org/pypi/cmf/
+.. image:: https://img.shields.io/pypi/pyversions/cmf.svg
+    :target: https://pypi.python.org/pypi/cmf#downloads
+.. image:: https://img.shields.io/badge/docs-tutorial-yellow.svg
+    :target: http://fb09-pasig.umwelt.uni-giessen.de/cmf/wiki/CmfTutStart
+.. image:: https://img.shields.io/travis/philippkraft/cmf/master.svg
     :target: https://travis-ci.org/philippkraft/cmf
-.. image:: https://img.shields.io/pypi/v/cmf.png
-    :target: https://img.shields.io/pypi/v/cmf.png
-.. image:: https://img.shields.io/badge/license-GPL-green.png
+.. image:: https://img.shields.io/badge/license-GPL-green.svg
     :target: https://opensource.org/licenses/GPL-2.0
 
 Modelling water and solute fluxes
