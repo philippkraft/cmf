@@ -17,4 +17,4 @@ install:
 # command to run tests
 script:
   - ls -aFlh
-  - python demo/CmfTutBoundary.py
+  - ls demo -aFlh
