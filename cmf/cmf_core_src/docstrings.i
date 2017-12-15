@@ -34,6 +34,9 @@ Use the derived classes to use a certain isotherm
 
 C++ includes: adsorption.h ";
 
+%feature("docstring")  cmf::water::Adsorption::~Adsorption "virtual
+~Adsorption() ";
+
 %feature("docstring")  cmf::water::Adsorption::copy "virtual
 Adsorption* copy(real m=-1) const =0
 
@@ -81,6 +84,9 @@ Abstract class. Child classes can be used to calculate aerodynamic
 resistances against turbulent heat fluxes.
 
 C++ includes: meteorology.h ";
+
+%feature("docstring")
+cmf::atmosphere::aerodynamic_resistance::~aerodynamic_resistance "virtual ~aerodynamic_resistance() ";
 
 %feature("docstring")
 cmf::atmosphere::aerodynamic_resistance::get_aerodynamic_resistance "virtual void get_aerodynamic_resistance(double &r_ag, double &r_ac,
@@ -990,6 +996,9 @@ pressure in to waterhead height (default pF=2.5)
 porosity_decay:  Relative decay of porosity with depth, e.g. 0.1 means
 conductivity gets 10% smaller per meter ";
 
+%feature("docstring")
+cmf::upslope::BrooksCoreyRetentionCurve::~BrooksCoreyRetentionCurve "virtual ~BrooksCoreyRetentionCurve() ";
+
 %feature("docstring")  cmf::upslope::BrooksCoreyRetentionCurve::copy "virtual BrooksCoreyRetentionCurve* copy() const ";
 
 %feature("docstring")
@@ -1224,6 +1233,10 @@ Abstract class. Child classes are defining a method for intercepted
 canopy water evaporation calculation.
 
 C++ includes: ET.h ";
+
+%feature("docstring")
+cmf::upslope::ET::canopy_evaporation_method::~canopy_evaporation_method
+"virtual ~canopy_evaporation_method() ";
 
 %feature("docstring")
 cmf::upslope::ET::canopy_evaporation_method::evap_from_canopy "virtual double evap_from_canopy(cmf::water::WaterStorage::ptr,
@@ -1793,6 +1806,8 @@ C++ includes: cell_vector.h ";
 
 %feature("docstring")  cmf::upslope::cell_vector::cell_vector "cell_vector(cell_const_iterator first, cell_const_iterator last) ";
 
+%feature("docstring")  cmf::upslope::cell_vector::~cell_vector "virtual ~cell_vector() ";
+
 %feature("docstring")  cmf::upslope::cell_vector::append "void
 append(cmf::upslope::Cell &cell) ";
 
@@ -1920,6 +1935,9 @@ width:  width of the reach cross section in m (ignored for typecode
 
 depth:  depth of the reach (ignored for typecode 'T','R','P','S') ";
 
+%feature("docstring")  cmf::river::Channel::~Channel "virtual
+~Channel() ";
+
 %feature("docstring")  cmf::river::Channel::A "virtual double
 A(double V) const
 
@@ -2044,6 +2062,8 @@ get_K(cmf::geometry::point direction) const =0 ";
 A self sorting list of connections.
 
 C++ includes: flux_connection.h ";
+
+%feature("docstring")  cmf::water::connection_list::~connection_list "virtual ~connection_list() ";
 
 %feature("docstring")  cmf::water::connection_list::append "bool
 append(cmf::water::flux_connection::ptr connection) ";
@@ -2555,6 +2575,9 @@ C++ includes: waterstress.h ";
 
 Creates a new ContentStress for critical water content theta_d in vol
 Water/vol Soil and wilting point theta_w. ";
+
+%feature("docstring")  cmf::upslope::ET::ContentStress::~ContentStress
+"virtual ~ContentStress() ";
 
 %feature("docstring")  cmf::upslope::ET::ContentStress::copy "cmf::upslope::ET::ContentStress* copy() const
 
@@ -4358,6 +4381,10 @@ maxiter:  Maximum number of iterations, default = 100 ";
 %feature("docstring")
 cmf::water::FreundlichAdsorbtion::FreundlichAdsorbtion "FreundlichAdsorbtion(const FreundlichAdsorbtion &other) ";
 
+%feature("docstring")
+cmf::water::FreundlichAdsorbtion::~FreundlichAdsorbtion "virtual
+~FreundlichAdsorbtion() ";
+
 %feature("docstring")  cmf::water::FreundlichAdsorbtion::copy "FreundlichAdsorbtion* copy(real m=-1) const
 
 returns a copy of the Adsorption object.
@@ -5280,6 +5307,9 @@ Abstract base class for different IChannel geometries.
 
 C++ includes: ReachType.h ";
 
+%feature("docstring")  cmf::river::IChannel::~IChannel "virtual
+~IChannel() ";
+
 %feature("docstring")  cmf::river::IChannel::A "virtual double
 A(double V) const
 
@@ -5978,6 +6008,10 @@ This is the abstract base class, where the geometries derive from
 
 C++ includes: ReachType.h ";
 
+%feature("docstring")
+cmf::river::IVolumeHeightFunction::~IVolumeHeightFunction "virtual
+~IVolumeHeightFunction() ";
+
 %feature("docstring")  cmf::river::IVolumeHeightFunction::A "virtual
 double A(double V) const =0
 
@@ -6169,6 +6203,9 @@ water not flowing out (default = 0)
 parameter.
 
 :math:`t_r [days]` The residence time of the water in this storage in days
+
+WARNING:   :math:`\\\\beta < 0.5` may lead to numerical troubles and have a
+dubious hydrological meaning. Please avoid.
 
 C++ includes: simple_connections.h ";
 
@@ -6618,6 +6655,10 @@ cmf::water::LangmuirAdsorption::LangmuirAdsorption "LangmuirAdsorption(real K, r
 
 %feature("docstring")
 cmf::water::LangmuirAdsorption::LangmuirAdsorption "LangmuirAdsorption(const LangmuirAdsorption &other) ";
+
+%feature("docstring")
+cmf::water::LangmuirAdsorption::~LangmuirAdsorption "virtual
+~LangmuirAdsorption() ";
 
 %feature("docstring")  cmf::water::LangmuirAdsorption::copy "LangmuirAdsorption* copy(real m=-1) const
 
@@ -7131,6 +7172,9 @@ C++ includes: adsorption.h ";
 %feature("docstring")  cmf::water::LinearAdsorption::LinearAdsorption
 "LinearAdsorption(const LinearAdsorption &other) ";
 
+%feature("docstring")  cmf::water::LinearAdsorption::~LinearAdsorption
+"virtual ~LinearAdsorption() ";
+
 %feature("docstring")  cmf::water::LinearAdsorption::copy "LinearAdsorption* copy(real m=-1) const
 
 returns a copy of the Adsorption object.
@@ -7196,6 +7240,9 @@ C++ includes: RetentionCurve.h ";
 %feature("docstring")  cmf::upslope::LinearRetention::LinearRetention
 "LinearRetention(real ksat, real phi, real thickness, real
 residual_wetness=0.1) ";
+
+%feature("docstring")  cmf::upslope::LinearRetention::~LinearRetention
+"virtual ~LinearRetention() ";
 
 %feature("docstring")  cmf::upslope::LinearRetention::copy "LinearRetention* copy() const ";
 
@@ -7429,6 +7476,10 @@ C++ includes: ET.h ";
 
 %feature("docstring")
 cmf::atmosphere::log_wind_profile::log_wind_profile "log_wind_profile(cmf::upslope::Cell &_cell) ";
+
+%feature("docstring")
+cmf::atmosphere::log_wind_profile::~log_wind_profile "virtual
+~log_wind_profile() ";
 
 %feature("docstring")
 cmf::atmosphere::log_wind_profile::get_aerodynamic_resistance "virtual void get_aerodynamic_resistance(double &r_ag, double &r_ac,
@@ -8355,6 +8406,9 @@ Creates the mean geometry from the two channel geometries. ";
 
 %feature("docstring")  cmf::river::MeanChannel::MeanChannel "MeanChannel(const MeanChannel &meanChannel) ";
 
+%feature("docstring")  cmf::river::MeanChannel::~MeanChannel "virtual
+~MeanChannel() ";
+
 %feature("docstring")  cmf::river::MeanChannel::A "virtual double
 A(double V) const
 
@@ -9235,6 +9289,9 @@ Creates an empty node_lust. ";
 
 Copy the node_list. ";
 
+%feature("docstring")  cmf::water::node_list::~node_list "virtual
+~node_list() ";
+
 %feature("docstring")  cmf::water::node_list::append "void
 append(flux_node::ptr node)
 
@@ -9359,6 +9416,8 @@ A class for tracers without interaction with the storage container.
 freesolute returns xt.
 
 C++ includes: adsorption.h ";
+
+%feature("docstring")  cmf::water::NullAdsorption::~NullAdsorption "virtual ~NullAdsorption() ";
 
 %feature("docstring")  cmf::water::NullAdsorption::copy "virtual
 NullAdsorption* copy(real m=-1) const
@@ -9914,6 +9973,9 @@ Creates a tube IChannel with diameter [m]. ";
 
 %feature("docstring")  cmf::river::PipeReach::PipeReach "PipeReach(const PipeReach &copy) ";
 
+%feature("docstring")  cmf::river::PipeReach::~PipeReach "virtual
+~PipeReach() ";
+
 %feature("docstring")  cmf::river::PipeReach::A "virtual double
 A(double V) const
 
@@ -10122,7 +10184,7 @@ Calculates flux out of a storage as a linear function of its volume to
 a power.
 
 This connection serves the same purpose as the old kinematic_wave
-connection, but the parameters are easier to explain
+connection, but the parameters are easier to explain.
 
 
 
@@ -10141,6 +10203,9 @@ the inflection point of the outflow curve
 
 :math:`\\\\beta` A parameter to shape the response curve. :math:`Q_0` is the
 outflow from the source in :math:`\\\\frac{m^3}{day}`, when :math:`V = V_0`.
+
+WARNING:   :math:`\\\\beta < 0.5` may lead to numerical troubles and have a
+dubious hydrological meaning. Please avoid.
 
 C++ includes: simple_connections.h ";
 
@@ -10405,6 +10470,8 @@ C++ includes: ReachType.h ";
 
 %feature("docstring")  cmf::river::Prism::Prism "Prism(double
 base_area, double thickness_of_rough_ground=0.01) ";
+
+%feature("docstring")  cmf::river::Prism::~Prism "~Prism() ";
 
 %feature("docstring")  cmf::river::Prism::A "double A(double V) const
 
@@ -11439,6 +11506,9 @@ Creates a new rectangular reach type with width [m]. ";
 %feature("docstring")  cmf::river::RectangularReach::RectangularReach
 "RectangularReach(const RectangularReach &copy) ";
 
+%feature("docstring")  cmf::river::RectangularReach::~RectangularReach
+"virtual ~RectangularReach() ";
+
 %feature("docstring")  cmf::river::RectangularReach::A "virtual
 double A(double V) const
 
@@ -11555,6 +11625,8 @@ content. The wetness of a soil is defined as water content per void
 volume
 
 C++ includes: RetentionCurve.h ";
+
+%feature("docstring")  cmf::upslope::RetentionCurve::~RetentionCurve "virtual ~RetentionCurve() ";
 
 %feature("docstring")  cmf::upslope::RetentionCurve::copy "virtual
 RetentionCurve* copy() const =0 ";
@@ -12095,6 +12167,9 @@ derived from cmf::upslope::ET::stressedET
 
 C++ includes: waterstress.h ";
 
+%feature("docstring")
+cmf::upslope::ET::RootUptakeStessFunction::~RootUptakeStessFunction "virtual ~RootUptakeStessFunction() ";
+
 %feature("docstring")  cmf::upslope::ET::RootUptakeStessFunction::copy
 "virtual cmf::upslope::ET::RootUptakeStessFunction* copy() const =0
 
@@ -12306,6 +12381,10 @@ cmf::upslope::ET::ShuttleworthWallace::ShuttleworthWallace "ShuttleworthWallace(
 
 Calculates the transpiration and the soil evaporation from dry
 surfaces. ";
+
+%feature("docstring")
+cmf::upslope::ET::ShuttleworthWallace::~ShuttleworthWallace "virtual
+~ShuttleworthWallace() ";
 
 %feature("docstring")
 cmf::upslope::ET::ShuttleworthWallace::evap_from_canopy "virtual
@@ -12845,6 +12924,9 @@ evaporation calculation.
 C++ includes: ET.h ";
 
 %feature("docstring")
+cmf::upslope::ET::snow_evaporation_method::~snow_evaporation_method "virtual ~snow_evaporation_method() ";
+
+%feature("docstring")
 cmf::upslope::ET::snow_evaporation_method::evap_from_snow "virtual
 double evap_from_snow(cmf::water::WaterStorage::ptr snow,
 cmf::math::Time t)=0 ";
@@ -13051,6 +13133,9 @@ Abstract class. Child classes are defining a method for soil
 evaporation calculation.
 
 C++ includes: ET.h ";
+
+%feature("docstring")
+cmf::upslope::ET::soil_evaporation_method::~soil_evaporation_method "virtual ~soil_evaporation_method() ";
 
 %feature("docstring")
 cmf::upslope::ET::soil_evaporation_method::evap_from_layer "virtual
@@ -13854,6 +13939,10 @@ std::string to_string() const =0 ";
 // File: classcmf_1_1math_1_1_state_variable_list.xml
 %feature("docstring") cmf::math::StateVariableList "";
 
+%feature("docstring")
+cmf::math::StateVariableList::~StateVariableList "virtual
+~StateVariableList() ";
+
 %feature("docstring")  cmf::math::StateVariableList::append "void
 append(StateVariable::ptr sv) ";
 
@@ -13881,6 +13970,10 @@ An abstract class, that owns one or more state variables, that can add
 them to a vector of state variables in a certain order.
 
 C++ includes: statevariable.h ";
+
+%feature("docstring")
+cmf::math::StateVariableOwner::~StateVariableOwner "virtual
+~StateVariableOwner() ";
 
 %feature("docstring")  cmf::math::StateVariableOwner::get_states "virtual StateVariableList get_states()=0
 
@@ -14040,6 +14133,9 @@ Creates a new suction stress function. ";
 %feature("docstring")  cmf::upslope::ET::SuctionStress::SuctionStress
 "SuctionStress(const SuctionStress &other) ";
 
+%feature("docstring")  cmf::upslope::ET::SuctionStress::~SuctionStress
+"virtual ~SuctionStress() ";
+
 %feature("docstring")  cmf::upslope::ET::SuctionStress::copy "cmf::upslope::ET::SuctionStress* copy() const
 
 Creates a new copy of this wetness. ";
@@ -14177,6 +14273,10 @@ Abstract class. Child classes are defining a method for surface water
 evaporation calculation.
 
 C++ includes: ET.h ";
+
+%feature("docstring")
+cmf::upslope::ET::surface_water_evaporation_method::~surface_water_evaporation_method
+"virtual ~surface_water_evaporation_method() ";
 
 %feature("docstring")
 cmf::upslope::ET::surface_water_evaporation_method::evap_from_openwater
@@ -14543,6 +14643,8 @@ l:  length of the channel [m]
 BankWidth:  get_channel_width of the reach from bank to bank [m]
 
 Depth:  Depth of the reach [m] ";
+
+%feature("docstring")  cmf::river::SWATReachType::~SWATReachType "virtual ~SWATReachType() ";
 
 %feature("docstring")  cmf::river::SWATReachType::A "virtual double
 A(double V) const
@@ -16026,6 +16128,9 @@ calculation.
 C++ includes: ET.h ";
 
 %feature("docstring")
+cmf::upslope::ET::transpiration_method::~transpiration_method "virtual ~transpiration_method() ";
+
+%feature("docstring")
 cmf::upslope::ET::transpiration_method::transp_from_layer "virtual
 double transp_from_layer(cmf::upslope::SoilLayer::ptr, cmf::math::Time
 t)=0
@@ -16050,6 +16155,8 @@ C++ includes: ReachType.h ";
 Creates a new triangular reach type. ";
 
 %feature("docstring")  cmf::river::TriangularReach::TriangularReach "TriangularReach(const TriangularReach &copy) ";
+
+%feature("docstring")  cmf::river::TriangularReach::~TriangularReach "virtual ~TriangularReach() ";
 
 %feature("docstring")  cmf::river::TriangularReach::A "virtual double
 A(double V) const
@@ -16307,6 +16414,10 @@ n:  Van Genuchten n
 
 m:  Van Genuchten m parameter, if negative m is calculated as :math:`1-\\\\frac 1 n` ";
 
+%feature("docstring")
+cmf::upslope::VanGenuchtenMualem::~VanGenuchtenMualem "virtual
+~VanGenuchtenMualem() ";
+
 %feature("docstring")  cmf::upslope::VanGenuchtenMualem::copy "VanGenuchtenMualem* copy() const ";
 
 %feature("docstring")  cmf::upslope::VanGenuchtenMualem::Diffusivity "cmf::math::num_array Diffusivity(cmf::math::num_array &wetness) ";
@@ -16506,7 +16617,7 @@ double _CanopyCapacityPerLAI=0.1, double _fraction_at_rootdepth=1.0)
 ";
 
 %feature("docstring")
-cmf::upslope::vegetation::Vegetation::RootFraction "virtual double
+cmf::upslope::vegetation::Vegetation::RootFraction "double
 RootFraction(double upperBoundary, double lowerBoundary) const
 
 Returns the fraction of root mass in a segment of the soil column per
@@ -16558,6 +16669,10 @@ cmf::river::volume_height_function::volume_height_function "volume_height_functi
 
 Wrapper for any IVolumeHeightFunction. ";
 
+%feature("docstring")
+cmf::river::volume_height_function::~volume_height_function "virtual
+~volume_height_function() ";
+
 %feature("docstring")  cmf::river::volume_height_function::A "double
 A(double V) const
 
@@ -16599,6 +16714,8 @@ V1:  Water content in :math:`m^3` without stress ( ET=ETpot)
 V0:  Water content in :math:`m^3` with full stress ( ET=0.0) ";
 
 %feature("docstring")  cmf::upslope::ET::VolumeStress::VolumeStress "VolumeStress(const VolumeStress &other) ";
+
+%feature("docstring")  cmf::upslope::ET::VolumeStress::~VolumeStress "virtual ~VolumeStress() ";
 
 %feature("docstring")  cmf::upslope::ET::VolumeStress::copy "cmf::upslope::ET::VolumeStress* copy() const
 
