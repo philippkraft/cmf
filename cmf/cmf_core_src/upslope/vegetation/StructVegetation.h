@@ -54,7 +54,7 @@ namespace cmf {
 				/// If \f$f_{r0}=1\f$, a uniform distribution from the ground to the root depth is assumed. If \f$f_{r0}<1\f$, an exponential 
 				/// decline of root density with depth is assumed, that \f$f_{r0}\f$ of the roots are above the root depth r0. 
 				/// \f[f_{r}(z_u,z_l) = (\frac 1 {1-f_{r0}})^{z_l-r0} - (\frac 1 {1-f_{r0}})^{z_u-r0}\f]
-				virtual double RootFraction(double upperBoundary,double lowerBoundary) const
+				double RootFraction(double upperBoundary,double lowerBoundary) const
 				{
 					if (fraction_at_rootdepth>=1)
 					{

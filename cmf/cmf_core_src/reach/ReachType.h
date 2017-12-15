@@ -37,6 +37,10 @@ namespace cmf {
 			virtual double q(double h,double slope) const{
 				return 0.0;
 			}
+			virtual ~IVolumeHeightFunction()
+			{
+
+			}
 		};
 		/// @brief the height of a volume in a Prism with a defined base area
 		class Prism : public IVolumeHeightFunction
@@ -51,6 +55,10 @@ namespace cmf {
 			/// \f$ A(V) = A_{base} \f$
 			double A(double V) const;
 			double V(double h) const {return h*Area;}
+			~Prism()
+			{
+
+			}
 		};
 	    /// @brief A wrapper class for volume / height functional relations
 		class volume_height_function : public IVolumeHeightFunction
@@ -78,6 +86,10 @@ namespace cmf {
 			double A(double V) const {return vhf->A(V);}
 			double V(double h) const {return vhf->V(h);}
 			double q(double h,double slope) const {return vhf->q(h,slope);}
+			virtual ~volume_height_function()
+			{
+
+			}
 		};
 
 		///@brief Structure for the description of structural parameters of a reach
@@ -125,6 +137,10 @@ namespace cmf {
 			/// @param A The area of the cross section [m<sup>2</sup>]
 			/// @param slope The slope of the reach [m/m]
 			virtual double qManning(double A,double slope) const;
+			virtual ~IChannel()
+			{
+
+			}
 		};
 
 
@@ -254,6 +270,10 @@ namespace cmf {
 			/// @param Depth Depth of the reach [m]
 			SWATReachType(double l,double BankWidth,double Depth);
 			SWATReachType* copy() const;
+			virtual ~SWATReachType()
+			{
+
+			}
 
 		};
 		/// @brief Structure for the description of reaches with a triangular cross section
@@ -298,6 +318,10 @@ namespace cmf {
 			TriangularReach(double l,double bankSlope=2);
 			TriangularReach(const TriangularReach& copy);
 			TriangularReach* copy() const;
+			virtual ~TriangularReach()
+			{
+
+			}
 
 		};
 		/// @brief Describes a IChannel with a rectangular crosssection
@@ -336,7 +360,10 @@ namespace cmf {
 			RectangularReach(double l,double width);
 			RectangularReach(const RectangularReach& copy);
 			RectangularReach* copy() const;
+			virtual ~RectangularReach()
+			{
 
+			}
 		};
 		/// @brief Describes the geometry of a closed pipe
 		class PipeReach : public IChannel
@@ -362,6 +389,10 @@ namespace cmf {
 			PipeReach(double l,double diameter);
 			PipeReach(const PipeReach& copy);
 			PipeReach* copy() const;
+			virtual ~PipeReach()
+			{
+
+			}
 		};
 
 		/// @brief A wrapper for channel geometries
@@ -417,7 +448,10 @@ namespace cmf {
 			
 			void set_nManning(double val) {m_channel->set_nManning(val);} 
 			double get_nManning() const {return m_channel->get_nManning();}
-			
+			virtual ~Channel()
+			{
+
+			}
 		};
 
 		/// @brief A combination of two channel geometries
@@ -440,6 +474,10 @@ namespace cmf {
 			virtual void set_nManning(double nManning);
 
 			MeanChannel* copy() const;
+			virtual ~MeanChannel()
+			{
+
+			}
 
 		};
 		/*

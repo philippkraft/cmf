@@ -42,7 +42,8 @@ namespace cmf {
 				: cell(_cell)
 			{}
 			virtual void get_aerodynamic_resistance(double & r_ag,double & r_ac, cmf::math::Time t) const;
-
+			virtual ~log_wind_profile()
+			{}
 		};
 		
 	}
@@ -55,6 +56,7 @@ namespace cmf {
 			public:
 				/// returns the transpiration rate from one layer in m3/day
 				virtual double transp_from_layer(cmf::upslope::SoilLayer::ptr,cmf::math::Time t) =0;
+				virtual ~transpiration_method() {}
 			};
 
 			/// Abstract class. Child classes are defining a method for soil evaporation calculation
@@ -62,21 +64,25 @@ namespace cmf {
 			public:
 				/// returns the soil evaporation rate from one layer in m3/day
 				virtual double evap_from_layer(cmf::upslope::SoilLayer::ptr,cmf::math::Time t) =0;
+				virtual ~soil_evaporation_method() {}
 			};
 			/// Abstract class. Child classes are defining a method for surface water evaporation calculation
 			class surface_water_evaporation_method {
 			public:
 				virtual double evap_from_openwater(cmf::river::OpenWaterStorage::ptr,cmf::math::Time) =0;
+				virtual ~surface_water_evaporation_method()	{}
 			};
 			/// Abstract class. Child classes are defining a method for intercepted canopy water evaporation calculation
 			class canopy_evaporation_method {
 			public:
 				virtual double evap_from_canopy(cmf::water::WaterStorage::ptr,cmf::math::Time) =0;
+				virtual ~canopy_evaporation_method(){}
 			};
 			/// Abstract class. Child classes are defining a method for snow evaporation calculation
 			class snow_evaporation_method {
 			public:
 				virtual double evap_from_snow(cmf::water::WaterStorage::ptr snow, cmf::math::Time t)=0;
+				virtual ~snow_evaporation_method() {}
 			};
 
 

@@ -141,6 +141,7 @@ namespace cmf {
 		public:
 			/// Add the state variables, owned by an object derived from StateVariableOwner, to the given vector
 			virtual StateVariableList get_states()=0;
+			virtual ~StateVariableOwner();
 		};
 
 		class StateVariableList : public StateVariableOwner {
@@ -175,6 +176,7 @@ namespace cmf {
 				return (*this)+=svo.get_states();
 			}
 			size_t size() const {return m_vector.size();}
+			virtual ~StateVariableList() {}
 		};
 
 	}

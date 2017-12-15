@@ -26,6 +26,10 @@ namespace cmf {
 				/// Creates a new copy of this wetness
 				virtual cmf::upslope::ET::RootUptakeStessFunction* copy() const = 0;
 				virtual std::string to_string() const = 0;
+				virtual ~RootUptakeStessFunction()
+				{
+
+				}
 			};
 
 			/// The classical suction depending transpiration Stress curve after Feddes
@@ -62,6 +66,10 @@ namespace cmf {
 				std::string to_string() const {
 					return "suction based stress";
 				}
+				virtual ~SuctionStress()
+				{
+
+				}
 
 			};
 
@@ -89,7 +97,10 @@ namespace cmf {
 				}
 				/// Creates a new ContentStress for critical water content theta_d in vol Water/vol Soil and wilting point theta_w.
 				ContentStress(real theta_d = -1, real theta_w = -1);
-				
+				virtual ~ContentStress()
+				{
+
+				}
 			};
 			/// A WaterStressFunction based on the stored water volume of a layer
 			///
@@ -111,6 +122,10 @@ namespace cmf {
 				cmf::upslope::ET::VolumeStress* copy() const;
 				std::string to_string() const {
 					return "volume based stress";
+				}
+				virtual ~VolumeStress()
+				{
+
 				}
 			};
 

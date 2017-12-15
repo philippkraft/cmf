@@ -137,7 +137,10 @@ namespace cmf {
 			
 			/// @brief Returns the positions of the nodes
 			cmf::geometry::point_vector get_positions() const;
+			virtual ~node_list()
+			{
 
+			}
 		};
 
 

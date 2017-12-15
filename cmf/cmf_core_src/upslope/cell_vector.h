@@ -51,7 +51,10 @@ namespace cmf {
 			/// Returns sum of the area of the cells
 			double get_area() const;
 			bool contains(const cmf::upslope::Cell& cell) const;
+			virtual ~cell_vector()
+			{
 
+			}
 
 
 
