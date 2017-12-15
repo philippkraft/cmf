@@ -42,8 +42,22 @@ except ImportError:
     from distutils.command.build_py import build_py
 
 from setuptools import setup, Extension
-from distutils.sysconfig import get_config_var
+from setuptools.command.build_ext import build_ext
+from distutils.sysconfig import get_config_var, customize_compiler
 
+
+class cmf_build_ext(build_ext):
+    """
+    Custom build class to get rid of the -Wstrict-prototypes warning
+    source: https://stackoverflow.com/a/36293331/3032680
+    """
+    def build_extensions(self):
+        customize_compiler(self.compiler)
+        try:
+            self.compiler.compiler_so.remove("-Wstrict-prototypes")
+        except (AttributeError, ValueError):
+            pass
+        build_ext.build_extensions(self)
 
 def updateversion(revision):
     """
@@ -151,10 +165,13 @@ def make_cmf_core(swig, openmp):
         opt = get_config_var('OPT')
         os.environ['OPT'] = " ".join(flag for flag in opt.split() if flag != '-Wstrict-prototypes')
         compile_args=['-Wno-comment','-Wno-reorder', '-Wno-deprecated' ,'-Wno-unused','-Wno-sign-compare','-ggdb','-std=c++11']
-        if openmp: compile_args.append('-fopenmp')
-        link_args=["-fopenmp"] if openmp else []
-        link_args.append('-ggdb')
-        libraries = ['gomp'] if openmp else None
+        link_args = ['-ggdb']
+        libraries = []
+
+        if openmp:
+            compile_args.append('-fopenmp')
+            link_args.append("-fopenmp")
+            libraries.append('gomp')
     
     # Get the source files
     cmf_files=[]
@@ -192,6 +209,10 @@ if __name__=='__main__':
         'Programming Language :: C++',
         'Programming Language :: C',
         'Programming Language :: Python',
+        'Programming Language :: Python :: 2.7',
+        'Programming Language :: Python :: 3.4',
+        'Programming Language :: Python :: 3.5',
+        'Programming Language :: Python :: 3.6',
         'Topic :: Scientific/Engineering',
         'Topic :: Software Development :: Libraries :: Python Modules',
     ]
@@ -210,6 +231,8 @@ if __name__=='__main__':
           description=description,
           long_description=long_description,
           classifiers=classifiers,
-          cmdclass={'build_py':build_py},
+          cmdclass=dict(build_py=build_py,
+                        build_ext=cmf_build_ext),
           )
     print("build ok")
+
