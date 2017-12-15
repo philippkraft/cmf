@@ -24,15 +24,20 @@ import os
 import io
 import time
 
+from setuptools import setup, Extension
+from setuptools.command.build_ext import build_ext
+from distutils.sysconfig import get_config_var, customize_compiler
+
+
 version = '1.0.5'
 
 # Try to import numpy, if it fails we have a problem 
 try:
     # Import a function to get a path to the include directories of numpy
+    # noinspection PyPackageRequirements
     from numpy import get_include as get_numpy_include
 except ImportError:
     raise RuntimeError("For building and running of cmf an installation of numpy is needed")
-
 
 # Try to import build_py_2to3 as "Python builder", if this fails, we are on Python 2
 # and the automatic translation is not necessary
@@ -41,16 +46,14 @@ try:
 except ImportError:
     from distutils.command.build_py import build_py
 
-from setuptools import setup, Extension
-from setuptools.command.build_ext import build_ext
-from distutils.sysconfig import get_config_var, customize_compiler
 
-
+# noinspection PyPep8Naming
 class cmf_build_ext(build_ext):
     """
     Custom build class to get rid of the -Wstrict-prototypes warning
     source: https://stackoverflow.com/a/36293331/3032680
     """
+
     def build_extensions(self):
         customize_compiler(self.compiler)
         try:
@@ -68,7 +71,7 @@ def updateversion():
     """
 
     module_code = open('cmf/__init__.py').readlines()
-    fout = open('cmf/__init__.py','w')
+    fout = open('cmf/__init__.py', 'w')
     for line in module_code:
         if line.startswith('__version__'):
             fout.write("__version__ = '{}'\n".format(version))
@@ -77,7 +80,7 @@ def updateversion():
         else:
             fout.write(line)
     doxycode = open('Doxyfile').readlines()
-    fout = open('Doxyfile','w')
+    fout = open('Doxyfile', 'w')
     for line in doxycode:
         if line.strip().startswith('PROJECT_NUMBER'):
             fout.write("PROJECT_NUMBER         = {}\n".format(version))
@@ -95,23 +98,25 @@ def pop_arg(arg):
         return True
     except ValueError:
         return False
-        
+
+
 def count_lines(files):
     """
     Python version of the bash command wc -l
     """
-    lcount=0
+    lcount = 0
     for fn in files:
         if not fn.endswith('.c'):
             lines = open(fn, encoding='utf-8').readlines()
-            lcount+=len(lines)
+            lcount += len(lines)
     return lcount
 
-def is_source_file(fn,include_headerfiles=False):
+
+def is_source_file(fn, include_headerfiles=False):
     """
     Returns True if fn is the path of a source file
     """
-    fn=fn.lower()
+    fn = fn.lower()
     res = False
     res = res or fn.endswith('.cpp')
     res = res or fn.endswith('.c')
@@ -121,7 +126,6 @@ def is_source_file(fn,include_headerfiles=False):
     return res
 
 
-    
 def make_cmf_core(swig, openmp):
     """
     Puts all information needed for the Python extension object together
@@ -129,20 +133,20 @@ def make_cmf_core(swig, openmp):
      - include dirs
      - extra compiler flags
     """
-    libraries=None
+    libraries = None
     # Include CVODE
-    include_dirs=[os.path.join(*'cmf/cmf_core_src/math/integrators/sundials_cvode/include'.split('/'))]
+    include_dirs = [os.path.join(*'cmf/cmf_core_src/math/integrators/sundials_cvode/include'.split('/'))]
     # Include numpy
     include_dirs += [get_numpy_include()]
-    
+
     # Platform specific stuff, alternative is to subclass build_ext command as in:
     # https://stackoverflow.com/a/5192738/3032680
     if sys.platform == 'win32':
 
         # Only include boost if VS2008 compiler is used, else we use C++ 11
         if sys.version_info.major == 2:
-            boost_path = os.environ.get('BOOSTDIR',r"..\boost_1_41_0")
-            include_dirs += [boost_path, boost_path+r"\boost\tr1"]
+            boost_path = os.environ.get('BOOSTDIR', r"..\boost_1_41_0")
+            include_dirs += [boost_path, boost_path + r"\boost\tr1"]
 
         compile_args = ["/EHsc",
                         r'/Fd"build\vc90.pdb"',
@@ -152,7 +156,7 @@ def make_cmf_core(swig, openmp):
                         ]
         if openmp:
             compile_args.append("/openmp")
-        link_args=["/DEBUG"]
+        link_args = ["/DEBUG"]
 
     else:
 
@@ -160,7 +164,7 @@ def make_cmf_core(swig, openmp):
             # TODO: Benjamin, this is to specific!
             os.environ["CC"] = "gcc-7"
             os.environ["CXX"] = "g++-7"
-            os.environ["ARCHFLAGS"]="-arch x86_64"
+            os.environ["ARCHFLAGS"] = "-arch x86_64"
 
             include_dirs += ["/usr/local/Cellar/gcc/7.1.0/include/c++/7.1.0/"]
             include_dirs += ["/usr/include/"]
@@ -169,7 +173,8 @@ def make_cmf_core(swig, openmp):
         # by https://stackoverflow.com/a/9740721/5885054
         opt = get_config_var('OPT')
         os.environ['OPT'] = " ".join(flag for flag in opt.split() if flag != '-Wstrict-prototypes')
-        compile_args=['-Wno-comment','-Wno-reorder', '-Wno-deprecated' ,'-Wno-unused','-Wno-sign-compare','-ggdb','-std=c++11']
+        compile_args = ['-Wno-comment', '-Wno-reorder', '-Wno-deprecated', '-Wno-unused', '-Wno-sign-compare', '-ggdb',
+                        '-std=c++11']
         link_args = ['-ggdb']
         libraries = []
 
@@ -177,13 +182,13 @@ def make_cmf_core(swig, openmp):
             compile_args.append('-fopenmp')
             link_args.append("-fopenmp")
             libraries.append('gomp')
-    
+
     # Get the source files
-    cmf_files=[]
-    for root, _dirs, files in os.walk(os.path.join('cmf','cmf_core_src')):
-        if os.path.basename(root)!='debug_scripts':
-            cmf_files.extend(os.path.join(root,f) for f in files if is_source_file(f) and f!='cmf_wrap.cpp')
-            
+    cmf_files = []
+    for root, _dirs, files in os.walk(os.path.join('cmf', 'cmf_core_src')):
+        if os.path.basename(root) != 'debug_scripts':
+            cmf_files.extend(os.path.join(root, f) for f in files if is_source_file(f) and f != 'cmf_wrap.cpp')
+
     if swig:
         # Adding cmf.i when build_ext should perform the swig call
         cmf_files.append("cmf/cmf_core_src/cmf.i")
@@ -192,18 +197,18 @@ def make_cmf_core(swig, openmp):
         cmf_files.append("cmf/cmf_core_src/cmf_wrap.cpp")
 
     cmf_core = Extension('cmf._cmf_core',
-                            sources=cmf_files,
-                            libraries = libraries,
-                            include_dirs=include_dirs,
-                            extra_compile_args=compile_args,
-                            extra_link_args=link_args,
-                            swig_opts=['-c++','-Wextra','-w512','-w511','-O','-keyword','-castmode'] # +extraswig
-                        )
+                         sources=cmf_files,
+                         libraries=libraries,
+                         include_dirs=include_dirs,
+                         extra_compile_args=compile_args,
+                         extra_link_args=link_args,
+                         swig_opts=['-c++', '-Wextra', '-w512', '-w511', '-O', '-keyword', '-castmode']  # +extraswig
+                         )
     return cmf_core
-    
-    
-if __name__=='__main__':
-    updateversion(version)
+
+
+if __name__ == '__main__':
+    updateversion()
     openmp = not pop_arg('noopenmp')
     swig = pop_arg('swig')
     ext = [make_cmf_core(swig, openmp)]
@@ -231,9 +236,9 @@ if __name__=='__main__':
           packages=['cmf', 'cmf.draw'],
           python_requires='>=2.7',
           keywords='hydrology catchment simulation toolbox',
-          author = 'Philipp Kraft',
-          author_email = "philipp.kraft@umwelt.uni-giessen.de",
-          url = "https://www.uni-giessen.de/hydro/download",
+          author='Philipp Kraft',
+          author_email="philipp.kraft@umwelt.uni-giessen.de",
+          url="https://www.uni-giessen.de/hydro/download",
           description=description,
           long_description=long_description,
           classifiers=classifiers,
@@ -241,4 +246,3 @@ if __name__=='__main__':
                         build_ext=cmf_build_ext),
           )
     print("build ok")
-
