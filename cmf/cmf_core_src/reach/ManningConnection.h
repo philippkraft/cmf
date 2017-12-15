@@ -58,7 +58,7 @@ namespace cmf {
 		protected:
 
 			virtual real get_slope(cmf::water::flux_node::ptr lnode, cmf::water::flux_node::ptr rnode, real d)=0;
-			static void connect_cells(cmf::upslope::Cell& c1,cmf::upslope::Cell& c2,bool is_diffusive_wave);
+
 			std::weak_ptr<cmf::river::OpenWaterStorage> w1,w2;
 			virtual real calc_q(cmf::math::Time t);
 			void NewNodes()
@@ -78,6 +78,7 @@ namespace cmf {
 
 			typedef std::shared_ptr<Manning> ptr;
 
+            static void connect_cells(cmf::upslope::Cell& c1,cmf::upslope::Cell& c2,bool is_diffusive_wave);
 
 		};
         
@@ -98,12 +99,13 @@ namespace cmf {
 		class Manning_Diffusive: public Manning
 		{
 		private:
-			static void connect_cells(cmf::upslope::Cell& c1,cmf::upslope::Cell& c2,ptrdiff_t dummy)
-			{		cmf::river::Manning::connect_cells(c1,c2,true);		}
+
 		protected:
 			virtual real get_slope(cmf::water::flux_node::ptr lnode, cmf::water::flux_node::ptr rnode, real d);
 		public:
-			typedef std::shared_ptr<Manning_Diffusive> ptr;
+            static void connect_cells(cmf::upslope::Cell& c1,cmf::upslope::Cell& c2,ptrdiff_t dummy)
+            {		cmf::river::Manning::connect_cells(c1,c2,true);		}
+            typedef std::shared_ptr<Manning_Diffusive> ptr;
 			static const cmf::upslope::CellConnector cell_connector;
 			/// A parameter to linearize the dependency of q on slope during levelling out
 			real linear_slope_width;
@@ -133,11 +135,12 @@ namespace cmf {
 		class Manning_Kinematic: public Manning
 		{
 		private:
-			static void connect_cells(cmf::upslope::Cell& c1,cmf::upslope::Cell& c2,ptrdiff_t dummy)
-			{		cmf::river::Manning::connect_cells(c1,c2,false);		}
+
 		protected:
 			virtual real get_slope(cmf::water::flux_node::ptr lnode, cmf::water::flux_node::ptr rnode, real d);
 		public:
+            static void connect_cells(cmf::upslope::Cell& c1,cmf::upslope::Cell& c2,ptrdiff_t dummy)
+            {		cmf::river::Manning::connect_cells(c1,c2,false);		}
 			typedef std::shared_ptr<Manning_Kinematic> ptr;
 			static const cmf::upslope::CellConnector cell_connector;
 			/// Creates a kinematic wave connection between to open water storages.

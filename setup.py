@@ -23,6 +23,7 @@ import sys
 import os
 import io
 import datetime
+from macspecial import *
 
 version = '1.0.4a'
 
@@ -140,23 +141,34 @@ def make_cmf_core(swig, openmp):
 
         if os.sys.platform == 'darwin':
             # TODO: Benjamin, this is to specific!
-            os.environ["CC"] = "gcc-7"
-            os.environ["CXX"] = "g++-7"
-            os.environ["ARCHFLAGS"]="-arch x86_64"
+            mac_fix_boost()
 
-            include_dirs += ["/usr/local/Cellar/gcc/7.1.0/include/c++/7.1.0/"]
-            include_dirs += ["/usr/include/"]
+            #os.environ["CC"] = "gcc-7"
+            #os.environ["CXX"] = "g++-7"
+            #os.environ["CC"] = "clang"
+            #os.environ["CXX"] = "clang++"
+            #os.environ["ARCHFLAGS"]="-arch x86_64"
+            #os.environ["CFLAGS"]="-O0"
+
+            #include_dirs += ["/usr/local/Cellar/gcc/7.1.0/include/c++/7.1.0/"]
+            #include_dirs += ["/usr/include/"]
+
         # Remove the annoying warning because of "-Wstrict-prototypes" deprecated
         # by https://stackoverflow.com/a/9740721/5885054
         opt = get_config_var('OPT')
         os.environ['OPT'] = " ".join(
                                      flag for flag in opt.split() if flag != '-Wstrict-prototypes'
         )
-        compile_args=['-Wno-comment','-Wno-reorder','-Wno-unused','-Wno-sign-compare','-ggdb','-std=c++11']
+        #compile_args=['-Wno-comment','-Wno-reorder','-Wno-unused','-Wno-sign-compare','-ggdb','-std=c++11']
+        compile_args = ['-Wno-comment', '-Wno-reorder', '-Wno-unused', '-Wno-sign-compare', '-ggdb']
+        if os.sys.platform == 'darwin':
+            openmp = False
         if openmp: compile_args.append('-fopenmp')
         link_args=["-fopenmp"] if openmp else []
         link_args.append('-ggdb')
         libraries = ['gomp'] if openmp else None
+
+
     
     # Get the source files
     cmf_files=[]

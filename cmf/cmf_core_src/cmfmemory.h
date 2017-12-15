@@ -4,7 +4,7 @@
 #if __cplusplus > 199711L || _MSC_VER > 1800 || SWIG
 #pragma message("using std::shared_ptr")
 #include <memory>
-#elif __GNUG__ >= 4 && __GNUC_MINOR__ >=3
+#elif (__GNUG__ >= 4 && __GNUC_MINOR__ >=3) || 1 == 1
 #pragma message("using std::tr1::shared_ptr")
 #include <tr1/memory>
 #include <tr1/cmath>
@@ -14,7 +14,7 @@ namespace std {
 	using std::tr1::enable_shared_from_this;
 	using std::tr1::dynamic_pointer_cast;
 	using std::tr1::static_pointer_cast;
-	using std::tr1::isfinite
+	using std::tr1::isfinite;
 }
 
 #else
@@ -31,6 +31,7 @@ namespace std
 	using boost::enable_shared_from_this;
 	using boost::dynamic_pointer_cast;
 	using boost::static_pointer_cast;
+	using std::tr1::isfinite;
 	inline bool isfinite(double v) {
 		return v == v;
 	}
