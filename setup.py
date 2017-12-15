@@ -160,6 +160,7 @@ def make_cmf_core(swig, openmp):
 
             include_dirs += ["/usr/local/Cellar/gcc/7.1.0/include/c++/7.1.0/"]
             include_dirs += ["/usr/include/"]
+            openmp = False
         # Remove the annoying warning because of "-Wstrict-prototypes" deprecated
         # by https://stackoverflow.com/a/9740721/5885054
         opt = get_config_var('OPT')
