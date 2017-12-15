@@ -22,7 +22,7 @@ from __future__ import print_function, division
 import sys
 import os
 import io
-import datetime
+import time
 
 version = '1.0.5'
 
@@ -59,27 +59,31 @@ class cmf_build_ext(build_ext):
             pass
         build_ext.build_extensions(self)
 
-def updateversion(revision):
+
+def updateversion():
     """
     Writes the actual revision number into the relevant files:
         cmf/__init__.py: set __version__ constant
         Doxyfile: set PROJECT_NUMBER
     """
-    if revision:
-        module_code = open('cmf/__init__.py').readlines()
-        fout = open('cmf/__init__.py','w')
-        for line in module_code:
-            if line.startswith('__version__'):
-                fout.write("__version__ = '{}'\n".format(version))
-            else:
-                fout.write(line)
-        doxycode = open('Doxyfile').readlines()
-        fout = open('Doxyfile','w')
-        for line in doxycode:
-            if line.strip().startswith('PROJECT_NUMBER'):
-                fout.write("PROJECT_NUMBER         = {}\n".format(version))
-            else:
-                fout.write(line)
+
+    module_code = open('cmf/__init__.py').readlines()
+    fout = open('cmf/__init__.py','w')
+    for line in module_code:
+        if line.startswith('__version__'):
+            fout.write("__version__ = '{}'\n".format(version))
+        elif line.startswith('__compiletime__'):
+            fout.write("__compiletime__ = '{}'\n".format(time.ctime()))
+        else:
+            fout.write(line)
+    doxycode = open('Doxyfile').readlines()
+    fout = open('Doxyfile','w')
+    for line in doxycode:
+        if line.strip().startswith('PROJECT_NUMBER'):
+            fout.write("PROJECT_NUMBER         = {}\n".format(version))
+        else:
+            fout.write(line)
+
 
 def pop_arg(arg):
     """
@@ -199,7 +203,9 @@ def make_cmf_core(swig, openmp):
     
 if __name__=='__main__':
     updateversion(version)
-    ext = [make_cmf_core(swig=pop_arg('swig'), openmp=not pop_arg('noopenmp'))]
+    openmp = not pop_arg('noopenmp')
+    swig = pop_arg('swig')
+    ext = [make_cmf_core(swig, openmp)]
     description = 'Catchment Modelling Framework - A hydrological modelling toolkit'
     long_description = io.open('README.rst', encoding='utf-8').read()
     classifiers = [
@@ -216,8 +222,7 @@ if __name__=='__main__':
         'Topic :: Scientific/Engineering',
         'Topic :: Software Development :: Libraries :: Python Modules',
     ]
-    now = datetime.datetime.now()
-    # log.set_verbosity(5)
+
     setup(name='cmf',
           version=version,
           license='GPL',
