@@ -142,6 +142,7 @@ namespace cmf {
 				/// * If a snow storage exist, use SW for snow evaporation
 				/// * if a surface water storage exist, create a connection between it and evaporation (open water transpiration)
 				static ShuttleworthWallace* use_for_cell(cmf::upslope::Cell& cell);
+				virtual ~ShuttleworthWallace() {}
 			};
 		}		
 	}

@@ -132,6 +132,10 @@ namespace cmf {
 			
 			}
 			virtual RetentionCurve* copy() const=0;
+			virtual ~RetentionCurve()
+			{
+
+			}
 		};
 
 		/// Provides the use of the Brooks-Corey retention curve
@@ -212,6 +216,10 @@ namespace cmf {
 			virtual BrooksCoreyRetentionCurve* copy() const
 			{
 				return new BrooksCoreyRetentionCurve(Ksat,m_Porosity,get_b(),wetness_X*m_Porosity,Psi_X,m_PorosityDecay);
+			}
+			virtual ~BrooksCoreyRetentionCurve()
+			{
+
 			}
 		};
 		
@@ -302,7 +310,10 @@ namespace cmf {
 			/// @param n Van Genuchten n
 			/// @param m Van Genuchten m parameter, if negative m is calculated as \f$ 1-\frac 1 n\f$
 			VanGenuchtenMualem(real Ksat=15, real phi=0.5,real alpha=0.2178, real n=1.211, real m=-1);
+			virtual ~VanGenuchtenMualem()
+			{
 
+			}
 		};
 		/// The linear retention curve provides a simple linear relationship between storage and head
 		/// 
@@ -338,6 +349,10 @@ namespace cmf {
 				 return new LinearRetention(*this);
 			}
 			LinearRetention(real ksat,real phi, real thickness,real residual_wetness=0.1);
+			virtual ~LinearRetention()
+			{
+
+			}
 		};
 #ifdef EXPERIMENTAL
 		/// The VGM_BC_RetentionCurve_Windhorst retention curve. Mixture between the van Genuchten-Mualem retention curve for the actual retention curve and the conductivity at a certain wetness is computed like in BrooksCorey
@@ -360,6 +375,8 @@ namespace cmf {
 			/// @param m Van Genuchten m parameter, if negative m is calculated as \f$ 1-\frac 1 n\f$
 			/// @param eta Shape parameter of the conductivity curve
 			VGM_BC_RetentionCurve_Windhorst(real Ksat=15, real phi=0.5,real alpha=0.2178, real n=1.211, real m=-1,real eta = 9.14);
+			virtual ~VGM_BC_RetentionCurve_Windhorst()
+			{	}
 		};
 #endif
 

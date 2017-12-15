@@ -41,6 +41,10 @@ namespace cmf {
 			/// returns a copy of the Adsorption object. If the adsorption is depending on the sorbent mass, you can give a positive value for
 			/// the sorbent mass m. If the value is not given or negative, m is used from the original object.
 			virtual Adsorption* copy(real m=-1) const=0;
+			virtual ~Adsorption()
+			{
+
+			}
 
 		};
 
@@ -55,6 +59,10 @@ namespace cmf {
 			}
 			virtual NullAdsorption* copy(real m=-1) const {
 				return new NullAdsorption();
+			}
+			virtual ~NullAdsorption()
+			{
+
 			}
 		};
 		/// @brief This class calculates the adsorption equilibrium between sorbat and sorbent using the linear (Henry) isotherme.
@@ -85,6 +93,10 @@ namespace cmf {
 			LinearAdsorption(const LinearAdsorption& other)
 				: K(other.K), m(other.m) {}
 			LinearAdsorption* copy(real m=-1) const;
+			virtual ~LinearAdsorption()
+			{
+
+			}
 		};
 		/// @brief This class calculates the adsorption equilibrium between sorbat and sorbent using the Freundlich isotherme.
 		///
@@ -128,6 +140,10 @@ namespace cmf {
 			FreundlichAdsorbtion(real K,real n, real m, real epsilon=1e-12, int maxiter=100);
 			FreundlichAdsorbtion(const FreundlichAdsorbtion& other);
 			FreundlichAdsorbtion* copy(real m=-1) const;
+			virtual ~FreundlichAdsorbtion()
+			{
+
+			}
 		};
 		/// @brief This class calculates the adsorption equilibrium between sorbat and sorbent using the Langmuir isotherme.
 		///
@@ -157,6 +173,10 @@ namespace cmf {
 			LangmuirAdsorption(real K,real m);
 			LangmuirAdsorption(const LangmuirAdsorption& other);
 			LangmuirAdsorption* copy(real m=-1) const;
+			virtual ~LangmuirAdsorption()
+			{
+
+			}
 
 		};
 	}

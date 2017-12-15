@@ -187,7 +187,10 @@ namespace cmf {
 			const_iterator end() const {
 				return m_con.end();
 			}
+			virtual ~connection_list()
+			{
 
+			}
 		};
 
 		/// @brief The flux_integrator is an integratable for precise output of average fluxes over time. 

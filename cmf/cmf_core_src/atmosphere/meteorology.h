@@ -370,6 +370,11 @@ namespace cmf {
 			virtual void get_aerodynamic_resistance(double & r_ag,double & r_ac, cmf::math::Time t) const=0;
 			/// shared pointer
 			typedef std::shared_ptr<aerodynamic_resistance> ptr;
+			virtual ~aerodynamic_resistance()
+			{
+
+			}
+
 		};
 
 
