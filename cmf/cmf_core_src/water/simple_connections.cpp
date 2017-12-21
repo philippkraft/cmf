@@ -67,13 +67,27 @@ real cmf::water::PowerLawConnection::calc_q(cmf::math::Time t)
 cmf::water::PowerLawConnection::PowerLawConnection(WaterStorage::ptr source, flux_node::ptr target,
 	real _Q0, real _V0, real _beta/*=1.0*/,
 	real _residual/*=0.0*/)
-	: flux_connection(source, target, "kinematic wave"), Q0(_Q0),
-	beta(_beta), residual(_residual), V0(_V0)
+	: flux_connection(source, target, "power law"), 
+	Q0(_Q0), beta(_beta), residual(_residual), V0(_V0)
 {
 	NewNodes();
 }
 
+real cmf::water::ExponentialDeclineConnection::calc_q(cmf::math::Time t)
+{
+	cmf::water::WaterStorage::ptr S = source.lock();
+	return Q0 * exp((S->get_volume() - V0) / m);
+}
 
+cmf::water::ExponentialDeclineConnection::ExponentialDeclineConnection(
+	cmf::water::WaterStorage::ptr source,
+	cmf::water::flux_node::ptr target,
+	real _Q0, real _V0, real _m)
+	: flux_connection(source, target, "exponential decline"), Q0(_Q0), V0(_V0), m(_m)
+{
+	NewNodes();
+}
+	
 cmf::water::statecontrol_connection::statecontrol_connection( cmf::water::WaterStorage::ptr controlled_storage, cmf::water::flux_node::ptr other_end, 
 															 real _target_state, cmf::math::Time _reaction_time ) 
 : flux_connection(controlled_storage,other_end, "State controlling flux"), target_state(_target_state), reaction_time(_reaction_time)

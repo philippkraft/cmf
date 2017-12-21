@@ -141,7 +141,7 @@ namespace cmf {
 		public:
 			/// Add the state variables, owned by an object derived from StateVariableOwner, to the given vector
 			virtual StateVariableList get_states()=0;
-			virtual ~StateVariableOwner();
+			virtual ~StateVariableOwner() {}
 		};
 
 		class StateVariableList : public StateVariableOwner {

@@ -2075,6 +2075,7 @@ class StateVariableList(StateVariableOwner):
         """
         return _cmf_core.StateVariableList_size(self, *args, **kwargs)
 
+    __swig_destroy__ = _cmf_core.delete_StateVariableList
 
     def __len__(self, *args, **kwargs):
         """__len__(StateVariableList self) -> size_t"""
@@ -2084,7 +2085,6 @@ class StateVariableList(StateVariableOwner):
     def __init__(self, *args, **kwargs):
         """__init__(cmf::math::StateVariableList self) -> StateVariableList"""
         _cmf_core.StateVariableList_swiginit(self, _cmf_core.new_StateVariableList(*args, **kwargs))
-    __swig_destroy__ = _cmf_core.delete_StateVariableList
 StateVariableList.append = new_instancemethod(_cmf_core.StateVariableList_append, None, StateVariableList)
 StateVariableList.extend = new_instancemethod(_cmf_core.StateVariableList_extend, None, StateVariableList)
 StateVariableList.__iadd__ = new_instancemethod(_cmf_core.StateVariableList___iadd__, None, StateVariableList)
@@ -2813,11 +2813,11 @@ class NullAdsorption(Adsorption):
         """
         return _cmf_core.NullAdsorption_copy(self, *args, **kwargs)
 
+    __swig_destroy__ = _cmf_core.delete_NullAdsorption
 
     def __init__(self, *args, **kwargs):
         """__init__(cmf::water::NullAdsorption self) -> NullAdsorption"""
         _cmf_core.NullAdsorption_swiginit(self, _cmf_core.new_NullAdsorption(*args, **kwargs))
-    __swig_destroy__ = _cmf_core.delete_NullAdsorption
 NullAdsorption.copy = new_instancemethod(_cmf_core.NullAdsorption_copy, None, NullAdsorption)
 NullAdsorption_swigregister = _cmf_core.NullAdsorption_swigregister
 NullAdsorption_swigregister(NullAdsorption)
@@ -3942,6 +3942,7 @@ class connection_list(object):
         """
         return _cmf_core.connection_list_end(self, *args)
 
+    __swig_destroy__ = _cmf_core.delete_connection_list
 
     def __len__(self, *args, **kwargs):
         """__len__(connection_list self) -> size_t"""
@@ -3965,7 +3966,6 @@ class connection_list(object):
     def __init__(self, *args, **kwargs):
         """__init__(cmf::water::connection_list self) -> connection_list"""
         _cmf_core.connection_list_swiginit(self, _cmf_core.new_connection_list(*args, **kwargs))
-    __swig_destroy__ = _cmf_core.delete_connection_list
 connection_list.append = new_instancemethod(_cmf_core.connection_list_append, None, connection_list)
 connection_list.extend = new_instancemethod(_cmf_core.connection_list_extend, None, connection_list)
 connection_list.contains = new_instancemethod(_cmf_core.connection_list_contains, None, connection_list)
@@ -4498,6 +4498,9 @@ class kinematic_wave(flux_connection):
 
     :math:`t_r [days]` The residence time of the water in this storage in days
 
+    WARNING:   :math:`\\beta < 0.5` may lead to numerical troubles and have a
+    dubious hydrological meaning. Please avoid.
+
     C++ includes: simple_connections.h 
     """
 
@@ -4562,10 +4565,10 @@ class LinearStorageConnection(flux_connection):
 
     .. math::
 
-         q = \\frac{V - V_{residual}}{t_r}} 
+         q = \\frac{V - V_{residual}}{t_r} 
 
-    where:  :math:`V` The
-    actual volume of water stored in source
+    where:  :math:`V` The actual
+    volume of water stored in source
 
     :math:`V_{residual} [m^3]` The volume of water not flowing out (default = 0)
     :math:`t_r` is the residence time in the source.
@@ -4621,7 +4624,7 @@ class PowerLawConnection(flux_connection):
     a power.
 
     This connection serves the same purpose as the old kinematic_wave
-    connection, but the parameters are easier to explain
+    connection, but the parameters are easier to explain.
 
 
 
@@ -4640,6 +4643,9 @@ class PowerLawConnection(flux_connection):
 
     :math:`\\beta` A parameter to shape the response curve. :math:`Q_0` is the
     outflow from the source in :math:`\\frac{m^3}{day}`, when :math:`V = V_0`.
+
+    WARNING:   :math:`\\beta < 0.5` may lead to numerical troubles and have a
+    dubious hydrological meaning. Please avoid.
 
     C++ includes: simple_connections.h 
     """
@@ -4691,6 +4697,22 @@ class PowerLawConnection(flux_connection):
     __swig_destroy__ = _cmf_core.delete_PowerLawConnection
 PowerLawConnection_swigregister = _cmf_core.PowerLawConnection_swigregister
 PowerLawConnection_swigregister(PowerLawConnection)
+
+class ExponentialDeclineConnection(flux_connection):
+    """Proxy of C++ cmf::water::ExponentialDeclineConnection class."""
+
+    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __repr__ = _swig_repr
+    Q0 = _swig_property(_cmf_core.ExponentialDeclineConnection_Q0_get, _cmf_core.ExponentialDeclineConnection_Q0_set)
+    m = _swig_property(_cmf_core.ExponentialDeclineConnection_m_get, _cmf_core.ExponentialDeclineConnection_m_set)
+    V0 = _swig_property(_cmf_core.ExponentialDeclineConnection_V0_get, _cmf_core.ExponentialDeclineConnection_V0_set)
+
+    def __init__(self, *args, **kwargs):
+        """__init__(cmf::water::ExponentialDeclineConnection self, cmf::water::WaterStorage::ptr source, cmf::water::flux_node::ptr target, real Q0, real V0, real m) -> ExponentialDeclineConnection"""
+        _cmf_core.ExponentialDeclineConnection_swiginit(self, _cmf_core.new_ExponentialDeclineConnection(*args, **kwargs))
+    __swig_destroy__ = _cmf_core.delete_ExponentialDeclineConnection
+ExponentialDeclineConnection_swigregister = _cmf_core.ExponentialDeclineConnection_swigregister
+ExponentialDeclineConnection_swigregister(ExponentialDeclineConnection)
 
 class bidirectional_kinematic_exchange(flux_connection):
     """
@@ -5262,6 +5284,7 @@ class node_list(StateVariableOwner):
         """
         return _cmf_core.node_list_get_positions(self, *args, **kwargs)
 
+    __swig_destroy__ = _cmf_core.delete_node_list
     potentials = _swig_property(_cmf_core.node_list_potentials_get, _cmf_core.node_list_potentials_set)
 
     def __getitem__(self,index):
@@ -5293,7 +5316,6 @@ class node_list(StateVariableOwner):
         nl.extend(sequence)
         return nl
 
-    __swig_destroy__ = _cmf_core.delete_node_list
 node_list.size = new_instancemethod(_cmf_core.node_list_size, None, node_list)
 node_list.__iadd__ = new_instancemethod(_cmf_core.node_list___iadd__, None, node_list)
 node_list.__add__ = new_instancemethod(_cmf_core.node_list___add__, None, node_list)
@@ -7834,6 +7856,7 @@ class cell_vector(StateVariableOwner):
         """
         return _cmf_core.cell_vector___contains__(self, *args, **kwargs)
 
+    __swig_destroy__ = _cmf_core.delete_cell_vector
     lowest = _swig_property(_cmf_core.cell_vector_lowest_get)
     highest = _swig_property(_cmf_core.cell_vector_highest_get)
 
@@ -7846,7 +7869,6 @@ class cell_vector(StateVariableOwner):
         else:
             return "<empty cell vector>"        
 
-    __swig_destroy__ = _cmf_core.delete_cell_vector
 cell_vector.__getitem__ = new_instancemethod(_cmf_core.cell_vector___getitem__, None, cell_vector)
 cell_vector.append = new_instancemethod(_cmf_core.cell_vector_append, None, cell_vector)
 cell_vector.remove = new_instancemethod(_cmf_core.cell_vector_remove, None, cell_vector)
@@ -8244,6 +8266,7 @@ class BrooksCoreyRetentionCurve(RetentionCurve):
         """
         return _cmf_core.BrooksCoreyRetentionCurve_copy(self, *args, **kwargs)
 
+    __swig_destroy__ = _cmf_core.delete_BrooksCoreyRetentionCurve
     b = _swig_property(_cmf_core.BrooksCoreyRetentionCurve_b_get, _cmf_core.BrooksCoreyRetentionCurve_b_set)
 
     def __repr__(self):
@@ -8251,7 +8274,6 @@ class BrooksCoreyRetentionCurve(RetentionCurve):
     def __str__(self):
         return "Brooks-Corey retention curve: Ksat=%0.3g m/day,por.=%0.0f%%,b=%g,%0.1f%% water content at pF%0.2f)" % (self.Ksat,self.Porosity(0.0)*100,self.b,self.wetness_X * self.Porosity(0.0) * 100,waterhead_to_pF(self.Psi_X))
 
-    __swig_destroy__ = _cmf_core.delete_BrooksCoreyRetentionCurve
 BrooksCoreyRetentionCurve.SetPorosity = new_instancemethod(_cmf_core.BrooksCoreyRetentionCurve_SetPorosity, None, BrooksCoreyRetentionCurve)
 BrooksCoreyRetentionCurve.Transmissivity = new_instancemethod(_cmf_core.BrooksCoreyRetentionCurve_Transmissivity, None, BrooksCoreyRetentionCurve)
 BrooksCoreyRetentionCurve.copy = new_instancemethod(_cmf_core.BrooksCoreyRetentionCurve_copy, None, BrooksCoreyRetentionCurve)
@@ -8373,13 +8395,13 @@ class VanGenuchtenMualem(RetentionCurve):
         m:  Van Genuchten m parameter, if negative m is calculated as :math:`1-\\frac 1 n` 
         """
         _cmf_core.VanGenuchtenMualem_swiginit(self, _cmf_core.new_VanGenuchtenMualem(*args, **kwargs))
+    __swig_destroy__ = _cmf_core.delete_VanGenuchtenMualem
 
     def __repr__(self):
         return "cmf.VanGenuchtenMualem(Ksat=%0.3g,Phi=%0.3g,alpha=%0.3g,n=%0.3g,m=%0.3g)" % (self.Ksat,self.Phi,self.alpha,self.n,self.m)
     def __str__(self):
     	return "VanGenuchten / Mualem retention curve: Ksat=%0.3g m/day, %0.3g%% Pores, alpha=%0.3g 1/cm, n=%0.3g" % (self.Ksat,self.Phi*100,self.alpha,self.n) 
 
-    __swig_destroy__ = _cmf_core.delete_VanGenuchtenMualem
 VanGenuchtenMualem.Transmissivity = new_instancemethod(_cmf_core.VanGenuchtenMualem_Transmissivity, None, VanGenuchtenMualem)
 VanGenuchtenMualem.fit_w0 = new_instancemethod(_cmf_core.VanGenuchtenMualem_fit_w0, None, VanGenuchtenMualem)
 VanGenuchtenMualem.copy = new_instancemethod(_cmf_core.VanGenuchtenMualem_copy, None, VanGenuchtenMualem)

@@ -169,8 +169,7 @@ namespace cmf {
 			/// @brief Reference volume \f$V_0\f$
 			real V0;
 
-			/// @brief Creates a kinematic wave connection.
-			/// \f[ q(V) = \frac Q_0 {\left(\frac{V - V_{residual}}{V_0} \right)^\beta} \f]
+			/// @brief Creates a power law connection.
 			/// @param source Water storage from which the water flows out. Flux is a function of source.volume
 			/// @param target Target node (boundary condition or storage). Does not influence the strength of the flow
 			/// @param Q0 Reference flow \f$Q_0 = q(V_0)\f$ Outflow when the source storage equals the reference volume
@@ -180,12 +179,34 @@ namespace cmf {
 			PowerLawConnection(WaterStorage::ptr source, flux_node::ptr target, real Q0, real V0,
 						 real beta = 1.0, real residual = 0.0);
 		};
+		/// @ingroup connections
+		/// @brief A conceptual TOPmodel inspired connection
+		///
+		/// \f[ q = Q_0 \cdot e^{(V-V_0)/m} \f]
+		///
+		class ExponentialDeclineConnection : public flux_connection
+		{
+		protected:
+			std::weak_ptr<WaterStorage> source;
+			real calc_q(cmf::math::Time t);
+			void NewNodes() {
+				source = WaterStorage::cast(left_node());
+			}
+		public:
+			/// @brief outflow from the source in \f$\frac{m^3}{day}\f$, when \f$V = V_0\f$. 
+			real Q0;
+			/// @brief Shape parameter of the curve, \f$\beta\f$
+			real m;
+			/// @brief Reference volume \f$V_0\f$
+			real V0;
+			/// @brief creates the exponential decline connection
+			ExponentialDeclineConnection(WaterStorage::ptr source, flux_node::ptr target, real Q0, real V0, real m);
 
-
+		};
 		/// @ingroup connections
 		/// @brief A conceptual flux between two storages that can be positive as well as negative
 		/// @note The state of the right node is not monitored, hence negative volumes of the right node can occur!
-		///
+		/// @deprecated Behaviour unclear, will be removed
 		/// \f[ q = q_{spill}^*-q_{suc}^* \\
 		/// q_{spill}^* = q_{spill} \left(\frac{V-V_{spill,min}}{V_{spill,min}}\right)^{\beta_{spill}} \\
 		/// q_{suc}^* = q_{suc} \left(\frac{V_{suc,max}-V}{V_{suc,max}}\right)^{\beta_{suc}} \f]
@@ -232,7 +253,7 @@ namespace cmf {
 		};
 		/// @ingroup connections
 		/// @brief Calculates flux out of a storage as a linear function of its volume to a power, constraint by the volume stored in the target storage.
-		///
+		/// @deprecated Will be replaced by ConstraintLinearStorageConnection, without beta and gamma.
 		/// \f[ q = \frac 1 {t_r} {\left(\frac{V_{l} - V_{residual}}{V_0} \right)^\beta} \left(\frac{V_{r,max}-V_{r}}{V_{r,max}}\right)^\gamma\f]
 		/// where:
 		/// - \f$V_l\f$ The actual volume stored by the left water storage

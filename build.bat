@@ -1,6 +1,6 @@
 @echo off
 echo delete old .pyd
-del _cmf_core*.pyd /s /q
+python setup.py clean --all
 echo build cmf
 python setup.py build_ext swig
 if ERRORLEVEL 1 goto error
