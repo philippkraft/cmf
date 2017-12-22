@@ -8,6 +8,8 @@
     :target: https://travis-ci.org/philippkraft/cmf
 .. image:: https://img.shields.io/badge/license-GPL-green.svg
     :target: https://opensource.org/licenses/GPL-2.0
+.. image:: https://zenodo.org/badge/DOI/10.5281/zenodo.1125290.svg
+   :target: https://doi.org/10.5281/zenodo.1125291
 
 Modelling water and solute fluxes
 ===================================
