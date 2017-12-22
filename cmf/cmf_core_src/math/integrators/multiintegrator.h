@@ -28,7 +28,7 @@ namespace cmf {
 			typedef std::shared_ptr<cmf::math::Integrator> integ_ptr;
 			typedef std::vector<integ_ptr> integ_vector;
 			integ_vector m_integrators;
-			std::auto_ptr<cmf::math::Integrator> m_template;
+			std::unique_ptr<cmf::math::Integrator> m_template;
 		public:
 			int integrate(cmf::math::Time t_max,cmf::math::Time dt);
 			virtual cmf::math::MultiIntegrator* copy() const

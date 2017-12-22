@@ -326,6 +326,13 @@ Channel::Channel( double length )
 {
 	if (length<=0.0) throw std::runtime_error("Length of a channel needs to be >0.0m");
 }
+
+Channel& Channel::operator=(const Channel& for_assignment)
+{
+	m_channel.reset(for_assignment.copy());
+	return *this;
+}
+
 Channel& Channel::operator=( const IChannel& for_assignment )
 {
 	m_channel.reset(for_assignment.copy());

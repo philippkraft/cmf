@@ -35,7 +35,7 @@ namespace cmf {
 			operator ptr() {return std::static_pointer_cast<OpenWaterStorage >(shared_from_this());}
 #endif
 		protected:
-			std::auto_ptr<IVolumeHeightFunction> height_function;
+			std::unique_ptr<IVolumeHeightFunction> height_function;
 			/// Creates an open water storage with a prismatic volume			
 			OpenWaterStorage(cmf::project& _project,real Area);
 			/// Creates an open water storage with any type of a volume

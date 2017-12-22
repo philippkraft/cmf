@@ -49,7 +49,7 @@ namespace cmf {
 			{}
 			
 			WaterStorage* m_water;
-			std::auto_ptr<Adsorption> adsorption;
+			std::unique_ptr<Adsorption> adsorption;
 			
 		public:
 			void set_adsorption(const Adsorption& newadsorption,real m=-1) {

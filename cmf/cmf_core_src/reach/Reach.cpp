@@ -49,7 +49,7 @@ void Reach::set_downstream(Reach::ptr new_downstream,bool use_meanchannel/*=fals
 	{
 		// add this to the list of upstream reaches of the downstream
 		new_downstream->add_upstream(weak_this.lock());	
-		std::auto_ptr<IChannel> channel;
+		std::unique_ptr<IChannel> channel;
 		if (use_meanchannel) {
 			Channel 
 				this_ch=this->get_height_function(), 

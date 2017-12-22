@@ -73,7 +73,7 @@ namespace cmf {
 			friend class project;
 			/// @name Location
 			//@{
-			std::auto_ptr<Topology> m_topo;
+			std::unique_ptr<Topology> m_topo;
 			static ptrdiff_t cell_count;
 		public:
 			cmf::upslope::Topology& get_topology();
@@ -110,7 +110,7 @@ namespace cmf {
 			/// @name Flux nodes of the cell
 			//@{
 			typedef std::vector<cmf::water::WaterStorage::ptr> storage_vector;
-			typedef std::auto_ptr<cmf::atmosphere::Meteorology> meteo_pointer;
+			typedef std::unique_ptr<cmf::atmosphere::Meteorology> meteo_pointer;
 			storage_vector m_storages;
 
 			typedef std::map<std::string, cmf::water::flux_node::ptr> nodemap;

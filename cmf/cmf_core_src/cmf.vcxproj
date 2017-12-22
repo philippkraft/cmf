@@ -138,7 +138,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>$(SolutionDir)math\integrators\sundials_cvode\include;$(BOOSTDIR)\boost\tr1;$(BOOSTDIR);C:\Apps\WinPython-64bit-3.6.1.0Qt5\python-3.6.1.amd64\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)math\integrators\sundials_cvode\include;C:\Apps\WinPython-64bit-3.6.1.0Qt5\python-3.6.1.amd64\include;C:\Apps\WinPython-64bit-3.6.1.0Qt5\python-3.6.1.amd64\Lib\site-packages\numpy\core\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;CMF_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>true</MinimalRebuild>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>

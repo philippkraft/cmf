@@ -22,6 +22,7 @@ namespace std
 	inline bool isfinite(double v) {
 		return v == v;
 	}
+#define unique_ptr auto_ptr
 }
 #endif
 

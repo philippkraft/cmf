@@ -10,6 +10,9 @@ __pycache__/
 # Visual Studio stuff
 *.vcxproj.user
 *.sdf
+.vs/
+Debug/
+*.VC.opendb
 
 # Distribution / packaging
 .Python

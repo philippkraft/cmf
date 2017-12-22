@@ -50,7 +50,7 @@ real SoilLayer::get_gravitational_potential() const
 SoilLayer::SoilLayer( Cell & _cell,real lowerboundary,const RetentionCurve& r_curve,real saturateddepth/*=10*/ ) 
 :	cmf::water::WaterStorage(_cell.get_project()),cell(_cell),	Position(_cell.layer_count()), anisotropic_kf(1,1,1), m_rootfraction(-1)
 {
-	m_retentioncurve=std::auto_ptr<RetentionCurve>(r_curve.copy());
+	m_retentioncurve=std::unique_ptr<RetentionCurve>(r_curve.copy());
 	m_lowerboundary=lowerboundary;
 	m_ice_fraction = 0.0;
 	// Get the location from the layer

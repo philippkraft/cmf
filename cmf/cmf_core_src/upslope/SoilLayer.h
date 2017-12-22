@@ -61,7 +61,7 @@ namespace cmf {
 			real m_upperboundary,m_lowerboundary;
 
 			/// The retention curve of the soil layer
-			std::auto_ptr<cmf::upslope::RetentionCurve> m_retentioncurve;
+			std::unique_ptr<cmf::upslope::RetentionCurve> m_retentioncurve;
 
 			/// Converts a head to the volume of stored water
 			virtual real head_to_volume(real head) const;

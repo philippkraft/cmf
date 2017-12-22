@@ -64,7 +64,7 @@ namespace cmf {
 		class volume_height_function : public IVolumeHeightFunction
 		{
 		private:
-			std::auto_ptr<IVolumeHeightFunction> vhf;
+			std::unique_ptr<IVolumeHeightFunction> vhf;
 		public:
 			/// Copy constructable
 			volume_height_function(const volume_height_function& for_copy)
@@ -74,6 +74,10 @@ namespace cmf {
 				: vhf(for_copy.copy()) {}
 #ifndef SWIG
 			// assignable
+			volume_height_function& operator=(const volume_height_function& for_copy) {
+				vhf.reset(for_copy.copy());
+				return *this;
+			}
 			volume_height_function& operator=(const IVolumeHeightFunction& for_copy) {
 				vhf.reset(for_copy.copy());
 				return *this;
@@ -399,7 +403,7 @@ namespace cmf {
 		class Channel : public IChannel
 		{
 		private:
-			std::auto_ptr<IChannel> m_channel;
+			std::unique_ptr<IChannel> m_channel;
 		public:
 			double get_length() const { return m_channel->get_length();}
 			Channel();
@@ -413,6 +417,7 @@ namespace cmf {
 			Channel(const Channel& for_copy);
 #ifndef SWIG
 			/// Assignable
+			Channel& operator=(const Channel& for_assignment);
 			Channel& operator=(const IChannel& for_assignment);
 #endif
 			

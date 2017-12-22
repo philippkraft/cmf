@@ -216,7 +216,7 @@ namespace cmf {
 			class stressedET : public cmf::water::flux_connection {
 			protected:
 				std::weak_ptr<cmf::upslope::SoilLayer> sw;
-				std::auto_ptr<cmf::upslope::ET::RootUptakeStessFunction> m_stressfunction;
+				std::unique_ptr<cmf::upslope::ET::RootUptakeStessFunction> m_stressfunction;
 				void NewNodes()	{
 					sw=std::dynamic_pointer_cast<cmf::upslope::SoilLayer>(left_node());
 				}
@@ -422,7 +422,7 @@ namespace cmf {
 			{
 			protected:
 				std::weak_ptr<cmf::river::OpenWaterStorage> m_source;
-				std::auto_ptr<cmf::atmosphere::Meteorology> m_meteo;
+				std::unique_ptr<cmf::atmosphere::Meteorology> m_meteo;
 				virtual real calc_q(cmf::math::Time t);
 				void NewNodes()
 				{
