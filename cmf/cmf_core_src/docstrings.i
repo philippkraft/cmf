@@ -787,12 +787,13 @@ A conceptual flux between two storages that can be positive as well as
 negative.
 
 The state of the right node is not monitored, hence negative volumes
-of the right node can occur!  
+of the right node can occur! Deprecated Behaviour unclear, will be
+removed 
 
 .. math::
 
-     q = q_{spill}^*-q_{suc}^* \\\\\\\\
-    q_{spill}^* = q_{spill}
+     q = q_{spill}^*-q_{suc}^* \\\\\\\\ q_{spill}^* =
+    q_{spill}
     \\\\left(\\\\frac{V-V_{spill,min}}{V_{spill,min}}\\\\right)^{\\\\beta_{spill}}
     \\\\\\\\ q_{suc}^* = q_{suc}
     \\\\left(\\\\frac{V_{suc,max}-V}{V_{suc,max}}\\\\right)^{\\\\beta_{suc}}
@@ -2387,12 +2388,13 @@ Without:  A flux_connection that is excluded from the waterbalance
 Calculates flux out of a storage as a linear function of its volume to
 a power, constraint by the volume stored in the target storage.
 
-
+Deprecated Will be replaced by ConstraintLinearStorageConnection,
+without beta and gamma. 
 
 .. math::
 
-     q = \\\\frac 1 {t_r} {\\\\left(\\\\frac{V_{l} -
-    V_{residual}}{V_0} \\\\right)^\\\\beta}
+     q = \\\\frac 1 {t_r}
+    {\\\\left(\\\\frac{V_{l} - V_{residual}}{V_0} \\\\right)^\\\\beta}
     \\\\left(\\\\frac{V_{r,max}-V_{r}}{V_{r,max}}\\\\right)^\\\\gamma
 
 where:  :math:`V_l` The actual volume stored by the left water storage
@@ -3821,6 +3823,122 @@ Copies the new states to the actual states. ";
 size() const
 
 returns the number of state variables ";
+
+
+// File: classcmf_1_1water_1_1_exponential_decline_connection.xml
+%feature("docstring") cmf::water::ExponentialDeclineConnection "
+
+A conceptual TOPmodel inspired connection.
+
+
+
+.. math::
+
+     q = Q_0 \\\\cdot e^{(V-V_0)/m} 
+
+C++ includes: simple_connections.h ";
+
+%feature("docstring")
+cmf::water::ExponentialDeclineConnection::ExponentialDeclineConnection
+"ExponentialDeclineConnection(WaterStorage::ptr source,
+flux_node::ptr target, real Q0, real V0, real m)
+
+creates the exponential decline connection ";
+
+%feature("docstring")  cmf::water::ExponentialDeclineConnection::conc
+"real conc(cmf::math::Time t, const cmf::water::solute &_Solute)
+
+Returns the concentration of the flux.
+
+If not overridden, it returns the concentration of the source of the
+flux (direction depending) ";
+
+%feature("docstring")
+cmf::water::ExponentialDeclineConnection::exchange_target "void
+exchange_target(flux_node::ptr oldtarget, flux_node::ptr newTarget) ";
+
+%feature("docstring")
+cmf::water::ExponentialDeclineConnection::get_ptr "ptr get_ptr()
+const ";
+
+%feature("docstring")
+cmf::water::ExponentialDeclineConnection::get_target "flux_node::ptr
+get_target(const flux_node &inquirer)
+
+Returns the other end of a connection than the asking end. ";
+
+%feature("docstring")
+cmf::water::ExponentialDeclineConnection::get_target "flux_node::ptr
+get_target(int index) const
+
+With index 0, the left node is returned, with index 1 the right node
+of the connection. ";
+
+%feature("docstring")
+cmf::water::ExponentialDeclineConnection::get_tracer_filter "real
+get_tracer_filter()
+
+A value ranging from 0 to 1 to filter tracers out of the water flux.
+
+1.0 is no filter and 0.0 means no solute is crossing this connection
+";
+
+%feature("docstring")
+cmf::water::ExponentialDeclineConnection::get_tracer_filter "real
+get_tracer_filter(solute S)
+
+A value ranging from 0 to 1 to filter tracers out of the water flux.
+";
+
+%feature("docstring")
+cmf::water::ExponentialDeclineConnection::kill_me "bool kill_me()
+
+Deregisters this connection from its nodes. Returns true if only one
+reference is left. ";
+
+%feature("docstring")
+cmf::water::ExponentialDeclineConnection::left_node "flux_node::ptr
+left_node() const
+
+Returns the left node of this connection. ";
+
+%feature("docstring")  cmf::water::ExponentialDeclineConnection::q "real q(const flux_node &inquirer, cmf::math::Time t)
+
+Returns the current flux through a connection. Negative signs mean out
+of the inquirer, positive are inflows to the inquirer. ";
+
+%feature("docstring")
+cmf::water::ExponentialDeclineConnection::refresh "void
+refresh(cmf::math::Time t)
+
+Performes a new calculation of the flux. ";
+
+%feature("docstring")
+cmf::water::ExponentialDeclineConnection::right_node "flux_node::ptr
+right_node() const
+
+returns the right node of this connection ";
+
+%feature("docstring")
+cmf::water::ExponentialDeclineConnection::set_tracer_filter "void
+set_tracer_filter(real value)
+
+A value ranging from 0 to 1 to filter tracers out of the water flux.
+
+1.0 is no filter and 0.0 means no solute is crossing this connection
+";
+
+%feature("docstring")
+cmf::water::ExponentialDeclineConnection::set_tracer_filter "void
+set_tracer_filter(solute S, real value) ";
+
+%feature("docstring")
+cmf::water::ExponentialDeclineConnection::short_string "virtual
+std::string short_string() const ";
+
+%feature("docstring")
+cmf::water::ExponentialDeclineConnection::to_string "virtual
+std::string to_string() const ";
 
 
 // File: classcmf_1_1water_1_1external__control__connection.xml
@@ -10213,14 +10331,7 @@ C++ includes: simple_connections.h ";
 cmf::water::PowerLawConnection::PowerLawConnection "PowerLawConnection(WaterStorage::ptr source, flux_node::ptr target,
 real Q0, real V0, real beta=1.0, real residual=0.0)
 
-Creates a kinematic wave connection.
-
-
-
-.. math::
-
-     q(V) = \\\\frac Q_0 {\\\\left(\\\\frac{V - V_{residual}}{V_0}
-    \\\\right)^\\\\beta} 
+Creates a power law connection.
 
 Parameters:
 -----------
