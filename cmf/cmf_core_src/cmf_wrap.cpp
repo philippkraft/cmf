@@ -77065,14 +77065,7 @@ static PyMethodDef SwigMethods[] = {
 		"PowerLawConnection(WaterStorage::ptr source, flux_node::ptr target,\n"
 		"real Q0, real V0, real beta=1.0, real residual=0.0)\n"
 		"\n"
-		"Creates a kinematic wave connection.\n"
-		"\n"
-		"\n"
-		"\n"
-		".. math::\n"
-		"\n"
-		"     q(V) = \\\\frac Q_0 {\\\\left(\\\\frac{V - V_{residual}}{V_0}\n"
-		"    \\\\right)^\\\\beta} \n"
+		"Creates a power law connection.\n"
 		"\n"
 		"Parameters:\n"
 		"-----------\n"
@@ -77103,7 +77096,14 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"ExponentialDeclineConnection_m_get", (PyCFunction)_wrap_ExponentialDeclineConnection_m_get, METH_O, (char *)"ExponentialDeclineConnection_m_get(ExponentialDeclineConnection self) -> real"},
 	 { (char *)"ExponentialDeclineConnection_V0_set", _wrap_ExponentialDeclineConnection_V0_set, METH_VARARGS, (char *)"ExponentialDeclineConnection_V0_set(ExponentialDeclineConnection self, real V0)"},
 	 { (char *)"ExponentialDeclineConnection_V0_get", (PyCFunction)_wrap_ExponentialDeclineConnection_V0_get, METH_O, (char *)"ExponentialDeclineConnection_V0_get(ExponentialDeclineConnection self) -> real"},
-	 { (char *)"new_ExponentialDeclineConnection", (PyCFunction) _wrap_new_ExponentialDeclineConnection, METH_VARARGS | METH_KEYWORDS, (char *)"new_ExponentialDeclineConnection(cmf::water::WaterStorage::ptr source, cmf::water::flux_node::ptr target, real Q0, real V0, real m) -> ExponentialDeclineConnection"},
+	 { (char *)"new_ExponentialDeclineConnection", (PyCFunction) _wrap_new_ExponentialDeclineConnection, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
+		"new_ExponentialDeclineConnection(cmf::water::WaterStorage::ptr source, cmf::water::flux_node::ptr target, real Q0, real V0, real m) -> ExponentialDeclineConnection\n"
+		"\n"
+		"ExponentialDeclineConnection(WaterStorage::ptr source,\n"
+		"flux_node::ptr target, real Q0, real V0, real m)\n"
+		"\n"
+		"creates the exponential decline connection \n"
+		""},
 	 { (char *)"delete_ExponentialDeclineConnection", (PyCFunction)_wrap_delete_ExponentialDeclineConnection, METH_O, (char *)"delete_ExponentialDeclineConnection(ExponentialDeclineConnection self)"},
 	 { (char *)"ExponentialDeclineConnection_swigregister", ExponentialDeclineConnection_swigregister, METH_VARARGS, NULL},
 	 { (char *)"ExponentialDeclineConnection_swiginit", ExponentialDeclineConnection_swiginit, METH_VARARGS, NULL},

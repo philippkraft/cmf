@@ -12,6 +12,10 @@ import unittest
 
 
 class Test_Basic(unittest.TestCase):
+    def test_version(self):
+        print()
+        print('CMF v' + cmf.__version__)
+        print('CMF in:' + cmf.__file__)
 
     def test_make_project(self):
         p = cmf.project()

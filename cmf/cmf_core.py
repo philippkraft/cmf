@@ -4664,14 +4664,7 @@ class PowerLawConnection(flux_connection):
         PowerLawConnection(WaterStorage::ptr source, flux_node::ptr target,
         real Q0, real V0, real beta=1.0, real residual=0.0)
 
-        Creates a kinematic wave connection.
-
-
-
-        .. math::
-
-             q(V) = \\frac Q_0 {\\left(\\frac{V - V_{residual}}{V_0}
-            \\right)^\\beta} 
+        Creates a power law connection.
 
         Parameters:
         -----------
@@ -4699,7 +4692,19 @@ PowerLawConnection_swigregister = _cmf_core.PowerLawConnection_swigregister
 PowerLawConnection_swigregister(PowerLawConnection)
 
 class ExponentialDeclineConnection(flux_connection):
-    """Proxy of C++ cmf::water::ExponentialDeclineConnection class."""
+    """
+
+
+    A conceptual TOPmodel inspired connection.
+
+
+
+    .. math::
+
+         q = Q_0 \\cdot e^{(V-V_0)/m} 
+
+    C++ includes: simple_connections.h 
+    """
 
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
     __repr__ = _swig_repr
@@ -4708,7 +4713,14 @@ class ExponentialDeclineConnection(flux_connection):
     V0 = _swig_property(_cmf_core.ExponentialDeclineConnection_V0_get, _cmf_core.ExponentialDeclineConnection_V0_set)
 
     def __init__(self, *args, **kwargs):
-        """__init__(cmf::water::ExponentialDeclineConnection self, cmf::water::WaterStorage::ptr source, cmf::water::flux_node::ptr target, real Q0, real V0, real m) -> ExponentialDeclineConnection"""
+        """
+        __init__(cmf::water::ExponentialDeclineConnection self, cmf::water::WaterStorage::ptr source, cmf::water::flux_node::ptr target, real Q0, real V0, real m) -> ExponentialDeclineConnection
+
+        ExponentialDeclineConnection(WaterStorage::ptr source,
+        flux_node::ptr target, real Q0, real V0, real m)
+
+        creates the exponential decline connection 
+        """
         _cmf_core.ExponentialDeclineConnection_swiginit(self, _cmf_core.new_ExponentialDeclineConnection(*args, **kwargs))
     __swig_destroy__ = _cmf_core.delete_ExponentialDeclineConnection
 ExponentialDeclineConnection_swigregister = _cmf_core.ExponentialDeclineConnection_swigregister
@@ -4722,12 +4734,13 @@ class bidirectional_kinematic_exchange(flux_connection):
     negative.
 
     The state of the right node is not monitored, hence negative volumes
-    of the right node can occur!  
+    of the right node can occur! Deprecated Behaviour unclear, will be
+    removed 
 
     .. math::
 
-         q = q_{spill}^*-q_{suc}^* \\\\
-        q_{spill}^* = q_{spill}
+         q = q_{spill}^*-q_{suc}^* \\\\ q_{spill}^* =
+        q_{spill}
         \\left(\\frac{V-V_{spill,min}}{V_{spill,min}}\\right)^{\\beta_{spill}}
         \\\\ q_{suc}^* = q_{suc}
         \\left(\\frac{V_{suc,max}-V}{V_{suc,max}}\\right)^{\\beta_{suc}}
@@ -4798,12 +4811,13 @@ class constraint_kinematic_wave(flux_connection):
     Calculates flux out of a storage as a linear function of its volume to
     a power, constraint by the volume stored in the target storage.
 
-
+    Deprecated Will be replaced by ConstraintLinearStorageConnection,
+    without beta and gamma. 
 
     .. math::
 
-         q = \\frac 1 {t_r} {\\left(\\frac{V_{l} -
-        V_{residual}}{V_0} \\right)^\\beta}
+         q = \\frac 1 {t_r}
+        {\\left(\\frac{V_{l} - V_{residual}}{V_0} \\right)^\\beta}
         \\left(\\frac{V_{r,max}-V_{r}}{V_{r,max}}\\right)^\\gamma
 
     where:  :math:`V_l` The actual volume stored by the left water storage
