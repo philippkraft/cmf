@@ -15,6 +15,8 @@
 #   You should have received a copy of the GNU General Public License
 #   along with cmf.  If not, see <http://www.gnu.org/licenses/>.
 #
+from __future__ import print_function, unicode_literals, absolute_import, division
+
 from . import cmf_core as cmf
 
 def get_predicate(tolerance,as_shape):

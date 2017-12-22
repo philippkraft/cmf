@@ -15,8 +15,10 @@
 #
 #   You should have received a copy of the GNU General Public License
 #   along with cmf.  If not, see <http://www.gnu.org/licenses/>.
-#   
-import cmf_core as cmf
+#
+from __future__ import print_function, unicode_literals, absolute_import, division
+
+from . import cmf_core as cmf
 
 class profilelayer:
     def __init__(self,upper_boundary,lower_boundary,r_curve):
