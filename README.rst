@@ -4,6 +4,8 @@
     :target: https://pypi.python.org/pypi/cmf#downloads
 .. image:: https://img.shields.io/badge/docs-tutorial-yellow.svg
     :target: http://fb09-pasig.umwelt.uni-giessen.de/cmf/wiki/CmfTutStart
+.. image:: https://img.shields.io/github/release/philippkraft/cmf.svg?logo=github
+    :target: https://github.com/philippkraft/cmf
 .. image:: https://img.shields.io/travis/philippkraft/cmf/master.svg
     :target: https://travis-ci.org/philippkraft/cmf
 .. image:: https://img.shields.io/badge/license-GPL-green.svg
@@ -27,6 +29,13 @@ Institute of Landscape Ecology and Resources Management, Justus-Liebig Universit
 Documentation
 ---------------
 Can be found here: http://fb09-pasig.umwelt.uni-giessen.de/cmf
+
+Development
+--------------
+You can join the development or report bugs at Github:
+.. image:: https://img.shields.io/github/release/philippkraft/cmf.svg?logo=github
+    :target: https://github.com/philippkraft/cmf
+
 
 Publication
 ------------
