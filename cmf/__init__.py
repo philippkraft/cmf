@@ -19,16 +19,21 @@
 from __future__ import print_function, division, absolute_import
 from .cmf_core import *
 from .describe import describe
-
-from .maps import Map, nearest_neighbor_map, raster_map
-
-
-from .cell_factory import project_from_dem, create_reaches_for_cells
-
-
-from .extend_project import add_layers_to_cells
-from .extend_project import change_vegetation, connect_cells_with_flux
-from .extend_project import profile
 from .stopwatch import StopWatch
 
 __version__ = '1.1.0'
+
+from .cmf_core import connect_cells_with_flux as __ccwf
+
+def connect_cells_with_flux(cells, connection, start_at_layer=0):
+    """Connects all cells in cells (sequence or generator) with a flux connection
+    connection is an subclass of cmf.FluxConnection which exposes the cell_connector callable
+                    (e.g. lateral subsurface fluxes and surface manning flux)
+    start_at_layer : if the flux connection should only be used for deeper layers
+    """
+    if (hasattr(connection, 'cell_connector') and
+        isinstance(connection.cell_connector, CellConnector)):
+        __ccwf(list(cells), connection.cell_connector, start_at_layer)
+    else:
+        raise TypeError("flux_connection does not implement the cell_connector protocol")
+

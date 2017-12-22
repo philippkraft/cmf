@@ -90,15 +90,3 @@ def change_vegetation(cells,vegetation_map):
         v=vegetation_map(c.x,c.y,c.z)
         if not v is None:
             c.Vegetation=v      
-def connect_cells_with_flux(cells,connection,start_at_layer=0):
-    """Connects all cells in cells (sequence or generator) with a flux connection
-    connection is an subclass of cmf.FluxConnection which exposes the cell_connector callable 
-                    (e.g. lateral subsurface fluxes and surface manning flux)
-    start_at_layer : if the flux connection should only be used for deeper layers
-    """
-    if (hasattr(connection, 'cell_connector') and isinstance(connection.cell_connector,cmf.CellConnector)):
-        cmf.connect_cells_with_flux(list(cells),connection.cell_connector,start_at_layer)
-    else:
-        raise TypeError("flux_connection does not implement the cell_connector protocol")        
-
-        

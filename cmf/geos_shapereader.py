@@ -43,9 +43,9 @@ if has_shapely:
         
         The shapefile class implements most of the sequence protocol
         Usage:
-        shp=shapefile('theshapes.shp') # Load the shape file
-        print shp[0].shape.area        # Print area of shape
-        print shp[0].Name              # Prints the name of the shape, assuming theshapes.dbf has a field 'Name'             
+        shp=Shapefile('theshapes.shp') # Load the shape file
+        print(shp[0].shape.area)        # Print area of shape
+        print(shp[0].Name)              # Prints the name of the shape, assuming theshapes.dbf has a field 'Name'
         """
         
         def __readfmt(self,fmt,f):
