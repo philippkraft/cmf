@@ -33,6 +33,7 @@ Can be found here: http://fb09-pasig.umwelt.uni-giessen.de/cmf
 Development
 --------------
 You can join the development or report bugs at Github:
+
 .. image:: https://img.shields.io/github/release/philippkraft/cmf.svg?logo=github
     :target: https://github.com/philippkraft/cmf
 
