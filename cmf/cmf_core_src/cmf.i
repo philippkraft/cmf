@@ -21,7 +21,7 @@
 %feature("autodoc","1");
 
 // Usage for automated downcast
-%include factory.i
+%include "factory.i"
 
 // Include typemaps for STL
 %include "std_string.i"

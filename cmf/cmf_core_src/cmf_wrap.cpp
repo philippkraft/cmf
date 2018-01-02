@@ -3206,11 +3206,12 @@ SWIG_Python_NonDynamicSetAttr(PyObject *obj, PyObject *name, PyObject *value) {
 #define SWIGTYPE_p_std__shared_ptrT_cmf__water__waterbalance_integrator_t swig_types[194]
 #define SWIGTYPE_p_std__shared_ptrT_std__shared_ptrT_cmf__atmosphere__ConstantRainSource_t_t swig_types[195]
 #define SWIGTYPE_p_std__shared_ptrT_std__shared_ptrT_cmf__atmosphere__RainfallStationReference_t_t swig_types[196]
-#define SWIGTYPE_p_std__vectorT_std__shared_ptrT_cmf__water__WaterStorage_t_t swig_types[197]
-#define SWIGTYPE_p_std__vectorT_std__shared_ptrT_cmf__water__flux_connection_t_t__const_iterator swig_types[198]
-#define SWIGTYPE_p_std__vectorT_std__shared_ptrT_cmf__water__flux_connection_t_t__iterator swig_types[199]
-static swig_type_info *swig_types[201];
-static swig_module_info swig_module = {swig_types, 200, 0, 0, 0, 0};
+#define SWIGTYPE_p_std__string swig_types[197]
+#define SWIGTYPE_p_std__vectorT_std__shared_ptrT_cmf__water__WaterStorage_t_t swig_types[198]
+#define SWIGTYPE_p_std__vectorT_std__shared_ptrT_cmf__water__flux_connection_t_t__const_iterator swig_types[199]
+#define SWIGTYPE_p_std__vectorT_std__shared_ptrT_cmf__water__flux_connection_t_t__iterator swig_types[200]
+static swig_type_info *swig_types[202];
+static swig_module_info swig_module = {swig_types, 201, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -45495,6 +45496,85 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_Cell_get_WKB(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  cmf::upslope::Cell *arg1 = (cmf::upslope::Cell *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  cmf::bytestring result;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__upslope__Cell, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Cell_get_WKB" "', argument " "1"" of type '" "cmf::upslope::Cell const *""'"); 
+  }
+  arg1 = reinterpret_cast< cmf::upslope::Cell * >(argp1);
+  {
+    try {
+      result = ((cmf::upslope::Cell const *)arg1)->get_WKB();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+    
+  }
+  {
+    // Converting cmf::bytestring to PyBytes
+    resultobj = PyBytes_FromStringAndSize((&result)->c_str(), (&result)->size());
+  }
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Cell_set_WKB(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  cmf::upslope::Cell *arg1 = (cmf::upslope::Cell *) 0 ;
+  cmf::bytestring arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char *  kwnames[] = {
+    (char *) "self",(char *) "wkb", NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"OO:Cell_set_WKB",kwnames,&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_cmf__upslope__Cell, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Cell_set_WKB" "', argument " "1"" of type '" "cmf::upslope::Cell *""'"); 
+  }
+  arg1 = reinterpret_cast< cmf::upslope::Cell * >(argp1);
+  {
+    // Convert PyBytes to cmf::bytestring
+    if (PyBytes_Check(obj1)) {
+      Py_ssize_t size = PyBytes_Size(obj1);
+      arg2 = cmf::bytestring(PyBytes_AsString(obj1), size);
+    } else {
+      SWIG_exception_fail(SWIG_TypeError,"WKB expects byte string");
+    }
+  }
+  {
+    try {
+      (arg1)->set_WKB(arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_Cell_get_weather(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   cmf::upslope::Cell *arg1 = (cmf::upslope::Cell *) 0 ;
@@ -78595,6 +78675,8 @@ static PyMethodDef SwigMethods[] = {
 		""},
 	 { (char *)"Cell_Id_set", _wrap_Cell_Id_set, METH_VARARGS, (char *)"Cell_Id_set(Cell self, ptrdiff_t Id)"},
 	 { (char *)"Cell_Id_get", (PyCFunction)_wrap_Cell_Id_get, METH_O, (char *)"Cell_Id_get(Cell self) -> ptrdiff_t"},
+	 { (char *)"Cell_get_WKB", (PyCFunction)_wrap_Cell_get_WKB, METH_O, (char *)"Cell_get_WKB(Cell self) -> cmf::bytestring"},
+	 { (char *)"Cell_set_WKB", (PyCFunction) _wrap_Cell_set_WKB, METH_VARARGS | METH_KEYWORDS, (char *)"Cell_set_WKB(Cell self, cmf::bytestring wkb)"},
 	 { (char *)"Cell_get_weather", (PyCFunction) _wrap_Cell_get_weather, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
 		"Cell_get_weather(Cell self, Time t) -> Weather\n"
 		"\n"
@@ -82405,6 +82487,7 @@ static swig_type_info _swigt__p_std__shared_ptrT_cmf__water__flux_node_t = {"_p_
 static swig_type_info _swigt__p_std__shared_ptrT_cmf__water__waterbalance_integrator_t = {"_p_std__shared_ptrT_cmf__water__waterbalance_integrator_t", "std::shared_ptr< cmf::water::waterbalance_integrator > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__shared_ptrT_std__shared_ptrT_cmf__atmosphere__ConstantRainSource_t_t = {"_p_std__shared_ptrT_std__shared_ptrT_cmf__atmosphere__ConstantRainSource_t_t", "std::shared_ptr< std::shared_ptr< cmf::atmosphere::ConstantRainSource > > *|std::shared_ptr< cmf::atmosphere::ConstantRainSource::ptr > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__shared_ptrT_std__shared_ptrT_cmf__atmosphere__RainfallStationReference_t_t = {"_p_std__shared_ptrT_std__shared_ptrT_cmf__atmosphere__RainfallStationReference_t_t", "std::shared_ptr< std::shared_ptr< cmf::atmosphere::RainfallStationReference > > *|std::shared_ptr< cmf::atmosphere::RainfallStationReference::ptr > *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_std__string = {"_p_std__string", "std::string *|cmf::bytestring *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__vectorT_std__shared_ptrT_cmf__water__WaterStorage_t_t = {"_p_std__vectorT_std__shared_ptrT_cmf__water__WaterStorage_t_t", "std::vector< std::shared_ptr< cmf::water::WaterStorage > > *|cmf::water::storage_vector *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__vectorT_std__shared_ptrT_cmf__water__flux_connection_t_t__const_iterator = {"_p_std__vectorT_std__shared_ptrT_cmf__water__flux_connection_t_t__const_iterator", "cmf::water::connection_list::const_iterator *|std::vector< std::shared_ptr< cmf::water::flux_connection > >::const_iterator *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__vectorT_std__shared_ptrT_cmf__water__flux_connection_t_t__iterator = {"_p_std__vectorT_std__shared_ptrT_cmf__water__flux_connection_t_t__iterator", "cmf::water::connection_list::iterator *|std::vector< std::shared_ptr< cmf::water::flux_connection > >::iterator *", 0, 0, (void*)0, 0};
@@ -82607,6 +82690,7 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_std__shared_ptrT_cmf__water__waterbalance_integrator_t,
   &_swigt__p_std__shared_ptrT_std__shared_ptrT_cmf__atmosphere__ConstantRainSource_t_t,
   &_swigt__p_std__shared_ptrT_std__shared_ptrT_cmf__atmosphere__RainfallStationReference_t_t,
+  &_swigt__p_std__string,
   &_swigt__p_std__vectorT_std__shared_ptrT_cmf__water__WaterStorage_t_t,
   &_swigt__p_std__vectorT_std__shared_ptrT_cmf__water__flux_connection_t_t__const_iterator,
   &_swigt__p_std__vectorT_std__shared_ptrT_cmf__water__flux_connection_t_t__iterator,
@@ -82809,6 +82893,7 @@ static swig_cast_info _swigc__p_std__shared_ptrT_cmf__water__flux_node_t[] = {  
 static swig_cast_info _swigc__p_std__shared_ptrT_cmf__water__waterbalance_integrator_t[] = {  {&_swigt__p_std__shared_ptrT_cmf__water__waterbalance_integrator_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__shared_ptrT_std__shared_ptrT_cmf__atmosphere__ConstantRainSource_t_t[] = {  {&_swigt__p_std__shared_ptrT_std__shared_ptrT_cmf__atmosphere__ConstantRainSource_t_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__shared_ptrT_std__shared_ptrT_cmf__atmosphere__RainfallStationReference_t_t[] = {  {&_swigt__p_std__shared_ptrT_std__shared_ptrT_cmf__atmosphere__RainfallStationReference_t_t, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_std__string[] = {  {&_swigt__p_std__string, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__vectorT_std__shared_ptrT_cmf__water__WaterStorage_t_t[] = {  {&_swigt__p_std__vectorT_std__shared_ptrT_cmf__water__WaterStorage_t_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__vectorT_std__shared_ptrT_cmf__water__flux_connection_t_t__const_iterator[] = {  {&_swigt__p_std__vectorT_std__shared_ptrT_cmf__water__flux_connection_t_t__const_iterator, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__vectorT_std__shared_ptrT_cmf__water__flux_connection_t_t__iterator[] = {  {&_swigt__p_std__vectorT_std__shared_ptrT_cmf__water__flux_connection_t_t__iterator, 0, 0, 0},{0, 0, 0, 0}};
@@ -83011,6 +83096,7 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_std__shared_ptrT_cmf__water__waterbalance_integrator_t,
   _swigc__p_std__shared_ptrT_std__shared_ptrT_cmf__atmosphere__ConstantRainSource_t_t,
   _swigc__p_std__shared_ptrT_std__shared_ptrT_cmf__atmosphere__RainfallStationReference_t_t,
+  _swigc__p_std__string,
   _swigc__p_std__vectorT_std__shared_ptrT_cmf__water__WaterStorage_t_t,
   _swigc__p_std__vectorT_std__shared_ptrT_cmf__water__flux_connection_t_t__const_iterator,
   _swigc__p_std__vectorT_std__shared_ptrT_cmf__water__flux_connection_t_t__iterator,

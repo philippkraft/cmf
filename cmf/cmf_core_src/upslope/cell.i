@@ -70,6 +70,7 @@
 %attribute(cmf::upslope::Cell,real,saturated_depth,get_saturated_depth,set_saturated_depth);
 %attribute(cmf::upslope::Cell,real,area,get_area);
 %attribute(cmf::upslope::Cell,real,soildepth,get_soildepth);
+
 %include "upslope/cell.h"
 
 %extend cmf::upslope::Cell

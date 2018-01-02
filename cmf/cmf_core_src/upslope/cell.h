@@ -126,7 +126,8 @@ namespace cmf {
 
 			cmf::project & m_project;
 			meteo_pointer m_meteo;
-
+			
+			cmf::bytestring m_WKB;
 			
 		public:
 			/// The vegetation object of the cell
@@ -264,6 +265,12 @@ namespace cmf {
 				}
 			}
 			ptrdiff_t Id;
+			cmf::bytestring get_WKB() const {
+				return m_WKB;
+			}
+			void set_WKB(cmf::bytestring wkb) {
+				m_WKB = wkb;
+			}
 			cmf::project& get_project() const
 			{
 				return m_project;

@@ -7360,6 +7360,16 @@ class Cell(StateVariableOwner):
 
     Id = _swig_property(_cmf_core.Cell_Id_get, _cmf_core.Cell_Id_set)
 
+    def get_WKB(self, *args, **kwargs):
+        """get_WKB(Cell self) -> cmf::bytestring"""
+        return _cmf_core.Cell_get_WKB(self, *args, **kwargs)
+
+
+    def set_WKB(self, *args, **kwargs):
+        """set_WKB(Cell self, cmf::bytestring wkb)"""
+        return _cmf_core.Cell_set_WKB(self, *args, **kwargs)
+
+
     def get_weather(self, *args, **kwargs):
         """
         get_weather(Cell self, Time t) -> Weather
@@ -7553,6 +7563,8 @@ Cell.albedo = new_instancemethod(_cmf_core.Cell_albedo, None, Cell)
 Cell.surface_water_coverage = new_instancemethod(_cmf_core.Cell_surface_water_coverage, None, Cell)
 Cell.heat_flux = new_instancemethod(_cmf_core.Cell_heat_flux, None, Cell)
 Cell.leave_wetness = new_instancemethod(_cmf_core.Cell_leave_wetness, None, Cell)
+Cell.get_WKB = new_instancemethod(_cmf_core.Cell_get_WKB, None, Cell)
+Cell.set_WKB = new_instancemethod(_cmf_core.Cell_set_WKB, None, Cell)
 Cell.get_weather = new_instancemethod(_cmf_core.Cell_get_weather, None, Cell)
 Cell.layer_count = new_instancemethod(_cmf_core.Cell_layer_count, None, Cell)
 Cell.get_layer = new_instancemethod(_cmf_core.Cell_get_layer, None, Cell)

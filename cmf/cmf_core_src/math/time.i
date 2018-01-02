@@ -122,6 +122,19 @@ static bool check_time(PyObject* dt) {
 %typemap(typecheck,precedence=100) const cmf::math::Time &{
     $1 = check_time($input); // typecheck const cmf::math::Time &
 }
+%typemap(out) cmf::bytestring {
+	// Converting cmf::bytestring to PyBytes
+    $result = PyBytes_FromStringAndSize($1.c_str(), $1.size());
+}
+%typemap(in) cmf::bytestring {
+	// Convert PyBytes to cmf::bytestring
+	if (PyBytes_Check($input)) {
+		Py_ssize_t size = PyBytes_Size($input);
+		$1 = cmf::bytestring(PyBytes_AsString($input), size);
+	} else {
+		SWIG_exception_fail(SWIG_TypeError,"WKB expects byte string");
+	}
+}
 
 %implicitconv cmf::math::Time;
 %implicitconv cmf::math::Date;

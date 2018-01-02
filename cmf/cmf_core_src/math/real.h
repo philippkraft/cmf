@@ -52,8 +52,11 @@
 	real sign(real x);
 	real square(real x);
 
-
 	const real Pi=3.141592654;
+
+	namespace cmf {
+		typedef std::string bytestring;
+	}
 
 
 #endif // real_h__
