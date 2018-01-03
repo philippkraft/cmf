@@ -21,7 +21,7 @@ from .cmf_core import *
 from .describe import describe
 from .stopwatch import StopWatch
 
-__version__ = '1.1.1a1'
+__version__ = '1.1.1'
 
 from .cmf_core import connect_cells_with_flux as __ccwf
 

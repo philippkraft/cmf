@@ -75,22 +75,22 @@ fig, ax = plt.subplots(1, 2)
 
 # Linear storage
 p = Project(cmf.LinearStorageConnection, 2)
-p.plot_all(ax)
+p.plot_all(ax, r'$1/2 \cdot V$')
 
 # Power law beta=2
 p = Project(cmf.PowerLawConnection, Q0=.5, V0=1, beta=2)
-p.plot_all(ax)
+p.plot_all(ax, r'$1/2 \cdot V^2$')
 
 # Power law beta = 0.5
 p = Project(cmf.PowerLawConnection, Q0=.5, V0=1, beta=0.5)
-p.plot_all(ax)
+p.plot_all(ax, r'$1/2 \cdot V^{1/2}$')
 
 # Constraint kinematic
-p = Project(cmf.constraint_kinematic_wave, residencetime=2, Vrmax=1.0)
-p.plot_all(ax)
+p = Project(cmf.ConstraintLinearStorageConnection, residencetime=2, Vrmax=1.0)
+p.plot_all(ax, r'$1/2 \cdot V_l \cdot \frac{V_{r,max} - V_r}{V_{r,max}}$')
 
 # Exponential decline
 p = Project(cmf.ExponentialDeclineConnection, Q0=.5, V0=1, m=1)
-p.plot_all(ax)
+p.plot_all(ax, r'$1/2 e^{-V}$')
 
 plt.show()

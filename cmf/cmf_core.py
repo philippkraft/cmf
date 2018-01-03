@@ -4726,6 +4726,22 @@ class ExponentialDeclineConnection(flux_connection):
 ExponentialDeclineConnection_swigregister = _cmf_core.ExponentialDeclineConnection_swigregister
 ExponentialDeclineConnection_swigregister(ExponentialDeclineConnection)
 
+class ConstraintLinearStorageConnection(flux_connection):
+    """Proxy of C++ cmf::water::ConstraintLinearStorageConnection class."""
+
+    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __repr__ = _swig_repr
+    residencetime = _swig_property(_cmf_core.ConstraintLinearStorageConnection_residencetime_get, _cmf_core.ConstraintLinearStorageConnection_residencetime_set)
+    Vlmin = _swig_property(_cmf_core.ConstraintLinearStorageConnection_Vlmin_get, _cmf_core.ConstraintLinearStorageConnection_Vlmin_set)
+    Vrmax = _swig_property(_cmf_core.ConstraintLinearStorageConnection_Vrmax_get, _cmf_core.ConstraintLinearStorageConnection_Vrmax_set)
+
+    def __init__(self, *args, **kwargs):
+        """__init__(cmf::water::ConstraintLinearStorageConnection self, cmf::water::WaterStorage::ptr source, cmf::water::WaterStorage::ptr target, real residencetime=1.0, real Vlmin=0.0, real Vrmax=1.0) -> ConstraintLinearStorageConnection"""
+        _cmf_core.ConstraintLinearStorageConnection_swiginit(self, _cmf_core.new_ConstraintLinearStorageConnection(*args, **kwargs))
+    __swig_destroy__ = _cmf_core.delete_ConstraintLinearStorageConnection
+ConstraintLinearStorageConnection_swigregister = _cmf_core.ConstraintLinearStorageConnection_swigregister
+ConstraintLinearStorageConnection_swigregister(ConstraintLinearStorageConnection)
+
 class bidirectional_kinematic_exchange(flux_connection):
     """
 
