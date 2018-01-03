@@ -88,6 +88,25 @@ cmf::water::ExponentialDeclineConnection::ExponentialDeclineConnection(
 	NewNodes();
 }
 	
+cmf::water::ConstraintLinearStorageConnection::ConstraintLinearStorageConnection(
+	cmf::water::WaterStorage::ptr source,
+	cmf::water::WaterStorage::ptr target,
+	real _residencetime,
+	real _Vlmin, real _Vrmax)
+	: flux_connection(source, target, "constrained lin. storage"),
+	residencetime(_residencetime), Vlmin(_Vlmin), Vrmax(_Vrmax)
+{
+	NewNodes();
+}
+
+real cmf::water::ConstraintLinearStorageConnection::calc_q(cmf::math::Time t) 
+{
+	real V = std::max(0.0, source->get_volume() - Vlmin);
+	real C = std::max(0.0, Vrmax - target->get_volume());
+	return V / residencetime * (C / Vrmax);
+
+}
+
 cmf::water::statecontrol_connection::statecontrol_connection( cmf::water::WaterStorage::ptr controlled_storage, cmf::water::flux_node::ptr other_end, 
 															 real _target_state, cmf::math::Time _reaction_time ) 
 : flux_connection(controlled_storage,other_end, "State controlling flux"), target_state(_target_state), reaction_time(_reaction_time)
@@ -124,8 +143,9 @@ cmf::water::generic_gradient_connection::generic_gradient_connection( cmf::water
 	cmf::water::WaterStorage::ptr right, real _K,real _d/*=1.0*/, real _A/*=1.0*/ )
 	: flux_connection(left,right,"generic gradient connection")
 {
-	
 }
+
+
 
 cmf::water::constraint_kinematic_wave::constraint_kinematic_wave( WaterStorage::ptr source,WaterStorage::ptr target,real _residencetime/*=1.0*/, 
 																  real _beta/*=1.0*/,real _residual/*=0.0*/,real _V0 /*= 1.0*/, 

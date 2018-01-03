@@ -204,6 +204,47 @@ namespace cmf {
 
 		};
 		/// @ingroup connections
+		/// @brief Calculates flux out of a storage as a linear function of its volume to a power, constraint by the volume stored in the target storage.
+		/// \f[ q = \frac {1}{t_r} \left({V_{l} - V_{l,min}}\right) \cdot \left(\frac{V_{r,max}-V_{r}}{V_{r,max}}\right)\f]
+		/// where:
+		/// - \f$V_l\f$ The actual volume stored by the left water storage
+		/// - \f$V_{l,min} [m^3]\f$ The volume of water not flowing out (default = 0)
+		/// - \f$\beta\f$ A parameter to shape the response curve. In case of \f$\beta \neq 1\f$, 
+		///   \f$t_r\f$ is not a residence time, but just a parameter.
+		/// - \f$t_r [days]\f$ The residence time of the water in this storage in days
+		/// - \f$V_{r,max}\f$ The capacity of the right water storage in m3
+		/// - \f$V_{r}\f$ The actual volume of the right water storage
+		/// - \f$\gamma\f$ A shape parameter for the target capacity constriction
+		class ConstraintLinearStorageConnection : public flux_connection {
+		protected:
+			WaterStorage::ptr source, target;
+			real calc_q(cmf::math::Time t);
+			void NewNodes() {
+				source = WaterStorage::cast(left_node());
+				target = WaterStorage::cast(right_node());
+			}
+		public:
+			/// @brief Linear flow parameter traveltime in days
+			real residencetime;
+			/// @brief residual volume \f$V_{l,min}\f$ in left storage
+			real Vlmin;
+			/// @brief Target capacity \f$V_{r,max}\f$
+			real Vrmax;
+			/// @brief Creates a kinematic wave connection.
+			/// \f[ q = \frac 1 {t_r} {\left(\frac{V - V_{residual}}{V_0} \right)^\beta} \f]
+			/// @param source Water storage from which the water flows out. Flux is a function of source.volume
+			/// @param target Target node (boundary condition or storage). Does not influence the strength of the flow
+			/// @param residencetime \f$t_r [days]\f$ The residence time of the water in this storage
+			/// @param exponent \f$\beta [-]\f$ An empirical exponent to shape the flux function (default = 1 (linear function))
+			/// @param residual \f$V_{residual} [m^3]\f$ The volume of water not flowing out (default = 0)
+			/// @param V0 \f$V_0\f$ The reference volume to scale the exponent
+			/// @param Vrmax \f$V_{r,max}\f$ Capacity of the target water storage in m3
+			/// @param gamma \f$\gamma\f$ Target capacity constriction curve shape
+			ConstraintLinearStorageConnection(WaterStorage::ptr source, WaterStorage::ptr target, 
+				real residencetime = 1.0, real Vlmin = 0.0, real Vrmax = 1.0);
+		};
+
+		/// @ingroup connections
 		/// @brief A conceptual flux between two storages that can be positive as well as negative
 		/// @note The state of the right node is not monitored, hence negative volumes of the right node can occur!
 		/// @deprecated Behaviour unclear, will be removed
