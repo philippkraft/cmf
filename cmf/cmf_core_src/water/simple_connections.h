@@ -204,7 +204,7 @@ namespace cmf {
 
 		};
 		/// @ingroup connections
-		/// @brief Calculates flux out of a storage as a linear function of its volume to a power, constraint by the volume stored in the target storage.
+		/// @brief Calculates flux out of a storage as a linear function of its volume, constraint by the volume stored in the target storage.
 		/// \f[ q = \frac {1}{t_r} \left({V_{l} - V_{l,min}}\right) \cdot \left(\frac{V_{r,max}-V_{r}}{V_{r,max}}\right)\f]
 		/// where:
 		/// - \f$V_l\f$ The actual volume stored by the left water storage
@@ -230,7 +230,7 @@ namespace cmf {
 			real Vlmin;
 			/// @brief Target capacity \f$V_{r,max}\f$
 			real Vrmax;
-			/// @brief Creates a kinematic wave connection.
+			/// @brief Creates a linear storage connection, constrained by the fill level of the source
 			/// \f[ q = \frac 1 {t_r} {\left(\frac{V - V_{residual}}{V_0} \right)^\beta} \f]
 			/// @param source Water storage from which the water flows out. Flux is a function of source.volume
 			/// @param target Target node (boundary condition or storage). Does not influence the strength of the flow
