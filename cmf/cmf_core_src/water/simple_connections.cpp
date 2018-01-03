@@ -107,6 +107,11 @@ real cmf::water::ConstraintLinearStorageConnection::calc_q(cmf::math::Time t)
 
 }
 
+inline void cmf::water::ConstraintLinearStorageConnection::NewNodes() {
+	source = WaterStorage::cast(left_node());
+	target = WaterStorage::cast(right_node());
+}
+
 cmf::water::statecontrol_connection::statecontrol_connection( cmf::water::WaterStorage::ptr controlled_storage, cmf::water::flux_node::ptr other_end, 
 															 real _target_state, cmf::math::Time _reaction_time ) 
 : flux_connection(controlled_storage,other_end, "State controlling flux"), target_state(_target_state), reaction_time(_reaction_time)

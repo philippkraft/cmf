@@ -93,4 +93,9 @@ p.plot_all(ax, r'$1/2 \cdot V_l \cdot \frac{V_{r,max} - V_r}{V_{r,max}}$')
 p = Project(cmf.ExponentialDeclineConnection, Q0=.5, V0=1, m=1)
 p.plot_all(ax, r'$1/2 e^{-V}$')
 
+# Technical Flux
+p = Project(cmf.TechnicalFlux, maximum_flux=.5)
+p.plot_all(ax, r'$1/2$')
+
+
 plt.show()

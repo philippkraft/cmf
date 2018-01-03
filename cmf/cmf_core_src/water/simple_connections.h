@@ -219,10 +219,7 @@ namespace cmf {
 		protected:
 			WaterStorage::ptr source, target;
 			real calc_q(cmf::math::Time t);
-			void NewNodes() {
-				source = WaterStorage::cast(left_node());
-				target = WaterStorage::cast(right_node());
-			}
+			void NewNodes();
 		public:
 			/// @brief Linear flow parameter traveltime in days
 			real residencetime;
