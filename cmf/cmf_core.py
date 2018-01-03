@@ -540,100 +540,43 @@ import struct
 
 
 def minimum(*args, **kwargs):
-    """
-    minimum(real a, real b) -> real
-
-    real minimum(real a, real b)
-
-    Returns the minimum of two values. 
-    """
+    """minimum(real a, real b) -> real"""
     return _cmf_core.minimum(*args, **kwargs)
 
 def maximum(*args, **kwargs):
-    """
-    maximum(real a, real b) -> real
-
-    real maximum(real a, real b) 
-    """
+    """maximum(real a, real b) -> real"""
     return _cmf_core.maximum(*args, **kwargs)
 
 def minmax(*args, **kwargs):
-    """
-    minmax(real x, real min, real max) -> real
-
-    real minmax(real x, real min, real
-    max) 
-    """
+    """minmax(real x, real min, real max) -> real"""
     return _cmf_core.minmax(*args, **kwargs)
 
 def mean(*args, **kwargs):
-    """
-    mean(real a, real b) -> real
-
-    real mean(real a, real b) 
-    """
+    """mean(real a, real b) -> real"""
     return _cmf_core.mean(*args, **kwargs)
 
 def geo_mean(*args, **kwargs):
-    """
-    geo_mean(real a, real b) -> real
-
-    real geo_mean(real a, real b) 
-    """
+    """geo_mean(real a, real b) -> real"""
     return _cmf_core.geo_mean(*args, **kwargs)
 
 def harmonic_mean(*args, **kwargs):
-    """
-    harmonic_mean(real a, real b) -> real
-
-    real harmonic_mean(real a, real
-    b) 
-    """
+    """harmonic_mean(real a, real b) -> real"""
     return _cmf_core.harmonic_mean(*args, **kwargs)
 
 def piecewise_linear(*args, **kwargs):
-    """
-    piecewise_linear(real x, real xmin, real xmax, real ymin=0, real ymax=1) -> real
-
-    real piecewise_linear(real
-    x, real xmin, real xmax, real ymin=0, real ymax=1) 
-    """
+    """piecewise_linear(real x, real xmin, real xmax, real ymin=0, real ymax=1) -> real"""
     return _cmf_core.piecewise_linear(*args, **kwargs)
 
 def boltzmann(*args, **kwargs):
-    """
-    boltzmann(real x, real x_half, real tau) -> real
-
-    real boltzmann(real x, real x_half,
-    real tau)
-
-    The boltzmann function, used in cmf at several places where a s-shaped
-    curve is needed.
-
-
-
-    .. math::
-
-        f(x,x_{1/2},\\tau)=\\frac{1}{1+e^{-\\frac{x-x_{1/2}}{tau}}}
-
-
-    """
+    """boltzmann(real x, real x_half, real tau) -> real"""
     return _cmf_core.boltzmann(*args, **kwargs)
 
 def sign(*args, **kwargs):
-    """
-    sign(real x) -> real
-
-    real sign(real x) 
-    """
+    """sign(real x) -> real"""
     return _cmf_core.sign(*args, **kwargs)
 
 def square(*args, **kwargs):
-    """
-    square(real x) -> real
-
-    real square(real x) 
-    """
+    """square(real x) -> real"""
     return _cmf_core.square(*args, **kwargs)
 JULIANDAY_0_1_1900 = _cmf_core.JULIANDAY_0_1_1900
 class Time(object):
@@ -4727,7 +4670,37 @@ ExponentialDeclineConnection_swigregister = _cmf_core.ExponentialDeclineConnecti
 ExponentialDeclineConnection_swigregister(ExponentialDeclineConnection)
 
 class ConstraintLinearStorageConnection(flux_connection):
-    """Proxy of C++ cmf::water::ConstraintLinearStorageConnection class."""
+    """
+
+
+    Calculates flux out of a storage as a linear function of its volume to
+    a power, constraint by the volume stored in the target storage.
+
+
+
+    .. math::
+
+         q = \\frac {1}{t_r} \\left({V_{l} - V_{l,min}}\\right)
+        \\cdot \\left(\\frac{V_{r,max}-V_{r}}{V_{r,max}}\\right)
+
+    where:  :math:`V_l` The actual volume stored by the left water storage
+
+    :math:`V_{l,min} [m^3]` The volume of water not flowing out (default = 0)
+
+    :math:`\\beta` A parameter to shape the response curve. In case of
+    :math:`\\beta \\neq 1`, :math:`t_r` is not a residence time, but just a
+    parameter.
+
+    :math:`t_r [days]` The residence time of the water in this storage in days
+
+    :math:`V_{r,max}` The capacity of the right water storage in m3
+
+    :math:`V_{r}` The actual volume of the right water storage
+
+    :math:`\\gamma` A shape parameter for the target capacity constriction
+
+    C++ includes: simple_connections.h 
+    """
 
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
     __repr__ = _swig_repr
@@ -4736,7 +4709,39 @@ class ConstraintLinearStorageConnection(flux_connection):
     Vrmax = _swig_property(_cmf_core.ConstraintLinearStorageConnection_Vrmax_get, _cmf_core.ConstraintLinearStorageConnection_Vrmax_set)
 
     def __init__(self, *args, **kwargs):
-        """__init__(cmf::water::ConstraintLinearStorageConnection self, cmf::water::WaterStorage::ptr source, cmf::water::WaterStorage::ptr target, real residencetime=1.0, real Vlmin=0.0, real Vrmax=1.0) -> ConstraintLinearStorageConnection"""
+        """
+        __init__(cmf::water::ConstraintLinearStorageConnection self, cmf::water::WaterStorage::ptr source, cmf::water::WaterStorage::ptr target, real residencetime=1.0, real Vlmin=0.0, real Vrmax=1.0) -> ConstraintLinearStorageConnection
+
+        ConstraintLinearStorageConnection(WaterStorage::ptr source,
+        WaterStorage::ptr target, real residencetime=1.0, real Vlmin=0.0, real
+        Vrmax=1.0)
+
+        Creates a kinematic wave connection.
+
+
+
+        .. math::
+
+             q = \\frac 1 {t_r} {\\left(\\frac{V - V_{residual}}{V_0}
+            \\right)^\\beta} 
+
+        Parameters:
+        -----------
+
+        source:  Water storage from which the water flows out. Flux is a
+        function of source.volume
+
+        target:  Target node (boundary condition or storage). Does not
+        influence the strength of the flow
+
+        residencetime:   :math:`t_r [days]` The residence time of the water in this
+        storage
+
+        Vlmin:   :math:`V_{l,min} [m^3]` The volume of water not flowing out
+        (default = 0)
+
+        Vrmax:   :math:`V_{r,max}` Capacity of the target water storage in m3 
+        """
         _cmf_core.ConstraintLinearStorageConnection_swiginit(self, _cmf_core.new_ConstraintLinearStorageConnection(*args, **kwargs))
     __swig_destroy__ = _cmf_core.delete_ConstraintLinearStorageConnection
 ConstraintLinearStorageConnection_swigregister = _cmf_core.ConstraintLinearStorageConnection_swigregister
@@ -7377,12 +7382,22 @@ class Cell(StateVariableOwner):
     Id = _swig_property(_cmf_core.Cell_Id_get, _cmf_core.Cell_Id_set)
 
     def get_WKB(self, *args, **kwargs):
-        """get_WKB(Cell self) -> cmf::bytestring"""
+        """
+        get_WKB(Cell self) -> cmf::bytestring
+
+        cmf::bytestring
+        get_WKB() const 
+        """
         return _cmf_core.Cell_get_WKB(self, *args, **kwargs)
 
 
     def set_WKB(self, *args, **kwargs):
-        """set_WKB(Cell self, cmf::bytestring wkb)"""
+        """
+        set_WKB(Cell self, cmf::bytestring wkb)
+
+        void
+        set_WKB(cmf::bytestring wkb) 
+        """
         return _cmf_core.Cell_set_WKB(self, *args, **kwargs)
 
 
