@@ -235,11 +235,8 @@ namespace cmf {
 			/// @param source Water storage from which the water flows out. Flux is a function of source.volume
 			/// @param target Target node (boundary condition or storage). Does not influence the strength of the flow
 			/// @param residencetime \f$t_r [days]\f$ The residence time of the water in this storage
-			/// @param exponent \f$\beta [-]\f$ An empirical exponent to shape the flux function (default = 1 (linear function))
-			/// @param residual \f$V_{residual} [m^3]\f$ The volume of water not flowing out (default = 0)
-			/// @param V0 \f$V_0\f$ The reference volume to scale the exponent
+			/// @param Vlmin \f$V_{l,min} [m^3]\f$ The volume of water not flowing out (default = 0)
 			/// @param Vrmax \f$V_{r,max}\f$ Capacity of the target water storage in m3
-			/// @param gamma \f$\gamma\f$ Target capacity constriction curve shape
 			ConstraintLinearStorageConnection(WaterStorage::ptr source, WaterStorage::ptr target, 
 				real residencetime = 1.0, real Vlmin = 0.0, real Vrmax = 1.0);
 		};
