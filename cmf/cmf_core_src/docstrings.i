@@ -1682,6 +1682,12 @@ If no canopy storage is present, it returns 0.0 (=empty). The fraction
 of wet leaves are calculated as the linear filling of the canopy
 storage. ";
 
+%feature("docstring")  cmf::upslope::Cell::get_WKB "cmf::bytestring
+get_WKB() const ";
+
+%feature("docstring")  cmf::upslope::Cell::set_WKB "void
+set_WKB(cmf::bytestring wkb) ";
+
 %feature("docstring")  cmf::upslope::Cell::get_project "cmf::project&
 get_project() const ";
 
@@ -2547,6 +2553,161 @@ std::string short_string() const ";
 %feature("docstring")
 cmf::water::constraint_kinematic_wave::to_string "virtual std::string
 to_string() const ";
+
+
+// File: classcmf_1_1water_1_1_constraint_linear_storage_connection.xml
+%feature("docstring") cmf::water::ConstraintLinearStorageConnection "
+
+Calculates flux out of a storage as a linear function of its volume to
+a power, constraint by the volume stored in the target storage.
+
+
+
+.. math::
+
+     q = \\\\frac {1}{t_r} \\\\left({V_{l} - V_{l,min}}\\\\right)
+    \\\\cdot \\\\left(\\\\frac{V_{r,max}-V_{r}}{V_{r,max}}\\\\right)
+
+where:  :math:`V_l` The actual volume stored by the left water storage
+
+:math:`V_{l,min} [m^3]` The volume of water not flowing out (default = 0)
+
+:math:`\\\\beta` A parameter to shape the response curve. In case of
+:math:`\\\\beta \\\\neq 1`, :math:`t_r` is not a residence time, but just a
+parameter.
+
+:math:`t_r [days]` The residence time of the water in this storage in days
+
+:math:`V_{r,max}` The capacity of the right water storage in m3
+
+:math:`V_{r}` The actual volume of the right water storage
+
+:math:`\\\\gamma` A shape parameter for the target capacity constriction
+
+C++ includes: simple_connections.h ";
+
+%feature("docstring")
+cmf::water::ConstraintLinearStorageConnection::ConstraintLinearStorageConnection
+"ConstraintLinearStorageConnection(WaterStorage::ptr source,
+WaterStorage::ptr target, real residencetime=1.0, real Vlmin=0.0, real
+Vrmax=1.0)
+
+Creates a kinematic wave connection.
+
+
+
+.. math::
+
+     q = \\\\frac 1 {t_r} {\\\\left(\\\\frac{V - V_{residual}}{V_0}
+    \\\\right)^\\\\beta} 
+
+Parameters:
+-----------
+
+source:  Water storage from which the water flows out. Flux is a
+function of source.volume
+
+target:  Target node (boundary condition or storage). Does not
+influence the strength of the flow
+
+residencetime:   :math:`t_r [days]` The residence time of the water in this
+storage
+
+Vlmin:   :math:`V_{l,min} [m^3]` The volume of water not flowing out
+(default = 0)
+
+Vrmax:   :math:`V_{r,max}` Capacity of the target water storage in m3 ";
+
+%feature("docstring")
+cmf::water::ConstraintLinearStorageConnection::conc "real
+conc(cmf::math::Time t, const cmf::water::solute &_Solute)
+
+Returns the concentration of the flux.
+
+If not overridden, it returns the concentration of the source of the
+flux (direction depending) ";
+
+%feature("docstring")
+cmf::water::ConstraintLinearStorageConnection::exchange_target "void
+exchange_target(flux_node::ptr oldtarget, flux_node::ptr newTarget) ";
+
+%feature("docstring")
+cmf::water::ConstraintLinearStorageConnection::get_ptr "ptr get_ptr()
+const ";
+
+%feature("docstring")
+cmf::water::ConstraintLinearStorageConnection::get_target "flux_node::ptr get_target(const flux_node &inquirer)
+
+Returns the other end of a connection than the asking end. ";
+
+%feature("docstring")
+cmf::water::ConstraintLinearStorageConnection::get_target "flux_node::ptr get_target(int index) const
+
+With index 0, the left node is returned, with index 1 the right node
+of the connection. ";
+
+%feature("docstring")
+cmf::water::ConstraintLinearStorageConnection::get_tracer_filter "real get_tracer_filter()
+
+A value ranging from 0 to 1 to filter tracers out of the water flux.
+
+1.0 is no filter and 0.0 means no solute is crossing this connection
+";
+
+%feature("docstring")
+cmf::water::ConstraintLinearStorageConnection::get_tracer_filter "real get_tracer_filter(solute S)
+
+A value ranging from 0 to 1 to filter tracers out of the water flux.
+";
+
+%feature("docstring")
+cmf::water::ConstraintLinearStorageConnection::kill_me "bool
+kill_me()
+
+Deregisters this connection from its nodes. Returns true if only one
+reference is left. ";
+
+%feature("docstring")
+cmf::water::ConstraintLinearStorageConnection::left_node "flux_node::ptr left_node() const
+
+Returns the left node of this connection. ";
+
+%feature("docstring")
+cmf::water::ConstraintLinearStorageConnection::q "real q(const
+flux_node &inquirer, cmf::math::Time t)
+
+Returns the current flux through a connection. Negative signs mean out
+of the inquirer, positive are inflows to the inquirer. ";
+
+%feature("docstring")
+cmf::water::ConstraintLinearStorageConnection::refresh "void
+refresh(cmf::math::Time t)
+
+Performes a new calculation of the flux. ";
+
+%feature("docstring")
+cmf::water::ConstraintLinearStorageConnection::right_node "flux_node::ptr right_node() const
+
+returns the right node of this connection ";
+
+%feature("docstring")
+cmf::water::ConstraintLinearStorageConnection::set_tracer_filter "void set_tracer_filter(real value)
+
+A value ranging from 0 to 1 to filter tracers out of the water flux.
+
+1.0 is no filter and 0.0 means no solute is crossing this connection
+";
+
+%feature("docstring")
+cmf::water::ConstraintLinearStorageConnection::set_tracer_filter "void set_tracer_filter(solute S, real value) ";
+
+%feature("docstring")
+cmf::water::ConstraintLinearStorageConnection::short_string "virtual
+std::string short_string() const ";
+
+%feature("docstring")
+cmf::water::ConstraintLinearStorageConnection::to_string "virtual
+std::string to_string() const ";
 
 
 // File: classcmf_1_1upslope_1_1_e_t_1_1_content_stress.xml
@@ -18667,8 +18828,8 @@ N_Vector r, N_Vector z, int lr) ";
 
 
 // File: real_8h.xml
-%feature("docstring")  boltzmann "real boltzmann(real x, real x_half,
-real tau)
+%feature("docstring")  cmf::boltzmann "real boltzmann(real x, real
+x_half, real tau)
 
 The boltzmann function, used in cmf at several places where a s-shaped
 curve is needed.
@@ -18681,28 +18842,30 @@ curve is needed.
 
 ";
 
-%feature("docstring")  geo_mean "real geo_mean(real a, real b) ";
+%feature("docstring")  cmf::geo_mean "real geo_mean(real a, real b)
+";
 
-%feature("docstring")  harmonic_mean "real harmonic_mean(real a, real
-b) ";
+%feature("docstring")  cmf::harmonic_mean "real harmonic_mean(real a,
+real b) ";
 
-%feature("docstring")  maximum "real maximum(real a, real b) ";
+%feature("docstring")  cmf::maximum "real maximum(real a, real b) ";
 
-%feature("docstring")  mean "real mean(real a, real b) ";
+%feature("docstring")  cmf::mean "real mean(real a, real b) ";
 
-%feature("docstring")  minimum "real minimum(real a, real b)
+%feature("docstring")  cmf::minimum "real minimum(real a, real b)
 
 Returns the minimum of two values. ";
 
-%feature("docstring")  minmax "real minmax(real x, real min, real
-max) ";
+%feature("docstring")  cmf::minmax "real minmax(real x, real min,
+real max) ";
 
-%feature("docstring")  piecewise_linear "real piecewise_linear(real
-x, real xmin, real xmax, real ymin=0, real ymax=1) ";
+%feature("docstring")  cmf::piecewise_linear "real
+piecewise_linear(real x, real xmin, real xmax, real ymin=0, real
+ymax=1) ";
 
-%feature("docstring")  sign "real sign(real x) ";
+%feature("docstring")  cmf::sign "real sign(real x) ";
 
-%feature("docstring")  square "real square(real x) ";
+%feature("docstring")  cmf::square "real square(real x) ";
 
 
 // File: spline_8h.xml
