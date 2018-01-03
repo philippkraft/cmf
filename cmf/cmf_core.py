@@ -2591,7 +2591,7 @@ class MultiIntegrator(Integrator):
     of the integrators should not have direct connections over integrator
     boundaries.
 
-    C++ includes: multiintegrator.h 
+    C++ includes: MultiIntegrator.h 
     """
 
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
@@ -4673,8 +4673,8 @@ class ConstraintLinearStorageConnection(flux_connection):
     """
 
 
-    Calculates flux out of a storage as a linear function of its volume to
-    a power, constraint by the volume stored in the target storage.
+    Calculates flux out of a storage as a linear function of its volume,
+    constraint by the volume stored in the target storage.
 
 
 
@@ -4716,14 +4716,15 @@ class ConstraintLinearStorageConnection(flux_connection):
         WaterStorage::ptr target, real residencetime=1.0, real Vlmin=0.0, real
         Vrmax=1.0)
 
-        Creates a kinematic wave connection.
-
-
+        Creates a linear storage connection, constrained by the fill level of
+        the source 
 
         .. math::
 
-             q = \\frac 1 {t_r} {\\left(\\frac{V - V_{residual}}{V_0}
-            \\right)^\\beta} 
+             q = \\frac 1 {t_r} {\\left(\\frac{V -
+            V_{residual}}{V_0} \\right)^\\beta} 
+
+        .
 
         Parameters:
         -----------
@@ -6037,7 +6038,7 @@ class Meteorology(object):
     An abstract class, for objects generating Weather records at a
     specific time.
 
-    C++ includes: meteorology.h 
+    C++ includes: Meteorology.h 
     """
 
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
@@ -6104,7 +6105,7 @@ class ConstantMeteorology(Meteorology):
 
     Holds a Weather record and returns it for any date
 
-    C++ includes: meteorology.h 
+    C++ includes: Meteorology.h 
     """
 
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
@@ -6163,7 +6164,7 @@ class MeteoStation(object):
     the dial ETpot variation but results in erronous results if the
     timestep is daily.
 
-    C++ includes: meteorology.h 
+    C++ includes: Meteorology.h 
     """
 
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
@@ -6229,7 +6230,7 @@ class MeteoStation(object):
         SetSunshineFraction(cmf::math::timeseries sunshine_duration)
 
         Calculates a timeseries of the sunshine fraction (to put into
-        Sunshine) from a timeseries of absolute sunshine duration.
+        Sunshine) from a timeseries of absolute sunshine duration
 
         seehttp://www.fao.org/docrep/X0490E/x0490e07.htm#radiation
 
@@ -6293,7 +6294,7 @@ class MeteoStationReference(Meteorology):
     Returns the weather at a given time for its place using
     MeteoStation::T_lapse
 
-    C++ includes: meteorology.h 
+    C++ includes: Meteorology.h 
     """
 
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
@@ -6357,7 +6358,7 @@ class MeteoStationList(object):
     Can find the nearest station for a position and calculate the
     temperature lapse
 
-    C++ includes: meteorology.h 
+    C++ includes: Meteorology.h 
     """
 
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
@@ -6506,7 +6507,7 @@ class IDW_Meteorology(Meteorology):
 
     See:  IDW
 
-    C++ includes: meteorology.h 
+    C++ includes: Meteorology.h 
     """
 
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
@@ -6546,7 +6547,7 @@ class aerodynamic_resistance(object):
     Abstract class. Child classes can be used to calculate aerodynamic
     resistances against turbulent heat fluxes.
 
-    C++ includes: meteorology.h 
+    C++ includes: Meteorology.h 
     """
 
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')

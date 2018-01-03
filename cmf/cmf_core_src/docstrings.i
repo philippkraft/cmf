@@ -83,7 +83,7 @@ V:   :math:`V m^3` the water volume in the storage
 Abstract class. Child classes can be used to calculate aerodynamic
 resistances against turbulent heat fluxes.
 
-C++ includes: meteorology.h ";
+C++ includes: Meteorology.h ";
 
 %feature("docstring")
 cmf::atmosphere::aerodynamic_resistance::~aerodynamic_resistance "virtual ~aerodynamic_resistance() ";
@@ -2221,7 +2221,7 @@ A primitive implementation of the Meteorology interface.
 
 Holds a Weather record and returns it for any date
 
-C++ includes: meteorology.h ";
+C++ includes: Meteorology.h ";
 
 %feature("docstring")
 cmf::atmosphere::ConstantMeteorology::ConstantMeteorology "ConstantMeteorology()
@@ -2558,8 +2558,8 @@ to_string() const ";
 // File: classcmf_1_1water_1_1_constraint_linear_storage_connection.xml
 %feature("docstring") cmf::water::ConstraintLinearStorageConnection "
 
-Calculates flux out of a storage as a linear function of its volume to
-a power, constraint by the volume stored in the target storage.
+Calculates flux out of a storage as a linear function of its volume,
+constraint by the volume stored in the target storage.
 
 
 
@@ -2592,14 +2592,15 @@ cmf::water::ConstraintLinearStorageConnection::ConstraintLinearStorageConnection
 WaterStorage::ptr target, real residencetime=1.0, real Vlmin=0.0, real
 Vrmax=1.0)
 
-Creates a kinematic wave connection.
-
-
+Creates a linear storage connection, constrained by the fill level of
+the source 
 
 .. math::
 
-     q = \\\\frac 1 {t_r} {\\\\left(\\\\frac{V - V_{residual}}{V_0}
-    \\\\right)^\\\\beta} 
+     q = \\\\frac 1 {t_r} {\\\\left(\\\\frac{V -
+    V_{residual}}{V_0} \\\\right)^\\\\beta} 
+
+.
 
 Parameters:
 -----------
@@ -5696,7 +5697,7 @@ distance weighted (IDW) method.
 
 See:  IDW
 
-C++ includes: meteorology.h ";
+C++ includes: Meteorology.h ";
 
 %feature("docstring")
 cmf::atmosphere::IDW_Meteorology::IDW_Meteorology "IDW_Meteorology(const cmf::geometry::point &position, const
@@ -8793,7 +8794,7 @@ V(double h) const ";
 An abstract class, for objects generating Weather records at a
 specific time.
 
-C++ includes: meteorology.h ";
+C++ includes: Meteorology.h ";
 
 %feature("docstring")  cmf::atmosphere::Meteorology::~Meteorology "virtual ~Meteorology() ";
 
@@ -8839,7 +8840,7 @@ daily=false, Radiation is given as an hourly mean value, which shows
 the dial ETpot variation but results in erronous results if the
 timestep is daily.
 
-C++ includes: meteorology.h ";
+C++ includes: Meteorology.h ";
 
 /*  Location and behaviour properties  */
 
@@ -8862,7 +8863,7 @@ cmf::atmosphere::MeteoStation::SetSunshineFraction "void
 SetSunshineFraction(cmf::math::timeseries sunshine_duration)
 
 Calculates a timeseries of the sunshine fraction (to put into
-Sunshine) from a timeseries of absolute sunshine duration.
+Sunshine) from a timeseries of absolute sunshine duration
 
 seehttp://www.fao.org/docrep/X0490E/x0490e07.htm#radiation
 
@@ -8895,7 +8896,7 @@ A list of meteorological stations.
 Can find the nearest station for a position and calculate the
 temperature lapse
 
-C++ includes: meteorology.h ";
+C++ includes: Meteorology.h ";
 
 %feature("docstring")
 cmf::atmosphere::MeteoStationList::MeteoStationList "MeteoStationList()
@@ -8984,7 +8985,7 @@ A reference to a meteorological station.
 Returns the weather at a given time for its place using
 MeteoStation::T_lapse
 
-C++ includes: meteorology.h ";
+C++ includes: Meteorology.h ";
 
 %feature("docstring")
 cmf::atmosphere::MeteoStationReference::MeteoStationReference "MeteoStationReference(MeteoStation::ptr station, cmf::geometry::point
@@ -9036,7 +9037,7 @@ The MultiIntegrator is a wrapper for a bunch integrators. The states
 of the integrators should not have direct connections over integrator
 boundaries.
 
-C++ includes: multiintegrator.h ";
+C++ includes: MultiIntegrator.h ";
 
 /*  Accuracy parameters  */
 
@@ -17864,7 +17865,7 @@ boundary condition, providing the potential of the lower node. ";
 %feature("docstring")  std::isfinite "bool std::isfinite(double v) ";
 
 
-// File: meteorology_8h.xml
+// File: _meteorology_8h.xml
 
 
 // File: precipitation_8h.xml
@@ -17894,7 +17895,7 @@ boundary condition, providing the potential of the lower node. ";
 // File: integrator_8h.xml
 
 
-// File: multiintegrator_8h.xml
+// File: _multi_integrator_8h.xml
 
 
 // File: _r_k_fintegrator_8h.xml

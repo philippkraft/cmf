@@ -6,9 +6,10 @@ python doxy2swig.py doxy\xml\index.xml cmf\cmf_core_src\docstrings-doxy.i
 python docstrings2rest.py cmf\cmf_core_src\docstrings-doxy.i >cmf\cmf_core_src\docstrings.i
 echo Created rest complient docstrings in docstrings.i 
 :build
-if "x%1x"=="xcleanx" goto clean
+if not "x%1x"=="xswigx" goto install
 call build.bat
 if ERRORLEVEL 1 goto error
+:install
 python setup.py install
 if ERRORLEVEL 1 goto error
 
@@ -17,9 +18,7 @@ python setup.py bdist_wheel
 if ERRORLEVEL 1 goto error
 
 goto end
-:clean
-del build /s /q
-goto end
+
 :error
 echo ************************
 echo Installation had error !
