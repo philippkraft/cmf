@@ -5,6 +5,7 @@ The API is likely to change some day
 """
 
 import cmf
+import cmf.geometry
 import numpy as np
 from cmf.geos_shapereader import Shapefile
 from cmf.cell_factory import cells_from_polygons
@@ -96,12 +97,15 @@ def create_project(subsurface_lateral_connection,
                    layercount=0):
 
     p = cmf.project()
-
     shp = Shapefile('data/soil_lu_gw.shp')
-    cells = cells_from_polygons(p, shp)
 
-    for c in p:
+    # Create cells
+    for feature in shp:
+        c = cmf.geometry.create_cell(p, feature.shape, feature.HEIGHT, feature.OID)
         build_cell(c, layercount)
+
+    # Build topology
+    cmf.geometry.mesh_project(p, verbose = True)
 
     cmf.connect_cells_with_flux(p, subsurface_lateral_connection)
     cmf.connect_cells_with_flux(p, surface_lateral_connection)
@@ -110,7 +114,7 @@ def create_project(subsurface_lateral_connection,
 
     return p
 
-p = create_project(cmf.DarcyKinematic, cmf.KinematicSurfaceRunoff)
+p = create_project(cmf.DarcyKinematic, cmf.KinematicSurfaceRunoff, 1)
 
 print(cmf.describe(p))
 

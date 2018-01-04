@@ -21,7 +21,8 @@ from .cmf_core import *
 from .describe import describe
 from .stopwatch import StopWatch
 
-__version__ = '1.1.1'
+
+__version__ = '1.1.2a0'
 
 from .cmf_core import connect_cells_with_flux as __ccwf
 
@@ -39,29 +40,3 @@ def connect_cells_with_flux(cells, connection, start_at_layer=0):
         raise TypeError("flux_connection does not implement the cell_connector protocol")
 
 
-def __add_geometry_property():
-
-    # If shapely is available, add a geometry property to Cell, that consists of a shapely geometry
-    try:
-        from shapely.wkb import loads as __load_wkb
-        from shapely.geos import WKBReadingError as WKBReadingError
-        def get_geometry(c):
-            try:
-                return __load_wkb(c.get_WKB())
-            except (TypeError, WKBReadingError):
-                return None
-
-        def set_geometry(c, geom):
-            c.set_WKB(geom.wkb)
-
-        def del_geometry(c):
-            c.set_WKB(b'')
-
-        prop = property(get_geometry, set_geometry, del_geometry, 'Geometry of the cell')
-        setattr(Cell, 'geometry', prop)
-
-    except ImportError:
-        __load_wkb = None
-
-
-__add_geometry_property()

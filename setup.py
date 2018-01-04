@@ -29,7 +29,7 @@ from setuptools.command.build_ext import build_ext
 from distutils.sysconfig import get_config_var, customize_compiler
 
 
-version = '1.1.1'
+version = '1.1.2a0'
 
 # Try to import numpy, if it fails we have a problem 
 try:
@@ -222,7 +222,6 @@ if __name__ == '__main__':
         'Programming Language :: C',
         'Programming Language :: Python',
         'Programming Language :: Python :: 2.7',
-        'Programming Language :: Python :: 3.4',
         'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: 3.6',
         'Topic :: Scientific/Engineering',
@@ -233,7 +232,7 @@ if __name__ == '__main__':
           version=version,
           license='GPL',
           ext_modules=ext,
-          packages=['cmf', 'cmf.draw'],
+          packages=['cmf', 'cmf.draw', 'cmf.geometry'],
           python_requires='>=2.7',
           keywords='hydrology catchment simulation toolbox',
           author='Philipp Kraft',
