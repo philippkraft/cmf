@@ -482,6 +482,7 @@
     <None Include="cmf\cmf_core_src\math\test_array.i" />
     <None Include="cmf\cmf_core_src\math\time.i" />
     <None Include="cmf\cmf_core_src\water\water.i" />
+    <None Include="setup.py" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

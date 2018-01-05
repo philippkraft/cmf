@@ -105,7 +105,7 @@ def create_project(subsurface_lateral_connection,
         build_cell(c, layercount)
 
     # Build topology
-    cmf.geometry.mesh_project(p, verbose = True)
+    cmf.geometry.mesh_project(p, verbose=True)
 
     cmf.connect_cells_with_flux(p, subsurface_lateral_connection)
     cmf.connect_cells_with_flux(p, surface_lateral_connection)
