@@ -1,0 +1,4 @@
+<map id="ConstantMeteorology" name="ConstantMeteorology">
+<area shape="rect" id="node2" href="$classcmf_1_1atmosphere_1_1_meteorology.html" title="An abstract class, for objects generating Weather records at a specific time. " alt="" coords="5,5,99,32"/>
+<area shape="rect" id="node3" href="$structcmf_1_1atmosphere_1_1_weather.html" title="Weather" alt="" coords="123,5,194,32"/>
+</map>
