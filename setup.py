@@ -23,7 +23,7 @@ import sys
 import os
 import io
 import datetime
-from macspecial import *
+#from macspecial import *
 
 version = '1.0.4a'
 
@@ -138,41 +138,21 @@ def make_cmf_core(swig, openmp):
         link_args=["/DEBUG"]
 
     else:
-
-        if os.sys.platform == 'darwin':
-            # TODO: Benjamin, this is to specific!
-            mac_fix_boost()
-
-            #os.environ["CC"] = "gcc-7"
-            #os.environ["CXX"] = "g++-7"
-            #os.environ["CC"] = "clang"
-            #os.environ["CXX"] = "clang++"
-            #os.environ["ARCHFLAGS"]="-arch x86_64"
-            #os.environ["CFLAGS"]="-O0"
-
-            #include_dirs += ["/usr/local/Cellar/gcc/7.1.0/include/c++/7.1.0/"]
-            #include_dirs += ["/usr/include/"]
-
-
         # Remove the annoying warning because of "-Wstrict-prototypes" deprecated
         # by https://stackoverflow.com/a/9740721/5885054
         opt = get_config_var('OPT')
         os.environ['OPT'] = " ".join(
                                      flag for flag in opt.split() if flag != '-Wstrict-prototypes'
         )
-        #compile_args=['-Wno-comment','-Wno-reorder','-Wno-unused','-Wno-sign-compare','-ggdb','-std=c++11']
         compile_args = ['-Wno-comment', '-Wno-reorder', '-Wno-unused', '-Wno-sign-compare', '-ggdb']
-        if openmp: compile_args.append('-fopenmp')
-        link_args=["-fopenmp"] if openmp else []
+        if openmp and os.sys.platform != 'darwin': compile_args.append('-fopenmp')
+        link_args=["-fopenmp"] if openmp and os.sys.platform != 'darwin' else []
         link_args.append('-ggdb')
 
-        if openmp and os.sys.platform != 'darwin':
+        if openmp:
             libraries = ['gomp']
-        elif openmp and os.sys.platform == 'darwin':
-            libraries = ['omp']
         else:
             libraries = None
-
 
     
     # Get the source files
