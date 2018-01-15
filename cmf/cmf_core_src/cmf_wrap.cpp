@@ -65720,20 +65720,6 @@ SWIGINTERN PyObject *Manning_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObje
   return SWIG_Py_Void();
 }
 
-SWIGINTERN int Swig_var_Manning_Diffusive_cell_connector_set(PyObject *) {
-  SWIG_Error(SWIG_AttributeError,"Variable Manning_Diffusive_cell_connector is read-only.");
-  return 1;
-}
-
-
-SWIGINTERN PyObject *Swig_var_Manning_Diffusive_cell_connector_get(void) {
-  PyObject *pyobj = 0;
-  
-  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(&cmf::river::Manning_Diffusive::cell_connector), SWIGTYPE_p_cmf__upslope__CellConnector,  0 );
-  return pyobj;
-}
-
-
 SWIGINTERN PyObject *_wrap_Manning_Diffusive_linear_slope_width_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   cmf::river::Manning_Diffusive *arg1 = (cmf::river::Manning_Diffusive *) 0 ;
@@ -65891,20 +65877,6 @@ SWIGINTERN PyObject *Manning_Diffusive_swigregister(PyObject *SWIGUNUSEDPARM(sel
 SWIGINTERN PyObject *Manning_Diffusive_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   return SWIG_Python_InitShadowInstance(args);
 }
-
-SWIGINTERN int Swig_var_Manning_Kinematic_cell_connector_set(PyObject *) {
-  SWIG_Error(SWIG_AttributeError,"Variable Manning_Kinematic_cell_connector is read-only.");
-  return 1;
-}
-
-
-SWIGINTERN PyObject *Swig_var_Manning_Kinematic_cell_connector_get(void) {
-  PyObject *pyobj = 0;
-  
-  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(&cmf::river::Manning_Kinematic::cell_connector), SWIGTYPE_p_cmf__upslope__CellConnector,  0 );
-  return pyobj;
-}
-
 
 SWIGINTERN PyObject *_wrap_new_Manning_Kinematic(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
@@ -84105,8 +84077,6 @@ SWIG_init(void) {
   SWIG_addvarlink(SWIG_globals(),(char *)"TopographicGradientDarcy_cell_connector",Swig_var_TopographicGradientDarcy_cell_connector_get, Swig_var_TopographicGradientDarcy_cell_connector_set);
   SWIG_addvarlink(SWIG_globals(),(char *)"DarcyKinematic_cell_connector",Swig_var_DarcyKinematic_cell_connector_get, Swig_var_DarcyKinematic_cell_connector_set);
   SWIG_addvarlink(SWIG_globals(),(char *)"Richards_lateral_cell_connector",Swig_var_Richards_lateral_cell_connector_get, Swig_var_Richards_lateral_cell_connector_set);
-  SWIG_addvarlink(SWIG_globals(),(char *)"Manning_Diffusive_cell_connector",Swig_var_Manning_Diffusive_cell_connector_get, Swig_var_Manning_Diffusive_cell_connector_set);
-  SWIG_addvarlink(SWIG_globals(),(char *)"Manning_Kinematic_cell_connector",Swig_var_Manning_Kinematic_cell_connector_get, Swig_var_Manning_Kinematic_cell_connector_set);
 #if PY_VERSION_HEX >= 0x03000000
   return m;
 #else

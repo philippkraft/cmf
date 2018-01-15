@@ -11264,7 +11264,6 @@ class Manning_Diffusive(Manning):
     __swig_destroy__ = _cmf_core.delete_Manning_Diffusive
 Manning_Diffusive_swigregister = _cmf_core.Manning_Diffusive_swigregister
 Manning_Diffusive_swigregister(Manning_Diffusive)
-Manning_Diffusive.cell_connector = _cmf_core.cvar.Manning_Diffusive_cell_connector
 
 class Manning_Kinematic(Manning):
     """
@@ -11316,7 +11315,6 @@ class Manning_Kinematic(Manning):
     __swig_destroy__ = _cmf_core.delete_Manning_Kinematic
 Manning_Kinematic_swigregister = _cmf_core.Manning_Kinematic_swigregister
 Manning_Kinematic_swigregister(Manning_Kinematic)
-Manning_Kinematic.cell_connector = _cmf_core.cvar.Manning_Kinematic_cell_connector
 
 class CanopyOverflow(flux_connection):
     """
