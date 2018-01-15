@@ -62,38 +62,6 @@ Manning* create_manning( cmf::river::OpenWaterStorage::ptr left,cmf::water::flux
 	}
 }
 
-void cmf::river::Manning::connect_cells( cmf::upslope::Cell& c1,cmf::upslope::Cell& c2,bool diffusive)
-{
-	static bool DeprecatedWarning = true;
-	if (DeprecatedWarning) {
-		std::cerr << "Depreciation Warning: connect_cells_with_flux(cmf.Manning_Kinematic)" << std::endl << std::endl
-				  << "Manning_Kinematic and Manning_Diffusive are designed for channel runoff. " << std::endl
-				  << "Automatic connection of surface water storages using 'connect_cells_with_flux' " << std::endl
-				  << "is depreciated and will be removed in the future. Use KinematicSurfaceRunoff or" << std::endl 
-				  << "DiffusiveSurfaceRunoff instead." << std::endl;
-		DeprecatedWarning = false;
-	}
-	real w=c1.get_topology().flowwidth(c2);
-	real d=c1.get_position().distanceTo(c2.get_position());
-	if (w<=0) return;
-	RectangularReach r_type(d,w);
-	OpenWaterStorage::ptr sows1= OpenWaterStorage::cast(c1.get_surfacewater());
-	OpenWaterStorage::ptr sows2= OpenWaterStorage::cast(c2.get_surfacewater());
-	if (sows1)
-		create_manning(sows1,c2.get_surfacewater(),r_type,diffusive);
-	else if (sows2)
-		create_manning(sows2,c1.get_surfacewater(),r_type,diffusive);
-	else
-		throw std::runtime_error("Surface water of " + c1.to_string() + " and " + c2.to_string() + " were not connected with Manning's equation. Missing storages.");
-}
-
-
-const cmf::upslope::CellConnector
-	cmf::river::Manning_Kinematic::cell_connector
-				= cmf::upslope::CellConnector(&connect_cells),
-	cmf::river::Manning_Diffusive::cell_connector
-				= cmf::upslope::CellConnector(&connect_cells);
-
 
 real cmf::river::Manning_Kinematic::get_slope(cmf::water::flux_node::ptr lnode, cmf::water::flux_node::ptr rnode, real d)
 {

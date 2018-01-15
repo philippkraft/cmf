@@ -91,7 +91,6 @@ def build_cell(c, layercount=0):
     c.install_connection(cmf.PenmanMonteithET)
 
 
-
 def create_project(subsurface_lateral_connection,
                    surface_lateral_connection,
                    layercount=0):
@@ -113,6 +112,7 @@ def create_project(subsurface_lateral_connection,
     load_meteo(p)
 
     return p
+
 
 p = create_project(cmf.DarcyKinematic, cmf.KinematicSurfaceRunoff, 1)
 
