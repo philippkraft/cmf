@@ -1,0 +1,31 @@
+Chaos in site-package paths: /usr/local/lib/python3.6/site-packages
+
+
+up vote
+0
+down vote
+Throwing in another answer: Try checking your PYTHONPATH.
+
+First, try and install wheel again:
+
+pip install wheel
+This should tell you where wheel is installed, eg:
+
+Requirement already satisfied: wheel in /usr/local/lib/python3.5/dist-packages
+Then add the location of wheel to your PYTHONPATH:
+
+export PYTHONPATH=$PYTHONPATH:/usr/local/lib/python3.6/site-packages
+Now building a wheel should work fine.
+
+python setup.py bdist_wheel
+
+
+
+Fixing SO Problem on iMac
+
+
+Analyze ".so"-files: nm
+
+
+
+openmp = False
