@@ -7,7 +7,6 @@ Created on Jan 09 10:39 2018
 import datetime
 import cmf
 import numpy as np
-import pandas as pd
 import unittest
 
 
@@ -241,8 +240,6 @@ class DataProvider:
                 "Prec":[1.14, 1.11, 0.65, 0.02, 0, 0.01, 0.01],
                 "Q":[48.7, 23.2, 16.7, 14, 11.4, 9.63, 8.68]
                 }
-        # Delete first row, as it only contains the units
-        data = pd.DataFrame(data)
 
         def bstr2date(bs):
             """
@@ -251,9 +248,9 @@ class DataProvider:
             return datetime.datetime.strptime(bs, '%d.%m.%Y')
 
         # Get begin, step and end from the date column
-        self.begin = bstr2date(data["date"].iloc[0])
-        self.step = bstr2date(data["date"].iloc[1]) - self.begin
-        self.end = bstr2date(data["date"].iloc[-1])
+        self.begin = bstr2date(data["date"][0])
+        self.step = bstr2date(data["date"][1]) - self.begin
+        self.end = bstr2date(data["date"][-1])
 
         # Read in the data
         self.P = cmf.timeseries.from_sequence(self.begin, self.step,
