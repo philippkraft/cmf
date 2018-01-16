@@ -175,6 +175,8 @@ def make_cmf_core(swig, openmp):
                             '-ggdb']
             if openmp and mac_version > 6:
                 libraries.append('gomp')
+            else:
+                libraries.append('omp')
 
         else:
 
