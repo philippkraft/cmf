@@ -149,7 +149,9 @@ def make_cmf_core(swig, openmp):
         link_args=["-fopenmp"] if openmp and os.sys.platform != 'darwin' else []
         link_args.append('-ggdb')
 
-        if openmp:
+        if openmp and os.sys.platform == 'darwin':
+            libraries = ['omp']
+        if openmp and os.sys.platform != 'darwin':
             libraries = ['gomp']
         else:
             libraries = None
