@@ -6,9 +6,6 @@ Created on Jan 09 10:39 2018
 
 import datetime
 import cmf
-import spotpy
-from spotpy.parameter import Uniform
-import os
 import numpy as np
 import pandas as pd
 import unittest
@@ -33,7 +30,7 @@ class CheckScaling(unittest.TestCase):
             model = ScalingTester(num_cells=num)
             # Get the results and convert from m³/d to m³/s
             sim = model.runmodel() / 86400   
-            NSE = spotpy.objectivefunctions.nashsutcliffe(model.data.Q, sim)
+            NSE = cmf.nash_sutcliffe(sim, model.data.Q)
             NSE = round(NSE, 3)
             results[str(num)] = NSE
     
