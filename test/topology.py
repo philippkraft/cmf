@@ -15,5 +15,5 @@ class TopologyTest(unittest.TestCase):
     def test_neighbor_iterator(self):
         p = get_setup()
         for n, w in p[0].neighbors:
-            self.assertIs(n, p[1])
+            self.assertEqual(n, p[1])
             self.assertEqual(w, 1)
