@@ -42,12 +42,12 @@ def load_meteo(project):
 
     # Load climate data from csv file
     # could be simplified with numpy's 
-    csvfile =  open('data/climate.csv')
+    csvfile = open('data/climate.csv')
     csvfile.readline() # Read the headers, and ignore them
     for line in csvfile:
         # split the line in to columns using commas
         columns = line.split(',')
-        # Get the values, but ignore the date, we have begin and steo
+        # Get the values, but ignore the date, we have begin and step
         # of the data file hardcoded
         # If you don't get this line - it is standard Python, I would recommend the official Python.org tutorial
         for timeseries,value in zip([rain,meteo.Tmax,meteo.Tmin,meteo.rHmean,meteo.Windspeed,meteo.Sunshine],
