@@ -125,33 +125,32 @@ class Model:
         shp = Shapefile('data/vollnkirchner_bach_cells.shp')
 
         # Create cells
-        outlet_cells = []
+        self.outlet_cells = []
         for feature in shp:
+            # Create a cell for each feature in the shape file
             c = cmf.geometry.create_cell(p, feature.shape, feature.HEIGHT, feature.OID, with_surfacewater=False)
 
-            if feature.LANDUSE_CU.starts_with('outlet'):
-                outlet_cells.append(c)
+            # If it is an outlet feature, add cell to the list of outletcells
+            if feature.LANDUSE_CU.startswith('outlet'):
+                self.outlet_cells.append(c)
             else:
+                # If it is a normal upload cell, add layers
                 self.build_cell(c, layercount)
 
         # Build topology
         cmf.geometry.mesh_project(p, verbose=True)
 
+        # Connect cells with fluxes
         cmf.connect_cells_with_flux(p, subsurface_lateral_connection)
         if surface_lateral_connection:
             cmf.connect_cells_with_flux(p, surface_lateral_connection)
 
-        for o_cell in outlet_cells:
+        # Connect outlets with neighbor cells
+        for o_cell in self.outlet_cells:
             self.connect_outlet_cell(o_cell, subsurface_lateral_connection, surface_lateral_connection)
-
-
-
-
-
+        # Load driver data
         load_meteo(p)
-
         self.project = p
-        self.outlet_cells = outlet_cells
 
 if __name__ == '__main__':
 
