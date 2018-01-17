@@ -47693,7 +47693,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_neighbor_iterator_next(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_neighbor_iterator_next_neighbor(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   cmf::upslope::neighbor_iterator *arg1 = (cmf::upslope::neighbor_iterator *) 0 ;
   void *argp1 = 0 ;
@@ -47705,12 +47705,12 @@ SWIGINTERN PyObject *_wrap_neighbor_iterator_next(PyObject *SWIGUNUSEDPARM(self)
   swig_obj[0] = args;
   res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__upslope__neighbor_iterator, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "neighbor_iterator_next" "', argument " "1"" of type '" "cmf::upslope::neighbor_iterator *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "neighbor_iterator_next_neighbor" "', argument " "1"" of type '" "cmf::upslope::neighbor_iterator *""'"); 
   }
   arg1 = reinterpret_cast< cmf::upslope::neighbor_iterator * >(argp1);
   {
     try {
-      result = (cmf::upslope::neighbor_iterator *) &(arg1)->next();
+      result = (cmf::upslope::neighbor_iterator *) &(arg1)->next_neighbor();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -79092,13 +79092,7 @@ static PyMethodDef SwigMethods[] = {
 		"bool\n"
 		"valid() const \n"
 		""},
-	 { (char *)"neighbor_iterator_next", (PyCFunction)_wrap_neighbor_iterator_next, METH_O, (char *)"\n"
-		"neighbor_iterator_next(neighbor_iterator self) -> neighbor_iterator\n"
-		"\n"
-		"neighbor_iterator& next()\n"
-		"\n"
-		"Points the iterator to the next neighbor. \n"
-		""},
+	 { (char *)"neighbor_iterator_next_neighbor", (PyCFunction)_wrap_neighbor_iterator_next_neighbor, METH_O, (char *)"neighbor_iterator_next_neighbor(neighbor_iterator self) -> neighbor_iterator"},
 	 { (char *)"neighbor_iterator___eq__", (PyCFunction) _wrap_neighbor_iterator___eq__, METH_VARARGS | METH_KEYWORDS, (char *)"neighbor_iterator___eq__(neighbor_iterator self, neighbor_iterator cmp) -> bool"},
 	 { (char *)"neighbor_iterator___neq__", (PyCFunction) _wrap_neighbor_iterator___neq__, METH_VARARGS | METH_KEYWORDS, (char *)"neighbor_iterator___neq__(neighbor_iterator self, neighbor_iterator cmp) -> bool"},
 	 { (char *)"delete_neighbor_iterator", (PyCFunction)_wrap_delete_neighbor_iterator, METH_O, (char *)"delete_neighbor_iterator(neighbor_iterator self)"},
