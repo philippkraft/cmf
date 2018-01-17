@@ -17,7 +17,7 @@
 #   along with cmf.  If not, see <http://www.gnu.org/licenses/>.
 #   
 import numpy
-import pylab
+
 try:
     from shapely.geometry import Polygon,MultiPolygon,Point,LineString,MultiLineString,MultiPoint,GeometryCollection
     has_shapely = True
@@ -25,7 +25,9 @@ except ImportError:
     has_shapely = False
     
 if has_shapely:
-    class shape_map(object):
+    import pylab
+
+    class ShapeMap(object):
         """ self.fc_function: A callable taking a feature and returning a color (fillcolor)
         self.lw_function: A callable taking a feature and returning a scalar (line width)
         """
@@ -39,14 +41,14 @@ if has_shapely:
             if pylab.isinteractive():
                 pylab.draw()
                           
-        def __init__(self,features,**kwargs):
-            self.features=features
-            self.fc_function=None
+        def __init__(self, features, **kwargs):
+            self.features = features
+            self.fc_function = None
             self.lw_function=None
             wasinteractive=pylab.isinteractive()
             if wasinteractive: pylab.ioff()
             self.shapes=[]
-            for i,feature in enumerate(self.features):
+            for i, feature in enumerate(self.features):
                 if isinstance(feature.shape, MultiPolygon):
                     self.shapes.append([])
                     for g in feature.shape.geoms:
@@ -62,10 +64,10 @@ if has_shapely:
                         self.shapes[-1].append(pylab.plot(x,y,**kwargs)[0])
                 elif isinstance(feature.shape, LineString):
                     x,y=numpy.asarray(feature.shape.exterior).swapaxes(0,1)
-                    self.shapes.append(plot(x,y,**kwargs))
+                    self.shapes.append(pylab.plot(x,y,**kwargs))
                 elif isinstance(feature.shape, Point):
                     x,y=feature.shape.x,feature.shape.y
-                    self.shapes.append(plot([x],[y],**kwargs)[0])
+                    self.shapes.append(pylab.plot([x],[y],**kwargs)[0])
             pylab.axis('equal')
             if wasinteractive:
                 pylab.ion()
