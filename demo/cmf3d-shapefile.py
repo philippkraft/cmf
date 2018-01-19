@@ -8,7 +8,8 @@ import cmf
 import cmf.geometry
 import numpy as np
 from cmf.geos_shapereader import Shapefile
-from cmf.cell_factory import cells_from_polygons
+import cmf.draw
+
 
 from datetime import datetime, timedelta
 
@@ -95,19 +96,40 @@ class Model:
         c.install_connection(cmf.PenmanMonteithET)
         return c
 
-    def connect_outlet_cell(self, outlet_cell: cmf.Cell, subsurface_lateral_connection,
+    @staticmethod
+    def connect_outlet_cell(outlet_cell: cmf.Cell, subsurface_lateral_connection,
                             surface_lateral_connection):
         o = outlet_cell.surfacewater
         for neighbor, width in outlet_cell.neighbors:
             for l in neighbor.layers:
                 subsurface_lateral_connection(l, o, width)
-            surface_lateral_connection(neighbor.surfacewater, o, width)
+            try:
+                surface_lateral_connection(neighbor.surfacewater, o, width)
+            except TypeError:
+                pass
 
-    def get_outflow(self, t):
-        return sum(o.surfacewater(t) for o in self.outlet_cells)
+    def get_outflow(self, t=None):
+        t = t or self.t
+        return sum(o.surfacewater(t) for o in self.outlet_cells) / self.area * 1000
 
-    def get_rainfall(self, t):
-        return sum(c.get_rainfall(t)/c.area for c in self.project) * 1000
+    def get_rainfall(self, t=None):
+        t = t or self.t
+        return sum(c.get_rainfall(t) for c in self.project) / self.area * 1000
+
+    def get_et(self, t=None):
+        t = t or self.t
+        return sum(c.transpiration(t) + c.evaporation(t) for c in self.project) / self.area * 1000
+
+    def get_volume(self):
+        return sum(sum(s.volume for s in c.storages) for c in self.project) / self.area * 1000
+
+    @property
+    def t(self):
+        return self.solver.t
+
+    @property
+    def area(self):
+        return sum(c.area for c in self.project)
 
     def __init__(self, subsurface_lateral_connection,
                        surface_lateral_connection=None,
@@ -151,9 +173,10 @@ class Model:
         # Load driver data
         load_meteo(p)
         self.project = p
+        self.solver = cmf.CVodeIntegrator(p, 1e-9)
 
 if __name__ == '__main__':
 
-    p = Model(cmf.DarcyKinematic, cmf.KinematicSurfaceRunoff, 1)
-
+    p = Model(cmf.Darcy, cmf.KinematicSurfaceRunoff, 1)
+    cm = cmf.draw.CellMap(p.project, lambda c: c.saturated_depth)
 

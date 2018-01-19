@@ -83,7 +83,7 @@ class CellMap(pylab.matplotlib.cm.ScalarMappable):
 
         if not hasattr(cmf.Cell, 'geometry'):
             raise NotImplementedError('The geometry of the cells can not be used, shapely is not installed')
-
+        self.cmap = cmap
         self.cells=[c for c in cells if c.geometry]
         self.__f = value_function
 
