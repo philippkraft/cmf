@@ -68,23 +68,30 @@ def updateversion():
         cmf/__init__.py: set __version__ constant
         Doxyfile: set PROJECT_NUMBER
     """
-
-    module_code = open('cmf/__init__.py').readlines()
-    fout = open('cmf/__init__.py', 'w')
-    for line in module_code:
-        if line.startswith('__version__'):
-            fout.write("__version__ = '{}'\n".format(version))
-        elif line.startswith('__compiletime__'):
-            fout.write("__compiletime__ = '{}'\n".format(time.ctime()))
-        else:
-            fout.write(line)
-    doxycode = open('Doxyfile').readlines()
-    fout = open('Doxyfile', 'w')
-    for line in doxycode:
-        if line.strip().startswith('PROJECT_NUMBER'):
-            fout.write("PROJECT_NUMBER         = {}\n".format(version))
-        else:
-            fout.write(line)
+    try:
+        module_code = open('cmf/__init__.py').readlines()
+    except FileNotFoundError:
+        pass
+    else:
+        fout = open('cmf/__init__.py', 'w')
+        for line in module_code:
+            if line.startswith('__version__'):
+                fout.write("__version__ = '{}'\n".format(version))
+            elif line.startswith('__compiletime__'):
+                fout.write("__compiletime__ = '{}'\n".format(time.ctime()))
+            else:
+                fout.write(line)
+    try:
+        doxycode = open('Doxyfile').readlines()
+    except FileNotFoundError:
+        pass
+    else:
+        fout = open('Doxyfile', 'w')
+        for line in doxycode:
+            if line.strip().startswith('PROJECT_NUMBER'):
+                fout.write("PROJECT_NUMBER         = {}\n".format(version))
+            else:
+                fout.write(line)
 
 
 def pop_arg(arg):

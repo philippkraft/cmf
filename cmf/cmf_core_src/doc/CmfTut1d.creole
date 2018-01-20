@@ -1,0 +1,64 @@
+Back to HowTo
+= Create a one dimensional Richards equation based model =
+
+[[Image(htdocs:media/structure_cmf_1d.png,align=right)]]
+
+A one dimensional highly detailed model, comparable to models like BROOK90 (Federer 1995; Allen et al., 1998) or Hydrus 1D (Simunek et al., 2005), is developed through the allocation of a number of soil water storages, with connections based upon a Richards equation-based flux connector. This very short and simple example shows just the percolation through a homogeneous medium without any boundary flow. A more complete example with rainfall and graphical output can be found in the download section.
+
+{{{
+#!python
+import cmf
+
+# Create a new cmf project
+project = cmf.project()
+
+# Add one cell at position (0,0,0), Area=1000m2
+cell = project.NewCell(0,0,0,1000)
+
+# Create a retention curve
+r_curve = cmf.VanGenuchtenMualem(Ksat=1,phi=0.5,alpha=0.01,n=2.0)
+
+# Add ten layers of 10cm thickness
+for i in range(10):
+    depth = (i+1) * 0.1
+    cell.add_layer(depth,r_curve)
+
+# Connect layers with Richards perc.
+for upper,lower in zip(cell.layers[:-1],cell.layers[1:]):
+    cmf.Richards(upper,lower)
+# this can be shorten as c.install_connection(cmf.Richards)
+
+# Create a solver for the resulting differential equation system
+# For all water storages of the project and an error tolerance of 1e-6
+solver = cmf.CVodeIntegrator(project,1e-6)
+solver.t = cmf.Time(1,1,2011)
+
+# Set all layers to a potential of -2 m
+cell.saturated_depth = 2.
+# Saturate the first layer
+cell.layers[0].wetness = 1.0
+
+
+# The run time loop, run for 14 days
+print "Start: ",("%5.1f%% "*len(cell.layers)) % tuple(l.wetness*100 for l in cell.layers)
+for i in range(72):
+    # Integrate for one hour
+    solver(cmf.h)
+    # Print current wetness
+    print "%2i h : " % (i+1),("%5.1f%% "*len(cell.layers)) % tuple(l.wetness*100 for l in cell.layers)
+    
+}}}
+
+
+
+Back to HowTo
+
+== Some links to the synatx help of objects used in this HowTo ==
+* [doxygen:cmf::project cmf.project]
+* [doxygen:classcmf_1_1upslope_1_1_cell.html cmf.Cell]
+* [doxygen:classcmf_1_1upslope_1_1_retention_curve.html cmf.RetentionCurve]
+
+
+
+
+author: philipp, version: 11 Fri Dec 21 14:45:45 2012

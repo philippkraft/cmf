@@ -7527,7 +7527,7 @@ class Cell(StateVariableOwner):
         c_iter=neighbor_iterator(self)
         while c_iter.valid():
             yield (c_iter.cell(),c_iter.flowwidth())
-            c_iter.next()
+            c_iter.next_neighbor()
 
     surfacewater=property(get_surfacewater,None,"Gives access to the surface water, which is either a distributing flux node, or the storage for all surface water")
     canopy=property(get_canopy,None,"The canopy water storage of the cell, if it exists")
@@ -7782,15 +7782,9 @@ class neighbor_iterator(object):
         return _cmf_core.neighbor_iterator_valid(self, *args, **kwargs)
 
 
-    def next(self, *args, **kwargs):
-        """
-        next(neighbor_iterator self) -> neighbor_iterator
-
-        neighbor_iterator& next()
-
-        Points the iterator to the next neighbor. 
-        """
-        return _cmf_core.neighbor_iterator_next(self, *args, **kwargs)
+    def next_neighbor(self, *args, **kwargs):
+        """next_neighbor(neighbor_iterator self) -> neighbor_iterator"""
+        return _cmf_core.neighbor_iterator_next_neighbor(self, *args, **kwargs)
 
 
     def __eq__(self, *args, **kwargs):
@@ -7806,7 +7800,7 @@ class neighbor_iterator(object):
 neighbor_iterator.cell = new_instancemethod(_cmf_core.neighbor_iterator_cell, None, neighbor_iterator)
 neighbor_iterator.flowwidth = new_instancemethod(_cmf_core.neighbor_iterator_flowwidth, None, neighbor_iterator)
 neighbor_iterator.valid = new_instancemethod(_cmf_core.neighbor_iterator_valid, None, neighbor_iterator)
-neighbor_iterator.next = new_instancemethod(_cmf_core.neighbor_iterator_next, None, neighbor_iterator)
+neighbor_iterator.next_neighbor = new_instancemethod(_cmf_core.neighbor_iterator_next_neighbor, None, neighbor_iterator)
 neighbor_iterator.__eq__ = new_instancemethod(_cmf_core.neighbor_iterator___eq__, None, neighbor_iterator)
 neighbor_iterator.__neq__ = new_instancemethod(_cmf_core.neighbor_iterator___neq__, None, neighbor_iterator)
 neighbor_iterator_swigregister = _cmf_core.neighbor_iterator_swigregister

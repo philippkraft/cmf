@@ -8,7 +8,8 @@ import cmf
 import cmf.geometry
 import numpy as np
 from cmf.geos_shapereader import Shapefile
-from cmf.cell_factory import cells_from_polygons
+import cmf.draw
+
 
 from datetime import datetime, timedelta
 
@@ -59,63 +60,123 @@ def load_meteo(project):
     # Use the meteorological station for each cell of the project
     project.use_nearest_meteo()
 
-
-def soiltype(depth):
+class Model:
     """
-    Creates a retention curve for a depth below ground
-    using an exponential Ksat decline
-    :param depth: depth below ground in m
-    :return: Retention curve
-    """
-    return cmf.BrooksCoreyRetentionCurve(ksat=15 * np.exp(-depth),
-                                         porosity=0.5,
-                                         _b=5.5,
-                                         theta_x=0.35)
-
-def build_cell(c, layercount=0):
-    """
-    Shapes and makes a cell, by adding layers and connections
-    :param c: cmf.Cell
-    :return: None
+    The 3d model based on irregular polygons from a shapefile
     """
 
-    for d in [0.05, 0.1, 0.2, 0.3, 0.5, 0.75, 1.0, 1.3, 1.7, 2.][-layercount:]:
-        c.add_layer(d, soiltype(d))
-    c.saturated_depth = 5.
-    c.surfacewater_as_storage()
-    # use Richards connection
-    c.install_connection(cmf.Richards)
-    c.install_connection(cmf.MatrixInfiltration)
-    c.install_connection(cmf.CanopyOverflow)
-    c.install_connection(cmf.SimpleTindexSnowMelt)
-    c.install_connection(cmf.PenmanMonteithET)
+    def build_cell(self, c, layercount=0):
+        """
+        Shapes and makes a cell, by adding layers and connections
+        :param c: cmf.Cell
+        :return: the now enhanced cell
+        """
 
+        def soiltype(depth):
+            """
+            Creates a retention curve for a depth below ground
+            using an exponential Ksat decline
+            :param depth: depth below ground in m
+            :return: Retention curve
+            """
+            return cmf.BrooksCoreyRetentionCurve(ksat=15 * np.exp(-depth),
+                                                 porosity=0.5,
+                                                 _b=5.5,
+                                                 theta_x=0.35)
 
-def create_project(subsurface_lateral_connection,
-                   surface_lateral_connection,
-                   layercount=0):
+        for d in [0.05, 0.1, 0.2, 0.3, 0.5, 0.75, 1.0, 1.3, 1.7, 2.][-layercount:]:
+            c.add_layer(d, soiltype(d))
+        c.saturated_depth = 1.
+        c.surfacewater_as_storage()
+        # use Richards connection
+        c.install_connection(cmf.Richards)
+        c.install_connection(cmf.GreenAmptInfiltration)
+        c.install_connection(cmf.CanopyOverflow)
+        c.install_connection(cmf.SimpleTindexSnowMelt)
+        c.install_connection(cmf.PenmanMonteithET)
+        return c
 
-    p = cmf.project()
-    shp = Shapefile('data/soil_lu_gw.shp')
+    @staticmethod
+    def connect_outlet_cell(outlet_cell: cmf.Cell, subsurface_lateral_connection,
+                            surface_lateral_connection):
+        o = outlet_cell.surfacewater
+        for neighbor, width in outlet_cell.neighbors:
+            for l in neighbor.layers:
+                subsurface_lateral_connection(l, o, width)
+            try:
+                surface_lateral_connection(neighbor.surfacewater, o, width)
+            except TypeError:
+                pass
 
-    # Create cells
-    for feature in shp:
-        c = cmf.geometry.create_cell(p, feature.shape, feature.HEIGHT, feature.OID)
-        build_cell(c, layercount)
+    def get_outflow(self, t=None):
+        t = t or self.t
+        return sum(o.surfacewater(t) for o in self.outlet_cells) / self.area * 1000
 
-    # Build topology
-    cmf.geometry.mesh_project(p, verbose=True)
+    def get_rainfall(self, t=None):
+        t = t or self.t
+        return sum(c.get_rainfall(t) for c in self.project) / self.area * 1000
 
-    cmf.connect_cells_with_flux(p, subsurface_lateral_connection)
-    cmf.connect_cells_with_flux(p, surface_lateral_connection)
+    def get_et(self, t=None):
+        t = t or self.t
+        return sum(c.transpiration(t) + c.evaporation(t) for c in self.project) / self.area * 1000
 
-    load_meteo(p)
+    def get_volume(self):
+        return sum(sum(s.volume for s in c.storages) for c in self.project) / self.area * 1000
 
-    return p
+    @property
+    def t(self):
+        return self.solver.t
 
+    @property
+    def area(self):
+        return sum(c.area for c in self.project)
 
-p = create_project(cmf.DarcyKinematic, cmf.KinematicSurfaceRunoff, 1)
+    def __init__(self, subsurface_lateral_connection,
+                       surface_lateral_connection=None,
+                       layercount=0):
+        """
+        Creates the cmf project
 
-print(cmf.describe(p))
+        :param subsurface_lateral_connection: Type of lateral subsurface connection, eg. cmf.Darcy
+        :param surface_lateral_connection:  Type of lateral surface flux connection, eg. cmf.KinematicSurfaceRunoff or None
+        :param layercount: Number of layers in the subsurface
+        :return:
+        """
 
+        p = cmf.project()
+        shp = Shapefile('data/vollnkirchner_bach_cells.shp')
+
+        # Create cells
+        self.outlet_cells = []
+        for feature in shp:
+            # Create a cell for each feature in the shape file
+            c = cmf.geometry.create_cell(p, feature.shape, feature.HEIGHT, feature.OID, with_surfacewater=False)
+
+            # If it is an outlet feature, add cell to the list of outletcells
+            if feature.LANDUSE_CU.startswith('outlet'):
+                self.outlet_cells.append(c)
+            else:
+                # If it is a normal upload cell, add layers
+                self.build_cell(c, layercount)
+
+        # Build topology
+        cmf.geometry.mesh_project(p, verbose=True)
+
+        # Connect cells with fluxes
+        cmf.connect_cells_with_flux(p, subsurface_lateral_connection)
+        if surface_lateral_connection:
+            cmf.connect_cells_with_flux(p, surface_lateral_connection)
+
+        # Connect outlets with neighbor cells
+        for o_cell in self.outlet_cells:
+            self.connect_outlet_cell(o_cell, subsurface_lateral_connection, surface_lateral_connection)
+        # Load driver data
+        load_meteo(p)
+        self.project = p
+        self.solver = cmf.CVodeIntegrator(p, 1e-9)
+
+if __name__ == '__main__':
+
+    p = Model(cmf.Darcy, cmf.KinematicSurfaceRunoff, 1)
+    cm = cmf.draw.CellMap(p.project, lambda c: c.saturated_depth)
 

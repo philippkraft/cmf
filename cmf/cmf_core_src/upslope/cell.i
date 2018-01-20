@@ -91,7 +91,7 @@
         c_iter=neighbor_iterator(self)
         while c_iter.valid():
             yield (c_iter.cell(),c_iter.flowwidth())
-            c_iter.next()
+            c_iter.next_neighbor()
     
     surfacewater=property(get_surfacewater,None,"Gives access to the surface water, which is either a distributing flux node, or the storage for all surface water")
     canopy=property(get_canopy,None,"The canopy water storage of the cell, if it exists")

@@ -119,7 +119,7 @@ namespace cmf {
 			Topology* operator->() {
 				return current->first;}
 			neighbor_iterator& operator++(){
-				return next();
+				return next_neighbor();
 			}
 			neighbor_iterator(cmf::upslope::Topology& topo) : current(topo.m_Neighbors.begin()),end(topo.m_Neighbors.end()) {}
 			bool operator==(const neighbor_iterator& cmp) const {return current==cmp.current;}
@@ -138,7 +138,7 @@ namespace cmf {
 				return current!=end;
 			}
 			/// Points the iterator to the next neighbor
-			neighbor_iterator& next(){
+			neighbor_iterator& next_neighbor(){
 				if (current==end) throw std::out_of_range("No neighbors left");
 				++current; 
 				return *this;
