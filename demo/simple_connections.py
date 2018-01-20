@@ -71,7 +71,7 @@ class Project:
             
         
 
-fig, ax = plt.subplots(1, 2)
+fig, ax = plt.subplots(1, 2, figsize=(8,8))
 
 # Linear storage
 p = Project(cmf.LinearStorageConnection, 2)

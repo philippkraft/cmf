@@ -1,11 +1,13 @@
 #ifndef cmfmemory_h__
-#define cmfmemory_h__
-
+/* #define cmfmemory_h__
+*/
 #if __cplusplus > 199711L || _MSC_VER > 1800 || SWIG
+#pragma message("using std::shared_ptr and std::isfinite")
 
 #include <memory>
 
 #else
+#pragma message("using boost::shared_ptr and faked isfinite")
 
 #include <boost/shared_ptr.hpp>
 #include <boost/pointer_cast.hpp>
