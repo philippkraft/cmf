@@ -5,6 +5,24 @@
 
 #include <memory>
 
+
+#elif defined(__clang__)
+#pragma message("using std::tr1::shared_ptr and std::tr1::isfinite")
+
+#include <tr1/memory>
+#include <tr1/cmath>
+namespace std {
+	using std::tr1::shared_ptr;
+	using std::tr1::weak_ptr;
+	using std::tr1::enable_shared_from_this;
+	using std::tr1::dynamic_pointer_cast;
+	using std::tr1::static_pointer_cast;
+	using std::tr1::isfinite;
+}
+#define unique_ptr auto_ptr
+
+
+
 #else
 
 #include <boost/shared_ptr.hpp>

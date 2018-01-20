@@ -21,7 +21,9 @@
 
 #include <valarray>
 #include <vector>
+#ifdef _OPENMP
 #include <omp.h>
+#endif
 
 #include "real.h"
  namespace cmf {
