@@ -28,7 +28,6 @@ from setuptools import setup, Extension
 from setuptools.command.build_ext import build_ext
 from distutils.sysconfig import get_config_var, customize_compiler
 
-
 version = '1.1.2a0'
 
 # Try to import numpy, if it fails we have a problem 
@@ -166,7 +165,11 @@ def make_cmf_core(swig, openmp):
         link_args = ["/DEBUG"]
 
     else:
-        #os.environ['OPT'] = " ".join(flag for flag in opt.split() if flag != '-Wstrict-prototypes')
+        # Remove the annoying warning because of "-Wstrict-prototypes" deprecated
+        # by https://stackoverflow.com/a/9740721/5885054
+        opt = get_config_var('OPT')
+        os.environ['OPT'] = " ".join(flag for flag in opt.split() if flag != '-Wstrict-prototypes')
+
         compile_args = ['-Wno-comment', '-Wno-reorder', '-Wno-deprecated', '-Wno-unused', '-Wno-sign-compare', '-ggdb',
                         '-std=c++11']
         link_args = ['-ggdb']
@@ -178,6 +181,18 @@ def make_cmf_core(swig, openmp):
             compile_args.append('-fopenmp')
             link_args.append("-fopenmp")
             libraries.append('gomp')
+
+        if os.sys.platform == 'darwin':
+            import platform
+            macvrs = platform.mac_ver()
+            mac_version = int(macvrs[0].split(".")[1])
+            compile_args = ['-Wno-comment', '-Wno-reorder', '-Wno-deprecated', '-Wno-unused', '-Wno-sign-compare',
+                            '-ggdb']
+            if openmp and mac_version > 6:
+                libraries.append('gomp')
+            else:
+                libraries.append('omp')
+
 
         if os.sys.platform == 'darwin':
             import platform
