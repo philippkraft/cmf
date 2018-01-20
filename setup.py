@@ -166,19 +166,31 @@ def make_cmf_core(swig, openmp):
         link_args = ["/DEBUG"]
 
     else:
-
-
-        os.environ['OPT'] = " ".join(flag for flag in opt.split() if flag != '-Wstrict-prototypes')
+        #os.environ['OPT'] = " ".join(flag for flag in opt.split() if flag != '-Wstrict-prototypes')
         compile_args = ['-Wno-comment', '-Wno-reorder', '-Wno-deprecated', '-Wno-unused', '-Wno-sign-compare', '-ggdb',
                         '-std=c++11']
         link_args = ['-ggdb']
         libraries = []
+
 
         # Disable OpenMP on Mac see https://github.com/alejandrobll/py-sphviewer/issues/3
         if openmp and not os.sys.platform == 'darwin':
             compile_args.append('-fopenmp')
             link_args.append("-fopenmp")
             libraries.append('gomp')
+
+        if os.sys.platform == 'darwin':
+            import platform
+            macvrs = platform.mac_ver()
+            mac_version = int(macvrs[0].split(".")[1])
+            compile_args+=["-stdlib=libc++"]
+            #compile_args+=["-w"]
+
+            if openmp and mac_version > 6:
+                libraries.append('gomp')
+            elif openmp:
+                libraries.append('omp')
+
 
     # Get the source files
     cmf_files = []
