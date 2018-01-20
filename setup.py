@@ -182,24 +182,12 @@ def make_cmf_core(swig, openmp):
             link_args.append("-fopenmp")
             libraries.append('gomp')
 
-        if os.sys.platform == 'darwin':
-            import platform
-            macvrs = platform.mac_ver()
-            mac_version = int(macvrs[0].split(".")[1])
-            compile_args = ['-Wno-comment', '-Wno-reorder', '-Wno-deprecated', '-Wno-unused', '-Wno-sign-compare',
-                            '-ggdb']
-            if openmp and mac_version > 6:
-                libraries.append('gomp')
-            else:
-                libraries.append('omp')
-
 
         if os.sys.platform == 'darwin':
             import platform
             macvrs = platform.mac_ver()
             mac_version = int(macvrs[0].split(".")[1])
             compile_args+=["-stdlib=libc++"]
-            #compile_args+=["-w"]
 
             if openmp and mac_version > 6:
                 libraries.append('gomp')
