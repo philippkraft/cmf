@@ -167,25 +167,13 @@ def make_cmf_core(swig, openmp):
 
     else:
 
-        if os.sys.platform == 'darwin':
-            # TODO: Benjamin, this is to specific!
-            os.environ["CC"] = "gcc-7"
-            os.environ["CXX"] = "g++-7"
-            os.environ["ARCHFLAGS"] = "-arch x86_64"
-
-            include_dirs += ["/usr/local/Cellar/gcc/7.1.0/include/c++/7.1.0/"]
-            include_dirs += ["/usr/include/"]
-            openmp = False
-        # Remove the annoying warning because of "-Wstrict-prototypes" deprecated
-        # by https://stackoverflow.com/a/9740721/5885054
-        opt = get_config_var('OPT')
-        os.environ['OPT'] = " ".join(flag for flag in opt.split() if flag != '-Wstrict-prototypes')
         compile_args = ['-Wno-comment', '-Wno-reorder', '-Wno-deprecated', '-Wno-unused', '-Wno-sign-compare', '-ggdb',
                         '-std=c++11']
         link_args = ['-ggdb']
         libraries = []
 
-        if openmp:
+        # Disable OpenMP on Mac see https://github.com/alejandrobll/py-sphviewer/issues/3
+        if openmp and not os.sys.platform == 'darwin':
             compile_args.append('-fopenmp')
             link_args.append("-fopenmp")
             libraries.append('gomp')
