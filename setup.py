@@ -29,7 +29,7 @@ from setuptools.command.build_ext import build_ext
 from distutils.sysconfig import get_config_var, customize_compiler
 
 
-version = '1.2'
+version = '1.2.1a0'
 
 # Try to import numpy, if it fails we have a problem 
 try:

@@ -9,6 +9,8 @@ import cmf.geometry
 import numpy as np
 from cmf.geos_shapereader import Shapefile
 import cmf.draw
+import pylab as plt
+from matplotlib.animation import FuncAnimation
 
 
 from datetime import datetime, timedelta
@@ -35,7 +37,6 @@ def load_meteo(project):
     meteo.rHmean = cmf.timeseries(begin=begin, step=timedelta(days=1))
     meteo.Windspeed = cmf.timeseries(begin=begin, step=timedelta(days=1))
     meteo.Sunshine = cmf.timeseries(begin=begin, step=timedelta(days=1))
-    meteo.T = (meteo.Tmax + meteo.Tmin) * 0.5
 
     # Load climate data from csv file
     # could be simplified with numpy's
@@ -51,6 +52,8 @@ def load_meteo(project):
                                      [float(col) for col in columns[1:]]):
             # Add the value from the file to the timeseries
             timeseries.add(value)
+
+    meteo.T = (meteo.Tmax + meteo.Tmin) * 0.5
 
     # Create a rain gauge station
     project.rainfall_stations.add('Giessen', rain, (0, 0, 0))
@@ -174,9 +177,38 @@ class Model:
         load_meteo(p)
         self.project = p
         self.solver = cmf.CVodeIntegrator(p, 1e-9)
+        self.solver.t = p.meteo_stations[0].T.begin
+
+    def run(self, start=None, end=None, step=cmf.day):
+        start = start or self.project.meteo_stations[0].T.begin
+        end = end or self.project.meteo_stations[0].T.end
+        print(start, end, step)
+        for t in self.solver.run(start, end, step):
+            print(t)
+            yield t
+
+class Animator(FuncAnimation):
+    def __init__(self, model):
+        self.model = model
+        self.figure = plt.figure()
+        self.cellmap = cmf.draw.CellMap(p.project, lambda c: c.saturated_depth)
+        self.titel = plt.title(str(self.model.t))
+        super().__init__(self.figure, self.draw, self.model.run())
+
+    def draw(self, frame=None):
+        t = frame
+        self.titel.set_text(str(t))
+        self.cellmap()
+        return [self.titel] + list(self.cellmap.get_artists())
+
+
 
 if __name__ == '__main__':
 
     p = Model(cmf.Darcy, cmf.KinematicSurfaceRunoff, 1)
-    cm = cmf.draw.CellMap(p.project, lambda c: c.saturated_depth)
+
+
+    # cm = cmf.draw.CellMap(p.project, lambda c: c.saturated_depth)
+    anim = Animator(p)
+    plt.show()
 

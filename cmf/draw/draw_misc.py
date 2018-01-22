@@ -20,6 +20,7 @@ from __future__ import print_function, division, absolute_import
 import pylab
 import numpy
 import os
+from itertools import chain
 from .. import cmf_core as cmf
 
 
@@ -39,7 +40,7 @@ class CellMap(pylab.matplotlib.cm.ScalarMappable):
             self.maxvalue=max((self.f(c) for c in self.cells))
             self.minvalue=min((self.f(c) for c in self.cells))
 
-        for cell,polys in self.polygons.iteritems():
+        for cell, polys in self.polygons.iteritems():
             v=self.f(cell)
             c=self.cmap((v-self.minvalue)/(self.maxvalue-self.minvalue))
             for poly in polys:
@@ -71,6 +72,7 @@ class CellMap(pylab.matplotlib.cm.ScalarMappable):
     def __init__(self, cells, value_function, cmap=pylab.cm.jet,
                  hold=True, vmin=None, vmax=None, **kwargs):
         """
+        Creates a new map from cells
 
         :param cells:
         :param value_function:
@@ -124,6 +126,16 @@ class CellMap(pylab.matplotlib.cm.ScalarMappable):
         if was_interactive:
             pylab.draw()
             pylab.ion()
+
+    def get_artists(self):
+        """
+        Returns the list of matplotlib.patches.Polygons in the cell map.
+
+        Useful for Animations
+
+        :return: iterable of polygons
+        """
+        return chain(*self.polygons.values())
 
     def autoscale_None(self):
         """

@@ -15,7 +15,8 @@
 #
 #   You should have received a copy of the GNU General Public License
 #   along with cmf.  If not, see <http://www.gnu.org/licenses/>.
-#   
-from draw_misc import *
-from hillplot import hill_plot
+#
+from __future__ import absolute_import, print_function
+from .draw_misc import plot_timeseries, bar_timeseries, CellMap, FluxMap
+from .hillplot import hill_plot
 
