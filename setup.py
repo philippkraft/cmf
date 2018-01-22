@@ -167,8 +167,6 @@ def make_cmf_core(swig, openmp):
 
     else:
 
-
-        os.environ['OPT'] = " ".join(flag for flag in opt.split() if flag != '-Wstrict-prototypes')
         compile_args = ['-Wno-comment', '-Wno-reorder', '-Wno-deprecated', '-Wno-unused', '-Wno-sign-compare', '-ggdb',
                         '-std=c++11']
         link_args = ['-ggdb']
