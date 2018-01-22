@@ -17,6 +17,9 @@
 #   along with cmf.  If not, see <http://www.gnu.org/licenses/>.
 #
 from __future__ import absolute_import, print_function
-from .draw_misc import plot_timeseries, bar_timeseries, CellMap, FluxMap
-from .hillplot import hill_plot
+from .draw_misc import plot_timeseries, bar_timeseries
+from .cellmap import CellMap, FluxMap
+from .hillplot import HillPlot
+
+hill_plot = HillPlot
 

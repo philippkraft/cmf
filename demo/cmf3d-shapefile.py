@@ -191,15 +191,24 @@ class Animator(FuncAnimation):
     def __init__(self, model):
         self.model = model
         self.figure = plt.figure()
-        self.cellmap = cmf.draw.CellMap(p.project, lambda c: c.saturated_depth)
+        self.cellmap = cmf.draw.CellMap(p.project,
+                                        lambda c: c.layers[0].wetness if c.layers else 0.0,
+                                        vmin=0, vmax=1)
+
+        self.fluxmap = cmf.draw.FluxMap(p.project, self.model.t, zorder=2, color='w')
+        self.fluxmap.scale = 10000
+
         self.titel = plt.title(str(self.model.t))
+
         super().__init__(self.figure, self.draw, self.model.run())
 
     def draw(self, frame=None):
         t = frame
+        #print(self.fluxmap.scale)
         self.titel.set_text(str(t))
         self.cellmap()
-        return [self.titel] + list(self.cellmap.get_artists())
+        self.fluxmap(t)
+        return [self.titel, self.fluxmap.quiver] + list(self.cellmap.get_artists())
 
 
 
