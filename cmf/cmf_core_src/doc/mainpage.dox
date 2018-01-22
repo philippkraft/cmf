@@ -4,7 +4,7 @@
 
 This is cmf, the Catchment Model Framework.
 
-cmf is a programming library to create hydrological models, wich are highly modular 
+cmf is a programming library to create hydrological models, which are highly modular
 and connectible to other models. Although written in C++, its primary usage is to be compiled as an 
 extension to other programming languages, using <a class="el" href=http://www.swig.org>SWIG</a>. 
 
@@ -19,7 +19,6 @@ Further reading:
 
 cmf is open source and generally licensed by GNU public license (GPLv3): \subpage license
 
-A published short introduction into cmf can be found here: @subpage EMS2011 
  
 \image html cmf_background2.png
 \author Philipp Kraft, Kellie B. Vache, Lutz Breuer, Hans-Georg Frede
