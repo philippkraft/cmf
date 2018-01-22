@@ -90,3 +90,8 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+
+# Shape-Files
+*.cpg
+*.sbn
+*.sbx
