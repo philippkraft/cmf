@@ -169,11 +169,13 @@ def make_cmf_core(swig, openmp):
 
         compile_args = ['-Wno-comment', '-Wno-reorder', '-Wno-deprecated', '-Wno-unused', '-Wno-sign-compare', '-ggdb',
                         '-std=c++11']
+        if sys.platform == 'darwin':
+            compile_args += ["-stdlib=libc++"]
         link_args = ['-ggdb']
         libraries = []
 
         # Disable OpenMP on Mac see https://github.com/alejandrobll/py-sphviewer/issues/3
-        if openmp and not os.sys.platform == 'darwin':
+        if openmp and not sys.platform == 'darwin':
             compile_args.append('-fopenmp')
             link_args.append("-fopenmp")
             libraries.append('gomp')
