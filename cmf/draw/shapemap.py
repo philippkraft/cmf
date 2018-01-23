@@ -15,18 +15,20 @@
 #
 #   You should have received a copy of the GNU General Public License
 #   along with cmf.  If not, see <http://www.gnu.org/licenses/>.
-#   
+#
 import numpy
 
 from shapely import geometry as g
 import pylab
 
+
 class ShapeMap(object):
     """ self.fc_function: A callable taking a feature and returning a color (fillcolor)
     self.lw_function: A callable taking a feature and returning a scalar (line width)
     """
+
     def refresh(self):
-        for i,f in enumerate(self.features):
+        for i, f in enumerate(self.features):
             for s in self.shapes[i]:
                 if self.fc_function and hasattr(s, 'set_fc'):
                     s.set_fc(self.fc_function(f))
@@ -38,33 +40,34 @@ class ShapeMap(object):
     def __init__(self, features, **kwargs):
         self.features = features
         self.fc_function = None
-        self.lw_function=None
-        wasinteractive=pylab.isinteractive()
-        if wasinteractive: pylab.ioff()
-        self.shapes=[]
+        self.lw_function = None
+        wasinteractive = pylab.isinteractive()
+        if wasinteractive:
+            pylab.ioff()
+        self.shapes = []
         for i, feature in enumerate(self.features):
             if isinstance(feature.shape, g.MultiPolygon):
                 self.shapes.append([])
                 for g in feature.shape.geoms:
-                    x,y=numpy.asarray(feature.shape.exterior)[:,:2].swapaxes(0,1)
-                    self.shapes[-1].append(pylab.fill(x,y,**kwargs)[0])
+                    x, y = numpy.asarray(feature.shape.exterior)[
+                        :, :2].swapaxes(0, 1)
+                    self.shapes[-1].append(pylab.fill(x, y, **kwargs)[0])
             if isinstance(feature.shape, g.Polygon):
-                x,y=numpy.asarray(feature.shape.exterior)[:,:2].swapaxes(0,1)
-                self.shapes.append(pylab.fill(x,y,**kwargs))
+                x, y = numpy.asarray(feature.shape.exterior)[
+                    :, :2].swapaxes(0, 1)
+                self.shapes.append(pylab.fill(x, y, **kwargs))
             elif isinstance(feature.shape, g.MultiLineString):
                 self.shapes.append([])
                 for g in feature.shape.geoms:
-                    x,y=numpy.asarray(feature.shape)[:,:2].swapaxes(0,1)
-                    self.shapes[-1].append(pylab.plot(x,y,**kwargs)[0])
+                    x, y = numpy.asarray(feature.shape)[:, :2].swapaxes(0, 1)
+                    self.shapes[-1].append(pylab.plot(x, y, **kwargs)[0])
             elif isinstance(feature.shape, g.LineString):
-                x,y=numpy.asarray(feature.shape.exterior).swapaxes(0,1)
-                self.shapes.append(pylab.plot(x,y,**kwargs))
+                x, y = numpy.asarray(feature.shape.exterior).swapaxes(0, 1)
+                self.shapes.append(pylab.plot(x, y, **kwargs))
             elif isinstance(feature.shape, g.Point):
-                x,y=feature.shape.x,feature.shape.y
-                self.shapes.append(pylab.plot([x],[y],**kwargs)[0])
+                x, y = feature.shape.x, feature.shape.y
+                self.shapes.append(pylab.plot([x], [y], **kwargs)[0])
         pylab.axis('equal')
         if wasinteractive:
             pylab.ion()
             pylab.draw()
-
-
