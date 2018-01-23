@@ -7783,7 +7783,13 @@ class neighbor_iterator(object):
 
 
     def next_neighbor(self, *args, **kwargs):
-        """next_neighbor(neighbor_iterator self) -> neighbor_iterator"""
+        """
+        next_neighbor(neighbor_iterator self) -> neighbor_iterator
+
+        neighbor_iterator& next_neighbor()
+
+        Points the iterator to the next neighbor. 
+        """
         return _cmf_core.neighbor_iterator_next_neighbor(self, *args, **kwargs)
 
 

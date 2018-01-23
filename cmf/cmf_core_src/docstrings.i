@@ -9225,7 +9225,8 @@ cell() ";
 
 %feature("docstring")  cmf::upslope::neighbor_iterator::flowwidth "double flowwidth() ";
 
-%feature("docstring")  cmf::upslope::neighbor_iterator::next "neighbor_iterator& next()
+%feature("docstring")  cmf::upslope::neighbor_iterator::next_neighbor
+"neighbor_iterator& next_neighbor()
 
 Points the iterator to the next neighbor. ";
 

@@ -25,7 +25,7 @@ Original version from ACME (https://github.com/zutn/ACME)
 The version here is different - the describe function tries to describe everything
 """
 
-from __future__ import print_function, division, absolute_import
+from __future__ import print_function, division, absolute_import, unicode_literals
 import io
 from . import cmf_core as cmf
 

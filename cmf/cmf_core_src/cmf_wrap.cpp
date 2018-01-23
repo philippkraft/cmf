@@ -79092,7 +79092,13 @@ static PyMethodDef SwigMethods[] = {
 		"bool\n"
 		"valid() const \n"
 		""},
-	 { (char *)"neighbor_iterator_next_neighbor", (PyCFunction)_wrap_neighbor_iterator_next_neighbor, METH_O, (char *)"neighbor_iterator_next_neighbor(neighbor_iterator self) -> neighbor_iterator"},
+	 { (char *)"neighbor_iterator_next_neighbor", (PyCFunction)_wrap_neighbor_iterator_next_neighbor, METH_O, (char *)"\n"
+		"neighbor_iterator_next_neighbor(neighbor_iterator self) -> neighbor_iterator\n"
+		"\n"
+		"neighbor_iterator& next_neighbor()\n"
+		"\n"
+		"Points the iterator to the next neighbor. \n"
+		""},
 	 { (char *)"neighbor_iterator___eq__", (PyCFunction) _wrap_neighbor_iterator___eq__, METH_VARARGS | METH_KEYWORDS, (char *)"neighbor_iterator___eq__(neighbor_iterator self, neighbor_iterator cmp) -> bool"},
 	 { (char *)"neighbor_iterator___neq__", (PyCFunction) _wrap_neighbor_iterator___neq__, METH_VARARGS | METH_KEYWORDS, (char *)"neighbor_iterator___neq__(neighbor_iterator self, neighbor_iterator cmp) -> bool"},
 	 { (char *)"delete_neighbor_iterator", (PyCFunction)_wrap_delete_neighbor_iterator, METH_O, (char *)"delete_neighbor_iterator(neighbor_iterator self)"},
