@@ -78,8 +78,6 @@ def bar_timeseries(data, **kwargs):
     return bars
 
 
-
-
 def plot_image(filename, **kwargs):
     """
     Plots an image with an ESRI Worldfile as a map background. Uses matplotlib.pylab.imshow
