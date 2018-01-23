@@ -88,60 +88,34 @@ def plot_locatables(locatables, style='kx', **kwargs):
     pylab.plot(pylab.amap(get_x, locatables), pylab.amap(
         get_y, locatables), style, **kwargs)
 
-
-def connector_matrix(allstates, size=(500, 500)):
-    """Returns a matrix
-    """
-    posdict = {}
-    jac = numpy.zeros(size, dtype=int)
-    l = len(allstates)
-    for i, a in enumerate(allstates):
-        posdict[a.node_id] = i
-    for i, a in enumerate(allstates):
-        for f, t in a.fluxes(cmf.Time()):
-            j = posdict.get(t.node_id)
-            if j:
-                jac[i * size[0] / l, j * size[1] / l] += 1
-    return jac
-
-
 try:
-    import Image
+    from PIL import Image
+except ImportError:
+    Image = None
 
-    def plot_image(filename, **kwargs):
-        fname, imgext = os.path.splitext(filename)
-        worldext = imgext[:2] + imgext[-1] + 'w'
-        worldname = fname + worldext
-        kwargs.pop('extent', None)
-        kwargs.pop('origin', None)
-        if os.path.exists(filename) and os.path.exists(worldname):
-            image = Image.open(filename)
-            world = numpy.fromfile(worldname, sep='\n')
-            left, top = world[-2:]
-            bottom = top + world[3] * image.size[1]
-            right = left + world[0] * image.size[0]
-            return pylab.imshow(image, extent=(left, right, bottom, top), origin='bottom', **kwargs)
-        else:
-            print("File", filename, "or worldfile", worldname, "not found")
-except:
-    pass
+def plot_image(filename, **kwargs):
+    """
+    Plots an image with an ESRI Worldfile as a map background. Uses matplotlib.pylab.imshow
+    :param filename: Filename of the image.
+    :param kwargs: Keyword arguments to imshow
+    :return: Image from imshow
+    """
+    if not Image:
+        raise NotImplementedError('To plot a background image please install Pillow')
 
+    fname, imgext = os.path.splitext(filename)
+    worldext = imgext[:2] + imgext[-1] + 'w'
+    worldname = fname + worldext
 
-def contour_raster(raster, **kwargs):
-    Z = raster.asarray()
-    Z = numpy.flipud(Z)
-    extent = (raster.llcorner[0], raster.llcorner[0] + raster.extent[0],
-              raster.llcorner[1], raster.llcorner[1] + raster.extent[1])
-    C = pylab.contour(Z, extent=extent, **kwargs)
-    pylab.clabel(C)
-    pylab.axis('scaled')
+    kwargs.pop('extent', None)
+    kwargs.pop('origin', None)
+    if os.path.exists(filename) and os.path.exists(worldname):
+        image = Image.open(filename)
+        world = numpy.fromfile(worldname, sep='\n')
+        left, top = world[-2:]
+        bottom = top + world[3] * image.size[1]
+        right = left + world[0] * image.size[0]
+        return pylab.imshow(image, extent=(left, right, bottom, top), origin='bottom', **kwargs)
+    else:
+        raise IOError("File", filename, "or worldfile", worldname, "not found")
 
-
-def contourf_raster(raster, **kwargs):
-    Z = raster.asarray()
-    Z = numpy.flipud(Z)
-    extent = (raster.llcorner[0], raster.llcorner[0] + raster.extent[0],
-              raster.llcorner[1], raster.llcorner[1] + raster.extent[1])
-    C = pylab.contourf(Z, extent=extent, **kwargs)
-    pylab.clabel(C)
-    pylab.axis('scaled')
