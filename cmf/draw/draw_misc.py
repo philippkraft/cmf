@@ -30,6 +30,11 @@ from .. import cmf_core as cmf
 
 
 def __x_from_ts(ts):
+    """
+    Creates the numeric x-Axis for plots from a timeseries
+    :param ts: A cmf.timeseries
+    :return: an array of floats for a matplotlib date axis
+    """
     return pylab.fromiter(((t - cmf.Time(1, 1, 1)) / cmf.day for t in ts.iter_time()), dtype=numpy.float)
 
 
