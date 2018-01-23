@@ -48,18 +48,16 @@ class ShapeMap(object):
         for i, feature in enumerate(self.features):
             if isinstance(feature.shape, g.MultiPolygon):
                 self.shapes.append([])
-                for g in feature.shape.geoms:
-                    x, y = numpy.asarray(feature.shape.exterior)[
-                        :, :2].swapaxes(0, 1)
+                for shape in feature.shape.geoms:
+                    x, y = numpy.asarray(shape.exterior)[:, :2].swapaxes(0, 1)
                     self.shapes[-1].append(pylab.fill(x, y, **kwargs)[0])
             if isinstance(feature.shape, g.Polygon):
-                x, y = numpy.asarray(feature.shape.exterior)[
-                    :, :2].swapaxes(0, 1)
+                x, y = numpy.asarray(feature.shape.exterior)[:, :2].swapaxes(0, 1)
                 self.shapes.append(pylab.fill(x, y, **kwargs))
             elif isinstance(feature.shape, g.MultiLineString):
                 self.shapes.append([])
-                for g in feature.shape.geoms:
-                    x, y = numpy.asarray(feature.shape)[:, :2].swapaxes(0, 1)
+                for shape in feature.shape.geoms:
+                    x, y = numpy.asarray(shape)[:, :2].swapaxes(0, 1)
                     self.shapes[-1].append(pylab.plot(x, y, **kwargs)[0])
             elif isinstance(feature.shape, g.LineString):
                 x, y = numpy.asarray(feature.shape.exterior).swapaxes(0, 1)
