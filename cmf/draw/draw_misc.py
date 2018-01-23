@@ -20,7 +20,12 @@ from __future__ import print_function, division, absolute_import
 import pylab
 import numpy
 import os
-from itertools import chain
+
+try:
+    from PIL import Image
+except ImportError:
+    Image = None
+
 from .. import cmf_core as cmf
 
 
@@ -73,25 +78,7 @@ def bar_timeseries(data, **kwargs):
     return bars
 
 
-def plot_locatables(locatables, style='kx', **kwargs):
-    """
-    Plots a sequence of objects with a position attribute
 
-    :param locatables:
-    :param style:
-    :param kwargs:
-    :return:
-    """
-    def get_x(l): return l.position.x
-
-    def get_y(l): return l.position.y
-    pylab.plot(pylab.amap(get_x, locatables), pylab.amap(
-        get_y, locatables), style, **kwargs)
-
-try:
-    from PIL import Image
-except ImportError:
-    Image = None
 
 def plot_image(filename, **kwargs):
     """
