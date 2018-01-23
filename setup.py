@@ -71,7 +71,7 @@ def updateversion():
     """
     try:
         module_code = open('cmf/__init__.py').readlines()
-    except FileNotFoundError:
+    except IOError:
         pass
     else:
         fout = open('cmf/__init__.py', 'w')
@@ -83,11 +83,11 @@ def updateversion():
             else:
                 fout.write(line)
     try:
-        doxycode = open('Doxyfile').readlines()
-    except FileNotFoundError:
+        doxycode = open('tools/Doxyfile').readlines()
+    except IOError:
         pass
     else:
-        fout = open('Doxyfile', 'w')
+        fout = open('tools/Doxyfile', 'w')
         for line in doxycode:
             if line.strip().startswith('PROJECT_NUMBER'):
                 fout.write("PROJECT_NUMBER         = {}\n".format(version))
