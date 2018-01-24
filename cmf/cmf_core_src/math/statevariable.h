@@ -177,6 +177,10 @@ namespace cmf {
 			}
 			size_t size() const {return m_vector.size();}
 			virtual ~StateVariableList() {}
+
+			StateVariable::ptr operator[](ptrdiff_t index) const{
+				return m_vector.at(index >= 0 ? index : size() + index);
+			}
 		};
 
 	}
