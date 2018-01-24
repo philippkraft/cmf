@@ -139,7 +139,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>$(SolutionDir)math\integrators\sundials_cvode\include;C:\Apps\WinPython-64bit-3.6.1.0Qt5\python-3.6.1.amd64\include;C:\Apps\WinPython-64bit-3.6.1.0Qt5\python-3.6.1.amd64\Lib\site-packages\numpy\core\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)..\math\integrators\sundials_cvode\include;C:\Apps\WinPython-64bit-3.6.1.0Qt5\python-3.6.1.amd64\include;C:\Apps\WinPython-64bit-3.6.1.0Qt5\python-3.6.1.amd64\Lib\site-packages\numpy\core\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;CMF_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>true</MinimalRebuild>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -217,7 +217,7 @@
       <InlineFunctionExpansion>Default</InlineFunctionExpansion>
       <FavorSizeOrSpeed>Neither</FavorSizeOrSpeed>
       <WholeProgramOptimization>false</WholeProgramOptimization>
-      <AdditionalIncludeDirectories>C:\Apps\WinPython-64bit-3.5.2\python-3.5.2.amd64\Lib\site-packages\numpy\core\include;C:\Apps\WinPython-64bit-3.5.2\python-3.5.2.amd64\include;$(ProjectDir)math\integrators\sundials_cvode\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Apps\WinPython-64bit-3.5.2\python-3.5.2.amd64\Lib\site-packages\numpy\core\include;C:\Apps\WinPython-64bit-3.5.2\python-3.5.2.amd64\include;C:\Users\kraft-p.UNI-GIESSEN\Documents\Code\cvode-3.1.0\include;C:\Users\kraft-p.UNI-GIESSEN\Documents\Code\cvode-3.1.0\build\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;CMF_EXPORTS;_SCL_SECURE_NO_WARNINGS;_CRT_SECURE_NO_WARNINGS;CMF_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <DisableLanguageExtensions>false</DisableLanguageExtensions>
