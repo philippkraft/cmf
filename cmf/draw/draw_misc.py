@@ -20,15 +20,25 @@ from __future__ import print_function, division, absolute_import
 import pylab
 import numpy
 import os
-from itertools import chain
+
+try:
+    from PIL import Image
+except ImportError:
+    Image = None
+
 from .. import cmf_core as cmf
 
 
 def __x_from_ts(ts):
-    return pylab.fromiter(((t-cmf.Time(1,1,1))/cmf.day for t in ts.iter_time()),dtype=numpy.float)
+    """
+    Creates the numeric x-Axis for plots from a timeseries
+    :param ts: A cmf.timeseries
+    :return: an array of floats for a matplotlib date axis
+    """
+    return pylab.fromiter(((t - cmf.Time(1, 1, 1)) / cmf.day for t in ts.iter_time()), dtype=numpy.float)
 
 
-def plot_timeseries(data,style='-',**kwargs):
+def plot_timeseries(data, style='-', **kwargs):
     """
     Plots a cmf.timeseries as a line using pylab.plot
     :param data: cmf.timeseries
@@ -43,13 +53,13 @@ def plot_timeseries(data,style='-',**kwargs):
         ts = data
 
     x = __x_from_ts(ts)
-    line=pylab.plot(x,pylab.asarray(ts),style,**kwargs)[0]
-    ax=pylab.gca()
+    line = pylab.plot(x, pylab.asarray(ts), style, **kwargs)[0]
+    ax = pylab.gca()
     ax.xaxis_date()
     return line
 
 
-def bar_timeseries(data,**kwargs):
+def bar_timeseries(data, **kwargs):
     """
     Makes a bar graph from a cmf.timeseries using pylab.bar
     :param data: cmf.timeseries
@@ -58,14 +68,14 @@ def bar_timeseries(data,**kwargs):
     """
     try:
         step = kwargs.pop('step')
-        ts = data.reduce_avg(data.begin - data.begin % step,step)
+        ts = data.reduce_avg(data.begin - data.begin % step, step)
     except KeyError:
-        ts=data
-    x=__x_from_ts(ts)
+        ts = data
+    x = __x_from_ts(ts)
     was_inter = pylab.isinteractive()
     pylab.ioff()
-    bars=pylab.bar(x,ts,ts.step/cmf.day,**kwargs)
-    ax=pylab.gca()
+    bars = pylab.bar(x, ts, ts.step / cmf.day, **kwargs)
+    ax = pylab.gca()
     ax.xaxis_date()
     if was_inter:
         pylab.draw()
@@ -73,71 +83,29 @@ def bar_timeseries(data,**kwargs):
     return bars
 
 
-def plot_locatables(locatables,style='kx',**kwargs):
+def plot_image(filename, **kwargs):
     """
-    Plots a sequence of objects with a position attribute
-
-    :param locatables:
-    :param style:
-    :param kwargs:
-    :return:
+    Plots an image with an ESRI Worldfile as a map background. Uses matplotlib.pylab.imshow
+    :param filename: Filename of the image.
+    :param kwargs: Keyword arguments to imshow
+    :return: Image from imshow
     """
-    get_x=lambda l:l.position.x
-    get_y=lambda l:l.position.y
-    pylab.plot(pylab.amap(get_x,locatables),pylab.amap(get_y,locatables),style,**kwargs)
+    if not Image:
+        raise NotImplementedError('To plot a background image please install Pillow')
 
+    fname, imgext = os.path.splitext(filename)
+    worldext = imgext[:2] + imgext[-1] + 'w'
+    worldname = fname + worldext
 
-def connector_matrix(allstates,size=(500,500)):
-    """Returns a matrix
-    """
-    posdict={}
-    jac=numpy.zeros(size, dtype=int)
-    l=len(allstates)
-    for i,a in enumerate(allstates):
-        posdict[a.node_id] = i
-    for i,a in enumerate(allstates):
-        for f,t in a.fluxes(cmf.Time()):
-            j=posdict.get(t.node_id)
-            if j:
-                jac[i*size[0]/l, j*size[1]/l] += 1
-    return jac
-
-
-try:
-    import Image
-    def plot_image(filename,**kwargs):
-        fname,imgext = os.path.splitext(filename)
-        worldext = imgext[:2] + imgext[-1] + 'w'
-        worldname = fname + worldext
-        kwargs.pop('extent',None)
-        kwargs.pop('origin',None)
-        if os.path.exists(filename) and os.path.exists(worldname):
-            image=Image.open(filename)
-            world=numpy.fromfile(worldname,sep='\n')
-            left,top = world[-2:]
-            bottom = top + world[3] * image.size[1]
-            right = left + world[0] * image.size[0]
-            return pylab.imshow(image,extent=(left,right,bottom,top),origin='bottom',**kwargs)
-        else:
-            print("File", filename, "or worldfile", worldname, "not found")
-except:
-    pass
-
-
-def contour_raster(raster,**kwargs):
-    Z=raster.asarray()
-    Z=numpy.flipud(Z)
-    extent=(raster.llcorner[0],raster.llcorner[0]+raster.extent[0],raster.llcorner[1],raster.llcorner[1]+raster.extent[1])
-    C=pylab.contour(Z,extent=extent,**kwargs)
-    pylab.clabel(C)
-    pylab.axis('scaled')
-
-def contourf_raster(raster,**kwargs):
-    Z=raster.asarray()
-    Z=numpy.flipud(Z)
-    extent=(raster.llcorner[0],raster.llcorner[0]+raster.extent[0],raster.llcorner[1],raster.llcorner[1]+raster.extent[1])
-    C=pylab.contourf(Z,extent=extent,**kwargs)
-    pylab.clabel(C)
-    pylab.axis('scaled')
-
+    kwargs.pop('extent', None)
+    kwargs.pop('origin', None)
+    if os.path.exists(filename) and os.path.exists(worldname):
+        image = Image.open(filename)
+        world = numpy.fromfile(worldname, sep='\n')
+        left, top = world[-2:]
+        bottom = top + world[3] * image.size[1]
+        right = left + world[0] * image.size[0]
+        return pylab.imshow(image, extent=(left, right, bottom, top), origin='bottom', **kwargs)
+    else:
+        raise IOError("File", filename, "or worldfile", worldname, "not found")
 

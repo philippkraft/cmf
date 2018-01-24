@@ -14,7 +14,7 @@ try:
     import cmf.draw
 except:
     pylab = None
-
+np.seterr(all='ignore')
 
 def load_meteo(project):
     """Loads the meteorology from a csv file.
@@ -108,7 +108,7 @@ def build_cell(c):
 
     for d in [0.05, 0.1, 0.2, 0.3, 0.5, 0.75, 1.0, 1.3, 1.7, 2.]:
         c.add_layer(d, soiltype(d))
-    c.saturated_depth = 5.
+    c.saturated_depth = .5
     c.surfacewater_as_storage()
     # use Richards connection
     c.install_connection(cmf.Richards)
@@ -174,6 +174,26 @@ def run(p, outlet, until,dt=cmf.day):
         print("%20s - %6.1f l/day" % (t, outlet(t)*1e3))
     return outflow, solver.get_rhsevals()
 
+
+def animate(p, outlet, until, dt=cmf.day):
+    from cmf.draw import HillPlot
+    from matplotlib import pylab
+
+    solver = cmf.CVodeIntegrator(p, 1e-9)
+    solver.t = cmf.Time(1, 1, 1980)
+    hp = HillPlot(p, solver.t)
+    hp.scale = 1000
+
+    def integration():
+        for t in solver.run(solver.t, solver.t + until, dt):
+            print(t)
+            yield t
+
+    anim = hp.get_animator(integration)
+
+    pylab.show()
+    return anim, solver.get_rhsevals()
+
 subsurface_lateral_dict = dict(R=cmf.Richards_lateral, D=cmf.Darcy,
                                K=cmf.DarcyKinematic, T=cmf.TopographicGradientDarcy)
 
@@ -197,6 +217,8 @@ if __name__ == '__main__':
                         help='Number of cells in hillslope')
     parser.add_argument('--celllength', '-l', default=10, type=float,
                         help='Length of cell in m')
+    parser.add_argument('--showanimation', '-a', action='store_true',
+                        help='shows the modelled hillplot as an animation')
 
     args=parser.parse_args()
     sublat = subsurface_lateral_dict.get(args.subsurface)
@@ -204,7 +226,10 @@ if __name__ == '__main__':
 
     p, o = create_hillslope(sublat, surflat, args.form, args.cellcount, args.celllength)
 
-    print(cmf.describe(p))
+    # print(cmf.describe(p))
     tstart = time.time()
-    outflow, rhs_evals = run(p, o, cmf.year, cmf.day)
+    if args.showanimation:
+        anim, rhs_evals = animate(p, o, cmf.year, cmf.day)
+    else:
+        outflow, rhs_evals = run(p, o, cmf.year, cmf.day)
     print('{:g} s, {} rhs evaluations'.format(time.time()-tstart, rhs_evals))
