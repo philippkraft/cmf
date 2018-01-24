@@ -191,11 +191,10 @@ class Animator(FuncAnimation):
     def __init__(self, model):
         self.model = model
         self.figure = plt.figure()
-        self.cellmap = cmf.draw.CellMap(p.project,
-                                        lambda c: c.layers[0].wetness if c.layers else 0.0,
-                                        vmin=0, vmax=1)
+        def f(c): return c.layers[0].wetness if c.layers else 0.0
+        self.cellmap = cmf.draw.CellMap(p.project, f, vmin=0, vmax=1)
 
-        self.fluxmap = cmf.draw.FluxMap(p.project, self.model.t, zorder=2, color='w')
+        self.fluxmap = cmf.draw.FluxMap(self.model.project, self.model.t, zorder=2, color='w')
         self.fluxmap.scale = 10000
 
         self.titel = plt.title(str(self.model.t))
