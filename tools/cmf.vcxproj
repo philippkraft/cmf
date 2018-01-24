@@ -159,8 +159,8 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>$(SolutionDir)math\integrators\sundials_cvode\include;$(BOOSTDIR)\boost\tr1;$(BOOSTDIR);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;CMF_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Apps\WinPython-64bit-3.5.2\python-3.5.2.amd64\Lib\site-packages\numpy\core\include;C:\Apps\WinPython-64bit-3.5.2\python-3.5.2.amd64\include;$(ProjectDir)..\cmf\cmf_core_src\math\integrators\sundials_cvode\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;CMF_EXPORTS;EXPERIMENTAL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <PrecompiledHeader>
@@ -355,6 +355,7 @@
     <ClInclude Include="..\cmf\cmf_core_src\water\SoluteStorage.h" />
     <ClInclude Include="..\cmf\cmf_core_src\math\spline.h" />
     <ClInclude Include="..\cmf\cmf_core_src\math\statevariable.h" />
+    <ClInclude Include="..\cmf\cmf_core_src\math\jacobian.h" />
     <ClInclude Include="..\cmf\cmf_core_src\upslope\vegetation\StructVegetation.h" />
     <ClInclude Include="..\cmf\cmf_core_src\upslope\connections\subsurfacefluxes.h" />
     <ClInclude Include="..\cmf\cmf_core_src\math\integrators\sundials_cvode\include\sundials\sundials_band.h" />
@@ -436,6 +437,7 @@
     <ClCompile Include="..\cmf\cmf_core_src\water\SoluteStorage.cpp" />
     <ClCompile Include="..\cmf\cmf_core_src\math\spline.cpp" />
     <ClCompile Include="..\cmf\cmf_core_src\math\statevariable.cpp" />
+    <ClCompile Include="..\cmf\cmf_core_src\math\jacobian.cpp" />
     <ClCompile Include="..\cmf\cmf_core_src\upslope\connections\subsurfacefluxes.cpp" />
     <ClCompile Include="..\cmf\cmf_core_src\math\integrators\sundials_cvode\src\sundials_band.cpp" />
     <ClCompile Include="..\cmf\cmf_core_src\math\integrators\sundials_cvode\src\sundials_dense.cpp" />
