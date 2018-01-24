@@ -1,6 +1,42 @@
 import cmf
-from numpy import zeros, float
+import numpy as np
+from itertools import chain
+def connector_matrix(states, compression_factor=1):
+    """
+    Returns a matrix that shows the connectivity between the given states
 
+    :param states: A sequence of states to create the matrix
+    :param size: Large matrices can compressed with a factor.
+    :return: A symmetric 2d matrix with 1 for connected states and 0 for
+            unconnected states. Compressed matrices contain larger numbers for
+            the count of connection in the compressed field
+    """
+    posdict = {}
+    l = len(states)
+    size = (l // compression_factor, l // compression_factor)
+    jac = np.zeros(size, dtype=int)
+    for i, a in enumerate(states):
+        posdict[a.node_id] = i
+    for i, a in enumerate(states):
+        for f, t in a.fluxes(cmf.Time()):
+            j = posdict.get(t.node_id)
+            if j:
+                jac[i * size[0] // l, j * size[1] // l] += 1
+    return jac
+
+def connected_states(states):
+    """
+    Get a set of all connected nodes, indicated by the node_id's
+
+    :param states: An iterable of states
+    :return: a set of node_id tuples
+    """
+    def get_connection_tuples(state):
+        return {
+            tuple(sorted((state.node_id, n.node_id)))
+            for n in state.connected_nodes
+        }
+    return set(chain.from_iterable(get_connection_tuples(s) for s in states))
 
 class Jacobian(object):
     """Approximates the jacobian for a cmf solver
@@ -23,7 +59,7 @@ class Jacobian(object):
     def __init__(self, solver, delta=1e-6):
         """solver is a cmf integrator, delta is the amount the state should be changed
         """
-        self.jacobian = zeros((solver.size(), solver.size()), dtype=float)
+        self.jacobian = np.zeros((solver.size(), solver.size()), dtype=float)
         self.solver = solver
         self.delta = delta
 
