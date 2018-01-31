@@ -23,7 +23,7 @@
 #include "math/integrators/explicit_euler.h"
 #include "math/integrators/implicit_euler.h"
 #include "math/integrators/RKFintegrator.h"
-#include "math/integrators/cvodeintegrator.h"
+#include "math/integrators/cvode3.h"
 #include "math/integrators/multiintegrator.h"
 %}
 
@@ -63,15 +63,14 @@
     }
 }    
 
-%attribute(cmf::math::CVodeIntegrator,int,order,get_order);
+// %attribute(cmf::math::CVodeIntegrator,int,order,get_order);
 
 %include "math/integrators/integrator.h"
 %include "math/integrators/bdf2.h"
 %include "math/integrators/explicit_euler.h"
 %include "math/integrators/implicit_euler.h"
 %include "math/integrators/RKFintegrator.h"
-%include "math/integrators/cvodeintegrator.h"
-%include "math/integrators/multiintegrator.h"
+%include "math/integrators/cvode3.h"
 
 
 %extend cmf::math::Integrator { 
