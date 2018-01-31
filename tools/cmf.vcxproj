@@ -217,7 +217,7 @@
       <InlineFunctionExpansion>Default</InlineFunctionExpansion>
       <FavorSizeOrSpeed>Neither</FavorSizeOrSpeed>
       <WholeProgramOptimization>false</WholeProgramOptimization>
-      <AdditionalIncludeDirectories>C:\Apps\WinPython-64bit-3.5.2\python-3.5.2.amd64\Lib\site-packages\numpy\core\include;C:\Apps\WinPython-64bit-3.5.2\python-3.5.2.amd64\include;C:\Users\kraft-p.UNI-GIESSEN\Documents\Code\cvode-3.1.0\include;C:\Users\kraft-p.UNI-GIESSEN\Documents\Code\cvode-3.1.0\build\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Apps\WinPython-64bit-3.6.1.0Qt5\python-3.6.1.amd64\Lib\site-packages\numpy\core\include;C:\Apps\WinPython-64bit-3.6.1.0Qt5\python-3.6.1.amd64\include;C:\Users\kraft-p.UNI-GIESSEN\Documents\Code\cmf_external_solvers\sundials-lib\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;CMF_EXPORTS;_SCL_SECURE_NO_WARNINGS;_CRT_SECURE_NO_WARNINGS;CMF_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <DisableLanguageExtensions>false</DisableLanguageExtensions>
@@ -235,7 +235,7 @@
     <Link>
       <AdditionalOptions>/ignore:4099 %(AdditionalOptions)</AdditionalOptions>
       <OutputFile>$(OutDir)_cmf_core.pyd</OutputFile>
-      <AdditionalLibraryDirectories>C:\Apps\WinPython-64bit-3.5.2\python-3.5.2.amd64\libs;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\Apps\WinPython-64bit-3.6.1.0Qt5\python-3.6.1.amd64\libs;C:\Users\kraft-p.UNI-GIESSEN\Documents\Code\cmf_external_solvers\sundials-lib\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Windows</SubSystem>
@@ -292,6 +292,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="..\cmf\cmf_core_src\cmfmemory.h" />
+    <ClInclude Include="..\cmf\cmf_core_src\math\integrators\cvode3.h" />
     <ClInclude Include="..\cmf\cmf_core_src\math\num_array.h" />
     <ClInclude Include="..\cmf\cmf_core_src\upslope\vegetation\waterstress.h" />
     <ClInclude Include="..\cmf\cmf_core_src\water\adsorption.h" />
@@ -305,23 +306,6 @@
     <ClInclude Include="..\cmf\cmf_core_src\upslope\cell_vector.h" />
     <ClInclude Include="..\cmf\cmf_core_src\water\collections.h" />
     <ClInclude Include="..\cmf\cmf_core_src\upslope\conductable.h" />
-    <ClInclude Include="..\cmf\cmf_core_src\math\integrators\sundials_cvode\include\cvode\cvode.h" />
-    <ClInclude Include="..\cmf\cmf_core_src\math\integrators\sundials_cvode\include\cvode\cvode_band.h" />
-    <ClInclude Include="..\cmf\cmf_core_src\math\integrators\sundials_cvode\include\cvode\cvode_bandpre.h" />
-    <ClInclude Include="..\cmf\cmf_core_src\math\integrators\sundials_cvode\src\cvode_bandpre_impl.h" />
-    <ClInclude Include="..\cmf\cmf_core_src\math\integrators\sundials_cvode\include\cvode\cvode_bbdpre.h" />
-    <ClInclude Include="..\cmf\cmf_core_src\math\integrators\sundials_cvode\src\cvode_bbdpre_impl.h" />
-    <ClInclude Include="..\cmf\cmf_core_src\math\integrators\sundials_cvode\include\cvode\cvode_dense.h" />
-    <ClInclude Include="..\cmf\cmf_core_src\math\integrators\sundials_cvode\include\cvode\cvode_diag.h" />
-    <ClInclude Include="..\cmf\cmf_core_src\math\integrators\sundials_cvode\src\cvode_diag_impl.h" />
-    <ClInclude Include="..\cmf\cmf_core_src\math\integrators\sundials_cvode\include\cvode\cvode_direct.h" />
-    <ClInclude Include="..\cmf\cmf_core_src\math\integrators\sundials_cvode\src\cvode_direct_impl.h" />
-    <ClInclude Include="..\cmf\cmf_core_src\math\integrators\sundials_cvode\src\cvode_impl.h" />
-    <ClInclude Include="..\cmf\cmf_core_src\math\integrators\sundials_cvode\include\cvode\cvode_spbcgs.h" />
-    <ClInclude Include="..\cmf\cmf_core_src\math\integrators\sundials_cvode\include\cvode\cvode_spgmr.h" />
-    <ClInclude Include="..\cmf\cmf_core_src\math\integrators\sundials_cvode\include\cvode\cvode_spils.h" />
-    <ClInclude Include="..\cmf\cmf_core_src\math\integrators\sundials_cvode\src\cvode_spils_impl.h" />
-    <ClInclude Include="..\cmf\cmf_core_src\math\integrators\sundials_cvode\include\cvode\cvode_sptfqmr.h" />
     <ClInclude Include="..\cmf\cmf_core_src\math\integrators\cvodeIntegrator.h" />
     <ClInclude Include="..\cmf\cmf_core_src\upslope\vegetation\ET.h" />
     <ClInclude Include="..\cmf\cmf_core_src\math\integrators\explicit_euler.h" />
@@ -337,8 +321,6 @@
     <ClInclude Include="..\cmf\cmf_core_src\reach\ManningConnection.h" />
     <ClInclude Include="..\cmf\cmf_core_src\atmosphere\Meteorology.h" />
     <ClInclude Include="..\cmf\cmf_core_src\math\integrators\MultiIntegrator.h" />
-    <ClInclude Include="..\cmf\cmf_core_src\math\integrators\sundials_cvode\include\nvector\nvector_parallel.h" />
-    <ClInclude Include="..\cmf\cmf_core_src\math\integrators\sundials_cvode\include\nvector\nvector_serial.h" />
     <ClInclude Include="..\cmf\cmf_core_src\reach\OpenWaterStorage.h" />
     <ClInclude Include="..\cmf\cmf_core_src\upslope\connections\Percolation.h" />
     <ClInclude Include="..\cmf\cmf_core_src\atmosphere\Precipitation.h" />
@@ -358,19 +340,6 @@
     <ClInclude Include="..\cmf\cmf_core_src\math\jacobian.h" />
     <ClInclude Include="..\cmf\cmf_core_src\upslope\vegetation\StructVegetation.h" />
     <ClInclude Include="..\cmf\cmf_core_src\upslope\connections\subsurfacefluxes.h" />
-    <ClInclude Include="..\cmf\cmf_core_src\math\integrators\sundials_cvode\include\sundials\sundials_band.h" />
-    <ClInclude Include="..\cmf\cmf_core_src\math\integrators\sundials_cvode\include\sundials\sundials_config.h" />
-    <ClInclude Include="..\cmf\cmf_core_src\math\integrators\sundials_cvode\include\sundials\sundials_dense.h" />
-    <ClInclude Include="..\cmf\cmf_core_src\math\integrators\sundials_cvode\include\sundials\sundials_direct.h" />
-    <ClInclude Include="..\cmf\cmf_core_src\math\integrators\sundials_cvode\include\sundials\sundials_fnvector.h" />
-    <ClInclude Include="..\cmf\cmf_core_src\math\integrators\sundials_cvode\include\sundials\sundials_iterative.h" />
-    <ClInclude Include="..\cmf\cmf_core_src\math\integrators\sundials_cvode\include\sundials\sundials_lapack.h" />
-    <ClInclude Include="..\cmf\cmf_core_src\math\integrators\sundials_cvode\include\sundials\sundials_math.h" />
-    <ClInclude Include="..\cmf\cmf_core_src\math\integrators\sundials_cvode\include\sundials\sundials_nvector.h" />
-    <ClInclude Include="..\cmf\cmf_core_src\math\integrators\sundials_cvode\include\sundials\sundials_spbcgs.h" />
-    <ClInclude Include="..\cmf\cmf_core_src\math\integrators\sundials_cvode\include\sundials\sundials_spgmr.h" />
-    <ClInclude Include="..\cmf\cmf_core_src\math\integrators\sundials_cvode\include\sundials\sundials_sptfqmr.h" />
-    <ClInclude Include="..\cmf\cmf_core_src\math\integrators\sundials_cvode\include\sundials\sundials_types.h" />
     <ClInclude Include="..\cmf\cmf_core_src\upslope\connections\surfacefluxes.h" />
     <ClInclude Include="..\cmf\cmf_core_src\water\system_bridge.h" />
     <ClInclude Include="..\cmf\cmf_core_src\math\Time.h" />
@@ -382,6 +351,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\cmf\cmf_core_src\cmf_wrap.cpp" />
+    <ClCompile Include="..\cmf\cmf_core_src\math\integrators\cvode3.cpp" />
     <ClCompile Include="..\cmf\cmf_core_src\math\num_array.cpp" />
     <ClCompile Include="..\cmf\cmf_core_src\upslope\vegetation\waterstress.cpp" />
     <ClCompile Include="..\cmf\cmf_core_src\water\adsorption.cpp" />
@@ -395,18 +365,6 @@
     <ClCompile Include="..\cmf\cmf_core_src\upslope\cell.cpp" />
     <ClCompile Include="..\cmf\cmf_core_src\upslope\cell_vector.cpp" />
     <ClCompile Include="..\cmf\cmf_core_src\water\collections.cpp" />
-    <ClCompile Include="..\cmf\cmf_core_src\math\integrators\sundials_cvode\src\cvode.cpp" />
-    <ClCompile Include="..\cmf\cmf_core_src\math\integrators\sundials_cvode\src\cvode_band.cpp" />
-    <ClCompile Include="..\cmf\cmf_core_src\math\integrators\sundials_cvode\src\cvode_bandpre.cpp" />
-    <ClCompile Include="..\cmf\cmf_core_src\math\integrators\sundials_cvode\src\cvode_bbdpre.cpp" />
-    <ClCompile Include="..\cmf\cmf_core_src\math\integrators\sundials_cvode\src\cvode_dense.cpp" />
-    <ClCompile Include="..\cmf\cmf_core_src\math\integrators\sundials_cvode\src\cvode_diag.cpp" />
-    <ClCompile Include="..\cmf\cmf_core_src\math\integrators\sundials_cvode\src\cvode_direct.cpp" />
-    <ClCompile Include="..\cmf\cmf_core_src\math\integrators\sundials_cvode\src\cvode_io.cpp" />
-    <ClCompile Include="..\cmf\cmf_core_src\math\integrators\sundials_cvode\src\cvode_spbcgs.cpp" />
-    <ClCompile Include="..\cmf\cmf_core_src\math\integrators\sundials_cvode\src\cvode_spgmr.cpp" />
-    <ClCompile Include="..\cmf\cmf_core_src\math\integrators\sundials_cvode\src\cvode_spils.cpp" />
-    <ClCompile Include="..\cmf\cmf_core_src\math\integrators\sundials_cvode\src\cvode_sptfqmr.cpp" />
     <ClCompile Include="..\cmf\cmf_core_src\math\integrators\cvodeIntegrator.cpp" />
     <ClCompile Include="..\cmf\cmf_core_src\upslope\vegetation\ET.cpp" />
     <ClCompile Include="..\cmf\cmf_core_src\water\flux_connection.cpp" />
@@ -420,7 +378,6 @@
     <ClCompile Include="..\cmf\cmf_core_src\reach\ManningConnection.cpp" />
     <ClCompile Include="..\cmf\cmf_core_src\atmosphere\Meteorology.cpp" />
     <ClCompile Include="..\cmf\cmf_core_src\math\integrators\MultiIntegrator.cpp" />
-    <ClCompile Include="..\cmf\cmf_core_src\math\integrators\sundials_cvode\src\nvector_serial.cpp" />
     <ClCompile Include="..\cmf\cmf_core_src\reach\OpenWaterStorage.cpp" />
     <ClCompile Include="..\cmf\cmf_core_src\upslope\connections\Percolation.cpp" />
     <ClCompile Include="..\cmf\cmf_core_src\atmosphere\Precipitation.cpp" />
@@ -439,15 +396,6 @@
     <ClCompile Include="..\cmf\cmf_core_src\math\statevariable.cpp" />
     <ClCompile Include="..\cmf\cmf_core_src\math\jacobian.cpp" />
     <ClCompile Include="..\cmf\cmf_core_src\upslope\connections\subsurfacefluxes.cpp" />
-    <ClCompile Include="..\cmf\cmf_core_src\math\integrators\sundials_cvode\src\sundials_band.cpp" />
-    <ClCompile Include="..\cmf\cmf_core_src\math\integrators\sundials_cvode\src\sundials_dense.cpp" />
-    <ClCompile Include="..\cmf\cmf_core_src\math\integrators\sundials_cvode\src\sundials_direct.cpp" />
-    <ClCompile Include="..\cmf\cmf_core_src\math\integrators\sundials_cvode\src\sundials_iterative.cpp" />
-    <ClCompile Include="..\cmf\cmf_core_src\math\integrators\sundials_cvode\src\sundials_math.cpp" />
-    <ClCompile Include="..\cmf\cmf_core_src\math\integrators\sundials_cvode\src\sundials_nvector.cpp" />
-    <ClCompile Include="..\cmf\cmf_core_src\math\integrators\sundials_cvode\src\sundials_spbcgs.cpp" />
-    <ClCompile Include="..\cmf\cmf_core_src\math\integrators\sundials_cvode\src\sundials_spgmr.cpp" />
-    <ClCompile Include="..\cmf\cmf_core_src\math\integrators\sundials_cvode\src\sundials_sptfqmr.cpp" />
     <ClCompile Include="..\cmf\cmf_core_src\upslope\connections\surfacefluxes.cpp" />
     <ClCompile Include="..\cmf\cmf_core_src\water\system_bridge.cpp" />
     <ClCompile Include="..\cmf\cmf_core_src\math\timeseries.cpp" />
