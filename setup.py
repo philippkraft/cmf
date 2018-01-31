@@ -140,7 +140,8 @@ def make_cmf_core(swig, openmp):
      - include dirs
      - extra compiler flags
     """
-    libraries = None
+    libraries = []
+    library_dirs = []
     # Include CVODE
     include_dirs = [os.path.join(*'cmf/cmf_core_src/math/integrators/sundials_cvode/include'.split('/'))]
     # Include numpy
@@ -154,7 +155,7 @@ def make_cmf_core(swig, openmp):
         if sys.version_info.major == 2:
             boost_path = os.environ.get('BOOSTDIR', r"..\boost_1_41_0")
             include_dirs += [boost_path, boost_path + r"\boost\tr1"]
-
+        include_dirs += ['../cmf_external_solvers/sundials-lib/include']
         compile_args = ["/EHsc",
                         r'/Fd"build\vc90.pdb"',
                         "/D_SCL_SECURE_NO_WARNINGS",
@@ -164,7 +165,13 @@ def make_cmf_core(swig, openmp):
         if openmp:
             compile_args.append("/openmp")
         link_args = ["/DEBUG"]
-
+        library_dirs += ['../cmf_external_solvers/sundials-lib/lib']
+        libraries += ['sundials_cvode', 'sundials_nvecserial', 
+                      'sundials_sunlinsolband', 'sundials_sunlinsoldense', 
+                      # 'sundials_sunlinsolklu', 'sundials_sunlinsolpcg', 'sundials_sunlinsolspbcgs', 'sundials_sunlinsolspfgmr',
+                      # 'sundials_sunlinsolspgmr', 'sundials_sunlinsolsptfqmr', 
+                      'sundials_sunmatrixband', 'sundials_sunmatrixdense', 'sundials_sunmatrixsparse'
+                      ]
     else:
 
         compile_args = ['-Wno-comment', '-Wno-reorder', '-Wno-deprecated', '-Wno-unused', '-Wno-sign-compare', '-ggdb',
@@ -196,6 +203,7 @@ def make_cmf_core(swig, openmp):
     cmf_core = Extension('cmf._cmf_core',
                          sources=cmf_files,
                          libraries=libraries,
+                         library_dirs=library_dirs,
                          include_dirs=include_dirs,
                          extra_compile_args=compile_args,
                          extra_link_args=link_args,

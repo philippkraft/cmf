@@ -18,13 +18,15 @@
 //   
 #include "cvodeintegrator.h"
 #include <cvode/cvode.h>                  /* main integrator header file */
-#include <cvode/cvode_spgmr.h>            /* prototypes & constants for CVSPGMR solver */
-#include <cvode/cvode_spbcgs.h>
 #include <cvode/cvode_bandpre.h>
-#include <cvode/cvode_dense.h>
-#include <cvode/cvode_band.h>
 #include <cvode/cvode_diag.h>
-#include <cvode/cvode_sptfqmr.h>
+// #include <cvode/cvode_direct.h>
+#include <cvode/cvode_spils.h>
+#include <sunlinsol/sunlinsol_spgmr.h>
+#include <sunlinsol/sunlinsol_spbcgs.h>
+#include <sunlinsol/sunlinsol_dense.h>
+#include <sunlinsol/sunlinsol_band.h>
+#include <sunlinsol/sunlinsol_sptfqmr.h>
 #include <nvector/nvector_serial.h>       /* serial N_Vector types, fct. and macros */
 #include <sundials/sundials_dense.h> /* use generic DENSE solver in preconditioning */
 #include <sundials/sundials_types.h> /* definition of realtype */
@@ -105,6 +107,7 @@ void cmf::math::CVodeIntegrator::initialize()
 	// Disable warnings about 0-length timesteps (they are all right)
 	flag=CVodeSetMaxHnilWarns(cvode_mem,-1);
 	int PREC = preconditioner=='L' ? PREC_LEFT : preconditioner=='R' ? PREC_RIGHT : PREC_NONE;
+	/*
 	switch(LinearSolver)
 	{
 	case 0 : flag=CVDense(cvode_mem,N);		          break;
@@ -131,7 +134,7 @@ void cmf::math::CVodeIntegrator::initialize()
 	default: throw std::runtime_error("Linear solver type not in 0..5");
 	}
 	if (flag<0) throw std::runtime_error("Could not create CVODE solver");
-
+	*/
 }
 
 cmf::math::CVodeIntegrator::~CVodeIntegrator()
