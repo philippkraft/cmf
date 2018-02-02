@@ -12,6 +12,7 @@ __pycache__/
 *.sdf
 .vs/
 Debug/
+Release/
 *.VC.opendb
 
 # Distribution / packaging
