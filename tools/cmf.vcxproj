@@ -1,6 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug_exe|Win32">
+      <Configuration>Debug_exe</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug_exe|x64">
+      <Configuration>Debug_exe</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
     <ProjectConfiguration Include="Debug|Win32">
       <Configuration>Debug</Configuration>
       <Platform>Win32</Platform>
@@ -46,7 +54,17 @@
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <PlatformToolset>v141</PlatformToolset>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug_exe|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_exe|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug_exe|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <PlatformToolset>v141</PlatformToolset>
@@ -81,7 +99,13 @@
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release_exe|Win32'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug_exe|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release_exe|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug_exe|x64'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='distutil|Win32'" Label="PropertySheets">
@@ -122,11 +146,17 @@
     <IntDir Condition="'$(Configuration)|$(Platform)'=='distutil|Win32'">$(Configuration)\</IntDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='distutil|x64'">$(Configuration)\</IntDir>
     <OutDir Condition="'$(Configuration)|$(Platform)'=='Release_exe|Win32'">$(Configuration)\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug_exe|Win32'">$(Configuration)\</OutDir>
     <OutDir Condition="'$(Configuration)|$(Platform)'=='Release_exe|x64'">$(Configuration)\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug_exe|x64'">$(Configuration)\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Release_exe|Win32'">$(Configuration)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug_exe|Win32'">$(Configuration)\</IntDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Release_exe|x64'">$(Configuration)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug_exe|x64'">$(Configuration)\</IntDir>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release_exe|Win32'">false</LinkIncremental>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug_exe|Win32'">false</LinkIncremental>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release_exe|x64'">false</LinkIncremental>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug_exe|x64'">false</LinkIncremental>
     <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.pyd</TargetExt>
     <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.pyd</TargetExt>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">_cmf_core</TargetName>
@@ -159,7 +189,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>C:\Apps\WinPython-64bit-3.5.2\python-3.5.2.amd64\Lib\site-packages\numpy\core\include;C:\Apps\WinPython-64bit-3.5.2\python-3.5.2.amd64\include;$(ProjectDir)..\cmf\cmf_core_src\math\integrators\sundials_cvode\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Apps\WinPython-64bit-3.5.2\python-3.5.2.amd64\Lib\site-packages\numpy\core\include;C:\Apps\WinPython-64bit-3.5.2\python-3.5.2.amd64\include;C:\Users\kraft-p\Documents\Code\cmf_external_solvers\sundials-lib\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;CMF_EXPORTS;EXPERIMENTAL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
@@ -217,7 +247,7 @@
       <InlineFunctionExpansion>Default</InlineFunctionExpansion>
       <FavorSizeOrSpeed>Neither</FavorSizeOrSpeed>
       <WholeProgramOptimization>false</WholeProgramOptimization>
-      <AdditionalIncludeDirectories>C:\Apps\WinPython-64bit-3.6.1.0Qt5\python-3.6.1.amd64\Lib\site-packages\numpy\core\include;C:\Apps\WinPython-64bit-3.6.1.0Qt5\python-3.6.1.amd64\include;C:\Users\kraft-p.UNI-GIESSEN\Documents\Code\cmf_external_solvers\sundials-lib\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Apps\WinPython-64bit-3.6.1.0Qt5\python-3.6.1.amd64\Lib\site-packages\numpy\core\include;C:\Apps\WinPython-64bit-3.6.1.0Qt5\python-3.6.1.amd64\include;C:\Users\kraft-p\Documents\Code\cmf_external_solvers\sundials-lib\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;CMF_EXPORTS;_SCL_SECURE_NO_WARNINGS;_CRT_SECURE_NO_WARNINGS;CMF_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <DisableLanguageExtensions>false</DisableLanguageExtensions>
@@ -270,12 +300,13 @@
       <TargetMachine>MachineX86</TargetMachine>
     </Link>
   </ItemDefinitionGroup>
-  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release_exe|x64'">
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug_exe|Win32'">
     <ClCompile>
       <Optimization>Full</Optimization>
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
       <AdditionalIncludeDirectories>D:\Code\cmf\..\cmf\cmf_core_src\math\integrators\sundials_cvode\include;d:\Code\boost_1_41_0\boost\tr1;d:\Code\boost_1_41_0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_WINDOWS;CMF_EXPORTS;SOLUTE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
       <BasicRuntimeChecks>Default</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <PrecompiledHeader>
@@ -288,6 +319,53 @@
       <OutputFile>$(OutDir)$(ProjectName).exe</OutputFile>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Console</SubSystem>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release_exe|x64'">
+    <ClCompile>
+      <Optimization>Full</Optimization>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <AdditionalIncludeDirectories>C:\Users\kraft-p\Documents\Code\cmf_external_solvers\sundials-lib\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;CMF_EXPORTS;SOLUTE;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DisableSpecificWarnings>4996;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+    </ClCompile>
+    <Link>
+      <OutputFile>$(OutDir)$(ProjectName).exe</OutputFile>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Console</SubSystem>
+      <AdditionalLibraryDirectories>C:\Users\kraft-p\Documents\Code\cmf_external_solvers\sundials-lib\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>sundials_cvode.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug_exe|x64'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <AdditionalIncludeDirectories>C:\Users\kraft-p\Documents\Code\cmf_external_solvers\sundials-lib\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;CMF_EXPORTS;SOLUTE;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DisableSpecificWarnings>4996;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+    </ClCompile>
+    <Link>
+      <OutputFile>$(OutDir)$(ProjectName).exe</OutputFile>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Console</SubSystem>
+      <AdditionalLibraryDirectories>C:\Users\kraft-p\Documents\Code\cmf_external_solvers\sundials-lib\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>sundials_cvode.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -306,7 +384,6 @@
     <ClInclude Include="..\cmf\cmf_core_src\upslope\cell_vector.h" />
     <ClInclude Include="..\cmf\cmf_core_src\water\collections.h" />
     <ClInclude Include="..\cmf\cmf_core_src\upslope\conductable.h" />
-    <ClInclude Include="..\cmf\cmf_core_src\math\integrators\cvodeIntegrator.h" />
     <ClInclude Include="..\cmf\cmf_core_src\upslope\vegetation\ET.h" />
     <ClInclude Include="..\cmf\cmf_core_src\math\integrators\explicit_euler.h" />
     <ClInclude Include="..\cmf\cmf_core_src\water\flux_connection.h" />
@@ -350,6 +427,7 @@
     <ClInclude Include="..\cmf\cmf_core_src\atmosphere\Weather.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\cmf\cmf_core_src\cmf.cpp" />
     <ClCompile Include="..\cmf\cmf_core_src\cmf_wrap.cpp" />
     <ClCompile Include="..\cmf\cmf_core_src\math\integrators\cvode3.cpp" />
     <ClCompile Include="..\cmf\cmf_core_src\math\num_array.cpp" />
@@ -365,7 +443,6 @@
     <ClCompile Include="..\cmf\cmf_core_src\upslope\cell.cpp" />
     <ClCompile Include="..\cmf\cmf_core_src\upslope\cell_vector.cpp" />
     <ClCompile Include="..\cmf\cmf_core_src\water\collections.cpp" />
-    <ClCompile Include="..\cmf\cmf_core_src\math\integrators\cvodeIntegrator.cpp" />
     <ClCompile Include="..\cmf\cmf_core_src\upslope\vegetation\ET.cpp" />
     <ClCompile Include="..\cmf\cmf_core_src\water\flux_connection.cpp" />
     <ClCompile Include="..\cmf\cmf_core_src\water\flux_node.cpp" />
@@ -385,6 +462,7 @@
     <ClCompile Include="..\cmf\cmf_core_src\reach\reach.cpp" />
     <ClCompile Include="..\cmf\cmf_core_src\reach\ReachType.cpp" />
     <ClCompile Include="..\cmf\cmf_core_src\math\real.cpp" />
+    <ClCompile Include="..\cmf\cmf_core_src\math\time.cpp" />
     <ClCompile Include="..\cmf\cmf_core_src\upslope\soil\RetentionCurve.cpp" />
     <ClCompile Include="..\cmf\cmf_core_src\math\integrators\RKFIntegrator.cpp" />
     <ClCompile Include="..\cmf\cmf_core_src\upslope\vegetation\ShuttleworthWallace.cpp" />

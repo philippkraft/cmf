@@ -119,18 +119,6 @@ void cmf::math::CVodeIntegrator::initialize()
 		flag = CVBandPrecInit(cvode_mem,N,maxl,maxl);
 		// Set GMRS with banded preconditioner
 		break;
-	case 4 : 
-		flag=CVSpbcg(cvode_mem,PREC,maxl);
-		// Create a banded preconditioner
-		flag = CVBandPrecInit(cvode_mem,N,maxl,maxl);
-		// Set GMRS with banded preconditioner
-		break;
-	case 5 : 
-		flag=CVSptfqmr(cvode_mem,PREC,maxl);
-		// Create a banded preconditioner
-		flag = CVBandPrecInit(cvode_mem,N,maxl,maxl);
-		// Set GMRS with banded preconditioner
-		break;
 	default: throw std::runtime_error("Linear solver type not in 0..5");
 	}
 	if (flag<0) throw std::runtime_error("Could not create CVODE solver");

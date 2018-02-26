@@ -1,9 +1,12 @@
 #include "cvode3.h"
+#include "../num_array.h"
+
+#include <sstream>
 
 #include <cvode/cvode.h>
 #include <nvector/nvector_serial.h>
-#include <cvode/cvode_direct.h>
 #include <sundials/sundials_types.h>   /* defs. of realtype, sunindextype      */
+
 
 #include <cvode/cvode_direct.h>        /* access to CVDls interface            */
 // Special includes for dense solver
@@ -14,49 +17,57 @@
 #include <sunmatrix/sunmatrix_band.h> /* access to band SUNMatrix            */
 #include <sunlinsol/sunlinsol_band.h> /* access to band SUNLinearSolver      */
 
+// Special includes for diagonal solver
+#include <cvode/cvode_diag.h>
+
+// Special includes for krylov preconditioned solver with spgmr linear solver
 #include <cvode/cvode_spils.h>
+#include <sunlinsol/sunlinsol_spgmr.h>
+#include <cvode/cvode_bandpre.h>
 
 using namespace cmf::math;
 
 
 
-int f(realtype t, N_Vector u, N_Vector udot, void *f_data)
-{
-	CVode3* integ = static_cast<CVode3*>(f_data);
-	// Get the pointers to the data of the vectors u and udot
-	realtype * udata = NV_DATA_S(u);
-	realtype * dudata = NV_DATA_S(udot);
-	// Get size of the problem
-	int nsize = int(integ->size());
-	// Update the states from the state vector
-	try {
-		integ->set_states(udata);
-	}
-	catch (std::exception& e) {
-		std::cerr << e.what() << std::endl;
-		integ->set_error_msg(e.what());
-		return -8;
-	}
-	Time T = cmf::math::day * t;
-	Time T_model = integ->get_t();
-	real sec_local = (T - T_model) / sec;
-	// Get the derivatives at time T
-	try {
-		integ->copy_dxdt(T, dudata);
-	}
-	catch (std::exception& e) {
-		std::cerr << e.what() << std::endl;
-		integ->set_error_msg(e.what());
-		return -8;
-	}
-	return 0;
-}
 
 
 
 class cmf::math::CVode3::Impl {
-private:
+public:
 	CVode3 * _integrator;
+
+	static int f(realtype t, N_Vector u, N_Vector udot, void *f_data)
+	{
+		CVode3::Impl * integ_impl = static_cast<CVode3::Impl*>(f_data);
+		CVode3 * integ = integ_impl->_integrator;
+		// Get the pointers to the data of the vectors u and udot
+		realtype * udata = NV_DATA_S(u);
+		realtype * dudata = NV_DATA_S(udot);
+		// Get size of the problem
+		int nsize = int(integ->size());
+		// Update the states from the state vector
+		try {
+			integ->set_states(udata);
+		}
+		catch (std::exception& e) {
+			std::cerr << e.what() << std::endl;
+			integ->set_error_msg(e.what());
+			return -8;
+		}
+		Time T = cmf::math::day * t;
+		Time T_model = integ->get_t();
+		real sec_local = (T - T_model) / sec;
+		// Get the derivatives at time T
+		try {
+			integ->copy_dxdt(T, dudata);
+		}
+		catch (std::exception& e) {
+			std::cerr << e.what() << std::endl;
+			integ->set_error_msg(e.what());
+			return -8;
+		}
+		return 0;
+	}
 
 	int set_dense_solver() {
 		if (cvode_mem == 0) {
@@ -70,8 +81,6 @@ private:
 		// Check flag and raise an error
 	}
 
-
-
 	int set_banded_solver(int bandwidth = 5) {
 		if (cvode_mem == 0) {
 			throw std::runtime_error("Tried to create banded solver for uninitialized cvode");
@@ -81,9 +90,52 @@ private:
 		return CVDlsSetLinearSolver(cvode_mem, LS, J);
 
 	}
+	
+	int set_diagonal_solver() {
+		if (cvode_mem == 0) {
+			throw std::runtime_error("Tried to create solver for uninitialized cvode");
+		}
+		return CVDiag(this->cvode_mem);
+	}
+
+	int set_krylov_solver(int bandwidth, char preconditioner) {
+		if (cvode_mem == 0) {
+			throw std::runtime_error("Tried to create banded solver for uninitialized cvode");
+		}
+		int prec = PREC_LEFT;
+		switch (preconditioner) {
+		case 'L' : 
+			prec = PREC_LEFT;
+			break;
+		case 'R' :
+			prec = PREC_RIGHT;
+			break;
+		case 'B':
+			prec = PREC_BOTH;
+			break;
+		case 'N':
+			prec = PREC_NONE;
+			break;
+		}
+		LS = 0;
+		LS = SUNSPGMR(this->y, prec, 0);
+		if (LS == 0) {
+			throw std::runtime_error("Linear solver not created");
+		}
+		int flag = CVSpilsSetLinearSolver(cvode_mem, LS);
+		if (flag == CVSPILS_SUCCESS)
+			CVBandPrecInit(cvode_mem, N, bandwidth, bandwidth);
+		else {
+			throw std::runtime_error("Setting linear solver failed");
+		}
+		return flag;
+	}
+
+	int set_klu_solver() {
+		
+	}
 
 
-public:
 	Impl(CVode3 * integrator) : 
 		_integrator(integrator)
 	{		}
@@ -105,7 +157,8 @@ public:
 		if (LS != 0) SUNLinSolFree(LS);
 		if (J != 0) SUNMatDestroy(J);
 	}
-	int intitialize() {
+	
+	int initialize() {
 		release();
 		// size of problem
 		N = int(_integrator->m_States.size());
@@ -129,33 +182,93 @@ public:
 		// Allocate memory for solver and set the right hand side function, start time and error tolerance
 		flag = CVodeInit(cvode_mem, f, _integrator->get_t().AsDays(), y);
 		flag = CVodeSVtolerances(cvode_mem, reltol, abstol);
-		
-		/* Fine tuning of solver settings
-		if (_integrator->MaxOrder>2) flag = CVodeSetStabLimDet(cvode_mem, 1);
-
-		flag = CVodeSetMaxOrd(cvode_mem, _integrator->MaxOrder);
-		flag = CVodeSetMaxNonlinIters(cvode_mem, _integrator->MaxNonLinearIterations);
-		flag = CVodeSetMaxErrTestFails(cvode_mem, _integrator->MaxErrorTestFailures);
-		flag = CVodeSetMaxConvFails(cvode_mem, MaxConvergenceFailures);
-		flag = CVodeSetMaxNumSteps(cvode_mem, 10000);
-		flag = CVodeSetMaxStep(cvode_mem, max_step.AsDays());
-		*/
-		// Disable warnings about 0-length timesteps (they are all right)
-		flag = CVodeSetMaxHnilWarns(cvode_mem, -1);
-
-		flag = set_banded_solver(5);
+		this->set_limits(_integrator->options);
+		// Set solver
+		this->_integrator->set_solver();
 
 		
+		return flag;
+	}
+	void set_limits(const CVodeOptions& options);
 
-		if (flag<0) throw std::runtime_error("Could not create CVODE solver");
+	realtype get_t() const {
+		return _integrator->get_t().AsDays();
+	}
+	int integrate(cmf::math::Time t_max, cmf::math::Time dt) {
+		if (_integrator->m_States.size() == 0)
+			throw std::out_of_range("No states to integrate!");
 
+		// If solver or y is not initialized, initialize them
+		if (!cvode_mem || !y)
+		{
+			_integrator->m_dt = t_max - _integrator->get_t();
+			this->initialize();
+		}
+		// Get data of y
+		realtype * y_data = NV_DATA_S(y);
+		// Time step, needed as return value
+		realtype t_ret = get_t(),
+				 t_step = 0;
+		
+		CVodeSetStopTime(cvode_mem, t_max.AsDays());
+		_integrator->error_msg = "";
+		int res = CVode(cvode_mem, t_max.AsDays(), y, &t_ret, CV_ONE_STEP);
+		if (res<0) {
+			_integrator->set_states(y_data);
+			if (_integrator->error_msg != "")
+				throw std::runtime_error(_integrator->error_msg + " - " + (day * t_ret).AsDate().to_string());
+			else
+				throw std::runtime_error("CVode could not integrate due to failure (see message above) at t=" + (day*t_ret).AsDate().to_string());
+		}
+		long iterations;
+		CVodeGetNumRhsEvals(cvode_mem, &iterations);
+		_integrator->m_Iterations = (int)iterations;
+		CVodeGetLastStep(cvode_mem, &t_step);
+		_integrator->m_dt = day * t_step;
+		real sec_step = t_step * 24 * 60 * 60;
+		double sec_to_go = (t_max - t_ret * day) / sec;
+		if (res == CV_TSTOP_RETURN) {
+			if ((day*t_ret - t_max).AsMilliseconds()>5 || (day*t_ret - t_max).AsMilliseconds()<-5) {
+				throw std::runtime_error("Time returned by CVODE (" + (day*t_ret).to_string()
+					+ ") differs from given end time("
+					+ t_max.to_string() + "). Please inform cmf maintainer");
+			}
+			_integrator->m_t = t_max;
+		}
+		else {
+			_integrator->m_t = t_ret * day;
+		}
+
+
+		// Copy result to state variables
+		_integrator->set_states(y_data);
+		return res;
+	}
+
+	cmf::math::num_array get_error() const {
+		sunindextype N = _integrator->size();
+		N_Vector ele = N_VNew_Serial(N);
+		N_Vector eweight = N_VNew_Serial(N);
+		CVodeGetEstLocalErrors(cvode_mem, ele);
+		CVodeGetErrWeights(cvode_mem, eweight);
+		N_Vector result = N_VNew_Serial(N);
+		N_VProd(ele, eweight, result);
+		num_array res(NV_DATA_S(result), NV_DATA_S(result) + N);
+		N_VDestroy_Serial(ele);
+		N_VDestroy_Serial(eweight);
+		return res;
+	}
+
+	~Impl() {
+		release();
 	}
 };
+
 
 int cmf::math::CVode3::integrate(cmf::math::Time t_max, cmf::math::Time dt)
 {
 
-	return 0;
+	return _implementation->integrate(t_max, dt);
 }
 
 void cmf::math::CVode3::reset()
@@ -178,3 +291,121 @@ CVode3 * cmf::math::CVode3::copy() const
 	return nullptr;
 }
 
+CVodeInfo cmf::math::CVode3::get_info() const
+{
+	CVodeInfo ci;
+	void * cvm = _implementation->cvode_mem;
+
+
+	CVodeGetWorkSpace(cvm, &ci.workspace_real, &ci.workspace_int);
+	ci.workspace_byte = ci.workspace_real * sizeof(realtype) + ci.workspace_int * sizeof(long int);
+	CVodeGetNumSteps(cvm, &ci.steps);
+	CVodeGetNumRhsEvals(cvm, &ci.rhs_evaluations);
+	CVodeGetNumLinSolvSetups(cvm, &ci.linear_solver_setups);
+	CVodeGetNumErrTestFails(cvm, &ci.error_test_fails);
+
+	return ci;
+}
+
+cmf::math::num_array cmf::math::CVode3::get_error() const
+{
+	return _implementation->get_error();
+}
+
+cmf::math::CVodeDense::CVodeDense(cmf::math::StateVariableOwner & states, real epsilon)
+	: CVode3(states, epsilon)
+{}
+
+cmf::math::num_array cmf::math::CVodeDense::jacobian() const
+{
+	void * cvm = _implementation->cvode_mem;
+
+	SUNMatrix J = _implementation->J;
+	if (cvm == 0 || J == 0) {
+		throw std::runtime_error(this->to_string() +  ": No access to Jacobian matrix, if the solver is not initialized. Run the solver for any timestep");
+	}
+	cmf::math::num_array res(SM_DATA_D(J), SM_DATA_D(J) + SM_LDATA_D(J));
+	return res;
+}
+
+void cmf::math::CVodeDense::set_solver()
+{
+	_implementation->set_dense_solver();
+}
+
+cmf::math::CVodeBanded::CVodeBanded(cmf::math::StateVariableOwner & states, real epsilon, int _bandwidth)
+	: CVode3(states, epsilon), bandwidth(_bandwidth)
+{}
+
+inline std::string cmf::math::CVodeBanded::to_string() const {
+	return "CVodeBanded(w=" + std::to_string(bandwidth) + ")";
+
+}
+
+void cmf::math::CVodeBanded::set_solver()
+{
+	_implementation->set_banded_solver(this->bandwidth);
+}
+
+cmf::math::CVodeDiag::CVodeDiag(cmf::math::StateVariableOwner & states, real epsilon)
+	: CVode3(states, epsilon)
+{}
+
+void cmf::math::CVodeDiag::set_solver()
+{
+	_implementation->set_diagonal_solver();
+}
+
+cmf::math::CVodeKrylov::CVodeKrylov(cmf::math::StateVariableOwner & states, real epsilon,
+	int _bandwidth, char _preconditioner)
+	: CVode3(states, epsilon), bandwidth(_bandwidth), preconditioner(_preconditioner)
+{}
+
+inline std::string cmf::math::CVodeKrylov::to_string() const {
+	return "CVodeKrylov(w=" + std::to_string(bandwidth) + ", p='" + preconditioner + "')";
+}
+
+void cmf::math::CVodeKrylov::set_solver()
+{
+	_implementation->set_krylov_solver(this->bandwidth, this->preconditioner);
+}
+
+cmf::math::CVodeOptions::CVodeOptions()
+	: max_order(-1), max_non_linear_iterations(-1), 
+	  max_error_test_failures(-1), max_convergence_failures(-1),
+	  max_num_steps(-1), max_hnil_warnings(-1)
+{
+
+}
+
+void cmf::math::CVode3::Impl::set_limits(const CVodeOptions & options)
+{
+	if (options.max_order >= 0) CVodeSetMaxOrd(cvode_mem, options.max_order);
+	// Set stability limit detection, see CVode Guide 2.3. Reasons to apply this algo are true for cmf.
+	if (options.max_order >= 3) CVodeSetStabLimDet(cvode_mem, 1);
+	if (options.max_non_linear_iterations >= 0) CVodeSetMaxNonlinIters(cvode_mem, options.max_non_linear_iterations);
+	if (options.max_error_test_failures >= 0) CVodeSetMaxErrTestFails(cvode_mem, options.max_error_test_failures);
+	if (options.max_convergence_failures >= 0) CVodeSetMaxConvFails(cvode_mem, options.max_convergence_failures);
+	if (options.max_num_steps >= 0) CVodeSetMaxNumSteps(cvode_mem, options.max_num_steps);
+	CVodeSetMaxHnilWarns(cvode_mem, options.max_hnil_warnings);
+
+}
+
+std::string cmf::math::CVodeInfo::to_string() const
+{
+	/*			long int workspace_real;
+			long int workspace_int;
+			long int workspace_byte;
+			long int steps;
+			long int rhs_evaluations;
+			long int linear_solver_steps;
+			long int error_test_fails;
+*/
+	std::ostringstream out;
+	out << "workspace (real/int/bytes): " << workspace_real << "/" << workspace_int << "/" << workspace_byte << std::endl;
+	out << steps << " steps" << std::endl;
+	out << rhs_evaluations << " rhs evaluations" << std::endl;
+	out << linear_solver_setups << " linear solver setups" << std::endl;
+	out << error_test_fails << " error test failures" << std::endl;
+	return out.str();
+}
