@@ -24,63 +24,113 @@
 
 namespace cmf {
 	namespace math {
-
+		/// @brief A set of options for all CVode3 solver
+		///
+		/// Negative numbers indicate that this option stays on the default value.
+		/// For the meaning of the options see CVODE-UD, section 4.5.6
+		///
+		/// See Hindmarsh, A., Serban, R. and Reynolds, D.: 
+		///     User Documentation for cvode v3.1.0, 2017, UCRL-SM-208108
+		///
+		/// Usage example:
+		/// >>>solver = CVodeDens(p, 1e-9)
+		/// >>>solver.options.max_order = 2
 		struct CVodeOptions
 		{
 		public:
+			/// @brief Maximum order of the solver (default 12 for CVodeAdams and 5 for any other solver)
 			int max_order;
+			/// @brief  maximum  number  of  nonlinear solver iterations permitted per step
 			int max_non_linear_iterations;
+			/// @brief maximum number of error test failures permitted in attempting one step (default=7)
 			int max_error_test_failures;
+			/// @brief  maximum number of nonlinear solver convergence failures permitted during one step
 			int max_convergence_failures;
+			/// @brief maximum number of steps to be taken by the solver in its 
+			/// attempt to reach the next output time (default=500)
 			int max_num_steps;
+			/// maximum number of messages issued
+			/// by the solver warning that t+h=t on the next internal step, default off (-1)
 			int max_hnil_warnings;
 			
 			CVodeOptions();
 		};
 
+		/// @brief Reports the current state of a CVode solver
 		struct CVodeInfo
 		{
 		public:
+			/// @brief number of statevariable solved by the solver
+			long int size;
+			/// @brief Number of real values in the workspace of the solver
 			long int workspace_real;
+			/// @brief Number of int values in the workspace of the solver
 			long int workspace_int;
+			/// @brief Number of bytes values in the workspace of the solver
 			long int workspace_byte;
+			/// @brief Cumulative number of internal steps
 			long int steps;
+			/// @brief Order to be attempted on the next step
+			long int current_order;
+			/// @brief Number of calls to right hand side function
 			long int rhs_evaluations;
+			/// @brief Number of calls to linear solver setup function
 			long int linear_solver_setups;
+			/// @brief Number of local error test failures that have occurred
 			long int error_test_fails;
+			/// @brief contains the Sundials version of CVode used
+			std::string sundials_version;
 
 			std::string to_string() const;
 
 		};
-
+		/// @brief Abstract base class for different modes of the CVode solver
+		///
+		/// Initantiate one of the child classes to gain different modes of the CVode solver
 		class CVode3 : public Integrator {
+		private:
+			bool _stiff_solver;
 		protected:
+
 			class Impl;
-			
 			std::unique_ptr<Impl> _implementation;
+
 			std::string _error_msg;
 			virtual void set_solver()=0;
-		public:
-			/// @brief Changes the limits for the CVode solver
-			///
-			/// Negative values do not change the current value
-			/// Uses the CVode functions CVodeSetMax...
-			CVodeOptions options;
-			virtual int integrate(cmf::math::Time t_max, cmf::math::Time dt);
-			virtual void reset();
 			CVode3(cmf::math::StateVariableOwner& states, real epsilon = 1e-9);
+
+		public:
+			/// @brief the limits for the CVode solver, see CVodeOptions
+			CVodeOptions options;
+
+			virtual int integrate(cmf::math::Time t_max, cmf::math::Time dt);
+			/// Resets the history of the multispte solver and overwrites the internal state cache
+			virtual void reset();
+			/// Sets an error message
 			void set_error_msg(std::string error);
+			/// Returns a copy of the solver
 			CVode3 * copy() const;
+
 			std::string error_msg;
+
+			/// Returns the current solver statistics
 			CVodeInfo get_info() const;
+
+			/// Returns a string representation of the solver
 			virtual std::string to_string() const=0;
 
 			/// Error vector of the integrator
 			cmf::math::num_array get_error() const;
 		};
-
+		/// @brief implicit BDF CVode solver with full Jacobian approximation
+		///
+		/// Use this solver for small but stiff systems (<20 state variables)
+		///
+		/// The solver calculates for each step the full Jacobian matrix of the system
+		/// using a difference quotient approximation of the real Jacobian
 		class CVodeDense : public CVode3 {
 		public:
+			/// @brief Creates a new implicit dense CVode solver 
 			CVodeDense(cmf::math::StateVariableOwner& states, real epsilon = 1e-9);
 			std::string to_string() const {
 				return "CVodeDense()";
@@ -96,10 +146,23 @@ namespace cmf {
 			void set_solver();
 		};
 
+		/// 
+		class CVodeAdams : public CVode3 {
+		public:
+			int bandwidth;
+			CVodeAdams(cmf::math::StateVariableOwner& states, real epsilon = 1e-9);
+			std::string to_string() const;
+		protected:
+			void set_solver() {
+
+			}
+		};
+
+
 		class CVodeBanded : public CVode3 {
 		public:
 			int bandwidth;
-			CVodeBanded(cmf::math::StateVariableOwner& states, real epsilon = 1e-9, int bandwidth=5);
+			CVodeBanded(cmf::math::StateVariableOwner& states, real epsilon = 1e-9, int w=5);
 			std::string to_string() const;
 		protected:
 			void set_solver();
@@ -120,7 +183,7 @@ namespace cmf {
 			int bandwidth;
 			char preconditioner;
 			CVodeKrylov(cmf::math::StateVariableOwner& states, real epsilon = 1e-9, 
-				int bandwidth=5, char preconditioner='L');
+				int w=5, char p='L');
 			std::string to_string() const;
 
 		protected:

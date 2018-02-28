@@ -6,6 +6,7 @@
 #include <cvode/cvode.h>
 #include <nvector/nvector_serial.h>
 #include <sundials/sundials_types.h>   /* defs. of realtype, sunindextype      */
+#include <sundials/sundials_version.h>
 
 
 #include <cvode/cvode_direct.h>        /* access to CVDls interface            */
@@ -29,12 +30,39 @@ using namespace cmf::math;
 
 
 
+cmf::math::CVodeOptions::CVodeOptions()
+	: max_order(-1), max_non_linear_iterations(-1),
+	max_error_test_failures(-1), max_convergence_failures(-1),
+	max_num_steps(0), max_hnil_warnings(-1)
+{
+
+}
+
 
 
 
 class cmf::math::CVode3::Impl {
 public:
+	/*******************************
+	CVode Implentation Attributes
+	********************************/
+	// Set to false in CVodeAdams
+	bool use_stiff_solver = true;
+	// State vector
+	N_Vector y = 0;
+	// Jacobian matrix
+	SUNMatrix J = 0;
+	// Linear solver
+	SUNLinearSolver LS = 0;
+	// System size
+	int N = 0;
+
 	CVode3 * _integrator;
+
+	// c'tor of CVode3::Impl, does not initialize solver
+	Impl(CVode3 * integrator) :
+		_integrator(integrator)
+	{		}
 
 	static int f(realtype t, N_Vector u, N_Vector udot, void *f_data)
 	{
@@ -135,18 +163,6 @@ public:
 		
 	}
 
-
-	Impl(CVode3 * integrator) : 
-		_integrator(integrator)
-	{		}
-	
-	// State vector
-	N_Vector y = 0;
-	// Jacobian matrix
-	SUNMatrix J = 0;
-	// Linear solver
-	SUNLinearSolver LS = 0;
-	int N=0;
 	void * cvode_mem=0;
 	
 	void release()
@@ -169,7 +185,13 @@ public:
 		// Copy states to y
 		_integrator->copy_states(y_data);
 		// Create a implicit (CV_BDF) solver with Newton iteration (CV_NEWTON)
-		cvode_mem = CVodeCreate(CV_BDF, CV_NEWTON);
+		if (this->use_stiff_solver) {
+			cvode_mem = CVodeCreate(CV_BDF, CV_NEWTON);
+		}
+		else {
+			cvode_mem = CVodeCreate(CV_ADAMS, CV_FUNCTIONAL);
+		}
+		
 		// Set this wrapper as user data of the solver
 		CVodeSetUserData(cvode_mem, (void *)this);
 		// Local copy of Epsilon needed for CVodeSVtolerances
@@ -189,7 +211,28 @@ public:
 		
 		return flag;
 	}
-	void set_limits(const CVodeOptions& options);
+	
+	int reset() {
+		if (cvode_mem) {
+			// Copy current states to internal state vector
+			_integrator->copy_states(NV_DATA_S(y));
+			// Reinitialize solver
+			CVodeReInit(cvode_mem, get_t(), y);
+		}
+	}
+
+	void set_limits(const CVodeOptions& options) {
+
+		if (options.max_order >= 0) CVodeSetMaxOrd(cvode_mem, options.max_order);
+		// Set stability limit detection, see CVode Guide 2.3. Reasons to apply this algo are true for cmf.
+		if (options.max_order >= 3) CVodeSetStabLimDet(cvode_mem, 1);
+		if (options.max_non_linear_iterations >= 0) CVodeSetMaxNonlinIters(cvode_mem, options.max_non_linear_iterations);
+		if (options.max_error_test_failures >= 0) CVodeSetMaxErrTestFails(cvode_mem, options.max_error_test_failures);
+		if (options.max_convergence_failures >= 0) CVodeSetMaxConvFails(cvode_mem, options.max_convergence_failures);
+		CVodeSetMaxNumSteps(cvode_mem, options.max_num_steps);
+		CVodeSetMaxHnilWarns(cvode_mem, options.max_hnil_warnings);
+
+	}
 
 	realtype get_t() const {
 		return _integrator->get_t().AsDays();
@@ -273,6 +316,7 @@ int cmf::math::CVode3::integrate(cmf::math::Time t_max, cmf::math::Time dt)
 
 void cmf::math::CVode3::reset()
 {
+	_implementation->reset();
 }
 
 cmf::math::CVode3::CVode3(cmf::math::StateVariableOwner & states, real epsilon)
@@ -296,13 +340,18 @@ CVodeInfo cmf::math::CVode3::get_info() const
 	CVodeInfo ci;
 	void * cvm = _implementation->cvode_mem;
 
-
+	ci.size = size();
 	CVodeGetWorkSpace(cvm, &ci.workspace_real, &ci.workspace_int);
 	ci.workspace_byte = ci.workspace_real * sizeof(realtype) + ci.workspace_int * sizeof(long int);
 	CVodeGetNumSteps(cvm, &ci.steps);
 	CVodeGetNumRhsEvals(cvm, &ci.rhs_evaluations);
 	CVodeGetNumLinSolvSetups(cvm, &ci.linear_solver_setups);
 	CVodeGetNumErrTestFails(cvm, &ci.error_test_fails);
+	
+	int version_len = 25;
+	char version_buffer[25];
+	SUNDIALSGetVersion(version_buffer, version_len);
+	ci.sundials_version = std::string(version_buffer, version_len);
 
 	return ci;
 }
@@ -370,42 +419,26 @@ void cmf::math::CVodeKrylov::set_solver()
 	_implementation->set_krylov_solver(this->bandwidth, this->preconditioner);
 }
 
-cmf::math::CVodeOptions::CVodeOptions()
-	: max_order(-1), max_non_linear_iterations(-1), 
-	  max_error_test_failures(-1), max_convergence_failures(-1),
-	  max_num_steps(-1), max_hnil_warnings(-1)
-{
-
-}
-
-void cmf::math::CVode3::Impl::set_limits(const CVodeOptions & options)
-{
-	if (options.max_order >= 0) CVodeSetMaxOrd(cvode_mem, options.max_order);
-	// Set stability limit detection, see CVode Guide 2.3. Reasons to apply this algo are true for cmf.
-	if (options.max_order >= 3) CVodeSetStabLimDet(cvode_mem, 1);
-	if (options.max_non_linear_iterations >= 0) CVodeSetMaxNonlinIters(cvode_mem, options.max_non_linear_iterations);
-	if (options.max_error_test_failures >= 0) CVodeSetMaxErrTestFails(cvode_mem, options.max_error_test_failures);
-	if (options.max_convergence_failures >= 0) CVodeSetMaxConvFails(cvode_mem, options.max_convergence_failures);
-	if (options.max_num_steps >= 0) CVodeSetMaxNumSteps(cvode_mem, options.max_num_steps);
-	CVodeSetMaxHnilWarns(cvode_mem, options.max_hnil_warnings);
-
-}
 
 std::string cmf::math::CVodeInfo::to_string() const
 {
-	/*			long int workspace_real;
-			long int workspace_int;
-			long int workspace_byte;
-			long int steps;
-			long int rhs_evaluations;
-			long int linear_solver_steps;
-			long int error_test_fails;
-*/
 	std::ostringstream out;
+	out << size << " state variables" << std::endl;
 	out << "workspace (real/int/bytes): " << workspace_real << "/" << workspace_int << "/" << workspace_byte << std::endl;
 	out << steps << " steps" << std::endl;
 	out << rhs_evaluations << " rhs evaluations" << std::endl;
 	out << linear_solver_setups << " linear solver setups" << std::endl;
 	out << error_test_fails << " error test failures" << std::endl;
 	return out.str();
+}
+
+cmf::math::CVodeAdams::CVodeAdams(cmf::math::StateVariableOwner & states, real epsilon)
+	:CVode3(states, epsilon)
+{
+	this->_implementation->use_stiff_solver = false;
+}
+
+std::string cmf::math::CVodeAdams::to_string() const
+{
+	return "CVodeAdams()";
 }
