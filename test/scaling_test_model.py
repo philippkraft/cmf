@@ -123,7 +123,7 @@ class ScalingTester:
 
         :return: Simulated discharge
         """
-        solver = cmf.CVodeIntegrator(self.project, 1e-9)
+        solver = cmf.CVodeDense(self.project, 1e-9)
 
         # Result timeseries
         res_q = cmf.timeseries(self.begin, cmf.day)

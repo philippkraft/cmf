@@ -72,6 +72,7 @@
 %include "math/integrators/RKFintegrator.h"
 %include "math/integrators/cvode3.h"
 
+%extend__repr__(cmf::math::CVodeInfo)
 
 %extend cmf::math::Integrator { 
     StateVariable::ptr __getitem__(int index) {

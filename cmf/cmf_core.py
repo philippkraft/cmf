@@ -2536,6 +2536,10 @@ class CVodeInfo(object):
         return _cmf_core.CVodeInfo_to_string(self, *args, **kwargs)
 
 
+    def __repr__(self): 
+        return self.to_string()
+
+
     def __init__(self, *args, **kwargs):
         """__init__(cmf::math::CVodeInfo self) -> CVodeInfo"""
         _cmf_core.CVodeInfo_swiginit(self, _cmf_core.new_CVodeInfo(*args, **kwargs))

@@ -32,7 +32,7 @@ using namespace cmf::math;
 
 cmf::math::CVodeOptions::CVodeOptions()
 	: max_order(-1), max_non_linear_iterations(-1),
-	max_error_test_failures(-1), max_convergence_failures(-1),
+	max_error_test_failures(100000), max_convergence_failures(-1),
 	max_num_steps(0), max_hnil_warnings(-1)
 {
 
@@ -346,10 +346,11 @@ CVodeInfo cmf::math::CVode3::get_info() const
 	ci.size = size();
 	CVodeGetWorkSpace(cvm, &ci.workspace_real, &ci.workspace_int);
 	ci.workspace_byte = ci.workspace_real * sizeof(realtype) + ci.workspace_int * sizeof(long int);
-	CVodeGetNumSteps(cvm, &ci.steps);
-	CVodeGetNumRhsEvals(cvm, &ci.rhs_evaluations);
-	CVodeGetNumLinSolvSetups(cvm, &ci.linear_solver_setups);
-	CVodeGetNumErrTestFails(cvm, &ci.error_test_fails);
+	int qlast, qcur;
+	realtype hinused, hlast, hcur, tcur;
+	CVodeGetIntegratorStats(cvm, &ci.steps, &ci.rhs_evaluations, &ci.linear_solver_setups, &ci.error_test_fails,
+		&qlast, &qcur, &hinused, &hlast, &hcur, &tcur);
+	ci.current_order = qcur;
 	CVodeGetNonlinSolvStats(cvm, &ci.nonlinear_solver_iterations, &ci.nonlinear_solver_convergence_failures);
 
 	int version_len = 25;
