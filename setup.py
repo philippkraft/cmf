@@ -24,12 +24,14 @@ import os
 import io
 import time
 
+from glob import glob
+
 from setuptools import setup, Extension
 from setuptools.command.build_ext import build_ext
 from distutils.sysconfig import get_config_var, customize_compiler
 
 
-version = '1.2.1a0'
+version = '2.0.0a0'
 
 # Try to import numpy, if it fails we have a problem 
 try:
@@ -142,6 +144,7 @@ def make_cmf_core(swig, openmp):
     """
     libraries = []
     library_dirs = []
+    package_data = []
     # Include CVODE
     include_dirs = [os.path.join(*'cmf/cmf_core_src/math/integrators/sundials_cvode/include'.split('/'))]
     # Include numpy
@@ -155,21 +158,22 @@ def make_cmf_core(swig, openmp):
         if sys.version_info.major == 2:
             boost_path = os.environ.get('BOOSTDIR', r"..\boost_1_41_0")
             include_dirs += [boost_path, boost_path + r"\boost\tr1"]
-        include_dirs += ['../cmf_external_solvers/sundials-lib/include']
+        include_dirs += ['tools/sundials-lib/include']
         compile_args = ["/EHsc",
                         r'/Fd"build\vc90.pdb"',
                         "/D_SCL_SECURE_NO_WARNINGS",
                         "/D_CRT_SECURE_NO_WARNINGS",
                         "/MP"
                         ]
+        # package_data = ['../cmf_external_libraries/sundials-lib/lib/*.dll']
         if openmp:
             compile_args.append("/openmp")
         link_args = ["/DEBUG"]
-        library_dirs += ['../cmf_external_solvers/sundials-lib/lib']
-        libraries += ['sundials_cvode', 'sundials_nvecserial', 
-                      'sundials_sunlinsolband', 'sundials_sunlinsoldense', 
-                      # 'sundials_sunlinsolklu', 'sundials_sunlinsolpcg', 'sundials_sunlinsolspbcgs', 'sundials_sunlinsolspfgmr',
-                      # 'sundials_sunlinsolspgmr', 'sundials_sunlinsolsptfqmr', 
+        library_dirs += ['tools/sundials-lib/lib']
+        libraries += ['sundials_cvode', 'sundials_nvecserial',
+                      'sundials_sunlinsolband', 'sundials_sunlinsoldense',
+                      'sundials_sunlinsolklu', 'sundials_sunlinsolpcg', 'sundials_sunlinsolspbcgs', 'sundials_sunlinsolspfgmr',
+                      'sundials_sunlinsolspgmr', 'sundials_sunlinsolsptfqmr',
                       'sundials_sunmatrixband', 'sundials_sunmatrixdense', 'sundials_sunmatrixsparse'
                       ]
     else:
@@ -209,14 +213,14 @@ def make_cmf_core(swig, openmp):
                          extra_link_args=link_args,
                          swig_opts=['-c++', '-Wextra', '-w512', '-w511', '-O', '-keyword', '-castmode']  # +extraswig
                          )
-    return cmf_core
+    return cmf_core, package_data
 
 
 if __name__ == '__main__':
     updateversion()
     openmp = not pop_arg('noopenmp')
     swig = pop_arg('swig')
-    ext = [make_cmf_core(swig, openmp)]
+    ext, package_data = make_cmf_core(swig, openmp)
     description = 'Catchment Modelling Framework - A hydrological modelling toolkit'
     long_description = io.open('README.rst', encoding='utf-8').read()
     classifiers = [
@@ -236,7 +240,7 @@ if __name__ == '__main__':
     setup(name='cmf',
           version=version,
           license='GPL',
-          ext_modules=ext,
+          ext_modules=[ext],
           packages=['cmf', 'cmf.draw', 'cmf.geometry'],
           python_requires='>=2.7',
           keywords='hydrology catchment simulation toolbox',

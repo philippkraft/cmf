@@ -2463,18 +2463,115 @@ class RKFIntegrator(Integrator):
 RKFIntegrator_swigregister = _cmf_core.RKFIntegrator_swigregister
 RKFIntegrator_swigregister(RKFIntegrator)
 
-class CVode3(Integrator):
-    """Proxy of C++ cmf::math::CVode3 class."""
+class CVodeOptions(object):
+    """
+
+
+    A set of options for all CVode3 solver.
+
+    Negative numbers indicate that this option stays on the default value.
+    For the meaning of the options see CVODE-UD, section 4.5.6
+
+    See Hindmarsh, A., Serban, R. and Reynolds, D.: User Documentation for
+    cvode v3.1.0, 2017, UCRL-SM-208108
+
+    Usage example: >>>solver = CVodeDens(p, 1e-9)
+    >>>solver.options.max_order = 2
+
+    C++ includes: cvode3.h 
+    """
 
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
     __repr__ = _swig_repr
+    max_order = _swig_property(_cmf_core.CVodeOptions_max_order_get, _cmf_core.CVodeOptions_max_order_set)
+    max_non_linear_iterations = _swig_property(_cmf_core.CVodeOptions_max_non_linear_iterations_get, _cmf_core.CVodeOptions_max_non_linear_iterations_set)
+    max_error_test_failures = _swig_property(_cmf_core.CVodeOptions_max_error_test_failures_get, _cmf_core.CVodeOptions_max_error_test_failures_set)
+    max_convergence_failures = _swig_property(_cmf_core.CVodeOptions_max_convergence_failures_get, _cmf_core.CVodeOptions_max_convergence_failures_set)
+    max_num_steps = _swig_property(_cmf_core.CVodeOptions_max_num_steps_get, _cmf_core.CVodeOptions_max_num_steps_set)
+    max_hnil_warnings = _swig_property(_cmf_core.CVodeOptions_max_hnil_warnings_get, _cmf_core.CVodeOptions_max_hnil_warnings_set)
 
     def __init__(self, *args, **kwargs):
-        """__init__(cmf::math::CVode3 self, StateVariableOwner states, real epsilon=1e-9) -> CVode3"""
-        _cmf_core.CVode3_swiginit(self, _cmf_core.new_CVode3(*args, **kwargs))
+        """
+        __init__(cmf::math::CVodeOptions self) -> CVodeOptions
+
+        CVodeOptions() 
+        """
+        _cmf_core.CVodeOptions_swiginit(self, _cmf_core.new_CVodeOptions(*args, **kwargs))
+    __swig_destroy__ = _cmf_core.delete_CVodeOptions
+CVodeOptions_swigregister = _cmf_core.CVodeOptions_swigregister
+CVodeOptions_swigregister(CVodeOptions)
+
+class CVodeInfo(object):
+    """
+
+
+    Reports the current state of a CVode solver.
+
+    C++ includes: cvode3.h 
+    """
+
+    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __repr__ = _swig_repr
+    size = _swig_property(_cmf_core.CVodeInfo_size_get, _cmf_core.CVodeInfo_size_set)
+    workspace_real = _swig_property(_cmf_core.CVodeInfo_workspace_real_get, _cmf_core.CVodeInfo_workspace_real_set)
+    workspace_int = _swig_property(_cmf_core.CVodeInfo_workspace_int_get, _cmf_core.CVodeInfo_workspace_int_set)
+    workspace_byte = _swig_property(_cmf_core.CVodeInfo_workspace_byte_get, _cmf_core.CVodeInfo_workspace_byte_set)
+    steps = _swig_property(_cmf_core.CVodeInfo_steps_get, _cmf_core.CVodeInfo_steps_set)
+    current_order = _swig_property(_cmf_core.CVodeInfo_current_order_get, _cmf_core.CVodeInfo_current_order_set)
+    rhs_evaluations = _swig_property(_cmf_core.CVodeInfo_rhs_evaluations_get, _cmf_core.CVodeInfo_rhs_evaluations_set)
+    linear_solver_setups = _swig_property(_cmf_core.CVodeInfo_linear_solver_setups_get, _cmf_core.CVodeInfo_linear_solver_setups_set)
+    error_test_fails = _swig_property(_cmf_core.CVodeInfo_error_test_fails_get, _cmf_core.CVodeInfo_error_test_fails_set)
+    order_reductions = _swig_property(_cmf_core.CVodeInfo_order_reductions_get, _cmf_core.CVodeInfo_order_reductions_set)
+    nonlinear_solver_iterations = _swig_property(_cmf_core.CVodeInfo_nonlinear_solver_iterations_get, _cmf_core.CVodeInfo_nonlinear_solver_iterations_set)
+    nonlinear_solver_convergence_failures = _swig_property(_cmf_core.CVodeInfo_nonlinear_solver_convergence_failures_get, _cmf_core.CVodeInfo_nonlinear_solver_convergence_failures_set)
+    sundials_version = _swig_property(_cmf_core.CVodeInfo_sundials_version_get, _cmf_core.CVodeInfo_sundials_version_set)
+
+    def to_string(self, *args, **kwargs):
+        """
+        to_string(CVodeInfo self) -> std::string
+
+        std::string
+        to_string() const 
+        """
+        return _cmf_core.CVodeInfo_to_string(self, *args, **kwargs)
+
+
+    def __init__(self, *args, **kwargs):
+        """__init__(cmf::math::CVodeInfo self) -> CVodeInfo"""
+        _cmf_core.CVodeInfo_swiginit(self, _cmf_core.new_CVodeInfo(*args, **kwargs))
+    __swig_destroy__ = _cmf_core.delete_CVodeInfo
+CVodeInfo.to_string = new_instancemethod(_cmf_core.CVodeInfo_to_string, None, CVodeInfo)
+CVodeInfo_swigregister = _cmf_core.CVodeInfo_swigregister
+CVodeInfo_swigregister(CVodeInfo)
+
+class CVode3(Integrator):
+    """
+
+
+    Abstract base class for different modes of the CVode solver.
+
+    Initantiate one of the child classes to gain different modes of the
+    CVode solver
+
+    C++ includes: cvode3.h 
+    """
+
+    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+
+    def __init__(self, *args, **kwargs):
+        raise AttributeError("No constructor defined - class is abstract")
+    __repr__ = _swig_repr
+    options = _swig_property(_cmf_core.CVode3_options_get, _cmf_core.CVode3_options_set)
 
     def set_error_msg(self, *args, **kwargs):
-        """set_error_msg(CVode3 self, std::string error)"""
+        """
+        set_error_msg(CVode3 self, std::string error)
+
+        void
+        set_error_msg(std::string error)
+
+        Sets an error message. 
+        """
         return _cmf_core.CVode3_set_error_msg(self, *args, **kwargs)
 
 
@@ -2482,18 +2579,203 @@ class CVode3(Integrator):
         """
         copy(CVode3 self) -> CVode3
 
-        virtual
-        Integrator* copy() const =0
+        CVode3* copy() const
 
-        Polymorphic copy constructor. 
+        Returns a copy of the solver. 
         """
         return _cmf_core.CVode3_copy(self, *args, **kwargs)
+
+    error_msg = _swig_property(_cmf_core.CVode3_error_msg_get, _cmf_core.CVode3_error_msg_set)
+
+    def to_string(self, *args, **kwargs):
+        """
+        to_string(CVode3 self) -> std::string
+
+        virtual
+        std::string to_string() const =0
+
+        Returns a string representation of the solver. 
+        """
+        return _cmf_core.CVode3_to_string(self, *args, **kwargs)
+
+
+    def get_error(self, *args, **kwargs):
+        """
+        get_error(CVode3 self) -> cmf::math::num_array
+
+        cmf::math::num_array get_error() const
+
+        Error vector of the integrator. 
+        """
+        return _cmf_core.CVode3_get_error(self, *args, **kwargs)
+
+    info = _swig_property(_cmf_core.CVode3_info_get)
+
+    def __repr__(self): 
+        return self.to_string()
 
     __swig_destroy__ = _cmf_core.delete_CVode3
 CVode3.set_error_msg = new_instancemethod(_cmf_core.CVode3_set_error_msg, None, CVode3)
 CVode3.copy = new_instancemethod(_cmf_core.CVode3_copy, None, CVode3)
+CVode3.to_string = new_instancemethod(_cmf_core.CVode3_to_string, None, CVode3)
+CVode3.get_error = new_instancemethod(_cmf_core.CVode3_get_error, None, CVode3)
 CVode3_swigregister = _cmf_core.CVode3_swigregister
 CVode3_swigregister(CVode3)
+
+class CVodeDense(CVode3):
+    """
+
+
+    implicit BDF CVode solver with full Jacobian approximation
+
+    Use this solver for small but stiff systems (<20 state variables)
+
+    The solver calculates for each step the full Jacobian matrix of the
+    system using a difference quotient approximation of the real Jacobian
+
+    C++ includes: cvode3.h 
+    """
+
+    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __repr__ = _swig_repr
+
+    def __init__(self, *args, **kwargs):
+        """
+        __init__(cmf::math::CVodeDense self, StateVariableOwner states, real epsilon=1e-9) -> CVodeDense
+
+        CVodeDense(cmf::math::StateVariableOwner &states, real epsilon=1e-9)
+
+        Creates a new implicit dense CVode solver. 
+        """
+        _cmf_core.CVodeDense_swiginit(self, _cmf_core.new_CVodeDense(*args, **kwargs))
+
+    def _get_jacobian(self, *args, **kwargs):
+        """
+        _get_jacobian(CVodeDense self) -> cmf::math::num_array
+
+        cmf::math::num_array _get_jacobian() const
+
+        Returns a continuous 1D array representing the Jacobian oclumns
+        concatenated.
+
+        Convert to 2D numpy nd array: jac =
+        solver.jacobian().reshape(solver.size(), -1) This can be implemented
+        in ODEsystem.i but is not now. 
+        """
+        return _cmf_core.CVodeDense__get_jacobian(self, *args, **kwargs)
+
+
+    def get_jacobian(self):
+        return self._get_jacobian().reshape(self.size(), self.size())
+
+    __swig_destroy__ = _cmf_core.delete_CVodeDense
+CVodeDense._get_jacobian = new_instancemethod(_cmf_core.CVodeDense__get_jacobian, None, CVodeDense)
+CVodeDense_swigregister = _cmf_core.CVodeDense_swigregister
+CVodeDense_swigregister(CVodeDense)
+
+class CVodeAdams(CVode3):
+    """
+
+
+    Explizit multistep solver using CVode.
+
+    C++ includes: cvode3.h 
+    """
+
+    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __repr__ = _swig_repr
+
+    def __init__(self, *args, **kwargs):
+        """
+        __init__(cmf::math::CVodeAdams self, StateVariableOwner states, real epsilon=1e-9) -> CVodeAdams
+
+        CVodeAdams(cmf::math::StateVariableOwner &states, real epsilon=1e-9)
+
+        """
+        _cmf_core.CVodeAdams_swiginit(self, _cmf_core.new_CVodeAdams(*args, **kwargs))
+    __swig_destroy__ = _cmf_core.delete_CVodeAdams
+CVodeAdams_swigregister = _cmf_core.CVodeAdams_swigregister
+CVodeAdams_swigregister(CVodeAdams)
+
+class CVodeBanded(CVode3):
+    """
+
+
+    implicit BDF CVode solver with a banded Jacobian approximation
+
+    C++ includes: cvode3.h 
+    """
+
+    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __repr__ = _swig_repr
+    bandwidth = _swig_property(_cmf_core.CVodeBanded_bandwidth_get, _cmf_core.CVodeBanded_bandwidth_set)
+
+    def __init__(self, *args, **kwargs):
+        """
+        __init__(cmf::math::CVodeBanded self, StateVariableOwner states, real epsilon=1e-9, int w=5) -> CVodeBanded
+
+        CVodeBanded(cmf::math::StateVariableOwner &states, real epsilon=1e-9,
+        int w=5) 
+        """
+        _cmf_core.CVodeBanded_swiginit(self, _cmf_core.new_CVodeBanded(*args, **kwargs))
+    __swig_destroy__ = _cmf_core.delete_CVodeBanded
+CVodeBanded_swigregister = _cmf_core.CVodeBanded_swigregister
+CVodeBanded_swigregister(CVodeBanded)
+
+class CVodeDiag(CVode3):
+    """
+
+
+    implicit BDF CVode solver with a one line diagonal Jacobian
+    approximation
+
+    C++ includes: cvode3.h 
+    """
+
+    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __repr__ = _swig_repr
+
+    def __init__(self, *args, **kwargs):
+        """
+        __init__(cmf::math::CVodeDiag self, StateVariableOwner states, real epsilon=1e-9) -> CVodeDiag
+
+        CVodeDiag(cmf::math::StateVariableOwner &states, real epsilon=1e-9) 
+        """
+        _cmf_core.CVodeDiag_swiginit(self, _cmf_core.new_CVodeDiag(*args, **kwargs))
+    __swig_destroy__ = _cmf_core.delete_CVodeDiag
+CVodeDiag_swigregister = _cmf_core.CVodeDiag_swigregister
+CVodeDiag_swigregister(CVodeDiag)
+
+class CVodeKrylov(CVode3):
+    """
+
+
+    implicit BDF CVode solver with a Krylov preconditioner
+
+    C++ includes: cvode3.h 
+    """
+
+    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __repr__ = _swig_repr
+    bandwidth = _swig_property(_cmf_core.CVodeKrylov_bandwidth_get, _cmf_core.CVodeKrylov_bandwidth_set)
+    preconditioner = _swig_property(_cmf_core.CVodeKrylov_preconditioner_get, _cmf_core.CVodeKrylov_preconditioner_set)
+
+    def __init__(self, *args, **kwargs):
+        """
+        __init__(cmf::math::CVodeKrylov self, StateVariableOwner states, real epsilon=1e-9, int w=5, char p) -> CVodeKrylov
+
+        CVodeKrylov(cmf::math::StateVariableOwner &states, real epsilon=1e-9,
+        int w=5, char p='L') 
+        """
+        _cmf_core.CVodeKrylov_swiginit(self, _cmf_core.new_CVodeKrylov(*args, **kwargs))
+    __swig_destroy__ = _cmf_core.delete_CVodeKrylov
+CVodeKrylov_swigregister = _cmf_core.CVodeKrylov_swigregister
+CVodeKrylov_swigregister(CVodeKrylov)
+
+
+class CVodeIntegrator:
+    def __init__(self, *args, **kwargs):
+        raise NotImplementedError('CVodeIntegrator has been removed in cmf 2, use CVodeDense, CVodeKrylov or others instead')
 
 class Adsorption(object):
     """

@@ -15,22 +15,20 @@ length = 1.
 
 for j in range(size[1]):
     for i in range(size[0]):
-        x,y = i*length,j*length
+        x, y = i*length, j*length
         # Create cells with slope in x+y direction
-        offset = np.random.uniform(0,.01) #if not is_border else -0.05
+        offset = np.random.uniform(0, .01) #if not is_border else -0.05
         z = (x+y)*slope + offset
     
-        c = p.NewCell(x,y,z, length**2)
+        c = p.NewCell(x, y, z, length**2)
         # Store cells with position in dictionary        
-        cells[i,j] = c
+        cells[i, j] = c
         # Set up topology (4 Neighbors)
         if i:
-            c.topology.AddNeighbor(cells[i-1,j],length*.75)
+            c.topology.AddNeighbor(cells[i-1, j], length)
         if j:
-            c.topology.AddNeighbor(cells[i,j-1],length*.75)
-        #if i and j:
-            #c.topology.AddNeighbor(cells[i,j-1],length*.5)
-            
+            c.topology.AddNeighbor(cells[i, j-1], length)
+
             
 for c in p:
     c.surfacewater_as_storage()
@@ -44,23 +42,21 @@ for c in p:
 
 cmf.DiffusiveSurfaceRunoff.set_linear_slope(1e-8)
 cmf.connect_cells_with_flux(p, cmf.DiffusiveSurfaceRunoff)
-outlet = p.NewOutlet('outlet',-length,0,-slope*length)
-#for j in range(size[1]):
-#    for i in range(size[0]):
-#        is_border = i in [0,size[0]-1] or j in [0, size[1]-1]
-#        if is_border:
-#            cmf.waterbalance_connection(cells[i,j].surfacewater,outlet)
-cmf.DiffusiveSurfaceRunoff(cells[0,0].surfacewater, outlet,length)
+outlet = p.NewOutlet('outlet', -length, 0, -slope*length)
+
+cmf.DiffusiveSurfaceRunoff(cells[0, 0].surfacewater, outlet, length)
 
 def setrain(rainfall):
     for c in p:
         c.set_rainfall(rainfall)
-#    cells[size[0]//2,size[1]//2].set_rainfall(rainfall*20)
 
-solver = cmf.CVodeIntegrator(p,1e-9)
+solver = cmf.CVodeDense(p,1e-9)
+
 setrain(10.*24.)
+
 def getdepth():
     return np.array([[cells[i,j].surfacewater.depth for i in range(size[0])] for j in range(size[1])])
+
 def getpot():
     return np.array([[cells[i,j].surfacewater.depth for i in range(size[0])] for j in range(size[1])])
 #%%
@@ -80,6 +76,7 @@ ax.set_ylim(-length,length*size[1])
 dt=cmf.sec*10
 #%%
 qout = cmf.timeseries(solver.t,dt)
+
 def run(data):
     solver(solver.t+dt)
     t = solver.t
@@ -88,7 +85,7 @@ def run(data):
     img.set_array(getdepth())
     fluxdir = cmf.cell_flux_directions(p,t)
     quiver.set_UVC(fluxdir.X,fluxdir.Y)
-    title.set_text('%s/%s %g mm' % (t,solver.dt, np.mean(c.surfacewater.depth)* 1000))
+    title.set_text('%s/%s %g mm' % (t,solver.dt, np.mean(c.surfacewater.depth) * 1000))
     qout.add(outlet(t))
     return img,quiver,title
 #%%

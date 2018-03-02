@@ -78,6 +78,15 @@ namespace cmf {
 			long int linear_solver_setups;
 			/// @brief Number of local error test failures that have occurred
 			long int error_test_fails;
+			/// @brief Number of order reductions due to stability limit detection
+			long int order_reductions;
+			/// @brief Number of nonlinear solver iterations
+			long int nonlinear_solver_iterations;
+			/// @brief Number of nonlinear convergence failures
+			long int nonlinear_solver_convergence_failures;
+
+
+
 			/// @brief contains the Sundials version of CVode used
 			std::string sundials_version;
 
@@ -138,18 +147,16 @@ namespace cmf {
 
 			/// Returns a continuous 1D array representing the Jacobian oclumns concatenated
 			///
-			/// Convert to 2D numpy nd array: jac = solver.jacobian().reshape(solver.size(), -1)
-			/// This can be implemented in ODEsystem.i but is not now.
-			cmf::math::num_array jacobian() const;
+			/// In Python, get_jacobian returns the Jacobian as a 2D array
+			cmf::math::num_array _get_jacobian() const;
 
 		protected:
 			void set_solver();
 		};
 
-		/// 
+		/// @brief Explizit multistep solver using CVode
 		class CVodeAdams : public CVode3 {
 		public:
-			int bandwidth;
 			CVodeAdams(cmf::math::StateVariableOwner& states, real epsilon = 1e-9);
 			std::string to_string() const;
 		protected:
@@ -158,9 +165,10 @@ namespace cmf {
 			}
 		};
 
-
+		/// @brief implicit BDF CVode solver with a banded Jacobian approximation
 		class CVodeBanded : public CVode3 {
 		public:
+			/// @brief Width of the band to both sides of the diagonal
 			int bandwidth;
 			CVodeBanded(cmf::math::StateVariableOwner& states, real epsilon = 1e-9, int w=5);
 			std::string to_string() const;
@@ -168,6 +176,7 @@ namespace cmf {
 			void set_solver();
 		};
 
+		/// @brief implicit BDF CVode solver with a one line diagonal Jacobian approximation
 		class CVodeDiag : public CVode3 {
 		public:
 			CVodeDiag(cmf::math::StateVariableOwner& states, real epsilon = 1e-9);
@@ -178,9 +187,12 @@ namespace cmf {
 			void set_solver();
 		};
 
+		/// @brief implicit BDF CVode solver with a Krylov preconditioner
 		class CVodeKrylov : public CVode3 {
 		public:
+			/// @brief Band width of the preconditioner (both sides of the diagonal)
 			int bandwidth;
+			/// @brief Type of the preconditioner 'L'->left, 'R'->right, 'B'->both, 'N'->None, default 'L'
 			char preconditioner;
 			CVodeKrylov(cmf::math::StateVariableOwner& states, real epsilon = 1e-9, 
 				int w=5, char p='L');

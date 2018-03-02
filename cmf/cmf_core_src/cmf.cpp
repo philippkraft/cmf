@@ -107,7 +107,7 @@ void create_3d(cmf::project& p, int size_x, int size_y) {
 			}
 
 			cmf::upslope::connections::Richards::use_for_cell(*c);
-			c->set_saturated_depth(0.05);
+			c->set_saturated_depth(0.5);
 
 			if (ix > 0) {
 				cmf::upslope::Cell& other = p.get_cell(iy * size_x + (ix - 1));
@@ -162,7 +162,7 @@ int main(int argc, char* argv[])
 
 		create_3d(p, 10, 10);
 		
-		CVode3 * integ = new CVodeBanded(p, 1e-9, 10);
+		CVode3 * integ = new CVodeBanded(p, 1e-9);
 
 		int64_t duration = run(integ, p);
 

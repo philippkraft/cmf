@@ -63,7 +63,7 @@
     }
 }    
 
-// %attribute(cmf::math::CVodeIntegrator,int,order,get_order);
+%attributeval(cmf::math::CVode3, cmf::math::CVodeInfo, info, get_info);
 
 %include "math/integrators/integrator.h"
 %include "math/integrators/bdf2.h"
@@ -95,4 +95,17 @@
             self(self.t+step)
             yield self.t
 }
+}
+
+%extend cmf::math::CVodeDense {
+%pythoncode {
+    def get_jacobian(self):
+        return self._get_jacobian().reshape(self.size(), self.size())
+}
+}
+
+%pythoncode {
+class CVodeIntegrator:
+    def __init__(self, *args, **kwargs):
+        raise NotImplementedError('CVodeIntegrator has been removed in cmf 2, use CVodeDense, CVodeKrylov or others instead')
 }

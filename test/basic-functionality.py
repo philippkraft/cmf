@@ -86,7 +86,7 @@ class Test_LinearStorageConnection(unittest.TestCase):
             q.residencetime = res_t
             w1.volume = 1.0
             w2.volume = 0.0
-            solver = cmf.CVodeIntegrator(p, 1e-9)
+            solver = cmf.CVodeDense(p, 1e-9)
             solver.integrate_until(cmf.day)
             self.assertAlmostEqual(w1.volume, np.exp(-1/res_t), 5,
                                    'LinearStorage fails to reproduce analytical solution for t_r={:0.5g}'

@@ -217,7 +217,10 @@ public:
 			// Copy current states to internal state vector
 			_integrator->copy_states(NV_DATA_S(y));
 			// Reinitialize solver
-			CVodeReInit(cvode_mem, get_t(), y);
+			return CVodeReInit(cvode_mem, get_t(), y);
+		}
+		else {
+			return 0;
 		}
 	}
 
@@ -347,7 +350,8 @@ CVodeInfo cmf::math::CVode3::get_info() const
 	CVodeGetNumRhsEvals(cvm, &ci.rhs_evaluations);
 	CVodeGetNumLinSolvSetups(cvm, &ci.linear_solver_setups);
 	CVodeGetNumErrTestFails(cvm, &ci.error_test_fails);
-	
+	CVodeGetNonlinSolvStats(cvm, &ci.nonlinear_solver_iterations, &ci.nonlinear_solver_convergence_failures);
+
 	int version_len = 25;
 	char version_buffer[25];
 	SUNDIALSGetVersion(version_buffer, version_len);
@@ -365,7 +369,7 @@ cmf::math::CVodeDense::CVodeDense(cmf::math::StateVariableOwner & states, real e
 	: CVode3(states, epsilon)
 {}
 
-cmf::math::num_array cmf::math::CVodeDense::jacobian() const
+cmf::math::num_array cmf::math::CVodeDense::_get_jacobian() const
 {
 	void * cvm = _implementation->cvode_mem;
 
@@ -426,9 +430,13 @@ std::string cmf::math::CVodeInfo::to_string() const
 	out << size << " state variables" << std::endl;
 	out << "workspace (real/int/bytes): " << workspace_real << "/" << workspace_int << "/" << workspace_byte << std::endl;
 	out << steps << " steps" << std::endl;
+	out << "order is " << current_order << std::endl;
 	out << rhs_evaluations << " rhs evaluations" << std::endl;
 	out << linear_solver_setups << " linear solver setups" << std::endl;
 	out << error_test_fails << " error test failures" << std::endl;
+	out << nonlinear_solver_iterations << " non linear solver iterations" << std::endl;
+	out << nonlinear_solver_convergence_failures << " non linear solver convergence failures" << std::endl;
+
 	return out.str();
 }
 

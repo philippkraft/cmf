@@ -343,8 +343,11 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Console</SubSystem>
       <AdditionalLibraryDirectories>C:\Users\kraft-p\Documents\Code\cmf_external_solvers\sundials-lib\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>sundials_cvode.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>sundials_cvode.lib;sundials_nvecopenmp.lib;sundials_nvecserial.lib;sundials_sunlinsolband.lib;sundials_sunlinsoldense.lib;sundials_sunlinsolklu.lib;sundials_sunlinsolpcg.lib;sundials_sunlinsolspbcgs.lib;sundials_sunlinsolspfgmr.lib;sundials_sunlinsolspgmr.lib;sundials_sunlinsolsptfqmr.lib;sundials_sunmatrixband.lib;sundials_sunmatrixdense.lib;sundials_sunmatrixsparse.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug_exe|x64'">
     <ClCompile>

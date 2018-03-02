@@ -112,9 +112,19 @@ cmf.Richards(c.layers[-1], groundwater)
 # load meteorological data
 load_meteo(p)
 # Make solver
-solver = cmf.CVodeIntegrator(p, 1e-9)
+try:
+    solver = cmf.CVodeDense(p, 1e-9)
+    solver.options.max_error_test_failures = 10000
+except AttributeError:
+    solver = cmf.CVodeIntegrator(p, 1e-9, 2)
+    solver.LinearSolver = 1
 solver.t = cmf.Time(1, 11, 1980)
 
+def rhs_info(solver):
+    if hasattr(solver, 'info'):
+        return solver.info.rhs_evaluations
+    else:
+        return solver.get_rhsevals()
 
 def run(until=cmf.year, dt=cmf.day):
     """Runs a the model, and saves the outflow"""
@@ -136,7 +146,7 @@ def run(until=cmf.year, dt=cmf.day):
             wetness.append(c.layers.wetness)
             # Print, at which time step you are
             print("{} - {:6.2f}m3/day, {} rhs-eval".format(t,
-                                                           groundwater(t), solver.get_rhsevals()))
+                                                           groundwater(t), rhs_info(solver)))
     except RuntimeError as e:
         print(e)
     return outflow, wetness
@@ -181,7 +191,7 @@ if __name__ == '__main__':
     cmf.set_parallel_threads(1)
     outflow, wetness = run(cmf.year * 5)
     print('{:g} s, {} rhs evaluations'.format(
-        time.time() - tstart, solver.get_rhsevals()))
+        time.time() - tstart, rhs_info(solver)))
     # print c.vegetation
     # Try to plot the results
     try:
