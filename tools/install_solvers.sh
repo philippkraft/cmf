@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
 # Gets and makes the dependencies for the new sparese CVodeIntegrator
-export KLUINSTALL_DIR=~/.local/lib/suitesparse
-export SUNDIALS_DIR=~/.local/lib/sundials
+export KLUINSTALL_DIR=suitesparse-lib
+export SUNDIALS_DIR=sundials-lib
 
 # Test for BLAS
 if [[ $(ldconfig -p | grep blas) ]]; then
@@ -28,7 +28,7 @@ fi
 git clone https://github.com/PetterS/SuiteSparse suitesparse
 
 # Get sundials
-git clone https://github.com/LLNL/sundials sundials
+git clone https://github.com/philippkraft/sundials sundials
 
 
 
@@ -42,15 +42,18 @@ git clone https://github.com/LLNL/sundials sundials
 
 
 
-cd suitesparse
 mkdir -p ${KLUINSTALL_DIR}/lib
 mkdir -p ${KLUINSTALL_DIR}/include
 mkdir -p ${KLUINSTALL_DIR}/doc
 
+cd suitesparse
 
 
 make
-make install INSTALL_LIB=${KLUINSTALL_DIR}/lib INSTALL_INCLUDE=${KLUINSTALL_DIR}/include INSTALL_DOC=${KLUINSTALL_DIR}/doc
+make install \
+    INSTALL_LIB=../${KLUINSTALL_DIR}/lib \
+    INSTALL_INCLUDE=../${KLUINSTALL_DIR}/include \
+    INSTALL_DOC=../${KLUINSTALL_DIR}/doc
 cd ..
 
 # Make sundials
@@ -63,14 +66,13 @@ cd build
 
 cmake .. \
     -DBLAS_ENABLE=ON \
+    -DBUILD_SHARED_LIBS=OFF \
     -DCMAKE_INSTALL_PREFIX=${SUNDIALS_DIR} \
     -DEXAMPLES_INSTALL=OFF \
     -DKLU_ENABLE=ON \
     -DKLU_LIBRARY_DIR=${KLUINSTALL_DIR}/lib \
     -DKLU_INCLUDE_DIR=${KLUINSTALL_DIR}/include \
     -DOPENMP_ENABLE=ON \
-    -DLAPACK_ENABLE=ON \
-    -DSUNDIALS_INDEX_TYPE=int32_t
 
 make
 make install
