@@ -26,36 +26,32 @@
 #include <string>
 #include <exception>
 #include <chrono>
-#include "Atmosphere/Meteorology.h"
-#include "Upslope/Cell.h"
-#include "Upslope/vegetation/ET.h"
-#include "math/Integrators/BDF2.h"
-#include "math/Integrators/cvode3.h"
-#include "math/Integrators/WaterSoluteIntegrator.h"
-#include "math/Integrators/RKFIntegrator.h"
-#include "math/Integrators/MultiIntegrator.h"
-#include "Upslope/Soil/RetentionCurve.h"
-#include "Atmosphere/Precipitation.h"
+#include "atmosphere/meteorology.h"
+#include "upslope/cell.h"
+#include "upslope/vegetation/ET.h"
+#include "math/integrators/cvode3.h"
+#include "upslope/Soil/RetentionCurve.h"
+#include "atmosphere/precipitation.h"
 #include "water/flux_connection.h"
 #include "upslope/connections/subsurfacefluxes.h"
 #include "upslope/connections/surfacefluxes.h"
 #include "upslope/connections/infiltration.h"
 #include "upslope/connections/Percolation.h"
-#include "Upslope/vegetation/ShuttleworthWallace.h"
-#include "Reach/reach.h"
-#include "Reach/ManningConnection.h"
-#include "Upslope/algorithm.h"
+#include "upslope/vegetation/ShuttleworthWallace.h"
+#include "reach/Reach.h"
+#include "reach/ManningConnection.h"
+#include "upslope/algorithm.h"
 
 	/// Main function of the program. Only for debugging and testing, the real CMF<sub>lib</sub> will be compiled as a DLL and the 
 	/// main function will be replaced by Python code
 
-void create_hillslope(cmf::project& p, int length) {
+void create_hillslope(cmf::project& p, int length, std::string& name) {
 	using namespace cmf::upslope;
 	using namespace cmf::upslope::connections;
 	using namespace cmf::upslope::ET;
 
 	VanGenuchtenMualem vgm(1.0, 0.5, 0.04, 2);
-
+    name = "Hillslope with " + std::to_string(length) + " cells";
 	Cell* last_c = 0;
 	for (int i = 0; i < length; ++i)
 	{
@@ -90,13 +86,14 @@ void create_hillslope(cmf::project& p, int length) {
 
 }
 
-void create_3d(cmf::project& p, int size_x, int size_y) {
+void create_3d(cmf::project& p, int size_x, int size_y, std::string& name) {
 
 	using namespace cmf::upslope;
 	using namespace cmf::upslope::connections;
 	using namespace cmf::upslope::ET;
 
 	VanGenuchtenMualem vgm(10.0, 0.5, 0.04, 2);
+    name = "3d Raster with " + std::to_string(size_x) + "*" + std::to_string(size_y) + " cells";
 
 	for (int iy = 0; iy < size_x; ++iy)
 	{
@@ -137,7 +134,7 @@ int64_t run(cmf::math::CVode3* integ, cmf::project& p) {
 	std::cout.precision(3);
 	while (integ->get_t() < cmf::math::day * 20)
 	{
-		integ->integrate_until(integ->get_t() + cmf::math::day);
+		integ->integrate_until(integ->get_t() + cmf::math::h);
 		std::cout << integ->get_t()
 			<< p.get_cell(0).get_saturated_depth() << " m below ground";
 		std::cout << std::endl;
@@ -153,14 +150,14 @@ int main(int argc, char* argv[])
 		using namespace	cmf::math;
 		using namespace cmf::water;
 		
-		project p="X Y";
+		project p("X Y");
 		solute X=p.solutes[0];
 		solute Y=p.solutes[1];
 		timeseries ts(0*day,20*day,0);
 		for (int i = 0; i < 100 ; ++i) 
 			ts.add(10 *((i+1) % 2));
-
-		create_3d(p, 10, 10);
+        std::string name;
+		create_3d(p, 10, 10, name);
 		
 		CVode3 * integ = new CVodeBanded(p, 1e-9);
 
@@ -168,7 +165,9 @@ int main(int argc, char* argv[])
 
 		std::ofstream outfile;
 		outfile.open("performance.txt", std::ios_base::app);
-		outfile << std::endl << integ->to_string() << std::endl << "------------------" << std::endl << std::endl;
+		outfile << std::endl;
+        outfile << name << ": ";
+        outfile << integ->to_string() << std::endl << "------------------" << std::endl << std::endl;
 		outfile << integ->get_info().to_string();
 		outfile << "Duration: " << duration << " ms" << std::endl;
 		outfile.close();
