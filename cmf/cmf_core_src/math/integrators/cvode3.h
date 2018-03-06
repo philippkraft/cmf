@@ -130,6 +130,7 @@ namespace cmf {
 
 			/// Error vector of the integrator
 			cmf::math::num_array get_error() const;
+            ~CVode3();
 		};
 		/// @brief implicit BDF CVode solver with full Jacobian approximation
 		///

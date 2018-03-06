@@ -160,7 +160,8 @@ public:
 	}
 
 	int set_klu_solver() {
-		
+        throw std::runtime_error("KLU sparse linear solver not available - yet");
+		return 0;
 	}
 
 	void * cvode_mem=0;
@@ -325,7 +326,8 @@ void cmf::math::CVode3::reset()
 cmf::math::CVode3::CVode3(cmf::math::StateVariableOwner & states, real epsilon)
 	: Integrator(states, epsilon)
 {
-	_implementation = std::make_unique<cmf::math::CVode3::Impl>(this);
+	cmf::math::CVode3::Impl* p_impl = new cmf::math::CVode3::Impl(this);
+    _implementation=std::unique_ptr<cmf::math::CVode3::Impl>(p_impl);
 }
 
 void cmf::math::CVode3::set_error_msg(std::string error)
@@ -337,7 +339,7 @@ CVode3 * cmf::math::CVode3::copy() const
 {
 	return nullptr;
 }
-
+CVode3::~CVode3() = default;
 CVodeInfo cmf::math::CVode3::get_info() const
 {
 	CVodeInfo ci;
