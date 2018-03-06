@@ -15,15 +15,6 @@ else
 fi
 
 
-
-if ($SUPERLUMT); then
-   wget http://crd-legacy.lbl.gov/~xiaoye/SuperLU/superlu_mt_3.1.tar.gz
-   tar -xzf superlu_mt_3.1.tar.gz
-   cd SuperLU_MT_3.1/
-   cp MAKE_INC/make.linux.openmp make.inc
-fi
-
-
 # Get KLU
 git clone https://github.com/PetterS/SuiteSparse suitesparse
 
@@ -67,11 +58,11 @@ cd build
 cmake .. \
     -DBLAS_ENABLE=ON \
     -DBUILD_SHARED_LIBS=OFF \
-    -DCMAKE_INSTALL_PREFIX=${SUNDIALS_DIR} \
+    -DCMAKE_INSTALL_PREFIX=../../${SUNDIALS_DIR} \
     -DEXAMPLES_INSTALL=OFF \
     -DKLU_ENABLE=ON \
-    -DKLU_LIBRARY_DIR=${KLUINSTALL_DIR}/lib \
-    -DKLU_INCLUDE_DIR=${KLUINSTALL_DIR}/include \
+    -DKLU_LIBRARY_DIR=../../${KLUINSTALL_DIR}/lib \
+    -DKLU_INCLUDE_DIR=../../${KLUINSTALL_DIR}/include \
     -DOPENMP_ENABLE=ON \
 
 make
