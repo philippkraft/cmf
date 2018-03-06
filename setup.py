@@ -48,6 +48,23 @@ try:
 except ImportError:
     from distutils.command.build_py import build_py
 
+# monkey-patch for parallel compilation
+def parallelCCompile(self, sources, output_dir=None, macros=None, include_dirs=None, debug=0, extra_preargs=None, extra_postargs=None, depends=None):
+    # those lines are copied from distutils.ccompiler.CCompiler directly
+    macros, objects, extra_postargs, pp_opts, build = self._setup_compile(output_dir, macros, include_dirs, sources, depends, extra_postargs)
+    cc_args = self._get_cc_args(pp_opts, debug, extra_preargs)
+    # parallel code
+    import multiprocessing.pool
+    def _single_compile(obj):
+        try: src, ext = build[obj]
+        except KeyError: return
+        self._compile(obj, src, ext, cc_args, extra_postargs, pp_opts)
+    # convert to list, imap is evaluated on-demand
+    list(multiprocessing.pool.ThreadPool().imap(_single_compile,objects))
+    return objects
+
+import distutils.ccompiler
+distutils.ccompiler.CCompiler.compile=parallelCCompile
 
 # noinspection PyPep8Naming
 class cmf_build_ext(build_ext):
@@ -142,14 +159,20 @@ def make_cmf_core(swig, openmp):
      - include dirs
      - extra compiler flags
     """
-    libraries = []
-    library_dirs = []
-    package_data = []
     # Include CVODE
-    include_dirs = [os.path.join(*'cmf/cmf_core_src/math/integrators/sundials_cvode/include'.split('/'))]
+    include_dirs = ['tools/sundials-lib/include']
     # Include numpy
     include_dirs += [get_numpy_include()]
 
+    library_dirs = ['tools/sundials-lib/lib']
+    libraries = ['sundials_cvode', 'sundials_nvecserial',
+                  'sundials_sunlinsolband', 'sundials_sunlinsoldense', 'sundials_sunlinsolklu', 
+                  'sundials_sunlinsolpcg', 'sundials_sunlinsolspbcgs', 'sundials_sunlinsolspfgmr',
+                  'sundials_sunlinsolspgmr', 'sundials_sunlinsolsptfqmr',
+                  'sundials_sunmatrixband', 'sundials_sunmatrixdense', 'sundials_sunmatrixsparse'
+                  ]
+
+    extra_objects = []
     # Platform specific stuff, alternative is to subclass build_ext command as in:
     # https://stackoverflow.com/a/5192738/3032680
     if sys.platform == 'win32':
@@ -158,7 +181,6 @@ def make_cmf_core(swig, openmp):
         if sys.version_info.major == 2:
             boost_path = os.environ.get('BOOSTDIR', r"..\boost_1_41_0")
             include_dirs += [boost_path, boost_path + r"\boost\tr1"]
-        include_dirs += ['tools/sundials-lib/include']
         compile_args = ["/EHsc",
                         r'/Fd"build\vc90.pdb"',
                         "/D_SCL_SECURE_NO_WARNINGS",
@@ -169,22 +191,16 @@ def make_cmf_core(swig, openmp):
         if openmp:
             compile_args.append("/openmp")
         link_args = ["/DEBUG"]
-        library_dirs += ['tools/sundials-lib/lib']
-        libraries += ['sundials_cvode', 'sundials_nvecserial',
-                      'sundials_sunlinsolband', 'sundials_sunlinsoldense',
-                      'sundials_sunlinsolklu', 'sundials_sunlinsolpcg', 'sundials_sunlinsolspbcgs', 'sundials_sunlinsolspfgmr',
-                      'sundials_sunlinsolspgmr', 'sundials_sunlinsolsptfqmr',
-                      'sundials_sunmatrixband', 'sundials_sunmatrixdense', 'sundials_sunmatrixsparse'
-                      ]
     else:
 
-        compile_args = ['-Wno-comment', '-Wno-reorder', '-Wno-deprecated', '-Wno-unused', '-Wno-sign-compare', '-ggdb',
-                        '-std=c++11']
+        compile_args = ['-Wno-comment', '-Wno-reorder', '-Wno-deprecated', '-Wno-unused', 
+                        '-Wno-sign-compare', '-ggdb', '-std=c++11']
         if sys.platform == 'darwin':
-            compile_args += ["-stdlib=libc++"]
+            compile_args += ['-stdlib=libc++']
         link_args = ['-ggdb']
-        libraries = []
-
+        extra_objects = ['{}/lib{}.a'.format(library_dirs[0], l) for l in libraries]
+        library_dirs.pop(0)
+        del libraries[:len(extra_objects)]
         # Disable OpenMP on Mac see https://github.com/alejandrobll/py-sphviewer/issues/3
         if openmp and not sys.platform == 'darwin':
             compile_args.append('-fopenmp')
@@ -209,18 +225,19 @@ def make_cmf_core(swig, openmp):
                          libraries=libraries,
                          library_dirs=library_dirs,
                          include_dirs=include_dirs,
+                         extra_objects=extra_objects,
                          extra_compile_args=compile_args,
                          extra_link_args=link_args,
                          swig_opts=['-c++', '-Wextra', '-w512', '-w511', '-O', '-keyword', '-castmode']  # +extraswig
                          )
-    return cmf_core, package_data
+    return cmf_core
 
 
 if __name__ == '__main__':
     updateversion()
     openmp = not pop_arg('noopenmp')
     swig = pop_arg('swig')
-    ext, package_data = make_cmf_core(swig, openmp)
+    ext = make_cmf_core(swig, openmp)
     description = 'Catchment Modelling Framework - A hydrological modelling toolkit'
     long_description = io.open('README.rst', encoding='utf-8').read()
     classifiers = [
