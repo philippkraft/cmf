@@ -30,7 +30,6 @@ from setuptools import setup, Extension
 from setuptools.command.build_ext import build_ext
 from distutils.sysconfig import get_config_var, customize_compiler
 
-
 version = '2.0.0a0'
 
 # Try to import numpy, if it fails we have a problem 
@@ -48,23 +47,33 @@ try:
 except ImportError:
     from distutils.command.build_py import build_py
 
+
+# https://stackoverflow.com/a/18992595/3032680
 # monkey-patch for parallel compilation
-def parallelCCompile(self, sources, output_dir=None, macros=None, include_dirs=None, debug=0, extra_preargs=None, extra_postargs=None, depends=None):
+def parallelCCompile(self, sources, output_dir=None, macros=None, include_dirs=None, debug=0, extra_preargs=None,
+                     extra_postargs=None, depends=None):
     # those lines are copied from distutils.ccompiler.CCompiler directly
-    macros, objects, extra_postargs, pp_opts, build = self._setup_compile(output_dir, macros, include_dirs, sources, depends, extra_postargs)
+    macros, objects, extra_postargs, pp_opts, build = self._setup_compile(output_dir, macros, include_dirs, sources,
+                                                                          depends, extra_postargs)
     cc_args = self._get_cc_args(pp_opts, debug, extra_preargs)
     # parallel code
     import multiprocessing.pool
     def _single_compile(obj):
-        try: src, ext = build[obj]
-        except KeyError: return
+        try:
+            src, ext = build[obj]
+        except KeyError:
+            return
         self._compile(obj, src, ext, cc_args, extra_postargs, pp_opts)
+
     # convert to list, imap is evaluated on-demand
-    list(multiprocessing.pool.ThreadPool().imap(_single_compile,objects))
+    list(multiprocessing.pool.ThreadPool().imap(_single_compile, objects))
     return objects
 
+
 import distutils.ccompiler
-distutils.ccompiler.CCompiler.compile=parallelCCompile
+
+distutils.ccompiler.CCompiler.compile = parallelCCompile
+
 
 # noinspection PyPep8Naming
 class cmf_build_ext(build_ext):
@@ -164,13 +173,16 @@ def make_cmf_core(swig, openmp):
     # Include numpy
     include_dirs += [get_numpy_include()]
 
-    library_dirs = ['tools/sundials-lib/lib']
-    libraries = ['sundials_cvode', 'sundials_nvecserial',
-                  'sundials_sunlinsolband', 'sundials_sunlinsoldense', 'sundials_sunlinsolklu', 
-                  'sundials_sunlinsolpcg', 'sundials_sunlinsolspbcgs', 'sundials_sunlinsolspfgmr',
-                  'sundials_sunlinsolspgmr', 'sundials_sunlinsolsptfqmr',
-                  'sundials_sunmatrixband', 'sundials_sunmatrixdense', 'sundials_sunmatrixsparse'
-                  ]
+    static_libraries = [('tools/sundials-lib/lib',
+                         ['sundials_cvode', 'sundials_nvecserial',
+                          'sundials_sunlinsolband', 'sundials_sunlinsoldense', 'sundials_sunlinsolklu',
+                          'sundials_sunlinsolpcg', 'sundials_sunlinsolspbcgs', 'sundials_sunlinsolspfgmr',
+                          'sundials_sunlinsolspgmr', 'sundials_sunlinsolsptfqmr',
+                          'sundials_sunmatrixband', 'sundials_sunmatrixdense', 'sundials_sunmatrixsparse'
+                          ])
+                        ]
+    library_dirs = []
+    libraries = []
 
     extra_objects = []
     # Platform specific stuff, alternative is to subclass build_ext command as in:
@@ -187,20 +199,31 @@ def make_cmf_core(swig, openmp):
                         "/D_CRT_SECURE_NO_WARNINGS",
                         "/MP"
                         ]
-        # package_data = ['../cmf_external_libraries/sundials-lib/lib/*.dll']
         if openmp:
             compile_args.append("/openmp")
+
         link_args = ["/DEBUG"]
+
+        # Move static libraries to libraries, because MSVC does not
+        # seperate between dynamic and static libraries at this point
+        for lib_dir, libs in static_libraries:
+            libraries.extend(libs)
+            library_dirs.append(lib_dir)
+
     else:
 
-        compile_args = ['-Wno-comment', '-Wno-reorder', '-Wno-deprecated', '-Wno-unused', 
+        compile_args = ['-Wno-comment', '-Wno-reorder', '-Wno-deprecated', '-Wno-unused',
                         '-Wno-sign-compare', '-ggdb', '-std=c++11']
         if sys.platform == 'darwin':
             compile_args += ['-stdlib=libc++']
+
         link_args = ['-ggdb']
-        extra_objects = ['{}/lib{}.a'.format(library_dirs[0], l) for l in libraries]
-        library_dirs.pop(0)
-        del libraries[:len(extra_objects)]
+
+        # Move static libraries to extra_objects (with path) to ensure static linking in posix systems
+        extra_objects.extend([['{}/lib{}.a'.format(lib_dir, l) for l in libs]
+                              for lib_dir, libs in static_libraries])
+
+        # Add OpenMP support
         # Disable OpenMP on Mac see https://github.com/alejandrobll/py-sphviewer/issues/3
         if openmp and not sys.platform == 'darwin':
             compile_args.append('-fopenmp')
@@ -228,7 +251,7 @@ def make_cmf_core(swig, openmp):
                          extra_objects=extra_objects,
                          extra_compile_args=compile_args,
                          extra_link_args=link_args,
-                         swig_opts=['-c++', '-Wextra', '-w512', '-w511', '-O', '-keyword', '-castmode']  # +extraswig
+                         swig_opts=['-c++', '-Wextra', '-w512', '-w511', '-O', '-keyword', '-castmode']
                          )
     return cmf_core
 
