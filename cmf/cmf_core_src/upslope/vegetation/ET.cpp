@@ -5,7 +5,7 @@
 //
 //   cmf is free software: you can redistribute it and/or modify
 //   it under the terms of the GNU General Public License as published by
-//   the Free Software Foundation, either version 2 of the License, or
+//   the Free Software Foundation, either version 3 of the License, or
 //   (at your option) any later version.
 //
 //   cmf is distributed in the hope that it will be useful,
@@ -59,7 +59,7 @@ namespace cmf {
 					// 					G = SingleMeteorology->daily ? 0					   // If calculation takes place on daily basis, the soil heat flux is 0 (FAO 1998,Eq. 42)
 					// 					: Rn>0 ? 0.1*Rn : 0.5 * Rn,	           // On a shorter basis, it is proportional to Rn, different for day and night (FAO 1998,Eq. 45f)
 					P=cmf::atmosphere::Pressure(h),         // Mean Pressure in kPa
-					gamma=c_p*P/(epsilon*lambda),          // psychrometric constant [kPa °C-1] 
+					gamma=c_p*P/(epsilon*lambda),          // psychrometric constant [kPa ï¿½C-1] 
 					rho_a=P/(1.01*(A.T+273)*R),		         // mean air density at constant pressure
 					d=0.666667*h,	                         // zero plane displacement height
 					z_om=0.123*h,                          // roughness length governing momentum transfer
