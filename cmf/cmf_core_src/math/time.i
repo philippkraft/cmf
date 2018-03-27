@@ -194,6 +194,7 @@ static bool check_time(PyObject* dt) {
     def AsPython(self):
         d=self.AsDate()
         return datetime.datetime(d.year,d.month,d.day,d.hour,d.minute,d.second,d.ms*1000)
+
     year   = property(lambda self: self.AsDate().year)
     month  = property(lambda self: self.AsDate().month)
     day    = property(lambda self: self.AsDate().day)
@@ -201,6 +202,9 @@ static bool check_time(PyObject* dt) {
     minute = property(lambda self: self.AsDate().minute)
     second = property(lambda self: self.AsDate().second)
     ms     = property(lambda self: self.AsDate().ms)
+
+    def __format__(self, fmt):
+        return self.AsPython().__format__(fmt)
     }
 }
 

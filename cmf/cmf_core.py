@@ -2613,12 +2613,12 @@ class CVode3(Integrator):
         """
         return _cmf_core.CVode3_get_error(self, *args, **kwargs)
 
+    __swig_destroy__ = _cmf_core.delete_CVode3
     info = _swig_property(_cmf_core.CVode3_info_get)
 
     def __repr__(self): 
         return self.to_string()
 
-    __swig_destroy__ = _cmf_core.delete_CVode3
 CVode3.set_error_msg = new_instancemethod(_cmf_core.CVode3_set_error_msg, None, CVode3)
 CVode3.copy = new_instancemethod(_cmf_core.CVode3_copy, None, CVode3)
 CVode3.to_string = new_instancemethod(_cmf_core.CVode3_to_string, None, CVode3)
@@ -2777,9 +2777,25 @@ CVodeKrylov_swigregister = _cmf_core.CVodeKrylov_swigregister
 CVodeKrylov_swigregister(CVodeKrylov)
 
 
-class CVodeIntegrator:
-    def __init__(self, *args, **kwargs):
-        raise NotImplementedError('CVodeIntegrator has been removed in cmf 2, use CVodeDense, CVodeKrylov or others instead')
+def CVodeIntegrator(project, tolerance=1e-9):
+    """
+    Backwards compatibility layer for the CVodeIntegrator.
+
+    For systems with less than 20 states it will return a CVodeDense solver,
+    for larger systems a CVodeKrylov solver.
+    :param project: CMF project
+    :param tolerance: Solver tolerance
+    :return:
+    """
+    size = project.get_states().size()
+    if size < 20:
+        warning('CVodeIntegrator is not available in CMF 2.0. Creating a CVodeDense solver instead')
+        return CVodeDense(project, tolerance)
+    else:
+        warning('CVodeIntegrator is not available in CMF 2.0. Creating a CVodeKrylov solver instead')
+        return CVodeKrylov(project, tolerance)
+
+
 
 class Adsorption(object):
     """
