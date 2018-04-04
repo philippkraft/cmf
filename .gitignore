@@ -11,7 +11,11 @@ __pycache__/
 *.vcxproj.user
 *.sdf
 .vs/
-tools/
+tools/Debug*
+tools/Release*
+tools/suitesparse*
+tools/sundials*
+
 *.VC.opendb
 
 # Distribution / packaging
