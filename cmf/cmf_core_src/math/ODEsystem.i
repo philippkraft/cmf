@@ -106,7 +106,24 @@
 }
 
 %pythoncode {
-class CVodeIntegrator:
-    def __init__(self, *args, **kwargs):
-        raise NotImplementedError('CVodeIntegrator has been removed in cmf 2, use CVodeDense, CVodeKrylov or others instead')
+def CVodeIntegrator(project, tolerance=1e-9):
+    """
+    Backwards compatibility layer for the CVodeIntegrator.
+
+    For systems with less than 20 states it will return a CVodeDense solver,
+    for larger systems a CVodeKrylov solver.
+    :param project: CMF project
+    :param tolerance: Solver tolerance
+    :return:
+    """
+    from logging import warning
+    size = project.get_states().size()
+    if size < 20:
+        warning('CVodeIntegrator is not available in CMF 2.0. Creating a CVodeDense solver instead')
+        return CVodeDense(project, tolerance)
+    else:
+        warning('CVodeIntegrator is not available in CMF 2.0. Creating a CVodeKrylov solver instead')
+        return CVodeKrylov(project, tolerance)
+
+
 }

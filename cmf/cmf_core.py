@@ -888,6 +888,7 @@ class Time(object):
     def AsPython(self):
         d=self.AsDate()
         return datetime.datetime(d.year,d.month,d.day,d.hour,d.minute,d.second,d.ms*1000)
+
     year   = property(lambda self: self.AsDate().year)
     month  = property(lambda self: self.AsDate().month)
     day    = property(lambda self: self.AsDate().day)
@@ -895,6 +896,9 @@ class Time(object):
     minute = property(lambda self: self.AsDate().minute)
     second = property(lambda self: self.AsDate().second)
     ms     = property(lambda self: self.AsDate().ms)
+
+    def __format__(self, fmt):
+        return self.AsPython().__format__(fmt)
 
     __swig_destroy__ = _cmf_core.delete_Time
 Time.AsDays = new_instancemethod(_cmf_core.Time_AsDays, None, Time)
@@ -2787,6 +2791,7 @@ def CVodeIntegrator(project, tolerance=1e-9):
     :param tolerance: Solver tolerance
     :return:
     """
+    from logging import warning
     size = project.get_states().size()
     if size < 20:
         warning('CVodeIntegrator is not available in CMF 2.0. Creating a CVodeDense solver instead')

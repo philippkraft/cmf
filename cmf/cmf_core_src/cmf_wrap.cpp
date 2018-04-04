@@ -20687,6 +20687,37 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_delete_CVode3(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  cmf::math::CVode3 *arg1 = (cmf::math::CVode3 *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__math__CVode3, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_CVode3" "', argument " "1"" of type '" "cmf::math::CVode3 *""'"); 
+  }
+  arg1 = reinterpret_cast< cmf::math::CVode3 * >(argp1);
+  {
+    try {
+      delete arg1;
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_CVode3_info_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   cmf::math::CVode3 *arg1 = (cmf::math::CVode3 *) 0 ;
@@ -20713,37 +20744,6 @@ SWIGINTERN PyObject *_wrap_CVode3_info_get(PyObject *SWIGUNUSEDPARM(self), PyObj
     
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_cmf__math__CVodeInfo, SWIG_POINTER_OWN |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_delete_CVode3(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  cmf::math::CVode3 *arg1 = (cmf::math::CVode3 *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject *swig_obj[1] ;
-  
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__math__CVode3, SWIG_POINTER_DISOWN |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_CVode3" "', argument " "1"" of type '" "cmf::math::CVode3 *""'"); 
-  }
-  arg1 = reinterpret_cast< cmf::math::CVode3 * >(argp1);
-  {
-    try {
-      delete arg1;
-    } catch (const std::out_of_range& e) {
-      SWIG_exception(SWIG_IndexError, e.what());    
-    } catch (const std::exception& e) {
-      SWIG_exception(SWIG_RuntimeError, e.what());
-    }
-    
-  }
-  resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
   return NULL;
@@ -77421,8 +77421,8 @@ static PyMethodDef SwigMethods[] = {
 		"\n"
 		"Error vector of the integrator. \n"
 		""},
-	 { (char *)"CVode3_info_get", (PyCFunction)_wrap_CVode3_info_get, METH_O, (char *)"CVode3_info_get(CVode3 self) -> CVodeInfo"},
 	 { (char *)"delete_CVode3", (PyCFunction)_wrap_delete_CVode3, METH_O, (char *)"delete_CVode3(CVode3 self)"},
+	 { (char *)"CVode3_info_get", (PyCFunction)_wrap_CVode3_info_get, METH_O, (char *)"CVode3_info_get(CVode3 self) -> CVodeInfo"},
 	 { (char *)"CVode3_swigregister", CVode3_swigregister, METH_VARARGS, NULL},
 	 { (char *)"new_CVodeDense", (PyCFunction) _wrap_new_CVodeDense, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
 		"new_CVodeDense(StateVariableOwner states, real epsilon=1e-9) -> CVodeDense\n"
