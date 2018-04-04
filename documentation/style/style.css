@@ -1,0 +1,23 @@
+
+
+#titlearea {
+    background:#1f6992;
+    color: #fff;
+    vertical-align: bottom;
+    font-weight: bold;
+	width: 100%;
+}
+#projectlogo {
+    text-align: left;
+}
+
+.title {
+	font-size: 200%;
+	font-weight: bold;
+	margin: 10px 2px;
+}
+.back2wiki {
+	font-size: 150%;
+	position: absolute;
+	right: 6px;
+}
