@@ -17,12 +17,14 @@ def connector_matrix(states, compression_factor=1):
     jac = np.zeros(size, dtype=int)
     for i, a in enumerate(states):
         posdict[a.node_id] = i
+        jac[i * size[0] // l, i * size[1] // l] += 1
     for i, a in enumerate(states):
         for f, t in a.fluxes(cmf.Time()):
             j = posdict.get(t.node_id)
             if j:
-                jac[i * size[0] // l, j * size[1] // l] += 1
+                jac[j * size[0] // l, i * size[1] // l] += 1
     return jac
+
 
 def connected_states(states):
     """
@@ -37,6 +39,7 @@ def connected_states(states):
             for n in state.connected_nodes
         }
     return set(chain.from_iterable(get_connection_tuples(s) for s in states))
+
 
 class Jacobian(object):
     """Approximates the jacobian for a cmf solver
