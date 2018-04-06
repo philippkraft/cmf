@@ -71,9 +71,9 @@ data on your own, rather than download it directly.
 
 ### Conceptual Connections
 
-  - [Kinematic waves as swiss army knife for conceptual model
-    building](@ref CmfTutKinematicWave)
-  - [Simple Infiltration](Simple_Infiltration)
+  - @subpage CmfTutKinematicWave "Kinematic waves" as swiss army knife 
+    for conceptual model building
+  - @subpage Simple_Infiltration "Infiltration"
   - @subpage CmfTutTechnical "Technical Flux"
   - @subpage CmfTutWaterbalance "Waterbalance Connection"
 

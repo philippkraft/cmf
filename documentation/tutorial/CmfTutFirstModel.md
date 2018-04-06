@@ -164,7 +164,7 @@ plt.legend(('W1','W2'))
 
 And this is the result:
 
-![](cmfFirstModelTut.png)
+![](@ref CmfFirstModelTut.png)
 
 Next step is to include [boundary conditions](@ref CmfTutBoundary).
 

@@ -16,7 +16,7 @@ Kraft et al. 2011 and 2012). It is an extension to the programming
 language Python, written in C++, offering a toolkit for the set up of a
 wide range of hydrological models, following the [finite volume
 approach](FiniteVolumeMethod) by Qu and Duffy (2007). The framework
-exports [objects](CmfSoftwareObjects) to set up a network of water
+exports [objects](@ref CmfSoftwareObjects) to set up a network of water
 and solute fluxes.
 
 Buytaert et al. (2008) and Clark et al. (2011) call also for such

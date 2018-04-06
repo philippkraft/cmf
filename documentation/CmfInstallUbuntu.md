@@ -1,6 +1,6 @@
 @page CmfInstallUbuntu
 
-[back...](CmfInstall)
+[back...](@ref CmfInstall)
 
 # Install cmf on a Linux with sudo privileges
 

@@ -8,7 +8,7 @@
 
 cmf is a '''programming library''' to create '''hydrological models''',
 which are highly modular and connectible to other models developed using
-a [multiple hypotheses background](CmfIntroduction). Although written
+a [multiple hypotheses background](@ref CmfIntroduction). Although written
 in C++, its primary usage is to be compiled as an extension to other
 programming languages, using [SWIG](http://www.swig.org). Until now only
 [Python](http://www.python.org) is actively supported to use the

@@ -1,6 +1,6 @@
 @page CmfInstallHpc
 
-[back...](CmfInstall)
+[back...](@ref CmfInstall)
 
 # Install on a HPC
 
