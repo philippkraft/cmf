@@ -2,7 +2,7 @@
 
 @tableofcontents
 
- [index...](@ref CmfTutStart)
+ [index...](@ref tutorial)
 [next...](@ref CmfTutIntercept)
 
 # Evapotranspiration (incomplete)
@@ -99,11 +99,11 @@ Soil layers have the property `rootfraction` that can be set. It is
 '''your''' responsibility to ensure that the sum of all rootfractions is
 1.
 
-``` {.py}
+~~~~~~~~~~~~~{.py}
 
 for l in cell.layers[:5]:
     l.rootfraction = 0.2
-```
+~~~~~~~~~~~~~
 
 If you have never set the rootfraction method b) is used.
 
@@ -121,19 +121,19 @@ then an exponential decline of the root content is used.
 
 In this example we will get the same result as in a):
 
-``` {.py}
+~~~~~~~~~~~~~{.py}
 
 cell.vegetation.RootDepth = 0.5
-```
+~~~~~~~~~~~~~
 
 Here we will have 80% of the root content in the upper 40cm, and the
 other 20% below using an exponential decline of the root content:
 
-``` {.py}
+~~~~~~~~~~~~~{.py}
 
 cell.vegetation.RootDepth = 0.4
 cell.vegetation.fraction_at_rootdepth = 0.8
-```
+~~~~~~~~~~~~~
 
 If you do nothing, the `RootDepth` default value of 0.25 is used.
 
@@ -157,7 +157,7 @@ absurd high value of 20 mm/day. The initial condition
 \[wiki:CmfTutRetentioncurve\#Saturateddepth saturated_depth\]\] is also
 changed to 4m.
 
-``` {.py}
+~~~~~~~~~~~~~{.py}
 
 cell.saturated_depth = 4.
 ETpot = cmf.timeseries.from_scalar(20.0) # constant ETpot of 20 mm/day (I know that this is too much)
@@ -168,7 +168,7 @@ cell.vegetation.fraction_at_rootdepth = 0.8
 for layer in cell.layers:
     # connect each layer with the transpiration boundary condition using ETpot
     cmf.timeseriesETpot(layer, cell.transpiration, ETpot)
-```
+~~~~~~~~~~~~~
 
 The potential plot is not so nice, hence let us rather look at the pF
 values in the layers. The pF value are calculated from the potential by
@@ -191,10 +191,10 @@ according to the FAO Penman-Monteith method
 use [PenmanMonteithET](@ref cmf::upslope::ET::PenmanMonteithET). It is
 installed by:
 
-``` {.py}
+~~~~~~~~~~~~~{.py}
 
 cell.install_connection(cmf.PenmanMonteithET)
-```
+~~~~~~~~~~~~~
 
 ### Hargreaves
 
@@ -216,10 +216,10 @@ implements the evaporation method given by [Shuttleworth
 [BROOK90 (Federer 1995)](http://www.ecoshift.net/brook/brook90.htm). To
 install all necessary connections, use:
 
-``` {.py}
+~~~~~~~~~~~~~{.py}
 
 cell.install_connection(cmf.ShuttleWorthWallace)
-```
+~~~~~~~~~~~~~
 
 If you want to use canopy evaporation and snow sublimation, make sure
 you have created the appropriate storages from the

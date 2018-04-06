@@ -1,6 +1,6 @@
 @page CmfTutDarcianLateralFlow
 
-[index...](@ref CmfTutStart) [next...](@ref CmfTutSurfaceRunoff)
+[index...](@ref tutorial) [next...](@ref CmfTutSurfaceRunoff)
 
 # Darcian flow connections
 
@@ -116,10 +116,10 @@ All dedicated lateral connection provide the same interface for the
 creation of a connection. Below we are going to use `cmf.Darcy` as an
 example, but it works the same way with the other three connections.
 
-``` {.py}
+~~~~~~~~~~~~~{.py}
 
 cmf.Darcy(leftnode, rightnode, FlowWidth, distance=0)
-```
+~~~~~~~~~~~~~
 
 - `leftnode` needs to be a
 [SoilLayer](@ref cmf::upslope::SoilLayer) object - `rightnode` is
@@ -138,10 +138,10 @@ CmfTutCell\#Topology), one can use the topological information and
 create lateral connections for all layers of all cells with a single
 command:
 
-``` {.py}
+~~~~~~~~~~~~~{.py}
 
 cmf.connect_cells_with_flux(cells,cmf.Darcy, start_at_layer=0)
-```
+~~~~~~~~~~~~~
 
 Here, cells is a collection of cells, eg. the whole project or a list of
 cells if you want to install the connection only for a part of your

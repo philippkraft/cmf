@@ -2,7 +2,7 @@
 
 @tableofcontents
 
- [index...](@ref CmfTutStart)
+ [index...](@ref tutorial)
 
 # Cells
 
@@ -26,20 +26,20 @@ m, eg. UTM or from a user defined origin) and the area is given in m².
 For 1D models, an area of 1000m² is helpful to use any volume in m³ as
 mm.
 
-``` {.py}
+~~~~~~~~~~~~~{.py}
 
 c = p.NewCell(x=0.0,y=0.0,z=0.0,area=1000.0)
-```
+~~~~~~~~~~~~~
 
 The cell `c` has a standard vegetation (short grass) which can be
 changed with `c.vegetation` and the boundary conditions noted above.
 
 ### Adding soil layers
 
-``` {.py}
+~~~~~~~~~~~~~{.py}
 
 c.add_layer(d=0.1,r_curve=cmf.VanGenuchtenMualem())
-```
+~~~~~~~~~~~~~
 
 Adds a new soil layer up to the depth of 10cm below ground (d in m) with
 a default paramterized van Genuchten - Mualem retention curve. The usage
@@ -49,10 +49,10 @@ tutorial](@ref CmfTut1d)
 
 ### Adding a surface water storage
 
-``` {.py}
+~~~~~~~~~~~~~{.py}
 
 c.surfacewater_as_storage()
-```
+~~~~~~~~~~~~~
 
 converts the flux node surfacewater into an openwater storage. This is
 '''strongly recommended''' for all model setups, except for very
@@ -76,10 +76,10 @@ connections based on the topological information.
 Cell topology defines neighborhood relation between 2 cells by saving
 the length of the shared boundary of the cells.
 
-``` {.py}
+~~~~~~~~~~~~~{.py}
 
 c1.topology.AddNeighbor(c2,5.0)
-```
+~~~~~~~~~~~~~
 
 defines c1 and c2 as neighbors with a shared boundary of 5m. Topology is
 used in \[\[wiki:CmfTutDarcianLateralFlow\]|and
@@ -116,11 +116,11 @@ More crossection types can be implemented on demand.
 As a general type, [Channel](@ref cmf::river::Channel) is used,
 denoting the crosssection by the shortcuts listed above:
 
-``` {.py}
+~~~~~~~~~~~~~{.py}
 
 r1=p.NewReach(x=0,y=0,z=1.0,length=100,Type='S',width=0.5,depth=0.1,diffusive=False)
 r2=p.NewReach(x=100,y=0,z=0,length=100,Type='S',width=0.5,depth=0.1,diffusive=False)
-```
+~~~~~~~~~~~~~
 
 This command creates a new reach with a trapezoidal crossection, a bank
 width of 50cm, a depth of 10 cm using (per default) a kinematic wave
@@ -134,21 +134,21 @@ approach, using Manning's roughness as the friction term will be used
 for modelling channeled flow (see CmfTutChannel), hence the two reaches
 can be connected by definining \!r2 as the downstream reach of \!r1:
 
-``` {.py}
+~~~~~~~~~~~~~{.py}
 
 r1.set_downstream(r2)
-```
+~~~~~~~~~~~~~
 
 \!r2 should be connected to the area outlet:
 
-``` {.py}
+~~~~~~~~~~~~~{.py}
 
 outlet = p.NewOutlet('outlet',x=200,y=0,z=-1.0)
 r2.set_outlet(outlet)
-```
+~~~~~~~~~~~~~
 
 CmfTutChannel will show a full running example.
 
-[index...](@ref CmfTutStart)
+[index...](@ref tutorial)
 
 author: giovanny, version: 5 Tue May 5 11:22:32 2015

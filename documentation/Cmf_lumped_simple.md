@@ -1,6 +1,6 @@
 @page Cmf_lumped_simple
 
-[index..](@ref CmfTutStart)
+[index..](@ref tutorial)
 
 # Lumped Model with Spotpy Tutorial
 
@@ -47,15 +47,15 @@ shift them to an additional class. You do not neccesary have to fully
 grasp what those methods do, if you simply want a quick calibration
 done.
 
-``` {.py}
+~~~~~~~~~~~~~{.py}
 
 class SpotpyInterface:
-```
+~~~~~~~~~~~~~
 
 The first method calls your model and makes it run with the parameters
 Spotpy provides and returns the results the model calculated.
 
-``` {.py}
+~~~~~~~~~~~~~{.py}
 
     def simulation(self,vector):
         """
@@ -66,38 +66,38 @@ Spotpy provides and returns the results the model calculated.
         self.setparameters(**paramdict)
         resQ = self.runmodel()
         return np.array(resQ)
-```
+~~~~~~~~~~~~~
 
 The second method is needed by Spotpy to generate the data with which
 the model is evaluated. In our case this is the measured discharge.
 
-``` {.py}
+~~~~~~~~~~~~~{.py}
 
     def evaluation(self):
         end = self.begin + cmf.day * len(self.Q)
         return np.array(self.Q[self.begin:end])
-```
+~~~~~~~~~~~~~
 
 The third method calls Spotpy's own method for parameter generation.
 This means the values for the parameters we need in our model are
 generated here.
 
-``` {.py}
+~~~~~~~~~~~~~{.py}
 
     def parameters(self):
         return spotpy.parameter.generate(self.params)
-```
+~~~~~~~~~~~~~
 
 The final method of the interface is used to define the objective
 function. This means on what criteria the model should be judged. In our
 case we are using the Nash-Sutcliffe Efficieny, which focusses on peak
 flows.
 
-``` {.py}
+~~~~~~~~~~~~~{.py}
 
     def objectivefunction(self,simulation,evaluation): 
         return spotpy.objectivefunctions.nashsutcliffe(evaluation,simulation)
-```
+~~~~~~~~~~~~~
 
 ## The actual model
 
@@ -108,16 +108,16 @@ of writing one line under the next one. For this a class is used. To
 make use of the Interface we created, we let our model class inherit the
 methods from the SpotpyInterface class.
 
-``` {.py}
+~~~~~~~~~~~~~{.py}
 
 class CMFLumped(SpotpyInterface):
-```
+~~~~~~~~~~~~~
 
 The first method of the model class initializes all things we need for
 the model, meaning the project, the cell, the layer, an outlet and out
 date.
 
-``` {.py}
+~~~~~~~~~~~~~{.py}
 
     def __init__(self):
         # create the project
@@ -136,13 +136,13 @@ date.
         self.outlet = self.project.NewOutlet("Out", 10,0,0)
         # Evaporation
         cmf.HargreaveET(self.soil, self.cell.transpiration)
-```
+~~~~~~~~~~~~~
 
 This method is also used to define our parameters and their range. For
 this we need to import a distribution from spotpy. For our case Uniform
 is sufficient.
 
-``` {.py}
+~~~~~~~~~~~~~{.py}
 
         param = spotpy.parameter.Uniform
         # define all parameters and their range
@@ -151,23 +151,23 @@ is sufficient.
                        param("ETV1", 0., 200), 
                        param("fEVT0", 0., 1)]
         P, Q, T, Tmin, Tmax = self.loadPETQ()
-```
+~~~~~~~~~~~~~
 
 Finally the method the method loads in the forcing data and initializes
 the rainfall and the meteo station by calling another method (described
 below).
 
-``` {.py}
+~~~~~~~~~~~~~{.py}
 
         P, Q, T, Tmin, Tmax = self.loadPETQ()
         self.Q = Q
         self.create_stations(P, Q, T, Tmin, Tmax)
-```
+~~~~~~~~~~~~~
 
 The method to load in the weather data works the same way as in the
 model without spotpy.
 
-``` {.py}
+~~~~~~~~~~~~~{.py}
 
     def loadPETQ(self):
         # Data (plain text files)
@@ -193,11 +193,11 @@ model without spotpy.
                 Tmax.add(float(columns[[0]))|                Tmin.add(float(columns[1]]))
                 T.add(float(columns[2]))
         return P, Q, T, Tmin, Tmax
-```
+~~~~~~~~~~~~~
 
 Same goes for the method to create the stations.
 
-``` {.py}
+~~~~~~~~~~~~~{.py}
 
     def create_stations(self, P, Q, T, Tmin, Tmax):
         # Create the rainstation and give it the freshly loaded precipitaton data
@@ -214,7 +214,7 @@ Same goes for the method to create the stations.
         meteo.Tmax = Tmax
         # Tell the cell to use the nearest station
         self.project.use_nearest_meteo()
-```
+~~~~~~~~~~~~~
 
 One significant difference to the model without Spotpy is the method to
 set the values for the parameters. We need this method as we cannot
@@ -223,7 +223,7 @@ Instead the parameters must be flexibly be filled with the values Spotpy
 provides. Therefore, we need to create this method to be able to do
 this.
 
-``` {.py}
+~~~~~~~~~~~~~{.py}
 
     def setparameters(self, **params):
         # Flux from soil to outlet (interflow)
@@ -231,13 +231,13 @@ this.
                            params[["tr"],|exponent=params["beta"]])
         # Adjustment of the evapotranspiration
         self.cell.set_uptakestress(cmf.VolumeStress(params[["ETV1"],|                                                    params["ETV1"]] * params["fEVT0"]))
-```
+~~~~~~~~~~~~~
 
 Finally, we need a method which lets the model run and creates an array
 of the output. Here we also create the CMF solver, which solves the
 differential equations.
 
-``` {.py}
+~~~~~~~~~~~~~{.py}
 
     def runmodel(self):
         try:
@@ -254,7 +254,7 @@ differential equations.
             return discharge
         except RuntimeError:
             return np.array(self.Q[[self.begin:self.end|+ datetime.timedelta(days=1)]])*np.nan
-```
+~~~~~~~~~~~~~
 
 ## Running the model
 
@@ -264,13 +264,13 @@ forward it to Spotpy. Spotpy additionally needs to know what output
 format we want and what our file should be called. Here we can also
 define how often the model should run.
 
-``` {.py}
+~~~~~~~~~~~~~{.py}
 
 model = CMFLumped()
 sampler = spotpy.algorithms.lhs(model, dbformat ="csv", dbname = "model")
 runs = 100
 sampler.sample(runs)
-```
+~~~~~~~~~~~~~
 
 We you know start this model you should get a Nash-Sutcliffe Efficieny
 of about ~ 0.3. You can play around with other objective functions and

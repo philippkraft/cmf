@@ -29,7 +29,7 @@ changed for other usage.
 
 The model itself and its driving data are attached to this site.
 
-``` {.py}
+~~~~~~~~~~~~~{.py}
 
 # -*- coding: utf-8 -*-
 """
@@ -353,6 +353,6 @@ if __name__ == '__main__':
         print("The model with {} cell(s) has a best NS of {}".format(
                                                                     key,
                                                                     value))
-```
+~~~~~~~~~~~~~
 
 author: florianjehn, version: 4 Fri Jan 12 14:02:19 2018

@@ -2,7 +2,7 @@
 
 @tableofcontents
 
- [index...](@ref CmfTutStart),
+ [index...](@ref tutorial),
 [next...](@ref CmfTutVolumeHeight)
 
 # Hydraulic head and stored water volume
@@ -27,7 +27,7 @@ of the watertable above a model wide reference height, often sea level.
 
 The potential or hydraulic head for porous media is commonly defined as:
 
-``` 
+~~~~~~~~~~~~~ 
 
 #!td style="vertical-align: top"
 
@@ -35,11 +35,11 @@ The potential or hydraulic head for porous media is commonly defined as:
 @f[
 [\Psi_{tot}|= z + \Psi_M(\theta) + p + \Psi_O
 @f]
-```
+~~~~~~~~~~~~~
 
 \] }}}
 
-``` 
+~~~~~~~~~~~~~ 
 
 #!td
 
@@ -50,7 +50,7 @@ where:
 - {{{@f$\Psi_M(\theta)@f$}}} is the matrix potential, a function of the water content {{{@f$\theta)@f$}}}, also called the suction pressure in m. {{{@f$\Psi_M<0m@f$}}} for unsaturated media and {{{@f$\Psi_M=0m@f$}}} for saturated conditions
 - {{{@f$p@f$}}} is the hydrostatic pressure from upper water storages in m
 - {{{@f$\Psi_O@f$}}} is the osmotic potential in m
-```
+~~~~~~~~~~~~~
 
 # Using subsurface potential in cmf
 
@@ -77,20 +77,20 @@ potential @f$\Psi_M@f$ also. The gravitational potential for layer
 `l`is defined as the height of the upper layer boundary above
 reference height
 
-``` {.py}
+~~~~~~~~~~~~~{.py}
 
 z = l.gravitational_potential = l.position.z + l.thickness/2. = l.cell.z - l.upper_boundary
-```
+~~~~~~~~~~~~~
 
 The matrix potential is depending on the water content by the retention
 curve (see below).
 
-``` {.py}
+~~~~~~~~~~~~~{.py}
 
 Psi_M = l.matrix_potential
 Psi_tot = z + Psi_M
 Psi_tot == l.potential
-```
+~~~~~~~~~~~~~
 
 ## Saturated depth
 
@@ -100,15 +100,15 @@ you query the saturated depth of a cell you get the potential of the
 first saturated layer @f$\Psi_M \geq 0m@f$ relative to the cell
 height. Hence
 
-``` {.py}
+~~~~~~~~~~~~~{.py}
 
 def getsaturateddepth(cell):
     return cell.saturated_depth
-```
+~~~~~~~~~~~~~
 
 is equal to
 
-``` {.py}
+~~~~~~~~~~~~~{.py}
 
 def getsaturateddepth(cell):
     for l in cell.layers:
@@ -116,7 +116,7 @@ def getsaturateddepth(cell):
             return cell.z - l.potential
     # No layer is saturated, return potential of last layer
     return cell.z - cell.layers[-1].potential
-```
+~~~~~~~~~~~~~
 
 This works quite fine as an indicator of cell saturation, as long as you
 do not have perched water tables. In case of a temporary existent
@@ -129,20 +129,20 @@ simplified setting of initial conditions. All layers of the cell will be
 put into vertical hydrostatic equilibrium '''for that cell''' with the
 same potential. Hence
 
-``` {.py}
+~~~~~~~~~~~~~{.py}
 
 def setsaturateddepth(cell,value):
     cell.saturated_depth = value
-```
+~~~~~~~~~~~~~
 
 is equal to
 
-``` {.py}
+~~~~~~~~~~~~~{.py}
 
 def setsaturateddepth(cell,value):
     for l in cell.layers:
         l.potential = cell.z - value
-```
+~~~~~~~~~~~~~
 
 If you want to set a whole landscape into hydrostatic equilibrium in a
 gradient based model, you need to set the `saturated_depth` for each
@@ -169,7 +169,7 @@ retention curve can be used.
 All curves share the definition of the water content @f$\theta@f$ and
 the water filled pore space (wetness) @f$W@f$:
 
-``` 
+~~~~~~~~~~~~~ 
 
 #!td
 
@@ -177,11 +177,11 @@ the water filled pore space (wetness) @f$W@f$:
 @f[
 [\theta|= \frac V {A \Delta z}
 @f]
-```
+~~~~~~~~~~~~~
 
 \] }}}
 
-``` 
+~~~~~~~~~~~~~ 
 
 #!td
 
@@ -190,13 +190,13 @@ where:
  is the stored water volume of the soil layer in m³
 * {{{@f$A@f$}}} is the area of the soil column in m²
 * {{{@f$\Delta z@f$}}} is the thickness of the soillayer
-```
+~~~~~~~~~~~~~
 
 |                   |
 | ----------------- |
 | ---------------- |
 
-``` 
+~~~~~~~~~~~~~ 
 
 #!td
 
@@ -204,11 +204,11 @@ where:
 @f[
 [W|= \frac{\theta - \theta_r}{\Phi - \theta_r}
 @f]
-```
+~~~~~~~~~~~~~
 
 \] }}}
 
-``` 
+~~~~~~~~~~~~~ 
 
 #!td
 
@@ -216,13 +216,13 @@ where:
 * {{{@f$\theta_r@f$}}}
  is the residual water content in m³/m³
 * {{{@f$\Phi@f$}}} is the porosity of the soil in m³/m³
-```
+~~~~~~~~~~~~~
 
 For the comparisons of the different retention curves, we define a
 function to plot the curves. You can play around with the paramters and
 see the different effects.
 
-``` {.py}
+~~~~~~~~~~~~~{.py}
 
 def plot_rc(retcurve,Psi_M):
     """Plots the retention curve retcurve for the matrix potential values in the array Psi_M
@@ -243,7 +243,7 @@ def plot_rc(retcurve,Psi_M):
     semilogy(Psi_M, retcurve.K(W))
     xlabel('Matric potential [[m]')|    ylabel(r'$K(\theta) [\frac{m}{day}]]$')
     grid()
-```
+~~~~~~~~~~~~~
 
 ## \!VanGenuchten-Mualem curve
 
@@ -259,7 +259,7 @@ API-documentation. In the following, you will create a
 potential || || @f$n@f$|| = || 1.6 ||- ||Poresize distribution
 parameter || || @f$\Phi@f$|| = || 0.52 ||@f$m^3/m^3@f$ ||Porosity ||
 
-``` {.py}
+~~~~~~~~~~~~~{.py}
 
 import cmf
 from pylab import *
@@ -267,7 +267,7 @@ vgm = cmf.VanGenuchtenMualem(Ksat=2.5, alpha=0.1, n=1.6, phi=0.52)
 # Make an array of matric potential values [0..-3m]  for plotting the retention curve
 Psi_M = arange(0,-3,-0.01)
 plot_rc(vgm,Psi_M)
-```
+~~~~~~~~~~~~~
 
 ### Oversaturation
 
@@ -299,10 +299,10 @@ following properties:
 
 <!-- end list -->
 
-``` {.py}
+~~~~~~~~~~~~~{.py}
 
 vgm.w0 = 0.9996
-```
+~~~~~~~~~~~~~
 
 From revision 600 and above, you can optimize w0 for a target
 oversaturation using the fit_w0 function.

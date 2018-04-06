@@ -1,6 +1,6 @@
 @page CmfTutBoundary
 
-[index...](@ref CmfTutStart) [back...](@ref CmfTutFirstModel)
+[index...](@ref tutorial) [back...](@ref CmfTutFirstModel)
 [next...](@ref CmfTutFluxes)
 
 # Boundary conditions
@@ -14,7 +14,7 @@ be opened up to be influenced by the system environment.
 As a first step we will create a system outlet. The setup from the last
 chapter was:
 
-``` {.py}
+~~~~~~~~~~~~~{.py}
 
 # We are going to need the datetime module
 import datetime
@@ -24,23 +24,23 @@ W1 = p.NewStorage(name="W1",x=0,y=0,z=0)
 W2 = p.NewStorage(name="W2",x=10,y=0,z=0)
 q = cmf.kinematic_wave(source=W1,target=W2,residencetime=1.0)
 W1.volume = 1.0
-```
+~~~~~~~~~~~~~
 
 Now we add an outlet
 [DirichletBoundary](@ref cmf::water::DirichletBoundary) to the project
 and connect W2 with that outlet, using a linear storage connection with
 a longer residence time
 
-``` {.py}
+~~~~~~~~~~~~~{.py}
 
 Out = p.NewOutlet(name="Outlet",x=20,y=0,z=0)
 qout = cmf.kinematic_wave(source=W2,target=Out,residencetime=2.0)
-```
+~~~~~~~~~~~~~
 
 At last the new system needs to be solved again, the same way as the
 first model:
 
-``` {.py}
+~~~~~~~~~~~~~{.py}
 
 # Create the solver
 solver = cmf.RKFIntegrator(p,1e-9)
@@ -52,7 +52,7 @@ plt.xlabel('hours')
 plt.ylabel('Volume in $m^3$')
 plt.legend(('W1','W2'))
 plt.show()
-```
+~~~~~~~~~~~~~
 
 This results in:
 
@@ -70,7 +70,7 @@ create a timeseries with daily alternating flux values between 0 and 1.
 
 The setup code needs to be extended with the following:
 
-``` {.py}
+~~~~~~~~~~~~~{.py}
 
 # Create a Neumann Boundary condition connected to W1
 In = cmf.NeumannBoundary.create(W1)
@@ -81,7 +81,7 @@ In.flux = cmf.timeseries(begin = datetime.datetime(2012,1,1),
 for i in range(10):
     # Add 0.0 m3/day for even days, and 1.0 m3/day for odd days
     In.flux.add(i % 2)
-```
+~~~~~~~~~~~~~
 
 That's it. The complete code is available here:
 \[htdocs:examples/CmfTutBoundary.py\]: And the result is:

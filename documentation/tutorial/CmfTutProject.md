@@ -1,6 +1,6 @@
 @page CmfTutProject
 
-[index...](@ref CmfTutStart)
+[index...](@ref tutorial)
 
 # Project
 
@@ -8,11 +8,11 @@ The cmf project is the container for the nodes of the water flux
 network. For any kind of cmf model, the first step is to create a
 project:
 
-``` {.py}
+~~~~~~~~~~~~~{.py}
 
 import cmf
 p = cmf.project()
-```
+~~~~~~~~~~~~~
 
 The project represents the study area and holds the cells (horizontal
 discretization of the soil), the reaches (discretized river sections),

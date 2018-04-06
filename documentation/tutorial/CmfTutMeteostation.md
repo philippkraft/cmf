@@ -1,6 +1,6 @@
 @page CmfTutMeteostation
 
-[index](@ref CmfTutStart), [back](@ref CmfTutTestData), [space and time in
+[index](@ref tutorial), [back](@ref CmfTutTestData), [space and time in
 cmf](@ref CmfTutSpaceTime)
 
 # Using measurement stations for atmospheric conditions
@@ -37,7 +37,7 @@ In the next example, we will create rainfall station using random data.
 For your application you will load your data from a file, database or
 web service.
 
-``` {.py}
+~~~~~~~~~~~~~{.py}
 
 import cmf
 import numpy as np
@@ -54,7 +54,7 @@ raindata = cmf.timeseries.from_array(start=datetime(2010,1,1),
 rainstation = project.rainfall_stations.add(Name='Random station', 
                                             Data=raindata,
                                             Position=(0,0,0))
-```
+~~~~~~~~~~~~~
 
 The last command is new: Every project has a list of rainfall stations,
 and you add a new station with the `add` method. The method expects a
@@ -62,10 +62,10 @@ name for the station (very useful if you have more then one), the data
 as a cmf timeseries and a position in space in project coordinates. You
 can connect your new rainfall station with a cell `c` by:
 
-``` {.py}
+~~~~~~~~~~~~~{.py}
 
 rainstation.use_for_cell(c)
-```
+~~~~~~~~~~~~~
 
 or you can use one of the spatial distibution methods shown at the end
 of this tutorial.
@@ -152,7 +152,7 @@ To keep the example code short, we assume, that you have your data
 provided in a special binary data format for timeseries. For your model,
 you would rather do something as it is shown in CmfTutTestData.
 
-``` {.py}
+~~~~~~~~~~~~~{.py}
 
 meteo = project.meteo_stations.add_station(name='A station name',
                                            position=(0,0,0),
@@ -162,7 +162,7 @@ meteo = project.meteo_stations.add_station(name='A station name',
 meteo.Tmax = cmf.timeseries.from_file('Tmax.timeseries')
 meteo.Tmin = cmf.timeseries.from_file('Tmin.timeseries')
 meteo.Rs   = cmf.timeseries.from_file('Rs.timeseries')
-```
+~~~~~~~~~~~~~
 
 Have a look at the first line. To create a meteo station, the name and
 position are needed as for the rainfall station, but also the position
@@ -182,11 +182,11 @@ If the forcing data for a cell should be used from one station, the
 `station.use_for_cell` idiom is fine. To assign all cells of a
 project to the nearest station write in your script:
 
-``` {.py}
+~~~~~~~~~~~~~{.py}
 
 project.use_nearest_meteo(z_weight=0.0)
 project.use_nearest_rainfall(z_weight=0.0)
-```
+~~~~~~~~~~~~~
 
 The distance is calculated using the `x,y,z` coordinates,of the cell
 @f$x_c,y_c,z_c@f$ and the `position` argument of the station ''i'',
@@ -246,11 +246,11 @@ realistic distributions of spatiotemporal values in the landscape.
 
 Applying IDW interpolation for all cells over all stations is used as:
 
-``` {.py}
+~~~~~~~~~~~~~{.py}
 
 project.use_IDW_meteo(z_weight=0.0, power=2.)
 project.use_IDW_rainfall(z_weight=0.0, power=2.)
-```
+~~~~~~~~~~~~~
 
 with `z_weight` @f$\hat{=}\ w_z@f$, `power` @f$\hat{=}\ p@f$
 

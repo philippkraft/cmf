@@ -1,6 +1,6 @@
 @page fluxogram_and_get_fluxes
 
-[index..](@ref CmfTutStart)
+[index..](@ref tutorial)
 
 # How to get a nice visual representation of your model
 

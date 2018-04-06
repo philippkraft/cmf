@@ -1,6 +1,6 @@
 @page CmfTutTechnical
 
-[index...](@ref CmfTutStart)
+[index...](@ref tutorial)
 
 # Technical fluxes in CMF
 
@@ -11,17 +11,17 @@ what amount of water should be transferred on every timestep.
 
 Load the needed packages.
 
-``` {.py}
+~~~~~~~~~~~~~{.py}
 
 import cmf
 import matplotlib.pyplot as plt
 import datetime
-```
+~~~~~~~~~~~~~
 
 Create the project and two storages. The first one is filled with 100 m³
 of water at start. Save the starting volumes of the storages.
 
-``` {.py}
+~~~~~~~~~~~~~{.py}
 
 s1 = p.NewStorage("s1", 0,0,0)
 s2 = p.NewStorage("s2", 0,0,10)
@@ -29,47 +29,47 @@ s2 = p.NewStorage("s2", 0,0,10)
 s1.volume = 100
 
 vol_s1 = [[s1.volume]|vol_s2 = [s2.volume]]
-```
+~~~~~~~~~~~~~
 
 Connect the two storages with a technical flux, that transfers 10 m³/day
 (maximal, less when no water is present in the storage). The technical
 flux has also a min argument (default = 0) which specifies the minimal
 amount of water that should remain in the source storage.
 
-``` {.py}
+~~~~~~~~~~~~~{.py}
 
 max_flux = 10
 cmf.TechnicalFlux(s1, s2, max_flux)
-```
+~~~~~~~~~~~~~
 
 Prepare the variables to run the model for a few days.
 
-``` {.py}
+~~~~~~~~~~~~~{.py}
 
 solver = cmf.CVodeIntegrator(p)
 
 start = datetime.datetime(2017, 12, 1)
 end = datetime.datetime(2017, 12, 15)
-```
+~~~~~~~~~~~~~
 
 Run the model. Save the volumes at every day.
 
-``` {.py}
+~~~~~~~~~~~~~{.py}
 
 for t in solver.run(start, end, cmf.day):
     vol_s1.append(s1.volume)
     vol_s2.append(s2.volume)
-```
+~~~~~~~~~~~~~
 
 Plot the volumes.
 
-``` {.py}
+~~~~~~~~~~~~~{.py}
 
 plt.plot(vol_s1, label="Volume Storage 1")
 plt.plot(vol_s2, label="Volume Storage 2")    
 plt.ylabel("Volume [[m³]")|plt.xlabel("Time [days]]")
 plt.legend()
-```
+~~~~~~~~~~~~~
 
 The resulting image should something like this:
 

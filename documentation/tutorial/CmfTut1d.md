@@ -1,6 +1,6 @@
 @page CmfTut1d
 
-[index...](@ref CmfTutStart)
+[index...](@ref tutorial)
 
 # Create a one dimensional Richards equation based model
 
@@ -17,43 +17,44 @@ section.
 
 Create a project and one 1000m² cell
 
-    #!python
-    import cmf
-    from datetime import datetime,timedelta
-    project = cmf.project()
-    # Add one cell at position (0,0,0), Area=1000m2 with a surface water storage
-    cell = project.NewCell(x=0,y=0,z=0,area=1000, with_surfacewater=True)
+~~~~~~~~~~~~~{.py}
+import cmf
+from datetime import datetime,timedelta
+project = cmf.project()
+# Add one cell at position (0,0,0), Area=1000m2 with a surface water storage
+cell = project.NewCell(x=0,y=0,z=0,area=1000, with_surfacewater=True)
+~~~~~~~~~~~~~
 
 Create a [retention curve](@ref CmfTutRetentioncurve)
 
-``` {.py}
+~~~~~~~~~~~~~{.py}
 
 r_curve = cmf.VanGenuchtenMualem(Ksat=1,phi=0.5,alpha=0.01,n=2.0)
-```
+~~~~~~~~~~~~~
 
 Add ten layers of 10cm thickness
 
-``` {.py}
+~~~~~~~~~~~~~{.py}
 
 for i in range(10):
     depth = (i+1) * 0.1
     cell.add_layer(depth,r_curve)
-```
+~~~~~~~~~~~~~
 
 Connect layers with Richards perc.
 
-``` {.py}
+~~~~~~~~~~~~~{.py}
 
 for upper,lower in zip(cell.layers[:-1],cell.layers[1:]):
     cmf.Richards(upper,lower)
-```
+~~~~~~~~~~~~~
 
 this can be shorten as
 
-``` {.py}
+~~~~~~~~~~~~~{.py}
 
 cell.install_connection(cmf.Richards)
-```
+~~~~~~~~~~~~~
 
 Using this command, all layers of the cell get connected with Richards
 equation.
@@ -67,27 +68,27 @@ wrapper for the
 Hindmarsh et al. (2005) is such a solver and recommended for all cmf
 models using Richards equation.
 
-``` {.py}
+~~~~~~~~~~~~~{.py}
 
 solver = cmf.CVodeIntegrator(project,1e-6)
 solver.t = cmf.Time(1,1,2011)
-```
+~~~~~~~~~~~~~
 
 Now we set the initial conditions
 
-``` {.py}
+~~~~~~~~~~~~~{.py}
 
 # Set all layers to a potential of -2 m
 cell.saturated_depth = 2.
 # 100 mm water in the surface water storage for percolation
 cell.surfacewater.depth = 0.1
-```
+~~~~~~~~~~~~~
 
 This is the setup code for our simple 1D Richards-Model. To run the
 model we create the run time loop using the solver.run iterator and we
 save soil moisture and potential for each layer into lists.
 
-``` {.py}
+~~~~~~~~~~~~~{.py}
 
 # Save potential and soil moisture for each layer, start with initial conditions
 potential = [[cell.layers.potential]|moisture = [cell.layers.theta]]
@@ -106,7 +107,7 @@ subplot(212)
 plot(potential)
 ylabel(r'Water head $\Psi_{tot} [[m]$')|xlabel(r'$time [h]]$')
 grid()
-```
+~~~~~~~~~~~~~
 
 And this is the result for our simple percolation experiment:
 
@@ -123,7 +124,7 @@ condition is introduced into our model. The following line needs to be
 inserted into the setup part of the script, eg. before setting the
 initial conditions:
 
-``` {.py}
+~~~~~~~~~~~~~{.py}
 
 # Create the boundary condition
 gw = project.NewOutlet('groundwater',x=0,y=0,z=-2)
@@ -131,7 +132,7 @@ gw = project.NewOutlet('groundwater',x=0,y=0,z=-2)
 gw.potential = -2 
 # Connect the lowest layer to the groundwater using Richards percolation
 gw_flux=cmf.Richards(cell.layers[-1],gw)
-```
+~~~~~~~~~~~~~
 
 And we get:
 
@@ -147,6 +148,6 @@ period near to the orginal values.
   - [SoilLayer](@ref cmf::upslope::SoilLayer)
   - [layer_list](@ref cmf::upslope::layer_list)
 
-Back to [Tutorial index](@ref CmfTutStart)
+Back to [Tutorial index](@ref tutorial)
 
 author: philipp, version: 17 Fri Sep 27 13:56:14 2013

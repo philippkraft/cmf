@@ -1,6 +1,6 @@
 @page CmfTutSurfaceRunoff
 
-[index...](@ref CmfTutStart) [next...](@ref CmfTut2d)
+[index...](@ref tutorial) [next...](@ref CmfTut2d)
 
 # Surface runoff
 
@@ -15,18 +15,18 @@ The surface water of a cell has the class
 [SurfaceWater](@ref cmf::upslope::SurfaceWater), and can either be
 created directly withe the cell:
 
-``` {.py}
+~~~~~~~~~~~~~{.py}
 
 cell = project.NewCell(x=0,y=0,z=0,area=1000,with_surfacewater=True) 
-```
+~~~~~~~~~~~~~
 
 or afterwards, if the cell has not been created with surface water
 
-``` {.py}
+~~~~~~~~~~~~~{.py}
 
 cell = project.NewCell(x=0,y=0,z=0,area=1000) 
 cell.surfacewater_as_storage()
-```
+~~~~~~~~~~~~~
 
 To route the water to the target, one can use conceptual connections
 like the
@@ -75,7 +75,7 @@ average) 1cm deep puddles, the `puddledepth` is `@f$0.01m \cdot 0.2
 
 ### Example: A simple over flow routing to a boundary condition
 
-``` {.py}
+~~~~~~~~~~~~~{.py}
 
 import cmf
 from numpy import transpose
@@ -113,6 +113,6 @@ plot(qinf,label='Soil')
 ylabel('Flux in mm/day')
 xlabel('Time in minutes')
 legend(loc=0)
-```
+~~~~~~~~~~~~~
 
 author: philipp, version: 2 Tue Jan 21 10:38:14 2014

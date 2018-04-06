@@ -2,7 +2,7 @@
 
 @tableofcontents
 
- [index](@ref CmfTutStart)
+ [index](@ref tutorial)
 [back...](@ref CmfTutUnits) [next...](@ref CmfTutCell)
 
 # Space and time in cmf
@@ -14,10 +14,10 @@ However, "print" has changed between python 2 and 3. To run our examples
 python 2 users should always start their programs with the following
 line:
 
-``` {.py}
+~~~~~~~~~~~~~{.py}
 
 from __future__ import print_function, division
-```
+~~~~~~~~~~~~~
 
 This import the behaviour of the python3 print function as well as the
 improved handling of integer division into python 2. Using this line in
@@ -89,7 +89,7 @@ The simplest and most common way to use timeseries in cmf is to create
 an empty timeseries (no entry) with a begin and a step size. After
 creation the `add` method is used to fill the timeseries with data.
 
-``` {.py}
+~~~~~~~~~~~~~{.py}
 
 import cmf
 from datetime import datetime,timedelta
@@ -109,7 +109,7 @@ print(data[datetime(2010,1,1,6,15)]) # returns 0.5
 print(data[datetime(2009,12,24)]) # returns 0.0
 # Value after end
 print(data[datetime(2010,1,5)]) # returns 1.0
-```
+~~~~~~~~~~~~~
 
 #### Scalar timeseries
 
@@ -118,11 +118,11 @@ constant in time are represented as a single value timeseries. To reduce
 the number of lines needed to define a constant timeseries, the static
 method `from_scalar` exists:
 
-``` {.py}
+~~~~~~~~~~~~~{.py}
 
 # Create a constant timeseries
 data = cmf.timeseries.from_scalar(0.5)
-```
+~~~~~~~~~~~~~
 
 However, some objects expecting timeseries will do the conversion from a
 scalar to a timeseries gracefully behind the scences and accept a number
@@ -135,26 +135,26 @@ If the data you want to store in a timeseries is in a Python iterable
 step, with out the need to write a loop yourself. A shorter replacement
 for the example above is:
 
-``` {.py}
+~~~~~~~~~~~~~{.py}
 
 data = cmf.timeseries.from_sequence(begin=datetime(2010,1,1), 
                                     step=cmf.min*30, 
                                     sequence=(i % 2 for i in range(96)))
-```
+~~~~~~~~~~~~~
 
 If you have already stored your data in a numpy array, a very fast
 (C/C++ based) method exists to copy the array into a timeseries object.
 As an example we store random normal distributed values for 50 days in
 30 minute stepsize in a timeseries:
 
-``` {.py}
+~~~~~~~~~~~~~{.py}
 
 import cmf
 import numpy as np
 data = cmf.timeseries.from_array(begin=datetime(2010,1,1), 
                                  step=cmf.min*30, 
                                  data = np.random.normal(0,1.,2400))
-```
+~~~~~~~~~~~~~
 
 However, you do not gain speed or simplicity if you fill the array
 beforehand with a Python loop.
@@ -168,13 +168,13 @@ model on a super computer, reading from the files can be quite an
 overhead. You can (but do not have to) write timeseries in a specific
 binary format to disk and read it afterwards.
 
-``` {.py}
+~~~~~~~~~~~~~{.py}
 
 # Load a timeseries from the file named 'my.timeseries'
 data = cmf.timeseries.from_file('my.timeseries')
 # Save the timeseries to a file named 'my2nd.timeseries'
 data.to_file('my2nd.timeseries')
-```
+~~~~~~~~~~~~~
 
 The file format is described in the docstring of the `to_file`
 method. For interprocess exchange, the `to_buffer` and
@@ -187,10 +187,10 @@ Because your model will create odd results with common no-data values as
 e.g. ‘-999’, you should first examine your data and in case interpolate
 it. CMF gives the following function:
 
-``` {.py}
+~~~~~~~~~~~~~{.py}
 
 data.remove_nodata(nodata_value)
-```
+~~~~~~~~~~~~~
 
 By using this function, CMF will take the preceding and following value
 of the no-data value in the timeseries and return the mean of it.
@@ -204,12 +204,12 @@ need to transform a timeseries from one unit to another. Let us assume a
 timeseries of rainfall data in mm/h. Instead of changing your database,
 you can just write in your script:
 
-``` {.py}
+~~~~~~~~~~~~~{.py}
 
 rain = data * 24
 # Or if you do not need the old timeseries for something else:
 data *= 24
-```
+~~~~~~~~~~~~~
 
 The basic arithmetic operators (+,-+,\*,/) are defined for timeseries
 and scalars, as well as for timeseries on both side of the operand. If
@@ -222,12 +222,12 @@ exponential function (`exp`), logarithm (`log`,`log10`), to raise
 the timeseries to a scalar power (`pow`) and to get the inverse of the
 timeseries (`inv`).
 
-``` {.py}
+~~~~~~~~~~~~~{.py}
 
 exp_data=data.exp()
 square_data = data.pow(2.)
 ...
-```
+~~~~~~~~~~~~~
 
 #### Statistical analysis
 
@@ -239,10 +239,10 @@ all functions from the scipy.stats module (if scipy is available). If
 you need the time axis for your analysis (or for plotting) you can get
 the time axis in days since 30.12.1899 as a list by
 
-``` {.py}
+~~~~~~~~~~~~~{.py}
 
 data_t = [[t/cmf.day|for t in data.iter_time()]]
-```
+~~~~~~~~~~~~~
 
 To smooth timeseries the methods `floating_avg`,
 `floating_max`,`floating_min` are available for floating window
@@ -259,10 +259,10 @@ For comparison of timeseries containing model results and observations,
 you can use the [nash_sutcliffe](@ref cmf::math::nash_sutcliffe)
 efficiency integrated in cmf:
 
-``` {.py}
+~~~~~~~~~~~~~{.py}
 
 E  = cmf.nash_sutcliffe(model, observation)
-```
+~~~~~~~~~~~~~
 
 ### Plotting timeseries
 
@@ -272,11 +272,11 @@ function for line graphs and a function for bar graphs. The helper
 functions to draw cmf objects using matplotlib are in the namespace
 `cmf.draw` you need to import seperately.
 
-``` {.py}
+~~~~~~~~~~~~~{.py}
 
 import cmf.draw
 cmf.draw.plot_timeseries(data)
 cmf.draw.bar_timeseries(data)
-```
+~~~~~~~~~~~~~
 
 author: philipp, version: 12 Mon Oct 17 11:39:33 2016

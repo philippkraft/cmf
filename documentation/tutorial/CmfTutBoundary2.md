@@ -1,16 +1,16 @@
 @page CmfTutBoundary2
 
-[index](@ref CmfTutStart)
+[index](@ref tutorial)
 
 # Head based boundary conditions
 
 In \[wiki:CmfTutBoundary\] an outlet was created to let water flow out
 of the system. Outlets created with
 
-``` {.py}
+~~~~~~~~~~~~~{.py}
 
 outlet = p.NewOutlet('name',position=position)
-```
+~~~~~~~~~~~~~
 
 are in fact [DirichletBoundary](@ref cmf::water::DirichletBoundary)
 objects. Most connection types can be used to connect on the right side
@@ -23,11 +23,11 @@ not match your model well, eg. your boundary is a river or lake with a
 more or less fixed water level, the potential of the boundary condition
 can be changed:
 
-``` {.py}
+~~~~~~~~~~~~~{.py}
 
 # Set the outlet 0.5 m above the outlet height
 outlet.potential = outlet.position.z + 0.5
-```
+~~~~~~~~~~~~~
 
 The potential of the outlet can be adjusted during run time in the run
 time loop by reading from a file of predefined heads or from another
@@ -42,9 +42,9 @@ boundary condition not only as a sink, but also a source, depending on
 the state of the connected water storages. In this case, cmf needs to be
 informed to handle the boundary condition as a source:
 
-``` {.py}
+~~~~~~~~~~~~~{.py}
 
 outlet.is_source=True
-```
+~~~~~~~~~~~~~
 
 author: philipp, version: 1 Fri Sep 27 11:06:00 2013

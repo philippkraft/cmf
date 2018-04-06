@@ -79,12 +79,12 @@ CMF offers very different types of connections. From the simple
 kinematic wave to simple Infiltration and many more, much is possible.
 For simplicity we stick here to the kinematic wave.
 
-``` 
+~~~~~~~~~~~~~ 
 #!python
 
 # Flux from soil to outlet (interflow)
 cmf.kinematic_wave(c.layers[0],outlet,tr, exponent=beta)        
-```
+~~~~~~~~~~~~~
 
 ## Define the properties of other governing processes
 

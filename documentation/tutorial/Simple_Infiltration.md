@@ -1,6 +1,6 @@
 @page Simple_Infiltration
 
-[index..](@ref CmfTutStart)
+[index..](@ref tutorial)
 
 # Using simple infiltration in a lumped model
 

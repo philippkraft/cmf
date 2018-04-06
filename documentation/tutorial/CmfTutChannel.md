@@ -1,6 +1,6 @@
 @page CmfTutChannel
 
-[index...](@ref CmfTutStart)
+[index...](@ref tutorial)
 
 # Channelled flow in cmf
 
@@ -57,7 +57,7 @@ please do **not** use diffusive wave approaches.
 Create a 1km river with 100 reaches along the x axis and a constant
 slope of 1%
 
-``` {.py}
+~~~~~~~~~~~~~{.py}
 
 from __future__ import division, print_function #  Make code python 2/3 compatible
 import cmf
@@ -67,30 +67,30 @@ p=cmf.project()
 shape = cmf.TriangularReach(10.,2.)
 # Create a 1km river with 100 reaches along the x axis and a constant slope of 1%
 reaches = [[p.NewReach(i,0,i*.01,shape,False)|for i in range(0,1000,10)]]
-```
+~~~~~~~~~~~~~
 
 Now we have 100 unconnected reaches in our river. To connect them with
 kinematic wave equation
 
-``` {.py}
+~~~~~~~~~~~~~{.py}
 
 for r_lower, r_upper in zip(reaches[:-1],reaches[1:]):
     r_upper.set_downstream(r_lower)
-```
+~~~~~~~~~~~~~
 
 Creating a solver and setting initial conditions:
 
-``` {.py}
+~~~~~~~~~~~~~{.py}
 
 # Create a solver
 solver = cmf.CVodeIntegrator(p,1e-9)
 # Initial condition: 10 cmf of water in the most upper reach
 reaches[-1].depth=0.1
-```
+~~~~~~~~~~~~~
 
 As always, the next part is the runtime code, saving the river depth.
 
-``` {.py}
+~~~~~~~~~~~~~{.py}
 
 # We store the results in this list
 depth = [[r.depth for r in reaches]]
@@ -98,16 +98,16 @@ depth = [[r.depth for r in reaches]]
 for t in solver.run(datetime(2012,1,1),datetime(2012,1,1,3), timedelta(minutes=1)):
     depth.append([[r.depth|for r in reaches]])
     print(t)
-```
+~~~~~~~~~~~~~
 
 Finaly we are plotting the dynamic of the river depth over the run time
 
-``` {.py}
+~~~~~~~~~~~~~{.py}
 
 # Plot the result (matplotlib needs to be installed)
 from matplotlib.pylab import plot, show
 plot(depth)
 show()
-```
+~~~~~~~~~~~~~
 
 author: philipp, version: 10 Mon Oct 17 12:24:38 2016

@@ -1,6 +1,6 @@
 @page CmfTutKinematicWave
 
-[index...](@ref CmfTutStart)
+[index...](@ref tutorial)
 
 # Is hydrology kinematic?
 
@@ -75,10 +75,10 @@ the new connections should be used.
 
 ## \!LinearStorageConnection
 
-``` {.py}
+~~~~~~~~~~~~~{.py}
 
 ls = cmf.LinearStorageConnection(source, target, residencetime=3.2, residual=0)
-```
+~~~~~~~~~~~~~
 
 The linear storage connection
 [LinearStorageConnection](@ref cmf::water::LinearStorageConnection)
@@ -91,10 +91,10 @@ values.
 
 ## \!PowerLawConnection
 
-``` {.py}
+~~~~~~~~~~~~~{.py}
 
 plc = cmf.PowerLawConnection(source, target, Q0=3.0, V0=5.3, beta=2.0, residual=0)
-```
+~~~~~~~~~~~~~
 
 The power law connection
 ([PowerLawConnection](@ref cmf::water::PowerLawConnection)) needs the

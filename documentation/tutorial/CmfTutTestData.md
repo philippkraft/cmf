@@ -1,6 +1,6 @@
 @page CmfTutTestData
 
-[index](@ref CmfTutStart), [next](@ref CmfTutMeteostation)
+[index](@ref tutorial), [next](@ref CmfTutMeteostation)
 
 ## Available data
 
@@ -37,7 +37,7 @@ concept is explained in more detail in the [next
 tutorial](@ref CmfTutMeteostation). An introduction to timeseries is
 [here](@ref CmfTutSpaceTime).
 
-``` {.py}
+~~~~~~~~~~~~~{.py}
 
 import cmf
 def loadmeteo(project,csvfilename):
@@ -62,11 +62,11 @@ def loadmeteo(project,csvfilename):
     meteo.rHmean    = cmf.timeseries(begin = begin, step = timedelta(days=1))
     meteo.Windspeed = cmf.timeseries(begin = begin, step = timedelta(days=1))
     meteo.Sunshine  = cmf.timeseries(begin = begin, step = timedelta(days=1))
-```
+~~~~~~~~~~~~~
 
 Now we read in the file and append the read values to the timeseries.
 
-``` {.py}
+~~~~~~~~~~~~~{.py}
 
     # Load climate data from csv file
     # could be simplified with numpy's 
@@ -80,13 +80,13 @@ Now we read in the file and append the read values to the timeseries.
         rain.add(float(columns[[1]))|        meteo.Tmax.add(float(columns[2]]))
         meteo.Tmin.add(float(columns[[3]))|        meteo.rHmean.add(float(columns[4]]))
         meteo.Windspeed.add(float(columns[[5]))|        meteo.Sunshine.add(float(columns[6]]))
-```
+~~~~~~~~~~~~~
 
 The last part is to create a station (see [next
 tutorial](@ref CmfTutMeteostation)) for the rainfall data and apply the
 stations to the cells of the project.
 
-``` {.py}           
+~~~~~~~~~~~~~{.py}           
 
     # Create a rain gauge station
     project.rainfall_stations.add('Giessen',rain,(0,0,0))
@@ -95,7 +95,7 @@ stations to the cells of the project.
     project.use_nearest_rainfall()
     # Use the meteorological station for each cell of the project
     project.use_nearest_meteo()
-```
+~~~~~~~~~~~~~
 
 Depending on your needs, any data source you can read with Python (which
 is virtually any) is suitable to read forcing data for cmf models.

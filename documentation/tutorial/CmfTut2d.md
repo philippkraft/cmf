@@ -4,7 +4,7 @@
 
 
 
-[index...](@ref CmfTutStart)[last...](@ref CmfTutSurfaceRunoff)
+[index...](@ref tutorial)[last...](@ref CmfTutSurfaceRunoff)
 
 # A simple Darcian hillslope model
 
@@ -25,7 +25,7 @@ again.
 
 ### Import libraries, create project
 
-``` {.py}
+~~~~~~~~~~~~~{.py}
 
 import cmf
 import numpy as np
@@ -33,7 +33,7 @@ def z(x):
     return 10/(1+np.exp((x-100)/30))
 # create a project
 p = cmf.project()
-```
+~~~~~~~~~~~~~
 
 ### Creating 20 cells
 
@@ -42,30 +42,30 @@ discretized into 20 cells. By using different cell areas, a quasi-3D
 effect for converging or diverging fluxes could be applied, but in our
 example the area of each cell is fixed to 10m x 10m.
 
-``` {.py}
+~~~~~~~~~~~~~{.py}
 
 for i in range(20):
     x = i * 10.
     # create a cell with surface storage
     c = p.NewCell(x,0,z(x),100,True)
-```
+~~~~~~~~~~~~~
 
 The [topological connection](wiki:CmfTutCell#topology) of the cells is
 simple, we only need to connect each cell with its lower neighbor. The
 width of the connection is 10m.
 
-``` {.py}
+~~~~~~~~~~~~~{.py}
 
 for c_upper,c_lower in zip(p[:-1],p[1:]):
     c_upper.topology.AddNeighbor(c_lower,10.)
-```
+~~~~~~~~~~~~~
 
 Now, each cell needs to have soil layers, exactly the same way as in the
 setup code in \[wiki:CmfTut1d\], just with some other layer depth and
 the "default" Van Genuchten-Mualem retention curve - it is better to
 parameterize your soil type of course (@ref CmfTutRetentioncurve).
 
-``` {.py}
+~~~~~~~~~~~~~{.py}
 
 # Customize cells
 for c in p:
@@ -80,17 +80,17 @@ for c in p:
     c.install_connection(cmf.Richards)
     c.install_connection(cmf.GreenAmptInfiltration)
     # Add more connections here... (eg. ET, snowmelt, canopy overflow)
-```
+~~~~~~~~~~~~~
 
 Using `Darcy` and `KinematicSurfaceRunoff` as lateral connections as
 in CmfTutDarcianLateralFlow and CmfTutSurfaceRunoff. Due to the defined
 topology, we can use the `cmf.connect_cells_with_flux` function.
 
-``` {.py}
+~~~~~~~~~~~~~{.py}
 
 cmf.connect_cells_with_flux(p,cmf.Darcy)
 cmf.connect_cells_with_flux(p,cmf.KinematicSurfaceRunoff)
-```
+~~~~~~~~~~~~~
 
 ## Create boundary conditions and solver
 
@@ -106,11 +106,11 @@ end of the hillslope at 0.47m below the lowest cell in 10 m distance.
 Boundary conditions 1 & 2 are implemented by doing nothing (no
 connection is no flow). Boundary condition 3 is applied as follows:
 
-``` {.py}
+~~~~~~~~~~~~~{.py}
 
 for c in p:
     c.set_rainfall(10.)
-```
+~~~~~~~~~~~~~
 
 Boundary condition 4 (outlet) is applied by using a
 [DirichletBoundary](@ref cmf::water::DirichletBoundary), using the
@@ -120,7 +120,7 @@ layer. The surface water of the lowest cell `p\[\[-1\]`|is connected
 to the outlet with
 [KinematicSurfaceRunoff](@ref cmf::upslope::connections::KinematicSurfaceRunoff)
 
-``` {.py}
+~~~~~~~~~~~~~{.py}
 
 outlet = p.NewOutlet('outlet',200,0,0)
 for l in p[-1].layers:
@@ -128,7 +128,7 @@ for l in p[-1].layers:
     # and the outlet
     cmf.Darcy(l,outlet,FlowWidth=10.)
 cmf.KinematicSurfaceRunoff(p[-1].surfacewater,outlet,10.)
-```
+~~~~~~~~~~~~~
 
 ### Solver
 
@@ -136,11 +136,11 @@ The last thing needed for the complete setup code is the solver. With
 Richards and Darcy equation, we have again a stiff system and thus use
 the CVODE solver:
 
-``` {.py}
+~~~~~~~~~~~~~{.py}
 
 solver = cmf.CVodeIntegrator(p,1e-9)
 solver.t = datetime.datetime(2012,1,1)
-```
+~~~~~~~~~~~~~
 
 ## Visualization and runtime loop
 
@@ -163,7 +163,7 @@ not very well documented, but you can have a look to the source code.
 
 This creates a `hill_plot` of our hillslope:
 
-``` {.py}
+~~~~~~~~~~~~~{.py}
 
 # Import the hill_plot
 from cmf.draw import hill_plot
@@ -180,32 +180,32 @@ image = hill_plot(p,solver.t,cmap=cm.YlGnBu)
 image.scale = 100.
 # white arrows are nicer to see
 image.q_sub.set_facecolor('w')
-```
+~~~~~~~~~~~~~
 
 Animations can be created using the `FuncAnimation` class from the
 `matplotlib.animation` module. The drawing (and in our case advancing
 of the model) is done in a function taking the frame number as the first
 argument:
 
-``` {.py}
+~~~~~~~~~~~~~{.py}
 
 def run(frame):
     # Run model for one day
     t = solver(cmf.day)
     # Update image
     image(t)
-```
+~~~~~~~~~~~~~
 
 Last part is to create the animation object and show what we have done.
 The animation starts directly.
 
-``` {.py}
+~~~~~~~~~~~~~{.py}
 
 from matplotlib.animation import FuncAnimation
 animation = FuncAnimation(fig,run,repeat=False,
                           frames=365)
 show()
-```
+~~~~~~~~~~~~~
 
 The result after 30 days of simulation looks like this:
 

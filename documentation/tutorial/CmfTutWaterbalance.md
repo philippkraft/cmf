@@ -12,16 +12,16 @@ fluxes are routed to the uppermost layer by a waterbalance connection.
 
 Import all tools.
 
-``` {.py}
+~~~~~~~~~~~~~{.py}
 
 import cmf
 import matplotlib.pyplot as plt
 import datetime
-```
+~~~~~~~~~~~~~
 
 Create storages.
 
-``` {.py}
+~~~~~~~~~~~~~{.py}
 
 p = cmf.project()
 s1 = p.NewStorage("s1", 0,0,0)
@@ -29,32 +29,32 @@ s2 = p.NewStorage("s2", 0,0,10)
 s3 = p.NewStorage("s3", 0,0,20)
 s4 = p.NewStorage("s4", 0,0,30)
 s5 = p.NewStorage("s5", 0,0,40)
-```
+~~~~~~~~~~~~~
 
 Create lists to store the data.
 
-``` {.py}
+~~~~~~~~~~~~~{.py}
 
 flux_s1_to_s3 = [[]|flux_s2_to_s3 = []]
 flux_s3_to_s4 = [[]|flux_s3_to_s5 = []]
-```
+~~~~~~~~~~~~~
 
 Install the fluxes. Here water is routed from s1 and s2 to s3 (both
 technical fluxes) and from s3 to s4 (technical flux) and s5
 (waterbalance connection). The technical fluxes all have different
 intesities to make the easier to differentiate.
 
-``` {.py}
+~~~~~~~~~~~~~{.py}
 
 cmf.TechnicalFlux(s1, s3, 10)
 cmf.TechnicalFlux(s2, s3, 5)
 cmf.waterbalance_connection(s3, s4)
 cmf.TechnicalFlux(s3, s5, 2.5)
-```
+~~~~~~~~~~~~~
 
 Run the model and store all fluxes.
 
-``` {.py}
+~~~~~~~~~~~~~{.py}
 
 solver = cmf.CVodeIntegrator(p)
 
@@ -66,11 +66,11 @@ for t in solver.run(start, end, cmf.day):
     flux_s2_to_s3.append(s2.flux_to(s3, t))
     flux_s3_to_s4.append(s3.flux_to(s4, t))
     flux_s3_to_s5.append(s3.flux_to(s5, t))
-```
+~~~~~~~~~~~~~
 
 Plot the fluxes.
 
-``` {.py}
+~~~~~~~~~~~~~{.py}
 
 plt.plot(flux_s1_to_s3, label="Technical flux 10 m³")
 plt.plot(flux_s2_to_s3, label="Technical flux 5 m³")   
@@ -79,7 +79,7 @@ plt.plot(flux_s3_to_s5, label="Technical flux 2.5 m³")
  
 plt.ylabel("Flux [[m³/day]")|plt.xlabel("Time [days]]")
 plt.legend()
-```
+~~~~~~~~~~~~~
 
 The resulting image should look something like this:
 

@@ -1,6 +1,6 @@
 @page InstallCheck
 
-[index](@ref CmfTutStart)
+[index](@ref tutorial)
 
 # Check the cmf installation
 

@@ -1,6 +1,6 @@
 @page CmfTutSnow
 
-[index...](@ref CmfTutStart) [back...](@ref CmfTutIntercept)
+[index...](@ref tutorial) [back...](@ref CmfTutIntercept)
 
 # Snow (under construction)
 
@@ -19,10 +19,10 @@ and set a snow melt connection between snow and surface water.
 
 Adding a snow storage to the cell
 
-``` {.py}
+~~~~~~~~~~~~~{.py}
 
 c.add_storage('Snow','S')
-```
+~~~~~~~~~~~~~
 
 ### Splitting rainfall
 
@@ -34,10 +34,10 @@ have this working properly we need also a
 [Snowfall](@ref cmf::upslope::connections::Snowfall) connection from
 the rain source to the snow pack:
 
-``` {.py}
+~~~~~~~~~~~~~{.py}
 
 cmf.Snowfall(c.snow,c)
-```
+~~~~~~~~~~~~~
 
 The split between snow and rain depends on the air temperature (T) of
 the actual [Weather](@ref cmf::atmosphere::Weather) of the cell. If
@@ -61,17 +61,17 @@ actual temperature, @f$T_{thres}@f$ the same value as above and
 @f$r@f$ is the snow melt rate in @f$\frac{mm}{K\ day}@f$. The
 connection is set up for cmf revisions \>1000:
 
-``` {.py}
+~~~~~~~~~~~~~{.py}
 
 snowmelt = cmf.SimpleTindexSnowMelt(c.snow,c.surfacewater,c,rate=7.0)
-```
+~~~~~~~~~~~~~
 
 For older cmf versions you need to do:
 
-``` {.py}
+~~~~~~~~~~~~~{.py}
 
 snowmelt = cmf.SimpleTindexSnowMelt(c.snow,c.surfacewater,c)
 snowmelt.SnowMeltRate = 7.0
-```
+~~~~~~~~~~~~~
 
 author: philipp, version: 3 Mon Oct 17 12:21:37 2016

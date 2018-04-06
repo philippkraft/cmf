@@ -1,6 +1,6 @@
 @page CmfTutIntercept
 
-[index...](@ref CmfTutStart) [back...](@ref CmfTutET)
+[index...](@ref tutorial) [back...](@ref CmfTutET)
 [next...](@ref CmfTutSnow)
 
 # Interception
@@ -19,7 +19,7 @@ last tutorial.
 add a layer of 1m depth 3. We add a groundwater boundary condition with
 free drainage
 
-``` {.py}
+~~~~~~~~~~~~~{.py}
 
 import cmf
 p = cmf.project()
@@ -35,16 +35,16 @@ cmf.FreeDrainagePercolation(l,gw)
 
 # Add some rainfall
 c.set_rainfall(5.0)
-```
+~~~~~~~~~~~~~
 
 ### Runtime and plot code
 
-``` {.py}
+~~~~~~~~~~~~~{.py}
 
 solver = cmf.CVodeIntegrator(p,1e-9)
 res = [[l.volume|for t in solver.run(solver.t,solver.t+cmf.day,cmf.min*15)]]
 plot(res)
-```
+~~~~~~~~~~~~~
 
 ## Create a canopy storage
 
@@ -90,7 +90,7 @@ do this calculation.
 The code below can be used to extend the setup code for the simple model
 above.
 
-``` {.py}
+~~~~~~~~~~~~~{.py}
 
 # Make c.canopy a water storage
 c.add_storage('Canopy','C')
@@ -102,6 +102,6 @@ cmf.Rainfall(c.surfacewater,c,True,False) # RS->surface, only throughfall
 cmf.RutterInterception(c.canopy,c.surfacewater,c) 
 # And now the evaporation from the wet canopy (using a classical Penman equation)
 cmf.CanopyStorageEvaporation(c.canopy,c.evaporation,c)
-```
+~~~~~~~~~~~~~
 
 author: florianjehn, version: 7 Wed Feb 22 16:39:14 2017

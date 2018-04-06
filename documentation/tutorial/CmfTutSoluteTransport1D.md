@@ -1,6 +1,6 @@
 @page CmfTutSoluteTransport1D
 
-[index...](@ref CmfTutStart) [back...](@ref CmfTut1d)
+[index...](@ref tutorial) [back...](@ref CmfTut1d)
 
 # 1D Richards equation model with tracer transport
 
@@ -17,7 +17,7 @@ example, we will use three tracers, X, Y and Z.
 
 ### Creating a project with tracer
 
-``` {.py}
+~~~~~~~~~~~~~{.py}
 
 from __future__ import division, print_function  # Python 2/3 compatible code
 import cmf
@@ -25,7 +25,7 @@ import cmf
 p = cmf.project('X Y Z')
 # Get the tracers as variables
 X,Y,Z = p.solutes
-```
+~~~~~~~~~~~~~
 
 ### Setting up the 1D column model
 
@@ -34,7 +34,7 @@ tutorial](@ref CmfTut1d) with a constant rainfall rate. For every water
 storage that is created, three solute storages are created
 automatically:
 
-``` {.py}
+~~~~~~~~~~~~~{.py}
 
 # Create a single cell c with a surfacewater storage, which references 3 solute storages
 c = p.NewCell(0,0,0,1000,with_surfacewater = True)
@@ -49,7 +49,7 @@ c.set_rainfall(100.)
 # Make a groundwater boundary condition
 gw = p.NewOutlet('gw',0,0,-1.5)
 cmf.Richards(c.layers[-1],gw)
-```
+~~~~~~~~~~~~~
 
 ## Solving a system with tracer transport
 
@@ -65,11 +65,11 @@ Since our system is stiff (see [here](@ref CmfTutSolver) and [last
 tutorial](@ref CmfTut1d)) the best choice is the CVode solver. The setup
 is simple:
 
-``` {.py}
+~~~~~~~~~~~~~{.py}
 
 solver = cmf.CVodeIntegrator(p, 1e-9)
 print(solver.size())
-```
+~~~~~~~~~~~~~
 
 The print command shows, that the system to be solved is for a single
 soil column quite big (`(50 soillayers + 1 surface water storage)\*(1
@@ -106,7 +106,7 @@ system will be larger. In general, the numerical dispersion of tracers
 seem to increase a bit by using a SWI instead of a single solver for the
 whole system.
 
-``` {.py}
+~~~~~~~~~~~~~{.py}
 
 # Template for the water solver
 wsolver = cmf.CVodeIntegrator(p,1e-9)
@@ -114,7 +114,7 @@ wsolver = cmf.CVodeIntegrator(p,1e-9)
 ssolver = cmf.ImplicitEuler(p,1e-9)
 # Creating the SWI, the storage objects of the project are internally assigned to the correct solver
 solver = cmf.SoluteWaterIntegrator(p.solutes, wsolver,ssolver,p)
-```
+~~~~~~~~~~~~~
 
 ## Run the model
 
@@ -125,18 +125,18 @@ groundwater level, and a solute concentration of 1 g/m3 for X in the
 first layer, 1 g/m3 for Y in the 10th layer, 1g/m3 for Z in the 20th
 layer
 
-``` {.py}
+~~~~~~~~~~~~~{.py}
 
 c.saturated_depth = 1.5
 c.layers[[0].conc(X,1.)|c.layers[10]].conc(Y,1.)
 c.layers[20].conc(Z,1.)
-```
+~~~~~~~~~~~~~
 
 ### Run the model
 
 The model runtime can be like this:
 
-``` {.py}
+~~~~~~~~~~~~~{.py}
 
 # Save wetness and concentration of all layers
 conc = [[]|wetness = []]
@@ -152,7 +152,7 @@ for t in solver.run(solver.t,solver.t + cmf.week,cmf.h):
     # Get water balance of groundwater
     recharge.append(gw.waterbalance(t))
     crecharge.append([[gw.conc(t,T)|for T in p.solutes]])
-```
+~~~~~~~~~~~~~
 
 ### Plot results
 
@@ -161,7 +161,7 @@ concentration of the recharge, the second the soil moisture distribution
 and the third to fifth the concentration distribution over time. The x
 axis shows always time.
 
-``` {.py}
+~~~~~~~~~~~~~{.py}
 
 # Plot the result
 import numpy as np
@@ -189,6 +189,6 @@ for i in range(3):
     plt.subplot(513+i,sharex=ax1)
     plt.imshow(np.transpose(conc)[[i],cmap=plt.cm.copper,aspect='auto',vmax=0.1)|    plt.ylabel(p.solutes[i]])
 plt.show()    
-```
+~~~~~~~~~~~~~
 
 author: philipp, version: 3 Mon Oct 17 11:45:27 2016

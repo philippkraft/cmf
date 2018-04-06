@@ -1,6 +1,6 @@
 @page CmfTut3d
 
-[index..](@ref CmfTutStart)
+[index..](@ref tutorial)
 
 # 3D Model
 
@@ -51,6 +51,6 @@ goals.
     # surface runoff
     cmf.connect_cells_with_flux(p,cmf.Manning_Kinematic)
 
-[index...](@ref CmfTutStart)
+[index...](@ref tutorial)
 
 author: ina, version: 4 Mon Jul 15 15:34:49 2013

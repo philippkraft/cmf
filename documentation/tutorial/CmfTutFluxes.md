@@ -2,7 +2,7 @@
 
 @tableofcontents
 
- [index...](@ref CmfTutStart)
+ [index...](@ref tutorial)
 [back...](@ref CmfTutBoundary) [next...](@ref CmfTutSolver)
 
 # Query fluxes and states
@@ -20,10 +20,10 @@ However, "print" has changed between python 2 and 3. To run our examples
 python 2 users should always start their programs with the following
 line:
 
-``` {.py}
+~~~~~~~~~~~~~{.py}
 
 from __future__ import print_function, division
-```
+~~~~~~~~~~~~~
 
 This import the behaviour of the python3 print function as well as the
 improved handling of integer division into python 2. Using this line in
@@ -41,11 +41,11 @@ between head and volume (such storages will be covered later, eg.
 [OpenWaterStorage](@ref cmf::river::OpenWaterStorage)), can also give
 back their `potential`.
 
-``` {.py}
+~~~~~~~~~~~~~{.py}
 
 print(W1.volume)
 print(W1.state)
-```
+~~~~~~~~~~~~~
 
 The properties can also be used to change the states of the system, but
 this is only useful for initial conditions. Changing the state during
@@ -54,10 +54,10 @@ runtime will of course destroy the water balance. Some of the
 reset. In our \[wiki:CmfTutFirstModel\#Implementation simple example\]
 we have used this already for the initial condition:
 
-``` {.py}
+~~~~~~~~~~~~~{.py}
 
 W1.volume = 1.0
-```
+~~~~~~~~~~~~~
 
 ## Getting fluxes
 
@@ -74,20 +74,20 @@ the query.
 Fluxes between two nodes `source` and `target` at time `t` can be
 queried with the `flux_to` method:
 
-``` {.py}
+~~~~~~~~~~~~~{.py}
 
 source.flux_to(target,t)
-```
+~~~~~~~~~~~~~
 
 For our toy model you can query all fluxes the following way:
 
-``` {.py}
+~~~~~~~~~~~~~{.py}
 
 # get the current time
 t = solver.t
 # Prints the fluxes in the model
 print('In->',In.flux_to(W1,t),'->W1->',W1.flux_to(W2,t),'->W2->',W2.flux_to(Out,t))
-```
+~~~~~~~~~~~~~
 
 You get the result of the **actual** flux between source and target in
 @f$m^3/day@f$. If water is flowing from source to target, the result
@@ -105,7 +105,7 @@ Now we are going to save the fluxes instead of the volume in a list in
 our [first model with boundary conditions](@ref CmfTutBoundary) and plot
 the result:
 
-``` {.py}
+~~~~~~~~~~~~~{.py}
 
 
 # Iterate the solver hourly through the time range 
@@ -122,7 +122,7 @@ plt.xlabel('hours')
 plt.ylabel('flux in $m^3/day$')
 plt.legend(('In->W1','W1->W2','W2->Out'))
 plt.show()
-```
+~~~~~~~~~~~~~
 
 The result of this code is on the right.
 
@@ -134,42 +134,42 @@ list of tuples, each tuple composed of the flux and the target node.
 
 Example:
 
-``` {.py}
+~~~~~~~~~~~~~{.py}
 
 for flux,node in W1.fluxes(solver.t):
     print('%4.1f m3/day from %s' % (flux,node))
-```
+~~~~~~~~~~~~~
 
 Returns:
 
-``` 
+~~~~~~~~~~~~~ 
 -1.0 m3/day from {W2}                                                                                                                      
  0.0 m3/day from {Boundary at W1}    
-```
+~~~~~~~~~~~~~
 
 ### Getting the waterbalance of a node
 
 If you want to know the current balance (sum) of the fluxes you can of
 course do:
 
-``` {.py}
+~~~~~~~~~~~~~{.py}
 
 wb = sum(flux for flux,node in W1.fluxes(solver.t))
-```
+~~~~~~~~~~~~~
 
 But you can also let cmf do the sum:
 
-``` {.py}
+~~~~~~~~~~~~~{.py}
 
 wb = W1.waterbalance(solver.t)
-```
+~~~~~~~~~~~~~
 
 or even shorter:
 
-``` {.py}
+~~~~~~~~~~~~~{.py}
 
 wb = W1(solver.t)
-```
+~~~~~~~~~~~~~
 
 This is especially useful for boundary conditions, however this does
 also only show the **actual** waterbalance and not the average
@@ -191,11 +191,11 @@ Getting a list of all the connections of one node is done by the
 
 Example:
 
-``` {.py}
+~~~~~~~~~~~~~{.py}
 
 for con in W1.connections:
     print(con)
-```
+~~~~~~~~~~~~~
 
 prints:
 
@@ -205,11 +205,11 @@ prints:
 `connected_nodes` is a list of the nodes that are connected to
 another.
 
-``` {.py}
+~~~~~~~~~~~~~{.py}
 
 for node in W1.connected_nodes:
     print(node)
-```
+~~~~~~~~~~~~~
 
 prints:
 

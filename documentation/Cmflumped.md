@@ -1,6 +1,6 @@
 @page Cmflumped
 
-[index..](@ref CmfTutStart)
+[index..](@ref tutorial)
 
 # Lumped Model with Spotpy Tutorial
 
@@ -35,7 +35,7 @@ The SPOTPY code will only be explained in the detail needed for a simple
 calibration and validation. For additional information see [SPOTPY
 Tutorial](http://fb09-pasig.umwelt.uni-giessen.de/spotpy/Tutorial/1-Introduction/).
 It is useful but not necessary to have worked through the [basic CMF
-tutorials](http://fb09-pasig.umwelt.uni-giessen.de/cmf/wiki/CmfTutStart#Gettingstarted).
+tutorials](http://fb09-pasig.umwelt.uni-giessen.de/cmf/wiki/tutorial#Gettingstarted).
 The lumped model covered in this tutorial is relatively complex. It
 might seem a bit overwhelming at first, but this way all the most common
 parts of CMF for lumped model building are covered. That way you will be
@@ -91,7 +91,7 @@ what the names of our input files are.
 
 ''Fixed parts setup''
 
-``` 
+~~~~~~~~~~~~~ 
 #!python
 class lumped_model(object):
     """
@@ -112,7 +112,7 @@ class lumped_model(object):
         self.project = p
         self.begin = begin
         self.end = end   
-```
+~~~~~~~~~~~~~
 
 In the __init__ method we define all our parameters of the model and
 their possible values, set up the main structure of the model and read
@@ -377,7 +377,7 @@ respectiveley 0.1 to 2.0 the code would look something like this:
 Following this example the params list for our example would look like
 this:
 
-``` 
+~~~~~~~~~~~~~ 
 #!python
                # tr_S = Residence time of the water in the soil
 self.params = [param('tr_soil',1.,1000.),
@@ -412,7 +412,7 @@ self.params = [param('tr_soil',1.,1000.),
                # LAI = leaf area index
                param('LAI', 2.,7.)
                ]    
-```
+~~~~~~~~~~~~~
 
 Again I have sorted and commented the parameters for a better overview.
 I recommend to do the same in your own model so you don't get lost in

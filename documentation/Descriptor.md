@@ -1,6 +1,6 @@
 @page Descriptor
 
-[index..](@ref CmfTutStart)
+[index..](@ref tutorial)
 
 # CMF Descriptor
 
@@ -14,38 +14,38 @@ model (or parts of it).
 
 First we need to create a simple CMF model.
 
-``` {.py}
+~~~~~~~~~~~~~{.py}
 
 import cmf
 p = cmf.project()
 c = p.NewCell(0,0,0,1000)
-```
+~~~~~~~~~~~~~
 
 Add a layer, a outlet and a connection
 
-``` {.py}
+~~~~~~~~~~~~~{.py}
 
 l1 = c.add_layer(1)
 out = p.NewOutlet("out", 0, 0,0)
 cmf.kinematic_wave(l1, out, 1)
-```
+~~~~~~~~~~~~~
 
 Now we can let CMF describe the whole model or parts of it.
 
-``` {.py}
+~~~~~~~~~~~~~{.py}
 
 print(cmf.describe(p))
 print(cmf.describe(l1))
-```
+~~~~~~~~~~~~~
 
 Conveniently we can even have the output written to a file, which we
 have defined beforehand.
 
-``` {.py}
+~~~~~~~~~~~~~{.py}
 
 file = open("out.txt", "w")
 cmf.describe(p, out=file)
-```
+~~~~~~~~~~~~~
 
 # Fluxograms
 

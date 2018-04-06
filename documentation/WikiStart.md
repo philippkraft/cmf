@@ -29,11 +29,11 @@ The development takes place at
 
 ## How to use cmf
 
-...can be found in the [tutorial](@ref CmfTutStart) and in the interface
+...can be found in the [tutorial](@ref tutorial) and in the interface
 desription, the \[htdocs:doxygen/index.html API\], created with
 [Doxygen](http://www.doxygen.org). And there is the PublicationList.
 
-  - @subpage CmfTutStart "Tutorial"
+  - @subpage tutorial "Tutorial"
   - @subpage PublicationList "Publications"
   - @subpage CmfInstall "Installation"
   - @subpage RecommendedSoftwareEnvironment "Recommended Software"

@@ -2,7 +2,7 @@
 
 @tableofcontents
 
- [index...](@ref CmfTutStart)
+ [index...](@ref tutorial)
 [next...](@ref CmfTutBoundary)
 
 # Let it flow... the first cmf model
@@ -35,7 +35,7 @@ where:
 The model (without the solver) is set up with the following lines of
 code:
 
-``` {.py}
+~~~~~~~~~~~~~{.py}
 
 import cmf
 p = cmf.project()
@@ -47,7 +47,7 @@ W2 = p.NewStorage(name="W2",x=10,y=0,z=0)
 q = cmf.kinematic_wave(source=W1,target=W2,residencetime=1.0)
 # Set the initial state of w1 to 1m³ of water.
 W1.volume = 1.0
-```
+~~~~~~~~~~~~~
 
 ## The ordinary differential equation (ODE) system
 
@@ -94,7 +94,7 @@ example an explicit 4/5 step Runge-Kutta-Fehlberg integrator, the
 [RKFIntegrator](@ref cmf::math::RKFIntegrator) (other integrators are
 available, see later parts in the tutorial)
 
-``` {.py}
+~~~~~~~~~~~~~{.py}
 
 # Create an integrator for the ODE represented by project p, with an error tolerance of 1e-9
 solver = cmf.RKFIntegrator(p,1e-9)
@@ -102,7 +102,7 @@ solver = cmf.RKFIntegrator(p,1e-9)
 import datetime
 # Set the intitial time of the solver
 solver.t = datetime.datetime(2012,1,1)
-```
+~~~~~~~~~~~~~
 
 The code above is the setup part. Every cmf model consists of a setup
 part, where the hydrological system is defined. For larger models,
@@ -125,7 +125,7 @@ design your own output.
 In this example, we will write a csv file with the timestep, the state
 of w1 and the state of w2.
 
-``` {.py}
+~~~~~~~~~~~~~{.py}
 
 # Create a csv file on disk for output, and write column headers
 fout = open('firstmodel.csv','w')
@@ -137,7 +137,7 @@ while solver.t < datetime.datetime(2012,1,7):
     # write output (using the format operator %)
     fout.write('{t},{w1:0.4f},{w2:0.4f}\n'.format(t=solver.t,w1=W1.volume,w2=W2.volume))
 fout.close()
-```
+~~~~~~~~~~~~~
 
 In principle, this is the base for all cmf models. In the next chapters,
 we will introduce boundary conditions, more specialized water storages,
@@ -151,7 +151,7 @@ The result is then not written into a file, but stored in memory using a
 list. This list can be plotted using the `pylab`-API of
 [matplotlib](http://matplotlib.org). The setup code is as before.
 
-``` {.py}
+~~~~~~~~~~~~~{.py}
 
 # Iterate the solver hourly through the time range and return for each time step the volume in W1 and W2
 result = [[W1.volume,W2.volume] for t in solver.run(datetime.datetime(2012,1,1),datetime.datetime(2012,1,7),datetime.timedelta(hours=1))]
@@ -160,7 +160,7 @@ plt.plot(result)
 plt.xlabel('hours')
 plt.ylabel('Volume in $m^3$')
 plt.legend(('W1','W2'))
-```
+~~~~~~~~~~~~~
 
 And this is the result:
 
