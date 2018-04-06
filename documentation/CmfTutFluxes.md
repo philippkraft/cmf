@@ -1,9 +1,9 @@
-@page CmfTutFluxes.md
+@page CmfTutFluxes
 
 @tableofcontents
 
- [index...](CmfTutStart.md)
-[back...](CmfTutBoundary.md) [next...](CmfTutSolver.md)
+ [index...](@ref CmfTutStart)
+[back...](@ref CmfTutBoundary) [next...](@ref CmfTutSolver)
 
 # Query fluxes and states
 
@@ -50,7 +50,7 @@ print(W1.state)
 The properties can also be used to change the states of the system, but
 this is only useful for initial conditions. Changing the state during
 runtime will of course destroy the water balance. Some of the
-[solvers](CmfTutSolver.md) will even ignore the changes if they are not
+[solvers](@ref CmfTutSolver) will even ignore the changes if they are not
 reset. In our \[wiki:CmfTutFirstModel\#Implementation simple example\]
 we have used this already for the initial condition:
 
@@ -99,10 +99,10 @@ does not equal the sum. CMF is very mass conservative, since the water
 volume is the integrated state variable, but by summing up you might get
 the impression of numerical errors in the integration.
 
-![](CmfTutFluxes.png)
+![](@ref CmfTutFluxes.png)
 
 Now we are going to save the fluxes instead of the volume in a list in
-our [first model with boundary conditions](CmfTutBoundary.md) and plot
+our [first model with boundary conditions](@ref CmfTutBoundary) and plot
 the result:
 
 ``` {.py}

@@ -1,8 +1,8 @@
-@page CmfTutCell.md
+@page CmfTutCell
 
 @tableofcontents
 
- [index...](CmfTutStart.md)
+ [index...](@ref CmfTutStart)
 
 # Cells
 
@@ -43,9 +43,9 @@ c.add_layer(d=0.1,r_curve=cmf.VanGenuchtenMualem())
 
 Adds a new soil layer up to the depth of 10cm below ground (d in m) with
 a default paramterized van Genuchten - Mualem retention curve. The usage
-of retention curves in cmf is discussed [here](CmfTutRetentioncurve.md),
+of retention curves in cmf is discussed [here](@ref CmfTutRetentioncurve),
 but it is recommended to read about that later in the [CMF-1D
-tutorial](CmfTut1d.md)
+tutorial](@ref CmfTut1d)
 
 ### Adding a surface water storage
 
@@ -65,7 +65,7 @@ is much better tested for models with surfacewater storage.
 
 Lateral flux connections between water storages and boundary conditions,
 like soil layers, surface water, and outlets are usually defined by just
-creating them (see eg. [here](CmfTutFirstModel.md)). Most of the flux
+creating them (see eg. [here](@ref CmfTutFirstModel)). Most of the flux
 connections require a notion of the distance between the water storages,
 and the crosssection of the flux. Calculating these values can be
 cumbersome, if many lateral connections need to be created. To
@@ -149,6 +149,6 @@ r2.set_outlet(outlet)
 
 CmfTutChannel will show a full running example.
 
-[index...](CmfTutStart.md)
+[index...](@ref CmfTutStart)
 
 author: giovanny, version: 5 Tue May 5 11:22:32 2015

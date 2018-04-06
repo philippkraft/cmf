@@ -1,7 +1,7 @@
-@page CmfTutMeteostation.md
+@page CmfTutMeteostation
 
-[index](CmfTutStart.md), [back](CmfTutTestData.md), [space and time in
-cmf](CmfTutSpaceTime.md)
+[index](@ref CmfTutStart), [back](@ref CmfTutTestData), [space and time in
+cmf](@ref CmfTutSpaceTime)
 
 # Using measurement stations for atmospheric conditions
 

@@ -1,4 +1,4 @@
-@page InstallCmf.md
+@page InstallCmf
 
 See \[wiki:"CmfInstall"\].
 

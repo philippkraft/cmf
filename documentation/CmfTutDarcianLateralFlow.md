@@ -1,6 +1,6 @@
-@page CmfTutDarcianLateralFlow.md
+@page CmfTutDarcianLateralFlow
 
-[index...](CmfTutStart.md) [next...](CmfTutSurfaceRunoff.md)
+[index...](@ref CmfTutStart) [next...](@ref CmfTutSurfaceRunoff)
 
 # Darcian flow connections
 
@@ -55,7 +55,7 @@ T(\theta) = K(\theta)\ \Delta z
 
 where: - @f$K(\theta)@f$ is the harmonic mean of the unsaturated
 conductivity in @f$\frac m{day}@f$, cf. [retention
-curve](CmfTutRetentioncurve.md) - @f$\Delta z@f$ is the thickness of
+curve](@ref CmfTutRetentioncurve) - @f$\Delta z@f$ is the thickness of
 the interface of the adjacent layers
 
 This transmissivity function is used in

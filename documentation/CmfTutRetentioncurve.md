@@ -1,9 +1,9 @@
-@page CmfTutRetentioncurve.md
+@page CmfTutRetentioncurve
 
 @tableofcontents
 
- [index...](CmfTutStart.md),
-[next...](CmfTutVolumeHeight.md)
+ [index...](@ref CmfTutStart),
+[next...](@ref CmfTutVolumeHeight)
 
 # Hydraulic head and stored water volume
 

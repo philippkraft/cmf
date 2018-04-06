@@ -1,4 +1,4 @@
-@page semi_distributed.md
+@page semi_distributed
 
 # Semi distributed models in CMF
 

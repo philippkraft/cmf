@@ -1,10 +1,10 @@
-@page CmfTut2d.md
+@page CmfTut2d
 
 @tableofcontents
 
 
 
-[index...](CmfTutStart.md)[last...](CmfTutSurfaceRunoff.md)
+[index...](@ref CmfTutStart)[last...](@ref CmfTutSurfaceRunoff)
 
 # A simple Darcian hillslope model
 
@@ -63,7 +63,7 @@ for c_upper,c_lower in zip(p[:-1],p[1:]):
 Now, each cell needs to have soil layers, exactly the same way as in the
 setup code in \[wiki:CmfTut1d\], just with some other layer depth and
 the "default" Van Genuchten-Mualem retention curve - it is better to
-parameterize your soil type of course (CmfTutRetentioncurve).
+parameterize your soil type of course (@ref CmfTutRetentioncurve).
 
 ``` {.py}
 
@@ -209,7 +209,7 @@ show()
 
 The result after 30 days of simulation looks like this:
 
-![](CmfTut2d-30days.png)
+![](@ref CmfTut2d-30days.png)
 
 ## Excercises
 

@@ -1,6 +1,6 @@
-@page Descriptor.md
+@page Descriptor
 
-[index..](CmfTutStart.md)
+[index..](@ref CmfTutStart)
 
 # CMF Descriptor
 

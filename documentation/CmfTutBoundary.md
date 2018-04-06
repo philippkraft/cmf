@@ -1,7 +1,7 @@
-@page CmfTutBoundary.md
+@page CmfTutBoundary
 
-[index...](CmfTutStart.md) [back...](CmfTutFirstModel.md)
-[next...](CmfTutFluxes.md)
+[index...](@ref CmfTutStart) [back...](@ref CmfTutFirstModel)
+[next...](@ref CmfTutFluxes)
 
 # Boundary conditions
 
@@ -56,7 +56,7 @@ plt.show()
 
 This results in:
 
-![](CmfTutBoundaryOut.png)
+![](@ref CmfTutBoundaryOut.png)
 
 ## Creating an input boundary condition
 
@@ -86,7 +86,7 @@ for i in range(10):
 That's it. The complete code is available here:
 \[htdocs:examples/CmfTutBoundary.py\]: And the result is:
 
-![](CmfTutBoundaryInOut.png)
+![](@ref CmfTutBoundaryInOut.png)
 
 If the input timeseries is replaced by measured net rainfall data and
 the residence times of the storages are calibrated, you might be lucky

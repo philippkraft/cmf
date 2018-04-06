@@ -1,4 +1,4 @@
-@page RecommendedSoftwareEnvironment.md
+@page RecommendedSoftwareEnvironment
 
 See \[wiki:"CmfRecommendedSoftwareEnvironment"\].
 

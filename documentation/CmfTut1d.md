@@ -1,6 +1,6 @@
-@page CmfTut1d.md
+@page CmfTut1d
 
-[index...](CmfTutStart.md)
+[index...](@ref CmfTutStart)
 
 # Create a one dimensional Richards equation based model
 
@@ -24,7 +24,7 @@ Create a project and one 1000m² cell
     # Add one cell at position (0,0,0), Area=1000m2 with a surface water storage
     cell = project.NewCell(x=0,y=0,z=0,area=1000, with_surfacewater=True)
 
-Create a [retention curve](CmfTutRetentioncurve.md)
+Create a [retention curve](@ref CmfTutRetentioncurve)
 
 ``` {.py}
 
@@ -110,7 +110,7 @@ grid()
 
 And this is the result for our simple percolation experiment:
 
-![](CmfTut1d-result-no-boundary.png)
+![](@ref CmfTut1d-result-no-boundary.png)
 
 The upper graph shows the soil moisture content of each layer, the lower
 the water potential for each layer. The water table rises and a new
@@ -135,7 +135,7 @@ gw_flux=cmf.Richards(cell.layers[-1],gw)
 
 And we get:
 
-![](CmfTut1d-result-gw-boundary.png)
+![](@ref CmfTut1d-result-gw-boundary.png)
 
 In this experiment, the water percolates through the soil and out of our
 model boundaries. The water content is at the end of the simulation
@@ -147,6 +147,6 @@ period near to the orginal values.
   - [SoilLayer](@ref cmf::upslope::SoilLayer)
   - [layer_list](@ref cmf::upslope::layer_list)
 
-Back to [Tutorial index](CmfTutStart.md)
+Back to [Tutorial index](@ref CmfTutStart)
 
 author: philipp, version: 17 Fri Sep 27 13:56:14 2013

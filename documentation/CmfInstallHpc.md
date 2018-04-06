@@ -1,4 +1,4 @@
-@page CmfInstallHpc.md
+@page CmfInstallHpc
 
 [back...](CmfInstall)
 

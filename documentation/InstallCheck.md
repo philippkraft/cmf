@@ -1,11 +1,11 @@
-@page InstallCheck.md
+@page InstallCheck
 
-[index](CmfTutStart.md)
+[index](@ref CmfTutStart)
 
 # Check the cmf installation
 
 To check your cmf installation, start an [interactive
-python](RecommendedSoftwareEnvironment.md) console and type in the
+python](RecommendedSoftwareEnvironment) console and type in the
 following:
 
     #!python
@@ -27,6 +27,6 @@ If you have still problems, ask for guidance by e-mail. Please send the
 exact steps you have been taking for installation together with a system
 description (OS, Python interpreter, C++ compiler). If you don't get an
 error message, you have created your first empty cmf-cell. To read on,
-go to [projects and cells](DemoProject.md)
+go to [projects and cells](DemoProject)
 
 author: philipp, version: 5 Mon Dec 7 10:04:27 2015

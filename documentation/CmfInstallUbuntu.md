@@ -1,4 +1,4 @@
-@page CmfInstallUbuntu.md
+@page CmfInstallUbuntu
 
 [back...](CmfInstall)
 

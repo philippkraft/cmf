@@ -1,4 +1,4 @@
-@page FiniteVolumeMethod.md
+@page FiniteVolumeMethod
 
 # Finite Volume Method
 

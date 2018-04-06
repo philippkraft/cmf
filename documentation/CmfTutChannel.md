@@ -1,6 +1,6 @@
-@page CmfTutChannel.md
+@page CmfTutChannel
 
-[index...](CmfTutStart.md)
+[index...](@ref CmfTutStart)
 
 # Channelled flow in cmf
 

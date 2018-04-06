@@ -1,6 +1,6 @@
-@page Cmf_lumped_simple.md
+@page Cmf_lumped_simple
 
-[index..](CmfTutStart.md)
+[index..](@ref CmfTutStart)
 
 # Lumped Model with Spotpy Tutorial
 

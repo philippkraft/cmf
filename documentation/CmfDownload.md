@@ -1,4 +1,4 @@
-@page CmfDownload.md
+@page CmfDownload
 
 # Download
 

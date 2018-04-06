@@ -1,4 +1,4 @@
-@page SoftwareObjects.md
+@page SoftwareObjects
 
 See \[wiki:"CmfSoftwareObjects"\].
 

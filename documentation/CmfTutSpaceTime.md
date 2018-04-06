@@ -1,9 +1,9 @@
-@page CmfTutSpaceTime.md
+@page CmfTutSpaceTime
 
 @tableofcontents
 
- [index](CmfTutStart.md)
-[back...](CmfTutUnits.md) [next...](CmfTutCell.md)
+ [index](@ref CmfTutStart)
+[back...](@ref CmfTutUnits) [next...](@ref CmfTutCell)
 
 # Space and time in cmf
 

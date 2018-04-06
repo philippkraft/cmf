@@ -1,4 +1,4 @@
-@page CmfSoftwareObjects.md
+@page CmfSoftwareObjects
 
 # UML-diagram of the main cmf objects
 

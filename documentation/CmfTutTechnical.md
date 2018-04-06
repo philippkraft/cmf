@@ -1,6 +1,6 @@
-@page CmfTutTechnical.md
+@page CmfTutTechnical
 
-[index...](CmfTutStart.md)
+[index...](@ref CmfTutStart)
 
 # Technical fluxes in CMF
 

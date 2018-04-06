@@ -1,11 +1,6 @@
-@page CmfTutTestData.md
+@page CmfTutTestData
 
-[index](CmfTutStart.md), [next](CmfTutMeteostation.md)
-
-# Forcing data for test cases
-
-Some forcing example data are available here:
-\[htdocs:examples/climate.csv\]
+[index](@ref CmfTutStart), [next](@ref CmfTutMeteostation)
 
 ## Available data
 
@@ -39,8 +34,8 @@ an empty [timeseries](@ref cmf::math::timeseries) for the rain fall
 and a [MeteoStation](@ref cmf::atmosphere::MeteoStation) to hold the
 timeseries for the other meteorological observations. The **station**
 concept is explained in more detail in the [next
-tutorial](CmfTutMeteostation.md). An introduction to timeseries is
-[here](CmfTutSpaceTime).
+tutorial](@ref CmfTutMeteostation). An introduction to timeseries is
+[here](@ref CmfTutSpaceTime).
 
 ``` {.py}
 
@@ -88,7 +83,7 @@ Now we read in the file and append the read values to the timeseries.
 ```
 
 The last part is to create a station (see [next
-tutorial](CmfTutMeteostation.md)) for the rainfall data and apply the
+tutorial](@ref CmfTutMeteostation)) for the rainfall data and apply the
 stations to the cells of the project.
 
 ``` {.py}           

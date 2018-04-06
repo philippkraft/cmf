@@ -1,4 +1,4 @@
-@page CmfInstallWindows.md
+@page CmfInstallWindows
 
 [back...](CmfInstall)
 

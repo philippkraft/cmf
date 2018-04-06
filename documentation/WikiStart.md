@@ -8,7 +8,7 @@
 
 cmf is a '''programming library''' to create '''hydrological models''',
 which are highly modular and connectible to other models developed using
-a [multiple hypotheses background](CmfIntroduction.md). Although written
+a [multiple hypotheses background](CmfIntroduction). Although written
 in C++, its primary usage is to be compiled as an extension to other
 programming languages, using [SWIG](http://www.swig.org). Until now only
 [Python](http://www.python.org) is actively supported to use the
@@ -29,14 +29,14 @@ The development takes place at
 
 ## How to use cmf
 
-...can be found in the [tutorial](CmfTutStart.md) and in the interface
+...can be found in the [tutorial](@ref CmfTutStart) and in the interface
 desription, the \[htdocs:doxygen/index.html API\], created with
 [Doxygen](http://www.doxygen.org). And there is the PublicationList.
 
-  - @subpage CmfTutStart.md "Tutorial"
-  - @subpage PublicationList.md "Publications"
-  - @subpage CmfInstall.md "Installation"
-  - @subpage RecommendedSoftwareEnvironment.md "Recommended Software"
+  - @subpage CmfTutStart "Tutorial"
+  - @subpage PublicationList "Publications"
+  - @subpage CmfInstall "Installation"
+  - @subpage RecommendedSoftwareEnvironment "Recommended Software"
 
 ## Get cmf
 

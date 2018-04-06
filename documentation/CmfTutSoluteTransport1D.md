@@ -1,11 +1,11 @@
-@page CmfTutSoluteTransport1D.md
+@page CmfTutSoluteTransport1D
 
-[index...](CmfTutStart.md) [back...](CmfTut1d.md)
+[index...](@ref CmfTutStart) [back...](@ref CmfTut1d)
 
 # 1D Richards equation model with tracer transport
 
 In this tutorial, we will introduce tracer in the 1D column model from
-the [last tutorial](CmfTut1d.md). Tracer transport in cmf is up to now
+the [last tutorial](@ref CmfTut1d). Tracer transport in cmf is up to now
 only advective using the equations given
 [here](wiki:FiniteVolumeMethod#solutetransport).
 
@@ -30,7 +30,7 @@ X,Y,Z = p.solutes
 ### Setting up the 1D column model
 
 Now we set up the simple 1D column model from the [last
-tutorial](CmfTut1d.md) with a constant rainfall rate. For every water
+tutorial](@ref CmfTut1d) with a constant rainfall rate. For every water
 storage that is created, three solute storages are created
 automatically:
 
@@ -61,8 +61,8 @@ transport and one solver for each tracer.
 
 ### 1\. One solver
 
-Since our system is stiff (see [here](CmfTutSolver.md) and [last
-tutorial](CmfTut1d.md)) the best choice is the CVode solver. The setup
+Since our system is stiff (see [here](@ref CmfTutSolver) and [last
+tutorial](@ref CmfTut1d)) the best choice is the CVode solver. The setup
 is simple:
 
 ``` {.py}

@@ -1,4 +1,4 @@
-@page CmfTutStart.md
+@page CmfTutStart
 
 # Tutorial
 
@@ -52,36 +52,36 @@ data on your own, rather than download it directly.
 
 ## Getting started
 
-  - [Installation](CmfInstall.md)
-  - [Check if cmf is correctly installed](InstallCheck.md)
-  - [Creating projects](CmfTutProject.md)
+  - @subpage CmfInstall "Installation"
+  - @subpage InstallCheck "Check if cmf is correctly installed"
+  - @subpage CmfTutProject "Creating projects"
 
 ### A first simple model
 
-  - [Let it flow... the first simple model](CmfTutFirstModel.md)
-  - [Boundary conditions](CmfTutBoundary.md)
-  - [Query fluxes and states](CmfTutFluxes.md)
-  - [Choosing a solver for the ODE system](CmfTutSolver.md)
+  - @subpage CmfTutFirstModel "Let it flow... the first simple model"
+  - @subpage CmfTutBoundary "Boundary conditions"
+  - @subpage CmfTutFluxes "Query fluxes and states"
+  - @subpage CmfTutSolver "Choosing a solver for the ODE system"
 
 ### Spatial context
 
-  - [Units in cmf](CmfTutUnits.md)
-  - [Time and space in cmf](CmfTutSpaceTime.md)
-  - [cells and reaches](CmfTutCell.md)
+  - @subpage CmfTutUnits "Units in cmf"
+  - @subpage CmfTutSpaceTime "Time and space in cmf"
+  - @subpage CmfTutCell "cells and reaches"
 
 ### Conceptual Connections
 
   - [Kinematic waves as swiss army knife for conceptual model
-    building](CmfTutKinematicWave.md)
-  - [Simple Infiltration](Simple_Infiltration.md)
-  - [Technical Flux](CmfTutTechnical.md)
-  - [Waterbalance Connection](CmfTutWaterbalance.md)
+    building](@ref CmfTutKinematicWave)
+  - [Simple Infiltration](Simple_Infiltration)
+  - @subpage CmfTutTechnical "Technical Flux"
+  - @subpage CmfTutWaterbalance "Waterbalance Connection"
 
 ### Introducing hydraulic head in cmf
 
-  - [Hydraulic head in the subsurface](CmfTutRetentioncurve.md)
-  - [Hydraulic head in surface water](CmfTutVolumeHeight.md)
-  - [Hydraulic head based boundary conditions](CmfTutBoundary2.md)
+  - @subpage CmfTutRetentioncurve "Hydraulic head in the subsurface"
+  - @subpage CmfTutVolumeHeight "Hydraulic head in surface water"
+  - @subpage CmfTutBoundary2 "Hydraulic head based boundary conditions"
 
 ## Models
 
@@ -90,43 +90,43 @@ use different techniques for visualization also.
 
 ### Soil column (1D)
 
-  - [Simple 1D Model](CmfTut1d.md)
-  - [Solute transport](CmfTutSoluteTransport1D.md)
+  - @subpage CmfTut1d "Simple 1D Model"
+  - @subpage CmfTutSoluteTransport1D "Solute transport"
 
 ### Distribution of rainfall and other meteorological data
 
-  - [Test data](CmfTutTestData.md)
-  - [Using stations](CmfTutMeteostation.md)
+  - @subpage CmfTutTestData "Test data"
+  - @subpage CmfTutMeteostation "Using stations"
 
 ### Interaction with the atmosphere
 
-  - [Evapotranspiration](CmfTutET.md)
-  - [Interception](CmfTutIntercept.md)
-  - [Snow](CmfTutSnow.md)
+  - @subpage CmfTutET "Evapotranspiration"
+  - @subpage CmfTutIntercept "Interception"
+  - @subpage CmfTutSnow "Snow"
 
 ### Hillslope (2D)
 
-  - [Darcian flow connections](CmfTutDarcianLateralFlow.md)
-  - [Surface runoff](CmfTutSurfaceRunoff.md)
-  - [Simple hillslope model](CmfTut2d.md)
+  - @subpage CmfTutDarcianLateralFlow "Darcian flow connections"
+  - @subpage CmfTutSurfaceRunoff "Surface runoff"
+  - @subpage CmfTut2d "Simple hillslope model"
 
 ### Channeled flow
 
-  - [Simple channel flow model](CmfTutChannel.md)
+  - @subpage CmfTutChannel "Simple channel flow model"
 
 ### 3D Model
 
-  - [3D Model](CmfTut3d.md) (this tutorial is a
+  - @subpage CmfTut3d "3D Model" (this tutorial is a
     [stub](WikiPedia:Wikipedia:stub))
 
 ### Lumped Model
 
-  - [Lumped Model without Spotpy](CMF_lumped_without_spotpy.md)
-  - [Lumped Model with Spotpy](Cmf_lumped_simple.md)
+  - @subpage CMF_lumped_without_spotpy "Lumped Model without Spotpy"
+  - @subpage Cmf_lumped_simple "Lumped Model with Spotpy"
 
 ### Semi-distributed Model
 
-  - [Semi-distributed Model](semi_distributed.md)
+  - @subpage semi_distributed "Semi-distributed Model"
 
 ### Distributed Model
 
@@ -134,10 +134,9 @@ use different techniques for visualization also.
 
 ### Advanced usages
 
-  - [Overview representation of the storages and fluxes in a lumped
-    model](Descriptor.md)
-  - [Dual and multi-permeability models](CmfTutMacropore.md)
-  - [What objective function should I use?](CmfTutObjectiveFunction.md)
+  - @subpage Descriptor "Overview representation of the storages and fluxes in a lumped model"
+  - Dual and multi-permeability models
+  - @subpage CmfTutObjectiveFunction "What objective function should I use?"
     (this tutorial is a [stub](WikiPedia:Wikipedia:stub))
 
 author: florianjehn, version: 58 Fri Jan 12 14:02:40 2018

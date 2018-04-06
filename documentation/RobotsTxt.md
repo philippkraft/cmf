@@ -1,4 +1,4 @@
-@page RobotsTxt.md
+@page RobotsTxt
 
 User-agent: \* Disallow: /browser Disallow: /log Disallow: /changeset
 Disallow: /report Disallow: /newticket Disallow: /search

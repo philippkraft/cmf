@@ -1,4 +1,4 @@
-@page SurfaceFlow.md
+@page SurfaceFlow
 
 Back to HowTo
 

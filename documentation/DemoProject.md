@@ -1,4 +1,4 @@
-@page DemoProject.md
+@page DemoProject
 
 See \[wiki:"CmfTutProject"\].
 

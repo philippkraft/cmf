@@ -1,9 +1,9 @@
-@page CmfTutET.md
+@page CmfTutET
 
 @tableofcontents
 
- [index...](CmfTutStart.md)
-[next...](CmfTutIntercept.md)
+ [index...](@ref CmfTutStart)
+[next...](@ref CmfTutIntercept)
 
 # Evapotranspiration (incomplete)
 
@@ -24,7 +24,7 @@ in serveral layers), but soil evaporation takes water from the first
 layer only (ok except for very, very dry regions), open water
 evaporation from [OpenWaterStorage](@ref cmf::river::OpenWaterStorage)
 like surface water, rivers and lakes. Water that is intercepted by
-vegetation (see [next](CmfTutIntercept.md) tutorial) either percolates
+vegetation (see [next](@ref CmfTutIntercept) tutorial) either percolates
 to the surface water or evaporates from the leaf surface. Since
 transpiration is the main part of bulk evapotranspiration in vegetated
 soils, models that deal only with bulk evapotranspiration handle the
@@ -139,10 +139,10 @@ If you do nothing, the `RootDepth` default value of 0.25 is used.
 
 ## Using precalculated {{{@f$ET_{pot}@f$}}} timeseries
 
-![](CmfTut1d-ET1.png)
+![](@ref CmfTut1d-ET1.png)
 
 As a first step, you need to have your values stored in a
-[timeseries](CmfTutSpaceTime.md), for the following code named ET. The
+[timeseries](@ref CmfTutSpaceTime), for the following code named ET. The
 timeseries needs to have the unit of mm/day. To get @f$ET_{act}@f$,
 you will connect every soil layer in the rooting zone with the
 `transpiration` boundary condition of the cell with the
@@ -223,7 +223,7 @@ cell.install_connection(cmf.ShuttleWorthWallace)
 
 If you want to use canopy evaporation and snow sublimation, make sure
 you have created the appropriate storages from the
-[next](CmfTutIntercept.md) tutorial before installation.
+[next](@ref CmfTutIntercept) tutorial before installation.
 
 [ShuttleworthWallace](@ref cmf::upslope::ET::ShuttleworthWallace) is
 quite parameter demanding - all meteorological parameters available in

@@ -1,6 +1,6 @@
-@page CmfTutKinematicWave.md
+@page CmfTutKinematicWave
 
-[index...](CmfTutStart.md)
+[index...](@ref CmfTutStart)
 
 # Is hydrology kinematic?
 

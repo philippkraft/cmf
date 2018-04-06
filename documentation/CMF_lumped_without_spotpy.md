@@ -1,4 +1,4 @@
-@page CMF_lumped_without_spotpy.md
+@page CMF_lumped_without_spotpy
 
 # Lumped model without Spotpy Tutorial
 

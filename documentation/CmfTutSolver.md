@@ -1,4 +1,4 @@
-@page CmfTutSolver.md
+@page CmfTutSolver
 
 # Choosing a solver
 
