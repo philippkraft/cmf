@@ -1,6 +1,6 @@
 @page CmfTutChannel
 
-[index...](@ref tutorial)
+
 
 # Channelled flow in cmf
 
@@ -110,4 +110,4 @@ plot(depth)
 show()
 ~~~~~~~~~~~~~
 
-author: philipp, version: 10 Mon Oct 17 12:24:38 2016
+@author philipp, version: 10 Mon Oct 17 12:24:38 2016

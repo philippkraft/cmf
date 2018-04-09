@@ -1,10 +1,10 @@
 @page CmfTutKinematicWave
 
-[index...](@ref tutorial)
+
 
 # Is hydrology kinematic?
 
-... is the title of a paper by Singh (2002, <doi:10.1002/hyp.306>),
+... is the title of a paper by [Singh (2002)](https://doi.org/10.1002/hyp.306),
 where he lists numerous examples from all scales of hydrology where a
 kinematic wave function has been found to be a valid descriptor for
 hydrological processes. Anyway, numerous more or less conceptional
@@ -15,8 +15,9 @@ see the term reserved for more "wave like" phenomens in hydrology.
 
 Hence a number of different names exist for the same concept:
 
-- Kinematic wave - Power law equation (eg. DHSVM, SUPERFLEX) - curve
-shape parameter (eg. MACRO, HBVlight)
+- Kinematic wave 
+- Power law equation (eg. DHSVM, SUPERFLEX) 
+- curve shape parameter (eg. MACRO, HBVlight)
 
 ## A simplified equation for power law equations
 
@@ -30,9 +31,9 @@ q(V) = Q_0 \cdot \theta^\beta
 where:
 
 - @f$\theta@f$ is a dimensonless variable representing a water
-content related state of a storage - @f$\beta@f$ is a curve shape
-parameter - @f$Q_0@f$ is the flux in m³/day at unity state
-@f$\theta=1@f$
+  content related state of a storage
+- @f$\beta@f$ is a curve shape parameter 
+- @f$Q_0@f$ is the flux in m³/day at unity state @f$\theta=1@f$
 
 For cmf, using the finite volume approach, we need a consistent function
 to relate the stored water volume @f$V@f$ in a water storage to the
@@ -47,8 +48,8 @@ where:
 
 - @f$V@f$ is the water volume stored in a storage in @f$m^3@f$ -
 @f$V_{res}@f$ is an immobile water volume in the storage, that does
-not take place in this connection. It may be ommitted and set to `@f$ 0
-m^3@f$`. - @f$V_0@f$ is a reference volume, where, for any
+not take place in this connection. It may be ommitted and set to @f$ 0
+m^3@f$. - @f$V_0@f$ is a reference volume, where, for any
 @f$\beta@f$ the runoff from the water storage is @f$Q_0@f$.
 
 The famous linear storage equation can be seen as a special case of this
@@ -73,7 +74,7 @@ now deprecated connection type called
 period, this connector is still used in some tutorials, but for clarity
 the new connections should be used.
 
-## \!LinearStorageConnection
+## LinearStorageConnection
 
 ~~~~~~~~~~~~~{.py}
 
@@ -89,7 +90,7 @@ structure, residence times between minutes for surface water storages or
 fast drainages up to hundreds of years for large aquifers are suitable
 values.
 
-## \!PowerLawConnection
+## PowerLawConnection
 
 ~~~~~~~~~~~~~{.py}
 
@@ -103,8 +104,8 @@ law equation. The reference flow @f$Q_0 [\frac{m^3}{days}]@f$ occurs
 when the source water storage contains the reference volume @f$V_0@f$
 as mobile water. The curve shape parameter @f$\beta@f$ bends the curve
 for mobile water volumes between 0 and @f$V0@f$ down, when
-@f$\beta>1@f$. The curve is bend up for @f$\beta<1@f$. If `@f$V -
-V_{res}>V_0@f$`, the effect is directly turned around, as shown in the
+@f$\beta>1@f$. The curve is bend up for @f$\beta<1@f$. If @f$V -
+V_{res}>V_0@f$, the effect is directly turned around, as shown in the
 figure.
 
 The residual water content @f$V_{res} [m^3]@f$ shifts the
@@ -127,4 +128,4 @@ instabilities will arise, even when using the
 
 ![](PowerLawConnection.png)
 
-author: philipp, version: 17 Wed Dec 13 21:22:04 2017
+@author philipp, version: 17 Wed Dec 13 21:22:04 2017

@@ -50,7 +50,7 @@ If you want to use always the most recent version of cmf or if you like
 to make changes to the C++ source files of cmf, you need to compile the
 C++ files to machine language.
 
-'''Note''': Compiling C++ code on Windows is not simple\!
+'''Note''': Compiling C++ code on Windows is not simple
 
 To compile sources, you need a compiler - the right compiler. Python 2.7
 for Windows is compiled with Visual Studio 2008, and you need the same
@@ -141,4 +141,4 @@ You can find more references on how to compile C and C++ extensions
 [here](https://wiki.python.org/moin/WindowsCompilers) including links to
 the Microsoft Compiler without Visual Studio
 
-author: florianjehn, version: 9 Fri Nov 17 11:30:03 2017
+@author florianjehn, version: 9 Fri Nov 17 11:30:03 2017

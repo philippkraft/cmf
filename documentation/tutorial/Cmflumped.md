@@ -1,6 +1,6 @@
 @page Cmflumped
 
-[index..](@ref tutorial)
+
 
 # Lumped Model with Spotpy Tutorial
 
@@ -438,7 +438,7 @@ Spotpy you simple have to change the imported samper. For our example we
 have to change "mc" to "lhs". '''Tobi fragen ob er noch schlaue Sachen
 hier hinschreiben kann'''.
 
-And now we can calibrate our model\! If you have done everything right
+And now we can calibrate our model If you have done everything right
 the model should be complete now and you can simply start calibrating by
 running your code. If you didn't change the amount of runs, it should
 run the model ten times and then tell you what the best run was (this
@@ -506,4 +506,4 @@ To do here:
 - explain how to use the plot functions to get a nice visualization of
 the validation
 
-author: florianjehn, version: 85 Tue Nov 15 12:48:32 2016
+@author florianjehn, version: 85 Tue Nov 15 12:48:32 2016

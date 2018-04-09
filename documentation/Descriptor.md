@@ -1,6 +1,6 @@
 @page Descriptor
 
-[index..](@ref tutorial)
+
 
 # CMF Descriptor
 
@@ -54,4 +54,4 @@ to implement them is a bit complicated. But if you still want to try it
 a tutorial can be found here:
 <http://fb09-pasig.umwelt.uni-giessen.de/cmf/wiki/fluxogram_and_get_fluxes>
 
-author: florianjehn, version: 4 Mon Dec 11 14:30:37 2017
+@author florianjehn, version: 4 Mon Dec 11 14:30:37 2017

@@ -2,7 +2,7 @@
 
 @tableofcontents
 
- [index](@ref tutorial)
+ 
 [back...](@ref CmfTutUnits) [next...](@ref CmfTutCell)
 
 # Space and time in cmf
@@ -126,7 +126,7 @@ data = cmf.timeseries.from_scalar(0.5)
 
 However, some objects expecting timeseries will do the conversion from a
 scalar to a timeseries gracefully behind the scences and accept a number
-instead of the timeseries object. Just try it\!
+instead of the timeseries object. Just try it
 
 #### From numpy arrays and other sequences
 
@@ -279,4 +279,4 @@ cmf.draw.plot_timeseries(data)
 cmf.draw.bar_timeseries(data)
 ~~~~~~~~~~~~~
 
-author: philipp, version: 12 Mon Oct 17 11:39:33 2016
+@author philipp, version: 12 Mon Oct 17 11:39:33 2016

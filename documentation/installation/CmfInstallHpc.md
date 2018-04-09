@@ -189,4 +189,4 @@ Now you can install spotpy
     #!sh
     pip install spotpy --user
 
-author: konrad, version: 11 Thu Aug 17 10:30:22 2017
+@author konrad, version: 11 Thu Aug 17 10:30:22 2017

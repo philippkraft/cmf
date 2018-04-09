@@ -1,6 +1,6 @@
 @page CmfTutSurfaceRunoff
 
-[index...](@ref tutorial) [next...](@ref CmfTut2d)
+ [next...](@ref CmfTut2d)
 
 # Surface runoff
 
@@ -69,8 +69,8 @@ the puddles are filled, the runoff starts. The
 [SurfaceWater](@ref cmf::upslope::SurfaceWater) storage has a property
 `puddledepth` to characterize the average water depth needed to fill up
 the puddles. If runoff starts, when 20% of the surface is covered by (on
-average) 1cm deep puddles, the `puddledepth` is `@f$0.01m \cdot 0.2
-= 0.002m@f$`. The property `nManning` of the
+average) 1cm deep puddles, the `puddledepth` is @f$0.01m \cdot 0.2
+= 0.002m@f$. The property `nManning` of the
 [SurfaceWater](@ref cmf::upslope::SurfaceWater) is also used.
 
 ### Example: A simple over flow routing to a boundary condition
@@ -115,4 +115,4 @@ xlabel('Time in minutes')
 legend(loc=0)
 ~~~~~~~~~~~~~
 
-author: philipp, version: 2 Tue Jan 21 10:38:14 2014
+@author philipp, version: 2 Tue Jan 21 10:38:14 2014

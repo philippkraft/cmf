@@ -1,6 +1,6 @@
 @page CmfTutTestData
 
-[index](@ref tutorial), [next](@ref CmfTutMeteostation)
+[next](@ref CmfTutMeteostation)
 
 ## Available data
 
@@ -100,4 +100,4 @@ stations to the cells of the project.
 Depending on your needs, any data source you can read with Python (which
 is virtually any) is suitable to read forcing data for cmf models.
 
-author: philipp, version: 6 Fri Mar 7 13:52:06 2014
+@author philipp, version: 6 Fri Mar 7 13:52:06 2014

@@ -1,7 +1,5 @@
 @page CmfTutBoundary2
 
-[index](@ref tutorial)
-
 # Head based boundary conditions
 
 In \[wiki:CmfTutBoundary\] an outlet was created to let water flow out
@@ -47,4 +45,4 @@ informed to handle the boundary condition as a source:
 outlet.is_source=True
 ~~~~~~~~~~~~~
 
-author: philipp, version: 1 Fri Sep 27 11:06:00 2013
+@author philipp, version: 1 Fri Sep 27 11:06:00 2013

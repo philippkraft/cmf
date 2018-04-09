@@ -1,6 +1,6 @@
 @page CmfTutSnow
 
-[index...](@ref tutorial) [back...](@ref CmfTutIntercept)
+ [back...](@ref CmfTutIntercept)
 
 # Snow (under construction)
 
@@ -42,8 +42,8 @@ cmf.Snowfall(c.snow,c)
 The split between snow and rain depends on the air temperature (T) of
 the actual [Weather](@ref cmf::atmosphere::Weather) of the cell. If
 @f$T < T_{thres} - 1^\circ C@f$, where @f$T_{thres}=0.0 ^\circ C@f$
-by default, all precipitation is handeled as snow, and for `@f$T <
-T_{thres} + 1^\circ C@f$` precipitation is handeled as rain. For
+by default, all precipitation is handeled as snow, and for @f$T <
+T_{thres} + 1^\circ C@f$ precipitation is handeled as rain. For
 @f$|T-T_{thres}|<1K@f$ precipitation is handled as sleet, a linear mix
 between snow and rain. Sleet in cmf has its origin in numerical problems
 when switching during one time step between snow and rain, but fits
@@ -74,4 +74,4 @@ snowmelt = cmf.SimpleTindexSnowMelt(c.snow,c.surfacewater,c)
 snowmelt.SnowMeltRate = 7.0
 ~~~~~~~~~~~~~
 
-author: philipp, version: 3 Mon Oct 17 12:21:37 2016
+@author philipp, version: 3 Mon Oct 17 12:21:37 2016

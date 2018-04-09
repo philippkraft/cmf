@@ -1,6 +1,6 @@
 @page CmfTutUnits
 
-[index](@ref tutorial) [next](@ref CmfTutSpaceTime)
+ [next](@ref CmfTutSpaceTime)
 
 # Units
 
@@ -28,9 +28,9 @@ units is mostly consistent.
     the following units:
   - Temperature is given in @f$°C@f$
   - Actual relative humidity is given in percent
-  - Actual incoming shortwave global radiation is given in `@f$
-    \frac{MJ}{m^{2}day} @f$`. Data in @f$ \frac{W}{m^{2}}@f$ has to be
+  - Actual incoming shortwave global radiation is given in @f$
+    \frac{MJ}{m^{2}day} @f$. Data in @f$ \frac{W}{m^{2}}@f$ has to be
     multiplied by 0.0864 to set it correctly.
   - Wind speed is given in @f$ \frac{m}{s}@f$
 
-author: ina, version: 5 Thu May 8 18:34:58 2014
+@author ina, version: 5 Thu May 8 18:34:58 2014

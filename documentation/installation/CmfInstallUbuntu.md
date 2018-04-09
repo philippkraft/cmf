@@ -90,4 +90,4 @@ Work in progress..
 
 ### Adding geometric support to CMF \#shapely3.5
 
-author: philipp, version: 4 Thu Jun 23 13:22:29 2016
+@author philipp, version: 4 Thu Jun 23 13:22:29 2016

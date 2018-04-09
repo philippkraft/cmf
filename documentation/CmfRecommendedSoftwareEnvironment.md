@@ -24,7 +24,7 @@ software for scientific modelling.
 Both programs are integrated for Windows in scientific Python
 distributions, like [WinPython](http://code.google.com/p/winpython/),
 [python(x,y)](https://code.google.com/p/pythonxy/) and
-[Anaconda](https://www.continuum.io/downloads). \!WinPython is smaller
+[Anaconda](https://www.continuum.io/downloads). WinPython is smaller
 and available for 32bit and 64bit, while python(x,y) has more modules
 and non-python tools integrated, but it is only available for 32bit
 Python. I recommend the usage of a scientific Python distribution on
@@ -32,7 +32,7 @@ Windows.
 
 ## Editors
 
-### Eclipse with \!PyDev
+### Eclipse with PyDev
 
 <http://eclipse.org> and <http://pydev.org> - The Diva among the Python
 Editors (personal opinion). Takes years to start, fails sometimes
@@ -40,7 +40,7 @@ completely, but if it is there it is simply the **best** - with code
 completion like in Visual Studio. Since it is eclipse based, everything
 can be done with the proper plugin. Not the nicest for installation.
 
-### \!PyCharm
+### PyCharm
 
 <https://www.jetbrains.com/pycharm/> - The only software for money on
 this website but it is really good. Academics, like students and
@@ -57,4 +57,4 @@ If you are familiar Linux, I'm sure you have already your favourite
 light editor with syntax highlighting, otherwise use what comes with
 your distribution.
 
-author: philipp, version: 6 Mon Oct 17 15:56:22 2016
+@author philipp, version: 6 Mon Oct 17 15:56:22 2016

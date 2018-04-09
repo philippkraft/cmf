@@ -2,7 +2,7 @@
 
 @tableofcontents
 
- [index...](@ref tutorial),
+ ,
 [next...](@ref CmfTutVolumeHeight)
 
 # Hydraulic head and stored water volume
@@ -65,8 +65,8 @@ as oversaturated, thus gaining a matric potential above 0m and thus
 accounting for the hydrostatic pressure. With these definitions,
 @f$\Psi_{tot}@f$ is in cmf only a function of the position of the
 water storage in space and its water content, which is again a function
-of the stored water volume in m³ `@f$\Psi_{tot} = z +
-\Psi_M(\theta)@f$`.
+of the stored water volume in m³ @f$\Psi_{tot} = z +
+\Psi_M(\theta)@f$.
 
 ## Getting and setting the potential in cmf
 
@@ -151,7 +151,7 @@ cell with care to their respective height above reference height.
 # Retention curves
 
 A number of parametric retention curves exists, however the
-\!VanGenuchten-Mualem (\!VanGenuchten 1980) retention curve is the most
+VanGenuchten-Mualem (VanGenuchten 1980) retention curve is the most
 widely used. Another widely used, older retention curve is the
 Brooks-Corey curve (Brooks & Corey 1964). Both curves are consist of the
 pressure - water content relation and another function, based on the
@@ -162,7 +162,7 @@ to calculate the matrix potential from water content, and not only the
 other way round like the Durner dual porosity curve in Hydrus 1D. 2. The
 curve must be extrapolated for oversaturation.
 
-Until now the \!VanGenuchten-Mualem curve and the Brooks-Corey curve are
+Until now the VanGenuchten-Mualem curve and the Brooks-Corey curve are
 implemented in cmf. For more conceptual models the so called linear
 retention curve can be used.
 
@@ -245,14 +245,14 @@ def plot_rc(retcurve,Psi_M):
     grid()
 ~~~~~~~~~~~~~
 
-## \!VanGenuchten-Mualem curve
+## VanGenuchten-Mualem curve
 
 Definition from the API-documentation:
 [VanGenuchtenMualem](@ref cmf::upslope::VanGenuchtenMualem)
 
 The equation of the curve and the parameters are described in the
 API-documentation. In the following, you will create a
-\!VanGenuchten-Mualem curve with the follwing paramters in cmf:
+VanGenuchten-Mualem curve with the follwing paramters in cmf:
 ||||=Parameter =||=value =||=unit =||=Description =|| ||
 @f$K_{sat}@f$|| = || 2.5 ||@f$m/day@f$ ||Saturated conductivity ||
 || @f$\alpha@f$|| = || 0.1 ||@f$1/cm@f$ ||Inverse of water entry
@@ -272,9 +272,9 @@ plot_rc(vgm,Psi_M)
 ### Oversaturation
 
 As noted above, cmf mimics the hydrostatic pressure by allowing a slight
-oversaturation for the case of hydrostatic pressure `@f$W(\Psi_M) > 1.0\
-\forall\ \Psi_M>0@f$`. To archive that, at a wetness near to saturation,
-@f$W_0@f$ the \!VanGenuchten curve @f$\Psi_M(W)@f$ is replaced by a
+oversaturation for the case of hydrostatic pressure @f$W(\Psi_M) > 1.0\
+\forall\ \Psi_M>0@f$. To archive that, at a wetness near to saturation,
+@f$W_0@f$ the VanGenuchten curve @f$\Psi_M(W)@f$ is replaced by a
 parabolic extrapolation function @f$f_{ex}(W)@f$, which has the
 following properties:
 
@@ -284,7 +284,7 @@ following properties:
   - @f$f_{ex}(1.0) = 0.0 m@f$: The extrapolated matrix potential at
     saturation is 0m Choosing w0 does affect the degree of
     oversaturation strongly, but has different effect for different
-    parameters, as the following table shows for the \!VanGenuchten
+    parameters, as the following table shows for the VanGenuchten
     curve from the example. ||= @f$w0@f$ =||= @f$f_{ex}(+0.5\ m)@f$
     =||= @f$f_{ex}(+1.0\ m)@f$ =||= @f$f_{ex}(+2.0\ m)@f$ =|| ||=
     0.99=|| 1.06|| 1.088|| 1.128|| ||= 0.995=|| 1.038|| 1.056|| 1.081||
@@ -317,4 +317,4 @@ Definition from the API-documentation:
 Definition from the API-documentation:
 [LinearRetention](@ref cmf::upslope::LinearRetention)
 
-author: philipp, version: 13 Mon Mar 3 14:10:33 2014
+@author philipp, version: 13 Mon Mar 3 14:10:33 2014

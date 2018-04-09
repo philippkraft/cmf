@@ -1,6 +1,6 @@
 @page fluxogram_and_get_fluxes
 
-[index..](@ref tutorial)
+
 
 # How to get a nice visual representation of your model
 
@@ -225,6 +225,6 @@ Now you have to wait until the fluxogram animation is ready. During the
 process a lot of pictures of the model will be created in your working
 directory. But do not worry, the fluxogram will delete all of them once
 it has finished the animation. Your result should look something like
-[this](https://youtu.be/URAnH_ILzJk). Have fun\!
+[this](https://youtu.be/URAnH_ILzJk). Have fun
 
-author: florianjehn, version: 23 Thu Jan 26 16:27:58 2017
+@author florianjehn, version: 23 Thu Jan 26 16:27:58 2017

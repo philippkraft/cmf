@@ -1,6 +1,6 @@
 @page CmfTutMeteostation
 
-[index](@ref tutorial), [back](@ref CmfTutTestData), [space and time in
+[back](@ref CmfTutTestData), [space and time in
 cmf](@ref CmfTutSpaceTime)
 
 # Using measurement stations for atmospheric conditions
@@ -91,42 +91,42 @@ Penman Monteith method, to use surrogate values, as listed below.
 ### Timeseries provided by a meteo object:
 
 T:: Timeseries of Temperature @f$ T\left[[^\circ|C\right]] @f$
-'''Optional''', if missing it is calculated from `@f$ T=\frac{T_{max} +
-T_{min}} 2 @f$`
+'''Optional''', if missing it is calculated from @f$ T=\frac{T_{max} +
+T_{min}} 2 @f$
 
-Tmax:: Timeseries of daily maximum Temperature `@f$ T_{max}
-\left[[^\circ|C\right]] @f$` '''Required''', but it can be generated
+Tmax:: Timeseries of daily maximum Temperature @f$ T_{max}
+\left[[^\circ|C\right]] @f$ '''Required''', but it can be generated
 from T, if you have a high resolution timeseries for Temperature, Tmax
 can be generated as follows: `meteo.Tmax =
 meteo.T.reduce_max(meteo.T.begin, cmf.day)`
 
-Tmin:: Timeseries of daily minimum Temperature `@f$
-T_{min}\left[[^\circ|C\right]] @f$` '''Required''', but it can generate
+Tmin:: Timeseries of daily minimum Temperature @f$
+T_{min}\left[[^\circ|C\right]] @f$ '''Required''', but it can generate
 from T. If you have a high resolution timeseries for Temperature, Tmin
 can be generated as follows: `meteo.Tmin =
 meteo.T.reduce_min(meteo.T.begin, cmf.day)`
 
-Tground:: Timeseries of upper soil temperature `@f$
-T_{ground}\left[[^\circ|C\right]] @f$` '''Optional''', if missing `@f$
-T_{ground} = T @f$`
+Tground:: Timeseries of upper soil temperature @f$
+T_{ground}\left[[^\circ|C\right]] @f$ '''Optional''', if missing @f$
+T_{ground} = T @f$
 
 Windspeed:: Timeseries of windspeed at instrument height (default 2m) in
 @f$m/s@f$. '''Optional''', if not available the wind speed defaults to
 2 m/s
 
-rHmean:: Timeseries of relative mean Humidity `@f$ rH_{mean}
-\left[\%\right] @f$` '''Optional''', not used if rHmax or Tdew is
+rHmean:: Timeseries of relative mean Humidity @f$ rH_{mean}
+\left[\%\right] @f$ '''Optional''', not used if rHmax or Tdew is
 available. Use this field, if you have high resolution relative humidity
 data.
 
-rHmin:: Timeseries of daily minimum relative Humidity `@f$ rH_{min}
-\left[\%\right] @f$` '''Optional''', only used if rHmax is used
+rHmin:: Timeseries of daily minimum relative Humidity @f$ rH_{min}
+\left[\%\right] @f$ '''Optional''', only used if rHmax is used
 
-rHmax:: Timeseries of daily maximum relative Humidity `@f$ rH_{max}
-\left[\%\right] @f$`'''Optional''', not used if Tdew is available
+rHmax:: Timeseries of daily maximum relative Humidity @f$ rH_{max}
+\left[\%\right] @f$'''Optional''', not used if Tdew is available
 
-Tdew:: Timeseries of dew point temperature `@f$
-T_{dew}\left[[^\circ|C\right]]@f$` '''Optional''', if neither Tdew,
+Tdew:: Timeseries of dew point temperature @f$
+T_{dew}\left[[^\circ|C\right]]@f$ '''Optional''', if neither Tdew,
 rHmax or rHmean is available then Tdew = Tmin
 
 Sunshine:: Fractional sunshine @f$\frac{n}{N}@f$. Sunshine duration
@@ -142,8 +142,8 @@ if not available cmf::atmosphere::global_radiation is used to calculate
 radiation from lat, lon, day of year and Sunshine.
 
 T_lapse:: Temperature lapse, the slope of the temperature / height
-regression. Typical values are `@f$ -0.0004 .. -0.001 \frac{^\circ C}{m}
-@f$`, default is @f$ 0\frac{^\circ C}{m} @f$ (no temperature
+regression. Typical values are @f$ -0.0004 .. -0.001 \frac{^\circ C}{m}
+@f$, default is @f$ 0\frac{^\circ C}{m} @f$ (no temperature
 adjusting)
 
 ### Creating a meteorological station
@@ -228,13 +228,13 @@ of place and known data at places. The IDW function in cmf reads as:
 where:
 
 - @f$ x,y,z @f$ is the actual spatial position - @f$ t @f$ is the
-actual time step - @f$ N @f$ is the number of stations - `@f$ f_i(t)
-@f$` is a data value of station @f$i@f$ and time step @f$t@f$ - `@f$
-w_i(x,y,z) @f$` is a weight function of station @f$i@f$ for position
+actual time step - @f$ N @f$ is the number of stations - @f$ f_i(t)
+@f$ is a data value of station @f$i@f$ and time step @f$t@f$ - @f$
+w_i(x,y,z) @f$ is a weight function of station @f$i@f$ for position
 @f$ x,y,z @f$ - @f$ d_i(x,y,z)@f$ is the distance / proximity
 function of station @f$i@f$ for position @f$x,y,z@f$ - @f$ p @f$
-is the weighting power. A common value is @f$p=2@f$ - `@f$ x_i, y_i,
-z_i @f$` is the spatial position of station @f$i@f$ - @f$ w_z @f$ is
+is the weighting power. A common value is @f$p=2@f$ - @f$ x_i, y_i,
+z_i @f$ is the spatial position of station @f$i@f$ - @f$ w_z @f$ is
 a weight parameter. This parameter can be used change the influence of
 height differences on the proximity of places. @f$w_z=0@f$ resolves in
 a pure horizontal distance calculation, while very heigh values (eg. 10
@@ -254,4 +254,4 @@ project.use_IDW_rainfall(z_weight=0.0, power=2.)
 
 with `z_weight` @f$\hat{=}\ w_z@f$, `power` @f$\hat{=}\ p@f$
 
-author: florianjehn, version: 8 Mon Nov 20 14:24:57 2017
+@author florianjehn, version: 8 Mon Nov 20 14:24:57 2017

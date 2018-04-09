@@ -1,6 +1,6 @@
 @page CmfTutSoluteTransport1D
 
-[index...](@ref tutorial) [back...](@ref CmfTut1d)
+ [back...](@ref CmfTut1d)
 
 # 1D Richards equation model with tracer transport
 
@@ -191,4 +191,4 @@ for i in range(3):
 plt.show()    
 ~~~~~~~~~~~~~
 
-author: philipp, version: 3 Mon Oct 17 11:45:27 2016
+@author philipp, version: 3 Mon Oct 17 11:45:27 2016

@@ -2,7 +2,7 @@
 
 @tableofcontents
 
- [index...](@ref tutorial)
+ 
 [next...](@ref CmfTutIntercept)
 
 # Evapotranspiration (incomplete)
@@ -231,4 +231,4 @@ the [Weather](@ref cmf::atmosphere::Weather) object are used as
 well as all parameters of the
 [Vegetation](@ref cmf::upslope::vegetation::Vegetation) object .
 
-author: philipp, version: 16 Thu Nov 9 15:40:49 2017
+@author philipp, version: 16 Thu Nov 9 15:40:49 2017

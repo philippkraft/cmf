@@ -2,7 +2,7 @@
 
 @tableofcontents
 
- [index...](@ref tutorial)
+ 
 
 # Cells
 
@@ -132,14 +132,14 @@ The two reaches can be connected with any connection suitable for open
 water storages. However, in most cases a kinematic or diffusive wave
 approach, using Manning's roughness as the friction term will be used
 for modelling channeled flow (see CmfTutChannel), hence the two reaches
-can be connected by definining \!r2 as the downstream reach of \!r1:
+can be connected by definining r2 as the downstream reach of r1:
 
 ~~~~~~~~~~~~~{.py}
 
 r1.set_downstream(r2)
 ~~~~~~~~~~~~~
 
-\!r2 should be connected to the area outlet:
+r2 should be connected to the area outlet:
 
 ~~~~~~~~~~~~~{.py}
 
@@ -149,6 +149,6 @@ r2.set_outlet(outlet)
 
 CmfTutChannel will show a full running example.
 
-[index...](@ref tutorial)
 
-author: giovanny, version: 5 Tue May 5 11:22:32 2015
+
+@author giovanny, version: 5 Tue May 5 11:22:32 2015

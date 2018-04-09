@@ -1,6 +1,6 @@
 @page CmfTutIntercept
 
-[index...](@ref tutorial) [back...](@ref CmfTutET)
+ [back...](@ref CmfTutET)
 [next...](@ref CmfTutSnow)
 
 # Interception
@@ -104,4 +104,4 @@ cmf.RutterInterception(c.canopy,c.surfacewater,c)
 cmf.CanopyStorageEvaporation(c.canopy,c.evaporation,c)
 ~~~~~~~~~~~~~
 
-author: florianjehn, version: 7 Wed Feb 22 16:39:14 2017
+@author florianjehn, version: 7 Wed Feb 22 16:39:14 2017

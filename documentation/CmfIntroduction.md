@@ -5,12 +5,12 @@
 In the last decade, the application of classical hydrological rainfall
 runoff models is disputed as a valid method for understanding water
 transport in landscapes (eg. Beven 2002 and 2006, Seibert and
-\!McDonnell 2002, Sivapalan et al. 2003, Kirchner 2006, Tetzlaff et al.
+McDonnell 2002, Sivapalan et al. 2003, Kirchner 2006, Tetzlaff et al.
 2008), since current models lack the ability for formulation and
-rejection of hypotheses. Vache and \!McDonnell (2006) developed a
+rejection of hypotheses. Vache and McDonnell (2006) developed a
 framework for the rejection of model structures, where each model
 structure is understood as a hypothesis on runoff generation. This work
-is a newly developed generalized form of the Vache-\!McDonnell
+is a newly developed generalized form of the Vache-McDonnell
 rejectionist framework, called the Catchment Modelling Framework (CMF,
 Kraft et al. 2011 and 2012). It is an extension to the programming
 language Python, written in C++, offering a toolkit for the set up of a
@@ -26,7 +26,7 @@ frameworks to be portable, accessible and modular. While hydrologists
 debate the theoretical application limits of runoff models for solute
 transport in landscapes, a growing demand of integrated landscape models
 for the integration of lateral transport of matter by runoff arises in
-interdisciplinary projects, like eg. the \!NitroEurope IP (EC). With
+interdisciplinary projects, like eg. the NitroEurope IP (EC). With
 this background, modular hydrological frameworks need to be designed for
 simplified data exchange during the model runtime for interfacing the
 hydrology with models from different disciplines, like CMF.
@@ -73,7 +73,7 @@ A full list of publications concerning CMF can be found
 - Qu, Y.Z., Duffy, C.J., 2007. A semidiscrete finite volume formulation
   for multiprocess watershed simulation. Water Resour.Res. 43, W08419,
   <doi:10.1029/2006WR005752>.
-- Seibert, J., \!McDonnell, J.J., 2002. On
+- Seibert, J., McDonnell, J.J., 2002. On
   the dialog between experimentalist and modeler in catchment hydrology:
   Use of soft data for multicriteria model calibration. Water Resour.Res.
   38, doi: 10.1029/2001WR000978.

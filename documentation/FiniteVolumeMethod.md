@@ -195,4 +195,4 @@ unique situation may best be arrived through some degree of
 experimentation. The solution procedure is part of this process, and CMF
 is designed to explicitly recognize this fact.
 
-author: philipp, version: 8 Fri Dec 2 15:55:29 2016
+@author philipp, version: 8 Fri Dec 2 15:55:29 2016

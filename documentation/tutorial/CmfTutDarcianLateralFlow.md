@@ -1,6 +1,6 @@
 @page CmfTutDarcianLateralFlow
 
-[index...](@ref tutorial) [next...](@ref CmfTutSurfaceRunoff)
+ [next...](@ref CmfTutSurfaceRunoff)
 
 # Darcian flow connections
 
@@ -69,8 +69,8 @@ This transmissivity function is used in
  T_{sat}(\Psi) = K_{sat}\  (\Delta z + \Psi_M)
 @f]
 
-where: - @f$K_{sat}@f$ is the saturated conductivity in `@f$\frac
-m{day}@f$` - @f$\Delta z + \Psi_M@f$ is the height of the water table
+where: - @f$K_{sat}@f$ is the saturated conductivity in @f$\frac
+m{day}@f$ - @f$\Delta z + \Psi_M@f$ is the height of the water table
 above the layer bottom using the matrix potential @f$\Psi_M@f$. If the
 saturated depth is below the lower layer thickness, the flow depth is 0.
 
@@ -149,4 +149,4 @@ cells. The `start_at_layer` argument is optional. If it is set to a
 number `n`, the connection is not installed for the `n-1` upper
 layers of a cell.
 
-author: philipp, version: 5 Tue Jan 21 10:37:02 2014
+@author philipp, version: 5 Tue Jan 21 10:37:02 2014

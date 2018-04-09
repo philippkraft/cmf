@@ -1,6 +1,6 @@
 @page CmfTutBoundary
 
-[index...](@ref tutorial) [back...](@ref CmfTutFirstModel)
+ [back...](@ref CmfTutFirstModel)
 [next...](@ref CmfTutFluxes)
 
 # Boundary conditions
@@ -95,4 +95,4 @@ more connection types than kinematic_wave. Some of the connection types
 are shown in the next chapters. A list of all connections is
 [here](htdocs:doxygen/group__connections.html).
 
-author: philipp, version: 18 Thu Dec 3 10:06:14 2015
+@author philipp, version: 18 Thu Dec 3 10:06:14 2015

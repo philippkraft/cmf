@@ -1,6 +1,6 @@
 @page CmfTutProject
 
-[index...](@ref tutorial)
+
 
 # Project
 
@@ -33,4 +33,4 @@ after import of the library.
 The [next tutorial](@ref CmfTutFirstModel) contains a first simple,
 conceptual model (Nash-Boxes).
 
-author: ina, version: 6 Wed May 7 14:25:42 2014
+@author ina, version: 6 Wed May 7 14:25:42 2014

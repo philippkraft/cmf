@@ -99,4 +99,4 @@ storage 1 runs dry, the waterbalance connection does not transport water
 any more, as now all remaining water in storage 3 is routed to storage
 5.
 
-author: florianjehn, version: 5 Thu Dec 21 13:42:58 2017
+@author florianjehn, version: 5 Thu Dec 21 13:42:58 2017

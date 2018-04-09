@@ -2,7 +2,7 @@
 
 @tableofcontents
 
- [index...](@ref tutorial)
+ 
 [next...](@ref CmfTutBoundary)
 
 # Let it flow... the first cmf model
@@ -168,4 +168,4 @@ And this is the result:
 
 Next step is to include [boundary conditions](@ref CmfTutBoundary).
 
-author: philipp, version: 17 Thu Dec 14 09:28:22 2017
+@author philipp, version: 17 Thu Dec 14 09:28:22 2017
