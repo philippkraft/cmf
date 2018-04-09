@@ -2,7 +2,7 @@
 
 [back...](@ref CmfInstall)
 
-# Installing cmf on Windows for Python 2.7  \#noshapely2.7
+# Installing cmf on Windows for Python 2.7  
 
 This is the simplest way to install cmf on Windows. It shows one path,
 that should be suitable for most computers with a Windows system.
@@ -35,7 +35,7 @@ python(x,y) are others and they work equally fine. But please follow the
 instructions to add packages to these distributions, there are some
 traps around.
 
-### Adding Geometry \#shapely2.7
+### Adding Geometry 
 
 Just get the shapely binary from:
 
@@ -44,7 +44,7 @@ Just get the shapely binary from:
 and install it with the pacakge manager of your python distribution. it
 is the Winpython Control Panel fro winpython.
 
-## Compile cmf from source for python 2.7 \#compile2.7
+## Compile cmf from source for python 2.7 
 
 If you want to use always the most recent version of cmf or if you like
 to make changes to the C++ source files of cmf, you need to compile the
@@ -97,7 +97,7 @@ compiled library will not be found.
 
 # Python 3.5
 
-## Without geometry \#noshapely3.5
+## Without geometry 
 
 This is the simplest way to install cmf on Windows. It shows one path,
 that should be suitable for most computers with a Windows system.
@@ -119,7 +119,7 @@ If you already have an existing Python installation you can also use:
 
     pip install cmf
 
-## Adding Geometry \#shapely3.5
+## Adding Geometry 
 
 Just get the shapely binary from:
 
@@ -128,7 +128,7 @@ Just get the shapely binary from:
 and install it with the pacakge manager of your python distribution. Use
 again the Winpython Control Panel for winpython.
 
-## Compile cmf for Python 3.5 \#compile3.5
+## Compile cmf for Python 3.5 
 
 Compiling cmf for Python 3.5 works in Windows. However, there is no
 established procedure by now. The main point is, that Python 3.5 is

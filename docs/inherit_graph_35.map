@@ -1,10 +1,3 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$classcmf_1_1atmosphere_1_1aerodynamic__resistance.html" title="Abstract class. Child classes can be used to calculate aerodynamic resistances against turbulent heat..." alt="" coords="11,5,174,32"/>
-<area shape="rect" id="node2" href="$classcmf_1_1atmosphere_1_1log__wind__profile.html" title=", A logarithmic wind profile " alt="" coords="242,5,355,32"/>
-<area shape="rect" id="node3" href="$classcmf_1_1upslope_1_1_e_t_1_1_shuttleworth_wallace.html" title="Calculates the sum of soil evaporation and transpiration according to Shuttleworth &amp; Wallace 1985..." alt="" coords="228,148,369,175"/>
-<area shape="rect" id="node4" href="$classcmf_1_1upslope_1_1_e_t_1_1canopy__evaporation__method.html" title="Abstract class. Child classes are defining a method for intercepted canopy water evaporation calculat..." alt="" coords="25,57,161,98"/>
-<area shape="rect" id="node5" href="$classcmf_1_1upslope_1_1_e_t_1_1snow__evaporation__method.html" title="Abstract class. Child classes are defining a method for snow evaporation calculation. " alt="" coords="5,123,180,149"/>
-<area shape="rect" id="node6" href="$classcmf_1_1upslope_1_1_e_t_1_1soil__evaporation__method.html" title="Abstract class. Child classes are defining a method for soil evaporation calculation. " alt="" coords="11,173,175,200"/>
-<area shape="rect" id="node7" href="$classcmf_1_1upslope_1_1_e_t_1_1surface__water__evaporation__method.html" title="Abstract class. Child classes are defining a method for surface water evaporation calculation..." alt="" coords="5,225,180,266"/>
-<area shape="rect" id="node8" href="$classcmf_1_1upslope_1_1_e_t_1_1transpiration__method.html" title="Abstract class. Child classes are defining a method for transpiration calculation. " alt="" coords="21,291,164,317"/>
+<area shape="rect" id="node1" href="$classcmf_1_1draw_1_1shapemap_1_1_shape_map.html" title="ShapeMap" alt="" coords="5,5,89,32"/>
 </map>

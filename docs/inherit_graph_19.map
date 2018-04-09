@@ -1,3 +1,6 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$classcmf_1_1math_1_1num__array.html" title="A valarray kind of vector implementation with OpenMP capabilities. " alt="" coords="5,5,88,32"/>
+<area shape="rect" id="node1" href="$classcmf_1_1maps_1_1_map.html" title="Map" alt="" coords="5,56,52,83"/>
+<area shape="rect" id="node2" href="$classcmf_1_1maps_1_1nearest__neighbor__map.html" title="nearest_neighbor_map" alt="" coords="100,5,253,32"/>
+<area shape="rect" id="node3" href="$classcmf_1_1maps_1_1polygon__map.html" title="polygon_map" alt="" coords="127,56,226,83"/>
+<area shape="rect" id="node4" href="$classcmf_1_1maps_1_1raster__map.html" title="raster_map" alt="" coords="133,107,220,133"/>
 </map>

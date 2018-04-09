@@ -259,8 +259,6 @@ div.ah, span.ah {
 	box-shadow: 2px 2px 3px #999;
 	-webkit-box-shadow: 2px 2px 3px #999;
 	-moz-box-shadow: rgba(0, 0, 0, 0.15) 2px 2px 2px;
-	background-image: -webkit-gradient(linear, left top, left bottom, from(#eee), to(#000),color-stop(0.3, #444));
-	background-image: -moz-linear-gradient(center top, #eee 0%, #444 40%, #000 110%);
 }
 
 div.classindex ul {
@@ -522,9 +520,12 @@ table.memberdecls {
 	border-top-right-radius: 4px;
 	border-top-left-radius: 4px;
 	margin-bottom: -1px;
+    /*
 	background-image: url('nav_f.png');
 	background-repeat: repeat-x;
+	*/
 	background-color: #E2E8F2;
+
 	line-height: 1.25;
 	font-weight: 300;
 	float:left;
@@ -616,8 +617,10 @@ table.memberdecls {
         padding: 6px 10px 2px 10px;
         background-color: #FBFCFD;
         border-top-width: 0;
+        /*
         background-image:url('nav_g.png');
         background-repeat:repeat-x;
+        */
         background-color: #FFFFFF;
         /* opera specific markup */
         border-bottom-left-radius: 4px;
@@ -965,7 +968,9 @@ table.fieldtable {
 	top: 0px;
 	left: 10px;
 	height: 36px;
+    /*
 	background-image: url('tab_b.png');
+	*/
 	z-index: 101;
 	overflow: hidden;
 	font-size: 13px;
@@ -974,12 +979,15 @@ table.fieldtable {
 .navpath ul
 {
 	font-size: 11px;
+    background-image: none;
+    /*
 	background-image:url('tab_b.png');
 	background-repeat:repeat-x;
 	background-position: 0 -5px;
+	*/
 	height:30px;
 	line-height:30px;
-	color:#8AA0CC;
+	color:#1f6992;
 	border:solid 1px #C2CDE4;
 	overflow:hidden;
 	margin:0px;
@@ -992,9 +1000,11 @@ table.fieldtable {
 	float:left;
 	padding-left:10px;
 	padding-right:15px;
+    /*
 	background-image:url('bc_s.png');
 	background-repeat:no-repeat;
 	background-position:right;
+	*/
 	color:#364D7C;
 }
 
@@ -1012,7 +1022,7 @@ table.fieldtable {
 
 .navpath li.navelem a:hover
 {
-	color:#6884BD;
+	color: #1f6992;
 }
 
 .navpath li.footer
@@ -1598,53 +1608,36 @@ th.markdownTableHeadCenter, td.markdownTableBodyCenter {
 
 /* @end */
 
-#nav-tree .label {
-  font: inherit;
-}
-
-#nav-tree {
-  background-color: inherit;
-}
-
-#nav-tree {
-  background-image:none;
-  background-color: inherit;
-}
-
+.
 /* Doxygen tabs.css overrides */
 
-.tabs, .tabs2, .tabs3 {
+.sm-dox {
   background-image: none;
-  font-family: inherit;
-}
 
-.tabs2 {
-  font-size: 12px;
 }
-
-.tablist {
+.sm {
   margin: 0 auto;
-}
-
-.tablist li {
   background-image: none;
 }
 
-.tablist a {
+
+.sm a {
   background-image:none;
-  color: #808080;
+  color: #1f6992;
+    background-color: #ffffff;
   transition:all .3s ease-out;
   border-bottom:2px solid transparent;
 }
 
-.tablist a:hover {
+.sm a:hover {
   background-image:none;
   text-shadow: none;
-  color: #333333;
+  background-color: #1f6992;
+  color: #ffffff;
   border-bottom: 2px solid #2d5c88;
 }
 
-.tablist li.current a {
+.sm li.current a {
   background-image:none;
   text-shadow: none;
   color: #333333;

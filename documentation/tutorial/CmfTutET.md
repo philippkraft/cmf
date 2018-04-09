@@ -149,13 +149,12 @@ you will connect every soil layer in the rooting zone with the
 [timeseriesETpot](@ref cmf::upslope::ET::timeseriesETpot) connection.
 
 The following code snippet is an extensions the setup code from
-\[\[wiki:CmfTut1d\],|without the groundwater boundary condition. Think
+[1D model](@ref CmfTut1d) without the groundwater boundary condition. Think
 about the position of the snippet in the code. For simplicity, we are
 using a constant ETpot value. And to avoid changing the run time
 duration and see nice effects anyway, the constant ETpot is set to the
 absurd high value of 20 mm/day. The initial condition
-\[wiki:CmfTutRetentioncurve\#Saturateddepth saturated_depth\]\] is also
-changed to 4m.
+[saturated depth](@ref CmfTutRetentioncurve) is also changed to 4m.
 
 ~~~~~~~~~~~~~{.py}
 

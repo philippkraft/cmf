@@ -2,7 +2,7 @@
 
 # Choosing a solver
 
-cmf uses the @ref FiniteVolumeMethod to set up a wide range of models of
+cmf uses the [finite volume method](@ref FiniteVolumeMethod) to set up a wide range of models of
 water flow through your study area. The result of the finite volume
 method discretization in space is an ordinary differential equation (ODE)
 system, that needs to be integrated in time. Several solvers are
@@ -16,14 +16,16 @@ linear extrapolation of the current change rate of the system.
 
 
 @f[
-[\vec{u}(t_{i+1})|= \vec{u}(t_{i}) + h \vec{f}(\vec{u}(t_{i}),t_{i})
+\vec{u}(t_{i+1}) = \vec{u}(t_{i}) + h \vec{f}(\vec{u}(t_{i}),t_{i})
 @f]
 
-\] where: - @f$\vec{u}(t)@f$ is the system state at the given timestep
-(water and solute storages) - @f$t_i@f$ is the actual time step -
-@f$t_{i+1}@f$ is the time step to be calculated - @f$h = t_{i+1} -
-t_{i}@f$ is the length of the time step - @f$ \frac{d\vec u}{dt} =
-\vec{f}(\vec{u}(t),t)@f$ is the ODE.
+where: 
+- @f$\vec{u}(t)@f$ is the system state at the given timestep
+(water and solute storages) 
+- @f$t_i@f$ is the actual time step 
+- @f$t_{i+1}@f$ is the time step to be calculated 
+- @f$h = t_{i+1}-t_{i}@f$ is the length of the time step 
+- @f$ \frac{d\vec u}{dt} = \vec{f}(\vec{u}(t),t)@f$ is the ODE.
 
 Since Euler's method is so simple, it is the fastest method to solve an
 ODE. However, by using a finite time step, an error occurs if the system
@@ -38,9 +40,9 @@ can be used.
 There are two approaches to solve this problem:
 
 - Use several time steps to make a polynomial based prediction of the
-  future time step (a solver with an higher **order**)
-- or use an **implicit** formulation of the next timestep, 
-  where @f$u(t_{i+1})@f$ appears on both sides of the equation.
+  future time step (a solver with an higher **order**) 
+- or use an **implicit** formulation of the next timestep, where @f$u(t_{i+1})@f$
+   appears on both sides of the equation.
 
 Both approaches can be combined by using a higher order, implicit
 method.
@@ -53,7 +55,7 @@ need to be solved together in one system. Due to the high order of the
 conductivity/water content relation of porous media, any cmf model using
 "physical" water retention is a stiff system. Such a system cannot be
 solved effectively with an explicit solver, regardless of its order.
-[Implicit](@ref Implicit) methods of a higher order than 2 also do have a
+[Implicit](#Implicit) methods of a higher order than 2 also do have a
 constraint stability and may fail on a stiff system. The simplest way to
 decide how stiff your cmf model is, is not to try to calculate the
 stiffness ratio, as given in the Wikipedia link, but just to try out
@@ -66,7 +68,8 @@ timestep near to the lowest time step the RKF method has used, but in
 most cases the timestep will be so small, that using the explicit Euler
 method is not an effective option.
 
-## Higher order
+## Higher order 
+
 A solver that is predicting the next timestep using a polynom of a
 certain order can work in two different ways. One option is for the
 solver to remember the last states and fit the polynomial in the last
@@ -86,7 +89,8 @@ both methods is below a given error tolerance. As such, the error of the
 integration is controlled and the step size is chosen adaptivly. Hence,
 this method is solver of choice for non-stiff problems.
 
-[Preditor-Corrector methods](http://en.wikipedia.org/wiki/Predictor%E2%80%93corrector_method)
+[Preditor-Corrector
+methods](http://en.wikipedia.org/wiki/Predictor%E2%80%93corrector_method)
 are somewhat in between explicit and implicit methods. These methods do
 one timestep with an explicit method and repeat the timestep using the
 states of the initial guess as an corrector of the first timestep. CMF
@@ -96,17 +100,15 @@ has no adaptive timestepping scheme, like the RKF method, hence the
 evaluation of the integration error using RKF or an implicit method
 shoud be done.
 
-## Implicit solvers {#Implicit}
+## Implicit solvers 
 
 The equation for a 1st order, implicit solver (implicit Euler's method)
 is only marginally different to the explicit formulation:
 
 
 @f[
-[\vec{u}(t_{i+1})|= \vec{u}(t_{i}) + h \vec{f}(\vec{u}(t_{i+1}),t_{i+1})
+\vec{u}(t_{i+1}) = \vec{u}(t_{i}) + h \vec{f}(\vec{u}(t_{i+1}),t_{i+1})
 @f]
-
-\]
 
 Clark and Kavetski ([2010](#clark)) state that even for lumped models,
 implicit schemes should be used.
@@ -150,7 +152,7 @@ only few places of the Jacobian may have values different from zero (the
 connections). Advanced solvers can make use of the sparse structure to
 reduce the computational demand. One general purpose solver for ODE's
 using a simplified Newton iteration and an advanced error control
-mechanism is the CVODE solver by Hindmarsh et al. ([2005](#hindmarsh)).
+mechanism is the CVODE solver by Hindmarsh et al. (2005).
 It uses an up to order 5 Gears method, but checks the stability
 constraint to reduce the order in very stiff cases. The freely available
 CVODE code is integrated into cmf. The solver is called and managed by
@@ -160,14 +162,14 @@ Due to the high stiffness of models using the Richards equation, the
 CVODE solver is the choice for all models with physical based transport
 with variable saturation.
 
-## References \#ref
+## References 
 
-1\. \[=\#clark\] Clark, M. P. and Kavetski, D.: Ancient numerical
-daemons of conceptual hydrological modeling: 1. Fidelity and efficiency
-of time stepping schemes, Water Resour. Res., 46(10), W10510, 2010. 2.
-\[=\#hindmarsh\] Hindmarsh, A. C., Brown, P. N., Grant, K. E., Lee, S.
-L., Serban, R., Shumaker, D. E. and Woodward, C. S.: SUNDIALS: Suite of
-nonlinear and differential/algebraic equation solvers, ACM Trans. Math.
-Softw., 31(3), 363–396, <doi:10.1145/1089014.1089020>, 2005.
+- Clark, M. P. and Kavetski, D.: Ancient numerical
+  daemons of conceptual hydrological modeling: 1. Fidelity and efficiency
+  of time stepping schemes, Water Resour. Res., 46(10), W10510, 2010. 2.
+- Hindmarsh, A. C., Brown, P. N., Grant, K. E., Lee, S.
+  L., Serban, R., Shumaker, D. E. and Woodward, C. S.: SUNDIALS: Suite of
+  nonlinear and differential/algebraic equation solvers, ACM Trans. Math.
+  Softw., 31(3), 363–396, <doi:10.1145/1089014.1089020>, 2005.
 
-@author konrad, version: 6 Tue Dec 15 13:17:28 2015
+author: konrad, version: 6 Tue Dec 15 13:17:28 2015

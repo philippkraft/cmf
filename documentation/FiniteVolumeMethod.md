@@ -7,7 +7,7 @@
 This page describes the theory of the finite volume method and the
 application the cmf architecture. Mass conservation
 
-### General mass conservation problem \#massconservation
+### General mass conservation problem
 
 Any transport problem is largely governed by mass conservation. The
 closure of the mass balance in a hydrologic model should be the starting
@@ -25,7 +25,7 @@ expressed as a generalized hyperbolic problem:
 with the state continuum @f$\bf{u}@f$, and the fluxes
 @f$f({\bf{u}},t)@f$.
 
-### Finite volume discretization \#discretization
+### Finite volume discretization 
 
 Using the finite volume method for discretizing u space, the partial
 differential equation turns into a system of ordinary differential
@@ -67,7 +67,7 @@ course fundamentally important to the user. Two primary abstraction
 hierarchies have been implemented as part of the core CMF structure:
 storages and fluxes.
 
-### Storage abstraction \#storageabstraction
+### Storage abstraction
 
 Storages, at the most abstract layer, are defined as state variables and
 expose their state and a function to calculate their derivatives at a
@@ -86,7 +86,7 @@ the current control volume, @f$N@f$ the number of connected storages
 to @f$i@f$, @f$q_{i,j}@f$ the flux from @f$i@f$ to @f$j@f$, and
 @f$A_{i,j}@f$ is the cross sectional area of the flux.
 
-### Solute transport \#solutetransport
+### Solute transport
 
 The state of a solute storage is the amount of tracer particles in the
 finite volume. The change rate of the state is the sum of advective

@@ -133,10 +133,9 @@ as the common interface of the soillayers according to their depth below
 ground. Otherwise the interface A is calculated as the thickness of
 `leftnode` times the flow width.
 
-However, if you have serveral cells with a defined topology (see
-CmfTutCell\#Topology), one can use the topological information and
-create lateral connections for all layers of all cells with a single
-command:
+However, if you have serveral cells with a defined [topology](@ref CmfTutCell),
+one can use the topological information and create lateral connections for all 
+layers of all cells with a single command:
 
 ~~~~~~~~~~~~~{.py}
 

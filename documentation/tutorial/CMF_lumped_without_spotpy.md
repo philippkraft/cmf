@@ -6,12 +6,9 @@ Here you will learn how to create a complete lumped model in CMF.
 
 ## Downloads
 
-\-
-[Precipitation](http://fb09-pasig.umwelt.uni-giessen.de/spotpy/download/cmf_lumped/prec.txt)
--
-[Discharge](http://fb09-pasig.umwelt.uni-giessen.de/spotpy/download/cmf_lumped/discharge.txt)
--
-[Temperature](http://fb09-pasig.umwelt.uni-giessen.de/spotpy/download/cmf_lumped/max_min_avg_temp.txt)
+- [Precipitation](http://fb09-pasig.umwelt.uni-giessen.de/spotpy/download/cmf_lumped/prec.txt)
+- [Discharge](http://fb09-pasig.umwelt.uni-giessen.de/spotpy/download/cmf_lumped/discharge.txt)
+- [Temperature](http://fb09-pasig.umwelt.uni-giessen.de/spotpy/download/cmf_lumped/max_min_avg_temp.txt)
 
 ## Getting started
 

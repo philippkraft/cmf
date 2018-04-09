@@ -15,7 +15,7 @@ I am working mostly with Ubuntu variants, hence i can't say anything
 about other Linux package managers. However an internet search like
 "apt-get fedora" will help.
 
-## Python 2.7 \#noshapely2.7
+## Python 2.7 
 
 You need sudo privileges to install the dependencies for the system. You
 will need `python-dev` and `numpy`. Recommended are `matplotlib`,
@@ -69,7 +69,7 @@ or, without multi core processor support (without OpenMP)
     python setup.py install noopenmp --user
     cd .. # Important! You cannot test your installation from the source folder
 
-## Adding geometric support to CMF \#shapely2.7
+## Adding geometric support to CMF 
 
 To added geometric features to cmf, you need to install the geos library
 and shapely. For the geos library, you need sudo privileges
@@ -84,10 +84,10 @@ and shapely. For the geos library, you need sudo privileges
     cd ..
     pip install shapely --user
 
-## Python 3.5 \#noshapely3.5
+## Python 3.5 
 
 Work in progress..
 
-### Adding geometric support to CMF \#shapely3.5
+### Adding geometric support to CMF 
 
 @author philipp, version: 4 Thu Jun 23 13:22:29 2016

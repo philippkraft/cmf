@@ -51,7 +51,7 @@ The properties can also be used to change the states of the system, but
 this is only useful for initial conditions. Changing the state during
 runtime will of course destroy the water balance. Some of the
 [solvers](@ref CmfTutSolver) will even ignore the changes if they are not
-reset. In our \[wiki:CmfTutFirstModel\#Implementation simple example\]
+reset. In our [simple example](@ref CmfTutFirstModel)
 we have used this already for the initial condition:
 
 ~~~~~~~~~~~~~{.py}
