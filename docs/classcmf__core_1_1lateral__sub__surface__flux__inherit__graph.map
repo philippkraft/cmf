@@ -1,0 +1,7 @@
+<map id="lateral_sub_surface_flux" name="lateral_sub_surface_flux">
+<area shape="rect" id="node3" href="$classcmf__core_1_1_darcy.html" title="Darcy" alt="" coords="5,155,61,181"/>
+<area shape="rect" id="node4" href="$classcmf__core_1_1_darcy_kinematic.html" title="DarcyKinematic" alt="" coords="85,155,200,181"/>
+<area shape="rect" id="node5" href="$classcmf__core_1_1_richards__lateral.html" title="Richards_lateral" alt="" coords="224,155,339,181"/>
+<area shape="rect" id="node6" href="$classcmf__core_1_1_topographic_gradient_darcy.html" title="TopographicGradientDarcy" alt="" coords="363,155,538,181"/>
+<area shape="rect" id="node2" href="$classcmf__core_1_1flux__connection.html" title="flux_connection" alt="" coords="156,5,268,32"/>
+</map>

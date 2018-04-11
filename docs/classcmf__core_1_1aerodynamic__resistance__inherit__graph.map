@@ -1,0 +1,4 @@
+<map id="aerodynamic_resistance" name="aerodynamic_resistance">
+<area shape="rect" id="node2" href="$classcmf__core_1_1log__wind__profile.html" title="log_wind_profile" alt="" coords="5,80,119,107"/>
+<area shape="rect" id="node3" href="$classcmf__core_1_1_shuttleworth_wallace.html" title="ShuttleworthWallace" alt="" coords="143,80,285,107"/>
+</map>

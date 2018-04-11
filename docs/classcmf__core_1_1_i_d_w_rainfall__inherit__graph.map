@@ -1,0 +1,4 @@
+<map id="IDWRainfall" name="IDWRainfall">
+<area shape="rect" id="node2" href="$classcmf__core_1_1_rain_source.html" title="RainSource" alt="" coords="5,80,95,107"/>
+<area shape="rect" id="node3" href="$classcmf__core_1_1flux__node.html" title="flux_node" alt="" coords="11,5,89,32"/>
+</map>
