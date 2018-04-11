@@ -1,6 +1,6 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$classcmf_1_1upslope_1_1_retention_curve.html" title="Abstract base class for different types of retention curves. " alt="" coords="5,56,115,83"/>
-<area shape="rect" id="node2" href="$classcmf_1_1upslope_1_1_brooks_corey_retention_curve.html" title="Provides the use of the Brooks&#45;Corey retention curve. " alt="" coords="163,5,347,32"/>
-<area shape="rect" id="node3" href="$classcmf_1_1upslope_1_1_linear_retention.html" title="The linear retention curve provides a simple linear relationship between storage and head..." alt="" coords="199,56,311,83"/>
-<area shape="rect" id="node4" href="$classcmf_1_1upslope_1_1_van_genuchten_mualem.html" title="Provides the use of the Van Genuchten &#45; Mualem retention curve (Van Genuchten 1980) ..." alt="" coords="177,107,332,133"/>
+<area shape="rect" id="node1" href="$classcmf_1_1upslope_1_1_e_t_1_1_root_uptake_stess_function.html" title="An abstract class to calculate the actual transpiration from potential transpiration. " alt="" coords="5,56,180,83"/>
+<area shape="rect" id="node2" href="$classcmf_1_1upslope_1_1_e_t_1_1_content_stress.html" title="A simple water content based stress model based on Feddes (1978) " alt="" coords="228,5,333,32"/>
+<area shape="rect" id="node3" href="$classcmf_1_1upslope_1_1_e_t_1_1_suction_stress.html" title="The classical suction depending transpiration Stress curve after Feddes. " alt="" coords="229,56,333,83"/>
+<area shape="rect" id="node4" href="$classcmf_1_1upslope_1_1_e_t_1_1_volume_stress.html" title="A WaterStressFunction based on the stored water volume of a layer. " alt="" coords="229,107,333,133"/>
 </map>

@@ -1,5 +1,4 @@
 <map id="Map" name="Map">
-<area shape="rect" id="node2" href="$classcmf_1_1maps_1_1nearest__neighbor__map.html" title="nearest_neighbor_map" alt="" coords="5,80,159,107"/>
-<area shape="rect" id="node3" href="$classcmf_1_1maps_1_1polygon__map.html" title="polygon_map" alt="" coords="183,80,282,107"/>
-<area shape="rect" id="node4" href="$classcmf_1_1maps_1_1raster__map.html" title="raster_map" alt="" coords="307,80,393,107"/>
+<area shape="rect" id="node2" href="$classcmf_1_1maps_1_1_nearest_neighbor_map.html" title="NearestNeighborMap" alt="" coords="5,80,148,107"/>
+<area shape="rect" id="node3" href="$classcmf_1_1maps_1_1_polygon_map.html" title="PolygonMap" alt="" coords="172,80,267,107"/>
 </map>

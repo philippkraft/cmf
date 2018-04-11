@@ -2,8 +2,8 @@
 if not "x%1x"=="xdoxyx" goto build
 echo doxygen
 doxygen tools\Doxyfile
-python tools\doxy2swig.py doxy\xml\index.xml cmf\cmf_core_src\docstrings-doxy.i
-python tools\docstrings2rest.py cmf\cmf_core_src\docstrings-doxy.i >cmf\cmf_core_src\docstrings.i
+python tools\doxy2swig.py doxy\xml\index.xml doxy\docstrings-doxy.i
+python tools\docstrings2rest.py doxy\docstrings-doxy.i >cmf\cmf_core_src\docstrings.i
 echo Created rest complient docstrings in docstrings.i 
 :build
 if not "x%1x"=="xswigx" goto install

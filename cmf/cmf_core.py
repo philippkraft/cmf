@@ -448,22 +448,14 @@ PI = cvar.PI
 
 
 
-def dot(*args, **kwargs):
-    """
-    dot(point p1, point p2) -> double
 
-    double
-    cmf::geometry::dot(const point &p1, const point &p2) 
-    """
+
+def dot(*args, **kwargs):
+    """dot(point p1, point p2) -> double"""
     return _cmf_core.dot(*args, **kwargs)
 
 def distance(*args, **kwargs):
-    """
-    distance(point p1, point p2) -> double
-
-    double
-    cmf::geometry::distance(const point &p1, const point &p2) 
-    """
+    """distance(point p1, point p2) -> double"""
     return _cmf_core.distance(*args, **kwargs)
 class point_vector(object):
     """
@@ -1637,6 +1629,12 @@ never = cvar.never
 
 
 
+
+
+
+
+
+
 def nash_sutcliffe(*args, **kwargs):
     """
     nash_sutcliffe(timeseries model, timeseries observation) -> double
@@ -2598,7 +2596,7 @@ class MultiIntegrator(Integrator):
     of the integrators should not have direct connections over integrator
     boundaries.
 
-    C++ includes: MultiIntegrator.h 
+    C++ includes: multiintegrator.h 
     """
 
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
@@ -4190,6 +4188,8 @@ _cmf_core.NeumannBoundary_swigregister(NeumannBoundary)
 
 
 
+
+
 class NeumannFlux(flux_connection):
     """
 
@@ -4320,6 +4320,12 @@ WaterStorage.Solute = new_instancemethod(_cmf_core.WaterStorage_Solute, None, Wa
 WaterStorage.conc = new_instancemethod(_cmf_core.WaterStorage_conc, None, WaterStorage)
 _cmf_core.WaterStorage_swigregister(WaterStorage)
 # WaterStorage end
+
+
+
+
+
+
 
 
 
@@ -6031,6 +6037,8 @@ _cmf_core.Weather_swigregister(Weather)
 
 
 
+
+
 def Weather_get_snow_threshold(*args):
     """Weather_get_snow_threshold() -> double"""
     return _cmf_core.Weather_get_snow_threshold(*args)
@@ -6042,7 +6050,7 @@ class Meteorology(object):
     An abstract class, for objects generating Weather records at a
     specific time.
 
-    C++ includes: Meteorology.h 
+    C++ includes: meteorology.h 
     """
 
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
@@ -6109,7 +6117,7 @@ class ConstantMeteorology(Meteorology):
 
     Holds a Weather record and returns it for any date
 
-    C++ includes: Meteorology.h 
+    C++ includes: meteorology.h 
     """
 
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
@@ -6168,7 +6176,7 @@ class MeteoStation(object):
     the dial ETpot variation but results in erronous results if the
     timestep is daily.
 
-    C++ includes: Meteorology.h 
+    C++ includes: meteorology.h 
     """
 
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
@@ -6298,7 +6306,7 @@ class MeteoStationReference(Meteorology):
     Returns the weather at a given time for its place using
     MeteoStation::T_lapse
 
-    C++ includes: Meteorology.h 
+    C++ includes: meteorology.h 
     """
 
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
@@ -6362,7 +6370,7 @@ class MeteoStationList(object):
     Can find the nearest station for a position and calculate the
     temperature lapse
 
-    C++ includes: Meteorology.h 
+    C++ includes: meteorology.h 
     """
 
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
@@ -6511,7 +6519,7 @@ class IDW_Meteorology(Meteorology):
 
     See:  IDW
 
-    C++ includes: Meteorology.h 
+    C++ includes: meteorology.h 
     """
 
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
@@ -6551,7 +6559,7 @@ class aerodynamic_resistance(object):
     Abstract class. Child classes can be used to calculate aerodynamic
     resistances against turbulent heat fluxes.
 
-    C++ includes: Meteorology.h 
+    C++ includes: meteorology.h 
     """
 
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
@@ -6768,6 +6776,8 @@ _cmf_core.RainfallStation_swigregister(RainfallStation)
 
 
 
+
+
 class RainfallStationList(object):
     """
 
@@ -6891,6 +6901,10 @@ _cmf_core.RainfallStationReference_swigregister(RainfallStationReference)
 
 
 
+
+
+
+
 class IDWRainfall(RainSource):
     """
 
@@ -6921,6 +6935,8 @@ class IDWRainfall(RainSource):
     __swig_destroy__ = _cmf_core.delete_IDWRainfall
 _cmf_core.IDWRainfall_swigregister(IDWRainfall)
 # IDWRainfall end
+
+
 
 
 
@@ -7726,6 +7742,8 @@ _cmf_core.Topology_swigregister(Topology)
 
 
 
+
+
 class neighbor_iterator(object):
     """
 
@@ -8334,6 +8352,8 @@ _cmf_core.BrooksCoreyRetentionCurve_swigregister(BrooksCoreyRetentionCurve)
 
 
 
+
+
 class VanGenuchtenMualem(RetentionCurve):
     """
 
@@ -8700,6 +8720,8 @@ SoilLayer.get_saturated_depth = new_instancemethod(_cmf_core.SoilLayer_get_satur
 SoilLayer.get_flow_crosssection = new_instancemethod(_cmf_core.SoilLayer_get_flow_crosssection, None, SoilLayer)
 _cmf_core.SoilLayer_swigregister(SoilLayer)
 # SoilLayer end
+
+
 
 
 
@@ -9108,6 +9130,10 @@ MacroPore.get_crackwidth = new_instancemethod(_cmf_core.MacroPore_get_crackwidth
 MacroPore.get_flowwidth = new_instancemethod(_cmf_core.MacroPore_get_flowwidth, None, MacroPore)
 _cmf_core.MacroPore_swigregister(MacroPore)
 # MacroPore end
+
+
+
+
 
 
 
@@ -10126,6 +10152,8 @@ def OpenWaterStorage_create(*args):
 
 
 
+
+
 class Reach(OpenWaterStorage):
     """
 
@@ -10344,6 +10372,8 @@ _cmf_core.Reach_swigregister(Reach)
 
 
 
+
+
 class ReachIterator(object):
     """
 
@@ -10493,6 +10523,8 @@ SurfaceWater.get_height_function = new_instancemethod(_cmf_core.SurfaceWater_get
 SurfaceWater.get_cell = new_instancemethod(_cmf_core.SurfaceWater_get_cell, None, SurfaceWater)
 _cmf_core.SurfaceWater_swigregister(SurfaceWater)
 # SurfaceWater end
+
+
 
 
 
@@ -10673,6 +10705,8 @@ _cmf_core.DiffusiveSurfaceRunoff_swigregister(DiffusiveSurfaceRunoff)
 
 
 
+
+
 def DiffusiveSurfaceRunoff_get_linear_slope(*args):
     """DiffusiveSurfaceRunoff_get_linear_slope() -> real"""
     return _cmf_core.DiffusiveSurfaceRunoff_get_linear_slope(*args)
@@ -10790,6 +10824,8 @@ aquifer.get_K = new_instancemethod(_cmf_core.aquifer_get_K, None, aquifer)
 aquifer.get_abs_errtol = new_instancemethod(_cmf_core.aquifer_get_abs_errtol, None, aquifer)
 _cmf_core.aquifer_swigregister(aquifer)
 # aquifer end
+
+
 
 
 
@@ -11075,6 +11111,8 @@ _cmf_core.Richards_lateral_swigregister(Richards_lateral)
 # Richards_lateral end
 
 
+
+
 Richards_lateral.cell_connector = _cmf_core.cvar.Richards_lateral_cell_connector
 
 class TOPModelFlow(flux_connection):
@@ -11344,6 +11382,8 @@ _cmf_core.CanopyOverflow_swigregister(CanopyOverflow)
 
 
 
+
+
 class RutterInterception(flux_connection):
     """
 
@@ -11412,6 +11452,8 @@ _cmf_core.RutterInterception_swigregister(RutterInterception)
 
 
 
+
+
 class SimpleTindexSnowMelt(flux_connection):
     """
 
@@ -11467,6 +11509,8 @@ _cmf_core.SimpleTindexSnowMelt_swigregister(SimpleTindexSnowMelt)
 
 
 
+
+
 class EnergyBudgetSnowMelt(flux_connection):
     """
 
@@ -11496,6 +11540,8 @@ class EnergyBudgetSnowMelt(flux_connection):
     __swig_destroy__ = _cmf_core.delete_EnergyBudgetSnowMelt
 _cmf_core.EnergyBudgetSnowMelt_swigregister(EnergyBudgetSnowMelt)
 # EnergyBudgetSnowMelt end
+
+
 
 
 
@@ -11637,6 +11683,8 @@ _cmf_core.MatrixInfiltration_swigregister(MatrixInfiltration)
 
 
 
+
+
 class GreenAmptInfiltration(flux_connection):
     """
 
@@ -11734,6 +11782,8 @@ _cmf_core.GreenAmptInfiltration_swigregister(GreenAmptInfiltration)
 
 
 
+
+
 class SimpleInfiltration(flux_connection):
     """
 
@@ -11803,6 +11853,8 @@ _cmf_core.SimpleInfiltration_swigregister(SimpleInfiltration)
 
 
 
+
+
 class SWATPercolation(flux_connection):
     """
 
@@ -11844,6 +11896,8 @@ class SWATPercolation(flux_connection):
     __swig_destroy__ = _cmf_core.delete_SWATPercolation
 _cmf_core.SWATPercolation_swigregister(SWATPercolation)
 # SWATPercolation end
+
+
 
 
 
@@ -11906,6 +11960,8 @@ _cmf_core.Richards_swigregister(Richards)
 
 
 
+
+
 class SimplRichards(flux_connection):
     """
 
@@ -11950,6 +12006,8 @@ class SimplRichards(flux_connection):
     __swig_destroy__ = _cmf_core.delete_SimplRichards
 _cmf_core.SimplRichards_swigregister(SimplRichards)
 # SimplRichards end
+
+
 
 
 
@@ -12844,6 +12902,12 @@ _cmf_core.PenmanMonteithET_swigregister(PenmanMonteithET)
 
 
 
+
+
+
+
+
+
 class PriestleyTaylorET(stressedET):
     """
 
@@ -12896,6 +12960,8 @@ class PriestleyTaylorET(stressedET):
     __swig_destroy__ = _cmf_core.delete_PriestleyTaylorET
 _cmf_core.PriestleyTaylorET_swigregister(PriestleyTaylorET)
 # PriestleyTaylorET end
+
+
 
 
 
@@ -12968,6 +13034,8 @@ _cmf_core.HargreaveET_swigregister(HargreaveET)
 
 
 
+
+
 class TurcET(stressedET):
     """
 
@@ -13001,6 +13069,8 @@ class TurcET(stressedET):
     __swig_destroy__ = _cmf_core.delete_TurcET
 _cmf_core.TurcET_swigregister(TurcET)
 # TurcET end
+
+
 
 
 
@@ -13154,6 +13224,10 @@ class ShuttleworthWallace(transpiration_method, soil_evaporation_method, surface
 ShuttleworthWallace.refresh = new_instancemethod(_cmf_core.ShuttleworthWallace_refresh, None, ShuttleworthWallace)
 _cmf_core.ShuttleworthWallace_swigregister(ShuttleworthWallace)
 # ShuttleworthWallace end
+
+
+
+
 
 
 

@@ -27,7 +27,7 @@
   <span id="projectlogo"><img alt="cmf - the catchment modelling framework" src="cmf-logo-klein.png"/></span>
   <span style="padding-left: 2em;">
    <span id="projectname">cmf
-   &#160;<span id="projectnumber">1.2.1a0</span>
+   &#160;<span id="projectnumber">1.3</span>
    </span>
    <span id="projectbrief">The Catchment Modelling Framework</span>
   </span>
@@ -85,7 +85,10 @@ through the cell (in horizontal direction). Uses plt.quiver
 The FluxMap can be updated by calling it with the new timestep
 
 Usage:
-&gt;&gt;&gt; fm = FluxMap(project, cmf.Time())
+&gt;&gt;&gt; import cmf
+&gt;&gt;&gt; p = cmf.project()
+&gt;&gt;&gt; solver = cmf.RKFIntegrator(p, 1e-9)
+&gt;&gt;&gt; fm = FluxMap(p, cmf.Time())
 &gt;&gt;&gt; for t in solver.run(solver.t, solver.t + cmf.day * 30, cmf.h):
 ...     fm(t)
 </pre> </div><table class="memberdecls">
@@ -146,7 +149,7 @@ Public Member Functions</h2></td></tr>
 <a class="el" href="http://www.uni-giessen.de/hydro"> 
 Institute of Landscape Ecology and Resources Management,University of Gie&szlig;en</a>
 </h3></td>
-<td>Generated: Mon Apr 9 2018 14:39:03</td>
+<td>Generated: Wed Apr 11 2018 15:12:28</td>
 </tr></table>
 </small></address>
 </body>

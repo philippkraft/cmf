@@ -41,12 +41,9 @@ class Map(object):
     __call__(x,y,z), returns the object belonging to the position x,y,z
     """
 
-    @property
-    def default(self):
-        return self._default
 
     def __init__(self, default=None):
-        self._default = default
+        self.default = default
 
     def __iter__(self):
         yield self.default

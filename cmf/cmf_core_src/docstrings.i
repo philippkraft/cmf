@@ -83,7 +83,7 @@ V:   :math:`V m^3` the water volume in the storage
 Abstract class. Child classes can be used to calculate aerodynamic
 resistances against turbulent heat fluxes.
 
-C++ includes: Meteorology.h ";
+C++ includes: meteorology.h ";
 
 %feature("docstring")
 cmf::atmosphere::aerodynamic_resistance::~aerodynamic_resistance "virtual ~aerodynamic_resistance() ";
@@ -94,6 +94,23 @@ cmf::math::Time t) const =0
 
 aerodynamic resistance from ground to atmosphere (r_ag) and from
 canopy to atmosphere (r_ac) ";
+
+
+// File: classcmf_1_1draw_1_1cellmap_1_1_animator.xml
+%feature("docstring") cmf::draw::cellmap::Animator "";
+
+%feature("docstring")  cmf::draw::cellmap::Animator::__init__ "def
+__init__(self, cells, solver, start, end, step)
+
+:param cells: A sequence of cmf Cells, can be a project :param solver:
+A cmf solver Eg. cmf.CVodeDense() :param start: Start time :param end:
+End time :param step: Time step ";
+
+%feature("docstring")  cmf::draw::cellmap::Animator::__call__ "def
+__call__(self, args, kwargs) ";
+
+%feature("docstring")  cmf::draw::cellmap::Animator::draw "def
+draw(self, frame=None) ";
 
 
 // File: classcmf_1_1upslope_1_1aquifer.xml
@@ -1888,6 +1905,51 @@ connect(cmf::upslope::Cell &cell1, cmf::upslope::Cell &cell2,
 ptrdiff_t start_at_layer=0) const ";
 
 
+// File: classcmf_1_1draw_1_1cellmap_1_1_cell_map.xml
+%feature("docstring") cmf::draw::cellmap::CellMap "
+
+Draws a map of the cell geometries. Only functional, when shapely is
+installed.  A CellMap is created with cells to show and a function
+returning a value from a cell  Usage example: >>>import cmf
+>>>p=cmf.project() >>>def saturated_depth(c): ...    return
+c.saturated_depth >>>cm = CellMap(p, saturated_depth) ";
+
+%feature("docstring")  cmf::draw::cellmap::CellMap::__init__ "def
+__init__(self, cells, value_function, cmap=default_colormap,
+hold=True, vmin=None, vmax=None, kwargs)
+
+Creates a new map from cells  :param cells: :param value_function:
+:param cmap: :param hold: :param vmin: :param vmax: :param kwargs: ";
+
+%feature("docstring")  cmf::draw::cellmap::CellMap::__call__ "def
+__call__(self, recalc_range=False) ";
+
+%feature("docstring")  cmf::draw::cellmap::CellMap::autoscale "def
+autoscale(self)
+
+Overwrite base class of maplotlib.cm.ScalarMappable to prevent missuse
+";
+
+%feature("docstring")  cmf::draw::cellmap::CellMap::autoscale_None "def autoscale_None(self)
+
+Overwrite base class of maplotlib.cm.ScalarMappable to prevent missuse
+";
+
+%feature("docstring")  cmf::draw::cellmap::CellMap::color_values "def
+color_values(self) ";
+
+%feature("docstring")  cmf::draw::cellmap::CellMap::f "def f(self) ";
+
+%feature("docstring")  cmf::draw::cellmap::CellMap::f "def f(self,
+funct) ";
+
+%feature("docstring")  cmf::draw::cellmap::CellMap::get_artists "def
+get_artists(self)
+
+Returns the list of matplotlib.patches.Polygons in the cell map.
+Useful for Animations  :return: iterable of polygons ";
+
+
 // File: classcmf_1_1river_1_1_channel.xml
 %feature("docstring") cmf::river::Channel "
 
@@ -2221,7 +2283,7 @@ A primitive implementation of the Meteorology interface.
 
 Holds a Weather record and returns it for any date
 
-C++ includes: Meteorology.h ";
+C++ includes: meteorology.h ";
 
 %feature("docstring")
 cmf::atmosphere::ConstantMeteorology::ConstantMeteorology "ConstantMeteorology()
@@ -4482,6 +4544,27 @@ Without:  A flux_connection that is excluded from the waterbalance
 (e.g. to prevent closed circuits) ";
 
 
+// File: classcmf_1_1draw_1_1cellmap_1_1_flux_map.xml
+%feature("docstring") cmf::draw::cellmap::FluxMap "
+
+Draws for each cell an arrow indicating the direction and velocity of
+flow through the cell (in horizontal direction). Uses plt.quiver  The
+FluxMap can be updated by calling it with the new timestep  Usage: >>>
+import cmf >>> p = cmf.project() >>> solver = cmf.RKFIntegrator(p,
+1e-9) >>> fm = FluxMap(p, cmf.Time()) >>> for t in
+solver.run(solver.t, solver.t + cmf.day * 30, cmf.h): ...     fm(t) ";
+
+%feature("docstring")  cmf::draw::cellmap::FluxMap::__init__ "def
+__init__(self, cells, t, kwargs)
+
+Creates a new flux map :param cells: The cells to be used :param t:
+The current time step :param kwargs: Keyword arguments for plt.quiver
+";
+
+%feature("docstring")  cmf::draw::cellmap::FluxMap::__call__ "def
+__call__(self, t=None) ";
+
+
 // File: classcmf_1_1upslope_1_1connections_1_1_free_drainage_percolation.xml
 %feature("docstring")
 cmf::upslope::connections::FreeDrainagePercolation "
@@ -5579,6 +5662,46 @@ const
 returns the number of state variables ";
 
 
+// File: classcmf_1_1draw_1_1hillplot_1_1_hill_plot.xml
+%feature("docstring") cmf::draw::hillplot::HillPlot "
+
+Plots a hillslope using colored sheared rectangles for each layer and
+arrows (matplotlib.quiver) to show fluxes.  Properties:   -
+evalfunction: a function returning the value of a layer to plot. The
+value should be a float between 0..1 for scaling.     The default is:
+lambda l: l.wetness  - q_sub:  The matplotlib.Quiver object for
+subsurface fluxes  - q_surf: The matplotlib.Quiver object for
+subsurface fluxes  - title:  Title of the plot  - scale:  The scale of
+q_sub and q_surf ";
+
+%feature("docstring")  cmf::draw::hillplot::HillPlot::__init__ "def
+__init__(self, cells, t, solute=None, cmap=default_color_map)
+
+Creates a new HillPlot on the active figure, showing the state of each
+layer  - cells: The a sequence of cmf cells to use in this hill_plot.
+You can   use the whole project if you like  - t:     Current time
+step. Needed to retrieve the fluxes  - solute:The solute concentration
+to show. If None, the wetness of the    layer will be shown  - cmap: a
+matplotlib colormap (see module cm) for coloring ";
+
+%feature("docstring")  cmf::draw::hillplot::HillPlot::__call__ "def
+__call__(self, t, text='')
+
+Updates the hill_plot at time t. You can provide a title for the
+figure. If bool(title)==False, t is shown. ";
+
+%feature("docstring")  cmf::draw::hillplot::HillPlot::get_animator "def get_animator(self, integration)
+
+Returns a matplotlib.animation.FuncAnimator object that uses the
+integration iteratable to advance your model to animate the HillPlot
+Usage example:  >>>p=cmf.project() >>>solver = cmf.CVodeIntegrator(p,
+1e-9) >>>hp = HillPlot(p, solver.t) >>>animator =
+hp.get_animator(solver.run(datetime(2012, 1, 1), datetime(2012, 2, 1),
+timedelta(hours=1)))  :param integration: An iterable that advances
+the model and yields the current time :return: A
+matplotlib.animation.FuncAnimator ";
+
+
 // File: classcmf_1_1river_1_1_i_channel.xml
 %feature("docstring") cmf::river::IChannel "
 
@@ -5697,7 +5820,7 @@ distance weighted (IDW) method.
 
 See:  IDW
 
-C++ includes: Meteorology.h ";
+C++ includes: meteorology.h ";
 
 %feature("docstring")
 cmf::atmosphere::IDW_Meteorology::IDW_Meteorology "IDW_Meteorology(const cmf::geometry::point &position, const
@@ -6309,6 +6432,39 @@ double q(double h, double slope) const ";
 
 %feature("docstring")  cmf::river::IVolumeHeightFunction::V "virtual
 double V(double h) const =0 ";
+
+
+// File: classcmf_1_1jacobian_1_1_jacobian.xml
+%feature("docstring") cmf::jacobian::Jacobian "
+
+Approximates the jacobian for a cmf solver J[i,j] =
+(dxdt(S_i,t)[j]-dxdt(S,t)[j])/delta S is the state vector S_i equals
+S, except for S_i[i]=S[i]+delta delta is the finite difference to
+approximate the Jacobian.     delta should be a small number, but big
+enough to avoid floating point errors.      1e-6 to 1e-9 should be
+nice values  Usage to show the jacobian:     # Allocate memory for the
+jacobian     jac = Jacobian(solver,delta)     # Calculate the Jacobian
+J = jac()     # Show the Jacobian
+imshow(jac(),interpolation='nearest') ";
+
+%feature("docstring")  cmf::jacobian::Jacobian::__init__ "def
+__init__(self, solver, delta=1e-6)
+
+solver is a cmf integrator, delta is the amount the state should be
+changed ";
+
+%feature("docstring")  cmf::jacobian::Jacobian::__call__ "def
+__call__(self) ";
+
+%feature("docstring")  cmf::jacobian::Jacobian::__len__ "def
+__len__(self) ";
+
+%feature("docstring")  cmf::jacobian::Jacobian::dxdt "def dxdt(self)
+
+Returns the current right hand side of the ODE for the current states
+and the current time ";
+
+%feature("docstring")  cmf::jacobian::Jacobian::t "def t(self) ";
 
 
 // File: classcmf_1_1upslope_1_1connections_1_1_jarvis_macro_flow.xml
@@ -8533,6 +8689,33 @@ set_tracer_filter(solute S, real value) ";
 %feature("docstring")  cmf::river::Manning_Kinematic::to_string "virtual std::string to_string() const ";
 
 
+// File: classcmf_1_1maps_1_1_map.xml
+%feature("docstring") cmf::maps::Map "
+
+A Map is the base class for different spatial data distributions. The
+base version contains returns always the default value  A Map should
+implement the following functions: __iter__, returns an iterator over
+the items of a map values(), returns an iterator over the different
+objects of a map __call__(x,y,z), returns the object belonging to the
+position x,y,z ";
+
+%feature("docstring")  cmf::maps::Map::__init__ "def __init__(self,
+default=None) ";
+
+%feature("docstring")  cmf::maps::Map::__call__ "def __call__(self,
+x, y, z=0)
+
+returns default, regardless of the position given ";
+
+%feature("docstring")  cmf::maps::Map::__iter__ "def __iter__(self)
+";
+
+%feature("docstring")  cmf::maps::Map::__nonzero__ "def
+__nonzero__(self) ";
+
+%feature("docstring")  cmf::maps::Map::values "def values(self) ";
+
+
 // File: classcmf_1_1upslope_1_1connections_1_1_matrix_infiltration.xml
 %feature("docstring") cmf::upslope::connections::MatrixInfiltration "
 
@@ -8794,7 +8977,7 @@ V(double h) const ";
 An abstract class, for objects generating Weather records at a
 specific time.
 
-C++ includes: Meteorology.h ";
+C++ includes: meteorology.h ";
 
 %feature("docstring")  cmf::atmosphere::Meteorology::~Meteorology "virtual ~Meteorology() ";
 
@@ -8840,7 +9023,7 @@ daily=false, Radiation is given as an hourly mean value, which shows
 the dial ETpot variation but results in erronous results if the
 timestep is daily.
 
-C++ includes: Meteorology.h ";
+C++ includes: meteorology.h ";
 
 /*  Location and behaviour properties  */
 
@@ -8896,7 +9079,7 @@ A list of meteorological stations.
 Can find the nearest station for a position and calculate the
 temperature lapse
 
-C++ includes: Meteorology.h ";
+C++ includes: meteorology.h ";
 
 %feature("docstring")
 cmf::atmosphere::MeteoStationList::MeteoStationList "MeteoStationList()
@@ -8985,7 +9168,7 @@ A reference to a meteorological station.
 Returns the weather at a given time for its place using
 MeteoStation::T_lapse
 
-C++ includes: Meteorology.h ";
+C++ includes: meteorology.h ";
 
 %feature("docstring")
 cmf::atmosphere::MeteoStationReference::MeteoStationReference "MeteoStationReference(MeteoStation::ptr station, cmf::geometry::point
@@ -9037,7 +9220,7 @@ The MultiIntegrator is a wrapper for a bunch integrators. The states
 of the integrators should not have direct connections over integrator
 boundaries.
 
-C++ includes: MultiIntegrator.h ";
+C++ includes: multiintegrator.h ";
 
 /*  Accuracy parameters  */
 
@@ -9204,6 +9387,41 @@ set_states(real *newStates) ";
 size() const
 
 returns the number of state variables ";
+
+
+// File: classcmf_1_1maps_1_1_nearest_neighbor_map.xml
+%feature("docstring") cmf::maps::NearestNeighborMap "
+
+A map (spatial distribution of data) returning the nearest neighbor to
+the queried position Stores position referenced objects.  z_weight is
+a weight, how important vertical differences are for neighborhood. 0
+means only horizontal distance and a high value only uses the height
+as a distance measure. The distance to be minimized is calculated as:
+sqrt((x1-x2)**2+(y1-y2)**2)+abs(z1-z2)*z_weight ";
+
+%feature("docstring")  cmf::maps::NearestNeighborMap::__init__ "def
+__init__(self, z_weight=0) ";
+
+%feature("docstring")  cmf::maps::NearestNeighborMap::__call__ "def
+__call__(self, x, y, z=0)
+
+returns the nearest neighbor object to the given position     The
+distance to be minimized is calculated as:
+sqrt((x1-x2)**2+(y1-y2)**2)+abs(z1-z2)*z_weight ";
+
+%feature("docstring")  cmf::maps::NearestNeighborMap::__iter__ "def
+__iter__(self) ";
+
+%feature("docstring")  cmf::maps::NearestNeighborMap::__nonzero__ "def __nonzero__(self) ";
+
+%feature("docstring")  cmf::maps::NearestNeighborMap::append "def
+append(self, position, object) ";
+
+%feature("docstring")  cmf::maps::NearestNeighborMap::remove "def
+remove(self, position) ";
+
+%feature("docstring")  cmf::maps::NearestNeighborMap::values "def
+values(self) ";
 
 
 // File: classcmf_1_1upslope_1_1neighbor__iterator.xml
@@ -10458,6 +10676,35 @@ size() const
 Return the number of points in the point_vector. ";
 
 
+// File: classcmf_1_1maps_1_1_polygon_map.xml
+%feature("docstring") cmf::maps::PolygonMap "
+
+A map of polygons. Each object is referenced with a shapely polygon.
+Returns the object of the first polygon, within the query position
+lays. ";
+
+%feature("docstring")  cmf::maps::PolygonMap::__init__ "def
+__init__(self, quad_tree_raster_size=20) ";
+
+%feature("docstring")  cmf::maps::PolygonMap::__call__ "def
+__call__(self, x, y, z=0) ";
+
+%feature("docstring")  cmf::maps::PolygonMap::__iter__ "def
+__iter__(self) ";
+
+%feature("docstring")  cmf::maps::PolygonMap::__nonzero__ "def
+__nonzero__(self) ";
+
+%feature("docstring")  cmf::maps::PolygonMap::append "def
+append(self, polygon, object) ";
+
+%feature("docstring")  cmf::maps::PolygonMap::remove "def
+remove(self, polygon) ";
+
+%feature("docstring")  cmf::maps::PolygonMap::values "def
+values(self) ";
+
+
 // File: classcmf_1_1water_1_1_power_law_connection.xml
 %feature("docstring") cmf::water::PowerLawConnection "
 
@@ -11095,6 +11342,46 @@ Parameters:
 
 z_weight:   :math:`w_z` the weight of height difference between cell and
 station ";
+
+
+// File: classcmf_1_1geometry_1_1qtree_1_1_quadtree.xml
+%feature("docstring") cmf::geometry::qtree::Quadtree "
+
+A simple quad tree to check if the boundaries of geometries overlap or
+not ";
+
+%feature("docstring")  cmf::geometry::qtree::Quadtree::__init__ "def
+__init__(self, area, divisions=50)
+
+:param area: The total area of the study area in m2 :param divisions:
+The number of divisions of the area, default is 20 ";
+
+%feature("docstring")  cmf::geometry::qtree::Quadtree::__call__ "def
+__call__(self, bounds)
+
+Get all objects in the given boundaries :param bounds: The boundary
+rectangle of the tree. A 4 item sequence (xmin, ymin, xmax, ymax)
+:return: ";
+
+%feature("docstring")  cmf::geometry::qtree::Quadtree::append "def
+append(self, obj, bounds)
+
+Appends an object to the qtree using the given bounds. :param obj: An
+object to append to the tree, must be hashable :param bounds: The
+boundary rectangle of the object. A 4 item sequence (xmin, ymin, xmax,
+ymax) ";
+
+%feature("docstring")  cmf::geometry::qtree::Quadtree::extend "def
+extend(self, objects_with_boundaries)
+
+Extends the Quadtree with objects :param objects_with_boundaries: an
+iterable of (object, bounds) tuples :return: ";
+
+%feature("docstring")  cmf::geometry::qtree::Quadtree::iterbounds "def iterbounds(self, bounds)
+
+Iterates through all positions in the boundaries :param bounds: The
+boundary rectangle. A 4 item sequence (xmin, ymin, xmax, ymax)
+:return: (i,j) position tuple ";
 
 
 // File: classcmf_1_1upslope_1_1connections_1_1_rainfall.xml
@@ -12607,6 +12894,57 @@ cmf::upslope::connections::RutterInterception::to_string "virtual
 std::string to_string() const ";
 
 
+// File: classcmf_1_1geos__shapereader_1_1_shapefile.xml
+%feature("docstring") cmf::geos_shapereader::Shapefile "
+
+The shapefile class, create it from a .shp file  The shapefile class
+implements most of the sequence protocol Usage:
+shp=Shapefile('theshapes.shp') # Load the shape file
+print(shp[0].shape.area)        # Print area of shape
+print(shp[0].Name)              # Prints the name of the shape,
+assuming theshapes.dbf has a field 'Name' ";
+
+%feature("docstring")  cmf::geos_shapereader::Shapefile::__init__ "def __init__(self, filename, coordinatedigits=12)
+
+Loads a shapefile from a filename ";
+
+%feature("docstring")  cmf::geos_shapereader::Shapefile::__getitem__ "def __getitem__(self, index) ";
+
+%feature("docstring")  cmf::geos_shapereader::Shapefile::__iter__ "def __iter__(self) ";
+
+%feature("docstring")  cmf::geos_shapereader::Shapefile::__len__ "def
+__len__(self) ";
+
+%feature("docstring")  cmf::geos_shapereader::Shapefile::readheader "def readheader(self, f)
+
+reads the header of a shape file (see ESRI Shapefile Whitepaper
+http://www.esri.com/library/whitepapers/pdfs/shapefile.pdf) ";
+
+%feature("docstring")  cmf::geos_shapereader::Shapefile::readrecord "def readrecord(self, f, coordinatedigits)
+
+Reads a record from the shapefile see:
+http://www.esri.com/library/whitepapers/pdfs/shapefile.pdf ";
+
+%feature("docstring")  cmf::geos_shapereader::Shapefile::shapes "def
+shapes(self)
+
+Returns a list of shapes ";
+
+
+// File: classcmf_1_1draw_1_1shapemap_1_1_shape_map.xml
+%feature("docstring") cmf::draw::shapemap::ShapeMap "
+
+self.fc_function: A callable taking a feature and returning a color
+(fillcolor) self.lw_function: A callable taking a feature and
+returning a scalar (line width) ";
+
+%feature("docstring")  cmf::draw::shapemap::ShapeMap::__init__ "def
+__init__(self, features, kwargs) ";
+
+%feature("docstring")  cmf::draw::shapemap::ShapeMap::refresh "def
+refresh(self) ";
+
+
 // File: classcmf_1_1upslope_1_1_e_t_1_1_shuttleworth_wallace.xml
 %feature("docstring") cmf::upslope::ET::ShuttleworthWallace "
 
@@ -12842,6 +13180,19 @@ std::string short_string() const ";
 %feature("docstring")
 cmf::upslope::connections::SimpleInfiltration::to_string "virtual
 std::string to_string() const ";
+
+
+// File: classcmf_1_1maps_1_1_simple_quad_tree.xml
+%feature("docstring") cmf::maps::SimpleQuadTree "";
+
+%feature("docstring")  cmf::maps::SimpleQuadTree::__init__ "def
+__init__(self, dx=20, dy=20) ";
+
+%feature("docstring")  cmf::maps::SimpleQuadTree::add_object "def
+add_object(self, object, bounds) ";
+
+%feature("docstring")  cmf::maps::SimpleQuadTree::get_objects "def
+get_objects(self, bounds) ";
 
 
 // File: classcmf_1_1upslope_1_1connections_1_1_simple_tindex_snow_melt.xml
@@ -14253,6 +14604,31 @@ cmf::math::StateVariableOwner::~StateVariableOwner "virtual
 
 Add the state variables, owned by an object derived from
 StateVariableOwner, to the given vector. ";
+
+
+// File: classcmf_1_1stopwatch_1_1_stop_watch.xml
+%feature("docstring") cmf::stopwatch::StopWatch "
+
+A stopwatch to estimated the total time of a process    Creating a
+StopWatch: >>>stopwatch=StopWatch(start,stop)  Start and end are
+indicators to describe the progress of a process.  Start is the
+indicator value at the beginning of the process. As default they are
+0.0 and 1.0.  Starting the StopWatch again: >>>stopwatch.start()
+Getting the elapsed time, the total time and the remaining time of the
+process in seconds: >>>elapsed,total,remaining = stopwatch(progress)
+Where progress is a process progress indicator matching start and stop
+Example: stopwatch=StopWatch(0,10) for i in range(10): time.sleep(1)
+print('elapsed = %0.2fs, total= %0.2fs, remaining = %0.2fs' %
+stopwatch(i+1)) ";
+
+%feature("docstring")  cmf::stopwatch::StopWatch::__init__ "def
+__init__(self, start=0.0, stop=1.0) ";
+
+%feature("docstring")  cmf::stopwatch::StopWatch::__call__ "def
+__call__(self, progress) ";
+
+%feature("docstring")  cmf::stopwatch::StopWatch::start "def
+start(self) ";
 
 
 // File: classcmf_1_1upslope_1_1_e_t_1_1stressed_e_t.xml
@@ -17428,6 +17804,14 @@ Returns a string representation. ";
 
 
 // File: namespacecmf.xml
+%feature("docstring")  cmf::atmosphere::connect_cells_with_flux "def
+cmf.connect_cells_with_flux(cells, connection, start_at_layer=0)
+
+Connects all cells in cells (sequence or generator) with a flux
+connection connection is an subclass of cmf.FluxConnection which
+exposes the cell_connector callable                 (e.g. lateral
+subsurface fluxes and surface manning flux) start_at_layer : if the
+flux connection should only be used for deeper layers ";
 
 
 // File: namespacecmf_1_1atmosphere.xml
@@ -17578,12 +17962,178 @@ rH:  Rel. humidity in %
 ";
 
 
+// File: namespacecmf_1_1describe.xml
+%feature("docstring")  cmf::describe::describe "def
+cmf.describe.describe(cmfobject, out=None)
+
+Describes a cmf object in a file like object or returns the
+description.  If no special description method for the class of
+cmfobject is available, the function writes the string representation
+:param cmfobject: any cmf object eg. project, Cell, timeseries :param
+out: filelike object, if None function returns the description as
+string :return: If out is None it returns the description as string,
+else no return ";
+
+
+// File: namespacecmf_1_1draw.xml
+
+
+// File: namespacecmf_1_1draw_1_1cellmap.xml
+
+
+// File: namespacecmf_1_1draw_1_1draw__misc.xml
+%feature("docstring")  cmf::draw::draw_misc::bar_timeseries "def
+cmf.draw.draw_misc.bar_timeseries(data, kwargs)
+
+Makes a bar graph from a cmf.timeseries using pylab.bar :param data:
+cmf.timeseries :param kwargs: Keyword arguments of pylab.bar :return:
+as pylab.bar ";
+
+%feature("docstring")  cmf::draw::draw_misc::plot_image "def
+cmf.draw.draw_misc.plot_image(filename, kwargs)
+
+Plots an image with an ESRI Worldfile as a map background. Uses
+matplotlib.pylab.imshow :param filename: Filename of the image. :param
+kwargs: Keyword arguments to imshow :return: Image from imshow ";
+
+%feature("docstring")  cmf::draw::draw_misc::plot_timeseries "def
+cmf.draw.draw_misc.plot_timeseries(data, style='-', kwargs)
+
+Plots a cmf.timeseries as a line using pylab.plot :param data:
+cmf.timeseries :param style: Style code for pylab.plot :param kwargs:
+Keyword arguments for pylab.plot :return: matplotlib line object ";
+
+
+// File: namespacecmf_1_1draw_1_1hillplot.xml
+
+
+// File: namespacecmf_1_1draw_1_1shapemap.xml
+
+
+// File: namespacecmf_1_1fit__retention__curve.xml
+%feature("docstring")  cmf::fit_retention_curve::fit_bc "def
+cmf.fit_retention_curve.fit_bc(pF, theta, count=20, verbose=False)
+
+Fits a Brooks-Corey retention curve into data pF: a sequence of pF
+values theta: an array of water contents ";
+
+%feature("docstring")  cmf::fit_retention_curve::fit_vgm "def
+cmf.fit_retention_curve.fit_vgm(pF, theta, variable_m=False, count=20,
+fitlevel=None, verbose=False)
+
+Fits a Van Genuchten / Mualem retention curve into data pF: a sequence
+of pF values theta: an array of water contents alpha_range: a
+2-sequence holding the range for alpha values n_range: a 2-sequence
+holding the range for n values ";
+
+%feature("docstring")  cmf::fit_retention_curve::get_error_bc "def
+cmf.fit_retention_curve.get_error_bc(params, pF, theta) ";
+
+%feature("docstring")  cmf::fit_retention_curve::get_error_vgm "def
+cmf.fit_retention_curve.get_error_vgm(params, pF, theta) ";
+
+%feature("docstring")  cmf::fit_retention_curve::make_vgm "def
+cmf.fit_retention_curve.make_vgm(params) ";
+
+%feature("docstring")  cmf::fit_retention_curve::narrowparameters_bc "def cmf.fit_retention_curve.narrowparameters_bc(pF, theta, phi, b,
+w_x, count=10000, perc=10)
+
+Narrows the parameter space down to the best perc (default=10) percent
+of the results pF: A sequence of pF values matching theta theta: A
+sequence of water content values for the corresponding pF values phi:
+A distribution of porosity values, only the range is used alpha: A
+distribution of VanGenuchten alpha values, only the range is used n: A
+distribution of VanGenuchten n values, only the range is used count:
+Number of random values to be drawn in the range of the parameters
+perc: percentile of best fitting parameters  Returns:
+phi,alpha,n,vgm_err: New distribution of phi, alpha, n and the
+corrseponding errors                      for the best perc% of the
+results ";
+
+%feature("docstring")  cmf::fit_retention_curve::narrowparameters_vgm
+"def cmf.fit_retention_curve.narrowparameters_vgm(pF, theta, phi,
+alpha, n, theta_r=(0.0, 0.0), count=10000, perc=10)
+
+Narrows the parameter space down to the best perc (default=10) percent
+of the results pF: A sequence of pF values matching theta theta: A
+sequence of water content values for the corresponding pF values phi:
+A distribution of porosity values, only the range is used alpha: A
+distribution of VanGenuchten alpha values, only the range is used n: A
+distribution of VanGenuchten n values, only the range is used count:
+Number of random values to be drawn in the range of the parameters
+perc: percentile of best fitting parameters  Returns:
+phi,alpha,n,vgm_err: New distribution of phi, alpha, n and the
+corrseponding errors                      for the best perc% of the
+results                       Usage:     # Create a priori range phi,
+n, alpha = ";
+
+%feature("docstring")  cmf::fit_retention_curve::plot_vgms "def
+cmf.fit_retention_curve.plot_vgms(pF, theta, phi, alpha, n, theta_r)
+";
+
+
 // File: namespacecmf_1_1geometry.xml
-%feature("docstring")  cmf::geometry::distance "double
+%feature("docstring")  cmf::geometry::geocell::distance "double
 cmf::geometry::distance(const point &p1, const point &p2) ";
 
-%feature("docstring")  cmf::geometry::dot "double
+%feature("docstring")  cmf::geometry::geocell::dot "double
 cmf::geometry::dot(const point &p1, const point &p2) ";
+
+
+// File: namespacecmf_1_1geometry_1_1geocell.xml
+%feature("docstring")  cmf::geometry::geocell::add_geometry_property "def cmf.geometry.geocell.add_geometry_property()
+
+Extends the Cell class with a geometry attribute :return: ";
+
+%feature("docstring")  cmf::geometry::geocell::create_cell "def
+cmf.geometry.geocell.create_cell(project, polygon, height, id=None,
+with_surfacewater=True)
+
+Creates a cell from a shapely polygon and stores the geometry in
+cell.geometry  :param project: the cmf project of the cell :param
+polygon: the shapely Polygon :param height: the height of the cell
+:param id: the id of the cell, only set if not None :param
+with_surfacewater: True, if a surfacewater storage will be created
+:return: The new cell ";
+
+%feature("docstring")  cmf::geometry::geocell::mesh_project "def
+cmf.geometry.geocell.mesh_project(project, min_intersection=0,
+verbose=False)
+
+Get the topologcial information from the geometry This may take some
+time :param project: The cmf project. The cells of the project need to
+have geometry :param min_intersection: Minimum intersection length in
+m :param verbose: Set True for report of action and additional
+warnings :return: ";
+
+
+// File: namespacecmf_1_1geometry_1_1qtree.xml
+
+
+// File: namespacecmf_1_1geos__shapereader.xml
+
+
+// File: namespacecmf_1_1jacobian.xml
+%feature("docstring")  cmf::jacobian::connected_states "def
+cmf.jacobian.connected_states(states)
+
+Get a set of all connected nodes, indicated by the node_id's  :param
+states: An iterable of states :return: a set of node_id tuples ";
+
+%feature("docstring")  cmf::jacobian::connector_matrix "def
+cmf.jacobian.connector_matrix(states, compression_factor=1)
+
+Returns a matrix that shows the connectivity between the given states
+:param states: A sequence of states to create the matrix :param
+compression_factor: Large matrices can compressed with a factor.
+:return: A symmetric 2d matrix with 1 for connected states and 0 for
+unconnected states. Compressed matrices contain larger numbers for the
+count of connection in the compressed field ";
+
+
+// File: namespacecmf_1_1maps.xml
+%feature("docstring")  cmf::maps::distance "def cmf.maps.distance(p1,
+p2) ";
 
 
 // File: namespacecmf_1_1math.xml
@@ -17635,6 +18185,9 @@ Ensures that rivers have a monotone downward flow direction.
 
 Reaches with a bottom higher than any upstream reach are lowered to
 the minimum height of any (possibly distant) upstream reach. ";
+
+
+// File: namespacecmf_1_1stopwatch.xml
 
 
 // File: namespacecmf_1_1upslope.xml
@@ -17862,11 +18415,23 @@ upper and SystemBridge, the SystemBridge reacts as an Dirichlet
 boundary condition, providing the potential of the lower node. ";
 
 
+// File: namespacecmf__core.xml
+
+
 // File: namespacestd.xml
 %feature("docstring")  std::isfinite "bool std::isfinite(double v) ";
 
 
-// File: _meteorology_8h.xml
+// File: ____init_____8py.xml
+
+
+// File: draw_2____init_____8py.xml
+
+
+// File: geometry_2____init_____8py.xml
+
+
+// File: meteorology_8h.xml
 
 
 // File: precipitation_8h.xml
@@ -17896,7 +18461,7 @@ boundary condition, providing the potential of the lower node. ";
 // File: integrator_8h.xml
 
 
-// File: _multi_integrator_8h.xml
+// File: multiintegrator_8h.xml
 
 
 // File: _r_k_fintegrator_8h.xml
@@ -18987,6 +19552,189 @@ ymax=1) ";
 // File: _water_storage_8h.xml
 
 
+// File: describe_8py.xml
+
+
+// File: cellmap_8py.xml
+
+
+// File: draw__misc_8py.xml
+
+
+// File: hillplot_8py.xml
+
+
+// File: shapemap_8py.xml
+
+
+// File: fit__retention__curve_8py.xml
+
+
+// File: geocell_8py.xml
+
+
+// File: qtree_8py.xml
+
+
+// File: geos__shapereader_8py.xml
+
+
+// File: jacobian_8py.xml
+
+
+// File: maps_8py.xml
+
+
+// File: stopwatch_8py.xml
+
+
+// File: _cmf_introduction_8md.xml
+
+
+// File: _cmf_recommended_software_environment_8md.xml
+
+
+// File: _cmf_software_objects_8md.xml
+
+
+// File: _descriptor_8md.xml
+
+
+// File: _finite_volume_method_8md.xml
+
+
+// File: fluxogram__and__get__fluxes_8md.xml
+
+
+// File: _cmf_download_8md.xml
+
+
+// File: _cmf_install_8md.xml
+
+
+// File: _cmf_install_hpc_8md.xml
+
+
+// File: _cmf_install_ubuntu_8md.xml
+
+
+// File: _cmf_install_windows_8md.xml
+
+
+// File: _publication_list_8md.xml
+
+
+// File: _software_objects_8md.xml
+
+
+// File: _cmf__lumped__simple_8md.xml
+
+
+// File: _c_m_f__lumped__without__spotpy_8md.xml
+
+
+// File: _cmflumped_8md.xml
+
+
+// File: _cmf_tut1d_8md.xml
+
+
+// File: _cmf_tut2d_8md.xml
+
+
+// File: _cmf_tut3d_8md.xml
+
+
+// File: _cmf_tut_boundary_8md.xml
+
+
+// File: _cmf_tut_boundary2_8md.xml
+
+
+// File: _cmf_tut_cell_8md.xml
+
+
+// File: _cmf_tut_channel_8md.xml
+
+
+// File: _cmf_tut_darcian_lateral_flow_8md.xml
+
+
+// File: _cmf_tut_e_t_8md.xml
+
+
+// File: _cmf_tut_first_model_8md.xml
+
+
+// File: _cmf_tut_fluxes_8md.xml
+
+
+// File: _cmf_tut_intercept_8md.xml
+
+
+// File: _cmf_tut_kinematic_wave_8md.xml
+
+
+// File: _cmf_tut_meteostation_8md.xml
+
+
+// File: _cmf_tut_need_to_know_8md.xml
+
+
+// File: _cmf_tut_objective_function_8md.xml
+
+
+// File: _cmf_tut_project_8md.xml
+
+
+// File: _cmf_tut_retentioncurve_8md.xml
+
+
+// File: _cmf_tut_snow_8md.xml
+
+
+// File: _cmf_tut_solute_transport1_d_8md.xml
+
+
+// File: _cmf_tut_solver_8md.xml
+
+
+// File: _cmf_tut_space_time_8md.xml
+
+
+// File: _cmf_tut_start_8md.xml
+
+
+// File: _cmf_tut_surface_runoff_8md.xml
+
+
+// File: _cmf_tut_technical_8md.xml
+
+
+// File: _cmf_tut_test_data_8md.xml
+
+
+// File: _cmf_tut_units_8md.xml
+
+
+// File: _cmf_tut_volume_height_8md.xml
+
+
+// File: _cmf_tut_waterbalance_8md.xml
+
+
+// File: _install_check_8md.xml
+
+
+// File: semi__distributed_8md.xml
+
+
+// File: _simple___infiltration_8md.xml
+
+
+// File: _wiki_start_8md.xml
+
+
 // File: group__boundary.xml
 
 
@@ -19023,6 +19771,150 @@ ymax=1) ";
 // File: group__latflux.xml
 
 
+// File: _cmf_introduction.xml
+
+
+// File: _cmf_recommended_software_environment.xml
+
+
+// File: _cmf_software_objects.xml
+
+
+// File: _descriptor.xml
+
+
+// File: _finite_volume_method.xml
+
+
+// File: fluxogram_and_get_fluxes.xml
+
+
+// File: _cmf_download.xml
+
+
+// File: _cmf_install.xml
+
+
+// File: _cmf_install_hpc.xml
+
+
+// File: _cmf_install_ubuntu.xml
+
+
+// File: _cmf_install_windows.xml
+
+
+// File: _publication_list.xml
+
+
+// File: _software_objects.xml
+
+
+// File: cmf_lumped_simple.xml
+
+
+// File: cmf_lumped_without_spotpy.xml
+
+
+// File: _cmflumped.xml
+
+
+// File: _cmf_tut1d.xml
+
+
+// File: _cmf_tut2d.xml
+
+
+// File: _cmf_tut3d.xml
+
+
+// File: _cmf_tut_boundary.xml
+
+
+// File: _cmf_tut_boundary2.xml
+
+
+// File: _cmf_tut_cell.xml
+
+
+// File: _cmf_tut_channel.xml
+
+
+// File: _cmf_tut_darcian_lateral_flow.xml
+
+
+// File: _cmf_tut_e_t.xml
+
+
+// File: _cmf_tut_first_model.xml
+
+
+// File: _cmf_tut_fluxes.xml
+
+
+// File: _cmf_tut_intercept.xml
+
+
+// File: _cmf_tut_kinematic_wave.xml
+
+
+// File: _cmf_tut_meteostation.xml
+
+
+// File: _cmf_tut_need_to_know.xml
+
+
+// File: _cmf_tut_objective_function.xml
+
+
+// File: _cmf_tut_project.xml
+
+
+// File: _cmf_tut_retentioncurve.xml
+
+
+// File: _cmf_tut_snow.xml
+
+
+// File: _cmf_tut_solute_transport1_d.xml
+
+
+// File: _cmf_tut_solver.xml
+
+
+// File: _cmf_tut_space_time.xml
+
+
+// File: tutorial.xml
+
+
+// File: _cmf_tut_surface_runoff.xml
+
+
+// File: _cmf_tut_technical.xml
+
+
+// File: _cmf_tut_test_data.xml
+
+
+// File: _cmf_tut_units.xml
+
+
+// File: _cmf_tut_volume_height.xml
+
+
+// File: _cmf_tut_waterbalance.xml
+
+
+// File: _install_check.xml
+
+
+// File: semi_distributed.xml
+
+
+// File: simple_infiltration.xml
+
+
 // File: todo.xml
 
 
@@ -19042,6 +19934,12 @@ ymax=1) ";
 
 
 // File: dir_b27729de313f47365c1def7a853e5f37.xml
+
+
+// File: dir_e99589850f294dbf4b725494ab1c642e.xml
+
+
+// File: dir_12788de71013d9dcf17a564ce1b123ce.xml
 
 
 // File: dir_3f1ba486f713b268e033cb12ab59a41b.xml
@@ -19081,5 +19979,8 @@ ymax=1) ";
 
 
 // File: dir_77005acaedd4c0a991f05071f95b4942.xml
+
+
+// File: indexpage.xml
 
 
