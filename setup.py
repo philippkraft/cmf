@@ -46,6 +46,7 @@ try:
 except ImportError:
     from distutils.command.build_py import build_py
 
+swig = False
 
 # noinspection PyPep8Naming
 class cmf_build_ext(build_ext):
@@ -61,6 +62,33 @@ class cmf_build_ext(build_ext):
         except (AttributeError, ValueError):
             pass
         build_ext.build_extensions(self)
+
+class cmf_build_py(build_py):
+
+    def run(self):
+        """
+        Custom build class to remove _swigregister rubbish from cmf_core.py
+        """
+        import re
+        if swig:
+            if os.path.exists('cmf/cmf_core_src/cmf_core.py'):
+                fn = 'cmf/cmf_core_src/cmf_core.py'
+            elif os.path.exists('cmf/cmf_core.py'):
+                fn = 'cmf/cmf_core.py'
+            else:
+                raise RuntimeError('cmf_core.py not found, run "python setup.py build_ext swig" to create it')
+            cmf_core_py = open(fn).read()
+            rp_call = re.compile(r'^(\w*?)_swigregister\((\w*?)\)', re.MULTILINE)
+            cmf_core_py, n = rp_call.subn('# \\1 end', cmf_core_py)
+            print(n, 'CLASS_swigregister(CLASS) lines deleted')
+            rp_def = re.compile(r'^(\w*?)_swigregister = _cmf_core\.(\w*?)_swigregister', re.MULTILINE)
+            cmf_core_py, n = rp_def.subn('_cmf_core.\\1_swigregister(\\1)', cmf_core_py)
+            print(n, 'CLASS_swigregister = _cmf_core... -> _cmf_core.CLASS_swigregister(CLASS)')
+            open('cmf/cmf_core.py', 'w').write(cmf_core_py)
+
+            if os.path.exists('cmf/cmf_core_src/cmf_core.py'):
+                os.unlink('cmf/cmf_core_src/cmf_core.py')
+        build_py.run(self)
 
 
 def updateversion():
@@ -238,7 +266,7 @@ if __name__ == '__main__':
           description=description,
           long_description=long_description,
           classifiers=classifiers,
-          cmdclass=dict(build_py=build_py,
+          cmdclass=dict(build_py=cmf_build_py,
                         build_ext=cmf_build_ext),
           )
     print("build ok")
