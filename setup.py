@@ -217,17 +217,19 @@ def make_cmf_core(swig, openmp):
     if swig:
         # Adding cmf.i when build_ext should perform the swig call
         cmf_files.append("cmf/cmf_core_src/cmf.i")
+        swig_opts = ['-c++', '-Wextra', '-w512', '-w511', '-O', '-keyword', '-castmode', '-modern']
+
     else:
         # Else use what we have there
         cmf_files.append("cmf/cmf_core_src/cmf_wrap.cpp")
-
+        swig_opts = []
     cmf_core = Extension('cmf._cmf_core',
                          sources=cmf_files,
                          libraries=libraries,
                          include_dirs=include_dirs,
                          extra_compile_args=compile_args,
                          extra_link_args=link_args,
-                         swig_opts=['-c++', '-Wextra', '-w512', '-w511', '-O', '-keyword', '-castmode']  # +extraswig
+                         swig_opts=swig_opts
                          )
     return cmf_core
 
