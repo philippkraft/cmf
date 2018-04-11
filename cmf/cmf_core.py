@@ -445,9 +445,7 @@ _cmf_core.point_swigregister(point)
 cvar = _cmf_core.cvar
 PI = cvar.PI
 
-def point_distance(*args, **kwargs):
-    """point_distance(point p1, point p2) -> double"""
-    return _cmf_core.point_distance(*args, **kwargs)
+
 
 
 def dot(*args, **kwargs):
@@ -1632,17 +1630,11 @@ year = cvar.year
 month = cvar.month
 never = cvar.never
 
-def timeseries_from_array(*args, **kwargs):
-    """timeseries_from_array(Time begin, Time step, cmf::math::num_array const & data) -> timeseries"""
-    return _cmf_core.timeseries_from_array(*args, **kwargs)
 
-def timeseries_from_scalar(*args, **kwargs):
-    """timeseries_from_scalar(double scalar) -> timeseries"""
-    return _cmf_core.timeseries_from_scalar(*args, **kwargs)
 
-def timeseries_from_file(*args, **kwargs):
-    """timeseries_from_file(std::string filename) -> timeseries"""
-    return _cmf_core.timeseries_from_file(*args, **kwargs)
+
+
+
 
 
 def nash_sutcliffe(*args, **kwargs):
@@ -4196,9 +4188,7 @@ NeumannBoundary.connect_to = new_instancemethod(_cmf_core.NeumannBoundary_connec
 _cmf_core.NeumannBoundary_swigregister(NeumannBoundary)
 # NeumannBoundary end
 
-def NeumannBoundary_create(*args, **kwargs):
-    """NeumannBoundary_create(cmf::water::flux_node::ptr target) -> cmf::water::NeumannBoundary::ptr"""
-    return _cmf_core.NeumannBoundary_create(*args, **kwargs)
+
 
 class NeumannFlux(flux_connection):
     """
@@ -4331,17 +4321,11 @@ WaterStorage.conc = new_instancemethod(_cmf_core.WaterStorage_conc, None, WaterS
 _cmf_core.WaterStorage_swigregister(WaterStorage)
 # WaterStorage end
 
-def WaterStorage_from_node(*args, **kwargs):
-    """WaterStorage_from_node(cmf::water::flux_node::ptr node) -> std::shared_ptr< cmf::water::WaterStorage >"""
-    return _cmf_core.WaterStorage_from_node(*args, **kwargs)
 
-def WaterStorage_cast(*args, **kwargs):
-    """WaterStorage_cast(std::shared_ptr< cmf::water::flux_node > node) -> std::shared_ptr< cmf::water::WaterStorage >"""
-    return _cmf_core.WaterStorage_cast(*args, **kwargs)
 
-def WaterStorage_create(*args, **kwargs):
-    """WaterStorage_create(project _project, real initial_state=0.0, real scale=1.0) -> std::shared_ptr< cmf::water::WaterStorage >"""
-    return _cmf_core.WaterStorage_create(*args, **kwargs)
+
+
+
 
 class waterbalance_connection(flux_connection):
     """
@@ -6045,9 +6029,7 @@ Weather.__mul__ = new_instancemethod(_cmf_core.Weather___mul__, None, Weather)
 _cmf_core.Weather_swigregister(Weather)
 # Weather end
 
-def Weather_set_snow_threshold(*args, **kwargs):
-    """Weather_set_snow_threshold(double new_threshold)"""
-    return _cmf_core.Weather_set_snow_threshold(*args, **kwargs)
+
 
 def Weather_get_snow_threshold(*args):
     """Weather_get_snow_threshold() -> double"""
@@ -6784,9 +6766,7 @@ RainfallStation.__call__ = new_instancemethod(_cmf_core.RainfallStation___call__
 _cmf_core.RainfallStation_swigregister(RainfallStation)
 # RainfallStation end
 
-def RainfallStation_create(*args, **kwargs):
-    """RainfallStation_create(size_t Id, std::string Name, timeseries Data, point position) -> cmf::atmosphere::RainfallStation::ptr"""
-    return _cmf_core.RainfallStation_create(*args, **kwargs)
+
 
 class RainfallStationList(object):
     """
@@ -6907,13 +6887,9 @@ class RainfallStationReference(RainSource):
 _cmf_core.RainfallStationReference_swigregister(RainfallStationReference)
 # RainfallStationReference end
 
-def RainfallStationReference_from_nearest_station(*args, **kwargs):
-    """RainfallStationReference_from_nearest_station(project project, point position, double z_weight) -> cmf::atmosphere::RainfallStationReference::ptr"""
-    return _cmf_core.RainfallStationReference_from_nearest_station(*args, **kwargs)
 
-def RainfallStationReference_from_station_id(*args, **kwargs):
-    """RainfallStationReference_from_station_id(project project, point position, size_t id) -> cmf::atmosphere::RainfallStationReference::ptr"""
-    return _cmf_core.RainfallStationReference_from_station_id(*args, **kwargs)
+
+
 
 class IDWRainfall(RainSource):
     """
@@ -6946,9 +6922,7 @@ class IDWRainfall(RainSource):
 _cmf_core.IDWRainfall_swigregister(IDWRainfall)
 # IDWRainfall end
 
-def IDWRainfall_create(*args, **kwargs):
-    """IDWRainfall_create(project project, point position, double z_weight, double power) -> cmf::atmosphere::RainSource::ptr"""
-    return _cmf_core.IDWRainfall_create(*args, **kwargs)
+
 
 class Vegetation(object):
     """
@@ -7750,9 +7724,7 @@ Topology.__eq__ = new_instancemethod(_cmf_core.Topology___eq__, None, Topology)
 _cmf_core.Topology_swigregister(Topology)
 # Topology end
 
-def Topology_calculate_contributing_area(*args, **kwargs):
-    """Topology_calculate_contributing_area(cell_vector arg2)"""
-    return _cmf_core.Topology_calculate_contributing_area(*args, **kwargs)
+
 
 class neighbor_iterator(object):
     """
@@ -8360,9 +8332,7 @@ BrooksCoreyRetentionCurve.copy = new_instancemethod(_cmf_core.BrooksCoreyRetenti
 _cmf_core.BrooksCoreyRetentionCurve_swigregister(BrooksCoreyRetentionCurve)
 # BrooksCoreyRetentionCurve end
 
-def BrooksCoreyRetentionCurve_CreateFrom2Points(*args, **kwargs):
-    """BrooksCoreyRetentionCurve_CreateFrom2Points(real ksat, real porosity, real theta1, real theta2, real psi_1, real psi_2) -> BrooksCoreyRetentionCurve"""
-    return _cmf_core.BrooksCoreyRetentionCurve_CreateFrom2Points(*args, **kwargs)
+
 
 class VanGenuchtenMualem(RetentionCurve):
     """
@@ -8731,9 +8701,7 @@ SoilLayer.get_flow_crosssection = new_instancemethod(_cmf_core.SoilLayer_get_flo
 _cmf_core.SoilLayer_swigregister(SoilLayer)
 # SoilLayer end
 
-def SoilLayer_cast(*args, **kwargs):
-    """SoilLayer_cast(cmf::water::flux_node::ptr node) -> cmf::upslope::SoilLayer::ptr"""
-    return _cmf_core.SoilLayer_cast(*args, **kwargs)
+
 
 class layer_list(object):
     """
@@ -9141,13 +9109,9 @@ MacroPore.get_flowwidth = new_instancemethod(_cmf_core.MacroPore_get_flowwidth, 
 _cmf_core.MacroPore_swigregister(MacroPore)
 # MacroPore end
 
-def MacroPore_create(*args, **kwargs):
-    """MacroPore_create(cmf::upslope::SoilLayer::ptr layer, real porefraction=0.05, real Ksat=10, real density=0.05, real porefraction_wilt=-1., real K_shape=0.0) -> cmf::upslope::MacroPore::ptr"""
-    return _cmf_core.MacroPore_create(*args, **kwargs)
 
-def MacroPore_cast(*args, **kwargs):
-    """MacroPore_cast(cmf::water::flux_node::ptr node) -> cmf::upslope::MacroPore::ptr"""
-    return _cmf_core.MacroPore_cast(*args, **kwargs)
+
+
 
 class BaseMacroFlow(flux_connection):
     """Proxy of C++ cmf::upslope::connections::BaseMacroFlow class."""
@@ -10160,9 +10124,7 @@ def OpenWaterStorage_create(*args):
     """
     return _cmf_core.OpenWaterStorage_create(*args)
 
-def OpenWaterStorage_cast(*args, **kwargs):
-    """OpenWaterStorage_cast(cmf::water::flux_node::ptr node) -> cmf::river::OpenWaterStorage::ptr"""
-    return _cmf_core.OpenWaterStorage_cast(*args, **kwargs)
+
 
 class Reach(OpenWaterStorage):
     """
@@ -10380,9 +10342,7 @@ Reach.__get_root = new_instancemethod(_cmf_core.Reach___get_root, None, Reach)
 _cmf_core.Reach_swigregister(Reach)
 # Reach end
 
-def Reach_create(*args, **kwargs):
-    """Reach_create(project project, IChannel shape, bool diffusive=False) -> cmf::river::Reach::ptr"""
-    return _cmf_core.Reach_create(*args, **kwargs)
+
 
 class ReachIterator(object):
     """
@@ -10534,9 +10494,7 @@ SurfaceWater.get_cell = new_instancemethod(_cmf_core.SurfaceWater_get_cell, None
 _cmf_core.SurfaceWater_swigregister(SurfaceWater)
 # SurfaceWater end
 
-def SurfaceWater_cast(*args, **kwargs):
-    """SurfaceWater_cast(cmf::water::flux_node::ptr node) -> cmf::upslope::SurfaceWater::ptr"""
-    return _cmf_core.SurfaceWater_cast(*args, **kwargs)
+
 
 class KinematicSurfaceRunoff(flux_connection):
     """
@@ -10713,9 +10671,7 @@ class DiffusiveSurfaceRunoff(flux_connection):
 _cmf_core.DiffusiveSurfaceRunoff_swigregister(DiffusiveSurfaceRunoff)
 # DiffusiveSurfaceRunoff end
 
-def DiffusiveSurfaceRunoff_set_linear_slope(*args, **kwargs):
-    """DiffusiveSurfaceRunoff_set_linear_slope(real width)"""
-    return _cmf_core.DiffusiveSurfaceRunoff_set_linear_slope(*args, **kwargs)
+
 
 def DiffusiveSurfaceRunoff_get_linear_slope(*args):
     """DiffusiveSurfaceRunoff_get_linear_slope() -> real"""
@@ -10835,9 +10791,7 @@ aquifer.get_abs_errtol = new_instancemethod(_cmf_core.aquifer_get_abs_errtol, No
 _cmf_core.aquifer_swigregister(aquifer)
 # aquifer end
 
-def aquifer_cast(*args, **kwargs):
-    """aquifer_cast(cmf::water::flux_node::ptr for_cast) -> cmf::upslope::aquifer::ptr"""
-    return _cmf_core.aquifer_cast(*args, **kwargs)
+
 
 class aquifer_Darcy(flux_connection):
     """
@@ -11120,9 +11074,7 @@ class Richards_lateral(lateral_sub_surface_flux):
 _cmf_core.Richards_lateral_swigregister(Richards_lateral)
 # Richards_lateral end
 
-def Richards_lateral_usebaseflow(*args, **kwargs):
-    """Richards_lateral_usebaseflow(bool use)"""
-    return _cmf_core.Richards_lateral_usebaseflow(*args, **kwargs)
+
 Richards_lateral.cell_connector = _cmf_core.cvar.Richards_lateral_cell_connector
 
 class TOPModelFlow(flux_connection):
@@ -11390,9 +11342,7 @@ class CanopyOverflow(flux_connection):
 _cmf_core.CanopyOverflow_swigregister(CanopyOverflow)
 # CanopyOverflow end
 
-def CanopyOverflow_use_for_cell(*args, **kwargs):
-    """CanopyOverflow_use_for_cell(Cell cell) -> CanopyOverflow"""
-    return _cmf_core.CanopyOverflow_use_for_cell(*args, **kwargs)
+
 
 class RutterInterception(flux_connection):
     """
@@ -11460,9 +11410,7 @@ class RutterInterception(flux_connection):
 _cmf_core.RutterInterception_swigregister(RutterInterception)
 # RutterInterception end
 
-def RutterInterception_use_for_cell(*args, **kwargs):
-    """RutterInterception_use_for_cell(Cell cell) -> RutterInterception"""
-    return _cmf_core.RutterInterception_use_for_cell(*args, **kwargs)
+
 
 class SimpleTindexSnowMelt(flux_connection):
     """
@@ -11517,9 +11465,7 @@ class SimpleTindexSnowMelt(flux_connection):
 _cmf_core.SimpleTindexSnowMelt_swigregister(SimpleTindexSnowMelt)
 # SimpleTindexSnowMelt end
 
-def SimpleTindexSnowMelt_use_for_cell(*args, **kwargs):
-    """SimpleTindexSnowMelt_use_for_cell(Cell cell)"""
-    return _cmf_core.SimpleTindexSnowMelt_use_for_cell(*args, **kwargs)
+
 
 class EnergyBudgetSnowMelt(flux_connection):
     """
@@ -11551,9 +11497,7 @@ class EnergyBudgetSnowMelt(flux_connection):
 _cmf_core.EnergyBudgetSnowMelt_swigregister(EnergyBudgetSnowMelt)
 # EnergyBudgetSnowMelt end
 
-def EnergyBudgetSnowMelt_use_for_cell(*args, **kwargs):
-    """EnergyBudgetSnowMelt_use_for_cell(Cell cell)"""
-    return _cmf_core.EnergyBudgetSnowMelt_use_for_cell(*args, **kwargs)
+
 
 
 def snowfraction(*args, **kwargs):
@@ -11691,9 +11635,7 @@ class MatrixInfiltration(flux_connection):
 _cmf_core.MatrixInfiltration_swigregister(MatrixInfiltration)
 # MatrixInfiltration end
 
-def MatrixInfiltration_use_for_cell(*args, **kwargs):
-    """MatrixInfiltration_use_for_cell(Cell c)"""
-    return _cmf_core.MatrixInfiltration_use_for_cell(*args, **kwargs)
+
 
 class GreenAmptInfiltration(flux_connection):
     """
@@ -11790,9 +11732,7 @@ class GreenAmptInfiltration(flux_connection):
 _cmf_core.GreenAmptInfiltration_swigregister(GreenAmptInfiltration)
 # GreenAmptInfiltration end
 
-def GreenAmptInfiltration_use_for_cell(*args, **kwargs):
-    """GreenAmptInfiltration_use_for_cell(Cell c)"""
-    return _cmf_core.GreenAmptInfiltration_use_for_cell(*args, **kwargs)
+
 
 class SimpleInfiltration(flux_connection):
     """
@@ -11861,9 +11801,7 @@ class SimpleInfiltration(flux_connection):
 _cmf_core.SimpleInfiltration_swigregister(SimpleInfiltration)
 # SimpleInfiltration end
 
-def SimpleInfiltration_use_for_cell(*args, **kwargs):
-    """SimpleInfiltration_use_for_cell(Cell c)"""
-    return _cmf_core.SimpleInfiltration_use_for_cell(*args, **kwargs)
+
 
 class SWATPercolation(flux_connection):
     """
@@ -11907,9 +11845,7 @@ class SWATPercolation(flux_connection):
 _cmf_core.SWATPercolation_swigregister(SWATPercolation)
 # SWATPercolation end
 
-def SWATPercolation_use_for_cell(*args, **kwargs):
-    """SWATPercolation_use_for_cell(Cell cell, bool no_override=True)"""
-    return _cmf_core.SWATPercolation_use_for_cell(*args, **kwargs)
+
 
 class Richards(flux_connection):
     """
@@ -11968,9 +11904,7 @@ class Richards(flux_connection):
 _cmf_core.Richards_swigregister(Richards)
 # Richards end
 
-def Richards_use_for_cell(*args, **kwargs):
-    """Richards_use_for_cell(Cell cell, bool no_override=True)"""
-    return _cmf_core.Richards_use_for_cell(*args, **kwargs)
+
 
 class SimplRichards(flux_connection):
     """
@@ -12017,9 +11951,7 @@ class SimplRichards(flux_connection):
 _cmf_core.SimplRichards_swigregister(SimplRichards)
 # SimplRichards end
 
-def SimplRichards_use_for_cell(*args, **kwargs):
-    """SimplRichards_use_for_cell(Cell cell, bool no_override=True)"""
-    return _cmf_core.SimplRichards_use_for_cell(*args, **kwargs)
+
 
 class FreeDrainagePercolation(flux_connection):
     """
@@ -12906,17 +12838,11 @@ class PenmanMonteithET(stressedET):
 _cmf_core.PenmanMonteithET_swigregister(PenmanMonteithET)
 # PenmanMonteithET end
 
-def PenmanMonteithET_r_s(*args, **kwargs):
-    """PenmanMonteithET_r_s(Vegetation veg) -> real"""
-    return _cmf_core.PenmanMonteithET_r_s(*args, **kwargs)
 
-def PenmanMonteithET_r_a(*args, **kwargs):
-    """PenmanMonteithET_r_a(Weather A, real veg_height) -> real"""
-    return _cmf_core.PenmanMonteithET_r_a(*args, **kwargs)
 
-def PenmanMonteithET_use_for_cell(*args, **kwargs):
-    """PenmanMonteithET_use_for_cell(Cell cell)"""
-    return _cmf_core.PenmanMonteithET_use_for_cell(*args, **kwargs)
+
+
+
 
 class PriestleyTaylorET(stressedET):
     """
@@ -12971,9 +12897,7 @@ class PriestleyTaylorET(stressedET):
 _cmf_core.PriestleyTaylorET_swigregister(PriestleyTaylorET)
 # PriestleyTaylorET end
 
-def PriestleyTaylorET_use_for_cell(*args, **kwargs):
-    """PriestleyTaylorET_use_for_cell(Cell cell)"""
-    return _cmf_core.PriestleyTaylorET_use_for_cell(*args, **kwargs)
+
 
 class HargreaveET(stressedET):
     """
@@ -13042,9 +12966,7 @@ class HargreaveET(stressedET):
 _cmf_core.HargreaveET_swigregister(HargreaveET)
 # HargreaveET end
 
-def HargreaveET_use_for_cell(*args, **kwargs):
-    """HargreaveET_use_for_cell(Cell cell)"""
-    return _cmf_core.HargreaveET_use_for_cell(*args, **kwargs)
+
 
 class TurcET(stressedET):
     """
@@ -13080,9 +13002,7 @@ class TurcET(stressedET):
 _cmf_core.TurcET_swigregister(TurcET)
 # TurcET end
 
-def TurcET_use_for_cell(*args, **kwargs):
-    """TurcET_use_for_cell(Cell cell)"""
-    return _cmf_core.TurcET_use_for_cell(*args, **kwargs)
+
 
 class CanopyStorageEvaporation(flux_connection):
     """
@@ -13235,13 +13155,9 @@ ShuttleworthWallace.refresh = new_instancemethod(_cmf_core.ShuttleworthWallace_r
 _cmf_core.ShuttleworthWallace_swigregister(ShuttleworthWallace)
 # ShuttleworthWallace end
 
-def ShuttleworthWallace_set_RSS_parameters(*args, **kwargs):
-    """ShuttleworthWallace_set_RSS_parameters(double _RSSa=500., double _RSSb=1.0, double _RSSa_pot=-3.22)"""
-    return _cmf_core.ShuttleworthWallace_set_RSS_parameters(*args, **kwargs)
 
-def ShuttleworthWallace_use_for_cell(*args, **kwargs):
-    """ShuttleworthWallace_use_for_cell(Cell cell) -> ShuttleworthWallace"""
-    return _cmf_core.ShuttleworthWallace_use_for_cell(*args, **kwargs)
+
+
 
 
 class project_list_wrapper:

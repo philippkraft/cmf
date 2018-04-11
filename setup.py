@@ -22,12 +22,13 @@ from __future__ import print_function, division
 import sys
 import os
 import io
+import re
 import time
 
 from setuptools import setup, Extension
 from setuptools.command.build_ext import build_ext
-from distutils.sysconfig import get_config_var, customize_compiler
-
+from distutils.sysconfig import customize_compiler
+from distutils.command.build_py import build_py
 
 version = '1.2.1a0'
 
@@ -39,21 +40,50 @@ try:
 except ImportError:
     raise RuntimeError("For building and running of cmf an installation of numpy is needed")
 
-# Try to import build_py_2to3 as "Python builder", if this fails, we are on Python 2
-# and the automatic translation is not necessary
-try:
-    from distutils.command.build_py import build_py_2to3 as build_py
-except ImportError:
-    from distutils.command.build_py import build_py
 
 swig = False
+openmp = False
 
-# noinspection PyPep8Naming
-class cmf_build_ext(build_ext):
+
+class CmfBuildExt(build_ext):
     """
     Custom build class to get rid of the -Wstrict-prototypes warning
     source: https://stackoverflow.com/a/36293331/3032680
+
+    Removes also CLASS_swigregister clutter in cmf_core.py
     """
+    @staticmethod
+    def clean_swigregister(cmf_core_py):
+        """
+        SWIG creates ugly CLASS_swigregister functions. We remove them.
+        """
+        rp_call = re.compile(r'^(\w*?)_swigregister\((\w*?)\)', re.MULTILINE)
+        cmf_core_py, n = rp_call.subn('# \\1 end', cmf_core_py)
+        print(n, 'CLASS_swigregister(CLASS) lines deleted')
+        rp_def = re.compile(r'^(\w*?)_swigregister = _cmf_core\.(\w*?)_swigregister', re.MULTILINE)
+        cmf_core_py, n = rp_def.subn('_cmf_core.\\1_swigregister(\\1)', cmf_core_py)
+        print(n, 'CLASS_swigregister = _cmf_core... -> _cmf_core.CLASS_swigregister(CLASS)')
+        return cmf_core_py
+
+    @staticmethod
+    def clean_static_methods(cmf_core_py):
+        """SWIG creates still static methods as free functions (extra) to ensure Py2.2 compatibility
+        We don't want that in 2018
+        """
+        # Find class names and free functions
+        classes = re.findall(r'class\s(\w*?)\(.*?\):', cmf_core_py, re.MULTILINE)
+        funcs = re.findall(r'^def (\w*?)\(\*args, \*\*kwargs\):$', cmf_core_py, flags=re.MULTILINE)
+
+        # Find old style static methods (def CLASS_method():)
+        static_methods = [f for f in funcs if [c for c in classes if f.startswith(c)]]
+
+        count = 0
+        for sm in static_methods:
+            cmf_core_py, n = re.subn(r'^def {}.*?:.*?return.*?$'.format(sm),
+                                     '\n\n', cmf_core_py, flags=re.MULTILINE + re.DOTALL)
+            count += n
+        print(count, 'old style static methods removed from', len(classes), 'classes')
+        return cmf_core_py
 
     def build_extensions(self):
         customize_compiler(self.compiler)
@@ -63,13 +93,6 @@ class cmf_build_ext(build_ext):
             pass
         build_ext.build_extensions(self)
 
-class cmf_build_py(build_py):
-
-    def run(self):
-        """
-        Custom build class to remove _swigregister rubbish from cmf_core.py
-        """
-        import re
         if swig:
             if os.path.exists('cmf/cmf_core_src/cmf_core.py'):
                 fn = 'cmf/cmf_core_src/cmf_core.py'
@@ -78,17 +101,13 @@ class cmf_build_py(build_py):
             else:
                 raise RuntimeError('cmf_core.py not found, run "python setup.py build_ext swig" to create it')
             cmf_core_py = open(fn).read()
-            rp_call = re.compile(r'^(\w*?)_swigregister\((\w*?)\)', re.MULTILINE)
-            cmf_core_py, n = rp_call.subn('# \\1 end', cmf_core_py)
-            print(n, 'CLASS_swigregister(CLASS) lines deleted')
-            rp_def = re.compile(r'^(\w*?)_swigregister = _cmf_core\.(\w*?)_swigregister', re.MULTILINE)
-            cmf_core_py, n = rp_def.subn('_cmf_core.\\1_swigregister(\\1)', cmf_core_py)
-            print(n, 'CLASS_swigregister = _cmf_core... -> _cmf_core.CLASS_swigregister(CLASS)')
+            cmf_core_py = self.clean_swigregister(cmf_core_py)
+            cmf_core_py = self.clean_static_methods(cmf_core_py)
+
             open('cmf/cmf_core.py', 'w').write(cmf_core_py)
 
             if os.path.exists('cmf/cmf_core_src/cmf_core.py'):
                 os.unlink('cmf/cmf_core_src/cmf_core.py')
-        build_py.run(self)
 
 
 def updateversion():
@@ -161,7 +180,7 @@ def is_source_file(fn, include_headerfiles=False):
     return res
 
 
-def make_cmf_core(swig, openmp):
+def make_cmf_core():
     """
     Puts all information needed for the Python extension object together
      - source files
@@ -238,7 +257,7 @@ if __name__ == '__main__':
     updateversion()
     openmp = not pop_arg('noopenmp')
     swig = pop_arg('swig')
-    ext = [make_cmf_core(swig, openmp)]
+    ext = [make_cmf_core()]
     description = 'Catchment Modelling Framework - A hydrological modelling toolkit'
     long_description = io.open('README.rst', encoding='utf-8').read()
     classifiers = [
@@ -268,7 +287,7 @@ if __name__ == '__main__':
           description=description,
           long_description=long_description,
           classifiers=classifiers,
-          cmdclass=dict(build_py=cmf_build_py,
-                        build_ext=cmf_build_ext),
+          cmdclass=dict(build_py=build_py,
+                        build_ext=CmfBuildExt),
           )
-    print("build ok")
+

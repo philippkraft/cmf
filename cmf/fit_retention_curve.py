@@ -15,7 +15,6 @@
 #   You should have received a copy of the GNU General Public License
 #   along with cmf.  If not, see <http://www.gnu.org/licenses/>.
 #   
-from __future__ import division
 
 '''
 Fits cmf retention curves objects into a measured pF curve
