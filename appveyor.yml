@@ -7,10 +7,10 @@ environment:
     # The list here is complete (excluding Python 2.6, which
     # isn't covered by this document) at the time of writing.
 
+    - PYTHON: "C:\\Python36-x64"
+    - PYTHON: "C:\\Python27-x64"
     - PYTHON: "C:\\Python27"
     - PYTHON: "C:\\Python36"
-    - PYTHON: "C:\\Python27-x64"
-    - PYTHON: "C:\\Python36-x64"
 
 install:
   # We need wheel installed to build wheels
@@ -26,7 +26,7 @@ test_script:
   # Note that you must use the environment variable %PYTHON% to refer to
   # the interpreter you're using - Appveyor does not do anything special
   # to put the Python version you want to use on PATH.
-  - "build.cmd %PYTHON%\\python.exe setup.py install"
+  - "%PYTHON%\\python.exe setup.py install"
   - "tools\\test.bat"
 
 after_test:
@@ -34,7 +34,7 @@ after_test:
   # Again, you only need build.cmd if you're building C extensions for
   # 64-bit Python 3.3/3.4. And you need to use %PYTHON% to get the correct
   # interpreter
-  - "build.cmd %PYTHON%\\python.exe setup.py bdist_wheel"
+  - "%PYTHON%\\python.exe setup.py bdist_wheel"
 
 artifacts:
   # bdist_wheel puts your built wheel in the dist directory
