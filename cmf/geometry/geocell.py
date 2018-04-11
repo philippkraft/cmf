@@ -11,6 +11,7 @@ import logging
 from ..cmf_core import Cell
 from .qtree import Quadtree
 
+
 def add_geometry_property():
     """
     Extends the Cell class with a geometry attribute
@@ -102,7 +103,7 @@ def mesh_project(project, min_intersection=0, verbose=False):
 
             cand_geom = candidate.geometry
 
-            does_intersect = (not cell is candidate) and (cell_geom.intersects(cand_geom))
+            does_intersect = (cell is not candidate) and (cell_geom.intersects(cand_geom))
 
             if does_intersect:
                 # Get intersection lenght

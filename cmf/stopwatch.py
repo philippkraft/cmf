@@ -36,7 +36,7 @@ class StopWatch :
     stopwatch=StopWatch(0,10)
     for i in range(10):
         time.sleep(1)
-        print 'elapsed = %0.2fs, total= %0.2fs, remaining = %0.2fs' % stopwatch(i+1)
+        print('elapsed = %0.2fs, total= %0.2fs, remaining = %0.2fs' % stopwatch(i+1))
     
     
     """
@@ -58,5 +58,5 @@ if __name__=='__main__':
     sw=StopWatch(0,1000)
     for i in range(1000):
         #time.sleep(0.01)
-        print 'elapsed = %0.5fs, total= %0.5fs, remaining = %0.5fs' % sw(i+1)
+        print('elapsed = %0.5fs, total= %0.5fs, remaining = %0.5fs' % sw(i+1))
     

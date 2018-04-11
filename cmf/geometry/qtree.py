@@ -1,5 +1,6 @@
 from math import sqrt
 
+
 class Quadtree:
     """
     A simple quad tree to check if the boundaries of geometries overlap or not

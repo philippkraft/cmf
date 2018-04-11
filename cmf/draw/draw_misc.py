@@ -94,7 +94,7 @@ def plot_image(filename, **kwargs):
         raise NotImplementedError('To plot a background image please install Pillow')
 
     fname, imgext = os.path.splitext(filename)
-    worldext = imgext[:2] + imgext[-1] + 'w'
+    worldext = '{}{}w'.format(imgext[:2], imgext[-1])
     worldname = fname + worldext
 
     kwargs.pop('extent', None)

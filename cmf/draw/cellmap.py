@@ -2,45 +2,52 @@
 This file contains a map for cells. Does only work with shapely support
 """
 
-
 from __future__ import print_function, division, absolute_import
 from .. import cmf_core as cmf
+from .. import draw
 from matplotlib import pylab as plt
+from matplotlib.cm import ScalarMappable
+from matplotlib.cm import viridis as default_colormap
+from matplotlib.colors import Normalize
 from matplotlib.animation import FuncAnimation
 import numpy
 from itertools import chain
 
-class CellMap(plt.matplotlib.cm.ScalarMappable):
+
+class CellMap(ScalarMappable):
     """
     Draws a map of the cell geometries. Only functional, when shapely is installed.
 
     A CellMap is created with cells to show and a function returning a value from a cell
 
     Usage example:
+    >>>import cmf
+    >>>p=cmf.project()
     >>>def saturated_depth(c):
     ...    return c.saturated_depth
-    >>>cm = CellMap(project, saturated_depth)
+    >>>cm = CellMap(p, saturated_depth)
     """
+
     def __call__(self, recalc_range=False):
         if recalc_range:
-            self.maxvalue=max((self.f(c) for c in self.cells))
-            self.minvalue=min((self.f(c) for c in self.cells))
+            self.maxvalue = max((self.f(c) for c in self.cells))
+            self.minvalue = min((self.f(c) for c in self.cells))
 
         for cell, polys in self.polygons.items():
-            v=self.f(cell)
-            c=self.cmap((v-self.minvalue)/(self.maxvalue-self.minvalue))
+            v = self.f(cell)
+            c = self.cmap((v - self.minvalue) / (self.maxvalue - self.minvalue))
             for poly in polys:
                 poly.set_fc(c)
         if plt.isinteractive():
             plt.draw()
 
     @property
-    def f(self): return self.__f
-
+    def f(self):
+        return self.__f
 
     @f.setter
     def f(self, funct):
-        self.__f=funct
+        self.__f = funct
         if plt.isinteractive():
             self(True)
 
@@ -55,7 +62,7 @@ class CellMap(plt.matplotlib.cm.ScalarMappable):
         a = plt.asarray(shape)
         return plt.fill(a[:, 0], a[:, 1], fc=c, **kwargs)[0]
 
-    def __init__(self, cells, value_function, cmap=plt.cm.jet,
+    def __init__(self, cells, value_function, cmap=default_colormap,
                  hold=True, vmin=None, vmax=None, **kwargs):
         """
         Creates a new map from cells
@@ -72,7 +79,7 @@ class CellMap(plt.matplotlib.cm.ScalarMappable):
         if not hasattr(cmf.Cell, 'geometry'):
             raise NotImplementedError('The geometry of the cells can not be used, shapely is not installed')
         self.cmap = cmap
-        self.cells=[c for c in cells if c.geometry]
+        self.cells = [c for c in cells if c.geometry]
         self.__f = value_function
 
         was_interactive = plt.isinteractive()
@@ -80,8 +87,7 @@ class CellMap(plt.matplotlib.cm.ScalarMappable):
         if was_interactive:
             plt.ioff()
 
-
-        self.polygons={}
+        self.polygons = {}
 
         def flatten_multipolygons(shape):
             if hasattr(shape, "geoms"):
@@ -95,18 +101,17 @@ class CellMap(plt.matplotlib.cm.ScalarMappable):
         self.minvalue = vmin or min(values)
 
         if self.minvalue >= self.maxvalue:
-            self.minvalue = self.maxvalue-1
+            self.minvalue = self.maxvalue - 1
 
         if not hold:
             plt.cla()
 
         for cell, shapes, v in zip(self.cells, geos, values):
-
-            c = self.cmap(float(v-self.minvalue)/float(self.maxvalue-self.minvalue))
+            c = self.cmap(float(v - self.minvalue) / float(self.maxvalue - self.minvalue))
             self.polygons[cell] = [self.draw_shapes(s, c, **kwargs) for s in shapes]
 
         plt.axis('equal')
-        norm = plt.matplotlib.colors.Normalize(self.minvalue, self.maxvalue)
+        norm = Normalize(self.minvalue, self.maxvalue)
         plt.matplotlib.cm.ScalarMappable.__init__(self, norm, cmap)
 
         if was_interactive:
@@ -128,11 +133,13 @@ class CellMap(plt.matplotlib.cm.ScalarMappable):
         Overwrite base class of maplotlib.cm.ScalarMappable to prevent missuse
         """
         pass
+
     def autoscale(self):
         """
         Overwrite base class of maplotlib.cm.ScalarMappable to prevent missuse
         """
         pass
+
 
 class FluxMap(object):
     """
@@ -142,10 +149,14 @@ class FluxMap(object):
     The FluxMap can be updated by calling it with the new timestep
 
     Usage:
-    >>> fm = FluxMap(project, cmf.Time())
+    >>> import cmf
+    >>> p = cmf.project()
+    >>> solver = cmf.RKFIntegrator(p, 1e-9)
+    >>> fm = FluxMap(p, cmf.Time())
     >>> for t in solver.run(solver.t, solver.t + cmf.day * 30, cmf.h):
     ...     fm(t)
     """
+
     def __call__(self, t=None):
         a = numpy.array
         if t:
@@ -176,7 +187,7 @@ class FluxMap(object):
     def __get_scale(self):
         return self.quiver.scale
 
-    def __set_scale(self,value):
+    def __set_scale(self, value):
         self.quiver.scale = value
         self()
 
@@ -184,32 +195,34 @@ class FluxMap(object):
 
 
 class Animator:
-    def __init__(self, cells, generator, **kwargs):
+    def __init__(self, cells, solver, start, end, step):
         """
 
         :param cells: A sequence of cmf Cells, can be a project
-        :param generator: A generator that advances the model and returns time.
-                Eg. cmf.Integrator.run()
+        :param solver: A cmf solver Eg. cmf.CVodeDense()
+        :param start: Start time
+        :param end: End time
+        :param step: Time step
         """
 
         self.figure = plt.figure()
-        self.generator = generator
-        self.cellmap = cmf.draw.CellMap(cells,
-                                        lambda c: c.layers[0].wetness if c.layers else 0.0,
-                                        vmin=0, vmax=1)
+        self.generator = solver.run(start, end, step)
+        self.cellmap = draw.CellMap(cells,
+                                    lambda c: c.layers[0].wetness if c.layers else 0.0,
+                                    vmin=0, vmax=1)
 
-        self.fluxmap = cmf.draw.FluxMap(cells, self.model.t, zorder=2, color='w')
+        self.fluxmap = draw.FluxMap(cells, start, zorder=2, color='w')
 
-        self.titel = plt.title('<time step>')
+        self.title = plt.title('<time step>')
         self.animator = None
 
     def __call__(self, *args, **kwargs):
-        self.animator = FuncAnimation(self.draw, frames=self.generator)
+        self.animator = FuncAnimation(self.figure, self.draw, frames=self.generator)
 
     def draw(self, frame=None):
         t = frame
-        #print(self.fluxmap.scale)
-        self.titel.set_text(str(t))
+        # print(self.fluxmap.scale)
+        self.title.set_text(str(t))
         self.cellmap()
         self.fluxmap(t)
-        return [self.titel, self.fluxmap.quiver] + list(self.cellmap.get_artists())
+        return [self.title, self.fluxmap.quiver] + list(self.cellmap.get_artists())

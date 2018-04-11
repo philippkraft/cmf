@@ -37,7 +37,7 @@ def describe(cmfobject, out=None):
     If no special description method for the class of cmfobject is available,
     the function writes the string representation
 
-    :param project: cmf project
+    :param cmfobject: any cmf object eg. project, Cell, timeseries
     :param out: filelike object, if None function returns the description as string
     :return: If out is None it returns the description as string, else no return
     """
@@ -55,7 +55,7 @@ def describe(cmfobject, out=None):
 
     def iterable(obj):
         try:
-            it = iter(obj)
+            _ = iter(obj)
             return True
         except (TypeError, AttributeError):
             return False
