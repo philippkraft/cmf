@@ -16,8 +16,8 @@ install:
   # We need wheel installed to build wheels
   - "%PYTHON%\\python.exe -m pip install wheel"
   - "%PYTHON%\\Scripts\\pip install numpy"
-  - "SET BOOST=C:\\Libraries\\boost"
-  - "dir C:\\Libraries"
+  - "SET BOOSTDIR=C:\\Libraries\\boost"
+
 
 build: off
 
@@ -30,7 +30,7 @@ test_script:
   # the interpreter you're using - Appveyor does not do anything special
   # to put the Python version you want to use on PATH.
   - "%PYTHON%\\python.exe setup.py install"
-  - "%PYTHON%\\python.exe tools\test.py"
+  - "%PYTHON%\\python.exe tools\\test.py"
 
 after_test:
   # This step builds your wheels.
