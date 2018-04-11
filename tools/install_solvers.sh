@@ -65,15 +65,15 @@ echo "Running in: " $TOOLSDIR
 echo "Installing KLU into: " $KLUINSTALL_DIR
 echo "Installing SUNDIALS into: " $SUNDIALS_DIR
 
-if "$1" == "help"; then
+if [[ "$1" == "help" ]]; then
     exit 0
 fi
     
-if "$1" != "sundials"; then
+if [[ "$1" != "sundials" ]]; then
     klu
 fi
 
-if "$1" != "klu"; then
+if [[ "$1" != "klu" ]]; then
     sundials
 fi
     
