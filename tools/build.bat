@@ -4,8 +4,7 @@ python setup.py clean --all
 echo build cmf
 python setup.py build_ext swig
 if ERRORLEVEL 1 goto error
-move /Y cmf\cmf_core_src\cmf_core.py cmf
-python setup.py build_py -c -O2 -f
+python setup.py build_py swig -c -O2 -f
 if ERRORLEVEL 1 goto error
 goto end
 :error
