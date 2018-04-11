@@ -39,10 +39,12 @@
 %extend cmf::upslope::VanGenuchtenMualem
 {
     %pythoncode {
+
     def __repr__(self):
         return "cmf.VanGenuchtenMualem(Ksat=%0.3g,Phi=%0.3g,alpha=%0.3g,n=%0.3g,m=%0.3g)" % (self.Ksat,self.Phi,self.alpha,self.n,self.m)
+
     def __str__(self):
-    	return "VanGenuchten / Mualem retention curve: Ksat=%0.3g m/day, %0.3g%% Pores, alpha=%0.3g 1/cm, n=%0.3g" % (self.Ksat,self.Phi*100,self.alpha,self.n) 
+        return "VanGenuchten / Mualem retention curve: Ksat=%0.3g m/day, %0.3g%% Pores, alpha=%0.3g 1/cm, n=%0.3g" % (self.Ksat,self.Phi*100,self.alpha,self.n)
     }
 }
 
@@ -76,9 +78,9 @@
 
 %extend cmf::upslope::SoilLayer {
   %pythoncode {
-    boundary=property(lambda self:(self.upper_boundary,self.lower_boundary),None,"Returns the upper and lower boundary of the layer")
-    pF=property(lambda self : waterhead_to_pF(self.matrix_potential),None,"The actual pF value")
-    soil=property(get_soil,set_soil,"The retention curve of the layer")
+    boundary=property(lambda self:(self.upper_boundary, self.lower_boundary),None, doc="Returns the upper and lower boundary of the layer")
+    pF=property(lambda self : waterhead_to_pF(self.matrix_potential), None, doc="The actual pF value")
+    soil=property(get_soil, set_soil, doc="The retention curve of the layer")
   }
 }
 

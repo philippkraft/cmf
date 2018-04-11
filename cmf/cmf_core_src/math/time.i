@@ -224,12 +224,15 @@ static bool check_time(PyObject* dt) {
     }
     %pythoncode
     {
+
     def __repr__(self):
        return "cmf.timeseries(%s:%s:%s,count=%i)" % (self.begin,self.end,self.step,self.size())
+
     def extend(self,list) :
         """ Adds the values of a sequence to the timeseries"""
         for item in list :
             self.add(float(item))
+
     def __getitem__(self,index):
         if isinstance(index,int):
             return self.get_i(index)
@@ -240,6 +243,7 @@ static bool check_time(PyObject* dt) {
                 return self.get_slice(index.start,index.stop)
         else:
             return self.get_t(index)
+
     def __setitem__(self,index,value):
         if isinstance(index,int):
             self.set_i(index,value)
@@ -252,9 +256,11 @@ static bool check_time(PyObject* dt) {
                 self.set_slice(index.start,index.stop,value)
         else:
             self.set_t(index,value)
+
     def __iter__(self):
-        for i in xrange(self.size()):
+        for i in range(self.size()):
             yield self.get_i(i)
+
     def interpolate(self,begin,end,step):
         """ Returns a generator returning the interpolated values at the timesteps """
         if step>self.step():
@@ -263,30 +269,37 @@ static bool check_time(PyObject* dt) {
             ts=self
         for t in timerange(step,end,step):
             yield ts[t]
+
     def __radd__(self,other):
-        return self + other;
+        return self + other
+
     def __rmul__(self,other):
-        return self + other;
+        return self + other
+
     def __rsub__(self,other):
         res=-self
         res+=other
         return res
+
     def __rdiv__(self,other):
         res=self.inv() 
         res*=other
         return res
+
     def iter_time(self, as_float=0):
         """Returns an iterator to iterate over each timestep
         as_float if True, the timesteps will returned as floating point numbers representing the days after 1.1.0001 00:00
         """
-        for i in xrange(len(self)):
+        for i in range(len(self)):
             if as_float:
                 yield ((self.begin + self.step * i) - cmf.Time(1,1,1)).AsDays()
             else:
                 yield self.begin + self.step * i
+
     def to_buffer(self):
         """Returns a binary buffer filled with the data of self"""
-        return struct.pack('qqqq%id' % self.size(),self.begin.AsMilliseconds(),self.step.AsMilliseconds(),self.interpolationpower(), *self)
+        return struct.pack('qqqq{}d'.format(self.size()),self.begin.AsMilliseconds(),self.step.AsMilliseconds(),self.interpolationpower(), *self)
+
     def to_file(self,f):
         """ Saves a timeseries in a special binary format.
         The format consists of 4 integers with 64 bit, indicating the milliseconds after the 31.12.1899 00:00 of the beginning of the timeseries, the milliseconds of the time step,
@@ -296,7 +309,8 @@ static bool check_time(PyObject* dt) {
             f=open(f,'wb')
         elif not hasattr(f,'write'):
             raise TypeError("The file f must be either an object providing a write method, like a file, or a valid file name")
-        f.write(struct.pack('qqqq%id' % self.size(),  self.size(), self.begin.AsMilliseconds(),self.step.AsMilliseconds(),self.interpolationpower(), *self))
+        f.write(self.to_buffer())
+
     def to_pandas(self):
         """
         Returns the timeseries as a pandas Series object
@@ -308,7 +322,7 @@ static bool check_time(PyObject* dt) {
         return pd.Series(data=np.array(self),index=(t.AsPython() for t in self.iter_time()))
         
     @classmethod
-    def from_sequence(cls,begin,step,sequence=[],interpolation_mode=1):
+    def from_sequence(cls, begin, step, sequence, interpolation_mode=1):
         res=cls(begin,step,interpolation_mode)
         res.extend(sequence)
         return res
@@ -320,6 +334,7 @@ static bool check_time(PyObject* dt) {
         res=cls(header[1]*ms,header[2]*ms,header[3])
         res.extend(struct.unpack('%id' % header[0],*buffer(buf,header_length,header[0]*8)))
         return res
+
     @classmethod
     def from_file(cls,f):
         """ Loads a timeseries saved with to_file from a file 
@@ -349,11 +364,11 @@ static bool check_time(PyObject* dt) {
 %pythoncode {
 def AsCMFtime(date):
     """Converts a python datetime to cmf.Time"""
-    return Time(date.day,date.month,date.year,date.hour,date.minute,date.second,date.microsecond/1000)
+    return Time(date.day, date.month, date.year, date.hour, date.minute, date.second, date.microsecond / 1000)
+
 def timerange(start,end,step=day):
     """Creates a generator of cmf.Time, similar to the Python range function"""
-    return [start+step*x for x in range(0,int((end-start)/step))]
-def xtimerange(start,end,step=day):
-    """Creates a generator of cmf.Time, similar to the Python range function"""
-    return (start+step*x for x in range(0,int((end-start)/step)))
+    for x in range(0, int((end - start) / step)):
+        yield start + step * x
+
 }

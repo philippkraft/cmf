@@ -53,7 +53,7 @@
 %extend cmf::atmosphere::MeteoStationList {
     %pythoncode {
     def __iter__(self):
-        for i in xrange(len(self)):
+        for i in range(len(self)):
             yield self[i]
     def __repr__(self):
         return "list of %i cmf meteorological stations" % len(self)
