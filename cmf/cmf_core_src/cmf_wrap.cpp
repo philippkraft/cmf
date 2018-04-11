@@ -76402,18 +76402,8 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"delete_point", (PyCFunction)_wrap_delete_point, METH_O, (char *)"delete_point(point self)"},
 	 { (char *)"point_swigregister", point_swigregister, METH_VARARGS, NULL},
 	 { (char *)"point_swiginit", point_swiginit, METH_VARARGS, NULL},
-	 { (char *)"dot", (PyCFunction) _wrap_dot, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
-		"dot(point p1, point p2) -> double\n"
-		"\n"
-		"double\n"
-		"cmf::geometry::dot(const point &p1, const point &p2) \n"
-		""},
-	 { (char *)"distance", (PyCFunction) _wrap_distance, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
-		"distance(point p1, point p2) -> double\n"
-		"\n"
-		"double\n"
-		"cmf::geometry::distance(const point &p1, const point &p2) \n"
-		""},
+	 { (char *)"dot", (PyCFunction) _wrap_dot, METH_VARARGS | METH_KEYWORDS, (char *)"dot(point p1, point p2) -> double"},
+	 { (char *)"distance", (PyCFunction) _wrap_distance, METH_VARARGS | METH_KEYWORDS, (char *)"distance(point p1, point p2) -> double"},
 	 { (char *)"point_vector_X_set", _wrap_point_vector_X_set, METH_VARARGS, (char *)"point_vector_X_set(point_vector self, cmf::math::num_array X)"},
 	 { (char *)"point_vector_X_get", (PyCFunction)_wrap_point_vector_X_get, METH_O, (char *)"point_vector_X_get(point_vector self) -> cmf::math::num_array"},
 	 { (char *)"point_vector_Y_set", _wrap_point_vector_Y_set, METH_VARARGS, (char *)"point_vector_Y_set(point_vector self, cmf::math::num_array Y)"},

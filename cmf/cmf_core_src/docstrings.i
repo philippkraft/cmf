@@ -1,6 +1,30 @@
 
 // File: index.xml
 
+// File: struct___dls_mat.xml
+%feature("docstring") _DlsMat "";
+
+
+// File: struct__generic___n___vector.xml
+%feature("docstring") _generic_N_Vector "";
+
+
+// File: struct__generic___n___vector___ops.xml
+%feature("docstring") _generic_N_Vector_Ops "";
+
+
+// File: struct___n___vector_content___parallel.xml
+%feature("docstring") _N_VectorContent_Parallel "";
+
+
+// File: struct___n___vector_content___serial.xml
+%feature("docstring") _N_VectorContent_Serial "";
+
+
+// File: struct___spgmr_mem_rec.xml
+%feature("docstring") _SpgmrMemRec "";
+
+
 // File: classcmf_1_1water_1_1_adsorption.xml
 %feature("docstring") cmf::water::Adsorption "
 
@@ -59,7 +83,7 @@ V:   :math:`V m^3` the water volume in the storage
 Abstract class. Child classes can be used to calculate aerodynamic
 resistances against turbulent heat fluxes.
 
-C++ includes: Meteorology.h ";
+C++ includes: meteorology.h ";
 
 %feature("docstring")
 cmf::atmosphere::aerodynamic_resistance::~aerodynamic_resistance "virtual ~aerodynamic_resistance() ";
@@ -70,6 +94,23 @@ cmf::math::Time t) const =0
 
 aerodynamic resistance from ground to atmosphere (r_ag) and from
 canopy to atmosphere (r_ac) ";
+
+
+// File: classcmf_1_1draw_1_1cellmap_1_1_animator.xml
+%feature("docstring") cmf::draw::cellmap::Animator "";
+
+%feature("docstring")  cmf::draw::cellmap::Animator::__init__ "def
+__init__(self, cells, solver, start, end, step)
+
+:param cells: A sequence of cmf Cells, can be a project :param solver:
+A cmf solver Eg. cmf.CVodeDense() :param start: Start time :param end:
+End time :param step: Time step ";
+
+%feature("docstring")  cmf::draw::cellmap::Animator::__call__ "def
+__call__(self, args, kwargs) ";
+
+%feature("docstring")  cmf::draw::cellmap::Animator::draw "def
+draw(self, frame=None) ";
 
 
 // File: classcmf_1_1upslope_1_1aquifer.xml
@@ -1864,6 +1905,51 @@ connect(cmf::upslope::Cell &cell1, cmf::upslope::Cell &cell2,
 ptrdiff_t start_at_layer=0) const ";
 
 
+// File: classcmf_1_1draw_1_1cellmap_1_1_cell_map.xml
+%feature("docstring") cmf::draw::cellmap::CellMap "
+
+Draws a map of the cell geometries. Only functional, when shapely is
+installed.  A CellMap is created with cells to show and a function
+returning a value from a cell  Usage example: >>>import cmf
+>>>p=cmf.project() >>>def saturated_depth(c): ...    return
+c.saturated_depth >>>cm = CellMap(p, saturated_depth) ";
+
+%feature("docstring")  cmf::draw::cellmap::CellMap::__init__ "def
+__init__(self, cells, value_function, cmap=default_colormap,
+hold=True, vmin=None, vmax=None, kwargs)
+
+Creates a new map from cells  :param cells: :param value_function:
+:param cmap: :param hold: :param vmin: :param vmax: :param kwargs: ";
+
+%feature("docstring")  cmf::draw::cellmap::CellMap::__call__ "def
+__call__(self, recalc_range=False) ";
+
+%feature("docstring")  cmf::draw::cellmap::CellMap::autoscale "def
+autoscale(self)
+
+Overwrite base class of maplotlib.cm.ScalarMappable to prevent missuse
+";
+
+%feature("docstring")  cmf::draw::cellmap::CellMap::autoscale_None "def autoscale_None(self)
+
+Overwrite base class of maplotlib.cm.ScalarMappable to prevent missuse
+";
+
+%feature("docstring")  cmf::draw::cellmap::CellMap::color_values "def
+color_values(self) ";
+
+%feature("docstring")  cmf::draw::cellmap::CellMap::f "def f(self) ";
+
+%feature("docstring")  cmf::draw::cellmap::CellMap::f "def f(self,
+funct) ";
+
+%feature("docstring")  cmf::draw::cellmap::CellMap::get_artists "def
+get_artists(self)
+
+Returns the list of matplotlib.patches.Polygons in the cell map.
+Useful for Animations  :return: iterable of polygons ";
+
+
 // File: classcmf_1_1river_1_1_channel.xml
 %feature("docstring") cmf::river::Channel "
 
@@ -2197,7 +2283,7 @@ A primitive implementation of the Meteorology interface.
 
 Holds a Weather record and returns it for any date
 
-C++ includes: Meteorology.h ";
+C++ includes: meteorology.h ";
 
 %feature("docstring")
 cmf::atmosphere::ConstantMeteorology::ConstantMeteorology "ConstantMeteorology()
@@ -2761,918 +2847,20 @@ generate() ";
 const ";
 
 
-// File: classcmf_1_1math_1_1_c_vode3.xml
-%feature("docstring") cmf::math::CVode3 "
+// File: struct_c_v_band_prec_data_rec.xml
+%feature("docstring") CVBandPrecDataRec "";
 
-Abstract base class for different modes of the CVode solver.
 
-Initantiate one of the child classes to gain different modes of the
-CVode solver
+// File: struct_c_v_b_b_d_prec_data_rec.xml
+%feature("docstring") CVBBDPrecDataRec "";
 
-C++ includes: cvode3.h ";
 
-/*  Accuracy parameters  */
+// File: struct_c_v_diag_mem_rec.xml
+%feature("docstring") CVDiagMemRec "";
 
-/*  model time  */
 
-%feature("docstring")  cmf::math::CVode3::get_t "cmf::math::Time
-get_t() const
-
-Returns the current model time. ";
-
-%feature("docstring")  cmf::math::CVode3::set_t "void
-set_t(cmf::math::Time val)
-
-Sets the current model time. ";
-
-%feature("docstring")  cmf::math::CVode3::get_dt "cmf::math::Time
-get_dt() const
-
-Returns the last time step. ";
-
-/*  Integrate  */
-
-%feature("docstring")  cmf::math::CVode3::integrate_until "void
-integrate_until(cmf::math::Time t_max, cmf::math::Time dt=Time(), bool
-reset=false)
-
-Integrates the vector of state variables until t_max.
-
-Parameters:
------------
-
-t_max:   Time, the solver should run to
-
-dt:   Time step (may be omitted)
-
-reset:  If true, solver is reseted before integration starts ";
-
-%feature("docstring")  cmf::math::CVode3::add_single_state "virtual
-void add_single_state(cmf::math::StateVariable::ptr state)
-
-Adds a single state variable to the integrator. ";
-
-%feature("docstring")  cmf::math::CVode3::add_states "virtual void
-add_states(cmf::math::StateVariableOwner &stateOwner)
-
-Add state variables from a StateVariableOwner. ";
-
-%feature("docstring")  cmf::math::CVode3::add_values_to_states "void
-add_values_to_states(const num_array &operands)
-
-Adds the values in operands to the current states. ";
-
-%feature("docstring")  cmf::math::CVode3::copy "CVode3* copy() const
-
-Returns a copy of the solver. ";
-
-%feature("docstring")  cmf::math::CVode3::copy_dxdt "void
-copy_dxdt(Time time, num_array &destination, real factor=1) const
-
-Copies the derivatives at time step \"time\" to a numeric vector using
-use_OpenMP.
-
-Parameters:
------------
-
-time:   Time at which the derivatives should be calculated
-
-destination:  Vector to be overwritten by the results
-
-factor:  A factor that is multiplied to the derivate (e.g. unit
-conversion or integration length) ";
-
-%feature("docstring")  cmf::math::CVode3::copy_dxdt "void
-copy_dxdt(Time time, real *destination, real factor=1) const
-
-Copies the derivatives at time step \"time\" to an preallocated c
-array.
-
-Parameters:
------------
-
-time:   Time at which the derivatives should be calculated
-
-destination:  Allocated c array
-
-factor:  A factor that is multiplied to the derivate (e.g. unit
-conversion or integration length) ";
-
-%feature("docstring")  cmf::math::CVode3::copy_states "void
-copy_states(num_array &destination) const
-
-Copies the states to a numeric vector using use_OpenMP. ";
-
-%feature("docstring")  cmf::math::CVode3::copy_states "void
-copy_states(real *destination) const ";
-
-%feature("docstring")  cmf::math::CVode3::get_dxdt "cmf::math::num_array get_dxdt(Time time) const ";
-
-%feature("docstring")  cmf::math::CVode3::get_error "cmf::math::num_array get_error() const
-
-Error vector of the integrator. ";
-
-%feature("docstring")  cmf::math::CVode3::get_info "CVodeInfo
-get_info() const
-
-Returns the current solver statistics. ";
-
-%feature("docstring")  cmf::math::CVode3::get_state "real
-get_state(ptrdiff_t position) const
-
-Returns the statevariable at position Simplifies the assessment of
-state variables. ";
-
-%feature("docstring")  cmf::math::CVode3::get_states "cmf::math::num_array get_states() const ";
-
-%feature("docstring")  cmf::math::CVode3::get_states "StateVariableList get_states()
-
-gets the state variables of the integrator ";
-
-%feature("docstring")  cmf::math::CVode3::integrate "virtual int
-integrate(cmf::math::Time t_max, cmf::math::Time dt)
-
-Integrates the vector of state variables.
-
-Parameters:
------------
-
-t_max:  To stop the model (if running in a model framework) at time
-steps of value exchange e.g. full hours, the next value exchange time
-can be given
-
-dt:  Takes the proposed time step, and changes it into the effectively
-used time step according to the local stiffness of the problem and
-MaxTime ";
-
-%feature("docstring")  cmf::math::CVode3::reset "virtual void reset()
-
-Resets the history of the multispte solver and overwrites the internal
-state cache. ";
-
-%feature("docstring")  cmf::math::CVode3::set_error_msg "void
-set_error_msg(std::string error)
-
-Sets an error message. ";
-
-%feature("docstring")  cmf::math::CVode3::set_state "void
-set_state(ptrdiff_t position, real newState)
-
-Simplifies the assessment of state variables. ";
-
-%feature("docstring")  cmf::math::CVode3::set_states "void
-set_states(const num_array &newStates)
-
-Copies the new states to the actual states. ";
-
-%feature("docstring")  cmf::math::CVode3::set_states "void
-set_states(real *newStates) ";
-
-%feature("docstring")  cmf::math::CVode3::size "size_t size() const
-
-returns the number of state variables ";
-
-%feature("docstring")  cmf::math::CVode3::to_string "virtual
-std::string to_string() const =0
-
-Returns a string representation of the solver. ";
-
-
-// File: classcmf_1_1math_1_1_c_vode_adams.xml
-%feature("docstring") cmf::math::CVodeAdams "
-
-Explizit multistep solver using CVode.
-
-C++ includes: cvode3.h ";
-
-/*  Accuracy parameters  */
-
-/*  model time  */
-
-%feature("docstring")  cmf::math::CVodeAdams::get_t "cmf::math::Time
-get_t() const
-
-Returns the current model time. ";
-
-%feature("docstring")  cmf::math::CVodeAdams::set_t "void
-set_t(cmf::math::Time val)
-
-Sets the current model time. ";
-
-%feature("docstring")  cmf::math::CVodeAdams::get_dt "cmf::math::Time
-get_dt() const
-
-Returns the last time step. ";
-
-/*  Integrate  */
-
-%feature("docstring")  cmf::math::CVodeAdams::integrate_until "void
-integrate_until(cmf::math::Time t_max, cmf::math::Time dt=Time(), bool
-reset=false)
-
-Integrates the vector of state variables until t_max.
-
-Parameters:
------------
-
-t_max:   Time, the solver should run to
-
-dt:   Time step (may be omitted)
-
-reset:  If true, solver is reseted before integration starts ";
-
-%feature("docstring")  cmf::math::CVodeAdams::CVodeAdams "CVodeAdams(cmf::math::StateVariableOwner &states, real epsilon=1e-9)
-";
-
-%feature("docstring")  cmf::math::CVodeAdams::add_single_state "virtual void add_single_state(cmf::math::StateVariable::ptr state)
-
-Adds a single state variable to the integrator. ";
-
-%feature("docstring")  cmf::math::CVodeAdams::add_states "virtual
-void add_states(cmf::math::StateVariableOwner &stateOwner)
-
-Add state variables from a StateVariableOwner. ";
-
-%feature("docstring")  cmf::math::CVodeAdams::add_values_to_states "void add_values_to_states(const num_array &operands)
-
-Adds the values in operands to the current states. ";
-
-%feature("docstring")  cmf::math::CVodeAdams::copy "CVode3* copy()
-const
-
-Returns a copy of the solver. ";
-
-%feature("docstring")  cmf::math::CVodeAdams::copy_dxdt "void
-copy_dxdt(Time time, num_array &destination, real factor=1) const
-
-Copies the derivatives at time step \"time\" to a numeric vector using
-use_OpenMP.
-
-Parameters:
------------
-
-time:   Time at which the derivatives should be calculated
-
-destination:  Vector to be overwritten by the results
-
-factor:  A factor that is multiplied to the derivate (e.g. unit
-conversion or integration length) ";
-
-%feature("docstring")  cmf::math::CVodeAdams::copy_dxdt "void
-copy_dxdt(Time time, real *destination, real factor=1) const
-
-Copies the derivatives at time step \"time\" to an preallocated c
-array.
-
-Parameters:
------------
-
-time:   Time at which the derivatives should be calculated
-
-destination:  Allocated c array
-
-factor:  A factor that is multiplied to the derivate (e.g. unit
-conversion or integration length) ";
-
-%feature("docstring")  cmf::math::CVodeAdams::copy_states "void
-copy_states(num_array &destination) const
-
-Copies the states to a numeric vector using use_OpenMP. ";
-
-%feature("docstring")  cmf::math::CVodeAdams::copy_states "void
-copy_states(real *destination) const ";
-
-%feature("docstring")  cmf::math::CVodeAdams::get_dxdt "cmf::math::num_array get_dxdt(Time time) const ";
-
-%feature("docstring")  cmf::math::CVodeAdams::get_error "cmf::math::num_array get_error() const
-
-Error vector of the integrator. ";
-
-%feature("docstring")  cmf::math::CVodeAdams::get_info "CVodeInfo
-get_info() const
-
-Returns the current solver statistics. ";
-
-%feature("docstring")  cmf::math::CVodeAdams::get_state "real
-get_state(ptrdiff_t position) const
-
-Returns the statevariable at position Simplifies the assessment of
-state variables. ";
-
-%feature("docstring")  cmf::math::CVodeAdams::get_states "cmf::math::num_array get_states() const ";
-
-%feature("docstring")  cmf::math::CVodeAdams::get_states "StateVariableList get_states()
-
-gets the state variables of the integrator ";
-
-%feature("docstring")  cmf::math::CVodeAdams::integrate "virtual int
-integrate(cmf::math::Time t_max, cmf::math::Time dt)
-
-Integrates the vector of state variables.
-
-Parameters:
------------
-
-t_max:  To stop the model (if running in a model framework) at time
-steps of value exchange e.g. full hours, the next value exchange time
-can be given
-
-dt:  Takes the proposed time step, and changes it into the effectively
-used time step according to the local stiffness of the problem and
-MaxTime ";
-
-%feature("docstring")  cmf::math::CVodeAdams::reset "virtual void
-reset()
-
-Resets the history of the multispte solver and overwrites the internal
-state cache. ";
-
-%feature("docstring")  cmf::math::CVodeAdams::set_error_msg "void
-set_error_msg(std::string error)
-
-Sets an error message. ";
-
-%feature("docstring")  cmf::math::CVodeAdams::set_state "void
-set_state(ptrdiff_t position, real newState)
-
-Simplifies the assessment of state variables. ";
-
-%feature("docstring")  cmf::math::CVodeAdams::set_states "void
-set_states(const num_array &newStates)
-
-Copies the new states to the actual states. ";
-
-%feature("docstring")  cmf::math::CVodeAdams::set_states "void
-set_states(real *newStates) ";
-
-%feature("docstring")  cmf::math::CVodeAdams::size "size_t size()
-const
-
-returns the number of state variables ";
-
-%feature("docstring")  cmf::math::CVodeAdams::to_string "std::string
-to_string() const
-
-Returns a string representation of the solver. ";
-
-
-// File: classcmf_1_1math_1_1_c_vode_banded.xml
-%feature("docstring") cmf::math::CVodeBanded "
-
-implicit BDF CVode solver with a banded Jacobian approximation
-
-C++ includes: cvode3.h ";
-
-/*  Accuracy parameters  */
-
-/*  model time  */
-
-%feature("docstring")  cmf::math::CVodeBanded::get_t "cmf::math::Time
-get_t() const
-
-Returns the current model time. ";
-
-%feature("docstring")  cmf::math::CVodeBanded::set_t "void
-set_t(cmf::math::Time val)
-
-Sets the current model time. ";
-
-%feature("docstring")  cmf::math::CVodeBanded::get_dt "cmf::math::Time get_dt() const
-
-Returns the last time step. ";
-
-/*  Integrate  */
-
-%feature("docstring")  cmf::math::CVodeBanded::integrate_until "void
-integrate_until(cmf::math::Time t_max, cmf::math::Time dt=Time(), bool
-reset=false)
-
-Integrates the vector of state variables until t_max.
-
-Parameters:
------------
-
-t_max:   Time, the solver should run to
-
-dt:   Time step (may be omitted)
-
-reset:  If true, solver is reseted before integration starts ";
-
-%feature("docstring")  cmf::math::CVodeBanded::CVodeBanded "CVodeBanded(cmf::math::StateVariableOwner &states, real epsilon=1e-9,
-int w=5) ";
-
-%feature("docstring")  cmf::math::CVodeBanded::add_single_state "virtual void add_single_state(cmf::math::StateVariable::ptr state)
-
-Adds a single state variable to the integrator. ";
-
-%feature("docstring")  cmf::math::CVodeBanded::add_states "virtual
-void add_states(cmf::math::StateVariableOwner &stateOwner)
-
-Add state variables from a StateVariableOwner. ";
-
-%feature("docstring")  cmf::math::CVodeBanded::add_values_to_states "void add_values_to_states(const num_array &operands)
-
-Adds the values in operands to the current states. ";
-
-%feature("docstring")  cmf::math::CVodeBanded::copy "CVode3* copy()
-const
-
-Returns a copy of the solver. ";
-
-%feature("docstring")  cmf::math::CVodeBanded::copy_dxdt "void
-copy_dxdt(Time time, num_array &destination, real factor=1) const
-
-Copies the derivatives at time step \"time\" to a numeric vector using
-use_OpenMP.
-
-Parameters:
------------
-
-time:   Time at which the derivatives should be calculated
-
-destination:  Vector to be overwritten by the results
-
-factor:  A factor that is multiplied to the derivate (e.g. unit
-conversion or integration length) ";
-
-%feature("docstring")  cmf::math::CVodeBanded::copy_dxdt "void
-copy_dxdt(Time time, real *destination, real factor=1) const
-
-Copies the derivatives at time step \"time\" to an preallocated c
-array.
-
-Parameters:
------------
-
-time:   Time at which the derivatives should be calculated
-
-destination:  Allocated c array
-
-factor:  A factor that is multiplied to the derivate (e.g. unit
-conversion or integration length) ";
-
-%feature("docstring")  cmf::math::CVodeBanded::copy_states "void
-copy_states(num_array &destination) const
-
-Copies the states to a numeric vector using use_OpenMP. ";
-
-%feature("docstring")  cmf::math::CVodeBanded::copy_states "void
-copy_states(real *destination) const ";
-
-%feature("docstring")  cmf::math::CVodeBanded::get_dxdt "cmf::math::num_array get_dxdt(Time time) const ";
-
-%feature("docstring")  cmf::math::CVodeBanded::get_error "cmf::math::num_array get_error() const
-
-Error vector of the integrator. ";
-
-%feature("docstring")  cmf::math::CVodeBanded::get_info "CVodeInfo
-get_info() const
-
-Returns the current solver statistics. ";
-
-%feature("docstring")  cmf::math::CVodeBanded::get_state "real
-get_state(ptrdiff_t position) const
-
-Returns the statevariable at position Simplifies the assessment of
-state variables. ";
-
-%feature("docstring")  cmf::math::CVodeBanded::get_states "cmf::math::num_array get_states() const ";
-
-%feature("docstring")  cmf::math::CVodeBanded::get_states "StateVariableList get_states()
-
-gets the state variables of the integrator ";
-
-%feature("docstring")  cmf::math::CVodeBanded::integrate "virtual int
-integrate(cmf::math::Time t_max, cmf::math::Time dt)
-
-Integrates the vector of state variables.
-
-Parameters:
------------
-
-t_max:  To stop the model (if running in a model framework) at time
-steps of value exchange e.g. full hours, the next value exchange time
-can be given
-
-dt:  Takes the proposed time step, and changes it into the effectively
-used time step according to the local stiffness of the problem and
-MaxTime ";
-
-%feature("docstring")  cmf::math::CVodeBanded::reset "virtual void
-reset()
-
-Resets the history of the multispte solver and overwrites the internal
-state cache. ";
-
-%feature("docstring")  cmf::math::CVodeBanded::set_error_msg "void
-set_error_msg(std::string error)
-
-Sets an error message. ";
-
-%feature("docstring")  cmf::math::CVodeBanded::set_state "void
-set_state(ptrdiff_t position, real newState)
-
-Simplifies the assessment of state variables. ";
-
-%feature("docstring")  cmf::math::CVodeBanded::set_states "void
-set_states(const num_array &newStates)
-
-Copies the new states to the actual states. ";
-
-%feature("docstring")  cmf::math::CVodeBanded::set_states "void
-set_states(real *newStates) ";
-
-%feature("docstring")  cmf::math::CVodeBanded::size "size_t size()
-const
-
-returns the number of state variables ";
-
-%feature("docstring")  cmf::math::CVodeBanded::to_string "std::string
-to_string() const
-
-Returns a string representation of the solver. ";
-
-
-// File: classcmf_1_1math_1_1_c_vode_dense.xml
-%feature("docstring") cmf::math::CVodeDense "
-
-implicit BDF CVode solver with full Jacobian approximation
-
-Use this solver for small but stiff systems (<20 state variables)
-
-The solver calculates for each step the full Jacobian matrix of the
-system using a difference quotient approximation of the real Jacobian
-
-C++ includes: cvode3.h ";
-
-/*  Accuracy parameters  */
-
-/*  model time  */
-
-%feature("docstring")  cmf::math::CVodeDense::get_t "cmf::math::Time
-get_t() const
-
-Returns the current model time. ";
-
-%feature("docstring")  cmf::math::CVodeDense::set_t "void
-set_t(cmf::math::Time val)
-
-Sets the current model time. ";
-
-%feature("docstring")  cmf::math::CVodeDense::get_dt "cmf::math::Time
-get_dt() const
-
-Returns the last time step. ";
-
-/*  Integrate  */
-
-%feature("docstring")  cmf::math::CVodeDense::integrate_until "void
-integrate_until(cmf::math::Time t_max, cmf::math::Time dt=Time(), bool
-reset=false)
-
-Integrates the vector of state variables until t_max.
-
-Parameters:
------------
-
-t_max:   Time, the solver should run to
-
-dt:   Time step (may be omitted)
-
-reset:  If true, solver is reseted before integration starts ";
-
-%feature("docstring")  cmf::math::CVodeDense::CVodeDense "CVodeDense(cmf::math::StateVariableOwner &states, real epsilon=1e-9)
-
-Creates a new implicit dense CVode solver. ";
-
-%feature("docstring")  cmf::math::CVodeDense::_get_jacobian "cmf::math::num_array _get_jacobian() const
-
-Returns a continuous 1D array representing the Jacobian oclumns
-concatenated.
-
-Convert to 2D numpy nd array: jac =
-solver.jacobian().reshape(solver.size(), -1) This can be implemented
-in ODEsystem.i but is not now. ";
-
-%feature("docstring")  cmf::math::CVodeDense::add_single_state "virtual void add_single_state(cmf::math::StateVariable::ptr state)
-
-Adds a single state variable to the integrator. ";
-
-%feature("docstring")  cmf::math::CVodeDense::add_states "virtual
-void add_states(cmf::math::StateVariableOwner &stateOwner)
-
-Add state variables from a StateVariableOwner. ";
-
-%feature("docstring")  cmf::math::CVodeDense::add_values_to_states "void add_values_to_states(const num_array &operands)
-
-Adds the values in operands to the current states. ";
-
-%feature("docstring")  cmf::math::CVodeDense::copy "CVode3* copy()
-const
-
-Returns a copy of the solver. ";
-
-%feature("docstring")  cmf::math::CVodeDense::copy_dxdt "void
-copy_dxdt(Time time, num_array &destination, real factor=1) const
-
-Copies the derivatives at time step \"time\" to a numeric vector using
-use_OpenMP.
-
-Parameters:
------------
-
-time:   Time at which the derivatives should be calculated
-
-destination:  Vector to be overwritten by the results
-
-factor:  A factor that is multiplied to the derivate (e.g. unit
-conversion or integration length) ";
-
-%feature("docstring")  cmf::math::CVodeDense::copy_dxdt "void
-copy_dxdt(Time time, real *destination, real factor=1) const
-
-Copies the derivatives at time step \"time\" to an preallocated c
-array.
-
-Parameters:
------------
-
-time:   Time at which the derivatives should be calculated
-
-destination:  Allocated c array
-
-factor:  A factor that is multiplied to the derivate (e.g. unit
-conversion or integration length) ";
-
-%feature("docstring")  cmf::math::CVodeDense::copy_states "void
-copy_states(num_array &destination) const
-
-Copies the states to a numeric vector using use_OpenMP. ";
-
-%feature("docstring")  cmf::math::CVodeDense::copy_states "void
-copy_states(real *destination) const ";
-
-%feature("docstring")  cmf::math::CVodeDense::get_dxdt "cmf::math::num_array get_dxdt(Time time) const ";
-
-%feature("docstring")  cmf::math::CVodeDense::get_error "cmf::math::num_array get_error() const
-
-Error vector of the integrator. ";
-
-%feature("docstring")  cmf::math::CVodeDense::get_info "CVodeInfo
-get_info() const
-
-Returns the current solver statistics. ";
-
-%feature("docstring")  cmf::math::CVodeDense::get_state "real
-get_state(ptrdiff_t position) const
-
-Returns the statevariable at position Simplifies the assessment of
-state variables. ";
-
-%feature("docstring")  cmf::math::CVodeDense::get_states "cmf::math::num_array get_states() const ";
-
-%feature("docstring")  cmf::math::CVodeDense::get_states "StateVariableList get_states()
-
-gets the state variables of the integrator ";
-
-%feature("docstring")  cmf::math::CVodeDense::integrate "virtual int
-integrate(cmf::math::Time t_max, cmf::math::Time dt)
-
-Integrates the vector of state variables.
-
-Parameters:
------------
-
-t_max:  To stop the model (if running in a model framework) at time
-steps of value exchange e.g. full hours, the next value exchange time
-can be given
-
-dt:  Takes the proposed time step, and changes it into the effectively
-used time step according to the local stiffness of the problem and
-MaxTime ";
-
-%feature("docstring")  cmf::math::CVodeDense::reset "virtual void
-reset()
-
-Resets the history of the multispte solver and overwrites the internal
-state cache. ";
-
-%feature("docstring")  cmf::math::CVodeDense::set_error_msg "void
-set_error_msg(std::string error)
-
-Sets an error message. ";
-
-%feature("docstring")  cmf::math::CVodeDense::set_state "void
-set_state(ptrdiff_t position, real newState)
-
-Simplifies the assessment of state variables. ";
-
-%feature("docstring")  cmf::math::CVodeDense::set_states "void
-set_states(const num_array &newStates)
-
-Copies the new states to the actual states. ";
-
-%feature("docstring")  cmf::math::CVodeDense::set_states "void
-set_states(real *newStates) ";
-
-%feature("docstring")  cmf::math::CVodeDense::size "size_t size()
-const
-
-returns the number of state variables ";
-
-%feature("docstring")  cmf::math::CVodeDense::to_string "std::string
-to_string() const
-
-Returns a string representation of the solver. ";
-
-
-// File: classcmf_1_1math_1_1_c_vode_diag.xml
-%feature("docstring") cmf::math::CVodeDiag "
-
-implicit BDF CVode solver with a one line diagonal Jacobian
-approximation
-
-C++ includes: cvode3.h ";
-
-/*  Accuracy parameters  */
-
-/*  model time  */
-
-%feature("docstring")  cmf::math::CVodeDiag::get_t "cmf::math::Time
-get_t() const
-
-Returns the current model time. ";
-
-%feature("docstring")  cmf::math::CVodeDiag::set_t "void
-set_t(cmf::math::Time val)
-
-Sets the current model time. ";
-
-%feature("docstring")  cmf::math::CVodeDiag::get_dt "cmf::math::Time
-get_dt() const
-
-Returns the last time step. ";
-
-/*  Integrate  */
-
-%feature("docstring")  cmf::math::CVodeDiag::integrate_until "void
-integrate_until(cmf::math::Time t_max, cmf::math::Time dt=Time(), bool
-reset=false)
-
-Integrates the vector of state variables until t_max.
-
-Parameters:
------------
-
-t_max:   Time, the solver should run to
-
-dt:   Time step (may be omitted)
-
-reset:  If true, solver is reseted before integration starts ";
-
-%feature("docstring")  cmf::math::CVodeDiag::CVodeDiag "CVodeDiag(cmf::math::StateVariableOwner &states, real epsilon=1e-9) ";
-
-%feature("docstring")  cmf::math::CVodeDiag::add_single_state "virtual void add_single_state(cmf::math::StateVariable::ptr state)
-
-Adds a single state variable to the integrator. ";
-
-%feature("docstring")  cmf::math::CVodeDiag::add_states "virtual void
-add_states(cmf::math::StateVariableOwner &stateOwner)
-
-Add state variables from a StateVariableOwner. ";
-
-%feature("docstring")  cmf::math::CVodeDiag::add_values_to_states "void add_values_to_states(const num_array &operands)
-
-Adds the values in operands to the current states. ";
-
-%feature("docstring")  cmf::math::CVodeDiag::copy "CVode3* copy()
-const
-
-Returns a copy of the solver. ";
-
-%feature("docstring")  cmf::math::CVodeDiag::copy_dxdt "void
-copy_dxdt(Time time, num_array &destination, real factor=1) const
-
-Copies the derivatives at time step \"time\" to a numeric vector using
-use_OpenMP.
-
-Parameters:
------------
-
-time:   Time at which the derivatives should be calculated
-
-destination:  Vector to be overwritten by the results
-
-factor:  A factor that is multiplied to the derivate (e.g. unit
-conversion or integration length) ";
-
-%feature("docstring")  cmf::math::CVodeDiag::copy_dxdt "void
-copy_dxdt(Time time, real *destination, real factor=1) const
-
-Copies the derivatives at time step \"time\" to an preallocated c
-array.
-
-Parameters:
------------
-
-time:   Time at which the derivatives should be calculated
-
-destination:  Allocated c array
-
-factor:  A factor that is multiplied to the derivate (e.g. unit
-conversion or integration length) ";
-
-%feature("docstring")  cmf::math::CVodeDiag::copy_states "void
-copy_states(num_array &destination) const
-
-Copies the states to a numeric vector using use_OpenMP. ";
-
-%feature("docstring")  cmf::math::CVodeDiag::copy_states "void
-copy_states(real *destination) const ";
-
-%feature("docstring")  cmf::math::CVodeDiag::get_dxdt "cmf::math::num_array get_dxdt(Time time) const ";
-
-%feature("docstring")  cmf::math::CVodeDiag::get_error "cmf::math::num_array get_error() const
-
-Error vector of the integrator. ";
-
-%feature("docstring")  cmf::math::CVodeDiag::get_info "CVodeInfo
-get_info() const
-
-Returns the current solver statistics. ";
-
-%feature("docstring")  cmf::math::CVodeDiag::get_state "real
-get_state(ptrdiff_t position) const
-
-Returns the statevariable at position Simplifies the assessment of
-state variables. ";
-
-%feature("docstring")  cmf::math::CVodeDiag::get_states "cmf::math::num_array get_states() const ";
-
-%feature("docstring")  cmf::math::CVodeDiag::get_states "StateVariableList get_states()
-
-gets the state variables of the integrator ";
-
-%feature("docstring")  cmf::math::CVodeDiag::integrate "virtual int
-integrate(cmf::math::Time t_max, cmf::math::Time dt)
-
-Integrates the vector of state variables.
-
-Parameters:
------------
-
-t_max:  To stop the model (if running in a model framework) at time
-steps of value exchange e.g. full hours, the next value exchange time
-can be given
-
-dt:  Takes the proposed time step, and changes it into the effectively
-used time step according to the local stiffness of the problem and
-MaxTime ";
-
-%feature("docstring")  cmf::math::CVodeDiag::reset "virtual void
-reset()
-
-Resets the history of the multispte solver and overwrites the internal
-state cache. ";
-
-%feature("docstring")  cmf::math::CVodeDiag::set_error_msg "void
-set_error_msg(std::string error)
-
-Sets an error message. ";
-
-%feature("docstring")  cmf::math::CVodeDiag::set_state "void
-set_state(ptrdiff_t position, real newState)
-
-Simplifies the assessment of state variables. ";
-
-%feature("docstring")  cmf::math::CVodeDiag::set_states "void
-set_states(const num_array &newStates)
-
-Copies the new states to the actual states. ";
-
-%feature("docstring")  cmf::math::CVodeDiag::set_states "void
-set_states(real *newStates) ";
-
-%feature("docstring")  cmf::math::CVodeDiag::size "size_t size()
-const
-
-returns the number of state variables ";
-
-%feature("docstring")  cmf::math::CVodeDiag::to_string "std::string
-to_string() const
-
-Returns a string representation of the solver. ";
-
-
-// File: structcmf_1_1math_1_1_c_vode_info.xml
-%feature("docstring") cmf::math::CVodeInfo "
-
-Reports the current state of a CVode solver.
-
-C++ includes: cvode3.h ";
-
-%feature("docstring")  cmf::math::CVodeInfo::to_string "std::string
-to_string() const ";
+// File: struct_c_v_dls_mem_rec.xml
+%feature("docstring") CVDlsMemRec "";
 
 
 // File: classcmf_1_1math_1_1_c_vode_integrator.xml
@@ -3902,200 +3090,12 @@ size() const
 returns the number of state variables ";
 
 
-// File: classcmf_1_1math_1_1_c_vode_krylov.xml
-%feature("docstring") cmf::math::CVodeKrylov "
+// File: struct_c_vode_mem_rec.xml
+%feature("docstring") CVodeMemRec "";
 
-implicit BDF CVode solver with a Krylov preconditioner
 
-C++ includes: cvode3.h ";
-
-/*  Accuracy parameters  */
-
-/*  model time  */
-
-%feature("docstring")  cmf::math::CVodeKrylov::get_t "cmf::math::Time
-get_t() const
-
-Returns the current model time. ";
-
-%feature("docstring")  cmf::math::CVodeKrylov::set_t "void
-set_t(cmf::math::Time val)
-
-Sets the current model time. ";
-
-%feature("docstring")  cmf::math::CVodeKrylov::get_dt "cmf::math::Time get_dt() const
-
-Returns the last time step. ";
-
-/*  Integrate  */
-
-%feature("docstring")  cmf::math::CVodeKrylov::integrate_until "void
-integrate_until(cmf::math::Time t_max, cmf::math::Time dt=Time(), bool
-reset=false)
-
-Integrates the vector of state variables until t_max.
-
-Parameters:
------------
-
-t_max:   Time, the solver should run to
-
-dt:   Time step (may be omitted)
-
-reset:  If true, solver is reseted before integration starts ";
-
-%feature("docstring")  cmf::math::CVodeKrylov::CVodeKrylov "CVodeKrylov(cmf::math::StateVariableOwner &states, real epsilon=1e-9,
-int w=5, char p='L') ";
-
-%feature("docstring")  cmf::math::CVodeKrylov::add_single_state "virtual void add_single_state(cmf::math::StateVariable::ptr state)
-
-Adds a single state variable to the integrator. ";
-
-%feature("docstring")  cmf::math::CVodeKrylov::add_states "virtual
-void add_states(cmf::math::StateVariableOwner &stateOwner)
-
-Add state variables from a StateVariableOwner. ";
-
-%feature("docstring")  cmf::math::CVodeKrylov::add_values_to_states "void add_values_to_states(const num_array &operands)
-
-Adds the values in operands to the current states. ";
-
-%feature("docstring")  cmf::math::CVodeKrylov::copy "CVode3* copy()
-const
-
-Returns a copy of the solver. ";
-
-%feature("docstring")  cmf::math::CVodeKrylov::copy_dxdt "void
-copy_dxdt(Time time, num_array &destination, real factor=1) const
-
-Copies the derivatives at time step \"time\" to a numeric vector using
-use_OpenMP.
-
-Parameters:
------------
-
-time:   Time at which the derivatives should be calculated
-
-destination:  Vector to be overwritten by the results
-
-factor:  A factor that is multiplied to the derivate (e.g. unit
-conversion or integration length) ";
-
-%feature("docstring")  cmf::math::CVodeKrylov::copy_dxdt "void
-copy_dxdt(Time time, real *destination, real factor=1) const
-
-Copies the derivatives at time step \"time\" to an preallocated c
-array.
-
-Parameters:
------------
-
-time:   Time at which the derivatives should be calculated
-
-destination:  Allocated c array
-
-factor:  A factor that is multiplied to the derivate (e.g. unit
-conversion or integration length) ";
-
-%feature("docstring")  cmf::math::CVodeKrylov::copy_states "void
-copy_states(num_array &destination) const
-
-Copies the states to a numeric vector using use_OpenMP. ";
-
-%feature("docstring")  cmf::math::CVodeKrylov::copy_states "void
-copy_states(real *destination) const ";
-
-%feature("docstring")  cmf::math::CVodeKrylov::get_dxdt "cmf::math::num_array get_dxdt(Time time) const ";
-
-%feature("docstring")  cmf::math::CVodeKrylov::get_error "cmf::math::num_array get_error() const
-
-Error vector of the integrator. ";
-
-%feature("docstring")  cmf::math::CVodeKrylov::get_info "CVodeInfo
-get_info() const
-
-Returns the current solver statistics. ";
-
-%feature("docstring")  cmf::math::CVodeKrylov::get_state "real
-get_state(ptrdiff_t position) const
-
-Returns the statevariable at position Simplifies the assessment of
-state variables. ";
-
-%feature("docstring")  cmf::math::CVodeKrylov::get_states "cmf::math::num_array get_states() const ";
-
-%feature("docstring")  cmf::math::CVodeKrylov::get_states "StateVariableList get_states()
-
-gets the state variables of the integrator ";
-
-%feature("docstring")  cmf::math::CVodeKrylov::integrate "virtual int
-integrate(cmf::math::Time t_max, cmf::math::Time dt)
-
-Integrates the vector of state variables.
-
-Parameters:
------------
-
-t_max:  To stop the model (if running in a model framework) at time
-steps of value exchange e.g. full hours, the next value exchange time
-can be given
-
-dt:  Takes the proposed time step, and changes it into the effectively
-used time step according to the local stiffness of the problem and
-MaxTime ";
-
-%feature("docstring")  cmf::math::CVodeKrylov::reset "virtual void
-reset()
-
-Resets the history of the multispte solver and overwrites the internal
-state cache. ";
-
-%feature("docstring")  cmf::math::CVodeKrylov::set_error_msg "void
-set_error_msg(std::string error)
-
-Sets an error message. ";
-
-%feature("docstring")  cmf::math::CVodeKrylov::set_state "void
-set_state(ptrdiff_t position, real newState)
-
-Simplifies the assessment of state variables. ";
-
-%feature("docstring")  cmf::math::CVodeKrylov::set_states "void
-set_states(const num_array &newStates)
-
-Copies the new states to the actual states. ";
-
-%feature("docstring")  cmf::math::CVodeKrylov::set_states "void
-set_states(real *newStates) ";
-
-%feature("docstring")  cmf::math::CVodeKrylov::size "size_t size()
-const
-
-returns the number of state variables ";
-
-%feature("docstring")  cmf::math::CVodeKrylov::to_string "std::string
-to_string() const
-
-Returns a string representation of the solver. ";
-
-
-// File: structcmf_1_1math_1_1_c_vode_options.xml
-%feature("docstring") cmf::math::CVodeOptions "
-
-A set of options for all CVode3 solver.
-
-Negative numbers indicate that this option stays on the default value.
-For the meaning of the options see CVODE-UD, section 4.5.6
-
-See Hindmarsh, A., Serban, R. and Reynolds, D.: User Documentation for
-cvode v3.1.0, 2017, UCRL-SM-208108
-
-Usage example: >>>solver = CVodeDens(p, 1e-9)
->>>solver.options.max_order = 2
-
-C++ includes: cvode3.h ";
-
-%feature("docstring")  cmf::math::CVodeOptions::CVodeOptions "CVodeOptions() ";
+// File: struct_c_v_spils_mem_rec.xml
+%feature("docstring") CVSpilsMemRec "";
 
 
 // File: classcmf_1_1upslope_1_1connections_1_1_darcy.xml
@@ -5544,6 +4544,27 @@ Without:  A flux_connection that is excluded from the waterbalance
 (e.g. to prevent closed circuits) ";
 
 
+// File: classcmf_1_1draw_1_1cellmap_1_1_flux_map.xml
+%feature("docstring") cmf::draw::cellmap::FluxMap "
+
+Draws for each cell an arrow indicating the direction and velocity of
+flow through the cell (in horizontal direction). Uses plt.quiver  The
+FluxMap can be updated by calling it with the new timestep  Usage: >>>
+import cmf >>> p = cmf.project() >>> solver = cmf.RKFIntegrator(p,
+1e-9) >>> fm = FluxMap(p, cmf.Time()) >>> for t in
+solver.run(solver.t, solver.t + cmf.day * 30, cmf.h): ...     fm(t) ";
+
+%feature("docstring")  cmf::draw::cellmap::FluxMap::__init__ "def
+__init__(self, cells, t, kwargs)
+
+Creates a new flux map :param cells: The cells to be used :param t:
+The current time step :param kwargs: Keyword arguments for plt.quiver
+";
+
+%feature("docstring")  cmf::draw::cellmap::FluxMap::__call__ "def
+__call__(self, t=None) ";
+
+
 // File: classcmf_1_1upslope_1_1connections_1_1_free_drainage_percolation.xml
 %feature("docstring")
 cmf::upslope::connections::FreeDrainagePercolation "
@@ -6641,6 +5662,46 @@ const
 returns the number of state variables ";
 
 
+// File: classcmf_1_1draw_1_1hillplot_1_1_hill_plot.xml
+%feature("docstring") cmf::draw::hillplot::HillPlot "
+
+Plots a hillslope using colored sheared rectangles for each layer and
+arrows (matplotlib.quiver) to show fluxes.  Properties:   -
+evalfunction: a function returning the value of a layer to plot. The
+value should be a float between 0..1 for scaling.     The default is:
+lambda l: l.wetness  - q_sub:  The matplotlib.Quiver object for
+subsurface fluxes  - q_surf: The matplotlib.Quiver object for
+subsurface fluxes  - title:  Title of the plot  - scale:  The scale of
+q_sub and q_surf ";
+
+%feature("docstring")  cmf::draw::hillplot::HillPlot::__init__ "def
+__init__(self, cells, t, solute=None, cmap=default_color_map)
+
+Creates a new HillPlot on the active figure, showing the state of each
+layer  - cells: The a sequence of cmf cells to use in this hill_plot.
+You can   use the whole project if you like  - t:     Current time
+step. Needed to retrieve the fluxes  - solute:The solute concentration
+to show. If None, the wetness of the    layer will be shown  - cmap: a
+matplotlib colormap (see module cm) for coloring ";
+
+%feature("docstring")  cmf::draw::hillplot::HillPlot::__call__ "def
+__call__(self, t, text='')
+
+Updates the hill_plot at time t. You can provide a title for the
+figure. If bool(title)==False, t is shown. ";
+
+%feature("docstring")  cmf::draw::hillplot::HillPlot::get_animator "def get_animator(self, integration)
+
+Returns a matplotlib.animation.FuncAnimator object that uses the
+integration iteratable to advance your model to animate the HillPlot
+Usage example:  >>>p=cmf.project() >>>solver = cmf.CVodeIntegrator(p,
+1e-9) >>>hp = HillPlot(p, solver.t) >>>animator =
+hp.get_animator(solver.run(datetime(2012, 1, 1), datetime(2012, 2, 1),
+timedelta(hours=1)))  :param integration: An iterable that advances
+the model and yields the current time :return: A
+matplotlib.animation.FuncAnimator ";
+
+
 // File: classcmf_1_1river_1_1_i_channel.xml
 %feature("docstring") cmf::river::IChannel "
 
@@ -6759,7 +5820,7 @@ distance weighted (IDW) method.
 
 See:  IDW
 
-C++ includes: Meteorology.h ";
+C++ includes: meteorology.h ";
 
 %feature("docstring")
 cmf::atmosphere::IDW_Meteorology::IDW_Meteorology "IDW_Meteorology(const cmf::geometry::point &position, const
@@ -7371,6 +6432,39 @@ double q(double h, double slope) const ";
 
 %feature("docstring")  cmf::river::IVolumeHeightFunction::V "virtual
 double V(double h) const =0 ";
+
+
+// File: classcmf_1_1jacobian_1_1_jacobian.xml
+%feature("docstring") cmf::jacobian::Jacobian "
+
+Approximates the jacobian for a cmf solver J[i,j] =
+(dxdt(S_i,t)[j]-dxdt(S,t)[j])/delta S is the state vector S_i equals
+S, except for S_i[i]=S[i]+delta delta is the finite difference to
+approximate the Jacobian.     delta should be a small number, but big
+enough to avoid floating point errors.      1e-6 to 1e-9 should be
+nice values  Usage to show the jacobian:     # Allocate memory for the
+jacobian     jac = Jacobian(solver,delta)     # Calculate the Jacobian
+J = jac()     # Show the Jacobian
+imshow(jac(),interpolation='nearest') ";
+
+%feature("docstring")  cmf::jacobian::Jacobian::__init__ "def
+__init__(self, solver, delta=1e-6)
+
+solver is a cmf integrator, delta is the amount the state should be
+changed ";
+
+%feature("docstring")  cmf::jacobian::Jacobian::__call__ "def
+__call__(self) ";
+
+%feature("docstring")  cmf::jacobian::Jacobian::__len__ "def
+__len__(self) ";
+
+%feature("docstring")  cmf::jacobian::Jacobian::dxdt "def dxdt(self)
+
+Returns the current right hand side of the ODE for the current states
+and the current time ";
+
+%feature("docstring")  cmf::jacobian::Jacobian::t "def t(self) ";
 
 
 // File: classcmf_1_1upslope_1_1connections_1_1_jarvis_macro_flow.xml
@@ -9595,6 +8689,33 @@ set_tracer_filter(solute S, real value) ";
 %feature("docstring")  cmf::river::Manning_Kinematic::to_string "virtual std::string to_string() const ";
 
 
+// File: classcmf_1_1maps_1_1_map.xml
+%feature("docstring") cmf::maps::Map "
+
+A Map is the base class for different spatial data distributions. The
+base version contains returns always the default value  A Map should
+implement the following functions: __iter__, returns an iterator over
+the items of a map values(), returns an iterator over the different
+objects of a map __call__(x,y,z), returns the object belonging to the
+position x,y,z ";
+
+%feature("docstring")  cmf::maps::Map::__init__ "def __init__(self,
+default=None) ";
+
+%feature("docstring")  cmf::maps::Map::__call__ "def __call__(self,
+x, y, z=0)
+
+returns default, regardless of the position given ";
+
+%feature("docstring")  cmf::maps::Map::__iter__ "def __iter__(self)
+";
+
+%feature("docstring")  cmf::maps::Map::__nonzero__ "def
+__nonzero__(self) ";
+
+%feature("docstring")  cmf::maps::Map::values "def values(self) ";
+
+
 // File: classcmf_1_1upslope_1_1connections_1_1_matrix_infiltration.xml
 %feature("docstring") cmf::upslope::connections::MatrixInfiltration "
 
@@ -9856,7 +8977,7 @@ V(double h) const ";
 An abstract class, for objects generating Weather records at a
 specific time.
 
-C++ includes: Meteorology.h ";
+C++ includes: meteorology.h ";
 
 %feature("docstring")  cmf::atmosphere::Meteorology::~Meteorology "virtual ~Meteorology() ";
 
@@ -9902,7 +9023,7 @@ daily=false, Radiation is given as an hourly mean value, which shows
 the dial ETpot variation but results in erronous results if the
 timestep is daily.
 
-C++ includes: Meteorology.h ";
+C++ includes: meteorology.h ";
 
 /*  Location and behaviour properties  */
 
@@ -9958,7 +9079,7 @@ A list of meteorological stations.
 Can find the nearest station for a position and calculate the
 temperature lapse
 
-C++ includes: Meteorology.h ";
+C++ includes: meteorology.h ";
 
 %feature("docstring")
 cmf::atmosphere::MeteoStationList::MeteoStationList "MeteoStationList()
@@ -10047,7 +9168,7 @@ A reference to a meteorological station.
 Returns the weather at a given time for its place using
 MeteoStation::T_lapse
 
-C++ includes: Meteorology.h ";
+C++ includes: meteorology.h ";
 
 %feature("docstring")
 cmf::atmosphere::MeteoStationReference::MeteoStationReference "MeteoStationReference(MeteoStation::ptr station, cmf::geometry::point
@@ -10099,7 +9220,7 @@ The MultiIntegrator is a wrapper for a bunch integrators. The states
 of the integrators should not have direct connections over integrator
 boundaries.
 
-C++ includes: MultiIntegrator.h ";
+C++ includes: multiintegrator.h ";
 
 /*  Accuracy parameters  */
 
@@ -10266,6 +9387,41 @@ set_states(real *newStates) ";
 size() const
 
 returns the number of state variables ";
+
+
+// File: classcmf_1_1maps_1_1_nearest_neighbor_map.xml
+%feature("docstring") cmf::maps::NearestNeighborMap "
+
+A map (spatial distribution of data) returning the nearest neighbor to
+the queried position Stores position referenced objects.  z_weight is
+a weight, how important vertical differences are for neighborhood. 0
+means only horizontal distance and a high value only uses the height
+as a distance measure. The distance to be minimized is calculated as:
+sqrt((x1-x2)**2+(y1-y2)**2)+abs(z1-z2)*z_weight ";
+
+%feature("docstring")  cmf::maps::NearestNeighborMap::__init__ "def
+__init__(self, z_weight=0) ";
+
+%feature("docstring")  cmf::maps::NearestNeighborMap::__call__ "def
+__call__(self, x, y, z=0)
+
+returns the nearest neighbor object to the given position     The
+distance to be minimized is calculated as:
+sqrt((x1-x2)**2+(y1-y2)**2)+abs(z1-z2)*z_weight ";
+
+%feature("docstring")  cmf::maps::NearestNeighborMap::__iter__ "def
+__iter__(self) ";
+
+%feature("docstring")  cmf::maps::NearestNeighborMap::__nonzero__ "def __nonzero__(self) ";
+
+%feature("docstring")  cmf::maps::NearestNeighborMap::append "def
+append(self, position, object) ";
+
+%feature("docstring")  cmf::maps::NearestNeighborMap::remove "def
+remove(self, position) ";
+
+%feature("docstring")  cmf::maps::NearestNeighborMap::values "def
+values(self) ";
 
 
 // File: classcmf_1_1upslope_1_1neighbor__iterator.xml
@@ -11520,6 +10676,35 @@ size() const
 Return the number of points in the point_vector. ";
 
 
+// File: classcmf_1_1maps_1_1_polygon_map.xml
+%feature("docstring") cmf::maps::PolygonMap "
+
+A map of polygons. Each object is referenced with a shapely polygon.
+Returns the object of the first polygon, within the query position
+lays. ";
+
+%feature("docstring")  cmf::maps::PolygonMap::__init__ "def
+__init__(self, quad_tree_raster_size=20) ";
+
+%feature("docstring")  cmf::maps::PolygonMap::__call__ "def
+__call__(self, x, y, z=0) ";
+
+%feature("docstring")  cmf::maps::PolygonMap::__iter__ "def
+__iter__(self) ";
+
+%feature("docstring")  cmf::maps::PolygonMap::__nonzero__ "def
+__nonzero__(self) ";
+
+%feature("docstring")  cmf::maps::PolygonMap::append "def
+append(self, polygon, object) ";
+
+%feature("docstring")  cmf::maps::PolygonMap::remove "def
+remove(self, polygon) ";
+
+%feature("docstring")  cmf::maps::PolygonMap::values "def
+values(self) ";
+
+
 // File: classcmf_1_1water_1_1_power_law_connection.xml
 %feature("docstring") cmf::water::PowerLawConnection "
 
@@ -12157,6 +11342,46 @@ Parameters:
 
 z_weight:   :math:`w_z` the weight of height difference between cell and
 station ";
+
+
+// File: classcmf_1_1geometry_1_1qtree_1_1_quadtree.xml
+%feature("docstring") cmf::geometry::qtree::Quadtree "
+
+A simple quad tree to check if the boundaries of geometries overlap or
+not ";
+
+%feature("docstring")  cmf::geometry::qtree::Quadtree::__init__ "def
+__init__(self, area, divisions=50)
+
+:param area: The total area of the study area in m2 :param divisions:
+The number of divisions of the area, default is 20 ";
+
+%feature("docstring")  cmf::geometry::qtree::Quadtree::__call__ "def
+__call__(self, bounds)
+
+Get all objects in the given boundaries :param bounds: The boundary
+rectangle of the tree. A 4 item sequence (xmin, ymin, xmax, ymax)
+:return: ";
+
+%feature("docstring")  cmf::geometry::qtree::Quadtree::append "def
+append(self, obj, bounds)
+
+Appends an object to the qtree using the given bounds. :param obj: An
+object to append to the tree, must be hashable :param bounds: The
+boundary rectangle of the object. A 4 item sequence (xmin, ymin, xmax,
+ymax) ";
+
+%feature("docstring")  cmf::geometry::qtree::Quadtree::extend "def
+extend(self, objects_with_boundaries)
+
+Extends the Quadtree with objects :param objects_with_boundaries: an
+iterable of (object, bounds) tuples :return: ";
+
+%feature("docstring")  cmf::geometry::qtree::Quadtree::iterbounds "def iterbounds(self, bounds)
+
+Iterates through all positions in the boundaries :param bounds: The
+boundary rectangle. A 4 item sequence (xmin, ymin, xmax, ymax)
+:return: (i,j) position tuple ";
 
 
 // File: classcmf_1_1upslope_1_1connections_1_1_rainfall.xml
@@ -13669,6 +12894,57 @@ cmf::upslope::connections::RutterInterception::to_string "virtual
 std::string to_string() const ";
 
 
+// File: classcmf_1_1geos__shapereader_1_1_shapefile.xml
+%feature("docstring") cmf::geos_shapereader::Shapefile "
+
+The shapefile class, create it from a .shp file  The shapefile class
+implements most of the sequence protocol Usage:
+shp=Shapefile('theshapes.shp') # Load the shape file
+print(shp[0].shape.area)        # Print area of shape
+print(shp[0].Name)              # Prints the name of the shape,
+assuming theshapes.dbf has a field 'Name' ";
+
+%feature("docstring")  cmf::geos_shapereader::Shapefile::__init__ "def __init__(self, filename, coordinatedigits=12)
+
+Loads a shapefile from a filename ";
+
+%feature("docstring")  cmf::geos_shapereader::Shapefile::__getitem__ "def __getitem__(self, index) ";
+
+%feature("docstring")  cmf::geos_shapereader::Shapefile::__iter__ "def __iter__(self) ";
+
+%feature("docstring")  cmf::geos_shapereader::Shapefile::__len__ "def
+__len__(self) ";
+
+%feature("docstring")  cmf::geos_shapereader::Shapefile::readheader "def readheader(self, f)
+
+reads the header of a shape file (see ESRI Shapefile Whitepaper
+http://www.esri.com/library/whitepapers/pdfs/shapefile.pdf) ";
+
+%feature("docstring")  cmf::geos_shapereader::Shapefile::readrecord "def readrecord(self, f, coordinatedigits)
+
+Reads a record from the shapefile see:
+http://www.esri.com/library/whitepapers/pdfs/shapefile.pdf ";
+
+%feature("docstring")  cmf::geos_shapereader::Shapefile::shapes "def
+shapes(self)
+
+Returns a list of shapes ";
+
+
+// File: classcmf_1_1draw_1_1shapemap_1_1_shape_map.xml
+%feature("docstring") cmf::draw::shapemap::ShapeMap "
+
+self.fc_function: A callable taking a feature and returning a color
+(fillcolor) self.lw_function: A callable taking a feature and
+returning a scalar (line width) ";
+
+%feature("docstring")  cmf::draw::shapemap::ShapeMap::__init__ "def
+__init__(self, features, kwargs) ";
+
+%feature("docstring")  cmf::draw::shapemap::ShapeMap::refresh "def
+refresh(self) ";
+
+
 // File: classcmf_1_1upslope_1_1_e_t_1_1_shuttleworth_wallace.xml
 %feature("docstring") cmf::upslope::ET::ShuttleworthWallace "
 
@@ -13904,6 +13180,19 @@ std::string short_string() const ";
 %feature("docstring")
 cmf::upslope::connections::SimpleInfiltration::to_string "virtual
 std::string to_string() const ";
+
+
+// File: classcmf_1_1maps_1_1_simple_quad_tree.xml
+%feature("docstring") cmf::maps::SimpleQuadTree "";
+
+%feature("docstring")  cmf::maps::SimpleQuadTree::__init__ "def
+__init__(self, dx=20, dy=20) ";
+
+%feature("docstring")  cmf::maps::SimpleQuadTree::add_object "def
+add_object(self, object, bounds) ";
+
+%feature("docstring")  cmf::maps::SimpleQuadTree::get_objects "def
+get_objects(self, bounds) ";
 
 
 // File: classcmf_1_1upslope_1_1connections_1_1_simple_tindex_snow_melt.xml
@@ -15100,6 +14389,14 @@ returns the number of state variables ";
 %feature("docstring")  cmf::math::SoluteWaterIntegrator::to_string "std::string to_string() const ";
 
 
+// File: struct_spbcg_mem_rec.xml
+%feature("docstring") SpbcgMemRec "";
+
+
+// File: struct_sptfqmr_mem_rec.xml
+%feature("docstring") SptfqmrMemRec "";
+
+
 // File: classcmf_1_1water_1_1statecontrol__connection.xml
 %feature("docstring") cmf::water::statecontrol_connection "
 
@@ -15307,6 +14604,31 @@ cmf::math::StateVariableOwner::~StateVariableOwner "virtual
 
 Add the state variables, owned by an object derived from
 StateVariableOwner, to the given vector. ";
+
+
+// File: classcmf_1_1stopwatch_1_1_stop_watch.xml
+%feature("docstring") cmf::stopwatch::StopWatch "
+
+A stopwatch to estimated the total time of a process    Creating a
+StopWatch: >>>stopwatch=StopWatch(start,stop)  Start and end are
+indicators to describe the progress of a process.  Start is the
+indicator value at the beginning of the process. As default they are
+0.0 and 1.0.  Starting the StopWatch again: >>>stopwatch.start()
+Getting the elapsed time, the total time and the remaining time of the
+process in seconds: >>>elapsed,total,remaining = stopwatch(progress)
+Where progress is a process progress indicator matching start and stop
+Example: stopwatch=StopWatch(0,10) for i in range(10): time.sleep(1)
+print('elapsed = %0.2fs, total= %0.2fs, remaining = %0.2fs' %
+stopwatch(i+1)) ";
+
+%feature("docstring")  cmf::stopwatch::StopWatch::__init__ "def
+__init__(self, start=0.0, stop=1.0) ";
+
+%feature("docstring")  cmf::stopwatch::StopWatch::__call__ "def
+__call__(self, progress) ";
+
+%feature("docstring")  cmf::stopwatch::StopWatch::start "def
+start(self) ";
 
 
 // File: classcmf_1_1upslope_1_1_e_t_1_1stressed_e_t.xml
@@ -18482,6 +17804,14 @@ Returns a string representation. ";
 
 
 // File: namespacecmf.xml
+%feature("docstring")  cmf::atmosphere::connect_cells_with_flux "def
+cmf.connect_cells_with_flux(cells, connection, start_at_layer=0)
+
+Connects all cells in cells (sequence or generator) with a flux
+connection connection is an subclass of cmf.FluxConnection which
+exposes the cell_connector callable                 (e.g. lateral
+subsurface fluxes and surface manning flux) start_at_layer : if the
+flux connection should only be used for deeper layers ";
 
 
 // File: namespacecmf_1_1atmosphere.xml
@@ -18632,12 +17962,178 @@ rH:  Rel. humidity in %
 ";
 
 
+// File: namespacecmf_1_1describe.xml
+%feature("docstring")  cmf::describe::describe "def
+cmf.describe.describe(cmfobject, out=None)
+
+Describes a cmf object in a file like object or returns the
+description.  If no special description method for the class of
+cmfobject is available, the function writes the string representation
+:param cmfobject: any cmf object eg. project, Cell, timeseries :param
+out: filelike object, if None function returns the description as
+string :return: If out is None it returns the description as string,
+else no return ";
+
+
+// File: namespacecmf_1_1draw.xml
+
+
+// File: namespacecmf_1_1draw_1_1cellmap.xml
+
+
+// File: namespacecmf_1_1draw_1_1draw__misc.xml
+%feature("docstring")  cmf::draw::draw_misc::bar_timeseries "def
+cmf.draw.draw_misc.bar_timeseries(data, kwargs)
+
+Makes a bar graph from a cmf.timeseries using pylab.bar :param data:
+cmf.timeseries :param kwargs: Keyword arguments of pylab.bar :return:
+as pylab.bar ";
+
+%feature("docstring")  cmf::draw::draw_misc::plot_image "def
+cmf.draw.draw_misc.plot_image(filename, kwargs)
+
+Plots an image with an ESRI Worldfile as a map background. Uses
+matplotlib.pylab.imshow :param filename: Filename of the image. :param
+kwargs: Keyword arguments to imshow :return: Image from imshow ";
+
+%feature("docstring")  cmf::draw::draw_misc::plot_timeseries "def
+cmf.draw.draw_misc.plot_timeseries(data, style='-', kwargs)
+
+Plots a cmf.timeseries as a line using pylab.plot :param data:
+cmf.timeseries :param style: Style code for pylab.plot :param kwargs:
+Keyword arguments for pylab.plot :return: matplotlib line object ";
+
+
+// File: namespacecmf_1_1draw_1_1hillplot.xml
+
+
+// File: namespacecmf_1_1draw_1_1shapemap.xml
+
+
+// File: namespacecmf_1_1fit__retention__curve.xml
+%feature("docstring")  cmf::fit_retention_curve::fit_bc "def
+cmf.fit_retention_curve.fit_bc(pF, theta, count=20, verbose=False)
+
+Fits a Brooks-Corey retention curve into data pF: a sequence of pF
+values theta: an array of water contents ";
+
+%feature("docstring")  cmf::fit_retention_curve::fit_vgm "def
+cmf.fit_retention_curve.fit_vgm(pF, theta, variable_m=False, count=20,
+fitlevel=None, verbose=False)
+
+Fits a Van Genuchten / Mualem retention curve into data pF: a sequence
+of pF values theta: an array of water contents alpha_range: a
+2-sequence holding the range for alpha values n_range: a 2-sequence
+holding the range for n values ";
+
+%feature("docstring")  cmf::fit_retention_curve::get_error_bc "def
+cmf.fit_retention_curve.get_error_bc(params, pF, theta) ";
+
+%feature("docstring")  cmf::fit_retention_curve::get_error_vgm "def
+cmf.fit_retention_curve.get_error_vgm(params, pF, theta) ";
+
+%feature("docstring")  cmf::fit_retention_curve::make_vgm "def
+cmf.fit_retention_curve.make_vgm(params) ";
+
+%feature("docstring")  cmf::fit_retention_curve::narrowparameters_bc "def cmf.fit_retention_curve.narrowparameters_bc(pF, theta, phi, b,
+w_x, count=10000, perc=10)
+
+Narrows the parameter space down to the best perc (default=10) percent
+of the results pF: A sequence of pF values matching theta theta: A
+sequence of water content values for the corresponding pF values phi:
+A distribution of porosity values, only the range is used alpha: A
+distribution of VanGenuchten alpha values, only the range is used n: A
+distribution of VanGenuchten n values, only the range is used count:
+Number of random values to be drawn in the range of the parameters
+perc: percentile of best fitting parameters  Returns:
+phi,alpha,n,vgm_err: New distribution of phi, alpha, n and the
+corrseponding errors                      for the best perc% of the
+results ";
+
+%feature("docstring")  cmf::fit_retention_curve::narrowparameters_vgm
+"def cmf.fit_retention_curve.narrowparameters_vgm(pF, theta, phi,
+alpha, n, theta_r=(0.0, 0.0), count=10000, perc=10)
+
+Narrows the parameter space down to the best perc (default=10) percent
+of the results pF: A sequence of pF values matching theta theta: A
+sequence of water content values for the corresponding pF values phi:
+A distribution of porosity values, only the range is used alpha: A
+distribution of VanGenuchten alpha values, only the range is used n: A
+distribution of VanGenuchten n values, only the range is used count:
+Number of random values to be drawn in the range of the parameters
+perc: percentile of best fitting parameters  Returns:
+phi,alpha,n,vgm_err: New distribution of phi, alpha, n and the
+corrseponding errors                      for the best perc% of the
+results                       Usage:     # Create a priori range phi,
+n, alpha = ";
+
+%feature("docstring")  cmf::fit_retention_curve::plot_vgms "def
+cmf.fit_retention_curve.plot_vgms(pF, theta, phi, alpha, n, theta_r)
+";
+
+
 // File: namespacecmf_1_1geometry.xml
-%feature("docstring")  cmf::geometry::distance "double
+%feature("docstring")  cmf::geometry::geocell::distance "double
 cmf::geometry::distance(const point &p1, const point &p2) ";
 
-%feature("docstring")  cmf::geometry::dot "double
+%feature("docstring")  cmf::geometry::geocell::dot "double
 cmf::geometry::dot(const point &p1, const point &p2) ";
+
+
+// File: namespacecmf_1_1geometry_1_1geocell.xml
+%feature("docstring")  cmf::geometry::geocell::add_geometry_property "def cmf.geometry.geocell.add_geometry_property()
+
+Extends the Cell class with a geometry attribute :return: ";
+
+%feature("docstring")  cmf::geometry::geocell::create_cell "def
+cmf.geometry.geocell.create_cell(project, polygon, height, id=None,
+with_surfacewater=True)
+
+Creates a cell from a shapely polygon and stores the geometry in
+cell.geometry  :param project: the cmf project of the cell :param
+polygon: the shapely Polygon :param height: the height of the cell
+:param id: the id of the cell, only set if not None :param
+with_surfacewater: True, if a surfacewater storage will be created
+:return: The new cell ";
+
+%feature("docstring")  cmf::geometry::geocell::mesh_project "def
+cmf.geometry.geocell.mesh_project(project, min_intersection=0,
+verbose=False)
+
+Get the topologcial information from the geometry This may take some
+time :param project: The cmf project. The cells of the project need to
+have geometry :param min_intersection: Minimum intersection length in
+m :param verbose: Set True for report of action and additional
+warnings :return: ";
+
+
+// File: namespacecmf_1_1geometry_1_1qtree.xml
+
+
+// File: namespacecmf_1_1geos__shapereader.xml
+
+
+// File: namespacecmf_1_1jacobian.xml
+%feature("docstring")  cmf::jacobian::connected_states "def
+cmf.jacobian.connected_states(states)
+
+Get a set of all connected nodes, indicated by the node_id's  :param
+states: An iterable of states :return: a set of node_id tuples ";
+
+%feature("docstring")  cmf::jacobian::connector_matrix "def
+cmf.jacobian.connector_matrix(states, compression_factor=1)
+
+Returns a matrix that shows the connectivity between the given states
+:param states: A sequence of states to create the matrix :param
+compression_factor: Large matrices can compressed with a factor.
+:return: A symmetric 2d matrix with 1 for connected states and 0 for
+unconnected states. Compressed matrices contain larger numbers for the
+count of connection in the compressed field ";
+
+
+// File: namespacecmf_1_1maps.xml
+%feature("docstring")  cmf::maps::distance "def cmf.maps.distance(p1,
+p2) ";
 
 
 // File: namespacecmf_1_1math.xml
@@ -18689,6 +18185,9 @@ Ensures that rivers have a monotone downward flow direction.
 
 Reaches with a bottom higher than any upstream reach are lowered to
 the minimum height of any (possibly distant) upstream reach. ";
+
+
+// File: namespacecmf_1_1stopwatch.xml
 
 
 // File: namespacecmf_1_1upslope.xml
@@ -18916,11 +18415,23 @@ upper and SystemBridge, the SystemBridge reacts as an Dirichlet
 boundary condition, providing the potential of the lower node. ";
 
 
+// File: namespacecmf__core.xml
+
+
 // File: namespacestd.xml
 %feature("docstring")  std::isfinite "bool std::isfinite(double v) ";
 
 
-// File: _meteorology_8h.xml
+// File: ____init_____8py.xml
+
+
+// File: draw_2____init_____8py.xml
+
+
+// File: geometry_2____init_____8py.xml
+
+
+// File: meteorology_8h.xml
 
 
 // File: precipitation_8h.xml
@@ -18938,9 +18449,6 @@ boundary condition, providing the potential of the lower node. ";
 // File: bdf2_8h.xml
 
 
-// File: cvode3_8h.xml
-
-
 // File: cvodeintegrator_8h.xml
 
 
@@ -18953,19 +18461,934 @@ boundary condition, providing the potential of the lower node. ";
 // File: integrator_8h.xml
 
 
-// File: _multi_integrator_8h.xml
+// File: multiintegrator_8h.xml
 
 
 // File: _r_k_fintegrator_8h.xml
+
+
+// File: cvode_8h.xml
+%feature("docstring")  CVode "SUNDIALS_EXPORT int CVode(void
+*cvode_mem, realtype tout, N_Vector yout, realtype *tret, int itask)
+";
+
+%feature("docstring")  CVodeCreate "SUNDIALS_EXPORT void*
+CVodeCreate(int lmm, int iter) ";
+
+%feature("docstring")  CVodeFree "SUNDIALS_EXPORT void CVodeFree(void
+**cvode_mem) ";
+
+%feature("docstring")  CVodeGetActualInitStep "SUNDIALS_EXPORT int
+CVodeGetActualInitStep(void *cvode_mem, realtype *hinused) ";
+
+%feature("docstring")  CVodeGetCurrentOrder "SUNDIALS_EXPORT int
+CVodeGetCurrentOrder(void *cvode_mem, int *qcur) ";
+
+%feature("docstring")  CVodeGetCurrentStep "SUNDIALS_EXPORT int
+CVodeGetCurrentStep(void *cvode_mem, realtype *hcur) ";
+
+%feature("docstring")  CVodeGetCurrentTime "SUNDIALS_EXPORT int
+CVodeGetCurrentTime(void *cvode_mem, realtype *tcur) ";
+
+%feature("docstring")  CVodeGetDky "SUNDIALS_EXPORT int
+CVodeGetDky(void *cvode_mem, realtype t, int k, N_Vector dky) ";
+
+%feature("docstring")  CVodeGetErrWeights "SUNDIALS_EXPORT int
+CVodeGetErrWeights(void *cvode_mem, N_Vector eweight) ";
+
+%feature("docstring")  CVodeGetEstLocalErrors "SUNDIALS_EXPORT int
+CVodeGetEstLocalErrors(void *cvode_mem, N_Vector ele) ";
+
+%feature("docstring")  CVodeGetIntegratorStats "SUNDIALS_EXPORT int
+CVodeGetIntegratorStats(void *cvode_mem, long int *nsteps, long int
+*nfevals, long int *nlinsetups, long int *netfails, int *qlast, int
+*qcur, realtype *hinused, realtype *hlast, realtype *hcur, realtype
+*tcur) ";
+
+%feature("docstring")  CVodeGetLastOrder "SUNDIALS_EXPORT int
+CVodeGetLastOrder(void *cvode_mem, int *qlast) ";
+
+%feature("docstring")  CVodeGetLastStep "SUNDIALS_EXPORT int
+CVodeGetLastStep(void *cvode_mem, realtype *hlast) ";
+
+%feature("docstring")  CVodeGetNonlinSolvStats "SUNDIALS_EXPORT int
+CVodeGetNonlinSolvStats(void *cvode_mem, long int *nniters, long int
+*nncfails) ";
+
+%feature("docstring")  CVodeGetNumErrTestFails "SUNDIALS_EXPORT int
+CVodeGetNumErrTestFails(void *cvode_mem, long int *netfails) ";
+
+%feature("docstring")  CVodeGetNumGEvals "SUNDIALS_EXPORT int
+CVodeGetNumGEvals(void *cvode_mem, long int *ngevals) ";
+
+%feature("docstring")  CVodeGetNumLinSolvSetups "SUNDIALS_EXPORT int
+CVodeGetNumLinSolvSetups(void *cvode_mem, long int *nlinsetups) ";
+
+%feature("docstring")  CVodeGetNumNonlinSolvConvFails "SUNDIALS_EXPORT int CVodeGetNumNonlinSolvConvFails(void *cvode_mem,
+long int *nncfails) ";
+
+%feature("docstring")  CVodeGetNumNonlinSolvIters "SUNDIALS_EXPORT
+int CVodeGetNumNonlinSolvIters(void *cvode_mem, long int *nniters) ";
+
+%feature("docstring")  CVodeGetNumRhsEvals "SUNDIALS_EXPORT int
+CVodeGetNumRhsEvals(void *cvode_mem, long int *nfevals) ";
+
+%feature("docstring")  CVodeGetNumStabLimOrderReds "SUNDIALS_EXPORT
+int CVodeGetNumStabLimOrderReds(void *cvode_mem, long int *nslred) ";
+
+%feature("docstring")  CVodeGetNumSteps "SUNDIALS_EXPORT int
+CVodeGetNumSteps(void *cvode_mem, long int *nsteps) ";
+
+%feature("docstring")  CVodeGetReturnFlagName "SUNDIALS_EXPORT char*
+CVodeGetReturnFlagName(int flag) ";
+
+%feature("docstring")  CVodeGetRootInfo "SUNDIALS_EXPORT int
+CVodeGetRootInfo(void *cvode_mem, int *rootsfound) ";
+
+%feature("docstring")  CVodeGetTolScaleFactor "SUNDIALS_EXPORT int
+CVodeGetTolScaleFactor(void *cvode_mem, realtype *tolsfac) ";
+
+%feature("docstring")  CVodeGetWorkSpace "SUNDIALS_EXPORT int
+CVodeGetWorkSpace(void *cvode_mem, long int *lenrw, long int *leniw)
+";
+
+%feature("docstring")  CVodeInit "SUNDIALS_EXPORT int CVodeInit(void
+*cvode_mem, CVRhsFn f, realtype t0, N_Vector y0) ";
+
+%feature("docstring")  CVodeReInit "SUNDIALS_EXPORT int
+CVodeReInit(void *cvode_mem, realtype t0, N_Vector y0) ";
+
+%feature("docstring")  CVodeRootInit "SUNDIALS_EXPORT int
+CVodeRootInit(void *cvode_mem, int nrtfn, CVRootFn g) ";
+
+%feature("docstring")  CVodeSetErrFile "SUNDIALS_EXPORT int
+CVodeSetErrFile(void *cvode_mem, FILE *errfp) ";
+
+%feature("docstring")  CVodeSetErrHandlerFn "SUNDIALS_EXPORT int
+CVodeSetErrHandlerFn(void *cvode_mem, CVErrHandlerFn ehfun, void
+*eh_data) ";
+
+%feature("docstring")  CVodeSetInitStep "SUNDIALS_EXPORT int
+CVodeSetInitStep(void *cvode_mem, realtype hin) ";
+
+%feature("docstring")  CVodeSetIterType "SUNDIALS_EXPORT int
+CVodeSetIterType(void *cvode_mem, int iter) ";
+
+%feature("docstring")  CVodeSetMaxConvFails "SUNDIALS_EXPORT int
+CVodeSetMaxConvFails(void *cvode_mem, int maxncf) ";
+
+%feature("docstring")  CVodeSetMaxErrTestFails "SUNDIALS_EXPORT int
+CVodeSetMaxErrTestFails(void *cvode_mem, int maxnef) ";
+
+%feature("docstring")  CVodeSetMaxHnilWarns "SUNDIALS_EXPORT int
+CVodeSetMaxHnilWarns(void *cvode_mem, int mxhnil) ";
+
+%feature("docstring")  CVodeSetMaxNonlinIters "SUNDIALS_EXPORT int
+CVodeSetMaxNonlinIters(void *cvode_mem, int maxcor) ";
+
+%feature("docstring")  CVodeSetMaxNumSteps "SUNDIALS_EXPORT int
+CVodeSetMaxNumSteps(void *cvode_mem, long int mxsteps) ";
+
+%feature("docstring")  CVodeSetMaxOrd "SUNDIALS_EXPORT int
+CVodeSetMaxOrd(void *cvode_mem, int maxord) ";
+
+%feature("docstring")  CVodeSetMaxStep "SUNDIALS_EXPORT int
+CVodeSetMaxStep(void *cvode_mem, realtype hmax) ";
+
+%feature("docstring")  CVodeSetMinStep "SUNDIALS_EXPORT int
+CVodeSetMinStep(void *cvode_mem, realtype hmin) ";
+
+%feature("docstring")  CVodeSetNoInactiveRootWarn "SUNDIALS_EXPORT
+int CVodeSetNoInactiveRootWarn(void *cvode_mem) ";
+
+%feature("docstring")  CVodeSetNonlinConvCoef "SUNDIALS_EXPORT int
+CVodeSetNonlinConvCoef(void *cvode_mem, realtype nlscoef) ";
+
+%feature("docstring")  CVodeSetRootDirection "SUNDIALS_EXPORT int
+CVodeSetRootDirection(void *cvode_mem, int *rootdir) ";
+
+%feature("docstring")  CVodeSetStabLimDet "SUNDIALS_EXPORT int
+CVodeSetStabLimDet(void *cvode_mem, booleantype stldet) ";
+
+%feature("docstring")  CVodeSetStopTime "SUNDIALS_EXPORT int
+CVodeSetStopTime(void *cvode_mem, realtype tstop) ";
+
+%feature("docstring")  CVodeSetUserData "SUNDIALS_EXPORT int
+CVodeSetUserData(void *cvode_mem, void *user_data) ";
+
+%feature("docstring")  CVodeSStolerances "SUNDIALS_EXPORT int
+CVodeSStolerances(void *cvode_mem, realtype reltol, realtype abstol)
+";
+
+%feature("docstring")  CVodeSVtolerances "SUNDIALS_EXPORT int
+CVodeSVtolerances(void *cvode_mem, realtype reltol, N_Vector abstol)
+";
+
+%feature("docstring")  CVodeWFtolerances "SUNDIALS_EXPORT int
+CVodeWFtolerances(void *cvode_mem, CVEwtFn efun) ";
+
+
+// File: cvode__band_8h.xml
+%feature("docstring")  CVBand "SUNDIALS_EXPORT int CVBand(void
+*cvode_mem, int N, int mupper, int mlower) ";
+
+
+// File: cvode__bandpre_8h.xml
+%feature("docstring")  CVBandPrecGetNumRhsEvals "SUNDIALS_EXPORT int
+CVBandPrecGetNumRhsEvals(void *cvode_mem, long int *nfevalsBP) ";
+
+%feature("docstring")  CVBandPrecGetWorkSpace "SUNDIALS_EXPORT int
+CVBandPrecGetWorkSpace(void *cvode_mem, long int *lenrwLS, long int
+*leniwLS) ";
+
+%feature("docstring")  CVBandPrecInit "SUNDIALS_EXPORT int
+CVBandPrecInit(void *cvode_mem, int N, int mu, int ml) ";
+
+
+// File: cvode__bbdpre_8h.xml
+%feature("docstring")  CVBBDPrecGetNumGfnEvals "SUNDIALS_EXPORT int
+CVBBDPrecGetNumGfnEvals(void *cvode_mem, long int *ngevalsBBDP) ";
+
+%feature("docstring")  CVBBDPrecGetWorkSpace "SUNDIALS_EXPORT int
+CVBBDPrecGetWorkSpace(void *cvode_mem, long int *lenrwLS, long int
+*leniwLS) ";
+
+%feature("docstring")  CVBBDPrecInit "SUNDIALS_EXPORT int
+CVBBDPrecInit(void *cvode_mem, int Nlocal, int mudq, int mldq, int
+mukeep, int mlkeep, realtype dqrely, CVLocalFn gloc, CVCommFn cfn) ";
+
+%feature("docstring")  CVBBDPrecReInit "SUNDIALS_EXPORT int
+CVBBDPrecReInit(void *cvode_mem, int mudq, int mldq, realtype dqrely)
+";
+
+
+// File: cvode__dense_8h.xml
+%feature("docstring")  CVDense "SUNDIALS_EXPORT int CVDense(void
+*cvode_mem, int N) ";
+
+
+// File: cvode__diag_8h.xml
+%feature("docstring")  CVDiag "SUNDIALS_EXPORT int CVDiag(void
+*cvode_mem) ";
+
+%feature("docstring")  CVDiagGetLastFlag "SUNDIALS_EXPORT int
+CVDiagGetLastFlag(void *cvode_mem, int *flag) ";
+
+%feature("docstring")  CVDiagGetNumRhsEvals "SUNDIALS_EXPORT int
+CVDiagGetNumRhsEvals(void *cvode_mem, long int *nfevalsLS) ";
+
+%feature("docstring")  CVDiagGetReturnFlagName "SUNDIALS_EXPORT char*
+CVDiagGetReturnFlagName(int flag) ";
+
+%feature("docstring")  CVDiagGetWorkSpace "SUNDIALS_EXPORT int
+CVDiagGetWorkSpace(void *cvode_mem, long int *lenrwLS, long int
+*leniwLS) ";
+
+
+// File: cvode__direct_8h.xml
+%feature("docstring")  CVDlsGetLastFlag "SUNDIALS_EXPORT int
+CVDlsGetLastFlag(void *cvode_mem, int *flag) ";
+
+%feature("docstring")  CVDlsGetNumJacEvals "SUNDIALS_EXPORT int
+CVDlsGetNumJacEvals(void *cvode_mem, long int *njevals) ";
+
+%feature("docstring")  CVDlsGetNumRhsEvals "SUNDIALS_EXPORT int
+CVDlsGetNumRhsEvals(void *cvode_mem, long int *nfevalsLS) ";
+
+%feature("docstring")  CVDlsGetReturnFlagName "SUNDIALS_EXPORT char*
+CVDlsGetReturnFlagName(int flag) ";
+
+%feature("docstring")  CVDlsGetWorkSpace "SUNDIALS_EXPORT int
+CVDlsGetWorkSpace(void *cvode_mem, long int *lenrwLS, long int
+*leniwLS) ";
+
+%feature("docstring")  CVDlsSetBandJacFn "SUNDIALS_EXPORT int
+CVDlsSetBandJacFn(void *cvode_mem, CVDlsBandJacFn jac) ";
+
+%feature("docstring")  CVDlsSetDenseJacFn "SUNDIALS_EXPORT int
+CVDlsSetDenseJacFn(void *cvode_mem, CVDlsDenseJacFn jac) ";
+
+
+// File: cvode__spbcgs_8h.xml
+%feature("docstring")  CVSpbcg "SUNDIALS_EXPORT int CVSpbcg(void
+*cvode_mem, int pretype, int maxl) ";
+
+
+// File: cvode__spgmr_8h.xml
+%feature("docstring")  CVSpgmr "SUNDIALS_EXPORT int CVSpgmr(void
+*cvode_mem, int pretype, int maxl) ";
+
+
+// File: cvode__spils_8h.xml
+%feature("docstring")  CVSpilsGetLastFlag "SUNDIALS_EXPORT int
+CVSpilsGetLastFlag(void *cvode_mem, int *flag) ";
+
+%feature("docstring")  CVSpilsGetNumConvFails "SUNDIALS_EXPORT int
+CVSpilsGetNumConvFails(void *cvode_mem, long int *nlcfails) ";
+
+%feature("docstring")  CVSpilsGetNumJtimesEvals "SUNDIALS_EXPORT int
+CVSpilsGetNumJtimesEvals(void *cvode_mem, long int *njvevals) ";
+
+%feature("docstring")  CVSpilsGetNumLinIters "SUNDIALS_EXPORT int
+CVSpilsGetNumLinIters(void *cvode_mem, long int *nliters) ";
+
+%feature("docstring")  CVSpilsGetNumPrecEvals "SUNDIALS_EXPORT int
+CVSpilsGetNumPrecEvals(void *cvode_mem, long int *npevals) ";
+
+%feature("docstring")  CVSpilsGetNumPrecSolves "SUNDIALS_EXPORT int
+CVSpilsGetNumPrecSolves(void *cvode_mem, long int *npsolves) ";
+
+%feature("docstring")  CVSpilsGetNumRhsEvals "SUNDIALS_EXPORT int
+CVSpilsGetNumRhsEvals(void *cvode_mem, long int *nfevalsLS) ";
+
+%feature("docstring")  CVSpilsGetReturnFlagName "SUNDIALS_EXPORT
+char* CVSpilsGetReturnFlagName(int flag) ";
+
+%feature("docstring")  CVSpilsGetWorkSpace "SUNDIALS_EXPORT int
+CVSpilsGetWorkSpace(void *cvode_mem, long int *lenrwLS, long int
+*leniwLS) ";
+
+%feature("docstring")  CVSpilsSetEpsLin "SUNDIALS_EXPORT int
+CVSpilsSetEpsLin(void *cvode_mem, realtype eplifac) ";
+
+%feature("docstring")  CVSpilsSetGSType "SUNDIALS_EXPORT int
+CVSpilsSetGSType(void *cvode_mem, int gstype) ";
+
+%feature("docstring")  CVSpilsSetJacTimesVecFn "SUNDIALS_EXPORT int
+CVSpilsSetJacTimesVecFn(void *cvode_mem, CVSpilsJacTimesVecFn jtv) ";
+
+%feature("docstring")  CVSpilsSetMaxl "SUNDIALS_EXPORT int
+CVSpilsSetMaxl(void *cvode_mem, int maxl) ";
+
+%feature("docstring")  CVSpilsSetPreconditioner "SUNDIALS_EXPORT int
+CVSpilsSetPreconditioner(void *cvode_mem, CVSpilsPrecSetupFn pset,
+CVSpilsPrecSolveFn psolve) ";
+
+%feature("docstring")  CVSpilsSetPrecType "SUNDIALS_EXPORT int
+CVSpilsSetPrecType(void *cvode_mem, int pretype) ";
+
+
+// File: cvode__sptfqmr_8h.xml
+%feature("docstring")  CVSptfqmr "SUNDIALS_EXPORT int CVSptfqmr(void
+*cvode_mem, int pretype, int maxl) ";
+
+
+// File: nvector__parallel_8h.xml
+%feature("docstring")  N_VAbs_Parallel "SUNDIALS_EXPORT void
+N_VAbs_Parallel(N_Vector x, N_Vector z) ";
+
+%feature("docstring")  N_VAddConst_Parallel "SUNDIALS_EXPORT void
+N_VAddConst_Parallel(N_Vector x, realtype b, N_Vector z) ";
+
+%feature("docstring")  N_VClone_Parallel "SUNDIALS_EXPORT N_Vector
+N_VClone_Parallel(N_Vector w) ";
+
+%feature("docstring")  N_VCloneEmpty_Parallel "SUNDIALS_EXPORT
+N_Vector N_VCloneEmpty_Parallel(N_Vector w) ";
+
+%feature("docstring")  N_VCloneVectorArray_Parallel "SUNDIALS_EXPORT
+N_Vector* N_VCloneVectorArray_Parallel(int count, N_Vector w) ";
+
+%feature("docstring")  N_VCloneVectorArrayEmpty_Parallel "SUNDIALS_EXPORT N_Vector* N_VCloneVectorArrayEmpty_Parallel(int count,
+N_Vector w) ";
+
+%feature("docstring")  N_VCompare_Parallel "SUNDIALS_EXPORT void
+N_VCompare_Parallel(realtype c, N_Vector x, N_Vector z) ";
+
+%feature("docstring")  N_VConst_Parallel "SUNDIALS_EXPORT void
+N_VConst_Parallel(realtype c, N_Vector z) ";
+
+%feature("docstring")  N_VConstrMask_Parallel "SUNDIALS_EXPORT
+booleantype N_VConstrMask_Parallel(N_Vector c, N_Vector x, N_Vector m)
+";
+
+%feature("docstring")  N_VDestroy_Parallel "SUNDIALS_EXPORT void
+N_VDestroy_Parallel(N_Vector v) ";
+
+%feature("docstring")  N_VDestroyVectorArray_Parallel "SUNDIALS_EXPORT void N_VDestroyVectorArray_Parallel(N_Vector *vs, int
+count) ";
+
+%feature("docstring")  N_VDiv_Parallel "SUNDIALS_EXPORT void
+N_VDiv_Parallel(N_Vector x, N_Vector y, N_Vector z) ";
+
+%feature("docstring")  N_VDotProd_Parallel "SUNDIALS_EXPORT realtype
+N_VDotProd_Parallel(N_Vector x, N_Vector y) ";
+
+%feature("docstring")  N_VGetArrayPointer_Parallel "SUNDIALS_EXPORT
+realtype* N_VGetArrayPointer_Parallel(N_Vector v) ";
+
+%feature("docstring")  N_VInv_Parallel "SUNDIALS_EXPORT void
+N_VInv_Parallel(N_Vector x, N_Vector z) ";
+
+%feature("docstring")  N_VInvTest_Parallel "SUNDIALS_EXPORT
+booleantype N_VInvTest_Parallel(N_Vector x, N_Vector z) ";
+
+%feature("docstring")  N_VL1Norm_Parallel "SUNDIALS_EXPORT realtype
+N_VL1Norm_Parallel(N_Vector x) ";
+
+%feature("docstring")  N_VLinearSum_Parallel "SUNDIALS_EXPORT void
+N_VLinearSum_Parallel(realtype a, N_Vector x, realtype b, N_Vector y,
+N_Vector z) ";
+
+%feature("docstring")  N_VMake_Parallel "SUNDIALS_EXPORT N_Vector
+N_VMake_Parallel(MPI_Comm comm, long int local_length, long int
+global_length, realtype *v_data) ";
+
+%feature("docstring")  N_VMaxNorm_Parallel "SUNDIALS_EXPORT realtype
+N_VMaxNorm_Parallel(N_Vector x) ";
+
+%feature("docstring")  N_VMin_Parallel "SUNDIALS_EXPORT realtype
+N_VMin_Parallel(N_Vector x) ";
+
+%feature("docstring")  N_VMinQuotient_Parallel "SUNDIALS_EXPORT
+realtype N_VMinQuotient_Parallel(N_Vector num, N_Vector denom) ";
+
+%feature("docstring")  N_VNew_Parallel "SUNDIALS_EXPORT N_Vector
+N_VNew_Parallel(MPI_Comm comm, long int local_length, long int
+global_length) ";
+
+%feature("docstring")  N_VNewEmpty_Parallel "SUNDIALS_EXPORT N_Vector
+N_VNewEmpty_Parallel(MPI_Comm comm, long int local_length, long int
+global_length) ";
+
+%feature("docstring")  N_VPrint_Parallel "SUNDIALS_EXPORT void
+N_VPrint_Parallel(N_Vector v) ";
+
+%feature("docstring")  N_VProd_Parallel "SUNDIALS_EXPORT void
+N_VProd_Parallel(N_Vector x, N_Vector y, N_Vector z) ";
+
+%feature("docstring")  N_VScale_Parallel "SUNDIALS_EXPORT void
+N_VScale_Parallel(realtype c, N_Vector x, N_Vector z) ";
+
+%feature("docstring")  N_VSetArrayPointer_Parallel "SUNDIALS_EXPORT
+void N_VSetArrayPointer_Parallel(realtype *v_data, N_Vector v) ";
+
+%feature("docstring")  N_VSpace_Parallel "SUNDIALS_EXPORT void
+N_VSpace_Parallel(N_Vector v, long int *lrw, long int *liw) ";
+
+%feature("docstring")  N_VWL2Norm_Parallel "SUNDIALS_EXPORT realtype
+N_VWL2Norm_Parallel(N_Vector x, N_Vector w) ";
+
+%feature("docstring")  N_VWrmsNorm_Parallel "SUNDIALS_EXPORT realtype
+N_VWrmsNorm_Parallel(N_Vector x, N_Vector w) ";
+
+%feature("docstring")  N_VWrmsNormMask_Parallel "SUNDIALS_EXPORT
+realtype N_VWrmsNormMask_Parallel(N_Vector x, N_Vector w, N_Vector id)
+";
+
+
+// File: nvector__serial_8h.xml
+%feature("docstring")  N_VAbs_Serial "SUNDIALS_EXPORT void
+N_VAbs_Serial(N_Vector x, N_Vector z) ";
+
+%feature("docstring")  N_VAddConst_Serial "SUNDIALS_EXPORT void
+N_VAddConst_Serial(N_Vector x, realtype b, N_Vector z) ";
+
+%feature("docstring")  N_VClone_Serial "SUNDIALS_EXPORT N_Vector
+N_VClone_Serial(N_Vector w) ";
+
+%feature("docstring")  N_VCloneEmpty_Serial "SUNDIALS_EXPORT N_Vector
+N_VCloneEmpty_Serial(N_Vector w) ";
+
+%feature("docstring")  N_VCloneVectorArray_Serial "SUNDIALS_EXPORT
+N_Vector* N_VCloneVectorArray_Serial(int count, N_Vector w) ";
+
+%feature("docstring")  N_VCloneVectorArrayEmpty_Serial "SUNDIALS_EXPORT N_Vector* N_VCloneVectorArrayEmpty_Serial(int count,
+N_Vector w) ";
+
+%feature("docstring")  N_VCompare_Serial "SUNDIALS_EXPORT void
+N_VCompare_Serial(realtype c, N_Vector x, N_Vector z) ";
+
+%feature("docstring")  N_VConst_Serial "SUNDIALS_EXPORT void
+N_VConst_Serial(realtype c, N_Vector z) ";
+
+%feature("docstring")  N_VConstrMask_Serial "SUNDIALS_EXPORT
+booleantype N_VConstrMask_Serial(N_Vector c, N_Vector x, N_Vector m)
+";
+
+%feature("docstring")  N_VDestroy_Serial "SUNDIALS_EXPORT void
+N_VDestroy_Serial(N_Vector v) ";
+
+%feature("docstring")  N_VDestroyVectorArray_Serial "SUNDIALS_EXPORT
+void N_VDestroyVectorArray_Serial(N_Vector *vs, int count) ";
+
+%feature("docstring")  N_VDiv_Serial "SUNDIALS_EXPORT void
+N_VDiv_Serial(N_Vector x, N_Vector y, N_Vector z) ";
+
+%feature("docstring")  N_VDotProd_Serial "SUNDIALS_EXPORT realtype
+N_VDotProd_Serial(N_Vector x, N_Vector y) ";
+
+%feature("docstring")  N_VGetArrayPointer_Serial "SUNDIALS_EXPORT
+realtype* N_VGetArrayPointer_Serial(N_Vector v) ";
+
+%feature("docstring")  N_VInv_Serial "SUNDIALS_EXPORT void
+N_VInv_Serial(N_Vector x, N_Vector z) ";
+
+%feature("docstring")  N_VInvTest_Serial "SUNDIALS_EXPORT booleantype
+N_VInvTest_Serial(N_Vector x, N_Vector z) ";
+
+%feature("docstring")  N_VL1Norm_Serial "SUNDIALS_EXPORT realtype
+N_VL1Norm_Serial(N_Vector x) ";
+
+%feature("docstring")  N_VLinearSum_Serial "SUNDIALS_EXPORT void
+N_VLinearSum_Serial(realtype a, N_Vector x, realtype b, N_Vector y,
+N_Vector z) ";
+
+%feature("docstring")  N_VMake_Serial "SUNDIALS_EXPORT N_Vector
+N_VMake_Serial(long int vec_length, realtype *v_data) ";
+
+%feature("docstring")  N_VMaxNorm_Serial "SUNDIALS_EXPORT realtype
+N_VMaxNorm_Serial(N_Vector x) ";
+
+%feature("docstring")  N_VMin_Serial "SUNDIALS_EXPORT realtype
+N_VMin_Serial(N_Vector x) ";
+
+%feature("docstring")  N_VMinQuotient_Serial "SUNDIALS_EXPORT
+realtype N_VMinQuotient_Serial(N_Vector num, N_Vector denom) ";
+
+%feature("docstring")  N_VNew_Serial "SUNDIALS_EXPORT N_Vector
+N_VNew_Serial(long int vec_length) ";
+
+%feature("docstring")  N_VNewEmpty_Serial "SUNDIALS_EXPORT N_Vector
+N_VNewEmpty_Serial(long int vec_length) ";
+
+%feature("docstring")  N_VPrint_Serial "SUNDIALS_EXPORT void
+N_VPrint_Serial(N_Vector v) ";
+
+%feature("docstring")  N_VProd_Serial "SUNDIALS_EXPORT void
+N_VProd_Serial(N_Vector x, N_Vector y, N_Vector z) ";
+
+%feature("docstring")  N_VScale_Serial "SUNDIALS_EXPORT void
+N_VScale_Serial(realtype c, N_Vector x, N_Vector z) ";
+
+%feature("docstring")  N_VSetArrayPointer_Serial "SUNDIALS_EXPORT
+void N_VSetArrayPointer_Serial(realtype *v_data, N_Vector v) ";
+
+%feature("docstring")  N_VSpace_Serial "SUNDIALS_EXPORT void
+N_VSpace_Serial(N_Vector v, long int *lrw, long int *liw) ";
+
+%feature("docstring")  N_VWL2Norm_Serial "SUNDIALS_EXPORT realtype
+N_VWL2Norm_Serial(N_Vector x, N_Vector w) ";
+
+%feature("docstring")  N_VWrmsNorm_Serial "SUNDIALS_EXPORT realtype
+N_VWrmsNorm_Serial(N_Vector x, N_Vector w) ";
+
+%feature("docstring")  N_VWrmsNormMask_Serial "SUNDIALS_EXPORT
+realtype N_VWrmsNormMask_Serial(N_Vector x, N_Vector w, N_Vector id)
+";
+
+
+// File: sundials__band_8h.xml
+%feature("docstring")  bandAddIdentity "SUNDIALS_EXPORT void
+bandAddIdentity(realtype **a, int n, int smu) ";
+
+%feature("docstring")  BandCopy "SUNDIALS_EXPORT void BandCopy(DlsMat
+A, DlsMat B, int copymu, int copyml) ";
+
+%feature("docstring")  bandCopy "SUNDIALS_EXPORT void
+bandCopy(realtype **a, realtype **b, int n, int a_smu, int b_smu, int
+copymu, int copyml) ";
+
+%feature("docstring")  BandGBTRF "SUNDIALS_EXPORT int
+BandGBTRF(DlsMat A, int *p) ";
+
+%feature("docstring")  bandGBTRF "SUNDIALS_EXPORT int
+bandGBTRF(realtype **a, int n, int mu, int ml, int smu, int *p) ";
+
+%feature("docstring")  BandGBTRS "SUNDIALS_EXPORT void
+BandGBTRS(DlsMat A, int *p, realtype *b) ";
+
+%feature("docstring")  bandGBTRS "SUNDIALS_EXPORT void
+bandGBTRS(realtype **a, int n, int smu, int ml, int *p, realtype *b)
+";
+
+%feature("docstring")  BandScale "SUNDIALS_EXPORT void
+BandScale(realtype c, DlsMat A) ";
+
+%feature("docstring")  bandScale "SUNDIALS_EXPORT void
+bandScale(realtype c, realtype **a, int n, int mu, int ml, int smu) ";
+
+
+// File: sundials__config_8h.xml
+
+
+// File: sundials__dense_8h.xml
+%feature("docstring")  denseAddIdentity "SUNDIALS_EXPORT void
+denseAddIdentity(realtype **a, int n) ";
+
+%feature("docstring")  DenseCopy "SUNDIALS_EXPORT void
+DenseCopy(DlsMat A, DlsMat B) ";
+
+%feature("docstring")  denseCopy "SUNDIALS_EXPORT void
+denseCopy(realtype **a, realtype **b, int m, int n) ";
+
+%feature("docstring")  DenseGEQRF "SUNDIALS_EXPORT int
+DenseGEQRF(DlsMat A, realtype *beta, realtype *wrk) ";
+
+%feature("docstring")  denseGEQRF "SUNDIALS_EXPORT int
+denseGEQRF(realtype **a, int m, int n, realtype *beta, realtype *v) ";
+
+%feature("docstring")  DenseGETRF "SUNDIALS_EXPORT int
+DenseGETRF(DlsMat A, int *p) ";
+
+%feature("docstring")  denseGETRF "SUNDIALS_EXPORT int
+denseGETRF(realtype **a, int m, int n, int *p) ";
+
+%feature("docstring")  DenseGETRS "SUNDIALS_EXPORT void
+DenseGETRS(DlsMat A, int *p, realtype *b) ";
+
+%feature("docstring")  denseGETRS "SUNDIALS_EXPORT void
+denseGETRS(realtype **a, int n, int *p, realtype *b) ";
+
+%feature("docstring")  DenseORMQR "SUNDIALS_EXPORT int
+DenseORMQR(DlsMat A, realtype *beta, realtype *vn, realtype *vm,
+realtype *wrk) ";
+
+%feature("docstring")  denseORMQR "SUNDIALS_EXPORT int
+denseORMQR(realtype **a, int m, int n, realtype *beta, realtype *v,
+realtype *w, realtype *wrk) ";
+
+%feature("docstring")  DensePOTRF "SUNDIALS_EXPORT int
+DensePOTRF(DlsMat A) ";
+
+%feature("docstring")  densePOTRF "SUNDIALS_EXPORT int
+densePOTRF(realtype **a, int m) ";
+
+%feature("docstring")  DensePOTRS "SUNDIALS_EXPORT void
+DensePOTRS(DlsMat A, realtype *b) ";
+
+%feature("docstring")  densePOTRS "SUNDIALS_EXPORT void
+densePOTRS(realtype **a, int m, realtype *b) ";
+
+%feature("docstring")  DenseScale "SUNDIALS_EXPORT void
+DenseScale(realtype c, DlsMat A) ";
+
+%feature("docstring")  denseScale "SUNDIALS_EXPORT void
+denseScale(realtype c, realtype **a, int m, int n) ";
+
+
+// File: sundials__direct_8h.xml
+%feature("docstring")  AddIdentity "SUNDIALS_EXPORT void
+AddIdentity(DlsMat A) ";
+
+%feature("docstring")  DestroyArray "SUNDIALS_EXPORT void
+DestroyArray(void *p) ";
+
+%feature("docstring")  destroyArray "SUNDIALS_EXPORT void
+destroyArray(void *v) ";
+
+%feature("docstring")  DestroyMat "SUNDIALS_EXPORT void
+DestroyMat(DlsMat A) ";
+
+%feature("docstring")  destroyMat "SUNDIALS_EXPORT void
+destroyMat(realtype **a) ";
+
+%feature("docstring")  NewBandMat "SUNDIALS_EXPORT DlsMat
+NewBandMat(int N, int mu, int ml, int smu) ";
+
+%feature("docstring")  newBandMat "SUNDIALS_EXPORT realtype**
+newBandMat(int n, int smu, int ml) ";
+
+%feature("docstring")  NewDenseMat "SUNDIALS_EXPORT DlsMat
+NewDenseMat(int M, int N) ";
+
+%feature("docstring")  newDenseMat "SUNDIALS_EXPORT realtype**
+newDenseMat(int m, int n) ";
+
+%feature("docstring")  NewIntArray "SUNDIALS_EXPORT int*
+NewIntArray(int N) ";
+
+%feature("docstring")  newIntArray "SUNDIALS_EXPORT int*
+newIntArray(int n) ";
+
+%feature("docstring")  NewRealArray "SUNDIALS_EXPORT realtype*
+NewRealArray(int N) ";
+
+%feature("docstring")  newRealArray "SUNDIALS_EXPORT realtype*
+newRealArray(int m) ";
+
+%feature("docstring")  PrintMat "SUNDIALS_EXPORT void PrintMat(DlsMat
+A) ";
+
+%feature("docstring")  SetToZero "SUNDIALS_EXPORT void
+SetToZero(DlsMat A) ";
+
+
+// File: sundials__fnvector_8h.xml
+
+
+// File: sundials__iterative_8h.xml
+%feature("docstring")  ClassicalGS "SUNDIALS_EXPORT int
+ClassicalGS(N_Vector *v, realtype **h, int k, int p, realtype
+*new_vk_norm, N_Vector temp, realtype *s) ";
+
+%feature("docstring")  ModifiedGS "SUNDIALS_EXPORT int
+ModifiedGS(N_Vector *v, realtype **h, int k, int p, realtype
+*new_vk_norm) ";
+
+%feature("docstring")  QRfact "SUNDIALS_EXPORT int QRfact(int n,
+realtype **h, realtype *q, int job) ";
+
+%feature("docstring")  QRsol "SUNDIALS_EXPORT int QRsol(int n,
+realtype **h, realtype *q, realtype *b) ";
+
+
+// File: sundials__lapack_8h.xml
+%feature("docstring")  dcopy_f77 "void dcopy_f77(int *n, const double
+*x, const int *inc_x, double *y, const int *inc_y) ";
+
+%feature("docstring")  dgbtrf_f77 "void dgbtrf_f77(const int *m,
+const int *n, const int *kl, const int *ku, double *ab, int *ldab, int
+*ipiv, int *info) ";
+
+%feature("docstring")  dgbtrs_f77 "void dgbtrs_f77(const char *trans,
+const int *n, const int *kl, const int *ku, const int *nrhs, double
+*ab, const int *ldab, int *ipiv, double *b, const int *ldb, int *info,
+int len_trans) ";
+
+%feature("docstring")  dgemv_f77 "void dgemv_f77(const char *trans,
+int *m, int *n, const double *alpha, const double *a, int *lda, const
+double *x, int *inc_x, const double *beta, double *y, int *inc_y, int
+len_trans) ";
+
+%feature("docstring")  dgeqp3_f77 "void dgeqp3_f77(const int *m,
+const int *n, double *a, const int *lda, int *jpvt, double *tau,
+double *work, const int *lwork, int *info) ";
+
+%feature("docstring")  dgeqrf_f77 "void dgeqrf_f77(const int *m,
+const int *n, double *a, const int *lda, double *tau, double *work,
+const int *lwork, int *info) ";
+
+%feature("docstring")  dgetrf_f77 "void dgetrf_f77(const int *m,
+const int *n, double *a, int *lda, int *ipiv, int *info) ";
+
+%feature("docstring")  dgetrs_f77 "void dgetrs_f77(const char *trans,
+const int *n, const int *nrhs, double *a, const int *lda, int *ipiv,
+double *b, const int *ldb, int *info, int len_trans) ";
+
+%feature("docstring")  dormqr_f77 "void dormqr_f77(const char *side,
+const char *trans, const int *m, const int *n, const int *k, double
+*a, const int *lda, double *tau, double *c, const int *ldc, double
+*work, const int *lwork, int *info, int len_side, int len_trans) ";
+
+%feature("docstring")  dpotrf_f77 "void dpotrf_f77(const char *uplo,
+const int *n, double *a, int *lda, int *info, int len_uplo) ";
+
+%feature("docstring")  dpotrs_f77 "void dpotrs_f77(const char *uplo,
+const int *n, const int *nrhs, double *a, const int *lda, double *b,
+const int *ldb, int *info, int len_uplo) ";
+
+%feature("docstring")  dscal_f77 "void dscal_f77(int *n, const double
+*alpha, double *x, const int *inc_x) ";
+
+%feature("docstring")  dsyrk_f77 "void dsyrk_f77(const char *uplo,
+const char *trans, const int *n, const int *k, const double *alpha,
+const double *a, const int *lda, const double *beta, const double *c,
+const int *ldc, int len_uplo, int len_trans) ";
+
+%feature("docstring")  dtrsv_f77 "void dtrsv_f77(const char *uplo,
+const char *trans, const char *diag, const int *n, const double *a,
+const int *lda, double *x, const int *inc_x, int len_uplo, int
+len_trans, int len_diag) ";
+
+
+// File: sundials__math_8h.xml
+%feature("docstring")  RAbs "SUNDIALS_EXPORT realtype RAbs(realtype
+x) ";
+
+%feature("docstring")  RExp "SUNDIALS_EXPORT realtype RExp(realtype
+x) ";
+
+%feature("docstring")  RPowerI "SUNDIALS_EXPORT realtype
+RPowerI(realtype base, int exponent) ";
+
+%feature("docstring")  RPowerR "SUNDIALS_EXPORT realtype
+RPowerR(realtype base, realtype exponent) ";
+
+%feature("docstring")  RSqrt "SUNDIALS_EXPORT realtype RSqrt(realtype
+x) ";
+
+
+// File: sundials__nvector_8h.xml
+%feature("docstring")  N_VAbs "SUNDIALS_EXPORT void N_VAbs(N_Vector
+x, N_Vector z) ";
+
+%feature("docstring")  N_VAddConst "SUNDIALS_EXPORT void
+N_VAddConst(N_Vector x, realtype b, N_Vector z) ";
+
+%feature("docstring")  N_VClone "SUNDIALS_EXPORT N_Vector
+N_VClone(N_Vector w) ";
+
+%feature("docstring")  N_VCloneEmpty "SUNDIALS_EXPORT N_Vector
+N_VCloneEmpty(N_Vector w) ";
+
+%feature("docstring")  N_VCloneEmptyVectorArray "SUNDIALS_EXPORT
+N_Vector* N_VCloneEmptyVectorArray(int count, N_Vector w) ";
+
+%feature("docstring")  N_VCloneVectorArray "SUNDIALS_EXPORT N_Vector*
+N_VCloneVectorArray(int count, N_Vector w) ";
+
+%feature("docstring")  N_VCompare "SUNDIALS_EXPORT void
+N_VCompare(realtype c, N_Vector x, N_Vector z) ";
+
+%feature("docstring")  N_VConst "SUNDIALS_EXPORT void
+N_VConst(realtype c, N_Vector z) ";
+
+%feature("docstring")  N_VConstrMask "SUNDIALS_EXPORT booleantype
+N_VConstrMask(N_Vector c, N_Vector x, N_Vector m) ";
+
+%feature("docstring")  N_VDestroy "SUNDIALS_EXPORT void
+N_VDestroy(N_Vector v) ";
+
+%feature("docstring")  N_VDestroyVectorArray "SUNDIALS_EXPORT void
+N_VDestroyVectorArray(N_Vector *vs, int count) ";
+
+%feature("docstring")  N_VDiv "SUNDIALS_EXPORT void N_VDiv(N_Vector
+x, N_Vector y, N_Vector z) ";
+
+%feature("docstring")  N_VDotProd "SUNDIALS_EXPORT realtype
+N_VDotProd(N_Vector x, N_Vector y) ";
+
+%feature("docstring")  N_VGetArrayPointer "SUNDIALS_EXPORT realtype*
+N_VGetArrayPointer(N_Vector v) ";
+
+%feature("docstring")  N_VInv "SUNDIALS_EXPORT void N_VInv(N_Vector
+x, N_Vector z) ";
+
+%feature("docstring")  N_VInvTest "SUNDIALS_EXPORT booleantype
+N_VInvTest(N_Vector x, N_Vector z) ";
+
+%feature("docstring")  N_VL1Norm "SUNDIALS_EXPORT realtype
+N_VL1Norm(N_Vector x) ";
+
+%feature("docstring")  N_VLinearSum "SUNDIALS_EXPORT void
+N_VLinearSum(realtype a, N_Vector x, realtype b, N_Vector y, N_Vector
+z) ";
+
+%feature("docstring")  N_VMaxNorm "SUNDIALS_EXPORT realtype
+N_VMaxNorm(N_Vector x) ";
+
+%feature("docstring")  N_VMin "SUNDIALS_EXPORT realtype
+N_VMin(N_Vector x) ";
+
+%feature("docstring")  N_VMinQuotient "SUNDIALS_EXPORT realtype
+N_VMinQuotient(N_Vector num, N_Vector denom) ";
+
+%feature("docstring")  N_VProd "SUNDIALS_EXPORT void N_VProd(N_Vector
+x, N_Vector y, N_Vector z) ";
+
+%feature("docstring")  N_VScale "SUNDIALS_EXPORT void
+N_VScale(realtype c, N_Vector x, N_Vector z) ";
+
+%feature("docstring")  N_VSetArrayPointer "SUNDIALS_EXPORT void
+N_VSetArrayPointer(realtype *v_data, N_Vector v) ";
+
+%feature("docstring")  N_VSpace "SUNDIALS_EXPORT void
+N_VSpace(N_Vector v, long int *lrw, long int *liw) ";
+
+%feature("docstring")  N_VWL2Norm "SUNDIALS_EXPORT realtype
+N_VWL2Norm(N_Vector x, N_Vector w) ";
+
+%feature("docstring")  N_VWrmsNorm "SUNDIALS_EXPORT realtype
+N_VWrmsNorm(N_Vector x, N_Vector w) ";
+
+%feature("docstring")  N_VWrmsNormMask "SUNDIALS_EXPORT realtype
+N_VWrmsNormMask(N_Vector x, N_Vector w, N_Vector id) ";
+
+
+// File: sundials__spbcgs_8h.xml
+%feature("docstring")  SpbcgFree "SUNDIALS_EXPORT void
+SpbcgFree(SpbcgMem mem) ";
+
+%feature("docstring")  SpbcgMalloc "SUNDIALS_EXPORT SpbcgMem
+SpbcgMalloc(int l_max, N_Vector vec_tmpl) ";
+
+%feature("docstring")  SpbcgSolve "SUNDIALS_EXPORT int
+SpbcgSolve(SpbcgMem mem, void *A_data, N_Vector x, N_Vector b, int
+pretype, realtype delta, void *P_data, N_Vector sx, N_Vector sb,
+ATimesFn atimes, PSolveFn psolve, realtype *res_norm, int *nli, int
+*nps) ";
+
+
+// File: sundials__spgmr_8h.xml
+%feature("docstring")  SpgmrFree "SUNDIALS_EXPORT void
+SpgmrFree(SpgmrMem mem) ";
+
+%feature("docstring")  SpgmrMalloc "SUNDIALS_EXPORT SpgmrMem
+SpgmrMalloc(int l_max, N_Vector vec_tmpl) ";
+
+%feature("docstring")  SpgmrSolve "SUNDIALS_EXPORT int
+SpgmrSolve(SpgmrMem mem, void *A_data, N_Vector x, N_Vector b, int
+pretype, int gstype, realtype delta, int max_restarts, void *P_data,
+N_Vector s1, N_Vector s2, ATimesFn atimes, PSolveFn psolve, realtype
+*res_norm, int *nli, int *nps) ";
+
+
+// File: sundials__sptfqmr_8h.xml
+%feature("docstring")  SptfqmrFree "SUNDIALS_EXPORT void
+SptfqmrFree(SptfqmrMem mem) ";
+
+%feature("docstring")  SptfqmrMalloc "SUNDIALS_EXPORT SptfqmrMem
+SptfqmrMalloc(int l_max, N_Vector vec_tmpl) ";
+
+%feature("docstring")  SptfqmrSolve "SUNDIALS_EXPORT int
+SptfqmrSolve(SptfqmrMem mem, void *A_data, N_Vector x, N_Vector b, int
+pretype, realtype delta, void *P_data, N_Vector sx, N_Vector sb,
+ATimesFn atimes, PSolveFn psolve, realtype *res_norm, int *nli, int
+*nps) ";
+
+
+// File: sundials__types_8h.xml
+
+
+// File: cvode__bandpre__impl_8h.xml
+
+
+// File: cvode__bbdpre__impl_8h.xml
+
+
+// File: cvode__diag__impl_8h.xml
+
+
+// File: cvode__direct__impl_8h.xml
+%feature("docstring")  cvDlsBandDQJac "int cvDlsBandDQJac(int N, int
+mupper, int mlower, realtype t, N_Vector y, N_Vector fy, DlsMat Jac,
+void *data, N_Vector tmp1, N_Vector tmp2, N_Vector tmp3) ";
+
+%feature("docstring")  cvDlsDenseDQJac "int cvDlsDenseDQJac(int N,
+realtype t, N_Vector y, N_Vector fy, DlsMat Jac, void *data, N_Vector
+tmp1, N_Vector tmp2, N_Vector tmp3) ";
+
+
+// File: cvode__impl_8h.xml
+%feature("docstring")  CVErrHandler "void CVErrHandler(int
+error_code, const char *module, const char *function, char *msg, void
+*data) ";
+
+%feature("docstring")  CVEwtSet "int CVEwtSet(N_Vector ycur, N_Vector
+weight, void *data) ";
+
+%feature("docstring")  CVProcessError "void CVProcessError(CVodeMem
+cv_mem, int error_code, const char *module, const char *fname, const
+char *msgfmt,...) ";
+
+
+// File: cvode__spils__impl_8h.xml
+%feature("docstring")  CVSpilsAtimes "int CVSpilsAtimes(void *cv_mem,
+N_Vector v, N_Vector z) ";
+
+%feature("docstring")  CVSpilsDQJtimes "int CVSpilsDQJtimes(N_Vector
+v, N_Vector Jv, realtype t, N_Vector y, N_Vector fy, void *data,
+N_Vector work) ";
+
+%feature("docstring")  CVSpilsPSolve "int CVSpilsPSolve(void *cv_mem,
+N_Vector r, N_Vector z, int lr) ";
 
 
 // File: _water_solute_integrator_8h.xml
 
 
 // File: irregular__timeseries_8h.xml
-
-
-// File: jacobian_8h.xml
 
 
 // File: num__array_8h.xml
@@ -19129,6 +19552,189 @@ ymax=1) ";
 // File: _water_storage_8h.xml
 
 
+// File: describe_8py.xml
+
+
+// File: cellmap_8py.xml
+
+
+// File: draw__misc_8py.xml
+
+
+// File: hillplot_8py.xml
+
+
+// File: shapemap_8py.xml
+
+
+// File: fit__retention__curve_8py.xml
+
+
+// File: geocell_8py.xml
+
+
+// File: qtree_8py.xml
+
+
+// File: geos__shapereader_8py.xml
+
+
+// File: jacobian_8py.xml
+
+
+// File: maps_8py.xml
+
+
+// File: stopwatch_8py.xml
+
+
+// File: _cmf_introduction_8md.xml
+
+
+// File: _cmf_recommended_software_environment_8md.xml
+
+
+// File: _cmf_software_objects_8md.xml
+
+
+// File: _descriptor_8md.xml
+
+
+// File: _finite_volume_method_8md.xml
+
+
+// File: fluxogram__and__get__fluxes_8md.xml
+
+
+// File: _cmf_download_8md.xml
+
+
+// File: _cmf_install_8md.xml
+
+
+// File: _cmf_install_hpc_8md.xml
+
+
+// File: _cmf_install_ubuntu_8md.xml
+
+
+// File: _cmf_install_windows_8md.xml
+
+
+// File: _publication_list_8md.xml
+
+
+// File: _software_objects_8md.xml
+
+
+// File: _cmf__lumped__simple_8md.xml
+
+
+// File: _c_m_f__lumped__without__spotpy_8md.xml
+
+
+// File: _cmflumped_8md.xml
+
+
+// File: _cmf_tut1d_8md.xml
+
+
+// File: _cmf_tut2d_8md.xml
+
+
+// File: _cmf_tut3d_8md.xml
+
+
+// File: _cmf_tut_boundary_8md.xml
+
+
+// File: _cmf_tut_boundary2_8md.xml
+
+
+// File: _cmf_tut_cell_8md.xml
+
+
+// File: _cmf_tut_channel_8md.xml
+
+
+// File: _cmf_tut_darcian_lateral_flow_8md.xml
+
+
+// File: _cmf_tut_e_t_8md.xml
+
+
+// File: _cmf_tut_first_model_8md.xml
+
+
+// File: _cmf_tut_fluxes_8md.xml
+
+
+// File: _cmf_tut_intercept_8md.xml
+
+
+// File: _cmf_tut_kinematic_wave_8md.xml
+
+
+// File: _cmf_tut_meteostation_8md.xml
+
+
+// File: _cmf_tut_need_to_know_8md.xml
+
+
+// File: _cmf_tut_objective_function_8md.xml
+
+
+// File: _cmf_tut_project_8md.xml
+
+
+// File: _cmf_tut_retentioncurve_8md.xml
+
+
+// File: _cmf_tut_snow_8md.xml
+
+
+// File: _cmf_tut_solute_transport1_d_8md.xml
+
+
+// File: _cmf_tut_solver_8md.xml
+
+
+// File: _cmf_tut_space_time_8md.xml
+
+
+// File: _cmf_tut_start_8md.xml
+
+
+// File: _cmf_tut_surface_runoff_8md.xml
+
+
+// File: _cmf_tut_technical_8md.xml
+
+
+// File: _cmf_tut_test_data_8md.xml
+
+
+// File: _cmf_tut_units_8md.xml
+
+
+// File: _cmf_tut_volume_height_8md.xml
+
+
+// File: _cmf_tut_waterbalance_8md.xml
+
+
+// File: _install_check_8md.xml
+
+
+// File: semi__distributed_8md.xml
+
+
+// File: _simple___infiltration_8md.xml
+
+
+// File: _wiki_start_8md.xml
+
+
 // File: group__boundary.xml
 
 
@@ -19165,6 +19771,150 @@ ymax=1) ";
 // File: group__latflux.xml
 
 
+// File: _cmf_introduction.xml
+
+
+// File: _cmf_recommended_software_environment.xml
+
+
+// File: _cmf_software_objects.xml
+
+
+// File: _descriptor.xml
+
+
+// File: _finite_volume_method.xml
+
+
+// File: fluxogram_and_get_fluxes.xml
+
+
+// File: _cmf_download.xml
+
+
+// File: _cmf_install.xml
+
+
+// File: _cmf_install_hpc.xml
+
+
+// File: _cmf_install_ubuntu.xml
+
+
+// File: _cmf_install_windows.xml
+
+
+// File: _publication_list.xml
+
+
+// File: _software_objects.xml
+
+
+// File: cmf_lumped_simple.xml
+
+
+// File: cmf_lumped_without_spotpy.xml
+
+
+// File: _cmflumped.xml
+
+
+// File: _cmf_tut1d.xml
+
+
+// File: _cmf_tut2d.xml
+
+
+// File: _cmf_tut3d.xml
+
+
+// File: _cmf_tut_boundary.xml
+
+
+// File: _cmf_tut_boundary2.xml
+
+
+// File: _cmf_tut_cell.xml
+
+
+// File: _cmf_tut_channel.xml
+
+
+// File: _cmf_tut_darcian_lateral_flow.xml
+
+
+// File: _cmf_tut_e_t.xml
+
+
+// File: _cmf_tut_first_model.xml
+
+
+// File: _cmf_tut_fluxes.xml
+
+
+// File: _cmf_tut_intercept.xml
+
+
+// File: _cmf_tut_kinematic_wave.xml
+
+
+// File: _cmf_tut_meteostation.xml
+
+
+// File: _cmf_tut_need_to_know.xml
+
+
+// File: _cmf_tut_objective_function.xml
+
+
+// File: _cmf_tut_project.xml
+
+
+// File: _cmf_tut_retentioncurve.xml
+
+
+// File: _cmf_tut_snow.xml
+
+
+// File: _cmf_tut_solute_transport1_d.xml
+
+
+// File: _cmf_tut_solver.xml
+
+
+// File: _cmf_tut_space_time.xml
+
+
+// File: tutorial.xml
+
+
+// File: _cmf_tut_surface_runoff.xml
+
+
+// File: _cmf_tut_technical.xml
+
+
+// File: _cmf_tut_test_data.xml
+
+
+// File: _cmf_tut_units.xml
+
+
+// File: _cmf_tut_volume_height.xml
+
+
+// File: _cmf_tut_waterbalance.xml
+
+
+// File: _install_check.xml
+
+
+// File: semi_distributed.xml
+
+
+// File: simple_infiltration.xml
+
+
 // File: todo.xml
 
 
@@ -19183,7 +19933,19 @@ ymax=1) ";
 // File: dir_276c0bb4402aea34a5542f6741d7a1ee.xml
 
 
+// File: dir_b27729de313f47365c1def7a853e5f37.xml
+
+
+// File: dir_e99589850f294dbf4b725494ab1c642e.xml
+
+
+// File: dir_12788de71013d9dcf17a564ce1b123ce.xml
+
+
 // File: dir_3f1ba486f713b268e033cb12ab59a41b.xml
+
+
+// File: dir_42143f02bfda25d481ccd197ad2e57b1.xml
 
 
 // File: dir_6e764f1be992d70f16adadc29c086796.xml
@@ -19192,10 +19954,22 @@ ymax=1) ";
 // File: dir_fb2b4d745793dfd5bb69790f90a5a545.xml
 
 
+// File: dir_8fa323148029007c36ebe07b605c3d71.xml
+
+
 // File: dir_707fbb85f5f5a03168ae42ef8ba0d65d.xml
 
 
 // File: dir_73a48ad96f7ed71bd28db957498e0435.xml
+
+
+// File: dir_682d55a973b4a7ac7b2d19556610a569.xml
+
+
+// File: dir_96a140aa3db6477b947f608f4a8a5cf4.xml
+
+
+// File: dir_15491d5ac9c000f99465febddd8f8d93.xml
 
 
 // File: dir_8d4c975dc4db6fbc37636ae91790b381.xml
@@ -19205,5 +19979,8 @@ ymax=1) ";
 
 
 // File: dir_77005acaedd4c0a991f05071f95b4942.xml
+
+
+// File: indexpage.xml
 
 

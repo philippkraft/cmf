@@ -45,7 +45,7 @@
     def __len__(self):
         return self.size()       
     def __iter__(self):
-        for i in xrange(self.size()):
+        for i in range(self.size()):
             yield self[i]
     def __repr__(self):
         if len(self): return "[%i nodes: %s ... %s]" % (len(self),self[0], self[-1])
@@ -69,7 +69,7 @@
     def __len__(self):
         return self.size()       
     def __iter__(self):
-        for i in xrange(self.size()):
+        for i in range(self.size()):
             yield self[i]
     def extend(self,sequence):
         """Extends the list of Neumann boundaries with the sequence (any iterable will do) """

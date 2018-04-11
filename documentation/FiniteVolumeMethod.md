@@ -1,0 +1,198 @@
+@page FiniteVolumeMethod
+
+# Finite Volume Method
+
+## Introduction
+
+This page describes the theory of the finite volume method and the
+application the cmf architecture. Mass conservation
+
+### General mass conservation problem
+
+Any transport problem is largely governed by mass conservation. The
+closure of the mass balance in a hydrologic model should be the starting
+point of all model applications, even though the closure cannot be
+routinely verified by field experiments. Mass conservative problems in
+space, including water and solute transport in the landscape, can be
+expressed as a generalized hyperbolic problem:
+
+
+@f[
+\frac{{\delta {\bf{u}}}
+}{{\delta t}} + \nabla \cdot f\left( {{\bf{u}},t} \right) = 0 \hspace{20mm}(1)
+@f]
+
+with the state continuum @f$\bf{u}@f$, and the fluxes
+@f$f({\bf{u}},t)@f$.
+
+### Finite volume discretization 
+
+Using the finite volume method for discretizing u space, the partial
+differential equation turns into a system of ordinary differential
+equations (ODE's), where the fluxes in and out of the finite volume
+@f$i@f$ are integrated over the shell of the volume @f$S@f$ and
+normalized by the size of the finite volume @f$V_i@f$.
+
+
+@f[
+ \frac{{du_i }}{{dt}} = - \frac{{\oint_{S_i } {f({\bf{u}},t)dS} }}{{v_i }} \hspace{20mm}(2) 
+@f]
+
+If the shell is constructed by a finite number of planes, the line
+integral over the shell is transformed to the sum of fluxes connecting
+adjacent volumes. When the FVM-discretization is applied to a water and
+solute problem, a wide range of model approaches can be implemented. The
+model approaches differ by the method used to discretize the problem
+domain, the flux functions (e.g. Richard's equation or linear storage
+function) and by the complexity of connections between the finite
+volumes.
+
+The CMF approach covers the flexibility of the description of volumes
+and fluxes by providing clearly defined and relatively independent
+interfaces to implement flux functions and discretization methods. A
+range from highly detailed one, two or three dimensional plot scale
+water and solute transport models to regional applications using
+simplified flux descriptions and discretization / connection concepts is
+possible.
+
+## The abstraction hierarchy
+
+One of the keys for an open extensible framework is the abstraction of
+common behavior of different objects in a model. In CMF, different
+layers of abstraction exist to facilitate the access to processes and
+data by a single interface. By definition, the abstract nature of the
+interface results in a situation where the type of process and how it is
+described is of no consequence to the simulation framework. It is of
+course fundamentally important to the user. Two primary abstraction
+hierarchies have been implemented as part of the core CMF structure:
+storages and fluxes.
+
+### Storage abstraction
+
+Storages, at the most abstract layer, are defined as state variables and
+expose their state and a function to calculate their derivatives at a
+given time. The state of an individual water storage is the volume of
+water and the change rate is the sum of the fluxes in and out of the
+volume. The water budget of a general water storage, derived from (2) is
+given by (3).
+
+
+@f[
+ \frac{{dV_i }}{{dt}} = \sum\limits_{j = 1}^{N_i } {\left( { - q_{i,j} \left( {V_i ,V_j ,t} \right)A_{i,j} } \right)}  \hspace{20mm}(3)
+@f]
+
+@f$V@f$ is the volume of stored water in the control volume, @f$i@f$
+the current control volume, @f$N@f$ the number of connected storages
+to @f$i@f$, @f$q_{i,j}@f$ the flux from @f$i@f$ to @f$j@f$, and
+@f$A_{i,j}@f$ is the cross sectional area of the flux.
+
+### Solute transport
+
+The state of a solute storage is the amount of tracer particles in the
+finite volume. The change rate of the state is the sum of advective
+tracer fluxes and the sum of any existent source or sink flux.
+
+
+@f[
+ \frac{{dX_i }}{{dt}} = \sum\limits_{j = 1}^{N_i } {\left( { - q_{i,j} \left( {V_i ,V_j ,t} \right)\left[[|X \right]]_s } \right) + q_{X,in} \left( t \right) - r^ - X}  \hspace{20mm}(4)
+@f]
+
+@f$X_i@f$ is the amount (mols or mass) of a tracer in control volume
+@f$i@f$, @f$[[X]@f$|is the concentration of the tracer in amount per
+volume water and @f$q_{X,in}(t)@f$ is a source or sink flux in amount
+per day (eg. g/day) and @f$r^-@f$ is a decay rate in 1/day.
+@f$[X]]_s@f$ is the concentration of the source of the flux,
+determined by the sign of @f$q_{i,j}@f$.
+
+In the future, an implementation of the advection dispersion equation is
+planned.
+
+A water store maintains a reference to each a tracer store for each
+simulated tracer. The figure shows the storage concept hierarchy in CMF.
+If needed, state variables for momentum or energy conservation models
+could be introduced.
+
+To facilitate the calculation of fluxes, specializations of water
+storages are implemented. Open water storages provide a calculation of
+their fill height as a function of state, and soil water storages have
+additional values to characterize the position in the soil column and
+the water retention curve.
+
+The retention curve is an object with methods calculating conductivity
+and matrix potential from a given water saturation of a soil water
+storage.
+
+Using the storages, a model of the landscape is constructed, as
+described in Building a landscape model .
+
+### Flux abstraction
+
+Fluxes of water in CMF are modeled as a flow network, where the fluxes
+occur at the edges of the network. The nodes of the network are the
+water storages and boundary conditions, while the edges are represented
+by flux connection objects (s.Figure 2). The fluxes are calculated using
+specializations of the flux connections, representing the mathematical
+models of the hydrologic behaviour of storage interaction.
+
+Each flux node maintains a method to calculate its water balance, as the
+sum of the in- and outgoing fluxes. For water storages, the water
+balance equals the derivative of the stored water volume, while the
+water balance of other flux node types can be queried to calculate the
+boundary fluxes between distinct subsystems and to calculate the area
+water budget.
+
+Each specialization of a flux connection is the implementation of a flux
+generating process. In the current version of CMF, mostly well known and
+tested processes are implemented. These include, among others, the
+Richards equation adopted from the BROOK 90 model, a tipping bucket
+model adopted from SWAT, a linear storage, the Manning equation and the
+Penman-Monteith and Hargreave equations to define evapotransporation.
+
+Since the implementation of a flux generating process is relatively
+simple, and because a set of well-established numerical procedures for
+the solution of systems of differential are integrated into the core
+model components, only few lines of code are required to implement
+additional processes. The Richards equation, for example, needs only 20
+lines of code, including the handling of special cases and all overhead
+associated with the CMF infrastructure. Thus the extension of CMF by new
+process descriptions, like handling macro pores, is relatively simple
+assuming one has a clear mathematical description of the process of
+interest.
+
+A simplified class model of cmf is shown here: CmfSoftwareObjects, while
+a complete list of available classes is
+[here](htdocs:doxygen/inherits.html)
+
+## Mathematical solving system
+
+The state variables provide methods for calculating their derivatives,
+thus any collection of state variables forms a system of ordinary
+differential equations, to be integrated by any well known integration
+scheme for initial value problems (IVP).
+
+All solvers, except the CVODE solver are implemented using OpenMP for
+parallel computation of the derivatives, while the original CVODE code
+is integrated into CMF as a static library. The CVODE library is also
+parallelized using OpenMP. The selection of the most appropriate solver
+for the ODEs making up any one model is not trivial. While explicit
+methods, like the explicit Euler scheme and the Runge-Kutta-Fehlberg
+(RKF) method are computationally inexpensive per time step, many
+possible setups of CMF are too unstable, or stiff, to be solved by an
+explicit method. The stiffer the system, the more complex integration
+method needs to be used. Stiffness of systems is indicated by the
+appearance of processes with highly different time scales. This is
+especially the case if the Richards equation is to be solved and surface
+runoff is allowed to reinfiltrate the soil. For such systems only the
+CVODE solver with an appropriate preconditioner for the Newton-Krylov
+iteration is able to solve the system. While CMF cannot provide
+significant guidance in terms of the most appropriate solution
+procedure, the fact that a variety of choices is available has a large
+degree of utility for modellers with an interest in the process of
+discretizing continuous systems of equations to develop solutions, and
+in particular how those choices may be reflected in modelled results.
+Again, we make the argument that the most appropriate model for any
+unique situation may best be arrived through some degree of
+experimentation. The solution procedure is part of this process, and CMF
+is designed to explicitly recognize this fact.
+
+@author philipp, version: 8 Fri Dec 2 15:55:29 2016

@@ -22,13 +22,13 @@ from __future__ import print_function, division
 import sys
 import os
 import io
+import re
 import time
-
-from glob import glob
 
 from setuptools import setup, Extension
 from setuptools.command.build_ext import build_ext
-from distutils.sysconfig import get_config_var, customize_compiler
+from distutils.sysconfig import customize_compiler
+from distutils.command.build_py import build_py
 
 version = '2.0.0a0'
 
@@ -40,47 +40,50 @@ try:
 except ImportError:
     raise RuntimeError("For building and running of cmf an installation of numpy is needed")
 
-# Try to import build_py_2to3 as "Python builder", if this fails, we are on Python 2
-# and the automatic translation is not necessary
-try:
-    from distutils.command.build_py import build_py_2to3 as build_py
-except ImportError:
-    from distutils.command.build_py import build_py
+
+swig = False
+openmp = False
 
 
-# https://stackoverflow.com/a/18992595/3032680
-# monkey-patch for parallel compilation
-def parallelCCompile(self, sources, output_dir=None, macros=None, include_dirs=None, debug=0, extra_preargs=None,
-                     extra_postargs=None, depends=None):
-    # those lines are copied from distutils.ccompiler.CCompiler directly
-    macros, objects, extra_postargs, pp_opts, build = self._setup_compile(output_dir, macros, include_dirs, sources,
-                                                                          depends, extra_postargs)
-    cc_args = self._get_cc_args(pp_opts, debug, extra_preargs)
-    # parallel code
-    import multiprocessing.pool
-    def _single_compile(obj):
-        try:
-            src, ext = build[obj]
-        except KeyError:
-            return
-        self._compile(obj, src, ext, cc_args, extra_postargs, pp_opts)
-
-    # convert to list, imap is evaluated on-demand
-    list(multiprocessing.pool.ThreadPool().imap(_single_compile, objects))
-    return objects
-
-
-import distutils.ccompiler
-
-distutils.ccompiler.CCompiler.compile = parallelCCompile
-
-
-# noinspection PyPep8Naming
-class cmf_build_ext(build_ext):
+class CmfBuildExt(build_ext):
     """
     Custom build class to get rid of the -Wstrict-prototypes warning
     source: https://stackoverflow.com/a/36293331/3032680
+
+    Removes also CLASS_swigregister clutter in cmf_core.py
     """
+    @staticmethod
+    def clean_swigregister(cmf_core_py):
+        """
+        SWIG creates ugly CLASS_swigregister functions. We remove them.
+        """
+        rp_call = re.compile(r'^(\w*?)_swigregister\((\w*?)\)', re.MULTILINE)
+        cmf_core_py, n = rp_call.subn('# \\1 end', cmf_core_py)
+        print(n, 'CLASS_swigregister(CLASS) lines deleted')
+        rp_def = re.compile(r'^(\w*?)_swigregister = _cmf_core\.(\w*?)_swigregister', re.MULTILINE)
+        cmf_core_py, n = rp_def.subn('_cmf_core.\\1_swigregister(\\1)', cmf_core_py)
+        print(n, 'CLASS_swigregister = _cmf_core... -> _cmf_core.CLASS_swigregister(CLASS)')
+        return cmf_core_py
+
+    @staticmethod
+    def clean_static_methods(cmf_core_py):
+        """SWIG creates still static methods as free functions (extra) to ensure Py2.2 compatibility
+        We don't want that in 2018
+        """
+        # Find class names and free functions
+        classes = re.findall(r'class\s(\w*?)\(.*?\):', cmf_core_py, re.MULTILINE)
+        funcs = re.findall(r'^def (\w*?)\(\*args, \*\*kwargs\):$', cmf_core_py, flags=re.MULTILINE)
+
+        # Find old style static methods (def CLASS_method():)
+        static_methods = [f for f in funcs if [c for c in classes if f.startswith(c)]]
+
+        count = 0
+        for sm in static_methods:
+            cmf_core_py, n = re.subn(r'^def {}.*?:.*?return.*?$'.format(sm),
+                                     '\n\n', cmf_core_py, flags=re.MULTILINE + re.DOTALL)
+            count += n
+        print(count, 'old style static methods removed from', len(classes), 'classes')
+        return cmf_core_py
 
     def build_extensions(self):
         customize_compiler(self.compiler)
@@ -89,6 +92,22 @@ class cmf_build_ext(build_ext):
         except (AttributeError, ValueError):
             pass
         build_ext.build_extensions(self)
+
+        if swig:
+            if os.path.exists('cmf/cmf_core_src/cmf_core.py'):
+                fn = 'cmf/cmf_core_src/cmf_core.py'
+            elif os.path.exists('cmf/cmf_core.py'):
+                fn = 'cmf/cmf_core.py'
+            else:
+                raise RuntimeError('cmf_core.py not found, run "python setup.py build_ext swig" to create it')
+            cmf_core_py = open(fn).read()
+            cmf_core_py = self.clean_swigregister(cmf_core_py)
+            cmf_core_py = self.clean_static_methods(cmf_core_py)
+
+            open('cmf/cmf_core.py', 'w').write(cmf_core_py)
+
+            if os.path.exists('cmf/cmf_core_src/cmf_core.py'):
+                os.unlink('cmf/cmf_core_src/cmf_core.py')
 
 
 def updateversion():
@@ -161,7 +180,7 @@ def is_source_file(fn, include_headerfiles=False):
     return res
 
 
-def make_cmf_core(swig, openmp):
+def make_cmf_core():
     """
     Puts all information needed for the Python extension object together
      - source files
@@ -239,10 +258,12 @@ def make_cmf_core(swig, openmp):
     if swig:
         # Adding cmf.i when build_ext should perform the swig call
         cmf_files.append("cmf/cmf_core_src/cmf.i")
+        swig_opts = ['-c++', '-Wextra', '-w512', '-w511', '-O', '-keyword', '-castmode', '-modern']
+
     else:
         # Else use what we have there
         cmf_files.append("cmf/cmf_core_src/cmf_wrap.cpp")
-
+        swig_opts = []
     cmf_core = Extension('cmf._cmf_core',
                          sources=cmf_files,
                          libraries=libraries,
@@ -251,7 +272,7 @@ def make_cmf_core(swig, openmp):
                          extra_objects=extra_objects,
                          extra_compile_args=compile_args,
                          extra_link_args=link_args,
-                         swig_opts=['-c++', '-Wextra', '-w512', '-w511', '-O', '-keyword', '-castmode']
+                         swig_opts=swig_opts
                          )
     return cmf_core
 
@@ -260,7 +281,7 @@ if __name__ == '__main__':
     updateversion()
     openmp = not pop_arg('noopenmp')
     swig = pop_arg('swig')
-    ext = make_cmf_core(swig, openmp)
+    ext = [make_cmf_core()]
     description = 'Catchment Modelling Framework - A hydrological modelling toolkit'
     long_description = io.open('README.rst', encoding='utf-8').read()
     classifiers = [
@@ -280,7 +301,7 @@ if __name__ == '__main__':
     setup(name='cmf',
           version=version,
           license='GPL',
-          ext_modules=[ext],
+          ext_modules=ext,
           packages=['cmf', 'cmf.draw', 'cmf.geometry'],
           python_requires='>=2.7',
           keywords='hydrology catchment simulation toolbox',
@@ -291,6 +312,6 @@ if __name__ == '__main__':
           long_description=long_description,
           classifiers=classifiers,
           cmdclass=dict(build_py=build_py,
-                        build_ext=cmf_build_ext),
+                        build_ext=CmfBuildExt),
           )
-    print("build ok")
+

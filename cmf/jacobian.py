@@ -1,19 +1,21 @@
 import cmf
 import numpy as np
 from itertools import chain
+
+
 def connector_matrix(states, compression_factor=1):
     """
     Returns a matrix that shows the connectivity between the given states
 
     :param states: A sequence of states to create the matrix
-    :param size: Large matrices can compressed with a factor.
+    :param compression_factor: Large matrices can compressed with a factor.
     :return: A symmetric 2d matrix with 1 for connected states and 0 for
             unconnected states. Compressed matrices contain larger numbers for
             the count of connection in the compressed field
     """
     posdict = {}
-    l = len(states)
-    size = (l // compression_factor, l // compression_factor)
+    le = len(states)
+    size = (le // compression_factor, le // compression_factor)
     jac = np.zeros(size, dtype=int)
     for i, a in enumerate(states):
         posdict[a.node_id] = i
@@ -22,7 +24,7 @@ def connector_matrix(states, compression_factor=1):
         for f, t in a.fluxes(cmf.Time()):
             j = posdict.get(t.node_id)
             if j:
-                jac[j * size[0] // l, i * size[1] // l] += 1
+                jac[i * size[0] // le, j * size[1] // le] += 1
     return jac
 
 

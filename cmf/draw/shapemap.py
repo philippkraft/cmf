@@ -60,7 +60,7 @@ class ShapeMap(object):
                     x, y = numpy.asarray(shape)[:, :2].swapaxes(0, 1)
                     self.shapes[-1].append(pylab.plot(x, y, **kwargs)[0])
             elif isinstance(feature.shape, g.LineString):
-                x, y = numpy.asarray(feature.shape.exterior).swapaxes(0, 1)
+                x, y = numpy.asarray(feature.shape).swapaxes(0, 1)
                 self.shapes.append(pylab.plot(x, y, **kwargs))
             elif isinstance(feature.shape, g.Point):
                 x, y = feature.shape.x, feature.shape.y

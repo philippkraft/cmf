@@ -1,5 +1,7 @@
 environment:
 
+  PYPIPASSWORD:
+    secure: LmtnXHQhfACj8oOpwYehsFPkdhPHGLq84SIqn+ixfS8=
   matrix:
 
     # For Python versions available on Appveyor, see
@@ -7,14 +9,20 @@ environment:
     # The list here is complete (excluding Python 2.6, which
     # isn't covered by this document) at the time of writing.
 
-    - PYTHON: "C:\\Python27"
-    - PYTHON: "C:\\Python36"
-    - PYTHON: "C:\\Python27-x64"
     - PYTHON: "C:\\Python36-x64"
+    - PYTHON: "C:\\Python35-x64"
+    - PYTHON: "C:\\Python27-x64"
+
+    - PYTHON: "C:\\Python36"
+    - PYTHON: "C:\\Python35"
+    - PYTHON: "C:\\Python27"
 
 install:
   # We need wheel installed to build wheels
   - "%PYTHON%\\python.exe -m pip install wheel"
+  - "%PYTHON%\\Scripts\\pip install numpy"
+  - "SET BOOSTDIR=C:\\Libraries\\boost"
+
   - "tools\\install_solvers.bat"
 
 build: off
@@ -27,21 +35,36 @@ test_script:
   # Note that you must use the environment variable %PYTHON% to refer to
   # the interpreter you're using - Appveyor does not do anything special
   # to put the Python version you want to use on PATH.
-  - "build.cmd %PYTHON%\\python.exe setup.py install"
-  - "tools\\test.bat"
+  - "%PYTHON%\\python.exe setup.py install"
+  - "%PYTHON%\\python.exe tools\\test.py"
 
 after_test:
   # This step builds your wheels.
   # Again, you only need build.cmd if you're building C extensions for
   # 64-bit Python 3.3/3.4. And you need to use %PYTHON% to get the correct
   # interpreter
-  - "build.cmd %PYTHON%\\python.exe setup.py bdist_wheel"
+  - "%PYTHON%\\python.exe setup.py bdist_wheel"
 
 artifacts:
   # bdist_wheel puts your built wheel in the dist directory
   - path: dist\*
 
-#on_success:
-#  You can use this step to upload your artifacts to a public website.
-#  See Appveyor's documentation for more details. Or you can simply
-#  access your wheels from the Appveyor "artifacts" tab for your build.
+# Deploy to PyPI if a tagged release
+on_success:
+  # Specify account details for PyPI
+  - echo [distutils]                                  > %USERPROFILE%\\.pypirc
+  - echo index-servers =                             >> %USERPROFILE%\\.pypirc
+  - echo     pypi                                    >> %USERPROFILE%\\.pypirc
+  - echo [pypi]                                      >> %USERPROFILE%\\.pypirc
+  - echo repository=https://pypi.python.org/pypi     >> %USERPROFILE%\\.pypirc
+  - echo username=Philipp.Kraft                      >> %USERPROFILE%\\.pypirc
+  - echo password=%PYPIPASSWORD%                     >> %USERPROFILE%\\.pypirc
+
+  # Workaround required to ensure setup.py finds the .pypirc under Windows
+  - set HOME=%USERPROFILE%
+
+  # Deploy a wheel (only actually do this for tags). NB That breaking this line
+  # with Unix line-endings causes the windows command interpreter to barf so
+  # this is given as one-line to make this script less fragile when edited on
+  # other OSes.
+  - if "%APPVEYOR_REPO_TAG%"=="true" ( win_build.cmd %PYTHON%\\python.exe setup.py bdist_wheel upload ) else ( echo "Not deploying because not a tagged commit." )

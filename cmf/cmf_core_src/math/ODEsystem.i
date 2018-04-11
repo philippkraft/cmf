@@ -49,7 +49,7 @@
      }
     %pythoncode {
     def __iter__(self):
-        for i in xrange(len(self)):
+        for i in range(len(self)):
             yield self[i]
     def __getitem__(self,index):
         if isinstance(index,slice):
