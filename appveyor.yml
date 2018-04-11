@@ -13,16 +13,16 @@ environment:
     - PYTHON: "C:\\Python35-x64"
     - PYTHON: "C:\\Python27-x64"
 
-    - PYTHON: "C:\\Python36"
-    - PYTHON: "C:\\Python35"
-    - PYTHON: "C:\\Python27"
-
 install:
   # We need wheel installed to build wheels
   - "%PYTHON%\\python.exe -m pip install wheel"
   - "%PYTHON%\\Scripts\\pip install numpy"
+  # We need boost for Py 2.7
   - "SET BOOSTDIR=C:\\Libraries\\boost"
-
+  # We need vcvarsall to build sundials
+  - 'call "C:\Program Files\Microsoft SDKs\Windows\v7.1\Bin\SetEnv.cmd" /x64'
+  - 'call "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat" x86_amd64'
+  # We need the additional solvers
   - "tools\\install_solvers.bat"
 
 build: off
