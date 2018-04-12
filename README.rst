@@ -1,12 +1,10 @@
 .. image:: https://badge.fury.io/py/cmf.svg
     :target: https://pypi.python.org/pypi/cmf/
-.. image:: https://img.shields.io/github/release/philippkraft/cmf.svg?logo=github
-    :target: https://github.com/philippkraft/cmf
 .. image:: https://api.travis-ci.org/philippkraft/cmf.svg
     :target: https://travis-ci.org/philippkraft/cmf
 .. image:: https://ci.appveyor.com/api/projects/status/24crp4ejkacykkrk?svg=true
     :target: https://ci.appveyor.com/project/philippkraft/cmf
-.. image:: https://img.shields.io/badge/license-GPLv3-green.svg
+.. image:: https://raw.githubusercontent.com/philippkraft/cmf/master/documentation/media/license-GPLv3-green.svg
     :target: https://opensource.org/licenses/GPL-3.0
 .. image:: https://zenodo.org/badge/DOI/10.5281/zenodo.1125290.svg
    :target: https://doi.org/10.5281/zenodo.1125290
