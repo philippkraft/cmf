@@ -1,13 +1,20 @@
-.. image:: https://badge.fury.io/py/cmf.svg
-    :target: https://pypi.python.org/pypi/cmf/
-.. image:: https://api.travis-ci.org/philippkraft/cmf.svg
-    :target: https://travis-ci.org/philippkraft/cmf
-.. image:: https://ci.appveyor.com/api/projects/status/24crp4ejkacykkrk?svg=true
-    :target: https://ci.appveyor.com/project/philippkraft/cmf
-.. image:: https://raw.githubusercontent.com/philippkraft/cmf/master/documentation/media/license-GPLv3-green.svg?sanitize=true
+|lic| |zeno| |pypi| |travis| |appveyor|
+
+.. |lic| image:: https://raw.githubusercontent.com/philippkraft/cmf/master/documentation/media/license-GPLv3-green.svg?sanitize=true
     :target: https://opensource.org/licenses/GPL-3.0
-.. image:: https://zenodo.org/badge/DOI/10.5281/zenodo.1125290.svg
+    
+.. |zeno| image:: https://zenodo.org/badge/DOI/10.5281/zenodo.1125290.svg
    :target: https://doi.org/10.5281/zenodo.1125290
+   
+.. |pypi| image:: https://badge.fury.io/py/cmf.svg
+    :target: https://pypi.python.org/pypi/cmf/
+
+.. |travis| image:: https://api.travis-ci.org/philippkraft/cmf.svg 
+    :target: https://travis-ci.org/philippkraft/cmf
+
+.. |appveyor| image:: https://ci.appveyor.com/api/projects/status/24crp4ejkacykkrk?svg=true
+    :target: https://ci.appveyor.com/project/philippkraft/cmf
+
 
 Modelling water and solute fluxes
 ===================================
