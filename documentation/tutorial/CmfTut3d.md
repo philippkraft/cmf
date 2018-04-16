@@ -1,8 +1,4 @@
-@page cmfTut3d
-
-
-
-# 3D Model
+@page cmfTut3d 3D Model
 
 ![](media/structure_cmf_3d.png)
 

@@ -1,8 +1,4 @@
-@page cmfTut1d
-
-
-
-# Create a one dimensional Richards equation based model
+@page cmfTut1d Create a one dimensional Richards equation based model
 
 ![](media/structure_cmf_1d.png)
 

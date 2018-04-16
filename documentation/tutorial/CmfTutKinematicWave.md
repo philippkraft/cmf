@@ -1,8 +1,4 @@
-@page cmfTutKinematicWave
-
-
-
-# Is hydrology kinematic?
+@page cmfTutKinematicWave Is hydrology kinematic?
 
 ... is the title of a paper by [Singh (2002)](https://doi.org/10.1002/hyp.306),
 where he lists numerous examples from all scales of hydrology where a
@@ -25,7 +21,7 @@ A generalized form for some approaches is:
 
 
 @f[
-q(V) = Q_0 \cdot \theta^\beta
+q(V) = Q_0 \cdot \theta^\beta\ (1)
 @f]
 
 where:
@@ -41,28 +37,34 @@ variable @f$\theta@f$. So we define:
 
 
 @f[
-\theta = \frac{V - V_{res}}{V_0}
+\theta = \frac{V - V_{res}}{V_0}\ (2)
 @f]
 
 where:
 
-- @f$V@f$ is the water volume stored in a storage in @f$m^3@f$ -
-@f$V_{res}@f$ is an immobile water volume in the storage, that does
-not take place in this connection. It may be ommitted and set to @f$ 0
-m^3@f$. - @f$V_0@f$ is a reference volume, where, for any
-@f$\beta@f$ the runoff from the water storage is @f$Q_0@f$.
+- @f$V@f$ is the water volume stored in a storage in @f$m^3@f$ 
+- @f$V_{res}@f$ is an immobile water volume in the storage, that does
+  not take place in this connection. It may be ommitted and set to @f$ 0
+  m^3@f$. 
+- @f$V_0@f$ is a reference volume, where, for any @f$\beta@f$ the runoff 
+  from the water storage is @f$Q_0@f$.
 
 The famous linear storage equation can be seen as a special case of this
-approach where @f$\beta=1@f$. In that case, @f$\theta@f$ needs no
-longer to be dimensionless and we can simplify the equation above to
-
+approach where @f$\beta=1@f$. In that case, we can rearrange the formula
+above to:
 
 @f[
-q(V) = k \cdot (V-V_{res})
+q(V) = \frac{Q_0}{V_0} \cdot (V-V_{res})\ (3)
 @f]
 
-Here, @f$k@f$ becomes the inverse of the residence time of water in
-the storage @f$k=\frac 1 {t_r [days]}@f$.
+Here the quotient @f$\frac{Q_0}{V_0}@f$ becomes the inverse of the
+storage residence time @f$t_r^{-1}@f$, which simplifies (3) to  
+
+@f[
+q(V) = \frac 1 {t_r [days]} \cdot (V-V_{res})\ (4)
+@f]
+
+for the linear case
 
 # Implementation in cmf
 
@@ -82,8 +84,8 @@ ls = cmf.LinearStorageConnection(source, target, residencetime=3.2, residual=0)
 ~~~~~~~~~~~~~
 
 The linear storage connection
-[LinearStorageConnection](@ref cmf::water::LinearStorageConnection)
-takes the residence time in days and a residual water content in m³ as
+[LinearStorageConnection](@ref cmf::water::LinearStorageConnection) implements (4) 
+and takes the residence time in days and a residual water content in m³ as
 parameters. While the residence time must be given, the residual water
 content can be omitted and set to 0. Depending on system size and
 structure, residence times between minutes for surface water storages or

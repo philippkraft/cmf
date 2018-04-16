@@ -1,8 +1,4 @@
-@page cmf_lumped_simple
-
-
-
-# Lumped Model with Spotpy Tutorial
+@page cmf_lumped_simple Lumped Model with Spotpy Tutorial
 
 ## Downloads
 

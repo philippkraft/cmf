@@ -1,6 +1,4 @@
-@page cmfIntroduction
-
-# Scientific background of cmf
+@page cmfIntroduction Scientific background of cmf
 
 In the last decade, the application of classical hydrological rainfall
 runoff models is disputed as a valid method for understanding water

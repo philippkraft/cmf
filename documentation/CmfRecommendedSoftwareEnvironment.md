@@ -1,6 +1,4 @@
-@page cmfRecommendedSoftwareEnvironment
-
-# Recommended Software Environment
+@page cmfRecommendedSoftwareEnvironment Recommended Software Environment
 
 There are as many Python editors and interactive systems as hydrological
 models. Since cmf is nothing more than an extension to Python, you can

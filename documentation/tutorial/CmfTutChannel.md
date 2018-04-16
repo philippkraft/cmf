@@ -1,8 +1,4 @@
-@page cmfTutChannel
-
-
-
-# Channelled flow in cmf
+@page cmfTutChannel Channelled flow in cmf
 
 In this chapter, we will create a simple 1D river model using the
 kinematic wave equation with Manning's formula as the friction term. The

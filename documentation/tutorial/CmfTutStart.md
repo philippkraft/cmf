@@ -1,6 +1,4 @@
-@page tutorial
-
-# Tutorial
+@page tutorial Tutorial
 
 ## Getting started
   - @subpage cmfTutNeedToKnow "What you need to know, before you start"

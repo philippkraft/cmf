@@ -1,6 +1,4 @@
-@page publicationList
-
-# List of cmf publications
+@page publicationList List of cmf publications
 
 ## Basic publication
 

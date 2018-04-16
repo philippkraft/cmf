@@ -1,6 +1,4 @@
-@page cmfTutSolver
-
-# Choosing a solver
+@page cmfTutSolver Choosing a solver
 
 cmf uses the [finite volume method](@ref finiteVolumeMethod) to set up a wide range of models of
 water flow through your study area. The result of the finite volume

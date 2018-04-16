@@ -1,8 +1,4 @@
-@page cmfTutProject
-
-
-
-# Project
+@page cmfTutProject Project
 
 The cmf project is the container for the nodes of the water flux
 network. For any kind of cmf model, the first step is to create a

@@ -1,6 +1,4 @@
-@page cmf_lumped_without_spotpy
-
-# Lumped model without Spotpy Tutorial
+@page cmf_lumped_without_spotpy Lumped model without Spotpy Tutorial
 
 Here you will learn how to create a complete lumped model in CMF.
 

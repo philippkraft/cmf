@@ -1,8 +1,4 @@
-@page simple_infiltration
-
-
-
-# Infiltration in a lumped model
+@page simple_infiltration Infiltration in a lumped model
 
 As lumped models are a quite abstract realisation of a catchment, often
 a simplified kinematic wave approach is used to connect storages.

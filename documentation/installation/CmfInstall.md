@@ -1,6 +1,4 @@
-@page cmfInstall
-
-# Installation instructions
+@page cmfInstall Installation instructions
 
 There are numerous ways to install cmf, depending on your operating
 system, your Python environment and your choice of what you would like

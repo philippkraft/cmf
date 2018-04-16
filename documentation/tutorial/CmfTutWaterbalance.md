@@ -1,6 +1,4 @@
-@page cmfTutWaterbalance
-
-# Waterbalance Connections in CMF
+@page cmfTutWaterbalance Waterbalance Connections in CMF
 
 A waterbalance connection can be used to route water through a storage,
 while keeping the volume of the water in the storage constant. For

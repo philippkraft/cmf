@@ -1,8 +1,4 @@
-@page cmfTutTechnical
-
-
-
-# Technical fluxes in CMF
+@page cmfTutTechnical Technical fluxes in CMF
 
 A technical flux is meant to simulate an artificial flow of water, e.g.
 a well extracting a fixed amount of water per day. The usage is quite

@@ -1,6 +1,4 @@
-@page cmfTutBoundary2
-
-# Head based boundary conditions
+@page cmfTutBoundary2 Head based boundary conditions
 
 In \[wiki:CmfTutBoundary\] an outlet was created to let water flow out
 of the system. Outlets created with

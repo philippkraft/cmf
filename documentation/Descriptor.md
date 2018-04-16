@@ -1,6 +1,4 @@
-@page descriptor
-
-# CMF Descriptor
+@page descriptor CMF Descriptor
 
 When creating and using CMF models it can sometimes become quite
 confusing due to the large amount of code, especially in more complex

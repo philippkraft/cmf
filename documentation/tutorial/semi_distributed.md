@@ -1,6 +1,4 @@
-@page semi_distributed
-
-# Semi distributed models in CMF
+@page semi_distributed Semi distributed models in CMF
 
 Creating a lumped and a semi distributed model in CMF can be handled
 relatively similar. The main difference is that a lumped model contains

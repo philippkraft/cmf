@@ -1,6 +1,4 @@
-@page installCheck
-
-# Check the cmf installation
+@page installCheck Check the cmf installation
 
 To check your cmf installation, start an [interactive python](@ref cmfRecommendedSoftwareEnvironment) console and type in the
 following:

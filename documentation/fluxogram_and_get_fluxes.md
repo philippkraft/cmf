@@ -1,8 +1,4 @@
-@page fluxogram_and_get_fluxes
-
-
-
-# How to get a nice visual representation of your model
+@page fluxogram_and_get_fluxes How to get a nice visual representation of your model
 
 ## Downloads
 
