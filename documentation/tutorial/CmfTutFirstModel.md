@@ -1,9 +1,9 @@
-@page CmfTutFirstModel
+@page cmfTutFirstModel
 
 @tableofcontents
 
  
-[next...](@ref CmfTutBoundary)
+[next...](@ref cmfTutBoundary)
 
 # Let it flow... the first cmf model
 
@@ -114,7 +114,7 @@ nearly any data format can help to define the system from data.
 Now we have all parts of our model available to run it. The solver can
 be advanced for a certain time step using solver.integrate(dt), where dt
 is a time step. After the integration the states and fluxes of the model
-can be queried (see [Query fluxes and storages](@ref CmfTutFluxes)) and,
+can be queried (see [Query fluxes and storages](@ref cmfTutFluxes)) and,
 if needed, saved into a file. Or you can store the results in a Python
 list or a cmf timeseries and use [matplotlib](http://matplotlib.org) to
 plot the results immediately after running the model. The content and
@@ -166,6 +166,6 @@ And this is the result:
 
 ![](@ref CmfFirstModelTut.png)
 
-Next step is to include [boundary conditions](@ref CmfTutBoundary).
+Next step is to include [boundary conditions](@ref cmfTutBoundary).
 
 @author philipp, version: 17 Thu Dec 14 09:28:22 2017

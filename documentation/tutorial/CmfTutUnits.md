@@ -1,6 +1,6 @@
-@page CmfTutUnits
+@page cmfTutUnits
 
- [next](@ref CmfTutSpaceTime)
+ [next](@ref cmfTutSpaceTime)
 
 # Units
 

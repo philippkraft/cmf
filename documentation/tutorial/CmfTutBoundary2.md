@@ -1,4 +1,4 @@
-@page CmfTutBoundary2
+@page cmfTutBoundary2
 
 # Head based boundary conditions
 
@@ -13,7 +13,7 @@ outlet = p.NewOutlet('name',position=position)
 are in fact [DirichletBoundary](@ref cmf::water::DirichletBoundary)
 objects. Most connection types can be used to connect on the right side
 with an outlet. However, some connections in are gradient based (eg. the
-[lateral darcian connections](@ref CmfTutDarcianLateralFlow)). For these
+[lateral darcian connections](@ref cmfTutDarcianLateralFlow)). For these
 connections, the outlet position is meaningful for the calculation of
 the distance and the potential head of the boundary condition matters.
 By default, the head of an outlet equals its z position. If this does

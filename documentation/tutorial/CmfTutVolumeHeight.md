@@ -1,6 +1,6 @@
-@page CmfTutVolumeHeight
+@page cmfTutVolumeHeight
 
- [next](@ref CmfTutBoundary2)
+ [next](@ref cmfTutBoundary2)
 
 # Hydraulic head in surface water bodies
 

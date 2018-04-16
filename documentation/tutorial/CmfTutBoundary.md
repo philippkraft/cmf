@@ -1,7 +1,7 @@
-@page CmfTutBoundary
+@page cmfTutBoundary
 
- [back...](@ref CmfTutFirstModel)
-[next...](@ref CmfTutFluxes)
+ [back...](@ref cmfTutFirstModel)
+[next...](@ref cmfTutFluxes)
 
 # Boundary conditions
 

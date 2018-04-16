@@ -1,4 +1,4 @@
-@page CmfTut1d
+@page cmfTut1d
 
 
 
@@ -25,7 +25,7 @@ project = cmf.project()
 cell = project.NewCell(x=0,y=0,z=0,area=1000, with_surfacewater=True)
 ~~~~~~~~~~~~~
 
-Create a [retention curve](@ref CmfTutRetentioncurve)
+Create a [retention curve](@ref cmfTutRetentioncurve)
 
 ~~~~~~~~~~~~~{.py}
 

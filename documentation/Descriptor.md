@@ -1,4 +1,4 @@
-@page Descriptor
+@page descriptor
 
 
 

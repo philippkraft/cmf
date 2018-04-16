@@ -1,4 +1,4 @@
-@page PublicationList
+@page publicationList
 
 # List of cmf publications
 

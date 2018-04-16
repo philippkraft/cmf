@@ -1,4 +1,4 @@
-@page CmfTutChannel
+@page cmfTutChannel
 
 
 

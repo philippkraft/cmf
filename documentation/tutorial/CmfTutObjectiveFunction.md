@@ -1,6 +1,6 @@
-@page CmfTutObjectiveFunction
+@page cmfTutObjectiveFunction
 
-[index](@ref CmfTutObjectiveFunction)
+[index](@ref cmfTutObjectiveFunction)
 
 When using CMF together with Spotpy often the question occures: "What
 objective function should I use?" This section here is meant to provide

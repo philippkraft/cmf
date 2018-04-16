@@ -1,4 +1,4 @@
-@page CmfTut3d
+@page cmfTut3d
 
 
 

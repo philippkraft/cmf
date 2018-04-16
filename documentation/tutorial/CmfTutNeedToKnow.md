@@ -1,4 +1,4 @@
-@page CmfTutNeedToKnow What you need to know for using cmf
+@page cmfTutNeedToKnow What you need to know for using cmf
 
 First, you need to have some knowledge of Python - how to write loops,
 functions, perform math etc. Python is a programming language gaining

@@ -1,4 +1,4 @@
-@page CmfTutTechnical
+@page cmfTutTechnical
 
 
 

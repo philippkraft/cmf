@@ -1,9 +1,9 @@
-@page CmfTutSpaceTime
+@page cmfTutSpaceTime
 
 @tableofcontents
 
  
-[back...](@ref CmfTutUnits) [next...](@ref CmfTutCell)
+[back...](@ref cmfTutUnits) [next...](@ref cmfTutCell)
 
 # Space and time in cmf
 

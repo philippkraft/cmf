@@ -1,8 +1,8 @@
-@page CmfTutSolver
+@page cmfTutSolver
 
 # Choosing a solver
 
-cmf uses the [finite volume method](@ref FiniteVolumeMethod) to set up a wide range of models of
+cmf uses the [finite volume method](@ref finiteVolumeMethod) to set up a wide range of models of
 water flow through your study area. The result of the finite volume
 method discretization in space is an ordinary differential equation (ODE)
 system, that needs to be integrated in time. Several solvers are

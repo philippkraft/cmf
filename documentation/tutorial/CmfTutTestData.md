@@ -1,6 +1,6 @@
-@page CmfTutTestData
+@page cmfTutTestData
 
-[next](@ref CmfTutMeteostation)
+[next](@ref cmfTutMeteostation)
 
 ## Available data
 
@@ -34,8 +34,8 @@ an empty [timeseries](@ref cmf::math::timeseries) for the rain fall
 and a [MeteoStation](@ref cmf::atmosphere::MeteoStation) to hold the
 timeseries for the other meteorological observations. The **station**
 concept is explained in more detail in the [next
-tutorial](@ref CmfTutMeteostation). An introduction to timeseries is
-[here](@ref CmfTutSpaceTime).
+tutorial](@ref cmfTutMeteostation). An introduction to timeseries is
+[here](@ref cmfTutSpaceTime).
 
 ~~~~~~~~~~~~~{.py}
 
@@ -83,7 +83,7 @@ Now we read in the file and append the read values to the timeseries.
 ~~~~~~~~~~~~~
 
 The last part is to create a station (see [next
-tutorial](@ref CmfTutMeteostation)) for the rainfall data and apply the
+tutorial](@ref cmfTutMeteostation)) for the rainfall data and apply the
 stations to the cells of the project.
 
 ~~~~~~~~~~~~~{.py}           

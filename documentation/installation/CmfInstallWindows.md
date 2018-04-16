@@ -1,6 +1,6 @@
-@page CmfInstallWindows
+@page cmfInstallWindows
 
-[back...](@ref CmfInstall)
+[back...](@ref cmfInstall)
 
 # Installing cmf on Windows for Python 2.7  
 

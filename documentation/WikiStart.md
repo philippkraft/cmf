@@ -8,7 +8,7 @@
 
 cmf is a '''programming library''' to create '''hydrological models''',
 which are highly modular and connectible to other models developed using
-a [multiple hypotheses background](@ref CmfIntroduction). Although written
+a [multiple hypotheses background](@ref cmfIntroduction). Although written
 in C++, its primary usage is to be compiled as an extension to other
 programming languages, using [SWIG](http://www.swig.org). Until now only
 [Python](http://www.python.org) is actively supported to use the
@@ -29,12 +29,25 @@ The development takes place at
 ## Documentation
 
   - @subpage tutorial "Tutorial"
-  - @subpage PublicationList "Publications"
-  - @subpage CmfInstall "Installation"
-  - @subpage CmfRecommendedSoftwareEnvironment "Recommended Software"
+  - @subpage publicationList "Publications"
+  - @subpage cmfInstall "Installation"
+  - @subpage cmfRecommendedSoftwareEnvironment "Recommended Software"
 
 ## Get cmf
 
-See CmfDownload
+### Source code
 
-@author philipp, version: 32 Wed Jan 3 11:47:39 2018
+The code development and the download of the cmf source code has been
+moved to github:
+
+https://github.com/philippkraft/cmf
+
+And source releases are hosted on PyPI:
+
+https://pypi.python.org/pypi/cmf 
+
+### Precompiled binaries for Windows are available on PyPI:
+
+https://pypi.python.org/pypi/cmf
+
+![](https://shields.io/pypi/v/cmf.svg)

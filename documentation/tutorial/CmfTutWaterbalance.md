@@ -1,4 +1,4 @@
-@page CmfTutWaterbalance
+@page cmfTutWaterbalance
 
 # Waterbalance Connections in CMF
 

@@ -4,47 +4,47 @@
 
 
 ## Getting started
-  - @subpage CmfTutNeedToKnow "What you need to know, before you start"
-  - @ref CmfInstall "Installation"
-  - @subpage InstallCheck "Check if cmf is correctly installed"
-  - @subpage CmfTutProject "Creating projects"
+  - @subpage cmfTutNeedToKnow "What you need to know, before you start"
+  - @ref cmfInstall "Installation"
+  - @subpage installCheck "Check if cmf is correctly installed"
+  - @subpage cmfTutProject "Creating projects"
 
 ### A first simple model
 
-  - @subpage CmfTutFirstModel "Let it flow... the first simple model"
-  - @subpage CmfTutBoundary "Boundary conditions"
-  - @subpage CmfTutFluxes "Query fluxes and states"
-  - @subpage CmfTutSolver "Choosing a solver for the ODE system"
+  - @subpage cmfTutFirstModel "Let it flow... the first simple model"
+  - @subpage cmfTutBoundary "Boundary conditions"
+  - @subpage cmfTutFluxes "Query fluxes and states"
+  - @subpage cmfTutSolver "Choosing a solver for the ODE system"
 
 ### Spatial context
 
-  - @subpage CmfTutUnits "Units in cmf"
-  - @subpage CmfTutSpaceTime "Time and space in cmf"
-  - @subpage CmfTutCell "cells and reaches"
+  - @subpage cmfTutUnits "Units in cmf"
+  - @subpage cmfTutSpaceTime "Time and space in cmf"
+  - @subpage cmfTutCell "cells and reaches"
 
 
 ## Interaction with the atmosphere
 
 ### Distribution of rainfall and other meteorological data
 
-  - @subpage CmfTutTestData "Test data"
-  - @subpage CmfTutMeteostation "Using stations"
+  - @subpage cmfTutTestData "Test data"
+  - @subpage cmfTutMeteostation "Using stations"
 
 ### Connecting cells with the atmosphere 
 
-  - @subpage CmfTutET "Evapotranspiration"
-  - @subpage CmfTutIntercept "Interception"
-  - @subpage CmfTutSnow "Snow"
+  - @subpage cmfTutET "Evapotranspiration"
+  - @subpage cmfTutIntercept "Interception"
+  - @subpage cmfTutSnow "Snow"
 
 ## Conceptual Models
 
 ### Conceptual Connections
 
-  - @subpage CmfTutKinematicWave "Kinematic waves" as swiss army knife 
+  - @subpage cmfTutKinematicWave "Kinematic waves" as swiss army knife 
     for conceptual model building
   - @subpage simple_infiltration "Infiltration"
-  - @subpage CmfTutTechnical "Technical Flux"
-  - @subpage CmfTutWaterbalance "Waterbalance Connection"
+  - @subpage cmfTutTechnical "Technical Flux"
+  - @subpage cmfTutWaterbalance "Waterbalance Connection"
   
 ### Lumped Model
 
@@ -59,28 +59,28 @@
 
 ### Introducing hydraulic head in cmf
 
-  - @subpage CmfTutRetentioncurve "Hydraulic head in the subsurface"
-  - @subpage CmfTutVolumeHeight "Hydraulic head in surface water"
-  - @subpage CmfTutBoundary2 "Hydraulic head based boundary conditions"
+  - @subpage cmfTutRetentioncurve "Hydraulic head in the subsurface"
+  - @subpage cmfTutVolumeHeight "Hydraulic head in surface water"
+  - @subpage cmfTutBoundary2 "Hydraulic head based boundary conditions"
 
 ### Soil column (1D)
 
-  - @subpage CmfTut1d "Simple 1D Model"
-  - @subpage CmfTutSoluteTransport1D "Solute transport"
+  - @subpage cmfTut1d "Simple 1D Model"
+  - @subpage cmfTutSoluteTransport1D "Solute transport"
 
 ### Hillslope (2D)
 
-  - @subpage CmfTutDarcianLateralFlow "Darcian flow connections"
-  - @subpage CmfTutSurfaceRunoff "Surface runoff"
-  - @subpage CmfTut2d "Simple hillslope model"
+  - @subpage cmfTutDarcianLateralFlow "Darcian flow connections"
+  - @subpage cmfTutSurfaceRunoff "Surface runoff"
+  - @subpage cmfTut2d "Simple hillslope model"
 
 ### Channeled flow
 
-  - @subpage CmfTutChannel "Simple channel flow model"
+  - @subpage cmfTutChannel "Simple channel flow model"
 
 ### 3D Model
 
-  - @subpage CmfTut3d "3D Model" (this tutorial is a
+  - @subpage cmfTut3d "3D Model" (this tutorial is a
     [stub](WikiPedia:Wikipedia:stub))
 
 

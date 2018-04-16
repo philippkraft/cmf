@@ -1,7 +1,7 @@
-@page CmfTutIntercept
+@page cmfTutIntercept
 
- [back...](@ref CmfTutET)
-[next...](@ref CmfTutSnow)
+ [back...](@ref cmfTutET)
+[next...](@ref cmfTutSnow)
 
 # Interception
 

@@ -1,4 +1,4 @@
-@page CmfTutProject
+@page cmfTutProject
 
 
 
@@ -26,11 +26,11 @@ Have a look at the description of the programming interface for
 
 Adding Cells, Rivers, free water storages and boundary conditions is
 explained in the next parts of the tutorial. Bear in mind, that nearly
-every [cmf object](@ref CmfSoftwareObjects) is somehow bound to a project.
+every [cmf object](@ref cmfSoftwareObjects) is somehow bound to a project.
 Creating a project is therefore always the second step in using cmf
 after import of the library.
 
-The [next tutorial](@ref CmfTutFirstModel) contains a first simple,
+The [next tutorial](@ref cmfTutFirstModel) contains a first simple,
 conceptual model (Nash-Boxes).
 
 @author ina, version: 6 Wed May 7 14:25:42 2014

@@ -1,9 +1,9 @@
-@page CmfTutET
+@page cmfTutET
 
 @tableofcontents
 
  
-[next...](@ref CmfTutIntercept)
+[next...](@ref cmfTutIntercept)
 
 # Evapotranspiration (incomplete)
 
@@ -24,7 +24,7 @@ in serveral layers), but soil evaporation takes water from the first
 layer only (ok except for very, very dry regions), open water
 evaporation from [OpenWaterStorage](@ref cmf::river::OpenWaterStorage)
 like surface water, rivers and lakes. Water that is intercepted by
-vegetation (see [next](@ref CmfTutIntercept) tutorial) either percolates
+vegetation (see [next](@ref cmfTutIntercept) tutorial) either percolates
 to the surface water or evaporates from the leaf surface. Since
 transpiration is the main part of bulk evapotranspiration in vegetated
 soils, models that deal only with bulk evapotranspiration handle the
@@ -142,19 +142,19 @@ If you do nothing, the `RootDepth` default value of 0.25 is used.
 ![](@ref CmfTut1d-ET1.png)
 
 As a first step, you need to have your values stored in a
-[timeseries](@ref CmfTutSpaceTime), for the following code named ET. The
+[timeseries](@ref cmfTutSpaceTime), for the following code named ET. The
 timeseries needs to have the unit of mm/day. To get @f$ET_{act}@f$,
 you will connect every soil layer in the rooting zone with the
 `transpiration` boundary condition of the cell with the
 [timeseriesETpot](@ref cmf::upslope::ET::timeseriesETpot) connection.
 
 The following code snippet is an extensions the setup code from
-[1D model](@ref CmfTut1d) without the groundwater boundary condition. Think
+[1D model](@ref cmfTut1d) without the groundwater boundary condition. Think
 about the position of the snippet in the code. For simplicity, we are
 using a constant ETpot value. And to avoid changing the run time
 duration and see nice effects anyway, the constant ETpot is set to the
 absurd high value of 20 mm/day. The initial condition
-[saturated depth](@ref CmfTutRetentioncurve) is also changed to 4m.
+[saturated depth](@ref cmfTutRetentioncurve) is also changed to 4m.
 
 ~~~~~~~~~~~~~{.py}
 
@@ -222,7 +222,7 @@ cell.install_connection(cmf.ShuttleWorthWallace)
 
 If you want to use canopy evaporation and snow sublimation, make sure
 you have created the appropriate storages from the
-[next](@ref CmfTutIntercept) tutorial before installation.
+[next](@ref cmfTutIntercept) tutorial before installation.
 
 [ShuttleworthWallace](@ref cmf::upslope::ET::ShuttleworthWallace) is
 quite parameter demanding - all meteorological parameters available in

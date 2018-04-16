@@ -1,11 +1,11 @@
-@page CmfTutSnow
+@page cmfTutSnow
 
- [back...](@ref CmfTutIntercept)
+ [back...](@ref cmfTutIntercept)
 
 # Snow (under construction)
 
 For this tutorial, we are using the simplified model (without canopy)
-from the [last](@ref CmfTutIntercept) tutorial.
+from the [last](@ref cmfTutIntercept) tutorial.
 
 ## Implementation of a snow storage
 
