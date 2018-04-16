@@ -1,0 +1,4 @@
+<map id="Meteorological data" name="Meteorological data">
+<area shape="rect" id="node1" href="$group__boundary.html" title="Boundary conditions" alt="" coords="361,71,501,97"/>
+<area shape="rect" id="node2" href="$group___e_t.html" title="Evapotranspiration" alt="" coords="367,131,495,157"/>
+</map>

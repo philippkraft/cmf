@@ -1,0 +1,8 @@
+<map id="ShuttleworthWallace" name="ShuttleworthWallace">
+<area shape="rect" id="node2" href="$classcmf_1_1upslope_1_1_e_t_1_1transpiration__method.html" title="Abstract class. Child classes are defining a method for transpiration calculation. " alt="" coords="21,5,164,32"/>
+<area shape="rect" id="node3" href="$classcmf_1_1upslope_1_1_e_t_1_1soil__evaporation__method.html" title="Abstract class. Child classes are defining a method for soil evaporation calculation. " alt="" coords="11,56,175,83"/>
+<area shape="rect" id="node4" href="$classcmf_1_1upslope_1_1_e_t_1_1surface__water__evaporation__method.html" title="Abstract class. Child classes are defining a method for surface water evaporation calculation..." alt="" coords="5,107,180,149"/>
+<area shape="rect" id="node5" href="$classcmf_1_1upslope_1_1_e_t_1_1canopy__evaporation__method.html" title="Abstract class. Child classes are defining a method for intercepted canopy water evaporation calculat..." alt="" coords="25,173,161,214"/>
+<area shape="rect" id="node6" href="$classcmf_1_1upslope_1_1_e_t_1_1snow__evaporation__method.html" title="Abstract class. Child classes are defining a method for snow evaporation calculation. " alt="" coords="5,239,180,265"/>
+<area shape="rect" id="node7" href="$classcmf_1_1atmosphere_1_1aerodynamic__resistance.html" title="Abstract class. Child classes can be used to calculate aerodynamic resistances against turbulent heat..." alt="" coords="11,289,174,316"/>
+</map>

@@ -1,0 +1,4 @@
+<map id="Evapotranspiration" name="Evapotranspiration">
+<area shape="rect" id="node3" href="$group__meteo.html" title="Meteorological data contains objects to store an regionalize rainfall measurements on the one hand..." alt="" coords="475,21,609,48"/>
+<area shape="rect" id="node2" href="$group__connections.html" title="The connections between the nodes (boundary conditions, storages) of the water network. " alt="" coords="5,21,127,48"/>
+</map>

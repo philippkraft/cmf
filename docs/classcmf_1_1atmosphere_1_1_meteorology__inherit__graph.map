@@ -1,0 +1,5 @@
+<map id="Meteorology" name="Meteorology">
+<area shape="rect" id="node2" href="$classcmf_1_1atmosphere_1_1_constant_meteorology.html" title="A primitive implementation of the Meteorology interface. " alt="" coords="5,80,151,107"/>
+<area shape="rect" id="node3" href="$classcmf_1_1atmosphere_1_1_i_d_w___meteorology.html" title="Regionalizes meteorological measurements using a simple inverse distance weighted (IDW) method..." alt="" coords="175,80,301,107"/>
+<area shape="rect" id="node4" href="$classcmf_1_1atmosphere_1_1_meteo_station_reference.html" title="A reference to a meteorological station. " alt="" coords="325,80,482,107"/>
+</map>

@@ -1,0 +1,4 @@
+<map id="TechnicalFlux" name="TechnicalFlux">
+<area shape="rect" id="node2" href="$classcmf_1_1water_1_1flux__connection.html" title="The connections in cmf hold the processes for the calculation of fluxes between water storages and mo..." alt="" coords="5,5,117,32"/>
+<area shape="rect" id="node3" href="$classcmf_1_1math_1_1_time.html" title="A time class, used to pass around current modelling times. " alt="" coords="141,5,192,32"/>
+</map>
