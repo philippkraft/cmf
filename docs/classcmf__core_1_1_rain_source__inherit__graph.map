@@ -1,7 +1,0 @@
-<map id="RainSource" name="RainSource">
-<area shape="rect" id="node3" href="$classcmf__core_1_1_constant_rain_source.html" title="ConstantRainSource" alt="" coords="5,155,147,181"/>
-<area shape="rect" id="node4" href="$classcmf__core_1_1_i_d_w_rainfall.html" title="IDWRainfall" alt="" coords="171,155,261,181"/>
-<area shape="rect" id="node5" href="$classcmf__core_1_1_rainfall_station_reference.html" title="RainfallStationReference" alt="" coords="285,155,448,181"/>
-<area shape="rect" id="node6" href="$classcmf__core_1_1_timeseries_rain_source.html" title="TimeseriesRainSource" alt="" coords="472,155,624,181"/>
-<area shape="rect" id="node2" href="$classcmf__core_1_1flux__node.html" title="flux_node" alt="" coords="252,5,329,32"/>
-</map>

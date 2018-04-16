@@ -1,4 +1,0 @@
-<map id="Manning_Diffusive" name="Manning_Diffusive">
-<area shape="rect" id="node2" href="$classcmf_1_1river_1_1_manning.html" title="Calculates the flux between two open water bodies, using Manning&#39;s equation. " alt="" coords="33,80,103,107"/>
-<area shape="rect" id="node3" href="$classcmf_1_1water_1_1flux__connection.html" title="The connections in cmf hold the processes for the calculation of fluxes between water storages and mo..." alt="" coords="12,5,124,32"/>
-</map>

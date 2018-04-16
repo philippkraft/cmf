@@ -1,6 +1,0 @@
-<map id="Adsorption" name="Adsorption">
-<area shape="rect" id="node2" href="$classcmf__core_1_1_freundlich_adsorbtion.html" title="FreundlichAdsorbtion" alt="" coords="5,80,149,107"/>
-<area shape="rect" id="node3" href="$classcmf__core_1_1_langmuir_adsorption.html" title="LangmuirAdsorption" alt="" coords="174,80,311,107"/>
-<area shape="rect" id="node4" href="$classcmf__core_1_1_linear_adsorption.html" title="LinearAdsorption" alt="" coords="335,80,454,107"/>
-<area shape="rect" id="node5" href="$classcmf__core_1_1_null_adsorption.html" title="NullAdsorption" alt="" coords="479,80,585,107"/>
-</map>

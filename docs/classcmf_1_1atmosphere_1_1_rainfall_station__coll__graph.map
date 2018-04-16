@@ -1,5 +1,0 @@
-<map id="RainfallStation" name="RainfallStation">
-<area shape="rect" id="node2" href="$classcmf_1_1math_1_1timeseries.html" title="A timeseries is a list of values, equally distributed over time. " alt="" coords="5,5,88,32"/>
-<area shape="rect" id="node3" href="$classcmf_1_1water_1_1_solute_timeseries.html" title="A map of concentration time series for solutes. " alt="" coords="112,5,235,32"/>
-<area shape="rect" id="node4" href="$classcmf_1_1geometry_1_1point.html" title="2D&#45;Point Class. " alt="" coords="261,5,312,32"/>
-</map>

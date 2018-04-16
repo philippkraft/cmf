@@ -1,7 +1,0 @@
-<map id="lateral_sub_surface_flux" name="lateral_sub_surface_flux">
-<area shape="rect" id="node3" href="$classcmf_1_1upslope_1_1connections_1_1_darcy.html" title="Calculates the lateral flow using the gravitational potential gradient only. " alt="" coords="5,155,61,181"/>
-<area shape="rect" id="node4" href="$classcmf_1_1upslope_1_1connections_1_1_darcy_kinematic.html" title="A simple kinemtic wave model for subsurface flux. " alt="" coords="85,155,200,181"/>
-<area shape="rect" id="node5" href="$classcmf_1_1upslope_1_1connections_1_1_richards__lateral.html" title="Calculates the flux using Richard&#39;s equation for adjacent layers &#160;where: " alt="" coords="224,155,339,181"/>
-<area shape="rect" id="node6" href="$classcmf_1_1upslope_1_1connections_1_1_topographic_gradient_darcy.html" title="Calculates the lateral flow using the topographic gradient. " alt="" coords="363,155,538,181"/>
-<area shape="rect" id="node2" href="$classcmf_1_1water_1_1flux__connection.html" title="The connections in cmf hold the processes for the calculation of fluxes between water storages and mo..." alt="" coords="156,5,268,32"/>
-</map>

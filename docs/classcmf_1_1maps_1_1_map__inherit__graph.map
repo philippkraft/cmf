@@ -1,4 +1,0 @@
-<map id="Map" name="Map">
-<area shape="rect" id="node2" href="$classcmf_1_1maps_1_1_nearest_neighbor_map.html" title="NearestNeighborMap" alt="" coords="5,80,148,107"/>
-<area shape="rect" id="node3" href="$classcmf_1_1maps_1_1_polygon_map.html" title="PolygonMap" alt="" coords="172,80,267,107"/>
-</map>

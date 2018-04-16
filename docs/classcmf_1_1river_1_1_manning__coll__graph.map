@@ -1,5 +1,0 @@
-<map id="Manning" name="Manning">
-<area shape="rect" id="node2" href="$classcmf_1_1water_1_1flux__connection.html" title="The connections in cmf hold the processes for the calculation of fluxes between water storages and mo..." alt="" coords="5,81,117,108"/>
-<area shape="rect" id="node3" href="$classcmf_1_1river_1_1volume__height__function.html" title="A wrapper class for volume / height functional relations. " alt="" coords="142,81,298,108"/>
-<area shape="rect" id="node4" href="$classcmf_1_1river_1_1_i_volume_height_function.html" title="Volume height relations are functional objects, which return a height and a crosssectional area of a ..." alt="" coords="142,5,298,32"/>
-</map>

@@ -1,4 +1,0 @@
-<map id="RainfallStationReference" name="RainfallStationReference">
-<area shape="rect" id="node2" href="$classcmf_1_1atmosphere_1_1_rain_source.html" title="An abstract class for different types of rainfall sources. " alt="" coords="42,80,131,107"/>
-<area shape="rect" id="node3" href="$classcmf_1_1water_1_1flux__node.html" title="Base class for everything that can be connected by fluxes. " alt="" coords="48,5,125,32"/>
-</map>

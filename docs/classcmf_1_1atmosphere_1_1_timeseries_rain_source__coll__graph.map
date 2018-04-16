@@ -1,7 +1,0 @@
-<map id="TimeseriesRainSource" name="TimeseriesRainSource">
-<area shape="rect" id="node2" href="$classcmf_1_1atmosphere_1_1_rain_source.html" title="An abstract class for different types of rainfall sources. " alt="" coords="5,171,95,197"/>
-<area shape="rect" id="node3" href="$classcmf_1_1water_1_1flux__node.html" title="Base class for everything that can be connected by fluxes. " alt="" coords="11,95,89,121"/>
-<area shape="rect" id="node4" href="$classcmf_1_1geometry_1_1point.html" title="2D&#45;Point Class. " alt="" coords="25,5,75,32"/>
-<area shape="rect" id="node5" href="$classcmf_1_1math_1_1timeseries.html" title="A timeseries is a list of values, equally distributed over time. " alt="" coords="119,171,202,197"/>
-<area shape="rect" id="node6" href="$classcmf_1_1water_1_1_solute_timeseries.html" title="A map of concentration time series for solutes. " alt="" coords="226,171,349,197"/>
-</map>

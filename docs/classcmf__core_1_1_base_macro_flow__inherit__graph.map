@@ -1,6 +1,0 @@
-<map id="BaseMacroFlow" name="BaseMacroFlow">
-<area shape="rect" id="node3" href="$classcmf__core_1_1_gradient_macro_flow.html" title="GradientMacroFlow" alt="" coords="5,155,140,181"/>
-<area shape="rect" id="node4" href="$classcmf__core_1_1_jarvis_macro_flow.html" title="JarvisMacroFlow" alt="" coords="165,155,282,181"/>
-<area shape="rect" id="node5" href="$classcmf__core_1_1_kinematic_macro_flow.html" title="KinematicMacroFlow" alt="" coords="307,155,449,181"/>
-<area shape="rect" id="node2" href="$classcmf__core_1_1flux__connection.html" title="flux_connection" alt="" coords="167,5,279,32"/>
-</map>

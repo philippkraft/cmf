@@ -1,4 +1,0 @@
-<map id="Water nodes" name="Water nodes">
-<area shape="rect" id="node1" href="$group__boundary.html" title="Boundary conditions" alt="" coords="149,5,289,32"/>
-<area shape="rect" id="node2" href="$group__storages.html" title="Storages of water" alt="" coords="158,56,281,83"/>
-</map>

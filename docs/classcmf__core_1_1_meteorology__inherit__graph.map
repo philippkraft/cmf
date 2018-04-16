@@ -1,5 +1,0 @@
-<map id="Meteorology" name="Meteorology">
-<area shape="rect" id="node2" href="$classcmf__core_1_1_constant_meteorology.html" title="ConstantMeteorology" alt="" coords="5,80,151,107"/>
-<area shape="rect" id="node3" href="$classcmf__core_1_1_i_d_w___meteorology.html" title="IDW_Meteorology" alt="" coords="175,80,301,107"/>
-<area shape="rect" id="node4" href="$classcmf__core_1_1_meteo_station_reference.html" title="MeteoStationReference" alt="" coords="325,80,482,107"/>
-</map>

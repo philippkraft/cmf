@@ -1,4 +1,0 @@
-<map id="conductable" name="conductable">
-<area shape="rect" id="node2" href="$classcmf_1_1upslope_1_1aquifer.html" title="A class to represent large groundwater storages, not bounded to the usual horizontal discretization s..." alt="" coords="5,80,65,107"/>
-<area shape="rect" id="node3" href="$classcmf_1_1upslope_1_1_soil_layer.html" title="A representation of a SoilLayer. " alt="" coords="89,80,165,107"/>
-</map>

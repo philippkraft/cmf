@@ -1,5 +1,0 @@
-<map id="timeseriesETpot" name="timeseriesETpot">
-<area shape="rect" id="node2" href="$classcmf_1_1upslope_1_1_e_t_1_1stressed_e_t.html" title="An abstract base class for ET Methods with a WaterStressFunction. " alt="" coords="17,81,105,108"/>
-<area shape="rect" id="node3" href="$classcmf_1_1water_1_1flux__connection.html" title="The connections in cmf hold the processes for the calculation of fluxes between water storages and mo..." alt="" coords="5,5,117,32"/>
-<area shape="rect" id="node4" href="$classcmf_1_1math_1_1timeseries.html" title="A timeseries is a list of values, equally distributed over time. " alt="" coords="129,81,212,108"/>
-</map>

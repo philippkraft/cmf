@@ -1,6 +1,0 @@
-<map id="Adsorption" name="Adsorption">
-<area shape="rect" id="node2" href="$classcmf_1_1water_1_1_freundlich_adsorbtion.html" title="This class calculates the adsorption equilibrium between sorbat and sorbent using the Freundlich isot..." alt="" coords="5,80,149,107"/>
-<area shape="rect" id="node3" href="$classcmf_1_1water_1_1_langmuir_adsorption.html" title="This class calculates the adsorption equilibrium between sorbat and sorbent using the Langmuir isothe..." alt="" coords="174,80,311,107"/>
-<area shape="rect" id="node4" href="$classcmf_1_1water_1_1_linear_adsorption.html" title="This class calculates the adsorption equilibrium between sorbat and sorbent using the linear (Henry) ..." alt="" coords="335,80,454,107"/>
-<area shape="rect" id="node5" href="$classcmf_1_1water_1_1_null_adsorption.html" title="A class for tracers without interaction with the storage container. freesolute returns xt..." alt="" coords="479,80,585,107"/>
-</map>

@@ -1,7 +1,0 @@
-<map id="OpenWaterStorage" name="OpenWaterStorage">
-<area shape="rect" id="node2" href="$classcmf_1_1water_1_1_water_storage.html" title="A state variable for the storage of water. " alt="" coords="147,171,249,197"/>
-<area shape="rect" id="node3" href="$classcmf_1_1math_1_1_state_variable.html" title="Abstract class state variable. " alt="" coords="5,95,105,121"/>
-<area shape="rect" id="node4" href="$classcmf_1_1math_1_1_state_variable_owner.html" title="An abstract class, that owns one or more state variables, that can add them to a vector of state vari..." alt="" coords="129,95,267,121"/>
-<area shape="rect" id="node5" href="$classcmf_1_1water_1_1flux__node.html" title="Base class for everything that can be connected by fluxes. " alt="" coords="291,95,369,121"/>
-<area shape="rect" id="node6" href="$classcmf_1_1geometry_1_1point.html" title="2D&#45;Point Class. " alt="" coords="305,5,355,32"/>
-</map>

@@ -1,9 +1,0 @@
-<map id="stressedET" name="stressedET">
-<area shape="rect" id="node3" href="$classcmf_1_1upslope_1_1_e_t_1_1constant_e_tpot.html" title="A constant evapotranspiration. " alt="" coords="5,155,112,181"/>
-<area shape="rect" id="node4" href="$classcmf_1_1upslope_1_1_e_t_1_1_hargreave_e_t.html" title="Calculates the Evapotranspiration using Hargreave&#39;s equation. " alt="" coords="137,155,231,181"/>
-<area shape="rect" id="node5" href="$classcmf_1_1upslope_1_1_e_t_1_1_penman_monteith_e_t.html" title="Calculates the potential evapotranspiration according to FAO(1998) " alt="" coords="256,155,392,181"/>
-<area shape="rect" id="node6" href="$classcmf_1_1upslope_1_1_e_t_1_1_priestley_taylor_e_t.html" title="Calculates the Evapotranspiration using Priestley&#45;Taylor equation. " alt="" coords="417,155,541,181"/>
-<area shape="rect" id="node7" href="$classcmf_1_1upslope_1_1_e_t_1_1timeseries_e_tpot.html" title="A timeseries driven evapotranspiration. " alt="" coords="565,155,681,181"/>
-<area shape="rect" id="node8" href="$classcmf_1_1upslope_1_1_e_t_1_1_turc_e_t.html" title="Calculates ETpot after Turc (DVWK). " alt="" coords="705,155,767,181"/>
-<area shape="rect" id="node2" href="$classcmf_1_1water_1_1flux__connection.html" title="The connections in cmf hold the processes for the calculation of fluxes between water storages and mo..." alt="" coords="345,5,457,32"/>
-</map>

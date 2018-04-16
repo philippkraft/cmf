@@ -1,5 +1,0 @@
-<map id="RetentionCurve" name="RetentionCurve">
-<area shape="rect" id="node2" href="$classcmf_1_1upslope_1_1_brooks_corey_retention_curve.html" title="Provides the use of the Brooks&#45;Corey retention curve. " alt="" coords="5,80,189,107"/>
-<area shape="rect" id="node3" href="$classcmf_1_1upslope_1_1_linear_retention.html" title="The linear retention curve provides a simple linear relationship between storage and head..." alt="" coords="213,80,325,107"/>
-<area shape="rect" id="node4" href="$classcmf_1_1upslope_1_1_van_genuchten_mualem.html" title="Provides the use of the Van Genuchten &#45; Mualem retention curve (Van Genuchten 1980) ..." alt="" coords="349,80,504,107"/>
-</map>
