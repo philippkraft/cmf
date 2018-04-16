@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['z',['Z',['../classcmf_1_1geometry_1_1point__vector.html#a73204a7b4da170c03260c81c8ce6bad8',1,'cmf::geometry::point_vector::Z()'],['../classcmf_1_1atmosphere_1_1_meteo_station.html#ab3e6ed577a7c669c19de1f9c1b46c872',1,'cmf::atmosphere::MeteoStation::z()'],['../classcmf_1_1geometry_1_1point.html#ab3e6ed577a7c669c19de1f9c1b46c872',1,'cmf::geometry::point::z()'],['../classcmf_1_1upslope_1_1_topology.html#aa6956b1404a0976ab34bf071f4220ffa',1,'cmf::upslope::Topology::z()']]],
-  ['z_5fweight_5fdistance',['z_weight_distance',['../classcmf_1_1geometry_1_1point.html#add2f9db9611c251f79cc44e1cd4ded84',1,'cmf::geometry::point']]]
+  ['y',['Y',['../classcmf_1_1geometry_1_1point__vector.html#a294f4d4c6e0016b53c385812fd344fae',1,'cmf::geometry::point_vector::Y()'],['../classcmf_1_1geometry_1_1point.html#ab927965981178aa1fba979a37168db2a',1,'cmf::geometry::point::y()'],['../classcmf_1_1upslope_1_1_topology.html#a246017be7a832331dad5119ca9746e86',1,'cmf::upslope::Topology::y()']]],
+  ['year',['year',['../structcmf_1_1math_1_1_date.html#abeac221e38b7b9ce7df8722c842bf671',1,'cmf::math::Date::year()'],['../namespacecmf_1_1math.html#a61805d6198c0589b4751c8b3c0742bbc',1,'cmf::math::year()']]]
 ];
