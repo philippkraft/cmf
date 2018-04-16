@@ -115,4 +115,4 @@ xlabel('Time in minutes')
 legend(loc=0)
 ~~~~~~~~~~~~~
 
-@author philipp, version: 2 Tue Jan 21 10:38:14 2014
+

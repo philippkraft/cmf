@@ -148,4 +148,4 @@ cells. The `start_at_layer` argument is optional. If it is set to a
 number `n`, the connection is not installed for the `n-1` upper
 layers of a cell.
 
-@author philipp, version: 5 Tue Jan 21 10:37:02 2014
+

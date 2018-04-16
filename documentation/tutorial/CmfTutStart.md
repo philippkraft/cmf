@@ -2,7 +2,6 @@
 
 # Tutorial
 
-
 ## Getting started
   - @subpage cmfTutNeedToKnow "What you need to know, before you start"
   - @ref cmfInstall "Installation"
@@ -14,13 +13,17 @@
   - @subpage cmfTutFirstModel "Let it flow... the first simple model"
   - @subpage cmfTutBoundary "Boundary conditions"
   - @subpage cmfTutFluxes "Query fluxes and states"
-  - @subpage cmfTutSolver "Choosing a solver for the ODE system"
 
 ### Spatial context
 
   - @subpage cmfTutUnits "Units in cmf"
   - @subpage cmfTutSpaceTime "Time and space in cmf"
   - @subpage cmfTutCell "cells and reaches"
+
+### Documenting the model
+
+  - @subpage descriptor "Automatic project description"
+  - @subpage cmfTutSolver "Choosing a solver for the ODE system"
 
 
 ## Interaction with the atmosphere
@@ -46,15 +49,7 @@
   - @subpage cmfTutTechnical "Technical Flux"
   - @subpage cmfTutWaterbalance "Waterbalance Connection"
   
-### Lumped Model
-
-  - @subpage cmf_lumped_without_spotpy "Lumped Model without Spotpy"
-  - @subpage cmf_lumped_simple "Lumped Model with Spotpy"
-
-### Semi-distributed Model
-
-  - @subpage semi_distributed "Semi-distributed Model"
-
+  
 ## Physical Models
 
 ### Introducing hydraulic head in cmf
@@ -80,8 +75,25 @@
 
 ### 3D Model
 
-  - @subpage cmfTut3d "3D Model" (this tutorial is a
-    [stub](WikiPedia:Wikipedia:stub))
+  - @subpage cmfTut3d "3D Model"
+
+## Tutorials under construction
+
+The tutorials listed here are not ready to use. They may not work, need revisions
+or use deprecated or experimental cmf methods
+
+### Documenting the model
+
+ - @subpage fluxogram_and_get_fluxes "Fluxogram"
+ - Using `spotpy` for manual and automatic calibration 
+
+### Lumped Model
+
+  - @subpage cmf_lumped_without_spotpy "Lumped Model without Spotpy"
+  - @subpage cmf_lumped_simple "Lumped Model with Spotpy"
+
+### Semi-distributed Model
+
+  - @subpage semi_distributed "Semi-distributed Model"
 
 
-@author florianjehn, version: 58 Fri Jan 12 14:02:40 2018

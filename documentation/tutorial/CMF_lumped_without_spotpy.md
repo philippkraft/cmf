@@ -237,4 +237,4 @@ work, so be sure to check out
 [Spotpy](http://fb09-pasig.umwelt.uni-giessen.de/spotpy/) to learn how
 to let the computer do this work for you.
 
-@author florianjehn, version: 27 Tue Dec 12 14:39:47 2017
+

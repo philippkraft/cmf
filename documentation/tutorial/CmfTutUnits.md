@@ -33,4 +33,4 @@ units is mostly consistent.
     multiplied by 0.0864 to set it correctly.
   - Wind speed is given in @f$ \frac{m}{s}@f$
 
-@author ina, version: 5 Thu May 8 18:34:58 2014
+

@@ -104,4 +104,4 @@ cmf.RutterInterception(c.canopy,c.surfacewater,c)
 cmf.CanopyStorageEvaporation(c.canopy,c.evaporation,c)
 ~~~~~~~~~~~~~
 
-@author florianjehn, version: 7 Wed Feb 22 16:39:14 2017
+

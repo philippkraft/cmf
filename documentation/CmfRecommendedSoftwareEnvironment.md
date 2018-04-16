@@ -57,4 +57,4 @@ If you are familiar Linux, I'm sure you have already your favourite
 light editor with syntax highlighting, otherwise use what comes with
 your distribution.
 
-@author philipp, version: 6 Mon Oct 17 15:56:22 2016
+

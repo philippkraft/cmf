@@ -219,4 +219,4 @@ Use real weather data (some more work) 4. Use ET, snowmelt etc. (a few
 minutes) 5. Go in the field, measure pF curves, collect meteo data and
 discharge and make a real model. Learn from model failure (time...)
 
-@author philipp, version: 5 Thu Feb 20 14:30:46 2014
+

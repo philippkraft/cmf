@@ -128,4 +128,4 @@ instabilities will arise, even when using the
 
 ![](PowerLawConnection.png)
 
-@author philipp, version: 17 Wed Dec 13 21:22:04 2017
+

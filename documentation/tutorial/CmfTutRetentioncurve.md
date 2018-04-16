@@ -317,4 +317,4 @@ Definition from the API-documentation:
 Definition from the API-documentation:
 [LinearRetention](@ref cmf::upslope::LinearRetention)
 
-@author philipp, version: 13 Mon Mar 3 14:10:33 2014
+

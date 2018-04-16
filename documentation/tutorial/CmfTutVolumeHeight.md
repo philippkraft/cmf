@@ -24,4 +24,4 @@ volume @f$V@f$ and the height above the relative water depth
 \] @f$f(V)@f$ is given by a child class of
 [IVolumeHeightFunction](@ref cmf::river::IVolumeHeightFunction).
 
-@author giovanny, version: 2 Tue May 5 13:49:06 2015
+

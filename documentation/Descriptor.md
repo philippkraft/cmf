@@ -1,7 +1,5 @@
 @page descriptor
 
-
-
 # CMF Descriptor
 
 When creating and using CMF models it can sometimes become quite
@@ -33,7 +31,6 @@ cmf.kinematic_wave(l1, out, 1)
 Now we can let CMF describe the whole model or parts of it.
 
 ~~~~~~~~~~~~~{.py}
-
 print(cmf.describe(p))
 print(cmf.describe(l1))
 ~~~~~~~~~~~~~
@@ -54,4 +51,4 @@ to implement them is a bit complicated. But if you still want to try it
 a tutorial can be found here:
 <http://fb09-pasig.umwelt.uni-giessen.de/cmf/wiki/fluxogram_and_get_fluxes>
 
-@author florianjehn, version: 4 Mon Dec 11 14:30:37 2017
+

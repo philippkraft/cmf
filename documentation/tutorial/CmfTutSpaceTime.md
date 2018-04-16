@@ -279,4 +279,4 @@ cmf.draw.plot_timeseries(data)
 cmf.draw.bar_timeseries(data)
 ~~~~~~~~~~~~~
 
-@author philipp, version: 12 Mon Oct 17 11:39:33 2016
+

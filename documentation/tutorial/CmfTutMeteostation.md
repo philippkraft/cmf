@@ -254,4 +254,4 @@ project.use_IDW_rainfall(z_weight=0.0, power=2.)
 
 with `z_weight` @f$\hat{=}\ w_z@f$, `power` @f$\hat{=}\ p@f$
 
-@author florianjehn, version: 8 Mon Nov 20 14:24:57 2017
+

@@ -191,4 +191,4 @@ for i in range(3):
 plt.show()    
 ~~~~~~~~~~~~~
 
-@author philipp, version: 3 Mon Oct 17 11:45:27 2016
+

@@ -150,4 +150,4 @@ period near to the orginal values.
 
 Back to [Tutorial index](@ref tutorial)
 
-@author philipp, version: 17 Fri Sep 27 13:56:14 2013
+

@@ -45,4 +45,4 @@ informed to handle the boundary condition as a source:
 outlet.is_source=True
 ~~~~~~~~~~~~~
 
-@author philipp, version: 1 Fri Sep 27 11:06:00 2013
+

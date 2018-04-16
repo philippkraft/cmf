@@ -74,4 +74,4 @@ snowmelt = cmf.SimpleTindexSnowMelt(c.snow,c.surfacewater,c)
 snowmelt.SnowMeltRate = 7.0
 ~~~~~~~~~~~~~
 
-@author philipp, version: 3 Mon Oct 17 12:21:37 2016
+

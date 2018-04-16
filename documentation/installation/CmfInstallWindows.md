@@ -141,4 +141,4 @@ You can find more references on how to compile C and C++ extensions
 [here](https://wiki.python.org/moin/WindowsCompilers) including links to
 the Microsoft Compiler without Visual Studio
 
-@author florianjehn, version: 9 Fri Nov 17 11:30:03 2017
+
