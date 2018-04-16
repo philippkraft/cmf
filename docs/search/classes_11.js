@@ -5,7 +5,6 @@ var searchData=
   ['rainfallstationlist',['RainfallStationList',['../classcmf_1_1atmosphere_1_1_rainfall_station_list.html',1,'cmf::atmosphere']]],
   ['rainfallstationreference',['RainfallStationReference',['../classcmf_1_1atmosphere_1_1_rainfall_station_reference.html',1,'cmf::atmosphere']]],
   ['rainsource',['RainSource',['../classcmf_1_1atmosphere_1_1_rain_source.html',1,'cmf::atmosphere']]],
-  ['raster_5fmap',['raster_map',['../classcmf_1_1maps_1_1raster__map.html',1,'cmf::maps']]],
   ['reach',['Reach',['../classcmf_1_1river_1_1_reach.html',1,'cmf::river']]],
   ['reachiterator',['ReachIterator',['../classcmf_1_1river_1_1_reach_iterator.html',1,'cmf::river']]],
   ['rectangularreach',['RectangularReach',['../classcmf_1_1river_1_1_rectangular_reach.html',1,'cmf::river']]],
