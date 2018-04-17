@@ -12,17 +12,16 @@
   - @subpage cmfTutBoundary "Boundary conditions"
   - @subpage cmfTutFluxes "Query fluxes and states"
 
-### Spatial context
+### Units, Space, Time and Numerical Solvers
 
   - @subpage cmfTutUnits "Units in cmf"
   - @subpage cmfTutSpaceTime "Time and space in cmf"
   - @subpage cmfTutCell "cells and reaches"
+  - @subpage cmfTutSolver "Choosing a solver for the ODE system"
 
 ### Documenting the model
 
   - @subpage descriptor "Automatic project description"
-  - @subpage cmfTutSolver "Choosing a solver for the ODE system"
-
 
 ## Interaction with the atmosphere
 
@@ -47,6 +46,18 @@
   - @subpage cmfTutTechnical "Technical Flux"
   - @subpage cmfTutWaterbalance "Waterbalance Connection"
   
+### Lumped Model
+
+The lumped model tutorials are still under development
+
+  - @subpage cmf_lumped_without_spotpy "Lumped Model without Spotpy"
+  - @subpage cmf_lumped_simple "Lumped Model with Spotpy"
+
+### Semi-distributed Model
+
+Under development:
+
+  - @subpage semi_distributed "Semi-distributed Model"
   
 ## Physical Models
 
@@ -85,13 +96,5 @@ or use deprecated or experimental cmf methods
  - @subpage fluxogram_and_get_fluxes "Fluxogram"
  - Using `spotpy` for manual and automatic calibration 
 
-### Lumped Model
-
-  - @subpage cmf_lumped_without_spotpy "Lumped Model without Spotpy"
-  - @subpage cmf_lumped_simple "Lumped Model with Spotpy"
-
-### Semi-distributed Model
-
-  - @subpage semi_distributed "Semi-distributed Model"
 
 

@@ -1,9 +1,5 @@
 @mainpage
 
-# Welcome to cmf
-
-![](storages_web.png)
-
 ## What is cmf?
 
 cmf is a __programming library__ to create __hydrological models__,
@@ -20,11 +16,9 @@ specialized model. cmf uses the @subpage finiteVolumeMethod "Finite Volume Metho
 to set up a wide range of models of water flow through your study area.
 
 It is published as __free software__ under
-[GPLv3](http://www.gnu.org/licenses/gpl.html). (c) 2007-2018 by [Philipp
-Kraft](http://www.uni-giessen.de/cms/fbz/fb09/institute/ilr/ilr-frede/copy_of_mitarbeiter/kraft)
-and [Institute of Landscape Ecology and Resources Management,
-Justus-Liebig Universität
-Gießen](http://www.uni-giessen.de/cms/fbz/fb09/institute/ilr/ilr-frede/).
+[GPLv3](http://www.gnu.org/licenses/gpl.html). (c) 2007-2018 by [Philipp Kraft](https://philippkraft.github.io)
+and [Institute of Landscape Ecology and Resources Management, Justus-Liebig Universität
+Gießen](https://www.jlug.de/hydro).
 
 The development takes place at
 [GitHub](https://github.com/philippkraft/cmf) ![](https://img.shields.io/github/release/philippkraft/cmf.svg?logo=github)
@@ -35,6 +29,8 @@ The development takes place at
   - @subpage publicationList "Publications"
   - @subpage cmfInstall "Installation"
   - @subpage cmfRecommendedSoftwareEnvironment "Recommended Software"
+
+![](storages_web.png)
 
 ## Get cmf
 
