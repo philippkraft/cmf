@@ -90,24 +90,24 @@ Penman Monteith method, to use surrogate values, as listed below.
 
 ### Timeseries provided by a meteo object:
 
-T:: Timeseries of Temperature @f$ T\left[[^\circ|C\right]] @f$
+T:: Timeseries of Temperature @f$ T\left[^\circ C\right] @f$
 '''Optional''', if missing it is calculated from @f$ T=\frac{T_{max} +
 T_{min}} 2 @f$
 
 Tmax:: Timeseries of daily maximum Temperature @f$ T_{max}
-\left[[^\circ|C\right]] @f$ '''Required''', but it can be generated
+\left[^\circ C\right] @f$ '''Required''', but it can be generated
 from T, if you have a high resolution timeseries for Temperature, Tmax
 can be generated as follows: `meteo.Tmax =
 meteo.T.reduce_max(meteo.T.begin, cmf.day)`
 
 Tmin:: Timeseries of daily minimum Temperature @f$
-T_{min}\left[[^\circ|C\right]] @f$ '''Required''', but it can generate
+T_{min}\left[^\circ C\right] @f$ '''Required''', but it can generate
 from T. If you have a high resolution timeseries for Temperature, Tmin
 can be generated as follows: `meteo.Tmin =
 meteo.T.reduce_min(meteo.T.begin, cmf.day)`
 
 Tground:: Timeseries of upper soil temperature @f$
-T_{ground}\left[[^\circ|C\right]] @f$ '''Optional''', if missing @f$
+T_{ground}\left[^\circ C\right] @f$ '''Optional''', if missing @f$
 T_{ground} = T @f$
 
 Windspeed:: Timeseries of windspeed at instrument height (default 2m) in
@@ -126,7 +126,7 @@ rHmax:: Timeseries of daily maximum relative Humidity @f$ rH_{max}
 \left[\%\right] @f$'''Optional''', not used if Tdew is available
 
 Tdew:: Timeseries of dew point temperature @f$
-T_{dew}\left[[^\circ|C\right]]@f$ '''Optional''', if neither Tdew,
+T_{dew}\left[^\circ C\right]@f$ '''Optional''', if neither Tdew,
 rHmax or rHmean is available then Tdew = Tmin
 
 Sunshine:: Fractional sunshine @f$\frac{n}{N}@f$. Sunshine duration

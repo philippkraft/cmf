@@ -24,7 +24,7 @@ s2 = p.NewStorage("s2", 0,0,10)
 
 s1.volume = 100
 
-vol_s1 = [[s1.volume]|vol_s2 = [s2.volume]]
+vol_s1 = [s1.volume] vol_s2 = [s2.volume]
 ~~~~~~~~~~~~~
 
 Connect the two storages with a technical flux, that transfers 10 m³/day
@@ -63,7 +63,7 @@ Plot the volumes.
 
 plt.plot(vol_s1, label="Volume Storage 1")
 plt.plot(vol_s2, label="Volume Storage 2")    
-plt.ylabel("Volume [[m³]")|plt.xlabel("Time [days]]")
+plt.ylabel("Volume [m³]") plt.xlabel("Time [days]")
 plt.legend()
 ~~~~~~~~~~~~~
 

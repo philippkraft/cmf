@@ -78,7 +78,7 @@ dissapointed. You can practice the leap of faith.
 solver = cmf.CVodeIntegrator(p, 1e-8)
 
 # create empty lists to store the results of the fluxes and storages later
-timeseries_fluxes = [[]|timeseries_storages = []]
+timeseries_fluxes = [] timeseries_storages = []
 
 # let the solver run for our timeperiod in one day steps
 for t in solver.run(begin, end, cmf.day):
@@ -156,7 +156,7 @@ fl = fluxogram.Fluxogram(30, 50, grid_size = 10, root = True)
 # Therefore, we first have to find out what the order of our data is
 # and shape our fluxogram accordingly. The following lines can be commented
 # out, once the order of the data is known
-print(sorted(timeseries_fluxes_stripped[[0].keys()))|print(sorted(timeseries_storages_stripped[0]].keys()))
+print(sorted(timeseries_fluxes_stripped[0].keys())) print(sorted(timeseries_storages_stripped[0].keys()))
 ~~~~~~~~~~~~~
 Now we know our model is sorted. In this case the fluxes are sorted
 like:
@@ -194,10 +194,10 @@ fl.add_storage("Outlet", 0, 2, 1)
 # The next step is to add the fluxes between the storages we have
 # just created. A flux needs to know what its name is, where it is
 # coming from, where it is going to and what its starting volume ist
-fl.add_flux("lay0_out", fl.storages[[0],|fl.storages[3]], 30)
-fl.add_flux("rain_surf", fl.storages[[2],|fl.storages[1]], 30)
-fl.add_flux("surf_lay0", fl.storages[[1],|fl.storages[0]], 30)
-fl.add_flux("surf_out", fl.storages[[1],|fl.storages[3]], 30)
+fl.add_flux("lay0_out", fl.storages[0], fl.storages[3], 30)
+fl.add_flux("rain_surf", fl.storages[2], fl.storages[1], 30)
+fl.add_flux("surf_lay0", fl.storages[1], fl.storages[0], 30)
+fl.add_flux("surf_out", fl.storages[1], fl.storages[3], 30)
 
 # now our fluxogram is complete and we can display it
 fl.draw()

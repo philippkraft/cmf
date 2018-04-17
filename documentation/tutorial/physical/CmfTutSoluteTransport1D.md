@@ -128,7 +128,7 @@ layer
 ~~~~~~~~~~~~~{.py}
 
 c.saturated_depth = 1.5
-c.layers[[0].conc(X,1.)|c.layers[10]].conc(Y,1.)
+c.layers[0].conc(X,1.) c.layers[10].conc(Y,1.)
 c.layers[20].conc(Z,1.)
 ~~~~~~~~~~~~~
 
@@ -139,7 +139,7 @@ The model runtime can be like this:
 ~~~~~~~~~~~~~{.py}
 
 # Save wetness and concentration of all layers
-conc = [[]|wetness = []]
+conc = [] wetness = []
 # save groundwater recharge
 recharge=[]
 # save concentration of recharge
@@ -148,10 +148,10 @@ crecharge=[]
 for t in solver.run(solver.t,solver.t + cmf.week,cmf.h):
     # Get concentration of all layers
     conc.append([[l.conc(T) for T in p.solutes] for l in c.layers])
-    wetness.append([[l.wetness|for l in c.layers]])
+    wetness.append([l.wetness for l in c.layers])
     # Get water balance of groundwater
     recharge.append(gw.waterbalance(t))
-    crecharge.append([[gw.conc(t,T)|for T in p.solutes]])
+    crecharge.append([gw.conc(t,T) for T in p.solutes])
 ~~~~~~~~~~~~~
 
 ### Plot results
@@ -187,7 +187,7 @@ plt.ylabel('wetness')
 # Plot concentration profiles over time. To see more, the color scale is limited to 0.1 g/m3.
 for i in range(3):
     plt.subplot(513+i,sharex=ax1)
-    plt.imshow(np.transpose(conc)[[i],cmap=plt.cm.copper,aspect='auto',vmax=0.1)|    plt.ylabel(p.solutes[i]])
+    plt.imshow(np.transpose(conc)[i],cmap=plt.cm.copper,aspect='auto',vmax=0.1)     plt.ylabel(p.solutes[i])
 plt.show()    
 ~~~~~~~~~~~~~
 

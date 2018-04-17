@@ -99,7 +99,7 @@ c.set_rainfall(100.)
 solver = cmf.CVodeIntegrator(p,1e-8)
 
 # Calculate results
-Vsoil, Vsurf, qsurf,qinf = transpose([[(c.layers[0].volume,|c.surfacewater.volume, outlet(t), c.layers[0]](t)) 
+Vsoil, Vsurf, qsurf,qinf = transpose([(c.layers[0].volume, c.surfacewater.volume, outlet(t), c.layers[0](t)) 
                              for t in solver.run(cmf.Time(1,1,2012),cmf.Time(2,1,2012),cmf.min)])
 # Present results
 ax1=subplot(211)

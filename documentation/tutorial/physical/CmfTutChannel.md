@@ -62,7 +62,7 @@ p=cmf.project()
 # Create a triangular reach crosssection for 10 m long reaches with a bankslope of 2
 shape = cmf.TriangularReach(10.,2.)
 # Create a 1km river with 100 reaches along the x axis and a constant slope of 1%
-reaches = [[p.NewReach(i,0,i*.01,shape,False)|for i in range(0,1000,10)]]
+reaches = [p.NewReach(i,0,i*.01,shape,False) for i in range(0,1000,10)]
 ~~~~~~~~~~~~~
 
 Now we have 100 unconnected reaches in our river. To connect them with
@@ -92,7 +92,7 @@ As always, the next part is the runtime code, saving the river depth.
 depth = [[r.depth for r in reaches]]
 # Run the model for 3 h with dt=1 min
 for t in solver.run(datetime(2012,1,1),datetime(2012,1,1,3), timedelta(minutes=1)):
-    depth.append([[r.depth|for r in reaches]])
+    depth.append([r.depth for r in reaches])
     print(t)
 ~~~~~~~~~~~~~
 

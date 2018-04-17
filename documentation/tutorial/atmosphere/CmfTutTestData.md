@@ -77,9 +77,9 @@ Now we read in the file and append the read values to the timeseries.
         columns = line.split(',')
         # Get the values, but ignore the date, we have begin and step
         # of the data file hardcoded
-        rain.add(float(columns[[1]))|        meteo.Tmax.add(float(columns[2]]))
-        meteo.Tmin.add(float(columns[[3]))|        meteo.rHmean.add(float(columns[4]]))
-        meteo.Windspeed.add(float(columns[[5]))|        meteo.Sunshine.add(float(columns[6]]))
+        rain.add(float(columns[1]))         meteo.Tmax.add(float(columns[2]))
+        meteo.Tmin.add(float(columns[3]))         meteo.rHmean.add(float(columns[4]))
+        meteo.Windspeed.add(float(columns[5]))         meteo.Sunshine.add(float(columns[6]))
 ~~~~~~~~~~~~~
 
 The last part is to create a station (see [next

@@ -236,12 +236,12 @@ def plot_rc(retcurve,Psi_M):
     # vgm.K(wetness) accept numbers as well as arrays for the values
     plot(Psi_M, W * retcurve.Porosity(0))
     # label axis
-    xlabel('Matric potential [[m]')|    ylabel(r'water content $\theta [\frac{m^3}{m^3}]]$')
+    xlabel('Matric potential [m]')     ylabel(r'water content $\theta [\frac{m^3}{m^3}]$')
     grid()
     # Make lower plot (K(W))
     subplot(2,1,2)
     semilogy(Psi_M, retcurve.K(W))
-    xlabel('Matric potential [[m]')|    ylabel(r'$K(\theta) [\frac{m}{day}]]$')
+    xlabel('Matric potential [m]')     ylabel(r'$K(\theta) [\frac{m}{day}]$')
     grid()
 ~~~~~~~~~~~~~
 

@@ -133,7 +133,7 @@ Tmax = cmf.timeseries(begin,step)
 for line in open(fnT):
     columns = line.split('\t')
     if len(columns) == 3:
-        Tmax.add(float(columns[[0]))|        Tmin.add(float(columns[1]]))
+        Tmax.add(float(columns[0]))         Tmin.add(float(columns[1]))
         T.add(float(columns[2]))
 ~~~~~~~~~~
 

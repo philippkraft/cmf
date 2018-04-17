@@ -168,8 +168,8 @@ solver = cmf.RKFIntegrator(p, 1e-9)
 
 I = c.get_rainfall(t)
 
-q_inf = [[c.surfacewater.flux_to(l,|t) / I]]
-inf_ex = [[c.surfacewater.waterbalance(t)|/ I]]
+q_inf = [c.surfacewater.flux_to(l, t) / I]
+inf_ex = [c.surfacewater.waterbalance(t) / I]
 
 for t in solver.run(solver.t, solver.t + cmf.day * 2, cmf.h):
     q_inf.append(c.surfacewater.flux_to(l, t) / I)

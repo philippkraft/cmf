@@ -3,11 +3,9 @@
 ## Downloads
 
 Here all data files needed for the tutorial can be downloaded: -
-[Precipitation](http://fb09-pasig.umwelt.uni-giessen.de/spotpy/download/cmf_lumped/prec.txt)
--
-[Discharge](http://fb09-pasig.umwelt.uni-giessen.de/spotpy/download/cmf_lumped/discharge.txt)
--
-[Temperature](http://fb09-pasig.umwelt.uni-giessen.de/spotpy/download/cmf_lumped/max_min_avg_temp.txt)
+- [Precipitation](http://fb09-pasig.umwelt.uni-giessen.de/spotpy/download/cmf_lumped/prec.txt)
+- [Discharge](http://fb09-pasig.umwelt.uni-giessen.de/spotpy/download/cmf_lumped/discharge.txt)
+- [Temperature](http://fb09-pasig.umwelt.uni-giessen.de/spotpy/download/cmf_lumped/max_min_avg_temp.txt)
 
 ## Getting started
 
@@ -195,7 +193,7 @@ model without spotpy.
         for line in open(fnT):
             columns = line.split('\t')
             if len(columns) == 3:
-                Tmax.add(float(columns[[0]))|                Tmin.add(float(columns[1]]))
+                Tmax.add(float(columns[0]))                 Tmin.add(float(columns[1]))
                 T.add(float(columns[2]))
         return P, Q, T, Tmin, Tmax
 ~~~~~~~~~~
@@ -235,9 +233,9 @@ this.
     def setparameters(self, **params):
         # Flux from soil to outlet (interflow)
         cmf.kinematic_wave(self.cell.layers[0], self.outlet,
-                           params[["tr"],|exponent=params["beta"]])
+                           params["tr"], exponent=params["beta"])
         # Adjustment of the evapotranspiration
-        self.cell.set_uptakestress(cmf.VolumeStress(params[["ETV1"],|                                                    params["ETV1"]] * params["fEVT0"]))
+        self.cell.set_uptakestress(cmf.VolumeStress(params["ETV1"],                                                     params["ETV1"]] * params["fEVT0"))
 ~~~~~~~~~~
 
 
@@ -261,7 +259,7 @@ differential equations.
                 discharge.append(self.outlet.waterbalance(t))
             return discharge
         except RuntimeError:
-            return np.array(self.Q[[self.begin:self.end|+ datetime.timedelta(days=1)]])*np.nan
+            return np.array(self.Q[self.begin:self.end + datetime.timedelta(days=1)])*np.nan
 ~~~~~~~~~~
 
 

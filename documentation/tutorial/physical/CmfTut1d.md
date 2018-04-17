@@ -87,7 +87,7 @@ save soil moisture and potential for each layer into lists.
 ~~~~~~~~~~~~~{.py}
 
 # Save potential and soil moisture for each layer, start with initial conditions
-potential = [[cell.layers.potential]|moisture = [cell.layers.theta]]
+potential = [cell.layers.potential] moisture = [cell.layers.theta]
 # The run time loop, run for 7 days
 for t in solver.run(solver.t,solver.t + timedelta(days=7),timedelta(hours=1)):
     potential.append(cell.layers.potential)
@@ -97,11 +97,11 @@ for t in solver.run(solver.t,solver.t + timedelta(days=7),timedelta(hours=1)):
 from pylab import *
 subplot(211)
 plot(moisture)
-ylabel(r'Soil moisture $\theta [[m^3/m^3]$')|xlabel(r'$time [h]]$')
+ylabel(r'Soil moisture $\theta [m^3/m^3]$') xlabel(r'$time [h]$')
 grid()
 subplot(212)
 plot(potential)
-ylabel(r'Water head $\Psi_{tot} [[m]$')|xlabel(r'$time [h]]$')
+ylabel(r'Water head $\Psi_{tot} [m]$') xlabel(r'$time [h]$')
 grid()
 ~~~~~~~~~~~~~
 

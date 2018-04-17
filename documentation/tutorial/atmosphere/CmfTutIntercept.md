@@ -15,9 +15,9 @@ last tutorial.
 
 ### Setup code
 
-1\. we create a project and a cell (you know this stuff by now...) 2. We
-add a layer of 1m depth 3. We add a groundwater boundary condition with
-free drainage
+1. we create a project and a cell (you know this stuff by now...) 
+2. We add a layer of 1m water capacity
+3. We add a groundwater boundary condition with free drainage
 
 ~~~~~~~~~~~~~{.py}
 
@@ -26,8 +26,6 @@ p = cmf.project()
 c = p.NewCell(0,0,0,1000,True)
 # Add a single layer of 1 m depth
 l = c.add_layer(1.0, cmf.VanGenuchtenMualem())
-# Use GreenAmpt infiltration from surface water
-c.install_connection(cmf.GreenAmptInfiltration)
 # Add a groundwater boundary condition
 gw = p.NewOutlet('gw',0,0,-2)
 # Use a free drainage connection to the groundwater
@@ -42,7 +40,7 @@ c.set_rainfall(5.0)
 ~~~~~~~~~~~~~{.py}
 
 solver = cmf.CVodeIntegrator(p,1e-9)
-res = [[l.volume|for t in solver.run(solver.t,solver.t+cmf.day,cmf.min*15)]]
+res = [l.volume for t in solver.run(solver.t,solver.t+cmf.day,cmf.min*15)]
 plot(res)
 ~~~~~~~~~~~~~
 

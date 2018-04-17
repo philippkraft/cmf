@@ -65,10 +65,8 @@ layer:
 
 
 @f[
-[q_{T_{pot}}\left[\frac{m^3}{day}\right]=f_r \cdot ET_{pot}\left[\frac{mm}{day}\right]A_{cell}[m^2]\frac{1 m}{1000 mm}
+q_{T_{pot}}\left[\frac{m^3}{day}\right]=f_r \cdot ET_{pot}\left[\frac{mm}{day}\right]A_{cell}[m^2]\frac{1 m}{1000 mm}
 @f]
-
-\]
 
 where: - @f$f_r=\frac{R_{layer}}{\sum_{i=0}^{layers}{R_i}}@f$ the root
 mass in this layer per total root mass at this cell. - @f$A_{cell}@f$

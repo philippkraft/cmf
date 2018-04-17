@@ -76,7 +76,7 @@ class ScalingTester:
 
 
     # Snow parameters
-    snow_meltrate = Uniform(3, 10, doc="Meltrate of the snow [[(mm*degC)/day]")|    snow_melt_temp = Uniform(0, 3.5, doc="Temperature at which the snow [degC]]"
+    snow_meltrate = Uniform(3, 10, doc="Meltrate of the snow [(mm*degC)/day]")     snow_melt_temp = Uniform(0, 3.5, doc="Temperature at which the snow [degC]"
                              "melts")
 
     # Canopy Parameters
@@ -241,7 +241,7 @@ class CellTemplate:
                                V0=V0_L1,
                                beta=par.beta_L1_out)
 
-        cmf.PowerLawConnection(c.layers[[0],|c.layers[1]], Q0=(V0_L1 /
+        cmf.PowerLawConnection(c.layers[0], c.layers[1], Q0=(V0_L1 /
                                                             par.tr_L1_L2),
                                V0=V0_L1, beta=par.beta_L1_L2)
         cmf.PowerLawConnection(c.layers[1], out, Q0=V0_L2 / par.tr_L2_out,
@@ -288,7 +288,7 @@ class DataProvider:
             return datetime.datetime.strptime(bs, '%d.%m.%Y')
 
         # Get begin, step and end from the date column
-        self.begin = bstr2date(data[["date"].iloc[0])|        self.step = bstr2date(data["date"]].iloc[1]) - self.begin
+        self.begin = bstr2date(data["date"].iloc[0])         self.step = bstr2date(data["date"]].iloc[1) - self.begin
         self.end = bstr2date(data["date"].iloc[-1])
 
         # Read in the data
@@ -334,7 +334,7 @@ if __name__ == '__main__':
 
     # Run the models
     runs = 100
-    num_cells = [[1,|2, 4, 8]]
+    num_cells = [1, 2, 4, 8]
     results = {}
     for num in num_cells:
         # Create the model

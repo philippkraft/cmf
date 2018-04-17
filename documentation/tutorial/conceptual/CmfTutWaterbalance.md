@@ -33,8 +33,8 @@ Create lists to store the data.
 
 ~~~~~~~~~~~~~{.py}
 
-flux_s1_to_s3 = [[]|flux_s2_to_s3 = []]
-flux_s3_to_s4 = [[]|flux_s3_to_s5 = []]
+flux_s1_to_s3 = [] flux_s2_to_s3 = []
+flux_s3_to_s4 = [] flux_s3_to_s5 = []
 ~~~~~~~~~~~~~
 
 Install the fluxes. Here water is routed from s1 and s2 to s3 (both
@@ -75,7 +75,7 @@ plt.plot(flux_s2_to_s3, label="Technical flux 5 m³")
 plt.plot(flux_s3_to_s4, label="Waterbalance connection")    
 plt.plot(flux_s3_to_s5, label="Technical flux 2.5 m³")     
  
-plt.ylabel("Flux [[m³/day]")|plt.xlabel("Time [days]]")
+plt.ylabel("Flux [m³/day]") plt.xlabel("Time [days]")
 plt.legend()
 ~~~~~~~~~~~~~
 

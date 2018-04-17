@@ -241,7 +241,7 @@ the time axis in days since 30.12.1899 as a list by
 
 ~~~~~~~~~~~~~{.py}
 
-data_t = [[t/cmf.day|for t in data.iter_time()]]
+data_t = [t/cmf.day for t in data.iter_time()]
 ~~~~~~~~~~~~~
 
 To smooth timeseries the methods `floating_avg`,
