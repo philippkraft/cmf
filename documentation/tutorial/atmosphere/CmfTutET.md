@@ -37,14 +37,14 @@ considered.
 Evapotranspiration is subject to many processes depending on vast amount
 of environmental conditions. To get a structure, one can differ between
 an energy limit and a water limitation. The energy limitation is
-expressed by the term '''potential evapotranspiration'''
+expressed by the term __potential evapotranspiration__
 @f$ET_{pot}@f$ the water that would be vaporized if enough water is
 available. @f$ET_{pot}@f$ is determined by the surface structure (land
 cover) and meteorological conditions. If the surface structure is
 assumed to be a reference surface, (short, mown grass with defined
-properties), we get the '''reference evapotranspiration'''
+properties), we get the __reference evapotranspiration__
 @f$ET_{ref}@f$, which is depending on meteorological conditions only.
-The '''actual evapotranspiration''' @f$ET_{act}@f$ which is limited by
+The __actual evapotranspiration__ @f$ET_{act}@f$ which is limited by
 water and energy, depends also the soil moisture in the rooting zone and
 is usually calculated from @f$ET_{pot}@f$ using a limiting factor.
 While you can use cmf to calculate @f$ET_{act}@f$ from vegetation
@@ -55,7 +55,7 @@ order to test different models, you need to have the code from
 \[wiki:CmfTut1d\] at hand, since we will extend the 1D model by ET
 models.
 
-## Getting {{{@f$ET_{act}@f$}}} from {{{@f$ET_{pot}@f$}}} with cmf
+## Getting @f$ET_{act}@f$ from @f$ET_{pot}@f$ with cmf
 
 In order to calculate the water loss to the atmosphere from a given or
 calculated @f$ET_{pot} [\frac{mm}{day}]@f$ value, cmf needs to
@@ -65,7 +65,7 @@ layer:
 
 
 @f[
-[q_{T_{pot}}\left[\tfrac{m^3}{day}\right]=f_r|ET_{pot}\left[\tfrac{mm}{day}\right]]A_{cell}[[m^2]|\tfrac{1 m}{1000 mm}
+[q_{T_{pot}}\left[\frac{m^3}{day}\right]=f_r \cdot ET_{pot}\left[\frac{mm}{day}\right]A_{cell}[m^2]\frac{1 m}{1000 mm}
 @f]
 
 \]
@@ -82,12 +82,12 @@ point and above -5m there is no water limitation:
 
 
 @f[
-[q_{T_{act}}|= q_{T_{pot}}\begin{cases} 1 & \Psi_M>-5m \\ 1+\tfrac{\Psi_M + 5}{155} & \Psi_M>-160m \\ 0 & \Psi_M<-160 m\end{cases}
+q_{T_{act}}= q_{T_{pot}}\begin{cases} 1 & \Psi_M>-5m \\ 1+\frac{\Psi_M + 5}{155} & \Psi_M>-160m \\ 0 & \Psi_M<-160 m\end{cases}
 @f]
 
 \]
 
-### Setting the root content {{{@f$f_r@f$}}}
+### Setting the root content @f$f_r@f$
 
 In principle, there are two ways to define the root content, set the
 root content fraction for each layer or define the root depth for the
@@ -96,7 +96,7 @@ cell
 #### a) set the root content directly
 
 Soil layers have the property `rootfraction` that can be set. It is
-'''your''' responsibility to ensure that the sum of all rootfractions is
+__your__ responsibility to ensure that the sum of all rootfractions is
 1.
 
 ~~~~~~~~~~~~~{.py}
@@ -137,7 +137,7 @@ cell.vegetation.fraction_at_rootdepth = 0.8
 
 If you do nothing, the `RootDepth` default value of 0.25 is used.
 
-## Using precalculated {{{@f$ET_{pot}@f$}}} timeseries
+## Using precalculated @f$ET_{pot}@f$ timeseries
 
 ![](@ref CmfTut1d-ET1.png)
 
@@ -171,7 +171,7 @@ for layer in cell.layers:
 
 The potential plot is not so nice, hence let us rather look at the pF
 values in the layers. The pF value are calculated from the potential by
-`pF = log10(-100\*array(potential))`. With this change, the result is
+`pF = log10(-100 * array(potential))`. With this change, the result is
 shown on the right side.
 
 ## Calculating {{{@f$ET_{pot}@f$}}} from data

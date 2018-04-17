@@ -444,6 +444,8 @@ hr {
 
 hr.footer {
 	height: 1px;
+	float: none;
+	clear: both;
 }
 
 /* @group Member Descriptions */
@@ -1215,7 +1217,8 @@ dl.section dd {
 
 .image
 {
-        text-align: center;
+    text-align: center;
+	float: right;
 }
 
 .dotgraph

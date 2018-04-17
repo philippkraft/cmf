@@ -76,7 +76,7 @@ given by (3).
 
 
 @f[
- \frac{{dV_i }}{{dt}} = \sum\limits_{j = 1}^{N_i } {\left( { - q_{i,j} \left( {V_i ,V_j ,t} \right)A_{i,j} } \right)}  \hspace{20mm}(3)
+\frac{{dV_i }}{{dt}} = \sum\limits_{j = 1}^{N_i } {\left( { - q_{i,j} \left( {V_i ,V_j ,t} \right)A_{i,j} } \right)}  \hspace{20mm}(3)
 @f]
 
 @f$V@f$ is the volume of stored water in the control volume, @f$i@f$
@@ -92,20 +92,17 @@ tracer fluxes and the sum of any existent source or sink flux.
 
 
 @f[
- \frac{{dX_i }}{{dt}} = \sum\limits_{j = 1}^{N_i } {\left( { - q_{i,j} \left( {V_i ,V_j ,t} \right)\left[[|X \right]]_s } \right) + q_{X,in} \left( t \right) - r^ - X}  \hspace{20mm}(4)
+\frac{{dX_i }}{{dt}} = \sum\limits_{j = 1}^{N_i } {\left( { - q_{i,j} \left( {V_i ,V_j ,t} \right)[X]_s } \right) + q_{X,in} \left( t \right) - r^ - X}  \hspace{20mm}(4)
 @f]
 
 @f$X_i@f$ is the amount (mols or mass) of a tracer in control volume
-@f$i@f$, @f$[[X]@f$|is the concentration of the tracer in amount per
+@f$i@f$, @f$[X]@f$ is the concentration of the tracer in amount per
 volume water and @f$q_{X,in}(t)@f$ is a source or sink flux in amount
 per day (eg. g/day) and @f$r^-@f$ is a decay rate in 1/day.
-@f$[X]]_s@f$ is the concentration of the source of the flux,
+@f$[X]_s@f$ is the concentration of the source of the flux,
 determined by the sign of @f$q_{i,j}@f$.
 
-In the future, an implementation of the advection dispersion equation is
-planned.
-
-A water store maintains a reference to each a tracer store for each
+A water store maintains a reference to each tracer store for each
 simulated tracer. The figure shows the storage concept hierarchy in CMF.
 If needed, state variables for momentum or energy conservation models
 could be introduced.

@@ -20,8 +20,9 @@ It is published as __free software__ under
 and [Institute of Landscape Ecology and Resources Management, Justus-Liebig Universität
 Gießen](https://www.jlug.de/hydro).
 
-The development takes place at
-[GitHub](https://github.com/philippkraft/cmf) ![](https://img.shields.io/github/release/philippkraft/cmf.svg?logo=github)
+The development takes place at [GitHub](https://github.com/philippkraft/cmf) 
+
+![](storages_web.png)
 
 ## Documentation
 
@@ -30,7 +31,6 @@ The development takes place at
   - @subpage cmfInstall "Installation"
   - @subpage cmfRecommendedSoftwareEnvironment "Recommended Software"
 
-![](storages_web.png)
 
 ## Get cmf
 
@@ -48,5 +48,3 @@ https://pypi.python.org/pypi/cmf
 ### Precompiled binaries for Windows are available on PyPI:
 
 https://pypi.python.org/pypi/cmf
-
-![](https://shields.io/pypi/v/cmf.svg)
