@@ -30,6 +30,7 @@ The development takes place at [GitHub](https://github.com/philippkraft/cmf)
   - @subpage publicationList "Publications"
   - @subpage cmfInstall "Installation"
   - @subpage cmfRecommendedSoftwareEnvironment "Recommended Software"
+  - @subpage contribOverview "How to help to make cmf better"
 
 
 ## Get cmf

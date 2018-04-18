@@ -1,11 +1,12 @@
 @page tutorial Tutorial
 
-@warning "Automated reformatting"
+@warning 
+    **Automated reformatting**: 
     The tutorials have been ported from one markup language to another and
-    errors might have happend. If you find some code that is not working
+    errors might have happened. If you find some code that is not working
     or if you find places that look weird, please raise an 
-    [issue on GitHub](https://github.com/philippkraft/cmf/issues) 
-    - even if __you__ know how to deal with that problem.
+    [issue on GitHub](https://github.com/philippkraft/cmf/issues) - even if 
+    __you__ know how to deal with that problem.
 
 ## Getting started
   - @subpage cmfTutNeedToKnow "What you need to know, before you start"
