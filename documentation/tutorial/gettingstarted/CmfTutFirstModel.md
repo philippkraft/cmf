@@ -1,11 +1,7 @@
-@page cmfTutFirstModel
-
-@tableofcontents
-
+@page cmfTutFirstModel "Let it flow... the first cmf model"
  
 [next...](@ref cmfTutBoundary)
 
-# Let it flow... the first cmf model
 
 In this part, we are going to create a first model. To keep things
 simple, the model will be extremely simple. In fact, it would be easier

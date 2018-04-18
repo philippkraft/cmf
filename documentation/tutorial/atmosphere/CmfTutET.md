@@ -1,11 +1,7 @@
-@page cmfTutET
+@page cmfTutET "Evapotranspiration"
 
-@tableofcontents
-
- 
 [next...](@ref cmfTutIntercept)
 
-# Evapotranspiration (incomplete)
 
 Several models exist to calculate water losses from the soil and
 surfaces to the atmosphere.

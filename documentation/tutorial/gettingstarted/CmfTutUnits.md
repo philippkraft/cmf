@@ -1,8 +1,7 @@
-@page cmfTutUnits
+@page cmfTutUnits Units
 
  [next](@ref cmfTutSpaceTime)
 
-# Units
 
 To keep the conversions while using cmf at a minimal level, the use of
 units is mostly consistent.

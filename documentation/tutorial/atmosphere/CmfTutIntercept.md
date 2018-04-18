@@ -1,9 +1,8 @@
-@page cmfTutIntercept
+@page cmfTutIntercept Interception
 
  [back...](@ref cmfTutET)
 [next...](@ref cmfTutSnow)
 
-# Interception
 
 For this tutorial we are going to setup a simplified version (1 Layer)
 of the 1D Model to observe the effect of above ground fluxes. The same

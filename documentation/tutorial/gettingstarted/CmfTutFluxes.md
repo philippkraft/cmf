@@ -1,11 +1,8 @@
-@page cmfTutFluxes
-
-@tableofcontents
+@page cmfTutFluxes "Query fluxes and states"
 
  
 [back...](@ref cmfTutBoundary) [next...](@ref cmfTutSolver)
 
-# Query fluxes and states
 
 Every flux and every state can be accessed during runtime. Thus you can
 save anything you like to the output during the run time loop. In the

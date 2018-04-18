@@ -1,11 +1,6 @@
-@page cmfTutSpaceTime
-
-@tableofcontents
-
+@page cmfTutSpaceTime "Space and time in cmf"
  
 [back...](@ref cmfTutUnits) [next...](@ref cmfTutCell)
-
-# Space and time in cmf
 
 ## Note for Python 2 users
 

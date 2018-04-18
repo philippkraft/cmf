@@ -1,4 +1,4 @@
-@page cmfTutTestData
+@page cmfTutTestData Test data
 
 [next](@ref cmfTutMeteostation)
 

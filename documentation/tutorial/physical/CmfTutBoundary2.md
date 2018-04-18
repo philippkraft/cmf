@@ -1,6 +1,7 @@
 @page cmfTutBoundary2 Head based boundary conditions
 
-In \[wiki:CmfTutBoundary\] an outlet was created to let water flow out
+[In the first tutorial about boundary conditions](@ref cmfTutBoundary) 
+an outlet was created to let water flow out
 of the system. Outlets created with
 
 ~~~~~~~~~~~~~{.py}

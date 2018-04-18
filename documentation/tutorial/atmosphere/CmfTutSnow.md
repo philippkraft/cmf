@@ -1,8 +1,7 @@
-@page cmfTutSnow
+@page cmfTutSnow Snow
 
  [back...](@ref cmfTutIntercept)
 
-# Snow (under construction)
 
 For this tutorial, we are using the simplified model (without canopy)
 from the [last](@ref cmfTutIntercept) tutorial.

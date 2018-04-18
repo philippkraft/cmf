@@ -1,9 +1,8 @@
-@page cmfTutBoundary
+@page cmfTutBoundary "Boundary conditions"
 
  [back...](@ref cmfTutFirstModel)
 [next...](@ref cmfTutFluxes)
 
-# Boundary conditions
 
 The first model from the last chapter is truely mass conservant. No
 water is entering or leaving the system. In this chapter the system will

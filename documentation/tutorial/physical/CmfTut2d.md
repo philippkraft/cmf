@@ -1,12 +1,7 @@
-@page cmfTut2d
-
-@tableofcontents
-
-
+@page cmfTut2d A simple Darcian hillslope model
 
 [last...](@ref cmfTutSurfaceRunoff)
 
-# A simple Darcian hillslope model
 
 In this chapter we will bring our 1D cell from \[\[wiki:CmfTut1d\]|and
 the lateral connections from CmfTutDarcianLateralFlow and
