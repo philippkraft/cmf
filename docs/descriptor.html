@@ -82,7 +82,7 @@ $(function() {
 <div class="textblock"><p>When creating and using CMF models it can sometimes become quite confusing due to the large amount of code, especially in more complex models. This way mistakes can easily slip through. To help avoid this CMF has a describe function, which outputs a description of the whole model (or parts of it).</p>
 <h2>Usage</h2>
 <p>First we need to create a simple CMF model.</p>
-<div class="fragment"><div class="line">import cmf</div><div class="line">p = <a class="code" href="classcmf_1_1project.html">cmf.project</a>()</div><div class="line">c = p.NewCell(0,0,0,1000)</div></div><!-- fragment --><p>Add a layer, a outlet and a connection</p>
+<div class="fragment"><div class="line"><span class="keyword">import</span> cmf</div><div class="line">p = <a class="code" href="classcmf_1_1project.html">cmf.project</a>()</div><div class="line">c = p.NewCell(0,0,0,1000)</div></div><!-- fragment --><p>Add a layer, a outlet and a connection</p>
 <div class="fragment"><div class="line">l1 = c.add_layer(1)</div><div class="line">out = p.NewOutlet(<span class="stringliteral">&quot;out&quot;</span>, 0, 0,0)</div><div class="line">cmf.kinematic_wave(l1, out, 1)</div></div><!-- fragment --><p>Now we can let CMF describe the whole model or parts of it.</p>
 <div class="fragment"><div class="line">print(<a class="code" href="namespacecmf_1_1describe.html">cmf.describe</a>(p))</div><div class="line">print(<a class="code" href="namespacecmf_1_1describe.html">cmf.describe</a>(l1))</div></div><!-- fragment --><p>Conveniently we can even have the output written to a file, which we have defined beforehand.</p>
 <div class="fragment"><div class="line">file = open(<span class="stringliteral">&quot;out.txt&quot;</span>, <span class="stringliteral">&quot;w&quot;</span>)</div><div class="line"><a class="code" href="namespacecmf_1_1describe.html">cmf.describe</a>(p, out=file)</div></div><!-- fragment --><h1>Fluxograms</h1>
@@ -94,7 +94,7 @@ $(function() {
 <a class="el" href="http://www.uni-giessen.de/hydro"> 
 Institute of Landscape Ecology and Resources Management,University of Gie&szlig;en</a>
 </h3></td>
-<td>Generated: Mon Apr 16 2018 16:35:49</td>
+<td>Generated: Wed Apr 18 2018 16:02:21</td>
 </tr></table>
 </small></address>
 </body>

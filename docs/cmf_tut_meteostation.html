@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.14"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>cmf: $title</title>
+<title>cmf: Using measurement stations for atmospheric conditions</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -74,9 +74,12 @@ $(function() {
 <li class="navelem"><a class="el" href="index.html">index</a></li><li class="navelem"><a class="el" href="tutorial.html">Tutorial</a></li>  </ul>
 </div>
 </div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">Using measurement stations for atmospheric conditions </div>  </div>
+</div><!--header-->
 <div class="contents">
 <div class="textblock"><p><a class="el" href="cmf_tut_test_data.html">back</a>, <a class="el" href="cmf_tut_space_time.html">space and time in</a>cmf"</p>
-<h1>Using measurement stations for atmospheric conditions</h1>
 <h2>The station concept in cmf</h2>
 <p>Meteorological data is usually measured at stations, and can be represented as such in cmf. Cells have the method <code>get_weather(time)</code> and <code>get_rainfall(time)</code> to get the current meteorological observations. If you are doing nothing, this function returns a default <a class="el" href="structcmf_1_1atmosphere_1_1_weather.html">Weather</a>. However, if the cell is bound to one or several measurement station (<a class="el" href="classcmf_1_1atmosphere_1_1_meteo_station.html">MeteoStation</a> or <a class="el" href="classcmf_1_1atmosphere_1_1_rainfall_station.html">RainfallStation</a>, the functions return the condition of the bound station or an interpolated value. To simplify this connection, the stations take a position in project coordinates to find the distance of the cell to the stations of the project. The <a class="el" href="classcmf_1_1math_1_1timeseries.html">timeseries</a> containing the forcing data are filled from any data source using standard Python.</p>
 <h2>Rainfall stations</h2>
@@ -88,15 +91,15 @@ $(function() {
 <h2>Meteorological stations</h2>
 <p><a class="el" href="classcmf_1_1atmosphere_1_1_meteo_station.html">MeteoStation</a> objects are much more complex than rainfall stations. The do not hold only one timeseries, but quite a number. The data is used for the various evaporation, evapotranspiration and transpiration connections available in cmf. Depending on the processes you are using in your model, not every timeseries you can populate is really used. The more physically based atmospheric connections, like <a class="el" href="classcmf_1_1upslope_1_1_e_t_1_1_penman_monteith_e_t.html">PenmanMonteithET</a> and <a class="el" href="classcmf_1_1upslope_1_1_e_t_1_1_shuttleworth_wallace.html">ShuttleworthWallace</a> need all values that are provided by the <a class="el" href="classcmf_1_1atmosphere_1_1_meteo_station.html">MeteoStation</a>. However, not all values are measured at all stations. The MeteoStation object follows therefore the <a href="http://www.fao.org/docrep/x0490e/x0490e00.htm">FAO guidelines</a> for the Penman Monteith method, to use surrogate values, as listed below.</p>
 <h3>Timeseries provided by a meteo object:</h3>
-<p>T:: Timeseries of Temperature \( T\left[[^\circ|C\right]] \) '''Optional''', if missing it is calculated from \( T=\frac{T_{max} + T_{min}} 2 \)</p>
-<p>Tmax:: Timeseries of daily maximum Temperature \( T_{max} \left[[^\circ|C\right]] \) '''Required''', but it can be generated from T, if you have a high resolution timeseries for Temperature, Tmax can be generated as follows: <code>meteo.Tmax = meteo.T.reduce_max(meteo.T.begin, cmf.day)</code></p>
-<p>Tmin:: Timeseries of daily minimum Temperature \( T_{min}\left[[^\circ|C\right]] \) '''Required''', but it can generate from T. If you have a high resolution timeseries for Temperature, Tmin can be generated as follows: <code>meteo.Tmin = meteo.T.reduce_min(meteo.T.begin, cmf.day)</code></p>
-<p>Tground:: Timeseries of upper soil temperature \( T_{ground}\left[[^\circ|C\right]] \) '''Optional''', if missing \( T_{ground} = T \)</p>
+<p>T:: Timeseries of Temperature \( T\left[^\circ C\right] \) '''Optional''', if missing it is calculated from \( T=\frac{T_{max} + T_{min}} 2 \)</p>
+<p>Tmax:: Timeseries of daily maximum Temperature \( T_{max} \left[^\circ C\right] \) '''Required''', but it can be generated from T, if you have a high resolution timeseries for Temperature, Tmax can be generated as follows: <code>meteo.Tmax = meteo.T.reduce_max(meteo.T.begin, cmf.day)</code></p>
+<p>Tmin:: Timeseries of daily minimum Temperature \( T_{min}\left[^\circ C\right] \) '''Required''', but it can generate from T. If you have a high resolution timeseries for Temperature, Tmin can be generated as follows: <code>meteo.Tmin = meteo.T.reduce_min(meteo.T.begin, cmf.day)</code></p>
+<p>Tground:: Timeseries of upper soil temperature \( T_{ground}\left[^\circ C\right] \) '''Optional''', if missing \( T_{ground} = T \)</p>
 <p>Windspeed:: Timeseries of windspeed at instrument height (default 2m) in \(m/s\). '''Optional''', if not available the wind speed defaults to 2 m/s</p>
 <p>rHmean:: Timeseries of relative mean Humidity \( rH_{mean} \left[\%\right] \) '''Optional''', not used if rHmax or Tdew is available. Use this field, if you have high resolution relative humidity data.</p>
 <p>rHmin:: Timeseries of daily minimum relative Humidity \( rH_{min} \left[\%\right] \) '''Optional''', only used if rHmax is used</p>
 <p>rHmax:: Timeseries of daily maximum relative Humidity \( rH_{max} \left[\%\right] \)'''Optional''', not used if Tdew is available</p>
-<p>Tdew:: Timeseries of dew point temperature \( T_{dew}\left[[^\circ|C\right]]\) '''Optional''', if neither Tdew, rHmax or rHmean is available then Tdew = Tmin</p>
+<p>Tdew:: Timeseries of dew point temperature \( T_{dew}\left[^\circ C\right]\) '''Optional''', if neither Tdew, rHmax or rHmean is available then Tdew = Tmin</p>
 <p>Sunshine:: Fractional sunshine \(\frac{n}{N}\). Sunshine duration per potential sunshine duration. '''Optional''', if not present it defaults to 0.5. If you have the total duration of sunshine, use the <code>SetSunshineFraction</code> method of the <a class="el" href="classcmf_1_1atmosphere_1_1_meteo_station.html">MeteoStation</a>. If you have cloud coverage instead of total sunshine duration you may assume that the fractional sunshine duration equals 1-cloudfraction</p>
 <p>Rs:: Global Radiation in \( \frac{MJ}{m^2 day} \) ''' Optional''', if not available <a class="el" href="namespacecmf_1_1atmosphere.html#aff4f90d5cded28b714cd55dec1f63fa1" title="Calculates the global radiation in MJ/(m2 day) from the sun position and the sunshine fraction...">cmf::atmosphere::global_radiation</a> is used to calculate radiation from lat, lon, day of year and Sunshine.</p>
 <p>T_lapse:: Temperature lapse, the slope of the temperature / height regression. Typical values are \( -0.0004 .. -0.001 \frac{^\circ C}{m} \), default is \( 0\frac{^\circ C}{m} \) (no temperature adjusting)</p>
@@ -136,7 +139,7 @@ $(function() {
 <a class="el" href="http://www.uni-giessen.de/hydro"> 
 Institute of Landscape Ecology and Resources Management,University of Gie&szlig;en</a>
 </h3></td>
-<td>Generated: Mon Apr 16 2018 16:35:49</td>
+<td>Generated: Wed Apr 18 2018 16:02:21</td>
 </tr></table>
 </small></address>
 </body>

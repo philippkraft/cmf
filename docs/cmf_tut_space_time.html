@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.14"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>cmf: $title</title>
+<title>cmf: &quot;Space and time in cmf&quot;</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -74,9 +74,12 @@ $(function() {
 <li class="navelem"><a class="el" href="index.html">index</a></li><li class="navelem"><a class="el" href="tutorial.html">Tutorial</a></li>  </ul>
 </div>
 </div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">"Space and time in cmf" </div>  </div>
+</div><!--header-->
 <div class="contents">
 <div class="textblock"><p><a class="el" href="cmf_tut_units.html">back...</a> <a class="el" href="cmf_tut_cell.html">next...</a></p>
-<h1>Space and time in cmf</h1>
 <h2>Note for Python 2 users</h2>
 <p>To show our results, we are using Python's print statement / function. However, "print" has changed between python 2 and 3. To run our examples python 2 users should always start their programs with the following line:</p>
 <div class="fragment"><div class="line"><span class="keyword">from</span> __future__ <span class="keyword">import</span> print_function, division</div></div><!-- fragment --><p>This import the behaviour of the python3 print function as well as the improved handling of integer division into python 2. Using this line in python3 is fine and changes nothing.</p>
@@ -117,7 +120,7 @@ $(function() {
 <p>Beside the arithmetic operators, there are methods to apply the exponential function (<code>exp</code>), logarithm (<code>log</code>,<code>log10</code>), to raise the timeseries to a scalar power (<code>pow</code>) and to get the inverse of the timeseries (<code>inv</code>).</p>
 <div class="fragment"><div class="line">exp_data=data.exp()</div><div class="line">square_data = data.pow(2.)</div><div class="line">...</div></div><!-- fragment --><h4>Statistical analysis</h4>
 <p>To get the statistics of a timeseries, use the <code>mean</code>, <code>max</code>, <code>min</code>. For other statistical information, numpy treats cmf timeseries as an array, therefore all functions for numpy arrays are available for cmf timeseries, eg. <code>np.std(data)</code>, <code>np.percentile(data,0.1)</code> and all functions from the scipy.stats module (if scipy is available). If you need the time axis for your analysis (or for plotting) you can get the time axis in days since 30.12.1899 as a list by</p>
-<div class="fragment"><div class="line">data_t = [[t/cmf.day|<span class="keywordflow">for</span> t <span class="keywordflow">in</span> data.iter_time()]]</div></div><!-- fragment --><p>To smooth timeseries the methods <code>floating_avg</code>, <code>floating_max</code>,<code>floating_min</code> are available for floating window statistics. The functions need the number of entries to be included in the window.</p>
+<div class="fragment"><div class="line">data_t = [t/cmf.day <span class="keywordflow">for</span> t <span class="keywordflow">in</span> data.iter_time()]</div></div><!-- fragment --><p>To smooth timeseries the methods <code>floating_avg</code>, <code>floating_max</code>,<code>floating_min</code> are available for floating window statistics. The functions need the number of entries to be included in the window.</p>
 <p>If you need to reduce the frequency of the timeseries, use the methods <code>reduce_avg</code>, <code>reduce_max</code>, <code>reduce_min</code> to retrieve a new timeseries with the average, resp. min or max value in the new timesteps. A common use case is the retrieval of the daily min/max temperature from high frequency data for meteorological station data.</p>
 <p>For comparison of timeseries containing model results and observations, you can use the <a class="el" href="namespacecmf_1_1math.html#a2872891beb5c8a045884184bc95036e1">nash_sutcliffe</a> efficiency integrated in cmf:</p>
 <div class="fragment"><div class="line">E  = cmf.nash_sutcliffe(model, observation)</div></div><!-- fragment --><h3>Plotting timeseries</h3>
@@ -129,7 +132,7 @@ $(function() {
 <a class="el" href="http://www.uni-giessen.de/hydro"> 
 Institute of Landscape Ecology and Resources Management,University of Gie&szlig;en</a>
 </h3></td>
-<td>Generated: Mon Apr 16 2018 16:35:49</td>
+<td>Generated: Wed Apr 18 2018 16:02:21</td>
 </tr></table>
 </small></address>
 </body>

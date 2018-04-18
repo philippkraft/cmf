@@ -105,11 +105,10 @@ $(function() {
 <h3>Solute transport</h3>
 <p>The state of a solute storage is the amount of tracer particles in the finite volume. The change rate of the state is the sum of advective tracer fluxes and the sum of any existent source or sink flux.</p>
 <p class="formulaDsp">
-\[ \frac{{dX_i }}{{dt}} = \sum\limits_{j = 1}^{N_i } {\left( { - q_{i,j} \left( {V_i ,V_j ,t} \right)\left[[|X \right]]_s } \right) + q_{X,in} \left( t \right) - r^ - X} \hspace{20mm}(4) \]
+\[ \frac{{dX_i }}{{dt}} = \sum\limits_{j = 1}^{N_i } {\left( { - q_{i,j} \left( {V_i ,V_j ,t} \right)[X]_s } \right) + q_{X,in} \left( t \right) - r^ - X} \hspace{20mm}(4) \]
 </p>
-<p>\(X_i\) is the amount (mols or mass) of a tracer in control volume \(i\), \([[X]\)|is the concentration of the tracer in amount per volume water and \(q_{X,in}(t)\) is a source or sink flux in amount per day (eg. g/day) and \(r^-\) is a decay rate in 1/day. \([X]]_s\) is the concentration of the source of the flux, determined by the sign of \(q_{i,j}\).</p>
-<p>In the future, an implementation of the advection dispersion equation is planned.</p>
-<p>A water store maintains a reference to each a tracer store for each simulated tracer. The figure shows the storage concept hierarchy in CMF. If needed, state variables for momentum or energy conservation models could be introduced.</p>
+<p>\(X_i\) is the amount (mols or mass) of a tracer in control volume \(i\), \([X]\) is the concentration of the tracer in amount per volume water and \(q_{X,in}(t)\) is a source or sink flux in amount per day (eg. g/day) and \(r^-\) is a decay rate in 1/day. \([X]_s\) is the concentration of the source of the flux, determined by the sign of \(q_{i,j}\).</p>
+<p>A water store maintains a reference to each tracer store for each simulated tracer. The figure shows the storage concept hierarchy in CMF. If needed, state variables for momentum or energy conservation models could be introduced.</p>
 <p>To facilitate the calculation of fluxes, specializations of water storages are implemented. Open water storages provide a calculation of their fill height as a function of state, and soil water storages have additional values to characterize the position in the soil column and the water retention curve.</p>
 <p>The retention curve is an object with methods calculating conductivity and matrix potential from a given water saturation of a soil water storage.</p>
 <p>Using the storages, a model of the landscape is constructed, as described in Building a landscape model .</p>
@@ -129,7 +128,7 @@ $(function() {
 <a class="el" href="http://www.uni-giessen.de/hydro"> 
 Institute of Landscape Ecology and Resources Management,University of Gie&szlig;en</a>
 </h3></td>
-<td>Generated: Mon Apr 16 2018 16:35:49</td>
+<td>Generated: Wed Apr 18 2018 16:02:21</td>
 </tr></table>
 </small></address>
 </body>

@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.14"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>cmf: $title</title>
+<title>cmf: Interception</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -74,15 +74,22 @@ $(function() {
 <li class="navelem"><a class="el" href="index.html">index</a></li><li class="navelem"><a class="el" href="tutorial.html">Tutorial</a></li>  </ul>
 </div>
 </div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">Interception </div>  </div>
+</div><!--header-->
 <div class="contents">
 <div class="textblock"><p><a class="el" href="cmf_tut_e_t.html">back...</a> <a class="el" href="cmf_tut_snow.html">next...</a></p>
-<h1>Interception</h1>
 <p>For this tutorial we are going to setup a simplified version (1 Layer) of the 1D Model to observe the effect of above ground fluxes. The same model will be used in the next tutorial about snow. As an excercise, try to put this model together with the 1D Richards model with ET from the last tutorial.</p>
 <h2>Simple 1 storage model, still with out interception</h2>
 <h3>Setup code</h3>
-<p>1. we create a project and a cell (you know this stuff by now...) 2. We add a layer of 1m depth 3. We add a groundwater boundary condition with free drainage</p>
-<div class="fragment"><div class="line"><span class="keyword">import</span> cmf</div><div class="line">p = <a class="code" href="classcmf_1_1project.html">cmf.project</a>()</div><div class="line">c = p.NewCell(0,0,0,1000,<span class="keyword">True</span>)</div><div class="line"><span class="comment"># Add a single layer of 1 m depth</span></div><div class="line">l = c.add_layer(1.0, cmf.VanGenuchtenMualem())</div><div class="line"><span class="comment"># Use GreenAmpt infiltration from surface water</span></div><div class="line">c.install_connection(cmf.GreenAmptInfiltration)</div><div class="line"><span class="comment"># Add a groundwater boundary condition</span></div><div class="line">gw = p.NewOutlet(<span class="stringliteral">&#39;gw&#39;</span>,0,0,-2)</div><div class="line"><span class="comment"># Use a free drainage connection to the groundwater</span></div><div class="line">cmf.FreeDrainagePercolation(l,gw)</div><div class="line"></div><div class="line"><span class="comment"># Add some rainfall</span></div><div class="line">c.set_rainfall(5.0)</div></div><!-- fragment --><h3>Runtime and plot code</h3>
-<div class="fragment"><div class="line">solver = cmf.CVodeIntegrator(p,1e-9)</div><div class="line">res = [[l.volume|<span class="keywordflow">for</span> t <span class="keywordflow">in</span> solver.run(solver.t,solver.t+cmf.day,cmf.min*15)]]</div><div class="line">plot(res)</div></div><!-- fragment --><h2>Create a canopy storage</h2>
+<ol type="1">
+<li>we create a project and a cell (you know this stuff by now...)</li>
+<li>We add a layer of 1m water capacity</li>
+<li>We add a groundwater boundary condition with free drainage</li>
+</ol>
+<div class="fragment"><div class="line"><span class="keyword">import</span> cmf</div><div class="line">p = <a class="code" href="classcmf_1_1project.html">cmf.project</a>()</div><div class="line">c = p.NewCell(0,0,0,1000,<span class="keyword">True</span>)</div><div class="line"><span class="comment"># Add a single layer of 1 m depth</span></div><div class="line">l = c.add_layer(1.0, cmf.VanGenuchtenMualem())</div><div class="line"><span class="comment"># Add a groundwater boundary condition</span></div><div class="line">gw = p.NewOutlet(<span class="stringliteral">&#39;gw&#39;</span>,0,0,-2)</div><div class="line"><span class="comment"># Use a free drainage connection to the groundwater</span></div><div class="line">cmf.FreeDrainagePercolation(l,gw)</div><div class="line"></div><div class="line"><span class="comment"># Add some rainfall</span></div><div class="line">c.set_rainfall(5.0)</div></div><!-- fragment --><h3>Runtime and plot code</h3>
+<div class="fragment"><div class="line">solver = cmf.CVodeIntegrator(p,1e-9)</div><div class="line">res = [l.volume <span class="keywordflow">for</span> t <span class="keywordflow">in</span> solver.run(solver.t,solver.t+cmf.day,cmf.min*15)]</div><div class="line">plot(res)</div></div><!-- fragment --><h2>Create a canopy storage</h2>
 <div class="image">
 <img src="canopyflow.png" alt="canopyflow.png"/>
 </div>
@@ -97,7 +104,7 @@ $(function() {
 <a class="el" href="http://www.uni-giessen.de/hydro"> 
 Institute of Landscape Ecology and Resources Management,University of Gie&szlig;en</a>
 </h3></td>
-<td>Generated: Mon Apr 16 2018 16:35:49</td>
+<td>Generated: Wed Apr 18 2018 16:02:21</td>
 </tr></table>
 </small></address>
 </body>
