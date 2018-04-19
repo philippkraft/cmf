@@ -123,17 +123,17 @@ static bool check_time(PyObject* dt) {
     $1 = check_time($input); // typecheck const cmf::math::Time &
 }
 %typemap(out) cmf::bytestring {
-	// Converting cmf::bytestring to PyBytes
+        // Converting cmf::bytestring to PyBytes
     $result = PyBytes_FromStringAndSize($1.c_str(), $1.size());
 }
 %typemap(in) cmf::bytestring {
-	// Convert PyBytes to cmf::bytestring
-	if (PyBytes_Check($input)) {
-		Py_ssize_t size = PyBytes_Size($input);
-		$1 = cmf::bytestring(PyBytes_AsString($input), size);
-	} else {
-		SWIG_exception_fail(SWIG_TypeError,"WKB expects byte string");
-	}
+        // Convert PyBytes to cmf::bytestring
+        if (PyBytes_Check($input)) {
+                Py_ssize_t size = PyBytes_Size($input);
+                $1 = cmf::bytestring(PyBytes_AsString($input), size);
+        } else {
+                SWIG_exception_fail(SWIG_TypeError,"WKB expects byte string");
+        }
 }
 
 %implicitconv cmf::math::Time;
@@ -192,8 +192,16 @@ static bool check_time(PyObject* dt) {
     def __radd__(self,other):
         return self + other
     def AsPython(self):
+		"""Deprecated function name, use as_datetime as equivalent"""
+        d=self.AsDate()
+        return datetime.datetime(d.year, d.month, d.day, d.hour, d.minute, d.second, d.ms*1000)
+	
+	def as_datetime(self):
         d=self.AsDate()
         return datetime.datetime(d.year,d.month,d.day,d.hour,d.minute,d.second,d.ms*1000)
+	def as_timedelta(self):
+		return datetime.timedelta(milliseconds=self.AsMilliseconds())
+
     year   = property(lambda self: self.AsDate().year)
     month  = property(lambda self: self.AsDate().month)
     day    = property(lambda self: self.AsDate().day)
@@ -209,7 +217,18 @@ static bool check_time(PyObject* dt) {
     {
     def __repr__(self):
         return self.to_string()
-    def AsPython(self):
+	
+	def __getstate__(self):
+		return Date.ToTime().__getstate__()
+	
+	def __setstate__(self, data):
+		t = cmf.Time(data)
+		self.__init__(t)
+    
+	def AsPython(self):
+        return datetime.datetime(self.year,self.month,self.day,self.hour,self.minute,self.second,self.ms*1000)
+
+	def as_datetime(self):
         return datetime.datetime(self.year,self.month,self.day,self.hour,self.minute,self.second,self.ms*1000)
     }
 }
@@ -298,7 +317,7 @@ static bool check_time(PyObject* dt) {
 
     def to_buffer(self):
         """Returns a binary buffer filled with the data of self"""
-        return struct.pack('qqqq{}d'.format(self.size()),self.begin.AsMilliseconds(),self.step.AsMilliseconds(),self.interpolationpower(), *self)
+        return struct.pack('qqqq{}d'.format(self.size()), self.size(), self.begin.AsMilliseconds(),self.step.AsMilliseconds(),self.interpolationpower(), *self)
 
     def to_file(self,f):
         """ Saves a timeseries in a special binary format.
@@ -311,6 +330,22 @@ static bool check_time(PyObject* dt) {
             raise TypeError("The file f must be either an object providing a write method, like a file, or a valid file name")
         f.write(self.to_buffer())
 
+    def __getstate__(self):
+        return dict(size=len(self),
+                    begin=self.begin.AsMilliseconds(),
+                    step=self.step.AsMilliseconds(),
+                    interpolationpower=self.interpolationpower(),
+                    values=self.as_array()
+                    )
+
+    def __setstate__(self, data):
+        self.clear()
+        self.set_begin(ms * data['begin'])
+        self.set_step(ms * data['step'])
+        self.set_interpolationpower(data['interpolationpower'])
+        res.extend(data['values'])
+            
+
     def to_pandas(self):
         """
         Returns the timeseries as a pandas Series object
@@ -319,7 +354,7 @@ static bool check_time(PyObject* dt) {
         import pandas as pd
         import numpy as np
 
-        return pd.Series(data=np.array(self),index=(t.AsPython() for t in self.iter_time()))
+        return pd.Series(data=self.as_array(),index=(t.AsPython() for t in self.iter_time()))
         
     @classmethod
     def from_sequence(cls, begin, step, sequence, interpolation_mode=1):
@@ -329,10 +364,11 @@ static bool check_time(PyObject* dt) {
         
     @classmethod
     def from_buffer(cls,buf):
+        import numpy as np
         header_length=struct.calcsize('qqqq') 
-        header=struct.unpack('qqqq',buffer[:header_length])
+        header=struct.unpack('qqqq',buf[:header_length])
         res=cls(header[1]*ms,header[2]*ms,header[3])
-        res.extend(struct.unpack('%id' % header[0],*buffer(buf,header_length,header[0]*8)))
+        res.extend(np.fromstring(buf[header_length:], dtype=float))
         return res
 
     @classmethod

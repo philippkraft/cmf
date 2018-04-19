@@ -10921,6 +10921,40 @@ SWIGINTERN PyObject *Time_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject *arg
   return SWIG_Python_InitShadowInstance(args);
 }
 
+SWIGINTERN PyObject *_wrap_timespan(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  long long arg1 ;
+  long long val1 ;
+  int ecode1 = 0 ;
+  PyObject * obj0 = 0 ;
+  char *  kwnames[] = {
+    (char *) "ms", NULL 
+  };
+  cmf::math::Time result;
+  
+  if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"O:timespan",kwnames,&obj0)) SWIG_fail;
+  ecode1 = SWIG_AsVal_long_SS_long(obj0, &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "timespan" "', argument " "1"" of type '" "long long""'");
+  } 
+  arg1 = static_cast< long long >(val1);
+  {
+    try {
+      result = cmf::math::timespan(arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+    
+  }
+  resultobj = SWIG_NewPointerObj((new cmf::math::Time(static_cast< const cmf::math::Time& >(result))), SWIGTYPE_p_cmf__math__Time, SWIG_POINTER_OWN |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_Date_year_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   cmf::math::Date *arg1 = (cmf::math::Date *) 0 ;
@@ -11808,6 +11842,88 @@ SWIGINTERN PyObject *Swig_var_never_get(void) {
 }
 
 
+SWIGINTERN PyObject *_wrap_timeseries_set_begin(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  cmf::math::timeseries *arg1 = (cmf::math::timeseries *) 0 ;
+  cmf::math::Time arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char *  kwnames[] = {
+    (char *) "self",(char *) "new_begin", NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"OO:timeseries_set_begin",kwnames,&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_cmf__math__timeseries, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "timeseries_set_begin" "', argument " "1"" of type '" "cmf::math::timeseries *""'"); 
+  }
+  arg1 = reinterpret_cast< cmf::math::timeseries * >(argp1);
+  {
+    arg2 = convert_datetime_to_cmftime(obj1);
+    if (arg2 == cmf::math::never)  {
+      SWIG_exception_fail(SWIG_TypeError,"Can't convert input value to cmf.Time object");
+    }
+  }
+  {
+    try {
+      (arg1)->set_begin(arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_timeseries_set_step(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  cmf::math::timeseries *arg1 = (cmf::math::timeseries *) 0 ;
+  cmf::math::Time arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char *  kwnames[] = {
+    (char *) "self",(char *) "new_step", NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"OO:timeseries_set_step",kwnames,&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_cmf__math__timeseries, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "timeseries_set_step" "', argument " "1"" of type '" "cmf::math::timeseries *""'"); 
+  }
+  arg1 = reinterpret_cast< cmf::math::timeseries * >(argp1);
+  {
+    arg2 = convert_datetime_to_cmftime(obj1);
+    if (arg2 == cmf::math::never)  {
+      SWIG_exception_fail(SWIG_TypeError,"Can't convert input value to cmf.Time object");
+    }
+  }
+  {
+    try {
+      (arg1)->set_step(arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_timeseries_interpolationpower(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   cmf::math::timeseries *arg1 = (cmf::math::timeseries *) 0 ;
@@ -11834,6 +11950,48 @@ SWIGINTERN PyObject *_wrap_timeseries_interpolationpower(PyObject *SWIGUNUSEDPAR
     
   }
   resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_timeseries_set_interpolationpower(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  cmf::math::timeseries *arg1 = (cmf::math::timeseries *) 0 ;
+  int arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char *  kwnames[] = {
+    (char *) "self",(char *) "new_ip", NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"OO:timeseries_set_interpolationpower",kwnames,&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_cmf__math__timeseries, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "timeseries_set_interpolationpower" "', argument " "1"" of type '" "cmf::math::timeseries *""'"); 
+  }
+  arg1 = reinterpret_cast< cmf::math::timeseries * >(argp1);
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "timeseries_set_interpolationpower" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
+  {
+    try {
+      (arg1)->set_interpolationpower(arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+    
+  }
+  resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
   return NULL;
@@ -11971,6 +12129,40 @@ SWIGINTERN PyObject *_wrap_timeseries_adress(PyObject *SWIGUNUSEDPARM(self), PyO
     
   }
   resultobj = SWIG_From_size_t(static_cast< size_t >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_timeseries_as_array(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  cmf::math::timeseries *arg1 = (cmf::math::timeseries *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  cmf::math::num_array result;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__math__timeseries, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "timeseries_as_array" "', argument " "1"" of type '" "cmf::math::timeseries const *""'"); 
+  }
+  arg1 = reinterpret_cast< cmf::math::timeseries * >(argp1);
+  {
+    try {
+      result = ((cmf::math::timeseries const *)arg1)->as_array();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+    
+  }
+  {
+    resultobj = as_npy_array(result);
+  }
   return resultobj;
 fail:
   return NULL;
@@ -75528,6 +75720,12 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"delete_Time", (PyCFunction)_wrap_delete_Time, METH_O, (char *)"delete_Time(Time self)"},
 	 { (char *)"Time_swigregister", Time_swigregister, METH_VARARGS, NULL},
 	 { (char *)"Time_swiginit", Time_swiginit, METH_VARARGS, NULL},
+	 { (char *)"timespan", (PyCFunction) _wrap_timespan, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
+		"timespan(long long ms) -> Time\n"
+		"\n"
+		"Time\n"
+		"cmf::math::timespan(long long ms) \n"
+		""},
 	 { (char *)"Date_year_set", _wrap_Date_year_set, METH_VARARGS, (char *)"Date_year_set(Date self, int year)"},
 	 { (char *)"Date_year_get", (PyCFunction)_wrap_Date_year_get, METH_O, (char *)"Date_year_get(Date self) -> int"},
 	 { (char *)"Date_month_set", _wrap_Date_month_set, METH_VARARGS, (char *)"Date_month_set(Date self, int month)"},
@@ -75576,6 +75774,8 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"delete_Date", (PyCFunction)_wrap_delete_Date, METH_O, (char *)"delete_Date(Date self)"},
 	 { (char *)"Date_swigregister", Date_swigregister, METH_VARARGS, NULL},
 	 { (char *)"Date_swiginit", Date_swiginit, METH_VARARGS, NULL},
+	 { (char *)"timeseries_set_begin", (PyCFunction) _wrap_timeseries_set_begin, METH_VARARGS | METH_KEYWORDS, (char *)"timeseries_set_begin(timeseries self, Time new_begin)"},
+	 { (char *)"timeseries_set_step", (PyCFunction) _wrap_timeseries_set_step, METH_VARARGS | METH_KEYWORDS, (char *)"timeseries_set_step(timeseries self, Time new_step)"},
 	 { (char *)"timeseries_interpolationpower", (PyCFunction)_wrap_timeseries_interpolationpower, METH_O, (char *)"\n"
 		"timeseries_interpolationpower(timeseries self) -> int\n"
 		"\n"
@@ -75585,6 +75785,7 @@ static PyMethodDef SwigMethods[] = {
 		"Method for the interpolation (0 - Nearest neighbor, 1- linear, 2 -\n"
 		"cubic spline (not implemented yet) \n"
 		""},
+	 { (char *)"timeseries_set_interpolationpower", (PyCFunction) _wrap_timeseries_set_interpolationpower, METH_VARARGS | METH_KEYWORDS, (char *)"timeseries_set_interpolationpower(timeseries self, int new_ip)"},
 	 { (char *)"timeseries_add", (PyCFunction) _wrap_timeseries_add, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
 		"timeseries_add(timeseries self, double Value)\n"
 		"\n"
@@ -75612,6 +75813,7 @@ static PyMethodDef SwigMethods[] = {
 		"size_t adress()\n"
 		"const \n"
 		""},
+	 { (char *)"timeseries_as_array", (PyCFunction)_wrap_timeseries_as_array, METH_O, (char *)"timeseries_as_array(timeseries self) -> cmf::math::num_array"},
 	 { (char *)"timeseries_copy", (PyCFunction)_wrap_timeseries_copy, METH_O, (char *)"\n"
 		"timeseries_copy(timeseries self) -> timeseries\n"
 		"\n"

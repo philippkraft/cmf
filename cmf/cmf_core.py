@@ -917,6 +917,15 @@ Debug = cvar.Debug
 __compiledate__ = cvar.__compiledate__
 Pi = cvar.Pi
 
+
+def timespan(*args, **kwargs):
+    """
+    timespan(long long ms) -> Time
+
+    Time
+    cmf::math::timespan(long long ms) 
+    """
+    return _cmf_core.timespan(*args, **kwargs)
 class Date(object):
     """
 
@@ -1018,6 +1027,16 @@ class timeseries(object):
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
     __repr__ = _swig_repr
 
+    def set_begin(self, *args, **kwargs):
+        """set_begin(timeseries self, Time new_begin)"""
+        return _cmf_core.timeseries_set_begin(self, *args, **kwargs)
+
+
+    def set_step(self, *args, **kwargs):
+        """set_step(timeseries self, Time new_step)"""
+        return _cmf_core.timeseries_set_step(self, *args, **kwargs)
+
+
     def interpolationpower(self, *args, **kwargs):
         """
         interpolationpower(timeseries self) -> int
@@ -1029,6 +1048,11 @@ class timeseries(object):
         cubic spline (not implemented yet) 
         """
         return _cmf_core.timeseries_interpolationpower(self, *args, **kwargs)
+
+
+    def set_interpolationpower(self, *args, **kwargs):
+        """set_interpolationpower(timeseries self, int new_ip)"""
+        return _cmf_core.timeseries_set_interpolationpower(self, *args, **kwargs)
 
 
     def add(self, *args, **kwargs):
@@ -1072,6 +1096,11 @@ class timeseries(object):
         const 
         """
         return _cmf_core.timeseries_adress(self, *args, **kwargs)
+
+
+    def as_array(self, *args, **kwargs):
+        """as_array(timeseries self) -> cmf::math::num_array"""
+        return _cmf_core.timeseries_as_array(self, *args, **kwargs)
 
 
     def copy(self, *args, **kwargs):
@@ -1513,7 +1542,7 @@ class timeseries(object):
 
     def to_buffer(self):
         """Returns a binary buffer filled with the data of self"""
-        return struct.pack('qqqq{}d'.format(self.size()),self.begin.AsMilliseconds(),self.step.AsMilliseconds(),self.interpolationpower(), *self)
+        return struct.pack('qqqq{}d'.format(self.size()), self.size(), self.begin.AsMilliseconds(),self.step.AsMilliseconds(),self.interpolationpower(), *self)
 
     def to_file(self,f):
         """ Saves a timeseries in a special binary format.
@@ -1526,6 +1555,22 @@ class timeseries(object):
             raise TypeError("The file f must be either an object providing a write method, like a file, or a valid file name")
         f.write(self.to_buffer())
 
+    def __getstate__(self):
+        return dict(size=len(self),
+                    begin=self.begin.AsMilliseconds(),
+                    step=self.step.AsMilliseconds(),
+                    interpolationpower=self.interpolationpower(),
+                    values=self.as_array()
+                    )
+
+    def __setstate__(self, data):
+        self.clear()
+        self.set_begin(ms * data['begin'])
+        self.set_step(ms * data['step'])
+        self.set_interpolationpower(data['interpolationpower'])
+        res.extend(data['values'])
+
+
     def to_pandas(self):
         """
         Returns the timeseries as a pandas Series object
@@ -1534,7 +1579,7 @@ class timeseries(object):
         import pandas as pd
         import numpy as np
 
-        return pd.Series(data=np.array(self),index=(t.AsPython() for t in self.iter_time()))
+        return pd.Series(data=self.as_array(),index=(t.AsPython() for t in self.iter_time()))
 
     @classmethod
     def from_sequence(cls, begin, step, sequence, interpolation_mode=1):
@@ -1544,10 +1589,11 @@ class timeseries(object):
 
     @classmethod
     def from_buffer(cls,buf):
+        import numpy as np
         header_length=struct.calcsize('qqqq') 
-        header=struct.unpack('qqqq',buffer[:header_length])
+        header=struct.unpack('qqqq',buf[:header_length])
         res=cls(header[1]*ms,header[2]*ms,header[3])
-        res.extend(struct.unpack('%id' % header[0],*buffer(buf,header_length,header[0]*8)))
+        res.extend(np.fromstring(buf[header_length:], dtype=float))
         return res
 
     @classmethod
@@ -1572,11 +1618,15 @@ class timeseries(object):
         return res
 
     __swig_destroy__ = _cmf_core.delete_timeseries
+timeseries.set_begin = new_instancemethod(_cmf_core.timeseries_set_begin, None, timeseries)
+timeseries.set_step = new_instancemethod(_cmf_core.timeseries_set_step, None, timeseries)
 timeseries.interpolationpower = new_instancemethod(_cmf_core.timeseries_interpolationpower, None, timeseries)
+timeseries.set_interpolationpower = new_instancemethod(_cmf_core.timeseries_set_interpolationpower, None, timeseries)
 timeseries.add = new_instancemethod(_cmf_core.timeseries_add, None, timeseries)
 timeseries.is_empty = new_instancemethod(_cmf_core.timeseries_is_empty, None, timeseries)
 timeseries.clear = new_instancemethod(_cmf_core.timeseries_clear, None, timeseries)
 timeseries.adress = new_instancemethod(_cmf_core.timeseries_adress, None, timeseries)
+timeseries.as_array = new_instancemethod(_cmf_core.timeseries_as_array, None, timeseries)
 timeseries.copy = new_instancemethod(_cmf_core.timeseries_copy, None, timeseries)
 timeseries.size = new_instancemethod(_cmf_core.timeseries_size, None, timeseries)
 timeseries.count_values = new_instancemethod(_cmf_core.timeseries_count_values, None, timeseries)

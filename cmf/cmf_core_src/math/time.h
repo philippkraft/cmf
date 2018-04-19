@@ -130,9 +130,16 @@ namespace cmf {
 			/// Conversion constructor
 			Time(Date date);
 			/// Copy constructor
-			Time(const Time& t):m_time_in_ms(t.AsMilliseconds()) {}
+			Time(const Time& t)
+				:m_time_in_ms(t.AsMilliseconds()) 
+			{}
 			/// Standard constructor
-			Time():m_time_in_ms(0) {}
+			Time()
+				:m_time_in_ms(0) 
+			{}
+			explicit Time(long long milliseconds)
+				: m_time_in_ms(milliseconds)
+			{}
 			//@}
 #ifndef SWIG
 			explicit Time(long long ms):m_time_in_ms(ms) {}
