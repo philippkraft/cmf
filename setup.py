@@ -30,7 +30,7 @@ from setuptools.command.build_ext import build_ext
 from distutils.sysconfig import customize_compiler
 from distutils.command.build_py import build_py
 
-version = '1.3'
+version = '1.3.1'
 
 # Try to import numpy, if it fails we have a problem 
 try:
