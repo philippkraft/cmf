@@ -117,9 +117,7 @@ namespace cmf {
 		{
 		private:
 			long long m_time_in_ms;
-#ifndef SWIG
-			friend Time timespan(long long);
-#endif
+
 		public:
 			static const long long ms_per_day=86400000;
 			/// @name Constructors
@@ -142,9 +140,7 @@ namespace cmf {
 			{}
 			//@}
 #ifndef SWIG
-			explicit Time(long long ms):m_time_in_ms(ms) {}
 			Time& operator=(const Time& right);
-			
 			operator bool() const {
 				return m_time_in_ms!=0;
 			}

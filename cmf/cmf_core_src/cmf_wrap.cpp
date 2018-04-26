@@ -8763,6 +8763,37 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_new_Time__SWIG_4(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  long long arg1 ;
+  long long val1 ;
+  int ecode1 = 0 ;
+  cmf::math::Time *result = 0 ;
+  
+  if (SWIG_CheckImplicit(SWIGTYPE_p_cmf__math__Time)) SWIG_fail;
+  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
+  ecode1 = SWIG_AsVal_long_SS_long(swig_obj[0], &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "new_Time" "', argument " "1"" of type '" "long long""'");
+  } 
+  arg1 = static_cast< long long >(val1);
+  {
+    try {
+      result = (cmf::math::Time *)new cmf::math::Time(arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_cmf__math__Time, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_new_Time(PyObject *self, PyObject *args) {
   Py_ssize_t argc;
   PyObject *argv[8] = {
@@ -8809,7 +8840,8 @@ SWIGINTERN PyObject *_wrap_new_Time(PyObject *self, PyObject *args) {
       int _v = 0;
       {
         {
-          _v = check_time(argv[0]); // typecheck const cmf::math::Time &
+          int res = SWIG_AsVal_long_SS_long(argv[0], NULL);
+          _v = SWIG_CheckState(res);
         }
       }
       if (!_v) goto check_3;
@@ -8829,8 +8861,9 @@ SWIGINTERN PyObject *_wrap_new_Time(PyObject *self, PyObject *args) {
       SWIG_TypeRank _pi = 1;
       int _v = 0;
       {
-        int res = SWIG_ConvertPtr(argv[0], 0, SWIGTYPE_p_cmf__math__Date, SWIG_POINTER_IMPLICIT_CONV);
-        _v = SWIG_CheckState(res);
+        {
+          _v = check_time(argv[0]); // typecheck const cmf::math::Time &
+        }
       }
       if (!_v) goto check_4;
       _ranki += _v*_pi;
@@ -8843,6 +8876,26 @@ SWIGINTERN PyObject *_wrap_new_Time(PyObject *self, PyObject *args) {
     }
   check_4:
     
+    if (argc == 1) {
+      SWIG_TypeRank _ranki = 0;
+      SWIG_TypeRank _rankm = 0;
+      SWIG_TypeRank _pi = 1;
+      int _v = 0;
+      {
+        int res = SWIG_ConvertPtr(argv[0], 0, SWIGTYPE_p_cmf__math__Date, SWIG_POINTER_IMPLICIT_CONV);
+        _v = SWIG_CheckState(res);
+      }
+      if (!_v) goto check_5;
+      _ranki += _v*_pi;
+      _rankm += _pi;
+      _pi *= SWIG_MAXCASTRANK;
+      if (!_index || (_ranki < _rank)) {
+        _rank = _ranki; _index = 5;
+        if (_rank == _rankm) goto dispatch;
+      }
+    }
+  check_5:
+    
     if ((argc >= 3) && (argc <= 7)) {
       SWIG_TypeRank _ranki = 0;
       SWIG_TypeRank _rankm = 0;
@@ -8854,7 +8907,7 @@ SWIGINTERN PyObject *_wrap_new_Time(PyObject *self, PyObject *args) {
           _v = SWIG_CheckState(res);
         }
       }
-      if (!_v) goto check_5;
+      if (!_v) goto check_6;
       _ranki += _v*_pi;
       _rankm += _pi;
       _pi *= SWIG_MAXCASTRANK;
@@ -8864,7 +8917,7 @@ SWIGINTERN PyObject *_wrap_new_Time(PyObject *self, PyObject *args) {
           _v = SWIG_CheckState(res);
         }
       }
-      if (!_v) goto check_5;
+      if (!_v) goto check_6;
       _ranki += _v*_pi;
       _rankm += _pi;
       _pi *= SWIG_MAXCASTRANK;
@@ -8874,7 +8927,7 @@ SWIGINTERN PyObject *_wrap_new_Time(PyObject *self, PyObject *args) {
           _v = SWIG_CheckState(res);
         }
       }
-      if (!_v) goto check_5;
+      if (!_v) goto check_6;
       _ranki += _v*_pi;
       _rankm += _pi;
       _pi *= SWIG_MAXCASTRANK;
@@ -8885,7 +8938,7 @@ SWIGINTERN PyObject *_wrap_new_Time(PyObject *self, PyObject *args) {
             _v = SWIG_CheckState(res);
           }
         }
-        if (!_v) goto check_5;
+        if (!_v) goto check_6;
         _ranki += _v*_pi;
         _rankm += _pi;
         _pi *= SWIG_MAXCASTRANK;
@@ -8896,7 +8949,7 @@ SWIGINTERN PyObject *_wrap_new_Time(PyObject *self, PyObject *args) {
               _v = SWIG_CheckState(res);
             }
           }
-          if (!_v) goto check_5;
+          if (!_v) goto check_6;
           _ranki += _v*_pi;
           _rankm += _pi;
           _pi *= SWIG_MAXCASTRANK;
@@ -8907,7 +8960,7 @@ SWIGINTERN PyObject *_wrap_new_Time(PyObject *self, PyObject *args) {
                 _v = SWIG_CheckState(res);
               }
             }
-            if (!_v) goto check_5;
+            if (!_v) goto check_6;
             _ranki += _v*_pi;
             _rankm += _pi;
             _pi *= SWIG_MAXCASTRANK;
@@ -8918,7 +8971,7 @@ SWIGINTERN PyObject *_wrap_new_Time(PyObject *self, PyObject *args) {
                   _v = SWIG_CheckState(res);
                 }
               }
-              if (!_v) goto check_5;
+              if (!_v) goto check_6;
               _ranki += _v*_pi;
               _rankm += _pi;
               _pi *= SWIG_MAXCASTRANK;
@@ -8927,11 +8980,11 @@ SWIGINTERN PyObject *_wrap_new_Time(PyObject *self, PyObject *args) {
         }
       }
       if (!_index || (_ranki < _rank)) {
-        _rank = _ranki; _index = 5;
+        _rank = _ranki; _index = 6;
         if (_rank == _rankm) goto dispatch;
       }
     }
-  check_5:
+  check_6:
     
   dispatch:
     switch(_index) {
@@ -8940,10 +8993,12 @@ SWIGINTERN PyObject *_wrap_new_Time(PyObject *self, PyObject *args) {
     case 2:
       return _wrap_new_Time__SWIG_1(self, argc, argv);
     case 3:
-      return _wrap_new_Time__SWIG_2(self, argc, argv);
+      return _wrap_new_Time__SWIG_4(self, argc, argv);
     case 4:
-      return _wrap_new_Time__SWIG_1(self, argc, argv);
+      return _wrap_new_Time__SWIG_2(self, argc, argv);
     case 5:
+      return _wrap_new_Time__SWIG_1(self, argc, argv);
+    case 6:
       return _wrap_new_Time__SWIG_0(self, argc, argv);
     }
   }
@@ -8954,7 +9009,8 @@ fail:
     "    cmf::math::Time::Time(int,int,int,int,int,int,int)\n"
     "    cmf::math::Time::Time(cmf::math::Date)\n"
     "    cmf::math::Time::Time(cmf::math::Time const &)\n"
-    "    cmf::math::Time::Time()\n");
+    "    cmf::math::Time::Time()\n"
+    "    cmf::math::Time::Time(long long)\n");
   return 0;
 }
 
@@ -10920,40 +10976,6 @@ SWIGINTERN PyObject *Time_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject 
 SWIGINTERN PyObject *Time_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   return SWIG_Python_InitShadowInstance(args);
 }
-
-SWIGINTERN PyObject *_wrap_timespan(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
-  PyObject *resultobj = 0;
-  long long arg1 ;
-  long long val1 ;
-  int ecode1 = 0 ;
-  PyObject * obj0 = 0 ;
-  char *  kwnames[] = {
-    (char *) "ms", NULL 
-  };
-  cmf::math::Time result;
-  
-  if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"O:timespan",kwnames,&obj0)) SWIG_fail;
-  ecode1 = SWIG_AsVal_long_SS_long(obj0, &val1);
-  if (!SWIG_IsOK(ecode1)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "timespan" "', argument " "1"" of type '" "long long""'");
-  } 
-  arg1 = static_cast< long long >(val1);
-  {
-    try {
-      result = cmf::math::timespan(arg1);
-    } catch (const std::out_of_range& e) {
-      SWIG_exception(SWIG_IndexError, e.what());    
-    } catch (const std::exception& e) {
-      SWIG_exception(SWIG_RuntimeError, e.what());
-    }
-    
-  }
-  resultobj = SWIG_NewPointerObj((new cmf::math::Time(static_cast< const cmf::math::Time& >(result))), SWIGTYPE_p_cmf__math__Time, SWIG_POINTER_OWN |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
 
 SWIGINTERN PyObject *_wrap_Date_year_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
@@ -75610,7 +75632,8 @@ static PyMethodDef SwigMethods[] = {
 		"Time(int day, int month, int year, int hour=0, int minute=0, int second=0, int ms=0)\n"
 		"Time(Date date)\n"
 		"Time(Time t)\n"
-		"new_Time() -> Time\n"
+		"Time()\n"
+		"new_Time(long long milliseconds) -> Time\n"
 		"\n"
 		"Time(long long ms) \n"
 		""},
@@ -75720,12 +75743,6 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"delete_Time", (PyCFunction)_wrap_delete_Time, METH_O, (char *)"delete_Time(Time self)"},
 	 { (char *)"Time_swigregister", Time_swigregister, METH_VARARGS, NULL},
 	 { (char *)"Time_swiginit", Time_swiginit, METH_VARARGS, NULL},
-	 { (char *)"timespan", (PyCFunction) _wrap_timespan, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
-		"timespan(long long ms) -> Time\n"
-		"\n"
-		"Time\n"
-		"cmf::math::timespan(long long ms) \n"
-		""},
 	 { (char *)"Date_year_set", _wrap_Date_year_set, METH_VARARGS, (char *)"Date_year_set(Date self, int year)"},
 	 { (char *)"Date_year_get", (PyCFunction)_wrap_Date_year_get, METH_O, (char *)"Date_year_get(Date self) -> int"},
 	 { (char *)"Date_month_set", _wrap_Date_month_set, METH_VARARGS, (char *)"Date_month_set(Date self, int month)"},

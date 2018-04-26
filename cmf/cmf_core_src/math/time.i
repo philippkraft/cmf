@@ -185,22 +185,33 @@ static bool check_time(PyObject* dt) {
             return self.AsDate().to_string()
         else:
             return self.to_string()
+    
     def __nonzero__(self):
         return self.is_not_0()
+    
     def __rmul__(self,other):
         return self*other
+    
     def __radd__(self,other):
         return self + other
+    
     def AsPython(self):
-		"""Deprecated function name, use as_datetime as equivalent"""
+        """Deprecated function name, use as_datetime as equivalent"""
         d=self.AsDate()
         return datetime.datetime(d.year, d.month, d.day, d.hour, d.minute, d.second, d.ms*1000)
-	
-	def as_datetime(self):
+    
+    def __getstate__(self):
+        return self.AsMilliseconds()
+    
+    def __setstate__(self, data):
+        self.__init__(data)
+    
+    def as_datetime(self):
         d=self.AsDate()
         return datetime.datetime(d.year,d.month,d.day,d.hour,d.minute,d.second,d.ms*1000)
-	def as_timedelta(self):
-		return datetime.timedelta(milliseconds=self.AsMilliseconds())
+    
+    def as_timedelta(self):
+        return datetime.timedelta(milliseconds=self.AsMilliseconds())
 
     year   = property(lambda self: self.AsDate().year)
     month  = property(lambda self: self.AsDate().month)
@@ -217,18 +228,18 @@ static bool check_time(PyObject* dt) {
     {
     def __repr__(self):
         return self.to_string()
-	
-	def __getstate__(self):
-		return Date.ToTime().__getstate__()
-	
-	def __setstate__(self, data):
-		t = cmf.Time(data)
-		self.__init__(t)
     
-	def AsPython(self):
+    def __getstate__(self):
+        return Date.ToTime().__getstate__()
+    
+    def __setstate__(self, data):
+        t = cmf.Time(data)
+        self.__init__(t)
+    
+    def AsPython(self):
         return datetime.datetime(self.year,self.month,self.day,self.hour,self.minute,self.second,self.ms*1000)
 
-	def as_datetime(self):
+    def as_datetime(self):
         return datetime.datetime(self.year,self.month,self.day,self.hour,self.minute,self.second,self.ms*1000)
     }
 }
@@ -339,11 +350,10 @@ static bool check_time(PyObject* dt) {
                     )
 
     def __setstate__(self, data):
-        self.clear()
-        self.set_begin(ms * data['begin'])
-        self.set_step(ms * data['step'])
-        self.set_interpolationpower(data['interpolationpower'])
-        res.extend(data['values'])
+        begin = ms * data['begin']
+        step = ms * data['step']
+        self.__init__(begin, step, data['interpolationpower'])
+        self.extend(data['values'])
             
 
     def to_pandas(self):
