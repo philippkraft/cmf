@@ -41,7 +41,7 @@ namespace cmf {
 		/// is selected
 		///
         /// \f{eqnarray*}
-		/// q_{Manning}&=& A R^{\frac 2 3} \sqrt{\frac {\Delta_z} n} \\
+		/// q_{Manning}&=& A R^{\frac 2 3} \frac{\sqrt{\Delta_z}}{n} \\
 		/// A &=& \frac V l \mbox{, (Crosssectional area of the wetted crossection, Volume per length)} \\
 		/// R &=& \frac A {P(d)} \\
 		/// P(d) &=& \mbox{ the perimeter of the wetted crosssection, a function of reach depth} \\
