@@ -75635,7 +75635,8 @@ static PyMethodDef SwigMethods[] = {
 		"Time()\n"
 		"new_Time(long long milliseconds) -> Time\n"
 		"\n"
-		"Time(long long ms) \n"
+		"Time(long long\n"
+		"milliseconds) \n"
 		""},
 	 { (char *)"Time_AsDays", (PyCFunction)_wrap_Time_AsDays, METH_O, (char *)"\n"
 		"Time_AsDays(Time self) -> double\n"
@@ -75791,8 +75792,18 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"delete_Date", (PyCFunction)_wrap_delete_Date, METH_O, (char *)"delete_Date(Date self)"},
 	 { (char *)"Date_swigregister", Date_swigregister, METH_VARARGS, NULL},
 	 { (char *)"Date_swiginit", Date_swiginit, METH_VARARGS, NULL},
-	 { (char *)"timeseries_set_begin", (PyCFunction) _wrap_timeseries_set_begin, METH_VARARGS | METH_KEYWORDS, (char *)"timeseries_set_begin(timeseries self, Time new_begin)"},
-	 { (char *)"timeseries_set_step", (PyCFunction) _wrap_timeseries_set_step, METH_VARARGS | METH_KEYWORDS, (char *)"timeseries_set_step(timeseries self, Time new_step)"},
+	 { (char *)"timeseries_set_begin", (PyCFunction) _wrap_timeseries_set_begin, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
+		"timeseries_set_begin(timeseries self, Time new_begin)\n"
+		"\n"
+		"void\n"
+		"set_begin(cmf::math::Time new_begin) \n"
+		""},
+	 { (char *)"timeseries_set_step", (PyCFunction) _wrap_timeseries_set_step, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
+		"timeseries_set_step(timeseries self, Time new_step)\n"
+		"\n"
+		"void\n"
+		"set_step(cmf::math::Time new_step) \n"
+		""},
 	 { (char *)"timeseries_interpolationpower", (PyCFunction)_wrap_timeseries_interpolationpower, METH_O, (char *)"\n"
 		"timeseries_interpolationpower(timeseries self) -> int\n"
 		"\n"
@@ -75802,7 +75813,11 @@ static PyMethodDef SwigMethods[] = {
 		"Method for the interpolation (0 - Nearest neighbor, 1- linear, 2 -\n"
 		"cubic spline (not implemented yet) \n"
 		""},
-	 { (char *)"timeseries_set_interpolationpower", (PyCFunction) _wrap_timeseries_set_interpolationpower, METH_VARARGS | METH_KEYWORDS, (char *)"timeseries_set_interpolationpower(timeseries self, int new_ip)"},
+	 { (char *)"timeseries_set_interpolationpower", (PyCFunction) _wrap_timeseries_set_interpolationpower, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
+		"timeseries_set_interpolationpower(timeseries self, int new_ip)\n"
+		"\n"
+		"void set_interpolationpower(int new_ip) \n"
+		""},
 	 { (char *)"timeseries_add", (PyCFunction) _wrap_timeseries_add, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
 		"timeseries_add(timeseries self, double Value)\n"
 		"\n"
@@ -75830,7 +75845,11 @@ static PyMethodDef SwigMethods[] = {
 		"size_t adress()\n"
 		"const \n"
 		""},
-	 { (char *)"timeseries_as_array", (PyCFunction)_wrap_timeseries_as_array, METH_O, (char *)"timeseries_as_array(timeseries self) -> cmf::math::num_array"},
+	 { (char *)"timeseries_as_array", (PyCFunction)_wrap_timeseries_as_array, METH_O, (char *)"\n"
+		"timeseries_as_array(timeseries self) -> cmf::math::num_array\n"
+		"\n"
+		"cmf::math::num_array as_array() const \n"
+		""},
 	 { (char *)"timeseries_copy", (PyCFunction)_wrap_timeseries_copy, METH_O, (char *)"\n"
 		"timeseries_copy(timeseries self) -> timeseries\n"
 		"\n"

@@ -661,7 +661,8 @@ class Time(object):
         __init__(cmf::math::Time self) -> Time
         __init__(cmf::math::Time self, long long milliseconds) -> Time
 
-        Time(long long ms) 
+        Time(long long
+        milliseconds) 
         """
         _cmf_core.Time_swiginit(self, _cmf_core.new_Time(*args))
 
@@ -1050,12 +1051,22 @@ class timeseries(object):
     __repr__ = _swig_repr
 
     def set_begin(self, *args, **kwargs):
-        """set_begin(timeseries self, Time new_begin)"""
+        """
+        set_begin(timeseries self, Time new_begin)
+
+        void
+        set_begin(cmf::math::Time new_begin) 
+        """
         return _cmf_core.timeseries_set_begin(self, *args, **kwargs)
 
 
     def set_step(self, *args, **kwargs):
-        """set_step(timeseries self, Time new_step)"""
+        """
+        set_step(timeseries self, Time new_step)
+
+        void
+        set_step(cmf::math::Time new_step) 
+        """
         return _cmf_core.timeseries_set_step(self, *args, **kwargs)
 
 
@@ -1073,7 +1084,11 @@ class timeseries(object):
 
 
     def set_interpolationpower(self, *args, **kwargs):
-        """set_interpolationpower(timeseries self, int new_ip)"""
+        """
+        set_interpolationpower(timeseries self, int new_ip)
+
+        void set_interpolationpower(int new_ip) 
+        """
         return _cmf_core.timeseries_set_interpolationpower(self, *args, **kwargs)
 
 
@@ -1121,7 +1136,11 @@ class timeseries(object):
 
 
     def as_array(self, *args, **kwargs):
-        """as_array(timeseries self) -> cmf::math::num_array"""
+        """
+        as_array(timeseries self) -> cmf::math::num_array
+
+        cmf::math::num_array as_array() const 
+        """
         return _cmf_core.timeseries_as_array(self, *args, **kwargs)
 
 
@@ -11265,22 +11284,36 @@ class Manning(flux_connection):
 
     .. math::
 
+         v = R^{\\frac 2 3}
+        \\frac{\\sqrt{\\Delta_z}}{n} \\\\ q = v \\cdot A 
 
-        q_{Manning}&=& A R^{\\frac 2 3} \\sqrt{\\frac {\\Delta_z} n}
-        \\\\ A &=& \\frac V l \\mbox{, (Crosssectional area of the
-        wetted crossection, Volume per length)} \\\\ R &=& \\frac A
-        {P(d)} \\\\ P(d) &=& \\mbox{ the perimeter of the wetted
-        crosssection, a function of reach depth} \\\\ d(V) &=& \\mbox{
-        the depth of the reach, a function of the volume} \\\\ \\Delta_z
-        &=& \\frac{\\|z_1 - z_2\\|}{l} \\mbox{ Slope of the reach}
-        \\\\ n&=&\\mbox{Manning friction number} 
+    Where:  :math:`A = \\frac V l`: Crosssectional area of the wetted
+    crossection, Volume per length
 
-     For
-    the kinematic wave the slope of the river bed is used as slope
-    :math:`\\Delta_z = \\frac{|z_1 - z_2\\|}{l}`,
+    :math:`R = \\frac A{P(d)}`: The hydraulic radius
+
+    :math:`P(d)`: the perimeter of the wetted crosssection, a function of reach
+    depth
+
+    :math:`d(V)`: the depth of the reach, a function of the volume
+
+    :math:`\\Delta_z = \\frac{|z_1 - z_2|}{l}`: Slope of the reach
+
+    :math:`n`: Manning friction number
+
+    For the kinematic wave the slope of the river bed is used as slope:
+
+
+    .. math::
+
+        \\Delta_z = \\frac{|z_1 - z_2|}{l}
 
     while for the diffusive wave the slope is calculated from the actual
-    water head. :math:`\\Delta_z = \\|\\frac{h_1 - h_2}{l}`
+    water head: 
+
+    .. math::
+
+        \\Delta_z = \\frac{|h_1 - h_2|}{l}
 
     C++ includes: ManningConnection.h 
     """
