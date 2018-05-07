@@ -43,10 +43,7 @@ namespace cmf {
 		/// \f}
 		class SoluteStorage : public cmf::math::StateVariable
 		{
-			SoluteStorage(WaterStorage* _water,const cmf::water::solute& _Solute, double InitialState=0) 
-				: cmf::math::StateVariable(InitialState),m_water(_water), Solute(_Solute),decay(0),source(0),
-				  adsorption(new NullAdsorption)
-			{}
+			SoluteStorage(WaterStorage* _water, const cmf::water::solute& _Solute, double InitialState = 0);
 			
 			WaterStorage* m_water;
 			std::unique_ptr<Adsorption> adsorption;
