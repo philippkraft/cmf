@@ -1,4 +1,4 @@
-@page cmfTutSpaceTime "Space and time in cmf"
+@page cmfTutSpaceTime Space and time in cmf
  
 [back...](@ref cmfTutUnits) [next...](@ref cmfTutCell)
 

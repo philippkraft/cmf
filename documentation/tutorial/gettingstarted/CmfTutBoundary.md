@@ -1,4 +1,4 @@
-@page cmfTutBoundary "Boundary conditions"
+@page cmfTutBoundary Boundary conditions
 
  [back...](@ref cmfTutFirstModel)
 [next...](@ref cmfTutFluxes)

@@ -1,4 +1,4 @@
-@page cmfTutCell "Cells"
+@page cmfTutCell Cells
 
 Cells are the units of the horizontal discretization. Cells are defined
 by the position of their center in space and their area. Each cell
