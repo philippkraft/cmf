@@ -45,7 +45,7 @@ real SoluteStorage::dxdt( const cmf::math::Time& time )
 	return inflow + outflow + source_term - decay_term;
 }
 
-real SoluteStorage::conc() const
+real SoluteStorage::get_conc() const
 {
 	real V = m_water->get_volume();
 	real c = this->adsorption->freesolute(get_state(),V) /V;

@@ -3328,36 +3328,13 @@ class SoluteStorage(StateVariable):
     decay = _swig_property(_cmf_core.SoluteStorage_decay_get, _cmf_core.SoluteStorage_decay_set)
     source = _swig_property(_cmf_core.SoluteStorage_source_get, _cmf_core.SoluteStorage_source_set)
     Solute = _swig_property(_cmf_core.SoluteStorage_Solute_get)
+    conc = _swig_property(_cmf_core.SoluteStorage_conc_get, _cmf_core.SoluteStorage_conc_set)
 
-    def conc(self, *args, **kwargs):
-        """
-        conc(SoluteStorage self) -> real
-
-        real conc()
-        const
-
-        Returns the concentration of the solute. 
-        """
-        return _cmf_core.SoluteStorage_conc(self, *args, **kwargs)
-
-
-    def set_conc(self, *args, **kwargs):
-        """
-        set_conc(SoluteStorage self, real NewConcentration)
-
-        void
-        set_conc(real NewConcentration)
-
-        set a new concentration of dissolved tracers.
-
-        In case of adsorption functions, the isotherm is used 
-        """
-        return _cmf_core.SoluteStorage_set_conc(self, *args, **kwargs)
+    def __repr__(self): 
+        return self.to_string()
 
     __swig_destroy__ = _cmf_core.delete_SoluteStorage
 SoluteStorage.set_adsorption = new_instancemethod(_cmf_core.SoluteStorage_set_adsorption, None, SoluteStorage)
-SoluteStorage.conc = new_instancemethod(_cmf_core.SoluteStorage_conc, None, SoluteStorage)
-SoluteStorage.set_conc = new_instancemethod(_cmf_core.SoluteStorage_set_conc, None, SoluteStorage)
 _cmf_core.SoluteStorage_swigregister(SoluteStorage)
 # SoluteStorage end
 
@@ -4405,9 +4382,15 @@ class WaterStorage(StateVariable, StateVariableOwner, flux_node):
     def __repr__(self): 
         return self.to_string()
 
+
+    def __getitem__(self, *args, **kwargs):
+        """__getitem__(WaterStorage self, solute X) -> SoluteStorage"""
+        return _cmf_core.WaterStorage___getitem__(self, *args, **kwargs)
+
     __swig_destroy__ = _cmf_core.delete_WaterStorage
 WaterStorage.Solute = new_instancemethod(_cmf_core.WaterStorage_Solute, None, WaterStorage)
 WaterStorage.conc = new_instancemethod(_cmf_core.WaterStorage_conc, None, WaterStorage)
+WaterStorage.__getitem__ = new_instancemethod(_cmf_core.WaterStorage___getitem__, None, WaterStorage)
 _cmf_core.WaterStorage_swigregister(WaterStorage)
 # WaterStorage end
 
