@@ -1,7 +1,8 @@
 var searchData=
 [
-  ['lumped_20model_20with_20spotpy_20tutorial',['Lumped Model with Spotpy Tutorial',['../cmf_lumped_simple.html',1,'tutorial']]],
-  ['lumped_20model_20without_20spotpy_20tutorial',['Lumped model without Spotpy Tutorial',['../cmf_lumped_without_spotpy.html',1,'tutorial']]],
+  ['lumped_20model_20with_20spotpy_20tutorial',['Lumped Model with Spotpy Tutorial',['../cmf_lumped_simple.html',1,'conceptual']]],
+  ['lumped_20model_20without_20spotpy_20tutorial',['Lumped model without Spotpy Tutorial',['../cmf_lumped_without_spotpy.html',1,'conceptual']]],
+  ['let_20it_20flow_2e_2e_2e_20the_20first_20cmf_20model',['Let it flow... the first cmf model',['../cmf_tut_first_model.html',1,'gettingstarted']]],
   ['l',['l',['../classcmf_1_1upslope_1_1_van_genuchten_mualem.html#a5509769bf3542cbe16a93f7b44d23daf',1,'cmf::upslope::VanGenuchtenMualem']]],
   ['lai',['LAI',['../classcmf_1_1upslope_1_1vegetation_1_1_vegetation.html#af2896a94dc4bf29566d632587e9c54f1',1,'cmf::upslope::vegetation::Vegetation']]],
   ['langmuiradsorption',['LangmuirAdsorption',['../classcmf_1_1water_1_1_langmuir_adsorption.html',1,'cmf::water']]],

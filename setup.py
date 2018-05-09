@@ -31,6 +31,16 @@ from distutils.sysconfig import customize_compiler
 from distutils.command.build_py import build_py
 
 version = '1.3.1a0'
+branchversion = version
+try:
+    from pygit2 import Repository
+    head = Repository('.').head.shorthand
+    if head != 'master':
+        branchversion = version + '.' + head
+except:
+    Repository = None
+
+print('cmf', branchversion)
 
 # Try to import numpy, if it fails we have a problem 
 try:
@@ -124,7 +134,7 @@ def updateversion():
         fout = open('cmf/__init__.py', 'w')
         for line in module_code:
             if line.startswith('__version__'):
-                fout.write("__version__ = '{}'\n".format(version))
+                fout.write("__version__ = '{}'\n".format(branchversion))
             elif line.startswith('__compiletime__'):
                 fout.write("__compiletime__ = '{}'\n".format(time.ctime()))
             else:

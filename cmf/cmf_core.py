@@ -661,7 +661,8 @@ class Time(object):
         __init__(cmf::math::Time self) -> Time
         __init__(cmf::math::Time self, long long milliseconds) -> Time
 
-        Time(long long ms) 
+        Time(long long
+        milliseconds) 
         """
         _cmf_core.Time_swiginit(self, _cmf_core.new_Time(*args))
 
@@ -1050,12 +1051,22 @@ class timeseries(object):
     __repr__ = _swig_repr
 
     def set_begin(self, *args, **kwargs):
-        """set_begin(timeseries self, Time new_begin)"""
+        """
+        set_begin(timeseries self, Time new_begin)
+
+        void
+        set_begin(cmf::math::Time new_begin) 
+        """
         return _cmf_core.timeseries_set_begin(self, *args, **kwargs)
 
 
     def set_step(self, *args, **kwargs):
-        """set_step(timeseries self, Time new_step)"""
+        """
+        set_step(timeseries self, Time new_step)
+
+        void
+        set_step(cmf::math::Time new_step) 
+        """
         return _cmf_core.timeseries_set_step(self, *args, **kwargs)
 
 
@@ -1073,7 +1084,11 @@ class timeseries(object):
 
 
     def set_interpolationpower(self, *args, **kwargs):
-        """set_interpolationpower(timeseries self, int new_ip)"""
+        """
+        set_interpolationpower(timeseries self, int new_ip)
+
+        void set_interpolationpower(int new_ip) 
+        """
         return _cmf_core.timeseries_set_interpolationpower(self, *args, **kwargs)
 
 
@@ -1121,7 +1136,11 @@ class timeseries(object):
 
 
     def as_array(self, *args, **kwargs):
-        """as_array(timeseries self) -> cmf::math::num_array"""
+        """
+        as_array(timeseries self) -> cmf::math::num_array
+
+        cmf::math::num_array as_array() const 
+        """
         return _cmf_core.timeseries_as_array(self, *args, **kwargs)
 
 
@@ -11265,22 +11284,36 @@ class Manning(flux_connection):
 
     .. math::
 
+         v = R^{\\frac 2 3}
+        \\frac{\\sqrt{\\Delta_z}}{n} \\\\ q = v \\cdot A 
 
-        q_{Manning}&=& A R^{\\frac 2 3} \\sqrt{\\frac {\\Delta_z} n}
-        \\\\ A &=& \\frac V l \\mbox{, (Crosssectional area of the
-        wetted crossection, Volume per length)} \\\\ R &=& \\frac A
-        {P(d)} \\\\ P(d) &=& \\mbox{ the perimeter of the wetted
-        crosssection, a function of reach depth} \\\\ d(V) &=& \\mbox{
-        the depth of the reach, a function of the volume} \\\\ \\Delta_z
-        &=& \\frac{\\|z_1 - z_2\\|}{l} \\mbox{ Slope of the reach}
-        \\\\ n&=&\\mbox{Manning friction number} 
+    Where:  :math:`A = \\frac V l`: Crosssectional area of the wetted
+    crossection, Volume per length
 
-     For
-    the kinematic wave the slope of the river bed is used as slope
-    :math:`\\Delta_z = \\frac{|z_1 - z_2\\|}{l}`,
+    :math:`R = \\frac A{P(d)}`: The hydraulic radius
+
+    :math:`P(d)`: the perimeter of the wetted crosssection, a function of reach
+    depth
+
+    :math:`d(V)`: the depth of the reach, a function of the volume
+
+    :math:`\\Delta_z = \\frac{|z_1 - z_2|}{l}`: Slope of the reach
+
+    :math:`n`: Manning friction number
+
+    For the kinematic wave the slope of the river bed is used as slope:
+
+
+    .. math::
+
+        \\Delta_z = \\frac{|z_1 - z_2|}{l}
 
     while for the diffusive wave the slope is calculated from the actual
-    water head. :math:`\\Delta_z = \\|\\frac{h_1 - h_2}{l}`
+    water head: 
+
+    .. math::
+
+        \\Delta_z = \\frac{|h_1 - h_2|}{l}
 
     C++ includes: ManningConnection.h 
     """
@@ -13218,17 +13251,20 @@ class ShuttleworthWallace(transpiration_method, soil_evaporation_method, surface
 
     Evaporation from the ground: :math:`\\lambda E_{ground} = \\frac{r_{as} \\Delta\\ R_{n,ground} + c_p\\rho D_0}{\\Delta \\gamma r_{as} + \\gamma r_{ss}}`
 
+    In case of a complete surface water covered ground, the surface
+    resistance :math:`r_{ss}` becomes 0. (GIR)
+
     with  :math:`\\Delta = \\frac{de_s}{dT} = 4098\\ 0.6108 \\exp\\left(\\frac{17.27 T}{T+237.3}\\right)(T+237.3)^{-2}`,
     the slope of the sat. vap. press. T function
 
-    :math:`R_{n,ground} = R_n \\exp(-C_R LAI)`, the net radiation flux in
+    :math:`R_{n,ground} = R_n \\exp(-C_R LAI)`, the net radiation flux to
     the ground
 
-    :math:`R_{n_canopy} = R_n - R_{n,ground}`, the net radiation flux in the
+    :math:`R_{n,canopy} = R_n - R_{n,ground}`, the net radiation flux to the
     canopy
 
-    :math:`\\lambda,c_p\\rho,\\gamma,C_R` constants lambda, c_p_rho,
-    gamma, C_R
+    :math:`\\lambda,c_p\\rho,\\gamma` latent heat of vaporization, heat
+    capacity of air, psychrometer constant
 
     :math:`D_0` vapor pressure deficit at effective source height, see
     function D0
@@ -13243,9 +13279,9 @@ class ShuttleworthWallace(transpiration_method, soil_evaporation_method, surface
     __repr__ = _swig_repr
     RAA = _swig_property(_cmf_core.ShuttleworthWallace_RAA_get, _cmf_core.ShuttleworthWallace_RAA_set)
     RAC = _swig_property(_cmf_core.ShuttleworthWallace_RAC_get, _cmf_core.ShuttleworthWallace_RAC_set)
+    RSC = _swig_property(_cmf_core.ShuttleworthWallace_RSC_get, _cmf_core.ShuttleworthWallace_RSC_set)
     RAS = _swig_property(_cmf_core.ShuttleworthWallace_RAS_get, _cmf_core.ShuttleworthWallace_RAS_set)
     RSS = _swig_property(_cmf_core.ShuttleworthWallace_RSS_get, _cmf_core.ShuttleworthWallace_RSS_set)
-    RSC = _swig_property(_cmf_core.ShuttleworthWallace_RSC_get, _cmf_core.ShuttleworthWallace_RSC_set)
     refresh_counter = _swig_property(_cmf_core.ShuttleworthWallace_refresh_counter_get, _cmf_core.ShuttleworthWallace_refresh_counter_set)
 
     def refresh(self, *args):

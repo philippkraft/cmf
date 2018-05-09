@@ -8346,22 +8346,36 @@ ManningDiffusive connection is selected
 
 .. math::
 
-    
-    q_{Manning}&=& A R^{\\\\frac 2 3} \\\\sqrt{\\\\frac {\\\\Delta_z} n}
-    \\\\\\\\ A &=& \\\\frac V l \\\\mbox{, (Crosssectional area of the
-    wetted crossection, Volume per length)} \\\\\\\\ R &=& \\\\frac A
-    {P(d)} \\\\\\\\ P(d) &=& \\\\mbox{ the perimeter of the wetted
-    crosssection, a function of reach depth} \\\\\\\\ d(V) &=& \\\\mbox{
-    the depth of the reach, a function of the volume} \\\\\\\\ \\\\Delta_z
-    &=& \\\\frac{\\\\|z_1 - z_2\\\\|}{l} \\\\mbox{ Slope of the reach}
-    \\\\\\\\ n&=&\\\\mbox{Manning friction number} 
+     v = R^{\\\\frac 2 3}
+    \\\\frac{\\\\sqrt{\\\\Delta_z}}{n} \\\\\\\\ q = v \\\\cdot A 
 
- For
-the kinematic wave the slope of the river bed is used as slope
-:math:`\\\\Delta_z = \\\\frac{|z_1 - z_2\\\\|}{l}`,
+Where:  :math:`A = \\\\frac V l`: Crosssectional area of the wetted
+crossection, Volume per length
+
+:math:`R = \\\\frac A{P(d)}`: The hydraulic radius
+
+:math:`P(d)`: the perimeter of the wetted crosssection, a function of reach
+depth
+
+:math:`d(V)`: the depth of the reach, a function of the volume
+
+:math:`\\\\Delta_z = \\\\frac{|z_1 - z_2|}{l}`: Slope of the reach
+
+:math:`n`: Manning friction number
+
+For the kinematic wave the slope of the river bed is used as slope:
+
+
+.. math::
+
+    \\\\Delta_z = \\\\frac{|z_1 - z_2|}{l}
 
 while for the diffusive wave the slope is calculated from the actual
-water head. :math:`\\\\Delta_z = \\\\|\\\\frac{h_1 - h_2}{l}`
+water head: 
+
+.. math::
+
+    \\\\Delta_z = \\\\frac{|h_1 - h_2|}{l}
 
 C++ includes: ManningConnection.h ";
 
@@ -12968,17 +12982,20 @@ Evapotranspiration from the canopy: :math:`\\\\lambda ET_{canopy} = \\\\frac{r_{
 
 Evaporation from the ground: :math:`\\\\lambda E_{ground} = \\\\frac{r_{as} \\\\Delta\\\\ R_{n,ground} + c_p\\\\rho D_0}{\\\\Delta \\\\gamma r_{as} + \\\\gamma r_{ss}}`
 
+In case of a complete surface water covered ground, the surface
+resistance :math:`r_{ss}` becomes 0. (GIR)
+
 with  :math:`\\\\Delta = \\\\frac{de_s}{dT} = 4098\\\\ 0.6108 \\\\exp\\\\left(\\\\frac{17.27 T}{T+237.3}\\\\right)(T+237.3)^{-2}`,
 the slope of the sat. vap. press. T function
 
-:math:`R_{n,ground} = R_n \\\\exp(-C_R LAI)`, the net radiation flux in
+:math:`R_{n,ground} = R_n \\\\exp(-C_R LAI)`, the net radiation flux to
 the ground
 
-:math:`R_{n_canopy} = R_n - R_{n,ground}`, the net radiation flux in the
+:math:`R_{n,canopy} = R_n - R_{n,ground}`, the net radiation flux to the
 canopy
 
-:math:`\\\\lambda,c_p\\\\rho,\\\\gamma,C_R` constants lambda, c_p_rho,
-gamma, C_R
+:math:`\\\\lambda,c_p\\\\rho,\\\\gamma` latent heat of vaporization, heat
+capacity of air, psychrometer constant
 
 :math:`D_0` vapor pressure deficit at effective source height, see
 function D0
@@ -15884,6 +15901,9 @@ Copy constructor. ";
 
 Standard constructor. ";
 
+%feature("docstring")  cmf::math::Time::Time "Time(long long
+milliseconds) ";
+
 /*  Time unit conversion  */
 
 %feature("docstring")  cmf::math::Time::AsDays "double AsDays() const
@@ -15929,8 +15949,6 @@ times_in(const Time &t1) const
 Returns the number of times this is included in t1. ";
 
 /*  Boolean Operators  */
-
-%feature("docstring")  cmf::math::Time::Time "Time(long long ms) ";
 
 
 // File: classcmf_1_1math_1_1timeseries.xml
@@ -16048,6 +16066,8 @@ Appends a measurement. ";
 %feature("docstring")  cmf::math::timeseries::adress "size_t adress()
 const ";
 
+%feature("docstring")  cmf::math::timeseries::as_array "cmf::math::num_array as_array() const ";
+
 %feature("docstring")  cmf::math::timeseries::begin "cmf::math::Time
 begin() const
 
@@ -16094,8 +16114,13 @@ returns true if no values are added to the timeseries ";
 %feature("docstring")  cmf::math::timeseries::remove_nodata "void
 remove_nodata(double nodata_value) ";
 
+%feature("docstring")  cmf::math::timeseries::set_begin "void
+set_begin(cmf::math::Time new_begin) ";
+
 %feature("docstring")  cmf::math::timeseries::set_i "void
 set_i(ptrdiff_t i, double value) ";
+
+%feature("docstring")  cmf::math::timeseries::set_interpolationpower "void set_interpolationpower(int new_ip) ";
 
 %feature("docstring")  cmf::math::timeseries::set_slice "void
 set_slice(cmf::math::Time _begin, cmf::math::Time _end,
@@ -16104,6 +16129,9 @@ cmf::math::timeseries values) ";
 %feature("docstring")  cmf::math::timeseries::set_slice "void
 set_slice(ptrdiff_t _begin, ptrdiff_t _end, cmf::math::timeseries
 _values) ";
+
+%feature("docstring")  cmf::math::timeseries::set_step "void
+set_step(cmf::math::Time new_step) ";
 
 %feature("docstring")  cmf::math::timeseries::set_t "void
 set_t(cmf::math::Time t, double value) ";
@@ -19597,16 +19625,22 @@ ymax=1) ";
 // File: _cmf_software_objects_8md.xml
 
 
-// File: _descriptor_8md.xml
+// File: contrib_cpp_8md.xml
+
+
+// File: contrib_docs_8md.xml
+
+
+// File: contrib_py_8md.xml
+
+
+// File: overview_8md.xml
 
 
 // File: _finite_volume_method_8md.xml
 
 
-// File: fluxogram__and__get__fluxes_8md.xml
-
-
-// File: _cmf_download_8md.xml
+// File: index_8md.xml
 
 
 // File: _cmf_install_8md.xml
@@ -19624,7 +19658,25 @@ ymax=1) ";
 // File: _publication_list_8md.xml
 
 
-// File: _software_objects_8md.xml
+// File: atmosphere_8md.xml
+
+
+// File: _cmf_tut_e_t_8md.xml
+
+
+// File: _cmf_tut_intercept_8md.xml
+
+
+// File: _cmf_tut_meteostation_8md.xml
+
+
+// File: _cmf_tut_snow_8md.xml
+
+
+// File: _cmf_tut_test_data_8md.xml
+
+
+// File: _cmf_tut_start_8md.xml
 
 
 // File: _cmf__lumped__simple_8md.xml
@@ -19633,7 +19685,64 @@ ymax=1) ";
 // File: _c_m_f__lumped__without__spotpy_8md.xml
 
 
-// File: _cmflumped_8md.xml
+// File: _cmf_tut_kinematic_wave_8md.xml
+
+
+// File: _cmf_tut_technical_8md.xml
+
+
+// File: _cmf_tut_waterbalance_8md.xml
+
+
+// File: conceptual_8md.xml
+
+
+// File: semi__distributed_8md.xml
+
+
+// File: _simple___infiltration_8md.xml
+
+
+// File: _cmf_tut_boundary_8md.xml
+
+
+// File: _cmf_tut_cell_8md.xml
+
+
+// File: _cmf_tut_first_model_8md.xml
+
+
+// File: _cmf_tut_fluxes_8md.xml
+
+
+// File: _cmf_tut_need_to_know_8md.xml
+
+
+// File: _cmf_tut_project_8md.xml
+
+
+// File: _cmf_tut_solver_8md.xml
+
+
+// File: _cmf_tut_space_time_8md.xml
+
+
+// File: cmf_tut_structure_8md.xml
+
+
+// File: _cmf_tut_units_8md.xml
+
+
+// File: gettingstarted_8md.xml
+
+
+// File: _install_check_8md.xml
+
+
+// File: _descriptor_8md.xml
+
+
+// File: fluxogram__and__get__fluxes_8md.xml
 
 
 // File: _cmf_tut1d_8md.xml
@@ -19645,13 +19754,7 @@ ymax=1) ";
 // File: _cmf_tut3d_8md.xml
 
 
-// File: _cmf_tut_boundary_8md.xml
-
-
 // File: _cmf_tut_boundary2_8md.xml
-
-
-// File: _cmf_tut_cell_8md.xml
 
 
 // File: _cmf_tut_channel_8md.xml
@@ -19660,79 +19763,19 @@ ymax=1) ";
 // File: _cmf_tut_darcian_lateral_flow_8md.xml
 
 
-// File: _cmf_tut_e_t_8md.xml
-
-
-// File: _cmf_tut_first_model_8md.xml
-
-
-// File: _cmf_tut_fluxes_8md.xml
-
-
-// File: _cmf_tut_intercept_8md.xml
-
-
-// File: _cmf_tut_kinematic_wave_8md.xml
-
-
-// File: _cmf_tut_meteostation_8md.xml
-
-
-// File: _cmf_tut_need_to_know_8md.xml
-
-
-// File: _cmf_tut_objective_function_8md.xml
-
-
-// File: _cmf_tut_project_8md.xml
-
-
 // File: _cmf_tut_retentioncurve_8md.xml
-
-
-// File: _cmf_tut_snow_8md.xml
 
 
 // File: _cmf_tut_solute_transport1_d_8md.xml
 
 
-// File: _cmf_tut_solver_8md.xml
-
-
-// File: _cmf_tut_space_time_8md.xml
-
-
-// File: _cmf_tut_start_8md.xml
-
-
 // File: _cmf_tut_surface_runoff_8md.xml
-
-
-// File: _cmf_tut_technical_8md.xml
-
-
-// File: _cmf_tut_test_data_8md.xml
-
-
-// File: _cmf_tut_units_8md.xml
 
 
 // File: _cmf_tut_volume_height_8md.xml
 
 
-// File: _cmf_tut_waterbalance_8md.xml
-
-
-// File: _install_check_8md.xml
-
-
-// File: semi__distributed_8md.xml
-
-
-// File: _simple___infiltration_8md.xml
-
-
-// File: _wiki_start_8md.xml
+// File: physical_8md.xml
 
 
 // File: group__boundary.xml
@@ -19771,43 +19814,67 @@ ymax=1) ";
 // File: group__latflux.xml
 
 
-// File: _cmf_introduction.xml
+// File: cmf_introduction.xml
 
 
-// File: _cmf_recommended_software_environment.xml
+// File: cmf_recommended_software_environment.xml
 
 
-// File: _cmf_software_objects.xml
+// File: cmf_software_objects.xml
 
 
-// File: _descriptor.xml
+// File: contrib_cpp.xml
 
 
-// File: _finite_volume_method.xml
+// File: contrib_docs.xml
 
 
-// File: fluxogram_and_get_fluxes.xml
+// File: contrib_py.xml
 
 
-// File: _cmf_download.xml
+// File: contrib_overview.xml
 
 
-// File: _cmf_install.xml
+// File: contrib_issues.xml
 
 
-// File: _cmf_install_hpc.xml
+// File: finite_volume_method.xml
 
 
-// File: _cmf_install_ubuntu.xml
+// File: cmf_install.xml
 
 
-// File: _cmf_install_windows.xml
+// File: cmf_install_hpc.xml
 
 
-// File: _publication_list.xml
+// File: cmf_install_ubuntu.xml
 
 
-// File: _software_objects.xml
+// File: cmf_install_windows.xml
+
+
+// File: publication_list.xml
+
+
+// File: atmosphere.xml
+
+
+// File: cmf_tut_e_t.xml
+
+
+// File: cmf_tut_intercept.xml
+
+
+// File: cmf_tut_meteostation.xml
+
+
+// File: cmf_tut_snow.xml
+
+
+// File: cmf_tut_test_data.xml
+
+
+// File: tutorial.xml
 
 
 // File: cmf_lumped_simple.xml
@@ -19816,103 +19883,97 @@ ymax=1) ";
 // File: cmf_lumped_without_spotpy.xml
 
 
-// File: _cmflumped.xml
+// File: cmf_tut_kinematic_wave.xml
 
 
-// File: _cmf_tut1d.xml
+// File: cmf_tut_technical.xml
 
 
-// File: _cmf_tut2d.xml
+// File: cmf_tut_waterbalance.xml
 
 
-// File: _cmf_tut3d.xml
-
-
-// File: _cmf_tut_boundary.xml
-
-
-// File: _cmf_tut_boundary2.xml
-
-
-// File: _cmf_tut_cell.xml
-
-
-// File: _cmf_tut_channel.xml
-
-
-// File: _cmf_tut_darcian_lateral_flow.xml
-
-
-// File: _cmf_tut_e_t.xml
-
-
-// File: _cmf_tut_first_model.xml
-
-
-// File: _cmf_tut_fluxes.xml
-
-
-// File: _cmf_tut_intercept.xml
-
-
-// File: _cmf_tut_kinematic_wave.xml
-
-
-// File: _cmf_tut_meteostation.xml
-
-
-// File: _cmf_tut_need_to_know.xml
-
-
-// File: _cmf_tut_objective_function.xml
-
-
-// File: _cmf_tut_project.xml
-
-
-// File: _cmf_tut_retentioncurve.xml
-
-
-// File: _cmf_tut_snow.xml
-
-
-// File: _cmf_tut_solute_transport1_d.xml
-
-
-// File: _cmf_tut_solver.xml
-
-
-// File: _cmf_tut_space_time.xml
-
-
-// File: tutorial.xml
-
-
-// File: _cmf_tut_surface_runoff.xml
-
-
-// File: _cmf_tut_technical.xml
-
-
-// File: _cmf_tut_test_data.xml
-
-
-// File: _cmf_tut_units.xml
-
-
-// File: _cmf_tut_volume_height.xml
-
-
-// File: _cmf_tut_waterbalance.xml
-
-
-// File: _install_check.xml
+// File: conceptual.xml
 
 
 // File: semi_distributed.xml
 
 
 // File: simple_infiltration.xml
+
+
+// File: cmf_tut_boundary.xml
+
+
+// File: cmf_tut_cell.xml
+
+
+// File: cmf_tut_first_model.xml
+
+
+// File: cmf_tut_fluxes.xml
+
+
+// File: cmf_tut_need_to_know.xml
+
+
+// File: cmf_tut_project.xml
+
+
+// File: cmf_tut_solver.xml
+
+
+// File: cmf_tut_space_time.xml
+
+
+// File: cmf_tut_structure.xml
+
+
+// File: cmf_tut_units.xml
+
+
+// File: gettingstarted.xml
+
+
+// File: install_check.xml
+
+
+// File: descriptor.xml
+
+
+// File: fluxogram_and_get_fluxes.xml
+
+
+// File: cmf_tut1d.xml
+
+
+// File: cmf_tut2d.xml
+
+
+// File: cmf_tut3d.xml
+
+
+// File: cmf_tut_boundary2.xml
+
+
+// File: cmf_tut_channel.xml
+
+
+// File: cmf_tut_darcian_lateral_flow.xml
+
+
+// File: cmf_tut_retentioncurve.xml
+
+
+// File: cmf_tut_solute_transport1_d.xml
+
+
+// File: cmf_tut_surface_runoff.xml
+
+
+// File: cmf_tut_volume_height.xml
+
+
+// File: physical.xml
 
 
 // File: todo.xml

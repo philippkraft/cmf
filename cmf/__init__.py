@@ -22,7 +22,7 @@ from .describe import describe
 from .stopwatch import StopWatch
 
 
-__version__ = '1.3'
+__version__ = '1.3.1a0.i33_doc_struct'
 
 from .cmf_core import connect_cells_with_flux as __ccwf
 

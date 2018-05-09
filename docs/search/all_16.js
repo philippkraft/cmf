@@ -1,8 +1,9 @@
 var searchData=
 [
   ['uml_2ddiagram_20of_20the_20main_20cmf_20objects',['UML-diagram of the main cmf objects',['../cmf_software_objects.html',1,'index']]],
-  ['using_20measurement_20stations_20for_20atmospheric_20conditions',['Using measurement stations for atmospheric conditions',['../cmf_tut_meteostation.html',1,'tutorial']]],
-  ['units',['Units',['../cmf_tut_units.html',1,'tutorial']]],
+  ['using_20measurement_20stations_20for_20atmospheric_20conditions',['Using measurement stations for atmospheric conditions',['../cmf_tut_meteostation.html',1,'atmosphere']]],
+  ['units',['Units',['../cmf_tut_units.html',1,'gettingstarted']]],
+  ['understand_20the_20basic_20usage_20of_20cmf',['Understand the basic usage of cmf',['../gettingstarted.html',1,'tutorial']]],
   ['unit',['Unit',['../structcmf_1_1water_1_1solute.html#a6d090dd8491e956d149ddc2b00267536',1,'cmf::water::solute']]],
   ['upstream_5fcount',['upstream_count',['../classcmf_1_1river_1_1_reach.html#a8d8863134f8a28ebe15244df8a98b00b',1,'cmf::river::Reach']]],
   ['uptake',['Uptake',['../structcmf_1_1water_1_1solute.html#a8963a0343ab1844676edae06f3aed6be',1,'cmf::water::solute']]],
