@@ -4,11 +4,13 @@ Calculates the behaviour how puddles in a forest dry out
 """
 import cmf
 
+
 class Model:
+
     def __init__(self):
         self.p = cmf.project()
         self.c = self.p.NewCell(0, 0, 0, 1000, with_surfacewater=True)
-        l = self.c.add_layer(1.0)
+        self.c.add_layer(1.0)
         self.c: cmf.Cell
         cmf.RutterInterception.use_for_cell(self.c)
         self.et = cmf.ShuttleworthWallace.use_for_cell(self.c)
@@ -17,7 +19,7 @@ class Model:
     def __call__(self, days=7):
         self.c.vegetation.LAI = 7
         self.c.vegetation.height = 10
-        self.c.vegetation.CanopyClosure = 0.5
+        self.c.vegetation.CanopyClosure = 1
         l = self.c.layers[0]
         self.c.surfacewater.depth = 0.05
         l.soil.Ksat = 0.02
@@ -30,8 +32,9 @@ class Model:
         solver = cmf.CVodeIntegrator(self.p, 1e-9)
         vol = []
         flux = []
+        resistance = []
+        mpot = []
         self.et.refresh(cmf.Time())
-        print(f'GER={self.et.GER:0.3} mm, GIR={self.et.GIR:0.3} mm')
         for t in solver.run(cmf.Time(), cmf.day * days, cmf.min*6):
             #print(f'{t}: {self.c.surfacewater.depth:0.3f}m')
             vol.append((
@@ -46,19 +49,28 @@ class Model:
                 self.c.layers[0].flux_to(self.c.transpiration, t),
                 self.c.surfacewater.flux_to(self.c.layers[0], t),
             ))
-        return vol, flux
+            resistance.append((
+                self.et.RAA, self.et.RAC, self.et.RAS,
+                self.et.RSC, self.et.RSS
+            ))
+            mpot.append(self.c.surface_water_coverage())
+        return vol, flux, resistance, mpot
 
 if __name__ == '__main__':
+    print(cmf.__version__)
     m = Model()
-    vol, flux = m(7)
+    vol, flux, resistance, mpot = m(10)
     from matplotlib import pylab as plt
-    fig, ax = plt.subplots(2, 1, True)
+    fig, ax = plt.subplots(3, 1, sharex='all')
     plt.sca(ax[0])
     plt.plot(vol)
-    plt.legend(['Canopy', 'Surfacewater', 'Layer'])
+    plt.legend(['Canopy', 'Surfacewater', 'Layer'], loc=0)
     plt.sca(ax[1])
     plt.plot(flux)
-    plt.legend(['E_Canopy', 'E_Surfacewater', 'E_Layer', 'T_Layer', 'Infiltration'])
+    plt.legend(['E_Canopy', 'E_Surfacewater', 'E_Layer', 'T_Layer', 'Infiltration'], loc=0)
+    plt.sca(ax[2])
+    plt.plot(resistance)
+    plt.legend('RAA RAC RAS RSC RSS'.split(), loc=0)
     plt.show()
 
 

@@ -756,7 +756,7 @@ void SNOVAP (double TSNOW, double TA, double EA, double UA, double ZA, double HE
 	PSNVP = KSNVP * PSNVP;
 }
 cmf::upslope::ET::ShuttleworthWallace::ShuttleworthWallace( cmf::upslope::Cell& _cell, bool _allow_dew) 
-:	PTR(0.0), ATR_sum(0.0), ATR(), GER(0.0),PIR(0.0),GIR(0.0), PSNVP(0.0), ASNVP(0.0), cell(_cell),KSNVP(1.0),AIR(0.0),
+:	PTR(0.0), ATR_sum(0.0), ATR(), GER(0.0),PIR(0.0), PSNVP(0.0), ASNVP(0.0), cell(_cell),KSNVP(1.0),AIR(0.0),
 	RAA(0.0),RAC(0.0),RAS(0.0),RSS(0.0),RSC(0.0), refresh_counter(0), allow_dew(_allow_dew)
 {
 	KSNVP = piecewise_linear(cell.vegetation.Height,1,5,1.0,0.3);
@@ -842,34 +842,51 @@ void cmf::upslope::ET::ShuttleworthWallace::refresh( cmf::math::Time t )
 	double albedo = cell.snow_coverage() * 0.9 + (1-cell.snow_coverage()) * v.albedo;
 	double RN = w.Rn(albedo) / WTOMJ;
 	double RNground = RN * exp(-v.CanopyPARExtinction * (LAI+SAI));
-	RSS = FRSS(RSSa ,RSSb, RSSa_pot, cell.get_layer(0)->get_matrix_potential());
+
+	// Get atmospheric resitances RAA, RAC, RAS
 	SWGRA(UA,ZA,h,Z0,DISP,Z0C,DISPC,Z0GS,v.LeafWidth,RHOTP,NN,LAI,SAI,RAA,RAC,RAS);
-	if (w.Rs>0) {
+
+	// Get canopy surface resistance
+	if (w.Rs>0) { // by day
 		SRSC(w.Rs / WTOMJ, w.T, w.e_s-w.e_a, LAI, SAI, GLMIN, GLMAX,
 			R5,CVPD,RM,v.CanopyPARExtinction,
 			T_f[0],T_f[1],T_f[2],T_f[3],
 			RSC);
-	} else {
+	} else { //by night
 		RSC = 1 / (GLMIN * LAI);
 	}
+
+	// Get soil surface resitance neglecting surface water
+	RSS = FRSS(RSSa, RSSb, RSSa_pot, cell.get_layer(0)->get_matrix_potential());
+	// Lower RSS for surfacewater (zero 
+	RSS *= 1 - cell.surface_water_coverage();
+
+	// Get saturated vapor pressure factor
 	double DELTA,ES;
 	ESAT(w.T,ES,DELTA);
 
+	// Calculate potential transpiration for dry leave case
 	SWPE(RN,RNground,w.e_s-w.e_a,RAA,RAC,RAS,RSC,RSS,DELTA,PTR,GER);
-	// Shuttleworth-Wallace potential interception and ground evap. rates
-	// RSC = 0, RSS not changed
-	SWPE(RN,RNground,w.e_s-w.e_a,RAA,RAC,RAS,0,RSS,DELTA,PIR,GIR);
+	
+	// Calculate potential transpiration for wet leave case
+	SWPE(RN,RNground,w.e_s-w.e_a,RAA,RAC,RAS,0,RSS,DELTA,PIR,GER);
 
+	// Get wetness of canopy
 	double VOL_IN_CANOPY = cell.get_canopy() ? cell.m3_to_mm(cell.get_canopy()->get_volume()): 0.0;
 	double MAX_VOL_IN_CANOPY = LAI * cell.vegetation.CanopyCapacityPerLAI;
+	// Calculate actual interception rate from wet leave case and canopy wetness
 	AIR =  piecewise_linear(VOL_IN_CANOPY,0,MAX_VOL_IN_CANOPY,0,PIR);
+	// Already for leave evaporation used energy cannot be used for transpiration
 	PTR -= AIR;
+	// If energy for transpiration is left (dry or partial dry leaves)
 	if (PTR>0.001)	{
+		// Calculate actual transpiration
 		TBYLAYER(1,PTR,DISPC,ALPHA,KK,RROOTI,RXYLEM,PSITI,lc, RHOWG * pF_to_waterhead(4.2),1,ATR_sum,ATR);
 		if (ATR_sum < PTR)
+			// Update ground evaporation
 			SWGE(RN,RNground,w.e_s-w.e_a,RAA,RAS,RSS,DELTA,ATR_sum + AIR,GER);
 
-	} else {
+	} else { // wet leaves no energy for transpiration
 		PTR = 0.0;
 		ATR = 0.0;
 		ATR_sum=0.0;
@@ -880,7 +897,6 @@ void cmf::upslope::ET::ShuttleworthWallace::refresh( cmf::math::Time t )
 		PTR = maximum(PTR,0.0);
 		GER = maximum(GER,0.0);
 		PIR = maximum(PIR,0.0);
-		GIR = maximum(GIR,0.0);
 	}
 
 }
@@ -921,7 +937,7 @@ double cmf::upslope::ET::ShuttleworthWallace::evap_from_openwater( cmf::river::O
 		res += (1-cmf::upslope::connections::snowfraction(w.T)) * GER * 1e-3 * cell.get_area();
 	} 
 	// Get evaporation from open water, if open water is not empty
-	res += GIR * ows->get_height_function().A(ows->get_volume()) * 1e-3 * (1-ows->is_empty());
+	res += GER * cell.surface_water_coverage();
 	return res;
 }
 

@@ -93,15 +93,13 @@ namespace cmf {
 				double PSNVP;
 				/// Actual snow evaporation rate in mm/day
 				double ASNVP;
-				/// Drought stressed soil evaporation rate in mm/day (actual rate may be lower due to snow or surface water cover)
+				/// Ground evaporation rate in mm/day (either from soil or from surfacewater)
 				double GER; 
 				/// Potential leaf evaporation rate in mm/day
 				double PIR;
 				/// Actual leaf evaporation rate in mm/day
 				double AIR;
 				/// potential surface water evaporation rate in mm/day, actual rate depends on surfacewater coverage
-				double GIR; 
-				/// actual transpiration rate in mm/day
 				double ATR_sum;
 				/// actual transpiration rate per layer in mm/day
 				cmf::math::num_array ATR;

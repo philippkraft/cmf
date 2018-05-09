@@ -13299,7 +13299,6 @@ class ShuttleworthWallace(transpiration_method, soil_evaporation_method, surface
     GER = _swig_property(_cmf_core.ShuttleworthWallace_GER_get, _cmf_core.ShuttleworthWallace_GER_set)
     PIR = _swig_property(_cmf_core.ShuttleworthWallace_PIR_get, _cmf_core.ShuttleworthWallace_PIR_set)
     AIR = _swig_property(_cmf_core.ShuttleworthWallace_AIR_get, _cmf_core.ShuttleworthWallace_AIR_set)
-    GIR = _swig_property(_cmf_core.ShuttleworthWallace_GIR_get, _cmf_core.ShuttleworthWallace_GIR_set)
     ATR_sum = _swig_property(_cmf_core.ShuttleworthWallace_ATR_sum_get, _cmf_core.ShuttleworthWallace_ATR_sum_set)
     ATR = _swig_property(_cmf_core.ShuttleworthWallace_ATR_get, _cmf_core.ShuttleworthWallace_ATR_set)
     KSNVP = _swig_property(_cmf_core.ShuttleworthWallace_KSNVP_get, _cmf_core.ShuttleworthWallace_KSNVP_set)
