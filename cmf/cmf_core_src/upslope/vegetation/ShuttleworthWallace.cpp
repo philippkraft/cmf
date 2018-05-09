@@ -858,7 +858,7 @@ void cmf::upslope::ET::ShuttleworthWallace::refresh( cmf::math::Time t )
 
 	// Get soil surface resitance neglecting surface water
 	RSS = FRSS(RSSa, RSSb, RSSa_pot, cell.get_layer(0)->get_matrix_potential());
-	// Lower RSS for surfacewater (zero 
+	// Lower RSS for if surfacewater present (zero for complete surfacewater)
 	RSS *= 1 - cell.surface_water_coverage();
 
 	// Get saturated vapor pressure factor
@@ -937,7 +937,7 @@ double cmf::upslope::ET::ShuttleworthWallace::evap_from_openwater( cmf::river::O
 		res += (1-cmf::upslope::connections::snowfraction(w.T)) * GER * 1e-3 * cell.get_area();
 	} 
 	// Get evaporation from open water, if open water is not empty
-	res += GER * cell.surface_water_coverage();
+	res += GER * cell.surface_water_coverage() * 1e-3 * cell.get_area();
 	return res;
 }
 
