@@ -13251,17 +13251,20 @@ class ShuttleworthWallace(transpiration_method, soil_evaporation_method, surface
 
     Evaporation from the ground: :math:`\\lambda E_{ground} = \\frac{r_{as} \\Delta\\ R_{n,ground} + c_p\\rho D_0}{\\Delta \\gamma r_{as} + \\gamma r_{ss}}`
 
+    In case of a complete surface water covered ground, the surface
+    resistance :math:`r_{ss}` becomes 0. (GIR)
+
     with  :math:`\\Delta = \\frac{de_s}{dT} = 4098\\ 0.6108 \\exp\\left(\\frac{17.27 T}{T+237.3}\\right)(T+237.3)^{-2}`,
     the slope of the sat. vap. press. T function
 
-    :math:`R_{n,ground} = R_n \\exp(-C_R LAI)`, the net radiation flux in
+    :math:`R_{n,ground} = R_n \\exp(-C_R LAI)`, the net radiation flux to
     the ground
 
-    :math:`R_{n_canopy} = R_n - R_{n,ground}`, the net radiation flux in the
+    :math:`R_{n,canopy} = R_n - R_{n,ground}`, the net radiation flux to the
     canopy
 
-    :math:`\\lambda,c_p\\rho,\\gamma,C_R` constants lambda, c_p_rho,
-    gamma, C_R
+    :math:`\\lambda,c_p\\rho,\\gamma` latent heat of vaporization, heat
+    capacity of air, psychrometer constant
 
     :math:`D_0` vapor pressure deficit at effective source height, see
     function D0
@@ -13276,9 +13279,9 @@ class ShuttleworthWallace(transpiration_method, soil_evaporation_method, surface
     __repr__ = _swig_repr
     RAA = _swig_property(_cmf_core.ShuttleworthWallace_RAA_get, _cmf_core.ShuttleworthWallace_RAA_set)
     RAC = _swig_property(_cmf_core.ShuttleworthWallace_RAC_get, _cmf_core.ShuttleworthWallace_RAC_set)
+    RSC = _swig_property(_cmf_core.ShuttleworthWallace_RSC_get, _cmf_core.ShuttleworthWallace_RSC_set)
     RAS = _swig_property(_cmf_core.ShuttleworthWallace_RAS_get, _cmf_core.ShuttleworthWallace_RAS_set)
     RSS = _swig_property(_cmf_core.ShuttleworthWallace_RSS_get, _cmf_core.ShuttleworthWallace_RSS_set)
-    RSC = _swig_property(_cmf_core.ShuttleworthWallace_RSC_get, _cmf_core.ShuttleworthWallace_RSC_set)
     refresh_counter = _swig_property(_cmf_core.ShuttleworthWallace_refresh_counter_get, _cmf_core.ShuttleworthWallace_refresh_counter_set)
 
     def refresh(self, *args):

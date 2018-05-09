@@ -72743,6 +72743,58 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_ShuttleworthWallace_RSC_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  cmf::upslope::ET::ShuttleworthWallace *arg1 = (cmf::upslope::ET::ShuttleworthWallace *) 0 ;
+  double arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  double val2 ;
+  int ecode2 = 0 ;
+  PyObject *swig_obj[2] ;
+  
+  if (!SWIG_Python_UnpackTuple(args,"ShuttleworthWallace_RSC_set",2,2,swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__upslope__ET__ShuttleworthWallace, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ShuttleworthWallace_RSC_set" "', argument " "1"" of type '" "cmf::upslope::ET::ShuttleworthWallace *""'"); 
+  }
+  arg1 = reinterpret_cast< cmf::upslope::ET::ShuttleworthWallace * >(argp1);
+  ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "ShuttleworthWallace_RSC_set" "', argument " "2"" of type '" "double""'");
+  } 
+  arg2 = static_cast< double >(val2);
+  if (arg1) (arg1)->RSC = arg2;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ShuttleworthWallace_RSC_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  cmf::upslope::ET::ShuttleworthWallace *arg1 = (cmf::upslope::ET::ShuttleworthWallace *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  double result;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__upslope__ET__ShuttleworthWallace, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ShuttleworthWallace_RSC_get" "', argument " "1"" of type '" "cmf::upslope::ET::ShuttleworthWallace *""'"); 
+  }
+  arg1 = reinterpret_cast< cmf::upslope::ET::ShuttleworthWallace * >(argp1);
+  result = (double) ((arg1)->RSC);
+  resultobj = SWIG_From_double(static_cast< double >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_ShuttleworthWallace_RAS_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   cmf::upslope::ET::ShuttleworthWallace *arg1 = (cmf::upslope::ET::ShuttleworthWallace *) 0 ;
@@ -72840,58 +72892,6 @@ SWIGINTERN PyObject *_wrap_ShuttleworthWallace_RSS_get(PyObject *SWIGUNUSEDPARM(
   }
   arg1 = reinterpret_cast< cmf::upslope::ET::ShuttleworthWallace * >(argp1);
   result = (double) ((arg1)->RSS);
-  resultobj = SWIG_From_double(static_cast< double >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_ShuttleworthWallace_RSC_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  cmf::upslope::ET::ShuttleworthWallace *arg1 = (cmf::upslope::ET::ShuttleworthWallace *) 0 ;
-  double arg2 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  double val2 ;
-  int ecode2 = 0 ;
-  PyObject *swig_obj[2] ;
-  
-  if (!SWIG_Python_UnpackTuple(args,"ShuttleworthWallace_RSC_set",2,2,swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__upslope__ET__ShuttleworthWallace, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ShuttleworthWallace_RSC_set" "', argument " "1"" of type '" "cmf::upslope::ET::ShuttleworthWallace *""'"); 
-  }
-  arg1 = reinterpret_cast< cmf::upslope::ET::ShuttleworthWallace * >(argp1);
-  ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "ShuttleworthWallace_RSC_set" "', argument " "2"" of type '" "double""'");
-  } 
-  arg2 = static_cast< double >(val2);
-  if (arg1) (arg1)->RSC = arg2;
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_ShuttleworthWallace_RSC_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  cmf::upslope::ET::ShuttleworthWallace *arg1 = (cmf::upslope::ET::ShuttleworthWallace *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject *swig_obj[1] ;
-  double result;
-  
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__upslope__ET__ShuttleworthWallace, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ShuttleworthWallace_RSC_get" "', argument " "1"" of type '" "cmf::upslope::ET::ShuttleworthWallace *""'"); 
-  }
-  arg1 = reinterpret_cast< cmf::upslope::ET::ShuttleworthWallace * >(argp1);
-  result = (double) ((arg1)->RSC);
   resultobj = SWIG_From_double(static_cast< double >(result));
   return resultobj;
 fail:
@@ -81612,12 +81612,12 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"ShuttleworthWallace_RAA_get", (PyCFunction)_wrap_ShuttleworthWallace_RAA_get, METH_O, (char *)"ShuttleworthWallace_RAA_get(ShuttleworthWallace self) -> double"},
 	 { (char *)"ShuttleworthWallace_RAC_set", _wrap_ShuttleworthWallace_RAC_set, METH_VARARGS, (char *)"ShuttleworthWallace_RAC_set(ShuttleworthWallace self, double RAC)"},
 	 { (char *)"ShuttleworthWallace_RAC_get", (PyCFunction)_wrap_ShuttleworthWallace_RAC_get, METH_O, (char *)"ShuttleworthWallace_RAC_get(ShuttleworthWallace self) -> double"},
+	 { (char *)"ShuttleworthWallace_RSC_set", _wrap_ShuttleworthWallace_RSC_set, METH_VARARGS, (char *)"ShuttleworthWallace_RSC_set(ShuttleworthWallace self, double RSC)"},
+	 { (char *)"ShuttleworthWallace_RSC_get", (PyCFunction)_wrap_ShuttleworthWallace_RSC_get, METH_O, (char *)"ShuttleworthWallace_RSC_get(ShuttleworthWallace self) -> double"},
 	 { (char *)"ShuttleworthWallace_RAS_set", _wrap_ShuttleworthWallace_RAS_set, METH_VARARGS, (char *)"ShuttleworthWallace_RAS_set(ShuttleworthWallace self, double RAS)"},
 	 { (char *)"ShuttleworthWallace_RAS_get", (PyCFunction)_wrap_ShuttleworthWallace_RAS_get, METH_O, (char *)"ShuttleworthWallace_RAS_get(ShuttleworthWallace self) -> double"},
 	 { (char *)"ShuttleworthWallace_RSS_set", _wrap_ShuttleworthWallace_RSS_set, METH_VARARGS, (char *)"ShuttleworthWallace_RSS_set(ShuttleworthWallace self, double RSS)"},
 	 { (char *)"ShuttleworthWallace_RSS_get", (PyCFunction)_wrap_ShuttleworthWallace_RSS_get, METH_O, (char *)"ShuttleworthWallace_RSS_get(ShuttleworthWallace self) -> double"},
-	 { (char *)"ShuttleworthWallace_RSC_set", _wrap_ShuttleworthWallace_RSC_set, METH_VARARGS, (char *)"ShuttleworthWallace_RSC_set(ShuttleworthWallace self, double RSC)"},
-	 { (char *)"ShuttleworthWallace_RSC_get", (PyCFunction)_wrap_ShuttleworthWallace_RSC_get, METH_O, (char *)"ShuttleworthWallace_RSC_get(ShuttleworthWallace self) -> double"},
 	 { (char *)"ShuttleworthWallace_refresh_counter_set", _wrap_ShuttleworthWallace_refresh_counter_set, METH_VARARGS, (char *)"ShuttleworthWallace_refresh_counter_set(ShuttleworthWallace self, int refresh_counter)"},
 	 { (char *)"ShuttleworthWallace_refresh_counter_get", (PyCFunction)_wrap_ShuttleworthWallace_refresh_counter_get, METH_O, (char *)"ShuttleworthWallace_refresh_counter_get(ShuttleworthWallace self) -> int"},
 	 { (char *)"ShuttleworthWallace_refresh", _wrap_ShuttleworthWallace_refresh, METH_VARARGS, (char *)"\n"
