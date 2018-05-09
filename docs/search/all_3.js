@@ -9,5 +9,6 @@ var searchData=
   ['bidirectional_5fkinematic_5fexchange',['bidirectional_kinematic_exchange',['../classcmf_1_1water_1_1bidirectional__kinematic__exchange.html',1,'bidirectional_kinematic_exchange'],['../classcmf_1_1water_1_1bidirectional__kinematic__exchange.html#a1aa736c30cc27078996d663db6a5b41a',1,'cmf::water::bidirectional_kinematic_exchange::bidirectional_kinematic_exchange()']]],
   ['bottomwidth',['BottomWidth',['../classcmf_1_1river_1_1_s_w_a_t_reach_type.html#a94480edf36edae79b47a248e082f2c2f',1,'cmf::river::SWATReachType']]],
   ['boundary_20conditions',['Boundary conditions',['../group__boundary.html',1,'']]],
-  ['brookscoreyretentioncurve',['BrooksCoreyRetentionCurve',['../classcmf_1_1upslope_1_1_brooks_corey_retention_curve.html',1,'BrooksCoreyRetentionCurve'],['../classcmf_1_1upslope_1_1_brooks_corey_retention_curve.html#ae20b38bafe9ffede98b6267c2df12caf',1,'cmf::upslope::BrooksCoreyRetentionCurve::BrooksCoreyRetentionCurve()']]]
+  ['brookscoreyretentioncurve',['BrooksCoreyRetentionCurve',['../classcmf_1_1upslope_1_1_brooks_corey_retention_curve.html',1,'BrooksCoreyRetentionCurve'],['../classcmf_1_1upslope_1_1_brooks_corey_retention_curve.html#ae20b38bafe9ffede98b6267c2df12caf',1,'cmf::upslope::BrooksCoreyRetentionCurve::BrooksCoreyRetentionCurve()']]],
+  ['boundary_20conditions',['Boundary conditions',['../cmf_tut_boundary.html',1,'gettingstarted']]]
 ];
