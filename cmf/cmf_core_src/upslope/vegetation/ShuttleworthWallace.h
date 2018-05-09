@@ -43,11 +43,13 @@ namespace cmf {
 			/// Evaporation from the ground: 
 			/// \f$\lambda E_{ground} = \frac {r_{as} \Delta\ R_{n,ground} + c_p\rho D_0}{\Delta \gamma r_{as} + \gamma r_{ss}} \f$
 			///
+			/// In case of a complete surface water covered ground, the surface resistance \f$r_{ss}\f$ becomes 0. (GIR)
+			///
 			/// with
 			///  - \f$ \Delta = \frac{de_s}{dT} = 4098\ 0.6108 \exp\left(\frac{17.27 T}{T+237.3}\right)(T+237.3)^{-2} \f$, the slope of the sat. vap. press. T function
-			///  - \f$ R_{n,ground} = R_n \exp(-C_R LAI) \f$, the net radiation flux in the ground
-			///  - \f$ R_{n_canopy} = R_n - R_{n,ground} \f$, the net radiation flux in the canopy
-			///  - \f$ \lambda,c_p\rho,\gamma,C_R \f$ constants lambda, c_p_rho, gamma, C_R
+			///  - \f$ R_{n,ground} = R_n \exp(-C_R LAI) \f$, the net radiation flux to the ground
+			///  - \f$ R_{n,canopy} = R_n - R_{n,ground} \f$, the net radiation flux to the canopy
+			///  - \f$ \lambda,c_p\rho,\gamma\f$ latent heat of vaporization, heat capacity of air, psychrometer constant
 			///  - \f$ D_0 \f$ vapor pressure deficit at effective source height, see function D0
 			///  - \f$ r_{ac}, r_{sc}, r_{as}, r_{ss} \f$ Resistances for the vapor pressure (see below)
 			///
@@ -68,7 +70,16 @@ namespace cmf {
 				cmf::atmosphere::Weather w;
 
 			public:
-				double RAA,RAC,RAS,RSS,RSC;
+				/// Aerodynamic resistance between the effective source height to the free atmosphere
+				double RAA;
+				/// Aerodynamic resistance inside of the canopy
+				double RAC; 
+				/// Surface resistance of the canopy (depending on stomatal resistance and LAI)
+				double RSC;
+				/// Aerodynamic resistance from the ground to the effective source height
+				double RAS;
+				/// Surface resistance of the soil (depending on the topsoil matrix potential)
+				double RSS; 
 				int refresh_counter;
 				/// Calculates all the values
 				void refresh(cmf::math::Time t);
@@ -80,14 +91,15 @@ namespace cmf {
 				double PTR;
 				/// Potential snow evaporation rate in mm/day
 				double PSNVP;
+				/// Actual snow evaporation rate in mm/day
 				double ASNVP;
-				/// Ground evaporation rate in mm/day
+				/// Drought stressed soil evaporation rate in mm/day (actual rate may be lower due to snow or surface water cover)
 				double GER; 
 				/// Potential leaf evaporation rate in mm/day
 				double PIR;
 				/// Actual leaf evaporation rate in mm/day
 				double AIR;
-				/// surface water evaporation rate in mm/day
+				/// potential surface water evaporation rate in mm/day, actual rate depends on surfacewater coverage
 				double GIR; 
 				/// actual transpiration rate in mm/day
 				double ATR_sum;
@@ -116,10 +128,10 @@ namespace cmf {
 				virtual void get_aerodynamic_resistance(double & r_ag,double & r_ac, cmf::math::Time t)  const;
 
 				/// Sets the parameters of the soil surface resistance, a function of the actual water potential
-				/// \f[ r^s_s = RSS_a \left(\frac{\Psi}{\Psi_{RSS_a}}\right)^RSS_b \f]
+				/// \f[ r_{ss} = RSS_a \left(\frac{\Psi}{\Psi_{RSS_a}}\right)^{RSS_b} \f]
 				/// @param _RSSa Resistance in s/m at potential in RSSa_pot
 				/// @param _RSSb Exponent for curve shape
-				/// @param _RSSa_pot Matrix potential (m), where \f$r^s_s = RSS_a\f$
+				/// @param _RSSa_pot Matrix potential (m), where \f$r_{ss} = RSS_a\f$
 				static void set_RSS_parameters(double _RSSa=500., double _RSSb=1.0, double _RSSa_pot=-3.22) {
 					RSSa = _RSSa;
 					RSSb = _RSSb;
