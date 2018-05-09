@@ -25,6 +25,23 @@ take 10 minutes to restructure your program using functions or classes.
 
 ### Module docstring and shebang
 
+If you will ever run your model on a Linux / Unix system, it is a good
+idea to start the file with the so called shebang:
+~~~~~~~~~~~~~~.py
+#! /usr/bin/env python3
+~~~~~~~~~~~~~~
+
+Followed by a docstring explaining the purpose of your program:
+
+~~~~~~~~~~~~~~.py
+"""
+This cmf program is written to demonstrate 
+the structure of any other cmf program
+
+:author: philippkraft (my Github user-name)
+:date: 2018-5-9 
+"""
+~~~~~~~~~~~~~~
 ### Import
 
 To use cmf, the cmf-library must be imported. However, if you like to write
@@ -34,12 +51,13 @@ other libraries / packages in your program, import them also in the beginning.
 Avoid `from xxx import *` commands in all scripts.
 
 The import section of a CMF script, that uses `numpy`-arrays and `matplotlib` 
-plotting might look like:
+plotting and `datetime`'s objects might look like:
 
 ~~~~~~~~~~~~~.py
 from __future__ import division, print_function, absolute_import
 import numpy as np
 from matplotlib import pylab as plt
+from datetime import datetime, timedelta
 import cmf
 ~~~~~~~~~~~~~
 
@@ -104,7 +122,31 @@ solver = cmf.ImplicitEuler(p, 1e-9)
 
 ### Runtime loop
 
-### Presentation
+The solver is used to advance the model in the runtime loop. The runtime loop is
+user defined, to allow the user to interact with the running model in any way.
+Usages of the runtime loop include:
+
+- Store any data from the model in files or in-memory collections (eg. lists, arrays,
+cmf.timeseries, pandas frames etc.)
+- Print model progress to screen 
+- Visual animations of the model state (see cmf/demo/cmf2d.py)
+- Interact with other models as an operator split (@ref publicationList)
+
+To build the runtime loop, the generator method `run` of the solver makes the iteration
+over the model time simple:
+
+~~~~~~~~~~~~~~~~~~~~.py
+starttime = datetime(2018, 5, 9)
+endtime = datetime(2018, 7, 9)
+timestep = timedelta(hours=1)
+
+storage_volume = []
+
+for t in solver.run(starttime, endtime, timestep):
+    print(t)
+    storage_volume.append((W1.volume, W2.volume))
+~~~~~~~~~~~~~~~~~~~~
+
 
 ## Structuring your code
 
@@ -140,7 +182,16 @@ def plot_result(data):
 
 ## CMF and SPOTPY
 
-- Write a model class
-- Example in spotpy
-- Which parameters does my model have?
-- Seperate fixed and dynamic structure (`__init__`, and `set_parameters`)
+[`spotpy`](https://github.com/thouska/spotpy) by Tobias Houska is an 
+ideal partner to calibrate cmf models. In fact, there is a 
+cmf example in spotpy (
+[setup](https://github.com/thouska/spotpy/blob/master/spotpy/examples/spot_setup_cmf_lumped.py),
+[tutorial](https://github.com/thouska/spotpy/blob/master/spotpy/examples/tutorial_cmf_lumped.py),
+[gui](https://github.com/thouska/spotpy/blob/master/spotpy/examples/gui_cmf_lumped.py)
+)
+
+You can see there, how
+- to write a model class
+- you define parameters to calibrate
+- and how to seperate fixed structure (`__init__`), and parameter depending structure
+(`set_parameters`)
