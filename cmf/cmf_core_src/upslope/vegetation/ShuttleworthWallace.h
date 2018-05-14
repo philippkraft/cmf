@@ -23,6 +23,8 @@
 #include <cmath>
 #include "../../atmosphere/meteorology.h"
 #include "ET.h"
+#include "../../water/flux_connection.h"
+#include "../SoilLayer.h"
 
 namespace cmf {
 	namespace upslope {
@@ -54,13 +56,9 @@ namespace cmf {
 			///  - \f$ r_{ac}, r_{sc}, r_{as}, r_{ss} \f$ Resistances for the vapor pressure (see below)
 			///
 
-			class ShuttleworthWallace 
-				: public transpiration_method, 
-				  public soil_evaporation_method, 
-				  public surface_water_evaporation_method, 
-				  public canopy_evaporation_method,
-				  public snow_evaporation_method,
-				  public cmf::atmosphere::aerodynamic_resistance
+			class ShuttleworthWallace
+				: 	public cmf::atmosphere::aerodynamic_resistance
+
 			{
 			private:
 				cmf::upslope::Cell& cell;
@@ -68,8 +66,10 @@ namespace cmf {
 				static double RSSa,RSSb,RSSa_pot;
 				vegetation::Vegetation v;
 				cmf::atmosphere::Weather w;
+				std::vector<cmf::water::flux_connection*> _connections;
 
 			public:
+				typedef std::shared_ptr<ShuttleworthWallace> ptr;
 				/// Aerodynamic resistance between the effective source height to the free atmosphere
 				double RAA;
 				/// Aerodynamic resistance inside of the canopy
@@ -117,11 +117,11 @@ namespace cmf {
 				bool allow_dew;
 
 				// Overwrites for methods
-				virtual double transp_from_layer(cmf::upslope::SoilLayer::ptr sl,cmf::math::Time t);
-				virtual double evap_from_layer(cmf::upslope::SoilLayer::ptr sl,cmf::math::Time t);
-				virtual double evap_from_openwater(cmf::river::OpenWaterStorage::ptr ows,cmf::math::Time t);
-				virtual double evap_from_canopy(cmf::water::WaterStorage::ptr canopy,cmf::math::Time t);
-				virtual double evap_from_snow(cmf::water::WaterStorage::ptr snow,cmf::math::Time t);
+				double transp_from_layer(cmf::upslope::SoilLayer::ptr sl, cmf::math::Time t);
+				double evap_from_layer(cmf::upslope::SoilLayer::ptr sl, cmf::math::Time t);
+				double evap_from_surfacewater(cmf::river::OpenWaterStorage::ptr ows, cmf::math::Time t);
+				double evap_from_canopy(cmf::water::WaterStorage::ptr canopy, cmf::math::Time t);
+				double evap_from_snow(cmf::water::WaterStorage::ptr snow, cmf::math::Time t);
 
 				virtual void get_aerodynamic_resistance(double & r_ag,double & r_ac, cmf::math::Time t)  const;
 
@@ -151,10 +151,124 @@ namespace cmf {
 				/// * If a canopy water storage exists, use SW for Canopy evaporation
 				/// * If a snow storage exist, use SW for snow evaporation
 				/// * if a surface water storage exist, create a connection between it and evaporation (open water transpiration)
-				static ShuttleworthWallace* use_for_cell(cmf::upslope::Cell& cell);
-				virtual ~ShuttleworthWallace() {}
+				static ShuttleworthWallace::ptr use_for_cell(cmf::upslope::Cell& cell);
+				~ShuttleworthWallace();
 			};
-		}		
+			
+
+			/// @brief Connection for Shuttleworth-Wallace transpiration
+			class SW_transpiration : public cmf::water::flux_connection {
+			private:
+				ShuttleworthWallace::ptr _owner;
+				std::weak_ptr<cmf::upslope::SoilLayer> _soillayer;
+			protected:
+				real calc_q(cmf::math::Time t) {
+					return _owner->transp_from_layer(_soillayer.lock(), t);
+				}
+				void NewNodes()
+				{
+					_soillayer = cmf::upslope::SoilLayer::cast(left_node());
+				}
+			public:
+				SW_transpiration(cmf::upslope::SoilLayer::ptr source, cmf::water::flux_node::ptr ET_target, 
+					ShuttleworthWallace::ptr owner)
+					: flux_connection(source, ET_target, "Shuttleworth Wallace transpiration"),
+					_soillayer(source), _owner(owner)
+				{
+					NewNodes();
+				}
+			};
+
+			/// @brief Connection for Shuttleworth-Wallace ground evaporation
+			class SW_evap_from_layer : public cmf::water::flux_connection {
+			private:
+				ShuttleworthWallace::ptr _owner;
+				std::weak_ptr<cmf::upslope::SoilLayer> _soillayer;
+			protected:
+				real calc_q(cmf::math::Time t) {
+					return _owner->evap_from_layer(_soillayer.lock(), t);
+				}
+				void NewNodes()
+				{
+					_soillayer = cmf::upslope::SoilLayer::cast(left_node());
+				}
+			public:
+				SW_evap_from_layer(cmf::upslope::SoilLayer::ptr source, cmf::water::flux_node::ptr ET_target, ShuttleworthWallace::ptr owner)
+					: flux_connection(source, ET_target, "Shuttleworth Wallace ground evaporation"),
+					_soillayer(source), _owner(owner)
+				{
+					NewNodes();
+				}
+			};
+
+			/// @brief Connection for Shuttleworth-Wallace canopy interception evaporation
+			class SW_evap_from_canopy : public cmf::water::flux_connection {
+			private:
+				ShuttleworthWallace::ptr _owner;
+				std::weak_ptr<cmf::water::WaterStorage> _surfacewater;
+			protected:
+				real calc_q(cmf::math::Time t) {
+					return _owner->evap_from_canopy(_surfacewater.lock(), t);
+				}
+				void NewNodes()
+				{
+					_surfacewater = cmf::water::WaterStorage::cast(left_node());
+				}
+			public:
+				SW_evap_from_canopy(cmf::water::WaterStorage::ptr source, cmf::water::flux_node::ptr ET_target, ShuttleworthWallace::ptr owner)
+					: flux_connection(source, ET_target, "Shuttleworth Wallace canopy interception evaporation"),
+					_surfacewater(source), _owner(owner)
+				{
+					NewNodes();
+				}
+			};
+
+			/// @brief Connection for Shuttleworth-Wallace canopy interception evaporation
+			class SW_evap_from_snow : public cmf::water::flux_connection {
+			private:
+				ShuttleworthWallace::ptr _owner;
+				std::weak_ptr<cmf::water::WaterStorage> _surfacewater;
+			protected:
+				real calc_q(cmf::math::Time t) {
+					return _owner->evap_from_snow(_surfacewater.lock(), t);
+				}
+				void NewNodes()
+				{
+					_surfacewater = cmf::water::WaterStorage::cast(left_node());
+				}
+			public:
+				SW_evap_from_snow(cmf::water::WaterStorage::ptr source, cmf::water::flux_node::ptr ET_target, ShuttleworthWallace::ptr owner)
+					: flux_connection(source, ET_target, "Shuttleworth Wallace snow sublimation"),
+					_surfacewater(source), _owner(owner)
+				{
+					NewNodes();
+				}
+			};
+
+
+			/// @brief Connection for Shuttleworth-Wallace canopy interception evaporation
+			class SW_evap_from_surfacewater : public cmf::water::flux_connection {
+			private:
+				ShuttleworthWallace::ptr _owner;
+				std::weak_ptr<cmf::river::OpenWaterStorage> _surfacewater;
+			protected:
+				real calc_q(cmf::math::Time t) {
+					return _owner->evap_from_surfacewater(_surfacewater.lock(), t);
+				}
+				void NewNodes()
+				{
+					_surfacewater = cmf::river::OpenWaterStorage::cast(left_node());
+				}
+			public:
+				SW_evap_from_surfacewater(cmf::river::OpenWaterStorage::ptr source, cmf::water::flux_node::ptr ET_target, ShuttleworthWallace::ptr owner)
+					: flux_connection(source, ET_target, "Shuttleworth Wallace surface water evaporation"),
+					_surfacewater(source), _owner(owner)
+				{
+					NewNodes();
+				}
+			};
+
+		}
 	}
 	
 }
