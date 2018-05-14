@@ -9,5 +9,5 @@ var searchData=
   ['solutes',['solutes',['../classcmf_1_1project.html#aff929fc96b82678bd70da6c5d994e201',1,'cmf::project']]],
   ['source',['source',['../classcmf_1_1water_1_1_solute_storage.html#ab86bb64741cf612ead0fcb06bf202827',1,'cmf::water::SoluteStorage']]],
   ['stomatalresistance',['StomatalResistance',['../classcmf_1_1upslope_1_1vegetation_1_1_vegetation.html#a3b8159cccc0a0f89c24e133aa310281a',1,'cmf::upslope::vegetation::Vegetation']]],
-  ['sunshine',['Sunshine',['../classcmf_1_1atmosphere_1_1_meteo_station.html#afc022656c1245fe173f6566809341805',1,'cmf::atmosphere::MeteoStation::Sunshine()'],['../structcmf_1_1atmosphere_1_1_weather.html#a9a03488c56c9a496ac0c6d957f8ccf93',1,'cmf::atmosphere::Weather::sunshine()']]]
+  ['sunshine',['sunshine',['../structcmf_1_1atmosphere_1_1_weather.html#a9a03488c56c9a496ac0c6d957f8ccf93',1,'cmf::atmosphere::Weather::sunshine()'],['../classcmf_1_1atmosphere_1_1_meteo_station.html#afc022656c1245fe173f6566809341805',1,'cmf::atmosphere::MeteoStation::Sunshine()']]]
 ];

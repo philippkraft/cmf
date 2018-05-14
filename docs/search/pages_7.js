@@ -1,6 +1,7 @@
 var searchData=
 [
-  ['lumped_20model_20with_20spotpy_20tutorial',['Lumped Model with Spotpy Tutorial',['../cmf_lumped_simple.html',1,'tutorial']]],
-  ['lumped_20model_20without_20spotpy_20tutorial',['Lumped model without Spotpy Tutorial',['../cmf_lumped_without_spotpy.html',1,'tutorial']]],
-  ['list_20of_20cmf_20publications',['List of cmf publications',['../publication_list.html',1,'index']]]
+  ['installation_20instructions',['Installation instructions',['../cmf_install.html',1,'index']]],
+  ['interception',['Interception',['../cmf_tut_intercept.html',1,'atmosphere']]],
+  ['is_20hydrology_20kinematic_3f',['Is hydrology kinematic?',['../cmf_tut_kinematic_wave.html',1,'conceptual']]],
+  ['infiltration_20in_20a_20lumped_20model',['Infiltration in a lumped model',['../simple_infiltration.html',1,'conceptual']]]
 ];

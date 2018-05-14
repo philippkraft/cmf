@@ -30,7 +30,7 @@
   <td id="projectlogo"><img alt="Logo" src="cmf-logo-klein.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">cmf
-   &#160;<span id="projectnumber">1.3</span>
+   &#160;<span id="projectnumber">1.3.1a0</span>
    </div>
    <div id="projectbrief">The Catchment Modelling Framework</div>
   </td>
@@ -113,12 +113,24 @@ $(function() {
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Calculates the flux between two open water bodies, using <a class="el" href="classcmf_1_1river_1_1_manning.html" title="Calculates the flux between two open water bodies, using Manning&#39;s equation. ">Manning</a>'s equation. </p>
 <p>This is the base class for a kinematic wave approach (topography driven) and a diffusive wave approach (water table driven). The only difference between both approaches is the calculation of the flux driving slope. For the model, one of ManningKinematic or ManningDiffusive connection is selected </p><p class="formulaDsp">
-\begin{eqnarray*} q_{Manning}&amp;=&amp; A R^{\frac 2 3} \sqrt{\frac {\Delta_z} n} \\ A &amp;=&amp; \frac V l \mbox{, (Crosssectional area of the wetted crossection, Volume per length)} \\ R &amp;=&amp; \frac A {P(d)} \\ P(d) &amp;=&amp; \mbox{ the perimeter of the wetted crosssection, a function of reach depth} \\ d(V) &amp;=&amp; \mbox{ the depth of the reach, a function of the volume} \\ \Delta_z &amp;=&amp; \frac{\|z_1 - z_2\|}{l} \mbox{ Slope of the reach} \\ n&amp;=&amp;\mbox{Manning friction number} \end{eqnarray*}
+\[ v = R^{\frac 2 3} \frac{\sqrt{\Delta_z}}{n} \\ q = v \cdot A \]
 </p>
 <p> <br />
-For the kinematic wave the slope of the river bed is used as slope \(\Delta_z = \frac{|z_1 - z_2\|}{l}\),</p>
-<p>while for the diffusive wave the slope is calculated from the actual water head. \(\Delta_z = \|\frac{h_1 - h_2}{l}\) </p>
-</div><table class="memberdecls">
+Where:</p><ul>
+<li>\( A = \frac V l\): Crosssectional area of the wetted crossection, Volume per length</li>
+<li>\( R = \frac A {P(d)}\): The hydraulic radius</li>
+<li>\(P(d)\): the perimeter of the wetted crosssection, a function of reach depth</li>
+<li>\(d(V)\): the depth of the reach, a function of the volume</li>
+<li>\(\Delta_z = \frac{|z_1 - z_2|}{l}\): Slope of the reach</li>
+<li>\(n\): <a class="el" href="classcmf_1_1river_1_1_manning.html" title="Calculates the flux between two open water bodies, using Manning&#39;s equation. ">Manning</a> friction number</li>
+</ul>
+<p>For the kinematic wave the slope of the river bed is used as slope: </p><p class="formulaDsp">
+\[\Delta_z = \frac{|z_1 - z_2|}{l}\]
+</p>
+<p>while for the diffusive wave the slope is calculated from the actual water head: </p><p class="formulaDsp">
+\[\Delta_z = \frac{|h_1 - h_2|}{l}\]
+</p>
+ </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:ad7fafdce438d10fb5a35e7870737ce23"><td class="memItemLeft" align="right" valign="top">real&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcmf_1_1water_1_1flux__connection.html#ad7fafdce438d10fb5a35e7870737ce23">conc</a> (<a class="el" href="classcmf_1_1math_1_1_time.html">cmf::math::Time</a> t, const <a class="el" href="structcmf_1_1water_1_1solute.html">cmf::water::solute</a> &amp;_Solute)</td></tr>
@@ -274,7 +286,7 @@ const std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="e
 <a class="el" href="http://www.uni-giessen.de/hydro"> 
 Institute of Landscape Ecology and Resources Management,University of Gie&szlig;en</a>
 </h3></td>
-<td>Generated: Wed Apr 18 2018 16:02:23</td>
+<td>Generated: Wed May 9 2018 13:52:59</td>
 </tr></table>
 </small></address>
 </body>

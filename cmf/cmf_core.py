@@ -2131,7 +2131,7 @@ StateVariableList.__len__ = new_instancemethod(_cmf_core.StateVariableList___len
 _cmf_core.StateVariableList_swigregister(StateVariableList)
 # StateVariableList end
 
-class Integrator(StateVariableOwner):
+class Integrator(object):
     """
 
 
@@ -3328,36 +3328,13 @@ class SoluteStorage(StateVariable):
     decay = _swig_property(_cmf_core.SoluteStorage_decay_get, _cmf_core.SoluteStorage_decay_set)
     source = _swig_property(_cmf_core.SoluteStorage_source_get, _cmf_core.SoluteStorage_source_set)
     Solute = _swig_property(_cmf_core.SoluteStorage_Solute_get)
+    conc = _swig_property(_cmf_core.SoluteStorage_conc_get, _cmf_core.SoluteStorage_conc_set)
 
-    def conc(self, *args, **kwargs):
-        """
-        conc(SoluteStorage self) -> real
-
-        real conc()
-        const
-
-        Returns the concentration of the solute. 
-        """
-        return _cmf_core.SoluteStorage_conc(self, *args, **kwargs)
-
-
-    def set_conc(self, *args, **kwargs):
-        """
-        set_conc(SoluteStorage self, real NewConcentration)
-
-        void
-        set_conc(real NewConcentration)
-
-        set a new concentration of dissolved tracers.
-
-        In case of adsorption functions, the isotherm is used 
-        """
-        return _cmf_core.SoluteStorage_set_conc(self, *args, **kwargs)
+    def __repr__(self): 
+        return self.to_string()
 
     __swig_destroy__ = _cmf_core.delete_SoluteStorage
 SoluteStorage.set_adsorption = new_instancemethod(_cmf_core.SoluteStorage_set_adsorption, None, SoluteStorage)
-SoluteStorage.conc = new_instancemethod(_cmf_core.SoluteStorage_conc, None, SoluteStorage)
-SoluteStorage.set_conc = new_instancemethod(_cmf_core.SoluteStorage_set_conc, None, SoluteStorage)
 _cmf_core.SoluteStorage_swigregister(SoluteStorage)
 # SoluteStorage end
 
@@ -4405,9 +4382,15 @@ class WaterStorage(StateVariable, StateVariableOwner, flux_node):
     def __repr__(self): 
         return self.to_string()
 
+
+    def __getitem__(self, *args, **kwargs):
+        """__getitem__(WaterStorage self, solute X) -> SoluteStorage"""
+        return _cmf_core.WaterStorage___getitem__(self, *args, **kwargs)
+
     __swig_destroy__ = _cmf_core.delete_WaterStorage
 WaterStorage.Solute = new_instancemethod(_cmf_core.WaterStorage_Solute, None, WaterStorage)
 WaterStorage.conc = new_instancemethod(_cmf_core.WaterStorage_conc, None, WaterStorage)
+WaterStorage.__getitem__ = new_instancemethod(_cmf_core.WaterStorage___getitem__, None, WaterStorage)
 _cmf_core.WaterStorage_swigregister(WaterStorage)
 # WaterStorage end
 
@@ -7333,7 +7316,7 @@ class Cell(StateVariableOwner):
 
     def surfacewater_as_storage(self, *args, **kwargs):
         """
-        surfacewater_as_storage(Cell self)
+        surfacewater_as_storage(Cell self) -> cmf::upslope::surfacewater_ptr
 
         void surfacewater_as_storage()
 
@@ -7422,7 +7405,6 @@ class Cell(StateVariableOwner):
         """
         return _cmf_core.Cell_albedo(self, *args, **kwargs)
 
-    surface_amplitude = _swig_property(_cmf_core.Cell_surface_amplitude_get, _cmf_core.Cell_surface_amplitude_set)
 
     def surface_water_coverage(self, *args, **kwargs):
         """
@@ -10585,6 +10567,11 @@ class SurfaceWater(OpenWaterStorage):
         return _cmf_core.SurfaceWater_get_height_function(self, *args, **kwargs)
 
 
+    def get_coverage(self, *args, **kwargs):
+        """get_coverage(SurfaceWater self) -> double"""
+        return _cmf_core.SurfaceWater_get_coverage(self, *args, **kwargs)
+
+
     def get_cell(self, *args, **kwargs):
         """
         get_cell(SurfaceWater self) -> Cell
@@ -10610,6 +10597,7 @@ class SurfaceWater(OpenWaterStorage):
 
     __swig_destroy__ = _cmf_core.delete_SurfaceWater
 SurfaceWater.get_height_function = new_instancemethod(_cmf_core.SurfaceWater_get_height_function, None, SurfaceWater)
+SurfaceWater.get_coverage = new_instancemethod(_cmf_core.SurfaceWater_get_coverage, None, SurfaceWater)
 SurfaceWater.get_cell = new_instancemethod(_cmf_core.SurfaceWater_get_cell, None, SurfaceWater)
 _cmf_core.SurfaceWater_swigregister(SurfaceWater)
 # SurfaceWater end
@@ -12485,290 +12473,6 @@ class log_wind_profile(aerodynamic_resistance):
 _cmf_core.log_wind_profile_swigregister(log_wind_profile)
 # log_wind_profile end
 
-class transpiration_method(object):
-    """
-
-
-    Abstract class. Child classes are defining a method for transpiration
-    calculation.
-
-    C++ includes: ET.h 
-    """
-
-    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
-
-    def __init__(self, *args, **kwargs):
-        raise AttributeError("No constructor defined - class is abstract")
-    __repr__ = _swig_repr
-
-    def transp_from_layer(self, *args, **kwargs):
-        """
-        transp_from_layer(transpiration_method self, cmf::upslope::SoilLayer::ptr arg2, Time t) -> double
-
-        virtual
-        double transp_from_layer(cmf::upslope::SoilLayer::ptr, cmf::math::Time
-        t)=0
-
-        returns the transpiration rate from one layer in m3/day 
-        """
-        return _cmf_core.transpiration_method_transp_from_layer(self, *args, **kwargs)
-
-    __swig_destroy__ = _cmf_core.delete_transpiration_method
-transpiration_method.transp_from_layer = new_instancemethod(_cmf_core.transpiration_method_transp_from_layer, None, transpiration_method)
-_cmf_core.transpiration_method_swigregister(transpiration_method)
-# transpiration_method end
-
-class soil_evaporation_method(object):
-    """
-
-
-    Abstract class. Child classes are defining a method for soil
-    evaporation calculation.
-
-    C++ includes: ET.h 
-    """
-
-    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
-
-    def __init__(self, *args, **kwargs):
-        raise AttributeError("No constructor defined - class is abstract")
-    __repr__ = _swig_repr
-
-    def evap_from_layer(self, *args, **kwargs):
-        """
-        evap_from_layer(soil_evaporation_method self, cmf::upslope::SoilLayer::ptr arg2, Time t) -> double
-
-        virtual
-        double evap_from_layer(cmf::upslope::SoilLayer::ptr, cmf::math::Time
-        t)=0
-
-        returns the soil evaporation rate from one layer in m3/day 
-        """
-        return _cmf_core.soil_evaporation_method_evap_from_layer(self, *args, **kwargs)
-
-    __swig_destroy__ = _cmf_core.delete_soil_evaporation_method
-soil_evaporation_method.evap_from_layer = new_instancemethod(_cmf_core.soil_evaporation_method_evap_from_layer, None, soil_evaporation_method)
-_cmf_core.soil_evaporation_method_swigregister(soil_evaporation_method)
-# soil_evaporation_method end
-
-class surface_water_evaporation_method(object):
-    """
-
-
-    Abstract class. Child classes are defining a method for surface water
-    evaporation calculation.
-
-    C++ includes: ET.h 
-    """
-
-    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
-
-    def __init__(self, *args, **kwargs):
-        raise AttributeError("No constructor defined - class is abstract")
-    __repr__ = _swig_repr
-
-    def evap_from_openwater(self, *args, **kwargs):
-        """
-        evap_from_openwater(surface_water_evaporation_method self, cmf::river::OpenWaterStorage::ptr arg2, Time arg3) -> double
-
-        virtual double
-        evap_from_openwater(cmf::river::OpenWaterStorage::ptr,
-        cmf::math::Time)=0 
-        """
-        return _cmf_core.surface_water_evaporation_method_evap_from_openwater(self, *args, **kwargs)
-
-    __swig_destroy__ = _cmf_core.delete_surface_water_evaporation_method
-surface_water_evaporation_method.evap_from_openwater = new_instancemethod(_cmf_core.surface_water_evaporation_method_evap_from_openwater, None, surface_water_evaporation_method)
-_cmf_core.surface_water_evaporation_method_swigregister(surface_water_evaporation_method)
-# surface_water_evaporation_method end
-
-class canopy_evaporation_method(object):
-    """
-
-
-    Abstract class. Child classes are defining a method for intercepted
-    canopy water evaporation calculation.
-
-    C++ includes: ET.h 
-    """
-
-    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
-
-    def __init__(self, *args, **kwargs):
-        raise AttributeError("No constructor defined - class is abstract")
-    __repr__ = _swig_repr
-
-    def evap_from_canopy(self, *args, **kwargs):
-        """
-        evap_from_canopy(canopy_evaporation_method self, cmf::water::WaterStorage::ptr arg2, Time arg3) -> double
-
-        virtual double evap_from_canopy(cmf::water::WaterStorage::ptr,
-        cmf::math::Time)=0 
-        """
-        return _cmf_core.canopy_evaporation_method_evap_from_canopy(self, *args, **kwargs)
-
-    __swig_destroy__ = _cmf_core.delete_canopy_evaporation_method
-canopy_evaporation_method.evap_from_canopy = new_instancemethod(_cmf_core.canopy_evaporation_method_evap_from_canopy, None, canopy_evaporation_method)
-_cmf_core.canopy_evaporation_method_swigregister(canopy_evaporation_method)
-# canopy_evaporation_method end
-
-class snow_evaporation_method(object):
-    """
-
-
-    Abstract class. Child classes are defining a method for snow
-    evaporation calculation.
-
-    C++ includes: ET.h 
-    """
-
-    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
-
-    def __init__(self, *args, **kwargs):
-        raise AttributeError("No constructor defined - class is abstract")
-    __repr__ = _swig_repr
-
-    def evap_from_snow(self, *args, **kwargs):
-        """
-        evap_from_snow(snow_evaporation_method self, cmf::water::WaterStorage::ptr snow, Time t) -> double
-
-        virtual
-        double evap_from_snow(cmf::water::WaterStorage::ptr snow,
-        cmf::math::Time t)=0 
-        """
-        return _cmf_core.snow_evaporation_method_evap_from_snow(self, *args, **kwargs)
-
-    __swig_destroy__ = _cmf_core.delete_snow_evaporation_method
-snow_evaporation_method.evap_from_snow = new_instancemethod(_cmf_core.snow_evaporation_method_evap_from_snow, None, snow_evaporation_method)
-_cmf_core.snow_evaporation_method_swigregister(snow_evaporation_method)
-# snow_evaporation_method end
-
-class transpiration(flux_connection):
-    """
-
-
-    Flux connection using a transpiration_method.
-
-    C++ includes: ET.h 
-    """
-
-    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
-    __repr__ = _swig_repr
-
-    def __init__(self, *args, **kwargs):
-        """
-        __init__(cmf::upslope::ET::transpiration self, cmf::upslope::SoilLayer::ptr source, cmf::water::flux_node::ptr ET_target, std::shared_ptr< cmf::upslope::ET::transpiration_method > _method, std::string method_name) -> transpiration
-
-        transpiration(cmf::upslope::SoilLayer::ptr source,
-        cmf::water::flux_node::ptr ET_target, std::shared_ptr<
-        transpiration_method > _method, std::string method_name) 
-        """
-        _cmf_core.transpiration_swiginit(self, _cmf_core.new_transpiration(*args, **kwargs))
-    __swig_destroy__ = _cmf_core.delete_transpiration
-_cmf_core.transpiration_swigregister(transpiration)
-# transpiration end
-
-class soil_evaporation(flux_connection):
-    """
-
-
-    Flux_connection using a soil_evaporation_method.
-
-    C++ includes: ET.h 
-    """
-
-    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
-    __repr__ = _swig_repr
-
-    def __init__(self, *args, **kwargs):
-        """
-        __init__(cmf::upslope::ET::soil_evaporation self, cmf::upslope::SoilLayer::ptr source, cmf::water::flux_node::ptr ET_target, std::shared_ptr< cmf::upslope::ET::soil_evaporation_method > _method, std::string method_name) -> soil_evaporation
-
-        soil_evaporation(cmf::upslope::SoilLayer::ptr source,
-        cmf::water::flux_node::ptr ET_target, std::shared_ptr<
-        soil_evaporation_method > _method, std::string method_name) 
-        """
-        _cmf_core.soil_evaporation_swiginit(self, _cmf_core.new_soil_evaporation(*args, **kwargs))
-    __swig_destroy__ = _cmf_core.delete_soil_evaporation
-_cmf_core.soil_evaporation_swigregister(soil_evaporation)
-# soil_evaporation end
-
-class canopy_evaporation(flux_connection):
-    """
-
-
-    Flux connection using a canopy_evaporation_method.
-
-    C++ includes: ET.h 
-    """
-
-    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
-    __repr__ = _swig_repr
-
-    def __init__(self, *args, **kwargs):
-        """
-        __init__(cmf::upslope::ET::canopy_evaporation self, cmf::water::WaterStorage::ptr source, cmf::water::flux_node::ptr ET_target, std::shared_ptr< cmf::upslope::ET::canopy_evaporation_method > _method, std::string method_name) -> canopy_evaporation
-
-        canopy_evaporation(cmf::water::WaterStorage::ptr source,
-        cmf::water::flux_node::ptr ET_target, std::shared_ptr<
-        canopy_evaporation_method > _method, std::string method_name) 
-        """
-        _cmf_core.canopy_evaporation_swiginit(self, _cmf_core.new_canopy_evaporation(*args, **kwargs))
-    __swig_destroy__ = _cmf_core.delete_canopy_evaporation
-_cmf_core.canopy_evaporation_swigregister(canopy_evaporation)
-# canopy_evaporation end
-
-class snow_evaporation(flux_connection):
-    """
-
-
-    Flux connection using a snow_evaporation_method.
-
-    C++ includes: ET.h 
-    """
-
-    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
-    __repr__ = _swig_repr
-
-    def __init__(self, *args, **kwargs):
-        """
-        __init__(cmf::upslope::ET::snow_evaporation self, cmf::water::WaterStorage::ptr source, cmf::water::flux_node::ptr ET_target, std::shared_ptr< cmf::upslope::ET::snow_evaporation_method > _method, std::string method_name) -> snow_evaporation
-
-        snow_evaporation(cmf::water::WaterStorage::ptr source,
-        cmf::water::flux_node::ptr ET_target, std::shared_ptr<
-        snow_evaporation_method > _method, std::string method_name) 
-        """
-        _cmf_core.snow_evaporation_swiginit(self, _cmf_core.new_snow_evaporation(*args, **kwargs))
-    __swig_destroy__ = _cmf_core.delete_snow_evaporation
-_cmf_core.snow_evaporation_swigregister(snow_evaporation)
-# snow_evaporation end
-
-class surface_water_evaporation(flux_connection):
-    """
-
-
-    Flux connection using an surface_water_evaporation_method.
-
-    C++ includes: ET.h 
-    """
-
-    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
-    __repr__ = _swig_repr
-
-    def __init__(self, *args, **kwargs):
-        """
-        __init__(cmf::upslope::ET::surface_water_evaporation self, cmf::river::OpenWaterStorage::ptr source, cmf::water::flux_node::ptr ET_target, std::shared_ptr< cmf::upslope::ET::surface_water_evaporation_method > _method, std::string method_name) -> surface_water_evaporation
-
-        surface_water_evaporation(cmf::river::OpenWaterStorage::ptr source,
-        cmf::water::flux_node::ptr ET_target, std::shared_ptr<
-        surface_water_evaporation_method > _method, std::string method_name)
-
-        """
-        _cmf_core.surface_water_evaporation_swiginit(self, _cmf_core.new_surface_water_evaporation(*args, **kwargs))
-    __swig_destroy__ = _cmf_core.delete_surface_water_evaporation
-_cmf_core.surface_water_evaporation_swigregister(surface_water_evaporation)
-# surface_water_evaporation end
-
 
 def PenmanMonteith(*args):
     """
@@ -13227,7 +12931,7 @@ class PenmanEvaporation(flux_connection):
 _cmf_core.PenmanEvaporation_swigregister(PenmanEvaporation)
 # PenmanEvaporation end
 
-class ShuttleworthWallace(transpiration_method, soil_evaporation_method, surface_water_evaporation_method, canopy_evaporation_method, snow_evaporation_method, aerodynamic_resistance):
+class ShuttleworthWallace(aerodynamic_resistance):
     """
 
 
@@ -13251,17 +12955,20 @@ class ShuttleworthWallace(transpiration_method, soil_evaporation_method, surface
 
     Evaporation from the ground: :math:`\\lambda E_{ground} = \\frac{r_{as} \\Delta\\ R_{n,ground} + c_p\\rho D_0}{\\Delta \\gamma r_{as} + \\gamma r_{ss}}`
 
+    In case of a complete surface water covered ground, the surface
+    resistance :math:`r_{ss}` becomes 0. (GIR)
+
     with  :math:`\\Delta = \\frac{de_s}{dT} = 4098\\ 0.6108 \\exp\\left(\\frac{17.27 T}{T+237.3}\\right)(T+237.3)^{-2}`,
     the slope of the sat. vap. press. T function
 
-    :math:`R_{n,ground} = R_n \\exp(-C_R LAI)`, the net radiation flux in
+    :math:`R_{n,ground} = R_n \\exp(-C_R LAI)`, the net radiation flux to
     the ground
 
-    :math:`R_{n_canopy} = R_n - R_{n,ground}`, the net radiation flux in the
+    :math:`R_{n,canopy} = R_n - R_{n,ground}`, the net radiation flux to the
     canopy
 
-    :math:`\\lambda,c_p\\rho,\\gamma,C_R` constants lambda, c_p_rho,
-    gamma, C_R
+    :math:`\\lambda,c_p\\rho,\\gamma` latent heat of vaporization, heat
+    capacity of air, psychrometer constant
 
     :math:`D_0` vapor pressure deficit at effective source height, see
     function D0
@@ -13276,9 +12983,9 @@ class ShuttleworthWallace(transpiration_method, soil_evaporation_method, surface
     __repr__ = _swig_repr
     RAA = _swig_property(_cmf_core.ShuttleworthWallace_RAA_get, _cmf_core.ShuttleworthWallace_RAA_set)
     RAC = _swig_property(_cmf_core.ShuttleworthWallace_RAC_get, _cmf_core.ShuttleworthWallace_RAC_set)
+    RSC = _swig_property(_cmf_core.ShuttleworthWallace_RSC_get, _cmf_core.ShuttleworthWallace_RSC_set)
     RAS = _swig_property(_cmf_core.ShuttleworthWallace_RAS_get, _cmf_core.ShuttleworthWallace_RAS_set)
     RSS = _swig_property(_cmf_core.ShuttleworthWallace_RSS_get, _cmf_core.ShuttleworthWallace_RSS_set)
-    RSC = _swig_property(_cmf_core.ShuttleworthWallace_RSC_get, _cmf_core.ShuttleworthWallace_RSC_set)
     refresh_counter = _swig_property(_cmf_core.ShuttleworthWallace_refresh_counter_get, _cmf_core.ShuttleworthWallace_refresh_counter_set)
 
     def refresh(self, *args):
@@ -13296,11 +13003,63 @@ class ShuttleworthWallace(transpiration_method, soil_evaporation_method, surface
     GER = _swig_property(_cmf_core.ShuttleworthWallace_GER_get, _cmf_core.ShuttleworthWallace_GER_set)
     PIR = _swig_property(_cmf_core.ShuttleworthWallace_PIR_get, _cmf_core.ShuttleworthWallace_PIR_set)
     AIR = _swig_property(_cmf_core.ShuttleworthWallace_AIR_get, _cmf_core.ShuttleworthWallace_AIR_set)
-    GIR = _swig_property(_cmf_core.ShuttleworthWallace_GIR_get, _cmf_core.ShuttleworthWallace_GIR_set)
     ATR_sum = _swig_property(_cmf_core.ShuttleworthWallace_ATR_sum_get, _cmf_core.ShuttleworthWallace_ATR_sum_set)
     ATR = _swig_property(_cmf_core.ShuttleworthWallace_ATR_get, _cmf_core.ShuttleworthWallace_ATR_set)
     KSNVP = _swig_property(_cmf_core.ShuttleworthWallace_KSNVP_get, _cmf_core.ShuttleworthWallace_KSNVP_set)
     allow_dew = _swig_property(_cmf_core.ShuttleworthWallace_allow_dew_get, _cmf_core.ShuttleworthWallace_allow_dew_set)
+
+    def transp_from_layer(self, *args, **kwargs):
+        """
+        transp_from_layer(ShuttleworthWallace self, cmf::upslope::SoilLayer::ptr sl, Time t) -> double
+
+        virtual
+        double transp_from_layer(cmf::upslope::SoilLayer::ptr sl,
+        cmf::math::Time t)
+
+        returns the transpiration rate from one layer in m3/day 
+        """
+        return _cmf_core.ShuttleworthWallace_transp_from_layer(self, *args, **kwargs)
+
+
+    def evap_from_layer(self, *args, **kwargs):
+        """
+        evap_from_layer(ShuttleworthWallace self, cmf::upslope::SoilLayer::ptr sl, Time t) -> double
+
+        virtual
+        double evap_from_layer(cmf::upslope::SoilLayer::ptr sl,
+        cmf::math::Time t)
+
+        returns the soil evaporation rate from one layer in m3/day 
+        """
+        return _cmf_core.ShuttleworthWallace_evap_from_layer(self, *args, **kwargs)
+
+
+    def evap_from_surfacewater(self, *args, **kwargs):
+        """evap_from_surfacewater(ShuttleworthWallace self, cmf::river::OpenWaterStorage::ptr ows, Time t) -> double"""
+        return _cmf_core.ShuttleworthWallace_evap_from_surfacewater(self, *args, **kwargs)
+
+
+    def evap_from_canopy(self, *args, **kwargs):
+        """
+        evap_from_canopy(ShuttleworthWallace self, cmf::water::WaterStorage::ptr canopy, Time t) -> double
+
+        virtual
+        double evap_from_canopy(cmf::water::WaterStorage::ptr canopy,
+        cmf::math::Time t) 
+        """
+        return _cmf_core.ShuttleworthWallace_evap_from_canopy(self, *args, **kwargs)
+
+
+    def evap_from_snow(self, *args, **kwargs):
+        """
+        evap_from_snow(ShuttleworthWallace self, cmf::water::WaterStorage::ptr snow, Time t) -> double
+
+        virtual double
+        evap_from_snow(cmf::water::WaterStorage::ptr snow, cmf::math::Time t)
+
+        """
+        return _cmf_core.ShuttleworthWallace_evap_from_snow(self, *args, **kwargs)
+
 
     def set_RSS_parameters(*args, **kwargs):
         """set_RSS_parameters(double _RSSa=500., double _RSSb=1.0, double _RSSa_pot=-3.22)"""
@@ -13320,12 +13079,17 @@ class ShuttleworthWallace(transpiration_method, soil_evaporation_method, surface
         _cmf_core.ShuttleworthWallace_swiginit(self, _cmf_core.new_ShuttleworthWallace(*args, **kwargs))
 
     def use_for_cell(*args, **kwargs):
-        """use_for_cell(Cell cell) -> ShuttleworthWallace"""
+        """use_for_cell(Cell cell) -> cmf::upslope::ET::ShuttleworthWallace::ptr"""
         return _cmf_core.ShuttleworthWallace_use_for_cell(*args, **kwargs)
 
     use_for_cell = staticmethod(use_for_cell)
     __swig_destroy__ = _cmf_core.delete_ShuttleworthWallace
 ShuttleworthWallace.refresh = new_instancemethod(_cmf_core.ShuttleworthWallace_refresh, None, ShuttleworthWallace)
+ShuttleworthWallace.transp_from_layer = new_instancemethod(_cmf_core.ShuttleworthWallace_transp_from_layer, None, ShuttleworthWallace)
+ShuttleworthWallace.evap_from_layer = new_instancemethod(_cmf_core.ShuttleworthWallace_evap_from_layer, None, ShuttleworthWallace)
+ShuttleworthWallace.evap_from_surfacewater = new_instancemethod(_cmf_core.ShuttleworthWallace_evap_from_surfacewater, None, ShuttleworthWallace)
+ShuttleworthWallace.evap_from_canopy = new_instancemethod(_cmf_core.ShuttleworthWallace_evap_from_canopy, None, ShuttleworthWallace)
+ShuttleworthWallace.evap_from_snow = new_instancemethod(_cmf_core.ShuttleworthWallace_evap_from_snow, None, ShuttleworthWallace)
 _cmf_core.ShuttleworthWallace_swigregister(ShuttleworthWallace)
 # ShuttleworthWallace end
 
@@ -13336,6 +13100,71 @@ _cmf_core.ShuttleworthWallace_swigregister(ShuttleworthWallace)
 
 
 
+
+class SW_transpiration(flux_connection):
+    """Proxy of C++ cmf::upslope::ET::SW_transpiration class."""
+
+    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __repr__ = _swig_repr
+
+    def __init__(self, *args, **kwargs):
+        """__init__(cmf::upslope::ET::SW_transpiration self, cmf::upslope::SoilLayer::ptr source, cmf::water::flux_node::ptr ET_target, cmf::upslope::ET::ShuttleworthWallace::ptr owner) -> SW_transpiration"""
+        _cmf_core.SW_transpiration_swiginit(self, _cmf_core.new_SW_transpiration(*args, **kwargs))
+    __swig_destroy__ = _cmf_core.delete_SW_transpiration
+_cmf_core.SW_transpiration_swigregister(SW_transpiration)
+# SW_transpiration end
+
+class SW_evap_from_layer(flux_connection):
+    """Proxy of C++ cmf::upslope::ET::SW_evap_from_layer class."""
+
+    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __repr__ = _swig_repr
+
+    def __init__(self, *args, **kwargs):
+        """__init__(cmf::upslope::ET::SW_evap_from_layer self, cmf::upslope::SoilLayer::ptr source, cmf::water::flux_node::ptr ET_target, cmf::upslope::ET::ShuttleworthWallace::ptr owner) -> SW_evap_from_layer"""
+        _cmf_core.SW_evap_from_layer_swiginit(self, _cmf_core.new_SW_evap_from_layer(*args, **kwargs))
+    __swig_destroy__ = _cmf_core.delete_SW_evap_from_layer
+_cmf_core.SW_evap_from_layer_swigregister(SW_evap_from_layer)
+# SW_evap_from_layer end
+
+class SW_evap_from_canopy(flux_connection):
+    """Proxy of C++ cmf::upslope::ET::SW_evap_from_canopy class."""
+
+    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __repr__ = _swig_repr
+
+    def __init__(self, *args, **kwargs):
+        """__init__(cmf::upslope::ET::SW_evap_from_canopy self, cmf::water::WaterStorage::ptr source, cmf::water::flux_node::ptr ET_target, cmf::upslope::ET::ShuttleworthWallace::ptr owner) -> SW_evap_from_canopy"""
+        _cmf_core.SW_evap_from_canopy_swiginit(self, _cmf_core.new_SW_evap_from_canopy(*args, **kwargs))
+    __swig_destroy__ = _cmf_core.delete_SW_evap_from_canopy
+_cmf_core.SW_evap_from_canopy_swigregister(SW_evap_from_canopy)
+# SW_evap_from_canopy end
+
+class SW_evap_from_snow(flux_connection):
+    """Proxy of C++ cmf::upslope::ET::SW_evap_from_snow class."""
+
+    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __repr__ = _swig_repr
+
+    def __init__(self, *args, **kwargs):
+        """__init__(cmf::upslope::ET::SW_evap_from_snow self, cmf::water::WaterStorage::ptr source, cmf::water::flux_node::ptr ET_target, cmf::upslope::ET::ShuttleworthWallace::ptr owner) -> SW_evap_from_snow"""
+        _cmf_core.SW_evap_from_snow_swiginit(self, _cmf_core.new_SW_evap_from_snow(*args, **kwargs))
+    __swig_destroy__ = _cmf_core.delete_SW_evap_from_snow
+_cmf_core.SW_evap_from_snow_swigregister(SW_evap_from_snow)
+# SW_evap_from_snow end
+
+class SW_evap_from_surfacewater(flux_connection):
+    """Proxy of C++ cmf::upslope::ET::SW_evap_from_surfacewater class."""
+
+    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __repr__ = _swig_repr
+
+    def __init__(self, *args, **kwargs):
+        """__init__(cmf::upslope::ET::SW_evap_from_surfacewater self, cmf::river::OpenWaterStorage::ptr source, cmf::water::flux_node::ptr ET_target, cmf::upslope::ET::ShuttleworthWallace::ptr owner) -> SW_evap_from_surfacewater"""
+        _cmf_core.SW_evap_from_surfacewater_swiginit(self, _cmf_core.new_SW_evap_from_surfacewater(*args, **kwargs))
+    __swig_destroy__ = _cmf_core.delete_SW_evap_from_surfacewater
+_cmf_core.SW_evap_from_surfacewater_swigregister(SW_evap_from_surfacewater)
+# SW_evap_from_surfacewater end
 
 
 class project_list_wrapper:

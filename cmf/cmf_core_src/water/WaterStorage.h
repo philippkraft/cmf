@@ -85,8 +85,19 @@ namespace cmf {
 			
 			static std::shared_ptr<WaterStorage> from_node(cmf::water::flux_node::ptr node);
 			/// @brief Returns the water quality of the water storage.
-			SoluteStorage& Solute(const cmf::water::solute& _Solute);
-			const SoluteStorage& Solute(const cmf::water::solute& _Solute) const {return *m_Concentrations[_Solute.Id];}
+			SoluteStorage& Solute(const cmf::water::solute _Solute);
+			const SoluteStorage& Solute(const cmf::water::solute _Solute) const {return *m_Concentrations[_Solute.Id];}
+#ifndef SWIG
+			SoluteStorage& operator[](cmf::water::solute _Solute) {
+				return *m_Concentrations[_Solute.Id];
+			}
+			const SoluteStorage& operator[](cmf::water::solute _Solute) const {
+				return *m_Concentrations[_Solute.Id];
+			}
+
+#endif // !SWIG
+
+
 			/// @brief Returns the concentration of the given solute
 			real conc(const cmf::water::solute& _Solute) const;
 			/// @brief Returns the current WaterQuality (concentration of all solutes)

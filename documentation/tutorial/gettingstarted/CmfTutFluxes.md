@@ -1,4 +1,4 @@
-@page cmfTutFluxes "Query fluxes and states"
+@page cmfTutFluxes Query fluxes and states
 
  
 [back...](@ref cmfTutBoundary) [next...](@ref cmfTutSolver)

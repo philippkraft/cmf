@@ -77,8 +77,11 @@
 	}
 }
 
+%attribute(cmf::water::SoluteStorage, real, conc, get_conc, set_conc);
 
 %include "water/SoluteStorage.h"
+%extend__repr__(cmf::water::SoluteStorage);
+
 
 // flux_connection and Node
 %feature("ref") cmf::water::flux_connection ""
@@ -179,6 +182,12 @@ namespace cmf{namespace water {class flux_connection;}}
     flux = property(get_flux,set_flux, doc="The flux over the boundary condition")
 }}
 %extend__repr__(cmf::water::WaterStorage)
+
+%extend cmf::water::WaterStorage {
+	cmf::water::SoluteStorage& __getitem__(cmf::water::solute X) {
+		return (*$self)[X];
+	}
+}
 
 %include "water/simple_connections.h"
 

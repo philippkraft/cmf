@@ -1,4 +1,4 @@
-@page cmfTutFirstModel "Let it flow... the first cmf model"
+@page cmfTutFirstModel Let it flow... the first cmf model
  
 [next...](@ref cmfTutBoundary)
 

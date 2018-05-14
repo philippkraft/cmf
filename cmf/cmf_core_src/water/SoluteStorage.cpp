@@ -50,7 +50,7 @@ cmf::water::SoluteStorage::SoluteStorage(WaterStorage * _water, const cmf::water
 	adsorption(new NullAdsorption)
 {}
 
-real SoluteStorage::conc() const
+real SoluteStorage::get_conc() const
 {
 	real V = m_water->get_volume();
 	real c = this->adsorption->freesolute(get_state(),V) /V;

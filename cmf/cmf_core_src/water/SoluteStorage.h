@@ -60,7 +60,7 @@ namespace cmf {
 			/// @brief The solute, which is stored in this
 			const cmf::water::solute& Solute;
 			/// @brief Returns the concentration of the solute
-			real conc() const;
+			real get_conc() const;
 			/// @brief set a new concentration of dissolved tracers. 
 			///
 			/// In case of adsorption functions, the isotherm is used

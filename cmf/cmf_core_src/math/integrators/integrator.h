@@ -31,7 +31,7 @@ namespace cmf {
 		/// - Integrate
 		/// - copy
 		/// Please provide a custom copy constructor
-		class Integrator : public StateVariableOwner
+		class Integrator
 		{
 		protected:
 			typedef std::vector<StateVariable::ptr> state_vector;

@@ -30,7 +30,7 @@
   <td id="projectlogo"><img alt="Logo" src="cmf-logo-klein.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">cmf
-   &#160;<span id="projectnumber">1.3</span>
+   &#160;<span id="projectnumber">1.3.1a0</span>
    </div>
    <div id="projectbrief">The Catchment Modelling Framework</div>
   </td>
@@ -81,86 +81,13 @@ $(function() {
 <div class="contents">
 <div class="textblock"><dl class="section warning"><dt>Warning</dt><dd><b>Automated reformatting</b>: The tutorials have been ported from one markup language to another and errors might have happened. If you find some code that is not working or if you find places that look weird, please raise an <a href="https://github.com/philippkraft/cmf/issues">issue on GitHub</a> - even if <b>you</b> know how to deal with that problem.</dd></dl>
 <h2>Getting started</h2>
-<ul>
-<li><a class="el" href="cmf_tut_need_to_know.html">What you need to know, before you start</a></li>
-<li><a class="el" href="cmf_install.html">Installation</a></li>
-<li><a class="el" href="install_check.html">Check if cmf is correctly installed</a></li>
-<li><a class="el" href="cmf_tut_project.html">Creating projects</a></li>
-</ul>
-<h3>A first simple model</h3>
-<ul>
-<li><a class="el" href="cmf_tut_first_model.html">Let it flow... the first simple model</a></li>
-<li><a class="el" href="cmf_tut_boundary.html">Boundary conditions</a></li>
-<li><a class="el" href="cmf_tut_fluxes.html">Query fluxes and states</a></li>
-</ul>
-<h3>Units, Space, Time and Numerical Solvers</h3>
-<ul>
-<li><a class="el" href="cmf_tut_units.html">Units in cmf</a></li>
-<li><a class="el" href="cmf_tut_space_time.html">Time and space in cmf</a></li>
-<li><a class="el" href="cmf_tut_cell.html">cells and reaches</a></li>
-<li><a class="el" href="cmf_tut_solver.html">Choosing a solver for the ODE system</a></li>
-</ul>
-<h3>Documenting the model</h3>
-<ul>
-<li><a class="el" href="descriptor.html">Automatic project description</a></li>
-</ul>
-<h2>Interaction with the atmosphere</h2>
-<h3>Distribution of rainfall and other meteorological data</h3>
-<ul>
-<li><a class="el" href="cmf_tut_test_data.html">Test data</a></li>
-<li><a class="el" href="cmf_tut_meteostation.html">Using stations</a></li>
-</ul>
-<h3>Connecting cells with the atmosphere</h3>
-<ul>
-<li><a class="el" href="cmf_tut_e_t.html">Evapotranspiration</a></li>
-<li><a class="el" href="cmf_tut_intercept.html">Interception</a></li>
-<li><a class="el" href="cmf_tut_snow.html">Snow</a></li>
-</ul>
+<p><a class="el" href="gettingstarted.html">Understand the basic usage of cmf</a></p>
+<h2>Interact with the atmosphere</h2>
+<p><a class="el" href="atmosphere.html">Hydrological interactions with the atmosphere</a></p>
 <h2>Conceptual Models</h2>
-<h3>Conceptual Connections</h3>
-<ul>
-<li><a class="el" href="cmf_tut_kinematic_wave.html">Kinematic waves</a> as swiss army knife for conceptual model building</li>
-<li><a class="el" href="simple_infiltration.html">Infiltration</a></li>
-<li><a class="el" href="cmf_tut_technical.html">Technical Flux</a></li>
-<li><a class="el" href="cmf_tut_waterbalance.html">Waterbalance Connection</a></li>
-</ul>
-<h3>Lumped Model</h3>
-<p>The lumped model tutorials are still under development</p>
-<ul>
-<li><a class="el" href="cmf_lumped_without_spotpy.html">Lumped Model without Spotpy</a></li>
-<li><a class="el" href="cmf_lumped_simple.html">Lumped Model with Spotpy</a></li>
-</ul>
-<h3>Semi-distributed Model</h3>
-<p>Under development:</p>
-<ul>
-<li><a class="el" href="semi_distributed.html">Semi-distributed Model</a></li>
-</ul>
+<p><a class="el" href="conceptual.html">Conceptual Models with CMF</a></p>
 <h2>Physical Models</h2>
-<h3>Introducing hydraulic head in cmf</h3>
-<ul>
-<li><a class="el" href="cmf_tut_retentioncurve.html">Hydraulic head in the subsurface</a></li>
-<li><a class="el" href="cmf_tut_volume_height.html">Hydraulic head in surface water</a></li>
-<li><a class="el" href="cmf_tut_boundary2.html">Hydraulic head based boundary conditions</a></li>
-</ul>
-<h3>Soil column (1D)</h3>
-<ul>
-<li><a class="el" href="cmf_tut1d.html">Simple 1D Model</a></li>
-<li><a class="el" href="cmf_tut_solute_transport1_d.html">Solute transport</a></li>
-</ul>
-<h3>Hillslope (2D)</h3>
-<ul>
-<li><a class="el" href="cmf_tut_darcian_lateral_flow.html">Darcian flow connections</a></li>
-<li><a class="el" href="cmf_tut_surface_runoff.html">Surface runoff</a></li>
-<li><a class="el" href="cmf_tut2d.html">Simple hillslope model</a></li>
-</ul>
-<h3>Channeled flow</h3>
-<ul>
-<li><a class="el" href="cmf_tut_channel.html">Simple channel flow model</a></li>
-</ul>
-<h3>3D Model</h3>
-<ul>
-<li><a class="el" href="cmf_tut3d.html">3D Model</a></li>
-</ul>
+<p><a class="el" href="physical.html">Physical models with CMF</a></p>
 <h2>Tutorials under construction</h2>
 <p>The tutorials listed here are not ready to use. They may not work, need revisions or use deprecated or experimental cmf methods</p>
 <h3>Documenting the model</h3>
@@ -175,7 +102,7 @@ $(function() {
 <a class="el" href="http://www.uni-giessen.de/hydro"> 
 Institute of Landscape Ecology and Resources Management,University of Gie&szlig;en</a>
 </h3></td>
-<td>Generated: Wed Apr 18 2018 16:02:21</td>
+<td>Generated: Wed May 9 2018 13:52:57</td>
 </tr></table>
 </small></address>
 </body>

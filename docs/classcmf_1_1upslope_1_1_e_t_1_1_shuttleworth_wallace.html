@@ -30,7 +30,7 @@
   <td id="projectlogo"><img alt="Logo" src="cmf-logo-klein.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">cmf
-   &#160;<span id="projectnumber">1.3</span>
+   &#160;<span id="projectnumber">1.3.1a0</span>
    </div>
    <div id="projectbrief">The Catchment Modelling Framework</div>
   </td>
@@ -127,11 +127,12 @@ $(function() {
 <p>Calculation procedure, as in BROOK 90:</p>
 <p>Evapotranspiration from the canopy: \(\lambda ET_{canopy} = \frac {r_{ac} \Delta\ R_{n,canopy} + c_p\rho D_0}{\Delta \gamma r_{ac} + \gamma r_{sc}} \)</p>
 <p>Evaporation from the ground: \(\lambda E_{ground} = \frac {r_{as} \Delta\ R_{n,ground} + c_p\rho D_0}{\Delta \gamma r_{as} + \gamma r_{ss}} \)</p>
+<p>In case of a complete surface water covered ground, the surface resistance \(r_{ss}\) becomes 0. (GIR)</p>
 <p>with</p><ul>
 <li>\( \Delta = \frac{de_s}{dT} = 4098\ 0.6108 \exp\left(\frac{17.27 T}{T+237.3}\right)(T+237.3)^{-2} \), the slope of the sat. vap. press. T function</li>
-<li>\( R_{n,ground} = R_n \exp(-C_R LAI) \), the net radiation flux in the ground</li>
-<li>\( R_{n_canopy} = R_n - R_{n,ground} \), the net radiation flux in the canopy</li>
-<li>\( \lambda,c_p\rho,\gamma,C_R \) constants lambda, c_p_rho, gamma, C_R</li>
+<li>\( R_{n,ground} = R_n \exp(-C_R LAI) \), the net radiation flux to the ground</li>
+<li>\( R_{n,canopy} = R_n - R_{n,ground} \), the net radiation flux to the canopy</li>
+<li>\( \lambda,c_p\rho,\gamma\) latent heat of vaporization, heat capacity of air, psychrometer constant</li>
 <li>\( D_0 \) vapor pressure deficit at effective source height, see function D0</li>
 <li>\( r_{ac}, r_{sc}, r_{as}, r_{ss} \) Resistances for the vapor pressure (see below) </li>
 </ul>
@@ -170,7 +171,7 @@ virtual double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" 
 Static Public Member Functions</h2></td></tr>
 <tr class="memitem:a74edd1b52909ad72c27c8c46678e90f7"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcmf_1_1upslope_1_1_e_t_1_1_shuttleworth_wallace.html#a74edd1b52909ad72c27c8c46678e90f7">set_RSS_parameters</a> (double _RSSa=500., double _RSSb=1.0, double _RSSa_pot=-3.22)</td></tr>
 <tr class="memdesc:a74edd1b52909ad72c27c8c46678e90f7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the parameters of the soil surface resistance, a function of the actual water potential </p><p class="formulaDsp">
-\[ r^s_s = RSS_a \left(\frac{\Psi}{\Psi_{RSS_a}}\right)^RSS_b \]
+\[ r_{ss} = RSS_a \left(\frac{\Psi}{\Psi_{RSS_a}}\right)^{RSS_b} \]
 </p>
 <p>.  <a href="#a74edd1b52909ad72c27c8c46678e90f7">More...</a><br /></td></tr>
 <tr class="separator:a74edd1b52909ad72c27c8c46678e90f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -187,6 +188,10 @@ double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cl
 <tr class="memitem:ac2dade73cf0c141443e7c882250d7c2a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcmf_1_1upslope_1_1_e_t_1_1_shuttleworth_wallace.html#ac2dade73cf0c141443e7c882250d7c2a">allow_dew</a></td></tr>
 <tr class="memdesc:ac2dade73cf0c141443e7c882250d7c2a"><td class="mdescLeft">&#160;</td><td class="mdescRight">If allow_dew is true (default), negative net radiation can lead to the formation of dew and rime.  <a href="#ac2dade73cf0c141443e7c882250d7c2a">More...</a><br /></td></tr>
 <tr class="separator:ac2dade73cf0c141443e7c882250d7c2a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5a106057d26826779f0693d7cb8f550a"><td class="memItemLeft" align="right" valign="top"><a id="a5a106057d26826779f0693d7cb8f550a"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcmf_1_1upslope_1_1_e_t_1_1_shuttleworth_wallace.html#a5a106057d26826779f0693d7cb8f550a">ASNVP</a></td></tr>
+<tr class="memdesc:a5a106057d26826779f0693d7cb8f550a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Actual snow evaporation rate in mm/day. <br /></td></tr>
+<tr class="separator:a5a106057d26826779f0693d7cb8f550a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab467b0bcc9faff847e29b43385ce99a2"><td class="memItemLeft" align="right" valign="top"><a id="ab467b0bcc9faff847e29b43385ce99a2"></a>
 <a class="el" href="classcmf_1_1math_1_1num__array.html">cmf::math::num_array</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcmf_1_1upslope_1_1_e_t_1_1_shuttleworth_wallace.html#ab467b0bcc9faff847e29b43385ce99a2">ATR</a></td></tr>
 <tr class="memdesc:ab467b0bcc9faff847e29b43385ce99a2"><td class="mdescLeft">&#160;</td><td class="mdescRight">actual transpiration rate per layer in mm/day <br /></td></tr>
@@ -197,11 +202,11 @@ double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cl
 <tr class="separator:a4c12e917cdc9d277c384f6cb36b98226"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1fd9f39ca20196e24de85152eb2cd44a"><td class="memItemLeft" align="right" valign="top"><a id="a1fd9f39ca20196e24de85152eb2cd44a"></a>
 double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcmf_1_1upslope_1_1_e_t_1_1_shuttleworth_wallace.html#a1fd9f39ca20196e24de85152eb2cd44a">GER</a></td></tr>
-<tr class="memdesc:a1fd9f39ca20196e24de85152eb2cd44a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ground evaporation rate in mm/day. <br /></td></tr>
+<tr class="memdesc:a1fd9f39ca20196e24de85152eb2cd44a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Drought stressed soil evaporation rate in mm/day (actual rate may be lower due to snow or surface water cover) <br /></td></tr>
 <tr class="separator:a1fd9f39ca20196e24de85152eb2cd44a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad6c82be1c11208f544ea1b61e4ae18e7"><td class="memItemLeft" align="right" valign="top"><a id="ad6c82be1c11208f544ea1b61e4ae18e7"></a>
 double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcmf_1_1upslope_1_1_e_t_1_1_shuttleworth_wallace.html#ad6c82be1c11208f544ea1b61e4ae18e7">GIR</a></td></tr>
-<tr class="memdesc:ad6c82be1c11208f544ea1b61e4ae18e7"><td class="mdescLeft">&#160;</td><td class="mdescRight">surface water evaporation rate in mm/day <br /></td></tr>
+<tr class="memdesc:ad6c82be1c11208f544ea1b61e4ae18e7"><td class="mdescLeft">&#160;</td><td class="mdescRight">potential surface water evaporation rate in mm/day, actual rate depends on surfacewater coverage <br /></td></tr>
 <tr class="separator:ad6c82be1c11208f544ea1b61e4ae18e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aabb3302dddc035d9d481df5d95637868"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcmf_1_1upslope_1_1_e_t_1_1_shuttleworth_wallace.html#aabb3302dddc035d9d481df5d95637868">KSNVP</a></td></tr>
 <tr class="memdesc:aabb3302dddc035d9d481df5d95637868"><td class="mdescLeft">&#160;</td><td class="mdescRight">multiplier to reduce snow evaporation, dimensionless.  <a href="#aabb3302dddc035d9d481df5d95637868">More...</a><br /></td></tr>
@@ -218,6 +223,26 @@ double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cl
 double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcmf_1_1upslope_1_1_e_t_1_1_shuttleworth_wallace.html#aa85669e0720117b66b08f1ffe325dfe4">PTR</a></td></tr>
 <tr class="memdesc:aa85669e0720117b66b08f1ffe325dfe4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Potential transpiration rate in mm/day. <br /></td></tr>
 <tr class="separator:aa85669e0720117b66b08f1ffe325dfe4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae425f7dc0506c59557e5650a94b6c11e"><td class="memItemLeft" align="right" valign="top"><a id="ae425f7dc0506c59557e5650a94b6c11e"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcmf_1_1upslope_1_1_e_t_1_1_shuttleworth_wallace.html#ae425f7dc0506c59557e5650a94b6c11e">RAA</a></td></tr>
+<tr class="memdesc:ae425f7dc0506c59557e5650a94b6c11e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Aerodynamic resistance between the effective source height to the free atmosphere. <br /></td></tr>
+<tr class="separator:ae425f7dc0506c59557e5650a94b6c11e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a58c5e740c5cdc57e1662508220c240df"><td class="memItemLeft" align="right" valign="top"><a id="a58c5e740c5cdc57e1662508220c240df"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcmf_1_1upslope_1_1_e_t_1_1_shuttleworth_wallace.html#a58c5e740c5cdc57e1662508220c240df">RAC</a></td></tr>
+<tr class="memdesc:a58c5e740c5cdc57e1662508220c240df"><td class="mdescLeft">&#160;</td><td class="mdescRight">Aerodynamic resistance inside of the canopy. <br /></td></tr>
+<tr class="separator:a58c5e740c5cdc57e1662508220c240df"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5b7f55f19760934ca83db9426d87faa0"><td class="memItemLeft" align="right" valign="top"><a id="a5b7f55f19760934ca83db9426d87faa0"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcmf_1_1upslope_1_1_e_t_1_1_shuttleworth_wallace.html#a5b7f55f19760934ca83db9426d87faa0">RAS</a></td></tr>
+<tr class="memdesc:a5b7f55f19760934ca83db9426d87faa0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Aerodynamic resistance from the ground to the effective source height. <br /></td></tr>
+<tr class="separator:a5b7f55f19760934ca83db9426d87faa0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab4598d320141994a2f8d3c3b989c774b"><td class="memItemLeft" align="right" valign="top"><a id="ab4598d320141994a2f8d3c3b989c774b"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcmf_1_1upslope_1_1_e_t_1_1_shuttleworth_wallace.html#ab4598d320141994a2f8d3c3b989c774b">RSC</a></td></tr>
+<tr class="memdesc:ab4598d320141994a2f8d3c3b989c774b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Surface resistance of the canopy (depending on stomatal resistance and LAI) <br /></td></tr>
+<tr class="separator:ab4598d320141994a2f8d3c3b989c774b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a57962795da335aebadd3fce2f1ece1ce"><td class="memItemLeft" align="right" valign="top"><a id="a57962795da335aebadd3fce2f1ece1ce"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcmf_1_1upslope_1_1_e_t_1_1_shuttleworth_wallace.html#a57962795da335aebadd3fce2f1ece1ce">RSS</a></td></tr>
+<tr class="memdesc:a57962795da335aebadd3fce2f1ece1ce"><td class="mdescLeft">&#160;</td><td class="mdescRight">Surface resistance of the soil (depending on the topsoil matrix potential) <br /></td></tr>
+<tr class="separator:a57962795da335aebadd3fce2f1ece1ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Function Documentation</h2>
 <a id="a74edd1b52909ad72c27c8c46678e90f7"></a>
@@ -261,14 +286,14 @@ double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cl
 </div><div class="memdoc">
 
 <p>Sets the parameters of the soil surface resistance, a function of the actual water potential </p><p class="formulaDsp">
-\[ r^s_s = RSS_a \left(\frac{\Psi}{\Psi_{RSS_a}}\right)^RSS_b \]
+\[ r_{ss} = RSS_a \left(\frac{\Psi}{\Psi_{RSS_a}}\right)^{RSS_b} \]
 </p>
 <p>. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">_RSSa</td><td>Resistance in s/m at potential in RSSa_pot </td></tr>
     <tr><td class="paramname">_RSSb</td><td>Exponent for curve shape </td></tr>
-    <tr><td class="paramname">_RSSa_pot</td><td>Matrix potential (m), where \(r^s_s = RSS_a\) </td></tr>
+    <tr><td class="paramname">_RSSa_pot</td><td>Matrix potential (m), where \(r_{ss} = RSS_a\) </td></tr>
   </table>
   </dd>
 </dl>
@@ -353,7 +378,7 @@ double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cl
 <a class="el" href="http://www.uni-giessen.de/hydro"> 
 Institute of Landscape Ecology and Resources Management,University of Gie&szlig;en</a>
 </h3></td>
-<td>Generated: Wed Apr 18 2018 16:02:25</td>
+<td>Generated: Wed May 9 2018 13:53:01</td>
 </tr></table>
 </small></address>
 </body>

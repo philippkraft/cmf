@@ -3074,145 +3074,136 @@ SWIG_Python_NonDynamicSetAttr(PyObject *obj, PyObject *name, PyObject *value) {
 #define SWIGTYPE_p_cmf__upslope__ET__PenmanMonteithET swig_types[62]
 #define SWIGTYPE_p_cmf__upslope__ET__PriestleyTaylorET swig_types[63]
 #define SWIGTYPE_p_cmf__upslope__ET__RootUptakeStessFunction swig_types[64]
-#define SWIGTYPE_p_cmf__upslope__ET__ShuttleworthWallace swig_types[65]
-#define SWIGTYPE_p_cmf__upslope__ET__SuctionStress swig_types[66]
-#define SWIGTYPE_p_cmf__upslope__ET__TurcET swig_types[67]
-#define SWIGTYPE_p_cmf__upslope__ET__VolumeStress swig_types[68]
-#define SWIGTYPE_p_cmf__upslope__ET__canopy_evaporation swig_types[69]
-#define SWIGTYPE_p_cmf__upslope__ET__canopy_evaporation_method swig_types[70]
-#define SWIGTYPE_p_cmf__upslope__ET__constantETpot swig_types[71]
-#define SWIGTYPE_p_cmf__upslope__ET__snow_evaporation swig_types[72]
-#define SWIGTYPE_p_cmf__upslope__ET__snow_evaporation_method swig_types[73]
-#define SWIGTYPE_p_cmf__upslope__ET__soil_evaporation swig_types[74]
-#define SWIGTYPE_p_cmf__upslope__ET__soil_evaporation_method swig_types[75]
-#define SWIGTYPE_p_cmf__upslope__ET__stressedET swig_types[76]
-#define SWIGTYPE_p_cmf__upslope__ET__surface_water_evaporation swig_types[77]
-#define SWIGTYPE_p_cmf__upslope__ET__surface_water_evaporation_method swig_types[78]
-#define SWIGTYPE_p_cmf__upslope__ET__timeseriesETpot swig_types[79]
-#define SWIGTYPE_p_cmf__upslope__ET__transpiration swig_types[80]
-#define SWIGTYPE_p_cmf__upslope__ET__transpiration_method swig_types[81]
-#define SWIGTYPE_p_cmf__upslope__LinearRetention swig_types[82]
-#define SWIGTYPE_p_cmf__upslope__MacroPore swig_types[83]
-#define SWIGTYPE_p_cmf__upslope__RetentionCurve swig_types[84]
-#define SWIGTYPE_p_cmf__upslope__SoilLayer swig_types[85]
-#define SWIGTYPE_p_cmf__upslope__SurfaceWater swig_types[86]
-#define SWIGTYPE_p_cmf__upslope__Topology swig_types[87]
-#define SWIGTYPE_p_cmf__upslope__VanGenuchtenMualem swig_types[88]
-#define SWIGTYPE_p_cmf__upslope__aquifer swig_types[89]
-#define SWIGTYPE_p_cmf__upslope__aquifer_Darcy swig_types[90]
-#define SWIGTYPE_p_cmf__upslope__cell_vector swig_types[91]
-#define SWIGTYPE_p_cmf__upslope__connections__BaseMacroFlow swig_types[92]
-#define SWIGTYPE_p_cmf__upslope__connections__CanopyOverflow swig_types[93]
-#define SWIGTYPE_p_cmf__upslope__connections__Darcy swig_types[94]
-#define SWIGTYPE_p_cmf__upslope__connections__DarcyKinematic swig_types[95]
-#define SWIGTYPE_p_cmf__upslope__connections__DiffusiveMacroMicroExchange swig_types[96]
-#define SWIGTYPE_p_cmf__upslope__connections__DiffusiveSurfaceRunoff swig_types[97]
-#define SWIGTYPE_p_cmf__upslope__connections__EnergyBudgetSnowMelt swig_types[98]
-#define SWIGTYPE_p_cmf__upslope__connections__FreeDrainagePercolation swig_types[99]
-#define SWIGTYPE_p_cmf__upslope__connections__GradientMacroFlow swig_types[100]
-#define SWIGTYPE_p_cmf__upslope__connections__GradientMacroMicroExchange swig_types[101]
-#define SWIGTYPE_p_cmf__upslope__connections__GreenAmptInfiltration swig_types[102]
-#define SWIGTYPE_p_cmf__upslope__connections__JarvisMacroFlow swig_types[103]
-#define SWIGTYPE_p_cmf__upslope__connections__KinematicMacroFlow swig_types[104]
-#define SWIGTYPE_p_cmf__upslope__connections__KinematicSurfaceRunoff swig_types[105]
-#define SWIGTYPE_p_cmf__upslope__connections__LayerBypass swig_types[106]
-#define SWIGTYPE_p_cmf__upslope__connections__MACROlikeMacroMicroExchange swig_types[107]
-#define SWIGTYPE_p_cmf__upslope__connections__MatrixInfiltration swig_types[108]
-#define SWIGTYPE_p_cmf__upslope__connections__Rainfall swig_types[109]
-#define SWIGTYPE_p_cmf__upslope__connections__Richards swig_types[110]
-#define SWIGTYPE_p_cmf__upslope__connections__Richards_lateral swig_types[111]
-#define SWIGTYPE_p_cmf__upslope__connections__RutterInterception swig_types[112]
-#define SWIGTYPE_p_cmf__upslope__connections__SWATPercolation swig_types[113]
-#define SWIGTYPE_p_cmf__upslope__connections__SimplRichards swig_types[114]
-#define SWIGTYPE_p_cmf__upslope__connections__SimpleInfiltration swig_types[115]
-#define SWIGTYPE_p_cmf__upslope__connections__SimpleTindexSnowMelt swig_types[116]
-#define SWIGTYPE_p_cmf__upslope__connections__Snowfall swig_types[117]
-#define SWIGTYPE_p_cmf__upslope__connections__TOPModelFlow swig_types[118]
-#define SWIGTYPE_p_cmf__upslope__connections__TopographicGradientDarcy swig_types[119]
-#define SWIGTYPE_p_cmf__upslope__connections__lateral_sub_surface_flux swig_types[120]
-#define SWIGTYPE_p_cmf__upslope__layer_list swig_types[121]
-#define SWIGTYPE_p_cmf__upslope__neighbor_iterator swig_types[122]
-#define SWIGTYPE_p_cmf__upslope__subcatchment swig_types[123]
-#define SWIGTYPE_p_cmf__upslope__vegetation__Vegetation swig_types[124]
-#define SWIGTYPE_p_cmf__water__Adsorption swig_types[125]
-#define SWIGTYPE_p_cmf__water__ConstraintLinearStorageConnection swig_types[126]
-#define SWIGTYPE_p_cmf__water__DirichletBoundary swig_types[127]
-#define SWIGTYPE_p_cmf__water__ExponentialDeclineConnection swig_types[128]
-#define SWIGTYPE_p_cmf__water__FreundlichAdsorbtion swig_types[129]
-#define SWIGTYPE_p_cmf__water__LangmuirAdsorption swig_types[130]
-#define SWIGTYPE_p_cmf__water__LinearAdsorption swig_types[131]
-#define SWIGTYPE_p_cmf__water__LinearStorageConnection swig_types[132]
-#define SWIGTYPE_p_cmf__water__NeumannBoundary swig_types[133]
-#define SWIGTYPE_p_cmf__water__NeumannBoundary_list swig_types[134]
-#define SWIGTYPE_p_cmf__water__NeumannFlux swig_types[135]
-#define SWIGTYPE_p_cmf__water__NullAdsorption swig_types[136]
-#define SWIGTYPE_p_cmf__water__PowerLawConnection swig_types[137]
-#define SWIGTYPE_p_cmf__water__SoluteStorage swig_types[138]
-#define SWIGTYPE_p_cmf__water__SoluteTimeseries swig_types[139]
-#define SWIGTYPE_p_cmf__water__SystemBridge swig_types[140]
-#define SWIGTYPE_p_cmf__water__SystemBridgeConnection swig_types[141]
-#define SWIGTYPE_p_cmf__water__TechnicalFlux swig_types[142]
-#define SWIGTYPE_p_cmf__water__WaterStorage swig_types[143]
-#define SWIGTYPE_p_cmf__water__bidirectional_kinematic_exchange swig_types[144]
-#define SWIGTYPE_p_cmf__water__connection_list swig_types[145]
-#define SWIGTYPE_p_cmf__water__constraint_kinematic_wave swig_types[146]
-#define SWIGTYPE_p_cmf__water__external_control_connection swig_types[147]
-#define SWIGTYPE_p_cmf__water__flux_connection swig_types[148]
-#define SWIGTYPE_p_cmf__water__flux_integrator swig_types[149]
-#define SWIGTYPE_p_cmf__water__flux_node swig_types[150]
-#define SWIGTYPE_p_cmf__water__generic_gradient_connection swig_types[151]
-#define SWIGTYPE_p_cmf__water__kinematic_wave swig_types[152]
-#define SWIGTYPE_p_cmf__water__linear_scale swig_types[153]
-#define SWIGTYPE_p_cmf__water__node_list swig_types[154]
-#define SWIGTYPE_p_cmf__water__solute swig_types[155]
-#define SWIGTYPE_p_cmf__water__solute_vector swig_types[156]
-#define SWIGTYPE_p_cmf__water__statecontrol_connection swig_types[157]
-#define SWIGTYPE_p_cmf__water__waterbalance_connection swig_types[158]
-#define SWIGTYPE_p_cmf__water__waterbalance_integrator swig_types[159]
-#define SWIGTYPE_p_const_iterator swig_types[160]
-#define SWIGTYPE_p_double swig_types[161]
-#define SWIGTYPE_p_f_r_cmf__upslope__Cell_r_cmf__upslope__Cell_ptrdiff_t__void swig_types[162]
-#define SWIGTYPE_p_iterator swig_types[163]
-#define SWIGTYPE_p_ptr swig_types[164]
-#define SWIGTYPE_p_std__shared_ptrT_SoilLayer_t swig_types[165]
-#define SWIGTYPE_p_std__shared_ptrT_cmf__atmosphere__ConstantRainSource_t swig_types[166]
-#define SWIGTYPE_p_std__shared_ptrT_cmf__atmosphere__IDWRainfall_t swig_types[167]
-#define SWIGTYPE_p_std__shared_ptrT_cmf__atmosphere__MeteoStation_t swig_types[168]
-#define SWIGTYPE_p_std__shared_ptrT_cmf__atmosphere__RainSource_t swig_types[169]
-#define SWIGTYPE_p_std__shared_ptrT_cmf__atmosphere__RainfallStationReference_t swig_types[170]
-#define SWIGTYPE_p_std__shared_ptrT_cmf__atmosphere__RainfallStation_t swig_types[171]
-#define SWIGTYPE_p_std__shared_ptrT_cmf__atmosphere__TimeseriesRainSource_t swig_types[172]
-#define SWIGTYPE_p_std__shared_ptrT_cmf__atmosphere__aerodynamic_resistance_t swig_types[173]
-#define SWIGTYPE_p_std__shared_ptrT_cmf__math__StateVariable_t swig_types[174]
-#define SWIGTYPE_p_std__shared_ptrT_cmf__math__integratable_t swig_types[175]
-#define SWIGTYPE_p_std__shared_ptrT_cmf__river__OpenWaterStorage_t swig_types[176]
-#define SWIGTYPE_p_std__shared_ptrT_cmf__river__Reach_t swig_types[177]
-#define SWIGTYPE_p_std__shared_ptrT_cmf__upslope__ET__canopy_evaporation_method_t swig_types[178]
-#define SWIGTYPE_p_std__shared_ptrT_cmf__upslope__ET__snow_evaporation_method_t swig_types[179]
-#define SWIGTYPE_p_std__shared_ptrT_cmf__upslope__ET__soil_evaporation_method_t swig_types[180]
-#define SWIGTYPE_p_std__shared_ptrT_cmf__upslope__ET__surface_water_evaporation_method_t swig_types[181]
-#define SWIGTYPE_p_std__shared_ptrT_cmf__upslope__ET__transpiration_method_t swig_types[182]
-#define SWIGTYPE_p_std__shared_ptrT_cmf__upslope__MacroPore_t swig_types[183]
-#define SWIGTYPE_p_std__shared_ptrT_cmf__upslope__SoilLayer_t swig_types[184]
-#define SWIGTYPE_p_std__shared_ptrT_cmf__upslope__SurfaceWater_t swig_types[185]
-#define SWIGTYPE_p_std__shared_ptrT_cmf__upslope__aquifer_t swig_types[186]
-#define SWIGTYPE_p_std__shared_ptrT_cmf__water__DirichletBoundary_t swig_types[187]
-#define SWIGTYPE_p_std__shared_ptrT_cmf__water__NeumannBoundary_t swig_types[188]
-#define SWIGTYPE_p_std__shared_ptrT_cmf__water__SoluteStorage_t swig_types[189]
-#define SWIGTYPE_p_std__shared_ptrT_cmf__water__SystemBridge_t swig_types[190]
-#define SWIGTYPE_p_std__shared_ptrT_cmf__water__WaterStorage_t swig_types[191]
-#define SWIGTYPE_p_std__shared_ptrT_cmf__water__flux_connection_t swig_types[192]
-#define SWIGTYPE_p_std__shared_ptrT_cmf__water__flux_integrator_t swig_types[193]
-#define SWIGTYPE_p_std__shared_ptrT_cmf__water__flux_node_t swig_types[194]
-#define SWIGTYPE_p_std__shared_ptrT_cmf__water__waterbalance_integrator_t swig_types[195]
-#define SWIGTYPE_p_std__shared_ptrT_std__shared_ptrT_cmf__atmosphere__ConstantRainSource_t_t swig_types[196]
-#define SWIGTYPE_p_std__shared_ptrT_std__shared_ptrT_cmf__atmosphere__RainfallStationReference_t_t swig_types[197]
-#define SWIGTYPE_p_std__string swig_types[198]
-#define SWIGTYPE_p_std__vectorT_std__shared_ptrT_cmf__water__WaterStorage_t_t swig_types[199]
-#define SWIGTYPE_p_std__vectorT_std__shared_ptrT_cmf__water__flux_connection_t_t__const_iterator swig_types[200]
-#define SWIGTYPE_p_std__vectorT_std__shared_ptrT_cmf__water__flux_connection_t_t__iterator swig_types[201]
-static swig_type_info *swig_types[203];
-static swig_module_info swig_module = {swig_types, 202, 0, 0, 0, 0};
+#define SWIGTYPE_p_cmf__upslope__ET__SW_evap_from_canopy swig_types[65]
+#define SWIGTYPE_p_cmf__upslope__ET__SW_evap_from_layer swig_types[66]
+#define SWIGTYPE_p_cmf__upslope__ET__SW_evap_from_snow swig_types[67]
+#define SWIGTYPE_p_cmf__upslope__ET__SW_evap_from_surfacewater swig_types[68]
+#define SWIGTYPE_p_cmf__upslope__ET__SW_transpiration swig_types[69]
+#define SWIGTYPE_p_cmf__upslope__ET__ShuttleworthWallace swig_types[70]
+#define SWIGTYPE_p_cmf__upslope__ET__SuctionStress swig_types[71]
+#define SWIGTYPE_p_cmf__upslope__ET__TurcET swig_types[72]
+#define SWIGTYPE_p_cmf__upslope__ET__VolumeStress swig_types[73]
+#define SWIGTYPE_p_cmf__upslope__ET__constantETpot swig_types[74]
+#define SWIGTYPE_p_cmf__upslope__ET__stressedET swig_types[75]
+#define SWIGTYPE_p_cmf__upslope__ET__timeseriesETpot swig_types[76]
+#define SWIGTYPE_p_cmf__upslope__LinearRetention swig_types[77]
+#define SWIGTYPE_p_cmf__upslope__MacroPore swig_types[78]
+#define SWIGTYPE_p_cmf__upslope__RetentionCurve swig_types[79]
+#define SWIGTYPE_p_cmf__upslope__SoilLayer swig_types[80]
+#define SWIGTYPE_p_cmf__upslope__SurfaceWater swig_types[81]
+#define SWIGTYPE_p_cmf__upslope__Topology swig_types[82]
+#define SWIGTYPE_p_cmf__upslope__VanGenuchtenMualem swig_types[83]
+#define SWIGTYPE_p_cmf__upslope__aquifer swig_types[84]
+#define SWIGTYPE_p_cmf__upslope__aquifer_Darcy swig_types[85]
+#define SWIGTYPE_p_cmf__upslope__cell_vector swig_types[86]
+#define SWIGTYPE_p_cmf__upslope__connections__BaseMacroFlow swig_types[87]
+#define SWIGTYPE_p_cmf__upslope__connections__CanopyOverflow swig_types[88]
+#define SWIGTYPE_p_cmf__upslope__connections__Darcy swig_types[89]
+#define SWIGTYPE_p_cmf__upslope__connections__DarcyKinematic swig_types[90]
+#define SWIGTYPE_p_cmf__upslope__connections__DiffusiveMacroMicroExchange swig_types[91]
+#define SWIGTYPE_p_cmf__upslope__connections__DiffusiveSurfaceRunoff swig_types[92]
+#define SWIGTYPE_p_cmf__upslope__connections__EnergyBudgetSnowMelt swig_types[93]
+#define SWIGTYPE_p_cmf__upslope__connections__FreeDrainagePercolation swig_types[94]
+#define SWIGTYPE_p_cmf__upslope__connections__GradientMacroFlow swig_types[95]
+#define SWIGTYPE_p_cmf__upslope__connections__GradientMacroMicroExchange swig_types[96]
+#define SWIGTYPE_p_cmf__upslope__connections__GreenAmptInfiltration swig_types[97]
+#define SWIGTYPE_p_cmf__upslope__connections__JarvisMacroFlow swig_types[98]
+#define SWIGTYPE_p_cmf__upslope__connections__KinematicMacroFlow swig_types[99]
+#define SWIGTYPE_p_cmf__upslope__connections__KinematicSurfaceRunoff swig_types[100]
+#define SWIGTYPE_p_cmf__upslope__connections__LayerBypass swig_types[101]
+#define SWIGTYPE_p_cmf__upslope__connections__MACROlikeMacroMicroExchange swig_types[102]
+#define SWIGTYPE_p_cmf__upslope__connections__MatrixInfiltration swig_types[103]
+#define SWIGTYPE_p_cmf__upslope__connections__Rainfall swig_types[104]
+#define SWIGTYPE_p_cmf__upslope__connections__Richards swig_types[105]
+#define SWIGTYPE_p_cmf__upslope__connections__Richards_lateral swig_types[106]
+#define SWIGTYPE_p_cmf__upslope__connections__RutterInterception swig_types[107]
+#define SWIGTYPE_p_cmf__upslope__connections__SWATPercolation swig_types[108]
+#define SWIGTYPE_p_cmf__upslope__connections__SimplRichards swig_types[109]
+#define SWIGTYPE_p_cmf__upslope__connections__SimpleInfiltration swig_types[110]
+#define SWIGTYPE_p_cmf__upslope__connections__SimpleTindexSnowMelt swig_types[111]
+#define SWIGTYPE_p_cmf__upslope__connections__Snowfall swig_types[112]
+#define SWIGTYPE_p_cmf__upslope__connections__TOPModelFlow swig_types[113]
+#define SWIGTYPE_p_cmf__upslope__connections__TopographicGradientDarcy swig_types[114]
+#define SWIGTYPE_p_cmf__upslope__connections__lateral_sub_surface_flux swig_types[115]
+#define SWIGTYPE_p_cmf__upslope__layer_list swig_types[116]
+#define SWIGTYPE_p_cmf__upslope__neighbor_iterator swig_types[117]
+#define SWIGTYPE_p_cmf__upslope__subcatchment swig_types[118]
+#define SWIGTYPE_p_cmf__upslope__vegetation__Vegetation swig_types[119]
+#define SWIGTYPE_p_cmf__water__Adsorption swig_types[120]
+#define SWIGTYPE_p_cmf__water__ConstraintLinearStorageConnection swig_types[121]
+#define SWIGTYPE_p_cmf__water__DirichletBoundary swig_types[122]
+#define SWIGTYPE_p_cmf__water__ExponentialDeclineConnection swig_types[123]
+#define SWIGTYPE_p_cmf__water__FreundlichAdsorbtion swig_types[124]
+#define SWIGTYPE_p_cmf__water__LangmuirAdsorption swig_types[125]
+#define SWIGTYPE_p_cmf__water__LinearAdsorption swig_types[126]
+#define SWIGTYPE_p_cmf__water__LinearStorageConnection swig_types[127]
+#define SWIGTYPE_p_cmf__water__NeumannBoundary swig_types[128]
+#define SWIGTYPE_p_cmf__water__NeumannBoundary_list swig_types[129]
+#define SWIGTYPE_p_cmf__water__NeumannFlux swig_types[130]
+#define SWIGTYPE_p_cmf__water__NullAdsorption swig_types[131]
+#define SWIGTYPE_p_cmf__water__PowerLawConnection swig_types[132]
+#define SWIGTYPE_p_cmf__water__SoluteStorage swig_types[133]
+#define SWIGTYPE_p_cmf__water__SoluteTimeseries swig_types[134]
+#define SWIGTYPE_p_cmf__water__SystemBridge swig_types[135]
+#define SWIGTYPE_p_cmf__water__SystemBridgeConnection swig_types[136]
+#define SWIGTYPE_p_cmf__water__TechnicalFlux swig_types[137]
+#define SWIGTYPE_p_cmf__water__WaterStorage swig_types[138]
+#define SWIGTYPE_p_cmf__water__bidirectional_kinematic_exchange swig_types[139]
+#define SWIGTYPE_p_cmf__water__connection_list swig_types[140]
+#define SWIGTYPE_p_cmf__water__constraint_kinematic_wave swig_types[141]
+#define SWIGTYPE_p_cmf__water__external_control_connection swig_types[142]
+#define SWIGTYPE_p_cmf__water__flux_connection swig_types[143]
+#define SWIGTYPE_p_cmf__water__flux_integrator swig_types[144]
+#define SWIGTYPE_p_cmf__water__flux_node swig_types[145]
+#define SWIGTYPE_p_cmf__water__generic_gradient_connection swig_types[146]
+#define SWIGTYPE_p_cmf__water__kinematic_wave swig_types[147]
+#define SWIGTYPE_p_cmf__water__linear_scale swig_types[148]
+#define SWIGTYPE_p_cmf__water__node_list swig_types[149]
+#define SWIGTYPE_p_cmf__water__solute swig_types[150]
+#define SWIGTYPE_p_cmf__water__solute_vector swig_types[151]
+#define SWIGTYPE_p_cmf__water__statecontrol_connection swig_types[152]
+#define SWIGTYPE_p_cmf__water__waterbalance_connection swig_types[153]
+#define SWIGTYPE_p_cmf__water__waterbalance_integrator swig_types[154]
+#define SWIGTYPE_p_const_iterator swig_types[155]
+#define SWIGTYPE_p_double swig_types[156]
+#define SWIGTYPE_p_f_r_cmf__upslope__Cell_r_cmf__upslope__Cell_ptrdiff_t__void swig_types[157]
+#define SWIGTYPE_p_iterator swig_types[158]
+#define SWIGTYPE_p_ptr swig_types[159]
+#define SWIGTYPE_p_std__shared_ptrT_SoilLayer_t swig_types[160]
+#define SWIGTYPE_p_std__shared_ptrT_cmf__atmosphere__ConstantRainSource_t swig_types[161]
+#define SWIGTYPE_p_std__shared_ptrT_cmf__atmosphere__IDWRainfall_t swig_types[162]
+#define SWIGTYPE_p_std__shared_ptrT_cmf__atmosphere__MeteoStation_t swig_types[163]
+#define SWIGTYPE_p_std__shared_ptrT_cmf__atmosphere__RainSource_t swig_types[164]
+#define SWIGTYPE_p_std__shared_ptrT_cmf__atmosphere__RainfallStationReference_t swig_types[165]
+#define SWIGTYPE_p_std__shared_ptrT_cmf__atmosphere__RainfallStation_t swig_types[166]
+#define SWIGTYPE_p_std__shared_ptrT_cmf__atmosphere__TimeseriesRainSource_t swig_types[167]
+#define SWIGTYPE_p_std__shared_ptrT_cmf__atmosphere__aerodynamic_resistance_t swig_types[168]
+#define SWIGTYPE_p_std__shared_ptrT_cmf__math__StateVariable_t swig_types[169]
+#define SWIGTYPE_p_std__shared_ptrT_cmf__math__integratable_t swig_types[170]
+#define SWIGTYPE_p_std__shared_ptrT_cmf__river__OpenWaterStorage_t swig_types[171]
+#define SWIGTYPE_p_std__shared_ptrT_cmf__river__Reach_t swig_types[172]
+#define SWIGTYPE_p_std__shared_ptrT_cmf__upslope__ET__ShuttleworthWallace_t swig_types[173]
+#define SWIGTYPE_p_std__shared_ptrT_cmf__upslope__MacroPore_t swig_types[174]
+#define SWIGTYPE_p_std__shared_ptrT_cmf__upslope__SoilLayer_t swig_types[175]
+#define SWIGTYPE_p_std__shared_ptrT_cmf__upslope__SurfaceWater_t swig_types[176]
+#define SWIGTYPE_p_std__shared_ptrT_cmf__upslope__aquifer_t swig_types[177]
+#define SWIGTYPE_p_std__shared_ptrT_cmf__water__DirichletBoundary_t swig_types[178]
+#define SWIGTYPE_p_std__shared_ptrT_cmf__water__NeumannBoundary_t swig_types[179]
+#define SWIGTYPE_p_std__shared_ptrT_cmf__water__SoluteStorage_t swig_types[180]
+#define SWIGTYPE_p_std__shared_ptrT_cmf__water__SystemBridge_t swig_types[181]
+#define SWIGTYPE_p_std__shared_ptrT_cmf__water__WaterStorage_t swig_types[182]
+#define SWIGTYPE_p_std__shared_ptrT_cmf__water__flux_connection_t swig_types[183]
+#define SWIGTYPE_p_std__shared_ptrT_cmf__water__flux_integrator_t swig_types[184]
+#define SWIGTYPE_p_std__shared_ptrT_cmf__water__flux_node_t swig_types[185]
+#define SWIGTYPE_p_std__shared_ptrT_cmf__water__waterbalance_integrator_t swig_types[186]
+#define SWIGTYPE_p_std__shared_ptrT_std__shared_ptrT_cmf__atmosphere__ConstantRainSource_t_t swig_types[187]
+#define SWIGTYPE_p_std__shared_ptrT_std__shared_ptrT_cmf__atmosphere__RainfallStationReference_t_t swig_types[188]
+#define SWIGTYPE_p_std__string swig_types[189]
+#define SWIGTYPE_p_std__vectorT_std__shared_ptrT_cmf__water__WaterStorage_t_t swig_types[190]
+#define SWIGTYPE_p_std__vectorT_std__shared_ptrT_cmf__water__flux_connection_t_t__const_iterator swig_types[191]
+#define SWIGTYPE_p_std__vectorT_std__shared_ptrT_cmf__water__flux_connection_t_t__iterator swig_types[192]
+static swig_type_info *swig_types[194];
+static swig_module_info swig_module = {swig_types, 193, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -4327,6 +4318,10 @@ SWIGINTERN size_t cmf_water_SoluteTimeseries___len__(cmf::water::SoluteTimeserie
 		return self->size();
 	}
 
+#define cmf_water_SoluteStorage_conc_get(self_) self_->get_conc()
+#define cmf_water_SoluteStorage_conc_set(self_, val_) self_->set_conc(val_)
+  
+
 #define cmf_water_flux_node_project_get(self_) &self_->get_project()
   
 
@@ -4359,6 +4354,9 @@ SWIGINTERN bool cmf_water_connection_list___contains__(cmf::water::connection_li
 #define cmf_water_WaterStorage_statevariable_get(self_) self_->get_state_variable_content()
 #define cmf_water_WaterStorage_statevariable_set(self_, val_) self_->set_state_variable_content(val_)
   
+SWIGINTERN cmf::water::SoluteStorage &cmf_water_WaterStorage___getitem__(cmf::water::WaterStorage *self,cmf::water::solute X){
+		return (*self)[X];
+	}
 
 #include "water/collections.h"
 
@@ -18244,26 +18242,6 @@ SWIGINTERN PyObject *_wrap_new_BDF2(PyObject *self, PyObject *args) {
     }
   check_1:
     
-    if (argc == 1) {
-      SWIG_TypeRank _ranki = 0;
-      SWIG_TypeRank _rankm = 0;
-      SWIG_TypeRank _pi = 1;
-      int _v = 0;
-      {
-        int res = SWIG_ConvertPtr(argv[0], 0, SWIGTYPE_p_cmf__math__Integrator, 0);
-        _v = SWIG_CheckState(res);
-      }
-      if (!_v) goto check_2;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      if (!_index || (_ranki < _rank)) {
-        _rank = _ranki; _index = 2;
-        if (_rank == _rankm) goto dispatch;
-      }
-    }
-  check_2:
-    
     if ((argc >= 1) && (argc <= 3)) {
       SWIG_TypeRank _ranki = 0;
       SWIG_TypeRank _rankm = 0;
@@ -18274,7 +18252,7 @@ SWIGINTERN PyObject *_wrap_new_BDF2(PyObject *self, PyObject *args) {
         int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_cmf__math__StateVariableOwner, 0);
         _v = SWIG_CheckState(res);
       }
-      if (!_v) goto check_3;
+      if (!_v) goto check_2;
       _ranki += _v*_pi;
       _rankm += _pi;
       _pi *= SWIG_MAXCASTRANK;
@@ -18285,7 +18263,7 @@ SWIGINTERN PyObject *_wrap_new_BDF2(PyObject *self, PyObject *args) {
             _v = SWIG_CheckState(res);
           }
         }
-        if (!_v) goto check_3;
+        if (!_v) goto check_2;
         _ranki += _v*_pi;
         _rankm += _pi;
         _pi *= SWIG_MAXCASTRANK;
@@ -18295,12 +18273,32 @@ SWIGINTERN PyObject *_wrap_new_BDF2(PyObject *self, PyObject *args) {
               _v = check_time(argv[2]);
             }
           }
-          if (!_v) goto check_3;
+          if (!_v) goto check_2;
           _ranki += _v*_pi;
           _rankm += _pi;
           _pi *= SWIG_MAXCASTRANK;
         }
       }
+      if (!_index || (_ranki < _rank)) {
+        _rank = _ranki; _index = 2;
+        if (_rank == _rankm) goto dispatch;
+      }
+    }
+  check_2:
+    
+    if (argc == 1) {
+      SWIG_TypeRank _ranki = 0;
+      SWIG_TypeRank _rankm = 0;
+      SWIG_TypeRank _pi = 1;
+      int _v = 0;
+      {
+        int res = SWIG_ConvertPtr(argv[0], 0, SWIGTYPE_p_cmf__math__Integrator, 0);
+        _v = SWIG_CheckState(res);
+      }
+      if (!_v) goto check_3;
+      _ranki += _v*_pi;
+      _rankm += _pi;
+      _pi *= SWIG_MAXCASTRANK;
       if (!_index || (_ranki < _rank)) {
         _rank = _ranki; _index = 3;
         if (_rank == _rankm) goto dispatch;
@@ -18313,9 +18311,9 @@ SWIGINTERN PyObject *_wrap_new_BDF2(PyObject *self, PyObject *args) {
     case 1:
       return _wrap_new_BDF2__SWIG_0(self, argc, argv);
     case 2:
-      return _wrap_new_BDF2__SWIG_2(self, argc, argv);
-    case 3:
       return _wrap_new_BDF2__SWIG_1(self, argc, argv);
+    case 3:
+      return _wrap_new_BDF2__SWIG_2(self, argc, argv);
     }
   }
   
@@ -18484,7 +18482,8 @@ SWIGINTERN PyObject *_wrap_new_ExplicitEuler_fixed(PyObject *self, PyObject *arg
       SWIG_TypeRank _pi = 1;
       int _v = 0;
       {
-        int res = SWIG_ConvertPtr(argv[0], 0, SWIGTYPE_p_cmf__math__Integrator, 0);
+        void *vptr = 0;
+        int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_cmf__math__StateVariableOwner, 0);
         _v = SWIG_CheckState(res);
       }
       if (!_v) goto check_2;
@@ -18504,8 +18503,7 @@ SWIGINTERN PyObject *_wrap_new_ExplicitEuler_fixed(PyObject *self, PyObject *arg
       SWIG_TypeRank _pi = 1;
       int _v = 0;
       {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_cmf__math__StateVariableOwner, 0);
+        int res = SWIG_ConvertPtr(argv[0], 0, SWIGTYPE_p_cmf__math__Integrator, 0);
         _v = SWIG_CheckState(res);
       }
       if (!_v) goto check_3;
@@ -18524,9 +18522,9 @@ SWIGINTERN PyObject *_wrap_new_ExplicitEuler_fixed(PyObject *self, PyObject *arg
     case 1:
       return _wrap_new_ExplicitEuler_fixed__SWIG_1(self, argc, argv);
     case 2:
-      return _wrap_new_ExplicitEuler_fixed__SWIG_2(self, argc, argv);
-    case 3:
       return _wrap_new_ExplicitEuler_fixed__SWIG_0(self, argc, argv);
+    case 3:
+      return _wrap_new_ExplicitEuler_fixed__SWIG_2(self, argc, argv);
     }
   }
   
@@ -18777,26 +18775,6 @@ SWIGINTERN PyObject *_wrap_new_HeunIntegrator(PyObject *self, PyObject *args) {
     }
   check_1:
     
-    if (argc == 1) {
-      SWIG_TypeRank _ranki = 0;
-      SWIG_TypeRank _rankm = 0;
-      SWIG_TypeRank _pi = 1;
-      int _v = 0;
-      {
-        int res = SWIG_ConvertPtr(argv[0], 0, SWIGTYPE_p_cmf__math__Integrator, 0);
-        _v = SWIG_CheckState(res);
-      }
-      if (!_v) goto check_2;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      if (!_index || (_ranki < _rank)) {
-        _rank = _ranki; _index = 2;
-        if (_rank == _rankm) goto dispatch;
-      }
-    }
-  check_2:
-    
     if ((argc >= 1) && (argc <= 2)) {
       SWIG_TypeRank _ranki = 0;
       SWIG_TypeRank _rankm = 0;
@@ -18807,7 +18785,7 @@ SWIGINTERN PyObject *_wrap_new_HeunIntegrator(PyObject *self, PyObject *args) {
         int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_cmf__math__StateVariableOwner, 0);
         _v = SWIG_CheckState(res);
       }
-      if (!_v) goto check_3;
+      if (!_v) goto check_2;
       _ranki += _v*_pi;
       _rankm += _pi;
       _pi *= SWIG_MAXCASTRANK;
@@ -18818,11 +18796,31 @@ SWIGINTERN PyObject *_wrap_new_HeunIntegrator(PyObject *self, PyObject *args) {
             _v = SWIG_CheckState(res);
           }
         }
-        if (!_v) goto check_3;
+        if (!_v) goto check_2;
         _ranki += _v*_pi;
         _rankm += _pi;
         _pi *= SWIG_MAXCASTRANK;
       }
+      if (!_index || (_ranki < _rank)) {
+        _rank = _ranki; _index = 2;
+        if (_rank == _rankm) goto dispatch;
+      }
+    }
+  check_2:
+    
+    if (argc == 1) {
+      SWIG_TypeRank _ranki = 0;
+      SWIG_TypeRank _rankm = 0;
+      SWIG_TypeRank _pi = 1;
+      int _v = 0;
+      {
+        int res = SWIG_ConvertPtr(argv[0], 0, SWIGTYPE_p_cmf__math__Integrator, 0);
+        _v = SWIG_CheckState(res);
+      }
+      if (!_v) goto check_3;
+      _ranki += _v*_pi;
+      _rankm += _pi;
+      _pi *= SWIG_MAXCASTRANK;
       if (!_index || (_ranki < _rank)) {
         _rank = _ranki; _index = 3;
         if (_rank == _rankm) goto dispatch;
@@ -18835,9 +18833,9 @@ SWIGINTERN PyObject *_wrap_new_HeunIntegrator(PyObject *self, PyObject *args) {
     case 1:
       return _wrap_new_HeunIntegrator__SWIG_1(self, argc, argv);
     case 2:
-      return _wrap_new_HeunIntegrator__SWIG_2(self, argc, argv);
-    case 3:
       return _wrap_new_HeunIntegrator__SWIG_0(self, argc, argv);
+    case 3:
+      return _wrap_new_HeunIntegrator__SWIG_2(self, argc, argv);
     }
   }
   
@@ -19117,26 +19115,6 @@ SWIGINTERN PyObject *_wrap_new_ImplicitEuler(PyObject *self, PyObject *args) {
     }
   check_1:
     
-    if (argc == 1) {
-      SWIG_TypeRank _ranki = 0;
-      SWIG_TypeRank _rankm = 0;
-      SWIG_TypeRank _pi = 1;
-      int _v = 0;
-      {
-        int res = SWIG_ConvertPtr(argv[0], 0, SWIGTYPE_p_cmf__math__Integrator, 0);
-        _v = SWIG_CheckState(res);
-      }
-      if (!_v) goto check_2;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      if (!_index || (_ranki < _rank)) {
-        _rank = _ranki; _index = 2;
-        if (_rank == _rankm) goto dispatch;
-      }
-    }
-  check_2:
-    
     if ((argc >= 1) && (argc <= 3)) {
       SWIG_TypeRank _ranki = 0;
       SWIG_TypeRank _rankm = 0;
@@ -19147,7 +19125,7 @@ SWIGINTERN PyObject *_wrap_new_ImplicitEuler(PyObject *self, PyObject *args) {
         int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_cmf__math__StateVariableOwner, 0);
         _v = SWIG_CheckState(res);
       }
-      if (!_v) goto check_3;
+      if (!_v) goto check_2;
       _ranki += _v*_pi;
       _rankm += _pi;
       _pi *= SWIG_MAXCASTRANK;
@@ -19158,7 +19136,7 @@ SWIGINTERN PyObject *_wrap_new_ImplicitEuler(PyObject *self, PyObject *args) {
             _v = SWIG_CheckState(res);
           }
         }
-        if (!_v) goto check_3;
+        if (!_v) goto check_2;
         _ranki += _v*_pi;
         _rankm += _pi;
         _pi *= SWIG_MAXCASTRANK;
@@ -19168,12 +19146,32 @@ SWIGINTERN PyObject *_wrap_new_ImplicitEuler(PyObject *self, PyObject *args) {
               _v = check_time(argv[2]);
             }
           }
-          if (!_v) goto check_3;
+          if (!_v) goto check_2;
           _ranki += _v*_pi;
           _rankm += _pi;
           _pi *= SWIG_MAXCASTRANK;
         }
       }
+      if (!_index || (_ranki < _rank)) {
+        _rank = _ranki; _index = 2;
+        if (_rank == _rankm) goto dispatch;
+      }
+    }
+  check_2:
+    
+    if (argc == 1) {
+      SWIG_TypeRank _ranki = 0;
+      SWIG_TypeRank _rankm = 0;
+      SWIG_TypeRank _pi = 1;
+      int _v = 0;
+      {
+        int res = SWIG_ConvertPtr(argv[0], 0, SWIGTYPE_p_cmf__math__Integrator, 0);
+        _v = SWIG_CheckState(res);
+      }
+      if (!_v) goto check_3;
+      _ranki += _v*_pi;
+      _rankm += _pi;
+      _pi *= SWIG_MAXCASTRANK;
       if (!_index || (_ranki < _rank)) {
         _rank = _ranki; _index = 3;
         if (_rank == _rankm) goto dispatch;
@@ -19186,9 +19184,9 @@ SWIGINTERN PyObject *_wrap_new_ImplicitEuler(PyObject *self, PyObject *args) {
     case 1:
       return _wrap_new_ImplicitEuler__SWIG_1(self, argc, argv);
     case 2:
-      return _wrap_new_ImplicitEuler__SWIG_2(self, argc, argv);
-    case 3:
       return _wrap_new_ImplicitEuler__SWIG_0(self, argc, argv);
+    case 3:
+      return _wrap_new_ImplicitEuler__SWIG_2(self, argc, argv);
     }
   }
   
@@ -20140,26 +20138,6 @@ SWIGINTERN PyObject *_wrap_new_CVodeIntegrator(PyObject *self, PyObject *args) {
     }
   check_1:
     
-    if (argc == 1) {
-      SWIG_TypeRank _ranki = 0;
-      SWIG_TypeRank _rankm = 0;
-      SWIG_TypeRank _pi = 1;
-      int _v = 0;
-      {
-        int res = SWIG_ConvertPtr(argv[0], 0, SWIGTYPE_p_cmf__math__CVodeIntegrator, 0);
-        _v = SWIG_CheckState(res);
-      }
-      if (!_v) goto check_2;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      if (!_index || (_ranki < _rank)) {
-        _rank = _ranki; _index = 2;
-        if (_rank == _rankm) goto dispatch;
-      }
-    }
-  check_2:
-    
     if ((argc >= 1) && (argc <= 3)) {
       SWIG_TypeRank _ranki = 0;
       SWIG_TypeRank _rankm = 0;
@@ -20170,7 +20148,7 @@ SWIGINTERN PyObject *_wrap_new_CVodeIntegrator(PyObject *self, PyObject *args) {
         int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_cmf__math__StateVariableOwner, 0);
         _v = SWIG_CheckState(res);
       }
-      if (!_v) goto check_3;
+      if (!_v) goto check_2;
       _ranki += _v*_pi;
       _rankm += _pi;
       _pi *= SWIG_MAXCASTRANK;
@@ -20181,7 +20159,7 @@ SWIGINTERN PyObject *_wrap_new_CVodeIntegrator(PyObject *self, PyObject *args) {
             _v = SWIG_CheckState(res);
           }
         }
-        if (!_v) goto check_3;
+        if (!_v) goto check_2;
         _ranki += _v*_pi;
         _rankm += _pi;
         _pi *= SWIG_MAXCASTRANK;
@@ -20192,12 +20170,32 @@ SWIGINTERN PyObject *_wrap_new_CVodeIntegrator(PyObject *self, PyObject *args) {
               _v = SWIG_CheckState(res);
             }
           }
-          if (!_v) goto check_3;
+          if (!_v) goto check_2;
           _ranki += _v*_pi;
           _rankm += _pi;
           _pi *= SWIG_MAXCASTRANK;
         }
       }
+      if (!_index || (_ranki < _rank)) {
+        _rank = _ranki; _index = 2;
+        if (_rank == _rankm) goto dispatch;
+      }
+    }
+  check_2:
+    
+    if (argc == 1) {
+      SWIG_TypeRank _ranki = 0;
+      SWIG_TypeRank _rankm = 0;
+      SWIG_TypeRank _pi = 1;
+      int _v = 0;
+      {
+        int res = SWIG_ConvertPtr(argv[0], 0, SWIGTYPE_p_cmf__math__CVodeIntegrator, 0);
+        _v = SWIG_CheckState(res);
+      }
+      if (!_v) goto check_3;
+      _ranki += _v*_pi;
+      _rankm += _pi;
+      _pi *= SWIG_MAXCASTRANK;
       if (!_index || (_ranki < _rank)) {
         _rank = _ranki; _index = 3;
         if (_rank == _rankm) goto dispatch;
@@ -20210,9 +20208,9 @@ SWIGINTERN PyObject *_wrap_new_CVodeIntegrator(PyObject *self, PyObject *args) {
     case 1:
       return _wrap_new_CVodeIntegrator__SWIG_0(self, argc, argv);
     case 2:
-      return _wrap_new_CVodeIntegrator__SWIG_2(self, argc, argv);
-    case 3:
       return _wrap_new_CVodeIntegrator__SWIG_1(self, argc, argv);
+    case 3:
+      return _wrap_new_CVodeIntegrator__SWIG_2(self, argc, argv);
     }
   }
   
@@ -23677,51 +23675,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_SoluteStorage_conc(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  cmf::water::SoluteStorage *arg1 = (cmf::water::SoluteStorage *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  std::shared_ptr< cmf::water::SoluteStorage const > tempshared1 ;
-  std::shared_ptr< cmf::water::SoluteStorage const > *smartarg1 = 0 ;
-  PyObject *swig_obj[1] ;
-  real result;
-  
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  {
-    int newmem = 0;
-    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_std__shared_ptrT_cmf__water__SoluteStorage_t, 0 |  0 , &newmem);
-    if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SoluteStorage_conc" "', argument " "1"" of type '" "cmf::water::SoluteStorage const *""'"); 
-    }
-    if (newmem & SWIG_CAST_NEW_MEMORY) {
-      tempshared1 = *reinterpret_cast< std::shared_ptr< const cmf::water::SoluteStorage > * >(argp1);
-      delete reinterpret_cast< std::shared_ptr< const cmf::water::SoluteStorage > * >(argp1);
-      arg1 = const_cast< cmf::water::SoluteStorage * >(tempshared1.get());
-    } else {
-      smartarg1 = reinterpret_cast< std::shared_ptr< const cmf::water::SoluteStorage > * >(argp1);
-      arg1 = const_cast< cmf::water::SoluteStorage * >((smartarg1 ? smartarg1->get() : 0));
-    }
-  }
-  {
-    try {
-      result = (real)((cmf::water::SoluteStorage const *)arg1)->conc();
-    } catch (const std::out_of_range& e) {
-      SWIG_exception(SWIG_IndexError, e.what());    
-    } catch (const std::exception& e) {
-      SWIG_exception(SWIG_RuntimeError, e.what());
-    }
-    
-  }
-  resultobj = SWIG_From_double(static_cast< double >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_SoluteStorage_set_conc(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+SWIGINTERN PyObject *_wrap_SoluteStorage_conc_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   cmf::water::SoluteStorage *arg1 = (cmf::water::SoluteStorage *) 0 ;
   real arg2 ;
@@ -23731,18 +23685,14 @@ SWIGINTERN PyObject *_wrap_SoluteStorage_set_conc(PyObject *SWIGUNUSEDPARM(self)
   std::shared_ptr< cmf::water::SoluteStorage > *smartarg1 = 0 ;
   double val2 ;
   int ecode2 = 0 ;
-  PyObject * obj0 = 0 ;
-  PyObject * obj1 = 0 ;
-  char *  kwnames[] = {
-    (char *) "self",(char *) "NewConcentration", NULL 
-  };
+  PyObject *swig_obj[2] ;
   
-  if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"OO:SoluteStorage_set_conc",kwnames,&obj0,&obj1)) SWIG_fail;
+  if (!SWIG_Python_UnpackTuple(args,"SoluteStorage_conc_set",2,2,swig_obj)) SWIG_fail;
   {
     int newmem = 0;
-    res1 = SWIG_ConvertPtrAndOwn(obj0, &argp1, SWIGTYPE_p_std__shared_ptrT_cmf__water__SoluteStorage_t, 0 |  0 , &newmem);
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_std__shared_ptrT_cmf__water__SoluteStorage_t, 0 |  0 , &newmem);
     if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SoluteStorage_set_conc" "', argument " "1"" of type '" "cmf::water::SoluteStorage *""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SoluteStorage_conc_set" "', argument " "1"" of type '" "cmf::water::SoluteStorage *""'"); 
     }
     if (newmem & SWIG_CAST_NEW_MEMORY) {
       tempshared1 = *reinterpret_cast< std::shared_ptr<  cmf::water::SoluteStorage > * >(argp1);
@@ -23753,14 +23703,14 @@ SWIGINTERN PyObject *_wrap_SoluteStorage_set_conc(PyObject *SWIGUNUSEDPARM(self)
       arg1 = const_cast< cmf::water::SoluteStorage * >((smartarg1 ? smartarg1->get() : 0));
     }
   }
-  ecode2 = SWIG_AsVal_double(obj1, &val2);
+  ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
   if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "SoluteStorage_set_conc" "', argument " "2"" of type '" "real""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "SoluteStorage_conc_set" "', argument " "2"" of type '" "real""'");
   } 
   arg2 = static_cast< real >(val2);
   {
     try {
-      (arg1)->set_conc(arg2);
+      cmf_water_SoluteStorage_conc_set(arg1,arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -23769,6 +23719,50 @@ SWIGINTERN PyObject *_wrap_SoluteStorage_set_conc(PyObject *SWIGUNUSEDPARM(self)
     
   }
   resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_SoluteStorage_conc_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  cmf::water::SoluteStorage *arg1 = (cmf::water::SoluteStorage *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  std::shared_ptr< cmf::water::SoluteStorage > tempshared1 ;
+  std::shared_ptr< cmf::water::SoluteStorage > *smartarg1 = 0 ;
+  PyObject *swig_obj[1] ;
+  real result;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_std__shared_ptrT_cmf__water__SoluteStorage_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SoluteStorage_conc_get" "', argument " "1"" of type '" "cmf::water::SoluteStorage *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< std::shared_ptr<  cmf::water::SoluteStorage > * >(argp1);
+      delete reinterpret_cast< std::shared_ptr<  cmf::water::SoluteStorage > * >(argp1);
+      arg1 = const_cast< cmf::water::SoluteStorage * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< std::shared_ptr<  cmf::water::SoluteStorage > * >(argp1);
+      arg1 = const_cast< cmf::water::SoluteStorage * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  {
+    try {
+      result = (real)cmf_water_SoluteStorage_conc_get(arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+    
+  }
+  resultobj = SWIG_From_double(static_cast< double >(result));
   return resultobj;
 fail:
   return NULL;
@@ -29695,12 +29689,12 @@ fail:
 SWIGINTERN PyObject *_wrap_WaterStorage_Solute__SWIG_0(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   cmf::water::WaterStorage *arg1 = (cmf::water::WaterStorage *) 0 ;
-  cmf::water::solute *arg2 = 0 ;
+  SwigValueWrapper< cmf::water::solute > arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   std::shared_ptr< cmf::water::WaterStorage > tempshared1 ;
   std::shared_ptr< cmf::water::WaterStorage > *smartarg1 = 0 ;
-  void *argp2 = 0 ;
+  void *argp2 ;
   int res2 = 0 ;
   cmf::water::SoluteStorage *result = 0 ;
   
@@ -29720,17 +29714,22 @@ SWIGINTERN PyObject *_wrap_WaterStorage_Solute__SWIG_0(PyObject *SWIGUNUSEDPARM(
       arg1 = const_cast< cmf::water::WaterStorage * >((smartarg1 ? smartarg1->get() : 0));
     }
   }
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_cmf__water__solute,  0  | 0);
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "WaterStorage_Solute" "', argument " "2"" of type '" "cmf::water::solute const &""'"); 
+  {
+    res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_cmf__water__solute,  0  | 0);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "WaterStorage_Solute" "', argument " "2"" of type '" "cmf::water::solute const""'"); 
+    }  
+    if (!argp2) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "WaterStorage_Solute" "', argument " "2"" of type '" "cmf::water::solute const""'");
+    } else {
+      cmf::water::solute * temp = reinterpret_cast< cmf::water::solute * >(argp2);
+      arg2 = *temp;
+      if (SWIG_IsNewObj(res2)) delete temp;
+    }
   }
-  if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "WaterStorage_Solute" "', argument " "2"" of type '" "cmf::water::solute const &""'"); 
-  }
-  arg2 = reinterpret_cast< cmf::water::solute * >(argp2);
   {
     try {
-      result = (cmf::water::SoluteStorage *) &(arg1)->Solute((cmf::water::solute const &)*arg2);
+      result = (cmf::water::SoluteStorage *) &(arg1)->Solute(arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -29751,12 +29750,12 @@ fail:
 SWIGINTERN PyObject *_wrap_WaterStorage_Solute__SWIG_1(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   cmf::water::WaterStorage *arg1 = (cmf::water::WaterStorage *) 0 ;
-  cmf::water::solute *arg2 = 0 ;
+  SwigValueWrapper< cmf::water::solute > arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   std::shared_ptr< cmf::water::WaterStorage const > tempshared1 ;
   std::shared_ptr< cmf::water::WaterStorage const > *smartarg1 = 0 ;
-  void *argp2 = 0 ;
+  void *argp2 ;
   int res2 = 0 ;
   cmf::water::SoluteStorage *result = 0 ;
   
@@ -29776,17 +29775,22 @@ SWIGINTERN PyObject *_wrap_WaterStorage_Solute__SWIG_1(PyObject *SWIGUNUSEDPARM(
       arg1 = const_cast< cmf::water::WaterStorage * >((smartarg1 ? smartarg1->get() : 0));
     }
   }
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_cmf__water__solute,  0  | 0);
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "WaterStorage_Solute" "', argument " "2"" of type '" "cmf::water::solute const &""'"); 
+  {
+    res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_cmf__water__solute,  0  | 0);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "WaterStorage_Solute" "', argument " "2"" of type '" "cmf::water::solute const""'"); 
+    }  
+    if (!argp2) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "WaterStorage_Solute" "', argument " "2"" of type '" "cmf::water::solute const""'");
+    } else {
+      cmf::water::solute * temp = reinterpret_cast< cmf::water::solute * >(argp2);
+      arg2 = *temp;
+      if (SWIG_IsNewObj(res2)) delete temp;
+    }
   }
-  if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "WaterStorage_Solute" "', argument " "2"" of type '" "cmf::water::solute const &""'"); 
-  }
-  arg2 = reinterpret_cast< cmf::water::solute * >(argp2);
   {
     try {
-      result = (cmf::water::SoluteStorage *) &((cmf::water::WaterStorage const *)arg1)->Solute((cmf::water::solute const &)*arg2);
+      result = (cmf::water::SoluteStorage *) &((cmf::water::WaterStorage const *)arg1)->Solute(arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -29883,8 +29887,8 @@ SWIGINTERN PyObject *_wrap_WaterStorage_Solute(PyObject *self, PyObject *args) {
 fail:
   SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'WaterStorage_Solute'.\n"
     "  Possible C/C++ prototypes are:\n"
-    "    cmf::water::WaterStorage::Solute(cmf::water::solute const &)\n"
-    "    cmf::water::WaterStorage::Solute(cmf::water::solute const &) const\n");
+    "    cmf::water::WaterStorage::Solute(cmf::water::solute const)\n"
+    "    cmf::water::WaterStorage::Solute(cmf::water::solute const) const\n");
   return 0;
 }
 
@@ -30482,6 +30486,72 @@ SWIGINTERN PyObject *_wrap_WaterStorage_statevariable_get(PyObject *SWIGUNUSEDPA
     
   }
   resultobj = SWIG_From_char(static_cast< char >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_WaterStorage___getitem__(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  cmf::water::WaterStorage *arg1 = (cmf::water::WaterStorage *) 0 ;
+  SwigValueWrapper< cmf::water::solute > arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  std::shared_ptr< cmf::water::WaterStorage > tempshared1 ;
+  std::shared_ptr< cmf::water::WaterStorage > *smartarg1 = 0 ;
+  void *argp2 ;
+  int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char *  kwnames[] = {
+    (char *) "self",(char *) "X", NULL 
+  };
+  cmf::water::SoluteStorage *result = 0 ;
+  
+  if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"OO:WaterStorage___getitem__",kwnames,&obj0,&obj1)) SWIG_fail;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(obj0, &argp1, SWIGTYPE_p_std__shared_ptrT_cmf__water__WaterStorage_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "WaterStorage___getitem__" "', argument " "1"" of type '" "cmf::water::WaterStorage *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< std::shared_ptr<  cmf::water::WaterStorage > * >(argp1);
+      delete reinterpret_cast< std::shared_ptr<  cmf::water::WaterStorage > * >(argp1);
+      arg1 = const_cast< cmf::water::WaterStorage * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< std::shared_ptr<  cmf::water::WaterStorage > * >(argp1);
+      arg1 = const_cast< cmf::water::WaterStorage * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  {
+    res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_cmf__water__solute,  0  | 0);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "WaterStorage___getitem__" "', argument " "2"" of type '" "cmf::water::solute""'"); 
+    }  
+    if (!argp2) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "WaterStorage___getitem__" "', argument " "2"" of type '" "cmf::water::solute""'");
+    } else {
+      cmf::water::solute * temp = reinterpret_cast< cmf::water::solute * >(argp2);
+      arg2 = *temp;
+      if (SWIG_IsNewObj(res2)) delete temp;
+    }
+  }
+  {
+    try {
+      result = (cmf::water::SoluteStorage *) &cmf_water_WaterStorage___getitem__(arg1,arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+    
+  }
+  {
+    std::shared_ptr<  cmf::water::SoluteStorage > *smartresult = new std::shared_ptr<  cmf::water::SoluteStorage >(result SWIG_NO_NULL_DELETER_0);
+    resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(smartresult), SWIGTYPE_p_std__shared_ptrT_cmf__water__SoluteStorage_t, SWIG_POINTER_OWN);
+  }
   return resultobj;
 fail:
   return NULL;
@@ -45207,6 +45277,7 @@ SWIGINTERN PyObject *_wrap_Cell_surfacewater_as_storage(PyObject *SWIGUNUSEDPARM
   void *argp1 = 0 ;
   int res1 = 0 ;
   PyObject *swig_obj[1] ;
+  cmf::upslope::surfacewater_ptr result;
   
   if (!args) SWIG_fail;
   swig_obj[0] = args;
@@ -45217,7 +45288,7 @@ SWIGINTERN PyObject *_wrap_Cell_surfacewater_as_storage(PyObject *SWIGUNUSEDPARM
   arg1 = reinterpret_cast< cmf::upslope::Cell * >(argp1);
   {
     try {
-      (arg1)->surfacewater_as_storage();
+      result = (arg1)->surfacewater_as_storage();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -45225,7 +45296,7 @@ SWIGINTERN PyObject *_wrap_Cell_surfacewater_as_storage(PyObject *SWIGUNUSEDPARM
     }
     
   }
-  resultobj = SWIG_Py_Void();
+  resultobj = SWIG_NewPointerObj((new cmf::upslope::surfacewater_ptr(static_cast< const cmf::upslope::surfacewater_ptr& >(result))), SWIGTYPE_p_std__shared_ptrT_cmf__upslope__SurfaceWater_t, SWIG_POINTER_OWN |  0 );
   return resultobj;
 fail:
   return NULL;
@@ -45725,58 +45796,6 @@ SWIGINTERN PyObject *_wrap_Cell_albedo(PyObject *SWIGUNUSEDPARM(self), PyObject 
     }
     
   }
-  resultobj = SWIG_From_double(static_cast< double >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_Cell_surface_amplitude_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  cmf::upslope::Cell *arg1 = (cmf::upslope::Cell *) 0 ;
-  real arg2 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  double val2 ;
-  int ecode2 = 0 ;
-  PyObject *swig_obj[2] ;
-  
-  if (!SWIG_Python_UnpackTuple(args,"Cell_surface_amplitude_set",2,2,swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__upslope__Cell, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Cell_surface_amplitude_set" "', argument " "1"" of type '" "cmf::upslope::Cell *""'"); 
-  }
-  arg1 = reinterpret_cast< cmf::upslope::Cell * >(argp1);
-  ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Cell_surface_amplitude_set" "', argument " "2"" of type '" "real""'");
-  } 
-  arg2 = static_cast< real >(val2);
-  if (arg1) (arg1)->surface_amplitude = arg2;
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_Cell_surface_amplitude_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  cmf::upslope::Cell *arg1 = (cmf::upslope::Cell *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject *swig_obj[1] ;
-  real result;
-  
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__upslope__Cell, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Cell_surface_amplitude_get" "', argument " "1"" of type '" "cmf::upslope::Cell *""'"); 
-  }
-  arg1 = reinterpret_cast< cmf::upslope::Cell * >(argp1);
-  result = (real) ((arg1)->surface_amplitude);
   resultobj = SWIG_From_double(static_cast< double >(result));
   return resultobj;
 fail:
@@ -63038,6 +63057,50 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_SurfaceWater_get_coverage(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  cmf::upslope::SurfaceWater *arg1 = (cmf::upslope::SurfaceWater *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  std::shared_ptr< cmf::upslope::SurfaceWater const > tempshared1 ;
+  std::shared_ptr< cmf::upslope::SurfaceWater const > *smartarg1 = 0 ;
+  PyObject *swig_obj[1] ;
+  double result;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_std__shared_ptrT_cmf__upslope__SurfaceWater_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SurfaceWater_get_coverage" "', argument " "1"" of type '" "cmf::upslope::SurfaceWater const *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< std::shared_ptr< const cmf::upslope::SurfaceWater > * >(argp1);
+      delete reinterpret_cast< std::shared_ptr< const cmf::upslope::SurfaceWater > * >(argp1);
+      arg1 = const_cast< cmf::upslope::SurfaceWater * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< std::shared_ptr< const cmf::upslope::SurfaceWater > * >(argp1);
+      arg1 = const_cast< cmf::upslope::SurfaceWater * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  {
+    try {
+      result = (double)((cmf::upslope::SurfaceWater const *)arg1)->get_coverage();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+    
+  }
+  resultobj = SWIG_From_double(static_cast< double >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_SurfaceWater_get_cell(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   cmf::upslope::SurfaceWater *arg1 = (cmf::upslope::SurfaceWater *) 0 ;
@@ -69747,1081 +69810,6 @@ SWIGINTERN PyObject *log_wind_profile_swiginit(PyObject *SWIGUNUSEDPARM(self), P
   return SWIG_Python_InitShadowInstance(args);
 }
 
-SWIGINTERN PyObject *_wrap_transpiration_method_transp_from_layer(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
-  PyObject *resultobj = 0;
-  cmf::upslope::ET::transpiration_method *arg1 = (cmf::upslope::ET::transpiration_method *) 0 ;
-  cmf::upslope::SoilLayer::ptr arg2 ;
-  cmf::math::Time arg3 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp2 ;
-  int res2 = 0 ;
-  PyObject * obj0 = 0 ;
-  PyObject * obj1 = 0 ;
-  PyObject * obj2 = 0 ;
-  char *  kwnames[] = {
-    (char *) "self",(char *) "arg2",(char *) "t", NULL 
-  };
-  double result;
-  
-  if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"OOO:transpiration_method_transp_from_layer",kwnames,&obj0,&obj1,&obj2)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_cmf__upslope__ET__transpiration_method, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "transpiration_method_transp_from_layer" "', argument " "1"" of type '" "cmf::upslope::ET::transpiration_method *""'"); 
-  }
-  arg1 = reinterpret_cast< cmf::upslope::ET::transpiration_method * >(argp1);
-  {
-    int newmem = 0;
-    res2 = SWIG_ConvertPtrAndOwn(obj1, &argp2, SWIGTYPE_p_std__shared_ptrT_cmf__upslope__SoilLayer_t,  0 , &newmem);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "transpiration_method_transp_from_layer" "', argument " "2"" of type '" "cmf::upslope::SoilLayer::ptr""'"); 
-    }
-    if (argp2) arg2 = *(reinterpret_cast< cmf::upslope::SoilLayer::ptr * >(argp2));
-    if (newmem & SWIG_CAST_NEW_MEMORY) delete reinterpret_cast< cmf::upslope::SoilLayer::ptr * >(argp2);
-  }
-  {
-    arg3 = convert_datetime_to_cmftime(obj2);
-    if (arg3 == cmf::math::never)  {
-      SWIG_exception_fail(SWIG_TypeError,"Can't convert input value to cmf.Time object");
-    }
-  }
-  {
-    try {
-      result = (double)(arg1)->transp_from_layer(arg2,arg3);
-    } catch (const std::out_of_range& e) {
-      SWIG_exception(SWIG_IndexError, e.what());    
-    } catch (const std::exception& e) {
-      SWIG_exception(SWIG_RuntimeError, e.what());
-    }
-    
-  }
-  resultobj = SWIG_From_double(static_cast< double >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_delete_transpiration_method(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  cmf::upslope::ET::transpiration_method *arg1 = (cmf::upslope::ET::transpiration_method *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject *swig_obj[1] ;
-  
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__upslope__ET__transpiration_method, SWIG_POINTER_DISOWN |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_transpiration_method" "', argument " "1"" of type '" "cmf::upslope::ET::transpiration_method *""'"); 
-  }
-  arg1 = reinterpret_cast< cmf::upslope::ET::transpiration_method * >(argp1);
-  {
-    try {
-      delete arg1;
-    } catch (const std::out_of_range& e) {
-      SWIG_exception(SWIG_IndexError, e.what());    
-    } catch (const std::exception& e) {
-      SWIG_exception(SWIG_RuntimeError, e.what());
-    }
-    
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *transpiration_method_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *obj;
-  if (!SWIG_Python_UnpackTuple(args,(char *)"swigregister", 1, 1,&obj)) return NULL;
-  SWIG_TypeNewClientData(SWIGTYPE_p_cmf__upslope__ET__transpiration_method, SWIG_NewClientData(obj));
-  return SWIG_Py_Void();
-}
-
-SWIGINTERN PyObject *_wrap_soil_evaporation_method_evap_from_layer(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
-  PyObject *resultobj = 0;
-  cmf::upslope::ET::soil_evaporation_method *arg1 = (cmf::upslope::ET::soil_evaporation_method *) 0 ;
-  cmf::upslope::SoilLayer::ptr arg2 ;
-  cmf::math::Time arg3 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp2 ;
-  int res2 = 0 ;
-  PyObject * obj0 = 0 ;
-  PyObject * obj1 = 0 ;
-  PyObject * obj2 = 0 ;
-  char *  kwnames[] = {
-    (char *) "self",(char *) "arg2",(char *) "t", NULL 
-  };
-  double result;
-  
-  if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"OOO:soil_evaporation_method_evap_from_layer",kwnames,&obj0,&obj1,&obj2)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_cmf__upslope__ET__soil_evaporation_method, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "soil_evaporation_method_evap_from_layer" "', argument " "1"" of type '" "cmf::upslope::ET::soil_evaporation_method *""'"); 
-  }
-  arg1 = reinterpret_cast< cmf::upslope::ET::soil_evaporation_method * >(argp1);
-  {
-    int newmem = 0;
-    res2 = SWIG_ConvertPtrAndOwn(obj1, &argp2, SWIGTYPE_p_std__shared_ptrT_cmf__upslope__SoilLayer_t,  0 , &newmem);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "soil_evaporation_method_evap_from_layer" "', argument " "2"" of type '" "cmf::upslope::SoilLayer::ptr""'"); 
-    }
-    if (argp2) arg2 = *(reinterpret_cast< cmf::upslope::SoilLayer::ptr * >(argp2));
-    if (newmem & SWIG_CAST_NEW_MEMORY) delete reinterpret_cast< cmf::upslope::SoilLayer::ptr * >(argp2);
-  }
-  {
-    arg3 = convert_datetime_to_cmftime(obj2);
-    if (arg3 == cmf::math::never)  {
-      SWIG_exception_fail(SWIG_TypeError,"Can't convert input value to cmf.Time object");
-    }
-  }
-  {
-    try {
-      result = (double)(arg1)->evap_from_layer(arg2,arg3);
-    } catch (const std::out_of_range& e) {
-      SWIG_exception(SWIG_IndexError, e.what());    
-    } catch (const std::exception& e) {
-      SWIG_exception(SWIG_RuntimeError, e.what());
-    }
-    
-  }
-  resultobj = SWIG_From_double(static_cast< double >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_delete_soil_evaporation_method(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  cmf::upslope::ET::soil_evaporation_method *arg1 = (cmf::upslope::ET::soil_evaporation_method *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject *swig_obj[1] ;
-  
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__upslope__ET__soil_evaporation_method, SWIG_POINTER_DISOWN |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_soil_evaporation_method" "', argument " "1"" of type '" "cmf::upslope::ET::soil_evaporation_method *""'"); 
-  }
-  arg1 = reinterpret_cast< cmf::upslope::ET::soil_evaporation_method * >(argp1);
-  {
-    try {
-      delete arg1;
-    } catch (const std::out_of_range& e) {
-      SWIG_exception(SWIG_IndexError, e.what());    
-    } catch (const std::exception& e) {
-      SWIG_exception(SWIG_RuntimeError, e.what());
-    }
-    
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *soil_evaporation_method_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *obj;
-  if (!SWIG_Python_UnpackTuple(args,(char *)"swigregister", 1, 1,&obj)) return NULL;
-  SWIG_TypeNewClientData(SWIGTYPE_p_cmf__upslope__ET__soil_evaporation_method, SWIG_NewClientData(obj));
-  return SWIG_Py_Void();
-}
-
-SWIGINTERN PyObject *_wrap_surface_water_evaporation_method_evap_from_openwater(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
-  PyObject *resultobj = 0;
-  cmf::upslope::ET::surface_water_evaporation_method *arg1 = (cmf::upslope::ET::surface_water_evaporation_method *) 0 ;
-  cmf::river::OpenWaterStorage::ptr arg2 ;
-  cmf::math::Time arg3 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp2 ;
-  int res2 = 0 ;
-  PyObject * obj0 = 0 ;
-  PyObject * obj1 = 0 ;
-  PyObject * obj2 = 0 ;
-  char *  kwnames[] = {
-    (char *) "self",(char *) "arg2",(char *) "arg3", NULL 
-  };
-  double result;
-  
-  if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"OOO:surface_water_evaporation_method_evap_from_openwater",kwnames,&obj0,&obj1,&obj2)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_cmf__upslope__ET__surface_water_evaporation_method, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "surface_water_evaporation_method_evap_from_openwater" "', argument " "1"" of type '" "cmf::upslope::ET::surface_water_evaporation_method *""'"); 
-  }
-  arg1 = reinterpret_cast< cmf::upslope::ET::surface_water_evaporation_method * >(argp1);
-  {
-    int newmem = 0;
-    res2 = SWIG_ConvertPtrAndOwn(obj1, &argp2, SWIGTYPE_p_std__shared_ptrT_cmf__river__OpenWaterStorage_t,  0 , &newmem);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "surface_water_evaporation_method_evap_from_openwater" "', argument " "2"" of type '" "cmf::river::OpenWaterStorage::ptr""'"); 
-    }
-    if (argp2) arg2 = *(reinterpret_cast< cmf::river::OpenWaterStorage::ptr * >(argp2));
-    if (newmem & SWIG_CAST_NEW_MEMORY) delete reinterpret_cast< cmf::river::OpenWaterStorage::ptr * >(argp2);
-  }
-  {
-    arg3 = convert_datetime_to_cmftime(obj2);
-    if (arg3 == cmf::math::never)  {
-      SWIG_exception_fail(SWIG_TypeError,"Can't convert input value to cmf.Time object");
-    }
-  }
-  {
-    try {
-      result = (double)(arg1)->evap_from_openwater(arg2,arg3);
-    } catch (const std::out_of_range& e) {
-      SWIG_exception(SWIG_IndexError, e.what());    
-    } catch (const std::exception& e) {
-      SWIG_exception(SWIG_RuntimeError, e.what());
-    }
-    
-  }
-  resultobj = SWIG_From_double(static_cast< double >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_delete_surface_water_evaporation_method(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  cmf::upslope::ET::surface_water_evaporation_method *arg1 = (cmf::upslope::ET::surface_water_evaporation_method *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject *swig_obj[1] ;
-  
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__upslope__ET__surface_water_evaporation_method, SWIG_POINTER_DISOWN |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_surface_water_evaporation_method" "', argument " "1"" of type '" "cmf::upslope::ET::surface_water_evaporation_method *""'"); 
-  }
-  arg1 = reinterpret_cast< cmf::upslope::ET::surface_water_evaporation_method * >(argp1);
-  {
-    try {
-      delete arg1;
-    } catch (const std::out_of_range& e) {
-      SWIG_exception(SWIG_IndexError, e.what());    
-    } catch (const std::exception& e) {
-      SWIG_exception(SWIG_RuntimeError, e.what());
-    }
-    
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *surface_water_evaporation_method_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *obj;
-  if (!SWIG_Python_UnpackTuple(args,(char *)"swigregister", 1, 1,&obj)) return NULL;
-  SWIG_TypeNewClientData(SWIGTYPE_p_cmf__upslope__ET__surface_water_evaporation_method, SWIG_NewClientData(obj));
-  return SWIG_Py_Void();
-}
-
-SWIGINTERN PyObject *_wrap_canopy_evaporation_method_evap_from_canopy(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
-  PyObject *resultobj = 0;
-  cmf::upslope::ET::canopy_evaporation_method *arg1 = (cmf::upslope::ET::canopy_evaporation_method *) 0 ;
-  cmf::water::WaterStorage::ptr arg2 ;
-  cmf::math::Time arg3 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp2 ;
-  int res2 = 0 ;
-  PyObject * obj0 = 0 ;
-  PyObject * obj1 = 0 ;
-  PyObject * obj2 = 0 ;
-  char *  kwnames[] = {
-    (char *) "self",(char *) "arg2",(char *) "arg3", NULL 
-  };
-  double result;
-  
-  if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"OOO:canopy_evaporation_method_evap_from_canopy",kwnames,&obj0,&obj1,&obj2)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_cmf__upslope__ET__canopy_evaporation_method, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "canopy_evaporation_method_evap_from_canopy" "', argument " "1"" of type '" "cmf::upslope::ET::canopy_evaporation_method *""'"); 
-  }
-  arg1 = reinterpret_cast< cmf::upslope::ET::canopy_evaporation_method * >(argp1);
-  {
-    int newmem = 0;
-    res2 = SWIG_ConvertPtrAndOwn(obj1, &argp2, SWIGTYPE_p_std__shared_ptrT_cmf__water__WaterStorage_t,  0 , &newmem);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "canopy_evaporation_method_evap_from_canopy" "', argument " "2"" of type '" "cmf::water::WaterStorage::ptr""'"); 
-    }
-    if (argp2) arg2 = *(reinterpret_cast< cmf::water::WaterStorage::ptr * >(argp2));
-    if (newmem & SWIG_CAST_NEW_MEMORY) delete reinterpret_cast< cmf::water::WaterStorage::ptr * >(argp2);
-  }
-  {
-    arg3 = convert_datetime_to_cmftime(obj2);
-    if (arg3 == cmf::math::never)  {
-      SWIG_exception_fail(SWIG_TypeError,"Can't convert input value to cmf.Time object");
-    }
-  }
-  {
-    try {
-      result = (double)(arg1)->evap_from_canopy(arg2,arg3);
-    } catch (const std::out_of_range& e) {
-      SWIG_exception(SWIG_IndexError, e.what());    
-    } catch (const std::exception& e) {
-      SWIG_exception(SWIG_RuntimeError, e.what());
-    }
-    
-  }
-  resultobj = SWIG_From_double(static_cast< double >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_delete_canopy_evaporation_method(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  cmf::upslope::ET::canopy_evaporation_method *arg1 = (cmf::upslope::ET::canopy_evaporation_method *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject *swig_obj[1] ;
-  
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__upslope__ET__canopy_evaporation_method, SWIG_POINTER_DISOWN |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_canopy_evaporation_method" "', argument " "1"" of type '" "cmf::upslope::ET::canopy_evaporation_method *""'"); 
-  }
-  arg1 = reinterpret_cast< cmf::upslope::ET::canopy_evaporation_method * >(argp1);
-  {
-    try {
-      delete arg1;
-    } catch (const std::out_of_range& e) {
-      SWIG_exception(SWIG_IndexError, e.what());    
-    } catch (const std::exception& e) {
-      SWIG_exception(SWIG_RuntimeError, e.what());
-    }
-    
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *canopy_evaporation_method_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *obj;
-  if (!SWIG_Python_UnpackTuple(args,(char *)"swigregister", 1, 1,&obj)) return NULL;
-  SWIG_TypeNewClientData(SWIGTYPE_p_cmf__upslope__ET__canopy_evaporation_method, SWIG_NewClientData(obj));
-  return SWIG_Py_Void();
-}
-
-SWIGINTERN PyObject *_wrap_snow_evaporation_method_evap_from_snow(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
-  PyObject *resultobj = 0;
-  cmf::upslope::ET::snow_evaporation_method *arg1 = (cmf::upslope::ET::snow_evaporation_method *) 0 ;
-  cmf::water::WaterStorage::ptr arg2 ;
-  cmf::math::Time arg3 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp2 ;
-  int res2 = 0 ;
-  PyObject * obj0 = 0 ;
-  PyObject * obj1 = 0 ;
-  PyObject * obj2 = 0 ;
-  char *  kwnames[] = {
-    (char *) "self",(char *) "snow",(char *) "t", NULL 
-  };
-  double result;
-  
-  if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"OOO:snow_evaporation_method_evap_from_snow",kwnames,&obj0,&obj1,&obj2)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_cmf__upslope__ET__snow_evaporation_method, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "snow_evaporation_method_evap_from_snow" "', argument " "1"" of type '" "cmf::upslope::ET::snow_evaporation_method *""'"); 
-  }
-  arg1 = reinterpret_cast< cmf::upslope::ET::snow_evaporation_method * >(argp1);
-  {
-    int newmem = 0;
-    res2 = SWIG_ConvertPtrAndOwn(obj1, &argp2, SWIGTYPE_p_std__shared_ptrT_cmf__water__WaterStorage_t,  0 , &newmem);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "snow_evaporation_method_evap_from_snow" "', argument " "2"" of type '" "cmf::water::WaterStorage::ptr""'"); 
-    }
-    if (argp2) arg2 = *(reinterpret_cast< cmf::water::WaterStorage::ptr * >(argp2));
-    if (newmem & SWIG_CAST_NEW_MEMORY) delete reinterpret_cast< cmf::water::WaterStorage::ptr * >(argp2);
-  }
-  {
-    arg3 = convert_datetime_to_cmftime(obj2);
-    if (arg3 == cmf::math::never)  {
-      SWIG_exception_fail(SWIG_TypeError,"Can't convert input value to cmf.Time object");
-    }
-  }
-  {
-    try {
-      result = (double)(arg1)->evap_from_snow(arg2,arg3);
-    } catch (const std::out_of_range& e) {
-      SWIG_exception(SWIG_IndexError, e.what());    
-    } catch (const std::exception& e) {
-      SWIG_exception(SWIG_RuntimeError, e.what());
-    }
-    
-  }
-  resultobj = SWIG_From_double(static_cast< double >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_delete_snow_evaporation_method(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  cmf::upslope::ET::snow_evaporation_method *arg1 = (cmf::upslope::ET::snow_evaporation_method *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject *swig_obj[1] ;
-  
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__upslope__ET__snow_evaporation_method, SWIG_POINTER_DISOWN |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_snow_evaporation_method" "', argument " "1"" of type '" "cmf::upslope::ET::snow_evaporation_method *""'"); 
-  }
-  arg1 = reinterpret_cast< cmf::upslope::ET::snow_evaporation_method * >(argp1);
-  {
-    try {
-      delete arg1;
-    } catch (const std::out_of_range& e) {
-      SWIG_exception(SWIG_IndexError, e.what());    
-    } catch (const std::exception& e) {
-      SWIG_exception(SWIG_RuntimeError, e.what());
-    }
-    
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *snow_evaporation_method_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *obj;
-  if (!SWIG_Python_UnpackTuple(args,(char *)"swigregister", 1, 1,&obj)) return NULL;
-  SWIG_TypeNewClientData(SWIGTYPE_p_cmf__upslope__ET__snow_evaporation_method, SWIG_NewClientData(obj));
-  return SWIG_Py_Void();
-}
-
-SWIGINTERN PyObject *_wrap_new_transpiration(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
-  PyObject *resultobj = 0;
-  cmf::upslope::SoilLayer::ptr arg1 ;
-  cmf::water::flux_node::ptr arg2 ;
-  SwigValueWrapper< std::shared_ptr< cmf::upslope::ET::transpiration_method > > arg3 ;
-  std::string arg4 ;
-  void *argp1 ;
-  int res1 = 0 ;
-  void *argp2 ;
-  int res2 = 0 ;
-  void *argp3 ;
-  int res3 = 0 ;
-  PyObject * obj0 = 0 ;
-  PyObject * obj1 = 0 ;
-  PyObject * obj2 = 0 ;
-  PyObject * obj3 = 0 ;
-  char *  kwnames[] = {
-    (char *) "source",(char *) "ET_target",(char *) "_method",(char *) "method_name", NULL 
-  };
-  cmf::upslope::ET::transpiration *result = 0 ;
-  
-  if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"OOOO:new_transpiration",kwnames,&obj0,&obj1,&obj2,&obj3)) SWIG_fail;
-  {
-    int newmem = 0;
-    res1 = SWIG_ConvertPtrAndOwn(obj0, &argp1, SWIGTYPE_p_std__shared_ptrT_cmf__upslope__SoilLayer_t,  0 , &newmem);
-    if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_transpiration" "', argument " "1"" of type '" "cmf::upslope::SoilLayer::ptr""'"); 
-    }
-    if (argp1) arg1 = *(reinterpret_cast< cmf::upslope::SoilLayer::ptr * >(argp1));
-    if (newmem & SWIG_CAST_NEW_MEMORY) delete reinterpret_cast< cmf::upslope::SoilLayer::ptr * >(argp1);
-  }
-  {
-    int newmem = 0;
-    res2 = SWIG_ConvertPtrAndOwn(obj1, &argp2, SWIGTYPE_p_std__shared_ptrT_cmf__water__flux_node_t,  0 , &newmem);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_transpiration" "', argument " "2"" of type '" "cmf::water::flux_node::ptr""'"); 
-    }
-    if (argp2) arg2 = *(reinterpret_cast< cmf::water::flux_node::ptr * >(argp2));
-    if (newmem & SWIG_CAST_NEW_MEMORY) delete reinterpret_cast< cmf::water::flux_node::ptr * >(argp2);
-  }
-  {
-    res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_std__shared_ptrT_cmf__upslope__ET__transpiration_method_t,  0  | 0);
-    if (!SWIG_IsOK(res3)) {
-      SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "new_transpiration" "', argument " "3"" of type '" "std::shared_ptr< cmf::upslope::ET::transpiration_method >""'"); 
-    }  
-    if (!argp3) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_transpiration" "', argument " "3"" of type '" "std::shared_ptr< cmf::upslope::ET::transpiration_method >""'");
-    } else {
-      std::shared_ptr< cmf::upslope::ET::transpiration_method > * temp = reinterpret_cast< std::shared_ptr< cmf::upslope::ET::transpiration_method > * >(argp3);
-      arg3 = *temp;
-      if (SWIG_IsNewObj(res3)) delete temp;
-    }
-  }
-  {
-    std::string *ptr = (std::string *)0;
-    int res = SWIG_AsPtr_std_string(obj3, &ptr);
-    if (!SWIG_IsOK(res) || !ptr) {
-      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "new_transpiration" "', argument " "4"" of type '" "std::string""'"); 
-    }
-    arg4 = *ptr;
-    if (SWIG_IsNewObj(res)) delete ptr;
-  }
-  {
-    try {
-      result = (cmf::upslope::ET::transpiration *)new cmf::upslope::ET::transpiration(arg1,arg2,arg3,arg4);
-    } catch (const std::out_of_range& e) {
-      SWIG_exception(SWIG_IndexError, e.what());    
-    } catch (const std::exception& e) {
-      SWIG_exception(SWIG_RuntimeError, e.what());
-    }
-    
-  }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_cmf__upslope__ET__transpiration, SWIG_POINTER_NEW |  0 );
-  
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_delete_transpiration(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  cmf::upslope::ET::transpiration *arg1 = (cmf::upslope::ET::transpiration *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject *swig_obj[1] ;
-  
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__upslope__ET__transpiration, SWIG_POINTER_DISOWN |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_transpiration" "', argument " "1"" of type '" "cmf::upslope::ET::transpiration *""'"); 
-  }
-  arg1 = reinterpret_cast< cmf::upslope::ET::transpiration * >(argp1);
-  {
-    try {
-      
-    } catch (const std::out_of_range& e) {
-      SWIG_exception(SWIG_IndexError, e.what());    
-    } catch (const std::exception& e) {
-      SWIG_exception(SWIG_RuntimeError, e.what());
-    }
-    
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *transpiration_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *obj;
-  if (!SWIG_Python_UnpackTuple(args,(char *)"swigregister", 1, 1,&obj)) return NULL;
-  SWIG_TypeNewClientData(SWIGTYPE_p_cmf__upslope__ET__transpiration, SWIG_NewClientData(obj));
-  return SWIG_Py_Void();
-}
-
-SWIGINTERN PyObject *transpiration_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  return SWIG_Python_InitShadowInstance(args);
-}
-
-SWIGINTERN PyObject *_wrap_new_soil_evaporation(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
-  PyObject *resultobj = 0;
-  cmf::upslope::SoilLayer::ptr arg1 ;
-  cmf::water::flux_node::ptr arg2 ;
-  SwigValueWrapper< std::shared_ptr< cmf::upslope::ET::soil_evaporation_method > > arg3 ;
-  std::string arg4 ;
-  void *argp1 ;
-  int res1 = 0 ;
-  void *argp2 ;
-  int res2 = 0 ;
-  void *argp3 ;
-  int res3 = 0 ;
-  PyObject * obj0 = 0 ;
-  PyObject * obj1 = 0 ;
-  PyObject * obj2 = 0 ;
-  PyObject * obj3 = 0 ;
-  char *  kwnames[] = {
-    (char *) "source",(char *) "ET_target",(char *) "_method",(char *) "method_name", NULL 
-  };
-  cmf::upslope::ET::soil_evaporation *result = 0 ;
-  
-  if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"OOOO:new_soil_evaporation",kwnames,&obj0,&obj1,&obj2,&obj3)) SWIG_fail;
-  {
-    int newmem = 0;
-    res1 = SWIG_ConvertPtrAndOwn(obj0, &argp1, SWIGTYPE_p_std__shared_ptrT_cmf__upslope__SoilLayer_t,  0 , &newmem);
-    if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_soil_evaporation" "', argument " "1"" of type '" "cmf::upslope::SoilLayer::ptr""'"); 
-    }
-    if (argp1) arg1 = *(reinterpret_cast< cmf::upslope::SoilLayer::ptr * >(argp1));
-    if (newmem & SWIG_CAST_NEW_MEMORY) delete reinterpret_cast< cmf::upslope::SoilLayer::ptr * >(argp1);
-  }
-  {
-    int newmem = 0;
-    res2 = SWIG_ConvertPtrAndOwn(obj1, &argp2, SWIGTYPE_p_std__shared_ptrT_cmf__water__flux_node_t,  0 , &newmem);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_soil_evaporation" "', argument " "2"" of type '" "cmf::water::flux_node::ptr""'"); 
-    }
-    if (argp2) arg2 = *(reinterpret_cast< cmf::water::flux_node::ptr * >(argp2));
-    if (newmem & SWIG_CAST_NEW_MEMORY) delete reinterpret_cast< cmf::water::flux_node::ptr * >(argp2);
-  }
-  {
-    res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_std__shared_ptrT_cmf__upslope__ET__soil_evaporation_method_t,  0  | 0);
-    if (!SWIG_IsOK(res3)) {
-      SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "new_soil_evaporation" "', argument " "3"" of type '" "std::shared_ptr< cmf::upslope::ET::soil_evaporation_method >""'"); 
-    }  
-    if (!argp3) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_soil_evaporation" "', argument " "3"" of type '" "std::shared_ptr< cmf::upslope::ET::soil_evaporation_method >""'");
-    } else {
-      std::shared_ptr< cmf::upslope::ET::soil_evaporation_method > * temp = reinterpret_cast< std::shared_ptr< cmf::upslope::ET::soil_evaporation_method > * >(argp3);
-      arg3 = *temp;
-      if (SWIG_IsNewObj(res3)) delete temp;
-    }
-  }
-  {
-    std::string *ptr = (std::string *)0;
-    int res = SWIG_AsPtr_std_string(obj3, &ptr);
-    if (!SWIG_IsOK(res) || !ptr) {
-      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "new_soil_evaporation" "', argument " "4"" of type '" "std::string""'"); 
-    }
-    arg4 = *ptr;
-    if (SWIG_IsNewObj(res)) delete ptr;
-  }
-  {
-    try {
-      result = (cmf::upslope::ET::soil_evaporation *)new cmf::upslope::ET::soil_evaporation(arg1,arg2,arg3,arg4);
-    } catch (const std::out_of_range& e) {
-      SWIG_exception(SWIG_IndexError, e.what());    
-    } catch (const std::exception& e) {
-      SWIG_exception(SWIG_RuntimeError, e.what());
-    }
-    
-  }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_cmf__upslope__ET__soil_evaporation, SWIG_POINTER_NEW |  0 );
-  
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_delete_soil_evaporation(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  cmf::upslope::ET::soil_evaporation *arg1 = (cmf::upslope::ET::soil_evaporation *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject *swig_obj[1] ;
-  
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__upslope__ET__soil_evaporation, SWIG_POINTER_DISOWN |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_soil_evaporation" "', argument " "1"" of type '" "cmf::upslope::ET::soil_evaporation *""'"); 
-  }
-  arg1 = reinterpret_cast< cmf::upslope::ET::soil_evaporation * >(argp1);
-  {
-    try {
-      
-    } catch (const std::out_of_range& e) {
-      SWIG_exception(SWIG_IndexError, e.what());    
-    } catch (const std::exception& e) {
-      SWIG_exception(SWIG_RuntimeError, e.what());
-    }
-    
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *soil_evaporation_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *obj;
-  if (!SWIG_Python_UnpackTuple(args,(char *)"swigregister", 1, 1,&obj)) return NULL;
-  SWIG_TypeNewClientData(SWIGTYPE_p_cmf__upslope__ET__soil_evaporation, SWIG_NewClientData(obj));
-  return SWIG_Py_Void();
-}
-
-SWIGINTERN PyObject *soil_evaporation_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  return SWIG_Python_InitShadowInstance(args);
-}
-
-SWIGINTERN PyObject *_wrap_new_canopy_evaporation(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
-  PyObject *resultobj = 0;
-  cmf::water::WaterStorage::ptr arg1 ;
-  cmf::water::flux_node::ptr arg2 ;
-  SwigValueWrapper< std::shared_ptr< cmf::upslope::ET::canopy_evaporation_method > > arg3 ;
-  std::string arg4 ;
-  void *argp1 ;
-  int res1 = 0 ;
-  void *argp2 ;
-  int res2 = 0 ;
-  void *argp3 ;
-  int res3 = 0 ;
-  PyObject * obj0 = 0 ;
-  PyObject * obj1 = 0 ;
-  PyObject * obj2 = 0 ;
-  PyObject * obj3 = 0 ;
-  char *  kwnames[] = {
-    (char *) "source",(char *) "ET_target",(char *) "_method",(char *) "method_name", NULL 
-  };
-  cmf::upslope::ET::canopy_evaporation *result = 0 ;
-  
-  if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"OOOO:new_canopy_evaporation",kwnames,&obj0,&obj1,&obj2,&obj3)) SWIG_fail;
-  {
-    int newmem = 0;
-    res1 = SWIG_ConvertPtrAndOwn(obj0, &argp1, SWIGTYPE_p_std__shared_ptrT_cmf__water__WaterStorage_t,  0 , &newmem);
-    if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_canopy_evaporation" "', argument " "1"" of type '" "cmf::water::WaterStorage::ptr""'"); 
-    }
-    if (argp1) arg1 = *(reinterpret_cast< cmf::water::WaterStorage::ptr * >(argp1));
-    if (newmem & SWIG_CAST_NEW_MEMORY) delete reinterpret_cast< cmf::water::WaterStorage::ptr * >(argp1);
-  }
-  {
-    int newmem = 0;
-    res2 = SWIG_ConvertPtrAndOwn(obj1, &argp2, SWIGTYPE_p_std__shared_ptrT_cmf__water__flux_node_t,  0 , &newmem);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_canopy_evaporation" "', argument " "2"" of type '" "cmf::water::flux_node::ptr""'"); 
-    }
-    if (argp2) arg2 = *(reinterpret_cast< cmf::water::flux_node::ptr * >(argp2));
-    if (newmem & SWIG_CAST_NEW_MEMORY) delete reinterpret_cast< cmf::water::flux_node::ptr * >(argp2);
-  }
-  {
-    res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_std__shared_ptrT_cmf__upslope__ET__canopy_evaporation_method_t,  0  | 0);
-    if (!SWIG_IsOK(res3)) {
-      SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "new_canopy_evaporation" "', argument " "3"" of type '" "std::shared_ptr< cmf::upslope::ET::canopy_evaporation_method >""'"); 
-    }  
-    if (!argp3) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_canopy_evaporation" "', argument " "3"" of type '" "std::shared_ptr< cmf::upslope::ET::canopy_evaporation_method >""'");
-    } else {
-      std::shared_ptr< cmf::upslope::ET::canopy_evaporation_method > * temp = reinterpret_cast< std::shared_ptr< cmf::upslope::ET::canopy_evaporation_method > * >(argp3);
-      arg3 = *temp;
-      if (SWIG_IsNewObj(res3)) delete temp;
-    }
-  }
-  {
-    std::string *ptr = (std::string *)0;
-    int res = SWIG_AsPtr_std_string(obj3, &ptr);
-    if (!SWIG_IsOK(res) || !ptr) {
-      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "new_canopy_evaporation" "', argument " "4"" of type '" "std::string""'"); 
-    }
-    arg4 = *ptr;
-    if (SWIG_IsNewObj(res)) delete ptr;
-  }
-  {
-    try {
-      result = (cmf::upslope::ET::canopy_evaporation *)new cmf::upslope::ET::canopy_evaporation(arg1,arg2,arg3,arg4);
-    } catch (const std::out_of_range& e) {
-      SWIG_exception(SWIG_IndexError, e.what());    
-    } catch (const std::exception& e) {
-      SWIG_exception(SWIG_RuntimeError, e.what());
-    }
-    
-  }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_cmf__upslope__ET__canopy_evaporation, SWIG_POINTER_NEW |  0 );
-  
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_delete_canopy_evaporation(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  cmf::upslope::ET::canopy_evaporation *arg1 = (cmf::upslope::ET::canopy_evaporation *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject *swig_obj[1] ;
-  
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__upslope__ET__canopy_evaporation, SWIG_POINTER_DISOWN |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_canopy_evaporation" "', argument " "1"" of type '" "cmf::upslope::ET::canopy_evaporation *""'"); 
-  }
-  arg1 = reinterpret_cast< cmf::upslope::ET::canopy_evaporation * >(argp1);
-  {
-    try {
-      
-    } catch (const std::out_of_range& e) {
-      SWIG_exception(SWIG_IndexError, e.what());    
-    } catch (const std::exception& e) {
-      SWIG_exception(SWIG_RuntimeError, e.what());
-    }
-    
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *canopy_evaporation_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *obj;
-  if (!SWIG_Python_UnpackTuple(args,(char *)"swigregister", 1, 1,&obj)) return NULL;
-  SWIG_TypeNewClientData(SWIGTYPE_p_cmf__upslope__ET__canopy_evaporation, SWIG_NewClientData(obj));
-  return SWIG_Py_Void();
-}
-
-SWIGINTERN PyObject *canopy_evaporation_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  return SWIG_Python_InitShadowInstance(args);
-}
-
-SWIGINTERN PyObject *_wrap_new_snow_evaporation(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
-  PyObject *resultobj = 0;
-  cmf::water::WaterStorage::ptr arg1 ;
-  cmf::water::flux_node::ptr arg2 ;
-  SwigValueWrapper< std::shared_ptr< cmf::upslope::ET::snow_evaporation_method > > arg3 ;
-  std::string arg4 ;
-  void *argp1 ;
-  int res1 = 0 ;
-  void *argp2 ;
-  int res2 = 0 ;
-  void *argp3 ;
-  int res3 = 0 ;
-  PyObject * obj0 = 0 ;
-  PyObject * obj1 = 0 ;
-  PyObject * obj2 = 0 ;
-  PyObject * obj3 = 0 ;
-  char *  kwnames[] = {
-    (char *) "source",(char *) "ET_target",(char *) "_method",(char *) "method_name", NULL 
-  };
-  cmf::upslope::ET::snow_evaporation *result = 0 ;
-  
-  if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"OOOO:new_snow_evaporation",kwnames,&obj0,&obj1,&obj2,&obj3)) SWIG_fail;
-  {
-    int newmem = 0;
-    res1 = SWIG_ConvertPtrAndOwn(obj0, &argp1, SWIGTYPE_p_std__shared_ptrT_cmf__water__WaterStorage_t,  0 , &newmem);
-    if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_snow_evaporation" "', argument " "1"" of type '" "cmf::water::WaterStorage::ptr""'"); 
-    }
-    if (argp1) arg1 = *(reinterpret_cast< cmf::water::WaterStorage::ptr * >(argp1));
-    if (newmem & SWIG_CAST_NEW_MEMORY) delete reinterpret_cast< cmf::water::WaterStorage::ptr * >(argp1);
-  }
-  {
-    int newmem = 0;
-    res2 = SWIG_ConvertPtrAndOwn(obj1, &argp2, SWIGTYPE_p_std__shared_ptrT_cmf__water__flux_node_t,  0 , &newmem);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_snow_evaporation" "', argument " "2"" of type '" "cmf::water::flux_node::ptr""'"); 
-    }
-    if (argp2) arg2 = *(reinterpret_cast< cmf::water::flux_node::ptr * >(argp2));
-    if (newmem & SWIG_CAST_NEW_MEMORY) delete reinterpret_cast< cmf::water::flux_node::ptr * >(argp2);
-  }
-  {
-    res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_std__shared_ptrT_cmf__upslope__ET__snow_evaporation_method_t,  0  | 0);
-    if (!SWIG_IsOK(res3)) {
-      SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "new_snow_evaporation" "', argument " "3"" of type '" "std::shared_ptr< cmf::upslope::ET::snow_evaporation_method >""'"); 
-    }  
-    if (!argp3) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_snow_evaporation" "', argument " "3"" of type '" "std::shared_ptr< cmf::upslope::ET::snow_evaporation_method >""'");
-    } else {
-      std::shared_ptr< cmf::upslope::ET::snow_evaporation_method > * temp = reinterpret_cast< std::shared_ptr< cmf::upslope::ET::snow_evaporation_method > * >(argp3);
-      arg3 = *temp;
-      if (SWIG_IsNewObj(res3)) delete temp;
-    }
-  }
-  {
-    std::string *ptr = (std::string *)0;
-    int res = SWIG_AsPtr_std_string(obj3, &ptr);
-    if (!SWIG_IsOK(res) || !ptr) {
-      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "new_snow_evaporation" "', argument " "4"" of type '" "std::string""'"); 
-    }
-    arg4 = *ptr;
-    if (SWIG_IsNewObj(res)) delete ptr;
-  }
-  {
-    try {
-      result = (cmf::upslope::ET::snow_evaporation *)new cmf::upslope::ET::snow_evaporation(arg1,arg2,arg3,arg4);
-    } catch (const std::out_of_range& e) {
-      SWIG_exception(SWIG_IndexError, e.what());    
-    } catch (const std::exception& e) {
-      SWIG_exception(SWIG_RuntimeError, e.what());
-    }
-    
-  }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_cmf__upslope__ET__snow_evaporation, SWIG_POINTER_NEW |  0 );
-  
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_delete_snow_evaporation(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  cmf::upslope::ET::snow_evaporation *arg1 = (cmf::upslope::ET::snow_evaporation *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject *swig_obj[1] ;
-  
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__upslope__ET__snow_evaporation, SWIG_POINTER_DISOWN |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_snow_evaporation" "', argument " "1"" of type '" "cmf::upslope::ET::snow_evaporation *""'"); 
-  }
-  arg1 = reinterpret_cast< cmf::upslope::ET::snow_evaporation * >(argp1);
-  {
-    try {
-      
-    } catch (const std::out_of_range& e) {
-      SWIG_exception(SWIG_IndexError, e.what());    
-    } catch (const std::exception& e) {
-      SWIG_exception(SWIG_RuntimeError, e.what());
-    }
-    
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *snow_evaporation_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *obj;
-  if (!SWIG_Python_UnpackTuple(args,(char *)"swigregister", 1, 1,&obj)) return NULL;
-  SWIG_TypeNewClientData(SWIGTYPE_p_cmf__upslope__ET__snow_evaporation, SWIG_NewClientData(obj));
-  return SWIG_Py_Void();
-}
-
-SWIGINTERN PyObject *snow_evaporation_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  return SWIG_Python_InitShadowInstance(args);
-}
-
-SWIGINTERN PyObject *_wrap_new_surface_water_evaporation(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
-  PyObject *resultobj = 0;
-  cmf::river::OpenWaterStorage::ptr arg1 ;
-  cmf::water::flux_node::ptr arg2 ;
-  SwigValueWrapper< std::shared_ptr< cmf::upslope::ET::surface_water_evaporation_method > > arg3 ;
-  std::string arg4 ;
-  void *argp1 ;
-  int res1 = 0 ;
-  void *argp2 ;
-  int res2 = 0 ;
-  void *argp3 ;
-  int res3 = 0 ;
-  PyObject * obj0 = 0 ;
-  PyObject * obj1 = 0 ;
-  PyObject * obj2 = 0 ;
-  PyObject * obj3 = 0 ;
-  char *  kwnames[] = {
-    (char *) "source",(char *) "ET_target",(char *) "_method",(char *) "method_name", NULL 
-  };
-  cmf::upslope::ET::surface_water_evaporation *result = 0 ;
-  
-  if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"OOOO:new_surface_water_evaporation",kwnames,&obj0,&obj1,&obj2,&obj3)) SWIG_fail;
-  {
-    int newmem = 0;
-    res1 = SWIG_ConvertPtrAndOwn(obj0, &argp1, SWIGTYPE_p_std__shared_ptrT_cmf__river__OpenWaterStorage_t,  0 , &newmem);
-    if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_surface_water_evaporation" "', argument " "1"" of type '" "cmf::river::OpenWaterStorage::ptr""'"); 
-    }
-    if (argp1) arg1 = *(reinterpret_cast< cmf::river::OpenWaterStorage::ptr * >(argp1));
-    if (newmem & SWIG_CAST_NEW_MEMORY) delete reinterpret_cast< cmf::river::OpenWaterStorage::ptr * >(argp1);
-  }
-  {
-    int newmem = 0;
-    res2 = SWIG_ConvertPtrAndOwn(obj1, &argp2, SWIGTYPE_p_std__shared_ptrT_cmf__water__flux_node_t,  0 , &newmem);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_surface_water_evaporation" "', argument " "2"" of type '" "cmf::water::flux_node::ptr""'"); 
-    }
-    if (argp2) arg2 = *(reinterpret_cast< cmf::water::flux_node::ptr * >(argp2));
-    if (newmem & SWIG_CAST_NEW_MEMORY) delete reinterpret_cast< cmf::water::flux_node::ptr * >(argp2);
-  }
-  {
-    res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_std__shared_ptrT_cmf__upslope__ET__surface_water_evaporation_method_t,  0  | 0);
-    if (!SWIG_IsOK(res3)) {
-      SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "new_surface_water_evaporation" "', argument " "3"" of type '" "std::shared_ptr< cmf::upslope::ET::surface_water_evaporation_method >""'"); 
-    }  
-    if (!argp3) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_surface_water_evaporation" "', argument " "3"" of type '" "std::shared_ptr< cmf::upslope::ET::surface_water_evaporation_method >""'");
-    } else {
-      std::shared_ptr< cmf::upslope::ET::surface_water_evaporation_method > * temp = reinterpret_cast< std::shared_ptr< cmf::upslope::ET::surface_water_evaporation_method > * >(argp3);
-      arg3 = *temp;
-      if (SWIG_IsNewObj(res3)) delete temp;
-    }
-  }
-  {
-    std::string *ptr = (std::string *)0;
-    int res = SWIG_AsPtr_std_string(obj3, &ptr);
-    if (!SWIG_IsOK(res) || !ptr) {
-      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "new_surface_water_evaporation" "', argument " "4"" of type '" "std::string""'"); 
-    }
-    arg4 = *ptr;
-    if (SWIG_IsNewObj(res)) delete ptr;
-  }
-  {
-    try {
-      result = (cmf::upslope::ET::surface_water_evaporation *)new cmf::upslope::ET::surface_water_evaporation(arg1,arg2,arg3,arg4);
-    } catch (const std::out_of_range& e) {
-      SWIG_exception(SWIG_IndexError, e.what());    
-    } catch (const std::exception& e) {
-      SWIG_exception(SWIG_RuntimeError, e.what());
-    }
-    
-  }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_cmf__upslope__ET__surface_water_evaporation, SWIG_POINTER_NEW |  0 );
-  
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_delete_surface_water_evaporation(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  cmf::upslope::ET::surface_water_evaporation *arg1 = (cmf::upslope::ET::surface_water_evaporation *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject *swig_obj[1] ;
-  
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__upslope__ET__surface_water_evaporation, SWIG_POINTER_DISOWN |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_surface_water_evaporation" "', argument " "1"" of type '" "cmf::upslope::ET::surface_water_evaporation *""'"); 
-  }
-  arg1 = reinterpret_cast< cmf::upslope::ET::surface_water_evaporation * >(argp1);
-  {
-    try {
-      
-    } catch (const std::out_of_range& e) {
-      SWIG_exception(SWIG_IndexError, e.what());    
-    } catch (const std::exception& e) {
-      SWIG_exception(SWIG_RuntimeError, e.what());
-    }
-    
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *surface_water_evaporation_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *obj;
-  if (!SWIG_Python_UnpackTuple(args,(char *)"swigregister", 1, 1,&obj)) return NULL;
-  SWIG_TypeNewClientData(SWIGTYPE_p_cmf__upslope__ET__surface_water_evaporation, SWIG_NewClientData(obj));
-  return SWIG_Py_Void();
-}
-
-SWIGINTERN PyObject *surface_water_evaporation_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  return SWIG_Python_InitShadowInstance(args);
-}
-
 SWIGINTERN PyObject *_wrap_PenmanMonteith__SWIG_0(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   real arg1 ;
@@ -72645,16 +71633,28 @@ SWIGINTERN PyObject *_wrap_ShuttleworthWallace_RAA_set(PyObject *SWIGUNUSEDPARM(
   double arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
+  std::shared_ptr< cmf::upslope::ET::ShuttleworthWallace > tempshared1 ;
+  std::shared_ptr< cmf::upslope::ET::ShuttleworthWallace > *smartarg1 = 0 ;
   double val2 ;
   int ecode2 = 0 ;
   PyObject *swig_obj[2] ;
   
   if (!SWIG_Python_UnpackTuple(args,"ShuttleworthWallace_RAA_set",2,2,swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__upslope__ET__ShuttleworthWallace, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ShuttleworthWallace_RAA_set" "', argument " "1"" of type '" "cmf::upslope::ET::ShuttleworthWallace *""'"); 
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_std__shared_ptrT_cmf__upslope__ET__ShuttleworthWallace_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ShuttleworthWallace_RAA_set" "', argument " "1"" of type '" "cmf::upslope::ET::ShuttleworthWallace *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< std::shared_ptr<  cmf::upslope::ET::ShuttleworthWallace > * >(argp1);
+      delete reinterpret_cast< std::shared_ptr<  cmf::upslope::ET::ShuttleworthWallace > * >(argp1);
+      arg1 = const_cast< cmf::upslope::ET::ShuttleworthWallace * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< std::shared_ptr<  cmf::upslope::ET::ShuttleworthWallace > * >(argp1);
+      arg1 = const_cast< cmf::upslope::ET::ShuttleworthWallace * >((smartarg1 ? smartarg1->get() : 0));
+    }
   }
-  arg1 = reinterpret_cast< cmf::upslope::ET::ShuttleworthWallace * >(argp1);
   ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
   if (!SWIG_IsOK(ecode2)) {
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "ShuttleworthWallace_RAA_set" "', argument " "2"" of type '" "double""'");
@@ -72673,16 +71673,28 @@ SWIGINTERN PyObject *_wrap_ShuttleworthWallace_RAA_get(PyObject *SWIGUNUSEDPARM(
   cmf::upslope::ET::ShuttleworthWallace *arg1 = (cmf::upslope::ET::ShuttleworthWallace *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
+  std::shared_ptr< cmf::upslope::ET::ShuttleworthWallace > tempshared1 ;
+  std::shared_ptr< cmf::upslope::ET::ShuttleworthWallace > *smartarg1 = 0 ;
   PyObject *swig_obj[1] ;
   double result;
   
   if (!args) SWIG_fail;
   swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__upslope__ET__ShuttleworthWallace, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ShuttleworthWallace_RAA_get" "', argument " "1"" of type '" "cmf::upslope::ET::ShuttleworthWallace *""'"); 
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_std__shared_ptrT_cmf__upslope__ET__ShuttleworthWallace_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ShuttleworthWallace_RAA_get" "', argument " "1"" of type '" "cmf::upslope::ET::ShuttleworthWallace *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< std::shared_ptr<  cmf::upslope::ET::ShuttleworthWallace > * >(argp1);
+      delete reinterpret_cast< std::shared_ptr<  cmf::upslope::ET::ShuttleworthWallace > * >(argp1);
+      arg1 = const_cast< cmf::upslope::ET::ShuttleworthWallace * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< std::shared_ptr<  cmf::upslope::ET::ShuttleworthWallace > * >(argp1);
+      arg1 = const_cast< cmf::upslope::ET::ShuttleworthWallace * >((smartarg1 ? smartarg1->get() : 0));
+    }
   }
-  arg1 = reinterpret_cast< cmf::upslope::ET::ShuttleworthWallace * >(argp1);
   result = (double) ((arg1)->RAA);
   resultobj = SWIG_From_double(static_cast< double >(result));
   return resultobj;
@@ -72697,16 +71709,28 @@ SWIGINTERN PyObject *_wrap_ShuttleworthWallace_RAC_set(PyObject *SWIGUNUSEDPARM(
   double arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
+  std::shared_ptr< cmf::upslope::ET::ShuttleworthWallace > tempshared1 ;
+  std::shared_ptr< cmf::upslope::ET::ShuttleworthWallace > *smartarg1 = 0 ;
   double val2 ;
   int ecode2 = 0 ;
   PyObject *swig_obj[2] ;
   
   if (!SWIG_Python_UnpackTuple(args,"ShuttleworthWallace_RAC_set",2,2,swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__upslope__ET__ShuttleworthWallace, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ShuttleworthWallace_RAC_set" "', argument " "1"" of type '" "cmf::upslope::ET::ShuttleworthWallace *""'"); 
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_std__shared_ptrT_cmf__upslope__ET__ShuttleworthWallace_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ShuttleworthWallace_RAC_set" "', argument " "1"" of type '" "cmf::upslope::ET::ShuttleworthWallace *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< std::shared_ptr<  cmf::upslope::ET::ShuttleworthWallace > * >(argp1);
+      delete reinterpret_cast< std::shared_ptr<  cmf::upslope::ET::ShuttleworthWallace > * >(argp1);
+      arg1 = const_cast< cmf::upslope::ET::ShuttleworthWallace * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< std::shared_ptr<  cmf::upslope::ET::ShuttleworthWallace > * >(argp1);
+      arg1 = const_cast< cmf::upslope::ET::ShuttleworthWallace * >((smartarg1 ? smartarg1->get() : 0));
+    }
   }
-  arg1 = reinterpret_cast< cmf::upslope::ET::ShuttleworthWallace * >(argp1);
   ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
   if (!SWIG_IsOK(ecode2)) {
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "ShuttleworthWallace_RAC_set" "', argument " "2"" of type '" "double""'");
@@ -72725,121 +71749,29 @@ SWIGINTERN PyObject *_wrap_ShuttleworthWallace_RAC_get(PyObject *SWIGUNUSEDPARM(
   cmf::upslope::ET::ShuttleworthWallace *arg1 = (cmf::upslope::ET::ShuttleworthWallace *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
+  std::shared_ptr< cmf::upslope::ET::ShuttleworthWallace > tempshared1 ;
+  std::shared_ptr< cmf::upslope::ET::ShuttleworthWallace > *smartarg1 = 0 ;
   PyObject *swig_obj[1] ;
   double result;
   
   if (!args) SWIG_fail;
   swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__upslope__ET__ShuttleworthWallace, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ShuttleworthWallace_RAC_get" "', argument " "1"" of type '" "cmf::upslope::ET::ShuttleworthWallace *""'"); 
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_std__shared_ptrT_cmf__upslope__ET__ShuttleworthWallace_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ShuttleworthWallace_RAC_get" "', argument " "1"" of type '" "cmf::upslope::ET::ShuttleworthWallace *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< std::shared_ptr<  cmf::upslope::ET::ShuttleworthWallace > * >(argp1);
+      delete reinterpret_cast< std::shared_ptr<  cmf::upslope::ET::ShuttleworthWallace > * >(argp1);
+      arg1 = const_cast< cmf::upslope::ET::ShuttleworthWallace * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< std::shared_ptr<  cmf::upslope::ET::ShuttleworthWallace > * >(argp1);
+      arg1 = const_cast< cmf::upslope::ET::ShuttleworthWallace * >((smartarg1 ? smartarg1->get() : 0));
+    }
   }
-  arg1 = reinterpret_cast< cmf::upslope::ET::ShuttleworthWallace * >(argp1);
   result = (double) ((arg1)->RAC);
-  resultobj = SWIG_From_double(static_cast< double >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_ShuttleworthWallace_RAS_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  cmf::upslope::ET::ShuttleworthWallace *arg1 = (cmf::upslope::ET::ShuttleworthWallace *) 0 ;
-  double arg2 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  double val2 ;
-  int ecode2 = 0 ;
-  PyObject *swig_obj[2] ;
-  
-  if (!SWIG_Python_UnpackTuple(args,"ShuttleworthWallace_RAS_set",2,2,swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__upslope__ET__ShuttleworthWallace, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ShuttleworthWallace_RAS_set" "', argument " "1"" of type '" "cmf::upslope::ET::ShuttleworthWallace *""'"); 
-  }
-  arg1 = reinterpret_cast< cmf::upslope::ET::ShuttleworthWallace * >(argp1);
-  ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "ShuttleworthWallace_RAS_set" "', argument " "2"" of type '" "double""'");
-  } 
-  arg2 = static_cast< double >(val2);
-  if (arg1) (arg1)->RAS = arg2;
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_ShuttleworthWallace_RAS_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  cmf::upslope::ET::ShuttleworthWallace *arg1 = (cmf::upslope::ET::ShuttleworthWallace *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject *swig_obj[1] ;
-  double result;
-  
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__upslope__ET__ShuttleworthWallace, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ShuttleworthWallace_RAS_get" "', argument " "1"" of type '" "cmf::upslope::ET::ShuttleworthWallace *""'"); 
-  }
-  arg1 = reinterpret_cast< cmf::upslope::ET::ShuttleworthWallace * >(argp1);
-  result = (double) ((arg1)->RAS);
-  resultobj = SWIG_From_double(static_cast< double >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_ShuttleworthWallace_RSS_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  cmf::upslope::ET::ShuttleworthWallace *arg1 = (cmf::upslope::ET::ShuttleworthWallace *) 0 ;
-  double arg2 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  double val2 ;
-  int ecode2 = 0 ;
-  PyObject *swig_obj[2] ;
-  
-  if (!SWIG_Python_UnpackTuple(args,"ShuttleworthWallace_RSS_set",2,2,swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__upslope__ET__ShuttleworthWallace, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ShuttleworthWallace_RSS_set" "', argument " "1"" of type '" "cmf::upslope::ET::ShuttleworthWallace *""'"); 
-  }
-  arg1 = reinterpret_cast< cmf::upslope::ET::ShuttleworthWallace * >(argp1);
-  ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "ShuttleworthWallace_RSS_set" "', argument " "2"" of type '" "double""'");
-  } 
-  arg2 = static_cast< double >(val2);
-  if (arg1) (arg1)->RSS = arg2;
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_ShuttleworthWallace_RSS_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  cmf::upslope::ET::ShuttleworthWallace *arg1 = (cmf::upslope::ET::ShuttleworthWallace *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject *swig_obj[1] ;
-  double result;
-  
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__upslope__ET__ShuttleworthWallace, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ShuttleworthWallace_RSS_get" "', argument " "1"" of type '" "cmf::upslope::ET::ShuttleworthWallace *""'"); 
-  }
-  arg1 = reinterpret_cast< cmf::upslope::ET::ShuttleworthWallace * >(argp1);
-  result = (double) ((arg1)->RSS);
   resultobj = SWIG_From_double(static_cast< double >(result));
   return resultobj;
 fail:
@@ -72853,16 +71785,28 @@ SWIGINTERN PyObject *_wrap_ShuttleworthWallace_RSC_set(PyObject *SWIGUNUSEDPARM(
   double arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
+  std::shared_ptr< cmf::upslope::ET::ShuttleworthWallace > tempshared1 ;
+  std::shared_ptr< cmf::upslope::ET::ShuttleworthWallace > *smartarg1 = 0 ;
   double val2 ;
   int ecode2 = 0 ;
   PyObject *swig_obj[2] ;
   
   if (!SWIG_Python_UnpackTuple(args,"ShuttleworthWallace_RSC_set",2,2,swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__upslope__ET__ShuttleworthWallace, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ShuttleworthWallace_RSC_set" "', argument " "1"" of type '" "cmf::upslope::ET::ShuttleworthWallace *""'"); 
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_std__shared_ptrT_cmf__upslope__ET__ShuttleworthWallace_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ShuttleworthWallace_RSC_set" "', argument " "1"" of type '" "cmf::upslope::ET::ShuttleworthWallace *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< std::shared_ptr<  cmf::upslope::ET::ShuttleworthWallace > * >(argp1);
+      delete reinterpret_cast< std::shared_ptr<  cmf::upslope::ET::ShuttleworthWallace > * >(argp1);
+      arg1 = const_cast< cmf::upslope::ET::ShuttleworthWallace * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< std::shared_ptr<  cmf::upslope::ET::ShuttleworthWallace > * >(argp1);
+      arg1 = const_cast< cmf::upslope::ET::ShuttleworthWallace * >((smartarg1 ? smartarg1->get() : 0));
+    }
   }
-  arg1 = reinterpret_cast< cmf::upslope::ET::ShuttleworthWallace * >(argp1);
   ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
   if (!SWIG_IsOK(ecode2)) {
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "ShuttleworthWallace_RSC_set" "', argument " "2"" of type '" "double""'");
@@ -72881,17 +71825,181 @@ SWIGINTERN PyObject *_wrap_ShuttleworthWallace_RSC_get(PyObject *SWIGUNUSEDPARM(
   cmf::upslope::ET::ShuttleworthWallace *arg1 = (cmf::upslope::ET::ShuttleworthWallace *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
+  std::shared_ptr< cmf::upslope::ET::ShuttleworthWallace > tempshared1 ;
+  std::shared_ptr< cmf::upslope::ET::ShuttleworthWallace > *smartarg1 = 0 ;
   PyObject *swig_obj[1] ;
   double result;
   
   if (!args) SWIG_fail;
   swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__upslope__ET__ShuttleworthWallace, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ShuttleworthWallace_RSC_get" "', argument " "1"" of type '" "cmf::upslope::ET::ShuttleworthWallace *""'"); 
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_std__shared_ptrT_cmf__upslope__ET__ShuttleworthWallace_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ShuttleworthWallace_RSC_get" "', argument " "1"" of type '" "cmf::upslope::ET::ShuttleworthWallace *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< std::shared_ptr<  cmf::upslope::ET::ShuttleworthWallace > * >(argp1);
+      delete reinterpret_cast< std::shared_ptr<  cmf::upslope::ET::ShuttleworthWallace > * >(argp1);
+      arg1 = const_cast< cmf::upslope::ET::ShuttleworthWallace * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< std::shared_ptr<  cmf::upslope::ET::ShuttleworthWallace > * >(argp1);
+      arg1 = const_cast< cmf::upslope::ET::ShuttleworthWallace * >((smartarg1 ? smartarg1->get() : 0));
+    }
   }
-  arg1 = reinterpret_cast< cmf::upslope::ET::ShuttleworthWallace * >(argp1);
   result = (double) ((arg1)->RSC);
+  resultobj = SWIG_From_double(static_cast< double >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ShuttleworthWallace_RAS_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  cmf::upslope::ET::ShuttleworthWallace *arg1 = (cmf::upslope::ET::ShuttleworthWallace *) 0 ;
+  double arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  std::shared_ptr< cmf::upslope::ET::ShuttleworthWallace > tempshared1 ;
+  std::shared_ptr< cmf::upslope::ET::ShuttleworthWallace > *smartarg1 = 0 ;
+  double val2 ;
+  int ecode2 = 0 ;
+  PyObject *swig_obj[2] ;
+  
+  if (!SWIG_Python_UnpackTuple(args,"ShuttleworthWallace_RAS_set",2,2,swig_obj)) SWIG_fail;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_std__shared_ptrT_cmf__upslope__ET__ShuttleworthWallace_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ShuttleworthWallace_RAS_set" "', argument " "1"" of type '" "cmf::upslope::ET::ShuttleworthWallace *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< std::shared_ptr<  cmf::upslope::ET::ShuttleworthWallace > * >(argp1);
+      delete reinterpret_cast< std::shared_ptr<  cmf::upslope::ET::ShuttleworthWallace > * >(argp1);
+      arg1 = const_cast< cmf::upslope::ET::ShuttleworthWallace * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< std::shared_ptr<  cmf::upslope::ET::ShuttleworthWallace > * >(argp1);
+      arg1 = const_cast< cmf::upslope::ET::ShuttleworthWallace * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "ShuttleworthWallace_RAS_set" "', argument " "2"" of type '" "double""'");
+  } 
+  arg2 = static_cast< double >(val2);
+  if (arg1) (arg1)->RAS = arg2;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ShuttleworthWallace_RAS_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  cmf::upslope::ET::ShuttleworthWallace *arg1 = (cmf::upslope::ET::ShuttleworthWallace *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  std::shared_ptr< cmf::upslope::ET::ShuttleworthWallace > tempshared1 ;
+  std::shared_ptr< cmf::upslope::ET::ShuttleworthWallace > *smartarg1 = 0 ;
+  PyObject *swig_obj[1] ;
+  double result;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_std__shared_ptrT_cmf__upslope__ET__ShuttleworthWallace_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ShuttleworthWallace_RAS_get" "', argument " "1"" of type '" "cmf::upslope::ET::ShuttleworthWallace *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< std::shared_ptr<  cmf::upslope::ET::ShuttleworthWallace > * >(argp1);
+      delete reinterpret_cast< std::shared_ptr<  cmf::upslope::ET::ShuttleworthWallace > * >(argp1);
+      arg1 = const_cast< cmf::upslope::ET::ShuttleworthWallace * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< std::shared_ptr<  cmf::upslope::ET::ShuttleworthWallace > * >(argp1);
+      arg1 = const_cast< cmf::upslope::ET::ShuttleworthWallace * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  result = (double) ((arg1)->RAS);
+  resultobj = SWIG_From_double(static_cast< double >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ShuttleworthWallace_RSS_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  cmf::upslope::ET::ShuttleworthWallace *arg1 = (cmf::upslope::ET::ShuttleworthWallace *) 0 ;
+  double arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  std::shared_ptr< cmf::upslope::ET::ShuttleworthWallace > tempshared1 ;
+  std::shared_ptr< cmf::upslope::ET::ShuttleworthWallace > *smartarg1 = 0 ;
+  double val2 ;
+  int ecode2 = 0 ;
+  PyObject *swig_obj[2] ;
+  
+  if (!SWIG_Python_UnpackTuple(args,"ShuttleworthWallace_RSS_set",2,2,swig_obj)) SWIG_fail;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_std__shared_ptrT_cmf__upslope__ET__ShuttleworthWallace_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ShuttleworthWallace_RSS_set" "', argument " "1"" of type '" "cmf::upslope::ET::ShuttleworthWallace *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< std::shared_ptr<  cmf::upslope::ET::ShuttleworthWallace > * >(argp1);
+      delete reinterpret_cast< std::shared_ptr<  cmf::upslope::ET::ShuttleworthWallace > * >(argp1);
+      arg1 = const_cast< cmf::upslope::ET::ShuttleworthWallace * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< std::shared_ptr<  cmf::upslope::ET::ShuttleworthWallace > * >(argp1);
+      arg1 = const_cast< cmf::upslope::ET::ShuttleworthWallace * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "ShuttleworthWallace_RSS_set" "', argument " "2"" of type '" "double""'");
+  } 
+  arg2 = static_cast< double >(val2);
+  if (arg1) (arg1)->RSS = arg2;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ShuttleworthWallace_RSS_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  cmf::upslope::ET::ShuttleworthWallace *arg1 = (cmf::upslope::ET::ShuttleworthWallace *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  std::shared_ptr< cmf::upslope::ET::ShuttleworthWallace > tempshared1 ;
+  std::shared_ptr< cmf::upslope::ET::ShuttleworthWallace > *smartarg1 = 0 ;
+  PyObject *swig_obj[1] ;
+  double result;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_std__shared_ptrT_cmf__upslope__ET__ShuttleworthWallace_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ShuttleworthWallace_RSS_get" "', argument " "1"" of type '" "cmf::upslope::ET::ShuttleworthWallace *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< std::shared_ptr<  cmf::upslope::ET::ShuttleworthWallace > * >(argp1);
+      delete reinterpret_cast< std::shared_ptr<  cmf::upslope::ET::ShuttleworthWallace > * >(argp1);
+      arg1 = const_cast< cmf::upslope::ET::ShuttleworthWallace * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< std::shared_ptr<  cmf::upslope::ET::ShuttleworthWallace > * >(argp1);
+      arg1 = const_cast< cmf::upslope::ET::ShuttleworthWallace * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  result = (double) ((arg1)->RSS);
   resultobj = SWIG_From_double(static_cast< double >(result));
   return resultobj;
 fail:
@@ -72905,16 +72013,28 @@ SWIGINTERN PyObject *_wrap_ShuttleworthWallace_refresh_counter_set(PyObject *SWI
   int arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
+  std::shared_ptr< cmf::upslope::ET::ShuttleworthWallace > tempshared1 ;
+  std::shared_ptr< cmf::upslope::ET::ShuttleworthWallace > *smartarg1 = 0 ;
   int val2 ;
   int ecode2 = 0 ;
   PyObject *swig_obj[2] ;
   
   if (!SWIG_Python_UnpackTuple(args,"ShuttleworthWallace_refresh_counter_set",2,2,swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__upslope__ET__ShuttleworthWallace, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ShuttleworthWallace_refresh_counter_set" "', argument " "1"" of type '" "cmf::upslope::ET::ShuttleworthWallace *""'"); 
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_std__shared_ptrT_cmf__upslope__ET__ShuttleworthWallace_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ShuttleworthWallace_refresh_counter_set" "', argument " "1"" of type '" "cmf::upslope::ET::ShuttleworthWallace *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< std::shared_ptr<  cmf::upslope::ET::ShuttleworthWallace > * >(argp1);
+      delete reinterpret_cast< std::shared_ptr<  cmf::upslope::ET::ShuttleworthWallace > * >(argp1);
+      arg1 = const_cast< cmf::upslope::ET::ShuttleworthWallace * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< std::shared_ptr<  cmf::upslope::ET::ShuttleworthWallace > * >(argp1);
+      arg1 = const_cast< cmf::upslope::ET::ShuttleworthWallace * >((smartarg1 ? smartarg1->get() : 0));
+    }
   }
-  arg1 = reinterpret_cast< cmf::upslope::ET::ShuttleworthWallace * >(argp1);
   ecode2 = SWIG_AsVal_int(swig_obj[1], &val2);
   if (!SWIG_IsOK(ecode2)) {
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "ShuttleworthWallace_refresh_counter_set" "', argument " "2"" of type '" "int""'");
@@ -72933,16 +72053,28 @@ SWIGINTERN PyObject *_wrap_ShuttleworthWallace_refresh_counter_get(PyObject *SWI
   cmf::upslope::ET::ShuttleworthWallace *arg1 = (cmf::upslope::ET::ShuttleworthWallace *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
+  std::shared_ptr< cmf::upslope::ET::ShuttleworthWallace > tempshared1 ;
+  std::shared_ptr< cmf::upslope::ET::ShuttleworthWallace > *smartarg1 = 0 ;
   PyObject *swig_obj[1] ;
   int result;
   
   if (!args) SWIG_fail;
   swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__upslope__ET__ShuttleworthWallace, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ShuttleworthWallace_refresh_counter_get" "', argument " "1"" of type '" "cmf::upslope::ET::ShuttleworthWallace *""'"); 
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_std__shared_ptrT_cmf__upslope__ET__ShuttleworthWallace_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ShuttleworthWallace_refresh_counter_get" "', argument " "1"" of type '" "cmf::upslope::ET::ShuttleworthWallace *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< std::shared_ptr<  cmf::upslope::ET::ShuttleworthWallace > * >(argp1);
+      delete reinterpret_cast< std::shared_ptr<  cmf::upslope::ET::ShuttleworthWallace > * >(argp1);
+      arg1 = const_cast< cmf::upslope::ET::ShuttleworthWallace * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< std::shared_ptr<  cmf::upslope::ET::ShuttleworthWallace > * >(argp1);
+      arg1 = const_cast< cmf::upslope::ET::ShuttleworthWallace * >((smartarg1 ? smartarg1->get() : 0));
+    }
   }
-  arg1 = reinterpret_cast< cmf::upslope::ET::ShuttleworthWallace * >(argp1);
   result = (int) ((arg1)->refresh_counter);
   resultobj = SWIG_From_int(static_cast< int >(result));
   return resultobj;
@@ -72957,13 +72089,25 @@ SWIGINTERN PyObject *_wrap_ShuttleworthWallace_refresh__SWIG_0(PyObject *SWIGUNU
   cmf::math::Time arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
+  std::shared_ptr< cmf::upslope::ET::ShuttleworthWallace > tempshared1 ;
+  std::shared_ptr< cmf::upslope::ET::ShuttleworthWallace > *smartarg1 = 0 ;
   
   if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__upslope__ET__ShuttleworthWallace, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ShuttleworthWallace_refresh" "', argument " "1"" of type '" "cmf::upslope::ET::ShuttleworthWallace *""'"); 
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_std__shared_ptrT_cmf__upslope__ET__ShuttleworthWallace_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ShuttleworthWallace_refresh" "', argument " "1"" of type '" "cmf::upslope::ET::ShuttleworthWallace *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< std::shared_ptr<  cmf::upslope::ET::ShuttleworthWallace > * >(argp1);
+      delete reinterpret_cast< std::shared_ptr<  cmf::upslope::ET::ShuttleworthWallace > * >(argp1);
+      arg1 = const_cast< cmf::upslope::ET::ShuttleworthWallace * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< std::shared_ptr<  cmf::upslope::ET::ShuttleworthWallace > * >(argp1);
+      arg1 = const_cast< cmf::upslope::ET::ShuttleworthWallace * >((smartarg1 ? smartarg1->get() : 0));
+    }
   }
-  arg1 = reinterpret_cast< cmf::upslope::ET::ShuttleworthWallace * >(argp1);
   {
     arg2 = convert_datetime_to_cmftime(swig_obj[1]);
     if (arg2 == cmf::math::never)  {
@@ -72992,13 +72136,25 @@ SWIGINTERN PyObject *_wrap_ShuttleworthWallace_refresh__SWIG_1(PyObject *SWIGUNU
   cmf::upslope::ET::ShuttleworthWallace *arg1 = (cmf::upslope::ET::ShuttleworthWallace *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
+  std::shared_ptr< cmf::upslope::ET::ShuttleworthWallace > tempshared1 ;
+  std::shared_ptr< cmf::upslope::ET::ShuttleworthWallace > *smartarg1 = 0 ;
   
   if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__upslope__ET__ShuttleworthWallace, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ShuttleworthWallace_refresh" "', argument " "1"" of type '" "cmf::upslope::ET::ShuttleworthWallace *""'"); 
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_std__shared_ptrT_cmf__upslope__ET__ShuttleworthWallace_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ShuttleworthWallace_refresh" "', argument " "1"" of type '" "cmf::upslope::ET::ShuttleworthWallace *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< std::shared_ptr<  cmf::upslope::ET::ShuttleworthWallace > * >(argp1);
+      delete reinterpret_cast< std::shared_ptr<  cmf::upslope::ET::ShuttleworthWallace > * >(argp1);
+      arg1 = const_cast< cmf::upslope::ET::ShuttleworthWallace * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< std::shared_ptr<  cmf::upslope::ET::ShuttleworthWallace > * >(argp1);
+      arg1 = const_cast< cmf::upslope::ET::ShuttleworthWallace * >((smartarg1 ? smartarg1->get() : 0));
+    }
   }
-  arg1 = reinterpret_cast< cmf::upslope::ET::ShuttleworthWallace * >(argp1);
   {
     try {
       (arg1)->refresh();
@@ -73033,8 +72189,7 @@ SWIGINTERN PyObject *_wrap_ShuttleworthWallace_refresh(PyObject *self, PyObject 
       SWIG_TypeRank _pi = 1;
       int _v = 0;
       {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_cmf__upslope__ET__ShuttleworthWallace, 0);
+        int res = SWIG_ConvertPtr(argv[0], 0, SWIGTYPE_p_std__shared_ptrT_cmf__upslope__ET__ShuttleworthWallace_t, 0);
         _v = SWIG_CheckState(res);
       }
       if (!_v) goto check_1;
@@ -73054,8 +72209,7 @@ SWIGINTERN PyObject *_wrap_ShuttleworthWallace_refresh(PyObject *self, PyObject 
       SWIG_TypeRank _pi = 1;
       int _v = 0;
       {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_cmf__upslope__ET__ShuttleworthWallace, 0);
+        int res = SWIG_ConvertPtr(argv[0], 0, SWIGTYPE_p_std__shared_ptrT_cmf__upslope__ET__ShuttleworthWallace_t, 0);
         _v = SWIG_CheckState(res);
       }
       if (!_v) goto check_2;
@@ -73102,16 +72256,28 @@ SWIGINTERN PyObject *_wrap_ShuttleworthWallace_PTR_set(PyObject *SWIGUNUSEDPARM(
   double arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
+  std::shared_ptr< cmf::upslope::ET::ShuttleworthWallace > tempshared1 ;
+  std::shared_ptr< cmf::upslope::ET::ShuttleworthWallace > *smartarg1 = 0 ;
   double val2 ;
   int ecode2 = 0 ;
   PyObject *swig_obj[2] ;
   
   if (!SWIG_Python_UnpackTuple(args,"ShuttleworthWallace_PTR_set",2,2,swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__upslope__ET__ShuttleworthWallace, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ShuttleworthWallace_PTR_set" "', argument " "1"" of type '" "cmf::upslope::ET::ShuttleworthWallace *""'"); 
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_std__shared_ptrT_cmf__upslope__ET__ShuttleworthWallace_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ShuttleworthWallace_PTR_set" "', argument " "1"" of type '" "cmf::upslope::ET::ShuttleworthWallace *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< std::shared_ptr<  cmf::upslope::ET::ShuttleworthWallace > * >(argp1);
+      delete reinterpret_cast< std::shared_ptr<  cmf::upslope::ET::ShuttleworthWallace > * >(argp1);
+      arg1 = const_cast< cmf::upslope::ET::ShuttleworthWallace * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< std::shared_ptr<  cmf::upslope::ET::ShuttleworthWallace > * >(argp1);
+      arg1 = const_cast< cmf::upslope::ET::ShuttleworthWallace * >((smartarg1 ? smartarg1->get() : 0));
+    }
   }
-  arg1 = reinterpret_cast< cmf::upslope::ET::ShuttleworthWallace * >(argp1);
   ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
   if (!SWIG_IsOK(ecode2)) {
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "ShuttleworthWallace_PTR_set" "', argument " "2"" of type '" "double""'");
@@ -73130,16 +72296,28 @@ SWIGINTERN PyObject *_wrap_ShuttleworthWallace_PTR_get(PyObject *SWIGUNUSEDPARM(
   cmf::upslope::ET::ShuttleworthWallace *arg1 = (cmf::upslope::ET::ShuttleworthWallace *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
+  std::shared_ptr< cmf::upslope::ET::ShuttleworthWallace > tempshared1 ;
+  std::shared_ptr< cmf::upslope::ET::ShuttleworthWallace > *smartarg1 = 0 ;
   PyObject *swig_obj[1] ;
   double result;
   
   if (!args) SWIG_fail;
   swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__upslope__ET__ShuttleworthWallace, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ShuttleworthWallace_PTR_get" "', argument " "1"" of type '" "cmf::upslope::ET::ShuttleworthWallace *""'"); 
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_std__shared_ptrT_cmf__upslope__ET__ShuttleworthWallace_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ShuttleworthWallace_PTR_get" "', argument " "1"" of type '" "cmf::upslope::ET::ShuttleworthWallace *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< std::shared_ptr<  cmf::upslope::ET::ShuttleworthWallace > * >(argp1);
+      delete reinterpret_cast< std::shared_ptr<  cmf::upslope::ET::ShuttleworthWallace > * >(argp1);
+      arg1 = const_cast< cmf::upslope::ET::ShuttleworthWallace * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< std::shared_ptr<  cmf::upslope::ET::ShuttleworthWallace > * >(argp1);
+      arg1 = const_cast< cmf::upslope::ET::ShuttleworthWallace * >((smartarg1 ? smartarg1->get() : 0));
+    }
   }
-  arg1 = reinterpret_cast< cmf::upslope::ET::ShuttleworthWallace * >(argp1);
   result = (double) ((arg1)->PTR);
   resultobj = SWIG_From_double(static_cast< double >(result));
   return resultobj;
@@ -73154,16 +72332,28 @@ SWIGINTERN PyObject *_wrap_ShuttleworthWallace_PSNVP_set(PyObject *SWIGUNUSEDPAR
   double arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
+  std::shared_ptr< cmf::upslope::ET::ShuttleworthWallace > tempshared1 ;
+  std::shared_ptr< cmf::upslope::ET::ShuttleworthWallace > *smartarg1 = 0 ;
   double val2 ;
   int ecode2 = 0 ;
   PyObject *swig_obj[2] ;
   
   if (!SWIG_Python_UnpackTuple(args,"ShuttleworthWallace_PSNVP_set",2,2,swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__upslope__ET__ShuttleworthWallace, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ShuttleworthWallace_PSNVP_set" "', argument " "1"" of type '" "cmf::upslope::ET::ShuttleworthWallace *""'"); 
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_std__shared_ptrT_cmf__upslope__ET__ShuttleworthWallace_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ShuttleworthWallace_PSNVP_set" "', argument " "1"" of type '" "cmf::upslope::ET::ShuttleworthWallace *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< std::shared_ptr<  cmf::upslope::ET::ShuttleworthWallace > * >(argp1);
+      delete reinterpret_cast< std::shared_ptr<  cmf::upslope::ET::ShuttleworthWallace > * >(argp1);
+      arg1 = const_cast< cmf::upslope::ET::ShuttleworthWallace * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< std::shared_ptr<  cmf::upslope::ET::ShuttleworthWallace > * >(argp1);
+      arg1 = const_cast< cmf::upslope::ET::ShuttleworthWallace * >((smartarg1 ? smartarg1->get() : 0));
+    }
   }
-  arg1 = reinterpret_cast< cmf::upslope::ET::ShuttleworthWallace * >(argp1);
   ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
   if (!SWIG_IsOK(ecode2)) {
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "ShuttleworthWallace_PSNVP_set" "', argument " "2"" of type '" "double""'");
@@ -73182,16 +72372,28 @@ SWIGINTERN PyObject *_wrap_ShuttleworthWallace_PSNVP_get(PyObject *SWIGUNUSEDPAR
   cmf::upslope::ET::ShuttleworthWallace *arg1 = (cmf::upslope::ET::ShuttleworthWallace *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
+  std::shared_ptr< cmf::upslope::ET::ShuttleworthWallace > tempshared1 ;
+  std::shared_ptr< cmf::upslope::ET::ShuttleworthWallace > *smartarg1 = 0 ;
   PyObject *swig_obj[1] ;
   double result;
   
   if (!args) SWIG_fail;
   swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__upslope__ET__ShuttleworthWallace, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ShuttleworthWallace_PSNVP_get" "', argument " "1"" of type '" "cmf::upslope::ET::ShuttleworthWallace *""'"); 
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_std__shared_ptrT_cmf__upslope__ET__ShuttleworthWallace_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ShuttleworthWallace_PSNVP_get" "', argument " "1"" of type '" "cmf::upslope::ET::ShuttleworthWallace *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< std::shared_ptr<  cmf::upslope::ET::ShuttleworthWallace > * >(argp1);
+      delete reinterpret_cast< std::shared_ptr<  cmf::upslope::ET::ShuttleworthWallace > * >(argp1);
+      arg1 = const_cast< cmf::upslope::ET::ShuttleworthWallace * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< std::shared_ptr<  cmf::upslope::ET::ShuttleworthWallace > * >(argp1);
+      arg1 = const_cast< cmf::upslope::ET::ShuttleworthWallace * >((smartarg1 ? smartarg1->get() : 0));
+    }
   }
-  arg1 = reinterpret_cast< cmf::upslope::ET::ShuttleworthWallace * >(argp1);
   result = (double) ((arg1)->PSNVP);
   resultobj = SWIG_From_double(static_cast< double >(result));
   return resultobj;
@@ -73206,16 +72408,28 @@ SWIGINTERN PyObject *_wrap_ShuttleworthWallace_ASNVP_set(PyObject *SWIGUNUSEDPAR
   double arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
+  std::shared_ptr< cmf::upslope::ET::ShuttleworthWallace > tempshared1 ;
+  std::shared_ptr< cmf::upslope::ET::ShuttleworthWallace > *smartarg1 = 0 ;
   double val2 ;
   int ecode2 = 0 ;
   PyObject *swig_obj[2] ;
   
   if (!SWIG_Python_UnpackTuple(args,"ShuttleworthWallace_ASNVP_set",2,2,swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__upslope__ET__ShuttleworthWallace, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ShuttleworthWallace_ASNVP_set" "', argument " "1"" of type '" "cmf::upslope::ET::ShuttleworthWallace *""'"); 
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_std__shared_ptrT_cmf__upslope__ET__ShuttleworthWallace_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ShuttleworthWallace_ASNVP_set" "', argument " "1"" of type '" "cmf::upslope::ET::ShuttleworthWallace *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< std::shared_ptr<  cmf::upslope::ET::ShuttleworthWallace > * >(argp1);
+      delete reinterpret_cast< std::shared_ptr<  cmf::upslope::ET::ShuttleworthWallace > * >(argp1);
+      arg1 = const_cast< cmf::upslope::ET::ShuttleworthWallace * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< std::shared_ptr<  cmf::upslope::ET::ShuttleworthWallace > * >(argp1);
+      arg1 = const_cast< cmf::upslope::ET::ShuttleworthWallace * >((smartarg1 ? smartarg1->get() : 0));
+    }
   }
-  arg1 = reinterpret_cast< cmf::upslope::ET::ShuttleworthWallace * >(argp1);
   ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
   if (!SWIG_IsOK(ecode2)) {
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "ShuttleworthWallace_ASNVP_set" "', argument " "2"" of type '" "double""'");
@@ -73234,16 +72448,28 @@ SWIGINTERN PyObject *_wrap_ShuttleworthWallace_ASNVP_get(PyObject *SWIGUNUSEDPAR
   cmf::upslope::ET::ShuttleworthWallace *arg1 = (cmf::upslope::ET::ShuttleworthWallace *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
+  std::shared_ptr< cmf::upslope::ET::ShuttleworthWallace > tempshared1 ;
+  std::shared_ptr< cmf::upslope::ET::ShuttleworthWallace > *smartarg1 = 0 ;
   PyObject *swig_obj[1] ;
   double result;
   
   if (!args) SWIG_fail;
   swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__upslope__ET__ShuttleworthWallace, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ShuttleworthWallace_ASNVP_get" "', argument " "1"" of type '" "cmf::upslope::ET::ShuttleworthWallace *""'"); 
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_std__shared_ptrT_cmf__upslope__ET__ShuttleworthWallace_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ShuttleworthWallace_ASNVP_get" "', argument " "1"" of type '" "cmf::upslope::ET::ShuttleworthWallace *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< std::shared_ptr<  cmf::upslope::ET::ShuttleworthWallace > * >(argp1);
+      delete reinterpret_cast< std::shared_ptr<  cmf::upslope::ET::ShuttleworthWallace > * >(argp1);
+      arg1 = const_cast< cmf::upslope::ET::ShuttleworthWallace * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< std::shared_ptr<  cmf::upslope::ET::ShuttleworthWallace > * >(argp1);
+      arg1 = const_cast< cmf::upslope::ET::ShuttleworthWallace * >((smartarg1 ? smartarg1->get() : 0));
+    }
   }
-  arg1 = reinterpret_cast< cmf::upslope::ET::ShuttleworthWallace * >(argp1);
   result = (double) ((arg1)->ASNVP);
   resultobj = SWIG_From_double(static_cast< double >(result));
   return resultobj;
@@ -73258,16 +72484,28 @@ SWIGINTERN PyObject *_wrap_ShuttleworthWallace_GER_set(PyObject *SWIGUNUSEDPARM(
   double arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
+  std::shared_ptr< cmf::upslope::ET::ShuttleworthWallace > tempshared1 ;
+  std::shared_ptr< cmf::upslope::ET::ShuttleworthWallace > *smartarg1 = 0 ;
   double val2 ;
   int ecode2 = 0 ;
   PyObject *swig_obj[2] ;
   
   if (!SWIG_Python_UnpackTuple(args,"ShuttleworthWallace_GER_set",2,2,swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__upslope__ET__ShuttleworthWallace, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ShuttleworthWallace_GER_set" "', argument " "1"" of type '" "cmf::upslope::ET::ShuttleworthWallace *""'"); 
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_std__shared_ptrT_cmf__upslope__ET__ShuttleworthWallace_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ShuttleworthWallace_GER_set" "', argument " "1"" of type '" "cmf::upslope::ET::ShuttleworthWallace *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< std::shared_ptr<  cmf::upslope::ET::ShuttleworthWallace > * >(argp1);
+      delete reinterpret_cast< std::shared_ptr<  cmf::upslope::ET::ShuttleworthWallace > * >(argp1);
+      arg1 = const_cast< cmf::upslope::ET::ShuttleworthWallace * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< std::shared_ptr<  cmf::upslope::ET::ShuttleworthWallace > * >(argp1);
+      arg1 = const_cast< cmf::upslope::ET::ShuttleworthWallace * >((smartarg1 ? smartarg1->get() : 0));
+    }
   }
-  arg1 = reinterpret_cast< cmf::upslope::ET::ShuttleworthWallace * >(argp1);
   ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
   if (!SWIG_IsOK(ecode2)) {
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "ShuttleworthWallace_GER_set" "', argument " "2"" of type '" "double""'");
@@ -73286,16 +72524,28 @@ SWIGINTERN PyObject *_wrap_ShuttleworthWallace_GER_get(PyObject *SWIGUNUSEDPARM(
   cmf::upslope::ET::ShuttleworthWallace *arg1 = (cmf::upslope::ET::ShuttleworthWallace *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
+  std::shared_ptr< cmf::upslope::ET::ShuttleworthWallace > tempshared1 ;
+  std::shared_ptr< cmf::upslope::ET::ShuttleworthWallace > *smartarg1 = 0 ;
   PyObject *swig_obj[1] ;
   double result;
   
   if (!args) SWIG_fail;
   swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__upslope__ET__ShuttleworthWallace, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ShuttleworthWallace_GER_get" "', argument " "1"" of type '" "cmf::upslope::ET::ShuttleworthWallace *""'"); 
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_std__shared_ptrT_cmf__upslope__ET__ShuttleworthWallace_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ShuttleworthWallace_GER_get" "', argument " "1"" of type '" "cmf::upslope::ET::ShuttleworthWallace *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< std::shared_ptr<  cmf::upslope::ET::ShuttleworthWallace > * >(argp1);
+      delete reinterpret_cast< std::shared_ptr<  cmf::upslope::ET::ShuttleworthWallace > * >(argp1);
+      arg1 = const_cast< cmf::upslope::ET::ShuttleworthWallace * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< std::shared_ptr<  cmf::upslope::ET::ShuttleworthWallace > * >(argp1);
+      arg1 = const_cast< cmf::upslope::ET::ShuttleworthWallace * >((smartarg1 ? smartarg1->get() : 0));
+    }
   }
-  arg1 = reinterpret_cast< cmf::upslope::ET::ShuttleworthWallace * >(argp1);
   result = (double) ((arg1)->GER);
   resultobj = SWIG_From_double(static_cast< double >(result));
   return resultobj;
@@ -73310,16 +72560,28 @@ SWIGINTERN PyObject *_wrap_ShuttleworthWallace_PIR_set(PyObject *SWIGUNUSEDPARM(
   double arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
+  std::shared_ptr< cmf::upslope::ET::ShuttleworthWallace > tempshared1 ;
+  std::shared_ptr< cmf::upslope::ET::ShuttleworthWallace > *smartarg1 = 0 ;
   double val2 ;
   int ecode2 = 0 ;
   PyObject *swig_obj[2] ;
   
   if (!SWIG_Python_UnpackTuple(args,"ShuttleworthWallace_PIR_set",2,2,swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__upslope__ET__ShuttleworthWallace, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ShuttleworthWallace_PIR_set" "', argument " "1"" of type '" "cmf::upslope::ET::ShuttleworthWallace *""'"); 
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_std__shared_ptrT_cmf__upslope__ET__ShuttleworthWallace_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ShuttleworthWallace_PIR_set" "', argument " "1"" of type '" "cmf::upslope::ET::ShuttleworthWallace *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< std::shared_ptr<  cmf::upslope::ET::ShuttleworthWallace > * >(argp1);
+      delete reinterpret_cast< std::shared_ptr<  cmf::upslope::ET::ShuttleworthWallace > * >(argp1);
+      arg1 = const_cast< cmf::upslope::ET::ShuttleworthWallace * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< std::shared_ptr<  cmf::upslope::ET::ShuttleworthWallace > * >(argp1);
+      arg1 = const_cast< cmf::upslope::ET::ShuttleworthWallace * >((smartarg1 ? smartarg1->get() : 0));
+    }
   }
-  arg1 = reinterpret_cast< cmf::upslope::ET::ShuttleworthWallace * >(argp1);
   ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
   if (!SWIG_IsOK(ecode2)) {
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "ShuttleworthWallace_PIR_set" "', argument " "2"" of type '" "double""'");
@@ -73338,16 +72600,28 @@ SWIGINTERN PyObject *_wrap_ShuttleworthWallace_PIR_get(PyObject *SWIGUNUSEDPARM(
   cmf::upslope::ET::ShuttleworthWallace *arg1 = (cmf::upslope::ET::ShuttleworthWallace *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
+  std::shared_ptr< cmf::upslope::ET::ShuttleworthWallace > tempshared1 ;
+  std::shared_ptr< cmf::upslope::ET::ShuttleworthWallace > *smartarg1 = 0 ;
   PyObject *swig_obj[1] ;
   double result;
   
   if (!args) SWIG_fail;
   swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__upslope__ET__ShuttleworthWallace, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ShuttleworthWallace_PIR_get" "', argument " "1"" of type '" "cmf::upslope::ET::ShuttleworthWallace *""'"); 
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_std__shared_ptrT_cmf__upslope__ET__ShuttleworthWallace_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ShuttleworthWallace_PIR_get" "', argument " "1"" of type '" "cmf::upslope::ET::ShuttleworthWallace *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< std::shared_ptr<  cmf::upslope::ET::ShuttleworthWallace > * >(argp1);
+      delete reinterpret_cast< std::shared_ptr<  cmf::upslope::ET::ShuttleworthWallace > * >(argp1);
+      arg1 = const_cast< cmf::upslope::ET::ShuttleworthWallace * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< std::shared_ptr<  cmf::upslope::ET::ShuttleworthWallace > * >(argp1);
+      arg1 = const_cast< cmf::upslope::ET::ShuttleworthWallace * >((smartarg1 ? smartarg1->get() : 0));
+    }
   }
-  arg1 = reinterpret_cast< cmf::upslope::ET::ShuttleworthWallace * >(argp1);
   result = (double) ((arg1)->PIR);
   resultobj = SWIG_From_double(static_cast< double >(result));
   return resultobj;
@@ -73362,16 +72636,28 @@ SWIGINTERN PyObject *_wrap_ShuttleworthWallace_AIR_set(PyObject *SWIGUNUSEDPARM(
   double arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
+  std::shared_ptr< cmf::upslope::ET::ShuttleworthWallace > tempshared1 ;
+  std::shared_ptr< cmf::upslope::ET::ShuttleworthWallace > *smartarg1 = 0 ;
   double val2 ;
   int ecode2 = 0 ;
   PyObject *swig_obj[2] ;
   
   if (!SWIG_Python_UnpackTuple(args,"ShuttleworthWallace_AIR_set",2,2,swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__upslope__ET__ShuttleworthWallace, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ShuttleworthWallace_AIR_set" "', argument " "1"" of type '" "cmf::upslope::ET::ShuttleworthWallace *""'"); 
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_std__shared_ptrT_cmf__upslope__ET__ShuttleworthWallace_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ShuttleworthWallace_AIR_set" "', argument " "1"" of type '" "cmf::upslope::ET::ShuttleworthWallace *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< std::shared_ptr<  cmf::upslope::ET::ShuttleworthWallace > * >(argp1);
+      delete reinterpret_cast< std::shared_ptr<  cmf::upslope::ET::ShuttleworthWallace > * >(argp1);
+      arg1 = const_cast< cmf::upslope::ET::ShuttleworthWallace * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< std::shared_ptr<  cmf::upslope::ET::ShuttleworthWallace > * >(argp1);
+      arg1 = const_cast< cmf::upslope::ET::ShuttleworthWallace * >((smartarg1 ? smartarg1->get() : 0));
+    }
   }
-  arg1 = reinterpret_cast< cmf::upslope::ET::ShuttleworthWallace * >(argp1);
   ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
   if (!SWIG_IsOK(ecode2)) {
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "ShuttleworthWallace_AIR_set" "', argument " "2"" of type '" "double""'");
@@ -73390,69 +72676,29 @@ SWIGINTERN PyObject *_wrap_ShuttleworthWallace_AIR_get(PyObject *SWIGUNUSEDPARM(
   cmf::upslope::ET::ShuttleworthWallace *arg1 = (cmf::upslope::ET::ShuttleworthWallace *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
+  std::shared_ptr< cmf::upslope::ET::ShuttleworthWallace > tempshared1 ;
+  std::shared_ptr< cmf::upslope::ET::ShuttleworthWallace > *smartarg1 = 0 ;
   PyObject *swig_obj[1] ;
   double result;
   
   if (!args) SWIG_fail;
   swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__upslope__ET__ShuttleworthWallace, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ShuttleworthWallace_AIR_get" "', argument " "1"" of type '" "cmf::upslope::ET::ShuttleworthWallace *""'"); 
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_std__shared_ptrT_cmf__upslope__ET__ShuttleworthWallace_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ShuttleworthWallace_AIR_get" "', argument " "1"" of type '" "cmf::upslope::ET::ShuttleworthWallace *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< std::shared_ptr<  cmf::upslope::ET::ShuttleworthWallace > * >(argp1);
+      delete reinterpret_cast< std::shared_ptr<  cmf::upslope::ET::ShuttleworthWallace > * >(argp1);
+      arg1 = const_cast< cmf::upslope::ET::ShuttleworthWallace * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< std::shared_ptr<  cmf::upslope::ET::ShuttleworthWallace > * >(argp1);
+      arg1 = const_cast< cmf::upslope::ET::ShuttleworthWallace * >((smartarg1 ? smartarg1->get() : 0));
+    }
   }
-  arg1 = reinterpret_cast< cmf::upslope::ET::ShuttleworthWallace * >(argp1);
   result = (double) ((arg1)->AIR);
-  resultobj = SWIG_From_double(static_cast< double >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_ShuttleworthWallace_GIR_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  cmf::upslope::ET::ShuttleworthWallace *arg1 = (cmf::upslope::ET::ShuttleworthWallace *) 0 ;
-  double arg2 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  double val2 ;
-  int ecode2 = 0 ;
-  PyObject *swig_obj[2] ;
-  
-  if (!SWIG_Python_UnpackTuple(args,"ShuttleworthWallace_GIR_set",2,2,swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__upslope__ET__ShuttleworthWallace, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ShuttleworthWallace_GIR_set" "', argument " "1"" of type '" "cmf::upslope::ET::ShuttleworthWallace *""'"); 
-  }
-  arg1 = reinterpret_cast< cmf::upslope::ET::ShuttleworthWallace * >(argp1);
-  ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "ShuttleworthWallace_GIR_set" "', argument " "2"" of type '" "double""'");
-  } 
-  arg2 = static_cast< double >(val2);
-  if (arg1) (arg1)->GIR = arg2;
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_ShuttleworthWallace_GIR_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  cmf::upslope::ET::ShuttleworthWallace *arg1 = (cmf::upslope::ET::ShuttleworthWallace *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject *swig_obj[1] ;
-  double result;
-  
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__upslope__ET__ShuttleworthWallace, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ShuttleworthWallace_GIR_get" "', argument " "1"" of type '" "cmf::upslope::ET::ShuttleworthWallace *""'"); 
-  }
-  arg1 = reinterpret_cast< cmf::upslope::ET::ShuttleworthWallace * >(argp1);
-  result = (double) ((arg1)->GIR);
   resultobj = SWIG_From_double(static_cast< double >(result));
   return resultobj;
 fail:
@@ -73466,16 +72712,28 @@ SWIGINTERN PyObject *_wrap_ShuttleworthWallace_ATR_sum_set(PyObject *SWIGUNUSEDP
   double arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
+  std::shared_ptr< cmf::upslope::ET::ShuttleworthWallace > tempshared1 ;
+  std::shared_ptr< cmf::upslope::ET::ShuttleworthWallace > *smartarg1 = 0 ;
   double val2 ;
   int ecode2 = 0 ;
   PyObject *swig_obj[2] ;
   
   if (!SWIG_Python_UnpackTuple(args,"ShuttleworthWallace_ATR_sum_set",2,2,swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__upslope__ET__ShuttleworthWallace, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ShuttleworthWallace_ATR_sum_set" "', argument " "1"" of type '" "cmf::upslope::ET::ShuttleworthWallace *""'"); 
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_std__shared_ptrT_cmf__upslope__ET__ShuttleworthWallace_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ShuttleworthWallace_ATR_sum_set" "', argument " "1"" of type '" "cmf::upslope::ET::ShuttleworthWallace *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< std::shared_ptr<  cmf::upslope::ET::ShuttleworthWallace > * >(argp1);
+      delete reinterpret_cast< std::shared_ptr<  cmf::upslope::ET::ShuttleworthWallace > * >(argp1);
+      arg1 = const_cast< cmf::upslope::ET::ShuttleworthWallace * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< std::shared_ptr<  cmf::upslope::ET::ShuttleworthWallace > * >(argp1);
+      arg1 = const_cast< cmf::upslope::ET::ShuttleworthWallace * >((smartarg1 ? smartarg1->get() : 0));
+    }
   }
-  arg1 = reinterpret_cast< cmf::upslope::ET::ShuttleworthWallace * >(argp1);
   ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
   if (!SWIG_IsOK(ecode2)) {
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "ShuttleworthWallace_ATR_sum_set" "', argument " "2"" of type '" "double""'");
@@ -73494,16 +72752,28 @@ SWIGINTERN PyObject *_wrap_ShuttleworthWallace_ATR_sum_get(PyObject *SWIGUNUSEDP
   cmf::upslope::ET::ShuttleworthWallace *arg1 = (cmf::upslope::ET::ShuttleworthWallace *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
+  std::shared_ptr< cmf::upslope::ET::ShuttleworthWallace > tempshared1 ;
+  std::shared_ptr< cmf::upslope::ET::ShuttleworthWallace > *smartarg1 = 0 ;
   PyObject *swig_obj[1] ;
   double result;
   
   if (!args) SWIG_fail;
   swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__upslope__ET__ShuttleworthWallace, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ShuttleworthWallace_ATR_sum_get" "', argument " "1"" of type '" "cmf::upslope::ET::ShuttleworthWallace *""'"); 
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_std__shared_ptrT_cmf__upslope__ET__ShuttleworthWallace_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ShuttleworthWallace_ATR_sum_get" "', argument " "1"" of type '" "cmf::upslope::ET::ShuttleworthWallace *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< std::shared_ptr<  cmf::upslope::ET::ShuttleworthWallace > * >(argp1);
+      delete reinterpret_cast< std::shared_ptr<  cmf::upslope::ET::ShuttleworthWallace > * >(argp1);
+      arg1 = const_cast< cmf::upslope::ET::ShuttleworthWallace * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< std::shared_ptr<  cmf::upslope::ET::ShuttleworthWallace > * >(argp1);
+      arg1 = const_cast< cmf::upslope::ET::ShuttleworthWallace * >((smartarg1 ? smartarg1->get() : 0));
+    }
   }
-  arg1 = reinterpret_cast< cmf::upslope::ET::ShuttleworthWallace * >(argp1);
   result = (double) ((arg1)->ATR_sum);
   resultobj = SWIG_From_double(static_cast< double >(result));
   return resultobj;
@@ -73518,14 +72788,26 @@ SWIGINTERN PyObject *_wrap_ShuttleworthWallace_ATR_set(PyObject *SWIGUNUSEDPARM(
   cmf::math::num_array arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
+  std::shared_ptr< cmf::upslope::ET::ShuttleworthWallace > tempshared1 ;
+  std::shared_ptr< cmf::upslope::ET::ShuttleworthWallace > *smartarg1 = 0 ;
   PyObject *swig_obj[2] ;
   
   if (!SWIG_Python_UnpackTuple(args,"ShuttleworthWallace_ATR_set",2,2,swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__upslope__ET__ShuttleworthWallace, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ShuttleworthWallace_ATR_set" "', argument " "1"" of type '" "cmf::upslope::ET::ShuttleworthWallace *""'"); 
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_std__shared_ptrT_cmf__upslope__ET__ShuttleworthWallace_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ShuttleworthWallace_ATR_set" "', argument " "1"" of type '" "cmf::upslope::ET::ShuttleworthWallace *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< std::shared_ptr<  cmf::upslope::ET::ShuttleworthWallace > * >(argp1);
+      delete reinterpret_cast< std::shared_ptr<  cmf::upslope::ET::ShuttleworthWallace > * >(argp1);
+      arg1 = const_cast< cmf::upslope::ET::ShuttleworthWallace * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< std::shared_ptr<  cmf::upslope::ET::ShuttleworthWallace > * >(argp1);
+      arg1 = const_cast< cmf::upslope::ET::ShuttleworthWallace * >((smartarg1 ? smartarg1->get() : 0));
+    }
   }
-  arg1 = reinterpret_cast< cmf::upslope::ET::ShuttleworthWallace * >(argp1);
   {
     // Convert a array_wrapper from numpy array
     double * data=0;
@@ -73549,16 +72831,28 @@ SWIGINTERN PyObject *_wrap_ShuttleworthWallace_ATR_get(PyObject *SWIGUNUSEDPARM(
   cmf::upslope::ET::ShuttleworthWallace *arg1 = (cmf::upslope::ET::ShuttleworthWallace *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
+  std::shared_ptr< cmf::upslope::ET::ShuttleworthWallace > tempshared1 ;
+  std::shared_ptr< cmf::upslope::ET::ShuttleworthWallace > *smartarg1 = 0 ;
   PyObject *swig_obj[1] ;
   cmf::math::num_array result;
   
   if (!args) SWIG_fail;
   swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__upslope__ET__ShuttleworthWallace, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ShuttleworthWallace_ATR_get" "', argument " "1"" of type '" "cmf::upslope::ET::ShuttleworthWallace *""'"); 
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_std__shared_ptrT_cmf__upslope__ET__ShuttleworthWallace_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ShuttleworthWallace_ATR_get" "', argument " "1"" of type '" "cmf::upslope::ET::ShuttleworthWallace *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< std::shared_ptr<  cmf::upslope::ET::ShuttleworthWallace > * >(argp1);
+      delete reinterpret_cast< std::shared_ptr<  cmf::upslope::ET::ShuttleworthWallace > * >(argp1);
+      arg1 = const_cast< cmf::upslope::ET::ShuttleworthWallace * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< std::shared_ptr<  cmf::upslope::ET::ShuttleworthWallace > * >(argp1);
+      arg1 = const_cast< cmf::upslope::ET::ShuttleworthWallace * >((smartarg1 ? smartarg1->get() : 0));
+    }
   }
-  arg1 = reinterpret_cast< cmf::upslope::ET::ShuttleworthWallace * >(argp1);
   result =  ((arg1)->ATR);
   {
     resultobj = as_npy_array(result);
@@ -73575,16 +72869,28 @@ SWIGINTERN PyObject *_wrap_ShuttleworthWallace_KSNVP_set(PyObject *SWIGUNUSEDPAR
   double arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
+  std::shared_ptr< cmf::upslope::ET::ShuttleworthWallace > tempshared1 ;
+  std::shared_ptr< cmf::upslope::ET::ShuttleworthWallace > *smartarg1 = 0 ;
   double val2 ;
   int ecode2 = 0 ;
   PyObject *swig_obj[2] ;
   
   if (!SWIG_Python_UnpackTuple(args,"ShuttleworthWallace_KSNVP_set",2,2,swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__upslope__ET__ShuttleworthWallace, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ShuttleworthWallace_KSNVP_set" "', argument " "1"" of type '" "cmf::upslope::ET::ShuttleworthWallace *""'"); 
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_std__shared_ptrT_cmf__upslope__ET__ShuttleworthWallace_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ShuttleworthWallace_KSNVP_set" "', argument " "1"" of type '" "cmf::upslope::ET::ShuttleworthWallace *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< std::shared_ptr<  cmf::upslope::ET::ShuttleworthWallace > * >(argp1);
+      delete reinterpret_cast< std::shared_ptr<  cmf::upslope::ET::ShuttleworthWallace > * >(argp1);
+      arg1 = const_cast< cmf::upslope::ET::ShuttleworthWallace * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< std::shared_ptr<  cmf::upslope::ET::ShuttleworthWallace > * >(argp1);
+      arg1 = const_cast< cmf::upslope::ET::ShuttleworthWallace * >((smartarg1 ? smartarg1->get() : 0));
+    }
   }
-  arg1 = reinterpret_cast< cmf::upslope::ET::ShuttleworthWallace * >(argp1);
   ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
   if (!SWIG_IsOK(ecode2)) {
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "ShuttleworthWallace_KSNVP_set" "', argument " "2"" of type '" "double""'");
@@ -73603,16 +72909,28 @@ SWIGINTERN PyObject *_wrap_ShuttleworthWallace_KSNVP_get(PyObject *SWIGUNUSEDPAR
   cmf::upslope::ET::ShuttleworthWallace *arg1 = (cmf::upslope::ET::ShuttleworthWallace *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
+  std::shared_ptr< cmf::upslope::ET::ShuttleworthWallace > tempshared1 ;
+  std::shared_ptr< cmf::upslope::ET::ShuttleworthWallace > *smartarg1 = 0 ;
   PyObject *swig_obj[1] ;
   double result;
   
   if (!args) SWIG_fail;
   swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__upslope__ET__ShuttleworthWallace, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ShuttleworthWallace_KSNVP_get" "', argument " "1"" of type '" "cmf::upslope::ET::ShuttleworthWallace *""'"); 
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_std__shared_ptrT_cmf__upslope__ET__ShuttleworthWallace_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ShuttleworthWallace_KSNVP_get" "', argument " "1"" of type '" "cmf::upslope::ET::ShuttleworthWallace *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< std::shared_ptr<  cmf::upslope::ET::ShuttleworthWallace > * >(argp1);
+      delete reinterpret_cast< std::shared_ptr<  cmf::upslope::ET::ShuttleworthWallace > * >(argp1);
+      arg1 = const_cast< cmf::upslope::ET::ShuttleworthWallace * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< std::shared_ptr<  cmf::upslope::ET::ShuttleworthWallace > * >(argp1);
+      arg1 = const_cast< cmf::upslope::ET::ShuttleworthWallace * >((smartarg1 ? smartarg1->get() : 0));
+    }
   }
-  arg1 = reinterpret_cast< cmf::upslope::ET::ShuttleworthWallace * >(argp1);
   result = (double) ((arg1)->KSNVP);
   resultobj = SWIG_From_double(static_cast< double >(result));
   return resultobj;
@@ -73627,16 +72945,28 @@ SWIGINTERN PyObject *_wrap_ShuttleworthWallace_allow_dew_set(PyObject *SWIGUNUSE
   bool arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
+  std::shared_ptr< cmf::upslope::ET::ShuttleworthWallace > tempshared1 ;
+  std::shared_ptr< cmf::upslope::ET::ShuttleworthWallace > *smartarg1 = 0 ;
   bool val2 ;
   int ecode2 = 0 ;
   PyObject *swig_obj[2] ;
   
   if (!SWIG_Python_UnpackTuple(args,"ShuttleworthWallace_allow_dew_set",2,2,swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__upslope__ET__ShuttleworthWallace, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ShuttleworthWallace_allow_dew_set" "', argument " "1"" of type '" "cmf::upslope::ET::ShuttleworthWallace *""'"); 
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_std__shared_ptrT_cmf__upslope__ET__ShuttleworthWallace_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ShuttleworthWallace_allow_dew_set" "', argument " "1"" of type '" "cmf::upslope::ET::ShuttleworthWallace *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< std::shared_ptr<  cmf::upslope::ET::ShuttleworthWallace > * >(argp1);
+      delete reinterpret_cast< std::shared_ptr<  cmf::upslope::ET::ShuttleworthWallace > * >(argp1);
+      arg1 = const_cast< cmf::upslope::ET::ShuttleworthWallace * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< std::shared_ptr<  cmf::upslope::ET::ShuttleworthWallace > * >(argp1);
+      arg1 = const_cast< cmf::upslope::ET::ShuttleworthWallace * >((smartarg1 ? smartarg1->get() : 0));
+    }
   }
-  arg1 = reinterpret_cast< cmf::upslope::ET::ShuttleworthWallace * >(argp1);
   ecode2 = SWIG_AsVal_bool(swig_obj[1], &val2);
   if (!SWIG_IsOK(ecode2)) {
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "ShuttleworthWallace_allow_dew_set" "', argument " "2"" of type '" "bool""'");
@@ -73655,18 +72985,365 @@ SWIGINTERN PyObject *_wrap_ShuttleworthWallace_allow_dew_get(PyObject *SWIGUNUSE
   cmf::upslope::ET::ShuttleworthWallace *arg1 = (cmf::upslope::ET::ShuttleworthWallace *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
+  std::shared_ptr< cmf::upslope::ET::ShuttleworthWallace > tempshared1 ;
+  std::shared_ptr< cmf::upslope::ET::ShuttleworthWallace > *smartarg1 = 0 ;
   PyObject *swig_obj[1] ;
   bool result;
   
   if (!args) SWIG_fail;
   swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__upslope__ET__ShuttleworthWallace, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ShuttleworthWallace_allow_dew_get" "', argument " "1"" of type '" "cmf::upslope::ET::ShuttleworthWallace *""'"); 
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_std__shared_ptrT_cmf__upslope__ET__ShuttleworthWallace_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ShuttleworthWallace_allow_dew_get" "', argument " "1"" of type '" "cmf::upslope::ET::ShuttleworthWallace *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< std::shared_ptr<  cmf::upslope::ET::ShuttleworthWallace > * >(argp1);
+      delete reinterpret_cast< std::shared_ptr<  cmf::upslope::ET::ShuttleworthWallace > * >(argp1);
+      arg1 = const_cast< cmf::upslope::ET::ShuttleworthWallace * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< std::shared_ptr<  cmf::upslope::ET::ShuttleworthWallace > * >(argp1);
+      arg1 = const_cast< cmf::upslope::ET::ShuttleworthWallace * >((smartarg1 ? smartarg1->get() : 0));
+    }
   }
-  arg1 = reinterpret_cast< cmf::upslope::ET::ShuttleworthWallace * >(argp1);
   result = (bool) ((arg1)->allow_dew);
   resultobj = SWIG_From_bool(static_cast< bool >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ShuttleworthWallace_transp_from_layer(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  cmf::upslope::ET::ShuttleworthWallace *arg1 = (cmf::upslope::ET::ShuttleworthWallace *) 0 ;
+  cmf::upslope::SoilLayer::ptr arg2 ;
+  cmf::math::Time arg3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  std::shared_ptr< cmf::upslope::ET::ShuttleworthWallace > tempshared1 ;
+  std::shared_ptr< cmf::upslope::ET::ShuttleworthWallace > *smartarg1 = 0 ;
+  void *argp2 ;
+  int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char *  kwnames[] = {
+    (char *) "self",(char *) "sl",(char *) "t", NULL 
+  };
+  double result;
+  
+  if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"OOO:ShuttleworthWallace_transp_from_layer",kwnames,&obj0,&obj1,&obj2)) SWIG_fail;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(obj0, &argp1, SWIGTYPE_p_std__shared_ptrT_cmf__upslope__ET__ShuttleworthWallace_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ShuttleworthWallace_transp_from_layer" "', argument " "1"" of type '" "cmf::upslope::ET::ShuttleworthWallace *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< std::shared_ptr<  cmf::upslope::ET::ShuttleworthWallace > * >(argp1);
+      delete reinterpret_cast< std::shared_ptr<  cmf::upslope::ET::ShuttleworthWallace > * >(argp1);
+      arg1 = const_cast< cmf::upslope::ET::ShuttleworthWallace * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< std::shared_ptr<  cmf::upslope::ET::ShuttleworthWallace > * >(argp1);
+      arg1 = const_cast< cmf::upslope::ET::ShuttleworthWallace * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  {
+    int newmem = 0;
+    res2 = SWIG_ConvertPtrAndOwn(obj1, &argp2, SWIGTYPE_p_std__shared_ptrT_cmf__upslope__SoilLayer_t,  0 , &newmem);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ShuttleworthWallace_transp_from_layer" "', argument " "2"" of type '" "cmf::upslope::SoilLayer::ptr""'"); 
+    }
+    if (argp2) arg2 = *(reinterpret_cast< cmf::upslope::SoilLayer::ptr * >(argp2));
+    if (newmem & SWIG_CAST_NEW_MEMORY) delete reinterpret_cast< cmf::upslope::SoilLayer::ptr * >(argp2);
+  }
+  {
+    arg3 = convert_datetime_to_cmftime(obj2);
+    if (arg3 == cmf::math::never)  {
+      SWIG_exception_fail(SWIG_TypeError,"Can't convert input value to cmf.Time object");
+    }
+  }
+  {
+    try {
+      result = (double)(arg1)->transp_from_layer(arg2,arg3);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+    
+  }
+  resultobj = SWIG_From_double(static_cast< double >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ShuttleworthWallace_evap_from_layer(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  cmf::upslope::ET::ShuttleworthWallace *arg1 = (cmf::upslope::ET::ShuttleworthWallace *) 0 ;
+  cmf::upslope::SoilLayer::ptr arg2 ;
+  cmf::math::Time arg3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  std::shared_ptr< cmf::upslope::ET::ShuttleworthWallace > tempshared1 ;
+  std::shared_ptr< cmf::upslope::ET::ShuttleworthWallace > *smartarg1 = 0 ;
+  void *argp2 ;
+  int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char *  kwnames[] = {
+    (char *) "self",(char *) "sl",(char *) "t", NULL 
+  };
+  double result;
+  
+  if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"OOO:ShuttleworthWallace_evap_from_layer",kwnames,&obj0,&obj1,&obj2)) SWIG_fail;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(obj0, &argp1, SWIGTYPE_p_std__shared_ptrT_cmf__upslope__ET__ShuttleworthWallace_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ShuttleworthWallace_evap_from_layer" "', argument " "1"" of type '" "cmf::upslope::ET::ShuttleworthWallace *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< std::shared_ptr<  cmf::upslope::ET::ShuttleworthWallace > * >(argp1);
+      delete reinterpret_cast< std::shared_ptr<  cmf::upslope::ET::ShuttleworthWallace > * >(argp1);
+      arg1 = const_cast< cmf::upslope::ET::ShuttleworthWallace * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< std::shared_ptr<  cmf::upslope::ET::ShuttleworthWallace > * >(argp1);
+      arg1 = const_cast< cmf::upslope::ET::ShuttleworthWallace * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  {
+    int newmem = 0;
+    res2 = SWIG_ConvertPtrAndOwn(obj1, &argp2, SWIGTYPE_p_std__shared_ptrT_cmf__upslope__SoilLayer_t,  0 , &newmem);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ShuttleworthWallace_evap_from_layer" "', argument " "2"" of type '" "cmf::upslope::SoilLayer::ptr""'"); 
+    }
+    if (argp2) arg2 = *(reinterpret_cast< cmf::upslope::SoilLayer::ptr * >(argp2));
+    if (newmem & SWIG_CAST_NEW_MEMORY) delete reinterpret_cast< cmf::upslope::SoilLayer::ptr * >(argp2);
+  }
+  {
+    arg3 = convert_datetime_to_cmftime(obj2);
+    if (arg3 == cmf::math::never)  {
+      SWIG_exception_fail(SWIG_TypeError,"Can't convert input value to cmf.Time object");
+    }
+  }
+  {
+    try {
+      result = (double)(arg1)->evap_from_layer(arg2,arg3);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+    
+  }
+  resultobj = SWIG_From_double(static_cast< double >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ShuttleworthWallace_evap_from_surfacewater(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  cmf::upslope::ET::ShuttleworthWallace *arg1 = (cmf::upslope::ET::ShuttleworthWallace *) 0 ;
+  cmf::river::OpenWaterStorage::ptr arg2 ;
+  cmf::math::Time arg3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  std::shared_ptr< cmf::upslope::ET::ShuttleworthWallace > tempshared1 ;
+  std::shared_ptr< cmf::upslope::ET::ShuttleworthWallace > *smartarg1 = 0 ;
+  void *argp2 ;
+  int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char *  kwnames[] = {
+    (char *) "self",(char *) "ows",(char *) "t", NULL 
+  };
+  double result;
+  
+  if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"OOO:ShuttleworthWallace_evap_from_surfacewater",kwnames,&obj0,&obj1,&obj2)) SWIG_fail;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(obj0, &argp1, SWIGTYPE_p_std__shared_ptrT_cmf__upslope__ET__ShuttleworthWallace_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ShuttleworthWallace_evap_from_surfacewater" "', argument " "1"" of type '" "cmf::upslope::ET::ShuttleworthWallace *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< std::shared_ptr<  cmf::upslope::ET::ShuttleworthWallace > * >(argp1);
+      delete reinterpret_cast< std::shared_ptr<  cmf::upslope::ET::ShuttleworthWallace > * >(argp1);
+      arg1 = const_cast< cmf::upslope::ET::ShuttleworthWallace * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< std::shared_ptr<  cmf::upslope::ET::ShuttleworthWallace > * >(argp1);
+      arg1 = const_cast< cmf::upslope::ET::ShuttleworthWallace * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  {
+    int newmem = 0;
+    res2 = SWIG_ConvertPtrAndOwn(obj1, &argp2, SWIGTYPE_p_std__shared_ptrT_cmf__river__OpenWaterStorage_t,  0 , &newmem);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ShuttleworthWallace_evap_from_surfacewater" "', argument " "2"" of type '" "cmf::river::OpenWaterStorage::ptr""'"); 
+    }
+    if (argp2) arg2 = *(reinterpret_cast< cmf::river::OpenWaterStorage::ptr * >(argp2));
+    if (newmem & SWIG_CAST_NEW_MEMORY) delete reinterpret_cast< cmf::river::OpenWaterStorage::ptr * >(argp2);
+  }
+  {
+    arg3 = convert_datetime_to_cmftime(obj2);
+    if (arg3 == cmf::math::never)  {
+      SWIG_exception_fail(SWIG_TypeError,"Can't convert input value to cmf.Time object");
+    }
+  }
+  {
+    try {
+      result = (double)(arg1)->evap_from_surfacewater(arg2,arg3);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+    
+  }
+  resultobj = SWIG_From_double(static_cast< double >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ShuttleworthWallace_evap_from_canopy(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  cmf::upslope::ET::ShuttleworthWallace *arg1 = (cmf::upslope::ET::ShuttleworthWallace *) 0 ;
+  cmf::water::WaterStorage::ptr arg2 ;
+  cmf::math::Time arg3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  std::shared_ptr< cmf::upslope::ET::ShuttleworthWallace > tempshared1 ;
+  std::shared_ptr< cmf::upslope::ET::ShuttleworthWallace > *smartarg1 = 0 ;
+  void *argp2 ;
+  int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char *  kwnames[] = {
+    (char *) "self",(char *) "canopy",(char *) "t", NULL 
+  };
+  double result;
+  
+  if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"OOO:ShuttleworthWallace_evap_from_canopy",kwnames,&obj0,&obj1,&obj2)) SWIG_fail;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(obj0, &argp1, SWIGTYPE_p_std__shared_ptrT_cmf__upslope__ET__ShuttleworthWallace_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ShuttleworthWallace_evap_from_canopy" "', argument " "1"" of type '" "cmf::upslope::ET::ShuttleworthWallace *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< std::shared_ptr<  cmf::upslope::ET::ShuttleworthWallace > * >(argp1);
+      delete reinterpret_cast< std::shared_ptr<  cmf::upslope::ET::ShuttleworthWallace > * >(argp1);
+      arg1 = const_cast< cmf::upslope::ET::ShuttleworthWallace * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< std::shared_ptr<  cmf::upslope::ET::ShuttleworthWallace > * >(argp1);
+      arg1 = const_cast< cmf::upslope::ET::ShuttleworthWallace * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  {
+    int newmem = 0;
+    res2 = SWIG_ConvertPtrAndOwn(obj1, &argp2, SWIGTYPE_p_std__shared_ptrT_cmf__water__WaterStorage_t,  0 , &newmem);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ShuttleworthWallace_evap_from_canopy" "', argument " "2"" of type '" "cmf::water::WaterStorage::ptr""'"); 
+    }
+    if (argp2) arg2 = *(reinterpret_cast< cmf::water::WaterStorage::ptr * >(argp2));
+    if (newmem & SWIG_CAST_NEW_MEMORY) delete reinterpret_cast< cmf::water::WaterStorage::ptr * >(argp2);
+  }
+  {
+    arg3 = convert_datetime_to_cmftime(obj2);
+    if (arg3 == cmf::math::never)  {
+      SWIG_exception_fail(SWIG_TypeError,"Can't convert input value to cmf.Time object");
+    }
+  }
+  {
+    try {
+      result = (double)(arg1)->evap_from_canopy(arg2,arg3);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+    
+  }
+  resultobj = SWIG_From_double(static_cast< double >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ShuttleworthWallace_evap_from_snow(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  cmf::upslope::ET::ShuttleworthWallace *arg1 = (cmf::upslope::ET::ShuttleworthWallace *) 0 ;
+  cmf::water::WaterStorage::ptr arg2 ;
+  cmf::math::Time arg3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  std::shared_ptr< cmf::upslope::ET::ShuttleworthWallace > tempshared1 ;
+  std::shared_ptr< cmf::upslope::ET::ShuttleworthWallace > *smartarg1 = 0 ;
+  void *argp2 ;
+  int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char *  kwnames[] = {
+    (char *) "self",(char *) "snow",(char *) "t", NULL 
+  };
+  double result;
+  
+  if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"OOO:ShuttleworthWallace_evap_from_snow",kwnames,&obj0,&obj1,&obj2)) SWIG_fail;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(obj0, &argp1, SWIGTYPE_p_std__shared_ptrT_cmf__upslope__ET__ShuttleworthWallace_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ShuttleworthWallace_evap_from_snow" "', argument " "1"" of type '" "cmf::upslope::ET::ShuttleworthWallace *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< std::shared_ptr<  cmf::upslope::ET::ShuttleworthWallace > * >(argp1);
+      delete reinterpret_cast< std::shared_ptr<  cmf::upslope::ET::ShuttleworthWallace > * >(argp1);
+      arg1 = const_cast< cmf::upslope::ET::ShuttleworthWallace * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< std::shared_ptr<  cmf::upslope::ET::ShuttleworthWallace > * >(argp1);
+      arg1 = const_cast< cmf::upslope::ET::ShuttleworthWallace * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  {
+    int newmem = 0;
+    res2 = SWIG_ConvertPtrAndOwn(obj1, &argp2, SWIGTYPE_p_std__shared_ptrT_cmf__water__WaterStorage_t,  0 , &newmem);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ShuttleworthWallace_evap_from_snow" "', argument " "2"" of type '" "cmf::water::WaterStorage::ptr""'"); 
+    }
+    if (argp2) arg2 = *(reinterpret_cast< cmf::water::WaterStorage::ptr * >(argp2));
+    if (newmem & SWIG_CAST_NEW_MEMORY) delete reinterpret_cast< cmf::water::WaterStorage::ptr * >(argp2);
+  }
+  {
+    arg3 = convert_datetime_to_cmftime(obj2);
+    if (arg3 == cmf::math::never)  {
+      SWIG_exception_fail(SWIG_TypeError,"Can't convert input value to cmf.Time object");
+    }
+  }
+  {
+    try {
+      result = (double)(arg1)->evap_from_snow(arg2,arg3);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+    
+  }
+  resultobj = SWIG_From_double(static_cast< double >(result));
   return resultobj;
 fail:
   return NULL;
@@ -73771,7 +73448,10 @@ SWIGINTERN PyObject *_wrap_new_ShuttleworthWallace(PyObject *SWIGUNUSEDPARM(self
     }
     
   }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_cmf__upslope__ET__ShuttleworthWallace, SWIG_POINTER_NEW |  0 );
+  {
+    std::shared_ptr<  cmf::upslope::ET::ShuttleworthWallace > *smartresult = result ? new std::shared_ptr<  cmf::upslope::ET::ShuttleworthWallace >(result SWIG_NO_NULL_DELETER_SWIG_POINTER_NEW) : 0;
+    resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(smartresult), SWIGTYPE_p_std__shared_ptrT_cmf__upslope__ET__ShuttleworthWallace_t, SWIG_POINTER_NEW | SWIG_POINTER_OWN);
+  }
   return resultobj;
 fail:
   return NULL;
@@ -73787,7 +73467,7 @@ SWIGINTERN PyObject *_wrap_ShuttleworthWallace_use_for_cell(PyObject *SWIGUNUSED
   char *  kwnames[] = {
     (char *) "cell", NULL 
   };
-  cmf::upslope::ET::ShuttleworthWallace *result = 0 ;
+  cmf::upslope::ET::ShuttleworthWallace::ptr result;
   
   if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"O:ShuttleworthWallace_use_for_cell",kwnames,&obj0)) SWIG_fail;
   res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_cmf__upslope__Cell,  0 );
@@ -73800,7 +73480,7 @@ SWIGINTERN PyObject *_wrap_ShuttleworthWallace_use_for_cell(PyObject *SWIGUNUSED
   arg1 = reinterpret_cast< cmf::upslope::Cell * >(argp1);
   {
     try {
-      result = (cmf::upslope::ET::ShuttleworthWallace *)cmf::upslope::ET::ShuttleworthWallace::use_for_cell(*arg1);
+      result = cmf::upslope::ET::ShuttleworthWallace::use_for_cell(*arg1);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -73808,7 +73488,10 @@ SWIGINTERN PyObject *_wrap_ShuttleworthWallace_use_for_cell(PyObject *SWIGUNUSED
     }
     
   }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_cmf__upslope__ET__ShuttleworthWallace, 0 |  0 );
+  {
+    std::shared_ptr<  cmf::upslope::ET::ShuttleworthWallace > *smartresult = result ? new std::shared_ptr<  cmf::upslope::ET::ShuttleworthWallace >(result) : 0;
+    resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(smartresult), SWIGTYPE_p_std__shared_ptrT_cmf__upslope__ET__ShuttleworthWallace_t, SWIG_POINTER_OWN);
+  }
   return resultobj;
 fail:
   return NULL;
@@ -73820,18 +73503,30 @@ SWIGINTERN PyObject *_wrap_delete_ShuttleworthWallace(PyObject *SWIGUNUSEDPARM(s
   cmf::upslope::ET::ShuttleworthWallace *arg1 = (cmf::upslope::ET::ShuttleworthWallace *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
+  std::shared_ptr< cmf::upslope::ET::ShuttleworthWallace > tempshared1 ;
+  std::shared_ptr< cmf::upslope::ET::ShuttleworthWallace > *smartarg1 = 0 ;
   PyObject *swig_obj[1] ;
   
   if (!args) SWIG_fail;
   swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__upslope__ET__ShuttleworthWallace, SWIG_POINTER_DISOWN |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_ShuttleworthWallace" "', argument " "1"" of type '" "cmf::upslope::ET::ShuttleworthWallace *""'"); 
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_std__shared_ptrT_cmf__upslope__ET__ShuttleworthWallace_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_ShuttleworthWallace" "', argument " "1"" of type '" "cmf::upslope::ET::ShuttleworthWallace *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< std::shared_ptr<  cmf::upslope::ET::ShuttleworthWallace > * >(argp1);
+      delete reinterpret_cast< std::shared_ptr<  cmf::upslope::ET::ShuttleworthWallace > * >(argp1);
+      arg1 = const_cast< cmf::upslope::ET::ShuttleworthWallace * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< std::shared_ptr<  cmf::upslope::ET::ShuttleworthWallace > * >(argp1);
+      arg1 = const_cast< cmf::upslope::ET::ShuttleworthWallace * >((smartarg1 ? smartarg1->get() : 0));
+    }
   }
-  arg1 = reinterpret_cast< cmf::upslope::ET::ShuttleworthWallace * >(argp1);
   {
     try {
-      delete arg1;
+      (void)arg1; delete smartarg1;
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -73849,11 +73544,546 @@ fail:
 SWIGINTERN PyObject *ShuttleworthWallace_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *obj;
   if (!SWIG_Python_UnpackTuple(args,(char *)"swigregister", 1, 1,&obj)) return NULL;
-  SWIG_TypeNewClientData(SWIGTYPE_p_cmf__upslope__ET__ShuttleworthWallace, SWIG_NewClientData(obj));
+  SWIG_TypeNewClientData(SWIGTYPE_p_std__shared_ptrT_cmf__upslope__ET__ShuttleworthWallace_t, SWIG_NewClientData(obj));
   return SWIG_Py_Void();
 }
 
 SWIGINTERN PyObject *ShuttleworthWallace_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  return SWIG_Python_InitShadowInstance(args);
+}
+
+SWIGINTERN PyObject *_wrap_new_SW_transpiration(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  cmf::upslope::SoilLayer::ptr arg1 ;
+  cmf::water::flux_node::ptr arg2 ;
+  cmf::upslope::ET::ShuttleworthWallace::ptr arg3 ;
+  void *argp1 ;
+  int res1 = 0 ;
+  void *argp2 ;
+  int res2 = 0 ;
+  void *argp3 ;
+  int res3 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char *  kwnames[] = {
+    (char *) "source",(char *) "ET_target",(char *) "owner", NULL 
+  };
+  cmf::upslope::ET::SW_transpiration *result = 0 ;
+  
+  if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"OOO:new_SW_transpiration",kwnames,&obj0,&obj1,&obj2)) SWIG_fail;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(obj0, &argp1, SWIGTYPE_p_std__shared_ptrT_cmf__upslope__SoilLayer_t,  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_SW_transpiration" "', argument " "1"" of type '" "cmf::upslope::SoilLayer::ptr""'"); 
+    }
+    if (argp1) arg1 = *(reinterpret_cast< cmf::upslope::SoilLayer::ptr * >(argp1));
+    if (newmem & SWIG_CAST_NEW_MEMORY) delete reinterpret_cast< cmf::upslope::SoilLayer::ptr * >(argp1);
+  }
+  {
+    int newmem = 0;
+    res2 = SWIG_ConvertPtrAndOwn(obj1, &argp2, SWIGTYPE_p_std__shared_ptrT_cmf__water__flux_node_t,  0 , &newmem);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_SW_transpiration" "', argument " "2"" of type '" "cmf::water::flux_node::ptr""'"); 
+    }
+    if (argp2) arg2 = *(reinterpret_cast< cmf::water::flux_node::ptr * >(argp2));
+    if (newmem & SWIG_CAST_NEW_MEMORY) delete reinterpret_cast< cmf::water::flux_node::ptr * >(argp2);
+  }
+  {
+    int newmem = 0;
+    res3 = SWIG_ConvertPtrAndOwn(obj2, &argp3, SWIGTYPE_p_std__shared_ptrT_cmf__upslope__ET__ShuttleworthWallace_t,  0 , &newmem);
+    if (!SWIG_IsOK(res3)) {
+      SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "new_SW_transpiration" "', argument " "3"" of type '" "cmf::upslope::ET::ShuttleworthWallace::ptr""'"); 
+    }
+    if (argp3) arg3 = *(reinterpret_cast< cmf::upslope::ET::ShuttleworthWallace::ptr * >(argp3));
+    if (newmem & SWIG_CAST_NEW_MEMORY) delete reinterpret_cast< cmf::upslope::ET::ShuttleworthWallace::ptr * >(argp3);
+  }
+  {
+    try {
+      result = (cmf::upslope::ET::SW_transpiration *)new cmf::upslope::ET::SW_transpiration(arg1,arg2,arg3);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_cmf__upslope__ET__SW_transpiration, SWIG_POINTER_NEW |  0 );
+  
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_SW_transpiration(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  cmf::upslope::ET::SW_transpiration *arg1 = (cmf::upslope::ET::SW_transpiration *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__upslope__ET__SW_transpiration, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_SW_transpiration" "', argument " "1"" of type '" "cmf::upslope::ET::SW_transpiration *""'"); 
+  }
+  arg1 = reinterpret_cast< cmf::upslope::ET::SW_transpiration * >(argp1);
+  {
+    try {
+      
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *SW_transpiration_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *obj;
+  if (!SWIG_Python_UnpackTuple(args,(char *)"swigregister", 1, 1,&obj)) return NULL;
+  SWIG_TypeNewClientData(SWIGTYPE_p_cmf__upslope__ET__SW_transpiration, SWIG_NewClientData(obj));
+  return SWIG_Py_Void();
+}
+
+SWIGINTERN PyObject *SW_transpiration_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  return SWIG_Python_InitShadowInstance(args);
+}
+
+SWIGINTERN PyObject *_wrap_new_SW_evap_from_layer(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  cmf::upslope::SoilLayer::ptr arg1 ;
+  cmf::water::flux_node::ptr arg2 ;
+  cmf::upslope::ET::ShuttleworthWallace::ptr arg3 ;
+  void *argp1 ;
+  int res1 = 0 ;
+  void *argp2 ;
+  int res2 = 0 ;
+  void *argp3 ;
+  int res3 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char *  kwnames[] = {
+    (char *) "source",(char *) "ET_target",(char *) "owner", NULL 
+  };
+  cmf::upslope::ET::SW_evap_from_layer *result = 0 ;
+  
+  if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"OOO:new_SW_evap_from_layer",kwnames,&obj0,&obj1,&obj2)) SWIG_fail;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(obj0, &argp1, SWIGTYPE_p_std__shared_ptrT_cmf__upslope__SoilLayer_t,  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_SW_evap_from_layer" "', argument " "1"" of type '" "cmf::upslope::SoilLayer::ptr""'"); 
+    }
+    if (argp1) arg1 = *(reinterpret_cast< cmf::upslope::SoilLayer::ptr * >(argp1));
+    if (newmem & SWIG_CAST_NEW_MEMORY) delete reinterpret_cast< cmf::upslope::SoilLayer::ptr * >(argp1);
+  }
+  {
+    int newmem = 0;
+    res2 = SWIG_ConvertPtrAndOwn(obj1, &argp2, SWIGTYPE_p_std__shared_ptrT_cmf__water__flux_node_t,  0 , &newmem);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_SW_evap_from_layer" "', argument " "2"" of type '" "cmf::water::flux_node::ptr""'"); 
+    }
+    if (argp2) arg2 = *(reinterpret_cast< cmf::water::flux_node::ptr * >(argp2));
+    if (newmem & SWIG_CAST_NEW_MEMORY) delete reinterpret_cast< cmf::water::flux_node::ptr * >(argp2);
+  }
+  {
+    int newmem = 0;
+    res3 = SWIG_ConvertPtrAndOwn(obj2, &argp3, SWIGTYPE_p_std__shared_ptrT_cmf__upslope__ET__ShuttleworthWallace_t,  0 , &newmem);
+    if (!SWIG_IsOK(res3)) {
+      SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "new_SW_evap_from_layer" "', argument " "3"" of type '" "cmf::upslope::ET::ShuttleworthWallace::ptr""'"); 
+    }
+    if (argp3) arg3 = *(reinterpret_cast< cmf::upslope::ET::ShuttleworthWallace::ptr * >(argp3));
+    if (newmem & SWIG_CAST_NEW_MEMORY) delete reinterpret_cast< cmf::upslope::ET::ShuttleworthWallace::ptr * >(argp3);
+  }
+  {
+    try {
+      result = (cmf::upslope::ET::SW_evap_from_layer *)new cmf::upslope::ET::SW_evap_from_layer(arg1,arg2,arg3);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_cmf__upslope__ET__SW_evap_from_layer, SWIG_POINTER_NEW |  0 );
+  
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_SW_evap_from_layer(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  cmf::upslope::ET::SW_evap_from_layer *arg1 = (cmf::upslope::ET::SW_evap_from_layer *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__upslope__ET__SW_evap_from_layer, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_SW_evap_from_layer" "', argument " "1"" of type '" "cmf::upslope::ET::SW_evap_from_layer *""'"); 
+  }
+  arg1 = reinterpret_cast< cmf::upslope::ET::SW_evap_from_layer * >(argp1);
+  {
+    try {
+      
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *SW_evap_from_layer_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *obj;
+  if (!SWIG_Python_UnpackTuple(args,(char *)"swigregister", 1, 1,&obj)) return NULL;
+  SWIG_TypeNewClientData(SWIGTYPE_p_cmf__upslope__ET__SW_evap_from_layer, SWIG_NewClientData(obj));
+  return SWIG_Py_Void();
+}
+
+SWIGINTERN PyObject *SW_evap_from_layer_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  return SWIG_Python_InitShadowInstance(args);
+}
+
+SWIGINTERN PyObject *_wrap_new_SW_evap_from_canopy(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  cmf::water::WaterStorage::ptr arg1 ;
+  cmf::water::flux_node::ptr arg2 ;
+  cmf::upslope::ET::ShuttleworthWallace::ptr arg3 ;
+  void *argp1 ;
+  int res1 = 0 ;
+  void *argp2 ;
+  int res2 = 0 ;
+  void *argp3 ;
+  int res3 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char *  kwnames[] = {
+    (char *) "source",(char *) "ET_target",(char *) "owner", NULL 
+  };
+  cmf::upslope::ET::SW_evap_from_canopy *result = 0 ;
+  
+  if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"OOO:new_SW_evap_from_canopy",kwnames,&obj0,&obj1,&obj2)) SWIG_fail;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(obj0, &argp1, SWIGTYPE_p_std__shared_ptrT_cmf__water__WaterStorage_t,  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_SW_evap_from_canopy" "', argument " "1"" of type '" "cmf::water::WaterStorage::ptr""'"); 
+    }
+    if (argp1) arg1 = *(reinterpret_cast< cmf::water::WaterStorage::ptr * >(argp1));
+    if (newmem & SWIG_CAST_NEW_MEMORY) delete reinterpret_cast< cmf::water::WaterStorage::ptr * >(argp1);
+  }
+  {
+    int newmem = 0;
+    res2 = SWIG_ConvertPtrAndOwn(obj1, &argp2, SWIGTYPE_p_std__shared_ptrT_cmf__water__flux_node_t,  0 , &newmem);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_SW_evap_from_canopy" "', argument " "2"" of type '" "cmf::water::flux_node::ptr""'"); 
+    }
+    if (argp2) arg2 = *(reinterpret_cast< cmf::water::flux_node::ptr * >(argp2));
+    if (newmem & SWIG_CAST_NEW_MEMORY) delete reinterpret_cast< cmf::water::flux_node::ptr * >(argp2);
+  }
+  {
+    int newmem = 0;
+    res3 = SWIG_ConvertPtrAndOwn(obj2, &argp3, SWIGTYPE_p_std__shared_ptrT_cmf__upslope__ET__ShuttleworthWallace_t,  0 , &newmem);
+    if (!SWIG_IsOK(res3)) {
+      SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "new_SW_evap_from_canopy" "', argument " "3"" of type '" "cmf::upslope::ET::ShuttleworthWallace::ptr""'"); 
+    }
+    if (argp3) arg3 = *(reinterpret_cast< cmf::upslope::ET::ShuttleworthWallace::ptr * >(argp3));
+    if (newmem & SWIG_CAST_NEW_MEMORY) delete reinterpret_cast< cmf::upslope::ET::ShuttleworthWallace::ptr * >(argp3);
+  }
+  {
+    try {
+      result = (cmf::upslope::ET::SW_evap_from_canopy *)new cmf::upslope::ET::SW_evap_from_canopy(arg1,arg2,arg3);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_cmf__upslope__ET__SW_evap_from_canopy, SWIG_POINTER_NEW |  0 );
+  
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_SW_evap_from_canopy(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  cmf::upslope::ET::SW_evap_from_canopy *arg1 = (cmf::upslope::ET::SW_evap_from_canopy *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__upslope__ET__SW_evap_from_canopy, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_SW_evap_from_canopy" "', argument " "1"" of type '" "cmf::upslope::ET::SW_evap_from_canopy *""'"); 
+  }
+  arg1 = reinterpret_cast< cmf::upslope::ET::SW_evap_from_canopy * >(argp1);
+  {
+    try {
+      
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *SW_evap_from_canopy_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *obj;
+  if (!SWIG_Python_UnpackTuple(args,(char *)"swigregister", 1, 1,&obj)) return NULL;
+  SWIG_TypeNewClientData(SWIGTYPE_p_cmf__upslope__ET__SW_evap_from_canopy, SWIG_NewClientData(obj));
+  return SWIG_Py_Void();
+}
+
+SWIGINTERN PyObject *SW_evap_from_canopy_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  return SWIG_Python_InitShadowInstance(args);
+}
+
+SWIGINTERN PyObject *_wrap_new_SW_evap_from_snow(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  cmf::water::WaterStorage::ptr arg1 ;
+  cmf::water::flux_node::ptr arg2 ;
+  cmf::upslope::ET::ShuttleworthWallace::ptr arg3 ;
+  void *argp1 ;
+  int res1 = 0 ;
+  void *argp2 ;
+  int res2 = 0 ;
+  void *argp3 ;
+  int res3 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char *  kwnames[] = {
+    (char *) "source",(char *) "ET_target",(char *) "owner", NULL 
+  };
+  cmf::upslope::ET::SW_evap_from_snow *result = 0 ;
+  
+  if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"OOO:new_SW_evap_from_snow",kwnames,&obj0,&obj1,&obj2)) SWIG_fail;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(obj0, &argp1, SWIGTYPE_p_std__shared_ptrT_cmf__water__WaterStorage_t,  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_SW_evap_from_snow" "', argument " "1"" of type '" "cmf::water::WaterStorage::ptr""'"); 
+    }
+    if (argp1) arg1 = *(reinterpret_cast< cmf::water::WaterStorage::ptr * >(argp1));
+    if (newmem & SWIG_CAST_NEW_MEMORY) delete reinterpret_cast< cmf::water::WaterStorage::ptr * >(argp1);
+  }
+  {
+    int newmem = 0;
+    res2 = SWIG_ConvertPtrAndOwn(obj1, &argp2, SWIGTYPE_p_std__shared_ptrT_cmf__water__flux_node_t,  0 , &newmem);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_SW_evap_from_snow" "', argument " "2"" of type '" "cmf::water::flux_node::ptr""'"); 
+    }
+    if (argp2) arg2 = *(reinterpret_cast< cmf::water::flux_node::ptr * >(argp2));
+    if (newmem & SWIG_CAST_NEW_MEMORY) delete reinterpret_cast< cmf::water::flux_node::ptr * >(argp2);
+  }
+  {
+    int newmem = 0;
+    res3 = SWIG_ConvertPtrAndOwn(obj2, &argp3, SWIGTYPE_p_std__shared_ptrT_cmf__upslope__ET__ShuttleworthWallace_t,  0 , &newmem);
+    if (!SWIG_IsOK(res3)) {
+      SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "new_SW_evap_from_snow" "', argument " "3"" of type '" "cmf::upslope::ET::ShuttleworthWallace::ptr""'"); 
+    }
+    if (argp3) arg3 = *(reinterpret_cast< cmf::upslope::ET::ShuttleworthWallace::ptr * >(argp3));
+    if (newmem & SWIG_CAST_NEW_MEMORY) delete reinterpret_cast< cmf::upslope::ET::ShuttleworthWallace::ptr * >(argp3);
+  }
+  {
+    try {
+      result = (cmf::upslope::ET::SW_evap_from_snow *)new cmf::upslope::ET::SW_evap_from_snow(arg1,arg2,arg3);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_cmf__upslope__ET__SW_evap_from_snow, SWIG_POINTER_NEW |  0 );
+  
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_SW_evap_from_snow(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  cmf::upslope::ET::SW_evap_from_snow *arg1 = (cmf::upslope::ET::SW_evap_from_snow *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__upslope__ET__SW_evap_from_snow, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_SW_evap_from_snow" "', argument " "1"" of type '" "cmf::upslope::ET::SW_evap_from_snow *""'"); 
+  }
+  arg1 = reinterpret_cast< cmf::upslope::ET::SW_evap_from_snow * >(argp1);
+  {
+    try {
+      
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *SW_evap_from_snow_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *obj;
+  if (!SWIG_Python_UnpackTuple(args,(char *)"swigregister", 1, 1,&obj)) return NULL;
+  SWIG_TypeNewClientData(SWIGTYPE_p_cmf__upslope__ET__SW_evap_from_snow, SWIG_NewClientData(obj));
+  return SWIG_Py_Void();
+}
+
+SWIGINTERN PyObject *SW_evap_from_snow_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  return SWIG_Python_InitShadowInstance(args);
+}
+
+SWIGINTERN PyObject *_wrap_new_SW_evap_from_surfacewater(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  cmf::river::OpenWaterStorage::ptr arg1 ;
+  cmf::water::flux_node::ptr arg2 ;
+  cmf::upslope::ET::ShuttleworthWallace::ptr arg3 ;
+  void *argp1 ;
+  int res1 = 0 ;
+  void *argp2 ;
+  int res2 = 0 ;
+  void *argp3 ;
+  int res3 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char *  kwnames[] = {
+    (char *) "source",(char *) "ET_target",(char *) "owner", NULL 
+  };
+  cmf::upslope::ET::SW_evap_from_surfacewater *result = 0 ;
+  
+  if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"OOO:new_SW_evap_from_surfacewater",kwnames,&obj0,&obj1,&obj2)) SWIG_fail;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(obj0, &argp1, SWIGTYPE_p_std__shared_ptrT_cmf__river__OpenWaterStorage_t,  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_SW_evap_from_surfacewater" "', argument " "1"" of type '" "cmf::river::OpenWaterStorage::ptr""'"); 
+    }
+    if (argp1) arg1 = *(reinterpret_cast< cmf::river::OpenWaterStorage::ptr * >(argp1));
+    if (newmem & SWIG_CAST_NEW_MEMORY) delete reinterpret_cast< cmf::river::OpenWaterStorage::ptr * >(argp1);
+  }
+  {
+    int newmem = 0;
+    res2 = SWIG_ConvertPtrAndOwn(obj1, &argp2, SWIGTYPE_p_std__shared_ptrT_cmf__water__flux_node_t,  0 , &newmem);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_SW_evap_from_surfacewater" "', argument " "2"" of type '" "cmf::water::flux_node::ptr""'"); 
+    }
+    if (argp2) arg2 = *(reinterpret_cast< cmf::water::flux_node::ptr * >(argp2));
+    if (newmem & SWIG_CAST_NEW_MEMORY) delete reinterpret_cast< cmf::water::flux_node::ptr * >(argp2);
+  }
+  {
+    int newmem = 0;
+    res3 = SWIG_ConvertPtrAndOwn(obj2, &argp3, SWIGTYPE_p_std__shared_ptrT_cmf__upslope__ET__ShuttleworthWallace_t,  0 , &newmem);
+    if (!SWIG_IsOK(res3)) {
+      SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "new_SW_evap_from_surfacewater" "', argument " "3"" of type '" "cmf::upslope::ET::ShuttleworthWallace::ptr""'"); 
+    }
+    if (argp3) arg3 = *(reinterpret_cast< cmf::upslope::ET::ShuttleworthWallace::ptr * >(argp3));
+    if (newmem & SWIG_CAST_NEW_MEMORY) delete reinterpret_cast< cmf::upslope::ET::ShuttleworthWallace::ptr * >(argp3);
+  }
+  {
+    try {
+      result = (cmf::upslope::ET::SW_evap_from_surfacewater *)new cmf::upslope::ET::SW_evap_from_surfacewater(arg1,arg2,arg3);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_cmf__upslope__ET__SW_evap_from_surfacewater, SWIG_POINTER_NEW |  0 );
+  
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_SW_evap_from_surfacewater(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  cmf::upslope::ET::SW_evap_from_surfacewater *arg1 = (cmf::upslope::ET::SW_evap_from_surfacewater *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__upslope__ET__SW_evap_from_surfacewater, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_SW_evap_from_surfacewater" "', argument " "1"" of type '" "cmf::upslope::ET::SW_evap_from_surfacewater *""'"); 
+  }
+  arg1 = reinterpret_cast< cmf::upslope::ET::SW_evap_from_surfacewater * >(argp1);
+  {
+    try {
+      
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *SW_evap_from_surfacewater_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *obj;
+  if (!SWIG_Python_UnpackTuple(args,(char *)"swigregister", 1, 1,&obj)) return NULL;
+  SWIG_TypeNewClientData(SWIGTYPE_p_cmf__upslope__ET__SW_evap_from_surfacewater, SWIG_NewClientData(obj));
+  return SWIG_Py_Void();
+}
+
+SWIGINTERN PyObject *SW_evap_from_surfacewater_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   return SWIG_Python_InitShadowInstance(args);
 }
 
@@ -76890,23 +77120,21 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"SoluteStorage_source_set", _wrap_SoluteStorage_source_set, METH_VARARGS, (char *)"SoluteStorage_source_set(SoluteStorage self, real source)"},
 	 { (char *)"SoluteStorage_source_get", (PyCFunction)_wrap_SoluteStorage_source_get, METH_O, (char *)"SoluteStorage_source_get(SoluteStorage self) -> real"},
 	 { (char *)"SoluteStorage_Solute_get", (PyCFunction)_wrap_SoluteStorage_Solute_get, METH_O, (char *)"SoluteStorage_Solute_get(SoluteStorage self) -> solute"},
-	 { (char *)"SoluteStorage_conc", (PyCFunction)_wrap_SoluteStorage_conc, METH_O, (char *)"\n"
-		"SoluteStorage_conc(SoluteStorage self) -> real\n"
+	 { (char *)"SoluteStorage_conc_set", _wrap_SoluteStorage_conc_set, METH_VARARGS, (char *)"\n"
+		"SoluteStorage_conc_set(SoluteStorage self, real conc)\n"
 		"\n"
 		"real conc()\n"
 		"const\n"
 		"\n"
 		"Returns the concentration of the solute. \n"
 		""},
-	 { (char *)"SoluteStorage_set_conc", (PyCFunction) _wrap_SoluteStorage_set_conc, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
-		"SoluteStorage_set_conc(SoluteStorage self, real NewConcentration)\n"
+	 { (char *)"SoluteStorage_conc_get", (PyCFunction)_wrap_SoluteStorage_conc_get, METH_O, (char *)"\n"
+		"SoluteStorage_conc_get(SoluteStorage self) -> real\n"
 		"\n"
-		"void\n"
-		"set_conc(real NewConcentration)\n"
+		"real conc()\n"
+		"const\n"
 		"\n"
-		"set a new concentration of dissolved tracers.\n"
-		"\n"
-		"In case of adsorption functions, the isotherm is used \n"
+		"Returns the concentration of the solute. \n"
 		""},
 	 { (char *)"delete_SoluteStorage", (PyCFunction)_wrap_delete_SoluteStorage, METH_O, (char *)"delete_SoluteStorage(SoluteStorage self)"},
 	 { (char *)"SoluteStorage_swigregister", SoluteStorage_swigregister, METH_VARARGS, NULL},
@@ -77432,6 +77660,7 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"WaterStorage_volume_get", (PyCFunction)_wrap_WaterStorage_volume_get, METH_O, (char *)"WaterStorage_volume_get(WaterStorage self) -> real"},
 	 { (char *)"WaterStorage_statevariable_set", _wrap_WaterStorage_statevariable_set, METH_VARARGS, (char *)"WaterStorage_statevariable_set(WaterStorage self, char statevariable)"},
 	 { (char *)"WaterStorage_statevariable_get", (PyCFunction)_wrap_WaterStorage_statevariable_get, METH_O, (char *)"WaterStorage_statevariable_get(WaterStorage self) -> char"},
+	 { (char *)"WaterStorage___getitem__", (PyCFunction) _wrap_WaterStorage___getitem__, METH_VARARGS | METH_KEYWORDS, (char *)"WaterStorage___getitem__(WaterStorage self, solute X) -> SoluteStorage"},
 	 { (char *)"delete_WaterStorage", (PyCFunction)_wrap_delete_WaterStorage, METH_O, (char *)"delete_WaterStorage(WaterStorage self)"},
 	 { (char *)"WaterStorage_swigregister", WaterStorage_swigregister, METH_VARARGS, NULL},
 	 { (char *)"WaterStorage_swiginit", WaterStorage_swiginit, METH_VARARGS, NULL},
@@ -79038,7 +79267,7 @@ static PyMethodDef SwigMethods[] = {
 		"a cmf::upslope::SurfaceWater \n"
 		""},
 	 { (char *)"Cell_surfacewater_as_storage", (PyCFunction)_wrap_Cell_surfacewater_as_storage, METH_O, (char *)"\n"
-		"Cell_surfacewater_as_storage(Cell self)\n"
+		"Cell_surfacewater_as_storage(Cell self) -> cmf::upslope::surfacewater_ptr\n"
 		"\n"
 		"void surfacewater_as_storage()\n"
 		"\n"
@@ -79093,8 +79322,6 @@ static PyMethodDef SwigMethods[] = {
 		"real albedo()\n"
 		"const \n"
 		""},
-	 { (char *)"Cell_surface_amplitude_set", _wrap_Cell_surface_amplitude_set, METH_VARARGS, (char *)"Cell_surface_amplitude_set(Cell self, real surface_amplitude)"},
-	 { (char *)"Cell_surface_amplitude_get", (PyCFunction)_wrap_Cell_surface_amplitude_get, METH_O, (char *)"Cell_surface_amplitude_get(Cell self) -> real"},
 	 { (char *)"Cell_surface_water_coverage", (PyCFunction)_wrap_Cell_surface_water_coverage, METH_O, (char *)"\n"
 		"Cell_surface_water_coverage(Cell self) -> real\n"
 		"\n"
@@ -80713,6 +80940,7 @@ static PyMethodDef SwigMethods[] = {
 		"Gets the height function (a cmf::river::Prism) for further reference.\n"
 		"\n"
 		""},
+	 { (char *)"SurfaceWater_get_coverage", (PyCFunction)_wrap_SurfaceWater_get_coverage, METH_O, (char *)"SurfaceWater_get_coverage(SurfaceWater self) -> double"},
 	 { (char *)"SurfaceWater_get_cell", (PyCFunction)_wrap_SurfaceWater_get_cell, METH_O, (char *)"\n"
 		"SurfaceWater_get_cell(SurfaceWater self) -> Cell\n"
 		"\n"
@@ -81349,125 +81577,6 @@ static PyMethodDef SwigMethods[] = {
 		""},
 	 { (char *)"log_wind_profile_swigregister", log_wind_profile_swigregister, METH_VARARGS, NULL},
 	 { (char *)"log_wind_profile_swiginit", log_wind_profile_swiginit, METH_VARARGS, NULL},
-	 { (char *)"transpiration_method_transp_from_layer", (PyCFunction) _wrap_transpiration_method_transp_from_layer, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
-		"transpiration_method_transp_from_layer(transpiration_method self, cmf::upslope::SoilLayer::ptr arg3, Time t) -> double\n"
-		"\n"
-		"virtual\n"
-		"double transp_from_layer(cmf::upslope::SoilLayer::ptr, cmf::math::Time\n"
-		"t)=0\n"
-		"\n"
-		"returns the transpiration rate from one layer in m3/day \n"
-		""},
-	 { (char *)"delete_transpiration_method", (PyCFunction)_wrap_delete_transpiration_method, METH_O, (char *)"\n"
-		"delete_transpiration_method(transpiration_method self)\n"
-		"\n"
-		"virtual ~transpiration_method() \n"
-		""},
-	 { (char *)"transpiration_method_swigregister", transpiration_method_swigregister, METH_VARARGS, NULL},
-	 { (char *)"soil_evaporation_method_evap_from_layer", (PyCFunction) _wrap_soil_evaporation_method_evap_from_layer, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
-		"soil_evaporation_method_evap_from_layer(soil_evaporation_method self, cmf::upslope::SoilLayer::ptr arg3, Time t) -> double\n"
-		"\n"
-		"virtual\n"
-		"double evap_from_layer(cmf::upslope::SoilLayer::ptr, cmf::math::Time\n"
-		"t)=0\n"
-		"\n"
-		"returns the soil evaporation rate from one layer in m3/day \n"
-		""},
-	 { (char *)"delete_soil_evaporation_method", (PyCFunction)_wrap_delete_soil_evaporation_method, METH_O, (char *)"\n"
-		"delete_soil_evaporation_method(soil_evaporation_method self)\n"
-		"\n"
-		"virtual ~soil_evaporation_method() \n"
-		""},
-	 { (char *)"soil_evaporation_method_swigregister", soil_evaporation_method_swigregister, METH_VARARGS, NULL},
-	 { (char *)"surface_water_evaporation_method_evap_from_openwater", (PyCFunction) _wrap_surface_water_evaporation_method_evap_from_openwater, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
-		"surface_water_evaporation_method_evap_from_openwater(surface_water_evaporation_method self, cmf::river::OpenWaterStorage::ptr arg3, Time arg4) -> double\n"
-		"\n"
-		"virtual double\n"
-		"evap_from_openwater(cmf::river::OpenWaterStorage::ptr,\n"
-		"cmf::math::Time)=0 \n"
-		""},
-	 { (char *)"delete_surface_water_evaporation_method", (PyCFunction)_wrap_delete_surface_water_evaporation_method, METH_O, (char *)"\n"
-		"delete_surface_water_evaporation_method(surface_water_evaporation_method self)\n"
-		"\n"
-		"virtual ~surface_water_evaporation_method() \n"
-		""},
-	 { (char *)"surface_water_evaporation_method_swigregister", surface_water_evaporation_method_swigregister, METH_VARARGS, NULL},
-	 { (char *)"canopy_evaporation_method_evap_from_canopy", (PyCFunction) _wrap_canopy_evaporation_method_evap_from_canopy, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
-		"canopy_evaporation_method_evap_from_canopy(canopy_evaporation_method self, cmf::water::WaterStorage::ptr arg3, Time arg4) -> double\n"
-		"\n"
-		"virtual double evap_from_canopy(cmf::water::WaterStorage::ptr,\n"
-		"cmf::math::Time)=0 \n"
-		""},
-	 { (char *)"delete_canopy_evaporation_method", (PyCFunction)_wrap_delete_canopy_evaporation_method, METH_O, (char *)"\n"
-		"delete_canopy_evaporation_method(canopy_evaporation_method self)\n"
-		"\n"
-		"virtual ~canopy_evaporation_method() \n"
-		""},
-	 { (char *)"canopy_evaporation_method_swigregister", canopy_evaporation_method_swigregister, METH_VARARGS, NULL},
-	 { (char *)"snow_evaporation_method_evap_from_snow", (PyCFunction) _wrap_snow_evaporation_method_evap_from_snow, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
-		"snow_evaporation_method_evap_from_snow(snow_evaporation_method self, cmf::water::WaterStorage::ptr snow, Time t) -> double\n"
-		"\n"
-		"virtual\n"
-		"double evap_from_snow(cmf::water::WaterStorage::ptr snow,\n"
-		"cmf::math::Time t)=0 \n"
-		""},
-	 { (char *)"delete_snow_evaporation_method", (PyCFunction)_wrap_delete_snow_evaporation_method, METH_O, (char *)"\n"
-		"delete_snow_evaporation_method(snow_evaporation_method self)\n"
-		"\n"
-		"virtual ~snow_evaporation_method() \n"
-		""},
-	 { (char *)"snow_evaporation_method_swigregister", snow_evaporation_method_swigregister, METH_VARARGS, NULL},
-	 { (char *)"new_transpiration", (PyCFunction) _wrap_new_transpiration, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
-		"new_transpiration(cmf::upslope::SoilLayer::ptr source, cmf::water::flux_node::ptr ET_target, std::shared_ptr< cmf::upslope::ET::transpiration_method > _method, std::string method_name) -> transpiration\n"
-		"\n"
-		"transpiration(cmf::upslope::SoilLayer::ptr source,\n"
-		"cmf::water::flux_node::ptr ET_target, std::shared_ptr<\n"
-		"transpiration_method > _method, std::string method_name) \n"
-		""},
-	 { (char *)"delete_transpiration", (PyCFunction)_wrap_delete_transpiration, METH_O, (char *)"delete_transpiration(transpiration self)"},
-	 { (char *)"transpiration_swigregister", transpiration_swigregister, METH_VARARGS, NULL},
-	 { (char *)"transpiration_swiginit", transpiration_swiginit, METH_VARARGS, NULL},
-	 { (char *)"new_soil_evaporation", (PyCFunction) _wrap_new_soil_evaporation, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
-		"new_soil_evaporation(cmf::upslope::SoilLayer::ptr source, cmf::water::flux_node::ptr ET_target, std::shared_ptr< cmf::upslope::ET::soil_evaporation_method > _method, std::string method_name) -> soil_evaporation\n"
-		"\n"
-		"soil_evaporation(cmf::upslope::SoilLayer::ptr source,\n"
-		"cmf::water::flux_node::ptr ET_target, std::shared_ptr<\n"
-		"soil_evaporation_method > _method, std::string method_name) \n"
-		""},
-	 { (char *)"delete_soil_evaporation", (PyCFunction)_wrap_delete_soil_evaporation, METH_O, (char *)"delete_soil_evaporation(soil_evaporation self)"},
-	 { (char *)"soil_evaporation_swigregister", soil_evaporation_swigregister, METH_VARARGS, NULL},
-	 { (char *)"soil_evaporation_swiginit", soil_evaporation_swiginit, METH_VARARGS, NULL},
-	 { (char *)"new_canopy_evaporation", (PyCFunction) _wrap_new_canopy_evaporation, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
-		"new_canopy_evaporation(cmf::water::WaterStorage::ptr source, cmf::water::flux_node::ptr ET_target, std::shared_ptr< cmf::upslope::ET::canopy_evaporation_method > _method, std::string method_name) -> canopy_evaporation\n"
-		"\n"
-		"canopy_evaporation(cmf::water::WaterStorage::ptr source,\n"
-		"cmf::water::flux_node::ptr ET_target, std::shared_ptr<\n"
-		"canopy_evaporation_method > _method, std::string method_name) \n"
-		""},
-	 { (char *)"delete_canopy_evaporation", (PyCFunction)_wrap_delete_canopy_evaporation, METH_O, (char *)"delete_canopy_evaporation(canopy_evaporation self)"},
-	 { (char *)"canopy_evaporation_swigregister", canopy_evaporation_swigregister, METH_VARARGS, NULL},
-	 { (char *)"canopy_evaporation_swiginit", canopy_evaporation_swiginit, METH_VARARGS, NULL},
-	 { (char *)"new_snow_evaporation", (PyCFunction) _wrap_new_snow_evaporation, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
-		"new_snow_evaporation(cmf::water::WaterStorage::ptr source, cmf::water::flux_node::ptr ET_target, std::shared_ptr< cmf::upslope::ET::snow_evaporation_method > _method, std::string method_name) -> snow_evaporation\n"
-		"\n"
-		"snow_evaporation(cmf::water::WaterStorage::ptr source,\n"
-		"cmf::water::flux_node::ptr ET_target, std::shared_ptr<\n"
-		"snow_evaporation_method > _method, std::string method_name) \n"
-		""},
-	 { (char *)"delete_snow_evaporation", (PyCFunction)_wrap_delete_snow_evaporation, METH_O, (char *)"delete_snow_evaporation(snow_evaporation self)"},
-	 { (char *)"snow_evaporation_swigregister", snow_evaporation_swigregister, METH_VARARGS, NULL},
-	 { (char *)"snow_evaporation_swiginit", snow_evaporation_swiginit, METH_VARARGS, NULL},
-	 { (char *)"new_surface_water_evaporation", (PyCFunction) _wrap_new_surface_water_evaporation, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
-		"new_surface_water_evaporation(cmf::river::OpenWaterStorage::ptr source, cmf::water::flux_node::ptr ET_target, std::shared_ptr< cmf::upslope::ET::surface_water_evaporation_method > _method, std::string method_name) -> surface_water_evaporation\n"
-		"\n"
-		"surface_water_evaporation(cmf::river::OpenWaterStorage::ptr source,\n"
-		"cmf::water::flux_node::ptr ET_target, std::shared_ptr<\n"
-		"surface_water_evaporation_method > _method, std::string method_name)\n"
-		"\n"
-		""},
-	 { (char *)"delete_surface_water_evaporation", (PyCFunction)_wrap_delete_surface_water_evaporation, METH_O, (char *)"delete_surface_water_evaporation(surface_water_evaporation self)"},
-	 { (char *)"surface_water_evaporation_swigregister", surface_water_evaporation_swigregister, METH_VARARGS, NULL},
-	 { (char *)"surface_water_evaporation_swiginit", surface_water_evaporation_swiginit, METH_VARARGS, NULL},
 	 { (char *)"PenmanMonteith", _wrap_PenmanMonteith, METH_VARARGS, (char *)"\n"
 		"PenmanMonteith(real Rn, real ra, real rs, real T, real vap_press_deficit) -> real\n"
 		"PenmanMonteith(Weather A, Vegetation veg, double h) -> real\n"
@@ -81612,12 +81721,12 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"ShuttleworthWallace_RAA_get", (PyCFunction)_wrap_ShuttleworthWallace_RAA_get, METH_O, (char *)"ShuttleworthWallace_RAA_get(ShuttleworthWallace self) -> double"},
 	 { (char *)"ShuttleworthWallace_RAC_set", _wrap_ShuttleworthWallace_RAC_set, METH_VARARGS, (char *)"ShuttleworthWallace_RAC_set(ShuttleworthWallace self, double RAC)"},
 	 { (char *)"ShuttleworthWallace_RAC_get", (PyCFunction)_wrap_ShuttleworthWallace_RAC_get, METH_O, (char *)"ShuttleworthWallace_RAC_get(ShuttleworthWallace self) -> double"},
+	 { (char *)"ShuttleworthWallace_RSC_set", _wrap_ShuttleworthWallace_RSC_set, METH_VARARGS, (char *)"ShuttleworthWallace_RSC_set(ShuttleworthWallace self, double RSC)"},
+	 { (char *)"ShuttleworthWallace_RSC_get", (PyCFunction)_wrap_ShuttleworthWallace_RSC_get, METH_O, (char *)"ShuttleworthWallace_RSC_get(ShuttleworthWallace self) -> double"},
 	 { (char *)"ShuttleworthWallace_RAS_set", _wrap_ShuttleworthWallace_RAS_set, METH_VARARGS, (char *)"ShuttleworthWallace_RAS_set(ShuttleworthWallace self, double RAS)"},
 	 { (char *)"ShuttleworthWallace_RAS_get", (PyCFunction)_wrap_ShuttleworthWallace_RAS_get, METH_O, (char *)"ShuttleworthWallace_RAS_get(ShuttleworthWallace self) -> double"},
 	 { (char *)"ShuttleworthWallace_RSS_set", _wrap_ShuttleworthWallace_RSS_set, METH_VARARGS, (char *)"ShuttleworthWallace_RSS_set(ShuttleworthWallace self, double RSS)"},
 	 { (char *)"ShuttleworthWallace_RSS_get", (PyCFunction)_wrap_ShuttleworthWallace_RSS_get, METH_O, (char *)"ShuttleworthWallace_RSS_get(ShuttleworthWallace self) -> double"},
-	 { (char *)"ShuttleworthWallace_RSC_set", _wrap_ShuttleworthWallace_RSC_set, METH_VARARGS, (char *)"ShuttleworthWallace_RSC_set(ShuttleworthWallace self, double RSC)"},
-	 { (char *)"ShuttleworthWallace_RSC_get", (PyCFunction)_wrap_ShuttleworthWallace_RSC_get, METH_O, (char *)"ShuttleworthWallace_RSC_get(ShuttleworthWallace self) -> double"},
 	 { (char *)"ShuttleworthWallace_refresh_counter_set", _wrap_ShuttleworthWallace_refresh_counter_set, METH_VARARGS, (char *)"ShuttleworthWallace_refresh_counter_set(ShuttleworthWallace self, int refresh_counter)"},
 	 { (char *)"ShuttleworthWallace_refresh_counter_get", (PyCFunction)_wrap_ShuttleworthWallace_refresh_counter_get, METH_O, (char *)"ShuttleworthWallace_refresh_counter_get(ShuttleworthWallace self) -> int"},
 	 { (char *)"ShuttleworthWallace_refresh", _wrap_ShuttleworthWallace_refresh, METH_VARARGS, (char *)"\n"
@@ -81638,8 +81747,6 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"ShuttleworthWallace_PIR_get", (PyCFunction)_wrap_ShuttleworthWallace_PIR_get, METH_O, (char *)"ShuttleworthWallace_PIR_get(ShuttleworthWallace self) -> double"},
 	 { (char *)"ShuttleworthWallace_AIR_set", _wrap_ShuttleworthWallace_AIR_set, METH_VARARGS, (char *)"ShuttleworthWallace_AIR_set(ShuttleworthWallace self, double AIR)"},
 	 { (char *)"ShuttleworthWallace_AIR_get", (PyCFunction)_wrap_ShuttleworthWallace_AIR_get, METH_O, (char *)"ShuttleworthWallace_AIR_get(ShuttleworthWallace self) -> double"},
-	 { (char *)"ShuttleworthWallace_GIR_set", _wrap_ShuttleworthWallace_GIR_set, METH_VARARGS, (char *)"ShuttleworthWallace_GIR_set(ShuttleworthWallace self, double GIR)"},
-	 { (char *)"ShuttleworthWallace_GIR_get", (PyCFunction)_wrap_ShuttleworthWallace_GIR_get, METH_O, (char *)"ShuttleworthWallace_GIR_get(ShuttleworthWallace self) -> double"},
 	 { (char *)"ShuttleworthWallace_ATR_sum_set", _wrap_ShuttleworthWallace_ATR_sum_set, METH_VARARGS, (char *)"ShuttleworthWallace_ATR_sum_set(ShuttleworthWallace self, double ATR_sum)"},
 	 { (char *)"ShuttleworthWallace_ATR_sum_get", (PyCFunction)_wrap_ShuttleworthWallace_ATR_sum_get, METH_O, (char *)"ShuttleworthWallace_ATR_sum_get(ShuttleworthWallace self) -> double"},
 	 { (char *)"ShuttleworthWallace_ATR_set", _wrap_ShuttleworthWallace_ATR_set, METH_VARARGS, (char *)"ShuttleworthWallace_ATR_set(ShuttleworthWallace self, cmf::math::num_array ATR)"},
@@ -81648,6 +81755,39 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"ShuttleworthWallace_KSNVP_get", (PyCFunction)_wrap_ShuttleworthWallace_KSNVP_get, METH_O, (char *)"ShuttleworthWallace_KSNVP_get(ShuttleworthWallace self) -> double"},
 	 { (char *)"ShuttleworthWallace_allow_dew_set", _wrap_ShuttleworthWallace_allow_dew_set, METH_VARARGS, (char *)"ShuttleworthWallace_allow_dew_set(ShuttleworthWallace self, bool allow_dew)"},
 	 { (char *)"ShuttleworthWallace_allow_dew_get", (PyCFunction)_wrap_ShuttleworthWallace_allow_dew_get, METH_O, (char *)"ShuttleworthWallace_allow_dew_get(ShuttleworthWallace self) -> bool"},
+	 { (char *)"ShuttleworthWallace_transp_from_layer", (PyCFunction) _wrap_ShuttleworthWallace_transp_from_layer, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
+		"ShuttleworthWallace_transp_from_layer(ShuttleworthWallace self, cmf::upslope::SoilLayer::ptr sl, Time t) -> double\n"
+		"\n"
+		"virtual\n"
+		"double transp_from_layer(cmf::upslope::SoilLayer::ptr sl,\n"
+		"cmf::math::Time t)\n"
+		"\n"
+		"returns the transpiration rate from one layer in m3/day \n"
+		""},
+	 { (char *)"ShuttleworthWallace_evap_from_layer", (PyCFunction) _wrap_ShuttleworthWallace_evap_from_layer, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
+		"ShuttleworthWallace_evap_from_layer(ShuttleworthWallace self, cmf::upslope::SoilLayer::ptr sl, Time t) -> double\n"
+		"\n"
+		"virtual\n"
+		"double evap_from_layer(cmf::upslope::SoilLayer::ptr sl,\n"
+		"cmf::math::Time t)\n"
+		"\n"
+		"returns the soil evaporation rate from one layer in m3/day \n"
+		""},
+	 { (char *)"ShuttleworthWallace_evap_from_surfacewater", (PyCFunction) _wrap_ShuttleworthWallace_evap_from_surfacewater, METH_VARARGS | METH_KEYWORDS, (char *)"ShuttleworthWallace_evap_from_surfacewater(ShuttleworthWallace self, cmf::river::OpenWaterStorage::ptr ows, Time t) -> double"},
+	 { (char *)"ShuttleworthWallace_evap_from_canopy", (PyCFunction) _wrap_ShuttleworthWallace_evap_from_canopy, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
+		"ShuttleworthWallace_evap_from_canopy(ShuttleworthWallace self, cmf::water::WaterStorage::ptr canopy, Time t) -> double\n"
+		"\n"
+		"virtual\n"
+		"double evap_from_canopy(cmf::water::WaterStorage::ptr canopy,\n"
+		"cmf::math::Time t) \n"
+		""},
+	 { (char *)"ShuttleworthWallace_evap_from_snow", (PyCFunction) _wrap_ShuttleworthWallace_evap_from_snow, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
+		"ShuttleworthWallace_evap_from_snow(ShuttleworthWallace self, cmf::water::WaterStorage::ptr snow, Time t) -> double\n"
+		"\n"
+		"virtual double\n"
+		"evap_from_snow(cmf::water::WaterStorage::ptr snow, cmf::math::Time t)\n"
+		"\n"
+		""},
 	 { (char *)"ShuttleworthWallace_set_RSS_parameters", (PyCFunction) _wrap_ShuttleworthWallace_set_RSS_parameters, METH_VARARGS | METH_KEYWORDS, (char *)"ShuttleworthWallace_set_RSS_parameters(double _RSSa=500., double _RSSb=1.0, double _RSSa_pot=-3.22)"},
 	 { (char *)"new_ShuttleworthWallace", (PyCFunction) _wrap_new_ShuttleworthWallace, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
 		"new_ShuttleworthWallace(Cell cell, bool allow_dew=True) -> ShuttleworthWallace\n"
@@ -81657,7 +81797,7 @@ static PyMethodDef SwigMethods[] = {
 		"Calculates the transpiration and the soil evaporation from dry\n"
 		"surfaces. \n"
 		""},
-	 { (char *)"ShuttleworthWallace_use_for_cell", (PyCFunction) _wrap_ShuttleworthWallace_use_for_cell, METH_VARARGS | METH_KEYWORDS, (char *)"ShuttleworthWallace_use_for_cell(Cell cell) -> ShuttleworthWallace"},
+	 { (char *)"ShuttleworthWallace_use_for_cell", (PyCFunction) _wrap_ShuttleworthWallace_use_for_cell, METH_VARARGS | METH_KEYWORDS, (char *)"ShuttleworthWallace_use_for_cell(Cell cell) -> cmf::upslope::ET::ShuttleworthWallace::ptr"},
 	 { (char *)"delete_ShuttleworthWallace", (PyCFunction)_wrap_delete_ShuttleworthWallace, METH_O, (char *)"\n"
 		"delete_ShuttleworthWallace(ShuttleworthWallace self)\n"
 		"\n"
@@ -81666,6 +81806,26 @@ static PyMethodDef SwigMethods[] = {
 		""},
 	 { (char *)"ShuttleworthWallace_swigregister", ShuttleworthWallace_swigregister, METH_VARARGS, NULL},
 	 { (char *)"ShuttleworthWallace_swiginit", ShuttleworthWallace_swiginit, METH_VARARGS, NULL},
+	 { (char *)"new_SW_transpiration", (PyCFunction) _wrap_new_SW_transpiration, METH_VARARGS | METH_KEYWORDS, (char *)"new_SW_transpiration(cmf::upslope::SoilLayer::ptr source, cmf::water::flux_node::ptr ET_target, cmf::upslope::ET::ShuttleworthWallace::ptr owner) -> SW_transpiration"},
+	 { (char *)"delete_SW_transpiration", (PyCFunction)_wrap_delete_SW_transpiration, METH_O, (char *)"delete_SW_transpiration(SW_transpiration self)"},
+	 { (char *)"SW_transpiration_swigregister", SW_transpiration_swigregister, METH_VARARGS, NULL},
+	 { (char *)"SW_transpiration_swiginit", SW_transpiration_swiginit, METH_VARARGS, NULL},
+	 { (char *)"new_SW_evap_from_layer", (PyCFunction) _wrap_new_SW_evap_from_layer, METH_VARARGS | METH_KEYWORDS, (char *)"new_SW_evap_from_layer(cmf::upslope::SoilLayer::ptr source, cmf::water::flux_node::ptr ET_target, cmf::upslope::ET::ShuttleworthWallace::ptr owner) -> SW_evap_from_layer"},
+	 { (char *)"delete_SW_evap_from_layer", (PyCFunction)_wrap_delete_SW_evap_from_layer, METH_O, (char *)"delete_SW_evap_from_layer(SW_evap_from_layer self)"},
+	 { (char *)"SW_evap_from_layer_swigregister", SW_evap_from_layer_swigregister, METH_VARARGS, NULL},
+	 { (char *)"SW_evap_from_layer_swiginit", SW_evap_from_layer_swiginit, METH_VARARGS, NULL},
+	 { (char *)"new_SW_evap_from_canopy", (PyCFunction) _wrap_new_SW_evap_from_canopy, METH_VARARGS | METH_KEYWORDS, (char *)"new_SW_evap_from_canopy(cmf::water::WaterStorage::ptr source, cmf::water::flux_node::ptr ET_target, cmf::upslope::ET::ShuttleworthWallace::ptr owner) -> SW_evap_from_canopy"},
+	 { (char *)"delete_SW_evap_from_canopy", (PyCFunction)_wrap_delete_SW_evap_from_canopy, METH_O, (char *)"delete_SW_evap_from_canopy(SW_evap_from_canopy self)"},
+	 { (char *)"SW_evap_from_canopy_swigregister", SW_evap_from_canopy_swigregister, METH_VARARGS, NULL},
+	 { (char *)"SW_evap_from_canopy_swiginit", SW_evap_from_canopy_swiginit, METH_VARARGS, NULL},
+	 { (char *)"new_SW_evap_from_snow", (PyCFunction) _wrap_new_SW_evap_from_snow, METH_VARARGS | METH_KEYWORDS, (char *)"new_SW_evap_from_snow(cmf::water::WaterStorage::ptr source, cmf::water::flux_node::ptr ET_target, cmf::upslope::ET::ShuttleworthWallace::ptr owner) -> SW_evap_from_snow"},
+	 { (char *)"delete_SW_evap_from_snow", (PyCFunction)_wrap_delete_SW_evap_from_snow, METH_O, (char *)"delete_SW_evap_from_snow(SW_evap_from_snow self)"},
+	 { (char *)"SW_evap_from_snow_swigregister", SW_evap_from_snow_swigregister, METH_VARARGS, NULL},
+	 { (char *)"SW_evap_from_snow_swiginit", SW_evap_from_snow_swiginit, METH_VARARGS, NULL},
+	 { (char *)"new_SW_evap_from_surfacewater", (PyCFunction) _wrap_new_SW_evap_from_surfacewater, METH_VARARGS | METH_KEYWORDS, (char *)"new_SW_evap_from_surfacewater(cmf::river::OpenWaterStorage::ptr source, cmf::water::flux_node::ptr ET_target, cmf::upslope::ET::ShuttleworthWallace::ptr owner) -> SW_evap_from_surfacewater"},
+	 { (char *)"delete_SW_evap_from_surfacewater", (PyCFunction)_wrap_delete_SW_evap_from_surfacewater, METH_O, (char *)"delete_SW_evap_from_surfacewater(SW_evap_from_surfacewater self)"},
+	 { (char *)"SW_evap_from_surfacewater_swigregister", SW_evap_from_surfacewater_swigregister, METH_VARARGS, NULL},
+	 { (char *)"SW_evap_from_surfacewater_swiginit", SW_evap_from_surfacewater_swiginit, METH_VARARGS, NULL},
 	 { (char *)"project_remove_node", (PyCFunction) _wrap_project_remove_node, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
 		"project_remove_node(project self, cmf::water::flux_node::ptr node) -> size_t\n"
 		"\n"
@@ -82153,26 +82313,17 @@ static void *_p_cmf__upslope__connections__RainfallTo_p_cmf__water__flux_connect
 static void *_p_cmf__upslope__connections__CanopyOverflowTo_p_cmf__water__flux_connection(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((cmf::water::flux_connection *)  ((cmf::upslope::connections::CanopyOverflow *) x));
 }
-static void *_p_cmf__upslope__ET__transpirationTo_p_cmf__water__flux_connection(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((cmf::water::flux_connection *)  ((cmf::upslope::ET::transpiration *) x));
-}
-static void *_p_cmf__upslope__ET__soil_evaporationTo_p_cmf__water__flux_connection(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((cmf::water::flux_connection *)  ((cmf::upslope::ET::soil_evaporation *) x));
-}
-static void *_p_cmf__upslope__ET__canopy_evaporationTo_p_cmf__water__flux_connection(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((cmf::water::flux_connection *)  ((cmf::upslope::ET::canopy_evaporation *) x));
-}
-static void *_p_cmf__upslope__ET__snow_evaporationTo_p_cmf__water__flux_connection(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((cmf::water::flux_connection *)  ((cmf::upslope::ET::snow_evaporation *) x));
-}
-static void *_p_cmf__upslope__ET__surface_water_evaporationTo_p_cmf__water__flux_connection(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((cmf::water::flux_connection *)  ((cmf::upslope::ET::surface_water_evaporation *) x));
-}
 static void *_p_cmf__upslope__ET__CanopyStorageEvaporationTo_p_cmf__water__flux_connection(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((cmf::water::flux_connection *)  ((cmf::upslope::ET::CanopyStorageEvaporation *) x));
 }
 static void *_p_cmf__upslope__ET__PenmanEvaporationTo_p_cmf__water__flux_connection(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((cmf::water::flux_connection *)  ((cmf::upslope::ET::PenmanEvaporation *) x));
+}
+static void *_p_cmf__upslope__ET__SW_transpirationTo_p_cmf__water__flux_connection(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((cmf::water::flux_connection *)  ((cmf::upslope::ET::SW_transpiration *) x));
+}
+static void *_p_cmf__upslope__ET__SW_evap_from_layerTo_p_cmf__water__flux_connection(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((cmf::water::flux_connection *)  ((cmf::upslope::ET::SW_evap_from_layer *) x));
 }
 static void *_p_cmf__upslope__connections__RichardsTo_p_cmf__water__flux_connection(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((cmf::water::flux_connection *)  ((cmf::upslope::connections::Richards *) x));
@@ -82249,6 +82400,9 @@ static void *_p_cmf__water__kinematic_waveTo_p_cmf__water__flux_connection(void 
 static void *_p_cmf__water__constraint_kinematic_waveTo_p_cmf__water__flux_connection(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((cmf::water::flux_connection *)  ((cmf::water::constraint_kinematic_wave *) x));
 }
+static void *_p_cmf__upslope__ET__SW_evap_from_canopyTo_p_cmf__water__flux_connection(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((cmf::water::flux_connection *)  ((cmf::upslope::ET::SW_evap_from_canopy *) x));
+}
 static void *_p_cmf__upslope__ET__constantETpotTo_p_cmf__water__flux_connection(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((cmf::water::flux_connection *) (cmf::upslope::ET::stressedET *) ((cmf::upslope::ET::constantETpot *) x));
 }
@@ -82263,6 +82417,9 @@ static void *_p_cmf__upslope__connections__LayerBypassTo_p_cmf__water__flux_conn
 }
 static void *_p_cmf__water__TechnicalFluxTo_p_cmf__water__flux_connection(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((cmf::water::flux_connection *)  ((cmf::water::TechnicalFlux *) x));
+}
+static void *_p_cmf__upslope__ET__SW_evap_from_snowTo_p_cmf__water__flux_connection(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((cmf::water::flux_connection *)  ((cmf::upslope::ET::SW_evap_from_snow *) x));
 }
 static void *_p_cmf__upslope__connections__SnowfallTo_p_cmf__water__flux_connection(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((cmf::water::flux_connection *)  ((cmf::upslope::connections::Snowfall *) x));
@@ -82281,6 +82438,9 @@ static void *_p_cmf__river__ManningTo_p_cmf__water__flux_connection(void *x, int
 }
 static void *_p_cmf__upslope__connections__Richards_lateralTo_p_cmf__water__flux_connection(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((cmf::water::flux_connection *) (cmf::upslope::connections::lateral_sub_surface_flux *) ((cmf::upslope::connections::Richards_lateral *) x));
+}
+static void *_p_cmf__upslope__ET__SW_evap_from_surfacewaterTo_p_cmf__water__flux_connection(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((cmf::water::flux_connection *)  ((cmf::upslope::ET::SW_evap_from_surfacewater *) x));
 }
 static void *_p_cmf__upslope__ET__PenmanMonteithETTo_p_cmf__water__flux_connection(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((cmf::water::flux_connection *) (cmf::upslope::ET::stressedET *) ((cmf::upslope::ET::PenmanMonteithET *) x));
@@ -82357,8 +82517,9 @@ static void *_p_cmf__upslope__ET__PriestleyTaylorETTo_p_cmf__upslope__ET__stress
 static void *_p_cmf__upslope__ET__timeseriesETpotTo_p_cmf__upslope__ET__stressedET(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((cmf::upslope::ET::stressedET *)  ((cmf::upslope::ET::timeseriesETpot *) x));
 }
-static void *_p_cmf__upslope__ET__ShuttleworthWallaceTo_p_cmf__upslope__ET__surface_water_evaporation_method(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((cmf::upslope::ET::surface_water_evaporation_method *)  ((cmf::upslope::ET::ShuttleworthWallace *) x));
+static void *_p_std__shared_ptrT_cmf__upslope__ET__ShuttleworthWallace_tTo_p_std__shared_ptrT_cmf__atmosphere__aerodynamic_resistance_t(void *x, int *newmemory) {
+    *newmemory = SWIG_CAST_NEW_MEMORY;
+    return (void *) new std::shared_ptr< cmf::atmosphere::aerodynamic_resistance >(*(std::shared_ptr< cmf::upslope::ET::ShuttleworthWallace > *)x);
 }
 static void *_p_cmf__river__PipeReachTo_p_cmf__river__IChannel(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((cmf::river::IChannel *)  ((cmf::river::PipeReach *) x));
@@ -82567,18 +82728,6 @@ static void *_p_cmf__upslope__ET__ShuttleworthWallaceTo_p_cmf__atmosphere__aerod
 static void *_p_cmf__atmosphere__log_wind_profileTo_p_cmf__atmosphere__aerodynamic_resistance(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((cmf::atmosphere::aerodynamic_resistance *)  ((cmf::atmosphere::log_wind_profile *) x));
 }
-static void *_p_cmf__upslope__ET__ShuttleworthWallaceTo_p_cmf__upslope__ET__snow_evaporation_method(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((cmf::upslope::ET::snow_evaporation_method *)  ((cmf::upslope::ET::ShuttleworthWallace *) x));
-}
-static void *_p_cmf__upslope__ET__ShuttleworthWallaceTo_p_cmf__upslope__ET__canopy_evaporation_method(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((cmf::upslope::ET::canopy_evaporation_method *)  ((cmf::upslope::ET::ShuttleworthWallace *) x));
-}
-static void *_p_cmf__upslope__ET__ShuttleworthWallaceTo_p_cmf__upslope__ET__soil_evaporation_method(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((cmf::upslope::ET::soil_evaporation_method *)  ((cmf::upslope::ET::ShuttleworthWallace *) x));
-}
-static void *_p_cmf__upslope__ET__ShuttleworthWallaceTo_p_cmf__upslope__ET__transpiration_method(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((cmf::upslope::ET::transpiration_method *)  ((cmf::upslope::ET::ShuttleworthWallace *) x));
-}
 static void *_p_std__shared_ptrT_cmf__river__Reach_tTo_p_std__shared_ptrT_cmf__math__StateVariable_t(void *x, int *newmemory) {
     *newmemory = SWIG_CAST_NEW_MEMORY;
     return (void *) new std::shared_ptr< cmf::math::StateVariable >(*(std::shared_ptr< cmf::river::Reach > *)x);
@@ -82677,44 +82826,14 @@ static void *_p_cmf__atmosphere__IDW_MeteorologyTo_p_cmf__atmosphere__Meteorolog
 static void *_p_cmf__upslope__cell_vectorTo_p_cmf__math__StateVariableOwner(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((cmf::math::StateVariableOwner *)  ((cmf::upslope::cell_vector *) x));
 }
-static void *_p_cmf__math__BDF2To_p_cmf__math__StateVariableOwner(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((cmf::math::StateVariableOwner *) (cmf::math::Integrator *) ((cmf::math::BDF2 *) x));
-}
-static void *_p_cmf__math__MultiIntegratorTo_p_cmf__math__StateVariableOwner(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((cmf::math::StateVariableOwner *) (cmf::math::Integrator *) ((cmf::math::MultiIntegrator *) x));
-}
-static void *_p_cmf__math__CVodeIntegratorTo_p_cmf__math__StateVariableOwner(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((cmf::math::StateVariableOwner *) (cmf::math::Integrator *) ((cmf::math::CVodeIntegrator *) x));
-}
-static void *_p_cmf__math__RKFIntegratorTo_p_cmf__math__StateVariableOwner(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((cmf::math::StateVariableOwner *) (cmf::math::Integrator *) ((cmf::math::RKFIntegrator *) x));
-}
-static void *_p_cmf__math__HeunIntegratorTo_p_cmf__math__StateVariableOwner(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((cmf::math::StateVariableOwner *) (cmf::math::Integrator *) ((cmf::math::HeunIntegrator *) x));
-}
-static void *_p_cmf__math__IntegratorTo_p_cmf__math__StateVariableOwner(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((cmf::math::StateVariableOwner *)  ((cmf::math::Integrator *) x));
-}
-static void *_p_cmf__projectTo_p_cmf__math__StateVariableOwner(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((cmf::math::StateVariableOwner *)  ((cmf::project *) x));
-}
-static void *_p_cmf__math__SoluteWaterIntegratorTo_p_cmf__math__StateVariableOwner(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((cmf::math::StateVariableOwner *) (cmf::math::Integrator *) ((cmf::math::SoluteWaterIntegrator *) x));
-}
-static void *_p_cmf__math__ImplicitEulerTo_p_cmf__math__StateVariableOwner(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((cmf::math::StateVariableOwner *) (cmf::math::Integrator *) ((cmf::math::ImplicitEuler *) x));
-}
-static void *_p_cmf__math__ExplicitEuler_fixedTo_p_cmf__math__StateVariableOwner(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((cmf::math::StateVariableOwner *) (cmf::math::Integrator *) ((cmf::math::ExplicitEuler_fixed *) x));
-}
-static void *_p_cmf__math__StateVariableListTo_p_cmf__math__StateVariableOwner(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((cmf::math::StateVariableOwner *)  ((cmf::math::StateVariableList *) x));
+static void *_p_cmf__river__ReachTo_p_cmf__math__StateVariableOwner(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((cmf::math::StateVariableOwner *) (cmf::water::WaterStorage *)(cmf::river::OpenWaterStorage *) ((cmf::river::Reach *) x));
 }
 static void *_p_cmf__upslope__CellTo_p_cmf__math__StateVariableOwner(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((cmf::math::StateVariableOwner *)  ((cmf::upslope::Cell *) x));
 }
-static void *_p_cmf__upslope__aquiferTo_p_cmf__math__StateVariableOwner(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((cmf::math::StateVariableOwner *) (cmf::water::WaterStorage *) ((cmf::upslope::aquifer *) x));
+static void *_p_cmf__upslope__SurfaceWaterTo_p_cmf__math__StateVariableOwner(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((cmf::math::StateVariableOwner *) (cmf::water::WaterStorage *)(cmf::river::OpenWaterStorage *) ((cmf::upslope::SurfaceWater *) x));
 }
 static void *_p_cmf__upslope__SoilLayerTo_p_cmf__math__StateVariableOwner(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((cmf::math::StateVariableOwner *) (cmf::water::WaterStorage *) ((cmf::upslope::SoilLayer *) x));
@@ -82722,8 +82841,8 @@ static void *_p_cmf__upslope__SoilLayerTo_p_cmf__math__StateVariableOwner(void *
 static void *_p_cmf__upslope__MacroPoreTo_p_cmf__math__StateVariableOwner(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((cmf::math::StateVariableOwner *) (cmf::water::WaterStorage *) ((cmf::upslope::MacroPore *) x));
 }
-static void *_p_cmf__river__ReachTo_p_cmf__math__StateVariableOwner(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((cmf::math::StateVariableOwner *) (cmf::water::WaterStorage *)(cmf::river::OpenWaterStorage *) ((cmf::river::Reach *) x));
+static void *_p_cmf__math__StateVariableListTo_p_cmf__math__StateVariableOwner(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((cmf::math::StateVariableOwner *)  ((cmf::math::StateVariableList *) x));
 }
 static void *_p_cmf__water__WaterStorageTo_p_cmf__math__StateVariableOwner(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((cmf::math::StateVariableOwner *)  ((cmf::water::WaterStorage *) x));
@@ -82734,8 +82853,11 @@ static void *_p_cmf__river__OpenWaterStorageTo_p_cmf__math__StateVariableOwner(v
 static void *_p_cmf__water__node_listTo_p_cmf__math__StateVariableOwner(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((cmf::math::StateVariableOwner *)  ((cmf::water::node_list *) x));
 }
-static void *_p_cmf__upslope__SurfaceWaterTo_p_cmf__math__StateVariableOwner(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((cmf::math::StateVariableOwner *) (cmf::water::WaterStorage *)(cmf::river::OpenWaterStorage *) ((cmf::upslope::SurfaceWater *) x));
+static void *_p_cmf__upslope__aquiferTo_p_cmf__math__StateVariableOwner(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((cmf::math::StateVariableOwner *) (cmf::water::WaterStorage *) ((cmf::upslope::aquifer *) x));
+}
+static void *_p_cmf__projectTo_p_cmf__math__StateVariableOwner(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((cmf::math::StateVariableOwner *)  ((cmf::project *) x));
 }
 static void *_p_cmf__math__ExplicitEuler_fixedTo_p_cmf__math__Integrator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((cmf::math::Integrator *)  ((cmf::math::ExplicitEuler_fixed *) x));
@@ -82838,23 +82960,18 @@ static swig_type_info _swigt__p_cmf__upslope__ET__PenmanEvaporation = {"_p_cmf__
 static swig_type_info _swigt__p_cmf__upslope__ET__PenmanMonteithET = {"_p_cmf__upslope__ET__PenmanMonteithET", "cmf::upslope::ET::PenmanMonteithET *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_cmf__upslope__ET__PriestleyTaylorET = {"_p_cmf__upslope__ET__PriestleyTaylorET", "cmf::upslope::ET::PriestleyTaylorET *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_cmf__upslope__ET__RootUptakeStessFunction = {"_p_cmf__upslope__ET__RootUptakeStessFunction", "cmf::upslope::ET::RootUptakeStessFunction *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_cmf__upslope__ET__SW_evap_from_canopy = {"_p_cmf__upslope__ET__SW_evap_from_canopy", "cmf::upslope::ET::SW_evap_from_canopy *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_cmf__upslope__ET__SW_evap_from_layer = {"_p_cmf__upslope__ET__SW_evap_from_layer", "cmf::upslope::ET::SW_evap_from_layer *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_cmf__upslope__ET__SW_evap_from_snow = {"_p_cmf__upslope__ET__SW_evap_from_snow", "cmf::upslope::ET::SW_evap_from_snow *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_cmf__upslope__ET__SW_evap_from_surfacewater = {"_p_cmf__upslope__ET__SW_evap_from_surfacewater", "cmf::upslope::ET::SW_evap_from_surfacewater *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_cmf__upslope__ET__SW_transpiration = {"_p_cmf__upslope__ET__SW_transpiration", "cmf::upslope::ET::SW_transpiration *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_cmf__upslope__ET__ShuttleworthWallace = {"_p_cmf__upslope__ET__ShuttleworthWallace", "cmf::upslope::ET::ShuttleworthWallace *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_cmf__upslope__ET__SuctionStress = {"_p_cmf__upslope__ET__SuctionStress", "cmf::upslope::ET::SuctionStress *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_cmf__upslope__ET__TurcET = {"_p_cmf__upslope__ET__TurcET", "cmf::upslope::ET::TurcET *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_cmf__upslope__ET__VolumeStress = {"_p_cmf__upslope__ET__VolumeStress", "cmf::upslope::ET::VolumeStress *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_cmf__upslope__ET__canopy_evaporation = {"_p_cmf__upslope__ET__canopy_evaporation", "cmf::upslope::ET::canopy_evaporation *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_cmf__upslope__ET__canopy_evaporation_method = {"_p_cmf__upslope__ET__canopy_evaporation_method", "cmf::upslope::ET::canopy_evaporation_method *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_cmf__upslope__ET__constantETpot = {"_p_cmf__upslope__ET__constantETpot", "cmf::upslope::ET::constantETpot *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_cmf__upslope__ET__snow_evaporation = {"_p_cmf__upslope__ET__snow_evaporation", "cmf::upslope::ET::snow_evaporation *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_cmf__upslope__ET__snow_evaporation_method = {"_p_cmf__upslope__ET__snow_evaporation_method", "cmf::upslope::ET::snow_evaporation_method *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_cmf__upslope__ET__soil_evaporation = {"_p_cmf__upslope__ET__soil_evaporation", "cmf::upslope::ET::soil_evaporation *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_cmf__upslope__ET__soil_evaporation_method = {"_p_cmf__upslope__ET__soil_evaporation_method", "cmf::upslope::ET::soil_evaporation_method *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_cmf__upslope__ET__stressedET = {"_p_cmf__upslope__ET__stressedET", "cmf::upslope::ET::stressedET *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_cmf__upslope__ET__surface_water_evaporation = {"_p_cmf__upslope__ET__surface_water_evaporation", "cmf::upslope::ET::surface_water_evaporation *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_cmf__upslope__ET__surface_water_evaporation_method = {"_p_cmf__upslope__ET__surface_water_evaporation_method", "cmf::upslope::ET::surface_water_evaporation_method *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_cmf__upslope__ET__timeseriesETpot = {"_p_cmf__upslope__ET__timeseriesETpot", "cmf::upslope::ET::timeseriesETpot *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_cmf__upslope__ET__transpiration = {"_p_cmf__upslope__ET__transpiration", "cmf::upslope::ET::transpiration *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_cmf__upslope__ET__transpiration_method = {"_p_cmf__upslope__ET__transpiration_method", "cmf::upslope::ET::transpiration_method *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_cmf__upslope__LinearRetention = {"_p_cmf__upslope__LinearRetention", "cmf::upslope::LinearRetention *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_cmf__upslope__MacroPore = {"_p_cmf__upslope__MacroPore", "cmf::upslope::MacroPore *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_cmf__upslope__RetentionCurve = {"_p_cmf__upslope__RetentionCurve", "cmf::upslope::RetentionCurve *", 0, 0, (void*)0, 0};
@@ -82951,14 +83068,10 @@ static swig_type_info _swigt__p_std__shared_ptrT_cmf__math__StateVariable_t = {"
 static swig_type_info _swigt__p_std__shared_ptrT_cmf__math__integratable_t = {"_p_std__shared_ptrT_cmf__math__integratable_t", "cmf::math::integratable::ptr *|std::shared_ptr< cmf::math::integratable > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__shared_ptrT_cmf__river__OpenWaterStorage_t = {"_p_std__shared_ptrT_cmf__river__OpenWaterStorage_t", "std::shared_ptr< cmf::river::OpenWaterStorage > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__shared_ptrT_cmf__river__Reach_t = {"_p_std__shared_ptrT_cmf__river__Reach_t", "std::shared_ptr< cmf::river::Reach > *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_std__shared_ptrT_cmf__upslope__ET__canopy_evaporation_method_t = {"_p_std__shared_ptrT_cmf__upslope__ET__canopy_evaporation_method_t", "std::shared_ptr< cmf::upslope::ET::canopy_evaporation_method > *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_std__shared_ptrT_cmf__upslope__ET__snow_evaporation_method_t = {"_p_std__shared_ptrT_cmf__upslope__ET__snow_evaporation_method_t", "std::shared_ptr< cmf::upslope::ET::snow_evaporation_method > *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_std__shared_ptrT_cmf__upslope__ET__soil_evaporation_method_t = {"_p_std__shared_ptrT_cmf__upslope__ET__soil_evaporation_method_t", "std::shared_ptr< cmf::upslope::ET::soil_evaporation_method > *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_std__shared_ptrT_cmf__upslope__ET__surface_water_evaporation_method_t = {"_p_std__shared_ptrT_cmf__upslope__ET__surface_water_evaporation_method_t", "std::shared_ptr< cmf::upslope::ET::surface_water_evaporation_method > *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_std__shared_ptrT_cmf__upslope__ET__transpiration_method_t = {"_p_std__shared_ptrT_cmf__upslope__ET__transpiration_method_t", "std::shared_ptr< cmf::upslope::ET::transpiration_method > *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_std__shared_ptrT_cmf__upslope__ET__ShuttleworthWallace_t = {"_p_std__shared_ptrT_cmf__upslope__ET__ShuttleworthWallace_t", "std::shared_ptr< cmf::upslope::ET::ShuttleworthWallace > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__shared_ptrT_cmf__upslope__MacroPore_t = {"_p_std__shared_ptrT_cmf__upslope__MacroPore_t", "std::shared_ptr< cmf::upslope::MacroPore > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__shared_ptrT_cmf__upslope__SoilLayer_t = {"_p_std__shared_ptrT_cmf__upslope__SoilLayer_t", "cmf::upslope::SoilLayer::ptr *|std::shared_ptr< cmf::upslope::SoilLayer > *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_std__shared_ptrT_cmf__upslope__SurfaceWater_t = {"_p_std__shared_ptrT_cmf__upslope__SurfaceWater_t", "std::shared_ptr< cmf::upslope::SurfaceWater > *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_std__shared_ptrT_cmf__upslope__SurfaceWater_t = {"_p_std__shared_ptrT_cmf__upslope__SurfaceWater_t", "std::shared_ptr< cmf::upslope::SurfaceWater > *|cmf::upslope::surfacewater_ptr *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__shared_ptrT_cmf__upslope__aquifer_t = {"_p_std__shared_ptrT_cmf__upslope__aquifer_t", "std::shared_ptr< cmf::upslope::aquifer > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__shared_ptrT_cmf__water__DirichletBoundary_t = {"_p_std__shared_ptrT_cmf__water__DirichletBoundary_t", "std::shared_ptr< cmf::water::DirichletBoundary > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__shared_ptrT_cmf__water__NeumannBoundary_t = {"_p_std__shared_ptrT_cmf__water__NeumannBoundary_t", "cmf::water::NeumannBoundary::ptr *|std::shared_ptr< cmf::water::NeumannBoundary > *", 0, 0, (void*)0, 0};
@@ -83042,23 +83155,18 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_cmf__upslope__ET__PenmanMonteithET,
   &_swigt__p_cmf__upslope__ET__PriestleyTaylorET,
   &_swigt__p_cmf__upslope__ET__RootUptakeStessFunction,
+  &_swigt__p_cmf__upslope__ET__SW_evap_from_canopy,
+  &_swigt__p_cmf__upslope__ET__SW_evap_from_layer,
+  &_swigt__p_cmf__upslope__ET__SW_evap_from_snow,
+  &_swigt__p_cmf__upslope__ET__SW_evap_from_surfacewater,
+  &_swigt__p_cmf__upslope__ET__SW_transpiration,
   &_swigt__p_cmf__upslope__ET__ShuttleworthWallace,
   &_swigt__p_cmf__upslope__ET__SuctionStress,
   &_swigt__p_cmf__upslope__ET__TurcET,
   &_swigt__p_cmf__upslope__ET__VolumeStress,
-  &_swigt__p_cmf__upslope__ET__canopy_evaporation,
-  &_swigt__p_cmf__upslope__ET__canopy_evaporation_method,
   &_swigt__p_cmf__upslope__ET__constantETpot,
-  &_swigt__p_cmf__upslope__ET__snow_evaporation,
-  &_swigt__p_cmf__upslope__ET__snow_evaporation_method,
-  &_swigt__p_cmf__upslope__ET__soil_evaporation,
-  &_swigt__p_cmf__upslope__ET__soil_evaporation_method,
   &_swigt__p_cmf__upslope__ET__stressedET,
-  &_swigt__p_cmf__upslope__ET__surface_water_evaporation,
-  &_swigt__p_cmf__upslope__ET__surface_water_evaporation_method,
   &_swigt__p_cmf__upslope__ET__timeseriesETpot,
-  &_swigt__p_cmf__upslope__ET__transpiration,
-  &_swigt__p_cmf__upslope__ET__transpiration_method,
   &_swigt__p_cmf__upslope__LinearRetention,
   &_swigt__p_cmf__upslope__MacroPore,
   &_swigt__p_cmf__upslope__RetentionCurve,
@@ -83155,11 +83263,7 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_std__shared_ptrT_cmf__math__integratable_t,
   &_swigt__p_std__shared_ptrT_cmf__river__OpenWaterStorage_t,
   &_swigt__p_std__shared_ptrT_cmf__river__Reach_t,
-  &_swigt__p_std__shared_ptrT_cmf__upslope__ET__canopy_evaporation_method_t,
-  &_swigt__p_std__shared_ptrT_cmf__upslope__ET__snow_evaporation_method_t,
-  &_swigt__p_std__shared_ptrT_cmf__upslope__ET__soil_evaporation_method_t,
-  &_swigt__p_std__shared_ptrT_cmf__upslope__ET__surface_water_evaporation_method_t,
-  &_swigt__p_std__shared_ptrT_cmf__upslope__ET__transpiration_method_t,
+  &_swigt__p_std__shared_ptrT_cmf__upslope__ET__ShuttleworthWallace_t,
   &_swigt__p_std__shared_ptrT_cmf__upslope__MacroPore_t,
   &_swigt__p_std__shared_ptrT_cmf__upslope__SoilLayer_t,
   &_swigt__p_std__shared_ptrT_cmf__upslope__SurfaceWater_t,
@@ -83212,7 +83316,7 @@ static swig_cast_info _swigc__p_cmf__math__RKFIntegrator[] = {  {&_swigt__p_cmf_
 static swig_cast_info _swigc__p_cmf__math__SoluteWaterIntegrator[] = {  {&_swigt__p_cmf__math__SoluteWaterIntegrator, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_cmf__math__StateVariable[] = {  {&_swigt__p_cmf__math__StateVariable, 0, 0, 0},  {&_swigt__p_cmf__river__Reach, _p_cmf__river__ReachTo_p_cmf__math__StateVariable, 0, 0},  {&_swigt__p_cmf__upslope__SurfaceWater, _p_cmf__upslope__SurfaceWaterTo_p_cmf__math__StateVariable, 0, 0},  {&_swigt__p_cmf__upslope__SoilLayer, _p_cmf__upslope__SoilLayerTo_p_cmf__math__StateVariable, 0, 0},  {&_swigt__p_cmf__upslope__MacroPore, _p_cmf__upslope__MacroPoreTo_p_cmf__math__StateVariable, 0, 0},  {&_swigt__p_cmf__water__SoluteStorage, _p_cmf__water__SoluteStorageTo_p_cmf__math__StateVariable, 0, 0},  {&_swigt__p_cmf__water__WaterStorage, _p_cmf__water__WaterStorageTo_p_cmf__math__StateVariable, 0, 0},  {&_swigt__p_cmf__river__OpenWaterStorage, _p_cmf__river__OpenWaterStorageTo_p_cmf__math__StateVariable, 0, 0},  {&_swigt__p_cmf__upslope__aquifer, _p_cmf__upslope__aquiferTo_p_cmf__math__StateVariable, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_cmf__math__StateVariableList[] = {  {&_swigt__p_cmf__math__StateVariableList, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_cmf__math__StateVariableOwner[] = {  {&_swigt__p_cmf__upslope__cell_vector, _p_cmf__upslope__cell_vectorTo_p_cmf__math__StateVariableOwner, 0, 0},  {&_swigt__p_cmf__upslope__Cell, _p_cmf__upslope__CellTo_p_cmf__math__StateVariableOwner, 0, 0},  {&_swigt__p_cmf__math__MultiIntegrator, _p_cmf__math__MultiIntegratorTo_p_cmf__math__StateVariableOwner, 0, 0},  {&_swigt__p_cmf__math__CVodeIntegrator, _p_cmf__math__CVodeIntegratorTo_p_cmf__math__StateVariableOwner, 0, 0},  {&_swigt__p_cmf__math__RKFIntegrator, _p_cmf__math__RKFIntegratorTo_p_cmf__math__StateVariableOwner, 0, 0},  {&_swigt__p_cmf__math__HeunIntegrator, _p_cmf__math__HeunIntegratorTo_p_cmf__math__StateVariableOwner, 0, 0},  {&_swigt__p_cmf__math__Integrator, _p_cmf__math__IntegratorTo_p_cmf__math__StateVariableOwner, 0, 0},  {&_swigt__p_cmf__project, _p_cmf__projectTo_p_cmf__math__StateVariableOwner, 0, 0},  {&_swigt__p_cmf__math__SoluteWaterIntegrator, _p_cmf__math__SoluteWaterIntegratorTo_p_cmf__math__StateVariableOwner, 0, 0},  {&_swigt__p_cmf__math__StateVariableOwner, 0, 0, 0},  {&_swigt__p_cmf__math__ImplicitEuler, _p_cmf__math__ImplicitEulerTo_p_cmf__math__StateVariableOwner, 0, 0},  {&_swigt__p_cmf__math__StateVariableList, _p_cmf__math__StateVariableListTo_p_cmf__math__StateVariableOwner, 0, 0},  {&_swigt__p_cmf__math__ExplicitEuler_fixed, _p_cmf__math__ExplicitEuler_fixedTo_p_cmf__math__StateVariableOwner, 0, 0},  {&_swigt__p_cmf__upslope__aquifer, _p_cmf__upslope__aquiferTo_p_cmf__math__StateVariableOwner, 0, 0},  {&_swigt__p_cmf__upslope__SoilLayer, _p_cmf__upslope__SoilLayerTo_p_cmf__math__StateVariableOwner, 0, 0},  {&_swigt__p_cmf__upslope__MacroPore, _p_cmf__upslope__MacroPoreTo_p_cmf__math__StateVariableOwner, 0, 0},  {&_swigt__p_cmf__math__BDF2, _p_cmf__math__BDF2To_p_cmf__math__StateVariableOwner, 0, 0},  {&_swigt__p_cmf__river__Reach, _p_cmf__river__ReachTo_p_cmf__math__StateVariableOwner, 0, 0},  {&_swigt__p_cmf__water__WaterStorage, _p_cmf__water__WaterStorageTo_p_cmf__math__StateVariableOwner, 0, 0},  {&_swigt__p_cmf__river__OpenWaterStorage, _p_cmf__river__OpenWaterStorageTo_p_cmf__math__StateVariableOwner, 0, 0},  {&_swigt__p_cmf__upslope__SurfaceWater, _p_cmf__upslope__SurfaceWaterTo_p_cmf__math__StateVariableOwner, 0, 0},  {&_swigt__p_cmf__water__node_list, _p_cmf__water__node_listTo_p_cmf__math__StateVariableOwner, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_cmf__math__StateVariableOwner[] = {  {&_swigt__p_cmf__upslope__cell_vector, _p_cmf__upslope__cell_vectorTo_p_cmf__math__StateVariableOwner, 0, 0},  {&_swigt__p_cmf__math__StateVariableOwner, 0, 0, 0},  {&_swigt__p_cmf__river__Reach, _p_cmf__river__ReachTo_p_cmf__math__StateVariableOwner, 0, 0},  {&_swigt__p_cmf__upslope__SurfaceWater, _p_cmf__upslope__SurfaceWaterTo_p_cmf__math__StateVariableOwner, 0, 0},  {&_swigt__p_cmf__upslope__SoilLayer, _p_cmf__upslope__SoilLayerTo_p_cmf__math__StateVariableOwner, 0, 0},  {&_swigt__p_cmf__upslope__MacroPore, _p_cmf__upslope__MacroPoreTo_p_cmf__math__StateVariableOwner, 0, 0},  {&_swigt__p_cmf__math__StateVariableList, _p_cmf__math__StateVariableListTo_p_cmf__math__StateVariableOwner, 0, 0},  {&_swigt__p_cmf__water__WaterStorage, _p_cmf__water__WaterStorageTo_p_cmf__math__StateVariableOwner, 0, 0},  {&_swigt__p_cmf__river__OpenWaterStorage, _p_cmf__river__OpenWaterStorageTo_p_cmf__math__StateVariableOwner, 0, 0},  {&_swigt__p_cmf__upslope__Cell, _p_cmf__upslope__CellTo_p_cmf__math__StateVariableOwner, 0, 0},  {&_swigt__p_cmf__water__node_list, _p_cmf__water__node_listTo_p_cmf__math__StateVariableOwner, 0, 0},  {&_swigt__p_cmf__upslope__aquifer, _p_cmf__upslope__aquiferTo_p_cmf__math__StateVariableOwner, 0, 0},  {&_swigt__p_cmf__project, _p_cmf__projectTo_p_cmf__math__StateVariableOwner, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_cmf__math__Time[] = {  {&_swigt__p_cmf__math__Time, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_cmf__math__cubicspline[] = {  {&_swigt__p_cmf__math__cubicspline, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_cmf__math__integratable[] = {  {&_swigt__p_cmf__math__integratable, 0, 0, 0},  {&_swigt__p_cmf__water__waterbalance_integrator, _p_cmf__water__waterbalance_integratorTo_p_cmf__math__integratable, 0, 0},  {&_swigt__p_cmf__water__flux_integrator, _p_cmf__water__flux_integratorTo_p_cmf__math__integratable, 0, 0},{0, 0, 0, 0}};
@@ -83246,23 +83350,18 @@ static swig_cast_info _swigc__p_cmf__upslope__ET__PenmanEvaporation[] = {  {&_sw
 static swig_cast_info _swigc__p_cmf__upslope__ET__PenmanMonteithET[] = {  {&_swigt__p_cmf__upslope__ET__PenmanMonteithET, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_cmf__upslope__ET__PriestleyTaylorET[] = {  {&_swigt__p_cmf__upslope__ET__PriestleyTaylorET, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_cmf__upslope__ET__RootUptakeStessFunction[] = {  {&_swigt__p_cmf__upslope__ET__SuctionStress, _p_cmf__upslope__ET__SuctionStressTo_p_cmf__upslope__ET__RootUptakeStessFunction, 0, 0},  {&_swigt__p_cmf__upslope__ET__ContentStress, _p_cmf__upslope__ET__ContentStressTo_p_cmf__upslope__ET__RootUptakeStessFunction, 0, 0},  {&_swigt__p_cmf__upslope__ET__VolumeStress, _p_cmf__upslope__ET__VolumeStressTo_p_cmf__upslope__ET__RootUptakeStessFunction, 0, 0},  {&_swigt__p_cmf__upslope__ET__RootUptakeStessFunction, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_cmf__upslope__ET__SW_evap_from_canopy[] = {  {&_swigt__p_cmf__upslope__ET__SW_evap_from_canopy, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_cmf__upslope__ET__SW_evap_from_layer[] = {  {&_swigt__p_cmf__upslope__ET__SW_evap_from_layer, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_cmf__upslope__ET__SW_evap_from_snow[] = {  {&_swigt__p_cmf__upslope__ET__SW_evap_from_snow, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_cmf__upslope__ET__SW_evap_from_surfacewater[] = {  {&_swigt__p_cmf__upslope__ET__SW_evap_from_surfacewater, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_cmf__upslope__ET__SW_transpiration[] = {  {&_swigt__p_cmf__upslope__ET__SW_transpiration, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_cmf__upslope__ET__ShuttleworthWallace[] = {  {&_swigt__p_cmf__upslope__ET__ShuttleworthWallace, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_cmf__upslope__ET__SuctionStress[] = {  {&_swigt__p_cmf__upslope__ET__SuctionStress, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_cmf__upslope__ET__TurcET[] = {  {&_swigt__p_cmf__upslope__ET__TurcET, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_cmf__upslope__ET__VolumeStress[] = {  {&_swigt__p_cmf__upslope__ET__VolumeStress, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_cmf__upslope__ET__canopy_evaporation[] = {  {&_swigt__p_cmf__upslope__ET__canopy_evaporation, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_cmf__upslope__ET__canopy_evaporation_method[] = {  {&_swigt__p_cmf__upslope__ET__ShuttleworthWallace, _p_cmf__upslope__ET__ShuttleworthWallaceTo_p_cmf__upslope__ET__canopy_evaporation_method, 0, 0},  {&_swigt__p_cmf__upslope__ET__canopy_evaporation_method, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_cmf__upslope__ET__constantETpot[] = {  {&_swigt__p_cmf__upslope__ET__constantETpot, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_cmf__upslope__ET__snow_evaporation[] = {  {&_swigt__p_cmf__upslope__ET__snow_evaporation, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_cmf__upslope__ET__snow_evaporation_method[] = {  {&_swigt__p_cmf__upslope__ET__ShuttleworthWallace, _p_cmf__upslope__ET__ShuttleworthWallaceTo_p_cmf__upslope__ET__snow_evaporation_method, 0, 0},  {&_swigt__p_cmf__upslope__ET__snow_evaporation_method, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_cmf__upslope__ET__soil_evaporation[] = {  {&_swigt__p_cmf__upslope__ET__soil_evaporation, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_cmf__upslope__ET__soil_evaporation_method[] = {  {&_swigt__p_cmf__upslope__ET__ShuttleworthWallace, _p_cmf__upslope__ET__ShuttleworthWallaceTo_p_cmf__upslope__ET__soil_evaporation_method, 0, 0},  {&_swigt__p_cmf__upslope__ET__soil_evaporation_method, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_cmf__upslope__ET__stressedET[] = {  {&_swigt__p_cmf__upslope__ET__HargreaveET, _p_cmf__upslope__ET__HargreaveETTo_p_cmf__upslope__ET__stressedET, 0, 0},  {&_swigt__p_cmf__upslope__ET__constantETpot, _p_cmf__upslope__ET__constantETpotTo_p_cmf__upslope__ET__stressedET, 0, 0},  {&_swigt__p_cmf__upslope__ET__PenmanMonteithET, _p_cmf__upslope__ET__PenmanMonteithETTo_p_cmf__upslope__ET__stressedET, 0, 0},  {&_swigt__p_cmf__upslope__ET__stressedET, 0, 0, 0},  {&_swigt__p_cmf__upslope__ET__TurcET, _p_cmf__upslope__ET__TurcETTo_p_cmf__upslope__ET__stressedET, 0, 0},  {&_swigt__p_cmf__upslope__ET__PriestleyTaylorET, _p_cmf__upslope__ET__PriestleyTaylorETTo_p_cmf__upslope__ET__stressedET, 0, 0},  {&_swigt__p_cmf__upslope__ET__timeseriesETpot, _p_cmf__upslope__ET__timeseriesETpotTo_p_cmf__upslope__ET__stressedET, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_cmf__upslope__ET__surface_water_evaporation[] = {  {&_swigt__p_cmf__upslope__ET__surface_water_evaporation, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_cmf__upslope__ET__surface_water_evaporation_method[] = {  {&_swigt__p_cmf__upslope__ET__surface_water_evaporation_method, 0, 0, 0},  {&_swigt__p_cmf__upslope__ET__ShuttleworthWallace, _p_cmf__upslope__ET__ShuttleworthWallaceTo_p_cmf__upslope__ET__surface_water_evaporation_method, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_cmf__upslope__ET__timeseriesETpot[] = {  {&_swigt__p_cmf__upslope__ET__timeseriesETpot, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_cmf__upslope__ET__transpiration[] = {  {&_swigt__p_cmf__upslope__ET__transpiration, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_cmf__upslope__ET__transpiration_method[] = {  {&_swigt__p_cmf__upslope__ET__ShuttleworthWallace, _p_cmf__upslope__ET__ShuttleworthWallaceTo_p_cmf__upslope__ET__transpiration_method, 0, 0},  {&_swigt__p_cmf__upslope__ET__transpiration_method, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_cmf__upslope__LinearRetention[] = {  {&_swigt__p_cmf__upslope__LinearRetention, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_cmf__upslope__MacroPore[] = {  {&_swigt__p_cmf__upslope__MacroPore, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_cmf__upslope__RetentionCurve[] = {  {&_swigt__p_cmf__upslope__LinearRetention, _p_cmf__upslope__LinearRetentionTo_p_cmf__upslope__RetentionCurve, 0, 0},  {&_swigt__p_cmf__upslope__RetentionCurve, 0, 0, 0},  {&_swigt__p_cmf__upslope__BrooksCoreyRetentionCurve, _p_cmf__upslope__BrooksCoreyRetentionCurveTo_p_cmf__upslope__RetentionCurve, 0, 0},  {&_swigt__p_cmf__upslope__VanGenuchtenMualem, _p_cmf__upslope__VanGenuchtenMualemTo_p_cmf__upslope__RetentionCurve, 0, 0},{0, 0, 0, 0}};
@@ -83329,7 +83428,7 @@ static swig_cast_info _swigc__p_cmf__water__bidirectional_kinematic_exchange[] =
 static swig_cast_info _swigc__p_cmf__water__connection_list[] = {  {&_swigt__p_cmf__water__connection_list, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_cmf__water__constraint_kinematic_wave[] = {  {&_swigt__p_cmf__water__constraint_kinematic_wave, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_cmf__water__external_control_connection[] = {  {&_swigt__p_cmf__water__external_control_connection, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_cmf__water__flux_connection[] = {  {&_swigt__p_cmf__upslope__connections__FreeDrainagePercolation, _p_cmf__upslope__connections__FreeDrainagePercolationTo_p_cmf__water__flux_connection, 0, 0},  {&_swigt__p_cmf__upslope__connections__TOPModelFlow, _p_cmf__upslope__connections__TOPModelFlowTo_p_cmf__water__flux_connection, 0, 0},  {&_swigt__p_cmf__upslope__connections__SWATPercolation, _p_cmf__upslope__connections__SWATPercolationTo_p_cmf__water__flux_connection, 0, 0},  {&_swigt__p_cmf__upslope__ET__HargreaveET, _p_cmf__upslope__ET__HargreaveETTo_p_cmf__water__flux_connection, 0, 0},  {&_swigt__p_cmf__upslope__connections__TopographicGradientDarcy, _p_cmf__upslope__connections__TopographicGradientDarcyTo_p_cmf__water__flux_connection, 0, 0},  {&_swigt__p_cmf__river__Manning_Diffusive, _p_cmf__river__Manning_DiffusiveTo_p_cmf__water__flux_connection, 0, 0},  {&_swigt__p_cmf__water__bidirectional_kinematic_exchange, _p_cmf__water__bidirectional_kinematic_exchangeTo_p_cmf__water__flux_connection, 0, 0},  {&_swigt__p_cmf__upslope__ET__stressedET, _p_cmf__upslope__ET__stressedETTo_p_cmf__water__flux_connection, 0, 0},  {&_swigt__p_cmf__upslope__ET__TurcET, _p_cmf__upslope__ET__TurcETTo_p_cmf__water__flux_connection, 0, 0},  {&_swigt__p_cmf__upslope__connections__EnergyBudgetSnowMelt, _p_cmf__upslope__connections__EnergyBudgetSnowMeltTo_p_cmf__water__flux_connection, 0, 0},  {&_swigt__p_cmf__upslope__connections__SimpleTindexSnowMelt, _p_cmf__upslope__connections__SimpleTindexSnowMeltTo_p_cmf__water__flux_connection, 0, 0},  {&_swigt__p_cmf__upslope__connections__Rainfall, _p_cmf__upslope__connections__RainfallTo_p_cmf__water__flux_connection, 0, 0},  {&_swigt__p_cmf__upslope__ET__transpiration, _p_cmf__upslope__ET__transpirationTo_p_cmf__water__flux_connection, 0, 0},  {&_swigt__p_cmf__upslope__ET__soil_evaporation, _p_cmf__upslope__ET__soil_evaporationTo_p_cmf__water__flux_connection, 0, 0},  {&_swigt__p_cmf__upslope__ET__canopy_evaporation, _p_cmf__upslope__ET__canopy_evaporationTo_p_cmf__water__flux_connection, 0, 0},  {&_swigt__p_cmf__upslope__ET__snow_evaporation, _p_cmf__upslope__ET__snow_evaporationTo_p_cmf__water__flux_connection, 0, 0},  {&_swigt__p_cmf__upslope__ET__surface_water_evaporation, _p_cmf__upslope__ET__surface_water_evaporationTo_p_cmf__water__flux_connection, 0, 0},  {&_swigt__p_cmf__upslope__ET__CanopyStorageEvaporation, _p_cmf__upslope__ET__CanopyStorageEvaporationTo_p_cmf__water__flux_connection, 0, 0},  {&_swigt__p_cmf__upslope__ET__PenmanEvaporation, _p_cmf__upslope__ET__PenmanEvaporationTo_p_cmf__water__flux_connection, 0, 0},  {&_swigt__p_cmf__upslope__connections__GreenAmptInfiltration, _p_cmf__upslope__connections__GreenAmptInfiltrationTo_p_cmf__water__flux_connection, 0, 0},  {&_swigt__p_cmf__upslope__connections__CanopyOverflow, _p_cmf__upslope__connections__CanopyOverflowTo_p_cmf__water__flux_connection, 0, 0},  {&_swigt__p_cmf__upslope__connections__Richards, _p_cmf__upslope__connections__RichardsTo_p_cmf__water__flux_connection, 0, 0},  {&_swigt__p_cmf__upslope__connections__SimplRichards, _p_cmf__upslope__connections__SimplRichardsTo_p_cmf__water__flux_connection, 0, 0},  {&_swigt__p_cmf__upslope__connections__Darcy, _p_cmf__upslope__connections__DarcyTo_p_cmf__water__flux_connection, 0, 0},  {&_swigt__p_cmf__water__LinearStorageConnection, _p_cmf__water__LinearStorageConnectionTo_p_cmf__water__flux_connection, 0, 0},  {&_swigt__p_cmf__water__PowerLawConnection, _p_cmf__water__PowerLawConnectionTo_p_cmf__water__flux_connection, 0, 0},  {&_swigt__p_cmf__water__ExponentialDeclineConnection, _p_cmf__water__ExponentialDeclineConnectionTo_p_cmf__water__flux_connection, 0, 0},  {&_swigt__p_cmf__water__ConstraintLinearStorageConnection, _p_cmf__water__ConstraintLinearStorageConnectionTo_p_cmf__water__flux_connection, 0, 0},  {&_swigt__p_cmf__water__generic_gradient_connection, _p_cmf__water__generic_gradient_connectionTo_p_cmf__water__flux_connection, 0, 0},  {&_swigt__p_cmf__water__flux_connection, 0, 0, 0},  {&_swigt__p_cmf__water__external_control_connection, _p_cmf__water__external_control_connectionTo_p_cmf__water__flux_connection, 0, 0},  {&_swigt__p_cmf__water__waterbalance_connection, _p_cmf__water__waterbalance_connectionTo_p_cmf__water__flux_connection, 0, 0},  {&_swigt__p_cmf__water__statecontrol_connection, _p_cmf__water__statecontrol_connectionTo_p_cmf__water__flux_connection, 0, 0},  {&_swigt__p_cmf__water__SystemBridgeConnection, _p_cmf__water__SystemBridgeConnectionTo_p_cmf__water__flux_connection, 0, 0},  {&_swigt__p_cmf__river__Manning_Kinematic, _p_cmf__river__Manning_KinematicTo_p_cmf__water__flux_connection, 0, 0},  {&_swigt__p_cmf__upslope__connections__DarcyKinematic, _p_cmf__upslope__connections__DarcyKinematicTo_p_cmf__water__flux_connection, 0, 0},  {&_swigt__p_cmf__upslope__connections__MACROlikeMacroMicroExchange, _p_cmf__upslope__connections__MACROlikeMacroMicroExchangeTo_p_cmf__water__flux_connection, 0, 0},  {&_swigt__p_cmf__upslope__connections__DiffusiveMacroMicroExchange, _p_cmf__upslope__connections__DiffusiveMacroMicroExchangeTo_p_cmf__water__flux_connection, 0, 0},  {&_swigt__p_cmf__upslope__connections__JarvisMacroFlow, _p_cmf__upslope__connections__JarvisMacroFlowTo_p_cmf__water__flux_connection, 0, 0},  {&_swigt__p_cmf__upslope__connections__KinematicMacroFlow, _p_cmf__upslope__connections__KinematicMacroFlowTo_p_cmf__water__flux_connection, 0, 0},  {&_swigt__p_cmf__upslope__connections__GradientMacroFlow, _p_cmf__upslope__connections__GradientMacroFlowTo_p_cmf__water__flux_connection, 0, 0},  {&_swigt__p_cmf__upslope__connections__BaseMacroFlow, _p_cmf__upslope__connections__BaseMacroFlowTo_p_cmf__water__flux_connection, 0, 0},  {&_swigt__p_cmf__upslope__connections__MatrixInfiltration, _p_cmf__upslope__connections__MatrixInfiltrationTo_p_cmf__water__flux_connection, 0, 0},  {&_swigt__p_cmf__upslope__connections__SimpleInfiltration, _p_cmf__upslope__connections__SimpleInfiltrationTo_p_cmf__water__flux_connection, 0, 0},  {&_swigt__p_cmf__water__NeumannFlux, _p_cmf__water__NeumannFluxTo_p_cmf__water__flux_connection, 0, 0},  {&_swigt__p_cmf__upslope__aquifer_Darcy, _p_cmf__upslope__aquifer_DarcyTo_p_cmf__water__flux_connection, 0, 0},  {&_swigt__p_cmf__upslope__connections__RutterInterception, _p_cmf__upslope__connections__RutterInterceptionTo_p_cmf__water__flux_connection, 0, 0},  {&_swigt__p_cmf__water__kinematic_wave, _p_cmf__water__kinematic_waveTo_p_cmf__water__flux_connection, 0, 0},  {&_swigt__p_cmf__water__constraint_kinematic_wave, _p_cmf__water__constraint_kinematic_waveTo_p_cmf__water__flux_connection, 0, 0},  {&_swigt__p_cmf__upslope__ET__constantETpot, _p_cmf__upslope__ET__constantETpotTo_p_cmf__water__flux_connection, 0, 0},  {&_swigt__p_cmf__upslope__connections__LayerBypass, _p_cmf__upslope__connections__LayerBypassTo_p_cmf__water__flux_connection, 0, 0},  {&_swigt__p_cmf__water__TechnicalFlux, _p_cmf__water__TechnicalFluxTo_p_cmf__water__flux_connection, 0, 0},  {&_swigt__p_cmf__upslope__ET__PriestleyTaylorET, _p_cmf__upslope__ET__PriestleyTaylorETTo_p_cmf__water__flux_connection, 0, 0},  {&_swigt__p_cmf__upslope__connections__lateral_sub_surface_flux, _p_cmf__upslope__connections__lateral_sub_surface_fluxTo_p_cmf__water__flux_connection, 0, 0},  {&_swigt__p_cmf__upslope__connections__Snowfall, _p_cmf__upslope__connections__SnowfallTo_p_cmf__water__flux_connection, 0, 0},  {&_swigt__p_cmf__upslope__ET__timeseriesETpot, _p_cmf__upslope__ET__timeseriesETpotTo_p_cmf__water__flux_connection, 0, 0},  {&_swigt__p_cmf__upslope__connections__DiffusiveSurfaceRunoff, _p_cmf__upslope__connections__DiffusiveSurfaceRunoffTo_p_cmf__water__flux_connection, 0, 0},  {&_swigt__p_cmf__upslope__connections__KinematicSurfaceRunoff, _p_cmf__upslope__connections__KinematicSurfaceRunoffTo_p_cmf__water__flux_connection, 0, 0},  {&_swigt__p_cmf__river__Manning, _p_cmf__river__ManningTo_p_cmf__water__flux_connection, 0, 0},  {&_swigt__p_cmf__upslope__connections__Richards_lateral, _p_cmf__upslope__connections__Richards_lateralTo_p_cmf__water__flux_connection, 0, 0},  {&_swigt__p_cmf__upslope__connections__GradientMacroMicroExchange, _p_cmf__upslope__connections__GradientMacroMicroExchangeTo_p_cmf__water__flux_connection, 0, 0},  {&_swigt__p_cmf__upslope__ET__PenmanMonteithET, _p_cmf__upslope__ET__PenmanMonteithETTo_p_cmf__water__flux_connection, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_cmf__water__flux_connection[] = {  {&_swigt__p_cmf__upslope__connections__FreeDrainagePercolation, _p_cmf__upslope__connections__FreeDrainagePercolationTo_p_cmf__water__flux_connection, 0, 0},  {&_swigt__p_cmf__upslope__connections__TOPModelFlow, _p_cmf__upslope__connections__TOPModelFlowTo_p_cmf__water__flux_connection, 0, 0},  {&_swigt__p_cmf__upslope__connections__SWATPercolation, _p_cmf__upslope__connections__SWATPercolationTo_p_cmf__water__flux_connection, 0, 0},  {&_swigt__p_cmf__upslope__ET__HargreaveET, _p_cmf__upslope__ET__HargreaveETTo_p_cmf__water__flux_connection, 0, 0},  {&_swigt__p_cmf__upslope__connections__TopographicGradientDarcy, _p_cmf__upslope__connections__TopographicGradientDarcyTo_p_cmf__water__flux_connection, 0, 0},  {&_swigt__p_cmf__river__Manning_Diffusive, _p_cmf__river__Manning_DiffusiveTo_p_cmf__water__flux_connection, 0, 0},  {&_swigt__p_cmf__water__bidirectional_kinematic_exchange, _p_cmf__water__bidirectional_kinematic_exchangeTo_p_cmf__water__flux_connection, 0, 0},  {&_swigt__p_cmf__upslope__ET__stressedET, _p_cmf__upslope__ET__stressedETTo_p_cmf__water__flux_connection, 0, 0},  {&_swigt__p_cmf__upslope__ET__TurcET, _p_cmf__upslope__ET__TurcETTo_p_cmf__water__flux_connection, 0, 0},  {&_swigt__p_cmf__upslope__connections__EnergyBudgetSnowMelt, _p_cmf__upslope__connections__EnergyBudgetSnowMeltTo_p_cmf__water__flux_connection, 0, 0},  {&_swigt__p_cmf__upslope__connections__SimpleTindexSnowMelt, _p_cmf__upslope__connections__SimpleTindexSnowMeltTo_p_cmf__water__flux_connection, 0, 0},  {&_swigt__p_cmf__upslope__connections__Rainfall, _p_cmf__upslope__connections__RainfallTo_p_cmf__water__flux_connection, 0, 0},  {&_swigt__p_cmf__upslope__ET__CanopyStorageEvaporation, _p_cmf__upslope__ET__CanopyStorageEvaporationTo_p_cmf__water__flux_connection, 0, 0},  {&_swigt__p_cmf__upslope__ET__PenmanEvaporation, _p_cmf__upslope__ET__PenmanEvaporationTo_p_cmf__water__flux_connection, 0, 0},  {&_swigt__p_cmf__upslope__ET__SW_transpiration, _p_cmf__upslope__ET__SW_transpirationTo_p_cmf__water__flux_connection, 0, 0},  {&_swigt__p_cmf__upslope__connections__GreenAmptInfiltration, _p_cmf__upslope__connections__GreenAmptInfiltrationTo_p_cmf__water__flux_connection, 0, 0},  {&_swigt__p_cmf__upslope__ET__SW_evap_from_layer, _p_cmf__upslope__ET__SW_evap_from_layerTo_p_cmf__water__flux_connection, 0, 0},  {&_swigt__p_cmf__upslope__connections__CanopyOverflow, _p_cmf__upslope__connections__CanopyOverflowTo_p_cmf__water__flux_connection, 0, 0},  {&_swigt__p_cmf__upslope__connections__Richards, _p_cmf__upslope__connections__RichardsTo_p_cmf__water__flux_connection, 0, 0},  {&_swigt__p_cmf__upslope__connections__SimplRichards, _p_cmf__upslope__connections__SimplRichardsTo_p_cmf__water__flux_connection, 0, 0},  {&_swigt__p_cmf__upslope__connections__Darcy, _p_cmf__upslope__connections__DarcyTo_p_cmf__water__flux_connection, 0, 0},  {&_swigt__p_cmf__water__external_control_connection, _p_cmf__water__external_control_connectionTo_p_cmf__water__flux_connection, 0, 0},  {&_swigt__p_cmf__water__LinearStorageConnection, _p_cmf__water__LinearStorageConnectionTo_p_cmf__water__flux_connection, 0, 0},  {&_swigt__p_cmf__water__PowerLawConnection, _p_cmf__water__PowerLawConnectionTo_p_cmf__water__flux_connection, 0, 0},  {&_swigt__p_cmf__water__ExponentialDeclineConnection, _p_cmf__water__ExponentialDeclineConnectionTo_p_cmf__water__flux_connection, 0, 0},  {&_swigt__p_cmf__water__ConstraintLinearStorageConnection, _p_cmf__water__ConstraintLinearStorageConnectionTo_p_cmf__water__flux_connection, 0, 0},  {&_swigt__p_cmf__water__generic_gradient_connection, _p_cmf__water__generic_gradient_connectionTo_p_cmf__water__flux_connection, 0, 0},  {&_swigt__p_cmf__water__statecontrol_connection, _p_cmf__water__statecontrol_connectionTo_p_cmf__water__flux_connection, 0, 0},  {&_swigt__p_cmf__water__SystemBridgeConnection, _p_cmf__water__SystemBridgeConnectionTo_p_cmf__water__flux_connection, 0, 0},  {&_swigt__p_cmf__water__flux_connection, 0, 0, 0},  {&_swigt__p_cmf__water__waterbalance_connection, _p_cmf__water__waterbalance_connectionTo_p_cmf__water__flux_connection, 0, 0},  {&_swigt__p_cmf__river__Manning_Kinematic, _p_cmf__river__Manning_KinematicTo_p_cmf__water__flux_connection, 0, 0},  {&_swigt__p_cmf__upslope__connections__DarcyKinematic, _p_cmf__upslope__connections__DarcyKinematicTo_p_cmf__water__flux_connection, 0, 0},  {&_swigt__p_cmf__upslope__connections__MACROlikeMacroMicroExchange, _p_cmf__upslope__connections__MACROlikeMacroMicroExchangeTo_p_cmf__water__flux_connection, 0, 0},  {&_swigt__p_cmf__upslope__connections__DiffusiveMacroMicroExchange, _p_cmf__upslope__connections__DiffusiveMacroMicroExchangeTo_p_cmf__water__flux_connection, 0, 0},  {&_swigt__p_cmf__upslope__connections__JarvisMacroFlow, _p_cmf__upslope__connections__JarvisMacroFlowTo_p_cmf__water__flux_connection, 0, 0},  {&_swigt__p_cmf__upslope__connections__KinematicMacroFlow, _p_cmf__upslope__connections__KinematicMacroFlowTo_p_cmf__water__flux_connection, 0, 0},  {&_swigt__p_cmf__upslope__connections__GradientMacroFlow, _p_cmf__upslope__connections__GradientMacroFlowTo_p_cmf__water__flux_connection, 0, 0},  {&_swigt__p_cmf__upslope__connections__BaseMacroFlow, _p_cmf__upslope__connections__BaseMacroFlowTo_p_cmf__water__flux_connection, 0, 0},  {&_swigt__p_cmf__upslope__connections__MatrixInfiltration, _p_cmf__upslope__connections__MatrixInfiltrationTo_p_cmf__water__flux_connection, 0, 0},  {&_swigt__p_cmf__upslope__connections__SimpleInfiltration, _p_cmf__upslope__connections__SimpleInfiltrationTo_p_cmf__water__flux_connection, 0, 0},  {&_swigt__p_cmf__water__NeumannFlux, _p_cmf__water__NeumannFluxTo_p_cmf__water__flux_connection, 0, 0},  {&_swigt__p_cmf__upslope__aquifer_Darcy, _p_cmf__upslope__aquifer_DarcyTo_p_cmf__water__flux_connection, 0, 0},  {&_swigt__p_cmf__upslope__connections__RutterInterception, _p_cmf__upslope__connections__RutterInterceptionTo_p_cmf__water__flux_connection, 0, 0},  {&_swigt__p_cmf__water__kinematic_wave, _p_cmf__water__kinematic_waveTo_p_cmf__water__flux_connection, 0, 0},  {&_swigt__p_cmf__water__constraint_kinematic_wave, _p_cmf__water__constraint_kinematic_waveTo_p_cmf__water__flux_connection, 0, 0},  {&_swigt__p_cmf__upslope__ET__SW_evap_from_canopy, _p_cmf__upslope__ET__SW_evap_from_canopyTo_p_cmf__water__flux_connection, 0, 0},  {&_swigt__p_cmf__upslope__ET__constantETpot, _p_cmf__upslope__ET__constantETpotTo_p_cmf__water__flux_connection, 0, 0},  {&_swigt__p_cmf__upslope__connections__LayerBypass, _p_cmf__upslope__connections__LayerBypassTo_p_cmf__water__flux_connection, 0, 0},  {&_swigt__p_cmf__water__TechnicalFlux, _p_cmf__water__TechnicalFluxTo_p_cmf__water__flux_connection, 0, 0},  {&_swigt__p_cmf__upslope__ET__SW_evap_from_snow, _p_cmf__upslope__ET__SW_evap_from_snowTo_p_cmf__water__flux_connection, 0, 0},  {&_swigt__p_cmf__upslope__ET__PriestleyTaylorET, _p_cmf__upslope__ET__PriestleyTaylorETTo_p_cmf__water__flux_connection, 0, 0},  {&_swigt__p_cmf__upslope__connections__lateral_sub_surface_flux, _p_cmf__upslope__connections__lateral_sub_surface_fluxTo_p_cmf__water__flux_connection, 0, 0},  {&_swigt__p_cmf__upslope__connections__Snowfall, _p_cmf__upslope__connections__SnowfallTo_p_cmf__water__flux_connection, 0, 0},  {&_swigt__p_cmf__upslope__ET__timeseriesETpot, _p_cmf__upslope__ET__timeseriesETpotTo_p_cmf__water__flux_connection, 0, 0},  {&_swigt__p_cmf__upslope__connections__DiffusiveSurfaceRunoff, _p_cmf__upslope__connections__DiffusiveSurfaceRunoffTo_p_cmf__water__flux_connection, 0, 0},  {&_swigt__p_cmf__upslope__connections__KinematicSurfaceRunoff, _p_cmf__upslope__connections__KinematicSurfaceRunoffTo_p_cmf__water__flux_connection, 0, 0},  {&_swigt__p_cmf__river__Manning, _p_cmf__river__ManningTo_p_cmf__water__flux_connection, 0, 0},  {&_swigt__p_cmf__upslope__connections__Richards_lateral, _p_cmf__upslope__connections__Richards_lateralTo_p_cmf__water__flux_connection, 0, 0},  {&_swigt__p_cmf__upslope__connections__GradientMacroMicroExchange, _p_cmf__upslope__connections__GradientMacroMicroExchangeTo_p_cmf__water__flux_connection, 0, 0},  {&_swigt__p_cmf__upslope__ET__SW_evap_from_surfacewater, _p_cmf__upslope__ET__SW_evap_from_surfacewaterTo_p_cmf__water__flux_connection, 0, 0},  {&_swigt__p_cmf__upslope__ET__PenmanMonteithET, _p_cmf__upslope__ET__PenmanMonteithETTo_p_cmf__water__flux_connection, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_cmf__water__flux_integrator[] = {  {&_swigt__p_cmf__water__flux_integrator, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_cmf__water__flux_node[] = {  {&_swigt__p_cmf__atmosphere__IDWRainfall, _p_cmf__atmosphere__IDWRainfallTo_p_cmf__water__flux_node, 0, 0},  {&_swigt__p_cmf__water__SystemBridge, _p_cmf__water__SystemBridgeTo_p_cmf__water__flux_node, 0, 0},  {&_swigt__p_cmf__atmosphere__RainfallStationReference, _p_cmf__atmosphere__RainfallStationReferenceTo_p_cmf__water__flux_node, 0, 0},  {&_swigt__p_cmf__water__NeumannBoundary, _p_cmf__water__NeumannBoundaryTo_p_cmf__water__flux_node, 0, 0},  {&_swigt__p_cmf__water__DirichletBoundary, _p_cmf__water__DirichletBoundaryTo_p_cmf__water__flux_node, 0, 0},  {&_swigt__p_cmf__upslope__aquifer, _p_cmf__upslope__aquiferTo_p_cmf__water__flux_node, 0, 0},  {&_swigt__p_cmf__upslope__MacroPore, _p_cmf__upslope__MacroPoreTo_p_cmf__water__flux_node, 0, 0},  {&_swigt__p_cmf__upslope__SoilLayer, _p_cmf__upslope__SoilLayerTo_p_cmf__water__flux_node, 0, 0},  {&_swigt__p_cmf__atmosphere__TimeseriesRainSource, _p_cmf__atmosphere__TimeseriesRainSourceTo_p_cmf__water__flux_node, 0, 0},  {&_swigt__p_cmf__atmosphere__ConstantRainSource, _p_cmf__atmosphere__ConstantRainSourceTo_p_cmf__water__flux_node, 0, 0},  {&_swigt__p_cmf__atmosphere__RainSource, _p_cmf__atmosphere__RainSourceTo_p_cmf__water__flux_node, 0, 0},  {&_swigt__p_cmf__water__flux_node, 0, 0, 0},  {&_swigt__p_cmf__river__OpenWaterStorage, _p_cmf__river__OpenWaterStorageTo_p_cmf__water__flux_node, 0, 0},  {&_swigt__p_cmf__river__Reach, _p_cmf__river__ReachTo_p_cmf__water__flux_node, 0, 0},  {&_swigt__p_cmf__water__WaterStorage, _p_cmf__water__WaterStorageTo_p_cmf__water__flux_node, 0, 0},  {&_swigt__p_cmf__upslope__SurfaceWater, _p_cmf__upslope__SurfaceWaterTo_p_cmf__water__flux_node, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_cmf__water__generic_gradient_connection[] = {  {&_swigt__p_cmf__water__generic_gradient_connection, 0, 0, 0},{0, 0, 0, 0}};
@@ -83354,16 +83453,12 @@ static swig_cast_info _swigc__p_std__shared_ptrT_cmf__atmosphere__RainSource_t[]
 static swig_cast_info _swigc__p_std__shared_ptrT_cmf__atmosphere__RainfallStationReference_t[] = {  {&_swigt__p_std__shared_ptrT_cmf__atmosphere__RainfallStationReference_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__shared_ptrT_cmf__atmosphere__RainfallStation_t[] = {  {&_swigt__p_std__shared_ptrT_cmf__atmosphere__RainfallStation_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__shared_ptrT_cmf__atmosphere__TimeseriesRainSource_t[] = {  {&_swigt__p_std__shared_ptrT_cmf__atmosphere__TimeseriesRainSource_t, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_std__shared_ptrT_cmf__atmosphere__aerodynamic_resistance_t[] = {  {&_swigt__p_std__shared_ptrT_cmf__atmosphere__aerodynamic_resistance_t, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_std__shared_ptrT_cmf__atmosphere__aerodynamic_resistance_t[] = {  {&_swigt__p_std__shared_ptrT_cmf__upslope__ET__ShuttleworthWallace_t, _p_std__shared_ptrT_cmf__upslope__ET__ShuttleworthWallace_tTo_p_std__shared_ptrT_cmf__atmosphere__aerodynamic_resistance_t, 0, 0},  {&_swigt__p_std__shared_ptrT_cmf__atmosphere__aerodynamic_resistance_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__shared_ptrT_cmf__math__StateVariable_t[] = {  {&_swigt__p_std__shared_ptrT_cmf__water__SoluteStorage_t, _p_std__shared_ptrT_cmf__water__SoluteStorage_tTo_p_std__shared_ptrT_cmf__math__StateVariable_t, 0, 0},  {&_swigt__p_std__shared_ptrT_cmf__water__WaterStorage_t, _p_std__shared_ptrT_cmf__water__WaterStorage_tTo_p_std__shared_ptrT_cmf__math__StateVariable_t, 0, 0},  {&_swigt__p_std__shared_ptrT_cmf__river__OpenWaterStorage_t, _p_std__shared_ptrT_cmf__river__OpenWaterStorage_tTo_p_std__shared_ptrT_cmf__math__StateVariable_t, 0, 0},  {&_swigt__p_std__shared_ptrT_cmf__upslope__MacroPore_t, _p_std__shared_ptrT_cmf__upslope__MacroPore_tTo_p_std__shared_ptrT_cmf__math__StateVariable_t, 0, 0},  {&_swigt__p_std__shared_ptrT_cmf__math__StateVariable_t, 0, 0, 0},  {&_swigt__p_std__shared_ptrT_cmf__upslope__SurfaceWater_t, _p_std__shared_ptrT_cmf__upslope__SurfaceWater_tTo_p_std__shared_ptrT_cmf__math__StateVariable_t, 0, 0},  {&_swigt__p_std__shared_ptrT_cmf__upslope__SoilLayer_t, _p_std__shared_ptrT_cmf__upslope__SoilLayer_tTo_p_std__shared_ptrT_cmf__math__StateVariable_t, 0, 0},  {&_swigt__p_std__shared_ptrT_cmf__river__Reach_t, _p_std__shared_ptrT_cmf__river__Reach_tTo_p_std__shared_ptrT_cmf__math__StateVariable_t, 0, 0},  {&_swigt__p_std__shared_ptrT_cmf__upslope__aquifer_t, _p_std__shared_ptrT_cmf__upslope__aquifer_tTo_p_std__shared_ptrT_cmf__math__StateVariable_t, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__shared_ptrT_cmf__math__integratable_t[] = {  {&_swigt__p_std__shared_ptrT_cmf__water__flux_integrator_t, _p_std__shared_ptrT_cmf__water__flux_integrator_tTo_p_std__shared_ptrT_cmf__math__integratable_t, 0, 0},  {&_swigt__p_std__shared_ptrT_cmf__water__waterbalance_integrator_t, _p_std__shared_ptrT_cmf__water__waterbalance_integrator_tTo_p_std__shared_ptrT_cmf__math__integratable_t, 0, 0},  {&_swigt__p_std__shared_ptrT_cmf__math__integratable_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__shared_ptrT_cmf__river__OpenWaterStorage_t[] = {  {&_swigt__p_std__shared_ptrT_cmf__river__OpenWaterStorage_t, 0, 0, 0},  {&_swigt__p_std__shared_ptrT_cmf__upslope__SurfaceWater_t, _p_std__shared_ptrT_cmf__upslope__SurfaceWater_tTo_p_std__shared_ptrT_cmf__river__OpenWaterStorage_t, 0, 0},  {&_swigt__p_std__shared_ptrT_cmf__river__Reach_t, _p_std__shared_ptrT_cmf__river__Reach_tTo_p_std__shared_ptrT_cmf__river__OpenWaterStorage_t, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__shared_ptrT_cmf__river__Reach_t[] = {  {&_swigt__p_std__shared_ptrT_cmf__river__Reach_t, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_std__shared_ptrT_cmf__upslope__ET__canopy_evaporation_method_t[] = {  {&_swigt__p_std__shared_ptrT_cmf__upslope__ET__canopy_evaporation_method_t, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_std__shared_ptrT_cmf__upslope__ET__snow_evaporation_method_t[] = {  {&_swigt__p_std__shared_ptrT_cmf__upslope__ET__snow_evaporation_method_t, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_std__shared_ptrT_cmf__upslope__ET__soil_evaporation_method_t[] = {  {&_swigt__p_std__shared_ptrT_cmf__upslope__ET__soil_evaporation_method_t, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_std__shared_ptrT_cmf__upslope__ET__surface_water_evaporation_method_t[] = {  {&_swigt__p_std__shared_ptrT_cmf__upslope__ET__surface_water_evaporation_method_t, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_std__shared_ptrT_cmf__upslope__ET__transpiration_method_t[] = {  {&_swigt__p_std__shared_ptrT_cmf__upslope__ET__transpiration_method_t, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_std__shared_ptrT_cmf__upslope__ET__ShuttleworthWallace_t[] = {  {&_swigt__p_std__shared_ptrT_cmf__upslope__ET__ShuttleworthWallace_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__shared_ptrT_cmf__upslope__MacroPore_t[] = {  {&_swigt__p_std__shared_ptrT_cmf__upslope__MacroPore_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__shared_ptrT_cmf__upslope__SoilLayer_t[] = {  {&_swigt__p_std__shared_ptrT_cmf__upslope__SoilLayer_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__shared_ptrT_cmf__upslope__SurfaceWater_t[] = {  {&_swigt__p_std__shared_ptrT_cmf__upslope__SurfaceWater_t, 0, 0, 0},{0, 0, 0, 0}};
@@ -83450,23 +83545,18 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_cmf__upslope__ET__PenmanMonteithET,
   _swigc__p_cmf__upslope__ET__PriestleyTaylorET,
   _swigc__p_cmf__upslope__ET__RootUptakeStessFunction,
+  _swigc__p_cmf__upslope__ET__SW_evap_from_canopy,
+  _swigc__p_cmf__upslope__ET__SW_evap_from_layer,
+  _swigc__p_cmf__upslope__ET__SW_evap_from_snow,
+  _swigc__p_cmf__upslope__ET__SW_evap_from_surfacewater,
+  _swigc__p_cmf__upslope__ET__SW_transpiration,
   _swigc__p_cmf__upslope__ET__ShuttleworthWallace,
   _swigc__p_cmf__upslope__ET__SuctionStress,
   _swigc__p_cmf__upslope__ET__TurcET,
   _swigc__p_cmf__upslope__ET__VolumeStress,
-  _swigc__p_cmf__upslope__ET__canopy_evaporation,
-  _swigc__p_cmf__upslope__ET__canopy_evaporation_method,
   _swigc__p_cmf__upslope__ET__constantETpot,
-  _swigc__p_cmf__upslope__ET__snow_evaporation,
-  _swigc__p_cmf__upslope__ET__snow_evaporation_method,
-  _swigc__p_cmf__upslope__ET__soil_evaporation,
-  _swigc__p_cmf__upslope__ET__soil_evaporation_method,
   _swigc__p_cmf__upslope__ET__stressedET,
-  _swigc__p_cmf__upslope__ET__surface_water_evaporation,
-  _swigc__p_cmf__upslope__ET__surface_water_evaporation_method,
   _swigc__p_cmf__upslope__ET__timeseriesETpot,
-  _swigc__p_cmf__upslope__ET__transpiration,
-  _swigc__p_cmf__upslope__ET__transpiration_method,
   _swigc__p_cmf__upslope__LinearRetention,
   _swigc__p_cmf__upslope__MacroPore,
   _swigc__p_cmf__upslope__RetentionCurve,
@@ -83563,11 +83653,7 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_std__shared_ptrT_cmf__math__integratable_t,
   _swigc__p_std__shared_ptrT_cmf__river__OpenWaterStorage_t,
   _swigc__p_std__shared_ptrT_cmf__river__Reach_t,
-  _swigc__p_std__shared_ptrT_cmf__upslope__ET__canopy_evaporation_method_t,
-  _swigc__p_std__shared_ptrT_cmf__upslope__ET__snow_evaporation_method_t,
-  _swigc__p_std__shared_ptrT_cmf__upslope__ET__soil_evaporation_method_t,
-  _swigc__p_std__shared_ptrT_cmf__upslope__ET__surface_water_evaporation_method_t,
-  _swigc__p_std__shared_ptrT_cmf__upslope__ET__transpiration_method_t,
+  _swigc__p_std__shared_ptrT_cmf__upslope__ET__ShuttleworthWallace_t,
   _swigc__p_std__shared_ptrT_cmf__upslope__MacroPore_t,
   _swigc__p_std__shared_ptrT_cmf__upslope__SoilLayer_t,
   _swigc__p_std__shared_ptrT_cmf__upslope__SurfaceWater_t,
