@@ -45198,6 +45198,7 @@ SWIGINTERN PyObject *_wrap_Cell_surfacewater_as_storage(PyObject *SWIGUNUSEDPARM
   void *argp1 = 0 ;
   int res1 = 0 ;
   PyObject *swig_obj[1] ;
+  cmf::upslope::surfacewater_ptr result;
   
   if (!args) SWIG_fail;
   swig_obj[0] = args;
@@ -45208,7 +45209,7 @@ SWIGINTERN PyObject *_wrap_Cell_surfacewater_as_storage(PyObject *SWIGUNUSEDPARM
   arg1 = reinterpret_cast< cmf::upslope::Cell * >(argp1);
   {
     try {
-      (arg1)->surfacewater_as_storage();
+      result = (arg1)->surfacewater_as_storage();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -45216,7 +45217,7 @@ SWIGINTERN PyObject *_wrap_Cell_surfacewater_as_storage(PyObject *SWIGUNUSEDPARM
     }
     
   }
-  resultobj = SWIG_Py_Void();
+  resultobj = SWIG_NewPointerObj((new cmf::upslope::surfacewater_ptr(static_cast< const cmf::upslope::surfacewater_ptr& >(result))), SWIGTYPE_p_std__shared_ptrT_cmf__upslope__SurfaceWater_t, SWIG_POINTER_OWN |  0 );
   return resultobj;
 fail:
   return NULL;
@@ -45716,58 +45717,6 @@ SWIGINTERN PyObject *_wrap_Cell_albedo(PyObject *SWIGUNUSEDPARM(self), PyObject 
     }
     
   }
-  resultobj = SWIG_From_double(static_cast< double >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_Cell_surface_amplitude_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  cmf::upslope::Cell *arg1 = (cmf::upslope::Cell *) 0 ;
-  real arg2 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  double val2 ;
-  int ecode2 = 0 ;
-  PyObject *swig_obj[2] ;
-  
-  if (!SWIG_Python_UnpackTuple(args,"Cell_surface_amplitude_set",2,2,swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__upslope__Cell, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Cell_surface_amplitude_set" "', argument " "1"" of type '" "cmf::upslope::Cell *""'"); 
-  }
-  arg1 = reinterpret_cast< cmf::upslope::Cell * >(argp1);
-  ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Cell_surface_amplitude_set" "', argument " "2"" of type '" "real""'");
-  } 
-  arg2 = static_cast< real >(val2);
-  if (arg1) (arg1)->surface_amplitude = arg2;
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_Cell_surface_amplitude_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  cmf::upslope::Cell *arg1 = (cmf::upslope::Cell *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject *swig_obj[1] ;
-  real result;
-  
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__upslope__Cell, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Cell_surface_amplitude_get" "', argument " "1"" of type '" "cmf::upslope::Cell *""'"); 
-  }
-  arg1 = reinterpret_cast< cmf::upslope::Cell * >(argp1);
-  result = (real) ((arg1)->surface_amplitude);
   resultobj = SWIG_From_double(static_cast< double >(result));
   return resultobj;
 fail:
@@ -63029,6 +62978,50 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_SurfaceWater_get_coverage(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  cmf::upslope::SurfaceWater *arg1 = (cmf::upslope::SurfaceWater *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  std::shared_ptr< cmf::upslope::SurfaceWater const > tempshared1 ;
+  std::shared_ptr< cmf::upslope::SurfaceWater const > *smartarg1 = 0 ;
+  PyObject *swig_obj[1] ;
+  double result;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_std__shared_ptrT_cmf__upslope__SurfaceWater_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SurfaceWater_get_coverage" "', argument " "1"" of type '" "cmf::upslope::SurfaceWater const *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< std::shared_ptr< const cmf::upslope::SurfaceWater > * >(argp1);
+      delete reinterpret_cast< std::shared_ptr< const cmf::upslope::SurfaceWater > * >(argp1);
+      arg1 = const_cast< cmf::upslope::SurfaceWater * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< std::shared_ptr< const cmf::upslope::SurfaceWater > * >(argp1);
+      arg1 = const_cast< cmf::upslope::SurfaceWater * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  {
+    try {
+      result = (double)((cmf::upslope::SurfaceWater const *)arg1)->get_coverage();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+    
+  }
+  resultobj = SWIG_From_double(static_cast< double >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_SurfaceWater_get_cell(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   cmf::upslope::SurfaceWater *arg1 = (cmf::upslope::SurfaceWater *) 0 ;
@@ -79196,7 +79189,7 @@ static PyMethodDef SwigMethods[] = {
 		"a cmf::upslope::SurfaceWater \n"
 		""},
 	 { (char *)"Cell_surfacewater_as_storage", (PyCFunction)_wrap_Cell_surfacewater_as_storage, METH_O, (char *)"\n"
-		"Cell_surfacewater_as_storage(Cell self)\n"
+		"Cell_surfacewater_as_storage(Cell self) -> cmf::upslope::surfacewater_ptr\n"
 		"\n"
 		"void surfacewater_as_storage()\n"
 		"\n"
@@ -79251,8 +79244,6 @@ static PyMethodDef SwigMethods[] = {
 		"real albedo()\n"
 		"const \n"
 		""},
-	 { (char *)"Cell_surface_amplitude_set", _wrap_Cell_surface_amplitude_set, METH_VARARGS, (char *)"Cell_surface_amplitude_set(Cell self, real surface_amplitude)"},
-	 { (char *)"Cell_surface_amplitude_get", (PyCFunction)_wrap_Cell_surface_amplitude_get, METH_O, (char *)"Cell_surface_amplitude_get(Cell self) -> real"},
 	 { (char *)"Cell_surface_water_coverage", (PyCFunction)_wrap_Cell_surface_water_coverage, METH_O, (char *)"\n"
 		"Cell_surface_water_coverage(Cell self) -> real\n"
 		"\n"
@@ -80871,6 +80862,7 @@ static PyMethodDef SwigMethods[] = {
 		"Gets the height function (a cmf::river::Prism) for further reference.\n"
 		"\n"
 		""},
+	 { (char *)"SurfaceWater_get_coverage", (PyCFunction)_wrap_SurfaceWater_get_coverage, METH_O, (char *)"SurfaceWater_get_coverage(SurfaceWater self) -> double"},
 	 { (char *)"SurfaceWater_get_cell", (PyCFunction)_wrap_SurfaceWater_get_cell, METH_O, (char *)"\n"
 		"SurfaceWater_get_cell(SurfaceWater self) -> Cell\n"
 		"\n"
@@ -83001,7 +82993,7 @@ static swig_type_info _swigt__p_std__shared_ptrT_cmf__river__Reach_t = {"_p_std_
 static swig_type_info _swigt__p_std__shared_ptrT_cmf__upslope__ET__ShuttleworthWallace_t = {"_p_std__shared_ptrT_cmf__upslope__ET__ShuttleworthWallace_t", "std::shared_ptr< cmf::upslope::ET::ShuttleworthWallace > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__shared_ptrT_cmf__upslope__MacroPore_t = {"_p_std__shared_ptrT_cmf__upslope__MacroPore_t", "std::shared_ptr< cmf::upslope::MacroPore > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__shared_ptrT_cmf__upslope__SoilLayer_t = {"_p_std__shared_ptrT_cmf__upslope__SoilLayer_t", "cmf::upslope::SoilLayer::ptr *|std::shared_ptr< cmf::upslope::SoilLayer > *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_std__shared_ptrT_cmf__upslope__SurfaceWater_t = {"_p_std__shared_ptrT_cmf__upslope__SurfaceWater_t", "std::shared_ptr< cmf::upslope::SurfaceWater > *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_std__shared_ptrT_cmf__upslope__SurfaceWater_t = {"_p_std__shared_ptrT_cmf__upslope__SurfaceWater_t", "std::shared_ptr< cmf::upslope::SurfaceWater > *|cmf::upslope::surfacewater_ptr *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__shared_ptrT_cmf__upslope__aquifer_t = {"_p_std__shared_ptrT_cmf__upslope__aquifer_t", "std::shared_ptr< cmf::upslope::aquifer > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__shared_ptrT_cmf__water__DirichletBoundary_t = {"_p_std__shared_ptrT_cmf__water__DirichletBoundary_t", "std::shared_ptr< cmf::water::DirichletBoundary > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__shared_ptrT_cmf__water__NeumannBoundary_t = {"_p_std__shared_ptrT_cmf__water__NeumannBoundary_t", "cmf::water::NeumannBoundary::ptr *|std::shared_ptr< cmf::water::NeumannBoundary > *", 0, 0, (void*)0, 0};

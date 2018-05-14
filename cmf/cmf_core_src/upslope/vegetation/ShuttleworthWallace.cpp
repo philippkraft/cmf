@@ -876,11 +876,8 @@ void cmf::upslope::ET::ShuttleworthWallace::refresh( cmf::math::Time t )
 	// Calculate potential transpiration for wet leave case
 	SWPE(RN,RNground,w.e_s-w.e_a,RAA,RAC,RAS,0,RSS,DELTA,PIR,GER);
 
-	// Get wetness of canopy
-	double VOL_IN_CANOPY = cell.get_canopy() ? cell.m3_to_mm(cell.get_canopy()->get_volume()): 0.0;
-	double MAX_VOL_IN_CANOPY = LAI * cell.vegetation.CanopyCapacityPerLAI;
 	// Calculate actual interception rate from wet leave case and canopy wetness
-	double wet_canopy_fraction = piecewise_linear(VOL_IN_CANOPY, 0, MAX_VOL_IN_CANOPY);
+	double wet_canopy_fraction = cell.leave_wetness();
 	AIR =  wet_canopy_fraction * PIR;
 	// Already for leave evaporation used energy cannot be used for transpiration
 	PTR *= 1 - wet_canopy_fraction;

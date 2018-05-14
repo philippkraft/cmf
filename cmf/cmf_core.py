@@ -7333,7 +7333,7 @@ class Cell(StateVariableOwner):
 
     def surfacewater_as_storage(self, *args, **kwargs):
         """
-        surfacewater_as_storage(Cell self)
+        surfacewater_as_storage(Cell self) -> cmf::upslope::surfacewater_ptr
 
         void surfacewater_as_storage()
 
@@ -7422,7 +7422,6 @@ class Cell(StateVariableOwner):
         """
         return _cmf_core.Cell_albedo(self, *args, **kwargs)
 
-    surface_amplitude = _swig_property(_cmf_core.Cell_surface_amplitude_get, _cmf_core.Cell_surface_amplitude_set)
 
     def surface_water_coverage(self, *args, **kwargs):
         """
@@ -10585,6 +10584,11 @@ class SurfaceWater(OpenWaterStorage):
         return _cmf_core.SurfaceWater_get_height_function(self, *args, **kwargs)
 
 
+    def get_coverage(self, *args, **kwargs):
+        """get_coverage(SurfaceWater self) -> double"""
+        return _cmf_core.SurfaceWater_get_coverage(self, *args, **kwargs)
+
+
     def get_cell(self, *args, **kwargs):
         """
         get_cell(SurfaceWater self) -> Cell
@@ -10610,6 +10614,7 @@ class SurfaceWater(OpenWaterStorage):
 
     __swig_destroy__ = _cmf_core.delete_SurfaceWater
 SurfaceWater.get_height_function = new_instancemethod(_cmf_core.SurfaceWater_get_height_function, None, SurfaceWater)
+SurfaceWater.get_coverage = new_instancemethod(_cmf_core.SurfaceWater_get_coverage, None, SurfaceWater)
 SurfaceWater.get_cell = new_instancemethod(_cmf_core.SurfaceWater_get_cell, None, SurfaceWater)
 _cmf_core.SurfaceWater_swigregister(SurfaceWater)
 # SurfaceWater end
