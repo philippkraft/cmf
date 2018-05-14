@@ -8,44 +8,38 @@ from __future__ import print_function, division
 import cmf
 # project with three tracers
 p = cmf.project('No Linear Freundlich Langmuir')
-N,X,Y,Z = p.solutes
+N, X, Y, Z = p.solutes
 
 cmf.set_parallel_threads(1)
 # Create a single cell c with a surfacewater storage, which references 3 solute storages
-c = p.NewCell(0,0,0,1000,with_surfacewater = True)
+c = p.NewCell(0, 0, 0, 1000, with_surfacewater=True)
 # Create 50 layers with 2cm thickness
 for i in range(50):
     # Add a layer. Each layer will reference 3 solute storages
-    c.add_layer((i+1)*0.02, cmf.VanGenuchtenMualem())
-    l = c.layers[-1]
+    l = c.add_layer((i+1)*0.02, cmf.VanGenuchtenMualem())
     # Tracer N does not adsorb, nothing to change
-    l.Solute(N).state = 1.
+    l[N].state = 1.
 
     # Tracer X has a linear isotherm xa/m=Kc, with K = 1 and sorbent mass m = 1
-    l.Solute(X).set_adsorption(cmf.LinearAdsorption(1,5))
-    l.Solute(X).state = 1.
+    l[X].set_adsorption(cmf.LinearAdsorption(1,5))
+    l[X].state = 1.
     # Tracer Y has a Freundlich isotherm xa/m=Kc^n, 
     # with K = 1 and n=0.5 and sorbent mass m = 1
-    c.layers[-1].Solute(Y).set_adsorption(cmf.FreundlichAdsorbtion(2.,.5,1.0,1e-9))
-    l.Solute(Y).state = 1.
+    l[Y].set_adsorption(cmf.FreundlichAdsorbtion(2., .5, 1.0, 1e-9))
+    l[Y].state = 1.
 
     # Tracer Y has a Langmuir isotherm xa/m=Kc/(1+Kc), 
     # with K = 1 and sorbent mass m = 1
-    l.Solute(Z).set_adsorption(cmf.LangmuirAdsorption(1.,5.))
-    l.Solute(Z).state = 1.
+    l[Z].set_adsorption(cmf.LangmuirAdsorption(1.,5.))
+    l[Z].state = 1.
 
 # Use Richards equation
 c.install_connection(cmf.Richards)
 # Make a groundwater boundary condition
-gw = p.NewOutlet('gw',0,0,-1.5)
-cmf.Richards(c.layers[-1],gw)
+gw = p.NewOutlet('gw', 0, 0, -1.5)
+cmf.Richards(c.layers[-1], gw)
 
-# Template for the water solver
-wsolver = cmf.CVodeIntegrator(1e-9)
-# Template for the solute solver
-ssolver = cmf.ImplicitEuler(1e-9)
-# Creating the SWI, the storage objects of the project are internally assigned to the correct solver
-solver = cmf.SoluteWaterIntegrator(p.solutes, wsolver,ssolver,p)
+solver = cmf.CVodeIntegrator(p, 1e-9)
 
 c.saturated_depth = 1.5
 
@@ -60,19 +54,19 @@ conc = []
 tracer_state = []
 wetness = []
 # save groundwater recharge
-recharge=[]
+recharge = []
 # save concentration of recharge
-crecharge=[]
+crecharge = []
 
 # Run for one week with hourly time step
-for t in solver.run(solver.t,solver.t + cmf.week,cmf.h):
+for t in solver.run(solver.t, solver.t + cmf.week, cmf.h):
     # Get concentration of all layers
-    tracer_state.append([[l.Solute(T).state for T in p.solutes] for l in c.layers])
+    tracer_state.append([[l[T].state for T in p.solutes] for l in c.layers])
     conc.append([[l.conc(T) for T in p.solutes] for l in c.layers])
     wetness.append([l.wetness for l in c.layers])
     # Get water balance of groundwater
     recharge.append(gw.waterbalance(t))
-    crecharge.append([gw.conc(t,T) for T in p.solutes])
+    crecharge.append([gw.conc(t, T) for T in p.solutes])
     print(t)
 
 
@@ -81,17 +75,19 @@ import numpy as np
 import pylab as plt
 
 pc = len(p.solutes) + 2
-ax1 = plt.subplot(pc,1,1)
-plt.plot(recharge,'k:')
-plt.legend(['water'],loc=2)
+ax1 = plt.subplot(pc, 1, 1)
+plt.plot(recharge, 'k:')
+plt.legend(['water'], loc=2)
 plt.twinx()
 plt.plot(crecharge)
 plt.legend([str(s) for s in p.solutes],loc=1)
-plt.subplot(pc,1,2,sharex=ax1)
-plt.imshow(np.transpose(wetness),cmap=plt.cm.RdYlBu,aspect='auto')
+plt.subplot(pc, 1, 2, sharex=ax1)
+plt.imshow(np.transpose(wetness), cmap=plt.cm.RdYlBu, aspect='auto')
 plt.ylabel('wetness')
 for i,s in enumerate(p.solutes):
-    plt.subplot(pc,1,3+i,sharex=ax1)
-    plt.imshow(np.transpose(tracer_state)[i],cmap=plt.cm.viridis,aspect='auto',vmax=1.0, vmin=0.0)
+    plt.subplot(pc, 1, 3+i, sharex=ax1)
+    plt.imshow(np.transpose(tracer_state)[i],
+               cmap=plt.cm.viridis, aspect='auto',
+               vmax=1.0, vmin=0.0)
     plt.ylabel(s)
 plt.show()    

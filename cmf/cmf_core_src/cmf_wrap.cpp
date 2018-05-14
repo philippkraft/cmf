@@ -4318,6 +4318,10 @@ SWIGINTERN size_t cmf_water_SoluteTimeseries___len__(cmf::water::SoluteTimeserie
 		return self->size();
 	}
 
+#define cmf_water_SoluteStorage_conc_get(self_) self_->get_conc()
+#define cmf_water_SoluteStorage_conc_set(self_, val_) self_->set_conc(val_)
+  
+
 #define cmf_water_flux_node_project_get(self_) &self_->get_project()
   
 
@@ -4350,6 +4354,9 @@ SWIGINTERN bool cmf_water_connection_list___contains__(cmf::water::connection_li
 #define cmf_water_WaterStorage_statevariable_get(self_) self_->get_state_variable_content()
 #define cmf_water_WaterStorage_statevariable_set(self_, val_) self_->set_state_variable_content(val_)
   
+SWIGINTERN cmf::water::SoluteStorage &cmf_water_WaterStorage___getitem__(cmf::water::WaterStorage *self,cmf::water::solute X){
+		return (*self)[X];
+	}
 
 #include "water/collections.h"
 
@@ -23668,51 +23675,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_SoluteStorage_conc(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  cmf::water::SoluteStorage *arg1 = (cmf::water::SoluteStorage *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  std::shared_ptr< cmf::water::SoluteStorage const > tempshared1 ;
-  std::shared_ptr< cmf::water::SoluteStorage const > *smartarg1 = 0 ;
-  PyObject *swig_obj[1] ;
-  real result;
-  
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  {
-    int newmem = 0;
-    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_std__shared_ptrT_cmf__water__SoluteStorage_t, 0 |  0 , &newmem);
-    if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SoluteStorage_conc" "', argument " "1"" of type '" "cmf::water::SoluteStorage const *""'"); 
-    }
-    if (newmem & SWIG_CAST_NEW_MEMORY) {
-      tempshared1 = *reinterpret_cast< std::shared_ptr< const cmf::water::SoluteStorage > * >(argp1);
-      delete reinterpret_cast< std::shared_ptr< const cmf::water::SoluteStorage > * >(argp1);
-      arg1 = const_cast< cmf::water::SoluteStorage * >(tempshared1.get());
-    } else {
-      smartarg1 = reinterpret_cast< std::shared_ptr< const cmf::water::SoluteStorage > * >(argp1);
-      arg1 = const_cast< cmf::water::SoluteStorage * >((smartarg1 ? smartarg1->get() : 0));
-    }
-  }
-  {
-    try {
-      result = (real)((cmf::water::SoluteStorage const *)arg1)->conc();
-    } catch (const std::out_of_range& e) {
-      SWIG_exception(SWIG_IndexError, e.what());    
-    } catch (const std::exception& e) {
-      SWIG_exception(SWIG_RuntimeError, e.what());
-    }
-    
-  }
-  resultobj = SWIG_From_double(static_cast< double >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_SoluteStorage_set_conc(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+SWIGINTERN PyObject *_wrap_SoluteStorage_conc_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   cmf::water::SoluteStorage *arg1 = (cmf::water::SoluteStorage *) 0 ;
   real arg2 ;
@@ -23722,18 +23685,14 @@ SWIGINTERN PyObject *_wrap_SoluteStorage_set_conc(PyObject *SWIGUNUSEDPARM(self)
   std::shared_ptr< cmf::water::SoluteStorage > *smartarg1 = 0 ;
   double val2 ;
   int ecode2 = 0 ;
-  PyObject * obj0 = 0 ;
-  PyObject * obj1 = 0 ;
-  char *  kwnames[] = {
-    (char *) "self",(char *) "NewConcentration", NULL 
-  };
+  PyObject *swig_obj[2] ;
   
-  if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"OO:SoluteStorage_set_conc",kwnames,&obj0,&obj1)) SWIG_fail;
+  if (!SWIG_Python_UnpackTuple(args,"SoluteStorage_conc_set",2,2,swig_obj)) SWIG_fail;
   {
     int newmem = 0;
-    res1 = SWIG_ConvertPtrAndOwn(obj0, &argp1, SWIGTYPE_p_std__shared_ptrT_cmf__water__SoluteStorage_t, 0 |  0 , &newmem);
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_std__shared_ptrT_cmf__water__SoluteStorage_t, 0 |  0 , &newmem);
     if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SoluteStorage_set_conc" "', argument " "1"" of type '" "cmf::water::SoluteStorage *""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SoluteStorage_conc_set" "', argument " "1"" of type '" "cmf::water::SoluteStorage *""'"); 
     }
     if (newmem & SWIG_CAST_NEW_MEMORY) {
       tempshared1 = *reinterpret_cast< std::shared_ptr<  cmf::water::SoluteStorage > * >(argp1);
@@ -23744,14 +23703,14 @@ SWIGINTERN PyObject *_wrap_SoluteStorage_set_conc(PyObject *SWIGUNUSEDPARM(self)
       arg1 = const_cast< cmf::water::SoluteStorage * >((smartarg1 ? smartarg1->get() : 0));
     }
   }
-  ecode2 = SWIG_AsVal_double(obj1, &val2);
+  ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
   if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "SoluteStorage_set_conc" "', argument " "2"" of type '" "real""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "SoluteStorage_conc_set" "', argument " "2"" of type '" "real""'");
   } 
   arg2 = static_cast< real >(val2);
   {
     try {
-      (arg1)->set_conc(arg2);
+      cmf_water_SoluteStorage_conc_set(arg1,arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -23760,6 +23719,50 @@ SWIGINTERN PyObject *_wrap_SoluteStorage_set_conc(PyObject *SWIGUNUSEDPARM(self)
     
   }
   resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_SoluteStorage_conc_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  cmf::water::SoluteStorage *arg1 = (cmf::water::SoluteStorage *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  std::shared_ptr< cmf::water::SoluteStorage > tempshared1 ;
+  std::shared_ptr< cmf::water::SoluteStorage > *smartarg1 = 0 ;
+  PyObject *swig_obj[1] ;
+  real result;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_std__shared_ptrT_cmf__water__SoluteStorage_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SoluteStorage_conc_get" "', argument " "1"" of type '" "cmf::water::SoluteStorage *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< std::shared_ptr<  cmf::water::SoluteStorage > * >(argp1);
+      delete reinterpret_cast< std::shared_ptr<  cmf::water::SoluteStorage > * >(argp1);
+      arg1 = const_cast< cmf::water::SoluteStorage * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< std::shared_ptr<  cmf::water::SoluteStorage > * >(argp1);
+      arg1 = const_cast< cmf::water::SoluteStorage * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  {
+    try {
+      result = (real)cmf_water_SoluteStorage_conc_get(arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+    
+  }
+  resultobj = SWIG_From_double(static_cast< double >(result));
   return resultobj;
 fail:
   return NULL;
@@ -29686,12 +29689,12 @@ fail:
 SWIGINTERN PyObject *_wrap_WaterStorage_Solute__SWIG_0(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   cmf::water::WaterStorage *arg1 = (cmf::water::WaterStorage *) 0 ;
-  cmf::water::solute *arg2 = 0 ;
+  SwigValueWrapper< cmf::water::solute > arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   std::shared_ptr< cmf::water::WaterStorage > tempshared1 ;
   std::shared_ptr< cmf::water::WaterStorage > *smartarg1 = 0 ;
-  void *argp2 = 0 ;
+  void *argp2 ;
   int res2 = 0 ;
   cmf::water::SoluteStorage *result = 0 ;
   
@@ -29711,17 +29714,22 @@ SWIGINTERN PyObject *_wrap_WaterStorage_Solute__SWIG_0(PyObject *SWIGUNUSEDPARM(
       arg1 = const_cast< cmf::water::WaterStorage * >((smartarg1 ? smartarg1->get() : 0));
     }
   }
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_cmf__water__solute,  0  | 0);
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "WaterStorage_Solute" "', argument " "2"" of type '" "cmf::water::solute const &""'"); 
+  {
+    res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_cmf__water__solute,  0  | 0);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "WaterStorage_Solute" "', argument " "2"" of type '" "cmf::water::solute const""'"); 
+    }  
+    if (!argp2) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "WaterStorage_Solute" "', argument " "2"" of type '" "cmf::water::solute const""'");
+    } else {
+      cmf::water::solute * temp = reinterpret_cast< cmf::water::solute * >(argp2);
+      arg2 = *temp;
+      if (SWIG_IsNewObj(res2)) delete temp;
+    }
   }
-  if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "WaterStorage_Solute" "', argument " "2"" of type '" "cmf::water::solute const &""'"); 
-  }
-  arg2 = reinterpret_cast< cmf::water::solute * >(argp2);
   {
     try {
-      result = (cmf::water::SoluteStorage *) &(arg1)->Solute((cmf::water::solute const &)*arg2);
+      result = (cmf::water::SoluteStorage *) &(arg1)->Solute(arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -29742,12 +29750,12 @@ fail:
 SWIGINTERN PyObject *_wrap_WaterStorage_Solute__SWIG_1(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   cmf::water::WaterStorage *arg1 = (cmf::water::WaterStorage *) 0 ;
-  cmf::water::solute *arg2 = 0 ;
+  SwigValueWrapper< cmf::water::solute > arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   std::shared_ptr< cmf::water::WaterStorage const > tempshared1 ;
   std::shared_ptr< cmf::water::WaterStorage const > *smartarg1 = 0 ;
-  void *argp2 = 0 ;
+  void *argp2 ;
   int res2 = 0 ;
   cmf::water::SoluteStorage *result = 0 ;
   
@@ -29767,17 +29775,22 @@ SWIGINTERN PyObject *_wrap_WaterStorage_Solute__SWIG_1(PyObject *SWIGUNUSEDPARM(
       arg1 = const_cast< cmf::water::WaterStorage * >((smartarg1 ? smartarg1->get() : 0));
     }
   }
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_cmf__water__solute,  0  | 0);
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "WaterStorage_Solute" "', argument " "2"" of type '" "cmf::water::solute const &""'"); 
+  {
+    res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_cmf__water__solute,  0  | 0);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "WaterStorage_Solute" "', argument " "2"" of type '" "cmf::water::solute const""'"); 
+    }  
+    if (!argp2) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "WaterStorage_Solute" "', argument " "2"" of type '" "cmf::water::solute const""'");
+    } else {
+      cmf::water::solute * temp = reinterpret_cast< cmf::water::solute * >(argp2);
+      arg2 = *temp;
+      if (SWIG_IsNewObj(res2)) delete temp;
+    }
   }
-  if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "WaterStorage_Solute" "', argument " "2"" of type '" "cmf::water::solute const &""'"); 
-  }
-  arg2 = reinterpret_cast< cmf::water::solute * >(argp2);
   {
     try {
-      result = (cmf::water::SoluteStorage *) &((cmf::water::WaterStorage const *)arg1)->Solute((cmf::water::solute const &)*arg2);
+      result = (cmf::water::SoluteStorage *) &((cmf::water::WaterStorage const *)arg1)->Solute(arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -29874,8 +29887,8 @@ SWIGINTERN PyObject *_wrap_WaterStorage_Solute(PyObject *self, PyObject *args) {
 fail:
   SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'WaterStorage_Solute'.\n"
     "  Possible C/C++ prototypes are:\n"
-    "    cmf::water::WaterStorage::Solute(cmf::water::solute const &)\n"
-    "    cmf::water::WaterStorage::Solute(cmf::water::solute const &) const\n");
+    "    cmf::water::WaterStorage::Solute(cmf::water::solute const)\n"
+    "    cmf::water::WaterStorage::Solute(cmf::water::solute const) const\n");
   return 0;
 }
 
@@ -30473,6 +30486,72 @@ SWIGINTERN PyObject *_wrap_WaterStorage_statevariable_get(PyObject *SWIGUNUSEDPA
     
   }
   resultobj = SWIG_From_char(static_cast< char >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_WaterStorage___getitem__(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  cmf::water::WaterStorage *arg1 = (cmf::water::WaterStorage *) 0 ;
+  SwigValueWrapper< cmf::water::solute > arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  std::shared_ptr< cmf::water::WaterStorage > tempshared1 ;
+  std::shared_ptr< cmf::water::WaterStorage > *smartarg1 = 0 ;
+  void *argp2 ;
+  int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char *  kwnames[] = {
+    (char *) "self",(char *) "X", NULL 
+  };
+  cmf::water::SoluteStorage *result = 0 ;
+  
+  if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"OO:WaterStorage___getitem__",kwnames,&obj0,&obj1)) SWIG_fail;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(obj0, &argp1, SWIGTYPE_p_std__shared_ptrT_cmf__water__WaterStorage_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "WaterStorage___getitem__" "', argument " "1"" of type '" "cmf::water::WaterStorage *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< std::shared_ptr<  cmf::water::WaterStorage > * >(argp1);
+      delete reinterpret_cast< std::shared_ptr<  cmf::water::WaterStorage > * >(argp1);
+      arg1 = const_cast< cmf::water::WaterStorage * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< std::shared_ptr<  cmf::water::WaterStorage > * >(argp1);
+      arg1 = const_cast< cmf::water::WaterStorage * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  {
+    res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_cmf__water__solute,  0  | 0);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "WaterStorage___getitem__" "', argument " "2"" of type '" "cmf::water::solute""'"); 
+    }  
+    if (!argp2) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "WaterStorage___getitem__" "', argument " "2"" of type '" "cmf::water::solute""'");
+    } else {
+      cmf::water::solute * temp = reinterpret_cast< cmf::water::solute * >(argp2);
+      arg2 = *temp;
+      if (SWIG_IsNewObj(res2)) delete temp;
+    }
+  }
+  {
+    try {
+      result = (cmf::water::SoluteStorage *) &cmf_water_WaterStorage___getitem__(arg1,arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+    
+  }
+  {
+    std::shared_ptr<  cmf::water::SoluteStorage > *smartresult = new std::shared_ptr<  cmf::water::SoluteStorage >(result SWIG_NO_NULL_DELETER_0);
+    resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(smartresult), SWIGTYPE_p_std__shared_ptrT_cmf__water__SoluteStorage_t, SWIG_POINTER_OWN);
+  }
   return resultobj;
 fail:
   return NULL;
@@ -77041,23 +77120,21 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"SoluteStorage_source_set", _wrap_SoluteStorage_source_set, METH_VARARGS, (char *)"SoluteStorage_source_set(SoluteStorage self, real source)"},
 	 { (char *)"SoluteStorage_source_get", (PyCFunction)_wrap_SoluteStorage_source_get, METH_O, (char *)"SoluteStorage_source_get(SoluteStorage self) -> real"},
 	 { (char *)"SoluteStorage_Solute_get", (PyCFunction)_wrap_SoluteStorage_Solute_get, METH_O, (char *)"SoluteStorage_Solute_get(SoluteStorage self) -> solute"},
-	 { (char *)"SoluteStorage_conc", (PyCFunction)_wrap_SoluteStorage_conc, METH_O, (char *)"\n"
-		"SoluteStorage_conc(SoluteStorage self) -> real\n"
+	 { (char *)"SoluteStorage_conc_set", _wrap_SoluteStorage_conc_set, METH_VARARGS, (char *)"\n"
+		"SoluteStorage_conc_set(SoluteStorage self, real conc)\n"
 		"\n"
 		"real conc()\n"
 		"const\n"
 		"\n"
 		"Returns the concentration of the solute. \n"
 		""},
-	 { (char *)"SoluteStorage_set_conc", (PyCFunction) _wrap_SoluteStorage_set_conc, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
-		"SoluteStorage_set_conc(SoluteStorage self, real NewConcentration)\n"
+	 { (char *)"SoluteStorage_conc_get", (PyCFunction)_wrap_SoluteStorage_conc_get, METH_O, (char *)"\n"
+		"SoluteStorage_conc_get(SoluteStorage self) -> real\n"
 		"\n"
-		"void\n"
-		"set_conc(real NewConcentration)\n"
+		"real conc()\n"
+		"const\n"
 		"\n"
-		"set a new concentration of dissolved tracers.\n"
-		"\n"
-		"In case of adsorption functions, the isotherm is used \n"
+		"Returns the concentration of the solute. \n"
 		""},
 	 { (char *)"delete_SoluteStorage", (PyCFunction)_wrap_delete_SoluteStorage, METH_O, (char *)"delete_SoluteStorage(SoluteStorage self)"},
 	 { (char *)"SoluteStorage_swigregister", SoluteStorage_swigregister, METH_VARARGS, NULL},
@@ -77583,6 +77660,7 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"WaterStorage_volume_get", (PyCFunction)_wrap_WaterStorage_volume_get, METH_O, (char *)"WaterStorage_volume_get(WaterStorage self) -> real"},
 	 { (char *)"WaterStorage_statevariable_set", _wrap_WaterStorage_statevariable_set, METH_VARARGS, (char *)"WaterStorage_statevariable_set(WaterStorage self, char statevariable)"},
 	 { (char *)"WaterStorage_statevariable_get", (PyCFunction)_wrap_WaterStorage_statevariable_get, METH_O, (char *)"WaterStorage_statevariable_get(WaterStorage self) -> char"},
+	 { (char *)"WaterStorage___getitem__", (PyCFunction) _wrap_WaterStorage___getitem__, METH_VARARGS | METH_KEYWORDS, (char *)"WaterStorage___getitem__(WaterStorage self, solute X) -> SoluteStorage"},
 	 { (char *)"delete_WaterStorage", (PyCFunction)_wrap_delete_WaterStorage, METH_O, (char *)"delete_WaterStorage(WaterStorage self)"},
 	 { (char *)"WaterStorage_swigregister", WaterStorage_swigregister, METH_VARARGS, NULL},
 	 { (char *)"WaterStorage_swiginit", WaterStorage_swiginit, METH_VARARGS, NULL},

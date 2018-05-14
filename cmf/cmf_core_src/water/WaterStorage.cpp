@@ -40,7 +40,7 @@ WaterStorage::WaterStorage(cmf::project& _project, const std::string& _Name,
 }
 
 
-SoluteStorage& WaterStorage::Solute( const solute& _Solute )
+SoluteStorage& WaterStorage::Solute( const solute _Solute )
 {
 	return *m_Concentrations[_Solute.Id];
 }
@@ -48,7 +48,7 @@ SoluteStorage& WaterStorage::Solute( const solute& _Solute )
 
 real WaterStorage::conc(const solute& _Solute) const
 {
-	return Solute(_Solute).conc();
+	return Solute(_Solute).get_conc();
 }
 
 std::shared_ptr<WaterStorage> WaterStorage::from_node( flux_node::ptr node )
