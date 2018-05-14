@@ -19,7 +19,7 @@ class Model:
     def __call__(self, days=7):
         self.c.vegetation.LAI = 7
         self.c.vegetation.height = 10
-        self.c.vegetation.CanopyClosure = 1
+        self.c.vegetation.CanopyClosure = 0.1
         l = self.c.layers[0]
         self.c.surfacewater.depth = 0.05
         l.soil.Ksat = 0.02
