@@ -35,7 +35,7 @@
         return self.to_string()
 }}
 
-
+%shared_ptr(cmf::upslope::ET::aerodynamic_resistance);
 %shared_ptr(cmf::atmosphere::MeteoStation)
 %shared_ptr(cmf::atmosphere::RainfallStation)
 %shared_ptr(cmf::atmosphere::RainSource);
