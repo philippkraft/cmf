@@ -24,7 +24,7 @@ class CrossSectionReach:
         """
         self.x = x
         self.depth = depth
-        self.n_manning = n_manning
+        self.nManning = n_manning
 
     def set_nManning(self, val: float) -> None:
         self.nManning = val
