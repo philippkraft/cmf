@@ -8,6 +8,51 @@ a test for the new generic reach cross section
 
 from typing import Sequence
 from math import sqrt
+from enum import Enum
+
+def regula_falsi(f, x1, x2, *, target=0.0, verbose=False, tolerance=1e-12):
+    """
+    Finds the root of function f in the interval x1..x2
+    using the Andersen/Björk algorithm
+    (see https://en.wikipedia.org/wiki/False_position_method)
+
+    :param f: The function to solve
+    :param x1: left side of the root
+    :param x2: right side of the root
+    :param target: Target value of f, for normal root finding = 0.0
+    :param verbose: Prints intermediate output
+    :return: returns the root
+    """
+
+
+    def singlestep(_x1, _x2, _f1, _f2):
+        """
+        Performs a single regula falsi step with Andersen Björk shorting
+        and parameter switch
+        :return: The new best value first, followed by the input
+        """
+
+        _xz = _x1 - _f1 * (_x2 - _x1) / (_f2 - _f1)
+        _fz = f(_xz) - target
+        if _fz * _f1 < 0:
+            # Parameter switch
+            return _xz, _x2, _xz, _f2, _fz
+        else:
+            m = 1 - _fz / _f2
+            m = m if m > 0 else 0.5
+            return _xz, _x1, _xz, m * _f1, _fz
+
+    i = 0
+    f2 = f(x2) - target
+    f1 = f(x1) - target
+    xz = x1
+    while abs(x2 - x1) > tolerance and min(abs(f1), abs(f2)) > tolerance:
+        xz, x1, x2, f1, f2 = singlestep(x1, x2, f1, f2)
+        i += 1
+        if verbose:
+            print(f'#{i}: x={x1:0.5g}, {x2:0.5g}    f={f1:0.5g},{f2:0.5g}')
+    return xz
+
 
 
 class CrossSectionReach:
@@ -60,7 +105,7 @@ class CrossSectionReach:
             elif h > yr and h > yl:
                 yield xr - xl, h - yl, h - yr
             elif yl >= h and yr >= h:
-                yield 0, 0, 0
+                yield 0.0, 0.0, 0.0
 
     def get_channel_width(self, depth: float) -> float:
         """
@@ -80,11 +125,17 @@ class CrossSectionReach:
     def get_depth(self, area: float) -> float:
         """
         Calculates the actual depth of the reach from the wetted area using the geometry
+        Uses a numerical approximation to calculate the depth. Hence, this
+        reach type is slower than others.
+
         :param area: The actual wetted area in m², can be obtained by V/l,
                      where V is the stored volume and l is the reach length
         :return: the actual depth in m
         """
-        ...
+        return regula_falsi(self.get_flux_cross_section,
+                            x1=0, x2=max(self.depth),
+                            target=area,
+                            verbose=False)
 
     def get_flux_cross_section(self, depth: float) -> float:
         """
@@ -96,6 +147,8 @@ class CrossSectionReach:
             (x * (y2 - y1)) / 2  # Triangle part of trapezoid
             + x * y1             # Rectangle part of trapezoid
             for x, y1, y2 in self.iter_trapezoid(depth))
+
+
 
 
 
