@@ -17,6 +17,6 @@ class TestSoluteAccess(unittest.TestCase):
         ws.volume = 1.0
         ws[X].state = 1.0
         ws.volume = 2.0
-        self.assertAlmostEquals(ws[X].conc, 0.5)
-        self.assertAlmostEquals(ws[X].state, 1.0)
-        self.assertAlmostEquals(ws[Y].conc, 0.0)
+        self.assertAlmostEqual(ws[X].conc, 0.5)
+        self.assertAlmostEqual(ws[X].state, 1.0)
+        self.assertAlmostEqual(ws[Y].conc, 0.0)
