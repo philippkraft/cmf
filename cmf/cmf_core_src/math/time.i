@@ -249,7 +249,6 @@ static bool check_time(PyObject* dt) {
     }
     %pythoncode
     {
-
     def __repr__(self):
        return "cmf.timeseries(%s:%s:%s,count=%i)" % (self.begin,self.end,self.step,self.size())
 
@@ -346,7 +345,6 @@ static bool check_time(PyObject* dt) {
         step = ms * data['step']
         self.__init__(begin, step, data['interpolationpower'])
         self.extend(data['values'])
-            
 
     def to_pandas(self):
         """

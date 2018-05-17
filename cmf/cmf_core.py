@@ -1571,15 +1571,12 @@ class timeseries(object):
         res*=other
         return res
 
-    def iter_time(self, as_float=0):
+    def iter_time(self):
         """Returns an iterator to iterate over each timestep
         as_float if True, the timesteps will returned as floating point numbers representing the days after 1.1.0001 00:00
         """
         for i in range(len(self)):
-            if as_float:
-                yield ((self.begin + self.step * i) - cmf.Time(1,1,1)).AsDays()
-            else:
-                yield self.begin + self.step * i
+            yield self.begin + self.step * i
 
     def to_buffer(self):
         """Returns a binary buffer filled with the data of self"""
