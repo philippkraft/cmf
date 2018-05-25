@@ -3183,27 +3183,28 @@ SWIG_Python_NonDynamicSetAttr(PyObject *obj, PyObject *name, PyObject *value) {
 #define SWIGTYPE_p_std__shared_ptrT_cmf__river__OpenWaterStorage_t swig_types[171]
 #define SWIGTYPE_p_std__shared_ptrT_cmf__river__Reach_t swig_types[172]
 #define SWIGTYPE_p_std__shared_ptrT_cmf__upslope__ET__ShuttleworthWallace_t swig_types[173]
-#define SWIGTYPE_p_std__shared_ptrT_cmf__upslope__MacroPore_t swig_types[174]
-#define SWIGTYPE_p_std__shared_ptrT_cmf__upslope__SoilLayer_t swig_types[175]
-#define SWIGTYPE_p_std__shared_ptrT_cmf__upslope__SurfaceWater_t swig_types[176]
-#define SWIGTYPE_p_std__shared_ptrT_cmf__upslope__aquifer_t swig_types[177]
-#define SWIGTYPE_p_std__shared_ptrT_cmf__water__DirichletBoundary_t swig_types[178]
-#define SWIGTYPE_p_std__shared_ptrT_cmf__water__NeumannBoundary_t swig_types[179]
-#define SWIGTYPE_p_std__shared_ptrT_cmf__water__SoluteStorage_t swig_types[180]
-#define SWIGTYPE_p_std__shared_ptrT_cmf__water__SystemBridge_t swig_types[181]
-#define SWIGTYPE_p_std__shared_ptrT_cmf__water__WaterStorage_t swig_types[182]
-#define SWIGTYPE_p_std__shared_ptrT_cmf__water__flux_connection_t swig_types[183]
-#define SWIGTYPE_p_std__shared_ptrT_cmf__water__flux_integrator_t swig_types[184]
-#define SWIGTYPE_p_std__shared_ptrT_cmf__water__flux_node_t swig_types[185]
-#define SWIGTYPE_p_std__shared_ptrT_cmf__water__waterbalance_integrator_t swig_types[186]
-#define SWIGTYPE_p_std__shared_ptrT_std__shared_ptrT_cmf__atmosphere__ConstantRainSource_t_t swig_types[187]
-#define SWIGTYPE_p_std__shared_ptrT_std__shared_ptrT_cmf__atmosphere__RainfallStationReference_t_t swig_types[188]
-#define SWIGTYPE_p_std__string swig_types[189]
-#define SWIGTYPE_p_std__vectorT_std__shared_ptrT_cmf__water__WaterStorage_t_t swig_types[190]
-#define SWIGTYPE_p_std__vectorT_std__shared_ptrT_cmf__water__flux_connection_t_t__const_iterator swig_types[191]
-#define SWIGTYPE_p_std__vectorT_std__shared_ptrT_cmf__water__flux_connection_t_t__iterator swig_types[192]
-static swig_type_info *swig_types[194];
-static swig_module_info swig_module = {swig_types, 193, 0, 0, 0, 0};
+#define SWIGTYPE_p_std__shared_ptrT_cmf__upslope__ET__aerodynamic_resistance_t swig_types[174]
+#define SWIGTYPE_p_std__shared_ptrT_cmf__upslope__MacroPore_t swig_types[175]
+#define SWIGTYPE_p_std__shared_ptrT_cmf__upslope__SoilLayer_t swig_types[176]
+#define SWIGTYPE_p_std__shared_ptrT_cmf__upslope__SurfaceWater_t swig_types[177]
+#define SWIGTYPE_p_std__shared_ptrT_cmf__upslope__aquifer_t swig_types[178]
+#define SWIGTYPE_p_std__shared_ptrT_cmf__water__DirichletBoundary_t swig_types[179]
+#define SWIGTYPE_p_std__shared_ptrT_cmf__water__NeumannBoundary_t swig_types[180]
+#define SWIGTYPE_p_std__shared_ptrT_cmf__water__SoluteStorage_t swig_types[181]
+#define SWIGTYPE_p_std__shared_ptrT_cmf__water__SystemBridge_t swig_types[182]
+#define SWIGTYPE_p_std__shared_ptrT_cmf__water__WaterStorage_t swig_types[183]
+#define SWIGTYPE_p_std__shared_ptrT_cmf__water__flux_connection_t swig_types[184]
+#define SWIGTYPE_p_std__shared_ptrT_cmf__water__flux_integrator_t swig_types[185]
+#define SWIGTYPE_p_std__shared_ptrT_cmf__water__flux_node_t swig_types[186]
+#define SWIGTYPE_p_std__shared_ptrT_cmf__water__waterbalance_integrator_t swig_types[187]
+#define SWIGTYPE_p_std__shared_ptrT_std__shared_ptrT_cmf__atmosphere__ConstantRainSource_t_t swig_types[188]
+#define SWIGTYPE_p_std__shared_ptrT_std__shared_ptrT_cmf__atmosphere__RainfallStationReference_t_t swig_types[189]
+#define SWIGTYPE_p_std__string swig_types[190]
+#define SWIGTYPE_p_std__vectorT_std__shared_ptrT_cmf__water__WaterStorage_t_t swig_types[191]
+#define SWIGTYPE_p_std__vectorT_std__shared_ptrT_cmf__water__flux_connection_t_t__const_iterator swig_types[192]
+#define SWIGTYPE_p_std__vectorT_std__shared_ptrT_cmf__water__flux_connection_t_t__iterator swig_types[193]
+static swig_type_info *swig_types[195];
+static swig_module_info swig_module = {swig_types, 194, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -83069,6 +83070,7 @@ static swig_type_info _swigt__p_std__shared_ptrT_cmf__math__integratable_t = {"_
 static swig_type_info _swigt__p_std__shared_ptrT_cmf__river__OpenWaterStorage_t = {"_p_std__shared_ptrT_cmf__river__OpenWaterStorage_t", "std::shared_ptr< cmf::river::OpenWaterStorage > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__shared_ptrT_cmf__river__Reach_t = {"_p_std__shared_ptrT_cmf__river__Reach_t", "std::shared_ptr< cmf::river::Reach > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__shared_ptrT_cmf__upslope__ET__ShuttleworthWallace_t = {"_p_std__shared_ptrT_cmf__upslope__ET__ShuttleworthWallace_t", "std::shared_ptr< cmf::upslope::ET::ShuttleworthWallace > *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_std__shared_ptrT_cmf__upslope__ET__aerodynamic_resistance_t = {"_p_std__shared_ptrT_cmf__upslope__ET__aerodynamic_resistance_t", "std::shared_ptr< cmf::upslope::ET::aerodynamic_resistance > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__shared_ptrT_cmf__upslope__MacroPore_t = {"_p_std__shared_ptrT_cmf__upslope__MacroPore_t", "std::shared_ptr< cmf::upslope::MacroPore > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__shared_ptrT_cmf__upslope__SoilLayer_t = {"_p_std__shared_ptrT_cmf__upslope__SoilLayer_t", "cmf::upslope::SoilLayer::ptr *|std::shared_ptr< cmf::upslope::SoilLayer > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__shared_ptrT_cmf__upslope__SurfaceWater_t = {"_p_std__shared_ptrT_cmf__upslope__SurfaceWater_t", "std::shared_ptr< cmf::upslope::SurfaceWater > *|cmf::upslope::surfacewater_ptr *", 0, 0, (void*)0, 0};
@@ -83264,6 +83266,7 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_std__shared_ptrT_cmf__river__OpenWaterStorage_t,
   &_swigt__p_std__shared_ptrT_cmf__river__Reach_t,
   &_swigt__p_std__shared_ptrT_cmf__upslope__ET__ShuttleworthWallace_t,
+  &_swigt__p_std__shared_ptrT_cmf__upslope__ET__aerodynamic_resistance_t,
   &_swigt__p_std__shared_ptrT_cmf__upslope__MacroPore_t,
   &_swigt__p_std__shared_ptrT_cmf__upslope__SoilLayer_t,
   &_swigt__p_std__shared_ptrT_cmf__upslope__SurfaceWater_t,
@@ -83459,6 +83462,7 @@ static swig_cast_info _swigc__p_std__shared_ptrT_cmf__math__integratable_t[] = {
 static swig_cast_info _swigc__p_std__shared_ptrT_cmf__river__OpenWaterStorage_t[] = {  {&_swigt__p_std__shared_ptrT_cmf__river__OpenWaterStorage_t, 0, 0, 0},  {&_swigt__p_std__shared_ptrT_cmf__upslope__SurfaceWater_t, _p_std__shared_ptrT_cmf__upslope__SurfaceWater_tTo_p_std__shared_ptrT_cmf__river__OpenWaterStorage_t, 0, 0},  {&_swigt__p_std__shared_ptrT_cmf__river__Reach_t, _p_std__shared_ptrT_cmf__river__Reach_tTo_p_std__shared_ptrT_cmf__river__OpenWaterStorage_t, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__shared_ptrT_cmf__river__Reach_t[] = {  {&_swigt__p_std__shared_ptrT_cmf__river__Reach_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__shared_ptrT_cmf__upslope__ET__ShuttleworthWallace_t[] = {  {&_swigt__p_std__shared_ptrT_cmf__upslope__ET__ShuttleworthWallace_t, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_std__shared_ptrT_cmf__upslope__ET__aerodynamic_resistance_t[] = {  {&_swigt__p_std__shared_ptrT_cmf__upslope__ET__aerodynamic_resistance_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__shared_ptrT_cmf__upslope__MacroPore_t[] = {  {&_swigt__p_std__shared_ptrT_cmf__upslope__MacroPore_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__shared_ptrT_cmf__upslope__SoilLayer_t[] = {  {&_swigt__p_std__shared_ptrT_cmf__upslope__SoilLayer_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__shared_ptrT_cmf__upslope__SurfaceWater_t[] = {  {&_swigt__p_std__shared_ptrT_cmf__upslope__SurfaceWater_t, 0, 0, 0},{0, 0, 0, 0}};
@@ -83654,6 +83658,7 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_std__shared_ptrT_cmf__river__OpenWaterStorage_t,
   _swigc__p_std__shared_ptrT_cmf__river__Reach_t,
   _swigc__p_std__shared_ptrT_cmf__upslope__ET__ShuttleworthWallace_t,
+  _swigc__p_std__shared_ptrT_cmf__upslope__ET__aerodynamic_resistance_t,
   _swigc__p_std__shared_ptrT_cmf__upslope__MacroPore_t,
   _swigc__p_std__shared_ptrT_cmf__upslope__SoilLayer_t,
   _swigc__p_std__shared_ptrT_cmf__upslope__SurfaceWater_t,

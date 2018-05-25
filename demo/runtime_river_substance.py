@@ -7,15 +7,15 @@ import time
 import timeit
 import argparse
 
-def test(d, withsubstance=False, threads=1):
+def test(args):
     """
     creates a set of river segments with and without substance. the solver
     can be set up with a varying nu,ber of threads as well as separated for
     water and substance fluxes.
     """
-    cmf.set_parallel_threads(threads)
-    
-    if withsubstance:
+    cmf.set_parallel_threads(args.threads)
+    d = args.segment_length
+    if args.tracer:
         p = cmf.project("X")
         X, = p.solutes
     else:
@@ -24,8 +24,11 @@ def test(d, withsubstance=False, threads=1):
     # Create a triangular reach crosssection for 10 m long reaches with a bankslope of 2
     shape = cmf.TriangularReach(10.,2.)
     # Create a 1km river with 100 reaches along the x axis and a constant slope of 1%
-    reaches = [p.NewReach(i,0,i*.01,shape,False) for i in range(0,1000,d)]
-    for r_lower, r_upper in zip(reaches[:-1],reaches[1:]):
+    reaches = [p.NewReach(i, 0, i*.01, shape, False) for i in range(0, 1000, d)]
+    if args.adsorption:
+        for r in reaches:
+            r[X].set_adsorption(cmf.LinearAdsorption(1e-2, 1e-2))
+    for r_lower, r_upper in zip(reaches[:-1], reaches[1:]):
         r_upper.set_downstream(r_lower)
     for i, r in enumerate(reaches):
         r.Name = 'R{}'.format(i+1)
@@ -33,15 +36,29 @@ def test(d, withsubstance=False, threads=1):
     # Initial condition: 10 cmf of water in the most upper reach
     for r in reaches:
         r.depth=0.1
-        if withsubstance:
+        if args.tracer:
             r.conc(X, 1.0)
-
-            # Template for the water solver
-    wsolver = cmf.CVodeIntegrator(1e-9)
-    # Template for the solute solver
-    ssolver = cmf.HeunIntegrator()
-    # Creating the SWI, the storage objects of the project are internally assigned to the correct solver
-    solver = cmf.SoluteWaterIntegrator(p.solutes, wsolver, ssolver, p)
+    if args.solver and args.solver != 'c':
+        # Template for the water solver
+        wsolver = cmf.CVodeIntegrator(1e-9)
+        # Template for the solute solver
+        if args.solver == 'ch':
+            ssolver = cmf.HeunIntegrator()
+            print('Heun')
+        elif args.solver == 'ce':
+            ssolver = cmf.ExplicitEuler_fixed()
+            print('Explicit Euler')
+        elif args.solver == 'ci':
+            ssolver = cmf.ImplicitEuler(1e-9)
+            print('Implicit Euler')
+        else:
+            ssolver = cmf.CVodeIntegrator(1e-9)
+            print('CVode')
+        # Creating the SWI, the storage objects of the project are internally assigned to the correct solver
+        solver = cmf.SoluteWaterIntegrator(p.solutes, wsolver, ssolver, p)
+    else:
+        solver = cmf.CVodeIntegrator(p, 1e-9)
+        print('Joint CVode solver')
     # solver = cmf.CVodeIntegrator(p,1e-6)
     assert solver.size() == len(reaches) * (len(p.solutes) + 1)
 
@@ -50,13 +67,11 @@ def test(d, withsubstance=False, threads=1):
 
     start = time.time()
     c = Counter()
-    for t in solver.run(datetime(2012,1,1),datetime(2012,1,2), cmf.min * 10):
+    for t in solver.run(datetime(2012, 1, 1),datetime(2012, 1, 2), cmf.min):
         # c.update([solver.get_error().argmax()])
-        print('{:10.3} sec, {}, {}, {}, {:0.4g}'
-              .format(time.time()-start, t,
-              solver.dt,0,0 #solver.get_rhsevals(),
-              #np.abs(solver.get_error()).max()
-              ))
+        print('{:10.3} sec, {}, {}, {:0.4g}'
+              .format(time.time()-start, t, solver.dt,
+                      reaches[1][X].conc if X else 0))
         depth.append([r.depth for r in reaches])
         
     time_elapsed = time.time() - start 
@@ -79,12 +94,17 @@ if __name__ == '__main__':
     
     parser = argparse.ArgumentParser()
     parser.add_argument('segment_length', type=int, help='Length of river segments in m')
-    parser.add_argument('-X','--tracer', action='store_true', help='Use -x to create a tracer')
-    parser.add_argument('-t','--threads', action='store', default=1, type=int, help='Number of threads')
+    parser.add_argument('-X', '--tracer', action='store_true', help='Use -x to create a tracer')
+    parser.add_argument('-t', '--threads', action='store', default=1, type=int, help='Number of threads')
+    parser.add_argument('-s', '--solver', choices=['c', 'cc', 'ch', 'ci', 'ce'],
+                        help='Sets the solver:  c: Joint CVode, cc: CVode for water and solute, ' + ' ' * 18 +
+                             'ch: CVode / Heun, ci: CVode/Implicit, ce: CVode/Explicit')
+    parser.add_argument('-e', '--errortolerance', type=float, default=1e-9)
+    parser.add_argument('-a', '--adsorption', action='store_true', help='Use -a to use linear adsorption')
     args = parser.parse_args()
-    
+    print('cmf', cmf.__version__)
     def run():
-        return test(args.segment_length, args.tracer, args.threads)
+        return test(args)
     
     t = timeit.Timer(run)
     

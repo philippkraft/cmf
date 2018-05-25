@@ -22,7 +22,7 @@ from .describe import describe
 from .stopwatch import StopWatch
 
 
-__version__ = '1.3.1b'
+__version__ = '1.3.1b.i28_numperf_reaches_tracer'
 
 from .cmf_core import connect_cells_with_flux as __ccwf
 

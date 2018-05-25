@@ -1509,7 +1509,6 @@ class timeseries(object):
         return _cmf_core.timeseries___len__(self, *args, **kwargs)
 
 
-
     def __repr__(self):
        return "cmf.timeseries(%s:%s:%s,count=%i)" % (self.begin,self.end,self.step,self.size())
 
@@ -1572,8 +1571,8 @@ class timeseries(object):
         return res
 
     def iter_time(self):
-        """Returns an iterator to iterate over each timestep
-        as_float if True, the timesteps will returned as floating point numbers representing the days after 1.1.0001 00:00
+        """
+        Returns an iterator to iterate over each timestep
         """
         for i in range(len(self)):
             yield self.begin + self.step * i
@@ -1606,7 +1605,6 @@ class timeseries(object):
         step = ms * data['step']
         self.__init__(begin, step, data['interpolationpower'])
         self.extend(data['values'])
-
 
     def to_pandas(self):
         """
