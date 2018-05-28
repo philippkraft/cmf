@@ -31,9 +31,13 @@ import random
 
 
 def get_error_bc(params, pF, theta):
-    bc = cmf.BrooksCoreyRetentionCurve(1, params[0], params[1], params[2])
-    model_wetness = bc.Wetness_pF(pF)
-    err = np.sum((theta - params[0] * model_wetness) ** 2)
+    try:
+        bc = cmf.BrooksCoreyRetentionCurve(1, params[0], params[1], params[2])
+    except RuntimeError:
+        return 100.0
+    else:
+        model_wetness = bc.Wetness_pF(pF)
+        err = np.sum((theta - params[0] * model_wetness) ** 2)
     return err
             
 
@@ -96,7 +100,7 @@ def fit_vgm(pF, theta, variable_m=False, count=20, fitlevel=None, verbose=False)
     best_f = 1e120
     vgm = None
     for i in range(count):
-        x0 = [random.uniform(0.01, 0.99), random.uniform(0.0001, 1.9), random.uniform(1.01, 3.9), random.uniform()]
+        x0 = [random.uniform(0.01, 0.99), random.uniform(0.0001, 1.9), random.uniform(1.01, 3.9), random.uniform(0, 1)]
         x0[-1] *= x0[0]
         if variable_m: x0.append(1 - 1 / random.uniform(1.01, 5))
         x_opt, f_opt, n_iter, n_eval, warn = opt.fmin(get_error_vgm, x0=np.array(x0), args=(pF, theta),
