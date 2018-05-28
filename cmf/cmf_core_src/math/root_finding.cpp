@@ -27,7 +27,7 @@ double cmf::math::brents_method(Func f, double lower_bound, double upper_bound,
 
 	double c = a;           // c now equals the largest magnitude of the lower and upper bounds
 	double fc = fa;         // precompute function evalutation for point c by assigning it the same value as fa
-	bool mflag = true;      // boolean flag used to evaluate if statement later on
+	bool used_bisection = true;      // boolean flag used to evaluate if statement later on
 	double s = 0;           // Our Root that will be returned
 	double d = 0;           // Only used if mflag is unset (mflag == false)
 
@@ -36,34 +36,38 @@ double cmf::math::brents_method(Func f, double lower_bound, double upper_bound,
 		// stop if converged on root or error is less than tolerance
 		if (std::abs(b - a) < tolerance) {
 			return s;
-		} 
+		}
 
 		if (fa != fc && fb != fc) {
 			// use inverse quadratic interpolation
 			s = (a * fb * fc / ((fa - fb) * (fa - fc)))
 				+ (b * fa * fc / ((fb - fa) * (fb - fc)))
 				+ (c * fa * fb / ((fc - fa) * (fc - fb)));
-		} else {
+		}
+		else {
 			// secant method
 			s = b - fb * (b - a) / (fb - fa);
 		}
-
 		// Check cases for using bisection
-		bool
-			c1 = (s < (3 * a + b) * 0.25) || (s > b),
-			c2 = mflag && (std::abs(s - b) >= (std::abs(b - c) * 0.5)),
-			c3 = !mflag && (std::abs(s - b) >= (std::abs(c - d) * 0.5)),
-			c4 = mflag && (std::abs(b - c) < tolerance),
-			c5 = !mflag && (std::abs(c - d) < tolerance);
-
-		if (c1 || c2 || c3 || c4 || c5)	{
-			// bisection method
-			s = (a + b)*0.5;
-			mflag = true;
-		} else {
-			mflag = false;
+		bool use_bisection = false;
+		{
+			bool
+				c1 = (s < (3 * a + b) * 0.25) || (s > b), // New value far out of initial boundaries
+				c2 = used_bisection && (std::abs(s - b) >= (std::abs(b - c) * 0.5)),
+				c3 = !used_bisection && (std::abs(s - b) >= (std::abs(c - d) * 0.5)),
+				c4 = used_bisection && (std::abs(b - c) < tolerance),
+				c5 = !used_bisection && (std::abs(c - d) < tolerance);
+			use_bisection = c1 || c2 || c3 || c4 || c5;
 		}
 
+		if (use_bisection) {
+			// bisection method
+			s = (a + b)*0.5;
+			used_bisection = true;
+		}
+		else {
+			used_bisection = false;
+		}
 		fs = f(s) - offset;  // calculate fs
 		d = c;      // first time d is being used (wasnt used on first iteration because mflag was set)
 		c = b;      // set c equal to upper bound
@@ -86,10 +90,10 @@ double cmf::math::brents_method(Func f, double lower_bound, double upper_bound,
 			std::swap(fa, fb);   // make sure f(a) and f(b) are correct after swap
 		}
 
-	} // end for
+	}
 	std::runtime_error("Brent's method: The solution does not converge or iterations are not sufficient")
 
-} // end brent_fun
+} 
 
 // Test case (to have something to compile)
 
