@@ -1,4 +1,5 @@
 #include "adsorption.h"
+#include "../math/root_finding.h"
 #include <cmath>
 #include <stdexcept>
 using namespace cmf::water;
@@ -12,39 +13,30 @@ real cmf::water::FreundlichAdsorbtion::totalsolute( real xf, real V ) const
 	return K*pow(xf/V,n);
 }
 
-real FreundlichAdsorbtion::freesolute( real xt,real V ) const
+namespace cmf {
+	namespace water {
+		class FreundlichAdsorptionCalculator {
+		public:
+			const cmf::water::FreundlichAdsorbtion * owner;
+			FreundlichAdsorptionCalculator(const cmf::water::FreundlichAdsorbtion * fa)
+				: owner(fa)
+			{	}
+			real operator()(real c) const {
+				return owner->totalsolute(c, 1.0);
+			}
+		};
+	}
+}
+
+
+real FreundlichAdsorbtion::freesolute( real xt, real V ) const
 {
 	//
 	// the Freundlich isotherm x_ad/m = K*c^n cannot be rearranged for c if n!=1
-	// hence we have to iterate the solution using Regula falsi
-	
-	real
-		a = 0.0, // left side
-		fa = totalsolute(a,V) - xt,
-		b = 1.0, // right side
-		fb = totalsolute(b,V) - xt,
-		c = 0.,
-		fc = 0.0;
-	int side=0;
-	// Do Regula falsi (Illinois variant) for xf
-	for(int i=0;i<maxiter;++i) {
-		c = (fa*b - fb*a) / (fa - fb);
-		fc = totalsolute(c,V) - xt;
-		if (fabs(fc)<epsilon) return c;
-		if (fc * fb > 0.0) {
-			b = c; fb = fc;
-			if (side==-1) fa/=2;
-			side = -1;
-		} else if (fc * fa > 0.0) {
-			a = c; fa = fc;
-			if (side == +1) fb/=2;
-			side = +1;
-		} else {
-			return c;
-		}
-	}
-	throw std::runtime_error("Too many iterations for xf in FreundlichAdsorption");
-	return 0.0;
+	// hence we have to iterate the solution using Regula falsi	
+	cmf::water::FreundlichAdsorptionCalculator fac(this);
+	double c_free = cmf::math::brents_method(fac, 0, 1, xt);
+	return c_free * V;
 }
 
 

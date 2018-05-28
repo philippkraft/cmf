@@ -132,7 +132,6 @@ namespace cmf {
 			int maxiter;
 			real freesolute(real xt,real V) const;
 			real totalsolute(real xf, real V) const;
-
 			/// @param K,n Freundlich coefficents
 			/// @param m Mass of sorbent in units of tracer
 			/// @param epsilon Tolerance of regula falsi iteration for the calculation of dissolved tracer from total trace, default = 1e-12
