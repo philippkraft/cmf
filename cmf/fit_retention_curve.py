@@ -30,7 +30,7 @@ import scipy.optimize as opt
 import random
 
 
-class FitRetentionCurve:
+class FitRetentionCurve(object):
 
     def __init__(self, rc_class, theta, pF, verbose=False):
         assert len(theta) == len(pF), "theta and pF vectors do not have the same length"
