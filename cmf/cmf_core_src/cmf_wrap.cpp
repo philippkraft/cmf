@@ -52545,6 +52545,8 @@ SWIGINTERN PyObject *_wrap_new_VanGenuchtenMualem(PyObject *SWIGUNUSEDPARM(self)
   real arg3 = (real) 0.2178 ;
   real arg4 = (real) 1.211 ;
   real arg5 = (real) -1 ;
+  real arg6 = (real) 0.0 ;
+  real arg7 = (real) 0.99 ;
   double val1 ;
   int ecode1 = 0 ;
   double val2 ;
@@ -52555,17 +52557,23 @@ SWIGINTERN PyObject *_wrap_new_VanGenuchtenMualem(PyObject *SWIGUNUSEDPARM(self)
   int ecode4 = 0 ;
   double val5 ;
   int ecode5 = 0 ;
+  double val6 ;
+  int ecode6 = 0 ;
+  double val7 ;
+  int ecode7 = 0 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   PyObject * obj2 = 0 ;
   PyObject * obj3 = 0 ;
   PyObject * obj4 = 0 ;
+  PyObject * obj5 = 0 ;
+  PyObject * obj6 = 0 ;
   char *  kwnames[] = {
-    (char *) "Ksat",(char *) "phi",(char *) "alpha",(char *) "n",(char *) "m", NULL 
+    (char *) "Ksat",(char *) "phi",(char *) "alpha",(char *) "n",(char *) "m",(char *) "theta_r",(char *) "w0", NULL 
   };
   cmf::upslope::VanGenuchtenMualem *result = 0 ;
   
-  if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"|OOOOO:new_VanGenuchtenMualem",kwnames,&obj0,&obj1,&obj2,&obj3,&obj4)) SWIG_fail;
+  if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"|OOOOOOO:new_VanGenuchtenMualem",kwnames,&obj0,&obj1,&obj2,&obj3,&obj4,&obj5,&obj6)) SWIG_fail;
   if (obj0) {
     ecode1 = SWIG_AsVal_double(obj0, &val1);
     if (!SWIG_IsOK(ecode1)) {
@@ -52601,9 +52609,23 @@ SWIGINTERN PyObject *_wrap_new_VanGenuchtenMualem(PyObject *SWIGUNUSEDPARM(self)
     } 
     arg5 = static_cast< real >(val5);
   }
+  if (obj5) {
+    ecode6 = SWIG_AsVal_double(obj5, &val6);
+    if (!SWIG_IsOK(ecode6)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode6), "in method '" "new_VanGenuchtenMualem" "', argument " "6"" of type '" "real""'");
+    } 
+    arg6 = static_cast< real >(val6);
+  }
+  if (obj6) {
+    ecode7 = SWIG_AsVal_double(obj6, &val7);
+    if (!SWIG_IsOK(ecode7)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode7), "in method '" "new_VanGenuchtenMualem" "', argument " "7"" of type '" "real""'");
+    } 
+    arg7 = static_cast< real >(val7);
+  }
   {
     try {
-      result = (cmf::upslope::VanGenuchtenMualem *)new cmf::upslope::VanGenuchtenMualem(arg1,arg2,arg3,arg4,arg5);
+      result = (cmf::upslope::VanGenuchtenMualem *)new cmf::upslope::VanGenuchtenMualem(arg1,arg2,arg3,arg4,arg5,arg6,arg7);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -79875,7 +79897,7 @@ static PyMethodDef SwigMethods[] = {
 		"VanGenuchtenMualem* copy() const \n"
 		""},
 	 { (char *)"new_VanGenuchtenMualem", (PyCFunction) _wrap_new_VanGenuchtenMualem, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
-		"new_VanGenuchtenMualem(real Ksat=15, real phi=0.5, real alpha=0.2178, real n=1.211, real m=-1) -> VanGenuchtenMualem\n"
+		"new_VanGenuchtenMualem(real Ksat=15, real phi=0.5, real alpha=0.2178, real n=1.211, real m=-1, real theta_r=0.0, real w0=0.99) -> VanGenuchtenMualem\n"
 		"\n"
 		"VanGenuchtenMualem(real Ksat=15, real phi=0.5, real alpha=0.2178, real\n"
 		"n=1.211, real m=-1)\n"

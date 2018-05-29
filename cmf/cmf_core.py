@@ -8511,7 +8511,7 @@ class VanGenuchtenMualem(RetentionCurve):
 
     def __init__(self, *args, **kwargs):
         """
-        __init__(cmf::upslope::VanGenuchtenMualem self, real Ksat=15, real phi=0.5, real alpha=0.2178, real n=1.211, real m=-1) -> VanGenuchtenMualem
+        __init__(cmf::upslope::VanGenuchtenMualem self, real Ksat=15, real phi=0.5, real alpha=0.2178, real n=1.211, real m=-1, real theta_r=0.0, real w0=0.99) -> VanGenuchtenMualem
 
         VanGenuchtenMualem(real Ksat=15, real phi=0.5, real alpha=0.2178, real
         n=1.211, real m=-1)
