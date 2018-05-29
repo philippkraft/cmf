@@ -62,7 +62,7 @@ class FitRetentionCurve(object):
     def __call__(self, count=1):
         final = None
         for i in range(count):
-            x0 = [random.uniform(*b) for b in self.bounds]
+            x0 = np.array([random.uniform(*b) for b in self.bounds])
             optres = opt.minimize(self.get_error, x0, bounds=self.bounds)
             if (not final) or optres.fun < final.fun:
                 final = optres
@@ -94,9 +94,6 @@ class FitBrooksCorey(FitRetentionCurve):
         self.bounds = [[1e-5, 0.999999], [1, 12], [np.min(self.theta), np.max(self.theta)]]
 
 
-
-
-
 def fit_vgm(pF, theta, fit_m=False, fit_theta_r=False, count=1, verbose=False):
     """
     Fits the vanGenuchten Mualem retention curve into measured soilphysics values
@@ -113,6 +110,7 @@ def fit_vgm(pF, theta, fit_m=False, fit_theta_r=False, count=1, verbose=False):
     optres, rc = fvgm(count=count)
     return rc, optres.fun
 
+
 def fit_bc(pF, theta, count=1, verbose=False):
     """
     Fits the vanGenuchten Mualem retention curve into measured soilphysics values
@@ -126,28 +124,3 @@ def fit_bc(pF, theta, count=1, verbose=False):
     optres, rc = fbc()
     return rc, optres.fun
 
-
-
-if __name__ == '__main__':
-    theta5 = [0.324615604527165, 0.4482, 0.4708, 0.4801, 0.4806, 0.4864, 0.582851086403064]
-    theta15 = [0.342471569196674, 0.4394, 0.4676, 0.4826, 0.4856, 0.4907, 0.566714937861957]
-    theta25 = [0.364151497261831, 0.4624, 0.4945, 0.5089, 0.5101, 0.512, 0.539286123841295]
-
-    pF = [4.2, 3, 2.5, 2, 1.8, 1.4, -1]
-    phi = [0.4, 0.6]
-    alpha = [0.0001, 1.0]
-    n = [1.001, 3]
-    theta_r = [0.0, 0.3]
-
-
-# %%
-def plot_vgms(pF, theta, phi, alpha, n, theta_r):
-    from pylab import plot, ioff, ion, draw
-    ioff()
-    pF_dense = np.arange(-1, 7, 0.01)
-    for params in zip(phi, alpha, n, theta_r):
-        vgm = make_vgm(params)
-        plot(pF_dense, vgm.theta(vgm.Wetness_pF(pF_dense)), 'k-', alpha=0.1)
-    plot(pF, theta, 'ro')
-    ion()
-    draw()
