@@ -121,6 +121,6 @@ def fit_bc(pF, theta, count=1, verbose=False):
     :return: (Retentioncurve, RMSE)
     """
     fbc = FitBrooksCorey(pF, theta, verbose=verbose)
-    optres, rc = fbc()
+    optres, rc = fbc(count=count)
     return rc, optres.fun
 
