@@ -72,7 +72,7 @@ class FitRetentionCurve:
 
 class FitVanGenuchtenMualem(FitRetentionCurve):
 
-    def __init__(self, theta, pF, fit_theta_r=False, fit_m=False, *, verbose=False):
+    def __init__(self, theta, pF, fit_theta_r=False, fit_m=False, verbose=False):
         super(FitVanGenuchtenMualem, self).__init__(cmf.VanGenuchtenMualem, theta, pF,
                                                     verbose=verbose)
         self.parameternames = 'phi', 'alpha', 'n'
@@ -87,7 +87,7 @@ class FitVanGenuchtenMualem(FitRetentionCurve):
 
 class FitBrooksCorey(FitRetentionCurve):
 
-    def __init__(self, theta, pF, *, verbose=False):
+    def __init__(self, theta, pF,verbose=False):
         super(FitBrooksCorey, self).__init__(cmf.BrooksCoreyRetentionCurve,
                                              theta, pF, verbose=verbose)
         self.parameternames = 'porosity', '_b', 'theta_x'
