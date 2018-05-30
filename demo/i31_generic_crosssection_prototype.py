@@ -81,20 +81,6 @@ class CrossSectionReach:
         return 'C'
 
     def iter_trapezoid(self, h: float):
-        """
-        Iterates over the x and depth sequence, returning (x, y1, y2) tuple
-        where:
-         - x is the horizontal wetted width of a section
-         - y1 is the left depth of the section below h
-         - y2 is the right depth of the section below h
-
-        x=y1=y2=0 for dry sections
-
-        How to implement a generator in C++:
-         - As a functor, with the generator state as attribute and the operator() as next method
-        :param h: Current depth of the river above deepest point
-        :return: x, y1, y2
-        """
         d_max = max(self.depth)
         y = [d_max - d for d in self.depth]
         for xl, xr, yl, yr in zip(self.x[:-1], self.x[1:], y[:-1], y[1:]):

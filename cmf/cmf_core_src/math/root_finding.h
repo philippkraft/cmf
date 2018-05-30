@@ -32,12 +32,21 @@
 *
 ********************************************************************************/
 
+#ifndef ROOT_FINDING_H__
+#define ROOT_FINDING_H__
+#include <cmath>
+#include <stdexcept>
+
 namespace cmf {
 	namespace math {
-		template <typename Func>
-		double brents_method(Func f, double lower_bound, double upper_bound, double offset = 0, double tolerance = 1e-12, double max_iterations = 100);
+
+		class BrentsMethod {
+		public:
+			virtual double f(double) const = 0;
+			double operator()(double lower_bound, double upper_bound,
+				double offset = 0, double tolerance = 1e-12, double max_iterations = 1000) const;
+		};
 	}
 }
 
-
-
+#endif // !ROOT_FINDING_H__

@@ -148,57 +148,6 @@ namespace cmf {
 		};
 
 
-// 		/// Calculates flow on a rough surface
-// 		///
-// 		/// - d_puddle is the average depth of the water table when run off starts
-// 		/// - d_rill is the average depth of rills (multiple triangular structure)
-// 		/// 
-// 		/// Structural behaviour:
-// 		///
-// 		/// \f[w(h) = \min(1,\frac{h}{h_0 + h_r})w_{max}\f]
-// 		/// \f[A(h) = w(h) h\f]
-// 		/// \f[q_{Manning} = A\frac{S^{1/2}}{n}(h-h_0)^{e_m}\f]
-// 		///  - \f$q_{Manning}\f$ is the flow in m3/s
-// 		///  - \f$S\f$ is the max. slope of the element
-// 		///  - \f$n\f$ is Manning roughness
-// 		///  - \f$h\f$ is the avg. depth of water above the ground
-// 		///  - \f$h_0\f$ is the minimum avg. water depth to generate flow (PuddleDepth)
-// 		///  - \f$e_m\f$ is the kinematic wave exponent. For surface flow it is typically 2/3 - 5/3
-// 		class FlowSurface: public IChannel {
-// 		protected:
-// 			double m_width;
-// 			double m_length;
-// 			double m_nManning;
-// 		public:
-// 			double d_puddle;
-// 			double d_rill;
-// 			double e_m;
-// 			virtual double get_nManning() const {return m_nManning;}
-// 			virtual void set_nManning(double nManning) {m_nManning=nManning;}
-// 			virtual double qManning(double A,double slope) const;
-// 			virtual double get_length() const {return m_length;} ///< Length of the reach
-// 			virtual char typecode() const {return 'A';}
-// 			virtual double get_channel_width(double depth) const;
-// 			/// @brief Calculates the wetted area from a given depth using the IChannel geometry. 
-// 			/// In most cases use get_flux_crossection=V/l, where V is the stored volume and l is the reach length
-// 			/// @returns Wetted area of a river cross section [m<sup>2</sup>]
-// 			/// @param depth depth of the reach [m]
-// 			virtual double get_flux_crossection(double depth) const {
-// 				return get_channel_width(depth) * depth;
-// 			}
-// 			virtual double get_wetted_perimeter(double depth) const{
-// 				return get_channel_width(depth);
-// 			}
-// 			virtual double get_depth(double area) const;
-// 			FlowSurface(double length, double width,double d_puddle=0.0,double d_rill=0.0,
-// 				double nManning=0.035, double e_m=0.6666667);
-// 			FlowSurface(const FlowSurface& other);
-// 			FlowSurface* copy() const {
-// 				return new FlowSurface(*this);
-// 			}
-// 
-// 		};
-// 
 
 		///@brief Structure for the description of structural parameters of a reach
 		///

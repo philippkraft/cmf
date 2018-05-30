@@ -10137,6 +10137,41 @@ MeanChannel.copy = new_instancemethod(_cmf_core.MeanChannel_copy, None, MeanChan
 _cmf_core.MeanChannel_swigregister(MeanChannel)
 # MeanChannel end
 
+class CrossSectionReach(IChannel):
+    """Proxy of C++ cmf::river::CrossSectionReach class."""
+
+    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __repr__ = _swig_repr
+    depth = _swig_property(_cmf_core.CrossSectionReach_depth_get, _cmf_core.CrossSectionReach_depth_set)
+    x = _swig_property(_cmf_core.CrossSectionReach_x_get, _cmf_core.CrossSectionReach_x_set)
+
+    def __init__(self, *args):
+        """
+        __init__(cmf::river::CrossSectionReach self, double l, cmf::math::num_array x, cmf::math::num_array depth) -> CrossSectionReach
+        __init__(cmf::river::CrossSectionReach self, CrossSectionReach copy) -> CrossSectionReach
+        """
+        _cmf_core.CrossSectionReach_swiginit(self, _cmf_core.new_CrossSectionReach(*args))
+
+    def copy(self, *args, **kwargs):
+        """
+        copy(CrossSectionReach self) -> CrossSectionReach
+
+        virtual IChannel*
+        copy() const =0 
+        """
+        return _cmf_core.CrossSectionReach_copy(self, *args, **kwargs)
+
+    __swig_destroy__ = _cmf_core.delete_CrossSectionReach
+
+    def check_iterator(self, *args, **kwargs):
+        """check_iterator(CrossSectionReach self, double h)"""
+        return _cmf_core.CrossSectionReach_check_iterator(self, *args, **kwargs)
+
+CrossSectionReach.copy = new_instancemethod(_cmf_core.CrossSectionReach_copy, None, CrossSectionReach)
+CrossSectionReach.check_iterator = new_instancemethod(_cmf_core.CrossSectionReach_check_iterator, None, CrossSectionReach)
+_cmf_core.CrossSectionReach_swigregister(CrossSectionReach)
+# CrossSectionReach end
+
 class OpenWaterStorage(WaterStorage):
     """
 

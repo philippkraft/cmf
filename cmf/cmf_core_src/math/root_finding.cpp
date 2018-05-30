@@ -3,10 +3,19 @@
 #include <cmath>
 #include <stdexcept>
 
-template <typename Func>
-double cmf::math::brents_method(Func f, double lower_bound, double upper_bound, 
-	double offset,
-	double tolerance, double max_iterations)
+bool use_bisection(bool last_time_bisection, double a, double b, double c, double d, double s, double tolerance)
+{
+	bool
+		c1 = (s < (3 * a + b) * 0.25) || (s > b), // New value far out of initial boundaries
+		c2 = last_time_bisection && (std::abs(s - b) >= (std::abs(b - c) * 0.5)),
+		c3 = !last_time_bisection && (std::abs(s - b) >= (std::abs(c - d) * 0.5)),
+		c4 = last_time_bisection && (std::abs(b - c) < tolerance),
+		c5 = !last_time_bisection && (std::abs(c - d) < tolerance);
+	return c1 || c2 || c3 || c4 || c5;
+
+}
+
+double cmf::math::BrentsMethod::operator()(double lower_bound, double upper_bound, double offset, double tolerance, double max_iterations) const
 {
 	double a = lower_bound;
 	double b = upper_bound;
@@ -38,6 +47,7 @@ double cmf::math::brents_method(Func f, double lower_bound, double upper_bound,
 			return s;
 		}
 
+		// Check if inverse quadratic interpolation is ok
 		if (fa != fc && fb != fc) {
 			// use inverse quadratic interpolation
 			s = (a * fb * fc / ((fa - fb) * (fa - fc)))
@@ -45,22 +55,12 @@ double cmf::math::brents_method(Func f, double lower_bound, double upper_bound,
 				+ (c * fa * fb / ((fc - fa) * (fc - fb)));
 		}
 		else {
-			// secant method
+			// use secant method
 			s = b - fb * (b - a) / (fb - fa);
 		}
 		// Check cases for using bisection
-		bool use_bisection = false;
-		{
-			bool
-				c1 = (s < (3 * a + b) * 0.25) || (s > b), // New value far out of initial boundaries
-				c2 = used_bisection && (std::abs(s - b) >= (std::abs(b - c) * 0.5)),
-				c3 = !used_bisection && (std::abs(s - b) >= (std::abs(c - d) * 0.5)),
-				c4 = used_bisection && (std::abs(b - c) < tolerance),
-				c5 = !used_bisection && (std::abs(c - d) < tolerance);
-			use_bisection = c1 || c2 || c3 || c4 || c5;
-		}
 
-		if (use_bisection) {
+		if (use_bisection(used_bisection, a, b, c, d, s, tolerance)) {
 			// bisection method
 			s = (a + b)*0.5;
 			used_bisection = true;
@@ -73,35 +73,21 @@ double cmf::math::brents_method(Func f, double lower_bound, double upper_bound,
 		c = b;      // set c equal to upper bound
 		fc = fb;    // set f(c) = f(b)
 
-		if (fa * fs < 0)   // fa and fs have opposite signs
-		{
+		if (fa * fs < 0) {  // fa and fs have opposite signs
 			b = s;
 			fb = fs;    // set f(b) = f(s)
 		}
-		else
-		{
+		else {
 			a = s;
 			fa = fs;    // set f(a) = f(s)
 		}
 
-		if (std::abs(fa) < std::abs(fb)) // if magnitude of fa is less than magnitude of fb
-		{
+		if (std::abs(fa) < std::abs(fb)) { // if magnitude of fa is less than magnitude of fb
 			std::swap(a, b);     // swap a and b
 			std::swap(fa, fb);   // make sure f(a) and f(b) are correct after swap
 		}
 
 	}
-	std::runtime_error("Brent's method: The solution does not converge or iterations are not sufficient")
 
-} 
-
-// Test case (to have something to compile)
-
-double test_function(double x) {
-	return (x - 1) * (x - 1) - 1;
-}
-
-double test_function_call(double y) {
-	real x1 = cmf::math::brents_method(test_function, -1, 1);
-	real x2 = cmf::math::brents_method(test_function, 1, 3);
+	throw std::runtime_error("Brent's method: The solution does not converge or iterations are not sufficient");
 }
