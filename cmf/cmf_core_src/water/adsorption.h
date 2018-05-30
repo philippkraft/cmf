@@ -116,6 +116,7 @@ namespace cmf {
 		/// The eq. above can not be rearanged to get \f$x_{free}\f$ from \f$x_{tot}\f$. Instead, the value is iterated
 		/// using [regula falsi](http://en.wikipedia.org/wiki/False_position_method). If n is near to 1, 
 		/// using LinearAdsorption will speed up your calculations. 
+		/// @TODO Check if an analytical solution is available
 		/// The simplest physically based adsorption model by Langmuir (LangmuirAdsorption) has also a analytical solution 
 		/// and is hence calculated faster then Freundlich.
 		class FreundlichAdsorbtion: public Adsorption {

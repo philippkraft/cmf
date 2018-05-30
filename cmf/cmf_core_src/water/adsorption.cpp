@@ -10,7 +10,9 @@ LinearAdsorption::LinearAdsorption( real _K,real _m )
 }
 real cmf::water::FreundlichAdsorbtion::totalsolute( real xf, real V ) const
 {
-	return K * pow(xf/V,n);
+	double Ceq = xf / V;
+	double q = K * pow(Ceq, 1 / n);
+	return q * m + xf;
 }
 
 namespace cmf {
@@ -34,7 +36,7 @@ real FreundlichAdsorbtion::freesolute(real xt, real V ) const
 {
 	//
 	// the Freundlich isotherm x_ad/m = K*c^n cannot be rearranged for c if n!=1
-	// hence we have to iterate the solution using Regula falsi	
+	// hence we have to iterate the solution using Brent's method
 	cmf::water::FreundlichAdsorptionCalculator fac(this);
 	double c_free = fac(0, 1, xt);
 	return c_free * V;
@@ -81,7 +83,7 @@ real LangmuirAdsorption::freesolute( real xt,real V ) const
 	lm_xf = solve(lm_iso,xf)
 	# Get the ccode
 	for solution in lm_xf:
-		print ccode(lm_xf)
+		print(ccode(lm_xf))
 	*/
 	return  
 		(
