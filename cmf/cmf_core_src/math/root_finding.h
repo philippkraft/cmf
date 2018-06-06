@@ -41,10 +41,12 @@ namespace cmf {
 	namespace math {
 
 		class BrentsMethod {
+			double tolerance;
+			unsigned int max_iterations;
 		public:
+			BrentsMethod(double tolerance = 1e-12, unsigned int max_iterations = 1000);
 			virtual double f(double) const = 0;
-			double operator()(double lower_bound, double upper_bound,
-				double offset = 0, double tolerance = 1e-12, double max_iterations = 1000) const;
+			double operator()(double lower_bound, double upper_bound, double offset = 0) const;
 		};
 	}
 }

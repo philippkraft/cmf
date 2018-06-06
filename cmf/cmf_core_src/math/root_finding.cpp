@@ -15,7 +15,7 @@ bool use_bisection(bool last_time_bisection, double a, double b, double c, doubl
 
 }
 
-double cmf::math::BrentsMethod::operator()(double lower_bound, double upper_bound, double offset, double tolerance, double max_iterations) const
+double cmf::math::BrentsMethod::operator()(double lower_bound, double upper_bound, double offset) const
 {
 	double a = lower_bound;
 	double b = upper_bound;
@@ -91,3 +91,7 @@ double cmf::math::BrentsMethod::operator()(double lower_bound, double upper_boun
 
 	throw std::runtime_error("Brent's method: The solution does not converge or iterations are not sufficient");
 }
+
+cmf::math::BrentsMethod::BrentsMethod(double _tolerance, unsigned int _max_iterations)
+	: tolerance(_tolerance), max_iterations(_max_iterations)
+{}

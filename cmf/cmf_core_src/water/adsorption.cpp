@@ -17,12 +17,13 @@ real cmf::water::FreundlichAdsorbtion::totalsolute( real xf, real V ) const
 
 namespace cmf {
 	namespace water {
-		class FreundlichAdsorptionCalculator : public cmf::math::BrentsMethod
+		class FreundlichAdsorptionCalculator
+			: public cmf::math::BrentsMethod
 		{
 		public:
 			const cmf::water::FreundlichAdsorbtion * owner;
 			FreundlichAdsorptionCalculator(const cmf::water::FreundlichAdsorbtion * fa)
-				: owner(fa)
+				: BrentsMethod(owner->epsilon, owner->maxiter), owner(fa)
 			{	}
 			virtual double f(double c) const {
 				return owner->totalsolute(c, 1.0);
@@ -35,7 +36,7 @@ namespace cmf {
 real FreundlichAdsorbtion::freesolute(real xt, real V ) const
 {
 	//
-	// the Freundlich isotherm x_ad/m = K*c^n cannot be rearranged for c if n!=1
+	// the Freundlich isotherm x_tot = x_ad + x_free = (m*K*c^n) + (c*V) cannot be rearranged for c if n!=1
 	// hence we have to iterate the solution using Brent's method
 	cmf::water::FreundlichAdsorptionCalculator fac(this);
 	double c_free = fac(0, 1, xt);
@@ -71,7 +72,6 @@ real LangmuirAdsorption::freesolute( real xt,real V ) const
 	xt = Symbol('xt')
 	m = Symbol('m')
 	K = Symbol('K')
-	#qmax = Symbol('qmax')
 	V = Symbol('V')
 	# Define sorbent load q
 	q = (xt-xf)/m
