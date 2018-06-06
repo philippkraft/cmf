@@ -77143,22 +77143,8 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"SoluteStorage_source_set", _wrap_SoluteStorage_source_set, METH_VARARGS, (char *)"SoluteStorage_source_set(SoluteStorage self, real source)"},
 	 { (char *)"SoluteStorage_source_get", (PyCFunction)_wrap_SoluteStorage_source_get, METH_O, (char *)"SoluteStorage_source_get(SoluteStorage self) -> real"},
 	 { (char *)"SoluteStorage_Solute_get", (PyCFunction)_wrap_SoluteStorage_Solute_get, METH_O, (char *)"SoluteStorage_Solute_get(SoluteStorage self) -> solute"},
-	 { (char *)"SoluteStorage_conc_set", _wrap_SoluteStorage_conc_set, METH_VARARGS, (char *)"\n"
-		"SoluteStorage_conc_set(SoluteStorage self, real conc)\n"
-		"\n"
-		"real conc()\n"
-		"const\n"
-		"\n"
-		"Returns the concentration of the solute. \n"
-		""},
-	 { (char *)"SoluteStorage_conc_get", (PyCFunction)_wrap_SoluteStorage_conc_get, METH_O, (char *)"\n"
-		"SoluteStorage_conc_get(SoluteStorage self) -> real\n"
-		"\n"
-		"real conc()\n"
-		"const\n"
-		"\n"
-		"Returns the concentration of the solute. \n"
-		""},
+	 { (char *)"SoluteStorage_conc_set", _wrap_SoluteStorage_conc_set, METH_VARARGS, (char *)"SoluteStorage_conc_set(SoluteStorage self, real conc)"},
+	 { (char *)"SoluteStorage_conc_get", (PyCFunction)_wrap_SoluteStorage_conc_get, METH_O, (char *)"SoluteStorage_conc_get(SoluteStorage self) -> real"},
 	 { (char *)"delete_SoluteStorage", (PyCFunction)_wrap_delete_SoluteStorage, METH_O, (char *)"delete_SoluteStorage(SoluteStorage self)"},
 	 { (char *)"SoluteStorage_swigregister", SoluteStorage_swigregister, METH_VARARGS, NULL},
 	 { (char *)"flux_node_node_id_get", (PyCFunction)_wrap_flux_node_node_id_get, METH_O, (char *)"flux_node_node_id_get(flux_node self) -> int const"},
@@ -77665,7 +77651,7 @@ static PyMethodDef SwigMethods[] = {
 		"WaterStorage_Solute(WaterStorage self, solute _Solute) -> SoluteStorage\n"
 		"\n"
 		"const\n"
-		"SoluteStorage& Solute(const cmf::water::solute &_Solute) const \n"
+		"SoluteStorage& Solute(const cmf::water::solute _Solute) const \n"
 		""},
 	 { (char *)"WaterStorage_conc", _wrap_WaterStorage_conc, METH_VARARGS, (char *)"\n"
 		"conc(solute _Solute) -> real\n"
@@ -79292,7 +79278,7 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"Cell_surfacewater_as_storage", (PyCFunction)_wrap_Cell_surfacewater_as_storage, METH_O, (char *)"\n"
 		"Cell_surfacewater_as_storage(Cell self) -> cmf::upslope::surfacewater_ptr\n"
 		"\n"
-		"void surfacewater_as_storage()\n"
+		"surfacewater_ptr surfacewater_as_storage()\n"
 		"\n"
 		"Makes the surfacewater of this cell a cmf::upslope::SurfaceWater\n"
 		"storage. \n"
@@ -80963,7 +80949,13 @@ static PyMethodDef SwigMethods[] = {
 		"Gets the height function (a cmf::river::Prism) for further reference.\n"
 		"\n"
 		""},
-	 { (char *)"SurfaceWater_get_coverage", (PyCFunction)_wrap_SurfaceWater_get_coverage, METH_O, (char *)"SurfaceWater_get_coverage(SurfaceWater self) -> double"},
+	 { (char *)"SurfaceWater_get_coverage", (PyCFunction)_wrap_SurfaceWater_get_coverage, METH_O, (char *)"\n"
+		"SurfaceWater_get_coverage(SurfaceWater self) -> double\n"
+		"\n"
+		"double get_coverage() const\n"
+		"\n"
+		"Get surface coverage as a function of the actual volume. \n"
+		""},
 	 { (char *)"SurfaceWater_get_cell", (PyCFunction)_wrap_SurfaceWater_get_cell, METH_O, (char *)"\n"
 		"SurfaceWater_get_cell(SurfaceWater self) -> Cell\n"
 		"\n"
@@ -81781,33 +81773,34 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"ShuttleworthWallace_transp_from_layer", (PyCFunction) _wrap_ShuttleworthWallace_transp_from_layer, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
 		"ShuttleworthWallace_transp_from_layer(ShuttleworthWallace self, cmf::upslope::SoilLayer::ptr sl, Time t) -> double\n"
 		"\n"
-		"virtual\n"
-		"double transp_from_layer(cmf::upslope::SoilLayer::ptr sl,\n"
-		"cmf::math::Time t)\n"
+		"double\n"
+		"transp_from_layer(cmf::upslope::SoilLayer::ptr sl, cmf::math::Time t)\n"
 		"\n"
-		"returns the transpiration rate from one layer in m3/day \n"
 		""},
 	 { (char *)"ShuttleworthWallace_evap_from_layer", (PyCFunction) _wrap_ShuttleworthWallace_evap_from_layer, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
 		"ShuttleworthWallace_evap_from_layer(ShuttleworthWallace self, cmf::upslope::SoilLayer::ptr sl, Time t) -> double\n"
 		"\n"
-		"virtual\n"
-		"double evap_from_layer(cmf::upslope::SoilLayer::ptr sl,\n"
-		"cmf::math::Time t)\n"
-		"\n"
-		"returns the soil evaporation rate from one layer in m3/day \n"
+		"double\n"
+		"evap_from_layer(cmf::upslope::SoilLayer::ptr sl, cmf::math::Time t) \n"
 		""},
-	 { (char *)"ShuttleworthWallace_evap_from_surfacewater", (PyCFunction) _wrap_ShuttleworthWallace_evap_from_surfacewater, METH_VARARGS | METH_KEYWORDS, (char *)"ShuttleworthWallace_evap_from_surfacewater(ShuttleworthWallace self, cmf::river::OpenWaterStorage::ptr ows, Time t) -> double"},
+	 { (char *)"ShuttleworthWallace_evap_from_surfacewater", (PyCFunction) _wrap_ShuttleworthWallace_evap_from_surfacewater, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
+		"ShuttleworthWallace_evap_from_surfacewater(ShuttleworthWallace self, cmf::river::OpenWaterStorage::ptr ows, Time t) -> double\n"
+		"\n"
+		"double\n"
+		"evap_from_surfacewater(cmf::river::OpenWaterStorage::ptr ows,\n"
+		"cmf::math::Time t) \n"
+		""},
 	 { (char *)"ShuttleworthWallace_evap_from_canopy", (PyCFunction) _wrap_ShuttleworthWallace_evap_from_canopy, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
 		"ShuttleworthWallace_evap_from_canopy(ShuttleworthWallace self, cmf::water::WaterStorage::ptr canopy, Time t) -> double\n"
 		"\n"
-		"virtual\n"
-		"double evap_from_canopy(cmf::water::WaterStorage::ptr canopy,\n"
-		"cmf::math::Time t) \n"
+		"double\n"
+		"evap_from_canopy(cmf::water::WaterStorage::ptr canopy, cmf::math::Time\n"
+		"t) \n"
 		""},
 	 { (char *)"ShuttleworthWallace_evap_from_snow", (PyCFunction) _wrap_ShuttleworthWallace_evap_from_snow, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
 		"ShuttleworthWallace_evap_from_snow(ShuttleworthWallace self, cmf::water::WaterStorage::ptr snow, Time t) -> double\n"
 		"\n"
-		"virtual double\n"
+		"double\n"
 		"evap_from_snow(cmf::water::WaterStorage::ptr snow, cmf::math::Time t)\n"
 		"\n"
 		""},
@@ -81824,28 +81817,57 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"delete_ShuttleworthWallace", (PyCFunction)_wrap_delete_ShuttleworthWallace, METH_O, (char *)"\n"
 		"delete_ShuttleworthWallace(ShuttleworthWallace self)\n"
 		"\n"
-		"virtual\n"
 		"~ShuttleworthWallace() \n"
 		""},
 	 { (char *)"ShuttleworthWallace_swigregister", ShuttleworthWallace_swigregister, METH_VARARGS, NULL},
 	 { (char *)"ShuttleworthWallace_swiginit", ShuttleworthWallace_swiginit, METH_VARARGS, NULL},
-	 { (char *)"new_SW_transpiration", (PyCFunction) _wrap_new_SW_transpiration, METH_VARARGS | METH_KEYWORDS, (char *)"new_SW_transpiration(cmf::upslope::SoilLayer::ptr source, cmf::water::flux_node::ptr ET_target, cmf::upslope::ET::ShuttleworthWallace::ptr owner) -> SW_transpiration"},
+	 { (char *)"new_SW_transpiration", (PyCFunction) _wrap_new_SW_transpiration, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
+		"new_SW_transpiration(cmf::upslope::SoilLayer::ptr source, cmf::water::flux_node::ptr ET_target, cmf::upslope::ET::ShuttleworthWallace::ptr owner) -> SW_transpiration\n"
+		"\n"
+		"SW_transpiration(cmf::upslope::SoilLayer::ptr source,\n"
+		"cmf::water::flux_node::ptr ET_target, ShuttleworthWallace::ptr owner)\n"
+		"\n"
+		""},
 	 { (char *)"delete_SW_transpiration", (PyCFunction)_wrap_delete_SW_transpiration, METH_O, (char *)"delete_SW_transpiration(SW_transpiration self)"},
 	 { (char *)"SW_transpiration_swigregister", SW_transpiration_swigregister, METH_VARARGS, NULL},
 	 { (char *)"SW_transpiration_swiginit", SW_transpiration_swiginit, METH_VARARGS, NULL},
-	 { (char *)"new_SW_evap_from_layer", (PyCFunction) _wrap_new_SW_evap_from_layer, METH_VARARGS | METH_KEYWORDS, (char *)"new_SW_evap_from_layer(cmf::upslope::SoilLayer::ptr source, cmf::water::flux_node::ptr ET_target, cmf::upslope::ET::ShuttleworthWallace::ptr owner) -> SW_evap_from_layer"},
+	 { (char *)"new_SW_evap_from_layer", (PyCFunction) _wrap_new_SW_evap_from_layer, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
+		"new_SW_evap_from_layer(cmf::upslope::SoilLayer::ptr source, cmf::water::flux_node::ptr ET_target, cmf::upslope::ET::ShuttleworthWallace::ptr owner) -> SW_evap_from_layer\n"
+		"\n"
+		"SW_evap_from_layer(cmf::upslope::SoilLayer::ptr source,\n"
+		"cmf::water::flux_node::ptr ET_target, ShuttleworthWallace::ptr owner)\n"
+		"\n"
+		""},
 	 { (char *)"delete_SW_evap_from_layer", (PyCFunction)_wrap_delete_SW_evap_from_layer, METH_O, (char *)"delete_SW_evap_from_layer(SW_evap_from_layer self)"},
 	 { (char *)"SW_evap_from_layer_swigregister", SW_evap_from_layer_swigregister, METH_VARARGS, NULL},
 	 { (char *)"SW_evap_from_layer_swiginit", SW_evap_from_layer_swiginit, METH_VARARGS, NULL},
-	 { (char *)"new_SW_evap_from_canopy", (PyCFunction) _wrap_new_SW_evap_from_canopy, METH_VARARGS | METH_KEYWORDS, (char *)"new_SW_evap_from_canopy(cmf::water::WaterStorage::ptr source, cmf::water::flux_node::ptr ET_target, cmf::upslope::ET::ShuttleworthWallace::ptr owner) -> SW_evap_from_canopy"},
+	 { (char *)"new_SW_evap_from_canopy", (PyCFunction) _wrap_new_SW_evap_from_canopy, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
+		"new_SW_evap_from_canopy(cmf::water::WaterStorage::ptr source, cmf::water::flux_node::ptr ET_target, cmf::upslope::ET::ShuttleworthWallace::ptr owner) -> SW_evap_from_canopy\n"
+		"\n"
+		"SW_evap_from_canopy(cmf::water::WaterStorage::ptr source,\n"
+		"cmf::water::flux_node::ptr ET_target, ShuttleworthWallace::ptr owner)\n"
+		"\n"
+		""},
 	 { (char *)"delete_SW_evap_from_canopy", (PyCFunction)_wrap_delete_SW_evap_from_canopy, METH_O, (char *)"delete_SW_evap_from_canopy(SW_evap_from_canopy self)"},
 	 { (char *)"SW_evap_from_canopy_swigregister", SW_evap_from_canopy_swigregister, METH_VARARGS, NULL},
 	 { (char *)"SW_evap_from_canopy_swiginit", SW_evap_from_canopy_swiginit, METH_VARARGS, NULL},
-	 { (char *)"new_SW_evap_from_snow", (PyCFunction) _wrap_new_SW_evap_from_snow, METH_VARARGS | METH_KEYWORDS, (char *)"new_SW_evap_from_snow(cmf::water::WaterStorage::ptr source, cmf::water::flux_node::ptr ET_target, cmf::upslope::ET::ShuttleworthWallace::ptr owner) -> SW_evap_from_snow"},
+	 { (char *)"new_SW_evap_from_snow", (PyCFunction) _wrap_new_SW_evap_from_snow, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
+		"new_SW_evap_from_snow(cmf::water::WaterStorage::ptr source, cmf::water::flux_node::ptr ET_target, cmf::upslope::ET::ShuttleworthWallace::ptr owner) -> SW_evap_from_snow\n"
+		"\n"
+		"SW_evap_from_snow(cmf::water::WaterStorage::ptr source,\n"
+		"cmf::water::flux_node::ptr ET_target, ShuttleworthWallace::ptr owner)\n"
+		"\n"
+		""},
 	 { (char *)"delete_SW_evap_from_snow", (PyCFunction)_wrap_delete_SW_evap_from_snow, METH_O, (char *)"delete_SW_evap_from_snow(SW_evap_from_snow self)"},
 	 { (char *)"SW_evap_from_snow_swigregister", SW_evap_from_snow_swigregister, METH_VARARGS, NULL},
 	 { (char *)"SW_evap_from_snow_swiginit", SW_evap_from_snow_swiginit, METH_VARARGS, NULL},
-	 { (char *)"new_SW_evap_from_surfacewater", (PyCFunction) _wrap_new_SW_evap_from_surfacewater, METH_VARARGS | METH_KEYWORDS, (char *)"new_SW_evap_from_surfacewater(cmf::river::OpenWaterStorage::ptr source, cmf::water::flux_node::ptr ET_target, cmf::upslope::ET::ShuttleworthWallace::ptr owner) -> SW_evap_from_surfacewater"},
+	 { (char *)"new_SW_evap_from_surfacewater", (PyCFunction) _wrap_new_SW_evap_from_surfacewater, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
+		"new_SW_evap_from_surfacewater(cmf::river::OpenWaterStorage::ptr source, cmf::water::flux_node::ptr ET_target, cmf::upslope::ET::ShuttleworthWallace::ptr owner) -> SW_evap_from_surfacewater\n"
+		"\n"
+		"SW_evap_from_surfacewater(cmf::river::OpenWaterStorage::ptr source,\n"
+		"cmf::water::flux_node::ptr ET_target, ShuttleworthWallace::ptr owner)\n"
+		"\n"
+		""},
 	 { (char *)"delete_SW_evap_from_surfacewater", (PyCFunction)_wrap_delete_SW_evap_from_surfacewater, METH_O, (char *)"delete_SW_evap_from_surfacewater(SW_evap_from_surfacewater self)"},
 	 { (char *)"SW_evap_from_surfacewater_swigregister", SW_evap_from_surfacewater_swigregister, METH_VARARGS, NULL},
 	 { (char *)"SW_evap_from_surfacewater_swiginit", SW_evap_from_surfacewater_swiginit, METH_VARARGS, NULL},

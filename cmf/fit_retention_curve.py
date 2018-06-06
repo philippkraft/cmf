@@ -23,6 +23,7 @@ Created on 07.10.2009
 
 @author: philkraf
 '''
+
 from __future__ import division, print_function, absolute_import
 import cmf
 import numpy as np
@@ -87,7 +88,7 @@ class FitVanGenuchtenMualem(FitRetentionCurve):
 
 class FitBrooksCorey(FitRetentionCurve):
 
-    def __init__(self, theta, pF,verbose=False):
+    def __init__(self, theta, pF, verbose=False):
         super(FitBrooksCorey, self).__init__(cmf.BrooksCoreyRetentionCurve,
                                              theta, pF, verbose=verbose)
         self.parameternames = 'porosity', '_b', 'theta_x'
