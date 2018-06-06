@@ -7,10 +7,10 @@ The state of a water storage in cmf is always the volume of the actually
 stored water, and the change rate of the state is the sum of the fluxes
 in an out of the water storage (finite volume, see FiniteVolumeMethod).
 However, physical descriptions of water flux is often based on the
-gradient of the [hydraulic head](WikiPedia:Hydraulic_head) in space,
-like [Darcian](WikiPedia:Darcy's_law) or
-[Richards](WikiPedia:Richards_equation) approaches, and the 2nd St.
-Venant equation for surface water. To make such approaces available in
+gradient of the [hydraulic head](https://en.wikipedia.org/wiki/Hydraulic_head) 
+in space, like [Darcian](https://en.wikipedia.org/wiki/Darcy%27s_law) or
+[Richards](https://en.wikipedia.org/wiki/Richards_equation) approaches, 
+and the 2nd St. Venant equation for surface water. To make such approaces available in
 cmf, a functional relation between volume and hydraulic head (or
 potential) needs to be available. In cmf, the term potential (symbol
 @f$\Psi@f$) is used.
@@ -31,7 +31,7 @@ The potential or hydraulic head for porous media is commonly defined as:
 where:
 - @f$\Psi_{tot}@f$
  is the total potential of the water storage in m water column
-- @f$z@f$ is the height above the reference height in m, the gravitaional potential
+- @f$z@f$ is the height above the reference height in m, the gravitational potential
 - @f$\Psi_M(\theta)@f$ is the matrix potential, a function of the water content @f$\theta)@f$, also called the suction pressure in m. @f$\Psi_M<0m@f$ for unsaturated media and @f$\Psi_M=0m@f$ for saturated conditions
 - @f$p@f$ is the hydrostatic pressure from upper water storages in m
 - @f$\Psi_O@f$ is the osmotic potential in m
@@ -175,7 +175,7 @@ where:
 
 
 For the comparisons of the different retention curves, we define a
-function to plot the curves. You can play around with the paramters and
+function to plot the curves. You can play around with the parameters and
 see the different effects.
 
 ~~~~~~~~~~~~~{.py}
