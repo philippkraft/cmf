@@ -1,10 +1,6 @@
 @page cmfTutRetentioncurve
 
 
-
- ,
-[next...](@ref cmfTutVolumeHeight)
-
 # Hydraulic head and stored water volume
 
 The state of a water storage in cmf is always the volume of the actually
@@ -27,30 +23,18 @@ of the watertable above a model wide reference height, often sea level.
 
 The potential or hydraulic head for porous media is commonly defined as:
 
-~~~~~~~~~~~~~ 
-
-#!td style="vertical-align: top"
-
-{{{#!latex
 @f[
-[\Psi_{tot}|= z + \Psi_M(\theta) + p + \Psi_O
+\Psi_{tot} = z + \Psi_M(\theta) + p + \Psi_O
 @f]
-~~~~~~~~~~~~~
 
-\] }}}
-
-~~~~~~~~~~~~~ 
-
-#!td
 
 where:
-- {{{@f$\Psi_{tot}@f$}}}
+- @f$\Psi_{tot}@f$
  is the total potential of the water storage in m water column
-- {{{@f$z@f$}}} is the height above the reference height in m, the gravitaional potential
-- {{{@f$\Psi_M(\theta)@f$}}} is the matrix potential, a function of the water content {{{@f$\theta)@f$}}}, also called the suction pressure in m. {{{@f$\Psi_M<0m@f$}}} for unsaturated media and {{{@f$\Psi_M=0m@f$}}} for saturated conditions
-- {{{@f$p@f$}}} is the hydrostatic pressure from upper water storages in m
-- {{{@f$\Psi_O@f$}}} is the osmotic potential in m
-~~~~~~~~~~~~~
+- @f$z@f$ is the height above the reference height in m, the gravitaional potential
+- @f$\Psi_M(\theta)@f$ is the matrix potential, a function of the water content @f$\theta)@f$, also called the suction pressure in m. @f$\Psi_M<0m@f$ for unsaturated media and @f$\Psi_M=0m@f$ for saturated conditions
+- @f$p@f$ is the hydrostatic pressure from upper water storages in m
+- @f$\Psi_O@f$ is the osmotic potential in m
 
 # Using subsurface potential in cmf
 
@@ -65,8 +49,7 @@ as oversaturated, thus gaining a matric potential above 0m and thus
 accounting for the hydrostatic pressure. With these definitions,
 @f$\Psi_{tot}@f$ is in cmf only a function of the position of the
 water storage in space and its water content, which is again a function
-of the stored water volume in m³ @f$\Psi_{tot} = z +
-\Psi_M(\theta)@f$.
+of the stored water volume in m³ @f$\Psi_{tot} = z + \Psi_M(\theta)@f$.
 
 ## Getting and setting the potential in cmf
 
@@ -74,7 +57,7 @@ Every flux node in cmf has a property `potential` returning the
 absolut potential @f$\Psi_{tot}@f$ of that flux node. For soil layers,
 one can query the gravitational potential @f$z@f$ and the matrix
 potential @f$\Psi_M@f$ also. The gravitational potential for layer
-`l`is defined as the height of the upper layer boundary above
+`l` is defined as the height of the upper layer boundary above
 reference height
 
 ~~~~~~~~~~~~~{.py}
@@ -126,7 +109,7 @@ behaviour.
 
 It is also possible to set the `saturated_depth` of a cell for
 simplified setting of initial conditions. All layers of the cell will be
-put into vertical hydrostatic equilibrium '''for that cell''' with the
+put into vertical hydrostatic equilibrium **for that cell** with the
 same potential. Hence
 
 ~~~~~~~~~~~~~{.py}
@@ -157,10 +140,12 @@ Brooks-Corey curve (Brooks & Corey 1964). Both curves are consist of the
 pressure - water content relation and another function, based on the
 same parameters to calculate the unsaturated hydraulic conductivity.
 Additional retention curves can be easily implemented in cmf on request,
-however they must meet the following conditions: 1. it must be possible
-to calculate the matrix potential from water content, and not only the
-other way round like the Durner dual porosity curve in Hydrus 1D. 2. The
-curve must be extrapolated for oversaturation.
+however they must meet the following conditions:
+ 
+   1. it must be possible to calculate the matrix potential from water content, 
+      and not only the other way round like the Durner dual porosity curve in 
+      Hydrus 1D.
+   2. The curve must be extrapolated for oversaturation.
 
 Until now the VanGenuchten-Mualem curve and the Brooks-Corey curve are
 implemented in cmf. For more conceptual models the so called linear
@@ -169,54 +154,25 @@ retention curve can be used.
 All curves share the definition of the water content @f$\theta@f$ and
 the water filled pore space (wetness) @f$W@f$:
 
-~~~~~~~~~~~~~ 
 
-#!td
-
-{{{#!latex
 @f[
-[\theta|= \frac V {A \Delta z}
+\theta = \frac V {A \Delta z}
 @f]
-~~~~~~~~~~~~~
-
-\] }}}
-
-~~~~~~~~~~~~~ 
-
-#!td
 
 where:
-* {{{@f$V@f$}}}
+* @f$V@f$
  is the stored water volume of the soil layer in m³
-* {{{@f$A@f$}}} is the area of the soil column in m²
-* {{{@f$\Delta z@f$}}} is the thickness of the soillayer
-~~~~~~~~~~~~~
+* @f$A@f$ is the area of the soil column in m²
+* @f$\Delta z@f$ is the thickness of the soillayer
 
-|                   |
-| ----------------- |
-| ---------------- |
-
-~~~~~~~~~~~~~ 
-
-#!td
-
-{{{#!latex
 @f[
-[W|= \frac{\theta - \theta_r}{\Phi - \theta_r}
+ W = \frac{\theta - \theta_r}{\Phi - \theta_r}
 @f]
-~~~~~~~~~~~~~
-
-\] }}}
-
-~~~~~~~~~~~~~ 
-
-#!td
 
 where:
-* {{{@f$\theta_r@f$}}}
- is the residual water content in m³/m³
-* {{{@f$\Phi@f$}}} is the porosity of the soil in m³/m³
-~~~~~~~~~~~~~
+* @f$\theta_r@f$ is the residual water content in m³/m³
+* @f$\Phi@f$ is the porosity of the soil in m³/m³
+
 
 For the comparisons of the different retention curves, we define a
 function to plot the curves. You can play around with the paramters and
@@ -253,11 +209,13 @@ Definition from the API-documentation:
 The equation of the curve and the parameters are described in the
 API-documentation. In the following, you will create a
 VanGenuchten-Mualem curve with the follwing paramters in cmf:
-||||=Parameter =||=value =||=unit =||=Description =|| ||
-@f$K_{sat}@f$|| = || 2.5 ||@f$m/day@f$ ||Saturated conductivity ||
-|| @f$\alpha@f$|| = || 0.1 ||@f$1/cm@f$ ||Inverse of water entry
-potential || || @f$n@f$|| = || 1.6 ||- ||Poresize distribution
-parameter || || @f$\Phi@f$|| = || 0.52 ||@f$m^3/m^3@f$ ||Porosity ||
+
+|Parameter     | value | unit          | Description | 
+|:-------------|------:|:-------------:|:------------|
+|@f$K_{sat}@f$ | 2.5   | @f$m/day@f$   | Saturated conductivity | 
+|@f$\alpha@f$  | 0.1   | @f$1/cm@f$    | Inverse of water entry potential |
+|@f$n@f$       | 1.6   |               | Poresize distribution parameter |
+|@f$\Phi@f$    | 0.52  | @f$m^3/m^3@f$ | Porosity |
 
 ~~~~~~~~~~~~~{.py}
 
@@ -273,8 +231,8 @@ plot_rc(vgm,Psi_M)
 
 As noted above, cmf mimics the hydrostatic pressure by allowing a slight
 oversaturation for the case of hydrostatic pressure @f$W(\Psi_M) > 1.0\
-\forall\ \Psi_M>0@f$. To archive that, at a wetness near to saturation,
-@f$W_0@f$ the VanGenuchten curve @f$\Psi_M(W)@f$ is replaced by a
+\forall\ \Psi_M>0@f$. To archive that, at a wetness near to saturation
+(@f$W_0@f$), the VanGenuchten curve @f$\Psi_M(W)@f$ is replaced by a
 parabolic extrapolation function @f$f_{ex}(W)@f$, which has the
 following properties:
 
@@ -282,30 +240,39 @@ following properties:
   - @f$\frac {df_{ex}}{dW}(W_0) = \frac{d\Psi_M}{dW}(W_0)@f$: the
     combined curve is continuously differentiable
   - @f$f_{ex}(1.0) = 0.0 m@f$: The extrapolated matrix potential at
-    saturation is 0m Choosing w0 does affect the degree of
-    oversaturation strongly, but has different effect for different
-    parameters, as the following table shows for the VanGenuchten
-    curve from the example. ||= @f$w0@f$ =||= @f$f_{ex}(+0.5\ m)@f$
-    =||= @f$f_{ex}(+1.0\ m)@f$ =||= @f$f_{ex}(+2.0\ m)@f$ =|| ||=
-    0.99=|| 1.06|| 1.088|| 1.128|| ||= 0.995=|| 1.038|| 1.056|| 1.081||
-    ||= 0.999=|| 1.013|| 1.019|| 1.028|| ||= 0.9996=|| 1.007|| 1.01||
-    1.015|| ||= 0.9999=|| 1.003|| 1.004|| 1.006|| From an accurcy view
-    point, the oversaturation should be as small as possible. However,
-    the steeper @f$f_{ex}(W)@f$ for W\>1, the unstable is the
-    numerical solution. The user needs to define, what oversaturation is
-    tolerable and set W0 accordingly. If you find a 1% oversaturation at
-    @f$\Psi_M=+1.0@f$ tolerable, then set @f$W_0=0.9996@f$ for this
-    curve as follows:
-
-<!-- end list -->
+    saturation is 0m 
+    
+Choosing w0 does affect the degree of
+oversaturation strongly, but has different effect for different
+parameters, as the following table shows for the VanGenuchten
+curve from the example. 
+    
+|@f$w0@f$ | @f$f_{ex}(+0.5\ m)@f$ | @f$f_{ex}(+1.0\ m)@f$ | @f$f_{ex}(+2.0\ m)@f$ |
+|--------:|----------------------:|----------------------:|----------------------:|
+|0.99   | 1.06  | 1.088 | 1.128  |
+|0.995  | 1.038 | 1.056 | 1.081  | 
+|0.999  | 1.013 | 1.019 | 1.028  |
+|0.9996 | 1.007 | 1.01  | 1.015  |
+|0.9999 | 1.003 | 1.004 | 1.006  |
+    
+From an accurcy view point, the oversaturation should be as small as possible. 
+However, the steeper @f$f_{ex}(W)@f$ for W\>1, the more unstable is the
+numerical solution. The user needs to define, which oversaturation is
+tolerable and set W0 accordingly. If you find a 1% oversaturation at
+@f$\Psi_M=+1.0@f$ tolerable, then set @f$W_0=0.9996@f$ for this
+curve as follows:
 
 ~~~~~~~~~~~~~{.py}
-
 vgm.w0 = 0.9996
 ~~~~~~~~~~~~~
 
-From revision 600 and above, you can optimize w0 for a target
-oversaturation using the fit_w0 function.
+To find the optimal point one can use the 
+[fit_w0](@ref cmf::upslope::VanGenuchtenMualem::fit_w0)
+method:
+
+~~~~~~~~~~~~{.py}
+vgm.fit_w0(w1=1.01, Psi_p=1.0)
+~~~~~~~~~~~~
 
 ## Brooks & Corey curve
 
