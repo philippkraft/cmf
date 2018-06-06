@@ -21,7 +21,7 @@
 #include <limits>
 #include <sstream>
 #include "../../math/real.h"
-
+#include "../../math/root_finding.h"
 // Class for an parabolic extrapolation of a retention curve
 namespace cmf {
 	namespace upslope {
@@ -308,27 +308,23 @@ cmf::upslope::VanGenuchtenMualem::VanGenuchtenMualem( real _Ksat, real _phi,real
 	}
 	if (error) throw std::runtime_error(msg.str());
 }
-
+class W0Fitter : public cmf::math::BrentsMethod {
+public:
+	mutable cmf::upslope::VanGenuchtenMualem vgm;
+	double w1, Psi_P;
+	W0Fitter(const cmf::upslope::VanGenuchtenMualem& owner, real _w1/*=1.01*/, real _Psi_p/*=1.0*/)
+		: BrentsMethod(1e-4), vgm(owner), w1(_w1), Psi_P(_Psi_p) {}
+	double f(double w0) const {
+		vgm.w0 = w0;
+		return (vgm.Wetness(Psi_P) - w1) / (w1 - 1);
+	}
+};
 real cmf::upslope::VanGenuchtenMualem::fit_w0( real w1/*=1.01*/,real Psi_p/*=1.0*/,real tolerance/*=0.1*/ )
 {
-	real w1_,error;
-	// Do not more then 100 iterations
-	for (int i = 0; i < 100 ; ++i)
-	{
-		// get wetness at Psi_p
-		w1_ = Wetness(Psi_p);
-		// Compare wetness
-		error = (w1_ - w1)/(w1-1);
-		// if w1_ is too big, raise w0
-		if (error>tolerance)
-			w0+=.5*(1-w0);
-		// if w1_ is too small, lower w0
-		else if (error<-tolerance)
-			w0-=.5*(1-w0);
-		else
-			break;
-	}
-	return w0;
+	W0Fitter w0_fitter(*this, w1, Psi_p);
+	double error = w0_fitter(0.9, 1 - 1e-12);
+	this->w0 = w0_fitter.vgm.w0;
+	return this->w0;
 }
 
 real cmf::upslope::VanGenuchtenMualem::Diffusivity( real wetness ) const
