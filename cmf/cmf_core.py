@@ -1509,7 +1509,6 @@ class timeseries(object):
         return _cmf_core.timeseries___len__(self, *args, **kwargs)
 
 
-
     def __repr__(self):
        return "cmf.timeseries(%s:%s:%s,count=%i)" % (self.begin,self.end,self.step,self.size())
 
@@ -1571,15 +1570,12 @@ class timeseries(object):
         res*=other
         return res
 
-    def iter_time(self, as_float=0):
-        """Returns an iterator to iterate over each timestep
-        as_float if True, the timesteps will returned as floating point numbers representing the days after 1.1.0001 00:00
+    def iter_time(self):
+        """
+        Returns an iterator to iterate over each timestep
         """
         for i in range(len(self)):
-            if as_float:
-                yield ((self.begin + self.step * i) - cmf.Time(1,1,1)).AsDays()
-            else:
-                yield self.begin + self.step * i
+            yield self.begin + self.step * i
 
     def to_buffer(self):
         """Returns a binary buffer filled with the data of self"""
@@ -1609,7 +1605,6 @@ class timeseries(object):
         step = ms * data['step']
         self.__init__(begin, step, data['interpolationpower'])
         self.extend(data['values'])
-
 
     def to_pandas(self):
         """
@@ -4346,7 +4341,7 @@ class WaterStorage(StateVariable, StateVariableOwner, flux_node):
         Solute(WaterStorage self, solute _Solute) -> SoluteStorage
 
         const
-        SoluteStorage& Solute(const cmf::water::solute &_Solute) const 
+        SoluteStorage& Solute(const cmf::water::solute _Solute) const 
         """
         return _cmf_core.WaterStorage_Solute(self, *args)
 
@@ -7318,7 +7313,7 @@ class Cell(StateVariableOwner):
         """
         surfacewater_as_storage(Cell self) -> cmf::upslope::surfacewater_ptr
 
-        void surfacewater_as_storage()
+        surfacewater_ptr surfacewater_as_storage()
 
         Makes the surfacewater of this cell a cmf::upslope::SurfaceWater
         storage. 
@@ -8516,7 +8511,7 @@ class VanGenuchtenMualem(RetentionCurve):
 
     def __init__(self, *args, **kwargs):
         """
-        __init__(cmf::upslope::VanGenuchtenMualem self, real Ksat=15, real phi=0.5, real alpha=0.2178, real n=1.211, real m=-1) -> VanGenuchtenMualem
+        __init__(cmf::upslope::VanGenuchtenMualem self, real Ksat=15, real phi=0.5, real alpha=0.2178, real n=1.211, real m=-1, real theta_r=0.0, real w0=0.99) -> VanGenuchtenMualem
 
         VanGenuchtenMualem(real Ksat=15, real phi=0.5, real alpha=0.2178, real
         n=1.211, real m=-1)
@@ -10603,7 +10598,13 @@ class SurfaceWater(OpenWaterStorage):
 
 
     def get_coverage(self, *args, **kwargs):
-        """get_coverage(SurfaceWater self) -> double"""
+        """
+        get_coverage(SurfaceWater self) -> double
+
+        double get_coverage() const
+
+        Get surface coverage as a function of the actual volume. 
+        """
         return _cmf_core.SurfaceWater_get_coverage(self, *args, **kwargs)
 
 
@@ -13047,11 +13048,9 @@ class ShuttleworthWallace(aerodynamic_resistance):
         """
         transp_from_layer(ShuttleworthWallace self, cmf::upslope::SoilLayer::ptr sl, Time t) -> double
 
-        virtual
-        double transp_from_layer(cmf::upslope::SoilLayer::ptr sl,
-        cmf::math::Time t)
+        double
+        transp_from_layer(cmf::upslope::SoilLayer::ptr sl, cmf::math::Time t)
 
-        returns the transpiration rate from one layer in m3/day 
         """
         return _cmf_core.ShuttleworthWallace_transp_from_layer(self, *args, **kwargs)
 
@@ -13060,17 +13059,20 @@ class ShuttleworthWallace(aerodynamic_resistance):
         """
         evap_from_layer(ShuttleworthWallace self, cmf::upslope::SoilLayer::ptr sl, Time t) -> double
 
-        virtual
-        double evap_from_layer(cmf::upslope::SoilLayer::ptr sl,
-        cmf::math::Time t)
-
-        returns the soil evaporation rate from one layer in m3/day 
+        double
+        evap_from_layer(cmf::upslope::SoilLayer::ptr sl, cmf::math::Time t) 
         """
         return _cmf_core.ShuttleworthWallace_evap_from_layer(self, *args, **kwargs)
 
 
     def evap_from_surfacewater(self, *args, **kwargs):
-        """evap_from_surfacewater(ShuttleworthWallace self, cmf::river::OpenWaterStorage::ptr ows, Time t) -> double"""
+        """
+        evap_from_surfacewater(ShuttleworthWallace self, cmf::river::OpenWaterStorage::ptr ows, Time t) -> double
+
+        double
+        evap_from_surfacewater(cmf::river::OpenWaterStorage::ptr ows,
+        cmf::math::Time t) 
+        """
         return _cmf_core.ShuttleworthWallace_evap_from_surfacewater(self, *args, **kwargs)
 
 
@@ -13078,9 +13080,9 @@ class ShuttleworthWallace(aerodynamic_resistance):
         """
         evap_from_canopy(ShuttleworthWallace self, cmf::water::WaterStorage::ptr canopy, Time t) -> double
 
-        virtual
-        double evap_from_canopy(cmf::water::WaterStorage::ptr canopy,
-        cmf::math::Time t) 
+        double
+        evap_from_canopy(cmf::water::WaterStorage::ptr canopy, cmf::math::Time
+        t) 
         """
         return _cmf_core.ShuttleworthWallace_evap_from_canopy(self, *args, **kwargs)
 
@@ -13089,7 +13091,7 @@ class ShuttleworthWallace(aerodynamic_resistance):
         """
         evap_from_snow(ShuttleworthWallace self, cmf::water::WaterStorage::ptr snow, Time t) -> double
 
-        virtual double
+        double
         evap_from_snow(cmf::water::WaterStorage::ptr snow, cmf::math::Time t)
 
         """
@@ -13137,65 +13139,125 @@ _cmf_core.ShuttleworthWallace_swigregister(ShuttleworthWallace)
 
 
 class SW_transpiration(flux_connection):
-    """Proxy of C++ cmf::upslope::ET::SW_transpiration class."""
+    """
+
+
+    Connection for Shuttleworth-Wallace transpiration.
+
+    C++ includes: ShuttleworthWallace.h 
+    """
 
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
     __repr__ = _swig_repr
 
     def __init__(self, *args, **kwargs):
-        """__init__(cmf::upslope::ET::SW_transpiration self, cmf::upslope::SoilLayer::ptr source, cmf::water::flux_node::ptr ET_target, cmf::upslope::ET::ShuttleworthWallace::ptr owner) -> SW_transpiration"""
+        """
+        __init__(cmf::upslope::ET::SW_transpiration self, cmf::upslope::SoilLayer::ptr source, cmf::water::flux_node::ptr ET_target, cmf::upslope::ET::ShuttleworthWallace::ptr owner) -> SW_transpiration
+
+        SW_transpiration(cmf::upslope::SoilLayer::ptr source,
+        cmf::water::flux_node::ptr ET_target, ShuttleworthWallace::ptr owner)
+
+        """
         _cmf_core.SW_transpiration_swiginit(self, _cmf_core.new_SW_transpiration(*args, **kwargs))
     __swig_destroy__ = _cmf_core.delete_SW_transpiration
 _cmf_core.SW_transpiration_swigregister(SW_transpiration)
 # SW_transpiration end
 
 class SW_evap_from_layer(flux_connection):
-    """Proxy of C++ cmf::upslope::ET::SW_evap_from_layer class."""
+    """
+
+
+    Connection for Shuttleworth-Wallace ground evaporation.
+
+    C++ includes: ShuttleworthWallace.h 
+    """
 
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
     __repr__ = _swig_repr
 
     def __init__(self, *args, **kwargs):
-        """__init__(cmf::upslope::ET::SW_evap_from_layer self, cmf::upslope::SoilLayer::ptr source, cmf::water::flux_node::ptr ET_target, cmf::upslope::ET::ShuttleworthWallace::ptr owner) -> SW_evap_from_layer"""
+        """
+        __init__(cmf::upslope::ET::SW_evap_from_layer self, cmf::upslope::SoilLayer::ptr source, cmf::water::flux_node::ptr ET_target, cmf::upslope::ET::ShuttleworthWallace::ptr owner) -> SW_evap_from_layer
+
+        SW_evap_from_layer(cmf::upslope::SoilLayer::ptr source,
+        cmf::water::flux_node::ptr ET_target, ShuttleworthWallace::ptr owner)
+
+        """
         _cmf_core.SW_evap_from_layer_swiginit(self, _cmf_core.new_SW_evap_from_layer(*args, **kwargs))
     __swig_destroy__ = _cmf_core.delete_SW_evap_from_layer
 _cmf_core.SW_evap_from_layer_swigregister(SW_evap_from_layer)
 # SW_evap_from_layer end
 
 class SW_evap_from_canopy(flux_connection):
-    """Proxy of C++ cmf::upslope::ET::SW_evap_from_canopy class."""
+    """
+
+
+    Connection for Shuttleworth-Wallace canopy interception evaporation.
+
+    C++ includes: ShuttleworthWallace.h 
+    """
 
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
     __repr__ = _swig_repr
 
     def __init__(self, *args, **kwargs):
-        """__init__(cmf::upslope::ET::SW_evap_from_canopy self, cmf::water::WaterStorage::ptr source, cmf::water::flux_node::ptr ET_target, cmf::upslope::ET::ShuttleworthWallace::ptr owner) -> SW_evap_from_canopy"""
+        """
+        __init__(cmf::upslope::ET::SW_evap_from_canopy self, cmf::water::WaterStorage::ptr source, cmf::water::flux_node::ptr ET_target, cmf::upslope::ET::ShuttleworthWallace::ptr owner) -> SW_evap_from_canopy
+
+        SW_evap_from_canopy(cmf::water::WaterStorage::ptr source,
+        cmf::water::flux_node::ptr ET_target, ShuttleworthWallace::ptr owner)
+
+        """
         _cmf_core.SW_evap_from_canopy_swiginit(self, _cmf_core.new_SW_evap_from_canopy(*args, **kwargs))
     __swig_destroy__ = _cmf_core.delete_SW_evap_from_canopy
 _cmf_core.SW_evap_from_canopy_swigregister(SW_evap_from_canopy)
 # SW_evap_from_canopy end
 
 class SW_evap_from_snow(flux_connection):
-    """Proxy of C++ cmf::upslope::ET::SW_evap_from_snow class."""
+    """
+
+
+    Connection for Shuttleworth-Wallace canopy interception evaporation.
+
+    C++ includes: ShuttleworthWallace.h 
+    """
 
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
     __repr__ = _swig_repr
 
     def __init__(self, *args, **kwargs):
-        """__init__(cmf::upslope::ET::SW_evap_from_snow self, cmf::water::WaterStorage::ptr source, cmf::water::flux_node::ptr ET_target, cmf::upslope::ET::ShuttleworthWallace::ptr owner) -> SW_evap_from_snow"""
+        """
+        __init__(cmf::upslope::ET::SW_evap_from_snow self, cmf::water::WaterStorage::ptr source, cmf::water::flux_node::ptr ET_target, cmf::upslope::ET::ShuttleworthWallace::ptr owner) -> SW_evap_from_snow
+
+        SW_evap_from_snow(cmf::water::WaterStorage::ptr source,
+        cmf::water::flux_node::ptr ET_target, ShuttleworthWallace::ptr owner)
+
+        """
         _cmf_core.SW_evap_from_snow_swiginit(self, _cmf_core.new_SW_evap_from_snow(*args, **kwargs))
     __swig_destroy__ = _cmf_core.delete_SW_evap_from_snow
 _cmf_core.SW_evap_from_snow_swigregister(SW_evap_from_snow)
 # SW_evap_from_snow end
 
 class SW_evap_from_surfacewater(flux_connection):
-    """Proxy of C++ cmf::upslope::ET::SW_evap_from_surfacewater class."""
+    """
+
+
+    Connection for Shuttleworth-Wallace canopy interception evaporation.
+
+    C++ includes: ShuttleworthWallace.h 
+    """
 
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
     __repr__ = _swig_repr
 
     def __init__(self, *args, **kwargs):
-        """__init__(cmf::upslope::ET::SW_evap_from_surfacewater self, cmf::river::OpenWaterStorage::ptr source, cmf::water::flux_node::ptr ET_target, cmf::upslope::ET::ShuttleworthWallace::ptr owner) -> SW_evap_from_surfacewater"""
+        """
+        __init__(cmf::upslope::ET::SW_evap_from_surfacewater self, cmf::river::OpenWaterStorage::ptr source, cmf::water::flux_node::ptr ET_target, cmf::upslope::ET::ShuttleworthWallace::ptr owner) -> SW_evap_from_surfacewater
+
+        SW_evap_from_surfacewater(cmf::river::OpenWaterStorage::ptr source,
+        cmf::water::flux_node::ptr ET_target, ShuttleworthWallace::ptr owner)
+
+        """
         _cmf_core.SW_evap_from_surfacewater_swiginit(self, _cmf_core.new_SW_evap_from_surfacewater(*args, **kwargs))
     __swig_destroy__ = _cmf_core.delete_SW_evap_from_surfacewater
 _cmf_core.SW_evap_from_surfacewater_swigregister(SW_evap_from_surfacewater)

@@ -172,11 +172,6 @@ static bool check_time(PyObject* dt) {
 
 %include "math/timeseries.h"
 
-
-
-
-
-
 %extend cmf::math::Time {
     %pythoncode 
     {
@@ -254,7 +249,6 @@ static bool check_time(PyObject* dt) {
     }
     %pythoncode
     {
-
     def __repr__(self):
        return "cmf.timeseries(%s:%s:%s,count=%i)" % (self.begin,self.end,self.step,self.size())
 
@@ -316,15 +310,12 @@ static bool check_time(PyObject* dt) {
         res*=other
         return res
 
-    def iter_time(self, as_float=0):
-        """Returns an iterator to iterate over each timestep
-        as_float if True, the timesteps will returned as floating point numbers representing the days after 1.1.0001 00:00
+    def iter_time(self):
+        """
+        Returns an iterator to iterate over each timestep
         """
         for i in range(len(self)):
-            if as_float:
-                yield ((self.begin + self.step * i) - cmf.Time(1,1,1)).AsDays()
-            else:
-                yield self.begin + self.step * i
+            yield self.begin + self.step * i
 
     def to_buffer(self):
         """Returns a binary buffer filled with the data of self"""
@@ -354,7 +345,6 @@ static bool check_time(PyObject* dt) {
         step = ms * data['step']
         self.__init__(begin, step, data['interpolationpower'])
         self.extend(data['values'])
-            
 
     def to_pandas(self):
         """

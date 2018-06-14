@@ -397,7 +397,9 @@ cmf::river::Prism::Prism( double base_area, double thickness_of_rough_ground/*=0
 }
 
 
- 
+
+
+
 void cmf::river::MeanChannel::set_nManning( double nManning )
 {
  	throw std::runtime_error("Cannot set Manning n for a mean channel. Set value for the parts of the channel");

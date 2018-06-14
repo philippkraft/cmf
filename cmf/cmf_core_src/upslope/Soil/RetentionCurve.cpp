@@ -288,8 +288,10 @@ cmf::upslope::VanGenuchtenMualem* cmf::upslope::VanGenuchtenMualem::copy() const
 	return new VanGenuchtenMualem(*this);
 }
 
-cmf::upslope::VanGenuchtenMualem::VanGenuchtenMualem( real _Ksat, real _phi,real _alpha, real _n, real _m/*=-1*/ ) 
-: n(_n),alpha(_alpha),Phi(_phi),Ksat(_Ksat), m(_m), w0(.99),l(0.5),theta_r(0.0)
+cmf::upslope::VanGenuchtenMualem::VanGenuchtenMualem( 
+	real _Ksat, real _phi,real _alpha, real _n, 
+	real _m/*=-1*/, real _theta_r /*=0*/, real _w0 /*=0.99*/) 
+: n(_n),alpha(_alpha),Phi(_phi),Ksat(_Ksat), m(_m), w0(_w0),l(0.5),theta_r(_theta_r)
 {
 	std::stringstream msg;
 	msg << "Can't create VanGenuchten-Mualem-Retention curve with ";
