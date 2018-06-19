@@ -1,4 +1,4 @@
-@page cmfTutRetentioncurve
+@page cmfTutRetentioncurve Hydraulic head (subsurface)
 
 
 # Hydraulic head and stored water volume
@@ -41,20 +41,25 @@ where:
 ## Introduction and definitions
 
 cmf follows the definition of water potential from above, with two
-important exceptions: 1. The osmotic potential @f$\Psi_O@f$ is
-ignored. 2. The hydrostatic pressure from water storages above the used
-one is not implemented. Instead the compressability of water is
-exagerated. In lower saturated conditions, the water storage is modelled
-as oversaturated, thus gaining a matric potential above 0m and thus
-accounting for the hydrostatic pressure. With these definitions,
+important exceptions: 
+
+1. The osmotic potential @f$\Psi_O@f$ is ignored. 
+2. The hydrostatic pressure from water storages above the used one is not implemented. 
+Instead the compressability of water is exagerated. In lower saturated conditions, 
+the water storage is modelled as oversaturated, thus gaining a matric potential above 0m and thus
+accounting for the hydrostatic pressure. 
+
+With these definitions,
 @f$\Psi_{tot}@f$ is in cmf only a function of the position of the
 water storage in space and its water content, which is again a function
-of the stored water volume in m³ @f$\Psi_{tot} = z + \Psi_M(\theta)@f$.
+of the stored water volume in m³ 
+
+@f[\Psi_{tot} = z + \Psi_M(\theta)@f]
 
 ## Getting and setting the potential in cmf
 
 Every flux node in cmf has a property `potential` returning the
-absolut potential @f$\Psi_{tot}@f$ of that flux node. For soil layers,
+absolute potential @f$\Psi_{tot}@f$ of that flux node. For soil layers,
 one can query the gravitational potential @f$z@f$ and the matrix
 potential @f$\Psi_M@f$ also. The gravitational potential for layer
 `l` is defined as the height of the upper layer boundary above

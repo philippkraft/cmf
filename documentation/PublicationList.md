@@ -2,7 +2,7 @@
 
 ## Basic publication
 
-If you are reffering to cmf in a publication, please cite:
+If you are refering to cmf in a publication, please cite:
 
   - Kraft, P., Vaché, K.B., Frede, H.-G. Breuer, L. 2011. A hydrological
     programming language extension for integrated catchment models,
@@ -19,6 +19,10 @@ If you are reffering to cmf in a publication, please cite:
 
 ## Applications in peer reviewed journal articles
 
+  - Maier, N., Breuer, L., Chamorro A., Kraft, P., Houska, T.: Multi-Source 
+    Uncertainty Analysis in Simulating Floodplain Inundation under Climate Change
+    Water 10(6), 809; doi:10.3390/w10060809 (registering DOI), 
+    [full text](https://www.mdpi.com/2073-4441/10/6/809) 2018 
   - Maier, N., Breuer, L., Kraft, P.: Prediction and uncertainty
     analysis of a parsimonious floodplain surface water - groundwater
     interaction model, Water Resources Research,
@@ -84,10 +88,8 @@ If you are reffering to cmf in a publication, please cite:
     Society (iEMSs), 2012 International Congress on Environmental
     Modelling and Software Managing Resources of a Limited Planet, Sixth
     Biennial Meeting, Leipzig, Germany R. Seppelt, A.A. Voinov, S.
-    Lange, D. Bankamp (Eds.)
-    <http://www.iemss.org/society/index.php/iemss-2012-proceedings>
-    [full
-    text](http://www.iemss.org/sites/iemss2012//proceedings/F3_0872_Kraft_et_al.pdf)
+    Lange, D. Bankamp (Eds.), ISBN: 978-88-9035-742-8
+    [full text](http://former.iemss.org/sites/iemss2012//proceedings/F3_0872_Kraft_et_al.pdf)
   - Windhorst, D., Kraft, P., Frede H.-G., Breuer, L. 2012: Landscape
     Management Framework (LMF) - development and application of a new
     concept for a dynamic landscape management modelm in: International
@@ -95,10 +97,8 @@ If you are reffering to cmf in a publication, please cite:
     International Congress on Environmental Modelling and Software
     Managing Resources of a Limited Planet, Sixth Biennial Meeting,
     Leipzig, Germany R. Seppelt, A.A. Voinov, S. Lange, D. Bankamp
-    (Eds.)
-    <http://www.iemss.org/society/index.php/iemss-2012-proceedings>
-    [full
-    text](http://www.iemss.org/sites/iemss2012//proceedings/H2_0767_Windhorst_et_al.pdf)
+    (Eds.), ISBN: 978-88-9035-742-8
+    [full text](http://former.iemss.org/sites/iemss2012//proceedings/H2_0767_Windhorst_et_al.pdf)
   - Multsch S., Kraft, P., Frede, H.-G., Breuer, L. 2011- Development
     and application of the generic Plant growth Modeling Framework (PMF)
     Modelling and Simulation. Modelling and Simulation Society of

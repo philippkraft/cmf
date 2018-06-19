@@ -1,4 +1,4 @@
-@page cmfTutVolumeHeight
+@page cmfTutVolumeHeight Hydraulic head (surface)
 
  [next](@ref cmfTutBoundary2)
 
@@ -17,11 +17,8 @@ volume @f$V@f$ and the height above the relative water depth
 @f$h@f$.
 
 
-@f[
-[\Psi|= h + z = f(V) + z
-@f]
+@f[Psi = h + z = f(V) + z @f]
 
-\] @f$f(V)@f$ is given by a child class of
-[IVolumeHeightFunction](@ref cmf::river::IVolumeHeightFunction).
+@f$f(V)@f$ is given by a child class of [IVolumeHeightFunction](@ref cmf::river::IVolumeHeightFunction).
 
 

@@ -1,4 +1,4 @@
-@page cmfInstallUbuntu
+@page cmfInstallUbuntu Linux installation
 
 [back...](@ref cmfInstall)
 

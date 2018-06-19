@@ -4158,6 +4158,68 @@ cmf::water::external_control_connection::to_string "virtual
 std::string to_string() const ";
 
 
+// File: classcmf_1_1fit__retention__curve_1_1_fit_brooks_corey.xml
+%feature("docstring") cmf::fit_retention_curve::FitBrooksCorey "";
+
+%feature("docstring")
+cmf::fit_retention_curve::FitBrooksCorey::__init__ "def
+__init__(self, theta, pF, verbose=False) ";
+
+%feature("docstring")
+cmf::fit_retention_curve::FitBrooksCorey::__call__ "def
+__call__(self, count=1) ";
+
+%feature("docstring")
+cmf::fit_retention_curve::FitBrooksCorey::create_rc "def
+create_rc(self, params) ";
+
+%feature("docstring")
+cmf::fit_retention_curve::FitBrooksCorey::get_error "def
+get_error(self, params) ";
+
+
+// File: classcmf_1_1fit__retention__curve_1_1_fit_retention_curve.xml
+%feature("docstring") cmf::fit_retention_curve::FitRetentionCurve "";
+
+%feature("docstring")
+cmf::fit_retention_curve::FitRetentionCurve::__init__ "def
+__init__(self, rc_class, theta, pF, verbose=False) ";
+
+%feature("docstring")
+cmf::fit_retention_curve::FitRetentionCurve::__call__ "def
+__call__(self, count=1) ";
+
+%feature("docstring")
+cmf::fit_retention_curve::FitRetentionCurve::create_rc "def
+create_rc(self, params) ";
+
+%feature("docstring")
+cmf::fit_retention_curve::FitRetentionCurve::get_error "def
+get_error(self, params) ";
+
+
+// File: classcmf_1_1fit__retention__curve_1_1_fit_van_genuchten_mualem.xml
+%feature("docstring") cmf::fit_retention_curve::FitVanGenuchtenMualem
+"";
+
+%feature("docstring")
+cmf::fit_retention_curve::FitVanGenuchtenMualem::__init__ "def
+__init__(self, theta, pF, fit_theta_r=False, fit_m=False,
+verbose=False) ";
+
+%feature("docstring")
+cmf::fit_retention_curve::FitVanGenuchtenMualem::__call__ "def
+__call__(self, count=1) ";
+
+%feature("docstring")
+cmf::fit_retention_curve::FitVanGenuchtenMualem::create_rc "def
+create_rc(self, params) ";
+
+%feature("docstring")
+cmf::fit_retention_curve::FitVanGenuchtenMualem::get_error "def
+get_error(self, params) ";
+
+
 // File: classcmf_1_1water_1_1flux__connection.xml
 %feature("docstring") cmf::water::flux_connection "
 
@@ -16992,7 +17054,7 @@ C++ includes: RetentionCurve.h ";
 
 %feature("docstring")
 cmf::upslope::VanGenuchtenMualem::VanGenuchtenMualem "VanGenuchtenMualem(real Ksat=15, real phi=0.5, real alpha=0.2178, real
-n=1.211, real m=-1)
+n=1.211, real m=-1, real theta_r=0.0, real w0=0.99)
 
 Creates a van Genuchten-Mualem retention curve.
 
@@ -17007,7 +17069,12 @@ alpha:  Van Genuchten :math:`\\\\alpha` in :math:`\\\\frac 1{cm}`
 
 n:  Van Genuchten n
 
-m:  Van Genuchten m parameter, if negative m is calculated as :math:`1-\\\\frac 1 n` ";
+m:  Van Genuchten m parameter, if negative m is calculated as :math:`1-\\\\frac 1 n`
+
+theta_r:  Water content for :math:`\\\\lim\\\\limits_{\\\\Psi_M \\\\rightarrow -\\\\infty}{\\\\theta(\\\\Psi_M)}`
+
+w0:  Wetness above the parabolic extrapolation is used instead of the
+Van Genuchten curve (usually calculated with fit_w0) ";
 
 %feature("docstring")
 cmf::upslope::VanGenuchtenMualem::~VanGenuchtenMualem "virtual
@@ -17957,64 +18024,28 @@ Keyword arguments for pylab.plot :return: matplotlib line object ";
 
 // File: namespacecmf_1_1fit__retention__curve.xml
 %feature("docstring")  cmf::fit_retention_curve::fit_bc "def
-cmf.fit_retention_curve.fit_bc(pF, theta, count=20, verbose=False)
+cmf.fit_retention_curve.fit_bc(pF, theta, count=1, verbose=False)
 
-Fits a Brooks-Corey retention curve into data pF: a sequence of pF
-values theta: an array of water contents ";
+Fits the vanGenuchten Mualem retention curve into measured soilphysics
+values :param pF: A sequence of pF values :param theta: A sequence of
+the volumetric water content in l water/l soil at the respective pF
+value :param count: Times to repeat the minimization to avoid local
+minima :param verbose: If True: Print the values in between :return:
+(Retentioncurve, RMSE) ";
 
 %feature("docstring")  cmf::fit_retention_curve::fit_vgm "def
-cmf.fit_retention_curve.fit_vgm(pF, theta, variable_m=False, count=20,
-fitlevel=None, verbose=False)
+cmf.fit_retention_curve.fit_vgm(pF, theta, fit_m=False,
+fit_theta_r=False, count=1, verbose=False)
 
-Fits a Van Genuchten / Mualem retention curve into data pF: a sequence
-of pF values theta: an array of water contents alpha_range: a
-2-sequence holding the range for alpha values n_range: a 2-sequence
-holding the range for n values ";
-
-%feature("docstring")  cmf::fit_retention_curve::get_error_bc "def
-cmf.fit_retention_curve.get_error_bc(params, pF, theta) ";
-
-%feature("docstring")  cmf::fit_retention_curve::get_error_vgm "def
-cmf.fit_retention_curve.get_error_vgm(params, pF, theta) ";
-
-%feature("docstring")  cmf::fit_retention_curve::make_vgm "def
-cmf.fit_retention_curve.make_vgm(params) ";
-
-%feature("docstring")  cmf::fit_retention_curve::narrowparameters_bc "def cmf.fit_retention_curve.narrowparameters_bc(pF, theta, phi, b,
-w_x, count=10000, perc=10)
-
-Narrows the parameter space down to the best perc (default=10) percent
-of the results pF: A sequence of pF values matching theta theta: A
-sequence of water content values for the corresponding pF values phi:
-A distribution of porosity values, only the range is used alpha: A
-distribution of VanGenuchten alpha values, only the range is used n: A
-distribution of VanGenuchten n values, only the range is used count:
-Number of random values to be drawn in the range of the parameters
-perc: percentile of best fitting parameters  Returns:
-phi,alpha,n,vgm_err: New distribution of phi, alpha, n and the
-corrseponding errors                      for the best perc% of the
-results ";
-
-%feature("docstring")  cmf::fit_retention_curve::narrowparameters_vgm
-"def cmf.fit_retention_curve.narrowparameters_vgm(pF, theta, phi,
-alpha, n, theta_r=(0.0, 0.0), count=10000, perc=10)
-
-Narrows the parameter space down to the best perc (default=10) percent
-of the results pF: A sequence of pF values matching theta theta: A
-sequence of water content values for the corresponding pF values phi:
-A distribution of porosity values, only the range is used alpha: A
-distribution of VanGenuchten alpha values, only the range is used n: A
-distribution of VanGenuchten n values, only the range is used count:
-Number of random values to be drawn in the range of the parameters
-perc: percentile of best fitting parameters  Returns:
-phi,alpha,n,vgm_err: New distribution of phi, alpha, n and the
-corrseponding errors                      for the best perc% of the
-results                       Usage:     # Create a priori range phi,
-n, alpha = ";
-
-%feature("docstring")  cmf::fit_retention_curve::plot_vgms "def
-cmf.fit_retention_curve.plot_vgms(pF, theta, phi, alpha, n, theta_r)
-";
+Fits the vanGenuchten Mualem retention curve into measured soilphysics
+values :param pF: A sequence of pF values :param theta: A sequence of
+the volumetric water content in l water/l soil at the respective pF
+value :param fit_m: If True, the retention curve is fitted with a
+variable m (deprecated by vanGenuchten) :param fit_theta_r:  If True,
+the retention curve is fitted using a theta_r (kind of deprecated by
+vanGenuchten) :param count: Times to repeat the minimization to avoid
+local minima :param verbose: If True: Print the values in between
+:return: (Retentioncurve, RMSE) ";
 
 
 // File: namespacecmf_1_1geometry.xml
