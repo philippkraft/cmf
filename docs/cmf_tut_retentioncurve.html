@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.14"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>cmf: $title</title>
+<title>cmf: Hydraulic head (subsurface)</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -74,9 +74,13 @@ $(function() {
 <li class="navelem"><a class="el" href="index.html">index</a></li><li class="navelem"><a class="el" href="tutorial.html">Tutorial</a></li><li class="navelem"><a class="el" href="physical.html">Physical models with CMF</a></li>  </ul>
 </div>
 </div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">Hydraulic head (subsurface) </div>  </div>
+</div><!--header-->
 <div class="contents">
 <div class="textblock"><h1>Hydraulic head and stored water volume</h1>
-<p>The state of a water storage in cmf is always the volume of the actually stored water, and the change rate of the state is the sum of the fluxes in an out of the water storage (finite volume, see FiniteVolumeMethod). However, physical descriptions of water flux is often based on the gradient of the [hydraulic head](WikiPedia:Hydraulic_head) in space, like [Darcian](WikiPedia:Darcy's_law) or [Richards](WikiPedia:Richards_equation) approaches, and the 2nd St. Venant equation for surface water. To make such approaces available in cmf, a functional relation between volume and hydraulic head (or potential) needs to be available. In cmf, the term potential (symbol \(\Psi\)) is used.</p>
+<p>The state of a water storage in cmf is always the volume of the actually stored water, and the change rate of the state is the sum of the fluxes in an out of the water storage (finite volume, see FiniteVolumeMethod). However, physical descriptions of water flux is often based on the gradient of the <a href="https://en.wikipedia.org/wiki/Hydraulic_head">hydraulic head</a> in space, like <a href="https://en.wikipedia.org/wiki/Darcy%27s_law">Darcian</a> or <a href="https://en.wikipedia.org/wiki/Richards_equation">Richards</a> approaches, and the 2nd St. Venant equation for surface water. To make such approaces available in cmf, a functional relation between volume and hydraulic head (or potential) needs to be available. In cmf, the term potential (symbol \(\Psi\)) is used.</p>
 <p>For unsaturated porous media, the relation between water content and head is given by a retention curve, for saturated porous media this relation is often modelled by a compressability term (eg. in MODFLOW). For surface water, the relation of volume to head is given by the height of the watertable above a model wide reference height, often sea level.</p>
 <p>The potential or hydraulic head for porous media is commonly defined as:</p>
 <p class="formulaDsp">
@@ -84,16 +88,24 @@ $(function() {
 </p>
 <p>where:</p><ul>
 <li>\(\Psi_{tot}\) is the total potential of the water storage in m water column</li>
-<li>\(z\) is the height above the reference height in m, the gravitaional potential</li>
+<li>\(z\) is the height above the reference height in m, the gravitational potential</li>
 <li>\(\Psi_M(\theta)\) is the matrix potential, a function of the water content \(\theta)\), also called the suction pressure in m. \(\Psi_M&lt;0m\) for unsaturated media and \(\Psi_M=0m\) for saturated conditions</li>
 <li>\(p\) is the hydrostatic pressure from upper water storages in m</li>
 <li>\(\Psi_O\) is the osmotic potential in m</li>
 </ul>
 <h1>Using subsurface potential in cmf</h1>
 <h2>Introduction and definitions</h2>
-<p>cmf follows the definition of water potential from above, with two important exceptions: 1. The osmotic potential \(\Psi_O\) is ignored. 2. The hydrostatic pressure from water storages above the used one is not implemented. Instead the compressability of water is exagerated. In lower saturated conditions, the water storage is modelled as oversaturated, thus gaining a matric potential above 0m and thus accounting for the hydrostatic pressure. With these definitions, \(\Psi_{tot}\) is in cmf only a function of the position of the water storage in space and its water content, which is again a function of the stored water volume in m³ \(\Psi_{tot} = z + \Psi_M(\theta)\).</p>
+<p>cmf follows the definition of water potential from above, with two important exceptions:</p>
+<ol type="1">
+<li>The osmotic potential \(\Psi_O\) is ignored.</li>
+<li>The hydrostatic pressure from water storages above the used one is not implemented. Instead the compressability of water is exagerated. In lower saturated conditions, the water storage is modelled as oversaturated, thus gaining a matric potential above 0m and thus accounting for the hydrostatic pressure.</li>
+</ol>
+<p>With these definitions, \(\Psi_{tot}\) is in cmf only a function of the position of the water storage in space and its water content, which is again a function of the stored water volume in m³</p>
+<p class="formulaDsp">
+\[\Psi_{tot} = z + \Psi_M(\theta)\]
+</p>
 <h2>Getting and setting the potential in cmf</h2>
-<p>Every flux node in cmf has a property <code>potential</code> returning the absolut potential \(\Psi_{tot}\) of that flux node. For soil layers, one can query the gravitational potential \(z\) and the matrix potential \(\Psi_M\) also. The gravitational potential for layer <code>l</code> is defined as the height of the upper layer boundary above reference height</p>
+<p>Every flux node in cmf has a property <code>potential</code> returning the absolute potential \(\Psi_{tot}\) of that flux node. For soil layers, one can query the gravitational potential \(z\) and the matrix potential \(\Psi_M\) also. The gravitational potential for layer <code>l</code> is defined as the height of the upper layer boundary above reference height</p>
 <div class="fragment"><div class="line">z = l.gravitational_potential = l.position.z + l.thickness/2. = l.cell.z - l.upper_boundary</div></div><!-- fragment --><p>The matrix potential is depending on the water content by the retention curve (see below).</p>
 <div class="fragment"><div class="line">Psi_M = l.matrix_potential</div><div class="line">Psi_tot = z + Psi_M</div><div class="line">Psi_tot == l.potential</div></div><!-- fragment --><h2>Saturated depth</h2>
 <p>To get an easy to interprete indicator for the vertical potential distribution in a cell, the cell has a property <code>saturated_depth</code>. If you query the saturated depth of a cell you get the potential of the first saturated layer \(\Psi_M \geq 0m\) relative to the cell height. Hence</p>
@@ -126,7 +138,7 @@ $(function() {
 <li>\(\theta_r\) is the residual water content in m³/m³</li>
 <li>\(\Phi\) is the porosity of the soil in m³/m³</li>
 </ul>
-<p>For the comparisons of the different retention curves, we define a function to plot the curves. You can play around with the paramters and see the different effects.</p>
+<p>For the comparisons of the different retention curves, we define a function to plot the curves. You can play around with the parameters and see the different effects.</p>
 <div class="fragment"><div class="line"><span class="keyword">def </span>plot_rc(retcurve,Psi_M):</div><div class="line">    <span class="stringliteral">&quot;&quot;&quot;Plots the retention curve retcurve for the matrix potential values in the array Psi_M</span></div><div class="line"><span class="stringliteral">    and the function of K(theta)&quot;&quot;&quot;</span></div><div class="line"></div><div class="line">    <span class="comment"># Make upper plot</span></div><div class="line">    subplot(2,1,1)</div><div class="line">    <span class="comment"># Calculate the wetness at the matrix potential</span></div><div class="line">    W = retcurve.Wetness(Psi_M) </div><div class="line">    <span class="comment"># plot the retention curve. The methods vgm.Wetness(matrixpotential), vgm.MatricPotential(wetness),</span></div><div class="line">    <span class="comment"># vgm.K(wetness) accept numbers as well as arrays for the values</span></div><div class="line">    plot(Psi_M, W * retcurve.Porosity(0))</div><div class="line">    <span class="comment"># label axis</span></div><div class="line">    xlabel(<span class="stringliteral">&#39;Matric potential [m]&#39;</span>)     ylabel(<span class="stringliteral">r&#39;water content $\theta [\frac{m^3}{m^3}]$&#39;</span>)</div><div class="line">    grid()</div><div class="line">    <span class="comment"># Make lower plot (K(W))</span></div><div class="line">    subplot(2,1,2)</div><div class="line">    semilogy(Psi_M, retcurve.K(W))</div><div class="line">    xlabel(<span class="stringliteral">&#39;Matric potential [m]&#39;</span>)     ylabel(<span class="stringliteral">r&#39;$K(\theta) [\frac{m}{day}]$&#39;</span>)</div><div class="line">    grid()</div></div><!-- fragment --><h2>VanGenuchten-Mualem curve</h2>
 <p>Definition from the API-documentation: <a class="el" href="classcmf_1_1upslope_1_1_van_genuchten_mualem.html">VanGenuchtenMualem</a></p>
 <p>The equation of the curve and the parameters are described in the API-documentation. In the following, you will create a VanGenuchten-Mualem curve with the follwing paramters in cmf:</p>
@@ -177,7 +189,7 @@ $(function() {
 <a class="el" href="http://www.uni-giessen.de/hydro"> 
 Institute of Landscape Ecology and Resources Management,University of Gie&szlig;en</a>
 </h3></td>
-<td>Generated: Wed Jun 6 2018 13:37:54</td>
+<td>Generated: Tue Jun 19 2018 16:35:15</td>
 </tr></table>
 </small></address>
 </body>
