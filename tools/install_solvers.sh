@@ -53,6 +53,7 @@ function sundials {
         -DKLU_LIBRARY_DIR=${KLUINSTALL_DIR}/lib \
         -DKLU_INCLUDE_DIR=${KLUINSTALL_DIR}/include \
         -DOPENMP_ENABLE=ON \
+        -DEXAMPLES_ENABLE_CXX=ON -DMPI_ENABLE=ON -DMPI_CC=mpicc
 
     make
     make install
