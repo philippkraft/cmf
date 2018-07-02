@@ -2,6 +2,7 @@
 #include "root_finding.h"
 #include <cmath>
 #include <stdexcept>
+#include <string>
 
 bool use_bisection(bool last_time_bisection, double a, double b, double c, double d, double s, double tolerance)
 {
@@ -15,17 +16,34 @@ bool use_bisection(bool last_time_bisection, double a, double b, double c, doubl
 
 }
 
-double cmf::math::BrentsMethod::operator()(double lower_bound, double upper_bound, double offset) const
+inline double check_finite(double x, double y, int pos) {
+	if (!std::isfinite(x)) {
+		throw cmf::math::root_finding::not_finite_error("Root finding: Using not a finite x value after " + std::to_string(pos) + " iterations");
+	} 
+	else if (!std::isfinite(y)) {
+		throw cmf::math::root_finding::not_finite_error("Root finding: f(x) is not finite for x=" + std::to_string(x) + " after " + std::to_string(pos) + " iterations");
+	}
+	else {
+		return y;
+	}
+}
+
+double cmf::math::root_finding::BrentsMethod::operator()(double lower_bound, double upper_bound, double offset) const
 {
 	double a = lower_bound;
 	double b = upper_bound;
-	double fa = f(a) - offset;   // calculated now to save function calls
-	double fb = f(b) - offset;   // calculated now to save function calls
+	
+	// calculat function values of boundaries
+	// now to save function calls 
+	// throw if a function value is not finite
+	double fa = check_finite(a, f(a) - offset, 0);   
+	double fb = check_finite(b, f(b) - offset, 0);   
+	
 	double fs = 0;      // initialize 
 
 	if (!(fa * fb < 0))
 	{
-		throw std::runtime_error("Brent's method: Signs of f(lower_bound) and f(upper_bound) must be opposites");
+		throw cmf::math::root_finding::sign_error("Brent's method: Signs of f(lower_bound) and f(upper_bound) must be opposites");
 	}
 
 	if (std::abs(fa) < std::abs(b)) // if magnitude of f(lower_bound) is less than magnitude of f(upper_bound)
@@ -68,7 +86,7 @@ double cmf::math::BrentsMethod::operator()(double lower_bound, double upper_boun
 		else {
 			used_bisection = false;
 		}
-		fs = f(s) - offset;  // calculate fs
+		fs = check_finite(s, f(s) - offset, iter);  // calculate fs and throw if errors exist
 		d = c;      // first time d is being used (wasnt used on first iteration because mflag was set)
 		c = b;      // set c equal to upper bound
 		fc = fb;    // set f(c) = f(b)
@@ -89,9 +107,67 @@ double cmf::math::BrentsMethod::operator()(double lower_bound, double upper_boun
 
 	}
 
-	throw std::runtime_error("Brent's method: The solution does not converge or iterations are not sufficient");
+	throw cmf::math::root_finding::iteration_error("Brent's method: The solution does not converge or iterations are not sufficient");
 }
 
-cmf::math::BrentsMethod::BrentsMethod(double _tolerance, unsigned int _max_iterations)
+cmf::math::root_finding::BrentsMethod::BrentsMethod(double _tolerance, unsigned int _max_iterations)
 	: tolerance(_tolerance), max_iterations(_max_iterations)
 {}
+
+cmf::math::root_finding::Bisect::Bisect(double _tolerance, unsigned int _max_iterations)
+	: tolerance(_tolerance), max_iterations(_max_iterations)
+{
+}
+
+double cmf::math::root_finding::Bisect::operator()(double lower_bound, double upper_bound, double offset) const
+{
+	double a = lower_bound;
+	double b = upper_bound;
+
+	// calculat function values of boundaries
+	// now to save function calls 
+	// throw if a function value is not finite
+	double fa = check_finite(a, f(a) - offset, 0);
+	double fb = check_finite(b, f(b) - offset, 0);
+
+	double fs = 0;      // initialize 
+
+	if (!(fa * fb < 0))
+	{
+		throw cmf::math::root_finding::sign_error("Bisection Method: Signs of f(lower_bound) and f(upper_bound) must be opposites");
+	}
+
+	if (std::abs(fa) < std::abs(b)) // if magnitude of f(lower_bound) is less than magnitude of f(upper_bound)
+	{
+		std::swap(a, b);
+		std::swap(fa, fb);
+	}
+
+	double s = 0;           // Our Root that will be returned
+
+	for (unsigned int iter = 1; iter < max_iterations; ++iter)
+	{
+		// stop if converged on root or error is less than tolerance
+		if (std::abs(b - a) < tolerance) {
+			return s;
+		}
+
+		// bisection method
+		s = (a + b)*0.5;
+
+		fs = check_finite(s, f(s) - offset, iter);  // calculate fs and throw if errors exist
+
+
+		if (fa * fs < 0) {  // fa and fs have opposite signs
+			b = s;
+			fb = fs;    // set f(b) = f(s)
+		} else {
+			a = s;
+			fa = fs;    // set f(a) = f(s)
+		}
+
+	}
+
+	throw cmf::math::root_finding::iteration_error("Bisection Method: The solution does not converge or iterations are not sufficient");
+}
+

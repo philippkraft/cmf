@@ -951,6 +951,16 @@ cmf::water::bidirectional_kinematic_exchange::to_string "virtual
 std::string to_string() const ";
 
 
+// File: classcmf_1_1math_1_1_brents_method.xml
+%feature("docstring") cmf::math::BrentsMethod "";
+
+%feature("docstring")  cmf::math::BrentsMethod::BrentsMethod "BrentsMethod(double tolerance=1e-12, unsigned int max_iterations=1000)
+";
+
+%feature("docstring")  cmf::math::BrentsMethod::f "virtual double
+f(double) const =0 ";
+
+
 // File: classcmf_1_1upslope_1_1_brooks_corey_retention_curve.xml
 %feature("docstring") cmf::upslope::BrooksCoreyRetentionCurve "
 
@@ -2708,6 +2718,113 @@ Actual flux from layer in m3/day ";
 %feature("docstring")  cmf::upslope::ET::ContentStress::to_string "std::string to_string() const ";
 
 
+// File: classcmf_1_1river_1_1_cross_section_reach.xml
+%feature("docstring") cmf::river::CrossSectionReach "
+
+Structure for the description of reaches with a freely defined cross
+section.
+
+Although double triangular cross section reach are rarely met, a
+triangular reach does scale with its water load, and is therefore
+preferable in case where nothing about IChannel geometry is known
+
+C++ includes: cross_section_reach.h ";
+
+%feature("docstring")
+cmf::river::CrossSectionReach::CrossSectionReach "CrossSectionReach(double l, cmf::math::num_array x,
+cmf::math::num_array depth)
+
+Creates a new triangular reach type. ";
+
+%feature("docstring")
+cmf::river::CrossSectionReach::CrossSectionReach "CrossSectionReach(const CrossSectionReach &copy) ";
+
+%feature("docstring")
+cmf::river::CrossSectionReach::~CrossSectionReach "virtual
+~CrossSectionReach() ";
+
+%feature("docstring")  cmf::river::CrossSectionReach::A "virtual
+double A(double V) const
+
+Returns the area of the surface for a given volume. ";
+
+%feature("docstring")  cmf::river::CrossSectionReach::check_iterator "void check_iterator(double h) const ";
+
+%feature("docstring")  cmf::river::CrossSectionReach::copy "CrossSectionReach* copy() const ";
+
+%feature("docstring")
+cmf::river::CrossSectionReach::get_channel_width "virtual double
+get_channel_width(double depth) const
+
+Calculates the flow width from a given actual depth [m] using the
+actual IChannel geometry. ";
+
+%feature("docstring")  cmf::river::CrossSectionReach::get_depth "virtual double get_depth(double area) const
+
+Returns the depth at a given crossection area. ";
+
+%feature("docstring")
+cmf::river::CrossSectionReach::get_flux_crossection "virtual double
+get_flux_crossection(double depth) const
+
+Returns the crossection area at a given depth. ";
+
+%feature("docstring")  cmf::river::CrossSectionReach::get_length "double get_length() const
+
+Length of the reach. ";
+
+%feature("docstring")  cmf::river::CrossSectionReach::get_nManning "virtual double get_nManning() const ";
+
+%feature("docstring")
+cmf::river::CrossSectionReach::get_wetted_perimeter "virtual double
+get_wetted_perimeter(double depth) const
+
+Returns the wetted perimeter at a given depth. ";
+
+%feature("docstring")  cmf::river::CrossSectionReach::h "virtual
+double h(double V) const
+
+Returns the depth of a given volume. ";
+
+%feature("docstring")  cmf::river::CrossSectionReach::q "virtual
+double q(double h, double slope) const ";
+
+%feature("docstring")  cmf::river::CrossSectionReach::qManning "virtual double qManning(double A, double slope) const
+
+Calculates the flow rate from a given water volume in the reach
+
+
+.. math::
+
+     q_{Manning}&=& A R^{\\\\frac 2 3}
+    \\\\sqrt{\\\\frac {\\\\Delta_z} n} \\\\\\\\ A &=& \\\\frac V l
+    \\\\mbox{, (Crosssectional area of the wetted crossection, Volume per
+    length)} \\\\\\\\ R &=& \\\\frac A {P(d)} \\\\\\\\ P(d) &=& \\\\mbox{
+    the perimeter of the wetted crosssection, a function of reach depth}
+    \\\\\\\\ d(V) &=& \\\\mbox{ the depth of the reach a function of the
+    volume} \\\\\\\\ \\\\Delta_z &=& \\\\frac{z_{max} - z_{min}}{l}
+    \\\\mbox{ Slope of the reach} 
+
+.
+
+Flow rate [m3/s]
+
+Parameters:
+-----------
+
+A:  The area of the cross section [m2]
+
+slope:  The slope of the reach [m/m] ";
+
+%feature("docstring")  cmf::river::CrossSectionReach::set_nManning "virtual void set_nManning(double nManning) ";
+
+%feature("docstring")  cmf::river::CrossSectionReach::typecode "char
+typecode() const ";
+
+%feature("docstring")  cmf::river::CrossSectionReach::V "virtual
+double V(double h) const ";
+
+
 // File: classcmf_1_1math_1_1cubicspline.xml
 %feature("docstring") cmf::math::cubicspline "
 
@@ -4158,6 +4275,68 @@ cmf::water::external_control_connection::to_string "virtual
 std::string to_string() const ";
 
 
+// File: classcmf_1_1fit__retention__curve_1_1_fit_brooks_corey.xml
+%feature("docstring") cmf::fit_retention_curve::FitBrooksCorey "";
+
+%feature("docstring")
+cmf::fit_retention_curve::FitBrooksCorey::__init__ "def
+__init__(self, theta, pF, verbose=False) ";
+
+%feature("docstring")
+cmf::fit_retention_curve::FitBrooksCorey::__call__ "def
+__call__(self, count=1) ";
+
+%feature("docstring")
+cmf::fit_retention_curve::FitBrooksCorey::create_rc "def
+create_rc(self, params) ";
+
+%feature("docstring")
+cmf::fit_retention_curve::FitBrooksCorey::get_error "def
+get_error(self, params) ";
+
+
+// File: classcmf_1_1fit__retention__curve_1_1_fit_retention_curve.xml
+%feature("docstring") cmf::fit_retention_curve::FitRetentionCurve "";
+
+%feature("docstring")
+cmf::fit_retention_curve::FitRetentionCurve::__init__ "def
+__init__(self, rc_class, theta, pF, verbose=False) ";
+
+%feature("docstring")
+cmf::fit_retention_curve::FitRetentionCurve::__call__ "def
+__call__(self, count=1) ";
+
+%feature("docstring")
+cmf::fit_retention_curve::FitRetentionCurve::create_rc "def
+create_rc(self, params) ";
+
+%feature("docstring")
+cmf::fit_retention_curve::FitRetentionCurve::get_error "def
+get_error(self, params) ";
+
+
+// File: classcmf_1_1fit__retention__curve_1_1_fit_van_genuchten_mualem.xml
+%feature("docstring") cmf::fit_retention_curve::FitVanGenuchtenMualem
+"";
+
+%feature("docstring")
+cmf::fit_retention_curve::FitVanGenuchtenMualem::__init__ "def
+__init__(self, theta, pF, fit_theta_r=False, fit_m=False,
+verbose=False) ";
+
+%feature("docstring")
+cmf::fit_retention_curve::FitVanGenuchtenMualem::__call__ "def
+__call__(self, count=1) ";
+
+%feature("docstring")
+cmf::fit_retention_curve::FitVanGenuchtenMualem::create_rc "def
+create_rc(self, params) ";
+
+%feature("docstring")
+cmf::fit_retention_curve::FitVanGenuchtenMualem::get_error "def
+get_error(self, params) ";
+
+
 // File: classcmf_1_1water_1_1flux__connection.xml
 %feature("docstring") cmf::water::flux_connection "
 
@@ -4601,9 +4780,10 @@ CMF stores in a solute storage the total mass of a tracer and needs to
 calculate the free tracer mass. The eq. above can not be rearanged to
 get :math:`x_{free}` from :math:`x_{tot}`. Instead, the value is iterated
 usingregula falsi. If n is near to 1, using LinearAdsorption will
-speed up your calculations. The simplest physically based adsorption
-model by Langmuir ( LangmuirAdsorption) has also a analytical solution
-and is hence calculated faster then Freundlich.
+speed up your calculations.  Check if an analytical solution is
+available The simplest physically based adsorption model by Langmuir (
+LangmuirAdsorption) has also a analytical solution and is hence
+calculated faster then Freundlich.
 
 C++ includes: adsorption.h ";
 
@@ -6281,6 +6461,13 @@ set_states(real *newStates) ";
 const
 
 returns the number of state variables ";
+
+
+// File: classcmf_1_1math_1_1_brents_method_1_1iteration__error.xml
+%feature("docstring") cmf::math::BrentsMethod::iteration_error "";
+
+%feature("docstring")
+cmf::math::BrentsMethod::iteration_error::iteration_error "iteration_error(std::string msg) ";
 
 
 // File: classcmf_1_1river_1_1_i_volume_height_function.xml
@@ -9804,6 +9991,13 @@ Returns the water balance of each vector as a vector.
 Replaces slow Python code like: ";
 
 
+// File: classcmf_1_1math_1_1_brents_method_1_1not__finite__error.xml
+%feature("docstring") cmf::math::BrentsMethod::not_finite_error "";
+
+%feature("docstring")
+cmf::math::BrentsMethod::not_finite_error::not_finite_error "not_finite_error(std::string msg) ";
+
+
 // File: classcmf_1_1water_1_1_null_adsorption.xml
 %feature("docstring") cmf::water::NullAdsorption "
 
@@ -12934,6 +13128,13 @@ Calculates all the values. ";
 cmf::upslope::ET::ShuttleworthWallace::transp_from_layer "double
 transp_from_layer(cmf::upslope::SoilLayer::ptr sl, cmf::math::Time t)
 ";
+
+
+// File: classcmf_1_1math_1_1_brents_method_1_1sign__error.xml
+%feature("docstring") cmf::math::BrentsMethod::sign_error "";
+
+%feature("docstring")  cmf::math::BrentsMethod::sign_error::sign_error
+"sign_error(std::string msg) ";
 
 
 // File: classcmf_1_1upslope_1_1connections_1_1_simple_infiltration.xml
@@ -16992,7 +17193,7 @@ C++ includes: RetentionCurve.h ";
 
 %feature("docstring")
 cmf::upslope::VanGenuchtenMualem::VanGenuchtenMualem "VanGenuchtenMualem(real Ksat=15, real phi=0.5, real alpha=0.2178, real
-n=1.211, real m=-1)
+n=1.211, real m=-1, real theta_r=0.0, real w0=0.99)
 
 Creates a van Genuchten-Mualem retention curve.
 
@@ -17957,64 +18158,28 @@ Keyword arguments for pylab.plot :return: matplotlib line object ";
 
 // File: namespacecmf_1_1fit__retention__curve.xml
 %feature("docstring")  cmf::fit_retention_curve::fit_bc "def
-cmf.fit_retention_curve.fit_bc(pF, theta, count=20, verbose=False)
+cmf.fit_retention_curve.fit_bc(pF, theta, count=1, verbose=False)
 
-Fits a Brooks-Corey retention curve into data pF: a sequence of pF
-values theta: an array of water contents ";
+Fits the vanGenuchten Mualem retention curve into measured soilphysics
+values :param pF: A sequence of pF values :param theta: A sequence of
+the volumetric water content in l water/l soil at the respective pF
+value :param count: Times to repeat the minimization to avoid local
+minima :param verbose: If True: Print the values in between :return:
+(Retentioncurve, RMSE) ";
 
 %feature("docstring")  cmf::fit_retention_curve::fit_vgm "def
-cmf.fit_retention_curve.fit_vgm(pF, theta, variable_m=False, count=20,
-fitlevel=None, verbose=False)
+cmf.fit_retention_curve.fit_vgm(pF, theta, fit_m=False,
+fit_theta_r=False, count=1, verbose=False)
 
-Fits a Van Genuchten / Mualem retention curve into data pF: a sequence
-of pF values theta: an array of water contents alpha_range: a
-2-sequence holding the range for alpha values n_range: a 2-sequence
-holding the range for n values ";
-
-%feature("docstring")  cmf::fit_retention_curve::get_error_bc "def
-cmf.fit_retention_curve.get_error_bc(params, pF, theta) ";
-
-%feature("docstring")  cmf::fit_retention_curve::get_error_vgm "def
-cmf.fit_retention_curve.get_error_vgm(params, pF, theta) ";
-
-%feature("docstring")  cmf::fit_retention_curve::make_vgm "def
-cmf.fit_retention_curve.make_vgm(params) ";
-
-%feature("docstring")  cmf::fit_retention_curve::narrowparameters_bc "def cmf.fit_retention_curve.narrowparameters_bc(pF, theta, phi, b,
-w_x, count=10000, perc=10)
-
-Narrows the parameter space down to the best perc (default=10) percent
-of the results pF: A sequence of pF values matching theta theta: A
-sequence of water content values for the corresponding pF values phi:
-A distribution of porosity values, only the range is used alpha: A
-distribution of VanGenuchten alpha values, only the range is used n: A
-distribution of VanGenuchten n values, only the range is used count:
-Number of random values to be drawn in the range of the parameters
-perc: percentile of best fitting parameters  Returns:
-phi,alpha,n,vgm_err: New distribution of phi, alpha, n and the
-corrseponding errors                      for the best perc% of the
-results ";
-
-%feature("docstring")  cmf::fit_retention_curve::narrowparameters_vgm
-"def cmf.fit_retention_curve.narrowparameters_vgm(pF, theta, phi,
-alpha, n, theta_r=(0.0, 0.0), count=10000, perc=10)
-
-Narrows the parameter space down to the best perc (default=10) percent
-of the results pF: A sequence of pF values matching theta theta: A
-sequence of water content values for the corresponding pF values phi:
-A distribution of porosity values, only the range is used alpha: A
-distribution of VanGenuchten alpha values, only the range is used n: A
-distribution of VanGenuchten n values, only the range is used count:
-Number of random values to be drawn in the range of the parameters
-perc: percentile of best fitting parameters  Returns:
-phi,alpha,n,vgm_err: New distribution of phi, alpha, n and the
-corrseponding errors                      for the best perc% of the
-results                       Usage:     # Create a priori range phi,
-n, alpha = ";
-
-%feature("docstring")  cmf::fit_retention_curve::plot_vgms "def
-cmf.fit_retention_curve.plot_vgms(pF, theta, phi, alpha, n, theta_r)
-";
+Fits the vanGenuchten Mualem retention curve into measured soilphysics
+values :param pF: A sequence of pF values :param theta: A sequence of
+the volumetric water content in l water/l soil at the respective pF
+value :param fit_m: If True, the retention curve is fitted with a
+variable m (deprecated by vanGenuchten) :param fit_theta_r:  If True,
+the retention curve is fitted using a theta_r (kind of deprecated by
+vanGenuchten) :param count: Times to repeat the minimization to avoid
+local minima :param verbose: If True: Print the values in between
+:return: (Retentioncurve, RMSE) ";
 
 
 // File: namespacecmf_1_1geometry.xml
@@ -19380,6 +19545,9 @@ ymax=1) ";
 %feature("docstring")  cmf::square "real square(real x) ";
 
 
+// File: root__finding_8h.xml
+
+
 // File: spline_8h.xml
 
 
@@ -19393,6 +19561,9 @@ ymax=1) ";
 
 
 // File: project_8h.xml
+
+
+// File: cross__section__reach_8h.xml
 
 
 // File: _manning_connection_8h.xml
@@ -19602,6 +19773,9 @@ ymax=1) ";
 // File: _c_m_f__lumped__without__spotpy_8md.xml
 
 
+// File: _cmf_tut_abstract_fluxes_8md.xml
+
+
 // File: _cmf_tut_kinematic_wave_8md.xml
 
 
@@ -19798,6 +19972,9 @@ ymax=1) ";
 
 
 // File: cmf_lumped_without_spotpy.xml
+
+
+// File: cmf_tut_abstract_fluxes.xml
 
 
 // File: cmf_tut_kinematic_wave.xml

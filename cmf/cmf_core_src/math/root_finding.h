@@ -39,15 +39,38 @@
 
 namespace cmf {
 	namespace math {
+		namespace root_finding {
+			class sign_error : public std::runtime_error {
+			public:
+				sign_error(std::string msg) : std::runtime_error(msg) {}
+			};
+			class not_finite_error : public std::runtime_error {
+			public:
+				not_finite_error(std::string msg) : std::runtime_error(msg) {}
+			};
+			class iteration_error : public std::runtime_error {
+			public:
+				iteration_error(std::string msg) : std::runtime_error(msg) {}
+			};
+			class BrentsMethod {
+				double tolerance;
+				unsigned int max_iterations;
+			public:
+				BrentsMethod(double tolerance = 1e-12, unsigned int max_iterations = 1000);
+				virtual double f(double) const = 0;
+				double operator()(double lower_bound, double upper_bound, double offset = 0) const;
+			};
+			class Bisect {
+				double tolerance;
+				unsigned int max_iterations;
+			public:
+				Bisect(double tolerance = 1e-12, unsigned int max_iterations = 1000);
+				virtual double f(double) const = 0;
+				double operator()(double lower_bound, double upper_bound, double offset = 0) const;
+			};
 
-		class BrentsMethod {
-			double tolerance;
-			unsigned int max_iterations;
-		public:
-			BrentsMethod(double tolerance = 1e-12, unsigned int max_iterations = 1000);
-			virtual double f(double) const = 0;
-			double operator()(double lower_bound, double upper_bound, double offset = 0) const;
-		};
+
+		}
 	}
 }
 

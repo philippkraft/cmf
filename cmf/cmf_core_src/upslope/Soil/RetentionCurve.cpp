@@ -22,6 +22,9 @@
 #include <sstream>
 #include "../../math/real.h"
 #include "../../math/root_finding.h"
+
+const double NaN = std::numeric_limits<double>::quiet_NaN();
+
 // Class for an parabolic extrapolation of a retention curve
 namespace cmf {
 	namespace upslope {
@@ -310,12 +313,12 @@ cmf::upslope::VanGenuchtenMualem::VanGenuchtenMualem(
 	}
 	if (error) throw std::runtime_error(msg.str());
 }
-class W0Fitter : public cmf::math::BrentsMethod {
+class W0Fitter : public cmf::math::root_finding::BrentsMethod {
 public:
 	mutable cmf::upslope::VanGenuchtenMualem vgm;
 	double w1, Psi_P;
 	W0Fitter(const cmf::upslope::VanGenuchtenMualem& owner, real _w1/*=1.01*/, real _Psi_p/*=1.0*/)
-		: BrentsMethod(1e-4), vgm(owner), w1(_w1), Psi_P(_Psi_p) {}
+		: BrentsMethod(1e-6), vgm(owner), w1(_w1), Psi_P(_Psi_p) {}
 	double f(double w0) const {
 		vgm.w0 = w0;
 		return (vgm.Wetness(Psi_P) - w1) / (w1 - 1);
@@ -324,7 +327,22 @@ public:
 real cmf::upslope::VanGenuchtenMualem::fit_w0( real w1/*=1.01*/,real Psi_p/*=1.0*/,real tolerance/*=0.1*/ )
 {
 	W0Fitter w0_fitter(*this, w1, Psi_p);
-	double error = w0_fitter(0.9, 1 - 1e-12);
+	double start = 0.9;
+	double end = 1 - 1e-15;
+	while (start < end){
+	    try  {
+		    double error = w0_fitter(start, end);
+		    break;
+		} 
+		catch (const cmf::math::root_finding::not_finite_error& e) {
+		    start += 0.5 * (1 - start);
+		} 
+		catch (const cmf::math::root_finding::sign_error& e) {
+			start -= 0.25 * (1 - start);
+			end += 0.5 * (1 - end);
+		}
+	}
+		
 	this->w0 = w0_fitter.vgm.w0;
 	return this->w0;
 }
