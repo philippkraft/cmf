@@ -11,7 +11,7 @@ it is to introduce some of the elements of cmf.
 ## The model
 
 The model is a simple linear storage equation to transport water from
-one water storage (W,,1,,) to another water storage (W,,2,,).
+one water storage (@f$W_1@fS) to another water storage (@f$W_2@f$).
 
 
 @f[
@@ -20,10 +20,10 @@ q_{W_1,W_2}=\frac{V_1}{t_r}
 
 where:
 
-  - @f$q@f$ is the flux in @f$\frac {m^3}{day}@f$ from W,,1,, to
-    W,,2,,
-  - @f$V_1@f$ is the stored volume of water in W,,1,, in @f$m^3@f$
-  - @f$t_r@f$ is the mean residence time of the water in W,,1,, in
+  - @f$q@f$ is the flux in @f$\frac {m^3}{day}@f$ from @f$W_1@f$ to
+    @f$W_2@f$
+  - @f$V_1@f$ is the stored volume of water in @f$W_1@f$ in @f$m^3@f$
+  - @f$t_r@f$ is the mean residence time of the water in @f$W_1@f$ in
     days.
 
 ## Implementation

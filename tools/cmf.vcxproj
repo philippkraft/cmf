@@ -335,7 +335,7 @@
     <ClInclude Include="..\cmf\cmf_core_src\math\irregular_timeseries.h" />
     <ClInclude Include="..\cmf\cmf_core_src\Upslope\layer_list.h" />
     <ClInclude Include="..\cmf\cmf_core_src\reach\ManningConnection.h" />
-    <ClInclude Include="..\cmf\cmf_core_src\atmosphere\Meteorology.h" />
+    <ClInclude Include="..\cmf\cmf_core_src\atmosphere\meteorology.h" />
     <ClInclude Include="..\cmf\cmf_core_src\math\integrators\MultiIntegrator.h" />
     <ClInclude Include="..\cmf\cmf_core_src\math\integrators\sundials_cvode\include\nvector\nvector_parallel.h" />
     <ClInclude Include="..\cmf\cmf_core_src\math\integrators\sundials_cvode\include\nvector\nvector_serial.h" />
@@ -418,7 +418,7 @@
     <ClCompile Include="..\cmf\cmf_core_src\math\integrators\Integrator.cpp" />
     <ClCompile Include="..\cmf\cmf_core_src\Upslope\layer_list.cpp" />
     <ClCompile Include="..\cmf\cmf_core_src\reach\ManningConnection.cpp" />
-    <ClCompile Include="..\cmf\cmf_core_src\atmosphere\Meteorology.cpp" />
+    <ClCompile Include="..\cmf\cmf_core_src\atmosphere\meteorology.cpp" />
     <ClCompile Include="..\cmf\cmf_core_src\math\integrators\MultiIntegrator.cpp" />
     <ClCompile Include="..\cmf\cmf_core_src\math\integrators\sundials_cvode\src\nvector_serial.cpp" />
     <ClCompile Include="..\cmf\cmf_core_src\reach\OpenWaterStorage.cpp" />

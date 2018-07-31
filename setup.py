@@ -30,7 +30,7 @@ from setuptools.command.build_ext import build_ext
 from distutils.sysconfig import customize_compiler
 from distutils.command.build_py import build_py
 
-version = '1.3.1b'
+version = '1.3.1'
 branchversion = version
 try:
     from pygit2 import Repository
@@ -42,7 +42,7 @@ except:
 
 print('cmf', branchversion)
 
-# Try to import numpy, if it fails we have a problem 
+# Try to import numpy, if it fails we have a problem
 try:
     # Import a function to get a path to the include directories of numpy
     # noinspection PyPackageRequirements
