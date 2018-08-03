@@ -19,9 +19,9 @@ chapter was:
 import datetime
 import cmf
 p = cmf.project()
-W1 = p.NewStorage(name="W1",x=0,y=0,z=0)
-W2 = p.NewStorage(name="W2",x=10,y=0,z=0)
-q = cmf.kinematic_wave(source=W1,target=W2,residencetime=1.0)
+W1 = p.NewStorage(name="W1", x=0, y=0, z=0)
+W2 = p.NewStorage(name="W2", x=10, y=0, z=0)
+q = cmf.LinearStorageConnection(source=W1, target=W2, residencetime=1.0)
 W1.volume = 1.0
 ~~~~~~~~~~~~~
 
@@ -33,7 +33,7 @@ a longer residence time
 ~~~~~~~~~~~~~{.py}
 
 Out = p.NewOutlet(name="Outlet",x=20,y=0,z=0)
-qout = cmf.kinematic_wave(source=W2,target=Out,residencetime=2.0)
+qout = cmf.LinearStorageConnection(source=W2,target=Out,residencetime=2.0)
 ~~~~~~~~~~~~~
 
 At last the new system needs to be solved again, the same way as the
@@ -64,7 +64,7 @@ condition ([NeumannBoundary](@ref cmf::water::NeumannBoundary)) as a
 second boundary. This type of boundary condition is not triggered by the
 state of a water storage in the system, but by a defined flux given by
 the user. Since the flux should change over time, the flux is given as a
-[timeseries](wiki:CmfTutSpaceTime#Timeseries). In this tutorial you will
+[timeseries](@ref CmfTutSpaceTime). In this tutorial you will
 create a timeseries with daily alternating flux values between 0 and 1.
 
 The setup code needs to be extended with the following:
@@ -82,15 +82,14 @@ for i in range(10):
     In.flux.add(i % 2)
 ~~~~~~~~~~~~~
 
-That's it. The complete code is available here:
-\[htdocs:examples/CmfTutBoundary.py\]: And the result is:
+That's it. And the result is:
 
 ![](@ref CmfTutBoundaryInOut.png)
 
 If the input timeseries is replaced by measured net rainfall data and
 the residence times of the storages are calibrated, you might be lucky
 to predict some catchments correctly. However, cmf contains many, many
-more connection types than kinematic_wave. Some of the connection types
+more connection types than [linear storage connections](@ref cmf::water::LinearStorageConnection). Some of the connection types
 are shown in the next chapters. A list of all connections is
 [here](htdocs:doxygen/group__connections.html).
 
