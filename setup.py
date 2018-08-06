@@ -273,7 +273,7 @@ if __name__ == '__main__':
     classifiers = [
         'Development Status :: 4 - Beta',
         'Intended Audience :: Science/Research',
-        'License :: OSI Approved :: GNU General Public License v2 or later (GPLv2+)',
+        'License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)',
         'Programming Language :: C++',
         'Programming Language :: C',
         'Programming Language :: Python',
@@ -286,7 +286,7 @@ if __name__ == '__main__':
 
     setup(name='cmf',
           version=version,
-          license='GPL',
+          license='GPLv3+',
           ext_modules=ext,
           packages=['cmf', 'cmf.draw', 'cmf.geometry'],
           python_requires='>=2.7',
