@@ -102,7 +102,15 @@ between these different model domains.
 
 ## Keeping a flux constant as long as water is available
 
-[ConstantFlux](@ref cmf::water::TechnicalFlux)
+For some processes a constant flux from one water storage to another or
+a boundary condition is needed. These constant (but externally changeable) fluxes
+can be anthropogenic water fluxes, like the regulation of a dam or a pump rate,
+or some other process that has a flux limit. Eg. the model HBVlight assumes
+a constant percolation from the 1st to the 2nd groundwater storage. However,
+when the source becomes empty, the flux stops. 
+
+Currently, this type of connection is called "TechnicalFlux"
+but will be renamed to [ConstantFlux](@ref cmf::water::TechnicalFlux). 
 
 ## Keeping a state constant as long as water is available
 
