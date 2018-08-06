@@ -30,7 +30,7 @@ from setuptools.command.build_ext import build_ext
 from distutils.sysconfig import customize_compiler
 from distutils.command.build_py import build_py
 
-version = '1.3.1b'
+version = '1.3.1'
 branchversion = version
 try:
     from pygit2 import Repository
@@ -42,7 +42,7 @@ except:
 
 print('cmf', branchversion)
 
-# Try to import numpy, if it fails we have a problem 
+# Try to import numpy, if it fails we have a problem
 try:
     # Import a function to get a path to the include directories of numpy
     # noinspection PyPackageRequirements
@@ -273,7 +273,7 @@ if __name__ == '__main__':
     classifiers = [
         'Development Status :: 4 - Beta',
         'Intended Audience :: Science/Research',
-        'License :: OSI Approved :: GNU General Public License v2 or later (GPLv2+)',
+        'License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)',
         'Programming Language :: C++',
         'Programming Language :: C',
         'Programming Language :: Python',
@@ -286,7 +286,7 @@ if __name__ == '__main__':
 
     setup(name='cmf',
           version=version,
-          license='GPL',
+          license='GPLv3+',
           ext_modules=ext,
           packages=['cmf', 'cmf.draw', 'cmf.geometry'],
           python_requires='>=2.7',

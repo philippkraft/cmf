@@ -30,7 +30,7 @@
   <td id="projectlogo"><img alt="Logo" src="cmf-logo-klein.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">cmf
-   &#160;<span id="projectnumber">1.3.1a0</span>
+   &#160;<span id="projectnumber">1.3.1b</span>
    </div>
    <div id="projectbrief">The Catchment Modelling Framework</div>
   </td>
@@ -89,7 +89,7 @@ $(function() {
 <div class="fragment"><div class="line"><span class="keyword">import</span> cmf</div><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"><span class="keyword">def </span>z(x): </div><div class="line">    <span class="keywordflow">return</span> 10/(1+np.exp((x-100)/30))</div><div class="line"><span class="comment"># create a project</span></div><div class="line">p = <a class="code" href="classcmf_1_1project.html">cmf.project</a>()</div></div><!-- fragment --><h3>Creating 20 cells</h3>
 <p>Our hill slope should have an exponential slope, is 200 m long and is discretized into 20 cells. By using different cell areas, a quasi-3D effect for converging or diverging fluxes could be applied, but in our example the area of each cell is fixed to 10m x 10m.</p>
 <div class="fragment"><div class="line"><span class="keywordflow">for</span> i <span class="keywordflow">in</span> range(20):</div><div class="line">    x = i * 10.</div><div class="line">    <span class="comment"># create a cell with surface storage</span></div><div class="line">    c = p.NewCell(x,0,z(x),100,<span class="keyword">True</span>)</div></div><!-- fragment --><p>The <a href="wiki:CmfTutCell#topology">topological connection</a> of the cells is simple, we only need to connect each cell with its lower neighbor. The width of the connection is 10m.</p>
-<div class="fragment"><div class="line"><span class="keywordflow">for</span> c_upper,c_lower <span class="keywordflow">in</span> zip(p[:-1],p[1:]):</div><div class="line">    c_upper.topology.AddNeighbor(c_lower,10.)</div></div><!-- fragment --><p>Now, each cell needs to have soil layers, exactly the same way as in the setup code in [wiki:CmfTut1d], just with some other layer depth and the "default" Van Genuchten-Mualem retention curve - it is better to parameterize your soil type of course (<a class="el" href="cmf_tut_retentioncurve.html">cmfTutRetentioncurve</a>).</p>
+<div class="fragment"><div class="line"><span class="keywordflow">for</span> c_upper,c_lower <span class="keywordflow">in</span> zip(p[:-1],p[1:]):</div><div class="line">    c_upper.topology.AddNeighbor(c_lower,10.)</div></div><!-- fragment --><p>Now, each cell needs to have soil layers, exactly the same way as in the setup code in [wiki:CmfTut1d], just with some other layer depth and the "default" Van Genuchten-Mualem retention curve - it is better to parameterize your soil type of course (<a class="el" href="cmf_tut_retentioncurve.html">Hydraulic head (subsurface)</a>).</p>
 <div class="fragment"><div class="line"><span class="comment"># Customize cells</span></div><div class="line"><span class="keywordflow">for</span> c <span class="keywordflow">in</span> p:</div><div class="line">    <span class="comment"># create layers    </span></div><div class="line">    <span class="keywordflow">for</span> d <span class="keywordflow">in</span> [0.02,0.05,0.1,0.2,0.3,0.5,0.75,1.0,1.25,1.5,1.75,2.]:</div><div class="line">        rc = cmf.VanGenuchtenMualem(Ksat=50*np.exp(-d),alpha=0.1,n=2.0,phi=0.5)</div><div class="line">        rc.w0 = 0.9996</div><div class="line">        c.add_layer(d,rc)</div><div class="line">    <span class="comment"># set initial conditions</span></div><div class="line">    c.saturated_depth=2.</div><div class="line">    <span class="comment"># use Richards connection</span></div><div class="line">    c.install_connection(cmf.Richards)</div><div class="line">    c.install_connection(cmf.GreenAmptInfiltration)</div><div class="line">    <span class="comment"># Add more connections here... (eg. ET, snowmelt, canopy overflow)</span></div></div><!-- fragment --><p>Using <code>Darcy</code> and <code>KinematicSurfaceRunoff</code> as lateral connections as in CmfTutDarcianLateralFlow and CmfTutSurfaceRunoff. Due to the defined topology, we can use the <code><a class="el" href="namespacecmf.html#a771066e276c39bccafb627cbe1143a6c">cmf.connect_cells_with_flux</a></code> function.</p>
 <div class="fragment"><div class="line"><a class="code" href="namespacecmf.html#a771066e276c39bccafb627cbe1143a6c">cmf.connect_cells_with_flux</a>(p,cmf.Darcy)</div><div class="line"><a class="code" href="namespacecmf.html#a771066e276c39bccafb627cbe1143a6c">cmf.connect_cells_with_flux</a>(p,cmf.KinematicSurfaceRunoff)</div></div><!-- fragment --><h2>Create boundary conditions and solver</h2>
 <h3>Boundary conditions</h3>
@@ -118,7 +118,7 @@ $(function() {
 <a class="el" href="http://www.uni-giessen.de/hydro"> 
 Institute of Landscape Ecology and Resources Management,University of Gie&szlig;en</a>
 </h3></td>
-<td>Generated: Wed May 9 2018 13:52:57</td>
+<td>Generated: Tue Jun 19 2018 16:35:15</td>
 </tr></table>
 </small></address>
 </body>

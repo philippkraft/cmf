@@ -1,4 +1,4 @@
-@page cmfInstallWindows
+@page cmfInstallWindows Windows installation
 
 [back...](@ref cmfInstall)
 

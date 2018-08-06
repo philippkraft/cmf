@@ -1,4 +1,4 @@
-@page cmfTutSoluteTransport1D
+@page cmfTutSoluteTransport1D Solute transport (1D)
 
  [back...](@ref cmfTut1d)
 

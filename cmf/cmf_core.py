@@ -8514,7 +8514,7 @@ class VanGenuchtenMualem(RetentionCurve):
         __init__(cmf::upslope::VanGenuchtenMualem self, real Ksat=15, real phi=0.5, real alpha=0.2178, real n=1.211, real m=-1, real theta_r=0.0, real w0=0.99) -> VanGenuchtenMualem
 
         VanGenuchtenMualem(real Ksat=15, real phi=0.5, real alpha=0.2178, real
-        n=1.211, real m=-1)
+        n=1.211, real m=-1, real theta_r=0.0, real w0=0.99)
 
         Creates a van Genuchten-Mualem retention curve.
 
@@ -8529,7 +8529,12 @@ class VanGenuchtenMualem(RetentionCurve):
 
         n:  Van Genuchten n
 
-        m:  Van Genuchten m parameter, if negative m is calculated as :math:`1-\\frac 1 n` 
+        m:  Van Genuchten m parameter, if negative m is calculated as :math:`1-\\frac 1 n`
+
+        theta_r:  Water content for :math:`\\lim\\limits_{\\Psi_M \\rightarrow -\\infty}{\\theta(\\Psi_M)}`
+
+        w0:  Wetness above the parabolic extrapolation is used instead of the
+        Van Genuchten curve (usually calculated with fit_w0) 
         """
         _cmf_core.VanGenuchtenMualem_swiginit(self, _cmf_core.new_VanGenuchtenMualem(*args, **kwargs))
     __swig_destroy__ = _cmf_core.delete_VanGenuchtenMualem

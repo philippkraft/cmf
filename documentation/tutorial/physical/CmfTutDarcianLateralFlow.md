@@ -1,4 +1,4 @@
-@page cmfTutDarcianLateralFlow
+@page cmfTutDarcianLateralFlow Lateral Darcian flow 
 
  [next...](@ref cmfTutSurfaceRunoff)
 

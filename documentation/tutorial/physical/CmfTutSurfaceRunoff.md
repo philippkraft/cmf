@@ -1,4 +1,4 @@
-@page cmfTutSurfaceRunoff
+@page cmfTutSurfaceRunoff Surface runoff
 
  [next...](@ref cmfTut2d)
 

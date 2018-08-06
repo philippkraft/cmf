@@ -309,6 +309,8 @@ namespace cmf {
 			/// @param alpha Van Genuchten \f$\alpha\f$ in \f$\frac 1{cm}\f$
 			/// @param n Van Genuchten n
 			/// @param m Van Genuchten m parameter, if negative m is calculated as \f$ 1-\frac 1 n\f$
+			/// @param theta_r Water content for \f$\lim\limits_{\Psi_M \rightarrow -\infty}{\theta(\Psi_M)}\f$
+			/// @param w0 Wetness above the parabolic extrapolation is used instead of the Van Genuchten curve (usually calculated with fit_w0)
 			VanGenuchtenMualem(real Ksat=15, real phi=0.5,real alpha=0.2178, real n=1.211, 
 				real m=-1, real theta_r=0.0, real w0=0.99);
 			virtual ~VanGenuchtenMualem()
@@ -316,6 +318,7 @@ namespace cmf {
 
 			}
 		};
+
 		/// The linear retention curve provides a simple linear relationship between storage and head
 		/// 
 		/// Head function (head in m, calculated from upper side control volume)

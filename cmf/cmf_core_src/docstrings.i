@@ -17208,7 +17208,12 @@ alpha:  Van Genuchten :math:`\\\\alpha` in :math:`\\\\frac 1{cm}`
 
 n:  Van Genuchten n
 
-m:  Van Genuchten m parameter, if negative m is calculated as :math:`1-\\\\frac 1 n` ";
+m:  Van Genuchten m parameter, if negative m is calculated as :math:`1-\\\\frac 1 n`
+
+theta_r:  Water content for :math:`\\\\lim\\\\limits_{\\\\Psi_M \\\\rightarrow -\\\\infty}{\\\\theta(\\\\Psi_M)}`
+
+w0:  Wetness above the parabolic extrapolation is used instead of the
+Van Genuchten curve (usually calculated with fit_w0) ";
 
 %feature("docstring")
 cmf::upslope::VanGenuchtenMualem::~VanGenuchtenMualem "virtual

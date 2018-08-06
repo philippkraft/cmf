@@ -1,4 +1,4 @@
-@page cmfInstallHpc
+@page cmfInstallHpc HPC - installation
 
 [back...](@ref cmfInstall)
 

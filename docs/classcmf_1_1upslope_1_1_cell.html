@@ -30,7 +30,7 @@
   <td id="projectlogo"><img alt="Logo" src="cmf-logo-klein.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">cmf
-   &#160;<span id="projectnumber">1.3.1a0</span>
+   &#160;<span id="projectnumber">1.3.1b</span>
    </div>
    <div id="projectbrief">The Catchment Modelling Framework</div>
   </td>
@@ -167,9 +167,6 @@ Flux nodes of the cell</h2></td></tr>
 <a class="el" href="classcmf_1_1upslope_1_1vegetation_1_1_vegetation.html">cmf::upslope::vegetation::Vegetation</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcmf_1_1upslope_1_1_cell.html#ad8a53b939b7dc82994b122c00940f99d">vegetation</a></td></tr>
 <tr class="memdesc:ad8a53b939b7dc82994b122c00940f99d"><td class="mdescLeft">&#160;</td><td class="mdescRight">The vegetation object of the cell. <br /></td></tr>
 <tr class="separator:ad8a53b939b7dc82994b122c00940f99d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6cfe89868059fcbb781617fce456b851"><td class="memItemLeft" align="right" valign="top"><a id="a6cfe89868059fcbb781617fce456b851"></a>
-real&#160;</td><td class="memItemRight" valign="bottom"><b>surface_amplitude</b></td></tr>
-<tr class="separator:a6cfe89868059fcbb781617fce456b851"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a877d950745fb5348c0b988912404c927"><td class="memItemLeft" align="right" valign="top"><a id="a877d950745fb5348c0b988912404c927"></a>
 real&#160;</td><td class="memItemRight" valign="bottom"><b>Tground</b></td></tr>
 <tr class="separator:a877d950745fb5348c0b988912404c927"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -224,10 +221,10 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <a class="el" href="classcmf_1_1water_1_1flux__node.html#a8639fccad8de481d6f5d4d2faeab3709">cmf::water::flux_node::ptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcmf_1_1upslope_1_1_cell.html#a726247eff0be437561f818896f08047e">get_surfacewater</a> ()</td></tr>
 <tr class="memdesc:a726247eff0be437561f818896f08047e"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns the surface water of this cell. This is either a flux node or a <a class="el" href="classcmf_1_1upslope_1_1_surface_water.html" title="A child class of OpenWaterStorage to model surface water on a cell. ">cmf::upslope::SurfaceWater</a> <br /></td></tr>
 <tr class="separator:a726247eff0be437561f818896f08047e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0732ee838629a3078ed7039d22b51b53"><td class="memItemLeft" align="right" valign="top"><a id="a0732ee838629a3078ed7039d22b51b53"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcmf_1_1upslope_1_1_cell.html#a0732ee838629a3078ed7039d22b51b53">surfacewater_as_storage</a> ()</td></tr>
-<tr class="memdesc:a0732ee838629a3078ed7039d22b51b53"><td class="mdescLeft">&#160;</td><td class="mdescRight">Makes the surfacewater of this cell a <a class="el" href="classcmf_1_1upslope_1_1_surface_water.html" title="A child class of OpenWaterStorage to model surface water on a cell. ">cmf::upslope::SurfaceWater</a> storage. <br /></td></tr>
-<tr class="separator:a0732ee838629a3078ed7039d22b51b53"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9c68bb634a19e814d2adb403b5a6c132"><td class="memItemLeft" align="right" valign="top"><a id="a9c68bb634a19e814d2adb403b5a6c132"></a>
+surfacewater_ptr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcmf_1_1upslope_1_1_cell.html#a9c68bb634a19e814d2adb403b5a6c132">surfacewater_as_storage</a> ()</td></tr>
+<tr class="memdesc:a9c68bb634a19e814d2adb403b5a6c132"><td class="mdescLeft">&#160;</td><td class="mdescRight">Makes the surfacewater of this cell a <a class="el" href="classcmf_1_1upslope_1_1_surface_water.html" title="A child class of OpenWaterStorage to model surface water on a cell. ">cmf::upslope::SurfaceWater</a> storage. <br /></td></tr>
+<tr class="separator:a9c68bb634a19e814d2adb403b5a6c132"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa172b88d29f4e7f643179b60f7190c2f"><td class="memItemLeft" align="right" valign="top">cmf::water::WaterStorage::ptr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcmf_1_1upslope_1_1_cell.html#aa172b88d29f4e7f643179b60f7190c2f">add_storage</a> (std::string Name, char storage_role='N', bool isopenwater=false)</td></tr>
 <tr class="memdesc:aa172b88d29f4e7f643179b60f7190c2f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds a new storage to the cell.  <a href="#aa172b88d29f4e7f643179b60f7190c2f">More...</a><br /></td></tr>
 <tr class="separator:aa172b88d29f4e7f643179b60f7190c2f"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -566,7 +563,7 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><b>~Cell</b> ()</td><
 <a class="el" href="http://www.uni-giessen.de/hydro"> 
 Institute of Landscape Ecology and Resources Management,University of Gie&szlig;en</a>
 </h3></td>
-<td>Generated: Wed May 9 2018 13:53:00</td>
+<td>Generated: Tue Jun 19 2018 16:35:18</td>
 </tr></table>
 </small></address>
 </body>
