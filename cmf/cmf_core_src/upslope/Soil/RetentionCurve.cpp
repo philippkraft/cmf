@@ -313,37 +313,32 @@ cmf::upslope::VanGenuchtenMualem::VanGenuchtenMualem(
 	}
 	if (error) throw std::runtime_error(msg.str());
 }
-class W0Fitter : public cmf::math::root_finding::BrentsMethod {
-public:
-	mutable cmf::upslope::VanGenuchtenMualem vgm;
-	double w1, Psi_P;
-	W0Fitter(const cmf::upslope::VanGenuchtenMualem& owner, real _w1/*=1.01*/, real _Psi_p/*=1.0*/)
-		: BrentsMethod(1e-6), vgm(owner), w1(_w1), Psi_P(_Psi_p) {}
-	double f(double w0) const {
-		vgm.w0 = w0;
-		return (vgm.Wetness(Psi_P) - w1) / (w1 - 1);
-	}
-};
+
 real cmf::upslope::VanGenuchtenMualem::fit_w0( real w1/*=1.01*/,real Psi_p/*=1.0*/,real tolerance/*=0.1*/ )
 {
-	W0Fitter w0_fitter(*this, w1, Psi_p);
-	double start = 0.9;
-	double end = 1 - 1e-15;
-	while (start < end){
-	    try  {
-		    double error = w0_fitter(start, end);
-		    break;
+	this->w0 = 0.99;
+	double d = 1 - this->w0;
+	
+	for (size_t i = 0; i < 1000; i++)
+	{
+
+		double dw1 = this->Wetness(Psi_p) - w1;
+		if (std::abs(dw1) < tolerance * 0.01) {
+			return this->w0;
 		} 
-		catch (const cmf::math::root_finding::not_finite_error& e) {
-		    start += 0.5 * (1 - start);
+		else if (dw1 > 0 || !std::isfinite(dw1)) {
+			d *= 0.5;
+			this->w0 += d;
 		} 
-		catch (const cmf::math::root_finding::sign_error& e) {
-			start -= 0.25 * (1 - start);
-			end += 0.5 * (1 - end);
+		else if (dw1 < 0) {
+			this->w0 -= d;
+		}
+		if (this->w0 < 0.9) {
+			this->w0 = 0.99;
+			throw std::runtime_error("w0 does not converge, strange n and alpha values");
 		}
 	}
-		
-	this->w0 = w0_fitter.vgm.w0;
+	throw std::runtime_error("w0 does not converge after 1000 iterations");
 	return this->w0;
 }
 

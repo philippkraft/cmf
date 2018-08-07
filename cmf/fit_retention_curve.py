@@ -106,7 +106,7 @@ def fit_vgm(pF, theta, fit_m=False, fit_theta_r=False, count=1, verbose=False):
     :param verbose: If True: Print the values in between
     :return: (Retentioncurve, RMSE)
     """
-    fvgm = FitVanGenuchtenMualem(pF, theta, fit_m=fit_m,
+    fvgm = FitVanGenuchtenMualem(pF=pF, theta=theta, fit_m=fit_m,
                                  fit_theta_r=fit_theta_r, verbose=verbose)
     optres, rc = fvgm(count=count)
     return rc, optres.fun
@@ -121,7 +121,13 @@ def fit_bc(pF, theta, count=1, verbose=False):
     :param verbose: If True: Print the values in between
     :return: (Retentioncurve, RMSE)
     """
-    fbc = FitBrooksCorey(pF, theta, verbose=verbose)
+    fbc = FitBrooksCorey(pF=pF, theta=theta, verbose=verbose)
     optres, rc = fbc(count=count)
     return rc, optres.fun
+
+
+
+
+
+
 

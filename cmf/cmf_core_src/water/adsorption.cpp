@@ -18,7 +18,7 @@ real cmf::water::FreundlichAdsorbtion::totalsolute( real xf, real V ) const
 namespace cmf {
 	namespace water {
 		class FreundlichAdsorptionCalculator
-			: public cmf::math::BrentsMethod
+			: public cmf::math::root_finding::BrentsMethod
 		{
 		public:
 			const cmf::water::FreundlichAdsorbtion * owner;

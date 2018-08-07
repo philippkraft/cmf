@@ -2,7 +2,7 @@
 #include "cross_section_reach.h"
 #include "../math/root_finding.h"
 #include <iostream>
-class DepthCalculator : public cmf::math::BrentsMethod {
+class DepthCalculator : public cmf::math::root_finding::BrentsMethod {
 private:
 	const cmf::river::CrossSectionReach * cr;
 public:
