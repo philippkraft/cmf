@@ -2960,9 +2960,10 @@ class FreundlichAdsorbtion(Adsorption):
     calculate the free tracer mass. The eq. above can not be rearanged to
     get :math:`x_{free}` from :math:`x_{tot}`. Instead, the value is iterated
     usingregula falsi. If n is near to 1, using LinearAdsorption will
-    speed up your calculations. The simplest physically based adsorption
-    model by Langmuir ( LangmuirAdsorption) has also a analytical solution
-    and is hence calculated faster then Freundlich.
+    speed up your calculations.  Check if an analytical solution is
+    available The simplest physically based adsorption model by Langmuir (
+    LangmuirAdsorption) has also a analytical solution and is hence
+    calculated faster then Freundlich.
 
     C++ includes: adsorption.h 
     """
@@ -10138,7 +10139,18 @@ _cmf_core.MeanChannel_swigregister(MeanChannel)
 # MeanChannel end
 
 class CrossSectionReach(IChannel):
-    """Proxy of C++ cmf::river::CrossSectionReach class."""
+    """
+
+
+    Structure for the description of reaches with a freely defined cross
+    section.
+
+    Although double triangular cross section reach are rarely met, a
+    triangular reach does scale with its water load, and is therefore
+    preferable in case where nothing about IChannel geometry is known
+
+    C++ includes: cross_section_reach.h 
+    """
 
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
     __repr__ = _swig_repr
@@ -10149,6 +10161,8 @@ class CrossSectionReach(IChannel):
         """
         __init__(cmf::river::CrossSectionReach self, double l, cmf::math::num_array x, cmf::math::num_array depth) -> CrossSectionReach
         __init__(cmf::river::CrossSectionReach self, CrossSectionReach copy) -> CrossSectionReach
+
+        CrossSectionReach(const CrossSectionReach &copy) 
         """
         _cmf_core.CrossSectionReach_swiginit(self, _cmf_core.new_CrossSectionReach(*args))
 
@@ -10156,15 +10170,18 @@ class CrossSectionReach(IChannel):
         """
         copy(CrossSectionReach self) -> CrossSectionReach
 
-        virtual IChannel*
-        copy() const =0 
+        CrossSectionReach* copy() const 
         """
         return _cmf_core.CrossSectionReach_copy(self, *args, **kwargs)
 
     __swig_destroy__ = _cmf_core.delete_CrossSectionReach
 
     def check_iterator(self, *args, **kwargs):
-        """check_iterator(CrossSectionReach self, double h)"""
+        """
+        check_iterator(CrossSectionReach self, double h)
+
+        void check_iterator(double h) const 
+        """
         return _cmf_core.CrossSectionReach_check_iterator(self, *args, **kwargs)
 
 CrossSectionReach.copy = new_instancemethod(_cmf_core.CrossSectionReach_copy, None, CrossSectionReach)

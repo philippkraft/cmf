@@ -81162,15 +81162,25 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"new_CrossSectionReach", _wrap_new_CrossSectionReach, METH_VARARGS, (char *)"\n"
 		"CrossSectionReach(double l, cmf::math::num_array x, cmf::math::num_array depth)\n"
 		"new_CrossSectionReach(CrossSectionReach copy) -> CrossSectionReach\n"
+		"\n"
+		"CrossSectionReach(const CrossSectionReach &copy) \n"
 		""},
 	 { (char *)"CrossSectionReach_copy", (PyCFunction)_wrap_CrossSectionReach_copy, METH_O, (char *)"\n"
 		"CrossSectionReach_copy(CrossSectionReach self) -> CrossSectionReach\n"
 		"\n"
-		"virtual IChannel*\n"
-		"copy() const =0 \n"
+		"CrossSectionReach* copy() const \n"
 		""},
-	 { (char *)"delete_CrossSectionReach", (PyCFunction)_wrap_delete_CrossSectionReach, METH_O, (char *)"delete_CrossSectionReach(CrossSectionReach self)"},
-	 { (char *)"CrossSectionReach_check_iterator", (PyCFunction) _wrap_CrossSectionReach_check_iterator, METH_VARARGS | METH_KEYWORDS, (char *)"CrossSectionReach_check_iterator(CrossSectionReach self, double h)"},
+	 { (char *)"delete_CrossSectionReach", (PyCFunction)_wrap_delete_CrossSectionReach, METH_O, (char *)"\n"
+		"delete_CrossSectionReach(CrossSectionReach self)\n"
+		"\n"
+		"virtual\n"
+		"~CrossSectionReach() \n"
+		""},
+	 { (char *)"CrossSectionReach_check_iterator", (PyCFunction) _wrap_CrossSectionReach_check_iterator, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
+		"CrossSectionReach_check_iterator(CrossSectionReach self, double h)\n"
+		"\n"
+		"void check_iterator(double h) const \n"
+		""},
 	 { (char *)"CrossSectionReach_swigregister", CrossSectionReach_swigregister, METH_VARARGS, NULL},
 	 { (char *)"CrossSectionReach_swiginit", CrossSectionReach_swiginit, METH_VARARGS, NULL},
 	 { (char *)"OpenWaterStorage_get_height_function", (PyCFunction)_wrap_OpenWaterStorage_get_height_function, METH_O, (char *)"\n"

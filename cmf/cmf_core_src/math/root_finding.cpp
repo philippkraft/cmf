@@ -3,6 +3,7 @@
 #include <cmath>
 #include <stdexcept>
 #include <string>
+#include "../cmfmemory.h"
 
 bool use_bisection(bool last_time_bisection, double a, double b, double c, double d, double s, double tolerance)
 {
