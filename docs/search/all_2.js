@@ -34,5 +34,6 @@ var searchData=
   ['autoscale_5fnone',['autoscale_None',['../classcmf_1_1draw_1_1cellmap_1_1_cell_map.html#a54d1ed4101c1982a3d73c188c28ab59f',1,'cmf::draw::cellmap::CellMap']]],
   ['avg',['avg',['../classcmf_1_1math_1_1integratable.html#ab0dd17999c81d031c3ef5b7251ce03b9',1,'cmf::math::integratable::avg()'],['../classcmf_1_1water_1_1flux__integrator.html#af6704c19264632250c618ac059feff2a',1,'cmf::water::flux_integrator::avg()'],['../classcmf_1_1water_1_1waterbalance__integrator.html#af6704c19264632250c618ac059feff2a',1,'cmf::water::waterbalance_integrator::avg()']]],
   ['azimuth',['azimuth',['../classcmf_1_1geometry_1_1point.html#ae3014a34aa6c4c3036bf3abc4d04c279',1,'cmf::geometry::point']]],
-  ['a_20simple_20darcian_20hillslope_20model',['A simple Darcian hillslope model',['../cmf_tut2d.html',1,'physical']]]
+  ['a_20simple_20darcian_20hillslope_20model',['A simple Darcian hillslope model',['../cmf_tut2d.html',1,'physical']]],
+  ['abstract_20connections_20for_20advanced_20model_20concepts',['Abstract connections for advanced model concepts',['../cmf_tut_abstract_fluxes.html',1,'conceptual']]]
 ];

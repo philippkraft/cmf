@@ -30,7 +30,7 @@
   <td id="projectlogo"><img alt="Logo" src="cmf-logo-klein.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">cmf
-   &#160;<span id="projectnumber">1.3.1b</span>
+   &#160;<span id="projectnumber">1.4</span>
    </div>
    <div id="projectbrief">The Catchment Modelling Framework</div>
   </td>
@@ -82,15 +82,15 @@ $(function() {
 <div class="textblock"><p><a class="el" href="cmf_tut_boundary.html">next...</a></p>
 <p>In this part, we are going to create a first model. To keep things simple, the model will be extremely simple. In fact, it would be easier to do this model in a spread sheet and keep cmf out of it. But of course it is to introduce some of the elements of cmf.</p>
 <h2>The model</h2>
-<p>The model is a simple linear storage equation to transport water from one water storage (W,,1,,) to another water storage (W,,2,,).</p>
+<p>The model is a simple linear storage equation to transport water from one water storage ( \(W_1\)) to another water storage ( \(W_2\)).</p>
 <p class="formulaDsp">
 \[ q_{W_1,W_2}=\frac{V_1}{t_r} \]
 </p>
 <p>where:</p>
 <ul>
-<li>\(q\) is the flux in \(\frac {m^3}{day}\) from W,,1,, to W,,2,,</li>
-<li>\(V_1\) is the stored volume of water in W,,1,, in \(m^3\)</li>
-<li>\(t_r\) is the mean residence time of the water in W,,1,, in days.</li>
+<li>\(q\) is the flux in \(\frac {m^3}{day}\) from \(W_1\) to \(W_2\)</li>
+<li>\(V_1\) is the stored volume of water in \(W_1\) in \(m^3\)</li>
+<li>\(t_r\) is the mean residence time of the water in \(W_1\) in days.</li>
 </ul>
 <h2>Implementation</h2>
 <p>The model (without the solver) is set up with the following lines of code:</p>
@@ -133,7 +133,7 @@ $(function() {
 <a class="el" href="http://www.uni-giessen.de/hydro"> 
 Institute of Landscape Ecology and Resources Management,University of Gie&szlig;en</a>
 </h3></td>
-<td>Generated: Tue Jun 19 2018 16:35:15</td>
+<td>Generated: Wed Aug 22 2018 15:30:44</td>
 </tr></table>
 </small></address>
 </body>
