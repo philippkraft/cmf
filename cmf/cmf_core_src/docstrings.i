@@ -951,14 +951,23 @@ cmf::water::bidirectional_kinematic_exchange::to_string "virtual
 std::string to_string() const ";
 
 
-// File: classcmf_1_1math_1_1_brents_method.xml
-%feature("docstring") cmf::math::BrentsMethod "";
+// File: classcmf_1_1math_1_1root__finding_1_1_bisect.xml
+%feature("docstring") cmf::math::root_finding::Bisect "";
 
-%feature("docstring")  cmf::math::BrentsMethod::BrentsMethod "BrentsMethod(double tolerance=1e-12, unsigned int max_iterations=1000)
+%feature("docstring")  cmf::math::root_finding::Bisect::Bisect "Bisect(double tolerance=1e-12, unsigned int max_iterations=1000) ";
+
+%feature("docstring")  cmf::math::root_finding::Bisect::f "virtual
+double f(double) const =0 ";
+
+
+// File: classcmf_1_1math_1_1root__finding_1_1_brents_method.xml
+%feature("docstring") cmf::math::root_finding::BrentsMethod "";
+
+%feature("docstring")
+cmf::math::root_finding::BrentsMethod::BrentsMethod "BrentsMethod(double tolerance=1e-12, unsigned int max_iterations=1000)
 ";
 
-%feature("docstring")  cmf::math::BrentsMethod::f "virtual double
-f(double) const =0 ";
+%feature("docstring")  cmf::math::root_finding::BrentsMethod::f "virtual double f(double) const =0 ";
 
 
 // File: classcmf_1_1upslope_1_1_brooks_corey_retention_curve.xml
@@ -6463,11 +6472,11 @@ const
 returns the number of state variables ";
 
 
-// File: classcmf_1_1math_1_1_brents_method_1_1iteration__error.xml
-%feature("docstring") cmf::math::BrentsMethod::iteration_error "";
+// File: classcmf_1_1math_1_1root__finding_1_1iteration__error.xml
+%feature("docstring") cmf::math::root_finding::iteration_error "";
 
 %feature("docstring")
-cmf::math::BrentsMethod::iteration_error::iteration_error "iteration_error(std::string msg) ";
+cmf::math::root_finding::iteration_error::iteration_error "iteration_error(std::string msg) ";
 
 
 // File: classcmf_1_1river_1_1_i_volume_height_function.xml
@@ -9991,11 +10000,11 @@ Returns the water balance of each vector as a vector.
 Replaces slow Python code like: ";
 
 
-// File: classcmf_1_1math_1_1_brents_method_1_1not__finite__error.xml
-%feature("docstring") cmf::math::BrentsMethod::not_finite_error "";
+// File: classcmf_1_1math_1_1root__finding_1_1not__finite__error.xml
+%feature("docstring") cmf::math::root_finding::not_finite_error "";
 
 %feature("docstring")
-cmf::math::BrentsMethod::not_finite_error::not_finite_error "not_finite_error(std::string msg) ";
+cmf::math::root_finding::not_finite_error::not_finite_error "not_finite_error(std::string msg) ";
 
 
 // File: classcmf_1_1water_1_1_null_adsorption.xml
@@ -13130,10 +13139,10 @@ transp_from_layer(cmf::upslope::SoilLayer::ptr sl, cmf::math::Time t)
 ";
 
 
-// File: classcmf_1_1math_1_1_brents_method_1_1sign__error.xml
-%feature("docstring") cmf::math::BrentsMethod::sign_error "";
+// File: classcmf_1_1math_1_1root__finding_1_1sign__error.xml
+%feature("docstring") cmf::math::root_finding::sign_error "";
 
-%feature("docstring")  cmf::math::BrentsMethod::sign_error::sign_error
+%feature("docstring")  cmf::math::root_finding::sign_error::sign_error
 "sign_error(std::string msg) ";
 
 
@@ -18252,15 +18261,13 @@ p2) ";
 
 
 // File: namespacecmf_1_1math.xml
-%feature("docstring")  cmf::math::get_parallel_threads "int
-cmf::math::get_parallel_threads()
+%feature("docstring")  cmf::math::root_finding::get_parallel_threads "int cmf::math::get_parallel_threads()
 
 Returns the max number of threads used by OpenMP in parallel sections
 of the code. ";
 
-%feature("docstring")  cmf::math::nash_sutcliffe "double
-cmf::math::nash_sutcliffe(const cmf::math::timeseries &model, const
-cmf::math::timeseries &observation)
+%feature("docstring")  cmf::math::root_finding::nash_sutcliffe "double cmf::math::nash_sutcliffe(const cmf::math::timeseries &model,
+const cmf::math::timeseries &observation)
 
 Calculates the Nash-Sutcliffe efficiency of a modeled timeseries in
 comparison with an observed timeseries.
@@ -18282,14 +18289,16 @@ steps
 
 :math:`\\\\overline{O}` is the arithmetic mean of observations ";
 
-%feature("docstring")  cmf::math::set_parallel_threads "int
-cmf::math::set_parallel_threads(int numthreads)
+%feature("docstring")  cmf::math::root_finding::set_parallel_threads "int cmf::math::set_parallel_threads(int numthreads)
 
 Set the number of threads used by OpenMP in parallel sections of the
 code. ";
 
-%feature("docstring")  cmf::math::timespan "Time
+%feature("docstring")  cmf::math::root_finding::timespan "Time
 cmf::math::timespan(long long ms) ";
+
+
+// File: namespacecmf_1_1math_1_1root__finding.xml
 
 
 // File: namespacecmf_1_1river.xml
@@ -18535,6 +18544,9 @@ boundary condition, providing the potential of the lower node. ";
 
 // File: namespacestd.xml
 %feature("docstring")  std::isfinite "bool std::isfinite(double v) ";
+
+%feature("docstring")  std::to_string "std::string std::to_string(T
+val) ";
 
 
 // File: ____init_____8py.xml

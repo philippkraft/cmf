@@ -35,3 +35,6 @@ class TestCrossectionReachType(unittest.TestCase):
 
         for a in np.arange(0., 2., 0.01):
             self.assertAlmostEquals(cr.get_depth(a), tr.get_depth(a))
+
+if __name__ == '__main__':
+    unittest.main()

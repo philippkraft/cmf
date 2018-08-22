@@ -124,5 +124,11 @@ std::string pyrepr(PyObject* o) {
 %include "math/integrators/WaterSoluteIntegrator.h"
 
 
-           
+%pythoncode {
+    ConstantFlux = TechnicalFlux
+    ConstantStateFlux = statecontrol_connection
+    WaterBalanceFlux = waterbalance_connection
+    ConceptualInfiltration = SimpleInfiltration
+}
+
 

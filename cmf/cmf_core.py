@@ -13879,4 +13879,10 @@ _cmf_core.SoluteWaterIntegrator_swigregister(SoluteWaterIntegrator)
 # SoluteWaterIntegrator end
 
 
+ConstantFlux = TechnicalFlux
+ConstantStateFlux = statecontrol_connection
+WaterBalanceFlux = waterbalance_connection
+ConceptualInfiltration = SimpleInfiltration
+
+
 
