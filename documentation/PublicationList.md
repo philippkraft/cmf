@@ -14,8 +14,7 @@ If you are refering to cmf in a publication, please cite:
 
   - Kraft, P. (2012), A hydrological programming language extension for
     integrated catchment models, Dissertation,
-    Justus-Liebig-Universität, Gießen, 16 March. \[online\] Available
-    from: <http://geb.uni-giessen.de/geb/volltexte/2012/8759/>
+    Justus-Liebig-Universität, Gießen, 16 March. [online available](https://geb.uni-giessen.de/geb/volltexte/2012/8759/pdf/KraftPhilipp_2012_03_16.pdf)
 
 ## Applications in peer reviewed journal articles
 
