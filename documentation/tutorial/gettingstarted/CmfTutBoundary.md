@@ -64,7 +64,7 @@ condition ([NeumannBoundary](@ref cmf::water::NeumannBoundary)) as a
 second boundary. This type of boundary condition is not triggered by the
 state of a water storage in the system, but by a defined flux given by
 the user. Since the flux should change over time, the flux is given as a
-[timeseries](@ref CmfTutSpaceTime). In this tutorial you will
+[timeseries](@ref cmfTutSpaceTime). In this tutorial you will
 create a timeseries with daily alternating flux values between 0 and 1.
 
 The setup code needs to be extended with the following:

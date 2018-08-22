@@ -5,8 +5,7 @@
   - @subpage cmfTutKinematicWave "Kinematic waves" as swiss army knife 
     for conceptual model building
   - @subpage simple_infiltration "Infiltration"
-  - @subpage cmfTutTechnical "Technical Flux"
-  - @subpage cmfTutWaterbalance "Waterbalance Connection"
+  - @subpage cmfTutAbstractFluxes "Abstract fluxes"
   
 ## Lumped Model
 

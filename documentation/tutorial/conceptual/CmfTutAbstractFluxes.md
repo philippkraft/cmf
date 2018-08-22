@@ -3,11 +3,15 @@
 Depending on your model design, you might need to use rather abstract concepts 
 can help to realize your model - but not every model needs these connections.
 
+The class names of these connections are not very good and **will be changed** 
+in CMF 2.0. Starting with cmf 1.4 the new names are already available 
+
 ## Balancing water flux at one node
 
 ### What does it mean?
 
-The [waterbalance_connection](@ref cmf::water::waterbalance_connection) is 
+The [waterbalance_connection](@ref cmf::water::waterbalance_connection) 
+(or WaterBalanceFlux for CMF 1.4+) is 
 a connection to route the water balance of a node somewhere else.
 The connection checks the flux over all other connections of the *left* node
 and routes any surplus to the *right* node, or in case of a negative water balance
@@ -102,16 +106,49 @@ between these different model domains.
 
 ## Keeping a flux constant as long as water is available
 
+![](@ref CmfTutAbstractFluxes.png)
+
 For some processes a constant flux from one water storage to another or
 a boundary condition is needed. These constant (but externally changeable) fluxes
 can be anthropogenic water fluxes, like the regulation of a dam or a pump rate,
 or some other process that has a flux limit. Eg. the model HBVlight assumes
 a constant percolation from the 1st to the 2nd groundwater storage. However,
-when the source becomes empty, the flux stops. 
+when the source becomes empty, the flux stops. To avoid a hard stop, the fluxes 
+decreases linear to zero, when only volume for `decrease time` is left in the source
+storage.
 
 Currently, this type of connection is called "TechnicalFlux"
-but will be renamed to [ConstantFlux](@ref cmf::water::TechnicalFlux). 
+but will be renamed to [ConstantFlux](@ref cmf::water::TechnicalFlux) starting with CMF 1.4.
+The old name will stay in the C++ code and the docs until CMF 2.0. 
+
+~~~~~~~~~~ {.py}
+p = cmf.project()
+w = p.NewStorage('source')
+o = p.NewOutlet('out')
+import pylab as plt
+# Add a constant flux
+constflux = cmf.ConstantFlux(w, o, 1.0, flux_decrease_time=cmf.day)
+w.volume = 2.0
+solver = cmf.RKFIntegrator(p)
+vol, flux = zip(*[(w.volume, w.flux_to(o, t)) 
+                  for t in solver.run(cmf.Time(), cmf.day * 4, cmf.h)])
+plt.subplot(1, 2, 1)
+plt.plot(vol,color='r', label='Volume')
+plt.plot(flux,color='b', label='flux')
+plt.yticks([1], ['$q_{max}$'])
+plt.xticks([24, 48, 72],[1, 2, 3])
+plt.xlabel('days')
+plt.legend()
+plt.subplot(1, 2, 2)
+plt.plot(vol, flux, 'kx')
+plt.ylabel('flux $m^3/day$')
+plt.xlabel('volume $m^3$') 
+~~~~~~~~~~
 
 ## Keeping a state constant as long as water is available
 
-[ConstantState](@ref cmf::water::statecontrol_connection)
+This connection holds the state of a water storage constant getting or releasing water
+to the other node of the connection. The flux between the nodes is proportional to
+the difference between the state of the storage and the defined target state of the 
+storage. This connection will be renamed in CMF 2.0 to [ConstantState](@ref cmf::water::statecontrol_connection)
+and is in CMF 1.3 and below only available as `statecontrol_connection`.

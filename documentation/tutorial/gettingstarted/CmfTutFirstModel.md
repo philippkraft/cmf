@@ -11,7 +11,7 @@ it is to introduce some of the elements of cmf.
 ## The model
 
 The model is a simple linear storage equation to transport water from
-one water storage (@f$W_1@fS) to another water storage (@f$W_2@f$).
+one water storage (@f$W_1@f$) to another water storage (@f$W_2@f$).
 
 
 @f[
