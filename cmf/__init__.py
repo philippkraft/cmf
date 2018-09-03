@@ -23,7 +23,7 @@ from .stopwatch import StopWatch
 
 
 __version__ = '1.4'
-__compiletime__ = 'Wed Aug 22 16:23:31 2018'
+__compiletime__ = 'Wed Aug 22 16:45:52 2018'
 
 from .cmf_core import connect_cells_with_flux as __ccwf
 

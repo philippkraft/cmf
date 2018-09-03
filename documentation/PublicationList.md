@@ -17,7 +17,10 @@ If you are refering to cmf in a publication, please cite:
     Justus-Liebig-Universität, Gießen, 16 March. [online available](https://geb.uni-giessen.de/geb/volltexte/2012/8759/pdf/KraftPhilipp_2012_03_16.pdf)
 
 ## Applications in peer reviewed journal articles
-
+  - Jehn, F. U., Breuer, L., Houska, T., Bestian, K., and Kraft, P.: 
+    Incremental model breakdown to assess the multi-hypotheses problem, 
+    Hydrol. Earth Syst. Sci., 22, 4565-4581, 
+    [full text](https://doi.org/10.5194/hess-22-4565-2018), 2018. 
   - Maier, N., Breuer, L., Chamorro A., Kraft, P., Houska, T.: Multi-Source 
     Uncertainty Analysis in Simulating Floodplain Inundation under Climate Change
     Water 10(6), 809; doi:10.3390/w10060809 (registering DOI), 

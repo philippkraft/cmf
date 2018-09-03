@@ -4789,7 +4789,7 @@ CMF stores in a solute storage the total mass of a tracer and needs to
 calculate the free tracer mass. The eq. above can not be rearanged to
 get :math:`x_{free}` from :math:`x_{tot}`. Instead, the value is iterated
 usingregula falsi. If n is near to 1, using LinearAdsorption will
-speed up your calculations.  Check if an analytical solution is
+speed up your calculations.Todo Check if an analytical solution is
 available The simplest physically based adsorption model by Langmuir (
 LangmuirAdsorption) has also a analytical solution and is hence
 calculated faster then Freundlich.
