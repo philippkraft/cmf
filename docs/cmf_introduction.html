@@ -1,3 +1,4 @@
+<!-- HTML header for doxygen 1.8.14-->
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -9,6 +10,14 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+  $(document).ready(initResizable);
+/* @license-end */</script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -27,12 +36,10 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td id="projectlogo"><img alt="Logo" src="cmf-logo-klein.png"/></td>
+  <td id="projectlogo"><img alt="Logo" src="cmf-logo-2018.svg"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">cmf
-   &#160;<span id="projectnumber">1.4</span>
-   </div>
-   <div id="projectbrief">The Catchment Modelling Framework</div>
+  <div id="projectnumber">1.4.0</div>
+   <div id="projectbrief">catchment modelling framework</div>
   </td>
  </tr>
  </tbody>
@@ -55,6 +62,23 @@ $(function() {
 });
 /* @license-end */</script>
 <div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('cmf_introduction.html','');});
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -69,17 +93,12 @@ $(function() {
 </iframe>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><a class="el" href="index.html">index</a></li>  </ul>
-</div>
-</div><!-- top -->
 <div class="header">
   <div class="headertitle">
 <div class="title">Scientific background of cmf </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p>In the last decade, the application of classical hydrological rainfall runoff models is disputed as a valid method for understanding water transport in landscapes (eg. Beven 2002 and 2006, Seibert and McDonnell 2002, Sivapalan et al. 2003, Kirchner 2006, Tetzlaff et al. 2008), since current models lack the ability for formulation and rejection of hypotheses. Vache and McDonnell (2006) developed a framework for the rejection of model structures, where each model structure is understood as a hypothesis on runoff generation. This work is a newly developed generalized form of the Vache-McDonnell rejectionist framework, called the Catchment Modelling Framework (CMF, Kraft et al. 2011 and 2012). It is an extension to the programming language Python, written in C++, offering a toolkit for the set up of a wide range of hydrological models, following the [finite volume approach](FiniteVolumeMethod) by Qu and Duffy (2007). The framework exports <a class="el" href="cmf_software_objects.html">objects</a> to set up a network of water and solute fluxes.</p>
+<div class="textblock"><p>In the last decade, the application of classical hydrological rainfall runoff models is disputed as a valid method for understanding water transport in landscapes (eg. Beven 2002 and 2006, Seibert and McDonnell 2002, Sivapalan et al. 2003, Kirchner 2006, Tetzlaff et al. 2008), since current models lack the ability for formulation and rejection of hypotheses. Vache and McDonnell (2006) developed a framework for the rejection of model structures, where each model structure is understood as a hypothesis on runoff generation. This work is a newly developed generalized form of the Vache-McDonnell rejectionist framework, called the Catchment Modelling Framework (CMF, Kraft et al. 2011 and 2012). It is an extension to the programming language Python, written in C++, offering a toolkit for the set up of a wide range of hydrological models, following the [finite volume approach](FiniteVolumeMethod) by Qu and Duffy (2007). The framework exports objects to set up a network of water and solute fluxes.</p>
 <p>Buytaert et al. (2008) and Clark et al. (2011) call also for such modular frameworks as a tool for the formulation, implementation, test and rejection of process hypotheses. Buytaert et al. (2008) demand such frameworks to be portable, accessible and modular. While hydrologists debate the theoretical application limits of runoff models for solute transport in landscapes, a growing demand of integrated landscape models for the integration of lateral transport of matter by runoff arises in interdisciplinary projects, like eg. the NitroEurope IP (EC). With this background, modular hydrological frameworks need to be designed for simplified data exchange during the model runtime for interfacing the hydrology with models from different disciplines, like CMF.</p>
 <p>CMF is portable, accessible and modular as an open source extension to the Python language and can be used for the formulation of different hypotheses. The principle of the connection of CMF with models from different disciplines is shown by Kraft et al. (2010), and Haas et al. (2012) show the relevance of tightly connected models of transport and turnover for the emission of greenhouse gases from ecosystems.</p>
 <p>A full list of publications concerning CMF can be found [here](PublicationList).</p>
@@ -88,25 +107,26 @@ $(function() {
 <li>Beven, K.J., 2002. Towards an alternative blueprint for a physically-based digitally simulated hydrologic response modelling system. Hydrol.Proc. 16, 189–206.</li>
 <li>Buytaert, W., Reusser, D., Krause, S., Renaud, J.P., 2008. Why can’t we do better than Topmodel? Hydrol.Proc. 22, 4175–4179.</li>
 <li>Clark, M.P., Kavetski, D., Fenicia, F., 2011. Pursuing the method of multiple working hypotheses for hydrological modeling. Water Resour.Res 47.</li>
-<li>Haas, E., Klatt, S., Fröhlich, A., Kraft, P., Werner, C., Kiese, R., Grote, R., Breuer, L., Butterbach-Bahl, K., 2012. LandscapeDNDC: a process model for simulation of biosphere–atmosphere–hydrosphere exchange processes at site and regional scale. Landscape Ecol. DOI 10.1007/s10980-012-9772-x</li>
-<li>Kirchner, J., 2006. Getting the right answers for the right reasons: Linking measurements, analyses, and models to advance the science of hydrology. Water Resour.Res. 42, W03S04, &lt;doi:10.1029/2005WR004362&gt;.</li>
-<li>Kraft, P., Multsch, S., Vache, K. B., Frede, H.-G. and Breuer, L.: Using Python as a coupling platform for integrated catchment models, Adv. Geosci., 27, 51–56, &lt;doi:10.5194/adgeo-27-51-2010&gt;, 2010.</li>
-<li>Kraft, P., 2012. A hydrological programming language extension for integrated catchment models, Dissertation, Justus-Liebig-Universität, Gießen, 16 March. [online] Available from: <a href="http://geb.uni-giessen.de/geb/volltexte/2012/8759/">http://geb.uni-giessen.de/geb/volltexte/2012/8759/</a></li>
-<li>Kraft, P., Vache, K. B., Frede, H.-G. and Breuer, L.: A hydrological programming language extension for integrated catchment models, Environ. Model. Softw., 26, 828–830, &lt;doi:10.1016/j.envsoft.2010.12.009&gt;, 2011.</li>
-<li>Qu, Y.Z., Duffy, C.J., 2007. A semidiscrete finite volume formulation for multiprocess watershed simulation. Water Resour.Res. 43, W08419, &lt;doi:10.1029/2006WR005752&gt;.</li>
-<li>Seibert, J., McDonnell, J.J., 2002. On the dialog between experimentalist and modeler in catchment hydrology: Use of soft data for multicriteria model calibration. Water Resour.Res. 38, doi: 10.1029/2001WR000978.</li>
+<li>Haas, E., Klatt, S., Fröhlich, A., Kraft, P., Werner, C., Kiese, R., Grote, R., Breuer, L., Butterbach-Bahl, K., 2012. LandscapeDNDC: a process model for simulation of biosphere–atmosphere–hydrosphere exchange processes at site and regional scale. Landscape Ecol. <a href="https://doi.org/10.1007/s10980-012-9772-x">doi:10.1007/s10980-012-9772-x</a></li>
+<li>Kirchner, J., 2006. Getting the right answers for the right reasons: Linking measurements, analyses, and models to advance the science of hydrology. Water Resour.Res. 42, W03S04, <a href="https://doi.org/10.1029/2005WR004362">doi:10.1029/2005WR004362</a>.</li>
+<li>Kraft, P., Multsch, S., Vache, K. B., Frede, H.-G. and Breuer, L.: Using Python as a coupling platform for integrated catchment models, Adv. Geosci., 27, 51–56, <a href="https://doi.org/10.5194/adgeo-27-51-2010">doi:10.5194/adgeo-27-51-2010</a>, 2010.</li>
+<li>Kraft, P., 2012. A hydrological programming language extension for integrated catchment models, Dissertation, Justus-Liebig-Universität, Gießen, 16 March. <a href="https://geb.uni-giessen.de/geb/volltexte/2012/8759/">online</a></li>
+<li>Kraft, P., Vache, K. B., Frede, H.-G. and Breuer, L.: A hydrological programming language extension for integrated catchment models, Environ. Model. Softw., 26, 828–830, <a href="https://doi.org/10.1016/j.envsoft.2010.12.009">doi:10.1016/j.envsoft.2010.12.009</a>, 2011.</li>
+<li>Qu, Y.Z., Duffy, C.J., 2007. A semidiscrete finite volume formulation for multiprocess watershed simulation. Water Resour.Res. 43, W08419, <a href="https://doi.org/10.1029/2006WR005752">doi:10.1029/2006WR005752</a>.</li>
+<li>Seibert, J., McDonnell, J.J., 2002. On the dialog between experimentalist and modeler in catchment hydrology: Use of soft data for multicriteria model calibration. Water Resour.Res. 38, <a href="https://doi.org/10.1029/2001WR000978">doi:10.1029/2001WR000978</a>.</li>
 <li>Sivapalan, M., 2003. Process complexity at hillslope scale, process simplicity at the watershed scale: is there a connection? Hydrol.Proc. 17, 1037–1041.</li>
 <li>Tetzlaff, D., McDonnell, J.J., Uhlenbrook, S., McGuire, K.J., Bogaart, P.W., Naef, F., Baird, A.J., Dunn, S.M., Soulsby, C., 2008. Conceptualizing catchment processes: simply too complex? Hydrol.Proc. 22, 1727–1730.</li>
-<li>Vache, K.B., McDonnell, J.J., 2006. A process-based rejectionist framework for evaluating catchment runoff model structure. Water Resour.Res. W02409, &lt;doi:10.1029/2005WR004247&gt;. </li>
+<li>Vache, K.B., McDonnell, J.J., 2006. A process-based rejectionist framework for evaluating catchment runoff model structure. Water Resour.Res. W02409, <a href="https://doi.org/10.1029/2005WR004247">doi:10.1029/2005WR004247</a>. </li>
 </ul>
 </div></div><!-- contents -->
+</div><!-- doc-content -->
 <hr class="footer"/><address class="footer"><small>
 <div>&copy 2008-2017 by 
 <a class="el" href="http://www.uni-giessen.de/hydro/kraft"> Philipp Kraft</a> and
 <a class="el" href="http://www.uni-giessen.de/hydro"> 
 Institute of Landscape Ecology and Resources Management,University of Gie&szlig;en</a>
 </h3></td>
-<td>Generated: Wed Aug 22 2018 15:30:43</td>
+<td>Generated: Fri Oct 12 2018 13:54:57</td>
 </tr></table>
 </small></address>
 </body>

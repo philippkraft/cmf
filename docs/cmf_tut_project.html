@@ -1,3 +1,4 @@
+<!-- HTML header for doxygen 1.8.14-->
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -9,6 +10,14 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+  $(document).ready(initResizable);
+/* @license-end */</script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -27,12 +36,10 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td id="projectlogo"><img alt="Logo" src="cmf-logo-klein.png"/></td>
+  <td id="projectlogo"><img alt="Logo" src="cmf-logo-2018.svg"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">cmf
-   &#160;<span id="projectnumber">1.4</span>
-   </div>
-   <div id="projectbrief">The Catchment Modelling Framework</div>
+  <div id="projectnumber">1.4.0</div>
+   <div id="projectbrief">catchment modelling framework</div>
   </td>
  </tr>
  </tbody>
@@ -55,6 +62,23 @@ $(function() {
 });
 /* @license-end */</script>
 <div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('cmf_tut_project.html','');});
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -69,11 +93,6 @@ $(function() {
 </iframe>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><a class="el" href="index.html">index</a></li><li class="navelem"><a class="el" href="tutorial.html">Tutorial</a></li><li class="navelem"><a class="el" href="gettingstarted.html">Understand the basic usage of cmf</a></li>  </ul>
-</div>
-</div><!-- top -->
 <div class="header">
   <div class="headertitle">
 <div class="title">Project </div>  </div>
@@ -82,16 +101,17 @@ $(function() {
 <div class="textblock"><p>The cmf project is the container for the nodes of the water flux network. For any kind of cmf model, the first step is to create a project:</p>
 <div class="fragment"><div class="line"><span class="keyword">import</span> cmf</div><div class="line">p = <a class="code" href="classcmf_1_1project.html">cmf.project</a>()</div></div><!-- fragment --><p>The project represents the study area and holds the cells (horizontal discretization of the soil), the reaches (discretized river sections), "free" water storages (like lakes, dams etc.) and the boundary conditions. While models for channeled flow may only contain reaches, but no cells, every model spatial explicit description of subsurface flux needs to have cells.</p>
 <p>Have a look at the description of the programming interface for <a class="el" href="classcmf_1_1project.html">project</a>.</p>
-<p>Adding Cells, Rivers, free water storages and boundary conditions is explained in the next parts of the tutorial. Bear in mind, that nearly every <a class="el" href="cmf_software_objects.html">cmf object</a> is somehow bound to a project. Creating a project is therefore always the second step in using cmf after import of the library.</p>
+<p>Adding Cells, Rivers, free water storages and boundary conditions is explained in the next parts of the tutorial. Bear in mind, that nearly every cmf object is somehow bound to a project. Creating a project is therefore always the second step in using cmf after import of the library.</p>
 <p>The <a class="el" href="cmf_tut_first_model.html">next tutorial</a> contains a first simple, conceptual model (Nash-Boxes). </p>
 </div></div><!-- contents -->
+</div><!-- doc-content -->
 <hr class="footer"/><address class="footer"><small>
 <div>&copy 2008-2017 by 
 <a class="el" href="http://www.uni-giessen.de/hydro/kraft"> Philipp Kraft</a> and
 <a class="el" href="http://www.uni-giessen.de/hydro"> 
 Institute of Landscape Ecology and Resources Management,University of Gie&szlig;en</a>
 </h3></td>
-<td>Generated: Wed Aug 22 2018 15:30:44</td>
+<td>Generated: Fri Oct 12 2018 13:54:57</td>
 </tr></table>
 </small></address>
 </body>

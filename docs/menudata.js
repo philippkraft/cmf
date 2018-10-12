@@ -23,10 +23,10 @@ for the JavaScript code in this file
 */
 var menudata={children:[
 {text:"Main Page",url:"index.html"},
-{text:"Tutorial",url:"usergroup0.html",children:[
+{text:"Tutorial",url:"tutorial.html",children:[
 {text:"Tutorial",url:"tutorial.html"},
 {text:"Publications",url:"publication_list.html"}]},
-{text:"API Documentation",url:"usergroup1.html",children:[
+{text:"API Documentation",url:"usergroup0.html",children:[
 {text:"Modules",url:"modules.html"},
 {text:"Namespace List",url:"namespaces.html",children:[
 {text:"Namespace List",url:"namespaces.html"},

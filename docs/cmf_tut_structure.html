@@ -1,3 +1,4 @@
+<!-- HTML header for doxygen 1.8.14-->
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -9,6 +10,14 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+  $(document).ready(initResizable);
+/* @license-end */</script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -27,12 +36,10 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td id="projectlogo"><img alt="Logo" src="cmf-logo-klein.png"/></td>
+  <td id="projectlogo"><img alt="Logo" src="cmf-logo-2018.svg"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">cmf
-   &#160;<span id="projectnumber">1.4</span>
-   </div>
-   <div id="projectbrief">The Catchment Modelling Framework</div>
+  <div id="projectnumber">1.4.0</div>
+   <div id="projectbrief">catchment modelling framework</div>
   </td>
  </tr>
  </tbody>
@@ -55,6 +62,23 @@ $(function() {
 });
 /* @license-end */</script>
 <div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('cmf_tut_structure.html','');});
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -69,11 +93,6 @@ $(function() {
 </iframe>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><a class="el" href="index.html">index</a></li><li class="navelem"><a class="el" href="tutorial.html">Tutorial</a></li><li class="navelem"><a class="el" href="gettingstarted.html">Understand the basic usage of cmf</a></li>  </ul>
-</div>
-</div><!-- top -->
 <div class="header">
   <div class="headertitle">
 <div class="title">The structure of a cmf program </div>  </div>
@@ -97,7 +116,7 @@ $(function() {
 <p>CMF models are run from an initial condition using forcing (or driver) data during runtime. The place between defining the structure of your model and creating a solver is a good place to overwrite the default initial state (that are not very well documented but are usually some kind of "empty") and load and assign forcing data.</p>
 <p>In our case, the initial condition is the stored volume of <code>W1</code> and <code>W2</code> and the forcing data is the flux over the Neumann boundary condition.</p>
 <div class="fragment"><div class="line">W1.volume = 1.0</div><div class="line">W2.volume = 0.0</div><div class="line">b_in.flux = cmf.timeseries(begin = datetime.datetime(2012,1,1), </div><div class="line">                           step = datetime.timedelta(days=1), </div><div class="line">                           interpolationmethod = 0)</div><div class="line"><span class="keywordflow">for</span> i <span class="keywordflow">in</span> range(10):</div><div class="line">    <span class="comment"># Add 0.0 m3/day for even days, and 1.0 m3/day for odd days</span></div><div class="line">    b_in.flux.add(i % 2)</div></div><!-- fragment --><h3>Create solver</h3>
-<p>The solver should only be created <b>after</b> the structure is setup, since solvers in cmf do not own a reference to a project, or what else, but only extract references to the state variables of a project, a cell or some other owner of state variables (<a class="el" href="cmf_software_objects.html">UML-diagram of the main cmf objects</a>). This means, if you create a solver and after that, you are going to extend your project with new storages, the solver knows nothing about these and the mass conversation of the model is broken. If you extend your project, eg. in an interactive environment, just make sure to create a new solver also.</p>
+<p>The solver should only be created <b>after</b> the structure is setup, since solvers in cmf do not own a reference to a project, or what else, but only extract references to the state variables of a project, a cell or some other owner of state variables. This means, if you create a solver and after that, you are going to extend your project with new storages, the solver knows nothing about these and the mass conversation of the model is broken. If you extend your project, eg. in an interactive environment, just make sure to create a new solver also.</p>
 <div class="fragment"><div class="line">solver = cmf.ImplicitEuler(p, 1e-9)</div></div><!-- fragment --><h3>Runtime loop</h3>
 <p>The solver is used to advance the model in the runtime loop. The runtime loop is user defined, to allow the user to interact with the running model in any way. Usages of the runtime loop include:</p>
 <ul>
@@ -117,13 +136,14 @@ $(function() {
 <li>and how to seperate fixed structure (<code>__init__</code>), and parameter depending structure (<code>set_parameters</code>) </li>
 </ul>
 </div></div><!-- contents -->
+</div><!-- doc-content -->
 <hr class="footer"/><address class="footer"><small>
 <div>&copy 2008-2017 by 
 <a class="el" href="http://www.uni-giessen.de/hydro/kraft"> Philipp Kraft</a> and
 <a class="el" href="http://www.uni-giessen.de/hydro"> 
 Institute of Landscape Ecology and Resources Management,University of Gie&szlig;en</a>
 </h3></td>
-<td>Generated: Wed Aug 22 2018 15:30:44</td>
+<td>Generated: Fri Oct 12 2018 13:54:57</td>
 </tr></table>
 </small></address>
 </body>

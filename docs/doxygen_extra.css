@@ -522,10 +522,8 @@ table.memberdecls {
 	border-top-right-radius: 4px;
 	border-top-left-radius: 4px;
 	margin-bottom: -1px;
-    /*
-	background-image: url('nav_f.png');
-	background-repeat: repeat-x;
-	*/
+	background-image: none;
+	background-repeat: no-repeat;
 	background-color: #E2E8F2;
 
 	line-height: 1.25;
@@ -1171,6 +1169,7 @@ dl.section dd {
 	text-align: center;
 	vertical-align: bottom;
 	border-collapse: separate;
+	padding-right: 30px;
 }
  
 #projectlogo img
@@ -1185,21 +1184,23 @@ dl.section dd {
 
 #projectname
 {
-	font: 300% Tahoma, Arial,sans-serif;
+	font: 300% Garamond, Times, serif;
 	margin: 0px;
 	padding: 2px 0px;
+
 }
     
 #projectbrief
 {
-	font: 120% Tahoma, Arial,sans-serif;
+	font: 200% Garamond, Times, serif;
 	margin: 0px;
 	padding: 0px;
 }
 
 #projectnumber
 {
-	font: 50% Tahoma, Arial,sans-serif;
+	font: 250% Garamond, Times, serif;
+	font-style: normal;
 	margin: 0px;
 	padding: 0px;
 }

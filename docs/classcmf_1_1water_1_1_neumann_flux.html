@@ -1,3 +1,4 @@
+<!-- HTML header for doxygen 1.8.14-->
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -9,6 +10,14 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+  $(document).ready(initResizable);
+/* @license-end */</script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -27,12 +36,10 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td id="projectlogo"><img alt="Logo" src="cmf-logo-klein.png"/></td>
+  <td id="projectlogo"><img alt="Logo" src="cmf-logo-2018.svg"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">cmf
-   &#160;<span id="projectnumber">1.4</span>
-   </div>
-   <div id="projectbrief">The Catchment Modelling Framework</div>
+  <div id="projectnumber">1.4.0</div>
+   <div id="projectbrief">catchment modelling framework</div>
   </td>
  </tr>
  </tbody>
@@ -55,6 +62,23 @@ $(function() {
 });
 /* @license-end */</script>
 <div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('classcmf_1_1water_1_1_neumann_flux.html','');});
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -69,11 +93,6 @@ $(function() {
 </iframe>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><a class="el" href="namespacecmf.html">cmf</a></li><li class="navelem"><a class="el" href="namespacecmf_1_1water.html">water</a></li><li class="navelem"><a class="el" href="classcmf_1_1water_1_1_neumann_flux.html">NeumannFlux</a></li>  </ul>
-</div>
-</div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="classcmf_1_1water_1_1_neumann_flux-members.html">List of all members</a> &#124;
@@ -95,7 +114,7 @@ $(function() {
 <map name="_neumann_flux_inherit__map" id="_neumann_flux_inherit__map">
 <area shape="rect" id="node2" href="classcmf_1_1water_1_1flux__connection.html" title="The connections in cmf hold the processes for the calculation of fluxes between water storages and mo..." alt="" coords="5,5,117,32"/>
 </map>
-<center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
+<center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Collaboration diagram for NeumannFlux:</div>
 <div id="dynsection-1-summary" class="dynsummary" style="display:block;">
@@ -105,7 +124,7 @@ $(function() {
 <map name="_neumann_flux_coll__map" id="_neumann_flux_coll__map">
 <area shape="rect" id="node2" href="classcmf_1_1water_1_1flux__connection.html" title="The connections in cmf hold the processes for the calculation of fluxes between water storages and mo..." alt="" coords="5,5,117,32"/>
 </map>
-<center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
+<center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Connection between Neumann-boundary and a flux node. </p>
 <p>This <a class="el" href="classcmf_1_1water_1_1flux__connection.html" title="The connections in cmf hold the processes for the calculation of fluxes between water storages and mo...">flux_connection</a> is created, when connecting a Neumann boundary condition with a state variable using Neumann::connect_to </p>
@@ -259,13 +278,14 @@ const std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="e
 </div>
 </div>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <hr class="footer"/><address class="footer"><small>
 <div>&copy 2008-2017 by 
 <a class="el" href="http://www.uni-giessen.de/hydro/kraft"> Philipp Kraft</a> and
 <a class="el" href="http://www.uni-giessen.de/hydro"> 
 Institute of Landscape Ecology and Resources Management,University of Gie&szlig;en</a>
 </h3></td>
-<td>Generated: Wed Aug 22 2018 15:30:52</td>
+<td>Generated: Fri Oct 12 2018 13:55:06</td>
 </tr></table>
 </small></address>
 </body>
