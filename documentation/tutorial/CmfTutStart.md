@@ -8,6 +8,9 @@
     [issue on GitHub](https://github.com/philippkraft/cmf/issues) - even if 
     __you__ know how to deal with that problem.
 
+## Read about cmf applications
+@ref publicationList
+
 ## Getting started
 
 @subpage gettingstarted

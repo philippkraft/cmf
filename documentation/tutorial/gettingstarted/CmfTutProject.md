@@ -22,7 +22,7 @@ Have a look at the description of the programming interface for
 
 Adding Cells, Rivers, free water storages and boundary conditions is
 explained in the next parts of the tutorial. Bear in mind, that nearly
-every [cmf object](@ref cmfSoftwareObjects) is somehow bound to a project.
+every cmf object is somehow bound to a project.
 Creating a project is therefore always the second step in using cmf
 after import of the library.
 

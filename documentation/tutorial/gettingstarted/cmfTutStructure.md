@@ -110,8 +110,8 @@ for i in range(10):
 
 The solver should only be created **after** the structure is setup, since solvers
 in cmf do not own a reference to a project, or what else, but only extract references
-to the state variables of a project, a cell or some other owner of state variables 
-(@ref cmfSoftwareObjects). This means, if you create a solver and after that, you
+to the state variables of a project, a cell or some other owner of state variables. 
+This means, if you create a solver and after that, you
 are going to extend your project with new storages, the solver knows nothing about these 
 and the mass conversation of the model is broken. If you extend your project, eg. in
 an interactive environment, just make sure to create a new solver also.

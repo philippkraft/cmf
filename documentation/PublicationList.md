@@ -13,8 +13,9 @@ If you are refering to cmf in a publication, please cite:
 ## Dissertations / Thesis
 
   - Kraft, P. (2012), A hydrological programming language extension for
-    integrated catchment models, Dissertation,
-    Justus-Liebig-Universität, Gießen, 16 March. [online available](https://geb.uni-giessen.de/geb/volltexte/2012/8759/pdf/KraftPhilipp_2012_03_16.pdf)
+    integrated catchment models [online available](https://geb.uni-giessen.de/geb/volltexte/2012/8759/pdf/KraftPhilipp_2012_03_16.pdf)
+  - Maier, N. (2018), A new method for spatio-temporally explicit predictions of groundwater, 
+    surface water and habitat interactions in riparian ecosystems [online available](http://geb.uni-giessen.de/geb/volltexte/2018/13746/pdf/MaierNadine_2018_09_21.pdf)
 
 ## Applications in peer reviewed journal articles
   - Jehn, F. U., Breuer, L., Houska, T., Bestian, K., and Kraft, P.: 
@@ -105,8 +106,7 @@ If you are refering to cmf in a publication, please cite:
     and application of the generic Plant growth Modeling Framework (PMF)
     Modelling and Simulation. Modelling and Simulation Society of
     Australia and New Zealand, December 2011, pp. 995-1001. ISBN:
-    978-0-9872143-1-7 [full
-    text](http://www.mssanz.org.au/modsim2011/B3/multsch.pdf)
+    978-0-9872143-1-7 [full text](http://www.mssanz.org.au/modsim2011/B3/multsch.pdf)
 
 ## Selected conference proceedings
 
@@ -169,8 +169,7 @@ new use area of cmf.
     Software. Integrating Sciences and Information Technology for
     Environmental Assessment and Decision Making. 4th Biennial Meeting
     of iEMSs,
-    [abstract](http://www.iemss.org/iemss2008/index.php?n=Main.Proceedings)
+    [full text](https://scholarsarchive.byu.edu/cgi/viewcontent.cgi?article=2857&context=iemssconference)
 
-WikiStart
 
 

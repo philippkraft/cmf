@@ -14,7 +14,7 @@ Kraft et al. 2011 and 2012). It is an extension to the programming
 language Python, written in C++, offering a toolkit for the set up of a
 wide range of hydrological models, following the [finite volume
 approach](FiniteVolumeMethod) by Qu and Duffy (2007). The framework
-exports [objects](@ref cmfSoftwareObjects) to set up a network of water
+exports objects to set up a network of water
 and solute fluxes.
 
 Buytaert et al. (2008) and Clark et al. (2011) call also for such
@@ -53,28 +53,27 @@ A full list of publications concerning CMF can be found
 - Haas, E., Klatt, S., Fröhlich, A., Kraft, P., Werner, C., Kiese,
   R., Grote, R., Breuer, L., Butterbach-Bahl, K., 2012. LandscapeDNDC: a
   process model for simulation of biosphere–atmosphere–hydrosphere
-  exchange processes at site and regional scale. Landscape Ecol. DOI
-  10.1007/s10980-012-9772-x
+  exchange processes at site and regional scale. Landscape Ecol. [doi:10.1007/s10980-012-9772-x](https://doi.org/10.1007/s10980-012-9772-x)
 - Kirchner, J., 2006. Getting the right answers for the right reasons: 
   Linking measurements, analyses, and models to advance the science of 
-  hydrology. Water Resour.Res. 42, W03S04, <doi:10.1029/2005WR004362>.
+  hydrology. Water Resour.Res. 42, W03S04, [doi:10.1029/2005WR004362](https://doi.org/10.1029/2005WR004362).
 - Kraft, P., Multsch, S., Vache, K.
   B., Frede, H.-G. and Breuer, L.: Using Python as a coupling platform for
-  integrated catchment models, Adv. Geosci., 27, 51–56, <doi:10.5194/adgeo-27-51-2010>, 2010.
+  integrated catchment models, Adv. Geosci., 27, 51–56, [doi:10.5194/adgeo-27-51-2010](https://doi.org/10.5194/adgeo-27-51-2010), 2010.
 - Kraft, P., 2012. A hydrological
   programming language extension for integrated catchment models,
-  Dissertation, Justus-Liebig-Universität, Gießen, 16 March. [online]
-  Available from: <http://geb.uni-giessen.de/geb/volltexte/2012/8759/>
+  Dissertation, Justus-Liebig-Universität, Gießen, 16 March. 
+  [online](https://geb.uni-giessen.de/geb/volltexte/2012/8759/)
 - Kraft, P., Vache, K. B., Frede, H.-G. and Breuer, L.: A hydrological
   programming language extension for integrated catchment models, Environ.
-  Model. Softw., 26, 828–830, <doi:10.1016/j.envsoft.2010.12.009>, 2011.
+  Model. Softw., 26, 828–830, [doi:10.1016/j.envsoft.2010.12.009](https://doi.org/10.1016/j.envsoft.2010.12.009), 2011.
 - Qu, Y.Z., Duffy, C.J., 2007. A semidiscrete finite volume formulation
   for multiprocess watershed simulation. Water Resour.Res. 43, W08419,
-  <doi:10.1029/2006WR005752>.
+  [doi:10.1029/2006WR005752](https://doi.org/10.1029/2006WR005752).
 - Seibert, J., McDonnell, J.J., 2002. On
   the dialog between experimentalist and modeler in catchment hydrology:
   Use of soft data for multicriteria model calibration. Water Resour.Res.
-  38, doi: 10.1029/2001WR000978.
+  38, [doi:10.1029/2001WR000978](https://doi.org/10.1029/2001WR000978).
 - Sivapalan, M., 2003. Process complexity
   at hillslope scale, process simplicity at the watershed scale: is there
   a connection? Hydrol.Proc. 17, 1037–1041.
@@ -84,4 +83,4 @@ A full list of publications concerning CMF can be found
   processes: simply too complex? Hydrol.Proc. 22, 1727–1730.
 - Vache,  K.B., McDonnell, J.J., 2006. A process-based rejectionist framework
   for evaluating catchment runoff model structure. Water Resour.Res.
-  W02409, <doi:10.1029/2005WR004247>.
+  W02409, [doi:10.1029/2005WR004247](https://doi.org/10.1029/2005WR004247).

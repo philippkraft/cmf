@@ -2,7 +2,7 @@
   <!-- Navigation index tabs for HTML output -->
   <navindex>
     <tab type="mainpage" visible="yes" title=""/>
-    <tab type="usergroup" visible="yes" title="Tutorial" intro="">
+    <tab type="usergroup" visible="yes" title="Tutorial" intro="" url="@ref tutorial">
       <tab type="user" visible="yes" title="Tutorial" url="@ref tutorial"/>
       <tab type="user" visible="yes" title="Publications" url="@ref publicationList"/>
     </tab>
