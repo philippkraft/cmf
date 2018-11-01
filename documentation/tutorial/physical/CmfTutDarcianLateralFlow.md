@@ -17,11 +17,12 @@ As a basis, all flux connections follow Darcy's equation:
  q = \nabla \Psi T w 
 @f]
 
-where: - @f$q@f$ is the flux between to horizontal adjacent soil
-layers in @f$m^3/day@f$ - @f$\nabla \Psi@f$ is the gradient over
-distance @f$d [m]@f$ - @f$T@f$ is the transmissivity between the
-layers in @f$m^2/day@f$ - @f$w@f$ is the width of the shared
-boundary of the layers in @f$m@f$.
+where: 
+
+- @f$q@f$ is the flux between to horizontal adjacent soil layers in @f$m^3/day@f$ 
+- @f$\nabla \Psi@f$ is the gradient over distance @f$d [m]@f$ 
+- @f$T@f$ is the transmissivity between the layers in @f$m^2/day@f$ 
+- @f$w@f$ is the width of the shared boundary of the layers in @f$m@f$.
 
 The four variants of Darcy flow implemented in cmf differ in their way,
 how transmissivity @f$T@f$ and the head gradient @f$\nabla \Psi@f$
@@ -29,73 +30,69 @@ of the interface of two adjacent soil layers is calculated.
 
 The following variants are available and explained below in detail:
 
-|| @f$T_u@f$ ||unsaturated Transmissivity || || @f$T_s@f$
-||saturated Transmissivity || || @f$\nabla\Psi(\theta)@f$ ||Head based
-gradient || || @f$\nabla\Psi(z)@f$ ||Topographic gradient ||
+- @f$T_u@f$: unsaturated Transmissivity
+- @f$T_s@f$: saturated Transmissivity 
+- @f$\nabla\Psi(\theta)@f$: Head based gradient
+- @f$\nabla\Psi(z)@f$: Topographic gradient 
 
-These variants lead to the four combinations of @f$T@f$ and
-@f$\nabla\Psi@f$:
+These variants lead to the four combinations of @f$T@f$ and @f$\nabla\Psi@f$:
 
-|| || @f$T_u@f$ || @f$T_s@f$ || || @f$\nabla\Psi(\theta)@f$ ||
-[Richards_lateral](@ref cmf::upslope::connections::Richards_lateral)
-|| [Darcy](@ref cmf::upslope::connections::Darcy) || ||
-@f$\nabla\Psi(z)@f$ ||
-[DarcyKinematic](@ref cmf::upslope::connections::DarcyKinematic) ||
-[TopographicGradientDarcy](@ref cmf::upslope::connections::TopographicGradientDarcy)
-||
+|                          | @f$T_u@f$ | @f$T_s@f$ | 
+| ------------------------ | --------- | --------- |
+| @f$\nabla\Psi(\theta)@f$ | [Richards_lateral](@ref cmf::upslope::connections::Richards_lateral) | [Darcy](@ref cmf::upslope::connections::Darcy) | 
+| @f$\nabla\Psi(z)@f$      | [DarcyKinematic](@ref cmf::upslope::connections::DarcyKinematic) | [TopographicGradientDarcy](@ref cmf::upslope::connections::TopographicGradientDarcy) |
 
 ## Transmissivity variants
 
-### a) Unsaturated transmissivity {{{@f$T_u@f$}}}
-
-
+### a) Unsaturated transmissivity @f$T_u@f$
 @f[
 T(\theta) = K(\theta)\ \Delta z
 @f]
+where: 
 
-where: - @f$K(\theta)@f$ is the harmonic mean of the unsaturated
-conductivity in @f$\frac m{day}@f$, cf. [retention
-curve](@ref cmfTutRetentioncurve) - @f$\Delta z@f$ is the thickness of
-the interface of the adjacent layers
+- @f$K(\theta)@f$ is the harmonic mean of the unsaturated
+conductivity in @f$\frac m{day}@f$, cf. [retention curve](@ref cmfTutRetentioncurve) 
+- @f$\Delta z@f$ is the thickness of the interface of the adjacent layers
 
 This transmissivity function is used in
-[Richards_lateral](@ref cmf::upslope::connections::Richards_lateral),
+[Richards_lateral](@ref cmf::upslope::connections::Richards_lateral) and 
 [DarcyKinematic](@ref cmf::upslope::connections::DarcyKinematic)
 
-### b) Saturated transmissivity {{{@f$T_s@f$}}}
-
+### b) Saturated transmissivity @f$T_s@f$
 
 @f[
  T_{sat}(\Psi) = K_{sat}\  (\Delta z + \Psi_M)
 @f]
 
-where: - @f$K_{sat}@f$ is the saturated conductivity in @f$\frac
-m{day}@f$ - @f$\Delta z + \Psi_M@f$ is the height of the water table
+where: 
+- @f$K_{sat}@f$ is the saturated conductivity in @f$\frac m{day}@f$ 
+- @f$\Delta z + \Psi_M@f$ is the height of the water table
 above the layer bottom using the matrix potential @f$\Psi_M@f$. If the
 saturated depth is below the lower layer thickness, the flow depth is 0.
 
-[Darcy](@ref cmf::upslope::connections::Darcy),
+Used by
+[Darcy](@ref cmf::upslope::connections::Darcy) and
 [TopographicGradientDarcy](@ref cmf::upslope::connections::TopographicGradientDarcy)
 
 ## Gradient variants
 
-### a) Head based gradient  {{{@f$\\nabla\\Psi(\\theta)@f$}}}
+### a) Head based gradient  @f$\nabla \Psi(\theta)@f$
 
 The two connections types,
 [Richards_lateral](@ref cmf::upslope::connections::Richards_lateral)
 and [Darcy](@ref cmf::upslope::connections::Darcy) are using the real,
-moisture dependent head of the connected soillayers to calculate the
-gradient. This makes the more difficult to solve, yet more realistic
+water content dependent head of the connected soillayers to calculate the
+gradient. This makes it more difficult to solve, yet more realistic
 than option b.
 
 
 @f[
- \nabla \Psi = (\Psi_1 - \Psi_2) d^{-1} 
+ \nabla \Psi = \frac{\Psi_1(\theta_1) - \Psi_2(\theta_2)}{d} 
 @f]
 
 where @f$d@f$ is the distance between the soil layers.
 
-### b) Topographic gradient  {{{@f$\\nabla\\Psi(z)@f$}}}
+### b) Topographic gradient  @f$\nabla \Psi(z)@f$
 
 To make the system simpler to solve, in this option, used by
 [TopographicGradientDarcy](@ref cmf::upslope::connections::TopographicGradientDarcy)
@@ -107,7 +104,7 @@ roughly parallel to the surface.
 
 
 @f[
- \nabla \Psi = (z_{cell,1} - z_{cell,2})\ d^{-1} 
+ \nabla \Psi = \frac{z_{cell,1} - z_{cell,2}}{d} 
 @f]
 
 ## Connecting cell layers using a darcian lateral connection
@@ -117,7 +114,6 @@ creation of a connection. Below we are going to use `cmf.Darcy` as an
 example, but it works the same way with the other three connections.
 
 ~~~~~~~~~~~~~{.py}
-
 cmf.Darcy(leftnode, rightnode, FlowWidth, distance=0)
 ~~~~~~~~~~~~~
 
@@ -133,13 +129,12 @@ as the common interface of the soillayers according to their depth below
 ground. Otherwise the interface A is calculated as the thickness of
 `leftnode` times the flow width.
 
-However, if you have serveral cells with a defined [topology](@ref cmfTutCell),
+However, if you have several cells with a defined [topology](@ref cmfTutCell),
 one can use the topological information and create lateral connections for all 
 layers of all cells with a single command:
 
 ~~~~~~~~~~~~~{.py}
-
-cmf.connect_cells_with_flux(cells,cmf.Darcy, start_at_layer=0)
+cmf.connect_cells_with_flux(cells, cmf.Darcy, start_at_layer=0)
 ~~~~~~~~~~~~~
 
 Here, cells is a collection of cells, eg. the whole project or a list of
