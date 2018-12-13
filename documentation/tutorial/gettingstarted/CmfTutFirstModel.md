@@ -36,11 +36,11 @@ code:
 import cmf
 p = cmf.project()
 # Create W1 in project p 
-W1 = p.NewStorage(name="W1",x=0,y=0,z=0)
+W1 = p.NewStorage(name="W1")
 # Create W2 in project p without any volume as an initial state
-W2 = p.NewStorage(name="W2",x=10,y=0,z=0)
+W2 = p.NewStorage(name="W2")
 # Create a linear storage equation from W1 to W2 with a residence time tr of one day
-q = cmf.kinematic_wave(source=W1,target=W2,residencetime=1.0)
+q = cmf.LinearStorageConnection(source=W1,target=W2,residencetime=1.0)
 # Set the initial state of w1 to 1m³ of water.
 W1.volume = 1.0
 ~~~~~~~~~~~~~
@@ -92,8 +92,9 @@ available, see later parts in the tutorial)
 
 ~~~~~~~~~~~~~{.py}
 
-# Create an integrator for the ODE represented by project p, with an error tolerance of 1e-9
-solver = cmf.RKFIntegrator(p,1e-9)
+# Create an integrator (solver) for the ODE represented by project p, 
+# with an error tolerance of 1e-9
+solver = cmf.RKFIntegrator(p, 1e-9)
 # Import Python's datetime module
 import datetime
 # Set the intitial time of the solver

@@ -32,7 +32,7 @@ a longer residence time
 
 ~~~~~~~~~~~~~{.py}
 
-Out = p.NewOutlet(name="Outlet",x=20,y=0,z=0)
+Out = p.NewOutlet(name="Outlet")
 qout = cmf.LinearStorageConnection(source=W2,target=Out,residencetime=2.0)
 ~~~~~~~~~~~~~
 
