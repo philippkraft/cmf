@@ -19,8 +19,8 @@ chapter was:
 import datetime
 import cmf
 p = cmf.project()
-W1 = p.NewStorage(name="W1", x=0, y=0, z=0)
-W2 = p.NewStorage(name="W2", x=10, y=0, z=0)
+W1 = p.NewStorage(name="W1")
+W2 = p.NewStorage(name="W2")
 q = cmf.LinearStorageConnection(source=W1, target=W2, residencetime=1.0)
 W1.volume = 1.0
 ~~~~~~~~~~~~~
@@ -91,6 +91,6 @@ the residence times of the storages are calibrated, you might be lucky
 to predict some catchments correctly. However, cmf contains many, many
 more connection types than [linear storage connections](@ref cmf::water::LinearStorageConnection). Some of the connection types
 are shown in the next chapters. A list of all connections is
-[here](htdocs:doxygen/group__connections.html).
+[here](@ref connections).
 
 

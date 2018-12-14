@@ -38,7 +38,7 @@
  <tr style="height: 56px;">
   <td id="projectlogo"><img alt="Logo" src="cmf-logo-2018.svg"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-  <div id="projectnumber">1.4.0</div>
+  <div id="projectnumber">1.4.1</div>
    <div id="projectbrief">catchment modelling framework</div>
   </td>
  </tr>
@@ -113,7 +113,7 @@ $(document).ready(function(){initNavTree('cmf_tut_first_model.html','');});
 </ul>
 <h2>Implementation</h2>
 <p>The model (without the solver) is set up with the following lines of code:</p>
-<div class="fragment"><div class="line"><span class="keyword">import</span> cmf</div><div class="line">p = <a class="code" href="classcmf_1_1project.html">cmf.project</a>()</div><div class="line"><span class="comment"># Create W1 in project p </span></div><div class="line">W1 = p.NewStorage(name=<span class="stringliteral">&quot;W1&quot;</span>,x=0,y=0,z=0)</div><div class="line"><span class="comment"># Create W2 in project p without any volume as an initial state</span></div><div class="line">W2 = p.NewStorage(name=<span class="stringliteral">&quot;W2&quot;</span>,x=10,y=0,z=0)</div><div class="line"><span class="comment"># Create a linear storage equation from W1 to W2 with a residence time tr of one day</span></div><div class="line">q = cmf.kinematic_wave(source=W1,target=W2,residencetime=1.0)</div><div class="line"><span class="comment"># Set the initial state of w1 to 1m³ of water.</span></div><div class="line">W1.volume = 1.0</div></div><!-- fragment --><h2>The ordinary differential equation (ODE) system</h2>
+<div class="fragment"><div class="line"><span class="keyword">import</span> cmf</div><div class="line">p = <a class="code" href="classcmf_1_1project.html">cmf.project</a>()</div><div class="line"><span class="comment"># Create W1 in project p </span></div><div class="line">W1 = p.NewStorage(name=<span class="stringliteral">&quot;W1&quot;</span>)</div><div class="line"><span class="comment"># Create W2 in project p without any volume as an initial state</span></div><div class="line">W2 = p.NewStorage(name=<span class="stringliteral">&quot;W2&quot;</span>)</div><div class="line"><span class="comment"># Create a linear storage equation from W1 to W2 with a residence time tr of one day</span></div><div class="line">q = cmf.LinearStorageConnection(source=W1,target=W2,residencetime=1.0)</div><div class="line"><span class="comment"># Set the initial state of w1 to 1m³ of water.</span></div><div class="line">W1.volume = 1.0</div></div><!-- fragment --><h2>The ordinary differential equation (ODE) system</h2>
 <h3>Formulation</h3>
 <p>With these lines the ODE (ordinary differential equation) system is formulated:</p>
 <p class="formulaDsp">
@@ -133,7 +133,7 @@ $(document).ready(function(){initNavTree('cmf_tut_first_model.html','');});
 <p>But it is of course only a proxy model. For more interesting models with stochastic boundary conditions, we need to use a numerical solution. For numerical time integration any of the time integration schemes of cmf will do for this model. If you are using more complex models with very different velocities, error controlled and implicit solvers are necessary.</p>
 <h3>Implementing the numerical solution</h3>
 <p>To integrate our simple system in time, we create an integrator, for example an explicit 4/5 step Runge-Kutta-Fehlberg integrator, the <a class="el" href="classcmf_1_1math_1_1_r_k_f_integrator.html">RKFIntegrator</a> (other integrators are available, see later parts in the tutorial)</p>
-<div class="fragment"><div class="line"><span class="comment"># Create an integrator for the ODE represented by project p, with an error tolerance of 1e-9</span></div><div class="line">solver = cmf.RKFIntegrator(p,1e-9)</div><div class="line"><span class="comment"># Import Python&#39;s datetime module</span></div><div class="line"><span class="keyword">import</span> datetime</div><div class="line"><span class="comment"># Set the intitial time of the solver</span></div><div class="line">solver.t = datetime.datetime(2012,1,1)</div></div><!-- fragment --><p>The code above is the setup part. Every cmf model consists of a setup part, where the hydrological system is defined. For larger models, Python's looping and conditional syntax and the possibility to read nearly any data format can help to define the system from data.</p>
+<div class="fragment"><div class="line"><span class="comment"># Create an integrator (solver) for the ODE represented by project p, </span></div><div class="line"><span class="comment"># with an error tolerance of 1e-9</span></div><div class="line">solver = cmf.RKFIntegrator(p, 1e-9)</div><div class="line"><span class="comment"># Import Python&#39;s datetime module</span></div><div class="line"><span class="keyword">import</span> datetime</div><div class="line"><span class="comment"># Set the intitial time of the solver</span></div><div class="line">solver.t = datetime.datetime(2012,1,1)</div></div><!-- fragment --><p>The code above is the setup part. Every cmf model consists of a setup part, where the hydrological system is defined. For larger models, Python's looping and conditional syntax and the possibility to read nearly any data format can help to define the system from data.</p>
 <h2>Running the system</h2>
 <p>Now we have all parts of our model available to run it. The solver can be advanced for a certain time step using solver.integrate(dt), where dt is a time step. After the integration the states and fluxes of the model can be queried (see <a class="el" href="cmf_tut_fluxes.html">Query fluxes and storages</a>) and, if needed, saved into a file. Or you can store the results in a Python list or a cmf timeseries and use <a href="http://matplotlib.org">matplotlib</a> to plot the results immediately after running the model. The content and format of output is completely up to the user, some experience in writing and reading files with Python is therefore a prerequisite to design your own output.</p>
 <p>In this example, we will write a csv file with the timestep, the state of w1 and the state of w2.</p>
@@ -153,7 +153,7 @@ $(document).ready(function(){initNavTree('cmf_tut_first_model.html','');});
 <a class="el" href="http://www.uni-giessen.de/hydro"> 
 Institute of Landscape Ecology and Resources Management,University of Gie&szlig;en</a>
 </h3></td>
-<td>Generated: Fri Oct 12 2018 13:54:57</td>
+<td>Generated: Fri Dec 14 2018 08:42:56</td>
 </tr></table>
 </small></address>
 </body>
