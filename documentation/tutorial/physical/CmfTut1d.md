@@ -24,7 +24,6 @@ cell = project.NewCell(x=0,y=0,z=0,area=1000, with_surfacewater=True)
 Create a [retention curve](@ref cmfTutRetentioncurve)
 
 ~~~~~~~~~~~~~{.py}
-
 r_curve = cmf.VanGenuchtenMualem(Ksat=1,phi=0.5,alpha=0.01,n=2.0)
 ~~~~~~~~~~~~~
 

@@ -1,9 +1,5 @@
 @page cmfTutMeteostation Using measurement stations for atmospheric conditions
 
-[back](@ref cmfTutTestData), [space and time in
-cmf](@ref cmfTutSpaceTime)
-
-
 ## The station concept in cmf
 
 Meteorological data is usually measured at stations, and can be
