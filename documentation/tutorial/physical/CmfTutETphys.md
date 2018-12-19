@@ -1,9 +1,10 @@
 @page cmfTutETphys Evapo-Transpiration in multi-layered physical models
 
+This tutorial builds on the [conceptual ET-Tutorial](@ref cmfTutET) and
+the [physical soil column model](@ref cmfTut1d)
 
-# Getting @f$ET_{act}@f$ from @f$ET_{pot}@f$ with cmf
-![](@ref CmfTut1d-ET1.png)
-In order to calculate the water loss to the atmosphere from @f$ET_{pot} [\frac{mm}{day}]@f$, 
+## Getting @f$ET_{act}@f$ from @f$ET_{pot}@f$ for each layer
+In order to calculate the water loss to the atmosphere from @f$ET_{pot} [\frac{mm}{day}]@f$,
 cmf needs a connection from each soil layer to the atmospheric boundary condition. Each cell
 has a `transpiration` and an `evaporation` boundary object, which can be used for this task.
 
@@ -78,3 +79,9 @@ cell.vegetation.fraction_at_rootdepth = 0.8
 
 If you do nothing, the `RootDepth` default value of 0.25 is used.
 
+## Results
+
+![](@ref CmfTut1d-ET1.png)
+The [physical soil column model](@ref cmfTut1d) results in the figure,
+using transpiration with a uniform root distribution and
+super high constant potential transpiration rate of 20 mm/day.

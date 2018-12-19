@@ -19,6 +19,7 @@ h1.groupheader {
 	font-size: 150%;
 	font-weight: bold;
 	margin: 10px 2px;
+	clear: both;
 }
 
 h2.groupheader {
@@ -43,6 +44,10 @@ h1, h2, h3, h4, h5, h6 {
 	-o-transition: text-shadow 0.5s linear;
 	transition: text-shadow 0.5s linear;
 	margin-right: 15px;
+}
+
+h1, h2, h3 {
+	clear: both;
 }
 
 h1.glow, h2.glow, h3.glow, h4.glow, h5.glow, h6.glow {

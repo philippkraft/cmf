@@ -165,7 +165,7 @@ ET_{act} = ET_{pot} \cdot
 @f]
 
 This is obviously a crude linearization of the function using the matrix
-potential, hence the definition of @f$theta_d@f$ is not very precise.
+potential, hence the definition of @f$\theta_d@f$ is not very precise.
 An often used approach in literature is to set it to the mean of wilting
 point and field capacity. This approach is called
 [cmf.ContentStress](@ref cmf::upslope::ET::ContentStress)
