@@ -130,8 +130,16 @@ $(document).ready(function(){initNavTree('classcmf_1_1upslope_1_1_e_t_1_1_turc_e
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Calculates ETpot after Turc (DVWK). </p>
-<p>ETact is calculated using a WaterStressFunction</p>
-<p>\(ET_{pot,Turc} = 0.0031 C (R_G + 209) \frac{T}{T + 15}\) </p>
+<p>\(ET_{act}\) is calculated using a WaterStressFunction</p>
+<p class="formulaDsp">
+\[ ET_{pot,Turc} = 0.0031 C(rH) (R_G + 209) \frac{T}{T + 15} \]
+</p>
+<p>where:</p><ul>
+<li>\(T\) is the mean daily temperature</li>
+<li>\(C(rH) = \begin{cases} 1 + \frac{50\% - rH}{70\%}, &amp; rH &lt; 50\% \\ 1 &amp; rH &gt; 50\% \end{cases} \), a modification parameter for low humidity</li>
+<li>\(rH\) relative Humidity in %</li>
+<li>\(R_G\) global radiation in \(J/cm^2\) </li>
+</ul>
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -300,7 +308,7 @@ const std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="e
 <a class="el" href="http://www.uni-giessen.de/hydro"> 
 Institute of Landscape Ecology and Resources Management,University of Gie&szlig;en</a>
 </h3></td>
-<td>Generated: Fri Dec 14 2018 08:43:03</td>
+<td>Generated: Thu Dec 20 2018 09:20:33</td>
 </tr></table>
 </small></address>
 </body>
