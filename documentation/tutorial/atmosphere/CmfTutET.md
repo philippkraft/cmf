@@ -225,7 +225,7 @@ et_pot_turc = cmf.TurcET(layer, cell.transpiration)
 stress = cmf.VolumeStress(300, 100)
 cell.set_uptakestress(stress)
 
-# A solver
+# A solver, any is fine, really
 solver = cmf.HeunIntegrator(p)
 solver.t = datetime(2018, 5, 1)
 et_act = cmf.timeseries(solver.t, cmf.day)

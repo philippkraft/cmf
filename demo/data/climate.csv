@@ -1,4 +1,4 @@
-date,Prec [mm/day],T max [degC],T min [degC],rH mean [%], windspeed [m/s], sunshine [h/h]
+date,Prec [mm/day],T max [degC],T min [degC],rH mean [%],windspeed [m/s],sunshine [h/h]
 1980-01-03, 4.6, -0.4, -5.7, 81, 2.36457, 0.660309
 1980-01-04, 4.3, 0.2, -5.7, 94, 4.34398, 0
 1980-01-05, 1.7, 3.6, -0.6, 91, 1.85302, 0.0505279

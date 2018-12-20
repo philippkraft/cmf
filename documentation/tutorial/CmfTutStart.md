@@ -23,20 +23,10 @@
 
 @subpage conceptual
 
- 
 ## Physical Models
 
 @subpage physical
 
-## Tutorials under construction
-
-The tutorials listed here are not ready to use. They may not work, need revisions
-or use deprecated or experimental cmf methods
-
-### Documenting the model
-
- - @subpage fluxogram_and_get_fluxes "Fluxogram"
- - Using `spotpy` for manual and automatic calibration 
 
 
 
