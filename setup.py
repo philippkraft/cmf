@@ -188,11 +188,11 @@ def make_cmf_core():
      - extra compiler flags
     """
     # Include CVODE
-    include_dirs = ['lib/sundials-lib/include']
+    include_dirs = ['lib/include']
     # Include numpy
     include_dirs += [get_numpy_include()]
 
-    static_libraries = [('lib/sundials-lib/lib',
+    static_libraries = [('lib/lib',
                          ['sundials_cvode', 'sundials_nvecserial',
                           'sundials_sunlinsolband', 'sundials_sunlinsoldense', 'sundials_sunlinsolklu',
                           'sundials_sunlinsolpcg', 'sundials_sunlinsolspbcgs', 'sundials_sunlinsolspfgmr',

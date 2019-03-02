@@ -98,7 +98,7 @@
 }
 }
 
-%extend cmf::math::CVodeDense {
+%extend cmf::math::CVode3 {
 %pythoncode {
     def get_jacobian(self):
         return self._get_jacobian().reshape(self.size(), self.size())
@@ -124,6 +124,5 @@ def CVodeIntegrator(project, tolerance=1e-9):
     else:
         warning('CVodeIntegrator is not available in CMF 2.0. Creating a CVodeKrylov solver instead')
         return CVodeKrylov(project, tolerance)
-
 
 }

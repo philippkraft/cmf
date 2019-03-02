@@ -244,6 +244,7 @@ public:
 	~Impl() {
 		release();
 	}
+
 	static int sparse_jacobian(realtype t, N_Vector y, N_Vector fy, SUNMatrix J, void * userdata, N_Vector tmp1, N_Vector tmp2, N_Vector tmp3);
 };
 
@@ -275,7 +276,23 @@ CVode3 * cmf::math::CVode3::copy() const
 {
 	return nullptr;
 }
+cmf::math::num_array cmf::math::CVode3::_get_jacobian() const
+{
+	CVode3::Impl& i = *_implementation;
+	void * cvm = i.cvode_mem;
+
+	
+	if (cvm == 0 || i.J == 0) {
+		throw std::runtime_error(this->to_string() + ": No access to Jacobian matrix, if the solver is not initialized or the solver has none. Run the solver for any timestep");
+	}
+	SUNMatrix J_dense = SUNDenseMatrix(i.N, i.N);
+	SUNMatCopy(i.J, J_dense);
+	cmf::math::num_array res(SM_DATA_D(J_dense), SM_DATA_D(J_dense) + SM_LDATA_D(J_dense));
+	return res;
+}
+
 CVode3::~CVode3() = default;
+
 CVodeInfo cmf::math::CVode3::get_info() const
 {
 	CVodeInfo ci;
@@ -308,18 +325,6 @@ cmf::math::CVodeDense::CVodeDense(cmf::math::StateVariableOwner & states, real e
 	: CVode3(states, epsilon)
 {}
 
-cmf::math::num_array cmf::math::CVodeDense::_get_jacobian() const
-{
-	CVode3::Impl& i = *_implementation;
-	void * cvm = i.cvode_mem;
-
-	SUNMatrix J = i.J;
-	if (cvm == 0 || J == 0) {
-		throw std::runtime_error(this->to_string() +  ": No access to Jacobian matrix, if the solver is not initialized. Run the solver for any timestep");
-	}
-	cmf::math::num_array res(SM_DATA_D(J), SM_DATA_D(J) + SM_LDATA_D(J));
-	return res;
-}
 
 void cmf::math::CVodeDense::set_solver()
 {
@@ -533,13 +538,14 @@ void cmf::math::CVodeKLU::set_solver()
 	int retval = 0;
 	
 	// Create sparse matrix
-
-	// Number of non-zero entries, reduce to save memory
-	int nnz = i.N * i.N; 
-	i.J = SUNSparseMatrix(i.N, i.N, nnz, CSR_MAT);
+	// .. get sparse structure from my states
+	sparse_structure sps(this->get_states());
+	// .. create the SUNDIALS sparse matrix
+	i.J = SUNSparseMatrix(sps.N, sps.N, sps.NNZ, CSR_MAT);
 	if (i.J == NULL) throw std::runtime_error("CVODE: Failed to construct sparse matrix");
-	/* First population of J->indexvals and Jac->indexptrs from model structure */
-
+	// .. populate structure of SUNDIALS matrix
+	std::copy(sps.columns.begin(), sps.columns.end(), SM_INDEXVALS_S(i.J));
+	std::copy(sps.pointers.begin(), sps.pointers.end(), SM_INDEXPTRS_S(i.J));
 
 	// Create Linear Solver and attach to CVode
 	i.LS = SUNLinSol_KLU(i.y, i.J);
@@ -548,8 +554,7 @@ void cmf::math::CVodeKLU::set_solver()
 	if (retval) throw std::runtime_error("CVODE: Failed to attach sparse KLU linear solver");
 
 	/* Set the user-supplied Jacobian routine Jac */
-	retval = CVodeSetJacFn(i.cvode_mem, klu_sparse_jacobian);
+	retval = CVodeSetJacFn(i.cvode_mem, CVode3::Impl::sparse_jacobian);
 	if (retval) throw std::runtime_error("CVODE: Failed to set sparse jacobian function");
 
-	
 }

@@ -130,7 +130,13 @@ namespace cmf {
 
 			/// Error vector of the integrator
 			cmf::math::num_array get_error() const;
-            ~CVode3();
+			
+			/// Returns a continuous 1D array representing the Jacobian columns concatenated
+			///
+			/// In Python, get_jacobian returns the Jacobian as a 2D array
+			virtual cmf::math::num_array _get_jacobian() const;
+			
+			~CVode3();
 		};
 		/// @brief implicit BDF CVode solver with full Jacobian approximation
 		///
@@ -146,10 +152,6 @@ namespace cmf {
 				return "CVodeDense()";
 			}
 
-			/// Returns a continuous 1D array representing the Jacobian oclumns concatenated
-			///
-			/// In Python, get_jacobian returns the Jacobian as a 2D array
-			cmf::math::num_array _get_jacobian() const;
 
 		protected:
 			void set_solver();
