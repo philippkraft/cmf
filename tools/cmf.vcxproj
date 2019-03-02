@@ -169,7 +169,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>$(SolutionDir)..\math\integrators\sundials_cvode\include;C:\Apps\WinPython-64bit-3.6.1.0Qt5\python-3.6.1.amd64\include;C:\Apps\WinPython-64bit-3.6.1.0Qt5\python-3.6.1.amd64\Lib\site-packages\numpy\core\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)..\lib\include;C:\Apps\WinPython-64bit-3.6.1.0Qt5\python-3.6.1.amd64\include;C:\Apps\WinPython-64bit-3.6.1.0Qt5\python-3.6.1.amd64\Lib\site-packages\numpy\core\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;CMF_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>true</MinimalRebuild>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -189,7 +189,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>C:\Apps\WinPython-64bit-3.5.2\python-3.5.2.amd64\Lib\site-packages\numpy\core\include;C:\Apps\WinPython-64bit-3.5.2\python-3.5.2.amd64\include;C:\Users\kraft-p\Documents\Code\cmf_external_solvers\sundials-lib\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\kraft-p\Documents\Code\suitesparse\include;C:\Apps\WinPython-64bit-3.5.2\python-3.5.2.amd64\Lib\site-packages\numpy\core\include;C:\Apps\WinPython-64bit-3.5.2\python-3.5.2.amd64\include;C:\Users\kraft-p\Documents\Code\cmf2\lib\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;CMF_EXPORTS;EXPERIMENTAL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
@@ -211,7 +211,7 @@
       <InlineFunctionExpansion>Default</InlineFunctionExpansion>
       <FavorSizeOrSpeed>Neither</FavorSizeOrSpeed>
       <WholeProgramOptimization>false</WholeProgramOptimization>
-      <AdditionalIncludeDirectories>C:\Python27\lib\site-packages\numpy-1.7.1-py2.7-win32.egg\numpy\core\include;C:\Python27\include;$(ProjectDir)math\integrators\sundials_cvode\include;$(BOOSTDIR)\boost\tr1;$(BOOSTDIR);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\kraft-p\Documents\Code\cmf2\lib\sundials-lib\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;CMF_EXPORTS;_SCL_SECURE_NO_WARNINGS;_CRT_SECURE_NO_WARNINGS;CMF_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <DisableLanguageExtensions>false</DisableLanguageExtensions>
@@ -282,7 +282,7 @@
     <ClCompile>
       <Optimization>Full</Optimization>
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
-      <AdditionalIncludeDirectories>D:\Code\cmf\..\cmf\cmf_core_src\math\integrators\sundials_cvode\include;d:\Code\boost_1_41_0\boost\tr1;d:\Code\boost_1_41_0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\lib\sundials-lib\include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_WINDOWS;CMF_EXPORTS;SOLUTE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>true</MinimalRebuild>
       <BasicRuntimeChecks>Default</BasicRuntimeChecks>
@@ -298,6 +298,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Console</SubSystem>
       <TargetMachine>MachineX86</TargetMachine>
+      <AdditionalLibraryDirectories>C:\Users\kraft-p\Documents\Code\cmf2\lib\sundials-lib\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug_exe|Win32'">
@@ -326,7 +327,7 @@
     <ClCompile>
       <Optimization>Full</Optimization>
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
-      <AdditionalIncludeDirectories>$(ProjectDir)sundials-lib\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\kraft-p\Documents\Code\suitesparse\include;$(ProjectDir)..\lib\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_WINDOWS;CMF_EXPORTS;SOLUTE;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <BasicRuntimeChecks>Default</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
@@ -401,7 +402,7 @@
     <ClInclude Include="..\cmf\cmf_core_src\math\irregular_timeseries.h" />
     <ClInclude Include="..\cmf\cmf_core_src\Upslope\layer_list.h" />
     <ClInclude Include="..\cmf\cmf_core_src\reach\ManningConnection.h" />
-    <ClInclude Include="..\cmf\cmf_core_src\atmosphere\Meteorology.h" />
+    <ClInclude Include="..\cmf\cmf_core_src\atmosphere\meteorology.h" />
     <ClInclude Include="..\cmf\cmf_core_src\math\integrators\MultiIntegrator.h" />
     <ClInclude Include="..\cmf\cmf_core_src\reach\OpenWaterStorage.h" />
     <ClInclude Include="..\cmf\cmf_core_src\upslope\connections\Percolation.h" />
@@ -458,7 +459,7 @@
     <ClCompile Include="..\cmf\cmf_core_src\math\integrators\Integrator.cpp" />
     <ClCompile Include="..\cmf\cmf_core_src\Upslope\layer_list.cpp" />
     <ClCompile Include="..\cmf\cmf_core_src\reach\ManningConnection.cpp" />
-    <ClCompile Include="..\cmf\cmf_core_src\atmosphere\Meteorology.cpp" />
+    <ClCompile Include="..\cmf\cmf_core_src\atmosphere\meteorology.cpp" />
     <ClCompile Include="..\cmf\cmf_core_src\math\integrators\MultiIntegrator.cpp" />
     <ClCompile Include="..\cmf\cmf_core_src\reach\OpenWaterStorage.cpp" />
     <ClCompile Include="..\cmf\cmf_core_src\upslope\connections\Percolation.cpp" />

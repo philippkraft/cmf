@@ -13,8 +13,6 @@ __pycache__/
 .vs/
 tools/Debug*
 tools/Release*
-tools/suitesparse*
-tools/sundials*
 
 *.VC.opendb
 

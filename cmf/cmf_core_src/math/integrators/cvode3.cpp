@@ -10,6 +10,7 @@
 
 
 #include <cvode/cvode_direct.h>        /* access to CVDls interface            */
+
 // Special includes for dense solver
 #include <sunmatrix/sunmatrix_dense.h> /* access to dense SUNMatrix            */
 #include <sunlinsol/sunlinsol_dense.h> /* access to dense SUNLinearSolver      */
@@ -26,6 +27,9 @@
 #include <sunlinsol/sunlinsol_spgmr.h>
 #include <cvode/cvode_bandpre.h>
 
+#include <sunmatrix/sunmatrix_sparse.h>
+#include <sunlinsol/sunlinsol_klu.h>
+
 using namespace cmf::math;
 
 
@@ -37,8 +41,6 @@ cmf::math::CVodeOptions::CVodeOptions()
 {
 
 }
-
-
 
 
 class cmf::math::CVode3::Impl {
@@ -96,74 +98,7 @@ public:
 		}
 		return 0;
 	}
-
-	int set_dense_solver() {
-		if (cvode_mem == 0) {
-			throw std::runtime_error("Tried to create dense solver for uninitialized cvode");
-		}
-		J = SUNDenseMatrix(N, N);
-		LS = SUNDenseLinearSolver(y, J);
-		// Check for LS / J = NULL
-		int flag = 0;
-		return CVDlsSetLinearSolver(cvode_mem, LS, J);
-		// Check flag and raise an error
-	}
-
-	int set_banded_solver(int bandwidth = 5) {
-		if (cvode_mem == 0) {
-			throw std::runtime_error("Tried to create banded solver for uninitialized cvode");
-		}
-		J = SUNBandMatrix(N, bandwidth, bandwidth, 2 * bandwidth);
-		LS = SUNBandLinearSolver(y, J);
-		return CVDlsSetLinearSolver(cvode_mem, LS, J);
-
-	}
 	
-	int set_diagonal_solver() {
-		if (cvode_mem == 0) {
-			throw std::runtime_error("Tried to create solver for uninitialized cvode");
-		}
-		return CVDiag(this->cvode_mem);
-	}
-
-	int set_krylov_solver(int bandwidth, char preconditioner) {
-		if (cvode_mem == 0) {
-			throw std::runtime_error("Tried to create banded solver for uninitialized cvode");
-		}
-		int prec = PREC_LEFT;
-		switch (preconditioner) {
-		case 'L' : 
-			prec = PREC_LEFT;
-			break;
-		case 'R' :
-			prec = PREC_RIGHT;
-			break;
-		case 'B':
-			prec = PREC_BOTH;
-			break;
-		case 'N':
-			prec = PREC_NONE;
-			break;
-		}
-		LS = 0;
-		LS = SUNSPGMR(this->y, prec, 0);
-		if (LS == 0) {
-			throw std::runtime_error("Linear solver not created");
-		}
-		int flag = CVSpilsSetLinearSolver(cvode_mem, LS);
-		if (flag == CVSPILS_SUCCESS)
-			CVBandPrecInit(cvode_mem, N, bandwidth, bandwidth);
-		else {
-			throw std::runtime_error("Setting linear solver failed");
-		}
-		return flag;
-	}
-
-	int set_klu_solver() {
-        throw std::runtime_error("KLU sparse linear solver not available - yet");
-		return 0;
-	}
-
 	void * cvode_mem=0;
 	
 	void release()
@@ -187,10 +122,10 @@ public:
 		_integrator->copy_states(y_data);
 		// Create a implicit (CV_BDF) solver with Newton iteration (CV_NEWTON)
 		if (this->use_stiff_solver) {
-			cvode_mem = CVodeCreate(CV_BDF, CV_NEWTON);
+			cvode_mem = CVodeCreate(CV_BDF);
 		}
 		else {
-			cvode_mem = CVodeCreate(CV_ADAMS, CV_FUNCTIONAL);
+			cvode_mem = CVodeCreate(CV_ADAMS);
 		}
 		
 		// Set this wrapper as user data of the solver
@@ -309,6 +244,7 @@ public:
 	~Impl() {
 		release();
 	}
+	static int sparse_jacobian(realtype t, N_Vector y, N_Vector fy, SUNMatrix J, void * userdata, N_Vector tmp1, N_Vector tmp2, N_Vector tmp3);
 };
 
 
@@ -374,9 +310,10 @@ cmf::math::CVodeDense::CVodeDense(cmf::math::StateVariableOwner & states, real e
 
 cmf::math::num_array cmf::math::CVodeDense::_get_jacobian() const
 {
-	void * cvm = _implementation->cvode_mem;
+	CVode3::Impl& i = *_implementation;
+	void * cvm = i.cvode_mem;
 
-	SUNMatrix J = _implementation->J;
+	SUNMatrix J = i.J;
 	if (cvm == 0 || J == 0) {
 		throw std::runtime_error(this->to_string() +  ": No access to Jacobian matrix, if the solver is not initialized. Run the solver for any timestep");
 	}
@@ -386,7 +323,20 @@ cmf::math::num_array cmf::math::CVodeDense::_get_jacobian() const
 
 void cmf::math::CVodeDense::set_solver()
 {
-	_implementation->set_dense_solver();
+	CVode3::Impl& i = *_implementation;
+	if (i.cvode_mem == 0) {
+		throw std::runtime_error("Tried to create dense solver for uninitialized cvode");
+	}
+	i.J = SUNDenseMatrix(i.N, i.N);
+	i.LS = SUNDenseLinearSolver(i.y, i.J);
+	// Check for LS / J = NULL
+	int flag = 0;
+	flag = CVDlsSetLinearSolver(i.cvode_mem, i.LS, i.J);
+	// Check flag and raise an error
+	if (flag != CVLS_SUCCESS) {
+		throw std::runtime_error("CVODE: Failed to create linear solver");
+	}
+
 }
 
 cmf::math::CVodeBanded::CVodeBanded(cmf::math::StateVariableOwner & states, real epsilon, int _bandwidth)
@@ -400,7 +350,18 @@ inline std::string cmf::math::CVodeBanded::to_string() const {
 
 void cmf::math::CVodeBanded::set_solver()
 {
-	_implementation->set_banded_solver(this->bandwidth);
+	CVode3::Impl& i = *_implementation;
+	if (i.cvode_mem == 0) {
+		throw std::runtime_error("Tried to create banded solver for uninitialized cvode");
+	}
+	i.J = SUNBandMatrix(i.N, bandwidth, bandwidth);
+	i.LS = SUNBandLinearSolver(i.y, i.J);
+	int flag = CVDlsSetLinearSolver(i.cvode_mem, i.LS, i.J);
+	// Check flag and raise an error
+	if (flag != CVLS_SUCCESS) {
+		throw std::runtime_error("CVODE: Failed to create linear solver");
+	}
+
 }
 
 cmf::math::CVodeDiag::CVodeDiag(cmf::math::StateVariableOwner & states, real epsilon)
@@ -409,7 +370,12 @@ cmf::math::CVodeDiag::CVodeDiag(cmf::math::StateVariableOwner & states, real eps
 
 void cmf::math::CVodeDiag::set_solver()
 {
-	_implementation->set_diagonal_solver();
+	CVode3::Impl& i = *_implementation;
+	if (i.cvode_mem == 0) {
+		throw std::runtime_error("Tried to create solver for uninitialized cvode");
+	}
+	int flag = CVDiag(i.cvode_mem);
+
 }
 
 cmf::math::CVodeKrylov::CVodeKrylov(cmf::math::StateVariableOwner & states, real epsilon,
@@ -423,9 +389,37 @@ inline std::string cmf::math::CVodeKrylov::to_string() const {
 
 void cmf::math::CVodeKrylov::set_solver()
 {
-	_implementation->set_krylov_solver(this->bandwidth, this->preconditioner);
+	CVode3::Impl& i = *_implementation;
+	if (i.cvode_mem == 0) {
+		throw std::runtime_error("Tried to create banded solver for uninitialized cvode");
+	}
+	int prec = PREC_LEFT;
+	switch (preconditioner) {
+	case 'L':
+		prec = PREC_LEFT;
+		break;
+	case 'R':
+		prec = PREC_RIGHT;
+		break;
+	case 'B':
+		prec = PREC_BOTH;
+		break;
+	case 'N':
+		prec = PREC_NONE;
+		break;
+	}
+	i.LS = 0;
+	i.LS = SUNSPGMR(i.y, prec, 0);
+	if (i.LS == 0) {
+		throw std::runtime_error("Linear solver not created");
+	}
+	int flag = CVodeSetLinearSolver(i.cvode_mem, i.LS, NULL);
+	if (flag == CVLS_SUCCESS)
+		flag = CVBandPrecInit(i.cvode_mem, i.N, bandwidth, bandwidth);
+	else {
+		throw std::runtime_error("Setting linear solver failed");
+	}
 }
-
 
 std::string cmf::math::CVodeInfo::to_string() const
 {
@@ -452,4 +446,110 @@ cmf::math::CVodeAdams::CVodeAdams(cmf::math::StateVariableOwner & states, real e
 std::string cmf::math::CVodeAdams::to_string() const
 {
 	return "CVodeAdams()";
+}
+
+cmf::math::CVodeKLU::CVodeKLU(cmf::math::StateVariableOwner & states, real epsilon)
+	: CVode3(states, epsilon)
+{
+}
+
+std::string cmf::math::CVodeKLU::to_string() const
+{
+	return "CVodeKLU()";
+}
+
+int klu_sparse_jacobian(
+	realtype t,
+	N_Vector y, N_Vector fy,
+	SUNMatrix Jac,
+	void *userdata,
+	N_Vector tmp1, N_Vector tmp2, N_Vector tmp3
+);
+
+
+
+int CVode3::Impl::sparse_jacobian(
+	realtype t,
+	N_Vector y, N_Vector fy,
+	SUNMatrix J,
+	void *userdata,
+	N_Vector tmp1, N_Vector tmp2, N_Vector tmp3
+) {
+	// Use lib/lib/cvode_ls.c:815 (cvLsDenseDQJac) as template
+
+	/*
+	Needs information about Jacobian structure already build in J. 
+	Can be gained from J->indexvals and J->indexptrs
+	*/
+	CVode3::Impl * integ_impl = static_cast<CVode3::Impl*>(userdata);
+	CVode3 * integ = integ_impl->_integrator;
+
+	sunindextype NP = SM_NP_S(J); // Problem size
+	sunindextype NNZ = SM_NNZ_S(J); // Number of Non-Zero values
+	
+	sunindextype 
+		data_pos_start,  // Starting position in a row
+		data_pos_end,    // End position in a row
+		col;			 // current column number
+
+	Time time = cmf::math::day * t;
+
+	realtype inc = 1e-12; // TODO: Replace by complex definition from cvLsDenseDQJac
+	realtype altered_dxdt = 0.0;
+	realtype * J_data = SM_DATA_S(J);
+	realtype * y_data = NV_DATA_S(y);
+	realtype * f_data = NV_DATA_S(fy);
+
+	realtype old_y = 0;
+	for (int row = 0; row <= NP; ++row) {
+		// Change state for the row
+		old_y = integ->get_state(row);
+		integ->set_state(row, old_y + inc);
+		
+		// Loop through column positions
+		data_pos_start = SM_INDEXPTRS_S(J)[row];
+		data_pos_end   = SM_INDEXPTRS_S(J)[row + 1];
+		for (sunindextype data_pos = data_pos_start; data_pos < data_pos_end; ++data_pos) {
+			// Get the column number
+			col = SM_INDEXVALS_S(J)[data_pos];
+			// Calculate the new dxdt for that column
+			altered_dxdt = integ->m_States[col]->dxdt(time);
+			// Set the Jacobian value
+			J_data[data_pos] = altered_dxdt / inc - f_data[col] / inc;
+		}
+
+		// Undo state change
+		integ->set_state(row, old_y);
+
+	}
+	return CVLS_SUCCESS;
+}
+
+
+void cmf::math::CVodeKLU::set_solver()
+{
+	throw std::logic_error("KLU solver not implemented yet");
+	CVode3::Impl& i = *_implementation;
+	int retval = 0;
+	
+	// Create sparse matrix
+
+	// Number of non-zero entries, reduce to save memory
+	int nnz = i.N * i.N; 
+	i.J = SUNSparseMatrix(i.N, i.N, nnz, CSR_MAT);
+	if (i.J == NULL) throw std::runtime_error("CVODE: Failed to construct sparse matrix");
+	/* First population of J->indexvals and Jac->indexptrs from model structure */
+
+
+	// Create Linear Solver and attach to CVode
+	i.LS = SUNLinSol_KLU(i.y, i.J);
+	if (i.LS == NULL) throw std::runtime_error("CVODE: Failed to construct sparse KLU linear solver");
+	retval = CVodeSetLinearSolver(i.cvode_mem, i.LS, i.J);
+	if (retval) throw std::runtime_error("CVODE: Failed to attach sparse KLU linear solver");
+
+	/* Set the user-supplied Jacobian routine Jac */
+	retval = CVodeSetJacFn(i.cvode_mem, klu_sparse_jacobian);
+	if (retval) throw std::runtime_error("CVODE: Failed to set sparse jacobian function");
+
+	
 }

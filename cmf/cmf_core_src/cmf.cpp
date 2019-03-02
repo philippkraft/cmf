@@ -159,7 +159,7 @@ int main(int argc, char* argv[])
         std::string name;
 		create_3d(p, 10, 10, name);
 		
-		CVode3 * integ = new CVodeBanded(p, 1e-9);
+		CVode3 * integ = new CVodeDense(p, 1e-9);
 
 		int64_t duration = run(integ, p);
 

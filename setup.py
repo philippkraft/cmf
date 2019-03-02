@@ -188,11 +188,11 @@ def make_cmf_core():
      - extra compiler flags
     """
     # Include CVODE
-    include_dirs = ['tools/sundials-lib/include']
+    include_dirs = ['lib/sundials-lib/include']
     # Include numpy
     include_dirs += [get_numpy_include()]
 
-    static_libraries = [('tools/sundials-lib/lib',
+    static_libraries = [('lib/sundials-lib/lib',
                          ['sundials_cvode', 'sundials_nvecserial',
                           'sundials_sunlinsolband', 'sundials_sunlinsoldense', 'sundials_sunlinsolklu',
                           'sundials_sunlinsolpcg', 'sundials_sunlinsolspbcgs', 'sundials_sunlinsolspfgmr',
@@ -208,10 +208,6 @@ def make_cmf_core():
     # https://stackoverflow.com/a/5192738/3032680
     if sys.platform == 'win32':
 
-        # Only include boost if VS2008 compiler is used, else we use C++ 11
-        if sys.version_info.major == 2:
-            boost_path = os.environ.get('BOOSTDIR', r"..\boost_1_41_0")
-            include_dirs += [boost_path, boost_path + r"\boost\tr1"]
         compile_args = ["/EHsc",
                         r'/Fd"build\vc90.pdb"',
                         "/D_SCL_SECURE_NO_WARNINGS",
@@ -303,7 +299,7 @@ if __name__ == '__main__':
           license='GPL',
           ext_modules=ext,
           packages=['cmf', 'cmf.draw', 'cmf.geometry'],
-          python_requires='>=2.7',
+          python_requires='>=3.4',
           keywords='hydrology catchment simulation toolbox',
           author='Philipp Kraft',
           author_email="philipp.kraft@umwelt.uni-giessen.de",

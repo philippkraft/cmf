@@ -878,6 +878,7 @@ class Time(object):
     def AsPython(self):
         d=self.AsDate()
         return datetime.datetime(d.year,d.month,d.day,d.hour,d.minute,d.second,d.ms*1000)
+
     year   = property(lambda self: self.AsDate().year)
     month  = property(lambda self: self.AsDate().month)
     day    = property(lambda self: self.AsDate().day)
@@ -885,6 +886,9 @@ class Time(object):
     minute = property(lambda self: self.AsDate().minute)
     second = property(lambda self: self.AsDate().second)
     ms     = property(lambda self: self.AsDate().ms)
+
+    def __format__(self, fmt):
+        return self.AsPython().__format__(fmt)
 
     __swig_destroy__ = _cmf_core.delete_Time
 Time.AsDays = new_instancemethod(_cmf_core.Time_AsDays, None, Time)
@@ -2468,187 +2472,210 @@ class RKFIntegrator(Integrator):
 _cmf_core.RKFIntegrator_swigregister(RKFIntegrator)
 # RKFIntegrator end
 
-class CVodeIntegrator(Integrator):
-    """
-
-
-    A wrapper class for the CVODE integrator from the SUNDIALS library.
-
-    https://computation.llnl.gov/casc/sundials/main.html
-
-    C++ includes: cvodeintegrator.h 
-    """
+class CVodeOptions(object):
+    """Proxy of C++ cmf::math::CVodeOptions class."""
 
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
     __repr__ = _swig_repr
-    preconditioner = _swig_property(_cmf_core.CVodeIntegrator_preconditioner_get, _cmf_core.CVodeIntegrator_preconditioner_set)
-    MaxNonLinearIterations = _swig_property(_cmf_core.CVodeIntegrator_MaxNonLinearIterations_get, _cmf_core.CVodeIntegrator_MaxNonLinearIterations_set)
-    MaxConvergenceFailures = _swig_property(_cmf_core.CVodeIntegrator_MaxConvergenceFailures_get, _cmf_core.CVodeIntegrator_MaxConvergenceFailures_set)
-    MaxErrorTestFailures = _swig_property(_cmf_core.CVodeIntegrator_MaxErrorTestFailures_get, _cmf_core.CVodeIntegrator_MaxErrorTestFailures_set)
-    maxl = _swig_property(_cmf_core.CVodeIntegrator_maxl_get, _cmf_core.CVodeIntegrator_maxl_set)
-    LinearSolver = _swig_property(_cmf_core.CVodeIntegrator_LinearSolver_get, _cmf_core.CVodeIntegrator_LinearSolver_set)
-    MaxOrder = _swig_property(_cmf_core.CVodeIntegrator_MaxOrder_get, _cmf_core.CVodeIntegrator_MaxOrder_set)
-    max_step = _swig_property(_cmf_core.CVodeIntegrator_max_step_get, _cmf_core.CVodeIntegrator_max_step_set)
+    max_order = _swig_property(_cmf_core.CVodeOptions_max_order_get, _cmf_core.CVodeOptions_max_order_set)
+    max_non_linear_iterations = _swig_property(_cmf_core.CVodeOptions_max_non_linear_iterations_get, _cmf_core.CVodeOptions_max_non_linear_iterations_set)
+    max_error_test_failures = _swig_property(_cmf_core.CVodeOptions_max_error_test_failures_get, _cmf_core.CVodeOptions_max_error_test_failures_set)
+    max_convergence_failures = _swig_property(_cmf_core.CVodeOptions_max_convergence_failures_get, _cmf_core.CVodeOptions_max_convergence_failures_set)
+    max_num_steps = _swig_property(_cmf_core.CVodeOptions_max_num_steps_get, _cmf_core.CVodeOptions_max_num_steps_set)
+    max_hnil_warnings = _swig_property(_cmf_core.CVodeOptions_max_hnil_warnings_get, _cmf_core.CVodeOptions_max_hnil_warnings_set)
 
-    def initialize(self, *args, **kwargs):
-        """
-        initialize(CVodeIntegrator self)
+    def __init__(self, *args, **kwargs):
+        """__init__(cmf::math::CVodeOptions self) -> CVodeOptions"""
+        _cmf_core.CVodeOptions_swiginit(self, _cmf_core.new_CVodeOptions(*args, **kwargs))
+    __swig_destroy__ = _cmf_core.delete_CVodeOptions
+_cmf_core.CVodeOptions_swigregister(CVodeOptions)
+# CVodeOptions end
 
-        void
-        initialize()
-
-        Initializes the solver. Do not add or remove state variables after
-        initialization. The solver is automatically intialized when
-        integrating. 
-        """
-        return _cmf_core.CVodeIntegrator_initialize(self, *args, **kwargs)
-
-
-    def release(self, *args, **kwargs):
-        """
-        release(CVodeIntegrator self)
-
-        void
-        release()
-
-        Releases the internal solver. Call release before you add state
-        variables or to change properties. 
-        """
-        return _cmf_core.CVodeIntegrator_release(self, *args, **kwargs)
-
-
-    def __init__(self, *args):
-        """
-        __init__(cmf::math::CVodeIntegrator self, real epsilon=1e-9, char _preconditioner) -> CVodeIntegrator
-        __init__(cmf::math::CVodeIntegrator self, StateVariableOwner states, real epsilon=1e-9, char _preconditioner) -> CVodeIntegrator
-        __init__(cmf::math::CVodeIntegrator self, CVodeIntegrator templ) -> CVodeIntegrator
-
-        CVodeIntegrator(const CVodeIntegrator &templ)
-
-        copy constructor, creates a new CVODE integrator similiar to the
-        given, but without statevariables 
-        """
-        _cmf_core.CVodeIntegrator_swiginit(self, _cmf_core.new_CVodeIntegrator(*args))
-
-    def get_error(self, *args, **kwargs):
-        """
-        get_error(CVodeIntegrator self) -> cmf::math::num_array
-
-        cmf::math::num_array get_error() const
-
-        Error vector of the integrator. 
-        """
-        return _cmf_core.CVodeIntegrator_get_error(self, *args, **kwargs)
-
-
-    def get_nonlinear_iterations(self, *args, **kwargs):
-        """
-        get_nonlinear_iterations(CVodeIntegrator self) -> int
-
-        int
-        get_nonlinear_iterations() const
-
-        Returns the number of non-linear iterations performed. Calls
-        CVodeGetNumNonlinSolvIters. 
-        """
-        return _cmf_core.CVodeIntegrator_get_nonlinear_iterations(self, *args, **kwargs)
-
-
-    def get_rhsevals(self, *args, **kwargs):
-        """
-        get_rhsevals(CVodeIntegrator self) -> int
-
-        int
-        get_rhsevals() const
-
-        Returns the number of evaluations of the right hand side of the ODE.
-        Calls CVodeGetNumRhsEvals. 
-        """
-        return _cmf_core.CVodeIntegrator_get_rhsevals(self, *args, **kwargs)
-
-
-    def copy(self, *args, **kwargs):
-        """
-        copy(CVodeIntegrator self) -> CVodeIntegrator
-
-        CVodeIntegrator* copy() const
-
-        Polymorphic copy constructor. 
-        """
-        return _cmf_core.CVodeIntegrator_copy(self, *args, **kwargs)
-
-    __swig_destroy__ = _cmf_core.delete_CVodeIntegrator
-    order = _swig_property(_cmf_core.CVodeIntegrator_order_get)
-CVodeIntegrator.initialize = new_instancemethod(_cmf_core.CVodeIntegrator_initialize, None, CVodeIntegrator)
-CVodeIntegrator.release = new_instancemethod(_cmf_core.CVodeIntegrator_release, None, CVodeIntegrator)
-CVodeIntegrator.get_error = new_instancemethod(_cmf_core.CVodeIntegrator_get_error, None, CVodeIntegrator)
-CVodeIntegrator.get_nonlinear_iterations = new_instancemethod(_cmf_core.CVodeIntegrator_get_nonlinear_iterations, None, CVodeIntegrator)
-CVodeIntegrator.get_rhsevals = new_instancemethod(_cmf_core.CVodeIntegrator_get_rhsevals, None, CVodeIntegrator)
-CVodeIntegrator.copy = new_instancemethod(_cmf_core.CVodeIntegrator_copy, None, CVodeIntegrator)
-_cmf_core.CVodeIntegrator_swigregister(CVodeIntegrator)
-# CVodeIntegrator end
-
-class MultiIntegrator(Integrator):
-    """
-
-
-    The MultiIntegrator is a wrapper for a bunch integrators. The states
-    of the integrators should not have direct connections over integrator
-    boundaries.
-
-    C++ includes: multiintegrator.h 
-    """
+class CVodeInfo(object):
+    """Proxy of C++ cmf::math::CVodeInfo class."""
 
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
     __repr__ = _swig_repr
+    size = _swig_property(_cmf_core.CVodeInfo_size_get, _cmf_core.CVodeInfo_size_set)
+    workspace_real = _swig_property(_cmf_core.CVodeInfo_workspace_real_get, _cmf_core.CVodeInfo_workspace_real_set)
+    workspace_int = _swig_property(_cmf_core.CVodeInfo_workspace_int_get, _cmf_core.CVodeInfo_workspace_int_set)
+    workspace_byte = _swig_property(_cmf_core.CVodeInfo_workspace_byte_get, _cmf_core.CVodeInfo_workspace_byte_set)
+    steps = _swig_property(_cmf_core.CVodeInfo_steps_get, _cmf_core.CVodeInfo_steps_set)
+    current_order = _swig_property(_cmf_core.CVodeInfo_current_order_get, _cmf_core.CVodeInfo_current_order_set)
+    rhs_evaluations = _swig_property(_cmf_core.CVodeInfo_rhs_evaluations_get, _cmf_core.CVodeInfo_rhs_evaluations_set)
+    linear_solver_setups = _swig_property(_cmf_core.CVodeInfo_linear_solver_setups_get, _cmf_core.CVodeInfo_linear_solver_setups_set)
+    error_test_fails = _swig_property(_cmf_core.CVodeInfo_error_test_fails_get, _cmf_core.CVodeInfo_error_test_fails_set)
+    order_reductions = _swig_property(_cmf_core.CVodeInfo_order_reductions_get, _cmf_core.CVodeInfo_order_reductions_set)
+    nonlinear_solver_iterations = _swig_property(_cmf_core.CVodeInfo_nonlinear_solver_iterations_get, _cmf_core.CVodeInfo_nonlinear_solver_iterations_set)
+    nonlinear_solver_convergence_failures = _swig_property(_cmf_core.CVodeInfo_nonlinear_solver_convergence_failures_get, _cmf_core.CVodeInfo_nonlinear_solver_convergence_failures_set)
+    sundials_version = _swig_property(_cmf_core.CVodeInfo_sundials_version_get, _cmf_core.CVodeInfo_sundials_version_set)
 
-    def copy(self, *args, **kwargs):
-        """
-        copy(MultiIntegrator self) -> MultiIntegrator
-
-        virtual
-        cmf::math::MultiIntegrator* copy() const
-
-        Polymorphic copy constructor. 
-        """
-        return _cmf_core.MultiIntegrator_copy(self, *args, **kwargs)
+    def to_string(self, *args, **kwargs):
+        """to_string(CVodeInfo self) -> std::string"""
+        return _cmf_core.CVodeInfo_to_string(self, *args, **kwargs)
 
 
-    def add_states_to_integrator(self, *args, **kwargs):
-        """
-        add_states_to_integrator(MultiIntegrator self, StateVariableOwner stateOwner, int integrator_position)
-
-        void
-        add_states_to_integrator(cmf::math::StateVariableOwner &stateOwner,
-        int integrator_position)
-
-        Add state variables from a StateVariableOwner. 
-        """
-        return _cmf_core.MultiIntegrator_add_states_to_integrator(self, *args, **kwargs)
+    def __repr__(self): 
+        return self.to_string()
 
 
     def __init__(self, *args, **kwargs):
+        """__init__(cmf::math::CVodeInfo self) -> CVodeInfo"""
+        _cmf_core.CVodeInfo_swiginit(self, _cmf_core.new_CVodeInfo(*args, **kwargs))
+    __swig_destroy__ = _cmf_core.delete_CVodeInfo
+CVodeInfo.to_string = new_instancemethod(_cmf_core.CVodeInfo_to_string, None, CVodeInfo)
+_cmf_core.CVodeInfo_swigregister(CVodeInfo)
+# CVodeInfo end
+
+class CVode3(Integrator):
+    """Proxy of C++ cmf::math::CVode3 class."""
+
+    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+
+    def __init__(self, *args, **kwargs):
+        raise AttributeError("No constructor defined - class is abstract")
+    __repr__ = _swig_repr
+    options = _swig_property(_cmf_core.CVode3_options_get, _cmf_core.CVode3_options_set)
+
+    def set_error_msg(self, *args, **kwargs):
+        """set_error_msg(CVode3 self, std::string error)"""
+        return _cmf_core.CVode3_set_error_msg(self, *args, **kwargs)
+
+
+    def copy(self, *args, **kwargs):
         """
-        __init__(cmf::math::MultiIntegrator self, Integrator template_integrator, int count) -> MultiIntegrator
+        copy(CVode3 self) -> CVode3
 
-        MultiIntegrator(const cmf::math::Integrator &template_integrator, int
-        count)
+        virtual
+        Integrator* copy() const =0
 
-        Creates a new MultiIntegrator.
-
-        Parameters:
-        -----------
-
-        template_integrator:  Template for the integrators
-
-        count:  Number of integrators 
+        Polymorphic copy constructor. 
         """
-        _cmf_core.MultiIntegrator_swiginit(self, _cmf_core.new_MultiIntegrator(*args, **kwargs))
-    __swig_destroy__ = _cmf_core.delete_MultiIntegrator
-MultiIntegrator.copy = new_instancemethod(_cmf_core.MultiIntegrator_copy, None, MultiIntegrator)
-MultiIntegrator.add_states_to_integrator = new_instancemethod(_cmf_core.MultiIntegrator_add_states_to_integrator, None, MultiIntegrator)
-_cmf_core.MultiIntegrator_swigregister(MultiIntegrator)
-# MultiIntegrator end
+        return _cmf_core.CVode3_copy(self, *args, **kwargs)
+
+    error_msg = _swig_property(_cmf_core.CVode3_error_msg_get, _cmf_core.CVode3_error_msg_set)
+
+    def to_string(self, *args, **kwargs):
+        """to_string(CVode3 self) -> std::string"""
+        return _cmf_core.CVode3_to_string(self, *args, **kwargs)
+
+
+    def get_error(self, *args, **kwargs):
+        """get_error(CVode3 self) -> cmf::math::num_array"""
+        return _cmf_core.CVode3_get_error(self, *args, **kwargs)
+
+    __swig_destroy__ = _cmf_core.delete_CVode3
+    info = _swig_property(_cmf_core.CVode3_info_get)
+
+    def __repr__(self): 
+        return self.to_string()
+
+CVode3.set_error_msg = new_instancemethod(_cmf_core.CVode3_set_error_msg, None, CVode3)
+CVode3.copy = new_instancemethod(_cmf_core.CVode3_copy, None, CVode3)
+CVode3.to_string = new_instancemethod(_cmf_core.CVode3_to_string, None, CVode3)
+CVode3.get_error = new_instancemethod(_cmf_core.CVode3_get_error, None, CVode3)
+_cmf_core.CVode3_swigregister(CVode3)
+# CVode3 end
+
+class CVodeDense(CVode3):
+    """Proxy of C++ cmf::math::CVodeDense class."""
+
+    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __repr__ = _swig_repr
+
+    def __init__(self, *args, **kwargs):
+        """__init__(cmf::math::CVodeDense self, StateVariableOwner states, real epsilon=1e-9) -> CVodeDense"""
+        _cmf_core.CVodeDense_swiginit(self, _cmf_core.new_CVodeDense(*args, **kwargs))
+
+    def _get_jacobian(self, *args, **kwargs):
+        """_get_jacobian(CVodeDense self) -> cmf::math::num_array"""
+        return _cmf_core.CVodeDense__get_jacobian(self, *args, **kwargs)
+
+
+    def get_jacobian(self):
+        return self._get_jacobian().reshape(self.size(), self.size())
+
+    __swig_destroy__ = _cmf_core.delete_CVodeDense
+CVodeDense._get_jacobian = new_instancemethod(_cmf_core.CVodeDense__get_jacobian, None, CVodeDense)
+_cmf_core.CVodeDense_swigregister(CVodeDense)
+# CVodeDense end
+
+class CVodeAdams(CVode3):
+    """Proxy of C++ cmf::math::CVodeAdams class."""
+
+    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __repr__ = _swig_repr
+
+    def __init__(self, *args, **kwargs):
+        """__init__(cmf::math::CVodeAdams self, StateVariableOwner states, real epsilon=1e-9) -> CVodeAdams"""
+        _cmf_core.CVodeAdams_swiginit(self, _cmf_core.new_CVodeAdams(*args, **kwargs))
+    __swig_destroy__ = _cmf_core.delete_CVodeAdams
+_cmf_core.CVodeAdams_swigregister(CVodeAdams)
+# CVodeAdams end
+
+class CVodeBanded(CVode3):
+    """Proxy of C++ cmf::math::CVodeBanded class."""
+
+    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __repr__ = _swig_repr
+    bandwidth = _swig_property(_cmf_core.CVodeBanded_bandwidth_get, _cmf_core.CVodeBanded_bandwidth_set)
+
+    def __init__(self, *args, **kwargs):
+        """__init__(cmf::math::CVodeBanded self, StateVariableOwner states, real epsilon=1e-9, int w=5) -> CVodeBanded"""
+        _cmf_core.CVodeBanded_swiginit(self, _cmf_core.new_CVodeBanded(*args, **kwargs))
+    __swig_destroy__ = _cmf_core.delete_CVodeBanded
+_cmf_core.CVodeBanded_swigregister(CVodeBanded)
+# CVodeBanded end
+
+class CVodeDiag(CVode3):
+    """Proxy of C++ cmf::math::CVodeDiag class."""
+
+    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __repr__ = _swig_repr
+
+    def __init__(self, *args, **kwargs):
+        """__init__(cmf::math::CVodeDiag self, StateVariableOwner states, real epsilon=1e-9) -> CVodeDiag"""
+        _cmf_core.CVodeDiag_swiginit(self, _cmf_core.new_CVodeDiag(*args, **kwargs))
+    __swig_destroy__ = _cmf_core.delete_CVodeDiag
+_cmf_core.CVodeDiag_swigregister(CVodeDiag)
+# CVodeDiag end
+
+class CVodeKrylov(CVode3):
+    """Proxy of C++ cmf::math::CVodeKrylov class."""
+
+    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __repr__ = _swig_repr
+    bandwidth = _swig_property(_cmf_core.CVodeKrylov_bandwidth_get, _cmf_core.CVodeKrylov_bandwidth_set)
+    preconditioner = _swig_property(_cmf_core.CVodeKrylov_preconditioner_get, _cmf_core.CVodeKrylov_preconditioner_set)
+
+    def __init__(self, *args, **kwargs):
+        """__init__(cmf::math::CVodeKrylov self, StateVariableOwner states, real epsilon=1e-9, int w=5, char p) -> CVodeKrylov"""
+        _cmf_core.CVodeKrylov_swiginit(self, _cmf_core.new_CVodeKrylov(*args, **kwargs))
+    __swig_destroy__ = _cmf_core.delete_CVodeKrylov
+_cmf_core.CVodeKrylov_swigregister(CVodeKrylov)
+# CVodeKrylov end
+
+
+def CVodeIntegrator(project, tolerance=1e-9):
+    """
+    Backwards compatibility layer for the CVodeIntegrator.
+
+    For systems with less than 20 states it will return a CVodeDense solver,
+    for larger systems a CVodeKrylov solver.
+    :param project: CMF project
+    :param tolerance: Solver tolerance
+    :return:
+    """
+    from logging import warning
+    size = project.get_states().size()
+    if size < 20:
+        warning('CVodeIntegrator is not available in CMF 2.0. Creating a CVodeDense solver instead')
+        return CVodeDense(project, tolerance)
+    else:
+        warning('CVodeIntegrator is not available in CMF 2.0. Creating a CVodeKrylov solver instead')
+        return CVodeKrylov(project, tolerance)
+
+
 
 class Adsorption(object):
     """

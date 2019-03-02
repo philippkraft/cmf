@@ -202,6 +202,15 @@ namespace cmf {
 		protected:
 			void set_solver();
 		};
+
+		class CVodeKLU : public CVode3 {
+		public:
+			CVodeKLU(cmf::math::StateVariableOwner& states, real epsilon = 1e-9);
+			std::string to_string() const;
+		protected:
+			void set_solver();
+
+		};
 	}
 }
 

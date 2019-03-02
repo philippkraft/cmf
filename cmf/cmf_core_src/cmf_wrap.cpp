@@ -77333,11 +77333,7 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"CVodeOptions_max_num_steps_get", (PyCFunction)_wrap_CVodeOptions_max_num_steps_get, METH_O, (char *)"CVodeOptions_max_num_steps_get(CVodeOptions self) -> int"},
 	 { (char *)"CVodeOptions_max_hnil_warnings_set", _wrap_CVodeOptions_max_hnil_warnings_set, METH_VARARGS, (char *)"CVodeOptions_max_hnil_warnings_set(CVodeOptions self, int max_hnil_warnings)"},
 	 { (char *)"CVodeOptions_max_hnil_warnings_get", (PyCFunction)_wrap_CVodeOptions_max_hnil_warnings_get, METH_O, (char *)"CVodeOptions_max_hnil_warnings_get(CVodeOptions self) -> int"},
-	 { (char *)"new_CVodeOptions", (PyCFunction)_wrap_new_CVodeOptions, METH_NOARGS, (char *)"\n"
-		"new_CVodeOptions() -> CVodeOptions\n"
-		"\n"
-		"CVodeOptions() \n"
-		""},
+	 { (char *)"new_CVodeOptions", (PyCFunction)_wrap_new_CVodeOptions, METH_NOARGS, (char *)"new_CVodeOptions() -> CVodeOptions"},
 	 { (char *)"delete_CVodeOptions", (PyCFunction)_wrap_delete_CVodeOptions, METH_O, (char *)"delete_CVodeOptions(CVodeOptions self)"},
 	 { (char *)"CVodeOptions_swigregister", CVodeOptions_swigregister, METH_VARARGS, NULL},
 	 { (char *)"CVodeOptions_swiginit", CVodeOptions_swiginit, METH_VARARGS, NULL},
@@ -77367,100 +77363,45 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"CVodeInfo_nonlinear_solver_convergence_failures_get", (PyCFunction)_wrap_CVodeInfo_nonlinear_solver_convergence_failures_get, METH_O, (char *)"CVodeInfo_nonlinear_solver_convergence_failures_get(CVodeInfo self) -> long"},
 	 { (char *)"CVodeInfo_sundials_version_set", _wrap_CVodeInfo_sundials_version_set, METH_VARARGS, (char *)"CVodeInfo_sundials_version_set(CVodeInfo self, std::string const & sundials_version)"},
 	 { (char *)"CVodeInfo_sundials_version_get", (PyCFunction)_wrap_CVodeInfo_sundials_version_get, METH_O, (char *)"CVodeInfo_sundials_version_get(CVodeInfo self) -> std::string const &"},
-	 { (char *)"CVodeInfo_to_string", (PyCFunction)_wrap_CVodeInfo_to_string, METH_O, (char *)"\n"
-		"CVodeInfo_to_string(CVodeInfo self) -> std::string\n"
-		"\n"
-		"std::string\n"
-		"to_string() const \n"
-		""},
+	 { (char *)"CVodeInfo_to_string", (PyCFunction)_wrap_CVodeInfo_to_string, METH_O, (char *)"CVodeInfo_to_string(CVodeInfo self) -> std::string"},
 	 { (char *)"new_CVodeInfo", (PyCFunction)_wrap_new_CVodeInfo, METH_NOARGS, (char *)"new_CVodeInfo() -> CVodeInfo"},
 	 { (char *)"delete_CVodeInfo", (PyCFunction)_wrap_delete_CVodeInfo, METH_O, (char *)"delete_CVodeInfo(CVodeInfo self)"},
 	 { (char *)"CVodeInfo_swigregister", CVodeInfo_swigregister, METH_VARARGS, NULL},
 	 { (char *)"CVodeInfo_swiginit", CVodeInfo_swiginit, METH_VARARGS, NULL},
 	 { (char *)"CVode3_options_set", _wrap_CVode3_options_set, METH_VARARGS, (char *)"CVode3_options_set(CVode3 self, CVodeOptions options)"},
 	 { (char *)"CVode3_options_get", (PyCFunction)_wrap_CVode3_options_get, METH_O, (char *)"CVode3_options_get(CVode3 self) -> CVodeOptions"},
-	 { (char *)"CVode3_set_error_msg", (PyCFunction) _wrap_CVode3_set_error_msg, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
-		"CVode3_set_error_msg(CVode3 self, std::string error)\n"
-		"\n"
-		"void\n"
-		"set_error_msg(std::string error)\n"
-		"\n"
-		"Sets an error message. \n"
-		""},
+	 { (char *)"CVode3_set_error_msg", (PyCFunction) _wrap_CVode3_set_error_msg, METH_VARARGS | METH_KEYWORDS, (char *)"CVode3_set_error_msg(CVode3 self, std::string error)"},
 	 { (char *)"CVode3_copy", (PyCFunction)_wrap_CVode3_copy, METH_O, (char *)"\n"
 		"CVode3_copy(CVode3 self) -> CVode3\n"
 		"\n"
-		"CVode3* copy() const\n"
+		"virtual\n"
+		"Integrator* copy() const =0\n"
 		"\n"
-		"Returns a copy of the solver. \n"
+		"Polymorphic copy constructor. \n"
 		""},
 	 { (char *)"CVode3_error_msg_set", _wrap_CVode3_error_msg_set, METH_VARARGS, (char *)"CVode3_error_msg_set(CVode3 self, std::string const & error_msg)"},
 	 { (char *)"CVode3_error_msg_get", (PyCFunction)_wrap_CVode3_error_msg_get, METH_O, (char *)"CVode3_error_msg_get(CVode3 self) -> std::string const &"},
-	 { (char *)"CVode3_to_string", (PyCFunction)_wrap_CVode3_to_string, METH_O, (char *)"\n"
-		"CVode3_to_string(CVode3 self) -> std::string\n"
-		"\n"
-		"virtual\n"
-		"std::string to_string() const =0\n"
-		"\n"
-		"Returns a string representation of the solver. \n"
-		""},
-	 { (char *)"CVode3_get_error", (PyCFunction)_wrap_CVode3_get_error, METH_O, (char *)"\n"
-		"CVode3_get_error(CVode3 self) -> cmf::math::num_array\n"
-		"\n"
-		"cmf::math::num_array get_error() const\n"
-		"\n"
-		"Error vector of the integrator. \n"
-		""},
+	 { (char *)"CVode3_to_string", (PyCFunction)_wrap_CVode3_to_string, METH_O, (char *)"CVode3_to_string(CVode3 self) -> std::string"},
+	 { (char *)"CVode3_get_error", (PyCFunction)_wrap_CVode3_get_error, METH_O, (char *)"CVode3_get_error(CVode3 self) -> cmf::math::num_array"},
 	 { (char *)"delete_CVode3", (PyCFunction)_wrap_delete_CVode3, METH_O, (char *)"delete_CVode3(CVode3 self)"},
 	 { (char *)"CVode3_info_get", (PyCFunction)_wrap_CVode3_info_get, METH_O, (char *)"CVode3_info_get(CVode3 self) -> CVodeInfo"},
 	 { (char *)"CVode3_swigregister", CVode3_swigregister, METH_VARARGS, NULL},
-	 { (char *)"new_CVodeDense", (PyCFunction) _wrap_new_CVodeDense, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
-		"new_CVodeDense(StateVariableOwner states, real epsilon=1e-9) -> CVodeDense\n"
-		"\n"
-		"CVodeDense(cmf::math::StateVariableOwner &states, real epsilon=1e-9)\n"
-		"\n"
-		"Creates a new implicit dense CVode solver. \n"
-		""},
-	 { (char *)"CVodeDense__get_jacobian", (PyCFunction)_wrap_CVodeDense__get_jacobian, METH_O, (char *)"\n"
-		"CVodeDense__get_jacobian(CVodeDense self) -> cmf::math::num_array\n"
-		"\n"
-		"cmf::math::num_array _get_jacobian() const\n"
-		"\n"
-		"Returns a continuous 1D array representing the Jacobian oclumns\n"
-		"concatenated.\n"
-		"\n"
-		"Convert to 2D numpy nd array: jac =\n"
-		"solver.jacobian().reshape(solver.size(), -1) This can be implemented\n"
-		"in ODEsystem.i but is not now. \n"
-		""},
+	 { (char *)"new_CVodeDense", (PyCFunction) _wrap_new_CVodeDense, METH_VARARGS | METH_KEYWORDS, (char *)"new_CVodeDense(StateVariableOwner states, real epsilon=1e-9) -> CVodeDense"},
+	 { (char *)"CVodeDense__get_jacobian", (PyCFunction)_wrap_CVodeDense__get_jacobian, METH_O, (char *)"CVodeDense__get_jacobian(CVodeDense self) -> cmf::math::num_array"},
 	 { (char *)"delete_CVodeDense", (PyCFunction)_wrap_delete_CVodeDense, METH_O, (char *)"delete_CVodeDense(CVodeDense self)"},
 	 { (char *)"CVodeDense_swigregister", CVodeDense_swigregister, METH_VARARGS, NULL},
 	 { (char *)"CVodeDense_swiginit", CVodeDense_swiginit, METH_VARARGS, NULL},
-	 { (char *)"new_CVodeAdams", (PyCFunction) _wrap_new_CVodeAdams, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
-		"new_CVodeAdams(StateVariableOwner states, real epsilon=1e-9) -> CVodeAdams\n"
-		"\n"
-		"CVodeAdams(cmf::math::StateVariableOwner &states, real epsilon=1e-9)\n"
-		"\n"
-		""},
+	 { (char *)"new_CVodeAdams", (PyCFunction) _wrap_new_CVodeAdams, METH_VARARGS | METH_KEYWORDS, (char *)"new_CVodeAdams(StateVariableOwner states, real epsilon=1e-9) -> CVodeAdams"},
 	 { (char *)"delete_CVodeAdams", (PyCFunction)_wrap_delete_CVodeAdams, METH_O, (char *)"delete_CVodeAdams(CVodeAdams self)"},
 	 { (char *)"CVodeAdams_swigregister", CVodeAdams_swigregister, METH_VARARGS, NULL},
 	 { (char *)"CVodeAdams_swiginit", CVodeAdams_swiginit, METH_VARARGS, NULL},
 	 { (char *)"CVodeBanded_bandwidth_set", _wrap_CVodeBanded_bandwidth_set, METH_VARARGS, (char *)"CVodeBanded_bandwidth_set(CVodeBanded self, int bandwidth)"},
 	 { (char *)"CVodeBanded_bandwidth_get", (PyCFunction)_wrap_CVodeBanded_bandwidth_get, METH_O, (char *)"CVodeBanded_bandwidth_get(CVodeBanded self) -> int"},
-	 { (char *)"new_CVodeBanded", (PyCFunction) _wrap_new_CVodeBanded, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
-		"new_CVodeBanded(StateVariableOwner states, real epsilon=1e-9, int w=5) -> CVodeBanded\n"
-		"\n"
-		"CVodeBanded(cmf::math::StateVariableOwner &states, real epsilon=1e-9,\n"
-		"int w=5) \n"
-		""},
+	 { (char *)"new_CVodeBanded", (PyCFunction) _wrap_new_CVodeBanded, METH_VARARGS | METH_KEYWORDS, (char *)"new_CVodeBanded(StateVariableOwner states, real epsilon=1e-9, int w=5) -> CVodeBanded"},
 	 { (char *)"delete_CVodeBanded", (PyCFunction)_wrap_delete_CVodeBanded, METH_O, (char *)"delete_CVodeBanded(CVodeBanded self)"},
 	 { (char *)"CVodeBanded_swigregister", CVodeBanded_swigregister, METH_VARARGS, NULL},
 	 { (char *)"CVodeBanded_swiginit", CVodeBanded_swiginit, METH_VARARGS, NULL},
-	 { (char *)"new_CVodeDiag", (PyCFunction) _wrap_new_CVodeDiag, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
-		"new_CVodeDiag(StateVariableOwner states, real epsilon=1e-9) -> CVodeDiag\n"
-		"\n"
-		"CVodeDiag(cmf::math::StateVariableOwner &states, real epsilon=1e-9) \n"
-		""},
+	 { (char *)"new_CVodeDiag", (PyCFunction) _wrap_new_CVodeDiag, METH_VARARGS | METH_KEYWORDS, (char *)"new_CVodeDiag(StateVariableOwner states, real epsilon=1e-9) -> CVodeDiag"},
 	 { (char *)"delete_CVodeDiag", (PyCFunction)_wrap_delete_CVodeDiag, METH_O, (char *)"delete_CVodeDiag(CVodeDiag self)"},
 	 { (char *)"CVodeDiag_swigregister", CVodeDiag_swigregister, METH_VARARGS, NULL},
 	 { (char *)"CVodeDiag_swiginit", CVodeDiag_swiginit, METH_VARARGS, NULL},
@@ -77468,12 +77409,7 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"CVodeKrylov_bandwidth_get", (PyCFunction)_wrap_CVodeKrylov_bandwidth_get, METH_O, (char *)"CVodeKrylov_bandwidth_get(CVodeKrylov self) -> int"},
 	 { (char *)"CVodeKrylov_preconditioner_set", _wrap_CVodeKrylov_preconditioner_set, METH_VARARGS, (char *)"CVodeKrylov_preconditioner_set(CVodeKrylov self, char preconditioner)"},
 	 { (char *)"CVodeKrylov_preconditioner_get", (PyCFunction)_wrap_CVodeKrylov_preconditioner_get, METH_O, (char *)"CVodeKrylov_preconditioner_get(CVodeKrylov self) -> char"},
-	 { (char *)"new_CVodeKrylov", (PyCFunction) _wrap_new_CVodeKrylov, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
-		"new_CVodeKrylov(StateVariableOwner states, real epsilon=1e-9, int w=5, char p) -> CVodeKrylov\n"
-		"\n"
-		"CVodeKrylov(cmf::math::StateVariableOwner &states, real epsilon=1e-9,\n"
-		"int w=5, char p='L') \n"
-		""},
+	 { (char *)"new_CVodeKrylov", (PyCFunction) _wrap_new_CVodeKrylov, METH_VARARGS | METH_KEYWORDS, (char *)"new_CVodeKrylov(StateVariableOwner states, real epsilon=1e-9, int w=5, char p) -> CVodeKrylov"},
 	 { (char *)"delete_CVodeKrylov", (PyCFunction)_wrap_delete_CVodeKrylov, METH_O, (char *)"delete_CVodeKrylov(CVodeKrylov self)"},
 	 { (char *)"CVodeKrylov_swigregister", CVodeKrylov_swigregister, METH_VARARGS, NULL},
 	 { (char *)"CVodeKrylov_swiginit", CVodeKrylov_swiginit, METH_VARARGS, NULL},
