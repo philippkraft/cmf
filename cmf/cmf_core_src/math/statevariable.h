@@ -132,6 +132,9 @@ namespace cmf {
 			{}
 
 			virtual ~StateVariable() {}
+			virtual bool is_connected(const cmf::math::StateVariable& other) const {
+				return true;
+			}
 		};
 
 		class StateVariableList;
@@ -177,12 +180,22 @@ namespace cmf {
 			}
 			size_t size() const {return m_vector.size();}
 			virtual ~StateVariableList() {}
-
 			StateVariable::ptr operator[](ptrdiff_t index) const{
 				return m_vector.at(index >= 0 ? index : size() + index);
 			}
+
 		};
 
+		struct sparse_structure {
+			std::vector<int64_t> columns;
+			std::vector<int64_t> pointers;
+			/// @brief Creates the sparse row compressed structure from states variable list			
+			sparse_structure(const StateVariableList& states);
+			int64_t NNZ, NP, N;
+		};
+
+			
+		
 	}
 }
 

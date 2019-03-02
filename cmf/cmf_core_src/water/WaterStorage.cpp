@@ -119,7 +119,34 @@ real cmf::water::WaterStorage::dxdt( const cmf::math::Time& time )
 		return dVdt;
 }
 
-cmf::math::StateVariableList cmf::water::WaterStorage::get_states() 
+bool cmf::water::WaterStorage::is_connected(const StateVariable & other) const
+{
+	const WaterStorage* other_ws = dynamic_cast<const WaterStorage *>(&other);
+	
+	if (other_ws) { // If the test state is also a water storage
+		// identical storages are connected
+		if (other_ws == this) return true;
+		// else test if we have any connection to it
+		connection_list con_list = this->get_connections();
+		for (auto con : con_list) {
+			if (con->get_target(*other_ws)) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	const SoluteStorage* other_ss = dynamic_cast<const SoluteStorage *>(&other);
+	if (other_ss) {
+		return this->is_connected(other_ss->get_water());
+	}
+	else {
+		throw std::logic_error("Test for connection of a statevariable that is neither solute nor water storage");
+	}
+
+}
+
+cmf::math::StateVariableList cmf::water::WaterStorage::get_states()
 {
 	cmf::math::StateVariableList q;
 	q.append(cmf::water::WaterStorage::ptr(*this));

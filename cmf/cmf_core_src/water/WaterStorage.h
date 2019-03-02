@@ -74,6 +74,8 @@ namespace cmf {
 			void set_state_variable_content(char content);
 			/// @brief Returns true, since this is a storage
 			virtual bool is_storage() const {return true;}
+			/// @brief Returns True if this waterstorage is effected by another state
+			virtual bool is_connected(const cmf::math::StateVariable& other) const;
 			cmf::math::StateVariableList get_states();
 			/// @brief creates a water storage (abstract class)
 			/// @param project The project the waterstorage belongs to

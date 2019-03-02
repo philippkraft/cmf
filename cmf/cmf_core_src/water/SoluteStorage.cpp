@@ -21,6 +21,35 @@
 #include "WaterStorage.h"
 #include "flux_connection.h"
 using namespace cmf::water;
+bool cmf::water::SoluteStorage::is_connected(const StateVariable & other) const
+{
+	const WaterStorage* other_ws = dynamic_cast<const WaterStorage *>(&other);
+
+	if (other_ws) { // If the test state is a water storage
+		// Return the connectiness of my water storage with other
+		return this->get_water().is_connected(other);
+	}
+	
+	const SoluteStorage* other_ss = dynamic_cast<const SoluteStorage *>(&other);
+	if (other_ss) {
+		// Check for self connection
+		if (this == other_ss) {
+			return true;
+		}
+		else { 
+			// Check if other_ss is the solute storage of the same solute at an connected water storage
+			if ((this->Solute == other_ss->Solute) &&
+				this->get_water().is_connected(other_ss->get_water())
+			) {
+				return true;
+			}
+		}
+		return false;
+	}
+	else {
+		throw std::logic_error("Test for connection of a statevariable that is neither solute nor water storage");
+	}
+}
 real SoluteStorage::dxdt( const cmf::math::Time& time )
 {
  	// Sums up the fluxes as water fluxes (mol/day)

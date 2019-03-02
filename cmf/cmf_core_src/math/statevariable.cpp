@@ -55,3 +55,30 @@ void cmf::math::StateVariable::set_state(real newState) {
 	m_StateIsNew = true;
 	if (m_StateIsNew) StateChangeAction();
 }
+
+
+cmf::math::sparse_structure::sparse_structure(const StateVariableList & states)
+{
+	size_t N = states.size();
+	// Pointers of a csr sparse structure always start with 0
+	pointers.push_back(0);
+	// Test each state with each other. This is highly inefficient.
+	// Better approach would be if a state can return (or append to) a list of its connected states
+	for (int row = 0; row < N; ++row) {
+		// Get the state to be tested for this row
+		auto row_state = states[row];
+		for (int col = 0; col < N; ++col) {
+			// Get the state to be tested for the current column
+			auto col_state = states[col];
+			// if row_state and col_state share a dependency, add it to the columns of the sparse structure
+			if (row_state->is_connected(*col_state)) {
+				columns.push_back(col);
+			}
+		}
+		// Write the position of the next entry (from the new row) into pointers
+		pointers.push_back(columns.size());
+	}
+	NP = pointers.size() - 1;
+	NNZ = columns.size();
+
+}

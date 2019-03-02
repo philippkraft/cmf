@@ -67,8 +67,13 @@ namespace cmf {
 			/// @brief set a new concentration of dissolved tracers. 
 			///
 			/// In case of adsorption functions, the isotherm is used
-
 			void set_conc(real NewConcentration);
+			/// @brief get the waterstorge of the solute storage
+			const WaterStorage& get_water() const {
+				return *m_water;
+			}
+			/// @brief Returns True if this solute storage is effected by another state
+			virtual bool is_connected(const cmf::math::StateVariable& other) const;
 
 			virtual real dxdt(const cmf::math::Time& time);
 			virtual std::string to_string() const;
