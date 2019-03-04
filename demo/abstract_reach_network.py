@@ -1,4 +1,5 @@
 import cmf
+import numpy as np
 
 class ReachNetwork:
     def __init__(self, levels=3):
@@ -47,16 +48,18 @@ class ReachNetwork:
 
 
 class Model:
-    def __init__(self, levels, solver_class):
+    def __init__(self, levels, solver_class, total_inflow=100.0):
         self.network = ReachNetwork(levels)
+        self.network.set_inflow(total_inflow)
         self.solver = solver_class(self.network.project)
+        self.solver.initialize()
 
     def __call__(self, time=cmf.day):
         self.solver(time)
         return self
 
     def depth(self):
-        return [r.depth for r in self.network]
+        return np.array([r.depth for r in self.network])
 
     def outflux(self):
         return self.network.outlet(self.solver.t)
@@ -64,5 +67,6 @@ class Model:
 
 if __name__ == '__main__':
     dense = Model(5, cmf.CVodeDense)(cmf.day)
-    # klu = Model(5, cmf.CVodeKLU)(cmf.day)
+    sps = cmf.sparse_structure(dense.network.project.get_states())
+    klu = Model(5, cmf.CVodeKLU)(cmf.day)
 

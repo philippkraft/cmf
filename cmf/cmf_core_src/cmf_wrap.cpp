@@ -20913,6 +20913,38 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_CVode3_initialize(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  cmf::math::CVode3 *arg1 = (cmf::math::CVode3 *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  int result;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__math__CVode3, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CVode3_initialize" "', argument " "1"" of type '" "cmf::math::CVode3 *""'"); 
+  }
+  arg1 = reinterpret_cast< cmf::math::CVode3 * >(argp1);
+  {
+    try {
+      result = (int)(arg1)->initialize();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+    
+  }
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_CVode3_set_error_msg(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   cmf::math::CVode3 *arg1 = (cmf::math::CVode3 *) 0 ;
@@ -77949,6 +77981,7 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"CVodeInfo_swiginit", CVodeInfo_swiginit, METH_VARARGS, NULL},
 	 { (char *)"CVode3_options_set", _wrap_CVode3_options_set, METH_VARARGS, (char *)"CVode3_options_set(CVode3 self, CVodeOptions options)"},
 	 { (char *)"CVode3_options_get", (PyCFunction)_wrap_CVode3_options_get, METH_O, (char *)"CVode3_options_get(CVode3 self) -> CVodeOptions"},
+	 { (char *)"CVode3_initialize", (PyCFunction)_wrap_CVode3_initialize, METH_O, (char *)"CVode3_initialize(CVode3 self) -> int"},
 	 { (char *)"CVode3_set_error_msg", (PyCFunction) _wrap_CVode3_set_error_msg, METH_VARARGS | METH_KEYWORDS, (char *)"CVode3_set_error_msg(CVode3 self, std::string error)"},
 	 { (char *)"CVode3_copy", (PyCFunction)_wrap_CVode3_copy, METH_O, (char *)"\n"
 		"CVode3_copy(CVode3 self) -> CVode3\n"

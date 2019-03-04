@@ -112,6 +112,11 @@ namespace cmf {
 			/// @brief the limits for the CVode solver, see CVodeOptions
 			CVodeOptions options;
 
+			/// @brief Initialize the internal memory. 
+			///
+			/// Automatically called, when one starts to integrate
+			int initialize();
+
 			virtual int integrate(cmf::math::Time t_max, cmf::math::Time dt);
 			/// Resets the history of the multispte solver and overwrites the internal state cache
 			virtual void reset();

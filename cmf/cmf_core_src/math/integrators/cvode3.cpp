@@ -249,6 +249,11 @@ public:
 };
 
 
+int cmf::math::CVode3::initialize()
+{
+	return _implementation->initialize();
+}
+
 int cmf::math::CVode3::integrate(cmf::math::Time t_max, cmf::math::Time dt)
 {
 
@@ -506,7 +511,7 @@ int CVode3::Impl::sparse_jacobian(
 	realtype * f_data = NV_DATA_S(fy);
 
 	realtype old_y = 0;
-	for (int row = 0; row <= NP; ++row) {
+	for (int row = 0; row < NP; ++row) {
 		// Change state for the row
 		old_y = integ->get_state(row);
 		integ->set_state(row, old_y + inc);

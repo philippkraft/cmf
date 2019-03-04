@@ -2561,6 +2561,11 @@ class CVode3(Integrator):
     __repr__ = _swig_repr
     options = _swig_property(_cmf_core.CVode3_options_get, _cmf_core.CVode3_options_set)
 
+    def initialize(self, *args, **kwargs):
+        """initialize(CVode3 self) -> int"""
+        return _cmf_core.CVode3_initialize(self, *args, **kwargs)
+
+
     def set_error_msg(self, *args, **kwargs):
         """set_error_msg(CVode3 self, std::string error)"""
         return _cmf_core.CVode3_set_error_msg(self, *args, **kwargs)
@@ -2603,6 +2608,7 @@ class CVode3(Integrator):
     def __repr__(self): 
         return self.to_string()
 
+CVode3.initialize = new_instancemethod(_cmf_core.CVode3_initialize, None, CVode3)
 CVode3.set_error_msg = new_instancemethod(_cmf_core.CVode3_set_error_msg, None, CVode3)
 CVode3.copy = new_instancemethod(_cmf_core.CVode3_copy, None, CVode3)
 CVode3.to_string = new_instancemethod(_cmf_core.CVode3_to_string, None, CVode3)
