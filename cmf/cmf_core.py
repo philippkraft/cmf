@@ -1941,6 +1941,11 @@ class StateVariable(object):
         return _cmf_core.StateVariable_to_string(self, *args, **kwargs)
 
     __swig_destroy__ = _cmf_core.delete_StateVariable
+
+    def is_connected(self, *args, **kwargs):
+        """is_connected(StateVariable self, StateVariable other) -> bool"""
+        return _cmf_core.StateVariable_is_connected(self, *args, **kwargs)
+
     state = _swig_property(_cmf_core.StateVariable_state_get, _cmf_core.StateVariable_state_set)
 
     def __repr__(self): 
@@ -1949,6 +1954,7 @@ class StateVariable(object):
 StateVariable.dxdt = new_instancemethod(_cmf_core.StateVariable_dxdt, None, StateVariable)
 StateVariable.get_abs_errtol = new_instancemethod(_cmf_core.StateVariable_get_abs_errtol, None, StateVariable)
 StateVariable.to_string = new_instancemethod(_cmf_core.StateVariable_to_string, None, StateVariable)
+StateVariable.is_connected = new_instancemethod(_cmf_core.StateVariable_is_connected, None, StateVariable)
 _cmf_core.StateVariable_swigregister(StateVariable)
 # StateVariable end
 
@@ -2044,6 +2050,24 @@ StateVariableList.size = new_instancemethod(_cmf_core.StateVariableList_size, No
 StateVariableList.__len__ = new_instancemethod(_cmf_core.StateVariableList___len__, None, StateVariableList)
 _cmf_core.StateVariableList_swigregister(StateVariableList)
 # StateVariableList end
+
+class sparse_structure(object):
+    """Proxy of C++ cmf::math::sparse_structure class."""
+
+    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __repr__ = _swig_repr
+    columns = _swig_property(_cmf_core.sparse_structure_columns_get, _cmf_core.sparse_structure_columns_set)
+    pointers = _swig_property(_cmf_core.sparse_structure_pointers_get, _cmf_core.sparse_structure_pointers_set)
+
+    def __init__(self, *args, **kwargs):
+        """__init__(cmf::math::sparse_structure self, StateVariableList states) -> sparse_structure"""
+        _cmf_core.sparse_structure_swiginit(self, _cmf_core.new_sparse_structure(*args, **kwargs))
+    NNZ = _swig_property(_cmf_core.sparse_structure_NNZ_get, _cmf_core.sparse_structure_NNZ_set)
+    NP = _swig_property(_cmf_core.sparse_structure_NP_get, _cmf_core.sparse_structure_NP_set)
+    N = _swig_property(_cmf_core.sparse_structure_N_get, _cmf_core.sparse_structure_N_set)
+    __swig_destroy__ = _cmf_core.delete_sparse_structure
+_cmf_core.sparse_structure_swigregister(sparse_structure)
+# sparse_structure end
 
 class Integrator(StateVariableOwner):
     """
@@ -2564,8 +2588,17 @@ class CVode3(Integrator):
         """get_error(CVode3 self) -> cmf::math::num_array"""
         return _cmf_core.CVode3_get_error(self, *args, **kwargs)
 
+
+    def _get_jacobian(self, *args, **kwargs):
+        """_get_jacobian(CVode3 self) -> cmf::math::num_array"""
+        return _cmf_core.CVode3__get_jacobian(self, *args, **kwargs)
+
     __swig_destroy__ = _cmf_core.delete_CVode3
     info = _swig_property(_cmf_core.CVode3_info_get)
+
+    def get_jacobian(self):
+        return self._get_jacobian().reshape(self.size(), self.size())
+
 
     def __repr__(self): 
         return self.to_string()
@@ -2574,6 +2607,7 @@ CVode3.set_error_msg = new_instancemethod(_cmf_core.CVode3_set_error_msg, None, 
 CVode3.copy = new_instancemethod(_cmf_core.CVode3_copy, None, CVode3)
 CVode3.to_string = new_instancemethod(_cmf_core.CVode3_to_string, None, CVode3)
 CVode3.get_error = new_instancemethod(_cmf_core.CVode3_get_error, None, CVode3)
+CVode3._get_jacobian = new_instancemethod(_cmf_core.CVode3__get_jacobian, None, CVode3)
 _cmf_core.CVode3_swigregister(CVode3)
 # CVode3 end
 
@@ -2586,17 +2620,7 @@ class CVodeDense(CVode3):
     def __init__(self, *args, **kwargs):
         """__init__(cmf::math::CVodeDense self, StateVariableOwner states, real epsilon=1e-9) -> CVodeDense"""
         _cmf_core.CVodeDense_swiginit(self, _cmf_core.new_CVodeDense(*args, **kwargs))
-
-    def _get_jacobian(self, *args, **kwargs):
-        """_get_jacobian(CVodeDense self) -> cmf::math::num_array"""
-        return _cmf_core.CVodeDense__get_jacobian(self, *args, **kwargs)
-
-
-    def get_jacobian(self):
-        return self._get_jacobian().reshape(self.size(), self.size())
-
     __swig_destroy__ = _cmf_core.delete_CVodeDense
-CVodeDense._get_jacobian = new_instancemethod(_cmf_core.CVodeDense__get_jacobian, None, CVodeDense)
 _cmf_core.CVodeDense_swigregister(CVodeDense)
 # CVodeDense end
 
@@ -2655,6 +2679,19 @@ class CVodeKrylov(CVode3):
 _cmf_core.CVodeKrylov_swigregister(CVodeKrylov)
 # CVodeKrylov end
 
+class CVodeKLU(CVode3):
+    """Proxy of C++ cmf::math::CVodeKLU class."""
+
+    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __repr__ = _swig_repr
+
+    def __init__(self, *args, **kwargs):
+        """__init__(cmf::math::CVodeKLU self, StateVariableOwner states, real epsilon=1e-9) -> CVodeKLU"""
+        _cmf_core.CVodeKLU_swiginit(self, _cmf_core.new_CVodeKLU(*args, **kwargs))
+    __swig_destroy__ = _cmf_core.delete_CVodeKLU
+_cmf_core.CVodeKLU_swigregister(CVodeKLU)
+# CVodeKLU end
+
 
 def CVodeIntegrator(project, tolerance=1e-9):
     """
@@ -2674,7 +2711,6 @@ def CVodeIntegrator(project, tolerance=1e-9):
     else:
         warning('CVodeIntegrator is not available in CMF 2.0. Creating a CVodeKrylov solver instead')
         return CVodeKrylov(project, tolerance)
-
 
 
 class Adsorption(object):
@@ -3291,10 +3327,16 @@ class SoluteStorage(StateVariable):
         """
         return _cmf_core.SoluteStorage_set_conc(self, *args, **kwargs)
 
+
+    def get_water(self, *args, **kwargs):
+        """get_water(SoluteStorage self) -> WaterStorage"""
+        return _cmf_core.SoluteStorage_get_water(self, *args, **kwargs)
+
     __swig_destroy__ = _cmf_core.delete_SoluteStorage
 SoluteStorage.set_adsorption = new_instancemethod(_cmf_core.SoluteStorage_set_adsorption, None, SoluteStorage)
 SoluteStorage.conc = new_instancemethod(_cmf_core.SoluteStorage_conc, None, SoluteStorage)
 SoluteStorage.set_conc = new_instancemethod(_cmf_core.SoluteStorage_set_conc, None, SoluteStorage)
+SoluteStorage.get_water = new_instancemethod(_cmf_core.SoluteStorage_get_water, None, SoluteStorage)
 _cmf_core.SoluteStorage_swigregister(SoluteStorage)
 # SoluteStorage end
 

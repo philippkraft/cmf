@@ -533,7 +533,6 @@ int CVode3::Impl::sparse_jacobian(
 
 void cmf::math::CVodeKLU::set_solver()
 {
-	throw std::logic_error("KLU solver not implemented yet");
 	CVode3::Impl& i = *_implementation;
 	int retval = 0;
 	

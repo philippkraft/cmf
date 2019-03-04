@@ -59,7 +59,7 @@ void cmf::math::StateVariable::set_state(real newState) {
 
 cmf::math::sparse_structure::sparse_structure(const StateVariableList & states)
 {
-	size_t N = states.size();
+	N = states.size();
 	// Pointers of a csr sparse structure always start with 0
 	pointers.push_back(0);
 	// Test each state with each other. This is highly inefficient.

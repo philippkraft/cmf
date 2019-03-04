@@ -11,7 +11,7 @@ export SUNDIALS_DIR=$TOOLSDIR/sundials-lib
 
 function klu {
     # Get KLU
-    git clone https://github.com/PetterS/SuiteSparse $TOOLSDIR/suitesparse
+    git clone https://github.com/PetterS/SuiteSparse ~/suitesparse
 
     # Make KLU
 

@@ -3180,49 +3180,48 @@ SWIG_Python_NonDynamicSetAttr(PyObject *obj, PyObject *name, PyObject *value) {
 #define SWIGTYPE_p_const_iterator swig_types[168]
 #define SWIGTYPE_p_double swig_types[169]
 #define SWIGTYPE_p_f_r_cmf__upslope__Cell_r_cmf__upslope__Cell_ptrdiff_t__void swig_types[170]
-#define SWIGTYPE_p_int64_t swig_types[171]
-#define SWIGTYPE_p_iterator swig_types[172]
-#define SWIGTYPE_p_ptr swig_types[173]
-#define SWIGTYPE_p_std__shared_ptrT_SoilLayer_t swig_types[174]
-#define SWIGTYPE_p_std__shared_ptrT_cmf__atmosphere__ConstantRainSource_t swig_types[175]
-#define SWIGTYPE_p_std__shared_ptrT_cmf__atmosphere__IDWRainfall_t swig_types[176]
-#define SWIGTYPE_p_std__shared_ptrT_cmf__atmosphere__MeteoStation_t swig_types[177]
-#define SWIGTYPE_p_std__shared_ptrT_cmf__atmosphere__RainSource_t swig_types[178]
-#define SWIGTYPE_p_std__shared_ptrT_cmf__atmosphere__RainfallStationReference_t swig_types[179]
-#define SWIGTYPE_p_std__shared_ptrT_cmf__atmosphere__RainfallStation_t swig_types[180]
-#define SWIGTYPE_p_std__shared_ptrT_cmf__atmosphere__TimeseriesRainSource_t swig_types[181]
-#define SWIGTYPE_p_std__shared_ptrT_cmf__atmosphere__aerodynamic_resistance_t swig_types[182]
-#define SWIGTYPE_p_std__shared_ptrT_cmf__math__StateVariable_t swig_types[183]
-#define SWIGTYPE_p_std__shared_ptrT_cmf__math__integratable_t swig_types[184]
-#define SWIGTYPE_p_std__shared_ptrT_cmf__river__OpenWaterStorage_t swig_types[185]
-#define SWIGTYPE_p_std__shared_ptrT_cmf__river__Reach_t swig_types[186]
-#define SWIGTYPE_p_std__shared_ptrT_cmf__upslope__ET__canopy_evaporation_method_t swig_types[187]
-#define SWIGTYPE_p_std__shared_ptrT_cmf__upslope__ET__snow_evaporation_method_t swig_types[188]
-#define SWIGTYPE_p_std__shared_ptrT_cmf__upslope__ET__soil_evaporation_method_t swig_types[189]
-#define SWIGTYPE_p_std__shared_ptrT_cmf__upslope__ET__surface_water_evaporation_method_t swig_types[190]
-#define SWIGTYPE_p_std__shared_ptrT_cmf__upslope__ET__transpiration_method_t swig_types[191]
-#define SWIGTYPE_p_std__shared_ptrT_cmf__upslope__MacroPore_t swig_types[192]
-#define SWIGTYPE_p_std__shared_ptrT_cmf__upslope__SoilLayer_t swig_types[193]
-#define SWIGTYPE_p_std__shared_ptrT_cmf__upslope__SurfaceWater_t swig_types[194]
-#define SWIGTYPE_p_std__shared_ptrT_cmf__upslope__aquifer_t swig_types[195]
-#define SWIGTYPE_p_std__shared_ptrT_cmf__water__DirichletBoundary_t swig_types[196]
-#define SWIGTYPE_p_std__shared_ptrT_cmf__water__NeumannBoundary_t swig_types[197]
-#define SWIGTYPE_p_std__shared_ptrT_cmf__water__SoluteStorage_t swig_types[198]
-#define SWIGTYPE_p_std__shared_ptrT_cmf__water__SystemBridge_t swig_types[199]
-#define SWIGTYPE_p_std__shared_ptrT_cmf__water__WaterStorage_t swig_types[200]
-#define SWIGTYPE_p_std__shared_ptrT_cmf__water__flux_connection_t swig_types[201]
-#define SWIGTYPE_p_std__shared_ptrT_cmf__water__flux_integrator_t swig_types[202]
-#define SWIGTYPE_p_std__shared_ptrT_cmf__water__flux_node_t swig_types[203]
-#define SWIGTYPE_p_std__shared_ptrT_cmf__water__waterbalance_integrator_t swig_types[204]
-#define SWIGTYPE_p_std__shared_ptrT_std__shared_ptrT_cmf__atmosphere__ConstantRainSource_t_t swig_types[205]
-#define SWIGTYPE_p_std__shared_ptrT_std__shared_ptrT_cmf__atmosphere__RainfallStationReference_t_t swig_types[206]
-#define SWIGTYPE_p_std__string swig_types[207]
-#define SWIGTYPE_p_std__vectorT_int64_t_t swig_types[208]
-#define SWIGTYPE_p_std__vectorT_std__shared_ptrT_cmf__water__WaterStorage_t_t swig_types[209]
-#define SWIGTYPE_p_std__vectorT_std__shared_ptrT_cmf__water__flux_connection_t_t__const_iterator swig_types[210]
-#define SWIGTYPE_p_std__vectorT_std__shared_ptrT_cmf__water__flux_connection_t_t__iterator swig_types[211]
-static swig_type_info *swig_types[213];
-static swig_module_info swig_module = {swig_types, 212, 0, 0, 0, 0};
+#define SWIGTYPE_p_iterator swig_types[171]
+#define SWIGTYPE_p_ptr swig_types[172]
+#define SWIGTYPE_p_std__shared_ptrT_SoilLayer_t swig_types[173]
+#define SWIGTYPE_p_std__shared_ptrT_cmf__atmosphere__ConstantRainSource_t swig_types[174]
+#define SWIGTYPE_p_std__shared_ptrT_cmf__atmosphere__IDWRainfall_t swig_types[175]
+#define SWIGTYPE_p_std__shared_ptrT_cmf__atmosphere__MeteoStation_t swig_types[176]
+#define SWIGTYPE_p_std__shared_ptrT_cmf__atmosphere__RainSource_t swig_types[177]
+#define SWIGTYPE_p_std__shared_ptrT_cmf__atmosphere__RainfallStationReference_t swig_types[178]
+#define SWIGTYPE_p_std__shared_ptrT_cmf__atmosphere__RainfallStation_t swig_types[179]
+#define SWIGTYPE_p_std__shared_ptrT_cmf__atmosphere__TimeseriesRainSource_t swig_types[180]
+#define SWIGTYPE_p_std__shared_ptrT_cmf__atmosphere__aerodynamic_resistance_t swig_types[181]
+#define SWIGTYPE_p_std__shared_ptrT_cmf__math__StateVariable_t swig_types[182]
+#define SWIGTYPE_p_std__shared_ptrT_cmf__math__integratable_t swig_types[183]
+#define SWIGTYPE_p_std__shared_ptrT_cmf__river__OpenWaterStorage_t swig_types[184]
+#define SWIGTYPE_p_std__shared_ptrT_cmf__river__Reach_t swig_types[185]
+#define SWIGTYPE_p_std__shared_ptrT_cmf__upslope__ET__canopy_evaporation_method_t swig_types[186]
+#define SWIGTYPE_p_std__shared_ptrT_cmf__upslope__ET__snow_evaporation_method_t swig_types[187]
+#define SWIGTYPE_p_std__shared_ptrT_cmf__upslope__ET__soil_evaporation_method_t swig_types[188]
+#define SWIGTYPE_p_std__shared_ptrT_cmf__upslope__ET__surface_water_evaporation_method_t swig_types[189]
+#define SWIGTYPE_p_std__shared_ptrT_cmf__upslope__ET__transpiration_method_t swig_types[190]
+#define SWIGTYPE_p_std__shared_ptrT_cmf__upslope__MacroPore_t swig_types[191]
+#define SWIGTYPE_p_std__shared_ptrT_cmf__upslope__SoilLayer_t swig_types[192]
+#define SWIGTYPE_p_std__shared_ptrT_cmf__upslope__SurfaceWater_t swig_types[193]
+#define SWIGTYPE_p_std__shared_ptrT_cmf__upslope__aquifer_t swig_types[194]
+#define SWIGTYPE_p_std__shared_ptrT_cmf__water__DirichletBoundary_t swig_types[195]
+#define SWIGTYPE_p_std__shared_ptrT_cmf__water__NeumannBoundary_t swig_types[196]
+#define SWIGTYPE_p_std__shared_ptrT_cmf__water__SoluteStorage_t swig_types[197]
+#define SWIGTYPE_p_std__shared_ptrT_cmf__water__SystemBridge_t swig_types[198]
+#define SWIGTYPE_p_std__shared_ptrT_cmf__water__WaterStorage_t swig_types[199]
+#define SWIGTYPE_p_std__shared_ptrT_cmf__water__flux_connection_t swig_types[200]
+#define SWIGTYPE_p_std__shared_ptrT_cmf__water__flux_integrator_t swig_types[201]
+#define SWIGTYPE_p_std__shared_ptrT_cmf__water__flux_node_t swig_types[202]
+#define SWIGTYPE_p_std__shared_ptrT_cmf__water__waterbalance_integrator_t swig_types[203]
+#define SWIGTYPE_p_std__shared_ptrT_std__shared_ptrT_cmf__atmosphere__ConstantRainSource_t_t swig_types[204]
+#define SWIGTYPE_p_std__shared_ptrT_std__shared_ptrT_cmf__atmosphere__RainfallStationReference_t_t swig_types[205]
+#define SWIGTYPE_p_std__string swig_types[206]
+#define SWIGTYPE_p_std__vectorT_size_t_t swig_types[207]
+#define SWIGTYPE_p_std__vectorT_std__shared_ptrT_cmf__water__WaterStorage_t_t swig_types[208]
+#define SWIGTYPE_p_std__vectorT_std__shared_ptrT_cmf__water__flux_connection_t_t__const_iterator swig_types[209]
+#define SWIGTYPE_p_std__vectorT_std__shared_ptrT_cmf__water__flux_connection_t_t__iterator swig_types[210]
+static swig_type_info *swig_types[212];
+static swig_module_info swig_module = {swig_types, 211, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -16941,7 +16940,7 @@ SWIGINTERN PyObject *StateVariableList_swiginit(PyObject *SWIGUNUSEDPARM(self), 
 SWIGINTERN PyObject *_wrap_sparse_structure_columns_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   cmf::math::sparse_structure *arg1 = (cmf::math::sparse_structure *) 0 ;
-  std::vector< int64_t > arg2 ;
+  std::vector< size_t > arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   void *argp2 ;
@@ -16955,14 +16954,14 @@ SWIGINTERN PyObject *_wrap_sparse_structure_columns_set(PyObject *SWIGUNUSEDPARM
   }
   arg1 = reinterpret_cast< cmf::math::sparse_structure * >(argp1);
   {
-    res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_std__vectorT_int64_t_t,  0  | 0);
+    res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_std__vectorT_size_t_t,  0  | 0);
     if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "sparse_structure_columns_set" "', argument " "2"" of type '" "std::vector< int64_t >""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "sparse_structure_columns_set" "', argument " "2"" of type '" "std::vector< size_t >""'"); 
     }  
     if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "sparse_structure_columns_set" "', argument " "2"" of type '" "std::vector< int64_t >""'");
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "sparse_structure_columns_set" "', argument " "2"" of type '" "std::vector< size_t >""'");
     } else {
-      std::vector< int64_t > * temp = reinterpret_cast< std::vector< int64_t > * >(argp2);
+      std::vector< size_t > * temp = reinterpret_cast< std::vector< size_t > * >(argp2);
       arg2 = *temp;
       if (SWIG_IsNewObj(res2)) delete temp;
     }
@@ -16981,7 +16980,7 @@ SWIGINTERN PyObject *_wrap_sparse_structure_columns_get(PyObject *SWIGUNUSEDPARM
   void *argp1 = 0 ;
   int res1 = 0 ;
   PyObject *swig_obj[1] ;
-  std::vector< int64_t > result;
+  std::vector< size_t > result;
   
   if (!args) SWIG_fail;
   swig_obj[0] = args;
@@ -16991,7 +16990,7 @@ SWIGINTERN PyObject *_wrap_sparse_structure_columns_get(PyObject *SWIGUNUSEDPARM
   }
   arg1 = reinterpret_cast< cmf::math::sparse_structure * >(argp1);
   result =  ((arg1)->columns);
-  resultobj = SWIG_NewPointerObj((new std::vector< int64_t >(static_cast< const std::vector< int64_t >& >(result))), SWIGTYPE_p_std__vectorT_int64_t_t, SWIG_POINTER_OWN |  0 );
+  resultobj = SWIG_NewPointerObj((new std::vector< size_t >(static_cast< const std::vector< size_t >& >(result))), SWIGTYPE_p_std__vectorT_size_t_t, SWIG_POINTER_OWN |  0 );
   return resultobj;
 fail:
   return NULL;
@@ -17001,7 +17000,7 @@ fail:
 SWIGINTERN PyObject *_wrap_sparse_structure_pointers_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   cmf::math::sparse_structure *arg1 = (cmf::math::sparse_structure *) 0 ;
-  std::vector< int64_t > arg2 ;
+  std::vector< size_t > arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   void *argp2 ;
@@ -17015,14 +17014,14 @@ SWIGINTERN PyObject *_wrap_sparse_structure_pointers_set(PyObject *SWIGUNUSEDPAR
   }
   arg1 = reinterpret_cast< cmf::math::sparse_structure * >(argp1);
   {
-    res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_std__vectorT_int64_t_t,  0  | 0);
+    res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_std__vectorT_size_t_t,  0  | 0);
     if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "sparse_structure_pointers_set" "', argument " "2"" of type '" "std::vector< int64_t >""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "sparse_structure_pointers_set" "', argument " "2"" of type '" "std::vector< size_t >""'"); 
     }  
     if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "sparse_structure_pointers_set" "', argument " "2"" of type '" "std::vector< int64_t >""'");
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "sparse_structure_pointers_set" "', argument " "2"" of type '" "std::vector< size_t >""'");
     } else {
-      std::vector< int64_t > * temp = reinterpret_cast< std::vector< int64_t > * >(argp2);
+      std::vector< size_t > * temp = reinterpret_cast< std::vector< size_t > * >(argp2);
       arg2 = *temp;
       if (SWIG_IsNewObj(res2)) delete temp;
     }
@@ -17041,7 +17040,7 @@ SWIGINTERN PyObject *_wrap_sparse_structure_pointers_get(PyObject *SWIGUNUSEDPAR
   void *argp1 = 0 ;
   int res1 = 0 ;
   PyObject *swig_obj[1] ;
-  std::vector< int64_t > result;
+  std::vector< size_t > result;
   
   if (!args) SWIG_fail;
   swig_obj[0] = args;
@@ -17051,7 +17050,7 @@ SWIGINTERN PyObject *_wrap_sparse_structure_pointers_get(PyObject *SWIGUNUSEDPAR
   }
   arg1 = reinterpret_cast< cmf::math::sparse_structure * >(argp1);
   result =  ((arg1)->pointers);
-  resultobj = SWIG_NewPointerObj((new std::vector< int64_t >(static_cast< const std::vector< int64_t >& >(result))), SWIGTYPE_p_std__vectorT_int64_t_t, SWIG_POINTER_OWN |  0 );
+  resultobj = SWIG_NewPointerObj((new std::vector< size_t >(static_cast< const std::vector< size_t >& >(result))), SWIGTYPE_p_std__vectorT_size_t_t, SWIG_POINTER_OWN |  0 );
   return resultobj;
 fail:
   return NULL;
@@ -17099,11 +17098,11 @@ fail:
 SWIGINTERN PyObject *_wrap_sparse_structure_NNZ_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   cmf::math::sparse_structure *arg1 = (cmf::math::sparse_structure *) 0 ;
-  int64_t arg2 ;
+  size_t arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 ;
-  int res2 = 0 ;
+  size_t val2 ;
+  int ecode2 = 0 ;
   PyObject *swig_obj[2] ;
   
   if (!SWIG_Python_UnpackTuple(args,"sparse_structure_NNZ_set",2,2,swig_obj)) SWIG_fail;
@@ -17112,19 +17111,11 @@ SWIGINTERN PyObject *_wrap_sparse_structure_NNZ_set(PyObject *SWIGUNUSEDPARM(sel
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "sparse_structure_NNZ_set" "', argument " "1"" of type '" "cmf::math::sparse_structure *""'"); 
   }
   arg1 = reinterpret_cast< cmf::math::sparse_structure * >(argp1);
-  {
-    res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_int64_t,  0  | 0);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "sparse_structure_NNZ_set" "', argument " "2"" of type '" "int64_t""'"); 
-    }  
-    if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "sparse_structure_NNZ_set" "', argument " "2"" of type '" "int64_t""'");
-    } else {
-      int64_t * temp = reinterpret_cast< int64_t * >(argp2);
-      arg2 = *temp;
-      if (SWIG_IsNewObj(res2)) delete temp;
-    }
-  }
+  ecode2 = SWIG_AsVal_size_t(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "sparse_structure_NNZ_set" "', argument " "2"" of type '" "size_t""'");
+  } 
+  arg2 = static_cast< size_t >(val2);
   if (arg1) (arg1)->NNZ = arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -17139,7 +17130,7 @@ SWIGINTERN PyObject *_wrap_sparse_structure_NNZ_get(PyObject *SWIGUNUSEDPARM(sel
   void *argp1 = 0 ;
   int res1 = 0 ;
   PyObject *swig_obj[1] ;
-  int64_t result;
+  size_t result;
   
   if (!args) SWIG_fail;
   swig_obj[0] = args;
@@ -17149,7 +17140,7 @@ SWIGINTERN PyObject *_wrap_sparse_structure_NNZ_get(PyObject *SWIGUNUSEDPARM(sel
   }
   arg1 = reinterpret_cast< cmf::math::sparse_structure * >(argp1);
   result =  ((arg1)->NNZ);
-  resultobj = SWIG_NewPointerObj((new int64_t(static_cast< const int64_t& >(result))), SWIGTYPE_p_int64_t, SWIG_POINTER_OWN |  0 );
+  resultobj = SWIG_From_size_t(static_cast< size_t >(result));
   return resultobj;
 fail:
   return NULL;
@@ -17159,11 +17150,11 @@ fail:
 SWIGINTERN PyObject *_wrap_sparse_structure_NP_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   cmf::math::sparse_structure *arg1 = (cmf::math::sparse_structure *) 0 ;
-  int64_t arg2 ;
+  size_t arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 ;
-  int res2 = 0 ;
+  size_t val2 ;
+  int ecode2 = 0 ;
   PyObject *swig_obj[2] ;
   
   if (!SWIG_Python_UnpackTuple(args,"sparse_structure_NP_set",2,2,swig_obj)) SWIG_fail;
@@ -17172,19 +17163,11 @@ SWIGINTERN PyObject *_wrap_sparse_structure_NP_set(PyObject *SWIGUNUSEDPARM(self
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "sparse_structure_NP_set" "', argument " "1"" of type '" "cmf::math::sparse_structure *""'"); 
   }
   arg1 = reinterpret_cast< cmf::math::sparse_structure * >(argp1);
-  {
-    res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_int64_t,  0  | 0);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "sparse_structure_NP_set" "', argument " "2"" of type '" "int64_t""'"); 
-    }  
-    if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "sparse_structure_NP_set" "', argument " "2"" of type '" "int64_t""'");
-    } else {
-      int64_t * temp = reinterpret_cast< int64_t * >(argp2);
-      arg2 = *temp;
-      if (SWIG_IsNewObj(res2)) delete temp;
-    }
-  }
+  ecode2 = SWIG_AsVal_size_t(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "sparse_structure_NP_set" "', argument " "2"" of type '" "size_t""'");
+  } 
+  arg2 = static_cast< size_t >(val2);
   if (arg1) (arg1)->NP = arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -17199,7 +17182,7 @@ SWIGINTERN PyObject *_wrap_sparse_structure_NP_get(PyObject *SWIGUNUSEDPARM(self
   void *argp1 = 0 ;
   int res1 = 0 ;
   PyObject *swig_obj[1] ;
-  int64_t result;
+  size_t result;
   
   if (!args) SWIG_fail;
   swig_obj[0] = args;
@@ -17209,7 +17192,7 @@ SWIGINTERN PyObject *_wrap_sparse_structure_NP_get(PyObject *SWIGUNUSEDPARM(self
   }
   arg1 = reinterpret_cast< cmf::math::sparse_structure * >(argp1);
   result =  ((arg1)->NP);
-  resultobj = SWIG_NewPointerObj((new int64_t(static_cast< const int64_t& >(result))), SWIGTYPE_p_int64_t, SWIG_POINTER_OWN |  0 );
+  resultobj = SWIG_From_size_t(static_cast< size_t >(result));
   return resultobj;
 fail:
   return NULL;
@@ -17219,11 +17202,11 @@ fail:
 SWIGINTERN PyObject *_wrap_sparse_structure_N_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   cmf::math::sparse_structure *arg1 = (cmf::math::sparse_structure *) 0 ;
-  int64_t arg2 ;
+  size_t arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 ;
-  int res2 = 0 ;
+  size_t val2 ;
+  int ecode2 = 0 ;
   PyObject *swig_obj[2] ;
   
   if (!SWIG_Python_UnpackTuple(args,"sparse_structure_N_set",2,2,swig_obj)) SWIG_fail;
@@ -17232,19 +17215,11 @@ SWIGINTERN PyObject *_wrap_sparse_structure_N_set(PyObject *SWIGUNUSEDPARM(self)
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "sparse_structure_N_set" "', argument " "1"" of type '" "cmf::math::sparse_structure *""'"); 
   }
   arg1 = reinterpret_cast< cmf::math::sparse_structure * >(argp1);
-  {
-    res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_int64_t,  0  | 0);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "sparse_structure_N_set" "', argument " "2"" of type '" "int64_t""'"); 
-    }  
-    if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "sparse_structure_N_set" "', argument " "2"" of type '" "int64_t""'");
-    } else {
-      int64_t * temp = reinterpret_cast< int64_t * >(argp2);
-      arg2 = *temp;
-      if (SWIG_IsNewObj(res2)) delete temp;
-    }
-  }
+  ecode2 = SWIG_AsVal_size_t(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "sparse_structure_N_set" "', argument " "2"" of type '" "size_t""'");
+  } 
+  arg2 = static_cast< size_t >(val2);
   if (arg1) (arg1)->N = arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -17259,7 +17234,7 @@ SWIGINTERN PyObject *_wrap_sparse_structure_N_get(PyObject *SWIGUNUSEDPARM(self)
   void *argp1 = 0 ;
   int res1 = 0 ;
   PyObject *swig_obj[1] ;
-  int64_t result;
+  size_t result;
   
   if (!args) SWIG_fail;
   swig_obj[0] = args;
@@ -17269,7 +17244,7 @@ SWIGINTERN PyObject *_wrap_sparse_structure_N_get(PyObject *SWIGUNUSEDPARM(self)
   }
   arg1 = reinterpret_cast< cmf::math::sparse_structure * >(argp1);
   result =  ((arg1)->N);
-  resultobj = SWIG_NewPointerObj((new int64_t(static_cast< const int64_t& >(result))), SWIGTYPE_p_int64_t, SWIG_POINTER_OWN |  0 );
+  resultobj = SWIG_From_size_t(static_cast< size_t >(result));
   return resultobj;
 fail:
   return NULL;
@@ -77671,17 +77646,17 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"new_StateVariableList", (PyCFunction)_wrap_new_StateVariableList, METH_NOARGS, (char *)"new_StateVariableList() -> StateVariableList"},
 	 { (char *)"StateVariableList_swigregister", StateVariableList_swigregister, METH_VARARGS, NULL},
 	 { (char *)"StateVariableList_swiginit", StateVariableList_swiginit, METH_VARARGS, NULL},
-	 { (char *)"sparse_structure_columns_set", _wrap_sparse_structure_columns_set, METH_VARARGS, (char *)"sparse_structure_columns_set(sparse_structure self, std::vector< int64_t > columns)"},
-	 { (char *)"sparse_structure_columns_get", (PyCFunction)_wrap_sparse_structure_columns_get, METH_O, (char *)"sparse_structure_columns_get(sparse_structure self) -> std::vector< int64_t >"},
-	 { (char *)"sparse_structure_pointers_set", _wrap_sparse_structure_pointers_set, METH_VARARGS, (char *)"sparse_structure_pointers_set(sparse_structure self, std::vector< int64_t > pointers)"},
-	 { (char *)"sparse_structure_pointers_get", (PyCFunction)_wrap_sparse_structure_pointers_get, METH_O, (char *)"sparse_structure_pointers_get(sparse_structure self) -> std::vector< int64_t >"},
+	 { (char *)"sparse_structure_columns_set", _wrap_sparse_structure_columns_set, METH_VARARGS, (char *)"sparse_structure_columns_set(sparse_structure self, std::vector< size_t > columns)"},
+	 { (char *)"sparse_structure_columns_get", (PyCFunction)_wrap_sparse_structure_columns_get, METH_O, (char *)"sparse_structure_columns_get(sparse_structure self) -> std::vector< size_t >"},
+	 { (char *)"sparse_structure_pointers_set", _wrap_sparse_structure_pointers_set, METH_VARARGS, (char *)"sparse_structure_pointers_set(sparse_structure self, std::vector< size_t > pointers)"},
+	 { (char *)"sparse_structure_pointers_get", (PyCFunction)_wrap_sparse_structure_pointers_get, METH_O, (char *)"sparse_structure_pointers_get(sparse_structure self) -> std::vector< size_t >"},
 	 { (char *)"new_sparse_structure", (PyCFunction) _wrap_new_sparse_structure, METH_VARARGS | METH_KEYWORDS, (char *)"new_sparse_structure(StateVariableList states) -> sparse_structure"},
-	 { (char *)"sparse_structure_NNZ_set", _wrap_sparse_structure_NNZ_set, METH_VARARGS, (char *)"sparse_structure_NNZ_set(sparse_structure self, int64_t NNZ)"},
-	 { (char *)"sparse_structure_NNZ_get", (PyCFunction)_wrap_sparse_structure_NNZ_get, METH_O, (char *)"sparse_structure_NNZ_get(sparse_structure self) -> int64_t"},
-	 { (char *)"sparse_structure_NP_set", _wrap_sparse_structure_NP_set, METH_VARARGS, (char *)"sparse_structure_NP_set(sparse_structure self, int64_t NP)"},
-	 { (char *)"sparse_structure_NP_get", (PyCFunction)_wrap_sparse_structure_NP_get, METH_O, (char *)"sparse_structure_NP_get(sparse_structure self) -> int64_t"},
-	 { (char *)"sparse_structure_N_set", _wrap_sparse_structure_N_set, METH_VARARGS, (char *)"sparse_structure_N_set(sparse_structure self, int64_t N)"},
-	 { (char *)"sparse_structure_N_get", (PyCFunction)_wrap_sparse_structure_N_get, METH_O, (char *)"sparse_structure_N_get(sparse_structure self) -> int64_t"},
+	 { (char *)"sparse_structure_NNZ_set", _wrap_sparse_structure_NNZ_set, METH_VARARGS, (char *)"sparse_structure_NNZ_set(sparse_structure self, size_t NNZ)"},
+	 { (char *)"sparse_structure_NNZ_get", (PyCFunction)_wrap_sparse_structure_NNZ_get, METH_O, (char *)"sparse_structure_NNZ_get(sparse_structure self) -> size_t"},
+	 { (char *)"sparse_structure_NP_set", _wrap_sparse_structure_NP_set, METH_VARARGS, (char *)"sparse_structure_NP_set(sparse_structure self, size_t NP)"},
+	 { (char *)"sparse_structure_NP_get", (PyCFunction)_wrap_sparse_structure_NP_get, METH_O, (char *)"sparse_structure_NP_get(sparse_structure self) -> size_t"},
+	 { (char *)"sparse_structure_N_set", _wrap_sparse_structure_N_set, METH_VARARGS, (char *)"sparse_structure_N_set(sparse_structure self, size_t N)"},
+	 { (char *)"sparse_structure_N_get", (PyCFunction)_wrap_sparse_structure_N_get, METH_O, (char *)"sparse_structure_N_get(sparse_structure self) -> size_t"},
 	 { (char *)"delete_sparse_structure", (PyCFunction)_wrap_delete_sparse_structure, METH_O, (char *)"delete_sparse_structure(sparse_structure self)"},
 	 { (char *)"sparse_structure_swigregister", sparse_structure_swigregister, METH_VARARGS, NULL},
 	 { (char *)"sparse_structure_swiginit", sparse_structure_swiginit, METH_VARARGS, NULL},
@@ -84375,7 +84350,6 @@ static swig_type_info _swigt__p_cmf__water__waterbalance_integrator = {"_p_cmf__
 static swig_type_info _swigt__p_const_iterator = {"_p_const_iterator", "const_iterator *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_double = {"_p_double", "real *|double *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_f_r_cmf__upslope__Cell_r_cmf__upslope__Cell_ptrdiff_t__void = {"_p_f_r_cmf__upslope__Cell_r_cmf__upslope__Cell_ptrdiff_t__void", "cmf::upslope::connectorfunction|void (*)(cmf::upslope::Cell &,cmf::upslope::Cell &,ptrdiff_t)", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_int64_t = {"_p_int64_t", "int64_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_iterator = {"_p_iterator", "iterator *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_ptr = {"_p_ptr", "ptr *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__shared_ptrT_SoilLayer_t = {"_p_std__shared_ptrT_SoilLayer_t", "std::shared_ptr< SoilLayer > *|cmf::upslope::layer_ptr *", 0, 0, (void*)0, 0};
@@ -84412,7 +84386,7 @@ static swig_type_info _swigt__p_std__shared_ptrT_cmf__water__waterbalance_integr
 static swig_type_info _swigt__p_std__shared_ptrT_std__shared_ptrT_cmf__atmosphere__ConstantRainSource_t_t = {"_p_std__shared_ptrT_std__shared_ptrT_cmf__atmosphere__ConstantRainSource_t_t", "std::shared_ptr< std::shared_ptr< cmf::atmosphere::ConstantRainSource > > *|std::shared_ptr< cmf::atmosphere::ConstantRainSource::ptr > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__shared_ptrT_std__shared_ptrT_cmf__atmosphere__RainfallStationReference_t_t = {"_p_std__shared_ptrT_std__shared_ptrT_cmf__atmosphere__RainfallStationReference_t_t", "std::shared_ptr< std::shared_ptr< cmf::atmosphere::RainfallStationReference > > *|std::shared_ptr< cmf::atmosphere::RainfallStationReference::ptr > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__string = {"_p_std__string", "std::string *|cmf::bytestring *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_std__vectorT_int64_t_t = {"_p_std__vectorT_int64_t_t", "std::vector< int64_t > *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_std__vectorT_size_t_t = {"_p_std__vectorT_size_t_t", "std::vector< size_t > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__vectorT_std__shared_ptrT_cmf__water__WaterStorage_t_t = {"_p_std__vectorT_std__shared_ptrT_cmf__water__WaterStorage_t_t", "std::vector< std::shared_ptr< cmf::water::WaterStorage > > *|cmf::water::storage_vector *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__vectorT_std__shared_ptrT_cmf__water__flux_connection_t_t__const_iterator = {"_p_std__vectorT_std__shared_ptrT_cmf__water__flux_connection_t_t__const_iterator", "cmf::water::connection_list::const_iterator *|std::vector< std::shared_ptr< cmf::water::flux_connection > >::const_iterator *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__vectorT_std__shared_ptrT_cmf__water__flux_connection_t_t__iterator = {"_p_std__vectorT_std__shared_ptrT_cmf__water__flux_connection_t_t__iterator", "cmf::water::connection_list::iterator *|std::vector< std::shared_ptr< cmf::water::flux_connection > >::iterator *", 0, 0, (void*)0, 0};
@@ -84589,7 +84563,6 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_const_iterator,
   &_swigt__p_double,
   &_swigt__p_f_r_cmf__upslope__Cell_r_cmf__upslope__Cell_ptrdiff_t__void,
-  &_swigt__p_int64_t,
   &_swigt__p_iterator,
   &_swigt__p_ptr,
   &_swigt__p_std__shared_ptrT_SoilLayer_t,
@@ -84626,7 +84599,7 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_std__shared_ptrT_std__shared_ptrT_cmf__atmosphere__ConstantRainSource_t_t,
   &_swigt__p_std__shared_ptrT_std__shared_ptrT_cmf__atmosphere__RainfallStationReference_t_t,
   &_swigt__p_std__string,
-  &_swigt__p_std__vectorT_int64_t_t,
+  &_swigt__p_std__vectorT_size_t_t,
   &_swigt__p_std__vectorT_std__shared_ptrT_cmf__water__WaterStorage_t_t,
   &_swigt__p_std__vectorT_std__shared_ptrT_cmf__water__flux_connection_t_t__const_iterator,
   &_swigt__p_std__vectorT_std__shared_ptrT_cmf__water__flux_connection_t_t__iterator,
@@ -84803,7 +84776,6 @@ static swig_cast_info _swigc__p_cmf__water__waterbalance_integrator[] = {  {&_sw
 static swig_cast_info _swigc__p_const_iterator[] = {  {&_swigt__p_const_iterator, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_double[] = {  {&_swigt__p_double, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_f_r_cmf__upslope__Cell_r_cmf__upslope__Cell_ptrdiff_t__void[] = {  {&_swigt__p_f_r_cmf__upslope__Cell_r_cmf__upslope__Cell_ptrdiff_t__void, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_int64_t[] = {  {&_swigt__p_int64_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_iterator[] = {  {&_swigt__p_iterator, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_ptr[] = {  {&_swigt__p_ptr, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__shared_ptrT_SoilLayer_t[] = {  {&_swigt__p_std__shared_ptrT_SoilLayer_t, 0, 0, 0},{0, 0, 0, 0}};
@@ -84840,7 +84812,7 @@ static swig_cast_info _swigc__p_std__shared_ptrT_cmf__water__waterbalance_integr
 static swig_cast_info _swigc__p_std__shared_ptrT_std__shared_ptrT_cmf__atmosphere__ConstantRainSource_t_t[] = {  {&_swigt__p_std__shared_ptrT_std__shared_ptrT_cmf__atmosphere__ConstantRainSource_t_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__shared_ptrT_std__shared_ptrT_cmf__atmosphere__RainfallStationReference_t_t[] = {  {&_swigt__p_std__shared_ptrT_std__shared_ptrT_cmf__atmosphere__RainfallStationReference_t_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__string[] = {  {&_swigt__p_std__string, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_std__vectorT_int64_t_t[] = {  {&_swigt__p_std__vectorT_int64_t_t, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_std__vectorT_size_t_t[] = {  {&_swigt__p_std__vectorT_size_t_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__vectorT_std__shared_ptrT_cmf__water__WaterStorage_t_t[] = {  {&_swigt__p_std__vectorT_std__shared_ptrT_cmf__water__WaterStorage_t_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__vectorT_std__shared_ptrT_cmf__water__flux_connection_t_t__const_iterator[] = {  {&_swigt__p_std__vectorT_std__shared_ptrT_cmf__water__flux_connection_t_t__const_iterator, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__vectorT_std__shared_ptrT_cmf__water__flux_connection_t_t__iterator[] = {  {&_swigt__p_std__vectorT_std__shared_ptrT_cmf__water__flux_connection_t_t__iterator, 0, 0, 0},{0, 0, 0, 0}};
@@ -85017,7 +84989,6 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_const_iterator,
   _swigc__p_double,
   _swigc__p_f_r_cmf__upslope__Cell_r_cmf__upslope__Cell_ptrdiff_t__void,
-  _swigc__p_int64_t,
   _swigc__p_iterator,
   _swigc__p_ptr,
   _swigc__p_std__shared_ptrT_SoilLayer_t,
@@ -85054,7 +85025,7 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_std__shared_ptrT_std__shared_ptrT_cmf__atmosphere__ConstantRainSource_t_t,
   _swigc__p_std__shared_ptrT_std__shared_ptrT_cmf__atmosphere__RainfallStationReference_t_t,
   _swigc__p_std__string,
-  _swigc__p_std__vectorT_int64_t_t,
+  _swigc__p_std__vectorT_size_t_t,
   _swigc__p_std__vectorT_std__shared_ptrT_cmf__water__WaterStorage_t_t,
   _swigc__p_std__vectorT_std__shared_ptrT_cmf__water__flux_connection_t_t__const_iterator,
   _swigc__p_std__vectorT_std__shared_ptrT_cmf__water__flux_connection_t_t__iterator,

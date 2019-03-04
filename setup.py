@@ -198,7 +198,15 @@ def make_cmf_core():
                           'sundials_sunlinsolpcg', 'sundials_sunlinsolspbcgs', 'sundials_sunlinsolspfgmr',
                           'sundials_sunlinsolspgmr', 'sundials_sunlinsolsptfqmr',
                           'sundials_sunmatrixband', 'sundials_sunmatrixdense', 'sundials_sunmatrixsparse'
-                          ])
+                          ]),
+                          ('lib/lib/suitesparse',
+                           ['libamd', 'libbtf', 'libcamd', 'libccolamd', 
+                            'libcholmod', 'libcolamd', 
+                            'libcxsparse', 'libklu', 'libldl', 
+                            'libspqr', 'libumfpack', 'metis', 
+                            'suitesparseconfig'
+                           ]
+                          ),
                         ]
     library_dirs = []
     libraries = []

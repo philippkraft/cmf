@@ -187,11 +187,11 @@ namespace cmf {
 		};
 
 		struct sparse_structure {
-			std::vector<int64_t> columns;
-			std::vector<int64_t> pointers;
+			std::vector<size_t> columns;
+			std::vector<size_t> pointers;
 			/// @brief Creates the sparse row compressed structure from states variable list			
 			sparse_structure(const StateVariableList& states);
-			int64_t NNZ, NP, N;
+			size_t NNZ, NP, N;
 		};
 
 			
