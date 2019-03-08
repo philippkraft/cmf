@@ -447,6 +447,14 @@ double cmf::math::timeseries::max() const
 
 }
 
+cmf::math::num_array cmf::math::timeseries::as_array() const
+{
+	double * start = &(this->m_data->values[0]);
+	double * end = start + this->size();
+
+	return cmf::math::num_array(start, end);
+}
+
 cmf::math::timeseries cmf::math::timeseries::copy() const
 {
 	timeseries res;

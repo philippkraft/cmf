@@ -1,87 +1,42 @@
-@page tutorial
+@page tutorial Tutorial
 
-# Tutorial
+@warning 
+    **Automated reformatting**: 
+    The tutorials have been ported from one markup language to another and
+    errors might have happened. If you find some code that is not working
+    or if you find places that look weird, please raise an 
+    [issue on GitHub](https://github.com/philippkraft/cmf/issues) - even if 
+    __you__ know how to deal with that problem.
 
+## Read about cmf applications
+@ref publicationList
 
 ## Getting started
-  - @subpage CmfTutNeedToKnow "What you need to know, before you start"
-  - @ref CmfInstall "Installation"
-  - @subpage InstallCheck "Check if cmf is correctly installed"
-  - @subpage CmfTutProject "Creating projects"
 
-### A first simple model
+@subpage gettingstarted
 
-  - @subpage CmfTutFirstModel "Let it flow... the first simple model"
-  - @subpage CmfTutBoundary "Boundary conditions"
-  - @subpage CmfTutFluxes "Query fluxes and states"
-  - @subpage CmfTutSolver "Choosing a solver for the ODE system"
+## Interact with the atmosphere
 
-### Spatial context
-
-  - @subpage CmfTutUnits "Units in cmf"
-  - @subpage CmfTutSpaceTime "Time and space in cmf"
-  - @subpage CmfTutCell "cells and reaches"
-
-
-## Interaction with the atmosphere
-
-### Distribution of rainfall and other meteorological data
-
-  - @subpage CmfTutTestData "Test data"
-  - @subpage CmfTutMeteostation "Using stations"
-
-### Connecting cells with the atmosphere 
-
-  - @subpage CmfTutET "Evapotranspiration"
-  - @subpage CmfTutIntercept "Interception"
-  - @subpage CmfTutSnow "Snow"
+@subpage atmosphere
 
 ## Conceptual Models
 
-### Conceptual Connections
+@subpage conceptual
 
-  - @subpage CmfTutKinematicWave "Kinematic waves" as swiss army knife 
-    for conceptual model building
-  - @subpage simple_infiltration "Infiltration"
-  - @subpage CmfTutTechnical "Technical Flux"
-  - @subpage CmfTutWaterbalance "Waterbalance Connection"
-  
-### Lumped Model
-
-  - @subpage cmf_lumped_without_spotpy "Lumped Model without Spotpy"
-  - @subpage cmf_lumped_simple "Lumped Model with Spotpy"
-
-### Semi-distributed Model
-
-  - @subpage semi_distributed "Semi-distributed Model"
-
+ 
 ## Physical Models
 
-### Introducing hydraulic head in cmf
+@subpage physical
 
-  - @subpage CmfTutRetentioncurve "Hydraulic head in the subsurface"
-  - @subpage CmfTutVolumeHeight "Hydraulic head in surface water"
-  - @subpage CmfTutBoundary2 "Hydraulic head based boundary conditions"
+## Tutorials under construction
 
-### Soil column (1D)
+The tutorials listed here are not ready to use. They may not work, need revisions
+or use deprecated or experimental cmf methods
 
-  - @subpage CmfTut1d "Simple 1D Model"
-  - @subpage CmfTutSoluteTransport1D "Solute transport"
+### Documenting the model
 
-### Hillslope (2D)
-
-  - @subpage CmfTutDarcianLateralFlow "Darcian flow connections"
-  - @subpage CmfTutSurfaceRunoff "Surface runoff"
-  - @subpage CmfTut2d "Simple hillslope model"
-
-### Channeled flow
-
-  - @subpage CmfTutChannel "Simple channel flow model"
-
-### 3D Model
-
-  - @subpage CmfTut3d "3D Model" (this tutorial is a
-    [stub](WikiPedia:Wikipedia:stub))
+ - @subpage fluxogram_and_get_fluxes "Fluxogram"
+ - Using `spotpy` for manual and automatic calibration 
 
 
-@author florianjehn, version: 58 Fri Jan 12 14:02:40 2018
+

@@ -25,10 +25,12 @@
 	#include "reach/ReachType.h"
 	#include "reach/OpenWaterStorage.h"
 	#include "reach/Reach.h"
+	#include "reach/cross_section_reach.h"
 %}
 
 // Get river model classes
 %include "reach/ReachType.h"
+%include "reach/cross_section_reach.h"
 
 %attribute(cmf::river::OpenWaterStorage, real,depth,get_depth,set_depth);
 

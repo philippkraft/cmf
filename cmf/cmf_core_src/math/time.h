@@ -117,9 +117,7 @@ namespace cmf {
 		{
 		private:
 			long long m_time_in_ms;
-#ifndef SWIG
-			friend Time timespan(long long);
-#endif
+
 		public:
 			static const long long ms_per_day=86400000;
 			/// @name Constructors
@@ -130,14 +128,19 @@ namespace cmf {
 			/// Conversion constructor
 			Time(Date date);
 			/// Copy constructor
-			Time(const Time& t):m_time_in_ms(t.AsMilliseconds()) {}
+			Time(const Time& t)
+				:m_time_in_ms(t.AsMilliseconds()) 
+			{}
 			/// Standard constructor
-			Time():m_time_in_ms(0) {}
+			Time()
+				:m_time_in_ms(0) 
+			{}
+			explicit Time(long long milliseconds)
+				: m_time_in_ms(milliseconds)
+			{}
 			//@}
 #ifndef SWIG
-			explicit Time(long long ms):m_time_in_ms(ms) {}
 			Time& operator=(const Time& right);
-			
 			operator bool() const {
 				return m_time_in_ms!=0;
 			}

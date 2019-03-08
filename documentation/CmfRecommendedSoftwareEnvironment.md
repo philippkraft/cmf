@@ -1,6 +1,4 @@
-@page CmfRecommendedSoftwareEnvironment
-
-# Recommended Software Environment
+@page cmfRecommendedSoftwareEnvironment Recommended Software Environment
 
 There are as many Python editors and interactive systems as hydrological
 models. Since cmf is nothing more than an extension to Python, you can
@@ -57,4 +55,4 @@ If you are familiar Linux, I'm sure you have already your favourite
 light editor with syntax highlighting, otherwise use what comes with
 your distribution.
 
-@author philipp, version: 6 Mon Oct 17 15:56:22 2016
+

@@ -19,15 +19,11 @@ var namespacecmf =
     ] ],
     [ "maps", null, [
       [ "Map", "classcmf_1_1maps_1_1_map.html", "classcmf_1_1maps_1_1_map" ],
-      [ "nearest_neighbor_map", "classcmf_1_1maps_1_1nearest__neighbor__map.html", "classcmf_1_1maps_1_1nearest__neighbor__map" ],
-      [ "polygon_map", "classcmf_1_1maps_1_1polygon__map.html", null ],
-      [ "raster_map", "classcmf_1_1maps_1_1raster__map.html", "classcmf_1_1maps_1_1raster__map" ]
+      [ "NearestNeighborMap", "classcmf_1_1maps_1_1_nearest_neighbor_map.html", "classcmf_1_1maps_1_1_nearest_neighbor_map" ],
+      [ "PolygonMap", "classcmf_1_1maps_1_1_polygon_map.html", null ]
     ] ],
     [ "math", "namespacecmf_1_1math.html", "namespacecmf_1_1math" ],
     [ "river", "namespacecmf_1_1river.html", "namespacecmf_1_1river" ],
-    [ "soil", null, [
-      [ "layer", "classcmf_1_1soil_1_1layer.html", "classcmf_1_1soil_1_1layer" ]
-    ] ],
     [ "stopwatch", null, [
       [ "StopWatch", "classcmf_1_1stopwatch_1_1_stop_watch.html", null ]
     ] ],

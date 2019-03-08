@@ -433,9 +433,11 @@
     <ClInclude Include="..\cmf\cmf_core_src\project.h" />
     <ClInclude Include="..\cmf\cmf_core_src\reach\reach.h" />
     <ClInclude Include="..\cmf\cmf_core_src\reach\ReachType.h" />
+    <ClInclude Include="..\cmf\cmf_core_src\reach\cross_section_reach.h"/>
     <ClInclude Include="..\cmf\cmf_core_src\math\real.h" />
     <ClInclude Include="..\cmf\cmf_core_src\upslope\soil\RetentionCurve.h" />
     <ClInclude Include="..\cmf\cmf_core_src\math\integrators\RKFIntegrator.h" />
+    <ClInclude Include="..\cmf\cmf_core_src\math\root_finding.h" />
     <ClInclude Include="..\cmf\cmf_core_src\upslope\vegetation\ShuttleworthWallace.h" />
     <ClInclude Include="..\cmf\cmf_core_src\water\simple_connections.h" />
     <ClInclude Include="..\cmf\cmf_core_src\upslope\SoilLayer.h" />
@@ -490,10 +492,12 @@
     <ClCompile Include="..\cmf\cmf_core_src\project.cpp" />
     <ClCompile Include="..\cmf\cmf_core_src\reach\reach.cpp" />
     <ClCompile Include="..\cmf\cmf_core_src\reach\ReachType.cpp" />
+    <ClCompile Include="..\cmf\cmf_core_src\reach\cross_section_reach.cpp" />
     <ClCompile Include="..\cmf\cmf_core_src\math\real.cpp" />
     <ClCompile Include="..\cmf\cmf_core_src\math\time.cpp" />
     <ClCompile Include="..\cmf\cmf_core_src\upslope\soil\RetentionCurve.cpp" />
     <ClCompile Include="..\cmf\cmf_core_src\math\integrators\RKFIntegrator.cpp" />
+    <ClCompile Include="..\cmf\cmf_core_src\math\root_finding.cpp" />
     <ClCompile Include="..\cmf\cmf_core_src\upslope\vegetation\ShuttleworthWallace.cpp" />
     <ClCompile Include="..\cmf\cmf_core_src\water\simple_connections.cpp" />
     <ClCompile Include="..\cmf\cmf_core_src\upslope\SoilLayer.cpp" />

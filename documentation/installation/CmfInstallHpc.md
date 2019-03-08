@@ -1,6 +1,6 @@
-@page CmfInstallHpc
+@page cmfInstallHpc HPC - installation
 
-[back...](@ref CmfInstall)
+[back...](@ref cmfInstall)
 
 # Install on a HPC
 
@@ -189,4 +189,4 @@ Now you can install spotpy
     #!sh
     pip install spotpy --user
 
-@author konrad, version: 11 Thu Aug 17 10:30:22 2017
+

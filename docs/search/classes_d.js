@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['nearest_5fneighbor_5fmap',['nearest_neighbor_map',['../classcmf_1_1maps_1_1nearest__neighbor__map.html',1,'cmf::maps']]],
+  ['nearestneighbormap',['NearestNeighborMap',['../classcmf_1_1maps_1_1_nearest_neighbor_map.html',1,'cmf::maps']]],
   ['neighbor_5fiterator',['neighbor_iterator',['../classcmf_1_1upslope_1_1neighbor__iterator.html',1,'cmf::upslope']]],
   ['neumannboundary',['NeumannBoundary',['../classcmf_1_1water_1_1_neumann_boundary.html',1,'cmf::water']]],
   ['neumannboundary_5flist',['NeumannBoundary_list',['../classcmf_1_1water_1_1_neumann_boundary__list.html',1,'cmf::water']]],

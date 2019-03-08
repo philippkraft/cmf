@@ -1,5 +1,0 @@
-<map id="CVodeDense" name="CVodeDense">
-<area shape="rect" id="node2" href="$classcmf_1_1math_1_1_c_vode3.html" title="Abstract base class for different modes of the CVode solver. " alt="" coords="40,155,108,181"/>
-<area shape="rect" id="node3" href="$classcmf_1_1math_1_1_integrator.html" title="Base class for any kind of integrator. " alt="" coords="36,80,112,107"/>
-<area shape="rect" id="node4" href="$classcmf_1_1math_1_1_state_variable_owner.html" title="An abstract class, that owns one or more state variables, that can add them to a vector of state vari..." alt="" coords="5,5,143,32"/>
-</map>

@@ -1,6 +1,7 @@
 var namespacecmf_1_1river =
 [
     [ "Channel", "classcmf_1_1river_1_1_channel.html", "classcmf_1_1river_1_1_channel" ],
+    [ "CrossSectionReach", "classcmf_1_1river_1_1_cross_section_reach.html", "classcmf_1_1river_1_1_cross_section_reach" ],
     [ "IChannel", "classcmf_1_1river_1_1_i_channel.html", "classcmf_1_1river_1_1_i_channel" ],
     [ "IVolumeHeightFunction", "classcmf_1_1river_1_1_i_volume_height_function.html", "classcmf_1_1river_1_1_i_volume_height_function" ],
     [ "Manning", "classcmf_1_1river_1_1_manning.html", "classcmf_1_1river_1_1_manning" ],

@@ -11,6 +11,7 @@
 #include <boost/pointer_cast.hpp>
 #include <boost/weak_ptr.hpp>
 #include <boost/enable_shared_from_this.hpp>
+#include <sstream>
 
 namespace std
 {
@@ -21,6 +22,12 @@ namespace std
 	using boost::static_pointer_cast;
 	inline bool isfinite(double v) {
 		return v == v;
+	}
+	template <typename T>
+	std::string to_string(T val) {
+		std::ostringstream out;
+		out << val;
+		return out.str();
 	}
 #define unique_ptr auto_ptr
 }

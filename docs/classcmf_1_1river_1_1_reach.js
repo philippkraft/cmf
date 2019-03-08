@@ -37,7 +37,7 @@ var classcmf_1_1river_1_1_reach =
     [ "set_potential", "classcmf_1_1river_1_1_reach.html#a0f6a1659d1942fbb2d1df4ca933a9d63", null ],
     [ "set_state_variable_content", "classcmf_1_1river_1_1_reach.html#af4e317b28d48091741e40af5e9da79a1", null ],
     [ "set_volume", "classcmf_1_1river_1_1_reach.html#a31b0a05543af754adf863c0bd7934a3e", null ],
-    [ "Solute", "classcmf_1_1river_1_1_reach.html#ad2765ba98c646811acb72baaa08b52f9", null ],
+    [ "Solute", "classcmf_1_1river_1_1_reach.html#ac7af103f4eabcabd46289fc96329e9bb", null ],
     [ "StateIsChanged", "classcmf_1_1river_1_1_reach.html#a2cf1e9d2df8900cf74cbc0773726ca91", null ],
     [ "upstream_count", "classcmf_1_1river_1_1_reach.html#a8d8863134f8a28ebe15244df8a98b00b", null ],
     [ "waterbalance", "classcmf_1_1river_1_1_reach.html#a2b14436c9dfb7b52bad2784c81a31eab", null ],

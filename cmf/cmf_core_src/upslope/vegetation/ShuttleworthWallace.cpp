@@ -755,11 +755,15 @@ void SNOVAP (double TSNOW, double TA, double EA, double UA, double ZA, double HE
 	///  fix for PSNVP overestimate
 	PSNVP = KSNVP * PSNVP;
 }
+
 cmf::upslope::ET::ShuttleworthWallace::ShuttleworthWallace( cmf::upslope::Cell& _cell, bool _allow_dew) 
-:	PTR(0.0), ATR_sum(0.0), ATR(), GER(0.0),PIR(0.0),GIR(0.0), PSNVP(0.0), ASNVP(0.0), cell(_cell),KSNVP(1.0),AIR(0.0),
+:	PTR(0.0), ATR_sum(0.0), ATR(), GER(0.0),PIR(0.0), PSNVP(0.0), ASNVP(0.0), cell(_cell),KSNVP(1.0),AIR(0.0),
 	RAA(0.0),RAC(0.0),RAS(0.0),RSS(0.0),RSC(0.0), refresh_counter(0), allow_dew(_allow_dew)
 {
-	KSNVP = piecewise_linear(cell.vegetation.Height,1,5,1.0,0.3);
+}
+
+cmf::upslope::ET::ShuttleworthWallace::~ShuttleworthWallace() {
+
 }
 
 void cmf::upslope::ET::ShuttleworthWallace::refresh( cmf::math::Time t )
@@ -832,6 +836,7 @@ void cmf::upslope::ET::ShuttleworthWallace::refresh( cmf::math::Time t )
 	double UA = UW * WNDADJ(ZA,DISP,Z0,5000.,10.,0.005);
 
 	if (snow>0.01) {
+		KSNVP = piecewise_linear(cell.vegetation.Height, 1, 5, 1.0, 0.3);
 		SNOVAP(w.Tground,w.T,w.e_a,UA,ZA,h,Z0,DISP,Z0C,DISPC,Z0GS,v.LeafWidth,RHOTP,NN,LAI,SAI,KSNVP,PSNVP);
 		if (!allow_dew) {
 			PSNVP = maximum(PSNVP,0.0);
@@ -842,34 +847,49 @@ void cmf::upslope::ET::ShuttleworthWallace::refresh( cmf::math::Time t )
 	double albedo = cell.snow_coverage() * 0.9 + (1-cell.snow_coverage()) * v.albedo;
 	double RN = w.Rn(albedo) / WTOMJ;
 	double RNground = RN * exp(-v.CanopyPARExtinction * (LAI+SAI));
-	RSS = FRSS(RSSa ,RSSb, RSSa_pot, cell.get_layer(0)->get_matrix_potential());
+
+	// Get atmospheric resitances RAA, RAC, RAS
 	SWGRA(UA,ZA,h,Z0,DISP,Z0C,DISPC,Z0GS,v.LeafWidth,RHOTP,NN,LAI,SAI,RAA,RAC,RAS);
-	if (w.Rs>0) {
+
+	// Get canopy surface resistance
+	if (w.Rs>0) { // by day
 		SRSC(w.Rs / WTOMJ, w.T, w.e_s-w.e_a, LAI, SAI, GLMIN, GLMAX,
 			R5,CVPD,RM,v.CanopyPARExtinction,
 			T_f[0],T_f[1],T_f[2],T_f[3],
 			RSC);
-	} else {
+	} else { //by night
 		RSC = 1 / (GLMIN * LAI);
 	}
+
+	// Get soil surface resitance neglecting surface water
+	RSS = FRSS(RSSa, RSSb, RSSa_pot, cell.get_layer(0)->get_matrix_potential());
+	// Lower RSS for if surfacewater present (zero for complete surfacewater)
+	RSS *= 1 - cell.surface_water_coverage();
+
+	// Get saturated vapor pressure factor
 	double DELTA,ES;
 	ESAT(w.T,ES,DELTA);
 
+	// Calculate potential transpiration for dry leave case
 	SWPE(RN,RNground,w.e_s-w.e_a,RAA,RAC,RAS,RSC,RSS,DELTA,PTR,GER);
-	// Shuttleworth-Wallace potential interception and ground evap. rates
-	// RSC = 0, RSS not changed
-	SWPE(RN,RNground,w.e_s-w.e_a,RAA,RAC,RAS,0,RSS,DELTA,PIR,GIR);
+	
+	// Calculate potential transpiration for wet leave case
+	SWPE(RN,RNground,w.e_s-w.e_a,RAA,RAC,RAS,0,RSS,DELTA,PIR,GER);
 
-	double VOL_IN_CANOPY = cell.get_canopy() ? cell.m3_to_mm(cell.get_canopy()->get_volume()): 0.0;
-	double MAX_VOL_IN_CANOPY = LAI * cell.vegetation.CanopyCapacityPerLAI;
-	AIR =  piecewise_linear(VOL_IN_CANOPY,0,MAX_VOL_IN_CANOPY,0,PIR);
-	PTR -= AIR;
+	// Calculate actual interception rate from wet leave case and canopy wetness
+	double wet_canopy_fraction = cell.leave_wetness();
+	AIR =  wet_canopy_fraction * PIR;
+	// Already for leave evaporation used energy cannot be used for transpiration
+	PTR *= 1 - wet_canopy_fraction;
+	// If energy for transpiration is left (dry or partial dry leaves)
 	if (PTR>0.001)	{
+		// Calculate actual transpiration
 		TBYLAYER(1,PTR,DISPC,ALPHA,KK,RROOTI,RXYLEM,PSITI,lc, RHOWG * pF_to_waterhead(4.2),1,ATR_sum,ATR);
 		if (ATR_sum < PTR)
+			// Update ground evaporation
 			SWGE(RN,RNground,w.e_s-w.e_a,RAA,RAS,RSS,DELTA,ATR_sum + AIR,GER);
 
-	} else {
+	} else { // wet leaves no energy for transpiration
 		PTR = 0.0;
 		ATR = 0.0;
 		ATR_sum=0.0;
@@ -880,38 +900,53 @@ void cmf::upslope::ET::ShuttleworthWallace::refresh( cmf::math::Time t )
 		PTR = maximum(PTR,0.0);
 		GER = maximum(GER,0.0);
 		PIR = maximum(PIR,0.0);
-		GIR = maximum(GIR,0.0);
 	}
 
 }
 
-cmf::upslope::ET::ShuttleworthWallace* cmf::upslope::ET::ShuttleworthWallace::use_for_cell( cmf::upslope::Cell& cell )
+cmf::upslope::ET::ShuttleworthWallace::ptr cmf::upslope::ET::ShuttleworthWallace::use_for_cell( cmf::upslope::Cell& cell )
 {
 	// Create a shared ptr of a Shuttlewroth Wallace semantic
 	std::shared_ptr<ShuttleworthWallace> sw(new ShuttleworthWallace(cell));
+
 	// Create a connection between cell.transpiration and each soil layer
 	for(layer_list::const_iterator it = cell.get_layers().begin(); it != cell.get_layers().end(); ++it)	{
-		new transpiration(*it,cell.get_transpiration(),sw,"Shuttleworth - Wallace");
+		sw->_connections.push_back(
+			new SW_transpiration(*it, cell.get_transpiration(),sw)
+		);
 	}
 	// Soil evaporation from first layer
-	new soil_evaporation(cell.get_layer(0),cell.get_evaporation(),sw,"Shuttleworth - Wallace");
+	sw->_connections.push_back(
+		new SW_evap_from_layer(cell.get_layer(0), cell.get_evaporation(), sw)
+	);
 	// If a canopy storage exists, create a connection between canopy an evaporation (interception)
-	if (cell.get_canopy())
-		new canopy_evaporation(cell.get_canopy(),cell.get_evaporation(),sw,"Shuttleworth - Wallace");
+	if (cell.get_canopy()) {
+		sw->_connections.push_back(
+			new SW_evap_from_canopy(cell.get_canopy(), cell.get_evaporation(), sw)
+		);
+	}
 	// If a snow storage exists create a connection between snow and evaporation (snow sublimation)
-	if (cell.get_snow())
-		new snow_evaporation(cell.get_snow(),cell.get_evaporation(),sw,"Shuttleworth - Wallace");
+	if (cell.get_snow()) {
+		sw->_connections.push_back(
+			new SW_evap_from_snow(cell.get_snow(), cell.get_evaporation(), sw)
+		);
+	}
+
 	// if a surface water storage exist, create a connection between it and evaporation (open water transpiration)
 	if (cell.get_surfacewater()->is_storage()) {
-		new surface_water_evaporation(cmf::river::OpenWaterStorage::cast(cell.get_surfacewater()),cell.get_evaporation(),sw,"Shuttleworth - Wallace");
+		sw->_connections.push_back(
+			new SW_evap_from_surfacewater(
+				cmf::river::OpenWaterStorage::cast(cell.get_surfacewater()), cell.get_evaporation(), sw)
+		);
 	}
+
 	sw->ATR.resize(cell.layer_count());
 	sw->ATR = 0.0;
 	cell.set_aerodynamic_resistance(sw);
-	return sw.get();
+	return sw;
 }
 
-double cmf::upslope::ET::ShuttleworthWallace::evap_from_openwater( cmf::river::OpenWaterStorage::ptr ows,cmf::math::Time t )
+double cmf::upslope::ET::ShuttleworthWallace::evap_from_surfacewater( cmf::river::OpenWaterStorage::ptr ows,cmf::math::Time t )
 {
 	// If open water is empty return zero
 	if (ows->RecalcFluxes(t)) refresh(t);
@@ -921,7 +956,7 @@ double cmf::upslope::ET::ShuttleworthWallace::evap_from_openwater( cmf::river::O
 		res += (1-cmf::upslope::connections::snowfraction(w.T)) * GER * 1e-3 * cell.get_area();
 	} 
 	// Get evaporation from open water, if open water is not empty
-	res += GIR * ows->get_height_function().A(ows->get_volume()) * 1e-3 * (1-ows->is_empty());
+	res += GER * cell.surface_water_coverage() * 1e-3 * cell.get_area();
 	return res;
 }
 

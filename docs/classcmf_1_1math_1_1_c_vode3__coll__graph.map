@@ -1,7 +1,0 @@
-<map id="CVode3" name="CVode3">
-<area shape="rect" id="node2" href="$classcmf_1_1math_1_1_integrator.html" title="Base class for any kind of integrator. " alt="" coords="155,109,231,136"/>
-<area shape="rect" id="node3" href="$classcmf_1_1math_1_1_state_variable_owner.html" title="An abstract class, that owns one or more state variables, that can add them to a vector of state vari..." alt="" coords="5,5,143,32"/>
-<area shape="rect" id="node4" href="$classcmf_1_1math_1_1_time.html" title="A time class, used to pass around current modelling times. " alt="" coords="167,5,218,32"/>
-<area shape="rect" id="node5" href="$classcmf_1_1math_1_1integratable__list.html" title="A list of cmf::math::integratable objects. " alt="" coords="243,5,356,32"/>
-<area shape="rect" id="node6" href="$structcmf_1_1math_1_1_c_vode_options.html" title="A set of options for all CVode3 solver. " alt="" coords="255,109,362,136"/>
-</map>

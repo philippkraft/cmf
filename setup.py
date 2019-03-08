@@ -32,7 +32,18 @@ from distutils.command.build_py import build_py
 
 version = '2.0.0a0'
 
-# Try to import numpy, if it fails we have a problem 
+branchversion = version
+try:
+    from pygit2 import Repository
+    head = Repository('.').head.shorthand
+    if head != 'master':
+        branchversion = version + '.' + head
+except:
+    Repository = None
+
+print('cmf', branchversion)
+
+# Try to import numpy, if it fails we have a problem
 try:
     # Import a function to get a path to the include directories of numpy
     # noinspection PyPackageRequirements
@@ -280,7 +291,7 @@ if __name__ == '__main__':
     classifiers = [
         'Development Status :: 4 - Beta',
         'Intended Audience :: Science/Research',
-        'License :: OSI Approved :: GNU General Public License v2 or later (GPLv2+)',
+        'License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)',
         'Programming Language :: C++',
         'Programming Language :: C',
         'Programming Language :: Python',
@@ -293,7 +304,7 @@ if __name__ == '__main__':
 
     setup(name='cmf',
           version=version,
-          license='GPL',
+          license='GPLv3+',
           ext_modules=ext,
           packages=['cmf', 'cmf.draw', 'cmf.geometry'],
           python_requires='>=3.4',

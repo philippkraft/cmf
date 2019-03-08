@@ -44,7 +44,7 @@ Cell::~Cell()
 Cell::Cell( double _x,double _y,double _z,double area,cmf::project& _project/*=0*/ ) 
 	: x(_x),y(_y),z(_z),m_Area(area),m_project(_project),
 	  m_SurfaceWater(new cmf::water::DirichletBoundary(_project,_z)),	Id(0),
-	  m_meteo(new cmf::atmosphere::ConstantMeteorology), Tground(-300), surface_amplitude(0.01)
+	  m_meteo(new cmf::atmosphere::ConstantMeteorology), Tground(-300)
 {
 	Id = _project.get_cells().size();
 	std::stringstream sstr;
@@ -247,7 +247,7 @@ cmf::water::flux_node::ptr Cell::get_transpiration()
 	return m_Transpiration;
 }
 
-void Cell::surfacewater_as_storage()
+surfacewater_ptr Cell::surfacewater_as_storage()
 {
 	using namespace cmf::river;
 	if (m_SurfaceWaterStorage==0) 
@@ -257,6 +257,7 @@ void Cell::surfacewater_as_storage()
 		m_storages.push_back(m_SurfaceWaterStorage);
 		m_SurfaceWater.reset();
 	}
+	return m_SurfaceWaterStorage;
 }
 
 std::string Cell::to_string() const
@@ -330,6 +331,22 @@ real Cell::heat_flux( cmf::math::Time t) const
 	return Rn + Qs + Ql;
 }
 
+/// Return the fraction of wet leaves in the canopy if a canopy water storage exists.
+/// If no canopy storage is present, it returns 0.0 (=empty). 
+/// The fraction of wet leaves are calculated as the linear filling of the canopy storage.
+
+real cmf::upslope::Cell::leave_wetness() const {
+
+	if (m_Canopy) {
+		// calculate canopy capacity in m3
+		real canopy_capacity = vegetation.LAI * vegetation.CanopyCapacityPerLAI * m_Area * 1e-3;
+		return minmax(m_Canopy->get_volume() / canopy_capacity, 0.0, 1.0);
+	}
+	else {
+		return 0.0;
+	}
+}
+
 real Cell::albedo() const
 {
 	double 
@@ -351,7 +368,7 @@ real Cell::snow_coverage() const
 real Cell::surface_water_coverage() const
 {
 	if (m_SurfaceWaterStorage)
-		return piecewise_linear(m_SurfaceWaterStorage->get_volume()/get_area(),0,surface_amplitude);
+		return m_SurfaceWaterStorage->get_coverage();
 	else
 		return 0.0;
 }

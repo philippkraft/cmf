@@ -123,7 +123,10 @@ std::string pyrepr(PyObject* o) {
 %include "upslope/connections/infiltration.h"
 %include "upslope/connections/Percolation.h"
 %include "upslope/vegetation/waterstress.h"
+
 %include "upslope/vegetation/ET.h"
+
+%shared_ptr(cmf::upslope::ET::ShuttleworthWallace);
 %include "upslope/vegetation/ShuttleworthWallace.h"
 
 %include "project.i"
@@ -131,5 +134,11 @@ std::string pyrepr(PyObject* o) {
 %include "math/integrators/WaterSoluteIntegrator.h"
 
 
-           
+%pythoncode {
+    ConstantFlux = TechnicalFlux
+    ConstantStateFlux = statecontrol_connection
+    WaterBalanceFlux = waterbalance_connection
+    ConceptualInfiltration = SimpleInfiltration
+}
+
 
