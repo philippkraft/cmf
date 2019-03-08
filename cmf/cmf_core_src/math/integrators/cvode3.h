@@ -84,7 +84,8 @@ namespace cmf {
 			long int nonlinear_solver_iterations;
 			/// @brief Number of nonlinear convergence failures
 			long int nonlinear_solver_convergence_failures;
-
+			/// @brief Number of calls to any dxdt method of a state
+			long int dxdt_method_calls;
 
 
 			/// @brief contains the Sundials version of CVode used
@@ -156,7 +157,7 @@ namespace cmf {
 			std::string to_string() const {
 				return "CVodeDense()";
 			}
-
+			virtual cmf::math::num_array _get_jacobian() const;
 
 		protected:
 			void set_solver();
@@ -214,8 +215,12 @@ namespace cmf {
 		public:
 			CVodeKLU(cmf::math::StateVariableOwner& states, real epsilon = 1e-9);
 			std::string to_string() const;
+			virtual cmf::math::num_array _get_jacobian() const;
 		protected:
 			void set_solver();
+		private:
+			friend class CVode3::Impl;
+			sparse_structure sps;
 
 		};
 	}
