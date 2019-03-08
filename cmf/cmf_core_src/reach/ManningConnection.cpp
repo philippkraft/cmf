@@ -53,6 +53,18 @@ real cmf::river::Manning::calc_q( cmf::math::Time t )
 	// Return flux with correct sign in m3/day
 	return prevent_negative_volume(qManning * sign(slope) * (24*60*60));
 }
+void cmf::river::Manning::NewNodes()
+{
+	if (
+		!is_diffusive_wave &&
+		left_node()->position.z <= right_node()->position.z
+		)
+	{
+		throw std::runtime_error(this->to_string() + ": Tried to create a kinematic wave connection that is not downslope");
+	}
+	w1 = cmf::river::OpenWaterStorage::cast(left_node());
+	w2 = cmf::river::OpenWaterStorage::cast(right_node());
+}
 Manning* create_manning( cmf::river::OpenWaterStorage::ptr left,cmf::water::flux_node::ptr right, const cmf::river::IChannel& reachtype,bool diffusive_wave )
 {
 	if (diffusive_wave) {

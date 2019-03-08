@@ -60,11 +60,7 @@ namespace cmf {
 			virtual real get_slope(cmf::water::flux_node::ptr lnode, cmf::water::flux_node::ptr rnode, real d)=0;
 			std::weak_ptr<cmf::river::OpenWaterStorage> w1,w2;
 			virtual real calc_q(cmf::math::Time t);
-			void NewNodes()
-			{
-				w1=cmf::river::OpenWaterStorage::cast(left_node());
-				w2=cmf::river::OpenWaterStorage::cast(right_node());
-			}
+			void NewNodes();
 			Manning(cmf::river::OpenWaterStorage::ptr left,cmf::water::flux_node::ptr right,
 				const cmf::river::IVolumeHeightFunction& reachtype,bool diffusive_wave)
 				: flux_connection(left,right,diffusive_wave ? "Manning (diff. wave)" : "Manning (kin. wave)"),	flux_geometry(reachtype), is_diffusive_wave(diffusive_wave) {
