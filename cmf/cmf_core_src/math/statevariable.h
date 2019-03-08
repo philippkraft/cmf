@@ -97,6 +97,8 @@ namespace cmf {
 		///		};
 		///		@endcode
 		///
+	  
+	  class StateVariableList;
 	  class StateVariable {
 		private:
 			bool m_StateIsNew;
@@ -135,6 +137,12 @@ namespace cmf {
 			virtual bool is_connected(const cmf::math::StateVariable& other) const {
 				return true;
 			}
+#ifndef SWIG
+			/// Not part of the API, used to create sparse structure
+			typedef std::vector<StateVariable*> list;
+			virtual void add_connected_states(list& states);
+#endif // !SWIG
+
 		};
 
 		class StateVariableList;
@@ -191,7 +199,7 @@ namespace cmf {
 			std::vector<size_t> indexpointers;
 			/// @brief Creates the sparse row compressed structure from states variable list			
 			sparse_structure();
-			int generate(const StateVariableList& states);
+			size_t generate(const StateVariableList& states);
 			size_t NNZ, NP, N;
 		};
 

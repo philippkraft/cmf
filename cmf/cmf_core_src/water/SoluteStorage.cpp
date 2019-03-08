@@ -50,6 +50,29 @@ bool cmf::water::SoluteStorage::is_connected(const StateVariable & other) const
 		throw std::logic_error("Test for connection of a statevariable that is neither solute nor water storage");
 	}
 }
+
+void cmf::water::SoluteStorage::add_connected_states(cmf::math::StateVariable::list& states) {
+	// Add this	
+	states.push_back(this);
+	// Add my water storage
+	states.push_back(m_water);
+	
+
+	// Add the connected water storages of my water storage and their fitting solute storages
+	connection_list con_list = m_water->get_connections();
+	for (auto& con : con_list) {
+		// Get the other side of the connection and cast it to a water storage
+		WaterStorage::ptr other_ws = WaterStorage::cast(con->get_target(*m_water));
+		if (other_ws) {
+			// If the other sied is a storage take it
+			states.push_back(other_ws.get());
+			// And the other_ws's solute storage of the same solute as me
+			SoluteStorage& other_ss = other_ws->Solute(this->Solute);
+			states.push_back(&other_ss);
+		}
+	}
+}
+
 real SoluteStorage::dxdt( const cmf::math::Time& time )
 {
  	// Sums up the fluxes as water fluxes (mol/day)

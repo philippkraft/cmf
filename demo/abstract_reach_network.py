@@ -4,8 +4,8 @@ import time
 
 class ReachNetwork:
     def __init__(self, levels=3):
-        self.rtype = cmf.TriangularReach(10)
-        self.project = p = cmf.project()
+        self.rtype = cmf.TriangularReach(100)
+        self.project = p = cmf.project('X')
         self.root = p.NewReach(0, 0, 0, self.rtype)
         self.outlet = p.NewOutlet('out', 0, -100, -1)
         self.root.set_outlet(self.outlet)
@@ -53,6 +53,7 @@ class Model:
         self.network = ReachNetwork(levels)
         self.network.set_inflow(total_inflow)
         self.solver = solver_class(self.network.project)
+        self.solver.use_OpenMP = False
         self.solver.initialize()
 
     def __call__(self, time=cmf.day):
@@ -67,7 +68,8 @@ class Model:
 
 class SparseStructure:
     def __init__(self, state_owner):
-        self.sps = cmf.sparse_structure(state_owner.get_states())
+        self.sps = cmf.sparse_structure()
+        self.sps.generate( state_owner.get_states())    
 
     def __iter__(self):
         idx_ptr = list(self.sps.indexpointers)
@@ -90,13 +92,16 @@ class SparseStructure:
 
 
 if __name__ == '__main__':
+    from pylab import imshow, show
     print(f'{"solver":<25}level size {"init sec":<10}{"run sec":<10}{"method calls":<15}')
     for solver_type in [cmf.CVodeKLU, cmf.CVodeKrylov]:
-        for level in range(1, 11):
+        for level in range(1, 12):
             tstart = time.time()
-            model = Model(level, solver_type)
+            model = Model(level, solver_type, 100)
             tinit = time.time() - tstart
-            model()
+            for i in range(24):
+                model(cmf.h)
+                model.network.set_inflow(50 + 50 * (i % 2))
             elapsed = time.time() - tstart - tinit
             info = model.solver.info
             name = model.solver.to_string()

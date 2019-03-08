@@ -143,7 +143,28 @@ bool cmf::water::WaterStorage::is_connected(const StateVariable & other) const
 	else {
 		throw std::logic_error("Test for connection of a statevariable that is neither solute nor water storage");
 	}
+}
 
+void cmf::water::WaterStorage::add_connected_states(cmf::math::StateVariable::list& states) {
+	// Add this	
+	states.push_back(this);
+	// Add my solute storages
+	for (auto ss : m_Concentrations) {
+		states.push_back(ss.get());
+	}
+
+	// Add my connected water storages and their solutes
+	connection_list con_list = this->get_connections();
+	for (auto& con : con_list) {
+		// Get the other side of the connection and cast it to a water storage
+		WaterStorage::ptr other_ws = WaterStorage::cast(con->get_target(*this));
+		if (other_ws) {
+			states.push_back(other_ws.get());
+			for (auto ss : other_ws->m_Concentrations) {
+				states.push_back(ss.get());
+			}
+		}
+	}
 }
 
 cmf::math::StateVariableList cmf::water::WaterStorage::get_states()

@@ -2861,7 +2861,7 @@ class sparse_structure(object):
         _cmf_core.sparse_structure_swiginit(self, _cmf_core.new_sparse_structure(*args, **kwargs))
 
     def generate(self, *args, **kwargs):
-        """generate(sparse_structure self, StateVariableList states) -> int"""
+        """generate(sparse_structure self, StateVariableList states) -> size_t"""
         return _cmf_core.sparse_structure_generate(self, *args, **kwargs)
 
     NNZ = _swig_property(_cmf_core.sparse_structure_NNZ_get, _cmf_core.sparse_structure_NNZ_set)
@@ -4142,11 +4142,17 @@ class SoluteStorage(StateVariable):
         """get_water(SoluteStorage self) -> WaterStorage"""
         return _cmf_core.SoluteStorage_get_water(self, *args, **kwargs)
 
+
+    def add_connected_states(self, *args, **kwargs):
+        """add_connected_states(SoluteStorage self, cmf::math::StateVariable::list & states)"""
+        return _cmf_core.SoluteStorage_add_connected_states(self, *args, **kwargs)
+
     __swig_destroy__ = _cmf_core.delete_SoluteStorage
 SoluteStorage.set_adsorption = new_instancemethod(_cmf_core.SoluteStorage_set_adsorption, None, SoluteStorage)
 SoluteStorage.conc = new_instancemethod(_cmf_core.SoluteStorage_conc, None, SoluteStorage)
 SoluteStorage.set_conc = new_instancemethod(_cmf_core.SoluteStorage_set_conc, None, SoluteStorage)
 SoluteStorage.get_water = new_instancemethod(_cmf_core.SoluteStorage_get_water, None, SoluteStorage)
+SoluteStorage.add_connected_states = new_instancemethod(_cmf_core.SoluteStorage_add_connected_states, None, SoluteStorage)
 _cmf_core.SoluteStorage_swigregister(SoluteStorage)
 # SoluteStorage end
 

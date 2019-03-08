@@ -74,7 +74,7 @@ namespace cmf {
 			}
 			/// @brief Returns True if this solute storage is effected by another state
 			virtual bool is_connected(const cmf::math::StateVariable& other) const;
-
+			virtual void add_connected_states(cmf::math::StateVariable::list& states);
 			virtual real dxdt(const cmf::math::Time& time);
 			virtual std::string to_string() const;
 			typedef std::shared_ptr<SoluteStorage> ptr;

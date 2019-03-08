@@ -193,20 +193,9 @@ def make_cmf_core():
     include_dirs += [get_numpy_include()]
 
     static_libraries = [('lib/lib',
-                         ['sundials_cvode', 'sundials_nvecserial',
-                          'sundials_sunlinsolband', 'sundials_sunlinsoldense', 'sundials_sunlinsolklu',
-                          'sundials_sunlinsolpcg', 'sundials_sunlinsolspbcgs', 'sundials_sunlinsolspfgmr',
-                          'sundials_sunlinsolspgmr', 'sundials_sunlinsolsptfqmr',
-                          'sundials_sunmatrixband', 'sundials_sunmatrixdense', 'sundials_sunmatrixsparse'
-                          ]),
-                          ('lib/lib/suitesparse',
-                           ['libamd', 'libbtf', 'libcamd', 'libccolamd', 
-                            'libcholmod', 'libcolamd', 
-                            'libcxsparse', 'libklu', 'libldl', 
-                            'libspqr', 'libumfpack', 'metis', 
-                            'suitesparseconfig'
-                           ]
-                          ),
+                         ['sundials_cvode', 'sundials_sunlinsolklu']),
+                        ('lib/lib/suitesparse',
+                         ['libklu', 'libamd', 'libbtf', 'libcolamd', 'suitesparseconfig']),
                         ]
     library_dirs = []
     libraries = []
