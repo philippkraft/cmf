@@ -1,5 +1,6 @@
 import cmf
 import numpy as np
+import time
 
 class ReachNetwork:
     def __init__(self, levels=3):
@@ -64,9 +65,41 @@ class Model:
     def outflux(self):
         return self.network.outlet(self.solver.t)
 
+class SparseStructure:
+    def __init__(self, state_owner):
+        self.sps = cmf.sparse_structure(state_owner.get_states())
+
+    def __iter__(self):
+        idx_ptr = list(self.sps.indexpointers)
+        idx_val = list(self.sps.indexvalues)
+        for col in range(self.sps.NP):
+            try:
+                for row in idx_val[idx_ptr[col]:idx_ptr[col+1]]:
+                    yield row, col
+            except IndexError:
+                raise IndexError(f'col={col}, idx_ptr[col]={idx_ptr[col]}, idx_ptr[col+1]={idx_ptr[col+1]}')
+        
+    def as_dense(self):
+        res = np.zeros(shape=(self.sps.N, self.sps.N), dtype=bool)
+        for row, col in self:
+            res[row, col] = True
+        return res
+
+
+
+
 
 if __name__ == '__main__':
-    dense = Model(5, cmf.CVodeDense)(cmf.day)
-    sps = cmf.sparse_structure(dense.network.project.get_states())
+    print(f'{"solver":<25}level size {"init sec":<10}{"run sec":<10}{"method calls":<15}')
+    for solver_type in [cmf.CVodeKLU, cmf.CVodeKrylov]:
+        for level in range(1, 11):
+            tstart = time.time()
+            model = Model(level, solver_type)
+            tinit = time.time() - tstart
+            model()
+            elapsed = time.time() - tstart - tinit
+            info = model.solver.info
+            name = model.solver.to_string()
+            print(f'{name:>25}{level:6d}{info.size:5d}{tinit:10.2f}{elapsed:10.2f}{info.dxdt_method_calls:15,d}')
     klu = Model(5, cmf.CVodeKLU)(cmf.day)
 

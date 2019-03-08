@@ -189,19 +189,23 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>C:\Users\kraft-p\Documents\Code\suitesparse\include;C:\Apps\WinPython-64bit-3.5.2\python-3.5.2.amd64\Lib\site-packages\numpy\core\include;C:\Apps\WinPython-64bit-3.5.2\python-3.5.2.amd64\include;C:\Users\kraft-p\Documents\Code\cmf2\lib\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\lib\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;CMF_EXPORTS;EXPERIMENTAL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
-      <PrecompiledHeader>
-      </PrecompiledHeader>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DisableLanguageExtensions>true</DisableLanguageExtensions>
+      <LanguageStandard>stdcpp14</LanguageStandard>
     </ClCompile>
     <Link>
       <OutputFile>$(OutDir)$(ProjectName).exe</OutputFile>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Console</SubSystem>
+      <AdditionalLibraryDirectories>$(ProjectDir)..\lib\lib\suitesparse;$(ProjectDir)..\lib\lib</AdditionalLibraryDirectories>
+      <AdditionalDependencies>sundials_cvode.lib;sundials_sunlinsolklu.lib;libklu.lib;libamd.lib;libbtf.lib;libcolamd.lib;suitesparseconfig.lib</AdditionalDependencies>
+      <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -247,12 +251,11 @@
       <InlineFunctionExpansion>Default</InlineFunctionExpansion>
       <FavorSizeOrSpeed>Neither</FavorSizeOrSpeed>
       <WholeProgramOptimization>false</WholeProgramOptimization>
-      <AdditionalIncludeDirectories>C:\Apps\WinPython-64bit-3.6.1.0Qt5\python-3.6.1.amd64\Lib\site-packages\numpy\core\include;C:\Apps\WinPython-64bit-3.6.1.0Qt5\python-3.6.1.amd64\include;C:\Users\kraft-p\Documents\Code\cmf_external_solvers\sundials-lib\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\lib\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;CMF_EXPORTS;_SCL_SECURE_NO_WARNINGS;_CRT_SECURE_NO_WARNINGS;CMF_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
-      <DisableLanguageExtensions>false</DisableLanguageExtensions>
-      <PrecompiledHeader>
-      </PrecompiledHeader>
+      <DisableLanguageExtensions>true</DisableLanguageExtensions>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <DisableSpecificWarnings>4800;%(DisableSpecificWarnings)</DisableSpecificWarnings>
@@ -261,17 +264,19 @@
       <BufferSecurityCheck>false</BufferSecurityCheck>
       <OpenMPSupport>false</OpenMPSupport>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <LanguageStandard>stdcpp14</LanguageStandard>
     </ClCompile>
     <Link>
       <AdditionalOptions>/ignore:4099 %(AdditionalOptions)</AdditionalOptions>
       <OutputFile>$(OutDir)_cmf_core.pyd</OutputFile>
-      <AdditionalLibraryDirectories>C:\Apps\WinPython-64bit-3.6.1.0Qt5\python-3.6.1.amd64\libs;C:\Users\kraft-p.UNI-GIESSEN\Documents\Code\cmf_external_solvers\sundials-lib\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(ProjectDir)..\lib\lib\suitesparse;$(ProjectDir)..\lib\lib</AdditionalLibraryDirectories>
       <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Windows</SubSystem>
       <OptimizeReferences>true</OptimizeReferences>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <AssemblyDebug>true</AssemblyDebug>
+      <AdditionalDependencies>sundials_cvode.lib;sundials_sunlinsolklu.lib;libklu.lib;libamd.lib;libbtf.lib;libcolamd.lib;suitesparseconfig.lib</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
       <Command>
@@ -327,24 +332,26 @@
     <ClCompile>
       <Optimization>Full</Optimization>
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
-      <AdditionalIncludeDirectories>C:\Users\kraft-p\Documents\Code\suitesparse\include;$(ProjectDir)..\lib\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\lib\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_WINDOWS;CMF_EXPORTS;SOLUTE;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <BasicRuntimeChecks>Default</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
-      <PrecompiledHeader>
-      </PrecompiledHeader>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <DisableSpecificWarnings>4996;%(DisableSpecificWarnings)</DisableSpecificWarnings>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <OpenMPSupport>true</OpenMPSupport>
+      <DisableLanguageExtensions>true</DisableLanguageExtensions>
+      <LanguageStandard>stdcpp14</LanguageStandard>
     </ClCompile>
     <Link>
       <OutputFile>$(OutDir)$(ProjectName).exe</OutputFile>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Console</SubSystem>
-      <AdditionalLibraryDirectories>$(ProjectDir)sundials-lib\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>sundials_cvode.lib;sundials_nvecopenmp.lib;sundials_nvecserial.lib;sundials_sunlinsolband.lib;sundials_sunlinsoldense.lib;sundials_sunlinsolklu.lib;sundials_sunlinsolpcg.lib;sundials_sunlinsolspbcgs.lib;sundials_sunlinsolspfgmr.lib;sundials_sunlinsolspgmr.lib;sundials_sunlinsolsptfqmr.lib;sundials_sunmatrixband.lib;sundials_sunmatrixdense.lib;sundials_sunmatrixsparse.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(ProjectDir)..\lib\lib\suitesparse;$(ProjectDir)..\lib\lib</AdditionalLibraryDirectories>
+      <AdditionalDependencies>sundials_cvode.lib;sundials_sunlinsolklu.lib;libklu.lib;libamd.lib;libbtf.lib;libcolamd.lib;suitesparseconfig.lib</AdditionalDependencies>
+      <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
     </Link>
     <ProjectReference>
       <LinkLibraryDependencies>false</LinkLibraryDependencies>
@@ -354,27 +361,43 @@
     <ClCompile>
       <Optimization>Disabled</Optimization>
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
-      <AdditionalIncludeDirectories>C:\Users\kraft-p\Documents\Code\cmf_external_solvers\sundials-lib\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\lib\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_WINDOWS;CMF_EXPORTS;SOLUTE;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <BasicRuntimeChecks>Default</BasicRuntimeChecks>
-      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
-      <PrecompiledHeader>
-      </PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <DisableSpecificWarnings>4996;%(DisableSpecificWarnings)</DisableSpecificWarnings>
       <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
       <OpenMPSupport>false</OpenMPSupport>
+      <DisableLanguageExtensions>true</DisableLanguageExtensions>
+      <LanguageStandard>stdcpp14</LanguageStandard>
     </ClCompile>
     <Link>
       <OutputFile>$(OutDir)$(ProjectName).exe</OutputFile>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Console</SubSystem>
-      <AdditionalLibraryDirectories>C:\Users\kraft-p\Documents\Code\cmf_external_solvers\sundials-lib\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>sundials_cvode.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(ProjectDir)..\lib\lib\suitesparse;$(ProjectDir)..\lib\lib</AdditionalLibraryDirectories>
+      <AdditionalDependencies>sundials_cvode.lib;sundials_sunlinsolklu.lib;libklu.lib;libamd.lib;libbtf.lib;libcolamd.lib;suitesparseconfig.lib</AdditionalDependencies>
+      <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='distutil|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\lib\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <DisableLanguageExtensions>true</DisableLanguageExtensions>
+      <LanguageStandard>stdcpp14</LanguageStandard>
+    </ClCompile>
+    <Link>
+      <AdditionalLibraryDirectories>$(ProjectDir)..\lib\lib\suitesparse;$(ProjectDir)..\lib\lib</AdditionalLibraryDirectories>
+      <AdditionalDependencies>sundials_cvode.lib;sundials_sunlinsolklu.lib;libklu.lib;libamd.lib;libbtf.lib;libcolamd.lib;suitesparseconfig.lib</AdditionalDependencies>
+      <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="..\cmf\cmf_core_src\apps\reach_network.h" />
+    <ClInclude Include="..\cmf\cmf_core_src\apps\subsurface.h" />
     <ClInclude Include="..\cmf\cmf_core_src\cmfmemory.h" />
     <ClInclude Include="..\cmf\cmf_core_src\math\integrators\cvode3.h" />
     <ClInclude Include="..\cmf\cmf_core_src\math\num_array.h" />
@@ -420,7 +443,6 @@
     <ClInclude Include="..\cmf\cmf_core_src\water\SoluteStorage.h" />
     <ClInclude Include="..\cmf\cmf_core_src\math\spline.h" />
     <ClInclude Include="..\cmf\cmf_core_src\math\statevariable.h" />
-    <ClInclude Include="..\cmf\cmf_core_src\math\jacobian.h" />
     <ClInclude Include="..\cmf\cmf_core_src\upslope\vegetation\StructVegetation.h" />
     <ClInclude Include="..\cmf\cmf_core_src\upslope\connections\subsurfacefluxes.h" />
     <ClInclude Include="..\cmf\cmf_core_src\upslope\connections\surfacefluxes.h" />
@@ -433,6 +455,7 @@
     <ClInclude Include="..\cmf\cmf_core_src\atmosphere\Weather.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\cmf\cmf_core_src\apps\subsurface.cpp" />
     <ClCompile Include="..\cmf\cmf_core_src\cmf.cpp" />
     <ClCompile Include="..\cmf\cmf_core_src\cmf_wrap.cpp" />
     <ClCompile Include="..\cmf\cmf_core_src\math\integrators\cvode3.cpp" />
@@ -478,7 +501,6 @@
     <ClCompile Include="..\cmf\cmf_core_src\water\SoluteStorage.cpp" />
     <ClCompile Include="..\cmf\cmf_core_src\math\spline.cpp" />
     <ClCompile Include="..\cmf\cmf_core_src\math\statevariable.cpp" />
-    <ClCompile Include="..\cmf\cmf_core_src\math\jacobian.cpp" />
     <ClCompile Include="..\cmf\cmf_core_src\upslope\connections\subsurfacefluxes.cpp" />
     <ClCompile Include="..\cmf\cmf_core_src\upslope\connections\surfacefluxes.cpp" />
     <ClCompile Include="..\cmf\cmf_core_src\water\system_bridge.cpp" />
@@ -486,6 +508,7 @@
     <ClCompile Include="..\cmf\cmf_core_src\upslope\Topology.cpp" />
     <ClCompile Include="..\cmf\cmf_core_src\water\WaterStorage.cpp" />
     <ClCompile Include="..\cmf\cmf_core_src\atmosphere\Weather.cpp" />
+    <ClCompile Include="..\cmf\cmf_core_src\apps\reach_network.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\cmf\cmf_core_src\upslope\cell.i" />

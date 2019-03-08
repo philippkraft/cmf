@@ -70,6 +70,7 @@
 %include "math/integrators/explicit_euler.h"
 %include "math/integrators/implicit_euler.h"
 %include "math/integrators/RKFintegrator.h"
+
 %include "math/integrators/cvode3.h"
 
 %extend__repr__(cmf::math::CVodeInfo)
@@ -101,7 +102,7 @@
 %extend cmf::math::CVode3 {
 %pythoncode {
     def get_jacobian(self):
-        return self._get_jacobian().reshape(self.size(), self.size())
+        return self._get_jacobian().reshape((self.size(), self.size()), order='F')
 }
 }
 
