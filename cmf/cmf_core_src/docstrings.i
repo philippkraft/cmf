@@ -10961,8 +10961,8 @@ Calculates the Evapotranspiration using Priestley-Taylor equation.
 
 .. math::
 
-    lambda ET &=& \\\\alpha \\\\frac{\\\\Delta}{\\\\Delta +
-    \\\\gamma} \\\\left(R_n - G\\\\right)
+    lambda ET = \\\\alpha \\\\frac{\\\\Delta}{\\\\Delta + \\\\gamma}
+    \\\\left(R_n - G\\\\right)
 
 where:  :math:`\\\\Delta = 4098 \\\\frac{0.6108 e^{17.27 T}}{(T+237.3)^2} \\\\frac{kPa}{^\\\\circ C}`,
 the slope of the vapor pressure/ temperature curve
@@ -17075,9 +17075,23 @@ V(double h) const ";
 
 Calculates ETpot after Turc (DVWK).
 
-ETact is calculated using a WaterStressFunction
+:math:`ET_{act}` is calculated using a WaterStressFunction
 
-:math:`ET_{pot,Turc} = 0.0031 C (R_G + 209) \\\\frac{T}{T + 15}`
+
+
+.. math::
+
+     ET_{pot,Turc} = 0.0031 C(rH) (R_G + 209) \\\\frac{T}{T + 15}
+    
+
+where:  :math:`T` is the mean daily temperature
+
+:math:`C(rH) = \\\\begin{cases} 1 + \\\\frac{50\\\\% - rH}{70\\\\%}, & rH < 50\\\\% \\\\\\\\ 1 & rH > 50\\\\% \\\\end{cases}`, a modification
+parameter for low humidity
+
+:math:`rH` relative Humidity in %
+
+:math:`R_G` global radiation in :math:`J/cm^2`
 
 C++ includes: ET.h ";
 
@@ -19772,6 +19786,9 @@ ymax=1) ";
 // File: _cmf_tut_meteostation_8md.xml
 
 
+// File: _cmf_tut_shuttleworth_wallace_8md.xml
+
+
 // File: _cmf_tut_snow_8md.xml
 
 
@@ -19841,9 +19858,6 @@ ymax=1) ";
 // File: _descriptor_8md.xml
 
 
-// File: fluxogram__and__get__fluxes_8md.xml
-
-
 // File: _cmf_tut1d_8md.xml
 
 
@@ -19860,6 +19874,9 @@ ymax=1) ";
 
 
 // File: _cmf_tut_darcian_lateral_flow_8md.xml
+
+
+// File: _cmf_tut_e_tphys_8md.xml
 
 
 // File: _cmf_tut_retentioncurve_8md.xml
@@ -19964,6 +19981,9 @@ ymax=1) ";
 // File: cmf_tut_meteostation.xml
 
 
+// File: cmf_tut_shuttleworth_wallace.xml
+
+
 // File: cmf_tut_snow.xml
 
 
@@ -20033,9 +20053,6 @@ ymax=1) ";
 // File: descriptor.xml
 
 
-// File: fluxogram_and_get_fluxes.xml
-
-
 // File: cmf_tut1d.xml
 
 
@@ -20052,6 +20069,9 @@ ymax=1) ";
 
 
 // File: cmf_tut_darcian_lateral_flow.xml
+
+
+// File: cmf_tut_e_tphys.xml
 
 
 // File: cmf_tut_retentioncurve.xml

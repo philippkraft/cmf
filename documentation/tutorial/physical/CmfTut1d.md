@@ -24,7 +24,6 @@ cell = project.NewCell(x=0,y=0,z=0,area=1000, with_surfacewater=True)
 Create a [retention curve](@ref cmfTutRetentioncurve)
 
 ~~~~~~~~~~~~~{.py}
-
 r_curve = cmf.VanGenuchtenMualem(Ksat=1,phi=0.5,alpha=0.01,n=2.0)
 ~~~~~~~~~~~~~
 
@@ -84,12 +83,18 @@ This is the setup code for our simple 1D Richards-Model. To run the
 model we create the run time loop using the solver.run iterator and we
 save soil moisture and potential for each layer into lists.
 
+![](@ref CmfTut1d-result-no-boundary.png)
+
 ~~~~~~~~~~~~~{.py}
 
-# Save potential and soil moisture for each layer, start with initial conditions
-potential = [cell.layers.potential] moisture = [cell.layers.theta]
+# Save potential and soil moisture for each layer,
+# start with initial conditions
+potential = [cell.layers.potential]
+moisture = [cell.layers.theta]
 # The run time loop, run for 7 days
-for t in solver.run(solver.t,solver.t + timedelta(days=7),timedelta(hours=1)):
+for t in solver.run(solver.t,
+                    solver.t + timedelta(days=7),
+                    timedelta(hours=1)):
     potential.append(cell.layers.potential)
     moisture.append(cell.layers.theta)
     
@@ -97,17 +102,16 @@ for t in solver.run(solver.t,solver.t + timedelta(days=7),timedelta(hours=1)):
 from pylab import *
 subplot(211)
 plot(moisture)
-ylabel(r'Soil moisture $\theta [m^3/m^3]$') xlabel(r'$time [h]$')
+ylabel(r'Soil moisture $\theta [m^3/m^3]$')
+xlabel(r'$time [h]$')
 grid()
 subplot(212)
 plot(potential)
-ylabel(r'Water head $\Psi_{tot} [m]$') xlabel(r'$time [h]$')
+ylabel(r'Water head $\Psi_{tot} [m]$')
+xlabel(r'$time [h]$')
 grid()
 ~~~~~~~~~~~~~
 
-And this is the result for our simple percolation experiment:
-
-![](@ref CmfTut1d-result-no-boundary.png)
 
 The upper graph shows the soil moisture content of each layer, the lower
 the water potential for each layer. The water table rises and a new
@@ -120,8 +124,9 @@ condition is introduced into our model. The following line needs to be
 inserted into the setup part of the script, eg. before setting the
 initial conditions:
 
-~~~~~~~~~~~~~{.py}
+![](@ref CmfTut1d-result-gw-boundary.png)
 
+~~~~~~~~~~~~~{.py}
 # Create the boundary condition
 gw = project.NewOutlet('groundwater',x=0,y=0,z=-2)
 # Set the potential
@@ -130,20 +135,15 @@ gw.potential = -2
 gw_flux=cmf.Richards(cell.layers[-1],gw)
 ~~~~~~~~~~~~~
 
-And we get:
-
-![](@ref CmfTut1d-result-gw-boundary.png)
 
 In this experiment, the water percolates through the soil and out of our
 model boundaries. The water content is at the end of the simulation
 period near to the orginal values.
 
-## Some links to the synatx help of objects used in this tutorial
+## Some links to the API help of objects used in this tutorial
 
   - [Richards](@ref cmf::upslope::connections::Richards) equation
   - [SoilLayer](@ref cmf::upslope::SoilLayer)
   - [layer_list](@ref cmf::upslope::layer_list)
-
-Back to [Tutorial index](@ref tutorial)
 
 

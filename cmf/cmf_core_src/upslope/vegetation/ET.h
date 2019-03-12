@@ -199,7 +199,7 @@ namespace cmf {
 			///@ingroup ET
 			/// Calculates the Evapotranspiration using Priestley-Taylor equation
 			///
-			/// \f[lambda ET &=& \alpha \frac{\Delta}{\Delta + \gamma} \left(R_n - G\right)\f]
+			/// \f[lambda ET = \alpha \frac{\Delta}{\Delta + \gamma} \left(R_n - G\right)\f]
 			/// where:
 			///  - \f$\Delta = 4098 \frac{0.6108 e^{17.27 T}}{(T+237.3)^2} \frac{kPa}{^\circ C}\f$, the slope of the vapor pressure/ temperature curve
 			///  - \f$\gamma = \frac{c_p P}{\epsilon \lambda} \frac{kPa}{^\circ C}\f$  Psychrometric constant
@@ -256,9 +256,18 @@ namespace cmf {
 
 			};
 			/// @ingroup ET
-			/// Calculates ETpot after Turc (DVWK). ETact is calculated using a WaterStressFunction
+			/// Calculates ETpot after Turc (DVWK). \f$ET_{act}\f$ is calculated using a WaterStressFunction
 			///
-			/// \f$ET_{pot,Turc} = 0.0031 C (R_G + 209) \frac{T}{T + 15}\f$
+			/// \f[
+			/// ET_{pot,Turc} = 0.0031 C(rH) (R_G + 209) \frac{T}{T + 15}
+			/// \f]
+			///
+			/// where:
+			/// - \f$T\f$ is the mean daily temperature
+			/// - \f$C(rH) = \begin{cases} 1 + \frac{50\% - rH}{70\%}, & rH < 50\% \\ 1 & rH > 50\% \end{cases} \f$,
+			///   a modification parameter for low humidity
+			/// - \f$rH\f$ relative Humidity in %
+			/// - \f$R_G\f$ global radiation in \f$J/cm^2\f$
 			class TurcET : public stressedET {
 			protected:
 				real calc_q(cmf::math::Time t);

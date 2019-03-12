@@ -98,8 +98,7 @@ $(document).ready(function(){initNavTree('cmf_tut_meteostation.html','');});
 <div class="title">Using measurement stations for atmospheric conditions </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p><a class="el" href="cmf_tut_test_data.html">back</a>, <a class="el" href="cmf_tut_space_time.html">space and time in</a>cmf"</p>
-<h2>The station concept in cmf</h2>
+<div class="textblock"><h2>The station concept in cmf</h2>
 <p>Meteorological data is usually measured at stations, and can be represented as such in cmf. Cells have the method <code>get_weather(time)</code> and <code>get_rainfall(time)</code> to get the current meteorological observations. If you are doing nothing, this function returns a default <a class="el" href="structcmf_1_1atmosphere_1_1_weather.html">Weather</a>. However, if the cell is bound to one or several measurement station (<a class="el" href="classcmf_1_1atmosphere_1_1_meteo_station.html">MeteoStation</a> or <a class="el" href="classcmf_1_1atmosphere_1_1_rainfall_station.html">RainfallStation</a>, the functions return the condition of the bound station or an interpolated value. To simplify this connection, the stations take a position in project coordinates to find the distance of the cell to the stations of the project. The <a class="el" href="classcmf_1_1math_1_1timeseries.html">timeseries</a> containing the forcing data are filled from any data source using standard Python.</p>
 <h2>Rainfall stations</h2>
 <p>Rainfall stations consists of a <a class="el" href="classcmf_1_1math_1_1timeseries.html">timeseries</a> of rainfall intensities in mm/day. Note that the unit is '''always''' mm/day, regardless of the timestep of your timeseries. If you have, for example, hourly measured rainfall data in mm/h, you have to multiply the value by 24 to get the rainfall in mm/day. Since you can calculate with timeseries, you can simply move the unit conversion into your data loading script.</p>
@@ -159,7 +158,7 @@ $(document).ready(function(){initNavTree('cmf_tut_meteostation.html','');});
 <a class="el" href="http://www.uni-giessen.de/hydro"> 
 Institute of Landscape Ecology and Resources Management,University of Gie&szlig;en</a>
 </h3></td>
-<td>Generated: Fri Dec 14 2018 08:42:56</td>
+<td>Generated: Thu Dec 20 2018 09:20:26</td>
 </tr></table>
 </small></address>
 </body>

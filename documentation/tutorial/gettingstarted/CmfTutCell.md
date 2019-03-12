@@ -17,7 +17,7 @@ documentation can be found here: [Cell](@ref cmf::upslope::Cell).
 Cells are created for a project with the following command. The position
 in space is given with the x,y,z coordinates (cartesian coordinates in
 m, eg. UTM or from a user defined origin) and the area is given in m².
-For 1D models, an area of 1000m² is helpful to use any volume in m³ as
+For 1D and lumped models, an area of 1000m² is helpful to use any volume in m³ as
 mm.
 
 ~~~~~~~~~~~~~{.py}

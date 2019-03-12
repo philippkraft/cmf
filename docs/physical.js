@@ -4,6 +4,7 @@ var physical =
     [ "Hydraulic head (surface)", "cmf_tut_volume_height.html", null ],
     [ "Head based boundary conditions", "cmf_tut_boundary2.html", null ],
     [ "Create a one dimensional Richards equation based model", "cmf_tut1d.html", null ],
+    [ "Evapo-Transpiration in multi-layered physical models", "cmf_tut_e_tphys.html", null ],
     [ "Solute transport (1D)", "cmf_tut_solute_transport1_d.html", null ],
     [ "Lateral Darcian flow", "cmf_tut_darcian_lateral_flow.html", null ],
     [ "Surface runoff", "cmf_tut_surface_runoff.html", null ],

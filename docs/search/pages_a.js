@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['query_20fluxes_20and_20states',['Query fluxes and states',['../cmf_tut_fluxes.html',1,'gettingstarted']]]
+  ['project',['Project',['../cmf_tut_project.html',1,'gettingstarted']]],
+  ['physical_20models_20with_20cmf',['Physical models with CMF',['../physical.html',1,'tutorial']]]
 ];

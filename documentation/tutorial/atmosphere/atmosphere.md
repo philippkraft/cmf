@@ -10,3 +10,4 @@
   - @subpage cmfTutET "Evapotranspiration"
   - @subpage cmfTutIntercept "Interception"
   - @subpage cmfTutSnow "Snow"
+  - @subpage cmfTutShuttleworthWallace "Using advanced method to seperate soil evaporation and transpiration"
