@@ -188,14 +188,13 @@ def make_cmf_core():
      - extra compiler flags
     """
     # Include CVODE
-    include_dirs = ['lib/include']
+    include_dirs = ['lib/include', 'lib/include/suitesparse']
     # Include numpy
     include_dirs += [get_numpy_include()]
 
     static_libraries = [('lib/lib',
-                         ['sundials_cvode', 'sundials_sunlinsolklu']),
-                        ('lib/lib/suitesparse',
-                         ['libklu', 'libamd', 'libbtf', 'libcolamd', 'suitesparseconfig']),
+                         ['sundials_cvode', 'sundials_sunlinsolklu',
+                          'klu', 'amd', 'btf', 'colamd', 'suitesparseconfig']),
                         ]
     library_dirs = []
     libraries = []
