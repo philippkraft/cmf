@@ -45,12 +45,12 @@ function sundials {
         -DBLAS_ENABLE=ON \
         -DBUILD_SHARED_LIBS=OFF \
         -DCMAKE_INSTALL_PREFIX=${SND_LIB_DIR} \
-        -DEXAMPLES_INSTALL=ON \
+        -DEXAMPLES_INSTALL=OFF \
         -DKLU_ENABLE=ON \
         -DKLU_LIBRARY_DIR=${KLU_LIB_DIR}/lib \
         -DKLU_INCLUDE_DIR=${KLU_LIB_DIR}/include \
         -DOPENMP_ENABLE=ON \
-        -DEXAMPLES_ENABLE_CXX=ON -DMPI_ENABLE=ON -DMPI_CC=mpicc \
+        -DEXAMPLES_ENABLE_CXX=OFF -DMPI_ENABLE=ON -DMPI_CC=mpicc \
         -DBUILD_ARKODE=OFF -DBUILD_CVODES=OFF -DBUILD_IDA=OFF -DBUILD_IDAS=OFF -DBUILD_KINSOL=OFF
 
 
@@ -61,7 +61,6 @@ function sundials {
 }
 
 echo "Calling from: " $CWD
-echo "Running in: " $TOOLSDIR
 echo "Installing KLU into: " $KLU_LIB_DIR
 echo "Installing SUNDIALS into: " $SND_LIB_DIR
 

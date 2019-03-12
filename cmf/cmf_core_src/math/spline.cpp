@@ -57,6 +57,7 @@ real cmf::math::cubicspline::operator()( real p )
 	if (!_valid) generate();
 	size_t n = size();
 	for(size_t i=0;i<n-1;i++)
+	{
 		if(x[i]<=p && p<=x[i+1])
 		{
 			real dx = p - x[i];
@@ -67,5 +68,6 @@ real cmf::math::cubicspline::operator()( real p )
 			real sum=a*pow(dx,3)+b*pow(dx,2)+c*dx+d;
 			return sum;
 		}
-		return std::numeric_limits<real>::quiet_NaN();
+	}
+	return std::numeric_limits<real>::quiet_NaN();
 }

@@ -229,7 +229,15 @@ def make_cmf_core():
         # Move static libraries to libraries, because MSVC does not
         # seperate between dynamic and static libraries at this point
         for lib_dir, libs in static_libraries:
-            libraries.extend(libs)
+            checked_libs=[]
+            for lib in libs:
+                if os.path.exists(os.path.join(lib_dir, lib + '.lib')):
+                    checked_libs.append(lib)
+                elif os.path.exists(os.path.join(lib_dir, 'lib' + lib + '.lib')):
+                    checked_libs.append('lib' + lib)
+                else:
+                    raise FileNotFoundError("Can't find static library " + os.path.join(lib_dir, lib))
+            libraries.extend(checked_libs)
             library_dirs.append(lib_dir)
 
     else:
