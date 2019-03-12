@@ -54,7 +54,7 @@ except ImportError:
 
 swig = False
 openmp = False
-
+debug = False
 
 class CmfBuildExt(build_ext):
     """
@@ -223,8 +223,9 @@ def make_cmf_core():
                         ]
         if openmp:
             compile_args.append("/openmp")
-
-        link_args = ["/DEBUG"]
+        
+        if debug:
+            link_args = ["/DEBUG"]
 
         # Move static libraries to libraries, because MSVC does not
         # seperate between dynamic and static libraries at this point
@@ -243,11 +244,16 @@ def make_cmf_core():
     else:
 
         compile_args = ['-Wno-comment', '-Wno-reorder', '-Wno-deprecated', '-Wno-unused',
-                        '-Wno-sign-compare', '-ggdb', '-std=c++11']
+                        '-Wno-sign-compare', '-std=c++11', '-march=native', '-mtune=native', '-pipe']
+        if debug:
+            compile_args += ['-ggdb']
+        
         if sys.platform == 'darwin':
             compile_args += ['-stdlib=libc++']
 
-        link_args = ['-ggdb']
+        link_args = []
+        if debug:
+            link_args += ['-ggdb']
 
         # Move static libraries to extra_objects (with path) to ensure static linking in posix systems
         extra_objects.extend(sum((['{}/lib{}.a'.format(lib_dir, l) for l in libs]
@@ -296,6 +302,7 @@ if __name__ == '__main__':
     updateversion()
     openmp = not pop_arg('noopenmp')
     swig = pop_arg('swig')
+    debug = not pop_arg('nodebug')
     ext = [make_cmf_core()]
     description = 'Catchment Modelling Framework - A hydrological modelling toolkit'
     long_description = io.open('README.rst', encoding='utf-8').read()
