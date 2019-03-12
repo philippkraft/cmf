@@ -103,27 +103,11 @@ def _swig_setattr_nondynamic_method(set):
 SHARED_PTR_DISOWN = _cmf_core.SHARED_PTR_DISOWN
 
 def get_parallel_threads(*args):
-    """
-    get_parallel_threads() -> int
-
-    int
-    cmf::math::get_parallel_threads()
-
-    Returns the max number of threads used by OpenMP in parallel sections
-    of the code. 
-    """
+    """get_parallel_threads() -> int"""
     return _cmf_core.get_parallel_threads(*args)
 
 def set_parallel_threads(*args, **kwargs):
-    """
-    set_parallel_threads(int numthreads) -> int
-
-    int
-    cmf::math::set_parallel_threads(int numthreads)
-
-    Set the number of threads used by OpenMP in parallel sections of the
-    code. 
-    """
+    """set_parallel_threads(int numthreads) -> int"""
     return _cmf_core.set_parallel_threads(*args, **kwargs)
 class cubicspline(object):
     """
@@ -1721,33 +1705,7 @@ never = cvar.never
 
 
 def nash_sutcliffe(*args, **kwargs):
-    """
-    nash_sutcliffe(timeseries model, timeseries observation) -> double
-
-    double
-    cmf::math::nash_sutcliffe(const cmf::math::timeseries &model, const
-    cmf::math::timeseries &observation)
-
-    Calculates the Nash-Sutcliffe efficiency of a modeled timeseries in
-    comparison with an observed timeseries.
-
-    The Nash-Sutcliffe efficiancy is defined as: 
-
-    .. math::
-
-         E = 1 -
-        \\frac{\\sum_{t=1}^{T}(M_t - O_t)^2}{\\sum_{t=1}^{T}(O_t -
-        \\overline{O})^2}
-
-    where  :math:`T` is the number of observation time
-    steps
-
-    :math:`M` is the timeseries of model results matchinig O
-
-    :math:`O` is the timeseries containing observations
-
-    :math:`\\overline{O}` is the arithmetic mean of observations 
-    """
+    """nash_sutcliffe(timeseries model, timeseries observation) -> double"""
     return _cmf_core.nash_sutcliffe(*args, **kwargs)
 
 def AsCMFtime(date):
@@ -2126,615 +2084,6 @@ StateVariableList.__len__ = new_instancemethod(_cmf_core.StateVariableList___len
 _cmf_core.StateVariableList_swigregister(StateVariableList)
 # StateVariableList end
 
-class Integrator(object):
-    """
-
-
-    Base class for any kind of integrator.
-
-    Pure virtual functions: Integrate
-
-    copy Please provide a custom copy constructor
-
-    C++ includes: integrator.h 
-    """
-
-    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
-
-    def __init__(self, *args, **kwargs):
-        raise AttributeError("No constructor defined - class is abstract")
-    __repr__ = _swig_repr
-
-    def get_dxdt(self, *args, **kwargs):
-        """
-        get_dxdt(Integrator self, Time time) -> cmf::math::num_array
-
-        cmf::math::num_array get_dxdt(Time time) const 
-        """
-        return _cmf_core.Integrator_get_dxdt(self, *args, **kwargs)
-
-
-    def add_states(self, *args, **kwargs):
-        """
-        add_states(Integrator self, StateVariableOwner stateOwner)
-
-        virtual
-        void add_states(cmf::math::StateVariableOwner &stateOwner)
-
-        Add state variables from a StateVariableOwner. 
-        """
-        return _cmf_core.Integrator_add_states(self, *args, **kwargs)
-
-
-    def add_single_state(self, *args, **kwargs):
-        """
-        add_single_state(Integrator self, cmf::math::StateVariable::ptr state)
-
-        virtual void add_single_state(cmf::math::StateVariable::ptr state)
-
-        Adds a single state variable to the integrator. 
-        """
-        return _cmf_core.Integrator_add_single_state(self, *args, **kwargs)
-
-    integratables = _swig_property(_cmf_core.Integrator_integratables_get, _cmf_core.Integrator_integratables_set)
-    reset_integratables = _swig_property(_cmf_core.Integrator_reset_integratables_get, _cmf_core.Integrator_reset_integratables_set)
-    use_OpenMP = _swig_property(_cmf_core.Integrator_use_OpenMP_get, _cmf_core.Integrator_use_OpenMP_set)
-
-    def size(self, *args, **kwargs):
-        """
-        size(Integrator self) -> size_t
-
-        size_t size()
-        const
-
-        returns the number of state variables 
-        """
-        return _cmf_core.Integrator_size(self, *args, **kwargs)
-
-
-    def get_state(self, *args, **kwargs):
-        """
-        get_state(Integrator self, ptrdiff_t position) -> real
-
-        real
-        get_state(ptrdiff_t position) const
-
-        Returns the statevariable at position Simplifies the assessment of
-        state variables. 
-        """
-        return _cmf_core.Integrator_get_state(self, *args, **kwargs)
-
-
-    def set_state(self, *args, **kwargs):
-        """
-        set_state(Integrator self, ptrdiff_t position, real newState)
-
-        void
-        set_state(ptrdiff_t position, real newState)
-
-        Simplifies the assessment of state variables. 
-        """
-        return _cmf_core.Integrator_set_state(self, *args, **kwargs)
-
-
-    def get_states(self, *args):
-        """
-        get_states(Integrator self) -> cmf::math::num_array
-        get_states(Integrator self) -> StateVariableList
-
-        StateVariableList get_states()
-
-        gets the state variables of the integrator 
-        """
-        return _cmf_core.Integrator_get_states(self, *args)
-
-    __swig_destroy__ = _cmf_core.delete_Integrator
-
-    def get_t(self, *args, **kwargs):
-        """
-        get_t(Integrator self) -> Time
-
-        cmf::math::Time
-        get_t() const
-
-        Returns the current model time. 
-        """
-        return _cmf_core.Integrator_get_t(self, *args, **kwargs)
-
-
-    def set_t(self, *args, **kwargs):
-        """
-        set_t(Integrator self, Time val)
-
-        void
-        set_t(cmf::math::Time val)
-
-        Sets the current model time. 
-        """
-        return _cmf_core.Integrator_set_t(self, *args, **kwargs)
-
-
-    def get_dt(self, *args, **kwargs):
-        """
-        get_dt(Integrator self) -> Time
-
-        cmf::math::Time
-        get_dt() const
-
-        Returns the last time step. 
-        """
-        return _cmf_core.Integrator_get_dt(self, *args, **kwargs)
-
-
-    def reset(self, *args, **kwargs):
-        """
-        reset(Integrator self)
-
-        virtual void
-        reset()
-
-        Resets any saved history (for multistep methods) 
-        """
-        return _cmf_core.Integrator_reset(self, *args, **kwargs)
-
-
-    def copy(self, *args, **kwargs):
-        """
-        copy(Integrator self) -> Integrator
-
-        virtual
-        Integrator* copy() const =0
-
-        Polymorphic copy constructor. 
-        """
-        return _cmf_core.Integrator_copy(self, *args, **kwargs)
-
-
-    def integrate(self, *args, **kwargs):
-        """
-        integrate(Integrator self, Time t_max, Time dt) -> int
-
-        virtual int
-        integrate(cmf::math::Time t_max, cmf::math::Time dt)=0
-
-        Integrates the vector of state variables.
-
-        Parameters:
-        -----------
-
-        t_max:  To stop the model (if running in a model framework) at time
-        steps of value exchange e.g. full hours, the next value exchange time
-        can be given
-
-        dt:  Takes the proposed time step, and changes it into the effectively
-        used time step according to the local stiffness of the problem and
-        MaxTime 
-        """
-        return _cmf_core.Integrator_integrate(self, *args, **kwargs)
-
-
-    def integrate_until(self, *args, **kwargs):
-        """
-        integrate_until(Integrator self, Time t_max, Time dt, bool reset=False)
-
-        void
-        integrate_until(cmf::math::Time t_max, cmf::math::Time dt=Time(), bool
-        reset=false)
-
-        Integrates the vector of state variables until t_max.
-
-        Parameters:
-        -----------
-
-        t_max:   Time, the solver should run to
-
-        dt:   Time step (may be omitted)
-
-        reset:  If true, solver is reseted before integration starts 
-        """
-        return _cmf_core.Integrator_integrate_until(self, *args, **kwargs)
-
-
-    def __getitem__(self, *args, **kwargs):
-        """__getitem__(Integrator self, int index) -> cmf::math::StateVariable::ptr"""
-        return _cmf_core.Integrator___getitem__(self, *args, **kwargs)
-
-
-    def __call__(self,t,reset=False):
-        if t<self.t:
-            self.integrate_until(self.t+t,reset=reset)
-        else:
-            self.integrate_until(t,reset=reset)
-        return self.t
-    t = property(get_t,set_t,doc="Sets the actual time of the solution")
-    dt = property(get_dt,doc="Get the current time step of the solver")
-    def run(self,start=None,end=None,step=day*1):
-        if not start is None:
-            self.t=start
-        if end is None:
-            end = self.t + 100*step
-        while self.t<end:
-            self(self.t+step)
-            yield self.t
-
-Integrator.get_dxdt = new_instancemethod(_cmf_core.Integrator_get_dxdt, None, Integrator)
-Integrator.add_states = new_instancemethod(_cmf_core.Integrator_add_states, None, Integrator)
-Integrator.add_single_state = new_instancemethod(_cmf_core.Integrator_add_single_state, None, Integrator)
-Integrator.size = new_instancemethod(_cmf_core.Integrator_size, None, Integrator)
-Integrator.get_state = new_instancemethod(_cmf_core.Integrator_get_state, None, Integrator)
-Integrator.set_state = new_instancemethod(_cmf_core.Integrator_set_state, None, Integrator)
-Integrator.get_states = new_instancemethod(_cmf_core.Integrator_get_states, None, Integrator)
-Integrator.get_t = new_instancemethod(_cmf_core.Integrator_get_t, None, Integrator)
-Integrator.set_t = new_instancemethod(_cmf_core.Integrator_set_t, None, Integrator)
-Integrator.get_dt = new_instancemethod(_cmf_core.Integrator_get_dt, None, Integrator)
-Integrator.reset = new_instancemethod(_cmf_core.Integrator_reset, None, Integrator)
-Integrator.copy = new_instancemethod(_cmf_core.Integrator_copy, None, Integrator)
-Integrator.integrate = new_instancemethod(_cmf_core.Integrator_integrate, None, Integrator)
-Integrator.integrate_until = new_instancemethod(_cmf_core.Integrator_integrate_until, None, Integrator)
-Integrator.__getitem__ = new_instancemethod(_cmf_core.Integrator___getitem__, None, Integrator)
-_cmf_core.Integrator_swigregister(Integrator)
-# Integrator end
-
-class BDF2(Integrator):
-    """
-
-
-    An order 2 BDF-Method with fixed-point iteration and variable step
-    size.
-
-    Derived from Roussel C. and Roussel M. (2003) "Generic Object-
-    Oriented Differential Equation Integrators", C/C++ User Journal, Nov.
-    2003,http://www.ddj.com/cpp/184401724?pgno=8 and
-
-    Eckert S., Baaser H., Gross D. and Scherf O. (2004) "A BDF2
-    integration method with step size control for elasto-plasticity",
-    Computational Mechanics 34, 377 - 386, DOI: 10.1007/s00466-004-0581-1
-
-    Most important function: Integrate
-
-    C++ includes: bdf2.h 
-    """
-
-    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
-    __repr__ = _swig_repr
-
-    def get_error_position(self, *args, **kwargs):
-        """
-        get_error_position(BDF2 self) -> int
-
-        int
-        get_error_position() const
-
-        Returns the position of the biggest error. 
-        """
-        return _cmf_core.BDF2_get_error_position(self, *args, **kwargs)
-
-    max_order = _swig_property(_cmf_core.BDF2_max_order_get, _cmf_core.BDF2_max_order_set)
-
-    def __init__(self, *args):
-        """
-        __init__(cmf::math::BDF2 self, real epsilon=1e-9, Time tStepMin) -> BDF2
-        __init__(cmf::math::BDF2 self, StateVariableOwner states, real epsilon=1e-9, Time tStepMin) -> BDF2
-        __init__(cmf::math::BDF2 self, Integrator templ) -> BDF2
-
-        BDF2(const Integrator
-        &templ)
-
-        Constructs a new BDF2 integrator.
-
-        Parameters:
-        -----------
-
-        templ:  Template to be used to construct a BDF2 method 
-        """
-        _cmf_core.BDF2_swiginit(self, _cmf_core.new_BDF2(*args))
-    __swig_destroy__ = _cmf_core.delete_BDF2
-BDF2.get_error_position = new_instancemethod(_cmf_core.BDF2_get_error_position, None, BDF2)
-_cmf_core.BDF2_swigregister(BDF2)
-# BDF2 end
-
-class ExplicitEuler_fixed(Integrator):
-    """
-
-
-    An explicit Euler integrator, with a fixed time step.
-
-    C++ includes: explicit_euler.h 
-    """
-
-    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
-    __repr__ = _swig_repr
-
-    def __init__(self, *args):
-        """
-        __init__(cmf::math::ExplicitEuler_fixed self, StateVariableOwner states) -> ExplicitEuler_fixed
-        __init__(cmf::math::ExplicitEuler_fixed self) -> ExplicitEuler_fixed
-        __init__(cmf::math::ExplicitEuler_fixed self, Integrator copy) -> ExplicitEuler_fixed
-
-        ExplicitEuler_fixed(const Integrator &copy)
-
-        copy constructor 
-        """
-        _cmf_core.ExplicitEuler_fixed_swiginit(self, _cmf_core.new_ExplicitEuler_fixed(*args))
-    __swig_destroy__ = _cmf_core.delete_ExplicitEuler_fixed
-_cmf_core.ExplicitEuler_fixed_swigregister(ExplicitEuler_fixed)
-# ExplicitEuler_fixed end
-
-class HeunIntegrator(Integrator):
-    """
-
-
-    A simple predictor - corrector solver.
-
-    Not tested and very experimentally :math:`y^{n+1} = y^n + \\alpha f(y^n + f(y^n)dt)dt + (1-\\alpha)f(y^n)dt`
-
-    C++ includes: explicit_euler.h 
-    """
-
-    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
-    __repr__ = _swig_repr
-    alpha = _swig_property(_cmf_core.HeunIntegrator_alpha_get, _cmf_core.HeunIntegrator_alpha_set)
-
-    def __init__(self, *args):
-        """
-        __init__(cmf::math::HeunIntegrator self, StateVariableOwner states, real Alpha=0.5) -> HeunIntegrator
-        __init__(cmf::math::HeunIntegrator self, real Alpha=0.5) -> HeunIntegrator
-        __init__(cmf::math::HeunIntegrator self, Integrator copy) -> HeunIntegrator
-
-        HeunIntegrator(const Integrator &copy)
-
-        copy constructor 
-        """
-        _cmf_core.HeunIntegrator_swiginit(self, _cmf_core.new_HeunIntegrator(*args))
-    __swig_destroy__ = _cmf_core.delete_HeunIntegrator
-_cmf_core.HeunIntegrator_swigregister(HeunIntegrator)
-# HeunIntegrator end
-
-class ImplicitEuler(Integrator):
-    """
-
-
-    An implicit (backward) Euler integrator using fixpoint iteration.
-
-    C++ includes: implicit_euler.h 
-    """
-
-    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
-    __repr__ = _swig_repr
-    dt_min = _swig_property(_cmf_core.ImplicitEuler_dt_min_get, _cmf_core.ImplicitEuler_dt_min_set)
-
-    def __init__(self, *args):
-        """
-        __init__(cmf::math::ImplicitEuler self, StateVariableOwner states, real epsilon=1e-9, Time tStepMin) -> ImplicitEuler
-        __init__(cmf::math::ImplicitEuler self, real epsilon=1e-9, Time tStepMin) -> ImplicitEuler
-        __init__(cmf::math::ImplicitEuler self, Integrator arg2) -> ImplicitEuler
-
-        ImplicitEuler(const Integrator &)
-
-        copy constructor 
-        """
-        _cmf_core.ImplicitEuler_swiginit(self, _cmf_core.new_ImplicitEuler(*args))
-    __swig_destroy__ = _cmf_core.delete_ImplicitEuler
-_cmf_core.ImplicitEuler_swigregister(ImplicitEuler)
-# ImplicitEuler end
-
-class RKFIntegrator(Integrator):
-    """
-
-
-    Integrates a vector of cmf::math::StateVariable with the Runge-Kutta-
-    Fehlberg (RKF54) method.
-
-    C++ includes: RKFintegrator.h 
-    """
-
-    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
-    __repr__ = _swig_repr
-
-    def __init__(self, *args):
-        """
-        __init__(cmf::math::RKFIntegrator self, StateVariableOwner states, real epsilon=1e-9, Time dt_min) -> RKFIntegrator
-        __init__(cmf::math::RKFIntegrator self, real epsilon=1e-9, Time dt_min) -> RKFIntegrator
-
-        RKFIntegrator(real epsilon=1e-9, cmf::math::Time
-        dt_min=cmf::math::timespan(1000))
-
-        Constructs a new RKFIntegrator.
-
-        Parameters:
-        -----------
-
-        epsilon:  relative error tolerance per time step (default=1e-9)
-
-        dt_min:  minimum time step (default=1s) 
-        """
-        _cmf_core.RKFIntegrator_swiginit(self, _cmf_core.new_RKFIntegrator(*args))
-    __swig_destroy__ = _cmf_core.delete_RKFIntegrator
-_cmf_core.RKFIntegrator_swigregister(RKFIntegrator)
-# RKFIntegrator end
-
-class CVodeIntegrator(Integrator):
-    """
-
-
-    A wrapper class for the CVODE integrator from the SUNDIALS library.
-
-    https://computation.llnl.gov/casc/sundials/main.html
-
-    C++ includes: cvodeintegrator.h 
-    """
-
-    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
-    __repr__ = _swig_repr
-    preconditioner = _swig_property(_cmf_core.CVodeIntegrator_preconditioner_get, _cmf_core.CVodeIntegrator_preconditioner_set)
-    MaxNonLinearIterations = _swig_property(_cmf_core.CVodeIntegrator_MaxNonLinearIterations_get, _cmf_core.CVodeIntegrator_MaxNonLinearIterations_set)
-    MaxConvergenceFailures = _swig_property(_cmf_core.CVodeIntegrator_MaxConvergenceFailures_get, _cmf_core.CVodeIntegrator_MaxConvergenceFailures_set)
-    MaxErrorTestFailures = _swig_property(_cmf_core.CVodeIntegrator_MaxErrorTestFailures_get, _cmf_core.CVodeIntegrator_MaxErrorTestFailures_set)
-    maxl = _swig_property(_cmf_core.CVodeIntegrator_maxl_get, _cmf_core.CVodeIntegrator_maxl_set)
-    LinearSolver = _swig_property(_cmf_core.CVodeIntegrator_LinearSolver_get, _cmf_core.CVodeIntegrator_LinearSolver_set)
-    MaxOrder = _swig_property(_cmf_core.CVodeIntegrator_MaxOrder_get, _cmf_core.CVodeIntegrator_MaxOrder_set)
-    max_step = _swig_property(_cmf_core.CVodeIntegrator_max_step_get, _cmf_core.CVodeIntegrator_max_step_set)
-
-    def initialize(self, *args, **kwargs):
-        """
-        initialize(CVodeIntegrator self)
-
-        void
-        initialize()
-
-        Initializes the solver. Do not add or remove state variables after
-        initialization. The solver is automatically intialized when
-        integrating. 
-        """
-        return _cmf_core.CVodeIntegrator_initialize(self, *args, **kwargs)
-
-
-    def release(self, *args, **kwargs):
-        """
-        release(CVodeIntegrator self)
-
-        void
-        release()
-
-        Releases the internal solver. Call release before you add state
-        variables or to change properties. 
-        """
-        return _cmf_core.CVodeIntegrator_release(self, *args, **kwargs)
-
-
-    def __init__(self, *args):
-        """
-        __init__(cmf::math::CVodeIntegrator self, real epsilon=1e-9, char _preconditioner) -> CVodeIntegrator
-        __init__(cmf::math::CVodeIntegrator self, StateVariableOwner states, real epsilon=1e-9, char _preconditioner) -> CVodeIntegrator
-        __init__(cmf::math::CVodeIntegrator self, CVodeIntegrator templ) -> CVodeIntegrator
-
-        CVodeIntegrator(const CVodeIntegrator &templ)
-
-        copy constructor, creates a new CVODE integrator similiar to the
-        given, but without statevariables 
-        """
-        _cmf_core.CVodeIntegrator_swiginit(self, _cmf_core.new_CVodeIntegrator(*args))
-
-    def get_error(self, *args, **kwargs):
-        """
-        get_error(CVodeIntegrator self) -> cmf::math::num_array
-
-        cmf::math::num_array get_error() const
-
-        Error vector of the integrator. 
-        """
-        return _cmf_core.CVodeIntegrator_get_error(self, *args, **kwargs)
-
-
-    def get_nonlinear_iterations(self, *args, **kwargs):
-        """
-        get_nonlinear_iterations(CVodeIntegrator self) -> int
-
-        int
-        get_nonlinear_iterations() const
-
-        Returns the number of non-linear iterations performed. Calls
-        CVodeGetNumNonlinSolvIters. 
-        """
-        return _cmf_core.CVodeIntegrator_get_nonlinear_iterations(self, *args, **kwargs)
-
-
-    def get_rhsevals(self, *args, **kwargs):
-        """
-        get_rhsevals(CVodeIntegrator self) -> int
-
-        int
-        get_rhsevals() const
-
-        Returns the number of evaluations of the right hand side of the ODE.
-        Calls CVodeGetNumRhsEvals. 
-        """
-        return _cmf_core.CVodeIntegrator_get_rhsevals(self, *args, **kwargs)
-
-
-    def copy(self, *args, **kwargs):
-        """
-        copy(CVodeIntegrator self) -> CVodeIntegrator
-
-        CVodeIntegrator* copy() const
-
-        Polymorphic copy constructor. 
-        """
-        return _cmf_core.CVodeIntegrator_copy(self, *args, **kwargs)
-
-    __swig_destroy__ = _cmf_core.delete_CVodeIntegrator
-    order = _swig_property(_cmf_core.CVodeIntegrator_order_get)
-CVodeIntegrator.initialize = new_instancemethod(_cmf_core.CVodeIntegrator_initialize, None, CVodeIntegrator)
-CVodeIntegrator.release = new_instancemethod(_cmf_core.CVodeIntegrator_release, None, CVodeIntegrator)
-CVodeIntegrator.get_error = new_instancemethod(_cmf_core.CVodeIntegrator_get_error, None, CVodeIntegrator)
-CVodeIntegrator.get_nonlinear_iterations = new_instancemethod(_cmf_core.CVodeIntegrator_get_nonlinear_iterations, None, CVodeIntegrator)
-CVodeIntegrator.get_rhsevals = new_instancemethod(_cmf_core.CVodeIntegrator_get_rhsevals, None, CVodeIntegrator)
-CVodeIntegrator.copy = new_instancemethod(_cmf_core.CVodeIntegrator_copy, None, CVodeIntegrator)
-_cmf_core.CVodeIntegrator_swigregister(CVodeIntegrator)
-# CVodeIntegrator end
-
-class MultiIntegrator(Integrator):
-    """
-
-
-    The MultiIntegrator is a wrapper for a bunch integrators. The states
-    of the integrators should not have direct connections over integrator
-    boundaries.
-
-    C++ includes: multiintegrator.h 
-    """
-
-    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
-    __repr__ = _swig_repr
-
-    def copy(self, *args, **kwargs):
-        """
-        copy(MultiIntegrator self) -> MultiIntegrator
-
-        virtual
-        cmf::math::MultiIntegrator* copy() const
-
-        Polymorphic copy constructor. 
-        """
-        return _cmf_core.MultiIntegrator_copy(self, *args, **kwargs)
-
-
-    def add_states_to_integrator(self, *args, **kwargs):
-        """
-        add_states_to_integrator(MultiIntegrator self, StateVariableOwner stateOwner, int integrator_position)
-
-        void
-        add_states_to_integrator(cmf::math::StateVariableOwner &stateOwner,
-        int integrator_position)
-
-        Add state variables from a StateVariableOwner. 
-        """
-        return _cmf_core.MultiIntegrator_add_states_to_integrator(self, *args, **kwargs)
-
-
-    def __init__(self, *args, **kwargs):
-        """
-        __init__(cmf::math::MultiIntegrator self, Integrator template_integrator, int count) -> MultiIntegrator
-
-        MultiIntegrator(const cmf::math::Integrator &template_integrator, int
-        count)
-
-        Creates a new MultiIntegrator.
-
-        Parameters:
-        -----------
-
-        template_integrator:  Template for the integrators
-
-        count:  Number of integrators 
-        """
-        _cmf_core.MultiIntegrator_swiginit(self, _cmf_core.new_MultiIntegrator(*args, **kwargs))
-    __swig_destroy__ = _cmf_core.delete_MultiIntegrator
-MultiIntegrator.copy = new_instancemethod(_cmf_core.MultiIntegrator_copy, None, MultiIntegrator)
-MultiIntegrator.add_states_to_integrator = new_instancemethod(_cmf_core.MultiIntegrator_add_states_to_integrator, None, MultiIntegrator)
-_cmf_core.MultiIntegrator_swigregister(MultiIntegrator)
-# MultiIntegrator end
-
 class Adsorption(object):
     """
 
@@ -2960,7 +2309,7 @@ class FreundlichAdsorbtion(Adsorption):
     calculate the free tracer mass. The eq. above can not be rearanged to
     get :math:`x_{free}` from :math:`x_{tot}`. Instead, the value is iterated
     usingregula falsi. If n is near to 1, using LinearAdsorption will
-    speed up your calculations.  Check if an analytical solution is
+    speed up your calculations.Todo Check if an analytical solution is
     available The simplest physically based adsorption model by Langmuir (
     LangmuirAdsorption) has also a analytical solution and is hence
     calculated faster then Freundlich.
@@ -12784,8 +12133,8 @@ class PriestleyTaylorET(stressedET):
 
     .. math::
 
-        lambda ET &=& \\alpha \\frac{\\Delta}{\\Delta +
-        \\gamma} \\left(R_n - G\\right)
+        lambda ET = \\alpha \\frac{\\Delta}{\\Delta + \\gamma}
+        \\left(R_n - G\\right)
 
     where:  :math:`\\Delta = 4098 \\frac{0.6108 e^{17.27 T}}{(T+237.3)^2} \\frac{kPa}{^\\circ C}`,
     the slope of the vapor pressure/ temperature curve
@@ -12908,9 +12257,23 @@ class TurcET(stressedET):
 
     Calculates ETpot after Turc (DVWK).
 
-    ETact is calculated using a WaterStressFunction
+    :math:`ET_{act}` is calculated using a WaterStressFunction
 
-    :math:`ET_{pot,Turc} = 0.0031 C (R_G + 209) \\frac{T}{T + 15}`
+
+
+    .. math::
+
+         ET_{pot,Turc} = 0.0031 C(rH) (R_G + 209) \\frac{T}{T + 15}
+
+
+    where:  :math:`T` is the mean daily temperature
+
+    :math:`C(rH) = \\begin{cases} 1 + \\frac{50\\% - rH}{70\\%}, & rH < 50\\% \\\\ 1 & rH > 50\\% \\end{cases}`, a modification
+    parameter for low humidity
+
+    :math:`rH` relative Humidity in %
+
+    :math:`R_G` global radiation in :math:`J/cm^2`
 
     C++ includes: ET.h 
     """
@@ -13810,6 +13173,625 @@ project.node_count = new_instancemethod(_cmf_core.project_node_count, None, proj
 project.get_storages = new_instancemethod(_cmf_core.project_get_storages, None, project)
 _cmf_core.project_swigregister(project)
 # project end
+
+class Integrator(object):
+    """
+
+
+    Base class for any kind of integrator.
+
+    Pure virtual functions: Integrate
+
+    copy Please provide a custom copy constructor
+
+    C++ includes: integrator.h 
+    """
+
+    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+
+    def __init__(self, *args, **kwargs):
+        raise AttributeError("No constructor defined - class is abstract")
+    __repr__ = _swig_repr
+
+    def __getitem__(self, *args, **kwargs):
+        """__getitem__(Integrator self, int position) -> cmf::math::StateVariable::ptr"""
+        return _cmf_core.Integrator___getitem__(self, *args, **kwargs)
+
+
+    def get_dxdt(self, *args, **kwargs):
+        """
+        get_dxdt(Integrator self, Time time) -> cmf::math::num_array
+
+        cmf::math::num_array get_dxdt(Time time) const 
+        """
+        return _cmf_core.Integrator_get_dxdt(self, *args, **kwargs)
+
+
+    def add_states(self, *args, **kwargs):
+        """
+        add_states(Integrator self, StateVariableOwner stateOwner)
+
+        virtual
+        void add_states(cmf::math::StateVariableOwner &stateOwner)
+
+        Add state variables from a StateVariableOwner. 
+        """
+        return _cmf_core.Integrator_add_states(self, *args, **kwargs)
+
+
+    def add_single_state(self, *args, **kwargs):
+        """
+        add_single_state(Integrator self, cmf::math::StateVariable::ptr state)
+
+        virtual void add_single_state(cmf::math::StateVariable::ptr state)
+
+        Adds a single state variable to the integrator. 
+        """
+        return _cmf_core.Integrator_add_single_state(self, *args, **kwargs)
+
+    integratables = _swig_property(_cmf_core.Integrator_integratables_get, _cmf_core.Integrator_integratables_set)
+    reset_integratables = _swig_property(_cmf_core.Integrator_reset_integratables_get, _cmf_core.Integrator_reset_integratables_set)
+    use_OpenMP = _swig_property(_cmf_core.Integrator_use_OpenMP_get, _cmf_core.Integrator_use_OpenMP_set)
+
+    def size(self, *args, **kwargs):
+        """
+        size(Integrator self) -> size_t
+
+        size_t size()
+        const
+
+        returns the number of state variables 
+        """
+        return _cmf_core.Integrator_size(self, *args, **kwargs)
+
+
+    def get_state(self, *args, **kwargs):
+        """
+        get_state(Integrator self, ptrdiff_t position) -> real
+
+        real
+        get_state(ptrdiff_t position) const
+
+        Returns the statevariable at position Simplifies the assessment of
+        state variables. 
+        """
+        return _cmf_core.Integrator_get_state(self, *args, **kwargs)
+
+
+    def set_state(self, *args, **kwargs):
+        """
+        set_state(Integrator self, ptrdiff_t position, real newState)
+
+        void
+        set_state(ptrdiff_t position, real newState)
+
+        Simplifies the assessment of state variables. 
+        """
+        return _cmf_core.Integrator_set_state(self, *args, **kwargs)
+
+
+    def get_states(self, *args):
+        """
+        get_states(Integrator self) -> cmf::math::num_array
+        get_states(Integrator self) -> StateVariableList
+
+        StateVariableList get_states()
+
+        gets the state variables of the integrator 
+        """
+        return _cmf_core.Integrator_get_states(self, *args)
+
+    __swig_destroy__ = _cmf_core.delete_Integrator
+
+    def get_t(self, *args, **kwargs):
+        """
+        get_t(Integrator self) -> Time
+
+        cmf::math::Time
+        get_t() const
+
+        Returns the current model time. 
+        """
+        return _cmf_core.Integrator_get_t(self, *args, **kwargs)
+
+
+    def set_t(self, *args, **kwargs):
+        """
+        set_t(Integrator self, Time val)
+
+        void
+        set_t(cmf::math::Time val)
+
+        Sets the current model time. 
+        """
+        return _cmf_core.Integrator_set_t(self, *args, **kwargs)
+
+
+    def get_dt(self, *args, **kwargs):
+        """
+        get_dt(Integrator self) -> Time
+
+        cmf::math::Time
+        get_dt() const
+
+        Returns the last time step. 
+        """
+        return _cmf_core.Integrator_get_dt(self, *args, **kwargs)
+
+
+    def reset(self, *args, **kwargs):
+        """
+        reset(Integrator self)
+
+        virtual void
+        reset()
+
+        Resets any saved history (for multistep methods) 
+        """
+        return _cmf_core.Integrator_reset(self, *args, **kwargs)
+
+
+    def copy(self, *args, **kwargs):
+        """
+        copy(Integrator self) -> Integrator
+
+        virtual
+        Integrator* copy() const =0
+
+        Polymorphic copy constructor. 
+        """
+        return _cmf_core.Integrator_copy(self, *args, **kwargs)
+
+
+    def integrate(self, *args, **kwargs):
+        """
+        integrate(Integrator self, Time t_max, Time dt) -> int
+
+        virtual int
+        integrate(cmf::math::Time t_max, cmf::math::Time dt)=0
+
+        Integrates the vector of state variables.
+
+        Parameters:
+        -----------
+
+        t_max:  To stop the model (if running in a model framework) at time
+        steps of value exchange e.g. full hours, the next value exchange time
+        can be given
+
+        dt:  Takes the proposed time step, and changes it into the effectively
+        used time step according to the local stiffness of the problem and
+        MaxTime 
+        """
+        return _cmf_core.Integrator_integrate(self, *args, **kwargs)
+
+
+    def integrate_until(self, *args, **kwargs):
+        """
+        integrate_until(Integrator self, Time t_max, Time dt, bool reset=False)
+
+        void
+        integrate_until(cmf::math::Time t_max, cmf::math::Time dt=Time(), bool
+        reset=false)
+
+        Integrates the vector of state variables until t_max.
+
+        Parameters:
+        -----------
+
+        t_max:   Time, the solver should run to
+
+        dt:   Time step (may be omitted)
+
+        reset:  If true, solver is reseted before integration starts 
+        """
+        return _cmf_core.Integrator_integrate_until(self, *args, **kwargs)
+
+
+    def __repr__(self): 
+        return self.to_string()
+
+
+    def __len__(self, *args, **kwargs):
+        """__len__(Integrator self) -> size_t"""
+        return _cmf_core.Integrator___len__(self, *args, **kwargs)
+
+
+    def __call__(self,t,reset=False):
+        if t<self.t:
+            self.integrate_until(self.t+t,reset=reset)
+        else:
+            self.integrate_until(t,reset=reset)
+        return self.t
+    t = property(get_t,set_t,doc="Sets the actual time of the solution")
+    dt = property(get_dt,doc="Get the current time step of the solver")
+    def run(self,start=None,end=None,step=day*1):
+        if not start is None:
+            self.t=start
+        if end is None:
+            end = self.t + 100*step
+        while self.t<end:
+            self(self.t+step)
+            yield self.t
+
+Integrator.__getitem__ = new_instancemethod(_cmf_core.Integrator___getitem__, None, Integrator)
+Integrator.get_dxdt = new_instancemethod(_cmf_core.Integrator_get_dxdt, None, Integrator)
+Integrator.add_states = new_instancemethod(_cmf_core.Integrator_add_states, None, Integrator)
+Integrator.add_single_state = new_instancemethod(_cmf_core.Integrator_add_single_state, None, Integrator)
+Integrator.size = new_instancemethod(_cmf_core.Integrator_size, None, Integrator)
+Integrator.get_state = new_instancemethod(_cmf_core.Integrator_get_state, None, Integrator)
+Integrator.set_state = new_instancemethod(_cmf_core.Integrator_set_state, None, Integrator)
+Integrator.get_states = new_instancemethod(_cmf_core.Integrator_get_states, None, Integrator)
+Integrator.get_t = new_instancemethod(_cmf_core.Integrator_get_t, None, Integrator)
+Integrator.set_t = new_instancemethod(_cmf_core.Integrator_set_t, None, Integrator)
+Integrator.get_dt = new_instancemethod(_cmf_core.Integrator_get_dt, None, Integrator)
+Integrator.reset = new_instancemethod(_cmf_core.Integrator_reset, None, Integrator)
+Integrator.copy = new_instancemethod(_cmf_core.Integrator_copy, None, Integrator)
+Integrator.integrate = new_instancemethod(_cmf_core.Integrator_integrate, None, Integrator)
+Integrator.integrate_until = new_instancemethod(_cmf_core.Integrator_integrate_until, None, Integrator)
+Integrator.__len__ = new_instancemethod(_cmf_core.Integrator___len__, None, Integrator)
+_cmf_core.Integrator_swigregister(Integrator)
+# Integrator end
+
+class BDF2(Integrator):
+    """
+
+
+    An order 2 BDF-Method with fixed-point iteration and variable step
+    size.
+
+    Derived from Roussel C. and Roussel M. (2003) "Generic Object-
+    Oriented Differential Equation Integrators", C/C++ User Journal, Nov.
+    2003,http://www.ddj.com/cpp/184401724?pgno=8 and
+
+    Eckert S., Baaser H., Gross D. and Scherf O. (2004) "A BDF2
+    integration method with step size control for elasto-plasticity",
+    Computational Mechanics 34, 377 - 386, DOI: 10.1007/s00466-004-0581-1
+
+    Most important function: Integrate
+
+    C++ includes: bdf2.h 
+    """
+
+    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __repr__ = _swig_repr
+
+    def get_error_position(self, *args, **kwargs):
+        """
+        get_error_position(BDF2 self) -> int
+
+        int
+        get_error_position() const
+
+        Returns the position of the biggest error. 
+        """
+        return _cmf_core.BDF2_get_error_position(self, *args, **kwargs)
+
+    max_order = _swig_property(_cmf_core.BDF2_max_order_get, _cmf_core.BDF2_max_order_set)
+
+    def __init__(self, *args):
+        """
+        __init__(cmf::math::BDF2 self, real epsilon=1e-9, Time tStepMin) -> BDF2
+        __init__(cmf::math::BDF2 self, StateVariableOwner states, real epsilon=1e-9, Time tStepMin) -> BDF2
+        __init__(cmf::math::BDF2 self, Integrator templ) -> BDF2
+
+        BDF2(const Integrator
+        &templ)
+
+        Constructs a new BDF2 integrator.
+
+        Parameters:
+        -----------
+
+        templ:  Template to be used to construct a BDF2 method 
+        """
+        _cmf_core.BDF2_swiginit(self, _cmf_core.new_BDF2(*args))
+    __swig_destroy__ = _cmf_core.delete_BDF2
+BDF2.get_error_position = new_instancemethod(_cmf_core.BDF2_get_error_position, None, BDF2)
+_cmf_core.BDF2_swigregister(BDF2)
+# BDF2 end
+
+class ExplicitEuler_fixed(Integrator):
+    """
+
+
+    An explicit Euler integrator, with a fixed time step.
+
+    C++ includes: explicit_euler.h 
+    """
+
+    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __repr__ = _swig_repr
+
+    def __init__(self, *args):
+        """
+        __init__(cmf::math::ExplicitEuler_fixed self, StateVariableOwner states) -> ExplicitEuler_fixed
+        __init__(cmf::math::ExplicitEuler_fixed self) -> ExplicitEuler_fixed
+        __init__(cmf::math::ExplicitEuler_fixed self, Integrator copy) -> ExplicitEuler_fixed
+
+        ExplicitEuler_fixed(const Integrator &copy)
+
+        copy constructor 
+        """
+        _cmf_core.ExplicitEuler_fixed_swiginit(self, _cmf_core.new_ExplicitEuler_fixed(*args))
+    __swig_destroy__ = _cmf_core.delete_ExplicitEuler_fixed
+_cmf_core.ExplicitEuler_fixed_swigregister(ExplicitEuler_fixed)
+# ExplicitEuler_fixed end
+
+class HeunIntegrator(Integrator):
+    """
+
+
+    A simple predictor - corrector solver.
+
+    Not tested and very experimentally :math:`y^{n+1} = y^n + \\alpha f(y^n + f(y^n)dt)dt + (1-\\alpha)f(y^n)dt`
+
+    C++ includes: explicit_euler.h 
+    """
+
+    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __repr__ = _swig_repr
+    alpha = _swig_property(_cmf_core.HeunIntegrator_alpha_get, _cmf_core.HeunIntegrator_alpha_set)
+
+    def __init__(self, *args):
+        """
+        __init__(cmf::math::HeunIntegrator self, StateVariableOwner states, real Alpha=0.5) -> HeunIntegrator
+        __init__(cmf::math::HeunIntegrator self, real Alpha=0.5) -> HeunIntegrator
+        __init__(cmf::math::HeunIntegrator self, Integrator copy) -> HeunIntegrator
+
+        HeunIntegrator(const Integrator &copy)
+
+        copy constructor 
+        """
+        _cmf_core.HeunIntegrator_swiginit(self, _cmf_core.new_HeunIntegrator(*args))
+    __swig_destroy__ = _cmf_core.delete_HeunIntegrator
+_cmf_core.HeunIntegrator_swigregister(HeunIntegrator)
+# HeunIntegrator end
+
+class ImplicitEuler(Integrator):
+    """
+
+
+    An implicit (backward) Euler integrator using fixpoint iteration.
+
+    C++ includes: implicit_euler.h 
+    """
+
+    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __repr__ = _swig_repr
+    dt_min = _swig_property(_cmf_core.ImplicitEuler_dt_min_get, _cmf_core.ImplicitEuler_dt_min_set)
+
+    def __init__(self, *args):
+        """
+        __init__(cmf::math::ImplicitEuler self, StateVariableOwner states, real epsilon=1e-9, Time tStepMin) -> ImplicitEuler
+        __init__(cmf::math::ImplicitEuler self, real epsilon=1e-9, Time tStepMin) -> ImplicitEuler
+        __init__(cmf::math::ImplicitEuler self, Integrator arg2) -> ImplicitEuler
+
+        ImplicitEuler(const Integrator &)
+
+        copy constructor 
+        """
+        _cmf_core.ImplicitEuler_swiginit(self, _cmf_core.new_ImplicitEuler(*args))
+    __swig_destroy__ = _cmf_core.delete_ImplicitEuler
+_cmf_core.ImplicitEuler_swigregister(ImplicitEuler)
+# ImplicitEuler end
+
+class RKFIntegrator(Integrator):
+    """
+
+
+    Integrates a vector of cmf::math::StateVariable with the Runge-Kutta-
+    Fehlberg (RKF54) method.
+
+    C++ includes: RKFintegrator.h 
+    """
+
+    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __repr__ = _swig_repr
+
+    def __init__(self, *args):
+        """
+        __init__(cmf::math::RKFIntegrator self, StateVariableOwner states, real epsilon=1e-9, Time dt_min) -> RKFIntegrator
+        __init__(cmf::math::RKFIntegrator self, real epsilon=1e-9, Time dt_min) -> RKFIntegrator
+
+        RKFIntegrator(real epsilon=1e-9, cmf::math::Time
+        dt_min=cmf::math::timespan(1000))
+
+        Constructs a new RKFIntegrator.
+
+        Parameters:
+        -----------
+
+        epsilon:  relative error tolerance per time step (default=1e-9)
+
+        dt_min:  minimum time step (default=1s) 
+        """
+        _cmf_core.RKFIntegrator_swiginit(self, _cmf_core.new_RKFIntegrator(*args))
+    __swig_destroy__ = _cmf_core.delete_RKFIntegrator
+_cmf_core.RKFIntegrator_swigregister(RKFIntegrator)
+# RKFIntegrator end
+
+class CVodeIntegrator(Integrator):
+    """
+
+
+    A wrapper class for the CVODE integrator from the SUNDIALS library.
+
+    https://computation.llnl.gov/casc/sundials/main.html
+
+    C++ includes: cvodeintegrator.h 
+    """
+
+    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __repr__ = _swig_repr
+    preconditioner = _swig_property(_cmf_core.CVodeIntegrator_preconditioner_get, _cmf_core.CVodeIntegrator_preconditioner_set)
+    MaxNonLinearIterations = _swig_property(_cmf_core.CVodeIntegrator_MaxNonLinearIterations_get, _cmf_core.CVodeIntegrator_MaxNonLinearIterations_set)
+    MaxConvergenceFailures = _swig_property(_cmf_core.CVodeIntegrator_MaxConvergenceFailures_get, _cmf_core.CVodeIntegrator_MaxConvergenceFailures_set)
+    MaxErrorTestFailures = _swig_property(_cmf_core.CVodeIntegrator_MaxErrorTestFailures_get, _cmf_core.CVodeIntegrator_MaxErrorTestFailures_set)
+    maxl = _swig_property(_cmf_core.CVodeIntegrator_maxl_get, _cmf_core.CVodeIntegrator_maxl_set)
+    LinearSolver = _swig_property(_cmf_core.CVodeIntegrator_LinearSolver_get, _cmf_core.CVodeIntegrator_LinearSolver_set)
+    MaxOrder = _swig_property(_cmf_core.CVodeIntegrator_MaxOrder_get, _cmf_core.CVodeIntegrator_MaxOrder_set)
+    max_step = _swig_property(_cmf_core.CVodeIntegrator_max_step_get, _cmf_core.CVodeIntegrator_max_step_set)
+
+    def initialize(self, *args, **kwargs):
+        """
+        initialize(CVodeIntegrator self)
+
+        void
+        initialize()
+
+        Initializes the solver. Do not add or remove state variables after
+        initialization. The solver is automatically intialized when
+        integrating. 
+        """
+        return _cmf_core.CVodeIntegrator_initialize(self, *args, **kwargs)
+
+
+    def release(self, *args, **kwargs):
+        """
+        release(CVodeIntegrator self)
+
+        void
+        release()
+
+        Releases the internal solver. Call release before you add state
+        variables or to change properties. 
+        """
+        return _cmf_core.CVodeIntegrator_release(self, *args, **kwargs)
+
+
+    def __init__(self, *args):
+        """
+        __init__(cmf::math::CVodeIntegrator self, real epsilon=1e-9, char _preconditioner) -> CVodeIntegrator
+        __init__(cmf::math::CVodeIntegrator self, StateVariableOwner states, real epsilon=1e-9, char _preconditioner) -> CVodeIntegrator
+        __init__(cmf::math::CVodeIntegrator self, CVodeIntegrator templ) -> CVodeIntegrator
+
+        CVodeIntegrator(const CVodeIntegrator &templ)
+
+        copy constructor, creates a new CVODE integrator similiar to the
+        given, but without statevariables 
+        """
+        _cmf_core.CVodeIntegrator_swiginit(self, _cmf_core.new_CVodeIntegrator(*args))
+
+    def get_error(self, *args, **kwargs):
+        """
+        get_error(CVodeIntegrator self) -> cmf::math::num_array
+
+        cmf::math::num_array get_error() const
+
+        Error vector of the integrator. 
+        """
+        return _cmf_core.CVodeIntegrator_get_error(self, *args, **kwargs)
+
+
+    def get_nonlinear_iterations(self, *args, **kwargs):
+        """
+        get_nonlinear_iterations(CVodeIntegrator self) -> int
+
+        int
+        get_nonlinear_iterations() const
+
+        Returns the number of non-linear iterations performed. Calls
+        CVodeGetNumNonlinSolvIters. 
+        """
+        return _cmf_core.CVodeIntegrator_get_nonlinear_iterations(self, *args, **kwargs)
+
+
+    def get_rhsevals(self, *args, **kwargs):
+        """
+        get_rhsevals(CVodeIntegrator self) -> int
+
+        int
+        get_rhsevals() const
+
+        Returns the number of evaluations of the right hand side of the ODE.
+        Calls CVodeGetNumRhsEvals. 
+        """
+        return _cmf_core.CVodeIntegrator_get_rhsevals(self, *args, **kwargs)
+
+
+    def copy(self, *args, **kwargs):
+        """
+        copy(CVodeIntegrator self) -> CVodeIntegrator
+
+        CVodeIntegrator* copy() const
+
+        Polymorphic copy constructor. 
+        """
+        return _cmf_core.CVodeIntegrator_copy(self, *args, **kwargs)
+
+    __swig_destroy__ = _cmf_core.delete_CVodeIntegrator
+    order = _swig_property(_cmf_core.CVodeIntegrator_order_get)
+CVodeIntegrator.initialize = new_instancemethod(_cmf_core.CVodeIntegrator_initialize, None, CVodeIntegrator)
+CVodeIntegrator.release = new_instancemethod(_cmf_core.CVodeIntegrator_release, None, CVodeIntegrator)
+CVodeIntegrator.get_error = new_instancemethod(_cmf_core.CVodeIntegrator_get_error, None, CVodeIntegrator)
+CVodeIntegrator.get_nonlinear_iterations = new_instancemethod(_cmf_core.CVodeIntegrator_get_nonlinear_iterations, None, CVodeIntegrator)
+CVodeIntegrator.get_rhsevals = new_instancemethod(_cmf_core.CVodeIntegrator_get_rhsevals, None, CVodeIntegrator)
+CVodeIntegrator.copy = new_instancemethod(_cmf_core.CVodeIntegrator_copy, None, CVodeIntegrator)
+_cmf_core.CVodeIntegrator_swigregister(CVodeIntegrator)
+# CVodeIntegrator end
+
+class MultiIntegrator(Integrator):
+    """
+
+
+    The MultiIntegrator is a wrapper for a bunch integrators. The states
+    of the integrators should not have direct connections over integrator
+    boundaries.
+
+    C++ includes: multiintegrator.h 
+    """
+
+    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __repr__ = _swig_repr
+
+    def copy(self, *args, **kwargs):
+        """
+        copy(MultiIntegrator self) -> MultiIntegrator
+
+        virtual
+        cmf::math::MultiIntegrator* copy() const
+
+        Polymorphic copy constructor. 
+        """
+        return _cmf_core.MultiIntegrator_copy(self, *args, **kwargs)
+
+
+    def add_states_to_integrator(self, *args, **kwargs):
+        """
+        add_states_to_integrator(MultiIntegrator self, StateVariableOwner stateOwner, int integrator_position)
+
+        void
+        add_states_to_integrator(cmf::math::StateVariableOwner &stateOwner,
+        int integrator_position)
+
+        Add state variables from a StateVariableOwner. 
+        """
+        return _cmf_core.MultiIntegrator_add_states_to_integrator(self, *args, **kwargs)
+
+
+    def __init__(self, *args, **kwargs):
+        """
+        __init__(cmf::math::MultiIntegrator self, Integrator template_integrator, int count) -> MultiIntegrator
+
+        MultiIntegrator(const cmf::math::Integrator &template_integrator, int
+        count)
+
+        Creates a new MultiIntegrator.
+
+        Parameters:
+        -----------
+
+        template_integrator:  Template for the integrators
+
+        count:  Number of integrators 
+        """
+        _cmf_core.MultiIntegrator_swiginit(self, _cmf_core.new_MultiIntegrator(*args, **kwargs))
+    __swig_destroy__ = _cmf_core.delete_MultiIntegrator
+MultiIntegrator.copy = new_instancemethod(_cmf_core.MultiIntegrator_copy, None, MultiIntegrator)
+MultiIntegrator.add_states_to_integrator = new_instancemethod(_cmf_core.MultiIntegrator_add_states_to_integrator, None, MultiIntegrator)
+_cmf_core.MultiIntegrator_swigregister(MultiIntegrator)
+# MultiIntegrator end
 
 class SoluteWaterIntegrator(Integrator):
     """
