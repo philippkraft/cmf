@@ -5,7 +5,7 @@
 #
 #   cmf is free software: you can redistribute it and/or modify
 #   it under the terms of the GNU General Public License as published by
-#   the Free Software Foundation, either version 2 of the License, or
+#   the Free Software Foundation, either version 3 of the License, or
 #   (at your option) any later version.
 #
 #   cmf is distributed in the hope that it will be useful,
@@ -94,7 +94,7 @@ def plot_image(filename, **kwargs):
         raise NotImplementedError('To plot a background image please install Pillow')
 
     fname, imgext = os.path.splitext(filename)
-    worldext = imgext[:2] + imgext[-1] + 'w'
+    worldext = '{}{}w'.format(imgext[:2], imgext[-1])
     worldname = fname + worldext
 
     kwargs.pop('extent', None)

@@ -5,7 +5,7 @@
 #
 #   cmf is free software: you can redistribute it and/or modify
 #   it under the terms of the GNU General Public License as published by
-#   the Free Software Foundation, either version 2 of the License, or
+#   the Free Software Foundation, either version 3 of the License, or
 #   (at your option) any later version.
 #
 #   cmf is distributed in the hope that it will be useful,
@@ -19,9 +19,11 @@
 
 from __future__ import print_function, division, absolute_import
 from .. import cmf_core as cmf
-import pylab
+from matplotlib import pylab
+from matplotlib.cm import viridis as default_color_map
 import numpy
 from itertools import chain
+from datetime import datetime, timedelta
 
 
 class HillPlot(object):
@@ -71,7 +73,7 @@ class HillPlot(object):
              z_right - lb, z_center - lb, z_left - lb)
         return x, z
 
-    def __x(self, x=0, y=0):
+    def __x(self, x, y):
         """
         Calculates the picture x coordinate as the euclidian distance from the origin
         :param x: x coordinate to project
@@ -81,7 +83,7 @@ class HillPlot(object):
         c = self.cells[0]
         return numpy.sqrt((x - c.x)**2.0 + (y - c.y)**2.0)
 
-    def __init__(self, cells, t, solute=None, cmap=pylab.cm.jet):
+    def __init__(self, cells, t, solute=None, cmap=default_color_map):
         """
         Creates a new HillPlot on the active figure, showing the state of each layer
          - cells: The a sequence of cmf cells to use in this hill_plot. You can
@@ -133,16 +135,16 @@ class HillPlot(object):
         scale = max(numpy.linalg.norm(surf_f.X),
                     numpy.linalg.norm(layer_f.X)) * 10
 
-        layerX = self.__x(numpy.asarray(layer_pos.X),
-                          numpy.asarray(layer_pos.Y))
+        layer_x = self.__x(numpy.asarray(layer_pos.X),
+                           numpy.asarray(layer_pos.Y))
 
-        surfX = self.__x(numpy.asarray(surf_pos.X),
-                         numpy.asarray(surf_pos.Y))
+        surf_x = self.__x(numpy.asarray(surf_pos.X),
+                          numpy.asarray(surf_pos.Y))
 
-        self.q_sub = pylab.quiver(layerX, layer_pos.Z, layer_f.X + layer_f.Y,
-                                   layer_f.Z, scale=scale, minlength=0.1, pivot='middle', zorder=1)
-        self.q_surf = pylab.quiver(surfX, surf_pos.Z, surf_f.X + surf_f.Y, surf_f.Z,
-                                    color='b', scale=scale, minlength=0.1, pivot='middle', zorder=1)
+        self.q_sub = pylab.quiver(layer_x, layer_pos.Z, layer_f.X + layer_f.Y,
+                                  layer_f.Z, scale=scale, minlength=0.1, pivot='middle', zorder=1)
+        self.q_surf = pylab.quiver(surf_x, surf_pos.Z, surf_f.X + surf_f.Y, surf_f.Z,
+                                   color='b', scale=scale, minlength=0.1, pivot='middle', zorder=1)
 
         self.title = pylab.title(t)
         if was_interactive:
@@ -184,7 +186,7 @@ class HillPlot(object):
 
     def __get_scale(self):
         return self.q_sub.scale
-    scale = property(__get_scale, __set_scale, "The scaling of the arrows")
+    scale = property(__get_scale, __set_scale, doc="The scaling of the arrows")
 
     def get_animator(self, integration):
         """
@@ -192,9 +194,11 @@ class HillPlot(object):
         the integration iteratable to advance your model to animate the HillPlot
 
         Usage example:
+
+        >>>p=cmf.project()
         >>>solver = cmf.CVodeIntegrator(p, 1e-9)
         >>>hp = HillPlot(p, solver.t)
-        >>>animator = hp.get_animator(solver.run(start, end, step))
+        >>>animator = hp.get_animator(solver.run(datetime(2012, 1, 1), datetime(2012, 2, 1), timedelta(hours=1)))
 
         :param integration: An iterable that advances the model and yields the current time
         :return: A matplotlib.animation.FuncAnimator

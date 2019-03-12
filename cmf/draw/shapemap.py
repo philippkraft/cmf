@@ -5,7 +5,7 @@
 #
 #   cmf is free software: you can redistribute it and/or modify
 #   it under the terms of the GNU General Public License as published by
-#   the Free Software Foundation, either version 2 of the License, or
+#   the Free Software Foundation, either version 3 of the License, or
 #   (at your option) any later version.
 #
 #   cmf is distributed in the hope that it will be useful,
@@ -60,7 +60,7 @@ class ShapeMap(object):
                     x, y = numpy.asarray(shape)[:, :2].swapaxes(0, 1)
                     self.shapes[-1].append(pylab.plot(x, y, **kwargs)[0])
             elif isinstance(feature.shape, g.LineString):
-                x, y = numpy.asarray(feature.shape.exterior).swapaxes(0, 1)
+                x, y = numpy.asarray(feature.shape).swapaxes(0, 1)
                 self.shapes.append(pylab.plot(x, y, **kwargs))
             elif isinstance(feature.shape, g.Point):
                 x, y = feature.shape.x, feature.shape.y

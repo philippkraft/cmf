@@ -5,7 +5,7 @@
 //
 //   cmf is free software: you can redistribute it and/or modify
 //   it under the terms of the GNU General Public License as published by
-//   the Free Software Foundation, either version 2 of the License, or
+//   the Free Software Foundation, either version 3 of the License, or
 //   (at your option) any later version.
 //
 //   cmf is distributed in the hope that it will be useful,
@@ -49,7 +49,7 @@
      }
     %pythoncode {
     def __iter__(self):
-        for i in xrange(len(self)):
+        for i in range(len(self)):
             yield self[i]
     def __getitem__(self,index):
         if isinstance(index,slice):
@@ -70,6 +70,7 @@
 %include "math/integrators/explicit_euler.h"
 %include "math/integrators/implicit_euler.h"
 %include "math/integrators/RKFintegrator.h"
+
 %include "math/integrators/cvode3.h"
 
 %extend__repr__(cmf::math::CVodeInfo)
@@ -98,15 +99,31 @@
 }
 }
 
-%extend cmf::math::CVodeDense {
+%extend cmf::math::CVode3 {
 %pythoncode {
     def get_jacobian(self):
-        return self._get_jacobian().reshape(self.size(), self.size())
+        return self._get_jacobian().reshape((self.size(), self.size()), order='F')
 }
 }
 
 %pythoncode {
-class CVodeIntegrator:
-    def __init__(self, *args, **kwargs):
-        raise NotImplementedError('CVodeIntegrator has been removed in cmf 2, use CVodeDense, CVodeKrylov or others instead')
+def CVodeIntegrator(project, tolerance=1e-9):
+    """
+    Backwards compatibility layer for the CVodeIntegrator.
+
+    For systems with less than 20 states it will return a CVodeDense solver,
+    for larger systems a CVodeKrylov solver.
+    :param project: CMF project
+    :param tolerance: Solver tolerance
+    :return:
+    """
+    from logging import warning
+    size = project.get_states().size()
+    if size < 20:
+        warning('CVodeIntegrator is not available in CMF 2.0. Creating a CVodeDense solver instead')
+        return CVodeDense(project, tolerance)
+    else:
+        warning('CVodeIntegrator is not available in CMF 2.0. Creating a CVodeKrylov solver instead')
+        return CVodeKrylov(project, tolerance)
+
 }

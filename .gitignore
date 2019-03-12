@@ -11,7 +11,9 @@ __pycache__/
 *.vcxproj.user
 *.sdf
 .vs/
-tools/
+tools/Debug*
+tools/Release*
+
 *.VC.opendb
 
 # Distribution / packaging
@@ -29,6 +31,7 @@ sdist/
 var/
 wheels/
 doxy/
+venv-py*/
 *.egg-info/
 .installed.cfg
 *.egg

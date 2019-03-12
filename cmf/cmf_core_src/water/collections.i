@@ -5,7 +5,7 @@
 //
 //   cmf is free software: you can redistribute it and/or modify
 //   it under the terms of the GNU General Public License as published by
-//   the Free Software Foundation, either version 2 of the License, or
+//   the Free Software Foundation, either version 3 of the License, or
 //   (at your option) any later version.
 //
 //   cmf is distributed in the hope that it will be useful,
@@ -45,7 +45,7 @@
     def __len__(self):
         return self.size()       
     def __iter__(self):
-        for i in xrange(self.size()):
+        for i in range(self.size()):
             yield self[i]
     def __repr__(self):
         if len(self): return "[%i nodes: %s ... %s]" % (len(self),self[0], self[-1])
@@ -69,7 +69,7 @@
     def __len__(self):
         return self.size()       
     def __iter__(self):
-        for i in xrange(self.size()):
+        for i in range(self.size()):
             yield self[i]
     def extend(self,sequence):
         """Extends the list of Neumann boundaries with the sequence (any iterable will do) """

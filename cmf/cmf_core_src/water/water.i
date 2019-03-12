@@ -5,7 +5,7 @@
 //
 //   cmf is free software: you can redistribute it and/or modify
 //   it under the terms of the GNU General Public License as published by
-//   the Free Software Foundation, either version 2 of the License, or
+//   the Free Software Foundation, either version 3 of the License, or
 //   (at your option) any later version.
 //
 //   cmf is distributed in the hope that it will be useful,
@@ -118,13 +118,17 @@ namespace cmf{namespace water {class flux_connection;}}
 %include "water/flux_connection.h"
 
 %extend cmf::water::flux_connection { %pythoncode {
+
     def __repr__(self):
         return self.to_string()
+
     def __getitem__(self,index):
         return self.get_target(index)
+
     def __iter__(self):
         yield self.get_target(0)
         yield self.get_target(1)
+
     def __contains__(self,cmp):
         return cmp==self[0] or cmp==self[1]
 }}
@@ -132,12 +136,15 @@ namespace cmf{namespace water {class flux_connection;}}
     size_t __len__() const { return $self->size();}
     bool __contains__(const cmf::water::flux_connection::ptr& con) const { return $self->contains(con);}
 %pythoncode {
+
     def __repr__(self):
         return repr(list(self)) + "<cmf.connection_list>"
+
     def __getitem__(self,index):
         return self.at(index)
+
     def __iter__(self):
-        for i in xrange(len(self)):
+        for i in range(len(self)):
             yield self.at(i)
     }
 }
@@ -169,7 +176,7 @@ namespace cmf{namespace water {class flux_connection;}}
 %extend__repr__(cmf::water::NeumannBoundary)
 %extend cmf::water::NeumannBoundary {
 %pythoncode {
-    flux = property(get_flux,set_flux,"The flux over the boundary condition")
+    flux = property(get_flux,set_flux, doc="The flux over the boundary condition")
 }}
 %extend__repr__(cmf::water::WaterStorage)
 

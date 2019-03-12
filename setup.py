@@ -5,7 +5,7 @@
 #
 #   cmf is free software: you can redistribute it and/or modify
 #   it under the terms of the GNU General Public License as published by
-#   the Free Software Foundation, either version 2 of the License, or
+#   the Free Software Foundation, either version 3 of the License, or
 #   (at your option) any later version.
 #
 #   cmf is distributed in the hope that it will be useful,
@@ -22,14 +22,13 @@ from __future__ import print_function, division
 import sys
 import os
 import io
+import re
 import time
-
-from glob import glob
 
 from setuptools import setup, Extension
 from setuptools.command.build_ext import build_ext
-from distutils.sysconfig import get_config_var, customize_compiler
-
+from distutils.sysconfig import customize_compiler
+from distutils.command.build_py import build_py
 
 version = '2.0.0a0'
 
@@ -41,37 +40,50 @@ try:
 except ImportError:
     raise RuntimeError("For building and running of cmf an installation of numpy is needed")
 
-# Try to import build_py_2to3 as "Python builder", if this fails, we are on Python 2
-# and the automatic translation is not necessary
-try:
-    from distutils.command.build_py import build_py_2to3 as build_py
-except ImportError:
-    from distutils.command.build_py import build_py
 
-# monkey-patch for parallel compilation
-def parallelCCompile(self, sources, output_dir=None, macros=None, include_dirs=None, debug=0, extra_preargs=None, extra_postargs=None, depends=None):
-    # those lines are copied from distutils.ccompiler.CCompiler directly
-    macros, objects, extra_postargs, pp_opts, build = self._setup_compile(output_dir, macros, include_dirs, sources, depends, extra_postargs)
-    cc_args = self._get_cc_args(pp_opts, debug, extra_preargs)
-    # parallel code
-    import multiprocessing.pool
-    def _single_compile(obj):
-        try: src, ext = build[obj]
-        except KeyError: return
-        self._compile(obj, src, ext, cc_args, extra_postargs, pp_opts)
-    # convert to list, imap is evaluated on-demand
-    list(multiprocessing.pool.ThreadPool().imap(_single_compile,objects))
-    return objects
+swig = False
+openmp = False
 
-import distutils.ccompiler
-distutils.ccompiler.CCompiler.compile=parallelCCompile
 
-# noinspection PyPep8Naming
-class cmf_build_ext(build_ext):
+class CmfBuildExt(build_ext):
     """
     Custom build class to get rid of the -Wstrict-prototypes warning
     source: https://stackoverflow.com/a/36293331/3032680
+
+    Removes also CLASS_swigregister clutter in cmf_core.py
     """
+    @staticmethod
+    def clean_swigregister(cmf_core_py):
+        """
+        SWIG creates ugly CLASS_swigregister functions. We remove them.
+        """
+        rp_call = re.compile(r'^(\w*?)_swigregister\((\w*?)\)', re.MULTILINE)
+        cmf_core_py, n = rp_call.subn('# \\1 end', cmf_core_py)
+        print(n, 'CLASS_swigregister(CLASS) lines deleted')
+        rp_def = re.compile(r'^(\w*?)_swigregister = _cmf_core\.(\w*?)_swigregister', re.MULTILINE)
+        cmf_core_py, n = rp_def.subn('_cmf_core.\\1_swigregister(\\1)', cmf_core_py)
+        print(n, 'CLASS_swigregister = _cmf_core... -> _cmf_core.CLASS_swigregister(CLASS)')
+        return cmf_core_py
+
+    @staticmethod
+    def clean_static_methods(cmf_core_py):
+        """SWIG creates still static methods as free functions (extra) to ensure Py2.2 compatibility
+        We don't want that in 2018
+        """
+        # Find class names and free functions
+        classes = re.findall(r'class\s(\w*?)\(.*?\):', cmf_core_py, re.MULTILINE)
+        funcs = re.findall(r'^def (\w*?)\(\*args, \*\*kwargs\):$', cmf_core_py, flags=re.MULTILINE)
+
+        # Find old style static methods (def CLASS_method():)
+        static_methods = [f for f in funcs if [c for c in classes if f.startswith(c)]]
+
+        count = 0
+        for sm in static_methods:
+            cmf_core_py, n = re.subn(r'^def {}.*?:.*?return.*?$'.format(sm),
+                                     '\n\n', cmf_core_py, flags=re.MULTILINE + re.DOTALL)
+            count += n
+        print(count, 'old style static methods removed from', len(classes), 'classes')
+        return cmf_core_py
 
     def build_extensions(self):
         customize_compiler(self.compiler)
@@ -80,6 +92,22 @@ class cmf_build_ext(build_ext):
         except (AttributeError, ValueError):
             pass
         build_ext.build_extensions(self)
+
+        if swig:
+            if os.path.exists('cmf/cmf_core_src/cmf_core.py'):
+                fn = 'cmf/cmf_core_src/cmf_core.py'
+            elif os.path.exists('cmf/cmf_core.py'):
+                fn = 'cmf/cmf_core.py'
+            else:
+                raise RuntimeError('cmf_core.py not found, run "python setup.py build_ext swig" to create it')
+            cmf_core_py = open(fn).read()
+            cmf_core_py = self.clean_swigregister(cmf_core_py)
+            cmf_core_py = self.clean_static_methods(cmf_core_py)
+
+            open('cmf/cmf_core.py', 'w').write(cmf_core_py)
+
+            if os.path.exists('cmf/cmf_core_src/cmf_core.py'):
+                os.unlink('cmf/cmf_core_src/cmf_core.py')
 
 
 def updateversion():
@@ -152,7 +180,7 @@ def is_source_file(fn, include_headerfiles=False):
     return res
 
 
-def make_cmf_core(swig, openmp):
+def make_cmf_core():
     """
     Puts all information needed for the Python extension object together
      - source files
@@ -160,47 +188,54 @@ def make_cmf_core(swig, openmp):
      - extra compiler flags
     """
     # Include CVODE
-    include_dirs = ['tools/sundials-lib/include']
+    include_dirs = ['lib/include']
     # Include numpy
     include_dirs += [get_numpy_include()]
 
-    library_dirs = ['tools/sundials-lib/lib']
-    libraries = ['sundials_cvode', 'sundials_nvecserial',
-                  'sundials_sunlinsolband', 'sundials_sunlinsoldense', 'sundials_sunlinsolklu', 
-                  'sundials_sunlinsolpcg', 'sundials_sunlinsolspbcgs', 'sundials_sunlinsolspfgmr',
-                  'sundials_sunlinsolspgmr', 'sundials_sunlinsolsptfqmr',
-                  'sundials_sunmatrixband', 'sundials_sunmatrixdense', 'sundials_sunmatrixsparse'
-                  ]
+    static_libraries = [('lib/lib',
+                         ['sundials_cvode', 'sundials_sunlinsolklu']),
+                        ('lib/lib/suitesparse',
+                         ['libklu', 'libamd', 'libbtf', 'libcolamd', 'suitesparseconfig']),
+                        ]
+    library_dirs = []
+    libraries = []
 
     extra_objects = []
     # Platform specific stuff, alternative is to subclass build_ext command as in:
     # https://stackoverflow.com/a/5192738/3032680
     if sys.platform == 'win32':
 
-        # Only include boost if VS2008 compiler is used, else we use C++ 11
-        if sys.version_info.major == 2:
-            boost_path = os.environ.get('BOOSTDIR', r"..\boost_1_41_0")
-            include_dirs += [boost_path, boost_path + r"\boost\tr1"]
         compile_args = ["/EHsc",
                         r'/Fd"build\vc90.pdb"',
                         "/D_SCL_SECURE_NO_WARNINGS",
                         "/D_CRT_SECURE_NO_WARNINGS",
                         "/MP"
                         ]
-        # package_data = ['../cmf_external_libraries/sundials-lib/lib/*.dll']
         if openmp:
             compile_args.append("/openmp")
+
         link_args = ["/DEBUG"]
+
+        # Move static libraries to libraries, because MSVC does not
+        # seperate between dynamic and static libraries at this point
+        for lib_dir, libs in static_libraries:
+            libraries.extend(libs)
+            library_dirs.append(lib_dir)
+
     else:
 
-        compile_args = ['-Wno-comment', '-Wno-reorder', '-Wno-deprecated', '-Wno-unused', 
+        compile_args = ['-Wno-comment', '-Wno-reorder', '-Wno-deprecated', '-Wno-unused',
                         '-Wno-sign-compare', '-ggdb', '-std=c++11']
         if sys.platform == 'darwin':
             compile_args += ['-stdlib=libc++']
+
         link_args = ['-ggdb']
-        extra_objects = ['{}/lib{}.a'.format(library_dirs[0], l) for l in libraries]
-        library_dirs.pop(0)
-        del libraries[:len(extra_objects)]
+
+        # Move static libraries to extra_objects (with path) to ensure static linking in posix systems
+        extra_objects.extend([['{}/lib{}.a'.format(lib_dir, l) for l in libs]
+                              for lib_dir, libs in static_libraries])
+
+        # Add OpenMP support
         # Disable OpenMP on Mac see https://github.com/alejandrobll/py-sphviewer/issues/3
         if openmp and not sys.platform == 'darwin':
             compile_args.append('-fopenmp')
@@ -216,10 +251,12 @@ def make_cmf_core(swig, openmp):
     if swig:
         # Adding cmf.i when build_ext should perform the swig call
         cmf_files.append("cmf/cmf_core_src/cmf.i")
+        swig_opts = ['-c++', '-Wextra', '-w512', '-w511', '-O', '-keyword', '-castmode', '-modern']
+
     else:
         # Else use what we have there
         cmf_files.append("cmf/cmf_core_src/cmf_wrap.cpp")
-
+        swig_opts = []
     cmf_core = Extension('cmf._cmf_core',
                          sources=cmf_files,
                          libraries=libraries,
@@ -228,7 +265,7 @@ def make_cmf_core(swig, openmp):
                          extra_objects=extra_objects,
                          extra_compile_args=compile_args,
                          extra_link_args=link_args,
-                         swig_opts=['-c++', '-Wextra', '-w512', '-w511', '-O', '-keyword', '-castmode']  # +extraswig
+                         swig_opts=swig_opts
                          )
     return cmf_core
 
@@ -237,7 +274,7 @@ if __name__ == '__main__':
     updateversion()
     openmp = not pop_arg('noopenmp')
     swig = pop_arg('swig')
-    ext = make_cmf_core(swig, openmp)
+    ext = [make_cmf_core()]
     description = 'Catchment Modelling Framework - A hydrological modelling toolkit'
     long_description = io.open('README.rst', encoding='utf-8').read()
     classifiers = [
@@ -257,9 +294,9 @@ if __name__ == '__main__':
     setup(name='cmf',
           version=version,
           license='GPL',
-          ext_modules=[ext],
+          ext_modules=ext,
           packages=['cmf', 'cmf.draw', 'cmf.geometry'],
-          python_requires='>=2.7',
+          python_requires='>=3.4',
           keywords='hydrology catchment simulation toolbox',
           author='Philipp Kraft',
           author_email="philipp.kraft@umwelt.uni-giessen.de",
@@ -268,6 +305,6 @@ if __name__ == '__main__':
           long_description=long_description,
           classifiers=classifiers,
           cmdclass=dict(build_py=build_py,
-                        build_ext=cmf_build_ext),
+                        build_ext=CmfBuildExt),
           )
-    print("build ok")
+

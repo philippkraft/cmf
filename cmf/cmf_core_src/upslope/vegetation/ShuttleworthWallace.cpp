@@ -5,7 +5,7 @@
 //
 //   cmf is free software: you can redistribute it and/or modify
 //   it under the terms of the GNU General Public License as published by
-//   the Free Software Foundation, either version 2 of the License, or
+//   the Free Software Foundation, either version 3 of the License, or
 //   (at your option) any later version.
 //
 //   cmf is distributed in the hope that it will be useful,
@@ -374,8 +374,8 @@ double WNDADJ(double ZA, double DISP, double Z0, double FETCH, double ZW, double
 
 
 ///input
-///   TMAX       maximum temperature for the day, øC
-///   TMIN       minimum temperature for the day, øC
+///   TMAX       maximum temperature for the day, ï¿½C
+///   TMIN       minimum temperature for the day, ï¿½C
 ///   DAYLEN     daylength in fraction of day
 ///   I0HDAY     potential insolation on horizontal, MJ m-2 d-1
 ///   EA         vapor pressure for the day, kPa
@@ -390,9 +390,9 @@ double WNDADJ(double ZA, double DISP, double Z0, double FETCH, double ZW, double
 ///   SOLRAD     solar radiation for the day, horizontal surface, MJ/m2
 ///output
 ///   SOLRADC    corrected solar radiation for the day, horizontal surface, MJ/m2
-///   TA         mean temperature for the day, øC
-///   TADTM      average daytime temperature, øC
-///   TANTM      average nighttime temperature, øC
+///   TA         mean temperature for the day, ï¿½C
+///   TADTM      average daytime temperature, ï¿½C
+///   TANTM      average nighttime temperature, ï¿½C
 ///   UA         average wind speed for the day at reference height, m/s
 ///   UADTM      average wind speed for daytime at ZA, m/s
 ///   UANTM      average wind speed for nighttime at ZA, m/s
@@ -725,8 +725,8 @@ void TBYLAYER(ptrdiff_t J,double PTR, double DISPC,
 ///   NN                wind/diffusivity extinction coefficient
 ///   RHOTP             ratio of total leaf area to projected area
 ///   SAI               stem area index, m2/m2
-///   TA                mean  temperature for the day at reference height, øC
-///   TSNOW             snowpack temperature (isothermal assumed), øC
+///   TA                mean  temperature for the day at reference height, ï¿½C
+///   TSNOW             snowpack temperature (isothermal assumed), ï¿½C
 ///   UA                average wind speed for the day at reference height, m/s
 ///   Z0                roughness parameter, m
 ///   Z0C               roughness parameter for closed canopy of HEIGHT, m

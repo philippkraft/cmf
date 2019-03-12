@@ -5,7 +5,7 @@
 //
 //   cmf is free software: you can redistribute it and/or modify
 //   it under the terms of the GNU General Public License as published by
-//   the Free Software Foundation, either version 2 of the License, or
+//   the Free Software Foundation, either version 3 of the License, or
 //   (at your option) any later version.
 //
 //   cmf is distributed in the hope that it will be useful,
@@ -119,7 +119,55 @@ real cmf::water::WaterStorage::dxdt( const cmf::math::Time& time )
 		return dVdt;
 }
 
-cmf::math::StateVariableList cmf::water::WaterStorage::get_states() 
+bool cmf::water::WaterStorage::is_connected(const StateVariable & other) const
+{
+	const WaterStorage* other_ws = dynamic_cast<const WaterStorage *>(&other);
+	
+	if (other_ws) { // If the test state is also a water storage
+		// identical storages are connected
+		if (other_ws == this) return true;
+		// else test if we have any connection to it
+		connection_list con_list = this->get_connections();
+		for (auto con : con_list) {
+			if (con->get_target(*other_ws)) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	const SoluteStorage* other_ss = dynamic_cast<const SoluteStorage *>(&other);
+	if (other_ss) {
+		return this->is_connected(other_ss->get_water());
+	}
+	else {
+		throw std::logic_error("Test for connection of a statevariable that is neither solute nor water storage");
+	}
+}
+
+void cmf::water::WaterStorage::add_connected_states(cmf::math::StateVariable::list& states) {
+	// Add this	
+	states.push_back(this);
+	// Add my solute storages
+	for (auto ss : m_Concentrations) {
+		states.push_back(ss.get());
+	}
+
+	// Add my connected water storages and their solutes
+	connection_list con_list = this->get_connections();
+	for (auto& con : con_list) {
+		// Get the other side of the connection and cast it to a water storage
+		WaterStorage::ptr other_ws = WaterStorage::cast(con->get_target(*this));
+		if (other_ws) {
+			states.push_back(other_ws.get());
+			for (auto ss : other_ws->m_Concentrations) {
+				states.push_back(ss.get());
+			}
+		}
+	}
+}
+
+cmf::math::StateVariableList cmf::water::WaterStorage::get_states()
 {
 	cmf::math::StateVariableList q;
 	q.append(cmf::water::WaterStorage::ptr(*this));

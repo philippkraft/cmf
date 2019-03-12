@@ -14,6 +14,7 @@ var hierarchy =
       [ "ShuttleworthWallace", "classcmf_1_1upslope_1_1_e_t_1_1_shuttleworth_wallace.html", null ]
     ] ],
     [ "CellConnector", "classcmf_1_1upslope_1_1_cell_connector.html", null ],
+    [ "CellMap", "classcmf_1_1draw_1_1cellmap_1_1_cell_map.html", null ],
     [ "conductable", "classcmf_1_1upslope_1_1conductable.html", [
       [ "aquifer", "classcmf_1_1upslope_1_1aquifer.html", null ],
       [ "SoilLayer", "classcmf_1_1upslope_1_1_soil_layer.html", null ]
@@ -103,7 +104,9 @@ var hierarchy =
         [ "SoilLayer", "classcmf_1_1upslope_1_1_soil_layer.html", null ]
       ] ]
     ] ],
+    [ "FluxMap", "classcmf_1_1draw_1_1cellmap_1_1_flux_map.html", null ],
     [ "GradientMacroFlow", "classcmf_1_1upslope_1_1connections_1_1_gradient_macro_flow.html", null ],
+    [ "HillPlot", "classcmf_1_1draw_1_1hillplot_1_1_hill_plot.html", null ],
     [ "integratable", "classcmf_1_1math_1_1integratable.html", [
       [ "flux_integrator", "classcmf_1_1water_1_1flux__integrator.html", null ],
       [ "waterbalance_integrator", "classcmf_1_1water_1_1waterbalance__integrator.html", null ]
@@ -121,10 +124,17 @@ var hierarchy =
       [ "Prism", "classcmf_1_1river_1_1_prism.html", null ],
       [ "volume_height_function", "classcmf_1_1river_1_1volume__height__function.html", null ]
     ] ],
+    [ "Jacobian", "classcmf_1_1jacobian_1_1_jacobian.html", null ],
     [ "JarvisMacroFlow", "classcmf_1_1upslope_1_1connections_1_1_jarvis_macro_flow.html", null ],
     [ "KinematicMacroFlow", "classcmf_1_1upslope_1_1connections_1_1_kinematic_macro_flow.html", null ],
+    [ "layer", "classcmf_1_1soil_1_1layer.html", null ],
     [ "layer_list", "classcmf_1_1upslope_1_1layer__list.html", null ],
     [ "linear_scale", "classcmf_1_1water_1_1linear__scale.html", null ],
+    [ "Map", "classcmf_1_1maps_1_1_map.html", [
+      [ "nearest_neighbor_map", "classcmf_1_1maps_1_1nearest__neighbor__map.html", null ],
+      [ "polygon_map", "classcmf_1_1maps_1_1polygon__map.html", null ],
+      [ "raster_map", "classcmf_1_1maps_1_1raster__map.html", null ]
+    ] ],
     [ "Meteorology", "classcmf_1_1atmosphere_1_1_meteorology.html", [
       [ "ConstantMeteorology", "classcmf_1_1atmosphere_1_1_constant_meteorology.html", null ],
       [ "IDW_Meteorology", "classcmf_1_1atmosphere_1_1_i_d_w___meteorology.html", null ],
@@ -137,6 +147,7 @@ var hierarchy =
     [ "num_array", "classcmf_1_1math_1_1num__array.html", null ],
     [ "point", "classcmf_1_1geometry_1_1point.html", null ],
     [ "point_vector", "classcmf_1_1geometry_1_1point__vector.html", null ],
+    [ "Quadtree", "classcmf_1_1geometry_1_1qtree_1_1_quadtree.html", null ],
     [ "RainfallStation", "classcmf_1_1atmosphere_1_1_rainfall_station.html", null ],
     [ "RainfallStationList", "classcmf_1_1atmosphere_1_1_rainfall_station_list.html", null ],
     [ "ReachIterator", "classcmf_1_1river_1_1_reach_iterator.html", null ],
@@ -150,6 +161,8 @@ var hierarchy =
       [ "SuctionStress", "classcmf_1_1upslope_1_1_e_t_1_1_suction_stress.html", null ],
       [ "VolumeStress", "classcmf_1_1upslope_1_1_e_t_1_1_volume_stress.html", null ]
     ] ],
+    [ "Shapefile", "classcmf_1_1geos__shapereader_1_1_shapefile.html", null ],
+    [ "ShapeMap", "classcmf_1_1draw_1_1shapemap_1_1_shape_map.html", null ],
     [ "snow_evaporation_method", "classcmf_1_1upslope_1_1_e_t_1_1snow__evaporation__method.html", [
       [ "ShuttleworthWallace", "classcmf_1_1upslope_1_1_e_t_1_1_shuttleworth_wallace.html", null ]
     ] ],
@@ -180,6 +193,7 @@ var hierarchy =
       [ "node_list", "classcmf_1_1water_1_1node__list.html", null ],
       [ "WaterStorage", "classcmf_1_1water_1_1_water_storage.html", null ]
     ] ],
+    [ "StopWatch", "classcmf_1_1stopwatch_1_1_stop_watch.html", null ],
     [ "subcatchment", "classcmf_1_1upslope_1_1subcatchment.html", null ],
     [ "surface_water_evaporation_method", "classcmf_1_1upslope_1_1_e_t_1_1surface__water__evaporation__method.html", [
       [ "ShuttleworthWallace", "classcmf_1_1upslope_1_1_e_t_1_1_shuttleworth_wallace.html", null ]

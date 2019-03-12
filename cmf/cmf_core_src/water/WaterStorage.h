@@ -5,7 +5,7 @@
 //
 //   cmf is free software: you can redistribute it and/or modify
 //   it under the terms of the GNU General Public License as published by
-//   the Free Software Foundation, either version 2 of the License, or
+//   the Free Software Foundation, either version 3 of the License, or
 //   (at your option) any later version.
 //
 //   cmf is distributed in the hope that it will be useful,
@@ -74,6 +74,11 @@ namespace cmf {
 			void set_state_variable_content(char content);
 			/// @brief Returns true, since this is a storage
 			virtual bool is_storage() const {return true;}
+			/// @brief Returns True if this waterstorage is effected by another state
+			virtual bool is_connected(const cmf::math::StateVariable& other) const;
+#ifndef SWIG
+			virtual void add_connected_states(cmf::math::StateVariable::list& states);
+#endif
 			cmf::math::StateVariableList get_states();
 			/// @brief creates a water storage (abstract class)
 			/// @param project The project the waterstorage belongs to

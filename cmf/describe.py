@@ -6,7 +6,7 @@
 #
 #   cmf is free software: you can redistribute it and/or modify
 #   it under the terms of the GNU General Public License as published by
-#   the Free Software Foundation, either version 2 of the License, or
+#   the Free Software Foundation, either version 3 of the License, or
 #   (at your option) any later version.
 #
 #   cmf is distributed in the hope that it will be useful,
@@ -37,7 +37,7 @@ def describe(cmfobject, out=None):
     If no special description method for the class of cmfobject is available,
     the function writes the string representation
 
-    :param project: cmf project
+    :param cmfobject: any cmf object eg. project, Cell, timeseries
     :param out: filelike object, if None function returns the description as string
     :return: If out is None it returns the description as string, else no return
     """
@@ -55,7 +55,7 @@ def describe(cmfobject, out=None):
 
     def iterable(obj):
         try:
-            it = iter(obj)
+            _ = iter(obj)
             return True
         except (TypeError, AttributeError):
             return False

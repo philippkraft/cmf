@@ -5,7 +5,7 @@
 //
 //   cmf is free software: you can redistribute it and/or modify
 //   it under the terms of the GNU General Public License as published by
-//   the Free Software Foundation, either version 2 of the License, or
+//   the Free Software Foundation, either version 3 of the License, or
 //   (at your option) any later version.
 //
 //   cmf is distributed in the hope that it will be useful,
@@ -21,6 +21,58 @@
 #include "WaterStorage.h"
 #include "flux_connection.h"
 using namespace cmf::water;
+bool cmf::water::SoluteStorage::is_connected(const StateVariable & other) const
+{
+	const WaterStorage* other_ws = dynamic_cast<const WaterStorage *>(&other);
+
+	if (other_ws) { // If the test state is a water storage
+		// Return the connectiness of my water storage with other
+		return this->get_water().is_connected(other);
+	}
+	
+	const SoluteStorage* other_ss = dynamic_cast<const SoluteStorage *>(&other);
+	if (other_ss) {
+		// Check for self connection
+		if (this == other_ss) {
+			return true;
+		}
+		else { 
+			// Check if other_ss is the solute storage of the same solute at an connected water storage
+			if ((this->Solute == other_ss->Solute) &&
+				this->get_water().is_connected(other_ss->get_water())
+			) {
+				return true;
+			}
+		}
+		return false;
+	}
+	else {
+		throw std::logic_error("Test for connection of a statevariable that is neither solute nor water storage");
+	}
+}
+
+void cmf::water::SoluteStorage::add_connected_states(cmf::math::StateVariable::list& states) {
+	// Add this	
+	states.push_back(this);
+	// Add my water storage
+	states.push_back(m_water);
+	
+
+	// Add the connected water storages of my water storage and their fitting solute storages
+	connection_list con_list = m_water->get_connections();
+	for (auto& con : con_list) {
+		// Get the other side of the connection and cast it to a water storage
+		WaterStorage::ptr other_ws = WaterStorage::cast(con->get_target(*m_water));
+		if (other_ws) {
+			// If the other sied is a storage take it
+			states.push_back(other_ws.get());
+			// And the other_ws's solute storage of the same solute as me
+			SoluteStorage& other_ss = other_ws->Solute(this->Solute);
+			states.push_back(&other_ss);
+		}
+	}
+}
+
 real SoluteStorage::dxdt( const cmf::math::Time& time )
 {
  	// Sums up the fluxes as water fluxes (mol/day)

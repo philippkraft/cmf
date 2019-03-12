@@ -84,7 +84,8 @@ namespace cmf {
 			long int nonlinear_solver_iterations;
 			/// @brief Number of nonlinear convergence failures
 			long int nonlinear_solver_convergence_failures;
-
+			/// @brief Number of calls to any dxdt method of a state
+			long int dxdt_method_calls;
 
 
 			/// @brief contains the Sundials version of CVode used
@@ -112,6 +113,11 @@ namespace cmf {
 			/// @brief the limits for the CVode solver, see CVodeOptions
 			CVodeOptions options;
 
+			/// @brief Initialize the internal memory. 
+			///
+			/// Automatically called, when one starts to integrate
+			int initialize();
+
 			virtual int integrate(cmf::math::Time t_max, cmf::math::Time dt);
 			/// Resets the history of the multispte solver and overwrites the internal state cache
 			virtual void reset();
@@ -130,7 +136,13 @@ namespace cmf {
 
 			/// Error vector of the integrator
 			cmf::math::num_array get_error() const;
-            ~CVode3();
+			
+			/// Returns a continuous 1D array representing the Jacobian columns concatenated
+			///
+			/// In Python, get_jacobian returns the Jacobian as a 2D array
+			virtual cmf::math::num_array _get_jacobian() const;
+			
+			~CVode3();
 		};
 		/// @brief implicit BDF CVode solver with full Jacobian approximation
 		///
@@ -145,11 +157,7 @@ namespace cmf {
 			std::string to_string() const {
 				return "CVodeDense()";
 			}
-
-			/// Returns a continuous 1D array representing the Jacobian oclumns concatenated
-			///
-			/// In Python, get_jacobian returns the Jacobian as a 2D array
-			cmf::math::num_array _get_jacobian() const;
+			virtual cmf::math::num_array _get_jacobian() const;
 
 		protected:
 			void set_solver();
@@ -201,6 +209,19 @@ namespace cmf {
 
 		protected:
 			void set_solver();
+		};
+
+		class CVodeKLU : public CVode3 {
+		public:
+			CVodeKLU(cmf::math::StateVariableOwner& states, real epsilon = 1e-9);
+			std::string to_string() const;
+			virtual cmf::math::num_array _get_jacobian() const;
+		protected:
+			void set_solver();
+		private:
+			friend class CVode3::Impl;
+			sparse_structure sps;
+
 		};
 	}
 }

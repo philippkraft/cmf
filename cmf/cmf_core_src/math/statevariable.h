@@ -5,7 +5,7 @@
 //
 //   cmf is free software: you can redistribute it and/or modify
 //   it under the terms of the GNU General Public License as published by
-//   the Free Software Foundation, either version 2 of the License, or
+//   the Free Software Foundation, either version 3 of the License, or
 //   (at your option) any later version.
 //
 //   cmf is distributed in the hope that it will be useful,
@@ -97,6 +97,8 @@ namespace cmf {
 		///		};
 		///		@endcode
 		///
+	  
+	  class StateVariableList;
 	  class StateVariable {
 		private:
 			bool m_StateIsNew;
@@ -132,6 +134,15 @@ namespace cmf {
 			{}
 
 			virtual ~StateVariable() {}
+			virtual bool is_connected(const cmf::math::StateVariable& other) const {
+				return true;
+			}
+#ifndef SWIG
+			/// Not part of the API, used to create sparse structure
+			typedef std::vector<StateVariable*> list;
+			virtual void add_connected_states(list& states);
+#endif // !SWIG
+
 		};
 
 		class StateVariableList;
@@ -177,12 +188,23 @@ namespace cmf {
 			}
 			size_t size() const {return m_vector.size();}
 			virtual ~StateVariableList() {}
-
 			StateVariable::ptr operator[](ptrdiff_t index) const{
 				return m_vector.at(index >= 0 ? index : size() + index);
 			}
+
 		};
 
+		struct sparse_structure {
+			std::vector<size_t> indexvalues;
+			std::vector<size_t> indexpointers;
+			/// @brief Creates the sparse row compressed structure from states variable list			
+			sparse_structure();
+			size_t generate(const StateVariableList& states);
+			size_t NNZ, NP, N;
+		};
+
+			
+		
 	}
 }
 

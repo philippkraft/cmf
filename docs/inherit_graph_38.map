@@ -1,0 +1,35 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" href="$classcmf_1_1upslope_1_1conductable.html" title="An abstract interface for all classes providing a conductivity (e.g. " alt="" coords="211,157,303,184"/>
+<area shape="rect" id="node2" href="$classcmf_1_1upslope_1_1aquifer.html" title="A class to represent large groundwater storages, not bounded to the usual horizontal discretization s..." alt="" coords="422,208,482,235"/>
+<area shape="rect" id="node3" href="$classcmf_1_1upslope_1_1_soil_layer.html" title="A representation of a SoilLayer. " alt="" coords="414,259,490,285"/>
+<area shape="rect" id="node4" href="$classcmf_1_1water_1_1flux__node.html" title="Base class for everything that can be connected by fluxes. " alt="" coords="35,259,113,285"/>
+<area shape="rect" id="node5" href="$classcmf_1_1atmosphere_1_1_rain_source.html" title="An abstract class for different types of rainfall sources. " alt="" coords="212,107,301,133"/>
+<area shape="rect" id="node10" href="$classcmf_1_1water_1_1_dirichlet_boundary.html" title="Dirichlet (constant head) boundary condition. " alt="" coords="195,208,319,235"/>
+<area shape="rect" id="node11" href="$classcmf_1_1water_1_1_neumann_boundary.html" title="A Neumann boundary condition (constant flux boundary condition) " alt="" coords="191,259,323,285"/>
+<area shape="rect" id="node12" href="$classcmf_1_1water_1_1_system_bridge.html" title="A SystemBridge is an advanced feature for tuning of the calculation time. " alt="" coords="205,309,309,336"/>
+<area shape="rect" id="node13" href="$classcmf_1_1water_1_1_water_storage.html" title="A state variable for the storage of water. " alt="" coords="205,360,308,387"/>
+<area shape="rect" id="node6" href="$classcmf_1_1atmosphere_1_1_constant_rain_source.html" title="A simple implementation of RainSource. " alt="" coords="381,5,523,32"/>
+<area shape="rect" id="node7" href="$classcmf_1_1atmosphere_1_1_i_d_w_rainfall.html" title="A RainSource using a spatially interpolated rainfall intensity from all stations. ..." alt="" coords="407,56,497,83"/>
+<area shape="rect" id="node8" href="$classcmf_1_1atmosphere_1_1_rainfall_station_reference.html" title="References a single RainfallStation to provide rainfall intensity data. " alt="" coords="371,107,533,133"/>
+<area shape="rect" id="node9" href="$classcmf_1_1atmosphere_1_1_timeseries_rain_source.html" title="A rainsource with a timeseries. " alt="" coords="376,157,528,184"/>
+<area shape="rect" id="node14" href="$classcmf_1_1river_1_1_open_water_storage.html" title="An open water body. " alt="" coords="385,309,519,336"/>
+<area shape="rect" id="node17" href="$classcmf_1_1upslope_1_1_macro_pore.html" title="An additional water storage for a soil layer to model matrix water and macro pore water seperately..." alt="" coords="409,360,495,387"/>
+<area shape="rect" id="node15" href="$classcmf_1_1river_1_1_reach.html" title="A reach represents the section of a riover and is a specialization of an open water storage..." alt="" coords="603,284,661,311"/>
+<area shape="rect" id="node16" href="$classcmf_1_1upslope_1_1_surface_water.html" title="A child class of OpenWaterStorage to model surface water on a cell. " alt="" coords="581,335,683,361"/>
+<area shape="rect" id="node18" href="$classcmf_1_1math_1_1_state_variable.html" title="Abstract class state variable. " alt="" coords="24,385,124,412"/>
+<area shape="rect" id="node19" href="$classcmf_1_1water_1_1_solute_storage.html" title="A class for the storage of any tracer. " alt="" coords="205,411,309,437"/>
+<area shape="rect" id="node20" href="$classcmf_1_1math_1_1_state_variable_owner.html" title="An abstract class, that owns one or more state variables, that can add them to a vector of state vari..." alt="" coords="5,588,143,615"/>
+<area shape="rect" id="node21" href="$classcmf_1_1math_1_1_integrator.html" title="Base class for any kind of integrator. " alt="" coords="219,563,295,589"/>
+<area shape="rect" id="node30" href="$classcmf_1_1project.html" title="The study area, holding all cells, outlets and streams. " alt="" coords="226,613,287,640"/>
+<area shape="rect" id="node31" href="$classcmf_1_1upslope_1_1_cell.html" title="This class is the basic landscape object. " alt="" coords="235,664,279,691"/>
+<area shape="rect" id="node32" href="$classcmf_1_1upslope_1_1cell__vector.html" title="A cell vector holds a bunch of cells. " alt="" coords="215,715,298,741"/>
+<area shape="rect" id="node33" href="$classcmf_1_1water_1_1node__list.html" title="A collection of nodes for fast access of the waterbalance. " alt="" coords="219,512,294,539"/>
+<area shape="rect" id="node22" href="$classcmf_1_1math_1_1_b_d_f2.html" title="An order 2 BDF&#45;Method with fixed&#45;point iteration and variable step size. " alt="" coords="425,411,479,437"/>
+<area shape="rect" id="node23" href="$classcmf_1_1math_1_1_c_vode_integrator.html" title="A wrapper class for the CVODE integrator from the SUNDIALS library. " alt="" coords="395,461,509,488"/>
+<area shape="rect" id="node24" href="$classcmf_1_1math_1_1_explicit_euler__fixed.html" title="An explicit Euler integrator, with a fixed time step. " alt="" coords="387,512,517,539"/>
+<area shape="rect" id="node25" href="$classcmf_1_1math_1_1_heun_integrator.html" title="A simple predictor &#45; corrector solver. " alt="" coords="399,563,505,589"/>
+<area shape="rect" id="node26" href="$classcmf_1_1math_1_1_implicit_euler.html" title="An implicit (backward) Euler integrator using fixpoint iteration. " alt="" coords="405,613,499,640"/>
+<area shape="rect" id="node27" href="$classcmf_1_1math_1_1_multi_integrator.html" title="The MultiIntegrator is a wrapper for a bunch integrators. The states of the integrators should not ha..." alt="" coords="400,664,504,691"/>
+<area shape="rect" id="node28" href="$classcmf_1_1math_1_1_r_k_f_integrator.html" title="Integrates a vector of cmf::math::StateVariable with the Runge&#45;Kutta&#45;Fehlberg (RKF54) method..." alt="" coords="401,715,503,741"/>
+<area shape="rect" id="node29" href="$classcmf_1_1math_1_1_solute_water_integrator.html" title="A SoluteWaterIntegrator implements the cmf::math::Integrator interface, but consists of two independe..." alt="" coords="378,765,526,792"/>
+</map>

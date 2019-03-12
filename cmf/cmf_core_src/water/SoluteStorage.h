@@ -5,7 +5,7 @@
 //
 //   cmf is free software: you can redistribute it and/or modify
 //   it under the terms of the GNU General Public License as published by
-//   the Free Software Foundation, either version 2 of the License, or
+//   the Free Software Foundation, either version 3 of the License, or
 //   (at your option) any later version.
 //
 //   cmf is distributed in the hope that it will be useful,
@@ -67,9 +67,14 @@ namespace cmf {
 			/// @brief set a new concentration of dissolved tracers. 
 			///
 			/// In case of adsorption functions, the isotherm is used
-
 			void set_conc(real NewConcentration);
-
+			/// @brief get the waterstorge of the solute storage
+			const WaterStorage& get_water() const {
+				return *m_water;
+			}
+			/// @brief Returns True if this solute storage is effected by another state
+			virtual bool is_connected(const cmf::math::StateVariable& other) const;
+			virtual void add_connected_states(cmf::math::StateVariable::list& states);
 			virtual real dxdt(const cmf::math::Time& time);
 			virtual std::string to_string() const;
 			typedef std::shared_ptr<SoluteStorage> ptr;

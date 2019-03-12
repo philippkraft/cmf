@@ -1,15 +1,13 @@
-.. image:: https://img.shields.io/pypi/v/cmf.svg
+.. image:: https://badge.fury.io/py/cmf.svg
     :target: https://pypi.python.org/pypi/cmf/
-.. image:: https://img.shields.io/pypi/pyversions/cmf.svg
-    :target: https://pypi.python.org/pypi/cmf#downloads
-.. image:: https://img.shields.io/badge/docs-tutorial-yellow.svg
-    :target: http://fb09-pasig.umwelt.uni-giessen.de/cmf/wiki/CmfTutStart
 .. image:: https://img.shields.io/github/release/philippkraft/cmf.svg?logo=github
     :target: https://github.com/philippkraft/cmf
-.. image:: https://img.shields.io/travis/philippkraft/cmf/master.svg
+.. image:: https://api.travis-ci.org/philippkraft/cmf.svg
     :target: https://travis-ci.org/philippkraft/cmf
-.. image:: https://img.shields.io/badge/license-GPL-green.svg
-    :target: https://opensource.org/licenses/GPL-2.0
+.. image:: https://ci.appveyor.com/api/projects/status/24crp4ejkacykkrk?svg=true
+    :target: https://ci.appveyor.com/project/philippkraft/cmf
+.. image:: https://img.shields.io/badge/license-GPLv3-green.svg
+    :target: https://opensource.org/licenses/GPL-3.0
 .. image:: https://zenodo.org/badge/DOI/10.5281/zenodo.1125290.svg
    :target: https://doi.org/10.5281/zenodo.1125290
 

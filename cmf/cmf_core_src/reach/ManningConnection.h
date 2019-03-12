@@ -5,7 +5,7 @@
 //
 //   cmf is free software: you can redistribute it and/or modify
 //   it under the terms of the GNU General Public License as published by
-//   the Free Software Foundation, either version 2 of the License, or
+//   the Free Software Foundation, either version 3 of the License, or
 //   (at your option) any later version.
 //
 //   cmf is distributed in the hope that it will be useful,
@@ -60,11 +60,7 @@ namespace cmf {
 			virtual real get_slope(cmf::water::flux_node::ptr lnode, cmf::water::flux_node::ptr rnode, real d)=0;
 			std::weak_ptr<cmf::river::OpenWaterStorage> w1,w2;
 			virtual real calc_q(cmf::math::Time t);
-			void NewNodes()
-			{
-				w1=cmf::river::OpenWaterStorage::cast(left_node());
-				w2=cmf::river::OpenWaterStorage::cast(right_node());
-			}
+			void NewNodes();
 			Manning(cmf::river::OpenWaterStorage::ptr left,cmf::water::flux_node::ptr right,
 				const cmf::river::IVolumeHeightFunction& reachtype,bool diffusive_wave)
 				: flux_connection(left,right,diffusive_wave ? "Manning (diff. wave)" : "Manning (kin. wave)"),	flux_geometry(reachtype), is_diffusive_wave(diffusive_wave) {

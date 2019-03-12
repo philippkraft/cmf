@@ -5,7 +5,7 @@
 //
 //   cmf is free software: you can redistribute it and/or modify
 //   it under the terms of the GNU General Public License as published by
-//   the Free Software Foundation, either version 2 of the License, or
+//   the Free Software Foundation, either version 3 of the License, or
 //   (at your option) any later version.
 //
 //   cmf is distributed in the hope that it will be useful,
@@ -93,12 +93,12 @@
             yield (c_iter.cell(),c_iter.flowwidth())
             c_iter.next_neighbor()
     
-    surfacewater=property(get_surfacewater,None,"Gives access to the surface water, which is either a distributing flux node, or the storage for all surface water")
-    canopy=property(get_canopy,None,"The canopy water storage of the cell, if it exists")
-    snow=property(get_snow,None,"The snow pack of the cell, if a storage for the snow exists")
+    surfacewater=property(get_surfacewater, None, doc="Gives access to the surface water, which is either a distributing flux node, or the storage for all surface water")
+    canopy=property(get_canopy, None, doc="The canopy water storage of the cell, if it exists")
+    snow=property(get_snow, None, doc="The snow pack of the cell, if a storage for the snow exists")
         
-    contributing_area=property(lambda self:self.topology.ContributingArea(),None,"Contributing area of this cell m2")
-    main_outlet=property(lambda self:self.topology.MainOutlet(),None,"The main outlet of the surface water of this cell")
+    contributing_area=property(lambda self:self.topology.ContributingArea(), None, doc="Contributing area of this cell m2")
+    main_outlet=property(lambda self:self.topology.MainOutlet(), None, doc="The main outlet of the surface water of this cell")
     
     def connect_soil_with_node(self,node,ctype,flowwidth,distance,upper_boundary=0,lower_boundary=None):
         """Connects all layers between the boundaries with a node using a flux connection
