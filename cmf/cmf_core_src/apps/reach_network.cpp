@@ -123,9 +123,9 @@ namespace cmf {
 
 
 
-		std::unique_ptr<cmf::math::CVode3> make_solver(cmf::project p, SolverType _solver) {
+		std::unique_ptr<cmf::math::CVodeBase> make_solver(cmf::project p, SolverType _solver) {
 			using namespace cmf::math; 
-			typedef std::unique_ptr<CVode3> solver_type;
+			typedef std::unique_ptr<CVodeBase> solver_type;
 			switch (_solver) {
 
 			case dense:

@@ -332,7 +332,7 @@
     <ClCompile>
       <Optimization>Full</Optimization>
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
-      <AdditionalIncludeDirectories>$(ProjectDir)..\lib\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\lib\include\suitesparse;$(ProjectDir)..\lib\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_WINDOWS;CMF_EXPORTS;SOLUTE;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <BasicRuntimeChecks>Default</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
@@ -399,7 +399,7 @@
     <ClInclude Include="..\cmf\cmf_core_src\apps\reach_network.h" />
     <ClInclude Include="..\cmf\cmf_core_src\apps\subsurface.h" />
     <ClInclude Include="..\cmf\cmf_core_src\cmfmemory.h" />
-    <ClInclude Include="..\cmf\cmf_core_src\math\integrators\cvode3.h" />
+    <ClInclude Include="..\cmf\cmf_core_src\math\integrators\cvode.h" />
     <ClInclude Include="..\cmf\cmf_core_src\math\num_array.h" />
     <ClInclude Include="..\cmf\cmf_core_src\upslope\vegetation\waterstress.h" />
     <ClInclude Include="..\cmf\cmf_core_src\water\adsorption.h" />
@@ -433,7 +433,7 @@
     <ClInclude Include="..\cmf\cmf_core_src\project.h" />
     <ClInclude Include="..\cmf\cmf_core_src\reach\reach.h" />
     <ClInclude Include="..\cmf\cmf_core_src\reach\ReachType.h" />
-    <ClInclude Include="..\cmf\cmf_core_src\reach\cross_section_reach.h"/>
+    <ClInclude Include="..\cmf\cmf_core_src\reach\cross_section_reach.h" />
     <ClInclude Include="..\cmf\cmf_core_src\math\real.h" />
     <ClInclude Include="..\cmf\cmf_core_src\upslope\soil\RetentionCurve.h" />
     <ClInclude Include="..\cmf\cmf_core_src\math\integrators\RKFIntegrator.h" />
@@ -460,7 +460,7 @@
     <ClCompile Include="..\cmf\cmf_core_src\apps\subsurface.cpp" />
     <ClCompile Include="..\cmf\cmf_core_src\cmf.cpp" />
     <ClCompile Include="..\cmf\cmf_core_src\cmf_wrap.cpp" />
-    <ClCompile Include="..\cmf\cmf_core_src\math\integrators\cvode3.cpp" />
+    <ClCompile Include="..\cmf\cmf_core_src\math\integrators\cvode.cpp" />
     <ClCompile Include="..\cmf\cmf_core_src\math\num_array.cpp" />
     <ClCompile Include="..\cmf\cmf_core_src\upslope\vegetation\waterstress.cpp" />
     <ClCompile Include="..\cmf\cmf_core_src\water\adsorption.cpp" />

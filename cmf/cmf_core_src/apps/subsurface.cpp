@@ -111,7 +111,7 @@ void create_3d(cmf::project& p, int size_x, int size_y, std::string& name) {
 	}
 }
 
-int64_t run(cmf::math::CVode3* integ, cmf::project& p) {
+int64_t run(cmf::math::CVodeBase* integ, cmf::project& p) {
 	auto tstart = std::chrono::high_resolution_clock::now();
 	std::cout.precision(3);
 	while (integ->get_t() < cmf::math::day * 20)
@@ -140,7 +140,7 @@ int run_subsurface_app() {
 	std::string name;
 	create_3d(p, 10, 10, name);
 
-	CVode3 * integ = new CVodeKLU(p, 1e-9);
+	CVodeBase * integ = new CVodeKLU(p, 1e-9);
 
 	int64_t duration = run(integ, p);
 

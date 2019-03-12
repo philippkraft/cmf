@@ -14,8 +14,8 @@
 //   You should have received a copy of the GNU General Public License
 //   along with cmf.  If not, see <http://www.gnu.org/licenses/>.
 
-#ifndef cvode3_h__
-#define cvode3_h__
+#ifndef cvode_h__
+#define cvode_h__
 
 #include <memory>
 
@@ -97,7 +97,7 @@ namespace cmf {
 		/// @brief Abstract base class for different modes of the CVode solver
 		///
 		/// Initantiate one of the child classes to gain different modes of the CVode solver
-		class CVode3 : public Integrator {
+		class CVodeBase : public Integrator {
 		private:
 			bool _stiff_solver;
 		protected:
@@ -107,7 +107,7 @@ namespace cmf {
 
 			std::string _error_msg;
 			virtual void set_solver()=0;
-			CVode3(cmf::math::StateVariableOwner& states, real epsilon = 1e-9);
+			CVodeBase(cmf::math::StateVariableOwner& states, real epsilon = 1e-9);
 
 		public:
 			/// @brief the limits for the CVode solver, see CVodeOptions
@@ -124,7 +124,7 @@ namespace cmf {
 			/// Sets an error message
 			void set_error_msg(std::string error);
 			/// Returns a copy of the solver
-			CVode3 * copy() const;
+			CVodeBase * copy() const;
 
 			std::string error_msg;
 
@@ -142,7 +142,7 @@ namespace cmf {
 			/// In Python, get_jacobian returns the Jacobian as a 2D array
 			virtual cmf::math::num_array _get_jacobian() const;
 			
-			~CVode3();
+			~CVodeBase();
 		};
 		/// @brief implicit BDF CVode solver with full Jacobian approximation
 		///
@@ -150,7 +150,7 @@ namespace cmf {
 		///
 		/// The solver calculates for each step the full Jacobian matrix of the system
 		/// using a difference quotient approximation of the real Jacobian
-		class CVodeDense : public CVode3 {
+		class CVodeDense : public CVodeBase {
 		public:
 			/// @brief Creates a new implicit dense CVode solver 
 			CVodeDense(cmf::math::StateVariableOwner& states, real epsilon = 1e-9);
@@ -164,7 +164,7 @@ namespace cmf {
 		};
 
 		/// @brief Explizit multistep solver using CVode
-		class CVodeAdams : public CVode3 {
+		class CVodeAdams : public CVodeBase {
 		public:
 			CVodeAdams(cmf::math::StateVariableOwner& states, real epsilon = 1e-9);
 			std::string to_string() const;
@@ -175,7 +175,7 @@ namespace cmf {
 		};
 
 		/// @brief implicit BDF CVode solver with a banded Jacobian approximation
-		class CVodeBanded : public CVode3 {
+		class CVodeBanded : public CVodeBase {
 		public:
 			/// @brief Width of the band to both sides of the diagonal
 			int bandwidth;
@@ -186,7 +186,7 @@ namespace cmf {
 		};
 
 		/// @brief implicit BDF CVode solver with a one line diagonal Jacobian approximation
-		class CVodeDiag : public CVode3 {
+		class CVodeDiag : public CVodeBase {
 		public:
 			CVodeDiag(cmf::math::StateVariableOwner& states, real epsilon = 1e-9);
 			std::string to_string() const {
@@ -197,7 +197,7 @@ namespace cmf {
 		};
 
 		/// @brief implicit BDF CVode solver with a Krylov preconditioner
-		class CVodeKrylov : public CVode3 {
+		class CVodeKrylov : public CVodeBase {
 		public:
 			/// @brief Band width of the preconditioner (both sides of the diagonal)
 			int bandwidth;
@@ -211,7 +211,7 @@ namespace cmf {
 			void set_solver();
 		};
 
-		class CVodeKLU : public CVode3 {
+		class CVodeKLU : public CVodeBase {
 		public:
 			CVodeKLU(cmf::math::StateVariableOwner& states, real epsilon = 1e-9);
 			std::string to_string() const;
@@ -219,7 +219,7 @@ namespace cmf {
 		protected:
 			void set_solver();
 		private:
-			friend class CVode3::Impl;
+			friend class CVodeBase::Impl;
 			sparse_structure sps;
 
 		};

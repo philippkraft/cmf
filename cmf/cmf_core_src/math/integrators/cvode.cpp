@@ -1,4 +1,4 @@
-#include "cvode3.h"
+#include "cvode.h"
 #include "../num_array.h"
 
 #include <sstream>
@@ -47,7 +47,7 @@ cmf::math::CVodeOptions::CVodeOptions()
 }
 
 
-class cmf::math::CVode3::Impl {
+class cmf::math::CVodeBase::Impl {
 public:
 	/*******************************
 	CVode Implentation Attributes
@@ -64,17 +64,17 @@ public:
 	int N = 0;
 	long int dxdt_method_calls = 0;
 
-	CVode3 * _integrator;
+	CVodeBase * _integrator;
 
 	// c'tor of CVode3::Impl, does not initialize solver
-	Impl(CVode3 * integrator) :
+	Impl(CVodeBase * integrator) :
 		_integrator(integrator)
 	{		}
 
 	static int f(realtype t, N_Vector u, N_Vector udot, void *f_data)
 	{
-		CVode3::Impl * integ_impl = static_cast<CVode3::Impl*>(f_data);
-		CVode3 * integ = integ_impl->_integrator;
+		CVodeBase::Impl * integ_impl = static_cast<CVodeBase::Impl*>(f_data);
+		CVodeBase * integ = integ_impl->_integrator;
 		// Get the pointers to the data of the vectors u and udot
 		realtype * udata = NV_DATA_S(u);
 		realtype * dudata = NV_DATA_S(udot);
@@ -254,51 +254,51 @@ public:
 };
 
 
-int cmf::math::CVode3::initialize()
+int cmf::math::CVodeBase::initialize()
 {
 	return _implementation->initialize();
 }
 
-int cmf::math::CVode3::integrate(cmf::math::Time t_max, cmf::math::Time dt)
+int cmf::math::CVodeBase::integrate(cmf::math::Time t_max, cmf::math::Time dt)
 {
 
 	return _implementation->integrate(t_max, dt);
 }
 
-void cmf::math::CVode3::reset()
+void cmf::math::CVodeBase::reset()
 {
 	_implementation->reset();
 }
 
-cmf::math::CVode3::CVode3(cmf::math::StateVariableOwner & states, real epsilon)
+cmf::math::CVodeBase::CVodeBase(cmf::math::StateVariableOwner & states, real epsilon)
 	: Integrator(states, epsilon)
 {
-	cmf::math::CVode3::Impl* p_impl = new cmf::math::CVode3::Impl(this);
-    _implementation=std::unique_ptr<cmf::math::CVode3::Impl>(p_impl);
+	cmf::math::CVodeBase::Impl* p_impl = new cmf::math::CVodeBase::Impl(this);
+    _implementation=std::unique_ptr<cmf::math::CVodeBase::Impl>(p_impl);
 }
 
-void cmf::math::CVode3::set_error_msg(std::string error)
+void cmf::math::CVodeBase::set_error_msg(std::string error)
 {
 	_error_msg = error;
 }
 
-CVode3 * cmf::math::CVode3::copy() const
+CVodeBase * cmf::math::CVodeBase::copy() const
 {
 	return nullptr;
 }
-cmf::math::num_array cmf::math::CVode3::_get_jacobian() const
+cmf::math::num_array cmf::math::CVodeBase::_get_jacobian() const
 {
 	throw std::runtime_error(this->to_string() + " has no retreivable Jacobian");
 }
 
-CVode3::~CVode3() = default;
+CVodeBase::~CVodeBase() = default;
 
-CVodeInfo cmf::math::CVode3::get_info() const
+CVodeInfo cmf::math::CVodeBase::get_info() const
 {
 	CVodeInfo ci;
 	void * cvm = _implementation->cvode_mem;
 
-	ci.size = size();
+	ci.size = long(size());
 	CVodeGetWorkSpace(cvm, &ci.workspace_real, &ci.workspace_int);
 	ci.workspace_byte = ci.workspace_real * sizeof(realtype) + ci.workspace_int * sizeof(long int);
 	int qlast, qcur;
@@ -316,20 +316,20 @@ CVodeInfo cmf::math::CVode3::get_info() const
 	return ci;
 }
 
-cmf::math::num_array cmf::math::CVode3::get_error() const
+cmf::math::num_array cmf::math::CVodeBase::get_error() const
 {
 	return _implementation->get_error();
 }
 
 cmf::math::CVodeDense::CVodeDense(cmf::math::StateVariableOwner & states, real epsilon)
-	: CVode3(states, epsilon)
+	: CVodeBase(states, epsilon)
 {}
 
 
 
 cmf::math::num_array cmf::math::CVodeDense::_get_jacobian() const
 {
-	CVode3::Impl& i = *_implementation;
+	CVodeBase::Impl& i = *_implementation;
 	void * cvm = i.cvode_mem;
 	if (cvm == 0 || i.J == 0) {
 		throw std::runtime_error(this->to_string() + ": No access to Jacobian matrix, if the solver is not initialized or the solver has none. Run the solver for any timestep");
@@ -340,7 +340,7 @@ cmf::math::num_array cmf::math::CVodeDense::_get_jacobian() const
 
 void cmf::math::CVodeDense::set_solver()
 {
-	CVode3::Impl& i = *_implementation;
+	CVodeBase::Impl& i = *_implementation;
 	if (i.cvode_mem == 0) {
 		throw std::runtime_error(this->to_string() + ": Tried to create dense solver for uninitialized cvode");
 	}
@@ -353,16 +353,17 @@ void cmf::math::CVodeDense::set_solver()
 	if (flag != CVLS_SUCCESS) {
 		throw std::runtime_error(this->to_string() + ": Failed to create linear solver");
 	}
-	flag = CVodeSetJacFn(i.cvode_mem, CVode3::Impl::dense_jacobian);
+	/*
+	flag = CVodeSetJacFn(i.cvode_mem, CVodeBase::Impl::dense_jacobian);
 	// Check flag and raise an error
 	if (flag != CVLS_SUCCESS) {
 		throw std::runtime_error(this->to_string() + ": Failed to set custom DQ Jacobian function");
 	}
-
+	*/
 }
 
 cmf::math::CVodeBanded::CVodeBanded(cmf::math::StateVariableOwner & states, real epsilon, int _bandwidth)
-	: CVode3(states, epsilon), bandwidth(_bandwidth)
+	: CVodeBase(states, epsilon), bandwidth(_bandwidth)
 {}
 
 inline std::string cmf::math::CVodeBanded::to_string() const {
@@ -372,7 +373,7 @@ inline std::string cmf::math::CVodeBanded::to_string() const {
 
 void cmf::math::CVodeBanded::set_solver()
 {
-	CVode3::Impl& i = *_implementation;
+	CVodeBase::Impl& i = *_implementation;
 	if (i.cvode_mem == 0) {
 		throw std::runtime_error("Tried to create banded solver for uninitialized cvode");
 	}
@@ -387,12 +388,12 @@ void cmf::math::CVodeBanded::set_solver()
 }
 
 cmf::math::CVodeDiag::CVodeDiag(cmf::math::StateVariableOwner & states, real epsilon)
-	: CVode3(states, epsilon)
+	: CVodeBase(states, epsilon)
 {}
 
 void cmf::math::CVodeDiag::set_solver()
 {
-	CVode3::Impl& i = *_implementation;
+	CVodeBase::Impl& i = *_implementation;
 	if (i.cvode_mem == 0) {
 		throw std::runtime_error("Tried to create solver for uninitialized cvode");
 	}
@@ -402,7 +403,7 @@ void cmf::math::CVodeDiag::set_solver()
 
 cmf::math::CVodeKrylov::CVodeKrylov(cmf::math::StateVariableOwner & states, real epsilon,
 	int _bandwidth, char _preconditioner)
-	: CVode3(states, epsilon), bandwidth(_bandwidth), preconditioner(_preconditioner)
+	: CVodeBase(states, epsilon), bandwidth(_bandwidth), preconditioner(_preconditioner)
 {}
 
 inline std::string cmf::math::CVodeKrylov::to_string() const {
@@ -411,7 +412,7 @@ inline std::string cmf::math::CVodeKrylov::to_string() const {
 
 void cmf::math::CVodeKrylov::set_solver()
 {
-	CVode3::Impl& i = *_implementation;
+	CVodeBase::Impl& i = *_implementation;
 	if (i.cvode_mem == 0) {
 		throw std::runtime_error("Tried to create banded solver for uninitialized cvode");
 	}
@@ -460,7 +461,7 @@ std::string cmf::math::CVodeInfo::to_string() const
 }
 
 cmf::math::CVodeAdams::CVodeAdams(cmf::math::StateVariableOwner & states, real epsilon)
-	:CVode3(states, epsilon)
+	:CVodeBase(states, epsilon)
 {
 	this->_implementation->use_stiff_solver = false;
 }
@@ -471,7 +472,7 @@ std::string cmf::math::CVodeAdams::to_string() const
 }
 
 cmf::math::CVodeKLU::CVodeKLU(cmf::math::StateVariableOwner & states, real epsilon)
-	: CVode3(states, epsilon)
+	: CVodeBase(states, epsilon)
 {
 }
 
@@ -538,7 +539,7 @@ cmf::math::num_array copy_sparse_to_array(SUNMatrix A_sparse) {
 
 cmf::math::num_array cmf::math::CVodeKLU::_get_jacobian() const
 {
-	CVode3::Impl& i = *_implementation;
+	CVodeBase::Impl& i = *_implementation;
 	void * cvm = i.cvode_mem;
 	if (cvm == 0 || i.J == 0) {
 		throw std::runtime_error(this->to_string() + ": No access to Jacobian matrix, if the solver is not initialized or the solver has none. Run the solver for any timestep");
@@ -547,7 +548,7 @@ cmf::math::num_array cmf::math::CVodeKLU::_get_jacobian() const
 }
 
 
-int CVode3::Impl::sparse_jacobian(
+int CVodeBase::Impl::sparse_jacobian(
 	realtype t,
 	N_Vector y, N_Vector fy,
 	SUNMatrix J,
@@ -560,7 +561,7 @@ int CVode3::Impl::sparse_jacobian(
 	Needs information about Jacobian structure already build in J. 
 	Can be gained from J->indexvals and J->indexptrs
 	*/
-	CVode3::Impl * integ_impl = static_cast<CVode3::Impl*>(userdata);
+	CVodeBase::Impl * integ_impl = static_cast<CVodeBase::Impl*>(userdata);
 	CVodeKLU * integ = static_cast<CVodeKLU *>(integ_impl->_integrator);
 	void * cvode_mem = integ_impl->cvode_mem;
 
@@ -608,10 +609,6 @@ int CVode3::Impl::sparse_jacobian(
 		data_pos, row, col;			 
 
 	integ->set_states(NV_DATA_S(ytmp));
-	// real_vec dbg_y = copy_to_dbg_vec(ytmp);
-	// integ->copy_dxdt(time, NV_DATA_S(tmp3));
-	// real_vec dbg_dxdt = copy_to_dbg_vec(tmp3);
-	// real_vec dbg_J(J_data, J_data + SM_NNZ_S(J));
 	
 	for (col = 0; col < integ_impl->N; ++col) {
 		// Change state for the row
@@ -620,8 +617,6 @@ int CVode3::Impl::sparse_jacobian(
 		inc = SUNMAX(srur*SUNRabs(old_y), minInc/ewt_data[col]);
 		NV_Ith_S(ytmp, col) += inc;
 		integ->set_state(col, NV_Ith_S(ytmp, col));
-		// integ->set_states(NV_DATA_S(ytmp));
-		// dbg_y = copy_to_dbg_vec(ytmp);
 		// Loop through column positions
 		for (data_pos = SM_INDEXPTRS_S(J)[col]; 
 			 data_pos < SM_INDEXPTRS_S(J)[col + 1];
@@ -630,27 +625,22 @@ int CVode3::Impl::sparse_jacobian(
 			// Get the column number
 			row = SM_INDEXVALS_S(J)[data_pos];
 			// Calculate the new dxdt for that row
-			// integ->copy_dxdt(time, NV_DATA_S(tmp3));
-			// dbg_dxdt = copy_to_dbg_vec(tmp3);
-			// altered_dxdt = NV_Ith_S(tmp3, row);
 			altered_dxdt = integ->m_States[row]->dxdt(time);
 			integ_impl->dxdt_method_calls += 1;
 			// Set the Jacobian value
 			J_data[data_pos] = altered_dxdt / inc - f_data[row] / inc;
-			// dbg_J = real_vec(J_data, J_data + SM_NNZ_S(J));
 		}
 		// Undo state change
 		NV_Ith_S(ytmp, col) = old_y;
 		integ->set_states(NV_DATA_S(ytmp));
 	}
 	int flag = copy_sparse_to_sparse(J, integ_impl->J);
-	// real_vec iiJ(SM_DATA_S(integ_impl->J), SM_DATA_S(integ_impl->J) + SM_NNZ_S(integ_impl->J));
 	return CVLS_SUCCESS;
 }
 
-int cmf::math::CVode3::Impl::dense_jacobian(realtype t, N_Vector y, N_Vector fy, SUNMatrix J, void * userdata, N_Vector tmp1, N_Vector tmp2, N_Vector tmp3)
+int cmf::math::CVodeBase::Impl::dense_jacobian(realtype t, N_Vector y, N_Vector fy, SUNMatrix J, void * userdata, N_Vector tmp1, N_Vector tmp2, N_Vector tmp3)
 {
-	realtype fnorm, minInc, inc, inc_inv, yjsaved, srur, conj, h;
+	realtype fnorm, minInc, inc, inc_inv, yjsaved, srur;
 	realtype *y_data, *ewt_data, *cns_data;
 	N_Vector ftemp, jthCol, ewt;
 
@@ -658,7 +648,7 @@ int cmf::math::CVode3::Impl::dense_jacobian(realtype t, N_Vector y, N_Vector fy,
 	int retval = 0;
 
 	/* access solver interface structure */
-	CVode3::Impl * integ_impl = static_cast<CVode3::Impl*>(userdata);
+	CVodeBase::Impl * integ_impl = static_cast<CVodeBase::Impl*>(userdata);
 	CVodeKLU * integ = static_cast<CVodeKLU *>(integ_impl->_integrator);
 	void * cvode_mem = integ_impl->cvode_mem;
 
@@ -729,7 +719,7 @@ int cmf::math::CVode3::Impl::dense_jacobian(realtype t, N_Vector y, N_Vector fy,
 
 void cmf::math::CVodeKLU::set_solver()
 {
-	CVode3::Impl& i = *_implementation;
+	CVodeBase::Impl& i = *_implementation;
 	int retval = 0;
 	
 	// Create sparse matrix
@@ -746,7 +736,7 @@ void cmf::math::CVodeKLU::set_solver()
 	if (retval) throw std::runtime_error("CVODE-KLU: Failed to attach sparse KLU linear solver");
 
 	/* Set the user-supplied Jacobian routine Jac */
-	retval = CVodeSetJacFn(i.cvode_mem, CVode3::Impl::sparse_jacobian);
+	retval = CVodeSetJacFn(i.cvode_mem, CVodeBase::Impl::sparse_jacobian);
 	if (retval) throw std::runtime_error("CVODE-KLU: Failed to set sparse jacobian function");
 
 }
