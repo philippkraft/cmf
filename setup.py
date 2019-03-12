@@ -325,7 +325,7 @@ if __name__ == '__main__':
           license='GPLv3+',
           ext_modules=ext,
           packages=['cmf', 'cmf.draw', 'cmf.geometry'],
-          python_requires='>=3.4',
+          python_requires='>=3.5',
           keywords='hydrology catchment simulation toolbox',
           author='Philipp Kraft',
           author_email="philipp.kraft@umwelt.uni-giessen.de",
