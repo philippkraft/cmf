@@ -96,12 +96,21 @@ namespace cmf {
 		public:
 			/// First date of measurement
 			cmf::math::Time begin() const {return m_data->begin;}
+			void set_begin(cmf::math::Time new_begin) {
+				m_data->begin = new_begin;
+			}
 			/// Time between the measurements
 			cmf::math::Time step() const {return m_data->step;}
+			void set_step(cmf::math::Time new_step) {
+				m_data->step = new_step;
+			}
 			/// Last date of measurements
 			cmf::math::Time end()	const		{return begin()+step()*int(m_data->values.size());}
 			/// Method for the interpolation (0 - Nearest neighbor, 1- linear, 2 - cubic spline (not implemented yet)
 			int interpolationpower() const {return m_data->interpolationpower;}
+			void set_interpolationpower(int new_ip) {
+				m_data->interpolationpower = new_ip;
+			}
 			/// Appends a measurement
 			void add(double Value);
 			/// returns true if no values are added to the timeseries
@@ -111,6 +120,7 @@ namespace cmf {
 			{
 				return size_t(&(m_data->values[0]));
 			}
+			cmf::math::num_array as_array() const;
 			timeseries copy() const;
 			/// Number of items in the timeseries
 			size_t size() const {return ptrdiff_t(m_data->values.size());}

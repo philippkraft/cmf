@@ -1,5 +1,4 @@
 environment:
-
   PYPIPASSWORD:
     secure: LmtnXHQhfACj8oOpwYehsFPkdhPHGLq84SIqn+ixfS8=
   matrix:
@@ -8,17 +7,19 @@ environment:
     # http://www.appveyor.com/docs/installed-software#python
     # The list here is complete (excluding Python 2.6, which
     # isn't covered by this document) at the time of writing.
-
-    - PYTHON: "C:\\Python36-x64"
+    - PYTHON: "C:\\Python37-x64"
     - PYTHON: "C:\\Python35-x64"
-    - PYTHON: "C:\\Python27-x64"
+
+    - PYTHON: "C:\\Python37"
+    - PYTHON: "C:\\Python35"
+
 
 install:
   # We need wheel installed to build wheels
-  - "%PYTHON%\\python.exe -m pip install wheel"
+  - "%PYTHON%\\python.exe -m pip install wheel --no-warn-script-location"
   - "%PYTHON%\\Scripts\\pip install numpy"
-  # We need boost for Py 2.7
-  - "SET BOOSTDIR=C:\\Libraries\\boost"
+  - "%PYTHON%\\Scripts\\pip install scipy"
+
   # We need vcvarsall to build sundials
   - 'call "C:\Program Files\Microsoft SDKs\Windows\v7.1\Bin\SetEnv.cmd" /x64'
   - 'call "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat" x86_amd64'
@@ -49,22 +50,3 @@ artifacts:
   # bdist_wheel puts your built wheel in the dist directory
   - path: dist\*
 
-# Deploy to PyPI if a tagged release
-on_success:
-  # Specify account details for PyPI
-  - echo [distutils]                                  > %USERPROFILE%\\.pypirc
-  - echo index-servers =                             >> %USERPROFILE%\\.pypirc
-  - echo     pypi                                    >> %USERPROFILE%\\.pypirc
-  - echo [pypi]                                      >> %USERPROFILE%\\.pypirc
-  - echo repository=https://pypi.python.org/pypi     >> %USERPROFILE%\\.pypirc
-  - echo username=Philipp.Kraft                      >> %USERPROFILE%\\.pypirc
-  - echo password=%PYPIPASSWORD%                     >> %USERPROFILE%\\.pypirc
-
-  # Workaround required to ensure setup.py finds the .pypirc under Windows
-  - set HOME=%USERPROFILE%
-
-  # Deploy a wheel (only actually do this for tags). NB That breaking this line
-  # with Unix line-endings causes the windows command interpreter to barf so
-  # this is given as one-line to make this script less fragile when edited on
-  # other OSes.
-  - if "%APPVEYOR_REPO_TAG%"=="true" ( win_build.cmd %PYTHON%\\python.exe setup.py bdist_wheel upload ) else ( echo "Not deploying because not a tagged commit." )

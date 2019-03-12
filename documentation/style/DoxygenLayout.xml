@@ -2,9 +2,9 @@
   <!-- Navigation index tabs for HTML output -->
   <navindex>
     <tab type="mainpage" visible="yes" title=""/>
-    <tab type="usergroup" visible="yes" title="Tutorial" intro="">
+    <tab type="usergroup" visible="yes" title="Tutorial" intro="" url="@ref tutorial">
       <tab type="user" visible="yes" title="Tutorial" url="@ref tutorial"/>
-      <tab type="pages" visible="yes" title="Extra pages"/>
+      <tab type="user" visible="yes" title="Publications" url="@ref publicationList"/>
     </tab>
     <tab type="usergroup" visible="yes" title="API Documentation" intro="">
       <tab type="modules" visible="yes" title="" intro="API by topic"/>
@@ -18,6 +18,7 @@
         <tab type="hierarchy" visible="yes" title="" intro=""/>
         <tab type="classmembers" visible="yes" title="" intro=""/>
       </tab>
+      <tab type="pages" visible="yes" title="Deprecation and TODO's"/>
     </tab>
     <tab type="user" visible="yes" title="GitHub" url="https://github.com/philippkraft/cmf"/>
   </navindex>

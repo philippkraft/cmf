@@ -40,19 +40,26 @@ namespace cmf {
 		/// For the model, one of ManningKinematic or ManningDiffusive connection 
 		/// is selected
 		///
-        /// \f{eqnarray*}
-		/// q_{Manning}&=& A R^{\frac 2 3} \sqrt{\frac {\Delta_z} n} \\
-		/// A &=& \frac V l \mbox{, (Crosssectional area of the wetted crossection, Volume per length)} \\
-		/// R &=& \frac A {P(d)} \\
-		/// P(d) &=& \mbox{ the perimeter of the wetted crosssection, a function of reach depth} \\
-		/// d(V) &=& \mbox{ the depth of the reach, a function of the volume} \\
-		/// \Delta_z &=& \frac{\|z_1 - z_2\|}{l} \mbox{ Slope of the reach} \\
-		/// n&=&\mbox{Manning friction number}
-		/// \f}
+        /// \f[
+		/// v =  R^{\frac 2 3} \frac{\sqrt{\Delta_z}}{n} \\
+		/// q =  v \cdot A
+		/// \f]
 		///
-		/// For the kinematic wave the slope of the river bed is used as slope \f$\Delta_z = \frac{|z_1 - z_2\|}{l}\f$, 
+		/// Where:
+		/// - \f$ A = \frac V l\f$: Crosssectional area of the wetted crossection, Volume per length
+		/// - \f$ R = \frac A {P(d)}\f$: The hydraulic radius
+		/// - \f$P(d)\f$: the perimeter of the wetted crosssection, a function of reach depth
+		/// - \f$d(V)\f$: the depth of the reach, a function of the volume
+		/// - \f$\Delta_z = \frac{|z_1 - z_2|}{l}\f$: Slope of the reach
+		/// - \f$n\f$: Manning friction number
 		///
-		/// while for the diffusive wave the slope is calculated from the actual water head. \f$\Delta_z = \|\frac{h_1 - h_2}{l}\f$
+		/// For the kinematic wave the slope of the river bed is used as slope:
+		/// \f[\Delta_z = \frac{|z_1 - z_2|}{l}\f] 
+		///
+		/// while for the diffusive wave the slope is calculated from the actual water head:
+		/// \f[\Delta_z = \frac{|h_1 - h_2|}{l}\f]
+		///
+		///
 		class Manning : public cmf::water::flux_connection
 		{
 		protected:

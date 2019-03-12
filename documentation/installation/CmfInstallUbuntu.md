@@ -1,6 +1,6 @@
-@page CmfInstallUbuntu
+@page cmfInstallUbuntu Linux installation
 
-[back...](@ref CmfInstall)
+[back...](@ref cmfInstall)
 
 # Install cmf on a Linux with sudo privileges
 
@@ -90,4 +90,4 @@ Work in progress..
 
 ### Adding geometric support to CMF 
 
-@author philipp, version: 4 Thu Jun 23 13:22:29 2016
+

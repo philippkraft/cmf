@@ -26,7 +26,7 @@ var classcmf_1_1upslope_1_1aquifer =
     [ "set_potential", "classcmf_1_1upslope_1_1aquifer.html#a96266d8458980cb69da782028dbb7eb7", null ],
     [ "set_state_variable_content", "classcmf_1_1upslope_1_1aquifer.html#af4e317b28d48091741e40af5e9da79a1", null ],
     [ "set_volume", "classcmf_1_1upslope_1_1aquifer.html#a31b0a05543af754adf863c0bd7934a3e", null ],
-    [ "Solute", "classcmf_1_1upslope_1_1aquifer.html#ad2765ba98c646811acb72baaa08b52f9", null ],
+    [ "Solute", "classcmf_1_1upslope_1_1aquifer.html#ac7af103f4eabcabd46289fc96329e9bb", null ],
     [ "StateIsChanged", "classcmf_1_1upslope_1_1aquifer.html#a2cf1e9d2df8900cf74cbc0773726ca91", null ],
     [ "waterbalance", "classcmf_1_1upslope_1_1aquifer.html#a2b14436c9dfb7b52bad2784c81a31eab", null ],
     [ "area", "classcmf_1_1upslope_1_1aquifer.html#a05089f0da399f35232f6981bb4695e4d", null ],

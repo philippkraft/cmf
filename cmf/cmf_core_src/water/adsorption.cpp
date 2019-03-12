@@ -1,4 +1,5 @@
 #include "adsorption.h"
+#include "../math/root_finding.h"
 #include <cmath>
 #include <stdexcept>
 using namespace cmf::water;
@@ -9,42 +10,37 @@ LinearAdsorption::LinearAdsorption( real _K,real _m )
 }
 real cmf::water::FreundlichAdsorbtion::totalsolute( real xf, real V ) const
 {
-	return K*pow(xf/V,n);
+	double Ceq = xf / V;
+	double q = K * pow(Ceq, 1 / n);
+	return q * m + xf;
 }
 
-real FreundlichAdsorbtion::freesolute( real xt,real V ) const
+namespace cmf {
+	namespace water {
+		class FreundlichAdsorptionCalculator
+			: public cmf::math::root_finding::BrentsMethod
+		{
+		public:
+			const cmf::water::FreundlichAdsorbtion * owner;
+			FreundlichAdsorptionCalculator(const cmf::water::FreundlichAdsorbtion * fa)
+				: BrentsMethod(owner->epsilon, owner->maxiter), owner(fa)
+			{	}
+			virtual double f(double c) const {
+				return owner->totalsolute(c, 1.0);
+			}
+		};
+	}
+}
+
+
+real FreundlichAdsorbtion::freesolute(real xt, real V ) const
 {
 	//
-	// the Freundlich isotherm x_ad/m = K*c^n cannot be rearranged for c if n!=1
-	// hence we have to iterate the solution using Regula falsi
-	
-	real
-		a = 0.0, // left side
-		fa = totalsolute(a,V) - xt,
-		b = 1.0, // right side
-		fb = totalsolute(b,V) - xt,
-		c = 0.,
-		fc = 0.0;
-	int side=0;
-	// Do Regula falsi (Illinois variant) for xf
-	for(int i=0;i<maxiter;++i) {
-		c = (fa*b - fb*a) / (fa - fb);
-		fc = totalsolute(c,V) - xt;
-		if (fabs(fc)<epsilon) return c;
-		if (fc * fb > 0.0) {
-			b = c; fb = fc;
-			if (side==-1) fa/=2;
-			side = -1;
-		} else if (fc * fa > 0.0) {
-			a = c; fa = fc;
-			if (side == +1) fb/=2;
-			side = +1;
-		} else {
-			return c;
-		}
-	}
-	throw std::runtime_error("Too many iterations for xf in FreundlichAdsorption");
-	return 0.0;
+	// the Freundlich isotherm x_tot = x_ad + x_free = (m*K*c^n) + (c*V) cannot be rearranged for c if n!=1
+	// hence we have to iterate the solution using Brent's method
+	cmf::water::FreundlichAdsorptionCalculator fac(this);
+	double c_free = fac(0, 1, xt);
+	return c_free * V;
 }
 
 
@@ -76,7 +72,6 @@ real LangmuirAdsorption::freesolute( real xt,real V ) const
 	xt = Symbol('xt')
 	m = Symbol('m')
 	K = Symbol('K')
-	#qmax = Symbol('qmax')
 	V = Symbol('V')
 	# Define sorbent load q
 	q = (xt-xf)/m
@@ -88,7 +83,7 @@ real LangmuirAdsorption::freesolute( real xt,real V ) const
 	lm_xf = solve(lm_iso,xf)
 	# Get the ccode
 	for solution in lm_xf:
-		print ccode(lm_xf)
+		print(ccode(lm_xf))
 	*/
 	return  
 		(

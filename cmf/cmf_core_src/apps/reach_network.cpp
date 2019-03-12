@@ -141,7 +141,7 @@ namespace cmf {
 			}
 
 		}
-		int cmf::apps::run_reaches(int levels, SolverType _solver, int steps)
+		int run_reaches(int levels, SolverType _solver, int steps)
 		{
 			std::cout << std::setprecision(8);
 			// std::cout << "Create network\n";

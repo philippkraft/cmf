@@ -21,6 +21,9 @@
 #include <limits>
 #include <sstream>
 #include "../../math/real.h"
+#include "../../math/root_finding.h"
+
+const double NaN = std::numeric_limits<double>::quiet_NaN();
 
 // Class for an parabolic extrapolation of a retention curve
 namespace cmf {
@@ -288,8 +291,10 @@ cmf::upslope::VanGenuchtenMualem* cmf::upslope::VanGenuchtenMualem::copy() const
 	return new VanGenuchtenMualem(*this);
 }
 
-cmf::upslope::VanGenuchtenMualem::VanGenuchtenMualem( real _Ksat, real _phi,real _alpha, real _n, real _m/*=-1*/ ) 
-: n(_n),alpha(_alpha),Phi(_phi),Ksat(_Ksat), m(_m), w0(.99),l(0.5),theta_r(0.0)
+cmf::upslope::VanGenuchtenMualem::VanGenuchtenMualem( 
+	real _Ksat, real _phi,real _alpha, real _n, 
+	real _m/*=-1*/, real _theta_r /*=0*/, real _w0 /*=0.99*/) 
+: n(_n),alpha(_alpha),Phi(_phi),Ksat(_Ksat), m(_m), w0(_w0),l(0.5),theta_r(_theta_r)
 {
 	std::stringstream msg;
 	msg << "Can't create VanGenuchten-Mualem-Retention curve with ";
@@ -311,24 +316,30 @@ cmf::upslope::VanGenuchtenMualem::VanGenuchtenMualem( real _Ksat, real _phi,real
 
 real cmf::upslope::VanGenuchtenMualem::fit_w0( real w1/*=1.01*/,real Psi_p/*=1.0*/,real tolerance/*=0.1*/ )
 {
-	real w1_,error;
-	// Do not more then 100 iterations
-	for (int i = 0; i < 100 ; ++i)
+	this->w0 = 0.99;
+	double d = 1 - this->w0;
+	
+	for (size_t i = 0; i < 1000; i++)
 	{
-		// get wetness at Psi_p
-		w1_ = Wetness(Psi_p);
-		// Compare wetness
-		error = (w1_ - w1)/(w1-1);
-		// if w1_ is too big, raise w0
-		if (error>tolerance)
-			w0+=.5*(1-w0);
-		// if w1_ is too small, lower w0
-		else if (error<-tolerance)
-			w0-=.5*(1-w0);
-		else
-			break;
+
+		double dw1 = this->Wetness(Psi_p) - w1;
+		if (std::abs(dw1) < tolerance * 0.01) {
+			return this->w0;
+		} 
+		else if (dw1 > 0 || !std::isfinite(dw1)) {
+			d *= 0.5;
+			this->w0 += d;
+		} 
+		else if (dw1 < 0) {
+			this->w0 -= d;
+		}
+		if (this->w0 < 0.9) {
+			this->w0 = 0.99;
+			throw std::runtime_error("w0 does not converge, strange n and alpha values");
+		}
 	}
-	return w0;
+	throw std::runtime_error("w0 does not converge after 1000 iterations");
+	return this->w0;
 }
 
 real cmf::upslope::VanGenuchtenMualem::Diffusivity( real wetness ) const

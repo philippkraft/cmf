@@ -54,6 +54,11 @@ namespace cmf {
 				throw std::runtime_error("Cannot set the height function of a surface water. Change the parameters");
 			}
 
+			/// Get surface coverage as a function of the actual volume
+			double get_coverage() const {
+				return this->m_height_function->A(this->get_volume()) / this->get_cell().get_area();
+			}
+
 			/// get Manning roughness (n) of the surface
 			///
 			/// From Python use this as a property:
