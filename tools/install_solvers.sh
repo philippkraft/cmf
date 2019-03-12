@@ -42,7 +42,7 @@ function sundials {
 
     cmake .. \
         -DCMAKE_POSITION_INDEPENDENT_CODE:BOOL=true \
-        -DBLAS_ENABLE=ON \
+        -DBLAS_ENABLE=OFF \
         -DBUILD_SHARED_LIBS=OFF \
         -DCMAKE_INSTALL_PREFIX=${SND_LIB_DIR} \
         -DEXAMPLES_INSTALL=OFF \
@@ -50,7 +50,7 @@ function sundials {
         -DKLU_LIBRARY_DIR=${KLU_LIB_DIR}/lib \
         -DKLU_INCLUDE_DIR=${KLU_LIB_DIR}/include \
         -DOPENMP_ENABLE=ON \
-        -DEXAMPLES_ENABLE_CXX=OFF -DMPI_ENABLE=ON -DMPI_CC=mpicc \
+        -DEXAMPLES_ENABLE_CXX=OFF -DEXAMPLES_ENABLE_C=OFF -DEXAMPLES_INSTALL=OFF \
         -DBUILD_ARKODE=OFF -DBUILD_CVODES=OFF -DBUILD_IDA=OFF -DBUILD_IDAS=OFF -DBUILD_KINSOL=OFF
 
 
@@ -67,7 +67,7 @@ echo "Installing SUNDIALS into: " $SND_LIB_DIR
 if [[ "$1" == "help" ]]; then
     exit 0
 fi
-    
+
 if [[ "$1" != "sundials" ]]; then
     klu
 fi
@@ -75,4 +75,3 @@ fi
 if [[ "$1" != "klu" ]]; then
     sundials
 fi
-    
