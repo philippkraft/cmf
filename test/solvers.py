@@ -3,7 +3,7 @@ Tests the functionality of the solvers
 
 """
 import cmf
-import numpy as np
+
 import unittest
 
 
@@ -79,11 +79,11 @@ class TestSolver(unittest.TestCase):
             vol = [s.volume for s in stores]
             smass = [s[X].state for s in stores]
 
-            rmse_v = sum((vr - v)**2 for v, vr in zip(vol, vol_ref)) / len(vol)
-            rmse_s = sum((sr - s)**2 for s, sr in zip(smass, smass_ref)) / len(smass)
+            mse_v = sum((vr - v)**2 for v, vr in zip(vol, vol_ref)) / len(vol)
+            mse_s = sum((sr - s)**2 for s, sr in zip(smass, smass_ref)) / len(smass)
 
-            self.assertAlmostEqual(1 - rmse_v, 1, 2, "RMSE between reference volume and {} too large".format(st.__name__))
-            self.assertAlmostEqual(1 - rmse_s, 1, 2, "RMSE between reference solute and {} too large".format(st.__name__))
+            self.assertAlmostEqual(1 - mse_v, 1, 2, "RMSE between reference volume and {} too large".format(st.__name__))
+            self.assertAlmostEqual(1 - mse_s, 1, 2, "RMSE between reference solute and {} too large".format(st.__name__))
 
     def test_solver_results_nosolute(self):
 
@@ -95,14 +95,33 @@ class TestSolver(unittest.TestCase):
             p, stores, X = get_project(False)
 
             solver = st(p)
-            solver.integrate_until(cmf.day * 3, cmf.h)
+            solver(cmf.day * 3, cmf.h)
 
             vol = [s.volume for s in stores]
 
-            rmse_v = sum((vr - v)**2 for v, vr in zip(vol, vol_ref)) / len(vol)
+            mse_v = sum((vr - v)**2 for v, vr in zip(vol, vol_ref)) / len(vol)
 
-            self.assertAlmostEqual(1 - rmse_v, 1, 2, "RMSE between reference volume and {} too large".format(st.__name__))
+            self.assertAlmostEqual(1 - mse_v, 1, 2, "MSE between reference volume and {} too large".format(st.__name__))
 
+    def test_solver_run(self):
+
+
+        for st in solver_types:
+
+            p, stores, X = get_project(False)
+
+            solver = st(p)
+            # Test all run parameters
+            for t in solver.run(cmf.Time(), cmf.day, cmf.h, reset=False, max_errors=2):
+                ...
+            self.assertEqual(solver.t, cmf.day)
+            # Test little parameter count
+            for t in solver.run(step=cmf.h):
+                ...
+            self.assertEqual(solver.t, cmf.day + 100 * cmf.h)
 # Check solver results
 # Check jacobian (CVodeDirect, CVodeKLU)
 
+
+if __name__ == '__main__':
+    unittest.main(verbosity=5)

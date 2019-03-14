@@ -13397,22 +13397,88 @@ class Integrator(object):
         return _cmf_core.Integrator___len__(self, *args, **kwargs)
 
 
-    def __call__(self,t,reset=False):
-        if t<self.t:
-            self.integrate_until(self.t+t,reset=reset)
-        else:
-            self.integrate_until(t,reset=reset)
-        return self.t
     t = property(get_t,set_t,doc="Sets the actual time of the solution")
     dt = property(get_dt,doc="Get the current time step of the solver")
-    def run(self,start=None,end=None,step=day*1):
+    def __call__(self, t, dt=None, reset=False):
+        """
+        Advances the integration until `t`
+
+        A shortcut to .integrate_until
+
+        Parameters
+        ----------
+        t : cmf.Time
+            The time step to advance to. If t < current time, the solver will
+            advance to self.t + t
+        dt : cmf.Time, optional
+            The timestep for the integration. If not given try to integrate in one step
+        reset : bool, optional
+            If True, the solver will perform a reset before starting
+
+        Returns
+        -------
+        cmf.Time
+            The new time stamp
+        """
+        if dt is None:
+            dt = Time()
+        if t < self.t:
+            self.integrate_until(self.t+t, dt, reset=reset)
+        else:
+            self.integrate_until(t, dt, reset=reset)
+        return self.t
+
+    def run(self, start=None, end=None, step=day*1, max_errors=0, reset=False):
+        """
+        Returns an iterator over the timesteps start..end
+
+        **Examples:**
+
+        >>> solver=cmf.CVodeIntegrator(...)
+        >>> for t in solver.run(solver.t, solver.t + cmf.week, cmf.h):
+        >>>    print(t, solver[0].state)
+        or with list comprehension
+        >>> states = [solver[0].state for t in solver.run(solver.t, solver.t + cmf.week, cmf.h)]
+
+        Parameters
+        ----------
+        start : cmf.Time, optional
+                Start time for the solver iteration
+        end : cmf.Time, optional
+                End time of the iteration
+        step : cmf.Time, optional
+                Step size for the integration
+        max_errors: int
+                Number of tolerated errors. If >0, up to these number of runtime errors
+                will be saved with their time and the integration proceeds after a reset
+                of the solver. Some systems operate with values close to their physical
+                limits and inifinite values in the integration can easily occur. For
+                these kind of systems set max_errors to eg. 10. A larger number of errors
+                should be eliminated usually.
+        reset: bool
+                If True, the solver performs a `reset` at every time step
+
+        Yields
+        ------
+        cmf.Time
+             the actual timestep
+        """
+        import logging
         if not start is None:
-            self.t=start
+            self.t = start
         if end is None:
             end = self.t + 100*step
-        while self.t<end:
-            self(self.t+step)
-            yield self.t
+        errors = []
+        t = self.t
+        while self.t < end:
+            try:
+                t = self(self.t+step, reset=reset)
+            except Exception as e:
+                if len(errors) < max_errors:
+                    errors.append((t, e))
+                    self.reset()
+                    logging.warning(str(t) + ': ' + str(e))
+            yield t
 
 Integrator.__getitem__ = new_instancemethod(_cmf_core.Integrator___getitem__, None, Integrator)
 Integrator.get_dxdt = new_instancemethod(_cmf_core.Integrator_get_dxdt, None, Integrator)
