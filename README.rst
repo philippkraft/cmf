@@ -2,7 +2,7 @@
 
 |lic| |zeno| |pypi| |travis| |appveyor|
 
-.. |logo| image:: https://raw.githubusercontent.com/philippkraft/cmf/master/documentation/media/cmf-logo-2018.svg
+.. |logo| image:: https://raw.githubusercontent.com/philippkraft/cmf/master/documentation/media/cmf-logo-klein-2018.png
     :target: https://philippkraft.github.io/cmf
 
 .. |lic| image:: https://raw.githubusercontent.com/philippkraft/cmf/master/documentation/media/license-GPLv3-green.svg?sanitize=true
