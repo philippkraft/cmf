@@ -114,14 +114,14 @@ class TestSolver(unittest.TestCase):
             solver = st(p)
             # Test all run parameters
             for t in solver.run(cmf.Time(), cmf.day, cmf.h, reset=False, max_errors=2):
-                ...
+                pass
             self.assertEqual(solver.t, cmf.day)
-            # Test little parameter count
+
+            # Test for few parameters in run
             for t in solver.run(step=cmf.h):
-                ...
+                pass
+
             self.assertEqual(solver.t, cmf.day + 100 * cmf.h)
-# Check solver results
-# Check jacobian (CVodeDirect, CVodeKLU)
 
 
 if __name__ == '__main__':
