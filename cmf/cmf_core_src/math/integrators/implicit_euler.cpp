@@ -30,6 +30,7 @@ cmf::math::ImplicitEuler::ImplicitEuler(StateVariableOwner& states,
 	oldStates      = num_array(ptrdiff_t(m_States.size()),0);
 	compareStates  = num_array(ptrdiff_t(m_States.size()),0);
 	dxdt           = num_array(ptrdiff_t(m_States.size()),0);
+	set_abstol();
 }
 cmf::math::ImplicitEuler::ImplicitEuler( real epsilon/*=1e-9*/,cmf::math::Time tStepMin/*=10.0/(3600.0*24.0)*/ ) : 
 Integrator(epsilon), dt_min(tStepMin)
@@ -71,6 +72,7 @@ void cmf::math::ImplicitEuler::add_states( cmf::math::StateVariableOwner& stateO
 	oldStates.resize(ptrdiff_t(m_States.size()));
 	compareStates.resize(ptrdiff_t(m_States.size()));
 	dxdt.resize(ptrdiff_t(m_States.size()));
+	set_abstol();
 }
 
 void cmf::math::ImplicitEuler::set_abstol()
@@ -129,7 +131,7 @@ int cmf::math::ImplicitEuler::integrate(cmf::math::Time MaxTime,cmf::math::Time 
 			h /= 2;
 			//std::cout << '-';
 			// If the time step becomes too small, throw exception
-			if (m_dt<dt_min)
+			if (h < dt_min)
 			{
 				std::cerr << "No convergence! Time=" << get_t().AsDate().to_string() << " Iter: " << iter << std::endl;
 				throw std::runtime_error("No convergence with a time step > minimal time step");

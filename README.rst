@@ -1,4 +1,9 @@
+|logo|
+
 |lic| |zeno| |pypi| |travis| |appveyor|
+
+.. |logo| image:: https://raw.githubusercontent.com/philippkraft/cmf/master/documentation/media/cmf-logo-klein-2018.png
+    :target: https://philippkraft.github.io/cmf
 
 .. |lic| image:: https://raw.githubusercontent.com/philippkraft/cmf/master/documentation/media/license-GPLv3-green.svg?sanitize=true
     :target: https://opensource.org/licenses/GPL-3.0
