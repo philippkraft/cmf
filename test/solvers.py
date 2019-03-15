@@ -5,7 +5,8 @@ Tests the functionality of the solvers
 import cmf
 
 import unittest
-
+import sys
+import glob
 
 def get_project(with_solute=False):
     if with_solute:
@@ -26,7 +27,7 @@ def get_project(with_solute=False):
 
 solver_types = [
     cmf.ExplicitEuler_fixed, cmf.RKFIntegrator, cmf.HeunIntegrator,
-    cmf.BDF2,# cmf.ImplicitEuler,
+    cmf.BDF2, cmf.ImplicitEuler,
     cmf.CVodeIntegrator]
 
 
