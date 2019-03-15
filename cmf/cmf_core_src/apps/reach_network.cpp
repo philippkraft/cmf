@@ -14,7 +14,7 @@
 #include "../reach/Reach.h"
 #include "../water/boundary_condition.h"
 
-#include "../math/integrators/cvode3.h"
+#include "../math/integrators/cvode.h"
 #include "../math/time.h"
 
 namespace cmf {
@@ -156,7 +156,7 @@ namespace cmf {
 			// std::cout << ".. network has " << network.size() << " reaches\n";
 			network.set_inflow(100);
 			network.set_initial_depth(0.1);
-			// std::cout << ".. total inflow = " << network.get_inflow() << " m³/day\n\n";
+			// std::cout << ".. total inflow = " << network.get_inflow() << " mï¿½/day\n\n";
 
 			// std::cout << "Creating solver\n";
 
@@ -191,7 +191,7 @@ namespace cmf {
 			}
 			/*
 			std::cout 
-				<< "Q(o) =" << network.get_outflow(solver->get_t()) << " m³/day outflow\n"
+				<< "Q(o) =" << network.get_outflow(solver->get_t()) << " mï¿½/day outflow\n"
 				<< "d(Rx)=" << network.root.r->get_depth() * 100 << " cm depth at root\n"
 				<< "T    =" << solver->get_t().to_string() << "\n\n"
 				<< solver->get_info().to_string() << "\n"

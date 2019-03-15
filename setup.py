@@ -182,13 +182,22 @@ def is_source_file(fn, include_headerfiles=False):
     Returns True if fn is the path of a source file
     """
     fn = fn.lower()
-    res = False
-    res = res or fn.endswith('.cpp')
-    res = res or fn.endswith('.c')
-    res = res or fn.endswith('.cc')
-    res = res or (include_headerfiles and fn.endswith('.h'))
-    res = res or (include_headerfiles and fn.endswith('.hpp'))
+    res = (
+        (fn.endswith('.cpp') and 'apps' not in fn)
+        or (include_headerfiles and fn.split('.')[-1] not in ('.h', '.hpp'))
+    )
     return res
+
+
+def get_source_files(include_headerfiles=False):
+    cmf_files = []
+    for root, _dirs, files in os.walk(os.path.join('cmf', 'cmf_core_src')):
+        if os.path.basename(root) != 'debug_scripts':
+            cmf_files.extend(
+                os.path.join(root, f)
+                for f in files
+                if is_source_file(os.path.join(root, f), include_headerfiles) and f != 'cmf_wrap.cpp')
+    return cmf_files
 
 
 def make_cmf_core():
@@ -267,10 +276,7 @@ def make_cmf_core():
             libraries.append('gomp')
 
     # Get the source files
-    cmf_files = []
-    for root, _dirs, files in os.walk(os.path.join('cmf', 'cmf_core_src')):
-        if os.path.basename(root) != 'debug_scripts':
-            cmf_files.extend(os.path.join(root, f) for f in files if is_source_file(f) and f != 'cmf_wrap.cpp')
+    cmf_files = get_source_files()
 
     if swig:
         # Adding cmf.i when build_ext should perform the swig call

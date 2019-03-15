@@ -640,7 +640,7 @@ int CVodeBase::Impl::sparse_jacobian(
 
 int cmf::math::CVodeBase::Impl::dense_jacobian(realtype t, N_Vector y, N_Vector fy, SUNMatrix J, void * userdata, N_Vector tmp1, N_Vector tmp2, N_Vector tmp3)
 {
-	realtype fnorm, minInc, inc, inc_inv, yjsaved, srur;
+	realtype fnorm, minInc, inc, inc_inv, yjsaved, srur, h;
 	realtype *y_data, *ewt_data, *cns_data;
 	N_Vector ftemp, jthCol, ewt;
 

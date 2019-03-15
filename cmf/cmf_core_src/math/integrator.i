@@ -5,7 +5,7 @@
 #include "math/integrators/explicit_euler.h"
 #include "math/integrators/implicit_euler.h"
 #include "math/integrators/RKFintegrator.h"
-#include "math/integrators/cvodeintegrator.h"
+#include "math/integrators/cvode.h"
 #include "math/integrators/multiintegrator.h"
 #include "math/integrators/WaterSoluteIntegrator.h"
 %}
@@ -19,7 +19,7 @@
 %include "math/integrators/explicit_euler.h"
 %include "math/integrators/implicit_euler.h"
 %include "math/integrators/RKFintegrator.h"
-%include "math/integrators/cvodeintegrator.h"
+%include "math/integrators/cvode.h"
 %include "math/integrators/multiintegrator.h"
 %include "math/integrators/WaterSoluteIntegrator.h"
 
@@ -97,7 +97,7 @@
         cmf.Time
              the actual timestep
         """
-        import logging
+        from logging import warning
         if not start is None:
             self.t = start
         if end is None:
@@ -111,7 +111,38 @@
                 if len(errors) < max_errors:
                     errors.append((t, e))
                     self.reset()
-                    logging.warning(str(t) + ': ' + str(e))
+                    warning(str(t) + ': ' + str(e))
             yield t
 }
+}
+
+%extend cmf::math::CVodeBase {
+%pythoncode {
+    def get_jacobian(self):
+        return self._get_jacobian().reshape((self.size(), self.size()), order='F')
+}
+}
+
+%pythoncode {
+def CVodeIntegrator(project, tolerance=1e-9):
+    """
+    Backwards compatibility layer for the CVodeIntegrator.
+
+    Will return a CVodeKrylov solver as in cmf 1.x.
+
+    Parameters
+    ----------
+    project
+        CMF project
+    tolerance:
+        Solver tolerance
+
+    Returns
+    -------
+    CVodeKrylov
+        The integrator
+    """
+    from logging import warning
+    warning('CVodeIntegrator is not available in CMF 2.0. Creating a CVodeKrylov solver instead')
+    return CVodeKrylov(project, tolerance)
 }

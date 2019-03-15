@@ -60,7 +60,7 @@ namespace cmf {
 			void add_values_to_states(const num_array& operands);
 
 #endif
-			StateVariable::ptr operator[](int position) {
+			StateVariable::ptr operator[](long int position) {
 				if (position < 0) position += m_States.size();
 				if (position < m_States.size()) return m_States[position];
 				throw std::out_of_range("state not in integrator");

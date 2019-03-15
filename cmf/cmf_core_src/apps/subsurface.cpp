@@ -11,7 +11,7 @@
 #include "../atmosphere/meteorology.h"
 #include "../upslope/cell.h"
 #include "../upslope/vegetation/ET.h"
-#include "../math/integrators/cvode3.h"
+#include "../math/integrators/cvode.h"
 #include "../upslope/Soil/RetentionCurve.h"
 #include "../atmosphere/precipitation.h"
 #include "../water/flux_connection.h"
