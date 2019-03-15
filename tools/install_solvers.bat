@@ -48,9 +48,10 @@ ECHO Install sundials into %SND_LIB_DIR%
 SET SND_SRC=%SND_LIB_DIR%\src\sundials
 SET SND_URL="https://github.com/philippkraft/sundials"
 
+RD /Q /S %SND_SRC%
 mkdir %SND_SRC%
 git clone %SND_URL% %SND_SRC%
-RD /Q /F /S %SND_SRC%\.git
+RD /Q /S %SND_SRC%\.git
 RD /Q /S %SND_SRC%\build
 mkdir %SND_SRC%\build
 cd %SND_SRC%\build

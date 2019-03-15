@@ -56,6 +56,81 @@ swig = False
 openmp = False
 debug = False
 
+class StaticLibrary:
+
+    def __init__(self, includepath, libpath, *libs, build_script=None):
+        self.includepath = includepath
+        self.libpath = libpath
+        self.libs = libs
+        self.to_lists = self.as_win32 if sys.platform == 'win32' else self.as_posix
+        self.build_script_name = build_script
+
+    def __str__(self):
+        return self.libs[0] + ' - library'
+
+    def as_win32(self):
+        checked_libs = []
+        for lib in self.libs:
+            if os.path.exists(os.path.join(self.libpath, lib + '.lib')):
+                checked_libs.append(lib)
+            elif os.path.exists(os.path.join(self.libpath, 'lib' + lib + '.lib')):
+                checked_libs.append('lib' + lib)
+            else:
+                raise FileNotFoundError("Can't find static library " + os.path.join(self.libpath, lib))
+        return checked_libs, []
+
+    def as_posix(self):
+        # Move static libraries to extra_objects (with path) to ensure static linking in posix systems
+        libfiles = ['{}/lib{}.a'.format(self.libpath, l) for l in self.libs]
+        for lf in libfiles:
+            if not os.path.exists(lf):
+                raise FileNotFoundError("Can't find static library " + lf)
+        return [], libfiles
+
+    def exists(self):
+        try:
+            self.to_lists()
+        except FileNotFoundError:
+            return False
+        else:
+            return True
+
+    @staticmethod
+    def append_if_not_exists(item, target):
+        if item and item not in target:
+            target.append(item)
+
+    def extend(self, include_dirs, library_dirs, libraries, extra_objects):
+        self.append_if_not_exists(self.includepath, include_dirs)
+        self.append_if_not_exists(self.libpath, library_dirs)
+        libs, extra_obj = self.to_lists()
+        libraries += libs
+        extra_objects += extra_obj
+
+    def build(self):
+        import subprocess as sp
+        cwd = os.path.dirname(__file__)
+        if sys.platform == 'win32':
+            script_ext = '.bat'
+        else:
+            script_ext = '.sh'
+        script = os.path.join(cwd, 'tools', self.build_script_name + script_ext)
+        if not os.path.exists(script):
+            raise FileNotFoundError('{} not found, cannot build {} from source'
+                                    .format(os.path.relpath(script, cwd), self))
+        sp.run(script, check=True)
+
+
+static_libraries = [
+    StaticLibrary('lib/include/suitesparse', 'lib/lib',
+                  'klu', 'amd', 'btf', 'colamd', 'suitesparseconfig',
+                  build_script='install_solvers'),
+    StaticLibrary('lib/include', 'lib/lib',
+                  'sundials_cvode', 'sundials_sunlinsolklu',
+                  build_script='install_solvers')
+]
+
+
 class CmfBuildExt(build_ext):
     """
     Custom build class to get rid of the -Wstrict-prototypes warning
@@ -95,6 +170,7 @@ class CmfBuildExt(build_ext):
             count += n
         print(count, 'old style static methods removed from', len(classes), 'classes')
         return cmf_core_py
+
 
     def build_extensions(self):
         customize_compiler(self.compiler)
@@ -207,19 +283,20 @@ def make_cmf_core():
      - include dirs
      - extra compiler flags
     """
-    # Include CVODE
-    include_dirs = ['lib/include', 'lib/include/suitesparse']
-    # Include numpy
-    include_dirs += [get_numpy_include()]
+    for sl in static_libraries:
+        if not sl.exists():
+            print(sl, 'get downloaded and installed')
+    for sl in static_libraries:
+        if not sl.exists():
+            sl.build()
 
-    static_libraries = [('lib/lib',
-                         ['sundials_cvode', 'sundials_sunlinsolklu',
-                          'klu', 'amd', 'btf', 'colamd', 'suitesparseconfig']),
-                        ]
+    # Include numpy
+    include_dirs = [get_numpy_include()]
     library_dirs = []
     libraries = []
-
     extra_objects = []
+    link_args = []
+
     # Platform specific stuff, alternative is to subclass build_ext command as in:
     # https://stackoverflow.com/a/5192738/3032680
     if sys.platform == 'win32':
@@ -236,23 +313,10 @@ def make_cmf_core():
         if debug:
             link_args = ["/DEBUG"]
 
-        # Move static libraries to libraries, because MSVC does not
-        # seperate between dynamic and static libraries at this point
-        for lib_dir, libs in static_libraries:
-            checked_libs=[]
-            for lib in libs:
-                if os.path.exists(os.path.join(lib_dir, lib + '.lib')):
-                    checked_libs.append(lib)
-                elif os.path.exists(os.path.join(lib_dir, 'lib' + lib + '.lib')):
-                    checked_libs.append('lib' + lib)
-                else:
-                    raise FileNotFoundError("Can't find static library " + os.path.join(lib_dir, lib))
-            libraries.extend(checked_libs)
-            library_dirs.append(lib_dir)
 
     else:
 
-        compile_args = ['-Wno-comment', '-Wno-reorder', '-Wno-deprecated', '-Wno-unused',
+        compile_args = ['-Wno-comment', '-Wno-reorder', '-Wno-unused',
                         '-Wno-sign-compare', '-std=c++11', '-march=native', '-mtune=native', '-pipe']
         if debug:
             compile_args += ['-ggdb']
@@ -264,9 +328,6 @@ def make_cmf_core():
         if debug:
             link_args += ['-ggdb']
 
-        # Move static libraries to extra_objects (with path) to ensure static linking in posix systems
-        extra_objects.extend(sum((['{}/lib{}.a'.format(lib_dir, l) for l in libs]
-                                  for lib_dir, libs in static_libraries), []))
 
         # Add OpenMP support
         # Disable OpenMP on Mac see https://github.com/alejandrobll/py-sphviewer/issues/3
@@ -287,10 +348,15 @@ def make_cmf_core():
         # Else use what we have there
         cmf_files.append("cmf/cmf_core_src/cmf_wrap.cpp")
         swig_opts = []
-    print('libraries:',' '.join(libraries))
+
+    for sl in static_libraries:
+        sl.extend(include_dirs, library_dirs, libraries, extra_objects)
+
+    print('libraries:', ' '.join(libraries))
     print('library_dirs:', ' '.join(library_dirs))
     print('include_dirs:', ' '.join(include_dirs))
     print('extra_objects:', ' '.join(extra_objects))
+
     cmf_core = Extension('cmf._cmf_core',
                          sources=cmf_files,
                          libraries=libraries,
@@ -317,11 +383,10 @@ if __name__ == '__main__':
         'Intended Audience :: Science/Research',
         'License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)',
         'Programming Language :: C++',
-        'Programming Language :: C',
         'Programming Language :: Python',
-        'Programming Language :: Python :: 2.7',
         'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: 3.6',
+        'Programming Language :: Python :: 3.7',
         'Topic :: Scientific/Engineering',
         'Topic :: Software Development :: Libraries :: Python Modules',
     ]
