@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['windows_20installation',['Windows installation',['../cmf_install_windows.html',1,'cmfInstall']]],
-  ['what_20you_20need_20to_20know_20for_20using_20cmf',['What you need to know for using cmf',['../cmf_tut_need_to_know.html',1,'gettingstarted']]]
+  ['using_20measurement_20stations_20for_20atmospheric_20conditions',['Using measurement stations for atmospheric conditions',['../cmf_tut_meteostation.html',1,'atmosphere']]],
+  ['units',['Units',['../cmf_tut_units.html',1,'gettingstarted']]],
+  ['understand_20the_20basic_20usage_20of_20cmf',['Understand the basic usage of cmf',['../gettingstarted.html',1,'tutorial']]]
 ];

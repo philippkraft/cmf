@@ -58,11 +58,13 @@ namespace cmf {
 			
 			/// Adds the values in operands to the current states
 			void add_values_to_states(const num_array& operands);
-			StateVariable::ptr operator[](int position) {
-				return m_States[position];
-			}
 
 #endif
+			StateVariable::ptr operator[](int position) {
+				if (position < 0) position += m_States.size();
+				if (position < m_States.size()) return m_States[position];
+				throw std::out_of_range("state not in integrator");
+			}
 			cmf::math::num_array get_dxdt(Time time) const 
 			{
 				num_array result(this->size());

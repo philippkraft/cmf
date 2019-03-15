@@ -1,7 +1,8 @@
 """
 Calculates a matrix from the connected states. Useful to explore numerical problems
 """
-
+import numpy
+import cmf
 
 def connector_matrix(states, compression_factor=1):
     """
@@ -13,12 +14,10 @@ def connector_matrix(states, compression_factor=1):
             unconnected states. Compressed matrices contain larger numbers for
             the count of connection in the compressed field
     """
-    posdict = {}
     l = len(states)
     size = (l // compression_factor, l // compression_factor)
     jac = numpy.zeros(size, dtype=int)
-    for i, a in enumerate(states):
-        posdict[a.node_id] = i
+    posdict = {a.node_id: i for i, a in enumerate(states)}
     for i, a in enumerate(states):
         for f, t in a.fluxes(cmf.Time()):
             j = posdict.get(t.node_id)

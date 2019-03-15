@@ -105,8 +105,6 @@ std::string pyrepr(PyObject* o) {
 	#include "upslope/vegetation/ShuttleworthWallace.h"
 	// Include river model
 	#include "reach/ManningConnection.h"
-	// Include the combined solver
-	#include "math/integrators/WaterSoluteIntegrator.h"
 %}
 
 %shared_ptr(cmf::upslope::aquifer);
@@ -131,7 +129,7 @@ std::string pyrepr(PyObject* o) {
 
 %include "project.i"
 
-%include "math/integrators/WaterSoluteIntegrator.h"
+%include "math/integrator.i"
 
 
 %pythoncode {

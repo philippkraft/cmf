@@ -36,21 +36,22 @@
 #define ROOT_FINDING_H__
 #include <cmath>
 #include <stdexcept>
+#include <string>
 
 namespace cmf {
 	namespace math {
 		namespace root_finding {
 			class sign_error : public std::runtime_error {
 			public:
-				sign_error(std::string msg) : std::runtime_error(msg) {}
+				sign_error(const std::string& msg) : std::runtime_error(msg) {}
 			};
 			class not_finite_error : public std::runtime_error {
 			public:
-				not_finite_error(std::string msg) : std::runtime_error(msg) {}
+				not_finite_error(const std::string& msg) : std::runtime_error(msg) {}
 			};
 			class iteration_error : public std::runtime_error {
 			public:
-				iteration_error(std::string msg) : std::runtime_error(msg) {}
+				iteration_error(const std::string& msg) : std::runtime_error(msg) {}
 			};
 			class BrentsMethod {
 				double tolerance;

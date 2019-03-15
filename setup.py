@@ -223,7 +223,7 @@ def make_cmf_core():
                         ]
         if openmp:
             compile_args.append("/openmp")
-        
+
         if debug:
             link_args = ["/DEBUG"]
 
@@ -247,7 +247,7 @@ def make_cmf_core():
                         '-Wno-sign-compare', '-std=c++11', '-march=native', '-mtune=native', '-pipe']
         if debug:
             compile_args += ['-ggdb']
-        
+
         if sys.platform == 'darwin':
             compile_args += ['-stdlib=libc++']
 

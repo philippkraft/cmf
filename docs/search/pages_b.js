@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['recommended_20software_20environment',['Recommended Software Environment',['../cmf_recommended_software_environment.html',1,'index']]]
+  ['query_20fluxes_20and_20states',['Query fluxes and states',['../cmf_tut_fluxes.html',1,'gettingstarted']]]
 ];

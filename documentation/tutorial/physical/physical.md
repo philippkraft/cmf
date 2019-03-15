@@ -10,6 +10,7 @@
 ## Soil column (1D)
 
   - @subpage cmfTut1d "Simple 1D Model"
+  - @subpage cmfTutETphys
   - @subpage cmfTutSoluteTransport1D "Solute transport"
 
 ## Hillslope (2D)

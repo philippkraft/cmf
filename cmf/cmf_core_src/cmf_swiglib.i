@@ -99,6 +99,24 @@ Included macros:
 )
 %enddef
 
+%define %_state_downcast(typemaptarget, Types...)
+%typemap(out) typemaptarget {
+   if (!($1)) %set_output(SWIG_NewPointerObj(0,$descriptor(%ptr(cmf::math::StateVariable)*), SWIG_POINTER_OWN));
+   int dcast = 0;
+   %formacro(%_node_down_cast, Types)
+   if (!dcast) %set_output(SWIG_NewPointerObj(new %ptr(cmf::math::StateVariable)($1),
+						   $descriptor(%ptr(cmf::math::StateVariable)*), SWIG_POINTER_OWN));
+}
+%enddef      
+
+%define %state_downcast(Method)
+//Downcast to all children of cmf::water::flux_node
+%_state_downcast(Method,
+   cmf::water::WaterStorage, cmf::water::SoluteStorage
+)
+%enddef
+
+
 // **********************************************************************************************
 // %extend__repr__(TYPE) Returns the result of a to_string method of a type as __repr__
 
