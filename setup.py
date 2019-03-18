@@ -77,7 +77,7 @@ class StaticLibrary:
                 checked_libs.append('lib' + lib)
             else:
                 raise FileNotFoundError("Can't find static library " + os.path.join(self.libpath, lib))
-        return checked_libs, []
+        return [self.libpath], checked_libs, []
 
     def as_posix(self):
         # Move static libraries to extra_objects (with path) to ensure static linking in posix systems
@@ -85,7 +85,7 @@ class StaticLibrary:
         for lf in libfiles:
             if not os.path.exists(lf):
                 raise FileNotFoundError("Can't find static library " + lf)
-        return [], libfiles
+        return [], [], libfiles
 
     def exists(self):
         try:
@@ -96,14 +96,15 @@ class StaticLibrary:
             return True
 
     @staticmethod
-    def append_if_not_exists(item, target):
-        if item and item not in target:
-            target.append(item)
+    def extend_if_not_exists(items, target):
+        for item in items:
+            if item and item not in target:
+                target.append(item)
 
     def extend(self, include_dirs, library_dirs, libraries, extra_objects):
-        self.append_if_not_exists(self.includepath, include_dirs)
-        self.append_if_not_exists(self.libpath, library_dirs)
-        libs, extra_obj = self.to_lists()
+        self.extend_if_not_exists([self.includepath], include_dirs)
+        path, libs, extra_obj = self.to_lists()
+        self.extend_if_not_exists(path, library_dirs)
         libraries += libs
         extra_objects += extra_obj
 
@@ -122,11 +123,11 @@ class StaticLibrary:
 
 
 static_libraries = [
-    StaticLibrary('lib/include/suitesparse', 'lib/lib',
-                  'klu', 'amd', 'btf', 'colamd', 'suitesparseconfig',
-                  build_script='install_solvers'),
     StaticLibrary('lib/include', 'lib/lib',
                   'sundials_cvode', 'sundials_sunlinsolklu',
+                  build_script='install_solvers'),
+    StaticLibrary('lib/include/suitesparse', 'lib/lib',
+                  'klu', 'amd', 'btf', 'colamd', 'suitesparseconfig',
                   build_script='install_solvers')
 ]
 

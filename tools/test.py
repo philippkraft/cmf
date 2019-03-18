@@ -8,6 +8,9 @@ import unittest
 import os
 import sys
 
+import cmf
+print('CMF v' + cmf.__version__)
+
 sys.path = [p for p in sys.path if p not in ('', '.', 'cmf')]
 
 loader = unittest.TestLoader()
