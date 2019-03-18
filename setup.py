@@ -81,7 +81,14 @@ class StaticLibrary:
 
     def as_posix(self):
         # Move static libraries to extra_objects (with path) to ensure static linking in posix systems
-        libfiles = ['{}/lib{}.a'.format(self.libpath, l) for l in self.libs]
+        if os.path.exists(self.libpath):
+            libpath = self.libpath
+        elif os.path.exists(self.libpath + '64'):
+            libpath = self.libpath + '64'
+        else:
+            raise FileNotFoundError("Can't find static library directory" + self.libpath)
+
+        libfiles = ['{}/lib{}.a'.format(libpath, l) for l in self.libs]
         for lf in libfiles:
             if not os.path.exists(lf):
                 raise FileNotFoundError("Can't find static library " + lf)
@@ -171,7 +178,6 @@ class CmfBuildExt(build_ext):
             count += n
         print(count, 'old style static methods removed from', len(classes), 'classes')
         return cmf_core_py
-
 
     def build_extensions(self):
         customize_compiler(self.compiler)
