@@ -22,6 +22,7 @@
 #include "../math/num_array.h"
 #include "../upslope/cell.h"
 #include "../project.h"
+#include "Weather.h"
 #include <fstream>
 #define min(a,get_b) ((a)<(get_b)) ? (a) : (get_b)
 #define max(a,get_b) ((a)>(get_b)) ? (a) : (get_b)
@@ -70,7 +71,7 @@ cmf::atmosphere::Weather cmf::atmosphere::MeteoStation::get_data( cmf::math::Tim
 	else // no humidity data available, assume Tmin=Tdew
 		A.e_a=vapour_pressure(A.Tmin);
 	A.sunshine=Sunshine.is_empty() ? 0.5 : Sunshine[t];
-	A.Ra = extraterrestrial_radiation(t, Longitude, Latitude, Timezone, daily);
+	A.Ra = cmf::atmosphere::extraterrestrial_radiation(t, Longitude, Latitude, Timezone, daily);
 	if (Rs.is_empty())
 		A.Rs=global_radiation(A.Ra, height, A.sunshine);
 	else
