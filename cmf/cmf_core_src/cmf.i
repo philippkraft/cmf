@@ -25,6 +25,13 @@
 
 // Include typemaps for STL
 %include "std_string.i"
+%include "std_vector.i"
+
+namespace std {
+   %template(vector_int) vector<int>;
+   %template(vector_double) vector<double>;
+   %template(vector_size_t) vector<size_t>;
+};
 
 // enable exception support
 %include "exception.i"
@@ -65,7 +72,9 @@ std::string pyrepr(PyObject* o) {
 %include "math/num_array.i"
 %include "geometry/geometry.i"
 %include "math/time.i"
+
 %include "math/ODEsystem.i"
+
 %include "water/water.i"
 %include "atmosphere/meteorology.i"
 %include "upslope/cell.i"
