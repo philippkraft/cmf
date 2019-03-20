@@ -80,8 +80,9 @@ namespace cmf {
 				return et_pot<0 ? 0 : et_pot;
 			}
 
-			real stressedET::Tact( real Tpot ) const
+			real stressedET::Tact(real Tpot ) const
 			{
+				cmf::upslope::SoilLayer::ptr layer=sw.lock();
 				return m_stressfunction->Tact(this,Tpot) ;
 
 			}
@@ -96,9 +97,10 @@ namespace cmf {
 			real constantETpot::calc_q( cmf::math::Time t ) 
 			{
 				cmf::upslope::SoilLayer::ptr layer=sw.lock();
-				const cmf::upslope::vegetation::Vegetation& veg=layer->cell.vegetation; 
+				const cmf::upslope::vegetation::Vegetation& veg=layer->cell.vegetation;
 				return Tact(ETpot_value);
 			}
+
 			real timeseriesETpot::calc_q( cmf::math::Time t )
 			{
 				cmf::upslope::SoilLayer::ptr layer=sw.lock();
@@ -296,11 +298,43 @@ namespace cmf {
 				real PT = ETpot(t);
 				return Tact(PT * veg.LAI/2.88) * (1-cell.leave_wetness());
 
-	
 			}
 
-		
-		}
+            real OudinET::calc_q(cmf::math::Time t) {
+				cmf::upslope::SoilLayer::ptr layer=sw.lock();
+				cmf::upslope::Cell & cell=layer->cell;
+				cmf::upslope::vegetation::Vegetation veg=cell.vegetation;
+				real O_ET = ETpot(t);
+				return Tact(O_ET * veg.LAI/2.88) * (1-cell.leave_wetness());
+            }
+
+            void OudinET::use_for_cell(cmf::upslope::Cell &cell) {
+				for (int i = 0; i < cell.layer_count() ; ++i)
+				{
+					new OudinET(cell.get_layer(i),cell.get_transpiration());
+				}
+            }
+
+            real OudinET::ETpot(cmf::math::Time t) const {
+				cmf::upslope::SoilLayer::ptr layer = sw.lock();
+				cmf::upslope::Cell & cell = layer->cell;
+				cmf::atmosphere::Weather A = cell.get_weather(t);
+				cmf::upslope::vegetation::Vegetation veg = cell.vegetation;
+				double lambda = 2.45; // MJ / kg latent heat of vaporization
+				if (A.T + K2 > 0) {
+					return (A.Ra / lambda) * (A.T + K2) / K1;
+				}
+				else {
+					return 0.0;
+				}
+
+            }
+
+            OudinET::OudinET(cmf::upslope::SoilLayer::ptr source, cmf::water::flux_node::ptr ET_target,
+                    double _K1,double _K2)
+                    : cmf::upslope::ET::stressedET(source, ET_target, "OudinET"), K1(_K1), K2(_K2)
+            {}
+        }
 	}
 
 	void atmosphere::log_wind_profile::get_aerodynamic_resistance( double & r_ag,double & r_ac, cmf::math::Time t ) const

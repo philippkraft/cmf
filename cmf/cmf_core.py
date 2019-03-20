@@ -100,6 +100,803 @@ def _swig_setattr_nondynamic_method(set):
     return set_attr
 
 
+class SwigPyIterator(object):
+    """Proxy of C++ swig::SwigPyIterator class."""
+
+    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+
+    def __init__(self, *args, **kwargs):
+        raise AttributeError("No constructor defined - class is abstract")
+    __repr__ = _swig_repr
+    __swig_destroy__ = _cmf_core.delete_SwigPyIterator
+
+    def value(self, *args, **kwargs):
+        """value(SwigPyIterator self) -> PyObject *"""
+        return _cmf_core.SwigPyIterator_value(self, *args, **kwargs)
+
+
+    def incr(self, *args, **kwargs):
+        """incr(SwigPyIterator self, size_t n=1) -> SwigPyIterator"""
+        return _cmf_core.SwigPyIterator_incr(self, *args, **kwargs)
+
+
+    def decr(self, *args, **kwargs):
+        """decr(SwigPyIterator self, size_t n=1) -> SwigPyIterator"""
+        return _cmf_core.SwigPyIterator_decr(self, *args, **kwargs)
+
+
+    def distance(self, *args, **kwargs):
+        """distance(SwigPyIterator self, SwigPyIterator x) -> ptrdiff_t"""
+        return _cmf_core.SwigPyIterator_distance(self, *args, **kwargs)
+
+
+    def equal(self, *args, **kwargs):
+        """equal(SwigPyIterator self, SwigPyIterator x) -> bool"""
+        return _cmf_core.SwigPyIterator_equal(self, *args, **kwargs)
+
+
+    def copy(self, *args, **kwargs):
+        """copy(SwigPyIterator self) -> SwigPyIterator"""
+        return _cmf_core.SwigPyIterator_copy(self, *args, **kwargs)
+
+
+    def next(self, *args, **kwargs):
+        """next(SwigPyIterator self) -> PyObject *"""
+        return _cmf_core.SwigPyIterator_next(self, *args, **kwargs)
+
+
+    def __next__(self, *args, **kwargs):
+        """__next__(SwigPyIterator self) -> PyObject *"""
+        return _cmf_core.SwigPyIterator___next__(self, *args, **kwargs)
+
+
+    def previous(self, *args, **kwargs):
+        """previous(SwigPyIterator self) -> PyObject *"""
+        return _cmf_core.SwigPyIterator_previous(self, *args, **kwargs)
+
+
+    def advance(self, *args, **kwargs):
+        """advance(SwigPyIterator self, ptrdiff_t n) -> SwigPyIterator"""
+        return _cmf_core.SwigPyIterator_advance(self, *args, **kwargs)
+
+
+    def __eq__(self, *args, **kwargs):
+        """__eq__(SwigPyIterator self, SwigPyIterator x) -> bool"""
+        return _cmf_core.SwigPyIterator___eq__(self, *args, **kwargs)
+
+
+    def __ne__(self, *args, **kwargs):
+        """__ne__(SwigPyIterator self, SwigPyIterator x) -> bool"""
+        return _cmf_core.SwigPyIterator___ne__(self, *args, **kwargs)
+
+
+    def __iadd__(self, *args, **kwargs):
+        """__iadd__(SwigPyIterator self, ptrdiff_t n) -> SwigPyIterator"""
+        return _cmf_core.SwigPyIterator___iadd__(self, *args, **kwargs)
+
+
+    def __isub__(self, *args, **kwargs):
+        """__isub__(SwigPyIterator self, ptrdiff_t n) -> SwigPyIterator"""
+        return _cmf_core.SwigPyIterator___isub__(self, *args, **kwargs)
+
+
+    def __add__(self, *args, **kwargs):
+        """__add__(SwigPyIterator self, ptrdiff_t n) -> SwigPyIterator"""
+        return _cmf_core.SwigPyIterator___add__(self, *args, **kwargs)
+
+
+    def __sub__(self, *args):
+        """
+        __sub__(SwigPyIterator self, ptrdiff_t n) -> SwigPyIterator
+        __sub__(SwigPyIterator self, SwigPyIterator x) -> ptrdiff_t
+        """
+        return _cmf_core.SwigPyIterator___sub__(self, *args)
+
+    def __iter__(self):
+        return self
+SwigPyIterator.value = new_instancemethod(_cmf_core.SwigPyIterator_value, None, SwigPyIterator)
+SwigPyIterator.incr = new_instancemethod(_cmf_core.SwigPyIterator_incr, None, SwigPyIterator)
+SwigPyIterator.decr = new_instancemethod(_cmf_core.SwigPyIterator_decr, None, SwigPyIterator)
+SwigPyIterator.distance = new_instancemethod(_cmf_core.SwigPyIterator_distance, None, SwigPyIterator)
+SwigPyIterator.equal = new_instancemethod(_cmf_core.SwigPyIterator_equal, None, SwigPyIterator)
+SwigPyIterator.copy = new_instancemethod(_cmf_core.SwigPyIterator_copy, None, SwigPyIterator)
+SwigPyIterator.next = new_instancemethod(_cmf_core.SwigPyIterator_next, None, SwigPyIterator)
+SwigPyIterator.__next__ = new_instancemethod(_cmf_core.SwigPyIterator___next__, None, SwigPyIterator)
+SwigPyIterator.previous = new_instancemethod(_cmf_core.SwigPyIterator_previous, None, SwigPyIterator)
+SwigPyIterator.advance = new_instancemethod(_cmf_core.SwigPyIterator_advance, None, SwigPyIterator)
+SwigPyIterator.__eq__ = new_instancemethod(_cmf_core.SwigPyIterator___eq__, None, SwigPyIterator)
+SwigPyIterator.__ne__ = new_instancemethod(_cmf_core.SwigPyIterator___ne__, None, SwigPyIterator)
+SwigPyIterator.__iadd__ = new_instancemethod(_cmf_core.SwigPyIterator___iadd__, None, SwigPyIterator)
+SwigPyIterator.__isub__ = new_instancemethod(_cmf_core.SwigPyIterator___isub__, None, SwigPyIterator)
+SwigPyIterator.__add__ = new_instancemethod(_cmf_core.SwigPyIterator___add__, None, SwigPyIterator)
+SwigPyIterator.__sub__ = new_instancemethod(_cmf_core.SwigPyIterator___sub__, None, SwigPyIterator)
+_cmf_core.SwigPyIterator_swigregister(SwigPyIterator)
+# SwigPyIterator end
+
+class vector_int(object):
+    """Proxy of C++ std::vector<(int)> class."""
+
+    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __repr__ = _swig_repr
+
+    def iterator(self, *args, **kwargs):
+        """iterator(vector_int self) -> SwigPyIterator"""
+        return _cmf_core.vector_int_iterator(self, *args, **kwargs)
+
+    def __iter__(self):
+        return self.iterator()
+
+    def __nonzero__(self, *args, **kwargs):
+        """__nonzero__(vector_int self) -> bool"""
+        return _cmf_core.vector_int___nonzero__(self, *args, **kwargs)
+
+
+    def __bool__(self, *args, **kwargs):
+        """__bool__(vector_int self) -> bool"""
+        return _cmf_core.vector_int___bool__(self, *args, **kwargs)
+
+
+    def __len__(self, *args, **kwargs):
+        """__len__(vector_int self) -> std::vector< int >::size_type"""
+        return _cmf_core.vector_int___len__(self, *args, **kwargs)
+
+
+    def __getslice__(self, *args, **kwargs):
+        """__getslice__(vector_int self, std::vector< int >::difference_type i, std::vector< int >::difference_type j) -> vector_int"""
+        return _cmf_core.vector_int___getslice__(self, *args, **kwargs)
+
+
+    def __setslice__(self, *args):
+        """
+        __setslice__(vector_int self, std::vector< int >::difference_type i, std::vector< int >::difference_type j)
+        __setslice__(vector_int self, std::vector< int >::difference_type i, std::vector< int >::difference_type j, vector_int v)
+        """
+        return _cmf_core.vector_int___setslice__(self, *args)
+
+
+    def __delslice__(self, *args, **kwargs):
+        """__delslice__(vector_int self, std::vector< int >::difference_type i, std::vector< int >::difference_type j)"""
+        return _cmf_core.vector_int___delslice__(self, *args, **kwargs)
+
+
+    def __delitem__(self, *args):
+        """
+        __delitem__(vector_int self, std::vector< int >::difference_type i)
+        __delitem__(vector_int self, PySliceObject * slice)
+        """
+        return _cmf_core.vector_int___delitem__(self, *args)
+
+
+    def __getitem__(self, *args):
+        """
+        __getitem__(vector_int self, PySliceObject * slice) -> vector_int
+        __getitem__(vector_int self, std::vector< int >::difference_type i) -> std::vector< int >::value_type const &
+        """
+        return _cmf_core.vector_int___getitem__(self, *args)
+
+
+    def __setitem__(self, *args):
+        """
+        __setitem__(vector_int self, PySliceObject * slice, vector_int v)
+        __setitem__(vector_int self, PySliceObject * slice)
+        __setitem__(vector_int self, std::vector< int >::difference_type i, std::vector< int >::value_type const & x)
+        """
+        return _cmf_core.vector_int___setitem__(self, *args)
+
+
+    def pop(self, *args, **kwargs):
+        """pop(vector_int self) -> std::vector< int >::value_type"""
+        return _cmf_core.vector_int_pop(self, *args, **kwargs)
+
+
+    def append(self, *args, **kwargs):
+        """append(vector_int self, std::vector< int >::value_type const & x)"""
+        return _cmf_core.vector_int_append(self, *args, **kwargs)
+
+
+    def empty(self, *args, **kwargs):
+        """empty(vector_int self) -> bool"""
+        return _cmf_core.vector_int_empty(self, *args, **kwargs)
+
+
+    def size(self, *args, **kwargs):
+        """size(vector_int self) -> std::vector< int >::size_type"""
+        return _cmf_core.vector_int_size(self, *args, **kwargs)
+
+
+    def swap(self, *args, **kwargs):
+        """swap(vector_int self, vector_int v)"""
+        return _cmf_core.vector_int_swap(self, *args, **kwargs)
+
+
+    def begin(self, *args, **kwargs):
+        """begin(vector_int self) -> std::vector< int >::iterator"""
+        return _cmf_core.vector_int_begin(self, *args, **kwargs)
+
+
+    def end(self, *args, **kwargs):
+        """end(vector_int self) -> std::vector< int >::iterator"""
+        return _cmf_core.vector_int_end(self, *args, **kwargs)
+
+
+    def rbegin(self, *args, **kwargs):
+        """rbegin(vector_int self) -> std::vector< int >::reverse_iterator"""
+        return _cmf_core.vector_int_rbegin(self, *args, **kwargs)
+
+
+    def rend(self, *args, **kwargs):
+        """rend(vector_int self) -> std::vector< int >::reverse_iterator"""
+        return _cmf_core.vector_int_rend(self, *args, **kwargs)
+
+
+    def clear(self, *args, **kwargs):
+        """clear(vector_int self)"""
+        return _cmf_core.vector_int_clear(self, *args, **kwargs)
+
+
+    def get_allocator(self, *args, **kwargs):
+        """get_allocator(vector_int self) -> std::vector< int >::allocator_type"""
+        return _cmf_core.vector_int_get_allocator(self, *args, **kwargs)
+
+
+    def pop_back(self, *args, **kwargs):
+        """pop_back(vector_int self)"""
+        return _cmf_core.vector_int_pop_back(self, *args, **kwargs)
+
+
+    def erase(self, *args):
+        """
+        erase(vector_int self, std::vector< int >::iterator pos) -> std::vector< int >::iterator
+        erase(vector_int self, std::vector< int >::iterator first, std::vector< int >::iterator last) -> std::vector< int >::iterator
+        """
+        return _cmf_core.vector_int_erase(self, *args)
+
+
+    def __init__(self, *args):
+        """
+        __init__(std::vector<(int)> self) -> vector_int
+        __init__(std::vector<(int)> self, vector_int arg2) -> vector_int
+        __init__(std::vector<(int)> self, std::vector< int >::size_type size) -> vector_int
+        __init__(std::vector<(int)> self, std::vector< int >::size_type size, std::vector< int >::value_type const & value) -> vector_int
+        """
+        _cmf_core.vector_int_swiginit(self, _cmf_core.new_vector_int(*args))
+
+    def push_back(self, *args, **kwargs):
+        """push_back(vector_int self, std::vector< int >::value_type const & x)"""
+        return _cmf_core.vector_int_push_back(self, *args, **kwargs)
+
+
+    def front(self, *args, **kwargs):
+        """front(vector_int self) -> std::vector< int >::value_type const &"""
+        return _cmf_core.vector_int_front(self, *args, **kwargs)
+
+
+    def back(self, *args, **kwargs):
+        """back(vector_int self) -> std::vector< int >::value_type const &"""
+        return _cmf_core.vector_int_back(self, *args, **kwargs)
+
+
+    def assign(self, *args, **kwargs):
+        """assign(vector_int self, std::vector< int >::size_type n, std::vector< int >::value_type const & x)"""
+        return _cmf_core.vector_int_assign(self, *args, **kwargs)
+
+
+    def resize(self, *args):
+        """
+        resize(vector_int self, std::vector< int >::size_type new_size)
+        resize(vector_int self, std::vector< int >::size_type new_size, std::vector< int >::value_type const & x)
+        """
+        return _cmf_core.vector_int_resize(self, *args)
+
+
+    def insert(self, *args):
+        """
+        insert(vector_int self, std::vector< int >::iterator pos, std::vector< int >::value_type const & x) -> std::vector< int >::iterator
+        insert(vector_int self, std::vector< int >::iterator pos, std::vector< int >::size_type n, std::vector< int >::value_type const & x)
+        """
+        return _cmf_core.vector_int_insert(self, *args)
+
+
+    def reserve(self, *args, **kwargs):
+        """reserve(vector_int self, std::vector< int >::size_type n)"""
+        return _cmf_core.vector_int_reserve(self, *args, **kwargs)
+
+
+    def capacity(self, *args, **kwargs):
+        """capacity(vector_int self) -> std::vector< int >::size_type"""
+        return _cmf_core.vector_int_capacity(self, *args, **kwargs)
+
+    __swig_destroy__ = _cmf_core.delete_vector_int
+vector_int.iterator = new_instancemethod(_cmf_core.vector_int_iterator, None, vector_int)
+vector_int.__nonzero__ = new_instancemethod(_cmf_core.vector_int___nonzero__, None, vector_int)
+vector_int.__bool__ = new_instancemethod(_cmf_core.vector_int___bool__, None, vector_int)
+vector_int.__len__ = new_instancemethod(_cmf_core.vector_int___len__, None, vector_int)
+vector_int.__getslice__ = new_instancemethod(_cmf_core.vector_int___getslice__, None, vector_int)
+vector_int.__setslice__ = new_instancemethod(_cmf_core.vector_int___setslice__, None, vector_int)
+vector_int.__delslice__ = new_instancemethod(_cmf_core.vector_int___delslice__, None, vector_int)
+vector_int.__delitem__ = new_instancemethod(_cmf_core.vector_int___delitem__, None, vector_int)
+vector_int.__getitem__ = new_instancemethod(_cmf_core.vector_int___getitem__, None, vector_int)
+vector_int.__setitem__ = new_instancemethod(_cmf_core.vector_int___setitem__, None, vector_int)
+vector_int.pop = new_instancemethod(_cmf_core.vector_int_pop, None, vector_int)
+vector_int.append = new_instancemethod(_cmf_core.vector_int_append, None, vector_int)
+vector_int.empty = new_instancemethod(_cmf_core.vector_int_empty, None, vector_int)
+vector_int.size = new_instancemethod(_cmf_core.vector_int_size, None, vector_int)
+vector_int.swap = new_instancemethod(_cmf_core.vector_int_swap, None, vector_int)
+vector_int.begin = new_instancemethod(_cmf_core.vector_int_begin, None, vector_int)
+vector_int.end = new_instancemethod(_cmf_core.vector_int_end, None, vector_int)
+vector_int.rbegin = new_instancemethod(_cmf_core.vector_int_rbegin, None, vector_int)
+vector_int.rend = new_instancemethod(_cmf_core.vector_int_rend, None, vector_int)
+vector_int.clear = new_instancemethod(_cmf_core.vector_int_clear, None, vector_int)
+vector_int.get_allocator = new_instancemethod(_cmf_core.vector_int_get_allocator, None, vector_int)
+vector_int.pop_back = new_instancemethod(_cmf_core.vector_int_pop_back, None, vector_int)
+vector_int.erase = new_instancemethod(_cmf_core.vector_int_erase, None, vector_int)
+vector_int.push_back = new_instancemethod(_cmf_core.vector_int_push_back, None, vector_int)
+vector_int.front = new_instancemethod(_cmf_core.vector_int_front, None, vector_int)
+vector_int.back = new_instancemethod(_cmf_core.vector_int_back, None, vector_int)
+vector_int.assign = new_instancemethod(_cmf_core.vector_int_assign, None, vector_int)
+vector_int.resize = new_instancemethod(_cmf_core.vector_int_resize, None, vector_int)
+vector_int.insert = new_instancemethod(_cmf_core.vector_int_insert, None, vector_int)
+vector_int.reserve = new_instancemethod(_cmf_core.vector_int_reserve, None, vector_int)
+vector_int.capacity = new_instancemethod(_cmf_core.vector_int_capacity, None, vector_int)
+_cmf_core.vector_int_swigregister(vector_int)
+# vector_int end
+
+class vector_double(object):
+    """Proxy of C++ std::vector<(double)> class."""
+
+    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __repr__ = _swig_repr
+
+    def iterator(self, *args, **kwargs):
+        """iterator(vector_double self) -> SwigPyIterator"""
+        return _cmf_core.vector_double_iterator(self, *args, **kwargs)
+
+    def __iter__(self):
+        return self.iterator()
+
+    def __nonzero__(self, *args, **kwargs):
+        """__nonzero__(vector_double self) -> bool"""
+        return _cmf_core.vector_double___nonzero__(self, *args, **kwargs)
+
+
+    def __bool__(self, *args, **kwargs):
+        """__bool__(vector_double self) -> bool"""
+        return _cmf_core.vector_double___bool__(self, *args, **kwargs)
+
+
+    def __len__(self, *args, **kwargs):
+        """__len__(vector_double self) -> std::vector< double >::size_type"""
+        return _cmf_core.vector_double___len__(self, *args, **kwargs)
+
+
+    def __getslice__(self, *args, **kwargs):
+        """__getslice__(vector_double self, std::vector< double >::difference_type i, std::vector< double >::difference_type j) -> vector_double"""
+        return _cmf_core.vector_double___getslice__(self, *args, **kwargs)
+
+
+    def __setslice__(self, *args):
+        """
+        __setslice__(vector_double self, std::vector< double >::difference_type i, std::vector< double >::difference_type j)
+        __setslice__(vector_double self, std::vector< double >::difference_type i, std::vector< double >::difference_type j, vector_double v)
+        """
+        return _cmf_core.vector_double___setslice__(self, *args)
+
+
+    def __delslice__(self, *args, **kwargs):
+        """__delslice__(vector_double self, std::vector< double >::difference_type i, std::vector< double >::difference_type j)"""
+        return _cmf_core.vector_double___delslice__(self, *args, **kwargs)
+
+
+    def __delitem__(self, *args):
+        """
+        __delitem__(vector_double self, std::vector< double >::difference_type i)
+        __delitem__(vector_double self, PySliceObject * slice)
+        """
+        return _cmf_core.vector_double___delitem__(self, *args)
+
+
+    def __getitem__(self, *args):
+        """
+        __getitem__(vector_double self, PySliceObject * slice) -> vector_double
+        __getitem__(vector_double self, std::vector< double >::difference_type i) -> std::vector< double >::value_type const &
+        """
+        return _cmf_core.vector_double___getitem__(self, *args)
+
+
+    def __setitem__(self, *args):
+        """
+        __setitem__(vector_double self, PySliceObject * slice, vector_double v)
+        __setitem__(vector_double self, PySliceObject * slice)
+        __setitem__(vector_double self, std::vector< double >::difference_type i, std::vector< double >::value_type const & x)
+        """
+        return _cmf_core.vector_double___setitem__(self, *args)
+
+
+    def pop(self, *args, **kwargs):
+        """pop(vector_double self) -> std::vector< double >::value_type"""
+        return _cmf_core.vector_double_pop(self, *args, **kwargs)
+
+
+    def append(self, *args, **kwargs):
+        """append(vector_double self, std::vector< double >::value_type const & x)"""
+        return _cmf_core.vector_double_append(self, *args, **kwargs)
+
+
+    def empty(self, *args, **kwargs):
+        """empty(vector_double self) -> bool"""
+        return _cmf_core.vector_double_empty(self, *args, **kwargs)
+
+
+    def size(self, *args, **kwargs):
+        """size(vector_double self) -> std::vector< double >::size_type"""
+        return _cmf_core.vector_double_size(self, *args, **kwargs)
+
+
+    def swap(self, *args, **kwargs):
+        """swap(vector_double self, vector_double v)"""
+        return _cmf_core.vector_double_swap(self, *args, **kwargs)
+
+
+    def begin(self, *args, **kwargs):
+        """begin(vector_double self) -> std::vector< double >::iterator"""
+        return _cmf_core.vector_double_begin(self, *args, **kwargs)
+
+
+    def end(self, *args, **kwargs):
+        """end(vector_double self) -> std::vector< double >::iterator"""
+        return _cmf_core.vector_double_end(self, *args, **kwargs)
+
+
+    def rbegin(self, *args, **kwargs):
+        """rbegin(vector_double self) -> std::vector< double >::reverse_iterator"""
+        return _cmf_core.vector_double_rbegin(self, *args, **kwargs)
+
+
+    def rend(self, *args, **kwargs):
+        """rend(vector_double self) -> std::vector< double >::reverse_iterator"""
+        return _cmf_core.vector_double_rend(self, *args, **kwargs)
+
+
+    def clear(self, *args, **kwargs):
+        """clear(vector_double self)"""
+        return _cmf_core.vector_double_clear(self, *args, **kwargs)
+
+
+    def get_allocator(self, *args, **kwargs):
+        """get_allocator(vector_double self) -> std::vector< double >::allocator_type"""
+        return _cmf_core.vector_double_get_allocator(self, *args, **kwargs)
+
+
+    def pop_back(self, *args, **kwargs):
+        """pop_back(vector_double self)"""
+        return _cmf_core.vector_double_pop_back(self, *args, **kwargs)
+
+
+    def erase(self, *args):
+        """
+        erase(vector_double self, std::vector< double >::iterator pos) -> std::vector< double >::iterator
+        erase(vector_double self, std::vector< double >::iterator first, std::vector< double >::iterator last) -> std::vector< double >::iterator
+        """
+        return _cmf_core.vector_double_erase(self, *args)
+
+
+    def __init__(self, *args):
+        """
+        __init__(std::vector<(double)> self) -> vector_double
+        __init__(std::vector<(double)> self, vector_double arg2) -> vector_double
+        __init__(std::vector<(double)> self, std::vector< double >::size_type size) -> vector_double
+        __init__(std::vector<(double)> self, std::vector< double >::size_type size, std::vector< double >::value_type const & value) -> vector_double
+        """
+        _cmf_core.vector_double_swiginit(self, _cmf_core.new_vector_double(*args))
+
+    def push_back(self, *args, **kwargs):
+        """push_back(vector_double self, std::vector< double >::value_type const & x)"""
+        return _cmf_core.vector_double_push_back(self, *args, **kwargs)
+
+
+    def front(self, *args, **kwargs):
+        """front(vector_double self) -> std::vector< double >::value_type const &"""
+        return _cmf_core.vector_double_front(self, *args, **kwargs)
+
+
+    def back(self, *args, **kwargs):
+        """back(vector_double self) -> std::vector< double >::value_type const &"""
+        return _cmf_core.vector_double_back(self, *args, **kwargs)
+
+
+    def assign(self, *args, **kwargs):
+        """assign(vector_double self, std::vector< double >::size_type n, std::vector< double >::value_type const & x)"""
+        return _cmf_core.vector_double_assign(self, *args, **kwargs)
+
+
+    def resize(self, *args):
+        """
+        resize(vector_double self, std::vector< double >::size_type new_size)
+        resize(vector_double self, std::vector< double >::size_type new_size, std::vector< double >::value_type const & x)
+        """
+        return _cmf_core.vector_double_resize(self, *args)
+
+
+    def insert(self, *args):
+        """
+        insert(vector_double self, std::vector< double >::iterator pos, std::vector< double >::value_type const & x) -> std::vector< double >::iterator
+        insert(vector_double self, std::vector< double >::iterator pos, std::vector< double >::size_type n, std::vector< double >::value_type const & x)
+        """
+        return _cmf_core.vector_double_insert(self, *args)
+
+
+    def reserve(self, *args, **kwargs):
+        """reserve(vector_double self, std::vector< double >::size_type n)"""
+        return _cmf_core.vector_double_reserve(self, *args, **kwargs)
+
+
+    def capacity(self, *args, **kwargs):
+        """capacity(vector_double self) -> std::vector< double >::size_type"""
+        return _cmf_core.vector_double_capacity(self, *args, **kwargs)
+
+    __swig_destroy__ = _cmf_core.delete_vector_double
+vector_double.iterator = new_instancemethod(_cmf_core.vector_double_iterator, None, vector_double)
+vector_double.__nonzero__ = new_instancemethod(_cmf_core.vector_double___nonzero__, None, vector_double)
+vector_double.__bool__ = new_instancemethod(_cmf_core.vector_double___bool__, None, vector_double)
+vector_double.__len__ = new_instancemethod(_cmf_core.vector_double___len__, None, vector_double)
+vector_double.__getslice__ = new_instancemethod(_cmf_core.vector_double___getslice__, None, vector_double)
+vector_double.__setslice__ = new_instancemethod(_cmf_core.vector_double___setslice__, None, vector_double)
+vector_double.__delslice__ = new_instancemethod(_cmf_core.vector_double___delslice__, None, vector_double)
+vector_double.__delitem__ = new_instancemethod(_cmf_core.vector_double___delitem__, None, vector_double)
+vector_double.__getitem__ = new_instancemethod(_cmf_core.vector_double___getitem__, None, vector_double)
+vector_double.__setitem__ = new_instancemethod(_cmf_core.vector_double___setitem__, None, vector_double)
+vector_double.pop = new_instancemethod(_cmf_core.vector_double_pop, None, vector_double)
+vector_double.append = new_instancemethod(_cmf_core.vector_double_append, None, vector_double)
+vector_double.empty = new_instancemethod(_cmf_core.vector_double_empty, None, vector_double)
+vector_double.size = new_instancemethod(_cmf_core.vector_double_size, None, vector_double)
+vector_double.swap = new_instancemethod(_cmf_core.vector_double_swap, None, vector_double)
+vector_double.begin = new_instancemethod(_cmf_core.vector_double_begin, None, vector_double)
+vector_double.end = new_instancemethod(_cmf_core.vector_double_end, None, vector_double)
+vector_double.rbegin = new_instancemethod(_cmf_core.vector_double_rbegin, None, vector_double)
+vector_double.rend = new_instancemethod(_cmf_core.vector_double_rend, None, vector_double)
+vector_double.clear = new_instancemethod(_cmf_core.vector_double_clear, None, vector_double)
+vector_double.get_allocator = new_instancemethod(_cmf_core.vector_double_get_allocator, None, vector_double)
+vector_double.pop_back = new_instancemethod(_cmf_core.vector_double_pop_back, None, vector_double)
+vector_double.erase = new_instancemethod(_cmf_core.vector_double_erase, None, vector_double)
+vector_double.push_back = new_instancemethod(_cmf_core.vector_double_push_back, None, vector_double)
+vector_double.front = new_instancemethod(_cmf_core.vector_double_front, None, vector_double)
+vector_double.back = new_instancemethod(_cmf_core.vector_double_back, None, vector_double)
+vector_double.assign = new_instancemethod(_cmf_core.vector_double_assign, None, vector_double)
+vector_double.resize = new_instancemethod(_cmf_core.vector_double_resize, None, vector_double)
+vector_double.insert = new_instancemethod(_cmf_core.vector_double_insert, None, vector_double)
+vector_double.reserve = new_instancemethod(_cmf_core.vector_double_reserve, None, vector_double)
+vector_double.capacity = new_instancemethod(_cmf_core.vector_double_capacity, None, vector_double)
+_cmf_core.vector_double_swigregister(vector_double)
+# vector_double end
+
+class vector_size_t(object):
+    """Proxy of C++ std::vector<(size_t)> class."""
+
+    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __repr__ = _swig_repr
+
+    def iterator(self, *args, **kwargs):
+        """iterator(vector_size_t self) -> SwigPyIterator"""
+        return _cmf_core.vector_size_t_iterator(self, *args, **kwargs)
+
+    def __iter__(self):
+        return self.iterator()
+
+    def __nonzero__(self, *args, **kwargs):
+        """__nonzero__(vector_size_t self) -> bool"""
+        return _cmf_core.vector_size_t___nonzero__(self, *args, **kwargs)
+
+
+    def __bool__(self, *args, **kwargs):
+        """__bool__(vector_size_t self) -> bool"""
+        return _cmf_core.vector_size_t___bool__(self, *args, **kwargs)
+
+
+    def __len__(self, *args, **kwargs):
+        """__len__(vector_size_t self) -> std::vector< size_t >::size_type"""
+        return _cmf_core.vector_size_t___len__(self, *args, **kwargs)
+
+
+    def __getslice__(self, *args, **kwargs):
+        """__getslice__(vector_size_t self, std::vector< size_t >::difference_type i, std::vector< size_t >::difference_type j) -> vector_size_t"""
+        return _cmf_core.vector_size_t___getslice__(self, *args, **kwargs)
+
+
+    def __setslice__(self, *args):
+        """
+        __setslice__(vector_size_t self, std::vector< size_t >::difference_type i, std::vector< size_t >::difference_type j)
+        __setslice__(vector_size_t self, std::vector< size_t >::difference_type i, std::vector< size_t >::difference_type j, vector_size_t v)
+        """
+        return _cmf_core.vector_size_t___setslice__(self, *args)
+
+
+    def __delslice__(self, *args, **kwargs):
+        """__delslice__(vector_size_t self, std::vector< size_t >::difference_type i, std::vector< size_t >::difference_type j)"""
+        return _cmf_core.vector_size_t___delslice__(self, *args, **kwargs)
+
+
+    def __delitem__(self, *args):
+        """
+        __delitem__(vector_size_t self, std::vector< size_t >::difference_type i)
+        __delitem__(vector_size_t self, PySliceObject * slice)
+        """
+        return _cmf_core.vector_size_t___delitem__(self, *args)
+
+
+    def __getitem__(self, *args):
+        """
+        __getitem__(vector_size_t self, PySliceObject * slice) -> vector_size_t
+        __getitem__(vector_size_t self, std::vector< size_t >::difference_type i) -> std::vector< size_t >::value_type const &
+        """
+        return _cmf_core.vector_size_t___getitem__(self, *args)
+
+
+    def __setitem__(self, *args):
+        """
+        __setitem__(vector_size_t self, PySliceObject * slice, vector_size_t v)
+        __setitem__(vector_size_t self, PySliceObject * slice)
+        __setitem__(vector_size_t self, std::vector< size_t >::difference_type i, std::vector< size_t >::value_type const & x)
+        """
+        return _cmf_core.vector_size_t___setitem__(self, *args)
+
+
+    def pop(self, *args, **kwargs):
+        """pop(vector_size_t self) -> std::vector< size_t >::value_type"""
+        return _cmf_core.vector_size_t_pop(self, *args, **kwargs)
+
+
+    def append(self, *args, **kwargs):
+        """append(vector_size_t self, std::vector< size_t >::value_type const & x)"""
+        return _cmf_core.vector_size_t_append(self, *args, **kwargs)
+
+
+    def empty(self, *args, **kwargs):
+        """empty(vector_size_t self) -> bool"""
+        return _cmf_core.vector_size_t_empty(self, *args, **kwargs)
+
+
+    def size(self, *args, **kwargs):
+        """size(vector_size_t self) -> std::vector< size_t >::size_type"""
+        return _cmf_core.vector_size_t_size(self, *args, **kwargs)
+
+
+    def swap(self, *args, **kwargs):
+        """swap(vector_size_t self, vector_size_t v)"""
+        return _cmf_core.vector_size_t_swap(self, *args, **kwargs)
+
+
+    def begin(self, *args, **kwargs):
+        """begin(vector_size_t self) -> std::vector< size_t >::iterator"""
+        return _cmf_core.vector_size_t_begin(self, *args, **kwargs)
+
+
+    def end(self, *args, **kwargs):
+        """end(vector_size_t self) -> std::vector< size_t >::iterator"""
+        return _cmf_core.vector_size_t_end(self, *args, **kwargs)
+
+
+    def rbegin(self, *args, **kwargs):
+        """rbegin(vector_size_t self) -> std::vector< size_t >::reverse_iterator"""
+        return _cmf_core.vector_size_t_rbegin(self, *args, **kwargs)
+
+
+    def rend(self, *args, **kwargs):
+        """rend(vector_size_t self) -> std::vector< size_t >::reverse_iterator"""
+        return _cmf_core.vector_size_t_rend(self, *args, **kwargs)
+
+
+    def clear(self, *args, **kwargs):
+        """clear(vector_size_t self)"""
+        return _cmf_core.vector_size_t_clear(self, *args, **kwargs)
+
+
+    def get_allocator(self, *args, **kwargs):
+        """get_allocator(vector_size_t self) -> std::vector< size_t >::allocator_type"""
+        return _cmf_core.vector_size_t_get_allocator(self, *args, **kwargs)
+
+
+    def pop_back(self, *args, **kwargs):
+        """pop_back(vector_size_t self)"""
+        return _cmf_core.vector_size_t_pop_back(self, *args, **kwargs)
+
+
+    def erase(self, *args):
+        """
+        erase(vector_size_t self, std::vector< size_t >::iterator pos) -> std::vector< size_t >::iterator
+        erase(vector_size_t self, std::vector< size_t >::iterator first, std::vector< size_t >::iterator last) -> std::vector< size_t >::iterator
+        """
+        return _cmf_core.vector_size_t_erase(self, *args)
+
+
+    def __init__(self, *args):
+        """
+        __init__(std::vector<(size_t)> self) -> vector_size_t
+        __init__(std::vector<(size_t)> self, vector_size_t arg2) -> vector_size_t
+        __init__(std::vector<(size_t)> self, std::vector< size_t >::size_type size) -> vector_size_t
+        __init__(std::vector<(size_t)> self, std::vector< size_t >::size_type size, std::vector< size_t >::value_type const & value) -> vector_size_t
+        """
+        _cmf_core.vector_size_t_swiginit(self, _cmf_core.new_vector_size_t(*args))
+
+    def push_back(self, *args, **kwargs):
+        """push_back(vector_size_t self, std::vector< size_t >::value_type const & x)"""
+        return _cmf_core.vector_size_t_push_back(self, *args, **kwargs)
+
+
+    def front(self, *args, **kwargs):
+        """front(vector_size_t self) -> std::vector< size_t >::value_type const &"""
+        return _cmf_core.vector_size_t_front(self, *args, **kwargs)
+
+
+    def back(self, *args, **kwargs):
+        """back(vector_size_t self) -> std::vector< size_t >::value_type const &"""
+        return _cmf_core.vector_size_t_back(self, *args, **kwargs)
+
+
+    def assign(self, *args, **kwargs):
+        """assign(vector_size_t self, std::vector< size_t >::size_type n, std::vector< size_t >::value_type const & x)"""
+        return _cmf_core.vector_size_t_assign(self, *args, **kwargs)
+
+
+    def resize(self, *args):
+        """
+        resize(vector_size_t self, std::vector< size_t >::size_type new_size)
+        resize(vector_size_t self, std::vector< size_t >::size_type new_size, std::vector< size_t >::value_type const & x)
+        """
+        return _cmf_core.vector_size_t_resize(self, *args)
+
+
+    def insert(self, *args):
+        """
+        insert(vector_size_t self, std::vector< size_t >::iterator pos, std::vector< size_t >::value_type const & x) -> std::vector< size_t >::iterator
+        insert(vector_size_t self, std::vector< size_t >::iterator pos, std::vector< size_t >::size_type n, std::vector< size_t >::value_type const & x)
+        """
+        return _cmf_core.vector_size_t_insert(self, *args)
+
+
+    def reserve(self, *args, **kwargs):
+        """reserve(vector_size_t self, std::vector< size_t >::size_type n)"""
+        return _cmf_core.vector_size_t_reserve(self, *args, **kwargs)
+
+
+    def capacity(self, *args, **kwargs):
+        """capacity(vector_size_t self) -> std::vector< size_t >::size_type"""
+        return _cmf_core.vector_size_t_capacity(self, *args, **kwargs)
+
+    __swig_destroy__ = _cmf_core.delete_vector_size_t
+vector_size_t.iterator = new_instancemethod(_cmf_core.vector_size_t_iterator, None, vector_size_t)
+vector_size_t.__nonzero__ = new_instancemethod(_cmf_core.vector_size_t___nonzero__, None, vector_size_t)
+vector_size_t.__bool__ = new_instancemethod(_cmf_core.vector_size_t___bool__, None, vector_size_t)
+vector_size_t.__len__ = new_instancemethod(_cmf_core.vector_size_t___len__, None, vector_size_t)
+vector_size_t.__getslice__ = new_instancemethod(_cmf_core.vector_size_t___getslice__, None, vector_size_t)
+vector_size_t.__setslice__ = new_instancemethod(_cmf_core.vector_size_t___setslice__, None, vector_size_t)
+vector_size_t.__delslice__ = new_instancemethod(_cmf_core.vector_size_t___delslice__, None, vector_size_t)
+vector_size_t.__delitem__ = new_instancemethod(_cmf_core.vector_size_t___delitem__, None, vector_size_t)
+vector_size_t.__getitem__ = new_instancemethod(_cmf_core.vector_size_t___getitem__, None, vector_size_t)
+vector_size_t.__setitem__ = new_instancemethod(_cmf_core.vector_size_t___setitem__, None, vector_size_t)
+vector_size_t.pop = new_instancemethod(_cmf_core.vector_size_t_pop, None, vector_size_t)
+vector_size_t.append = new_instancemethod(_cmf_core.vector_size_t_append, None, vector_size_t)
+vector_size_t.empty = new_instancemethod(_cmf_core.vector_size_t_empty, None, vector_size_t)
+vector_size_t.size = new_instancemethod(_cmf_core.vector_size_t_size, None, vector_size_t)
+vector_size_t.swap = new_instancemethod(_cmf_core.vector_size_t_swap, None, vector_size_t)
+vector_size_t.begin = new_instancemethod(_cmf_core.vector_size_t_begin, None, vector_size_t)
+vector_size_t.end = new_instancemethod(_cmf_core.vector_size_t_end, None, vector_size_t)
+vector_size_t.rbegin = new_instancemethod(_cmf_core.vector_size_t_rbegin, None, vector_size_t)
+vector_size_t.rend = new_instancemethod(_cmf_core.vector_size_t_rend, None, vector_size_t)
+vector_size_t.clear = new_instancemethod(_cmf_core.vector_size_t_clear, None, vector_size_t)
+vector_size_t.get_allocator = new_instancemethod(_cmf_core.vector_size_t_get_allocator, None, vector_size_t)
+vector_size_t.pop_back = new_instancemethod(_cmf_core.vector_size_t_pop_back, None, vector_size_t)
+vector_size_t.erase = new_instancemethod(_cmf_core.vector_size_t_erase, None, vector_size_t)
+vector_size_t.push_back = new_instancemethod(_cmf_core.vector_size_t_push_back, None, vector_size_t)
+vector_size_t.front = new_instancemethod(_cmf_core.vector_size_t_front, None, vector_size_t)
+vector_size_t.back = new_instancemethod(_cmf_core.vector_size_t_back, None, vector_size_t)
+vector_size_t.assign = new_instancemethod(_cmf_core.vector_size_t_assign, None, vector_size_t)
+vector_size_t.resize = new_instancemethod(_cmf_core.vector_size_t_resize, None, vector_size_t)
+vector_size_t.insert = new_instancemethod(_cmf_core.vector_size_t_insert, None, vector_size_t)
+vector_size_t.reserve = new_instancemethod(_cmf_core.vector_size_t_reserve, None, vector_size_t)
+vector_size_t.capacity = new_instancemethod(_cmf_core.vector_size_t_capacity, None, vector_size_t)
+_cmf_core.vector_size_t_swigregister(vector_size_t)
+# vector_size_t end
+
 SHARED_PTR_DISOWN = _cmf_core.SHARED_PTR_DISOWN
 
 def get_parallel_threads(*args):
@@ -891,6 +1688,9 @@ class Time(object):
     second = property(lambda self: self.AsDate().second)
     ms     = property(lambda self: self.AsDate().ms)
 
+    def __format__(self, fmt):
+        return self.AsPython().__format__(fmt)
+
     __swig_destroy__ = _cmf_core.delete_Time
 Time.AsDays = new_instancemethod(_cmf_core.Time_AsDays, None, Time)
 Time.AsHours = new_instancemethod(_cmf_core.Time_AsHours, None, Time)
@@ -1609,7 +2409,7 @@ class timeseries(object):
     @classmethod
     def from_buffer(cls,buf):
         import numpy as np
-        header_length=struct.calcsize('qqqq') 
+        header_length=struct.calcsize('qqqq')
         header=struct.unpack('qqqq',buf[:header_length])
         res=cls(header[1]*ms,header[2]*ms,header[3])
         res.extend(np.fromstring(buf[header_length:], dtype=float))
@@ -1933,15 +2733,7 @@ _cmf_core.integratable_list_swigregister(integratable_list)
 # integratable_list end
 
 class StateVariable(object):
-    """
-
-
-    Abstract class state variable.
-
-    Simple exponential system class header implementing a state variable:
-
-    C++ includes: statevariable.h 
-    """
+    """Proxy of C++ cmf::math::StateVariable class."""
 
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
 
@@ -1980,6 +2772,16 @@ class StateVariable(object):
         return _cmf_core.StateVariable_to_string(self, *args, **kwargs)
 
     __swig_destroy__ = _cmf_core.delete_StateVariable
+
+    def is_connected(self, *args, **kwargs):
+        """
+        is_connected(StateVariable self, StateVariable other) -> bool
+
+        virtual bool is_connected(const cmf::math::StateVariable &other) const
+
+        """
+        return _cmf_core.StateVariable_is_connected(self, *args, **kwargs)
+
     state = _swig_property(_cmf_core.StateVariable_state_get, _cmf_core.StateVariable_state_set)
 
     def __repr__(self): 
@@ -1988,6 +2790,7 @@ class StateVariable(object):
 StateVariable.dxdt = new_instancemethod(_cmf_core.StateVariable_dxdt, None, StateVariable)
 StateVariable.get_abs_errtol = new_instancemethod(_cmf_core.StateVariable_get_abs_errtol, None, StateVariable)
 StateVariable.to_string = new_instancemethod(_cmf_core.StateVariable_to_string, None, StateVariable)
+StateVariable.is_connected = new_instancemethod(_cmf_core.StateVariable_is_connected, None, StateVariable)
 _cmf_core.StateVariable_swigregister(StateVariable)
 # StateVariable end
 
@@ -2083,6 +2886,42 @@ StateVariableList.size = new_instancemethod(_cmf_core.StateVariableList_size, No
 StateVariableList.__len__ = new_instancemethod(_cmf_core.StateVariableList___len__, None, StateVariableList)
 _cmf_core.StateVariableList_swigregister(StateVariableList)
 # StateVariableList end
+
+class sparse_structure(object):
+    """Proxy of C++ cmf::math::sparse_structure class."""
+
+    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __repr__ = _swig_repr
+    indexvalues = _swig_property(_cmf_core.sparse_structure_indexvalues_get, _cmf_core.sparse_structure_indexvalues_set)
+    indexpointers = _swig_property(_cmf_core.sparse_structure_indexpointers_get, _cmf_core.sparse_structure_indexpointers_set)
+
+    def __init__(self, *args, **kwargs):
+        """
+        __init__(cmf::math::sparse_structure self) -> sparse_structure
+
+        sparse_structure()
+
+        Creates the sparse row compressed structure from states variable list.
+
+        """
+        _cmf_core.sparse_structure_swiginit(self, _cmf_core.new_sparse_structure(*args, **kwargs))
+
+    def generate(self, *args, **kwargs):
+        """
+        generate(sparse_structure self, StateVariableList states) -> size_t
+
+        size_t
+        generate(const StateVariableList &states) 
+        """
+        return _cmf_core.sparse_structure_generate(self, *args, **kwargs)
+
+    NNZ = _swig_property(_cmf_core.sparse_structure_NNZ_get, _cmf_core.sparse_structure_NNZ_set)
+    NP = _swig_property(_cmf_core.sparse_structure_NP_get, _cmf_core.sparse_structure_NP_set)
+    N = _swig_property(_cmf_core.sparse_structure_N_get, _cmf_core.sparse_structure_N_set)
+    __swig_destroy__ = _cmf_core.delete_sparse_structure
+sparse_structure.generate = new_instancemethod(_cmf_core.sparse_structure_generate, None, sparse_structure)
+_cmf_core.sparse_structure_swigregister(sparse_structure)
+# sparse_structure end
 
 class Adsorption(object):
     """
@@ -2673,6 +3512,28 @@ class SoluteStorage(StateVariable):
     decay = _swig_property(_cmf_core.SoluteStorage_decay_get, _cmf_core.SoluteStorage_decay_set)
     source = _swig_property(_cmf_core.SoluteStorage_source_get, _cmf_core.SoluteStorage_source_set)
     Solute = _swig_property(_cmf_core.SoluteStorage_Solute_get)
+
+    def get_water(self, *args, **kwargs):
+        """
+        get_water(SoluteStorage self) -> WaterStorage
+
+        const
+        WaterStorage& get_water() const
+
+        get the waterstorge of the solute storage 
+        """
+        return _cmf_core.SoluteStorage_get_water(self, *args, **kwargs)
+
+
+    def add_connected_states(self, *args, **kwargs):
+        """
+        add_connected_states(SoluteStorage self, cmf::math::StateVariable::list & states)
+
+        virtual void add_connected_states(cmf::math::StateVariable::list
+        &states) 
+        """
+        return _cmf_core.SoluteStorage_add_connected_states(self, *args, **kwargs)
+
     conc = _swig_property(_cmf_core.SoluteStorage_conc_get, _cmf_core.SoluteStorage_conc_set)
 
     def __repr__(self): 
@@ -2680,6 +3541,8 @@ class SoluteStorage(StateVariable):
 
     __swig_destroy__ = _cmf_core.delete_SoluteStorage
 SoluteStorage.set_adsorption = new_instancemethod(_cmf_core.SoluteStorage_set_adsorption, None, SoluteStorage)
+SoluteStorage.get_water = new_instancemethod(_cmf_core.SoluteStorage_get_water, None, SoluteStorage)
+SoluteStorage.add_connected_states = new_instancemethod(_cmf_core.SoluteStorage_add_connected_states, None, SoluteStorage)
 _cmf_core.SoluteStorage_swigregister(SoluteStorage)
 # SoluteStorage end
 
@@ -5214,14 +6077,35 @@ def rH_from_vpd(*args, **kwargs):
     """
     return _cmf_core.rH_from_vpd(*args, **kwargs)
 
-def global_radiation(*args, **kwargs):
+def watts_to_MJ(*args, **kwargs):
     """
-    global_radiation(Time t, double height, double sunshine_fraction, double longitude=8, double latitude=51, double time_zone=1, bool daily=False) -> double
+    watts_to_MJ(double Watts) -> double
 
     double
-    cmf::atmosphere::global_radiation(cmf::math::Time t, double height,
-    double sunshine_fraction, double longitude=8, double latitude=51,
-    double time_zone=1, bool daily=0)
+    cmf::atmosphere::watts_to_MJ(double Watts)
+
+    Transforms an energy flux from W to MJ/day. 
+    """
+    return _cmf_core.watts_to_MJ(*args, **kwargs)
+
+def MJ_to_watts(*args, **kwargs):
+    """
+    MJ_to_watts(double MJ) -> double
+
+    double
+    cmf::atmosphere::MJ_to_watts(double MJ)
+
+    Transforms an energy flux from MJ/day to W. 
+    """
+    return _cmf_core.MJ_to_watts(*args, **kwargs)
+
+def extraterrestrial_radiation(*args, **kwargs):
+    """
+    extraterrestrial_radiation(Time t, double longitude=8, double latitude=51, double time_zone=1, bool daily=False) -> double
+
+    double cmf::atmosphere::extraterrestrial_radiation(cmf::math::Time t,
+    double longitude=8, double latitude=51, double time_zone=1, bool
+    daily=0)
 
     Calculates the global radiation in MJ/(m2 day) from the sun position
     and the sunshine fraction.
@@ -5230,11 +6114,6 @@ def global_radiation(*args, **kwargs):
     -----------
 
     t:  actual time step
-
-    height:  Height above sea level
-
-    sunshine_fraction:  Fraction of sunshine hours per potential sunshine
-    duration in h/h
 
     longitude:  latitude:  Geographical position in degree. Latitude is
     only taken into acount for subdaily calculation
@@ -5249,43 +6128,67 @@ def global_radiation(*args, **kwargs):
     The calculation of the global radiation
     followshttp://www.fao.org/docrep/X0490E/x0490e07.htm#radiation.
 
-    The following formula is used: 
+    The following formula is used:  :math:`\\phi` Latitude in :math:`rad`
 
-    .. math::
+    :math:`\\delta = 0.409 \\sin\\left(\\frac{2\\pi}{365}DOY - 1.39\\right)` Declination, DOY is day of year
 
-         \\phi &=&
-        \\frac{(\\mbox{geogr. Latitude})^\\circ \\pi}{180^\\circ}
-        \\mbox{ Latitude in }rad \\\\ \\delta &=& 0.409
-        \\sin\\left(\\frac{2\\pi}{365}DOY - 1.39\\right) \\mbox{
-        Declination, DOY is day of year}\\\\ \\omega_s &=&
-        \\arccos(-\\tan\\phi\\tan\\delta) \\mbox{ Sunset angle}
-        \\\\ G_{sc} &=& 0.0802 \\frac{MJ}{m^2min} \\mbox{Solar
-        constant} \\\\ d_r &=& 1+0.033
-        \\cos\\left(\\frac{2\\pi}{365}DOY\\right) \\mbox{Inverse
-        relative distance Earth-Sun} \\\\ b &=&
-        \\frac{2\\pi(DOY-81)}{364}\\\\ S_c &=&
-        0.1645\\sin(2b)-0.1255\\cos(b)-0.025\\sin(b) \\mbox{ Seasonal
-        correction for solar time} \\\\ \\omega &=& \\frac {\\pi}
-        {12} \\left(t_h+\\frac{(\\mbox{geogr.
-        Longitude})^\\circ}{15}-\\mbox{Timezone}+S_c-12\\right)
-        \\mbox{ solar time in }rad \\\\ \\mbox{If daily} \\\\ R_a
-        &=& \\frac{24\\ 60}{\\pi}G_{sc}\\ d_r \\left(\\omega_s
-        \\sin\\phi \\sin\\delta + \\cos\\phi \\cos\\delta
-        \\sin\\omega_s\\right) \\mbox{Extraterrestrial radiation }
-        \\frac{MJ}{m^2 day} \\\\ \\mbox{If hourly} \\\\ R_a &=&
-        \\frac{12\\ 24\\ 60}{\\pi}G_{sc}\\ d_r
-        \\left(\\left(\\omega^+ -\\omega^-\\right) \\sin\\phi
-        \\sin\\delta + \\cos\\phi \\cos\\delta
-        \\left(\\sin\\omega^+ - \\sin\\omega^-\\right)\\right)
-        \\\\ && \\omega^+,\\omega^- = \\omega
-        \\pm\\frac{\\pi}{24} \\\\ \\frac n N &=&
-        \\mbox{Fractional sunshine duration} \\\\ R_s &=&
-        \\left(0.25+\\left(0.5+2\\
-        10^{-5}z\\right)\\frac{n}{N}\\right)R_a \\mbox{Global
-        radiation in }\\frac{MJ}{m^2 day} \\\\ && z=\\mbox{Height
-        a.s.l. in }m \\\\ 
+    :math:`\\omega_s = \\arccos(-\\tan\\phi\\tan\\delta)` Sunset
+    angle
 
+    :math:`G_{sc} = 0.0802 \\frac{MJ}{m^2min}` Solar constant
 
+    :math:`d_r = 1+0.033 \\cos\\left(\\frac{2\\pi}{365}DOY\\right)`
+    Inverse relative distance Earth-Sun
+
+    :math:`b = \\frac{2\\pi(DOY-81)}{364}`
+
+    :math:`S_c = 0.1645\\sin(2b)-0.1255\\cos(b)-0.025\\sin(b)` Seasonal
+    correction for solar time
+
+    :math:`\\omega = \\frac{\\pi}{12} \\left(t_h+\\frac{(\\mbox{geogr. Longitude})^\\circ}{15^\\circ}-\\mbox{Timezone}+S_c-12\\right)` solar time in :math:`rad`
+
+    If daily: :math:`R_a = \\frac{24\\ 60}{\\pi}G_{sc}\\ d_r \\left(\\omega_s \\sin\\phi \\sin\\delta + \\cos\\phi \\cos\\delta \\sin\\omega_s\\right)`
+
+    If sub daily: :math:`R_a = \\frac{12\\ 24\\ 60}{\\pi}G_{sc}\\ d_r \\left(\\left(\\omega^+ -\\omega^-\\right) \\sin\\phi \\sin\\delta + \\cos\\phi \\cos\\delta \\left(\\sin\\omega^+ - \\sin\\omega^-\\right)\\right)`
+
+    :math:`\\omega^+,\\omega^- = \\omega \\pm\\frac{\\pi}{24}` 
+    """
+    return _cmf_core.extraterrestrial_radiation(*args, **kwargs)
+
+def global_radiation(*args, **kwargs):
+    """
+    global_radiation(double Ra, double height, double sunshine_fraction) -> double
+
+    double
+    cmf::atmosphere::global_radiation(double Ra, double height, double
+    sunshine_fraction)
+
+    Calculates the global radiation in MJ/(m2 day) from the sun position
+    and the sunshine fraction.
+
+    Parameters:
+    -----------
+
+    Ra:  extra terrestrial radiation
+
+    height:  Height above sea level
+
+    sunshine_fraction:  Fraction of sunshine hours per potential sunshine
+    duration in h/h
+
+    The calculation of the global radiation
+    followshttp://www.fao.org/docrep/X0490E/x0490e07.htm#radiation.
+
+    The following formula is used:  :math:`R_a(t, \\phi, \\lambda)`
+    Extraterrestrial radiation (
+    cmf::atmosphere::extraterrestrial_radiation) :math:`\\frac{MJ}{m^2 day}`
+
+    :math:`\\frac n N` Fractional sunshine duration
+
+    :math:`R_s = \\left(0.25+\\left(0.5+2\\ 10^{-5}z\\right)\\frac{n}{N}\\right)R_a` Global radiation in
+    :math:`\\frac{MJ}{m^2 day}`
+
+    :math:`z`: Height a.s.l. in m 
     """
     return _cmf_core.global_radiation(*args, **kwargs)
 
@@ -5320,6 +6223,7 @@ class Weather(object):
     e_s = _swig_property(_cmf_core.Weather_e_s_get, _cmf_core.Weather_e_s_set)
     sunshine = _swig_property(_cmf_core.Weather_sunshine_get, _cmf_core.Weather_sunshine_set)
     Rs = _swig_property(_cmf_core.Weather_Rs_get, _cmf_core.Weather_Rs_set)
+    Ra = _swig_property(_cmf_core.Weather_Ra_get, _cmf_core.Weather_Ra_set)
     daylength = _swig_property(_cmf_core.Weather_daylength_get, _cmf_core.Weather_daylength_set)
     instrument_height = _swig_property(_cmf_core.Weather_instrument_height_get, _cmf_core.Weather_instrument_height_set)
 
@@ -5336,19 +6240,19 @@ class Weather(object):
 
         .. math::
 
-             R_{n} &=& R_{ns} - R_{nl} \\\\ \\mbox{ Net
-            short wave radiation: }R_{ns} &=& (1-\\alpha) R_s \\\\ \\mbox{
-            Net long wave radiation: }R_{nl} &=& R_{black}\\ \\beta_{v}\\
-            \\beta_{c} \\\\ \\mbox{Black body radiation: } R_{black} &=&
+             R_{n} = R_{ns} - R_{nl} \\\\ \\mbox{ Net
+            short wave radiation: }R_{ns} = (1-\\alpha) R_s \\\\ \\mbox{
+            Net long wave radiation: }R_{nl} = R_{black}\\ \\beta_{v}\\
+            \\beta_{c} \\\\ \\mbox{Black body radiation: } R_{black} =
             \\left\\{\\begin{array}{cl} \\sigma T^4 & \\mbox{for less
             than daily time steps} \\\\ \\sigma \\frac {T_{max}^4 +
             T_{min}^4} 2 & \\mbox{for daily time steps} \\end{array}
-            \\right. \\\\ T &=& \\mbox{Temperature }[K] \\\\ \\sigma
-            &=& 4.903\\ 10^{-9} \\frac{MJ}{K^4 m^2 day} \\mbox{ Stefan-
-            Boltzmann constant } \\\\ \\mbox{Long wave reflectance: }
-            \\\\ \\mbox{by water vapor: }\\beta_{v} &=& 0.34 - 0.14
-            \\sqrt{e_a} \\\\ \\mbox{ by clouds: }\\beta_{c} &=& 0.1 +
-            0.9 \\frac n N 
+            \\right. \\\\ T = \\mbox{Temperature }[K] \\\\ \\sigma =
+            4.903\\ 10^{-9} \\frac{MJ}{K^4 m^2 day} \\mbox{ Stefan-Boltzmann
+            constant } \\\\ \\mbox{Long wave reflectance: } \\\\
+            \\mbox{by water vapor: }\\beta_{v} = 0.34 - 0.14 \\sqrt{e_a}
+            \\\\ \\mbox{ by clouds: }\\beta_{c} = 0.1 + 0.9 \\frac n N
+
 
 
 
@@ -5365,11 +6269,11 @@ class Weather(object):
 
     def __init__(self, *args, **kwargs):
         """
-        __init__(cmf::atmosphere::Weather self, double T=15.0, double Tmax=17.0, double Tmin=13.0, double rH=70.0, double wind=2.0, double sunshine=0.5, double Rs=15, double daylength=12) -> Weather
+        __init__(cmf::atmosphere::Weather self, double T=15.0, double Tmax=17.0, double Tmin=13.0, double rH=70.0, double wind=2.0, double sunshine=0.5, double Rs=15, double Ra=30, double daylength=12) -> Weather
 
         Weather(double T=15.0, double Tmax=17.0, double Tmin=13.0, double
         rH=70.0, double wind=2.0, double sunshine=0.5, double Rs=15, double
-        daylength=12)
+        Ra=30, double daylength=12)
 
         Creates a "weather" from given data.
 
@@ -5390,6 +6294,8 @@ class Weather(object):
         duration in h/h
 
         Rs:  actual incoming shortwave global radiation in MJ/(m2 day)
+
+        Ra:  actual extraterrestrial shortwave global radiation in MJ/(m2 day)
 
         daylength:  length of the day in h 
         """
@@ -12230,13 +13136,12 @@ class HargreaveET(stressedET):
 
     def __init__(self, *args, **kwargs):
         """
-        __init__(cmf::upslope::ET::HargreaveET self, cmf::upslope::SoilLayer::ptr source, cmf::water::flux_node::ptr ET_target, real latitude=51.0) -> HargreaveET
+        __init__(cmf::upslope::ET::HargreaveET self, cmf::upslope::SoilLayer::ptr source, cmf::water::flux_node::ptr ET_target) -> HargreaveET
 
         HargreaveET(cmf::upslope::SoilLayer::ptr source,
         cmf::water::flux_node::ptr ET_target, real latitude=51.0) 
         """
         _cmf_core.HargreaveET_swiginit(self, _cmf_core.new_HargreaveET(*args, **kwargs))
-    lat = _swig_property(_cmf_core.HargreaveET_lat_get, _cmf_core.HargreaveET_lat_set)
 
     def use_for_cell(*args, **kwargs):
         """use_for_cell(Cell cell)"""
@@ -12246,6 +13151,51 @@ class HargreaveET(stressedET):
     __swig_destroy__ = _cmf_core.delete_HargreaveET
 _cmf_core.HargreaveET_swigregister(HargreaveET)
 # HargreaveET end
+
+
+
+
+
+class OudinET(stressedET):
+    """Proxy of C++ cmf::upslope::ET::OudinET class."""
+
+    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __repr__ = _swig_repr
+
+    def __init__(self, *args, **kwargs):
+        """__init__(cmf::upslope::ET::OudinET self, cmf::upslope::SoilLayer::ptr source, cmf::water::flux_node::ptr ET_target, double K1=100, double K2=5) -> OudinET"""
+        _cmf_core.OudinET_swiginit(self, _cmf_core.new_OudinET(*args, **kwargs))
+
+    def JensenHaise1963(*args, **kwargs):
+        """JensenHaise1963(cmf::upslope::SoilLayer::ptr source, cmf::water::flux_node::ptr ET_target) -> OudinET"""
+        return _cmf_core.OudinET_JensenHaise1963(*args, **kwargs)
+
+    JensenHaise1963 = staticmethod(JensenHaise1963)
+
+    def McGuinessBordne1972(*args, **kwargs):
+        """McGuinessBordne1972(cmf::upslope::SoilLayer::ptr source, cmf::water::flux_node::ptr ET_target) -> OudinET"""
+        return _cmf_core.OudinET_McGuinessBordne1972(*args, **kwargs)
+
+    McGuinessBordne1972 = staticmethod(McGuinessBordne1972)
+    K1 = _swig_property(_cmf_core.OudinET_K1_get, _cmf_core.OudinET_K1_set)
+    K2 = _swig_property(_cmf_core.OudinET_K2_get, _cmf_core.OudinET_K2_set)
+
+    def use_for_cell(*args, **kwargs):
+        """use_for_cell(Cell cell)"""
+        return _cmf_core.OudinET_use_for_cell(*args, **kwargs)
+
+    use_for_cell = staticmethod(use_for_cell)
+    __swig_destroy__ = _cmf_core.delete_OudinET
+_cmf_core.OudinET_swigregister(OudinET)
+# OudinET end
+
+
+
+
+
+
+
+
 
 
 
@@ -13194,7 +14144,7 @@ class Integrator(object):
     __repr__ = _swig_repr
 
     def __getitem__(self, *args, **kwargs):
-        """__getitem__(Integrator self, int position) -> cmf::math::StateVariable::ptr"""
+        """__getitem__(Integrator self, long position) -> cmf::math::StateVariable::ptr"""
         return _cmf_core.Integrator___getitem__(self, *args, **kwargs)
 
 
@@ -13463,7 +14413,7 @@ class Integrator(object):
         cmf.Time
              the actual timestep
         """
-        import logging
+        from logging import warning
         if not start is None:
             self.t = start
         if end is None:
@@ -13477,7 +14427,7 @@ class Integrator(object):
                 if len(errors) < max_errors:
                     errors.append((t, e))
                     self.reset()
-                    logging.warning(str(t) + ': ' + str(e))
+                    warning(str(t) + ': ' + str(e))
             yield t
 
 Integrator.__getitem__ = new_instancemethod(_cmf_core.Integrator___getitem__, None, Integrator)
@@ -13677,125 +14627,355 @@ class RKFIntegrator(Integrator):
 _cmf_core.RKFIntegrator_swigregister(RKFIntegrator)
 # RKFIntegrator end
 
-class CVodeIntegrator(Integrator):
+class CVodeOptions(object):
     """
 
 
-    A wrapper class for the CVODE integrator from the SUNDIALS library.
+    A set of options for all CVode3 solver.
 
-    https://computation.llnl.gov/casc/sundials/main.html
+    Negative numbers indicate that this option stays on the default value.
+    For the meaning of the options see CVODE-UD, section 4.5.6
 
-    C++ includes: cvodeintegrator.h 
+    See Hindmarsh, A., Serban, R. and Reynolds, D.: User Documentation for
+    cvode v3.1.0, 2017, UCRL-SM-208108
+
+    Usage example: >>>solver = CVodeDens(p, 1e-9)
+    >>>solver.options.max_order = 2
+
+    C++ includes: cvode.h 
     """
 
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
     __repr__ = _swig_repr
-    preconditioner = _swig_property(_cmf_core.CVodeIntegrator_preconditioner_get, _cmf_core.CVodeIntegrator_preconditioner_set)
-    MaxNonLinearIterations = _swig_property(_cmf_core.CVodeIntegrator_MaxNonLinearIterations_get, _cmf_core.CVodeIntegrator_MaxNonLinearIterations_set)
-    MaxConvergenceFailures = _swig_property(_cmf_core.CVodeIntegrator_MaxConvergenceFailures_get, _cmf_core.CVodeIntegrator_MaxConvergenceFailures_set)
-    MaxErrorTestFailures = _swig_property(_cmf_core.CVodeIntegrator_MaxErrorTestFailures_get, _cmf_core.CVodeIntegrator_MaxErrorTestFailures_set)
-    maxl = _swig_property(_cmf_core.CVodeIntegrator_maxl_get, _cmf_core.CVodeIntegrator_maxl_set)
-    LinearSolver = _swig_property(_cmf_core.CVodeIntegrator_LinearSolver_get, _cmf_core.CVodeIntegrator_LinearSolver_set)
-    MaxOrder = _swig_property(_cmf_core.CVodeIntegrator_MaxOrder_get, _cmf_core.CVodeIntegrator_MaxOrder_set)
-    max_step = _swig_property(_cmf_core.CVodeIntegrator_max_step_get, _cmf_core.CVodeIntegrator_max_step_set)
+    max_order = _swig_property(_cmf_core.CVodeOptions_max_order_get, _cmf_core.CVodeOptions_max_order_set)
+    max_non_linear_iterations = _swig_property(_cmf_core.CVodeOptions_max_non_linear_iterations_get, _cmf_core.CVodeOptions_max_non_linear_iterations_set)
+    max_error_test_failures = _swig_property(_cmf_core.CVodeOptions_max_error_test_failures_get, _cmf_core.CVodeOptions_max_error_test_failures_set)
+    max_convergence_failures = _swig_property(_cmf_core.CVodeOptions_max_convergence_failures_get, _cmf_core.CVodeOptions_max_convergence_failures_set)
+    max_num_steps = _swig_property(_cmf_core.CVodeOptions_max_num_steps_get, _cmf_core.CVodeOptions_max_num_steps_set)
+    max_hnil_warnings = _swig_property(_cmf_core.CVodeOptions_max_hnil_warnings_get, _cmf_core.CVodeOptions_max_hnil_warnings_set)
+
+    def __init__(self, *args, **kwargs):
+        """
+        __init__(cmf::math::CVodeOptions self) -> CVodeOptions
+
+        CVodeOptions() 
+        """
+        _cmf_core.CVodeOptions_swiginit(self, _cmf_core.new_CVodeOptions(*args, **kwargs))
+    __swig_destroy__ = _cmf_core.delete_CVodeOptions
+_cmf_core.CVodeOptions_swigregister(CVodeOptions)
+# CVodeOptions end
+
+class CVodeInfo(object):
+    """
+
+
+    Reports the current state of a CVode solver.
+
+    C++ includes: cvode.h 
+    """
+
+    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __repr__ = _swig_repr
+    size = _swig_property(_cmf_core.CVodeInfo_size_get, _cmf_core.CVodeInfo_size_set)
+    workspace_real = _swig_property(_cmf_core.CVodeInfo_workspace_real_get, _cmf_core.CVodeInfo_workspace_real_set)
+    workspace_int = _swig_property(_cmf_core.CVodeInfo_workspace_int_get, _cmf_core.CVodeInfo_workspace_int_set)
+    workspace_byte = _swig_property(_cmf_core.CVodeInfo_workspace_byte_get, _cmf_core.CVodeInfo_workspace_byte_set)
+    steps = _swig_property(_cmf_core.CVodeInfo_steps_get, _cmf_core.CVodeInfo_steps_set)
+    current_order = _swig_property(_cmf_core.CVodeInfo_current_order_get, _cmf_core.CVodeInfo_current_order_set)
+    rhs_evaluations = _swig_property(_cmf_core.CVodeInfo_rhs_evaluations_get, _cmf_core.CVodeInfo_rhs_evaluations_set)
+    linear_solver_setups = _swig_property(_cmf_core.CVodeInfo_linear_solver_setups_get, _cmf_core.CVodeInfo_linear_solver_setups_set)
+    error_test_fails = _swig_property(_cmf_core.CVodeInfo_error_test_fails_get, _cmf_core.CVodeInfo_error_test_fails_set)
+    order_reductions = _swig_property(_cmf_core.CVodeInfo_order_reductions_get, _cmf_core.CVodeInfo_order_reductions_set)
+    nonlinear_solver_iterations = _swig_property(_cmf_core.CVodeInfo_nonlinear_solver_iterations_get, _cmf_core.CVodeInfo_nonlinear_solver_iterations_set)
+    nonlinear_solver_convergence_failures = _swig_property(_cmf_core.CVodeInfo_nonlinear_solver_convergence_failures_get, _cmf_core.CVodeInfo_nonlinear_solver_convergence_failures_set)
+    dxdt_method_calls = _swig_property(_cmf_core.CVodeInfo_dxdt_method_calls_get, _cmf_core.CVodeInfo_dxdt_method_calls_set)
+    sundials_version = _swig_property(_cmf_core.CVodeInfo_sundials_version_get, _cmf_core.CVodeInfo_sundials_version_set)
+
+    def to_string(self, *args, **kwargs):
+        """
+        to_string(CVodeInfo self) -> std::string
+
+        std::string
+        to_string() const 
+        """
+        return _cmf_core.CVodeInfo_to_string(self, *args, **kwargs)
+
+
+    def __init__(self, *args, **kwargs):
+        """__init__(cmf::math::CVodeInfo self) -> CVodeInfo"""
+        _cmf_core.CVodeInfo_swiginit(self, _cmf_core.new_CVodeInfo(*args, **kwargs))
+    __swig_destroy__ = _cmf_core.delete_CVodeInfo
+CVodeInfo.to_string = new_instancemethod(_cmf_core.CVodeInfo_to_string, None, CVodeInfo)
+_cmf_core.CVodeInfo_swigregister(CVodeInfo)
+# CVodeInfo end
+
+class CVodeBase(Integrator):
+    """
+
+
+    Abstract base class for different modes of the CVode solver.
+
+    Initantiate one of the child classes to gain different modes of the
+    CVode solver
+
+    C++ includes: cvode.h 
+    """
+
+    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+
+    def __init__(self, *args, **kwargs):
+        raise AttributeError("No constructor defined - class is abstract")
+    __repr__ = _swig_repr
+    options = _swig_property(_cmf_core.CVodeBase_options_get, _cmf_core.CVodeBase_options_set)
 
     def initialize(self, *args, **kwargs):
         """
-        initialize(CVodeIntegrator self)
+        initialize(CVodeBase self) -> int
 
-        void
+        int
         initialize()
 
-        Initializes the solver. Do not add or remove state variables after
-        initialization. The solver is automatically intialized when
-        integrating. 
+        Initialize the internal memory.
+
+        Automatically called, when one starts to integrate 
         """
-        return _cmf_core.CVodeIntegrator_initialize(self, *args, **kwargs)
+        return _cmf_core.CVodeBase_initialize(self, *args, **kwargs)
 
 
-    def release(self, *args, **kwargs):
+    def set_error_msg(self, *args, **kwargs):
         """
-        release(CVodeIntegrator self)
+        set_error_msg(CVodeBase self, std::string error)
 
         void
-        release()
+        set_error_msg(std::string error)
 
-        Releases the internal solver. Call release before you add state
-        variables or to change properties. 
+        Sets an error message. 
         """
-        return _cmf_core.CVodeIntegrator_release(self, *args, **kwargs)
+        return _cmf_core.CVodeBase_set_error_msg(self, *args, **kwargs)
 
 
-    def __init__(self, *args):
+    def copy(self, *args, **kwargs):
         """
-        __init__(cmf::math::CVodeIntegrator self, real epsilon=1e-9, char _preconditioner) -> CVodeIntegrator
-        __init__(cmf::math::CVodeIntegrator self, StateVariableOwner states, real epsilon=1e-9, char _preconditioner) -> CVodeIntegrator
-        __init__(cmf::math::CVodeIntegrator self, CVodeIntegrator templ) -> CVodeIntegrator
+        copy(CVodeBase self) -> CVodeBase
 
-        CVodeIntegrator(const CVodeIntegrator &templ)
+        CVodeBase* copy()
+        const
 
-        copy constructor, creates a new CVODE integrator similiar to the
-        given, but without statevariables 
+        Returns a copy of the solver. 
         """
-        _cmf_core.CVodeIntegrator_swiginit(self, _cmf_core.new_CVodeIntegrator(*args))
+        return _cmf_core.CVodeBase_copy(self, *args, **kwargs)
+
+    error_msg = _swig_property(_cmf_core.CVodeBase_error_msg_get, _cmf_core.CVodeBase_error_msg_set)
+
+    def get_info(self, *args, **kwargs):
+        """
+        get_info(CVodeBase self) -> CVodeInfo
+
+        CVodeInfo
+        get_info() const
+
+        Returns the current solver statistics. 
+        """
+        return _cmf_core.CVodeBase_get_info(self, *args, **kwargs)
+
+
+    def to_string(self, *args, **kwargs):
+        """
+        to_string(CVodeBase self) -> std::string
+
+        virtual
+        std::string to_string() const =0
+
+        Returns a string representation of the solver. 
+        """
+        return _cmf_core.CVodeBase_to_string(self, *args, **kwargs)
+
 
     def get_error(self, *args, **kwargs):
         """
-        get_error(CVodeIntegrator self) -> cmf::math::num_array
+        get_error(CVodeBase self) -> cmf::math::num_array
 
         cmf::math::num_array get_error() const
 
         Error vector of the integrator. 
         """
-        return _cmf_core.CVodeIntegrator_get_error(self, *args, **kwargs)
+        return _cmf_core.CVodeBase_get_error(self, *args, **kwargs)
 
 
-    def get_nonlinear_iterations(self, *args, **kwargs):
+    def _get_jacobian(self, *args, **kwargs):
         """
-        get_nonlinear_iterations(CVodeIntegrator self) -> int
+        _get_jacobian(CVodeBase self) -> cmf::math::num_array
 
-        int
-        get_nonlinear_iterations() const
+        virtual
+        cmf::math::num_array _get_jacobian() const
 
-        Returns the number of non-linear iterations performed. Calls
-        CVodeGetNumNonlinSolvIters. 
+        Returns a continuous 1D array representing the Jacobian columns
+        concatenated.
+
+        In Python, get_jacobian returns the Jacobian as a 2D array 
         """
-        return _cmf_core.CVodeIntegrator_get_nonlinear_iterations(self, *args, **kwargs)
+        return _cmf_core.CVodeBase__get_jacobian(self, *args, **kwargs)
+
+    __swig_destroy__ = _cmf_core.delete_CVodeBase
+
+    def get_jacobian(self):
+        return self._get_jacobian().reshape((self.size(), self.size()), order='F')
+
+CVodeBase.initialize = new_instancemethod(_cmf_core.CVodeBase_initialize, None, CVodeBase)
+CVodeBase.set_error_msg = new_instancemethod(_cmf_core.CVodeBase_set_error_msg, None, CVodeBase)
+CVodeBase.copy = new_instancemethod(_cmf_core.CVodeBase_copy, None, CVodeBase)
+CVodeBase.get_info = new_instancemethod(_cmf_core.CVodeBase_get_info, None, CVodeBase)
+CVodeBase.to_string = new_instancemethod(_cmf_core.CVodeBase_to_string, None, CVodeBase)
+CVodeBase.get_error = new_instancemethod(_cmf_core.CVodeBase_get_error, None, CVodeBase)
+CVodeBase._get_jacobian = new_instancemethod(_cmf_core.CVodeBase__get_jacobian, None, CVodeBase)
+_cmf_core.CVodeBase_swigregister(CVodeBase)
+# CVodeBase end
+
+class CVodeDense(CVodeBase):
+    """
 
 
-    def get_rhsevals(self, *args, **kwargs):
+    implicit BDF CVode solver with full Jacobian approximation
+
+    Use this solver for small but stiff systems (<20 state variables)
+
+    The solver calculates for each step the full Jacobian matrix of the
+    system using a difference quotient approximation of the real Jacobian
+
+    C++ includes: cvode.h 
+    """
+
+    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __repr__ = _swig_repr
+
+    def __init__(self, *args, **kwargs):
         """
-        get_rhsevals(CVodeIntegrator self) -> int
+        __init__(cmf::math::CVodeDense self, StateVariableOwner states, real epsilon=1e-9) -> CVodeDense
 
-        int
-        get_rhsevals() const
+        CVodeDense(cmf::math::StateVariableOwner &states, real epsilon=1e-9)
 
-        Returns the number of evaluations of the right hand side of the ODE.
-        Calls CVodeGetNumRhsEvals. 
+        Creates a new implicit dense CVode solver. 
         """
-        return _cmf_core.CVodeIntegrator_get_rhsevals(self, *args, **kwargs)
+        _cmf_core.CVodeDense_swiginit(self, _cmf_core.new_CVodeDense(*args, **kwargs))
+    __swig_destroy__ = _cmf_core.delete_CVodeDense
+_cmf_core.CVodeDense_swigregister(CVodeDense)
+# CVodeDense end
+
+class CVodeAdams(CVodeBase):
+    """
 
 
-    def copy(self, *args, **kwargs):
+    Explizit multistep solver using CVode.
+
+    C++ includes: cvode.h 
+    """
+
+    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __repr__ = _swig_repr
+
+    def __init__(self, *args, **kwargs):
         """
-        copy(CVodeIntegrator self) -> CVodeIntegrator
+        __init__(cmf::math::CVodeAdams self, StateVariableOwner states, real epsilon=1e-9) -> CVodeAdams
 
-        CVodeIntegrator* copy() const
+        CVodeAdams(cmf::math::StateVariableOwner &states, real epsilon=1e-9)
 
-        Polymorphic copy constructor. 
         """
-        return _cmf_core.CVodeIntegrator_copy(self, *args, **kwargs)
+        _cmf_core.CVodeAdams_swiginit(self, _cmf_core.new_CVodeAdams(*args, **kwargs))
+    __swig_destroy__ = _cmf_core.delete_CVodeAdams
+_cmf_core.CVodeAdams_swigregister(CVodeAdams)
+# CVodeAdams end
 
-    __swig_destroy__ = _cmf_core.delete_CVodeIntegrator
-    order = _swig_property(_cmf_core.CVodeIntegrator_order_get)
-CVodeIntegrator.initialize = new_instancemethod(_cmf_core.CVodeIntegrator_initialize, None, CVodeIntegrator)
-CVodeIntegrator.release = new_instancemethod(_cmf_core.CVodeIntegrator_release, None, CVodeIntegrator)
-CVodeIntegrator.get_error = new_instancemethod(_cmf_core.CVodeIntegrator_get_error, None, CVodeIntegrator)
-CVodeIntegrator.get_nonlinear_iterations = new_instancemethod(_cmf_core.CVodeIntegrator_get_nonlinear_iterations, None, CVodeIntegrator)
-CVodeIntegrator.get_rhsevals = new_instancemethod(_cmf_core.CVodeIntegrator_get_rhsevals, None, CVodeIntegrator)
-CVodeIntegrator.copy = new_instancemethod(_cmf_core.CVodeIntegrator_copy, None, CVodeIntegrator)
-_cmf_core.CVodeIntegrator_swigregister(CVodeIntegrator)
-# CVodeIntegrator end
+class CVodeBanded(CVodeBase):
+    """
+
+
+    implicit BDF CVode solver with a banded Jacobian approximation
+
+    C++ includes: cvode.h 
+    """
+
+    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __repr__ = _swig_repr
+    bandwidth = _swig_property(_cmf_core.CVodeBanded_bandwidth_get, _cmf_core.CVodeBanded_bandwidth_set)
+
+    def __init__(self, *args, **kwargs):
+        """
+        __init__(cmf::math::CVodeBanded self, StateVariableOwner states, real epsilon=1e-9, int w=5) -> CVodeBanded
+
+        CVodeBanded(cmf::math::StateVariableOwner &states, real epsilon=1e-9,
+        int w=5) 
+        """
+        _cmf_core.CVodeBanded_swiginit(self, _cmf_core.new_CVodeBanded(*args, **kwargs))
+    __swig_destroy__ = _cmf_core.delete_CVodeBanded
+_cmf_core.CVodeBanded_swigregister(CVodeBanded)
+# CVodeBanded end
+
+class CVodeDiag(CVodeBase):
+    """
+
+
+    implicit BDF CVode solver with a one line diagonal Jacobian
+    approximation
+
+    C++ includes: cvode.h 
+    """
+
+    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __repr__ = _swig_repr
+
+    def __init__(self, *args, **kwargs):
+        """
+        __init__(cmf::math::CVodeDiag self, StateVariableOwner states, real epsilon=1e-9) -> CVodeDiag
+
+        CVodeDiag(cmf::math::StateVariableOwner &states, real epsilon=1e-9) 
+        """
+        _cmf_core.CVodeDiag_swiginit(self, _cmf_core.new_CVodeDiag(*args, **kwargs))
+    __swig_destroy__ = _cmf_core.delete_CVodeDiag
+_cmf_core.CVodeDiag_swigregister(CVodeDiag)
+# CVodeDiag end
+
+class CVodeKrylov(CVodeBase):
+    """
+
+
+    implicit BDF CVode solver with a Krylov preconditioner
+
+    C++ includes: cvode.h 
+    """
+
+    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __repr__ = _swig_repr
+    bandwidth = _swig_property(_cmf_core.CVodeKrylov_bandwidth_get, _cmf_core.CVodeKrylov_bandwidth_set)
+    preconditioner = _swig_property(_cmf_core.CVodeKrylov_preconditioner_get, _cmf_core.CVodeKrylov_preconditioner_set)
+
+    def __init__(self, *args, **kwargs):
+        """
+        __init__(cmf::math::CVodeKrylov self, StateVariableOwner states, real epsilon=1e-9, int w=5, char p) -> CVodeKrylov
+
+        CVodeKrylov(cmf::math::StateVariableOwner &states, real epsilon=1e-9,
+        int w=5, char p='L') 
+        """
+        _cmf_core.CVodeKrylov_swiginit(self, _cmf_core.new_CVodeKrylov(*args, **kwargs))
+    __swig_destroy__ = _cmf_core.delete_CVodeKrylov
+_cmf_core.CVodeKrylov_swigregister(CVodeKrylov)
+# CVodeKrylov end
+
+class CVodeKLU(CVodeBase):
+    """Proxy of C++ cmf::math::CVodeKLU class."""
+
+    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __repr__ = _swig_repr
+
+    def __init__(self, *args, **kwargs):
+        """
+        __init__(cmf::math::CVodeKLU self, StateVariableOwner states, real epsilon=1e-9) -> CVodeKLU
+
+        CVodeKLU(cmf::math::StateVariableOwner &states, real epsilon=1e-9) 
+        """
+        _cmf_core.CVodeKLU_swiginit(self, _cmf_core.new_CVodeKLU(*args, **kwargs))
+    __swig_destroy__ = _cmf_core.delete_CVodeKLU
+_cmf_core.CVodeKLU_swigregister(CVodeKLU)
+# CVodeKLU end
 
 class MultiIntegrator(Integrator):
     """
@@ -13925,6 +15105,29 @@ SoluteWaterIntegrator.copy = new_instancemethod(_cmf_core.SoluteWaterIntegrator_
 SoluteWaterIntegrator.to_string = new_instancemethod(_cmf_core.SoluteWaterIntegrator_to_string, None, SoluteWaterIntegrator)
 _cmf_core.SoluteWaterIntegrator_swigregister(SoluteWaterIntegrator)
 # SoluteWaterIntegrator end
+
+
+def CVodeIntegrator(project, tolerance=1e-9):
+    """
+    Backwards compatibility layer for the CVodeIntegrator.
+
+    Will return a CVodeKrylov solver as in cmf 1.x.
+
+    Parameters
+    ----------
+    project
+        CMF project
+    tolerance:
+        Solver tolerance
+
+    Returns
+    -------
+    CVodeKrylov
+        The integrator
+    """
+    from logging import warning
+    warning('CVodeIntegrator is not available in CMF 2.0. Creating a CVodeKrylov solver instead')
+    return CVodeKrylov(project, tolerance)
 
 
 ConstantFlux = TechnicalFlux
