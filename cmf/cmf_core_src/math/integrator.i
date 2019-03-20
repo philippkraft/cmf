@@ -10,7 +10,7 @@
 #include "math/integrators/WaterSoluteIntegrator.h"
 %}
 
-%attribute(cmf::math::CVodeIntegrator,int,order,get_order);
+%attribute(cmf::math::CVode,int,order,get_order);
 %rename(__getitem__) cmf::math::Integrator::operator[];
 %state_downcast(cmf::math::StateVariable::ptr cmf::math::Integrator::operator[])
 

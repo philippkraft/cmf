@@ -1,4 +1,6 @@
 #include "meteorology.h"
+#include "Weather.h"
+
 #include <cmath>
 
 
@@ -68,9 +70,9 @@ cmf::atmosphere::Weather& cmf::atmosphere::Weather::operator*=( double factor )
 
 cmf::atmosphere::Weather::Weather( double _T,double _Tmax,double _Tmin, 
 								   double _rH, double _wind,
-								   double _sunshine,double _Rs, double _daylength) 
+								   double _sunshine,double _Rs, double _Ra, double _daylength)
 : T(_T), Tmax(_Tmax), Tmin(_Tmin), Tground(_T),e_s(vapour_pressure(_T)),e_a(_rH/100. * vapour_pressure(_T)),
-  Windspeed(_wind),sunshine(_sunshine),Rs(_Rs),daylength(_daylength), instrument_height(2)
+  Windspeed(_wind),sunshine(_sunshine),Rs(_Rs), Ra(_Ra),daylength(_daylength), instrument_height(2)
 {
 
 }
@@ -79,34 +81,8 @@ double cmf::atmosphere::vapour_pressure( double T )
 	return 0.6108*exp(17.27*T/(T+237.3));
 }
 
-double cmf::atmosphere::global_radiation( cmf::math::Time t,double height,double sunshine_fraction,double longitude,double latitude,double time_zone , bool daily)
+double cmf::atmosphere::global_radiation( double Ra, double height, double sunshine_fraction)
 {
-	double
-		DOY=t.AsDate().DOY()+t.AsDays()-int(t.AsDays()),
-		phi=latitude*PI/180,	 // Latitude [rad]
-		decl=0.409*sin(2*PI/365*DOY-1.39), // Declination [rad]
-		sunset_angle=acos(-tan(phi)*tan(decl)),	// Sunset hour angle [rad]
-		G_sc=0.0820,
-		d_r=1+0.033*cos(2*PI/365*DOY), // Inverse relative distance Earth-Sun
-		xx=sin(phi)*sin(decl), // X part of sun path
-		yy=cos(phi)*cos(decl), // y part of sun path
-		Ra=0; // extra terrestrial radiation
-	if (daily)
-	{
-		Ra=24*60/PI*G_sc*d_r*(sunset_angle*xx+yy*sin(sunset_angle));
-	}
-	else
-	{
-		double
-			b=2*PI*(DOY-81)/364.,
-			S_c=0.1645*sin(2*b)-0.1255*cos(b)-0.025*sin(b), // Seasonal correction for solar time
-			hour=24*(t.AsDays() - int(t.AsDays())), // decimal hours of day (local time)
-			solar_time=PI/12*(hour-longitude/15+time_zone+S_c-12), // solar time [rad]
-			st1=solar_time-PI/24,	// solar time at the beginning of the period
-			st2=solar_time+PI/24;	// solar time at th end of the period
-		Ra=24*12*60/PI*G_sc*d_r*((st2-st1)*xx+yy*(sin(st2)-sin(st1)));
-	}
-	Ra=std::max(Ra,0.0);
 	double a_s=0.25,b_s=0.5+2e-5*height;
 	return (a_s+b_s*sunshine_fraction)*Ra;
 
@@ -122,4 +98,46 @@ double cmf::atmosphere::rH_from_vpd( double T, double vpd )
 	double e_s = vapour_pressure(T), e_a = e_s - vpd;
 	return 100 * e_a/e_s;
 }
+
+double watts_to_MJ(double Watts) {
+	return Watts  // J / sec
+		   * 86400  // sec / day
+		   * 1e-6;  // MJ / J
+}
+double MJ_to_watts(double MJ) {
+	return MJ  // MJ / day
+		   * 1e6  // J / MJ
+		   / 86400;  // day / sec -> J/sec = W
+}
+
+double extraterrestrial_radiation(cmf::math::Time t, double longitude, double latitude, double time_zone, bool daily) {
+	double
+		DOY=t.AsDate().DOY()+t.AsDays()-int(t.AsDays()),
+		phi=latitude*PI/180,	 // Latitude [rad]
+		decl=0.409*sin(2*PI/365*DOY-1.39), // Declination [rad]
+		sunset_angle=acos(-tan(phi)*tan(decl)),	// Sunset hour angle [rad]
+		G_sc=0.0820,
+		d_r=1+0.033*cos(2*PI/365*DOY), // Inverse relative distance Earth-Sun
+		xx=sin(phi)*sin(decl), // X part of sun path
+		yy=cos(phi)*cos(decl), // y part of sun path
+		Ra;
+
+	if (daily)
+	{
+		Ra=24*60/PI*G_sc*d_r*(sunset_angle*xx+yy*sin(sunset_angle));
+	}
+	else
+	{
+		double
+				b=2*PI*(DOY-81)/364.,
+				S_c=0.1645*sin(2*b)-0.1255*cos(b)-0.025*sin(b), // Seasonal correction for solar time
+				hour=24*(t.AsDays() - int(t.AsDays())), // decimal hours of day (local time)
+				solar_time=PI/12*(hour-longitude/15+time_zone+S_c-12), // solar time [rad]
+				st1=solar_time-PI/24,	// solar time at the beginning of the period
+				st2=solar_time+PI/24;	// solar time at th end of the period
+		Ra=24*12*60/PI*G_sc*d_r*((st2-st1)*xx+yy*(sin(st2)-sin(st1)));
+	}
+	return std::max(Ra,0.0);
+}
+
 double cmf::atmosphere::Weather::snow_threshold=0.5;
