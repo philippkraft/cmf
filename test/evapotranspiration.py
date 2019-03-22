@@ -5,7 +5,7 @@ class Model:
 
     def __init__(self):
         self.project = cmf.project()
-        self.cell: cmf.Cell = self.project.NewCell(0, 0, 0, 1000)
+        self.cell = self.project.NewCell(0, 0, 0, 1000)
         rc = cmf.BrooksCoreyRetentionCurve.CreateFrom2Points(1., 0.5, 0.25, 0.05, -1e-2 * 10**1.8)
         self.layer = self.cell.add_layer(0.1, rc)
         self.et = self.cell.transpiration
