@@ -34,9 +34,7 @@ class CheckScaling(unittest.TestCase):
             results[str(num)] = NSE
     
         for key, value in results.items():
-            print("The model with {} cell(s) has a NSE of {}".format(
-                                                                        key,
-                                                               value))
+            self.assertAlmostEqual(value, 0.596, msg="NSE of {}-cell model is not the expected 0.596".format(key))
         NSE_values = list(results.values())
         self.assertTrue(NSE_values[0] == NSE_values[1] == NSE_values[2] == NSE_values[3] == NSE_values[4])
 

@@ -48,9 +48,10 @@
 
 bool test_npy_array(PyObject* op) {
 	PyObject* ao = PyArray_ContiguousFromAny(op,NPY_DOUBLE,1,1);
-	if (!ao) // If given object was not convertable into an array
-		return false;
-	else {
+	if (!ao) {      // If given object was not convertable into an array
+        PyErr_Clear();
+        return false;
+    } else {
 		Py_DECREF(ao);
 		return true;
 	}
