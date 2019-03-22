@@ -1,25 +1,23 @@
 import cmf
 import unittest
 
-
-
 class Model:
+
     def __init__(self):
         self.project = cmf.project()
         self.cell: cmf.Cell = self.project.NewCell(0, 0, 0, 1000)
-        self.layer = self.cell.add_layer(0.5)
-        self.layer.volume = 15
+        rc = cmf.BrooksCoreyRetentionCurve.CreateFrom2Points(1., 0.5, 0.25, 0.05, -1e-2 * 10**1.8)
+        self.layer = self.cell.add_layer(0.1, rc)
         self.et = self.cell.transpiration
 
     def __call__(self, test):
-        self.cell.set_uptakestress(cmf.VolumeStress(10, 0))
-        solver = cmf.HeunIntegrator(self.project)
-        solver.t = cmf.Time(1, 6, 2019)
-        # print()
-        for t in solver.run(solver.t, solver.t + cmf.day * 5, cmf.day):
-            v = self.layer.volume
-            test.assertGreater(v, 0)
-            # print(f'{t!s:<20} {v:0.3f} mm')
+        for stress in [cmf.VolumeStress(15, 5), cmf.ContentStress(), cmf.SuctionStress()]:
+            self.layer.wetness = 0.31  # roughly pF=2.5
+            self.cell.set_uptakestress(stress)
+            solver = cmf.HeunIntegrator(self.project)
+            solver.t = cmf.Time(1, 6, 2019)
+            for _ in solver.run(solver.t, solver.t + cmf.day * 10, cmf.day):
+                test.assertGreater(self.layer.wetness, 0.1)
 
 
 class TestET(unittest.TestCase):
