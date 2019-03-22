@@ -191,16 +191,9 @@ namespace cmf {
 				cmf::atmosphere::Weather A = layer->cell.get_weather(t);
 				cmf::upslope::vegetation::Vegetation veg = layer->cell.vegetation;
 				double
-					// Latitude in radians
-					phi = pi * lat / 180.0,
-					//solar declination (radians)
-					gamma = 0.4039f * sin((2 * pi / 365 * t.AsDate().DOY()) - 1.405),
-					//sunset hour angle (radians)
-					ws = acos(-tan(phi) * tan(gamma)),
-					//relative distance between earth and sun
-					dr = 1 + 0.033 *  cos((2 * pi / 365 * t.AsDate().DOY())),
+					lambda = 2.45, // Latent heat of vaporization in MJ/kg
 					//s0 = extraterrestrial solar radiation  mm/day
-					s0 = 15.392 * dr *  (ws * sin(phi) * sin(gamma) + cos(phi) * cos(gamma) * sin(ws)),
+					s0 = A.Ra / lambda,
 					//difference between mean monthly min and max temperatures - an estimate!
 					TD = fabs(A.Tmax - A.Tmin),
 					// Continentality factor, ranging between 0.19 (coastal regions) and 0.162
