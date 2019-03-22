@@ -58,7 +58,7 @@ namespace cmf {
 			 - If sub daily: \f$ R_a = \frac{12\ 24\ 60}{\pi}G_{sc}\ d_r \left(\left(\omega^+ -\omega^-\right) \sin\phi \sin\delta + \cos\phi \cos\delta \left(\sin\omega^+ - \sin\omega^-\right)\right) \f$
 			 - \f$  \omega^+,\omega^- = \omega \pm\frac{\pi}{24} \f$
 			 **/
-		double extraterrestrial_radiation(cmf::math::Time t, double longitude=8, double latitude=51, double time_zone=1, bool daily=0);
+		double extraterrestrial_radiation(cmf::math::Time t, double longitude=8, double latitude=51, double time_zone=1, bool daily=false);
 
 		///
 		/**  @brief Calculates the global radiation in MJ/(m2 day) from the sun position and the sunshine fraction
