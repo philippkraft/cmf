@@ -1,4 +1,3 @@
-#include "reach_network.h"
 
 #include <vector>
 #include <string>
@@ -19,6 +18,10 @@
 
 namespace cmf {
 	namespace apps {
+		enum SolverType
+		{
+			dense, banded, krylov, klu
+		};
 		class ReachWithSource {
 		public:
 			cmf::river::Reach::ptr r;
@@ -219,4 +222,12 @@ namespace cmf {
 		}
 
 	}
+}
+
+int main(int argc, char* argv[])
+{
+	for (int i=1; i<=10; ++i)
+		cmf::apps::run_reaches(i, cmf::apps::dense, 0);
+	std::cin.ignore();
+
 }

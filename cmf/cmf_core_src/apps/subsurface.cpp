@@ -1,5 +1,4 @@
 // Include a little bit of everything for everybody
-#include "subsurface.h"
 
 
 #include <iostream>
@@ -125,7 +124,7 @@ int64_t run(cmf::math::CVodeBase* integ, cmf::project& p) {
 	return std::chrono::duration_cast<std::chrono::milliseconds>(tend - tstart).count();
 }
 
-int run_subsurface_app() {
+int main(int argc, char* argv[]) {
 	using namespace std;
 	using namespace cmf;
 	using namespace	cmf::math;

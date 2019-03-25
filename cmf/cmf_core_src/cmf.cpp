@@ -24,12 +24,5 @@
 #include <stdexcept>
 #include <iostream>
 
-int main(int argc, char* argv[])
-{
-	for (int i=1; i<=10; ++i)
-		cmf::apps::run_reaches(i, cmf::apps::dense, 0);
-	std::cin.ignore();
-
-}
 #endif //Not def _DLL
 

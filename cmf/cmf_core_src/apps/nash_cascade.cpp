@@ -1,4 +1,4 @@
-#include "nash_cascade.h"
+
 
 #include <iostream>
 #include <fstream>
@@ -85,4 +85,8 @@ namespace cmf {
 		}
 
 	}
+}
+
+int main(int argc, char* argv[]) {
+	cmf::apps::run_nash_cascade(10);
 }
