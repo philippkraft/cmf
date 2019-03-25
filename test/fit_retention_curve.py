@@ -41,7 +41,7 @@ class W0fit:
 
     def __call__(self, vgm, value):
         vgm.w0 = value
-        return (vgm.Wetness([self.Psi1])[0] - self.w1) / (self.w1 - 1)
+        return (vgm.Wetness(self.Psi1)[0] - self.w1) / (self.w1 - 1)
 
 if __name__ == '__main__':
     unittest.main()

@@ -22,6 +22,7 @@
 #include "../math/num_array.h"
 #include "../upslope/cell.h"
 #include "../project.h"
+#include "Weather.h"
 #include <fstream>
 #define min(a,get_b) ((a)<(get_b)) ? (a) : (get_b)
 #define max(a,get_b) ((a)>(get_b)) ? (a) : (get_b)
@@ -32,7 +33,7 @@ using namespace cmf::math;
 using namespace cmf::geometry;
 
 
-cmf::atmosphere::Weather cmf::atmosphere::MeteoStation::get_data( cmf::math::Time t,double height ) const
+cmf::atmosphere::Weather cmf::atmosphere::MeteoStation::get_data( cmf::math::Time t, double height ) const
 {
 	Weather A;
 	if (Tmax.is_empty())
@@ -70,14 +71,13 @@ cmf::atmosphere::Weather cmf::atmosphere::MeteoStation::get_data( cmf::math::Tim
 	else // no humidity data available, assume Tmin=Tdew
 		A.e_a=vapour_pressure(A.Tmin);
 	A.sunshine=Sunshine.is_empty() ? 0.5 : Sunshine[t];
+	A.Ra = cmf::atmosphere::extraterrestrial_radiation(t, Longitude, Latitude, Timezone, daily);
 	if (Rs.is_empty())
-		A.Rs=global_radiation(t,height,A.sunshine,Longitude,Latitude,Timezone,daily);
+		A.Rs=global_radiation(A.Ra, height, A.sunshine);
 	else
 		A.Rs=Rs[t];
 	return A;
 }
-
-
 
 cmf::atmosphere::Weather operator+(const cmf::atmosphere::Weather& left,const cmf::atmosphere::Weather& right)
 {
@@ -130,12 +130,12 @@ void cmf::atmosphere::MeteoStation::SetSunshineFraction(cmf::math::timeseries su
 cmf::atmosphere::MeteoStation::MeteoStation( double latitude/*=51*/,double longitude/*=8*/,double timezone/*=1*/,double elevation/*=0*/, cmf::math::Time startTime/*=cmf::math::Time(1,1,2001)*/,cmf::math::Time timestep/*=cmf::math::day*/,std::string name/*=""*/ ) 
 : Latitude(latitude),Longitude(longitude),Timezone(timezone),z(elevation),daily(timestep>=cmf::math::day),
 	Tmax(startTime,timestep,1),Tmin(startTime,timestep,1), T(startTime,timestep,1),
-	Windspeed(startTime,timestep,1),
+	Windspeed(startTime,timestep,1),Name(name),
 	rHmean(startTime,timestep,1),rHmax(startTime,timestep,1),rHmin(startTime,timestep,1),
 	Tdew(startTime,timestep,1),Sunshine(startTime,timestep,1),Tground(startTime,timestep,1),
 	Rs(startTime,timestep,1),T_lapse(startTime,timestep,1), InstrumentHeight(2),x(0),y(0)
 {
-	Name=name;
+
 }
 
 cmf::atmosphere::MeteoStation::MeteoStation( const cmf::atmosphere::MeteoStation& other )

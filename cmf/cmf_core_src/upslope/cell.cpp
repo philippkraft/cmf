@@ -115,6 +115,9 @@ SoilLayer::ptr Cell::add_layer(real lowerboundary)
 	}
 	LinearRetention lr(1.,1.,lowerboundary-upperbound,0.0);
 	SoilLayer::ptr layer(new SoilLayer(*this,lowerboundary,lr,lowerboundary));
+	double C = layer->get_capacity();
+	layer->set_root_uptake_stress_function(cmf::upslope::ET::VolumeStress(0.1 * C, 0.0 * C));
+
 	if (m_Layers.size() == 0) {// if this is the first layer, create a connection to surfacewater
 		new cmf::water::waterbalance_connection(get_surfacewater(),layer);
 	} else  { // if it is not the first layer, make a double ended list of the layers
@@ -384,19 +387,12 @@ double Cell::get_soildepth() const
 
 }
 
-void cmf::upslope::Cell::set_uptakestress( const ET::RootUptakeStessFunction& stressfunction )
+void cmf::upslope::Cell::set_uptakestress( const ET::RootUptakeStressFunction& stressfunction )
 {
-	using namespace cmf::water;
-	flux_node::ptr T = this->get_transpiration();
-	connection_list Tcon = T->get_connections();
 	// Traverse all connection of transpiration
-	for(connection_list::iterator it=Tcon.begin();it!=Tcon.end();++it) {
-		// try to convert to stressedET
-		cmf::upslope::ET::stressedET* sTcon = dynamic_cast<cmf::upslope::ET::stressedET*>(it->get());
-		if (sTcon) {
-			// set stressfunction of ET-model
-			sTcon->set_stressfunction(stressfunction);
-		}
+	for(layer_list::iterator it=m_Layers.begin();it!=m_Layers.end();++it) {
+		SoilLayer& sl = **it;
+		sl.set_root_uptake_stress_function(stressfunction);
 	}
 }
 

@@ -74,7 +74,6 @@ std::string pyrepr(PyObject* o) {
 %include "math/time.i"
 
 %include "math/ODEsystem.i"
-%extend__repr__(cmf::math::CVode3)
 
 %include "water/water.i"
 %include "atmosphere/meteorology.i"

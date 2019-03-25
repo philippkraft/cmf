@@ -218,7 +218,7 @@ def updateversion():
         fout = open('cmf/__init__.py', 'w')
         for line in module_code:
             if line.startswith('__version__'):
-                fout.write("__version__ = '{}'\n".format(version))
+                fout.write("__version__ = '{}'\n".format(branchversion))
             elif line.startswith('__compiletime__'):
                 fout.write("__compiletime__ = '{}'\n".format(time.ctime()))
             else:
@@ -275,7 +275,7 @@ def is_source_file(fn, include_headerfiles=False):
 def get_source_files(include_headerfiles=False):
     cmf_files = []
     for root, _dirs, files in os.walk(os.path.join('cmf', 'cmf_core_src')):
-        if os.path.basename(root) != 'debug_scripts':
+        if 'debug' not in os.path.basename(root) and os.path.basename(root) != 'apps':
             cmf_files.extend(
                 os.path.join(root, f)
                 for f in files

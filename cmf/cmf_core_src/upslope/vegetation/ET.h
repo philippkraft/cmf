@@ -89,22 +89,14 @@ namespace cmf {
 			class stressedET : public cmf::water::flux_connection {
 			protected:
 				std::weak_ptr<cmf::upslope::SoilLayer> sw;
-				std::unique_ptr<cmf::upslope::ET::RootUptakeStessFunction> m_stressfunction;
 				void NewNodes()	{
 					sw=std::dynamic_pointer_cast<cmf::upslope::SoilLayer>(left_node());
 				}
 				stressedET(cmf::upslope::SoilLayer::ptr source,cmf::water::flux_node::ptr ET_target,std::string _type);
 				real Tact(real Tpot) const;
 			public:
-				/// Sets the stress function to limit water uptake
-				void set_stressfunction(const RootUptakeStessFunction& stressfunction) {
-					m_stressfunction.reset(stressfunction.copy());
-				}
 				SoilLayer::ptr get_layer() const {
 					return sw.lock();
-				}
-				std::string to_string() const {
-					return cmf::water::flux_connection::to_string() + " - " + m_stressfunction->to_string();
 				}
 				virtual real ETpot(cmf::math::Time t) const  {
 					return 0.0;
@@ -246,15 +238,44 @@ namespace cmf {
 			protected:
 				real calc_q(cmf::math::Time t);
 			public:
-				HargreaveET(cmf::upslope::SoilLayer::ptr source,cmf::water::flux_node::ptr ET_target, real latitude=51.0) 
-					: stressedET(source,ET_target,"HargreaveET") , lat(latitude)
+				HargreaveET(cmf::upslope::SoilLayer::ptr source,cmf::water::flux_node::ptr ET_target)
+					: stressedET(source,ET_target,"HargreaveET")
 				{}
-				real lat;
 				/// @brief Connects all soil layers with the transpiration node of the cell
 				static void use_for_cell(cmf::upslope::Cell & cell);
 				real ETpot(cmf::math::Time t) const;
 
 			};
+			/// @ingroup ET
+			/// Calculates ETpot after Oudin et al 2005
+			///
+			/// https://doi.org/10.1016/j.jhydrol.2004.08.026
+			/// This ETpot formula is a generalization of two older approaches by introducing
+			/// parameters to shape the dependency of ETpot from temperature and extraterrestrial radiation
+			///
+			/// \f$ \lambda ET_{pot} = R_{a} \cdot \frac{T_{a} + K_2}{K_1}
+			///
+			/// Oudin et al (2005) found an optimum for \f$K_1=100, K_2=5\f$.
+			/// The origin of this formula lays in Jensen & Haise (1963) with \f$K_1=40, K_2=0\f$
+			/// and McGuiness-Bordne (1972) with \f$K_1=68, K_2=5\f$.
+			class OudinET : public stressedET {
+			protected:
+				real calc_q(cmf::math::Time t);
+			public:
+				OudinET(cmf::upslope::SoilLayer::ptr source,cmf::water::flux_node::ptr ET_target, double K1=100, double K2=5);
+				static OudinET* JensenHaise1963(cmf::upslope::SoilLayer::ptr source,cmf::water::flux_node::ptr ET_target) {
+					return new OudinET(source, ET_target, 40, 0);
+				}
+				static OudinET* McGuinessBordne1972(cmf::upslope::SoilLayer::ptr source,cmf::water::flux_node::ptr ET_target) {
+					return new OudinET(source, ET_target, 68, 5);
+				}
+				double K1, K2;
+				/// @brief Connects all soil layers with the transpiration node of the cell
+				static void use_for_cell(cmf::upslope::Cell & cell);
+				real ETpot(cmf::math::Time t) const;
+
+			};
+
 			/// @ingroup ET
 			/// Calculates ETpot after Turc (DVWK). \f$ET_{act}\f$ is calculated using a WaterStressFunction
 			///

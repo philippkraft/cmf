@@ -19,6 +19,8 @@
 #include "SoilLayer.h"
 #include "cell.h"
 #include "Topology.h"
+#include "vegetation/waterstress.h"
+
 using namespace cmf::geometry;
 using namespace cmf::upslope;
 /************************************************************************/
@@ -50,12 +52,12 @@ real SoilLayer::get_gravitational_potential() const
 SoilLayer::SoilLayer( Cell & _cell,real lowerboundary,const RetentionCurve& r_curve,real saturateddepth/*=10*/ ) 
 :	cmf::water::WaterStorage(_cell.get_project()),cell(_cell),	Position(_cell.layer_count()), anisotropic_kf(1,1,1), m_rootfraction(-1)
 {
-	m_retentioncurve=std::unique_ptr<RetentionCurve>(r_curve.copy());
-	m_lowerboundary=lowerboundary;
+	m_retentioncurve = std::unique_ptr<RetentionCurve>(r_curve.copy());
+	m_lowerboundary = lowerboundary;
 	m_ice_fraction = 0.0;
 	// Get the location from the layer
 	// Get the upper boundary from the upper layer
-	m_upperboundary = cell.layer_count()>0 ? cell.get_layer(-1)->get_lower_boundary() : 0;
+	m_upperboundary = cell.layer_count() > 0 ? cell.get_layer(-1)->get_lower_boundary() : 0;
 	position=cmf::geometry::point(_cell.x,_cell.y,_cell.z - 0.5*(m_upperboundary + m_lowerboundary));
 	if (m_lowerboundary-m_upperboundary<=0)
 		throw std::runtime_error("0 m thickness of layer");
@@ -68,7 +70,7 @@ SoilLayer::SoilLayer( Cell & _cell,real lowerboundary,const RetentionCurve& r_cu
 // protected constructor
 SoilLayer::SoilLayer( Cell & _cell,real upperBoundary,real lowerboundary,const RetentionCurve& r_curve,ptrdiff_t _Position ) 
 : cmf::water::WaterStorage(_cell.get_project()),cell(_cell),m_retentioncurve(r_curve.copy()),
-m_lowerboundary(lowerboundary),m_upperboundary(upperBoundary),Position(_Position), 	m_ice_fraction(0.0), anisotropic_kf(1,1,1), m_rootfraction(-1)
+m_lowerboundary(lowerboundary),m_upperboundary(upperBoundary),Position(_Position), m_ice_fraction(0.0), anisotropic_kf(1,1,1), m_rootfraction(-1)
 {
 	position=cmf::geometry::point(_cell.x,_cell.y,_cell.z - lowerboundary);
 	if (m_lowerboundary-m_upperboundary<=0)
@@ -184,3 +186,16 @@ real cmf::upslope::SoilLayer::get_rootfraction() const
 		return m_rootfraction;
 	}
 }
+
+void SoilLayer::set_root_uptake_stress_function(const cmf::upslope::ET::RootUptakeStressFunction &stressfunction) {
+	m_uptakefunction.reset(stressfunction.copy());
+}
+
+double SoilLayer::get_Tact(double Tpot) {
+	if (m_uptakefunction) {
+		return m_uptakefunction->Tact(this, Tpot);
+	} else {
+		return Tpot * this->get_rootfraction();
+	}
+}
+
