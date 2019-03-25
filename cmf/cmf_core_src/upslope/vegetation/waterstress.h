@@ -13,7 +13,7 @@ namespace cmf {
 			///
 			/// Implementations of WaterStressFunction are used by ET connections derived from cmf::upslope::ET::stressedET
 			///
-			class RootUptakeStessFunction {
+			class RootUptakeStressFunction {
 			protected:
 				stressedET* connection;
 			public:
@@ -24,9 +24,9 @@ namespace cmf {
 				/// @returns Actual flux from layer in m3/day
 				virtual real Tact(const stressedET* connection,real Tpot) const = 0;
 				/// Creates a new copy of this wetness
-				virtual cmf::upslope::ET::RootUptakeStessFunction* copy() const = 0;
+				virtual cmf::upslope::ET::RootUptakeStressFunction* copy() const = 0;
 				virtual std::string to_string() const = 0;
-				virtual ~RootUptakeStessFunction()
+				virtual ~RootUptakeStressFunction()
 				{
 
 				}
@@ -47,7 +47,7 @@ namespace cmf {
 			/// If one would like to include saturation stress, typical values for P0 and P1 are 0.0m and 0.1m. By changing
 			/// P2 and P3, you can account for different drought sensibility for different plant types.
 			///
-			class SuctionStress : public RootUptakeStessFunction {
+			class SuctionStress : public RootUptakeStressFunction {
 			private:
 				real fT(real potential) const;
 			public:
@@ -86,7 +86,7 @@ namespace cmf {
 			/// field capacity (\f$\theta_{fc}\f$) and the wilting point (\f$\theta_{wp}\f$).
 			///   - \f$\theta_w = \theta(pF=4.2)\f$: Water content at pF=4.2
 			///   - \f$\theta_d = 1/2 (\theta(pF=1.8) + \theta(pF=4.2))\f$
-			class ContentStress : public RootUptakeStessFunction {
+			class ContentStress : public RootUptakeStressFunction {
 			public:
 				real theta_d;
 				real theta_w;
@@ -106,7 +106,7 @@ namespace cmf {
 			///
 			/// If the layer contains more water than V1, ET is not limited (ET=ETpot). Below V1
 			/// ET goes linear to 0.0 at V0
-			class VolumeStress : public RootUptakeStessFunction {
+			class VolumeStress : public RootUptakeStressFunction {
 			public:
 				real 
 					V1, ///< Upper volume threshold in \f$m^3\f$. If the layer contains more water than V1, ET=ETpot

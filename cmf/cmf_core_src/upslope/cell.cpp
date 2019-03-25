@@ -384,7 +384,7 @@ double Cell::get_soildepth() const
 
 }
 
-void cmf::upslope::Cell::set_uptakestress( const ET::RootUptakeStessFunction& stressfunction )
+void cmf::upslope::Cell::set_uptakestress( const ET::RootUptakeStressFunction& stressfunction )
 {
 	using namespace cmf::water;
 	flux_node::ptr T = this->get_transpiration();

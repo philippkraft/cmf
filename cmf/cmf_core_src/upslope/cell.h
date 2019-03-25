@@ -44,7 +44,7 @@ namespace cmf {
 		class Topology;
 		class Cell;
 		namespace ET {
-			class RootUptakeStessFunction;
+			class RootUptakeStressFunction;
 		}
 		typedef void (*connectorfunction)(cmf::upslope::Cell&,cmf::upslope::Cell&,ptrdiff_t);
 		typedef void (*internal_connector)(cmf::upslope::Cell&);
@@ -131,7 +131,7 @@ namespace cmf {
 			meteo_pointer m_meteo;
 			
 			cmf::bytestring m_WKB;
-			
+
 		public:
 			/// The vegetation object of the cell
 			cmf::upslope::vegetation::Vegetation vegetation;
@@ -167,7 +167,7 @@ namespace cmf {
 				return m_rainfall;
 			}
 			/// Uses the given WaterStressFunction for all stressedET like connections to the transpiration target
-			void set_uptakestress(const ET::RootUptakeStessFunction& stressfunction);
+			void set_uptakestress(const ET::RootUptakeStressFunction& stressfunction);
 			/*
 			/// Experimental feature: Gets a cell owned boundary node, eg. groundwater, or Neumannboundary
 			/// This should replace get_evaporation, get_transpiration etc.

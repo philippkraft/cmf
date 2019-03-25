@@ -3076,7 +3076,7 @@ SWIG_Python_NonDynamicSetAttr(PyObject *obj, PyObject *name, PyObject *value) {
 #define SWIGTYPE_p_cmf__upslope__ET__PenmanEvaporation swig_types[64]
 #define SWIGTYPE_p_cmf__upslope__ET__PenmanMonteithET swig_types[65]
 #define SWIGTYPE_p_cmf__upslope__ET__PriestleyTaylorET swig_types[66]
-#define SWIGTYPE_p_cmf__upslope__ET__RootUptakeStessFunction swig_types[67]
+#define SWIGTYPE_p_cmf__upslope__ET__RootUptakeStressFunction swig_types[67]
 #define SWIGTYPE_p_cmf__upslope__ET__SW_evap_from_canopy swig_types[68]
 #define SWIGTYPE_p_cmf__upslope__ET__SW_evap_from_layer swig_types[69]
 #define SWIGTYPE_p_cmf__upslope__ET__SW_evap_from_snow swig_types[70]
@@ -51118,7 +51118,7 @@ fail:
 SWIGINTERN PyObject *_wrap_Cell_set_uptakestress(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   cmf::upslope::Cell *arg1 = (cmf::upslope::Cell *) 0 ;
-  cmf::upslope::ET::RootUptakeStessFunction *arg2 = 0 ;
+  cmf::upslope::ET::RootUptakeStressFunction *arg2 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   void *argp2 = 0 ;
@@ -51135,17 +51135,17 @@ SWIGINTERN PyObject *_wrap_Cell_set_uptakestress(PyObject *SWIGUNUSEDPARM(self),
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Cell_set_uptakestress" "', argument " "1"" of type '" "cmf::upslope::Cell *""'"); 
   }
   arg1 = reinterpret_cast< cmf::upslope::Cell * >(argp1);
-  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_cmf__upslope__ET__RootUptakeStessFunction,  0  | 0);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_cmf__upslope__ET__RootUptakeStressFunction,  0  | 0);
   if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Cell_set_uptakestress" "', argument " "2"" of type '" "cmf::upslope::ET::RootUptakeStessFunction const &""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Cell_set_uptakestress" "', argument " "2"" of type '" "cmf::upslope::ET::RootUptakeStressFunction const &""'"); 
   }
   if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Cell_set_uptakestress" "', argument " "2"" of type '" "cmf::upslope::ET::RootUptakeStessFunction const &""'"); 
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Cell_set_uptakestress" "', argument " "2"" of type '" "cmf::upslope::ET::RootUptakeStressFunction const &""'"); 
   }
-  arg2 = reinterpret_cast< cmf::upslope::ET::RootUptakeStessFunction * >(argp2);
+  arg2 = reinterpret_cast< cmf::upslope::ET::RootUptakeStressFunction * >(argp2);
   {
     try {
-      (arg1)->set_uptakestress((cmf::upslope::ET::RootUptakeStessFunction const &)*arg2);
+      (arg1)->set_uptakestress((cmf::upslope::ET::RootUptakeStressFunction const &)*arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -74982,9 +74982,9 @@ SWIGINTERN PyObject *LayerBypass_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObje
   return SWIG_Python_InitShadowInstance(args);
 }
 
-SWIGINTERN PyObject *_wrap_RootUptakeStessFunction_Tact(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+SWIGINTERN PyObject *_wrap_RootUptakeStressFunction_Tact(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
-  cmf::upslope::ET::RootUptakeStessFunction *arg1 = (cmf::upslope::ET::RootUptakeStessFunction *) 0 ;
+  cmf::upslope::ET::RootUptakeStressFunction *arg1 = (cmf::upslope::ET::RootUptakeStressFunction *) 0 ;
   cmf::upslope::ET::stressedET *arg2 = (cmf::upslope::ET::stressedET *) 0 ;
   real arg3 ;
   void *argp1 = 0 ;
@@ -75001,25 +75001,25 @@ SWIGINTERN PyObject *_wrap_RootUptakeStessFunction_Tact(PyObject *SWIGUNUSEDPARM
   };
   real result;
   
-  if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"OOO:RootUptakeStessFunction_Tact",kwnames,&obj0,&obj1,&obj2)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_cmf__upslope__ET__RootUptakeStessFunction, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"OOO:RootUptakeStressFunction_Tact",kwnames,&obj0,&obj1,&obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_cmf__upslope__ET__RootUptakeStressFunction, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RootUptakeStessFunction_Tact" "', argument " "1"" of type '" "cmf::upslope::ET::RootUptakeStessFunction const *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RootUptakeStressFunction_Tact" "', argument " "1"" of type '" "cmf::upslope::ET::RootUptakeStressFunction const *""'"); 
   }
-  arg1 = reinterpret_cast< cmf::upslope::ET::RootUptakeStessFunction * >(argp1);
+  arg1 = reinterpret_cast< cmf::upslope::ET::RootUptakeStressFunction * >(argp1);
   res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_cmf__upslope__ET__stressedET, 0 |  0 );
   if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "RootUptakeStessFunction_Tact" "', argument " "2"" of type '" "cmf::upslope::ET::stressedET const *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "RootUptakeStressFunction_Tact" "', argument " "2"" of type '" "cmf::upslope::ET::stressedET const *""'"); 
   }
   arg2 = reinterpret_cast< cmf::upslope::ET::stressedET * >(argp2);
   ecode3 = SWIG_AsVal_double(obj2, &val3);
   if (!SWIG_IsOK(ecode3)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "RootUptakeStessFunction_Tact" "', argument " "3"" of type '" "real""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "RootUptakeStressFunction_Tact" "', argument " "3"" of type '" "real""'");
   } 
   arg3 = static_cast< real >(val3);
   {
     try {
-      result = (real)((cmf::upslope::ET::RootUptakeStessFunction const *)arg1)->Tact((cmf::upslope::ET::stressedET const *)arg2,arg3);
+      result = (real)((cmf::upslope::ET::RootUptakeStressFunction const *)arg1)->Tact((cmf::upslope::ET::stressedET const *)arg2,arg3);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -75034,24 +75034,24 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_RootUptakeStessFunction_copy(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_RootUptakeStressFunction_copy(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  cmf::upslope::ET::RootUptakeStessFunction *arg1 = (cmf::upslope::ET::RootUptakeStessFunction *) 0 ;
+  cmf::upslope::ET::RootUptakeStressFunction *arg1 = (cmf::upslope::ET::RootUptakeStressFunction *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   PyObject *swig_obj[1] ;
-  cmf::upslope::ET::RootUptakeStessFunction *result = 0 ;
+  cmf::upslope::ET::RootUptakeStressFunction *result = 0 ;
   
   if (!args) SWIG_fail;
   swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__upslope__ET__RootUptakeStessFunction, 0 |  0 );
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__upslope__ET__RootUptakeStressFunction, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RootUptakeStessFunction_copy" "', argument " "1"" of type '" "cmf::upslope::ET::RootUptakeStessFunction const *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RootUptakeStressFunction_copy" "', argument " "1"" of type '" "cmf::upslope::ET::RootUptakeStressFunction const *""'"); 
   }
-  arg1 = reinterpret_cast< cmf::upslope::ET::RootUptakeStessFunction * >(argp1);
+  arg1 = reinterpret_cast< cmf::upslope::ET::RootUptakeStressFunction * >(argp1);
   {
     try {
-      result = (cmf::upslope::ET::RootUptakeStessFunction *)((cmf::upslope::ET::RootUptakeStessFunction const *)arg1)->copy();
+      result = (cmf::upslope::ET::RootUptakeStressFunction *)((cmf::upslope::ET::RootUptakeStressFunction const *)arg1)->copy();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -75059,16 +75059,16 @@ SWIGINTERN PyObject *_wrap_RootUptakeStessFunction_copy(PyObject *SWIGUNUSEDPARM
     }
     
   }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_cmf__upslope__ET__RootUptakeStessFunction, 0 |  0 );
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_cmf__upslope__ET__RootUptakeStressFunction, 0 |  0 );
   return resultobj;
 fail:
   return NULL;
 }
 
 
-SWIGINTERN PyObject *_wrap_RootUptakeStessFunction_to_string(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_RootUptakeStressFunction_to_string(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  cmf::upslope::ET::RootUptakeStessFunction *arg1 = (cmf::upslope::ET::RootUptakeStessFunction *) 0 ;
+  cmf::upslope::ET::RootUptakeStressFunction *arg1 = (cmf::upslope::ET::RootUptakeStressFunction *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   PyObject *swig_obj[1] ;
@@ -75076,14 +75076,14 @@ SWIGINTERN PyObject *_wrap_RootUptakeStessFunction_to_string(PyObject *SWIGUNUSE
   
   if (!args) SWIG_fail;
   swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__upslope__ET__RootUptakeStessFunction, 0 |  0 );
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__upslope__ET__RootUptakeStressFunction, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RootUptakeStessFunction_to_string" "', argument " "1"" of type '" "cmf::upslope::ET::RootUptakeStessFunction const *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RootUptakeStressFunction_to_string" "', argument " "1"" of type '" "cmf::upslope::ET::RootUptakeStressFunction const *""'"); 
   }
-  arg1 = reinterpret_cast< cmf::upslope::ET::RootUptakeStessFunction * >(argp1);
+  arg1 = reinterpret_cast< cmf::upslope::ET::RootUptakeStressFunction * >(argp1);
   {
     try {
-      result = ((cmf::upslope::ET::RootUptakeStessFunction const *)arg1)->to_string();
+      result = ((cmf::upslope::ET::RootUptakeStressFunction const *)arg1)->to_string();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -75098,20 +75098,20 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_delete_RootUptakeStessFunction(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_delete_RootUptakeStressFunction(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  cmf::upslope::ET::RootUptakeStessFunction *arg1 = (cmf::upslope::ET::RootUptakeStessFunction *) 0 ;
+  cmf::upslope::ET::RootUptakeStressFunction *arg1 = (cmf::upslope::ET::RootUptakeStressFunction *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   PyObject *swig_obj[1] ;
   
   if (!args) SWIG_fail;
   swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__upslope__ET__RootUptakeStessFunction, SWIG_POINTER_DISOWN |  0 );
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__upslope__ET__RootUptakeStressFunction, SWIG_POINTER_DISOWN |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_RootUptakeStessFunction" "', argument " "1"" of type '" "cmf::upslope::ET::RootUptakeStessFunction *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_RootUptakeStressFunction" "', argument " "1"" of type '" "cmf::upslope::ET::RootUptakeStressFunction *""'"); 
   }
-  arg1 = reinterpret_cast< cmf::upslope::ET::RootUptakeStessFunction * >(argp1);
+  arg1 = reinterpret_cast< cmf::upslope::ET::RootUptakeStressFunction * >(argp1);
   {
     try {
       delete arg1;
@@ -75129,10 +75129,10 @@ fail:
 }
 
 
-SWIGINTERN PyObject *RootUptakeStessFunction_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *RootUptakeStressFunction_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *obj;
   if (!SWIG_Python_UnpackTuple(args,(char *)"swigregister", 1, 1,&obj)) return NULL;
-  SWIG_TypeNewClientData(SWIGTYPE_p_cmf__upslope__ET__RootUptakeStessFunction, SWIG_NewClientData(obj));
+  SWIG_TypeNewClientData(SWIGTYPE_p_cmf__upslope__ET__RootUptakeStressFunction, SWIG_NewClientData(obj));
   return SWIG_Py_Void();
 }
 
@@ -76507,7 +76507,7 @@ fail:
 SWIGINTERN PyObject *_wrap_stressedET_set_stressfunction(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   cmf::upslope::ET::stressedET *arg1 = (cmf::upslope::ET::stressedET *) 0 ;
-  cmf::upslope::ET::RootUptakeStessFunction *arg2 = 0 ;
+  cmf::upslope::ET::RootUptakeStressFunction *arg2 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   void *argp2 = 0 ;
@@ -76524,17 +76524,17 @@ SWIGINTERN PyObject *_wrap_stressedET_set_stressfunction(PyObject *SWIGUNUSEDPAR
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "stressedET_set_stressfunction" "', argument " "1"" of type '" "cmf::upslope::ET::stressedET *""'"); 
   }
   arg1 = reinterpret_cast< cmf::upslope::ET::stressedET * >(argp1);
-  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_cmf__upslope__ET__RootUptakeStessFunction,  0  | 0);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_cmf__upslope__ET__RootUptakeStressFunction,  0  | 0);
   if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "stressedET_set_stressfunction" "', argument " "2"" of type '" "cmf::upslope::ET::RootUptakeStessFunction const &""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "stressedET_set_stressfunction" "', argument " "2"" of type '" "cmf::upslope::ET::RootUptakeStressFunction const &""'"); 
   }
   if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "stressedET_set_stressfunction" "', argument " "2"" of type '" "cmf::upslope::ET::RootUptakeStessFunction const &""'"); 
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "stressedET_set_stressfunction" "', argument " "2"" of type '" "cmf::upslope::ET::RootUptakeStressFunction const &""'"); 
   }
-  arg2 = reinterpret_cast< cmf::upslope::ET::RootUptakeStessFunction * >(argp2);
+  arg2 = reinterpret_cast< cmf::upslope::ET::RootUptakeStressFunction * >(argp2);
   {
     try {
-      (arg1)->set_stressfunction((cmf::upslope::ET::RootUptakeStessFunction const &)*arg2);
+      (arg1)->set_stressfunction((cmf::upslope::ET::RootUptakeStressFunction const &)*arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -89391,7 +89391,7 @@ static PyMethodDef SwigMethods[] = {
 		"Returns the current source for rainfall. \n"
 		""},
 	 { (char *)"Cell_set_uptakestress", (PyCFunction) _wrap_Cell_set_uptakestress, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
-		"Cell_set_uptakestress(Cell self, RootUptakeStessFunction stressfunction)\n"
+		"Cell_set_uptakestress(Cell self, RootUptakeStressFunction stressfunction)\n"
 		"\n"
 		"void\n"
 		"set_uptakestress(const ET::RootUptakeStessFunction &stressfunction)\n"
@@ -91647,41 +91647,11 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"delete_LayerBypass", (PyCFunction)_wrap_delete_LayerBypass, METH_O, (char *)"delete_LayerBypass(LayerBypass self)"},
 	 { (char *)"LayerBypass_swigregister", LayerBypass_swigregister, METH_VARARGS, NULL},
 	 { (char *)"LayerBypass_swiginit", LayerBypass_swiginit, METH_VARARGS, NULL},
-	 { (char *)"RootUptakeStessFunction_Tact", (PyCFunction) _wrap_RootUptakeStessFunction_Tact, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
-		"RootUptakeStessFunction_Tact(RootUptakeStessFunction self, stressedET connection, real Tpot) -> real\n"
-		"\n"
-		"virtual real Tact(const stressedET *connection, real Tpot) const =0\n"
-		"\n"
-		"Calculates the water stress for a layer.\n"
-		"\n"
-		"Parameters:\n"
-		"-----------\n"
-		"\n"
-		"connection:  The stressedET connection this stress function belongs to\n"
-		"\n"
-		"Tpot:  Potential Transpiration in mm/day (for the full profile)\n"
-		"\n"
-		"Actual flux from layer in m3/day \n"
-		""},
-	 { (char *)"RootUptakeStessFunction_copy", (PyCFunction)_wrap_RootUptakeStessFunction_copy, METH_O, (char *)"\n"
-		"RootUptakeStessFunction_copy(RootUptakeStessFunction self) -> RootUptakeStessFunction\n"
-		"\n"
-		"virtual cmf::upslope::ET::RootUptakeStessFunction* copy() const =0\n"
-		"\n"
-		"Creates a new copy of this wetness. \n"
-		""},
-	 { (char *)"RootUptakeStessFunction_to_string", (PyCFunction)_wrap_RootUptakeStessFunction_to_string, METH_O, (char *)"\n"
-		"RootUptakeStessFunction_to_string(RootUptakeStessFunction self) -> std::string\n"
-		"\n"
-		"virtual\n"
-		"std::string to_string() const =0 \n"
-		""},
-	 { (char *)"delete_RootUptakeStessFunction", (PyCFunction)_wrap_delete_RootUptakeStessFunction, METH_O, (char *)"\n"
-		"delete_RootUptakeStessFunction(RootUptakeStessFunction self)\n"
-		"\n"
-		"virtual ~RootUptakeStessFunction() \n"
-		""},
-	 { (char *)"RootUptakeStessFunction_swigregister", RootUptakeStessFunction_swigregister, METH_VARARGS, NULL},
+	 { (char *)"RootUptakeStressFunction_Tact", (PyCFunction) _wrap_RootUptakeStressFunction_Tact, METH_VARARGS | METH_KEYWORDS, (char *)"RootUptakeStressFunction_Tact(RootUptakeStressFunction self, stressedET connection, real Tpot) -> real"},
+	 { (char *)"RootUptakeStressFunction_copy", (PyCFunction)_wrap_RootUptakeStressFunction_copy, METH_O, (char *)"RootUptakeStressFunction_copy(RootUptakeStressFunction self) -> RootUptakeStressFunction"},
+	 { (char *)"RootUptakeStressFunction_to_string", (PyCFunction)_wrap_RootUptakeStressFunction_to_string, METH_O, (char *)"RootUptakeStressFunction_to_string(RootUptakeStressFunction self) -> std::string"},
+	 { (char *)"delete_RootUptakeStressFunction", (PyCFunction)_wrap_delete_RootUptakeStressFunction, METH_O, (char *)"delete_RootUptakeStressFunction(RootUptakeStressFunction self)"},
+	 { (char *)"RootUptakeStressFunction_swigregister", RootUptakeStressFunction_swigregister, METH_VARARGS, NULL},
 	 { (char *)"SuctionStress_P0_set", _wrap_SuctionStress_P0_set, METH_VARARGS, (char *)"SuctionStress_P0_set(SuctionStress self, real P0)"},
 	 { (char *)"SuctionStress_P0_get", (PyCFunction)_wrap_SuctionStress_P0_get, METH_O, (char *)"SuctionStress_P0_get(SuctionStress self) -> real"},
 	 { (char *)"SuctionStress_P1_set", _wrap_SuctionStress_P1_set, METH_VARARGS, (char *)"SuctionStress_P1_set(SuctionStress self, real P1)"},
@@ -91796,7 +91766,7 @@ static PyMethodDef SwigMethods[] = {
 		"h:  Height above sea level in m (for air pressure estimation) \n"
 		""},
 	 { (char *)"stressedET_set_stressfunction", (PyCFunction) _wrap_stressedET_set_stressfunction, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
-		"stressedET_set_stressfunction(stressedET self, RootUptakeStessFunction stressfunction)\n"
+		"stressedET_set_stressfunction(stressedET self, RootUptakeStressFunction stressfunction)\n"
 		"\n"
 		"void\n"
 		"set_stressfunction(const RootUptakeStessFunction &stressfunction)\n"
@@ -93134,14 +93104,14 @@ static void *_p_cmf__atmosphere__RainfallStationReferenceTo_p_cmf__atmosphere__R
 static void *_p_cmf__atmosphere__IDWRainfallTo_p_cmf__atmosphere__RainSource(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((cmf::atmosphere::RainSource *)  ((cmf::atmosphere::IDWRainfall *) x));
 }
-static void *_p_cmf__upslope__ET__SuctionStressTo_p_cmf__upslope__ET__RootUptakeStessFunction(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((cmf::upslope::ET::RootUptakeStessFunction *)  ((cmf::upslope::ET::SuctionStress *) x));
+static void *_p_cmf__upslope__ET__SuctionStressTo_p_cmf__upslope__ET__RootUptakeStressFunction(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((cmf::upslope::ET::RootUptakeStressFunction *)  ((cmf::upslope::ET::SuctionStress *) x));
 }
-static void *_p_cmf__upslope__ET__ContentStressTo_p_cmf__upslope__ET__RootUptakeStessFunction(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((cmf::upslope::ET::RootUptakeStessFunction *)  ((cmf::upslope::ET::ContentStress *) x));
+static void *_p_cmf__upslope__ET__ContentStressTo_p_cmf__upslope__ET__RootUptakeStressFunction(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((cmf::upslope::ET::RootUptakeStressFunction *)  ((cmf::upslope::ET::ContentStress *) x));
 }
-static void *_p_cmf__upslope__ET__VolumeStressTo_p_cmf__upslope__ET__RootUptakeStessFunction(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((cmf::upslope::ET::RootUptakeStessFunction *)  ((cmf::upslope::ET::VolumeStress *) x));
+static void *_p_cmf__upslope__ET__VolumeStressTo_p_cmf__upslope__ET__RootUptakeStressFunction(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((cmf::upslope::ET::RootUptakeStressFunction *)  ((cmf::upslope::ET::VolumeStress *) x));
 }
 static void *_p_cmf__river__IChannelTo_p_cmf__river__IVolumeHeightFunction(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((cmf::river::IVolumeHeightFunction *)  ((cmf::river::IChannel *) x));
@@ -93523,7 +93493,7 @@ static swig_type_info _swigt__p_cmf__upslope__ET__OudinET = {"_p_cmf__upslope__E
 static swig_type_info _swigt__p_cmf__upslope__ET__PenmanEvaporation = {"_p_cmf__upslope__ET__PenmanEvaporation", "cmf::upslope::ET::PenmanEvaporation *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_cmf__upslope__ET__PenmanMonteithET = {"_p_cmf__upslope__ET__PenmanMonteithET", "cmf::upslope::ET::PenmanMonteithET *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_cmf__upslope__ET__PriestleyTaylorET = {"_p_cmf__upslope__ET__PriestleyTaylorET", "cmf::upslope::ET::PriestleyTaylorET *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_cmf__upslope__ET__RootUptakeStessFunction = {"_p_cmf__upslope__ET__RootUptakeStessFunction", "cmf::upslope::ET::RootUptakeStessFunction *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_cmf__upslope__ET__RootUptakeStressFunction = {"_p_cmf__upslope__ET__RootUptakeStressFunction", "cmf::upslope::ET::RootUptakeStressFunction *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_cmf__upslope__ET__SW_evap_from_canopy = {"_p_cmf__upslope__ET__SW_evap_from_canopy", "cmf::upslope::ET::SW_evap_from_canopy *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_cmf__upslope__ET__SW_evap_from_layer = {"_p_cmf__upslope__ET__SW_evap_from_layer", "cmf::upslope::ET::SW_evap_from_layer *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_cmf__upslope__ET__SW_evap_from_snow = {"_p_cmf__upslope__ET__SW_evap_from_snow", "cmf::upslope::ET::SW_evap_from_snow *", 0, 0, (void*)0, 0};
@@ -93734,7 +93704,7 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_cmf__upslope__ET__PenmanEvaporation,
   &_swigt__p_cmf__upslope__ET__PenmanMonteithET,
   &_swigt__p_cmf__upslope__ET__PriestleyTaylorET,
-  &_swigt__p_cmf__upslope__ET__RootUptakeStessFunction,
+  &_swigt__p_cmf__upslope__ET__RootUptakeStressFunction,
   &_swigt__p_cmf__upslope__ET__SW_evap_from_canopy,
   &_swigt__p_cmf__upslope__ET__SW_evap_from_layer,
   &_swigt__p_cmf__upslope__ET__SW_evap_from_snow,
@@ -93945,7 +93915,7 @@ static swig_cast_info _swigc__p_cmf__upslope__ET__OudinET[] = {  {&_swigt__p_cmf
 static swig_cast_info _swigc__p_cmf__upslope__ET__PenmanEvaporation[] = {  {&_swigt__p_cmf__upslope__ET__PenmanEvaporation, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_cmf__upslope__ET__PenmanMonteithET[] = {  {&_swigt__p_cmf__upslope__ET__PenmanMonteithET, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_cmf__upslope__ET__PriestleyTaylorET[] = {  {&_swigt__p_cmf__upslope__ET__PriestleyTaylorET, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_cmf__upslope__ET__RootUptakeStessFunction[] = {  {&_swigt__p_cmf__upslope__ET__SuctionStress, _p_cmf__upslope__ET__SuctionStressTo_p_cmf__upslope__ET__RootUptakeStessFunction, 0, 0},  {&_swigt__p_cmf__upslope__ET__ContentStress, _p_cmf__upslope__ET__ContentStressTo_p_cmf__upslope__ET__RootUptakeStessFunction, 0, 0},  {&_swigt__p_cmf__upslope__ET__VolumeStress, _p_cmf__upslope__ET__VolumeStressTo_p_cmf__upslope__ET__RootUptakeStessFunction, 0, 0},  {&_swigt__p_cmf__upslope__ET__RootUptakeStessFunction, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_cmf__upslope__ET__RootUptakeStressFunction[] = {  {&_swigt__p_cmf__upslope__ET__SuctionStress, _p_cmf__upslope__ET__SuctionStressTo_p_cmf__upslope__ET__RootUptakeStressFunction, 0, 0},  {&_swigt__p_cmf__upslope__ET__ContentStress, _p_cmf__upslope__ET__ContentStressTo_p_cmf__upslope__ET__RootUptakeStressFunction, 0, 0},  {&_swigt__p_cmf__upslope__ET__VolumeStress, _p_cmf__upslope__ET__VolumeStressTo_p_cmf__upslope__ET__RootUptakeStressFunction, 0, 0},  {&_swigt__p_cmf__upslope__ET__RootUptakeStressFunction, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_cmf__upslope__ET__SW_evap_from_canopy[] = {  {&_swigt__p_cmf__upslope__ET__SW_evap_from_canopy, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_cmf__upslope__ET__SW_evap_from_layer[] = {  {&_swigt__p_cmf__upslope__ET__SW_evap_from_layer, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_cmf__upslope__ET__SW_evap_from_snow[] = {  {&_swigt__p_cmf__upslope__ET__SW_evap_from_snow, 0, 0, 0},{0, 0, 0, 0}};
@@ -94156,7 +94126,7 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_cmf__upslope__ET__PenmanEvaporation,
   _swigc__p_cmf__upslope__ET__PenmanMonteithET,
   _swigc__p_cmf__upslope__ET__PriestleyTaylorET,
-  _swigc__p_cmf__upslope__ET__RootUptakeStessFunction,
+  _swigc__p_cmf__upslope__ET__RootUptakeStressFunction,
   _swigc__p_cmf__upslope__ET__SW_evap_from_canopy,
   _swigc__p_cmf__upslope__ET__SW_evap_from_layer,
   _swigc__p_cmf__upslope__ET__SW_evap_from_snow,

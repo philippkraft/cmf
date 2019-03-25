@@ -89,7 +89,7 @@ namespace cmf {
 			class stressedET : public cmf::water::flux_connection {
 			protected:
 				std::weak_ptr<cmf::upslope::SoilLayer> sw;
-				std::unique_ptr<cmf::upslope::ET::RootUptakeStessFunction> m_stressfunction;
+				std::unique_ptr<cmf::upslope::ET::RootUptakeStressFunction> m_stressfunction;
 				void NewNodes()	{
 					sw=std::dynamic_pointer_cast<cmf::upslope::SoilLayer>(left_node());
 				}
@@ -97,7 +97,7 @@ namespace cmf {
 				real Tact(real Tpot) const;
 			public:
 				/// Sets the stress function to limit water uptake
-				void set_stressfunction(const RootUptakeStessFunction& stressfunction) {
+				void set_stressfunction(const RootUptakeStressFunction& stressfunction) {
 					m_stressfunction.reset(stressfunction.copy());
 				}
 				SoilLayer::ptr get_layer() const {
