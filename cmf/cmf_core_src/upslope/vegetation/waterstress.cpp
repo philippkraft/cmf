@@ -1,4 +1,5 @@
 #include "waterstress.h"
+#include "../SoilLayer.h"
 #include "ET.h"
 
 cmf::upslope::ET::ContentStress* cmf::upslope::ET::ContentStress::copy() const
@@ -11,9 +12,8 @@ cmf::upslope::ET::ContentStress::ContentStress(real _theta_d, real _theta_w)
 {
 
 }
-real cmf::upslope::ET::ContentStress::Tact(const stressedET* connection,real Tpot) const
+real cmf::upslope::ET::ContentStress::Tact(const cmf::upslope::SoilLayer* sl, real Tpot) const
 {
-	cmf::upslope::SoilLayer::ptr sl = connection->get_layer();
 	real
 		wetness = sl->get_wetness(),
 		w_wp = theta_w * sl->get_porosity(),
@@ -50,10 +50,9 @@ cmf::upslope::ET::SuctionStress::SuctionStress( real Pot0,real Pot1,real Pot2,re
 }
 
 
-real cmf::upslope::ET::SuctionStress::Tact(const stressedET* connection,real Tpot) const
+real cmf::upslope::ET::SuctionStress::Tact(const cmf::upslope::SoilLayer* sl, real Tpot) const
 {
-	cmf::upslope::SoilLayer::ptr sl = connection->get_layer();
-	real 
+	real
 		suction = sl->get_matrix_potential(),
 		area = sl->cell.get_area(),
 		rootfraction=sl->get_rootfraction();
@@ -94,10 +93,9 @@ cmf::upslope::ET::VolumeStress* cmf::upslope::ET::VolumeStress::copy() const
 	return new VolumeStress(*this);
 }
 
-real cmf::upslope::ET::VolumeStress::Tact( const stressedET* connection,real Tpot ) const
+real cmf::upslope::ET::VolumeStress::Tact(const cmf::upslope::SoilLayer* sl, real Tpot) const
 {
-	cmf::upslope::SoilLayer::ptr sl = connection->get_layer();
-	real 
+	real
 		vol = sl->get_volume(),
 		area = sl->cell.get_area(),
 		rootfraction=sl->get_rootfraction();

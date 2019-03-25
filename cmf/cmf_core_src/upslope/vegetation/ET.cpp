@@ -83,12 +83,11 @@ namespace cmf {
 			real stressedET::Tact(real Tpot ) const
 			{
 				cmf::upslope::SoilLayer::ptr layer=sw.lock();
-				return m_stressfunction->Tact(this,Tpot) ;
-
+				return layer->get_Tact(Tpot) ;
 			}
 
-			stressedET::stressedET( cmf::upslope::SoilLayer::ptr source,cmf::water::flux_node::ptr ET_target,std::string _type ) 
-				: flux_connection(source,ET_target,_type),  m_stressfunction(new SuctionStress())
+			stressedET::stressedET( cmf::upslope::SoilLayer::ptr source,cmf::water::flux_node::ptr ET_target, std::string _type )
+				: flux_connection(source, ET_target, _type)
 			{
 				NewNodes();
 			}
@@ -111,7 +110,7 @@ namespace cmf {
 
 			real PenmanMonteithET::r_s( const cmf::upslope::vegetation::Vegetation & veg ) 
 			{
-				if (veg.StomatalResistance)
+				if (veg.StomatalResistance > 0.0)
 					return veg.StomatalResistance/(0.5*veg.LAI);
 				else
 					return 0.0;

@@ -59764,6 +59764,118 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_SoilLayer_set_root_uptake_stress_function(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  cmf::upslope::SoilLayer *arg1 = (cmf::upslope::SoilLayer *) 0 ;
+  cmf::upslope::ET::RootUptakeStressFunction *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  std::shared_ptr< cmf::upslope::SoilLayer > tempshared1 ;
+  std::shared_ptr< cmf::upslope::SoilLayer > *smartarg1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char *  kwnames[] = {
+    (char *) "self",(char *) "stressfunction", NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"OO:SoilLayer_set_root_uptake_stress_function",kwnames,&obj0,&obj1)) SWIG_fail;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(obj0, &argp1, SWIGTYPE_p_std__shared_ptrT_cmf__upslope__SoilLayer_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SoilLayer_set_root_uptake_stress_function" "', argument " "1"" of type '" "cmf::upslope::SoilLayer *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< std::shared_ptr<  cmf::upslope::SoilLayer > * >(argp1);
+      delete reinterpret_cast< std::shared_ptr<  cmf::upslope::SoilLayer > * >(argp1);
+      arg1 = const_cast< cmf::upslope::SoilLayer * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< std::shared_ptr<  cmf::upslope::SoilLayer > * >(argp1);
+      arg1 = const_cast< cmf::upslope::SoilLayer * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_cmf__upslope__ET__RootUptakeStressFunction,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "SoilLayer_set_root_uptake_stress_function" "', argument " "2"" of type '" "cmf::upslope::ET::RootUptakeStressFunction const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "SoilLayer_set_root_uptake_stress_function" "', argument " "2"" of type '" "cmf::upslope::ET::RootUptakeStressFunction const &""'"); 
+  }
+  arg2 = reinterpret_cast< cmf::upslope::ET::RootUptakeStressFunction * >(argp2);
+  {
+    try {
+      (arg1)->set_root_uptake_stress_function((cmf::upslope::ET::RootUptakeStressFunction const &)*arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_SoilLayer_get_Tact(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  cmf::upslope::SoilLayer *arg1 = (cmf::upslope::SoilLayer *) 0 ;
+  double arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  std::shared_ptr< cmf::upslope::SoilLayer > tempshared1 ;
+  std::shared_ptr< cmf::upslope::SoilLayer > *smartarg1 = 0 ;
+  double val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char *  kwnames[] = {
+    (char *) "self",(char *) "Tpot", NULL 
+  };
+  double result;
+  
+  if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"OO:SoilLayer_get_Tact",kwnames,&obj0,&obj1)) SWIG_fail;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(obj0, &argp1, SWIGTYPE_p_std__shared_ptrT_cmf__upslope__SoilLayer_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SoilLayer_get_Tact" "', argument " "1"" of type '" "cmf::upslope::SoilLayer *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< std::shared_ptr<  cmf::upslope::SoilLayer > * >(argp1);
+      delete reinterpret_cast< std::shared_ptr<  cmf::upslope::SoilLayer > * >(argp1);
+      arg1 = const_cast< cmf::upslope::SoilLayer * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< std::shared_ptr<  cmf::upslope::SoilLayer > * >(argp1);
+      arg1 = const_cast< cmf::upslope::SoilLayer * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  ecode2 = SWIG_AsVal_double(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "SoilLayer_get_Tact" "', argument " "2"" of type '" "double""'");
+  } 
+  arg2 = static_cast< double >(val2);
+  {
+    try {
+      result = (double)(arg1)->get_Tact(arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+    
+  }
+  resultobj = SWIG_From_double(static_cast< double >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_SoilLayer_get_flow_crosssection(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   cmf::upslope::SoilLayer *arg1 = (cmf::upslope::SoilLayer *) 0 ;
@@ -74985,19 +75097,21 @@ SWIGINTERN PyObject *LayerBypass_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObje
 SWIGINTERN PyObject *_wrap_RootUptakeStressFunction_Tact(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   cmf::upslope::ET::RootUptakeStressFunction *arg1 = (cmf::upslope::ET::RootUptakeStressFunction *) 0 ;
-  cmf::upslope::ET::stressedET *arg2 = (cmf::upslope::ET::stressedET *) 0 ;
+  cmf::upslope::SoilLayer *arg2 = (cmf::upslope::SoilLayer *) 0 ;
   real arg3 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
+  std::shared_ptr< cmf::upslope::SoilLayer const > tempshared2 ;
+  std::shared_ptr< cmf::upslope::SoilLayer const > *smartarg2 = 0 ;
   double val3 ;
   int ecode3 = 0 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   PyObject * obj2 = 0 ;
   char *  kwnames[] = {
-    (char *) "self",(char *) "connection",(char *) "Tpot", NULL 
+    (char *) "self",(char *) "soilLayer",(char *) "Tpot", NULL 
   };
   real result;
   
@@ -75007,11 +75121,21 @@ SWIGINTERN PyObject *_wrap_RootUptakeStressFunction_Tact(PyObject *SWIGUNUSEDPAR
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RootUptakeStressFunction_Tact" "', argument " "1"" of type '" "cmf::upslope::ET::RootUptakeStressFunction const *""'"); 
   }
   arg1 = reinterpret_cast< cmf::upslope::ET::RootUptakeStressFunction * >(argp1);
-  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_cmf__upslope__ET__stressedET, 0 |  0 );
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "RootUptakeStressFunction_Tact" "', argument " "2"" of type '" "cmf::upslope::ET::stressedET const *""'"); 
+  {
+    int newmem = 0;
+    res2 = SWIG_ConvertPtrAndOwn(obj1, &argp2, SWIGTYPE_p_std__shared_ptrT_cmf__upslope__SoilLayer_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "RootUptakeStressFunction_Tact" "', argument " "2"" of type '" "cmf::upslope::SoilLayer const *""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared2 = *reinterpret_cast< std::shared_ptr< const cmf::upslope::SoilLayer > * >(argp2);
+      delete reinterpret_cast< std::shared_ptr< const cmf::upslope::SoilLayer > * >(argp2);
+      arg2 = const_cast< cmf::upslope::SoilLayer * >(tempshared2.get());
+    } else {
+      smartarg2 = reinterpret_cast< std::shared_ptr< const cmf::upslope::SoilLayer > * >(argp2);
+      arg2 = const_cast< cmf::upslope::SoilLayer * >((smartarg2 ? smartarg2->get() : 0));
+    }
   }
-  arg2 = reinterpret_cast< cmf::upslope::ET::stressedET * >(argp2);
   ecode3 = SWIG_AsVal_double(obj2, &val3);
   if (!SWIG_IsOK(ecode3)) {
     SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "RootUptakeStressFunction_Tact" "', argument " "3"" of type '" "real""'");
@@ -75019,7 +75143,7 @@ SWIGINTERN PyObject *_wrap_RootUptakeStressFunction_Tact(PyObject *SWIGUNUSEDPAR
   arg3 = static_cast< real >(val3);
   {
     try {
-      result = (real)((cmf::upslope::ET::RootUptakeStressFunction const *)arg1)->Tact((cmf::upslope::ET::stressedET const *)arg2,arg3);
+      result = (real)((cmf::upslope::ET::RootUptakeStressFunction const *)arg1)->Tact((cmf::upslope::SoilLayer const *)arg2,arg3);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -76501,51 +76625,6 @@ fail:
     "    cmf::upslope::ET::PenmanMonteith(real,real,real,real,real)\n"
     "    cmf::upslope::ET::PenmanMonteith(cmf::atmosphere::Weather,cmf::upslope::vegetation::Vegetation const &,double)\n");
   return 0;
-}
-
-
-SWIGINTERN PyObject *_wrap_stressedET_set_stressfunction(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
-  PyObject *resultobj = 0;
-  cmf::upslope::ET::stressedET *arg1 = (cmf::upslope::ET::stressedET *) 0 ;
-  cmf::upslope::ET::RootUptakeStressFunction *arg2 = 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
-  PyObject * obj0 = 0 ;
-  PyObject * obj1 = 0 ;
-  char *  kwnames[] = {
-    (char *) "self",(char *) "stressfunction", NULL 
-  };
-  
-  if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"OO:stressedET_set_stressfunction",kwnames,&obj0,&obj1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_cmf__upslope__ET__stressedET, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "stressedET_set_stressfunction" "', argument " "1"" of type '" "cmf::upslope::ET::stressedET *""'"); 
-  }
-  arg1 = reinterpret_cast< cmf::upslope::ET::stressedET * >(argp1);
-  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_cmf__upslope__ET__RootUptakeStressFunction,  0  | 0);
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "stressedET_set_stressfunction" "', argument " "2"" of type '" "cmf::upslope::ET::RootUptakeStressFunction const &""'"); 
-  }
-  if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "stressedET_set_stressfunction" "', argument " "2"" of type '" "cmf::upslope::ET::RootUptakeStressFunction const &""'"); 
-  }
-  arg2 = reinterpret_cast< cmf::upslope::ET::RootUptakeStressFunction * >(argp2);
-  {
-    try {
-      (arg1)->set_stressfunction((cmf::upslope::ET::RootUptakeStressFunction const &)*arg2);
-    } catch (const std::out_of_range& e) {
-      SWIG_exception(SWIG_IndexError, e.what());    
-    } catch (const std::exception& e) {
-      SWIG_exception(SWIG_RuntimeError, e.what());
-    }
-    
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
 }
 
 
@@ -90161,6 +90240,8 @@ static PyMethodDef SwigMethods[] = {
 		"\n"
 		". \n"
 		""},
+	 { (char *)"SoilLayer_set_root_uptake_stress_function", (PyCFunction) _wrap_SoilLayer_set_root_uptake_stress_function, METH_VARARGS | METH_KEYWORDS, (char *)"SoilLayer_set_root_uptake_stress_function(SoilLayer self, RootUptakeStressFunction stressfunction)"},
+	 { (char *)"SoilLayer_get_Tact", (PyCFunction) _wrap_SoilLayer_get_Tact, METH_VARARGS | METH_KEYWORDS, (char *)"SoilLayer_get_Tact(SoilLayer self, double Tpot) -> double"},
 	 { (char *)"SoilLayer_get_flow_crosssection", (PyCFunction) _wrap_SoilLayer_get_flow_crosssection, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
 		"SoilLayer_get_flow_crosssection(SoilLayer self, SoilLayer target, bool HorizontalLayers=False) -> real\n"
 		"\n"
@@ -91647,7 +91728,7 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"delete_LayerBypass", (PyCFunction)_wrap_delete_LayerBypass, METH_O, (char *)"delete_LayerBypass(LayerBypass self)"},
 	 { (char *)"LayerBypass_swigregister", LayerBypass_swigregister, METH_VARARGS, NULL},
 	 { (char *)"LayerBypass_swiginit", LayerBypass_swiginit, METH_VARARGS, NULL},
-	 { (char *)"RootUptakeStressFunction_Tact", (PyCFunction) _wrap_RootUptakeStressFunction_Tact, METH_VARARGS | METH_KEYWORDS, (char *)"RootUptakeStressFunction_Tact(RootUptakeStressFunction self, stressedET connection, real Tpot) -> real"},
+	 { (char *)"RootUptakeStressFunction_Tact", (PyCFunction) _wrap_RootUptakeStressFunction_Tact, METH_VARARGS | METH_KEYWORDS, (char *)"RootUptakeStressFunction_Tact(RootUptakeStressFunction self, SoilLayer soilLayer, real Tpot) -> real"},
 	 { (char *)"RootUptakeStressFunction_copy", (PyCFunction)_wrap_RootUptakeStressFunction_copy, METH_O, (char *)"RootUptakeStressFunction_copy(RootUptakeStressFunction self) -> RootUptakeStressFunction"},
 	 { (char *)"RootUptakeStressFunction_to_string", (PyCFunction)_wrap_RootUptakeStressFunction_to_string, METH_O, (char *)"RootUptakeStressFunction_to_string(RootUptakeStressFunction self) -> std::string"},
 	 { (char *)"delete_RootUptakeStressFunction", (PyCFunction)_wrap_delete_RootUptakeStressFunction, METH_O, (char *)"delete_RootUptakeStressFunction(RootUptakeStressFunction self)"},
@@ -91764,14 +91845,6 @@ static PyMethodDef SwigMethods[] = {
 		"veg:  Vegetation data\n"
 		"\n"
 		"h:  Height above sea level in m (for air pressure estimation) \n"
-		""},
-	 { (char *)"stressedET_set_stressfunction", (PyCFunction) _wrap_stressedET_set_stressfunction, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
-		"stressedET_set_stressfunction(stressedET self, RootUptakeStressFunction stressfunction)\n"
-		"\n"
-		"void\n"
-		"set_stressfunction(const RootUptakeStessFunction &stressfunction)\n"
-		"\n"
-		"Sets the stress function to limit water uptake. \n"
 		""},
 	 { (char *)"stressedET_get_layer", (PyCFunction)_wrap_stressedET_get_layer, METH_O, (char *)"\n"
 		"stressedET_get_layer(stressedET self) -> cmf::upslope::SoilLayer::ptr\n"

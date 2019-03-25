@@ -28,6 +28,9 @@
 namespace cmf {
 	namespace upslope {
 		class Cell;
+		namespace ET {
+			class RootUptakeStressFunction;
+		}
 		/// @ingroup storages
 		/// A representation of a SoilLayer
 		class SoilLayer: public cmf::water::WaterStorage, public cmf::upslope::conductable
@@ -62,7 +65,8 @@ namespace cmf {
 
 			/// The retention curve of the soil layer
 			std::unique_ptr<cmf::upslope::RetentionCurve> m_retentioncurve;
-
+			/// The uptake stress function of the soil layer
+			std::unique_ptr<cmf::upslope::ET::RootUptakeStressFunction> m_uptakefunction;
 			/// Converts a head to the volume of stored water
 			virtual real head_to_volume(real head) const;
 			/// Converts a volume of stored water to the head
@@ -132,7 +136,12 @@ namespace cmf {
 			void set_rootfraction(real rootfraction) {
 				m_rootfraction = rootfraction;
 			}
-			
+			/// Sets the root uptake stress function
+			void set_root_uptake_stress_function(const cmf::upslope::ET::RootUptakeStressFunction& stressfunction);
+			/// Returns a factor to indicate the draught stress to be multiplied with ETpot.
+			///
+			/// 1 = no stress, 0 = no uptake possible
+			double get_Tact(double Tpot);
 			/// Calculates the shared crosssectional area of this and another soil water storage.
 			///
 			/// If both layers belong to the same cell, the area of the cell is returned, if they belong to different cells the area of the vertical shared boundary is returned
