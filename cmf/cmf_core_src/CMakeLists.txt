@@ -69,7 +69,16 @@ add_library(libcmf STATIC
         water/WaterStorage.cpp
         project.cpp
 )
-target_link_libraries(libcmf sundials_cvode sundials_sunlinsolklu libklu libamd libbtf libcolamd suitesparseconfig)
+
+# Use a lib prefix if MSVC compiler, because suitesparse does it that way
+if(MSVC)
+	set(SP_LIB_PREFIX "lib")  # Libs are: "libXXX"
+endif(MSVC)
+
+target_link_libraries(libcmf 
+   sundials_cvode sundials_sunlinsolklu 
+   ${SP_LIB_PREFIX}klu ${SP_LIB_PREFIX}amd ${SP_LIB_PREFIX}btf ${SP_LIB_PREFIX}colamd suitesparseconfig
+)
 
 add_executable(nash_cascade apps/nash_cascade.cpp)
 target_link_libraries(nash_cascade libcmf)
