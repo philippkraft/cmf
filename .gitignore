@@ -86,6 +86,7 @@ venv.bak/
 
 # PyCharm
 .idea
+cmake-build-*/
 
 # Rope project settings
 .ropeproject
