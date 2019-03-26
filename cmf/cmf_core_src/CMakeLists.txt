@@ -3,10 +3,12 @@ project(cmf)
 
 set(CMAKE_CXX_STANDARD 11)
 set(CMF_EXT_LIB_DIR ${CMAKE_CURRENT_SOURCE_DIR}/../../lib)
+
 include_directories(
         ${CMF_EXT_LIB_DIR}/include
         ${CMF_EXT_LIB_DIR}/include/suitesparse
         ${CMAKE_CURRENT_SOURCE_DIR}
+        ${PYTHON_INCLUDE}
 )
 link_directories(${CMF_EXT_LIB_DIR}/lib ${CMF_EXT_LIB_DIR}/lib64)
 
@@ -75,10 +77,17 @@ if(MSVC)
 	set(SP_LIB_PREFIX "lib")  # Libs are: "libXXX"
 endif(MSVC)
 
-target_link_libraries(libcmf 
-   sundials_cvode sundials_sunlinsolklu 
-   ${SP_LIB_PREFIX}klu ${SP_LIB_PREFIX}amd ${SP_LIB_PREFIX}btf ${SP_LIB_PREFIX}colamd suitesparseconfig
-)
+target_link_libraries(libcmf PUBLIC
+        sundials_cvode sundials_sunlinsolklu
+        ${SP_LIB_PREFIX}klu ${SP_LIB_PREFIX}amd ${SP_LIB_PREFIX}btf ${SP_LIB_PREFIX}colamd suitesparseconfig
+        )
+
+find_package(OpenMP)
+if(OpenMP_CXX_FOUND)
+    target_link_libraries(libcmf PUBLIC OpenMP::OpenMP_CXX)
+    message("Found OpenMP")
+endif()
+
 
 add_executable(nash_cascade apps/nash_cascade.cpp)
 target_link_libraries(nash_cascade libcmf)
@@ -88,3 +97,11 @@ target_link_libraries(subsurface libcmf)
 
 add_executable(reach_network apps/reach_network.cpp)
 target_link_libraries(reach_network libcmf)
+
+# set(PYTHON_INCLUDE $ENV{PYTHON_INCLUDE})
+# add_library(_cmf_core SHARED cmf_wrap.cpp)
+# target_link_libraries(_cmf_core libcmf)
+
+# if(MSVC)
+#     set_target_properties(_cmf_core PROPERTIES SUFFIX ".pyd")
+# endif(MSVC)
