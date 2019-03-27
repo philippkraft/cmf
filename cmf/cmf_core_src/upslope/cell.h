@@ -167,7 +167,7 @@ namespace cmf {
 				return m_rainfall;
 			}
 			/// Uses the given WaterStressFunction for all stressedET like connections to the transpiration target
-			void set_uptakestress(const ET::RootUptakeStressFunction& stressfunction);
+			void set_uptakestress(const cmf::upslope::ET::RootUptakeStressFunction& stressfunction);
 			/*
 			/// Experimental feature: Gets a cell owned boundary node, eg. groundwater, or Neumannboundary
 			/// This should replace get_evaporation, get_transpiration etc.

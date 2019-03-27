@@ -266,21 +266,30 @@ def is_source_file(fn, include_headerfiles=False):
     """
     fn = fn.lower()
     res = (
-        (fn.endswith('.cpp') and 'apps' not in fn)
-        or (include_headerfiles and fn.split('.')[-1] not in ('.h', '.hpp'))
+            fn.endswith('.cpp') or
+            (include_headerfiles and fn[-2:] == '.h')
     )
     return res
 
+def get_source_files(include_headerfiles=False, path='cmf/cmf_core_src'):
 
-def get_source_files(include_headerfiles=False):
-    cmf_files = []
-    for root, _dirs, files in os.walk(os.path.join('cmf', 'cmf_core_src')):
-        if 'debug' not in os.path.basename(root) and os.path.basename(root) != 'apps':
-            cmf_files.extend(
-                os.path.join(root, f)
-                for f in files
-                if is_source_file(os.path.join(root, f), include_headerfiles) and f != 'cmf_wrap.cpp')
-    return cmf_files
+    result = []
+
+    def ignore(fn):
+        return ('cmake-build' in fn or
+                fn.startswith('.') or
+                fn == 'apps' or
+                fn == 'cmf_wrap.cpp')
+
+    for fn in os.listdir(path):
+        fullname = os.path.normpath(os.path.join(path, fn))
+        if is_source_file(fullname, include_headerfiles) and not ignore(fn):
+            result.append(fullname)
+        if os.path.isdir(fullname) and not ignore(fn):
+            result.extend(get_source_files(include_headerfiles, fullname))
+    return result
+
+
 
 
 def make_cmf_core():

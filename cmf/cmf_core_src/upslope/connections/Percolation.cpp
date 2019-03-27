@@ -62,31 +62,6 @@ real cmf::upslope::connections::Richards::calc_q( cmf::math::Time t )
 	real r_flow=K*gradient*l1->cell.get_area();
 	return prevent_negative_volume(r_flow);
 }
-void cmf::upslope::connections::SimplRichards::use_for_cell( cmf::upslope::Cell & cell,bool no_override/*=true*/ )
-{
-	for (int i = 0; i < cell.layer_count()-1 ; ++i)
-	{
-		cmf::upslope::SoilLayer::ptr l_upper=cell.get_layer(i), l_lower=cell.get_layer(i+1);
-		if (!(no_override && l_upper->connection_to(*l_lower)))
-			new SimplRichards(l_upper,l_lower);
-	}
-}
-
-real cmf::upslope::connections::SimplRichards::calc_q( cmf::math::Time t )
-{
-	// Richards flux
-	cmf::upslope::SoilLayer::ptr
-		l1=sw1.lock(),
-		l2=sw2.lock();
-
-	real
-		K = l1->get_K();
-	if (l2)
-		K *= 1 - l2->get_wetness();
-	real r_flow=K * l1->cell.get_area();
-	return prevent_negative_volume(r_flow);
-}
-
 
 // SWAT Percolation
 real cmf::upslope::connections::SWATPercolation::calc_q( cmf::math::Time t )

@@ -253,7 +253,7 @@ namespace cmf {
 			/// This ETpot formula is a generalization of two older approaches by introducing
 			/// parameters to shape the dependency of ETpot from temperature and extraterrestrial radiation
 			///
-			/// \f$ \lambda ET_{pot} = R_{a} \cdot \frac{T_{a} + K_2}{K_1}
+			/// \f$ \lambda ET_{pot} = R_{a} \cdot \frac{T_{a} + K_2}{K_1}\f$
 			///
 			/// Oudin et al (2005) found an optimum for \f$K_1=100, K_2=5\f$.
 			/// The origin of this formula lays in Jensen & Haise (1963) with \f$K_1=40, K_2=0\f$
