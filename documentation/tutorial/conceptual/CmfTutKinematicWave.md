@@ -125,8 +125,7 @@ reasonable. The standard beta for the "real" kinematic wave from the
 Manning-Strickler equation for sheet flow in @f$\frac 5 3@f$. If you
 find a real world usage for @f$\beta<1@f$, please inform the authors
 of cmf. However, if @f$\beta<0.3@f$ it is reported, that numerical
-instabilities will arise, even when using the
-[CVodeIntegrator](@ref cmf::math::CVodeIntegrator)
+instabilities will arise.
 
 ![](PowerLawConnection.png)
 

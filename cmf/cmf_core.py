@@ -6077,14 +6077,35 @@ def rH_from_vpd(*args, **kwargs):
     """
     return _cmf_core.rH_from_vpd(*args, **kwargs)
 
-def global_radiation(*args, **kwargs):
+def watts_to_MJ(*args, **kwargs):
     """
-    global_radiation(Time t, double height, double sunshine_fraction, double longitude=8, double latitude=51, double time_zone=1, bool daily=False) -> double
+    watts_to_MJ(double Watts) -> double
 
     double
-    cmf::atmosphere::global_radiation(cmf::math::Time t, double height,
-    double sunshine_fraction, double longitude=8, double latitude=51,
-    double time_zone=1, bool daily=0)
+    cmf::atmosphere::watts_to_MJ(double Watts)
+
+    Transforms an energy flux from W to MJ/day. 
+    """
+    return _cmf_core.watts_to_MJ(*args, **kwargs)
+
+def MJ_to_watts(*args, **kwargs):
+    """
+    MJ_to_watts(double MJ) -> double
+
+    double
+    cmf::atmosphere::MJ_to_watts(double MJ)
+
+    Transforms an energy flux from MJ/day to W. 
+    """
+    return _cmf_core.MJ_to_watts(*args, **kwargs)
+
+def extraterrestrial_radiation(*args, **kwargs):
+    """
+    extraterrestrial_radiation(Time t, double longitude=8, double latitude=51, double time_zone=1, bool daily=False) -> double
+
+    double cmf::atmosphere::extraterrestrial_radiation(cmf::math::Time t,
+    double longitude=8, double latitude=51, double time_zone=1, bool
+    daily=false)
 
     Calculates the global radiation in MJ/(m2 day) from the sun position
     and the sunshine fraction.
@@ -6093,11 +6114,6 @@ def global_radiation(*args, **kwargs):
     -----------
 
     t:  actual time step
-
-    height:  Height above sea level
-
-    sunshine_fraction:  Fraction of sunshine hours per potential sunshine
-    duration in h/h
 
     longitude:  latitude:  Geographical position in degree. Latitude is
     only taken into acount for subdaily calculation
@@ -6112,43 +6128,67 @@ def global_radiation(*args, **kwargs):
     The calculation of the global radiation
     followshttp://www.fao.org/docrep/X0490E/x0490e07.htm#radiation.
 
-    The following formula is used: 
+    The following formula is used:  :math:`\\phi` Latitude in :math:`rad`
 
-    .. math::
+    :math:`\\delta = 0.409 \\sin\\left(\\frac{2\\pi}{365}DOY - 1.39\\right)` Declination, DOY is day of year
 
-         \\phi &=&
-        \\frac{(\\mbox{geogr. Latitude})^\\circ \\pi}{180^\\circ}
-        \\mbox{ Latitude in }rad \\\\ \\delta &=& 0.409
-        \\sin\\left(\\frac{2\\pi}{365}DOY - 1.39\\right) \\mbox{
-        Declination, DOY is day of year}\\\\ \\omega_s &=&
-        \\arccos(-\\tan\\phi\\tan\\delta) \\mbox{ Sunset angle}
-        \\\\ G_{sc} &=& 0.0802 \\frac{MJ}{m^2min} \\mbox{Solar
-        constant} \\\\ d_r &=& 1+0.033
-        \\cos\\left(\\frac{2\\pi}{365}DOY\\right) \\mbox{Inverse
-        relative distance Earth-Sun} \\\\ b &=&
-        \\frac{2\\pi(DOY-81)}{364}\\\\ S_c &=&
-        0.1645\\sin(2b)-0.1255\\cos(b)-0.025\\sin(b) \\mbox{ Seasonal
-        correction for solar time} \\\\ \\omega &=& \\frac {\\pi}
-        {12} \\left(t_h+\\frac{(\\mbox{geogr.
-        Longitude})^\\circ}{15}-\\mbox{Timezone}+S_c-12\\right)
-        \\mbox{ solar time in }rad \\\\ \\mbox{If daily} \\\\ R_a
-        &=& \\frac{24\\ 60}{\\pi}G_{sc}\\ d_r \\left(\\omega_s
-        \\sin\\phi \\sin\\delta + \\cos\\phi \\cos\\delta
-        \\sin\\omega_s\\right) \\mbox{Extraterrestrial radiation }
-        \\frac{MJ}{m^2 day} \\\\ \\mbox{If hourly} \\\\ R_a &=&
-        \\frac{12\\ 24\\ 60}{\\pi}G_{sc}\\ d_r
-        \\left(\\left(\\omega^+ -\\omega^-\\right) \\sin\\phi
-        \\sin\\delta + \\cos\\phi \\cos\\delta
-        \\left(\\sin\\omega^+ - \\sin\\omega^-\\right)\\right)
-        \\\\ && \\omega^+,\\omega^- = \\omega
-        \\pm\\frac{\\pi}{24} \\\\ \\frac n N &=&
-        \\mbox{Fractional sunshine duration} \\\\ R_s &=&
-        \\left(0.25+\\left(0.5+2\\
-        10^{-5}z\\right)\\frac{n}{N}\\right)R_a \\mbox{Global
-        radiation in }\\frac{MJ}{m^2 day} \\\\ && z=\\mbox{Height
-        a.s.l. in }m \\\\ 
+    :math:`\\omega_s = \\arccos(-\\tan\\phi\\tan\\delta)` Sunset
+    angle
 
+    :math:`G_{sc} = 0.0802 \\frac{MJ}{m^2min}` Solar constant
 
+    :math:`d_r = 1+0.033 \\cos\\left(\\frac{2\\pi}{365}DOY\\right)`
+    Inverse relative distance Earth-Sun
+
+    :math:`b = \\frac{2\\pi(DOY-81)}{364}`
+
+    :math:`S_c = 0.1645\\sin(2b)-0.1255\\cos(b)-0.025\\sin(b)` Seasonal
+    correction for solar time
+
+    :math:`\\omega = \\frac{\\pi}{12} \\left(t_h+\\frac{(\\mbox{geogr. Longitude})^\\circ}{15^\\circ}-\\mbox{Timezone}+S_c-12\\right)` solar time in :math:`rad`
+
+    If daily: :math:`R_a = \\frac{24\\ 60}{\\pi}G_{sc}\\ d_r \\left(\\omega_s \\sin\\phi \\sin\\delta + \\cos\\phi \\cos\\delta \\sin\\omega_s\\right)`
+
+    If sub daily: :math:`R_a = \\frac{12\\ 24\\ 60}{\\pi}G_{sc}\\ d_r \\left(\\left(\\omega^+ -\\omega^-\\right) \\sin\\phi \\sin\\delta + \\cos\\phi \\cos\\delta \\left(\\sin\\omega^+ - \\sin\\omega^-\\right)\\right)`
+
+    :math:`\\omega^+,\\omega^- = \\omega \\pm\\frac{\\pi}{24}` 
+    """
+    return _cmf_core.extraterrestrial_radiation(*args, **kwargs)
+
+def global_radiation(*args, **kwargs):
+    """
+    global_radiation(double Ra, double height, double sunshine_fraction) -> double
+
+    double
+    cmf::atmosphere::global_radiation(double Ra, double height, double
+    sunshine_fraction)
+
+    Calculates the global radiation in MJ/(m2 day) from the sun position
+    and the sunshine fraction.
+
+    Parameters:
+    -----------
+
+    Ra:  extra terrestrial radiation
+
+    height:  Height above sea level
+
+    sunshine_fraction:  Fraction of sunshine hours per potential sunshine
+    duration in h/h
+
+    The calculation of the global radiation
+    followshttp://www.fao.org/docrep/X0490E/x0490e07.htm#radiation.
+
+    The following formula is used:  :math:`R_a(t, \\phi, \\lambda)`
+    Extraterrestrial radiation (
+    cmf::atmosphere::extraterrestrial_radiation) :math:`\\frac{MJ}{m^2 day}`
+
+    :math:`\\frac n N` Fractional sunshine duration
+
+    :math:`R_s = \\left(0.25+\\left(0.5+2\\ 10^{-5}z\\right)\\frac{n}{N}\\right)R_a` Global radiation in
+    :math:`\\frac{MJ}{m^2 day}`
+
+    :math:`z`: Height a.s.l. in m 
     """
     return _cmf_core.global_radiation(*args, **kwargs)
 
@@ -6183,6 +6223,7 @@ class Weather(object):
     e_s = _swig_property(_cmf_core.Weather_e_s_get, _cmf_core.Weather_e_s_set)
     sunshine = _swig_property(_cmf_core.Weather_sunshine_get, _cmf_core.Weather_sunshine_set)
     Rs = _swig_property(_cmf_core.Weather_Rs_get, _cmf_core.Weather_Rs_set)
+    Ra = _swig_property(_cmf_core.Weather_Ra_get, _cmf_core.Weather_Ra_set)
     daylength = _swig_property(_cmf_core.Weather_daylength_get, _cmf_core.Weather_daylength_set)
     instrument_height = _swig_property(_cmf_core.Weather_instrument_height_get, _cmf_core.Weather_instrument_height_set)
 
@@ -6199,19 +6240,19 @@ class Weather(object):
 
         .. math::
 
-             R_{n} &=& R_{ns} - R_{nl} \\\\ \\mbox{ Net
-            short wave radiation: }R_{ns} &=& (1-\\alpha) R_s \\\\ \\mbox{
-            Net long wave radiation: }R_{nl} &=& R_{black}\\ \\beta_{v}\\
-            \\beta_{c} \\\\ \\mbox{Black body radiation: } R_{black} &=&
+             R_{n} = R_{ns} - R_{nl} \\\\ \\mbox{ Net
+            short wave radiation: }R_{ns} = (1-\\alpha) R_s \\\\ \\mbox{
+            Net long wave radiation: }R_{nl} = R_{black}\\ \\beta_{v}\\
+            \\beta_{c} \\\\ \\mbox{Black body radiation: } R_{black} =
             \\left\\{\\begin{array}{cl} \\sigma T^4 & \\mbox{for less
             than daily time steps} \\\\ \\sigma \\frac {T_{max}^4 +
             T_{min}^4} 2 & \\mbox{for daily time steps} \\end{array}
-            \\right. \\\\ T &=& \\mbox{Temperature }[K] \\\\ \\sigma
-            &=& 4.903\\ 10^{-9} \\frac{MJ}{K^4 m^2 day} \\mbox{ Stefan-
-            Boltzmann constant } \\\\ \\mbox{Long wave reflectance: }
-            \\\\ \\mbox{by water vapor: }\\beta_{v} &=& 0.34 - 0.14
-            \\sqrt{e_a} \\\\ \\mbox{ by clouds: }\\beta_{c} &=& 0.1 +
-            0.9 \\frac n N 
+            \\right. \\\\ T = \\mbox{Temperature }[K] \\\\ \\sigma =
+            4.903\\ 10^{-9} \\frac{MJ}{K^4 m^2 day} \\mbox{ Stefan-Boltzmann
+            constant } \\\\ \\mbox{Long wave reflectance: } \\\\
+            \\mbox{by water vapor: }\\beta_{v} = 0.34 - 0.14 \\sqrt{e_a}
+            \\\\ \\mbox{ by clouds: }\\beta_{c} = 0.1 + 0.9 \\frac n N
+
 
 
 
@@ -6228,11 +6269,11 @@ class Weather(object):
 
     def __init__(self, *args, **kwargs):
         """
-        __init__(cmf::atmosphere::Weather self, double T=15.0, double Tmax=17.0, double Tmin=13.0, double rH=70.0, double wind=2.0, double sunshine=0.5, double Rs=15, double daylength=12) -> Weather
+        __init__(cmf::atmosphere::Weather self, double T=15.0, double Tmax=17.0, double Tmin=13.0, double rH=70.0, double wind=2.0, double sunshine=0.5, double Rs=15, double Ra=30, double daylength=12) -> Weather
 
         Weather(double T=15.0, double Tmax=17.0, double Tmin=13.0, double
         rH=70.0, double wind=2.0, double sunshine=0.5, double Rs=15, double
-        daylength=12)
+        Ra=30, double daylength=12)
 
         Creates a "weather" from given data.
 
@@ -6253,6 +6294,8 @@ class Weather(object):
         duration in h/h
 
         Rs:  actual incoming shortwave global radiation in MJ/(m2 day)
+
+        Ra:  actual extraterrestrial shortwave global radiation in MJ/(m2 day)
 
         daylength:  length of the day in h 
         """
@@ -7475,10 +7518,11 @@ class Cell(StateVariableOwner):
 
     def set_uptakestress(self, *args, **kwargs):
         """
-        set_uptakestress(Cell self, RootUptakeStessFunction stressfunction)
+        set_uptakestress(Cell self, RootUptakeStressFunction stressfunction)
 
         void
-        set_uptakestress(const ET::RootUptakeStessFunction &stressfunction)
+        set_uptakestress(const cmf::upslope::ET::RootUptakeStressFunction
+        &stressfunction)
 
         Uses the given WaterStressFunction for all stressedET like connections
         to the transpiration target. 
@@ -8936,6 +8980,34 @@ class SoilLayer(WaterStorage):
         return _cmf_core.SoilLayer_get_saturated_depth(self, *args, **kwargs)
 
 
+    def set_root_uptake_stress_function(self, *args, **kwargs):
+        """
+        set_root_uptake_stress_function(SoilLayer self, RootUptakeStressFunction stressfunction)
+
+        void
+        set_root_uptake_stress_function(const
+        cmf::upslope::ET::RootUptakeStressFunction &stressfunction)
+
+        Sets the root uptake stress function. 
+        """
+        return _cmf_core.SoilLayer_set_root_uptake_stress_function(self, *args, **kwargs)
+
+
+    def get_Tact(self, *args, **kwargs):
+        """
+        get_Tact(SoilLayer self, double Tpot) -> double
+
+        double
+        get_Tact(double Tpot)
+
+        Returns a factor to indicate the draught stress to be multiplied with
+        ETpot.
+
+        1 = no stress, 0 = no uptake possible 
+        """
+        return _cmf_core.SoilLayer_get_Tact(self, *args, **kwargs)
+
+
     def get_flow_crosssection(self, *args, **kwargs):
         """
         get_flow_crosssection(SoilLayer self, SoilLayer target, bool HorizontalLayers=False) -> real
@@ -9002,6 +9074,8 @@ SoilLayer.set_soil = new_instancemethod(_cmf_core.SoilLayer_set_soil, None, Soil
 SoilLayer.get_K = new_instancemethod(_cmf_core.SoilLayer_get_K, None, SoilLayer)
 SoilLayer.get_capacity = new_instancemethod(_cmf_core.SoilLayer_get_capacity, None, SoilLayer)
 SoilLayer.get_saturated_depth = new_instancemethod(_cmf_core.SoilLayer_get_saturated_depth, None, SoilLayer)
+SoilLayer.set_root_uptake_stress_function = new_instancemethod(_cmf_core.SoilLayer_set_root_uptake_stress_function, None, SoilLayer)
+SoilLayer.get_Tact = new_instancemethod(_cmf_core.SoilLayer_get_Tact, None, SoilLayer)
 SoilLayer.get_flow_crosssection = new_instancemethod(_cmf_core.SoilLayer_get_flow_crosssection, None, SoilLayer)
 _cmf_core.SoilLayer_swigregister(SoilLayer)
 # SoilLayer end
@@ -12324,55 +12398,6 @@ _cmf_core.Richards_swigregister(Richards)
 
 
 
-class SimplRichards(flux_connection):
-    """
-
-
-    Calculates flow according to a simplified Richards equation.
-
-
-
-    .. math::
-
-         q_{Richards} &=& (K(\\theta) - K(\\theta_r))
-        A \\\\ 
-
-     where  :math:`d [m]` is the distance between
-    the two soil layers
-
-    :math:`K(\\theta)\\left[\\frac m{day}\\right]` is the geometric
-    mean conductivity (see SoilType::Kunsat)
-
-    :math:`A [m^2]` is the crosssectional area of the flux
-
-    C++ includes: Percolation.h 
-    """
-
-    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
-    __repr__ = _swig_repr
-
-    def __init__(self, *args, **kwargs):
-        """
-        __init__(cmf::upslope::connections::SimplRichards self, cmf::upslope::SoilLayer::ptr left, cmf::water::flux_node::ptr right) -> SimplRichards
-
-        SimplRichards(cmf::upslope::SoilLayer::ptr left,
-        cmf::water::flux_node::ptr right) 
-        """
-        _cmf_core.SimplRichards_swiginit(self, _cmf_core.new_SimplRichards(*args, **kwargs))
-
-    def use_for_cell(*args, **kwargs):
-        """use_for_cell(Cell cell, bool no_override=True)"""
-        return _cmf_core.SimplRichards_use_for_cell(*args, **kwargs)
-
-    use_for_cell = staticmethod(use_for_cell)
-    __swig_destroy__ = _cmf_core.delete_SimplRichards
-_cmf_core.SimplRichards_swigregister(SimplRichards)
-# SimplRichards end
-
-
-
-
-
 class FreeDrainagePercolation(flux_connection):
     """
 
@@ -12497,7 +12522,7 @@ LayerBypass.K = new_instancemethod(_cmf_core.LayerBypass_K, None, LayerBypass)
 _cmf_core.LayerBypass_swigregister(LayerBypass)
 # LayerBypass end
 
-class RootUptakeStessFunction(object):
+class RootUptakeStressFunction(object):
     """
 
 
@@ -12518,52 +12543,55 @@ class RootUptakeStessFunction(object):
 
     def Tact(self, *args, **kwargs):
         """
-        Tact(RootUptakeStessFunction self, stressedET connection, real Tpot) -> real
+        Tact(RootUptakeStressFunction self, SoilLayer soillayer, real Tpot) -> real
 
-        virtual real Tact(const stressedET *connection, real Tpot) const =0
+        virtual real
+        Tact(const cmf::upslope::SoilLayer *soillayer, real Tpot) const =0
 
         Calculates the water stress for a layer.
 
         Parameters:
         -----------
 
-        connection:  The stressedET connection this stress function belongs to
+        soillayer:  The cmf::upslope::SoilLayer this stress function belongs
+        to
 
         Tpot:  Potential Transpiration in mm/day (for the full profile)
 
         Actual flux from layer in m3/day 
         """
-        return _cmf_core.RootUptakeStessFunction_Tact(self, *args, **kwargs)
+        return _cmf_core.RootUptakeStressFunction_Tact(self, *args, **kwargs)
 
 
     def copy(self, *args, **kwargs):
         """
-        copy(RootUptakeStessFunction self) -> RootUptakeStessFunction
+        copy(RootUptakeStressFunction self) -> RootUptakeStressFunction
 
-        virtual cmf::upslope::ET::RootUptakeStessFunction* copy() const =0
+        virtual
+        cmf::upslope::ET::RootUptakeStressFunction* copy() const =0
 
         Creates a new copy of this wetness. 
         """
-        return _cmf_core.RootUptakeStessFunction_copy(self, *args, **kwargs)
+        return _cmf_core.RootUptakeStressFunction_copy(self, *args, **kwargs)
 
 
     def to_string(self, *args, **kwargs):
         """
-        to_string(RootUptakeStessFunction self) -> std::string
+        to_string(RootUptakeStressFunction self) -> std::string
 
         virtual
         std::string to_string() const =0 
         """
-        return _cmf_core.RootUptakeStessFunction_to_string(self, *args, **kwargs)
+        return _cmf_core.RootUptakeStressFunction_to_string(self, *args, **kwargs)
 
-    __swig_destroy__ = _cmf_core.delete_RootUptakeStessFunction
-RootUptakeStessFunction.Tact = new_instancemethod(_cmf_core.RootUptakeStessFunction_Tact, None, RootUptakeStessFunction)
-RootUptakeStessFunction.copy = new_instancemethod(_cmf_core.RootUptakeStessFunction_copy, None, RootUptakeStessFunction)
-RootUptakeStessFunction.to_string = new_instancemethod(_cmf_core.RootUptakeStessFunction_to_string, None, RootUptakeStessFunction)
-_cmf_core.RootUptakeStessFunction_swigregister(RootUptakeStessFunction)
-# RootUptakeStessFunction end
+    __swig_destroy__ = _cmf_core.delete_RootUptakeStressFunction
+RootUptakeStressFunction.Tact = new_instancemethod(_cmf_core.RootUptakeStressFunction_Tact, None, RootUptakeStressFunction)
+RootUptakeStressFunction.copy = new_instancemethod(_cmf_core.RootUptakeStressFunction_copy, None, RootUptakeStressFunction)
+RootUptakeStressFunction.to_string = new_instancemethod(_cmf_core.RootUptakeStressFunction_to_string, None, RootUptakeStressFunction)
+_cmf_core.RootUptakeStressFunction_swigregister(RootUptakeStressFunction)
+# RootUptakeStressFunction end
 
-class SuctionStress(RootUptakeStessFunction):
+class SuctionStress(RootUptakeStressFunction):
     """
 
 
@@ -12621,7 +12649,7 @@ SuctionStress.copy = new_instancemethod(_cmf_core.SuctionStress_copy, None, Suct
 _cmf_core.SuctionStress_swigregister(SuctionStress)
 # SuctionStress end
 
-class ContentStress(RootUptakeStessFunction):
+class ContentStress(RootUptakeStressFunction):
     """
 
 
@@ -12677,7 +12705,7 @@ ContentStress.copy = new_instancemethod(_cmf_core.ContentStress_copy, None, Cont
 _cmf_core.ContentStress_swigregister(ContentStress)
 # ContentStress end
 
-class VolumeStress(RootUptakeStessFunction):
+class VolumeStress(RootUptakeStressFunction):
     """
 
 
@@ -12783,18 +12811,6 @@ class stressedET(flux_connection):
         raise AttributeError("No constructor defined - class is abstract")
     __repr__ = _swig_repr
 
-    def set_stressfunction(self, *args, **kwargs):
-        """
-        set_stressfunction(stressedET self, RootUptakeStessFunction stressfunction)
-
-        void
-        set_stressfunction(const RootUptakeStessFunction &stressfunction)
-
-        Sets the stress function to limit water uptake. 
-        """
-        return _cmf_core.stressedET_set_stressfunction(self, *args, **kwargs)
-
-
     def get_layer(self, *args, **kwargs):
         """
         get_layer(stressedET self) -> cmf::upslope::SoilLayer::ptr
@@ -12814,7 +12830,6 @@ class stressedET(flux_connection):
         return _cmf_core.stressedET_ETpot(self, *args, **kwargs)
 
     __swig_destroy__ = _cmf_core.delete_stressedET
-stressedET.set_stressfunction = new_instancemethod(_cmf_core.stressedET_set_stressfunction, None, stressedET)
 stressedET.get_layer = new_instancemethod(_cmf_core.stressedET_get_layer, None, stressedET)
 stressedET.ETpot = new_instancemethod(_cmf_core.stressedET_ETpot, None, stressedET)
 _cmf_core.stressedET_swigregister(stressedET)
@@ -12996,8 +13011,8 @@ class PriestleyTaylorET(stressedET):
 
     .. math::
 
-        lambda ET &=& \\alpha \\frac{\\Delta}{\\Delta +
-        \\gamma} \\left(R_n - G\\right)
+        lambda ET = \\alpha \\frac{\\Delta}{\\Delta + \\gamma}
+        \\left(R_n - G\\right)
 
     where:  :math:`\\Delta = 4098 \\frac{0.6108 e^{17.27 T}}{(T+237.3)^2} \\frac{kPa}{^\\circ C}`,
     the slope of the vapor pressure/ temperature curve
@@ -13093,13 +13108,12 @@ class HargreaveET(stressedET):
 
     def __init__(self, *args, **kwargs):
         """
-        __init__(cmf::upslope::ET::HargreaveET self, cmf::upslope::SoilLayer::ptr source, cmf::water::flux_node::ptr ET_target, real latitude=51.0) -> HargreaveET
+        __init__(cmf::upslope::ET::HargreaveET self, cmf::upslope::SoilLayer::ptr source, cmf::water::flux_node::ptr ET_target) -> HargreaveET
 
         HargreaveET(cmf::upslope::SoilLayer::ptr source,
-        cmf::water::flux_node::ptr ET_target, real latitude=51.0) 
+        cmf::water::flux_node::ptr ET_target) 
         """
         _cmf_core.HargreaveET_swiginit(self, _cmf_core.new_HargreaveET(*args, **kwargs))
-    lat = _swig_property(_cmf_core.HargreaveET_lat_get, _cmf_core.HargreaveET_lat_set)
 
     def use_for_cell(*args, **kwargs):
         """use_for_cell(Cell cell)"""
@@ -13114,15 +13128,96 @@ _cmf_core.HargreaveET_swigregister(HargreaveET)
 
 
 
+class OudinET(stressedET):
+    """
+
+
+    Calculates ETpot after Oudin et al 2005.
+
+    https://doi.org/10.1016/j.jhydrol.2004.08.026 This ETpot formula is a
+    generalization of two older approaches by introducing parameters to
+    shape the dependency of ETpot from temperature and extraterrestrial
+    radiation
+
+    :math:`\\lambda ET_{pot} = R_{a} \\cdot \\frac{T_{a} + K_2}{K_1}`
+
+    Oudin et al (2005) found an optimum for :math:`K_1=100, K_2=5`. The origin
+    of this formula lays in Jensen & Haise (1963) with :math:`K_1=40, K_2=0` and
+    McGuiness-Bordne (1972) with :math:`K_1=68, K_2=5`.
+
+    C++ includes: ET.h 
+    """
+
+    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __repr__ = _swig_repr
+
+    def __init__(self, *args, **kwargs):
+        """
+        __init__(cmf::upslope::ET::OudinET self, cmf::upslope::SoilLayer::ptr source, cmf::water::flux_node::ptr ET_target, double K1=100, double K2=5) -> OudinET
+
+        OudinET(cmf::upslope::SoilLayer::ptr source,
+        cmf::water::flux_node::ptr ET_target, double K1=100, double K2=5) 
+        """
+        _cmf_core.OudinET_swiginit(self, _cmf_core.new_OudinET(*args, **kwargs))
+
+    def JensenHaise1963(*args, **kwargs):
+        """JensenHaise1963(cmf::upslope::SoilLayer::ptr source, cmf::water::flux_node::ptr ET_target) -> OudinET"""
+        return _cmf_core.OudinET_JensenHaise1963(*args, **kwargs)
+
+    JensenHaise1963 = staticmethod(JensenHaise1963)
+
+    def McGuinessBordne1972(*args, **kwargs):
+        """McGuinessBordne1972(cmf::upslope::SoilLayer::ptr source, cmf::water::flux_node::ptr ET_target) -> OudinET"""
+        return _cmf_core.OudinET_McGuinessBordne1972(*args, **kwargs)
+
+    McGuinessBordne1972 = staticmethod(McGuinessBordne1972)
+    K1 = _swig_property(_cmf_core.OudinET_K1_get, _cmf_core.OudinET_K1_set)
+    K2 = _swig_property(_cmf_core.OudinET_K2_get, _cmf_core.OudinET_K2_set)
+
+    def use_for_cell(*args, **kwargs):
+        """use_for_cell(Cell cell)"""
+        return _cmf_core.OudinET_use_for_cell(*args, **kwargs)
+
+    use_for_cell = staticmethod(use_for_cell)
+    __swig_destroy__ = _cmf_core.delete_OudinET
+_cmf_core.OudinET_swigregister(OudinET)
+# OudinET end
+
+
+
+
+
+
+
+
+
+
+
+
+
 class TurcET(stressedET):
     """
 
 
     Calculates ETpot after Turc (DVWK).
 
-    ETact is calculated using a WaterStressFunction
+    :math:`ET_{act}` is calculated using a WaterStressFunction
 
-    :math:`ET_{pot,Turc} = 0.0031 C (R_G + 209) \\frac{T}{T + 15}`
+
+
+    .. math::
+
+         ET_{pot,Turc} = 0.0031 C(rH) (R_G + 209) \\frac{T}{T + 15}
+
+
+    where:  :math:`T` is the mean daily temperature
+
+    :math:`C(rH) = \\begin{cases} 1 + \\frac{50\\% - rH}{70\\%}, & rH < 50\\% \\\\ 1 & rH > 50\\% \\end{cases}`, a modification
+    parameter for low humidity
+
+    :math:`rH` relative Humidity in %
+
+    :math:`R_G` global radiation in :math:`J/cm^2`
 
     C++ includes: ET.h 
     """
@@ -14541,7 +14636,7 @@ class CVodeOptions(object):
     Usage example: >>>solver = CVodeDens(p, 1e-9)
     >>>solver.options.max_order = 2
 
-    C++ includes: cvode3.h 
+    C++ includes: cvode.h 
     """
 
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
@@ -14570,7 +14665,7 @@ class CVodeInfo(object):
 
     Reports the current state of a CVode solver.
 
-    C++ includes: cvode3.h 
+    C++ includes: cvode.h 
     """
 
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
@@ -14609,7 +14704,16 @@ _cmf_core.CVodeInfo_swigregister(CVodeInfo)
 # CVodeInfo end
 
 class CVodeBase(Integrator):
-    """Proxy of C++ cmf::math::CVodeBase class."""
+    """
+
+
+    Abstract base class for different modes of the CVode solver.
+
+    Initantiate one of the child classes to gain different modes of the
+    CVode solver
+
+    C++ includes: cvode.h 
+    """
 
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
 
@@ -14619,12 +14723,28 @@ class CVodeBase(Integrator):
     options = _swig_property(_cmf_core.CVodeBase_options_get, _cmf_core.CVodeBase_options_set)
 
     def initialize(self, *args, **kwargs):
-        """initialize(CVodeBase self) -> int"""
+        """
+        initialize(CVodeBase self) -> int
+
+        int
+        initialize()
+
+        Initialize the internal memory.
+
+        Automatically called, when one starts to integrate 
+        """
         return _cmf_core.CVodeBase_initialize(self, *args, **kwargs)
 
 
     def set_error_msg(self, *args, **kwargs):
-        """set_error_msg(CVodeBase self, std::string error)"""
+        """
+        set_error_msg(CVodeBase self, std::string error)
+
+        void
+        set_error_msg(std::string error)
+
+        Sets an error message. 
+        """
         return _cmf_core.CVodeBase_set_error_msg(self, *args, **kwargs)
 
 
@@ -14632,32 +14752,62 @@ class CVodeBase(Integrator):
         """
         copy(CVodeBase self) -> CVodeBase
 
-        virtual
-        Integrator* copy() const =0
+        CVodeBase* copy()
+        const
 
-        Polymorphic copy constructor. 
+        Returns a copy of the solver. 
         """
         return _cmf_core.CVodeBase_copy(self, *args, **kwargs)
 
     error_msg = _swig_property(_cmf_core.CVodeBase_error_msg_get, _cmf_core.CVodeBase_error_msg_set)
 
     def get_info(self, *args, **kwargs):
-        """get_info(CVodeBase self) -> CVodeInfo"""
+        """
+        get_info(CVodeBase self) -> CVodeInfo
+
+        CVodeInfo
+        get_info() const
+
+        Returns the current solver statistics. 
+        """
         return _cmf_core.CVodeBase_get_info(self, *args, **kwargs)
 
 
     def to_string(self, *args, **kwargs):
-        """to_string(CVodeBase self) -> std::string"""
+        """
+        to_string(CVodeBase self) -> std::string
+
+        virtual
+        std::string to_string() const =0
+
+        Returns a string representation of the solver. 
+        """
         return _cmf_core.CVodeBase_to_string(self, *args, **kwargs)
 
 
     def get_error(self, *args, **kwargs):
-        """get_error(CVodeBase self) -> cmf::math::num_array"""
+        """
+        get_error(CVodeBase self) -> cmf::math::num_array
+
+        cmf::math::num_array get_error() const
+
+        Error vector of the integrator. 
+        """
         return _cmf_core.CVodeBase_get_error(self, *args, **kwargs)
 
 
     def _get_jacobian(self, *args, **kwargs):
-        """_get_jacobian(CVodeBase self) -> cmf::math::num_array"""
+        """
+        _get_jacobian(CVodeBase self) -> cmf::math::num_array
+
+        virtual
+        cmf::math::num_array _get_jacobian() const
+
+        Returns a continuous 1D array representing the Jacobian columns
+        concatenated.
+
+        In Python, get_jacobian returns the Jacobian as a 2D array 
+        """
         return _cmf_core.CVodeBase__get_jacobian(self, *args, **kwargs)
 
     __swig_destroy__ = _cmf_core.delete_CVodeBase
@@ -14686,7 +14836,7 @@ class CVodeDense(CVodeBase):
     The solver calculates for each step the full Jacobian matrix of the
     system using a difference quotient approximation of the real Jacobian
 
-    C++ includes: cvode3.h 
+    C++ includes: cvode.h 
     """
 
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
@@ -14711,7 +14861,7 @@ class CVodeAdams(CVodeBase):
 
     Explizit multistep solver using CVode.
 
-    C++ includes: cvode3.h 
+    C++ includes: cvode.h 
     """
 
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
@@ -14735,7 +14885,7 @@ class CVodeBanded(CVodeBase):
 
     implicit BDF CVode solver with a banded Jacobian approximation
 
-    C++ includes: cvode3.h 
+    C++ includes: cvode.h 
     """
 
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
@@ -14761,7 +14911,7 @@ class CVodeDiag(CVodeBase):
     implicit BDF CVode solver with a one line diagonal Jacobian
     approximation
 
-    C++ includes: cvode3.h 
+    C++ includes: cvode.h 
     """
 
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
@@ -14784,7 +14934,7 @@ class CVodeKrylov(CVodeBase):
 
     implicit BDF CVode solver with a Krylov preconditioner
 
-    C++ includes: cvode3.h 
+    C++ includes: cvode.h 
     """
 
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')

@@ -75522,7 +75522,7 @@ SWIGINTERN PyObject *_wrap_RootUptakeStressFunction_Tact(PyObject *SWIGUNUSEDPAR
   PyObject * obj1 = 0 ;
   PyObject * obj2 = 0 ;
   char *  kwnames[] = {
-    (char *) "self",(char *) "soilLayer",(char *) "Tpot", NULL 
+    (char *) "self",(char *) "soillayer",(char *) "Tpot", NULL 
   };
   real result;
   
@@ -93578,10 +93578,10 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"LayerBypass_swigregister", LayerBypass_swigregister, METH_VARARGS, NULL},
 	 { (char *)"LayerBypass_swiginit", LayerBypass_swiginit, METH_VARARGS, NULL},
 	 { (char *)"RootUptakeStressFunction_Tact", (PyCFunction) _wrap_RootUptakeStressFunction_Tact, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
-		"RootUptakeStressFunction_Tact(RootUptakeStressFunction self, SoilLayer soilLayer, real Tpot) -> real\n"
+		"RootUptakeStressFunction_Tact(RootUptakeStressFunction self, SoilLayer soillayer, real Tpot) -> real\n"
 		"\n"
 		"virtual real\n"
-		"Tact(const cmf::upslope::SoilLayer *soilLayer, real Tpot) const =0\n"
+		"Tact(const cmf::upslope::SoilLayer *soillayer, real Tpot) const =0\n"
 		"\n"
 		"Calculates the water stress for a layer.\n"
 		"\n"

@@ -154,7 +154,7 @@ mechanism is the CVODE solver by Hindmarsh et al. (2005).
 It uses an up to order 5 Gears method, but checks the stability
 constraint to reduce the order in very stiff cases. The freely available
 CVODE code is integrated into cmf. The solver is called and managed by
-the [CVodeIntegrator](@ref cmf::math::CVodeIntegrator) class.
+the derivations of the [CVodeBase](@ref cmf::math::CVodeBase) class.
 
 Due to the high stiffness of models using the Richards equation, the
 CVODE solver is the choice for all models with physical based transport
