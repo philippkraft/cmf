@@ -22,7 +22,7 @@
 #include <omp.h>
 #endif
 using namespace std;
-cmf::math::ImplicitEuler::ImplicitEuler(StateVariableOwner& states, 
+cmf::math::ImplicitEuler::ImplicitEuler(cmf::math::StateVariableList& states,
 										real epsilon/*=1e-9*/,
 										cmf::math::Time tStepMin/*=10.0/(3600.0*24.0)*/ ) 
 : Integrator(states,epsilon),dt_min(tStepMin)
@@ -66,7 +66,7 @@ real cmf::math::ImplicitEuler::error_exceedance( const num_array& compare,ptrdif
 	return res;
 }
 
-void cmf::math::ImplicitEuler::add_states( cmf::math::StateVariableOwner& stateOwner ) 
+void cmf::math::ImplicitEuler::add_states( cmf::math::StateVariableList& stateOwner )
 {
 	Integrator::add_states(stateOwner);
 	oldStates.resize(ptrdiff_t(m_States.size()));
@@ -78,7 +78,7 @@ void cmf::math::ImplicitEuler::add_states( cmf::math::StateVariableOwner& stateO
 void cmf::math::ImplicitEuler::set_abstol()
 {
 	abstol.resize(ptrdiff_t(m_States.size()));
-	for (ptrdiff_t i = 0; i < m_States.size(); ++i)
+	for (size_t i = 0; i < m_States.size(); ++i)
 		abstol[i] = m_States[i]->get_abs_errtol(Epsilon * 1e-3);
 
 }

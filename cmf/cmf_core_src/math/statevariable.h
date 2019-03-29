@@ -98,7 +98,6 @@ namespace cmf {
 		///		@endcode
 		///
 	  
-	  class StateVariableList;
 	  class StateVariable {
 		private:
 			bool m_StateIsNew;
@@ -145,17 +144,8 @@ namespace cmf {
 
 		};
 
-		class StateVariableList;
-		/// An abstract class, that owns one or more state variables, that can add them to a vector of state variables in a certain order
-		class StateVariableOwner
-		{
-		public:
-			/// Add the state variables, owned by an object derived from StateVariableOwner, to the given vector
-			virtual StateVariableList get_states()=0;
-			virtual ~StateVariableOwner() {}
-		};
 
-		class StateVariableList : public StateVariableOwner {
+		class StateVariableList {
 			typedef std::vector<StateVariable::ptr> state_vector;
 			state_vector m_vector;
 		public:
@@ -170,8 +160,8 @@ namespace cmf {
 			void append(StateVariable::ptr sv) {
 				m_vector.push_back(sv);
 			}
-			void extend(StateVariableOwner& svo) {
-				(*this) += svo.get_states();
+			void extend(StateVariableList& svl) {
+				(*this) += svl;
 			}
 			StateVariableList get_states() {
 				return *this;
@@ -182,9 +172,6 @@ namespace cmf {
 			StateVariableList& operator +=(const StateVariableList& food) {
 				m_vector.insert(m_vector.end(),food.m_vector.begin(),food.m_vector.end());
 				return *this;
-			}
-			StateVariableList& operator +=(StateVariableOwner& svo) {
-				return (*this)+=svo.get_states();
 			}
 			size_t size() const {return m_vector.size();}
 			virtual ~StateVariableList() {}

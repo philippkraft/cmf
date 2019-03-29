@@ -167,7 +167,8 @@ void cmf::water::WaterStorage::add_connected_states(cmf::math::StateVariable::li
 	}
 }
 
-cmf::math::StateVariableList cmf::water::WaterStorage::get_states()
+
+cmf::water::WaterStorage::operator cmf::math::StateVariableList()
 {
 	cmf::math::StateVariableList q;
 	q.append(cmf::water::WaterStorage::ptr(*this));

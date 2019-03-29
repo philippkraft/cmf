@@ -44,12 +44,12 @@ namespace cmf {
 				}
 			}
 			/// Only there to override Integrator::AddStatesFromOwner. Throws an exception. Use add_states_to_integrator instead
-			void add_states(cmf::math::StateVariableOwner& stateOwner)
+			void add_states(cmf::math::StateVariableList& stateOwner)
 			{
 				throw std::runtime_error("States can only be added to one integrator of the multi integrator. Use add_state_to_integrator");
 			}
-			/// Add state variables from a StateVariableOwner
-			void add_states_to_integrator(cmf::math::StateVariableOwner& stateOwner, int integrator_position)
+			/// Add state variables from a cmf::math::StateVariableList
+			void add_states_to_integrator(cmf::math::StateVariableList& stateOwner, int integrator_position)
 			{
 				integ_ptr& integ=m_integrators.at(integrator_position<0 ? m_integrators.size()-integrator_position : integrator_position);
 				integ->add_states(stateOwner);

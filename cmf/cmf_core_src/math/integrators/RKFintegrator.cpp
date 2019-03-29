@@ -21,7 +21,7 @@
 #include <omp.h>
 #endif
 using namespace std;
-cmf::math::RKFIntegrator::RKFIntegrator(StateVariableOwner& states, real epsilon/*=1e-9*/,cmf::math::Time _dt_min/*=10.0/(3600.0*24.0)*/ ) : 
+cmf::math::RKFIntegrator::RKFIntegrator(cmf::math::StateVariableList& states, real epsilon/*=1e-9*/,cmf::math::Time _dt_min/*=10.0/(3600.0*24.0)*/ ) :
 Integrator(states,epsilon),oldStates(m_States.size()),dt_min(_dt_min)
 {	
 	for (int i = 0; i < 6 ; i++)
@@ -38,7 +38,7 @@ cmf::math::RKFIntegrator::RKFIntegrator( const cmf::math::RKFIntegrator& forCopy
 {
 	
 }
-void cmf::math::RKFIntegrator::add_states( cmf::math::StateVariableOwner& stateOwner )
+void cmf::math::RKFIntegrator::add_states( cmf::math::StateVariableList& stateOwner )
 {
 	Integrator::add_states(stateOwner);
 	oldStates.resize(size());

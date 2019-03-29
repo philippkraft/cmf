@@ -71,7 +71,7 @@ namespace cmf {
 
 		/// This class is the basic landscape object. It is the owner of water storages, and the upper and lower boundary conditions 
 		/// of the system (rainfall, atmospheric vapor, deep groundwater)
-		class Cell : public cmf::math::StateVariableOwner {
+		class Cell {
 			Cell(const Cell& cpy);
 			friend class project;
 			/// @name Location
@@ -326,7 +326,7 @@ namespace cmf {
 			Cell(double x,double y,double z,double area,cmf::project & _project);
 			std::string to_string() const;
 			//@}
-			cmf::math::StateVariableList get_states();
+			operator cmf::math::StateVariableList();
 		};
 
 		

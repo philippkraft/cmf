@@ -35,7 +35,7 @@ namespace cmf {
 
 	/// @brief The study area, holding all cells, outlets and streams
 	/// \todo Describe tracers
-	class project	: public cmf::math::StateVariableOwner
+	class project
 	{
 	private:
 		friend class cmf::upslope::Cell;
@@ -45,8 +45,6 @@ namespace cmf {
 		size_t add_node(cmf::water::flux_node::ptr node);
 
 	public:
-        /// @brief Returns all state variables of the project. Mostly for internal use.
-		cmf::math::StateVariableList get_states(); 
 		/// @brief Removes a node from the repository.
 		///
 		/// Removes a node (boundary condition or water storage) from the node repository
@@ -205,8 +203,9 @@ namespace cmf {
 		
 		/// Returns a list of all storages of this project
 		cmf::water::node_list get_storages();
+        operator cmf::math::StateVariableList();
 #ifndef SWIG
-		cmf::upslope::Cell& operator[](ptrdiff_t index) {
+        cmf::upslope::Cell& operator[](ptrdiff_t index) {
 			return this->get_cell(index);
 		}
 #endif

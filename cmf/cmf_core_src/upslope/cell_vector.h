@@ -10,7 +10,7 @@ namespace cmf {
 		class cell_const_iterator;
 
 		/// A cell vector holds a bunch of cells
-		class cell_vector : public cmf::math::StateVariableOwner {
+		class cell_vector {
 		private:
 			typedef std::vector<cmf::upslope::Cell*> cellvec;
 			cellvec m_cells;
@@ -27,7 +27,6 @@ namespace cmf {
 			cmf::upslope::Cell& operator[](ptrdiff_t index) {
 				return *m_cells.at(index >=0 ? index : m_cells.size() + index);
 			}
-						cmf::math::StateVariableList get_states();
 			void append(cmf::upslope::Cell& cell) {
 				m_cells.push_back(&cell);
 			}

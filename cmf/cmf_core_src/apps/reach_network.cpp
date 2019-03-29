@@ -127,18 +127,18 @@ namespace cmf {
 
 
 		std::unique_ptr<cmf::math::CVodeBase> make_solver(cmf::project p, SolverType _solver) {
-			using namespace cmf::math; 
+			using namespace cmf::math;
+			cmf::math::StateVariableList states(p);
 			typedef std::unique_ptr<CVodeBase> solver_type;
 			switch (_solver) {
-
 			case dense:
-				return solver_type(new CVodeDense(p));
+				return solver_type(new CVodeDense(states));
 			case banded:
-				return solver_type(new CVodeBanded(p));
+				return solver_type(new CVodeBanded(states));
 			case klu:
-				return solver_type(new CVodeKLU(p));
+				return solver_type(new CVodeKLU(states));
 			case krylov:
-				return solver_type(new CVodeKrylov(p));
+				return solver_type(new CVodeKrylov(states));
 			default:
 				throw std::runtime_error("Unknown solver type");
 			}

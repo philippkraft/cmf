@@ -44,7 +44,7 @@ cmf::math::Integrator(templ),order(1),stepNo(0), error_position(-1),max_order(2)
 	calc_newState[1] = &cmf::math::BDF2::Gear2newState; // 2nd order Gear
 }
 
-cmf::math::BDF2::BDF2( cmf::math::StateVariableOwner& states, real epsilon/*=1e-9*/,cmf::math::Time tStepMin/*=Time::Milliseconds(10)*/ )
+cmf::math::BDF2::BDF2( cmf::math::StateVariableList& states, real epsilon/*=1e-9*/,cmf::math::Time tStepMin/*=Time::Milliseconds(10)*/ )
  : Integrator(states,epsilon), order(1),stepNo(0), dt_min(tStepMin), error_position(-1),max_order(2)
 {
 	// Assessing multistep functions
@@ -53,7 +53,7 @@ cmf::math::BDF2::BDF2( cmf::math::StateVariableOwner& states, real epsilon/*=1e-
 
 }
 // Adds states to the vector of states
-void cmf::math::BDF2::add_states( cmf::math::StateVariableOwner& stateOwner )
+void cmf::math::BDF2::add_states( cmf::math::StateVariableList& stateOwner )
 {
 	// Call base class function
 	Integrator::add_states(stateOwner);

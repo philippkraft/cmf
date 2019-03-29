@@ -239,3 +239,37 @@ void cmf::math::Integrator::integrate_until( cmf::math::Time t_max,cmf::math::Ti
 	}
 	if (i>0) m_dt = (t_max - start)/i;
 }
+
+cmf::math::Integrator::Integrator(cmf::math::StateVariableList &states, real epsilon)
+        : m_States(),Epsilon(epsilon),m_dt(day),m_t(day*0),
+          use_OpenMP(true), reset_integratables(true)
+{
+    this->add_states(states);
+}
+
+cmf::math::Integrator::Integrator(const cmf::math::Integrator &other)
+		: m_States(), Epsilon(other.Epsilon), m_dt(other.m_dt), m_t(other.m_t),
+		  reset_integratables(other.reset_integratables), use_OpenMP(other.use_OpenMP)
+{}
+
+void cmf::math::Integrator::add_states(const cmf::math::StateVariableList &states) {
+	m_States.insert(m_States.end(), states.begin(), states.end());
+}
+
+cmf::math::StateVariable::ptr cmf::math::Integrator::operator[](ptrdiff_t position) {
+	if (position < 0) position += m_States.size();
+	if (position < m_States.size()) return m_States[position];
+	throw std::out_of_range("state not in integrator");
+}
+
+cmf::math::num_array cmf::math::Integrator::get_dxdt(cmf::math::Time time) const {
+	num_array result(this->size());
+	copy_dxdt(time,result);
+	return result;
+}
+
+cmf::math::num_array cmf::math::Integrator::get_state_values() const {
+	num_array result(this->size());
+	copy_states(result);
+	return result;
+}

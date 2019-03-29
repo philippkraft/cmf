@@ -107,7 +107,7 @@ namespace cmf {
 
 			std::string _error_msg;
 			virtual void set_solver()=0;
-			CVodeBase(cmf::math::StateVariableOwner& states, real epsilon = 1e-9);
+			CVodeBase(cmf::math::StateVariableList& states, real epsilon = 1e-9);
 
 		public:
 			/// @brief the limits for the CVode solver, see CVodeOptions
@@ -153,7 +153,7 @@ namespace cmf {
 		class CVodeDense : public CVodeBase {
 		public:
 			/// @brief Creates a new implicit dense CVode solver 
-			CVodeDense(cmf::math::StateVariableOwner& states, real epsilon = 1e-9);
+			CVodeDense(cmf::math::StateVariableList& states, real epsilon = 1e-9);
 			std::string to_string() const {
 				return "CVodeDense()";
 			}
@@ -166,7 +166,7 @@ namespace cmf {
 		/// @brief Explizit multistep solver using CVode
 		class CVodeAdams : public CVodeBase {
 		public:
-			CVodeAdams(cmf::math::StateVariableOwner& states, real epsilon = 1e-9);
+			CVodeAdams(cmf::math::StateVariableList& states, real epsilon = 1e-9);
 			std::string to_string() const;
 		protected:
 			void set_solver() {
@@ -179,7 +179,7 @@ namespace cmf {
 		public:
 			/// @brief Width of the band to both sides of the diagonal
 			int bandwidth;
-			CVodeBanded(cmf::math::StateVariableOwner& states, real epsilon = 1e-9, int w=5);
+			CVodeBanded(cmf::math::StateVariableList& states, real epsilon = 1e-9, int w=5);
 			std::string to_string() const;
 		protected:
 			void set_solver();
@@ -188,7 +188,7 @@ namespace cmf {
 		/// @brief implicit BDF CVode solver with a one line diagonal Jacobian approximation
 		class CVodeDiag : public CVodeBase {
 		public:
-			CVodeDiag(cmf::math::StateVariableOwner& states, real epsilon = 1e-9);
+			CVodeDiag(cmf::math::StateVariableList& states, real epsilon = 1e-9);
 			std::string to_string() const {
 				return "CVodeDiag()";
 			}
@@ -203,7 +203,7 @@ namespace cmf {
 			int bandwidth;
 			/// @brief Type of the preconditioner 'L'->left, 'R'->right, 'B'->both, 'N'->None, default 'L'
 			char preconditioner;
-			CVodeKrylov(cmf::math::StateVariableOwner& states, real epsilon = 1e-9, 
+			CVodeKrylov(cmf::math::StateVariableList& states, real epsilon = 1e-9,
 				int w=5, char p='L');
 			std::string to_string() const;
 
@@ -213,7 +213,7 @@ namespace cmf {
 
 		class CVodeKLU : public CVodeBase {
 		public:
-			CVodeKLU(cmf::math::StateVariableOwner& states, real epsilon = 1e-9);
+			CVodeKLU(cmf::math::StateVariableList& states, real epsilon = 1e-9);
 			std::string to_string() const;
 			virtual cmf::math::num_array _get_jacobian() const;
 		protected:

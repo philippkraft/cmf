@@ -22,6 +22,7 @@
 #include <algorithm>
 #include "collections.h"
 #include "WaterStorage.h"
+
 real cmf::water::node_list::global_water_balance( cmf::math::Time t )	const
 {
 	real sum=0;
@@ -166,24 +167,20 @@ void cmf::water::node_list::append( flux_node::ptr node )
 	m_nodes.push_back(node);
 }
 
-cmf::math::StateVariableList cmf::water::node_list::get_states()
+cmf::water::node_list::operator cmf::math::StateVariableList()
 {
 	cmf::math::StateVariableList q;
-	for(node_vector::const_iterator it = m_nodes.begin(); it != m_nodes.end(); ++it)
+	for(auto& node: m_nodes)
 	{
-		cmf::math::StateVariableOwner *state_owner = dynamic_cast<cmf::math::StateVariableOwner *>(it->get());
-		cmf::math::StateVariable::ptr state = std::dynamic_pointer_cast<cmf::math::StateVariable>(*it);
-		if(state_owner) 
-			q.extend(*state_owner);
-		else if (state) 
-			q.append(state);
+		auto stor = cmf::water::WaterStorage::cast(node);
+		if(stor) q += cmf::math::StateVariableList(*stor);
 	}
 	return q;
 }
 
 cmf::water::node_list& cmf::water::node_list::operator+=( const cmf::water::node_list& right )
 {
-	for (size_t i = 0; i < right.size() ; ++i)
+	for(size_t i = 0; i < right.size() ; ++i)
 	{
 		append(right[i]);
 	}

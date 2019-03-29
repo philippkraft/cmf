@@ -270,7 +270,7 @@ void cmf::math::CVodeBase::reset()
 	_implementation->reset();
 }
 
-cmf::math::CVodeBase::CVodeBase(cmf::math::StateVariableOwner & states, real epsilon)
+cmf::math::CVodeBase::CVodeBase(cmf::math::StateVariableList & states, real epsilon)
 	: Integrator(states, epsilon)
 {
 	cmf::math::CVodeBase::Impl* p_impl = new cmf::math::CVodeBase::Impl(this);
@@ -321,7 +321,7 @@ cmf::math::num_array cmf::math::CVodeBase::get_error() const
 	return _implementation->get_error();
 }
 
-cmf::math::CVodeDense::CVodeDense(cmf::math::StateVariableOwner & states, real epsilon)
+cmf::math::CVodeDense::CVodeDense(cmf::math::StateVariableList & states, real epsilon)
 	: CVodeBase(states, epsilon)
 {}
 
@@ -362,7 +362,7 @@ void cmf::math::CVodeDense::set_solver()
 	*/
 }
 
-cmf::math::CVodeBanded::CVodeBanded(cmf::math::StateVariableOwner & states, real epsilon, int _bandwidth)
+cmf::math::CVodeBanded::CVodeBanded(cmf::math::StateVariableList & states, real epsilon, int _bandwidth)
 	: CVodeBase(states, epsilon), bandwidth(_bandwidth)
 {}
 
@@ -387,7 +387,7 @@ void cmf::math::CVodeBanded::set_solver()
 
 }
 
-cmf::math::CVodeDiag::CVodeDiag(cmf::math::StateVariableOwner & states, real epsilon)
+cmf::math::CVodeDiag::CVodeDiag(cmf::math::StateVariableList & states, real epsilon)
 	: CVodeBase(states, epsilon)
 {}
 
@@ -401,7 +401,7 @@ void cmf::math::CVodeDiag::set_solver()
 
 }
 
-cmf::math::CVodeKrylov::CVodeKrylov(cmf::math::StateVariableOwner & states, real epsilon,
+cmf::math::CVodeKrylov::CVodeKrylov(cmf::math::StateVariableList & states, real epsilon,
 	int _bandwidth, char _preconditioner)
 	: CVodeBase(states, epsilon), bandwidth(_bandwidth), preconditioner(_preconditioner)
 {}
@@ -460,7 +460,7 @@ std::string cmf::math::CVodeInfo::to_string() const
 	return out.str();
 }
 
-cmf::math::CVodeAdams::CVodeAdams(cmf::math::StateVariableOwner & states, real epsilon)
+cmf::math::CVodeAdams::CVodeAdams(cmf::math::StateVariableList & states, real epsilon)
 	:CVodeBase(states, epsilon)
 {
 	this->_implementation->use_stiff_solver = false;
@@ -471,7 +471,7 @@ std::string cmf::math::CVodeAdams::to_string() const
 	return "CVodeAdams()";
 }
 
-cmf::math::CVodeKLU::CVodeKLU(cmf::math::StateVariableOwner & states, real epsilon)
+cmf::math::CVodeKLU::CVodeKLU(cmf::math::StateVariableList & states, real epsilon)
 	: CVodeBase(states, epsilon)
 {
 }

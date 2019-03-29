@@ -83,8 +83,8 @@ namespace cmf {
 			int error_position;
 		public:
 
-			/// Add state variables from a StateVariableOwner
-			void add_states(cmf::math::StateVariableOwner& stateOwner);
+			/// Add state variables from a cmf::math::StateVariableList
+			void add_states(cmf::math::StateVariableList& stateOwner);
 			/// Returns the position of the biggest error
 			int get_error_position() const
 			{
@@ -105,7 +105,7 @@ namespace cmf {
 			/// @param states States to be added to the solver
 			/// @param epsilon relative error tolerance per time step (default=1e-9)
 			/// @param tStepMin minimum time step (default=10s)
-			BDF2(cmf::math::StateVariableOwner& states, real epsilon=1e-9,cmf::math::Time tStepMin=cmf::math::timespan(10));
+			BDF2(cmf::math::StateVariableList& states, real epsilon=1e-9,cmf::math::Time tStepMin=cmf::math::timespan(10));
 			
 			/// Constructs a new BDF2 integrator
 			/// @param templ Template to be used to construct a BDF2 method

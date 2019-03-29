@@ -47,7 +47,7 @@ namespace cmf {
 		/// \f}
 		///
 		/// @todo Check the head based state mode 
-		class WaterStorage : public cmf::math::StateVariable,public cmf::math::StateVariableOwner,public cmf::water::flux_node
+		class WaterStorage : public cmf::math::StateVariable, public cmf::water::flux_node
 		{
 		public:
 			typedef std::shared_ptr<cmf::water::WaterStorage> ptr;
@@ -61,7 +61,6 @@ namespace cmf {
 			typedef std::vector<std::shared_ptr<cmf::water::SoluteStorage> > SoluteStorageMap;
 			SoluteStorageMap m_Concentrations;
 			void initializeSoluteStorages(const cmf::water::solute_vector& solutes);
-
 
 		protected:
 			virtual real head_to_volume(real head) const;
@@ -78,8 +77,8 @@ namespace cmf {
 			virtual bool is_connected(const cmf::math::StateVariable& other) const;
 #ifndef SWIG
 			virtual void add_connected_states(cmf::math::StateVariable::list& states);
+            operator cmf::math::StateVariableList();
 #endif
-			cmf::math::StateVariableList get_states();
 			/// @brief creates a water storage (abstract class)
 			/// @param project The project the waterstorage belongs to
 			/// @param Name Name of the water storage

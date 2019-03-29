@@ -31,7 +31,7 @@ namespace cmf {
 		/// To accelerate data access, one can use the node_list object
 		///
 		/// @todo Add a get_volume / set_volume function pair, to complement get_potential / set_potential
-		class node_list	: public cmf::math::StateVariableOwner
+		class node_list
 		{
 		private:
 
@@ -73,7 +73,7 @@ namespace cmf {
 			node_list getslice(ptrdiff_t begin,ptrdiff_t end,ptrdiff_t step=1) const;
 
 			/// @brief Implements StateVariableOwner
-			cmf::math::StateVariableList get_states();
+			operator cmf::math::StateVariableList();
 			/// @brief Adds a flux node to the list
 			void append(flux_node::ptr node);
 			/// @brief Removes a flux node from the list, returns true if successful

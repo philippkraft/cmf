@@ -2962,7 +2962,7 @@ get_state(ptrdiff_t position) const
 Returns the statevariable at position Simplifies the assessment of
 state variables. ";
 
-%feature("docstring")  cmf::math::CVodeAdams::get_states "cmf::math::num_array get_states() const ";
+%feature("docstring")  cmf::math::CVodeAdams::get_state_values "cmf::math::num_array get_states() const ";
 
 %feature("docstring")  cmf::math::CVodeAdams::get_states "StateVariableList get_states()
 

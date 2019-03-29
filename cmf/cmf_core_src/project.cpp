@@ -107,7 +107,7 @@ void cmf::project::use_nearest_rainfall( double z_weight/*=0*/ )
 		it->set_rain_source(cmf::atmosphere::RainfallStationReference::from_nearest_station(*this,it->get_position(),z_weight));
 }
 
-cmf::math::StateVariableList cmf::project::get_states()
+cmf::project::operator cmf::math::StateVariableList()
 {
 	using namespace cmf::math;
 	using namespace cmf::water;
@@ -116,12 +116,12 @@ cmf::math::StateVariableList cmf::project::get_states()
 // 		WaterStorage::ptr storage = WaterStorage::cast(*n_it);
 // 		q.extend(*storage);
 // 	}	
-	for(std::vector<cmf::river::Reach::ptr>::iterator r_it = m_reaches.begin(); r_it != m_reaches.end(); ++r_it)
-		q.extend(**r_it);
+	for(auto& reach: m_reaches)
+		q += cmf::math::StateVariableList(*reach);
 
-	for(cmf::upslope::cell_vector::iterator it = m_cells.begin(); it != m_cells.end(); ++it)
-		q.extend(*it);
-	q.extend(m_nodes);
+	for(auto& cell: m_cells)
+		q += cmf::math::StateVariableList(cell);
+	q += cmf::math::StateVariableList(m_nodes);
 
 	return q;
 

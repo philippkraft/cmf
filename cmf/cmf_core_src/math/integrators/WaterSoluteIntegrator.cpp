@@ -31,7 +31,7 @@ void SoluteWaterIntegrator::erase_integrators() {
 	m_soluteintegrators.erase(m_soluteintegrators.begin(),m_soluteintegrators.end());
 }
 
-void cmf::math::SoluteWaterIntegrator::add_states( cmf::math::StateVariableOwner& stateOwner )
+void cmf::math::SoluteWaterIntegrator::add_states( cmf::math::StateVariableList& stateOwner )
 {
 	Integrator::add_states(stateOwner);
 	distribute_states();
@@ -89,7 +89,7 @@ cmf::math::SoluteWaterIntegrator::SoluteWaterIntegrator(
 		cmf::water::solute_vector _solutes, 
 		const cmf::math::Integrator& water_integrator_templ, 
 		const cmf::math::Integrator& solute_integrator_templ, 
-		cmf::math::StateVariableOwner& states ) 
+		cmf::math::StateVariableList& states )
 		: Integrator(), solutes(_solutes), m_waterintegrator(0)
 {
 	m_waterintegrator =water_integrator_templ.copy();

@@ -29,8 +29,8 @@ namespace cmf {
 			num_array 
 				dxdt;
 		public:
-			/// Add state variables from a StateVariableOwner
-			void add_states(cmf::math::StateVariableOwner& stateOwner)
+			/// Add state variables from a cmf::math::StateVariableList
+			void add_states(cmf::math::StateVariableList& stateOwner)
 			{
 				Integrator::add_states(stateOwner);
 				dxdt.resize(size());
@@ -39,7 +39,7 @@ namespace cmf {
 			/// Constructs a new ExplicitEuler_fixed from a pointer to a vector of state variables
 			/// @note The Integrator becomes the owner of states
 			/// @param states Statevariables of the system
-			ExplicitEuler_fixed(StateVariableOwner& states)
+			ExplicitEuler_fixed(cmf::math::StateVariableList& states)
 				: Integrator(states,0.0),
 				dxdt(m_States.size())
 			{}
@@ -86,8 +86,8 @@ namespace cmf {
 			num_array 
 				dxdt0, dxdt1, old_states;
 		public:
-			/// Add state variables from a StateVariableOwner
-			void add_states(cmf::math::StateVariableOwner& stateOwner)
+			/// Add state variables from a cmf::math::StateVariableList
+			void add_states(cmf::math::StateVariableList& stateOwner)
 			{
 				Integrator::add_states(stateOwner);
 				dxdt0=num_array(size());
@@ -100,7 +100,7 @@ namespace cmf {
 			/// @note The Integrator becomes the owner of states
 			/// @param states Statevariable owner of the system
 			/// @param Alpha Weight factor \f$\alpha\f$ to weight \f$f(y^n)\f$ and \f$f(y^{n+1})\f$
-			HeunIntegrator(StateVariableOwner& states, real Alpha=0.5)
+			HeunIntegrator(cmf::math::StateVariableList& states, real Alpha=0.5)
 				: Integrator(states,0.0),alpha(Alpha)
 			{}
 

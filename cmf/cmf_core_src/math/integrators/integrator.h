@@ -60,40 +60,15 @@ namespace cmf {
 			void add_values_to_states(const num_array& operands);
 
 #endif
-			StateVariable::ptr operator[](long int position) {
-				if (position < 0) position += m_States.size();
-				if (position < m_States.size()) return m_States[position];
-				throw std::out_of_range("state not in integrator");
-			}
-			cmf::math::num_array get_dxdt(Time time) const 
-			{
-				num_array result(this->size());
-				copy_dxdt(time,result);
-				return result;
-			}
-			cmf::math::num_array get_states() const 
-			{
-				num_array result(this->size());
-				copy_states(result);
-				return result;
-			}
+			StateVariable::ptr operator[](ptrdiff_t position);
+			cmf::math::num_array get_dxdt(Time time) const;
+			cmf::math::num_array get_state_values() const;
 
-			/// Add state variables from a StateVariableOwner
-			virtual void add_states(cmf::math::StateVariableOwner& stateOwner) {
-				StateVariableList sq = stateOwner.get_states();
-				m_States.insert(m_States.end(),sq.begin(),sq.end());
-			}
-			/// Adds a single state variable to the integrator
-			virtual void add_single_state(cmf::math::StateVariable::ptr state) {
-				m_States.push_back(state);
-			}
-			
+
 			/// Public access to integratables
 			integratable_list integratables;
 			/// If true, the integratables of this solver are reset
 			bool reset_integratables;
-
-
 
 
 			//@}
@@ -171,16 +146,13 @@ namespace cmf {
 				: m_States(), Epsilon(epsilon),m_dt(day),m_t(day),
 				  use_OpenMP(true), reset_integratables(true)
 			{}
-			Integrator(cmf::math::StateVariableOwner& states,real epsilon=1e-9)
-				: m_States(),Epsilon(epsilon),m_dt(day),m_t(day*0),
-				  use_OpenMP(true), reset_integratables(true)
-			{
-				this->add_states(states);
+			Integrator(cmf::math::StateVariableList& states,real epsilon=1e-9);
+			Integrator(const cmf::math::Integrator& other);
+			void add_states(const cmf::math::StateVariableList& states);
+			void add_single_state(cmf::math::StateVariable::ptr state) {
+				// This function is needed for the WaterSoluteIntegrator. Do not delete
+				m_States.push_back(state);
 			}
-			Integrator(const cmf::math::Integrator& other) 
-				: m_States(), Epsilon(other.Epsilon), m_dt(other.m_dt), m_t(other.m_t), 
-				  reset_integratables(other.reset_integratables), use_OpenMP(other.use_OpenMP)
-			{}
 			/// Polymorphic copy constructor
 			virtual Integrator * copy() const=0;
 			//@}

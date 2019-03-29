@@ -300,13 +300,13 @@ void Cell::set_rain_source( cmf::atmosphere::RainSource::ptr new_source )
 	m_rainfall = new_source;
 }
 
-cmf::math::StateVariableList Cell::get_states()
+Cell::operator cmf::math::StateVariableList()
 {
 	cmf::math::StateVariableList q;
 	for (size_t i = 0; i < storage_count() ; ++i)
-		q.extend(*get_storage(i));
+		q += *get_storage(i);
 	for (size_t i = 0; i < layer_count() ; ++i)
-		q.extend(*get_layer(i));
+		q += *get_layer(i);
 	return q;
 }
 
