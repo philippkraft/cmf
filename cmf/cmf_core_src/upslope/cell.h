@@ -20,7 +20,7 @@
 #define cell_h__
 #include "../atmosphere/meteorology.h"
 #include "../atmosphere/precipitation.h"
-#include "../geometry/geometry.h"
+#include "../math/geometry.h"
 #include "../water/flux_connection.h"
 #include "vegetation/StructVegetation.h"
 #include "../water/WaterStorage.h"

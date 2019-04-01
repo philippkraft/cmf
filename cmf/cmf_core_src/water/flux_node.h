@@ -21,7 +21,7 @@
 
 #include "../math/time.h"
 #include "../math/real.h"
-#include "../geometry/geometry.h"
+#include "../math/geometry.h"
 #include "Solute.h"
 #include <map>
 #include <vector>

@@ -20,7 +20,7 @@
 #define collections_h__
 #include "flux_node.h"
 #include "boundary_condition.h"
-#include "../geometry/geometry.h"
+#include "../math/geometry.h"
 #include "../math/num_array.h"
 namespace cmf {
 	namespace water {

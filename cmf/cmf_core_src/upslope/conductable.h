@@ -2,7 +2,7 @@
 #define conductable_h__
 
 #include "../cmfmemory.h"
-#include "../geometry/geometry.h"
+#include "../math/geometry.h"
 #include "../water/flux_node.h"
 namespace cmf {
 	namespace upslope {

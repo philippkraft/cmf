@@ -23,7 +23,7 @@
 #include <set>
 #include "atmosphere/meteorology.h"
 #include "atmosphere/precipitation.h"
-#include "geometry/geometry.h"
+#include "math/geometry.h"
 #include "upslope/cell.h"
 #include "reach/Reach.h"
 #include "upslope/Soil/RetentionCurve.h"

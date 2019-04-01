@@ -18,7 +18,7 @@
 //   
 #include "subsurfacefluxes.h"
 #include "../../math/real.h"
-#include "../../geometry/geometry.h"
+#include "../../math/geometry.h"
 using namespace cmf::water;
 using namespace cmf::upslope;
 using namespace cmf::geometry;

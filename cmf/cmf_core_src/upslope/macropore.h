@@ -21,7 +21,7 @@
 
 #include "../water/WaterStorage.h"
 #include "../water/flux_connection.h"
-#include "../geometry/geometry.h"
+#include "../math/geometry.h"
 #include "conductable.h"
 #include "../cmfmemory.h"
 #include "../water/flux_connection.h"
