@@ -2794,39 +2794,7 @@ StateVariable.is_connected = new_instancemethod(_cmf_core.StateVariable_is_conne
 _cmf_core.StateVariable_swigregister(StateVariable)
 # StateVariable end
 
-class StateVariableOwner(object):
-    """
-
-
-    An abstract class, that owns one or more state variables, that can add
-    them to a vector of state variables in a certain order.
-
-    C++ includes: statevariable.h 
-    """
-
-    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
-
-    def __init__(self, *args, **kwargs):
-        raise AttributeError("No constructor defined - class is abstract")
-    __repr__ = _swig_repr
-
-    def get_states(self, *args, **kwargs):
-        """
-        get_states(StateVariableOwner self) -> StateVariableList
-
-        virtual StateVariableList get_states()=0
-
-        Add the state variables, owned by an object derived from
-        StateVariableOwner, to the given vector. 
-        """
-        return _cmf_core.StateVariableOwner_get_states(self, *args, **kwargs)
-
-    __swig_destroy__ = _cmf_core.delete_StateVariableOwner
-StateVariableOwner.get_states = new_instancemethod(_cmf_core.StateVariableOwner_get_states, None, StateVariableOwner)
-_cmf_core.StateVariableOwner_swigregister(StateVariableOwner)
-# StateVariableOwner end
-
-class StateVariableList(StateVariableOwner):
+class StateVariableList(object):
     """Proxy of C++ cmf::math::StateVariableList class."""
 
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
@@ -2844,7 +2812,7 @@ class StateVariableList(StateVariableOwner):
 
     def extend(self, *args, **kwargs):
         """
-        extend(StateVariableList self, StateVariableOwner svo)
+        extend(StateVariableList self, StateVariableList svl)
 
         void
         extend(StateVariableOwner &svo) 
@@ -2852,13 +2820,17 @@ class StateVariableList(StateVariableOwner):
         return _cmf_core.StateVariableList_extend(self, *args, **kwargs)
 
 
-    def __iadd__(self, *args):
-        """
-        __iadd__(StateVariableList self, StateVariableList food) -> StateVariableList
-        __iadd__(StateVariableList self, StateVariableOwner svo) -> StateVariableList
-        """
-        return _cmf_core.StateVariableList___iadd__(self, *args)
+    def __iadd__(self, *args, **kwargs):
+        """__iadd__(StateVariableList self, StateVariableList food) -> StateVariableList"""
+        return _cmf_core.StateVariableList___iadd__(self, *args, **kwargs)
 
+
+    def __init__(self, *args):
+        """
+        __init__(cmf::math::StateVariableList self) -> StateVariableList
+        __init__(cmf::math::StateVariableList self, StateVariableList for_copy) -> StateVariableList
+        """
+        _cmf_core.StateVariableList_swiginit(self, _cmf_core.new_StateVariableList(*args))
 
     def size(self, *args, **kwargs):
         """
@@ -2875,10 +2847,6 @@ class StateVariableList(StateVariableOwner):
         """__len__(StateVariableList self) -> size_t"""
         return _cmf_core.StateVariableList___len__(self, *args, **kwargs)
 
-
-    def __init__(self, *args, **kwargs):
-        """__init__(cmf::math::StateVariableList self) -> StateVariableList"""
-        _cmf_core.StateVariableList_swiginit(self, _cmf_core.new_StateVariableList(*args, **kwargs))
 StateVariableList.append = new_instancemethod(_cmf_core.StateVariableList_append, None, StateVariableList)
 StateVariableList.extend = new_instancemethod(_cmf_core.StateVariableList_extend, None, StateVariableList)
 StateVariableList.__iadd__ = new_instancemethod(_cmf_core.StateVariableList___iadd__, None, StateVariableList)
@@ -4492,7 +4460,7 @@ class NeumannFlux(flux_connection):
 _cmf_core.NeumannFlux_swigregister(NeumannFlux)
 # NeumannFlux end
 
-class WaterStorage(StateVariable, StateVariableOwner, flux_node):
+class WaterStorage(StateVariable, flux_node):
     """
 
 
@@ -5389,7 +5357,7 @@ class statecontrol_connection(flux_connection):
 _cmf_core.statecontrol_connection_swigregister(statecontrol_connection)
 # statecontrol_connection end
 
-class node_list(StateVariableOwner):
+class node_list(object):
     """
 
 
@@ -7376,7 +7344,7 @@ CellConnector.connect = new_instancemethod(_cmf_core.CellConnector_connect, None
 _cmf_core.CellConnector_swigregister(CellConnector)
 # CellConnector end
 
-class Cell(StateVariableOwner):
+class Cell(object):
     """
 
 
@@ -8148,7 +8116,7 @@ neighbor_iterator.__neq__ = new_instancemethod(_cmf_core.neighbor_iterator___neq
 _cmf_core.neighbor_iterator_swigregister(neighbor_iterator)
 # neighbor_iterator end
 
-class cell_vector(StateVariableOwner):
+class cell_vector(object):
     """
 
 
@@ -13615,7 +13583,7 @@ class project_list_wrapper:
         return '[%i %s of project]' % (len(self),self.name)
 
 
-class project(StateVariableOwner):
+class project(object):
     """
 
 
@@ -14138,7 +14106,7 @@ class Integrator(object):
     __repr__ = _swig_repr
 
     def __getitem__(self, *args, **kwargs):
-        """__getitem__(Integrator self, long position) -> cmf::math::StateVariable::ptr"""
+        """__getitem__(Integrator self, ptrdiff_t position) -> cmf::math::StateVariable::ptr"""
         return _cmf_core.Integrator___getitem__(self, *args, **kwargs)
 
 
@@ -14151,27 +14119,9 @@ class Integrator(object):
         return _cmf_core.Integrator_get_dxdt(self, *args, **kwargs)
 
 
-    def add_states(self, *args, **kwargs):
-        """
-        add_states(Integrator self, StateVariableOwner stateOwner)
-
-        virtual
-        void add_states(cmf::math::StateVariableOwner &stateOwner)
-
-        Add state variables from a StateVariableOwner. 
-        """
-        return _cmf_core.Integrator_add_states(self, *args, **kwargs)
-
-
-    def add_single_state(self, *args, **kwargs):
-        """
-        add_single_state(Integrator self, cmf::math::StateVariable::ptr state)
-
-        virtual void add_single_state(cmf::math::StateVariable::ptr state)
-
-        Adds a single state variable to the integrator. 
-        """
-        return _cmf_core.Integrator_add_single_state(self, *args, **kwargs)
+    def get_state_values(self, *args, **kwargs):
+        """get_state_values(Integrator self) -> cmf::math::num_array"""
+        return _cmf_core.Integrator_get_state_values(self, *args, **kwargs)
 
     integratables = _swig_property(_cmf_core.Integrator_integratables_get, _cmf_core.Integrator_integratables_set)
     reset_integratables = _swig_property(_cmf_core.Integrator_reset_integratables_get, _cmf_core.Integrator_reset_integratables_set)
@@ -14214,16 +14164,15 @@ class Integrator(object):
         return _cmf_core.Integrator_set_state(self, *args, **kwargs)
 
 
-    def get_states(self, *args):
+    def get_states(self, *args, **kwargs):
         """
-        get_states(Integrator self) -> cmf::math::num_array
         get_states(Integrator self) -> StateVariableList
 
         StateVariableList get_states()
 
         gets the state variables of the integrator 
         """
-        return _cmf_core.Integrator_get_states(self, *args)
+        return _cmf_core.Integrator_get_states(self, *args, **kwargs)
 
     __swig_destroy__ = _cmf_core.delete_Integrator
 
@@ -14273,6 +14222,29 @@ class Integrator(object):
         Resets any saved history (for multistep methods) 
         """
         return _cmf_core.Integrator_reset(self, *args, **kwargs)
+
+
+    def add_states(self, *args, **kwargs):
+        """
+        add_states(Integrator self, StateVariableList states)
+
+        virtual
+        void add_states(cmf::math::StateVariableOwner &stateOwner)
+
+        Add state variables from a StateVariableOwner. 
+        """
+        return _cmf_core.Integrator_add_states(self, *args, **kwargs)
+
+
+    def add_single_state(self, *args, **kwargs):
+        """
+        add_single_state(Integrator self, cmf::math::StateVariable::ptr state)
+
+        virtual void add_single_state(cmf::math::StateVariable::ptr state)
+
+        Adds a single state variable to the integrator. 
+        """
+        return _cmf_core.Integrator_add_single_state(self, *args, **kwargs)
 
 
     def copy(self, *args, **kwargs):
@@ -14426,8 +14398,7 @@ class Integrator(object):
 
 Integrator.__getitem__ = new_instancemethod(_cmf_core.Integrator___getitem__, None, Integrator)
 Integrator.get_dxdt = new_instancemethod(_cmf_core.Integrator_get_dxdt, None, Integrator)
-Integrator.add_states = new_instancemethod(_cmf_core.Integrator_add_states, None, Integrator)
-Integrator.add_single_state = new_instancemethod(_cmf_core.Integrator_add_single_state, None, Integrator)
+Integrator.get_state_values = new_instancemethod(_cmf_core.Integrator_get_state_values, None, Integrator)
 Integrator.size = new_instancemethod(_cmf_core.Integrator_size, None, Integrator)
 Integrator.get_state = new_instancemethod(_cmf_core.Integrator_get_state, None, Integrator)
 Integrator.set_state = new_instancemethod(_cmf_core.Integrator_set_state, None, Integrator)
@@ -14436,6 +14407,8 @@ Integrator.get_t = new_instancemethod(_cmf_core.Integrator_get_t, None, Integrat
 Integrator.set_t = new_instancemethod(_cmf_core.Integrator_set_t, None, Integrator)
 Integrator.get_dt = new_instancemethod(_cmf_core.Integrator_get_dt, None, Integrator)
 Integrator.reset = new_instancemethod(_cmf_core.Integrator_reset, None, Integrator)
+Integrator.add_states = new_instancemethod(_cmf_core.Integrator_add_states, None, Integrator)
+Integrator.add_single_state = new_instancemethod(_cmf_core.Integrator_add_single_state, None, Integrator)
 Integrator.copy = new_instancemethod(_cmf_core.Integrator_copy, None, Integrator)
 Integrator.integrate = new_instancemethod(_cmf_core.Integrator_integrate, None, Integrator)
 Integrator.integrate_until = new_instancemethod(_cmf_core.Integrator_integrate_until, None, Integrator)
@@ -14466,6 +14439,18 @@ class BDF2(Integrator):
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
     __repr__ = _swig_repr
 
+    def add_states(self, *args, **kwargs):
+        """
+        add_states(BDF2 self, StateVariableList stateOwner)
+
+        void
+        add_states(cmf::math::StateVariableOwner &stateOwner)
+
+        Add state variables from a StateVariableOwner. 
+        """
+        return _cmf_core.BDF2_add_states(self, *args, **kwargs)
+
+
     def get_error_position(self, *args, **kwargs):
         """
         get_error_position(BDF2 self) -> int
@@ -14482,7 +14467,7 @@ class BDF2(Integrator):
     def __init__(self, *args):
         """
         __init__(cmf::math::BDF2 self, real epsilon=1e-9, Time tStepMin) -> BDF2
-        __init__(cmf::math::BDF2 self, StateVariableOwner states, real epsilon=1e-9, Time tStepMin) -> BDF2
+        __init__(cmf::math::BDF2 self, StateVariableList states, real epsilon=1e-9, Time tStepMin) -> BDF2
         __init__(cmf::math::BDF2 self, Integrator templ) -> BDF2
 
         BDF2(const Integrator
@@ -14497,6 +14482,7 @@ class BDF2(Integrator):
         """
         _cmf_core.BDF2_swiginit(self, _cmf_core.new_BDF2(*args))
     __swig_destroy__ = _cmf_core.delete_BDF2
+BDF2.add_states = new_instancemethod(_cmf_core.BDF2_add_states, None, BDF2)
 BDF2.get_error_position = new_instancemethod(_cmf_core.BDF2_get_error_position, None, BDF2)
 _cmf_core.BDF2_swigregister(BDF2)
 # BDF2 end
@@ -14513,9 +14499,20 @@ class ExplicitEuler_fixed(Integrator):
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
     __repr__ = _swig_repr
 
+    def add_states(self, *args, **kwargs):
+        """
+        add_states(ExplicitEuler_fixed self, StateVariableList stateOwner)
+
+        void add_states(cmf::math::StateVariableOwner &stateOwner)
+
+        Add state variables from a StateVariableOwner. 
+        """
+        return _cmf_core.ExplicitEuler_fixed_add_states(self, *args, **kwargs)
+
+
     def __init__(self, *args):
         """
-        __init__(cmf::math::ExplicitEuler_fixed self, StateVariableOwner states) -> ExplicitEuler_fixed
+        __init__(cmf::math::ExplicitEuler_fixed self, StateVariableList states) -> ExplicitEuler_fixed
         __init__(cmf::math::ExplicitEuler_fixed self) -> ExplicitEuler_fixed
         __init__(cmf::math::ExplicitEuler_fixed self, Integrator copy) -> ExplicitEuler_fixed
 
@@ -14525,6 +14522,7 @@ class ExplicitEuler_fixed(Integrator):
         """
         _cmf_core.ExplicitEuler_fixed_swiginit(self, _cmf_core.new_ExplicitEuler_fixed(*args))
     __swig_destroy__ = _cmf_core.delete_ExplicitEuler_fixed
+ExplicitEuler_fixed.add_states = new_instancemethod(_cmf_core.ExplicitEuler_fixed_add_states, None, ExplicitEuler_fixed)
 _cmf_core.ExplicitEuler_fixed_swigregister(ExplicitEuler_fixed)
 # ExplicitEuler_fixed end
 
@@ -14541,11 +14539,23 @@ class HeunIntegrator(Integrator):
 
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
     __repr__ = _swig_repr
+
+    def add_states(self, *args, **kwargs):
+        """
+        add_states(HeunIntegrator self, StateVariableList stateOwner)
+
+        void
+        add_states(cmf::math::StateVariableOwner &stateOwner)
+
+        Add state variables from a StateVariableOwner. 
+        """
+        return _cmf_core.HeunIntegrator_add_states(self, *args, **kwargs)
+
     alpha = _swig_property(_cmf_core.HeunIntegrator_alpha_get, _cmf_core.HeunIntegrator_alpha_set)
 
     def __init__(self, *args):
         """
-        __init__(cmf::math::HeunIntegrator self, StateVariableOwner states, real Alpha=0.5) -> HeunIntegrator
+        __init__(cmf::math::HeunIntegrator self, StateVariableList states, real Alpha=0.5) -> HeunIntegrator
         __init__(cmf::math::HeunIntegrator self, real Alpha=0.5) -> HeunIntegrator
         __init__(cmf::math::HeunIntegrator self, Integrator copy) -> HeunIntegrator
 
@@ -14555,6 +14565,7 @@ class HeunIntegrator(Integrator):
         """
         _cmf_core.HeunIntegrator_swiginit(self, _cmf_core.new_HeunIntegrator(*args))
     __swig_destroy__ = _cmf_core.delete_HeunIntegrator
+HeunIntegrator.add_states = new_instancemethod(_cmf_core.HeunIntegrator_add_states, None, HeunIntegrator)
 _cmf_core.HeunIntegrator_swigregister(HeunIntegrator)
 # HeunIntegrator end
 
@@ -14571,9 +14582,21 @@ class ImplicitEuler(Integrator):
     __repr__ = _swig_repr
     dt_min = _swig_property(_cmf_core.ImplicitEuler_dt_min_get, _cmf_core.ImplicitEuler_dt_min_set)
 
+    def add_states(self, *args, **kwargs):
+        """
+        add_states(ImplicitEuler self, StateVariableList stateOwner)
+
+        void
+        add_states(cmf::math::StateVariableOwner &stateOwner)
+
+        Add state variables from a StateVariableOwner. 
+        """
+        return _cmf_core.ImplicitEuler_add_states(self, *args, **kwargs)
+
+
     def __init__(self, *args):
         """
-        __init__(cmf::math::ImplicitEuler self, StateVariableOwner states, real epsilon=1e-9, Time tStepMin) -> ImplicitEuler
+        __init__(cmf::math::ImplicitEuler self, StateVariableList states, real epsilon=1e-9, Time tStepMin) -> ImplicitEuler
         __init__(cmf::math::ImplicitEuler self, real epsilon=1e-9, Time tStepMin) -> ImplicitEuler
         __init__(cmf::math::ImplicitEuler self, Integrator arg2) -> ImplicitEuler
 
@@ -14583,6 +14606,7 @@ class ImplicitEuler(Integrator):
         """
         _cmf_core.ImplicitEuler_swiginit(self, _cmf_core.new_ImplicitEuler(*args))
     __swig_destroy__ = _cmf_core.delete_ImplicitEuler
+ImplicitEuler.add_states = new_instancemethod(_cmf_core.ImplicitEuler_add_states, None, ImplicitEuler)
 _cmf_core.ImplicitEuler_swigregister(ImplicitEuler)
 # ImplicitEuler end
 
@@ -14599,9 +14623,21 @@ class RKFIntegrator(Integrator):
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
     __repr__ = _swig_repr
 
+    def add_states(self, *args, **kwargs):
+        """
+        add_states(RKFIntegrator self, StateVariableList stateOwner)
+
+        void
+        add_states(cmf::math::StateVariableOwner &stateOwner)
+
+        Adds states from an StateVariableOwner. 
+        """
+        return _cmf_core.RKFIntegrator_add_states(self, *args, **kwargs)
+
+
     def __init__(self, *args):
         """
-        __init__(cmf::math::RKFIntegrator self, StateVariableOwner states, real epsilon=1e-9, Time dt_min) -> RKFIntegrator
+        __init__(cmf::math::RKFIntegrator self, StateVariableList states, real epsilon=1e-9, Time dt_min) -> RKFIntegrator
         __init__(cmf::math::RKFIntegrator self, real epsilon=1e-9, Time dt_min) -> RKFIntegrator
 
         RKFIntegrator(real epsilon=1e-9, cmf::math::Time
@@ -14618,6 +14654,7 @@ class RKFIntegrator(Integrator):
         """
         _cmf_core.RKFIntegrator_swiginit(self, _cmf_core.new_RKFIntegrator(*args))
     __swig_destroy__ = _cmf_core.delete_RKFIntegrator
+RKFIntegrator.add_states = new_instancemethod(_cmf_core.RKFIntegrator_add_states, None, RKFIntegrator)
 _cmf_core.RKFIntegrator_swigregister(RKFIntegrator)
 # RKFIntegrator end
 
@@ -14844,7 +14881,7 @@ class CVodeDense(CVodeBase):
 
     def __init__(self, *args, **kwargs):
         """
-        __init__(cmf::math::CVodeDense self, StateVariableOwner states, real epsilon=1e-9) -> CVodeDense
+        __init__(cmf::math::CVodeDense self, StateVariableList states, real epsilon=1e-9) -> CVodeDense
 
         CVodeDense(cmf::math::StateVariableOwner &states, real epsilon=1e-9)
 
@@ -14869,7 +14906,7 @@ class CVodeAdams(CVodeBase):
 
     def __init__(self, *args, **kwargs):
         """
-        __init__(cmf::math::CVodeAdams self, StateVariableOwner states, real epsilon=1e-9) -> CVodeAdams
+        __init__(cmf::math::CVodeAdams self, StateVariableList states, real epsilon=1e-9) -> CVodeAdams
 
         CVodeAdams(cmf::math::StateVariableOwner &states, real epsilon=1e-9)
 
@@ -14894,7 +14931,7 @@ class CVodeBanded(CVodeBase):
 
     def __init__(self, *args, **kwargs):
         """
-        __init__(cmf::math::CVodeBanded self, StateVariableOwner states, real epsilon=1e-9, int w=5) -> CVodeBanded
+        __init__(cmf::math::CVodeBanded self, StateVariableList states, real epsilon=1e-9, int w=5) -> CVodeBanded
 
         CVodeBanded(cmf::math::StateVariableOwner &states, real epsilon=1e-9,
         int w=5) 
@@ -14919,7 +14956,7 @@ class CVodeDiag(CVodeBase):
 
     def __init__(self, *args, **kwargs):
         """
-        __init__(cmf::math::CVodeDiag self, StateVariableOwner states, real epsilon=1e-9) -> CVodeDiag
+        __init__(cmf::math::CVodeDiag self, StateVariableList states, real epsilon=1e-9) -> CVodeDiag
 
         CVodeDiag(cmf::math::StateVariableOwner &states, real epsilon=1e-9) 
         """
@@ -14944,7 +14981,7 @@ class CVodeKrylov(CVodeBase):
 
     def __init__(self, *args, **kwargs):
         """
-        __init__(cmf::math::CVodeKrylov self, StateVariableOwner states, real epsilon=1e-9, int w=5, char p) -> CVodeKrylov
+        __init__(cmf::math::CVodeKrylov self, StateVariableList states, real epsilon=1e-9, int w=5, char p) -> CVodeKrylov
 
         CVodeKrylov(cmf::math::StateVariableOwner &states, real epsilon=1e-9,
         int w=5, char p='L') 
@@ -14962,7 +14999,7 @@ class CVodeKLU(CVodeBase):
 
     def __init__(self, *args, **kwargs):
         """
-        __init__(cmf::math::CVodeKLU self, StateVariableOwner states, real epsilon=1e-9) -> CVodeKLU
+        __init__(cmf::math::CVodeKLU self, StateVariableList states, real epsilon=1e-9) -> CVodeKLU
 
         CVodeKLU(cmf::math::StateVariableOwner &states, real epsilon=1e-9) 
         """
@@ -14997,9 +15034,22 @@ class MultiIntegrator(Integrator):
         return _cmf_core.MultiIntegrator_copy(self, *args, **kwargs)
 
 
+    def add_states(self, *args, **kwargs):
+        """
+        add_states(MultiIntegrator self, StateVariableList stateOwner)
+
+        void
+        add_states(cmf::math::StateVariableOwner &stateOwner)
+
+        Only there to override Integrator::AddStatesFromOwner. Throws an
+        exception. Use add_states_to_integrator instead. 
+        """
+        return _cmf_core.MultiIntegrator_add_states(self, *args, **kwargs)
+
+
     def add_states_to_integrator(self, *args, **kwargs):
         """
-        add_states_to_integrator(MultiIntegrator self, StateVariableOwner stateOwner, int integrator_position)
+        add_states_to_integrator(MultiIntegrator self, StateVariableList stateOwner, int integrator_position)
 
         void
         add_states_to_integrator(cmf::math::StateVariableOwner &stateOwner,
@@ -15029,6 +15079,7 @@ class MultiIntegrator(Integrator):
         _cmf_core.MultiIntegrator_swiginit(self, _cmf_core.new_MultiIntegrator(*args, **kwargs))
     __swig_destroy__ = _cmf_core.delete_MultiIntegrator
 MultiIntegrator.copy = new_instancemethod(_cmf_core.MultiIntegrator_copy, None, MultiIntegrator)
+MultiIntegrator.add_states = new_instancemethod(_cmf_core.MultiIntegrator_add_states, None, MultiIntegrator)
 MultiIntegrator.add_states_to_integrator = new_instancemethod(_cmf_core.MultiIntegrator_add_states_to_integrator, None, MultiIntegrator)
 _cmf_core.MultiIntegrator_swigregister(MultiIntegrator)
 # MultiIntegrator end
@@ -15049,6 +15100,17 @@ class SoluteWaterIntegrator(Integrator):
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
     __repr__ = _swig_repr
 
+    def add_states(self, *args, **kwargs):
+        """
+        add_states(SoluteWaterIntegrator self, StateVariableList stateOwner)
+
+        void add_states(cmf::math::StateVariableOwner &stateOwner)
+
+        Add state variables from a StateVariableOwner. 
+        """
+        return _cmf_core.SoluteWaterIntegrator_add_states(self, *args, **kwargs)
+
+
     def copy(self, *args, **kwargs):
         """
         copy(SoluteWaterIntegrator self) -> SoluteWaterIntegrator
@@ -15063,7 +15125,7 @@ class SoluteWaterIntegrator(Integrator):
     def __init__(self, *args):
         """
         __init__(cmf::math::SoluteWaterIntegrator self, solute_vector solutes, Integrator water_integrator, Integrator solute_integrator) -> SoluteWaterIntegrator
-        __init__(cmf::math::SoluteWaterIntegrator self, solute_vector solutes, Integrator water_integrator, Integrator solute_integrator, StateVariableOwner states) -> SoluteWaterIntegrator
+        __init__(cmf::math::SoluteWaterIntegrator self, solute_vector solutes, Integrator water_integrator, Integrator solute_integrator, StateVariableList states) -> SoluteWaterIntegrator
 
         SoluteWaterIntegrator(cmf::water::solute_vector solutes, const
         cmf::math::Integrator &water_integrator, const cmf::math::Integrator
@@ -15095,6 +15157,7 @@ class SoluteWaterIntegrator(Integrator):
         """
         return _cmf_core.SoluteWaterIntegrator_to_string(self, *args, **kwargs)
 
+SoluteWaterIntegrator.add_states = new_instancemethod(_cmf_core.SoluteWaterIntegrator_add_states, None, SoluteWaterIntegrator)
 SoluteWaterIntegrator.copy = new_instancemethod(_cmf_core.SoluteWaterIntegrator_copy, None, SoluteWaterIntegrator)
 SoluteWaterIntegrator.to_string = new_instancemethod(_cmf_core.SoluteWaterIntegrator_to_string, None, SoluteWaterIntegrator)
 _cmf_core.SoluteWaterIntegrator_swigregister(SoluteWaterIntegrator)

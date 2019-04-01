@@ -258,7 +258,7 @@ void cmf::math::Integrator::add_states(const cmf::math::StateVariableList &state
 
 cmf::math::StateVariable::ptr cmf::math::Integrator::operator[](ptrdiff_t position) {
 	if (position < 0) position += m_States.size();
-	if (position < m_States.size()) return m_States[position];
+	if (position < ptrdiff_t(m_States.size())) return m_States[position];
 	throw std::out_of_range("state not in integrator");
 }
 

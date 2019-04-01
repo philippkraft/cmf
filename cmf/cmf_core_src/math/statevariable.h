@@ -144,6 +144,7 @@ namespace cmf {
 
 		};
 
+		typedef std::vector<cmf::math::StateVariable::ptr> state_list;
 
 		class StateVariableList {
 			typedef std::vector<StateVariable::ptr> state_vector;
@@ -163,15 +164,17 @@ namespace cmf {
 			void extend(StateVariableList& svl) {
 				(*this) += svl;
 			}
-			StateVariableList get_states() {
-				return *this;
-			}
 #ifndef SWIG
 			operator bool() const {return m_vector.size()>0;}
 #endif
 			StateVariableList& operator +=(const StateVariableList& food) {
 				m_vector.insert(m_vector.end(),food.m_vector.begin(),food.m_vector.end());
 				return *this;
+			}
+			StateVariableList() = default;
+			StateVariableList(const cmf::math::StateVariableList& for_copy)
+			: m_vector(for_copy.m_vector) {
+
 			}
 			size_t size() const {return m_vector.size();}
 			virtual ~StateVariableList() {}
@@ -181,16 +184,7 @@ namespace cmf {
 
 		};
 
-		struct sparse_structure {
-			std::vector<size_t> indexvalues;
-			std::vector<size_t> indexpointers;
-			/// @brief Creates the sparse row compressed structure from states variable list			
-			sparse_structure();
-			size_t generate(const StateVariableList& states);
-			size_t NNZ, NP, N;
-		};
 
-			
 		
 	}
 }

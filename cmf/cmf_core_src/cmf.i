@@ -70,7 +70,7 @@ std::string pyrepr(PyObject* o) {
 // Start my Module
 %module cmf_core
 %include "math/num_array.i"
-%include "geometry/geometry.i"
+%include "math/geometry.i"
 %include "math/time.i"
 
 %include "math/ODEsystem.i"

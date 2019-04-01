@@ -26,6 +26,8 @@ add_library(cmf_math STATIC
         math/time.cpp
         math/timeseries.cpp
         math/geometry.cpp
+        math/odesystem.cpp
+        math/sparse_struct.cpp
         )
 
 find_package(OpenMP)
@@ -104,8 +106,6 @@ add_library(cmf_core STATIC
         )
 
 target_link_libraries(cmf_core PUBLIC cmf_math cmf_water cmf_integrators)
-
-
 
 add_executable(nash_cascade apps/nash_cascade.cpp)
 target_link_libraries(nash_cascade cmf_core)

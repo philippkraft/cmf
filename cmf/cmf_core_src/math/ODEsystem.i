@@ -23,7 +23,8 @@
 %shared_ptr(cmf::math::StateVariable);
 %shared_ptr(cmf::math::integratable);
 
-%iterable_to_list(cmf::math::StateVariableList,cmf::math::StateVariable::ptr)
+// %iterable_to_list(cmf::math::StateVariableList,cmf::math::StateVariable::ptr)
+%implicitconv cmf::math::StateVariableList;
 %iterable_to_list(cmf::math::integratable_list,cmf::math::integratable::ptr)
 %attribute(cmf::math::StateVariable,real,state,get_state,set_state);
 

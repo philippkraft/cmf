@@ -3049,186 +3049,185 @@ SWIG_Python_NonDynamicSetAttr(PyObject *obj, PyObject *name, PyObject *value) {
 #define SWIGTYPE_p_cmf__math__SoluteWaterIntegrator swig_types[37]
 #define SWIGTYPE_p_cmf__math__StateVariable swig_types[38]
 #define SWIGTYPE_p_cmf__math__StateVariableList swig_types[39]
-#define SWIGTYPE_p_cmf__math__StateVariableOwner swig_types[40]
-#define SWIGTYPE_p_cmf__math__StateVariable__list swig_types[41]
-#define SWIGTYPE_p_cmf__math__Time swig_types[42]
-#define SWIGTYPE_p_cmf__math__cubicspline swig_types[43]
-#define SWIGTYPE_p_cmf__math__integratable swig_types[44]
-#define SWIGTYPE_p_cmf__math__integratable_list swig_types[45]
-#define SWIGTYPE_p_cmf__math__num_array swig_types[46]
-#define SWIGTYPE_p_cmf__math__sparse_structure swig_types[47]
-#define SWIGTYPE_p_cmf__math__timeseries swig_types[48]
-#define SWIGTYPE_p_cmf__project swig_types[49]
-#define SWIGTYPE_p_cmf__river__Channel swig_types[50]
-#define SWIGTYPE_p_cmf__river__CrossSectionReach swig_types[51]
-#define SWIGTYPE_p_cmf__river__IChannel swig_types[52]
-#define SWIGTYPE_p_cmf__river__IVolumeHeightFunction swig_types[53]
-#define SWIGTYPE_p_cmf__river__Manning swig_types[54]
-#define SWIGTYPE_p_cmf__river__Manning_Diffusive swig_types[55]
-#define SWIGTYPE_p_cmf__river__Manning_Kinematic swig_types[56]
-#define SWIGTYPE_p_cmf__river__MeanChannel swig_types[57]
-#define SWIGTYPE_p_cmf__river__OpenWaterStorage swig_types[58]
-#define SWIGTYPE_p_cmf__river__PipeReach swig_types[59]
-#define SWIGTYPE_p_cmf__river__Prism swig_types[60]
-#define SWIGTYPE_p_cmf__river__Reach swig_types[61]
-#define SWIGTYPE_p_cmf__river__ReachIterator swig_types[62]
-#define SWIGTYPE_p_cmf__river__RectangularReach swig_types[63]
-#define SWIGTYPE_p_cmf__river__SWATReachType swig_types[64]
-#define SWIGTYPE_p_cmf__river__TriangularReach swig_types[65]
-#define SWIGTYPE_p_cmf__river__volume_height_function swig_types[66]
-#define SWIGTYPE_p_cmf__upslope__BrooksCoreyRetentionCurve swig_types[67]
-#define SWIGTYPE_p_cmf__upslope__Cell swig_types[68]
-#define SWIGTYPE_p_cmf__upslope__CellConnector swig_types[69]
-#define SWIGTYPE_p_cmf__upslope__ET__CanopyStorageEvaporation swig_types[70]
-#define SWIGTYPE_p_cmf__upslope__ET__ContentStress swig_types[71]
-#define SWIGTYPE_p_cmf__upslope__ET__HargreaveET swig_types[72]
-#define SWIGTYPE_p_cmf__upslope__ET__OudinET swig_types[73]
-#define SWIGTYPE_p_cmf__upslope__ET__PenmanEvaporation swig_types[74]
-#define SWIGTYPE_p_cmf__upslope__ET__PenmanMonteithET swig_types[75]
-#define SWIGTYPE_p_cmf__upslope__ET__PriestleyTaylorET swig_types[76]
-#define SWIGTYPE_p_cmf__upslope__ET__RootUptakeStressFunction swig_types[77]
-#define SWIGTYPE_p_cmf__upslope__ET__SW_evap_from_canopy swig_types[78]
-#define SWIGTYPE_p_cmf__upslope__ET__SW_evap_from_layer swig_types[79]
-#define SWIGTYPE_p_cmf__upslope__ET__SW_evap_from_snow swig_types[80]
-#define SWIGTYPE_p_cmf__upslope__ET__SW_evap_from_surfacewater swig_types[81]
-#define SWIGTYPE_p_cmf__upslope__ET__SW_transpiration swig_types[82]
-#define SWIGTYPE_p_cmf__upslope__ET__ShuttleworthWallace swig_types[83]
-#define SWIGTYPE_p_cmf__upslope__ET__SuctionStress swig_types[84]
-#define SWIGTYPE_p_cmf__upslope__ET__TurcET swig_types[85]
-#define SWIGTYPE_p_cmf__upslope__ET__VolumeStress swig_types[86]
-#define SWIGTYPE_p_cmf__upslope__ET__constantETpot swig_types[87]
-#define SWIGTYPE_p_cmf__upslope__ET__stressedET swig_types[88]
-#define SWIGTYPE_p_cmf__upslope__ET__timeseriesETpot swig_types[89]
-#define SWIGTYPE_p_cmf__upslope__LinearRetention swig_types[90]
-#define SWIGTYPE_p_cmf__upslope__MacroPore swig_types[91]
-#define SWIGTYPE_p_cmf__upslope__RetentionCurve swig_types[92]
-#define SWIGTYPE_p_cmf__upslope__SoilLayer swig_types[93]
-#define SWIGTYPE_p_cmf__upslope__SurfaceWater swig_types[94]
-#define SWIGTYPE_p_cmf__upslope__Topology swig_types[95]
-#define SWIGTYPE_p_cmf__upslope__VanGenuchtenMualem swig_types[96]
-#define SWIGTYPE_p_cmf__upslope__aquifer swig_types[97]
-#define SWIGTYPE_p_cmf__upslope__aquifer_Darcy swig_types[98]
-#define SWIGTYPE_p_cmf__upslope__cell_vector swig_types[99]
-#define SWIGTYPE_p_cmf__upslope__connections__BaseMacroFlow swig_types[100]
-#define SWIGTYPE_p_cmf__upslope__connections__CanopyOverflow swig_types[101]
-#define SWIGTYPE_p_cmf__upslope__connections__Darcy swig_types[102]
-#define SWIGTYPE_p_cmf__upslope__connections__DarcyKinematic swig_types[103]
-#define SWIGTYPE_p_cmf__upslope__connections__DiffusiveMacroMicroExchange swig_types[104]
-#define SWIGTYPE_p_cmf__upslope__connections__DiffusiveSurfaceRunoff swig_types[105]
-#define SWIGTYPE_p_cmf__upslope__connections__EnergyBudgetSnowMelt swig_types[106]
-#define SWIGTYPE_p_cmf__upslope__connections__FreeDrainagePercolation swig_types[107]
-#define SWIGTYPE_p_cmf__upslope__connections__GradientMacroFlow swig_types[108]
-#define SWIGTYPE_p_cmf__upslope__connections__GradientMacroMicroExchange swig_types[109]
-#define SWIGTYPE_p_cmf__upslope__connections__GreenAmptInfiltration swig_types[110]
-#define SWIGTYPE_p_cmf__upslope__connections__JarvisMacroFlow swig_types[111]
-#define SWIGTYPE_p_cmf__upslope__connections__KinematicMacroFlow swig_types[112]
-#define SWIGTYPE_p_cmf__upslope__connections__KinematicSurfaceRunoff swig_types[113]
-#define SWIGTYPE_p_cmf__upslope__connections__LayerBypass swig_types[114]
-#define SWIGTYPE_p_cmf__upslope__connections__MACROlikeMacroMicroExchange swig_types[115]
-#define SWIGTYPE_p_cmf__upslope__connections__MatrixInfiltration swig_types[116]
-#define SWIGTYPE_p_cmf__upslope__connections__Rainfall swig_types[117]
-#define SWIGTYPE_p_cmf__upslope__connections__Richards swig_types[118]
-#define SWIGTYPE_p_cmf__upslope__connections__Richards_lateral swig_types[119]
-#define SWIGTYPE_p_cmf__upslope__connections__RutterInterception swig_types[120]
-#define SWIGTYPE_p_cmf__upslope__connections__SWATPercolation swig_types[121]
-#define SWIGTYPE_p_cmf__upslope__connections__SimpleInfiltration swig_types[122]
-#define SWIGTYPE_p_cmf__upslope__connections__SimpleTindexSnowMelt swig_types[123]
-#define SWIGTYPE_p_cmf__upslope__connections__Snowfall swig_types[124]
-#define SWIGTYPE_p_cmf__upslope__connections__TOPModelFlow swig_types[125]
-#define SWIGTYPE_p_cmf__upslope__connections__TopographicGradientDarcy swig_types[126]
-#define SWIGTYPE_p_cmf__upslope__connections__lateral_sub_surface_flux swig_types[127]
-#define SWIGTYPE_p_cmf__upslope__layer_list swig_types[128]
-#define SWIGTYPE_p_cmf__upslope__neighbor_iterator swig_types[129]
-#define SWIGTYPE_p_cmf__upslope__subcatchment swig_types[130]
-#define SWIGTYPE_p_cmf__upslope__vegetation__Vegetation swig_types[131]
-#define SWIGTYPE_p_cmf__water__Adsorption swig_types[132]
-#define SWIGTYPE_p_cmf__water__ConstraintLinearStorageConnection swig_types[133]
-#define SWIGTYPE_p_cmf__water__DirichletBoundary swig_types[134]
-#define SWIGTYPE_p_cmf__water__ExponentialDeclineConnection swig_types[135]
-#define SWIGTYPE_p_cmf__water__FreundlichAdsorbtion swig_types[136]
-#define SWIGTYPE_p_cmf__water__LangmuirAdsorption swig_types[137]
-#define SWIGTYPE_p_cmf__water__LinearAdsorption swig_types[138]
-#define SWIGTYPE_p_cmf__water__LinearStorageConnection swig_types[139]
-#define SWIGTYPE_p_cmf__water__NeumannBoundary swig_types[140]
-#define SWIGTYPE_p_cmf__water__NeumannBoundary_list swig_types[141]
-#define SWIGTYPE_p_cmf__water__NeumannFlux swig_types[142]
-#define SWIGTYPE_p_cmf__water__NullAdsorption swig_types[143]
-#define SWIGTYPE_p_cmf__water__PowerLawConnection swig_types[144]
-#define SWIGTYPE_p_cmf__water__SoluteStorage swig_types[145]
-#define SWIGTYPE_p_cmf__water__SoluteTimeseries swig_types[146]
-#define SWIGTYPE_p_cmf__water__SystemBridge swig_types[147]
-#define SWIGTYPE_p_cmf__water__SystemBridgeConnection swig_types[148]
-#define SWIGTYPE_p_cmf__water__TechnicalFlux swig_types[149]
-#define SWIGTYPE_p_cmf__water__WaterStorage swig_types[150]
-#define SWIGTYPE_p_cmf__water__bidirectional_kinematic_exchange swig_types[151]
-#define SWIGTYPE_p_cmf__water__connection_list swig_types[152]
-#define SWIGTYPE_p_cmf__water__constraint_kinematic_wave swig_types[153]
-#define SWIGTYPE_p_cmf__water__external_control_connection swig_types[154]
-#define SWIGTYPE_p_cmf__water__flux_connection swig_types[155]
-#define SWIGTYPE_p_cmf__water__flux_integrator swig_types[156]
-#define SWIGTYPE_p_cmf__water__flux_node swig_types[157]
-#define SWIGTYPE_p_cmf__water__generic_gradient_connection swig_types[158]
-#define SWIGTYPE_p_cmf__water__kinematic_wave swig_types[159]
-#define SWIGTYPE_p_cmf__water__linear_scale swig_types[160]
-#define SWIGTYPE_p_cmf__water__node_list swig_types[161]
-#define SWIGTYPE_p_cmf__water__solute swig_types[162]
-#define SWIGTYPE_p_cmf__water__solute_vector swig_types[163]
-#define SWIGTYPE_p_cmf__water__statecontrol_connection swig_types[164]
-#define SWIGTYPE_p_cmf__water__waterbalance_connection swig_types[165]
-#define SWIGTYPE_p_cmf__water__waterbalance_integrator swig_types[166]
-#define SWIGTYPE_p_const_iterator swig_types[167]
-#define SWIGTYPE_p_difference_type swig_types[168]
-#define SWIGTYPE_p_double swig_types[169]
-#define SWIGTYPE_p_f_r_cmf__upslope__Cell_r_cmf__upslope__Cell_ptrdiff_t__void swig_types[170]
-#define SWIGTYPE_p_iterator swig_types[171]
-#define SWIGTYPE_p_p_PyObject swig_types[172]
-#define SWIGTYPE_p_ptr swig_types[173]
-#define SWIGTYPE_p_size_type swig_types[174]
-#define SWIGTYPE_p_std__allocatorT_double_t swig_types[175]
-#define SWIGTYPE_p_std__allocatorT_int_t swig_types[176]
-#define SWIGTYPE_p_std__allocatorT_size_t_t swig_types[177]
-#define SWIGTYPE_p_std__invalid_argument swig_types[178]
-#define SWIGTYPE_p_std__shared_ptrT_SoilLayer_t swig_types[179]
-#define SWIGTYPE_p_std__shared_ptrT_cmf__atmosphere__ConstantRainSource_t swig_types[180]
-#define SWIGTYPE_p_std__shared_ptrT_cmf__atmosphere__IDWRainfall_t swig_types[181]
-#define SWIGTYPE_p_std__shared_ptrT_cmf__atmosphere__MeteoStation_t swig_types[182]
-#define SWIGTYPE_p_std__shared_ptrT_cmf__atmosphere__RainSource_t swig_types[183]
-#define SWIGTYPE_p_std__shared_ptrT_cmf__atmosphere__RainfallStationReference_t swig_types[184]
-#define SWIGTYPE_p_std__shared_ptrT_cmf__atmosphere__RainfallStation_t swig_types[185]
-#define SWIGTYPE_p_std__shared_ptrT_cmf__atmosphere__TimeseriesRainSource_t swig_types[186]
-#define SWIGTYPE_p_std__shared_ptrT_cmf__atmosphere__aerodynamic_resistance_t swig_types[187]
-#define SWIGTYPE_p_std__shared_ptrT_cmf__math__StateVariable_t swig_types[188]
-#define SWIGTYPE_p_std__shared_ptrT_cmf__math__integratable_t swig_types[189]
-#define SWIGTYPE_p_std__shared_ptrT_cmf__river__OpenWaterStorage_t swig_types[190]
-#define SWIGTYPE_p_std__shared_ptrT_cmf__river__Reach_t swig_types[191]
-#define SWIGTYPE_p_std__shared_ptrT_cmf__upslope__ET__ShuttleworthWallace_t swig_types[192]
-#define SWIGTYPE_p_std__shared_ptrT_cmf__upslope__ET__aerodynamic_resistance_t swig_types[193]
-#define SWIGTYPE_p_std__shared_ptrT_cmf__upslope__MacroPore_t swig_types[194]
-#define SWIGTYPE_p_std__shared_ptrT_cmf__upslope__SoilLayer_t swig_types[195]
-#define SWIGTYPE_p_std__shared_ptrT_cmf__upslope__SurfaceWater_t swig_types[196]
-#define SWIGTYPE_p_std__shared_ptrT_cmf__upslope__aquifer_t swig_types[197]
-#define SWIGTYPE_p_std__shared_ptrT_cmf__water__DirichletBoundary_t swig_types[198]
-#define SWIGTYPE_p_std__shared_ptrT_cmf__water__NeumannBoundary_t swig_types[199]
-#define SWIGTYPE_p_std__shared_ptrT_cmf__water__SoluteStorage_t swig_types[200]
-#define SWIGTYPE_p_std__shared_ptrT_cmf__water__SystemBridge_t swig_types[201]
-#define SWIGTYPE_p_std__shared_ptrT_cmf__water__WaterStorage_t swig_types[202]
-#define SWIGTYPE_p_std__shared_ptrT_cmf__water__flux_connection_t swig_types[203]
-#define SWIGTYPE_p_std__shared_ptrT_cmf__water__flux_integrator_t swig_types[204]
-#define SWIGTYPE_p_std__shared_ptrT_cmf__water__flux_node_t swig_types[205]
-#define SWIGTYPE_p_std__shared_ptrT_cmf__water__waterbalance_integrator_t swig_types[206]
-#define SWIGTYPE_p_std__shared_ptrT_std__shared_ptrT_cmf__atmosphere__ConstantRainSource_t_t swig_types[207]
-#define SWIGTYPE_p_std__shared_ptrT_std__shared_ptrT_cmf__atmosphere__RainfallStationReference_t_t swig_types[208]
-#define SWIGTYPE_p_std__string swig_types[209]
-#define SWIGTYPE_p_std__vectorT_double_std__allocatorT_double_t_t swig_types[210]
-#define SWIGTYPE_p_std__vectorT_int_std__allocatorT_int_t_t swig_types[211]
-#define SWIGTYPE_p_std__vectorT_size_t_std__allocatorT_size_t_t_t swig_types[212]
-#define SWIGTYPE_p_std__vectorT_std__shared_ptrT_cmf__water__WaterStorage_t_std__allocatorT_std__shared_ptrT_cmf__water__WaterStorage_t_t_t swig_types[213]
-#define SWIGTYPE_p_std__vectorT_std__shared_ptrT_cmf__water__flux_connection_t_std__allocatorT_std__shared_ptrT_cmf__water__flux_connection_t_t_t__const_iterator swig_types[214]
-#define SWIGTYPE_p_std__vectorT_std__shared_ptrT_cmf__water__flux_connection_t_std__allocatorT_std__shared_ptrT_cmf__water__flux_connection_t_t_t__iterator swig_types[215]
-#define SWIGTYPE_p_swig__SwigPyIterator swig_types[216]
-#define SWIGTYPE_p_value_type swig_types[217]
-static swig_type_info *swig_types[219];
-static swig_module_info swig_module = {swig_types, 218, 0, 0, 0, 0};
+#define SWIGTYPE_p_cmf__math__StateVariable__list swig_types[40]
+#define SWIGTYPE_p_cmf__math__Time swig_types[41]
+#define SWIGTYPE_p_cmf__math__cubicspline swig_types[42]
+#define SWIGTYPE_p_cmf__math__integratable swig_types[43]
+#define SWIGTYPE_p_cmf__math__integratable_list swig_types[44]
+#define SWIGTYPE_p_cmf__math__num_array swig_types[45]
+#define SWIGTYPE_p_cmf__math__sparse_structure swig_types[46]
+#define SWIGTYPE_p_cmf__math__timeseries swig_types[47]
+#define SWIGTYPE_p_cmf__project swig_types[48]
+#define SWIGTYPE_p_cmf__river__Channel swig_types[49]
+#define SWIGTYPE_p_cmf__river__CrossSectionReach swig_types[50]
+#define SWIGTYPE_p_cmf__river__IChannel swig_types[51]
+#define SWIGTYPE_p_cmf__river__IVolumeHeightFunction swig_types[52]
+#define SWIGTYPE_p_cmf__river__Manning swig_types[53]
+#define SWIGTYPE_p_cmf__river__Manning_Diffusive swig_types[54]
+#define SWIGTYPE_p_cmf__river__Manning_Kinematic swig_types[55]
+#define SWIGTYPE_p_cmf__river__MeanChannel swig_types[56]
+#define SWIGTYPE_p_cmf__river__OpenWaterStorage swig_types[57]
+#define SWIGTYPE_p_cmf__river__PipeReach swig_types[58]
+#define SWIGTYPE_p_cmf__river__Prism swig_types[59]
+#define SWIGTYPE_p_cmf__river__Reach swig_types[60]
+#define SWIGTYPE_p_cmf__river__ReachIterator swig_types[61]
+#define SWIGTYPE_p_cmf__river__RectangularReach swig_types[62]
+#define SWIGTYPE_p_cmf__river__SWATReachType swig_types[63]
+#define SWIGTYPE_p_cmf__river__TriangularReach swig_types[64]
+#define SWIGTYPE_p_cmf__river__volume_height_function swig_types[65]
+#define SWIGTYPE_p_cmf__upslope__BrooksCoreyRetentionCurve swig_types[66]
+#define SWIGTYPE_p_cmf__upslope__Cell swig_types[67]
+#define SWIGTYPE_p_cmf__upslope__CellConnector swig_types[68]
+#define SWIGTYPE_p_cmf__upslope__ET__CanopyStorageEvaporation swig_types[69]
+#define SWIGTYPE_p_cmf__upslope__ET__ContentStress swig_types[70]
+#define SWIGTYPE_p_cmf__upslope__ET__HargreaveET swig_types[71]
+#define SWIGTYPE_p_cmf__upslope__ET__OudinET swig_types[72]
+#define SWIGTYPE_p_cmf__upslope__ET__PenmanEvaporation swig_types[73]
+#define SWIGTYPE_p_cmf__upslope__ET__PenmanMonteithET swig_types[74]
+#define SWIGTYPE_p_cmf__upslope__ET__PriestleyTaylorET swig_types[75]
+#define SWIGTYPE_p_cmf__upslope__ET__RootUptakeStressFunction swig_types[76]
+#define SWIGTYPE_p_cmf__upslope__ET__SW_evap_from_canopy swig_types[77]
+#define SWIGTYPE_p_cmf__upslope__ET__SW_evap_from_layer swig_types[78]
+#define SWIGTYPE_p_cmf__upslope__ET__SW_evap_from_snow swig_types[79]
+#define SWIGTYPE_p_cmf__upslope__ET__SW_evap_from_surfacewater swig_types[80]
+#define SWIGTYPE_p_cmf__upslope__ET__SW_transpiration swig_types[81]
+#define SWIGTYPE_p_cmf__upslope__ET__ShuttleworthWallace swig_types[82]
+#define SWIGTYPE_p_cmf__upslope__ET__SuctionStress swig_types[83]
+#define SWIGTYPE_p_cmf__upslope__ET__TurcET swig_types[84]
+#define SWIGTYPE_p_cmf__upslope__ET__VolumeStress swig_types[85]
+#define SWIGTYPE_p_cmf__upslope__ET__constantETpot swig_types[86]
+#define SWIGTYPE_p_cmf__upslope__ET__stressedET swig_types[87]
+#define SWIGTYPE_p_cmf__upslope__ET__timeseriesETpot swig_types[88]
+#define SWIGTYPE_p_cmf__upslope__LinearRetention swig_types[89]
+#define SWIGTYPE_p_cmf__upslope__MacroPore swig_types[90]
+#define SWIGTYPE_p_cmf__upslope__RetentionCurve swig_types[91]
+#define SWIGTYPE_p_cmf__upslope__SoilLayer swig_types[92]
+#define SWIGTYPE_p_cmf__upslope__SurfaceWater swig_types[93]
+#define SWIGTYPE_p_cmf__upslope__Topology swig_types[94]
+#define SWIGTYPE_p_cmf__upslope__VanGenuchtenMualem swig_types[95]
+#define SWIGTYPE_p_cmf__upslope__aquifer swig_types[96]
+#define SWIGTYPE_p_cmf__upslope__aquifer_Darcy swig_types[97]
+#define SWIGTYPE_p_cmf__upslope__cell_vector swig_types[98]
+#define SWIGTYPE_p_cmf__upslope__connections__BaseMacroFlow swig_types[99]
+#define SWIGTYPE_p_cmf__upslope__connections__CanopyOverflow swig_types[100]
+#define SWIGTYPE_p_cmf__upslope__connections__Darcy swig_types[101]
+#define SWIGTYPE_p_cmf__upslope__connections__DarcyKinematic swig_types[102]
+#define SWIGTYPE_p_cmf__upslope__connections__DiffusiveMacroMicroExchange swig_types[103]
+#define SWIGTYPE_p_cmf__upslope__connections__DiffusiveSurfaceRunoff swig_types[104]
+#define SWIGTYPE_p_cmf__upslope__connections__EnergyBudgetSnowMelt swig_types[105]
+#define SWIGTYPE_p_cmf__upslope__connections__FreeDrainagePercolation swig_types[106]
+#define SWIGTYPE_p_cmf__upslope__connections__GradientMacroFlow swig_types[107]
+#define SWIGTYPE_p_cmf__upslope__connections__GradientMacroMicroExchange swig_types[108]
+#define SWIGTYPE_p_cmf__upslope__connections__GreenAmptInfiltration swig_types[109]
+#define SWIGTYPE_p_cmf__upslope__connections__JarvisMacroFlow swig_types[110]
+#define SWIGTYPE_p_cmf__upslope__connections__KinematicMacroFlow swig_types[111]
+#define SWIGTYPE_p_cmf__upslope__connections__KinematicSurfaceRunoff swig_types[112]
+#define SWIGTYPE_p_cmf__upslope__connections__LayerBypass swig_types[113]
+#define SWIGTYPE_p_cmf__upslope__connections__MACROlikeMacroMicroExchange swig_types[114]
+#define SWIGTYPE_p_cmf__upslope__connections__MatrixInfiltration swig_types[115]
+#define SWIGTYPE_p_cmf__upslope__connections__Rainfall swig_types[116]
+#define SWIGTYPE_p_cmf__upslope__connections__Richards swig_types[117]
+#define SWIGTYPE_p_cmf__upslope__connections__Richards_lateral swig_types[118]
+#define SWIGTYPE_p_cmf__upslope__connections__RutterInterception swig_types[119]
+#define SWIGTYPE_p_cmf__upslope__connections__SWATPercolation swig_types[120]
+#define SWIGTYPE_p_cmf__upslope__connections__SimpleInfiltration swig_types[121]
+#define SWIGTYPE_p_cmf__upslope__connections__SimpleTindexSnowMelt swig_types[122]
+#define SWIGTYPE_p_cmf__upslope__connections__Snowfall swig_types[123]
+#define SWIGTYPE_p_cmf__upslope__connections__TOPModelFlow swig_types[124]
+#define SWIGTYPE_p_cmf__upslope__connections__TopographicGradientDarcy swig_types[125]
+#define SWIGTYPE_p_cmf__upslope__connections__lateral_sub_surface_flux swig_types[126]
+#define SWIGTYPE_p_cmf__upslope__layer_list swig_types[127]
+#define SWIGTYPE_p_cmf__upslope__neighbor_iterator swig_types[128]
+#define SWIGTYPE_p_cmf__upslope__subcatchment swig_types[129]
+#define SWIGTYPE_p_cmf__upslope__vegetation__Vegetation swig_types[130]
+#define SWIGTYPE_p_cmf__water__Adsorption swig_types[131]
+#define SWIGTYPE_p_cmf__water__ConstraintLinearStorageConnection swig_types[132]
+#define SWIGTYPE_p_cmf__water__DirichletBoundary swig_types[133]
+#define SWIGTYPE_p_cmf__water__ExponentialDeclineConnection swig_types[134]
+#define SWIGTYPE_p_cmf__water__FreundlichAdsorbtion swig_types[135]
+#define SWIGTYPE_p_cmf__water__LangmuirAdsorption swig_types[136]
+#define SWIGTYPE_p_cmf__water__LinearAdsorption swig_types[137]
+#define SWIGTYPE_p_cmf__water__LinearStorageConnection swig_types[138]
+#define SWIGTYPE_p_cmf__water__NeumannBoundary swig_types[139]
+#define SWIGTYPE_p_cmf__water__NeumannBoundary_list swig_types[140]
+#define SWIGTYPE_p_cmf__water__NeumannFlux swig_types[141]
+#define SWIGTYPE_p_cmf__water__NullAdsorption swig_types[142]
+#define SWIGTYPE_p_cmf__water__PowerLawConnection swig_types[143]
+#define SWIGTYPE_p_cmf__water__SoluteStorage swig_types[144]
+#define SWIGTYPE_p_cmf__water__SoluteTimeseries swig_types[145]
+#define SWIGTYPE_p_cmf__water__SystemBridge swig_types[146]
+#define SWIGTYPE_p_cmf__water__SystemBridgeConnection swig_types[147]
+#define SWIGTYPE_p_cmf__water__TechnicalFlux swig_types[148]
+#define SWIGTYPE_p_cmf__water__WaterStorage swig_types[149]
+#define SWIGTYPE_p_cmf__water__bidirectional_kinematic_exchange swig_types[150]
+#define SWIGTYPE_p_cmf__water__connection_list swig_types[151]
+#define SWIGTYPE_p_cmf__water__constraint_kinematic_wave swig_types[152]
+#define SWIGTYPE_p_cmf__water__external_control_connection swig_types[153]
+#define SWIGTYPE_p_cmf__water__flux_connection swig_types[154]
+#define SWIGTYPE_p_cmf__water__flux_integrator swig_types[155]
+#define SWIGTYPE_p_cmf__water__flux_node swig_types[156]
+#define SWIGTYPE_p_cmf__water__generic_gradient_connection swig_types[157]
+#define SWIGTYPE_p_cmf__water__kinematic_wave swig_types[158]
+#define SWIGTYPE_p_cmf__water__linear_scale swig_types[159]
+#define SWIGTYPE_p_cmf__water__node_list swig_types[160]
+#define SWIGTYPE_p_cmf__water__solute swig_types[161]
+#define SWIGTYPE_p_cmf__water__solute_vector swig_types[162]
+#define SWIGTYPE_p_cmf__water__statecontrol_connection swig_types[163]
+#define SWIGTYPE_p_cmf__water__waterbalance_connection swig_types[164]
+#define SWIGTYPE_p_cmf__water__waterbalance_integrator swig_types[165]
+#define SWIGTYPE_p_const_iterator swig_types[166]
+#define SWIGTYPE_p_difference_type swig_types[167]
+#define SWIGTYPE_p_double swig_types[168]
+#define SWIGTYPE_p_f_r_cmf__upslope__Cell_r_cmf__upslope__Cell_ptrdiff_t__void swig_types[169]
+#define SWIGTYPE_p_iterator swig_types[170]
+#define SWIGTYPE_p_p_PyObject swig_types[171]
+#define SWIGTYPE_p_ptr swig_types[172]
+#define SWIGTYPE_p_size_type swig_types[173]
+#define SWIGTYPE_p_std__allocatorT_double_t swig_types[174]
+#define SWIGTYPE_p_std__allocatorT_int_t swig_types[175]
+#define SWIGTYPE_p_std__allocatorT_size_t_t swig_types[176]
+#define SWIGTYPE_p_std__invalid_argument swig_types[177]
+#define SWIGTYPE_p_std__shared_ptrT_SoilLayer_t swig_types[178]
+#define SWIGTYPE_p_std__shared_ptrT_cmf__atmosphere__ConstantRainSource_t swig_types[179]
+#define SWIGTYPE_p_std__shared_ptrT_cmf__atmosphere__IDWRainfall_t swig_types[180]
+#define SWIGTYPE_p_std__shared_ptrT_cmf__atmosphere__MeteoStation_t swig_types[181]
+#define SWIGTYPE_p_std__shared_ptrT_cmf__atmosphere__RainSource_t swig_types[182]
+#define SWIGTYPE_p_std__shared_ptrT_cmf__atmosphere__RainfallStationReference_t swig_types[183]
+#define SWIGTYPE_p_std__shared_ptrT_cmf__atmosphere__RainfallStation_t swig_types[184]
+#define SWIGTYPE_p_std__shared_ptrT_cmf__atmosphere__TimeseriesRainSource_t swig_types[185]
+#define SWIGTYPE_p_std__shared_ptrT_cmf__atmosphere__aerodynamic_resistance_t swig_types[186]
+#define SWIGTYPE_p_std__shared_ptrT_cmf__math__StateVariable_t swig_types[187]
+#define SWIGTYPE_p_std__shared_ptrT_cmf__math__integratable_t swig_types[188]
+#define SWIGTYPE_p_std__shared_ptrT_cmf__river__OpenWaterStorage_t swig_types[189]
+#define SWIGTYPE_p_std__shared_ptrT_cmf__river__Reach_t swig_types[190]
+#define SWIGTYPE_p_std__shared_ptrT_cmf__upslope__ET__ShuttleworthWallace_t swig_types[191]
+#define SWIGTYPE_p_std__shared_ptrT_cmf__upslope__ET__aerodynamic_resistance_t swig_types[192]
+#define SWIGTYPE_p_std__shared_ptrT_cmf__upslope__MacroPore_t swig_types[193]
+#define SWIGTYPE_p_std__shared_ptrT_cmf__upslope__SoilLayer_t swig_types[194]
+#define SWIGTYPE_p_std__shared_ptrT_cmf__upslope__SurfaceWater_t swig_types[195]
+#define SWIGTYPE_p_std__shared_ptrT_cmf__upslope__aquifer_t swig_types[196]
+#define SWIGTYPE_p_std__shared_ptrT_cmf__water__DirichletBoundary_t swig_types[197]
+#define SWIGTYPE_p_std__shared_ptrT_cmf__water__NeumannBoundary_t swig_types[198]
+#define SWIGTYPE_p_std__shared_ptrT_cmf__water__SoluteStorage_t swig_types[199]
+#define SWIGTYPE_p_std__shared_ptrT_cmf__water__SystemBridge_t swig_types[200]
+#define SWIGTYPE_p_std__shared_ptrT_cmf__water__WaterStorage_t swig_types[201]
+#define SWIGTYPE_p_std__shared_ptrT_cmf__water__flux_connection_t swig_types[202]
+#define SWIGTYPE_p_std__shared_ptrT_cmf__water__flux_integrator_t swig_types[203]
+#define SWIGTYPE_p_std__shared_ptrT_cmf__water__flux_node_t swig_types[204]
+#define SWIGTYPE_p_std__shared_ptrT_cmf__water__waterbalance_integrator_t swig_types[205]
+#define SWIGTYPE_p_std__shared_ptrT_std__shared_ptrT_cmf__atmosphere__ConstantRainSource_t_t swig_types[206]
+#define SWIGTYPE_p_std__shared_ptrT_std__shared_ptrT_cmf__atmosphere__RainfallStationReference_t_t swig_types[207]
+#define SWIGTYPE_p_std__string swig_types[208]
+#define SWIGTYPE_p_std__vectorT_double_std__allocatorT_double_t_t swig_types[209]
+#define SWIGTYPE_p_std__vectorT_int_std__allocatorT_int_t_t swig_types[210]
+#define SWIGTYPE_p_std__vectorT_size_t_std__allocatorT_size_t_t_t swig_types[211]
+#define SWIGTYPE_p_std__vectorT_std__shared_ptrT_cmf__water__WaterStorage_t_std__allocatorT_std__shared_ptrT_cmf__water__WaterStorage_t_t_t swig_types[212]
+#define SWIGTYPE_p_std__vectorT_std__shared_ptrT_cmf__water__flux_connection_t_std__allocatorT_std__shared_ptrT_cmf__water__flux_connection_t_t_t__const_iterator swig_types[213]
+#define SWIGTYPE_p_std__vectorT_std__shared_ptrT_cmf__water__flux_connection_t_std__allocatorT_std__shared_ptrT_cmf__water__flux_connection_t_t_t__iterator swig_types[214]
+#define SWIGTYPE_p_swig__SwigPyIterator swig_types[215]
+#define SWIGTYPE_p_value_type swig_types[216]
+static swig_type_info *swig_types[218];
+static swig_module_info swig_module = {swig_types, 217, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -5548,7 +5547,8 @@ ptrdiff_t from_npy_array(PyObject* op,double ** data) {
 
 
 // Include geometry
-#include "geometry/geometry.h"
+#include "math/geometry.h"
+
 static bool check_seq_point(PyObject* input) {
   if (PySequence_Check(input)) {
     Py_ssize_t len = PySequence_Length(input);
@@ -26073,76 +26073,6 @@ SWIGINTERN PyObject *StateVariable_swigregister(PyObject *SWIGUNUSEDPARM(self), 
   return SWIG_Py_Void();
 }
 
-SWIGINTERN PyObject *_wrap_StateVariableOwner_get_states(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  cmf::math::StateVariableOwner *arg1 = (cmf::math::StateVariableOwner *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject *swig_obj[1] ;
-  cmf::math::StateVariableList result;
-  
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__math__StateVariableOwner, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "StateVariableOwner_get_states" "', argument " "1"" of type '" "cmf::math::StateVariableOwner *""'"); 
-  }
-  arg1 = reinterpret_cast< cmf::math::StateVariableOwner * >(argp1);
-  {
-    try {
-      result = (arg1)->get_states();
-    } catch (const std::out_of_range& e) {
-      SWIG_exception(SWIG_IndexError, e.what());    
-    } catch (const std::exception& e) {
-      SWIG_exception(SWIG_RuntimeError, e.what());
-    }
-    
-  }
-  resultobj = SWIG_NewPointerObj((new cmf::math::StateVariableList(static_cast< const cmf::math::StateVariableList& >(result))), SWIGTYPE_p_cmf__math__StateVariableList, SWIG_POINTER_OWN |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_delete_StateVariableOwner(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  cmf::math::StateVariableOwner *arg1 = (cmf::math::StateVariableOwner *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject *swig_obj[1] ;
-  
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__math__StateVariableOwner, SWIG_POINTER_DISOWN |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_StateVariableOwner" "', argument " "1"" of type '" "cmf::math::StateVariableOwner *""'"); 
-  }
-  arg1 = reinterpret_cast< cmf::math::StateVariableOwner * >(argp1);
-  {
-    try {
-      delete arg1;
-    } catch (const std::out_of_range& e) {
-      SWIG_exception(SWIG_IndexError, e.what());    
-    } catch (const std::exception& e) {
-      SWIG_exception(SWIG_RuntimeError, e.what());
-    }
-    
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *StateVariableOwner_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *obj;
-  if (!SWIG_Python_UnpackTuple(args,(char *)"swigregister", 1, 1,&obj)) return NULL;
-  SWIG_TypeNewClientData(SWIGTYPE_p_cmf__math__StateVariableOwner, SWIG_NewClientData(obj));
-  return SWIG_Py_Void();
-}
-
 SWIGINTERN PyObject *_wrap_StateVariableList_append(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   cmf::math::StateVariableList *arg1 = (cmf::math::StateVariableList *) 0 ;
@@ -26192,7 +26122,7 @@ fail:
 SWIGINTERN PyObject *_wrap_StateVariableList_extend(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   cmf::math::StateVariableList *arg1 = (cmf::math::StateVariableList *) 0 ;
-  cmf::math::StateVariableOwner *arg2 = 0 ;
+  cmf::math::StateVariableList *arg2 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   void *argp2 = 0 ;
@@ -26200,7 +26130,7 @@ SWIGINTERN PyObject *_wrap_StateVariableList_extend(PyObject *SWIGUNUSEDPARM(sel
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   char *  kwnames[] = {
-    (char *) "self",(char *) "svo", NULL 
+    (char *) "self",(char *) "svl", NULL 
   };
   
   if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"OO:StateVariableList_extend",kwnames,&obj0,&obj1)) SWIG_fail;
@@ -26209,14 +26139,14 @@ SWIGINTERN PyObject *_wrap_StateVariableList_extend(PyObject *SWIGUNUSEDPARM(sel
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "StateVariableList_extend" "', argument " "1"" of type '" "cmf::math::StateVariableList *""'"); 
   }
   arg1 = reinterpret_cast< cmf::math::StateVariableList * >(argp1);
-  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_cmf__math__StateVariableOwner,  0 );
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_cmf__math__StateVariableList,  0 );
   if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "StateVariableList_extend" "', argument " "2"" of type '" "cmf::math::StateVariableOwner &""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "StateVariableList_extend" "', argument " "2"" of type '" "cmf::math::StateVariableList &""'"); 
   }
   if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "StateVariableList_extend" "', argument " "2"" of type '" "cmf::math::StateVariableOwner &""'"); 
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "StateVariableList_extend" "', argument " "2"" of type '" "cmf::math::StateVariableList &""'"); 
   }
-  arg2 = reinterpret_cast< cmf::math::StateVariableOwner * >(argp2);
+  arg2 = reinterpret_cast< cmf::math::StateVariableList * >(argp2);
   {
     try {
       (arg1)->extend(*arg2);
@@ -26234,31 +26164,35 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_StateVariableList___iadd____SWIG_0(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_StateVariableList___iadd__(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   cmf::math::StateVariableList *arg1 = (cmf::math::StateVariableList *) 0 ;
   cmf::math::StateVariableList *arg2 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  cmf::math::StateVariableList temp_list2 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char *  kwnames[] = {
+    (char *) "self",(char *) "food", NULL 
+  };
   cmf::math::StateVariableList *result = 0 ;
   
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__math__StateVariableList, SWIG_POINTER_DISOWN |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"OO:StateVariableList___iadd__",kwnames,&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_cmf__math__StateVariableList, SWIG_POINTER_DISOWN |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "StateVariableList___iadd__" "', argument " "1"" of type '" "cmf::math::StateVariableList *""'"); 
   }
   arg1 = reinterpret_cast< cmf::math::StateVariableList * >(argp1);
-  {
-    if (SWIG_ConvertPtr(swig_obj[1], (void **) &arg2, SWIGTYPE_p_cmf__math__StateVariableList, SWIG_POINTER_EXCEPTION) == -1) {
-      int res = iterable_to_list<cmf::math::StateVariable::ptr, cmf::math::StateVariableList>(swig_obj[1],SWIGTYPE_p_std__shared_ptrT_cmf__math__StateVariable_t, temp_list2);
-      if (SWIG_IsOK(res)) {
-        arg2 = &temp_list2;
-      } else {
-        SWIG_exception_fail(SWIG_TypeError,"Only iterables can be converted to cmf::math::StateVariableList");
-      }
-    }
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_cmf__math__StateVariableList,  0  | SWIG_POINTER_IMPLICIT_CONV);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "StateVariableList___iadd__" "', argument " "2"" of type '" "cmf::math::StateVariableList const &""'"); 
   }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "StateVariableList___iadd__" "', argument " "2"" of type '" "cmf::math::StateVariableList const &""'"); 
+  }
+  arg2 = reinterpret_cast< cmf::math::StateVariableList * >(argp2);
   {
     try {
       result = (cmf::math::StateVariableList *) &(arg1)->operator +=((cmf::math::StateVariableList const &)*arg2);
@@ -26270,39 +26204,22 @@ SWIGINTERN PyObject *_wrap_StateVariableList___iadd____SWIG_0(PyObject *SWIGUNUS
     
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_cmf__math__StateVariableList, SWIG_POINTER_OWN |  0 );
+  if (SWIG_IsNewObj(res2)) delete arg2;
   return resultobj;
 fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
   return NULL;
 }
 
 
-SWIGINTERN PyObject *_wrap_StateVariableList___iadd____SWIG_1(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_new_StateVariableList__SWIG_0(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **SWIGUNUSEDPARM(swig_obj)) {
   PyObject *resultobj = 0;
-  cmf::math::StateVariableList *arg1 = (cmf::math::StateVariableList *) 0 ;
-  cmf::math::StateVariableOwner *arg2 = 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
   cmf::math::StateVariableList *result = 0 ;
   
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__math__StateVariableList, SWIG_POINTER_DISOWN |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "StateVariableList___iadd__" "', argument " "1"" of type '" "cmf::math::StateVariableList *""'"); 
-  }
-  arg1 = reinterpret_cast< cmf::math::StateVariableList * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_cmf__math__StateVariableOwner,  0 );
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "StateVariableList___iadd__" "', argument " "2"" of type '" "cmf::math::StateVariableOwner &""'"); 
-  }
-  if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "StateVariableList___iadd__" "', argument " "2"" of type '" "cmf::math::StateVariableOwner &""'"); 
-  }
-  arg2 = reinterpret_cast< cmf::math::StateVariableOwner * >(argp2);
+  if ((nobjs < 0) || (nobjs > 0)) SWIG_fail;
   {
     try {
-      result = (cmf::math::StateVariableList *) &(arg1)->operator +=(*arg2);
+      result = (cmf::math::StateVariableList *)new cmf::math::StateVariableList();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -26310,71 +26227,74 @@ SWIGINTERN PyObject *_wrap_StateVariableList___iadd____SWIG_1(PyObject *SWIGUNUS
     }
     
   }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_cmf__math__StateVariableList, SWIG_POINTER_OWN |  0 );
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_cmf__math__StateVariableList, SWIG_POINTER_NEW |  0 );
   return resultobj;
 fail:
   return NULL;
 }
 
 
-SWIGINTERN PyObject *_wrap_StateVariableList___iadd__(PyObject *self, PyObject *args) {
+SWIGINTERN PyObject *_wrap_new_StateVariableList__SWIG_1(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  cmf::math::StateVariableList *arg1 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  cmf::math::StateVariableList *result = 0 ;
+  
+  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_cmf__math__StateVariableList,  0  | SWIG_POINTER_IMPLICIT_CONV);
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_StateVariableList" "', argument " "1"" of type '" "cmf::math::StateVariableList const &""'"); 
+  }
+  if (!argp1) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_StateVariableList" "', argument " "1"" of type '" "cmf::math::StateVariableList const &""'"); 
+  }
+  arg1 = reinterpret_cast< cmf::math::StateVariableList * >(argp1);
+  {
+    try {
+      result = (cmf::math::StateVariableList *)new cmf::math::StateVariableList((cmf::math::StateVariableList const &)*arg1);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_cmf__math__StateVariableList, SWIG_POINTER_NEW |  0 );
+  if (SWIG_IsNewObj(res1)) delete arg1;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res1)) delete arg1;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_StateVariableList(PyObject *self, PyObject *args) {
   Py_ssize_t argc;
-  PyObject *argv[3] = {
+  PyObject *argv[2] = {
     0
   };
   
-  if (!(argc = SWIG_Python_UnpackTuple(args,"StateVariableList___iadd__",0,2,argv))) SWIG_fail;
+  if (!(argc = SWIG_Python_UnpackTuple(args,"new_StateVariableList",0,1,argv))) SWIG_fail;
   --argc;
   {
     unsigned long _index = 0;
     SWIG_TypeRank _rank = 0; 
-    if (argc == 2) {
+    if (argc == 0) {
       SWIG_TypeRank _ranki = 0;
       SWIG_TypeRank _rankm = 0;
-      SWIG_TypeRank _pi = 1;
-      int _v = 0;
-      {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_cmf__math__StateVariableList, 0);
-        _v = SWIG_CheckState(res);
-      }
-      if (!_v) goto check_1;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      {
-        {
-          _v = is_listtype_or_iterable(argv[1],SWIGTYPE_p_cmf__math__StateVariableList);
-        }
-      }
-      if (!_v) goto check_1;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
       if (!_index || (_ranki < _rank)) {
         _rank = _ranki; _index = 1;
         if (_rank == _rankm) goto dispatch;
       }
     }
-  check_1:
-    
-    if (argc == 2) {
+    if (argc == 1) {
       SWIG_TypeRank _ranki = 0;
       SWIG_TypeRank _rankm = 0;
       SWIG_TypeRank _pi = 1;
       int _v = 0;
       {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_cmf__math__StateVariableList, 0);
-        _v = SWIG_CheckState(res);
-      }
-      if (!_v) goto check_2;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_cmf__math__StateVariableOwner, 0);
+        int res = SWIG_ConvertPtr(argv[0], 0, SWIGTYPE_p_cmf__math__StateVariableList, SWIG_POINTER_IMPLICIT_CONV);
         _v = SWIG_CheckState(res);
       }
       if (!_v) goto check_2;
@@ -26391,17 +26311,17 @@ SWIGINTERN PyObject *_wrap_StateVariableList___iadd__(PyObject *self, PyObject *
   dispatch:
     switch(_index) {
     case 1:
-      return _wrap_StateVariableList___iadd____SWIG_0(self, argc, argv);
+      return _wrap_new_StateVariableList__SWIG_0(self, argc, argv);
     case 2:
-      return _wrap_StateVariableList___iadd____SWIG_1(self, argc, argv);
+      return _wrap_new_StateVariableList__SWIG_1(self, argc, argv);
     }
   }
   
 fail:
-  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'StateVariableList___iadd__'.\n"
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'new_StateVariableList'.\n"
     "  Possible C/C++ prototypes are:\n"
-    "    cmf::math::StateVariableList::operator +=(cmf::math::StateVariableList const &)\n"
-    "    cmf::math::StateVariableList::operator +=(cmf::math::StateVariableOwner &)\n");
+    "    cmf::math::StateVariableList::StateVariableList()\n"
+    "    cmf::math::StateVariableList::StateVariableList(cmf::math::StateVariableList const &)\n");
   return 0;
 }
 
@@ -26495,28 +26415,6 @@ SWIGINTERN PyObject *_wrap_StateVariableList___len__(PyObject *SWIGUNUSEDPARM(se
     
   }
   resultobj = SWIG_From_size_t(static_cast< size_t >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_new_StateVariableList(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  cmf::math::StateVariableList *result = 0 ;
-  
-  if (!SWIG_Python_UnpackTuple(args,"new_StateVariableList",0,0,0)) SWIG_fail;
-  {
-    try {
-      result = (cmf::math::StateVariableList *)new cmf::math::StateVariableList();
-    } catch (const std::out_of_range& e) {
-      SWIG_exception(SWIG_IndexError, e.what());    
-    } catch (const std::exception& e) {
-      SWIG_exception(SWIG_RuntimeError, e.what());
-    }
-    
-  }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_cmf__math__StateVariableList, SWIG_POINTER_NEW |  0 );
   return resultobj;
 fail:
   return NULL;
@@ -26666,7 +26564,8 @@ SWIGINTERN PyObject *_wrap_sparse_structure_generate(PyObject *SWIGUNUSEDPARM(se
   cmf::math::StateVariableList *arg2 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  cmf::math::StateVariableList temp_list2 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   char *  kwnames[] = {
@@ -26680,16 +26579,14 @@ SWIGINTERN PyObject *_wrap_sparse_structure_generate(PyObject *SWIGUNUSEDPARM(se
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "sparse_structure_generate" "', argument " "1"" of type '" "cmf::math::sparse_structure *""'"); 
   }
   arg1 = reinterpret_cast< cmf::math::sparse_structure * >(argp1);
-  {
-    if (SWIG_ConvertPtr(obj1, (void **) &arg2, SWIGTYPE_p_cmf__math__StateVariableList, SWIG_POINTER_EXCEPTION) == -1) {
-      int res = iterable_to_list<cmf::math::StateVariable::ptr, cmf::math::StateVariableList>(obj1,SWIGTYPE_p_std__shared_ptrT_cmf__math__StateVariable_t, temp_list2);
-      if (SWIG_IsOK(res)) {
-        arg2 = &temp_list2;
-      } else {
-        SWIG_exception_fail(SWIG_TypeError,"Only iterables can be converted to cmf::math::StateVariableList");
-      }
-    }
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_cmf__math__StateVariableList,  0  | SWIG_POINTER_IMPLICIT_CONV);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "sparse_structure_generate" "', argument " "2"" of type '" "cmf::math::StateVariableList const &""'"); 
   }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "sparse_structure_generate" "', argument " "2"" of type '" "cmf::math::StateVariableList const &""'"); 
+  }
+  arg2 = reinterpret_cast< cmf::math::StateVariableList * >(argp2);
   {
     try {
       result = (arg1)->generate((cmf::math::StateVariableList const &)*arg2);
@@ -26701,8 +26598,10 @@ SWIGINTERN PyObject *_wrap_sparse_structure_generate(PyObject *SWIGUNUSEDPARM(se
     
   }
   resultobj = SWIG_From_size_t(static_cast< size_t >(result));
+  if (SWIG_IsNewObj(res2)) delete arg2;
   return resultobj;
 fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
   return NULL;
 }
 
@@ -82543,10 +82442,10 @@ SWIGINTERN PyObject *project_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject *
 SWIGINTERN PyObject *_wrap_Integrator___getitem__(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   cmf::math::Integrator *arg1 = (cmf::math::Integrator *) 0 ;
-  long arg2 ;
+  ptrdiff_t arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  long val2 ;
+  ptrdiff_t val2 ;
   int ecode2 = 0 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
@@ -82561,11 +82460,11 @@ SWIGINTERN PyObject *_wrap_Integrator___getitem__(PyObject *SWIGUNUSEDPARM(self)
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Integrator___getitem__" "', argument " "1"" of type '" "cmf::math::Integrator *""'"); 
   }
   arg1 = reinterpret_cast< cmf::math::Integrator * >(argp1);
-  ecode2 = SWIG_AsVal_long(obj1, &val2);
+  ecode2 = SWIG_AsVal_ptrdiff_t(obj1, &val2);
   if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Integrator___getitem__" "', argument " "2"" of type '" "long""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Integrator___getitem__" "', argument " "2"" of type '" "ptrdiff_t""'");
   } 
-  arg2 = static_cast< long >(val2);
+  arg2 = static_cast< ptrdiff_t >(val2);
   {
     try {
       result = (arg1)->operator [](arg2);
@@ -82658,22 +82557,24 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Integrator_get_states__SWIG_0(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_Integrator_get_state_values(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   cmf::math::Integrator *arg1 = (cmf::math::Integrator *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
+  PyObject *swig_obj[1] ;
   cmf::math::num_array result;
   
-  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
   res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__math__Integrator, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Integrator_get_states" "', argument " "1"" of type '" "cmf::math::Integrator const *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Integrator_get_state_values" "', argument " "1"" of type '" "cmf::math::Integrator const *""'"); 
   }
   arg1 = reinterpret_cast< cmf::math::Integrator * >(argp1);
   {
     try {
-      result = ((cmf::math::Integrator const *)arg1)->get_states();
+      result = ((cmf::math::Integrator const *)arg1)->get_state_values();
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -82684,97 +82585,6 @@ SWIGINTERN PyObject *_wrap_Integrator_get_states__SWIG_0(PyObject *SWIGUNUSEDPAR
   {
     resultobj = as_npy_array(result);
   }
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_Integrator_add_states(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
-  PyObject *resultobj = 0;
-  cmf::math::Integrator *arg1 = (cmf::math::Integrator *) 0 ;
-  cmf::math::StateVariableOwner *arg2 = 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
-  PyObject * obj0 = 0 ;
-  PyObject * obj1 = 0 ;
-  char *  kwnames[] = {
-    (char *) "self",(char *) "stateOwner", NULL 
-  };
-  
-  if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"OO:Integrator_add_states",kwnames,&obj0,&obj1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_cmf__math__Integrator, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Integrator_add_states" "', argument " "1"" of type '" "cmf::math::Integrator *""'"); 
-  }
-  arg1 = reinterpret_cast< cmf::math::Integrator * >(argp1);
-  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_cmf__math__StateVariableOwner,  0 );
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Integrator_add_states" "', argument " "2"" of type '" "cmf::math::StateVariableOwner &""'"); 
-  }
-  if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Integrator_add_states" "', argument " "2"" of type '" "cmf::math::StateVariableOwner &""'"); 
-  }
-  arg2 = reinterpret_cast< cmf::math::StateVariableOwner * >(argp2);
-  {
-    try {
-      (arg1)->add_states(*arg2);
-    } catch (const std::out_of_range& e) {
-      SWIG_exception(SWIG_IndexError, e.what());    
-    } catch (const std::exception& e) {
-      SWIG_exception(SWIG_RuntimeError, e.what());
-    }
-    
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_Integrator_add_single_state(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
-  PyObject *resultobj = 0;
-  cmf::math::Integrator *arg1 = (cmf::math::Integrator *) 0 ;
-  cmf::math::StateVariable::ptr arg2 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp2 ;
-  int res2 = 0 ;
-  PyObject * obj0 = 0 ;
-  PyObject * obj1 = 0 ;
-  char *  kwnames[] = {
-    (char *) "self",(char *) "state", NULL 
-  };
-  
-  if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"OO:Integrator_add_single_state",kwnames,&obj0,&obj1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_cmf__math__Integrator, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Integrator_add_single_state" "', argument " "1"" of type '" "cmf::math::Integrator *""'"); 
-  }
-  arg1 = reinterpret_cast< cmf::math::Integrator * >(argp1);
-  {
-    int newmem = 0;
-    res2 = SWIG_ConvertPtrAndOwn(obj1, &argp2, SWIGTYPE_p_std__shared_ptrT_cmf__math__StateVariable_t,  0 , &newmem);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Integrator_add_single_state" "', argument " "2"" of type '" "cmf::math::StateVariable::ptr""'"); 
-    }
-    if (argp2) arg2 = *(reinterpret_cast< cmf::math::StateVariable::ptr * >(argp2));
-    if (newmem & SWIG_CAST_NEW_MEMORY) delete reinterpret_cast< cmf::math::StateVariable::ptr * >(argp2);
-  }
-  {
-    try {
-      (arg1)->add_single_state(arg2);
-    } catch (const std::out_of_range& e) {
-      SWIG_exception(SWIG_IndexError, e.what());    
-    } catch (const std::exception& e) {
-      SWIG_exception(SWIG_RuntimeError, e.what());
-    }
-    
-  }
-  resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
   return NULL;
@@ -83063,14 +82873,16 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Integrator_get_states__SWIG_1(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_Integrator_get_states(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   cmf::math::Integrator *arg1 = (cmf::math::Integrator *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
+  PyObject *swig_obj[1] ;
   cmf::math::StateVariableList result;
   
-  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
   res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__math__Integrator, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Integrator_get_states" "', argument " "1"" of type '" "cmf::math::Integrator *""'"); 
@@ -83090,77 +82902,6 @@ SWIGINTERN PyObject *_wrap_Integrator_get_states__SWIG_1(PyObject *SWIGUNUSEDPAR
   return resultobj;
 fail:
   return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_Integrator_get_states(PyObject *self, PyObject *args) {
-  Py_ssize_t argc;
-  PyObject *argv[2] = {
-    0
-  };
-  
-  if (!(argc = SWIG_Python_UnpackTuple(args,"Integrator_get_states",0,1,argv))) SWIG_fail;
-  --argc;
-  {
-    unsigned long _index = 0;
-    SWIG_TypeRank _rank = 0; 
-    if (argc == 1) {
-      SWIG_TypeRank _ranki = 0;
-      SWIG_TypeRank _rankm = 0;
-      SWIG_TypeRank _pi = 1;
-      int _v = 0;
-      {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_cmf__math__Integrator, 0);
-        _v = SWIG_CheckState(res);
-      }
-      if (!_v) goto check_1;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      if (!_index || (_ranki < _rank)) {
-        _rank = _ranki; _index = 1;
-        if (_rank == _rankm) goto dispatch;
-      }
-    }
-  check_1:
-    
-    if (argc == 1) {
-      SWIG_TypeRank _ranki = 0;
-      SWIG_TypeRank _rankm = 0;
-      SWIG_TypeRank _pi = 1;
-      int _v = 0;
-      {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_cmf__math__Integrator, 0);
-        _v = SWIG_CheckState(res);
-      }
-      if (!_v) goto check_2;
-      _ranki += _v*_pi;
-      _rankm += _pi;
-      _pi *= SWIG_MAXCASTRANK;
-      if (!_index || (_ranki < _rank)) {
-        _rank = _ranki; _index = 2;
-        if (_rank == _rankm) goto dispatch;
-      }
-    }
-  check_2:
-    
-  dispatch:
-    switch(_index) {
-    case 1:
-      return _wrap_Integrator_get_states__SWIG_1(self, argc, argv);
-    case 2:
-      return _wrap_Integrator_get_states__SWIG_0(self, argc, argv);
-    }
-  }
-  
-fail:
-  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'Integrator_get_states'.\n"
-    "  Possible C/C++ prototypes are:\n"
-    "    cmf::math::Integrator::get_states() const\n"
-    "    cmf::math::Integrator::get_states()\n");
-  return 0;
 }
 
 
@@ -83317,6 +83058,99 @@ SWIGINTERN PyObject *_wrap_Integrator_reset(PyObject *SWIGUNUSEDPARM(self), PyOb
   {
     try {
       (arg1)->reset();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Integrator_add_states(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  cmf::math::Integrator *arg1 = (cmf::math::Integrator *) 0 ;
+  cmf::math::StateVariableList *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char *  kwnames[] = {
+    (char *) "self",(char *) "states", NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"OO:Integrator_add_states",kwnames,&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_cmf__math__Integrator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Integrator_add_states" "', argument " "1"" of type '" "cmf::math::Integrator *""'"); 
+  }
+  arg1 = reinterpret_cast< cmf::math::Integrator * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_cmf__math__StateVariableList,  0  | SWIG_POINTER_IMPLICIT_CONV);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Integrator_add_states" "', argument " "2"" of type '" "cmf::math::StateVariableList const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Integrator_add_states" "', argument " "2"" of type '" "cmf::math::StateVariableList const &""'"); 
+  }
+  arg2 = reinterpret_cast< cmf::math::StateVariableList * >(argp2);
+  {
+    try {
+      (arg1)->add_states((cmf::math::StateVariableList const &)*arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+    
+  }
+  resultobj = SWIG_Py_Void();
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Integrator_add_single_state(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  cmf::math::Integrator *arg1 = (cmf::math::Integrator *) 0 ;
+  cmf::math::StateVariable::ptr arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 ;
+  int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char *  kwnames[] = {
+    (char *) "self",(char *) "state", NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"OO:Integrator_add_single_state",kwnames,&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_cmf__math__Integrator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Integrator_add_single_state" "', argument " "1"" of type '" "cmf::math::Integrator *""'"); 
+  }
+  arg1 = reinterpret_cast< cmf::math::Integrator * >(argp1);
+  {
+    int newmem = 0;
+    res2 = SWIG_ConvertPtrAndOwn(obj1, &argp2, SWIGTYPE_p_std__shared_ptrT_cmf__math__StateVariable_t,  0 , &newmem);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Integrator_add_single_state" "', argument " "2"" of type '" "cmf::math::StateVariable::ptr""'"); 
+    }
+    if (argp2) arg2 = *(reinterpret_cast< cmf::math::StateVariable::ptr * >(argp2));
+    if (newmem & SWIG_CAST_NEW_MEMORY) delete reinterpret_cast< cmf::math::StateVariable::ptr * >(argp2);
+  }
+  {
+    try {
+      (arg1)->add_single_state(arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -83514,6 +83348,51 @@ SWIGINTERN PyObject *Integrator_swigregister(PyObject *SWIGUNUSEDPARM(self), PyO
   return SWIG_Py_Void();
 }
 
+SWIGINTERN PyObject *_wrap_BDF2_add_states(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  cmf::math::BDF2 *arg1 = (cmf::math::BDF2 *) 0 ;
+  cmf::math::StateVariableList *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char *  kwnames[] = {
+    (char *) "self",(char *) "stateOwner", NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"OO:BDF2_add_states",kwnames,&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_cmf__math__BDF2, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BDF2_add_states" "', argument " "1"" of type '" "cmf::math::BDF2 *""'"); 
+  }
+  arg1 = reinterpret_cast< cmf::math::BDF2 * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_cmf__math__StateVariableList,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "BDF2_add_states" "', argument " "2"" of type '" "cmf::math::StateVariableList &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "BDF2_add_states" "', argument " "2"" of type '" "cmf::math::StateVariableList &""'"); 
+  }
+  arg2 = reinterpret_cast< cmf::math::StateVariableList * >(argp2);
+  {
+    try {
+      (arg1)->add_states(*arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_BDF2_get_error_position(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   cmf::math::BDF2 *arg1 = (cmf::math::BDF2 *) 0 ;
@@ -83641,7 +83520,7 @@ fail:
 
 SWIGINTERN PyObject *_wrap_new_BDF2__SWIG_1(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
-  cmf::math::StateVariableOwner *arg1 = 0 ;
+  cmf::math::StateVariableList *arg1 = 0 ;
   real arg2 = (real) 1e-9 ;
   cmf::math::Time arg3 = (cmf::math::Time) cmf::math::timespan(10) ;
   void *argp1 = 0 ;
@@ -83651,14 +83530,14 @@ SWIGINTERN PyObject *_wrap_new_BDF2__SWIG_1(PyObject *SWIGUNUSEDPARM(self), int 
   cmf::math::BDF2 *result = 0 ;
   
   if ((nobjs < 1) || (nobjs > 3)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_cmf__math__StateVariableOwner,  0 );
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_cmf__math__StateVariableList,  0  | SWIG_POINTER_IMPLICIT_CONV);
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_BDF2" "', argument " "1"" of type '" "cmf::math::StateVariableOwner &""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_BDF2" "', argument " "1"" of type '" "cmf::math::StateVariableList const &""'"); 
   }
   if (!argp1) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_BDF2" "', argument " "1"" of type '" "cmf::math::StateVariableOwner &""'"); 
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_BDF2" "', argument " "1"" of type '" "cmf::math::StateVariableList const &""'"); 
   }
-  arg1 = reinterpret_cast< cmf::math::StateVariableOwner * >(argp1);
+  arg1 = reinterpret_cast< cmf::math::StateVariableList * >(argp1);
   if (swig_obj[1]) {
     ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
     if (!SWIG_IsOK(ecode2)) {
@@ -83676,7 +83555,7 @@ SWIGINTERN PyObject *_wrap_new_BDF2__SWIG_1(PyObject *SWIGUNUSEDPARM(self), int 
   }
   {
     try {
-      result = (cmf::math::BDF2 *)new cmf::math::BDF2(*arg1,arg2,arg3);
+      result = (cmf::math::BDF2 *)new cmf::math::BDF2((cmf::math::StateVariableList const &)*arg1,arg2,arg3);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -83685,8 +83564,10 @@ SWIGINTERN PyObject *_wrap_new_BDF2__SWIG_1(PyObject *SWIGUNUSEDPARM(self), int 
     
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_cmf__math__BDF2, SWIG_POINTER_NEW |  0 );
+  if (SWIG_IsNewObj(res1)) delete arg1;
   return resultobj;
 fail:
+  if (SWIG_IsNewObj(res1)) delete arg1;
   return NULL;
 }
 
@@ -83776,8 +83657,7 @@ SWIGINTERN PyObject *_wrap_new_BDF2(PyObject *self, PyObject *args) {
       SWIG_TypeRank _pi = 1;
       int _v = 0;
       {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_cmf__math__StateVariableOwner, 0);
+        int res = SWIG_ConvertPtr(argv[0], 0, SWIGTYPE_p_cmf__math__StateVariableList, 0);
         _v = SWIG_CheckState(res);
       }
       if (!_v) goto check_2;
@@ -83834,6 +83714,49 @@ SWIGINTERN PyObject *_wrap_new_BDF2(PyObject *self, PyObject *args) {
     }
   check_3:
     
+    if ((argc >= 1) && (argc <= 3)) {
+      SWIG_TypeRank _ranki = 0;
+      SWIG_TypeRank _rankm = 0;
+      SWIG_TypeRank _pi = 1;
+      int _v = 0;
+      {
+        int res = SWIG_ConvertPtr(argv[0], 0, SWIGTYPE_p_cmf__math__StateVariableList, SWIG_POINTER_IMPLICIT_CONV);
+        _v = SWIG_CheckState(res);
+      }
+      if (!_v) goto check_4;
+      _ranki += _v*_pi;
+      _rankm += _pi;
+      _pi *= SWIG_MAXCASTRANK;
+      if (argc > 1) {
+        {
+          {
+            int res = SWIG_AsVal_double(argv[1], NULL);
+            _v = SWIG_CheckState(res);
+          }
+        }
+        if (!_v) goto check_4;
+        _ranki += _v*_pi;
+        _rankm += _pi;
+        _pi *= SWIG_MAXCASTRANK;
+        if (argc > 2) {
+          {
+            {
+              _v = check_time(argv[2]);
+            }
+          }
+          if (!_v) goto check_4;
+          _ranki += _v*_pi;
+          _rankm += _pi;
+          _pi *= SWIG_MAXCASTRANK;
+        }
+      }
+      if (!_index || (_ranki < _rank)) {
+        _rank = _ranki; _index = 4;
+        if (_rank == _rankm) goto dispatch;
+      }
+    }
+  check_4:
+    
   dispatch:
     switch(_index) {
     case 1:
@@ -83842,6 +83765,8 @@ SWIGINTERN PyObject *_wrap_new_BDF2(PyObject *self, PyObject *args) {
       return _wrap_new_BDF2__SWIG_1(self, argc, argv);
     case 3:
       return _wrap_new_BDF2__SWIG_2(self, argc, argv);
+    case 4:
+      return _wrap_new_BDF2__SWIG_1(self, argc, argv);
     }
   }
   
@@ -83849,7 +83774,7 @@ fail:
   SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'new_BDF2'.\n"
     "  Possible C/C++ prototypes are:\n"
     "    cmf::math::BDF2::BDF2(real,cmf::math::Time)\n"
-    "    cmf::math::BDF2::BDF2(cmf::math::StateVariableOwner &,real,cmf::math::Time)\n"
+    "    cmf::math::BDF2::BDF2(cmf::math::StateVariableList const &,real,cmf::math::Time)\n"
     "    cmf::math::BDF2::BDF2(cmf::math::Integrator const &)\n");
   return 0;
 }
@@ -83897,22 +83822,67 @@ SWIGINTERN PyObject *BDF2_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject *arg
   return SWIG_Python_InitShadowInstance(args);
 }
 
+SWIGINTERN PyObject *_wrap_ExplicitEuler_fixed_add_states(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  cmf::math::ExplicitEuler_fixed *arg1 = (cmf::math::ExplicitEuler_fixed *) 0 ;
+  cmf::math::StateVariableList *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char *  kwnames[] = {
+    (char *) "self",(char *) "stateOwner", NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"OO:ExplicitEuler_fixed_add_states",kwnames,&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_cmf__math__ExplicitEuler_fixed, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ExplicitEuler_fixed_add_states" "', argument " "1"" of type '" "cmf::math::ExplicitEuler_fixed *""'"); 
+  }
+  arg1 = reinterpret_cast< cmf::math::ExplicitEuler_fixed * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_cmf__math__StateVariableList,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ExplicitEuler_fixed_add_states" "', argument " "2"" of type '" "cmf::math::StateVariableList &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ExplicitEuler_fixed_add_states" "', argument " "2"" of type '" "cmf::math::StateVariableList &""'"); 
+  }
+  arg2 = reinterpret_cast< cmf::math::StateVariableList * >(argp2);
+  {
+    try {
+      (arg1)->add_states(*arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_new_ExplicitEuler_fixed__SWIG_0(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
-  cmf::math::StateVariableOwner *arg1 = 0 ;
+  cmf::math::StateVariableList *arg1 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   cmf::math::ExplicitEuler_fixed *result = 0 ;
   
   if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_cmf__math__StateVariableOwner,  0 );
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_cmf__math__StateVariableList,  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_ExplicitEuler_fixed" "', argument " "1"" of type '" "cmf::math::StateVariableOwner &""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_ExplicitEuler_fixed" "', argument " "1"" of type '" "cmf::math::StateVariableList &""'"); 
   }
   if (!argp1) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_ExplicitEuler_fixed" "', argument " "1"" of type '" "cmf::math::StateVariableOwner &""'"); 
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_ExplicitEuler_fixed" "', argument " "1"" of type '" "cmf::math::StateVariableList &""'"); 
   }
-  arg1 = reinterpret_cast< cmf::math::StateVariableOwner * >(argp1);
+  arg1 = reinterpret_cast< cmf::math::StateVariableList * >(argp1);
   {
     try {
       result = (cmf::math::ExplicitEuler_fixed *)new cmf::math::ExplicitEuler_fixed(*arg1);
@@ -84011,7 +83981,7 @@ SWIGINTERN PyObject *_wrap_new_ExplicitEuler_fixed(PyObject *self, PyObject *arg
       int _v = 0;
       {
         void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_cmf__math__StateVariableOwner, 0);
+        int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_cmf__math__StateVariableList, 0);
         _v = SWIG_CheckState(res);
       }
       if (!_v) goto check_2;
@@ -84059,7 +84029,7 @@ SWIGINTERN PyObject *_wrap_new_ExplicitEuler_fixed(PyObject *self, PyObject *arg
 fail:
   SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'new_ExplicitEuler_fixed'.\n"
     "  Possible C/C++ prototypes are:\n"
-    "    cmf::math::ExplicitEuler_fixed::ExplicitEuler_fixed(cmf::math::StateVariableOwner &)\n"
+    "    cmf::math::ExplicitEuler_fixed::ExplicitEuler_fixed(cmf::math::StateVariableList &)\n"
     "    cmf::math::ExplicitEuler_fixed::ExplicitEuler_fixed()\n"
     "    cmf::math::ExplicitEuler_fixed::ExplicitEuler_fixed(cmf::math::Integrator const &)\n");
   return 0;
@@ -84107,6 +84077,51 @@ SWIGINTERN PyObject *ExplicitEuler_fixed_swigregister(PyObject *SWIGUNUSEDPARM(s
 SWIGINTERN PyObject *ExplicitEuler_fixed_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   return SWIG_Python_InitShadowInstance(args);
 }
+
+SWIGINTERN PyObject *_wrap_HeunIntegrator_add_states(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  cmf::math::HeunIntegrator *arg1 = (cmf::math::HeunIntegrator *) 0 ;
+  cmf::math::StateVariableList *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char *  kwnames[] = {
+    (char *) "self",(char *) "stateOwner", NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"OO:HeunIntegrator_add_states",kwnames,&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_cmf__math__HeunIntegrator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "HeunIntegrator_add_states" "', argument " "1"" of type '" "cmf::math::HeunIntegrator *""'"); 
+  }
+  arg1 = reinterpret_cast< cmf::math::HeunIntegrator * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_cmf__math__StateVariableList,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "HeunIntegrator_add_states" "', argument " "2"" of type '" "cmf::math::StateVariableList &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "HeunIntegrator_add_states" "', argument " "2"" of type '" "cmf::math::StateVariableList &""'"); 
+  }
+  arg2 = reinterpret_cast< cmf::math::StateVariableList * >(argp2);
+  {
+    try {
+      (arg1)->add_states(*arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
 
 SWIGINTERN PyObject *_wrap_HeunIntegrator_alpha_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
@@ -84162,7 +84177,7 @@ fail:
 
 SWIGINTERN PyObject *_wrap_new_HeunIntegrator__SWIG_0(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
-  cmf::math::StateVariableOwner *arg1 = 0 ;
+  cmf::math::StateVariableList *arg1 = 0 ;
   real arg2 = (real) 0.5 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
@@ -84171,14 +84186,14 @@ SWIGINTERN PyObject *_wrap_new_HeunIntegrator__SWIG_0(PyObject *SWIGUNUSEDPARM(s
   cmf::math::HeunIntegrator *result = 0 ;
   
   if ((nobjs < 1) || (nobjs > 2)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_cmf__math__StateVariableOwner,  0 );
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_cmf__math__StateVariableList,  0  | SWIG_POINTER_IMPLICIT_CONV);
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_HeunIntegrator" "', argument " "1"" of type '" "cmf::math::StateVariableOwner &""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_HeunIntegrator" "', argument " "1"" of type '" "cmf::math::StateVariableList const &""'"); 
   }
   if (!argp1) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_HeunIntegrator" "', argument " "1"" of type '" "cmf::math::StateVariableOwner &""'"); 
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_HeunIntegrator" "', argument " "1"" of type '" "cmf::math::StateVariableList const &""'"); 
   }
-  arg1 = reinterpret_cast< cmf::math::StateVariableOwner * >(argp1);
+  arg1 = reinterpret_cast< cmf::math::StateVariableList * >(argp1);
   if (swig_obj[1]) {
     ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
     if (!SWIG_IsOK(ecode2)) {
@@ -84188,7 +84203,7 @@ SWIGINTERN PyObject *_wrap_new_HeunIntegrator__SWIG_0(PyObject *SWIGUNUSEDPARM(s
   }
   {
     try {
-      result = (cmf::math::HeunIntegrator *)new cmf::math::HeunIntegrator(*arg1,arg2);
+      result = (cmf::math::HeunIntegrator *)new cmf::math::HeunIntegrator((cmf::math::StateVariableList const &)*arg1,arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -84197,8 +84212,10 @@ SWIGINTERN PyObject *_wrap_new_HeunIntegrator__SWIG_0(PyObject *SWIGUNUSEDPARM(s
     
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_cmf__math__HeunIntegrator, SWIG_POINTER_NEW |  0 );
+  if (SWIG_IsNewObj(res1)) delete arg1;
   return resultobj;
 fail:
+  if (SWIG_IsNewObj(res1)) delete arg1;
   return NULL;
 }
 
@@ -84309,8 +84326,7 @@ SWIGINTERN PyObject *_wrap_new_HeunIntegrator(PyObject *self, PyObject *args) {
       SWIG_TypeRank _pi = 1;
       int _v = 0;
       {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_cmf__math__StateVariableOwner, 0);
+        int res = SWIG_ConvertPtr(argv[0], 0, SWIGTYPE_p_cmf__math__StateVariableList, 0);
         _v = SWIG_CheckState(res);
       }
       if (!_v) goto check_2;
@@ -84356,6 +84372,38 @@ SWIGINTERN PyObject *_wrap_new_HeunIntegrator(PyObject *self, PyObject *args) {
     }
   check_3:
     
+    if ((argc >= 1) && (argc <= 2)) {
+      SWIG_TypeRank _ranki = 0;
+      SWIG_TypeRank _rankm = 0;
+      SWIG_TypeRank _pi = 1;
+      int _v = 0;
+      {
+        int res = SWIG_ConvertPtr(argv[0], 0, SWIGTYPE_p_cmf__math__StateVariableList, SWIG_POINTER_IMPLICIT_CONV);
+        _v = SWIG_CheckState(res);
+      }
+      if (!_v) goto check_4;
+      _ranki += _v*_pi;
+      _rankm += _pi;
+      _pi *= SWIG_MAXCASTRANK;
+      if (argc > 1) {
+        {
+          {
+            int res = SWIG_AsVal_double(argv[1], NULL);
+            _v = SWIG_CheckState(res);
+          }
+        }
+        if (!_v) goto check_4;
+        _ranki += _v*_pi;
+        _rankm += _pi;
+        _pi *= SWIG_MAXCASTRANK;
+      }
+      if (!_index || (_ranki < _rank)) {
+        _rank = _ranki; _index = 4;
+        if (_rank == _rankm) goto dispatch;
+      }
+    }
+  check_4:
+    
   dispatch:
     switch(_index) {
     case 1:
@@ -84364,13 +84412,15 @@ SWIGINTERN PyObject *_wrap_new_HeunIntegrator(PyObject *self, PyObject *args) {
       return _wrap_new_HeunIntegrator__SWIG_0(self, argc, argv);
     case 3:
       return _wrap_new_HeunIntegrator__SWIG_2(self, argc, argv);
+    case 4:
+      return _wrap_new_HeunIntegrator__SWIG_0(self, argc, argv);
     }
   }
   
 fail:
   SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'new_HeunIntegrator'.\n"
     "  Possible C/C++ prototypes are:\n"
-    "    cmf::math::HeunIntegrator::HeunIntegrator(cmf::math::StateVariableOwner &,real)\n"
+    "    cmf::math::HeunIntegrator::HeunIntegrator(cmf::math::StateVariableList const &,real)\n"
     "    cmf::math::HeunIntegrator::HeunIntegrator(real)\n"
     "    cmf::math::HeunIntegrator::HeunIntegrator(cmf::math::Integrator const &)\n");
   return 0;
@@ -84471,9 +84521,54 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_ImplicitEuler_add_states(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  cmf::math::ImplicitEuler *arg1 = (cmf::math::ImplicitEuler *) 0 ;
+  cmf::math::StateVariableList *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char *  kwnames[] = {
+    (char *) "self",(char *) "stateOwner", NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"OO:ImplicitEuler_add_states",kwnames,&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_cmf__math__ImplicitEuler, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ImplicitEuler_add_states" "', argument " "1"" of type '" "cmf::math::ImplicitEuler *""'"); 
+  }
+  arg1 = reinterpret_cast< cmf::math::ImplicitEuler * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_cmf__math__StateVariableList,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ImplicitEuler_add_states" "', argument " "2"" of type '" "cmf::math::StateVariableList &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ImplicitEuler_add_states" "', argument " "2"" of type '" "cmf::math::StateVariableList &""'"); 
+  }
+  arg2 = reinterpret_cast< cmf::math::StateVariableList * >(argp2);
+  {
+    try {
+      (arg1)->add_states(*arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_new_ImplicitEuler__SWIG_0(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
-  cmf::math::StateVariableOwner *arg1 = 0 ;
+  cmf::math::StateVariableList *arg1 = 0 ;
   real arg2 = (real) 1e-9 ;
   cmf::math::Time arg3 = (cmf::math::Time) cmf::math::timespan(10) ;
   void *argp1 = 0 ;
@@ -84483,14 +84578,14 @@ SWIGINTERN PyObject *_wrap_new_ImplicitEuler__SWIG_0(PyObject *SWIGUNUSEDPARM(se
   cmf::math::ImplicitEuler *result = 0 ;
   
   if ((nobjs < 1) || (nobjs > 3)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_cmf__math__StateVariableOwner,  0 );
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_cmf__math__StateVariableList,  0  | SWIG_POINTER_IMPLICIT_CONV);
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_ImplicitEuler" "', argument " "1"" of type '" "cmf::math::StateVariableOwner &""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_ImplicitEuler" "', argument " "1"" of type '" "cmf::math::StateVariableList const &""'"); 
   }
   if (!argp1) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_ImplicitEuler" "', argument " "1"" of type '" "cmf::math::StateVariableOwner &""'"); 
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_ImplicitEuler" "', argument " "1"" of type '" "cmf::math::StateVariableList const &""'"); 
   }
-  arg1 = reinterpret_cast< cmf::math::StateVariableOwner * >(argp1);
+  arg1 = reinterpret_cast< cmf::math::StateVariableList * >(argp1);
   if (swig_obj[1]) {
     ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
     if (!SWIG_IsOK(ecode2)) {
@@ -84508,7 +84603,7 @@ SWIGINTERN PyObject *_wrap_new_ImplicitEuler__SWIG_0(PyObject *SWIGUNUSEDPARM(se
   }
   {
     try {
-      result = (cmf::math::ImplicitEuler *)new cmf::math::ImplicitEuler(*arg1,arg2,arg3);
+      result = (cmf::math::ImplicitEuler *)new cmf::math::ImplicitEuler((cmf::math::StateVariableList const &)*arg1,arg2,arg3);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -84517,8 +84612,10 @@ SWIGINTERN PyObject *_wrap_new_ImplicitEuler__SWIG_0(PyObject *SWIGUNUSEDPARM(se
     
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_cmf__math__ImplicitEuler, SWIG_POINTER_NEW |  0 );
+  if (SWIG_IsNewObj(res1)) delete arg1;
   return resultobj;
 fail:
+  if (SWIG_IsNewObj(res1)) delete arg1;
   return NULL;
 }
 
@@ -84649,8 +84746,7 @@ SWIGINTERN PyObject *_wrap_new_ImplicitEuler(PyObject *self, PyObject *args) {
       SWIG_TypeRank _pi = 1;
       int _v = 0;
       {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_cmf__math__StateVariableOwner, 0);
+        int res = SWIG_ConvertPtr(argv[0], 0, SWIGTYPE_p_cmf__math__StateVariableList, 0);
         _v = SWIG_CheckState(res);
       }
       if (!_v) goto check_2;
@@ -84707,6 +84803,49 @@ SWIGINTERN PyObject *_wrap_new_ImplicitEuler(PyObject *self, PyObject *args) {
     }
   check_3:
     
+    if ((argc >= 1) && (argc <= 3)) {
+      SWIG_TypeRank _ranki = 0;
+      SWIG_TypeRank _rankm = 0;
+      SWIG_TypeRank _pi = 1;
+      int _v = 0;
+      {
+        int res = SWIG_ConvertPtr(argv[0], 0, SWIGTYPE_p_cmf__math__StateVariableList, SWIG_POINTER_IMPLICIT_CONV);
+        _v = SWIG_CheckState(res);
+      }
+      if (!_v) goto check_4;
+      _ranki += _v*_pi;
+      _rankm += _pi;
+      _pi *= SWIG_MAXCASTRANK;
+      if (argc > 1) {
+        {
+          {
+            int res = SWIG_AsVal_double(argv[1], NULL);
+            _v = SWIG_CheckState(res);
+          }
+        }
+        if (!_v) goto check_4;
+        _ranki += _v*_pi;
+        _rankm += _pi;
+        _pi *= SWIG_MAXCASTRANK;
+        if (argc > 2) {
+          {
+            {
+              _v = check_time(argv[2]);
+            }
+          }
+          if (!_v) goto check_4;
+          _ranki += _v*_pi;
+          _rankm += _pi;
+          _pi *= SWIG_MAXCASTRANK;
+        }
+      }
+      if (!_index || (_ranki < _rank)) {
+        _rank = _ranki; _index = 4;
+        if (_rank == _rankm) goto dispatch;
+      }
+    }
+  check_4:
+    
   dispatch:
     switch(_index) {
     case 1:
@@ -84715,13 +84854,15 @@ SWIGINTERN PyObject *_wrap_new_ImplicitEuler(PyObject *self, PyObject *args) {
       return _wrap_new_ImplicitEuler__SWIG_0(self, argc, argv);
     case 3:
       return _wrap_new_ImplicitEuler__SWIG_2(self, argc, argv);
+    case 4:
+      return _wrap_new_ImplicitEuler__SWIG_0(self, argc, argv);
     }
   }
   
 fail:
   SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'new_ImplicitEuler'.\n"
     "  Possible C/C++ prototypes are:\n"
-    "    cmf::math::ImplicitEuler::ImplicitEuler(cmf::math::StateVariableOwner &,real,cmf::math::Time)\n"
+    "    cmf::math::ImplicitEuler::ImplicitEuler(cmf::math::StateVariableList const &,real,cmf::math::Time)\n"
     "    cmf::math::ImplicitEuler::ImplicitEuler(real,cmf::math::Time)\n"
     "    cmf::math::ImplicitEuler::ImplicitEuler(cmf::math::Integrator const &)\n");
   return 0;
@@ -84770,9 +84911,54 @@ SWIGINTERN PyObject *ImplicitEuler_swiginit(PyObject *SWIGUNUSEDPARM(self), PyOb
   return SWIG_Python_InitShadowInstance(args);
 }
 
+SWIGINTERN PyObject *_wrap_RKFIntegrator_add_states(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  cmf::math::RKFIntegrator *arg1 = (cmf::math::RKFIntegrator *) 0 ;
+  cmf::math::StateVariableList *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char *  kwnames[] = {
+    (char *) "self",(char *) "stateOwner", NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"OO:RKFIntegrator_add_states",kwnames,&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_cmf__math__RKFIntegrator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RKFIntegrator_add_states" "', argument " "1"" of type '" "cmf::math::RKFIntegrator *""'"); 
+  }
+  arg1 = reinterpret_cast< cmf::math::RKFIntegrator * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_cmf__math__StateVariableList,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "RKFIntegrator_add_states" "', argument " "2"" of type '" "cmf::math::StateVariableList &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "RKFIntegrator_add_states" "', argument " "2"" of type '" "cmf::math::StateVariableList &""'"); 
+  }
+  arg2 = reinterpret_cast< cmf::math::StateVariableList * >(argp2);
+  {
+    try {
+      (arg1)->add_states(*arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_new_RKFIntegrator__SWIG_0(PyObject *SWIGUNUSEDPARM(self), int nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
-  cmf::math::StateVariableOwner *arg1 = 0 ;
+  cmf::math::StateVariableList *arg1 = 0 ;
   real arg2 = (real) 1e-9 ;
   cmf::math::Time arg3 = (cmf::math::Time) cmf::math::timespan(1000) ;
   void *argp1 = 0 ;
@@ -84782,14 +84968,14 @@ SWIGINTERN PyObject *_wrap_new_RKFIntegrator__SWIG_0(PyObject *SWIGUNUSEDPARM(se
   cmf::math::RKFIntegrator *result = 0 ;
   
   if ((nobjs < 1) || (nobjs > 3)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_cmf__math__StateVariableOwner,  0 );
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_cmf__math__StateVariableList,  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_RKFIntegrator" "', argument " "1"" of type '" "cmf::math::StateVariableOwner &""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_RKFIntegrator" "', argument " "1"" of type '" "cmf::math::StateVariableList &""'"); 
   }
   if (!argp1) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_RKFIntegrator" "', argument " "1"" of type '" "cmf::math::StateVariableOwner &""'"); 
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_RKFIntegrator" "', argument " "1"" of type '" "cmf::math::StateVariableList &""'"); 
   }
-  arg1 = reinterpret_cast< cmf::math::StateVariableOwner * >(argp1);
+  arg1 = reinterpret_cast< cmf::math::StateVariableList * >(argp1);
   if (swig_obj[1]) {
     ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
     if (!SWIG_IsOK(ecode2)) {
@@ -84916,7 +85102,7 @@ SWIGINTERN PyObject *_wrap_new_RKFIntegrator(PyObject *self, PyObject *args) {
       int _v = 0;
       {
         void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_cmf__math__StateVariableOwner, 0);
+        int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_cmf__math__StateVariableList, 0);
         _v = SWIG_CheckState(res);
       }
       if (!_v) goto check_2;
@@ -84965,7 +85151,7 @@ SWIGINTERN PyObject *_wrap_new_RKFIntegrator(PyObject *self, PyObject *args) {
 fail:
   SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'new_RKFIntegrator'.\n"
     "  Possible C/C++ prototypes are:\n"
-    "    cmf::math::RKFIntegrator::RKFIntegrator(cmf::math::StateVariableOwner &,real,cmf::math::Time)\n"
+    "    cmf::math::RKFIntegrator::RKFIntegrator(cmf::math::StateVariableList &,real,cmf::math::Time)\n"
     "    cmf::math::RKFIntegrator::RKFIntegrator(real,cmf::math::Time)\n");
   return 0;
 }
@@ -86611,7 +86797,7 @@ SWIGINTERN PyObject *CVodeBase_swigregister(PyObject *SWIGUNUSEDPARM(self), PyOb
 
 SWIGINTERN PyObject *_wrap_new_CVodeDense(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
-  cmf::math::StateVariableOwner *arg1 = 0 ;
+  cmf::math::StateVariableList *arg1 = 0 ;
   real arg2 = (real) 1e-9 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
@@ -86625,14 +86811,14 @@ SWIGINTERN PyObject *_wrap_new_CVodeDense(PyObject *SWIGUNUSEDPARM(self), PyObje
   cmf::math::CVodeDense *result = 0 ;
   
   if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"O|O:new_CVodeDense",kwnames,&obj0,&obj1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_cmf__math__StateVariableOwner,  0 );
+  res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_cmf__math__StateVariableList,  0  | SWIG_POINTER_IMPLICIT_CONV);
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_CVodeDense" "', argument " "1"" of type '" "cmf::math::StateVariableOwner &""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_CVodeDense" "', argument " "1"" of type '" "cmf::math::StateVariableList const &""'"); 
   }
   if (!argp1) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_CVodeDense" "', argument " "1"" of type '" "cmf::math::StateVariableOwner &""'"); 
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_CVodeDense" "', argument " "1"" of type '" "cmf::math::StateVariableList const &""'"); 
   }
-  arg1 = reinterpret_cast< cmf::math::StateVariableOwner * >(argp1);
+  arg1 = reinterpret_cast< cmf::math::StateVariableList * >(argp1);
   if (obj1) {
     ecode2 = SWIG_AsVal_double(obj1, &val2);
     if (!SWIG_IsOK(ecode2)) {
@@ -86642,7 +86828,7 @@ SWIGINTERN PyObject *_wrap_new_CVodeDense(PyObject *SWIGUNUSEDPARM(self), PyObje
   }
   {
     try {
-      result = (cmf::math::CVodeDense *)new cmf::math::CVodeDense(*arg1,arg2);
+      result = (cmf::math::CVodeDense *)new cmf::math::CVodeDense((cmf::math::StateVariableList const &)*arg1,arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -86651,8 +86837,10 @@ SWIGINTERN PyObject *_wrap_new_CVodeDense(PyObject *SWIGUNUSEDPARM(self), PyObje
     
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_cmf__math__CVodeDense, SWIG_POINTER_NEW |  0 );
+  if (SWIG_IsNewObj(res1)) delete arg1;
   return resultobj;
 fail:
+  if (SWIG_IsNewObj(res1)) delete arg1;
   return NULL;
 }
 
@@ -86701,7 +86889,7 @@ SWIGINTERN PyObject *CVodeDense_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObjec
 
 SWIGINTERN PyObject *_wrap_new_CVodeAdams(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
-  cmf::math::StateVariableOwner *arg1 = 0 ;
+  cmf::math::StateVariableList *arg1 = 0 ;
   real arg2 = (real) 1e-9 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
@@ -86715,14 +86903,14 @@ SWIGINTERN PyObject *_wrap_new_CVodeAdams(PyObject *SWIGUNUSEDPARM(self), PyObje
   cmf::math::CVodeAdams *result = 0 ;
   
   if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"O|O:new_CVodeAdams",kwnames,&obj0,&obj1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_cmf__math__StateVariableOwner,  0 );
+  res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_cmf__math__StateVariableList,  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_CVodeAdams" "', argument " "1"" of type '" "cmf::math::StateVariableOwner &""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_CVodeAdams" "', argument " "1"" of type '" "cmf::math::StateVariableList &""'"); 
   }
   if (!argp1) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_CVodeAdams" "', argument " "1"" of type '" "cmf::math::StateVariableOwner &""'"); 
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_CVodeAdams" "', argument " "1"" of type '" "cmf::math::StateVariableList &""'"); 
   }
-  arg1 = reinterpret_cast< cmf::math::StateVariableOwner * >(argp1);
+  arg1 = reinterpret_cast< cmf::math::StateVariableList * >(argp1);
   if (obj1) {
     ecode2 = SWIG_AsVal_double(obj1, &val2);
     if (!SWIG_IsOK(ecode2)) {
@@ -86843,7 +87031,7 @@ fail:
 
 SWIGINTERN PyObject *_wrap_new_CVodeBanded(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
-  cmf::math::StateVariableOwner *arg1 = 0 ;
+  cmf::math::StateVariableList *arg1 = 0 ;
   real arg2 = (real) 1e-9 ;
   int arg3 = (int) 5 ;
   void *argp1 = 0 ;
@@ -86861,14 +87049,14 @@ SWIGINTERN PyObject *_wrap_new_CVodeBanded(PyObject *SWIGUNUSEDPARM(self), PyObj
   cmf::math::CVodeBanded *result = 0 ;
   
   if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"O|OO:new_CVodeBanded",kwnames,&obj0,&obj1,&obj2)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_cmf__math__StateVariableOwner,  0 );
+  res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_cmf__math__StateVariableList,  0  | SWIG_POINTER_IMPLICIT_CONV);
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_CVodeBanded" "', argument " "1"" of type '" "cmf::math::StateVariableOwner &""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_CVodeBanded" "', argument " "1"" of type '" "cmf::math::StateVariableList const &""'"); 
   }
   if (!argp1) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_CVodeBanded" "', argument " "1"" of type '" "cmf::math::StateVariableOwner &""'"); 
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_CVodeBanded" "', argument " "1"" of type '" "cmf::math::StateVariableList const &""'"); 
   }
-  arg1 = reinterpret_cast< cmf::math::StateVariableOwner * >(argp1);
+  arg1 = reinterpret_cast< cmf::math::StateVariableList * >(argp1);
   if (obj1) {
     ecode2 = SWIG_AsVal_double(obj1, &val2);
     if (!SWIG_IsOK(ecode2)) {
@@ -86885,7 +87073,7 @@ SWIGINTERN PyObject *_wrap_new_CVodeBanded(PyObject *SWIGUNUSEDPARM(self), PyObj
   }
   {
     try {
-      result = (cmf::math::CVodeBanded *)new cmf::math::CVodeBanded(*arg1,arg2,arg3);
+      result = (cmf::math::CVodeBanded *)new cmf::math::CVodeBanded((cmf::math::StateVariableList const &)*arg1,arg2,arg3);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -86894,8 +87082,10 @@ SWIGINTERN PyObject *_wrap_new_CVodeBanded(PyObject *SWIGUNUSEDPARM(self), PyObj
     
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_cmf__math__CVodeBanded, SWIG_POINTER_NEW |  0 );
+  if (SWIG_IsNewObj(res1)) delete arg1;
   return resultobj;
 fail:
+  if (SWIG_IsNewObj(res1)) delete arg1;
   return NULL;
 }
 
@@ -86944,7 +87134,7 @@ SWIGINTERN PyObject *CVodeBanded_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObje
 
 SWIGINTERN PyObject *_wrap_new_CVodeDiag(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
-  cmf::math::StateVariableOwner *arg1 = 0 ;
+  cmf::math::StateVariableList *arg1 = 0 ;
   real arg2 = (real) 1e-9 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
@@ -86958,14 +87148,14 @@ SWIGINTERN PyObject *_wrap_new_CVodeDiag(PyObject *SWIGUNUSEDPARM(self), PyObjec
   cmf::math::CVodeDiag *result = 0 ;
   
   if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"O|O:new_CVodeDiag",kwnames,&obj0,&obj1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_cmf__math__StateVariableOwner,  0 );
+  res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_cmf__math__StateVariableList,  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_CVodeDiag" "', argument " "1"" of type '" "cmf::math::StateVariableOwner &""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_CVodeDiag" "', argument " "1"" of type '" "cmf::math::StateVariableList &""'"); 
   }
   if (!argp1) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_CVodeDiag" "', argument " "1"" of type '" "cmf::math::StateVariableOwner &""'"); 
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_CVodeDiag" "', argument " "1"" of type '" "cmf::math::StateVariableList &""'"); 
   }
-  arg1 = reinterpret_cast< cmf::math::StateVariableOwner * >(argp1);
+  arg1 = reinterpret_cast< cmf::math::StateVariableList * >(argp1);
   if (obj1) {
     ecode2 = SWIG_AsVal_double(obj1, &val2);
     if (!SWIG_IsOK(ecode2)) {
@@ -87138,7 +87328,7 @@ fail:
 
 SWIGINTERN PyObject *_wrap_new_CVodeKrylov(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
-  cmf::math::StateVariableOwner *arg1 = 0 ;
+  cmf::math::StateVariableList *arg1 = 0 ;
   real arg2 = (real) 1e-9 ;
   int arg3 = (int) 5 ;
   char arg4 = (char) 'L' ;
@@ -87160,14 +87350,14 @@ SWIGINTERN PyObject *_wrap_new_CVodeKrylov(PyObject *SWIGUNUSEDPARM(self), PyObj
   cmf::math::CVodeKrylov *result = 0 ;
   
   if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"O|OOO:new_CVodeKrylov",kwnames,&obj0,&obj1,&obj2,&obj3)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_cmf__math__StateVariableOwner,  0 );
+  res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_cmf__math__StateVariableList,  0  | SWIG_POINTER_IMPLICIT_CONV);
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_CVodeKrylov" "', argument " "1"" of type '" "cmf::math::StateVariableOwner &""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_CVodeKrylov" "', argument " "1"" of type '" "cmf::math::StateVariableList const &""'"); 
   }
   if (!argp1) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_CVodeKrylov" "', argument " "1"" of type '" "cmf::math::StateVariableOwner &""'"); 
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_CVodeKrylov" "', argument " "1"" of type '" "cmf::math::StateVariableList const &""'"); 
   }
-  arg1 = reinterpret_cast< cmf::math::StateVariableOwner * >(argp1);
+  arg1 = reinterpret_cast< cmf::math::StateVariableList * >(argp1);
   if (obj1) {
     ecode2 = SWIG_AsVal_double(obj1, &val2);
     if (!SWIG_IsOK(ecode2)) {
@@ -87191,7 +87381,7 @@ SWIGINTERN PyObject *_wrap_new_CVodeKrylov(PyObject *SWIGUNUSEDPARM(self), PyObj
   }
   {
     try {
-      result = (cmf::math::CVodeKrylov *)new cmf::math::CVodeKrylov(*arg1,arg2,arg3,arg4);
+      result = (cmf::math::CVodeKrylov *)new cmf::math::CVodeKrylov((cmf::math::StateVariableList const &)*arg1,arg2,arg3,arg4);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -87200,8 +87390,10 @@ SWIGINTERN PyObject *_wrap_new_CVodeKrylov(PyObject *SWIGUNUSEDPARM(self), PyObj
     
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_cmf__math__CVodeKrylov, SWIG_POINTER_NEW |  0 );
+  if (SWIG_IsNewObj(res1)) delete arg1;
   return resultobj;
 fail:
+  if (SWIG_IsNewObj(res1)) delete arg1;
   return NULL;
 }
 
@@ -87250,7 +87442,7 @@ SWIGINTERN PyObject *CVodeKrylov_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObje
 
 SWIGINTERN PyObject *_wrap_new_CVodeKLU(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
-  cmf::math::StateVariableOwner *arg1 = 0 ;
+  cmf::math::StateVariableList *arg1 = 0 ;
   real arg2 = (real) 1e-9 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
@@ -87264,14 +87456,14 @@ SWIGINTERN PyObject *_wrap_new_CVodeKLU(PyObject *SWIGUNUSEDPARM(self), PyObject
   cmf::math::CVodeKLU *result = 0 ;
   
   if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"O|O:new_CVodeKLU",kwnames,&obj0,&obj1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_cmf__math__StateVariableOwner,  0 );
+  res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_cmf__math__StateVariableList,  0  | SWIG_POINTER_IMPLICIT_CONV);
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_CVodeKLU" "', argument " "1"" of type '" "cmf::math::StateVariableOwner &""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_CVodeKLU" "', argument " "1"" of type '" "cmf::math::StateVariableList const &""'"); 
   }
   if (!argp1) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_CVodeKLU" "', argument " "1"" of type '" "cmf::math::StateVariableOwner &""'"); 
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_CVodeKLU" "', argument " "1"" of type '" "cmf::math::StateVariableList const &""'"); 
   }
-  arg1 = reinterpret_cast< cmf::math::StateVariableOwner * >(argp1);
+  arg1 = reinterpret_cast< cmf::math::StateVariableList * >(argp1);
   if (obj1) {
     ecode2 = SWIG_AsVal_double(obj1, &val2);
     if (!SWIG_IsOK(ecode2)) {
@@ -87281,7 +87473,7 @@ SWIGINTERN PyObject *_wrap_new_CVodeKLU(PyObject *SWIGUNUSEDPARM(self), PyObject
   }
   {
     try {
-      result = (cmf::math::CVodeKLU *)new cmf::math::CVodeKLU(*arg1,arg2);
+      result = (cmf::math::CVodeKLU *)new cmf::math::CVodeKLU((cmf::math::StateVariableList const &)*arg1,arg2);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -87290,8 +87482,10 @@ SWIGINTERN PyObject *_wrap_new_CVodeKLU(PyObject *SWIGUNUSEDPARM(self), PyObject
     
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_cmf__math__CVodeKLU, SWIG_POINTER_NEW |  0 );
+  if (SWIG_IsNewObj(res1)) delete arg1;
   return resultobj;
 fail:
+  if (SWIG_IsNewObj(res1)) delete arg1;
   return NULL;
 }
 
@@ -87370,10 +87564,55 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_MultiIntegrator_add_states(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  cmf::math::MultiIntegrator *arg1 = (cmf::math::MultiIntegrator *) 0 ;
+  cmf::math::StateVariableList *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char *  kwnames[] = {
+    (char *) "self",(char *) "stateOwner", NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"OO:MultiIntegrator_add_states",kwnames,&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_cmf__math__MultiIntegrator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MultiIntegrator_add_states" "', argument " "1"" of type '" "cmf::math::MultiIntegrator *""'"); 
+  }
+  arg1 = reinterpret_cast< cmf::math::MultiIntegrator * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_cmf__math__StateVariableList,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "MultiIntegrator_add_states" "', argument " "2"" of type '" "cmf::math::StateVariableList &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "MultiIntegrator_add_states" "', argument " "2"" of type '" "cmf::math::StateVariableList &""'"); 
+  }
+  arg2 = reinterpret_cast< cmf::math::StateVariableList * >(argp2);
+  {
+    try {
+      (arg1)->add_states(*arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_MultiIntegrator_add_states_to_integrator(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   cmf::math::MultiIntegrator *arg1 = (cmf::math::MultiIntegrator *) 0 ;
-  cmf::math::StateVariableOwner *arg2 = 0 ;
+  cmf::math::StateVariableList *arg2 = 0 ;
   int arg3 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
@@ -87394,14 +87633,14 @@ SWIGINTERN PyObject *_wrap_MultiIntegrator_add_states_to_integrator(PyObject *SW
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MultiIntegrator_add_states_to_integrator" "', argument " "1"" of type '" "cmf::math::MultiIntegrator *""'"); 
   }
   arg1 = reinterpret_cast< cmf::math::MultiIntegrator * >(argp1);
-  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_cmf__math__StateVariableOwner,  0 );
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_cmf__math__StateVariableList,  0 );
   if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "MultiIntegrator_add_states_to_integrator" "', argument " "2"" of type '" "cmf::math::StateVariableOwner &""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "MultiIntegrator_add_states_to_integrator" "', argument " "2"" of type '" "cmf::math::StateVariableList &""'"); 
   }
   if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "MultiIntegrator_add_states_to_integrator" "', argument " "2"" of type '" "cmf::math::StateVariableOwner &""'"); 
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "MultiIntegrator_add_states_to_integrator" "', argument " "2"" of type '" "cmf::math::StateVariableList &""'"); 
   }
-  arg2 = reinterpret_cast< cmf::math::StateVariableOwner * >(argp2);
+  arg2 = reinterpret_cast< cmf::math::StateVariableList * >(argp2);
   ecode3 = SWIG_AsVal_int(obj2, &val3);
   if (!SWIG_IsOK(ecode3)) {
     SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "MultiIntegrator_add_states_to_integrator" "', argument " "3"" of type '" "int""'");
@@ -87512,6 +87751,51 @@ SWIGINTERN PyObject *MultiIntegrator_swiginit(PyObject *SWIGUNUSEDPARM(self), Py
   return SWIG_Python_InitShadowInstance(args);
 }
 
+SWIGINTERN PyObject *_wrap_SoluteWaterIntegrator_add_states(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  cmf::math::SoluteWaterIntegrator *arg1 = (cmf::math::SoluteWaterIntegrator *) 0 ;
+  cmf::math::StateVariableList *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char *  kwnames[] = {
+    (char *) "self",(char *) "stateOwner", NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"OO:SoluteWaterIntegrator_add_states",kwnames,&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_cmf__math__SoluteWaterIntegrator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SoluteWaterIntegrator_add_states" "', argument " "1"" of type '" "cmf::math::SoluteWaterIntegrator *""'"); 
+  }
+  arg1 = reinterpret_cast< cmf::math::SoluteWaterIntegrator * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_cmf__math__StateVariableList,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "SoluteWaterIntegrator_add_states" "', argument " "2"" of type '" "cmf::math::StateVariableList &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "SoluteWaterIntegrator_add_states" "', argument " "2"" of type '" "cmf::math::StateVariableList &""'"); 
+  }
+  arg2 = reinterpret_cast< cmf::math::StateVariableList * >(argp2);
+  {
+    try {
+      (arg1)->add_states(*arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_SoluteWaterIntegrator_copy(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   cmf::math::SoluteWaterIntegrator *arg1 = (cmf::math::SoluteWaterIntegrator *) 0 ;
@@ -87604,7 +87888,7 @@ SWIGINTERN PyObject *_wrap_new_SoluteWaterIntegrator__SWIG_1(PyObject *SWIGUNUSE
   SwigValueWrapper< cmf::water::solute_vector > arg1 ;
   cmf::math::Integrator *arg2 = 0 ;
   cmf::math::Integrator *arg3 = 0 ;
-  cmf::math::StateVariableOwner *arg4 = 0 ;
+  cmf::math::StateVariableList *arg4 = 0 ;
   void *argp1 ;
   int res1 = 0 ;
   void *argp2 = 0 ;
@@ -87645,14 +87929,14 @@ SWIGINTERN PyObject *_wrap_new_SoluteWaterIntegrator__SWIG_1(PyObject *SWIGUNUSE
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_SoluteWaterIntegrator" "', argument " "3"" of type '" "cmf::math::Integrator const &""'"); 
   }
   arg3 = reinterpret_cast< cmf::math::Integrator * >(argp3);
-  res4 = SWIG_ConvertPtr(swig_obj[3], &argp4, SWIGTYPE_p_cmf__math__StateVariableOwner,  0 );
+  res4 = SWIG_ConvertPtr(swig_obj[3], &argp4, SWIGTYPE_p_cmf__math__StateVariableList,  0 );
   if (!SWIG_IsOK(res4)) {
-    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "new_SoluteWaterIntegrator" "', argument " "4"" of type '" "cmf::math::StateVariableOwner &""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "new_SoluteWaterIntegrator" "', argument " "4"" of type '" "cmf::math::StateVariableList &""'"); 
   }
   if (!argp4) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_SoluteWaterIntegrator" "', argument " "4"" of type '" "cmf::math::StateVariableOwner &""'"); 
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_SoluteWaterIntegrator" "', argument " "4"" of type '" "cmf::math::StateVariableList &""'"); 
   }
-  arg4 = reinterpret_cast< cmf::math::StateVariableOwner * >(argp4);
+  arg4 = reinterpret_cast< cmf::math::StateVariableList * >(argp4);
   {
     try {
       result = (cmf::math::SoluteWaterIntegrator *)new cmf::math::SoluteWaterIntegrator(arg1,(cmf::math::Integrator const &)*arg2,(cmf::math::Integrator const &)*arg3,*arg4);
@@ -87748,7 +88032,7 @@ SWIGINTERN PyObject *_wrap_new_SoluteWaterIntegrator(PyObject *self, PyObject *a
       _pi *= SWIG_MAXCASTRANK;
       {
         void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[3], &vptr, SWIGTYPE_p_cmf__math__StateVariableOwner, 0);
+        int res = SWIG_ConvertPtr(argv[3], &vptr, SWIGTYPE_p_cmf__math__StateVariableList, 0);
         _v = SWIG_CheckState(res);
       }
       if (!_v) goto check_2;
@@ -87775,7 +88059,7 @@ fail:
   SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'new_SoluteWaterIntegrator'.\n"
     "  Possible C/C++ prototypes are:\n"
     "    cmf::math::SoluteWaterIntegrator::SoluteWaterIntegrator(cmf::water::solute_vector const &,cmf::math::Integrator const &,cmf::math::Integrator const &)\n"
-    "    cmf::math::SoluteWaterIntegrator::SoluteWaterIntegrator(cmf::water::solute_vector,cmf::math::Integrator const &,cmf::math::Integrator const &,cmf::math::StateVariableOwner &)\n");
+    "    cmf::math::SoluteWaterIntegrator::SoluteWaterIntegrator(cmf::water::solute_vector,cmf::math::Integrator const &,cmf::math::Integrator const &,cmf::math::StateVariableList &)\n");
   return 0;
 }
 
@@ -88836,21 +89120,6 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"StateVariable_state_set", _wrap_StateVariable_state_set, METH_VARARGS, (char *)"StateVariable_state_set(StateVariable self, real state)"},
 	 { (char *)"StateVariable_state_get", (PyCFunction)_wrap_StateVariable_state_get, METH_O, (char *)"StateVariable_state_get(StateVariable self) -> real"},
 	 { (char *)"StateVariable_swigregister", StateVariable_swigregister, METH_VARARGS, NULL},
-	 { (char *)"StateVariableOwner_get_states", (PyCFunction)_wrap_StateVariableOwner_get_states, METH_O, (char *)"\n"
-		"StateVariableOwner_get_states(StateVariableOwner self) -> StateVariableList\n"
-		"\n"
-		"virtual StateVariableList get_states()=0\n"
-		"\n"
-		"Add the state variables, owned by an object derived from\n"
-		"StateVariableOwner, to the given vector. \n"
-		""},
-	 { (char *)"delete_StateVariableOwner", (PyCFunction)_wrap_delete_StateVariableOwner, METH_O, (char *)"\n"
-		"delete_StateVariableOwner(StateVariableOwner self)\n"
-		"\n"
-		"virtual\n"
-		"~StateVariableOwner() \n"
-		""},
-	 { (char *)"StateVariableOwner_swigregister", StateVariableOwner_swigregister, METH_VARARGS, NULL},
 	 { (char *)"StateVariableList_append", (PyCFunction) _wrap_StateVariableList_append, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
 		"StateVariableList_append(StateVariableList self, cmf::math::StateVariable::ptr sv)\n"
 		"\n"
@@ -88858,14 +89127,15 @@ static PyMethodDef SwigMethods[] = {
 		"append(StateVariable::ptr sv) \n"
 		""},
 	 { (char *)"StateVariableList_extend", (PyCFunction) _wrap_StateVariableList_extend, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
-		"StateVariableList_extend(StateVariableList self, StateVariableOwner svo)\n"
+		"StateVariableList_extend(StateVariableList self, StateVariableList svl)\n"
 		"\n"
 		"void\n"
 		"extend(StateVariableOwner &svo) \n"
 		""},
-	 { (char *)"StateVariableList___iadd__", _wrap_StateVariableList___iadd__, METH_VARARGS, (char *)"\n"
-		"__iadd__(StateVariableList food) -> StateVariableList\n"
-		"StateVariableList___iadd__(StateVariableList self, StateVariableOwner svo) -> StateVariableList\n"
+	 { (char *)"StateVariableList___iadd__", (PyCFunction) _wrap_StateVariableList___iadd__, METH_VARARGS | METH_KEYWORDS, (char *)"StateVariableList___iadd__(StateVariableList self, StateVariableList food) -> StateVariableList"},
+	 { (char *)"new_StateVariableList", _wrap_new_StateVariableList, METH_VARARGS, (char *)"\n"
+		"StateVariableList()\n"
+		"new_StateVariableList(StateVariableList for_copy) -> StateVariableList\n"
 		""},
 	 { (char *)"StateVariableList_size", (PyCFunction)_wrap_StateVariableList_size, METH_O, (char *)"\n"
 		"StateVariableList_size(StateVariableList self) -> size_t\n"
@@ -88880,7 +89150,6 @@ static PyMethodDef SwigMethods[] = {
 		"~StateVariableList() \n"
 		""},
 	 { (char *)"StateVariableList___len__", (PyCFunction)_wrap_StateVariableList___len__, METH_O, (char *)"StateVariableList___len__(StateVariableList self) -> size_t"},
-	 { (char *)"new_StateVariableList", (PyCFunction)_wrap_new_StateVariableList, METH_NOARGS, (char *)"new_StateVariableList() -> StateVariableList"},
 	 { (char *)"StateVariableList_swigregister", StateVariableList_swigregister, METH_VARARGS, NULL},
 	 { (char *)"StateVariableList_swiginit", StateVariableList_swiginit, METH_VARARGS, NULL},
 	 { (char *)"sparse_structure_indexvalues_set", _wrap_sparse_structure_indexvalues_set, METH_VARARGS, (char *)"sparse_structure_indexvalues_set(sparse_structure self, vector_size_t indexvalues)"},
@@ -94371,27 +94640,13 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"project_cells_get", (PyCFunction)_wrap_project_cells_get, METH_O, (char *)"project_cells_get(project self) -> cell_vector"},
 	 { (char *)"project_swigregister", project_swigregister, METH_VARARGS, NULL},
 	 { (char *)"project_swiginit", project_swiginit, METH_VARARGS, NULL},
-	 { (char *)"Integrator___getitem__", (PyCFunction) _wrap_Integrator___getitem__, METH_VARARGS | METH_KEYWORDS, (char *)"Integrator___getitem__(Integrator self, long position) -> cmf::math::StateVariable::ptr"},
+	 { (char *)"Integrator___getitem__", (PyCFunction) _wrap_Integrator___getitem__, METH_VARARGS | METH_KEYWORDS, (char *)"Integrator___getitem__(Integrator self, ptrdiff_t position) -> cmf::math::StateVariable::ptr"},
 	 { (char *)"Integrator_get_dxdt", (PyCFunction) _wrap_Integrator_get_dxdt, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
 		"Integrator_get_dxdt(Integrator self, Time time) -> cmf::math::num_array\n"
 		"\n"
 		"cmf::math::num_array get_dxdt(Time time) const \n"
 		""},
-	 { (char *)"Integrator_add_states", (PyCFunction) _wrap_Integrator_add_states, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
-		"Integrator_add_states(Integrator self, StateVariableOwner stateOwner)\n"
-		"\n"
-		"virtual\n"
-		"void add_states(cmf::math::StateVariableOwner &stateOwner)\n"
-		"\n"
-		"Add state variables from a StateVariableOwner. \n"
-		""},
-	 { (char *)"Integrator_add_single_state", (PyCFunction) _wrap_Integrator_add_single_state, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
-		"Integrator_add_single_state(Integrator self, cmf::math::StateVariable::ptr state)\n"
-		"\n"
-		"virtual void add_single_state(cmf::math::StateVariable::ptr state)\n"
-		"\n"
-		"Adds a single state variable to the integrator. \n"
-		""},
+	 { (char *)"Integrator_get_state_values", (PyCFunction)_wrap_Integrator_get_state_values, METH_O, (char *)"Integrator_get_state_values(Integrator self) -> cmf::math::num_array"},
 	 { (char *)"Integrator_integratables_set", _wrap_Integrator_integratables_set, METH_VARARGS, (char *)"Integrator_integratables_set(Integrator self, integratable_list integratables)"},
 	 { (char *)"Integrator_integratables_get", (PyCFunction)_wrap_Integrator_integratables_get, METH_O, (char *)"Integrator_integratables_get(Integrator self) -> integratable_list"},
 	 { (char *)"Integrator_reset_integratables_set", _wrap_Integrator_reset_integratables_set, METH_VARARGS, (char *)"Integrator_reset_integratables_set(Integrator self, bool reset_integratables)"},
@@ -94423,8 +94678,7 @@ static PyMethodDef SwigMethods[] = {
 		"\n"
 		"Simplifies the assessment of state variables. \n"
 		""},
-	 { (char *)"Integrator_get_states", _wrap_Integrator_get_states, METH_VARARGS, (char *)"\n"
-		"get_states() -> cmf::math::num_array\n"
+	 { (char *)"Integrator_get_states", (PyCFunction)_wrap_Integrator_get_states, METH_O, (char *)"\n"
 		"Integrator_get_states(Integrator self) -> StateVariableList\n"
 		"\n"
 		"StateVariableList get_states()\n"
@@ -94468,6 +94722,21 @@ static PyMethodDef SwigMethods[] = {
 		"reset()\n"
 		"\n"
 		"Resets any saved history (for multistep methods) \n"
+		""},
+	 { (char *)"Integrator_add_states", (PyCFunction) _wrap_Integrator_add_states, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
+		"Integrator_add_states(Integrator self, StateVariableList states)\n"
+		"\n"
+		"virtual\n"
+		"void add_states(cmf::math::StateVariableOwner &stateOwner)\n"
+		"\n"
+		"Add state variables from a StateVariableOwner. \n"
+		""},
+	 { (char *)"Integrator_add_single_state", (PyCFunction) _wrap_Integrator_add_single_state, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
+		"Integrator_add_single_state(Integrator self, cmf::math::StateVariable::ptr state)\n"
+		"\n"
+		"virtual void add_single_state(cmf::math::StateVariable::ptr state)\n"
+		"\n"
+		"Adds a single state variable to the integrator. \n"
 		""},
 	 { (char *)"Integrator_copy", (PyCFunction)_wrap_Integrator_copy, METH_O, (char *)"\n"
 		"Integrator_copy(Integrator self) -> Integrator\n"
@@ -94516,6 +94785,14 @@ static PyMethodDef SwigMethods[] = {
 		""},
 	 { (char *)"Integrator___len__", (PyCFunction)_wrap_Integrator___len__, METH_O, (char *)"Integrator___len__(Integrator self) -> size_t"},
 	 { (char *)"Integrator_swigregister", Integrator_swigregister, METH_VARARGS, NULL},
+	 { (char *)"BDF2_add_states", (PyCFunction) _wrap_BDF2_add_states, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
+		"BDF2_add_states(BDF2 self, StateVariableList stateOwner)\n"
+		"\n"
+		"void\n"
+		"add_states(cmf::math::StateVariableOwner &stateOwner)\n"
+		"\n"
+		"Add state variables from a StateVariableOwner. \n"
+		""},
 	 { (char *)"BDF2_get_error_position", (PyCFunction)_wrap_BDF2_get_error_position, METH_O, (char *)"\n"
 		"BDF2_get_error_position(BDF2 self) -> int\n"
 		"\n"
@@ -94528,7 +94805,7 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"BDF2_max_order_get", (PyCFunction)_wrap_BDF2_max_order_get, METH_O, (char *)"BDF2_max_order_get(BDF2 self) -> int"},
 	 { (char *)"new_BDF2", _wrap_new_BDF2, METH_VARARGS, (char *)"\n"
 		"BDF2(real epsilon=1e-9, Time tStepMin)\n"
-		"BDF2(StateVariableOwner states, real epsilon=1e-9, Time tStepMin)\n"
+		"BDF2(StateVariableList states, real epsilon=1e-9, Time tStepMin)\n"
 		"new_BDF2(Integrator templ) -> BDF2\n"
 		"\n"
 		"BDF2(const Integrator\n"
@@ -94544,8 +94821,15 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"delete_BDF2", (PyCFunction)_wrap_delete_BDF2, METH_O, (char *)"delete_BDF2(BDF2 self)"},
 	 { (char *)"BDF2_swigregister", BDF2_swigregister, METH_VARARGS, NULL},
 	 { (char *)"BDF2_swiginit", BDF2_swiginit, METH_VARARGS, NULL},
+	 { (char *)"ExplicitEuler_fixed_add_states", (PyCFunction) _wrap_ExplicitEuler_fixed_add_states, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
+		"ExplicitEuler_fixed_add_states(ExplicitEuler_fixed self, StateVariableList stateOwner)\n"
+		"\n"
+		"void add_states(cmf::math::StateVariableOwner &stateOwner)\n"
+		"\n"
+		"Add state variables from a StateVariableOwner. \n"
+		""},
 	 { (char *)"new_ExplicitEuler_fixed", _wrap_new_ExplicitEuler_fixed, METH_VARARGS, (char *)"\n"
-		"ExplicitEuler_fixed(StateVariableOwner states)\n"
+		"ExplicitEuler_fixed(StateVariableList states)\n"
 		"ExplicitEuler_fixed()\n"
 		"new_ExplicitEuler_fixed(Integrator copy) -> ExplicitEuler_fixed\n"
 		"\n"
@@ -94561,10 +94845,18 @@ static PyMethodDef SwigMethods[] = {
 		""},
 	 { (char *)"ExplicitEuler_fixed_swigregister", ExplicitEuler_fixed_swigregister, METH_VARARGS, NULL},
 	 { (char *)"ExplicitEuler_fixed_swiginit", ExplicitEuler_fixed_swiginit, METH_VARARGS, NULL},
+	 { (char *)"HeunIntegrator_add_states", (PyCFunction) _wrap_HeunIntegrator_add_states, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
+		"HeunIntegrator_add_states(HeunIntegrator self, StateVariableList stateOwner)\n"
+		"\n"
+		"void\n"
+		"add_states(cmf::math::StateVariableOwner &stateOwner)\n"
+		"\n"
+		"Add state variables from a StateVariableOwner. \n"
+		""},
 	 { (char *)"HeunIntegrator_alpha_set", _wrap_HeunIntegrator_alpha_set, METH_VARARGS, (char *)"HeunIntegrator_alpha_set(HeunIntegrator self, real alpha)"},
 	 { (char *)"HeunIntegrator_alpha_get", (PyCFunction)_wrap_HeunIntegrator_alpha_get, METH_O, (char *)"HeunIntegrator_alpha_get(HeunIntegrator self) -> real"},
 	 { (char *)"new_HeunIntegrator", _wrap_new_HeunIntegrator, METH_VARARGS, (char *)"\n"
-		"HeunIntegrator(StateVariableOwner states, real Alpha=0.5)\n"
+		"HeunIntegrator(StateVariableList states, real Alpha=0.5)\n"
 		"HeunIntegrator(real Alpha=0.5)\n"
 		"new_HeunIntegrator(Integrator copy) -> HeunIntegrator\n"
 		"\n"
@@ -94581,8 +94873,16 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"HeunIntegrator_swiginit", HeunIntegrator_swiginit, METH_VARARGS, NULL},
 	 { (char *)"ImplicitEuler_dt_min_set", _wrap_ImplicitEuler_dt_min_set, METH_VARARGS, (char *)"ImplicitEuler_dt_min_set(ImplicitEuler self, Time dt_min)"},
 	 { (char *)"ImplicitEuler_dt_min_get", (PyCFunction)_wrap_ImplicitEuler_dt_min_get, METH_O, (char *)"ImplicitEuler_dt_min_get(ImplicitEuler self) -> Time"},
+	 { (char *)"ImplicitEuler_add_states", (PyCFunction) _wrap_ImplicitEuler_add_states, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
+		"ImplicitEuler_add_states(ImplicitEuler self, StateVariableList stateOwner)\n"
+		"\n"
+		"void\n"
+		"add_states(cmf::math::StateVariableOwner &stateOwner)\n"
+		"\n"
+		"Add state variables from a StateVariableOwner. \n"
+		""},
 	 { (char *)"new_ImplicitEuler", _wrap_new_ImplicitEuler, METH_VARARGS, (char *)"\n"
-		"ImplicitEuler(StateVariableOwner states, real epsilon=1e-9, Time tStepMin)\n"
+		"ImplicitEuler(StateVariableList states, real epsilon=1e-9, Time tStepMin)\n"
 		"ImplicitEuler(real epsilon=1e-9, Time tStepMin)\n"
 		"new_ImplicitEuler(Integrator arg2) -> ImplicitEuler\n"
 		"\n"
@@ -94593,8 +94893,16 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"delete_ImplicitEuler", (PyCFunction)_wrap_delete_ImplicitEuler, METH_O, (char *)"delete_ImplicitEuler(ImplicitEuler self)"},
 	 { (char *)"ImplicitEuler_swigregister", ImplicitEuler_swigregister, METH_VARARGS, NULL},
 	 { (char *)"ImplicitEuler_swiginit", ImplicitEuler_swiginit, METH_VARARGS, NULL},
+	 { (char *)"RKFIntegrator_add_states", (PyCFunction) _wrap_RKFIntegrator_add_states, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
+		"RKFIntegrator_add_states(RKFIntegrator self, StateVariableList stateOwner)\n"
+		"\n"
+		"void\n"
+		"add_states(cmf::math::StateVariableOwner &stateOwner)\n"
+		"\n"
+		"Adds states from an StateVariableOwner. \n"
+		""},
 	 { (char *)"new_RKFIntegrator", _wrap_new_RKFIntegrator, METH_VARARGS, (char *)"\n"
-		"RKFIntegrator(StateVariableOwner states, real epsilon=1e-9, Time dt_min)\n"
+		"RKFIntegrator(StateVariableList states, real epsilon=1e-9, Time dt_min)\n"
 		"new_RKFIntegrator(real epsilon=1e-9, Time dt_min) -> RKFIntegrator\n"
 		"\n"
 		"RKFIntegrator(real epsilon=1e-9, cmf::math::Time\n"
@@ -94742,7 +95050,7 @@ static PyMethodDef SwigMethods[] = {
 		""},
 	 { (char *)"CVodeBase_swigregister", CVodeBase_swigregister, METH_VARARGS, NULL},
 	 { (char *)"new_CVodeDense", (PyCFunction) _wrap_new_CVodeDense, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
-		"new_CVodeDense(StateVariableOwner states, real epsilon=1e-9) -> CVodeDense\n"
+		"new_CVodeDense(StateVariableList states, real epsilon=1e-9) -> CVodeDense\n"
 		"\n"
 		"CVodeDense(cmf::math::StateVariableOwner &states, real epsilon=1e-9)\n"
 		"\n"
@@ -94752,7 +95060,7 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"CVodeDense_swigregister", CVodeDense_swigregister, METH_VARARGS, NULL},
 	 { (char *)"CVodeDense_swiginit", CVodeDense_swiginit, METH_VARARGS, NULL},
 	 { (char *)"new_CVodeAdams", (PyCFunction) _wrap_new_CVodeAdams, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
-		"new_CVodeAdams(StateVariableOwner states, real epsilon=1e-9) -> CVodeAdams\n"
+		"new_CVodeAdams(StateVariableList states, real epsilon=1e-9) -> CVodeAdams\n"
 		"\n"
 		"CVodeAdams(cmf::math::StateVariableOwner &states, real epsilon=1e-9)\n"
 		"\n"
@@ -94763,7 +95071,7 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"CVodeBanded_bandwidth_set", _wrap_CVodeBanded_bandwidth_set, METH_VARARGS, (char *)"CVodeBanded_bandwidth_set(CVodeBanded self, int bandwidth)"},
 	 { (char *)"CVodeBanded_bandwidth_get", (PyCFunction)_wrap_CVodeBanded_bandwidth_get, METH_O, (char *)"CVodeBanded_bandwidth_get(CVodeBanded self) -> int"},
 	 { (char *)"new_CVodeBanded", (PyCFunction) _wrap_new_CVodeBanded, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
-		"new_CVodeBanded(StateVariableOwner states, real epsilon=1e-9, int w=5) -> CVodeBanded\n"
+		"new_CVodeBanded(StateVariableList states, real epsilon=1e-9, int w=5) -> CVodeBanded\n"
 		"\n"
 		"CVodeBanded(cmf::math::StateVariableOwner &states, real epsilon=1e-9,\n"
 		"int w=5) \n"
@@ -94772,7 +95080,7 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"CVodeBanded_swigregister", CVodeBanded_swigregister, METH_VARARGS, NULL},
 	 { (char *)"CVodeBanded_swiginit", CVodeBanded_swiginit, METH_VARARGS, NULL},
 	 { (char *)"new_CVodeDiag", (PyCFunction) _wrap_new_CVodeDiag, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
-		"new_CVodeDiag(StateVariableOwner states, real epsilon=1e-9) -> CVodeDiag\n"
+		"new_CVodeDiag(StateVariableList states, real epsilon=1e-9) -> CVodeDiag\n"
 		"\n"
 		"CVodeDiag(cmf::math::StateVariableOwner &states, real epsilon=1e-9) \n"
 		""},
@@ -94784,7 +95092,7 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"CVodeKrylov_preconditioner_set", _wrap_CVodeKrylov_preconditioner_set, METH_VARARGS, (char *)"CVodeKrylov_preconditioner_set(CVodeKrylov self, char preconditioner)"},
 	 { (char *)"CVodeKrylov_preconditioner_get", (PyCFunction)_wrap_CVodeKrylov_preconditioner_get, METH_O, (char *)"CVodeKrylov_preconditioner_get(CVodeKrylov self) -> char"},
 	 { (char *)"new_CVodeKrylov", (PyCFunction) _wrap_new_CVodeKrylov, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
-		"new_CVodeKrylov(StateVariableOwner states, real epsilon=1e-9, int w=5, char p) -> CVodeKrylov\n"
+		"new_CVodeKrylov(StateVariableList states, real epsilon=1e-9, int w=5, char p) -> CVodeKrylov\n"
 		"\n"
 		"CVodeKrylov(cmf::math::StateVariableOwner &states, real epsilon=1e-9,\n"
 		"int w=5, char p='L') \n"
@@ -94793,7 +95101,7 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"CVodeKrylov_swigregister", CVodeKrylov_swigregister, METH_VARARGS, NULL},
 	 { (char *)"CVodeKrylov_swiginit", CVodeKrylov_swiginit, METH_VARARGS, NULL},
 	 { (char *)"new_CVodeKLU", (PyCFunction) _wrap_new_CVodeKLU, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
-		"new_CVodeKLU(StateVariableOwner states, real epsilon=1e-9) -> CVodeKLU\n"
+		"new_CVodeKLU(StateVariableList states, real epsilon=1e-9) -> CVodeKLU\n"
 		"\n"
 		"CVodeKLU(cmf::math::StateVariableOwner &states, real epsilon=1e-9) \n"
 		""},
@@ -94808,8 +95116,17 @@ static PyMethodDef SwigMethods[] = {
 		"\n"
 		"Polymorphic copy constructor. \n"
 		""},
+	 { (char *)"MultiIntegrator_add_states", (PyCFunction) _wrap_MultiIntegrator_add_states, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
+		"MultiIntegrator_add_states(MultiIntegrator self, StateVariableList stateOwner)\n"
+		"\n"
+		"void\n"
+		"add_states(cmf::math::StateVariableOwner &stateOwner)\n"
+		"\n"
+		"Only there to override Integrator::AddStatesFromOwner. Throws an\n"
+		"exception. Use add_states_to_integrator instead. \n"
+		""},
 	 { (char *)"MultiIntegrator_add_states_to_integrator", (PyCFunction) _wrap_MultiIntegrator_add_states_to_integrator, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
-		"MultiIntegrator_add_states_to_integrator(MultiIntegrator self, StateVariableOwner stateOwner, int integrator_position)\n"
+		"MultiIntegrator_add_states_to_integrator(MultiIntegrator self, StateVariableList stateOwner, int integrator_position)\n"
 		"\n"
 		"void\n"
 		"add_states_to_integrator(cmf::math::StateVariableOwner &stateOwner,\n"
@@ -94835,6 +95152,13 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"delete_MultiIntegrator", (PyCFunction)_wrap_delete_MultiIntegrator, METH_O, (char *)"delete_MultiIntegrator(MultiIntegrator self)"},
 	 { (char *)"MultiIntegrator_swigregister", MultiIntegrator_swigregister, METH_VARARGS, NULL},
 	 { (char *)"MultiIntegrator_swiginit", MultiIntegrator_swiginit, METH_VARARGS, NULL},
+	 { (char *)"SoluteWaterIntegrator_add_states", (PyCFunction) _wrap_SoluteWaterIntegrator_add_states, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
+		"SoluteWaterIntegrator_add_states(SoluteWaterIntegrator self, StateVariableList stateOwner)\n"
+		"\n"
+		"void add_states(cmf::math::StateVariableOwner &stateOwner)\n"
+		"\n"
+		"Add state variables from a StateVariableOwner. \n"
+		""},
 	 { (char *)"SoluteWaterIntegrator_copy", (PyCFunction)_wrap_SoluteWaterIntegrator_copy, METH_O, (char *)"\n"
 		"SoluteWaterIntegrator_copy(SoluteWaterIntegrator self) -> SoluteWaterIntegrator\n"
 		"\n"
@@ -94844,7 +95168,7 @@ static PyMethodDef SwigMethods[] = {
 		""},
 	 { (char *)"new_SoluteWaterIntegrator", _wrap_new_SoluteWaterIntegrator, METH_VARARGS, (char *)"\n"
 		"SoluteWaterIntegrator(solute_vector solutes, Integrator water_integrator, Integrator solute_integrator)\n"
-		"new_SoluteWaterIntegrator(solute_vector solutes, Integrator water_integrator, Integrator solute_integrator, StateVariableOwner states) -> SoluteWaterIntegrator\n"
+		"new_SoluteWaterIntegrator(solute_vector solutes, Integrator water_integrator, Integrator solute_integrator, StateVariableList states) -> SoluteWaterIntegrator\n"
 		"\n"
 		"SoluteWaterIntegrator(cmf::water::solute_vector solutes, const\n"
 		"cmf::math::Integrator &water_integrator, const cmf::math::Integrator\n"
@@ -95479,42 +95803,6 @@ static void *_p_cmf__atmosphere__ConstantMeteorologyTo_p_cmf__atmosphere__Meteor
 static void *_p_cmf__atmosphere__IDW_MeteorologyTo_p_cmf__atmosphere__Meteorology(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((cmf::atmosphere::Meteorology *)  ((cmf::atmosphere::IDW_Meteorology *) x));
 }
-static void *_p_cmf__upslope__cell_vectorTo_p_cmf__math__StateVariableOwner(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((cmf::math::StateVariableOwner *)  ((cmf::upslope::cell_vector *) x));
-}
-static void *_p_cmf__river__ReachTo_p_cmf__math__StateVariableOwner(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((cmf::math::StateVariableOwner *) (cmf::water::WaterStorage *)(cmf::river::OpenWaterStorage *) ((cmf::river::Reach *) x));
-}
-static void *_p_cmf__upslope__CellTo_p_cmf__math__StateVariableOwner(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((cmf::math::StateVariableOwner *)  ((cmf::upslope::Cell *) x));
-}
-static void *_p_cmf__upslope__SurfaceWaterTo_p_cmf__math__StateVariableOwner(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((cmf::math::StateVariableOwner *) (cmf::water::WaterStorage *)(cmf::river::OpenWaterStorage *) ((cmf::upslope::SurfaceWater *) x));
-}
-static void *_p_cmf__upslope__SoilLayerTo_p_cmf__math__StateVariableOwner(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((cmf::math::StateVariableOwner *) (cmf::water::WaterStorage *) ((cmf::upslope::SoilLayer *) x));
-}
-static void *_p_cmf__upslope__MacroPoreTo_p_cmf__math__StateVariableOwner(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((cmf::math::StateVariableOwner *) (cmf::water::WaterStorage *) ((cmf::upslope::MacroPore *) x));
-}
-static void *_p_cmf__math__StateVariableListTo_p_cmf__math__StateVariableOwner(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((cmf::math::StateVariableOwner *)  ((cmf::math::StateVariableList *) x));
-}
-static void *_p_cmf__water__WaterStorageTo_p_cmf__math__StateVariableOwner(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((cmf::math::StateVariableOwner *)  ((cmf::water::WaterStorage *) x));
-}
-static void *_p_cmf__river__OpenWaterStorageTo_p_cmf__math__StateVariableOwner(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((cmf::math::StateVariableOwner *) (cmf::water::WaterStorage *) ((cmf::river::OpenWaterStorage *) x));
-}
-static void *_p_cmf__water__node_listTo_p_cmf__math__StateVariableOwner(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((cmf::math::StateVariableOwner *)  ((cmf::water::node_list *) x));
-}
-static void *_p_cmf__upslope__aquiferTo_p_cmf__math__StateVariableOwner(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((cmf::math::StateVariableOwner *) (cmf::water::WaterStorage *) ((cmf::upslope::aquifer *) x));
-}
-static void *_p_cmf__projectTo_p_cmf__math__StateVariableOwner(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((cmf::math::StateVariableOwner *)  ((cmf::project *) x));
-}
 static void *_p_cmf__math__BDF2To_p_cmf__math__Integrator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((cmf::math::Integrator *)  ((cmf::math::BDF2 *) x));
 }
@@ -95609,7 +95897,6 @@ static swig_type_info _swigt__p_cmf__math__RKFIntegrator = {"_p_cmf__math__RKFIn
 static swig_type_info _swigt__p_cmf__math__SoluteWaterIntegrator = {"_p_cmf__math__SoluteWaterIntegrator", "cmf::math::SoluteWaterIntegrator *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_cmf__math__StateVariable = {"_p_cmf__math__StateVariable", "cmf::math::StateVariable *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_cmf__math__StateVariableList = {"_p_cmf__math__StateVariableList", "cmf::math::StateVariableList *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_cmf__math__StateVariableOwner = {"_p_cmf__math__StateVariableOwner", "cmf::math::StateVariableOwner *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_cmf__math__StateVariable__list = {"_p_cmf__math__StateVariable__list", "cmf::math::StateVariable::list *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_cmf__math__Time = {"_p_cmf__math__Time", "cmf::math::Time *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_cmf__math__cubicspline = {"_p_cmf__math__cubicspline", "cmf::math::cubicspline *", 0, 0, (void*)0, 0};
@@ -95757,7 +96044,7 @@ static swig_type_info _swigt__p_std__shared_ptrT_cmf__atmosphere__RainfallStatio
 static swig_type_info _swigt__p_std__shared_ptrT_cmf__atmosphere__RainfallStation_t = {"_p_std__shared_ptrT_cmf__atmosphere__RainfallStation_t", "std::shared_ptr< cmf::atmosphere::RainfallStation > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__shared_ptrT_cmf__atmosphere__TimeseriesRainSource_t = {"_p_std__shared_ptrT_cmf__atmosphere__TimeseriesRainSource_t", "std::shared_ptr< cmf::atmosphere::TimeseriesRainSource > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__shared_ptrT_cmf__atmosphere__aerodynamic_resistance_t = {"_p_std__shared_ptrT_cmf__atmosphere__aerodynamic_resistance_t", "std::shared_ptr< cmf::atmosphere::aerodynamic_resistance > *|cmf::atmosphere::aerodynamic_resistance::ptr *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_std__shared_ptrT_cmf__math__StateVariable_t = {"_p_std__shared_ptrT_cmf__math__StateVariable_t", "cmf::math::StateVariable::ptr *|std::shared_ptr< cmf::math::StateVariable > *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_std__shared_ptrT_cmf__math__StateVariable_t = {"_p_std__shared_ptrT_cmf__math__StateVariable_t", "std::shared_ptr< cmf::math::StateVariable > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__shared_ptrT_cmf__math__integratable_t = {"_p_std__shared_ptrT_cmf__math__integratable_t", "cmf::math::integratable::ptr *|std::shared_ptr< cmf::math::integratable > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__shared_ptrT_cmf__river__OpenWaterStorage_t = {"_p_std__shared_ptrT_cmf__river__OpenWaterStorage_t", "std::shared_ptr< cmf::river::OpenWaterStorage > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__shared_ptrT_cmf__river__Reach_t = {"_p_std__shared_ptrT_cmf__river__Reach_t", "std::shared_ptr< cmf::river::Reach > *", 0, 0, (void*)0, 0};
@@ -95829,7 +96116,6 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_cmf__math__SoluteWaterIntegrator,
   &_swigt__p_cmf__math__StateVariable,
   &_swigt__p_cmf__math__StateVariableList,
-  &_swigt__p_cmf__math__StateVariableOwner,
   &_swigt__p_cmf__math__StateVariable__list,
   &_swigt__p_cmf__math__Time,
   &_swigt__p_cmf__math__cubicspline,
@@ -96049,7 +96335,6 @@ static swig_cast_info _swigc__p_cmf__math__RKFIntegrator[] = {  {&_swigt__p_cmf_
 static swig_cast_info _swigc__p_cmf__math__SoluteWaterIntegrator[] = {  {&_swigt__p_cmf__math__SoluteWaterIntegrator, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_cmf__math__StateVariable[] = {  {&_swigt__p_cmf__math__StateVariable, 0, 0, 0},  {&_swigt__p_cmf__river__Reach, _p_cmf__river__ReachTo_p_cmf__math__StateVariable, 0, 0},  {&_swigt__p_cmf__upslope__SurfaceWater, _p_cmf__upslope__SurfaceWaterTo_p_cmf__math__StateVariable, 0, 0},  {&_swigt__p_cmf__upslope__SoilLayer, _p_cmf__upslope__SoilLayerTo_p_cmf__math__StateVariable, 0, 0},  {&_swigt__p_cmf__upslope__MacroPore, _p_cmf__upslope__MacroPoreTo_p_cmf__math__StateVariable, 0, 0},  {&_swigt__p_cmf__water__SoluteStorage, _p_cmf__water__SoluteStorageTo_p_cmf__math__StateVariable, 0, 0},  {&_swigt__p_cmf__water__WaterStorage, _p_cmf__water__WaterStorageTo_p_cmf__math__StateVariable, 0, 0},  {&_swigt__p_cmf__river__OpenWaterStorage, _p_cmf__river__OpenWaterStorageTo_p_cmf__math__StateVariable, 0, 0},  {&_swigt__p_cmf__upslope__aquifer, _p_cmf__upslope__aquiferTo_p_cmf__math__StateVariable, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_cmf__math__StateVariableList[] = {  {&_swigt__p_cmf__math__StateVariableList, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_cmf__math__StateVariableOwner[] = {  {&_swigt__p_cmf__upslope__cell_vector, _p_cmf__upslope__cell_vectorTo_p_cmf__math__StateVariableOwner, 0, 0},  {&_swigt__p_cmf__math__StateVariableOwner, 0, 0, 0},  {&_swigt__p_cmf__river__Reach, _p_cmf__river__ReachTo_p_cmf__math__StateVariableOwner, 0, 0},  {&_swigt__p_cmf__upslope__SurfaceWater, _p_cmf__upslope__SurfaceWaterTo_p_cmf__math__StateVariableOwner, 0, 0},  {&_swigt__p_cmf__upslope__SoilLayer, _p_cmf__upslope__SoilLayerTo_p_cmf__math__StateVariableOwner, 0, 0},  {&_swigt__p_cmf__upslope__MacroPore, _p_cmf__upslope__MacroPoreTo_p_cmf__math__StateVariableOwner, 0, 0},  {&_swigt__p_cmf__math__StateVariableList, _p_cmf__math__StateVariableListTo_p_cmf__math__StateVariableOwner, 0, 0},  {&_swigt__p_cmf__water__WaterStorage, _p_cmf__water__WaterStorageTo_p_cmf__math__StateVariableOwner, 0, 0},  {&_swigt__p_cmf__river__OpenWaterStorage, _p_cmf__river__OpenWaterStorageTo_p_cmf__math__StateVariableOwner, 0, 0},  {&_swigt__p_cmf__upslope__Cell, _p_cmf__upslope__CellTo_p_cmf__math__StateVariableOwner, 0, 0},  {&_swigt__p_cmf__water__node_list, _p_cmf__water__node_listTo_p_cmf__math__StateVariableOwner, 0, 0},  {&_swigt__p_cmf__upslope__aquifer, _p_cmf__upslope__aquiferTo_p_cmf__math__StateVariableOwner, 0, 0},  {&_swigt__p_cmf__project, _p_cmf__projectTo_p_cmf__math__StateVariableOwner, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_cmf__math__StateVariable__list[] = {  {&_swigt__p_cmf__math__StateVariable__list, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_cmf__math__Time[] = {  {&_swigt__p_cmf__math__Time, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_cmf__math__cubicspline[] = {  {&_swigt__p_cmf__math__cubicspline, 0, 0, 0},{0, 0, 0, 0}};
@@ -96269,7 +96554,6 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_cmf__math__SoluteWaterIntegrator,
   _swigc__p_cmf__math__StateVariable,
   _swigc__p_cmf__math__StateVariableList,
-  _swigc__p_cmf__math__StateVariableOwner,
   _swigc__p_cmf__math__StateVariable__list,
   _swigc__p_cmf__math__Time,
   _swigc__p_cmf__math__cubicspline,

@@ -9,9 +9,12 @@ if ERRORLEVEL 1 goto error
 
 if not "x%1x"=="xinstallx" goto end
 python setup.py install
+
+if not "x%2x"=="xtestx" goto end
 cd test
 python ..\tools\test.py
 cd ..
+
 
 if ERRORLEVEL 1 goto error
 goto end

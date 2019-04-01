@@ -55,7 +55,7 @@ namespace cmf {
 			/// @param destination Allocated c array
 			/// @param factor A factor that is multiplied to the derivate (e.g. unit conversion or integration length)
 			void copy_dxdt(Time time,real * destination,real factor=1) const;
-			
+
 			/// Adds the values in operands to the current states
 			void add_values_to_states(const num_array& operands);
 

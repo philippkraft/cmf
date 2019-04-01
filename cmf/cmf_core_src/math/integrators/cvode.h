@@ -21,6 +21,7 @@
 
 #include "integrator.h"
 #include "../time.h"
+#include "../sparse_struct.h"
 
 namespace cmf {
 	namespace math {
