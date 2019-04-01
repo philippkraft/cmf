@@ -22,7 +22,7 @@
 #include <omp.h>
 #endif
 using namespace std;
-cmf::math::ImplicitEuler::ImplicitEuler(cmf::math::StateVariableList& states,
+cmf::math::ImplicitEuler::ImplicitEuler(const StateVariableList &states,
 										real epsilon/*=1e-9*/,
 										cmf::math::Time tStepMin/*=10.0/(3600.0*24.0)*/ ) 
 : Integrator(states,epsilon),dt_min(tStepMin)
@@ -182,4 +182,8 @@ void cmf::math::ImplicitEuler::Gear1newState( real h )
 
 	}
 
+}
+
+cmf::math::Integrator *cmf::math::ImplicitEuler::copy() const {
+	return new ImplicitEuler(*this);
 }

@@ -240,7 +240,7 @@ void cmf::math::Integrator::integrate_until( cmf::math::Time t_max,cmf::math::Ti
 	if (i>0) m_dt = (t_max - start)/i;
 }
 
-cmf::math::Integrator::Integrator(cmf::math::StateVariableList &states, real epsilon)
+cmf::math::Integrator::Integrator(const StateVariableList &states, real epsilon)
         : m_States(),Epsilon(epsilon),m_dt(day),m_t(day*0),
           use_OpenMP(true), reset_integratables(true)
 {

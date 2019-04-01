@@ -105,7 +105,8 @@ namespace cmf {
 			/// @param states States to be added to the solver
 			/// @param epsilon relative error tolerance per time step (default=1e-9)
 			/// @param tStepMin minimum time step (default=10s)
-			BDF2(cmf::math::StateVariableList& states, real epsilon=1e-9,cmf::math::Time tStepMin=cmf::math::timespan(10));
+			BDF2(const StateVariableList &states, real epsilon = 1e-9,
+				 cmf::math::Time tStepMin = cmf::math::timespan(10));
 			
 			/// Constructs a new BDF2 integrator
 			/// @param templ Template to be used to construct a BDF2 method

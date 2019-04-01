@@ -146,7 +146,7 @@ namespace cmf {
 				: m_States(), Epsilon(epsilon),m_dt(day),m_t(day),
 				  use_OpenMP(true), reset_integratables(true)
 			{}
-			Integrator(cmf::math::StateVariableList& states,real epsilon=1e-9);
+			Integrator(const StateVariableList &states, real epsilon = 1e-9);
 			Integrator(const cmf::math::Integrator& other);
 			void add_states(const cmf::math::StateVariableList& states);
 			void add_single_state(cmf::math::StateVariable::ptr state) {

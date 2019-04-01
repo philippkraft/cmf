@@ -44,7 +44,8 @@ cmf::math::Integrator(templ),order(1),stepNo(0), error_position(-1),max_order(2)
 	calc_newState[1] = &cmf::math::BDF2::Gear2newState; // 2nd order Gear
 }
 
-cmf::math::BDF2::BDF2( cmf::math::StateVariableList& states, real epsilon/*=1e-9*/,cmf::math::Time tStepMin/*=Time::Milliseconds(10)*/ )
+cmf::math::BDF2::BDF2(const StateVariableList &states, real epsilon/*=1e-9*/,
+                      cmf::math::Time tStepMin/*=Time::Milliseconds(10)*/ )
  : Integrator(states,epsilon), order(1),stepNo(0), dt_min(tStepMin), error_position(-1),max_order(2)
 {
 	// Assessing multistep functions
@@ -143,7 +144,7 @@ void cmf::math::BDF2::Gear2newState(real h)
 void cmf::math::BDF2::set_abstol()
 {
 	abstol.resize(ptrdiff_t(m_States.size()));
-	for (ptrdiff_t i = 0; i < m_States.size(); ++i)
+	for (size_t i = 0; i < m_States.size(); ++i)
 		abstol[i] = m_States[i]->get_abs_errtol(Epsilon * 1e-3);
 
 }
