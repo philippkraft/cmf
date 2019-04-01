@@ -132,13 +132,13 @@ namespace cmf {
 			typedef std::unique_ptr<CVodeBase> solver_type;
 			switch (_solver) {
 			case dense:
-				return solver_type(new CVodeDense(states));
+				return solver_type(new CVodeDense(p));
 			case banded:
-				return solver_type(new CVodeBanded(states));
+				return solver_type(new CVodeBanded(p));
 			case klu:
-				return solver_type(new CVodeKLU(states));
+				return solver_type(new CVodeKLU(p));
 			case krylov:
-				return solver_type(new CVodeKrylov(states));
+				return solver_type(new CVodeKrylov(p));
 			default:
 				throw std::runtime_error("Unknown solver type");
 			}
