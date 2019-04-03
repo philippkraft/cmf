@@ -119,14 +119,18 @@ class StaticLibrary:
     def build(self):
         import subprocess as sp
         cwd = os.path.dirname(__file__)
-        if sys.platform == 'win32':
+        if os.name == 'nt':
             script_ext = '.bat'
-        else:
+        elif os.name == 'posix':
             script_ext = '.sh'
+        else:
+            raise RuntimeError('OS must be nt or posix')
         script = os.path.join(cwd, 'tools', self.build_script_name + script_ext)
         if not os.path.exists(script):
             raise FileNotFoundError('{} not found, cannot build {} from source'
                                     .format(os.path.relpath(script, cwd), self))
+        if os.name == 'posix':
+            os.chmod(script, 755)
         sp.run(script, check=True)
 
 
