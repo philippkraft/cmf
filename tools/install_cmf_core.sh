@@ -11,8 +11,8 @@ LIB_DIR=$CMFDIR/lib
 
 CMF_SRC=$CMFDIR/cmf/cmf_core_src
 
-mkdir -p $CMF_SRC/cmake_build_release
-cd $CMF_SRC/cmake_build_release
+mkdir -p $CMF_SRC/cmake-build-release
+cd $CMF_SRC/cmake-build-release
 cmake .. -DCMAKE_BUILD_TYPE=Release
 make
 make install

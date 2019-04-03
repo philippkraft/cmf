@@ -326,6 +326,7 @@ def make_cmf_core():
                         r'/Fd"build\vc90.pdb"',
                         "/D_SCL_SECURE_NO_WARNINGS",
                         "/D_CRT_SECURE_NO_WARNINGS",
+                        "/wd4244",
                         "/MP"
                         ]
         if openmp:

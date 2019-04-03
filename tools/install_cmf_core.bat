@@ -7,8 +7,8 @@ SET LIB_DIR=%CMFDIR%\lib
 
 SET CMF_SRC=%CMFDIR%\cmf\cmf_core_src
 
-mkdir %CMF_SRC%\cmake_build_release
-cd %CMF_SRC%\cmake_build_release
+mkdir %CMF_SRC%\cmake-build-release
+cd %CMF_SRC%\cmake-build-release
 cmake .. -DCMAKE_BUILD_TYPE=Release -G"NMake Makefiles"
 nmake
 nmake install
