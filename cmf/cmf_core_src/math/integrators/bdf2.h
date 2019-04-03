@@ -63,9 +63,6 @@ namespace cmf {
 			/// Absolute error tolerance
 			num_array abstol;
 
-			// Refreshes the absolute tolerance vector
-			void set_abstol();
-
 			//@}
 
 
@@ -105,7 +102,7 @@ namespace cmf {
 			
 			/// Constructs a new BDF2 integrator
 			/// @param templ Template to be used to construct a BDF2 method
-			BDF2(const Integrator & templ);
+			explicit BDF2(const Integrator & templ);
 			Integrator * copy() const override
 			{
 				BDF2* newBDF2 = new BDF2(*this);

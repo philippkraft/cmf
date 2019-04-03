@@ -22,9 +22,7 @@
 #include <omp.h>
 #endif
 #include <iostream>
-// Just a macro to compare two values
-#define min(a,get_b) (((a)<(get_b)) ? (a) : (get_b))
-
+#include <algorithm>
 
 // Creates a new Integrator w/o states
 cmf::math::BDF2::BDF2( real epsilon/*=1e-9*/,cmf::math::Time tStepMin/*=Time::Seconds(10)*/) 
@@ -33,6 +31,7 @@ cmf::math::BDF2::BDF2( real epsilon/*=1e-9*/,cmf::math::Time tStepMin/*=Time::Se
 	// Assessing multistep functions
 	calc_newState[0] = &cmf::math::BDF2::Gear1newState; // impl. Euler
 	calc_newState[1] = &cmf::math::BDF2::Gear2newState; // 2nd order Gear
+	reset();
 }
 
 cmf::math::BDF2::BDF2( const Integrator& templ) :
@@ -42,6 +41,7 @@ cmf::math::Integrator(templ),order(1),stepNo(0), error_position(-1),max_order(2)
 	// Assessing multistep functions
 	calc_newState[0] = &cmf::math::BDF2::Gear1newState; // impl. Euler
 	calc_newState[1] = &cmf::math::BDF2::Gear2newState; // 2nd order Gear
+	reset();
 }
 
 cmf::math::BDF2::BDF2(const cmf::math::state_list &states, real epsilon/*=1e-9*/,
@@ -51,7 +51,7 @@ cmf::math::BDF2::BDF2(const cmf::math::state_list &states, real epsilon/*=1e-9*/
 	// Assessing multistep functions
 	calc_newState[0] = &cmf::math::BDF2::Gear1newState; // impl. Euler
 	calc_newState[1] = &cmf::math::BDF2::Gear2newState; // 2nd order Gear
-
+	reset();
 }
 
 // Gear formulas
@@ -129,14 +129,6 @@ void cmf::math::BDF2::Gear2newState(real h)
 	}
 
 }
-void cmf::math::BDF2::set_abstol()
-{
-	abstol.resize(ptrdiff_t(get_system().size()));
-	ODEsystem& system = get_system();
-	for (size_t i = 0; i < get_system().size(); ++i)
-		abstol[i] = system[i]->get_abs_errtol(Epsilon * 1e-3);
-
-}
 
 real cmf::math::BDF2::error_excedance( const num_array& compare,ptrdiff_t * biggest_error_position/*=0 */ )
 {
@@ -169,12 +161,7 @@ int cmf::math::BDF2::integrate( cmf::math::Time MaxTime,cmf::math::Time timestep
 	if (get_system().size() == 0)
 		throw std::out_of_range("No states to integrate!");
 	// h is standard name in numeric for time step size
-	Time h=MaxTime-get_t();
-	// Don't stretch the current timestep more the 2 times the last timestep
-	if (h>get_dt()*2) 
-	{
-		h=get_dt()*2;
-	}
+	Time h = std::min({ MaxTime - m_t, timestep.long_time_if_zero(), (m_dt * 2).long_time_if_zero() });
 
 	// Copies the actual states to the history as x_(n)
 	get_system().copy_states(pastStates(0));
@@ -251,6 +238,10 @@ void cmf::math::BDF2::reset() {
 		compareStates.resize(size);
 		dxdt.resize(size);
 	}
+	abstol.resize(ptrdiff_t(get_system().size()));
+	ODEsystem& system = get_system();
+	for (size_t i = 0; i < get_system().size(); ++i)
+		abstol[i] = system[i]->get_abs_errtol(Epsilon * 1e-3);
 
 }
 

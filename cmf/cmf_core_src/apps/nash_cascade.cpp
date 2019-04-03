@@ -13,7 +13,11 @@
 #include "../water/boundary_condition.h"
 #include "../water/simple_connections.h"
 #include "../math/integrators/RKFintegrator.h"
+#include "../math/integrators/BDF2.h"
 #include "../math/integrators/implicit_euler.h"
+#include "../math/integrators/cvode.h"
+
+
 
 
 
@@ -51,8 +55,7 @@ namespace cmf {
 			}
 
 			cmf::math::timeseries run(size_t nsteps, cmf::math::Time dt = cmf::math::h, double start_vol = 1.0) {
-				cmf::math::state_list s = p;
-				cmf::math::ImplicitEuler solver(s);
+				cmf::math::CVodeAdams solver(p);
 				for (auto s : this->storages) {
 					s->set_state(0.0);
 				}
@@ -90,4 +93,5 @@ namespace cmf {
 
 int main(int argc, char* argv[]) {
 	cmf::apps::run_nash_cascade(10);
+	std::cin.get();
 }

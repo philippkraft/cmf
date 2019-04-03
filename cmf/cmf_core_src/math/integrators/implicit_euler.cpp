@@ -18,10 +18,9 @@
 //   
 #include "implicit_euler.h"
 #include <iostream>
+#include <algorithm>
 #ifdef _OPENMP
 #include <omp.h>
-#include <cstddef>
-
 #endif
 using namespace std;
 cmf::math::ImplicitEuler::ImplicitEuler(const cmf::math::state_list & states,
@@ -81,6 +80,7 @@ void cmf::math::ImplicitEuler::set_abstol()
 
 }
 
+
 int cmf::math::ImplicitEuler::integrate(cmf::math::Time MaxTime,cmf::math::Time TimeStep)
 {
 	ODEsystem& system = get_system();
@@ -92,12 +92,8 @@ int cmf::math::ImplicitEuler::integrate(cmf::math::Time MaxTime,cmf::math::Time 
 	}
 
 	// h is standard name in numeric for time step size
-	Time h=MaxTime-get_t();
-	// Don't stretch the current timestep more the 4 times the last timestep
-	if (h > this->get_dt() * 2) 
-	{
-		h=this->get_dt() * 2;
-	}
+
+	Time h = std::min({ MaxTime - m_t, TimeStep.long_time_if_zero(), (m_dt * 2).long_time_if_zero() });
 
 	// Copies the actual states to the history as x_(n)
 	system.copy_states(oldStates);
@@ -151,7 +147,7 @@ int cmf::math::ImplicitEuler::integrate(cmf::math::Time MaxTime,cmf::math::Time 
 
 	m_dt=h;
 
-	set_t(get_t() + h);
+	m_t += h;
 	return int(iter);
 }
 

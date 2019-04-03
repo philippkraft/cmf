@@ -15,7 +15,7 @@ void cmf::math::Integrator::integrate_until( cmf::math::Time t_max,cmf::math::Ti
 	if (reset_integratables) integratables.reset(start);
 	while (m_t < t_max) {
 		
-		integrate(t_max,dt);
+		integrate(t_max, dt);
 		integratables.integrate(m_t);
 		++i;
 	}

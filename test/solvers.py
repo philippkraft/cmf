@@ -26,28 +26,38 @@ def get_project(with_solute=False):
 
 
 solver_types = [
-    cmf.ExplicitEuler_fixed, cmf.RKFIntegrator, cmf.HeunIntegrator,
-    cmf.BDF2, cmf.ImplicitEuler,
-    cmf.CVodeDense, cmf.CVodeBanded, cmf.CVodeKrylov, 
-    cmf.CVodeDiag, cmf.CVodeKLU] #, cmf.CVodeAdams]
+    cmf.ExplicitEuler_fixed, 
+    cmf.RKFIntegrator, 
+    cmf.HeunIntegrator,
+    cmf.BDF2, 
+    cmf.ImplicitEuler,
+    cmf.CVodeDense, 
+    cmf.CVodeBanded, 
+    cmf.CVodeKrylov, 
+    cmf.CVodeDiag, 
+    cmf.CVodeKLU,
+    # cmf.CVodeAdams
+] 
 
-
+# solver_types = solver_types[0:3]
 class TestSolver(unittest.TestCase):
 
-    def test_solver_size_solute(self):
-        p, stores, X = get_project(True)
-        for st in solver_types:
-            solver = st(p)
-            self.assertEqual(len(solver), 20)
-
-    def test_solver_size_nosolute(self):
+    def test_1_solver_size_nosolute(self):
         p, stores, X = get_project()
         for st in solver_types:
             with self.subTest(solver_type=st.__name__):
                  solver = st(p)
                  self.assertEqual(len(solver), 10)
 
-    def test_solver_access_solute(self):
+    def test_2_solver_size_solute(self):
+        p, stores, X = get_project(True)
+        for st in solver_types:
+            solver = st(p)
+            print(solver.to_string())
+            self.assertEqual(len(solver), 20)
+
+
+    def test_3_solver_access_solute(self):
         p, stores, X = get_project(True)
         for st in solver_types:
             with self.subTest(solver_type=st.__name__):
@@ -57,7 +67,7 @@ class TestSolver(unittest.TestCase):
                  with self.assertRaises(IndexError):
                      _ = solver[len(solver)]
 
-    def test_solver_access_nosolute(self):
+    def test_4_solver_access_nosolute(self):
         p, stores, X = get_project()
         for st in solver_types:
             with self.subTest(solver_type=st.__name__):

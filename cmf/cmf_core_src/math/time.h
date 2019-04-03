@@ -144,6 +144,8 @@ namespace cmf {
 			operator bool() const {
 				return m_time_in_ms!=0;
 			}
+			cmf::math::Time long_time_if_zero() const;
+
 #endif
 			/// @name Time unit conversion
 			//@{
