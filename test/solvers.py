@@ -36,7 +36,7 @@ solver_types = [
     cmf.CVodeKrylov, 
     cmf.CVodeDiag, 
     cmf.CVodeKLU,
-    # cmf.CVodeAdams
+    cmf.CVodeAdams
 ] 
 
 # solver_types = solver_types[0:3]

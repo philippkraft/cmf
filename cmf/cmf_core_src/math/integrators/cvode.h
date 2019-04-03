@@ -170,9 +170,7 @@ namespace cmf {
 			CVodeAdams(const cmf::math::state_list & states, real epsilon = 1e-9);
 			std::string to_string() const;
 		protected:
-			void set_solver() {
-
-			}
+			void set_solver() override;
 		};
 
 		/// @brief implicit BDF CVode solver with a banded Jacobian approximation
@@ -181,9 +179,9 @@ namespace cmf {
 			/// @brief Width of the band to both sides of the diagonal
 			int bandwidth;
 			CVodeBanded(const cmf::math::state_list & states, real epsilon = 1e-9, int w = 5);
-			std::string to_string() const;
+			std::string to_string() const override;
 		protected:
-			void set_solver();
+			void set_solver() override;
 		};
 
 		/// @brief implicit BDF CVode solver with a one line diagonal Jacobian approximation

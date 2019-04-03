@@ -20,6 +20,9 @@
 #include <sunmatrix/sunmatrix_band.h> /* access to band SUNMatrix            */
 #include <sunlinsol/sunlinsol_band.h> /* access to band SUNLinearSolver      */
 
+// Special include for CVodeAdams
+#include <sunnonlinsol/sunnonlinsol_fixedpoint.h>
+
 // Special includes for diagonal solver
 #include <cvode/cvode_diag.h>
 
@@ -60,6 +63,8 @@ public:
 	SUNMatrix J = 0;
 	// Linear solver
 	SUNLinearSolver LS = 0;
+	// Nonlinear solver (only used by CVAdams)
+	SUNNonlinearSolver NLS = 0;
 	// System size
 	int N = 0;
 	long int dxdt_method_calls = 0;
@@ -112,6 +117,7 @@ public:
 		if (y != 0) N_VDestroy_Serial(y);
 		if (cvode_mem != 0) CVodeFree(&cvode_mem);
 		if (LS != 0) SUNLinSolFree(LS);
+		if (NLS !=0) SUNNonlinSolFree(NLS);
 		if (J != 0) SUNMatDestroy(J);
 	}
 	
@@ -366,6 +372,18 @@ void cmf::math::CVodeDense::set_solver()
 		throw std::runtime_error(this->to_string() + ": Failed to set custom DQ Jacobian function");
 	}
 	*/
+}
+
+void CVodeAdams::set_solver() {
+	CVodeBase::Impl& i = *_implementation;
+	if (i.cvode_mem == 0) {
+		throw std::runtime_error(this->to_string() + ": Tried to create dense solver for uninitialized cvode");
+	}
+	i.NLS = SUNNonlinSol_FixedPoint(i.y, 12);
+	int flag = CVodeSetNonlinearSolver(i.cvode_mem, i.NLS);
+	if (flag) {
+		throw std::runtime_error(this->to_string() + ": Failed to create nonlinear fixedpoint solver");
+	}
 }
 
 cmf::math::CVodeBanded::CVodeBanded(const cmf::math::state_list & states, real epsilon, int w)
