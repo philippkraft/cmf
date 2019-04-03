@@ -51,7 +51,7 @@ namespace cmf {
 			}
 
 			cmf::math::timeseries run(size_t nsteps, cmf::math::Time dt = cmf::math::h, double start_vol = 1.0) {
-				cmf::math::StateVariableList s = p;
+				cmf::math::state_list s = p;
 				cmf::math::ImplicitEuler solver(s);
 				for (auto s : this->storages) {
 					s->set_state(0.0);

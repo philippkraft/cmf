@@ -43,7 +43,7 @@
 %shared_ptr(cmf::atmosphere::IDWRainfall);
 %shared_ptr(cmf::atmosphere::ConstantRainSource);
 %shared_ptr(cmf::atmosphere::TimeseriesRainSource);
-
+%shared_ptr(cmf::atmosphere::aerodynamic_resistance);
 
 %rename(__getitem__) cmf::atmosphere::MeteoStationList::operator[];
 %rename(__len__) cmf::atmosphere::MeteoStationList::size;

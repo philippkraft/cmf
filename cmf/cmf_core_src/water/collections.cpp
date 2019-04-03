@@ -167,13 +167,13 @@ void cmf::water::node_list::append( flux_node::ptr node )
 	m_nodes.push_back(node);
 }
 
-cmf::water::node_list::operator cmf::math::StateVariableList()
+cmf::water::node_list::operator cmf::math::state_list()
 {
-	cmf::math::StateVariableList q;
+	cmf::math::state_list q;
 	for(auto& node: m_nodes)
 	{
 		auto stor = cmf::water::WaterStorage::cast(node);
-		if(stor) q += cmf::math::StateVariableList(*stor);
+		if(stor) q += cmf::math::state_list(*stor);
 	}
 	return q;
 }

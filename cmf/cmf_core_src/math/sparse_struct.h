@@ -14,7 +14,7 @@ namespace cmf {
             std::vector<size_t> indexpointers;
             /// @brief Creates the sparse row compressed structure from states variable list
             sparse_structure();
-            size_t generate(const cmf::math::StateVariableList& states);
+            size_t generate(const cmf::math::state_list& states);
             size_t NNZ, NP, N;
         };
 

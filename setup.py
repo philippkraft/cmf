@@ -135,7 +135,8 @@ static_libraries = [
                   build_script='install_solvers'),
     StaticLibrary('lib/include/suitesparse', 'lib/lib',
                   'klu', 'amd', 'btf', 'colamd', 'suitesparseconfig',
-                  build_script='install_solvers')
+                  build_script='install_solvers'),
+    StaticLibrary('cmf/cmf_core_src', 'lib/lib', 'cmf_core', 'cmf_water', 'cmf_integrators', 'cmf_math'),
 ]
 
 
@@ -353,12 +354,12 @@ def make_cmf_core():
             libraries.append('gomp')
 
     # Get the source files
-    cmf_files = get_source_files()
+    cmf_files = [] #  get_source_files()
 
     if swig:
         # Adding cmf.i when build_ext should perform the swig call
         cmf_files.append("cmf/cmf_core_src/cmf.i")
-        swig_opts = ['-c++', '-Wextra', '-w512', '-w511', '-O', '-keyword', '-castmode', '-modern']
+        swig_opts = ['-c++', '-w512', '-w511', '-O', '-keyword', '-castmode', '-modern']
 
     else:
         # Else use what we have there

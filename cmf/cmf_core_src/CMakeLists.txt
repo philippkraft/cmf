@@ -3,7 +3,6 @@ project(cmf)
 
 set(CMAKE_CXX_STANDARD 11)
 set(CMF_EXT_LIB_DIR ${CMAKE_CURRENT_SOURCE_DIR}/../../lib)
-
 include_directories(
         ${CMF_EXT_LIB_DIR}/include
         ${CMF_EXT_LIB_DIR}/include/suitesparse
@@ -58,9 +57,8 @@ add_library(cmf_integrators STATIC
         math/integrators/cvode.cpp
         math/integrators/implicit_euler.cpp
         math/integrators/Integrator.cpp
-        math/integrators/multiintegrator.cpp
         math/integrators/RKFintegrator.cpp
-        math/integrators/WaterSoluteIntegrator.cpp
+        math/integrators/multiintegrator.cpp
         )
 
 target_link_libraries(cmf_integrators PUBLIC cmf_math)
@@ -76,6 +74,7 @@ target_link_libraries(cmf_integrators PUBLIC
         )
 
 add_library(cmf_core STATIC
+        math/integrators/WaterSoluteIntegrator.cpp
         atmosphere/meteorology.cpp
         atmosphere/precipitation.cpp
         atmosphere/Weather.cpp
@@ -106,6 +105,8 @@ add_library(cmf_core STATIC
         )
 
 target_link_libraries(cmf_core PUBLIC cmf_math cmf_water cmf_integrators)
+
+install(TARGETS cmf_core cmf_water cmf_integrators cmf_math ARCHIVE DESTINATION ${CMF_EXT_LIB_DIR}/lib)
 
 add_executable(nash_cascade apps/nash_cascade.cpp)
 target_link_libraries(nash_cascade cmf_core)

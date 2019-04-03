@@ -79,10 +79,11 @@ public:
 		realtype * udata = NV_DATA_S(u);
 		realtype * dudata = NV_DATA_S(udot);
 		// Get size of the problem
-		int nsize = int(integ->size());
+		ODEsystem& system = integ->get_system();
+		int nsize = int(system.size());
 		// Update the states from the state vector
 		try {
-			integ->set_states(udata);
+			system.set_states(udata);
 		}
 		catch (std::exception& e) {
 			std::cerr << e.what() << std::endl;
@@ -92,7 +93,7 @@ public:
 		Time T = cmf::math::day * t;
 		// Get the derivatives at time T
 		try {
-			integ->copy_dxdt(T, dudata);
+			system.copy_dxdt(T, dudata);
 			integ_impl->dxdt_method_calls += integ_impl->N;
 		}
 		catch (std::exception& e) {
@@ -116,14 +117,15 @@ public:
 	
 	int initialize() {
 		release();
+		ODEsystem& system = _integrator->get_system();
 		// size of problem
-		N = int(_integrator->m_States.size());
+		N = int(system.size());
 		// Allocate vector y
 		y = N_VNew_Serial(N);
 		// Pointer to data of vector y
 		realtype * y_data = NV_DATA_S(y);
 		// Copy states to y
-		_integrator->copy_states(y_data);
+		system.copy_states(y_data);
 		// Create a implicit (CV_BDF) solver with Newton iteration (CV_NEWTON)
 		if (this->use_stiff_solver) {
 			cvode_mem = CVodeCreate(CV_BDF);
@@ -139,7 +141,7 @@ public:
 		N_Vector abstol = N_VNew_Serial(N);
 		realtype * abstol_data = NV_DATA_S(abstol);
 		for (int i = 0; i < N; ++i)
-			abstol_data[i] = _integrator->m_States[i]->get_abs_errtol(reltol*1e-3);
+			abstol_data[i] = system[i]->get_abs_errtol(reltol*1e-3);
 		int flag = 0;
 		// Allocate memory for solver and set the right hand side function, start time and error tolerance
 		flag = CVodeInit(cvode_mem, f, _integrator->get_t().AsDays(), y);
@@ -153,9 +155,10 @@ public:
 	}
 	
 	int reset() {
+		ODEsystem& system = _integrator->get_system();
 		if (cvode_mem) {
 			// Copy current states to internal state vector
-			_integrator->copy_states(NV_DATA_S(y));
+			system.copy_states(NV_DATA_S(y));
 			// Reinitialize solver
 			return CVodeReInit(cvode_mem, get_t(), y);
 		}
@@ -181,7 +184,8 @@ public:
 		return _integrator->get_t().AsDays();
 	}
 	int integrate(cmf::math::Time t_max, cmf::math::Time dt) {
-		if (_integrator->m_States.size() == 0)
+		ODEsystem& system = _integrator->get_system();
+		if (system.size() == 0)
 			throw std::out_of_range("No states to integrate!");
 
 		// If solver or y is not initialized, initialize them
@@ -200,7 +204,7 @@ public:
 		_integrator->error_msg = "";
 		int res = CVode(cvode_mem, t_max.AsDays(), y, &t_ret, CV_ONE_STEP);
 		if (res<0) {
-			_integrator->set_states(y_data);
+			system.set_states(y_data);
 			if (_integrator->error_msg != "")
 				throw std::runtime_error(_integrator->error_msg + " - " + (day * t_ret).AsDate().to_string());
 			else
@@ -227,12 +231,13 @@ public:
 
 
 		// Copy result to state variables
-		_integrator->set_states(y_data);
+		system.set_states(y_data);
 		return res;
 	}
 
 	cmf::math::num_array get_error() const {
-		sunindextype N = _integrator->size();
+		ODEsystem& system = _integrator->get_system();
+		sunindextype N = system.size();
 		N_Vector ele = N_VNew_Serial(N);
 		N_Vector eweight = N_VNew_Serial(N);
 		CVodeGetEstLocalErrors(cvode_mem, ele);
@@ -270,7 +275,7 @@ void cmf::math::CVodeBase::reset()
 	_implementation->reset();
 }
 
-cmf::math::CVodeBase::CVodeBase(const StateVariableList &states, real epsilon)
+cmf::math::CVodeBase::CVodeBase(const cmf::math::state_list & states, real epsilon)
 	: Integrator(states, epsilon)
 {
 	cmf::math::CVodeBase::Impl* p_impl = new cmf::math::CVodeBase::Impl(this);
@@ -296,9 +301,10 @@ CVodeBase::~CVodeBase() = default;
 CVodeInfo cmf::math::CVodeBase::get_info() const
 {
 	CVodeInfo ci;
+	const ODEsystem& system = get_system();
 	void * cvm = _implementation->cvode_mem;
 
-	ci.size = long(size());
+	ci.size = long(system.size());
 	CVodeGetWorkSpace(cvm, &ci.workspace_real, &ci.workspace_int);
 	ci.workspace_byte = ci.workspace_real * sizeof(realtype) + ci.workspace_int * sizeof(long int);
 	int qlast, qcur;
@@ -321,7 +327,7 @@ cmf::math::num_array cmf::math::CVodeBase::get_error() const
 	return _implementation->get_error();
 }
 
-cmf::math::CVodeDense::CVodeDense(const StateVariableList &states, real epsilon)
+cmf::math::CVodeDense::CVodeDense(const cmf::math::state_list & states, real epsilon)
 	: CVodeBase(states, epsilon)
 {}
 
@@ -362,7 +368,7 @@ void cmf::math::CVodeDense::set_solver()
 	*/
 }
 
-cmf::math::CVodeBanded::CVodeBanded(const StateVariableList &states, real epsilon, int w)
+cmf::math::CVodeBanded::CVodeBanded(const cmf::math::state_list & states, real epsilon, int w)
 	: CVodeBase(states, epsilon), bandwidth(w)
 {}
 
@@ -387,7 +393,7 @@ void cmf::math::CVodeBanded::set_solver()
 
 }
 
-cmf::math::CVodeDiag::CVodeDiag(cmf::math::StateVariableList & states, real epsilon)
+cmf::math::CVodeDiag::CVodeDiag(const cmf::math::state_list & states, real epsilon)
 	: CVodeBase(states, epsilon)
 {}
 
@@ -401,7 +407,7 @@ void cmf::math::CVodeDiag::set_solver()
 
 }
 
-cmf::math::CVodeKrylov::CVodeKrylov(const StateVariableList &states, real epsilon,
+cmf::math::CVodeKrylov::CVodeKrylov(const cmf::math::state_list & states, real epsilon,
 									int w, char p)
 	: CVodeBase(states, epsilon), bandwidth(w), preconditioner(p)
 {}
@@ -460,7 +466,7 @@ std::string cmf::math::CVodeInfo::to_string() const
 	return out.str();
 }
 
-cmf::math::CVodeAdams::CVodeAdams(cmf::math::StateVariableList & states, real epsilon)
+cmf::math::CVodeAdams::CVodeAdams(const cmf::math::state_list & states, real epsilon)
 	:CVodeBase(states, epsilon)
 {
 	this->_implementation->use_stiff_solver = false;
@@ -471,7 +477,7 @@ std::string cmf::math::CVodeAdams::to_string() const
 	return "CVodeAdams()";
 }
 
-cmf::math::CVodeKLU::CVodeKLU(const StateVariableList &states, real epsilon)
+cmf::math::CVodeKLU::CVodeKLU(const cmf::math::state_list & states, real epsilon)
 	: CVodeBase(states, epsilon)
 {
 }
@@ -563,6 +569,7 @@ int CVodeBase::Impl::sparse_jacobian(
 	*/
 	CVodeBase::Impl * integ_impl = static_cast<CVodeBase::Impl*>(userdata);
 	CVodeKLU * integ = static_cast<CVodeKLU *>(integ_impl->_integrator);
+	ODEsystem& system = integ->get_system();
 	void * cvode_mem = integ_impl->cvode_mem;
 
 	Time time = cmf::math::day * t;
@@ -608,7 +615,7 @@ int CVodeBase::Impl::sparse_jacobian(
 		// current row number
 		data_pos, row, col;			 
 
-	integ->set_states(NV_DATA_S(ytmp));
+	system.set_states(NV_DATA_S(ytmp));
 	
 	for (col = 0; col < integ_impl->N; ++col) {
 		// Change state for the row
@@ -616,7 +623,7 @@ int CVodeBase::Impl::sparse_jacobian(
 		// Set the increment
 		inc = SUNMAX(srur*SUNRabs(old_y), minInc/ewt_data[col]);
 		NV_Ith_S(ytmp, col) += inc;
-		integ->set_state(col, NV_Ith_S(ytmp, col));
+		system.set_state_value(col, NV_Ith_S(ytmp, col));
 		// Loop through column positions
 		for (data_pos = SM_INDEXPTRS_S(J)[col]; 
 			 data_pos < SM_INDEXPTRS_S(J)[col + 1];
@@ -625,14 +632,14 @@ int CVodeBase::Impl::sparse_jacobian(
 			// Get the column number
 			row = SM_INDEXVALS_S(J)[data_pos];
 			// Calculate the new dxdt for that row
-			altered_dxdt = integ->m_States[row]->dxdt(time);
+			altered_dxdt = system[row]->dxdt(time);
 			integ_impl->dxdt_method_calls += 1;
 			// Set the Jacobian value
 			J_data[data_pos] = altered_dxdt / inc - f_data[row] / inc;
 		}
 		// Undo state change
 		NV_Ith_S(ytmp, col) = old_y;
-		integ->set_states(NV_DATA_S(ytmp));
+		system.set_states(NV_DATA_S(ytmp));
 	}
 	int flag = copy_sparse_to_sparse(J, integ_impl->J);
 	return CVLS_SUCCESS;
@@ -641,7 +648,8 @@ int CVodeBase::Impl::sparse_jacobian(
 int cmf::math::CVodeBase::Impl::dense_jacobian(realtype t, N_Vector y, N_Vector fy, SUNMatrix J, void * userdata, N_Vector tmp1, N_Vector tmp2, N_Vector tmp3)
 {
 	realtype fnorm, minInc, inc, inc_inv, yjsaved, srur, h;
-	realtype *y_data, *ewt_data, *cns_data;
+	realtype *y_data, *ewt_data;
+	// realtype *cns_data; // pointer to contraints vector. Currently not accessible
 	N_Vector ftemp, jthCol, ewt;
 
 	sunindextype j, N;
@@ -724,7 +732,7 @@ void cmf::math::CVodeKLU::set_solver()
 	
 	// Create sparse matrix
 	// .. get sparse structure from my states
-	sps.generate(this->get_states());
+	sps.generate(this->get_system().states);
 	// .. create the SUNDIALS sparse matrix
 	i.J = SUNSparseMatrix(sps.N, sps.N, sps.NNZ, CSC_MAT);
 	if (i.J == NULL) throw std::runtime_error("CVODE-KLU: Failed to construct sparse matrix");

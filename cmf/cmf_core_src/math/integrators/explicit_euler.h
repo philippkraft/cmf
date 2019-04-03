@@ -29,13 +29,11 @@ namespace cmf {
 			num_array 
 				dxdt;
 		public:
-			/// Add state variables from a cmf::math::StateVariableList
-			void add_states(cmf::math::StateVariableList& stateOwner);
 
 			/// Constructs a new ExplicitEuler_fixed from a pointer to a vector of state variables
 			/// @note The Integrator becomes the owner of states
 			/// @param states Statevariables of the system
-			explicit ExplicitEuler_fixed(cmf::math::StateVariableList& states);
+			explicit ExplicitEuler_fixed(const cmf::math::state_list & states);
 
 			/// Constructs a new ExplicitEuler_fixed
 			ExplicitEuler_fixed();
@@ -60,17 +58,15 @@ namespace cmf {
 			num_array 
 				dxdt0, dxdt1, old_states;
 		public:
-			/// Add state variables from a cmf::math::StateVariableList
-			void add_states(cmf::math::StateVariableList& stateOwner);
 			/// Alpha Weight factor \f$\alpha\f$ to weight \f$f(y^n)\f$ and \f$f(y^{n+1})\f$
 			real alpha;
 			/// Constructs a new PredictCorrectSimple from a pointer to a vector of state variables
 			/// @note The Integrator becomes the owner of states
 			/// @param states Statevariable owner of the system
 			/// @param Alpha Weight factor \f$\alpha\f$ to weight \f$f(y^n)\f$ and \f$f(y^{n+1})\f$
-			explicit HeunIntegrator(const StateVariableList &states, real Alpha = 0.5);
+			explicit HeunIntegrator(const cmf::math::state_list & states, real Alpha = 0.5);
 
-			/// Constructs a new PredictCorrectSimple
+			/// Constructs a new Heun integrator
 			/// @param Alpha Weight factor \f$\alpha\f$ to weight \f$f(y^n)\f$ and \f$f(y^{n+1})\f$
 			HeunIntegrator(real Alpha=0.5);
 
@@ -83,6 +79,7 @@ namespace cmf {
 			/// @param MaxTime (ignored) To stop the model (if running in a model framework) at time steps of value exchange e.g. full hours, the next value exchange time can be given
 			/// @param TimeStep Takes the proposed time step
 			int integrate(cmf::math::Time MaxTime,cmf::math::Time TimeStep);
+			void reset() override;
 
 		};
 

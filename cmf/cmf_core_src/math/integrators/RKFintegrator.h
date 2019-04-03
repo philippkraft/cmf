@@ -23,6 +23,9 @@
 
 #include "integrator.h"
 #include "../real.h"
+#include "../num_array.h"
+#include "../statevariable.h"
+#include "../odesystem.h"
 
 namespace cmf {
 	namespace math {
@@ -50,15 +53,13 @@ namespace cmf {
 			Time dt_min;
 			//@}
 		public:
-			/// Adds states from an cmf::math::StateVariableList
-			void add_states( cmf::math::StateVariableList& stateOwner );
 
 			/// Constructs a new RKFIntegrator from a pointer to a vector of state variables
 			/// @note The RKF Integrator becomes the owner of states
 			/// @param states Statevariables of the system
 			/// @param epsilon relative error tolerance per time step (default=1e-9)
 			/// @param dt_min minimum time step (default=1s)
-			RKFIntegrator(cmf::math::StateVariableList& states, real epsilon=1e-9,cmf::math::Time dt_min=cmf::math::timespan(1000));
+			RKFIntegrator(const cmf::math::state_list & states, real epsilon = 1e-9, cmf::math::Time dt_min = cmf::math::timespan(1000));
 			/// Constructs a new RKFIntegrator
 			/// @param epsilon relative error tolerance per time step (default=1e-9)
 			/// @param dt_min minimum time step (default=1s)
@@ -74,9 +75,22 @@ namespace cmf {
 			/// @param MaxTime To stop the model (if running in a model framework) at time steps of value exchange e.g. full hours, the next value exchange time can be given
 			/// @param TimeStep Takes the proposed timestep, and changes it into the effictivly used timestep according to the local stiffness of the problem and MaxTime
 			int integrate(cmf::math::Time MaxTime,cmf::math::Time TimeStep);
-	
 
-		};
+			void reset() override;
+
+
+        protected:
+            /// Protected function to adjust the step width for stability reasons
+            void AdjustTimestep(Time& TimeStep, Time MaxTime)
+            {
+                //We should not step over the maximum time
+                if ( MaxTime - m_t <= TimeStep)
+                    TimeStep = MaxTime-m_t;
+                //If the max time is reached at the next time step, we should lower the timestep, to avoid a too short timestep on the next call
+                else if	((MaxTime - m_t) < TimeStep*2.0)
+                    TimeStep = (MaxTime - m_t) * 0.5;
+            }
+        };
 		
 	}
 }

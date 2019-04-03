@@ -110,7 +110,7 @@ Included macros:
 %enddef      
 
 %define %state_downcast(Method)
-//Downcast to all children of cmf::water::flux_node
+//Downcast to all children of cmf::math::StateVariable
 %_state_downcast(Method,
    cmf::water::WaterStorage, cmf::water::SoluteStorage
 )
@@ -131,7 +131,7 @@ Included macros:
 // %iterable_to_list(LISTTYPE,ITEMTYPE) typemap system. Puts a function template into the header for general usage
 // Function to convert an iterable to a list type (class with append function). For use in typemaps
     template<typename _item_type, typename _Ty> 
-    int iterable_to_list(PyObject* iterable,swig_type_info* _item_descriptor, _Ty& temp_list) {
+    int iterable_to_list(PyObject* iterable,swig_type_info* _item_descriptor, _Ty& temp_list, int * cannot_convert=0) {
     	PyObject* iter = PyObject_GetIter(iterable);
         if (iter == 0) {
             // no iterator
@@ -143,7 +143,9 @@ Included macros:
 		    int is_ok = SWIG_ConvertPtr(py_item, (void**)&item, _item_descriptor, SWIG_POINTER_EXCEPTION);
 		    if (is_ok == 0 && item != 0 ) { 
 			    temp_list.append(*item);
-		    }
+		    } else if (cannot_convert) {
+             ++(*cannot_convert);
+          }
 		    Py_DECREF(py_item);
 	    }
 	    Py_DECREF(iter);
@@ -170,7 +172,8 @@ Included macros:
 %define %iterable_to_list(LISTTYPE,ITEMTYPE)
 %typemap(in) LISTTYPE& (LISTTYPE temp_list) {
     if (SWIG_ConvertPtr($input, (void **) &$1, $1_descriptor, SWIG_POINTER_EXCEPTION) == -1) {
-        int res = iterable_to_list<ITEMTYPE, LISTTYPE>($input,$descriptor(ITEMTYPE*), temp_list);
+        int conversion_errors = 0;
+        int res = iterable_to_list<ITEMTYPE, LISTTYPE>($input,$descriptor(ITEMTYPE*), temp_list, &conversion_errors);
         if (SWIG_IsOK(res)) {
     	    $1 = &temp_list;
     	} else {
@@ -182,3 +185,95 @@ Included macros:
 	$1 = is_listtype_or_iterable($input,$1_descriptor);
 }
 %enddef
+
+/*
+%{
+    template<typename _listtype>
+    int list_getitem_from_index(const _listtype& source, *PyObject item, _listtype& target) {
+        PyObject* iter = PyObject_GetIter(item)
+        if (iter) {
+            while (PyObject* py_item = PyIter_Next(iter)) {
+                Py_ssize_t index = PyLong_AsSsize_t(py_item);
+                PyDECREF(py_item);
+                if (PyErr_Occured()) return 0;
+                target.append(source[index]);
+            }
+            Py_DECREF(iter);
+            return 1;
+        }
+        else if (PySlice_Check(item)) {
+            PySsize_t start, stop, step;
+            PySlice_GetIndices(item, source.size(), &start, &stop, &step);
+            for (PySsize_t i=start; i<stop; i+=step) {
+                target.append(source[i])
+            }
+            return 1;
+        }
+        else if (PyLong_Check(item)) {
+            Py_ssize_t index = PyLong_AsSsize_t(item);
+            target.append(source[i]);
+            return 1;
+        }
+        else {
+            SWIG_Error(SWIG_ValueError, "Index for item assessment must be either int, sequence or slice");
+            return 0;
+        }
+        
+        
+    }
+%}
+*/
+%define %extend_pysequence(LISTTYPE)
+%extend LISTTYPE {
+    size_t __len__() const {
+        return $self->size();
+    }
+    %pythoncode {
+    def __iter__(self):
+        for i in range(len(self)):
+            yield self[i]
+
+    def __getitem__(list_obj, index):
+
+        if isinstance(index,slice):
+            res = type(list_obj)()
+            for i in range(*index.indices(len(list_obj))):
+                res.append(list_obj.__getitem(i))
+            return res
+        else:
+            try:
+                it=iter(index)
+                res = type(list_obj)()
+                for o in it:
+                    res.append(list_obj.__getitem(i))
+                return res
+            except:
+                return list_obj.__getitem(index)
+
+}}
+%enddef
+/*
+%define %extend_getitem(LISTTYPE,ITEMTYPE)
+%extend LISTTYPE {
+PyObject* __getitem__(PyObject* item) {
+    LISTTYPE* result = new LISTTYPE();
+    int res=list_getitem_from_index(*$self, item, *result);
+    if res
+    if (result->size() == 1) {
+        ITEMTYPE obj = (*result)[0]);
+        delete result;
+        return SWIG_NewPointerObj(
+            obj, 
+            $descriptor(ITEMTYPE), 
+            SWIG_POINTER_OWN);
+    }
+    else  {
+        return SWIG_NewPointerObj(
+            result, 
+            $descriptor(LISTTYPE*), 
+            SWIG_POINTER_OWN);
+    }
+    
+}
+%enddef
+*/

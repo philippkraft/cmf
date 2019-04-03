@@ -31,32 +31,36 @@ void SoluteWaterIntegrator::erase_integrators() {
 	m_soluteintegrators.erase(m_soluteintegrators.begin(),m_soluteintegrators.end());
 }
 
-void cmf::math::SoluteWaterIntegrator::add_states( cmf::math::StateVariableList& stateOwner )
-{
-	Integrator::add_states(stateOwner);
-	distribute_states();
-}
 
 void SoluteWaterIntegrator::distribute_states()
 {
-	for(state_vector::iterator it = m_States.begin(); it != m_States.end(); ++it)
+	state_list water_states;
+	std::vector<state_list> solute_states(m_soluteintegrators.size());
+
+    for(auto& state: get_system())
 	{
-		WaterStorage::ptr ws = std::dynamic_pointer_cast<WaterStorage>(*it);
-		SoluteStorage::ptr ss = std::dynamic_pointer_cast<SoluteStorage>(*it);
-		if(ws)	m_waterintegrator->add_single_state(ws);
-		else if (ss) m_soluteintegrators[ss->Solute.Id]->add_single_state(ss);
-		else throw std::runtime_error("SoluteWaterIntegrator: Got unknown state" + (**it).to_string());
+		WaterStorage::ptr ws = std::dynamic_pointer_cast<WaterStorage>(state);
+		SoluteStorage::ptr ss = std::dynamic_pointer_cast<SoluteStorage>(state);
+		if(ws)
+		    water_states.append(state);
+		else if (ss)
+		    solute_states[ss->Solute.Id].append(state);
+		else
+		    throw std::runtime_error("SoluteWaterIntegrator: Got unknown state" + state->to_string());
 	}
+    m_waterintegrator->set_system(water_states);
+    for (size_t i=0; i < m_soluteintegrators.size(); ++i) {
+        m_soluteintegrators[i]->set_system(solute_states[i]);
+    }
 }
 
 int SoluteWaterIntegrator::integrate( Time t_max,Time dt )
 {
 	m_waterintegrator->integrate(t_max,dt);
 	Time t = m_waterintegrator->get_t();
-	for(Integrators::iterator it=m_soluteintegrators.begin();it!=m_soluteintegrators.end();++it) {
-		Integrator& integ= **it;
-		integ.reset();
-		integ.integrate_until(t,dt);
+	for(Integrator* integ: m_soluteintegrators) {
+		integ->reset();
+		integ->integrate_until(t,dt);
 	}
 	m_t=t;
 	m_dt=m_waterintegrator->get_dt();
@@ -68,7 +72,7 @@ inline void createsoluteintegrators(
 	const cmf::water::solute_vector& solutes, 
 	const cmf::math::Integrator& solute_integrator_templ ) 
 {
-	for(solute_vector::const_iterator it=solutes.begin();it!=solutes.end();++it){
+	for(auto& solute: solutes){
 		Integrator* new_solute_integ=solute_integrator_templ.copy();
 		soluteintegrators.push_back(new_solute_integ);
 	}
@@ -89,19 +93,21 @@ cmf::math::SoluteWaterIntegrator::SoluteWaterIntegrator(
 		cmf::water::solute_vector _solutes, 
 		const cmf::math::Integrator& water_integrator_templ, 
 		const cmf::math::Integrator& solute_integrator_templ, 
-		cmf::math::StateVariableList& states )
-		: Integrator(), solutes(_solutes), m_waterintegrator(0)
+		const cmf::math::state_list& states )
+		: Integrator(states), solutes(_solutes), m_waterintegrator(0)
 {
 	m_waterintegrator =water_integrator_templ.copy();
 	createsoluteintegrators(m_soluteintegrators,_solutes,solute_integrator_templ);
-	add_states(states);
+	distribute_states();
 }
 
 void cmf::math::SoluteWaterIntegrator::reset()
 {
-	m_waterintegrator->set_t(m_t);
-	for(Integrators::iterator it=m_soluteintegrators.begin();it!=m_soluteintegrators.end();++it){
-		(*it)->set_t(m_t);
+	m_waterintegrator->reset();
+    m_waterintegrator->set_t(m_t);
+	for(auto& solute_integ : m_soluteintegrators){
+	    solute_integ->reset();
+		solute_integ->set_t(m_t);
 	}
 
 }
@@ -111,8 +117,8 @@ std::string cmf::math::SoluteWaterIntegrator::to_string() const
 	std::stringstream str;
 	str << "Solute water integrator with " << this->size() << " states total." << std::endl;
 	str << "    " << this->m_waterintegrator->size() << " states for water" << std::endl;
-	for(solute_vector::const_iterator it=solutes.begin();it!=solutes.end();++it) {
-		str << "    " << m_soluteintegrators[it->Id]->size() << " states for [" << it->Name << "]" << std::endl;
+	for(auto& solute: solutes) {
+		str << "    " << m_soluteintegrators[solute.Id]->size() << " states for [" << solute.Name << "]" << std::endl;
 	}
 	str << "dt=" << m_waterintegrator->get_dt() << std::endl;
 	return str.str();

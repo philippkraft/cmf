@@ -300,9 +300,9 @@ void Cell::set_rain_source( cmf::atmosphere::RainSource::ptr new_source )
 	m_rainfall = new_source;
 }
 
-Cell::operator cmf::math::StateVariableList()
+Cell::operator cmf::math::state_list()
 {
-	cmf::math::StateVariableList q;
+	cmf::math::state_list q;
 	for (size_t i = 0; i < storage_count() ; ++i)
 		q += *get_storage(i);
 	for (size_t i = 0; i < layer_count() ; ++i)
@@ -390,9 +390,8 @@ double Cell::get_soildepth() const
 void cmf::upslope::Cell::set_uptakestress( const ET::RootUptakeStressFunction& stressfunction )
 {
 	// Traverse all connection of transpiration
-	for(layer_list::iterator it=m_Layers.begin();it!=m_Layers.end();++it) {
-		SoilLayer& sl = **it;
-		sl.set_root_uptake_stress_function(stressfunction);
+	for(auto& sl : m_Layers) {
+		sl->set_root_uptake_stress_function(stressfunction);
 	}
 }
 

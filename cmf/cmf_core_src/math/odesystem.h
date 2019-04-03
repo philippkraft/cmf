@@ -13,32 +13,29 @@ namespace cmf {
     namespace math {
         class ODEsystem {
         private:
-            state_list m_states;
         public:
+            state_list states;
 
 #ifndef SWIG
-            state_list::iterator begin() {return m_states.begin();}
-            state_list::iterator end() {return m_states.end();}
-            state_list::const_iterator begin() const {return m_states.begin();}
-            state_list::const_iterator end() const {return m_states.end();}
+            state_list::iterator begin() {return states.begin();}
+            state_list::iterator end() {return states.end();}
+            state_list::const_iterator begin() const {return states.begin();}
+            state_list::const_iterator end() const {return states.end();}
 #endif
             int use_OpenMP;
 
             void append(StateVariable::ptr sv) {
-                m_states.push_back(sv);
-            }
-            void extend(const cmf::math::state_list& svl) {
-                (*this) += svl;
+                states.append(sv);
             }
 
-            operator bool() const {return m_states.size()>0;}
+            operator bool() const {return states.size()>0;}
 
             ODEsystem& operator +=(const ODEsystem& food) {
-                m_states.insert(m_states.end(),food.m_states.begin(),food.m_states.end());
+                states.extend(food.states);
                 return *this;
             }
             ODEsystem& operator +=(const cmf::math::state_list& food) {
-                m_states.insert(m_states.end(),food.begin(),food.end());
+                states.extend(food);
                 return *this;
             }
 
@@ -47,7 +44,7 @@ namespace cmf {
             ODEsystem(const cmf::math::ODEsystem& for_copy);
 
             explicit ODEsystem(const cmf::math::state_list& for_copy, int use_OpenMP=0);
-            size_t size() const {return m_states.size();}
+            size_t size() const {return states.size();}
 
             ~ODEsystem() = default;
 
@@ -73,10 +70,15 @@ namespace cmf {
             /// Adds the values in operands to the current states
             void add_values_to_states(const num_array& operands);
 
+            explicit operator cmf::math::state_list&() {
+                return states;
+            }
+
 #endif
             cmf::math::num_array get_dxdt(Time time) const;
             cmf::math::num_array get_state_values() const;
             real get_state_value(ptrdiff_t index) const;
+            void set_state_value(ptrdiff_t index, real value) const;
 
 
 

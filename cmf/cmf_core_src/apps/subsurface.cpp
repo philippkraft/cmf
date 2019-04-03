@@ -138,7 +138,7 @@ int main(int argc, char* argv[]) {
 		ts.add(10 * ((i + 1) % 2));
 	std::string name;
 	create_3d(p, 10, 10, name);
-	cmf::math::StateVariableList s = p;
+	cmf::math::state_list s = p;
 	CVodeBase * integ = new CVodeKLU(s, 1e-9);
 
 	int64_t duration = run(integ, p);

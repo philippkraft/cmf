@@ -168,9 +168,9 @@ void cmf::water::WaterStorage::add_connected_states(cmf::math::StateVariable::li
 }
 
 
-cmf::water::WaterStorage::operator cmf::math::StateVariableList()
+cmf::water::WaterStorage::operator cmf::math::state_list()
 {
-	cmf::math::StateVariableList q;
+	cmf::math::state_list q;
 	q.append(cmf::water::WaterStorage::ptr(*this));
 	for(SoluteStorageMap::const_iterator it = m_Concentrations.begin(); it != m_Concentrations.end(); ++it)
 	{

@@ -38,10 +38,10 @@ namespace cmf {
 		private:
 			cmf::upslope::Cell& cell;
 		public:
-			log_wind_profile(cmf::upslope::Cell& _cell) 
+			explicit log_wind_profile(cmf::upslope::Cell& _cell)
 				: cell(_cell)
 			{}
-			virtual void get_aerodynamic_resistance(double & r_ag,double & r_ac, cmf::math::Time t) const;
+			void get_aerodynamic_resistance(double & r_ag,double & r_ac, cmf::math::Time t) const final;
 			virtual ~log_wind_profile()
 			{}
 		};

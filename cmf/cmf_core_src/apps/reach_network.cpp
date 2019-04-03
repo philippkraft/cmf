@@ -128,7 +128,7 @@ namespace cmf {
 
 		std::unique_ptr<cmf::math::CVodeBase> make_solver(cmf::project p, SolverType _solver) {
 			using namespace cmf::math;
-			cmf::math::StateVariableList states(p);
+			cmf::math::ODEsystem states(p);
 			typedef std::unique_ptr<CVodeBase> solver_type;
 			switch (_solver) {
 			case dense:

@@ -203,7 +203,7 @@ namespace cmf {
 		
 		/// Returns a list of all storages of this project
 		cmf::water::node_list get_storages();
-        operator cmf::math::StateVariableList();
+        operator cmf::math::state_list();
 #ifndef SWIG
         cmf::upslope::Cell& operator[](ptrdiff_t index) {
 			return this->get_cell(index);

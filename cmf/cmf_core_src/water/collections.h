@@ -73,7 +73,7 @@ namespace cmf {
 			node_list getslice(ptrdiff_t begin,ptrdiff_t end,ptrdiff_t step=1) const;
 
 			/// @brief Implements StateVariableOwner
-			operator cmf::math::StateVariableList();
+			operator cmf::math::state_list();
 			/// @brief Adds a flux node to the list
 			void append(flux_node::ptr node);
 			/// @brief Removes a flux node from the list, returns true if successful

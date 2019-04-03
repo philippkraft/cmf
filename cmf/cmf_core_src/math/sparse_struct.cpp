@@ -12,7 +12,7 @@ cmf::math::sparse_structure::sparse_structure()
         : N(0), NP(0), NNZ(0) {
 }
 
-size_t cmf::math::sparse_structure::generate(const cmf::math::StateVariableList & states)
+size_t cmf::math::sparse_structure::generate(const cmf::math::state_list & states)
 {
     N = states.size();
     StateVariable::list pointer_list;

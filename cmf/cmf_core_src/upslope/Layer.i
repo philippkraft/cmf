@@ -69,8 +69,8 @@
 %shared_attr(cmf::upslope::SoilLayer,SoilLayer, lower, get_lower);
 
 
-
-
+%shared_ptr(cmf::upslope::conductable);
+%include "upslope/conductable.h"
 
 
 %include "upslope/SoilLayer.h"

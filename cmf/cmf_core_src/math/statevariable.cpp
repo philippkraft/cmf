@@ -63,3 +63,26 @@ void cmf::math::StateVariable::add_connected_states(list& states)
 	states.push_back(this);
 }
 
+state_list cmf::math::operator+(const state_list &left, const state_list &right) {
+    state_list res;
+    res += left;
+    res += right;
+    return res;
+}
+
+state_list &state_list::operator+=(const state_list &food) {
+	this->extend(food);
+	return *this;
+}
+
+inline state_list &state_list::extend(const state_list &svl) {
+	insert(end(), svl.begin(), svl.end());
+	return *this;
+}
+
+state_vector::iterator state_list::begin() {return state_vector::begin();}
+
+state_list::state_list() : state_vector() {}
+
+state_list::state_list(const state_list &other) : state_vector(other) {}
+

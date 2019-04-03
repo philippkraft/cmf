@@ -121,6 +121,7 @@ std::string pyrepr(PyObject* o) {
 %include "upslope/connections/Percolation.h"
 %include "upslope/vegetation/waterstress.h"
 
+%shared_ptr(cmf::atmosphere::log_wind_profile);
 %include "upslope/vegetation/ET.h"
 
 %shared_ptr(cmf::upslope::ET::ShuttleworthWallace);
