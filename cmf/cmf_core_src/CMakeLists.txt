@@ -29,12 +29,6 @@ add_library(cmf_math STATIC
         math/sparse_struct.cpp
         )
 
-find_package(OpenMP)
-if(OpenMP_CXX_FOUND)
-    target_link_libraries(cmf_math PUBLIC OpenMP::OpenMP_CXX)
-    message("Found OpenMP")
-endif()
-
 add_library(cmf_water STATIC
         water/adsorption.cpp
         water/boundary_condition.cpp
@@ -46,7 +40,6 @@ add_library(cmf_water STATIC
         water/SoluteStorage.cpp
         water/system_bridge.cpp
         water/WaterStorage.cpp
-
         )
 
 target_link_libraries(cmf_water PUBLIC cmf_math)
@@ -62,6 +55,12 @@ add_library(cmf_integrators STATIC
         )
 
 target_link_libraries(cmf_integrators PUBLIC cmf_math)
+find_package(OpenMP)
+if(OpenMP_CXX_FOUND)
+    target_link_libraries(cmf_math PUBLIC OpenMP::OpenMP_CXX)
+    target_link_libraries(cmf_integrators PUBLIC OpenMP::OpenMP_CXX)
+    message("Found OpenMP")
+endif()
 
 # Use a lib prefix if MSVC compiler, because suitesparse does it that way
 if(MSVC)
