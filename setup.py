@@ -129,8 +129,6 @@ class StaticLibrary:
         if not os.path.exists(script):
             raise FileNotFoundError('{} not found, cannot build {} from source'
                                     .format(os.path.relpath(script, cwd), self))
-        if os.name == 'posix':
-            os.chmod(script, 755)
         sp.run(script, check=True)
 
 
