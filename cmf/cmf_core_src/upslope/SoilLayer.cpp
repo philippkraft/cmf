@@ -192,7 +192,7 @@ void SoilLayer::set_root_uptake_stress_function(const cmf::upslope::ET::RootUpta
 }
 
 double SoilLayer::get_Tact(double Tpot) {
-	if (m_uptakefunction) {
+	if (m_uptakefunction.get()) {
 		return m_uptakefunction->Tact(this, Tpot);
 	} else {
 		return Tpot * this->get_rootfraction();
