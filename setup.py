@@ -186,13 +186,6 @@ class CmfBuildExt(build_ext):
     def build_extensions(self):
         customize_compiler(self.compiler)
 
-        for sl in static_libraries:
-            if not sl.exists():
-                print(sl, 'get downloaded and installed')
-        for sl in static_libraries:
-            if sl.build_always or not sl.exists():
-                sl.build()
-
         try:
             self.compiler.compiler_so.remove("-Wstrict-prototypes")
         except (AttributeError, ValueError):
@@ -317,6 +310,13 @@ def make_cmf_core():
     libraries = []
     extra_objects = []
     link_args = []
+
+    for sl in static_libraries:
+        if not sl.exists():
+            print(sl, 'get downloaded and installed')
+    for sl in static_libraries:
+        if sl.build_always or not sl.exists():
+            sl.build()
 
     # Platform specific stuff, alternative is to subclass build_ext command as in:
     # https://stackoverflow.com/a/5192738/3032680
