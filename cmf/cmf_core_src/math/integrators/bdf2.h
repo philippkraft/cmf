@@ -112,6 +112,9 @@ namespace cmf {
 				newBDF2->max_order = max_order;
 				return newBDF2;
 			}
+			std::string to_string() const override {
+			    return std::string("BDF2(size=") + std::to_string(size()) + std::string(")");
+			}
 
 
 

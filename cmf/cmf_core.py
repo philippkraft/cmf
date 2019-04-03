@@ -7478,11 +7478,6 @@ class Integrator(object):
     reset_integratables = _swig_property(_cmf_core.Integrator_reset_integratables_get, _cmf_core.Integrator_reset_integratables_set)
     __swig_destroy__ = _cmf_core.delete_Integrator
 
-    def get_states(self, *args, **kwargs):
-        """get_states(Integrator self) -> state_list"""
-        return _cmf_core.Integrator_get_states(self, *args, **kwargs)
-
-
     def set_system(self, *args, **kwargs):
         """set_system(Integrator self, state_list states)"""
         return _cmf_core.Integrator_set_system(self, *args, **kwargs)
@@ -7491,6 +7486,21 @@ class Integrator(object):
     def size(self, *args, **kwargs):
         """size(Integrator self) -> size_t"""
         return _cmf_core.Integrator_size(self, *args, **kwargs)
+
+
+    def __getitem(self, *args, **kwargs):
+        """__getitem(Integrator self, ptrdiff_t index) -> cmf::math::StateVariable::ptr"""
+        return _cmf_core.Integrator___getitem(self, *args, **kwargs)
+
+
+    def __cmf_state_list_interface__(self, *args, **kwargs):
+        """__cmf_state_list_interface__(Integrator self) -> state_list"""
+        return _cmf_core.Integrator___cmf_state_list_interface__(self, *args, **kwargs)
+
+
+    def to_string(self, *args, **kwargs):
+        """to_string(Integrator self) -> std::string"""
+        return _cmf_core.Integrator_to_string(self, *args, **kwargs)
 
 
     def get_t(self, *args, **kwargs):
@@ -7537,9 +7547,31 @@ class Integrator(object):
         return _cmf_core.Integrator___len__(self, *args, **kwargs)
 
 
+    def __iter__(self):
+        for i in range(len(self)):
+            yield self[i]
+
+    def __getitem__(list_obj, index):
+
+        if isinstance(index,slice):
+            res = type(list_obj)()
+            for i in range(*index.indices(len(list_obj))):
+                res.append(list_obj.__getitem(i))
+            return res
+        else:
+            try:
+                it=iter(index)
+                res = type(list_obj)()
+                for o in it:
+                    res.append(list_obj.__getitem(i))
+                return res
+            except:
+                return list_obj.__getitem(index)
+
+
+
     t = property(get_t,set_t,doc="Sets the actual time of the solution")
     dt = property(get_dt,doc="Get the current time step of the solver")
-    states = property(get_states, doc="gets the states of the solver")
     def __call__(self, t, dt=None, reset=False):
         """
         Advances the integration until `t`
@@ -7622,9 +7654,11 @@ class Integrator(object):
                     raise
             yield t
 
-Integrator.get_states = new_instancemethod(_cmf_core.Integrator_get_states, None, Integrator)
 Integrator.set_system = new_instancemethod(_cmf_core.Integrator_set_system, None, Integrator)
 Integrator.size = new_instancemethod(_cmf_core.Integrator_size, None, Integrator)
+Integrator.__getitem = new_instancemethod(_cmf_core.Integrator___getitem, None, Integrator)
+Integrator.__cmf_state_list_interface__ = new_instancemethod(_cmf_core.Integrator___cmf_state_list_interface__, None, Integrator)
+Integrator.to_string = new_instancemethod(_cmf_core.Integrator_to_string, None, Integrator)
 Integrator.get_t = new_instancemethod(_cmf_core.Integrator_get_t, None, Integrator)
 Integrator.set_t = new_instancemethod(_cmf_core.Integrator_set_t, None, Integrator)
 Integrator.get_dt = new_instancemethod(_cmf_core.Integrator_get_dt, None, Integrator)
@@ -7812,11 +7846,6 @@ class CVodeBase(Integrator):
         return _cmf_core.CVodeBase_get_info(self, *args, **kwargs)
 
 
-    def to_string(self, *args, **kwargs):
-        """to_string(CVodeBase self) -> std::string"""
-        return _cmf_core.CVodeBase_to_string(self, *args, **kwargs)
-
-
     def get_error(self, *args, **kwargs):
         """get_error(CVodeBase self) -> cmf::math::num_array"""
         return _cmf_core.CVodeBase_get_error(self, *args, **kwargs)
@@ -7835,7 +7864,6 @@ CVodeBase.initialize = new_instancemethod(_cmf_core.CVodeBase_initialize, None, 
 CVodeBase.set_error_msg = new_instancemethod(_cmf_core.CVodeBase_set_error_msg, None, CVodeBase)
 CVodeBase.copy = new_instancemethod(_cmf_core.CVodeBase_copy, None, CVodeBase)
 CVodeBase.get_info = new_instancemethod(_cmf_core.CVodeBase_get_info, None, CVodeBase)
-CVodeBase.to_string = new_instancemethod(_cmf_core.CVodeBase_to_string, None, CVodeBase)
 CVodeBase.get_error = new_instancemethod(_cmf_core.CVodeBase_get_error, None, CVodeBase)
 CVodeBase._get_jacobian = new_instancemethod(_cmf_core.CVodeBase__get_jacobian, None, CVodeBase)
 _cmf_core.CVodeBase_swigregister(CVodeBase)
@@ -7959,13 +7987,7 @@ class SoluteWaterIntegrator(Integrator):
         """
         _cmf_core.SoluteWaterIntegrator_swiginit(self, _cmf_core.new_SoluteWaterIntegrator(*args))
     __swig_destroy__ = _cmf_core.delete_SoluteWaterIntegrator
-
-    def to_string(self, *args, **kwargs):
-        """to_string(SoluteWaterIntegrator self) -> std::string"""
-        return _cmf_core.SoluteWaterIntegrator_to_string(self, *args, **kwargs)
-
 SoluteWaterIntegrator.copy = new_instancemethod(_cmf_core.SoluteWaterIntegrator_copy, None, SoluteWaterIntegrator)
-SoluteWaterIntegrator.to_string = new_instancemethod(_cmf_core.SoluteWaterIntegrator_to_string, None, SoluteWaterIntegrator)
 _cmf_core.SoluteWaterIntegrator_swigregister(SoluteWaterIntegrator)
 # SoluteWaterIntegrator end
 

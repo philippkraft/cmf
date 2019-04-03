@@ -35,7 +35,9 @@ namespace cmf {
 			{
 				return new MultiIntegrator(*m_template,int(m_integrators.size()));
 			}
-			/// Resets the integrator
+            std::string to_string() const override;
+
+            /// Resets the integrator
 			virtual void reset()
 			{
 				for(integ_vector::iterator it = m_integrators.begin(); it != m_integrators.end(); ++it)

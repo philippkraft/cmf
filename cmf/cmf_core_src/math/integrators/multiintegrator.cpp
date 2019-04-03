@@ -42,3 +42,13 @@ int cmf::math::MultiIntegrator::integrate( cmf::math::Time MaxTime,cmf::math::Ti
 	m_t=MaxTime;
 	return 1;
 }
+
+std::string cmf::math::MultiIntegrator::to_string() const {
+    std::string res("MultiIntegrator(size=");
+    res += std::to_string(size());
+    for (auto& integ: m_integrators) {
+        res += "," + integ->to_string();
+    }
+    res += ")";
+    return res;
+}

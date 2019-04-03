@@ -25,44 +25,6 @@
 
 %attribute(cmf::math::StateVariable,real,state,get_state,set_state);
 
-%iterable_to_list(cmf::math::state_list,cmf::math::StateVariable::ptr)
-%rename(__getitem) cmf::math::state_list::operator[];
-
-%iterable_to_list(cmf::math::integratable_list,cmf::math::integratable::ptr)
-%rename(__getitem) cmf::math::integratable_list::operator[];
-
-%state_downcast(cmf::math::StateVariable::ptr cmf::math::state_list::operator[]);
-%state_downcast(cmf::math::StateVariable::ptr cmf::math::state_list::__getitem);
-
-%include "math/statevariable.h"
-
-%extend__repr__(cmf::math::StateVariable);
-
-%extend_pysequence(cmf::math::state_list);
-
-%extend cmf::math::integratable_list {
-     size_t __len__() const {
-         return $self->size();
-     }
-    %pythoncode {
-    def __iter__(self):
-        for i in range(len(self)):
-            yield self[i]
-
-    def __getitem__(self,index):
-        if isinstance(index,slice):
-            return [self.__getitem(i) for i in range(*index.indices(len(self)))]
-        else:
-            try:
-                it=iter(index)
-                return [self.__getitem(i) for i in it]
-            except:
-                return self.__getitem(index)
-    }
-}    
-
-%rename(__cmf_state_list_interface__) *::operator cmf::math::state_list;
-
 %typemap(in) const cmf::math::state_list& (cmf::math::state_list temp_list) {
    if (SWIG_ConvertPtr($input, (void **) &$1, $1_descriptor, SWIG_POINTER_EXCEPTION) == -1) {
       int res = PyObject_HasAttrString($input, "__cmf_state_list_interface__");
@@ -108,3 +70,41 @@
       }
    }
 }
+
+
+%rename(__getitem) cmf::math::state_list::operator[];
+
+%iterable_to_list(cmf::math::integratable_list,cmf::math::integratable::ptr)
+%rename(__getitem) cmf::math::integratable_list::operator[];
+
+%state_downcast(cmf::math::StateVariable::ptr cmf::math::state_list::operator[]);
+
+%include "math/statevariable.h"
+
+%extend__repr__(cmf::math::StateVariable);
+
+%extend_pysequence(cmf::math::state_list);
+
+%extend cmf::math::integratable_list {
+     size_t __len__() const {
+         return $self->size();
+     }
+    %pythoncode {
+    def __iter__(self):
+        for i in range(len(self)):
+            yield self[i]
+
+    def __getitem__(self,index):
+        if isinstance(index,slice):
+            return [self.__getitem(i) for i in range(*index.indices(len(self)))]
+        else:
+            try:
+                it=iter(index)
+                return [self.__getitem(i) for i in it]
+            except:
+                return self.__getitem(index)
+    }
+}    
+
+%rename(__cmf_state_list_interface__) *::operator cmf::math::state_list;
+

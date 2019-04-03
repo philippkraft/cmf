@@ -6283,7 +6283,7 @@ SWIGINTERN cmf::upslope::SoilLayer::ptr cmf_upslope_layer_list___get(cmf::upslop
 #include "math/integrators/multiintegrator.h"
 #include "math/integrators/WaterSoluteIntegrator.h"
 
-SWIGINTERN size_t cmf_math_Integrator___len__(cmf::math::Integrator *self){
+SWIGINTERN size_t cmf_math_Integrator___len__(cmf::math::Integrator const *self){
         return self->size();
     }
 #ifdef __cplusplus
@@ -26107,12 +26107,31 @@ SWIGINTERN PyObject *_wrap_new_state_list__SWIG_1(PyObject *SWIGUNUSEDPARM(self)
   if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
   {
     if (SWIG_ConvertPtr(swig_obj[0], (void **) &arg1, SWIGTYPE_p_cmf__math__state_list, SWIG_POINTER_EXCEPTION) == -1) {
-      int conversion_errors = 0;
-      int res = iterable_to_list<cmf::math::StateVariable::ptr, cmf::math::state_list>(swig_obj[0],SWIGTYPE_p_std__shared_ptrT_cmf__math__StateVariable_t, temp_list1, &conversion_errors);
-      if (SWIG_IsOK(res)) {
-        arg1 = &temp_list1;
-      } else {
-        SWIG_exception_fail(SWIG_TypeError,"Only iterables can be converted to cmf::math::state_list");
+      int res = PyObject_HasAttrString(swig_obj[0], "__cmf_state_list_interface__");
+      if (res) {
+        // Found __cmf_state_list_interface__
+        PyObject* list = PyObject_CallMethod(swig_obj[0], "__cmf_state_list_interface__", "");
+        if (list==NULL) {
+          SWIG_exception_fail(SWIG_TypeError,"state list interface fails");
+        }
+        res = SWIG_ConvertPtr(list, (void **) &arg1, SWIGTYPE_p_cmf__math__state_list, SWIG_POINTER_EXCEPTION);
+        if (!SWIG_IsOK(res)) {
+          SWIG_exception_fail(SWIG_TypeError,"state list interface fails to convert to state_list");
+        }
+      } 
+      else {
+        // Test iterable, no __cmf_state_list_interface__
+        int conversion_errors = 0;
+        int res = iterable_to_list<cmf::math::StateVariable::ptr, cmf::math::state_list>
+        (swig_obj[0],SWIGTYPE_p_std__shared_ptrT_cmf__math__StateVariable_t, temp_list1, &conversion_errors);
+        if (SWIG_IsOK(res)) {
+          if (temp_list1.size() > 0 || conversion_errors == 0)
+          arg1 = &temp_list1;
+          else
+          SWIG_exception_fail(SWIG_TypeError,"Input iterable contains no states");
+        } else {
+          SWIG_exception_fail(SWIG_TypeError,"Input not state list like");
+        }
       }
     }
   }
@@ -26159,7 +26178,24 @@ SWIGINTERN PyObject *_wrap_new_state_list(PyObject *self, PyObject *args) {
       int _v = 0;
       {
         {
-          _v = is_listtype_or_iterable(argv[0],SWIGTYPE_p_cmf__math__state_list);
+          // 1. Check if object is wrapped state_list
+          if (SWIG_IsOK(SWIG_ConvertPtr(argv[0], (void **) &_v, SWIGTYPE_p_cmf__math__state_list, 0))) {
+            _v = 1;
+          } // 2. Check if object has __cmf_state_list_interface__
+          else if (SWIG_IsOK(PyObject_HasAttrString(argv[0], "__cmf_state_list_interface__"))) {
+            _v = 2;
+          }
+          else // 3. Check if object is iterable
+          {
+            PyObject* iter = PyObject_GetIter(argv[0]);
+            if (iter != 0) {
+              Py_DECREF(iter);
+              _v = 3;
+            } 
+            else {
+              _v = 0;
+            }
+          }
         }
       }
       if (!_v) goto check_2;
@@ -26259,12 +26295,31 @@ SWIGINTERN PyObject *_wrap_state_list_extend(PyObject *SWIGUNUSEDPARM(self), PyO
   arg1 = reinterpret_cast< cmf::math::state_list * >(argp1);
   {
     if (SWIG_ConvertPtr(obj1, (void **) &arg2, SWIGTYPE_p_cmf__math__state_list, SWIG_POINTER_EXCEPTION) == -1) {
-      int conversion_errors = 0;
-      int res = iterable_to_list<cmf::math::StateVariable::ptr, cmf::math::state_list>(obj1,SWIGTYPE_p_std__shared_ptrT_cmf__math__StateVariable_t, temp_list2, &conversion_errors);
-      if (SWIG_IsOK(res)) {
-        arg2 = &temp_list2;
-      } else {
-        SWIG_exception_fail(SWIG_TypeError,"Only iterables can be converted to cmf::math::state_list");
+      int res = PyObject_HasAttrString(obj1, "__cmf_state_list_interface__");
+      if (res) {
+        // Found __cmf_state_list_interface__
+        PyObject* list = PyObject_CallMethod(obj1, "__cmf_state_list_interface__", "");
+        if (list==NULL) {
+          SWIG_exception_fail(SWIG_TypeError,"state list interface fails");
+        }
+        res = SWIG_ConvertPtr(list, (void **) &arg2, SWIGTYPE_p_cmf__math__state_list, SWIG_POINTER_EXCEPTION);
+        if (!SWIG_IsOK(res)) {
+          SWIG_exception_fail(SWIG_TypeError,"state list interface fails to convert to state_list");
+        }
+      } 
+      else {
+        // Test iterable, no __cmf_state_list_interface__
+        int conversion_errors = 0;
+        int res = iterable_to_list<cmf::math::StateVariable::ptr, cmf::math::state_list>
+        (obj1,SWIGTYPE_p_std__shared_ptrT_cmf__math__StateVariable_t, temp_list2, &conversion_errors);
+        if (SWIG_IsOK(res)) {
+          if (temp_list2.size() > 0 || conversion_errors == 0)
+          arg2 = &temp_list2;
+          else
+          SWIG_exception_fail(SWIG_TypeError,"Input iterable contains no states");
+        } else {
+          SWIG_exception_fail(SWIG_TypeError,"Input not state list like");
+        }
       }
     }
   }
@@ -26371,12 +26426,31 @@ SWIGINTERN PyObject *_wrap_state_list___iadd__(PyObject *SWIGUNUSEDPARM(self), P
   arg1 = reinterpret_cast< cmf::math::state_list * >(argp1);
   {
     if (SWIG_ConvertPtr(obj1, (void **) &arg2, SWIGTYPE_p_cmf__math__state_list, SWIG_POINTER_EXCEPTION) == -1) {
-      int conversion_errors = 0;
-      int res = iterable_to_list<cmf::math::StateVariable::ptr, cmf::math::state_list>(obj1,SWIGTYPE_p_std__shared_ptrT_cmf__math__StateVariable_t, temp_list2, &conversion_errors);
-      if (SWIG_IsOK(res)) {
-        arg2 = &temp_list2;
-      } else {
-        SWIG_exception_fail(SWIG_TypeError,"Only iterables can be converted to cmf::math::state_list");
+      int res = PyObject_HasAttrString(obj1, "__cmf_state_list_interface__");
+      if (res) {
+        // Found __cmf_state_list_interface__
+        PyObject* list = PyObject_CallMethod(obj1, "__cmf_state_list_interface__", "");
+        if (list==NULL) {
+          SWIG_exception_fail(SWIG_TypeError,"state list interface fails");
+        }
+        res = SWIG_ConvertPtr(list, (void **) &arg2, SWIGTYPE_p_cmf__math__state_list, SWIG_POINTER_EXCEPTION);
+        if (!SWIG_IsOK(res)) {
+          SWIG_exception_fail(SWIG_TypeError,"state list interface fails to convert to state_list");
+        }
+      } 
+      else {
+        // Test iterable, no __cmf_state_list_interface__
+        int conversion_errors = 0;
+        int res = iterable_to_list<cmf::math::StateVariable::ptr, cmf::math::state_list>
+        (obj1,SWIGTYPE_p_std__shared_ptrT_cmf__math__StateVariable_t, temp_list2, &conversion_errors);
+        if (SWIG_IsOK(res)) {
+          if (temp_list2.size() > 0 || conversion_errors == 0)
+          arg2 = &temp_list2;
+          else
+          SWIG_exception_fail(SWIG_TypeError,"Input iterable contains no states");
+        } else {
+          SWIG_exception_fail(SWIG_TypeError,"Input not state list like");
+        }
       }
     }
   }
@@ -26561,23 +26635,61 @@ SWIGINTERN PyObject *_wrap___add__(PyObject *SWIGUNUSEDPARM(self), PyObject *arg
   if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"OO:__add__",kwnames,&obj0,&obj1)) SWIG_fail;
   {
     if (SWIG_ConvertPtr(obj0, (void **) &arg1, SWIGTYPE_p_cmf__math__state_list, SWIG_POINTER_EXCEPTION) == -1) {
-      int conversion_errors = 0;
-      int res = iterable_to_list<cmf::math::StateVariable::ptr, cmf::math::state_list>(obj0,SWIGTYPE_p_std__shared_ptrT_cmf__math__StateVariable_t, temp_list1, &conversion_errors);
-      if (SWIG_IsOK(res)) {
-        arg1 = &temp_list1;
-      } else {
-        SWIG_exception_fail(SWIG_TypeError,"Only iterables can be converted to cmf::math::state_list");
+      int res = PyObject_HasAttrString(obj0, "__cmf_state_list_interface__");
+      if (res) {
+        // Found __cmf_state_list_interface__
+        PyObject* list = PyObject_CallMethod(obj0, "__cmf_state_list_interface__", "");
+        if (list==NULL) {
+          SWIG_exception_fail(SWIG_TypeError,"state list interface fails");
+        }
+        res = SWIG_ConvertPtr(list, (void **) &arg1, SWIGTYPE_p_cmf__math__state_list, SWIG_POINTER_EXCEPTION);
+        if (!SWIG_IsOK(res)) {
+          SWIG_exception_fail(SWIG_TypeError,"state list interface fails to convert to state_list");
+        }
+      } 
+      else {
+        // Test iterable, no __cmf_state_list_interface__
+        int conversion_errors = 0;
+        int res = iterable_to_list<cmf::math::StateVariable::ptr, cmf::math::state_list>
+        (obj0,SWIGTYPE_p_std__shared_ptrT_cmf__math__StateVariable_t, temp_list1, &conversion_errors);
+        if (SWIG_IsOK(res)) {
+          if (temp_list1.size() > 0 || conversion_errors == 0)
+          arg1 = &temp_list1;
+          else
+          SWIG_exception_fail(SWIG_TypeError,"Input iterable contains no states");
+        } else {
+          SWIG_exception_fail(SWIG_TypeError,"Input not state list like");
+        }
       }
     }
   }
   {
     if (SWIG_ConvertPtr(obj1, (void **) &arg2, SWIGTYPE_p_cmf__math__state_list, SWIG_POINTER_EXCEPTION) == -1) {
-      int conversion_errors = 0;
-      int res = iterable_to_list<cmf::math::StateVariable::ptr, cmf::math::state_list>(obj1,SWIGTYPE_p_std__shared_ptrT_cmf__math__StateVariable_t, temp_list2, &conversion_errors);
-      if (SWIG_IsOK(res)) {
-        arg2 = &temp_list2;
-      } else {
-        SWIG_exception_fail(SWIG_TypeError,"Only iterables can be converted to cmf::math::state_list");
+      int res = PyObject_HasAttrString(obj1, "__cmf_state_list_interface__");
+      if (res) {
+        // Found __cmf_state_list_interface__
+        PyObject* list = PyObject_CallMethod(obj1, "__cmf_state_list_interface__", "");
+        if (list==NULL) {
+          SWIG_exception_fail(SWIG_TypeError,"state list interface fails");
+        }
+        res = SWIG_ConvertPtr(list, (void **) &arg2, SWIGTYPE_p_cmf__math__state_list, SWIG_POINTER_EXCEPTION);
+        if (!SWIG_IsOK(res)) {
+          SWIG_exception_fail(SWIG_TypeError,"state list interface fails to convert to state_list");
+        }
+      } 
+      else {
+        // Test iterable, no __cmf_state_list_interface__
+        int conversion_errors = 0;
+        int res = iterable_to_list<cmf::math::StateVariable::ptr, cmf::math::state_list>
+        (obj1,SWIGTYPE_p_std__shared_ptrT_cmf__math__StateVariable_t, temp_list2, &conversion_errors);
+        if (SWIG_IsOK(res)) {
+          if (temp_list2.size() > 0 || conversion_errors == 0)
+          arg2 = &temp_list2;
+          else
+          SWIG_exception_fail(SWIG_TypeError,"Input iterable contains no states");
+        } else {
+          SWIG_exception_fail(SWIG_TypeError,"Input not state list like");
+        }
       }
     }
   }
@@ -82545,38 +82657,6 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Integrator_get_states(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  cmf::math::Integrator *arg1 = (cmf::math::Integrator *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject *swig_obj[1] ;
-  cmf::math::state_list *result = 0 ;
-  
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__math__Integrator, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Integrator_get_states" "', argument " "1"" of type '" "cmf::math::Integrator const *""'"); 
-  }
-  arg1 = reinterpret_cast< cmf::math::Integrator * >(argp1);
-  {
-    try {
-      result = (cmf::math::state_list *) &((cmf::math::Integrator const *)arg1)->get_states();
-    } catch (const std::out_of_range& e) {
-      SWIG_exception(SWIG_IndexError, e.what());    
-    } catch (const std::exception& e) {
-      SWIG_exception(SWIG_RuntimeError, e.what());
-    }
-    
-  }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_cmf__math__state_list, 0 |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
 SWIGINTERN PyObject *_wrap_Integrator_set_system(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   cmf::math::Integrator *arg1 = (cmf::math::Integrator *) 0 ;
@@ -82669,6 +82749,144 @@ SWIGINTERN PyObject *_wrap_Integrator_size(PyObject *SWIGUNUSEDPARM(self), PyObj
     
   }
   resultobj = SWIG_From_size_t(static_cast< size_t >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Integrator___getitem(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  cmf::math::Integrator *arg1 = (cmf::math::Integrator *) 0 ;
+  ptrdiff_t arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  ptrdiff_t val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char *  kwnames[] = {
+    (char *) "self",(char *) "index", NULL 
+  };
+  cmf::math::StateVariable::ptr result;
+  
+  if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"OO:Integrator___getitem",kwnames,&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_cmf__math__Integrator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Integrator___getitem" "', argument " "1"" of type '" "cmf::math::Integrator const *""'"); 
+  }
+  arg1 = reinterpret_cast< cmf::math::Integrator * >(argp1);
+  ecode2 = SWIG_AsVal_ptrdiff_t(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Integrator___getitem" "', argument " "2"" of type '" "ptrdiff_t""'");
+  } 
+  arg2 = static_cast< ptrdiff_t >(val2);
+  {
+    try {
+      result = ((cmf::math::Integrator const *)arg1)->operator [](arg2);
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+    
+  }
+  {
+    if (!(result)) resultobj = SWIG_NewPointerObj(0,SWIGTYPE_p_std__shared_ptrT_cmf__math__StateVariable_t, SWIG_POINTER_OWN);
+    int dcast = 0;
+    /*@SWIG:C:\Apps\swigwin-3.0.12\Lib\typemaps\swigmacros.swg,200,%formacro@*//*@SWIG:C:\Apps\swigwin-3.0.12\Lib\typemaps\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf\cmf_core_src\cmf_swiglib.i,74,%_node_down_cast@*/
+    if (dcast==0 && result) /*check for cmf::water::WaterStorage*/  {
+      std::shared_ptr<cmf::water::WaterStorage> output = std::dynamic_pointer_cast<cmf::water::WaterStorage>(result);
+      if (output) /*flux_node is cmf::water::WaterStorage */ {
+        dcast=1; 
+        resultobj = SWIG_NewPointerObj(new std::shared_ptr<cmf::water::WaterStorage>(output),SWIGTYPE_p_std__shared_ptrT_cmf__water__WaterStorage_t, SWIG_POINTER_OWN); 
+      }
+    }
+    /*@SWIG@*/
+    
+    /*@SWIG:C:\Apps\swigwin-3.0.12\Lib\typemaps\swigmacros.swg,192,%_formacro_1@*//*@SWIG:cmf\cmf_core_src\cmf_swiglib.i,74,%_node_down_cast@*/
+    if (dcast==0 && result) /*check for cmf::water::SoluteStorage*/  {
+      std::shared_ptr<cmf::water::SoluteStorage> output = std::dynamic_pointer_cast<cmf::water::SoluteStorage>(result);
+      if (output) /*flux_node is cmf::water::SoluteStorage */ {
+        dcast=1; 
+        resultobj = SWIG_NewPointerObj(new std::shared_ptr<cmf::water::SoluteStorage>(output),SWIGTYPE_p_std__shared_ptrT_cmf__water__SoluteStorage_t, SWIG_POINTER_OWN); 
+      }
+    }
+    /*@SWIG@*/
+    
+    
+    
+    /*@SWIG@*/
+    
+    /*@SWIG@*//*@SWIG@*/
+    if (!dcast) resultobj = SWIG_NewPointerObj(new std::shared_ptr<cmf::math::StateVariable>(result),
+      SWIGTYPE_p_std__shared_ptrT_cmf__math__StateVariable_t, SWIG_POINTER_OWN)
+    ;
+  }
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Integrator___cmf_state_list_interface__(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  cmf::math::Integrator *arg1 = (cmf::math::Integrator *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  cmf::math::state_list result;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__math__Integrator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Integrator___cmf_state_list_interface__" "', argument " "1"" of type '" "cmf::math::Integrator *""'"); 
+  }
+  arg1 = reinterpret_cast< cmf::math::Integrator * >(argp1);
+  {
+    try {
+      result = (arg1)->operator cmf::math::state_list();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+    
+  }
+  resultobj = SWIG_NewPointerObj((new cmf::math::state_list(static_cast< const cmf::math::state_list& >(result))), SWIGTYPE_p_cmf__math__state_list, SWIG_POINTER_OWN |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Integrator_to_string(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  cmf::math::Integrator *arg1 = (cmf::math::Integrator *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  std::string result;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__math__Integrator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Integrator_to_string" "', argument " "1"" of type '" "cmf::math::Integrator const *""'"); 
+  }
+  arg1 = reinterpret_cast< cmf::math::Integrator * >(argp1);
+  {
+    try {
+      result = ((cmf::math::Integrator const *)arg1)->to_string();
+    } catch (const std::out_of_range& e) {
+      SWIG_exception(SWIG_IndexError, e.what());    
+    } catch (const std::exception& e) {
+      SWIG_exception(SWIG_RuntimeError, e.what());
+    }
+    
+  }
+  resultobj = SWIG_From_std_string(static_cast< std::string >(result));
   return resultobj;
 fail:
   return NULL;
@@ -82967,12 +83185,12 @@ SWIGINTERN PyObject *_wrap_Integrator___len__(PyObject *SWIGUNUSEDPARM(self), Py
   swig_obj[0] = args;
   res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__math__Integrator, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Integrator___len__" "', argument " "1"" of type '" "cmf::math::Integrator *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Integrator___len__" "', argument " "1"" of type '" "cmf::math::Integrator const *""'"); 
   }
   arg1 = reinterpret_cast< cmf::math::Integrator * >(argp1);
   {
     try {
-      result = cmf_math_Integrator___len__(arg1);
+      result = cmf_math_Integrator___len__((cmf::math::Integrator const *)arg1);
     } catch (const std::out_of_range& e) {
       SWIG_exception(SWIG_IndexError, e.what());    
     } catch (const std::exception& e) {
@@ -86141,38 +86359,6 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_CVodeBase_to_string(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  cmf::math::CVodeBase *arg1 = (cmf::math::CVodeBase *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject *swig_obj[1] ;
-  std::string result;
-  
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__math__CVodeBase, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CVodeBase_to_string" "', argument " "1"" of type '" "cmf::math::CVodeBase const *""'"); 
-  }
-  arg1 = reinterpret_cast< cmf::math::CVodeBase * >(argp1);
-  {
-    try {
-      result = ((cmf::math::CVodeBase const *)arg1)->to_string();
-    } catch (const std::out_of_range& e) {
-      SWIG_exception(SWIG_IndexError, e.what());    
-    } catch (const std::exception& e) {
-      SWIG_exception(SWIG_RuntimeError, e.what());
-    }
-    
-  }
-  resultobj = SWIG_From_std_string(static_cast< std::string >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
 SWIGINTERN PyObject *_wrap_CVodeBase_get_error(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   cmf::math::CVodeBase *arg1 = (cmf::math::CVodeBase *) 0 ;
@@ -87585,38 +87771,6 @@ SWIGINTERN PyObject *_wrap_delete_SoluteWaterIntegrator(PyObject *SWIGUNUSEDPARM
     
   }
   resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_SoluteWaterIntegrator_to_string(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  cmf::math::SoluteWaterIntegrator *arg1 = (cmf::math::SoluteWaterIntegrator *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject *swig_obj[1] ;
-  std::string result;
-  
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_cmf__math__SoluteWaterIntegrator, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SoluteWaterIntegrator_to_string" "', argument " "1"" of type '" "cmf::math::SoluteWaterIntegrator const *""'"); 
-  }
-  arg1 = reinterpret_cast< cmf::math::SoluteWaterIntegrator * >(argp1);
-  {
-    try {
-      result = ((cmf::math::SoluteWaterIntegrator const *)arg1)->to_string();
-    } catch (const std::out_of_range& e) {
-      SWIG_exception(SWIG_IndexError, e.what());    
-    } catch (const std::exception& e) {
-      SWIG_exception(SWIG_RuntimeError, e.what());
-    }
-    
-  }
-  resultobj = SWIG_From_std_string(static_cast< std::string >(result));
   return resultobj;
 fail:
   return NULL;
@@ -89732,9 +89886,11 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"Integrator_reset_integratables_set", _wrap_Integrator_reset_integratables_set, METH_VARARGS, (char *)"Integrator_reset_integratables_set(Integrator self, bool reset_integratables)"},
 	 { (char *)"Integrator_reset_integratables_get", (PyCFunction)_wrap_Integrator_reset_integratables_get, METH_O, (char *)"Integrator_reset_integratables_get(Integrator self) -> bool"},
 	 { (char *)"delete_Integrator", (PyCFunction)_wrap_delete_Integrator, METH_O, (char *)"delete_Integrator(Integrator self)"},
-	 { (char *)"Integrator_get_states", (PyCFunction)_wrap_Integrator_get_states, METH_O, (char *)"Integrator_get_states(Integrator self) -> state_list"},
 	 { (char *)"Integrator_set_system", (PyCFunction) _wrap_Integrator_set_system, METH_VARARGS | METH_KEYWORDS, (char *)"Integrator_set_system(Integrator self, state_list states)"},
 	 { (char *)"Integrator_size", (PyCFunction)_wrap_Integrator_size, METH_O, (char *)"Integrator_size(Integrator self) -> size_t"},
+	 { (char *)"Integrator___getitem", (PyCFunction) _wrap_Integrator___getitem, METH_VARARGS | METH_KEYWORDS, (char *)"Integrator___getitem(Integrator self, ptrdiff_t index) -> cmf::math::StateVariable::ptr"},
+	 { (char *)"Integrator___cmf_state_list_interface__", (PyCFunction)_wrap_Integrator___cmf_state_list_interface__, METH_O, (char *)"Integrator___cmf_state_list_interface__(Integrator self) -> state_list"},
+	 { (char *)"Integrator_to_string", (PyCFunction)_wrap_Integrator_to_string, METH_O, (char *)"Integrator_to_string(Integrator self) -> std::string"},
 	 { (char *)"Integrator_get_t", (PyCFunction)_wrap_Integrator_get_t, METH_O, (char *)"Integrator_get_t(Integrator self) -> Time"},
 	 { (char *)"Integrator_set_t", (PyCFunction) _wrap_Integrator_set_t, METH_VARARGS | METH_KEYWORDS, (char *)"Integrator_set_t(Integrator self, Time val)"},
 	 { (char *)"Integrator_get_dt", (PyCFunction)_wrap_Integrator_get_dt, METH_O, (char *)"Integrator_get_dt(Integrator self) -> Time"},
@@ -89847,7 +90003,6 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"CVodeBase_error_msg_set", _wrap_CVodeBase_error_msg_set, METH_VARARGS, (char *)"CVodeBase_error_msg_set(CVodeBase self, std::string const & error_msg)"},
 	 { (char *)"CVodeBase_error_msg_get", (PyCFunction)_wrap_CVodeBase_error_msg_get, METH_O, (char *)"CVodeBase_error_msg_get(CVodeBase self) -> std::string const &"},
 	 { (char *)"CVodeBase_get_info", (PyCFunction)_wrap_CVodeBase_get_info, METH_O, (char *)"CVodeBase_get_info(CVodeBase self) -> CVodeInfo"},
-	 { (char *)"CVodeBase_to_string", (PyCFunction)_wrap_CVodeBase_to_string, METH_O, (char *)"CVodeBase_to_string(CVodeBase self) -> std::string"},
 	 { (char *)"CVodeBase_get_error", (PyCFunction)_wrap_CVodeBase_get_error, METH_O, (char *)"CVodeBase_get_error(CVodeBase self) -> cmf::math::num_array"},
 	 { (char *)"CVodeBase__get_jacobian", (PyCFunction)_wrap_CVodeBase__get_jacobian, METH_O, (char *)"CVodeBase__get_jacobian(CVodeBase self) -> cmf::math::num_array"},
 	 { (char *)"delete_CVodeBase", (PyCFunction)_wrap_delete_CVodeBase, METH_O, (char *)"delete_CVodeBase(CVodeBase self)"},
@@ -89893,7 +90048,6 @@ static PyMethodDef SwigMethods[] = {
 		"new_SoluteWaterIntegrator(solute_vector solutes, Integrator water_integrator, Integrator solute_integrator, state_list states) -> SoluteWaterIntegrator\n"
 		""},
 	 { (char *)"delete_SoluteWaterIntegrator", (PyCFunction)_wrap_delete_SoluteWaterIntegrator, METH_O, (char *)"delete_SoluteWaterIntegrator(SoluteWaterIntegrator self)"},
-	 { (char *)"SoluteWaterIntegrator_to_string", (PyCFunction)_wrap_SoluteWaterIntegrator_to_string, METH_O, (char *)"SoluteWaterIntegrator_to_string(SoluteWaterIntegrator self) -> std::string"},
 	 { (char *)"SoluteWaterIntegrator_swigregister", SoluteWaterIntegrator_swigregister, METH_VARARGS, NULL},
 	 { (char *)"SoluteWaterIntegrator_swiginit", SoluteWaterIntegrator_swiginit, METH_VARARGS, NULL},
 	 { NULL, NULL, 0, NULL }

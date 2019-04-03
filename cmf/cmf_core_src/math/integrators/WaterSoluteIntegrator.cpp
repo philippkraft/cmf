@@ -128,3 +128,4 @@ SoluteWaterIntegrator* SoluteWaterIntegrator::copy() const
 {
 	return new SoluteWaterIntegrator(solutes,*m_waterintegrator,**(m_soluteintegrators.begin()));
 }
+

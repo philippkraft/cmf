@@ -39,12 +39,8 @@ namespace cmf {
 		private:
 			ODEsystem m_system;
 		protected:
-			const ODEsystem& get_system() const {
-				return m_system;
-			}
-			ODEsystem& get_system() {
-				return m_system;
-			}
+			const ODEsystem& get_system() const;
+			ODEsystem& get_system();
 #endif
 
 		public:
@@ -58,11 +54,16 @@ namespace cmf {
 
 			virtual ~Integrator() = default;
 
-			const state_list& get_states() const;
-
 			void set_system(const state_list& states);
 
 			size_t size() const;
+
+			cmf::math::StateVariable::ptr operator[](ptrdiff_t index) const;
+
+            explicit operator cmf::math::state_list();
+
+            /// Desrcibes the iterator
+            virtual std::string to_string() const = 0;
 
 		protected:
 			///@name Accuracy parameters

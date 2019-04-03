@@ -114,7 +114,7 @@ int cmf::math::ImplicitEuler::integrate(cmf::math::Time MaxTime,cmf::math::Time 
 		// Remember the current state for convergence criterion
 		system.copy_states(compareStates);
 		// Get derivatives at t(n+1) * h[d]
-		system.copy_dxdt(this->get_t() + h,dxdt);
+		system.copy_dxdt(m_t + h,dxdt);
 		// Updates the state variables with the new states, according to the current order
 		Gear1newState(h.AsDays());
 

@@ -47,7 +47,8 @@ namespace cmf {
 			/// Add state variables from a cmf::math::state_list
 			int integrate(cmf::math::Time t_max,cmf::math::Time dt);
 			virtual cmf::math::SoluteWaterIntegrator* copy() const;
-		
+			std::string to_string() const override;
+
 			/// Creates a new SoluteWaterIntegrator
 			/// @param solutes Solutes of the project
 			/// @param water_integrator Template for the integrator of WaterStorage state variables
@@ -74,7 +75,6 @@ namespace cmf {
 			~SoluteWaterIntegrator() {
 				erase_integrators();
 			}
-			std::string to_string() const;
 
 		};
 	}

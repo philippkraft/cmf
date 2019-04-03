@@ -10,7 +10,8 @@
 #include "math/integrators/WaterSoluteIntegrator.h"
 %}
 
-%rename(__getitem__) cmf::math::Integrator::operator[];
+%rename(__getitem) cmf::math::Integrator::operator[];
+%state_downcast(cmf::math::StateVariable::ptr cmf::math::Integrator::operator[]);
 
 %include "math/integrators/integrator.h"
 %include "math/integrators/bdf2.h"
@@ -23,15 +24,11 @@
 
 
 %extend__repr__(cmf::math::Integrator);
-
+%extend_pysequence(cmf::math::Integrator);
 %extend cmf::math::Integrator { 
-    size_t __len__() {
-        return $self->size();
-    }
 %pythoncode {
     t = property(get_t,set_t,doc="Sets the actual time of the solution")
     dt = property(get_dt,doc="Get the current time step of the solver")
-    states = property(get_states, doc="gets the states of the solver")
     def __call__(self, t, dt=None, reset=False):
         """
         Advances the integration until `t`

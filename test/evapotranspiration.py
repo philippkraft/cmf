@@ -71,3 +71,6 @@ class TestET(unittest.TestCase):
         m = Model()
         cmf.timeseriesETpot(m.layer, m.et, cmf.timeseries.from_scalar(5))
         m(self)
+
+if __name__ == '__main__':
+    unittest.main(verbosity=100)

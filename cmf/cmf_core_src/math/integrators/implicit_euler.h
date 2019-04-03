@@ -68,6 +68,10 @@ namespace cmf {
 			ImplicitEuler(const Integrator&);
 
 			virtual Integrator * copy() const;
+			std::string to_string() const override {
+				return std::string("ImplicitEuler(size=") + std::to_string(size()) + std::string(")");
+			}
+
 			///Integrates the vector of state variables
 			/// @param MaxTime To stop the model (if running in a model framework) at time steps of value exchange e.g. full hours, the next value exchange time can be given
 			/// @param TimeStep Takes the proposed timestep, and changes it into the effictivly used timestep according to the local stiffness of the problem and MaxTime

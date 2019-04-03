@@ -42,6 +42,10 @@ namespace cmf {
 			ExplicitEuler_fixed(const Integrator& copy) : Integrator(copy) {}
 			virtual ~ExplicitEuler_fixed() {}
 			virtual Integrator * copy() const;
+			std::string to_string() const override {
+				return std::string("ExplicitEuler_fixed(size=") + std::to_string(size()) + std::string(")");
+			}
+
 
 			///Integrates the vector of state variables
 			/// @param MaxTime (ignored) To stop the model (if running in a model framework) at time steps of value exchange e.g. full hours, the next value exchange time can be given
@@ -74,6 +78,9 @@ namespace cmf {
 			HeunIntegrator(const Integrator& copy);
 			virtual ~HeunIntegrator() {}
 			virtual Integrator * copy() const;
+			std::string to_string() const override {
+				return std::string("HeunIntegrator(size=") + std::to_string(size()) + std::string(")");
+			}
 
 			///Integrates the vector of state variables
 			/// @param MaxTime (ignored) To stop the model (if running in a model framework) at time steps of value exchange e.g. full hours, the next value exchange time can be given

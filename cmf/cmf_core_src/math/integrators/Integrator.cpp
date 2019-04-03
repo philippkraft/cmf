@@ -37,10 +37,6 @@ cmf::math::Integrator::Integrator(const cmf::math::Integrator &other)
 
 }
 
-const cmf::math::state_list &cmf::math::Integrator::get_states() const {
-	return m_system.states;
-}
-
 void cmf::math::Integrator::set_system(const cmf::math::state_list &states) {
 	m_system = ODEsystem(states);
 	reset();
@@ -48,6 +44,22 @@ void cmf::math::Integrator::set_system(const cmf::math::state_list &states) {
 
 size_t cmf::math::Integrator::size() const {
 	return m_system.size();
+}
+
+cmf::math::StateVariable::ptr cmf::math::Integrator::operator[](ptrdiff_t index) const {
+    return m_system[index];
+}
+
+cmf::math::Integrator::operator cmf::math::state_list() {
+    return m_system.states;
+}
+
+cmf::math::ODEsystem &cmf::math::Integrator::get_system() {
+    return m_system;
+}
+
+const cmf::math::ODEsystem &cmf::math::Integrator::get_system() const {
+    return m_system;
 }
 
 

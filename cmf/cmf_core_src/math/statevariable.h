@@ -153,10 +153,8 @@ namespace cmf {
                 push_back(sv);
             }
             state_list& extend(const state_list& svl);
-            size_t size() const {
-                return state_vector::size();
-            }
-            operator bool() const {return size()>0;}
+            size_t size() const;
+            operator bool() const;
 
             state_list& operator +=(const state_list& food);
 
@@ -176,9 +174,6 @@ namespace cmf {
 
         };
         state_list operator +(const state_list& left, const state_list& right);
-
-
-        
     }
 }
 

@@ -84,5 +84,13 @@ state_vector::iterator state_list::begin() {return state_vector::begin();}
 
 state_list::state_list() : state_vector() {}
 
-state_list::state_list(const state_list &other) : state_vector(other) {}
+state_list::state_list(const state_list &other) {
+    insert(end(), other.begin(), other.end());
+}
+
+size_t state_list::size() const {
+    return state_vector::size();
+}
+
+state_list::operator bool() const {return size()>0;}
 
