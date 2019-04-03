@@ -58,12 +58,13 @@ debug = False
 
 class StaticLibrary:
 
-    def __init__(self, includepath, libpath, *libs, build_script=None):
+    def __init__(self, includepath, libpath, *libs, build_script=None, build_always=False):
         self.includepath = includepath
         self.libpath = libpath
         self.libs = libs
         self.to_lists = self.as_win32 if sys.platform == 'win32' else self.as_posix
         self.build_script_name = build_script
+        self.build_always = build_always
 
     def __str__(self):
         return self.libs[0] + ' - library'
@@ -136,7 +137,9 @@ static_libraries = [
     StaticLibrary('lib/include/suitesparse', 'lib/lib',
                   'klu', 'amd', 'btf', 'colamd', 'suitesparseconfig',
                   build_script='install_solvers'),
-    StaticLibrary('cmf/cmf_core_src', 'lib/lib', 'cmf_core', 'cmf_water', 'cmf_integrators', 'cmf_math'),
+    StaticLibrary('cmf/cmf_core_src', 'lib/lib',
+                  'cmf_core', 'cmf_water', 'cmf_integrators', 'cmf_math',
+                  build_script='install_cmf_core', build_always=True),
 ]
 
 
@@ -182,6 +185,14 @@ class CmfBuildExt(build_ext):
 
     def build_extensions(self):
         customize_compiler(self.compiler)
+
+        for sl in static_libraries:
+            if not sl.exists():
+                print(sl, 'get downloaded and installed')
+        for sl in static_libraries:
+            if sl.build_always or not sl.exists():
+                sl.build()
+
         try:
             self.compiler.compiler_so.remove("-Wstrict-prototypes")
         except (AttributeError, ValueError):
@@ -272,6 +283,7 @@ def is_source_file(fn, include_headerfiles=False):
     )
     return res
 
+
 def get_source_files(include_headerfiles=False, path='cmf/cmf_core_src'):
 
     result = []
@@ -291,8 +303,6 @@ def get_source_files(include_headerfiles=False, path='cmf/cmf_core_src'):
     return result
 
 
-
-
 def make_cmf_core():
     """
     Puts all information needed for the Python extension object together
@@ -300,12 +310,6 @@ def make_cmf_core():
      - include dirs
      - extra compiler flags
     """
-    for sl in static_libraries:
-        if not sl.exists():
-            print(sl, 'get downloaded and installed')
-    for sl in static_libraries:
-        if not sl.exists():
-            sl.build()
 
     # Include numpy
     include_dirs = [get_numpy_include()]

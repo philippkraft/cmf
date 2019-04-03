@@ -6,11 +6,10 @@ CMFDIR=$CWD/$(dirname $0)/..
 
 # Gets and makes the dependencies for the new sparese CVodeIntegrator
 export CFLAGS="-fPIC"
-KLU_LIB_DIR=$CMFDIR/lib
-SND_LIB_DIR=$CMFDIR/lib
+LIB_DIR=$CMFDIR/lib
 
 function klu {
-    KLU_SRC="$KLU_LIB_DIR/src/klu"
+    KLU_SRC="$LIB_DIR/src/klu"
     KLU_URL="https://github.com/philippkraft/suitesparse-metis-for-windows"
 
     mkdir -p $KLU_SRC
@@ -20,7 +19,7 @@ function klu {
     mkdir -p $KLU_SRC/build
 
     cd $KLU_SRC/build
-    cmake .. -DCMAKE_INSTALL_PREFIX=$KLU_LIB_DIR -DBUILD_METIS=OFF
+    cmake .. -DCMAKE_INSTALL_PREFIX=$LIB_DIR -DBUILD_METIS=OFF
 
     make $MAKE_OPTIONS
     make install
@@ -31,7 +30,7 @@ function klu {
 
 function sundials {
     # Get sundials
-    SND_SRC="$SND_LIB_DIR/src/sundials"
+    SND_SRC="$LIB_DIR/src/sundials"
     SND_URL="https://github.com/philippkraft/sundials"
     mkdir -p $SND_SRC
     echo "Create $SND_SRC directory"
@@ -44,11 +43,11 @@ function sundials {
         -DCMAKE_POSITION_INDEPENDENT_CODE:BOOL=true \
         -DBLAS_ENABLE=OFF \
         -DBUILD_SHARED_LIBS=OFF \
-        -DCMAKE_INSTALL_PREFIX=${SND_LIB_DIR} \
+        -DCMAKE_INSTALL_PREFIX=${LIB_DIR} \
         -DEXAMPLES_INSTALL=OFF \
         -DKLU_ENABLE=ON \
-        -DKLU_LIBRARY_DIR=${KLU_LIB_DIR}/lib \
-        -DKLU_INCLUDE_DIR=${KLU_LIB_DIR}/include/suitesparse \
+        -DKLU_LIBRARY_DIR=${LIB_DIR}/lib \
+        -DKLU_INCLUDE_DIR=${LIB_DIR}/include/suitesparse \
         -DOPENMP_ENABLE=ON \
         -DEXAMPLES_ENABLE_CXX=OFF -DEXAMPLES_ENABLE_C=OFF -DEXAMPLES_INSTALL=OFF \
         -DBUILD_ARKODE=OFF -DBUILD_CVODES=OFF -DBUILD_IDA=OFF -DBUILD_IDAS=OFF -DBUILD_KINSOL=OFF
@@ -61,8 +60,8 @@ function sundials {
 }
 
 echo "Calling from: " $CWD
-echo "Installing KLU into: " $KLU_LIB_DIR
-echo "Installing SUNDIALS into: " $SND_LIB_DIR
+echo "Installing KLU into: " $LIB_DIR
+echo "Installing SUNDIALS into: " $LIB_DIR
 
 if [[ "$1" == "help" ]]; then
     exit 0
