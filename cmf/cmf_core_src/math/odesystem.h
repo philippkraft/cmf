@@ -22,28 +22,14 @@ namespace cmf {
             state_list::const_iterator begin() const {return states.begin();}
             state_list::const_iterator end() const {return states.end();}
 #endif
-            int use_OpenMP;
-
-            void append(StateVariable::ptr sv) {
-                states.append(sv);
-            }
+            int use_OpenMP = -1;
 
             operator bool() const {return states.size()>0;}
 
-            ODEsystem& operator +=(const ODEsystem& food) {
-                states.extend(food.states);
-                return *this;
-            }
-            ODEsystem& operator +=(const cmf::math::state_list& food) {
-                states.extend(food);
-                return *this;
-            }
-
-            explicit ODEsystem(int use_OpenMP=0);
-
             ODEsystem(const cmf::math::ODEsystem& for_copy);
 
-            explicit ODEsystem(const cmf::math::state_list& for_copy, int use_OpenMP=0);
+            explicit ODEsystem() = default;
+            explicit ODEsystem(const cmf::math::state_list& for_copy, int use_OpenMP=-1);
             size_t size() const {return states.size();}
 
             ~ODEsystem() = default;

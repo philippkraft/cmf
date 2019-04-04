@@ -238,19 +238,25 @@ cmf::math::num_array cmf::math::ODEsystem::get_state_values() const {
     return result;
 }
 
-cmf::math::ODEsystem::ODEsystem(int _use_OpenMP)
-    : use_OpenMP(_use_OpenMP) 
-{
-
+int guess_OpenMp(int use_OpenMP, size_t system_size) {
+    if (cmf::math::get_parallel_threads() > 1) {
+        if (use_OpenMP >= 0) return use_OpenMP;
+        else if (system_size > 10000) return 2;
+        else return 1;
+    }
+    else return 0;
 }
+
+
 
 cmf::math::ODEsystem::ODEsystem(const cmf::math::ODEsystem &for_copy)
-        : states(for_copy.states), use_OpenMP(for_copy.use_OpenMP) {
+        : states(for_copy.states), use_OpenMP(guess_OpenMp(for_copy.use_OpenMP, for_copy.size())) {
 
 }
 
+
 cmf::math::ODEsystem::ODEsystem(const cmf::math::state_list &for_copy, int _use_OpenMP)
-        : states(for_copy), use_OpenMP(_use_OpenMP) {
+        : states(for_copy), use_OpenMP(guess_OpenMp(_use_OpenMP, for_copy.size())) {
 
 }
 

@@ -1,4 +1,3 @@
-
 #include <vector>
 #include <string>
 #include <algorithm>
@@ -14,14 +13,15 @@
 #include "../water/boundary_condition.h"
 
 #include "../math/integrators/cvode.h"
+#include "../math/integrators/implicit_euler.h"
+#include "../math/integrators/explicit_euler.h"
+#include "../math/integrators/bdf2.h"
+#include "../math/integrators/RKFintegrator.h"
 #include "../math/time.h"
 
 namespace cmf {
 	namespace apps {
-		enum SolverType
-		{
-			dense, banded, krylov, klu
-		};
+
 		class ReachWithSource {
 		public:
 			cmf::river::Reach::ptr r;
@@ -126,25 +126,37 @@ namespace cmf {
 
 
 
-		std::unique_ptr<cmf::math::CVodeBase> make_solver(cmf::project p, SolverType _solver) {
+		std::unique_ptr<cmf::math::Integrator> make_solver(cmf::project p, char _solver) {
 			using namespace cmf::math;
 			cmf::math::ODEsystem states(p);
-			typedef std::unique_ptr<CVodeBase> solver_type;
+			typedef std::unique_ptr<Integrator> solver_type;
 			switch (_solver) {
-			case dense:
+			case 'd':
 				return solver_type(new CVodeDense(p));
-			case banded:
+			case 'b':
 				return solver_type(new CVodeBanded(p));
-			case klu:
+			case 's':
 				return solver_type(new CVodeKLU(p));
-			case krylov:
+			case 'k':
 				return solver_type(new CVodeKrylov(p));
+			case 'a':
+				return solver_type (new CVodeAdams(p));
+			case 'r':
+				return solver_type (new RKFIntegrator(p));
+			case 'i':
+				return solver_type (new ImplicitEuler(p));
+			case '2':
+				return solver_type (new BDF2(p));
+			case 'e':
+				return solver_type (new ExplicitEuler_fixed(p));
+			case 'h':
+				return solver_type (new HeunIntegrator(p));
 			default:
 				throw std::runtime_error("Unknown solver type");
 			}
 
 		}
-		int run_reaches(int levels, SolverType _solver, int steps)
+		int run_reaches(int levels, char _solver, int steps)
 		{
 			std::cout << std::setprecision(8);
 			// std::cout << "Create network\n";
@@ -159,9 +171,9 @@ namespace cmf {
 			// std::cout << ".. network has " << network.size() << " reaches\n";
 			network.set_inflow(100);
 			network.set_initial_depth(0.1);
-			// std::cout << ".. total inflow = " << network.get_inflow() << " m�/day\n\n";
+			std::cout << ".. total inflow = " << network.get_inflow() << " m³/day\n\n";
 
-			// std::cout << "Creating solver\n";
+			std::cout << "Creating solver\n";
 
 			auto solver = make_solver(network.p, _solver);
 			/*
@@ -188,18 +200,18 @@ namespace cmf {
 			}
 			catch (const std::runtime_error& e) {
 				std::cout << solver->get_t().to_string() << "\n";
-				std::cout << solver->get_info().to_string();
+				/*std::cout << solver->get_info().to_string();*/
 				std::cerr << e.what() << "\n";
 				exit(1);
 			}
-			/*
+
 			std::cout 
-				<< "Q(o) =" << network.get_outflow(solver->get_t()) << " m�/day outflow\n"
+				<< "Q(o) =" << network.get_outflow(solver->get_t()) << " m³/day outflow\n"
 				<< "d(Rx)=" << network.root.r->get_depth() * 100 << " cm depth at root\n"
+					;/*
 				<< "T    =" << solver->get_t().to_string() << "\n\n"
 				<< solver->get_info().to_string() << "\n"
 				<< "Get Jacobian\n";
-			
 			cmf::math::num_array jac = solver->_get_jacobian();
 			size_t N = solver->size();
 			std::cout
@@ -211,11 +223,11 @@ namespace cmf {
 			auto tend = std::chrono::high_resolution_clock::now();
 			int64_t wall_clock_ms = std::chrono::duration_cast<std::chrono::milliseconds>(tend - tstart).count();
 
-			auto info = solver->get_info();
+			// auto info = solver->get_info();
 			std::cout 
-				<< solver->to_string() << "\t" 
+				<< solver->to_string() << "\t" /*
 				<< info.size << "\t" 
-				<< info.dxdt_method_calls << "\t" 
+				<< info.dxdt_method_calls << "\t" */
 				<< wall_clock_ms * 1e-3 << " s \n";
 			return 0;
 
@@ -224,10 +236,17 @@ namespace cmf {
 	}
 }
 
+
 int main(int argc, char* argv[])
 {
-	for (int i=1; i<=10; ++i)
-		cmf::apps::run_reaches(i, cmf::apps::dense, 0);
-	std::cin.ignore();
+	using namespace cmf::apps;
+	char solver_type = 's';
+	std::cout << argc;
+	if (argc > 1) {
+		solver_type = argv[1][0];
+	}
+	std::cout << solver_type << "\n";
+	for (int i=1; i<=9; ++i)
+		cmf::apps::run_reaches(i, solver_type, 0);
 
 }

@@ -11,13 +11,14 @@ LIB_DIR=$CMFDIR/lib
 function klu {
     KLU_SRC="$LIB_DIR/src/klu"
     KLU_URL="https://github.com/philippkraft/suitesparse-metis-for-windows"
+    if [ ! -d "$KLU_SRC" ]; then
+        mkdir -p $KLU_SRC
+        git clone $KLU_URL $KLU_SRC
+        rm -rf $KLU_SRC/.git
+    fi
 
-    mkdir -p $KLU_SRC
-    git clone $KLU_URL $KLU_SRC
-    rm -rf $KLU_SRC/.git
-
+    rm -rf $KLU_SRC/build
     mkdir -p $KLU_SRC/build
-
     cd $KLU_SRC/build
     cmake .. -DCMAKE_INSTALL_PREFIX=$LIB_DIR -DBUILD_METIS=OFF
 
@@ -32,10 +33,14 @@ function sundials {
     # Get sundials
     SND_SRC="$LIB_DIR/src/sundials"
     SND_URL="https://github.com/philippkraft/sundials"
-    mkdir -p $SND_SRC
-    echo "Create $SND_SRC directory"
-    git clone $SND_URL $SND_SRC
-    rm -rf $SND_SRC/.git
+
+    if [ ! -d "$KLU_SRC" ]; then
+        mkdir -p $SND_SRC
+        echo "Create $SND_SRC directory"
+        git clone $SND_URL $SND_SRC
+        rm -rf $SND_SRC/.git
+    fi
+
     mkdir -p $SND_SRC/build
     cd $SND_SRC/build
 

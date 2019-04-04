@@ -1,15 +1,24 @@
 cmake_minimum_required(VERSION 3.1)
 project(cmf)
 
+# Super necessary! Without this cannot link to cmf_wrap.cxx to create a shared object!
+set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 set(CMAKE_CXX_STANDARD 11)
-set(CMF_EXT_LIB_DIR ${CMAKE_CURRENT_SOURCE_DIR}/../../lib)
+
+set(CMF_DIR ${CMAKE_CURRENT_SOURCE_DIR}/../..)
+set(CMF_LIB_DIR ${CMF_DIR}/lib/lib)
+set(CMF_LIB64_DIR ${CMF_DIR}/lib/lib64)
+set(CMF_INCLUDE_EXT ${CMF_DIR}/lib/include)
+set(CMF_BIN_DIR ${CMF_DIR}/bin)
+
+
 include_directories(
-        ${CMF_EXT_LIB_DIR}/include
-        ${CMF_EXT_LIB_DIR}/include/suitesparse
+        ${CMF_INCLUDE_EXT}
+        ${CMF_INCLUDE_EXT}/suitesparse
         ${CMAKE_CURRENT_SOURCE_DIR}
         ${PYTHON_INCLUDE}
 )
-link_directories(${CMF_EXT_LIB_DIR}/lib ${CMF_EXT_LIB_DIR}/lib64)
+link_directories(${CMF_LIB_DIR} ${CMF_LIB64_DIR})
 
 get_property(dirs DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} PROPERTY INCLUDE_DIRECTORIES)
 foreach(dir ${dirs})
@@ -59,7 +68,7 @@ find_package(OpenMP)
 if(OpenMP_CXX_FOUND)
     target_link_libraries(cmf_math PUBLIC OpenMP::OpenMP_CXX)
     target_link_libraries(cmf_integrators PUBLIC OpenMP::OpenMP_CXX)
-    message("Found OpenMP")
+    message(STATUS "Found OpenMP")
 endif()
 
 # Use a lib prefix if MSVC compiler, because suitesparse does it that way
@@ -105,16 +114,18 @@ add_library(cmf_core STATIC
 
 target_link_libraries(cmf_core PUBLIC cmf_math cmf_water cmf_integrators)
 
-install(TARGETS cmf_core cmf_water cmf_integrators cmf_math ARCHIVE DESTINATION ${CMF_EXT_LIB_DIR}/lib)
+install(TARGETS cmf_core cmf_water cmf_integrators cmf_math ARCHIVE DESTINATION ${CMF_LIB_DIR})
 
-add_executable(nash_cascade apps/nash_cascade.cpp)
-target_link_libraries(nash_cascade cmf_core)
+file(GLOB files "${CMAKE_CURRENT_SOURCE_DIR}/apps/*.cpp")
 
-add_executable(subsurface apps/subsurface.cpp)
-target_link_libraries(subsurface cmf_core)
+foreach(filename ${files})
+    get_filename_component(target_name ${filename} NAME_WE)
+    message(STATUS "Build ${target_name} from ${filename}")
+    add_executable(${target_name} ${filename})
+    target_link_libraries(${target_name} cmf_core)
+    install(TARGETS ${target_name} RUNTIME DESTINATION ${CMF_BIN_DIR})
+endforeach()
 
-add_executable(reach_network apps/reach_network.cpp)
-target_link_libraries(reach_network cmf_core)
 
 # set(PYTHON_INCLUDE $ENV{PYTHON_INCLUDE})
 # add_library(_cmf_core SHARED cmf_wrap.cpp)

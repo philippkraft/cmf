@@ -340,7 +340,7 @@ def make_cmf_core():
 
     else:
 
-        compile_args = ['-Wno-comment', '-Wno-reorder', '-Wno-unused',
+        compile_args = ['-Wno-comment', '-Wno-reorder', '-Wno-unused','-fPIC',
                         '-Wno-sign-compare', '-std=c++11', '-march=native', '-mtune=native', '-pipe']
         if debug:
             compile_args += ['-ggdb']

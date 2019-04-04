@@ -11,8 +11,6 @@ __pycache__/
 *.vcxproj.user
 *.sdf
 .vs/
-tools/Debug*
-tools/Release*
 
 *.VC.opendb
 
@@ -26,6 +24,7 @@ eggs/
 .eggs/
 lib/
 lib64/
+bin/
 parts/
 sdist/
 var/

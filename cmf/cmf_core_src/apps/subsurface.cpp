@@ -130,7 +130,7 @@ int main(int argc, char* argv[]) {
 	using namespace	cmf::math;
 	using namespace cmf::water;
 
-	project p("");
+	project p("X Y");
 	solute X = p.solutes[0];
 	solute Y = p.solutes[1];
 	timeseries ts(0 * day, 20 * day, 0);
