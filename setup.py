@@ -133,12 +133,12 @@ class StaticLibrary:
 
 
 static_libraries = [
-    StaticLibrary('lib/include', 'lib/lib',
-                  'sundials_cvode', 'sundials_sunlinsolklu',
-                  build_script='install_solvers'),
     StaticLibrary('lib/include/suitesparse', 'lib/lib',
                   'klu', 'amd', 'btf', 'colamd', 'suitesparseconfig',
-                  build_script='install_solvers'),
+                  build_script='install_suitesparse'),
+    StaticLibrary('lib/include', 'lib/lib',
+                  'sundials_cvode', 'sundials_sunlinsolklu',
+                  build_script='install_sundials'),
     StaticLibrary('cmf/cmf_core_src', 'lib/lib',
                   'cmf_core', 'cmf_water', 'cmf_integrators', 'cmf_math',
                   build_script='install_cmf_core', build_always=True),

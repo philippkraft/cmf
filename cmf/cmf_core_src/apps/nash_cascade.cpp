@@ -16,10 +16,6 @@
 #include "../math/integrators/implicit_euler.h"
 #include "../math/integrators/cvode.h"
 
-
-
-
-
 namespace cmf {
 	
 	namespace apps {
@@ -82,7 +78,7 @@ namespace cmf {
 			std::cout
 				<< "Run for 24h\n" << "----------------\n"
 				<< res.end().to_string() << ":"
-				<< res[-1] << " m³/day"
+				<< res[-1] << " mÂ³/day"
 			;
 			return 0;
 		}
@@ -92,5 +88,5 @@ namespace cmf {
 
 int main(int argc, char* argv[]) {
 	cmf::apps::run_nash_cascade(10);
-	std::cin.get();
+    return 0;
 }
