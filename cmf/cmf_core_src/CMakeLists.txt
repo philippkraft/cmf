@@ -78,7 +78,8 @@ endif(MSVC)
 
 target_link_libraries(cmf_integrators PUBLIC
         sundials_cvode sundials_sunlinsolklu
-        ${SP_LIB_PREFIX}klu ${SP_LIB_PREFIX}amd ${SP_LIB_PREFIX}btf ${SP_LIB_PREFIX}colamd suitesparseconfig
+        ${SP_LIB_PREFIX}klu ${SP_LIB_PREFIX}amd
+        ${SP_LIB_PREFIX}btf ${SP_LIB_PREFIX}colamd suitesparseconfig
         )
 
 add_library(cmf_core STATIC
