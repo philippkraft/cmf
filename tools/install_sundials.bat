@@ -3,11 +3,11 @@ REM Gets and makes the dependencies for the new sparese CVodeIntegrator
 
 SET CMFDIR=%~dp0..
 echo CMFDIR= %CMFDIR%
-SET SND_LIB_DIR=%CMFDIR%\lib
+SET LIB_DIR=%CMFDIR%\lib
 
-ECHO Install sundials into %SND_LIB_DIR%
+ECHO Install sundials into %LIB_DIR%
 
-SET SND_SRC=%SND_LIB_DIR%\src\sundials
+SET SND_SRC=%LIB_DIR%\src\sundials
 SET SND_URL="https://github.com/philippkraft/sundials"
 
 RD /Q /S %SND_SRC%
@@ -22,9 +22,9 @@ REM For static libraries see: http://sundials.2283335.n4.nabble.com/Visual-Studi
 
 cmake .. -G "NMake Makefiles" ^
  -DBUILD_ARKODE=OFF -DBUILD_CVODES=OFF -DBUILD_IDA=OFF -DBUILD_IDAS=OFF -DBUILD_KINSOL=OFF ^
- -DBUILD_SHARED_LIBS=OFF -DCMAKE_INSTALL_PREFIX=%SND_LIB_DIR% ^
+ -DBUILD_SHARED_LIBS=OFF -DCMAKE_INSTALL_PREFIX=%LIB_DIR% ^
  -DEXAMPLES_INSTALL=OFF ^
- -DKLU_ENABLE=ON -DKLU_LIBRARY_DIR=%KLU_LIB_DIR%/lib -DKLU_INCLUDE_DIR=%KLU_LIB_DIR%/include/suitesparse ^
+ -DKLU_ENABLE=ON -DKLU_LIBRARY_DIR=%LIB_DIR%/lib -DKLU_INCLUDE_DIR=%LIB_DIR%/include/suitesparse ^
  -DEXAMPLES_ENABLE_CXX=OFF -DEXAMPLES_ENABLE_C=OFF -DEXAMPLES_INSTALL=OFF ^
  -DOPENMP_ENABLE=ON -DCMAKE_BUILD_TYPE=Release
 

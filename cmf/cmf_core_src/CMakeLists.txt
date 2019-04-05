@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.1)
-project(cmf)
+project(cmf_core)
 
 # Super necessary! Without this cannot link to cmf_wrap.cxx to create a shared object!
 set(CMAKE_POSITION_INDEPENDENT_CODE ON)

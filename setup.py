@@ -133,12 +133,14 @@ class StaticLibrary:
 
 
 static_libraries = [
+
     StaticLibrary('lib/include/suitesparse', 'lib/lib',
                   'klu', 'amd', 'btf', 'colamd', 'suitesparseconfig',
-                  build_script='install_suitesparse'),
+                  build_script='install_cmf_core'),
+
     StaticLibrary('lib/include', 'lib/lib',
                   'sundials_cvode', 'sundials_sunlinsolklu',
-                  build_script='install_sundials'),
+                  build_script='install_cmf_core'),
     StaticLibrary('cmf/cmf_core_src', 'lib/lib',
                   'cmf_core', 'cmf_water', 'cmf_integrators', 'cmf_math',
                   build_script='install_cmf_core', build_always=True),
@@ -316,9 +318,7 @@ def make_cmf_core():
     for sl in static_libraries:
         if not sl.exists():
             print(sl, 'get downloaded and installed')
-    for sl in static_libraries:
-        if sl.build_always or not sl.exists():
-            sl.build()
+
 
     # Platform specific stuff, alternative is to subclass build_ext command as in:
     # https://stackoverflow.com/a/5192738/3032680
