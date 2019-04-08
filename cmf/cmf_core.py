@@ -6077,9 +6077,21 @@ def rH_from_vpd(*args, **kwargs):
     """
     return _cmf_core.rH_from_vpd(*args, **kwargs)
 
+def watts_to_MJ(*args, **kwargs):
+    """watts_to_MJ(double Watts) -> double"""
+    return _cmf_core.watts_to_MJ(*args, **kwargs)
+
+def MJ_to_watts(*args, **kwargs):
+    """MJ_to_watts(double MJ) -> double"""
+    return _cmf_core.MJ_to_watts(*args, **kwargs)
+
+def extraterrestrial_radiation(*args, **kwargs):
+    """extraterrestrial_radiation(Time t, double longitude=8, double latitude=51, double time_zone=1, bool daily=False) -> double"""
+    return _cmf_core.extraterrestrial_radiation(*args, **kwargs)
+
 def global_radiation(*args, **kwargs):
     """
-    global_radiation(Time t, double height, double sunshine_fraction, double longitude=8, double latitude=51, double time_zone=1, bool daily=False) -> double
+    global_radiation(double Ra, double height, double sunshine_fraction) -> double
 
     double
     cmf::atmosphere::global_radiation(cmf::math::Time t, double height,
@@ -6183,6 +6195,7 @@ class Weather(object):
     e_s = _swig_property(_cmf_core.Weather_e_s_get, _cmf_core.Weather_e_s_set)
     sunshine = _swig_property(_cmf_core.Weather_sunshine_get, _cmf_core.Weather_sunshine_set)
     Rs = _swig_property(_cmf_core.Weather_Rs_get, _cmf_core.Weather_Rs_set)
+    Ra = _swig_property(_cmf_core.Weather_Ra_get, _cmf_core.Weather_Ra_set)
     daylength = _swig_property(_cmf_core.Weather_daylength_get, _cmf_core.Weather_daylength_set)
     instrument_height = _swig_property(_cmf_core.Weather_instrument_height_get, _cmf_core.Weather_instrument_height_set)
 
@@ -6228,7 +6241,7 @@ class Weather(object):
 
     def __init__(self, *args, **kwargs):
         """
-        __init__(cmf::atmosphere::Weather self, double T=15.0, double Tmax=17.0, double Tmin=13.0, double rH=70.0, double wind=2.0, double sunshine=0.5, double Rs=15, double daylength=12) -> Weather
+        __init__(cmf::atmosphere::Weather self, double T=15.0, double Tmax=17.0, double Tmin=13.0, double rH=70.0, double wind=2.0, double sunshine=0.5, double Rs=15, double Ra=30, double daylength=12) -> Weather
 
         Weather(double T=15.0, double Tmax=17.0, double Tmin=13.0, double
         rH=70.0, double wind=2.0, double sunshine=0.5, double Rs=15, double
@@ -7475,7 +7488,7 @@ class Cell(StateVariableOwner):
 
     def set_uptakestress(self, *args, **kwargs):
         """
-        set_uptakestress(Cell self, RootUptakeStessFunction stressfunction)
+        set_uptakestress(Cell self, RootUptakeStressFunction stressfunction)
 
         void
         set_uptakestress(const ET::RootUptakeStessFunction &stressfunction)
@@ -8936,6 +8949,16 @@ class SoilLayer(WaterStorage):
         return _cmf_core.SoilLayer_get_saturated_depth(self, *args, **kwargs)
 
 
+    def set_root_uptake_stress_function(self, *args, **kwargs):
+        """set_root_uptake_stress_function(SoilLayer self, RootUptakeStressFunction stressfunction)"""
+        return _cmf_core.SoilLayer_set_root_uptake_stress_function(self, *args, **kwargs)
+
+
+    def get_Tact(self, *args, **kwargs):
+        """get_Tact(SoilLayer self, double Tpot) -> double"""
+        return _cmf_core.SoilLayer_get_Tact(self, *args, **kwargs)
+
+
     def get_flow_crosssection(self, *args, **kwargs):
         """
         get_flow_crosssection(SoilLayer self, SoilLayer target, bool HorizontalLayers=False) -> real
@@ -9002,6 +9025,8 @@ SoilLayer.set_soil = new_instancemethod(_cmf_core.SoilLayer_set_soil, None, Soil
 SoilLayer.get_K = new_instancemethod(_cmf_core.SoilLayer_get_K, None, SoilLayer)
 SoilLayer.get_capacity = new_instancemethod(_cmf_core.SoilLayer_get_capacity, None, SoilLayer)
 SoilLayer.get_saturated_depth = new_instancemethod(_cmf_core.SoilLayer_get_saturated_depth, None, SoilLayer)
+SoilLayer.set_root_uptake_stress_function = new_instancemethod(_cmf_core.SoilLayer_set_root_uptake_stress_function, None, SoilLayer)
+SoilLayer.get_Tact = new_instancemethod(_cmf_core.SoilLayer_get_Tact, None, SoilLayer)
 SoilLayer.get_flow_crosssection = new_instancemethod(_cmf_core.SoilLayer_get_flow_crosssection, None, SoilLayer)
 _cmf_core.SoilLayer_swigregister(SoilLayer)
 # SoilLayer end
@@ -12497,18 +12522,8 @@ LayerBypass.K = new_instancemethod(_cmf_core.LayerBypass_K, None, LayerBypass)
 _cmf_core.LayerBypass_swigregister(LayerBypass)
 # LayerBypass end
 
-class RootUptakeStessFunction(object):
-    """
-
-
-    An abstract class to calculate the actual transpiration from potential
-    transpiration.
-
-    Implementations of WaterStressFunction are used by ET connections
-    derived from cmf::upslope::ET::stressedET
-
-    C++ includes: waterstress.h 
-    """
+class RootUptakeStressFunction(object):
+    """Proxy of C++ cmf::upslope::ET::RootUptakeStressFunction class."""
 
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
 
@@ -12517,53 +12532,27 @@ class RootUptakeStessFunction(object):
     __repr__ = _swig_repr
 
     def Tact(self, *args, **kwargs):
-        """
-        Tact(RootUptakeStessFunction self, stressedET connection, real Tpot) -> real
-
-        virtual real Tact(const stressedET *connection, real Tpot) const =0
-
-        Calculates the water stress for a layer.
-
-        Parameters:
-        -----------
-
-        connection:  The stressedET connection this stress function belongs to
-
-        Tpot:  Potential Transpiration in mm/day (for the full profile)
-
-        Actual flux from layer in m3/day 
-        """
-        return _cmf_core.RootUptakeStessFunction_Tact(self, *args, **kwargs)
+        """Tact(RootUptakeStressFunction self, SoilLayer soilLayer, real Tpot) -> real"""
+        return _cmf_core.RootUptakeStressFunction_Tact(self, *args, **kwargs)
 
 
     def copy(self, *args, **kwargs):
-        """
-        copy(RootUptakeStessFunction self) -> RootUptakeStessFunction
-
-        virtual cmf::upslope::ET::RootUptakeStessFunction* copy() const =0
-
-        Creates a new copy of this wetness. 
-        """
-        return _cmf_core.RootUptakeStessFunction_copy(self, *args, **kwargs)
+        """copy(RootUptakeStressFunction self) -> RootUptakeStressFunction"""
+        return _cmf_core.RootUptakeStressFunction_copy(self, *args, **kwargs)
 
 
     def to_string(self, *args, **kwargs):
-        """
-        to_string(RootUptakeStessFunction self) -> std::string
+        """to_string(RootUptakeStressFunction self) -> std::string"""
+        return _cmf_core.RootUptakeStressFunction_to_string(self, *args, **kwargs)
 
-        virtual
-        std::string to_string() const =0 
-        """
-        return _cmf_core.RootUptakeStessFunction_to_string(self, *args, **kwargs)
+    __swig_destroy__ = _cmf_core.delete_RootUptakeStressFunction
+RootUptakeStressFunction.Tact = new_instancemethod(_cmf_core.RootUptakeStressFunction_Tact, None, RootUptakeStressFunction)
+RootUptakeStressFunction.copy = new_instancemethod(_cmf_core.RootUptakeStressFunction_copy, None, RootUptakeStressFunction)
+RootUptakeStressFunction.to_string = new_instancemethod(_cmf_core.RootUptakeStressFunction_to_string, None, RootUptakeStressFunction)
+_cmf_core.RootUptakeStressFunction_swigregister(RootUptakeStressFunction)
+# RootUptakeStressFunction end
 
-    __swig_destroy__ = _cmf_core.delete_RootUptakeStessFunction
-RootUptakeStessFunction.Tact = new_instancemethod(_cmf_core.RootUptakeStessFunction_Tact, None, RootUptakeStessFunction)
-RootUptakeStessFunction.copy = new_instancemethod(_cmf_core.RootUptakeStessFunction_copy, None, RootUptakeStessFunction)
-RootUptakeStessFunction.to_string = new_instancemethod(_cmf_core.RootUptakeStessFunction_to_string, None, RootUptakeStessFunction)
-_cmf_core.RootUptakeStessFunction_swigregister(RootUptakeStessFunction)
-# RootUptakeStessFunction end
-
-class SuctionStress(RootUptakeStessFunction):
+class SuctionStress(RootUptakeStressFunction):
     """
 
 
@@ -12621,7 +12610,7 @@ SuctionStress.copy = new_instancemethod(_cmf_core.SuctionStress_copy, None, Suct
 _cmf_core.SuctionStress_swigregister(SuctionStress)
 # SuctionStress end
 
-class ContentStress(RootUptakeStessFunction):
+class ContentStress(RootUptakeStressFunction):
     """
 
 
@@ -12677,7 +12666,7 @@ ContentStress.copy = new_instancemethod(_cmf_core.ContentStress_copy, None, Cont
 _cmf_core.ContentStress_swigregister(ContentStress)
 # ContentStress end
 
-class VolumeStress(RootUptakeStessFunction):
+class VolumeStress(RootUptakeStressFunction):
     """
 
 
@@ -12783,18 +12772,6 @@ class stressedET(flux_connection):
         raise AttributeError("No constructor defined - class is abstract")
     __repr__ = _swig_repr
 
-    def set_stressfunction(self, *args, **kwargs):
-        """
-        set_stressfunction(stressedET self, RootUptakeStessFunction stressfunction)
-
-        void
-        set_stressfunction(const RootUptakeStessFunction &stressfunction)
-
-        Sets the stress function to limit water uptake. 
-        """
-        return _cmf_core.stressedET_set_stressfunction(self, *args, **kwargs)
-
-
     def get_layer(self, *args, **kwargs):
         """
         get_layer(stressedET self) -> cmf::upslope::SoilLayer::ptr
@@ -12814,7 +12791,6 @@ class stressedET(flux_connection):
         return _cmf_core.stressedET_ETpot(self, *args, **kwargs)
 
     __swig_destroy__ = _cmf_core.delete_stressedET
-stressedET.set_stressfunction = new_instancemethod(_cmf_core.stressedET_set_stressfunction, None, stressedET)
 stressedET.get_layer = new_instancemethod(_cmf_core.stressedET_get_layer, None, stressedET)
 stressedET.ETpot = new_instancemethod(_cmf_core.stressedET_ETpot, None, stressedET)
 _cmf_core.stressedET_swigregister(stressedET)
@@ -13093,13 +13069,12 @@ class HargreaveET(stressedET):
 
     def __init__(self, *args, **kwargs):
         """
-        __init__(cmf::upslope::ET::HargreaveET self, cmf::upslope::SoilLayer::ptr source, cmf::water::flux_node::ptr ET_target, real latitude=51.0) -> HargreaveET
+        __init__(cmf::upslope::ET::HargreaveET self, cmf::upslope::SoilLayer::ptr source, cmf::water::flux_node::ptr ET_target) -> HargreaveET
 
         HargreaveET(cmf::upslope::SoilLayer::ptr source,
         cmf::water::flux_node::ptr ET_target, real latitude=51.0) 
         """
         _cmf_core.HargreaveET_swiginit(self, _cmf_core.new_HargreaveET(*args, **kwargs))
-    lat = _swig_property(_cmf_core.HargreaveET_lat_get, _cmf_core.HargreaveET_lat_set)
 
     def use_for_cell(*args, **kwargs):
         """use_for_cell(Cell cell)"""
@@ -13109,6 +13084,51 @@ class HargreaveET(stressedET):
     __swig_destroy__ = _cmf_core.delete_HargreaveET
 _cmf_core.HargreaveET_swigregister(HargreaveET)
 # HargreaveET end
+
+
+
+
+
+class OudinET(stressedET):
+    """Proxy of C++ cmf::upslope::ET::OudinET class."""
+
+    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
+    __repr__ = _swig_repr
+
+    def __init__(self, *args, **kwargs):
+        """__init__(cmf::upslope::ET::OudinET self, cmf::upslope::SoilLayer::ptr source, cmf::water::flux_node::ptr ET_target, double K1=100, double K2=5) -> OudinET"""
+        _cmf_core.OudinET_swiginit(self, _cmf_core.new_OudinET(*args, **kwargs))
+
+    def JensenHaise1963(*args, **kwargs):
+        """JensenHaise1963(cmf::upslope::SoilLayer::ptr source, cmf::water::flux_node::ptr ET_target) -> OudinET"""
+        return _cmf_core.OudinET_JensenHaise1963(*args, **kwargs)
+
+    JensenHaise1963 = staticmethod(JensenHaise1963)
+
+    def McGuinessBordne1972(*args, **kwargs):
+        """McGuinessBordne1972(cmf::upslope::SoilLayer::ptr source, cmf::water::flux_node::ptr ET_target) -> OudinET"""
+        return _cmf_core.OudinET_McGuinessBordne1972(*args, **kwargs)
+
+    McGuinessBordne1972 = staticmethod(McGuinessBordne1972)
+    K1 = _swig_property(_cmf_core.OudinET_K1_get, _cmf_core.OudinET_K1_set)
+    K2 = _swig_property(_cmf_core.OudinET_K2_get, _cmf_core.OudinET_K2_set)
+
+    def use_for_cell(*args, **kwargs):
+        """use_for_cell(Cell cell)"""
+        return _cmf_core.OudinET_use_for_cell(*args, **kwargs)
+
+    use_for_cell = staticmethod(use_for_cell)
+    __swig_destroy__ = _cmf_core.delete_OudinET
+_cmf_core.OudinET_swigregister(OudinET)
+# OudinET end
+
+
+
+
+
+
+
+
 
 
 

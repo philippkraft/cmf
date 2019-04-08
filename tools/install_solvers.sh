@@ -36,7 +36,7 @@ function sundials {
     SND_SRC="$SND_LIB_DIR/src/sundials"
     SND_URL="https://github.com/philippkraft/sundials"
 
-    if [ ! -d "$KLU_SRC" ]; then
+    if [ ! -d "$SND_SRC" ]; then
         mkdir -p $SND_SRC
         echo "Create $SND_SRC directory"
         git clone $SND_URL $SND_SRC
