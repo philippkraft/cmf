@@ -25,7 +25,7 @@ foreach(dir ${dirs})
     message(STATUS "dir='${dir}'")
 endforeach()
 
-add_library(cmf_math STATIC
+add_library(cmf_math OBJECT
         math/num_array.cpp
         math/real.cpp
         math/root_finding.cpp
@@ -38,7 +38,7 @@ add_library(cmf_math STATIC
         math/sparse_struct.cpp
         )
 
-add_library(cmf_water STATIC
+add_library(cmf_water OBJECT
         water/adsorption.cpp
         water/boundary_condition.cpp
         water/collections.cpp
@@ -51,9 +51,9 @@ add_library(cmf_water STATIC
         water/WaterStorage.cpp
         )
 
-target_link_libraries(cmf_water PUBLIC cmf_math)
+# target_link_libraries(cmf_water PUBLIC cmf_math)
 
-add_library(cmf_integrators STATIC
+add_library(cmf_integrators OBJECT
         math/integrators/explicit_euler.cpp
         math/integrators/bdf2.cpp
         math/integrators/cvode.cpp
@@ -63,35 +63,20 @@ add_library(cmf_integrators STATIC
         math/integrators/multiintegrator.cpp
         )
 
-target_link_libraries(cmf_integrators PUBLIC cmf_math)
-find_package(OpenMP)
-if(OpenMP_CXX_FOUND)
-    target_link_libraries(cmf_math PUBLIC OpenMP::OpenMP_CXX)
-    target_link_libraries(cmf_integrators PUBLIC OpenMP::OpenMP_CXX)
-    message(STATUS "Found OpenMP")
-endif()
 
-# Use a lib prefix if MSVC compiler, because suitesparse does it that way
-if(MSVC)
-    set(SP_LIB_PREFIX "lib")  # Libs are: "libXXX"
-endif(MSVC)
-
-target_link_libraries(cmf_integrators PUBLIC
-        sundials_cvode sundials_sunlinsolklu
-        ${SP_LIB_PREFIX}klu ${SP_LIB_PREFIX}amd
-        ${SP_LIB_PREFIX}btf ${SP_LIB_PREFIX}colamd suitesparseconfig
-        )
-
-add_library(cmf_core STATIC
-        math/integrators/WaterSoluteIntegrator.cpp
+add_library(cmf_atmo OBJECT
         atmosphere/meteorology.cpp
         atmosphere/precipitation.cpp
         atmosphere/Weather.cpp
+)
+add_library(cmf_river OBJECT
         reach/cross_section_reach.cpp
         reach/ManningConnection.cpp
         reach/OpenWaterStorage.cpp
         reach/Reach.cpp
         reach/ReachType.cpp
+)
+add_library(cmf_upslope OBJECT
         upslope/connections/AtmosphericFluxes.cpp
         upslope/connections/infiltration.cpp
         upslope/connections/Percolation.cpp
@@ -110,12 +95,40 @@ add_library(cmf_core STATIC
         upslope/SoilLayer.cpp
         upslope/surfacewater.cpp
         upslope/Topology.cpp
+)
+
+
+add_library(cmf_core STATIC
+        $<TARGET_OBJECTS:cmf_math>
+        $<TARGET_OBJECTS:cmf_water>
+        $<TARGET_OBJECTS:cmf_integrators>
+        $<TARGET_OBJECTS:cmf_atmo>
+        $<TARGET_OBJECTS:cmf_river>
+        $<TARGET_OBJECTS:cmf_upslope>
+        math/integrators/WaterSoluteIntegrator.cpp
         project.cpp
         )
+# target_link_libraries(cmf_integrators PUBLIC cmf_math)
+find_package(OpenMP)
+if(OpenMP_CXX_FOUND)
+    target_link_libraries(cmf_core PUBLIC OpenMP::OpenMP_CXX)
+    message(STATUS "Found OpenMP")
+endif()
 
-target_link_libraries(cmf_core PUBLIC cmf_math cmf_water cmf_integrators)
+# Use a lib prefix if MSVC compiler, because suitesparse does it that way
+if(MSVC)
+    set(SP_LIB_PREFIX "lib")  # Libs are: "libXXX"
+endif(MSVC)
 
-install(TARGETS cmf_core cmf_water cmf_integrators cmf_math ARCHIVE DESTINATION ${CMF_LIB_DIR})
+target_link_libraries(cmf_core PUBLIC
+        sundials_cvode sundials_sunlinsolklu
+        ${SP_LIB_PREFIX}klu ${SP_LIB_PREFIX}amd
+        ${SP_LIB_PREFIX}btf ${SP_LIB_PREFIX}colamd suitesparseconfig
+        )
+
+install(TARGETS cmf_core
+        ARCHIVE DESTINATION ${CMF_LIB_DIR}
+        )
 
 file(GLOB files "${CMAKE_CURRENT_SOURCE_DIR}/apps/*.cpp")
 

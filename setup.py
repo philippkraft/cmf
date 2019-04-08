@@ -78,7 +78,7 @@ class StaticLibrary:
                 checked_libs.append('lib' + lib)
             else:
                 raise FileNotFoundError("Can't find static library " + os.path.join(self.libpath, lib))
-        return [self.libpath], checked_libs, []
+        return [self.libpath], reversed(checked_libs), []
 
     def as_posix(self):
         # Move static libraries to extra_objects (with path) to ensure static linking in posix systems
@@ -136,14 +136,14 @@ static_libraries = [
 
     StaticLibrary('lib/include/suitesparse', 'lib/lib',
                   'klu', 'amd', 'btf', 'colamd', 'suitesparseconfig',
-                  build_script='install_cmf_core'),
+                  build_script='install_solvers'),
 
     StaticLibrary('lib/include', 'lib/lib',
                   'sundials_cvode', 'sundials_sunlinsolklu',
-                  build_script='install_cmf_core'),
+                  build_script='install_solvers'),
     StaticLibrary('cmf/cmf_core_src', 'lib/lib',
-                  'cmf_core', 'cmf_water', 'cmf_integrators', 'cmf_math',
-                  build_script='install_cmf_core', build_always=True),
+                  'cmf_core',
+                  build_script='install_cmf_core'),
 ]
 
 
@@ -319,6 +319,10 @@ def make_cmf_core():
         if not sl.exists():
             print(sl, 'get downloaded and installed')
 
+    for sl in static_libraries:
+        if not sl.exists():
+            sl.build()
+
 
     # Platform specific stuff, alternative is to subclass build_ext command as in:
     # https://stackoverflow.com/a/5192738/3032680
@@ -362,6 +366,9 @@ def make_cmf_core():
 
     # Get the source files
     cmf_files = [] #  get_source_files()
+    if not any('cmf_core' in sl.libs for sl in static_libraries):
+        print('search source files')
+        cmf_files += get_source_files()
 
     if swig:
         # Adding cmf.i when build_ext should perform the swig call
@@ -373,7 +380,7 @@ def make_cmf_core():
         cmf_files.append("cmf/cmf_core_src/cmf_wrap.cpp")
         swig_opts = []
 
-    for sl in static_libraries:
+    for sl in reversed(static_libraries):
         sl.extend(include_dirs, library_dirs, libraries, extra_objects)
 
     print('libraries:', ' '.join(libraries))

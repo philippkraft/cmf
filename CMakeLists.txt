@@ -9,33 +9,8 @@ set(HOME ${CMAKE_CURRENT_SOURCE_DIR})
 
 set(LIB_DIR ${HOME}/lib)
 
-include(ExternalProject)
+set(CMF_CORE_DIR ${HOME}/build/cmf)
 
-set(KLU_DIR ${HOME}/build/suitesparse)
-set(KLU_URL "https://github.com/philippkraft/suitesparse-metis-for-windows")
-
-ExternalProject_Add(SuiteSparseProject
-    GIT_REPOSITORY ${KLU_URL}
-    CMAKE_ARGS -DCMAKE_INSTALL_PREFIX=${LIB_DIR} -DBUILD_METIS=OFF -DCMAKE_BUILD_TYPE=RELEASE
-    PREFIX ${KLU_DIR}
-)
-
-set(SND_DIR ${HOME}/build/sundials)
-set(SND_URL "https://github.com/philippkraft/sundials")
-
-ExternalProject_Add(sundials
-    GIT_REPOSITORY ${SND_URL}
-    CMAKE_ARGS -DCMAKE_INSTALL_PREFIX=${LIB_DIR}
-               -DBUILD_ARKODE=OFF -DBUILD_CVODES=OFF -DBUILD_IDA=OFF -DBUILD_IDAS=OFF -DBUILD_KINSOL=OFF
-               -DBUILD_SHARED_LIBS=OFF -DCMAKE_INSTALL_PREFIX=${LIB_DIR}
-               -DEXAMPLES_INSTALL=OFF -DEXAMPLES_ENABLE_CXX=OFF -DEXAMPLES_ENABLE_C=OFF -DEXAMPLES_INSTALL=OFF
-               -DKLU_ENABLE=ON -DKLU_LIBRARY_DIR=${LIB_DIR}/lib -DKLU_INCLUDE_DIR=${LIB_DIR}/include/suitesparse
-               -DOPENMP_ENABLE=ON -DCMAKE_BUILD_TYPE=Release
-
-    PREFIX ${SND_DIR}
-)
-
-set(CMF_DIR ${HOME}/build/cmf)
-add_subdirectory(cmf/cmf_core_src ${CMF_DIR})
+add_subdirectory(cmf/cmf_core_src ${CMF_CORE_DIR})
 
 
