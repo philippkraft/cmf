@@ -3,7 +3,7 @@
 
 void cmf::water::set_flux( flux_node::ptr source,flux_node::ptr target,real flux_value)
 {
-	external_control_connection* con = dynamic_cast<external_control_connection*>(source->connection_to(*target));
+	ExternallyControlledFlux* con = dynamic_cast<ExternallyControlledFlux*>(source->connection_to(*target));
 	if (con) {
 		con->flux = (con->left_node() == source ? flux_value  : -flux_value);
 	} else {
@@ -16,7 +16,7 @@ void cmf::water::set_flux( flux_node::ptr source,flux_node::ptr target,real flux
 
 bool cmf::water::can_set_flux( flux_node::ptr source,flux_node::ptr target )
 {
-	external_control_connection* con = dynamic_cast<external_control_connection*>(source->connection_to(*target));
+	ExternallyControlledFlux* con = dynamic_cast<ExternallyControlledFlux*>(source->connection_to(*target));
 	return con != 0;
 }
 

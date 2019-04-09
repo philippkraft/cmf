@@ -36,7 +36,7 @@ namespace cmf {
 		/// @note It is easy to create negative volumes in water storages with this connection, 
 		/// which can be hazard to the solver, since most connections rely on a positive volume in a storage.
 		/// Handle with care!
-		class external_control_connection : public flux_connection {
+		class ExternallyControlledFlux : public flux_connection {
 		protected:
 			real calc_q(cmf::math::Time t)	{
 				return flux;
@@ -44,7 +44,7 @@ namespace cmf {
 			void NewNodes() {}
 		public:
 			real flux;
-			external_control_connection(flux_node::ptr source,flux_node::ptr target,real flux_value=0) 
+			ExternallyControlledFlux(flux_node::ptr source,flux_node::ptr target,real flux_value=0)
 				: flux_connection(source,target,"external controlled connection"),flux(flux_value)			
 			{
 				RecalcAlways=true;
