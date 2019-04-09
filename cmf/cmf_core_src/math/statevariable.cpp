@@ -75,7 +75,7 @@ state_list &state_list::operator+=(const state_list &food) {
 	return *this;
 }
 
-inline state_list &state_list::extend(const state_list &svl) {
+state_list &state_list::extend(const state_list &svl) {
 	insert(end(), svl.begin(), svl.end());
 	return *this;
 }

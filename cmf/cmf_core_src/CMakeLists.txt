@@ -25,7 +25,92 @@ foreach(dir ${dirs})
     message(STATUS "dir='${dir}'")
 endforeach()
 
-add_library(cmf_math OBJECT
+
+# add_library(cmf_math OBJECT
+        # math/num_array.cpp
+        # math/real.cpp
+        # math/root_finding.cpp
+        # math/spline.cpp
+        # math/statevariable.cpp
+        # math/time.cpp
+        # math/timeseries.cpp
+        # math/geometry.cpp
+        # math/odesystem.cpp
+        # math/sparse_struct.cpp
+        # )
+
+# add_library(cmf_water OBJECT
+        # water/adsorption.cpp
+        # water/boundary_condition.cpp
+        # water/collections.cpp
+        # water/flux_connection.cpp
+        # water/flux_node.cpp
+        # water/simple_connections.cpp
+        # water/Solute.cpp
+        # water/SoluteStorage.cpp
+        # water/system_bridge.cpp
+        # water/WaterStorage.cpp
+        # )
+
+# add_library(cmf_integrators OBJECT
+        # math/integrators/explicit_euler.cpp
+        # math/integrators/bdf2.cpp
+        # math/integrators/cvode.cpp
+        # math/integrators/implicit_euler.cpp
+        # math/integrators/Integrator.cpp
+        # math/integrators/RKFintegrator.cpp
+        # math/integrators/multiintegrator.cpp
+        # )
+
+
+# add_library(cmf_atmo OBJECT
+        # atmosphere/meteorology.cpp
+        # atmosphere/precipitation.cpp
+        # atmosphere/Weather.cpp
+# )
+# add_library(cmf_river OBJECT
+        # reach/cross_section_reach.cpp
+        # reach/ManningConnection.cpp
+        # reach/OpenWaterStorage.cpp
+        # reach/Reach.cpp
+        # reach/ReachType.cpp
+# )
+# add_library(cmf_upslope OBJECT
+        # upslope/connections/AtmosphericFluxes.cpp
+        # upslope/connections/infiltration.cpp
+        # upslope/connections/Percolation.cpp
+        # upslope/connections/subsurfacefluxes.cpp
+        # upslope/connections/surfacefluxes.cpp
+        # upslope/Soil/RetentionCurve.cpp
+        # upslope/vegetation/ET.cpp
+        # upslope/vegetation/ShuttleworthWallace.cpp
+        # upslope/vegetation/waterstress.cpp
+        # upslope/algorithm.cpp
+        # upslope/cell.cpp
+        # upslope/cell_vector.cpp
+        # upslope/groundwater.cpp
+        # upslope/layer_list.cpp
+        # upslope/macropore.cpp
+        # upslope/SoilLayer.cpp
+        # upslope/surfacewater.cpp
+        # upslope/Topology.cpp
+# )
+
+
+# add_library(cmf_core STATIC
+        # $<TARGET_OBJECTS:cmf_math>
+        # $<TARGET_OBJECTS:cmf_water>
+        # $<TARGET_OBJECTS:cmf_integrators>
+        # $<TARGET_OBJECTS:cmf_atmo>
+        # $<TARGET_OBJECTS:cmf_river>
+        # $<TARGET_OBJECTS:cmf_upslope>
+        # math/integrators/WaterSoluteIntegrator.cpp
+        # project.cpp
+        # )
+# target_link_libraries(cmf_integrators PUBLIC cmf_math)
+
+
+add_library(cmf_core STATIC
         math/num_array.cpp
         math/real.cpp
         math/root_finding.cpp
@@ -36,9 +121,6 @@ add_library(cmf_math OBJECT
         math/geometry.cpp
         math/odesystem.cpp
         math/sparse_struct.cpp
-        )
-
-add_library(cmf_water OBJECT
         water/adsorption.cpp
         water/boundary_condition.cpp
         water/collections.cpp
@@ -49,11 +131,6 @@ add_library(cmf_water OBJECT
         water/SoluteStorage.cpp
         water/system_bridge.cpp
         water/WaterStorage.cpp
-        )
-
-# target_link_libraries(cmf_water PUBLIC cmf_math)
-
-add_library(cmf_integrators OBJECT
         math/integrators/explicit_euler.cpp
         math/integrators/bdf2.cpp
         math/integrators/cvode.cpp
@@ -61,22 +138,14 @@ add_library(cmf_integrators OBJECT
         math/integrators/Integrator.cpp
         math/integrators/RKFintegrator.cpp
         math/integrators/multiintegrator.cpp
-        )
-
-
-add_library(cmf_atmo OBJECT
         atmosphere/meteorology.cpp
         atmosphere/precipitation.cpp
         atmosphere/Weather.cpp
-)
-add_library(cmf_river OBJECT
         reach/cross_section_reach.cpp
         reach/ManningConnection.cpp
         reach/OpenWaterStorage.cpp
         reach/Reach.cpp
         reach/ReachType.cpp
-)
-add_library(cmf_upslope OBJECT
         upslope/connections/AtmosphericFluxes.cpp
         upslope/connections/infiltration.cpp
         upslope/connections/Percolation.cpp
@@ -95,20 +164,10 @@ add_library(cmf_upslope OBJECT
         upslope/SoilLayer.cpp
         upslope/surfacewater.cpp
         upslope/Topology.cpp
-)
-
-
-add_library(cmf_core STATIC
-        $<TARGET_OBJECTS:cmf_math>
-        $<TARGET_OBJECTS:cmf_water>
-        $<TARGET_OBJECTS:cmf_integrators>
-        $<TARGET_OBJECTS:cmf_atmo>
-        $<TARGET_OBJECTS:cmf_river>
-        $<TARGET_OBJECTS:cmf_upslope>
         math/integrators/WaterSoluteIntegrator.cpp
         project.cpp
         )
-# target_link_libraries(cmf_integrators PUBLIC cmf_math)
+
 find_package(OpenMP)
 if(OpenMP_CXX_FOUND)
     target_link_libraries(cmf_core PUBLIC OpenMP::OpenMP_CXX)
