@@ -157,7 +157,7 @@ static std::string convert_xyz_to_point(PyObject* input,cmf::geometry::point& p)
 %include "math/geometry.h"
 
 %extend cmf::geometry::point {
-    inline int __len__() const { return 3; }
+     int __len__() const { return 3; }
     cmf::geometry::point __rmul__(double val)    {
         return val*(*$self);
     }

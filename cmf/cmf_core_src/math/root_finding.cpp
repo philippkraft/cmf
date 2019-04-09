@@ -17,7 +17,7 @@ bool use_bisection(bool last_time_bisection, double a, double b, double c, doubl
 
 }
 
-inline double check_finite(double x, double y, int pos) {
+ double check_finite(double x, double y, int pos) {
 	if (!std::isfinite(x)) {
 		throw cmf::math::root_finding::not_finite_error("Root finding: Using not a finite x value after " + std::to_string(pos) + " iterations");
 	} 

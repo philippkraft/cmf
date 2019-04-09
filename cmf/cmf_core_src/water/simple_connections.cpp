@@ -107,7 +107,7 @@ real cmf::water::ConstraintLinearStorageConnection::calc_q(cmf::math::Time t)
 
 }
 
-inline void cmf::water::ConstraintLinearStorageConnection::NewNodes() {
+ void cmf::water::ConstraintLinearStorageConnection::NewNodes() {
 	source = WaterStorage::cast(left_node());
 	target = WaterStorage::cast(right_node());
 }

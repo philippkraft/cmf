@@ -1,13 +1,13 @@
 #include "groundwater.h"
 #include "../project.h"
 #include "algorithm.h"
-inline real cmf::upslope::aquifer::volume_to_head( real volume ) const
+ real cmf::upslope::aquifer::volume_to_head( real volume ) const
 {
 	real fill = volume/(porosity * area);
 	return get_base_height() + fill;
 }
 
-inline real cmf::upslope::aquifer::head_to_volume( real head ) const
+ real cmf::upslope::aquifer::head_to_volume( real head ) const
 {
 	real fill = head - get_base_height();
 	return fill * area * porosity;

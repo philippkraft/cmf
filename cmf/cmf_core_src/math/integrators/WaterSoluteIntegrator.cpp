@@ -67,7 +67,7 @@ int SoluteWaterIntegrator::integrate( Time t_max,Time dt )
 	return 1;
 }
 
-inline void createsoluteintegrators(		
+ void createsoluteintegrators(
 	std::vector<Integrator*> & soluteintegrators,
 	const cmf::water::solute_vector& solutes, 
 	const cmf::math::Integrator& solute_integrator_templ ) 

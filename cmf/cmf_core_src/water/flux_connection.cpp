@@ -205,7 +205,7 @@ int cmf::water::replace_node(flux_node::ptr oldnode,flux_node::ptr newnode)
 #endif
 
 
-inline bool connection_less(const flux_connection::ptr& con1,const flux_connection::ptr& con2) {
+ bool connection_less(const flux_connection::ptr& con1,const flux_connection::ptr& con2) {
 	const int 
 		con1_left  = con1->left_node()->node_id, 
 		con2_left  = con2->left_node()->node_id, 

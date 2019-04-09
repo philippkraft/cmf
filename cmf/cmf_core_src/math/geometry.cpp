@@ -24,14 +24,7 @@
 #define sqr(x) ((x)*(x))
 
 #include <limits>
-inline bool isfinite(real v)
-{
-	typedef  std::numeric_limits<real> limit;
-	return 
-		v != limit::infinity() &&
-		v != -limit::infinity() &&
-		v == v;
-}
+
 namespace cmf {
 	namespace geometry	{
 		point::point():x(0.0),y(0.0),z(0.0) {}

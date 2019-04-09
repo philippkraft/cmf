@@ -68,7 +68,7 @@ namespace cmf {
 	
 		public:
 			/// @brief A character indicating the integrated variable (either 'V' for Volume or 'h' for head)
-			inline char get_state_variable_content() const {return m_state_variable_content;}
+			 char get_state_variable_content() const {return m_state_variable_content;}
 			/// @brief A character indicating the integrated variable (either 'V' for Volume or 'h' for head)
 			void set_state_variable_content(char content);
 			/// @brief Returns true, since this is a storage

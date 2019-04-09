@@ -347,7 +347,7 @@ cmf::math::timeseries cmf::math::timeseries::floating_avg( cmf::math::Time windo
 	}
 	return res;
 }
-inline static double array_mean(std::vector<double>::iterator begin, size_t size) {
+ static double array_mean(std::vector<double>::iterator begin, size_t size) {
 	double sum=0;
 	for (size_t i = 0; i < size ; ++i)
 		sum+=*begin++;
@@ -491,7 +491,7 @@ cmf::math::timeseries cmf::math::timeseries::power(double exponent) const
 		res.add(pow(get_i(i),exponent));
 	return res;
 }
-inline bool is_nodata(double value,double nodata_value) { return fabs(value-nodata_value)<1e-15;}
+ bool is_nodata(double value,double nodata_value) { return fabs(value-nodata_value)<1e-15;}
 void cmf::math::timeseries::remove_nodata( double nodata_value )
 {
 	size_t i =0;

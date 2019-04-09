@@ -42,11 +42,11 @@ cmf::river::OpenWaterStorage::OpenWaterStorage(cmf::project& _project, const cmf
 
 }
 
-inline real cmf::river::OpenWaterStorage::head_to_volume(real head) const
+ real cmf::river::OpenWaterStorage::head_to_volume(real head) const
 {
 	return get_height_function().V(head - this->position.z);
 }
-inline real cmf::river::OpenWaterStorage::volume_to_head(real volume) const
+ real cmf::river::OpenWaterStorage::volume_to_head(real volume) const
 {
 	return get_height_function().h(volume) + this->position.z;
 }

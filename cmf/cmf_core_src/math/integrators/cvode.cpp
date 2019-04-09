@@ -390,7 +390,7 @@ cmf::math::CVodeBanded::CVodeBanded(const cmf::math::state_list & states, real e
 	: CVodeBase(states, epsilon), bandwidth(w)
 {}
 
-inline std::string cmf::math::CVodeBanded::to_string() const {
+ std::string cmf::math::CVodeBanded::to_string() const {
 	return "CVodeBanded(w=" + std::to_string(bandwidth) + ")";
 
 }
@@ -430,7 +430,7 @@ cmf::math::CVodeKrylov::CVodeKrylov(const cmf::math::state_list & states, real e
 	: CVodeBase(states, epsilon), bandwidth(w), preconditioner(p)
 {}
 
-inline std::string cmf::math::CVodeKrylov::to_string() const {
+ std::string cmf::math::CVodeKrylov::to_string() const {
 	return "CVodeKrylov(w=" + std::to_string(bandwidth) + ", p='" + preconditioner + "')";
 }
 
