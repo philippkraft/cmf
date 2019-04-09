@@ -211,3 +211,9 @@ cmf::water::WaterbalanceFlux::WaterbalanceFlux(flux_node::ptr source, flux_node:
 	*/
 	RecalcAlways = true;
 }
+
+real cmf::water::WaterbalanceFlux::calc_q(cmf::math::Time t) {
+    real q = left_node()->waterbalance(t,this);
+    if (q > 0) return q;
+    else return 0.0;
+}

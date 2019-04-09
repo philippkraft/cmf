@@ -18,12 +18,7 @@ namespace cmf {
 		class WaterbalanceFlux : public flux_connection
 		{
 		protected:
-			real calc_q(cmf::math::Time t) 
-			{
-				real q = left_node()->waterbalance(t,this);
-				if (q > 0) return q;
-				else return 0.0;
-			}
+			real calc_q(cmf::math::Time t) override;
 			void NewNodes() {}
 		public:
 			WaterbalanceFlux(flux_node::ptr source, flux_node::ptr target);
