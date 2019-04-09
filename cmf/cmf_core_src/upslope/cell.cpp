@@ -119,7 +119,7 @@ SoilLayer::ptr Cell::add_layer(real lowerboundary)
 	layer->set_root_uptake_stress_function(cmf::upslope::ET::VolumeStress(0.1 * C, 0.0 * C));
 
 	if (m_Layers.size() == 0) {// if this is the first layer, create a connection to surfacewater
-		new cmf::water::waterbalance_connection(get_surfacewater(),layer);
+		new cmf::water::WaterbalanceFlux(get_surfacewater(),layer);
 	} else  { // if it is not the first layer, make a double ended list of the layers
 		m_Layers[-1]->m_lower = SoilLayer::weak_ptr(layer);
 		layer->m_upper = SoilLayer::weak_ptr(m_Layers[-1]);

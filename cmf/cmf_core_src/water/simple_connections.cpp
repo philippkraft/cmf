@@ -194,7 +194,7 @@ cmf::water::bidirectional_kinematic_exchange::bidirectional_kinematic_exchange(
 }
 
 
-cmf::water::waterbalance_connection::waterbalance_connection(flux_node::ptr source, flux_node::ptr target)
+cmf::water::WaterbalanceFlux::WaterbalanceFlux(flux_node::ptr source, flux_node::ptr target)
 	: flux_connection(source, target, "waterbalance connection")
 {
 	/*

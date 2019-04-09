@@ -15,7 +15,7 @@ namespace cmf {
 		/// where:
 		/// - \f$q_{i,j}\f$ is the flux between the two node i and j. Subscript 0 is the right node,
 		/// subscript 1 is the left node and 2..N are the nodes connected to the left node, except for the right node
-		class waterbalance_connection : public flux_connection
+		class WaterbalanceFlux : public flux_connection
 		{
 		protected:
 			real calc_q(cmf::math::Time t) 
@@ -26,7 +26,7 @@ namespace cmf {
 			}
 			void NewNodes() {}
 		public:
-			waterbalance_connection(flux_node::ptr source, flux_node::ptr target);
+			WaterbalanceFlux(flux_node::ptr source, flux_node::ptr target);
 		};
 
 		/// @ingroup connections
