@@ -79,7 +79,7 @@ real cmf::upslope::connections::GreenAmptInfiltration::calc_q( cmf::math::Time t
 }
 
 
-real cmf::upslope::connections::SimpleInfiltration::calc_q( cmf::math::Time t )
+real cmf::upslope::connections::ConceptualInfiltration::calc_q( cmf::math::Time t )
 {
 	using namespace cmf::water;
 	using namespace cmf::upslope;
@@ -108,7 +108,7 @@ real cmf::upslope::connections::SimpleInfiltration::calc_q( cmf::math::Time t )
 	return potinf * f_full;
 }
 
-cmf::upslope::connections::SimpleInfiltration::SimpleInfiltration( cmf::upslope::SoilLayer::ptr soilwater,cmf::water::flux_node::ptr surfacewater,real Wfull/*=0.9*/ ) : flux_connection(surfacewater,soilwater,"simple infiltration"),W0(Wfull)
+cmf::upslope::connections::ConceptualInfiltration::ConceptualInfiltration( cmf::upslope::SoilLayer::ptr soilwater,cmf::water::flux_node::ptr surfacewater,real Wfull/*=0.9*/ ) : flux_connection(surfacewater,soilwater,"simple infiltration"),W0(Wfull)
 {
 	NewNodes();
 }

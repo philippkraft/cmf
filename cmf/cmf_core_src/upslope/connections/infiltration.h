@@ -147,7 +147,7 @@ namespace cmf {
 			///		   - \f$q_{in}\f$ Sum of incoming fluxes to the surfacewater in \f$m^3/day\f$
 			///        - \f$K_{sat}\f$ Saturated conductivity in \f$m/day\f$
 			///        - \f$A\f$ Cell area in \f$m^2\f$
-			class SimpleInfiltration : public cmf::water::flux_connection {
+			class ConceptualInfiltration : public cmf::water::flux_connection {
 			protected:
 				std::weak_ptr<cmf::upslope::SoilLayer> m_soilwater;
 				std::weak_ptr<cmf::upslope::SurfaceWater> m_surfacewaterstorage;
@@ -164,10 +164,10 @@ namespace cmf {
 				/// @param soilwater the infiltration target
 				/// @param surfacewater the infiltration source
 				/// @param W0 the 50% saturation value
-				SimpleInfiltration(cmf::upslope::SoilLayer::ptr soilwater,cmf::water::flux_node::ptr surfacewater,real W0=0.9);
+				ConceptualInfiltration(cmf::upslope::SoilLayer::ptr soilwater,cmf::water::flux_node::ptr surfacewater,real W0=0.9);
 				
 				static void use_for_cell(cmf::upslope::Cell& c) {
-					new cmf::upslope::connections::SimpleInfiltration(c.get_layer(0),c.get_surfacewater());
+					new cmf::upslope::connections::ConceptualInfiltration(c.get_layer(0),c.get_surfacewater());
 				}
 
 			};

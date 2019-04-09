@@ -3,7 +3,7 @@
 
 void cmf::water::set_flux( flux_node::ptr source,flux_node::ptr target,real flux_value)
 {
-	ExternallyControlledFlux* con = dynamic_cast<ExternallyControlledFlux*>(source->connection_to(*target));
+	auto* con = dynamic_cast<ExternallyControlledFlux*>(source->connection_to(*target));
 	if (con) {
 		con->flux = (con->left_node() == source ? flux_value  : -flux_value);
 	} else {
@@ -16,29 +16,10 @@ void cmf::water::set_flux( flux_node::ptr source,flux_node::ptr target,real flux
 
 bool cmf::water::can_set_flux( flux_node::ptr source,flux_node::ptr target )
 {
-	ExternallyControlledFlux* con = dynamic_cast<ExternallyControlledFlux*>(source->connection_to(*target));
+	auto* con = dynamic_cast<ExternallyControlledFlux*>(source->connection_to(*target));
 	return con != 0;
 }
 
-
-
-
-real cmf::water::kinematic_wave::calc_q(cmf::math::Time t)
-{
-	cmf::water::WaterStorage::ptr S = source.lock();
-	real V = std::max(0.0, S->get_volume() - residual);
-	return pow(V / V0, exponent) / residencetime;
-}
-
-
-cmf::water::kinematic_wave::kinematic_wave(WaterStorage::ptr source, flux_node::ptr target,
-	real _traveltime, real _exponent/*=1.0*/,
-	real _residual/*=0.0*/, real _V0)
-	: flux_connection(source, target, "kinematic wave"), residencetime(_traveltime),
-	exponent(_exponent), residual(_residual), V0(_V0)
-{
-	NewNodes();
-}
 
 real cmf::water::LinearStorageConnection::calc_q(cmf::math::Time t)
 {
@@ -148,37 +129,6 @@ cmf::water::LinearGradientFlux::LinearGradientFlux( cmf::water::WaterStorage::pt
 	cmf::water::WaterStorage::ptr right, real _K,real _d/*=1.0*/, real _A/*=1.0*/ )
 	: flux_connection(left,right,"generic gradient connection")
 {
-}
-
-
-
-cmf::water::constraint_kinematic_wave::constraint_kinematic_wave( WaterStorage::ptr source,WaterStorage::ptr target,real _residencetime/*=1.0*/, 
-																  real _beta/*=1.0*/,real _residual/*=0.0*/,real _V0 /*= 1.0*/, 
-																  real _Vrmax /*= 1.0*/, real _gamma/*=1.0*/ )
-	: flux_connection(source,target,"kinematic wave"),residencetime(_residencetime),
-	beta(_beta), residual(_residual), V0(_V0), Vrmax(_Vrmax),gamma(_gamma)
-{
-	NewNodes();
-}
-
-real cmf::water::constraint_kinematic_wave::calc_q( cmf::math::Time t )
-{
-	real V= std::max(0.0,source->get_volume()-residual);
-	real C= std::max(0.0,Vrmax - target->get_volume());
-	return pow(V/V0,beta)/residencetime * pow(C/Vrmax,gamma);
-}
-
-real cmf::water::bidirectional_kinematic_exchange::calc_q( cmf::math::Time t )
-{
-	cmf::water::WaterStorage::ptr S = source.lock();
-	real V = S->get_volume();
-	real D = Vmaxsuc-V;
-	real U = V - Vminspill;
-	real qsuc_a = D>0 ? qsuc * pow(D/Vmaxsuc,beta_suc) : 0;
-	real qspill_a = U>0 ? qspill * pow(U/Vminspill,beta_spill) : 0;
-
-	return qspill_a - qsuc_a;
-	
 }
 
 
