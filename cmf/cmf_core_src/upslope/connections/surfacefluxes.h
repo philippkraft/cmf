@@ -141,7 +141,7 @@ namespace cmf {
 			/// # Create a snowfall connection between snow and surfacewater)
 			/// snowmelt = cmf.SimpleTindexSnowMelt(snow,cell.surfacewater,cell,rate=7.0)
 			/// @endcode
-			class SimpleTindexSnowMelt : public cmf::water::flux_connection {
+			class TempIndexSnowMelt : public cmf::water::flux_connection {
 			protected:
 				std::weak_ptr<cmf::water::WaterStorage> m_Snow;
 				std::weak_ptr<cmf::water::flux_node> m_Surfacewater;
@@ -161,7 +161,7 @@ namespace cmf {
 				/// @param surface_water target of the melted water (usually cell.surfacewater)
 				/// @param cell The cell, needed to get weather and area
 				/// @param rate The rate of snow melt, given in mm/(degC day), default = 7.0
-				SimpleTindexSnowMelt(cmf::water::WaterStorage::ptr snow,cmf::water::flux_node::ptr surface_water,cmf::upslope::Cell& cell,real rate=7.0)
+				TempIndexSnowMelt(cmf::water::WaterStorage::ptr snow,cmf::water::flux_node::ptr surface_water,cmf::upslope::Cell& cell,real rate=7.0)
 					: flux_connection(snow,surface_water,"Simple T-Index snow melt"),m_cell(cell),SnowMeltRate(rate)
 				{
 					NewNodes();
@@ -173,7 +173,7 @@ namespace cmf {
 					cmf::water::WaterStorage::ptr snow=cell.add_storage("Snow",'S');
 					new cmf::upslope::connections::Snowfall(snow,cell);
 
-					new SimpleTindexSnowMelt(snow,cell.get_surfacewater(),cell);
+					new TempIndexSnowMelt(snow,cell.get_surfacewater(),cell);
 				}
 			};
 
