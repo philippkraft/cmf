@@ -239,54 +239,6 @@ namespace cmf {
 		};
 
 		/// @ingroup connections
-		/// @brief A conceptual flux between two storages that can be positive as well as negative
-		/// @note The state of the right node is not monitored, hence negative volumes of the right node can occur!
-		/// @deprecated Behaviour unclear, will be removed
-		/// \f[ q = q_{spill}^*-q_{suc}^* \\
-		/// q_{spill}^* = q_{spill} \left(\frac{V-V_{spill,min}}{V_{spill,min}}\right)^{\beta_{spill}} \\
-		/// q_{suc}^* = q_{suc} \left(\frac{V_{suc,max}-V}{V_{suc,max}}\right)^{\beta_{suc}} \f]
-		///
-		/// where:
-		///  - \f$q\f$ is the flow to the target
-		///  - \f$q_{spill}^*\f$ is the actual spill flow to the target 
-		///  - \f$q_{spill}\f$ is the spill flow at \f$V = 2V_{spill}\f$
-		///  - \f$q_{suc}^*\f$ is the actual suction flow from the target
-		///  - \f$q_{suc}\f$ is the sucked flow from the target when \f$V=0.0\f$
-		///  - \f$\beta\f$ is a shape forming exponent for spill and suction flow.
-		class bidirectional_kinematic_exchange : public flux_connection {
-		protected:
-			std::weak_ptr<WaterStorage> source;
-			real calc_q(cmf::math::Time t);
-			void NewNodes() {
-				source = WaterStorage::cast(left_node());
-			}
-		public:
-			/// @brief Suction starts below this threshold volume of source 
-			real Vmaxsuc;
-			/// @brief Spilling starts above this threshold volume of source 
-			real Vminspill;
-			/// @brief Spill flow at 2*Vminspill in m3/day
-			real qspill;
-			/// @brief Suction flow at V=0 m3
-			real qsuc;
-			/// @brief Exponent for suction
-			real beta_suc;
-			/// @brief Exponent for spilling
-			real beta_spill;
-			/// @brief Creates a kinematic wave connection.
-			/// @param source Water storage from which the water flows out. Flux is a function of source.volume
-			/// @param target Target node (boundary condition or storage). Does not influence the strength of the flow
-			/// @param Vmaxsuc Suction starts below this threshold volume of source 
-			/// @param Vminspill Spilling starts above this threshold volume of source 
-			/// @param qspill Spill flow at 2*Vminspill in m3/day
-			/// @param qsuc Suction flow at V=0 m3
-			/// @param beta_suc,beta_spill Exponent for spill / suction flow
-			bidirectional_kinematic_exchange(WaterStorage::ptr source,flux_node::ptr target,
-											real Vminspill,real Vmaxsuc,
-											real qspill,real qsuc,
-											real beta_spill,real beta_suc);
-		};
-		/// @ingroup connections
 		/// @brief Calculates flux out of a storage as a linear function of its volume to a power, constraint by the volume stored in the target storage.
 		/// @deprecated Will be replaced by ConstraintLinearStorageConnection, without beta and gamma.
 		/// \f[ q = \frac 1 {t_r} {\left(\frac{V_{l} - V_{residual}}{V_0} \right)^\beta} \left(\frac{V_{r,max}-V_{r}}{V_{r,max}}\right)^\gamma\f]
@@ -294,7 +246,7 @@ namespace cmf {
 		/// - \f$V_l\f$ The actual volume stored by the left water storage
 		/// - \f$V_{residual} [m^3]\f$ The volume of water not flowing out (default = 0)
 		/// - \f$V_0\f$ The reference volume to scale the exponent (default = 1m3/day)
-		/// - \f$\beta\f$ A parameter to shape the response curve. In case of \f$\beta \neq 1\f$, 
+		/// - \f$\beta\f$ A parameter to shape the response curve. In case of \f$\beta \neq 1\f$,
 		///   \f$t_r\f$ is not a residence time, but just a parameter.
 		/// - \f$t_r [days]\f$ The residence time of the water in this storage in days
 		/// - \f$V_{r,max}\f$ The capacity of the right water storage in m3
@@ -341,7 +293,7 @@ namespace cmf {
 		/// \f[ q=\begin{cases}0 & V_{source}\le V_{min}\\ q_0 \frac{V_{source} - V_{min}}{t_{decr} q_{0} - V_{min}} & V_{source} \le t_{decr} q_{0}\\ q_{0} &  \end{cases}\f]
 		///
 		/// This is similar to a neumann boundary, however this is not a boundary condition, but water is taken from the source (left) water storage and limited by that water storage.
-		class TechnicalFlux : public cmf::water::flux_connection
+		class ConstantFlux : public cmf::water::flux_connection
 		{
 		protected:
 			std::weak_ptr<cmf::water::WaterStorage> source;
@@ -367,7 +319,7 @@ namespace cmf {
 			/// @param maximum_flux The requested flux \f$q_{0}\f$
 			/// @param minimal_state Minimal volume of stored water in source
 			/// @param flux_decrease_time (cmf::math::Time)
-			TechnicalFlux(cmf::water::WaterStorage::ptr source,cmf::water::flux_node::ptr target,real maximum_flux,real minimal_state=0,cmf::math::Time flux_decrease_time=cmf::math::h)
+			ConstantFlux(cmf::water::WaterStorage::ptr source,cmf::water::flux_node::ptr target,real maximum_flux,real minimal_state=0,cmf::math::Time flux_decrease_time=cmf::math::h)
 				: flux_connection(source,target,"Technical flux"),MaxFlux(maximum_flux),MinState(minimal_state),FluxDecreaseTime(flux_decrease_time) {
 					NewNodes();
 			}
@@ -386,7 +338,7 @@ namespace cmf {
 		/// - \f$A\f$: the area of the connection cross section
 		/// - \f$\Psi\f$: The hydraulic head of the (l)eft, resp. (r)ight node of the connection
 		/// - \f$d\f$: The topographic length of the connection in m
-		class generic_gradient_connection
+		class LinearGradientFlux
 			: public flux_connection
 		{
 		protected:
@@ -406,7 +358,7 @@ namespace cmf {
 			/// @param K the conductivity of the connection in m/day
 			/// @param d the topographic lenght of the connection in m
 			/// @param A the area of the connection cross section in m2
-			generic_gradient_connection(cmf::water::WaterStorage::ptr left,cmf::water::WaterStorage::ptr right, real K,real d=1.0, real A=1.0); 
+			LinearGradientFlux(cmf::water::WaterStorage::ptr left,cmf::water::WaterStorage::ptr right, real K,real d=1.0, real A=1.0);
 		};
 
 		/// @ingroup connections
@@ -418,7 +370,7 @@ namespace cmf {
 		/// - \f$h_1\f$ the reference state
 		/// - \f$h_{target}\f$ the state of the target (right) node
 		/// - \f$t_c\f$ the time to reach the target state
-		class statecontrol_connection 
+		class ConstantStateFlux
 			: public flux_connection 
 		{
 		protected:
@@ -434,7 +386,7 @@ namespace cmf {
 			/// @param other_end source of missing water or target of excessive water
 			/// @param target_state State the controlled storage should hold (\f$h_{target}\f$)
 			/// @param reaction_time Time to reach state (\f$t_c\f$)
-			statecontrol_connection(cmf::water::WaterStorage::ptr controlled_storage, cmf::water::flux_node::ptr other_end, real target_state, cmf::math::Time reaction_time );
+			ConstantStateFlux(cmf::water::WaterStorage::ptr controlled_storage, cmf::water::flux_node::ptr other_end, real target_state, cmf::math::Time reaction_time );
 		};
 
 

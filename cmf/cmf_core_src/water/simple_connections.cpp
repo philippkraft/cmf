@@ -112,19 +112,19 @@ real cmf::water::ConstraintLinearStorageConnection::calc_q(cmf::math::Time t)
 	target = WaterStorage::cast(right_node());
 }
 
-cmf::water::statecontrol_connection::statecontrol_connection( cmf::water::WaterStorage::ptr controlled_storage, cmf::water::flux_node::ptr other_end, 
+cmf::water::ConstantStateFlux::ConstantStateFlux( cmf::water::WaterStorage::ptr controlled_storage, cmf::water::flux_node::ptr other_end,
 															 real _target_state, cmf::math::Time _reaction_time ) 
 : flux_connection(controlled_storage,other_end, "State controlling flux"), target_state(_target_state), reaction_time(_reaction_time)
 {
 	NewNodes();
 }
 
-void cmf::water::statecontrol_connection::NewNodes()
+void cmf::water::ConstantStateFlux::NewNodes()
 {
 	source = cmf::water::WaterStorage::cast(left_node());
 }
 
-real cmf::water::statecontrol_connection::calc_q( cmf::math::Time t )
+real cmf::water::ConstantStateFlux::calc_q( cmf::math::Time t )
 {
 	real dV = source.lock()->get_state() - target_state ;
 	if (dV > 0) // If water is to be removed from the controlled storage
@@ -133,7 +133,7 @@ real cmf::water::statecontrol_connection::calc_q( cmf::math::Time t )
 		return (1-right_node()->is_empty()) * dV/reaction_time.AsDays();
 }
 
-real cmf::water::generic_gradient_connection::calc_q( cmf::math::Time t )
+real cmf::water::LinearGradientFlux::calc_q( cmf::math::Time t )
 {
 	flux_node::ptr 
 		left = left_node(),
@@ -144,7 +144,7 @@ real cmf::water::generic_gradient_connection::calc_q( cmf::math::Time t )
 	return prevent_negative_volume(q);
 }
 
-cmf::water::generic_gradient_connection::generic_gradient_connection( cmf::water::WaterStorage::ptr left,
+cmf::water::LinearGradientFlux::LinearGradientFlux( cmf::water::WaterStorage::ptr left,
 	cmf::water::WaterStorage::ptr right, real _K,real _d/*=1.0*/, real _A/*=1.0*/ )
 	: flux_connection(left,right,"generic gradient connection")
 {
