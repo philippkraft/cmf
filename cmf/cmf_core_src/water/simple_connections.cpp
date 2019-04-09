@@ -181,18 +181,6 @@ real cmf::water::bidirectional_kinematic_exchange::calc_q( cmf::math::Time t )
 	
 }
 
-cmf::water::bidirectional_kinematic_exchange::bidirectional_kinematic_exchange( 
-	WaterStorage::ptr source,flux_node::ptr target, 
-	real _Vminspill,real _Vmaxsuc, 
-	real _qspill,real _qsuc, real _beta_spill,real _beta_suc )
-	  :	flux_connection(source,target,"Bidirectional exchange"),
-		Vminspill(_Vminspill),Vmaxsuc(_Vmaxsuc),
-		qspill(_qspill),qsuc(_qsuc),
-		beta_spill(_beta_spill),beta_suc(_beta_suc)
-{
-	NewNodes();
-}
-
 
 cmf::water::WaterbalanceFlux::WaterbalanceFlux(flux_node::ptr source, flux_node::ptr target)
 	: flux_connection(source, target, "waterbalance connection")
