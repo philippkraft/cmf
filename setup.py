@@ -30,7 +30,7 @@ from setuptools.command.build_ext import build_ext
 from distutils.sysconfig import customize_compiler
 from distutils.command.build_py import build_py
 
-version = '2.0.0a0'
+version = '2.0.0a1'
 
 branchversion = version
 try:
@@ -143,7 +143,7 @@ static_libraries = [
                   build_script='install_solvers'),
     StaticLibrary('cmf/cmf_core_src', 'lib/lib',
                   'cmf_core',
-                  build_script='install_cmf_core'),
+                  build_script='install_cmf_core', build_always=True),
 ]
 
 
