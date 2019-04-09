@@ -43,7 +43,7 @@
 /* #define SWIG_SHARED_PTR_SUBNAMESPACE */
 %include <std_shared_ptr.i>
 %{
-	#include "cmfmemory.h"
+	#include <memory>
 %}
 %include "cmf_swiglib.i"
 

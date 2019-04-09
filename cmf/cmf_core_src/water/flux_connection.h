@@ -27,7 +27,7 @@
 #include <string>
 #include "flux_node.h"
 #include <stdexcept>
-#include "../cmfmemory.h"
+#include <memory>
 namespace cmf {
 	class project;
 	namespace water {

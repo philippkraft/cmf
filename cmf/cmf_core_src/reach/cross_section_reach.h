@@ -5,7 +5,7 @@
 
 #include "../math/real.h"
 #include <stdexcept>
-#include "../cmfmemory.h"
+#include <memory>
 #include "../math/num_array.h"
 
 namespace cmf {

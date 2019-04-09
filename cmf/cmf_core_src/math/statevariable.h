@@ -22,7 +22,7 @@
 #include <string>
 #include <deque>
 #include <vector>
-#include "../cmfmemory.h"
+#include <memory>
 #include <cmath>
 #include "num_array.h"
 #include "real.h"

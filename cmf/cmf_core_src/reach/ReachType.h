@@ -18,7 +18,7 @@
 //   
 #ifndef ReachType_h__
 #define ReachType_h__
-#include "../cmfmemory.h"
+#include <memory>
 
 namespace cmf {
 	namespace river {

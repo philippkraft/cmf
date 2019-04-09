@@ -5417,7 +5417,7 @@ SWIGINTERN std::vector< size_t >::iterator std_vector_Sl_size_t_Sg__erase__SWIG_
 SWIGINTERN std::vector< size_t >::iterator std_vector_Sl_size_t_Sg__insert__SWIG_0(std::vector< size_t > *self,std::vector< size_t >::iterator pos,std::vector< size_t >::value_type const &x){ return self->insert(pos, x); }
 SWIGINTERN void std_vector_Sl_size_t_Sg__insert__SWIG_1(std::vector< size_t > *self,std::vector< size_t >::iterator pos,std::vector< size_t >::size_type n,std::vector< size_t >::value_type const &x){ self->insert(pos, n, x); }
 
-	#include "cmfmemory.h"
+	#include <memory>
 
 
 // **********************************************************************************************

@@ -28,7 +28,7 @@
 #include "SoluteStorage.h"
 #include "flux_node.h"
 #include "flux_connection.h"
-#include "../cmfmemory.h"
+#include <memory>
 
 namespace cmf {
 	namespace water {

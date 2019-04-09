@@ -28,7 +28,7 @@
 #include "Soil/RetentionCurve.h"
 #include "SoilLayer.h"
 #include "layer_list.h"
-#include "../cmfmemory.h"
+#include <memory>
 #include <map>
 #include <vector>
 #include <set>

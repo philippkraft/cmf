@@ -24,7 +24,7 @@
 #include "../math/geometry.h"
 #include "Soil/RetentionCurve.h"
 #include "conductable.h"
-#include "../cmfmemory.h"
+#include <memory>
 namespace cmf {
 	namespace upslope {
 		class Cell;

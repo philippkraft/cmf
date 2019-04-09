@@ -23,7 +23,7 @@
 #include "../water/flux_connection.h"
 #include "../math/geometry.h"
 #include "conductable.h"
-#include "../cmfmemory.h"
+#include <memory>
 #include "../water/flux_connection.h"
 
 namespace cmf {

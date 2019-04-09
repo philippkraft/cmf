@@ -19,7 +19,7 @@
 #ifndef MultiIntegrator_h__
 #define MultiIntegrator_h__
 #include "integrator.h"
-#include "../../cmfmemory.h"
+#include <memory>
 namespace cmf {
 	namespace math {
 		/// The MultiIntegrator is a wrapper for a bunch integrators. The states of the integrators should not have direct connections over integrator boundaries

@@ -28,7 +28,7 @@
 #include <set>
 #include <string>
 #include <stdexcept>
-#include "../cmfmemory.h"
+#include <memory>
 #include <algorithm>
 
 #include "../math/num_array.h"

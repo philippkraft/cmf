@@ -21,7 +21,7 @@
 #include "../water/flux_node.h"
 #include "../water/boundary_condition.h"
 #include "../water/Solute.h"
-#include "../cmfmemory.h"
+#include <memory>
 
 namespace cmf { 
 	class project;
