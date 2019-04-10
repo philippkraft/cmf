@@ -169,7 +169,7 @@ namespace cmf {
 		/// - \f$V_{r,max}\f$ The capacity of the right water storage in m3
 		/// - \f$V_{r}\f$ The actual volume of the right water storage
 		/// - \f$\gamma\f$ A shape parameter for the target capacity constriction
-		class ConstraintLinearStorageConnection : public flux_connection {
+		class ConstraintLinearStorageFlux : public flux_connection {
 		protected:
 			WaterStorage::ptr source, target;
 			real calc_q(cmf::math::Time t);
@@ -188,7 +188,7 @@ namespace cmf {
 			/// @param residencetime \f$t_r [days]\f$ The residence time of the water in this storage
 			/// @param Vlmin \f$V_{l,min} [m^3]\f$ The volume of water not flowing out (default = 0)
 			/// @param Vrmax \f$V_{r,max}\f$ Capacity of the target water storage in m3
-			ConstraintLinearStorageConnection(WaterStorage::ptr source, WaterStorage::ptr target, 
+			ConstraintLinearStorageFlux(WaterStorage::ptr source, WaterStorage::ptr target,
 				real residencetime = 1.0, real Vlmin = 0.0, real Vrmax = 1.0);
 		};
 

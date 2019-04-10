@@ -69,7 +69,7 @@ cmf::water::ExponentialDeclineConnection::ExponentialDeclineConnection(
 	NewNodes();
 }
 	
-cmf::water::ConstraintLinearStorageConnection::ConstraintLinearStorageConnection(
+cmf::water::ConstraintLinearStorageFlux::ConstraintLinearStorageFlux(
 	cmf::water::WaterStorage::ptr source,
 	cmf::water::WaterStorage::ptr target,
 	real _residencetime,
@@ -80,7 +80,7 @@ cmf::water::ConstraintLinearStorageConnection::ConstraintLinearStorageConnection
 	NewNodes();
 }
 
-real cmf::water::ConstraintLinearStorageConnection::calc_q(cmf::math::Time t) 
+real cmf::water::ConstraintLinearStorageFlux::calc_q(cmf::math::Time t)
 {
 	real V = std::max(0.0, source->get_volume() - Vlmin);
 	real C = std::max(0.0, Vrmax - target->get_volume());
@@ -88,7 +88,7 @@ real cmf::water::ConstraintLinearStorageConnection::calc_q(cmf::math::Time t)
 
 }
 
- void cmf::water::ConstraintLinearStorageConnection::NewNodes() {
+ void cmf::water::ConstraintLinearStorageFlux::NewNodes() {
 	source = WaterStorage::cast(left_node());
 	target = WaterStorage::cast(right_node());
 }
