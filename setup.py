@@ -18,7 +18,7 @@
 #   
 
 # This file can build and install cmf
-from __future__ import print_function, division
+
 import sys
 import os
 import io
@@ -26,6 +26,7 @@ import re
 import time
 
 from setuptools import setup, Extension
+from distutils.extension import Extension as dExtension
 from setuptools.command.build_ext import build_ext
 from distutils.sysconfig import customize_compiler
 from distutils.command.build_py import build_py
@@ -187,6 +188,27 @@ class CmfBuildExt(build_ext):
         print(count, 'old style static methods removed from', len(classes), 'classes')
         return cmf_core_py
 
+    def build_libraries(self):
+        for sl in static_libraries:
+            if not sl.exists():
+                print(sl, 'get downloaded and installed')
+
+        for sl in static_libraries:
+            if not sl.exists() or sl.build_always:
+                sl.build()
+
+        cmf_core: dExtension = self.extensions[-1]
+
+        for sl in static_libraries:
+            sl.extend(cmf_core.include_dirs, cmf_core.library_dirs,
+                      cmf_core.libraries, cmf_core.extra_objects)
+
+        print('libraries:', ' '.join(cmf_core.libraries))
+        print('library_dirs:', ' '.join(cmf_core.library_dirs))
+        print('include_dirs:', ' '.join(cmf_core.include_dirs))
+        print('extra_objects:', ' '.join(cmf_core.extra_objects))
+
+
     def build_extensions(self):
         customize_compiler(self.compiler)
 
@@ -194,6 +216,8 @@ class CmfBuildExt(build_ext):
             self.compiler.compiler_so.remove("-Wstrict-prototypes")
         except (AttributeError, ValueError):
             pass
+
+        self.build_libraries()
         build_ext.build_extensions(self)
 
         if swig:
@@ -315,15 +339,6 @@ def make_cmf_core():
     extra_objects = []
     link_args = []
 
-    for sl in static_libraries:
-        if not sl.exists():
-            print(sl, 'get downloaded and installed')
-
-    for sl in static_libraries:
-        if not sl.exists() or sl.build_always:
-            sl.build()
-
-
     # Platform specific stuff, alternative is to subclass build_ext command as in:
     # https://stackoverflow.com/a/5192738/3032680
     if sys.platform == 'win32':
@@ -379,14 +394,6 @@ def make_cmf_core():
         # Else use what we have there
         cmf_files.append("cmf/cmf_core_src/cmf_wrap.cpp")
         swig_opts = []
-
-    for sl in reversed(static_libraries):
-        sl.extend(include_dirs, library_dirs, libraries, extra_objects)
-
-    print('libraries:', ' '.join(libraries))
-    print('library_dirs:', ' '.join(library_dirs))
-    print('include_dirs:', ' '.join(include_dirs))
-    print('extra_objects:', ' '.join(extra_objects))
 
     cmf_core = Extension('cmf._cmf_core',
                          sources=cmf_files,

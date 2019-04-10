@@ -5,8 +5,6 @@ Tests the functionality of the solvers
 import cmf
 
 import unittest
-import sys
-import glob
 
 def get_project(with_solute=False):
     if with_solute:

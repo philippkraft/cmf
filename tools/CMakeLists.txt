@@ -41,7 +41,3 @@ add_dependencies(sundials SuiteSparseProject)
 set(CMF_DIR ${HOME}/build/cmf)
 
 
-# add_subdirectory(cmf/cmf_core_src ${CMF_DIR})
-# add_dependencies(cmf_core sundials SuiteSparseProject)
-
-
