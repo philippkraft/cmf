@@ -26,7 +26,6 @@ import re
 import time
 
 from setuptools import setup, Extension
-from distutils.extension import Extension as dExtension
 from setuptools.command.build_ext import build_ext
 from distutils.sysconfig import customize_compiler
 from distutils.command.build_py import build_py
@@ -44,13 +43,6 @@ except:
 
 print('cmf', branchversion)
 
-# Try to import numpy, if it fails we have a problem
-try:
-    # Import a function to get a path to the include directories of numpy
-    # noinspection PyPackageRequirements
-    from numpy import get_include as get_numpy_include
-except ImportError:
-    raise RuntimeError("For building and running of cmf an installation of numpy is needed")
 
 
 swig = False
@@ -187,6 +179,18 @@ class CmfBuildExt(build_ext):
             count += n
         print(count, 'old style static methods removed from', len(classes), 'classes')
         return cmf_core_py
+
+    def add_numpy_include(self):
+        # Try to import numpy, if it fails we have a problem
+        try:
+            # Import a function to get a path to the include directories of numpy
+            # noinspection PyPackageRequirements
+            from numpy import get_include as get_numpy_include
+        except ImportError:
+            raise RuntimeError("For building and running of cmf an installation of numpy is needed")
+
+        for ext in self.extensions:
+            ext.include_dirs += get_numpy_include()
 
     def build_libraries(self):
         for sl in static_libraries:
