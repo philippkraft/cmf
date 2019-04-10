@@ -46,6 +46,7 @@ class Test_PowerLawConnection(unittest.TestCase):
         :return:
         """
         p, W1, W2 = create_project_with_2_storages()
+
         def get_runoff(v, beta=1, residual=0):
             """
             Calculates runoff from W1 to W2 when volume of W1 is v with beta and residual
@@ -65,9 +66,11 @@ class Test_PowerLawConnection(unittest.TestCase):
             Qcmf = Q(S, b, r)
             Qanal = np.maximum(S - r, 0) ** b
             rmse = np.sqrt(np.mean((Qcmf - Qanal) ** 2))
-            self.assertAlmostEqual(rmse, 0, 6,
-                                   'RMSE between CMF and analytical solution is {:0.5g} for b={:0.5g} and r={:0.5g}'.format(
-                                       rmse, b, r))
+            self.assertAlmostEqual(
+                rmse, 0, 6,
+                'RMSE between CMF and analytical solution is {:0.5g} for b={:0.5g} and r={:0.5g}'
+                    .format(rmse, b, r)
+            )
 
 
 class Test_LinearStorageConnection(unittest.TestCase):
@@ -81,17 +84,15 @@ class Test_LinearStorageConnection(unittest.TestCase):
         q = cmf.LinearStorageConnection(w1, w2, 1)
 
         # Loop over several scales for residence time
-        for res_t in 10**np.arange(-3, 3, 0.5):
-
+        for res_t in 10 ** np.arange(-3, 3, 0.5):
             q.residencetime = res_t
             w1.volume = 1.0
             w2.volume = 0.0
             solver = cmf.CVodeDense(p, 1e-9)
             solver.integrate_until(cmf.day)
-            self.assertAlmostEqual(w1.volume, np.exp(-1/res_t), 5,
+            self.assertAlmostEqual(w1.volume, np.exp(-1 / res_t), 5,
                                    'LinearStorage fails to reproduce analytical solution for t_r={:0.5g}'
                                    .format(res_t))
-
 
 
 if __name__ == '__main__':

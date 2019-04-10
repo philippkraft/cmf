@@ -1,6 +1,7 @@
 import cmf
 import unittest
 
+
 def get_setup():
     p = cmf.project()
     c = p.NewCell(0, 0, 0, 1000, True)
@@ -8,10 +9,12 @@ def get_setup():
     c.topology.AddNeighbor(c2, 1)
     return p
 
+
 class TopologyTest(unittest.TestCase):
     """
     Test for regression on #14
     """
+
     def test_neighbor_iterator(self):
         p = get_setup()
         for n, w in p[0].neighbors:

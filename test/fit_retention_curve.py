@@ -28,11 +28,11 @@ class TestFitRetentionCurve(unittest.TestCase):
             vgm.fit_w0()
             self.assertGreater(0.1, fit, 'Bad RMSE for VanGenuchten(tr=T,m=F) for theta[{}]'.format(i))
 
-
     def test_fit_bc(self):
         for theta in self.theta:
             rc, fit = frc.fit_bc(self.pF, theta, count=5)
             # self.assertGreater(0.1, fit, 'Bad RMSE for VanGenuchten(tr=T,m=F) for theta[{}]'.format(i))
+
 
 class W0fit:
     def __init__(self, Psi1=1.0, w1=1.01):
@@ -42,6 +42,7 @@ class W0fit:
     def __call__(self, vgm, value):
         vgm.w0 = value
         return (vgm.Wetness(self.Psi1)[0] - self.w1) / (self.w1 - 1)
+
 
 if __name__ == '__main__':
     unittest.main()

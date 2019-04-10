@@ -20,7 +20,8 @@ class CheckScaling(unittest.TestCase):
         
     Parameters are fixed. All models should produce the same NSE. 
     """
-    def test_scaling(self):    
+
+    def test_scaling(self):
         # Run the models
         num_cells = [1, 2, 4, 8, 16]
         results = {}
@@ -28,16 +29,15 @@ class CheckScaling(unittest.TestCase):
             # Create the model
             model = ScalingTester(num_cells=num)
             # Get the results and convert from m³/d to m³/s
-            sim = model.runmodel() / 86400   
+            sim = model.runmodel() / 86400
             NSE = cmf.nash_sutcliffe(sim, model.data.Q)
             NSE = round(NSE, 3)
             results[str(num)] = NSE
-    
+
         for key, value in results.items():
             self.assertAlmostEqual(value, 0.596, msg="NSE of {}-cell model is not the expected 0.596".format(key))
         NSE_values = list(results.values())
         self.assertTrue(NSE_values[0] == NSE_values[1] == NSE_values[2] == NSE_values[3] == NSE_values[4])
-
 
 
 class ScalingTester:
@@ -49,7 +49,7 @@ class ScalingTester:
     """
     # Catchment area km²
     area = 562.41
-    
+
     def __init__(self, begin=None, end=None, num_cells=None):
         """
         Initializes the model.
@@ -133,7 +133,7 @@ class ScalingTester:
         except RuntimeError:
             return np.array(self.data.Q[
                             self.data.begin:self.data.end + datetime.timedelta(
-                                days=1)])*np.nan
+                                days=1)]) * np.nan
 
         return res_q
 
@@ -142,6 +142,7 @@ class CellTemplate:
     """
     Template, which provides
     """
+
     def __init__(self, project, outlet, area, cell_num):
         self.project = project
         self.outlet = outlet
@@ -174,7 +175,7 @@ class CellTemplate:
         """
         c = self.cell
         out = self.outlet
-        
+
         # Fill in some water
         c.layers[0].volume = 296.726 / 1000 * self.area * 1e6
         c.layers[1].volume = 77.053 / 1000 * self.area * 1e6
@@ -194,7 +195,7 @@ class CellTemplate:
                                beta=2.949)
 
         cmf.PowerLawConnection(c.layers[0], c.layers[1], Q0=(V0_L1 /
-                                                            3.198),
+                                                             3.198),
                                V0=V0_L1, beta=3.743)
         cmf.PowerLawConnection(c.layers[1], out, Q0=V0_L2 / 162.507,
                                V0=V0_L2,
@@ -202,7 +203,7 @@ class CellTemplate:
 
         # Snow
         cmf.TempIndexSnowMelt(c.snow, c.layers[0], c,
-                                 rate=3.957)
+                              rate=3.957)
         cmf.Weather.set_snow_threshold(3.209)
 
         # Split the rainfall in interception and throughfall
@@ -226,18 +227,19 @@ class DataProvider:
     """
     Holds the forcing and calibration data
     """
+
     def __init__(self, file_name):
         # Load data from file using numpy magic
         data = {
-                "date":["01.01.1979", "02.01.1979", "03.01.1979", "04.01.1979", 
-                        "05.01.1979", "06.01.1979", "07.01.1979"],
-                "tmax":[-13.07, -11.15, -7.51, -8.16, -11.57, -9.48, -5.43],
-                "tmin":[-20.34, -19.17, -16.22, -15.51, -17.87, -17.59, 
-                        -16.49],
-                "tmean":[-15.87, -13.77, -9.65, -13.03,-14.42, -14.24,-8.86],
-                "Prec":[1.14, 1.11, 0.65, 0.02, 0, 0.01, 0.01],
-                "Q":[48.7, 23.2, 16.7, 14, 11.4, 9.63, 8.68]
-                }
+            "date": ["01.01.1979", "02.01.1979", "03.01.1979", "04.01.1979",
+                     "05.01.1979", "06.01.1979", "07.01.1979"],
+            "tmax": [-13.07, -11.15, -7.51, -8.16, -11.57, -9.48, -5.43],
+            "tmin": [-20.34, -19.17, -16.22, -15.51, -17.87, -17.59,
+                     -16.49],
+            "tmean": [-15.87, -13.77, -9.65, -13.03, -14.42, -14.24, -8.86],
+            "Prec": [1.14, 1.11, 0.65, 0.02, 0, 0.01, 0.01],
+            "Q": [48.7, 23.2, 16.7, 14, 11.4, 9.63, 8.68]
+        }
 
         def bstr2date(bs):
             """

@@ -6,6 +6,7 @@ import cmf
 import numpy as np
 import unittest
 
+
 def get_project():
     p = cmf.project()
     w = p.NewStorage('source')
@@ -58,5 +59,3 @@ class TestAbstractFluxes(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
-
-

@@ -2,6 +2,7 @@ import cmf
 
 import unittest
 
+
 class TestStateList(unittest.TestCase):
 
     def test_project_to_state_list(self):

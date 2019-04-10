@@ -6,6 +6,7 @@ import cmf
 
 import unittest
 
+
 def get_project(with_solute=False):
     if with_solute:
         p = cmf.project('X')
@@ -15,7 +16,7 @@ def get_project(with_solute=False):
         X = None
     stores = [p.NewStorage('source{}'.format(i)) for i in range(10)]
 
-    for l, r in zip(stores[:-1],stores[1:]):
+    for l, r in zip(stores[:-1], stores[1:]):
         cmf.LinearStorageConnection(l, r, 1)
     stores[0].volume = 1
     if with_solute:
@@ -24,18 +25,19 @@ def get_project(with_solute=False):
 
 
 solver_types = [
-    cmf.ExplicitEuler_fixed, 
-    cmf.RKFIntegrator, 
+    cmf.ExplicitEuler_fixed,
+    cmf.RKFIntegrator,
     cmf.HeunIntegrator,
-    cmf.BDF2, 
+    cmf.BDF2,
     cmf.ImplicitEuler,
-    cmf.CVodeDense, 
-    cmf.CVodeBanded, 
-    cmf.CVodeKrylov, 
-    cmf.CVodeDiag, 
+    cmf.CVodeDense,
+    cmf.CVodeBanded,
+    cmf.CVodeKrylov,
+    cmf.CVodeDiag,
     cmf.CVodeKLU,
     cmf.CVodeAdams
-] 
+]
+
 
 # solver_types = solver_types[0:3]
 class TestSolver(unittest.TestCase):
@@ -44,8 +46,8 @@ class TestSolver(unittest.TestCase):
         p, stores, X = get_project()
         for st in solver_types:
             with self.subTest(solver_type=st.__name__):
-                 solver = st(p)
-                 self.assertEqual(len(solver), 10)
+                solver = st(p)
+                self.assertEqual(len(solver), 10)
 
     def test_2_solver_size_solute(self):
         p, stores, X = get_project(True)
@@ -53,26 +55,25 @@ class TestSolver(unittest.TestCase):
             solver = st(p)
             self.assertEqual(len(solver), 20)
 
-
     def test_3_solver_access_solute(self):
         p, stores, X = get_project(True)
         for st in solver_types:
             with self.subTest(solver_type=st.__name__):
-                 solver = st(p)
-                 self.assertIsInstance(solver[0], cmf.WaterStorage)
-                 self.assertIsInstance(solver[-1], cmf.SoluteStorage)
-                 with self.assertRaises(IndexError):
-                     _ = solver[len(solver)]
+                solver = st(p)
+                self.assertIsInstance(solver[0], cmf.WaterStorage)
+                self.assertIsInstance(solver[-1], cmf.SoluteStorage)
+                with self.assertRaises(IndexError):
+                    _ = solver[len(solver)]
 
     def test_4_solver_access_nosolute(self):
         p, stores, X = get_project()
         for st in solver_types:
             with self.subTest(solver_type=st.__name__):
-                 solver = st(p)
-                 self.assertIsInstance(solver[0], cmf.WaterStorage)
-                 self.assertIsInstance(solver[-1], cmf.WaterStorage)
-                 with self.assertRaises(IndexError):
-                     _ = solver[len(solver)]
+                solver = st(p)
+                self.assertIsInstance(solver[0], cmf.WaterStorage)
+                self.assertIsInstance(solver[-1], cmf.WaterStorage)
+                with self.assertRaises(IndexError):
+                    _ = solver[len(solver)]
 
     def test_solver_results_solute(self):
 
@@ -83,19 +84,21 @@ class TestSolver(unittest.TestCase):
 
         for st in solver_types:
             with self.subTest(solver_type=st.__name__):
-                 p, stores, X = get_project(True)
-                 solver = st(p)
+                p, stores, X = get_project(True)
+                solver = st(p)
 
-                 solver.integrate_until(cmf.day * 3, cmf.h)
+                solver.integrate_until(cmf.day * 3, cmf.h)
 
-                 vol = [s.volume for s in stores]
-                 smass = [s[X].state for s in stores]
+                vol = [s.volume for s in stores]
+                smass = [s[X].state for s in stores]
 
-                 mse_v = sum((vr - v)**2 for v, vr in zip(vol, vol_ref)) / len(vol)
-                 mse_s = sum((sr - s)**2 for s, sr in zip(smass, smass_ref)) / len(smass)
+                mse_v = sum((vr - v) ** 2 for v, vr in zip(vol, vol_ref)) / len(vol)
+                mse_s = sum((sr - s) ** 2 for s, sr in zip(smass, smass_ref)) / len(smass)
 
-                 self.assertAlmostEqual(1 - mse_v, 1, 2, "RMSE between reference volume and {} too large".format(st.__name__))
-                 self.assertAlmostEqual(1 - mse_s, 1, 2, "RMSE between reference solute and {} too large".format(st.__name__))
+                self.assertAlmostEqual(1 - mse_v, 1, 2,
+                                       "RMSE between reference volume and {} too large".format(st.__name__))
+                self.assertAlmostEqual(1 - mse_s, 1, 2,
+                                       "RMSE between reference solute and {} too large".format(st.__name__))
 
     def test_solver_results_nosolute(self):
 
@@ -109,8 +112,9 @@ class TestSolver(unittest.TestCase):
 
                 solver.integrate_until(cmf.day * 3, cmf.h)
                 vol = [s.volume for s in stores]
-                mse_v = sum((vr - v)**2 for v, vr in zip(vol, vol_ref)) / len(vol)
-                self.assertAlmostEqual(1 - mse_v, 1, 2, "MSE between reference volume and {} too large".format(st.__name__))
+                mse_v = sum((vr - v) ** 2 for v, vr in zip(vol, vol_ref)) / len(vol)
+                self.assertAlmostEqual(1 - mse_v, 1, 2,
+                                       "MSE between reference volume and {} too large".format(st.__name__))
 
     def test_solver_run(self):
 
