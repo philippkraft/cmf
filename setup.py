@@ -130,7 +130,6 @@ static_libraries = [
     StaticLibrary('lib/include/suitesparse', 'lib/lib',
                   'klu', 'amd', 'btf', 'colamd', 'suitesparseconfig',
                   build_script='install_solvers'),
-
     StaticLibrary('lib/include', 'lib/lib',
                   'sundials_cvode', 'sundials_sunlinsolklu',
                   build_script='install_solvers'),
@@ -203,7 +202,7 @@ class CmfBuildExt(build_ext):
 
         cmf_core = self.extensions[-1]
 
-        for sl in static_libraries:
+        for sl in reversed(static_libraries):
             sl.extend(cmf_core.include_dirs, cmf_core.library_dirs,
                       cmf_core.libraries, cmf_core.extra_objects)
 
