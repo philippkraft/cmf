@@ -220,7 +220,9 @@ class CmfBuildExt(build_ext):
         except (AttributeError, ValueError):
             pass
 
+        self.add_numpy_include()
         self.build_libraries()
+
         build_ext.build_extensions(self)
 
         if swig:

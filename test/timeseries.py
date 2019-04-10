@@ -45,7 +45,7 @@ class TimeTest(unittest.TestCase):
         self.assertEqual(self.t2.as_timedelta(), td)
 
     def test_time_from_datetime(self):
-        self.assertEqual(cmf.AsCMFtime(datetime.datetime(2018, 1, 2, 12, 13, 59)),
+        self.assertEqual(cmf.datetime_to_cmf(datetime.datetime(2018, 1, 2, 12, 13, 59)),
                          self.t2)
 
 
@@ -83,3 +83,5 @@ class TimeseriesTest(unittest.TestCase):
             self.assertEqual(ots[t], nts[t])
 
 
+if __name__ == '__main__':
+    unittest.main(verbosity=100)
