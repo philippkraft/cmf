@@ -865,11 +865,6 @@ class Time(object):
     def __radd__(self,other):
         return self + other
 
-    def AsPython(self):
-        """Deprecated function name, use as_datetime as equivalent"""
-        d=self.AsDate()
-        return datetime.datetime(d.year, d.month, d.day, d.hour, d.minute, d.second, d.ms*1000)
-
     def __getstate__(self):
         return self.AsMilliseconds()
 
@@ -998,11 +993,8 @@ class Date(object):
         return Date.ToTime().__getstate__()
 
     def __setstate__(self, data):
-        t = cmf.Time(data)
+        t = Time(data)
         self.__init__(t)
-
-    def AsPython(self):
-        return datetime.datetime(self.year,self.month,self.day,self.hour,self.minute,self.second,self.ms*1000)
 
     def as_datetime(self):
         return datetime.datetime(self.year,self.month,self.day,self.hour,self.minute,self.second,self.ms*1000)
@@ -1711,14 +1703,30 @@ def nash_sutcliffe(*args, **kwargs):
     """nash_sutcliffe(timeseries model, timeseries observation) -> double"""
     return _cmf_core.nash_sutcliffe(*args, **kwargs)
 
-def AsCMFtime(date):
+def datetime_to_cmf(date):
     """Converts a python datetime to cmf.Time"""
     return Time(date.day, date.month, date.year, date.hour, date.minute, date.second, date.microsecond / 1000)
 
-def timerange(start,end,step=day):
+class timerange:
     """Creates a generator of cmf.Time, similar to the Python range function"""
-    for x in range(0, int((end - start) / step)):
-        yield start + step * x
+    def __init__(self, start, stop, step=day):
+        self.start = start
+        self.stop = stop
+        self.step = step
+
+    def __iter__(self):
+        for x in range(0, int((self.stop - self.start) / self.step)):
+            yield self.start + self.step * x
+
+    def __len__(self):
+        return int((self.stop - self.start) / self.step)
+
+    def __getitem__(self, item):
+        if type(item) is slice:
+            return [
+                self.start + self.step * i
+                for i in range(*item.indices(len(self)))
+            ]
 
 
 class integratable(object):
@@ -2088,7 +2096,7 @@ class state_list(object):
                 it=iter(index)
                 res = type(list_obj)()
                 for o in it:
-                    res.append(list_obj.__getitem(i))
+                    res.append(list_obj.__getitem(o))
                 return res
             except:
                 return list_obj.__getitem(index)
@@ -13274,7 +13282,7 @@ class Integrator(object):
                 it=iter(index)
                 res = type(list_obj)()
                 for o in it:
-                    res.append(list_obj.__getitem(i))
+                    res.append(list_obj.__getitem(o))
                 return res
             except:
                 return list_obj.__getitem(index)

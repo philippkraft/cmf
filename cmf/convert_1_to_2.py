@@ -22,6 +22,8 @@ rename = {
     'SimpleTindexSnowMelt': 'TempIndexSnowMelt',
     'CVodeIntegrator': 'CVodeKrylov',
     'SimplRichards': 'FreeDrainagePercolation',
+    '.AsPython': '.as_datetime',
+    'AsCMFTime': 'datetime_to_cmf'
 }
 
 warning = {

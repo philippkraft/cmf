@@ -245,7 +245,7 @@ Included macros:
                 it=iter(index)
                 res = type(list_obj)()
                 for o in it:
-                    res.append(list_obj.__getitem(i))
+                    res.append(list_obj.__getitem(o))
                 return res
             except:
                 return list_obj.__getitem(index)
