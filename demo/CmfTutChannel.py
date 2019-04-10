@@ -58,7 +58,7 @@ reaches[-1].depth=0.1
 
     
 # Create a solver
-solver = cmf.CVodeIntegrator(p,1e-9)
+solver = cmf.CVodeKrylov(p,1e-9)
 # We store the results in this list
 depth = [[r.potential for r in reaches]]
 flux = [[r_upper.flux_to(r_lower, solver.t) for r_upper, r_lower in zip(reaches[:-1],reaches[1:])]]
@@ -66,12 +66,13 @@ wet_area = [[np.mean([r.wet_area() for r in rr]) for rr in zip(reaches[:-1],reac
 # Track runtime
 tstart=time.time()
 # Run the model for 3 h with dt=1 min
-for t in solver.run(datetime(2012,1,1),datetime(2012,1,8,0), timedelta(minutes=1)):
+for t in solver.run(datetime(2012,1,1),datetime(2012,1,8,0), timedelta(minutes=30)):
     depth.append([r.potential for r in reaches])
     flux.append([r_upper.flux_to(r_lower, solver.t) for r_upper, r_lower in zip(reaches[:-1],reaches[1:])])
     wet_area.append([np.mean([r.wet_area() for r in rr]) for rr in zip(reaches[:-1],reaches[1:])])
     print('{t:16s} depth at outlet: {d:0.3f}cm'.format(t=str(t), d=r_out.depth * 100))
-print('Calculation time: {:0.1f}s, RHS-evaluations: {}'.format(time.time()-tstart, solver.get_rhsevals()))
+
+print('Calculation time: {:0.1f}s, RHS-evaluations: {}'.format(time.time()-tstart, solver.info.rhs_evaluations))
 
 depth = np.array(depth)
 # Plot the result (matplotlib needs to be installed)

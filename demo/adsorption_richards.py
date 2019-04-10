@@ -25,7 +25,7 @@ for i in range(50):
     l[X].state = 1.
     # Tracer Y has a Freundlich isotherm xa/m=Kc^n, 
     # with K = 1 and n=0.5 and sorbent mass m = 1
-    l[Y].set_adsorption(cmf.FreundlichAdsorbtion(2., .5, 1.0, 1e-9))
+    # l[Y].set_adsorption(cmf.FreundlichAdsorbtion(2., .5, 1.0, 1e-9))
     l[Y].state = 1.
 
     # Tracer Y has a Langmuir isotherm xa/m=Kc/(1+Kc), 
@@ -39,7 +39,7 @@ c.install_connection(cmf.Richards)
 gw = p.NewOutlet('gw', 0, 0, -1.5)
 cmf.Richards(c.layers[-1], gw)
 
-solver = cmf.CVodeIntegrator(p, 1e-9)
+solver = cmf.CVodeKrylov(p, 1e-9)
 
 c.saturated_depth = 1.5
 

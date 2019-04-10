@@ -25,9 +25,9 @@ class Cmf2StorageModel:
 
     def create_connections(self):
         # Route snow melt to surface
-        cmf.SimpleTindexSnowMelt(self.cell.snow, self.cell.surfacewater, rate=7)
+        cmf.TempIndexSnowMelt(self.cell.snow, self.cell.surfacewater, rate=7)
         # Infiltration
-        cmf.SimpleInfiltration(self.soil, self.cell.surfacewater, W0=0.8)
+        cmf.ConceptualInfiltration(self.soil, self.cell.surfacewater, W0=0.8)
         # Route infiltration / saturation excess to outlet
         cmf.WaterBalanceFlux(self.cell.surfacewater, self.outlet)
         # Parameterize soil water capacity
@@ -54,7 +54,7 @@ class Cmf2StorageModel:
         begin = begin or self.rainstation.data.begin
         end = end or self.rainstation.data.end
 
-        solver = cmf.CVodeIntegrator(self.project, 1e-9)
+        solver = cmf.CVodeKrylov(self.project, 1e-9)
         outlet = cmf.timeseries(begin, cmf.day)
         outlet.add(self.outlet(begin))
         for t in solver.run(begin, end, cmf.day):

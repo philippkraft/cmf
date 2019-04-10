@@ -29,7 +29,7 @@ gw = p.NewOutlet('gw',0,0,-1.5)
 cmf.Richards(c.layers[-1],gw)
 
 # Template for the water solver
-#wsolver = cmf.CVodeIntegrator(1e-9)
+#wsolver = cmf.CVodeKrylov(1e-9)
 # Template for the solute solver
 #ssolver = cmf.ImplicitEuler(1e-9)
 # Creating the SWI, the storage objects of the project are internally assigned to the correct solver
@@ -54,8 +54,6 @@ for t in solver.run(solver.t, solver.t + cmf.week, cmf.h):
     wetness.append([l.wetness for l in c.layers])
     # Get water balance of groundwater
     recharge.append(gw.waterbalance(t))
-    crecharge.append([gw.conc(t, T) for T in p.solutes])
-    print("{} - {:6.2f}m3/day, {} rhs-eval".format(t,gw(t), solver.get_nonlinear_iterations()))
     crecharge.append([gw.conc(t,T) for T in p.solutes])
     print("{} - {:6.2f}m3/day, {} rhs-eval".format(t, gw(t), solver.get_info().rhs_evaluations))
 

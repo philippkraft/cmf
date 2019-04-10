@@ -114,7 +114,7 @@ def build_cell(c):
     c.install_connection(cmf.Richards)
     c.install_connection(cmf.MatrixInfiltration)
     c.install_connection(cmf.CanopyOverflow)
-    c.install_connection(cmf.SimpleTindexSnowMelt)
+    c.install_connection(cmf.TempIndexSnowMelt)
     c.install_connection(cmf.PenmanMonteithET)
 
 
@@ -166,20 +166,20 @@ def create_hillslope(subsurface_lateral_connection,
 
 
 def run(p, outlet, until,dt=cmf.day):
-    solver = cmf.CVodeIntegrator(p, 1e-9)
+    solver = cmf.CVodeKrylov(p, 1e-9)
     solver.t = cmf.Time(1, 1, 1980)
     outflow = cmf.timeseries(solver.t, dt)
     for t in solver.run(solver.t, solver.t+until, dt):
         outflow.add(outlet(t))
         print("%20s - %6.1f l/day" % (t, outlet(t)*1e3))
-    return outflow, solver.get_rhsevals()
+    return outflow, solver.info
 
 
 def animate(p, outlet, until, dt=cmf.day):
     from cmf.draw import HillPlot
     from matplotlib import pylab
 
-    solver = cmf.CVodeIntegrator(p, 1e-9)
+    solver = cmf.CVodeKrylov(p, 1e-9)
     solver.t = cmf.Time(1, 1, 1980)
     hp = HillPlot(p, solver.t)
     hp.scale = 1000
@@ -192,7 +192,7 @@ def animate(p, outlet, until, dt=cmf.day):
     anim = hp.get_animator(integration)
 
     pylab.show()
-    return anim, solver.get_rhsevals()
+    return anim, solver.info
 
 subsurface_lateral_dict = dict(R=cmf.Richards_lateral, D=cmf.Darcy,
                                K=cmf.DarcyKinematic, T=cmf.TopographicGradientDarcy)
@@ -229,7 +229,7 @@ if __name__ == '__main__':
     # print(cmf.describe(p))
     tstart = time.time()
     if args.showanimation:
-        anim, rhs_evals = animate(p, o, cmf.year, cmf.day)
+        anim, info = animate(p, o, cmf.year, cmf.day)
     else:
-        outflow, rhs_evals = run(p, o, cmf.year, cmf.day)
-    print('{:g} s, {} rhs evaluations'.format(time.time()-tstart, rhs_evals))
+        outflow, info = run(p, o, cmf.year, cmf.day)
+    print('{:g} s, {} rhs evaluations'.format(time.time()-tstart, info.rhs_evaluations))

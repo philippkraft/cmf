@@ -1,5 +1,5 @@
 """
-This file demonstrates the features of the cmf.SimpleInfiltration connection
+This file demonstrates the features of the cmf.ConceptualInfiltration connection
 and produces the figures in the wiki
 """
 from __future__ import print_function, division, absolute_import
@@ -16,7 +16,7 @@ def create_project(W0=0.9):
     c = p.NewCell(0, 0, 0, 1000, with_surfacewater=True)
     l = c.add_layer(0.1)
     c.set_rainfall(l.get_capacity())
-    si_con = cmf.SimpleInfiltration(l, c.surfacewater, W0)
+    si_con = cmf.ConceptualInfiltration(l, c.surfacewater, W0)
     return p, si_con
 
 def storage_runoff(p, si_con, W0=None):

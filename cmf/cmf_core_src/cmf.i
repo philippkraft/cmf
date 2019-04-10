@@ -125,11 +125,4 @@ std::string pyrepr(PyObject* o) {
 %include "math/integrator.i"
 
 
-%pythoncode {
-    ConstantFlux = TechnicalFlux
-    ConstantStateFlux = statecontrol_connection
-    WaterBalanceFlux = waterbalance_connection
-    ConceptualInfiltration = SimpleInfiltration
-}
-
 

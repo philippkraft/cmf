@@ -1,6 +1,6 @@
 import cmf
 from datetime import datetime, timedelta
-from pylab import plot, twinx, ylabel, xlabel
+from pylab import plot, twinx, ylabel, xlabel, show
 
 # Create project with 1 cell and 1 water storage of 1000mm capacity
 p = cmf.project()
@@ -30,7 +30,7 @@ volume = cmf.timeseries(solver.t, cmf.day)
 while solver.t < datetime(2018, 10, 1):
     et_act.add(cell.transpiration(solver.t))
     volume.add(layer.volume)
-    solver(cmf.day)
+    solver(solver.t + cmf.day)
 
 # And a plot
 plot(et_act, c='g')
@@ -38,4 +38,4 @@ ylabel(r'$ET_{act} \left[\frac{mm}{day}\right]$')
 twinx()
 plot(volume, c='b')
 ylabel('Volume in mm')
-
+show()

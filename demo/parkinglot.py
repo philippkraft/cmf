@@ -40,7 +40,7 @@ for c in p:
     c.add_layer(0.1, cmf.VanGenuchtenMualem(Ksat=0.005))
     c.install_connection(cmf.GreenAmptInfiltration)
 
-cmf.DiffusiveSurfaceRunoff.set_linear_slope(1e-8)
+cmf.DiffusiveSurfaceRunoff.set_linear_slope(1e-4)
 cmf.connect_cells_with_flux(p, cmf.DiffusiveSurfaceRunoff)
 outlet = p.NewOutlet('outlet', -length, 0, -slope*length)
 
@@ -50,7 +50,7 @@ def setrain(rainfall):
     for c in p:
         c.set_rainfall(rainfall)
 
-solver = cmf.CVodeDense(p,1e-9)
+solver = cmf.CVodeKLU(p,1e-9)
 
 setrain(10.*24.)
 

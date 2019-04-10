@@ -10,11 +10,11 @@ import datetime
 p = cmf.project()
 W1=p.NewStorage(name="W1",x=0,y=0,z=0)
 W2=p.NewStorage(name="W2",x=10,y=0,z=0)
-q = cmf.kinematic_wave(source=W1,target=W2,residencetime=5.0)
+q = cmf.LinearStorageConnection(source=W1,target=W2,residencetime=5.0)
 W1.volume=1.0
 Out = p.NewOutlet(name="Outlet",x=20,y=0,z=0)
-q2 = cmf.kinematic_wave(source=W1,target=Out,residencetime=1.0)
-qout = cmf.kinematic_wave(source=W2,target=Out,residencetime=.5)
+q2 = cmf.LinearStorageConnection(source=W1,target=Out,residencetime=1.0)
+qout = cmf.LinearStorageConnection(source=W2,target=Out,residencetime=.5)
 # Create a Neumann Boundary condition connected to W1
 In = p.NewNeumannBoundary('In', W1)
 # Create a timeseries with daily alternating values.

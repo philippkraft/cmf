@@ -320,7 +320,7 @@ def make_cmf_core():
             print(sl, 'get downloaded and installed')
 
     for sl in static_libraries:
-        if not sl.exists():
+        if not sl.exists() or sl.build_always:
             sl.build()
 
 

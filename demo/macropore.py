@@ -83,7 +83,7 @@ groundwater = p.NewOutlet('groundwater',c.x,c.y,c.z - 1.)
 #cmf.Richards(c.layers[-1],groundwater)
 
 # Create solver
-solver = cmf.CVodeIntegrator(p,1e-9)
+solver = cmf.CVodeKrylov(p,1e-9)
 
 # some lists to save data during runtime
 wetness_mx = [] # Saturation of the matrix

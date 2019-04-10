@@ -28,7 +28,7 @@ class Project:
         self.w1.volume = 2.0
         self.w2.volume = 0.0
         label = label or self.con.to_string()
-        solver = cmf.CVodeIntegrator(self.p, 1e-9)
+        solver = cmf.CVodeKrylov(self.p, 1e-9)
         V0 = self.w1.volume
         t, vol = zip(*[(0, V0)] + [(t/cmf.day, self.w1.volume) 
                         for t in solver.run(cmf.Time(), cmf.week, cmf.h)])
@@ -75,27 +75,27 @@ fig, ax = plt.subplots(1, 2, figsize=(8,8))
 
 # Linear storage
 p = Project(cmf.LinearStorageConnection, 2)
-p.plot_all(ax, r'$1/2 \cdot V$')
+p.plot_all(ax, r'$Q_0 \cdot V$')
 
 # Power law beta=2
 p = Project(cmf.PowerLawConnection, Q0=.5, V0=1, beta=2)
-p.plot_all(ax, r'$1/2 \cdot V^2$')
+p.plot_all(ax, r'$Q_0 \cdot V^2$')
 
 # Power law beta = 0.5
 p = Project(cmf.PowerLawConnection, Q0=.5, V0=1, beta=0.5)
-p.plot_all(ax, r'$1/2 \cdot V^{1/2}$')
+p.plot_all(ax, r'$Q_0 \cdot V^{1/2}$')
 
 # Constraint kinematic
-p = Project(cmf.ConstraintLinearStorageConnection, residencetime=2, Vrmax=1.0)
-p.plot_all(ax, r'$1/2 \cdot V_l \cdot \frac{V_{r,max} - V_r}{V_{r,max}}$')
+p = Project(cmf.ConstraintLinearStorageFlux, residencetime=2, Vrmax=1.0)
+p.plot_all(ax, r'$Q_0 \cdot V_l \cdot \frac{V_{r,max} - V_r}{V_{r,max}}$')
 
 # Exponential decline
 p = Project(cmf.ExponentialDeclineConnection, Q0=.5, V0=1, m=1)
-p.plot_all(ax, r'$1/2 e^{-V}$')
+p.plot_all(ax, r'$Q_0 e^{-V}$')
 
 # Technical Flux
-p = Project(cmf.TechnicalFlux, maximum_flux=.5)
-p.plot_all(ax, r'$1/2$')
+p = Project(cmf.ConstantFlux, maximum_flux=.5)
+p.plot_all(ax, r'$Q_0$')
 
 
 plt.show()

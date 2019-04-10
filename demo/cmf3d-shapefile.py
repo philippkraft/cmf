@@ -7,7 +7,7 @@ The API is likely to change some day
 import cmf
 import cmf.geometry
 import numpy as np
-from cmf.geos_shapereader import Shapefile
+from shapefile import Reader as Shapefile
 import cmf.draw
 import pylab as plt
 from matplotlib.animation import FuncAnimation
@@ -95,7 +95,7 @@ class Model:
         c.install_connection(cmf.Richards)
         c.install_connection(cmf.GreenAmptInfiltration)
         c.install_connection(cmf.CanopyOverflow)
-        c.install_connection(cmf.SimpleTindexSnowMelt)
+        c.install_connection(cmf.TempIndexSnowMelt)
         c.install_connection(cmf.PenmanMonteithET)
         return c
 
@@ -151,12 +151,14 @@ class Model:
 
         # Create cells
         self.outlet_cells = []
-        for feature in shp:
+        for oid, feature in enumerate(shp):
+            record = feature.record
             # Create a cell for each feature in the shape file
-            c = cmf.geometry.create_cell(p, feature.shape, feature.HEIGHT, feature.OID, with_surfacewater=False)
+            c = cmf.geometry.create_cell(p, feature.shape, record.HEIGHT,
+                                         oid, with_surfacewater=False)
 
             # If it is an outlet feature, add cell to the list of outletcells
-            if feature.LANDUSE_CU.startswith('outlet'):
+            if record.LANDUSE_CU.startswith('outlet'):
                 self.outlet_cells.append(c)
             else:
                 # If it is a normal upload cell, add layers
@@ -176,7 +178,7 @@ class Model:
         # Load driver data
         load_meteo(p)
         self.project = p
-        self.solver = cmf.CVodeIntegrator(p, 1e-9)
+        self.solver = cmf.CVodeKLU(p, 1e-9)
         self.solver.t = p.meteo_stations[0].T.begin
 
     def run(self, start=None, end=None, step=cmf.day):

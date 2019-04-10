@@ -78,7 +78,7 @@ class DarcyPlain(cmf.project):
         self.rainfall_stations[0].data = data
 
     def run(self):
-        solver = cmf.CVodeIntegrator(self, 1e-9)
+        solver = cmf.CVodeKrylov(self, 1e-9)
         self.set_rain()
         for t in solver.run(self.tstart, self.tstart + self.duration, self.dt):
             q = self.outlet(t)

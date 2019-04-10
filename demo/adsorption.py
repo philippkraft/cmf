@@ -24,7 +24,7 @@ for s in p.solutes:
 ws[X].set_adsorption(cmf.LinearAdsorption(1, 1))
 # Tracer Y has a Freundlich isotherm xa/m=Kc^n, 
 # with K = 1 and n=0.5 and sorbent mass m = 1
-ws[Y].set_adsorption(cmf.FreundlichAdsorbtion(1., 1., 1.0))
+# ws[Y].set_adsorption(cmf.FreundlichAdsorbtion(1., 1., 1.0))
 # Tracer Y has a Langmuir isotherm xa/m=Kc/(1+Kc), 
 # with K = 1 and sorbent mass m = 1
 ws[Z].set_adsorption(cmf.LangmuirAdsorption(1., 1.))
@@ -39,7 +39,7 @@ outlet = p.NewOutlet('out', 0, 0, 0)
 cmf.LinearStorageConnection(ws, outlet, 1.)
 
 # Create a solver
-solver = cmf.ExplicitEuler_fixed(p)
+solver = cmf.CVodeAdams(p)
 
 # Rinse the storage for 1 week and get the outlet concentration at every hour
 # and the remaining tracer in the storage

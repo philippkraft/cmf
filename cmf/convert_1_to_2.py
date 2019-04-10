@@ -19,7 +19,7 @@ rename = {
     'cmf.waterbalance_connection': 'cmf.WaterBalanceFlux',
     'cmf.SimpleInfiltration': 'cmf.ConceptualInfiltration',
     'cmf.external_control_connection': 'cmf.ExternallyControlledFlux',
-    'cmf.SimpleTIndexSnowMelt': 'cmf.TempIndexSnowMelt',
+    'cmf.SimpleTindexSnowMelt': 'cmf.TempIndexSnowMelt',
     'cmf.CVodeIntegrator': 'cmf.CVodeKrylov',
     'cmf.SimplRichards': 'cmf.FreeDrainagePercolation',
 }
@@ -30,7 +30,7 @@ warning = {
     'cmf.constraint_kinematic_wave':
         'consider to use cmf.ConstraintLinearStorageFlux',
     'cmf.kinematic_wave':
-        'consider to use cmf.LinearRetention and cmf.PowerLawEquation',
+        'consider to use cmf.cmf.LinearStorageConnection and cmf.PowerLawConnection',
 }
 
 
@@ -72,7 +72,8 @@ if __name__ == '__main__':
     if len(sys.argv) > 1:
         if sys.argv[1] == '-i' and len(sys.argv) > 2:
             stream_in = io.StringIO(open(sys.argv[2]).read())
-        stream_in = open(sys.argv[1])
+        else:
+            stream_in = open(sys.argv[1])
     else:
         stream_in = sys.stdin
     if len(sys.argv) > 2:

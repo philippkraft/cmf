@@ -101,7 +101,7 @@ for lup, ldown in zip(c.layers[:-1], c.layers[1:]):
 # Use matrix infiltration as connection between surface water and first layer
 c.install_connection(cmf.MatrixInfiltration)
 # Create a snow storage and use a simple Temperature index model as a connection between snow and surfacewater
-c.install_connection(cmf.SimpleTindexSnowMelt)
+c.install_connection(cmf.TempIndexSnowMelt)
 # Use Penman-Monteith for ET
 c.install_connection(cmf.ShuttleworthWallace)
 c.vegetation.stomatal_resistance = 200
@@ -116,7 +116,7 @@ try:
     solver = cmf.CVodeBanded(p, 1e-9)
     solver.options.max_error_test_failures = 10000
 except AttributeError:
-    solver = cmf.CVodeIntegrator(p, 1e-9, 2)
+    solver = cmf.CVodeKrylov(p, 1e-9, 2)
     solver.LinearSolver = 1
 solver.t = cmf.Time(1, 11, 1980)
 

@@ -113,33 +113,12 @@
 }
 }
 
+%extend__repr__(cmf::math::CVodeInfo);
+
 %extend cmf::math::CVodeBase {
 %pythoncode {
     def get_jacobian(self):
         return self._get_jacobian().reshape((self.size(), self.size()), order='F')
+    info = property(get_info)
 }
-}
-
-%pythoncode {
-def CVodeIntegrator(project, tolerance=1e-9):
-    """
-    Backwards compatibility layer for the CVodeIntegrator.
-
-    Will return a CVodeKrylov solver as in cmf 1.x.
-
-    Parameters
-    ----------
-    project
-        CMF project
-    tolerance:
-        Solver tolerance
-
-    Returns
-    -------
-    CVodeKrylov
-        The integrator
-    """
-    from logging import warning
-    warning('CVodeIntegrator is not available in CMF 2.0. Creating a CVodeKrylov solver instead')
-    return CVodeKrylov(project, tolerance)
 }

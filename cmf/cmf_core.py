@@ -2382,32 +2382,32 @@ _cmf_core.WaterStorage_swigregister(WaterStorage)
 
 
 
-class waterbalance_connection(flux_connection):
-    """Proxy of C++ cmf::water::waterbalance_connection class."""
+class WaterbalanceFlux(flux_connection):
+    """Proxy of C++ cmf::water::WaterbalanceFlux class."""
 
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
     __repr__ = _swig_repr
 
     def __init__(self, *args, **kwargs):
-        """__init__(cmf::water::waterbalance_connection self, cmf::water::flux_node::ptr source, cmf::water::flux_node::ptr target) -> waterbalance_connection"""
-        _cmf_core.waterbalance_connection_swiginit(self, _cmf_core.new_waterbalance_connection(*args, **kwargs))
-    __swig_destroy__ = _cmf_core.delete_waterbalance_connection
-_cmf_core.waterbalance_connection_swigregister(waterbalance_connection)
-# waterbalance_connection end
+        """__init__(cmf::water::WaterbalanceFlux self, cmf::water::flux_node::ptr source, cmf::water::flux_node::ptr target) -> WaterbalanceFlux"""
+        _cmf_core.WaterbalanceFlux_swiginit(self, _cmf_core.new_WaterbalanceFlux(*args, **kwargs))
+    __swig_destroy__ = _cmf_core.delete_WaterbalanceFlux
+_cmf_core.WaterbalanceFlux_swigregister(WaterbalanceFlux)
+# WaterbalanceFlux end
 
-class external_control_connection(flux_connection):
-    """Proxy of C++ cmf::water::external_control_connection class."""
+class ExternallyControlledFlux(flux_connection):
+    """Proxy of C++ cmf::water::ExternallyControlledFlux class."""
 
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
     __repr__ = _swig_repr
-    flux = _swig_property(_cmf_core.external_control_connection_flux_get, _cmf_core.external_control_connection_flux_set)
+    flux = _swig_property(_cmf_core.ExternallyControlledFlux_flux_get, _cmf_core.ExternallyControlledFlux_flux_set)
 
     def __init__(self, *args, **kwargs):
-        """__init__(cmf::water::external_control_connection self, cmf::water::flux_node::ptr source, cmf::water::flux_node::ptr target, real flux_value=0) -> external_control_connection"""
-        _cmf_core.external_control_connection_swiginit(self, _cmf_core.new_external_control_connection(*args, **kwargs))
-    __swig_destroy__ = _cmf_core.delete_external_control_connection
-_cmf_core.external_control_connection_swigregister(external_control_connection)
-# external_control_connection end
+        """__init__(cmf::water::ExternallyControlledFlux self, cmf::water::flux_node::ptr source, cmf::water::flux_node::ptr target, real flux_value=0) -> ExternallyControlledFlux"""
+        _cmf_core.ExternallyControlledFlux_swiginit(self, _cmf_core.new_ExternallyControlledFlux(*args, **kwargs))
+    __swig_destroy__ = _cmf_core.delete_ExternallyControlledFlux
+_cmf_core.ExternallyControlledFlux_swigregister(ExternallyControlledFlux)
+# ExternallyControlledFlux end
 
 
 def set_flux(*args, **kwargs):
@@ -2417,23 +2417,6 @@ def set_flux(*args, **kwargs):
 def can_set_flux(*args, **kwargs):
     """can_set_flux(cmf::water::flux_node::ptr source, cmf::water::flux_node::ptr target) -> bool"""
     return _cmf_core.can_set_flux(*args, **kwargs)
-class kinematic_wave(flux_connection):
-    """Proxy of C++ cmf::water::kinematic_wave class."""
-
-    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
-    __repr__ = _swig_repr
-    residencetime = _swig_property(_cmf_core.kinematic_wave_residencetime_get, _cmf_core.kinematic_wave_residencetime_set)
-    exponent = _swig_property(_cmf_core.kinematic_wave_exponent_get, _cmf_core.kinematic_wave_exponent_set)
-    residual = _swig_property(_cmf_core.kinematic_wave_residual_get, _cmf_core.kinematic_wave_residual_set)
-    V0 = _swig_property(_cmf_core.kinematic_wave_V0_get, _cmf_core.kinematic_wave_V0_set)
-
-    def __init__(self, *args, **kwargs):
-        """__init__(cmf::water::kinematic_wave self, cmf::water::WaterStorage::ptr source, cmf::water::flux_node::ptr target, real residencetime, real exponent=1.0, real residual=0.0, real V0=1.0) -> kinematic_wave"""
-        _cmf_core.kinematic_wave_swiginit(self, _cmf_core.new_kinematic_wave(*args, **kwargs))
-    __swig_destroy__ = _cmf_core.delete_kinematic_wave
-_cmf_core.kinematic_wave_swigregister(kinematic_wave)
-# kinematic_wave end
-
 class LinearStorageConnection(flux_connection):
     """Proxy of C++ cmf::water::LinearStorageConnection class."""
 
@@ -2482,106 +2465,68 @@ class ExponentialDeclineConnection(flux_connection):
 _cmf_core.ExponentialDeclineConnection_swigregister(ExponentialDeclineConnection)
 # ExponentialDeclineConnection end
 
-class ConstraintLinearStorageConnection(flux_connection):
-    """Proxy of C++ cmf::water::ConstraintLinearStorageConnection class."""
+class ConstraintLinearStorageFlux(flux_connection):
+    """Proxy of C++ cmf::water::ConstraintLinearStorageFlux class."""
 
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
     __repr__ = _swig_repr
-    residencetime = _swig_property(_cmf_core.ConstraintLinearStorageConnection_residencetime_get, _cmf_core.ConstraintLinearStorageConnection_residencetime_set)
-    Vlmin = _swig_property(_cmf_core.ConstraintLinearStorageConnection_Vlmin_get, _cmf_core.ConstraintLinearStorageConnection_Vlmin_set)
-    Vrmax = _swig_property(_cmf_core.ConstraintLinearStorageConnection_Vrmax_get, _cmf_core.ConstraintLinearStorageConnection_Vrmax_set)
+    residencetime = _swig_property(_cmf_core.ConstraintLinearStorageFlux_residencetime_get, _cmf_core.ConstraintLinearStorageFlux_residencetime_set)
+    Vlmin = _swig_property(_cmf_core.ConstraintLinearStorageFlux_Vlmin_get, _cmf_core.ConstraintLinearStorageFlux_Vlmin_set)
+    Vrmax = _swig_property(_cmf_core.ConstraintLinearStorageFlux_Vrmax_get, _cmf_core.ConstraintLinearStorageFlux_Vrmax_set)
 
     def __init__(self, *args, **kwargs):
-        """__init__(cmf::water::ConstraintLinearStorageConnection self, cmf::water::WaterStorage::ptr source, cmf::water::WaterStorage::ptr target, real residencetime=1.0, real Vlmin=0.0, real Vrmax=1.0) -> ConstraintLinearStorageConnection"""
-        _cmf_core.ConstraintLinearStorageConnection_swiginit(self, _cmf_core.new_ConstraintLinearStorageConnection(*args, **kwargs))
-    __swig_destroy__ = _cmf_core.delete_ConstraintLinearStorageConnection
-_cmf_core.ConstraintLinearStorageConnection_swigregister(ConstraintLinearStorageConnection)
-# ConstraintLinearStorageConnection end
+        """__init__(cmf::water::ConstraintLinearStorageFlux self, cmf::water::WaterStorage::ptr source, cmf::water::WaterStorage::ptr target, real residencetime=1.0, real Vlmin=0.0, real Vrmax=1.0) -> ConstraintLinearStorageFlux"""
+        _cmf_core.ConstraintLinearStorageFlux_swiginit(self, _cmf_core.new_ConstraintLinearStorageFlux(*args, **kwargs))
+    __swig_destroy__ = _cmf_core.delete_ConstraintLinearStorageFlux
+_cmf_core.ConstraintLinearStorageFlux_swigregister(ConstraintLinearStorageFlux)
+# ConstraintLinearStorageFlux end
 
-class bidirectional_kinematic_exchange(flux_connection):
-    """Proxy of C++ cmf::water::bidirectional_kinematic_exchange class."""
+class ConstantFlux(flux_connection):
+    """Proxy of C++ cmf::water::ConstantFlux class."""
 
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
     __repr__ = _swig_repr
-    Vmaxsuc = _swig_property(_cmf_core.bidirectional_kinematic_exchange_Vmaxsuc_get, _cmf_core.bidirectional_kinematic_exchange_Vmaxsuc_set)
-    Vminspill = _swig_property(_cmf_core.bidirectional_kinematic_exchange_Vminspill_get, _cmf_core.bidirectional_kinematic_exchange_Vminspill_set)
-    qspill = _swig_property(_cmf_core.bidirectional_kinematic_exchange_qspill_get, _cmf_core.bidirectional_kinematic_exchange_qspill_set)
-    qsuc = _swig_property(_cmf_core.bidirectional_kinematic_exchange_qsuc_get, _cmf_core.bidirectional_kinematic_exchange_qsuc_set)
-    beta_suc = _swig_property(_cmf_core.bidirectional_kinematic_exchange_beta_suc_get, _cmf_core.bidirectional_kinematic_exchange_beta_suc_set)
-    beta_spill = _swig_property(_cmf_core.bidirectional_kinematic_exchange_beta_spill_get, _cmf_core.bidirectional_kinematic_exchange_beta_spill_set)
+    MaxFlux = _swig_property(_cmf_core.ConstantFlux_MaxFlux_get, _cmf_core.ConstantFlux_MaxFlux_set)
+    MinState = _swig_property(_cmf_core.ConstantFlux_MinState_get, _cmf_core.ConstantFlux_MinState_set)
+    FluxDecreaseTime = _swig_property(_cmf_core.ConstantFlux_FluxDecreaseTime_get, _cmf_core.ConstantFlux_FluxDecreaseTime_set)
 
     def __init__(self, *args, **kwargs):
-        """__init__(cmf::water::bidirectional_kinematic_exchange self, cmf::water::WaterStorage::ptr source, cmf::water::flux_node::ptr target, real Vminspill, real Vmaxsuc, real qspill, real qsuc, real beta_spill, real beta_suc) -> bidirectional_kinematic_exchange"""
-        _cmf_core.bidirectional_kinematic_exchange_swiginit(self, _cmf_core.new_bidirectional_kinematic_exchange(*args, **kwargs))
-    __swig_destroy__ = _cmf_core.delete_bidirectional_kinematic_exchange
-_cmf_core.bidirectional_kinematic_exchange_swigregister(bidirectional_kinematic_exchange)
-# bidirectional_kinematic_exchange end
+        """__init__(cmf::water::ConstantFlux self, cmf::water::WaterStorage::ptr source, cmf::water::flux_node::ptr target, real maximum_flux, real minimal_state=0, Time flux_decrease_time) -> ConstantFlux"""
+        _cmf_core.ConstantFlux_swiginit(self, _cmf_core.new_ConstantFlux(*args, **kwargs))
+    __swig_destroy__ = _cmf_core.delete_ConstantFlux
+_cmf_core.ConstantFlux_swigregister(ConstantFlux)
+# ConstantFlux end
 
-class constraint_kinematic_wave(flux_connection):
-    """Proxy of C++ cmf::water::constraint_kinematic_wave class."""
+class LinearGradientFlux(flux_connection):
+    """Proxy of C++ cmf::water::LinearGradientFlux class."""
 
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
     __repr__ = _swig_repr
-    residencetime = _swig_property(_cmf_core.constraint_kinematic_wave_residencetime_get, _cmf_core.constraint_kinematic_wave_residencetime_set)
-    beta = _swig_property(_cmf_core.constraint_kinematic_wave_beta_get, _cmf_core.constraint_kinematic_wave_beta_set)
-    residual = _swig_property(_cmf_core.constraint_kinematic_wave_residual_get, _cmf_core.constraint_kinematic_wave_residual_set)
-    V0 = _swig_property(_cmf_core.constraint_kinematic_wave_V0_get, _cmf_core.constraint_kinematic_wave_V0_set)
-    Vrmax = _swig_property(_cmf_core.constraint_kinematic_wave_Vrmax_get, _cmf_core.constraint_kinematic_wave_Vrmax_set)
-    gamma = _swig_property(_cmf_core.constraint_kinematic_wave_gamma_get, _cmf_core.constraint_kinematic_wave_gamma_set)
+    K = _swig_property(_cmf_core.LinearGradientFlux_K_get, _cmf_core.LinearGradientFlux_K_set)
+    A = _swig_property(_cmf_core.LinearGradientFlux_A_get, _cmf_core.LinearGradientFlux_A_set)
+    d = _swig_property(_cmf_core.LinearGradientFlux_d_get, _cmf_core.LinearGradientFlux_d_set)
 
     def __init__(self, *args, **kwargs):
-        """__init__(cmf::water::constraint_kinematic_wave self, cmf::water::WaterStorage::ptr source, cmf::water::WaterStorage::ptr target, real residencetime=1.0, real exponent=1.0, real residual=0.0, real V0=1.0, real Vrmax=1.0, real gamma=1.0) -> constraint_kinematic_wave"""
-        _cmf_core.constraint_kinematic_wave_swiginit(self, _cmf_core.new_constraint_kinematic_wave(*args, **kwargs))
-    __swig_destroy__ = _cmf_core.delete_constraint_kinematic_wave
-_cmf_core.constraint_kinematic_wave_swigregister(constraint_kinematic_wave)
-# constraint_kinematic_wave end
+        """__init__(cmf::water::LinearGradientFlux self, cmf::water::WaterStorage::ptr left, cmf::water::WaterStorage::ptr right, real K, real d=1.0, real A=1.0) -> LinearGradientFlux"""
+        _cmf_core.LinearGradientFlux_swiginit(self, _cmf_core.new_LinearGradientFlux(*args, **kwargs))
+    __swig_destroy__ = _cmf_core.delete_LinearGradientFlux
+_cmf_core.LinearGradientFlux_swigregister(LinearGradientFlux)
+# LinearGradientFlux end
 
-class TechnicalFlux(flux_connection):
-    """Proxy of C++ cmf::water::TechnicalFlux class."""
+class ConstantStateFlux(flux_connection):
+    """Proxy of C++ cmf::water::ConstantStateFlux class."""
 
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
     __repr__ = _swig_repr
-    MaxFlux = _swig_property(_cmf_core.TechnicalFlux_MaxFlux_get, _cmf_core.TechnicalFlux_MaxFlux_set)
-    MinState = _swig_property(_cmf_core.TechnicalFlux_MinState_get, _cmf_core.TechnicalFlux_MinState_set)
-    FluxDecreaseTime = _swig_property(_cmf_core.TechnicalFlux_FluxDecreaseTime_get, _cmf_core.TechnicalFlux_FluxDecreaseTime_set)
+    reaction_time = _swig_property(_cmf_core.ConstantStateFlux_reaction_time_get, _cmf_core.ConstantStateFlux_reaction_time_set)
+    target_state = _swig_property(_cmf_core.ConstantStateFlux_target_state_get, _cmf_core.ConstantStateFlux_target_state_set)
 
     def __init__(self, *args, **kwargs):
-        """__init__(cmf::water::TechnicalFlux self, cmf::water::WaterStorage::ptr source, cmf::water::flux_node::ptr target, real maximum_flux, real minimal_state=0, Time flux_decrease_time) -> TechnicalFlux"""
-        _cmf_core.TechnicalFlux_swiginit(self, _cmf_core.new_TechnicalFlux(*args, **kwargs))
-    __swig_destroy__ = _cmf_core.delete_TechnicalFlux
-_cmf_core.TechnicalFlux_swigregister(TechnicalFlux)
-# TechnicalFlux end
-
-class generic_gradient_connection(flux_connection):
-    """Proxy of C++ cmf::water::generic_gradient_connection class."""
-
-    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
-    __repr__ = _swig_repr
-    K = _swig_property(_cmf_core.generic_gradient_connection_K_get, _cmf_core.generic_gradient_connection_K_set)
-    A = _swig_property(_cmf_core.generic_gradient_connection_A_get, _cmf_core.generic_gradient_connection_A_set)
-    d = _swig_property(_cmf_core.generic_gradient_connection_d_get, _cmf_core.generic_gradient_connection_d_set)
-
-    def __init__(self, *args, **kwargs):
-        """__init__(cmf::water::generic_gradient_connection self, cmf::water::WaterStorage::ptr left, cmf::water::WaterStorage::ptr right, real K, real d=1.0, real A=1.0) -> generic_gradient_connection"""
-        _cmf_core.generic_gradient_connection_swiginit(self, _cmf_core.new_generic_gradient_connection(*args, **kwargs))
-    __swig_destroy__ = _cmf_core.delete_generic_gradient_connection
-_cmf_core.generic_gradient_connection_swigregister(generic_gradient_connection)
-# generic_gradient_connection end
-
-class statecontrol_connection(flux_connection):
-    """Proxy of C++ cmf::water::statecontrol_connection class."""
-
-    thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
-    __repr__ = _swig_repr
-    reaction_time = _swig_property(_cmf_core.statecontrol_connection_reaction_time_get, _cmf_core.statecontrol_connection_reaction_time_set)
-    target_state = _swig_property(_cmf_core.statecontrol_connection_target_state_get, _cmf_core.statecontrol_connection_target_state_set)
-
-    def __init__(self, *args, **kwargs):
-        """__init__(cmf::water::statecontrol_connection self, cmf::water::WaterStorage::ptr controlled_storage, cmf::water::flux_node::ptr other_end, real target_state, Time reaction_time) -> statecontrol_connection"""
-        _cmf_core.statecontrol_connection_swiginit(self, _cmf_core.new_statecontrol_connection(*args, **kwargs))
-    __swig_destroy__ = _cmf_core.delete_statecontrol_connection
-_cmf_core.statecontrol_connection_swigregister(statecontrol_connection)
-# statecontrol_connection end
+        """__init__(cmf::water::ConstantStateFlux self, cmf::water::WaterStorage::ptr controlled_storage, cmf::water::flux_node::ptr other_end, real target_state, Time reaction_time) -> ConstantStateFlux"""
+        _cmf_core.ConstantStateFlux_swiginit(self, _cmf_core.new_ConstantStateFlux(*args, **kwargs))
+    __swig_destroy__ = _cmf_core.delete_ConstantStateFlux
+_cmf_core.ConstantStateFlux_swigregister(ConstantStateFlux)
+# ConstantStateFlux end
 
 class node_list(object):
     """Proxy of C++ cmf::water::node_list class."""
@@ -5745,25 +5690,25 @@ _cmf_core.RutterInterception_swigregister(RutterInterception)
 
 
 
-class SimpleTindexSnowMelt(flux_connection):
-    """Proxy of C++ cmf::upslope::connections::SimpleTindexSnowMelt class."""
+class TempIndexSnowMelt(flux_connection):
+    """Proxy of C++ cmf::upslope::connections::TempIndexSnowMelt class."""
 
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
     __repr__ = _swig_repr
-    SnowMeltRate = _swig_property(_cmf_core.SimpleTindexSnowMelt_SnowMeltRate_get, _cmf_core.SimpleTindexSnowMelt_SnowMeltRate_set)
+    SnowMeltRate = _swig_property(_cmf_core.TempIndexSnowMelt_SnowMeltRate_get, _cmf_core.TempIndexSnowMelt_SnowMeltRate_set)
 
     def __init__(self, *args, **kwargs):
-        """__init__(cmf::upslope::connections::SimpleTindexSnowMelt self, cmf::water::WaterStorage::ptr snow, cmf::water::flux_node::ptr surface_water, Cell cell, real rate=7.0) -> SimpleTindexSnowMelt"""
-        _cmf_core.SimpleTindexSnowMelt_swiginit(self, _cmf_core.new_SimpleTindexSnowMelt(*args, **kwargs))
+        """__init__(cmf::upslope::connections::TempIndexSnowMelt self, cmf::water::WaterStorage::ptr snow, cmf::water::flux_node::ptr surface_water, Cell cell, real rate=7.0) -> TempIndexSnowMelt"""
+        _cmf_core.TempIndexSnowMelt_swiginit(self, _cmf_core.new_TempIndexSnowMelt(*args, **kwargs))
 
     def use_for_cell(*args, **kwargs):
         """use_for_cell(Cell cell)"""
-        return _cmf_core.SimpleTindexSnowMelt_use_for_cell(*args, **kwargs)
+        return _cmf_core.TempIndexSnowMelt_use_for_cell(*args, **kwargs)
 
     use_for_cell = staticmethod(use_for_cell)
-    __swig_destroy__ = _cmf_core.delete_SimpleTindexSnowMelt
-_cmf_core.SimpleTindexSnowMelt_swigregister(SimpleTindexSnowMelt)
-# SimpleTindexSnowMelt end
+    __swig_destroy__ = _cmf_core.delete_TempIndexSnowMelt
+_cmf_core.TempIndexSnowMelt_swigregister(TempIndexSnowMelt)
+# TempIndexSnowMelt end
 
 
 
@@ -5870,25 +5815,25 @@ _cmf_core.GreenAmptInfiltration_swigregister(GreenAmptInfiltration)
 
 
 
-class SimpleInfiltration(flux_connection):
-    """Proxy of C++ cmf::upslope::connections::SimpleInfiltration class."""
+class ConceptualInfiltration(flux_connection):
+    """Proxy of C++ cmf::upslope::connections::ConceptualInfiltration class."""
 
     thisown = _swig_property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
     __repr__ = _swig_repr
-    W0 = _swig_property(_cmf_core.SimpleInfiltration_W0_get, _cmf_core.SimpleInfiltration_W0_set)
+    W0 = _swig_property(_cmf_core.ConceptualInfiltration_W0_get, _cmf_core.ConceptualInfiltration_W0_set)
 
     def __init__(self, *args, **kwargs):
-        """__init__(cmf::upslope::connections::SimpleInfiltration self, cmf::upslope::SoilLayer::ptr soilwater, cmf::water::flux_node::ptr surfacewater, real W0=0.9) -> SimpleInfiltration"""
-        _cmf_core.SimpleInfiltration_swiginit(self, _cmf_core.new_SimpleInfiltration(*args, **kwargs))
+        """__init__(cmf::upslope::connections::ConceptualInfiltration self, cmf::upslope::SoilLayer::ptr soilwater, cmf::water::flux_node::ptr surfacewater, real W0=0.9) -> ConceptualInfiltration"""
+        _cmf_core.ConceptualInfiltration_swiginit(self, _cmf_core.new_ConceptualInfiltration(*args, **kwargs))
 
     def use_for_cell(*args, **kwargs):
         """use_for_cell(Cell c)"""
-        return _cmf_core.SimpleInfiltration_use_for_cell(*args, **kwargs)
+        return _cmf_core.ConceptualInfiltration_use_for_cell(*args, **kwargs)
 
     use_for_cell = staticmethod(use_for_cell)
-    __swig_destroy__ = _cmf_core.delete_SimpleInfiltration
-_cmf_core.SimpleInfiltration_swigregister(SimpleInfiltration)
-# SimpleInfiltration end
+    __swig_destroy__ = _cmf_core.delete_ConceptualInfiltration
+_cmf_core.ConceptualInfiltration_swigregister(ConceptualInfiltration)
+# ConceptualInfiltration end
 
 
 
@@ -7010,6 +6955,10 @@ class CVodeInfo(object):
         return _cmf_core.CVodeInfo_to_string(self, *args, **kwargs)
 
 
+    def __repr__(self): 
+        return self.to_string()
+
+
     def __init__(self, *args, **kwargs):
         """__init__(cmf::math::CVodeInfo self) -> CVodeInfo"""
         _cmf_core.CVodeInfo_swiginit(self, _cmf_core.new_CVodeInfo(*args, **kwargs))
@@ -7062,6 +7011,7 @@ class CVodeBase(Integrator):
 
     def get_jacobian(self):
         return self._get_jacobian().reshape((self.size(), self.size()), order='F')
+    info = property(get_info)
 
 CVodeBase.initialize = new_instancemethod(_cmf_core.CVodeBase_initialize, None, CVodeBase)
 CVodeBase.set_error_msg = new_instancemethod(_cmf_core.CVodeBase_set_error_msg, None, CVodeBase)
@@ -7193,35 +7143,6 @@ class SoluteWaterIntegrator(Integrator):
 SoluteWaterIntegrator.copy = new_instancemethod(_cmf_core.SoluteWaterIntegrator_copy, None, SoluteWaterIntegrator)
 _cmf_core.SoluteWaterIntegrator_swigregister(SoluteWaterIntegrator)
 # SoluteWaterIntegrator end
-
-
-def CVodeIntegrator(project, tolerance=1e-9):
-    """
-    Backwards compatibility layer for the CVodeIntegrator.
-
-    Will return a CVodeKrylov solver as in cmf 1.x.
-
-    Parameters
-    ----------
-    project
-        CMF project
-    tolerance:
-        Solver tolerance
-
-    Returns
-    -------
-    CVodeKrylov
-        The integrator
-    """
-    from logging import warning
-    warning('CVodeIntegrator is not available in CMF 2.0. Creating a CVodeKrylov solver instead')
-    return CVodeKrylov(project, tolerance)
-
-
-ConstantFlux = TechnicalFlux
-ConstantStateFlux = statecontrol_connection
-WaterBalanceFlux = waterbalance_connection
-ConceptualInfiltration = SimpleInfiltration
 
 
 

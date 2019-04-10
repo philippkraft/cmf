@@ -29,7 +29,7 @@ class Model:
         Vc0 = self.c.canopy.volume
         Vl0 = self.c.layers[0].volume
         Vs0 = self.c.surfacewater.volume
-        solver = cmf.CVodeIntegrator(self.p, 1e-9)
+        solver = cmf.CVodeKrylov(self.p, 1e-9)
         vol = []
         flux = []
         resistance = []
