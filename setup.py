@@ -197,7 +197,7 @@ class CmfBuildExt(build_ext):
             if not sl.exists() or sl.build_always:
                 sl.build()
 
-        cmf_core: dExtension = self.extensions[-1]
+        cmf_core = self.extensions[-1]
 
         for sl in static_libraries:
             sl.extend(cmf_core.include_dirs, cmf_core.library_dirs,
