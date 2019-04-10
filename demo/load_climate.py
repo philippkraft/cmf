@@ -1,6 +1,6 @@
-
 import cmf
 import pandas as pd
+
 
 def load_climate_data(project, climate_file):
     """
@@ -9,7 +9,6 @@ def load_climate_data(project, climate_file):
     and a rain station.
     Data provided by DWD
 
-    :param project: A cmf project
     :returns: meteo station, rainfall station
     """
     data = pd.read_csv(climate_file, parse_dates=['date'], index_col=0)

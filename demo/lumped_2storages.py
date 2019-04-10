@@ -6,6 +6,7 @@ import cmf
 
 from .load_climate import load_climate_data
 
+
 class Cmf2StorageModel:
     def __init__(self, climate_file='data/climate.csv'):
         self.project = cmf.project()
@@ -18,7 +19,6 @@ class Cmf2StorageModel:
         self.outlet = self.project.NewOutlet('outlet')
 
         self.meteo, self.rainstation = load_climate_data(self.project, climate_file)
-
 
     def mm_to_m3(self, vol):
         return vol * self.cell.area * 1e-3
@@ -62,5 +62,3 @@ class Cmf2StorageModel:
             print(t)
 
         return outlet
-
-

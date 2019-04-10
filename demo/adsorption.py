@@ -6,12 +6,13 @@ Created on Thu Apr 10 21:33:35 2014
 """
 
 import cmf
+
 # project with three tracers
 p = cmf.project('No Linear Freundlich Langmuir')
 N, X, Y, Z = p.solutes
 
 # A water storage without specific properties
-ws = p.NewStorage('storage',0,0,0)
+ws = p.NewStorage('storage', 0, 0, 0)
 # 1m3 water as initial condition
 ws.state = 1.0
 
@@ -31,7 +32,7 @@ ws[Z].set_adsorption(cmf.LangmuirAdsorption(1., 1.))
 
 # Now we put a constant clean water flux into the storage
 inflow = cmf.NeumannBoundary.create(ws)
-inflow.flux = 1.0 # 1 m3/day
+inflow.flux = 1.0  # 1 m3/day
 for s in p.solutes:
     inflow.concentration[s] = 0.0
 # And an outlet, a linear storage term with a retention time of 1 day
@@ -49,6 +50,7 @@ result = [[outlet.conc(t, s) for s in p.solutes]
           ]
 # Plot result        ]
 from pylab import *
+
 result = array(result)
 conc = result[:, :len(p.solutes)]
 load = result[:, len(p.solutes):]

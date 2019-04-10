@@ -73,7 +73,7 @@ class DarcyPlain(cmf.project):
         print('set rain')
         data = cmf.timeseries(self.tstart, self.dt)
         while data.end < self.tstart + self.rain_duration:
-            data.add(self.rain_amount * cmf.day/self.rain_duration)
+            data.add(self.rain_amount * cmf.day / self.rain_duration)
         data.add(0)
         self.rainfall_stations[0].data = data
 
@@ -112,7 +112,6 @@ class Figure:
         return [self.surface, self.title, self.potential]
 
     def draw(self, t):
-
         self.potential.set_ydata(self.model.potential)
         self.title.set_text(t)
         return [self.surface, self.title, self.potential]
@@ -128,10 +127,6 @@ class Figure:
 
 
 if __name__ == '__main__':
-
     model = DarcyPlain()
     fig = Figure(model)
     fig.animate()
-
-
-

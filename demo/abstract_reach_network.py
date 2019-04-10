@@ -2,6 +2,7 @@ import cmf
 import numpy as np
 import time
 
+
 class ReachNetwork:
     def __init__(self, levels=3):
         self.rtype = cmf.TriangularReach(100)
@@ -66,21 +67,22 @@ class Model:
     def outflux(self):
         return self.network.outlet(self.solver.t)
 
+
 class SparseStructure:
     def __init__(self, state_owner):
         self.sps = cmf.sparse_structure()
-        self.sps.generate( state_owner.get_states())    
+        self.sps.generate(state_owner.get_states())
 
     def __iter__(self):
         idx_ptr = list(self.sps.indexpointers)
         idx_val = list(self.sps.indexvalues)
         for col in range(self.sps.NP):
             try:
-                for row in idx_val[idx_ptr[col]:idx_ptr[col+1]]:
+                for row in idx_val[idx_ptr[col]:idx_ptr[col + 1]]:
                     yield row, col
             except IndexError:
-                raise IndexError(f'col={col}, idx_ptr[col]={idx_ptr[col]}, idx_ptr[col+1]={idx_ptr[col+1]}')
-        
+                raise IndexError(f'col={col}, idx_ptr[col]={idx_ptr[col]}, idx_ptr[col+1]={idx_ptr[col + 1]}')
+
     def as_dense(self):
         res = np.zeros(shape=(self.sps.N, self.sps.N), dtype=bool)
         for row, col in self:
@@ -88,11 +90,9 @@ class SparseStructure:
         return res
 
 
-
-
-
 if __name__ == '__main__':
     from pylab import imshow, show
+
     print(f'{"solver":<25}level size {"init sec":<10}{"run sec":<10}{"method calls":<15}')
     for solver_type in [cmf.CVodeKLU, cmf.CVodeKrylov]:
         for level in range(1, 12):
@@ -107,4 +107,3 @@ if __name__ == '__main__':
             name = model.solver.to_string()
             print(f'{name:>25}{level:6d}{info.size:5d}{tinit:10.2f}{elapsed:10.2f}{info.dxdt_method_calls:15,d}')
     klu = Model(5, cmf.CVodeKLU)(cmf.day)
-

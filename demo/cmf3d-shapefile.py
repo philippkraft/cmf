@@ -12,8 +12,8 @@ import cmf.draw
 import pylab as plt
 from matplotlib.animation import FuncAnimation
 
-
 from datetime import datetime, timedelta
+
 
 def load_meteo(project):
     """Loads the meteorology from a csv file.
@@ -63,6 +63,7 @@ def load_meteo(project):
     # Use the meteorological station for each cell of the project
     project.use_nearest_meteo()
 
+
 class Model:
     """
     The 3d model based on irregular polygons from a shapefile
@@ -71,7 +72,6 @@ class Model:
     def build_cell(self, c, layercount=0):
         """
         Shapes and makes a cell, by adding layers and connections
-        :param c: cmf.Cell
         :return: the now enhanced cell
         """
 
@@ -135,8 +135,8 @@ class Model:
         return sum(c.area for c in self.project)
 
     def __init__(self, subsurface_lateral_connection,
-                       surface_lateral_connection=None,
-                       layercount=0):
+                 surface_lateral_connection=None,
+                 layercount=0):
         """
         Creates the cmf project
 
@@ -189,11 +189,14 @@ class Model:
             print(t)
             yield t
 
+
 class Animator(FuncAnimation):
     def __init__(self, model):
         self.model = model
         self.figure = plt.figure()
+
         def f(c): return c.layers[0].wetness if c.layers else 0.0
+
         self.cellmap = cmf.draw.CellMap(p.project, f, vmin=0, vmax=1)
 
         self.fluxmap = cmf.draw.FluxMap(self.model.project, self.model.t, zorder=2, color='w')
@@ -205,20 +208,16 @@ class Animator(FuncAnimation):
 
     def draw(self, frame=None):
         t = frame
-        #print(self.fluxmap.scale)
+        # print(self.fluxmap.scale)
         self.titel.set_text(str(t))
         self.cellmap()
         self.fluxmap(t)
         return [self.titel, self.fluxmap.quiver] + list(self.cellmap.get_artists())
 
 
-
 if __name__ == '__main__':
-
     p = Model(cmf.Darcy, cmf.KinematicSurfaceRunoff, 1)
-
 
     # cm = cmf.draw.CellMap(p.project, lambda c: c.saturated_depth)
     anim = Animator(p)
     plt.show()
-

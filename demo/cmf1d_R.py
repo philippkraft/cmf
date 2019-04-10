@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from __future__ import division, print_function
+
 """
 This file creates a single cell to calculate a soil column using a 1D Richards equation
 
@@ -120,11 +121,13 @@ except AttributeError:
     solver.LinearSolver = 1
 solver.t = cmf.Time(1, 11, 1980)
 
+
 def rhs_info(solver):
     if hasattr(solver, 'info'):
         return solver.info.rhs_evaluations
     else:
         return solver.get_rhsevals()
+
 
 def run(until=cmf.year, dt=cmf.day):
     """Runs a the model, and saves the outflow"""
@@ -187,6 +190,7 @@ def plotresult(outflow, wetness):
 if __name__ == '__main__':
     # Run the model for 5 years
     import time
+
     tstart = time.time()
     cmf.set_parallel_threads(1)
     outflow, wetness = run(cmf.year * 5)

@@ -35,8 +35,8 @@ class Model:
         resistance = []
         mpot = []
         self.et.refresh(cmf.Time())
-        for t in solver.run(cmf.Time(), cmf.day * days, cmf.min*6):
-            #print(f'{t}: {self.c.surfacewater.depth:0.3f}m')
+        for t in solver.run(cmf.Time(), cmf.day * days, cmf.min * 6):
+            # print(f'{t}: {self.c.surfacewater.depth:0.3f}m')
             vol.append((
                 self.c.canopy.volume / Vc0,
                 self.c.surfacewater.volume / Vs0,
@@ -56,11 +56,13 @@ class Model:
             mpot.append(self.c.surface_water_coverage())
         return vol, flux, resistance, mpot
 
+
 if __name__ == '__main__':
     print(cmf.__version__)
     m = Model()
     vol, flux, resistance, mpot = m(10)
     from matplotlib import pylab as plt
+
     fig, ax = plt.subplots(3, 1, sharex='all')
     plt.sca(ax[0])
     plt.plot(vol)
@@ -72,7 +74,3 @@ if __name__ == '__main__':
     plt.plot(resistance)
     plt.legend('RAA RAC RAS RSC RSS'.split(), loc=0)
     plt.show()
-
-
-
-

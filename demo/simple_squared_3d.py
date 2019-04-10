@@ -8,7 +8,7 @@ import rasterio
 import time
 
 
-def load_dem(filename='dem10.dem')->rasterio.DatasetReader:
+def load_dem(filename='dem10.dem') -> rasterio.DatasetReader:
     return rasterio.open(filename, mode='r', driver='AAIGrid')
 
 
@@ -94,7 +94,7 @@ class Setup:
         for rc in reach_cells:
             if rc.main_outlet:
                 l = cmf.distance(rc, rc.main_outlet)
-                reaches[rc]=self.project.NewReach(rc.x, rc.y, rc.z - 0.1, cmf.TriangularReach(l))
+                reaches[rc] = self.project.NewReach(rc.x, rc.y, rc.z - 0.1, cmf.TriangularReach(l))
                 reaches[rc].Name = f'R{rc.Id}'
                 rc.surfacewater.connection_to(rc.main_outlet.surfacewater).kill_me()
             elif rc == self.outcell:

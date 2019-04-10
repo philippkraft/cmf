@@ -9,11 +9,12 @@ import cmf
 import pylab as plt
 
 
-class Project: 
+class Project:
     """
     Creates a cmf project and 2 waterstorages and connects them
     with a connection defined by type and paramters
     """
+
     def __init__(self, con_type, *args, **kwargs):
         self.p = cmf.project()
         self.w1 = self.p.NewStorage('W1')
@@ -30,13 +31,13 @@ class Project:
         label = label or self.con.to_string()
         solver = cmf.CVodeKrylov(self.p, 1e-9)
         V0 = self.w1.volume
-        t, vol = zip(*[(0, V0)] + [(t/cmf.day, self.w1.volume) 
-                        for t in solver.run(cmf.Time(), cmf.week, cmf.h)])
-        
-        plt.plot(t, vol,label=label)
+        t, vol = zip(*[(0, V0)] + [(t / cmf.day, self.w1.volume)
+                                   for t in solver.run(cmf.Time(), cmf.week, cmf.h)])
+
+        plt.plot(t, vol, label=label)
         plt.xlabel(r'$t\ in\ days$')
         plt.ylabel(r'$V\ in\ m^3$')
-        plt.yticks([0,1,2],['0','$V_0$','$V(t_0)$'])
+        plt.yticks([0, 1, 2], ['0', '$V_0$', '$V(t_0)$'])
         plt.grid(True)
 
     def plot_VQ(self, label=None):
@@ -45,18 +46,20 @@ class Project:
         for V_w1 = [0..2], and V_w2 = 0.5
         """
         label = label or self.con.to_string()
+
         def Q(V):
             self.w1.volume = V
             self.w2.volume = 0.5
             return self.w1.flux_to(self.w2, cmf.Time())
+
         vol = plt.arange(0, 2, 0.01)
-        plt.plot(vol, [Q(V) for V in vol],label=label)
-        plt.xticks([0,1],['0','$V_0$'])
-        plt.yticks([0,0.5],['0','$Q_0$'])
+        plt.plot(vol, [Q(V) for V in vol], label=label)
+        plt.xticks([0, 1], ['0', '$V_0$'])
+        plt.yticks([0, 0.5], ['0', '$Q_0$'])
         plt.ylabel(r'$Q\ in\ \frac{m^3}{day}$')
         plt.xlabel(r'$V\ in\ m^3$')
         plt.grid(True)
-    
+
     def plot_all(self, ax, label=None):
         """
         Plots all plots defined in project
@@ -68,10 +71,8 @@ class Project:
         p.plot_Vt(label)
         plt.legend(loc=0)
 
-            
-        
 
-fig, ax = plt.subplots(1, 2, figsize=(8,8))
+fig, ax = plt.subplots(1, 2, figsize=(8, 8))
 
 # Linear storage
 p = Project(cmf.LinearStorageConnection, 2)
@@ -96,6 +97,5 @@ p.plot_all(ax, r'$Q_0 e^{-V}$')
 # Technical Flux
 p = Project(cmf.ConstantFlux, maximum_flux=.5)
 p.plot_all(ax, r'$Q_0$')
-
 
 plt.show()

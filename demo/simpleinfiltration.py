@@ -7,6 +7,7 @@ import cmf
 import numpy as np
 import pylab as plt
 
+
 def create_project(W0=0.9):
     """
     Creates the cmf project with a single cell and one layer
@@ -19,12 +20,14 @@ def create_project(W0=0.9):
     si_con = cmf.ConceptualInfiltration(l, c.surfacewater, W0)
     return p, si_con
 
+
 def storage_runoff(p, si_con, W0=None):
     c = p[0]
     l = c.layers[0]
     if W0 is not None:
         si_con.W0 = W0
     t = cmf.Time()
+
     def get_inf(W):
         l.volume = W * l.get_capacity()
         I = c.get_rainfall(t)
@@ -49,7 +52,6 @@ def plot_storage_runoff(p, si_con, W0=None, c='blue'):
 
 
 def infiltration_per_time(p, si_con, W0=None):
-
     c = p[0]
     l = c.layers[0]
     if W0 is not None:
@@ -70,7 +72,7 @@ def infiltration_per_time(p, si_con, W0=None):
         l_vol.append(l.volume / l.get_capacity())
         q_inf.append(c.surfacewater.flux_to(l, t) / I)
         inf_ex.append(c.surfacewater.waterbalance(t) / I)
-        t_list.append(t/cmf.h)
+        t_list.append(t / cmf.h)
 
     return t_list, sw_vol, l_vol, q_inf, inf_ex
 
@@ -108,6 +110,3 @@ if __name__ == '__main__':
     plot_state(p, si_con, 0.95, 'blue')
     plot_state(p, si_con, 0.75, 'orange')
     plt.show()
-
-
-
