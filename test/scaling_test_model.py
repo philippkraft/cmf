@@ -201,7 +201,7 @@ class CellTemplate:
                                beta=1.081)
 
         # Snow
-        cmf.SimpleTindexSnowMelt(c.snow, c.layers[0], c,
+        cmf.TempIndexSnowMelt(c.snow, c.layers[0], c,
                                  rate=3.957)
         cmf.Weather.set_snow_threshold(3.209)
 

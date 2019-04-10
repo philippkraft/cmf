@@ -53,7 +53,6 @@ class TestSolver(unittest.TestCase):
         p, stores, X = get_project(True)
         for st in solver_types:
             solver = st(p)
-            print(solver.to_string())
             self.assertEqual(len(solver), 20)
 
 

@@ -54,23 +54,15 @@ reality quite nice...
 ### Snow melt
 
 CMF provides a very simple temperature index snow melt model
-([SimpleTindexSnowMelt](@ref cmf::upslope::connections::SimpleTindexSnowMelt))
+([TempIndexSnowMelt](@ref cmf::upslope::connections::TempIndexSnowMelt))
 in the form @f$q_{melt} [mm/day] = (T-T_{thres}) r@f$ where T is the
 actual temperature, @f$T_{thres}@f$ the same value as above and
 @f$r@f$ is the snow melt rate in @f$\frac{mm}{K\ day}@f$. The
-connection is set up for cmf revisions \>1000:
+connection is set up for cmf 2.0 and higher:
 
 ~~~~~~~~~~~~~{.py}
 
-snowmelt = cmf.SimpleTindexSnowMelt(c.snow,c.surfacewater,c,rate=7.0)
-~~~~~~~~~~~~~
-
-For older cmf versions you need to do:
-
-~~~~~~~~~~~~~{.py}
-
-snowmelt = cmf.SimpleTindexSnowMelt(c.snow,c.surfacewater,c)
-snowmelt.SnowMeltRate = 7.0
+snowmelt = cmf.TempIndexSnowMelt(c.snow,c.surfacewater,c,rate=7.0)
 ~~~~~~~~~~~~~
 
 

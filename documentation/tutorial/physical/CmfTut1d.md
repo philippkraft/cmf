@@ -65,7 +65,7 @@ models using Richards equation.
 
 ~~~~~~~~~~~~~{.py}
 
-solver = cmf.CVodeIntegrator(project,1e-6)
+solver = cmf.CVodeKrylov(project,1e-6)
 solver.t = cmf.Time(1,1,2011)
 ~~~~~~~~~~~~~
 

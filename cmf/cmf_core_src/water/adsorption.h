@@ -98,7 +98,7 @@ namespace cmf {
 
 			}
 		};
-		/// @brief This class calculates the adsorption equilibrium between sorbat and sorbent using the Freundlich isotherme.
+		/// @brief BROKEN: This class calculates the adsorption equilibrium between sorbat and sorbent using the Freundlich isotherme.
 		///
 		/// Freundlich isotherme:
 		///
@@ -115,9 +115,9 @@ namespace cmf {
 		/// CMF stores in a solute storage the total mass of a tracer and needs to calculate the free tracer mass.
 		/// The eq. above can not be rearanged to get \f$x_{free}\f$ from \f$x_{tot}\f$. Instead, the value is iterated
 		/// using [regula falsi](http://en.wikipedia.org/wiki/False_position_method). If n is near to 1, 
-		/// using LinearAdsorption will speed up your calculations. 
-		/// @todo Check if an analytical solution is available
-		/// The simplest physically based adsorption model by Langmuir (LangmuirAdsorption) has also a analytical solution 
+		/// using LinearAdsorption will speed up your calculations.
+		///
+		/// The simplest physically based adsorption model by Langmuir (LangmuirAdsorption) has also a analytical solution
 		/// and is hence calculated faster then Freundlich.
 		class FreundlichAdsorbtion: public Adsorption {
 		public:

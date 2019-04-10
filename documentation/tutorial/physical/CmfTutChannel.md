@@ -77,7 +77,7 @@ Creating a solver and setting initial conditions:
 
 ~~~~~~~~~~~~~{.py}
 # Create a solver
-solver = cmf.CVodeIntegrator(p,1e-9)
+solver = cmf.CVodeKrylov(p,1e-9)
 # Initial condition: 10 cmf of water in the most upper reach
 reaches[-1].depth=0.1
 ~~~~~~~~~~~~~

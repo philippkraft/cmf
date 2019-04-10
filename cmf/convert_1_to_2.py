@@ -13,24 +13,24 @@ def regex_escape(seq)->list:
         for k in seq
     ]
 rename = {
-    'cmf.TechnicalFlux': 'cmf.ConstantFlux',
-    'cmf.generic_gradient_connection': 'LinearGradientFlux',
-    'cmf.statecontrol_connection': 'cmf.ConstantStateFlux',
-    'cmf.waterbalance_connection': 'cmf.WaterBalanceFlux',
-    'cmf.SimpleInfiltration': 'cmf.ConceptualInfiltration',
-    'cmf.external_control_connection': 'cmf.ExternallyControlledFlux',
-    'cmf.SimpleTindexSnowMelt': 'cmf.TempIndexSnowMelt',
-    'cmf.CVodeIntegrator': 'cmf.CVodeKrylov',
-    'cmf.SimplRichards': 'cmf.FreeDrainagePercolation',
+    'TechnicalFlux': 'ConstantFlux',
+    'generic_gradient_connection': 'LinearGradientFlux',
+    'statecontrol_connection': 'ConstantStateFlux',
+    'waterbalance_connection': 'WaterbalanceFlux',
+    'SimpleInfiltration': 'ConceptualInfiltration',
+    'external_control_connection': 'ExternallyControlledFlux',
+    'SimpleTindexSnowMelt': 'TempIndexSnowMelt',
+    'CVodeIntegrator': 'CVodeKrylov',
+    'SimplRichards': 'FreeDrainagePercolation',
 }
 
 warning = {
-    'cmf.bidirectional_kinematic_exchange':
+    'bidirectional_kinematic_exchange':
         'no replacement available. Inform the authors if needed',
-    'cmf.constraint_kinematic_wave':
+    'constraint_kinematic_wave':
         'consider to use cmf.ConstraintLinearStorageFlux',
-    'cmf.kinematic_wave':
-        'consider to use cmf.cmf.LinearStorageConnection and cmf.PowerLawConnection',
+    'kinematic_wave':
+        'consider to use cmf.LinearStorageConnection and cmf.PowerLawConnection',
 }
 
 
@@ -52,7 +52,7 @@ def repl_or_warn(text: str, pattern: re.Pattern):
         raise KeyError(g + ' not in warnings or rename dictionary')
 
 
-def convert_1_to_2(stream_in=sys.stdin, stream_out=sys.stdout):
+def convert_1_to_2(stream_in=sys.stdin, stream_out=sys.stdout, fn=''):
     pattern = get_pattern()
     for i, line in enumerate(stream_in):
         match, repl, warn = repl_or_warn(line, pattern)
@@ -64,7 +64,7 @@ def convert_1_to_2(stream_in=sys.stdin, stream_out=sys.stdout):
             new_line = new_line.rstrip('\n') + '  # TODO: replace {}, {}\n'.format(match, warn)
         if match:
             warn_text = 'WARNING: ' if warn else ''
-            sys.stderr.write(warn_text + 'l:{:4d} {} -> {}\n'.format(i+1, match, warn or repl))
+            sys.stderr.write(fn + ' ' + warn_text + 'l:{:4d} {} -> {}\n'.format(i+1, match, warn or repl))
         stream_out.write(new_line)
 
 if __name__ == '__main__':
@@ -72,8 +72,10 @@ if __name__ == '__main__':
     if len(sys.argv) > 1:
         if sys.argv[1] == '-i' and len(sys.argv) > 2:
             stream_in = io.StringIO(open(sys.argv[2]).read())
+            fn = sys.argv[2]
         else:
             stream_in = open(sys.argv[1])
+            fn = sys.argv[1]
     else:
         stream_in = sys.stdin
     if len(sys.argv) > 2:
@@ -83,7 +85,7 @@ if __name__ == '__main__':
             stream_out = open(sys.argv[-1], 'w')
     else:
         stream_out = sys.stdout
-    convert_1_to_2(stream_in, stream_out)
+    convert_1_to_2(stream_in, stream_out, fn)
     stream_out.close()
     stream_in.close()
 

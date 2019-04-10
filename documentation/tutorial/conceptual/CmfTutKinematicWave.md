@@ -70,11 +70,7 @@ for the linear case
 
 Due to the different meanings of parameters between the linear and
 non-linear case, cmf provides now 2 distinct connections for the linear
-and the non-linear case. Earlier versions (<1.0.4) provide only one,
-now deprecated connection type called
-[kinematic_wave](@ref cmf::water::kinematic_wave). In a transition
-period, this connector is still used in some tutorials, but for clarity
-the new connections should be used.
+and the non-linear case. 
 
 ## LinearStorageConnection
 

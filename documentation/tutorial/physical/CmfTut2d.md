@@ -133,7 +133,7 @@ the CVODE solver:
 
 ~~~~~~~~~~~~~{.py}
 
-solver = cmf.CVodeIntegrator(p,1e-9)
+solver = cmf.CVodeKrylov(p,1e-9)
 solver.t = datetime.datetime(2012,1,1)
 ~~~~~~~~~~~~~
 

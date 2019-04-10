@@ -30,19 +30,20 @@ cell.surfacewater_as_storage()
 
 To route the water to the target, one can use conceptual connections
 like the
-[waterbalance_connection](@ref cmf::water::waterbalance_connection),
+[WaterbalanceFlux](@ref cmf::water::WaterbalanceFlux),
 if you want to ensure the surfacewater to be empty at all time, the
-generic [kinematic_wave](@ref cmf::water::kinematic_wave) connection
-for linear and polynomal storages or the
+generic [PowerLawConnection](@ref cmf::water::PowerLawConnection) 
+for or the
 [KinematicSurfaceRunoff](@ref cmf::upslope::connections::KinematicSurfaceRunoff)
 for a more "physical" approach. This type of connection is deemed to be
 the "normal" case and the
 [SurfaceWater](@ref cmf::upslope::SurfaceWater) exposes some
 properties to be used by that connection.
 
-Using a diffusive wave, where sinks can fill up and water flows over the
-topographic gradient, is not numerically stable. Contributions are
-welcome.
+Using a [diffusive wave](@ref cmf::upslope::connections::DiffusiveSurfaceRunoff), where sinks can fill up and water flows over the
+topographic gradient, is not numerically challenging. There are solutions
+in cmf but they are beyond the scope of this tutorial. See the demo file
+`darcy_plain` and `parkinglot` for examples.
 
 ## Kinematic surface runoff
 
@@ -96,7 +97,7 @@ con = cmf.KinematicSurfaceRunoff(c.surfacewater,outlet,flowwidth=10)
 # set rainfall, a good shower to get surface runoff for sure (100mm/day)
 c.set_rainfall(100.)
 # Create a solver
-solver = cmf.CVodeIntegrator(p,1e-8)
+solver = cmf.CVodeKrylov(p,1e-8)
 
 # Calculate results
 Vsoil, Vsurf, qsurf,qinf = transpose([(c.layers[0].volume, c.surfacewater.volume, outlet(t), c.layers[0](t)) 

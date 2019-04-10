@@ -10,9 +10,8 @@ in CMF 2.0. Starting with cmf 1.4 the new names are already available
 
 ### What does it mean?
 
-The [waterbalance_connection](@ref cmf::water::waterbalance_connection) 
-(or WaterBalanceFlux for CMF 1.4+) is 
-a connection to route the water balance of a node somewhere else.
+The [WaterbalanceFlux](@ref cmf::water::WaterbalanceFlux) 
+is a connection to route the water balance of a node somewhere else.
 The connection checks the flux over all other connections of the *left* node
 and routes any surplus to the *right* node, or in case of a negative water balance
 of the *left* node, additional water is fetched from the right node. Or as a
@@ -71,7 +70,7 @@ no water can vanish at the surface node, which happens when
 the water balance of `c.surfacewater.waterbalance(t) != 0`.
 
 If you choose to use an infiltration method that limits infiltration by saturation excess
-or hortonian overflow (e.g. [SimpleInfiltration](@ref simple_infiltration)), and the cell
+or hortonian overflow (e.g. [ConceptualInfiltration](@ref simple_infiltration)), and the cell
 surface is still no storage, the local mass balance on the surface is not necessary zero,
 and the excess gets lost. To route the surface water excess without time lag to a river
 or the catchment outlet (good approximation for time steps > 1h), you can use the water
@@ -80,11 +79,11 @@ balance connection again.
 The following code is meant to expand the code snippet from above:
 
 ~~~~~~~~~~~.py
-cmf.SimpleInfiltration(l, c.surfacewater)
+cmf.ConceptualInfiltration(l, c.surfacewater)
 # Create outlet
 out = p.NewOutlet('outlet')
 # moves all infiltration excess to the outlet
-cmf.waterbalance_connection(c.surfacewater, out)
+cmf.WaterbalanceFlux(c.surfacewater, out)
 print(cmf.describe(c.surfacewater))
 ~~~~~~~~~~~
 
@@ -117,9 +116,8 @@ when the source becomes empty, the flux stops. To avoid a hard stop, the fluxes
 decreases linear to zero, when only volume for `decrease time` is left in the source
 storage.
 
-Currently, this type of connection is called "TechnicalFlux"
-but will be renamed to [ConstantFlux](@ref cmf::water::TechnicalFlux) starting with CMF 1.4.
-The old name will stay in the C++ code and the docs until CMF 2.0. 
+Currently, this type of connection is called 
+[ConstantFlux](@ref cmf::water::ConstantFlux). 
 
 ~~~~~~~~~~ {.py}
 p = cmf.project()
@@ -150,5 +148,4 @@ plt.xlabel('volume $m^3$')
 This connection holds the state of a water storage constant getting or releasing water
 to the other node of the connection. The flux between the nodes is proportional to
 the difference between the state of the storage and the defined target state of the 
-storage. This connection will be renamed in CMF 2.0 to [ConstantState](@ref cmf::water::statecontrol_connection)
-and is in CMF 1.3 and below only available as `statecontrol_connection`.
+storage. This connection is called [ConstantStateFlux](@ref cmf::water::ConstantStateFlux).

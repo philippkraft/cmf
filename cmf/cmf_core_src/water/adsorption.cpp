@@ -50,7 +50,9 @@ FreundlichAdsorbtion::FreundlichAdsorbtion( const FreundlichAdsorbtion& other )
 
 FreundlichAdsorbtion::FreundlichAdsorbtion( real _K,real _n, real _m, real _epsilon/*=1e-12*/, int _maxiter/*=100*/)
 	: K(_K), n(_n), m(_m), epsilon(_epsilon),maxiter(_maxiter)
-{}
+{
+    throw std::runtime_error("Freundlich Adsorption is currently broken and can not be used");
+}
 
 FreundlichAdsorbtion* FreundlichAdsorbtion::copy( real m/*=-1*/ ) const
 {

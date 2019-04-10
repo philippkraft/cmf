@@ -45,7 +45,7 @@ class TestAbstractFluxes(unittest.TestCase):
         p, w, o = get_project()
         i = p.NewNeumannBoundary('input', w)
         o.is_source = True
-        cmf.WaterBalanceFlux(w, o)
+        cmf.WaterbalanceFlux(w, o)
         t0 = cmf.Time()
 
         def assert_flux(influx, outflux):
