@@ -189,7 +189,7 @@ class CmfBuildExt(build_ext):
             raise RuntimeError("For building and running of cmf an installation of numpy is needed")
 
         for ext in self.extensions:
-            ext.include_dirs += get_numpy_include()
+            ext.include_dirs += [get_numpy_include()]
 
     def build_libraries(self):
         for sl in static_libraries:
@@ -338,7 +338,7 @@ def make_cmf_core():
     """
 
     # Include numpy
-    include_dirs = [get_numpy_include()]
+    include_dirs = []
     library_dirs = []
     libraries = []
     extra_objects = []
