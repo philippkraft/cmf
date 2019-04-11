@@ -1,28 +1,40 @@
+image:
+  - Visual Studio 2017
+  - Ubuntu
 environment:
   PYPIPASSWORD:
     secure: LmtnXHQhfACj8oOpwYehsFPkdhPHGLq84SIqn+ixfS8=
   matrix:
+    # Windows w/64 bit python 3.7
+    - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+      PYTHON: "C:\\Python37-x64"
+      PYTHON_ARCH: "64"
+    # Windows w/64 bit python 3.6
+    - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+      PYTHON: "C:\\Python36-x64"
+      PYTHON_ARCH: "64"
+    # Windows w/64 bit python 3.6
+    - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+      PYTHON: "C:\\Python35-x64"
+      PYTHON_ARCH: "64"
 
-    # For Python versions available on Appveyor, see
-    # http://www.appveyor.com/docs/installed-software#python
-    # The list here is complete (excluding Python 2.6, which
-    # isn't covered by this document) at the time of writing.
-    - PYTHON: "C:\\Python37-x64"
-    - PYTHON: "C:\\Python35-x64"
+    # Ubuntu - python 3
+    - APPVEYOR_BUILD_WORKER_IMAGE: Ubuntu
+      stack: python 3
 
 install:
   # We need wheel installed to build wheels
-  - "%PYTHON%\\python.exe -m pip install wheel --no-warn-script-location"
-  - "%PYTHON%\\Scripts\\pip install numpy"
-  - "%PYTHON%\\Scripts\\pip install scipy"
+  - sh: "python -m pip install -r requirements.txt"
+  - cmd: "%PYTHON%\\Scripts\\pip install -r requirements.txt"
 
   # We need vcvarsall to build sundials
-  - 'call "C:\Program Files\Microsoft SDKs\Windows\v7.1\Bin\SetEnv.cmd" /x64'
-  - 'call "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat" x86_amd64'
-  # We need the additional solvers
-  # - "tools\\install_solvers.bat"
+  - cmd: call "C:\Program Files\Microsoft SDKs\Windows\v7.1\Bin\SetEnv.cmd" /x64"
+  - cmd: call "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat" x86_amd64"
 
-build: off
+build:
+  - cmd: "%PYTHON%\\python.exe setup.py install"
+  - sh: "python setup.py install"
+
 
 test_script:
   # Put your test command here.
@@ -32,15 +44,17 @@ test_script:
   # Note that you must use the environment variable %PYTHON% to refer to
   # the interpreter you're using - Appveyor does not do anything special
   # to put the Python version you want to use on PATH.
-  - "%PYTHON%\\python.exe setup.py install"
-  - "%PYTHON%\\python.exe tools\\test.py"
+  - cmd: "%PYTHON%\\python.exe tools\\test.py"
+  - sh: "python tools/test.py"
+
 
 after_test:
   # This step builds your wheels.
   # Again, you only need build.cmd if you're building C extensions for
   # 64-bit Python 3.3/3.4. And you need to use %PYTHON% to get the correct
   # interpreter
-  - "%PYTHON%\\python.exe setup.py bdist_wheel"
+  - cmd: "%PYTHON%\\python.exe setup.py bdist_wheel"
+  - sh: "python3 setup.py sdist"
 
 artifacts:
   # bdist_wheel puts your built wheel in the dist directory
