@@ -23,7 +23,7 @@ install:
   # We need vcvarsall to build sundials
   - cmd: call "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Auxiliary\Build\vcvars64.bat"
   # We need wheel installed to build wheels
-  - sh: "python -m pip install -r requirements.txt"
+  - sh: "python -m pip install -r requirements.txt" --user
   - cmd: "%PYTHON%\\Scripts\\pip install -r requirements.txt"
 
 
