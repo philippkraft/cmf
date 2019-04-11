@@ -1,6 +1,3 @@
-image:
-  - Visual Studio 2017
-  - Ubuntu
 environment:
   PYPIPASSWORD:
     secure: LmtnXHQhfACj8oOpwYehsFPkdhPHGLq84SIqn+ixfS8=
@@ -24,7 +21,7 @@ environment:
 
 install:
   # We need vcvarsall to build sundials
-  # - cmd: call "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat" x86_amd64"
+  - cmd: call "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Auxiliary\Build\vcvars64.bat"
   # We need wheel installed to build wheels
   - sh: "python -m pip install -r requirements.txt"
   - cmd: "%PYTHON%\\Scripts\\pip install -r requirements.txt"
