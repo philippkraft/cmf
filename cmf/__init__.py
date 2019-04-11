@@ -22,8 +22,8 @@ from .describe import describe
 from .stopwatch import StopWatch
 
 
-__version__ = '2.0.0a1.cmf2'
-__compiletime__ = 'Wed Apr 10 17:52:35 2019'
+__version__ = '2.0.0b1.cmf2'
+__compiletime__ = 'Thu Apr 11 15:23:04 2019'
 
 from .cmf_core import connect_cells_with_flux as __ccwf
 
