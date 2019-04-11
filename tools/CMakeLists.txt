@@ -8,12 +8,14 @@ set(default_build_type "Release")
 set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 
 set(HOME ${CMAKE_CURRENT_SOURCE_DIR}/..)
-
+message(STATUS "HOME=${HOME}")
 set(LIB_DIR ${HOME}/lib)
+message(STATUS "LIB_DIR=${LIB_DIR}")
 
 include(ExternalProject)
 
-set(KLU_DIR ${HOME}/build/suitesparse)
+set(KLU_DIR ${HOME}/build/extern/suitesparse)
+message(STATUS "KLU_DIR=${KLU_DIR}")
 set(KLU_URL "https://github.com/philippkraft/suitesparse-metis-for-windows")
 
 ExternalProject_Add(SuiteSparseProject
@@ -22,8 +24,9 @@ ExternalProject_Add(SuiteSparseProject
     PREFIX ${KLU_DIR}
 )
 
-set(SND_DIR ${HOME}/build/sundials)
+set(SND_DIR ${HOME}/build/extern/sundials)
 set(SND_URL "https://github.com/philippkraft/sundials")
+message(STATUS "SND_DIR=${SND_DIR}")
 
 ExternalProject_Add(sundials
     GIT_REPOSITORY ${SND_URL}
@@ -38,6 +41,6 @@ ExternalProject_Add(sundials
 )
 add_dependencies(sundials SuiteSparseProject)
 
-set(CMF_DIR ${HOME}/build/cmf)
+
 
 
