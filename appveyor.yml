@@ -23,15 +23,15 @@ install:
   # We need vcvarsall to build sundials
   - cmd: call "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Auxiliary\Build\vcvars64.bat"
   # We need wheel installed to build wheels
-  - sh: "python -m pip install -r requirements.txt --user"
+  - sh: "python3 -m pip install -r requirements.txt --user"
   - cmd: "%PYTHON%\\Scripts\\pip install -r requirements.txt"
 
 
 build_script:
   - cmd: "%PYTHON%\\python.exe setup.py install"
-  - sh: "python setup.py build_ext"
-  - sh: "python setup.py build_py"
-  - sh: "python setup.py install --user"
+  - sh: "python3 setup.py build_ext"
+  - sh: "python3 setup.py build_py"
+  - sh: "python3 setup.py install --user"
 
 
 test_script:
@@ -43,7 +43,7 @@ test_script:
   # the interpreter you're using - Appveyor does not do anything special
   # to put the Python version you want to use on PATH.
   - cmd: "%PYTHON%\\python.exe tools\\test.py"
-  - sh: "python tools/test.py"
+  - sh: "python3 tools/test.py"
 
 
 after_test:
