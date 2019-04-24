@@ -31,18 +31,18 @@ class DarcyPlain(cmf.project):
     """
     tstart = cmf.Time(1, 7, 2018)
     duration = cmf.day * 7
-    dt = cmf.min * 10
-    cell_count = 100
+    dt = cmf.min * 10  # Time step of the solution
+    cell_count = 100  # Number of cells
 
     rain_duration = cmf.h * 2
     rain_amount = 20  # mm
-    roughness = 0.002
+    roughness = 0.00  # standard deviation of surface in m
 
-    slope = .0 / 100
-    width = 3
-    length = 20.0
-    depth = 1
-    Ksat = 10
+    slope = 0.1 / 100  # in m/m
+    width = 3  # in m
+    length = 20.0  # in m
+    depth = 0.1  # in m
+    Ksat = 10  # in m/day
 
     def __init__(self):
         super().__init__()
@@ -65,6 +65,7 @@ class DarcyPlain(cmf.project):
         cmf.connect_cells_with_flux(self, cmf.DiffusiveSurfaceRunoff)
         self.rainfall_stations.add('', 0.0, (0, 0, 0))
         self.use_nearest_rainfall()
+        # self.bound: cmf.NeumannBoundary=self.NewNeumannBoundary('rainfall', self[-1].layers[0])
         self.outlet = self.NewOutlet('out', -self.length / 100, 0, 0)
         cmf.Darcy(self[0].layers[0], self.outlet, self.width)
         cmf.DiffusiveSurfaceRunoff(self[0].surfacewater, self.outlet, self.width)
@@ -75,7 +76,10 @@ class DarcyPlain(cmf.project):
         while data.end < self.tstart + self.rain_duration:
             data.add(self.rain_amount * cmf.day / self.rain_duration)
         data.add(0)
-        self.rainfall_stations[0].data = data
+        if hasattr(self, 'bound'):
+            self.bound.flux = data * sum(c.area for c in self) / 1000
+        else:
+            self.rainfall_stations[0].data = data
 
     def run(self):
         solver = cmf.CVodeKrylov(self, 1e-9)

@@ -2,6 +2,10 @@ import cmf
 import numpy as np
 import time
 
+def SoluteWaterSolver(states, epsilon=1e-9):
+    wsolver = cmf.CVodeKrylov(epsilon)
+    ssolver = cmf.CVodeAdams(epsilon)
+    return cmf.SoluteWaterIntegrator(wsolver, ssolver, states)
 
 class ReachNetwork:
     def __init__(self, levels=3):
@@ -94,7 +98,7 @@ if __name__ == '__main__':
     from pylab import imshow, show
 
     print(f'{"solver":<25}level size {"init sec":<10}{"run sec":<10}{"method calls":<15}')
-    for solver_type in [cmf.CVodeKLU, cmf.CVodeKrylov]:
+    for solver_type in [cmf.CVodeKLU, cmf.CVodeKrylov, cmf.CVodeAdams]:
         for level in range(1, 12):
             tstart = time.time()
             model = Model(level, solver_type, 100)

@@ -887,7 +887,7 @@ class Time(object):
     ms     = property(lambda self: self.AsDate().ms)
 
     def __format__(self, fmt):
-        return self.AsPython().__format__(fmt)
+        return self.as_datetime().__format__(fmt)
 
     __swig_destroy__ = _cmf_core.delete_Time
 Time.AsDays = new_instancemethod(_cmf_core.Time_AsDays, None, Time)
@@ -998,6 +998,9 @@ class Date(object):
 
     def as_datetime(self):
         return datetime.datetime(self.year,self.month,self.day,self.hour,self.minute,self.second,self.ms*1000)
+
+    def __format__(self, fmt):
+        return self.as_datetime().__format__(fmt)
 
     __swig_destroy__ = _cmf_core.delete_Date
 Date.ToTime = new_instancemethod(_cmf_core.Date_ToTime, None, Date)

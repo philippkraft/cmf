@@ -1,7 +1,6 @@
 """
 Converts a Python program using cmf from cmf version 1.x to 2.0.
 """
-import cmf
 import sys
 import re
 import io
@@ -69,6 +68,7 @@ def convert_1_to_2(stream_in=sys.stdin, stream_out=sys.stdout, fn=''):
             sys.stderr.write(fn + ' ' + warn_text + 'l:{:4d} {} -> {}\n'.format(i+1, match, warn or repl))
         stream_out.write(new_line)
 
+
 if __name__ == '__main__':
 
     if len(sys.argv) > 1:
@@ -90,6 +90,27 @@ if __name__ == '__main__':
     convert_1_to_2(stream_in, stream_out, fn)
     stream_out.close()
     stream_in.close()
+
+else:
+    from textwrap import dedent
+    from . import *
+    from logging import warning
+    template = dedent('''
+    def DeprecatedName(*args, **kwargs):
+        """
+        DeprecatedName is deprecated, use NewName instead
+        """
+        warning('DeprecatedName is deprecated use NewName instead. Creating NewName. \n' \
+                'Consider to use convert_1_to_2.py to convert your script automatically')
+        return NewName(*args, **kwargs)
+    ''')
+    for k, v in rename.items():
+        if not k.startswith('.'):
+            eval(template.replace(k, v))
+
+    
+
+
 
 
 

@@ -212,7 +212,7 @@ static bool check_time(PyObject* dt) {
     ms     = property(lambda self: self.AsDate().ms)
 
     def __format__(self, fmt):
-        return self.AsPython().__format__(fmt)
+        return self.as_datetime().__format__(fmt)
     }
 }
 
@@ -231,6 +231,9 @@ static bool check_time(PyObject* dt) {
 
     def as_datetime(self):
         return datetime.datetime(self.year,self.month,self.day,self.hour,self.minute,self.second,self.ms*1000)
+
+    def __format__(self, fmt):
+        return self.as_datetime().__format__(fmt)
     }
 }
 
