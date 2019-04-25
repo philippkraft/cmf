@@ -1,7 +1,7 @@
 import cmf
 
-class Cascade(cmf.project):
 
+class Cascade(cmf.project):
     def __init__(self, size, connection, *args, **kwargs):
         """
         Parameters
@@ -53,6 +53,7 @@ class DarcyCascade(Cascade):
         for s in self.storages:
             s.soil.Ksat = K
 
+
 class RichardsCascade(Cascade):
     def __init__(self, size, K=1.0):
         super().__init__(size, cmf.Richards_lateral, 1, 1)
@@ -64,6 +65,10 @@ def run(model, solvertype, nsteps, dt):
     """
     Parameters
     ----------
+    model: Cascade
+        The model to run
+    solvertype:
+        The type of the solver or a factory function returning a cmf solver
     nsteps: int
         Number of steps
     dt: cmf.Time
