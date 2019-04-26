@@ -26,7 +26,7 @@
 %extend__repr__(cmf::math::Integrator);
 %extend_pysequence(cmf::math::Integrator);
 %extend cmf::math::Integrator { 
-%pythoncode {
+    %pythoncode {
     t = property(get_t,set_t,doc="Sets the actual time of the solution")
     dt = property(get_dt,doc="Get the current time step of the solver")
     def __call__(self, t, dt=None, reset=False):
@@ -116,9 +116,9 @@
 %extend__repr__(cmf::math::CVodeInfo);
 
 %extend cmf::math::CVodeBase {
-%pythoncode {
+    %pythoncode {
     def get_jacobian(self):
         return self._get_jacobian().reshape((self.size(), self.size()), order='F')
     info = property(get_info)
-}
+    }
 }

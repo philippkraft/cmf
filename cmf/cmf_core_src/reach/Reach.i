@@ -49,7 +49,7 @@
 
 %include "reach/Reach.h"
 %extend cmf::river::Reach {
-%pythoncode {
+    %pythoncode {
     @property
     def upstream(self):
         """Returns a list containing all reaches flowing into self"""

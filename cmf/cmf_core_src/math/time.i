@@ -393,32 +393,3 @@ static bool check_time(PyObject* dt) {
     
 
 }
-        
-
-%pythoncode {
-def datetime_to_cmf(date):
-    """Converts a python datetime to cmf.Time"""
-    return Time(date.day, date.month, date.year, date.hour, date.minute, date.second, date.microsecond / 1000)
-
-class timerange:
-    """Creates a generator of cmf.Time, similar to the Python range function"""
-    def __init__(self, start, stop, step=day):
-        self.start = start
-        self.stop = stop
-        self.step = step
-
-    def __iter__(self):
-        for x in range(0, int((self.stop - self.start) / self.step)):
-            yield self.start + self.step * x
-
-    def __len__(self):
-        return int((self.stop - self.start) / self.step)
-
-    def __getitem__(self, item):
-        if type(item) is slice:
-            return [
-                self.start + self.step * i
-                for i in range(*item.indices(len(self)))
-            ]
-
-}

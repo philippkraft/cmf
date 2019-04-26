@@ -19,7 +19,7 @@
 from __future__ import print_function, division, absolute_import
 from .cmf_core import *
 from .describe import describe
-from .stopwatch import StopWatch
+from .timetools import StopWatch, datetime_to_cmf, timerange
 
 
 __version__ = '2.0.0b1.cmf2'
