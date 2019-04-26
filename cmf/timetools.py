@@ -33,41 +33,54 @@ class timerange:
         self.step = step
 
     def __iter__(self):
-        for x in range(0, int((self.stop - self.start) / self.step)):
-            yield self.start + self.step * x
+        for i in range(len(self)):
+            yield self.start + self.step * i
+
+    def __repr__(self):
+        return 'cmf.timerange({}, {}, {})'.format(self.start, self.stop, self.step)
 
     def __len__(self):
         return int((self.stop - self.start) / self.step)
 
     def __getitem__(self, item):
+        n = len(self)
         if type(item) is int:
+            if item < 0:
+                item += n
+            if item >= n:
+                raise IndexError('Item [{}] not in {}'.format(item, self))
             return self.start + self.step * item
-        elif type(item) is slice:
-            return [
-                self.start + self.step * i
-                for i in range(*item.indices(len(self)))
-            ]
-        else:
-            return [
-                self.start + self.step * single_item
-                for single_item in item
-            ]
 
+        elif type(item) is slice:
+            i_start, i_stop, i_step = item.indices(n)
+            try:
+                return timerange(self[int(i_start)], self[int(i_stop)], self.step * int(i_step))
+            except TypeError:
+                raise TypeError('timerange[item]: Item must be either int, slice of ints or a sequence of ints')
+
+        else:
+            try:
+                return [
+                    self[int(single_item)]
+                    for single_item in item
+                ]
+            except TypeError:
+                raise TypeError('timerange[item]: Item must be either int, slice of ints or a sequence of ints')
 
 
 class StopWatch:
     """A stopwatch to estimated the total time of a process  
     
     Creating a StopWatch:
-    >>>stopwatch=StopWatch(start,stop) 
+    >>>stopwatch=StopWatch(start, stop)
     Start and end are indicators to describe the progress of a process. 
     Start is the indicator value at the beginning of the process. As default they are 0.0 and 1.0.
     
     Starting the StopWatch again:
-    >>>stopwatch.start()
+    >>>stopwatch.restart()
     
     Getting the elapsed time, the total time and the remaining time of the process in seconds:
-    >>>elapsed,total,remaining = stopwatch(progress)
+    >>>elapsed, total, remaining = stopwatch(progress)
     Where progress is a process progress indicator matching start and stop 
     
     Example:
@@ -83,14 +96,19 @@ class StopWatch:
         self.stop = stop
         self.t0 = time.time()
 
-    def start(self):
-
-        self.t0=time.time()
+    def restart(self):
+        """Restarts the stopwatch"""
+        self.t0 = time.time()
 
     def __call__(self, progress):
+        """
+        Returns the progress in wall clock time
+        :param progress: The current position in the stopwatch
+        :return: A 3-tuple of elapsed, total and remaining seconds of the task
+        """
         now = time.time()
         elapsed = (now-self.t0)
-        if progress>self.start :
+        if progress > self.start:
             total = elapsed * (self.stop-self.start)/(progress-self.start)
         else:
             total = 0.0
