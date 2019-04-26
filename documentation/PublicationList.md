@@ -4,20 +4,21 @@
 
 If you are refering to cmf in a publication, please cite:
 
-  - Kraft, P., Vaché, K.B., Frede, H.-G. Breuer, L. 2011. A hydrological
-    programming language extension for integrated catchment models,
-    Environmental Modelling & Software, doi:
-    10.1016/j.envsoft.2010.12.009 [full text (author's
-    version)](htdocs:download/CMF_EMS2011_kraft_et_al.pdf)
+- Kraft, P., Vaché, K.B., Frede, H.-G. Breuer, L. 2011. @subpage ems2011,
+  Environmental Modelling & Software, 
+  [doi:10.1016/j.envsoft.2010.12.009]
+  (https://doi.org/10.1016/j.envsoft.2010.12.009) 
+    
 
 ## Dissertations / Thesis
 
-  - Kraft, P. (2012), A hydrological programming language extension for
-    integrated catchment models [online available](https://geb.uni-giessen.de/geb/volltexte/2012/8759/pdf/KraftPhilipp_2012_03_16.pdf)
-  - Maier, N. (2018), A new method for spatio-temporally explicit predictions of groundwater, 
-    surface water and habitat interactions in riparian ecosystems [online available](http://geb.uni-giessen.de/geb/volltexte/2018/13746/pdf/MaierNadine_2018_09_21.pdf)
+- Kraft, P. (2012), A hydrological programming language extension for
+  integrated catchment models [online available](https://geb.uni-giessen.de/geb/volltexte/2012/8759/pdf/KraftPhilipp_2012_03_16.pdf)
+- Maier, N. (2018), A new method for spatio-temporally explicit predictions of groundwater, 
+  surface water and habitat interactions in riparian ecosystems [online available](http://geb.uni-giessen.de/geb/volltexte/2018/13746/pdf/MaierNadine_2018_09_21.pdf)
 
 ## Applications in peer reviewed journal articles
+
   - Jehn, F. U., Breuer, L., Houska, T., Bestian, K., and Kraft, P.: 
     Incremental model breakdown to assess the multi-hypotheses problem, 
     Hydrol. Earth Syst. Sci., 22, 4565-4581, 

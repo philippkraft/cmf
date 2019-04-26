@@ -13945,8 +13945,8 @@ Gives access to the state variable. ";
 std::string to_string() const =0 ";
 
 
-// File: classcmf_1_1stopwatch_1_1_stop_watch.xml
-%feature("docstring") cmf::stopwatch::StopWatch "
+// File: classcmf_1_1timetools_1_1_stop_watch.xml
+%feature("docstring") cmf::timetools::StopWatch "
 
 A stopwatch to estimated the total time of a process    Creating a
 StopWatch: >>>stopwatch=StopWatch(start,stop)  Start and end are
@@ -13960,13 +13960,13 @@ Example: stopwatch=StopWatch(0,10) for i in range(10): time.sleep(1)
 print('elapsed = %0.2fs, total= %0.2fs, remaining = %0.2fs' %
 stopwatch(i+1)) ";
 
-%feature("docstring")  cmf::stopwatch::StopWatch::__init__ "def
+%feature("docstring")  cmf::timetools::StopWatch::__init__ "def
 __init__(self, start=0.0, stop=1.0) ";
 
-%feature("docstring")  cmf::stopwatch::StopWatch::__call__ "def
+%feature("docstring")  cmf::timetools::StopWatch::__call__ "def
 __call__(self, progress) ";
 
-%feature("docstring")  cmf::stopwatch::StopWatch::start "def
+%feature("docstring")  cmf::timetools::StopWatch::start "def
 start(self) ";
 
 
@@ -15668,6 +15668,25 @@ Returns the number of times this is included in t1. ";
 /*  Boolean Operators  */
 
 %feature("docstring")  cmf::math::Time::long_time_if_zero "cmf::math::Time long_time_if_zero() const ";
+
+
+// File: classcmf_1_1timetools_1_1timerange.xml
+%feature("docstring") cmf::timetools::timerange "
+
+Creates a generator of cmf.Time, similar to the Python range function
+";
+
+%feature("docstring")  cmf::timetools::timerange::__init__ "def
+__init__(self, start, stop, step=day) ";
+
+%feature("docstring")  cmf::timetools::timerange::__getitem__ "def
+__getitem__(self, item) ";
+
+%feature("docstring")  cmf::timetools::timerange::__iter__ "def
+__iter__(self) ";
+
+%feature("docstring")  cmf::timetools::timerange::__len__ "def
+__len__(self) ";
 
 
 // File: classcmf_1_1math_1_1timeseries.xml
@@ -17825,7 +17844,11 @@ Reaches with a bottom higher than any upstream reach are lowered to
 the minimum height of any (possibly distant) upstream reach. ";
 
 
-// File: namespacecmf_1_1stopwatch.xml
+// File: namespacecmf_1_1timetools.xml
+%feature("docstring")  cmf::timetools::datetime_to_cmf "def
+cmf.timetools.datetime_to_cmf(date)
+
+Converts a python datetime to cmf.Time ";
 
 
 // File: namespacecmf_1_1upslope.xml
@@ -18057,6 +18080,9 @@ boundary condition, providing the potential of the lower node. ";
 
 
 // File: namespacestd.xml
+
+
+// File: namespacetextwrap.xml
 
 
 // File: ____init_____8py.xml
@@ -18313,7 +18339,7 @@ ymax=1) ";
 // File: maps_8py.xml
 
 
-// File: stopwatch_8py.xml
+// File: timetools_8py.xml
 
 
 // File: _cmf_introduction_8md.xml
@@ -18332,6 +18358,9 @@ ymax=1) ";
 
 
 // File: overview_8md.xml
+
+
+// File: ems-2011-paper_8md.xml
 
 
 // File: _finite_volume_method_8md.xml
@@ -18530,6 +18559,9 @@ ymax=1) ";
 
 
 // File: contrib_issues.xml
+
+
+// File: ems2011.xml
 
 
 // File: finite_volume_method.xml
